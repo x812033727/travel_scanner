@@ -4,11 +4,12 @@ from typing import Any
 from uuid import NAMESPACE_URL, UUID, uuid5
 
 from ortools.sat.python import cp_model
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from app.pricing.engine import TotalCost, TotalCostEngine
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, TransportOffer
 from app.search.schemas import SearchCreate
+from app.trips.itinerary import ItineraryDay, build_itinerary
 
 WEIGHTS = {
     "balanced": {"price": 0.35, "time": 0.20, "convenience": 0.20, "quality": 0.15, "risk": 0.10},
@@ -64,6 +65,7 @@ class TripPlanResult(BaseModel):
     pros: list[str]
     cons: list[str]
     compared_with_cheapest: dict[str, Any]
+    itinerary: list[ItineraryDay] = Field(default_factory=list)
 
 
 def pareto(candidates: list[Candidate]) -> list[Candidate]:
@@ -263,6 +265,13 @@ class TripOptimizer:
                         "price_difference": price - cheapest_price,
                         "flight_minutes_saved": time_saved,
                     },
+                    itinerary=build_itinerary(
+                        query,
+                        candidate.flight,
+                        candidate.hotel,
+                        candidate.activity,
+                        candidate.transport,
+                    ),
                 )
             )
         return [results[1], results[0], results[2]]

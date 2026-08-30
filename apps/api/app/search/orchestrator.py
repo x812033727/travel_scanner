@@ -21,7 +21,9 @@ from app.models import (
     UsageReservation,
 )
 from app.optimization.engine import TripOptimizer
-from app.providers.mock import MockProvider
+from app.places.google import GoogleTravelService
+from app.providers.base import TravelProvider
+from app.providers.registry import build_provider, provider_status
 from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, Offer, TransportOffer
 from app.search.events import publish_event
@@ -87,7 +89,7 @@ async def persist_offers(
 
 
 async def run_module(
-    provider: MockProvider, runner: ProviderRunner, module: str, query: SearchCreate
+    provider: TravelProvider, runner: ProviderRunner, module: str, query: SearchCreate
 ) -> list[Offer]:
     if module == "flight":
         return cast(
@@ -128,7 +130,25 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
     await session.commit()
     await publish_event(redis, search_id, "search.created", 0, {"status": "processing"})
     query = SearchCreate.model_validate(search.request_json)
-    provider, runner = MockProvider(), ProviderRunner(redis)
+    provider, runner = build_provider(redis), ProviderRunner(redis)
+    place_service = GoogleTravelService(redis)
+    status = provider_status()
+    if provider is None:
+        search.status = "failed"
+        search.progress = 100
+        search.warnings_json = [status.message]
+        if job:
+            job.status = "failed"
+            job.error = status.message
+        await session.commit()
+        await publish_event(
+            redis,
+            search_id,
+            "search.failed",
+            100,
+            {"status": "failed", "warnings": [status.message]},
+        )
+        return
     results: dict[str, list[dict[str, Any]]] = {}
     warnings: list[str] = []
 
@@ -141,12 +161,18 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
         await session.flush()
         try:
             offers = await run_module(provider, runner, module, query)
+            if module == "hotel" and place_service.configured:
+                hotels = [item for item in offers if isinstance(item, HotelOffer)]
+                offers = cast(list[Offer], await place_service.enrich_hotels(hotels))
+            elif module == "activities" and place_service.configured:
+                activities = [item for item in offers if isinstance(item, ActivityOffer)]
+                offers = cast(list[Offer], await place_service.enrich_activities(activities))
             provider_request.status = "completed"
             provider_request.latency_ms = int((time.perf_counter() - started) * 1000)
             session.add(
                 ProviderResponse(
                     provider_request_id=provider_request.id,
-                    payload={"count": len(offers), "is_mock": True},
+                    payload={"count": len(offers), "mode": status.mode},
                 )
             )
             await persist_offers(session, search_id, module, offers)
@@ -192,10 +218,12 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
         hotels = [HotelOffer.model_validate(item) for item in results.get("hotel", [])]
         activities = [ActivityOffer.model_validate(item) for item in results.get("activities", [])]
         transports = [TransportOffer.model_validate(item) for item in results.get("transport", [])]
-        plans = [
-            plan.model_dump(mode="json")
-            for plan in TripOptimizer().optimize(query, flights, hotels, activities, transports)
-        ]
+        optimized = TripOptimizer().optimize(query, flights, hotels, activities, transports)
+        if place_service.configured:
+            await asyncio.gather(
+                *(place_service.enrich_itinerary(plan.itinerary) for plan in optimized)
+            )
+        plans = [plan.model_dump(mode="json") for plan in optimized]
         await publish_event(redis, search_id, "optimization.completed", 90, {"plans": plans})
     search.status = "completed" if results else "failed"
     search.progress = 100

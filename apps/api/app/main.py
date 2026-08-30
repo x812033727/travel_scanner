@@ -10,9 +10,12 @@ from app.crawlers.router import router as crawlers_router
 from app.db import engine
 from app.infra import get_redis
 from app.middleware import RequestContextMiddleware
+from app.places.router import public_router as public_places_router
 from app.places.router import router as places_router
 from app.problems import AppError, app_error_handler
+from app.providers.router import router as providers_router
 from app.search.router import router as search_router
+from app.trips.router import public_router as public_trips_router
 from app.trips.router import router as trips_router
 from app.usage.router import router as usage_router
 
@@ -31,9 +34,12 @@ app.include_router(auth_router, prefix="/api/v1")
 app.include_router(usage_router, prefix="/api/v1")
 app.include_router(search_router, prefix="/api/v1")
 app.include_router(trips_router, prefix="/api/v1")
+app.include_router(public_trips_router, prefix="/api/v1")
 app.include_router(alerts_router, prefix="/api/v1")
 app.include_router(ai_router, prefix="/api/v1")
 app.include_router(places_router, prefix="/api/v1")
+app.include_router(public_places_router, prefix="/api/v1")
+app.include_router(providers_router, prefix="/api/v1")
 app.include_router(crawlers_router, prefix="/api/v1")
 
 

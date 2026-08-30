@@ -1,6 +1,7 @@
 import argparse
 import asyncio
 import sys
+from datetime import UTC, datetime, timedelta
 from io import TextIOWrapper
 
 from sqlalchemy import select
@@ -12,6 +13,8 @@ from app.crawlers.verification import build_verification_report
 from app.db import SessionFactory
 from app.infra import get_redis
 from app.models import Plan, Subscription, UsageLedger, User
+from app.providers.registry import build_provider, provider_status
+from app.search.schemas import SearchCreate
 from app.usage.service import seed_plans
 
 
@@ -59,6 +62,48 @@ async def verify_airline_crawlers(origin: str, destination: str) -> bool:
     return report.passed
 
 
+async def verify_live_provider(origin: str, destination: str) -> bool:
+    status = provider_status()
+    if status.status != "ready":
+        print(status.model_dump_json(indent=2))
+        return False
+    today = datetime.now(UTC).date()
+    query = SearchCreate(
+        origin=origin.upper(),
+        destination=destination.upper(),
+        departure_date=today + timedelta(days=60),
+        return_date=today + timedelta(days=65),
+        travelers={"adults": 1, "rooms": 1},
+        modules=["flight", "hotel", "activities", "transport"],
+        preferences={"interests": ["food", "culture"]},
+    )
+    provider = build_provider(get_redis())
+    if provider is None:
+        print(status.model_dump_json(indent=2))
+        return False
+    flights, hotels, activities, transfers = await asyncio.gather(
+        provider.search_flights(query),
+        provider.search_hotels(query),
+        provider.search_activities(query),
+        provider.search_transport(query),
+    )
+    report = {
+        "provider": status.provider,
+        "mode": status.mode,
+        "origin": origin.upper(),
+        "destination": destination.upper(),
+        "counts": {
+            "flight": len(flights),
+            "hotel": len(hotels),
+            "activities": len(activities),
+            "transport": len(transfers),
+        },
+        "all_modules_returned": all((flights, hotels, activities, transfers)),
+    }
+    print(report)
+    return bool(report["all_modules_returned"])
+
+
 def main() -> None:
     if isinstance(sys.stdout, TextIOWrapper):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -71,11 +116,19 @@ def main() -> None:
     verify.add_argument("--origin", default="TPE")
     verify.add_argument("--destination", default="NRT")
     verify.add_argument("--strict", action="store_true")
+    live = subparsers.add_parser("verify-live-provider")
+    live.add_argument("--origin", default="TPE")
+    live.add_argument("--destination", default="NRT")
+    live.add_argument("--strict", action="store_true")
     args = parser.parse_args()
     if args.command == "set-plan":
         asyncio.run(set_plan(args.email, args.plan))
     elif args.command == "verify-airline-crawlers":
         passed = asyncio.run(verify_airline_crawlers(args.origin, args.destination))
+        if args.strict and not passed:
+            raise SystemExit(1)
+    elif args.command == "verify-live-provider":
+        passed = asyncio.run(verify_live_provider(args.origin, args.destination))
         if args.strict and not passed:
             raise SystemExit(1)
 

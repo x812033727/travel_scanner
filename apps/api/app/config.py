@@ -20,6 +20,12 @@ class Settings(BaseSettings):
     provider_failure_threshold: int = 3
     provider_circuit_seconds: int = 60
     rate_limit_per_minute: int = Field(default=120, ge=1)
+    travel_provider_mode: str = "mock"
+    amadeus_client_id: str | None = None
+    amadeus_client_secret: str | None = None
+    amadeus_env: str = "test"
+    google_maps_api_key: str | None = None
+    next_public_site_url: str = "http://localhost:3000"
     airline_crawler_user_agent: str = (
         "TravelScannerBot/0.1 (+https://github.com/x812033727/travel_scanner)"
     )
@@ -33,6 +39,22 @@ class Settings(BaseSettings):
     @property
     def cors_origins(self) -> list[str]:
         return [origin.strip() for origin in self.api_cors_origins.split(",") if origin.strip()]
+
+    @property
+    def amadeus_base_url(self) -> str:
+        return (
+            "https://api.amadeus.com"
+            if self.amadeus_env.lower() == "production"
+            else "https://test.api.amadeus.com"
+        )
+
+    @property
+    def amadeus_configured(self) -> bool:
+        return bool(self.amadeus_client_id and self.amadeus_client_secret)
+
+    @property
+    def production(self) -> bool:
+        return self.app_env.lower() in {"production", "prod"}
 
 
 @lru_cache

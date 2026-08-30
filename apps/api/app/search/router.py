@@ -17,6 +17,7 @@ from app.db import get_session
 from app.infra import enforce_rate_limit, get_redis
 from app.models import SearchJob, SearchRequest
 from app.problems import AppError
+from app.providers.registry import provider_status
 from app.search.events import stream_key
 from app.search.orchestrator import refresh_saved_offer
 from app.search.schemas import SearchCreate
@@ -33,6 +34,9 @@ async def create_search(
     session: Session,
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
 ) -> dict[str, Any]:
+    status = provider_status()
+    if status.status != "ready":
+        raise AppError(503, "provider_not_configured", status.message)
     await enforce_rate_limit(user.id)
     payload_json = payload.model_dump(mode="json")
     operation, cost = search_operation_cost(payload_json)

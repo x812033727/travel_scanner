@@ -4,9 +4,10 @@ Travel Scanner is a mock-first, API-first travel comparison MVP. It combines
 flights, hotels, activities, and transportation into complete trip plans and
 explains the trade-off between the cheapest, balanced, and comfortable choices.
 
-> Trip-search offers remain deterministic demonstration data. The experimental
-> airline crawler API may read explicitly labelled, non-live public fare pages;
-> it never contacts booking, payment, private inventory, or AI services.
+Trip search supports an explicit mock development mode and an Amadeus-backed
+test or live mode. Production never falls back to mock prices when credentials
+are absent. The experimental airline crawler remains a separate, non-bookable
+public-fare research surface.
 
 ## Architecture and project structure
 
@@ -87,6 +88,17 @@ return provider-specific payloads or secrets to the client.
 The built-in Mock Provider generates stable TPE/Japan examples from a hash of
 the request. Every result includes `is_mock`, retrieval time, expiry time, and a
 non-bookable example URL.
+
+For provider-backed search, set `TRAVEL_PROVIDER_MODE=live` together with
+`AMADEUS_CLIENT_ID`, `AMADEUS_CLIENT_SECRET`, and `AMADEUS_ENV=test` or
+`production`. `GOOGLE_MAPS_API_KEY` is optional and enriches hotels, activities,
+photos, opening hours, and route estimates. Secrets belong in the runtime
+environment and must never be committed. `GET /api/v1/providers/status` reports
+whether live, test, mock, or disabled data is active.
+
+Saved optimized plans include an editable day-by-day itinerary. Owners can
+update it with optimistic version checks, rotate or revoke a secret read-only
+share link, and keep provider-confirmed amounts separate from estimates.
 
 ## Experimental public airline fares
 
