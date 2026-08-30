@@ -490,7 +490,7 @@ export function SearchExperience() {
       {searchId && <section aria-label="搜尋進度" className="mb-7 rounded-3xl border border-[var(--line)] bg-white p-6">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-2"><strong>{progress === 100 ? "分析完成" : "正在組合你的旅程"}</strong><span className="font-mono text-sm text-[var(--muted)]">{progress}%</span></div>
         <div className="h-2 overflow-hidden rounded-full bg-[#e4ebe6]"><div className="h-full rounded-full bg-[var(--teal)] transition-all" style={{ width: `${progress}%` }} /></div>
-        {usageState && <p className={`mt-3 text-sm font-semibold ${usageState.status === "charged" ? "text-[#9d4e3f]" : usageState.status === "released" ? "text-emerald-700" : "text-[var(--teal)]"}`}>{usageState.status === "charged" ? "已成功扣除 1 次" : usageState.status === "released" ? "未取得可用結果，本次未扣次" : "已暫時保留 1 次，完成後才會正式扣除"}</p>}
+        {usageState && <p className={`mt-3 text-sm font-semibold ${usageState.status === "charged" ? "text-[#9d4e3f]" : usageState.status === "released" ? "text-emerald-700" : "text-[var(--teal)]"}`}>{usageState.status === "charged" ? "已成功扣除 1 次" : usageState.status === "released" ? "本次未扣次（保留次數已退回）" : "已暫時保留 1 次，完成後才會正式扣除"}</p>}
         <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">{stages.map(({ key, label, icon: Icon }) => <div key={key} className={`flex items-center gap-2 rounded-xl p-2 text-sm ${done.includes(key) ? "text-[var(--teal)]" : "text-[var(--muted)]"}`}>{done.includes(key) ? <Check size={17} /> : <LoaderCircle size={17} className={busy ? "animate-spin" : ""} />}<Icon size={17} />{label}</div>)}</div>
       </section>}
 

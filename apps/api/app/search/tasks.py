@@ -3,7 +3,7 @@ from uuid import UUID
 
 from sqlalchemy import select
 
-from app.db import SessionFactory
+from app.db import SessionFactory, engine
 from app.infra import get_redis
 from app.models import SearchJob, SearchRequest, UsageReservation
 from app.search.events import publish_event
@@ -47,4 +47,14 @@ async def _run(search_id: UUID) -> None:
 
 
 def run_search_job(search_id: str) -> None:
-    asyncio.run(_run(UUID(search_id)))
+    async def run_and_close_resources() -> None:
+        try:
+            await _run(UUID(search_id))
+        finally:
+            try:
+                await get_redis().aclose()
+            finally:
+                get_redis.cache_clear()
+                await engine.dispose()
+
+    asyncio.run(run_and_close_resources())
