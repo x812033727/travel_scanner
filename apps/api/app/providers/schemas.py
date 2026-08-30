@@ -12,16 +12,36 @@ class FreshnessStatus(StrEnum):
     EXPIRED = "expired"
 
 
+class SourceMode(StrEnum):
+    LIVE = "live"
+    TEST = "test"
+    MOCK = "mock"
+    ESTIMATE = "estimate"
+
+
+class ActionKind(StrEnum):
+    DEEP_LINK = "deep_link"
+    RECHECK = "recheck"
+    NONE = "none"
+
+
 class NormalizedOffer(BaseModel):
     id: UUID
     provider: str
     provider_offer_id: str
     currency: str = "TWD"
-    booking_url: str
+    booking_url: str | None = None
     retrieved_at: datetime
     expires_at: datetime
     freshness_status: FreshnessStatus = FreshnessStatus.FRESH
+    source_mode: SourceMode = SourceMode.MOCK
     is_mock: bool = True
+    is_bookable: bool = False
+    action_kind: ActionKind = ActionKind.NONE
+    images: list[str] = Field(default_factory=list)
+    attributions: list[str] = Field(default_factory=list)
+    attribution_urls: list[str] = Field(default_factory=list)
+    cancellation_policy: str | None = None
 
 
 class FlightSegment(BaseModel):
@@ -52,6 +72,9 @@ class FlightOffer(NormalizedOffer):
     checked_baggage_kg: int
     refundable: bool
     changeable: bool
+    return_departure_time: datetime | None = None
+    return_arrival_time: datetime | None = None
+    stops: int = 0
 
 
 class HotelOffer(NormalizedOffer):
@@ -71,6 +94,12 @@ class HotelOffer(NormalizedOffer):
     breakfast_included: bool
     refundable: bool
     station_walk_minutes: int
+    nightly_price: Decimal | None = None
+    address: str | None = None
+    amenities: list[str] = Field(default_factory=list)
+    review_score: float | None = None
+    review_count: int | None = None
+    distance_to_center_km: float | None = None
 
 
 class ActivityOffer(NormalizedOffer):
@@ -82,6 +111,9 @@ class ActivityOffer(NormalizedOffer):
     price: Decimal
     rating: float
     category: str
+    description: str | None = None
+    address: str | None = None
+    opening_hours: list[str] = Field(default_factory=list)
 
 
 class TransportOffer(NormalizedOffer):
@@ -93,6 +125,7 @@ class TransportOffer(NormalizedOffer):
     duration_minutes: int
     price: Decimal
     convenience_score: float = Field(ge=0, le=100)
+    is_estimated: bool = False
 
 
 Offer = FlightOffer | HotelOffer | ActivityOffer | TransportOffer

@@ -246,6 +246,7 @@ class TripPlan(Timestamped, Base):
     total_price: Mapped[Decimal] = mapped_column(Numeric(14, 2))
     currency: Mapped[str] = mapped_column(String(3), default="TWD")
     data: Mapped[dict[str, Any]] = mapped_column(JSON)
+    version: Mapped[int] = mapped_column(Integer, default=1)
 
 
 class TripPlanItem(Base):
@@ -256,7 +257,28 @@ class TripPlanItem(Base):
     )
     item_type: Mapped[str] = mapped_column(String(32))
     offer_id: Mapped[UUID | None] = mapped_column(nullable=True)
-    data: Mapped[dict[str, Any]] = mapped_column(JSON)
+    day_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    position: Mapped[int] = mapped_column(Integer, default=0)
+    title: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    location_name: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    start_time: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    end_time: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    locked: Mapped[bool] = mapped_column(Boolean, default=False)
+    is_estimated: Mapped[bool] = mapped_column(Boolean, default=False)
+    data: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+
+
+class TripShare(Timestamped, Base):
+    __tablename__ = "trip_shares"
+    __table_args__ = (UniqueConstraint("trip_plan_id", name="uq_trip_share_trip"),)
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    trip_plan_id: Mapped[UUID] = mapped_column(
+        ForeignKey("trip_plans.id", ondelete="CASCADE"), index=True
+    )
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
 
 class OptimizationScoreRecord(Base):

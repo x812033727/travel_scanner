@@ -7,8 +7,11 @@
   --surface: #ffffff;
   --teal: #0d6b68;
   --teal-dark: #074f4d;
+  --teal-soft: #dcefeb;
   --coral: #ed735d;
+  --coral-soft: #fff0eb;
   --line: #dce4dc;
+  --shadow-lg: 0 24px 80px rgba(16, 42, 43, .12);
 }
 
 * { box-sizing: border-box; }
@@ -22,5 +25,6 @@ body {
   font-family: "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
 }
 button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
 a { color: inherit; text-decoration: none; }
 

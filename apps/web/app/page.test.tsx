@@ -7,7 +7,7 @@ vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn(), refresh: 
 describe("home", () => {
   it("shows the primary trip search", () => {
     render(<Home />);
-    expect(screen.getByRole("button", { name: /開始規劃/ })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /比較完整旅程/ })).toBeTruthy();
   });
 });
 
