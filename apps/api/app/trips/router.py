@@ -1,13 +1,14 @@
 import asyncio
 import hashlib
+import json
 import secrets
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from typing import Annotated, Any, cast
 from uuid import UUID, uuid4
 
 from fastapi import APIRouter, Depends, Header
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 from sqlalchemy import delete, func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -30,6 +31,7 @@ from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, Offer, TransportOffer
 from app.search.schemas import SearchCreate
 from app.trips.itinerary import ItineraryItem
+from app.trips.routing import RoutePoint, RouteSegment, RouteService, is_japan_trip
 from app.usage.service import (
     COMMON_LIMITS,
     commit_reservation,
@@ -44,9 +46,33 @@ Session = Annotated[AsyncSession, Depends(get_session)]
 
 
 class SaveTripRequest(BaseModel):
-    search_id: UUID
-    plan_id: UUID
+    source: str = "search"
+    search_id: UUID | None = None
+    plan_id: UUID | None = None
     name: str = Field(min_length=1, max_length=255)
+    destination_name: str | None = Field(default=None, min_length=1, max_length=255)
+    destination_place_id: str | None = Field(default=None, max_length=255)
+    start_date: date | None = None
+    end_date: date | None = None
+    timezone: str | None = Field(default=None, max_length=64)
+    route_preference: str = "FEWER_TRANSFERS"
+
+    @model_validator(mode="after")
+    def validate_source(self) -> "SaveTripRequest":
+        if self.source not in {"search", "blank"}:
+            raise ValueError("source must be search or blank")
+        if self.source == "search" and (self.search_id is None or self.plan_id is None):
+            raise ValueError("search_id and plan_id are required for a search trip")
+        if self.source == "blank":
+            if not self.destination_name or not self.start_date or not self.end_date:
+                raise ValueError("destination_name, start_date and end_date are required")
+            if self.end_date < self.start_date:
+                raise ValueError("end_date must not be before start_date")
+            if (self.end_date - self.start_date).days > 60:
+                raise ValueError("blank trips may be at most 61 days")
+        if self.route_preference not in {"FEWER_TRANSFERS", "LESS_WALKING", "FASTEST"}:
+            raise ValueError("unsupported route preference")
+        return self
 
 
 class ItineraryItemRequest(BaseModel):
@@ -64,11 +90,56 @@ class ItineraryItemRequest(BaseModel):
     locked: bool = False
     is_estimated: bool = False
     data: dict[str, Any] = Field(default_factory=dict)
+    provider_place_id: str | None = Field(default=None, max_length=255)
+    location_source: str | None = Field(default=None, max_length=32)
+    duration_minutes: int | None = Field(default=None, ge=1, le=1440)
+    notes: str | None = Field(default=None, max_length=4000)
+    fixed_time: bool = False
 
 
 class ItineraryUpdateRequest(BaseModel):
     version: int = Field(ge=1)
     items: list[ItineraryItemRequest] = Field(max_length=500)
+    route_preference: str | None = None
+
+    @model_validator(mode="after")
+    def validate_items(self) -> "ItineraryUpdateRequest":
+        if self.route_preference and self.route_preference not in {
+            "FEWER_TRANSFERS",
+            "LESS_WALKING",
+            "FASTEST",
+        }:
+            raise ValueError("unsupported route preference")
+        positions: set[tuple[date, int]] = set()
+        for item in self.items:
+            key = (item.day_date, item.position)
+            if key in positions:
+                raise ValueError("positions must be unique within each day")
+            positions.add(key)
+            if item.start_time and item.end_time and item.end_time <= item.start_time:
+                raise ValueError("end_time must be after start_time")
+        return self
+
+
+class RouteComputeRequest(BaseModel):
+    version: int = Field(ge=1)
+    day_date: date | None = None
+    from_item_id: UUID | None = None
+    to_item_id: UUID | None = None
+    route_preference: str | None = None
+    refresh: bool = False
+
+    @model_validator(mode="after")
+    def validate_scope(self) -> "RouteComputeRequest":
+        if (self.from_item_id is None) != (self.to_item_id is None):
+            raise ValueError("from_item_id and to_item_id must be provided together")
+        if self.route_preference and self.route_preference not in {
+            "FEWER_TRANSFERS",
+            "LESS_WALKING",
+            "FASTEST",
+        }:
+            raise ValueError("unsupported route preference")
+        return self
 
 
 async def limit_for(session: AsyncSession, user_id: UUID, key: str) -> int:
@@ -93,6 +164,11 @@ def item_record(trip_id: UUID, item: ItineraryItem | ItineraryItemRequest) -> Tr
         locked=item.locked,
         is_estimated=item.is_estimated,
         data=item.data,
+        provider_place_id=getattr(item, "provider_place_id", None),
+        location_source=getattr(item, "location_source", None),
+        duration_minutes=getattr(item, "duration_minutes", None),
+        notes=getattr(item, "notes", None),
+        fixed_time=getattr(item, "fixed_time", False),
     )
 
 
@@ -112,6 +188,11 @@ def serialize_item(item: TripPlanItem) -> dict[str, Any]:
         "locked": item.locked,
         "is_estimated": item.is_estimated,
         "data": item.data,
+        "provider_place_id": item.provider_place_id,
+        "location_source": item.location_source,
+        "duration_minutes": item.duration_minutes,
+        "notes": item.notes,
+        "fixed_time": item.fixed_time,
     }
 
 
@@ -152,6 +233,15 @@ async def serialize_trip(
     share = await session.scalar(
         select(TripShare).where(TripShare.trip_plan_id == trip.id, TripShare.revoked_at.is_(None))
     )
+    route_segments: list[dict[str, Any]] = []
+    if include_items:
+        cached_routes = await get_redis().get(f"routes:trip:{trip.id}")
+        if cached_routes:
+            raw = cached_routes.decode() if isinstance(cached_routes, bytes) else str(cached_routes)
+            try:
+                route_segments = cast(list[dict[str, Any]], json.loads(raw))
+            except json.JSONDecodeError:
+                route_segments = []
     return {
         "id": str(trip.id),
         "name": trip.name,
@@ -160,7 +250,14 @@ async def serialize_trip(
         "currency": trip.currency,
         "data": trip.data,
         "version": trip.version,
+        "destination_name": trip.destination_name,
+        "destination_place_id": trip.destination_place_id,
+        "start_date": trip.start_date,
+        "end_date": trip.end_date,
+        "timezone": trip.timezone,
+        "route_preference": trip.route_preference,
         "items": [serialize_item(item) for item in items],
+        "route_segments": route_segments,
         "share_enabled": share is not None,
         "created_at": trip.created_at,
         "updated_at": trip.updated_at,
@@ -174,6 +271,71 @@ async def owned_trip(session: AsyncSession, user_id: UUID, trip_id: UUID) -> Tri
     if trip is None:
         raise AppError(404, "trip_not_found", "Saved trip was not found")
     return trip
+
+
+def route_point(item: TripPlanItem) -> RoutePoint | None:
+    if item.latitude is None or item.longitude is None:
+        return None
+    return RoutePoint(
+        item_id=item.id,
+        name=item.location_name or item.title or item.item_type,
+        latitude=float(item.latitude),
+        longitude=float(item.longitude),
+        provider_place_id=item.provider_place_id,
+    )
+
+
+async def cache_trip_routes(trip_id: UUID, segments: list[RouteSegment]) -> None:
+    redis = get_redis()
+    key = f"routes:trip:{trip_id}"
+    existing: list[dict[str, Any]] = []
+    cached = await redis.get(key)
+    if cached:
+        raw = cached.decode() if isinstance(cached, bytes) else str(cached)
+        try:
+            existing = cast(list[dict[str, Any]], json.loads(raw))
+        except json.JSONDecodeError:
+            existing = []
+    replacements = {(str(row.from_item_id), str(row.to_item_id)) for row in segments}
+    merged = [
+        row
+        for row in existing
+        if (str(row.get("from_item_id")), str(row.get("to_item_id"))) not in replacements
+    ]
+    merged.extend(segment.model_dump(mode="json") for segment in segments)
+    await redis.set(key, json.dumps(merged, ensure_ascii=False), ex=86_400)
+
+
+async def compute_routes_for_rows(
+    trip: TripPlan,
+    rows: list[TripPlanItem],
+    preference: str,
+    *,
+    refresh: bool = False,
+) -> tuple[list[RouteSegment], list[tuple[UUID, UUID]]]:
+    pairs: list[tuple[RoutePoint, RoutePoint, datetime | None]] = []
+    pair_ids: list[tuple[UUID, UUID]] = []
+    for first, second in zip(rows, rows[1:], strict=False):
+        origin, destination = route_point(first), route_point(second)
+        if origin is None or destination is None:
+            pair_ids.append((first.id, second.id))
+            continue
+        pairs.append((origin, destination, first.end_time or first.start_time))
+    service = RouteService(get_redis())
+    results = await service.compute_many(
+        pairs,
+        preference,
+        japan=is_japan_trip(trip.timezone, trip.destination_name, trip.data),
+        refresh=refresh,
+    )
+    segments = [result for result in results if result is not None]
+    failed = [
+        (pair[0].item_id, pair[1].item_id)
+        for pair, result in zip(pairs, results, strict=True)
+        if result is None
+    ]
+    failed.extend(pair_ids)
+    return segments, failed
 
 
 async def run_provider_module(
@@ -259,6 +421,37 @@ async def save_trip(
     )
     if int(count or 0) >= await limit_for(session, user.id, "saved_trips"):
         raise AppError(403, "trip_limit_reached", "已達所有會員共用的 20 筆儲存旅程上限")
+    if payload.source == "blank":
+        destination = payload.destination_name or "未命名目的地"
+        japan_tokens = ("日本", "東京", "大阪", "京都", "北海道", "沖繩", "福岡", "名古屋")
+        timezone = payload.timezone or (
+            "Asia/Tokyo" if any(token in destination for token in japan_tokens) else "UTC"
+        )
+        trip = TripPlan(
+            user_id=user.id,
+            search_id=None,
+            name=payload.name,
+            mode="manual",
+            total_price=Decimal(0),
+            currency="TWD",
+            data={
+                "source": "blank",
+                "destination_city": destination,
+                "destination_country": "日本" if timezone == "Asia/Tokyo" else None,
+            },
+            version=1,
+            destination_name=destination,
+            destination_place_id=payload.destination_place_id,
+            start_date=payload.start_date,
+            end_date=payload.end_date,
+            timezone=timezone,
+            route_preference=payload.route_preference,
+        )
+        session.add(trip)
+        await session.commit()
+        await session.refresh(trip)
+        return await serialize_trip(session, trip)
+
     search = await session.scalar(
         select(SearchRequest).where(
             SearchRequest.id == payload.search_id, SearchRequest.user_id == user.id
@@ -276,6 +469,15 @@ async def save_trip(
     )
     if plan is None:
         raise AppError(404, "plan_not_found", "Optimized plan was not found")
+    itinerary_days = cast(list[dict[str, Any]], plan.get("itinerary", []))
+    first_item_data = next(
+        (
+            cast(dict[str, Any], raw_item.get("data") or {})
+            for raw_day in itinerary_days
+            for raw_item in cast(list[dict[str, Any]], raw_day.get("items", []))
+        ),
+        {},
+    )
     trip = TripPlan(
         user_id=user.id,
         search_id=search.id,
@@ -284,10 +486,25 @@ async def save_trip(
         total_price=Decimal(str(plan["total_cost"]["total_cost"])),
         data=plan,
         version=1,
+        destination_name=first_item_data.get("destination_city"),
+        start_date=next(
+            (date.fromisoformat(str(day["date"])) for day in itinerary_days if day.get("date")),
+            None,
+        ),
+        end_date=next(
+            (
+                date.fromisoformat(str(day["date"]))
+                for day in reversed(itinerary_days)
+                if day.get("date")
+            ),
+            None,
+        ),
+        timezone=first_item_data.get("destination_timezone", "UTC"),
+        route_preference="FEWER_TRANSFERS",
     )
     session.add(trip)
     await session.flush()
-    for raw_day in plan.get("itinerary", []):
+    for raw_day in itinerary_days:
         for raw_item in raw_day.get("items", []):
             session.add(item_record(trip.id, ItineraryItem.model_validate(raw_item)))
     await session.commit()
@@ -323,6 +540,11 @@ async def update_itinerary(
     session: Session,
 ) -> dict[str, Any]:
     trip = await owned_trip(session, user.id, trip_id)
+    if trip.start_date and any(
+        item.day_date < trip.start_date or (trip.end_date and item.day_date > trip.end_date)
+        for item in payload.items
+    ):
+        raise AppError(422, "itinerary_date_out_of_range", "行程項目日期超出旅程範圍")
     next_data = {**trip.data, "edited": True}
     next_version = await session.scalar(
         update(TripPlan)
@@ -340,9 +562,199 @@ async def update_itinerary(
     await session.execute(delete(TripPlanItem).where(TripPlanItem.trip_plan_id == trip.id))
     for item in payload.items:
         session.add(item_record(trip.id, item))
+    if payload.route_preference:
+        trip.route_preference = payload.route_preference
     await session.commit()
+    await get_redis().delete(f"routes:trip:{trip.id}")
     await session.refresh(trip)
     return await serialize_trip(session, trip)
+
+
+@router.post("/{trip_id}/routes/compute")
+async def compute_trip_routes(
+    trip_id: UUID,
+    payload: RouteComputeRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    trip = await owned_trip(session, user.id, trip_id)
+    if trip.version != payload.version:
+        raise AppError(409, "trip_version_conflict", "Trip changed; reload before routing")
+    rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    if payload.from_item_id and payload.to_item_id:
+        selected = [
+            item
+            for item_id in (payload.from_item_id, payload.to_item_id)
+            for item in rows
+            if item.id == item_id
+        ]
+        if len(selected) != 2 or selected[0].day_date != selected[1].day_date:
+            raise AppError(422, "route_items_invalid", "起點與終點必須是同一天的行程項目")
+        rows = selected
+    elif payload.day_date:
+        rows = [item for item in rows if item.day_date == payload.day_date]
+    if len(rows) < 2:
+        raise AppError(422, "route_items_insufficient", "至少需要兩個有位置的行程項目")
+    preference = payload.route_preference or trip.route_preference
+    segments, failed = await compute_routes_for_rows(
+        trip, rows, preference, refresh=payload.refresh
+    )
+    if not segments:
+        raise AppError(503, "route_unavailable", "目前無法取得可用路線，請稍後再試")
+    trip.route_preference = preference
+    await session.commit()
+    await cache_trip_routes(trip.id, segments)
+    return {
+        "segments": [segment.model_dump(mode="json") for segment in segments],
+        "failed_pairs": [
+            {"from_item_id": str(origin), "to_item_id": str(destination)}
+            for origin, destination in failed
+        ],
+        "partial": bool(failed),
+    }
+
+
+@router.post("/{trip_id}/routes/refresh")
+async def refresh_trip_routes(
+    trip_id: UUID,
+    payload: RouteComputeRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    return await compute_trip_routes(
+        trip_id,
+        payload.model_copy(update={"refresh": True}),
+        user,
+        session,
+    )
+
+
+@router.post("/{trip_id}/itinerary/optimize")
+async def optimize_trip_itinerary(
+    trip_id: UUID,
+    payload: RouteComputeRequest,
+    user: CurrentUser,
+    session: Session,
+    idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
+) -> dict[str, Any]:
+    trip = await owned_trip(session, user.id, trip_id)
+    reservation, created = await reserve_use(
+        session,
+        user.id,
+        idempotency_key,
+        "itinerary_optimization",
+        f"行程動線最佳化：{trip.name}",
+    )
+    if not created and reservation.resource_id == trip.id:
+        replay = await serialize_trip(session, trip)
+        replay["usage"] = usage_status(reservation).model_dump()
+        return replay
+    reservation.resource_id = trip.id
+    try:
+        if trip.version != payload.version:
+            raise AppError(409, "trip_version_conflict", "Trip changed; reload before optimizing")
+        all_rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+        target_days = (
+            [payload.day_date]
+            if payload.day_date
+            else sorted({row.day_date for row in all_rows if row.day_date is not None})
+        )
+        changed = False
+        any_route = False
+        preference = payload.route_preference or trip.route_preference
+        final_segments: list[RouteSegment] = []
+        for target_day in target_days:
+            day_rows = [row for row in all_rows if row.day_date == target_day]
+            movable_slots = [
+                index
+                for index, row in enumerate(day_rows)
+                if not row.locked and not row.fixed_time and route_point(row) is not None
+            ]
+            if len(movable_slots) < 2:
+                continue
+            if len(movable_slots) > 12:
+                raise AppError(
+                    422,
+                    "itinerary_optimization_limit",
+                    "每天最多最佳化 12 個可移動地點，請先鎖定部分項目",
+                )
+            movable = [day_rows[index] for index in movable_slots]
+            point_by_id = {
+                row.id: point for row in movable if (point := route_point(row)) is not None
+            }
+            pairs = [
+                (point_by_id[first.id], point_by_id[second.id], first.end_time or first.start_time)
+                for first in movable
+                for second in movable
+                if first.id != second.id
+            ]
+            results = await RouteService(get_redis()).compute_many(
+                pairs,
+                preference,
+                japan=is_japan_trip(trip.timezone, trip.destination_name, trip.data),
+            )
+            costs = {
+                (segment.from_item_id, segment.to_item_id): segment.duration_minutes
+                for segment in results
+                if segment is not None
+            }
+            if not costs:
+                continue
+            any_route = True
+            remaining = movable.copy()
+            ordered = [remaining.pop(0)]
+            while remaining:
+                previous = ordered[-1]
+                next_row = min(
+                    remaining,
+                    key=lambda row: costs.get((previous.id, row.id), 10**9),
+                )
+                ordered.append(next_row)
+                remaining.remove(next_row)
+            if [row.id for row in ordered] != [row.id for row in movable]:
+                changed = True
+            for slot, row in zip(movable_slots, ordered, strict=True):
+                day_rows[slot] = row
+            for position, row in enumerate(day_rows):
+                row.position = position
+            segments, _ = await compute_routes_for_rows(trip, day_rows, preference)
+            by_pair = {(segment.from_item_id, segment.to_item_id): segment for segment in segments}
+            for previous, following in zip(day_rows, day_rows[1:], strict=False):
+                segment = by_pair.get((previous.id, following.id))
+                if (
+                    segment is None
+                    or previous.end_time is None
+                    or following.locked
+                    or following.fixed_time
+                ):
+                    continue
+                following.start_time = previous.end_time + timedelta(
+                    minutes=segment.duration_minutes
+                )
+                following.end_time = following.start_time + timedelta(
+                    minutes=following.duration_minutes or 60
+                )
+            final_segments.extend(segments)
+        if not any_route or not final_segments:
+            raise AppError(
+                503,
+                "itinerary_optimization_unavailable",
+                "沒有取得可套用的完整動線結果",
+            )
+        trip.route_preference = preference
+        trip.data = {**trip.data, "route_optimized": True, "route_order_changed": changed}
+        trip.version += 1
+        await commit_reservation(session, reservation, trip.id)
+        await session.commit()
+        await cache_trip_routes(trip.id, final_segments)
+        await session.refresh(trip)
+        result = await serialize_trip(session, trip)
+        result["usage"] = usage_status(reservation).model_dump()
+        return result
+    except Exception:
+        await release_reservation(session, reservation, "itinerary_optimization_failed")
+        await session.commit()
+        raise
 
 
 @router.delete("/{trip_id}", status_code=204)
@@ -472,7 +884,14 @@ async def shared_trip(token: str, session: Session) -> dict[str, Any]:
             "currency",
             "data",
             "version",
+            "destination_name",
+            "destination_place_id",
+            "start_date",
+            "end_date",
+            "timezone",
+            "route_preference",
             "items",
+            "route_segments",
             "updated_at",
         )
     }

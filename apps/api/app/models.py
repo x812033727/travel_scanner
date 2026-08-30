@@ -254,6 +254,12 @@ class TripPlan(Timestamped, Base):
     currency: Mapped[str] = mapped_column(String(3), default="TWD")
     data: Mapped[dict[str, Any]] = mapped_column(JSON)
     version: Mapped[int] = mapped_column(Integer, default=1)
+    destination_name: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    destination_place_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    start_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    end_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    timezone: Mapped[str] = mapped_column(String(64), default="UTC")
+    route_preference: Mapped[str] = mapped_column(String(32), default="FEWER_TRANSFERS")
 
 
 class TripPlanItem(Base):
@@ -275,6 +281,11 @@ class TripPlanItem(Base):
     locked: Mapped[bool] = mapped_column(Boolean, default=False)
     is_estimated: Mapped[bool] = mapped_column(Boolean, default=False)
     data: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    provider_place_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    location_source: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    duration_minutes: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    fixed_time: Mapped[bool] = mapped_column(Boolean, default=False)
 
 
 class TripShare(Timestamped, Base):

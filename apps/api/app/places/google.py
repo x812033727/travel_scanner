@@ -15,6 +15,8 @@ from app.trips.itinerary import ItineraryDay
 
 class GoogleTravelService:
     text_search_url = "https://places.googleapis.com/v1/places:searchText"
+    autocomplete_url = "https://places.googleapis.com/v1/places:autocomplete"
+    place_details_url = "https://places.googleapis.com/v1/places"
     routes_url = "https://routes.googleapis.com/directions/v2:computeRoutes"
 
     def __init__(
@@ -53,6 +55,86 @@ class GoogleTravelService:
             return cast(dict[str, Any], response.json())
         except httpx.HTTPError:
             return {}
+
+    async def _get(self, url: str, *, field_mask: str) -> dict[str, Any]:
+        if not self.settings.google_maps_api_key:
+            return {}
+        headers = {
+            "X-Goog-Api-Key": self.settings.google_maps_api_key,
+            "X-Goog-FieldMask": field_mask,
+        }
+        try:
+            if self.client is not None:
+                response = await self.client.get(url, headers=headers)
+            else:
+                async with httpx.AsyncClient(
+                    timeout=self.settings.provider_timeout_seconds
+                ) as client:
+                    response = await client.get(url, headers=headers)
+            response.raise_for_status()
+            return cast(dict[str, Any], response.json())
+        except httpx.HTTPError:
+            return {}
+
+    async def autocomplete(
+        self, query: str, session_token: str | None = None
+    ) -> list[dict[str, Any]]:
+        if not self.configured or len(query.strip()) < 2:
+            return []
+        body: dict[str, Any] = {"input": query.strip(), "languageCode": "zh-TW"}
+        if session_token:
+            body["sessionToken"] = session_token
+        payload = await self._post(
+            self.autocomplete_url,
+            json_data=body,
+            field_mask=(
+                "suggestions.placePrediction.placeId,suggestions.placePrediction.text,"
+                "suggestions.placePrediction.structuredFormat"
+            ),
+        )
+        results: list[dict[str, Any]] = []
+        for suggestion in cast(list[dict[str, Any]], payload.get("suggestions", [])):
+            prediction = cast(dict[str, Any], suggestion.get("placePrediction") or {})
+            text = cast(dict[str, Any], prediction.get("text") or {})
+            structured = cast(dict[str, Any], prediction.get("structuredFormat") or {})
+            main_text = cast(dict[str, Any], structured.get("mainText") or {})
+            secondary_text = cast(dict[str, Any], structured.get("secondaryText") or {})
+            if prediction.get("placeId"):
+                results.append(
+                    {
+                        "provider": "google_places",
+                        "place_id": prediction["placeId"],
+                        "name": main_text.get("text") or text.get("text") or query,
+                        "address": secondary_text.get("text"),
+                    }
+                )
+        return results
+
+    async def place_details(self, place_id: str) -> dict[str, Any]:
+        payload = await self._get(
+            f"{self.place_details_url}/{quote(place_id, safe='')}",
+            field_mask=(
+                "id,displayName,formattedAddress,location,googleMapsUri,"
+                "regularOpeningHours,entrances"
+            ),
+        )
+        if not payload:
+            return {}
+        display = cast(dict[str, Any], payload.get("displayName") or {})
+        location = cast(dict[str, Any], payload.get("location") or {})
+        regular = cast(dict[str, Any], payload.get("regularOpeningHours") or {})
+        return {
+            "provider": "google_places",
+            "place_id": payload.get("id") or place_id,
+            "name": display.get("text") or payload.get("formattedAddress") or place_id,
+            "address": payload.get("formattedAddress"),
+            "latitude": location.get("latitude"),
+            "longitude": location.get("longitude"),
+            "google_maps_url": payload.get("googleMapsUri"),
+            "opening_hours": regular.get("weekdayDescriptions", []),
+            "entrances": payload.get("entrances", []),
+            "attribution": "Google Maps",
+        }
 
     async def search_place(
         self, name: str, latitude: float | None, longitude: float | None
@@ -248,11 +330,7 @@ class GoogleTravelService:
         payload = await self._post(
             self.routes_url,
             json_data={
-                "origin": {
-                    "location": {
-                        "latLng": {"latitude": origin[0], "longitude": origin[1]}
-                    }
-                },
+                "origin": {"location": {"latLng": {"latitude": origin[0], "longitude": origin[1]}}},
                 "destination": {
                     "location": {
                         "latLng": {

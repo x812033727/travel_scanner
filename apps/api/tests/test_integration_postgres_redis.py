@@ -1,5 +1,6 @@
 import asyncio
 import os
+from datetime import UTC, datetime
 from uuid import uuid4
 
 import pytest
@@ -10,6 +11,7 @@ from sqlalchemy.exc import DBAPIError
 from app.db import SessionFactory
 from app.main import app
 from app.models import SearchRequest, UsageAccount, UsageLedger, UsageReservation, User
+from app.trips.routing import RouteSegment, RouteService
 from app.usage.service import (
     commit_reservation,
     grant_package,
@@ -181,9 +183,7 @@ async def test_concurrent_settlement_and_global_package_reference() -> None:
         first_user = await session.scalar(select(User).where(User.email == first_email))
         second_user = await session.scalar(select(User).where(User.email == second_email))
         assert first_user is not None and second_user is not None
-        ledger, created = await grant_package(
-            session, first_user.id, "PACK_10", external_reference
-        )
+        ledger, created = await grant_package(session, first_user.id, "PACK_10", external_reference)
         assert created and ledger.amount == 10
         await session.commit()
         duplicate, created = await grant_package(
@@ -289,3 +289,138 @@ async def test_trip_edit_share_and_revoke_flow() -> None:
         revoked = await client.delete(f"/api/v1/trips/{trip['id']}/share", headers=headers)
         assert revoked.status_code == 204
         assert (await client.get(f"/api/v1/shared-trips/{token_value}")).status_code == 404
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_blank_trip_creation_and_structured_itinerary_fields(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    email = f"blank-trip-{uuid4()}@example.com"
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        registered = await client.post(
+            "/api/v1/auth/register",
+            json={"email": email, "password": "integration-password-123"},
+        )
+        token = registered.json()["access_token"]
+        headers = {"Authorization": f"Bearer {token}"}
+        created = await client.post(
+            "/api/v1/trips",
+            headers=headers,
+            json={
+                "source": "blank",
+                "name": "東京自由行",
+                "destination_name": "日本東京",
+                "destination_place_id": "tokyo-place",
+                "start_date": "2026-11-10",
+                "end_date": "2026-11-12",
+                "route_preference": "FEWER_TRANSFERS",
+            },
+        )
+        assert created.status_code == 201
+        trip = created.json()
+        assert trip["mode"] == "manual"
+        assert trip["timezone"] == "Asia/Tokyo"
+        assert trip["items"] == []
+        item_id = str(uuid4())
+        second_item_id = str(uuid4())
+        third_item_id = str(uuid4())
+        updated = await client.put(
+            f"/api/v1/trips/{trip['id']}/itinerary",
+            headers=headers,
+            json={
+                "version": 1,
+                "items": [
+                    {
+                        "id": item_id,
+                        "item_type": "custom",
+                        "day_date": "2026-11-11",
+                        "position": 0,
+                        "title": "淺草寺",
+                        "location_name": "東京都台東區淺草",
+                        "latitude": 35.7148,
+                        "longitude": 139.7967,
+                        "provider_place_id": "asakusa-place",
+                        "location_source": "google_places",
+                        "duration_minutes": 90,
+                        "notes": "雷門集合",
+                        "fixed_time": True,
+                        "locked": False,
+                        "is_estimated": False,
+                        "data": {},
+                    },
+                    {
+                        "id": third_item_id,
+                        "item_type": "custom",
+                        "day_date": "2026-11-11",
+                        "position": 2,
+                        "title": "上野公園",
+                        "location_name": "東京都台東區上野公園",
+                        "latitude": 35.7142,
+                        "longitude": 139.7733,
+                        "provider_place_id": "ueno-place",
+                        "location_source": "google_places",
+                        "duration_minutes": 60,
+                        "locked": False,
+                        "is_estimated": False,
+                        "data": {},
+                    },
+                    {
+                        "id": second_item_id,
+                        "item_type": "custom",
+                        "day_date": "2026-11-11",
+                        "position": 1,
+                        "title": "晴空塔",
+                        "location_name": "東京都墨田區押上",
+                        "latitude": 35.7101,
+                        "longitude": 139.8107,
+                        "provider_place_id": "skytree-place",
+                        "location_source": "google_places",
+                        "duration_minutes": 60,
+                        "locked": False,
+                        "is_estimated": False,
+                        "data": {},
+                    },
+                ],
+            },
+        )
+        assert updated.status_code == 200
+        saved_item = updated.json()["items"][0]
+        assert saved_item["provider_place_id"] == "asakusa-place"
+        assert saved_item["duration_minutes"] == 90
+        assert saved_item["fixed_time"] is True
+
+        async def routes(
+            _: RouteService,
+            pairs: list[tuple[object, object, object]],
+            _preference: str,
+            **_kwargs: object,
+        ) -> list[RouteSegment]:
+            return [
+                RouteSegment(
+                    from_item_id=pair[0].item_id,  # type: ignore[attr-defined]
+                    to_item_id=pair[1].item_id,  # type: ignore[attr-defined]
+                    provider="test",
+                    attribution="test",
+                    generated_at=datetime.now(UTC),
+                    duration_minutes=12,
+                )
+                for pair in pairs
+            ]
+
+        monkeypatch.setattr(RouteService, "compute_many", routes)
+        idempotency_key = f"route-optimize-{uuid4()}"
+        optimized = await client.post(
+            f"/api/v1/trips/{trip['id']}/itinerary/optimize",
+            headers={**headers, "Idempotency-Key": idempotency_key},
+            json={"version": updated.json()["version"], "day_date": "2026-11-11"},
+        )
+        assert optimized.status_code == 200
+        assert optimized.json()["usage"]["status"] == "charged"
+        replay = await client.post(
+            f"/api/v1/trips/{trip['id']}/itinerary/optimize",
+            headers={**headers, "Idempotency-Key": idempotency_key},
+            json={"version": updated.json()["version"], "day_date": "2026-11-11"},
+        )
+        assert replay.status_code == 200
+        assert replay.json()["usage"]["reference"] == optimized.json()["usage"]["reference"]

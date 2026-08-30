@@ -8,10 +8,41 @@ from pydantic import BaseModel, Field
 from app.auth.service import CurrentUser
 from app.config import get_settings
 from app.destinations.catalog import DESTINATIONS
+from app.infra import get_redis
+from app.places.google import GoogleTravelService
 from app.problems import AppError
 
 router = APIRouter(prefix="/destinations", tags=["destinations"])
 public_router = APIRouter(prefix="/places", tags=["places"])
+
+
+@public_router.get("/autocomplete")
+async def autocomplete_places(
+    user: CurrentUser,
+    q: str,
+    session_token: str | None = None,
+) -> list[dict[str, Any]]:
+    _ = user
+    if len(q.strip()) < 2 or len(q) > 120:
+        raise AppError(422, "invalid_place_query", "地點關鍵字須為 2 至 120 個字元")
+    if session_token is not None and not 8 <= len(session_token) <= 128:
+        raise AppError(422, "invalid_session_token", "地點搜尋工作階段代碼格式錯誤")
+    return await GoogleTravelService(get_redis()).autocomplete(q, session_token)
+
+
+@public_router.get("/{provider}/{place_id}")
+async def get_place_details(
+    provider: str,
+    place_id: str,
+    user: CurrentUser,
+) -> dict[str, Any]:
+    _ = user
+    if provider != "google_places":
+        raise AppError(404, "place_provider_not_found", "不支援的地點來源")
+    result = await GoogleTravelService(get_redis()).place_details(place_id)
+    if not result:
+        raise AppError(404, "place_not_found", "找不到這個地點")
+    return result
 
 
 @public_router.get("/photo")
