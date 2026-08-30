@@ -57,7 +57,9 @@ describe("SearchWorkbench", () => {
     const url = new URL(push.mock.calls[0][0], "https://travel.test");
     expect(url.searchParams.get("destination")).toBe("HKT");
     expect(url.searchParams.get("children_ages")).toBe("8,12");
+    expect(url.searchParams.get("interests")).toContain("beach");
     expect(url.searchParams.get("accepted_property_types")).toBe("hotel,vacation_rental");
     expect(url.searchParams.get("preferred_areas")).toBe("普吉老城");
+    expect(url.searchParams.get("include_airbnb")).toBe("true");
   });
 });

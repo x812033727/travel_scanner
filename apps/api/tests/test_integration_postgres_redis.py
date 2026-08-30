@@ -7,9 +7,19 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy import func, select, update
 from sqlalchemy.exc import DBAPIError
 
-from app.db import SessionFactory
+from app.db import SessionFactory, engine
+from app.infra import get_redis
 from app.main import app
-from app.models import SearchRequest, UsageAccount, UsageLedger, UsageReservation, User
+from app.models import (
+    SearchJob,
+    SearchRequest,
+    UsageAccount,
+    UsageLedger,
+    UsageReservation,
+    User,
+)
+from app.search.orchestrator import orchestrate_search
+from app.search.tasks import run_search_job
 from app.usage.service import (
     commit_reservation,
     grant_package,
@@ -72,6 +82,126 @@ async def test_registration_and_concurrent_idempotent_reservation() -> None:
             ("PACK_30", 30, 499, False, False),
             ("PACK_100", 100, 1299, False, False),
         ]
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_concurrent_provider_search_persists_results_without_sharing_session_work() -> None:
+    email = f"search-orchestrator-{uuid4()}@example.com"
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        registered = await client.post(
+            "/api/v1/auth/register",
+            json={"email": email, "password": "integration-password-123"},
+        )
+        assert registered.status_code == 201
+
+    request_json = {
+        "trip_type": "round_trip",
+        "origin": "TPE",
+        "destination": "NRT",
+        "departure_date": "2026-11-10",
+        "return_date": "2026-11-15",
+        "travelers": {"adults": 2, "children": 0, "children_ages": [], "rooms": 1},
+        "modules": ["flight", "hotel"],
+        "preferences": {},
+    }
+    async with SessionFactory() as session:
+        user = await session.scalar(select(User).where(User.email == email))
+        assert user is not None
+        reservation, created = await reserve_use(
+            session,
+            user.id,
+            f"orchestrator-{uuid4()}",
+            "travel_search",
+            "旅程查詢 TPE → NRT",
+        )
+        assert created
+        search = SearchRequest(
+            user_id=user.id,
+            operation="full_trip_optimization",
+            request_json=request_json,
+        )
+        session.add(search)
+        await session.flush()
+        reservation.resource_id = search.id
+        session.add(SearchJob(search_id=search.id))
+        await session.commit()
+        search_id = search.id
+
+    async with SessionFactory() as session:
+        await orchestrate_search(session, search_id)
+
+    async with SessionFactory() as session:
+        completed = await session.get(SearchRequest, search_id)
+        settled = await session.scalar(
+            select(UsageReservation).where(UsageReservation.resource_id == search_id)
+        )
+        assert completed is not None
+        assert completed.status == "completed"
+        assert set(completed.result_json["modules"]) == {"flight", "hotel"}
+        assert completed.result_json["modules"]["hotel"]
+        assert settled is not None and settled.status == "committed"
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_windows_style_worker_runs_two_jobs_on_separate_event_loops() -> None:
+    email = f"sequential-worker-{uuid4()}@example.com"
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        registered = await client.post(
+            "/api/v1/auth/register",
+            json={"email": email, "password": "integration-password-123"},
+        )
+        assert registered.status_code == 201
+
+    search_ids = []
+    async with SessionFactory() as session:
+        user = await session.scalar(select(User).where(User.email == email))
+        assert user is not None
+        for index in range(2):
+            reservation, created = await reserve_use(
+                session,
+                user.id,
+                f"sequential-worker-{index}-{uuid4()}",
+                "travel_search",
+                "連續旅程查詢 TPE → NRT",
+            )
+            assert created
+            search = SearchRequest(
+                user_id=user.id,
+                operation="full_trip_optimization",
+                request_json={
+                    "trip_type": "round_trip",
+                    "origin": "TPE",
+                    "destination": "NRT",
+                    "departure_date": "2026-11-10",
+                    "return_date": "2026-11-15",
+                    "travelers": {
+                        "adults": 2,
+                        "children": 0,
+                        "children_ages": [],
+                        "rooms": 1,
+                    },
+                    "modules": ["hotel"],
+                    "preferences": {},
+                },
+            )
+            session.add(search)
+            await session.flush()
+            reservation.resource_id = search.id
+            session.add(SearchJob(search_id=search.id))
+            search_ids.append(search.id)
+        await session.commit()
+
+    await engine.dispose()
+    await get_redis().aclose()
+    get_redis.cache_clear()
+    for search_id in search_ids:
+        await asyncio.to_thread(run_search_job, str(search_id))
+
+    async with SessionFactory() as session:
+        completed = [await session.get(SearchRequest, search_id) for search_id in search_ids]
+        assert all(search is not None and search.status == "completed" for search in completed)
 
 
 @pytest.mark.asyncio(loop_scope="module")

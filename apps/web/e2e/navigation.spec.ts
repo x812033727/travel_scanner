@@ -40,7 +40,32 @@ test("Japan Korea Thailand workbench carries structured preferences", async ({ p
   ]);
   await expect(page).toHaveURL(/children_ages=8%2C8/);
   await expect(page).toHaveURL(/breakfast_required=true/);
+  await expect(page).toHaveURL(/include_airbnb=true/);
   await expect(page).toHaveURL(/accepted_property_types=hotel%2Cvacation_rental/);
+});
+
+test("Airbnb official search is available without running the paid comparison", async ({ page }) => {
+  await page.route("**/api/travel/providers/status", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({
+      provider: "amadeus",
+      mode: "test",
+      status: "ready",
+      modules: ["flight", "hotel", "activities", "transport"],
+      message: "供應商測試資料已啟用",
+    }),
+  }));
+  await page.goto("/search?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=2&children=1&rooms=1&preferred_area=%E6%96%B0%E5%AE%BF&include_airbnb=true");
+  const link = page.getByRole("link", { name: /Airbnb 官方外站搜尋/ });
+  await expect(link).toBeVisible();
+  const href = await link.getAttribute("href");
+  expect(href).toContain("https://www.airbnb.com/s/");
+  expect(href).toContain("checkin=2026-11-10");
+  expect(href).toContain("checkout=2026-11-15");
+  expect(href).toContain("adults=2");
+  expect(href).toContain("children=1");
+  await expect(page.getByText(/Airbnb 官方外站搜尋不扣次/)).toBeVisible();
 });
 
 test("search criteria can be revised before running a new comparison", async ({ page }) => {
