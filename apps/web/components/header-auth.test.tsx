@@ -18,7 +18,7 @@ describe("header auth", () => {
   });
 
   it("shows the account email and logout button when authenticated", async () => {
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(ok({ id: "u1", email: "user@example.com", plan: "PRO" })));
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(ok({ id: "u1", email: "user@example.com" })));
     render(<HeaderAuth />);
     expect(await screen.findByRole("button", { name: "登出" })).toBeTruthy();
     expect(screen.getByText("user@example.com")).toBeTruthy();

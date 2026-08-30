@@ -27,6 +27,7 @@ export type Trip = {
   share_enabled?: boolean;
   created_at?: string;
   updated_at?: string;
+  usage?: { status: "reserved" | "charged" | "released"; uses: number; reference: string };
 };
 
 export function formatTime(value?: string | null) {

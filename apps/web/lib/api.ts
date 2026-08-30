@@ -1,3 +1,14 @@
+export class ApiError extends Error {
+  constructor(
+    message: string,
+    readonly status: number,
+    readonly code?: string,
+  ) {
+    super(message);
+    this.name = "ApiError";
+  }
+}
+
 export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`/api/travel${path}`, {
     ...init,
@@ -6,10 +17,18 @@ export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   });
   if (!response.ok) {
     const problem = await response.json().catch(() => ({ detail: "發生未知錯誤" }));
-    throw new Error(problem.detail || `Request failed (${response.status})`);
+    throw new ApiError(
+      problem.detail || `Request failed (${response.status})`,
+      response.status,
+      problem.code,
+    );
   }
   if (response.status === 204) return undefined as T;
   return response.json() as Promise<T>;
+}
+
+export function isUsageInsufficient(reason: unknown): boolean {
+  return reason instanceof ApiError && reason.code === "insufficient_uses";
 }
 
 export const twd = new Intl.NumberFormat("zh-TW", { style: "currency", currency: "TWD", maximumFractionDigits: 0 });

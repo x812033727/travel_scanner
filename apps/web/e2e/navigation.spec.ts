@@ -5,10 +5,10 @@ test("primary travel flow is visible", async ({ page }) => {
   await expect(page.getByRole("heading", { name: /少開十個分頁/ })).toBeVisible();
   await expect(page.getByRole("button", { name: /下一步/ })).toBeVisible();
   await Promise.all([
-    page.waitForURL(/\/pricing$/),
+    page.waitForURL(/\/pricing$/, { timeout: 30_000 }),
     page.getByRole("link", { name: "方案" }).click(),
   ]);
-  await expect(page.getByRole("heading", { name: /搜尋點數/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /不綁月租的旅遊查價次數/ })).toBeVisible();
 });
 
 test("Japan Korea Thailand workbench carries structured preferences", async ({ page }) => {

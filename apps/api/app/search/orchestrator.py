@@ -28,7 +28,7 @@ from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, Offer, TransportOffer
 from app.search.events import publish_event
 from app.search.schemas import SearchCreate
-from app.usage.service import commit_reservation
+from app.usage.service import commit_reservation, release_reservation, usage_status
 
 MODULE_PROGRESS = {"flight": 25, "hotel": 45, "activities": 62, "transport": 78}
 
@@ -123,8 +123,6 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
     reservation = await session.scalar(
         select(UsageReservation).where(UsageReservation.resource_id == search_id)
     )
-    if reservation is not None and reservation.status == "reserved":
-        await commit_reservation(session, reservation, search_id)
     if job:
         job.status = "running"
     await session.commit()
@@ -140,13 +138,19 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
         if job:
             job.status = "failed"
             job.error = status.message
+        if reservation is not None:
+            await release_reservation(session, reservation, "provider_unavailable")
         await session.commit()
         await publish_event(
             redis,
             search_id,
             "search.failed",
             100,
-            {"status": "failed", "warnings": [status.message]},
+            {
+                "status": "failed",
+                "warnings": [status.message],
+                "usage": usage_status(reservation).model_dump() if reservation else None,
+            },
         )
         return
     results: dict[str, list[dict[str, Any]]] = {}
@@ -213,7 +217,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
         await session.commit()
 
     plans: list[dict[str, Any]] = []
-    if results:
+    if any(results.values()):
         flights = [FlightOffer.model_validate(item) for item in results.get("flight", [])]
         hotels = [HotelOffer.model_validate(item) for item in results.get("hotel", [])]
         activities = [ActivityOffer.model_validate(item) for item in results.get("activities", [])]
@@ -225,16 +229,30 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
             )
         plans = [plan.model_dump(mode="json") for plan in optimized]
         await publish_event(redis, search_id, "optimization.completed", 90, {"plans": plans})
-    search.status = "completed" if results else "failed"
+    has_usable_result = any(results.values()) or bool(plans)
+    search.status = "completed" if has_usable_result else "failed"
     search.progress = 100
     search.result_json = {"modules": results, "plans": plans}
     search.warnings_json = warnings
     if job:
         job.status = search.status
+    if reservation is not None:
+        if has_usable_result:
+            await commit_reservation(session, reservation, search_id)
+        else:
+            await release_reservation(session, reservation, "no_usable_result")
     await session.commit()
-    terminal = "search.completed" if results else "search.failed"
+    terminal = "search.completed" if has_usable_result else "search.failed"
     await publish_event(
-        redis, search_id, terminal, 100, {"status": search.status, "warnings": warnings}
+        redis,
+        search_id,
+        terminal,
+        100,
+        {
+            "status": search.status,
+            "warnings": warnings,
+            "usage": usage_status(reservation).model_dump() if reservation else None,
+        },
     )
 
 
