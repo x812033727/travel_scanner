@@ -34,7 +34,7 @@ async function proxy(request: NextRequest, context: Context) {
     const accessToken = payload.access_token;
     delete payload.access_token;
     const response = NextResponse.json(payload, { status: upstream.status });
-    response.cookies.set("travel_access", accessToken, { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", path: "/", maxAge: 3600 });
+    response.cookies.set("travel_access", accessToken, { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", path: "/", maxAge: 60 * 60 * 24 * 7 });
     return response;
   }
   const response = upstream.status === 204
