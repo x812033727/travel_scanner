@@ -94,6 +94,17 @@ jobs:
           --timeout-ms 60000
           --strict
           --output chrome-live-report.json
+      - name: Probe reverse route in Chrome for back-to-back fares
+        continue-on-error: true
+        run: >-
+          npm run crawl:airlines:chrome --
+          --api-base http://127.0.0.1:8000
+          --origin "${{ inputs.destination }}"
+          --destination "${{ inputs.origin }}"
+          --airlines CI,BR,JX
+          --channel chromium
+          --timeout-ms 60000
+          --output chrome-reverse-live-report.json
       - name: Upload browser validation evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -101,5 +112,6 @@ jobs:
           name: airline-chrome-live-report
           path: |
             chrome-live-report.json
+            chrome-reverse-live-report.json
             ${{ runner.temp }}/travel-api.log
           if-no-files-found: warn

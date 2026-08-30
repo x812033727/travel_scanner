@@ -109,6 +109,20 @@ It shows each adapter's current policy state before submitting an authenticated
 fare query through the same-origin BFF, and keeps public cached fares clearly
 separate from live, bookable inventory.
 
+The same page also provides a complete two-trip back-to-back comparison through
+`POST /api/v1/crawlers/airlines/back-to-back-fares`. It expands four ordered
+dates into two conventional round trips, a Taiwan-origin wrapper ticket, and a
+foreign-origin reverse ticket. The service reads at most two unique public pages
+per enabled airline, then reports both the cheapest mixed-airline combination
+and the cheapest same-airline combination per passenger. It never suggests
+skipping a coupon: every ticket must be flown in order.
+
+Foreign-origin fares retain their source currency. Frankfurter reference rates
+provide a clearly labelled TWD estimate and are cached in Redis for 24 hours;
+up to seven-day-old cached rates may be used with a stale warning if the rate
+service is unavailable. If no conversion rate exists, raw fares remain visible
+but no cross-currency savings claim is produced.
+
 For pages that need a real browser runtime, the Chrome bridge asks the API for
 allowlisted, robots-approved targets, opens only those targets in an isolated
 Google Chrome process, parses the page's `__NEXT_DATA__` in Chrome, retains only
@@ -201,6 +215,7 @@ set before the normal live mock search, mirroring the future production flow.
 - Product: plans, usage, saved trips, re-optimization, and price alerts
 - Intelligence: natural-language parsing and destination discovery
 - Experimental airline fares: crawler status and public cached-fare discovery
+  plus two-trip back-to-back price comparison
 
 The Next.js browser app calls only its same-origin `/api/travel/*` BFF. The BFF
 stores JWTs in HttpOnly/SameSite cookies and attaches them to the internal API;

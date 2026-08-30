@@ -7,6 +7,7 @@ from app.crawlers.airlines import (
     CrawlerError,
     CrawlerPolicyError,
 )
+from app.crawlers.back_to_back import BackToBackFareService
 from app.crawlers.schemas import (
     AirlineBrowserCapture,
     AirlineBrowserCaptureResponse,
@@ -14,6 +15,8 @@ from app.crawlers.schemas import (
     AirlineCrawlerStatusResponse,
     AirlineFareSearch,
     AirlineFareSearchResponse,
+    BackToBackFareSearch,
+    BackToBackFareSearchResponse,
 )
 from app.infra import enforce_rate_limit, get_redis
 from app.problems import AppError
@@ -41,6 +44,14 @@ async def search_public_fares(
 ) -> AirlineFareSearchResponse:
     await enforce_rate_limit(user.id)
     return await AirlineFareCrawlerService(get_settings(), get_redis()).search(payload)
+
+
+@router.post("/back-to-back-fares", response_model=BackToBackFareSearchResponse)
+async def search_back_to_back_fares(
+    payload: BackToBackFareSearch, user: CurrentUser
+) -> BackToBackFareSearchResponse:
+    await enforce_rate_limit(user.id)
+    return await BackToBackFareService(get_settings(), get_redis()).search(payload)
 
 
 @router.post("/browser-targets", response_model=AirlineBrowserTargetsResponse)

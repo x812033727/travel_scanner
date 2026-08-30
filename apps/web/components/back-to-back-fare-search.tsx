@@ -1,0 +1,334 @@
+"use client";
+
+import {
+  AlertCircle,
+  ArrowRight,
+  CalendarRange,
+  Info,
+  LoaderCircle,
+  Plane,
+  ShieldAlert,
+  Shuffle,
+} from "lucide-react";
+import { FormEvent, useMemo, useState } from "react";
+import { api, twd } from "@/lib/api";
+
+type AirlineCode = "CI" | "BR" | "JX";
+type FareTicketRole = "conventional_first" | "conventional_second" | "wrapper" | "reverse";
+type ComparisonMode = "mixed_airlines" | "same_airline";
+type ComparisonVerdict =
+  | "back_to_back_cheaper"
+  | "conventional_cheaper"
+  | "same_price"
+  | "comparison_unavailable";
+
+type FareQuote = {
+  id: string;
+  airline_code: AirlineCode;
+  airline_name: string;
+  origin: string;
+  destination: string;
+  departure_date: string;
+  return_date?: string;
+  total_price: string | number;
+  currency: string;
+  source_url: string;
+};
+
+type FxRateSnapshot = {
+  base_currency: string;
+  quote_currency: string;
+  rate: string | number;
+  as_of: string;
+  source_url: string;
+  is_stale: boolean;
+};
+
+type FareTicketComponent = {
+  role: FareTicketRole;
+  quote: FareQuote;
+  estimated_twd?: string | number;
+  fx_rate?: FxRateSnapshot;
+};
+
+type FareStrategyTotal = {
+  tickets: FareTicketComponent[];
+  original_currency_totals: Record<string, string | number>;
+  estimated_twd?: string | number;
+};
+
+type BackToBackComparison = {
+  mode: ComparisonMode;
+  conventional?: FareStrategyTotal;
+  back_to_back?: FareStrategyTotal;
+  savings_twd?: string | number;
+  savings_percent?: string | number;
+  verdict: ComparisonVerdict;
+  detail: string;
+};
+
+type BackToBackResponse = {
+  queried_at: string;
+  comparisons: BackToBackComparison[];
+  candidates: Array<{ role: FareTicketRole; quotes: FareQuote[] }>;
+  fx_rates: FxRateSnapshot[];
+  warnings: string[];
+};
+
+const airlines: Array<{ code: AirlineCode; short: string }> = [
+  { code: "CI", short: "華航" },
+  { code: "BR", short: "長榮" },
+  { code: "JX", short: "星宇" },
+];
+
+const destinations = [
+  { code: "NRT", city: "東京成田" },
+  { code: "KIX", city: "大阪關西" },
+  { code: "FUK", city: "福岡" },
+  { code: "CTS", city: "札幌新千歲" },
+  { code: "ICN", city: "首爾仁川" },
+  { code: "BKK", city: "曼谷" },
+  { code: "SIN", city: "新加坡" },
+];
+
+const roleLabels: Record<FareTicketRole, string> = {
+  conventional_first: "第一趟一般票",
+  conventional_second: "第二趟一般票",
+  wrapper: "台灣始發包覆票",
+  reverse: "外站始發倒買票",
+};
+
+function formatDate(value?: string) {
+  if (!value) return "—";
+  return new Intl.DateTimeFormat("zh-TW", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${value}T00:00:00Z`));
+}
+
+function formatMoney(value: string | number, currency: string) {
+  return new Intl.NumberFormat("zh-TW", {
+    style: "currency",
+    currency,
+    maximumFractionDigits: 0,
+  }).format(Number(value));
+}
+
+function StrategySummary({ title, strategy }: { title: string; strategy?: FareStrategyTotal }) {
+  if (!strategy || strategy.estimated_twd === undefined) {
+    return (
+      <div className="rounded-2xl bg-[#f7f9f5] p-4">
+        <p className="text-sm font-semibold">{title}</p>
+        <p className="mt-2 text-sm text-[var(--muted)]">缺少完整票價或換算匯率</p>
+      </div>
+    );
+  }
+  return (
+    <div className="rounded-2xl bg-[#f7f9f5] p-4">
+      <p className="text-sm text-[var(--muted)]">{title}</p>
+      <p className="mt-1 text-2xl font-bold">{twd.format(Number(strategy.estimated_twd))}</p>
+      <p className="mt-1 text-xs text-[var(--muted)]">每位旅客 · TWD 估算</p>
+    </div>
+  );
+}
+
+function TicketTimeline({ tickets }: { tickets: FareTicketComponent[] }) {
+  return (
+    <div className="mt-5 space-y-3">
+      {tickets.map((ticket) => (
+        <article key={`${ticket.role}-${ticket.quote.id}`} className="rounded-2xl border border-[var(--line)] p-4">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <p className="text-xs font-semibold text-[var(--coral)]">{roleLabels[ticket.role]}</p>
+              <p className="mt-1 font-bold">{ticket.quote.airline_name} · {ticket.quote.airline_code}</p>
+            </div>
+            <div className="text-right">
+              <p className="font-bold">{formatMoney(ticket.quote.total_price, ticket.quote.currency)}</p>
+              {ticket.quote.currency !== "TWD" && ticket.estimated_twd !== undefined && (
+                <p className="text-xs text-[var(--muted)]">約 {twd.format(Number(ticket.estimated_twd))}</p>
+              )}
+            </div>
+          </div>
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-sm text-[var(--muted)]">
+            <span>{ticket.quote.origin}</span><ArrowRight size={14} /><span>{ticket.quote.destination}</span>
+            <span className="mx-1 text-[var(--line)]">|</span>
+            <span>{formatDate(ticket.quote.departure_date)}</span><ArrowRight size={14} /><span>{formatDate(ticket.quote.return_date)}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function ComparisonCard({ comparison }: { comparison: BackToBackComparison }) {
+  const mixed = comparison.mode === "mixed_airlines";
+  const savings = Number(comparison.savings_twd || 0);
+  const savingsCopy = comparison.verdict === "back_to_back_cheaper"
+    ? `倒買法估算省下 ${twd.format(savings)}`
+    : comparison.verdict === "conventional_cheaper"
+      ? `一般買法估算省下 ${twd.format(Math.abs(savings))}`
+      : comparison.verdict === "same_price"
+        ? "兩種買法估算同價"
+        : "目前無法完成價格比較";
+  const favorable = comparison.verdict === "back_to_back_cheaper";
+
+  return (
+    <article className={`rounded-[1.75rem] border bg-white p-5 md:p-6 ${mixed ? "border-[var(--teal)]" : "border-[var(--line)]"}`}>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[.16em] text-[var(--teal)]">{mixed ? "LOWEST MIX" : "SAME AIRLINE"}</p>
+          <h3 className="mt-1 text-xl font-bold">{mixed ? "最低混搭" : "最低同航空公司"}</h3>
+        </div>
+        <Shuffle className="text-[var(--teal)]" size={22} />
+      </div>
+      <div className="mt-5 grid gap-3 sm:grid-cols-2">
+        <StrategySummary title="兩張一般來回票" strategy={comparison.conventional} />
+        <StrategySummary title="包覆票＋外站倒買票" strategy={comparison.back_to_back} />
+      </div>
+      <div className={`mt-4 rounded-2xl p-4 text-sm ${favorable ? "bg-emerald-50 text-emerald-900" : "bg-amber-50 text-amber-900"}`}>
+        <p className="font-bold">{savingsCopy}{comparison.savings_percent !== undefined ? `（${Math.abs(Number(comparison.savings_percent))}%）` : ""}</p>
+        <p className="mt-1 leading-6">{comparison.detail}</p>
+      </div>
+      {comparison.back_to_back && <TicketTimeline tickets={comparison.back_to_back.tickets} />}
+    </article>
+  );
+}
+
+export function BackToBackFareSearch() {
+  const [selected, setSelected] = useState<Record<AirlineCode, boolean>>({ CI: true, BR: true, JX: true });
+  const [origin, setOrigin] = useState("TPE");
+  const [destination, setDestination] = useState("NRT");
+  const [firstDeparture, setFirstDeparture] = useState("2026-11-10");
+  const [firstReturn, setFirstReturn] = useState("2026-11-15");
+  const [secondDeparture, setSecondDeparture] = useState("2026-12-10");
+  const [secondReturn, setSecondReturn] = useState("2026-12-15");
+  const [flexDays, setFlexDays] = useState("7");
+  const [cabinClass, setCabinClass] = useState("economy");
+  const [result, setResult] = useState<BackToBackResponse>();
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string>();
+
+  const selectedAirlines = useMemo(
+    () => airlines.filter(({ code }) => selected[code]).map(({ code }) => code),
+    [selected],
+  );
+
+  async function search(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError(undefined);
+    const dates = [firstDeparture, firstReturn, secondDeparture, secondReturn];
+    if (dates.some((value) => !value) || !(firstDeparture < firstReturn && firstReturn < secondDeparture && secondDeparture < secondReturn)) {
+      setError("日期必須依序為：第一次出發、第一次回程、第二次出發、第二次回程。");
+      return;
+    }
+    if (!selectedAirlines.length) {
+      setError("請至少選擇一家航空公司。");
+      return;
+    }
+    setBusy(true);
+    try {
+      const response = await api<BackToBackResponse>("/crawlers/airlines/back-to-back-fares", {
+        method: "POST",
+        body: JSON.stringify({
+          origin,
+          destination,
+          first_trip: { departure_date: firstDeparture, return_date: firstReturn },
+          second_trip: { departure_date: secondDeparture, return_date: secondReturn },
+          flex_days: Number(flexDays),
+          cabin_class: cabinClass,
+          airlines: selectedAirlines,
+          limit_per_airline: 10,
+        }),
+      });
+      setResult(response);
+    } catch (reason) {
+      setError((reason as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  const rawCandidates = result?.candidates.filter((candidate) => candidate.quotes.length) || [];
+  const externalRates = result?.fx_rates.filter((rate) => rate.base_currency !== "TWD") || [];
+
+  return (
+    <section className="grid gap-6 lg:grid-cols-[.82fr_1.18fr]">
+      <form onSubmit={search} className="self-start rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-[0_22px_70px_rgba(16,42,43,.08)] md:p-7">
+        <div className="mb-6 flex items-center justify-between">
+          <div><p className="text-xs font-semibold uppercase tracking-[.18em] text-[var(--teal)]">Back-to-back search</p><h2 className="mt-1 text-2xl font-bold">設定兩趟旅行</h2></div>
+          <CalendarRange className="text-[var(--teal)]" size={25} />
+        </div>
+
+        <fieldset>
+          <legend className="mb-2 text-sm font-semibold">航空公司</legend>
+          <div className="grid grid-cols-3 gap-2">
+            {airlines.map((airline) => (
+              <label key={airline.code} className={`cursor-pointer rounded-xl border px-3 py-3 text-center text-sm transition ${selected[airline.code] ? "border-[var(--teal)] bg-[#edf5f1] text-[var(--teal-dark)]" : "border-[var(--line)] text-[var(--muted)]"}`}>
+                <input className="sr-only" type="checkbox" checked={selected[airline.code]} onChange={(event) => setSelected((current) => ({ ...current, [airline.code]: event.target.checked }))} />
+                <span className="font-semibold">{airline.short}</span><span className="ml-1 font-mono text-xs">{airline.code}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <div className="mt-5 grid grid-cols-[1fr_auto_1fr] items-end gap-2">
+          <label className="text-sm font-semibold">出發地<select aria-label="倒買出發地" value={origin} onChange={(event) => setOrigin(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3"><option value="TPE">台北 TPE</option><option value="TSA">台北松山 TSA</option></select></label>
+          <ArrowRight className="mb-3 text-[var(--muted)]" size={18} />
+          <label className="text-sm font-semibold">目的地<select aria-label="倒買目的地" value={destination} onChange={(event) => setDestination(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3">{destinations.map((item) => <option value={item.code} key={item.code}>{item.city} {item.code}</option>)}</select></label>
+        </div>
+
+        <fieldset className="mt-5 rounded-2xl border border-[var(--line)] p-4">
+          <legend className="px-2 text-sm font-bold">第一次旅行</legend>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <label className="text-sm font-semibold">出發<input aria-label="第一次出發日" required type="date" value={firstDeparture} onChange={(event) => setFirstDeparture(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3" /></label>
+            <label className="text-sm font-semibold">回程<input aria-label="第一次回程日" required type="date" value={firstReturn} onChange={(event) => setFirstReturn(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3" /></label>
+          </div>
+        </fieldset>
+        <fieldset className="mt-4 rounded-2xl border border-[var(--line)] p-4">
+          <legend className="px-2 text-sm font-bold">第二次旅行</legend>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <label className="text-sm font-semibold">出發<input aria-label="第二次出發日" required type="date" value={secondDeparture} onChange={(event) => setSecondDeparture(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3" /></label>
+            <label className="text-sm font-semibold">回程<input aria-label="第二次回程日" required type="date" value={secondReturn} onChange={(event) => setSecondReturn(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3" /></label>
+          </div>
+        </fieldset>
+
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <label className="text-sm font-semibold">彈性日期<select aria-label="倒買彈性日期" value={flexDays} onChange={(event) => setFlexDays(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3"><option value="0">指定日期</option><option value="3">前後 3 天</option><option value="7">前後 7 天</option><option value="14">前後 14 天</option></select></label>
+          <label className="text-sm font-semibold">艙等<select aria-label="倒買艙等" value={cabinClass} onChange={(event) => setCabinClass(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3"><option value="economy">經濟艙</option><option value="premium_economy">豪華經濟艙</option><option value="business">商務艙</option><option value="first">頭等艙</option></select></label>
+        </div>
+
+        <button disabled={busy || !selectedAirlines.length} className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3.5 font-semibold text-white transition hover:bg-[var(--teal-dark)] disabled:cursor-not-allowed disabled:opacity-50">
+          {busy ? <><LoaderCircle className="animate-spin" size={18} />正在比對兩種買法</> : <><Shuffle size={18} />比較倒買價格</>}
+        </button>
+        {error && <div role="alert" className="mt-4 flex gap-2 rounded-xl bg-red-50 p-4 text-sm leading-6 text-red-800"><AlertCircle className="mt-0.5 shrink-0" size={18} />{error}</div>}
+      </form>
+
+      <div aria-live="polite" className="min-h-[38rem] rounded-[1.75rem] border border-[var(--line)] bg-white p-5 md:p-7">
+        <div className="border-b border-[var(--line)] pb-5">
+          <p className="text-xs font-semibold uppercase tracking-[.18em] text-[var(--teal)]">Two-trip comparison</p>
+          <h2 className="mt-1 text-2xl font-bold">完整倒買價格比較</h2>
+        </div>
+        {!result && !busy && <div className="grid min-h-[27rem] place-items-center text-center"><div className="max-w-md"><span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-[#edf5f1] text-[var(--teal)]"><Plane size={28} /></span><h3 className="mt-5 text-xl font-bold">需要兩趟旅行才能正確比較</h3><p className="mt-2 leading-7 text-[var(--muted)]">系統會比較兩張一般來回票，與「包覆票＋外站始發倒買票」的每人估算總價。</p></div></div>}
+        {busy && <div className="grid min-h-[27rem] place-items-center text-center text-[var(--muted)]"><div><LoaderCircle className="mx-auto animate-spin text-[var(--teal)]" size={32} /><p className="mt-4">正在讀取台灣與外站始發公開票價…</p></div></div>}
+        {result && !busy && <div className="mt-5 space-y-5">
+          {result.warnings.map((warning) => <div key={warning} className="flex gap-2 rounded-xl bg-amber-50 p-3 text-sm leading-6 text-amber-900"><Info className="mt-0.5 shrink-0" size={17} />{warning}</div>)}
+          {result.comparisons.map((comparison) => <ComparisonCard key={comparison.mode} comparison={comparison} />)}
+          {result.comparisons.every((comparison) => comparison.verdict === "comparison_unavailable") && rawCandidates.length > 0 && (
+            <section className="rounded-2xl border border-[var(--line)] p-4">
+              <h3 className="font-bold">已取得的原幣票價</h3>
+              <div className="mt-3 space-y-2 text-sm">{rawCandidates.map((candidate) => <p key={candidate.role} className="flex justify-between gap-4"><span className="text-[var(--muted)]">{roleLabels[candidate.role]}</span><strong>{formatMoney(candidate.quotes[0].total_price, candidate.quotes[0].currency)} 起</strong></p>)}</div>
+            </section>
+          )}
+          {externalRates.length > 0 && <p className="text-xs leading-5 text-[var(--muted)]">TWD 估算採用 <a className="font-semibold text-[var(--teal)] underline" href="https://frankfurter.dev/" target="_blank" rel="noreferrer">Frankfurter</a> {externalRates.map((rate) => `${rate.base_currency} ${rate.as_of}${rate.is_stale ? "（舊快取）" : ""}`).join("、")} 匯率；實際刷卡金額可能不同。</p>}
+        </div>}
+
+        <div className="mt-6 flex gap-3 rounded-2xl bg-[#fff4ef] p-4 text-sm leading-6 text-[#7e4439]">
+          <ShieldAlert className="mt-0.5 shrink-0" size={20} />
+          <p><strong className="block">倒買不是跳段票</strong>兩張票都必須依票券順序完整搭乘。公開價格非即時庫存、不可直接訂位，改票與取消也要分別處理。</p>
+        </div>
+      </div>
+    </section>
+  );
+}

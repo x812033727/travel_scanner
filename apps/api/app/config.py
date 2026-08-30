@@ -29,6 +29,10 @@ class Settings(BaseSettings):
     airline_crawler_min_interval_seconds: int = Field(default=5, ge=1, le=60)
     airline_crawler_max_bytes: int = Field(default=2_500_000, ge=100_000, le=5_000_000)
     airline_crawler_cache_backend_timeout_seconds: float = Field(default=0.5, gt=0, le=5)
+    fx_rate_base_url: str = "https://api.frankfurter.dev/v2"
+    fx_rate_timeout_seconds: float = Field(default=3.0, gt=0, le=10)
+    fx_rate_cache_ttl_seconds: int = Field(default=86_400, ge=300, le=86_400)
+    fx_rate_stale_ttl_seconds: int = Field(default=604_800, ge=86_400, le=2_592_000)
 
     @property
     def cors_origins(self) -> list[str]:

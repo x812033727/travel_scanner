@@ -51,6 +51,55 @@ class AirlineFareSearch(BaseModel):
         return self
 
 
+class TripDateRange(BaseModel):
+    departure_date: date
+    return_date: date
+
+    @model_validator(mode="after")
+    def validate_date_order(self) -> Self:
+        if self.return_date <= self.departure_date:
+            raise ValueError("return_date must be after departure_date")
+        return self
+
+
+class BackToBackFareSearch(BaseModel):
+    origin: str = Field(default="TPE", min_length=3, max_length=3, pattern=r"^[A-Za-z]{3}$")
+    destination: str = Field(min_length=3, max_length=3, pattern=r"^[A-Za-z]{3}$")
+    first_trip: TripDateRange
+    second_trip: TripDateRange
+    flex_days: int = Field(default=7, ge=0, le=30)
+    cabin_class: CabinClass = CabinClass.ECONOMY
+    airlines: list[AirlineCode] = Field(default_factory=lambda: list(AirlineCode), min_length=1)
+    limit_per_airline: int = Field(default=10, ge=1, le=30)
+
+    @field_validator("origin", "destination")
+    @classmethod
+    def uppercase_airport_code(cls, value: str) -> str:
+        return value.upper()
+
+    @field_validator("airlines")
+    @classmethod
+    def unique_airlines(cls, value: list[AirlineCode]) -> list[AirlineCode]:
+        return list(dict.fromkeys(value))
+
+    @model_validator(mode="after")
+    def validate_route_and_trip_order(self) -> Self:
+        if self.origin == self.destination:
+            raise ValueError("origin and destination must differ")
+        dates = (
+            self.first_trip.departure_date,
+            self.first_trip.return_date,
+            self.second_trip.departure_date,
+            self.second_trip.return_date,
+        )
+        if not all(left < right for left, right in zip(dates, dates[1:], strict=False)):
+            raise ValueError(
+                "dates must satisfy first departure < first return < "
+                "second departure < second return"
+            )
+        return self
+
+
 class QuoteType(StrEnum):
     CACHED_PUBLIC_FARE = "cached_public_fare"
 
@@ -100,6 +149,73 @@ class AirlineCrawlerSource(BaseModel):
 class AirlineFareSearchResponse(BaseModel):
     queried_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
     quotes: list[PublicFareQuote]
+    sources: list[AirlineCrawlerSource]
+    warnings: list[str]
+
+
+class FareTicketRole(StrEnum):
+    CONVENTIONAL_FIRST = "conventional_first"
+    CONVENTIONAL_SECOND = "conventional_second"
+    WRAPPER = "wrapper"
+    REVERSE = "reverse"
+
+
+class ComparisonMode(StrEnum):
+    MIXED_AIRLINES = "mixed_airlines"
+    SAME_AIRLINE = "same_airline"
+
+
+class ComparisonVerdict(StrEnum):
+    BACK_TO_BACK_CHEAPER = "back_to_back_cheaper"
+    CONVENTIONAL_CHEAPER = "conventional_cheaper"
+    SAME_PRICE = "same_price"
+    COMPARISON_UNAVAILABLE = "comparison_unavailable"
+
+
+class FxRateSnapshot(BaseModel):
+    base_currency: str = Field(min_length=3, max_length=3)
+    quote_currency: str = Field(default="TWD", min_length=3, max_length=3)
+    rate: Decimal = Field(gt=0)
+    as_of: date
+    retrieved_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
+    source_url: str
+    is_stale: bool = False
+
+
+class FareTicketComponent(BaseModel):
+    role: FareTicketRole
+    quote: PublicFareQuote
+    estimated_twd: Decimal | None = Field(default=None, ge=0)
+    fx_rate: FxRateSnapshot | None = None
+
+
+class FareStrategyTotal(BaseModel):
+    tickets: list[FareTicketComponent] = Field(min_length=2, max_length=2)
+    original_currency_totals: dict[str, Decimal]
+    estimated_twd: Decimal | None = Field(default=None, ge=0)
+
+
+class BackToBackComparison(BaseModel):
+    mode: ComparisonMode
+    conventional: FareStrategyTotal | None = None
+    back_to_back: FareStrategyTotal | None = None
+    savings_twd: Decimal | None = None
+    savings_percent: Decimal | None = None
+    verdict: ComparisonVerdict
+    detail: str
+
+
+class FareCandidateSet(BaseModel):
+    role: FareTicketRole
+    quotes: list[PublicFareQuote]
+
+
+class BackToBackFareSearchResponse(BaseModel):
+    queried_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
+    query: BackToBackFareSearch
+    comparisons: list[BackToBackComparison]
+    candidates: list[FareCandidateSet]
+    fx_rates: list[FxRateSnapshot]
     sources: list[AirlineCrawlerSource]
     warnings: list[str]
 

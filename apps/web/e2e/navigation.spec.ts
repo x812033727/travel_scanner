@@ -16,3 +16,55 @@ test("airline public fare lab is available", async ({ page }) => {
   await expect(page.getByText("長榮航空")).toBeVisible();
   await expect(page.getByText("星宇航空")).toBeVisible();
 });
+
+test("back-to-back fare comparison renders both strategy modes", async ({ page }) => {
+  await page.route("**/api/travel/crawlers/airlines/status", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({
+      sources: [
+        { airline_code: "CI", airline_name: "中華航空", host: "flights.china-airlines.com", state: "ready", policy: "robots", detail: "ok", quote_count: 0, cache_hit: false },
+        { airline_code: "BR", airline_name: "長榮航空", host: "flights.evaair.com", state: "disabled", policy: "fail_closed", detail: "robots unavailable", quote_count: 0, cache_hit: false },
+        { airline_code: "JX", airline_name: "星宇航空", host: "www.starlux-airlines.com", state: "ready", policy: "robots", detail: "ok", quote_count: 0, cache_hit: false },
+      ],
+      safety_rules: [],
+    }),
+  }));
+  await page.route("**/api/travel/crawlers/airlines/back-to-back-fares", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({
+      queried_at: "2026-08-30T10:00:00Z",
+      comparisons: [
+        {
+          mode: "mixed_airlines",
+          conventional: { tickets: [], original_currency_totals: { TWD: "20000" }, estimated_twd: "20000" },
+          back_to_back: { tickets: [], original_currency_totals: { TWD: "18000" }, estimated_twd: "18000" },
+          savings_twd: "2000",
+          savings_percent: "10.0",
+          verdict: "back_to_back_cheaper",
+          detail: "混搭航空公司的倒買法估算較省。",
+        },
+        {
+          mode: "same_airline",
+          conventional: { tickets: [], original_currency_totals: { TWD: "21000" }, estimated_twd: "21000" },
+          back_to_back: { tickets: [], original_currency_totals: { TWD: "19000" }, estimated_twd: "19000" },
+          savings_twd: "2000",
+          savings_percent: "9.5",
+          verdict: "back_to_back_cheaper",
+          detail: "同航空公司的倒買法估算較省。",
+        },
+      ],
+      candidates: [],
+      fx_rates: [],
+      warnings: [],
+    }),
+  }));
+
+  await page.goto("/labs/airlines");
+  await page.getByRole("tab", { name: "倒買法" }).click();
+  await page.getByRole("button", { name: "比較倒買價格" }).click();
+  await expect(page.getByRole("heading", { name: "最低混搭" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "最低同航空公司" })).toBeVisible();
+  await expect(page.getByText(/倒買法估算省下.*2,000/).first()).toBeVisible();
+});
