@@ -18,19 +18,88 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-    defaults:
-      run:
-        working-directory: apps/api
+    timeout-minutes: 12
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: travel_scanner
+          POSTGRES_USER: travel
+          POSTGRES_PASSWORD: travel
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U travel -d travel_scanner"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+      redis:
+        image: redis:7.4-alpine
+        ports: ["6379:6379"]
+    env:
+      APP_SECRET_KEY: airline-browser-validation-secret-32-characters
+      DATABASE_URL: postgresql+asyncpg://travel:travel@127.0.0.1:5432/travel_scanner
+      REDIS_URL: redis://127.0.0.1:6379/0
+      AIRLINE_CRAWLER_CACHE_BACKEND_TIMEOUT_SECONDS: 2
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
         with:
           python-version: "3.13"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
       - run: uv sync --frozen
+        working-directory: apps/api
+      - run: uv run alembic upgrade head
+        working-directory: apps/api
       - name: Verify public airline fare adapters
         run: >-
           uv run python -m app.cli verify-airline-crawlers
           --origin "${{ inputs.origin }}"
           --destination "${{ inputs.destination }}"
           --strict
+        working-directory: apps/api
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Start authenticated API
+        working-directory: apps/api
+        run: |
+          uv run uvicorn app.main:app --host 127.0.0.1 --port 8000 > "$RUNNER_TEMP/travel-api.log" 2>&1 &
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:8000/health > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat "$RUNNER_TEMP/travel-api.log"
+          exit 1
+      - name: Register disposable validation account
+        run: |
+          response=$(curl --fail --silent --show-error \
+            -H "Content-Type: application/json" \
+            -d '{"email":"chrome-validation-${{ github.run_id }}@example.com","password":"ChromeValidation-2026!"}' \
+            http://127.0.0.1:8000/api/v1/auth/register)
+          token=$(echo "$response" | jq -r .access_token)
+          test -n "$token"
+          test "$token" != "null"
+          echo "::add-mask::$token"
+          echo "TRAVEL_SCANNER_TOKEN=$token" >> "$GITHUB_ENV"
+      - name: Run Chrome-to-API fare extraction
+        run: >-
+          npm run crawl:airlines:chrome --
+          --api-base http://127.0.0.1:8000
+          --origin "${{ inputs.origin }}"
+          --destination "${{ inputs.destination }}"
+          --airlines CI,BR,JX
+          --channel chromium
+          --timeout-ms 60000
+          --strict
+          --output chrome-live-report.json
+      - name: Upload browser validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: airline-chrome-live-report
+          path: |
+            chrome-live-report.json
+            ${{ runner.temp }}/travel-api.log
+          if-no-files-found: warn
