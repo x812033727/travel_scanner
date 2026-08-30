@@ -25,8 +25,9 @@ jobs:
       - run: uv sync --frozen
       - run: uv run ruff check .
       - run: uv run mypy app
-      - run: uv run pytest --cov=app
       - run: uv run alembic upgrade head
+      - run: uv run pytest --cov=app
+        env: { RUN_INTEGRATION_TESTS: "1" }
   web:
     runs-on: ubuntu-latest
     steps:
@@ -38,6 +39,8 @@ jobs:
       - run: npm run typecheck:web
       - run: npm run test:web
       - run: npm run build:web
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e --workspace @travel-scanner/web
   containers:
     runs-on: ubuntu-latest
     steps:
@@ -45,4 +48,3 @@ jobs:
       - run: cp .env.example .env
       - run: docker compose config
       - run: docker compose build api worker
-

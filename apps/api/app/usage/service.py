@@ -98,6 +98,39 @@ async def get_subscription(
     subscription = await session.scalar(statement)
     if subscription is None:
         raise AppError(409, "subscription_missing", "No active subscription was found")
+    today = datetime.now(UTC).date()
+    if subscription.period_end < today:
+        plan = await session.get(Plan, subscription.plan_id)
+        if plan is None:
+            raise AppError(409, "plan_missing", "The subscription plan is unavailable")
+        old_balance = subscription.credit_balance
+        if old_balance:
+            session.add(
+                UsageLedger(
+                    user_id=user_id,
+                    subscription_id=subscription.id,
+                    entry_type="expiry",
+                    amount=-old_balance,
+                    balance_after=0,
+                    reference=f"period:{subscription.period_end.isoformat()}",
+                    metadata_json={"reason": "unused monthly credits expired"},
+                )
+            )
+        start, end = period_for(today)
+        subscription.period_start = start
+        subscription.period_end = end
+        subscription.credit_balance = plan.monthly_credits
+        session.add(
+            UsageLedger(
+                user_id=user_id,
+                subscription_id=subscription.id,
+                entry_type="grant",
+                amount=plan.monthly_credits,
+                balance_after=plan.monthly_credits,
+                reference=f"monthly:{start.isoformat()}",
+                metadata_json={"plan": plan.code},
+            )
+        )
     return subscription
 
 

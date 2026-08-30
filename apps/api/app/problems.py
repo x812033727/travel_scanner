@@ -1,7 +1,7 @@
 from typing import Any
 
 from fastapi import Request
-from fastapi.responses import ORJSONResponse
+from fastapi.responses import JSONResponse
 
 
 class AppError(Exception):
@@ -11,7 +11,7 @@ class AppError(Exception):
         self.detail = detail
 
 
-async def app_error_handler(request: Request, exc: AppError) -> ORJSONResponse:
+async def app_error_handler(request: Request, exc: AppError) -> JSONResponse:
     payload: dict[str, Any] = {
         "type": f"https://travel-scanner.local/problems/{exc.code}",
         "title": exc.code.replace("_", " ").title(),
@@ -20,4 +20,4 @@ async def app_error_handler(request: Request, exc: AppError) -> ORJSONResponse:
         "detail": exc.detail,
         "request_id": getattr(request.state, "request_id", None),
     }
-    return ORJSONResponse(payload, status_code=exc.status, media_type="application/problem+json")
+    return JSONResponse(payload, status_code=exc.status, media_type="application/problem+json")

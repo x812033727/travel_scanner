@@ -73,7 +73,11 @@ class Subscription(Timestamped, Base):
 
 class UsageLedger(Base):
     __tablename__ = "usage_ledger"
-    __table_args__ = (UniqueConstraint("reference", "entry_type", name="uq_ledger_reference_type"),)
+    __table_args__ = (
+        UniqueConstraint(
+            "user_id", "reference", "entry_type", name="uq_ledger_user_reference_type"
+        ),
+    )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
     subscription_id: Mapped[UUID] = mapped_column(ForeignKey("subscriptions.id"), index=True)

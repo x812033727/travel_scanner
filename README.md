@@ -31,6 +31,13 @@ npm run dev:web
 
 Open `http://localhost:3000`; API docs are at `http://localhost:8000/docs`.
 
+Create an account in the UI to receive the FREE plan. For local PRO testing:
+
+```bash
+cd apps/api
+uv run python -m app.cli set-plan --email you@example.com --plan PRO
+```
+
 ## Database migration
 
 ```bash
@@ -95,3 +102,21 @@ as local transportation. The optimizer applies hard preferences, candidate
 caps, a Pareto frontier, and a bounded beam before a 500 ms OR-Tools CP-SAT
 selection. The cheapest result is always the lowest feasible total; balanced
 and comfortable results use documented, adjustable scoring weights.
+
+## Natural-language search
+
+`POST /api/v1/ai/parse-trip` uses a deterministic rules-based parser for the
+MVP. It extracts constraints and reports confidence/missing fields; it never
+creates prices. Destination discovery ranks a small mock historical candidate
+set before the normal live mock search, mirroring the future production flow.
+
+## API summary
+
+- Auth: `/api/v1/auth/register`, `/login`, `/logout`, `/me`
+- Search: `POST /api/v1/searches`, status, SSE events, and offer refresh
+- Product: plans, usage, saved trips, re-optimization, and price alerts
+- Intelligence: natural-language parsing and destination discovery
+
+The Next.js browser app calls only its same-origin `/api/travel/*` BFF. The BFF
+stores JWTs in HttpOnly/SameSite cookies and attaches them to the internal API;
+the browser never receives provider credentials or persists an access token.
