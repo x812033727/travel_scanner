@@ -106,6 +106,23 @@ class TripOptimizer:
             flights = [item for item in flights if 6 <= item.departure_time.hour < 23]
         if query.preferences.hotel_min_rating:
             hotels = [item for item in hotels if item.rating >= query.preferences.hotel_min_rating]
+        if query.preferences.hotel_max_nightly_twd:
+            nightly_limit = Decimal(query.preferences.hotel_max_nightly_twd)
+            hotels = [
+                item
+                for item in hotels
+                if (item.nightly_price or item.total_price / max(1, item.nights)) <= nightly_limit
+            ]
+        if query.preferences.breakfast_required:
+            hotels = [item for item in hotels if item.breakfast_included]
+        if query.preferences.refundable_required:
+            hotels = [item for item in hotels if item.refundable]
+        if query.preferences.max_station_walk_minutes is not None:
+            hotels = [
+                item
+                for item in hotels
+                if item.station_walk_minutes <= query.preferences.max_station_walk_minutes
+            ]
         flights = sorted(flights, key=lambda x: x.total_price)[:6] or [None]  # type: ignore[list-item]
         hotels = sorted(hotels, key=lambda x: x.total_price)[:6] or [None]  # type: ignore[list-item]
         activities = sorted(activities, key=lambda x: x.price)[:4] or [None]  # type: ignore[list-item]
@@ -237,12 +254,18 @@ class TripOptimizer:
                 pros.append("航班不是紅眼時段")
             if candidate.hotel and candidate.hotel.station_walk_minutes <= 6:
                 pros.append(f"飯店步行約 {candidate.hotel.station_walk_minutes} 分鐘到車站")
+            if candidate.hotel and candidate.hotel.breakfast_included:
+                pros.append("住宿方案包含早餐")
+            if candidate.hotel and candidate.hotel.refundable:
+                pros.append("住宿方案可退款")
             if time_saved > 0:
                 pros.append(f"比最便宜方案少 {time_saved} 分鐘飛行時間")
             if price > cheapest_price:
                 cons.append(f"比最便宜方案多 NT${int(price - cheapest_price):,}")
             if duplicate:
                 cons.append("目前符合條件的候選較少，與其他方案使用相同組合")
+            if candidate.hotel is None:
+                cons.append("沒有住宿符合所有必要條件，請調整住宿篩選")
             results.append(
                 TripPlanResult(
                     id=uuid5(NAMESPACE_URL, f"{candidate.key}:{mode}"),

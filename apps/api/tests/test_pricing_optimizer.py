@@ -35,3 +35,36 @@ async def test_optimizer_returns_three_profiles_and_true_cheapest() -> None:
     cheapest = plans[1].total_cost.total_cost
     assert all(cheapest <= plan.total_cost.total_cost for plan in plans)
     assert plans[0].score.solver in {"or-tools-cp-sat", "beam-fallback"}
+
+
+@pytest.mark.asyncio
+async def test_optimizer_applies_required_hotel_filters() -> None:
+    provider, query = MockProvider(), sample_query()
+    query = query.model_copy(
+        update={
+            "preferences": query.preferences.model_copy(
+                update={
+                    "hotel_min_rating": 4,
+                    "hotel_max_nightly_twd": 6_000,
+                    "breakfast_required": True,
+                    "refundable_required": True,
+                    "max_station_walk_minutes": 5,
+                }
+            )
+        }
+    )
+    plans = TripOptimizer().optimize(
+        query,
+        await provider.search_flights(query),
+        await provider.search_hotels(query),
+        await provider.search_activities(query),
+        await provider.search_transport(query),
+    )
+    hotels = [plan.hotel for plan in plans if plan.hotel]
+    assert hotels
+    assert all(hotel.rating >= 4 for hotel in hotels)
+    assert all(hotel.breakfast_included and hotel.refundable for hotel in hotels)
+    assert all(hotel.station_walk_minutes <= 5 for hotel in hotels)
+    assert all(
+        (hotel.nightly_price or hotel.total_price / hotel.nights) <= 6_000 for hotel in hotels
+    )
