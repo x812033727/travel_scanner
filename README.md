@@ -133,6 +133,16 @@ up to seven-day-old cached rates may be used with a stale warning if the rate
 service is unavailable. If no conversion rate exists, raw fares remain visible
 but no cross-currency savings claim is produced.
 
+Some official public-fare pages select a different locale for foreign-origin
+routes. The fetcher follows at most three redirects only when every target
+remains on the same allowlisted HTTPS host and passes the runtime robots check;
+cross-host redirects fail closed. When a requested date range has no cached
+fare, the response uses user-facing ticket-role names and reports the nearest
+date pair found in the already-fetched public page. A missing comparison is
+reported as unavailable, never as `0%` savings. STARLUX public dates can be
+sparse enough that a STARLUX-only four-ticket comparison is unavailable even
+though both official pages were read successfully.
+
 For pages that need a real browser runtime, the Chrome bridge asks the API for
 allowlisted, robots-approved targets, opens only those targets in an isolated
 Google Chrome process, parses the page's `__NEXT_DATA__` in Chrome, retains only

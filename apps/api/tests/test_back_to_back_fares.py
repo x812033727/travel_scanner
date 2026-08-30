@@ -489,6 +489,8 @@ async def test_reverse_page_failure_keeps_conventional_partial_results() -> None
     assert response.comparisons[0].conventional is not None
     assert response.comparisons[0].back_to_back is None
     assert response.comparisons[0].verdict == ComparisonVerdict.COMPARISON_UNAVAILABLE
+    assert "外站始發倒買票" in response.comparisons[0].detail
+    assert "這不是 0%" in response.comparisons[0].detail
     assert any("外站頁面暫時無法連線" in warning for warning in response.warnings)
 
 

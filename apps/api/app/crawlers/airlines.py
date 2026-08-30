@@ -8,7 +8,7 @@ from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal, InvalidOperation
 from html.parser import HTMLParser
 from typing import Any, cast
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
 from urllib.robotparser import RobotFileParser
 from uuid import NAMESPACE_URL, uuid5
 
@@ -420,7 +420,35 @@ class RobotsAwareFetcher:
             self._redis_available = False
             return await _memory_cache.set(key, value, ttl=ttl, only_if_missing=only_if_missing)
 
-    async def _request(self, client: httpx.AsyncClient, url: str) -> str:
+    @staticmethod
+    def _safe_redirect_url(current_url: str, location: str | None) -> str:
+        if not location:
+            raise CrawlerPolicyError("source_redirect_invalid", "來源轉址缺少目標網址")
+        target = urljoin(current_url, location)
+        current = urlsplit(current_url)
+        parsed = urlsplit(target)
+        if (
+            parsed.scheme != "https"
+            or parsed.username is not None
+            or parsed.password is not None
+            or parsed.hostname != current.hostname
+            or parsed.port not in (None, 443)
+            or parsed.fragment
+        ):
+            raise CrawlerPolicyError(
+                "source_redirect_not_allowed",
+                "來源轉址離開允許的航空公司 HTTPS 網域",
+            )
+        return target
+
+    async def _request(
+        self,
+        client: httpx.AsyncClient,
+        url: str,
+        *,
+        redirects_remaining: int = 0,
+        force_refresh: bool = False,
+    ) -> str:
         last_error: Exception | None = None
         for attempt in range(2):
             try:
@@ -429,6 +457,27 @@ class RobotsAwareFetcher:
                         await response.aread()
                         await asyncio.sleep(0.25)
                         continue
+                    if response.status_code in {301, 302, 303, 307, 308}:
+                        if redirects_remaining <= 0:
+                            raise CrawlerPolicyError(
+                                "source_redirect_limit",
+                                "來源轉址次數超過安全限制",
+                            )
+                        target = self._safe_redirect_url(
+                            url,
+                            response.headers.get("location"),
+                        )
+                        await self._robots_allows(
+                            client,
+                            target,
+                            force_refresh=force_refresh,
+                        )
+                        return await self._request(
+                            client,
+                            target,
+                            redirects_remaining=redirects_remaining - 1,
+                            force_refresh=force_refresh,
+                        )
                     if response.status_code != 200:
                         raise CrawlerError(
                             "source_http_error",
@@ -493,7 +542,12 @@ class RobotsAwareFetcher:
         )
         if not acquired:
             raise CrawlerError("source_throttled", "同一來源請求過於頻繁，請稍後再試")
-        content = await self._request(client, url)
+        content = await self._request(
+            client,
+            url,
+            redirects_remaining=3,
+            force_refresh=force_refresh,
+        )
         await self._set_cached(
             page_key, content, ttl=self.settings.airline_crawler_cache_ttl_seconds
         )
@@ -575,9 +629,7 @@ class AirlineFareCrawlerService:
                     continue
                 try:
                     source_url = adapter.fare_url(query)
-                    await self.fetcher.authorize(
-                        client, source_url, force_refresh=force_refresh
-                    )
+                    await self.fetcher.authorize(client, source_url, force_refresh=force_refresh)
                     targets.append(
                         AirlineBrowserTarget(
                             airline_code=adapter.code,

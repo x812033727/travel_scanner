@@ -62,8 +62,8 @@ type BackToBackComparison = {
   mode: ComparisonMode;
   conventional?: FareStrategyTotal;
   back_to_back?: FareStrategyTotal;
-  savings_twd?: string | number;
-  savings_percent?: string | number;
+  savings_twd?: string | number | null;
+  savings_percent?: string | number | null;
   verdict: ComparisonVerdict;
   detail: string;
 };
@@ -229,7 +229,7 @@ function ComparisonCard({
         />
       </div>
       <div className={`mt-4 rounded-2xl p-4 text-sm ${favorable ? "bg-emerald-50 text-emerald-900" : "bg-amber-50 text-amber-900"}`}>
-        <p className="font-bold">{savingsCopy}{comparison.savings_percent !== undefined ? `（${Math.abs(Number(comparison.savings_percent))}%）` : ""}</p>
+        <p className="font-bold">{savingsCopy}{comparison.savings_percent != null ? `（${Math.abs(Number(comparison.savings_percent))}%）` : ""}</p>
         <p className="mt-1 leading-6">{comparison.detail}</p>
       </div>
       {comparison.back_to_back && <TicketTimeline tickets={comparison.back_to_back.tickets} />}
@@ -318,6 +318,13 @@ export function BackToBackFareSearch() {
             ))}
           </div>
         </fieldset>
+
+        {selectedAirlines.length === 1 && selectedAirlines[0] === "JX" && firstDestination === secondDestination && (
+          <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-950">
+            <strong className="block">單選星宇可能沒有完整倒買組合</strong>
+            星宇公開頁的日期較零散；四種票價都要在彈性日期內命中才能比較。系統仍會查詢並列出最接近的公開日期；若要先驗證完整流程，可同時勾選華航。
+          </div>
+        )}
 
         <div className="mt-5">
           <label className="text-sm font-semibold">出發地<select aria-label="倒買出發地" value={origin} onChange={(event) => setOrigin(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3"><option value="TPE">台北 TPE</option><option value="TSA">台北松山 TSA</option></select></label>
