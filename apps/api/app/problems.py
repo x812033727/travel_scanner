@@ -21,4 +21,3 @@ async def app_error_handler(request: Request, exc: AppError) -> ORJSONResponse:
         "request_id": getattr(request.state, "request_id", None),
     }
     return ORJSONResponse(payload, status_code=exc.status, media_type="application/problem+json")
-

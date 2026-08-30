@@ -9,6 +9,7 @@ dependencies = [
   "fastapi>=0.116,<1",
   "greenlet>=3.2,<4",
   "httpx>=0.28,<1",
+  "email-validator>=2.3,<3",
   "orjson>=3.11,<4",
   "ortools>=9.14,<10",
   "pwdlib[argon2]>=0.2,<1",
@@ -52,4 +53,3 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["app"]
-

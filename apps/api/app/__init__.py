@@ -1,2 +1,1 @@
 """Travel Scanner API."""
-

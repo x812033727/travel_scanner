@@ -13,6 +13,5 @@ class RequestContextMiddleware(BaseHTTPMiddleware):
         started = time.perf_counter()
         response = await call_next(request)
         response.headers["X-Request-ID"] = request_id
-        response.headers["X-Response-Time-Ms"] = f"{(time.perf_counter()-started)*1000:.1f}"
+        response.headers["X-Response-Time-Ms"] = f"{(time.perf_counter() - started) * 1000:.1f}"
         return response
-
