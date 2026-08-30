@@ -180,6 +180,7 @@ describe("airline fare lab", () => {
         original_currency_totals: { TWD: "18000" },
         estimated_twd: "18000",
       },
+      savings_percent: null,
       verdict: "comparison_unavailable",
       detail: "已計算一般票；不同目的地需要開口票價格來源。",
     };
@@ -205,6 +206,7 @@ describe("airline fare lab", () => {
 
     expect(await screen.findByText("兩次目的地不同，倒買票會變成開口票")).toBeTruthy();
     expect(screen.getAllByText("需串接開口票價格來源")).toHaveLength(2);
+    expect(screen.queryByText(/0%/)).toBeNull();
     expect(screen.getAllByText(/TPE/).length).toBeGreaterThan(0);
     const [, init] = fetchMock.mock.calls[1];
     expect(JSON.parse(String(init.body))).toMatchObject({
@@ -223,5 +225,19 @@ describe("airline fare lab", () => {
     fireEvent.click(screen.getByRole("button", { name: "比較倒買價格" }));
     expect((await screen.findByRole("alert")).textContent).toContain("日期必須依序");
     expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("warns that a STARLUX-only full comparison needs four matching cached fares", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(ok(status)));
+    render(<AirlineFareLab />);
+    await screen.findByText("政策停用");
+    fireEvent.click(screen.getByRole("tab", { name: "倒買法" }));
+
+    for (const airline of ["華航CI", "長榮BR"]) {
+      fireEvent.click(screen.getByRole("checkbox", { name: airline }));
+    }
+
+    expect(screen.getByText("單選星宇可能沒有完整倒買組合")).toBeTruthy();
+    expect(screen.getByText(/若要先驗證完整流程，可同時勾選華航/)).toBeTruthy();
   });
 });

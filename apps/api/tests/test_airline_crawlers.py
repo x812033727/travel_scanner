@@ -199,6 +199,56 @@ async def test_fetcher_checks_robots_and_caches_allowed_page() -> None:
 
 
 @pytest.mark.asyncio
+async def test_fetcher_follows_same_host_https_redirect_after_robots_check() -> None:
+    requests: list[str] = []
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        url = str(request.url)
+        requests.append(url)
+        if url.endswith("/robots.txt"):
+            return httpx.Response(200, text="User-agent: *\nAllow: /\n")
+        if "/en-tw/" in url:
+            return httpx.Response(
+                301,
+                headers={
+                    "location": "https://www.starlux-airlines.com/flights/en/"
+                    "flights-from-tokyo-to-taipei"
+                },
+            )
+        return httpx.Response(200, text="<html>reverse fare page</html>")
+
+    redis = FakeRedis(decode_responses=True)
+    fetcher = RobotsAwareFetcher(Settings(), redis)  # type: ignore[arg-type]
+    url = "https://www.starlux-airlines.com/flights/en-tw/flights-from-tokyo-to-taipei"
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        result = await fetcher.fetch(client, url)
+    await redis.aclose()
+
+    assert result.content == "<html>reverse fare page</html>"
+    assert requests == [
+        "https://www.starlux-airlines.com/robots.txt",
+        url,
+        "https://www.starlux-airlines.com/flights/en/flights-from-tokyo-to-taipei",
+    ]
+
+
+@pytest.mark.asyncio
+async def test_fetcher_rejects_cross_host_redirect() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        if str(request.url).endswith("/robots.txt"):
+            return httpx.Response(200, text="User-agent: *\nAllow: /\n")
+        return httpx.Response(301, headers={"location": "https://example.com/fare"})
+
+    redis = FakeRedis(decode_responses=True)
+    fetcher = RobotsAwareFetcher(Settings(), redis)  # type: ignore[arg-type]
+    url = "https://www.starlux-airlines.com/flights/en-tw/flights-from-tokyo-to-taipei"
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(CrawlerPolicyError, match="離開允許"):
+            await fetcher.fetch(client, url)
+    await redis.aclose()
+
+
+@pytest.mark.asyncio
 async def test_fetcher_fails_closed_when_robots_disallows_page() -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         _ = request
@@ -298,10 +348,12 @@ def test_browser_capture_rejects_fields_outside_the_public_fare_allowlist() -> N
             airline_code=AirlineCode.CHINA_AIRLINES,
             query=AirlineFareSearch(destination="NRT"),
             source_url="https://flights.china-airlines.com/en-tw/flights-from-taipei-to-tokyo",
-            fare_rows=[{
-                **fare_row(departure="2026-11-10", returning="2026-11-15", price=13_000),
-                "bookingUrl": "https://booking.example/private",
-            }],
+            fare_rows=[
+                {
+                    **fare_row(departure="2026-11-10", returning="2026-11-15", price=13_000),
+                    "bookingUrl": "https://booking.example/private",
+                }
+            ],
         )
 
 

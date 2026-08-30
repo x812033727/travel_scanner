@@ -38,6 +38,13 @@ from app.crawlers.schemas import (
 TWD_QUANTUM = Decimal("1")
 PERCENT_QUANTUM = Decimal("0.1")
 
+FARE_ROLE_LABELS = {
+    FareTicketRole.CONVENTIONAL_FIRST: "第一趟一般票",
+    FareTicketRole.CONVENTIONAL_SECOND: "第二趟一般票",
+    FareTicketRole.WRAPPER: "台灣始發包覆票",
+    FareTicketRole.REVERSE: "外站始發倒買票",
+}
+
 
 @dataclass(frozen=True)
 class AirlineCandidateResult:
@@ -198,8 +205,49 @@ class BackToBackFareService:
                         queries[role],
                     )
                     if not candidates[role]:
+                        unfiltered_query = queries[role].model_copy(
+                            update={
+                                "departure_date": None,
+                                "return_date": None,
+                                "limit_per_airline": 30,
+                            }
+                        )
+                        available = adapter.parse(
+                            fetched.content,
+                            source_url,
+                            unfiltered_query,
+                        )
+                        nearest_detail = ""
+                        requested = queries[role]
+                        if available and requested.departure_date:
+                            target_departure = requested.departure_date
+                            target_return = requested.return_date
+                            nearest = min(
+                                available,
+                                key=lambda quote: (
+                                    abs((quote.departure_date - target_departure).days)
+                                    + (
+                                        abs((quote.return_date - target_return).days)
+                                        if quote.return_date and target_return
+                                        else 0
+                                    ),
+                                    quote.total_price,
+                                    quote.departure_date,
+                                ),
+                            )
+                            nearest_detail = (
+                                f"；公開頁最接近的是 {nearest.departure_date.isoformat()}"
+                                f"–{
+                                    (
+                                        nearest.return_date.isoformat()
+                                        if nearest.return_date
+                                        else '單程'
+                                    )
+                                }"
+                            )
                         warnings.append(
-                            f"{adapter.name}：{role.value} 在指定日期附近沒有公開快取票價"
+                            f"{adapter.name}：{FARE_ROLE_LABELS[role]}在指定日期前後 "
+                            f"{queries[role].flex_days} 天內沒有公開快取票價{nearest_detail}"
                         )
             except CrawlerPolicyError as exc:
                 policy_failure = True
@@ -344,6 +392,8 @@ class BackToBackFareService:
         mode: ComparisonMode,
         conventional: FareStrategyTotal | None,
         back_to_back: FareStrategyTotal | None,
+        *,
+        unavailable_detail: str | None = None,
     ) -> BackToBackComparison:
         label = "混搭航空公司" if mode == ComparisonMode.MIXED_AIRLINES else "同航空公司"
         if (
@@ -357,7 +407,7 @@ class BackToBackFareService:
                 conventional=conventional,
                 back_to_back=back_to_back,
                 verdict=ComparisonVerdict.COMPARISON_UNAVAILABLE,
-                detail=f"{label}缺少完整票價或換算匯率，暫時無法比較。",
+                detail=unavailable_detail or f"{label}缺少完整票價或換算匯率，暫時無法比較。",
             )
 
         savings = conventional.estimated_twd - back_to_back.estimated_twd
@@ -396,10 +446,7 @@ class BackToBackFareService:
         }
         async with httpx.AsyncClient(timeout=timeout, headers=headers) as client:
             results = await asyncio.gather(
-                *(
-                    self._search_airline(client, ADAPTERS[code], queries)
-                    for code in query.airlines
-                )
+                *(self._search_airline(client, ADAPTERS[code], queries) for code in query.airlines)
             )
 
         candidates = _empty_candidates()
@@ -437,6 +484,7 @@ class BackToBackFareService:
         comparisons: list[BackToBackComparison] = []
         for mode in (ComparisonMode.MIXED_AIRLINES, ComparisonMode.SAME_AIRLINE):
             same_airline = mode == ComparisonMode.SAME_AIRLINE
+            label = "混搭航空公司" if mode == ComparisonMode.MIXED_AIRLINES else "同航空公司"
             conventional = self._best_strategy(
                 FareTicketRole.CONVENTIONAL_FIRST,
                 FareTicketRole.CONVENTIONAL_SECOND,
@@ -454,13 +502,27 @@ class BackToBackFareService:
                     same_airline=same_airline,
                     back_to_back=True,
                 )
-                comparisons.append(self._comparison(mode, conventional, back_to_back))
-            else:
-                label = (
-                    "混搭航空公司"
-                    if mode == ComparisonMode.MIXED_AIRLINES
-                    else "同航空公司"
+                missing_roles = [
+                    FARE_ROLE_LABELS[role] for role in FareTicketRole if not candidates[role]
+                ]
+                if missing_roles:
+                    unavailable_detail = (
+                        f"{label}缺少{'、'.join(missing_roles)}的公開快取票價，"
+                        "因此無法組成完整比較；這不是 0% 節省。"
+                    )
+                else:
+                    unavailable_detail = (
+                        f"{label}雖有候選票價，但日期順序、航空公司或匯率無法組成相容的完整方案。"
+                    )
+                comparisons.append(
+                    self._comparison(
+                        mode,
+                        conventional,
+                        back_to_back,
+                        unavailable_detail=unavailable_detail,
+                    )
                 )
+            else:
                 comparisons.append(
                     BackToBackComparison(
                         mode=mode,
