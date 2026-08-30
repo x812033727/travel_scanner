@@ -15,13 +15,19 @@ from app.auth.service import CurrentUser
 from app.config import get_settings
 from app.db import get_session
 from app.infra import enforce_rate_limit, get_redis
-from app.models import SearchJob, SearchRequest
+from app.models import SearchJob, SearchRequest, UsageReservation
 from app.problems import AppError
 from app.providers.registry import provider_status
 from app.search.events import stream_key
 from app.search.orchestrator import refresh_saved_offer
 from app.search.schemas import SearchCreate
-from app.usage.service import release_reservation, reserve_credits, search_operation_cost
+from app.usage.service import (
+    release_reservation,
+    reserve_use,
+    search_operation,
+    search_summary,
+    usage_status,
+)
 
 router = APIRouter(tags=["search"])
 Session = Annotated[AsyncSession, Depends(get_session)]
@@ -39,8 +45,10 @@ async def create_search(
         raise AppError(503, "provider_not_configured", status.message)
     await enforce_rate_limit(user.id)
     payload_json = payload.model_dump(mode="json")
-    operation, cost = search_operation_cost(payload_json)
-    reservation, created = await reserve_credits(session, user.id, idempotency_key, operation, cost)
+    operation = search_operation(payload_json)
+    reservation, created = await reserve_use(
+        session, user.id, idempotency_key, operation, search_summary(payload_json)
+    )
     if not created and reservation.resource_id:
         existing = await session.get(SearchRequest, reservation.resource_id)
         if existing:
@@ -48,7 +56,7 @@ async def create_search(
                 "search_id": str(existing.id),
                 "status": existing.status,
                 "progress": existing.progress,
-                "credits_charged": reservation.credits,
+                "usage": usage_status(reservation).model_dump(),
             }
     search = SearchRequest(user_id=user.id, operation=operation, request_json=payload_json)
     session.add(search)
@@ -65,7 +73,7 @@ async def create_search(
         job.queue_job_id = queued.id
         await session.commit()
     except Exception as exc:
-        await release_reservation(session, reservation)
+        await release_reservation(session, reservation, "queue_unavailable")
         search.status = "failed"
         job.status = "failed"
         job.error = "Queue unavailable"
@@ -77,7 +85,7 @@ async def create_search(
         "search_id": str(search.id),
         "status": "processing",
         "progress": 0,
-        "credits_charged": cost,
+        "usage": usage_status(reservation).model_dump(),
     }
 
 
@@ -88,6 +96,9 @@ async def get_search(search_id: UUID, user: CurrentUser, session: Session) -> di
     )
     if search is None:
         raise AppError(404, "search_not_found", "Search was not found")
+    reservation = await session.scalar(
+        select(UsageReservation).where(UsageReservation.resource_id == search.id)
+    )
     return {
         "search_id": str(search.id),
         "status": search.status,
@@ -95,6 +106,7 @@ async def get_search(search_id: UUID, user: CurrentUser, session: Session) -> di
         "request": search.request_json,
         "result": search.result_json,
         "warnings": search.warnings_json,
+        "usage": usage_status(reservation).model_dump() if reservation else None,
     }
 
 

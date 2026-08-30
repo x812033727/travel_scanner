@@ -1,147 +1,136 @@
-from calendar import monthrange
-from datetime import UTC, date, datetime
-from typing import Any
+from typing import Any, Literal
 from uuid import UUID
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models import Plan, PlanEntitlement, Subscription, UsageLedger, UsageReservation, User
+from app.models import UsageAccount, UsageLedger, UsagePackage, UsageReservation, User
 from app.problems import AppError
+from app.usage.schemas import UsageStatus
 
-PLAN_DEFAULTS: dict[str, dict[str, Any]] = {
-    "FREE": {
-        "name": "免費版",
-        "credits": 20,
+PACKAGE_DEFAULTS: dict[str, dict[str, Any]] = {
+    "TRIAL_3": {
+        "name": "註冊體驗",
+        "uses": 3,
         "price_twd": 0,
-        "entitlements": {"saved_trips": 1, "price_alerts": 1, "full_trip_trials": 1},
+        "purchasable": False,
     },
-    "PRO": {
-        "name": "專業版",
-        "credits": 200,
-        "price_twd": 299,
-        "entitlements": {"saved_trips": 20, "price_alerts": 20, "full_trip_trials": 200},
+    "PACK_10": {
+        "name": "輕量 10 次包",
+        "uses": 10,
+        "price_twd": 199,
+        "purchasable": False,
+    },
+    "PACK_30": {
+        "name": "常用 30 次包",
+        "uses": 30,
+        "price_twd": 499,
+        "purchasable": False,
+    },
+    "PACK_100": {
+        "name": "大量 100 次包",
+        "uses": 100,
+        "price_twd": 1299,
+        "purchasable": False,
     },
 }
 
-
-def period_for(day: date) -> tuple[date, date]:
-    start = day.replace(day=1)
-    end = day.replace(day=monthrange(day.year, day.month)[1])
-    return start, end
+COMMON_LIMITS = {"saved_trips": 20, "price_alerts": 20}
 
 
-def search_operation_cost(payload: dict[str, Any]) -> tuple[str, int]:
+def search_operation(payload: dict[str, Any]) -> str:
     if payload.get("trip_type") == "multi_city":
-        return "multi_city_optimization", 15
+        return "multi_city_search"
     modules = set(payload.get("modules", []))
     if payload.get("preferences", {}).get("optimization_mode") and len(modules) >= 3:
-        return "full_trip_optimization", 10
+        return "full_trip_search"
     if modules == {"flight", "hotel"}:
-        return "flight_hotel_search", 5
+        return "flight_hotel_search"
     if payload.get("flexible_dates") and "flight" in modules:
-        return "flexible_flight_search", 4
-    return "fixed_search", max(1, len(modules))
+        return "flexible_flight_search"
+    return "travel_search"
 
 
-async def seed_plans(session: AsyncSession) -> None:
-    for code, defaults in PLAN_DEFAULTS.items():
-        plan = await session.scalar(select(Plan).where(Plan.code == code))
-        if plan is None:
-            plan = Plan(
-                code=code,
-                name=str(defaults["name"]),
-                monthly_credits=int(defaults["credits"]),
-                price_twd=int(defaults["price_twd"]),
-            )
-            session.add(plan)
-            await session.flush()
-            for key, value in dict(defaults["entitlements"]).items():
-                session.add(PlanEntitlement(plan_id=plan.id, key=key, value=value))
+def search_summary(payload: dict[str, Any]) -> str:
+    if payload.get("trip_type") == "multi_city":
+        legs = payload.get("legs", [])
+        if legs:
+            first = legs[0]
+            last = legs[-1]
+            route = f"{first.get('origin', '—')} → {last.get('destination', '—')}"
+            return f"多城市旅程 {route} · {first.get('departure_date', '日期未定')}"[:255]
+        return "多城市旅程查詢"
+    origin = payload.get("origin", "—")
+    destination = payload.get("destination", "—")
+    departure = payload.get("departure_date", "日期未定")
+    returning = payload.get("return_date")
+    date_text = f"{departure}–{returning}" if returning else str(departure)
+    return f"旅程查詢 {origin} → {destination} · {date_text}"[:255]
 
 
-async def create_free_subscription(session: AsyncSession, user: User) -> Subscription:
-    await seed_plans(session)
-    plan = await session.scalar(select(Plan).where(Plan.code == "FREE"))
-    if plan is None:
-        raise RuntimeError("FREE plan seed failed")
-    start, end = period_for(datetime.now(UTC).date())
-    subscription = Subscription(
-        user_id=user.id,
-        plan_id=plan.id,
-        credit_balance=plan.monthly_credits,
-        period_start=start,
-        period_end=end,
+async def seed_usage_packages(session: AsyncSession) -> None:
+    for code, defaults in PACKAGE_DEFAULTS.items():
+        package = await session.scalar(select(UsagePackage).where(UsagePackage.code == code))
+        if package is None:
+            package = UsagePackage(code=code, name=str(defaults["name"]), uses=0)
+            session.add(package)
+        package.name = str(defaults["name"])
+        package.uses = int(defaults["uses"])
+        package.price_twd = int(defaults["price_twd"])
+        package.is_active = True
+        package.purchasable = bool(defaults["purchasable"])
+    await session.flush()
+
+
+async def create_usage_account(session: AsyncSession, user: User) -> UsageAccount:
+    await seed_usage_packages(session)
+    trial = await session.scalar(
+        select(UsagePackage).where(UsagePackage.code == "TRIAL_3")
     )
-    session.add(subscription)
+    if trial is None:
+        raise RuntimeError("TRIAL_3 package seed failed")
+    account = UsageAccount(user_id=user.id, remaining_uses=trial.uses, reserved_uses=0)
+    session.add(account)
     await session.flush()
     session.add(
         UsageLedger(
             user_id=user.id,
-            subscription_id=subscription.id,
+            account_id=account.id,
+            package_id=trial.id,
             entry_type="grant",
-            amount=plan.monthly_credits,
-            balance_after=plan.monthly_credits,
-            reference=f"monthly:{start.isoformat()}",
-            metadata_json={"plan": plan.code},
+            status="granted",
+            amount=trial.uses,
+            balance_after=trial.uses,
+            reference=f"trial:{user.id}",
+            operation="trial_registration",
+            summary="註冊贈送 3 次",
+            unit="use",
+            metadata_json={"package": trial.code},
         )
     )
-    return subscription
+    return account
 
 
-async def get_subscription(
+async def get_usage_account(
     session: AsyncSession, user_id: UUID, lock: bool = False
-) -> Subscription:
-    statement = select(Subscription).where(Subscription.user_id == user_id)
+) -> UsageAccount:
+    statement = select(UsageAccount).where(UsageAccount.user_id == user_id)
     if lock:
         statement = statement.with_for_update()
-    subscription = await session.scalar(statement)
-    if subscription is None:
-        raise AppError(409, "subscription_missing", "No active subscription was found")
-    today = datetime.now(UTC).date()
-    if subscription.period_end < today:
-        plan = await session.get(Plan, subscription.plan_id)
-        if plan is None:
-            raise AppError(409, "plan_missing", "The subscription plan is unavailable")
-        old_balance = subscription.credit_balance
-        if old_balance:
-            session.add(
-                UsageLedger(
-                    user_id=user_id,
-                    subscription_id=subscription.id,
-                    entry_type="expiry",
-                    amount=-old_balance,
-                    balance_after=0,
-                    reference=f"period:{subscription.period_end.isoformat()}",
-                    metadata_json={"reason": "unused monthly credits expired"},
-                )
-            )
-        start, end = period_for(today)
-        subscription.period_start = start
-        subscription.period_end = end
-        subscription.credit_balance = plan.monthly_credits
-        session.add(
-            UsageLedger(
-                user_id=user_id,
-                subscription_id=subscription.id,
-                entry_type="grant",
-                amount=plan.monthly_credits,
-                balance_after=plan.monthly_credits,
-                reference=f"monthly:{start.isoformat()}",
-                metadata_json={"plan": plan.code},
-            )
-        )
-    return subscription
+    account = await session.scalar(statement)
+    if account is None:
+        raise AppError(409, "usage_account_missing", "No usage account was found")
+    return account
 
 
-async def reserve_credits(
+async def reserve_use(
     session: AsyncSession,
     user_id: UUID,
     idempotency_key: str,
     operation: str,
-    credits: int,
+    summary: str,
 ) -> tuple[UsageReservation, bool]:
-    subscription = await get_subscription(session, user_id, lock=True)
+    account = await get_usage_account(session, user_id, lock=True)
     existing = await session.scalar(
         select(UsageReservation).where(
             UsageReservation.user_id == user_id,
@@ -149,54 +138,157 @@ async def reserve_credits(
         )
     )
     if existing is not None:
+        if existing.operation != operation:
+            raise AppError(
+                409,
+                "idempotency_key_reused",
+                "Idempotency-Key has already been used for another operation",
+            )
         return existing, False
-    if subscription.credit_balance < credits:
-        raise AppError(402, "insufficient_credits", "There are not enough credits for this request")
-    subscription.credit_balance -= credits
+    if account.remaining_uses - account.reserved_uses < 1:
+        raise AppError(402, "insufficient_uses", "可用次數不足，請前往方案頁查看次數包")
+    account.reserved_uses += 1
     reservation = UsageReservation(
         user_id=user_id,
-        subscription_id=subscription.id,
+        account_id=account.id,
         idempotency_key=idempotency_key,
         operation=operation,
-        credits=credits,
+        summary=summary[:255],
+        uses=1,
     )
     session.add(reservation)
     await session.flush()
-    session.add(
-        UsageLedger(
-            user_id=user_id,
-            subscription_id=subscription.id,
-            entry_type="debit",
-            amount=-credits,
-            balance_after=subscription.credit_balance,
-            reference=str(reservation.id),
-            metadata_json={"operation": operation, "idempotency_key": idempotency_key},
-        )
-    )
     return reservation, True
 
 
 async def commit_reservation(
-    session: AsyncSession, reservation: UsageReservation, resource_id: UUID
+    session: AsyncSession, reservation: UsageReservation, resource_id: UUID | None = None
 ) -> None:
-    reservation.status = "committed"
-    reservation.resource_id = resource_id
-
-
-async def release_reservation(session: AsyncSession, reservation: UsageReservation) -> None:
-    if reservation.status != "reserved":
+    current = await session.scalar(
+        select(UsageReservation)
+        .where(UsageReservation.id == reservation.id)
+        .with_for_update()
+        .execution_options(populate_existing=True)
+    )
+    if current is None or current.status != "reserved":
         return
-    subscription = await get_subscription(session, reservation.user_id, lock=True)
-    subscription.credit_balance += reservation.credits
-    reservation.status = "released"
+    account = await get_usage_account(session, current.user_id, lock=True)
+    if account.reserved_uses < current.uses or account.remaining_uses < current.uses:
+        raise AppError(409, "usage_balance_invalid", "The reserved usage balance is invalid")
+    account.reserved_uses -= current.uses
+    account.remaining_uses -= current.uses
+    current.status = "committed"
+    if resource_id is not None:
+        current.resource_id = resource_id
     session.add(
         UsageLedger(
-            user_id=reservation.user_id,
-            subscription_id=subscription.id,
-            entry_type="refund",
-            amount=reservation.credits,
-            balance_after=subscription.credit_balance,
-            reference=str(reservation.id),
-            metadata_json={"operation": reservation.operation},
+            user_id=current.user_id,
+            account_id=account.id,
+            entry_type="use",
+            status="charged",
+            amount=-current.uses,
+            balance_after=account.remaining_uses,
+            reference=str(current.id),
+            operation=current.operation,
+            summary=current.summary,
+            resource_id=current.resource_id,
+            unit="use",
+            metadata_json={},
         )
     )
+
+
+async def release_reservation(
+    session: AsyncSession, reservation: UsageReservation, reason: str = "no_usable_result"
+) -> None:
+    current = await session.scalar(
+        select(UsageReservation)
+        .where(UsageReservation.id == reservation.id)
+        .with_for_update()
+        .execution_options(populate_existing=True)
+    )
+    if current is None or current.status != "reserved":
+        return
+    account = await get_usage_account(session, current.user_id, lock=True)
+    if account.reserved_uses < current.uses:
+        raise AppError(409, "usage_balance_invalid", "The reserved usage balance is invalid")
+    account.reserved_uses -= current.uses
+    current.status = "released"
+    session.add(
+        UsageLedger(
+            user_id=current.user_id,
+            account_id=account.id,
+            entry_type="use",
+            status="released",
+            amount=0,
+            balance_after=account.remaining_uses,
+            reference=str(current.id),
+            operation=current.operation,
+            summary=current.summary,
+            resource_id=current.resource_id,
+            unit="use",
+            metadata_json={"reason": reason},
+        )
+    )
+
+
+def usage_status(reservation: UsageReservation) -> UsageStatus:
+    status: Literal["reserved", "charged", "released"]
+    if reservation.status == "reserved":
+        status = "reserved"
+    elif reservation.status == "committed":
+        status = "charged"
+    else:
+        status = "released"
+    return UsageStatus(status=status, uses=reservation.uses, reference=str(reservation.id))
+
+
+async def grant_package(
+    session: AsyncSession,
+    user_id: UUID,
+    package_code: str,
+    external_reference: str,
+) -> tuple[UsageLedger, bool]:
+    external_reference = external_reference.strip()
+    if not external_reference or len(external_reference) > 200:
+        raise AppError(
+            422,
+            "invalid_external_reference",
+            "External reference must contain between 1 and 200 characters",
+        )
+    await seed_usage_packages(session)
+    package = await session.scalar(
+        select(UsagePackage).where(
+            UsagePackage.code == package_code.upper(), UsagePackage.is_active.is_(True)
+        )
+    )
+    if package is None or package.code == "TRIAL_3":
+        raise AppError(404, "usage_package_not_found", "Usage package was not found")
+    reference = f"package:{external_reference}"
+    existing = await session.scalar(
+        select(UsageLedger).where(
+            UsageLedger.reference == reference,
+            UsageLedger.entry_type == "package_grant",
+        )
+    )
+    if existing is not None:
+        return existing, False
+    account = await get_usage_account(session, user_id, lock=True)
+    account.remaining_uses += package.uses
+    ledger = UsageLedger(
+        user_id=user_id,
+        account_id=account.id,
+        package_id=package.id,
+        entry_type="package_grant",
+        status="granted",
+        amount=package.uses,
+        balance_after=account.remaining_uses,
+        reference=reference,
+        operation="manual_package_grant",
+        summary=f"{package.name}加值",
+        unit="use",
+        metadata_json={"package": package.code, "source": "cli"},
+    )
+    session.add(ledger)
+    await session.flush()
+    return ledger, True

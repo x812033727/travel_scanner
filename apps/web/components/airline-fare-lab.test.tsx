@@ -2,6 +2,9 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AirlineFareLab } from "./airline-fare-lab";
 
+const { routerPush } = vi.hoisted(() => ({ routerPush: vi.fn() }));
+vi.mock("next/navigation", () => ({ useRouter: () => ({ push: routerPush }) }));
+
 const status = {
   sources: [
     { airline_code: "CI", airline_name: "中華航空", host: "flights.china-airlines.com", state: "ready", policy: "robots", detail: "ok", quote_count: 0, cache_hit: false },
@@ -15,7 +18,10 @@ function ok(payload: unknown) {
   return { ok: true, status: 200, json: async () => payload };
 }
 
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => {
+  vi.unstubAllGlobals();
+  routerPush.mockReset();
+});
 
 describe("airline fare lab", () => {
   it("shows crawler source readiness", async () => {
@@ -50,6 +56,7 @@ describe("airline fare lab", () => {
           is_bookable: false,
           disclaimer: "cached",
         }],
+        usage: { status: "charged", uses: 1, reference: "usage-1" },
       }));
     vi.stubGlobal("fetch", fetchMock);
     render(<AirlineFareLab />);
@@ -57,7 +64,11 @@ describe("airline fare lab", () => {
     fireEvent.click(screen.getByRole("button", { name: "搜尋公開票價" }));
     expect(await screen.findByText(/14,075/)).toBeTruthy();
     expect(screen.getByText("非即時 · 不可直接訂位 · 3 hours ago")).toBeTruthy();
+    expect(screen.getByText("本次已扣除 1 次")).toBeTruthy();
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(fetchMock.mock.calls[1][1].headers).toMatchObject({
+      "Idempotency-Key": expect.any(String),
+    });
   });
 
   it("validates that return date is not before departure", async () => {
@@ -67,6 +78,21 @@ describe("airline fare lab", () => {
     fireEvent.change(screen.getByLabelText("回程日期"), { target: { value: "2026-11-01" } });
     fireEvent.click(screen.getByRole("button", { name: "搜尋公開票價" }));
     expect((await screen.findByRole("alert")).textContent).toContain("回程日期不能早於出發日期");
+  });
+
+  it("routes to usage packages when no uses remain", async () => {
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(ok(status))
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 402,
+        json: async () => ({ code: "insufficient_uses", detail: "可用次數不足" }),
+      });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AirlineFareLab />);
+    await screen.findByText("政策停用");
+    fireEvent.click(screen.getByRole("button", { name: "搜尋公開票價" }));
+    await waitFor(() => expect(routerPush).toHaveBeenCalledWith("/pricing"));
   });
 
   it("searches and renders a complete back-to-back comparison", async () => {
@@ -147,6 +173,7 @@ describe("airline fare lab", () => {
       second_destination: "TYO",
       strategy: "nested_round_trips",
     });
+    expect(init.headers).toMatchObject({ "Idempotency-Key": expect.any(String) });
     const dates = [
       payload.first_trip.departure_date,
       payload.first_trip.return_date,

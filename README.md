@@ -33,11 +33,13 @@ npm run dev:web
 
 Open `http://localhost:3000`; API docs are at `http://localhost:8000/docs`.
 
-Create an account in the UI to receive the FREE plan. For local PRO testing:
+Create an account in the UI to receive three free, non-expiring uses. To grant a
+usage pack locally before online checkout is available:
 
 ```bash
 cd apps/api
-uv run python -m app.cli set-plan --email you@example.com --plan PRO
+uv run python -m app.cli add-usage-package --email you@example.com \
+  --package PACK_30 --reference local-test-001
 ```
 
 ## Database migration
@@ -63,20 +65,22 @@ npm run test:web
 npm run build:web
 ```
 
-Further sections below document providers, plans, credits, orchestration, and
+Further sections below document providers, usage packs, orchestration, and
 optimization as those modules are introduced.
 
-## Plans and credits
+## Usage packs and audit history
 
-Registration creates a FREE subscription with 20 monthly credits. PRO has 200
-credits; it is intentionally not unlimited. Search cost is calculated on the
-server (1 per fixed module, 4 for flexible flights, 5 for flight + hotel, 10 for
-a full trip, 15 for multi-city, and 3 for re-optimization).
+Registration grants three uses. The inactive-checkout catalog contains 10 uses
+for NT$199, 30 for NT$499, and 100 for NT$1,299. Uses stack, never expire, and
+every successful full-trip search, public-airline-fare search, back-to-back fare
+comparison, or trip re-optimization costs exactly one use.
 
-Credits are reserved and debited in the same PostgreSQL transaction. The
-immutable `usage_ledger` records every grant, debit, and refund, while the
-`usage_reservations` unique key prevents duplicate charges. Redis adds the fast
-rate-limit and in-flight guard, but is never the accounting source of truth.
+One use is reserved while work is in flight and charged only when a usable
+result exists. Empty results and failures release it and create a visible
+zero-charge record. The append-only PostgreSQL `usage_ledger` records grants,
+charges, releases, migrations, and adjustments; the `usage_reservations` unique
+key prevents duplicate charges. Members can review these records and their
+reference numbers at `GET /api/v1/usage/history` and in the account page.
 
 ## Adding a provider
 
@@ -221,14 +225,15 @@ Example authenticated request:
 ```bash
 curl -X POST http://localhost:8000/api/v1/crawlers/airlines/fares \
   -H "Authorization: Bearer $TOKEN" \
+  -H "Idempotency-Key: fare-example-001" \
   -H "Content-Type: application/json" \
   -d '{"origin":"TPE","destination":"NRT","departure_date":"2026-11-10","return_date":"2026-11-15","flex_days":7,"airlines":["CI","BR","JX"]}'
 ```
 
 ## Search orchestration
 
-`POST /api/v1/searches` validates the JWT, entitlement, rate limit, idempotency
-key, and credits before creating an RQ job. The worker calls provider modules in
+`POST /api/v1/searches` validates the JWT, shared feature limits, rate limit,
+idempotency key, and available uses before creating an RQ job. The worker calls provider modules in
 parallel; one provider failure becomes a warning instead of cancelling useful
 results. Normalized offers are persisted and published through a replayable
 Redis Stream exposed at `GET /api/v1/searches/{id}/events`.

@@ -1,7 +1,6 @@
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, Response
-from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.schemas import (
@@ -20,21 +19,17 @@ from app.auth.service import (
 )
 from app.config import get_settings
 from app.db import get_session
-from app.models import Plan, Subscription, User
+from app.models import User
 from app.problems import AppError
-from app.usage.service import create_free_subscription
+from app.usage.service import create_usage_account
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 
 
 async def user_response(session: AsyncSession, user: User) -> UserResponse:
-    plan_code = await session.scalar(
-        select(Plan.code)
-        .join(Subscription, Subscription.plan_id == Plan.id)
-        .where(Subscription.user_id == user.id)
-    )
-    return UserResponse(id=user.id, email=user.email, plan=plan_code or "FREE")
+    _ = session
+    return UserResponse(id=user.id, email=user.email)
 
 
 def set_auth_cookie(response: Response, token: str) -> None:
@@ -57,7 +52,7 @@ async def register(payload: RegisterRequest, response: Response, session: Sessio
     user = User(email=str(payload.email).lower(), password_hash=hash_password(payload.password))
     session.add(user)
     await session.flush()
-    await create_free_subscription(session, user)
+    await create_usage_account(session, user)
     await session.commit()
     token = create_access_token(user.id)
     set_auth_cookie(response, token)

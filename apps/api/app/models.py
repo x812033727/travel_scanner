@@ -8,6 +8,7 @@ from uuid import UUID, uuid4
 from sqlalchemy import (
     JSON,
     Boolean,
+    CheckConstraint,
     Date,
     DateTime,
     ForeignKey,
@@ -41,34 +42,31 @@ class User(Timestamped, Base):
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
 
 
-class Plan(Timestamped, Base):
-    __tablename__ = "plans"
+class UsagePackage(Timestamped, Base):
+    __tablename__ = "usage_packages"
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     code: Mapped[str] = mapped_column(String(32), unique=True)
     name: Mapped[str] = mapped_column(String(100))
-    monthly_credits: Mapped[int] = mapped_column(Integer)
+    uses: Mapped[int] = mapped_column(Integer)
     price_twd: Mapped[int] = mapped_column(Integer, default=0)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+    purchasable: Mapped[bool] = mapped_column(Boolean, default=False)
 
 
-class PlanEntitlement(Base):
-    __tablename__ = "plan_entitlements"
-    __table_args__ = (UniqueConstraint("plan_id", "key", name="uq_plan_entitlement"),)
-    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
-    plan_id: Mapped[UUID] = mapped_column(ForeignKey("plans.id", ondelete="CASCADE"), index=True)
-    key: Mapped[str] = mapped_column(String(64))
-    value: Mapped[Any] = mapped_column(JSON)
-
-
-class Subscription(Timestamped, Base):
-    __tablename__ = "subscriptions"
-    __table_args__ = (UniqueConstraint("user_id", name="uq_subscription_user"),)
+class UsageAccount(Timestamped, Base):
+    __tablename__ = "usage_accounts"
+    __table_args__ = (
+        UniqueConstraint("user_id", name="uq_usage_account_user"),
+        CheckConstraint("remaining_uses >= 0", name="ck_usage_account_remaining_nonnegative"),
+        CheckConstraint("reserved_uses >= 0", name="ck_usage_account_reserved_nonnegative"),
+        CheckConstraint(
+            "reserved_uses <= remaining_uses", name="ck_usage_account_reserved_within_balance"
+        ),
+    )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
-    plan_id: Mapped[UUID] = mapped_column(ForeignKey("plans.id"), index=True)
-    status: Mapped[str] = mapped_column(String(32), default="active")
-    credit_balance: Mapped[int] = mapped_column(Integer, default=0)
-    period_start: Mapped[date] = mapped_column(Date)
-    period_end: Mapped[date] = mapped_column(Date)
+    remaining_uses: Mapped[int] = mapped_column(Integer, default=0)
+    reserved_uses: Mapped[int] = mapped_column(Integer, default=0)
 
 
 class UsageLedger(Base):
@@ -80,11 +78,19 @@ class UsageLedger(Base):
     )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
-    subscription_id: Mapped[UUID] = mapped_column(ForeignKey("subscriptions.id"), index=True)
+    account_id: Mapped[UUID] = mapped_column(ForeignKey("usage_accounts.id"), index=True)
+    package_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("usage_packages.id"), nullable=True, index=True
+    )
     entry_type: Mapped[str] = mapped_column(String(32))
+    status: Mapped[str] = mapped_column(String(32))
     amount: Mapped[int] = mapped_column(Integer)
     balance_after: Mapped[int] = mapped_column(Integer)
     reference: Mapped[str] = mapped_column(String(255), index=True)
+    operation: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    summary: Mapped[str] = mapped_column(String(255))
+    resource_id: Mapped[UUID | None] = mapped_column(nullable=True, index=True)
+    unit: Mapped[str] = mapped_column(String(32), default="use")
     metadata_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
@@ -94,10 +100,11 @@ class UsageReservation(Timestamped, Base):
     __table_args__ = (UniqueConstraint("user_id", "idempotency_key", name="uq_usage_idempotency"),)
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
-    subscription_id: Mapped[UUID] = mapped_column(ForeignKey("subscriptions.id"), index=True)
+    account_id: Mapped[UUID] = mapped_column(ForeignKey("usage_accounts.id"), index=True)
     idempotency_key: Mapped[str] = mapped_column(String(255))
     operation: Mapped[str] = mapped_column(String(64))
-    credits: Mapped[int] = mapped_column(Integer)
+    summary: Mapped[str] = mapped_column(String(255))
+    uses: Mapped[int] = mapped_column(Integer, default=1)
     status: Mapped[str] = mapped_column(String(32), default="reserved")
     resource_id: Mapped[UUID | None] = mapped_column(nullable=True)
 

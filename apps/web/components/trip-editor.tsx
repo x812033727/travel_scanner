@@ -14,8 +14,9 @@ import {
   Trash2,
   Unlock,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { api, twd } from "@/lib/api";
+import { api, isUsageInsufficient, twd } from "@/lib/api";
 import { groupTripItems, type Trip, type TripItem } from "@/lib/trip-types";
 
 function normalize(items: TripItem[]) {
@@ -30,6 +31,7 @@ function normalize(items: TripItem[]) {
 }
 
 export function TripEditor({ tripId }: { tripId: string }) {
+  const router = useRouter();
   const [trip, setTrip] = useState<Trip>();
   const [items, setItems] = useState<TripItem[]>([]);
   const [error, setError] = useState<string>();
@@ -109,8 +111,14 @@ export function TripEditor({ tripId }: { tripId: string }) {
         method: "POST",
         headers: { "Idempotency-Key": crypto.randomUUID() },
       });
-      setTrip(updated); setItems(updated.items); setNotice("已保留固定項目並重新檢查其餘安排");
-    } catch (reason) { setError((reason as Error).message); }
+      setTrip(updated); setItems(updated.items); setNotice(updated.usage?.status === "charged" ? "已重新最佳化並扣除 1 次；固定項目完整保留" : "已重新檢查其餘安排，本次未扣次");
+    } catch (reason) {
+      if (isUsageInsufficient(reason)) {
+        router.push("/pricing");
+        return;
+      }
+      setError(`${(reason as Error).message}；本次未扣次。`);
+    }
     finally { setBusy(false); }
   }
 
@@ -137,7 +145,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
   if (!trip) return <main className="mx-auto max-w-4xl px-5 py-16 text-[var(--muted)]">正在載入旅程…</main>;
 
   return <main className="mx-auto max-w-6xl px-5 pb-20 md:px-8">
-    <section className="mb-6 rounded-[2rem] border border-[var(--line)] bg-white p-6 shadow-[var(--shadow-lg)] md:p-8"><div className="flex flex-wrap items-start justify-between gap-5"><div><p className="text-sm font-semibold text-[var(--teal)]">可編輯旅程 · 版本 {trip.version}</p><h1 className="mt-2 text-3xl font-bold md:text-4xl">{trip.name}</h1><p className="mt-3 text-[var(--muted)]">目前總額 {twd.format(Number(trip.total_price))}。鎖定航班與住宿後，可自由調整每日動線。</p></div><div className="flex flex-wrap gap-2"><button onClick={reoptimize} disabled={busy} className="flex items-center gap-2 rounded-xl border border-[var(--line)] px-4 py-3 text-sm font-semibold"><RefreshCw size={16} />重新最佳化</button><button onClick={save} disabled={busy} className="flex items-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white"><Save size={16} />{busy ? "處理中…" : "儲存變更"}</button></div></div>{error && <p role="alert" className="mt-4 rounded-xl bg-red-50 p-4 text-sm text-red-800">{error}</p>}{notice && <p className="mt-4 flex items-center gap-2 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800"><Check size={16} />{notice}</p>}</section>
+    <section className="mb-6 rounded-[2rem] border border-[var(--line)] bg-white p-6 shadow-[var(--shadow-lg)] md:p-8"><div className="flex flex-wrap items-start justify-between gap-5"><div><p className="text-sm font-semibold text-[var(--teal)]">可編輯旅程 · 版本 {trip.version}</p><h1 className="mt-2 text-3xl font-bold md:text-4xl">{trip.name}</h1><p className="mt-3 text-[var(--muted)]">目前總額 {twd.format(Number(trip.total_price))}。鎖定航班與住宿後，可自由調整每日動線。</p><p className="mt-2 text-xs text-[var(--muted)]">重新最佳化成功才扣 1 次；失敗不扣。</p></div><div className="flex flex-wrap gap-2"><button onClick={reoptimize} disabled={busy} className="flex items-center gap-2 rounded-xl border border-[var(--line)] px-4 py-3 text-sm font-semibold"><RefreshCw size={16} />重新最佳化</button><button onClick={save} disabled={busy} className="flex items-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white"><Save size={16} />{busy ? "處理中…" : "儲存變更"}</button></div></div>{error && <p role="alert" className="mt-4 rounded-xl bg-red-50 p-4 text-sm text-red-800">{error}</p>}{notice && <p className="mt-4 flex items-center gap-2 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800"><Check size={16} />{notice}</p>}</section>
 
     <section className="mb-6 flex flex-wrap items-center gap-3 rounded-2xl border border-[var(--line)] bg-white p-4"><button onClick={share} className="flex items-center gap-2 rounded-xl border border-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-[var(--teal)]"><Link2 size={16} />建立新的秘密連結</button>{trip.share_enabled && <button onClick={revoke} className="rounded-xl px-4 py-2.5 text-sm font-semibold text-red-700">撤銷目前連結</button>}{shareUrl && <label className="flex min-w-0 flex-1 items-center gap-2 rounded-xl bg-[var(--paper)] px-3 py-2 text-sm"><input aria-label="唯讀分享連結" readOnly value={shareUrl} className="min-w-0 flex-1 bg-transparent outline-none" /><button aria-label="複製分享連結" onClick={() => navigator.clipboard?.writeText(shareUrl)}><Copy size={16} /></button></label>}</section>
 

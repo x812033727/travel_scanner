@@ -18,7 +18,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { api, twd } from "@/lib/api";
+import { api, isUsageInsufficient, twd } from "@/lib/api";
 import { destinationByAirport, interestLabel, interests as destinationInterests } from "@/lib/destinations";
 
 type Parsed = {
@@ -93,10 +93,13 @@ type ProviderStatus = {
   message: string;
 };
 
+type UsageStatus = { status: "reserved" | "charged" | "released"; uses: number; reference: string };
+
 type SearchResult = {
   status: string;
   result?: { modules?: Record<string, Offer[]>; plans?: Plan[] };
   warnings?: string[];
+  usage?: UsageStatus;
 };
 
 const stages = [
@@ -210,6 +213,7 @@ export function SearchExperience() {
   const [searchId, setSearchId] = useState<string>();
   const [error, setError] = useState<string>();
   const [busy, setBusy] = useState(false);
+  const [usageState, setUsageState] = useState<UsageStatus>();
   const [activeTab, setActiveTab] = useState("plans");
   const [breakfastOnly, setBreakfastOnly] = useState(params.get("breakfast_required") === "true");
   const [refundableOnly, setRefundableOnly] = useState(params.get("refundable_required") === "true");
@@ -251,6 +255,7 @@ export function SearchExperience() {
     if (result.result?.modules) setOffers(result.result.modules);
     if (result.result?.plans) setPlans(result.result.plans);
     setWarnings(result.warnings || []);
+    if (result.usage) setUsageState(result.usage);
   }
 
   async function begin() {
@@ -259,7 +264,7 @@ export function SearchExperience() {
     setError(undefined);
     setProgress(2);
     try {
-      const accepted = await api<{ search_id: string }>("/searches", {
+      const accepted = await api<{ search_id: string; usage: UsageStatus }>("/searches", {
         method: "POST",
         headers: { "Idempotency-Key": crypto.randomUUID() },
         body: JSON.stringify({
@@ -291,6 +296,7 @@ export function SearchExperience() {
         }),
       });
       setSearchId(accepted.search_id);
+      setUsageState(accepted.usage);
       const stream = new EventSource(`/api/travel/searches/${accepted.search_id}/events`);
       stream.addEventListener("module.results", (message) => {
         const data = JSON.parse((message as MessageEvent).data);
@@ -308,13 +314,17 @@ export function SearchExperience() {
         setProgress(92);
         setPlans(data.plans);
       });
-      stream.addEventListener("search.completed", async () => {
+      stream.addEventListener("search.completed", async (message) => {
+        const data = JSON.parse((message as MessageEvent).data);
+        if (data.usage) setUsageState(data.usage);
         setProgress(100);
         setBusy(false);
         stream.close();
         await loadFinal(accepted.search_id).catch(() => undefined);
       });
-      stream.addEventListener("search.failed", async () => {
+      stream.addEventListener("search.failed", async (message) => {
+        const data = JSON.parse((message as MessageEvent).data);
+        if (data.usage) setUsageState(data.usage);
         setError("搜尋未能取得任何結果，請查看資料來源狀態後再試。");
         setBusy(false);
         stream.close();
@@ -327,6 +337,10 @@ export function SearchExperience() {
         ]);
       };
     } catch (reason) {
+      if (isUsageInsufficient(reason)) {
+        router.push("/pricing");
+        return;
+      }
       setError((reason as Error).message);
       setBusy(false);
     }
@@ -386,14 +400,15 @@ export function SearchExperience() {
         {parsed && <div className="mt-5 flex flex-wrap gap-2 text-sm">
           {[`${parsed.travelers.adults + (parsed.travelers.children || 0)} 位旅客`, `${parsed.travelers.rooms || 1} 間房`, `${dates[0]} → ${dates[1]}`, parsed.preferred_area ? `住在 ${parsed.preferred_area}` : null, parsed.budget_twd ? `預算 ${twd.format(parsed.budget_twd)}` : null, parsed.hotel_max_nightly_twd ? `每晚 ≤ ${twd.format(parsed.hotel_max_nightly_twd)}` : null, parsed.avoid_red_eye ? "避開紅眼" : null, parsed.breakfast_required ? "含早餐" : null, parsed.refundable_required ? "可退款" : null, ...parsed.interests.map(interestLabel)].filter(Boolean).map((tag) => <span key={String(tag)} className="rounded-full bg-[var(--teal-soft)] px-3 py-1.5 text-[var(--teal-dark)]">{tag}</span>)}
         </div>}
-        {!searchId && <button disabled={!parsed || busy || providerStatus?.status !== "ready"} onClick={begin} className="mt-6 rounded-2xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">確認條件並開始搜尋</button>}
+        {!searchId && <><button disabled={!parsed || busy || providerStatus?.status !== "ready"} onClick={begin} className="mt-6 rounded-2xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">確認條件並開始搜尋</button><p className="mt-2 text-xs text-[var(--muted)]">成功取得至少一筆可用結果才扣 1 次；失敗會自動退回。</p></>}
         {error && <div role="alert" className="mt-5 flex items-start gap-2 rounded-xl bg-red-50 p-4 text-sm text-red-800"><AlertCircle size={18} className="mt-0.5 shrink-0" /><span>{error} {error.includes("sign") || error.includes("登入") ? <Link className="underline" href="/login">前往登入</Link> : null}</span></div>}
         {warnings.map((warning) => <p key={warning} className="mt-3 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">{warning}</p>)}
       </section>
 
       {searchId && <section aria-label="搜尋進度" className="mb-7 rounded-3xl border border-[var(--line)] bg-white p-6">
-        <div className="mb-4 flex items-center justify-between"><strong>{progress === 100 ? "分析完成" : "正在組合你的旅程"}</strong><span className="font-mono text-sm text-[var(--muted)]">{progress}%</span></div>
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2"><strong>{progress === 100 ? "分析完成" : "正在組合你的旅程"}</strong><span className="font-mono text-sm text-[var(--muted)]">{progress}%</span></div>
         <div className="h-2 overflow-hidden rounded-full bg-[#e4ebe6]"><div className="h-full rounded-full bg-[var(--teal)] transition-all" style={{ width: `${progress}%` }} /></div>
+        {usageState && <p className={`mt-3 text-sm font-semibold ${usageState.status === "charged" ? "text-[#9d4e3f]" : usageState.status === "released" ? "text-emerald-700" : "text-[var(--teal)]"}`}>{usageState.status === "charged" ? "已成功扣除 1 次" : usageState.status === "released" ? "未取得可用結果，本次未扣次" : "已暫時保留 1 次，完成後才會正式扣除"}</p>}
         <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">{stages.map(({ key, label, icon: Icon }) => <div key={key} className={`flex items-center gap-2 rounded-xl p-2 text-sm ${done.includes(key) ? "text-[var(--teal)]" : "text-[var(--muted)]"}`}>{done.includes(key) ? <Check size={17} /> : <LoaderCircle size={17} className={busy ? "animate-spin" : ""} />}<Icon size={17} />{label}</div>)}</div>
       </section>}
 

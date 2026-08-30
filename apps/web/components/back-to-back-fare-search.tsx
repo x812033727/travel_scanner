@@ -10,8 +10,9 @@ import {
   ShieldAlert,
   Shuffle,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { FormEvent, useMemo, useState } from "react";
-import { api, twd } from "@/lib/api";
+import { api, isUsageInsufficient, twd } from "@/lib/api";
 
 type AirlineCode = "CI" | "BR" | "JX";
 type FareTicketRole = "conventional_first" | "conventional_second" | "wrapper" | "reverse";
@@ -24,6 +25,7 @@ type ComparisonVerdict =
 type BackToBackPricingCapability = "full_back_to_back" | "open_jaw_provider_required";
 type BackToBackStrategy = "nested_round_trips" | "reverse_two_segment";
 type SupplementalFareRole = "head_one_way" | "tail_one_way";
+type UsageStatus = { status: "reserved" | "charged" | "released"; uses: number; reference: string };
 
 type FareQuote = {
   id: string;
@@ -92,6 +94,7 @@ type BackToBackResponse = {
   candidates: Array<{ role: FareTicketRole; quotes: FareQuote[] }>;
   fx_rates: FxRateSnapshot[];
   warnings: string[];
+  usage?: UsageStatus;
 };
 
 const airlines: Array<{ code: AirlineCode; short: string }> = [
@@ -308,6 +311,7 @@ function ComparisonCard({
 }
 
 export function BackToBackFareSearch() {
+  const router = useRouter();
   const [selected, setSelected] = useState<Record<AirlineCode, boolean>>({ CI: true, BR: true, JX: true });
   const [strategy, setStrategy] = useState<BackToBackStrategy>("reverse_two_segment");
   const [origin, setOrigin] = useState("TPE");
@@ -350,6 +354,7 @@ export function BackToBackFareSearch() {
     try {
       const response = await api<BackToBackResponse>("/crawlers/airlines/back-to-back-fares", {
         method: "POST",
+        headers: { "Idempotency-Key": crypto.randomUUID() },
         body: JSON.stringify({
           origin,
           first_destination: firstDestination,
@@ -379,6 +384,10 @@ export function BackToBackFareSearch() {
       });
       setResult(response);
     } catch (reason) {
+      if (isUsageInsufficient(reason)) {
+        router.push("/pricing");
+        return;
+      }
       setError((reason as Error).message);
     } finally {
       setBusy(false);
@@ -504,6 +513,7 @@ export function BackToBackFareSearch() {
         <button disabled={busy || !selectedAirlines.length} className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3.5 font-semibold text-white transition hover:bg-[var(--teal-dark)] disabled:cursor-not-allowed disabled:opacity-50">
           {busy ? <><LoaderCircle className="animate-spin" size={18} />正在比對兩種買法</> : <><Shuffle size={18} />比較倒買價格</>}
         </button>
+        <p className="mt-3 text-center text-xs text-[var(--muted)]">成功取得至少一組可比較價格才扣 1 次；失敗不扣。</p>
         {error && <div role="alert" className="mt-4 flex gap-2 rounded-xl bg-red-50 p-4 text-sm leading-6 text-red-800"><AlertCircle className="mt-0.5 shrink-0" size={18} />{error}</div>}
       </form>
 
@@ -515,6 +525,7 @@ export function BackToBackFareSearch() {
         {!result && !busy && <div className="grid min-h-[27rem] place-items-center text-center"><div className="max-w-md"><span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-[#edf5f1] text-[var(--teal)]"><Plane size={28} /></span><h3 className="mt-5 text-xl font-bold">需要兩趟旅行才能正確比較</h3><p className="mt-2 leading-7 text-[var(--muted)]">可分別比較「外站兩段票＋頭尾單程」及「包覆票＋外站始發倒買票」，不再把兩種玩法混稱為同一種倒買。</p></div></div>}
         {busy && <div className="grid min-h-[27rem] place-items-center text-center text-[var(--muted)]"><div><LoaderCircle className="mx-auto animate-spin text-[var(--teal)]" size={32} /><p className="mt-4">正在讀取台灣與外站始發公開票價…</p></div></div>}
         {result && !busy && <div className="mt-5 space-y-5">
+          {result.usage && <p className={`rounded-xl p-3 text-sm font-semibold ${result.usage.status === "charged" ? "bg-[#fff4ef] text-[#7e4439]" : "bg-emerald-50 text-emerald-800"}`}>{result.usage.status === "charged" ? "本次已扣除 1 次" : "未取得可比較價格，本次未扣次"}</p>}
           {result.pricing_capability === "open_jaw_provider_required" && (
             <div className="rounded-2xl border border-sky-200 bg-sky-50 p-4 text-sm leading-6 text-sky-950">
               <p className="font-bold">兩次目的地不同，倒買票會變成開口票</p>

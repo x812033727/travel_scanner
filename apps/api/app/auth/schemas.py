@@ -21,7 +21,6 @@ class ChangePasswordRequest(BaseModel):
 class UserResponse(BaseModel):
     id: UUID
     email: EmailStr
-    plan: str
 
 
 class TokenResponse(BaseModel):

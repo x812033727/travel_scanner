@@ -1,1 +1,1 @@
-"""Subscription and credit accounting module."""
+"""Non-expiring usage-pack accounting and audit history."""
