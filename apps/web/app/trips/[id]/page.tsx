@@ -7,7 +7,11 @@ export const metadata: Metadata = {
   description: "調整每日安排、重新最佳化並分享完整旅程。",
 };
 
-export default async function TripPage({ params }: PageProps<"/trips/[id]">) {
+export default async function TripPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   return <><SiteHeader /><TripEditor tripId={id} /></>;
 }
