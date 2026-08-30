@@ -37,3 +37,13 @@ class TransportProvider(Protocol):
     name: str
 
     async def search_transport(self, query: SearchCreate) -> list[TransportOffer]: ...
+
+
+class TravelProvider(
+    FlightProvider,
+    HotelProvider,
+    ActivityProvider,
+    TransportProvider,
+    Protocol,
+):
+    """Provider capable of serving every module in a complete trip search."""
