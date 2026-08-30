@@ -109,6 +109,38 @@ It shows each adapter's current policy state before submitting an authenticated
 fare query through the same-origin BFF, and keeps public cached fares clearly
 separate from live, bookable inventory.
 
+For pages that need a real browser runtime, the Chrome bridge asks the API for
+allowlisted, robots-approved targets, opens only those targets in an isolated
+Google Chrome process, parses the page's `__NEXT_DATA__` in Chrome, retains only
+the allowlisted public-fare fields, and posts those rows back to the existing
+Python normalizer. The API repeats the source and robots checks, rejects
+captures older than 15 minutes, limits row count and payload size, and records
+a SHA-256 digest. The bridge never accepts an arbitrary target URL and does not
+reuse a personal Chrome profile, log in to an airline, or bypass a challenge.
+
+Set either a short-lived API token or local Travel Scanner credentials, then
+run the tool from the repository root. Credentials remain in memory; prefer
+environment variables over command-line arguments.
+
+```bash
+export TRAVEL_SCANNER_TOKEN="your-short-lived-token"
+npm run crawl:airlines:chrome -- \
+  --origin TPE --destination NRT \
+  --departure-date 2026-11-10 --return-date 2026-11-15 \
+  --airlines CI,BR,JX --headed --strict \
+  --output chrome-fares.json
+```
+
+On PowerShell, use `$env:TRAVEL_SCANNER_TOKEN = "..."`. Alternatively set
+`TRAVEL_SCANNER_EMAIL` and `TRAVEL_SCANNER_PASSWORD`; the tool signs in through
+the normal API and does not persist the returned token. Use `--channel chromium`
+only when Google Chrome is unavailable. `BR` is reported as policy-disabled
+until its robots policy can be verified; the Chrome path does not override it.
+
+The bridge endpoints are `POST /api/v1/crawlers/airlines/browser-targets` and
+`POST /api/v1/crawlers/airlines/browser-captures`. Both require Travel Scanner
+authentication and use the normal per-user rate limit.
+
 Safety controls include a fixed HTTPS host allowlist, runtime `robots.txt`
 checks that fail closed, Redis-backed page caching and per-host throttling (with
 a process-local development fallback), bounded response size, timeout, and one

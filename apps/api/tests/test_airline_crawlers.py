@@ -1,20 +1,24 @@
 import json
-from datetime import date
+from datetime import UTC, date, datetime
 from decimal import Decimal
+from unittest.mock import AsyncMock
 
 import httpx
 import pytest
 from fakeredis.aioredis import FakeRedis
 from httpx import ASGITransport, AsyncClient
+from pydantic import ValidationError
 
 from app.config import Settings
 from app.crawlers.airlines import (
+    AirlineFareCrawlerService,
     CrawlerError,
     CrawlerPolicyError,
     RobotsAwareFetcher,
     parse_public_fares,
 )
 from app.crawlers.schemas import (
+    AirlineBrowserCapture,
     AirlineCode,
     AirlineCrawlerSource,
     AirlineFareSearch,
@@ -155,6 +159,21 @@ async def test_crawler_search_requires_authentication() -> None:
 
 
 @pytest.mark.asyncio
+async def test_browser_bridge_requires_authentication() -> None:
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        targets = await client.post(
+            "/api/v1/crawlers/airlines/browser-targets",
+            json={"origin": "TPE", "destination": "NRT"},
+        )
+        capture = await client.post(
+            "/api/v1/crawlers/airlines/browser-captures",
+            json={},
+        )
+    assert targets.status_code == 401
+    assert capture.status_code == 401
+
+
+@pytest.mark.asyncio
 async def test_fetcher_checks_robots_and_caches_allowed_page() -> None:
     requests: list[str] = []
 
@@ -192,6 +211,98 @@ async def test_fetcher_fails_closed_when_robots_disallows_page() -> None:
         with pytest.raises(CrawlerPolicyError, match="不允許"):
             await fetcher.fetch(client, url)
     await redis.aclose()
+
+
+@pytest.mark.asyncio
+async def test_browser_targets_keep_eva_disabled_and_authorize_enabled_sources() -> None:
+    redis = FakeRedis(decode_responses=True)
+    service = AirlineFareCrawlerService(Settings(), redis)  # type: ignore[arg-type]
+    service.fetcher.authorize = AsyncMock()  # type: ignore[method-assign]
+    response = await service.browser_targets(
+        AirlineFareSearch(destination="NRT"), force_refresh=True
+    )
+    await redis.aclose()
+
+    targets = {target.airline_code: target for target in response.targets}
+    assert targets[AirlineCode.CHINA_AIRLINES].source_url == (
+        "https://flights.china-airlines.com/en-tw/flights-from-taipei-to-tokyo"
+    )
+    assert targets[AirlineCode.STARLUX].state == SourceState.READY
+    assert targets[AirlineCode.EVA_AIR].state == SourceState.DISABLED
+    assert targets[AirlineCode.EVA_AIR].source_url is None
+    assert service.fetcher.authorize.await_count == 2  # type: ignore[attr-defined]
+
+
+@pytest.mark.asyncio
+async def test_browser_capture_uses_existing_normalizer_and_records_digest() -> None:
+    query = AirlineFareSearch(
+        destination="NRT",
+        departure_date=date(2026, 11, 10),
+        return_date=date(2026, 11, 15),
+        flex_days=0,
+        airlines=[AirlineCode.STARLUX],
+    )
+    rows = [fare_row(departure="2026-11-10", returning="2026-11-15", price=14_075)]
+    capture = AirlineBrowserCapture(
+        airline_code=AirlineCode.STARLUX,
+        query=query,
+        source_url="https://www.starlux-airlines.com/flights/en-tw/flights-from-taipei-to-tokyo",
+        page_title="Flights from Taipei to Tokyo - STARLUX Airlines",
+        captured_at=datetime.now(UTC),
+        fare_rows=rows,
+    )
+    redis = FakeRedis(decode_responses=True)
+    service = AirlineFareCrawlerService(Settings(), redis)  # type: ignore[arg-type]
+    service.fetcher.authorize = AsyncMock()  # type: ignore[method-assign]
+    response = await service.parse_browser_capture(capture)
+    await redis.aclose()
+
+    assert len(response.quotes) == 1
+    assert response.quotes[0].total_price == Decimal("14075")
+    assert response.quotes[0].is_live is False
+    assert response.sources[0].policy == "browser_capture_allowlisted_robots_checked"
+    assert len(response.capture_sha256) == 64
+
+
+@pytest.mark.asyncio
+async def test_browser_capture_rejects_non_allowlisted_page_and_disabled_adapter() -> None:
+    query = AirlineFareSearch(destination="NRT", airlines=[AirlineCode.CHINA_AIRLINES])
+    rows: list[dict[str, object]] = []
+    redis = FakeRedis(decode_responses=True)
+    service = AirlineFareCrawlerService(Settings(), redis)  # type: ignore[arg-type]
+
+    with pytest.raises(CrawlerPolicyError, match="不符"):
+        await service.parse_browser_capture(
+            AirlineBrowserCapture(
+                airline_code=AirlineCode.CHINA_AIRLINES,
+                query=query,
+                source_url="https://flights.china-airlines.com/en-tw/flights-from-taipei-to-osaka",
+                fare_rows=rows,
+            )
+        )
+    with pytest.raises(CrawlerPolicyError, match="robots.txt"):
+        await service.parse_browser_capture(
+            AirlineBrowserCapture(
+                airline_code=AirlineCode.EVA_AIR,
+                query=AirlineFareSearch(destination="NRT", airlines=[AirlineCode.EVA_AIR]),
+                source_url="https://flights.evaair.com/en-tw/flights-from-taipei-to-tokyo",
+                fare_rows=rows,
+            )
+        )
+    await redis.aclose()
+
+
+def test_browser_capture_rejects_fields_outside_the_public_fare_allowlist() -> None:
+    with pytest.raises(ValidationError, match="bookingUrl"):
+        AirlineBrowserCapture(
+            airline_code=AirlineCode.CHINA_AIRLINES,
+            query=AirlineFareSearch(destination="NRT"),
+            source_url="https://flights.china-airlines.com/en-tw/flights-from-taipei-to-tokyo",
+            fare_rows=[{
+                **fare_row(departure="2026-11-10", returning="2026-11-15", price=13_000),
+                "bookingUrl": "https://booking.example/private",
+            }],
+        )
 
 
 def test_verification_accepts_expected_disabled_source() -> None:

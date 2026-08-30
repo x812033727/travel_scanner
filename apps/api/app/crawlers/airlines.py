@@ -4,7 +4,7 @@ import json
 import time
 from collections.abc import Iterator
 from dataclasses import dataclass
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal, InvalidOperation
 from html.parser import HTMLParser
 from typing import Any, cast
@@ -18,6 +18,10 @@ from redis.exceptions import RedisError
 
 from app.config import Settings
 from app.crawlers.schemas import (
+    AirlineBrowserCapture,
+    AirlineBrowserCaptureResponse,
+    AirlineBrowserTarget,
+    AirlineBrowserTargetsResponse,
     AirlineCode,
     AirlineCrawlerSource,
     AirlineFareSearch,
@@ -160,14 +164,56 @@ def parse_public_fares(
     if not parser.documents:
         raise CrawlerError("page_format_changed", "找不到公開票價頁的結構化資料")
 
+    return parse_public_fare_documents(
+        parser.documents,
+        airline_code=airline_code,
+        airline_name=airline_name,
+        source_url=source_url,
+        query=query,
+    )
+
+
+def parse_public_fare_documents(
+    documents: list[str],
+    *,
+    airline_code: AirlineCode,
+    airline_name: str,
+    source_url: str,
+    query: AirlineFareSearch,
+) -> list[PublicFareQuote]:
+    if not documents:
+        raise CrawlerError("page_format_changed", "找不到公開票價頁的結構化資料")
+
     rows: list[dict[str, Any]] = []
-    for document in parser.documents:
+    valid_document = False
+    for document in documents:
         try:
             payload: object = json.loads(document)
         except json.JSONDecodeError:
             continue
+        valid_document = True
         for fares in _fare_lists(payload):
             rows.extend(fares)
+    if not valid_document:
+        raise CrawlerError("page_format_changed", "公開票價頁的結構化資料不是有效 JSON")
+
+    return normalize_public_fare_rows(
+        rows,
+        airline_code=airline_code,
+        airline_name=airline_name,
+        source_url=source_url,
+        query=query,
+    )
+
+
+def normalize_public_fare_rows(
+    rows: list[dict[str, Any]],
+    *,
+    airline_code: AirlineCode,
+    airline_name: str,
+    source_url: str,
+    query: AirlineFareSearch,
+) -> list[PublicFareQuote]:
 
     retrieved_at = datetime.now(UTC)
     quotes: dict[str, PublicFareQuote] = {}
@@ -258,6 +304,17 @@ class PublicFareAdapter:
     def parse(self, html: str, source_url: str, query: AirlineFareSearch) -> list[PublicFareQuote]:
         return parse_public_fares(
             html,
+            airline_code=self.code,
+            airline_name=self.name,
+            source_url=source_url,
+            query=query,
+        )
+
+    def parse_browser_capture(
+        self, fare_rows: list[dict[str, Any]], source_url: str, query: AirlineFareSearch
+    ) -> list[PublicFareQuote]:
+        return normalize_public_fare_rows(
+            fare_rows,
             airline_code=self.code,
             airline_name=self.name,
             source_url=source_url,
@@ -420,17 +477,13 @@ class RobotsAwareFetcher:
     async def fetch(
         self, client: httpx.AsyncClient, url: str, *, force_refresh: bool = False
     ) -> FetchResult:
+        await self.authorize(client, url, force_refresh=force_refresh)
         parsed = urlsplit(url)
-        if parsed.scheme != "https" or parsed.hostname not in {
-            adapter.host for adapter in ADAPTERS.values()
-        }:
-            raise CrawlerPolicyError("source_not_allowed", "來源 URL 不在航空公司白名單")
         digest = hashlib.sha256(url.encode()).hexdigest()
         page_key = f"crawler:page:{digest}"
         cached = None if force_refresh else await self._get_cached(page_key)
         if cached is not None:
             return FetchResult(cached, cache_hit=True)
-        await self._robots_allows(client, url, force_refresh=force_refresh)
         throttle_key = f"crawler:throttle:{parsed.hostname}"
         acquired = await self._set_cached(
             throttle_key,
@@ -445,6 +498,16 @@ class RobotsAwareFetcher:
             page_key, content, ttl=self.settings.airline_crawler_cache_ttl_seconds
         )
         return FetchResult(content, cache_hit=False)
+
+    async def authorize(
+        self, client: httpx.AsyncClient, url: str, *, force_refresh: bool = False
+    ) -> None:
+        parsed = urlsplit(url)
+        if parsed.scheme != "https" or parsed.hostname not in {
+            adapter.host for adapter in ADAPTERS.values()
+        }:
+            raise CrawlerPolicyError("source_not_allowed", "來源 URL 不在航空公司白名單")
+        await self._robots_allows(client, url, force_refresh=force_refresh)
 
 
 class AirlineFareCrawlerService:
@@ -471,6 +534,139 @@ class AirlineFareCrawlerService:
                 )
             )
         return sources
+
+    @staticmethod
+    def _source_url_matches(expected: str, actual: str) -> bool:
+        expected_parts = urlsplit(expected)
+        actual_parts = urlsplit(actual)
+        return (
+            actual_parts.scheme == "https"
+            and actual_parts.username is None
+            and actual_parts.password is None
+            and actual_parts.hostname == expected_parts.hostname
+            and actual_parts.port in (None, 443)
+            and actual_parts.path.rstrip("/") == expected_parts.path.rstrip("/")
+            and not actual_parts.query
+            and not actual_parts.fragment
+        )
+
+    async def browser_targets(
+        self, query: AirlineFareSearch, *, force_refresh: bool = False
+    ) -> AirlineBrowserTargetsResponse:
+        timeout = httpx.Timeout(self.settings.airline_crawler_timeout_seconds)
+        headers = {
+            "User-Agent": self.settings.airline_crawler_user_agent,
+            "Accept": "text/plain",
+        }
+        targets: list[AirlineBrowserTarget] = []
+        async with httpx.AsyncClient(timeout=timeout, headers=headers) as client:
+            for code in query.airlines:
+                adapter = ADAPTERS[code]
+                if not adapter.enabled:
+                    targets.append(
+                        AirlineBrowserTarget(
+                            airline_code=adapter.code,
+                            airline_name=adapter.name,
+                            host=adapter.host,
+                            state=SourceState.DISABLED,
+                            detail=adapter.disabled_reason,
+                        )
+                    )
+                    continue
+                try:
+                    source_url = adapter.fare_url(query)
+                    await self.fetcher.authorize(
+                        client, source_url, force_refresh=force_refresh
+                    )
+                    targets.append(
+                        AirlineBrowserTarget(
+                            airline_code=adapter.code,
+                            airline_name=adapter.name,
+                            host=adapter.host,
+                            state=SourceState.READY,
+                            detail="Chrome 可開啟的官方公開票價頁；解析前已通過 robots 檢查",
+                            source_url=source_url,
+                        )
+                    )
+                except CrawlerPolicyError as exc:
+                    targets.append(
+                        AirlineBrowserTarget(
+                            airline_code=adapter.code,
+                            airline_name=adapter.name,
+                            host=adapter.host,
+                            state=SourceState.BLOCKED,
+                            detail=exc.detail,
+                        )
+                    )
+                except CrawlerError as exc:
+                    targets.append(
+                        AirlineBrowserTarget(
+                            airline_code=adapter.code,
+                            airline_name=adapter.name,
+                            host=adapter.host,
+                            state=SourceState.FAILED,
+                            detail=exc.detail,
+                        )
+                    )
+        return AirlineBrowserTargetsResponse(query=query, targets=targets)
+
+    async def parse_browser_capture(
+        self, capture: AirlineBrowserCapture
+    ) -> AirlineBrowserCaptureResponse:
+        adapter = ADAPTERS[capture.airline_code]
+        if not adapter.enabled:
+            raise CrawlerPolicyError("browser_capture_disabled", adapter.disabled_reason)
+        expected_url = adapter.fare_url(capture.query)
+        if not self._source_url_matches(expected_url, capture.source_url):
+            raise CrawlerPolicyError(
+                "browser_capture_source_mismatch",
+                "Chrome 擷取來源與查詢所允許的官方頁面不符",
+            )
+        now = datetime.now(UTC)
+        captured_at = capture.captured_at.astimezone(UTC)
+        if captured_at > now + timedelta(minutes=2) or now - captured_at > timedelta(minutes=15):
+            raise CrawlerError("browser_capture_stale", "Chrome 擷取必須在 15 分鐘內完成")
+        fare_rows = [
+            row.model_dump(mode="json", by_alias=True, exclude_none=True)
+            for row in capture.fare_rows
+        ]
+        serialized_rows = json.dumps(
+            fare_rows, ensure_ascii=False, separators=(",", ":"), sort_keys=True
+        ).encode("utf-8")
+        if len(serialized_rows) > self.settings.airline_crawler_max_bytes:
+            raise CrawlerError("source_too_large", "Chrome 擷取資料超過允許大小")
+
+        timeout = httpx.Timeout(self.settings.airline_crawler_timeout_seconds)
+        headers = {
+            "User-Agent": self.settings.airline_crawler_user_agent,
+            "Accept": "text/plain",
+        }
+        async with httpx.AsyncClient(timeout=timeout, headers=headers) as client:
+            await self.fetcher.authorize(client, capture.source_url)
+
+        quotes = adapter.parse_browser_capture(fare_rows, capture.source_url, capture.query)
+        detail = "Chrome 擷取資料已由既有公開票價解析器標準化"
+        warnings: list[str] = []
+        if not quotes:
+            detail = "Chrome 擷取成功，但指定日期或艙等沒有公開快取票價"
+            warnings.append(f"{adapter.name}：{detail}")
+        source = AirlineCrawlerSource(
+            airline_code=adapter.code,
+            airline_name=adapter.name,
+            host=adapter.host,
+            state=SourceState.SUCCESS,
+            policy="browser_capture_allowlisted_robots_checked",
+            detail=detail,
+            quote_count=len(quotes),
+            cache_hit=False,
+        )
+        digest = hashlib.sha256(serialized_rows).hexdigest()
+        return AirlineBrowserCaptureResponse(
+            quotes=quotes,
+            sources=[source],
+            warnings=warnings,
+            capture_sha256=digest,
+        )
 
     async def _search_site(
         self,

@@ -9,7 +9,9 @@
     "build:web": "npm run build --workspace @travel-scanner/web",
     "lint:web": "npm run lint --workspace @travel-scanner/web",
     "typecheck:web": "npm run typecheck --workspace @travel-scanner/web",
-    "test:web": "npm run test --workspace @travel-scanner/web"
+    "test:web": "npm run test --workspace @travel-scanner/web",
+    "test:tools": "node --test tools/*.test.mjs",
+    "crawl:airlines:chrome": "node tools/airline-chrome-crawler.mjs"
   },
   "engines": {
     "node": ">=22"

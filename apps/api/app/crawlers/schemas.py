@@ -4,7 +4,7 @@ from enum import StrEnum
 from typing import Self
 from uuid import UUID
 
-from pydantic import BaseModel, Field, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
 class AirlineCode(StrEnum):
@@ -107,3 +107,74 @@ class AirlineFareSearchResponse(BaseModel):
 class AirlineCrawlerStatusResponse(BaseModel):
     sources: list[AirlineCrawlerSource]
     safety_rules: list[str]
+
+
+class AirlineBrowserTarget(BaseModel):
+    airline_code: AirlineCode
+    airline_name: str
+    host: str
+    state: SourceState
+    detail: str
+    source_url: str | None = None
+
+
+class AirlineBrowserTargetsResponse(BaseModel):
+    query: AirlineFareSearch
+    targets: list[AirlineBrowserTarget]
+
+
+class BrowserPriceLastSeen(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    value: str | int | float
+    unit: str = Field(min_length=1, max_length=30)
+
+
+class AirlineBrowserFareRow(BaseModel):
+    model_config = ConfigDict(extra="forbid", populate_by_name=True)
+
+    origin_airport_code: str | None = Field(
+        default=None, alias="originAirportCode", max_length=3
+    )
+    destination_airport_code: str | None = Field(
+        default=None, alias="destinationAirportCode", max_length=3
+    )
+    departure_date: str | None = Field(default=None, alias="departureDate", max_length=10)
+    return_date: str | None = Field(default=None, alias="returnDate", max_length=10)
+    flight_type: str | None = Field(default=None, alias="flightType", max_length=40)
+    farenet_travel_class: str | None = Field(
+        default=None, alias="farenetTravelClass", max_length=50
+    )
+    formatted_travel_class: str | None = Field(
+        default=None, alias="formattedTravelClass", max_length=50
+    )
+    currency_code: str | None = Field(default=None, alias="currencyCode", max_length=3)
+    total_price: Decimal | None = Field(default=None, alias="totalPrice", ge=0)
+    price_last_seen: BrowserPriceLastSeen | None = Field(default=None, alias="priceLastSeen")
+
+
+class AirlineBrowserCapture(BaseModel):
+    airline_code: AirlineCode
+    query: AirlineFareSearch
+    source_url: str = Field(min_length=12, max_length=2048)
+    page_title: str = Field(default="", max_length=500)
+    captured_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
+    fare_rows: list[AirlineBrowserFareRow] = Field(max_length=2_000)
+
+    @field_validator("source_url")
+    @classmethod
+    def require_https_source(cls, value: str) -> str:
+        if not value.startswith("https://"):
+            raise ValueError("source_url must use HTTPS")
+        return value
+
+    @field_validator("captured_at")
+    @classmethod
+    def require_timezone(cls, value: datetime) -> datetime:
+        if value.tzinfo is None or value.utcoffset() is None:
+            raise ValueError("captured_at must include a timezone")
+        return value
+
+
+class AirlineBrowserCaptureResponse(AirlineFareSearchResponse):
+    capture_sha256: str = Field(min_length=64, max_length=64)
