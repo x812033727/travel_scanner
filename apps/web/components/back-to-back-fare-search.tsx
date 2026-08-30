@@ -82,11 +82,11 @@ const airlines: Array<{ code: AirlineCode; short: string }> = [
 ];
 
 const destinations = [
-  { code: "NRT", city: "東京成田" },
-  { code: "KIX", city: "大阪關西" },
+  { code: "TYO", city: "東京（成田／羽田）" },
+  { code: "OSA", city: "大阪（關西／伊丹）" },
   { code: "FUK", city: "福岡" },
   { code: "CTS", city: "札幌新千歲" },
-  { code: "ICN", city: "首爾仁川" },
+  { code: "SEL", city: "首爾（仁川／金浦）" },
   { code: "BKK", city: "曼谷" },
   { code: "SIN", city: "新加坡" },
 ];
@@ -199,7 +199,7 @@ function ComparisonCard({ comparison }: { comparison: BackToBackComparison }) {
 export function BackToBackFareSearch() {
   const [selected, setSelected] = useState<Record<AirlineCode, boolean>>({ CI: true, BR: true, JX: true });
   const [origin, setOrigin] = useState("TPE");
-  const [destination, setDestination] = useState("NRT");
+  const [destination, setDestination] = useState("TYO");
   const [firstDeparture, setFirstDeparture] = useState("2026-11-10");
   const [firstReturn, setFirstReturn] = useState("2026-11-15");
   const [secondDeparture, setSecondDeparture] = useState("2026-12-10");

@@ -140,7 +140,7 @@ describe("airline fare lab", () => {
     expect(url).toBe("/api/travel/crawlers/airlines/back-to-back-fares");
     expect(JSON.parse(String(init.body))).toMatchObject({
       origin: "TPE",
-      destination: "NRT",
+      destination: "TYO",
       first_trip: { departure_date: "2026-11-10", return_date: "2026-11-15" },
       second_trip: { departure_date: "2026-12-10", return_date: "2026-12-15" },
     });
