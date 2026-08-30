@@ -57,9 +57,7 @@ def activity_interest_score(activity: ActivityOffer, interests: list[str]) -> in
         (
             (100 if category == interest.casefold() else 0)
             + sum(
-                1
-                for keyword in INTEREST_KEYWORDS.get(interest, ())
-                if keyword.casefold() in text
+                1 for keyword in INTEREST_KEYWORDS.get(interest, ()) if keyword.casefold() in text
             )
             for interest in interests
         ),
@@ -137,6 +135,99 @@ def pareto(candidates: list[Candidate]) -> list[Candidate]:
 class TripOptimizer:
     def __init__(self) -> None:
         self.cost_engine = TotalCostEngine()
+        self.relaxed_hotel_preferences: list[str] = []
+
+    def _filter_hotels(self, query: SearchCreate, hotels: list[HotelOffer]) -> list[HotelOffer]:
+        preferences = query.preferences
+        guests = query.travelers.adults + query.travelers.children
+        hard_matches = [
+            hotel
+            for hotel in hotels
+            if (
+                not preferences.accepted_property_types
+                or hotel.property_type in preferences.accepted_property_types
+            )
+            and (hotel.max_guests is None or hotel.max_guests >= guests)
+        ]
+        constraints: list[tuple[str, Any]] = []
+        if preferences.breakfast_required:
+            constraints.append(("含早餐", lambda item: item.breakfast_included))
+        if preferences.refundable_required:
+            constraints.append(("可免費取消", lambda item: item.refundable))
+        if preferences.max_station_walk_minutes is not None:
+            constraints.append(
+                (
+                    "車站步行距離",
+                    lambda item: item.station_walk_minutes <= preferences.max_station_walk_minutes,
+                )
+            )
+        if preferences.hotel_min_review_count is not None:
+            constraints.append(
+                (
+                    "最低評論筆數",
+                    lambda item: (
+                        item.review_count is not None
+                        and item.review_count >= preferences.hotel_min_review_count
+                    ),
+                )
+            )
+        if preferences.hotel_min_review_score is not None:
+            constraints.append(
+                (
+                    "最低住客評分",
+                    lambda item: (
+                        item.review_score is not None
+                        and item.review_score >= preferences.hotel_min_review_score
+                    ),
+                )
+            )
+        if preferences.hotel_min_rating is not None:
+            constraints.append(
+                ("最低星級", lambda item: item.rating >= preferences.hotel_min_rating)
+            )
+        areas = preferences.preferred_areas
+        if areas:
+            constraints.append(
+                (
+                    "住宿區域",
+                    lambda item: any(
+                        area.casefold() in f"{item.address or ''} {item.hotel_name}".casefold()
+                        for area in areas
+                    ),
+                )
+            )
+        if preferences.hotel_min_nightly_twd is not None:
+            constraints.append(
+                (
+                    "住宿每晚最低價格",
+                    lambda item: (
+                        (item.nightly_price or item.total_price / max(1, item.nights))
+                        >= preferences.hotel_min_nightly_twd
+                    ),
+                )
+            )
+        if preferences.hotel_max_nightly_twd is not None:
+            constraints.append(
+                (
+                    "住宿每晚最高價格",
+                    lambda item: (
+                        (item.nightly_price or item.total_price / max(1, item.nights))
+                        <= preferences.hotel_max_nightly_twd
+                    ),
+                )
+            )
+
+        active = list(constraints)
+        relaxed: list[str] = []
+        while True:
+            matches = [
+                hotel for hotel in hard_matches if all(predicate(hotel) for _, predicate in active)
+            ]
+            if matches or not active:
+                self.relaxed_hotel_preferences = relaxed
+                return matches
+            label, _ = active.pop(0)
+            relaxed.append(label)
 
     def _candidates(
         self,
@@ -148,25 +239,7 @@ class TripOptimizer:
     ) -> list[Candidate]:
         if query.preferences.avoid_red_eye:
             flights = [item for item in flights if 6 <= item.departure_time.hour < 23]
-        if query.preferences.hotel_min_rating:
-            hotels = [item for item in hotels if item.rating >= query.preferences.hotel_min_rating]
-        if query.preferences.hotel_max_nightly_twd:
-            nightly_limit = Decimal(query.preferences.hotel_max_nightly_twd)
-            hotels = [
-                item
-                for item in hotels
-                if (item.nightly_price or item.total_price / max(1, item.nights)) <= nightly_limit
-            ]
-        if query.preferences.breakfast_required:
-            hotels = [item for item in hotels if item.breakfast_included]
-        if query.preferences.refundable_required:
-            hotels = [item for item in hotels if item.refundable]
-        if query.preferences.max_station_walk_minutes is not None:
-            hotels = [
-                item
-                for item in hotels
-                if item.station_walk_minutes <= query.preferences.max_station_walk_minutes
-            ]
+        hotels = self._filter_hotels(query, hotels)
         if query.preferences.interests:
             interest_matches = [
                 item
@@ -336,6 +409,8 @@ class TripOptimizer:
                 cons.append(f"比最便宜方案多 NT${int(price - cheapest_price):,}")
             if duplicate:
                 cons.append("目前符合條件的候選較少，與其他方案使用相同組合")
+            if self.relaxed_hotel_preferences:
+                cons.append("住宿候選不足，已放寬：" + "、".join(self.relaxed_hotel_preferences))
             if candidate.hotel is None:
                 cons.append("沒有住宿符合所有必要條件，請調整住宿篩選")
             results.append(

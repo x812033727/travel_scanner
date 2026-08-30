@@ -245,12 +245,22 @@ caps, a Pareto frontier, and a bounded beam before a 500 ms OR-Tools CP-SAT
 selection. The cheapest result is always the lowest feasible total; balanced
 and comfortable results use documented, adjustable scoring weights.
 
-## Natural-language search
+## Guided AI search
 
 `POST /api/v1/ai/parse-trip` uses a deterministic rules-based parser for the
 MVP. It extracts constraints and reports confidence/missing fields; it never
-creates prices. Destination discovery ranks a small mock historical candidate
-set before the normal live mock search, mirroring the future production flow.
+creates prices. The home page also provides a five-step option flow for a
+travel window, trip-length range, multiple countries, travelers, lodging, and
+interests. Every optional preference has an explicit no-preference state;
+structured choices override supplementary free text.
+
+`POST /api/v1/destinations/discover` returns up to three deterministic,
+curated-estimate city/date recommendations before a credit-bearing search.
+The selected exact dates are then passed to the normal provider workflow.
+Hotel preferences support nightly price ranges, property type, star rating,
+review score/count, areas, and transit distance. Vacation-rental results are
+provider-neutral and only appear when an actual provider returns them; the
+application does not scrape Airbnb or label mock inventory as live.
 
 ## API summary
 

@@ -13,6 +13,11 @@ export type EditableSearchCriteria = {
   interests: string[];
   avoid_red_eye: boolean;
   hotel_max_nightly_twd?: number;
+  hotel_min_nightly_twd?: number;
+  hotel_min_rating?: number;
+  accepted_property_types?: string[];
+  hotel_min_review_score?: number;
+  hotel_min_review_count?: number;
   breakfast_required?: boolean;
   refundable_required?: boolean;
   preferred_area?: string;
@@ -28,6 +33,11 @@ export type CriteriaUpdate = {
   rooms: number;
   budget?: number;
   nightlyBudget?: number;
+  nightlyMinimum?: number;
+  hotelMinRating?: number;
+  propertyTypes: string[];
+  minReviewScore?: number;
+  minReviewCount?: number;
   preferredArea?: string;
   pace: "relaxed" | "balanced" | "packed";
   interests: string[];
@@ -91,6 +101,11 @@ export function SearchCriteriaEditor({
       rooms: Number(form.get("rooms") || 1),
       budget: numberOrUndefined("budget_twd"),
       nightlyBudget: numberOrUndefined("hotel_max_nightly_twd"),
+      nightlyMinimum: numberOrUndefined("hotel_min_nightly_twd"),
+      hotelMinRating: numberOrUndefined("hotel_min_rating"),
+      propertyTypes: String(form.get("accepted_property_types") || "").split(",").filter(Boolean),
+      minReviewScore: numberOrUndefined("hotel_min_review_score"),
+      minReviewCount: numberOrUndefined("hotel_min_review_count"),
       preferredArea: String(form.get("preferred_area") || "") || undefined,
       pace: String(form.get("pace") || "balanced") as CriteriaUpdate["pace"],
       interests: selectedInterests,
@@ -165,6 +180,26 @@ export function SearchCriteriaEditor({
               <select name="pace" defaultValue={criteria.pace || "balanced"} className={fieldClass}>
                 <option value="relaxed">悠閒</option><option value="balanced">適中</option><option value="packed">充實</option>
               </select>
+            </label>
+          </div>
+
+          <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+            <label className="text-sm font-semibold">住宿每晚最低
+              <input type="number" min="0" name="hotel_min_nightly_twd" defaultValue={criteria.hotel_min_nightly_twd} className={fieldClass} />
+            </label>
+            <label className="text-sm font-semibold">住宿類型
+              <select name="accepted_property_types" defaultValue={(criteria.accepted_property_types || []).join(",")} className={fieldClass}>
+                <option value="">我不介意</option><option value="hotel">只住飯店</option><option value="vacation_rental">整套公寓／民宿</option><option value="hotel,vacation_rental">兩種都接受</option>
+              </select>
+            </label>
+            <label className="text-sm font-semibold">最低星級
+              <select name="hotel_min_rating" defaultValue={criteria.hotel_min_rating || ""} className={fieldClass}><option value="">我不介意</option>{[3,4,5].map((value) => <option key={value}>{value}</option>)}</select>
+            </label>
+            <label className="text-sm font-semibold">最低住客評分
+              <select name="hotel_min_review_score" defaultValue={criteria.hotel_min_review_score || ""} className={fieldClass}><option value="">我不介意</option><option value="7">7.0+</option><option value="8">8.0+</option><option value="9">9.0+</option></select>
+            </label>
+            <label className="text-sm font-semibold">最低評論數
+              <select name="hotel_min_review_count" defaultValue={criteria.hotel_min_review_count || ""} className={fieldClass}><option value="">我不介意</option>{[20,50,100,300].map((value) => <option key={value}>{value}+</option>)}</select>
             </label>
           </div>
 

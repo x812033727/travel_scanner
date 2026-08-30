@@ -13,7 +13,7 @@ from app.providers.schemas import (
     OfferRefreshResult,
     TransportOffer,
 )
-from app.search.schemas import SearchCreate
+from app.search.schemas import PropertyType, SearchCreate
 
 CITY_DATA = {
     "TYO": ("東京", 35.6762, 139.6503),
@@ -137,8 +137,8 @@ class MockProvider:
         names = [
             f"{city}中央旅店",
             f"{city}站前花園飯店",
-            f"{city}河畔設計酒店",
-            f"{city}都會舒適飯店",
+            f"{city}河畔整套公寓",
+            f"{city}都會整套民宿",
         ]
         offers: list[HotelOffer] = []
         for index, name in enumerate(names):
@@ -172,6 +172,10 @@ class MockProvider:
                 refundable=index != 0,
                 station_walk_minutes=[11, 5, 8, 3][index],
                 nightly_price=((base + taxes + fees) / nights).quantize(Decimal("0.01")),
+                review_score=[7.6, 8.4, 8.9, 9.3][index],
+                review_count=[48, 320, 126, 680][index],
+                property_type=(PropertyType.HOTEL if index < 2 else PropertyType.VACATION_RENTAL),
+                max_guests=[2, 4, 4, 6][index],
             )
             offers.append(offer)
             self._offers[offer_id] = offer
