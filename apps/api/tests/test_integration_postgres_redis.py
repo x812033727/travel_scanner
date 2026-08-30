@@ -16,7 +16,7 @@ pytestmark = pytest.mark.skipif(
 )
 
 
-@pytest.mark.asyncio
+@pytest.mark.asyncio(loop_scope="module")
 async def test_registration_and_concurrent_idempotent_charge() -> None:
     email = f"integration-{uuid4()}@example.com"
     transport = ASGITransport(app=app)
@@ -52,7 +52,7 @@ async def test_registration_and_concurrent_idempotent_charge() -> None:
         assert usage.json()["credits_remaining"] == 15
 
 
-@pytest.mark.asyncio
+@pytest.mark.asyncio(loop_scope="module")
 async def test_trip_edit_share_and_revoke_flow() -> None:
     email = f"trip-integration-{uuid4()}@example.com"
     plan_id = uuid4()
