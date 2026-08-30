@@ -17,6 +17,7 @@ from app.crawlers.fx import FxRateError, FxRateProvider
 from app.crawlers.schemas import (
     AirlineCode,
     BackToBackFareSearch,
+    BackToBackPricingCapability,
     BackToBackStrategy,
     CabinClass,
     ComparisonMode,
@@ -586,6 +587,62 @@ async def test_different_destinations_use_two_forward_pages_without_fake_open_ja
     assert response.comparisons[0].verdict == ComparisonVerdict.COMPARISON_UNAVAILABLE
     assert "開口票" in response.comparisons[0].detail
     assert any("只顯示可驗證的一般買法基準" in warning for warning in response.warnings)
+
+
+@pytest.mark.asyncio
+async def test_different_destinations_can_use_manual_middle_and_conventional_fares() -> None:
+    async def fetch_page(_client: httpx.AsyncClient, _url: str) -> FetchResult:
+        return FetchResult(next_data_html([]), cache_hit=False)
+
+    redis = FakeRedis(decode_responses=True)
+    settings = Settings(airline_crawler_min_interval_seconds=1)
+    crawler = AirlineFareCrawlerService(settings, redis)  # type: ignore[arg-type]
+    crawler.fetcher.fetch = AsyncMock(side_effect=fetch_page)  # type: ignore[method-assign]
+    fx_provider = AsyncMock()
+    fx_provider.rate_to_twd = AsyncMock(side_effect=lambda currency: twd_rate(currency, "1"))
+    service = BackToBackFareService(
+        settings,
+        redis,  # type: ignore[arg-type]
+        crawler=crawler,
+        fx_provider=fx_provider,
+    )
+    manual_ci = {"currency": "TWD", "airline_code": AirlineCode.CHINA_AIRLINES}
+    query = search_request(
+        second_destination="SEL",
+        strategy=BackToBackStrategy.REVERSE_TWO_SEGMENT,
+        head_one_way_fare=SupplementalFareInput(amount=Decimal("3000"), **manual_ci),
+        middle_two_segment_fare=SupplementalFareInput(
+            amount=Decimal("9000"), **manual_ci
+        ),
+        tail_one_way_fare=SupplementalFareInput(amount=Decimal("4000"), **manual_ci),
+        conventional_first_fare=SupplementalFareInput(
+            amount=Decimal("10000"), **manual_ci
+        ),
+        conventional_second_fare=SupplementalFareInput(
+            amount=Decimal("8000"), **manual_ci
+        ),
+    )
+
+    response = await service.search(query)
+    await redis.aclose()
+
+    assert response.pricing_capability == BackToBackPricingCapability.FULL_BACK_TO_BACK
+    for comparison in response.comparisons:
+        assert comparison.conventional is not None
+        assert comparison.conventional.estimated_twd == Decimal("18000")
+        assert comparison.back_to_back is not None
+        assert comparison.back_to_back.estimated_twd == Decimal("16000")
+        assert comparison.savings_twd == Decimal("2000")
+        assert comparison.verdict == ComparisonVerdict.BACK_TO_BACK_CHEAPER
+        middle = next(
+            fare
+            for fare in comparison.back_to_back.supplemental_fares
+            if fare.role.value == "middle_two_segment"
+        )
+        assert [(segment.origin, segment.destination) for segment in middle.segments] == [
+            ("NRT", "TPE"),
+            ("TPE", "SEL"),
+        ]
 
 
 @pytest.mark.asyncio

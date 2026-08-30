@@ -78,7 +78,10 @@ class BackToBackFareSearch(BaseModel):
         default_factory=lambda: BackToBackStrategy.NESTED_ROUND_TRIPS
     )
     head_one_way_fare: "SupplementalFareInput | None" = None
+    middle_two_segment_fare: "SupplementalFareInput | None" = None
     tail_one_way_fare: "SupplementalFareInput | None" = None
+    conventional_first_fare: "SupplementalFareInput | None" = None
+    conventional_second_fare: "SupplementalFareInput | None" = None
 
     @model_validator(mode="before")
     @classmethod
@@ -199,7 +202,10 @@ class BackToBackStrategy(StrEnum):
 
 
 class SupplementalFareRole(StrEnum):
+    CONVENTIONAL_FIRST_MANUAL = "conventional_first_manual"
+    CONVENTIONAL_SECOND_MANUAL = "conventional_second_manual"
     HEAD_ONE_WAY = "head_one_way"
+    MIDDLE_TWO_SEGMENT = "middle_two_segment"
     TAIL_ONE_WAY = "tail_one_way"
 
 
@@ -214,6 +220,12 @@ class SupplementalFareInput(BaseModel):
         return value.upper()
 
 
+class SupplementalFareSegment(BaseModel):
+    origin: str
+    destination: str
+    departure_date: date
+
+
 class SupplementalFareComponent(BaseModel):
     role: SupplementalFareRole
     origin: str
@@ -222,6 +234,7 @@ class SupplementalFareComponent(BaseModel):
     amount: Decimal = Field(gt=0)
     currency: str
     airline_code: AirlineCode | None = None
+    segments: list[SupplementalFareSegment] = Field(default_factory=list, max_length=2)
     estimated_twd: Decimal | None = Field(default=None, ge=0)
     fx_rate: "FxRateSnapshot | None" = None
     source: str = "manual"
@@ -251,8 +264,8 @@ class FareTicketComponent(BaseModel):
 
 
 class FareStrategyTotal(BaseModel):
-    tickets: list[FareTicketComponent] = Field(min_length=1, max_length=2)
-    supplemental_fares: list[SupplementalFareComponent] = Field(default_factory=list, max_length=2)
+    tickets: list[FareTicketComponent] = Field(default_factory=list, max_length=2)
+    supplemental_fares: list[SupplementalFareComponent] = Field(default_factory=list, max_length=3)
     original_currency_totals: dict[str, Decimal]
     estimated_twd: Decimal | None = Field(default=None, ge=0)
 

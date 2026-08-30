@@ -24,7 +24,12 @@ type ComparisonVerdict =
   | "comparison_unavailable";
 type BackToBackPricingCapability = "full_back_to_back" | "open_jaw_provider_required";
 type BackToBackStrategy = "nested_round_trips" | "reverse_two_segment";
-type SupplementalFareRole = "head_one_way" | "tail_one_way";
+type SupplementalFareRole =
+  | "conventional_first_manual"
+  | "conventional_second_manual"
+  | "head_one_way"
+  | "middle_two_segment"
+  | "tail_one_way";
 type UsageStatus = { status: "reserved" | "charged" | "released"; uses: number; reference: string };
 
 type FareQuote = {
@@ -71,6 +76,7 @@ type SupplementalFareComponent = {
   amount: string | number;
   currency: string;
   airline_code?: AirlineCode;
+  segments?: Array<{ origin: string; destination: string; departure_date: string }>;
   estimated_twd?: string | number;
   source: "manual";
   is_live: false;
@@ -88,7 +94,11 @@ type BackToBackComparison = {
 
 type BackToBackResponse = {
   queried_at: string;
-  query?: { strategy?: BackToBackStrategy };
+  query?: {
+    strategy?: BackToBackStrategy;
+    first_destination?: string;
+    second_destination?: string;
+  };
   pricing_capability: BackToBackPricingCapability;
   comparisons: BackToBackComparison[];
   candidates: Array<{ role: FareTicketRole; quotes: FareQuote[] }>;
@@ -126,7 +136,10 @@ const roleLabels: Record<FareTicketRole, string> = {
 };
 
 const supplementalRoleLabels: Record<SupplementalFareRole, string> = {
+  conventional_first_manual: "第一趟一般來回票",
+  conventional_second_manual: "第二趟一般來回票",
   head_one_way: "頭段單程票",
+  middle_two_segment: "中段反向兩航段票",
   tail_one_way: "尾段單程票",
 };
 
@@ -219,6 +232,9 @@ function TicketTimeline({ tickets }: { tickets: FareTicketComponent[] }) {
 }
 
 function SupplementalFareCard({ fare }: { fare: SupplementalFareComponent }) {
+  const segments = fare.segments?.length
+    ? fare.segments
+    : [{ origin: fare.origin, destination: fare.destination, departure_date: fare.departure_date }];
   return (
     <article className="rounded-2xl border border-dashed border-amber-300 bg-amber-50/50 p-4">
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -233,10 +249,14 @@ function SupplementalFareCard({ fare }: { fare: SupplementalFareComponent }) {
           )}
         </div>
       </div>
-      <div className="mt-3 flex flex-wrap items-center gap-2 text-sm text-[var(--muted)]">
-        <span>{fare.origin}</span><ArrowRight size={14} /><span>{fare.destination}</span>
-        <span className="mx-1 text-[var(--line)]">|</span>
-        <span>{formatDate(fare.departure_date)}</span>
+      <div className="mt-3 space-y-2 text-sm text-[var(--muted)]">
+        {segments.map((segment, index) => (
+          <div key={`${segment.origin}-${segment.destination}-${segment.departure_date}-${index}`} className="flex flex-wrap items-center gap-2">
+            <span>{segment.origin}</span><ArrowRight size={14} /><span>{segment.destination}</span>
+            <span className="mx-1 text-[var(--line)]">|</span>
+            <span>{formatDate(segment.departure_date)}</span>
+          </div>
+        ))}
       </div>
     </article>
   );
@@ -244,11 +264,15 @@ function SupplementalFareCard({ fare }: { fare: SupplementalFareComponent }) {
 
 function StrategyTimeline({ strategy }: { strategy: FareStrategyTotal }) {
   const head = strategy.supplemental_fares?.find((fare) => fare.role === "head_one_way");
+  const middle = strategy.supplemental_fares?.find((fare) => fare.role === "middle_two_segment");
   const tail = strategy.supplemental_fares?.find((fare) => fare.role === "tail_one_way");
+  const conventional = strategy.supplemental_fares?.filter((fare) => fare.role.startsWith("conventional_")) || [];
   return (
     <div className="mt-5 space-y-3">
+      {conventional.map((fare) => <SupplementalFareCard key={fare.role} fare={fare} />)}
       {head && <SupplementalFareCard fare={head} />}
       <TicketTimeline tickets={strategy.tickets} />
+      {middle && <SupplementalFareCard fare={middle} />}
       {tail && <SupplementalFareCard fare={tail} />}
     </div>
   );
@@ -304,7 +328,7 @@ function ComparisonCard({
       </div>
       {comparison.back_to_back && <StrategyTimeline strategy={comparison.back_to_back} />}
       {!comparison.back_to_back && comparison.conventional && (
-        <TicketTimeline tickets={comparison.conventional.tickets} />
+        <StrategyTimeline strategy={comparison.conventional} />
       )}
     </article>
   );
@@ -324,11 +348,20 @@ export function BackToBackFareSearch() {
   const [flexDays, setFlexDays] = useState("7");
   const [cabinClass, setCabinClass] = useState("economy");
   const [headOneWayAmount, setHeadOneWayAmount] = useState("");
+  const [middleTwoSegmentAmount, setMiddleTwoSegmentAmount] = useState("");
   const [tailOneWayAmount, setTailOneWayAmount] = useState("");
   const [headOneWayCurrency, setHeadOneWayCurrency] = useState("TWD");
+  const [middleTwoSegmentCurrency, setMiddleTwoSegmentCurrency] = useState("TWD");
   const [tailOneWayCurrency, setTailOneWayCurrency] = useState("TWD");
   const [headOneWayAirline, setHeadOneWayAirline] = useState<AirlineCode | "">("");
+  const [middleTwoSegmentAirline, setMiddleTwoSegmentAirline] = useState<AirlineCode | "">("");
   const [tailOneWayAirline, setTailOneWayAirline] = useState<AirlineCode | "">("");
+  const [conventionalFirstAmount, setConventionalFirstAmount] = useState("");
+  const [conventionalSecondAmount, setConventionalSecondAmount] = useState("");
+  const [conventionalFirstCurrency, setConventionalFirstCurrency] = useState("TWD");
+  const [conventionalSecondCurrency, setConventionalSecondCurrency] = useState("TWD");
+  const [conventionalFirstAirline, setConventionalFirstAirline] = useState<AirlineCode | "">("");
+  const [conventionalSecondAirline, setConventionalSecondAirline] = useState<AirlineCode | "">("");
   const [result, setResult] = useState<BackToBackResponse>();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>();
@@ -373,11 +406,32 @@ export function BackToBackFareSearch() {
               airline_code: headOneWayAirline || null,
             },
           } : {}),
+          ...(strategy === "reverse_two_segment" && Number(middleTwoSegmentAmount) > 0 ? {
+            middle_two_segment_fare: {
+              amount: middleTwoSegmentAmount,
+              currency: middleTwoSegmentCurrency,
+              airline_code: middleTwoSegmentAirline || null,
+            },
+          } : {}),
           ...(strategy === "reverse_two_segment" && Number(tailOneWayAmount) > 0 ? {
             tail_one_way_fare: {
               amount: tailOneWayAmount,
               currency: tailOneWayCurrency,
               airline_code: tailOneWayAirline || null,
+            },
+          } : {}),
+          ...(Number(conventionalFirstAmount) > 0 ? {
+            conventional_first_fare: {
+              amount: conventionalFirstAmount,
+              currency: conventionalFirstCurrency,
+              airline_code: conventionalFirstAirline || null,
+            },
+          } : {}),
+          ...(Number(conventionalSecondAmount) > 0 ? {
+            conventional_second_fare: {
+              amount: conventionalSecondAmount,
+              currency: conventionalSecondCurrency,
+              airline_code: conventionalSecondAirline || null,
             },
           } : {}),
         }),
@@ -435,9 +489,9 @@ export function BackToBackFareSearch() {
 
         {strategy === "reverse_two_segment" && (
           <fieldset className="mt-4 rounded-2xl border border-amber-200 bg-amber-50/50 p-4">
-            <legend className="px-2 text-sm font-bold text-amber-950">補齊頭尾單程票</legend>
-            <p className="mb-4 text-xs leading-5 text-amber-900">華航與星宇公開快取頁目前只有來回價。請填每位旅客實際查到的單程價；留空時系統會標示缺口，不會用來回票除以二估算。</p>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <legend className="px-2 text-sm font-bold text-amber-950">補齊外站兩段票</legend>
+            <p className="mb-4 text-xs leading-5 text-amber-900">請填每位旅客實際查到的頭尾單程價。中段若為相同目的地，可留空讓系統比對公開反向來回價；兩次目的地不同時，中段是「第一次目的地 → 台灣 → 第二次目的地」多城市票，請手動補入。所有手動值都會明確標示，不會從來回票拆算。</p>
+            <div className="grid gap-4 sm:grid-cols-3">
               {[
                 {
                   label: "頭段：第一次旅行去程",
@@ -448,6 +502,18 @@ export function BackToBackFareSearch() {
                   airline: headOneWayAirline,
                   setAirline: setHeadOneWayAirline,
                   aria: "頭段單程",
+                },
+                {
+                  label: firstDestination === secondDestination
+                    ? "中段：外站反向來回票（可留空）"
+                    : `中段：${firstDestination} → ${origin} → ${secondDestination}`,
+                  amount: middleTwoSegmentAmount,
+                  setAmount: setMiddleTwoSegmentAmount,
+                  currency: middleTwoSegmentCurrency,
+                  setCurrency: setMiddleTwoSegmentCurrency,
+                  airline: middleTwoSegmentAirline,
+                  setAirline: setMiddleTwoSegmentAirline,
+                  aria: "中段反向兩航段",
                 },
                 {
                   label: "尾段：第二次旅行回程",
@@ -476,6 +542,48 @@ export function BackToBackFareSearch() {
             </div>
           </fieldset>
         )}
+
+        <fieldset className="mt-4 rounded-2xl border border-[var(--line)] bg-[#fbfcf9] p-4">
+          <legend className="px-2 text-sm font-bold">公開一般票找不到時補價</legend>
+          <p className="mb-4 text-xs leading-5 text-[var(--muted)]">兩欄皆為選填。若航空公開快取在日期附近沒有一般來回價，可填入你在航空公司或 OTA 查到的每人總價，讓比較仍可完成。</p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              {
+                label: "第一次旅行一般來回票",
+                amount: conventionalFirstAmount,
+                setAmount: setConventionalFirstAmount,
+                currency: conventionalFirstCurrency,
+                setCurrency: setConventionalFirstCurrency,
+                airline: conventionalFirstAirline,
+                setAirline: setConventionalFirstAirline,
+                aria: "第一次一般來回",
+              },
+              {
+                label: "第二次旅行一般來回票",
+                amount: conventionalSecondAmount,
+                setAmount: setConventionalSecondAmount,
+                currency: conventionalSecondCurrency,
+                setCurrency: setConventionalSecondCurrency,
+                airline: conventionalSecondAirline,
+                setAirline: setConventionalSecondAirline,
+                aria: "第二次一般來回",
+              },
+            ].map((fare) => (
+              <div key={fare.aria} className="rounded-xl border border-[var(--line)] bg-white p-3">
+                <p className="text-sm font-semibold">{fare.label}</p>
+                <label className="mt-3 block text-xs font-semibold">每人價格
+                  <div className="mt-1 flex gap-2">
+                    <input aria-label={`${fare.aria}每人價格`} type="number" min="1" step="1" placeholder="使用公開票價" value={fare.amount} onChange={(event) => fare.setAmount(event.target.value)} className="min-w-0 flex-1 rounded-lg border border-[var(--line)] p-2.5" />
+                    <select aria-label={`${fare.aria}幣別`} value={fare.currency} onChange={(event) => fare.setCurrency(event.target.value)} className="rounded-lg border border-[var(--line)] p-2.5"><option value="TWD">TWD</option><option value="JPY">JPY</option><option value="USD">USD</option></select>
+                  </div>
+                </label>
+                <label className="mt-3 block text-xs font-semibold">航空公司
+                  <select aria-label={`${fare.aria}航空公司`} value={fare.airline} onChange={(event) => fare.setAirline(event.target.value as AirlineCode | "")} className="mt-1 w-full rounded-lg border border-[var(--line)] p-2.5"><option value="">未指定／其他</option><option value="CI">華航 CI</option><option value="BR">長榮 BR</option><option value="JX">星宇 JX</option></select>
+                </label>
+              </div>
+            ))}
+          </div>
+        </fieldset>
 
         {selectedAirlines.length === 1 && selectedAirlines[0] === "JX" && firstDestination === secondDestination && (
           <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-950">
@@ -526,6 +634,12 @@ export function BackToBackFareSearch() {
         {busy && <div className="grid min-h-[27rem] place-items-center text-center text-[var(--muted)]"><div><LoaderCircle className="mx-auto animate-spin text-[var(--teal)]" size={32} /><p className="mt-4">正在讀取台灣與外站始發公開票價…</p></div></div>}
         {result && !busy && <div className="mt-5 space-y-5">
           {result.usage && <p className={`rounded-xl p-3 text-sm font-semibold ${result.usage.status === "charged" ? "bg-[#fff4ef] text-[#7e4439]" : "bg-emerald-50 text-emerald-800"}`}>{result.usage.status === "charged" ? "本次已扣除 1 次" : "未取得可比較價格，本次未扣次"}</p>}
+          {result.query?.strategy === "reverse_two_segment" && result.query.first_destination !== result.query.second_destination && (
+            <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950">
+              <p className="font-bold">不同目的地的外站兩段票已支援</p>
+              <p className="mt-1">中段會依序顯示「第一次目的地 → 台灣」與「台灣 → 第二次目的地」。目前公開快取沒有這種多城市總價，因此使用你填入且標示為手動的中段票價完成比較。</p>
+            </div>
+          )}
           {result.pricing_capability === "open_jaw_provider_required" && (
             <div className="rounded-2xl border border-sky-200 bg-sky-50 p-4 text-sm leading-6 text-sky-950">
               <p className="font-bold">兩次目的地不同，倒買票會變成開口票</p>

@@ -20,6 +20,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { api, isUsageInsufficient, twd } from "@/lib/api";
 import { destinationByAirport, interestLabel, interests as destinationInterests } from "@/lib/destinations";
+import { BudgetBreakdown, type BudgetCost } from "@/components/budget-breakdown";
+import { SearchCriteriaEditor, type CriteriaUpdate } from "@/components/search-criteria-editor";
 
 type Parsed = {
   origin?: string;
@@ -60,13 +62,6 @@ type Offer = Record<string, unknown> & {
   expires_at?: string;
 };
 
-type Cost = {
-  confirmed_cost: string | number;
-  estimated_cost: string | number;
-  total_cost: string | number;
-  components: Array<{ label: string; amount: string | number; confidence: string }>;
-};
-
 type ItineraryDay = { date: string; label: string; items: Array<{ title: string }> };
 
 type Plan = {
@@ -74,7 +69,7 @@ type Plan = {
   mode: string;
   title: string;
   duplicate: boolean;
-  total_cost: Cost;
+  total_cost: BudgetCost;
   flight?: Offer;
   hotel?: Offer;
   activity?: Offer;
@@ -363,6 +358,45 @@ export function SearchExperience() {
     }
   }
 
+  function applyCriteria(update: CriteriaUpdate) {
+    const next = new URLSearchParams(params.toString());
+    const setOptional = (key: string, value: string | number | undefined) => {
+      if (value === undefined || value === "") next.delete(key);
+      else next.set(key, String(value));
+    };
+    next.set("origin", update.origin);
+    if (parsed?.destination) next.set("destination", parsed.destination);
+    next.set("departure_date", update.departureDate);
+    next.set("return_date", update.returnDate);
+    next.set("adults", String(update.adults));
+    next.set("children", String(update.children));
+    next.set("rooms", String(update.rooms));
+    next.set("children_ages", Array.from({ length: update.children }, (_, index) => parsed?.travelers.children_ages?.[index] ?? 8).join(","));
+    next.set("interests", update.interests.join(","));
+    next.set("pace", update.pace);
+    next.set("avoid_red_eye", String(update.avoidRedEye));
+    next.set("breakfast_required", String(update.breakfastRequired));
+    next.set("refundable_required", String(update.refundableRequired));
+    setOptional("budget_twd", update.budget);
+    setOptional("hotel_max_nightly_twd", update.nightlyBudget);
+    setOptional("preferred_area", update.preferredArea);
+    setSearchId(undefined);
+    setOffers({});
+    setPlans([]);
+    setWarnings([]);
+    setError(undefined);
+    setDone([]);
+    setProgress(0);
+    setActiveTab("plans");
+    setBreakfastOnly(update.breakfastRequired);
+    setRefundableOnly(update.refundableRequired);
+    setDirectOnly(false);
+    setRefundableFlightOnly(false);
+    setActivityInterest("all");
+    setSortByPrice(false);
+    router.replace(`/search?${next.toString()}`);
+  }
+
   const visibleOffers = useMemo(() => {
     let rows = [...(offers[activeTab] || [])];
     if (activeTab === "flight") {
@@ -400,6 +434,7 @@ export function SearchExperience() {
         {parsed && <div className="mt-5 flex flex-wrap gap-2 text-sm">
           {[`${parsed.travelers.adults + (parsed.travelers.children || 0)} 位旅客`, `${parsed.travelers.rooms || 1} 間房`, `${dates[0]} → ${dates[1]}`, parsed.preferred_area ? `住在 ${parsed.preferred_area}` : null, parsed.budget_twd ? `預算 ${twd.format(parsed.budget_twd)}` : null, parsed.hotel_max_nightly_twd ? `每晚 ≤ ${twd.format(parsed.hotel_max_nightly_twd)}` : null, parsed.avoid_red_eye ? "避開紅眼" : null, parsed.breakfast_required ? "含早餐" : null, parsed.refundable_required ? "可退款" : null, ...parsed.interests.map(interestLabel)].filter(Boolean).map((tag) => <span key={String(tag)} className="rounded-full bg-[var(--teal-soft)] px-3 py-1.5 text-[var(--teal-dark)]">{tag}</span>)}
         </div>}
+        {parsed && <SearchCriteriaEditor criteria={parsed} destination={destination} dates={dates} disabled={busy} onApply={applyCriteria} />}
         {!searchId && <><button disabled={!parsed || busy || providerStatus?.status !== "ready"} onClick={begin} className="mt-6 rounded-2xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">確認條件並開始搜尋</button><p className="mt-2 text-xs text-[var(--muted)]">成功取得至少一筆可用結果才扣 1 次；失敗會自動退回。</p></>}
         {error && <div role="alert" className="mt-5 flex items-start gap-2 rounded-xl bg-red-50 p-4 text-sm text-red-800"><AlertCircle size={18} className="mt-0.5 shrink-0" /><span>{error} {error.includes("sign") || error.includes("登入") ? <Link className="underline" href="/login">前往登入</Link> : null}</span></div>}
         {warnings.map((warning) => <p key={warning} className="mt-3 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">{warning}</p>)}
@@ -419,8 +454,9 @@ export function SearchExperience() {
 
         {activeTab === "plans" && plans.length > 0 && <div className="grid gap-5 lg:grid-cols-3">{plans.map((plan, index) => <article key={plan.mode} className={`relative rounded-[1.75rem] border bg-white p-6 ${index === 0 ? "border-[var(--teal)] shadow-[0_20px_60px_rgba(13,107,104,.14)]" : "border-[var(--line)]"}`}>
           {index === 0 && <span className="absolute -top-3 left-6 rounded-full bg-[var(--teal)] px-3 py-1 text-xs font-semibold text-white">BEST OVERALL</span>}
-          <div className="flex items-start justify-between gap-4"><div><p className="text-sm text-[var(--muted)]">{plan.title}</p><h2 className="mt-1 text-3xl font-bold">{twd.format(Number(plan.total_cost.total_cost))}</h2></div><button onClick={() => save(plan)} aria-label={`儲存${plan.title}`} className="rounded-xl border border-[var(--line)] p-2 text-[var(--teal)]"><Save size={18} /></button></div>
-          <div className="my-5 space-y-3 border-y border-[var(--line)] py-5 text-sm">{plan.flight && <p className="flex justify-between gap-3"><span className="flex items-center gap-2"><Plane size={16} />{String(plan.flight.airline)}</span><span>{twd.format(amount(plan.flight))}</span></p>}{plan.hotel && <p className="flex justify-between gap-3"><span className="flex items-center gap-2"><Hotel size={16} />{String(plan.hotel.hotel_name)}</span><span>{twd.format(amount(plan.hotel))}</span></p>}{plan.transport && <p className="flex justify-between gap-3"><span className="flex items-center gap-2"><TrainFront size={16} />{String(plan.transport.transport_type)}</span><span>{twd.format(amount(plan.transport))}</span></p>}</div>
+          <div className="flex items-start justify-between gap-4"><div><p className="text-sm text-[var(--muted)]">{plan.title}</p><h2 className="mt-1 text-3xl font-bold">{twd.format(Number(plan.total_cost.total_cost))}</h2><p className="mt-1 text-xs text-[var(--muted)]">整趟旅程預估總額</p></div><button onClick={() => save(plan)} aria-label={`儲存${plan.title}`} className="rounded-xl border border-[var(--line)] p-2 text-[var(--teal)]"><Save size={18} /></button></div>
+          <BudgetBreakdown cost={plan.total_cost} budget={parsed?.budget_twd} />
+          <div className="my-5 space-y-3 border-y border-[var(--line)] py-5 text-sm">{plan.flight && <p className="flex justify-between gap-3"><span className="flex items-center gap-2"><Plane size={16} />{String(plan.flight.airline)}</span><span>{twd.format(amount(plan.flight))}</span></p>}{plan.hotel && <p className="flex justify-between gap-3"><span className="flex items-center gap-2"><Hotel size={16} />{String(plan.hotel.hotel_name)}</span><span>{twd.format(amount(plan.hotel))}</span></p>}{plan.activity && <p className="flex justify-between gap-3"><span className="flex items-center gap-2"><MapPinned size={16} />{String(plan.activity.title)}</span><span>{twd.format(amount(plan.activity))}</span></p>}{plan.transport && <p className="flex justify-between gap-3"><span className="flex items-center gap-2"><TrainFront size={16} />{String(plan.transport.transport_type)}</span><span>{twd.format(amount(plan.transport))}</span></p>}</div>
           {plan.itinerary?.length ? <p className="mb-4 flex items-center gap-2 rounded-xl bg-[var(--teal-soft)] p-3 text-sm text-[var(--teal-dark)]"><BadgeCheck size={16} />已安排 {plan.itinerary.length} 天可編輯行程</p> : null}
           <ul className="space-y-2 text-sm">{plan.pros.map((item) => <li key={item} className="flex gap-2"><Check size={16} className="mt-0.5 shrink-0 text-[var(--teal)]" />{item}</li>)}{plan.cons.map((item) => <li key={item} className="flex gap-2 text-[var(--muted)]"><Clock3 size={16} className="mt-0.5 shrink-0" />{item}</li>)}</ul>
           <button onClick={() => save(plan)} className="mt-5 w-full rounded-xl bg-[var(--teal)] px-4 py-3 font-semibold text-white">儲存並編輯行程</button>
