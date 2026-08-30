@@ -99,6 +99,7 @@ export function SearchWorkbench() {
       avoid_red_eye: String(data.get("avoid_red_eye") === "on"),
       breakfast_required: String(data.get("breakfast_required") === "on"),
       refundable_required: String(data.get("refundable_required") === "on"),
+      include_airbnb: String(data.get("include_airbnb") === "on"),
     });
     if (budget) query.set("budget_twd", budget);
     if (nightlyBudget) query.set("hotel_max_nightly_twd", nightlyBudget);
@@ -211,10 +212,11 @@ export function SearchWorkbench() {
           <label className="text-sm font-semibold">最低星等<select className={fieldClass} name="hotel_min_rating" defaultValue="4"><option value="">不限</option>{[3, 4, 5].map((value) => <option key={value} value={value}>{value} 星以上</option>)}</select></label>
           <label className="text-sm font-semibold">到車站最多步行<select className={fieldClass} name="max_station_walk_minutes" defaultValue="10"><option value="">不限</option><option value="5">5 分鐘</option><option value="10">10 分鐘</option><option value="15">15 分鐘</option><option value="20">20 分鐘</option></select></label>
           <label className="text-sm font-semibold">每日步調<select className={fieldClass} name="pace" defaultValue="balanced"><option value="relaxed">悠閒 · 每天 1 個主要區域</option><option value="balanced">適中 · 每天 2 個主要區域</option><option value="packed">充實 · 每天 3 個主要區域</option></select></label>
-          <div className="sm:col-span-2 grid gap-3 text-sm sm:grid-cols-3">
+          <div className="grid gap-3 text-sm sm:col-span-2 sm:grid-cols-2 lg:grid-cols-4">
             <label className="flex items-center gap-2 rounded-xl bg-white p-3"><input type="checkbox" name="avoid_red_eye" defaultChecked />避開紅眼航班</label>
             <label className="flex items-center gap-2 rounded-xl bg-white p-3"><input type="checkbox" name="breakfast_required" />住宿含早餐</label>
             <label className="flex items-center gap-2 rounded-xl bg-white p-3"><input type="checkbox" name="refundable_required" />住宿可免費取消</label>
+            <label className="flex items-center gap-2 rounded-xl bg-white p-3"><input type="checkbox" name="include_airbnb" defaultChecked />準備 Airbnb 外站搜尋</label>
           </div>
         </div>
       </details>

@@ -21,6 +21,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { api, isUsageInsufficient, twd } from "@/lib/api";
 import { destinationByAirport, interestLabel, interests as destinationInterests } from "@/lib/destinations";
 import { BudgetBreakdown, type BudgetCost } from "@/components/budget-breakdown";
+import { AirbnbSearchPanel } from "@/components/airbnb-search-panel";
+import { HotelOfferCard, hotelNightlyPrice, hotelRating } from "@/components/hotel-offer-card";
 import { SearchCriteriaEditor, type CriteriaUpdate } from "@/components/search-criteria-editor";
 
 type Parsed = {
@@ -38,6 +40,7 @@ type Parsed = {
   hotel_max_nightly_twd?: number;
   breakfast_required?: boolean;
   refundable_required?: boolean;
+  include_airbnb?: boolean;
   max_station_walk_minutes?: number;
   preferred_area?: string;
   pace?: "relaxed" | "balanced" | "packed";
@@ -190,6 +193,7 @@ export function SearchExperience() {
       hotel_max_nightly_twd: Number(params.get("hotel_max_nightly_twd") || 0) || undefined,
       breakfast_required: params.get("breakfast_required") === "true",
       refundable_required: params.get("refundable_required") === "true",
+      include_airbnb: params.get("include_airbnb") !== "false",
       max_station_walk_minutes: Number(params.get("max_station_walk_minutes") || 0) || undefined,
       preferred_area: params.get("preferred_area") || undefined,
       pace: (params.get("pace") as Parsed["pace"]) || "balanced",
@@ -216,6 +220,10 @@ export function SearchExperience() {
   const [refundableFlightOnly, setRefundableFlightOnly] = useState(false);
   const [activityInterest, setActivityInterest] = useState("all");
   const [sortByPrice, setSortByPrice] = useState(false);
+  const [hotelMinRating, setHotelMinRating] = useState(Number(params.get("hotel_min_rating") || 0));
+  const [hotelNightlyMax, setHotelNightlyMax] = useState(Number(params.get("hotel_max_nightly_twd") || 0));
+  const [hotelMaxWalk, setHotelMaxWalk] = useState(Number(params.get("max_station_walk_minutes") || 0));
+  const [hotelSort, setHotelSort] = useState<"recommended" | "price" | "rating" | "distance">("recommended");
   const started = useRef(false);
 
   useEffect(() => {
@@ -377,6 +385,7 @@ export function SearchExperience() {
     next.set("avoid_red_eye", String(update.avoidRedEye));
     next.set("breakfast_required", String(update.breakfastRequired));
     next.set("refundable_required", String(update.refundableRequired));
+    next.set("include_airbnb", String(update.includeAirbnb));
     setOptional("budget_twd", update.budget);
     setOptional("hotel_max_nightly_twd", update.nightlyBudget);
     setOptional("preferred_area", update.preferredArea);
@@ -390,6 +399,8 @@ export function SearchExperience() {
     setActiveTab("plans");
     setBreakfastOnly(update.breakfastRequired);
     setRefundableOnly(update.refundableRequired);
+    setHotelNightlyMax(update.nightlyBudget || 0);
+    setHotelSort("recommended");
     setDirectOnly(false);
     setRefundableFlightOnly(false);
     setActivityInterest("all");
@@ -405,16 +416,32 @@ export function SearchExperience() {
     }
     if (activeTab === "hotel") {
       rows = rows.filter((offer) => !breakfastOnly || Boolean(offer.breakfast_included))
-        .filter((offer) => !refundableOnly || Boolean(offer.refundable));
+        .filter((offer) => !refundableOnly || Boolean(offer.refundable))
+        .filter((offer) => !hotelMinRating || hotelRating(offer) >= hotelMinRating)
+        .filter((offer) => !hotelNightlyMax || hotelNightlyPrice(offer) <= hotelNightlyMax)
+        .filter((offer) => !hotelMaxWalk || Number(offer.station_walk_minutes || 0) <= hotelMaxWalk);
+      if (hotelSort === "price") rows.sort((left, right) => hotelNightlyPrice(left) - hotelNightlyPrice(right));
+      if (hotelSort === "rating") rows.sort((left, right) => hotelRating(right) - hotelRating(left));
+      if (hotelSort === "distance") rows.sort((left, right) => Number(left.distance_to_center_km ?? Number.MAX_SAFE_INTEGER) - Number(right.distance_to_center_km ?? Number.MAX_SAFE_INTEGER));
     }
     if (activeTab === "activities" && activityInterest !== "all") {
       rows = rows.filter((offer) => offer.category === activityInterest);
     }
-    if (sortByPrice) rows.sort((left, right) => amount(left) - amount(right));
+    if (sortByPrice && activeTab !== "hotel") rows.sort((left, right) => amount(left) - amount(right));
     return rows;
-  }, [activeTab, activityInterest, breakfastOnly, directOnly, offers, refundableFlightOnly, refundableOnly, sortByPrice]);
+  }, [activeTab, activityInterest, breakfastOnly, directOnly, hotelMaxWalk, hotelMinRating, hotelNightlyMax, hotelSort, offers, refundableFlightOnly, refundableOnly, sortByPrice]);
 
   const destination = destinationByAirport(parsed?.destination);
+  const includeAirbnb = parsed?.include_airbnb ?? params.get("include_airbnb") !== "false";
+  const countryName = destination?.country === "JP" ? "日本" : destination?.country === "KR" ? "韓國" : destination?.country === "TH" ? "泰國" : "";
+  const airbnbCriteria = parsed ? {
+    location: [parsed.preferred_area, destination?.name || parsed.destination, countryName].filter(Boolean).join(", "),
+    checkIn: dates[0],
+    checkOut: dates[1],
+    adults: parsed.travelers.adults,
+    children: parsed.travelers.children || 0,
+  } : null;
+  const resultTabs = [{ key: "plans", label: "推薦組合" }, ...stages, ...(includeAirbnb ? [{ key: "airbnb", label: "Airbnb" }] : [])];
 
   const providerTone = providerStatus?.status === "ready"
     ? providerStatus.mode === "live" ? "bg-emerald-50 text-emerald-800" : "bg-amber-50 text-amber-900"
@@ -434,8 +461,8 @@ export function SearchExperience() {
         {parsed && <div className="mt-5 flex flex-wrap gap-2 text-sm">
           {[`${parsed.travelers.adults + (parsed.travelers.children || 0)} 位旅客`, `${parsed.travelers.rooms || 1} 間房`, `${dates[0]} → ${dates[1]}`, parsed.preferred_area ? `住在 ${parsed.preferred_area}` : null, parsed.budget_twd ? `預算 ${twd.format(parsed.budget_twd)}` : null, parsed.hotel_max_nightly_twd ? `每晚 ≤ ${twd.format(parsed.hotel_max_nightly_twd)}` : null, parsed.avoid_red_eye ? "避開紅眼" : null, parsed.breakfast_required ? "含早餐" : null, parsed.refundable_required ? "可退款" : null, ...parsed.interests.map(interestLabel)].filter(Boolean).map((tag) => <span key={String(tag)} className="rounded-full bg-[var(--teal-soft)] px-3 py-1.5 text-[var(--teal-dark)]">{tag}</span>)}
         </div>}
-        {parsed && <SearchCriteriaEditor criteria={parsed} destination={destination} dates={dates} disabled={busy} onApply={applyCriteria} />}
-        {!searchId && <><button disabled={!parsed || busy || providerStatus?.status !== "ready"} onClick={begin} className="mt-6 rounded-2xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">確認條件並開始搜尋</button><p className="mt-2 text-xs text-[var(--muted)]">成功取得至少一筆可用結果才扣 1 次；失敗會自動退回。</p></>}
+        {parsed && <SearchCriteriaEditor criteria={{ ...parsed, include_airbnb: includeAirbnb }} destination={destination} dates={dates} disabled={busy} onApply={applyCriteria} />}
+        {!searchId && <><div className="mt-6 flex flex-col gap-3 sm:flex-row"><button disabled={!parsed || busy || providerStatus?.status !== "ready"} onClick={begin} className="rounded-2xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">確認條件並開始搜尋</button>{includeAirbnb && airbnbCriteria && <AirbnbSearchPanel criteria={airbnbCriteria} compact />}</div><p className="mt-2 text-xs text-[var(--muted)]">站內比較成功取得至少一筆可用結果才扣 1 次；Airbnb 官方外站搜尋不扣次。</p></>}
         {error && <div role="alert" className="mt-5 flex items-start gap-2 rounded-xl bg-red-50 p-4 text-sm text-red-800"><AlertCircle size={18} className="mt-0.5 shrink-0" /><span>{error} {error.includes("sign") || error.includes("登入") ? <Link className="underline" href="/login">前往登入</Link> : null}</span></div>}
         {warnings.map((warning) => <p key={warning} className="mt-3 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">{warning}</p>)}
       </section>
@@ -449,7 +476,7 @@ export function SearchExperience() {
 
       {(plans.length > 0 || Object.keys(offers).length > 0) && <section>
         <div className="mb-5 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="搜尋結果分類">
-          {[{ key: "plans", label: "推薦組合" }, ...stages].map((tab) => <button key={tab.key} role="tab" aria-selected={activeTab === tab.key} onClick={() => setActiveTab(tab.key)} className={`whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold ${activeTab === tab.key ? "border-[var(--teal)] bg-[var(--teal)] text-white" : "border-[var(--line)] bg-white text-[var(--muted)]"}`}>{tab.label}</button>)}
+          {resultTabs.map((tab) => <button key={tab.key} role="tab" aria-selected={activeTab === tab.key} onClick={() => setActiveTab(tab.key)} className={`whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold ${activeTab === tab.key ? "border-[var(--teal)] bg-[var(--teal)] text-white" : "border-[var(--line)] bg-white text-[var(--muted)]"}`}>{tab.label}</button>)}
         </div>
 
         {activeTab === "plans" && plans.length > 0 && <div className="grid gap-5 lg:grid-cols-3">{plans.map((plan, index) => <article key={plan.mode} className={`relative rounded-[1.75rem] border bg-white p-6 ${index === 0 ? "border-[var(--teal)] shadow-[0_20px_60px_rgba(13,107,104,.14)]" : "border-[var(--line)]"}`}>
@@ -462,15 +489,18 @@ export function SearchExperience() {
           <button onClick={() => save(plan)} className="mt-5 w-full rounded-xl bg-[var(--teal)] px-4 py-3 font-semibold text-white">儲存並編輯行程</button>
         </article>)}</div>}
 
-        {activeTab !== "plans" && <div className="mb-4 flex flex-wrap items-center gap-4 rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm">
+        {activeTab === "airbnb" && airbnbCriteria && <AirbnbSearchPanel criteria={airbnbCriteria} />}
+
+        {activeTab !== "plans" && activeTab !== "airbnb" && <div className="mb-4 flex flex-wrap items-center gap-4 rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm">
           <strong className="text-[var(--teal-dark)]">快速篩選</strong>
-          <label className="flex items-center gap-2"><input type="checkbox" checked={sortByPrice} onChange={(event) => setSortByPrice(event.target.checked)} />價格由低到高</label>
+          {activeTab !== "hotel" && <label className="flex items-center gap-2"><input type="checkbox" checked={sortByPrice} onChange={(event) => setSortByPrice(event.target.checked)} />價格由低到高</label>}
           {activeTab === "flight" && <><label className="flex items-center gap-2"><input type="checkbox" checked={directOnly} onChange={(event) => setDirectOnly(event.target.checked)} />只看直飛</label><label className="flex items-center gap-2"><input type="checkbox" checked={refundableFlightOnly} onChange={(event) => setRefundableFlightOnly(event.target.checked)} />可退款</label></>}
-          {activeTab === "hotel" && <><label className="flex items-center gap-2"><input type="checkbox" checked={breakfastOnly} onChange={(event) => setBreakfastOnly(event.target.checked)} />含早餐</label><label className="flex items-center gap-2"><input type="checkbox" checked={refundableOnly} onChange={(event) => setRefundableOnly(event.target.checked)} />可退款</label></>}
+          {activeTab === "hotel" && <><label className="flex items-center gap-2"><input type="checkbox" checked={breakfastOnly} onChange={(event) => setBreakfastOnly(event.target.checked)} />含早餐</label><label className="flex items-center gap-2"><input type="checkbox" checked={refundableOnly} onChange={(event) => setRefundableOnly(event.target.checked)} />可退款</label><label className="flex items-center gap-2">最低評分<select aria-label="飯店最低評分" className="rounded-lg border border-[var(--line)] px-2 py-1.5" value={hotelMinRating} onChange={(event) => setHotelMinRating(Number(event.target.value))}><option value="0">不限</option><option value="4">4.0+</option><option value="4.5">4.5+</option><option value="4.8">4.8+</option></select></label><label className="flex items-center gap-2">每晚上限<input aria-label="飯店每晚上限" className="w-24 rounded-lg border border-[var(--line)] px-2 py-1.5" inputMode="numeric" min="0" type="number" value={hotelNightlyMax || ""} placeholder="不限" onChange={(event) => setHotelNightlyMax(Number(event.target.value))} /></label><label className="flex items-center gap-2">車站步行<select aria-label="飯店車站步行上限" className="rounded-lg border border-[var(--line)] px-2 py-1.5" value={hotelMaxWalk} onChange={(event) => setHotelMaxWalk(Number(event.target.value))}><option value="0">不限</option><option value="5">5 分內</option><option value="10">10 分內</option><option value="15">15 分內</option><option value="20">20 分內</option></select></label><label className="flex items-center gap-2">排序<select aria-label="飯店排序" className="rounded-lg border border-[var(--line)] px-2 py-1.5" value={hotelSort} onChange={(event) => setHotelSort(event.target.value as typeof hotelSort)}><option value="recommended">推薦順序</option><option value="price">每晚價格</option><option value="rating">評分最高</option><option value="distance">距市中心最近</option></select></label></>}
           {activeTab === "activities" && <label className="flex items-center gap-2">興趣<select className="rounded-lg border border-[var(--line)] px-2 py-1.5" value={activityInterest} onChange={(event) => setActivityInterest(event.target.value)}><option value="all">全部</option>{destinationInterests.map((interest) => <option key={interest.code} value={interest.code}>{interest.label}</option>)}</select></label>}
         </div>}
 
-        {activeTab !== "plans" && <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{visibleOffers.map((offer) => {
+        {activeTab !== "plans" && activeTab !== "airbnb" && <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{visibleOffers.map((offer) => {
+          if (activeTab === "hotel") return <HotelOfferCard key={offer.id} offer={offer} actionUrl={recheckUrl(activeTab, offer, parsed, dates)} />;
           const image = offer.images?.[0];
           const mode = offer.source_mode || (offer.is_mock ? "mock" : "estimate");
           return <article key={offer.id} className="overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-white">
@@ -478,7 +508,7 @@ export function SearchExperience() {
             <div className="p-5"><div className="flex items-start justify-between gap-3"><div><p className="text-xs font-semibold uppercase tracking-wide text-[var(--teal)]">{sourceLabels[mode]}</p><h2 className="mt-1 text-xl font-bold">{titleFor(activeTab, offer)}</h2></div><strong>{twd.format(amount(offer))}</strong></div><p className="mt-3 text-sm leading-6 text-[var(--muted)]">{detailsFor(activeTab, offer)}</p><p className="mt-2 text-xs text-[var(--muted)]">來源：{offer.provider || "未標示"}{offer.retrieved_at ? ` · ${new Date(offer.retrieved_at).toLocaleString("zh-TW")}` : ""}</p>{offer.attributions?.length ? <p className="mt-1 text-xs text-[var(--muted)]">圖片：{offer.attributions.map((label, index) => offer.attribution_urls?.[index] ? <span key={label}>{index > 0 ? "、" : ""}<a className="underline" href={offer.attribution_urls[index]} target="_blank" rel="noreferrer">{label}</a></span> : <span key={label}>{index > 0 ? "、" : ""}{label}</span>)}</p> : null}<a href={recheckUrl(activeTab, offer, parsed, dates)} target="_blank" rel="noreferrer" className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-[var(--teal)] px-4 py-3 text-sm font-semibold text-[var(--teal)]">{offer.action_kind === "deep_link" ? "前往供應商" : "外站重新確認"}<ExternalLink size={16} /></a></div>
           </article>;
         })}</div>}
-        {activeTab !== "plans" && !visibleOffers.length && <p className="rounded-2xl border border-dashed border-[var(--line)] bg-white p-10 text-center text-[var(--muted)]">這個分類目前沒有符合條件的結果。</p>}
+        {activeTab !== "plans" && activeTab !== "airbnb" && !visibleOffers.length && <p className="rounded-2xl border border-dashed border-[var(--line)] bg-white p-10 text-center text-[var(--muted)]">這個分類目前沒有符合條件的結果。</p>}
       </section>}
     </main>
   );

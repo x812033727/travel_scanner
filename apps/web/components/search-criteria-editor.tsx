@@ -15,6 +15,7 @@ export type EditableSearchCriteria = {
   hotel_max_nightly_twd?: number;
   breakfast_required?: boolean;
   refundable_required?: boolean;
+  include_airbnb?: boolean;
   preferred_area?: string;
   pace?: "relaxed" | "balanced" | "packed";
 };
@@ -34,6 +35,7 @@ export type CriteriaUpdate = {
   avoidRedEye: boolean;
   breakfastRequired: boolean;
   refundableRequired: boolean;
+  includeAirbnb: boolean;
 };
 
 const fieldClass = "mt-1.5 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-2.5 outline-none focus:border-[var(--teal)] focus:ring-4 focus:ring-[var(--teal-soft)]";
@@ -97,6 +99,7 @@ export function SearchCriteriaEditor({
       avoidRedEye: form.get("avoid_red_eye") === "on",
       breakfastRequired: form.get("breakfast_required") === "on",
       refundableRequired: form.get("refundable_required") === "on",
+      includeAirbnb: form.get("include_airbnb") === "on",
     });
     setValidationError(undefined);
     setOpen(false);
@@ -177,10 +180,11 @@ export function SearchCriteriaEditor({
             </div>
           </fieldset>
 
-          <div className="mt-4 grid gap-2 text-sm sm:grid-cols-3">
+          <div className="mt-4 grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-4">
             <label className="flex items-center gap-2"><input type="checkbox" name="avoid_red_eye" defaultChecked={criteria.avoid_red_eye} />避開紅眼航班</label>
             <label className="flex items-center gap-2"><input type="checkbox" name="breakfast_required" defaultChecked={criteria.breakfast_required} />住宿含早餐</label>
             <label className="flex items-center gap-2"><input type="checkbox" name="refundable_required" defaultChecked={criteria.refundable_required} />住宿可退款</label>
+            <label className="flex items-center gap-2"><input type="checkbox" name="include_airbnb" defaultChecked={criteria.include_airbnb ?? true} />準備 Airbnb 外站搜尋</label>
           </div>
 
           {validationError && <p role="alert" className="mt-3 text-sm font-medium text-red-700">{validationError}</p>}

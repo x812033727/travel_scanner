@@ -25,5 +25,6 @@ describe("SearchWorkbench", () => {
     expect(url.searchParams.get("children_ages")).toBe("8,12");
     expect(url.searchParams.get("interests")).toContain("beach");
     expect(url.searchParams.get("preferred_area")).toBe("普吉老城");
+    expect(url.searchParams.get("include_airbnb")).toBe("true");
   });
 });

@@ -16,6 +16,7 @@ describe("SearchCriteriaEditor", () => {
         avoid_red_eye: true,
         preferred_area: "普吉老城",
         pace: "balanced",
+        include_airbnb: true,
       }}
       destination={destinationByAirport("HKT")}
       dates={["2026-11-10", "2026-11-15"]}
@@ -38,6 +39,7 @@ describe("SearchCriteriaEditor", () => {
       returnDate: "2026-11-16",
       interests: ["food", "beach"],
       preferredArea: "普吉老城",
+      includeAirbnb: true,
     }));
   });
 });
