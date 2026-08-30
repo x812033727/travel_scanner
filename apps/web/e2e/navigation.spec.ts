@@ -8,6 +8,23 @@ test("primary travel flow is visible", async ({ page }) => {
   await expect(page.getByRole("heading", { name: /搜尋點數/ })).toBeVisible();
 });
 
+test("Japan Korea Thailand workbench carries structured preferences", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /泰國/ }).click();
+  await expect(page.getByRole("button", { name: /^普吉/ })).toBeVisible();
+  await page.getByRole("button", { name: /^普吉/ }).click();
+  await page.getByLabel("兒童人數").selectOption("2");
+  await page.getByRole("button", { name: "海灘／跳島", exact: true }).click();
+  await page.getByText("進階住宿與行程條件").click();
+  await page.getByText("住宿含早餐").click();
+  await Promise.all([
+    page.waitForURL(/destination=HKT/, { timeout: 20_000 }),
+    page.getByRole("button", { name: /比較完整旅程/ }).click(),
+  ]);
+  await expect(page).toHaveURL(/children_ages=8%2C8/);
+  await expect(page).toHaveURL(/breakfast_required=true/);
+});
+
 test("airline public fare lab is available", async ({ page }) => {
   await page.goto("/labs/airlines");
   await expect(page.getByRole("heading", { name: /三家航空/ })).toBeVisible();
@@ -68,6 +85,7 @@ test("back-to-back fare comparison renders both strategy modes", async ({ page }
   const backToBackTab = page.getByRole("tab", { name: "倒買法" });
   await backToBackTab.click();
   await expect(backToBackTab).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByRole("heading", { name: "設定兩趟旅行" })).toBeVisible({ timeout: 15_000 });
   await page.getByRole("button", { name: "比較倒買價格" }).click();
   await expect(page.getByRole("heading", { name: "最低混搭" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "最低同航空公司" })).toBeVisible();

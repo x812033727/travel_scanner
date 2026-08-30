@@ -4,6 +4,7 @@ import pytest
 from app.config import Settings
 from app.places.google import GoogleTravelService
 from app.providers.mock import MockProvider
+from app.search.schemas import TripPace
 from app.trips.itinerary import build_itinerary
 from tests.test_mock_providers import sample_query
 
@@ -26,6 +27,43 @@ async def test_itinerary_respects_fixed_items_and_marks_estimates() -> None:
     assert any(item.item_type == "suggestion" and item.is_estimated for item in items)
     for day in itinerary:
         assert [item.position for item in day.items] == list(range(len(day.items)))
+
+
+@pytest.mark.asyncio
+async def test_itinerary_uses_destination_specific_titles_and_local_timezone() -> None:
+    provider, query = MockProvider(), sample_query()
+    query = query.model_copy(
+        update={
+            "destination": "BKK",
+            "preferences": query.preferences.model_copy(
+                update={
+                    "interests": ["food"],
+                    "pace": TripPace.RELAXED,
+                    "preferred_area": "暹羅",
+                }
+            ),
+        }
+    )
+    itinerary = build_itinerary(
+        query,
+        (await provider.search_flights(query))[0],
+        (await provider.search_hotels(query))[0],
+        (await provider.search_activities(query))[0],
+        (await provider.search_transport(query))[0],
+    )
+    suggestions = [
+        item for day in itinerary for item in day.items if item.item_type == "suggestion"
+    ]
+    assert suggestions
+    assert any(
+        item.title in {"早晨市場與泰式早餐", "唐人街晚餐巡禮", "在地餐廳與甜點"}
+        for item in suggestions
+    )
+    assert all(
+        str(item.start_time.tzinfo) == "Asia/Bangkok" for item in suggestions if item.start_time
+    )
+    assert all(item.location_name == "暹羅" for item in suggestions)
+    assert all(item.data["destination_country"] == "泰國" for item in suggestions)
 
 
 @pytest.mark.asyncio
