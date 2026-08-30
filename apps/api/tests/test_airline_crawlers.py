@@ -1,0 +1,186 @@
+import json
+from datetime import date
+from decimal import Decimal
+
+import httpx
+import pytest
+from fakeredis.aioredis import FakeRedis
+from httpx import ASGITransport, AsyncClient
+
+from app.config import Settings
+from app.crawlers.airlines import (
+    CrawlerError,
+    CrawlerPolicyError,
+    RobotsAwareFetcher,
+    parse_public_fares,
+)
+from app.crawlers.schemas import AirlineCode, AirlineFareSearch, CabinClass
+from app.main import app
+
+
+def next_data_html(rows: list[dict[str, object]]) -> str:
+    payload = {"props": {"pageProps": {"components": [{"airModule": {"fares": rows}}]}}}
+    return (
+        '<html><script id="__NEXT_DATA__" type="application/json">'
+        f"{json.dumps(payload)}"
+        "</script></html>"
+    )
+
+
+def fare_row(
+    *,
+    departure: str,
+    returning: str,
+    price: int,
+    cabin: str = "ECONOMY",
+    destination: str = "NRT",
+) -> dict[str, object]:
+    return {
+        "originAirportCode": "TPE",
+        "destinationAirportCode": destination,
+        "departureDate": departure,
+        "returnDate": returning,
+        "flightType": "ROUND_TRIP",
+        "farenetTravelClass": cabin,
+        "currencyCode": "TWD",
+        "totalPrice": price,
+        "priceLastSeen": {"value": "3", "unit": "hours"},
+    }
+
+
+def test_parser_normalizes_filters_sorts_and_deduplicates_public_fares() -> None:
+    rows = [
+        fare_row(departure="2026-11-12", returning="2026-11-17", price=12_500),
+        fare_row(departure="2026-11-10", returning="2026-11-15", price=13_000),
+        fare_row(departure="2026-11-10", returning="2026-11-15", price=13_000),
+        fare_row(
+            departure="2026-11-10",
+            returning="2026-11-15",
+            price=40_000,
+            cabin="BUSINESS",
+        ),
+        fare_row(
+            departure="2026-12-20",
+            returning="2026-12-25",
+            price=9_000,
+        ),
+    ]
+    query = AirlineFareSearch(
+        destination="NRT",
+        departure_date=date(2026, 11, 10),
+        return_date=date(2026, 11, 15),
+        flex_days=3,
+        airlines=[AirlineCode.CHINA_AIRLINES],
+    )
+
+    quotes = parse_public_fares(
+        next_data_html(rows),
+        airline_code=AirlineCode.CHINA_AIRLINES,
+        airline_name="中華航空",
+        source_url="https://flights.china-airlines.com/example",
+        query=query,
+    )
+
+    assert len(quotes) == 2
+    assert quotes[0].departure_date == date(2026, 11, 10)
+    assert quotes[0].total_price == Decimal("13000")
+    assert quotes[0].price_last_seen == "3 hours ago"
+    assert quotes[0].cabin_class == CabinClass.ECONOMY
+    assert quotes[0].is_live is False
+    assert quotes[0].is_bookable is False
+    assert quotes[0].is_mock is False
+
+
+def test_parser_supports_city_airport_groups() -> None:
+    query = AirlineFareSearch(destination="TYO", limit_per_airline=5)
+    rows = [
+        fare_row(departure="2026-11-10", returning="2026-11-15", price=13_000),
+        fare_row(
+            departure="2026-11-11",
+            returning="2026-11-16",
+            price=14_000,
+            destination="HND",
+        ),
+    ]
+    quotes = parse_public_fares(
+        next_data_html(rows),
+        airline_code=AirlineCode.STARLUX,
+        airline_name="星宇航空",
+        source_url="https://www.starlux-airlines.com/example",
+        query=query,
+    )
+    assert {quote.destination for quote in quotes} == {"NRT", "HND"}
+
+
+def test_parser_fails_clearly_when_page_contract_changes() -> None:
+    with pytest.raises(CrawlerError, match="結構化資料"):
+        parse_public_fares(
+            "<html><body>changed</body></html>",
+            airline_code=AirlineCode.STARLUX,
+            airline_name="星宇航空",
+            source_url="https://www.starlux-airlines.com/example",
+            query=AirlineFareSearch(destination="NRT"),
+        )
+
+
+@pytest.mark.asyncio
+async def test_crawler_status_documents_eva_fail_closed() -> None:
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        response = await client.get("/api/v1/crawlers/airlines/status")
+    assert response.status_code == 200
+    sources = {source["airline_code"]: source for source in response.json()["sources"]}
+    assert sources["CI"]["state"] == "ready"
+    assert sources["JX"]["state"] == "ready"
+    assert sources["BR"]["state"] == "disabled"
+    assert "robots.txt" in sources["BR"]["detail"]
+
+
+@pytest.mark.asyncio
+async def test_crawler_search_requires_authentication() -> None:
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        response = await client.post(
+            "/api/v1/crawlers/airlines/fares",
+            json={"origin": "TPE", "destination": "NRT"},
+        )
+    assert response.status_code == 401
+    assert response.json()["code"] == "authentication_required"
+
+
+@pytest.mark.asyncio
+async def test_fetcher_checks_robots_and_caches_allowed_page() -> None:
+    requests: list[str] = []
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        url = str(request.url)
+        requests.append(url)
+        if url.endswith("/robots.txt"):
+            return httpx.Response(200, text="User-agent: *\nAllow: /\n")
+        return httpx.Response(200, text="<html>fare page</html>")
+
+    redis = FakeRedis(decode_responses=True)
+    fetcher = RobotsAwareFetcher(Settings(), redis)  # type: ignore[arg-type]
+    url = "https://flights.china-airlines.com/en-tw/flights-from-taipei-to-tokyo"
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        first = await fetcher.fetch(client, url)
+        second = await fetcher.fetch(client, url)
+    await redis.aclose()
+
+    assert first.cache_hit is False
+    assert second.cache_hit is True
+    assert first.content == second.content
+    assert requests == ["https://flights.china-airlines.com/robots.txt", url]
+
+
+@pytest.mark.asyncio
+async def test_fetcher_fails_closed_when_robots_disallows_page() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        _ = request
+        return httpx.Response(200, text="User-agent: *\nDisallow: /en-tw\n")
+
+    redis = FakeRedis(decode_responses=True)
+    fetcher = RobotsAwareFetcher(Settings(), redis)  # type: ignore[arg-type]
+    url = "https://flights.china-airlines.com/en-tw/flights-from-taipei-to-tokyo"
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(CrawlerPolicyError, match="不允許"):
+            await fetcher.fetch(client, url)
+    await redis.aclose()

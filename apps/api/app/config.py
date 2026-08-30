@@ -20,6 +20,15 @@ class Settings(BaseSettings):
     provider_failure_threshold: int = 3
     provider_circuit_seconds: int = 60
     rate_limit_per_minute: int = Field(default=120, ge=1)
+    airline_crawler_user_agent: str = (
+        "TravelScannerBot/0.1 (+https://github.com/x812033727/travel_scanner)"
+    )
+    airline_crawler_agent_token: str = "TravelScannerBot"
+    airline_crawler_timeout_seconds: float = Field(default=10.0, gt=0, le=30)
+    airline_crawler_cache_ttl_seconds: int = Field(default=1800, ge=60, le=86_400)
+    airline_crawler_min_interval_seconds: int = Field(default=5, ge=1, le=60)
+    airline_crawler_max_bytes: int = Field(default=2_500_000, ge=100_000, le=5_000_000)
+    airline_crawler_cache_backend_timeout_seconds: float = Field(default=0.5, gt=0, le=5)
 
     @property
     def cors_origins(self) -> list[str]:

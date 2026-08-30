@@ -24,3 +24,9 @@ For the MVP every provider is deterministic and clearly marked as mock. Adding a
 live provider means implementing the relevant provider protocol and registering
 it with the provider registry; callers and frontend contracts remain unchanged.
 
+The experimental `crawlers` module is intentionally outside Search Orchestrator.
+Its public airline pages expose cached fare discoveries without the schedule,
+inventory, tax guarantees, or booking contract required by `FlightOffer`.
+Consequently it returns a separate `PublicFareQuote` contract. Promotion into a
+flight provider is allowed only after an authorized source supplies all required
+normalized fields and production usage rights.

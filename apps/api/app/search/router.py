@@ -1,5 +1,5 @@
 import asyncio
-from collections.abc import AsyncIterator, Awaitable
+from collections.abc import AsyncIterator
 from decimal import Decimal
 from typing import Annotated, Any, cast
 from uuid import UUID
@@ -14,7 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.auth.service import CurrentUser
 from app.config import get_settings
 from app.db import get_session
-from app.infra import get_redis
+from app.infra import enforce_rate_limit, get_redis
 from app.models import SearchJob, SearchRequest
 from app.problems import AppError
 from app.search.events import stream_key
@@ -24,17 +24,6 @@ from app.usage.service import release_reservation, reserve_credits, search_opera
 
 router = APIRouter(tags=["search"])
 Session = Annotated[AsyncSession, Depends(get_session)]
-
-
-async def enforce_rate_limit(user_id: UUID) -> None:
-    redis, limit = get_redis(), get_settings().rate_limit_per_minute
-    script = (
-        "local n=redis.call('INCR',KEYS[1]); "
-        "if n==1 then redis.call('EXPIRE',KEYS[1],60) end; return n"
-    )
-    count = await cast(Awaitable[Any], redis.eval(script, 1, f"rate:{user_id}"))
-    if int(count) > limit:
-        raise AppError(429, "rate_limit_exceeded", "Too many requests; try again shortly")
 
 
 @router.post("/searches", status_code=202)

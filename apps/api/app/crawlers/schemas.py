@@ -1,0 +1,109 @@
+from datetime import UTC, date, datetime
+from decimal import Decimal
+from enum import StrEnum
+from typing import Self
+from uuid import UUID
+
+from pydantic import BaseModel, Field, field_validator, model_validator
+
+
+class AirlineCode(StrEnum):
+    CHINA_AIRLINES = "CI"
+    EVA_AIR = "BR"
+    STARLUX = "JX"
+
+
+class CabinClass(StrEnum):
+    ECONOMY = "economy"
+    PREMIUM_ECONOMY = "premium_economy"
+    BUSINESS = "business"
+    FIRST = "first"
+
+
+class AirlineFareSearch(BaseModel):
+    origin: str = Field(default="TPE", min_length=3, max_length=3, pattern=r"^[A-Za-z]{3}$")
+    destination: str = Field(min_length=3, max_length=3, pattern=r"^[A-Za-z]{3}$")
+    departure_date: date | None = None
+    return_date: date | None = None
+    flex_days: int = Field(default=7, ge=0, le=30)
+    cabin_class: CabinClass = CabinClass.ECONOMY
+    airlines: list[AirlineCode] = Field(default_factory=lambda: list(AirlineCode), min_length=1)
+    limit_per_airline: int = Field(default=10, ge=1, le=30)
+
+    @field_validator("origin", "destination")
+    @classmethod
+    def uppercase_airport_code(cls, value: str) -> str:
+        return value.upper()
+
+    @field_validator("airlines")
+    @classmethod
+    def unique_airlines(cls, value: list[AirlineCode]) -> list[AirlineCode]:
+        return list(dict.fromkeys(value))
+
+    @model_validator(mode="after")
+    def validate_dates_and_route(self) -> Self:
+        if self.origin == self.destination:
+            raise ValueError("origin and destination must differ")
+        if self.return_date and not self.departure_date:
+            raise ValueError("return_date requires departure_date")
+        if self.departure_date and self.return_date and self.return_date < self.departure_date:
+            raise ValueError("return_date must not be before departure_date")
+        return self
+
+
+class QuoteType(StrEnum):
+    CACHED_PUBLIC_FARE = "cached_public_fare"
+
+
+class PublicFareQuote(BaseModel):
+    id: UUID
+    airline_code: AirlineCode
+    airline_name: str
+    origin: str
+    destination: str
+    departure_date: date
+    return_date: date | None
+    trip_type: str
+    cabin_class: CabinClass
+    total_price: Decimal = Field(ge=0)
+    currency: str
+    price_last_seen: str | None = None
+    source_url: str
+    retrieved_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
+    quote_type: QuoteType = QuoteType.CACHED_PUBLIC_FARE
+    price_scope: str = "per_passenger"
+    is_live: bool = False
+    is_bookable: bool = False
+    is_mock: bool = False
+    disclaimer: str = "航空公司公開頁面的近期快取票價，可能已失效，亦可能另有稅費或附加服務費。"
+
+
+class SourceState(StrEnum):
+    READY = "ready"
+    SUCCESS = "success"
+    DISABLED = "disabled"
+    BLOCKED = "blocked"
+    FAILED = "failed"
+
+
+class AirlineCrawlerSource(BaseModel):
+    airline_code: AirlineCode
+    airline_name: str
+    host: str
+    state: SourceState
+    policy: str
+    detail: str
+    quote_count: int = 0
+    cache_hit: bool = False
+
+
+class AirlineFareSearchResponse(BaseModel):
+    queried_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
+    quotes: list[PublicFareQuote]
+    sources: list[AirlineCrawlerSource]
+    warnings: list[str]
+
+
+class AirlineCrawlerStatusResponse(BaseModel):
+    sources: list[AirlineCrawlerSource]
+    safety_rules: list[str]

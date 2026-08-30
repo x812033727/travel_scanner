@@ -4,8 +4,9 @@ Travel Scanner is a mock-first, API-first travel comparison MVP. It combines
 flights, hotels, activities, and transportation into complete trip plans and
 explains the trade-off between the cheapest, balanced, and comfortable choices.
 
-> All offers in this repository are deterministic demonstration data. No live
-> provider, booking, payment, or AI service is contacted.
+> Trip-search offers remain deterministic demonstration data. The experimental
+> airline crawler API may read explicitly labelled, non-live public fare pages;
+> it never contacts booking, payment, private inventory, or AI services.
 
 ## Architecture and project structure
 
@@ -87,6 +88,37 @@ The built-in Mock Provider generates stable TPE/Japan examples from a hash of
 the request. Every result includes `is_mock`, retrieval time, expiry time, and a
 non-bookable example URL.
 
+## Experimental public airline fares
+
+`POST /api/v1/crawlers/airlines/fares` reads public cached-fare pages for China
+Airlines (`CI`) and STARLUX (`JX`). EVA Air (`BR`) has a complete adapter but is
+fail-closed by default because its fare subdomain did not expose a readable
+`robots.txt` to the crawler user-agent during implementation. Check current
+source availability at `GET /api/v1/crawlers/airlines/status`.
+
+The collector accepts airport codes, optional dates with a configurable flex
+window, cabin class, airlines, and per-airline limit. It returns
+`PublicFareQuote`, not `FlightOffer`: these public pages contain recently seen
+round-trip prices but do not establish live inventory, exact flight numbers, or
+bookability. Results therefore set `is_live=false`, `is_bookable=false`, and
+`is_mock=false`, retain the official source URL, and include the source's
+last-seen text when available.
+
+Safety controls include a fixed HTTPS host allowlist, runtime `robots.txt`
+checks that fail closed, Redis-backed page caching and per-host throttling (with
+a process-local development fallback), bounded response size, timeout, and one
+transient retry. The collector never logs in, solves CAPTCHAs, or calls private
+booking endpoints.
+
+Example authenticated request:
+
+```bash
+curl -X POST http://localhost:8000/api/v1/crawlers/airlines/fares \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"origin":"TPE","destination":"NRT","departure_date":"2026-11-10","return_date":"2026-11-15","flex_days":7,"airlines":["CI","BR","JX"]}'
+```
+
 ## Search orchestration
 
 `POST /api/v1/searches` validates the JWT, entitlement, rate limit, idempotency
@@ -116,6 +148,7 @@ set before the normal live mock search, mirroring the future production flow.
 - Search: `POST /api/v1/searches`, status, SSE events, and offer refresh
 - Product: plans, usage, saved trips, re-optimization, and price alerts
 - Intelligence: natural-language parsing and destination discovery
+- Experimental airline fares: crawler status and public cached-fare discovery
 
 The Next.js browser app calls only its same-origin `/api/travel/*` BFF. The BFF
 stores JWTs in HttpOnly/SameSite cookies and attaches them to the internal API;
