@@ -17,6 +17,7 @@ from app.crawlers.fx import FxRateError, FxRateProvider
 from app.crawlers.schemas import (
     AirlineCode,
     BackToBackFareSearch,
+    BackToBackStrategy,
     CabinClass,
     ComparisonMode,
     ComparisonVerdict,
@@ -25,6 +26,7 @@ from app.crawlers.schemas import (
     FareTicketRole,
     FxRateSnapshot,
     PublicFareQuote,
+    SupplementalFareInput,
     TripDateRange,
 )
 from app.main import app
@@ -170,6 +172,18 @@ def test_different_destinations_only_expand_verifiable_round_trips() -> None:
     }
     assert queries[FareTicketRole.CONVENTIONAL_FIRST].destination == "NRT"
     assert queries[FareTicketRole.CONVENTIONAL_SECOND].destination == "SEL"
+
+
+def test_reverse_two_segment_expands_reverse_ticket_without_wrapper() -> None:
+    queries = build_fare_queries(search_request(strategy=BackToBackStrategy.REVERSE_TWO_SEGMENT))
+
+    assert FareTicketRole.WRAPPER not in queries
+    reverse = queries[FareTicketRole.REVERSE]
+    assert (reverse.origin, reverse.destination) == ("NRT", "TPE")
+    assert (reverse.departure_date, reverse.return_date) == (
+        date(2026, 11, 15),
+        date(2026, 12, 10),
+    )
 
 
 def test_strategy_selection_returns_lowest_mixed_and_same_airline_totals() -> None:
@@ -338,6 +352,88 @@ def test_comparison_reports_when_conventional_is_cheaper() -> None:
     assert comparison.savings_percent == Decimal("-25.0")
 
 
+def test_reverse_two_segment_adds_manual_head_and_tail_one_way_fares() -> None:
+    query = search_request(
+        strategy=BackToBackStrategy.REVERSE_TWO_SEGMENT,
+        head_one_way_fare=SupplementalFareInput(
+            amount=Decimal("3000"),
+            currency="TWD",
+            airline_code=AirlineCode.CHINA_AIRLINES,
+        ),
+        tail_one_way_fare=SupplementalFareInput(
+            amount=Decimal("4000"),
+            currency="TWD",
+            airline_code=AirlineCode.CHINA_AIRLINES,
+        ),
+    )
+    candidates = {role: [] for role in FareTicketRole}
+    candidates[FareTicketRole.REVERSE] = [
+        quote(
+            AirlineCode.CHINA_AIRLINES,
+            "NRT",
+            "TPE",
+            date(2026, 11, 15),
+            date(2026, 12, 10),
+            "20000",
+            "JPY",
+        )
+    ]
+    rates = {"TWD": twd_rate("TWD", "1"), "JPY": twd_rate("JPY", "0.2")}
+
+    mixed = BackToBackFareService._best_reverse_two_segment(
+        query,
+        candidates,
+        rates,
+        same_airline=False,
+    )
+    same = BackToBackFareService._best_reverse_two_segment(
+        query,
+        candidates,
+        rates,
+        same_airline=True,
+    )
+
+    assert mixed is not None and mixed.estimated_twd == Decimal("11000")
+    assert same is not None and same.estimated_twd == Decimal("11000")
+    assert len(mixed.tickets) == 1
+    assert len(mixed.supplemental_fares) == 2
+    assert mixed.original_currency_totals == {
+        "JPY": Decimal("20000"),
+        "TWD": Decimal("7000"),
+    }
+
+
+def test_same_airline_reverse_two_segment_requires_one_way_airline_identity() -> None:
+    query = search_request(
+        strategy=BackToBackStrategy.REVERSE_TWO_SEGMENT,
+        head_one_way_fare=SupplementalFareInput(amount=Decimal("3000")),
+        tail_one_way_fare=SupplementalFareInput(amount=Decimal("4000")),
+    )
+    candidates = {role: [] for role in FareTicketRole}
+    candidates[FareTicketRole.REVERSE] = [
+        quote(
+            AirlineCode.CHINA_AIRLINES,
+            "NRT",
+            "TPE",
+            date(2026, 11, 15),
+            date(2026, 12, 10),
+            "20000",
+            "JPY",
+        )
+    ]
+    rates = {"TWD": twd_rate("TWD", "1"), "JPY": twd_rate("JPY", "0.2")}
+
+    assert (
+        BackToBackFareService._best_reverse_two_segment(
+            query,
+            candidates,
+            rates,
+            same_airline=True,
+        )
+        is None
+    )
+
+
 def test_missing_fx_never_produces_cross_currency_savings() -> None:
     reverse_quote = quote(
         AirlineCode.CHINA_AIRLINES,
@@ -348,12 +444,8 @@ def test_missing_fx_never_produces_cross_currency_savings() -> None:
         "20000",
         "JPY",
     )
-    component = BackToBackFareService._ticket_component(
-        FareTicketRole.REVERSE, reverse_quote, {}
-    )
-    comparison = BackToBackFareService._comparison(
-        ComparisonMode.MIXED_AIRLINES, None, None
-    )
+    component = BackToBackFareService._ticket_component(FareTicketRole.REVERSE, reverse_quote, {})
+    comparison = BackToBackFareService._comparison(ComparisonMode.MIXED_AIRLINES, None, None)
 
     assert component.estimated_twd is None
     assert comparison.verdict == ComparisonVerdict.COMPARISON_UNAVAILABLE
@@ -367,9 +459,7 @@ async def test_service_fetches_two_unique_pages_per_airline_and_reuses_forward_r
         fare_row("TPE", "NRT", "2026-12-10", "2026-12-15", 11_000, "TWD"),
         fare_row("TPE", "NRT", "2026-11-10", "2026-12-15", 15_000, "TWD"),
     ]
-    reverse_rows = [
-        fare_row("NRT", "TPE", "2026-11-15", "2026-12-10", 20_000, "JPY")
-    ]
+    reverse_rows = [fare_row("NRT", "TPE", "2026-11-15", "2026-12-10", 20_000, "JPY")]
 
     async def fetch_page(_client: httpx.AsyncClient, url: str) -> FetchResult:
         rows = reverse_rows if "from-tokyo-to-taipei" in url else forward_rows
@@ -405,13 +495,59 @@ async def test_service_fetches_two_unique_pages_per_airline_and_reuses_forward_r
 
 
 @pytest.mark.asyncio
+async def test_service_prices_reverse_two_segment_with_manual_one_way_fares() -> None:
+    forward_rows = [
+        fare_row("TPE", "NRT", "2026-11-10", "2026-11-15", 10_000, "TWD"),
+        fare_row("TPE", "NRT", "2026-12-10", "2026-12-15", 11_000, "TWD"),
+    ]
+    reverse_rows = [fare_row("NRT", "TPE", "2026-11-15", "2026-12-10", 20_000, "JPY")]
+
+    async def fetch_page(_client: httpx.AsyncClient, url: str) -> FetchResult:
+        rows = reverse_rows if "from-tokyo-to-taipei" in url else forward_rows
+        return FetchResult(next_data_html(rows), cache_hit=False)
+
+    redis = FakeRedis(decode_responses=True)
+    settings = Settings(airline_crawler_min_interval_seconds=1)
+    crawler = AirlineFareCrawlerService(settings, redis)  # type: ignore[arg-type]
+    crawler.fetcher.fetch = AsyncMock(side_effect=fetch_page)  # type: ignore[method-assign]
+    fx_provider = AsyncMock()
+    fx_provider.rate_to_twd = AsyncMock(
+        side_effect=lambda currency: twd_rate(currency, "1" if currency == "TWD" else "0.2")
+    )
+    service = BackToBackFareService(
+        settings,
+        redis,  # type: ignore[arg-type]
+        crawler=crawler,
+        fx_provider=fx_provider,
+    )
+    query = search_request(
+        strategy=BackToBackStrategy.REVERSE_TWO_SEGMENT,
+        head_one_way_fare=SupplementalFareInput(
+            amount=Decimal("3000"), airline_code=AirlineCode.CHINA_AIRLINES
+        ),
+        tail_one_way_fare=SupplementalFareInput(
+            amount=Decimal("4000"), airline_code=AirlineCode.CHINA_AIRLINES
+        ),
+    )
+
+    response = await service.search(query)
+    await redis.aclose()
+
+    candidates = {candidate.role: candidate.quotes for candidate in response.candidates}
+    assert crawler.fetcher.fetch.await_count == 2  # type: ignore[attr-defined]
+    assert candidates[FareTicketRole.WRAPPER] == []
+    assert response.comparisons[0].conventional is not None
+    assert response.comparisons[0].conventional.estimated_twd == Decimal("21000")
+    assert response.comparisons[0].back_to_back is not None
+    assert response.comparisons[0].back_to_back.estimated_twd == Decimal("11000")
+    assert response.comparisons[0].savings_twd == Decimal("10000")
+    assert "外站兩段票" in response.comparisons[0].detail
+
+
+@pytest.mark.asyncio
 async def test_different_destinations_use_two_forward_pages_without_fake_open_jaw() -> None:
-    tokyo_rows = [
-        fare_row("TPE", "NRT", "2026-11-10", "2026-11-15", 10_000, "TWD")
-    ]
-    seoul_rows = [
-        fare_row("TPE", "ICN", "2026-12-10", "2026-12-15", 8_000, "TWD")
-    ]
+    tokyo_rows = [fare_row("TPE", "NRT", "2026-11-10", "2026-11-15", 10_000, "TWD")]
+    seoul_rows = [fare_row("TPE", "ICN", "2026-12-10", "2026-12-15", 8_000, "TWD")]
 
     async def fetch_page(_client: httpx.AsyncClient, url: str) -> FetchResult:
         rows = seoul_rows if "to-seoul" in url else tokyo_rows
@@ -503,12 +639,21 @@ async def test_fx_provider_caches_fresh_rate_and_falls_back_to_stale() -> None:
         requests += 1
         return httpx.Response(
             200,
-            json={"date": "2026-08-30", "base": "JPY", "quote": "TWD", "rate": 0.2},
+            json=[
+                {
+                    "date": "2026-08-30",
+                    "base": "JPY",
+                    "quote": "TWD",
+                    "rate": 0.2,
+                }
+            ],
         )
 
     redis = FakeRedis(decode_responses=True)
     provider = FxRateProvider(
-        Settings(), redis, transport=httpx.MockTransport(success)  # type: ignore[arg-type]
+        Settings(),
+        redis,
+        transport=httpx.MockTransport(success),  # type: ignore[arg-type]
     )
     first = await provider.rate_to_twd("JPY")
     second = await provider.rate_to_twd("JPY")

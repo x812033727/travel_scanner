@@ -52,6 +52,7 @@ test("back-to-back fare comparison renders both strategy modes", async ({ page }
     contentType: "application/json",
     body: JSON.stringify({
       queried_at: "2026-08-30T10:00:00Z",
+      query: { strategy: "reverse_two_segment" },
       pricing_capability: "full_back_to_back",
       comparisons: [
         {
@@ -88,5 +89,5 @@ test("back-to-back fare comparison renders both strategy modes", async ({ page }
   await page.getByRole("button", { name: "比較倒買價格" }).click();
   await expect(page.getByRole("heading", { name: "最低混搭" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "最低同航空公司" })).toBeVisible();
-  await expect(page.getByText(/(?:倒買法|外站兩段票)估算省下.*2,000/).first()).toBeVisible();
+  await expect(page.getByText(/外站兩段票估算省下.*2,000/).first()).toBeVisible();
 });

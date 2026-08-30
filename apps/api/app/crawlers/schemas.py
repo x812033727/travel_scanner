@@ -72,6 +72,11 @@ class BackToBackFareSearch(BaseModel):
     cabin_class: CabinClass = CabinClass.ECONOMY
     airlines: list[AirlineCode] = Field(default_factory=lambda: list(AirlineCode), min_length=1)
     limit_per_airline: int = Field(default=10, ge=1, le=30)
+    strategy: "BackToBackStrategy" = Field(
+        default_factory=lambda: BackToBackStrategy.NESTED_ROUND_TRIPS
+    )
+    head_one_way_fare: "SupplementalFareInput | None" = None
+    tail_one_way_fare: "SupplementalFareInput | None" = None
 
     @model_validator(mode="before")
     @classmethod
@@ -185,6 +190,41 @@ class ComparisonVerdict(StrEnum):
     COMPARISON_UNAVAILABLE = "comparison_unavailable"
 
 
+class BackToBackStrategy(StrEnum):
+    NESTED_ROUND_TRIPS = "nested_round_trips"
+    REVERSE_TWO_SEGMENT = "reverse_two_segment"
+
+
+class SupplementalFareRole(StrEnum):
+    HEAD_ONE_WAY = "head_one_way"
+    TAIL_ONE_WAY = "tail_one_way"
+
+
+class SupplementalFareInput(BaseModel):
+    amount: Decimal = Field(gt=0)
+    currency: str = Field(default="TWD", min_length=3, max_length=3)
+    airline_code: AirlineCode | None = None
+
+    @field_validator("currency")
+    @classmethod
+    def uppercase_currency(cls, value: str) -> str:
+        return value.upper()
+
+
+class SupplementalFareComponent(BaseModel):
+    role: SupplementalFareRole
+    origin: str
+    destination: str
+    departure_date: date
+    amount: Decimal = Field(gt=0)
+    currency: str
+    airline_code: AirlineCode | None = None
+    estimated_twd: Decimal | None = Field(default=None, ge=0)
+    fx_rate: "FxRateSnapshot | None" = None
+    source: str = "manual"
+    is_live: bool = False
+
+
 class BackToBackPricingCapability(StrEnum):
     FULL_BACK_TO_BACK = "full_back_to_back"
     OPEN_JAW_PROVIDER_REQUIRED = "open_jaw_provider_required"
@@ -208,7 +248,8 @@ class FareTicketComponent(BaseModel):
 
 
 class FareStrategyTotal(BaseModel):
-    tickets: list[FareTicketComponent] = Field(min_length=2, max_length=2)
+    tickets: list[FareTicketComponent] = Field(min_length=1, max_length=2)
+    supplemental_fares: list[SupplementalFareComponent] = Field(default_factory=list, max_length=2)
     original_currency_totals: dict[str, Decimal]
     estimated_twd: Decimal | None = Field(default=None, ge=0)
 
@@ -268,9 +309,7 @@ class BrowserPriceLastSeen(BaseModel):
 class AirlineBrowserFareRow(BaseModel):
     model_config = ConfigDict(extra="forbid", populate_by_name=True)
 
-    origin_airport_code: str | None = Field(
-        default=None, alias="originAirportCode", max_length=3
-    )
+    origin_airport_code: str | None = Field(default=None, alias="originAirportCode", max_length=3)
     destination_airport_code: str | None = Field(
         default=None, alias="destinationAirportCode", max_length=3
     )
