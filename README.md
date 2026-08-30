@@ -104,6 +104,11 @@ bookability. Results therefore set `is_live=false`, `is_bookable=false`, and
 `is_mock=false`, retain the official source URL, and include the source's
 last-seen text when available.
 
+The browser test surface is available at `http://localhost:3000/labs/airlines`.
+It shows each adapter's current policy state before submitting an authenticated
+fare query through the same-origin BFF, and keeps public cached fares clearly
+separate from live, bookable inventory.
+
 Safety controls include a fixed HTTPS host allowlist, runtime `robots.txt`
 checks that fail closed, Redis-backed page caching and per-host throttling (with
 a process-local development fallback), bounded response size, timeout, and one
