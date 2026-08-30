@@ -56,3 +56,26 @@ npm run build:web
 
 Further sections below document providers, plans, credits, orchestration, and
 optimization as those modules are introduced.
+
+## Plans and credits
+
+Registration creates a FREE subscription with 20 monthly credits. PRO has 200
+credits; it is intentionally not unlimited. Search cost is calculated on the
+server (1 per fixed module, 4 for flexible flights, 5 for flight + hotel, 10 for
+a full trip, 15 for multi-city, and 3 for re-optimization).
+
+Credits are reserved and debited in the same PostgreSQL transaction. The
+immutable `usage_ledger` records every grant, debit, and refund, while the
+`usage_reservations` unique key prevents duplicate charges. Redis adds the fast
+rate-limit and in-flight guard, but is never the accounting source of truth.
+
+## Adding a provider
+
+Implement the relevant protocol in `apps/api/app/providers/base.py`, normalize
+every response into `providers/schemas.py`, then register the adapter with the
+search orchestrator. Keep credentials in environment-backed settings and never
+return provider-specific payloads or secrets to the client.
+
+The built-in Mock Provider generates stable TPE/Japan examples from a hash of
+the request. Every result includes `is_mock`, retrieval time, expiry time, and a
+non-bookable example URL.
