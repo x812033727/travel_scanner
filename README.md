@@ -79,3 +79,11 @@ return provider-specific payloads or secrets to the client.
 The built-in Mock Provider generates stable TPE/Japan examples from a hash of
 the request. Every result includes `is_mock`, retrieval time, expiry time, and a
 non-bookable example URL.
+
+## Search orchestration
+
+`POST /api/v1/searches` validates the JWT, entitlement, rate limit, idempotency
+key, and credits before creating an RQ job. The worker calls provider modules in
+parallel; one provider failure becomes a warning instead of cancelling useful
+results. Normalized offers are persisted and published through a replayable
+Redis Stream exposed at `GET /api/v1/searches/{id}/events`.

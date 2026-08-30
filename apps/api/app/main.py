@@ -9,6 +9,7 @@ from app.db import engine
 from app.infra import get_redis
 from app.middleware import RequestContextMiddleware
 from app.problems import AppError, app_error_handler
+from app.search.router import router as search_router
 from app.usage.router import router as usage_router
 
 settings = get_settings()
@@ -24,6 +25,7 @@ app.add_middleware(
 app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(usage_router, prefix="/api/v1")
+app.include_router(search_router, prefix="/api/v1")
 
 
 @app.get("/health", tags=["system"])

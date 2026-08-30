@@ -108,6 +108,7 @@ async def reserve_credits(
     operation: str,
     credits: int,
 ) -> tuple[UsageReservation, bool]:
+    subscription = await get_subscription(session, user_id, lock=True)
     existing = await session.scalar(
         select(UsageReservation).where(
             UsageReservation.user_id == user_id,
@@ -116,7 +117,6 @@ async def reserve_credits(
     )
     if existing is not None:
         return existing, False
-    subscription = await get_subscription(session, user_id, lock=True)
     if subscription.credit_balance < credits:
         raise AppError(402, "insufficient_credits", "There are not enough credits for this request")
     subscription.credit_balance -= credits
