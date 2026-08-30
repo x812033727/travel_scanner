@@ -159,7 +159,7 @@ class MockProvider:
                 hotel_name=name,
                 latitude=latitude + index * 0.004,
                 longitude=longitude - index * 0.003,
-                rating=3.8 + index * 0.35,
+                rating=[3, 4, 4, 5][index],
                 room_type="標準雙人房" if index < 2 else "豪華雙人房",
                 check_in=check_in.replace(hour=15),
                 check_out=check_out.replace(hour=11),
@@ -172,6 +172,19 @@ class MockProvider:
                 refundable=index != 0,
                 station_walk_minutes=[11, 5, 8, 3][index],
                 nightly_price=((base + taxes + fees) / nights).quantize(Decimal("0.01")),
+                address=f"{city}市旅遊核心區 {index + 1}-{index + 3}",
+                amenities=[
+                    ["Wi-Fi", "空調"],
+                    ["Wi-Fi", "健身房", "行李寄存"],
+                    ["Wi-Fi", "洗衣服務", "餐廳"],
+                    ["Wi-Fi", "健身房", "行政酒廊", "機場接送"],
+                ][index],
+                review_score=[4.2, 4.6, 4.8, 4.7][index],
+                review_count=[186, 428, 763, 512][index],
+                distance_to_center_km=[2.8, 0.8, 1.6, 0.5][index],
+                cancellation_policy=(
+                    "不可退款" if index == 0 else "入住前 3 天可免費取消，之後收取首晚房費"
+                ),
             )
             offers.append(offer)
             self._offers[offer_id] = offer

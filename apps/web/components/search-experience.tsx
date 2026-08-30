@@ -22,7 +22,7 @@ import { api, isUsageInsufficient, twd } from "@/lib/api";
 import { destinationByAirport, interestLabel, interests as destinationInterests } from "@/lib/destinations";
 import { BudgetBreakdown, type BudgetCost } from "@/components/budget-breakdown";
 import { AirbnbSearchPanel } from "@/components/airbnb-search-panel";
-import { HotelOfferCard, hotelNightlyPrice, hotelRating } from "@/components/hotel-offer-card";
+import { HotelOfferCard, hotelNightlyPrice, hotelRating, hotelStarRating } from "@/components/hotel-offer-card";
 import { SearchCriteriaEditor, type CriteriaUpdate } from "@/components/search-criteria-editor";
 
 type Parsed = {
@@ -334,10 +334,8 @@ export function SearchExperience() {
         await loadFinal(accepted.search_id).catch(() => undefined);
       });
       stream.onerror = () => {
-        setWarnings((current) => [
-          ...current,
-          "即時連線曾短暫中斷；完成後會從伺服器重新載入結果。",
-        ]);
+        const warning = "即時連線曾短暫中斷；完成後會從伺服器重新載入結果。";
+        setWarnings((current) => current.includes(warning) ? current : [...current, warning]);
       };
     } catch (reason) {
       if (isUsageInsufficient(reason)) {
@@ -417,7 +415,7 @@ export function SearchExperience() {
     if (activeTab === "hotel") {
       rows = rows.filter((offer) => !breakfastOnly || Boolean(offer.breakfast_included))
         .filter((offer) => !refundableOnly || Boolean(offer.refundable))
-        .filter((offer) => !hotelMinRating || hotelRating(offer) >= hotelMinRating)
+        .filter((offer) => !hotelMinRating || hotelStarRating(offer) >= hotelMinRating)
         .filter((offer) => !hotelNightlyMax || hotelNightlyPrice(offer) <= hotelNightlyMax)
         .filter((offer) => !hotelMaxWalk || Number(offer.station_walk_minutes || 0) <= hotelMaxWalk);
       if (hotelSort === "price") rows.sort((left, right) => hotelNightlyPrice(left) - hotelNightlyPrice(right));
@@ -495,7 +493,7 @@ export function SearchExperience() {
           <strong className="text-[var(--teal-dark)]">快速篩選</strong>
           {activeTab !== "hotel" && <label className="flex items-center gap-2"><input type="checkbox" checked={sortByPrice} onChange={(event) => setSortByPrice(event.target.checked)} />價格由低到高</label>}
           {activeTab === "flight" && <><label className="flex items-center gap-2"><input type="checkbox" checked={directOnly} onChange={(event) => setDirectOnly(event.target.checked)} />只看直飛</label><label className="flex items-center gap-2"><input type="checkbox" checked={refundableFlightOnly} onChange={(event) => setRefundableFlightOnly(event.target.checked)} />可退款</label></>}
-          {activeTab === "hotel" && <><label className="flex items-center gap-2"><input type="checkbox" checked={breakfastOnly} onChange={(event) => setBreakfastOnly(event.target.checked)} />含早餐</label><label className="flex items-center gap-2"><input type="checkbox" checked={refundableOnly} onChange={(event) => setRefundableOnly(event.target.checked)} />可退款</label><label className="flex items-center gap-2">最低評分<select aria-label="飯店最低評分" className="rounded-lg border border-[var(--line)] px-2 py-1.5" value={hotelMinRating} onChange={(event) => setHotelMinRating(Number(event.target.value))}><option value="0">不限</option><option value="4">4.0+</option><option value="4.5">4.5+</option><option value="4.8">4.8+</option></select></label><label className="flex items-center gap-2">每晚上限<input aria-label="飯店每晚上限" className="w-24 rounded-lg border border-[var(--line)] px-2 py-1.5" inputMode="numeric" min="0" type="number" value={hotelNightlyMax || ""} placeholder="不限" onChange={(event) => setHotelNightlyMax(Number(event.target.value))} /></label><label className="flex items-center gap-2">車站步行<select aria-label="飯店車站步行上限" className="rounded-lg border border-[var(--line)] px-2 py-1.5" value={hotelMaxWalk} onChange={(event) => setHotelMaxWalk(Number(event.target.value))}><option value="0">不限</option><option value="5">5 分內</option><option value="10">10 分內</option><option value="15">15 分內</option><option value="20">20 分內</option></select></label><label className="flex items-center gap-2">排序<select aria-label="飯店排序" className="rounded-lg border border-[var(--line)] px-2 py-1.5" value={hotelSort} onChange={(event) => setHotelSort(event.target.value as typeof hotelSort)}><option value="recommended">推薦順序</option><option value="price">每晚價格</option><option value="rating">評分最高</option><option value="distance">距市中心最近</option></select></label></>}
+          {activeTab === "hotel" && <><label className="flex items-center gap-2"><input type="checkbox" checked={breakfastOnly} onChange={(event) => setBreakfastOnly(event.target.checked)} />含早餐</label><label className="flex items-center gap-2"><input type="checkbox" checked={refundableOnly} onChange={(event) => setRefundableOnly(event.target.checked)} />可退款</label><label className="flex items-center gap-2">最低星等<select aria-label="飯店最低星等" className="rounded-lg border border-[var(--line)] px-2 py-1.5" value={hotelMinRating} onChange={(event) => setHotelMinRating(Number(event.target.value))}><option value="0">不限</option><option value="3">3 星以上</option><option value="4">4 星以上</option><option value="5">5 星</option></select></label><label className="flex items-center gap-2">每晚上限<input aria-label="飯店每晚上限" className="w-24 rounded-lg border border-[var(--line)] px-2 py-1.5" inputMode="numeric" min="0" type="number" value={hotelNightlyMax || ""} placeholder="不限" onChange={(event) => setHotelNightlyMax(Number(event.target.value))} /></label><label className="flex items-center gap-2">車站步行<select aria-label="飯店車站步行上限" className="rounded-lg border border-[var(--line)] px-2 py-1.5" value={hotelMaxWalk} onChange={(event) => setHotelMaxWalk(Number(event.target.value))}><option value="0">不限</option><option value="5">5 分內</option><option value="10">10 分內</option><option value="15">15 分內</option><option value="20">20 分內</option></select></label><label className="flex items-center gap-2">排序<select aria-label="飯店排序" className="rounded-lg border border-[var(--line)] px-2 py-1.5" value={hotelSort} onChange={(event) => setHotelSort(event.target.value as typeof hotelSort)}><option value="recommended">推薦順序</option><option value="price">每晚價格</option><option value="rating">旅客評分最高</option><option value="distance">距市中心最近</option></select></label></>}
           {activeTab === "activities" && <label className="flex items-center gap-2">興趣<select className="rounded-lg border border-[var(--line)] px-2 py-1.5" value={activityInterest} onChange={(event) => setActivityInterest(event.target.value)}><option value="all">全部</option>{destinationInterests.map((interest) => <option key={interest.code} value={interest.code}>{interest.label}</option>)}</select></label>}
         </div>}
 

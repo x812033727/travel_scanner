@@ -59,12 +59,17 @@ export function hotelRating(offer: HotelOfferView) {
   return number(offer.review_score) || number(offer.rating);
 }
 
+export function hotelStarRating(offer: HotelOfferView) {
+  return number(offer.rating);
+}
+
 export function HotelOfferCard({ offer, actionUrl }: { offer: HotelOfferView; actionUrl: string }) {
   const image = offer.images?.[0];
   const mode = offer.source_mode || (offer.is_mock ? "mock" : "estimate");
   const total = number(offer.total_price);
   const nightly = hotelNightlyPrice(offer);
-  const rating = hotelRating(offer);
+  const starRating = hotelStarRating(offer);
+  const reviewScore = number(offer.review_score);
   const amenities = Array.isArray(offer.amenities) ? offer.amenities.filter((item): item is string => typeof item === "string").slice(0, 4) : [];
   const retrievedAt = offer.retrieved_at ? new Date(offer.retrieved_at).toLocaleString("zh-TW") : undefined;
   const expiresAt = offer.expires_at ? new Date(offer.expires_at).toLocaleString("zh-TW") : undefined;
@@ -82,7 +87,8 @@ export function HotelOfferCard({ offer, actionUrl }: { offer: HotelOfferView; ac
         </div>
 
         <div className="mt-4 flex flex-wrap gap-2 text-xs">
-          {rating > 0 && <span className="flex items-center gap-1 rounded-full bg-amber-50 px-2.5 py-1.5 font-semibold text-amber-900"><Star size={14} fill="currentColor" />{rating.toFixed(1)}{number(offer.review_count) ? `（${number(offer.review_count).toLocaleString("zh-TW")} 則）` : ""}</span>}
+          {starRating > 0 && <span className="flex items-center gap-1 rounded-full bg-amber-50 px-2.5 py-1.5 font-semibold text-amber-900"><Star size={14} fill="currentColor" />{starRating.toFixed(1)} 星</span>}
+          {reviewScore > 0 && <span className="rounded-full bg-[var(--paper)] px-2.5 py-1.5 font-semibold">旅客 {reviewScore.toFixed(1)}{number(offer.review_count) ? `（${number(offer.review_count).toLocaleString("zh-TW")} 則）` : ""}</span>}
           <span className="flex items-center gap-1 rounded-full bg-[var(--paper)] px-2.5 py-1.5"><BedDouble size={14} />{text(offer.room_type, "客房")} · {number(offer.nights) || "-"} 晚</span>
           {number(offer.station_walk_minutes) > 0 && <span className="flex items-center gap-1 rounded-full bg-[var(--paper)] px-2.5 py-1.5"><TrainFront size={14} />車站步行 {number(offer.station_walk_minutes)} 分</span>}
         </div>

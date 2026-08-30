@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { HotelOfferCard, hotelNightlyPrice, hotelRating, type HotelOfferView } from "./hotel-offer-card";
+import { HotelOfferCard, hotelNightlyPrice, hotelRating, hotelStarRating, type HotelOfferView } from "./hotel-offer-card";
 
 const offer: HotelOfferView = {
   id: "hotel-1",
@@ -19,6 +19,7 @@ const offer: HotelOfferView = {
   station_walk_minutes: 5,
   address: "東京都新宿區",
   distance_to_center_km: 1.2,
+  rating: 4,
   review_score: 4.7,
   review_count: 321,
   amenities: ["Wi-Fi", "空調"],
@@ -31,6 +32,7 @@ describe("HotelOfferCard", () => {
   it("derives comparable nightly price and enriched rating", () => {
     expect(hotelNightlyPrice(offer)).toBe(4_500);
     expect(hotelRating(offer)).toBe(4.7);
+    expect(hotelStarRating(offer)).toBe(4);
   });
 
   it("shows nightly and total pricing, reviews and cancellation conditions", () => {
@@ -38,7 +40,8 @@ describe("HotelOfferCard", () => {
     expect(screen.getByRole("heading", { name: "新宿測試飯店" })).toBeTruthy();
     expect(screen.getByText(/\$4,500/)).toBeTruthy();
     expect(screen.getByText(/\$9,000/)).toBeTruthy();
-    expect(screen.getByText(/4.7（321 則）/)).toBeTruthy();
+    expect(screen.getByText(/4.0 星/)).toBeTruthy();
+    expect(screen.getByText(/旅客 4.7（321 則）/)).toBeTruthy();
     expect(screen.getByText(/入住前 3 天免費取消/)).toBeTruthy();
     expect(screen.getByRole("link", { name: /前往供應商/ }).getAttribute("href")).toBe("https://hotel.example/offer");
   });
