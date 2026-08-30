@@ -1,9 +1,16 @@
 import argparse
 import asyncio
+import sys
+from io import TextIOWrapper
 
 from sqlalchemy import select
 
+from app.config import get_settings
+from app.crawlers.airlines import AirlineFareCrawlerService
+from app.crawlers.schemas import AirlineFareSearch
+from app.crawlers.verification import build_verification_report
 from app.db import SessionFactory
+from app.infra import get_redis
 from app.models import Plan, Subscription, UsageLedger, User
 from app.usage.service import seed_plans
 
@@ -38,15 +45,39 @@ async def set_plan(email: str, plan_code: str) -> None:
         print(f"{email} is now on {plan.code} with {plan.monthly_credits} credits")
 
 
+async def verify_airline_crawlers(origin: str, destination: str) -> bool:
+    query = AirlineFareSearch(
+        origin=origin,
+        destination=destination,
+        limit_per_airline=2,
+    )
+    response = await AirlineFareCrawlerService(get_settings(), get_redis()).search(
+        query, force_refresh=True
+    )
+    report = build_verification_report(query, response)
+    print(report.model_dump_json(indent=2))
+    return report.passed
+
+
 def main() -> None:
+    if isinstance(sys.stdout, TextIOWrapper):
+        sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="Travel Scanner development utilities")
     subparsers = parser.add_subparsers(dest="command", required=True)
     command = subparsers.add_parser("set-plan")
     command.add_argument("--email", required=True)
     command.add_argument("--plan", choices=["FREE", "PRO"], required=True)
+    verify = subparsers.add_parser("verify-airline-crawlers")
+    verify.add_argument("--origin", default="TPE")
+    verify.add_argument("--destination", default="NRT")
+    verify.add_argument("--strict", action="store_true")
     args = parser.parse_args()
     if args.command == "set-plan":
         asyncio.run(set_plan(args.email, args.plan))
+    elif args.command == "verify-airline-crawlers":
+        passed = asyncio.run(verify_airline_crawlers(args.origin, args.destination))
+        if args.strict and not passed:
+            raise SystemExit(1)
 
 
 if __name__ == "__main__":

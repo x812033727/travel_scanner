@@ -14,7 +14,15 @@ from app.crawlers.airlines import (
     RobotsAwareFetcher,
     parse_public_fares,
 )
-from app.crawlers.schemas import AirlineCode, AirlineFareSearch, CabinClass
+from app.crawlers.schemas import (
+    AirlineCode,
+    AirlineCrawlerSource,
+    AirlineFareSearch,
+    AirlineFareSearchResponse,
+    CabinClass,
+    SourceState,
+)
+from app.crawlers.verification import VerificationOutcome, build_verification_report
 from app.main import app
 
 
@@ -184,3 +192,74 @@ async def test_fetcher_fails_closed_when_robots_disallows_page() -> None:
         with pytest.raises(CrawlerPolicyError, match="不允許"):
             await fetcher.fetch(client, url)
     await redis.aclose()
+
+
+def test_verification_accepts_expected_disabled_source() -> None:
+    query = AirlineFareSearch(destination="NRT")
+    response = AirlineFareSearchResponse(
+        quotes=[],
+        warnings=[],
+        sources=[
+            AirlineCrawlerSource(
+                airline_code=AirlineCode.CHINA_AIRLINES,
+                airline_name="中華航空",
+                host="flights.china-airlines.com",
+                state=SourceState.SUCCESS,
+                policy="robots_allowed",
+                detail="ok",
+                quote_count=2,
+            ),
+            AirlineCrawlerSource(
+                airline_code=AirlineCode.EVA_AIR,
+                airline_name="長榮航空",
+                host="flights.evaair.com",
+                state=SourceState.DISABLED,
+                policy="fail_closed",
+                detail="expected",
+            ),
+            AirlineCrawlerSource(
+                airline_code=AirlineCode.STARLUX,
+                airline_name="星宇航空",
+                host="www.starlux-airlines.com",
+                state=SourceState.SUCCESS,
+                policy="robots_allowed",
+                detail="ok",
+                quote_count=2,
+            ),
+        ],
+    )
+    report = build_verification_report(query, response)
+    assert report.passed is True
+    outcomes = {source.airline_code: source.outcome for source in report.sources}
+    assert outcomes[AirlineCode.EVA_AIR] == VerificationOutcome.EXPECTED_DISABLED
+
+
+def test_verification_fails_when_required_source_has_no_quotes() -> None:
+    query = AirlineFareSearch(destination="NRT", airlines=[AirlineCode.STARLUX])
+    response = AirlineFareSearchResponse(
+        quotes=[],
+        warnings=["no fares"],
+        sources=[
+            AirlineCrawlerSource(
+                airline_code=AirlineCode.STARLUX,
+                airline_name="星宇航空",
+                host="www.starlux-airlines.com",
+                state=SourceState.SUCCESS,
+                policy="robots_allowed",
+                detail="no matching quote",
+                quote_count=0,
+            )
+        ],
+    )
+    report = build_verification_report(query, response)
+    assert report.passed is False
+    assert report.sources[0].outcome == VerificationOutcome.FAILED
+
+
+def test_verification_fails_when_required_source_is_missing() -> None:
+    query = AirlineFareSearch(destination="NRT", airlines=[AirlineCode.STARLUX])
+    response = AirlineFareSearchResponse(quotes=[], warnings=[], sources=[])
+    report = build_verification_report(query, response)
+    assert report.passed is False
+    assert report.sources[0].airline_code == AirlineCode.STARLUX
+    assert report.sources[0].outcome == VerificationOutcome.FAILED

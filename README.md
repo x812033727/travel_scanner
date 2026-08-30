@@ -110,6 +110,21 @@ a process-local development fallback), bounded response size, timeout, and one
 transient retry. The collector never logs in, solves CAPTCHAs, or calls private
 booking endpoints.
 
+Run a fresh live contract check from the command line. `--strict` returns a
+non-zero exit code when an enabled adapter cannot fetch and parse at least one
+fare. Expected policy-disabled adapters are reported but do not fail the run.
+
+```bash
+cd apps/api
+uv run python -m app.cli verify-airline-crawlers \
+  --origin TPE --destination NRT --strict
+```
+
+The same check is available as the manually dispatched GitHub workflow
+`Airline crawler live validation`. It deliberately does not run on every push:
+external fare pages are volatile, while normal CI always runs deterministic
+parser, robots-policy, cache, and verification-report tests.
+
 Example authenticated request:
 
 ```bash

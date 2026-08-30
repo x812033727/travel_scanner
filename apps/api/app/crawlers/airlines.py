@@ -396,11 +396,13 @@ class RobotsAwareFetcher:
                     continue
         raise CrawlerError("source_unavailable", "來源暫時無法連線") from last_error
 
-    async def _robots_allows(self, client: httpx.AsyncClient, url: str) -> None:
+    async def _robots_allows(
+        self, client: httpx.AsyncClient, url: str, *, force_refresh: bool = False
+    ) -> None:
         parsed = urlsplit(url)
         robots_url = f"{parsed.scheme}://{parsed.netloc}/robots.txt"
         key = f"crawler:robots:{parsed.netloc}"
-        body = await self._get_cached(key)
+        body = None if force_refresh else await self._get_cached(key)
         if body is None:
             try:
                 body = await self._request(client, robots_url)
@@ -415,7 +417,9 @@ class RobotsAwareFetcher:
         if not parser.can_fetch(self.settings.airline_crawler_agent_token, url):
             raise CrawlerPolicyError("robots_disallowed", "robots.txt 不允許抓取此頁")
 
-    async def fetch(self, client: httpx.AsyncClient, url: str) -> FetchResult:
+    async def fetch(
+        self, client: httpx.AsyncClient, url: str, *, force_refresh: bool = False
+    ) -> FetchResult:
         parsed = urlsplit(url)
         if parsed.scheme != "https" or parsed.hostname not in {
             adapter.host for adapter in ADAPTERS.values()
@@ -423,10 +427,10 @@ class RobotsAwareFetcher:
             raise CrawlerPolicyError("source_not_allowed", "來源 URL 不在航空公司白名單")
         digest = hashlib.sha256(url.encode()).hexdigest()
         page_key = f"crawler:page:{digest}"
-        cached = await self._get_cached(page_key)
+        cached = None if force_refresh else await self._get_cached(page_key)
         if cached is not None:
             return FetchResult(cached, cache_hit=True)
-        await self._robots_allows(client, url)
+        await self._robots_allows(client, url, force_refresh=force_refresh)
         throttle_key = f"crawler:throttle:{parsed.hostname}"
         acquired = await self._set_cached(
             throttle_key,
@@ -473,6 +477,7 @@ class AirlineFareCrawlerService:
         client: httpx.AsyncClient,
         adapter: PublicFareAdapter,
         query: AirlineFareSearch,
+        force_refresh: bool,
     ) -> tuple[list[PublicFareQuote], AirlineCrawlerSource, str | None]:
         if not adapter.enabled:
             source = AirlineCrawlerSource(
@@ -486,7 +491,7 @@ class AirlineFareCrawlerService:
             return [], source, f"{adapter.name}：{adapter.disabled_reason}"
         try:
             url = adapter.fare_url(query)
-            fetched = await self.fetcher.fetch(client, url)
+            fetched = await self.fetcher.fetch(client, url, force_refresh=force_refresh)
             quotes = adapter.parse(fetched.content, url, query)
             detail = "讀取公開近期票價成功"
             warning = None
@@ -525,7 +530,9 @@ class AirlineFareCrawlerService:
             )
             return [], source, f"{adapter.name}：{exc.detail}"
 
-    async def search(self, query: AirlineFareSearch) -> AirlineFareSearchResponse:
+    async def search(
+        self, query: AirlineFareSearch, *, force_refresh: bool = False
+    ) -> AirlineFareSearchResponse:
         timeout = httpx.Timeout(self.settings.airline_crawler_timeout_seconds)
         headers = {
             "User-Agent": self.settings.airline_crawler_user_agent,
@@ -533,7 +540,10 @@ class AirlineFareCrawlerService:
             "Accept-Language": "zh-TW,zh;q=0.9,en;q=0.8",
         }
         async with httpx.AsyncClient(timeout=timeout, headers=headers) as client:
-            tasks = [self._search_site(client, ADAPTERS[code], query) for code in query.airlines]
+            tasks = [
+                self._search_site(client, ADAPTERS[code], query, force_refresh)
+                for code in query.airlines
+            ]
             results = await asyncio.gather(*tasks)
         quotes = [quote for result, _, _ in results for quote in result]
         sources = [source for _, source, _ in results]

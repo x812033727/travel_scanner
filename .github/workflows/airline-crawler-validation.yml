@@ -1,0 +1,36 @@
+name: Airline crawler live validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: Origin airport or city code
+        required: true
+        default: TPE
+      destination:
+        description: Destination airport or city code
+        required: true
+        default: NRT
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: apps/api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.13"
+      - run: uv sync --frozen
+      - name: Verify public airline fare adapters
+        run: >-
+          uv run python -m app.cli verify-airline-crawlers
+          --origin "${{ inputs.origin }}"
+          --destination "${{ inputs.destination }}"
+          --strict
