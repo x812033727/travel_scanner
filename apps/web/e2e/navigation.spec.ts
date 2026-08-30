@@ -73,3 +73,86 @@ test("back-to-back fare comparison renders both strategy modes", async ({ page }
   await expect(page.getByRole("heading", { name: "最低同航空公司" })).toBeVisible();
   await expect(page.getByText(/外站兩段票估算省下.*2,000/).first()).toBeVisible();
 });
+
+test("different destinations can complete an external two-segment comparison", async ({ page }) => {
+  await page.route("**/api/travel/crawlers/airlines/status", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({ sources: [], safety_rules: [] }),
+  }));
+  let submitted: Record<string, unknown> = {};
+  await page.route("**/api/travel/crawlers/airlines/back-to-back-fares", (route) => {
+    submitted = route.request().postDataJSON();
+    const manual = (role: string, amount: string, segments: Array<Record<string, string>>) => ({
+      role,
+      origin: segments[0].origin,
+      destination: segments.at(-1)?.destination,
+      departure_date: segments[0].departure_date,
+      amount,
+      currency: "TWD",
+      airline_code: "CI",
+      estimated_twd: amount,
+      source: "manual",
+      is_live: false,
+      segments,
+    });
+    const backToBack = {
+      tickets: [],
+      supplemental_fares: [
+        manual("head_one_way", "3000", [{ origin: "TPE", destination: "TYO", departure_date: "2027-02-26" }]),
+        manual("middle_two_segment", "9000", [
+          { origin: "TYO", destination: "TPE", departure_date: "2027-03-10" },
+          { origin: "TPE", destination: "SEL", departure_date: "2027-03-18" },
+        ]),
+        manual("tail_one_way", "4000", [{ origin: "SEL", destination: "TPE", departure_date: "2027-03-22" }]),
+      ],
+      original_currency_totals: { TWD: "16000" },
+      estimated_twd: "16000",
+    };
+    const comparison = {
+      conventional: { tickets: [], supplemental_fares: [], original_currency_totals: { TWD: "22000" }, estimated_twd: "22000" },
+      back_to_back: backToBack,
+      savings_twd: "6000",
+      savings_percent: "27.3",
+      verdict: "back_to_back_cheaper",
+      detail: "外站兩段票估算較省。",
+    };
+    return route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        queried_at: "2026-08-30T10:00:00Z",
+        query: { strategy: "reverse_two_segment", first_destination: "TYO", second_destination: "SEL" },
+        pricing_capability: "full_back_to_back",
+        comparisons: [
+          { ...comparison, mode: "mixed_airlines" },
+          { ...comparison, mode: "same_airline" },
+        ],
+        candidates: [],
+        fx_rates: [],
+        warnings: [],
+      }),
+    });
+  });
+
+  await page.goto("/labs/airlines");
+  await page.getByRole("tab", { name: "倒買法" }).click();
+  await page.getByLabel("第二次目的地").selectOption("SEL");
+  await page.getByLabel("頭段單程每人價格").fill("3000");
+  await page.getByLabel("中段反向兩航段每人價格").fill("9000");
+  await page.getByLabel("尾段單程每人價格").fill("4000");
+  await page.getByLabel("第一次一般來回每人價格").fill("12000");
+  await page.getByLabel("第二次一般來回每人價格").fill("10000");
+  await page.getByRole("button", { name: "比較倒買價格" }).click();
+
+  await expect(page.getByText("不同目的地的外站兩段票已支援")).toBeVisible();
+  await expect(page.getByText(/外站兩段票估算省下.*6,000/).first()).toBeVisible();
+  await expect(page.getByText("SEL").first()).toBeVisible();
+  expect(submitted).toMatchObject({
+    first_destination: "TYO",
+    second_destination: "SEL",
+    middle_two_segment_fare: { amount: "9000" },
+    conventional_first_fare: { amount: "12000" },
+    conventional_second_fare: { amount: "10000" },
+  });
+});

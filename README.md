@@ -132,20 +132,24 @@ foreign-origin round trip covers the first return and second departure, while
 separate one-way tickets cover the first departure and final return. The
 official China Airlines and STARLUX cached-fare pages currently publish only
 round-trip rows, so the two one-way per-passenger prices are accepted as
-clearly marked manual inputs (`head_one_way_fare` and `tail_one_way_fare`);
-missing values produce an unavailable comparison instead of a fabricated half
+clearly marked manual inputs (`head_one_way_fare` and `tail_one_way_fare`). A
+manual `middle_two_segment_fare` can also replace a missing reverse fare.
+Missing values produce an unavailable comparison instead of a fabricated half
 round-trip estimate. The service still reads at most two unique public pages
 per enabled airline, then reports both the cheapest mixed-airline combination
 and the cheapest same-airline combination per passenger. It never suggests
 skipping a coupon: every ticket must be flown in order.
 
-Different destinations are accepted and the two verifiable Taiwan-origin round
-trips are still priced. A true back-to-back construction in that case requires
-two open-jaw tickets (`Taiwan -> destination A`, `destination B -> Taiwan`, plus
-the reverse bridge). The current public fare pages do not publish multi-city
-prices, so the response sets `pricing_capability=open_jaw_provider_required`
-and does not fabricate a back-to-back total. Legacy requests with one
-`destination` remain accepted and apply it to both trips.
+Different destinations are supported for `reverse_two_segment`: the middle
+manual fare represents the ordered multi-city ticket `destination A -> Taiwan
+-> destination B`, while the head and tail inputs complete the first outbound
+and final inbound. If either conventional public round trip is missing,
+`conventional_first_fare` and `conventional_second_fare` provide clearly marked
+manual fallbacks as well. `nested_round_trips` still requires a true open-jaw
+provider when the destinations differ and returns
+`pricing_capability=open_jaw_provider_required` rather than fabricating that
+price. Legacy requests with one `destination` remain accepted and apply it to
+both trips.
 
 Foreign-origin fares retain their source currency. Frankfurter reference rates
 provide a clearly labelled TWD estimate and are cached in Redis for 24 hours;
