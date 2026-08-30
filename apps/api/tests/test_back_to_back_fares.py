@@ -33,7 +33,8 @@ from app.main import app
 def search_request(**overrides: object) -> BackToBackFareSearch:
     values: dict[str, object] = {
         "origin": "TPE",
-        "destination": "NRT",
+        "first_destination": "NRT",
+        "second_destination": "NRT",
         "first_trip": TripDateRange(
             departure_date=date(2026, 11, 10), return_date=date(2026, 11, 15)
         ),
@@ -126,6 +127,26 @@ def test_back_to_back_search_requires_strictly_ordered_four_dates() -> None:
         )
 
 
+def test_back_to_back_search_accepts_legacy_single_destination() -> None:
+    query = BackToBackFareSearch.model_validate(
+        {
+            "origin": "tpe",
+            "destination": "nrt",
+            "first_trip": {
+                "departure_date": "2026-11-10",
+                "return_date": "2026-11-15",
+            },
+            "second_trip": {
+                "departure_date": "2026-12-10",
+                "return_date": "2026-12-15",
+            },
+        }
+    )
+
+    assert query.first_destination == query.second_destination == "NRT"
+    assert "destination" not in query.model_dump()
+
+
 def test_build_fare_queries_expands_the_four_ticket_windows() -> None:
     queries = build_fare_queries(search_request())
 
@@ -138,6 +159,17 @@ def test_build_fare_queries_expands_the_four_ticket_windows() -> None:
         date(2026, 11, 15),
         date(2026, 12, 10),
     )
+
+
+def test_different_destinations_only_expand_verifiable_round_trips() -> None:
+    queries = build_fare_queries(search_request(second_destination="SEL"))
+
+    assert set(queries) == {
+        FareTicketRole.CONVENTIONAL_FIRST,
+        FareTicketRole.CONVENTIONAL_SECOND,
+    }
+    assert queries[FareTicketRole.CONVENTIONAL_FIRST].destination == "NRT"
+    assert queries[FareTicketRole.CONVENTIONAL_SECOND].destination == "SEL"
 
 
 def test_strategy_selection_returns_lowest_mixed_and_same_airline_totals() -> None:
@@ -369,6 +401,55 @@ async def test_service_fetches_two_unique_pages_per_airline_and_reuses_forward_r
     counts = {candidate.role: len(candidate.quotes) for candidate in response.candidates}
     assert counts == {role: 1 for role in FareTicketRole}
     assert response.comparisons[0].savings_twd == Decimal("2000")
+    assert response.pricing_capability.value == "full_back_to_back"
+
+
+@pytest.mark.asyncio
+async def test_different_destinations_use_two_forward_pages_without_fake_open_jaw() -> None:
+    tokyo_rows = [
+        fare_row("TPE", "NRT", "2026-11-10", "2026-11-15", 10_000, "TWD")
+    ]
+    seoul_rows = [
+        fare_row("TPE", "ICN", "2026-12-10", "2026-12-15", 8_000, "TWD")
+    ]
+
+    async def fetch_page(_client: httpx.AsyncClient, url: str) -> FetchResult:
+        rows = seoul_rows if "to-seoul" in url else tokyo_rows
+        return FetchResult(next_data_html(rows), cache_hit=False)
+
+    redis = FakeRedis(decode_responses=True)
+    settings = Settings(airline_crawler_min_interval_seconds=1)
+    crawler = AirlineFareCrawlerService(settings, redis)  # type: ignore[arg-type]
+    crawler.fetcher.fetch = AsyncMock(side_effect=fetch_page)  # type: ignore[method-assign]
+    fx_provider = AsyncMock()
+    fx_provider.rate_to_twd = AsyncMock(side_effect=lambda currency: twd_rate(currency, "1"))
+    service = BackToBackFareService(
+        settings,
+        redis,  # type: ignore[arg-type]
+        crawler=crawler,
+        fx_provider=fx_provider,
+    )
+
+    response = await service.search(search_request(second_destination="SEL"))
+    await redis.aclose()
+
+    assert crawler.fetcher.fetch.await_count == 2  # type: ignore[attr-defined]
+    assert {call.args[1] for call in crawler.fetcher.fetch.await_args_list} == {  # type: ignore[attr-defined]
+        "https://flights.china-airlines.com/en-tw/flights-from-taipei-to-tokyo",
+        "https://flights.china-airlines.com/en-tw/flights-from-taipei-to-seoul",
+    }
+    candidates = {candidate.role: candidate.quotes for candidate in response.candidates}
+    assert candidates[FareTicketRole.CONVENTIONAL_FIRST]
+    assert candidates[FareTicketRole.CONVENTIONAL_SECOND]
+    assert candidates[FareTicketRole.WRAPPER] == []
+    assert candidates[FareTicketRole.REVERSE] == []
+    assert response.pricing_capability.value == "open_jaw_provider_required"
+    assert response.comparisons[0].conventional is not None
+    assert response.comparisons[0].conventional.estimated_twd == Decimal("18000")
+    assert response.comparisons[0].back_to_back is None
+    assert response.comparisons[0].verdict == ComparisonVerdict.COMPARISON_UNAVAILABLE
+    assert "開口票" in response.comparisons[0].detail
+    assert any("只顯示可驗證的一般買法基準" in warning for warning in response.warnings)
 
 
 @pytest.mark.asyncio

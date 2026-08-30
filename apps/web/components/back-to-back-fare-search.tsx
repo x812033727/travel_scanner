@@ -21,6 +21,7 @@ type ComparisonVerdict =
   | "conventional_cheaper"
   | "same_price"
   | "comparison_unavailable";
+type BackToBackPricingCapability = "full_back_to_back" | "open_jaw_provider_required";
 
 type FareQuote = {
   id: string;
@@ -69,6 +70,7 @@ type BackToBackComparison = {
 
 type BackToBackResponse = {
   queried_at: string;
+  pricing_capability: BackToBackPricingCapability;
   comparisons: BackToBackComparison[];
   candidates: Array<{ role: FareTicketRole; quotes: FareQuote[] }>;
   fx_rates: FxRateSnapshot[];
@@ -81,14 +83,19 @@ const airlines: Array<{ code: AirlineCode; short: string }> = [
   { code: "JX", short: "星宇" },
 ];
 
-const destinations = [
-  { code: "TYO", city: "東京（成田／羽田）" },
-  { code: "OSA", city: "大阪（關西／伊丹）" },
-  { code: "FUK", city: "福岡" },
-  { code: "CTS", city: "札幌新千歲" },
-  { code: "SEL", city: "首爾（仁川／金浦）" },
-  { code: "BKK", city: "曼谷" },
-  { code: "SIN", city: "新加坡" },
+const destinationGroups = [
+  {
+    country: "日本",
+    cities: [
+      { code: "TYO", city: "東京（成田／羽田）" },
+      { code: "OSA", city: "大阪（關西／伊丹）" },
+      { code: "FUK", city: "福岡" },
+      { code: "CTS", city: "札幌新千歲" },
+    ],
+  },
+  { country: "韓國", cities: [{ code: "SEL", city: "首爾（仁川／金浦）" }] },
+  { country: "泰國", cities: [{ code: "BKK", city: "曼谷" }] },
+  { country: "新加坡", cities: [{ code: "SIN", city: "新加坡" }] },
 ];
 
 const roleLabels: Record<FareTicketRole, string> = {
@@ -116,12 +123,30 @@ function formatMoney(value: string | number, currency: string) {
   }).format(Number(value));
 }
 
-function StrategySummary({ title, strategy }: { title: string; strategy?: FareStrategyTotal }) {
+function DestinationOptions() {
+  return destinationGroups.map((group) => (
+    <optgroup key={group.country} label={group.country}>
+      {group.cities.map((item) => (
+        <option value={item.code} key={item.code}>{item.city} {item.code}</option>
+      ))}
+    </optgroup>
+  ));
+}
+
+function StrategySummary({
+  title,
+  strategy,
+  emptyCopy = "缺少完整票價或換算匯率",
+}: {
+  title: string;
+  strategy?: FareStrategyTotal;
+  emptyCopy?: string;
+}) {
   if (!strategy || strategy.estimated_twd === undefined) {
     return (
       <div className="rounded-2xl bg-[#f7f9f5] p-4">
         <p className="text-sm font-semibold">{title}</p>
-        <p className="mt-2 text-sm text-[var(--muted)]">缺少完整票價或換算匯率</p>
+        <p className="mt-2 text-sm text-[var(--muted)]">{emptyCopy}</p>
       </div>
     );
   }
@@ -162,7 +187,13 @@ function TicketTimeline({ tickets }: { tickets: FareTicketComponent[] }) {
   );
 }
 
-function ComparisonCard({ comparison }: { comparison: BackToBackComparison }) {
+function ComparisonCard({
+  comparison,
+  pricingCapability,
+}: {
+  comparison: BackToBackComparison;
+  pricingCapability: BackToBackPricingCapability;
+}) {
   const mixed = comparison.mode === "mixed_airlines";
   const savings = Number(comparison.savings_twd || 0);
   const savingsCopy = comparison.verdict === "back_to_back_cheaper"
@@ -185,13 +216,20 @@ function ComparisonCard({ comparison }: { comparison: BackToBackComparison }) {
       </div>
       <div className="mt-5 grid gap-3 sm:grid-cols-2">
         <StrategySummary title="兩張一般來回票" strategy={comparison.conventional} />
-        <StrategySummary title="包覆票＋外站倒買票" strategy={comparison.back_to_back} />
+        <StrategySummary
+          title={pricingCapability === "open_jaw_provider_required" ? "兩張開口倒買票" : "包覆票＋外站倒買票"}
+          strategy={comparison.back_to_back}
+          emptyCopy={pricingCapability === "open_jaw_provider_required" ? "需串接開口票價格來源" : undefined}
+        />
       </div>
       <div className={`mt-4 rounded-2xl p-4 text-sm ${favorable ? "bg-emerald-50 text-emerald-900" : "bg-amber-50 text-amber-900"}`}>
         <p className="font-bold">{savingsCopy}{comparison.savings_percent !== undefined ? `（${Math.abs(Number(comparison.savings_percent))}%）` : ""}</p>
         <p className="mt-1 leading-6">{comparison.detail}</p>
       </div>
       {comparison.back_to_back && <TicketTimeline tickets={comparison.back_to_back.tickets} />}
+      {!comparison.back_to_back && comparison.conventional && (
+        <TicketTimeline tickets={comparison.conventional.tickets} />
+      )}
     </article>
   );
 }
@@ -199,7 +237,8 @@ function ComparisonCard({ comparison }: { comparison: BackToBackComparison }) {
 export function BackToBackFareSearch() {
   const [selected, setSelected] = useState<Record<AirlineCode, boolean>>({ CI: true, BR: true, JX: true });
   const [origin, setOrigin] = useState("TPE");
-  const [destination, setDestination] = useState("TYO");
+  const [firstDestination, setFirstDestination] = useState("TYO");
+  const [secondDestination, setSecondDestination] = useState("TYO");
   const [firstDeparture, setFirstDeparture] = useState("2026-11-10");
   const [firstReturn, setFirstReturn] = useState("2026-11-15");
   const [secondDeparture, setSecondDeparture] = useState("2026-12-10");
@@ -233,7 +272,8 @@ export function BackToBackFareSearch() {
         method: "POST",
         body: JSON.stringify({
           origin,
-          destination,
+          first_destination: firstDestination,
+          second_destination: secondDestination,
           first_trip: { departure_date: firstDeparture, return_date: firstReturn },
           second_trip: { departure_date: secondDeparture, return_date: secondReturn },
           flex_days: Number(flexDays),
@@ -273,15 +313,14 @@ export function BackToBackFareSearch() {
           </div>
         </fieldset>
 
-        <div className="mt-5 grid grid-cols-[1fr_auto_1fr] items-end gap-2">
+        <div className="mt-5">
           <label className="text-sm font-semibold">出發地<select aria-label="倒買出發地" value={origin} onChange={(event) => setOrigin(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3"><option value="TPE">台北 TPE</option><option value="TSA">台北松山 TSA</option></select></label>
-          <ArrowRight className="mb-3 text-[var(--muted)]" size={18} />
-          <label className="text-sm font-semibold">目的地<select aria-label="倒買目的地" value={destination} onChange={(event) => setDestination(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3">{destinations.map((item) => <option value={item.code} key={item.code}>{item.city} {item.code}</option>)}</select></label>
         </div>
 
         <fieldset className="mt-5 rounded-2xl border border-[var(--line)] p-4">
           <legend className="px-2 text-sm font-bold">第一次旅行</legend>
           <div className="grid gap-3 sm:grid-cols-2">
+            <label className="text-sm font-semibold sm:col-span-2">第一次目的地國家／城市<select aria-label="第一次目的地" value={firstDestination} onChange={(event) => setFirstDestination(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3"><DestinationOptions /></select></label>
             <label className="text-sm font-semibold">出發<input aria-label="第一次出發日" required type="date" value={firstDeparture} onChange={(event) => setFirstDeparture(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3" /></label>
             <label className="text-sm font-semibold">回程<input aria-label="第一次回程日" required type="date" value={firstReturn} onChange={(event) => setFirstReturn(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3" /></label>
           </div>
@@ -289,6 +328,7 @@ export function BackToBackFareSearch() {
         <fieldset className="mt-4 rounded-2xl border border-[var(--line)] p-4">
           <legend className="px-2 text-sm font-bold">第二次旅行</legend>
           <div className="grid gap-3 sm:grid-cols-2">
+            <label className="text-sm font-semibold sm:col-span-2">第二次目的地國家／城市<select aria-label="第二次目的地" value={secondDestination} onChange={(event) => setSecondDestination(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3"><DestinationOptions /></select></label>
             <label className="text-sm font-semibold">出發<input aria-label="第二次出發日" required type="date" value={secondDeparture} onChange={(event) => setSecondDeparture(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3" /></label>
             <label className="text-sm font-semibold">回程<input aria-label="第二次回程日" required type="date" value={secondReturn} onChange={(event) => setSecondReturn(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3" /></label>
           </div>
@@ -313,8 +353,14 @@ export function BackToBackFareSearch() {
         {!result && !busy && <div className="grid min-h-[27rem] place-items-center text-center"><div className="max-w-md"><span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-[#edf5f1] text-[var(--teal)]"><Plane size={28} /></span><h3 className="mt-5 text-xl font-bold">需要兩趟旅行才能正確比較</h3><p className="mt-2 leading-7 text-[var(--muted)]">系統會比較兩張一般來回票，與「包覆票＋外站始發倒買票」的每人估算總價。</p></div></div>}
         {busy && <div className="grid min-h-[27rem] place-items-center text-center text-[var(--muted)]"><div><LoaderCircle className="mx-auto animate-spin text-[var(--teal)]" size={32} /><p className="mt-4">正在讀取台灣與外站始發公開票價…</p></div></div>}
         {result && !busy && <div className="mt-5 space-y-5">
+          {result.pricing_capability === "open_jaw_provider_required" && (
+            <div className="rounded-2xl border border-sky-200 bg-sky-50 p-4 text-sm leading-6 text-sky-950">
+              <p className="font-bold">兩次目的地不同，倒買票會變成開口票</p>
+              <p className="mt-1">目前可驗證兩張台灣來回票的基準價格；完整倒買方案需要「台灣→第一次目的地、第二次目的地→台灣」及反向的多城市票價來源，接上前不會估造價格。</p>
+            </div>
+          )}
           {result.warnings.map((warning) => <div key={warning} className="flex gap-2 rounded-xl bg-amber-50 p-3 text-sm leading-6 text-amber-900"><Info className="mt-0.5 shrink-0" size={17} />{warning}</div>)}
-          {result.comparisons.map((comparison) => <ComparisonCard key={comparison.mode} comparison={comparison} />)}
+          {result.comparisons.map((comparison) => <ComparisonCard key={comparison.mode} comparison={comparison} pricingCapability={result.pricing_capability} />)}
           {result.comparisons.every((comparison) => comparison.verdict === "comparison_unavailable") && rawCandidates.length > 0 && (
             <section className="rounded-2xl border border-[var(--line)] p-4">
               <h3 className="font-bold">已取得的原幣票價</h3>

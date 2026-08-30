@@ -35,6 +35,7 @@ test("back-to-back fare comparison renders both strategy modes", async ({ page }
     contentType: "application/json",
     body: JSON.stringify({
       queried_at: "2026-08-30T10:00:00Z",
+      pricing_capability: "full_back_to_back",
       comparisons: [
         {
           mode: "mixed_airlines",

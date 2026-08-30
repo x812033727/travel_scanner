@@ -114,6 +114,7 @@ describe("airline fare lab", () => {
     };
     const response = {
       queried_at: "2026-08-30T10:00:00Z",
+      pricing_capability: "full_back_to_back",
       comparisons: [
         comparison,
         { ...comparison, mode: "same_airline", savings_twd: "1000", savings_percent: "5.0" },
@@ -140,9 +141,68 @@ describe("airline fare lab", () => {
     expect(url).toBe("/api/travel/crawlers/airlines/back-to-back-fares");
     expect(JSON.parse(String(init.body))).toMatchObject({
       origin: "TPE",
-      destination: "TYO",
+      first_destination: "TYO",
+      second_destination: "TYO",
       first_trip: { departure_date: "2026-11-10", return_date: "2026-11-15" },
       second_trip: { departure_date: "2026-12-10", return_date: "2026-12-15" },
+    });
+  });
+
+  it("allows different destination countries without inventing open-jaw prices", async () => {
+    const conventionalTicket = (role: string, destination: string, price: string) => ({
+      role,
+      quote: {
+        id: `${role}-1`,
+        airline_code: "CI",
+        airline_name: "中華航空",
+        origin: "TPE",
+        destination,
+        departure_date: role === "conventional_first" ? "2026-11-10" : "2026-12-10",
+        return_date: role === "conventional_first" ? "2026-11-15" : "2026-12-15",
+        total_price: price,
+        currency: "TWD",
+        source_url: "https://flights.china-airlines.com/example",
+      },
+      estimated_twd: price,
+    });
+    const first = conventionalTicket("conventional_first", "NRT", "10000");
+    const second = conventionalTicket("conventional_second", "ICN", "8000");
+    const unavailable = {
+      conventional: {
+        tickets: [first, second],
+        original_currency_totals: { TWD: "18000" },
+        estimated_twd: "18000",
+      },
+      verdict: "comparison_unavailable",
+      detail: "已計算一般票；不同目的地需要開口票價格來源。",
+    };
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(ok(status))
+      .mockResolvedValueOnce(ok({
+        queried_at: "2026-08-30T10:00:00Z",
+        pricing_capability: "open_jaw_provider_required",
+        comparisons: [
+          { ...unavailable, mode: "mixed_airlines" },
+          { ...unavailable, mode: "same_airline" },
+        ],
+        candidates: [],
+        fx_rates: [],
+        warnings: [],
+      }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AirlineFareLab />);
+    await screen.findByText("政策停用");
+    fireEvent.click(screen.getByRole("tab", { name: "倒買法" }));
+    fireEvent.change(screen.getByLabelText("第二次目的地"), { target: { value: "SEL" } });
+    fireEvent.click(screen.getByRole("button", { name: "比較倒買價格" }));
+
+    expect(await screen.findByText("兩次目的地不同，倒買票會變成開口票")).toBeTruthy();
+    expect(screen.getAllByText("需串接開口票價格來源")).toHaveLength(2);
+    expect(screen.getAllByText(/TPE/).length).toBeGreaterThan(0);
+    const [, init] = fetchMock.mock.calls[1];
+    expect(JSON.parse(String(init.body))).toMatchObject({
+      first_destination: "TYO",
+      second_destination: "SEL",
     });
   });
 

@@ -23,6 +23,7 @@ from app.crawlers.schemas import (
     BackToBackComparison,
     BackToBackFareSearch,
     BackToBackFareSearchResponse,
+    BackToBackPricingCapability,
     ComparisonMode,
     ComparisonVerdict,
     FareCandidateSet,
@@ -52,36 +53,38 @@ def build_fare_queries(query: BackToBackFareSearch) -> dict[FareTicketRole, Airl
         "airlines": query.airlines,
         "limit_per_airline": query.limit_per_airline,
     }
-    return {
+    queries = {
         FareTicketRole.CONVENTIONAL_FIRST: AirlineFareSearch(
             origin=query.origin,
-            destination=query.destination,
+            destination=query.first_destination,
             departure_date=query.first_trip.departure_date,
             return_date=query.first_trip.return_date,
             **common,
         ),
         FareTicketRole.CONVENTIONAL_SECOND: AirlineFareSearch(
             origin=query.origin,
-            destination=query.destination,
+            destination=query.second_destination,
             departure_date=query.second_trip.departure_date,
             return_date=query.second_trip.return_date,
             **common,
         ),
-        FareTicketRole.WRAPPER: AirlineFareSearch(
+    }
+    if query.first_destination == query.second_destination:
+        queries[FareTicketRole.WRAPPER] = AirlineFareSearch(
             origin=query.origin,
-            destination=query.destination,
+            destination=query.first_destination,
             departure_date=query.first_trip.departure_date,
             return_date=query.second_trip.return_date,
             **common,
-        ),
-        FareTicketRole.REVERSE: AirlineFareSearch(
-            origin=query.destination,
+        )
+        queries[FareTicketRole.REVERSE] = AirlineFareSearch(
+            origin=query.first_destination,
             destination=query.origin,
             departure_date=query.first_trip.return_date,
             return_date=query.second_trip.departure_date,
             **common,
-        ),
-    }
+        )
+    return queries
 
 
 def _empty_candidates() -> dict[FareTicketRole, list[PublicFareQuote]]:
@@ -132,23 +135,39 @@ class BackToBackFareService:
                 warnings=[f"{adapter.name}：{adapter.disabled_reason}"],
             )
 
+        full_back_to_back = FareTicketRole.WRAPPER in queries
+        page_specs: list[tuple[str, str, tuple[FareTicketRole, ...]]]
         try:
-            page_specs = (
-                (
-                    "台灣始發",
-                    adapter.fare_url(queries[FareTicketRole.CONVENTIONAL_FIRST]),
+            if full_back_to_back:
+                page_specs = [
                     (
-                        FareTicketRole.CONVENTIONAL_FIRST,
-                        FareTicketRole.CONVENTIONAL_SECOND,
-                        FareTicketRole.WRAPPER,
+                        "台灣始發",
+                        adapter.fare_url(queries[FareTicketRole.CONVENTIONAL_FIRST]),
+                        (
+                            FareTicketRole.CONVENTIONAL_FIRST,
+                            FareTicketRole.CONVENTIONAL_SECOND,
+                            FareTicketRole.WRAPPER,
+                        ),
                     ),
-                ),
-                (
-                    "外站始發",
-                    adapter.fare_url(queries[FareTicketRole.REVERSE]),
-                    (FareTicketRole.REVERSE,),
-                ),
-            )
+                    (
+                        "外站始發",
+                        adapter.fare_url(queries[FareTicketRole.REVERSE]),
+                        (FareTicketRole.REVERSE,),
+                    ),
+                ]
+            else:
+                page_specs = [
+                    (
+                        "第一次旅行台灣始發",
+                        adapter.fare_url(queries[FareTicketRole.CONVENTIONAL_FIRST]),
+                        (FareTicketRole.CONVENTIONAL_FIRST,),
+                    ),
+                    (
+                        "第二次旅行台灣始發",
+                        adapter.fare_url(queries[FareTicketRole.CONVENTIONAL_SECOND]),
+                        (FareTicketRole.CONVENTIONAL_SECOND,),
+                    ),
+                ]
         except CrawlerError as exc:
             return AirlineCandidateResult(
                 candidates=candidates,
@@ -191,13 +210,21 @@ class BackToBackFareService:
         quote_count = sum(len(quotes) for quotes in candidates.values())
         if successful_pages == len(page_specs):
             state = SourceState.SUCCESS
-            detail = "讀取台灣始發與外站始發公開近期票價成功"
+            detail = (
+                "讀取台灣始發與外站始發公開近期票價成功"
+                if full_back_to_back
+                else "讀取兩次旅行的台灣始發公開近期票價成功"
+            )
         elif successful_pages:
             state = SourceState.BLOCKED if policy_failure else SourceState.FAILED
             detail = "只取得部分方向的公開近期票價"
         else:
             state = SourceState.BLOCKED if policy_failure else SourceState.FAILED
-            detail = "台灣始發與外站始發公開票價皆無法取得"
+            detail = (
+                "台灣始發與外站始發公開票價皆無法取得"
+                if full_back_to_back
+                else "兩次旅行的台灣始發公開票價皆無法取得"
+            )
         return AirlineCandidateResult(
             candidates=candidates,
             source=AirlineCrawlerSource(
@@ -360,6 +387,7 @@ class BackToBackFareService:
 
     async def search(self, query: BackToBackFareSearch) -> BackToBackFareSearchResponse:
         queries = build_fare_queries(query)
+        full_back_to_back = query.first_destination == query.second_destination
         timeout = httpx.Timeout(self.settings.airline_crawler_timeout_seconds)
         headers = {
             "User-Agent": self.settings.airline_crawler_user_agent,
@@ -417,18 +445,48 @@ class BackToBackFareService:
                 same_airline=same_airline,
                 back_to_back=False,
             )
-            back_to_back = self._best_strategy(
-                FareTicketRole.WRAPPER,
-                FareTicketRole.REVERSE,
-                candidates,
-                rates,
-                same_airline=same_airline,
-                back_to_back=True,
+            if full_back_to_back:
+                back_to_back = self._best_strategy(
+                    FareTicketRole.WRAPPER,
+                    FareTicketRole.REVERSE,
+                    candidates,
+                    rates,
+                    same_airline=same_airline,
+                    back_to_back=True,
+                )
+                comparisons.append(self._comparison(mode, conventional, back_to_back))
+            else:
+                label = (
+                    "混搭航空公司"
+                    if mode == ComparisonMode.MIXED_AIRLINES
+                    else "同航空公司"
+                )
+                comparisons.append(
+                    BackToBackComparison(
+                        mode=mode,
+                        conventional=conventional,
+                        verdict=ComparisonVerdict.COMPARISON_UNAVAILABLE,
+                        detail=(
+                            f"{label}已計算兩張一般來回票；兩次目的地不同時，"
+                            "倒買法需要兩張開口票。現有公開票價頁沒有開口票價格，"
+                            "因此不估算倒買總價。"
+                        ),
+                    )
+                )
+
+        if not full_back_to_back:
+            warnings.insert(
+                0,
+                "兩次目的地不同：完整倒買比較需要開口票票價來源；目前只顯示可驗證的一般買法基準。",
             )
-            comparisons.append(self._comparison(mode, conventional, back_to_back))
 
         return BackToBackFareSearchResponse(
             query=query,
+            pricing_capability=(
+                BackToBackPricingCapability.FULL_BACK_TO_BACK
+                if full_back_to_back
+                else BackToBackPricingCapability.OPEN_JAW_PROVIDER_REQUIRED
+            ),
             comparisons=comparisons,
             candidates=[
                 FareCandidateSet(role=role, quotes=candidates[role]) for role in FareTicketRole

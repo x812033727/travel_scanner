@@ -111,11 +111,21 @@ separate from live, bookable inventory.
 
 The same page also provides a complete two-trip back-to-back comparison through
 `POST /api/v1/crawlers/airlines/back-to-back-fares`. It expands four ordered
-dates into two conventional round trips, a Taiwan-origin wrapper ticket, and a
-foreign-origin reverse ticket. The service reads at most two unique public pages
-per enabled airline, then reports both the cheapest mixed-airline combination
-and the cheapest same-airline combination per passenger. It never suggests
-skipping a coupon: every ticket must be flown in order.
+dates and accepts an independent `first_destination` and `second_destination`.
+When both destinations match, it compares two conventional round trips with a
+Taiwan-origin wrapper ticket and a foreign-origin reverse ticket. The service
+reads at most two unique public pages per enabled airline, then reports both the
+cheapest mixed-airline combination and the cheapest same-airline combination
+per passenger. It never suggests skipping a coupon: every ticket must be flown
+in order.
+
+Different destinations are accepted and the two verifiable Taiwan-origin round
+trips are still priced. A true back-to-back construction in that case requires
+two open-jaw tickets (`Taiwan -> destination A`, `destination B -> Taiwan`, plus
+the reverse bridge). The current public fare pages do not publish multi-city
+prices, so the response sets `pricing_capability=open_jaw_provider_required`
+and does not fabricate a back-to-back total. Legacy requests with one
+`destination` remain accepted and apply it to both trips.
 
 Foreign-origin fares retain their source currency. Frankfurter reference rates
 provide a clearly labelled TWD estimate and are cached in Redis for 24 hours;

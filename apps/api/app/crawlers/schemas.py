@@ -64,7 +64,8 @@ class TripDateRange(BaseModel):
 
 class BackToBackFareSearch(BaseModel):
     origin: str = Field(default="TPE", min_length=3, max_length=3, pattern=r"^[A-Za-z]{3}$")
-    destination: str = Field(min_length=3, max_length=3, pattern=r"^[A-Za-z]{3}$")
+    first_destination: str = Field(min_length=3, max_length=3, pattern=r"^[A-Za-z]{3}$")
+    second_destination: str = Field(min_length=3, max_length=3, pattern=r"^[A-Za-z]{3}$")
     first_trip: TripDateRange
     second_trip: TripDateRange
     flex_days: int = Field(default=7, ge=0, le=30)
@@ -72,7 +73,19 @@ class BackToBackFareSearch(BaseModel):
     airlines: list[AirlineCode] = Field(default_factory=lambda: list(AirlineCode), min_length=1)
     limit_per_airline: int = Field(default=10, ge=1, le=30)
 
-    @field_validator("origin", "destination")
+    @model_validator(mode="before")
+    @classmethod
+    def accept_legacy_single_destination(cls, value: object) -> object:
+        if not isinstance(value, dict):
+            return value
+        normalized = dict(value)
+        legacy_destination = normalized.pop("destination", None)
+        if legacy_destination is not None:
+            normalized.setdefault("first_destination", legacy_destination)
+            normalized.setdefault("second_destination", legacy_destination)
+        return normalized
+
+    @field_validator("origin", "first_destination", "second_destination")
     @classmethod
     def uppercase_airport_code(cls, value: str) -> str:
         return value.upper()
@@ -84,8 +97,8 @@ class BackToBackFareSearch(BaseModel):
 
     @model_validator(mode="after")
     def validate_route_and_trip_order(self) -> Self:
-        if self.origin == self.destination:
-            raise ValueError("origin and destination must differ")
+        if self.origin in {self.first_destination, self.second_destination}:
+            raise ValueError("origin and both destinations must differ")
         dates = (
             self.first_trip.departure_date,
             self.first_trip.return_date,
@@ -172,6 +185,11 @@ class ComparisonVerdict(StrEnum):
     COMPARISON_UNAVAILABLE = "comparison_unavailable"
 
 
+class BackToBackPricingCapability(StrEnum):
+    FULL_BACK_TO_BACK = "full_back_to_back"
+    OPEN_JAW_PROVIDER_REQUIRED = "open_jaw_provider_required"
+
+
 class FxRateSnapshot(BaseModel):
     base_currency: str = Field(min_length=3, max_length=3)
     quote_currency: str = Field(default="TWD", min_length=3, max_length=3)
@@ -213,6 +231,7 @@ class FareCandidateSet(BaseModel):
 class BackToBackFareSearchResponse(BaseModel):
     queried_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
     query: BackToBackFareSearch
+    pricing_capability: BackToBackPricingCapability
     comparisons: list[BackToBackComparison]
     candidates: list[FareCandidateSet]
     fx_rates: list[FxRateSnapshot]
