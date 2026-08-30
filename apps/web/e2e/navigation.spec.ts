@@ -63,7 +63,10 @@ test("back-to-back fare comparison renders both strategy modes", async ({ page }
   }));
 
   await page.goto("/labs/airlines");
-  await page.getByRole("tab", { name: "倒買法" }).click();
+  await expect(page.getByText("政策停用")).toBeVisible();
+  const backToBackTab = page.getByRole("tab", { name: "倒買法" });
+  await backToBackTab.click();
+  await expect(backToBackTab).toHaveAttribute("aria-selected", "true");
   await page.getByRole("button", { name: "比較倒買價格" }).click();
   await expect(page.getByRole("heading", { name: "最低混搭" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "最低同航空公司" })).toBeVisible();
