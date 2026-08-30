@@ -4,11 +4,18 @@ from uuid import uuid4
 
 import pytest
 from httpx import ASGITransport, AsyncClient
-from sqlalchemy import select
+from sqlalchemy import func, select, update
+from sqlalchemy.exc import DBAPIError
 
 from app.db import SessionFactory
 from app.main import app
-from app.models import SearchRequest, User
+from app.models import SearchRequest, UsageAccount, UsageLedger, UsageReservation, User
+from app.usage.service import (
+    commit_reservation,
+    grant_package,
+    release_reservation,
+    reserve_use,
+)
 
 pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
@@ -17,7 +24,7 @@ pytestmark = pytest.mark.skipif(
 
 
 @pytest.mark.asyncio(loop_scope="module")
-async def test_registration_and_concurrent_idempotent_charge() -> None:
+async def test_registration_and_concurrent_idempotent_reservation() -> None:
     email = f"integration-{uuid4()}@example.com"
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as client:
@@ -49,7 +56,154 @@ async def test_registration_and_concurrent_idempotent_charge() -> None:
         assert first.json()["search_id"] == replay.json()["search_id"]
         usage = await client.get("/api/v1/usage", headers={"Authorization": f"Bearer {token}"})
         assert usage.status_code == 200
-        assert usage.json()["credits_remaining"] == 15
+        assert usage.json() == {
+            "remaining_uses": 3,
+            "reserved_uses": 1,
+            "available_uses": 2,
+            "limits": {"saved_trips": 20, "price_alerts": 20},
+        }
+        plans = await client.get("/api/v1/plans")
+        assert [
+            (item["code"], item["uses"], item["price_twd"], item["expires"], item["purchasable"])
+            for item in plans.json()
+        ] == [
+            ("TRIAL_3", 3, 0, False, False),
+            ("PACK_10", 10, 199, False, False),
+            ("PACK_30", 30, 499, False, False),
+            ("PACK_100", 100, 1299, False, False),
+        ]
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_usage_history_records_charge_release_and_owner_isolation() -> None:
+    email = f"usage-history-{uuid4()}@example.com"
+    other_email = f"usage-history-other-{uuid4()}@example.com"
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        registered = await client.post(
+            "/api/v1/auth/register",
+            json={"email": email, "password": "integration-password-123"},
+        )
+        other = await client.post(
+            "/api/v1/auth/register",
+            json={"email": other_email, "password": "integration-password-123"},
+        )
+        token = registered.json()["access_token"]
+        other_token = other.json()["access_token"]
+        async with SessionFactory() as session:
+            user = await session.scalar(select(User).where(User.email == email))
+            assert user is not None
+            charged, _ = await reserve_use(
+                session, user.id, f"charge-{uuid4()}", "travel_search", "旅程查詢 TPE → NRT"
+            )
+            await commit_reservation(session, charged)
+            released, _ = await reserve_use(
+                session,
+                user.id,
+                f"release-{uuid4()}",
+                "public_airline_fare_search",
+                "航空公開票價 TPE → KIX",
+            )
+            await release_reservation(session, released, "no_public_fares")
+            await session.commit()
+
+        headers = {"Authorization": f"Bearer {token}"}
+        history = await client.get("/api/v1/usage/history", headers=headers)
+        assert history.status_code == 200
+        statuses = {item["status"] for item in history.json()["items"]}
+        assert {"charged", "released", "granted"}.issubset(statuses)
+        failed = await client.get("/api/v1/usage/history?kind=released", headers=headers)
+        assert failed.status_code == 200
+        assert len(failed.json()["items"]) == 1
+        assert failed.json()["items"][0]["change"] == 0
+        other_history = await client.get(
+            "/api/v1/usage/history",
+            headers={"Authorization": f"Bearer {other_token}"},
+        )
+        assert all(item["reference"] != str(charged.id) for item in other_history.json()["items"])
+        first_page = await client.get("/api/v1/usage/history?limit=1", headers=headers)
+        assert first_page.json()["next_cursor"]
+        second_page = await client.get(
+            f"/api/v1/usage/history?limit=1&cursor={first_page.json()['next_cursor']}",
+            headers=headers,
+        )
+        assert first_page.json()["items"][0]["id"] != second_page.json()["items"][0]["id"]
+
+        async with SessionFactory() as session:
+            with pytest.raises(DBAPIError):
+                await session.execute(
+                    update(UsageLedger)
+                    .where(UsageLedger.reference == str(charged.id))
+                    .values(summary="tampered")
+                )
+                await session.commit()
+            await session.rollback()
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_concurrent_settlement_and_global_package_reference() -> None:
+    first_email = f"settlement-{uuid4()}@example.com"
+    second_email = f"settlement-other-{uuid4()}@example.com"
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        for email in (first_email, second_email):
+            response = await client.post(
+                "/api/v1/auth/register",
+                json={"email": email, "password": "integration-password-123"},
+            )
+            assert response.status_code == 201
+
+    async with SessionFactory() as session:
+        first_user = await session.scalar(select(User).where(User.email == first_email))
+        second_user = await session.scalar(select(User).where(User.email == second_email))
+        assert first_user is not None and second_user is not None
+        reservation, _ = await reserve_use(
+            session,
+            first_user.id,
+            f"settle-{uuid4()}",
+            "travel_search",
+            "旅程查詢 TPE → NRT",
+        )
+        reservation_id = reservation.id
+        await session.commit()
+
+    async def settle_once() -> None:
+        async with SessionFactory() as session:
+            reservation = await session.get(UsageReservation, reservation_id)
+            assert reservation is not None
+            await commit_reservation(session, reservation)
+            await session.commit()
+
+    await asyncio.gather(settle_once(), settle_once())
+
+    external_reference = f"manual-{uuid4()}"
+    async with SessionFactory() as session:
+        first_user = await session.scalar(select(User).where(User.email == first_email))
+        second_user = await session.scalar(select(User).where(User.email == second_email))
+        assert first_user is not None and second_user is not None
+        ledger, created = await grant_package(
+            session, first_user.id, "PACK_10", external_reference
+        )
+        assert created and ledger.amount == 10
+        await session.commit()
+        duplicate, created = await grant_package(
+            session, second_user.id, "PACK_30", external_reference
+        )
+        assert not created and duplicate.id == ledger.id
+        first_account = await session.scalar(
+            select(UsageAccount).where(UsageAccount.user_id == first_user.id)
+        )
+        second_account = await session.scalar(
+            select(UsageAccount).where(UsageAccount.user_id == second_user.id)
+        )
+        assert first_account is not None and first_account.remaining_uses == 12
+        assert second_account is not None and second_account.remaining_uses == 3
+        charged_count = await session.scalar(
+            select(func.count())
+            .select_from(UsageLedger)
+            .where(UsageLedger.reference == str(reservation_id))
+        )
+        assert charged_count == 1
 
 
 @pytest.mark.asyncio(loop_scope="module")

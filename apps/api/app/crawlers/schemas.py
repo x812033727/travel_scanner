@@ -6,6 +6,8 @@ from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from app.usage.schemas import UsageStatus
+
 
 class AirlineCode(StrEnum):
     CHINA_AIRLINES = "CI"
@@ -172,6 +174,7 @@ class AirlineFareSearchResponse(BaseModel):
     quotes: list[PublicFareQuote]
     sources: list[AirlineCrawlerSource]
     warnings: list[str]
+    usage: UsageStatus | None = None
 
 
 class FareTicketRole(StrEnum):
@@ -291,6 +294,7 @@ class BackToBackFareSearchResponse(BaseModel):
     fx_rates: list[FxRateSnapshot]
     sources: list[AirlineCrawlerSource]
     warnings: list[str]
+    usage: UsageStatus | None = None
 
 
 class AirlineCrawlerStatusResponse(BaseModel):

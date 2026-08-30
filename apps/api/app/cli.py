@@ -12,40 +12,25 @@ from app.crawlers.schemas import AirlineFareSearch
 from app.crawlers.verification import build_verification_report
 from app.db import SessionFactory
 from app.infra import get_redis
-from app.models import Plan, Subscription, UsageLedger, User
+from app.models import User
 from app.providers.registry import build_provider, provider_status
 from app.search.schemas import SearchCreate
-from app.usage.service import seed_plans
+from app.usage.service import PACKAGE_DEFAULTS, grant_package
 
 
-async def set_plan(email: str, plan_code: str) -> None:
+async def add_usage_package(email: str, package_code: str, reference: str) -> None:
     async with SessionFactory() as session:
-        await seed_plans(session)
         user = await session.scalar(select(User).where(User.email == email.lower()))
-        plan = await session.scalar(select(Plan).where(Plan.code == plan_code.upper()))
-        if user is None or plan is None:
-            raise SystemExit("User or plan was not found")
-        subscription = await session.scalar(
-            select(Subscription).where(Subscription.user_id == user.id).with_for_update()
-        )
-        if subscription is None:
-            raise SystemExit("Subscription was not found")
-        difference = plan.monthly_credits - subscription.credit_balance
-        subscription.plan_id = plan.id
-        subscription.credit_balance = plan.monthly_credits
-        session.add(
-            UsageLedger(
-                user_id=user.id,
-                subscription_id=subscription.id,
-                entry_type="plan_adjustment",
-                amount=difference,
-                balance_after=subscription.credit_balance,
-                reference=f"set-plan:{plan.code}:{subscription.period_start}",
-                metadata_json={"plan": plan.code, "source": "cli"},
-            )
-        )
+        if user is None:
+            raise SystemExit("User was not found")
+        ledger, created = await grant_package(session, user.id, package_code, reference)
+        if not created:
+            raise SystemExit("This external reference was already used")
         await session.commit()
-        print(f"{email} is now on {plan.code} with {plan.monthly_credits} credits")
+        print(
+            f"Added {ledger.amount} uses to {email}; "
+            f"remaining balance is {ledger.balance_after} (reference {ledger.reference})"
+        )
 
 
 async def verify_airline_crawlers(origin: str, destination: str) -> bool:
@@ -109,9 +94,14 @@ def main() -> None:
         sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="Travel Scanner development utilities")
     subparsers = parser.add_subparsers(dest="command", required=True)
-    command = subparsers.add_parser("set-plan")
+    command = subparsers.add_parser("add-usage-package")
     command.add_argument("--email", required=True)
-    command.add_argument("--plan", choices=["FREE", "PRO"], required=True)
+    command.add_argument(
+        "--package",
+        choices=[code for code in PACKAGE_DEFAULTS if code != "TRIAL_3"],
+        required=True,
+    )
+    command.add_argument("--reference", required=True)
     verify = subparsers.add_parser("verify-airline-crawlers")
     verify.add_argument("--origin", default="TPE")
     verify.add_argument("--destination", default="NRT")
@@ -121,8 +111,8 @@ def main() -> None:
     live.add_argument("--destination", default="NRT")
     live.add_argument("--strict", action="store_true")
     args = parser.parse_args()
-    if args.command == "set-plan":
-        asyncio.run(set_plan(args.email, args.plan))
+    if args.command == "add-usage-package":
+        asyncio.run(add_usage_package(args.email, args.package, args.reference))
     elif args.command == "verify-airline-crawlers":
         passed = asyncio.run(verify_airline_crawlers(args.origin, args.destination))
         if args.strict and not passed:

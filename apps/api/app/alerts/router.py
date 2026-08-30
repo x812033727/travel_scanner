@@ -46,7 +46,7 @@ async def create_alert(payload: AlertCreate, user: CurrentUser, session: Session
     )
     if int(count or 0) >= await limit_for(session, user.id, "price_alerts"):
         raise AppError(
-            403, "alert_limit_reached", "The price-alert limit for this plan was reached"
+            403, "alert_limit_reached", "已達所有會員共用的 20 筆價格通知上限"
         )
     alert = PriceAlert(user_id=user.id, **payload.model_dump())
     session.add(alert)

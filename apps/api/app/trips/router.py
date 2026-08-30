@@ -16,10 +16,7 @@ from app.config import get_settings
 from app.db import get_session
 from app.infra import get_redis
 from app.models import (
-    Plan,
-    PlanEntitlement,
     SearchRequest,
-    Subscription,
     TripPlan,
     TripPlanItem,
     TripShare,
@@ -33,7 +30,13 @@ from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, Offer, TransportOffer
 from app.search.schemas import SearchCreate
 from app.trips.itinerary import ItineraryItem
-from app.usage.service import commit_reservation, release_reservation, reserve_credits
+from app.usage.service import (
+    COMMON_LIMITS,
+    commit_reservation,
+    release_reservation,
+    reserve_use,
+    usage_status,
+)
 
 router = APIRouter(prefix="/trips", tags=["trips"])
 public_router = APIRouter(prefix="/shared-trips", tags=["shared trips"])
@@ -69,13 +72,8 @@ class ItineraryUpdateRequest(BaseModel):
 
 
 async def limit_for(session: AsyncSession, user_id: UUID, key: str) -> int:
-    value = await session.scalar(
-        select(PlanEntitlement.value)
-        .join(Plan, PlanEntitlement.plan_id == Plan.id)
-        .join(Subscription, Subscription.plan_id == Plan.id)
-        .where(Subscription.user_id == user_id, PlanEntitlement.key == key)
-    )
-    return int(value or 0)
+    _ = session, user_id
+    return COMMON_LIMITS.get(key, 0)
 
 
 def item_record(trip_id: UUID, item: ItineraryItem | ItineraryItemRequest) -> TripPlanItem:
@@ -260,7 +258,7 @@ async def save_trip(
         select(func.count()).select_from(TripPlan).where(TripPlan.user_id == user.id)
     )
     if int(count or 0) >= await limit_for(session, user.id, "saved_trips"):
-        raise AppError(403, "trip_limit_reached", "The saved-trip limit for this plan was reached")
+        raise AppError(403, "trip_limit_reached", "已達所有會員共用的 20 筆儲存旅程上限")
     search = await session.scalar(
         select(SearchRequest).where(
             SearchRequest.id == payload.search_id, SearchRequest.user_id == user.id
@@ -362,17 +360,23 @@ async def reoptimize_trip(
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
 ) -> dict[str, Any]:
     trip = await owned_trip(session, user.id, trip_id)
-    reservation, created = await reserve_credits(
-        session, user.id, idempotency_key, "price_reoptimization", 3
+    reservation, created = await reserve_use(
+        session,
+        user.id,
+        idempotency_key,
+        "price_reoptimization",
+        f"重新最佳化：{trip.name}",
     )
     if not created and reservation.resource_id == trip.id:
-        return await serialize_trip(session, trip)
+        replay = await serialize_trip(session, trip)
+        replay["usage"] = usage_status(reservation).model_dump()
+        return replay
     reservation.resource_id = trip.id
     existing_items = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
     try:
         plan, warnings = await refreshed_plan(session, trip)
     except Exception:
-        await release_reservation(session, reservation)
+        await release_reservation(session, reservation, "reoptimization_failed")
         await session.commit()
         raise
 
@@ -410,7 +414,9 @@ async def reoptimize_trip(
     trip.version += 1
     await session.commit()
     await session.refresh(trip)
-    return await serialize_trip(session, trip)
+    result = await serialize_trip(session, trip)
+    result["usage"] = usage_status(reservation).model_dump()
+    return result
 
 
 @router.post("/{trip_id}/share")
