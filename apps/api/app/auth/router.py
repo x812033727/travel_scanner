@@ -4,7 +4,13 @@ from fastapi import APIRouter, Depends, Response
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.auth.schemas import LoginRequest, RegisterRequest, TokenResponse, UserResponse
+from app.auth.schemas import (
+    ChangePasswordRequest,
+    LoginRequest,
+    RegisterRequest,
+    TokenResponse,
+    UserResponse,
+)
 from app.auth.service import (
     CurrentUser,
     create_access_token,
@@ -76,3 +82,13 @@ async def logout(response: Response) -> None:
 @router.get("/me", response_model=UserResponse)
 async def me(user: CurrentUser, session: Session) -> UserResponse:
     return await user_response(session, user)
+
+
+@router.post("/change-password", status_code=204)
+async def change_password(
+    payload: ChangePasswordRequest, user: CurrentUser, session: Session
+) -> None:
+    if not verify_password(payload.current_password, user.password_hash):
+        raise AppError(401, "invalid_credentials", "The current password is incorrect")
+    user.password_hash = hash_password(payload.new_password)
+    await session.commit()

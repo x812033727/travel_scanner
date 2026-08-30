@@ -1,0 +1,26 @@
+import { render, screen } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { HeaderAuth } from "./header-auth";
+
+vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn(), refresh: vi.fn() }) }));
+
+function ok(payload: unknown) {
+  return { ok: true, status: 200, json: async () => payload };
+}
+
+afterEach(() => vi.unstubAllGlobals());
+
+describe("header auth", () => {
+  it("shows the login link when the visitor is not authenticated", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, status: 401, json: async () => ({ detail: "未登入" }) }));
+    render(<HeaderAuth />);
+    expect(await screen.findByRole("link", { name: "登入" })).toBeTruthy();
+  });
+
+  it("shows the account email and logout button when authenticated", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(ok({ id: "u1", email: "user@example.com", plan: "PRO" })));
+    render(<HeaderAuth />);
+    expect(await screen.findByRole("button", { name: "登出" })).toBeTruthy();
+    expect(screen.getByText("user@example.com")).toBeTruthy();
+  });
+});

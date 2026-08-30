@@ -1,5 +1,6 @@
 import { Compass } from "lucide-react";
 import Link from "next/link";
+import { HeaderAuth } from "@/components/header-auth";
 
 export function SiteHeader() {
   return (
@@ -9,7 +10,7 @@ export function SiteHeader() {
         Travel Scanner
       </Link>
       <nav aria-label="主要導覽" className="flex w-full items-center justify-between gap-3 text-sm text-[var(--muted)] sm:w-auto md:gap-5">
-        <Link className="hidden md:inline" href="/trips">我的旅程</Link><Link className="hidden lg:inline" href="/alerts">價格通知</Link><Link href="/labs/airlines">航空票價</Link><Link href="/pricing">方案</Link><Link className="rounded-full border border-[var(--line)] bg-white px-4 py-2 text-[var(--ink)]" href="/login">登入</Link>
+        <Link className="hidden md:inline" href="/trips">我的旅程</Link><Link className="hidden lg:inline" href="/alerts">價格通知</Link><Link href="/labs/airlines">航空票價</Link><Link href="/pricing">方案</Link><HeaderAuth />
       </nav>
     </header>
   );
