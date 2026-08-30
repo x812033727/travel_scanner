@@ -20,6 +20,7 @@ from app.models import (
     TransportOfferRecord,
     UsageReservation,
 )
+from app.optimization.engine import TripOptimizer
 from app.providers.mock import MockProvider
 from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, Offer, TransportOffer
@@ -185,9 +186,20 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
         search.warnings_json = warnings
         await session.commit()
 
+    plans: list[dict[str, Any]] = []
+    if results:
+        flights = [FlightOffer.model_validate(item) for item in results.get("flight", [])]
+        hotels = [HotelOffer.model_validate(item) for item in results.get("hotel", [])]
+        activities = [ActivityOffer.model_validate(item) for item in results.get("activities", [])]
+        transports = [TransportOffer.model_validate(item) for item in results.get("transport", [])]
+        plans = [
+            plan.model_dump(mode="json")
+            for plan in TripOptimizer().optimize(query, flights, hotels, activities, transports)
+        ]
+        await publish_event(redis, search_id, "optimization.completed", 90, {"plans": plans})
     search.status = "completed" if results else "failed"
     search.progress = 100
-    search.result_json = {"modules": results, "plans": []}
+    search.result_json = {"modules": results, "plans": plans}
     search.warnings_json = warnings
     if job:
         job.status = search.status

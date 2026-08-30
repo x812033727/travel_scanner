@@ -87,3 +87,11 @@ key, and credits before creating an RQ job. The worker calls provider modules in
 parallel; one provider failure becomes a warning instead of cancelling useful
 results. Normalized offers are persisted and published through a replayable
 Redis Stream exposed at `GET /api/v1/searches/{id}/events`.
+
+## Cost and optimization
+
+`TotalCostEngine` keeps provider-confirmed prices separate from estimates such
+as local transportation. The optimizer applies hard preferences, candidate
+caps, a Pareto frontier, and a bounded beam before a 500 ms OR-Tools CP-SAT
+selection. The cheapest result is always the lowest feasible total; balanced
+and comfortable results use documented, adjustable scoring weights.
