@@ -70,8 +70,7 @@ class FxRateProvider:
 
     async def _fetch(self, currency: str) -> FxRateSnapshot:
         source_url = (
-            f"{self.settings.fx_rate_base_url.rstrip('/')}/rates"
-            f"?base={currency}&quotes=TWD"
+            f"{self.settings.fx_rate_base_url.rstrip('/')}/rates?base={currency}&quotes=TWD"
         )
         timeout = httpx.Timeout(self.settings.fx_rate_timeout_seconds)
         try:
@@ -79,6 +78,17 @@ class FxRateProvider:
                 response = await client.get(source_url, headers={"Accept": "application/json"})
                 response.raise_for_status()
                 payload = response.json()
+            if isinstance(payload, list):
+                payload = next(
+                    (
+                        item
+                        for item in payload
+                        if isinstance(item, dict)
+                        and str(item.get("base", "")).upper() == currency
+                        and str(item.get("quote", "")).upper() == "TWD"
+                    ),
+                    None,
+                )
             if not isinstance(payload, dict):
                 raise FxRateError("匯率服務回應格式錯誤")
             rate = Decimal(str(payload["rate"]))

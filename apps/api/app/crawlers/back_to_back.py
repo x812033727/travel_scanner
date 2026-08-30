@@ -24,6 +24,7 @@ from app.crawlers.schemas import (
     BackToBackFareSearch,
     BackToBackFareSearchResponse,
     BackToBackPricingCapability,
+    BackToBackStrategy,
     ComparisonMode,
     ComparisonVerdict,
     FareCandidateSet,
@@ -33,6 +34,9 @@ from app.crawlers.schemas import (
     FxRateSnapshot,
     PublicFareQuote,
     SourceState,
+    SupplementalFareComponent,
+    SupplementalFareInput,
+    SupplementalFareRole,
 )
 
 TWD_QUANTUM = Decimal("1")
@@ -77,13 +81,14 @@ def build_fare_queries(query: BackToBackFareSearch) -> dict[FareTicketRole, Airl
         ),
     }
     if query.first_destination == query.second_destination:
-        queries[FareTicketRole.WRAPPER] = AirlineFareSearch(
-            origin=query.origin,
-            destination=query.first_destination,
-            departure_date=query.first_trip.departure_date,
-            return_date=query.second_trip.return_date,
-            **common,
-        )
+        if query.strategy == BackToBackStrategy.NESTED_ROUND_TRIPS:
+            queries[FareTicketRole.WRAPPER] = AirlineFareSearch(
+                origin=query.origin,
+                destination=query.first_destination,
+                departure_date=query.first_trip.departure_date,
+                return_date=query.second_trip.return_date,
+                **common,
+            )
         queries[FareTicketRole.REVERSE] = AirlineFareSearch(
             origin=query.first_destination,
             destination=query.origin,
@@ -142,7 +147,7 @@ class BackToBackFareService:
                 warnings=[f"{adapter.name}：{adapter.disabled_reason}"],
             )
 
-        full_back_to_back = FareTicketRole.WRAPPER in queries
+        full_back_to_back = FareTicketRole.REVERSE in queries
         page_specs: list[tuple[str, str, tuple[FareTicketRole, ...]]]
         try:
             if full_back_to_back:
@@ -150,10 +155,14 @@ class BackToBackFareService:
                     (
                         "台灣始發",
                         adapter.fare_url(queries[FareTicketRole.CONVENTIONAL_FIRST]),
-                        (
-                            FareTicketRole.CONVENTIONAL_FIRST,
-                            FareTicketRole.CONVENTIONAL_SECOND,
-                            FareTicketRole.WRAPPER,
+                        tuple(
+                            role
+                            for role in (
+                                FareTicketRole.CONVENTIONAL_FIRST,
+                                FareTicketRole.CONVENTIONAL_SECOND,
+                                FareTicketRole.WRAPPER,
+                            )
+                            if role in queries
                         ),
                     ),
                     (
@@ -387,6 +396,119 @@ class BackToBackFareService:
             estimated_twd=total,
         )
 
+    @classmethod
+    def _supplemental_component(
+        cls,
+        role: SupplementalFareRole,
+        fare: SupplementalFareInput,
+        *,
+        origin: str,
+        destination: str,
+        departure_date: date,
+        rates: dict[str, FxRateSnapshot],
+    ) -> SupplementalFareComponent:
+        rate = rates.get(fare.currency)
+        estimated = None
+        if rate is not None:
+            estimated = (fare.amount * rate.rate).quantize(TWD_QUANTUM, rounding=ROUND_HALF_UP)
+        return SupplementalFareComponent(
+            role=role,
+            origin=origin,
+            destination=destination,
+            departure_date=departure_date,
+            amount=fare.amount,
+            currency=fare.currency,
+            airline_code=fare.airline_code,
+            estimated_twd=estimated,
+            fx_rate=rate,
+        )
+
+    @classmethod
+    def _best_reverse_two_segment(
+        cls,
+        query: BackToBackFareSearch,
+        candidates: dict[FareTicketRole, list[PublicFareQuote]],
+        rates: dict[str, FxRateSnapshot],
+        *,
+        same_airline: bool,
+    ) -> FareStrategyTotal | None:
+        head = query.head_one_way_fare
+        tail = query.tail_one_way_fare
+        if head is None or tail is None:
+            return None
+        choices: list[
+            tuple[
+                Decimal,
+                str,
+                FareTicketComponent,
+                SupplementalFareComponent,
+                SupplementalFareComponent,
+            ]
+        ] = []
+        for reverse in candidates[FareTicketRole.REVERSE]:
+            if reverse.return_date is None or reverse.departure_date >= reverse.return_date:
+                continue
+            if same_airline and (
+                head.airline_code is None
+                or tail.airline_code is None
+                or head.airline_code != reverse.airline_code
+                or tail.airline_code != reverse.airline_code
+            ):
+                continue
+            reverse_ticket = cls._ticket_component(FareTicketRole.REVERSE, reverse, rates)
+            head_ticket = cls._supplemental_component(
+                SupplementalFareRole.HEAD_ONE_WAY,
+                head,
+                origin=query.origin,
+                destination=query.first_destination,
+                departure_date=query.first_trip.departure_date,
+                rates=rates,
+            )
+            tail_ticket = cls._supplemental_component(
+                SupplementalFareRole.TAIL_ONE_WAY,
+                tail,
+                origin=query.second_destination,
+                destination=query.origin,
+                departure_date=query.second_trip.return_date,
+                rates=rates,
+            )
+            estimated_parts = (
+                reverse_ticket.estimated_twd,
+                head_ticket.estimated_twd,
+                tail_ticket.estimated_twd,
+            )
+            if any(value is None for value in estimated_parts):
+                continue
+            total = sum((value for value in estimated_parts if value is not None), Decimal(0))
+            choices.append(
+                (
+                    total,
+                    reverse.airline_code.value,
+                    reverse_ticket,
+                    head_ticket,
+                    tail_ticket,
+                )
+            )
+        if not choices:
+            return None
+        total, _, reverse_ticket, head_ticket, tail_ticket = min(
+            choices,
+            key=lambda item: (item[0], item[1], str(item[2].quote.id)),
+        )
+        original_totals: dict[str, Decimal] = {}
+        for currency, amount in (
+            (reverse_ticket.quote.currency, reverse_ticket.quote.total_price),
+            (head_ticket.currency, head_ticket.amount),
+            (tail_ticket.currency, tail_ticket.amount),
+        ):
+            original_totals[currency] = original_totals.get(currency, Decimal(0)) + amount
+        return FareStrategyTotal(
+            tickets=[reverse_ticket],
+            supplemental_fares=[head_ticket, tail_ticket],
+            original_currency_totals=original_totals,
+            estimated_twd=total,
+        )
+
     @staticmethod
     def _comparison(
         mode: ComparisonMode,
@@ -394,6 +516,7 @@ class BackToBackFareService:
         back_to_back: FareStrategyTotal | None,
         *,
         unavailable_detail: str | None = None,
+        alternative_label: str = "倒買法",
     ) -> BackToBackComparison:
         label = "混搭航空公司" if mode == ComparisonMode.MIXED_AIRLINES else "同航空公司"
         if (
@@ -418,7 +541,7 @@ class BackToBackFareService:
             )
         if savings > 0:
             verdict = ComparisonVerdict.BACK_TO_BACK_CHEAPER
-            detail = f"{label}的倒買法估算較省。"
+            detail = f"{label}的{alternative_label}估算較省。"
         elif savings < 0:
             verdict = ComparisonVerdict.CONVENTIONAL_CHEAPER
             detail = f"{label}的一般買法估算較省。"
@@ -467,13 +590,17 @@ class BackToBackFareService:
                 )
             )
 
-        currencies = sorted({quote.currency for quotes in candidates.values() for quote in quotes})
+        currencies = {quote.currency for quotes in candidates.values() for quote in quotes}
+        for manual_fare in (query.head_one_way_fare, query.tail_one_way_fare):
+            if manual_fare is not None:
+                currencies.add(manual_fare.currency)
+        sorted_currencies = sorted(currencies)
         rate_results = await asyncio.gather(
-            *(self.fx_provider.rate_to_twd(currency) for currency in currencies),
+            *(self.fx_provider.rate_to_twd(currency) for currency in sorted_currencies),
             return_exceptions=True,
         )
         rates: dict[str, FxRateSnapshot] = {}
-        for currency, rate_result in zip(currencies, rate_results, strict=True):
+        for currency, rate_result in zip(sorted_currencies, rate_results, strict=True):
             if isinstance(rate_result, FxRateSnapshot):
                 rates[currency] = rate_result
                 if rate_result.is_stale:
@@ -494,17 +621,56 @@ class BackToBackFareService:
                 back_to_back=False,
             )
             if full_back_to_back:
-                back_to_back = self._best_strategy(
-                    FareTicketRole.WRAPPER,
-                    FareTicketRole.REVERSE,
-                    candidates,
-                    rates,
-                    same_airline=same_airline,
-                    back_to_back=True,
-                )
                 missing_roles = [
-                    FARE_ROLE_LABELS[role] for role in FareTicketRole if not candidates[role]
+                    FARE_ROLE_LABELS[role]
+                    for role in (
+                        FareTicketRole.CONVENTIONAL_FIRST,
+                        FareTicketRole.CONVENTIONAL_SECOND,
+                    )
+                    if not candidates[role]
                 ]
+                if query.strategy == BackToBackStrategy.REVERSE_TWO_SEGMENT:
+                    back_to_back = self._best_reverse_two_segment(
+                        query,
+                        candidates,
+                        rates,
+                        same_airline=same_airline,
+                    )
+                    if not candidates[FareTicketRole.REVERSE]:
+                        missing_roles.append(FARE_ROLE_LABELS[FareTicketRole.REVERSE])
+                    if query.head_one_way_fare is None:
+                        missing_roles.append("第一趟去程單程票價")
+                    if query.tail_one_way_fare is None:
+                        missing_roles.append("第二趟回程單程票價")
+                    if (
+                        same_airline
+                        and query.head_one_way_fare
+                        and query.tail_one_way_fare
+                        and (
+                            query.head_one_way_fare.airline_code is None
+                            or query.tail_one_way_fare.airline_code is None
+                        )
+                    ):
+                        missing_roles.append("頭尾單程航空公司")
+                    alternative_label = "外站兩段票"
+                else:
+                    back_to_back = self._best_strategy(
+                        FareTicketRole.WRAPPER,
+                        FareTicketRole.REVERSE,
+                        candidates,
+                        rates,
+                        same_airline=same_airline,
+                        back_to_back=True,
+                    )
+                    missing_roles.extend(
+                        FARE_ROLE_LABELS[role]
+                        for role in (
+                            FareTicketRole.WRAPPER,
+                            FareTicketRole.REVERSE,
+                        )
+                        if not candidates[role]
+                    )
+                    alternative_label = "包覆倒買"
                 if missing_roles:
                     unavailable_detail = (
                         f"{label}缺少{'、'.join(missing_roles)}的公開快取票價，"
@@ -520,6 +686,7 @@ class BackToBackFareService:
                         conventional,
                         back_to_back,
                         unavailable_detail=unavailable_detail,
+                        alternative_label=alternative_label,
                     )
                 )
             else:

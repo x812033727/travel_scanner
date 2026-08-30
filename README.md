@@ -124,12 +124,20 @@ separate from live, bookable inventory.
 The same page also provides a complete two-trip back-to-back comparison through
 `POST /api/v1/crawlers/airlines/back-to-back-fares`. It expands four ordered
 dates and accepts an independent `first_destination` and `second_destination`.
-When both destinations match, it compares two conventional round trips with a
-Taiwan-origin wrapper ticket and a foreign-origin reverse ticket. The service
-reads at most two unique public pages per enabled airline, then reports both the
-cheapest mixed-airline combination and the cheapest same-airline combination
-per passenger. It never suggests skipping a coupon: every ticket must be flown
-in order.
+When both destinations match, the request can choose two explicitly separated
+strategies. `nested_round_trips` compares two conventional round trips with a
+Taiwan-origin wrapper ticket and a foreign-origin reverse ticket.
+`reverse_two_segment` follows the external-station two-segment pattern: one
+foreign-origin round trip covers the first return and second departure, while
+separate one-way tickets cover the first departure and final return. The
+official China Airlines and STARLUX cached-fare pages currently publish only
+round-trip rows, so the two one-way per-passenger prices are accepted as
+clearly marked manual inputs (`head_one_way_fare` and `tail_one_way_fare`);
+missing values produce an unavailable comparison instead of a fabricated half
+round-trip estimate. The service still reads at most two unique public pages
+per enabled airline, then reports both the cheapest mixed-airline combination
+and the cheapest same-airline combination per passenger. It never suggests
+skipping a coupon: every ticket must be flown in order.
 
 Different destinations are accepted and the two verifiable Taiwan-origin round
 trips are still priced. A true back-to-back construction in that case requires

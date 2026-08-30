@@ -130,11 +130,12 @@ describe("airline fare lab", () => {
     render(<AirlineFareLab />);
     await screen.findByText("政策停用");
     fireEvent.click(screen.getByRole("tab", { name: "倒買法" }));
+    fireEvent.click(screen.getByRole("radio", { name: /包覆倒買/ }));
     fireEvent.click(screen.getByRole("button", { name: "比較倒買價格" }));
 
     expect(await screen.findByText("最低混搭")).toBeTruthy();
     expect(screen.getByText("最低同航空公司")).toBeTruthy();
-    expect(screen.getByText(/倒買法估算省下.*2,000/)).toBeTruthy();
+    expect(screen.getByText(/包覆倒買估算省下.*2,000/)).toBeTruthy();
     expect(screen.getAllByText("外站始發倒買票").length).toBeGreaterThan(0);
     expect(screen.getByText(/JPY 2026-08-30/)).toBeTruthy();
     const [url, init] = fetchMock.mock.calls[1];
@@ -144,6 +145,7 @@ describe("airline fare lab", () => {
       origin: "TPE",
       first_destination: "TYO",
       second_destination: "TYO",
+      strategy: "nested_round_trips",
     });
     const dates = [
       payload.first_trip.departure_date,
@@ -153,6 +155,68 @@ describe("airline fare lab", () => {
     ];
     expect(dates.every((date) => /^\d{4}-\d{2}-\d{2}$/.test(date))).toBe(true);
     expect(dates.every((date, index) => index === 0 || dates[index - 1] < date)).toBe(true);
+  });
+
+  it("prices an external-station two-segment ticket with manual head and tail fares", async () => {
+    const reverse = {
+      role: "reverse",
+      quote: {
+        id: "reverse-1",
+        airline_code: "CI",
+        airline_name: "中華航空",
+        origin: "NRT",
+        destination: "TPE",
+        departure_date: "2026-11-15",
+        return_date: "2026-12-10",
+        total_price: "20000",
+        currency: "JPY",
+        source_url: "https://flights.china-airlines.com/example",
+      },
+      estimated_twd: "4000",
+    };
+    const supplementalFares = [
+      { role: "head_one_way", origin: "TPE", destination: "TYO", departure_date: "2026-11-10", amount: "3000", currency: "TWD", airline_code: "CI", estimated_twd: "3000", source: "manual", is_live: false },
+      { role: "tail_one_way", origin: "TYO", destination: "TPE", departure_date: "2026-12-15", amount: "4000", currency: "TWD", airline_code: "CI", estimated_twd: "4000", source: "manual", is_live: false },
+    ];
+    const comparison = {
+      mode: "mixed_airlines",
+      conventional: { tickets: [], original_currency_totals: { TWD: "20000" }, estimated_twd: "20000" },
+      back_to_back: { tickets: [reverse], supplemental_fares: supplementalFares, original_currency_totals: { JPY: "20000", TWD: "7000" }, estimated_twd: "11000" },
+      savings_twd: "9000",
+      savings_percent: "45.0",
+      verdict: "back_to_back_cheaper",
+      detail: "混搭航空公司的外站兩段票估算較省。",
+    };
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(ok(status))
+      .mockResolvedValueOnce(ok({
+        queried_at: "2026-08-30T10:00:00Z",
+        query: { strategy: "reverse_two_segment" },
+        pricing_capability: "full_back_to_back",
+        comparisons: [comparison, { ...comparison, mode: "same_airline" }],
+        candidates: [],
+        fx_rates: [],
+        warnings: [],
+      }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AirlineFareLab />);
+    await screen.findByText("政策停用");
+    fireEvent.click(screen.getByRole("tab", { name: "倒買法" }));
+    fireEvent.change(screen.getByLabelText("頭段單程每人價格"), { target: { value: "3000" } });
+    fireEvent.change(screen.getByLabelText("尾段單程每人價格"), { target: { value: "4000" } });
+    fireEvent.change(screen.getByLabelText("頭段單程航空公司"), { target: { value: "CI" } });
+    fireEvent.change(screen.getByLabelText("尾段單程航空公司"), { target: { value: "CI" } });
+    fireEvent.click(screen.getByRole("button", { name: "比較倒買價格" }));
+
+    expect((await screen.findAllByText(/外站兩段票估算省下.*9,000/)).length).toBe(2);
+    expect(screen.getAllByText(/頭段單程票.*手動輸入/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/尾段單程票.*手動輸入/).length).toBeGreaterThan(0);
+    const payload = JSON.parse(String(fetchMock.mock.calls[1][1].body));
+    expect(payload).toMatchObject({
+      strategy: "reverse_two_segment",
+      head_one_way_fare: { amount: "3000", currency: "TWD", airline_code: "CI" },
+      tail_one_way_fare: { amount: "4000", currency: "TWD", airline_code: "CI" },
+    });
   });
 
   it("allows different destination countries without inventing open-jaw prices", async () => {
