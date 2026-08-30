@@ -22,6 +22,50 @@ WEIGHTS = {
     },
 }
 
+INTEREST_LABELS = {
+    "food": "美食",
+    "shopping": "購物",
+    "culture": "文化",
+    "nature": "自然",
+    "family": "親子",
+    "nightlife": "夜生活",
+    "spa": "溫泉／SPA",
+    "beach": "海灘／跳島",
+}
+
+INTEREST_KEYWORDS = {
+    "food": ("food", "market", "restaurant", "dining", "cooking", "美食", "市場", "料理"),
+    "shopping": ("shopping", "mall", "outlet", "shop", "購物", "商場", "選物"),
+    "culture": ("culture", "museum", "temple", "palace", "heritage", "文化", "博物館", "寺"),
+    "nature": ("nature", "park", "garden", "mountain", "hiking", "自然", "公園", "山", "步道"),
+    "family": ("family", "kids", "aquarium", "zoo", "親子", "兒童", "水族館", "動物園"),
+    "nightlife": ("nightlife", "night", "bar", "pub", "夜生活", "夜景", "酒吧", "夜市"),
+    "spa": ("spa", "massage", "onsen", "hot spring", "溫泉", "按摩", "水療", "汗蒸"),
+    "beach": ("beach", "island", "snorkel", "diving", "coast", "海灘", "海島", "跳島", "海岸"),
+}
+
+
+def activity_interest_score(activity: ActivityOffer, interests: list[str]) -> int:
+    """Score a provider activity without claiming a category the provider did not supply."""
+    if not interests:
+        return 0
+    category = activity.category.casefold()
+    text = " ".join(
+        value for value in (activity.title, activity.description or "", activity.category) if value
+    ).casefold()
+    return max(
+        (
+            (100 if category == interest.casefold() else 0)
+            + sum(
+                1
+                for keyword in INTEREST_KEYWORDS.get(interest, ())
+                if keyword.casefold() in text
+            )
+            for interest in interests
+        ),
+        default=0,
+    )
+
 
 @dataclass(frozen=True)
 class Candidate:
@@ -123,9 +167,20 @@ class TripOptimizer:
                 for item in hotels
                 if item.station_walk_minutes <= query.preferences.max_station_walk_minutes
             ]
+        if query.preferences.interests:
+            interest_matches = [
+                item
+                for item in activities
+                if activity_interest_score(item, query.preferences.interests) > 0
+            ]
+            if interest_matches:
+                activities = interest_matches
         flights = sorted(flights, key=lambda x: x.total_price)[:6] or [None]  # type: ignore[list-item]
         hotels = sorted(hotels, key=lambda x: x.total_price)[:6] or [None]  # type: ignore[list-item]
-        activities = sorted(activities, key=lambda x: x.price)[:4] or [None]  # type: ignore[list-item]
+        activities = sorted(
+            activities,
+            key=lambda x: (-activity_interest_score(x, query.preferences.interests), x.price),
+        )[:4] or [None]  # type: ignore[list-item]
         transports = sorted(transports, key=lambda x: x.price)[:4] or [None]  # type: ignore[list-item]
         beam = [Candidate(flight=item) for item in flights]
 
@@ -258,8 +313,25 @@ class TripOptimizer:
                 pros.append("住宿方案包含早餐")
             if candidate.hotel and candidate.hotel.refundable:
                 pros.append("住宿方案可退款")
+            if candidate.activity:
+                matched_interests = [
+                    interest
+                    for interest in query.preferences.interests
+                    if activity_interest_score(candidate.activity, [interest]) > 0
+                ]
+                if matched_interests:
+                    labels = "、".join(
+                        INTEREST_LABELS.get(interest, interest) for interest in matched_interests
+                    )
+                    pros.append(f"活動符合{labels}偏好")
             if time_saved > 0:
                 pros.append(f"比最便宜方案少 {time_saved} 分鐘飛行時間")
+            if query.preferences.budget_twd is not None:
+                budget = Decimal(query.preferences.budget_twd)
+                if price <= budget:
+                    pros.append(f"符合總預算，尚餘 NT${int(budget - price):,}")
+                else:
+                    cons.append(f"超出總預算 NT${int(price - budget):,}")
             if price > cheapest_price:
                 cons.append(f"比最便宜方案多 NT${int(price - cheapest_price):,}")
             if duplicate:

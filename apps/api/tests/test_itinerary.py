@@ -64,6 +64,8 @@ async def test_itinerary_uses_destination_specific_titles_and_local_timezone() -
     )
     assert all(item.location_name == "暹羅" for item in suggestions)
     assert all(item.data["destination_country"] == "泰國" for item in suggestions)
+    assert len({item.title for item in suggestions}) == len(suggestions)
+    assert all(item.data["interest"] == "food" for item in suggestions)
 
 
 @pytest.mark.asyncio
