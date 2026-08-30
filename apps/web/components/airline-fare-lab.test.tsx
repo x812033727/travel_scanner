@@ -139,13 +139,20 @@ describe("airline fare lab", () => {
     expect(screen.getByText(/JPY 2026-08-30/)).toBeTruthy();
     const [url, init] = fetchMock.mock.calls[1];
     expect(url).toBe("/api/travel/crawlers/airlines/back-to-back-fares");
-    expect(JSON.parse(String(init.body))).toMatchObject({
+    const payload = JSON.parse(String(init.body));
+    expect(payload).toMatchObject({
       origin: "TPE",
       first_destination: "TYO",
       second_destination: "TYO",
-      first_trip: { departure_date: "2026-11-10", return_date: "2026-11-15" },
-      second_trip: { departure_date: "2026-12-10", return_date: "2026-12-15" },
     });
+    const dates = [
+      payload.first_trip.departure_date,
+      payload.first_trip.return_date,
+      payload.second_trip.departure_date,
+      payload.second_trip.return_date,
+    ];
+    expect(dates.every((date) => /^\d{4}-\d{2}-\d{2}$/.test(date))).toBe(true);
+    expect(dates.every((date, index) => index === 0 || dates[index - 1] < date)).toBe(true);
   });
 
   it("allows different destination countries without inventing open-jaw prices", async () => {

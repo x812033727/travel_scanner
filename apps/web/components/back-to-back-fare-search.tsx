@@ -123,6 +123,12 @@ function formatMoney(value: string | number, currency: string) {
   }).format(Number(value));
 }
 
+function dateFromToday(days: number) {
+  const now = new Date();
+  const date = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + days));
+  return date.toISOString().slice(0, 10);
+}
+
 function DestinationOptions() {
   return destinationGroups.map((group) => (
     <optgroup key={group.country} label={group.country}>
@@ -239,10 +245,10 @@ export function BackToBackFareSearch() {
   const [origin, setOrigin] = useState("TPE");
   const [firstDestination, setFirstDestination] = useState("TYO");
   const [secondDestination, setSecondDestination] = useState("TYO");
-  const [firstDeparture, setFirstDeparture] = useState("2026-11-10");
-  const [firstReturn, setFirstReturn] = useState("2026-11-15");
-  const [secondDeparture, setSecondDeparture] = useState("2026-12-10");
-  const [secondReturn, setSecondReturn] = useState("2026-12-15");
+  const [firstDeparture, setFirstDeparture] = useState(() => dateFromToday(180));
+  const [firstReturn, setFirstReturn] = useState(() => dateFromToday(192));
+  const [secondDeparture, setSecondDeparture] = useState(() => dateFromToday(200));
+  const [secondReturn, setSecondReturn] = useState(() => dateFromToday(204));
   const [flexDays, setFlexDays] = useState("7");
   const [cabinClass, setCabinClass] = useState("economy");
   const [result, setResult] = useState<BackToBackResponse>();
