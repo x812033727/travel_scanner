@@ -25,6 +25,31 @@ test("Japan Korea Thailand workbench carries structured preferences", async ({ p
   await expect(page).toHaveURL(/breakfast_required=true/);
 });
 
+test("search criteria can be revised before running a new comparison", async ({ page }) => {
+  await page.route("**/api/travel/providers/status", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({
+      provider: "amadeus",
+      mode: "test",
+      status: "ready",
+      modules: ["flight", "hotel", "activities", "transport"],
+      message: "供應商測試資料已啟用",
+    }),
+  }));
+  await page.goto("/search?origin=TPE&destination=HKT&departure_date=2026-11-10&return_date=2026-11-15&adults=2&children=0&rooms=1&budget_twd=60000&interests=food&preferred_area=%E6%99%AE%E5%90%89%E8%80%81%E5%9F%8E&pace=balanced");
+  await expect(page.getByRole("heading", { name: "泰國・普吉完整旅程" })).toBeVisible();
+  await page.getByRole("button", { name: "修改搜尋條件" }).click();
+  await page.getByLabel("總預算 TWD").fill("85000");
+  await page.getByLabel("回程日期").fill("2026-11-16");
+  await page.getByRole("button", { name: "海灘／跳島" }).click();
+  await page.getByRole("button", { name: "套用並重新規劃" }).click();
+  await expect(page).toHaveURL(/budget_twd=85000/);
+  await expect(page).toHaveURL(/return_date=2026-11-16/);
+  await expect(page).toHaveURL(/interests=food%2Cbeach/);
+  await expect(page.getByText(/預算.*85,000/)).toBeVisible();
+});
+
 test("airline public fare lab is available", async ({ page }) => {
   await page.goto("/labs/airlines");
   await expect(page.getByRole("heading", { name: /三家航空/ })).toBeVisible();

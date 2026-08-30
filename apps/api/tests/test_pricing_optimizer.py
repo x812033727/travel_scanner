@@ -68,3 +68,44 @@ async def test_optimizer_applies_required_hotel_filters() -> None:
     assert all(
         (hotel.nightly_price or hotel.total_price / hotel.nights) <= 6_000 for hotel in hotels
     )
+
+
+@pytest.mark.asyncio
+async def test_optimizer_prioritizes_activities_matching_selected_interests() -> None:
+    provider, query = MockProvider(), sample_query()
+    query = query.model_copy(
+        update={
+            "preferences": query.preferences.model_copy(
+                update={"interests": ["food"]}
+            )
+        }
+    )
+    plans = TripOptimizer().optimize(
+        query,
+        await provider.search_flights(query),
+        await provider.search_hotels(query),
+        await provider.search_activities(query),
+        await provider.search_transport(query),
+    )
+    assert plans
+    assert all(plan.activity and plan.activity.category == "food" for plan in plans)
+    assert all(any("美食偏好" in pro for pro in plan.pros) for plan in plans)
+
+
+@pytest.mark.asyncio
+async def test_optimizer_explains_when_every_plan_exceeds_budget() -> None:
+    provider, query = MockProvider(), sample_query()
+    query = query.model_copy(
+        update={
+            "preferences": query.preferences.model_copy(update={"budget_twd": 1_000})
+        }
+    )
+    plans = TripOptimizer().optimize(
+        query,
+        await provider.search_flights(query),
+        await provider.search_hotels(query),
+        await provider.search_activities(query),
+        await provider.search_transport(query),
+    )
+    assert plans
+    assert all(any("超出總預算" in con for con in plan.cons) for plan in plans)

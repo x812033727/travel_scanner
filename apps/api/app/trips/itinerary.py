@@ -45,9 +45,9 @@ def _date_range(start: date, end: date) -> list[date]:
     return [start + timedelta(days=offset) for offset in range(max(1, (end - start).days + 1))]
 
 
-def _interest_title(
-    interests: list[str], index: int, destination: DestinationProfile | None = None
-) -> str:
+def _suggestion_pool(
+    interests: list[str], destination: DestinationProfile | None = None
+) -> list[tuple[str | None, str]]:
     labels = {
         "food": "在地美食與市場探索",
         "shopping": "特色商圈與選物散步",
@@ -59,12 +59,20 @@ def _interest_title(
         "beach": "海灘與海岸慢遊",
     }
     if not interests:
-        return "自由探索推薦街區"
-    interest = interests[index % len(interests)]
-    destination_titles = destination.suggestions.get(interest, ()) if destination else ()
-    if destination_titles:
-        return destination_titles[index % len(destination_titles)]
-    return labels.get(interest, "依照興趣探索城市")
+        return [(None, "自由探索推薦街區")]
+    destination_suggestions = destination.suggestions if destination else {}
+    max_titles = max(
+        (len(destination_suggestions.get(interest, ())) for interest in interests),
+        default=0,
+    )
+    pool: list[tuple[str | None, str]] = []
+    for title_index in range(max(1, max_titles)):
+        for interest in interests:
+            titles = destination_suggestions.get(interest, ())
+            title = titles[title_index] if title_index < len(titles) else labels.get(interest)
+            if title and all(existing_title != title for _, existing_title in pool):
+                pool.append((interest, title))
+    return pool or [(None, "依照興趣探索城市")]
 
 
 def build_itinerary(
@@ -150,7 +158,9 @@ def build_itinerary(
     blocks = 1 if query.preferences.pace == TripPace.RELAXED else 2
     if query.preferences.pace == TripPace.PACKED:
         blocks = 3
-    for day_index, day in enumerate(full_days):
+    suggestion_pool = _suggestion_pool(query.preferences.interests, destination)
+    suggestion_index = 0
+    for day in full_days:
         for block in range(blocks):
             start_hour = 10 + block * 3
             if activity and not activity_used:
@@ -171,7 +181,8 @@ def build_itinerary(
                 )
                 activity_used = True
             else:
-                title = _interest_title(query.preferences.interests, day_index + block, destination)
+                interest, title = suggestion_pool[suggestion_index % len(suggestion_pool)]
+                suggestion_index += 1
                 add(
                     day,
                     item_type="suggestion",
@@ -184,6 +195,7 @@ def build_itinerary(
                     data={
                         "source_mode": "estimate",
                         "needs_place_confirmation": True,
+                        "interest": interest,
                         **destination_context,
                     },
                 )
