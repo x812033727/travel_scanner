@@ -5,6 +5,7 @@ import pytest
 from app.optimization.engine import TripOptimizer
 from app.pricing.engine import Confidence, TotalCostEngine
 from app.providers.mock import MockProvider
+from app.search.schemas import PropertyType
 from tests.test_mock_providers import sample_query
 
 
@@ -71,14 +72,36 @@ async def test_optimizer_applies_required_hotel_filters() -> None:
 
 
 @pytest.mark.asyncio
-async def test_optimizer_prioritizes_activities_matching_selected_interests() -> None:
+async def test_optimizer_keeps_property_type_hard_and_explains_soft_relaxation() -> None:
     provider, query = MockProvider(), sample_query()
     query = query.model_copy(
         update={
             "preferences": query.preferences.model_copy(
-                update={"interests": ["food"]}
+                update={
+                    "accepted_property_types": [PropertyType.VACATION_RENTAL],
+                    "hotel_min_review_score": 9.5,
+                    "hotel_min_review_count": 1000,
+                }
             )
         }
+    )
+    plans = TripOptimizer().optimize(
+        query,
+        await provider.search_flights(query),
+        await provider.search_hotels(query),
+        await provider.search_activities(query),
+        await provider.search_transport(query),
+    )
+    assert plans
+    assert all(plan.hotel and plan.hotel.property_type == "vacation_rental" for plan in plans)
+    assert all(any("已放寬" in warning for warning in plan.cons) for plan in plans)
+
+
+@pytest.mark.asyncio
+async def test_optimizer_prioritizes_activities_matching_selected_interests() -> None:
+    provider, query = MockProvider(), sample_query()
+    query = query.model_copy(
+        update={"preferences": query.preferences.model_copy(update={"interests": ["food"]})}
     )
     plans = TripOptimizer().optimize(
         query,
@@ -96,9 +119,7 @@ async def test_optimizer_prioritizes_activities_matching_selected_interests() ->
 async def test_optimizer_explains_when_every_plan_exceeds_budget() -> None:
     provider, query = MockProvider(), sample_query()
     query = query.model_copy(
-        update={
-            "preferences": query.preferences.model_copy(update={"budget_twd": 1_000})
-        }
+        update={"preferences": query.preferences.model_copy(update={"budget_twd": 1_000})}
     )
     plans = TripOptimizer().optimize(
         query,

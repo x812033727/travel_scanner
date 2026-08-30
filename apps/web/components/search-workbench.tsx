@@ -1,230 +1,115 @@
 "use client";
 
-import {
-  CalendarDays,
-  ChevronDown,
-  Hotel,
-  MapPin,
-  PlaneTakeoff,
-  SlidersHorizontal,
-  Sparkles,
-  Users,
-} from "lucide-react";
+import { CalendarDays, Check, ChevronLeft, ChevronRight, Hotel, LoaderCircle, MapPin, Sparkles, Users } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { type FormEvent, useMemo, useState } from "react";
-import {
-  citiesForCountry,
-  countries,
-  destinations,
-  interestLabel,
-  interests,
-  type CountryKey,
-} from "@/lib/destinations";
+import { api, twd } from "@/lib/api";
+import { citiesForCountry, countries, interestLabel, interests, type CountryKey } from "@/lib/destinations";
 
-const fieldClass =
-  "mt-2 w-full rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3.5 text-[var(--ink)] outline-none transition focus:border-[var(--teal)] focus:ring-4 focus:ring-[var(--teal-soft)]";
+const fieldClass = "mt-2 w-full rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-[var(--ink)] outline-none focus:border-[var(--teal)] focus:ring-4 focus:ring-[var(--teal-soft)]";
+const steps = ["日期", "目的地", "旅伴", "住宿", "偏好"];
+
+type Recommendation = {
+  candidate_id: string; city: string; airport: string; country: string; country_code: CountryKey;
+  areas: string[]; reason: string; departure_date: string; return_date: string;
+  trip_length_days: number; estimated_flight_twd: number; estimated_lodging_twd: number;
+  estimated_total_twd: number; score: number; matched_interests: string[]; relaxed_preferences: string[];
+};
+type DiscoveryResult = { recommendations: Recommendation[]; assumptions: string[] };
+type LodgingMode = "hotel" | "vacation_rental" | "both" | "any";
 
 function futureDate(days: number) {
-  const value = new Date();
-  value.setUTCDate(value.getUTCDate() + days);
+  const value = new Date(); value.setUTCDate(value.getUTCDate() + days);
   return value.toISOString().slice(0, 10);
+}
+function optionClass(active: boolean) {
+  return `rounded-2xl border px-3 py-3 text-left transition ${active ? "border-[var(--teal)] bg-[var(--teal-soft)] text-[var(--teal-dark)]" : "border-[var(--line)] bg-white hover:border-[var(--teal)]"}`;
 }
 
 export function SearchWorkbench() {
   const router = useRouter();
-  const [country, setCountry] = useState<CountryKey>("JP");
-  const [destinationId, setDestinationId] = useState("tokyo");
-  const [area, setArea] = useState("新宿");
-  const [selectedInterests, setSelectedInterests] = useState(["food", "shopping", "culture"]);
+  const [step, setStep] = useState(0);
+  const [dateAny, setDateAny] = useState(false);
+  const [lengthAny, setLengthAny] = useState(false);
+  const [countriesSelected, setCountriesSelected] = useState<CountryKey[]>(["JP"]);
+  const [destinationCode, setDestinationCode] = useState("");
   const [children, setChildren] = useState(0);
   const [childAges, setChildAges] = useState<number[]>([]);
-  const countryCities = useMemo(() => citiesForCountry(country), [country]);
-  const selectedCity = destinations.find((city) => city.id === destinationId) || countryCities[0];
+  const [lodgingMode, setLodgingMode] = useState<LodgingMode>("hotel");
+  const [selectedInterests, setSelectedInterests] = useState(["food", "shopping", "culture"]);
+  const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const [selectedAreas, setSelectedAreas] = useState<Record<string, string>>({});
+  const [assumptions, setAssumptions] = useState<string[]>([]);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string>();
+  const availableCities = useMemo(() => countriesSelected.flatMap(citiesForCountry), [countriesSelected]);
 
-  function chooseCountry(nextCountry: CountryKey) {
-    const first = citiesForCountry(nextCountry)[0];
-    setCountry(nextCountry);
-    setDestinationId(first.id);
-    setArea(first.areas[0]);
+  function toggleCountry(country: CountryKey) {
+    setCountriesSelected((current) => current.includes(country) ? current.filter((item) => item !== country) : [...current, country]);
+    setDestinationCode("");
   }
-
-  function chooseCity(cityId: string) {
-    const city = destinations.find((item) => item.id === cityId);
-    if (!city) return;
-    setDestinationId(city.id);
-    setArea(city.areas[0]);
-  }
-
   function changeChildren(count: number) {
-    setChildren(count);
-    setChildAges((current) => Array.from({ length: count }, (_, index) => current[index] ?? 8));
+    setChildren(count); setChildAges((current) => Array.from({ length: count }, (_, index) => current[index] ?? 8));
   }
-
   function toggleInterest(code: string) {
-    setSelectedInterests((current) =>
-      current.includes(code) ? current.filter((item) => item !== code) : [...current, code],
-    );
+    setSelectedInterests((current) => current.includes(code) ? current.filter((item) => item !== code) : [...current, code]);
+  }
+  function propertyTypes() {
+    if (lodgingMode === "hotel") return ["hotel"];
+    if (lodgingMode === "vacation_rental") return ["vacation_rental"];
+    if (lodgingMode === "both") return ["hotel", "vacation_rental"];
+    return [];
   }
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const origin = String(data.get("origin") || "TPE");
-    const departure = String(data.get("departure") || "");
-    const returning = String(data.get("returning") || "");
-    const adults = String(data.get("adults") || "1");
-    const rooms = String(data.get("rooms") || "1");
-    const budget = String(data.get("budget") || "");
-    const nightlyBudget = String(data.get("nightly_budget") || "");
-    const pace = String(data.get("pace") || "balanced");
-    const preferenceLabels = selectedInterests.map(interestLabel).join("、") || "自由探索";
-    const description = `${adults} 位成人${children ? `、${children} 位兒童` : ""}從 ${origin} 前往${selectedCity.name}，${departure} 出發、${returning} 回程，住在${area}，偏好${preferenceLabels}。`;
-    const query = new URLSearchParams({
-      q: description,
-      country,
-      city: selectedCity.id,
-      origin,
-      destination: selectedCity.airport,
-      departure_date: departure,
-      return_date: returning,
-      adults,
-      children: String(children),
-      children_ages: childAges.join(","),
-      rooms,
-      interests: selectedInterests.join(","),
-      pace,
-      preferred_area: area,
-      hotel_min_rating: String(data.get("hotel_min_rating") || ""),
-      max_station_walk_minutes: String(data.get("max_station_walk_minutes") || ""),
-      avoid_red_eye: String(data.get("avoid_red_eye") === "on"),
-      breakfast_required: String(data.get("breakfast_required") === "on"),
-      refundable_required: String(data.get("refundable_required") === "on"),
-      include_airbnb: String(data.get("include_airbnb") === "on"),
-    });
-    if (budget) query.set("budget_twd", budget);
-    if (nightlyBudget) query.set("hotel_max_nightly_twd", nightlyBudget);
+    const form = new FormData(event.currentTarget);
+    const minDays = Number(form.get("min_days") || 0); const maxDays = Number(form.get("max_days") || 0);
+    const startDate = String(form.get("window_start") || ""); const endDate = String(form.get("window_end") || "");
+    if (!dateAny && (!startDate || !endDate || endDate <= startDate)) { setError("可旅行結束日必須晚於開始日。"); setStep(0); return; }
+    if (!lengthAny && (!minDays || !maxDays || maxDays < minDays)) { setError("最長旅行天數不得少於最短天數。"); setStep(0); return; }
+    const numberOrNull = (name: string) => { const value = Number(form.get(name) || 0); return value > 0 ? value : null; };
+    setBusy(true); setError(undefined);
+    try {
+      const result = await api<DiscoveryResult>("/destinations/discover", { method: "POST", body: JSON.stringify({
+        origin: String(form.get("origin") || "TPE"), destination_region: null,
+        destination_countries: countriesSelected, destination_codes: destinationCode ? [destinationCode] : [],
+        travel_window: dateAny ? null : { start_date: startDate, end_date: endDate },
+        trip_length_range: lengthAny ? null : { min_days: minDays, max_days: maxDays },
+        travelers: { adults: Number(form.get("adults") || 1), children, children_ages: childAges, rooms: Number(form.get("rooms") || 1) },
+        budget_twd: numberOrNull("budget_twd"),
+        lodging_preferences: { accepted_property_types: propertyTypes(), nightly_price_min_twd: numberOrNull("nightly_min"), nightly_price_max_twd: numberOrNull("nightly_max"), min_star_rating: numberOrNull("hotel_min_rating"), min_review_score: numberOrNull("min_review_score"), min_review_count: numberOrNull("min_review_count"), max_station_walk_minutes: numberOrNull("max_station_walk_minutes"), breakfast_required: form.get("breakfast_required") === "on" ? true : null, refundable_required: form.get("refundable_required") === "on" ? true : null },
+        interests: selectedInterests, pace: String(form.get("pace") || "balanced"), notes: String(form.get("notes") || "") || null, top_n: 3,
+      }) });
+      setRecommendations(result.recommendations); setAssumptions(result.assumptions || []);
+    } catch (reason) { setError((reason as Error).message); } finally { setBusy(false); }
+  }
+
+  function chooseRecommendation(item: Recommendation, form: HTMLFormElement) {
+    const data = new FormData(form);
+    const query = new URLSearchParams({ q: String(data.get("notes") || ""), country: item.country_code, origin: String(data.get("origin") || "TPE"), destination: item.airport, departure_date: item.departure_date, return_date: item.return_date, adults: String(data.get("adults") || "1"), children: String(children), children_ages: childAges.join(","), rooms: String(data.get("rooms") || "1"), interests: selectedInterests.join(","), pace: String(data.get("pace") || "balanced"), accepted_property_types: propertyTypes().join(","), preferred_areas: selectedAreas[item.candidate_id] || "", avoid_red_eye: String(data.get("avoid_red_eye") === "on"), breakfast_required: String(data.get("breakfast_required") === "on"), refundable_required: String(data.get("refundable_required") === "on"), include_airbnb: String(lodgingMode !== "hotel") });
+    for (const [source, target] of [["budget_twd","budget_twd"],["nightly_min","hotel_min_nightly_twd"],["nightly_max","hotel_max_nightly_twd"],["hotel_min_rating","hotel_min_rating"],["min_review_score","hotel_min_review_score"],["min_review_count","hotel_min_review_count"],["max_station_walk_minutes","max_station_walk_minutes"]]) { const value = String(data.get(source) || ""); if (value) query.set(target, value); }
     router.push(`/search?${query.toString()}`);
   }
 
-  return (
-    <form id="trip-search" onSubmit={submit} className="rounded-[2rem] border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-lg)] md:p-7">
-      <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <p className="flex items-center gap-2 text-sm font-semibold text-[var(--teal)]"><Sparkles size={16} />日韓泰完整旅程搜尋</p>
-          <h2 className="mt-1 text-2xl font-bold">先選城市，再比較整趟旅程</h2>
-        </div>
-        <span className="rounded-full bg-[var(--teal-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--teal-dark)]">13 個重點目的地</span>
-      </div>
+  return <form id="trip-search" onSubmit={submit} className="rounded-[2rem] border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-lg)] md:p-7">
+    <div className="mb-5"><p className="flex items-center gap-2 text-sm font-semibold text-[var(--teal)]"><Sparkles size={16} />AI 選項式旅行規劃</p><h2 className="mt-1 text-2xl font-bold">不用寫完整句子，也能把條件說清楚</h2></div>
+    <ol className="mb-6 grid grid-cols-5 gap-1" aria-label="規劃步驟">{steps.map((label, index) => <li key={label} className={`rounded-xl px-1 py-2 text-center text-xs font-semibold ${index === step ? "bg-[var(--teal)] text-white" : index < step ? "bg-[var(--teal-soft)] text-[var(--teal-dark)]" : "bg-[var(--paper)] text-[var(--muted)]"}`}><span className="hidden sm:inline">{index + 1}. </span>{label}</li>)}</ol>
 
-      <div aria-label="選擇目的地國家" className="grid grid-cols-3 gap-2">
-        {countries.map((item) => (
-          <button key={item.key} type="button" aria-pressed={country === item.key} onClick={() => chooseCountry(item.key)} className={`rounded-2xl border px-3 py-3 text-left transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--teal-soft)] ${country === item.key ? "border-[var(--teal)] bg-[var(--teal)] text-white" : "border-[var(--line)] bg-[var(--surface)] hover:border-[var(--teal)]"}`}>
-            <strong className="block">{item.label}</strong>
-            <span className={`mt-1 hidden text-[11px] leading-4 md:block ${country === item.key ? "text-white/75" : "text-[var(--muted)]"}`}>{item.caption}</span>
-          </button>
-        ))}
-      </div>
+    <section className={step === 0 ? "block" : "hidden"}><h3 className="flex items-center gap-2 text-lg font-bold"><CalendarDays size={19} />你大概什麼時候能出發？</h3><label className="mt-3 flex items-center gap-2 text-sm"><input type="checkbox" checked={dateAny} onChange={(event) => setDateAny(event.target.checked)} />日期我不介意（由 AI 看未來 30–180 天）</label><div className="mt-3 grid gap-3 sm:grid-cols-2"><label className="text-sm font-semibold">最早出發日<input disabled={dateAny} name="window_start" type="date" defaultValue={futureDate(30)} min={futureDate(1)} className={fieldClass} /></label><label className="text-sm font-semibold">最晚回程日<input disabled={dateAny} name="window_end" type="date" defaultValue={futureDate(120)} min={futureDate(3)} className={fieldClass} /></label></div><label className="mt-4 flex items-center gap-2 text-sm"><input type="checkbox" checked={lengthAny} onChange={(event) => setLengthAny(event.target.checked)} />旅行天數我不介意</label><div className="mt-3 grid grid-cols-2 gap-3"><label className="text-sm font-semibold">最短天數<select disabled={lengthAny} name="min_days" defaultValue="4" className={fieldClass}>{Array.from({ length: 12 }, (_, index) => index + 2).map((value) => <option key={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">最長天數<select disabled={lengthAny} name="max_days" defaultValue="6" className={fieldClass}>{Array.from({ length: 16 }, (_, index) => index + 2).map((value) => <option key={value}>{value}</option>)}</select></label></div></section>
 
-      <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
-        {countryCities.map((city) => (
-          <button key={city.id} type="button" aria-pressed={selectedCity.id === city.id} onClick={() => chooseCity(city.id)} className={`rounded-2xl border p-3 text-left transition ${selectedCity.id === city.id ? "border-[var(--coral)] bg-[var(--coral-soft)]" : "border-[var(--line)] hover:border-[var(--coral)]"}`}>
-            <span className="flex items-center justify-between gap-2"><strong>{city.name}</strong><span className="font-mono text-[11px] text-[var(--muted)]">{city.airport}</span></span>
-            <span className="mt-1 block text-xs leading-5 text-[var(--muted)]">{city.recommendedStay} · {city.tags.slice(0, 2).join("／")}</span>
-          </button>
-        ))}
-      </div>
+    <section className={step === 1 ? "block" : "hidden"}><h3 className="flex items-center gap-2 text-lg font-bold"><MapPin size={19} />想去哪個國家？</h3><p className="mt-1 text-sm text-[var(--muted)]">可複選；全部取消就是「我不介意」。</p><div className="mt-4 grid grid-cols-3 gap-2">{countries.map((item) => <button key={item.key} type="button" aria-pressed={countriesSelected.includes(item.key)} onClick={() => toggleCountry(item.key)} className={optionClass(countriesSelected.includes(item.key))}><strong>{item.label}</strong><span className="mt-1 hidden text-xs sm:block">{item.caption}</span></button>)}</div><label className="mt-4 block text-sm font-semibold">指定城市（可不選）<select aria-label="指定城市" value={destinationCode} onChange={(event) => setDestinationCode(event.target.value)} className={fieldClass}><option value="">我不介意，讓 AI 推薦</option>{availableCities.map((city) => <option key={city.id} value={city.airport}>{city.name} · {city.airport}</option>)}</select></label></section>
 
-      <p className="mt-3 flex items-start gap-2 rounded-xl bg-[var(--paper)] px-3 py-2.5 text-xs leading-5 text-[var(--muted)]"><MapPin className="mt-0.5 shrink-0 text-[var(--teal)]" size={15} /><span><strong className="text-[var(--ink)]">{selectedCity.name}</strong>：{selectedCity.summary}。當地時區 {selectedCity.timezone}，消費以 {selectedCity.currency} 為主，網站統一換算 TWD 比較。</span></p>
+    <section className={step === 2 ? "block" : "hidden"}><h3 className="flex items-center gap-2 text-lg font-bold"><Users size={19} />這趟有誰一起去？</h3><div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4"><label className="text-sm font-semibold">出發機場<select name="origin" defaultValue="TPE" className={fieldClass}><option value="TPE">桃園 TPE</option><option value="TSA">松山 TSA</option><option value="KHH">高雄 KHH</option></select></label><label className="text-sm font-semibold">成人<select name="adults" defaultValue="2" className={fieldClass}>{[1,2,3,4,5,6,7,8,9].map((value) => <option key={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">兒童<select aria-label="兒童人數" value={children} onChange={(event) => changeChildren(Number(event.target.value))} className={fieldClass}>{[0,1,2,3,4].map((value) => <option key={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">房間<select name="rooms" defaultValue="1" className={fieldClass}>{[1,2,3,4].map((value) => <option key={value}>{value}</option>)}</select></label></div>{children > 0 && <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">{childAges.map((age, index) => <label key={index} className="text-sm font-semibold">第 {index + 1} 位兒童年齡<select aria-label={`第 ${index + 1} 位兒童年齡`} value={age} onChange={(event) => setChildAges((current) => current.map((item, childIndex) => childIndex === index ? Number(event.target.value) : item))} className={fieldClass}>{Array.from({ length: 18 }, (_, value) => <option key={value} value={value}>{value} 歲</option>)}</select></label>)}</div>}<label className="mt-4 block text-sm font-semibold">整趟總預算 TWD（可留空）<input name="budget_twd" type="number" min="1" placeholder="我不介意" className={fieldClass} /></label></section>
 
-      <div className="mt-5 grid gap-4 md:grid-cols-2">
-        <label className="text-sm font-semibold">
-          出發機場
-          <span className="relative block">
-            <PlaneTakeoff className="pointer-events-none absolute left-4 top-1/2 mt-1 -translate-y-1/2 text-[var(--muted)]" size={18} />
-            <select className={`${fieldClass} pl-11`} name="origin" defaultValue="TPE" aria-label="出發機場">
-              <option value="TPE">桃園國際機場 TPE</option>
-              <option value="TSA">台北松山機場 TSA</option>
-              <option value="KHH">高雄國際機場 KHH</option>
-            </select>
-          </span>
-        </label>
-        <label className="text-sm font-semibold">
-          住宿區域
-          <span className="relative block">
-            <Hotel className="pointer-events-none absolute left-4 top-1/2 mt-1 -translate-y-1/2 text-[var(--muted)]" size={18} />
-            <select className={`${fieldClass} pl-11`} value={area} onChange={(event) => setArea(event.target.value)} aria-label="住宿區域">
-              {selectedCity.areas.map((item) => <option key={item}>{item}</option>)}
-            </select>
-          </span>
-        </label>
-        <label className="text-sm font-semibold">
-          出發日期
-          <span className="relative block">
-            <CalendarDays className="pointer-events-none absolute left-4 top-1/2 mt-1 -translate-y-1/2 text-[var(--muted)]" size={18} />
-            <input className={`${fieldClass} pl-11`} name="departure" type="date" defaultValue={futureDate(45)} min={futureDate(1)} required />
-          </span>
-        </label>
-        <label className="text-sm font-semibold">
-          回程日期
-          <span className="relative block">
-            <CalendarDays className="pointer-events-none absolute left-4 top-1/2 mt-1 -translate-y-1/2 text-[var(--muted)]" size={18} />
-            <input className={`${fieldClass} pl-11`} name="returning" type="date" defaultValue={futureDate(50)} min={futureDate(2)} required />
-          </span>
-        </label>
-      </div>
+    <section className={step === 3 ? "block" : "hidden"}><h3 className="flex items-center gap-2 text-lg font-bold"><Hotel size={19} />偏好什麼住宿？</h3><div className="mt-4 grid grid-cols-2 gap-2">{([['hotel','只住飯店'],['vacation_rental','整套公寓／民宿'],['both','兩種都接受'],['any','我不介意']] as const).map(([value,label]) => <button key={value} type="button" aria-pressed={lodgingMode === value} onClick={() => setLodgingMode(value)} className={optionClass(lodgingMode === value)}>{label}</button>)}</div><div className="mt-4 grid grid-cols-2 gap-3"><label className="text-sm font-semibold">每晚最低 TWD<input name="nightly_min" type="number" min="0" placeholder="我不介意" className={fieldClass} /></label><label className="text-sm font-semibold">每晚最高 TWD<input name="nightly_max" type="number" min="1" placeholder="我不介意" className={fieldClass} /></label><label className="text-sm font-semibold">最低星級<select name="hotel_min_rating" className={fieldClass}><option value="">我不介意</option>{[3,4,5].map((value) => <option key={value} value={value}>{value} 星以上</option>)}</select></label><label className="text-sm font-semibold">車站步行上限<select name="max_station_walk_minutes" className={fieldClass}><option value="">我不介意</option>{[5,10,15,20].map((value) => <option key={value} value={value}>{value} 分鐘</option>)}</select></label><label className="text-sm font-semibold">最低住客評分<select name="min_review_score" className={fieldClass}><option value="">我不介意</option><option value="7">7.0+</option><option value="8">8.0+</option><option value="9">9.0+</option></select></label><label className="text-sm font-semibold">最低評論筆數<select name="min_review_count" className={fieldClass}><option value="">我不介意</option>{[20,50,100,300].map((value) => <option key={value} value={value}>{value} 則以上</option>)}</select></label></div><div className="mt-4 grid gap-2 text-sm sm:grid-cols-2"><label className="flex items-center gap-2 rounded-xl bg-[var(--paper)] p-3"><input type="checkbox" name="breakfast_required" />需要含早餐</label><label className="flex items-center gap-2 rounded-xl bg-[var(--paper)] p-3"><input type="checkbox" name="refundable_required" />需要免費取消</label></div></section>
 
-      <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-4">
-        <label className="text-sm font-semibold">
-          <span className="flex items-center gap-2"><Users size={16} />成人</span>
-          <select className={fieldClass} name="adults" defaultValue="2">
-            {[1, 2, 3, 4, 5, 6].map((value) => <option key={value}>{value}</option>)}
-          </select>
-        </label>
-        <label className="text-sm font-semibold">
-          <span className="flex items-center gap-2"><Users size={16} />兒童</span>
-          <select className={fieldClass} value={children} onChange={(event) => changeChildren(Number(event.target.value))} aria-label="兒童人數">
-            {[0, 1, 2, 3, 4].map((value) => <option key={value}>{value}</option>)}
-          </select>
-        </label>
-        <label className="text-sm font-semibold">
-          <span className="flex items-center gap-2"><Hotel size={16} />房間</span>
-          <select className={fieldClass} name="rooms" defaultValue="1">
-            {[1, 2, 3, 4].map((value) => <option key={value}>{value}</option>)}
-          </select>
-        </label>
-        <label className="text-sm font-semibold">
-          總預算 TWD
-          <input className={fieldClass} name="budget" inputMode="numeric" defaultValue="60000" />
-        </label>
-      </div>
+    <section className={step === 4 ? "block" : "hidden"}><h3 className="flex items-center gap-2 text-lg font-bold"><Sparkles size={19} />最後補上旅行偏好</h3><div className="mt-4 flex flex-wrap gap-2">{interests.map((interest) => <button key={interest.code} type="button" aria-pressed={selectedInterests.includes(interest.code)} onClick={() => toggleInterest(interest.code)} className={optionClass(selectedInterests.includes(interest.code))}>{interest.label}</button>)}</div><div className="mt-4 grid gap-3 sm:grid-cols-2"><label className="text-sm font-semibold">每日步調<select name="pace" defaultValue="balanced" className={fieldClass}><option value="relaxed">悠閒</option><option value="balanced">適中</option><option value="packed">充實</option></select></label><label className="mt-7 flex items-center gap-2 rounded-xl bg-[var(--paper)] p-3 text-sm"><input type="checkbox" name="avoid_red_eye" defaultChecked />避開紅眼航班</label></div><label className="mt-4 block text-sm font-semibold">其他補充（可留空）<textarea name="notes" rows={3} placeholder="例如：想安排生日晚餐、不要一直換飯店。選項與文字衝突時，以選項為準。" className={fieldClass} /></label></section>
 
-      {children > 0 && <fieldset className="mt-4 rounded-2xl border border-[var(--line)] p-4"><legend className="px-1 text-sm font-semibold">兒童年齡（搜尋當日）</legend><div className="grid grid-cols-2 gap-3 sm:grid-cols-4">{childAges.map((age, index) => <label key={index} className="text-xs text-[var(--muted)]">第 {index + 1} 位<select aria-label={`第 ${index + 1} 位兒童年齡`} className={fieldClass} value={age} onChange={(event) => setChildAges((current) => current.map((item, childIndex) => childIndex === index ? Number(event.target.value) : item))}>{Array.from({ length: 18 }, (_, value) => <option key={value} value={value}>{value} 歲</option>)}</select></label>)}</div></fieldset>}
+    {error && <p role="alert" className="mt-4 rounded-xl bg-red-50 p-3 text-sm font-medium text-red-700">{error}</p>}
+    <div className="mt-5 flex gap-3">{step > 0 && <button type="button" onClick={() => setStep((value) => value - 1)} className="flex items-center gap-1 rounded-xl border border-[var(--line)] px-4 py-3 font-semibold"><ChevronLeft size={18} />上一步</button>}{step < steps.length - 1 ? <button type="button" onClick={() => setStep((value) => value + 1)} className="ml-auto flex items-center gap-1 rounded-xl bg-[var(--teal)] px-5 py-3 font-semibold text-white">下一步<ChevronRight size={18} /></button> : <button disabled={busy} className="ml-auto flex items-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3 font-semibold text-white disabled:opacity-60">{busy ? <LoaderCircle className="animate-spin" size={18} /> : <Sparkles size={18} />}請 AI 推薦 3 組</button>}</div>
 
-      <fieldset className="mt-5">
-        <legend className="flex items-center gap-2 text-sm font-semibold"><SlidersHorizontal size={16} />想把時間留給什麼？</legend>
-        <div className="mt-3 flex flex-wrap gap-2">{interests.map((interest) => <button key={interest.code} type="button" aria-pressed={selectedInterests.includes(interest.code)} onClick={() => toggleInterest(interest.code)} className={`rounded-full border px-3.5 py-2 text-sm font-medium transition ${selectedInterests.includes(interest.code) ? "border-[var(--teal)] bg-[var(--teal-soft)] text-[var(--teal-dark)]" : "border-[var(--line)] bg-white text-[var(--muted)]"}`}>{interest.label}</button>)}</div>
-      </fieldset>
-
-      <details className="group mt-5 rounded-2xl border border-[var(--line)] bg-[var(--paper)]">
-        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 text-sm font-semibold">進階住宿與行程條件<ChevronDown className="transition group-open:rotate-180" size={18} /></summary>
-        <div className="grid gap-4 border-t border-[var(--line)] p-4 sm:grid-cols-2">
-          <label className="text-sm font-semibold">每晚住宿上限 TWD<input className={fieldClass} name="nightly_budget" inputMode="numeric" defaultValue="5000" /></label>
-          <label className="text-sm font-semibold">最低星等<select className={fieldClass} name="hotel_min_rating" defaultValue="4"><option value="">不限</option>{[3, 4, 5].map((value) => <option key={value} value={value}>{value} 星以上</option>)}</select></label>
-          <label className="text-sm font-semibold">到車站最多步行<select className={fieldClass} name="max_station_walk_minutes" defaultValue="10"><option value="">不限</option><option value="5">5 分鐘</option><option value="10">10 分鐘</option><option value="15">15 分鐘</option><option value="20">20 分鐘</option></select></label>
-          <label className="text-sm font-semibold">每日步調<select className={fieldClass} name="pace" defaultValue="balanced"><option value="relaxed">悠閒 · 每天 1 個主要區域</option><option value="balanced">適中 · 每天 2 個主要區域</option><option value="packed">充實 · 每天 3 個主要區域</option></select></label>
-          <div className="grid gap-3 text-sm sm:col-span-2 sm:grid-cols-2 lg:grid-cols-4">
-            <label className="flex items-center gap-2 rounded-xl bg-white p-3"><input type="checkbox" name="avoid_red_eye" defaultChecked />避開紅眼航班</label>
-            <label className="flex items-center gap-2 rounded-xl bg-white p-3"><input type="checkbox" name="breakfast_required" />住宿含早餐</label>
-            <label className="flex items-center gap-2 rounded-xl bg-white p-3"><input type="checkbox" name="refundable_required" />住宿可免費取消</label>
-            <label className="flex items-center gap-2 rounded-xl bg-white p-3"><input type="checkbox" name="include_airbnb" defaultChecked />準備 Airbnb 外站搜尋</label>
-          </div>
-        </div>
-      </details>
-
-      <button className="mt-5 flex w-full items-center justify-center gap-2 rounded-2xl bg-[var(--teal)] px-6 py-4 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[var(--teal-dark)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--teal-soft)]">
-        <PlaneTakeoff size={19} />比較完整旅程
-      </button>
-      <p className="mt-4 text-center text-xs leading-5 text-[var(--muted)]">正式環境只顯示已標明來源與擷取時間的報價；沒有金鑰時不會用模擬價格冒充即時結果。</p>
-    </form>
-  );
+    {recommendations.length > 0 && <section aria-labelledby="recommendations-title" className="mt-7 border-t border-[var(--line)] pt-6"><h3 id="recommendations-title" className="text-xl font-bold">AI 推薦的三組旅行</h3><p className="mt-1 text-sm text-[var(--muted)]">目前是估算與條件符合度；選定後才查即時供應資料。</p><div className="mt-4 grid gap-4">{recommendations.map((item, index) => <article key={item.candidate_id} className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4"><div className="flex items-start justify-between gap-3"><div><p className="text-xs font-semibold text-[var(--teal)]">{index === 0 ? "最佳建議" : `候選 ${index + 1}`} · 符合度 {item.score}%</p><h4 className="mt-1 text-xl font-bold">{item.country}・{item.city}</h4><p className="mt-1 text-sm text-[var(--muted)]">{item.departure_date} → {item.return_date} · {item.trip_length_days} 天</p></div><strong className="text-right text-lg">約 {twd.format(item.estimated_total_twd)}</strong></div><p className="mt-3 text-sm leading-6">{item.reason}</p><div className="mt-3 flex flex-wrap gap-2 text-xs"><span className="rounded-full bg-white px-2.5 py-1">機票估算 {twd.format(item.estimated_flight_twd)}</span><span className="rounded-full bg-white px-2.5 py-1">住宿估算 {twd.format(item.estimated_lodging_twd)}</span>{item.matched_interests.map((interest) => <span key={interest} className="rounded-full bg-[var(--teal-soft)] px-2.5 py-1">符合{interestLabel(interest)}</span>)}</div>{item.relaxed_preferences.length > 0 && <p className="mt-3 text-xs text-amber-800">需確認：{item.relaxed_preferences.join("、")}</p>}<label className="mt-3 block text-sm font-semibold">偏好住宿區域<select value={selectedAreas[item.candidate_id] || ""} onChange={(event) => setSelectedAreas((current) => ({ ...current, [item.candidate_id]: event.target.value }))} className={fieldClass}><option value="">我不介意</option>{item.areas.map((area) => <option key={area}>{area}</option>)}</select></label><button type="button" onClick={(event) => chooseRecommendation(item, event.currentTarget.form!)} className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--ink)] px-4 py-3 font-semibold text-white"><Check size={18} />用這組條件搜尋</button></article>)}</div>{assumptions.map((item) => <p key={item} className="mt-2 text-xs text-[var(--muted)]">・{item}</p>)}</section>}
+    <p className="mt-4 text-center text-xs leading-5 text-[var(--muted)]">公寓／民宿只顯示實際 Provider 回傳資料，不直接爬取 Airbnb，也不以模擬資料冒充即時庫存。</p>
+  </form>;
 }

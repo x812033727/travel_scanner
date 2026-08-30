@@ -37,12 +37,17 @@ type Parsed = {
   interests: string[];
   avoid_red_eye: boolean;
   hotel_min_rating?: number;
+  hotel_min_nightly_twd?: number;
   hotel_max_nightly_twd?: number;
+  accepted_property_types?: string[];
+  hotel_min_review_score?: number;
+  hotel_min_review_count?: number;
   breakfast_required?: boolean;
   refundable_required?: boolean;
   include_airbnb?: boolean;
   max_station_walk_minutes?: number;
   preferred_area?: string;
+  preferred_areas?: string[];
   pace?: "relaxed" | "balanced" | "packed";
   confidence: number;
   missing_fields: string[];
@@ -132,7 +137,9 @@ function detailsFor(module: string, offer: Offer): string {
   }
   if (module === "hotel") {
     const rating = Number(offer.review_score ?? offer.rating ?? 0);
-    const extras = [offer.breakfast_included ? "含早餐" : null, offer.refundable ? "可退款" : null, offer.station_walk_minutes ? `步行 ${offer.station_walk_minutes} 分鐘到車站` : null].filter(Boolean).join(" · ");
+    const property = offer.property_type === "vacation_rental" ? "整套公寓／民宿" : offer.property_type === "serviced_apartment" ? "服務式公寓" : "飯店";
+    const reviews = offer.review_count ? `${offer.review_count} 則評論` : "評論數未知";
+    const extras = [property, reviews, offer.breakfast_included ? "含早餐" : null, offer.refundable ? "可退款" : null, offer.station_walk_minutes ? `步行 ${offer.station_walk_minutes} 分鐘到車站` : null].filter(Boolean).join(" · ");
     return `${rating ? `${rating.toFixed(1)} 分` : "尚無評分"} · ${offer.nights ?? "-"} 晚 · ${offer.room_type ?? "客房"}${extras ? ` · ${extras}` : ""}`;
   }
   if (module === "activities") return `${interestLabel(String(offer.category || ""))} · ${offer.duration_minutes ?? "-"} 分鐘 · ${offer.address ?? offer.city ?? ""}`;
@@ -190,12 +197,17 @@ export function SearchExperience() {
       interests: parseInterests(rawInterests),
       avoid_red_eye: params.get("avoid_red_eye") === "true" || rawInterests.includes("紅眼"),
       hotel_min_rating: Number(params.get("hotel_min_rating") || 0) || undefined,
+      hotel_min_nightly_twd: Number(params.get("hotel_min_nightly_twd") || 0) || undefined,
       hotel_max_nightly_twd: Number(params.get("hotel_max_nightly_twd") || 0) || undefined,
+      accepted_property_types: (params.get("accepted_property_types") || "").split(",").filter(Boolean),
+      hotel_min_review_score: Number(params.get("hotel_min_review_score") || 0) || undefined,
+      hotel_min_review_count: Number(params.get("hotel_min_review_count") || 0) || undefined,
       breakfast_required: params.get("breakfast_required") === "true",
       refundable_required: params.get("refundable_required") === "true",
       include_airbnb: params.get("include_airbnb") !== "false",
       max_station_walk_minutes: Number(params.get("max_station_walk_minutes") || 0) || undefined,
-      preferred_area: params.get("preferred_area") || undefined,
+      preferred_area: params.get("preferred_area") || params.get("preferred_areas") || undefined,
+      preferred_areas: (params.get("preferred_areas") || "").split(",").filter(Boolean),
       pace: (params.get("pace") as Parsed["pace"]) || "balanced",
       confidence: 1,
       missing_fields: [],
@@ -287,11 +299,16 @@ export function SearchExperience() {
             budget_twd: parsed.budget_twd,
             avoid_red_eye: parsed.avoid_red_eye,
             hotel_min_rating: parsed.hotel_min_rating,
+            hotel_min_nightly_twd: parsed.hotel_min_nightly_twd,
             hotel_max_nightly_twd: parsed.hotel_max_nightly_twd,
+            accepted_property_types: parsed.accepted_property_types || [],
+            hotel_min_review_score: parsed.hotel_min_review_score,
+            hotel_min_review_count: parsed.hotel_min_review_count,
             breakfast_required: parsed.breakfast_required,
             refundable_required: parsed.refundable_required,
             max_station_walk_minutes: parsed.max_station_walk_minutes,
             preferred_area: parsed.preferred_area,
+            preferred_areas: parsed.preferred_areas || (parsed.preferred_area ? [parsed.preferred_area] : []),
             optimization_mode: "balanced",
             interests: parsed.interests,
             pace: parsed.pace || "balanced",
@@ -386,6 +403,11 @@ export function SearchExperience() {
     next.set("include_airbnb", String(update.includeAirbnb));
     setOptional("budget_twd", update.budget);
     setOptional("hotel_max_nightly_twd", update.nightlyBudget);
+    setOptional("hotel_min_nightly_twd", update.nightlyMinimum);
+    setOptional("hotel_min_rating", update.hotelMinRating);
+    setOptional("accepted_property_types", update.propertyTypes.join(","));
+    setOptional("hotel_min_review_score", update.minReviewScore);
+    setOptional("hotel_min_review_count", update.minReviewCount);
     setOptional("preferred_area", update.preferredArea);
     setSearchId(undefined);
     setOffers({});
