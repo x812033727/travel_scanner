@@ -26,8 +26,10 @@ CITY_CODE_OVERRIDES = {
     "HND": "TYO",
     "KIX": "OSA",
     "ITM": "OSA",
+    "UKB": "OSA",
     "ICN": "SEL",
     "GMP": "SEL",
+    "DMK": "BKK",
 }
 
 

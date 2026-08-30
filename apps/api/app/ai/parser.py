@@ -4,6 +4,12 @@ from typing import Protocol
 
 from pydantic import BaseModel, Field
 
+from app.destinations.catalog import (
+    destination_for_code,
+    infer_destination_region,
+    match_destination,
+)
+
 
 class ParseTripRequest(BaseModel):
     text: str = Field(min_length=3, max_length=2000)
@@ -29,6 +35,12 @@ class ParsedTripRequest(BaseModel):
     interests: list[str] = Field(default_factory=list)
     avoid_red_eye: bool = False
     hotel_min_rating: int | None = None
+    hotel_max_nightly_twd: int | None = None
+    breakfast_required: bool = False
+    refundable_required: bool = False
+    max_station_walk_minutes: int | None = None
+    preferred_area: str | None = None
+    pace: str = "balanced"
     confidence: float
     missing_fields: list[str]
     parser: str = "mock-rules-v1"
@@ -45,11 +57,15 @@ class MockAITripParser:
         origin = "TPE" if any(word in text for word in ("台北", "臺北", "桃園")) else None
         if origin is None and iata_codes:
             origin = iata_codes[0]
-        destinations = {"東京": "NRT", "大阪": "KIX", "福岡": "FUK", "首爾": "ICN", "曼谷": "BKK"}
-        destination = next((code for word, code in destinations.items() if word in text), None)
-        if destination is None and len(iata_codes) > 1:
+        destination_profile = match_destination(text)
+        if len(iata_codes) > 1:
             destination = iata_codes[1]
-        region = "Japan" if any(word in text for word in ("日本", "東京", "大阪", "福岡")) else None
+            destination_profile = destination_for_code(destination)
+        else:
+            destination = destination_profile.code if destination_profile else None
+        region = (
+            destination_profile.country if destination_profile else infer_destination_region(text)
+        )
         people_match = re.search(r"(\d+)\s*(?:個)?人", text)
         chinese_people = {"一個人": 1, "兩個人": 2, "兩人": 2, "三個人": 3, "三人": 3, "四個人": 4}
         adults = (
@@ -82,6 +98,10 @@ class MockAITripParser:
                 (["購物", "逛街"], "shopping"),
                 (["文化", "博物館"], "culture"),
                 (["自然", "登山"], "nature"),
+                (["親子", "家庭", "樂園"], "family"),
+                (["夜生活", "酒吧", "夜店"], "nightlife"),
+                (["按摩", "溫泉", "水療", "SPA", "spa"], "spa"),
+                (["海灘", "沙灘", "跳島"], "beach"),
             )
             if any(word in text for word in words)
         ]
@@ -91,6 +111,21 @@ class MockAITripParser:
             None,
         )
         rooms_match = re.search(r"(\d+)\s*間房", text)
+        children_match = re.search(r"(\d+)\s*(?:位|個)?(?:小孩|兒童|孩子)", text)
+        child_ages_match = re.search(r"(?:小孩|兒童|孩子)(?:年齡)?\s*([0-9、,，\s]+)\s*歲", text)
+        child_ages = (
+            [int(value) for value in re.findall(r"\d+", child_ages_match.group(1))]
+            if child_ages_match
+            else []
+        )
+        nightly_match = re.search(r"(?:飯店|住宿)?\s*每晚(?:預算|最多|上限)?\s*(\d{3,})", text)
+        walk_match = re.search(r"(?:車站)?步行(?:不超過|最多|上限)?\s*(\d+)\s*分", text)
+        preferred_area_match = re.search(r"(?:想住|住在|住宿區域)\s*([^，,。]{2,20})", text)
+        pace = "balanced"
+        if any(word in text for word in ("悠閒", "放鬆", "慢遊", "慢旅行")):
+            pace = "relaxed"
+        elif any(word in text for word in ("緊湊", "充實", "多排", "跑景點")):
+            pace = "packed"
         missing = []
         if origin is None:
             missing.append("origin")
@@ -108,6 +143,8 @@ class MockAITripParser:
             return_date=iso_dates[1] if len(iso_dates) > 1 else None,
             travelers=ParsedTravelers(
                 adults=adults,
+                children=len(child_ages) or (int(children_match.group(1)) if children_match else 0),
+                children_ages=child_ages,
                 rooms=int(rooms_match.group(1)) if rooms_match else 1,
             ),
             trip_length_days=int(days_match.group(1)) if days_match else None,
@@ -115,6 +152,12 @@ class MockAITripParser:
             interests=interests,
             avoid_red_eye=any(word in text for word in ("不要紅眼", "避免紅眼", "非紅眼")),
             hotel_min_rating=int(rating_match.group(1)) if rating_match else chinese_rating,
+            hotel_max_nightly_twd=int(nightly_match.group(1)) if nightly_match else None,
+            breakfast_required=any(word in text for word in ("含早餐", "要早餐", "包含早餐")),
+            refundable_required=any(word in text for word in ("可退款", "免費取消", "可取消")),
+            max_station_walk_minutes=int(walk_match.group(1)) if walk_match else None,
+            preferred_area=preferred_area_match.group(1).strip() if preferred_area_match else None,
+            pace=pace,
             confidence=confidence,
             missing_fields=missing,
         )

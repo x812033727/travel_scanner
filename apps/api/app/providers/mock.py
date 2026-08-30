@@ -22,8 +22,16 @@ CITY_DATA = {
     "OSA": ("大阪", 34.6937, 135.5023),
     "KIX": ("大阪", 34.6937, 135.5023),
     "FUK": ("福岡", 33.5904, 130.4017),
+    "CTS": ("札幌", 43.0618, 141.3545),
+    "OKA": ("沖繩", 26.2124, 127.6809),
+    "NGO": ("名古屋", 35.1815, 136.9066),
     "ICN": ("首爾", 37.5665, 126.9780),
+    "PUS": ("釜山", 35.1796, 129.0756),
+    "CJU": ("濟州", 33.4996, 126.5312),
     "BKK": ("曼谷", 13.7563, 100.5018),
+    "CNX": ("清邁", 18.7883, 98.9853),
+    "HKT": ("普吉", 7.8804, 98.3923),
+    "KBV": ("喀比", 8.0863, 98.9063),
 }
 
 
@@ -163,6 +171,7 @@ class MockProvider:
                 breakfast_included=index > 0,
                 refundable=index != 0,
                 station_walk_minutes=[11, 5, 8, 3][index],
+                nightly_price=((base + taxes + fees) / nights).quantize(Decimal("0.01")),
             )
             offers.append(offer)
             self._offers[offer_id] = offer

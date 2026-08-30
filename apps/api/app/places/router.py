@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 
 from app.auth.service import CurrentUser
 from app.config import get_settings
+from app.destinations.catalog import DESTINATIONS
 from app.problems import AppError
 
 router = APIRouter(prefix="/destinations", tags=["destinations"])
@@ -47,36 +48,40 @@ class DiscoveryRequest(BaseModel):
 @router.post("/discover")
 async def discover(payload: DiscoveryRequest, user: CurrentUser) -> dict[str, Any]:
     _ = user
-    japan = [
+    region_aliases = {
+        "japan": "Japan",
+        "日本": "Japan",
+        "south korea": "South Korea",
+        "korea": "South Korea",
+        "韓國": "South Korea",
+        "南韓": "South Korea",
+        "thailand": "Thailand",
+        "泰國": "Thailand",
+    }
+    region = region_aliases.get(payload.destination_region.casefold())
+    if region is None:
+        raise AppError(422, "unsupported_region", "目前目的地探索支援日本、韓國與泰國")
+    profiles = [item for item in DESTINATIONS if item.country == region]
+    candidates = [
         {
-            "city": "福岡",
-            "airport": "FUK",
-            "estimated_flight_twd": 7_200,
-            "reason": "短程、機場離市區近",
-        },
-        {
-            "city": "大阪",
-            "airport": "KIX",
-            "estimated_flight_twd": 8_600,
-            "reason": "美食與購物選擇密集",
-        },
-        {
-            "city": "東京",
-            "airport": "NRT",
-            "estimated_flight_twd": 9_400,
-            "reason": "航班與住宿選擇最多",
-        },
-        {
-            "city": "札幌",
-            "airport": "CTS",
-            "estimated_flight_twd": 11_800,
-            "reason": "自然景觀與季節體驗",
-        },
+            "city": item.city,
+            "airport": item.code,
+            "country": item.country_label,
+            "timezone": item.timezone,
+            "local_currency": item.currency,
+            "areas": item.areas,
+            "estimated_flight_twd": item.estimated_flight_twd,
+            "within_budget_estimate": (
+                payload.budget_twd is None or item.estimated_flight_twd <= payload.budget_twd * 0.45
+            ),
+            "reason": item.reason,
+        }
+        for item in sorted(profiles, key=lambda item: item.estimated_flight_twd)
     ]
-    candidates = japan if payload.destination_region.lower() in {"japan", "日本"} else japan[:2]
     return {
         "origin": payload.origin.upper(),
-        "source": "mock_historical_estimate",
+        "region": region,
+        "source": "curated_estimate",
         "candidates": candidates[: payload.top_n],
-        "next_step": "Run live mock search only for these candidates",
+        "next_step": "選定城市後再執行即時機票、住宿、活動與接送搜尋",
     }
