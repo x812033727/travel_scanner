@@ -1,10 +1,12 @@
 import os
+from collections.abc import AsyncIterator
 from uuid import UUID, uuid4
 
 import pytest
+import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
 
-from app.db import SessionFactory
+from app.db import SessionFactory, engine
 from app.main import app
 from app.models import User
 
@@ -12,6 +14,12 @@ pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
     reason="requires PostgreSQL and Redis services",
 )
+
+
+@pytest_asyncio.fixture(scope="module", loop_scope="module", autouse=True)
+async def dispose_engine_after_module() -> AsyncIterator[None]:
+    yield
+    await engine.dispose()
 
 
 @pytest.mark.asyncio(loop_scope="module")
