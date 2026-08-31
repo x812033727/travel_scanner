@@ -45,6 +45,7 @@ class ProviderDefinition:
     description: str
     config_fields: tuple[str, ...]
     secret_fields: tuple[str, ...]
+    enabled_field: str | None = None
 
 
 PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
@@ -91,7 +92,83 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         ("navitime_api_base_url",),
         ("navitime_client_id", "navitime_api_key"),
     ),
+    "travelpayouts": ProviderDefinition(
+        "Travelpayouts Affiliate",
+        "航班、住宿、活動與交通合作連結；可透過 Partner Links API 產生追蹤網址。",
+        (
+            "travelpayouts_api_base_url",
+            "travelpayouts_marker",
+            "travelpayouts_project_id",
+            "travelpayouts_static_url_template",
+            "travelpayouts_flight_target_url",
+            "travelpayouts_hotel_target_url",
+            "travelpayouts_activities_target_url",
+            "travelpayouts_transport_target_url",
+            "travelpayouts_allowed_hosts",
+        ),
+        ("travelpayouts_api_token",),
+        "travelpayouts_enabled",
+    ),
+    "kkday": ProviderDefinition(
+        "KKday KKpartners",
+        "活動、票券與接送合作連結；商品 API 需由 KKday 個別核准。",
+        ("kkday_cid", "kkday_affiliate_url_template", "kkday_allowed_hosts", "kkday_api_base_url"),
+        ("kkday_api_key",),
+        "kkday_enabled",
+    ),
+    "klook": ProviderDefinition(
+        "Klook Affiliate",
+        "活動、票券與交通合作連結；API 或 data feed 需由 Klook 個別核准。",
+        ("klook_affiliate_url_template", "klook_allowed_hosts", "klook_api_base_url"),
+        ("klook_api_key",),
+        "klook_enabled",
+    ),
+    "airalo": ProviderDefinition(
+        "Airalo Affiliate",
+        "eSIM Affiliate 導流，不使用會建立訂單的 Partner Reseller API。",
+        ("airalo_affiliate_url_template", "airalo_allowed_hosts"),
+        (),
+        "airalo_enabled",
+    ),
+    "trip_com": ProviderDefinition(
+        "Trip.com Affiliate",
+        "航班、住宿、活動與交通合作連結；完整保留後台產生的追蹤參數。",
+        ("trip_com_affiliate_url_template", "trip_com_allowed_hosts"),
+        (),
+        "trip_com_enabled",
+    ),
+    "agoda": ProviderDefinition(
+        "Agoda Affiliate",
+        "住宿 CID 導流；Affiliate API 僅在取得正式憑證後使用。",
+        ("agoda_cid", "agoda_affiliate_url_template", "agoda_allowed_hosts", "agoda_api_base_url"),
+        ("agoda_api_key",),
+        "agoda_enabled",
+    ),
+    "booking": ProviderDefinition(
+        "Booking.com Affiliate",
+        "住宿 affiliate ID 導流，並預留 Demand API sandbox／production 設定。",
+        (
+            "booking_affiliate_id",
+            "booking_affiliate_url_template",
+            "booking_allowed_hosts",
+            "booking_demand_api_base_url",
+        ),
+        ("booking_demand_api_token",),
+        "booking_enabled",
+    ),
+    "skyscanner_affiliate": ProviderDefinition(
+        "Skyscanner Affiliate",
+        "Impact Affiliate 文字連結；不會重複包裝 Travel API 已回傳的 clickout。",
+        ("skyscanner_affiliate_url_template", "skyscanner_affiliate_allowed_hosts"),
+        (),
+        "skyscanner_affiliate_enabled",
+    ),
 }
+
+
+def _default_provider_enabled(provider: str) -> bool:
+    enabled_field = PROVIDER_DEFINITIONS[provider].enabled_field
+    return bool(getattr(get_settings(), enabled_field)) if enabled_field else True
 
 
 def _fernet(settings: Settings | None = None) -> Fernet:
@@ -147,6 +224,8 @@ def apply_runtime_overrides(base: Settings, rows: list[ProviderConfig]) -> Setti
         for field in definition.config_fields:
             if field in row.config:
                 updates[field] = row.config[field]
+        if definition.enabled_field:
+            updates[definition.enabled_field] = row.enabled
         if not row.enabled and row.provider != "runtime":
             updates.update({field: None for field in definition.secret_fields})
             continue
@@ -192,6 +271,28 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             if settings.skyscanner_configured
             else "缺少 Skyscanner API key",
         )
+    affiliate_codes = {
+        "travelpayouts": "travelpayouts",
+        "kkday": "kkday",
+        "klook": "klook",
+        "airalo": "airalo",
+        "trip_com": "trip_com",
+        "agoda": "agoda",
+        "booking": "booking",
+        "skyscanner_affiliate": "skyscanner",
+    }
+    if provider in affiliate_codes:
+        from app.affiliates.registry import PARTNERS_BY_CODE, partner_configured
+
+        partner = PARTNERS_BY_CODE[affiliate_codes[provider]]
+        configured = partner_configured(partner, settings)
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            f"{partner.display_name} 合作連結已設定"
+            if configured
+            else "缺少安全合作連結或必要憑證",
+        )
     configured = settings.navitime_configured
     return (
         configured,
@@ -232,7 +333,13 @@ async def settings_snapshot(session: AsyncSession) -> ProviderSettingsSnapshot:
     providers: list[ProviderSettingsView] = []
     for provider, definition in PROVIDER_DEFINITIONS.items():
         row = by_provider.get(provider)
-        enabled = row.enabled if row is not None else True
+        enabled = (
+            row.enabled
+            if row is not None
+            else bool(getattr(base, definition.enabled_field))
+            if definition.enabled_field
+            else True
+        )
         configured, status, message = _configured(provider, effective)
         if not enabled and provider != "runtime":
             configured, status, message = False, "disabled", "已由管理後台停用"
@@ -310,11 +417,36 @@ def _validate_provider_values(
     for field, allowed in modes.items():
         if field in merged and str(merged[field]).lower() not in allowed:
             raise AppError(422, "provider_setting_invalid", f"{field} 的選項不正確")
-    for field in ("skyscanner_base_url", "navitime_api_base_url"):
+    url_fields = {
+        field for field in merged if field.endswith("_url") or field.endswith("_url_template")
+    }
+    for field in url_fields:
         if field in merged:
-            parsed = urlparse(str(merged[field]))
+            value = str(merged[field])
+            if not value:
+                continue
+            parsed = urlparse(value)
             if parsed.scheme != "https" or not parsed.netloc:
                 raise AppError(422, "provider_setting_invalid", f"{field} 必須是 HTTPS URL")
+    for field in (item for item in merged if item.endswith("_allowed_hosts")):
+        hosts = [item.strip() for item in str(merged[field]).split(",") if item.strip()]
+        if not hosts or any(
+            "/" in host or ":" in host or "@" in host or "*" in host or "." not in host
+            for host in hosts
+        ):
+            raise AppError(
+                422,
+                "provider_setting_invalid",
+                f"{field} 必須是逗號分隔的完整網域，不可包含協定、路徑或萬用字元",
+            )
+    if "travelpayouts_api_base_url" in merged:
+        host = urlparse(str(merged["travelpayouts_api_base_url"])).hostname
+        if host != "api.travelpayouts.com":
+            raise AppError(
+                422,
+                "provider_setting_invalid",
+                "Travelpayouts API Base URL 必須使用官方 api.travelpayouts.com",
+            )
     if "skyscanner_market" in merged:
         merged["skyscanner_market"] = str(merged["skyscanner_market"]).upper()
     if "skyscanner_currency" in merged:
@@ -337,7 +469,12 @@ async def update_provider_settings(
         raise AppError(404, "provider_setting_not_found", "找不到這個供應商設定")
     row = await session.scalar(select(ProviderConfig).where(ProviderConfig.provider == provider))
     if row is None:
-        row = ProviderConfig(provider=provider, enabled=True, priority=100, config={})
+        row = ProviderConfig(
+            provider=provider,
+            enabled=_default_provider_enabled(provider),
+            priority=100,
+            config={},
+        )
         session.add(row)
     row.config = _validate_provider_values(provider, row.config or {}, payload)
     stored = decrypt_secrets(row.secret_config_encrypted)
@@ -426,6 +563,35 @@ async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str
         if segment is None:
             raise ConnectionError("NAVITIME 未回傳測試路線")
         return "NAVITIME 路線驗證成功"
+    affiliate_codes = {
+        "travelpayouts": "travelpayouts",
+        "kkday": "kkday",
+        "klook": "klook",
+        "airalo": "airalo",
+        "trip_com": "trip_com",
+        "agoda": "agoda",
+        "booking": "booking",
+        "skyscanner_affiliate": "skyscanner",
+    }
+    if provider in affiliate_codes:
+        from app.affiliates.registry import PARTNERS_BY_CODE
+        from app.affiliates.service import AffiliateContext, resolve_partner_target
+
+        partner = PARTNERS_BY_CODE[affiliate_codes[provider]]
+        module = partner.modules[0]
+        await resolve_partner_target(
+            partner,
+            AffiliateContext(
+                module=module,
+                destination="東京",
+                departure_date=(date.today() + timedelta(days=45)).isoformat(),
+                return_date=(date.today() + timedelta(days=49)).isoformat(),
+                sub_id="connection-test",
+            ),
+            settings,
+            redis,
+        )
+        return f"{partner.display_name} 合作連結驗證成功"
     return "執行模式設定不需要外部連線測試"
 
 
@@ -449,7 +615,12 @@ async def test_provider_connection(
         raise AppError(404, "provider_setting_not_found", "找不到這個供應商設定")
     row = await session.scalar(select(ProviderConfig).where(ProviderConfig.provider == provider))
     if row is None:
-        row = ProviderConfig(provider=provider, enabled=True, priority=100, config={})
+        row = ProviderConfig(
+            provider=provider,
+            enabled=_default_provider_enabled(provider),
+            priority=100,
+            config={},
+        )
         session.add(row)
     settings = await load_runtime_settings(session)
     started = time.perf_counter()
