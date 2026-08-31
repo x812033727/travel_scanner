@@ -16,14 +16,28 @@ from app.trips.routing import (
 )
 
 
-def point(name: str, latitude: float, longitude: float) -> RoutePoint:
-    return RoutePoint(item_id=uuid4(), name=name, latitude=latitude, longitude=longitude)
+def point(
+    name: str,
+    latitude: float,
+    longitude: float,
+    provider_place_id: str | None = None,
+) -> RoutePoint:
+    return RoutePoint(
+        item_id=uuid4(),
+        name=name,
+        latitude=latitude,
+        longitude=longitude,
+        provider_place_id=provider_place_id,
+    )
 
 
 @pytest.mark.asyncio
 async def test_google_route_normalizes_transit_steps_and_preview_warning() -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         assert request.headers["x-goog-fieldmask"]
+        body = request.read().decode()
+        assert '"origin":{"placeId":"google-origin"}' in body
+        assert '"destination":{"placeId":"google-destination"}' in body
         return httpx.Response(
             200,
             json={
@@ -66,8 +80,8 @@ async def test_google_route_normalizes_transit_steps_and_preview_warning() -> No
     client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
     provider = GoogleRouteProvider(Settings(google_maps_api_key="key"), client)
     segment = await provider.compute(
-        point("新宿", 35.69, 139.70),
-        point("淺草", 35.71, 139.80),
+        point("新宿", 35.69, 139.70, "google-origin"),
+        point("淺草", 35.71, 139.80, "google-destination"),
         datetime.now(UTC) + timedelta(days=150),
         "FEWER_TRANSFERS",
     )
@@ -79,6 +93,7 @@ async def test_google_route_normalizes_transit_steps_and_preview_warning() -> No
     assert segment.steps[0].line_short_name == "G"
     assert segment.steps[0].headsign == "淺草方向"
     assert "exit" not in segment.details_available
+    assert "origin_place_id=google-origin" in str(segment.maps_url)
 
 
 @pytest.mark.asyncio
@@ -156,14 +171,62 @@ class WorkingProvider:
         )
 
 
+class UnexpectedProvider:
+    name = "unexpected"
+
+    async def compute(self, *_args: object) -> None:
+        raise AssertionError("fallback provider should not run when Google returned a route")
+
+
+class CountingProvider:
+    name = "counting"
+
+    def __init__(self) -> None:
+        self.calls = 0
+
+    async def compute(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        *_args: object,
+    ) -> RouteSegment:
+        self.calls += 1
+        return RouteSegment(
+            from_item_id=origin.item_id,
+            to_item_id=destination.item_id,
+            provider=self.name,
+            attribution="test",
+            generated_at=datetime.now(UTC),
+            duration_minutes=self.calls,
+        )
+
+
+@pytest.mark.asyncio
+async def test_japan_routes_prefer_google_before_navitime() -> None:
+    service = RouteService(
+        fakeredis.aioredis.FakeRedis(decode_responses=True),
+        Settings(route_cache_ttl_seconds=300),
+        google=WorkingProvider(),
+        navitime=UnexpectedProvider(),
+    )
+    segment = await service.compute(
+        point("A", 35.1, 139.1),
+        point("B", 35.2, 139.2),
+        None,
+        "FEWER_TRANSFERS",
+        japan=True,
+    )
+    assert segment is not None and segment.provider == "working"
+
+
 @pytest.mark.asyncio
 async def test_japan_provider_falls_back_and_cached_ids_are_rebound() -> None:
     redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
     service = RouteService(
         redis,
         Settings(route_cache_ttl_seconds=300),
-        google=WorkingProvider(),
-        navitime=EmptyProvider(),
+        google=EmptyProvider(),
+        navitime=WorkingProvider(),
     )
     first = await service.compute(
         point("A", 35.1, 139.1),
@@ -183,6 +246,34 @@ async def test_japan_provider_falls_back_and_cached_ids_are_rebound() -> None:
     assert first is not None and first.provider == "working"
     assert second is not None and second.from_item_id == second_origin.item_id
     assert second.to_item_id == second_destination.item_id
+
+
+@pytest.mark.asyncio
+async def test_route_cache_separates_different_google_place_ids_at_same_coordinates() -> None:
+    provider = CountingProvider()
+    service = RouteService(
+        fakeredis.aioredis.FakeRedis(decode_responses=True),
+        Settings(route_cache_ttl_seconds=300),
+        google=provider,
+        navitime=UnexpectedProvider(),
+    )
+    first = await service.compute(
+        point("A", 35.1, 139.1, "google-a"),
+        point("B", 35.2, 139.2, "google-b"),
+        None,
+        "FEWER_TRANSFERS",
+        japan=False,
+    )
+    second = await service.compute(
+        point("A2", 35.1, 139.1, "google-a2"),
+        point("B2", 35.2, 139.2, "google-b2"),
+        None,
+        "FEWER_TRANSFERS",
+        japan=False,
+    )
+    assert provider.calls == 2
+    assert first is not None and first.duration_minutes == 1
+    assert second is not None and second.duration_minutes == 2
 
 
 def test_transit_time_window_marks_far_future_as_preview() -> None:

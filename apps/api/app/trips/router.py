@@ -600,6 +600,16 @@ async def compute_trip_routes(
         trip, rows, preference, refresh=payload.refresh
     )
     if not segments:
+        settings = get_settings()
+        if not settings.google_maps_api_key and not (
+            is_japan_trip(trip.timezone, trip.destination_name, trip.data)
+            and settings.navitime_configured
+        ):
+            raise AppError(
+                503,
+                "google_routes_not_configured",
+                "Google Maps 路線服務尚未啟用，請先設定伺服器 API 金鑰",
+            )
         raise AppError(503, "route_unavailable", "目前無法取得可用路線，請稍後再試")
     trip.route_preference = preference
     await session.commit()
