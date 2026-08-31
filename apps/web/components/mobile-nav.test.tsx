@@ -3,6 +3,12 @@ import { describe, expect, it } from "vitest";
 import { MobileNav } from "./mobile-nav";
 
 describe("MobileNav", () => {
+  it("keeps My Trips visible without opening the mobile menu", () => {
+    render(<MobileNav />);
+    expect(screen.getByRole("link", { name: "我的旅行" }).getAttribute("href")).toBe("/trips");
+    expect(screen.queryByRole("navigation", { name: "手機主要導覽" })).toBeNull();
+  });
+
   it("opens with all account routes and closes with Escape", () => {
     render(<MobileNav />);
     const trigger = screen.getByRole("button", { name: "開啟導覽選單" });
