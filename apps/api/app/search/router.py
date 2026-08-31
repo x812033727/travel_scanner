@@ -27,10 +27,15 @@ from app.models import (
     UsageReservation,
 )
 from app.problems import AppError
+from app.providers.base import FlightProvider
+from app.providers.flight_keys import ensure_itinerary_key
+from app.providers.flightaware import FlightAwareProvider
 from app.providers.registry import (
     build_flight_provider,
+    build_module_provider_candidates,
     provider_status_for_modules,
 )
+from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import FlightOffer
 from app.search.events import stream_key
 from app.search.schemas import SearchCreate
@@ -210,6 +215,176 @@ async def refresh_offer(offer_id: UUID, user: CurrentUser, session: Session) -> 
         search.result_json = {**search.result_json, "modules": modules}
     await session.commit()
     return result.model_dump(mode="json", exclude={"offer"})
+
+
+async def _owned_search(search_id: UUID, user: CurrentUser, session: AsyncSession) -> SearchRequest:
+    search = await session.scalar(
+        select(SearchRequest).where(SearchRequest.id == search_id, SearchRequest.user_id == user.id)
+    )
+    if search is None:
+        raise AppError(404, "search_not_found", "找不到這次搜尋")
+    return search
+
+
+@router.post("/searches/{search_id}/flight-sources/expand")
+async def expand_flight_sources(
+    search_id: UUID,
+    user: CurrentUser,
+    session: Session,
+    idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
+) -> dict[str, Any]:
+    search = await _owned_search(search_id, user, session)
+    redis = get_redis()
+    replay_key = f"search:{search_id}:flight-expand:{idempotency_key}"
+    if await redis.exists(replay_key):
+        return {
+            "search_id": str(search.id),
+            "replayed": True,
+            "offers": search.result_json.get("modules", {}).get("flight", []),
+            "provider_statuses": search.result_json.get("provider_statuses", {}).get("flight", []),
+        }
+    settings = await load_runtime_settings(session)
+    candidates = build_module_provider_candidates(redis, settings).get("flight", [])
+    tried_rows = list(
+        (
+            await session.scalars(
+                select(ProviderRequest).where(
+                    ProviderRequest.search_id == search.id,
+                    ProviderRequest.module == "flight",
+                )
+            )
+        ).all()
+    )
+    tried = {name for row in tried_rows for name in row.provider.split(",") if name}
+    query = SearchCreate.model_validate(search.request_json)
+    existing = [
+        ensure_itinerary_key(FlightOffer.model_validate(item))
+        for item in search.result_json.get("modules", {}).get("flight", [])
+    ]
+    by_source = {(item.provider, item.provider_offer_id): item for item in existing}
+    attempts: list[dict[str, Any]] = list(
+        search.result_json.get("provider_statuses", {}).get("flight", [])
+    )
+    runner = ProviderRunner(redis, settings)
+    for provider in candidates:
+        name = str(getattr(provider, "name", "unknown"))
+        if name in tried:
+            continue
+        started = datetime.now(UTC)
+        try:
+            flight_provider = cast(FlightProvider, provider)
+
+            async def fetch_offers(
+                selected: FlightProvider = flight_provider,
+            ) -> list[FlightOffer]:
+                return await selected.search_flights(query)
+
+            offers = await runner.run(name, "flight", fetch_offers)
+            for offer in offers:
+                normalized = ensure_itinerary_key(offer)
+                by_source[(normalized.provider, normalized.provider_offer_id)] = normalized
+                session.add(
+                    FlightOfferRecord(
+                        search_id=search.id,
+                        provider=normalized.provider,
+                        provider_offer_id=normalized.provider_offer_id,
+                        public_offer_id=normalized.id,
+                        data=normalized.model_dump(mode="json"),
+                        total_price=normalized.total_price,
+                        currency=normalized.currency,
+                        expires_at=normalized.expires_at,
+                    )
+                )
+            latency = int((datetime.now(UTC) - started).total_seconds() * 1000)
+            attempts.append({"provider": name, "status": "completed", "count": len(offers)})
+            session.add(
+                ProviderRequest(
+                    search_id=search.id,
+                    provider=name,
+                    module="flight",
+                    status="completed",
+                    latency_ms=latency,
+                )
+            )
+        except ProviderUnavailableError as exc:
+            latency = int((datetime.now(UTC) - started).total_seconds() * 1000)
+            attempts.append({"provider": name, "status": "failed", "error": str(exc)})
+            session.add(
+                ProviderRequest(
+                    search_id=search.id,
+                    provider=name,
+                    module="flight",
+                    status="failed",
+                    latency_ms=latency,
+                    error=str(exc),
+                )
+            )
+    modules = dict(search.result_json.get("modules", {}))
+    modules["flight"] = [
+        item.model_dump(mode="json")
+        for item in sorted(by_source.values(), key=lambda value: value.total_price)
+    ]
+    provider_statuses = dict(search.result_json.get("provider_statuses", {}))
+    provider_statuses["flight"] = attempts
+    search.result_json = {
+        **search.result_json,
+        "modules": modules,
+        "provider_statuses": provider_statuses,
+    }
+    await redis.set(replay_key, "1", ex=86_400)
+    await session.commit()
+    return {
+        "search_id": str(search.id),
+        "replayed": False,
+        "offers": modules["flight"],
+        "provider_statuses": attempts,
+    }
+
+
+@router.post("/searches/{search_id}/flight-statuses")
+async def enrich_search_flight_statuses(
+    search_id: UUID, user: CurrentUser, session: Session
+) -> dict[str, Any]:
+    search = await _owned_search(search_id, user, session)
+    settings = await load_runtime_settings(session)
+    if not settings.flightaware_configured:
+        raise AppError(503, "flightaware_not_configured", "FlightAware 航班動態尚未啟用")
+    offers = [
+        ensure_itinerary_key(FlightOffer.model_validate(item))
+        for item in search.result_json.get("modules", {}).get("flight", [])
+    ]
+    groups: dict[str, FlightOffer] = {}
+    for offer in sorted(offers, key=lambda value: value.total_price):
+        groups.setdefault(offer.itinerary_key or str(offer.id), offer)
+    provider = FlightAwareProvider(get_redis(), settings)
+    statuses: dict[str, list[dict[str, Any]]] = {}
+    segment_count = 0
+    for key, offer in list(groups.items())[: settings.flightaware_enrich_offer_limit]:
+        matched: list[dict[str, Any]] = []
+        for segment in offer.segments:
+            if segment_count >= 12:
+                break
+            segment_count += 1
+            values, _ = await provider.lookup(
+                segment.departure_time.date(),
+                ident=segment.flight_number,
+                origin=segment.origin,
+                destination=segment.destination,
+            )
+            if len(values) == 1:
+                matched.append(values[0])
+        statuses[key] = matched
+    enriched = [
+        offer.model_copy(
+            update={"status_details": statuses.get(offer.itinerary_key or str(offer.id), [])}
+        )
+        for offer in offers
+    ]
+    modules = dict(search.result_json.get("modules", {}))
+    modules["flight"] = [item.model_dump(mode="json") for item in enriched]
+    search.result_json = {**search.result_json, "modules": modules}
+    await session.commit()
+    return {"search_id": str(search.id), "offers": modules["flight"]}
 
 
 @router.post("/offers/{offer_id}/clickout", status_code=303)

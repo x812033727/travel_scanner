@@ -29,6 +29,9 @@ from app.providers.base import (
     HotelProvider,
     TransportProvider,
 )
+from app.providers.flight_keys import ensure_itinerary_key
+from app.providers.flightaware import FlightAwareProvider
+from app.providers.google_travel_impact import GoogleTravelImpactProvider
 from app.providers.registry import (
     build_module_provider_candidates,
     provider_status,
@@ -194,9 +197,52 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
         )
         return
     results: dict[str, list[dict[str, Any]]] = {}
+    provider_attempts: dict[str, list[dict[str, Any]]] = {}
     warnings: list[str] = []
     flex_warnings: list[str] = []
     flight_date_options: list[FlightDateOption] = []
+
+    async def enrich_flights(offers: list[FlightOffer]) -> list[FlightOffer]:
+        normalized = [ensure_itinerary_key(item) for item in offers]
+        if settings.google_travel_impact_configured:
+            try:
+                normalized = await GoogleTravelImpactProvider(redis, settings).enrich(normalized)
+            except ConnectionError:
+                warnings.append("Google Travel Impact 碳排資料暫時無法取得。")
+        if not settings.flightaware_configured or settings.flightaware_enrich_offer_limit == 0:
+            return normalized
+        groups: dict[str, FlightOffer] = {}
+        for offer in sorted(normalized, key=lambda item: item.total_price):
+            key = offer.itinerary_key or str(offer.id)
+            groups.setdefault(key, offer)
+        details: dict[str, list[dict[str, Any]]] = {}
+        segment_count = 0
+        provider = FlightAwareProvider(redis, settings)
+        try:
+            for key, offer in list(groups.items())[: settings.flightaware_enrich_offer_limit]:
+                statuses: list[dict[str, Any]] = []
+                for segment in offer.segments:
+                    if segment_count >= 12:
+                        break
+                    segment_count += 1
+                    matches, _ = await provider.lookup(
+                        segment.departure_time.date(),
+                        ident=segment.flight_number,
+                        origin=segment.origin,
+                        destination=segment.destination,
+                    )
+                    if len(matches) == 1:
+                        statuses.append(matches[0])
+                if statuses:
+                    details[key] = statuses
+        except ConnectionError:
+            warnings.append("FlightAware 航班動態暫時無法取得，票價結果不受影響。")
+        return [
+            offer.model_copy(
+                update={"status_details": details.get(offer.itinerary_key or str(offer.id), [])}
+            )
+            for offer in normalized
+        ]
 
     async def collect(
         module: str,
@@ -229,9 +275,12 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                 [],
             )
         failed_attempts: list[tuple[str, int, str]] = []
+        accumulated_flights: dict[tuple[str, str], FlightOffer] = {}
+        attempted_names: list[str] = []
         for candidate_index, provider in enumerate(candidates):
             started = time.perf_counter()
             provider_name = str(getattr(provider, "name", "unknown"))
+            attempted_names.append(provider_name)
             try:
                 completion = "complete"
                 progressive = False
@@ -279,9 +328,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                             min(24, 15 + attempts * 2),
                             {
                                 "module": module,
-                                "offers": [
-                                    item.model_dump(mode="json") for item in current.offers
-                                ],
+                                "offers": [item.model_dump(mode="json") for item in current.offers],
                                 "status": current.state.value,
                             },
                         )
@@ -299,7 +346,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                     )
                 else:
                     offers = await run_module(provider, runner, module, query)
-                if candidate_index > 0:
+                if candidate_index > 0 and module != "flight":
                     offers = [offer.model_copy(update={"is_fallback": True}) for offer in offers]
                 if module == "flight" and query.flex_days:
                     flexible: list[FlightDateOption] = []
@@ -310,9 +357,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                                 query, query.flex_days
                             )
                         except (ConnectionError, ProviderUnavailableError):
-                            flex_warnings.append(
-                                "彈性日期估價暫時無法取得，原日期班次仍可使用。"
-                            )
+                            flex_warnings.append("彈性日期估價暫時無法取得，原日期班次仍可使用。")
                     else:
                         flex_warnings.append("目前航班供應商不支援彈性日期估價。")
                     exact_flights = [item for item in offers if isinstance(item, FlightOffer)]
@@ -351,10 +396,45 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                     activities = [item for item in offers if isinstance(item, ActivityOffer)]
                     offers = cast(list[Offer], await place_service.enrich_activities(activities))
                 latency_ms = int((time.perf_counter() - started) * 1000)
-                if candidate_index > 0:
-                    warnings.append(
-                        f"{module} 主要供應商暫時無法使用，已切換至 {provider_name}。"
+                if module == "flight":
+                    for item in offers:
+                        if isinstance(item, FlightOffer):
+                            normalized = ensure_itinerary_key(item)
+                            accumulated_flights[
+                                (normalized.provider, normalized.provider_offer_id)
+                            ] = normalized
+                    group_count = len(
+                        {
+                            item.itinerary_key or str(item.id)
+                            for item in accumulated_flights.values()
+                        }
                     )
+                    should_continue = (
+                        settings.flight_search_strategy.lower() == "hybrid"
+                        and candidate_index + 1 < len(candidates)
+                        and group_count < settings.flight_min_result_count
+                    )
+                    if should_continue:
+                        await publish_event(
+                            redis,
+                            search_id,
+                            "flight.source.completed",
+                            24,
+                            {
+                                "provider": provider_name,
+                                "offer_count": len(offers),
+                                "itinerary_count": group_count,
+                                "next_provider": str(
+                                    getattr(candidates[candidate_index + 1], "name", "unknown")
+                                ),
+                            },
+                        )
+                        continue
+                    flight_offers = await enrich_flights(list(accumulated_flights.values()))
+                    offers = cast(list[Offer], flight_offers)
+                    provider_name = ",".join(attempted_names)
+                if candidate_index > 0 and module != "flight":
+                    warnings.append(f"{module} 主要供應商暫時無法使用，已切換至 {provider_name}。")
                 return (
                     module,
                     provider_name,
@@ -371,10 +451,20 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                 failed_attempts.append((provider_name, latency_ms, detail))
                 if candidate_index + 1 < len(candidates):
                     continue
+                if module == "flight" and accumulated_flights:
+                    flight_offers = await enrich_flights(list(accumulated_flights.values()))
+                    return (
+                        module,
+                        ",".join(attempted_names),
+                        cast(list[Offer], flight_offers),
+                        None,
+                        latency_ms,
+                        "partial",
+                        False,
+                        failed_attempts,
+                    )
                 completion = (
-                    "rate_limited"
-                    if "429" in detail or "rate_limited" in detail
-                    else "failed"
+                    "rate_limited" if "429" in detail or "rate_limited" in detail else "failed"
                 )
                 return (
                     module,
@@ -411,6 +501,28 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                     error=failed_error,
                 )
             )
+        provider_attempts[module] = [
+            {
+                "provider": failed_provider,
+                "status": "failed",
+                "latency_ms": failed_latency,
+                "error": failed_error,
+            }
+            for failed_provider, failed_latency, failed_error in failed_attempts
+        ]
+        if not error:
+            for completed_provider in provider_name.split(","):
+                provider_attempts[module].append(
+                    {
+                        "provider": completed_provider,
+                        "status": "completed",
+                        "count": sum(
+                            1
+                            for offer in offers
+                            if getattr(offer, "provider", None) == completed_provider
+                        ),
+                    }
+                )
         provider_request = ProviderRequest(
             search_id=search_id,
             provider=provider_name,
@@ -459,6 +571,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
         search.result_json = {
             "modules": results,
             "flight_date_options": [item.model_dump(mode="json") for item in flight_date_options],
+            "provider_statuses": provider_attempts,
         }
         search.warnings_json = warnings
         await session.commit()
@@ -483,6 +596,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
         "modules": results,
         "plans": plans,
         "flight_date_options": [item.model_dump(mode="json") for item in flight_date_options],
+        "provider_statuses": provider_attempts,
     }
     search.warnings_json = warnings
     if job:
