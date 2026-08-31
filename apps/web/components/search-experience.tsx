@@ -17,8 +17,9 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { api, isUsageInsufficient, twd } from "@/lib/api";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { ApiError, api, isUsageInsufficient, twd } from "@/lib/api";
+import { loginPath } from "@/lib/navigation";
 import { destinationByAirport, interestLabel, interests as destinationInterests } from "@/lib/destinations";
 import { BudgetBreakdown, type BudgetCost } from "@/components/budget-breakdown";
 import { AirbnbSearchPanel } from "@/components/airbnb-search-panel";
@@ -228,6 +229,7 @@ export function SearchExperience() {
   const [parsedResult, setParsedResult] = useState<Parsed | null>(null);
   const parsed = structuredParsed || parsedResult;
   const [providerStatus, setProviderStatus] = useState<ProviderStatus | null>(null);
+  const [authState, setAuthState] = useState<"checking" | "signed_in" | "signed_out" | "error">("checking");
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState<string[]>([]);
   const [plans, setPlans] = useState<Plan[]>([]);
@@ -251,6 +253,19 @@ export function SearchExperience() {
   const [hotelMaxWalk, setHotelMaxWalk] = useState(Number(params.get("max_station_walk_minutes") || 0));
   const [hotelSort, setHotelSort] = useState<"recommended" | "price" | "rating" | "distance">("recommended");
   const started = useRef(false);
+
+  const resolveAuth = useCallback(() => {
+    return api<{ id: string }>("/auth/me")
+      .then(() => setAuthState("signed_in"))
+      .catch((reason) => setAuthState(reason instanceof ApiError && reason.status === 401 ? "signed_out" : "error"));
+  }, []);
+
+  const checkAuth = useCallback(() => {
+    setAuthState("checking");
+    void resolveAuth();
+  }, [resolveAuth]);
+
+  useEffect(() => { void resolveAuth(); }, [resolveAuth]);
 
   useEffect(() => {
     api<ProviderStatus>("/providers/status")
@@ -384,6 +399,11 @@ export function SearchExperience() {
         setWarnings((current) => current.includes(warning) ? current : [...current, warning]);
       };
     } catch (reason) {
+      if (reason instanceof ApiError && reason.status === 401) {
+        setAuthState("signed_out");
+        setBusy(false);
+        return;
+      }
       if (isUsageInsufficient(reason)) {
         router.push("/pricing");
         return;
@@ -513,6 +533,7 @@ export function SearchExperience() {
     children: parsed.travelers.children || 0,
   } : null;
   const resultTabs = [{ key: "plans", label: "推薦組合" }, ...stages, { key: "connectivity", label: "eSIM" }, ...(includeAirbnb ? [{ key: "airbnb", label: "Airbnb" }] : [])];
+  const searchReturnPath = `/search${params.toString() ? `?${params.toString()}` : ""}`;
 
   const providerTone = providerStatus?.status === "ready"
     ? providerStatus.mode === "live" ? "bg-emerald-50 text-emerald-800" : "bg-amber-50 text-amber-900"
@@ -533,8 +554,9 @@ export function SearchExperience() {
           {[`${parsed.travelers.adults + (parsed.travelers.children || 0)} 位旅客`, `${parsed.travelers.rooms || 1} 間房`, `${dates[0]} → ${dates[1]}`, parsed.flex_days ? `日期前後可移動 ${parsed.flex_days} 日` : "指定日期", parsed.preferred_area ? `住在 ${parsed.preferred_area}` : null, parsed.budget_twd ? `預算 ${twd.format(parsed.budget_twd)}` : null, parsed.hotel_max_nightly_twd ? `每晚 ≤ ${twd.format(parsed.hotel_max_nightly_twd)}` : null, parsed.avoid_red_eye ? "避開紅眼" : null, parsed.breakfast_required ? "含早餐" : null, parsed.refundable_required ? "可退款" : null, ...parsed.interests.map(interestLabel)].filter(Boolean).map((tag) => <span key={String(tag)} className="rounded-full bg-[var(--teal-soft)] px-3 py-1.5 text-[var(--teal-dark)]">{tag}</span>)}
         </div>}
         {parsed && <SearchCriteriaEditor criteria={{ ...parsed, flex_days: parsed.flex_days || 0, include_airbnb: includeAirbnb }} destination={destination} dates={dates} disabled={busy} onApply={applyCriteria} />}
-        {!searchId && <><div className="mt-6 flex flex-col gap-3 sm:flex-row"><button disabled={!parsed || busy || providerStatus?.status !== "ready"} onClick={() => begin()} className="rounded-2xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">確認條件並開始搜尋</button>{includeAirbnb && airbnbCriteria && <AirbnbSearchPanel criteria={airbnbCriteria} compact />}</div><p className="mt-2 text-xs text-[var(--muted)]">站內比較成功取得至少一筆可用結果才扣 1 次；Airbnb 官方外站搜尋不扣次。</p></>}
-        {error && <div role="alert" className="mt-5 flex items-start gap-2 rounded-xl bg-red-50 p-4 text-sm text-red-800"><AlertCircle size={18} className="mt-0.5 shrink-0" /><span>{error} {error.includes("sign") || error.includes("登入") ? <Link className="underline" href="/login">前往登入</Link> : null}</span></div>}
+        {!parsed && !text && <div className="mt-6 rounded-2xl bg-amber-50 p-5 text-amber-950"><p className="font-semibold">缺少出發地、目的地或出發日期，還不能建立搜尋。</p><Link href="/" className="mt-3 inline-flex rounded-xl bg-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-white">回首頁設定條件</Link></div>}
+        {!searchId && parsed && <><div className="mt-6 flex flex-col gap-3 sm:flex-row">{authState === "signed_out" ? <Link href={loginPath(searchReturnPath)} className="rounded-2xl bg-[var(--teal)] px-6 py-3.5 text-center font-semibold text-white">登入後開始搜尋</Link> : <button disabled={busy || providerStatus?.status !== "ready" || authState !== "signed_in"} onClick={() => begin()} className="rounded-2xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">{authState === "checking" ? "確認登入狀態…" : authState === "error" ? "暫時無法確認登入狀態" : "確認條件並開始搜尋"}</button>}{includeAirbnb && airbnbCriteria && <AirbnbSearchPanel criteria={airbnbCriteria} compact />}</div>{authState === "error" && <p role="alert" className="mt-2 text-sm text-red-700">登入服務暫時無法確認，請稍後再試。<button type="button" onClick={checkAuth} className="ml-1 font-semibold underline">重新確認</button></p>}<p className="mt-2 text-xs text-[var(--muted)]">站內比較成功取得至少一筆可用結果才扣 1 次；Airbnb 官方外站搜尋不扣次。</p></>}
+        {error && <div role="alert" className="mt-5 flex items-start gap-2 rounded-xl bg-red-50 p-4 text-sm text-red-800"><AlertCircle size={18} className="mt-0.5 shrink-0" /><span>{error}</span></div>}
         {warnings.map((warning) => <p key={warning} className="mt-3 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">{warning}</p>)}
       </section>
 
@@ -577,8 +599,8 @@ export function SearchExperience() {
         </div>}
 
         {activeTab !== "plans" && activeTab !== "airbnb" && activeTab !== "connectivity" && <div className={activeTab === "flight" ? "space-y-4" : "grid gap-5 md:grid-cols-2 lg:grid-cols-3"}>{visibleOffers.map((offer) => {
-          if (activeTab === "hotel") return <HotelOfferCard key={offer.id} offer={offer} actionUrl={recheckUrl(activeTab, offer, parsed, dates)} />;
-          if (activeTab === "flight") return <FlightOfferCard key={offer.id} offer={offer} fallbackUrl={recheckUrl(activeTab, offer, parsed, dates)} />;
+          if (activeTab === "hotel") return <HotelOfferCard key={offer.id} offer={offer} actionUrl={recheckUrl(activeTab, offer, parsed, dates)} alertReturnPath={searchReturnPath} />;
+          if (activeTab === "flight") return <FlightOfferCard key={offer.id} offer={offer} fallbackUrl={recheckUrl(activeTab, offer, parsed, dates)} alertReturnPath={searchReturnPath} />;
           const image = offer.images?.[0];
           const mode = offer.source_mode || (offer.is_mock ? "mock" : "estimate");
           return <article key={offer.id} className="overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-white">

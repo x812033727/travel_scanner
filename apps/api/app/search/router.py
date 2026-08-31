@@ -109,7 +109,7 @@ async def get_search(search_id: UUID, user: CurrentUser, session: Session) -> di
         select(SearchRequest).where(SearchRequest.id == search_id, SearchRequest.user_id == user.id)
     )
     if search is None:
-        raise AppError(404, "search_not_found", "Search was not found")
+        raise AppError(404, "search_not_found", "找不到這次搜尋")
     reservation = await session.scalar(
         select(UsageReservation).where(UsageReservation.resource_id == search.id)
     )
@@ -137,7 +137,7 @@ async def search_events(
         )
     )
     if owned is None:
-        raise AppError(404, "search_not_found", "Search was not found")
+        raise AppError(404, "search_not_found", "找不到這次搜尋")
 
     async def generate() -> AsyncIterator[str]:
         redis, cursor = get_redis(), last_event_id or "0-0"
@@ -179,12 +179,12 @@ async def refresh_offer(offer_id: UUID, user: CurrentUser, session: Session) -> 
     )
     record = next((item for item in records if item.data.get("id") == str(offer_id)), None)
     if record is None:
-        raise AppError(404, "offer_not_found", "Offer was not found")
+        raise AppError(404, "offer_not_found", "找不到這筆報價")
     search = await session.get(SearchRequest, record.search_id)
     assert search is not None
     provider = build_flight_provider(get_redis(), provider_name=record.provider)
     if provider is None:
-        raise AppError(503, "provider_unavailable", "The original flight provider is unavailable")
+        raise AppError(503, "provider_unavailable", "原始航班供應商目前無法使用")
     offer = FlightOffer.model_validate(record.data)
     try:
         try:
@@ -223,17 +223,17 @@ async def clickout_offer(offer_id: UUID, user: CurrentUser, session: Session) ->
     )
     record = next((item for item in records if item.data.get("id") == str(offer_id)), None)
     if record is None:
-        raise AppError(404, "offer_not_found", "Offer was not found")
+        raise AppError(404, "offer_not_found", "找不到這筆報價")
     offer = FlightOffer.model_validate(record.data)
     if not offer.clickout_available or offer.expires_at <= datetime.now(UTC):
-        raise AppError(409, "offer_expired", "Offer must be refreshed before booking")
+        raise AppError(409, "offer_expired", "報價已過期，前往訂票前請先重新驗價")
     provider = build_flight_provider(get_redis(), provider_name=record.provider)
     if provider is None:
-        raise AppError(503, "provider_unavailable", "The original flight provider is unavailable")
+        raise AppError(503, "provider_unavailable", "原始航班供應商目前無法使用")
     target = await provider.clickout(offer)
     parsed = urlparse(target or "")
     if parsed.scheme != "https" or not parsed.netloc:
-        raise AppError(409, "clickout_unavailable", "A secure booking link is unavailable")
+        raise AppError(409, "clickout_unavailable", "目前沒有可用的安全訂票連結")
     assert target is not None
     request = ProviderRequest(
         search_id=record.search_id,

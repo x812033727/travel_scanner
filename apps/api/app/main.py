@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
@@ -16,7 +17,7 @@ from app.infra import get_redis
 from app.middleware import RequestContextMiddleware
 from app.places.router import public_router as public_places_router
 from app.places.router import router as places_router
-from app.problems import AppError, app_error_handler
+from app.problems import AppError, app_error_handler, validation_error_handler
 from app.providers.flight_router import router as flight_router
 from app.providers.router import router as providers_router
 from app.schema import expected_schema_revision, schema_is_current
@@ -36,6 +37,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
+app.add_exception_handler(RequestValidationError, validation_error_handler)  # type: ignore[arg-type]
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(admin_router, prefix="/api/v1")
 app.include_router(admin_user_router, prefix="/api/v1")
@@ -77,7 +79,7 @@ async def ready() -> dict[str, str]:
         raise AppError(
             503,
             "dependencies_unavailable",
-            "Database, schema migration, or Redis is unavailable",
+            "資料庫、資料結構或 Redis 目前無法使用",
         ) from exc
     return {
         "status": "ready",

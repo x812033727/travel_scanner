@@ -1,9 +1,19 @@
 import { expect, test } from "@playwright/test";
 
+test.beforeEach(async ({ page }) => {
+  await page.route("**/api/travel/auth/me", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({ id: "00000000-0000-4000-8000-000000000001", email: "tester@example.com" }),
+  }));
+});
+
 test("primary travel flow is visible", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { name: /少開十個分頁/ })).toBeVisible();
   await expect(page.getByRole("button", { name: /下一步/ })).toBeVisible();
+  const mobileMenu = page.getByRole("button", { name: "開啟導覽選單" });
+  if (await mobileMenu.isVisible()) await mobileMenu.click();
   await Promise.all([
     page.waitForURL(/\/pricing$/, { timeout: 30_000 }),
     page.getByRole("link", { name: "方案" }).click(),
@@ -89,6 +99,71 @@ test("Airbnb official search is available without running the paid comparison", 
   expect(href).toContain("adults=2");
   expect(href).toContain("children=1");
   await expect(page.getByText(/Airbnb 官方外站搜尋不扣次/)).toBeVisible();
+});
+
+test("alerts page distinguishes signed-out state from service failures", async ({ page }) => {
+  await page.route("**/api/travel/alerts", (route) => route.fulfill({
+    status: 401,
+    contentType: "application/problem+json",
+    body: JSON.stringify({ status: 401, code: "authentication_required", detail: "請先登入再繼續" }),
+  }));
+  await page.goto("/alerts");
+  await expect(page.getByText("登入後才能查看這裡的內容")).toBeVisible();
+  await expect(page.getByRole("link", { name: "前往登入" })).toHaveAttribute("href", "/login?next=%2Falerts");
+});
+
+test("guest keeps search criteria and is sent back after login", async ({ page }) => {
+  await page.route("**/api/travel/auth/me", (route) => route.fulfill({
+    status: 401,
+    contentType: "application/problem+json",
+    body: JSON.stringify({ status: 401, code: "authentication_required", detail: "請先登入再繼續" }),
+  }));
+  await page.route("**/api/travel/providers/status", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({ provider: "mock", mode: "mock", status: "ready", modules: ["flight", "hotel"], message: "模擬資料已啟用" }),
+  }));
+  await page.goto("/search?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=2&include_airbnb=true");
+  const login = page.getByRole("link", { name: "登入後開始搜尋" });
+  await expect(login).toBeVisible();
+  await expect(login).toHaveAttribute("href", /\/login\?next=%2Fsearch%3Forigin%3DTPE/);
+  await expect(page.getByRole("link", { name: /Airbnb 官方外站搜尋/ })).toBeVisible();
+});
+
+test("empty search explains missing fields and links home", async ({ page }) => {
+  await page.route("**/api/travel/providers/status", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({ provider: "mock", mode: "mock", status: "ready", modules: [], message: "模擬資料已啟用" }),
+  }));
+  await page.goto("/search");
+  await expect(page.getByText(/缺少出發地、目的地或出發日期/)).toBeVisible();
+  await expect(page.getByRole("link", { name: "回首頁設定條件" })).toHaveAttribute("href", "/");
+});
+
+test("failed login keeps email and clears only password", async ({ page }) => {
+  await page.route("**/api/travel/auth/login", (route) => route.fulfill({
+    status: 401,
+    contentType: "application/problem+json",
+    body: JSON.stringify({ status: 401, code: "invalid_credentials", detail: "Email 或密碼不正確" }),
+  }));
+  await page.goto("/login?next=%2Falerts");
+  await page.getByLabel("Email").fill("traveler@example.com");
+  await page.getByLabel("密碼").fill("wrong-password");
+  await page.getByRole("button", { name: "登入" }).click();
+  await expect(page.getByText("Email 或密碼不正確", { exact: true })).toBeVisible();
+  await expect(page.getByLabel("Email")).toHaveValue("traveler@example.com");
+  await expect(page.getByLabel("密碼")).toHaveValue("");
+});
+
+test("mobile menu exposes trips alerts and account links", async ({ page }) => {
+  await page.setViewportSize({ width: 412, height: 915 });
+  await page.goto("/");
+  await page.getByRole("button", { name: "開啟導覽選單" }).click();
+  await expect(page.getByRole("navigation", { name: "手機主要導覽" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "我的旅程" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "價格通知" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "會員帳號" })).toBeVisible();
 });
 
 test("search criteria can be revised before running a new comparison", async ({ page }) => {

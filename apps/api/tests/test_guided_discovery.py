@@ -1,5 +1,3 @@
-from typing import Any, cast
-
 import pytest
 from pydantic import ValidationError
 
@@ -26,8 +24,8 @@ async def test_guided_discovery_returns_three_deterministic_candidates() -> None
             "top_n": 3,
         }
     )
-    first = await discover(request, cast(Any, None))
-    second = await discover(request, cast(Any, None))
+    first = await discover(request)
+    second = await discover(request)
     assert first == second
     assert len(first["recommendations"]) == 3
     assert len({item["airport"] for item in first["recommendations"]}) == 3

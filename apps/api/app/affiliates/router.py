@@ -74,7 +74,7 @@ async def _owned_context(
             )
         )
         if search is None:
-            raise AppError(404, "search_not_found", "Search was not found")
+            raise AppError(404, "search_not_found", "找不到這次搜尋")
         payload = search.request_json
         destination = str(payload.get("destination") or "旅遊目的地")[:128]
         source = str(search.id)
@@ -90,7 +90,7 @@ async def _owned_context(
         select(TripPlan).where(TripPlan.id == trip_id, TripPlan.user_id == user_id)
     )
     if trip is None:
-        raise AppError(404, "trip_not_found", "Trip was not found")
+        raise AppError(404, "trip_not_found", "找不到這個旅程")
     source = str(trip.id)
     return (
         AffiliateContext(
