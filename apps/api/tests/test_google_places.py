@@ -6,6 +6,16 @@ import pytest
 
 from app.config import Settings
 from app.places.google import GoogleTravelService
+from app.places.router import PHOTO_NAME_PATTERN, _safe_photo_uri
+
+
+def test_photo_proxy_only_accepts_google_resource_names_and_https_targets() -> None:
+    assert PHOTO_NAME_PATTERN.fullmatch("places/ChIJ-test/photos/AZm-test_123")
+    assert not PHOTO_NAME_PATTERN.fullmatch("places/../../ready/photos/test")
+    assert _safe_photo_uri("https://lh3.googleusercontent.com/example")
+    assert _safe_photo_uri("javascript:alert(1)") is None
+    assert _safe_photo_uri("http://example.com/photo") is None
+    assert _safe_photo_uri("https://example.com:invalid/photo") is None
 
 
 @pytest.mark.asyncio

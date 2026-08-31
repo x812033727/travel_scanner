@@ -1,7 +1,26 @@
 from functools import lru_cache
+from urllib.parse import urlparse
 
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+def _is_explicit_https_origin(value: str) -> bool:
+    parsed = urlparse(value)
+    try:
+        _ = parsed.port
+    except ValueError:
+        return False
+    return bool(
+        parsed.scheme == "https"
+        and parsed.hostname
+        and parsed.username is None
+        and parsed.password is None
+        and not parsed.path
+        and not parsed.params
+        and not parsed.query
+        and not parsed.fragment
+    )
 
 
 class Settings(BaseSettings):
@@ -22,6 +41,12 @@ class Settings(BaseSettings):
     provider_failure_threshold: int = 3
     provider_circuit_seconds: int = 60
     rate_limit_per_minute: int = Field(default=120, ge=1)
+    auth_login_account_limit: int = Field(default=10, ge=1, le=100)
+    auth_login_ip_limit: int = Field(default=30, ge=1, le=1_000)
+    auth_login_window_seconds: int = Field(default=900, ge=60, le=86_400)
+    auth_register_ip_limit: int = Field(default=30, ge=1, le=1_000)
+    auth_register_window_seconds: int = Field(default=3_600, ge=60, le=86_400)
+    trust_proxy_client_ip: bool = False
     travel_provider_mode: str = "mock"
     flight_provider_mode: str = "auto"
     flight_search_strategy: str = "hybrid"
@@ -104,6 +129,9 @@ class Settings(BaseSettings):
     google_maps_api_key: str | None = None
     next_public_google_maps_browser_key: str | None = None
     google_maps_monthly_request_limit: int = Field(default=10_000, ge=1, le=10_000_000)
+    place_photo_ip_limit: int = Field(default=120, ge=1, le=10_000)
+    place_photo_window_seconds: int = Field(default=60, ge=10, le=3_600)
+    place_photo_cache_ttl_seconds: int = Field(default=3_600, ge=60, le=86_400)
     route_cache_ttl_seconds: int = Field(default=900, ge=60, le=86_400)
     navitime_api_base_url: str | None = None
     navitime_client_id: str | None = None
@@ -188,7 +216,40 @@ class Settings(BaseSettings):
             self.navitime_api_base_url and self.navitime_client_id and self.navitime_api_key
         )
 
+    def validate_deployment_security(self) -> None:
+        if not self.production:
+            return
+        errors: list[str] = []
+        insecure_app_secrets = {
+            "development-secret-change-me-please-32",
+            "replace-with-at-least-32-random-characters",
+        }
+        if len(self.app_secret_key) < 32 or self.app_secret_key in insecure_app_secrets:
+            errors.append("APP_SECRET_KEY must be a unique random value of at least 32 characters")
+        if not self.settings_encryption_key or len(self.settings_encryption_key) < 32:
+            errors.append("SETTINGS_ENCRYPTION_KEY must be set to at least 32 characters")
+        elif self.settings_encryption_key == self.app_secret_key:
+            errors.append("SETTINGS_ENCRYPTION_KEY must differ from APP_SECRET_KEY")
+        if not self.cookie_secure:
+            errors.append("COOKIE_SECURE must be true")
+        if not _is_explicit_https_origin(self.next_public_site_url):
+            errors.append("NEXT_PUBLIC_SITE_URL must be an HTTPS origin")
+        for origin in self.cors_origins:
+            if origin == "*" or not _is_explicit_https_origin(origin):
+                errors.append("API_CORS_ORIGINS must contain only explicit HTTPS origins")
+                break
+        database = urlparse(self.database_url)
+        if not database.password or database.password == "travel":
+            errors.append("DATABASE_URL must use a non-default password")
+        redis = urlparse(self.redis_url)
+        if not redis.password:
+            errors.append("REDIS_URL must include a password")
+        if errors:
+            raise RuntimeError("Unsafe production configuration: " + "; ".join(errors))
+
 
 @lru_cache
 def get_settings() -> Settings:
-    return Settings()
+    settings = Settings()
+    settings.validate_deployment_security()
+    return settings

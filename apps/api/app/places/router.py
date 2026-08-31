@@ -1,10 +1,14 @@
+import hashlib
+import re
 from datetime import UTC, date, datetime, timedelta
 from typing import Annotated, Any
+from urllib.parse import urlparse
 
 import httpx
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
 from fastapi.responses import RedirectResponse
 from pydantic import BaseModel, Field, model_validator
+from redis.exceptions import RedisError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
@@ -12,7 +16,7 @@ from app.ai.parser import MockAITripParser
 from app.auth.service import CurrentUser
 from app.db import get_session
 from app.destinations.catalog import DESTINATIONS
-from app.infra import get_redis
+from app.infra import client_ip, enforce_named_rate_limit, get_redis
 from app.places.google import GoogleTravelService
 from app.problems import AppError
 from app.providers.usage_meter import record_google_maps_request
@@ -21,6 +25,26 @@ from app.search.schemas import PropertyType, Travelers, TripPace
 router = APIRouter(prefix="/destinations", tags=["destinations"])
 public_router = APIRouter(prefix="/places", tags=["places"])
 Session = Annotated[AsyncSession, Depends(get_session)]
+PHOTO_NAME_PATTERN = re.compile(r"^places/[A-Za-z0-9._~-]{1,255}/photos/[A-Za-z0-9._~-]{1,512}$")
+
+
+def _safe_photo_uri(value: object) -> str | None:
+    if not isinstance(value, str):
+        return None
+    parsed = urlparse(value)
+    try:
+        port = parsed.port
+    except ValueError:
+        return None
+    if (
+        parsed.scheme != "https"
+        or not parsed.hostname
+        or parsed.username is not None
+        or parsed.password is not None
+        or port not in (None, 443)
+    ):
+        return None
+    return value
 
 
 @public_router.get("/autocomplete")
@@ -77,12 +101,25 @@ async def get_place_details(
 
 
 @public_router.get("/photo")
-async def place_photo(name: str, session: Session) -> RedirectResponse:
+async def place_photo(name: str, request: Request, session: Session) -> RedirectResponse:
     settings = await load_runtime_settings(session)
-    if not settings.google_maps_api_key or not name.startswith("places/"):
+    if not settings.google_maps_api_key or not PHOTO_NAME_PATTERN.fullmatch(name):
         raise AppError(404, "photo_not_found", "目前沒有可用的地點照片")
-    url = f"https://places.googleapis.com/v1/{name}/media"
     redis = get_redis()
+    cache_key = f"places:photo-uri:{hashlib.sha256(name.encode()).hexdigest()}"
+    try:
+        cached = _safe_photo_uri(await redis.get(cache_key))
+    except RedisError:
+        cached = None
+    if cached:
+        return RedirectResponse(cached, status_code=302)
+    await enforce_named_rate_limit(
+        "places-photo-ip",
+        client_ip(request),
+        limit=settings.place_photo_ip_limit,
+        window_seconds=settings.place_photo_window_seconds,
+    )
+    url = f"https://places.googleapis.com/v1/{name}/media"
     try:
         async with httpx.AsyncClient(timeout=settings.provider_timeout_seconds) as client:
             response = await client.get(
@@ -93,14 +130,23 @@ async def place_photo(name: str, session: Session) -> RedirectResponse:
                     "key": settings.google_maps_api_key,
                 },
             )
+    except httpx.HTTPError as exc:
+        raise AppError(503, "photo_provider_unavailable", "地點照片服務暫時無法使用") from exc
     finally:
         await record_google_maps_request(redis, "places_photo")
     if response.status_code >= 400:
         raise AppError(404, "photo_not_found", "目前沒有可用的地點照片")
-    photo_uri = response.json().get("photoUri")
+    try:
+        photo_uri = _safe_photo_uri(response.json().get("photoUri"))
+    except (TypeError, ValueError):
+        photo_uri = None
     if not photo_uri:
         raise AppError(404, "photo_not_found", "目前沒有可用的地點照片")
-    return RedirectResponse(str(photo_uri), status_code=302)
+    try:
+        await redis.setex(cache_key, settings.place_photo_cache_ttl_seconds, photo_uri)
+    except RedisError:
+        pass
+    return RedirectResponse(photo_uri, status_code=302)
 
 
 class DiscoveryRequest(BaseModel):

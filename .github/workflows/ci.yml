@@ -23,6 +23,7 @@ jobs:
       - uses: astral-sh/setup-uv@v6
         with: { python-version: "3.13" }
       - run: uv sync --frozen
+      - run: uv run pip-audit --local --skip-editable
       - run: uv run ruff check .
       - run: uv run mypy app
       - run: uv run alembic upgrade head
@@ -35,6 +36,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 24, cache: npm }
       - run: npm ci
+      - run: npm audit --audit-level=high
       - run: npm run lint:web
       - run: npm run typecheck:web
       - run: npm run test:web

@@ -50,6 +50,8 @@ const CODE_MESSAGES: Record<string, string> = {
   trip_not_found: "找不到這個旅程",
   search_not_found: "找不到這次搜尋",
   rate_limited: "操作太頻繁，請稍後再試",
+  rate_limit_exceeded: "操作太頻繁，請稍後再試",
+  rate_limit_unavailable: "限流服務暫時無法使用，請稍後再試",
   insufficient_uses: "可用次數不足，請先取得更多次數",
 };
 

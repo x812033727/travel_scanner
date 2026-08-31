@@ -1,6 +1,6 @@
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, Response
+from fastapi import APIRouter, Depends, Request, Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.schemas import (
@@ -11,6 +11,7 @@ from app.auth.schemas import (
     UserResponse,
 )
 from app.auth.service import (
+    DUMMY_PASSWORD_HASH,
     CurrentUser,
     create_access_token,
     find_user_by_email,
@@ -20,6 +21,11 @@ from app.auth.service import (
 )
 from app.config import get_settings
 from app.db import get_session
+from app.infra import (
+    clear_named_rate_limit,
+    client_ip,
+    enforce_named_rate_limit,
+)
 from app.models import User
 from app.problems import AppError
 from app.usage.service import create_usage_account
@@ -46,8 +52,28 @@ def set_auth_cookie(response: Response, token: str) -> None:
     )
 
 
+def token_response(token: str, response_user: UserResponse) -> TokenResponse:
+    return TokenResponse(
+        access_token=token,
+        expires_in=get_settings().access_token_expire_minutes * 60,
+        user=response_user,
+    )
+
+
 @router.post("/register", response_model=TokenResponse, status_code=201)
-async def register(payload: RegisterRequest, response: Response, session: Session) -> TokenResponse:
+async def register(
+    payload: RegisterRequest,
+    request: Request,
+    response: Response,
+    session: Session,
+) -> TokenResponse:
+    settings = get_settings()
+    await enforce_named_rate_limit(
+        "auth-register-ip",
+        client_ip(request),
+        limit=settings.auth_register_ip_limit,
+        window_seconds=settings.auth_register_window_seconds,
+    )
     if await find_user_by_email(session, str(payload.email)):
         raise AppError(409, "email_exists", "這個 Email 已經註冊")
     user = User(email=str(payload.email).lower(), password_hash=hash_password(payload.password))
@@ -55,19 +81,44 @@ async def register(payload: RegisterRequest, response: Response, session: Sessio
     await session.flush()
     await create_usage_account(session, user)
     await session.commit()
-    token = create_access_token(user.id)
+    token = create_access_token(user.id, user.auth_version)
     set_auth_cookie(response, token)
-    return TokenResponse(access_token=token, user=await user_response(session, user))
+    return token_response(token, await user_response(session, user))
 
 
 @router.post("/login", response_model=TokenResponse)
-async def login(payload: LoginRequest, response: Response, session: Session) -> TokenResponse:
-    user = await find_user_by_email(session, str(payload.email))
-    if user is None or not verify_password(payload.password, user.password_hash):
+async def login(
+    payload: LoginRequest,
+    request: Request,
+    response: Response,
+    session: Session,
+) -> TokenResponse:
+    settings = get_settings()
+    email = str(payload.email).lower()
+    source = client_ip(request)
+    await enforce_named_rate_limit(
+        "auth-login-account",
+        email,
+        limit=settings.auth_login_account_limit,
+        window_seconds=settings.auth_login_window_seconds,
+    )
+    await enforce_named_rate_limit(
+        "auth-login-ip",
+        source,
+        limit=settings.auth_login_ip_limit,
+        window_seconds=settings.auth_login_window_seconds,
+    )
+    user = await find_user_by_email(session, email)
+    password_valid = verify_password(
+        payload.password,
+        user.password_hash if user is not None else DUMMY_PASSWORD_HASH,
+    )
+    if user is None or not password_valid:
         raise AppError(401, "invalid_credentials", "Email 或密碼不正確")
-    token = create_access_token(user.id)
+    await clear_named_rate_limit("auth-login-account", email)
+    token = create_access_token(user.id, user.auth_version)
     set_auth_cookie(response, token)
-    return TokenResponse(access_token=token, user=await user_response(session, user))
+    return token_response(token, await user_response(session, user))
 
 
 @router.post("/logout", status_code=204)
@@ -80,11 +131,24 @@ async def me(user: CurrentUser, session: Session) -> UserResponse:
     return await user_response(session, user)
 
 
-@router.post("/change-password", status_code=204)
+@router.post("/change-password", response_model=TokenResponse)
 async def change_password(
-    payload: ChangePasswordRequest, user: CurrentUser, session: Session
-) -> None:
+    payload: ChangePasswordRequest,
+    response: Response,
+    user: CurrentUser,
+    session: Session,
+) -> TokenResponse:
+    await enforce_named_rate_limit(
+        "auth-password-change-user",
+        str(user.id),
+        limit=5,
+        window_seconds=3_600,
+    )
     if not verify_password(payload.current_password, user.password_hash):
         raise AppError(401, "invalid_credentials", "目前密碼不正確")
     user.password_hash = hash_password(payload.new_password)
+    user.auth_version = (user.auth_version or 1) + 1
     await session.commit()
+    token = create_access_token(user.id, user.auth_version)
+    set_auth_cookie(response, token)
+    return token_response(token, await user_response(session, user))

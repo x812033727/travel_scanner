@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_DB: travel_scanner
       POSTGRES_USER: travel
-      POSTGRES_PASSWORD: travel
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
     volumes: ["postgres_data:/var/lib/postgresql/data"]
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U travel -d travel_scanner"]
@@ -16,10 +16,12 @@ services:
   redis:
     image: redis:7.4-alpine
     restart: unless-stopped
-    command: ["redis-server", "--appendonly", "yes"]
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?set REDIS_PASSWORD}
+    command: ["sh", "-c", "exec redis-server --appendonly yes --requirepass \"$${REDIS_PASSWORD}\""]
     volumes: ["redis_data:/data"]
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ["CMD-SHELL", "REDISCLI_AUTH=\"$${REDIS_PASSWORD}\" redis-cli ping"]
       interval: 5s
       timeout: 3s
       retries: 10
@@ -29,8 +31,12 @@ services:
     restart: "no"
     env_file: .env
     environment:
-      DATABASE_URL: postgresql+asyncpg://travel:travel@postgres:5432/travel_scanner
+      APP_ENV: production
+      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
+      REDIS_URL: ${REDIS_URL:?set REDIS_URL}
     command: ["alembic", "upgrade", "head"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
     depends_on:
       postgres: { condition: service_healthy }
 
@@ -39,10 +45,14 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
-      DATABASE_URL: postgresql+asyncpg://travel:travel@postgres:5432/travel_scanner
-      REDIS_URL: redis://redis:6379/0
+      APP_ENV: production
+      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
+      REDIS_URL: ${REDIS_URL:?set REDIS_URL}
+      TRUST_PROXY_CLIENT_IP: "true"
     command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
     ports: ["127.0.0.1:8090:8000"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
     depends_on:
       migrate: { condition: service_completed_successfully }
       postgres: { condition: service_healthy }
@@ -53,9 +63,12 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
-      DATABASE_URL: postgresql+asyncpg://travel:travel@postgres:5432/travel_scanner
-      REDIS_URL: redis://redis:6379/0
+      APP_ENV: production
+      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
+      REDIS_URL: ${REDIS_URL:?set REDIS_URL}
     command: ["python", "-m", "app.worker"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
     depends_on:
       migrate: { condition: service_completed_successfully }
       postgres: { condition: service_healthy }
@@ -67,9 +80,12 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
-      DATABASE_URL: postgresql+asyncpg://travel:travel@postgres:5432/travel_scanner
-      REDIS_URL: redis://redis:6379/0
+      APP_ENV: production
+      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
+      REDIS_URL: ${REDIS_URL:?set REDIS_URL}
     command: ["python", "-m", "app.hotspots.scheduler"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
     depends_on:
       migrate: { condition: service_completed_successfully }
       postgres: { condition: service_healthy }
@@ -85,9 +101,15 @@ services:
     restart: unless-stopped
     environment:
       API_INTERNAL_URL: http://api:8000
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:?set NEXT_PUBLIC_SITE_URL}
+      API_PROXY_MAX_BODY_BYTES: ${API_PROXY_MAX_BODY_BYTES:-5242880}
+      API_PROXY_MAX_RESPONSE_BYTES: ${API_PROXY_MAX_RESPONSE_BYTES:-10485760}
+      API_PROXY_TIMEOUT_MS: ${API_PROXY_TIMEOUT_MS:-15000}
       HOSTNAME: 0.0.0.0
       PORT: "3000"
     ports: ["127.0.0.1:8091:3000"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
     depends_on:
       - api
 

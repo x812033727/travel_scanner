@@ -38,6 +38,25 @@ npm run dev:web
 
 Open `http://localhost:3000`; API docs are at `http://localhost:8000/docs`.
 
+## Production deployment
+
+Production starts only with an explicit HTTPS origin, secure cookies, separate
+random `APP_SECRET_KEY` and `SETTINGS_ENCRYPTION_KEY` values, and password-protected
+PostgreSQL and Redis URLs. Set `POSTGRES_PASSWORD` and `REDIS_PASSWORD`, then use
+matching URL-encoded credentials in `DATABASE_URL` and `REDIS_URL`; never reuse the
+development `travel` password. The API schema and documentation routes are disabled
+in production, while `/health` and `/ready` remain available on the loopback-bound
+API port. `TRUST_PROXY_CLIENT_IP=true` assumes the bundled web BFF is the only API caller;
+any replacement edge proxy must discard incoming forwarding headers and set the
+client IP header itself.
+
+```bash
+docker compose -f docker-compose.prod.yml up --build -d
+```
+
+The production Compose file runs API processes as non-root users, drops Linux
+capabilities, and rejects startup when required secrets are missing or unsafe.
+
 Create an account in the UI to receive three free, non-expiring uses. To grant a
 usage pack locally before online checkout is available:
 

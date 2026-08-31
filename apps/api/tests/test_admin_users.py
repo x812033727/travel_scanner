@@ -1,9 +1,12 @@
+from unittest.mock import AsyncMock
 from uuid import uuid4
 
 import pytest
 from httpx import ASGITransport, AsyncClient
 from pydantic import ValidationError
+from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.admin import users as admin_users
 from app.admin.user_schemas import AdminUsageAdjustment, AdminUserUpdate
 from app.admin.users import _can_adjust_usage, adjusted_usage_balance
 from app.auth.service import current_user
@@ -58,6 +61,52 @@ def test_admin_user_payloads_require_meaningful_changes() -> None:
         AdminUsageAdjustment(change=1, reason="   ")
     with pytest.raises(ValidationError):
         AdminUserUpdate()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(("initial", "updated"), [(True, False), (False, True)])
+async def test_changing_account_active_state_revokes_existing_sessions(
+    monkeypatch: pytest.MonkeyPatch, initial: bool, updated: bool
+) -> None:
+    user = User(
+        id=uuid4(),
+        email="target@example.com",
+        password_hash="unused",
+        is_active=initial,
+        is_admin=False,
+        auth_version=7,
+    )
+    actor = User(
+        id=uuid4(),
+        email="admin@example.com",
+        password_hash="unused",
+        is_active=True,
+        is_admin=True,
+    )
+    session = AsyncMock(spec=AsyncSession)
+    detail = object()
+    monkeypatch.setattr(
+        admin_users,
+        "_user_and_account",
+        AsyncMock(return_value=(user, None)),
+    )
+    monkeypatch.setattr(
+        admin_users,
+        "admin_user_detail",
+        AsyncMock(return_value=detail),
+    )
+
+    result = await admin_users.update_admin_user(
+        session,
+        user.id,
+        AdminUserUpdate(is_active=updated),
+        actor,
+    )
+
+    assert result is detail
+    assert user.is_active is updated
+    assert user.auth_version == 8
+    session.commit.assert_awaited_once()
 
 
 @pytest.mark.asyncio
