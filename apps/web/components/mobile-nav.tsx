@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 const links = [
   ["首頁", "/"],
+  ["熱門景點", "/hotspots"],
   ["我的旅程", "/trips"],
   ["價格通知", "/alerts"],
   ["航班動態", "/flights/status"],

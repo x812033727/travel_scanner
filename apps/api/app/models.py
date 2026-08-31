@@ -277,6 +277,83 @@ class TransportOfferRecord(Timestamped, Base):
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 
 
+class TravelHotspot(Timestamped, Base):
+    __tablename__ = "travel_hotspots"
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    slug: Mapped[str] = mapped_column(String(128), unique=True, index=True)
+    name: Mapped[str] = mapped_column(String(255), index=True)
+    city_code: Mapped[str] = mapped_column(String(8), index=True)
+    city_name: Mapped[str] = mapped_column(String(100))
+    country_code: Mapped[str] = mapped_column(String(2), index=True)
+    country_name: Mapped[str] = mapped_column(String(100))
+    category: Mapped[str] = mapped_column(String(32), index=True)
+    search_text: Mapped[str] = mapped_column(Text)
+    latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    wikipedia_project: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    wikipedia_title: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    google_place_id: Mapped[str | None] = mapped_column(String(255), nullable=True, index=True)
+    source_urls: Mapped[list[str]] = mapped_column(JSON, default=list)
+    metadata_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+
+
+class HotspotSignal(Base):
+    __tablename__ = "hotspot_signals"
+    __table_args__ = (
+        UniqueConstraint(
+            "hotspot_id",
+            "source",
+            "metric",
+            "observed_on",
+            name="uq_hotspot_signal_observation",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    hotspot_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="CASCADE"), index=True
+    )
+    source: Mapped[str] = mapped_column(String(64), index=True)
+    metric: Mapped[str] = mapped_column(String(64), index=True)
+    value: Mapped[Decimal] = mapped_column(Numeric(18, 4))
+    observed_on: Mapped[date] = mapped_column(Date, index=True)
+    window_days: Mapped[int] = mapped_column(Integer, default=30)
+    source_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+    is_estimate: Mapped[bool] = mapped_column(Boolean, default=False)
+    metadata_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    captured_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class HotspotRanking(Base):
+    __tablename__ = "hotspot_rankings"
+    __table_args__ = (
+        UniqueConstraint(
+            "hotspot_id",
+            "scope",
+            "scope_key",
+            "window_days",
+            "observed_on",
+            name="uq_hotspot_ranking_snapshot",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    hotspot_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="CASCADE"), index=True
+    )
+    scope: Mapped[str] = mapped_column(String(16), index=True)
+    scope_key: Mapped[str] = mapped_column(String(32), index=True)
+    window_days: Mapped[int] = mapped_column(Integer, default=30)
+    rank: Mapped[int] = mapped_column(Integer)
+    score: Mapped[Decimal] = mapped_column(Numeric(6, 2))
+    interest_score: Mapped[Decimal] = mapped_column(Numeric(6, 2))
+    growth_score: Mapped[Decimal] = mapped_column(Numeric(6, 2))
+    quality_score: Mapped[Decimal] = mapped_column(Numeric(6, 2))
+    confidence_score: Mapped[Decimal] = mapped_column(Numeric(6, 2))
+    observed_on: Mapped[date] = mapped_column(Date, index=True)
+    explanation: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    computed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
 class TripPlan(Timestamped, Base):
     __tablename__ = "trip_plans"
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)

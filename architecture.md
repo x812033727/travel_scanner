@@ -15,10 +15,17 @@ Browser -> Next.js BFF -> FastAPI -> Search Orchestrator -> Provider adapters
 ```
 
 The API is organized by product modules (`auth`, `usage`, `search`, `providers`,
-`pricing`, `optimization`, `trips`, `alerts`, and `ai`). PostgreSQL is the source
-of truth. Redis is used for queues, short-lived caching, streams, rate limiting,
+`pricing`, `optimization`, `trips`, `alerts`, `hotspots`, and `ai`). PostgreSQL is
+the source of truth. Redis is used for queues, short-lived caching, streams, rate limiting,
 and circuit-breaker state. Provider-specific payloads never escape the adapter
 layer.
+
+The `hotspots` module is a separate, public planning-intelligence surface. A
+scheduled collector stores a stable attraction catalog, aggregate source
+observations, and explainable global and per-city ranking snapshots. It exposes
+compact, source-labelled candidates to itinerary planning; popularity never
+bypasses opening-hour, route, date, or traveler-preference checks. Restricted
+provider content is not copied into this durable ranking store.
 
 Provider selection is module-specific. Flights choose Skyscanner, Amadeus or
 mock through `FLIGHT_PROVIDER_MODE`, while lodging, activities and transport

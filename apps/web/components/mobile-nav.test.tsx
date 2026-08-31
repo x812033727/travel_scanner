@@ -15,6 +15,7 @@ describe("MobileNav", () => {
     fireEvent.click(trigger);
     expect(screen.getByRole("navigation", { name: "手機主要導覽" })).toBeTruthy();
     expect(screen.getByRole("link", { name: "我的旅程" }).getAttribute("href")).toBe("/trips");
+    expect(screen.getByRole("link", { name: "熱門景點" }).getAttribute("href")).toBe("/hotspots");
     expect(screen.getByRole("link", { name: "價格通知" }).getAttribute("href")).toBe("/alerts");
     expect(screen.getByRole("link", { name: "會員帳號" }).getAttribute("href")).toBe("/account");
     fireEvent.keyDown(window, { key: "Escape" });
