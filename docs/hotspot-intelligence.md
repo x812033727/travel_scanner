@@ -41,6 +41,17 @@ responses expose the component scores, sources, signal date and whether the resu
 `HOTSPOT_COLLECTION_INTERVAL_SECONDS` (six hours by default). Daily Wikimedia observations are
 idempotent, so multiple runs refresh the same dated signal and ranking snapshot.
 
+In `docker-compose.prod.yml` the collector sits behind the `hotspots` compose profile, so it is
+opt-in — it reaches out to the Wikimedia API on a schedule, which not every deployment wants. Start
+it alongside the rest of the stack with:
+
+```bash
+docker compose -f docker-compose.prod.yml --profile hotspots up -d
+```
+
+Without the profile the other services start as usual and the hotspot API surfaces keep serving the
+curated catalog and whatever signals were collected previously.
+
 Run a collection manually:
 
 ```bash

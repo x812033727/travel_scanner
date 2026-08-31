@@ -265,6 +265,10 @@ identities, collects the latest and preceding 30-day Wikimedia pageview totals, 
 explainable global and per-city ranking snapshots. Cold-start values remain visibly marked as
 estimates rather than live popularity.
 
+The collector is opt-in in production: it sits behind the `hotspots` compose profile, so start it
+with `docker compose -f docker-compose.prod.yml --profile hotspots up -d`. See
+`docs/hotspot-intelligence.md`.
+
 The API exposes `/api/v1/hotspots/rankings`, `/api/v1/hotspots/sources`, and the compact
 `/api/v1/hotspots/for-planner` feed. The last endpoint is intended for AI itinerary candidate
 selection; route feasibility, opening hours and traveler preferences still decide the final plan.
