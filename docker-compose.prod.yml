@@ -63,6 +63,7 @@ services:
 
   hotspot-collector:
     build: ./apps/api
+    profiles: ["hotspots"]
     restart: unless-stopped
     env_file: .env
     environment:
