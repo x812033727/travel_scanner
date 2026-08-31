@@ -12,6 +12,7 @@ class AdminUserSummary(BaseModel):
     effective_is_admin: bool
     admin_source: str
     is_self: bool
+    can_adjust_usage: bool
     remaining_uses: int
     reserved_uses: int
     available_uses: int
