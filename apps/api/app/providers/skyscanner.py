@@ -11,6 +11,7 @@ from redis.asyncio import Redis
 
 from app.config import Settings, get_settings
 from app.providers.base import FlightSearchBatch, FlightSearchState
+from app.providers.flight_keys import itinerary_key_from_segments
 from app.providers.schemas import (
     ActionKind,
     FlightDateOption,
@@ -39,11 +40,7 @@ def _indexed(value: object) -> dict[str, dict[str, Any]]:
             for key, item in value.items()
             if isinstance(item, dict)
         }
-    return {
-        str(item.get("id")): item
-        for item in _items(value)
-        if item.get("id") is not None
-    }
+    return {str(item.get("id")): item for item in _items(value) if item.get("id") is not None}
 
 
 def _decimal(value: object) -> Decimal:
@@ -336,9 +333,7 @@ class SkyscannerProvider:
                         raw_departure = segment.get("departureDateTime") or leg.get(
                             "departureDateTime"
                         )
-                        raw_arrival = segment.get("arrivalDateTime") or leg.get(
-                            "arrivalDateTime"
-                        )
+                        raw_arrival = segment.get("arrivalDateTime") or leg.get("arrivalDateTime")
                         flat_segments.append(
                             FlightSegment(
                                 origin=str(origin_place.get("iata") or origin_id),
@@ -398,6 +393,7 @@ class SkyscannerProvider:
                     action_kind=ActionKind.NONE if estimate else ActionKind.DEEP_LINK,
                     attributions=["Skyscanner"],
                     attribution_urls=[SKYSCANNER_ATTRIBUTION_URL],
+                    itinerary_key=itinerary_key_from_segments(flat_segments, cabin_class),
                     origin=outbound_segments[0].origin,
                     destination=outbound_segments[-1].destination,
                     departure_time=departure,
@@ -429,6 +425,11 @@ class SkyscannerProvider:
                     last_verified_at=now,
                     clickout_available=bool(link),
                     arrival_day_offset=(arrival.date() - departure.date()).days,
+                    original_currency=self.settings.skyscanner_currency,
+                    original_total_price=price,
+                    exchange_rate=Decimal(1),
+                    exchange_rate_retrieved_at=now,
+                    verification_method="skyscanner_itinerary_refresh",
                 )
                 normalized.append(offer)
                 await self.redis.set(
@@ -437,6 +438,7 @@ class SkyscannerProvider:
                         {
                             "session_id": session_id,
                             "provider_offer_id": provider_id,
+                            "itinerary_id": itinerary_id,
                             "clickout": link,
                         }
                     ),
@@ -496,9 +498,7 @@ class SkyscannerProvider:
                 outbound_leg = cast(dict[str, Any], quote.get("outboundLeg", {}))
                 inbound_leg = cast(dict[str, Any], quote.get("inboundLeg", {}))
                 quote_outbound = _date(outbound_leg.get("departureDateTime"))
-                quote_inbound = (
-                    _date(inbound_leg.get("departureDateTime")) if inbound_leg else None
-                )
+                quote_inbound = _date(inbound_leg.get("departureDateTime")) if inbound_leg else None
                 key = (quote_outbound, quote_inbound) if quote_outbound else None
                 if key is None or key not in requested:
                     continue
@@ -520,9 +520,7 @@ class SkyscannerProvider:
         return sorted(collected.values(), key=lambda item: item.shift_days)
 
     async def poll_search(self, session_id: str) -> FlightSearchBatch:
-        payload = await self._send(
-            f"/apiservices/v3/flights/live/search/poll/{session_id}", {}
-        )
+        payload = await self._send(f"/apiservices/v3/flights/live/search/poll/{session_id}", {})
         raw = await self.redis.get(f"provider:skyscanner:session:{session_id}")
         metadata = json.loads(raw.decode() if isinstance(raw, bytes) else str(raw)) if raw else {}
         return FlightSearchBatch(
@@ -562,15 +560,36 @@ class SkyscannerProvider:
                 refreshed_at=datetime.now(UTC),
             )
         meta = json.loads(raw.decode() if isinstance(raw, bytes) else str(raw))
-        batch = await self.poll_search(str(meta["session_id"]))
-        refreshed = next(
-            (
-                item
-                for item in batch.offers
-                if item.provider_offer_id == offer.provider_offer_id
-            ),
-            None,
+        created = await self._send(
+            f"/apiservices/v3/flights/live/itineraryrefresh/create/{meta['session_id']}",
+            {"itineraryId": meta["itinerary_id"]},
         )
+        token = str(created.get("refreshToken") or created.get("sessionToken") or "")
+        if not token:
+            refreshed = None
+        else:
+            payload = created
+            for _ in range(self.settings.skyscanner_poll_attempts):
+                if self._state(payload) == FlightSearchState.COMPLETE:
+                    break
+                await asyncio.sleep(self.settings.skyscanner_poll_interval_seconds)
+                payload = await self._send(
+                    f"/apiservices/v3/flights/live/itineraryrefresh/poll/{token}", {}
+                )
+            candidates = await self._offers(
+                payload,
+                str(meta["session_id"]),
+                cabin_class=offer.cabin_class,
+            )
+            refreshed = next(
+                (
+                    item
+                    for item in candidates
+                    if item.provider_offer_id == offer.provider_offer_id
+                    or item.itinerary_key == offer.itinerary_key
+                ),
+                None,
+            )
         return OfferRefreshResult(
             offer_id=offer.id,
             old_price=old_price,

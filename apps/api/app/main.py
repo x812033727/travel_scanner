@@ -13,6 +13,7 @@ from app.auth.router import router as auth_router
 from app.config import get_settings
 from app.crawlers.router import router as crawlers_router
 from app.db import engine
+from app.flights.router import router as flight_status_router
 from app.infra import get_redis
 from app.middleware import RequestContextMiddleware
 from app.places.router import public_router as public_places_router
@@ -45,6 +46,7 @@ app.include_router(runtime_router, prefix="/api/v1")
 app.include_router(affiliates_router, prefix="/api/v1")
 app.include_router(usage_router, prefix="/api/v1")
 app.include_router(search_router, prefix="/api/v1")
+app.include_router(flight_status_router, prefix="/api/v1")
 app.include_router(trips_router, prefix="/api/v1")
 app.include_router(public_trips_router, prefix="/api/v1")
 app.include_router(alerts_router, prefix="/api/v1")

@@ -7,6 +7,7 @@ from app.config import Settings, get_settings
 from app.providers.amadeus import AmadeusProvider
 from app.providers.base import FlightProvider, HotelProvider, TravelProvider
 from app.providers.booking import BookingHotelProvider
+from app.providers.duffel import DuffelProvider
 from app.providers.mock import MockProvider
 from app.providers.skyscanner import SkyscannerProvider
 
@@ -23,6 +24,8 @@ class ModuleProviderStatus(BaseModel):
     fallback_provider: str | None = None
     environment: str
     message: str
+    candidate_providers: list[str] = Field(default_factory=list)
+    strategy: str | None = None
 
     @property
     def provider(self) -> str:
@@ -73,9 +76,12 @@ def _amadeus_status(config: Settings, module: str) -> ModuleProviderStatus:
         "transport": "Amadeus 接送搜尋",
     }
     label = labels[module]
+    configured = config.amadeus_configured and not (
+        config.production and config.amadeus_env.lower() != "production"
+    )
     return _status(
         "amadeus",
-        configured=config.amadeus_configured,
+        configured=configured,
         mode="live" if config.amadeus_env.lower() == "production" else "test",
         environment=config.amadeus_env.lower(),
         ready_message=f"{label}已啟用。",
@@ -100,26 +106,59 @@ def flight_provider_status(settings: Settings | None = None) -> ModuleProviderSt
     config = settings or get_settings()
     requested = config.flight_provider_mode.lower()
     if requested == "auto":
+        candidates = []
         if config.skyscanner_configured:
-            requested = "skyscanner"
-        elif config.amadeus_configured:
-            requested = "amadeus"
+            candidates.append("skyscanner")
+        if config.duffel_configured and not (
+            config.production and config.duffel_env.lower() != "live"
+        ):
+            candidates.append("duffel")
+        if config.amadeus_configured and not (
+            config.production and config.amadeus_env.lower() != "production"
+        ):
+            candidates.append("amadeus")
+        if candidates:
+            requested = candidates[0]
         elif config.travel_provider_mode.lower() == "mock" and not config.production:
-            requested = "mock"
+            requested, candidates = "mock", ["mock"]
         else:
-            requested = "disabled"
+            requested, candidates = "disabled", []
+    else:
+        candidates = [requested] if requested != "disabled" else []
     if requested == "skyscanner":
-        return _status(
+        result = _status(
             "skyscanner",
             configured=config.skyscanner_configured,
             mode="live",
             environment="production",
             ready_message="Skyscanner 即時航班比價已啟用。",
             missing_message="航班即時比價尚未啟用：缺少 Skyscanner API key。",
-            fallback_provider="amadeus" if config.amadeus_configured else None,
+            fallback_provider=candidates[1] if len(candidates) > 1 else None,
         )
+        result.candidate_providers = candidates
+        result.strategy = config.flight_search_strategy
+        return result
+    if requested == "duffel":
+        configured = config.duffel_configured and not (
+            config.production and config.duffel_env.lower() != "live"
+        )
+        result = _status(
+            "duffel",
+            configured=configured,
+            mode="live" if config.duffel_env.lower() == "live" else "test",
+            environment=config.duffel_env.lower(),
+            ready_message="Duffel 航班報價已啟用。",
+            missing_message="Duffel 尚未啟用，或正式環境仍設定為 test。",
+            fallback_provider=candidates[1] if len(candidates) > 1 else None,
+        )
+        result.candidate_providers = candidates
+        result.strategy = config.flight_search_strategy
+        return result
     if requested in {"amadeus", "live"}:
-        return _amadeus_status(config, "flight")
+        result = _amadeus_status(config, "flight")
+        result.candidate_providers = candidates
+        result.strategy = config.flight_search_strategy
+        return result
     if requested == "mock":
         return _mock_status(config, "flight")
     return _status(
@@ -223,9 +262,7 @@ def provider_status(settings: Settings | None = None) -> ProviderStatus:
             module_statuses=statuses,
         )
     if ready:
-        summary = "、".join(
-            f"{module}={statuses[module].selected_provider}" for module in ready
-        )
+        summary = "、".join(f"{module}={statuses[module].selected_provider}" for module in ready)
         message = f"可用即時資料模組：{summary}。"
         overall: ProviderReadiness = "ready"
     else:
@@ -280,7 +317,13 @@ def build_flight_provider(
     selected = provider_name or flight_provider_status(config).selected_provider
     if selected == "skyscanner":
         return SkyscannerProvider(redis, config) if config.skyscanner_configured else None
+    if selected == "duffel":
+        if config.production and config.duffel_env.lower() != "live":
+            return None
+        return DuffelProvider(redis, config) if config.duffel_configured else None
     if selected == "amadeus":
+        if config.production and config.amadeus_env.lower() != "production":
+            return None
         return AmadeusProvider(redis, config) if config.amadeus_configured else None
     if selected == "mock":
         return MockProvider() if not config.production else None
@@ -324,12 +367,32 @@ def build_module_provider_candidates(
         "activities": [travel] if travel else [],
         "transport": [travel] if travel else [],
     }
+    if config.flight_provider_mode.lower() == "auto":
+        candidates["flight"] = []
+        if config.skyscanner_configured:
+            candidates["flight"].append(SkyscannerProvider(redis, config))
+        if config.duffel_configured and not (
+            config.production and config.duffel_env.lower() != "live"
+        ):
+            candidates["flight"].append(DuffelProvider(redis, config))
+        if config.amadeus_configured and not (
+            config.production and config.amadeus_env.lower() != "production"
+        ):
+            candidates["flight"].append(AmadeusProvider(redis, config))
+        if (
+            not candidates["flight"]
+            and config.travel_provider_mode == "mock"
+            and not config.production
+        ):
+            candidates["flight"].append(MockProvider())
     for module in ("flight", "hotel"):
         primary = candidates[module][0] if candidates[module] else None
         if (
             primary is not None
             and getattr(primary, "name", None) != "amadeus"
             and config.amadeus_configured
+            and not (config.production and config.amadeus_env.lower() != "production")
+            and not any(getattr(item, "name", None) == "amadeus" for item in candidates[module])
         ):
             candidates[module].append(AmadeusProvider(redis, config))
     return candidates
