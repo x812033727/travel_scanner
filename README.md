@@ -135,6 +135,27 @@ Saved optimized plans include an editable day-by-day itinerary. Owners can
 update it with optimistic version checks, rotate or revoke a secret read-only
 share link, and keep provider-confirmed amounts separate from estimates.
 
+## Itinerary and transit planning
+
+`POST /api/v1/trips` accepts both saved search plans and `source=blank` trips.
+The planner supports structured Places selections, per-day ordering, fixed
+appointments, duration and notes, detailed transit steps, and read-only shared
+views. Fixed-order route calculation is free. Same-day itinerary optimization
+uses the existing auditable reservation flow and charges one use only after a
+usable order is applied.
+
+Google Routes is the global fallback. Set `GOOGLE_MAPS_API_KEY` for server-side
+Places and Routes calls and an origin-restricted
+`NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY` for the optional embedded planner map.
+Google provider responses are kept in short-lived Redis caches; durable trip
+records retain provider IDs and user-authored fields instead of raw payloads.
+
+Japan transit enhancement is optional. Set `NAVITIME_API_BASE_URL`,
+`NAVITIME_CLIENT_ID`, and `NAVITIME_API_KEY` only after obtaining the required
+commercial rights. When configured, sourced exit, platform, and recommended-car
+fields are displayed. Missing details are explicitly marked unavailable and are
+never inferred.
+
 ## Experimental public airline fares
 
 `POST /api/v1/crawlers/airlines/fares` reads public cached-fare pages for China

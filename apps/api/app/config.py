@@ -33,6 +33,10 @@ class Settings(BaseSettings):
     skyscanner_poll_attempts: int = Field(default=4, ge=1, le=10)
     skyscanner_poll_interval_seconds: float = Field(default=0.5, ge=0, le=5)
     google_maps_api_key: str | None = None
+    route_cache_ttl_seconds: int = Field(default=900, ge=60, le=86_400)
+    navitime_api_base_url: str | None = None
+    navitime_client_id: str | None = None
+    navitime_api_key: str | None = None
     next_public_site_url: str = "http://localhost:3000"
     airline_crawler_user_agent: str = (
         "TravelScannerBot/0.1 (+https://github.com/x812033727/travel_scanner)"
@@ -71,6 +75,12 @@ class Settings(BaseSettings):
     @property
     def production(self) -> bool:
         return self.app_env.lower() in {"production", "prod"}
+
+    @property
+    def navitime_configured(self) -> bool:
+        return bool(
+            self.navitime_api_base_url and self.navitime_client_id and self.navitime_api_key
+        )
 
 
 @lru_cache
