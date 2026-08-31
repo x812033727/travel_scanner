@@ -64,7 +64,7 @@ services:
       context: .
       dockerfile: apps/web/Dockerfile
       args:
-        NEXT_PUBLIC_SITE_URL: https://travelscanner.aibubu.cloud
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://mocair.io}
         NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY: ${NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY:-}
     restart: unless-stopped
     environment:
