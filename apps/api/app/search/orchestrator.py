@@ -21,10 +21,22 @@ from app.models import (
 )
 from app.optimization.engine import TripOptimizer
 from app.places.google import GoogleTravelService
-from app.providers.base import FlightProvider, FlightSearchState, TravelProvider
+from app.providers.base import (
+    FlexibleFlightProvider,
+    FlightProvider,
+    FlightSearchState,
+    TravelProvider,
+)
 from app.providers.registry import build_module_providers, provider_status
 from app.providers.runner import ProviderRunner, ProviderUnavailableError
-from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, Offer, TransportOffer
+from app.providers.schemas import (
+    ActivityOffer,
+    FlightDateOption,
+    FlightOffer,
+    HotelOffer,
+    Offer,
+    TransportOffer,
+)
 from app.search.events import publish_event
 from app.search.schemas import SearchCreate
 from app.usage.service import commit_reservation, release_reservation, usage_status
@@ -172,10 +184,13 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
         return
     results: dict[str, list[dict[str, Any]]] = {}
     warnings: list[str] = []
+    flex_warnings: list[str] = []
+    flight_date_options: list[FlightDateOption] = []
 
     async def collect(
         module: str,
     ) -> tuple[str, str, list[Offer], str | None, int, str, bool]:
+        nonlocal flight_date_options
         started = time.perf_counter()
         provider = providers.get(module)
         if provider is None:
@@ -255,6 +270,47 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                 )
             else:
                 offers = await run_module(provider, runner, module, query)
+            if module == "flight" and query.flex_days:
+                flexible: list[FlightDateOption] = []
+                if hasattr(provider, "search_flexible_dates"):
+                    try:
+                        flexible_provider = cast(FlexibleFlightProvider, provider)
+                        flexible = await flexible_provider.search_flexible_dates(
+                            query, query.flex_days
+                        )
+                    except (ConnectionError, ProviderUnavailableError):
+                        flex_warnings.append("彈性日期估價暫時無法取得，原日期班次仍可使用。")
+                else:
+                    flex_warnings.append("目前航班供應商不支援彈性日期估價。")
+                exact_flights = [item for item in offers if isinstance(item, FlightOffer)]
+                if exact_flights and query.departure_date:
+                    cheapest = min(exact_flights, key=lambda item: item.total_price)
+                    current = FlightDateOption(
+                        shift_days=0,
+                        departure_date=query.departure_date,
+                        return_date=query.return_date,
+                        lowest_price=cheapest.total_price,
+                        currency=cheapest.currency,
+                        provider=cheapest.provider,
+                        source_mode=cheapest.source_mode,
+                        is_current=True,
+                        offer_count=len(exact_flights),
+                    )
+                    flexible = [item for item in flexible if item.shift_days != 0]
+                    flexible.append(current)
+                flight_date_options = sorted(flexible, key=lambda item: item.shift_days)
+                if flight_date_options:
+                    await publish_event(
+                        redis,
+                        search_id,
+                        "flight.date_options",
+                        24,
+                        {
+                            "options": [
+                                item.model_dump(mode="json") for item in flight_date_options
+                            ]
+                        },
+                    )
             if module == "hotel" and place_service.configured:
                 hotels = [item for item in offers if isinstance(item, HotelOffer)]
                 offers = cast(list[Offer], await place_service.enrich_hotels(hotels))
@@ -322,6 +378,9 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                     progress,
                     {"module": module, "offers": serialized, "status": completion},
                 )
+        for warning in flex_warnings:
+            if warning not in warnings:
+                warnings.append(warning)
         await publish_event(
             redis,
             search_id,
@@ -330,7 +389,12 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
             {"module": module, "status": completion if not error else completion},
         )
         search.progress = progress
-        search.result_json = {"modules": results}
+        search.result_json = {
+            "modules": results,
+            "flight_date_options": [
+                item.model_dump(mode="json") for item in flight_date_options
+            ],
+        }
         search.warnings_json = warnings
         await session.commit()
 
@@ -347,10 +411,16 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
             )
         plans = [plan.model_dump(mode="json") for plan in optimized]
         await publish_event(redis, search_id, "optimization.completed", 90, {"plans": plans})
-    has_usable_result = any(results.values()) or bool(plans)
+    has_usable_result = any(results.values()) or bool(plans) or bool(flight_date_options)
     search.status = "completed" if has_usable_result else "failed"
     search.progress = 100
-    search.result_json = {"modules": results, "plans": plans}
+    search.result_json = {
+        "modules": results,
+        "plans": plans,
+        "flight_date_options": [
+            item.model_dump(mode="json") for item in flight_date_options
+        ],
+    }
     search.warnings_json = warnings
     if job:
         job.status = search.status

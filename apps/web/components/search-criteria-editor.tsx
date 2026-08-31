@@ -8,6 +8,7 @@ export type EditableSearchCriteria = {
   origin?: string;
   departure_date?: string;
   return_date?: string;
+  flex_days?: 0 | 3 | 7;
   travelers: { adults: number; children?: number; rooms?: number };
   budget_twd?: number;
   interests: string[];
@@ -29,6 +30,7 @@ export type CriteriaUpdate = {
   origin: string;
   departureDate: string;
   returnDate: string;
+  flexDays: 0 | 3 | 7;
   adults: number;
   children: number;
   rooms: number;
@@ -98,6 +100,7 @@ export function SearchCriteriaEditor({
       origin: String(form.get("origin") || "TPE"),
       departureDate,
       returnDate,
+      flexDays: Number(form.get("flex_days") || 0) as CriteriaUpdate["flexDays"],
       adults: Number(form.get("adults") || 1),
       children: Number(form.get("children") || 0),
       rooms: Number(form.get("rooms") || 1),
@@ -138,7 +141,7 @@ export function SearchCriteriaEditor({
 
       {open && (
         <form aria-label="修改搜尋條件" onSubmit={submit} className="mt-4 rounded-2xl bg-[var(--paper)] p-4">
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             <label className="text-sm font-semibold">出發機場
               <select name="origin" defaultValue={criteria.origin || "TPE"} className={fieldClass}>
                 <option value="TPE">桃園 TPE</option>
@@ -160,6 +163,11 @@ export function SearchCriteriaEditor({
             </label>
             <label className="text-sm font-semibold">回程日期
               <input required type="date" name="return_date" defaultValue={dates[1]} className={fieldClass} />
+            </label>
+            <label className="text-sm font-semibold">日期彈性
+              <select name="flex_days" defaultValue={criteria.flex_days || 0} className={fieldClass}>
+                <option value="0">指定日期</option><option value="3">彈性 ±3 日</option><option value="7">彈性 ±7 日</option>
+              </select>
             </label>
           </div>
 

@@ -77,7 +77,7 @@ class MockProvider:
     async def search_flights(self, query: SearchCreate) -> list[FlightOffer]:
         await self._wait("flight")
         rng = random.Random(query_seed(query, "flight"))
-        origin, destination, departure, _ = route(query)
+        origin, destination, departure, returning = route(query)
         now = datetime.now(UTC)
         airlines = [("星宇航空", "JX"), ("中華航空", "CI"), ("長榮航空", "BR"), ("樂桃航空", "MM")]
         offers: list[FlightOffer] = []
@@ -90,6 +90,8 @@ class MockProvider:
             fees, baggage = Decimal(350 if index == 3 else 0), Decimal(950 if index == 3 else 0)
             offer_id = stable_id(f"flight:{query_seed(query, 'flight')}:{index}")
             arrival = depart_at + timedelta(minutes=duration)
+            return_departure = returning.replace(hour=[8, 12, 15, 20][index])
+            return_arrival = return_departure + timedelta(minutes=duration)
             offer = FlightOffer(
                 id=offer_id,
                 provider=self.name,
@@ -110,7 +112,21 @@ class MockProvider:
                         arrival_time=arrival,
                         airline=airline,
                         flight_number=f"{code}{100 + index * 17}",
-                    )
+                        leg_index=0,
+                        departure_timezone="UTC+08:00",
+                        arrival_timezone="UTC+09:00",
+                    ),
+                    FlightSegment(
+                        origin=destination,
+                        destination=origin,
+                        departure_time=return_departure,
+                        arrival_time=return_arrival,
+                        airline=airline,
+                        flight_number=f"{code}{101 + index * 17}",
+                        leg_index=1,
+                        departure_timezone="UTC+09:00",
+                        arrival_timezone="UTC+08:00",
+                    ),
                 ],
                 airline=airline,
                 flight_number=f"{code}{100 + index * 17}",
@@ -124,6 +140,8 @@ class MockProvider:
                 checked_baggage_kg=0 if index == 3 else 23,
                 refundable=index in (1, 2),
                 changeable=index != 3,
+                return_departure_time=return_departure,
+                return_arrival_time=return_arrival,
                 marketing_airline=airline,
                 operating_airlines=[airline],
                 baggage_summary=("含手提行李" if index == 3 else "含 23 kg 托運行李"),

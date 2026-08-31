@@ -53,6 +53,15 @@ def parse_datetime(value: object, fallback: datetime | None = None) -> datetime:
     return fallback or datetime.now(UTC)
 
 
+def timezone_label(value: object) -> str | None:
+    if not isinstance(value, str):
+        return None
+    parsed = value.replace("Z", "+00:00")
+    if len(parsed) >= 6 and parsed[-6] in {"+", "-"}:
+        return f"UTC{parsed[-6:]}"
+    return "供應商當地時間"
+
+
 def duration_minutes(value: object, default: int = 120) -> int:
     if isinstance(value, int | float):
         return max(1, int(value))
@@ -225,19 +234,24 @@ class AmadeusProvider:
                 continue
             flat_segments: list[FlightSegment] = []
             raw_segments: list[dict[str, Any]] = []
-            for itinerary in itineraries:
+            for leg_index, itinerary in enumerate(itineraries):
                 for segment in cast(list[dict[str, Any]], itinerary.get("segments", [])):
                     departure_data = cast(dict[str, Any], segment.get("departure", {}))
                     arrival_data = cast(dict[str, Any], segment.get("arrival", {}))
                     carrier = str(segment.get("carrierCode") or "")
+                    raw_departure = departure_data.get("at")
+                    raw_arrival = arrival_data.get("at")
                     flat_segments.append(
                         FlightSegment(
                             origin=str(departure_data.get("iataCode") or origin),
                             destination=str(arrival_data.get("iataCode") or destination),
-                            departure_time=parse_datetime(departure_data.get("at")),
-                            arrival_time=parse_datetime(arrival_data.get("at")),
+                            departure_time=parse_datetime(raw_departure),
+                            arrival_time=parse_datetime(raw_arrival),
                             airline=carriers.get(carrier, carrier),
                             flight_number=f"{carrier}{segment.get('number') or ''}",
+                            leg_index=leg_index,
+                            departure_timezone=timezone_label(raw_departure),
+                            arrival_timezone=timezone_label(raw_arrival),
                         )
                     )
                     raw_segments.append(segment)

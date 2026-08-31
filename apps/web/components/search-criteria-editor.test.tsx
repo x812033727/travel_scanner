@@ -31,12 +31,14 @@ describe("SearchCriteriaEditor", () => {
 
     fireEvent.change(screen.getByLabelText("回程日期"), { target: { value: "2026-11-16" } });
     fireEvent.change(screen.getByLabelText("總預算 TWD"), { target: { value: "85000" } });
+    fireEvent.change(screen.getByLabelText("日期彈性"), { target: { value: "7" } });
     fireEvent.click(screen.getByRole("button", { name: "海灘／跳島" }));
     fireEvent.click(screen.getByRole("button", { name: "套用並重新規劃" }));
 
     expect(onApply).toHaveBeenCalledWith(expect.objectContaining({
       budget: 85_000,
       returnDate: "2026-11-16",
+      flexDays: 7,
       interests: ["food", "beach"],
       preferredArea: "普吉老城",
       includeAirbnb: true,

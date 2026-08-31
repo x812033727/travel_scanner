@@ -17,6 +17,14 @@ const offer: FlightCardOffer = {
   selling_agent: "測試售票平台",
   origin: "TPE",
   destination: "NRT",
+  departure_time: "2026-11-10T08:00:00+08:00",
+  arrival_time: "2026-11-10T12:00:00+09:00",
+  return_departure_time: "2026-11-15T13:00:00+09:00",
+  return_arrival_time: "2026-11-15T16:00:00+08:00",
+  segments: [
+    { origin: "TPE", destination: "NRT", departure_time: "2026-11-10T08:00:00+08:00", arrival_time: "2026-11-10T12:00:00+09:00", airline: "星宇航空", flight_number: "JX800", leg_index: 0 },
+    { origin: "NRT", destination: "TPE", departure_time: "2026-11-15T13:00:00+09:00", arrival_time: "2026-11-15T16:00:00+08:00", airline: "星宇航空", flight_number: "JX801", leg_index: 1 },
+  ],
   total_price: 15000,
   clickout_available: true,
   checked_baggage_kg: 23,
@@ -34,10 +42,21 @@ describe("FlightOfferCard", () => {
     expect(screen.getByText(/實際承運：星宇航空/)).toBeTruthy();
     expect(screen.getByText(/售票端：測試售票平台/)).toBeTruthy();
     expect(screen.getByText(/托運 23 kg/)).toBeTruthy();
+    expect(screen.getByText("08:00")).toBeTruthy();
+    expect(screen.getByText("12:00")).toBeTruthy();
+    expect(screen.getByText("13:00")).toBeTruthy();
+    expect(screen.getByText("16:00")).toBeTruthy();
     expect(screen.getByText(/Powered by/)).toBeTruthy();
     expect(container.querySelector("form")?.getAttribute("action")).toBe(
       "/api/travel/offers/flight-1/clickout",
     );
+  });
+
+  it("expands outbound and return flight numbers without inventing missing data", () => {
+    render(<FlightOfferCard offer={offer} fallbackUrl="https://example.test/recheck" />);
+    fireEvent.click(screen.getByRole("button", { name: "查看詳細班次" }));
+    expect(screen.getAllByText(/JX800/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/JX801/).length).toBeGreaterThan(0);
   });
 
   it("refreshes a persisted offer through the BFF", async () => {
