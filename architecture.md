@@ -27,6 +27,21 @@ compact, source-labelled candidates to itinerary planning; popularity never
 bypasses opening-hour, route, date, or traveler-preference checks. Restricted
 provider content is not copied into this durable ranking store.
 
+Blank-trip planning is separate from price search. `trips` builds a privacy-
+filtered `AIItineraryRequest` and invokes the provider-neutral planner in `ai`.
+OpenAI and MiniMax use Responses JSON Schema output; Anthropic uses Messages
+structured output. The planner normalizes dates, counts, safe time slots, and
+durations server-side, then fills missing or invalid coverage from the
+destination catalog. Optional Google Places enrichment happens after this
+validation, so a Places outage cannot erase the itinerary.
+
+Initial planning is free and persisted with the trip in one transaction. AI
+regeneration uses the usage reservation ledger and optimistic trip version.
+Only unlocked `generated_by=ai_planner` rows are replaceable; manual, provider,
+locked, and fixed-time rows are copied into the AI context without database IDs
+and preserved in storage. Live AI commits one use after the replacement is
+saved, while catalog fallback or failure releases the reservation.
+
 Provider selection is module-specific. Flights choose Skyscanner, Amadeus or
 mock through `FLIGHT_PROVIDER_MODE`, while lodging, activities and transport
 retain their existing travel provider. Skyscanner uses create/poll batches that

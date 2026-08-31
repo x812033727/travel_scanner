@@ -27,6 +27,7 @@ from app.admin.schemas import (
     PublicRuntimeConfig,
     SecretState,
 )
+from app.ai.itinerary import AIItineraryPlanner, AIItineraryRequest
 from app.config import Settings, get_settings
 from app.models import AdminAuditLog, ProviderConfig, ProviderRequest, User
 from app.places.google import GoogleTravelService
@@ -38,7 +39,7 @@ from app.providers.flightaware import FlightAwareProvider
 from app.providers.google_travel_impact import GoogleTravelImpactProvider
 from app.providers.skyscanner import SkyscannerProvider
 from app.providers.usage_meter import google_maps_usage_snapshot
-from app.search.schemas import SearchCreate, SearchModule
+from app.search.schemas import SearchCreate, SearchModule, SearchPreferences, Travelers
 from app.trips.routing import (
     GoogleRouteProvider,
     NavitimeRouteProvider,
@@ -70,6 +71,25 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "provider_circuit_seconds",
         ),
         (),
+    ),
+    "ai_planner": ProviderDefinition(
+        "AI 行程規劃",
+        "由後台選擇 OpenAI／ChatGPT、Claude、MiniMax 或內建備援，金鑰只在伺服器端加密保存。",
+        (
+            "ai_planner_mode",
+            "ai_planner_priority",
+            "ai_planner_timeout_seconds",
+            "ai_planner_total_timeout_seconds",
+            "ai_planner_max_output_tokens",
+            "openai_api_base_url",
+            "openai_model",
+            "anthropic_api_base_url",
+            "anthropic_model",
+            "minimax_api_base_url",
+            "minimax_model",
+        ),
+        ("openai_api_key", "anthropic_api_key", "minimax_api_key"),
+        "ai_planner_enabled",
     ),
     "google_maps": ProviderDefinition(
         "Google Maps",
@@ -302,6 +322,26 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
                 f"目前航空：{flight.selected_provider}（{flight.status}）；"
                 f"飯店：{hotel.selected_provider}（{hotel.status}）"
             ),
+        )
+    if provider == "ai_planner":
+        configured_names = [
+            label
+            for value, label in (
+                (settings.openai_api_key, "OpenAI"),
+                (settings.anthropic_api_key, "Claude"),
+                (settings.minimax_api_key, "MiniMax"),
+            )
+            if value
+        ]
+        if settings.ai_planner_mode in {"fallback", "disabled"}:
+            return True, "ready", "目前使用內建備援草稿"
+        configured = bool(configured_names)
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            f"已設定：{'、'.join(configured_names)}"
+            if configured
+            else "尚未設定真實 AI 金鑰，建立行程時會使用內建備援",
         )
     if provider == "google_maps":
         configured = bool(settings.google_maps_api_key)
@@ -581,6 +621,14 @@ def _validate_provider_values(
         "amadeus_env": {"test", "production"},
         "duffel_env": {"test", "live"},
         "booking_demand_env": {"sandbox", "production"},
+        "ai_planner_mode": {
+            "auto",
+            "openai",
+            "anthropic",
+            "minimax",
+            "fallback",
+            "disabled",
+        },
     }
     for field, allowed in modes.items():
         if field in merged and str(merged[field]).lower() not in allowed:
@@ -614,6 +662,30 @@ def _validate_provider_values(
                 422,
                 "provider_setting_invalid",
                 "Travelpayouts API Base URL 必須使用官方 api.travelpayouts.com",
+            )
+    official_ai_hosts = {
+        "openai_api_base_url": {"api.openai.com"},
+        "anthropic_api_base_url": {"api.anthropic.com"},
+        "minimax_api_base_url": {"api.minimaxi.com", "api.minimax.io"},
+    }
+    for field, allowed_hosts in official_ai_hosts.items():
+        if field in merged and urlparse(str(merged[field])).hostname not in allowed_hosts:
+            raise AppError(
+                422,
+                "provider_setting_invalid",
+                f"{field} 必須使用官方 API 網域",
+            )
+    if "ai_planner_priority" in merged:
+        priority = [item.strip().lower() for item in str(merged["ai_planner_priority"]).split(",")]
+        if (
+            not priority
+            or len(priority) != len(set(priority))
+            or any(item not in {"openai", "anthropic", "minimax"} for item in priority)
+        ):
+            raise AppError(
+                422,
+                "provider_setting_invalid",
+                "AI 備援順序只能使用不重複的 openai、anthropic、minimax",
             )
     if "skyscanner_market" in merged:
         merged["skyscanner_market"] = str(merged["skyscanner_market"]).upper()
@@ -751,6 +823,21 @@ async def _test_google(settings: Settings, redis: Redis) -> str:
 
 
 async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str:
+    if provider == "ai_planner":
+        request = AIItineraryRequest(
+            destination_name="東京",
+            start_date=date.today() + timedelta(days=45),
+            end_date=date.today() + timedelta(days=45),
+            timezone="Asia/Tokyo",
+            route_preference="FEWER_TRANSFERS",
+            travelers=Travelers(adults=1),
+            preferences=SearchPreferences(interests=["culture"]),
+            notes="連線測試",
+        )
+        result = await AIItineraryPlanner(settings).generate(request)
+        if result.planning.provider == "catalog":
+            raise ConnectionError("沒有任何真實 AI 供應商成功回傳結構化行程")
+        return f"{result.planning.provider} / {result.planning.model} 結構化行程驗證成功"
     if provider == "google_maps":
         return await _test_google(settings, redis)
     if provider == "amadeus":

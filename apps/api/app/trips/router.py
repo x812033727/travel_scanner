@@ -7,12 +7,14 @@ from decimal import Decimal
 from typing import Annotated, Any, cast
 from uuid import UUID, uuid4, uuid5
 
+import httpx
 from fastapi import APIRouter, Depends, Header
 from pydantic import BaseModel, Field, model_validator
 from sqlalchemy import delete, func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.ai.itinerary import AIItineraryPlanner, AIItineraryRequest, AIPlanningResult
 from app.auth.service import CurrentUser
 from app.config import Settings, get_settings
 from app.db import get_session
@@ -22,6 +24,7 @@ from app.models import (
     TripPlan,
     TripPlanItem,
     TripShare,
+    UsageReservation,
 )
 from app.optimization.engine import TripOptimizer, TripPlanResult
 from app.places.google import GoogleTravelService
@@ -140,6 +143,10 @@ class ItineraryUpdateRequest(BaseModel):
             if item.start_time and item.end_time and item.end_time <= item.start_time:
                 raise ValueError("end_time must be after start_time")
         return self
+
+
+class ItineraryGenerateRequest(BaseModel):
+    version: int = Field(ge=1)
 
 
 class RouteComputeRequest(BaseModel):
@@ -280,6 +287,7 @@ async def serialize_trip(
         "total_price": trip.total_price,
         "currency": trip.currency,
         "data": trip.data,
+        "planning": trip.data.get("planning"),
         "version": trip.version,
         "destination_name": trip.destination_name,
         "destination_place_id": trip.destination_place_id,
@@ -302,6 +310,94 @@ async def owned_trip(session: AsyncSession, user_id: UUID, trip_id: UUID) -> Tri
     if trip is None:
         raise AppError(404, "trip_not_found", "找不到這個已儲存旅程")
     return trip
+
+
+def _planning_request(
+    *,
+    destination_name: str,
+    start_date: date,
+    end_date: date,
+    timezone: str,
+    route_preference: str,
+    travelers: Travelers,
+    preferences: SearchPreferences,
+    notes: str | None,
+    preserved_items: list[TripPlanItem] | None = None,
+) -> AIItineraryRequest:
+    return AIItineraryRequest(
+        destination_name=destination_name,
+        start_date=start_date,
+        end_date=end_date,
+        timezone=timezone,
+        route_preference=route_preference,
+        travelers=travelers,
+        preferences=preferences,
+        notes=notes,
+        preserved_items=[
+            {
+                "date": item.day_date.isoformat() if item.day_date else None,
+                "title": item.title,
+                "location": item.location_name,
+                "start_time": item.start_time.isoformat() if item.start_time else None,
+                "duration_minutes": item.duration_minutes,
+                "locked": item.locked,
+                "fixed_time": item.fixed_time,
+            }
+            for item in (preserved_items or [])
+        ],
+    )
+
+
+async def _enrich_ai_places(
+    planning: AIPlanningResult,
+    service: GoogleTravelService,
+) -> None:
+    if not service.configured:
+        return
+    suggestions = [
+        item for day in planning.itinerary for item in day.items if item.item_type == "suggestion"
+    ][:24]
+    semaphore = asyncio.Semaphore(4)
+
+    async def resolve(item: ItineraryItem) -> bool:
+        async with semaphore:
+            place = await service.search_place(item.location_name or item.title, None, None)
+        if not place:
+            item.data = {**item.data, "places_status": "unavailable"}
+            return False
+        location = cast(dict[str, Any], place.get("location", {}))
+        display = cast(dict[str, Any], place.get("displayName", {}))
+        latitude = location.get("latitude")
+        longitude = location.get("longitude")
+        if latitude is None or longitude is None:
+            item.data = {**item.data, "places_status": "unavailable"}
+            return False
+        item.location_name = str(
+            display.get("text") or place.get("formattedAddress") or item.location_name
+        )
+        item.latitude = float(latitude)
+        item.longitude = float(longitude)
+        item.provider_place_id = str(place.get("id") or "") or None
+        item.location_source = "google_places"
+        item.is_estimated = False
+        item.data = {
+            **item.data,
+            "places_status": "resolved",
+            "needs_place_confirmation": False,
+            "google_maps_url": place.get("googleMapsUri"),
+        }
+        return True
+
+    try:
+        async with asyncio.timeout(10):
+            outcomes = await asyncio.gather(*(resolve(item) for item in suggestions))
+    except (TimeoutError, httpx.HTTPError):
+        planning.planning.status = "partial"
+        planning.planning.warnings.append("部分 AI 地點未能在等待時間內完成確認")
+        return
+    if outcomes and not all(outcomes):
+        planning.planning.status = "partial"
+        planning.planning.warnings.append("部分 AI 地點仍需由使用者確認")
 
 
 def route_point(item: TripPlanItem) -> RoutePoint | None:
@@ -492,6 +588,20 @@ async def save_trip(
         destination = payload.destination_name or "未命名目的地"
         timezone = payload.timezone or destination_timezone(destination)
         preferences = payload.preferences.model_dump(mode="json")
+        settings = await load_runtime_settings(session)
+        planning = await AIItineraryPlanner(settings).generate(
+            _planning_request(
+                destination_name=destination,
+                start_date=cast(date, payload.start_date),
+                end_date=cast(date, payload.end_date),
+                timezone=timezone,
+                route_preference=payload.route_preference,
+                travelers=payload.travelers,
+                preferences=payload.preferences,
+                notes=payload.notes,
+            )
+        )
+        await _enrich_ai_places(planning, GoogleTravelService(get_redis(), settings))
         trip = TripPlan(
             user_id=user.id,
             search_id=None,
@@ -510,6 +620,7 @@ async def save_trip(
                 "travelers": payload.travelers.model_dump(mode="json"),
                 "preferences": preferences,
                 "notes": payload.notes,
+                "planning": planning.planning.model_dump(mode="json"),
             },
             version=1,
             destination_name=destination,
@@ -520,6 +631,10 @@ async def save_trip(
             route_preference=payload.route_preference,
         )
         session.add(trip)
+        await session.flush()
+        for day in planning.itinerary:
+            for item in day.items:
+                session.add(item_record(trip.id, item, preserve_source_id=False))
         await session.commit()
         await session.refresh(trip)
         return await serialize_trip(session, trip)
@@ -646,6 +761,116 @@ async def update_itinerary(
     await get_redis().delete(f"routes:trip:{trip.id}")
     await session.refresh(trip)
     return await serialize_trip(session, trip)
+
+
+@router.post("/{trip_id}/itinerary/generate")
+async def generate_trip_itinerary(
+    trip_id: UUID,
+    payload: ItineraryGenerateRequest,
+    user: CurrentUser,
+    session: Session,
+    idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
+) -> dict[str, Any]:
+    trip = await owned_trip(session, user.id, trip_id)
+    if not trip.destination_name or not trip.start_date or not trip.end_date:
+        raise AppError(422, "trip_planning_fields_missing", "旅程缺少目的地或日期，無法重新排行程")
+    reservation, created = await reserve_use(
+        session,
+        user.id,
+        idempotency_key,
+        "ai_itinerary_generation",
+        f"AI 重新排行程：{trip.name}",
+    )
+    if not created and reservation.resource_id == trip.id:
+        replay = await serialize_trip(session, trip)
+        replay["usage"] = usage_status(reservation).model_dump()
+        return replay
+    reservation.resource_id = trip.id
+    reservation_id = reservation.id
+    try:
+        if trip.version != payload.version:
+            raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再讓 AI 重排")
+        existing = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+        replaceable = [
+            item
+            for item in existing
+            if item.data.get("generated_by") == "ai_planner"
+            and not item.locked
+            and not item.fixed_time
+        ]
+        replaceable_ids = {item.id for item in replaceable}
+        preserved = [item for item in existing if item.id not in replaceable_ids]
+        travelers = Travelers.model_validate(trip.data.get("travelers", {}))
+        preferences = SearchPreferences.model_validate(trip.data.get("preferences", {}))
+        settings = await load_runtime_settings(session)
+        planning = await AIItineraryPlanner(settings).generate(
+            _planning_request(
+                destination_name=trip.destination_name,
+                start_date=trip.start_date,
+                end_date=trip.end_date,
+                timezone=trip.timezone or "UTC",
+                route_preference=trip.route_preference,
+                travelers=travelers,
+                preferences=preferences,
+                notes=cast(str | None, trip.data.get("notes")),
+                preserved_items=preserved,
+            )
+        )
+        await _enrich_ai_places(planning, GoogleTravelService(get_redis(), settings))
+        preserved_keys = {(item.day_date, (item.title or "").casefold()) for item in preserved}
+        generated = [
+            item
+            for day in planning.itinerary
+            for item in day.items
+            if (item.day_date, item.title.casefold()) not in preserved_keys
+        ]
+        if replaceable_ids:
+            await session.execute(
+                delete(TripPlanItem).where(
+                    TripPlanItem.trip_plan_id == trip.id,
+                    TripPlanItem.id.in_(replaceable_ids),
+                )
+            )
+        generated_records = [
+            item_record(trip.id, item, preserve_source_id=False) for item in generated
+        ]
+        for record in generated_records:
+            session.add(record)
+        all_rows = [*preserved, *generated_records]
+        for day_value in sorted({item.day_date for item in all_rows if item.day_date is not None}):
+            day_rows = sorted(
+                (item for item in all_rows if item.day_date == day_value),
+                key=lambda item: (
+                    item.start_time is None,
+                    item.start_time or datetime.max.replace(tzinfo=UTC),
+                    item.position,
+                ),
+            )
+            for position, item in enumerate(day_rows):
+                item.position = position
+        trip.data = {
+            **trip.data,
+            "planning": planning.planning.model_dump(mode="json"),
+            "ai_regenerated": True,
+        }
+        trip.version += 1
+        if planning.planning.provider == "catalog":
+            await release_reservation(session, reservation, "ai_planner_fallback_used")
+        else:
+            await commit_reservation(session, reservation, trip.id)
+        await session.commit()
+        await get_redis().delete(f"routes:trip:{trip.id}")
+        await session.refresh(trip)
+        result = await serialize_trip(session, trip)
+        result["usage"] = usage_status(reservation).model_dump()
+        return result
+    except Exception:
+        await session.rollback()
+        current = await session.get(UsageReservation, reservation_id)
+        if current is not None:
+            await release_reservation(session, current, "ai_itinerary_generation_failed")
+        await session.commit()
+        raise
 
 
 @router.post("/{trip_id}/routes/compute")

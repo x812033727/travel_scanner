@@ -253,11 +253,31 @@ routing preference, and notes in the trip's existing JSON data. Optional filters
 an explicit "no preference" path and require no database migration.
 
 `POST /api/v1/trips` accepts both saved search plans and `source=blank` trips.
-The planner supports structured Places selections, per-day ordering, fixed
-appointments, duration and notes, detailed transit steps, and read-only shared
-views. Fixed-order route calculation is free. Same-day itinerary optimization
-uses the existing auditable reservation flow and charges one use only after a
-usable order is applied.
+Blank trips immediately receive a complete editable draft for every travel day.
+The AI planner can use OpenAI Responses, Anthropic Messages, or MiniMax
+Responses with strict structured output. `AI_PLANNER_MODE=auto` follows
+`AI_PLANNER_PRIORITY`; timeout, rate-limit, invalid schema, refusal, and provider
+errors move to the next configured provider. If none succeeds, the server fills
+every day from the built-in destination catalog and labels the result as a
+fallback instead of returning an empty itinerary.
+
+AI keys, models, priority, official Base URLs, and timeouts can be managed from
+the encrypted admin provider-settings page. Only destination, dates, travelers,
+preferences, routing preference, notes, and preserved itinerary summaries are
+sent to a selected AI provider; account identity and email are excluded. Google
+Places optionally resolves up to 24 suggested locations after generation.
+
+`POST /api/v1/trips/{id}/itinerary/generate` requires `Idempotency-Key` and the
+current trip version. It replaces only unlocked AI suggestions, preserving
+manual, provider-generated, locked, and fixed-time items. Initial generation is
+free. A successfully applied live-AI regeneration charges one use; catalog
+fallback and failed application release the reservation. Fixed-order route
+calculation remains free, while same-day itinerary optimization charges one use
+only after a usable order is applied.
+
+The planner also supports structured Places selections, per-day ordering,
+fixed appointments, duration and notes, detailed transit steps, and read-only
+shared views.
 
 Google Routes is the global fallback. Set `GOOGLE_MAPS_API_KEY` for server-side
 Places and Routes calls and an origin-restricted
