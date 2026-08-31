@@ -1,3 +1,4 @@
+import json
 import math
 import re
 from datetime import UTC, date, datetime, timedelta
@@ -9,6 +10,7 @@ import httpx
 from redis.asyncio import Redis
 
 from app.config import Settings, get_settings
+from app.providers.flight_keys import itinerary_key_from_segments
 from app.providers.schemas import (
     ActionKind,
     ActivityOffer,
@@ -288,6 +290,7 @@ class AmadeusProvider:
                 is_mock=False,
                 is_bookable=True,
                 action_kind=ActionKind.RECHECK,
+                itinerary_key=itinerary_key_from_segments(flat_segments, query.cabin_class.value),
                 origin=flat_segments[0].origin,
                 destination=flat_segments[outbound_end].destination,
                 departure_time=flat_segments[0].departure_time,
@@ -332,8 +335,18 @@ class AmadeusProvider:
                     flat_segments[outbound_end].arrival_time.date()
                     - flat_segments[0].departure_time.date()
                 ).days,
+                original_currency=str(price.get("currency") or query.currency),
+                original_total_price=total,
+                exchange_rate=Decimal(1),
+                exchange_rate_retrieved_at=now,
+                verification_method="amadeus_flight_offers_price",
             )
             self._offers[offer_id] = offer
+            await self.redis.set(
+                f"provider:amadeus:flight-offer:{offer_id}",
+                json.dumps(row, default=str),
+                ex=max(60, int((offer.expires_at - now).total_seconds())),
+            )
             offers.append(offer)
         return offers
 
@@ -548,17 +561,52 @@ class AmadeusProvider:
         self, offer: FlightOffer, query: SearchCreate | None = None
     ) -> OfferRefreshResult:
         price = offer.total_price
-        refreshed = None
-        if query is not None:
-            candidates = await self.search_flights(query)
-            refreshed = next(
-                (
-                    item
-                    for item in candidates
-                    if item.flight_number == offer.flight_number
-                    and item.departure_time == offer.departure_time
-                ),
-                None,
+        raw = await self.redis.get(f"provider:amadeus:flight-offer:{offer.id}")
+        if not raw or query is None:
+            return OfferRefreshResult(
+                offer_id=offer.id,
+                old_price=price,
+                new_price=price,
+                price_change=Decimal(0),
+                still_available=False,
+                refreshed_at=datetime.now(UTC),
+            )
+        original = json.loads(raw.decode() if isinstance(raw, bytes) else str(raw))
+        payload = await self._request(
+            "POST",
+            "/v1/shopping/flight-offers/pricing",
+            json={
+                "data": {
+                    "type": "flight-offers-pricing",
+                    "flightOffers": [original],
+                }
+            },
+        )
+        priced = cast(dict[str, Any], payload.get("data", {}))
+        rows = cast(list[dict[str, Any]], priced.get("flightOffers", []))
+        if not rows:
+            refreshed = None
+        else:
+            raw_price = cast(dict[str, Any], rows[0].get("price", {}))
+            total = decimal_value(raw_price.get("grandTotal") or raw_price.get("total"))
+            base = decimal_value(raw_price.get("base"))
+            now = datetime.now(UTC)
+            refreshed = offer.model_copy(
+                update={
+                    "base_price": base,
+                    "taxes": max(Decimal(0), total - base),
+                    "total_price": total,
+                    "retrieved_at": now,
+                    "last_verified_at": now,
+                    "expires_at": now + timedelta(minutes=10),
+                    "freshness_status": "fresh",
+                    "original_total_price": total,
+                }
+            )
+            await self.redis.set(
+                f"provider:amadeus:flight-offer:{offer.id}",
+                json.dumps(rows[0], default=str),
+                ex=600,
             )
         new_price = refreshed.total_price if refreshed else price
         return OfferRefreshResult(

@@ -1,6 +1,7 @@
 from datetime import date, datetime
 from decimal import Decimal
 from enum import StrEnum
+from typing import Any
 from uuid import UUID
 
 from pydantic import BaseModel, Field
@@ -72,6 +73,7 @@ class FlightDateOption(BaseModel):
 
 
 class FlightOffer(NormalizedOffer):
+    itinerary_key: str | None = None
     origin: str
     destination: str
     departure_time: datetime
@@ -101,6 +103,17 @@ class FlightOffer(NormalizedOffer):
     last_verified_at: datetime | None = None
     clickout_available: bool = False
     arrival_day_offset: int = 0
+    original_currency: str | None = None
+    original_total_price: Decimal | None = None
+    exchange_rate: Decimal | None = None
+    exchange_rate_retrieved_at: datetime | None = None
+    verification_method: str | None = None
+    emissions_kg_per_pax: Decimal | None = None
+    emissions_cabin: str | None = None
+    emissions_source: str | None = None
+    emissions_model_version: str | None = None
+    emissions_retrieved_at: datetime | None = None
+    status_details: list[dict[str, Any]] = Field(default_factory=list)
 
 
 class HotelOffer(NormalizedOffer):

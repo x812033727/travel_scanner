@@ -5,8 +5,10 @@ flights, hotels, activities, and transportation into complete trip plans and
 explains the trade-off between the cheapest, balanced, and comfortable choices.
 
 Trip search supports an explicit mock development mode, an Amadeus-backed test
-or live mode, and a Skyscanner Flights Live Prices integration for approved
-partners. Production never falls back to mock prices when credentials are
+or live mode, Skyscanner Flights Live Prices, and Duffel Offer Requests for
+approved partners. FlightAware supplies status rather than fares, while Google
+Travel Impact Model supplies a consistent per-passenger emissions figure.
+Production never falls back to mock or supplier test prices when credentials are
 absent. The experimental airline crawler remains a separate, non-bookable
 public-fare research surface.
 
@@ -72,7 +74,8 @@ reduce the balance below in-flight reservations. Administrators cannot adjust
 their own balance, so a second administrator must authorize that operation.
 
 The page manages runtime modes, timeouts and encrypted credentials for Google
-Maps, Amadeus, Skyscanner, and NAVITIME. Changes take effect for API and worker
+Maps, Amadeus, Skyscanner, Duffel, FlightAware, Google Travel Impact, and NAVITIME.
+It also shows each provider's last-24-hour request and failure counts. Changes take effect for API and worker
 requests without rebuilding the web image. Connection checks and configuration
 changes are recorded in `admin_audit_logs`, without secret values. Responses
 only include whether a key exists, its source, and a masked suffix.
@@ -158,14 +161,29 @@ whether live, test, mock, or disabled data is active, plus the selected and
 fallback provider for each search module.
 
 Flights can be selected independently with
-`FLIGHT_PROVIDER_MODE=auto|skyscanner|amadeus|mock`. In `auto` mode an approved
-`SKYSCANNER_API_KEY` wins, Amadeus is the fallback, and mock is available only
-outside production. Skyscanner exact-date searches use the Live Prices
+`FLIGHT_PROVIDER_MODE=auto|skyscanner|duffel|amadeus|mock|disabled`. With
+`FLIGHT_SEARCH_STRATEGY=hybrid`, auto mode queries Skyscanner, Duffel, then
+Amadeus until at least `FLIGHT_MIN_RESULT_COUNT` unique itinerary groups exist.
+The user can explicitly request all remaining configured sources without another
+usage charge. Mock is available only outside production; Amadeus test and Duffel
+test responses are also rejected in production. Skyscanner exact-date searches use the Live Prices
 create/poll flow and emit repeated `module.results` SSE batches; flexible-date
 searches use Indicative Prices and never expose booking actions. Provider
-session tokens and booking URLs stay server-side. The browser posts to
+session tokens and booking URLs stay server-side. Skyscanner revalidation uses
+Itinerary Refresh, Amadeus uses Flight Offers Price with a private cached raw
+offer, and Duffel uses Get Offer. The browser posts to
 `POST /api/v1/offers/{offer_id}/clickout`, which validates ownership and expiry,
 records an audit event, and responds with a secure 303 redirect.
+
+Set `DUFFEL_ACCESS_TOKEN` and `DUFFEL_ENV=test|live` to enable Duffel. Its first
+release is recheck-only and does not create orders. Set `FLIGHTAWARE_API_KEY` to
+enable `/flights/status`: departures within two days use exact FlightAware status
+matching, while later dates are labelled only as schedule-verified. Tracks are
+loaded on demand and kept only in short Redis caches. Independent status lookups
+charge once only for a new successful external result; cache hits, empty results,
+failures and idempotency replays do not charge. Set
+`GOOGLE_TRAVEL_IMPACT_API_KEY` for official TIM emissions. Google Flights prices
+and unofficial search-result scraping are intentionally unsupported.
 
 Hotels can be selected independently with
 `HOTEL_PROVIDER_MODE=auto|booking|amadeus|mock|disabled`. In `auto` mode an
@@ -223,6 +241,11 @@ Places and Routes calls and an origin-restricted
 `NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY` for the optional embedded planner map.
 Google provider responses are kept in short-lived Redis caches; durable trip
 records retain provider IDs and user-authored fields instead of raw payloads.
+The administrator settings page also shows an application-side monthly request
+counter for server-side Places, Routes, and photo calls. Its default budget is
+10,000 requests (`GOOGLE_MAPS_MONTHLY_REQUEST_LIMIT`); browser Embed loads and
+Google Cloud usage from before this counter was deployed are not included. The
+bundled Redis service enables append-only persistence for these monthly counters.
 
 Japan transit enhancement is optional. Set `NAVITIME_API_BASE_URL`,
 `NAVITIME_CLIENT_ID`, and `NAVITIME_API_KEY` only after obtaining the required
@@ -433,7 +456,10 @@ plans, and account routes.
 ## API summary
 
 - Auth: `/api/v1/auth/register`, `/login`, `/logout`, `/me`
-- Search: `POST /api/v1/searches`, status, SSE events, and offer refresh
+- Search: `POST /api/v1/searches`, status, SSE events, official offer refresh,
+  `POST /searches/{id}/flight-sources/expand`, and FlightAware enrichment
+- Flight status: `POST/GET /api/v1/flights/status-lookups` and an owned,
+  on-demand `/items/{item_id}/track` endpoint
 - Product: plans, usage, saved trips, re-optimization, and price alerts
 - Intelligence: natural-language parsing and destination discovery
 - Experimental airline fares: crawler status and public cached-fare discovery

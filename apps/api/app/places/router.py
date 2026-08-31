@@ -15,6 +15,7 @@ from app.destinations.catalog import DESTINATIONS
 from app.infra import get_redis
 from app.places.google import GoogleTravelService
 from app.problems import AppError
+from app.providers.usage_meter import record_google_maps_request
 from app.search.schemas import PropertyType, Travelers, TripPace
 
 router = APIRouter(prefix="/destinations", tags=["destinations"])
@@ -81,15 +82,19 @@ async def place_photo(name: str, session: Session) -> RedirectResponse:
     if not settings.google_maps_api_key or not name.startswith("places/"):
         raise AppError(404, "photo_not_found", "目前沒有可用的地點照片")
     url = f"https://places.googleapis.com/v1/{name}/media"
-    async with httpx.AsyncClient(timeout=settings.provider_timeout_seconds) as client:
-        response = await client.get(
-            url,
-            params={
-                "maxWidthPx": 960,
-                "skipHttpRedirect": "true",
-                "key": settings.google_maps_api_key,
-            },
-        )
+    redis = get_redis()
+    try:
+        async with httpx.AsyncClient(timeout=settings.provider_timeout_seconds) as client:
+            response = await client.get(
+                url,
+                params={
+                    "maxWidthPx": 960,
+                    "skipHttpRedirect": "true",
+                    "key": settings.google_maps_api_key,
+                },
+            )
+    finally:
+        await record_google_maps_request(redis, "places_photo")
     if response.status_code >= 400:
         raise AppError(404, "photo_not_found", "目前沒有可用的地點照片")
     photo_uri = response.json().get("photoUri")

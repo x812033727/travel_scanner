@@ -27,7 +27,7 @@ Session = Annotated[AsyncSession, Depends(get_session)]
 @router.get("", response_model=ProviderSettingsSnapshot)
 async def get_provider_settings(user: AdminUser, session: Session) -> ProviderSettingsSnapshot:
     _ = user
-    return await settings_snapshot(session)
+    return await settings_snapshot(session, get_redis())
 
 
 @router.put("/{provider}", response_model=ProviderSettingsSnapshot)

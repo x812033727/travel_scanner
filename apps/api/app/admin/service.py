@@ -23,16 +23,21 @@ from app.admin.schemas import (
     ProviderSettingsUpdate,
     ProviderSettingsView,
     ProviderTestResult,
+    ProviderUsageView,
     PublicRuntimeConfig,
     SecretState,
 )
 from app.config import Settings, get_settings
-from app.models import AdminAuditLog, ProviderConfig, User
+from app.models import AdminAuditLog, ProviderConfig, ProviderRequest, User
 from app.places.google import GoogleTravelService
 from app.problems import AppError
 from app.providers.amadeus import AmadeusProvider
 from app.providers.booking import BOOKING_API_HOSTS, BookingHotelProvider
+from app.providers.duffel import DuffelProvider
+from app.providers.flightaware import FlightAwareProvider
+from app.providers.google_travel_impact import GoogleTravelImpactProvider
 from app.providers.skyscanner import SkyscannerProvider
+from app.providers.usage_meter import google_maps_usage_snapshot
 from app.search.schemas import SearchCreate, SearchModule
 from app.trips.routing import (
     GoogleRouteProvider,
@@ -57,6 +62,8 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         (
             "travel_provider_mode",
             "flight_provider_mode",
+            "flight_search_strategy",
+            "flight_min_result_count",
             "hotel_provider_mode",
             "provider_timeout_seconds",
             "provider_failure_threshold",
@@ -67,7 +74,7 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     "google_maps": ProviderDefinition(
         "Google Maps",
         "Google Places 地點搜尋、Routes 大眾運輸路線與瀏覽器 Embed 地圖。",
-        ("route_cache_ttl_seconds",),
+        ("route_cache_ttl_seconds", "google_maps_monthly_request_limit"),
         ("google_maps_api_key", "next_public_google_maps_browser_key"),
     ),
     "amadeus": ProviderDefinition(
@@ -88,6 +95,29 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "skyscanner_poll_interval_seconds",
         ),
         ("skyscanner_api_key",),
+    ),
+    "duffel": ProviderDefinition(
+        "Duffel",
+        "Offer Request 即時票價與 Get Offer 官方重新驗價；第一版不站內開票。",
+        ("duffel_env", "duffel_base_url", "duffel_supplier_timeout_ms"),
+        ("duffel_access_token",),
+    ),
+    "flightaware": ProviderDefinition(
+        "FlightAware AeroAPI",
+        "航班班表、延誤、取消、航廈、登機門與按需航跡；不提供票價。",
+        (
+            "flightaware_base_url",
+            "flightaware_enrich_offer_limit",
+            "flightaware_cache_ttl_seconds",
+            "flightaware_track_cache_ttl_seconds",
+        ),
+        ("flightaware_api_key",),
+    ),
+    "google_travel_impact": ProviderDefinition(
+        "Google Travel Impact Model",
+        "以 Google 官方統一模型計算每位旅客碳排，不擷取 Google Flights 價格。",
+        ("google_travel_impact_base_url", "travel_impact_cache_ttl_seconds"),
+        ("google_travel_impact_api_key",),
     ),
     "navitime": ProviderDefinition(
         "NAVITIME",
@@ -298,6 +328,33 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             if settings.skyscanner_configured
             else "缺少 Skyscanner API key",
         )
+    if provider == "duffel":
+        configured = settings.duffel_configured and not (
+            settings.production and settings.duffel_env.lower() != "live"
+        )
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            f"Duffel {settings.duffel_env} 已設定"
+            if configured
+            else "缺少 Duffel token，或正式環境仍使用 test",
+        )
+    if provider == "flightaware":
+        return (
+            settings.flightaware_configured,
+            "ready" if settings.flightaware_configured else "not_configured",
+            "FlightAware AeroAPI 已設定"
+            if settings.flightaware_configured
+            else "缺少 FlightAware API key",
+        )
+    if provider == "google_travel_impact":
+        return (
+            settings.google_travel_impact_configured,
+            "ready" if settings.google_travel_impact_configured else "not_configured",
+            "Google Travel Impact Model 已設定"
+            if settings.google_travel_impact_configured
+            else "缺少 Google Travel Impact API key",
+        )
     if provider == "booking_demand":
         configured = settings.booking_demand_configured
         return (
@@ -368,14 +425,32 @@ def _production_test_required(provider: str, settings: Settings) -> bool:
         return settings.amadeus_env.lower() == "production"
     if provider == "booking_demand":
         return settings.booking_demand_env.lower() == "production"
-    return provider == "skyscanner"
+    if provider == "duffel":
+        return settings.duffel_env.lower() == "live"
+    return provider in {"skyscanner", "flightaware", "google_travel_impact"}
 
 
-async def settings_snapshot(session: AsyncSession) -> ProviderSettingsSnapshot:
+async def settings_snapshot(
+    session: AsyncSession, redis: Redis | None = None
+) -> ProviderSettingsSnapshot:
     base = get_settings()
     rows = await provider_rows(session)
     by_provider = {row.provider: row for row in rows}
     effective = apply_runtime_overrides(base, rows)
+    google_usage = (
+        await google_maps_usage_snapshot(redis, effective.google_maps_monthly_request_limit)
+        if redis is not None
+        else None
+    )
+    recent_requests = list(
+        (
+            await session.scalars(
+                select(ProviderRequest).where(
+                    ProviderRequest.created_at >= datetime.now(UTC) - timedelta(hours=24)
+                )
+            )
+        ).all()
+    )
     providers: list[ProviderSettingsView] = []
     for provider, definition in PROVIDER_DEFINITIONS.items():
         row = by_provider.get(provider)
@@ -419,6 +494,32 @@ async def settings_snapshot(session: AsyncSession) -> ProviderSettingsSnapshot:
                 last_test_status=row.last_test_status if row else None,
                 last_test_message=row.last_test_message if row else None,
                 updated_at=row.updated_at if row else None,
+                usage=(
+                    ProviderUsageView(
+                        **google_usage.__dict__,
+                    )
+                    if provider == "google_maps" and google_usage is not None
+                    else None
+                ),
+                requests_24h=sum(
+                    1
+                    for request in recent_requests
+                    if provider in request.provider.split(",")
+                ),
+                errors_24h=sum(
+                    1
+                    for request in recent_requests
+                    if provider in request.provider.split(",") and request.status == "failed"
+                ),
+                last_error_at=max(
+                    (
+                        request.created_at
+                        for request in recent_requests
+                        if provider in request.provider.split(",")
+                        and request.status == "failed"
+                    ),
+                    default=None,
+                ),
             )
         )
     audit_rows = list(
@@ -474,9 +575,11 @@ def _validate_provider_values(
             merged[field] = value
     modes = {
         "travel_provider_mode": {"mock", "amadeus", "live", "disabled"},
-        "flight_provider_mode": {"auto", "skyscanner", "amadeus", "mock", "disabled"},
+        "flight_provider_mode": {"auto", "skyscanner", "duffel", "amadeus", "mock", "disabled"},
+        "flight_search_strategy": {"hybrid", "single"},
         "hotel_provider_mode": {"auto", "booking", "amadeus", "mock", "disabled"},
         "amadeus_env": {"test", "production"},
+        "duffel_env": {"test", "live"},
         "booking_demand_env": {"sandbox", "production"},
     }
     for field, allowed in modes.items():
@@ -578,9 +681,7 @@ async def update_provider_settings(
         )
         session.add(row)
     row.config = _validate_provider_values(provider, row.config or {}, payload)
-    stored = _merge_secret_values(
-        decrypt_secrets(row.secret_config_encrypted), payload.secrets
-    )
+    stored = _merge_secret_values(decrypt_secrets(row.secret_config_encrypted), payload.secrets)
     row.secret_config_encrypted = encrypt_secrets(stored)
     if payload.enabled is not None:
         row.enabled = payload.enabled
@@ -602,12 +703,10 @@ async def update_provider_settings(
     await session.commit()
     if provider == "amadeus":
         await redis.delete("provider:amadeus:oauth-token")
-    return await settings_snapshot(session)
+    return await settings_snapshot(session, redis)
 
 
-def _merge_secret_values(
-    current: dict[str, str], updates: dict[str, str | None]
-) -> dict[str, str]:
+def _merge_secret_values(current: dict[str, str], updates: dict[str, str | None]) -> dict[str, str]:
     merged = dict(current)
     for field, value in updates.items():
         if value is None:
@@ -627,7 +726,7 @@ async def _test_google(settings: Settings, redis: Redis) -> str:
     places = await service.autocomplete("東京車站", None, ["jp"])
     if not places:
         raise ConnectionError("Places API 未回傳結果，請檢查 API 啟用狀態與金鑰限制")
-    routes = await GoogleRouteProvider(settings).probe(
+    routes = await GoogleRouteProvider(settings, None, redis).probe(
         RoutePoint(
             item_id=uuid4(),
             name="東京車站",
@@ -667,6 +766,38 @@ async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str
         )
         await SkyscannerProvider(redis, settings).start_search(query)
         return "Skyscanner Live Flights 驗證成功"
+    if provider == "duffel":
+        query = SearchCreate(
+            origin="TPE",
+            destination="NRT",
+            departure_date=date.today() + timedelta(days=45),
+            return_date=date.today() + timedelta(days=49),
+            modules=[SearchModule.FLIGHT],
+        )
+        await DuffelProvider(redis, settings).search_flights(query)
+        return f"Duffel {settings.duffel_env} Offer Request 驗證成功"
+    if provider == "flightaware":
+        await FlightAwareProvider(redis, settings).lookup(
+            date.today() + timedelta(days=10), origin="TPE", destination="NRT"
+        )
+        return "FlightAware AeroAPI 班表查詢成功"
+    if provider == "google_travel_impact":
+        await GoogleTravelImpactProvider(redis, settings)._compute(
+            [
+                {
+                    "origin": "TPE",
+                    "destination": "NRT",
+                    "operatingCarrierCode": "BR",
+                    "flightNumber": 198,
+                    "departureDate": {
+                        "year": (date.today() + timedelta(days=45)).year,
+                        "month": (date.today() + timedelta(days=45)).month,
+                        "day": (date.today() + timedelta(days=45)).day,
+                    },
+                }
+            ]
+        )
+        return "Google Travel Impact Model 驗證成功"
     if provider == "booking_demand":
         await BookingHotelProvider(redis, settings).probe()
         return f"Booking.com Demand API {settings.booking_demand_env} 驗證成功"

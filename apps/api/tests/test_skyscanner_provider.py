@@ -219,3 +219,26 @@ def test_explicit_missing_skyscanner_is_visible_in_public_provider_status() -> N
 
     assert status.provider == "skyscanner"
     assert status.status == "not_configured"
+
+
+@pytest.mark.asyncio
+async def test_refresh_uses_official_itinerary_refresh_endpoint() -> None:
+    paths: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        paths.append(request.url.path)
+        payload = response_payload()
+        if "itineraryrefresh/create" in request.url.path:
+            payload["refreshToken"] = "refresh-1"
+        return httpx.Response(200, json=payload)
+
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    settings = Settings(skyscanner_api_key="secret")
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        provider = SkyscannerProvider(redis, settings, client)
+        batch = await provider.start_search(sample_query())
+        refreshed = await provider.refresh_offer(batch.offers[0], sample_query())
+
+    assert refreshed.still_available
+    assert any("/itineraryrefresh/create/" in path for path in paths)
+    assert paths.count("/apiservices/v3/flights/live/search/poll/session-1") == 0

@@ -115,6 +115,15 @@ async def test_amadeus_maps_all_modules_and_caches_oauth_token() -> None:
                     ],
                 },
             )
+        if path == "/v1/shopping/flight-offers/pricing":
+            request_data = __import__("json").loads(request.content)["data"]
+            priced = request_data["flightOffers"][0]
+            priced["price"] = {
+                "currency": "TWD",
+                "base": "12100",
+                "grandTotal": "15200",
+            }
+            return httpx.Response(200, json={"data": {"flightOffers": [priced]}})
         if path.endswith("/hotels/by-city"):
             return httpx.Response(
                 200,
@@ -204,9 +213,12 @@ async def test_amadeus_maps_all_modules_and_caches_oauth_token() -> None:
         hotels = await provider.search_hotels(sample_query())
         activities = await provider.search_activities(sample_query())
         transfers = await provider.search_transport(sample_query())
+        refreshed = await provider.refresh_offer(flights[0], sample_query())
         await provider.search_flights(sample_query())
 
     assert calls["/v1/security/oauth2/token"] == 1
+    assert calls["/v1/shopping/flight-offers/pricing"] == 1
+    assert refreshed.new_price == 15200
     assert flights[0].source_mode == SourceMode.TEST
     assert flights[0].return_departure_time is not None
     assert [segment.leg_index for segment in flights[0].segments] == [0, 1]

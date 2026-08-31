@@ -24,6 +24,8 @@ class Settings(BaseSettings):
     rate_limit_per_minute: int = Field(default=120, ge=1)
     travel_provider_mode: str = "mock"
     flight_provider_mode: str = "auto"
+    flight_search_strategy: str = "hybrid"
+    flight_min_result_count: int = Field(default=12, ge=1, le=100)
     hotel_provider_mode: str = "auto"
     amadeus_client_id: str | None = None
     amadeus_client_secret: str | None = None
@@ -35,6 +37,19 @@ class Settings(BaseSettings):
     skyscanner_currency: str = "TWD"
     skyscanner_poll_attempts: int = Field(default=4, ge=1, le=10)
     skyscanner_poll_interval_seconds: float = Field(default=0.5, ge=0, le=5)
+    duffel_access_token: str | None = None
+    duffel_env: str = "test"
+    duffel_base_url: str = "https://api.duffel.com"
+    duffel_supplier_timeout_ms: int = Field(default=10_000, ge=2_000, le=60_000)
+    flightaware_api_key: str | None = None
+    flightaware_base_url: str = "https://aeroapi.flightaware.com/aeroapi"
+    flightaware_enrich_offer_limit: int = Field(default=5, ge=0, le=20)
+    flightaware_cache_ttl_seconds: int = Field(default=300, ge=60, le=3_600)
+    flightaware_track_cache_ttl_seconds: int = Field(default=120, ge=30, le=900)
+    google_travel_impact_api_key: str | None = None
+    google_travel_impact_base_url: str = "https://travelimpactmodel.googleapis.com/v1"
+    travel_impact_cache_ttl_seconds: int = Field(default=86_400, ge=300, le=604_800)
+    flight_status_retention_hours: int = Field(default=24, ge=1, le=168)
     affiliate_link_cache_ttl_seconds: int = Field(default=86_400, ge=60, le=604_800)
     affiliate_clickout_token_ttl_seconds: int = Field(default=900, ge=60, le=3_600)
     travelpayouts_enabled: bool = False
@@ -88,6 +103,7 @@ class Settings(BaseSettings):
     skyscanner_affiliate_allowed_hosts: str = "skyscanner.net,www.skyscanner.net"
     google_maps_api_key: str | None = None
     next_public_google_maps_browser_key: str | None = None
+    google_maps_monthly_request_limit: int = Field(default=10_000, ge=1, le=10_000_000)
     route_cache_ttl_seconds: int = Field(default=900, ge=60, le=86_400)
     navitime_api_base_url: str | None = None
     navitime_client_id: str | None = None
@@ -137,6 +153,18 @@ class Settings(BaseSettings):
     @property
     def skyscanner_configured(self) -> bool:
         return bool(self.skyscanner_api_key)
+
+    @property
+    def duffel_configured(self) -> bool:
+        return bool(self.duffel_access_token)
+
+    @property
+    def flightaware_configured(self) -> bool:
+        return bool(self.flightaware_api_key)
+
+    @property
+    def google_travel_impact_configured(self) -> bool:
+        return bool(self.google_travel_impact_api_key)
 
     @property
     def booking_demand_effective_affiliate_id(self) -> str | None:
