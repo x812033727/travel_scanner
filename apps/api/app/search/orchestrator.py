@@ -1,13 +1,12 @@
 import asyncio
 import time
-from datetime import datetime
-from decimal import Decimal
 from typing import Any, cast
 from uuid import UUID
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.config import get_settings
 from app.infra import get_redis
 from app.models import (
     ActivityOfferRecord,
@@ -22,8 +21,8 @@ from app.models import (
 )
 from app.optimization.engine import TripOptimizer
 from app.places.google import GoogleTravelService
-from app.providers.base import TravelProvider
-from app.providers.registry import build_provider, provider_status
+from app.providers.base import FlightProvider, FlightSearchState, TravelProvider
+from app.providers.registry import build_module_providers, provider_status
 from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, Offer, TransportOffer
 from app.search.events import publish_event
@@ -89,27 +88,45 @@ async def persist_offers(
 
 
 async def run_module(
-    provider: TravelProvider, runner: ProviderRunner, module: str, query: SearchCreate
+    provider: object, runner: ProviderRunner, module: str, query: SearchCreate
 ) -> list[Offer]:
     if module == "flight":
+        flight_provider = cast(FlightProvider, provider)
         return cast(
             list[Offer],
-            await runner.run(provider.name, module, lambda: provider.search_flights(query)),
+            await runner.run(
+                flight_provider.name,
+                module,
+                lambda: flight_provider.search_flights(query),
+            ),
         )
+    travel_provider = cast(TravelProvider, provider)
     if module == "hotel":
         return cast(
             list[Offer],
-            await runner.run(provider.name, module, lambda: provider.search_hotels(query)),
+            await runner.run(
+                travel_provider.name,
+                module,
+                lambda: travel_provider.search_hotels(query),
+            ),
         )
     if module == "activities":
         return cast(
             list[Offer],
-            await runner.run(provider.name, module, lambda: provider.search_activities(query)),
+            await runner.run(
+                travel_provider.name,
+                module,
+                lambda: travel_provider.search_activities(query),
+            ),
         )
     if module == "transport":
         return cast(
             list[Offer],
-            await runner.run(provider.name, module, lambda: provider.search_transport(query)),
+            await runner.run(
+                travel_provider.name,
+                module,
+                lambda: travel_provider.search_transport(query),
+            ),
         )
     return []
 
@@ -128,10 +145,10 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
     await session.commit()
     await publish_event(redis, search_id, "search.created", 0, {"status": "processing"})
     query = SearchCreate.model_validate(search.request_json)
-    provider, runner = build_provider(redis), ProviderRunner(redis)
+    providers, runner = build_module_providers(redis), ProviderRunner(redis)
     place_service = GoogleTravelService(redis)
     status = provider_status()
-    if provider is None:
+    if not any(providers.get(str(module)) for module in query.modules):
         search.status = "failed"
         search.progress = 100
         search.warnings_json = [status.message]
@@ -156,10 +173,88 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
     results: dict[str, list[dict[str, Any]]] = {}
     warnings: list[str] = []
 
-    async def collect(module: str) -> tuple[str, list[Offer], str | None, int]:
+    async def collect(
+        module: str,
+    ) -> tuple[str, str, list[Offer], str | None, int, str, bool]:
         started = time.perf_counter()
+        provider = providers.get(module)
+        if provider is None:
+            return (
+                module,
+                "none",
+                [],
+                f"{module} provider is not configured",
+                0,
+                "failed",
+                False,
+            )
         try:
-            offers = await run_module(provider, runner, module, query)
+            provider_name = str(getattr(provider, "name", "unknown"))
+            completion = "complete"
+            progressive = False
+            if module == "flight" and hasattr(provider, "start_search"):
+                progressive = True
+                flight_provider = cast(FlightProvider, provider)
+                first = await runner.run(
+                    provider_name,
+                    module,
+                    lambda: flight_provider.start_search(query),  # type: ignore[attr-defined]
+                )
+                collected = {item.provider_offer_id: item for item in first.offers}
+                await publish_event(
+                    redis,
+                    search_id,
+                    "module.results",
+                    15,
+                    {
+                        "module": module,
+                        "offers": [item.model_dump(mode="json") for item in first.offers],
+                        "status": first.state.value,
+                    },
+                )
+                current = first
+                attempts = 0
+                while (
+                    current.state == FlightSearchState.INCOMPLETE
+                    and attempts < get_settings().skyscanner_poll_attempts
+                ):
+                    await asyncio.sleep(get_settings().skyscanner_poll_interval_seconds)
+                    current = await runner.run(
+                        provider_name,
+                        module,
+                        lambda: flight_provider.poll_search(first.session_id),  # type: ignore[attr-defined]
+                    )
+                    collected.update(
+                        {item.provider_offer_id: item for item in current.offers}
+                    )
+                    attempts += 1
+                    await publish_event(
+                        redis,
+                        search_id,
+                        "module.results",
+                        min(24, 15 + attempts * 2),
+                        {
+                            "module": module,
+                            "offers": [
+                                item.model_dump(mode="json") for item in current.offers
+                            ],
+                            "status": current.state.value,
+                        },
+                    )
+                offers = cast(
+                    list[Offer],
+                    sorted(
+                        collected.values(),
+                        key=lambda item: (item.total_price, item.provider_offer_id),
+                    ),
+                )
+                completion = (
+                    "timeout"
+                    if current.state == FlightSearchState.INCOMPLETE
+                    else current.state.value
+                )
+            else:
+                offers = await run_module(provider, runner, module, query)
             if module == "hotel" and place_service.configured:
                 hotels = [item for item in offers if isinstance(item, HotelOffer)]
                 offers = cast(list[Offer], await place_service.enrich_hotels(hotels))
@@ -167,17 +262,35 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                 activities = [item for item in offers if isinstance(item, ActivityOffer)]
                 offers = cast(list[Offer], await place_service.enrich_activities(activities))
             latency_ms = int((time.perf_counter() - started) * 1000)
-            return module, offers, None, latency_ms
+            return (
+                module,
+                provider_name,
+                offers,
+                None,
+                latency_ms,
+                completion,
+                progressive,
+            )
         except ProviderUnavailableError as exc:
             latency_ms = int((time.perf_counter() - started) * 1000)
-            return module, [], str(exc), latency_ms
+            detail = str(exc)
+            completion = "rate_limited" if "429" in detail or "rate_limited" in detail else "failed"
+            return (
+                module,
+                str(getattr(provider, "name", "unknown")),
+                [],
+                detail,
+                latency_ms,
+                completion,
+                False,
+            )
 
     tasks = [asyncio.create_task(collect(str(module))) for module in query.modules]
     for completed in asyncio.as_completed(tasks):
-        module, offers, error, latency_ms = await completed
+        module, provider_name, offers, error, latency_ms, completion, progressive = await completed
         provider_request = ProviderRequest(
             search_id=search_id,
-            provider=provider.name,
+            provider=provider_name,
             module=module,
             status="failed" if error else "completed",
             latency_ms=latency_ms,
@@ -192,25 +305,29 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
             session.add(
                 ProviderResponse(
                     provider_request_id=provider_request.id,
-                    payload={"count": len(offers), "mode": status.mode},
+                    payload={
+                        "count": len(offers),
+                        "mode": offers[0].source_mode.value if offers else status.mode,
+                    },
                 )
             )
             await persist_offers(session, search_id, module, offers)
             serialized = [offer.model_dump(mode="json") for offer in offers]
             results[module] = serialized
-            await publish_event(
-                redis,
-                search_id,
-                "module.results",
-                progress,
-                {"module": module, "offers": serialized},
-            )
+            if not progressive:
+                await publish_event(
+                    redis,
+                    search_id,
+                    "module.results",
+                    progress,
+                    {"module": module, "offers": serialized, "status": completion},
+                )
         await publish_event(
             redis,
             search_id,
             "provider.completed",
             progress,
-            {"module": module, "status": "failed" if error else "completed"},
+            {"module": module, "status": completion if not error else completion},
         )
         search.progress = progress
         search.result_json = {"modules": results}
@@ -255,17 +372,3 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
             "usage": usage_status(reservation).model_dump() if reservation else None,
         },
     )
-
-
-def refresh_saved_offer(offer_id: UUID, old_price: Decimal) -> dict[str, Any]:
-    available = offer_id.int % 17 != 0
-    delta = Decimal((offer_id.int % 7) - 3) * Decimal(50)
-    new_price = max(Decimal(0), old_price + delta) if available else old_price
-    return {
-        "offer_id": str(offer_id),
-        "old_price": old_price,
-        "new_price": new_price,
-        "price_change": new_price - old_price,
-        "still_available": available,
-        "refreshed_at": datetime.now().astimezone(),
-    }

@@ -242,3 +242,43 @@ test("different destinations can complete an external two-segment comparison", a
     conventional_second_fare: { amount: "10000" },
   });
 });
+
+test("live flight provider submits the five-ticket reverse comparison", async ({ page }) => {
+  await page.route("**/api/travel/crawlers/airlines/status", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({ sources: [], safety_rules: [] }),
+  }));
+  let submitted: Record<string, unknown> = {};
+  await page.route("**/api/travel/flights/back-to-back", (route) => {
+    submitted = route.request().postDataJSON();
+    return route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        provider: "skyscanner",
+        warnings: ["中段票沒有完整即時報價，因此未拼造倒買總價。"],
+        comparisons: [
+          { mode: "mixed_airlines", conventional: null, back_to_back: null, savings: null, verdict: "comparison_unavailable", detail: "缺少必要票價" },
+          { mode: "same_airline", conventional: null, back_to_back: null, savings: null, verdict: "comparison_unavailable", detail: "缺少必要票價" },
+        ],
+      }),
+    });
+  });
+
+  await page.goto("/labs/airlines");
+  await page.getByRole("tab", { name: "即時倒買 API" }).click();
+  await expect(page.getByRole("heading", { name: "即時倒買價格比較" })).toBeVisible();
+  await page.getByLabel("成人").selectOption("2");
+  await page.getByRole("button", { name: "開始即時比較" }).click();
+
+  await expect(page.getByRole("heading", { name: "最低混搭" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "最低同航空公司" })).toBeVisible();
+  await expect(page.getByText(/未拼造倒買總價/)).toBeVisible();
+  await expect(page.getByText(/Powered by/)).toBeVisible();
+  expect(submitted).toMatchObject({
+    first_destination: "NRT",
+    second_destination: "KIX",
+    travelers: { adults: 2 },
+  });
+});

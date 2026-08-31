@@ -20,9 +20,16 @@ of truth. Redis is used for queues, short-lived caching, streams, rate limiting,
 and circuit-breaker state. Provider-specific payloads never escape the adapter
 layer.
 
-For the MVP every provider is deterministic and clearly marked as mock. Adding a
-live provider means implementing the relevant provider protocol and registering
-it with the provider registry; callers and frontend contracts remain unchanged.
+Provider selection is module-specific. Flights choose Skyscanner, Amadeus or
+mock through `FLIGHT_PROVIDER_MODE`, while lodging, activities and transport
+retain their existing travel provider. Skyscanner uses create/poll batches that
+map to repeated SSE `module.results`; Amadeus and mock return a single batch.
+Production never falls back to mock data.
+
+Live provider sessions, offer refresh locators and clickout URLs are short-lived
+Redis data. PostgreSQL stores normalized offers and ownership. A clickout is a
+user-authenticated POST through the BFF; FastAPI validates ownership, freshness
+and HTTPS before recording a provider audit row and issuing a 303 redirect.
 
 The experimental `crawlers` module is intentionally outside Search Orchestrator.
 Its public airline pages expose cached fare discoveries without the schedule,

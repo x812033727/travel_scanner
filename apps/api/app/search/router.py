@@ -1,11 +1,12 @@
 import asyncio
 from collections.abc import AsyncIterator
-from decimal import Decimal
+from datetime import UTC, datetime
 from typing import Annotated, Any, cast
+from urllib.parse import urlparse
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Header
-from fastapi.responses import StreamingResponse
+from fastapi.responses import RedirectResponse, StreamingResponse
 from redis import Redis as SyncRedis
 from rq import Queue
 from sqlalchemy import select
@@ -15,11 +16,21 @@ from app.auth.service import CurrentUser
 from app.config import get_settings
 from app.db import get_session
 from app.infra import enforce_rate_limit, get_redis
-from app.models import SearchJob, SearchRequest, UsageReservation
+from app.models import (
+    FlightOfferRecord,
+    ProviderRequest,
+    ProviderResponse,
+    SearchJob,
+    SearchRequest,
+    UsageReservation,
+)
 from app.problems import AppError
-from app.providers.registry import provider_status
+from app.providers.registry import (
+    build_flight_provider,
+    provider_status_for_modules,
+)
+from app.providers.schemas import FlightOffer
 from app.search.events import stream_key
-from app.search.orchestrator import refresh_saved_offer
 from app.search.schemas import SearchCreate
 from app.usage.service import (
     release_reservation,
@@ -40,7 +51,7 @@ async def create_search(
     session: Session,
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
 ) -> dict[str, Any]:
-    status = provider_status()
+    status = provider_status_for_modules([str(module) for module in payload.modules])
     if status.status != "ready":
         raise AppError(503, "provider_not_configured", status.message)
     await enforce_rate_limit(user.id)
@@ -154,14 +165,93 @@ async def search_events(
 
 @router.post("/offers/{offer_id}/refresh")
 async def refresh_offer(offer_id: UUID, user: CurrentUser, session: Session) -> dict[str, Any]:
-    searches = list(
-        (await session.scalars(select(SearchRequest).where(SearchRequest.user_id == user.id))).all()
+    records = list(
+        (
+            await session.scalars(
+                select(FlightOfferRecord)
+                .join(SearchRequest, SearchRequest.id == FlightOfferRecord.search_id)
+                .where(SearchRequest.user_id == user.id)
+            )
+        ).all()
     )
-    for search in searches:
+    record = next((item for item in records if item.data.get("id") == str(offer_id)), None)
+    if record is None:
+        raise AppError(404, "offer_not_found", "Offer was not found")
+    search = await session.get(SearchRequest, record.search_id)
+    assert search is not None
+    provider = build_flight_provider(get_redis(), provider_name=record.provider)
+    if provider is None:
+        raise AppError(503, "provider_unavailable", "The original flight provider is unavailable")
+    offer = FlightOffer.model_validate(record.data)
+    try:
+        try:
+            original_query = SearchCreate.model_validate(search.request_json)
+        except ValueError:
+            original_query = None
+        result = await provider.refresh_offer(offer, original_query)
+    except ConnectionError as exc:
+        raise AppError(503, "provider_unavailable", str(exc)) from exc
+    if result.offer is not None:
+        updated = result.offer.model_copy(update={"id": offer.id})
+        record.data = updated.model_dump(mode="json")
+        record.total_price = updated.total_price
+        record.currency = updated.currency
+        record.expires_at = updated.expires_at
         modules = search.result_json.get("modules", {})
-        for offers in modules.values():
-            for offer in offers:
-                if offer.get("id") == str(offer_id):
-                    value = offer.get("total_price", offer.get("price", 0))
-                    return refresh_saved_offer(offer_id, Decimal(str(value)))
-    raise AppError(404, "offer_not_found", "Offer was not found")
+        modules["flight"] = [
+            updated.model_dump(mode="json") if item.get("id") == str(offer_id) else item
+            for item in modules.get("flight", [])
+        ]
+        search.result_json = {**search.result_json, "modules": modules}
+    await session.commit()
+    return result.model_dump(mode="json", exclude={"offer"})
+
+
+@router.post("/offers/{offer_id}/clickout", status_code=303)
+async def clickout_offer(
+    offer_id: UUID, user: CurrentUser, session: Session
+) -> RedirectResponse:
+    records = list(
+        (
+            await session.scalars(
+                select(FlightOfferRecord)
+                .join(SearchRequest, SearchRequest.id == FlightOfferRecord.search_id)
+                .where(SearchRequest.user_id == user.id)
+            )
+        ).all()
+    )
+    record = next((item for item in records if item.data.get("id") == str(offer_id)), None)
+    if record is None:
+        raise AppError(404, "offer_not_found", "Offer was not found")
+    offer = FlightOffer.model_validate(record.data)
+    if not offer.clickout_available or offer.expires_at <= datetime.now(UTC):
+        raise AppError(409, "offer_expired", "Offer must be refreshed before booking")
+    provider = build_flight_provider(get_redis(), provider_name=record.provider)
+    if provider is None:
+        raise AppError(503, "provider_unavailable", "The original flight provider is unavailable")
+    target = await provider.clickout(offer)
+    parsed = urlparse(target or "")
+    if parsed.scheme != "https" or not parsed.netloc:
+        raise AppError(409, "clickout_unavailable", "A secure booking link is unavailable")
+    assert target is not None
+    request = ProviderRequest(
+        search_id=record.search_id,
+        provider=record.provider,
+        module="flight_clickout",
+        status="completed",
+        latency_ms=0,
+    )
+    session.add(request)
+    await session.flush()
+    session.add(
+        ProviderResponse(
+            provider_request_id=request.id,
+            payload={
+                "offer_id": str(offer_id),
+                "provider_offer_id": offer.provider_offer_id,
+                "selling_agent": offer.selling_agent,
+            },
+        )
+    )
+    await session.commit()
+    return RedirectResponse(target, status_code=303)

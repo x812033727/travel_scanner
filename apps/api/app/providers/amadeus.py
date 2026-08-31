@@ -19,7 +19,7 @@ from app.providers.schemas import (
     SourceMode,
     TransportOffer,
 )
-from app.search.schemas import SearchCreate
+from app.search.schemas import SearchCreate, TripType
 
 CITY_CODE_OVERRIDES = {
     "NRT": "TYO",
@@ -161,18 +161,61 @@ class AmadeusProvider:
 
     async def search_flights(self, query: SearchCreate) -> list[FlightOffer]:
         origin, destination, departure, returning = self._route(query)
-        params: dict[str, Any] = {
-            "originLocationCode": origin,
-            "destinationLocationCode": destination,
-            "departureDate": departure.isoformat(),
-            "adults": query.travelers.adults,
-            "children": query.travelers.children,
-            "currencyCode": query.currency,
-            "max": 12,
-        }
-        if query.trip_type.value == "round_trip":
-            params["returnDate"] = returning.isoformat()
-        payload = await self._request("GET", "/v2/shopping/flight-offers", params=params)
+        if query.trip_type == TripType.MULTI_CITY:
+            travelers = [
+                {"id": str(index + 1), "travelerType": "ADULT"}
+                for index in range(query.travelers.adults)
+            ]
+            travelers.extend(
+                {"id": str(len(travelers) + 1), "travelerType": "CHILD"}
+                for _ in range(query.travelers.children)
+            )
+            payload = await self._request(
+                "POST",
+                "/v2/shopping/flight-offers",
+                json={
+                    "currencyCode": query.currency,
+                    "originDestinations": [
+                        {
+                            "id": str(index + 1),
+                            "originLocationCode": leg.origin.upper(),
+                            "destinationLocationCode": leg.destination.upper(),
+                            "departureDateTimeRange": {"date": leg.departure_date.isoformat()},
+                        }
+                        for index, leg in enumerate(query.legs)
+                    ],
+                    "travelers": travelers,
+                    "sources": ["GDS"],
+                    "searchCriteria": {
+                        "maxFlightOffers": 12,
+                        "flightFilters": {
+                            "cabinRestrictions": [
+                                {
+                                    "cabin": query.cabin_class.value.upper(),
+                                    "coverage": "MOST_SEGMENTS",
+                                    "originDestinationIds": [
+                                        str(index + 1) for index in range(len(query.legs))
+                                    ],
+                                }
+                            ]
+                        },
+                    },
+                },
+            )
+        else:
+            params: dict[str, Any] = {
+                "originLocationCode": origin,
+                "destinationLocationCode": destination,
+                "departureDate": departure.isoformat(),
+                "adults": query.travelers.adults,
+                "children": query.travelers.children,
+                "currencyCode": query.currency,
+                "travelClass": query.cabin_class.value.upper(),
+                "max": 12,
+            }
+            if query.trip_type == TripType.ROUND_TRIP:
+                params["returnDate"] = returning.isoformat()
+            payload = await self._request("GET", "/v2/shopping/flight-offers", params=params)
         carriers = cast(dict[str, str], payload.get("dictionaries", {}).get("carriers", {}))
         now = datetime.now(UTC)
         offers: list[FlightOffer] = []
@@ -210,8 +253,13 @@ class AmadeusProvider:
             outbound = cast(list[dict[str, Any]], first_itinerary.get("segments", []))
             returning_segments = (
                 cast(list[dict[str, Any]], itineraries[1].get("segments", []))
-                if len(itineraries) > 1
+                if query.trip_type == TripType.ROUND_TRIP and len(itineraries) > 1
                 else []
+            )
+            outbound_end = (
+                len(outbound) - 1
+                if query.trip_type == TripType.ROUND_TRIP
+                else len(flat_segments) - 1
             )
             first_segment = raw_segments[0]
             carrier = str(first_segment.get("carrierCode") or "")
@@ -227,9 +275,9 @@ class AmadeusProvider:
                 is_bookable=True,
                 action_kind=ActionKind.RECHECK,
                 origin=flat_segments[0].origin,
-                destination=flat_segments[len(outbound) - 1].destination,
+                destination=flat_segments[outbound_end].destination,
                 departure_time=flat_segments[0].departure_time,
-                arrival_time=flat_segments[len(outbound) - 1].arrival_time,
+                arrival_time=flat_segments[outbound_end].arrival_time,
                 return_departure_time=(
                     parse_datetime(returning_segments[0].get("departure", {}).get("at"))
                     if returning_segments
@@ -250,7 +298,7 @@ class AmadeusProvider:
                 ),
                 airline=carriers.get(carrier, carrier),
                 flight_number=f"{carrier}{first_segment.get('number') or ''}",
-                cabin_class="economy",
+                cabin_class=query.cabin_class.value,
                 base_price=base,
                 taxes=taxes,
                 fees=Decimal(0),
@@ -260,6 +308,16 @@ class AmadeusProvider:
                 checked_baggage_kg=0,
                 refundable=bool(row.get("pricingOptions", {}).get("refundableFare")),
                 changeable=not bool(row.get("instantTicketingRequired")),
+                marketing_airline=carriers.get(carrier, carrier),
+                operating_airlines=list(
+                    dict.fromkeys(segment.airline for segment in flat_segments)
+                ),
+                last_verified_at=now,
+                clickout_available=False,
+                arrival_day_offset=(
+                    flat_segments[outbound_end].arrival_time.date()
+                    - flat_segments[0].departure_time.date()
+                ).days,
             )
             self._offers[offer_id] = offer
             offers.append(offer)
@@ -472,17 +530,35 @@ class AmadeusProvider:
             )
         return offers
 
-    async def refresh_offer(self, offer_id: UUID) -> OfferRefreshResult:
-        offer = self._offers.get(offer_id)
-        price = offer.total_price if offer is not None else Decimal(0)
+    async def refresh_offer(
+        self, offer: FlightOffer, query: SearchCreate | None = None
+    ) -> OfferRefreshResult:
+        price = offer.total_price
+        refreshed = None
+        if query is not None:
+            candidates = await self.search_flights(query)
+            refreshed = next(
+                (
+                    item
+                    for item in candidates
+                    if item.flight_number == offer.flight_number
+                    and item.departure_time == offer.departure_time
+                ),
+                None,
+            )
+        new_price = refreshed.total_price if refreshed else price
         return OfferRefreshResult(
-            offer_id=offer_id,
+            offer_id=offer.id,
             old_price=price,
-            new_price=price,
-            price_change=Decimal(0),
-            still_available=offer is not None,
+            new_price=new_price,
+            price_change=new_price - price,
+            still_available=refreshed is not None,
             refreshed_at=datetime.now(UTC),
+            offer=refreshed,
         )
+
+    async def clickout(self, offer: FlightOffer) -> str | None:
+        return None
 
     async def get_offer_details(self, offer_id: UUID) -> FlightOffer | None:
         offer = self._offers.get(offer_id)

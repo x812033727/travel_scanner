@@ -13,6 +13,7 @@ from app.middleware import RequestContextMiddleware
 from app.places.router import public_router as public_places_router
 from app.places.router import router as places_router
 from app.problems import AppError, app_error_handler
+from app.providers.flight_router import router as flight_router
 from app.providers.router import router as providers_router
 from app.search.router import router as search_router
 from app.trips.router import public_router as public_trips_router
@@ -40,6 +41,7 @@ app.include_router(ai_router, prefix="/api/v1")
 app.include_router(places_router, prefix="/api/v1")
 app.include_router(public_places_router, prefix="/api/v1")
 app.include_router(providers_router, prefix="/api/v1")
+app.include_router(flight_router, prefix="/api/v1")
 app.include_router(crawlers_router, prefix="/api/v1")
 
 

@@ -8,6 +8,7 @@ from app.config import Settings
 from app.providers.amadeus import AmadeusProvider
 from app.providers.registry import provider_status
 from app.providers.schemas import ActionKind, SourceMode
+from app.search.schemas import SearchCreate, SearchModule, TripLeg, TripType
 from tests.test_mock_providers import sample_query
 
 
@@ -21,6 +22,39 @@ def test_live_provider_reports_missing_credentials() -> None:
     status = provider_status(Settings(travel_provider_mode="live"))
     assert status.status == "not_configured"
     assert "Amadeus" in status.message
+
+
+@pytest.mark.asyncio
+async def test_amadeus_multi_city_sends_every_leg() -> None:
+    captured: dict[str, object] = {}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path.endswith("/token"):
+            return httpx.Response(200, json={"access_token": "token", "expires_in": 1800})
+        captured.update(request.read() and __import__("json").loads(request.content))
+        return httpx.Response(200, json={"data": [], "dictionaries": {}})
+
+    query = SearchCreate(
+        trip_type=TripType.MULTI_CITY,
+        legs=[
+            TripLeg(origin="TPE", destination="NRT", departure_date="2026-11-10"),
+            TripLeg(origin="NRT", destination="TPE", departure_date="2026-11-15"),
+            TripLeg(origin="TPE", destination="KIX", departure_date="2027-03-10"),
+        ],
+        modules=[SearchModule.FLIGHT],
+    )
+    settings = Settings(amadeus_client_id="client", amadeus_client_secret="secret")
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        await AmadeusProvider(redis, settings, client).search_flights(query)
+
+    routes = captured["originDestinations"]
+    assert isinstance(routes, list)
+    assert [(item["originLocationCode"], item["destinationLocationCode"]) for item in routes] == [
+        ("TPE", "NRT"),
+        ("NRT", "TPE"),
+        ("TPE", "KIX"),
+    ]
 
 
 @pytest.mark.asyncio

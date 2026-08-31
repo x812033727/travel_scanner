@@ -10,6 +10,13 @@ class TripType(StrEnum):
     MULTI_CITY = "multi_city"
 
 
+class FlightCabinClass(StrEnum):
+    ECONOMY = "economy"
+    PREMIUM_ECONOMY = "premium_economy"
+    BUSINESS = "business"
+    FIRST = "first"
+
+
 class SearchModule(StrEnum):
     FLIGHT = "flight"
     HOTEL = "hotel"
@@ -103,6 +110,7 @@ class SearchCreate(BaseModel):
     modules: list[SearchModule] = Field(min_length=1)
     preferences: SearchPreferences = Field(default_factory=SearchPreferences)
     flexible_dates: bool = False
+    cabin_class: FlightCabinClass = FlightCabinClass.ECONOMY
     currency: str = Field(default="TWD", min_length=3, max_length=3)
     locale: str = Field(default="zh-TW", max_length=16)
 

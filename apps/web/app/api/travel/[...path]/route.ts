@@ -23,7 +23,15 @@ async function proxy(request: NextRequest, context: Context) {
     headers,
     body: request.method === "GET" || request.method === "HEAD" ? undefined : await request.text(),
     cache: "no-store",
+    redirect: "manual",
   });
+  const redirectLocation = upstream.headers.get("location");
+  if (upstream.status >= 300 && upstream.status < 400 && redirectLocation) {
+    return new Response(null, {
+      status: upstream.status,
+      headers: { Location: redirectLocation },
+    });
+  }
   if (upstream.headers.get("content-type")?.includes("text/event-stream")) {
     return new Response(upstream.body, { status: upstream.status, headers: { "Content-Type": "text/event-stream", "Cache-Control": "no-cache", "X-Accel-Buffering": "no" } });
   }

@@ -4,9 +4,10 @@ Travel Scanner is a mock-first, API-first travel comparison MVP. It combines
 flights, hotels, activities, and transportation into complete trip plans and
 explains the trade-off between the cheapest, balanced, and comfortable choices.
 
-Trip search supports an explicit mock development mode and an Amadeus-backed
-test or live mode. Production never falls back to mock prices when credentials
-are absent. The experimental airline crawler remains a separate, non-bookable
+Trip search supports an explicit mock development mode, an Amadeus-backed test
+or live mode, and a Skyscanner Flights Live Prices integration for approved
+partners. Production never falls back to mock prices when credentials are
+absent. The experimental airline crawler remains a separate, non-bookable
 public-fare research surface.
 
 ## Architecture and project structure
@@ -99,6 +100,36 @@ For provider-backed search, set `TRAVEL_PROVIDER_MODE=live` together with
 photos, opening hours, and route estimates. Secrets belong in the runtime
 environment and must never be committed. `GET /api/v1/providers/status` reports
 whether live, test, mock, or disabled data is active.
+
+Flights can be selected independently with
+`FLIGHT_PROVIDER_MODE=auto|skyscanner|amadeus|mock`. In `auto` mode an approved
+`SKYSCANNER_API_KEY` wins, Amadeus is the fallback, and mock is available only
+outside production. Skyscanner exact-date searches use the Live Prices
+create/poll flow and emit repeated `module.results` SSE batches; flexible-date
+searches use Indicative Prices and never expose booking actions. Provider
+session tokens and booking URLs stay server-side. The browser posts to
+`POST /api/v1/offers/{offer_id}/clickout`, which validates ownership and expiry,
+records an audit event, and responds with a secure 303 redirect.
+
+Amadeus now sends every leg of a `multi_city` request rather than silently using
+only the first route. Its offers remain recheck-only because the adapter does
+not provide an approved clickout URL. The Skyscanner application checklist and
+product narrative are in
+[`docs/skyscanner-partnership-application.md`](docs/skyscanner-partnership-application.md).
+
+Live Prices calls must be initiated by a user with exact dates. AI destination
+discovery and scheduled price alerts do not call Skyscanner Live Prices. Public
+airline-page crawlers under `/labs/airlines` remain an isolated research tool
+and are never merged into bookable provider results.
+
+`POST /api/v1/flights/back-to-back` performs the production two-trip
+comparison. It issues five exact ticket searches through the selected flight
+provider: two conventional returns, the initial one-way, the foreign-origin
+two-leg multi-city ticket, and the final one-way. The response contains mixed-
+airline and same-marketing-airline totals. Missing tickets remain missing and
+produce a partial comparison; manual prices and crawler quotes are not inserted
+into this live response. The legacy crawler comparison remains available only
+under `/api/v1/crawlers/airlines/back-to-back-fares`.
 
 Saved optimized plans include an editable day-by-day itinerary. Owners can
 update it with optimistic version checks, rotate or revoke a secret read-only

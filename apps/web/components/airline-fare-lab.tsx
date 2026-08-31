@@ -17,6 +17,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { BackToBackFareSearch } from "@/components/back-to-back-fare-search";
+import { LiveBackToBackSearch } from "@/components/live-back-to-back-search";
 import { api, isUsageInsufficient, twd } from "@/lib/api";
 
 type AirlineCode = "CI" | "BR" | "JX";
@@ -106,7 +107,7 @@ function sourceFor(code: AirlineCode, sources: CrawlerSource[]) {
 
 export function AirlineFareLab() {
   const router = useRouter();
-  const [mode, setMode] = useState<"conventional" | "back_to_back">("conventional");
+  const [mode, setMode] = useState<"conventional" | "back_to_back" | "live_back_to_back">("conventional");
   const [status, setStatus] = useState<CrawlerStatus>();
   const [result, setResult] = useState<FareSearchResponse>();
   const [selected, setSelected] = useState<Record<AirlineCode, boolean>>({
@@ -216,12 +217,13 @@ export function AirlineFareLab() {
         })}
       </section>
 
-      <div role="tablist" aria-label="票價搜尋模式" className="mb-6 grid max-w-md grid-cols-2 rounded-2xl border border-[var(--line)] bg-white p-1.5">
+      <div role="tablist" aria-label="票價搜尋模式" className="mb-6 grid max-w-2xl grid-cols-3 rounded-2xl border border-[var(--line)] bg-white p-1.5">
         <button role="tab" aria-selected={mode === "conventional"} onClick={() => setMode("conventional")} className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${mode === "conventional" ? "bg-[var(--ink)] text-white" : "text-[var(--muted)]"}`}>一般來回</button>
         <button role="tab" aria-selected={mode === "back_to_back"} onClick={() => setMode("back_to_back")} className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${mode === "back_to_back" ? "bg-[var(--ink)] text-white" : "text-[var(--muted)]"}`}>倒買法</button>
+        <button role="tab" aria-selected={mode === "live_back_to_back"} onClick={() => setMode("live_back_to_back")} className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${mode === "live_back_to_back" ? "bg-[var(--ink)] text-white" : "text-[var(--muted)]"}`}>即時倒買 API</button>
       </div>
 
-      {mode === "back_to_back" ? <BackToBackFareSearch /> : <section className="grid gap-6 lg:grid-cols-[.82fr_1.18fr]">
+      {mode === "live_back_to_back" ? <LiveBackToBackSearch /> : mode === "back_to_back" ? <BackToBackFareSearch /> : <section className="grid gap-6 lg:grid-cols-[.82fr_1.18fr]">
         <form onSubmit={searchFares} className="self-start rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-[0_22px_70px_rgba(16,42,43,.08)] md:p-7">
           <div className="mb-6 flex items-center justify-between">
             <div><p className="text-xs font-semibold uppercase tracking-[.18em] text-[var(--teal)]">Search controls</p><h2 className="mt-1 text-2xl font-bold">設定航線</h2></div>
