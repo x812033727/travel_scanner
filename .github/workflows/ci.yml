@@ -91,10 +91,13 @@ jobs:
       - name: Start API, worker and web
         run: |
           cd apps/api
-          uv run uvicorn app.main:app --host 127.0.0.1 --port 8000 > /tmp/travel-api.log 2>&1 &
-          uv run python -m app.worker > /tmp/travel-worker.log 2>&1 &
+          setsid uv run uvicorn app.main:app --host 127.0.0.1 --port 8000 > /tmp/travel-api.log 2>&1 &
+          echo $! > "$RUNNER_TEMP/travel-api.pid"
+          setsid uv run python -m app.worker > /tmp/travel-worker.log 2>&1 &
+          echo $! > "$RUNNER_TEMP/travel-worker.pid"
           cd ../..
-          npm run dev --workspace @travel-scanner/web -- --port 3000 > /tmp/travel-web.log 2>&1 &
+          setsid npm run dev --workspace @travel-scanner/web -- --port 3000 > /tmp/travel-web.log 2>&1 &
+          echo $! > "$RUNNER_TEMP/travel-web.pid"
       - name: Wait for the real stack
         run: |
           for attempt in {1..60}; do
@@ -111,3 +114,11 @@ jobs:
       - name: Show service logs on failure
         if: failure()
         run: cat /tmp/travel-api.log /tmp/travel-worker.log /tmp/travel-web.log
+      - name: Stop application processes
+        if: always()
+        run: |
+          for pid_file in "$RUNNER_TEMP"/travel-*.pid; do
+            [ -f "$pid_file" ] || continue
+            pid="$(cat "$pid_file")"
+            kill -TERM -- "-$pid" 2>/dev/null || true
+          done
