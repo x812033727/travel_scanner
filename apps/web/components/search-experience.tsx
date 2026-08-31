@@ -64,6 +64,7 @@ type Offer = Record<string, unknown> & {
   source_mode?: "live" | "test" | "mock" | "estimate";
   is_mock?: boolean;
   is_bookable?: boolean;
+  is_fallback?: boolean;
   action_kind?: "deep_link" | "recheck" | "none";
   booking_url?: string | null;
   images?: string[];
@@ -99,6 +100,15 @@ type ProviderStatus = {
   status: "ready" | "not_configured" | "disabled";
   modules: string[];
   message: string;
+  module_statuses?: Record<string, {
+    selected_provider: string;
+    status: "ready" | "not_configured" | "disabled";
+    available: boolean;
+    configured: boolean;
+    fallback_provider?: string | null;
+    environment: string;
+    message: string;
+  }>;
 };
 
 type UsageStatus = { status: "reserved" | "charged" | "released"; uses: number; reference: string };

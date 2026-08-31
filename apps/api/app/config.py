@@ -24,6 +24,7 @@ class Settings(BaseSettings):
     rate_limit_per_minute: int = Field(default=120, ge=1)
     travel_provider_mode: str = "mock"
     flight_provider_mode: str = "auto"
+    hotel_provider_mode: str = "auto"
     amadeus_client_id: str | None = None
     amadeus_client_secret: str | None = None
     amadeus_env: str = "test"
@@ -75,7 +76,13 @@ class Settings(BaseSettings):
     booking_affiliate_url_template: str | None = None
     booking_allowed_hosts: str = "booking.com,www.booking.com"
     booking_demand_api_base_url: str = "https://demandapi-sandbox.booking.com/3.1"
+    booking_demand_enabled: bool = False
+    booking_demand_env: str = "sandbox"
+    booking_demand_affiliate_id: str | None = None
     booking_demand_api_token: str | None = None
+    booking_booker_country: str = "tw"
+    booking_language: str = "zh-tw"
+    booking_location_cache_ttl_seconds: int = Field(default=2_592_000, ge=3_600, le=31_536_000)
     skyscanner_affiliate_enabled: bool = False
     skyscanner_affiliate_url_template: str | None = None
     skyscanner_affiliate_allowed_hosts: str = "skyscanner.net,www.skyscanner.net"
@@ -123,6 +130,18 @@ class Settings(BaseSettings):
     @property
     def skyscanner_configured(self) -> bool:
         return bool(self.skyscanner_api_key)
+
+    @property
+    def booking_demand_effective_affiliate_id(self) -> str | None:
+        return self.booking_demand_affiliate_id or self.booking_affiliate_id
+
+    @property
+    def booking_demand_configured(self) -> bool:
+        return bool(
+            self.booking_demand_enabled
+            and self.booking_demand_effective_affiliate_id
+            and self.booking_demand_api_token
+        )
 
     @property
     def production(self) -> bool:

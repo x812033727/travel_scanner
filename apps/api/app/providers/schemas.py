@@ -38,6 +38,7 @@ class NormalizedOffer(BaseModel):
     freshness_status: FreshnessStatus = FreshnessStatus.FRESH
     source_mode: SourceMode = SourceMode.MOCK
     is_mock: bool = True
+    is_fallback: bool = False
     is_bookable: bool = False
     action_kind: ActionKind = ActionKind.NONE
     images: list[str] = Field(default_factory=list)

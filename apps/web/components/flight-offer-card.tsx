@@ -21,6 +21,7 @@ export type FlightCardOffer = {
   id: string;
   provider?: string;
   source_mode?: "live" | "test" | "mock" | "estimate";
+  is_fallback?: boolean;
   airline?: unknown;
   marketing_airline?: unknown;
   operating_airlines?: unknown;
@@ -117,7 +118,7 @@ export function FlightOfferCard({ offer, fallbackUrl, alertReturnPath }: { offer
 
   return <article className="overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-white">
     <div className="p-5 md:p-6">
-      <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--teal)]"><Plane size={16} />{offer.source_mode === "estimate" ? "彈性日期估算" : "即時航班價格"}</p><h2 className="mt-1 text-xl font-bold">{String(offer.marketing_airline || offer.airline || "航空公司待確認")}</h2><p className="mt-1 text-xs text-[var(--muted)]">{operating ? `實際承運：${operating} · ` : ""}售票端：{String(offer.selling_agent || "重新確認時顯示")}</p></div><div className="text-right"><strong className="text-xl">{twd.format(price)}</strong><p className="mt-1 text-xs text-[var(--muted)]">{baggage}</p></div></div>
+      <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--teal)]"><Plane size={16} />{offer.source_mode === "estimate" ? "彈性日期估算" : "即時航班價格"}{offer.is_fallback ? " · 備援來源" : ""}</p><h2 className="mt-1 text-xl font-bold">{String(offer.marketing_airline || offer.airline || "航空公司待確認")}</h2><p className="mt-1 text-xs text-[var(--muted)]">{operating ? `實際承運：${operating} · ` : ""}售票端：{String(offer.selling_agent || "重新確認時顯示")}</p></div><div className="text-right"><strong className="text-xl">{twd.format(price)}</strong><p className="mt-1 text-xs text-[var(--muted)]">{baggage}</p></div></div>
       <div className="mt-4 space-y-2">
         <FlightLeg label="去程" segments={outbound} departure={offer.departure_time} arrival={offer.arrival_time} fallbackOrigin={String(offer.origin || "")} fallbackDestination={String(offer.destination || "")} />
         {(returning.length || offer.return_departure_time) ? <FlightLeg label="回程" segments={returning} departure={offer.return_departure_time} arrival={offer.return_arrival_time} fallbackOrigin={String(offer.destination || "")} fallbackDestination={String(offer.origin || "")} /> : null}

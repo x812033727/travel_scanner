@@ -26,8 +26,11 @@ from app.models import (
 from app.optimization.engine import TripOptimizer, TripPlanResult
 from app.places.google import GoogleTravelService
 from app.problems import AppError
-from app.providers.base import TravelProvider
-from app.providers.registry import build_provider, provider_status
+from app.providers.base import ActivityProvider, FlightProvider, HotelProvider, TransportProvider
+from app.providers.registry import (
+    build_module_provider_candidates,
+    provider_status_for_modules,
+)
 from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, Offer, TransportOffer
 from app.search.schemas import SearchCreate, SearchPreferences, Travelers
@@ -368,30 +371,46 @@ async def compute_routes_for_rows(
 
 
 async def run_provider_module(
-    provider: TravelProvider,
+    provider: object,
     runner: ProviderRunner,
     module: str,
     query: SearchCreate,
 ) -> list[Offer]:
     if module == "flight":
+        flight_provider = cast(FlightProvider, provider)
         return cast(
             list[Offer],
-            await runner.run(provider.name, module, lambda: provider.search_flights(query)),
+            await runner.run(
+                flight_provider.name, module, lambda: flight_provider.search_flights(query)
+            ),
         )
     if module == "hotel":
+        hotel_provider = cast(HotelProvider, provider)
         return cast(
             list[Offer],
-            await runner.run(provider.name, module, lambda: provider.search_hotels(query)),
+            await runner.run(
+                hotel_provider.name, module, lambda: hotel_provider.search_hotels(query)
+            ),
         )
     if module == "activities":
+        activity_provider = cast(ActivityProvider, provider)
         return cast(
             list[Offer],
-            await runner.run(provider.name, module, lambda: provider.search_activities(query)),
+            await runner.run(
+                activity_provider.name,
+                module,
+                lambda: activity_provider.search_activities(query),
+            ),
         )
     if module == "transport":
+        transport_provider = cast(TransportProvider, provider)
         return cast(
             list[Offer],
-            await runner.run(provider.name, module, lambda: provider.search_transport(query)),
+            await runner.run(
+                transport_provider.name,
+                module,
+                lambda: transport_provider.search_transport(query),
+            ),
         )
     return []
 
@@ -403,17 +422,35 @@ async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPla
     query = SearchCreate.model_validate(search.request_json)
     redis = get_redis()
     settings = await load_runtime_settings(session)
-    provider = build_provider(redis, settings)
-    status = provider_status(settings)
-    if provider is None:
+    providers = build_module_provider_candidates(redis, settings)
+    status = provider_status_for_modules([str(module) for module in query.modules], settings)
+    if not any(providers.get(str(module)) for module in query.modules):
         raise AppError(503, "travel_provider_unavailable", status.message)
     runner = ProviderRunner(redis, settings)
 
     async def collect(module: str) -> tuple[str, list[Offer], str | None]:
-        try:
-            return module, await run_provider_module(provider, runner, module, query), None
-        except ProviderUnavailableError as exc:
-            return module, [], str(exc)
+        candidates = providers.get(module, [])
+        if not candidates:
+            module_status = status.module_statuses.get(module)
+            return module, [], module_status.message if module_status else "供應商尚未設定"
+        primary_name = str(getattr(candidates[0], "name", "unknown"))
+        for index, provider in enumerate(candidates):
+            try:
+                offers = await run_provider_module(provider, runner, module, query)
+                warning = None
+                if index > 0:
+                    offers = [
+                        offer.model_copy(update={"is_fallback": True}) for offer in offers
+                    ]
+                    warning = (
+                        f"{module} 主要供應商 {primary_name} 暫時無法使用，"
+                        f"已切換至 {getattr(provider, 'name', 'backup')}。"
+                    )
+                return module, offers, warning
+            except ProviderUnavailableError as exc:
+                if index + 1 == len(candidates):
+                    return module, [], str(exc)
+        return module, [], "供應商目前無法使用"
 
     refreshed = await asyncio.gather(*(collect(str(module)) for module in query.modules))
     offers = {module: rows for module, rows, _ in refreshed}
