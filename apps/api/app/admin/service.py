@@ -368,7 +368,14 @@ async def settings_snapshot(session: AsyncSession) -> ProviderSettingsSnapshot:
     audit_rows = list(
         (
             await session.scalars(
-                select(AdminAuditLog).order_by(AdminAuditLog.created_at.desc()).limit(20)
+                select(AdminAuditLog)
+                .where(
+                    AdminAuditLog.action.in_(
+                        ["provider_settings_updated", "provider_connection_tested"]
+                    )
+                )
+                .order_by(AdminAuditLog.created_at.desc())
+                .limit(20)
             )
         ).all()
     )
