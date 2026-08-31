@@ -24,6 +24,7 @@ import { BudgetBreakdown, type BudgetCost } from "@/components/budget-breakdown"
 import { AirbnbSearchPanel } from "@/components/airbnb-search-panel";
 import { HotelOfferCard, hotelNightlyPrice, hotelRating, hotelStarRating } from "@/components/hotel-offer-card";
 import { FlightOfferCard } from "@/components/flight-offer-card";
+import { FlightDateOptions, type FlightDateOption } from "@/components/flight-date-options";
 import { SearchCriteriaEditor, type CriteriaUpdate } from "@/components/search-criteria-editor";
 
 type Parsed = {
@@ -31,6 +32,7 @@ type Parsed = {
   destination?: string;
   departure_date?: string;
   return_date?: string;
+  flex_days?: 0 | 3 | 7;
   departure_month?: string;
   travelers: { adults: number; children?: number; children_ages?: number[]; rooms?: number };
   trip_length_days?: number;
@@ -101,7 +103,7 @@ type UsageStatus = { status: "reserved" | "charged" | "released"; uses: number; 
 
 type SearchResult = {
   status: string;
-  result?: { modules?: Record<string, Offer[]>; plans?: Plan[] };
+  result?: { modules?: Record<string, Offer[]>; plans?: Plan[]; flight_date_options?: FlightDateOption[] };
   warnings?: string[];
   usage?: UsageStatus;
 };
@@ -122,6 +124,13 @@ const sourceLabels = {
 
 function amount(offer: Offer): number {
   return Number(offer.total_price ?? offer.price ?? 0);
+}
+
+function flightTimeSummary(offer: Offer) {
+  const time = (value: unknown) => typeof value === "string" ? value.match(/T(\d{2}:\d{2})/)?.[1] : undefined;
+  const outbound = `${time(offer.departure_time) || "時間待確認"}–${time(offer.arrival_time) || "時間待確認"}`;
+  const returning = offer.return_departure_time ? ` · 回程 ${time(offer.return_departure_time) || "時間待確認"}–${time(offer.return_arrival_time) || "時間待確認"}` : "";
+  return `去程 ${outbound}${returning}`;
 }
 
 function titleFor(module: string, offer: Offer): string {
@@ -188,6 +197,7 @@ export function SearchExperience() {
       destination,
       departure_date: params.get("departure_date") || undefined,
       return_date: params.get("return_date") || undefined,
+      flex_days: Number(params.get("flex_days") || 0) as Parsed["flex_days"],
       travelers: {
         adults: Number(params.get("adults") || 1),
         children: Number(params.get("children") || 0),
@@ -226,6 +236,8 @@ export function SearchExperience() {
   const [error, setError] = useState<string>();
   const [busy, setBusy] = useState(false);
   const [usageState, setUsageState] = useState<UsageStatus>();
+  const [flightDateOptions, setFlightDateOptions] = useState<FlightDateOption[]>([]);
+  const [selectedDateOption, setSelectedDateOption] = useState<FlightDateOption>();
   const [activeTab, setActiveTab] = useState("plans");
   const [breakfastOnly, setBreakfastOnly] = useState(params.get("breakfast_required") === "true");
   const [refundableOnly, setRefundableOnly] = useState(params.get("refundable_required") === "true");
@@ -270,11 +282,15 @@ export function SearchExperience() {
     const result = await api<SearchResult>(`/searches/${id}`);
     if (result.result?.modules) setOffers(result.result.modules);
     if (result.result?.plans) setPlans(result.result.plans);
+    setFlightDateOptions(result.result?.flight_date_options || []);
     setWarnings(result.warnings || []);
     if (result.usage) setUsageState(result.usage);
   }
 
-  async function begin() {
+  async function begin(
+    requestedDates: string[] = dates,
+    requestedFlexDays: 0 | 3 | 7 = parsed?.flex_days || 0,
+  ) {
     if (!parsed || providerStatus?.status !== "ready") return;
     setBusy(true);
     setError(undefined);
@@ -287,8 +303,10 @@ export function SearchExperience() {
           trip_type: "round_trip",
           origin: parsed.origin || "TPE",
           destination: parsed.destination || "NRT",
-          departure_date: dates[0],
-          return_date: dates[1],
+          departure_date: requestedDates[0],
+          return_date: requestedDates[1],
+          flexible_dates: requestedFlexDays > 0,
+          flex_days: requestedFlexDays,
           travelers: {
             adults: parsed.travelers.adults,
             children: parsed.travelers.children || 0,
@@ -327,6 +345,11 @@ export function SearchExperience() {
           const unique = new Map(combined.map((offer) => [offer.id, offer]));
           return { ...current, [data.module]: Array.from(unique.values()) };
         });
+      });
+      stream.addEventListener("flight.date_options", (message) => {
+        const data = JSON.parse((message as MessageEvent).data);
+        setFlightDateOptions(data.options || []);
+        setSelectedDateOption(undefined);
       });
       stream.addEventListener("provider.completed", (message) => {
         const data = JSON.parse((message as MessageEvent).data);
@@ -396,6 +419,7 @@ export function SearchExperience() {
     if (parsed?.destination) next.set("destination", parsed.destination);
     next.set("departure_date", update.departureDate);
     next.set("return_date", update.returnDate);
+    next.set("flex_days", String(update.flexDays));
     next.set("adults", String(update.adults));
     next.set("children", String(update.children));
     next.set("rooms", String(update.rooms));
@@ -418,6 +442,8 @@ export function SearchExperience() {
     setOffers({});
     setPlans([]);
     setWarnings([]);
+    setFlightDateOptions([]);
+    setSelectedDateOption(undefined);
     setError(undefined);
     setDone([]);
     setProgress(0);
@@ -431,6 +457,25 @@ export function SearchExperience() {
     setActivityInterest("all");
     setSortByPrice(false);
     router.replace(`/search?${next.toString()}`);
+  }
+
+  function applyDateOption(option: FlightDateOption) {
+    if (!option.return_date) return;
+    const next = new URLSearchParams(params.toString());
+    next.set("departure_date", option.departure_date);
+    next.set("return_date", option.return_date);
+    next.set("flex_days", "0");
+    router.replace(`/search?${next.toString()}`);
+    setSearchId(undefined);
+    setOffers({});
+    setPlans([]);
+    setWarnings([]);
+    setFlightDateOptions([]);
+    setSelectedDateOption(undefined);
+    setDone([]);
+    setProgress(0);
+    setActiveTab("plans");
+    void begin([option.departure_date, option.return_date], 0);
   }
 
   const visibleOffers = useMemo(() => {
@@ -484,10 +529,10 @@ export function SearchExperience() {
           {providerStatus && <span className={`rounded-full px-3 py-2 text-xs font-semibold ${providerTone}`}>{providerStatus.message}</span>}
         </div>
         {parsed && <div className="mt-5 flex flex-wrap gap-2 text-sm">
-          {[`${parsed.travelers.adults + (parsed.travelers.children || 0)} 位旅客`, `${parsed.travelers.rooms || 1} 間房`, `${dates[0]} → ${dates[1]}`, parsed.preferred_area ? `住在 ${parsed.preferred_area}` : null, parsed.budget_twd ? `預算 ${twd.format(parsed.budget_twd)}` : null, parsed.hotel_max_nightly_twd ? `每晚 ≤ ${twd.format(parsed.hotel_max_nightly_twd)}` : null, parsed.avoid_red_eye ? "避開紅眼" : null, parsed.breakfast_required ? "含早餐" : null, parsed.refundable_required ? "可退款" : null, ...parsed.interests.map(interestLabel)].filter(Boolean).map((tag) => <span key={String(tag)} className="rounded-full bg-[var(--teal-soft)] px-3 py-1.5 text-[var(--teal-dark)]">{tag}</span>)}
+          {[`${parsed.travelers.adults + (parsed.travelers.children || 0)} 位旅客`, `${parsed.travelers.rooms || 1} 間房`, `${dates[0]} → ${dates[1]}`, parsed.flex_days ? `日期前後可移動 ${parsed.flex_days} 日` : "指定日期", parsed.preferred_area ? `住在 ${parsed.preferred_area}` : null, parsed.budget_twd ? `預算 ${twd.format(parsed.budget_twd)}` : null, parsed.hotel_max_nightly_twd ? `每晚 ≤ ${twd.format(parsed.hotel_max_nightly_twd)}` : null, parsed.avoid_red_eye ? "避開紅眼" : null, parsed.breakfast_required ? "含早餐" : null, parsed.refundable_required ? "可退款" : null, ...parsed.interests.map(interestLabel)].filter(Boolean).map((tag) => <span key={String(tag)} className="rounded-full bg-[var(--teal-soft)] px-3 py-1.5 text-[var(--teal-dark)]">{tag}</span>)}
         </div>}
-        {parsed && <SearchCriteriaEditor criteria={{ ...parsed, include_airbnb: includeAirbnb }} destination={destination} dates={dates} disabled={busy} onApply={applyCriteria} />}
-        {!searchId && <><div className="mt-6 flex flex-col gap-3 sm:flex-row"><button disabled={!parsed || busy || providerStatus?.status !== "ready"} onClick={begin} className="rounded-2xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">確認條件並開始搜尋</button>{includeAirbnb && airbnbCriteria && <AirbnbSearchPanel criteria={airbnbCriteria} compact />}</div><p className="mt-2 text-xs text-[var(--muted)]">站內比較成功取得至少一筆可用結果才扣 1 次；Airbnb 官方外站搜尋不扣次。</p></>}
+        {parsed && <SearchCriteriaEditor criteria={{ ...parsed, flex_days: parsed.flex_days || 0, include_airbnb: includeAirbnb }} destination={destination} dates={dates} disabled={busy} onApply={applyCriteria} />}
+        {!searchId && <><div className="mt-6 flex flex-col gap-3 sm:flex-row"><button disabled={!parsed || busy || providerStatus?.status !== "ready"} onClick={() => begin()} className="rounded-2xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50">確認條件並開始搜尋</button>{includeAirbnb && airbnbCriteria && <AirbnbSearchPanel criteria={airbnbCriteria} compact />}</div><p className="mt-2 text-xs text-[var(--muted)]">站內比較成功取得至少一筆可用結果才扣 1 次；Airbnb 官方外站搜尋不扣次。</p></>}
         {error && <div role="alert" className="mt-5 flex items-start gap-2 rounded-xl bg-red-50 p-4 text-sm text-red-800"><AlertCircle size={18} className="mt-0.5 shrink-0" /><span>{error} {error.includes("sign") || error.includes("登入") ? <Link className="underline" href="/login">前往登入</Link> : null}</span></div>}
         {warnings.map((warning) => <p key={warning} className="mt-3 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">{warning}</p>)}
       </section>
@@ -499,7 +544,7 @@ export function SearchExperience() {
         <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">{stages.map(({ key, label, icon: Icon }) => <div key={key} className={`flex items-center gap-2 rounded-xl p-2 text-sm ${done.includes(key) ? "text-[var(--teal)]" : "text-[var(--muted)]"}`}>{done.includes(key) ? <Check size={17} /> : <LoaderCircle size={17} className={busy ? "animate-spin" : ""} />}<Icon size={17} />{label}</div>)}</div>
       </section>}
 
-      {(plans.length > 0 || Object.keys(offers).length > 0) && <section>
+      {(plans.length > 0 || Object.keys(offers).length > 0 || flightDateOptions.length > 0) && <section>
         <div className="mb-5 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="搜尋結果分類">
           {resultTabs.map((tab) => <button key={tab.key} role="tab" aria-selected={activeTab === tab.key} onClick={() => setActiveTab(tab.key)} className={`whitespace-nowrap rounded-full border px-4 py-2 text-sm font-semibold ${activeTab === tab.key ? "border-[var(--teal)] bg-[var(--teal)] text-white" : "border-[var(--line)] bg-white text-[var(--muted)]"}`}>{tab.label}</button>)}
         </div>
@@ -508,13 +553,15 @@ export function SearchExperience() {
           {index === 0 && <span className="absolute -top-3 left-6 rounded-full bg-[var(--teal)] px-3 py-1 text-xs font-semibold text-white">BEST OVERALL</span>}
           <div className="flex items-start justify-between gap-4"><div><p className="text-sm text-[var(--muted)]">{plan.title}</p><h2 className="mt-1 text-3xl font-bold">{twd.format(Number(plan.total_cost.total_cost))}</h2><p className="mt-1 text-xs text-[var(--muted)]">整趟旅程預估總額</p></div><button onClick={() => save(plan)} aria-label={`儲存${plan.title}`} className="rounded-xl border border-[var(--line)] p-2 text-[var(--teal)]"><Save size={18} /></button></div>
           <BudgetBreakdown cost={plan.total_cost} budget={parsed?.budget_twd} />
-          <div className="my-5 space-y-3 border-y border-[var(--line)] py-5 text-sm">{plan.flight && <p className="flex justify-between gap-3"><span className="flex items-center gap-2"><Plane size={16} />{String(plan.flight.airline)}</span><span>{twd.format(amount(plan.flight))}</span></p>}{plan.hotel && <p className="flex justify-between gap-3"><span className="flex items-center gap-2"><Hotel size={16} />{String(plan.hotel.hotel_name)}</span><span>{twd.format(amount(plan.hotel))}</span></p>}{plan.activity && <p className="flex justify-between gap-3"><span className="flex items-center gap-2"><MapPinned size={16} />{String(plan.activity.title)}</span><span>{twd.format(amount(plan.activity))}</span></p>}{plan.transport && <p className="flex justify-between gap-3"><span className="flex items-center gap-2"><TrainFront size={16} />{String(plan.transport.transport_type)}</span><span>{twd.format(amount(plan.transport))}</span></p>}</div>
+          <div className="my-5 space-y-3 border-y border-[var(--line)] py-5 text-sm">{plan.flight && <div className="flex justify-between gap-3"><span className="flex gap-2"><Plane size={16} className="mt-0.5 shrink-0" /><span>{String(plan.flight.airline)}<small className="mt-1 block text-[var(--muted)]">{flightTimeSummary(plan.flight)}</small></span></span><span>{twd.format(amount(plan.flight))}</span></div>}{plan.hotel && <p className="flex justify-between gap-3"><span className="flex items-center gap-2"><Hotel size={16} />{String(plan.hotel.hotel_name)}</span><span>{twd.format(amount(plan.hotel))}</span></p>}{plan.activity && <p className="flex justify-between gap-3"><span className="flex items-center gap-2"><MapPinned size={16} />{String(plan.activity.title)}</span><span>{twd.format(amount(plan.activity))}</span></p>}{plan.transport && <p className="flex justify-between gap-3"><span className="flex items-center gap-2"><TrainFront size={16} />{String(plan.transport.transport_type)}</span><span>{twd.format(amount(plan.transport))}</span></p>}</div>
           {plan.itinerary?.length ? <p className="mb-4 flex items-center gap-2 rounded-xl bg-[var(--teal-soft)] p-3 text-sm text-[var(--teal-dark)]"><BadgeCheck size={16} />已安排 {plan.itinerary.length} 天可編輯行程</p> : null}
           <ul className="space-y-2 text-sm">{plan.pros.map((item) => <li key={item} className="flex gap-2"><Check size={16} className="mt-0.5 shrink-0 text-[var(--teal)]" />{item}</li>)}{plan.cons.map((item) => <li key={item} className="flex gap-2 text-[var(--muted)]"><Clock3 size={16} className="mt-0.5 shrink-0" />{item}</li>)}</ul>
           <button onClick={() => save(plan)} className="mt-5 w-full rounded-xl bg-[var(--teal)] px-4 py-3 font-semibold text-white">儲存並編輯行程</button>
         </article>)}</div>}
 
         {activeTab === "airbnb" && airbnbCriteria && <AirbnbSearchPanel criteria={airbnbCriteria} />}
+
+        {activeTab === "flight" && <FlightDateOptions options={flightDateOptions} selected={selectedDateOption} busy={busy} onSelect={setSelectedDateOption} onApply={applyDateOption} />}
 
         {activeTab !== "plans" && activeTab !== "airbnb" && <div className="mb-4 flex flex-wrap items-center gap-4 rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm">
           <strong className="text-[var(--teal-dark)]">快速篩選</strong>
@@ -524,7 +571,7 @@ export function SearchExperience() {
           {activeTab === "activities" && <label className="flex items-center gap-2">興趣<select className="rounded-lg border border-[var(--line)] px-2 py-1.5" value={activityInterest} onChange={(event) => setActivityInterest(event.target.value)}><option value="all">全部</option>{destinationInterests.map((interest) => <option key={interest.code} value={interest.code}>{interest.label}</option>)}</select></label>}
         </div>}
 
-        {activeTab !== "plans" && activeTab !== "airbnb" && <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{visibleOffers.map((offer) => {
+        {activeTab !== "plans" && activeTab !== "airbnb" && <div className={activeTab === "flight" ? "space-y-4" : "grid gap-5 md:grid-cols-2 lg:grid-cols-3"}>{visibleOffers.map((offer) => {
           if (activeTab === "hotel") return <HotelOfferCard key={offer.id} offer={offer} actionUrl={recheckUrl(activeTab, offer, parsed, dates)} />;
           if (activeTab === "flight") return <FlightOfferCard key={offer.id} offer={offer} fallbackUrl={recheckUrl(activeTab, offer, parsed, dates)} />;
           const image = offer.images?.[0];

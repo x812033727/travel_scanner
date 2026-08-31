@@ -106,6 +106,8 @@ async def test_concurrent_provider_search_persists_results_without_sharing_sessi
         "travelers": {"adults": 2, "children": 0, "children_ages": [], "rooms": 1},
         "modules": ["flight", "hotel"],
         "preferences": {},
+        "flexible_dates": True,
+        "flex_days": 7,
     }
     async with SessionFactory() as session:
         user = await session.scalar(select(User).where(User.email == email))
@@ -142,6 +144,9 @@ async def test_concurrent_provider_search_persists_results_without_sharing_sessi
         assert completed.status == "completed"
         assert set(completed.result_json["modules"]) == {"flight", "hotel"}
         assert completed.result_json["modules"]["hotel"]
+        assert completed.result_json["flight_date_options"][0]["is_current"] is True
+        assert completed.result_json["flight_date_options"][0]["shift_days"] == 0
+        assert "目前航班供應商不支援彈性日期估價。" in completed.warnings_json
         assert settled is not None and settled.status == "committed"
 
 

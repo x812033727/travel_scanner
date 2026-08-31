@@ -1,5 +1,6 @@
 from datetime import date
 from enum import StrEnum
+from typing import Literal
 
 from pydantic import BaseModel, Field, model_validator
 
@@ -110,15 +111,22 @@ class SearchCreate(BaseModel):
     modules: list[SearchModule] = Field(min_length=1)
     preferences: SearchPreferences = Field(default_factory=SearchPreferences)
     flexible_dates: bool = False
+    flex_days: Literal[0, 3, 7] = 0
     cabin_class: FlightCabinClass = FlightCabinClass.ECONOMY
     currency: str = Field(default="TWD", min_length=3, max_length=3)
     locale: str = Field(default="zh-TW", max_length=16)
 
     @model_validator(mode="after")
     def validate_route(self) -> "SearchCreate":
+        if self.flexible_dates and self.flex_days == 0:
+            self.flex_days = 7
+        if self.flex_days:
+            self.flexible_dates = True
         if self.trip_type == TripType.MULTI_CITY:
             if len(self.legs) < 2:
                 raise ValueError("multi_city requires at least two legs")
+            if self.flexible_dates:
+                raise ValueError("multi_city does not support flexible dates")
         elif not all((self.origin, self.destination, self.departure_date)):
             raise ValueError("origin, destination and departure_date are required")
         if self.trip_type == TripType.ROUND_TRIP and self.return_date is None:
