@@ -5,6 +5,8 @@ from uuid import UUID
 
 from pydantic import BaseModel, Field
 
+from app.search.schemas import PropertyType
+
 
 class FreshnessStatus(StrEnum):
     FRESH = "fresh"
@@ -100,6 +102,8 @@ class HotelOffer(NormalizedOffer):
     review_score: float | None = None
     review_count: int | None = None
     distance_to_center_km: float | None = None
+    property_type: PropertyType = PropertyType.HOTEL
+    max_guests: int | None = None
 
 
 class ActivityOffer(NormalizedOffer):

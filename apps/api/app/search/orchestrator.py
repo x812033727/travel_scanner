@@ -156,13 +156,8 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
     results: dict[str, list[dict[str, Any]]] = {}
     warnings: list[str] = []
 
-    async def collect(module: str) -> tuple[str, list[Offer], str | None]:
+    async def collect(module: str) -> tuple[str, list[Offer], str | None, int]:
         started = time.perf_counter()
-        provider_request = ProviderRequest(
-            search_id=search_id, provider=provider.name, module=module
-        )
-        session.add(provider_request)
-        await session.flush()
         try:
             offers = await run_module(provider, runner, module, query)
             if module == "hotel" and place_service.configured:
@@ -171,8 +166,29 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
             elif module == "activities" and place_service.configured:
                 activities = [item for item in offers if isinstance(item, ActivityOffer)]
                 offers = cast(list[Offer], await place_service.enrich_activities(activities))
-            provider_request.status = "completed"
-            provider_request.latency_ms = int((time.perf_counter() - started) * 1000)
+            latency_ms = int((time.perf_counter() - started) * 1000)
+            return module, offers, None, latency_ms
+        except ProviderUnavailableError as exc:
+            latency_ms = int((time.perf_counter() - started) * 1000)
+            return module, [], str(exc), latency_ms
+
+    tasks = [asyncio.create_task(collect(str(module))) for module in query.modules]
+    for completed in asyncio.as_completed(tasks):
+        module, offers, error, latency_ms = await completed
+        provider_request = ProviderRequest(
+            search_id=search_id,
+            provider=provider.name,
+            module=module,
+            status="failed" if error else "completed",
+            latency_ms=latency_ms,
+            error=error,
+        )
+        session.add(provider_request)
+        await session.flush()
+        progress = MODULE_PROGRESS[module]
+        if error:
+            warnings.append(error)
+        else:
             session.add(
                 ProviderResponse(
                     provider_request_id=provider_request.id,
@@ -180,21 +196,6 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                 )
             )
             await persist_offers(session, search_id, module, offers)
-            await session.commit()
-            return module, offers, None
-        except ProviderUnavailableError as exc:
-            provider_request.status = "failed"
-            provider_request.error = str(exc)
-            await session.commit()
-            return module, [], str(exc)
-
-    tasks = [asyncio.create_task(collect(str(module))) for module in query.modules]
-    for completed in asyncio.as_completed(tasks):
-        module, offers, error = await completed
-        progress = MODULE_PROGRESS[module]
-        if error:
-            warnings.append(error)
-        else:
             serialized = [offer.model_dump(mode="json") for offer in offers]
             results[module] = serialized
             await publish_event(

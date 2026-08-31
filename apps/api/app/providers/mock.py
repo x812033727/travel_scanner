@@ -13,7 +13,7 @@ from app.providers.schemas import (
     OfferRefreshResult,
     TransportOffer,
 )
-from app.search.schemas import SearchCreate
+from app.search.schemas import PropertyType, SearchCreate
 
 CITY_DATA = {
     "TYO": ("東京", 35.6762, 139.6503),
@@ -137,8 +137,8 @@ class MockProvider:
         names = [
             f"{city}中央旅店",
             f"{city}站前花園飯店",
-            f"{city}河畔設計酒店",
-            f"{city}都會舒適飯店",
+            f"{city}河畔整套公寓",
+            f"{city}都會整套民宿",
         ]
         offers: list[HotelOffer] = []
         for index, name in enumerate(names):
@@ -159,7 +159,7 @@ class MockProvider:
                 hotel_name=name,
                 latitude=latitude + index * 0.004,
                 longitude=longitude - index * 0.003,
-                rating=3.8 + index * 0.35,
+                rating=[3, 4, 4, 5][index],
                 room_type="標準雙人房" if index < 2 else "豪華雙人房",
                 check_in=check_in.replace(hour=15),
                 check_out=check_out.replace(hour=11),
@@ -172,6 +172,21 @@ class MockProvider:
                 refundable=index != 0,
                 station_walk_minutes=[11, 5, 8, 3][index],
                 nightly_price=((base + taxes + fees) / nights).quantize(Decimal("0.01")),
+                address=f"{city}市旅遊核心區 {index + 1}-{index + 3}",
+                amenities=[
+                    ["Wi-Fi", "空調"],
+                    ["Wi-Fi", "健身房", "行李寄存"],
+                    ["Wi-Fi", "洗衣服務", "餐廳"],
+                    ["Wi-Fi", "健身房", "行政酒廊", "機場接送"],
+                ][index],
+                review_score=[7.6, 8.4, 8.9, 9.3][index],
+                review_count=[48, 320, 126, 680][index],
+                distance_to_center_km=[2.8, 0.8, 1.6, 0.5][index],
+                cancellation_policy=(
+                    "不可退款" if index == 0 else "入住前 3 天可免費取消，之後收取首晚房費"
+                ),
+                property_type=(PropertyType.HOTEL if index < 2 else PropertyType.VACATION_RENTAL),
+                max_guests=[2, 4, 4, 6][index],
             )
             offers.append(offer)
             self._offers[offer_id] = offer

@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test("primary travel flow is visible", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { name: /少開十個分頁/ })).toBeVisible();
-  await expect(page.getByRole("button", { name: /比較完整旅程/ })).toBeVisible();
+  await expect(page.getByRole("button", { name: /下一步/ })).toBeVisible();
   await Promise.all([
     page.waitForURL(/\/pricing$/, { timeout: 30_000 }),
     page.getByRole("link", { name: "方案" }).click(),
@@ -12,20 +12,60 @@ test("primary travel flow is visible", async ({ page }) => {
 });
 
 test("Japan Korea Thailand workbench carries structured preferences", async ({ page }) => {
+  await page.route("**/api/travel/destinations/discover", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({
+      assumptions: ["推薦階段使用估算資料"],
+      recommendations: [{ candidate_id: "HKT:2026-11-10:5", city: "普吉", airport: "HKT", country: "泰國", country_code: "TH", areas: ["普吉老城", "卡塔"], reason: "海灘與度假選擇完整", departure_date: "2026-11-10", return_date: "2026-11-15", trip_length_days: 5, estimated_flight_twd: 21000, estimated_lodging_twd: 18000, estimated_total_twd: 55000, score: 92, matched_interests: ["beach"], relaxed_preferences: [] }],
+    }),
+  }));
   await page.goto("/");
+  await page.getByRole("button", { name: /下一步/ }).click();
   await page.getByRole("button", { name: /泰國/ }).click();
-  await expect(page.getByRole("button", { name: /^普吉/ })).toBeVisible();
-  await page.getByRole("button", { name: /^普吉/ }).click();
+  await page.getByLabel("指定城市").selectOption("HKT");
+  await page.getByRole("button", { name: /下一步/ }).click();
   await page.getByLabel("兒童人數").selectOption("2");
+  await page.getByRole("button", { name: /下一步/ }).click();
+  await page.getByRole("button", { name: "兩種都接受" }).click();
+  await page.getByText("需要含早餐").click();
+  await page.getByRole("button", { name: /下一步/ }).click();
   await page.getByRole("button", { name: "海灘／跳島", exact: true }).click();
-  await page.getByText("進階住宿與行程條件").click();
-  await page.getByText("住宿含早餐").click();
+  await page.getByRole("button", { name: /請 AI 推薦 3 組/ }).click();
+  await expect(page.getByRole("heading", { name: "泰國・普吉" })).toBeVisible();
+  await page.getByLabel("偏好住宿區域").selectOption("普吉老城");
   await Promise.all([
     page.waitForURL(/destination=HKT/, { timeout: 20_000 }),
-    page.getByRole("button", { name: /比較完整旅程/ }).click(),
+    page.getByRole("button", { name: /用這組條件搜尋/ }).click(),
   ]);
   await expect(page).toHaveURL(/children_ages=8%2C8/);
   await expect(page).toHaveURL(/breakfast_required=true/);
+  await expect(page).toHaveURL(/include_airbnb=true/);
+  await expect(page).toHaveURL(/accepted_property_types=hotel%2Cvacation_rental/);
+});
+
+test("Airbnb official search is available without running the paid comparison", async ({ page }) => {
+  await page.route("**/api/travel/providers/status", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({
+      provider: "amadeus",
+      mode: "test",
+      status: "ready",
+      modules: ["flight", "hotel", "activities", "transport"],
+      message: "供應商測試資料已啟用",
+    }),
+  }));
+  await page.goto("/search?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=2&children=1&rooms=1&preferred_area=%E6%96%B0%E5%AE%BF&include_airbnb=true");
+  const link = page.getByRole("link", { name: /Airbnb 官方外站搜尋/ });
+  await expect(link).toBeVisible();
+  const href = await link.getAttribute("href");
+  expect(href).toContain("https://www.airbnb.com/s/");
+  expect(href).toContain("checkin=2026-11-10");
+  expect(href).toContain("checkout=2026-11-15");
+  expect(href).toContain("adults=2");
+  expect(href).toContain("children=1");
+  await expect(page.getByText(/Airbnb 官方外站搜尋不扣次/)).toBeVisible();
 });
 
 test("search criteria can be revised before running a new comparison", async ({ page }) => {
