@@ -97,6 +97,8 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await expect(page.getByRole("button", { name: "返回我的旅行" })).toBeVisible();
   await page.setViewportSize({ width: 320, height: 700 });
   await expect(page.getByRole("heading", { name: "11月11日週三" })).toBeVisible();
+  await expect(page.getByText("2 個安排 · 停留約 2 小時")).toBeVisible();
+  await expect(page.locator(".planner-timeline-marker")).toHaveText(["1", "2"]);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
     await page.evaluate(() => document.documentElement.clientWidth),
   );
