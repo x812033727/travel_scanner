@@ -114,6 +114,7 @@ class MockProvider:
                 ],
                 airline=airline,
                 flight_number=f"{code}{100 + index * 17}",
+                cabin_class=query.cabin_class.value,
                 base_price=base,
                 taxes=taxes,
                 fees=fees,
@@ -123,6 +124,11 @@ class MockProvider:
                 checked_baggage_kg=0 if index == 3 else 23,
                 refundable=index in (1, 2),
                 changeable=index != 3,
+                marketing_airline=airline,
+                operating_airlines=[airline],
+                baggage_summary=("含手提行李" if index == 3 else "含 23 kg 托運行李"),
+                last_verified_at=now,
+                arrival_day_offset=(arrival.date() - depart_at.date()).days,
             )
             offers.append(offer)
             self._offers[offer_id] = offer
@@ -248,21 +254,25 @@ class MockProvider:
             for index, (kind, minutes, price, score) in enumerate(rows)
         ]
 
-    async def refresh_offer(self, offer_id: UUID) -> OfferRefreshResult:
+    async def refresh_offer(
+        self, offer: FlightOffer, query: SearchCreate | None = None
+    ) -> OfferRefreshResult:
         await self._wait("refresh")
-        offer = self._offers.get(offer_id)
-        old_price = Decimal(0) if offer is None else offer.total_price
-        available = offer is not None and offer_id.int % 17 != 0
-        delta = Decimal((offer_id.int % 7) - 3) * Decimal(50)
+        old_price = offer.total_price
+        available = offer.id.int % 17 != 0
+        delta = Decimal((offer.id.int % 7) - 3) * Decimal(50)
         new_price = max(Decimal(0), old_price + delta) if available else old_price
         return OfferRefreshResult(
-            offer_id=offer_id,
+            offer_id=offer.id,
             old_price=old_price,
             new_price=new_price,
             price_change=new_price - old_price,
             still_available=available,
             refreshed_at=datetime.now(UTC),
         )
+
+    async def clickout(self, offer: FlightOffer) -> str | None:
+        return None
 
     async def get_offer_details(self, offer_id: UUID) -> FlightOffer | None:
         offer = self._offers.get(offer_id)

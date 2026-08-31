@@ -77,6 +77,14 @@ class FlightOffer(NormalizedOffer):
     return_departure_time: datetime | None = None
     return_arrival_time: datetime | None = None
     stops: int = 0
+    marketing_airline: str | None = None
+    operating_airlines: list[str] = Field(default_factory=list)
+    selling_agent: str | None = None
+    fare_brand: str | None = None
+    baggage_summary: str | None = None
+    last_verified_at: datetime | None = None
+    clickout_available: bool = False
+    arrival_day_offset: int = 0
 
 
 class HotelOffer(NormalizedOffer):
@@ -142,3 +150,4 @@ class OfferRefreshResult(BaseModel):
     price_change: Decimal
     still_available: bool
     refreshed_at: datetime
+    offer: FlightOffer | None = None

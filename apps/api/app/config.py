@@ -21,9 +21,17 @@ class Settings(BaseSettings):
     provider_circuit_seconds: int = 60
     rate_limit_per_minute: int = Field(default=120, ge=1)
     travel_provider_mode: str = "mock"
+    flight_provider_mode: str = "auto"
     amadeus_client_id: str | None = None
     amadeus_client_secret: str | None = None
     amadeus_env: str = "test"
+    skyscanner_api_key: str | None = None
+    skyscanner_base_url: str = "https://partners.api.skyscanner.net"
+    skyscanner_market: str = "TW"
+    skyscanner_locale: str = "zh-TW"
+    skyscanner_currency: str = "TWD"
+    skyscanner_poll_attempts: int = Field(default=4, ge=1, le=10)
+    skyscanner_poll_interval_seconds: float = Field(default=0.5, ge=0, le=5)
     google_maps_api_key: str | None = None
     route_cache_ttl_seconds: int = Field(default=900, ge=60, le=86_400)
     navitime_api_base_url: str | None = None
@@ -59,6 +67,10 @@ class Settings(BaseSettings):
     @property
     def amadeus_configured(self) -> bool:
         return bool(self.amadeus_client_id and self.amadeus_client_secret)
+
+    @property
+    def skyscanner_configured(self) -> bool:
+        return bool(self.skyscanner_api_key)
 
     @property
     def production(self) -> bool:

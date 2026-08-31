@@ -23,6 +23,7 @@ import { destinationByAirport, interestLabel, interests as destinationInterests 
 import { BudgetBreakdown, type BudgetCost } from "@/components/budget-breakdown";
 import { AirbnbSearchPanel } from "@/components/airbnb-search-panel";
 import { HotelOfferCard, hotelNightlyPrice, hotelRating, hotelStarRating } from "@/components/hotel-offer-card";
+import { FlightOfferCard } from "@/components/flight-offer-card";
 import { SearchCriteriaEditor, type CriteriaUpdate } from "@/components/search-criteria-editor";
 
 type Parsed = {
@@ -321,11 +322,15 @@ export function SearchExperience() {
       stream.addEventListener("module.results", (message) => {
         const data = JSON.parse((message as MessageEvent).data);
         setProgress(data.progress);
-        setOffers((current) => ({ ...current, [data.module]: data.offers }));
+        setOffers((current) => {
+          const combined = [...(current[data.module] || []), ...data.offers] as Offer[];
+          const unique = new Map(combined.map((offer) => [offer.id, offer]));
+          return { ...current, [data.module]: Array.from(unique.values()) };
+        });
       });
       stream.addEventListener("provider.completed", (message) => {
         const data = JSON.parse((message as MessageEvent).data);
-        if (data.status === "completed") {
+        if (["complete", "completed", "partial", "timeout", "rate_limited"].includes(data.status)) {
           setDone((current) => current.includes(data.module) ? current : [...current, data.module]);
         }
       });
@@ -521,6 +526,7 @@ export function SearchExperience() {
 
         {activeTab !== "plans" && activeTab !== "airbnb" && <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{visibleOffers.map((offer) => {
           if (activeTab === "hotel") return <HotelOfferCard key={offer.id} offer={offer} actionUrl={recheckUrl(activeTab, offer, parsed, dates)} />;
+          if (activeTab === "flight") return <FlightOfferCard key={offer.id} offer={offer} fallbackUrl={recheckUrl(activeTab, offer, parsed, dates)} />;
           const image = offer.images?.[0];
           const mode = offer.source_mode || (offer.is_mock ? "mock" : "estimate");
           return <article key={offer.id} className="overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-white">
