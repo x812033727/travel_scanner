@@ -13,6 +13,7 @@ from app.auth.router import router as auth_router
 from app.config import get_settings
 from app.crawlers.router import router as crawlers_router
 from app.db import engine
+from app.hotspots.router import router as hotspots_router
 from app.infra import get_redis
 from app.middleware import RequestContextMiddleware
 from app.places.router import public_router as public_places_router
@@ -54,6 +55,7 @@ app.include_router(public_places_router, prefix="/api/v1")
 app.include_router(providers_router, prefix="/api/v1")
 app.include_router(flight_router, prefix="/api/v1")
 app.include_router(crawlers_router, prefix="/api/v1")
+app.include_router(hotspots_router, prefix="/api/v1")
 
 
 @app.get("/health", tags=["system"])

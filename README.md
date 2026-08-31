@@ -230,6 +230,22 @@ commercial rights. When configured, sourced exit, platform, and recommended-car
 fields are displayed. Missing details are explicitly marked unavailable and are
 never inferred.
 
+## Travel hotspot intelligence
+
+The public `/hotspots` page searches a time-stamped attraction catalog and shows global or city
+rankings for Japan, South Korea and Thailand. The scheduled `hotspot-collector` seeds stable place
+identities, collects the latest and preceding 30-day Wikimedia pageview totals, and writes
+explainable global and per-city ranking snapshots. Cold-start values remain visibly marked as
+estimates rather than live popularity.
+
+The API exposes `/api/v1/hotspots/rankings`, `/api/v1/hotspots/sources`, and the compact
+`/api/v1/hotspots/for-planner` feed. The last endpoint is intended for AI itinerary candidate
+selection; route feasibility, opening hours and traveler preferences still decide the final plan.
+Google Places remains an on-demand lookup because its content cannot be persisted as a general
+ranking database. Discussion sources stay disabled until the intended use has an applicable API
+and retention agreement. See [`docs/hotspot-intelligence.md`](docs/hotspot-intelligence.md) for the
+formula, source policy, settings and manual collection command.
+
 ## Experimental public airline fares
 
 `POST /api/v1/crawlers/airlines/fares` reads public cached-fare pages for China

@@ -12,6 +12,7 @@ from app.crawlers.airlines import AirlineFareCrawlerService
 from app.crawlers.schemas import AirlineFareSearch
 from app.crawlers.verification import build_verification_report
 from app.db import SessionFactory
+from app.hotspots.jobs import collect_once
 from app.infra import get_redis
 from app.models import AdminAuditLog, User
 from app.providers.registry import build_provider, provider_status
@@ -140,6 +141,7 @@ def main() -> None:
     live.add_argument("--origin", default="TPE")
     live.add_argument("--destination", default="NRT")
     live.add_argument("--strict", action="store_true")
+    subparsers.add_parser("collect-hotspots")
     args = parser.parse_args()
     if args.command == "add-usage-package":
         asyncio.run(add_usage_package(args.email, args.package, args.reference))
@@ -153,6 +155,8 @@ def main() -> None:
         passed = asyncio.run(verify_live_provider(args.origin, args.destination))
         if args.strict and not passed:
             raise SystemExit(1)
+    elif args.command == "collect-hotspots":
+        print(asyncio.run(collect_once()))
 
 
 if __name__ == "__main__":
