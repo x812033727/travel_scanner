@@ -2,7 +2,6 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { MobileNav } from "./mobile-nav";
 
-
 describe("MobileNav", () => {
   it("keeps My Trips visible without opening the mobile menu", () => {
     render(<MobileNav />);
@@ -22,4 +21,3 @@ describe("MobileNav", () => {
     expect(screen.queryByRole("navigation", { name: "手機主要導覽" })).toBeNull();
   });
 });
-
