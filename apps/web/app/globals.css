@@ -246,6 +246,8 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 9px 22px color-mix(in srgb, var(--teal) 28%, transparent);
 }
 
+.planner-add-label-short { display: none; }
+
 .planner-tool-card {
   border: 1px solid var(--line);
   border-radius: 1.3rem;
@@ -415,6 +417,14 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 1023px) {
   .planner-app-shell { background: var(--paper); }
   .planner-day-panel { border-color: color-mix(in srgb, var(--line) 85%, transparent); }
+}
+
+@media (max-width: 359px) {
+  .planner-sort-label,
+  .planner-add-label-long { display: none; }
+  .planner-add-label-short { display: inline; }
+  .planner-mobile-dock { gap: .4rem; padding: .45rem; }
+  .planner-dock-button { padding-inline: .5rem; font-size: .8rem; }
 }
 
 @media (min-width: 1024px) {
