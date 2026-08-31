@@ -9,6 +9,16 @@ function normalizedOrigin(value: string | null | undefined): string | undefined 
   }
 }
 
+export function observedRequestOrigin(headers: Headers, fallbackOrigin: string): string {
+  const host = headers.get("host")?.trim();
+  const forwardedProtocol = headers.get("x-forwarded-proto")?.split(",")[0]?.trim();
+  const fallback = normalizedOrigin(fallbackOrigin);
+  if (!fallback) return fallbackOrigin;
+  const protocol = forwardedProtocol || new URL(fallback).protocol.slice(0, -1);
+  if (!host || !/^(http|https)$/.test(protocol) || /[\s/@\\]/.test(host)) return fallback;
+  return normalizedOrigin(`${protocol}://${host}`) || fallback;
+}
+
 export function validateProxyPath(path: string[]): string | undefined {
   if (path.length === 0) return undefined;
   const safe: string[] = [];

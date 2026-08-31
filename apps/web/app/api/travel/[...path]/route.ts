@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import {
   forwardedClientAddress,
   isAllowedMutationOrigin,
+  observedRequestOrigin,
   safeRedirectLocation,
   validateProxyPath,
 } from "./proxy-security";
@@ -51,10 +52,11 @@ async function proxy(request: NextRequest, context: Context) {
   const { path } = await context.params;
   const endpoint = validateProxyPath(path);
   if (!endpoint) return problem(400, "invalid_proxy_path", "API 路徑格式不正確");
+  const requestOrigin = observedRequestOrigin(request.headers, request.nextUrl.origin);
   if (!isAllowedMutationOrigin(
     request.method,
     request.headers.get("origin"),
-    request.nextUrl.origin,
+    requestOrigin,
     process.env.NEXT_PUBLIC_SITE_URL,
   )) {
     return problem(403, "cross_site_request_blocked", "不允許跨網站修改資料");

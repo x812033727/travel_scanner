@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   forwardedClientAddress,
   isAllowedMutationOrigin,
+  observedRequestOrigin,
   safeRedirectLocation,
   validateProxyPath,
 } from "./proxy-security";
@@ -21,6 +22,15 @@ describe("travel API proxy security", () => {
     expect(isAllowedMutationOrigin("POST", "https://mocair.io", "https://mocair.io")).toBe(true);
     expect(isAllowedMutationOrigin("POST", "https://evil.example", "https://mocair.io")).toBe(false);
     expect(isAllowedMutationOrigin("POST", null, "https://mocair.io")).toBe(false);
+  });
+
+  it("uses the observed Host when Next normalizes a development URL", () => {
+    const observed = observedRequestOrigin(
+      new Headers({ host: "127.0.0.1:3000" }),
+      "http://localhost:3000",
+    );
+    expect(observed).toBe("http://127.0.0.1:3000");
+    expect(isAllowedMutationOrigin("POST", observed, observed)).toBe(true);
   });
 
   it("only forwards relative, same-origin HTTP, or HTTPS redirects", () => {
