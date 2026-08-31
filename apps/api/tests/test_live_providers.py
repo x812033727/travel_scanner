@@ -209,6 +209,8 @@ async def test_amadeus_maps_all_modules_and_caches_oauth_token() -> None:
     assert calls["/v1/security/oauth2/token"] == 1
     assert flights[0].source_mode == SourceMode.TEST
     assert flights[0].return_departure_time is not None
+    assert [segment.leg_index for segment in flights[0].segments] == [0, 1]
+    assert flights[0].segments[0].departure_timezone == "UTC+08:00"
     assert hotels[0].breakfast_included and hotels[0].nightly_price is not None
     assert activities[0].action_kind == ActionKind.DEEP_LINK
     assert transfers[0].is_bookable

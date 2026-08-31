@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from decimal import Decimal
 from enum import StrEnum
 from uuid import UUID
@@ -53,6 +53,21 @@ class FlightSegment(BaseModel):
     arrival_time: datetime
     airline: str
     flight_number: str
+    leg_index: int = Field(default=0, ge=0)
+    departure_timezone: str | None = None
+    arrival_timezone: str | None = None
+
+
+class FlightDateOption(BaseModel):
+    shift_days: int
+    departure_date: date
+    return_date: date | None = None
+    lowest_price: Decimal
+    currency: str = "TWD"
+    provider: str
+    source_mode: SourceMode
+    is_current: bool = False
+    offer_count: int = 1
 
 
 class FlightOffer(NormalizedOffer):

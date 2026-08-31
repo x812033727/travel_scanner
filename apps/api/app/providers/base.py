@@ -4,6 +4,7 @@ from uuid import UUID
 
 from app.providers.schemas import (
     ActivityOffer,
+    FlightDateOption,
     FlightOffer,
     HotelOffer,
     OfferRefreshResult,
@@ -43,6 +44,12 @@ class FlightProvider(Protocol):
     ) -> OfferRefreshResult: ...
     async def clickout(self, offer: FlightOffer) -> str | None: ...
     async def get_offer_details(self, offer_id: UUID) -> FlightOffer | None: ...
+
+
+class FlexibleFlightProvider(Protocol):
+    async def search_flexible_dates(
+        self, query: SearchCreate, flex_days: int
+    ) -> list[FlightDateOption]: ...
 
 
 class HotelProvider(Protocol):

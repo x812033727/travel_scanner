@@ -1,6 +1,6 @@
 import asyncio
 import json
-from datetime import UTC, datetime, timedelta
+from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal, InvalidOperation
 from typing import Any, cast
 from urllib.parse import urlparse
@@ -13,6 +13,7 @@ from app.config import Settings, get_settings
 from app.providers.base import FlightSearchBatch, FlightSearchState
 from app.providers.schemas import (
     ActionKind,
+    FlightDateOption,
     FlightOffer,
     FlightSegment,
     OfferRefreshResult,
@@ -80,6 +81,34 @@ def _datetime(value: object) -> datetime:
             tzinfo=UTC,
         )
     return datetime.now(UTC)
+
+
+def _date(value: object) -> date | None:
+    if isinstance(value, str):
+        try:
+            return date.fromisoformat(value[:10])
+        except ValueError:
+            return None
+    if isinstance(value, dict):
+        data = cast(dict[str, Any], value)
+        try:
+            return date(
+                int(data.get("year") or 0),
+                int(data.get("month") or 0),
+                int(data.get("day") or 0),
+            )
+        except ValueError:
+            return None
+    return None
+
+
+def _timezone_label(value: object) -> str | None:
+    if not isinstance(value, str):
+        return "供應商當地時間"
+    parsed = value.replace("Z", "+00:00")
+    if len(parsed) >= 6 and parsed[-6] in {"+", "-"}:
+        return f"UTC{parsed[-6:]}"
+    return "供應商當地時間"
 
 
 def _https_url(value: object) -> str | None:
@@ -184,6 +213,44 @@ class SkyscannerProvider:
             "cabinClass": f"CABIN_CLASS_{query.cabin_class.value.upper()}",
         }
 
+    def _indicative_query(
+        self,
+        query: SearchCreate,
+        departure_month: tuple[int, int],
+        return_month: tuple[int, int] | None,
+    ) -> dict[str, Any]:
+        assert query.origin and query.destination
+
+        def month_range(value: tuple[int, int]) -> dict[str, dict[str, int]]:
+            year, month = value
+            return {
+                "startDate": {"year": year, "month": month},
+                "endDate": {"year": year, "month": month},
+            }
+
+        legs: list[dict[str, Any]] = [
+            {
+                "originPlace": {"queryPlace": {"iata": query.origin.upper()}},
+                "destinationPlace": {"queryPlace": {"iata": query.destination.upper()}},
+                "dateRange": month_range(departure_month),
+            }
+        ]
+        if query.trip_type == TripType.ROUND_TRIP and return_month is not None:
+            legs.append(
+                {
+                    "originPlace": {"queryPlace": {"iata": query.destination.upper()}},
+                    "destinationPlace": {"queryPlace": {"iata": query.origin.upper()}},
+                    "dateRange": month_range(return_month),
+                }
+            )
+        return {
+            "market": self.settings.skyscanner_market,
+            "locale": query.locale or self.settings.skyscanner_locale,
+            "currency": query.currency or self.settings.skyscanner_currency,
+            "queryLegs": legs,
+            "dateTimeGroupingType": "DATE_TIME_GROUPING_TYPE_BY_DATE",
+        }
+
     @staticmethod
     def _state(payload: dict[str, Any]) -> FlightSearchState:
         status = str(
@@ -230,7 +297,7 @@ class SkyscannerProvider:
                 flat_segments: list[FlightSegment] = []
                 marketing_names: list[str] = []
                 operating_names: list[str] = []
-                for leg in itinerary_legs:
+                for leg_index, leg in enumerate(itinerary_legs):
                     raw_segments = [
                         segments.get(str(value), {}) for value in leg.get("segmentIds", [])
                     ]
@@ -266,18 +333,23 @@ class SkyscannerProvider:
                             or ""
                         )
                         iata = str(marketing.get("iata") or "")
+                        raw_departure = segment.get("departureDateTime") or leg.get(
+                            "departureDateTime"
+                        )
+                        raw_arrival = segment.get("arrivalDateTime") or leg.get(
+                            "arrivalDateTime"
+                        )
                         flat_segments.append(
                             FlightSegment(
                                 origin=str(origin_place.get("iata") or origin_id),
                                 destination=str(destination_place.get("iata") or destination_id),
-                                departure_time=_datetime(
-                                    segment.get("departureDateTime") or leg.get("departureDateTime")
-                                ),
-                                arrival_time=_datetime(
-                                    segment.get("arrivalDateTime") or leg.get("arrivalDateTime")
-                                ),
+                                departure_time=_datetime(raw_departure),
+                                arrival_time=_datetime(raw_arrival),
                                 airline=marketing_name,
                                 flight_number=f"{iata}{flight_number}",
+                                leg_index=leg_index,
+                                departure_timezone=_timezone_label(raw_departure),
+                                arrival_timezone=_timezone_label(raw_arrival),
                             )
                         )
                 if not flat_segments:
@@ -294,6 +366,8 @@ class SkyscannerProvider:
                             arrival_time=_datetime(last_leg.get("arrivalDateTime")),
                             airline="航空公司待確認",
                             flight_number="",
+                            departure_timezone="供應商當地時間",
+                            arrival_timezone="供應商當地時間",
                         )
                     ]
                 agent_ids = option.get("agentIds", [])
@@ -303,8 +377,10 @@ class SkyscannerProvider:
                 link = None if estimate else _deep_link(option)
                 provider_id = f"{itinerary_id}:{option.get('id') or option_index}"
                 offer_id = uuid5(NAMESPACE_URL, f"travel-scanner:skyscanner:{provider_id}")
-                departure = flat_segments[0].departure_time
-                arrival = flat_segments[-1].arrival_time
+                outbound_segments = [item for item in flat_segments if item.leg_index == 0]
+                return_segments = [item for item in flat_segments if item.leg_index == 1]
+                departure = outbound_segments[0].departure_time
+                arrival = outbound_segments[-1].arrival_time
                 duration = sum(int(item.get("durationInMinutes") or 0) for item in itinerary_legs)
                 stops = sum(int(item.get("stopCount") or 0) for item in itinerary_legs)
                 primary = next((value for value in marketing_names if value), "航空公司待確認")
@@ -322,8 +398,8 @@ class SkyscannerProvider:
                     action_kind=ActionKind.NONE if estimate else ActionKind.DEEP_LINK,
                     attributions=["Skyscanner"],
                     attribution_urls=[SKYSCANNER_ATTRIBUTION_URL],
-                    origin=flat_segments[0].origin,
-                    destination=flat_segments[-1].destination,
+                    origin=outbound_segments[0].origin,
+                    destination=outbound_segments[-1].destination,
                     departure_time=departure,
                     arrival_time=arrival,
                     duration_minutes=max(1, duration),
@@ -340,6 +416,12 @@ class SkyscannerProvider:
                     checked_baggage_kg=0,
                     refundable=False,
                     changeable=False,
+                    return_departure_time=(
+                        return_segments[0].departure_time if return_segments else None
+                    ),
+                    return_arrival_time=(
+                        return_segments[-1].arrival_time if return_segments else None
+                    ),
                     stops=stops,
                     marketing_airline=primary,
                     operating_airlines=list(dict.fromkeys(operating_names)),
@@ -364,32 +446,78 @@ class SkyscannerProvider:
         return sorted(unique.values(), key=lambda item: (item.total_price, item.provider_offer_id))
 
     async def start_search(self, query: SearchCreate) -> FlightSearchBatch:
-        indicative = query.flexible_dates
-        path = (
-            "/apiservices/v3/flights/indicative/search"
-            if indicative
-            else "/apiservices/v3/flights/live/search/create"
+        payload = await self._send(
+            "/apiservices/v3/flights/live/search/create", {"query": self._query(query)}
         )
-        payload = await self._send(path, {"query": self._query(query)})
-        session_id = str(
-            payload.get("sessionToken") or f"indicative-{datetime.now(UTC).timestamp()}"
-        )
+        session_id = str(payload.get("sessionToken") or datetime.now(UTC).timestamp())
         await self.redis.set(
             f"provider:skyscanner:session:{session_id}",
             json.dumps({"cabin_class": query.cabin_class.value}),
             ex=600,
         )
-        state = FlightSearchState.COMPLETE if indicative else self._state(payload)
         return FlightSearchBatch(
             session_id,
             await self._offers(
                 payload,
                 session_id,
-                estimate=indicative,
                 cabin_class=query.cabin_class.value,
             ),
-            state,
+            self._state(payload),
         )
+
+    async def search_flexible_dates(
+        self, query: SearchCreate, flex_days: int
+    ) -> list[FlightDateOption]:
+        if query.trip_type == TripType.MULTI_CITY or query.departure_date is None:
+            return []
+        requested: dict[tuple[date, date | None], int] = {}
+        for shift in range(-flex_days, flex_days + 1):
+            outbound = query.departure_date + timedelta(days=shift)
+            inbound = query.return_date + timedelta(days=shift) if query.return_date else None
+            requested[(outbound, inbound)] = shift
+        month_groups = {
+            (
+                (outbound.year, outbound.month),
+                (inbound.year, inbound.month) if inbound else None,
+            )
+            for outbound, inbound in requested
+        }
+        collected: dict[tuple[date, date | None], FlightDateOption] = {}
+        for departure_month, return_month in sorted(
+            month_groups, key=lambda value: (value[0], value[1] or (0, 0))
+        ):
+            payload = await self._send(
+                "/apiservices/v3/flights/indicative/search",
+                {"query": self._indicative_query(query, departure_month, return_month)},
+            )
+            content = cast(dict[str, Any], payload.get("content", payload))
+            results = cast(dict[str, Any], content.get("results", content))
+            for quote in _items(results.get("quotes")):
+                outbound_leg = cast(dict[str, Any], quote.get("outboundLeg", {}))
+                inbound_leg = cast(dict[str, Any], quote.get("inboundLeg", {}))
+                quote_outbound = _date(outbound_leg.get("departureDateTime"))
+                quote_inbound = (
+                    _date(inbound_leg.get("departureDateTime")) if inbound_leg else None
+                )
+                key = (quote_outbound, quote_inbound) if quote_outbound else None
+                if key is None or key not in requested:
+                    continue
+                price = _money(quote.get("minPrice"))
+                if price <= 0:
+                    continue
+                existing = collected.get(key)
+                collected[key] = FlightDateOption(
+                    shift_days=requested[key],
+                    departure_date=key[0],
+                    return_date=key[1],
+                    lowest_price=min(existing.lowest_price, price) if existing else price,
+                    currency=query.currency,
+                    provider=self.name,
+                    source_mode=SourceMode.ESTIMATE,
+                    is_current=requested[key] == 0,
+                    offer_count=(existing.offer_count + 1) if existing else 1,
+                )
+        return sorted(collected.values(), key=lambda item: item.shift_days)
 
     async def poll_search(self, session_id: str) -> FlightSearchBatch:
         payload = await self._send(

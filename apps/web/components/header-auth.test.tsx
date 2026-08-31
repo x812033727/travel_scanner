@@ -23,4 +23,12 @@ describe("header auth", () => {
     expect(await screen.findByRole("button", { name: "登出" })).toBeTruthy();
     expect(screen.getByText("user@example.com")).toBeTruthy();
   });
+
+  it("shows the admin link only for administrators", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(ok({
+      id: "u1", email: "admin@example.com", is_admin: true,
+    })));
+    render(<HeaderAuth />);
+    expect((await screen.findByRole("link", { name: "管理後台" })).getAttribute("href")).toBe("/admin/settings");
+  });
 });

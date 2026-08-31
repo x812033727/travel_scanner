@@ -1,0 +1,93 @@
+import { act, fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { PlacePicker } from "./place-picker";
+
+describe("PlacePicker", () => {
+  beforeEach(() => vi.useFakeTimers());
+  afterEach(() => {
+    vi.useRealTimers();
+    vi.unstubAllGlobals();
+  });
+
+  it("uses Google region, nearby bias, and one session token through place selection", async () => {
+    const onSelect = vi.fn();
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify([
+        {
+          provider: "google_places",
+          place_id: "ChIJ-test",
+          name: "淺草寺",
+          address: "日本東京都台東區",
+          distance_meters: 4210,
+          attribution: "Google Maps",
+        },
+      ]), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify({
+        provider: "google_places",
+        place_id: "ChIJ-test",
+        name: "淺草寺",
+        address: "日本東京都台東區",
+        latitude: 35.7148,
+        longitude: 139.7967,
+        attribution: "Google Maps",
+      }), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(
+      <PlacePicker
+        value="淺草"
+        confirmed={false}
+        countryCodes={["jp"]}
+        bias={{ latitude: 35.6812, longitude: 139.7671 }}
+        onTextChange={() => undefined}
+        onSelect={onSelect}
+      />,
+    );
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(320);
+      await Promise.resolve();
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+
+    const autocompleteUrl = new URL(String(fetchMock.mock.calls[0][0]), "https://travel.test");
+    expect(autocompleteUrl.searchParams.get("country_codes")).toBe("jp");
+    expect(autocompleteUrl.searchParams.get("latitude")).toBe("35.6812");
+    const sessionToken = autocompleteUrl.searchParams.get("session_token");
+    expect(sessionToken).toBeTruthy();
+    expect(screen.getByText(/約 4 公里/)).toBeTruthy();
+    expect(screen.getByText("地點資料：Google Maps")).toBeTruthy();
+
+    await act(async () => {
+      fireEvent.click(screen.getByRole("button", { name: /淺草寺/ }));
+      await Promise.resolve();
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    const detailsUrl = new URL(String(fetchMock.mock.calls[1][0]), "https://travel.test");
+    expect(detailsUrl.searchParams.get("session_token")).toBe(sessionToken);
+    expect(onSelect).toHaveBeenCalledWith(expect.objectContaining({
+      place_id: "ChIJ-test",
+      latitude: 35.7148,
+      attribution: "Google Maps",
+    }));
+  });
+
+  it("shows when the Google Maps service is not configured", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      code: "google_maps_not_configured",
+      detail: "Google Maps 地點搜尋尚未啟用",
+    }), { status: 503 })));
+    render(
+      <PlacePicker
+        value="淺草"
+        confirmed={false}
+        onTextChange={() => undefined}
+        onSelect={() => undefined}
+      />,
+    );
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(320);
+      await Promise.resolve();
+    });
+    expect(screen.getByRole("alert").textContent).toContain("Google Maps 地點搜尋尚未啟用");
+  });
+});

@@ -12,6 +12,7 @@ from rq import Queue
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.admin.service import load_runtime_settings
 from app.auth.service import CurrentUser
 from app.config import get_settings
 from app.db import get_session
@@ -51,7 +52,8 @@ async def create_search(
     session: Session,
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
 ) -> dict[str, Any]:
-    status = provider_status_for_modules([str(module) for module in payload.modules])
+    settings = await load_runtime_settings(session)
+    status = provider_status_for_modules([str(module) for module in payload.modules], settings)
     if status.status != "ready":
         raise AppError(503, "provider_not_configured", status.message)
     await enforce_rate_limit(user.id)
@@ -208,9 +210,7 @@ async def refresh_offer(offer_id: UUID, user: CurrentUser, session: Session) -> 
 
 
 @router.post("/offers/{offer_id}/clickout", status_code=303)
-async def clickout_offer(
-    offer_id: UUID, user: CurrentUser, session: Session
-) -> RedirectResponse:
+async def clickout_offer(offer_id: UUID, user: CurrentUser, session: Session) -> RedirectResponse:
     records = list(
         (
             await session.scalars(

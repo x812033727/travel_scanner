@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 
-type Me = { id: string; email: string };
+type Me = { id: string; email: string; is_admin?: boolean };
 
 const pillClass = "rounded-full border border-[var(--line)] bg-white px-4 py-2 text-[var(--ink)]";
 
@@ -31,6 +31,7 @@ export function HeaderAuth() {
   if (!me) return <Link className={pillClass} href="/login">登入</Link>;
   return (
     <span className="flex items-center gap-3">
+      {me.is_admin && <Link className="font-semibold text-[var(--teal)]" href="/admin/settings">管理後台</Link>}
       <Link className="hidden max-w-48 truncate text-[var(--ink)] sm:inline" title={me.email} href="/account">{me.email}</Link>
       <button onClick={logout} className={pillClass}>登出</button>
     </span>

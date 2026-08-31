@@ -93,6 +93,50 @@ test("search criteria can be revised before running a new comparison", async ({ 
   await expect(page.getByText(/預算.*85,000/)).toBeVisible();
 });
 
+test("flexible flight dates show local schedules and require confirmation before a new search", async ({ page }) => {
+  const submitted: Array<Record<string, unknown>> = [];
+  const flight = {
+    id: "flight-live-1", provider: "skyscanner", source_mode: "live", marketing_airline: "星宇航空", airline: "星宇航空", operating_airlines: ["星宇航空"], selling_agent: "測試售票平台", origin: "TPE", destination: "NRT", departure_time: "2026-11-10T08:00:00+08:00", arrival_time: "2026-11-10T12:00:00+09:00", return_departure_time: "2026-11-15T13:00:00+09:00", return_arrival_time: "2026-11-15T16:00:00+08:00", total_price: 15000, stops: 0, clickout_available: false, segments: [
+      { origin: "TPE", destination: "NRT", departure_time: "2026-11-10T08:00:00+08:00", arrival_time: "2026-11-10T12:00:00+09:00", airline: "星宇航空", flight_number: "JX800", leg_index: 0 },
+      { origin: "NRT", destination: "TPE", departure_time: "2026-11-15T13:00:00+09:00", arrival_time: "2026-11-15T16:00:00+08:00", airline: "星宇航空", flight_number: "JX801", leg_index: 1 },
+    ],
+  };
+  const options = [
+    { shift_days: 0, departure_date: "2026-11-10", return_date: "2026-11-15", lowest_price: 15000, currency: "TWD", provider: "skyscanner", source_mode: "live", is_current: true, offer_count: 1 },
+    { shift_days: 2, departure_date: "2026-11-12", return_date: "2026-11-17", lowest_price: 12800, currency: "TWD", provider: "skyscanner", source_mode: "estimate", is_current: false, offer_count: 2 },
+  ];
+  await page.route("**/api/travel/providers/status", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ provider: "skyscanner", mode: "live", status: "ready", modules: ["flight", "hotel", "activities", "transport"], message: "即時資料已啟用" }) }));
+  await page.route("**/api/travel/searches", (route) => {
+    submitted.push(route.request().postDataJSON());
+    return route.fulfill({ status: 202, contentType: "application/json", body: JSON.stringify({ search_id: `search-${submitted.length}`, usage: { status: "reserved", uses: 1, reference: `usage-${submitted.length}` } }) });
+  });
+  await page.route(/\/api\/travel\/searches\/search-\d+\/events/, (route) => route.fulfill({
+    status: 200,
+    contentType: "text/event-stream",
+    body: [
+      `event: module.results\ndata: ${JSON.stringify({ progress: 25, module: "flight", offers: [flight] })}\n`,
+      `event: flight.date_options\ndata: ${JSON.stringify({ options })}\n`,
+      `event: provider.completed\ndata: ${JSON.stringify({ module: "flight", status: "complete" })}\n`,
+      `event: search.completed\ndata: ${JSON.stringify({ usage: { status: "charged", uses: 1, reference: "usage" } })}\n`,
+    ].join("\n\n") + "\n\n",
+  }));
+  await page.route(/\/api\/travel\/searches\/search-\d+$/, (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ status: "completed", result: { modules: { flight: [flight] }, plans: [], flight_date_options: options }, warnings: [], usage: { status: "charged", uses: 1, reference: "usage" } }) }));
+
+  await page.goto("/search?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=1&rooms=1&flex_days=7");
+  await page.getByRole("button", { name: "確認條件並開始搜尋" }).click();
+  await expect.poll(() => submitted.length).toBe(1);
+  expect(submitted[0]).toMatchObject({ flex_days: 7, flexible_dates: true });
+  await page.getByRole("tab", { name: "機票" }).click();
+  await expect(page.getByText("08:00")).toBeVisible();
+  await expect(page.getByText("JX800")).toBeVisible();
+  await page.getByRole("button", { name: /晚 2 日/ }).click();
+  expect(submitted).toHaveLength(1);
+  await page.getByRole("button", { name: "套用並重新搜尋整趟" }).click();
+  await expect.poll(() => submitted.length).toBe(2);
+  expect(submitted[1]).toMatchObject({ departure_date: "2026-11-12", return_date: "2026-11-17", flex_days: 0, flexible_dates: false });
+  await expect(page).toHaveURL(/departure_date=2026-11-12/);
+});
+
 test("airline public fare lab is available", async ({ page }) => {
   await page.goto("/labs/airlines");
   await expect(page.getByRole("heading", { name: /三家航空/ })).toBeVisible();

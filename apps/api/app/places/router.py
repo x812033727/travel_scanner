@@ -1,14 +1,16 @@
 from datetime import UTC, date, datetime, timedelta
-from typing import Any
+from typing import Annotated, Any
 
 import httpx
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from fastapi.responses import RedirectResponse
 from pydantic import BaseModel, Field, model_validator
+from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.admin.service import load_runtime_settings
 from app.ai.parser import MockAITripParser
 from app.auth.service import CurrentUser
-from app.config import get_settings
+from app.db import get_session
 from app.destinations.catalog import DESTINATIONS
 from app.infra import get_redis
 from app.places.google import GoogleTravelService
@@ -17,20 +19,38 @@ from app.search.schemas import PropertyType, Travelers, TripPace
 
 router = APIRouter(prefix="/destinations", tags=["destinations"])
 public_router = APIRouter(prefix="/places", tags=["places"])
+Session = Annotated[AsyncSession, Depends(get_session)]
 
 
 @public_router.get("/autocomplete")
 async def autocomplete_places(
     user: CurrentUser,
+    session: Session,
     q: str,
     session_token: str | None = None,
+    country_codes: str | None = None,
+    latitude: float | None = None,
+    longitude: float | None = None,
 ) -> list[dict[str, Any]]:
     _ = user
     if len(q.strip()) < 2 or len(q) > 120:
         raise AppError(422, "invalid_place_query", "地點關鍵字須為 2 至 120 個字元")
-    if session_token is not None and not 8 <= len(session_token) <= 128:
+    if session_token is not None and not 8 <= len(session_token) <= 36:
         raise AppError(422, "invalid_session_token", "地點搜尋工作階段代碼格式錯誤")
-    return await GoogleTravelService(get_redis()).autocomplete(q, session_token)
+    if (latitude is None) != (longitude is None):
+        raise AppError(422, "invalid_place_bias", "地點搜尋中心必須同時包含經緯度")
+    if latitude is not None and not -90 <= latitude <= 90:
+        raise AppError(422, "invalid_place_bias", "地點搜尋緯度格式錯誤")
+    if longitude is not None and not -180 <= longitude <= 180:
+        raise AppError(422, "invalid_place_bias", "地點搜尋經度格式錯誤")
+    codes = [code.strip().lower() for code in (country_codes or "").split(",") if code.strip()]
+    allowed_codes = {"jp", "kr", "th"}
+    if len(codes) > 3 or any(code not in allowed_codes for code in codes):
+        raise AppError(422, "invalid_place_regions", "地點搜尋目前支援日本、韓國與泰國")
+    service = GoogleTravelService(get_redis(), await load_runtime_settings(session))
+    if not service.configured:
+        raise AppError(503, "google_maps_not_configured", "Google Maps 地點搜尋尚未啟用")
+    return await service.autocomplete(q, session_token, codes, latitude, longitude)
 
 
 @public_router.get("/{provider}/{place_id}")
@@ -38,19 +58,26 @@ async def get_place_details(
     provider: str,
     place_id: str,
     user: CurrentUser,
+    session: Session,
+    session_token: str | None = None,
 ) -> dict[str, Any]:
     _ = user
     if provider != "google_places":
         raise AppError(404, "place_provider_not_found", "不支援的地點來源")
-    result = await GoogleTravelService(get_redis()).place_details(place_id)
+    if session_token is not None and not 8 <= len(session_token) <= 36:
+        raise AppError(422, "invalid_session_token", "地點搜尋工作階段代碼格式錯誤")
+    service = GoogleTravelService(get_redis(), await load_runtime_settings(session))
+    if not service.configured:
+        raise AppError(503, "google_maps_not_configured", "Google Maps 地點搜尋尚未啟用")
+    result = await service.place_details(place_id, session_token)
     if not result:
         raise AppError(404, "place_not_found", "找不到這個地點")
     return result
 
 
 @public_router.get("/photo")
-async def place_photo(name: str) -> RedirectResponse:
-    settings = get_settings()
+async def place_photo(name: str, session: Session) -> RedirectResponse:
+    settings = await load_runtime_settings(session)
     if not settings.google_maps_api_key or not name.startswith("places/"):
         raise AppError(404, "photo_not_found", "Place photo is unavailable")
     url = f"https://places.googleapis.com/v1/{name}/media"
