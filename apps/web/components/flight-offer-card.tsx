@@ -3,6 +3,7 @@
 import { ChevronDown, ChevronUp, ExternalLink, Plane, RefreshCw } from "lucide-react";
 import { useMemo, useState } from "react";
 import { api, twd } from "@/lib/api";
+import { PriceAlertButton } from "@/components/price-alert-button";
 
 type FlightSegment = {
   origin?: string;
@@ -36,6 +37,7 @@ export type FlightCardOffer = {
   stops?: unknown;
   duration_minutes?: unknown;
   total_price?: unknown;
+  currency?: string;
   retrieved_at?: string;
   last_verified_at?: string;
   clickout_available?: boolean;
@@ -94,7 +96,7 @@ function FlightLeg({ label, segments, departure, arrival, fallbackOrigin, fallba
   </div>;
 }
 
-export function FlightOfferCard({ offer, fallbackUrl }: { offer: FlightCardOffer; fallbackUrl: string }) {
+export function FlightOfferCard({ offer, fallbackUrl, alertReturnPath }: { offer: FlightCardOffer; fallbackUrl: string; alertReturnPath?: string }) {
   const [price, setPrice] = useState(Number(offer.total_price || 0));
   const [verifiedAt, setVerifiedAt] = useState(offer.last_verified_at || offer.retrieved_at);
   const [refreshing, setRefreshing] = useState(false);
@@ -129,6 +131,7 @@ export function FlightOfferCard({ offer, fallbackUrl }: { offer: FlightCardOffer
       {offer.provider === "skyscanner" && <p className="mt-2 text-xs text-[var(--muted)]">Powered by <a className="font-semibold underline" href="https://www.skyscanner.net" target="_blank" rel="noreferrer">Skyscanner</a></p>}
       {message && <p className="mt-3 text-sm text-[var(--coral)]" role="status">{message}</p>}
       <div className="mt-4 grid gap-2 sm:grid-cols-2"><button type="button" onClick={refresh} disabled={refreshing || offer.source_mode === "estimate"} className="flex items-center justify-center gap-2 rounded-xl border border-[var(--line)] px-4 py-3 text-sm font-semibold disabled:opacity-50"><RefreshCw size={16} className={refreshing ? "animate-spin" : ""} />{refreshing ? "驗價中" : "重新驗價"}</button>{offer.clickout_available ? <form action={`/api/travel/offers/${offer.id}/clickout`} method="post" target="_blank"><button className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white" type="submit">前往訂票 <ExternalLink size={16} /></button></form> : <a href={fallbackUrl} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 rounded-xl border border-[var(--teal)] px-4 py-3 text-sm font-semibold text-[var(--teal)]">外站重新確認<ExternalLink size={16} /></a>}</div>
+      {offer.source_mode !== "estimate" && <PriceAlertButton resourceType="flight" resourceId={offer.id} currentPrice={price} currency={offer.currency || "TWD"} returnPath={alertReturnPath} />}
     </div>
   </article>;
 }

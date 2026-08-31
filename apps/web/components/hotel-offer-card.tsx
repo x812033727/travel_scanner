@@ -1,6 +1,7 @@
 import { BedDouble, Check, CircleDollarSign, Clock3, ExternalLink, Hotel, MapPin, Star, TrainFront, X } from "lucide-react";
 import Image from "next/image";
 import { twd } from "@/lib/api";
+import { PriceAlertButton } from "@/components/price-alert-button";
 
 export type HotelOfferView = {
   id: string;
@@ -25,6 +26,7 @@ export type HotelOfferView = {
   taxes?: unknown;
   fees?: unknown;
   total_price?: unknown;
+  currency?: string;
   nightly_price?: unknown;
   breakfast_included?: boolean;
   refundable?: boolean;
@@ -64,7 +66,7 @@ export function hotelStarRating(offer: HotelOfferView) {
   return number(offer.rating);
 }
 
-export function HotelOfferCard({ offer, actionUrl }: { offer: HotelOfferView; actionUrl: string }) {
+export function HotelOfferCard({ offer, actionUrl, alertReturnPath }: { offer: HotelOfferView; actionUrl: string; alertReturnPath?: string }) {
   const image = offer.images?.[0];
   const mode = offer.source_mode || (offer.is_mock ? "mock" : "estimate");
   const total = number(offer.total_price);
@@ -112,6 +114,7 @@ export function HotelOfferCard({ offer, actionUrl }: { offer: HotelOfferView; ac
         <p className="mt-4 flex items-start gap-2 text-xs leading-5 text-[var(--muted)]"><Clock3 className="mt-0.5 shrink-0" size={14} />來源：{offer.provider || "未標示"}{offer.is_fallback ? " · 備援來源" : ""}{retrievedAt ? ` · 取得 ${retrievedAt}` : ""}{expiresAt ? ` · 報價期限 ${expiresAt}` : ""}{offer.freshness_status === "expired" ? " · 已過期，必須重新確認" : ""}</p>
         {offer.attributions?.length ? <p className="mt-1 text-xs text-[var(--muted)]">圖片：{offer.attributions.map((label, index) => offer.attribution_urls?.[index] ? <span key={`${label}-${index}`}>{index > 0 ? "、" : ""}<a className="underline" href={offer.attribution_urls[index]} target="_blank" rel="noreferrer">{label}</a></span> : <span key={`${label}-${index}`}>{index > 0 ? "、" : ""}{label}</span>)}</p> : null}
         <a href={actionUrl} target="_blank" rel="noopener noreferrer" className="mt-5 flex items-center justify-center gap-2 rounded-xl border border-[var(--teal)] px-4 py-3 text-sm font-semibold text-[var(--teal)]">{offer.action_kind === "deep_link" ? "前往供應商" : "外站重新確認"}<ExternalLink size={16} /></a>
+        {offer.source_mode !== "estimate" && <PriceAlertButton resourceType="hotel" resourceId={offer.id} currentPrice={total} currency={offer.currency || "TWD"} returnPath={alertReturnPath} />}
       </div>
     </article>
   );

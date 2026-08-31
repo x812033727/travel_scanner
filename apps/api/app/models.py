@@ -190,6 +190,7 @@ class FlightOfferRecord(Timestamped, Base):
     )
     provider: Mapped[str] = mapped_column(String(64))
     provider_offer_id: Mapped[str] = mapped_column(String(128))
+    public_offer_id: Mapped[UUID | None] = mapped_column(nullable=True, index=True)
     data: Mapped[dict[str, Any]] = mapped_column(JSON)
     total_price: Mapped[Decimal] = mapped_column(Numeric(14, 2))
     currency: Mapped[str] = mapped_column(String(3), default="TWD")
@@ -226,6 +227,7 @@ class HotelOfferRecord(Timestamped, Base):
     )
     provider: Mapped[str] = mapped_column(String(64))
     provider_offer_id: Mapped[str] = mapped_column(String(128))
+    public_offer_id: Mapped[UUID | None] = mapped_column(nullable=True, index=True)
     data: Mapped[dict[str, Any]] = mapped_column(JSON)
     total_price: Mapped[Decimal] = mapped_column(Numeric(14, 2))
     currency: Mapped[str] = mapped_column(String(3), default="TWD")
@@ -351,6 +353,11 @@ class PriceSnapshot(Base):
 
 class PriceAlert(Timestamped, Base):
     __tablename__ = "price_alerts"
+    __table_args__ = (
+        UniqueConstraint(
+            "user_id", "resource_type", "resource_id", name="uq_price_alert_user_resource"
+        ),
+    )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
     resource_type: Mapped[str] = mapped_column(String(32))

@@ -33,7 +33,7 @@ def decode_cursor(cursor: str) -> tuple[datetime, UUID]:
             raise ValueError("cursor timestamp must include a timezone")
         return parsed_at, UUID(ledger_id)
     except (ValueError, UnicodeDecodeError, binascii.Error) as exc:
-        raise AppError(422, "invalid_usage_cursor", "Usage history cursor is invalid") from exc
+        raise AppError(422, "invalid_usage_cursor", "使用紀錄游標格式不正確") from exc
 
 
 @router.get("/plans")

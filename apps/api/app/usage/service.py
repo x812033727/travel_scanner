@@ -119,7 +119,7 @@ async def get_usage_account(
         statement = statement.with_for_update()
     account = await session.scalar(statement)
     if account is None:
-        raise AppError(409, "usage_account_missing", "No usage account was found")
+        raise AppError(409, "usage_account_missing", "找不到可用次數帳戶")
     return account
 
 
@@ -174,7 +174,7 @@ async def commit_reservation(
         return
     account = await get_usage_account(session, current.user_id, lock=True)
     if account.reserved_uses < current.uses or account.remaining_uses < current.uses:
-        raise AppError(409, "usage_balance_invalid", "The reserved usage balance is invalid")
+        raise AppError(409, "usage_balance_invalid", "保留次數的帳務狀態不正確")
     account.reserved_uses -= current.uses
     account.remaining_uses -= current.uses
     current.status = "committed"
@@ -211,7 +211,7 @@ async def release_reservation(
         return
     account = await get_usage_account(session, current.user_id, lock=True)
     if account.reserved_uses < current.uses:
-        raise AppError(409, "usage_balance_invalid", "The reserved usage balance is invalid")
+        raise AppError(409, "usage_balance_invalid", "保留次數的帳務狀態不正確")
     account.reserved_uses -= current.uses
     current.status = "released"
     session.add(
@@ -263,7 +263,7 @@ async def grant_package(
         )
     )
     if package is None or package.code == "TRIAL_3":
-        raise AppError(404, "usage_package_not_found", "Usage package was not found")
+        raise AppError(404, "usage_package_not_found", "找不到這個次數包")
     reference = f"package:{external_reference}"
     existing = await session.scalar(
         select(UsageLedger).where(

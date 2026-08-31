@@ -79,7 +79,7 @@ async def get_place_details(
 async def place_photo(name: str, session: Session) -> RedirectResponse:
     settings = await load_runtime_settings(session)
     if not settings.google_maps_api_key or not name.startswith("places/"):
-        raise AppError(404, "photo_not_found", "Place photo is unavailable")
+        raise AppError(404, "photo_not_found", "目前沒有可用的地點照片")
     url = f"https://places.googleapis.com/v1/{name}/media"
     async with httpx.AsyncClient(timeout=settings.provider_timeout_seconds) as client:
         response = await client.get(
@@ -91,10 +91,10 @@ async def place_photo(name: str, session: Session) -> RedirectResponse:
             },
         )
     if response.status_code >= 400:
-        raise AppError(404, "photo_not_found", "Place photo is unavailable")
+        raise AppError(404, "photo_not_found", "目前沒有可用的地點照片")
     photo_uri = response.json().get("photoUri")
     if not photo_uri:
-        raise AppError(404, "photo_not_found", "Place photo is unavailable")
+        raise AppError(404, "photo_not_found", "目前沒有可用的地點照片")
     return RedirectResponse(str(photo_uri), status_code=302)
 
 
@@ -221,8 +221,7 @@ def _estimate(
 
 
 @router.post("/discover")
-async def discover(payload: DiscoveryRequest, user: CurrentUser) -> dict[str, Any]:
-    _ = user
+async def discover(payload: DiscoveryRequest) -> dict[str, Any]:
     if payload.notes:
         parsed = await MockAITripParser().parse(payload.notes)
         lodging = payload.lodging_preferences

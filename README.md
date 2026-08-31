@@ -111,7 +111,15 @@ npm run lint:web
 npm run typecheck:web
 npm run test:web
 npm run build:web
+npm run test:e2e --workspace @travel-scanner/web
 ```
+
+CI also runs an unmocked first-party smoke journey with PostgreSQL, Redis, the
+FastAPI service, RQ worker, and Next.js running together. Only the external
+travel provider is pinned to deterministic mock mode. The journey runs in
+desktop Chromium and a Pixel 7 viewport and covers guest recommendations,
+safe sign-in return, progressive search, saving a trip, and full price-alert
+management.
 
 Further sections below document providers, usage packs, orchestration, and
 optimization as those modules are introduced.
@@ -379,11 +387,32 @@ structured choices override supplementary free text.
 
 `POST /api/v1/destinations/discover` returns up to three deterministic,
 curated-estimate city/date recommendations before a credit-bearing search.
+This estimate-only endpoint is available to guests and does not reserve or
+charge a use. The selected criteria remain in the URL; exact provider search,
+trip saving, and alerts require login and safely return to that local URL after
+authentication. External or protocol-relative `next` values are rejected.
 The selected exact dates are then passed to the normal provider workflow.
 Hotel preferences support nightly price ranges, property type, star rating,
 review score/count, areas, and transit distance. Vacation-rental results are
 provider-neutral and only appear when an actual provider returns them; the
 application does not scrape Airbnb or label mock inventory as live.
+
+## Price alerts and account UX
+
+Flight, hotel, and saved-trip cards can create an alert using the currently
+displayed source currency and price, or leave the target blank to follow any
+drop. The API verifies the resource belongs to the authenticated user. A
+database uniqueness constraint prevents duplicate or concurrent alerts for
+the same resource; another user's resource is deliberately indistinguishable
+from a missing resource.
+
+`GET /api/v1/alerts` includes a display title, route/property/destination
+summary, current price, source currency, and quote time. Alerts can be updated
+with `PATCH /api/v1/alerts/{id}`, paused, resumed, and deleted only after UI
+confirmation. Failed deletion leaves the row visible. Account pages distinguish
+loading, empty, signed-out, forbidden, and service-failure states, while the
+mobile keyboard-accessible navigation exposes trips, alerts, airline fares,
+plans, and account routes.
 
 ## API summary
 

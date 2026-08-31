@@ -41,7 +41,9 @@ jobs:
       - run: npm run test:tools
       - run: npm run build:web
       - run: npx playwright install --with-deps chromium
-      - run: npm run test:e2e --workspace @travel-scanner/web
+      - name: Run isolated browser UI tests
+        run: npx playwright test e2e/navigation.spec.ts
+        working-directory: apps/web
   containers:
     runs-on: ubuntu-latest
     steps:
@@ -49,3 +51,61 @@ jobs:
       - run: cp .env.example .env
       - run: docker compose config
       - run: docker compose build api worker
+  full-stack-smoke:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env: { POSTGRES_DB: travel_scanner, POSTGRES_USER: travel, POSTGRES_PASSWORD: travel }
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U travel -d travel_scanner"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+      redis:
+        image: redis:7.4-alpine
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+    env:
+      DATABASE_URL: postgresql+asyncpg://travel:travel@127.0.0.1:5432/travel_scanner
+      REDIS_URL: redis://127.0.0.1:6379/0
+      APP_SECRET_KEY: ci-full-stack-secret-key-at-least-32-characters
+      TRAVEL_PROVIDER_MODE: mock
+      FLIGHT_PROVIDER_MODE: mock
+      NEXT_PUBLIC_API_URL: http://127.0.0.1:8000/api/v1
+      API_INTERNAL_URL: http://127.0.0.1:8000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with: { python-version: "3.13" }
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm }
+      - run: uv sync --frozen
+        working-directory: apps/api
+      - run: npm ci
+      - run: uv run alembic upgrade head
+        working-directory: apps/api
+      - name: Start API, worker and web
+        run: |
+          cd apps/api
+          uv run uvicorn app.main:app --host 127.0.0.1 --port 8000 > /tmp/travel-api.log 2>&1 &
+          uv run python -m app.worker > /tmp/travel-worker.log 2>&1 &
+          cd ../..
+          npm run dev --workspace @travel-scanner/web -- --port 3000 > /tmp/travel-web.log 2>&1 &
+      - name: Wait for the real stack
+        run: |
+          for attempt in {1..60}; do
+            if curl --fail --silent http://127.0.0.1:8000/ready >/dev/null && curl --fail --silent http://127.0.0.1:3000 >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/travel-api.log /tmp/travel-worker.log /tmp/travel-web.log
+          exit 1
+      - run: npx playwright install --with-deps chromium
+      - name: Run unmocked desktop and Pixel 7 journeys
+        run: npx playwright test e2e/full-stack.spec.ts
+        working-directory: apps/web
+        env: { PLAYWRIGHT_REUSE_EXISTING: "true" }
+      - name: Show service logs on failure
+        if: failure()
+        run: cat /tmp/travel-api.log /tmp/travel-worker.log /tmp/travel-web.log
