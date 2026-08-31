@@ -34,6 +34,51 @@ class Settings(BaseSettings):
     skyscanner_currency: str = "TWD"
     skyscanner_poll_attempts: int = Field(default=4, ge=1, le=10)
     skyscanner_poll_interval_seconds: float = Field(default=0.5, ge=0, le=5)
+    affiliate_link_cache_ttl_seconds: int = Field(default=86_400, ge=60, le=604_800)
+    affiliate_clickout_token_ttl_seconds: int = Field(default=900, ge=60, le=3_600)
+    travelpayouts_enabled: bool = False
+    travelpayouts_api_base_url: str = "https://api.travelpayouts.com"
+    travelpayouts_marker: str | None = None
+    travelpayouts_project_id: str | None = None
+    travelpayouts_api_token: str | None = None
+    travelpayouts_static_url_template: str | None = None
+    travelpayouts_flight_target_url: str | None = None
+    travelpayouts_hotel_target_url: str | None = None
+    travelpayouts_activities_target_url: str | None = None
+    travelpayouts_transport_target_url: str | None = None
+    travelpayouts_allowed_hosts: str = "tp.st,travelpayouts.com"
+    kkday_enabled: bool = False
+    kkday_cid: str | None = None
+    kkday_affiliate_url_template: str | None = None
+    kkday_allowed_hosts: str = "kkday.com,www.kkday.com"
+    kkday_api_base_url: str | None = None
+    kkday_api_key: str | None = None
+    klook_enabled: bool = False
+    klook_affiliate_url_template: str | None = None
+    klook_allowed_hosts: str = "klook.com,www.klook.com"
+    klook_api_base_url: str | None = None
+    klook_api_key: str | None = None
+    airalo_enabled: bool = False
+    airalo_affiliate_url_template: str | None = None
+    airalo_allowed_hosts: str = "airalo.com,www.airalo.com"
+    trip_com_enabled: bool = False
+    trip_com_affiliate_url_template: str | None = None
+    trip_com_allowed_hosts: str = "trip.com,www.trip.com"
+    agoda_enabled: bool = False
+    agoda_cid: str | None = None
+    agoda_affiliate_url_template: str | None = None
+    agoda_allowed_hosts: str = "agoda.com,www.agoda.com"
+    agoda_api_base_url: str | None = None
+    agoda_api_key: str | None = None
+    booking_enabled: bool = False
+    booking_affiliate_id: str | None = None
+    booking_affiliate_url_template: str | None = None
+    booking_allowed_hosts: str = "booking.com,www.booking.com"
+    booking_demand_api_base_url: str = "https://demandapi-sandbox.booking.com/3.1"
+    booking_demand_api_token: str | None = None
+    skyscanner_affiliate_enabled: bool = False
+    skyscanner_affiliate_url_template: str | None = None
+    skyscanner_affiliate_allowed_hosts: str = "skyscanner.net,www.skyscanner.net"
     google_maps_api_key: str | None = None
     next_public_google_maps_browser_key: str | None = None
     route_cache_ttl_seconds: int = Field(default=900, ge=60, le=86_400)

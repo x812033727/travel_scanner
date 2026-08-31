@@ -25,6 +25,7 @@ import { AirbnbSearchPanel } from "@/components/airbnb-search-panel";
 import { HotelOfferCard, hotelNightlyPrice, hotelRating, hotelStarRating } from "@/components/hotel-offer-card";
 import { FlightOfferCard } from "@/components/flight-offer-card";
 import { FlightDateOptions, type FlightDateOption } from "@/components/flight-date-options";
+import { AffiliatePartnerOptions, type AffiliateModule } from "@/components/affiliate-partner-options";
 import { SearchCriteriaEditor, type CriteriaUpdate } from "@/components/search-criteria-editor";
 
 type Parsed = {
@@ -511,7 +512,7 @@ export function SearchExperience() {
     adults: parsed.travelers.adults,
     children: parsed.travelers.children || 0,
   } : null;
-  const resultTabs = [{ key: "plans", label: "推薦組合" }, ...stages, ...(includeAirbnb ? [{ key: "airbnb", label: "Airbnb" }] : [])];
+  const resultTabs = [{ key: "plans", label: "推薦組合" }, ...stages, { key: "connectivity", label: "eSIM" }, ...(includeAirbnb ? [{ key: "airbnb", label: "Airbnb" }] : [])];
 
   const providerTone = providerStatus?.status === "ready"
     ? providerStatus.mode === "live" ? "bg-emerald-50 text-emerald-800" : "bg-amber-50 text-amber-900"
@@ -559,11 +560,15 @@ export function SearchExperience() {
           <button onClick={() => save(plan)} className="mt-5 w-full rounded-xl bg-[var(--teal)] px-4 py-3 font-semibold text-white">儲存並編輯行程</button>
         </article>)}</div>}
 
+        {searchId && activeTab === "plans" && <div className="mt-5"><AffiliatePartnerOptions searchId={searchId} modules={["flight", "hotel", "activities", "transport", "connectivity"]} title="整趟旅程合作平台" /></div>}
+
         {activeTab === "airbnb" && airbnbCriteria && <AirbnbSearchPanel criteria={airbnbCriteria} />}
 
         {activeTab === "flight" && <FlightDateOptions options={flightDateOptions} selected={selectedDateOption} busy={busy} onSelect={setSelectedDateOption} onApply={applyDateOption} />}
 
-        {activeTab !== "plans" && activeTab !== "airbnb" && <div className="mb-4 flex flex-wrap items-center gap-4 rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm">
+        {searchId && !["plans", "airbnb"].includes(activeTab) && <AffiliatePartnerOptions searchId={searchId} modules={[activeTab as AffiliateModule]} title={activeTab === "connectivity" ? "旅途中保持連線" : "更多合作平台"} />}
+
+        {activeTab !== "plans" && activeTab !== "airbnb" && activeTab !== "connectivity" && <div className="mb-4 flex flex-wrap items-center gap-4 rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm">
           <strong className="text-[var(--teal-dark)]">快速篩選</strong>
           {activeTab !== "hotel" && <label className="flex items-center gap-2"><input type="checkbox" checked={sortByPrice} onChange={(event) => setSortByPrice(event.target.checked)} />價格由低到高</label>}
           {activeTab === "flight" && <><label className="flex items-center gap-2"><input type="checkbox" checked={directOnly} onChange={(event) => setDirectOnly(event.target.checked)} />只看直飛</label><label className="flex items-center gap-2"><input type="checkbox" checked={refundableFlightOnly} onChange={(event) => setRefundableFlightOnly(event.target.checked)} />可退款</label></>}
@@ -571,7 +576,7 @@ export function SearchExperience() {
           {activeTab === "activities" && <label className="flex items-center gap-2">興趣<select className="rounded-lg border border-[var(--line)] px-2 py-1.5" value={activityInterest} onChange={(event) => setActivityInterest(event.target.value)}><option value="all">全部</option>{destinationInterests.map((interest) => <option key={interest.code} value={interest.code}>{interest.label}</option>)}</select></label>}
         </div>}
 
-        {activeTab !== "plans" && activeTab !== "airbnb" && <div className={activeTab === "flight" ? "space-y-4" : "grid gap-5 md:grid-cols-2 lg:grid-cols-3"}>{visibleOffers.map((offer) => {
+        {activeTab !== "plans" && activeTab !== "airbnb" && activeTab !== "connectivity" && <div className={activeTab === "flight" ? "space-y-4" : "grid gap-5 md:grid-cols-2 lg:grid-cols-3"}>{visibleOffers.map((offer) => {
           if (activeTab === "hotel") return <HotelOfferCard key={offer.id} offer={offer} actionUrl={recheckUrl(activeTab, offer, parsed, dates)} />;
           if (activeTab === "flight") return <FlightOfferCard key={offer.id} offer={offer} fallbackUrl={recheckUrl(activeTab, offer, parsed, dates)} />;
           const image = offer.images?.[0];
@@ -581,7 +586,7 @@ export function SearchExperience() {
             <div className="p-5"><div className="flex items-start justify-between gap-3"><div><p className="text-xs font-semibold uppercase tracking-wide text-[var(--teal)]">{sourceLabels[mode]}</p><h2 className="mt-1 text-xl font-bold">{titleFor(activeTab, offer)}</h2></div><strong>{twd.format(amount(offer))}</strong></div><p className="mt-3 text-sm leading-6 text-[var(--muted)]">{detailsFor(activeTab, offer)}</p><p className="mt-2 text-xs text-[var(--muted)]">來源：{offer.provider || "未標示"}{offer.retrieved_at ? ` · ${new Date(offer.retrieved_at).toLocaleString("zh-TW")}` : ""}</p>{offer.attributions?.length ? <p className="mt-1 text-xs text-[var(--muted)]">圖片：{offer.attributions.map((label, index) => offer.attribution_urls?.[index] ? <span key={label}>{index > 0 ? "、" : ""}<a className="underline" href={offer.attribution_urls[index]} target="_blank" rel="noreferrer">{label}</a></span> : <span key={label}>{index > 0 ? "、" : ""}{label}</span>)}</p> : null}<a href={recheckUrl(activeTab, offer, parsed, dates)} target="_blank" rel="noreferrer" className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-[var(--teal)] px-4 py-3 text-sm font-semibold text-[var(--teal)]">{offer.action_kind === "deep_link" ? "前往供應商" : "外站重新確認"}<ExternalLink size={16} /></a></div>
           </article>;
         })}</div>}
-        {activeTab !== "plans" && activeTab !== "airbnb" && !visibleOffers.length && <p className="rounded-2xl border border-dashed border-[var(--line)] bg-white p-10 text-center text-[var(--muted)]">這個分類目前沒有符合條件的結果。</p>}
+        {activeTab !== "plans" && activeTab !== "airbnb" && activeTab !== "connectivity" && !visibleOffers.length && <p className="rounded-2xl border border-dashed border-[var(--line)] bg-white p-10 text-center text-[var(--muted)]">這個分類目前沒有符合條件的結果。</p>}
       </section>}
     </main>
   );
