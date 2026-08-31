@@ -10,6 +10,7 @@ const member = {
   effective_is_admin: false,
   admin_source: "none",
   is_self: false,
+  can_adjust_usage: true,
   remaining_uses: 8,
   reserved_uses: 1,
   available_uses: 7,
@@ -124,5 +125,80 @@ describe("AdminUsersPanel", () => {
     expect((request.headers as Record<string, string>)["Idempotency-Key"]).toContain("33333333");
     expect(JSON.parse(String(request.body))).toEqual({ change: 5, reason: "客服補償" });
     expect(await screen.findByText("增加 5 次，餘額為 13 次。")).toBeTruthy();
+  });
+
+  it("allows an environment administrator to adjust their own usage", async () => {
+    const environmentSelf = {
+      ...detail,
+      id: "44444444-4444-4444-8444-444444444444",
+      email: "environment-admin@example.com",
+      is_admin: false,
+      effective_is_admin: true,
+      admin_source: "environment",
+      is_self: true,
+      can_adjust_usage: true,
+    };
+    const adjustedSelf = {
+      ...environmentSelf,
+      remaining_uses: 6,
+      available_uses: 5,
+      usage_history: [{
+        ...detail.usage_history[0],
+        entry_type: "admin_adjustment",
+        change: -2,
+        balance_after: 6,
+        summary: "自助扣除次數",
+      }],
+    };
+    const environmentList = { ...list, items: [environmentSelf] };
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(response(environmentList))
+      .mockResolvedValueOnce(response(environmentSelf))
+      .mockResolvedValueOnce(response({
+        user: adjustedSelf,
+        change: -2,
+        balance_after: 6,
+        replayed: false,
+      }))
+      .mockResolvedValueOnce(response({ ...list, items: [adjustedSelf] }));
+    vi.stubGlobal("fetch", fetchMock);
+    vi.spyOn(globalThis.crypto, "randomUUID").mockReturnValue("55555555-5555-4555-8555-555555555555");
+    render(<AdminUsersPanel />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "管理" }));
+    expect(await screen.findByText("目前帳號由 ADMIN_EMAILS 授權，可調整自己的使用次數。")).toBeTruthy();
+    const changeInput = screen.getByLabelText("調整次數") as HTMLInputElement;
+    expect(changeInput.disabled).toBe(false);
+    fireEvent.change(changeInput, { target: { value: "-2" } });
+    fireEvent.change(screen.getByLabelText("調整原因"), { target: { value: "自助扣除次數" } });
+    fireEvent.click(screen.getByRole("button", { name: "寫入調整" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(4));
+    const request = fetchMock.mock.calls[2][1] as RequestInit;
+    expect(JSON.parse(String(request.body))).toEqual({ change: -2, reason: "自助扣除次數" });
+    expect(await screen.findByText("扣除 2 次，餘額為 6 次。")).toBeTruthy();
+  });
+
+  it("keeps self-adjustment disabled for a database administrator", async () => {
+    const databaseSelf = {
+      ...detail,
+      id: "66666666-6666-4666-8666-666666666666",
+      email: "database-admin@example.com",
+      is_admin: true,
+      effective_is_admin: true,
+      admin_source: "database",
+      is_self: true,
+      can_adjust_usage: false,
+    };
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(response({ ...list, items: [databaseSelf] }))
+      .mockResolvedValueOnce(response(databaseSelf));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminUsersPanel />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "管理" }));
+    expect(await screen.findByText("不可調整目前管理員自己的次數，請由另一位管理員操作。")).toBeTruthy();
+    expect((screen.getByLabelText("調整次數") as HTMLInputElement).disabled).toBe(true);
+    expect((screen.getByRole("button", { name: "寫入調整" }) as HTMLButtonElement).disabled).toBe(true);
   });
 });

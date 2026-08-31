@@ -70,8 +70,12 @@ administrator access. Administrators cannot suspend or demote their own active
 session, while `ADMIN_EMAILS` roles must be removed from the host environment.
 Manual usage changes require a reason and an idempotency key. Every change is a
 new `usage_ledger` entry plus an administrator audit event; deductions cannot
-reduce the balance below in-flight reservations. Administrators cannot adjust
-their own balance, so a second administrator must authorize that operation.
+reduce the balance below in-flight reservations. Database-backed administrators
+cannot adjust their own balance, so a second administrator must authorize that
+operation. Administrators whose email is currently listed in `ADMIN_EMAILS` may
+increase or deduct their own balance, including accounts that also hold the
+database-backed role; these self-adjustments use the same ledger, audit, and
+reserved-balance safeguards.
 
 The page manages runtime modes, timeouts and encrypted credentials for Google
 Maps, Amadeus, Skyscanner, Duffel, FlightAware, Google Travel Impact, and NAVITIME.
