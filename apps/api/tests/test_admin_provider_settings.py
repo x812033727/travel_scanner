@@ -3,9 +3,11 @@ from typing import Any
 import pytest
 from httpx import ASGITransport, AsyncClient
 
+import app.admin.service as admin_service
 from app.admin.service import (
     _default_provider_enabled,
     _safe_test_message,
+    _test_google,
     apply_runtime_overrides,
     decrypt_secrets,
     encrypt_secrets,
@@ -15,6 +17,7 @@ from app.auth.service import current_user
 from app.config import Settings
 from app.main import app
 from app.models import ProviderConfig, User
+from app.trips.routing import GoogleRoutesProbeResult, RoutePoint
 
 
 class ScalarRows:
@@ -81,6 +84,78 @@ def test_connection_failure_message_redacts_provider_secrets() -> None:
         settings,
     )
     assert message == "request with *** was rejected"
+
+
+@pytest.mark.asyncio
+async def test_google_connection_accepts_reachable_empty_route(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    observed_points: list[RoutePoint] = []
+
+    class PlacesStub:
+        def __init__(self, *_args: object) -> None:
+            pass
+
+        async def autocomplete(self, *_args: object) -> list[dict[str, Any]]:
+            return [{"place_id": "unstable-first-prediction"}]
+
+    class RoutesStub:
+        def __init__(self, *_args: object) -> None:
+            pass
+
+        async def probe(
+            self,
+            origin: RoutePoint,
+            destination: RoutePoint,
+        ) -> GoogleRoutesProbeResult:
+            observed_points.extend([origin, destination])
+            return GoogleRoutesProbeResult(True, False, status_code=200)
+
+    monkeypatch.setattr(admin_service, "GoogleTravelService", PlacesStub)
+    monkeypatch.setattr(admin_service, "GoogleRouteProvider", RoutesStub)
+
+    message = await _test_google(Settings(google_maps_api_key="key"), object())  # type: ignore[arg-type]
+
+    assert message == "Google Places 與 Routes API 連線成功；測試路線目前無可用班次"
+    assert observed_points[0].provider_place_id is None
+    assert observed_points[0].latitude == 35.6812
+
+
+@pytest.mark.asyncio
+async def test_google_connection_reports_routes_http_error(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    class PlacesStub:
+        def __init__(self, *_args: object) -> None:
+            pass
+
+        async def autocomplete(self, *_args: object) -> list[dict[str, Any]]:
+            return [{"place_id": "tokyo"}]
+
+    class RoutesStub:
+        def __init__(self, *_args: object) -> None:
+            pass
+
+        async def probe(
+            self,
+            _origin: RoutePoint,
+            _destination: RoutePoint,
+        ) -> GoogleRoutesProbeResult:
+            return GoogleRoutesProbeResult(
+                False,
+                False,
+                status_code=403,
+                error_code="PERMISSION_DENIED",
+            )
+
+    monkeypatch.setattr(admin_service, "GoogleTravelService", PlacesStub)
+    monkeypatch.setattr(admin_service, "GoogleRouteProvider", RoutesStub)
+
+    with pytest.raises(
+        ConnectionError,
+        match=r"Routes API 連線失敗（HTTP 403 / PERMISSION_DENIED）",
+    ):
+        await _test_google(Settings(google_maps_api_key="key"), object())  # type: ignore[arg-type]
 
 
 @pytest.mark.asyncio

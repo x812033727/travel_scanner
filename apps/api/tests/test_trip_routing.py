@@ -8,6 +8,7 @@ import pytest
 from app.config import Settings
 from app.trips.routing import (
     GoogleRouteProvider,
+    GoogleRoutesProbeResult,
     NavitimeRouteProvider,
     RoutePoint,
     RouteSegment,
@@ -94,6 +95,58 @@ async def test_google_route_normalizes_transit_steps_and_preview_warning() -> No
     assert segment.steps[0].headsign == "淺草方向"
     assert "exit" not in segment.details_available
     assert "origin_place_id=google-origin" in str(segment.maps_url)
+
+
+@pytest.mark.asyncio
+async def test_google_routes_probe_treats_empty_success_as_reachable() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        assert request.headers["x-goog-fieldmask"] == "routes.duration"
+        assert request.headers["x-goog-api-key"] == "key"
+        body = request.read().decode()
+        assert '"travelMode":"TRANSIT"' in body
+        assert '"placeId"' not in body
+        return httpx.Response(200, json={})
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = GoogleRouteProvider(Settings(google_maps_api_key="key"), client)
+    result = await provider.probe(
+        point("東京車站", 35.6812, 139.7671),
+        point("淺草寺", 35.7148, 139.7967),
+    )
+    await client.aclose()
+    assert result == GoogleRoutesProbeResult(
+        reachable=True,
+        route_available=False,
+        status_code=200,
+    )
+
+
+@pytest.mark.asyncio
+async def test_google_routes_probe_reports_sanitized_api_error() -> None:
+    async def handler(_: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            403,
+            json={
+                "error": {
+                    "status": "PERMISSION_DENIED",
+                    "message": "request contained a secret value",
+                }
+            },
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = GoogleRouteProvider(Settings(google_maps_api_key="secret-key"), client)
+    result = await provider.probe(
+        point("東京車站", 35.6812, 139.7671),
+        point("淺草寺", 35.7148, 139.7967),
+    )
+    await client.aclose()
+    assert result == GoogleRoutesProbeResult(
+        reachable=False,
+        route_available=False,
+        status_code=403,
+        error_code="PERMISSION_DENIED",
+    )
 
 
 @pytest.mark.asyncio

@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import json
+from dataclasses import dataclass
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from typing import Any, Protocol, cast
@@ -64,6 +65,14 @@ class RouteSegment(BaseModel):
     warnings: list[str] = Field(default_factory=list)
 
 
+@dataclass(frozen=True)
+class GoogleRoutesProbeResult:
+    reachable: bool
+    route_available: bool
+    status_code: int | None = None
+    error_code: str | None = None
+
+
 class RouteProvider(Protocol):
     name: str
 
@@ -123,6 +132,64 @@ class GoogleRouteProvider:
             return {"placeId": point.provider_place_id}
         return {"location": {"latLng": {"latitude": point.latitude, "longitude": point.longitude}}}
 
+    async def _post(self, body: dict[str, Any], field_mask: str) -> httpx.Response:
+        headers = {
+            "Content-Type": "application/json",
+            "X-Goog-Api-Key": self.settings.google_maps_api_key or "",
+            "X-Goog-FieldMask": field_mask,
+        }
+        if self.client is not None:
+            return await self.client.post(self.url, json=body, headers=headers)
+        async with httpx.AsyncClient(timeout=self.settings.provider_timeout_seconds) as client:
+            return await client.post(self.url, json=body, headers=headers)
+
+    async def probe(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+    ) -> GoogleRoutesProbeResult:
+        """Verify Routes API authorization without treating an empty route as a connection error."""
+        if not self.settings.google_maps_api_key:
+            return GoogleRoutesProbeResult(False, False, error_code="NOT_CONFIGURED")
+        body: dict[str, Any] = {
+            "origin": self.waypoint(origin),
+            "destination": self.waypoint(destination),
+            "travelMode": "TRANSIT",
+            "languageCode": "zh-TW",
+            "units": "METRIC",
+            "computeAlternativeRoutes": False,
+        }
+        try:
+            response = await self._post(body, "routes.duration")
+        except httpx.HTTPError:
+            return GoogleRoutesProbeResult(False, False, error_code="NETWORK_ERROR")
+        try:
+            raw_payload = response.json()
+        except ValueError:
+            return GoogleRoutesProbeResult(
+                False,
+                False,
+                status_code=response.status_code,
+                error_code="INVALID_RESPONSE",
+            )
+        payload = cast(dict[str, Any], raw_payload) if isinstance(raw_payload, dict) else {}
+        if response.status_code >= 400:
+            error = payload.get("error")
+            raw_code = error.get("status") if isinstance(error, dict) else None
+            error_code = str(raw_code) if raw_code else f"HTTP_{response.status_code}"
+            return GoogleRoutesProbeResult(
+                False,
+                False,
+                status_code=response.status_code,
+                error_code=error_code,
+            )
+        routes = payload.get("routes")
+        return GoogleRoutesProbeResult(
+            True,
+            isinstance(routes, list) and bool(routes),
+            status_code=response.status_code,
+        )
+
     async def compute(
         self,
         origin: RoutePoint,
@@ -155,19 +222,8 @@ class GoogleRouteProvider:
             "routes.legs.steps.navigationInstruction.instructions,"
             "routes.legs.steps.transitDetails"
         )
-        headers = {
-            "Content-Type": "application/json",
-            "X-Goog-Api-Key": self.settings.google_maps_api_key,
-            "X-Goog-FieldMask": fields,
-        }
         try:
-            if self.client is not None:
-                response = await self.client.post(self.url, json=body, headers=headers)
-            else:
-                async with httpx.AsyncClient(
-                    timeout=self.settings.provider_timeout_seconds
-                ) as client:
-                    response = await client.post(self.url, json=body, headers=headers)
+            response = await self._post(body, fields)
             response.raise_for_status()
             payload = cast(dict[str, Any], response.json())
         except (httpx.HTTPError, ValueError):

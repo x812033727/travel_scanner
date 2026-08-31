@@ -522,13 +522,12 @@ async def _test_google(settings: Settings, redis: Redis) -> str:
     places = await service.autocomplete("東京車站", None, ["jp"])
     if not places:
         raise ConnectionError("Places API 未回傳結果，請檢查 API 啟用狀態與金鑰限制")
-    routes = await GoogleRouteProvider(settings).compute(
+    routes = await GoogleRouteProvider(settings).probe(
         RoutePoint(
             item_id=uuid4(),
             name="東京車站",
             latitude=35.6812,
             longitude=139.7671,
-            provider_place_id=places[0].get("place_id"),
         ),
         RoutePoint(
             item_id=uuid4(),
@@ -536,11 +535,14 @@ async def _test_google(settings: Settings, redis: Redis) -> str:
             latitude=35.7148,
             longitude=139.7967,
         ),
-        None,
-        "FEWER_TRANSFERS",
     )
-    if routes is None:
-        raise ConnectionError("Places 可用，但 Routes API 未回傳大眾運輸路線")
+    if not routes.reachable:
+        details = routes.error_code or "UNKNOWN_ERROR"
+        if routes.status_code is not None:
+            details = f"HTTP {routes.status_code} / {details}"
+        raise ConnectionError(f"Places 可用，但 Routes API 連線失敗（{details}）")
+    if not routes.route_available:
+        return "Google Places 與 Routes API 連線成功；測試路線目前無可用班次"
     return "Google Places 與 Routes 連線成功"
 
 
