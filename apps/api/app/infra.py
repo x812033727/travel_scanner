@@ -22,4 +22,4 @@ async def enforce_rate_limit(user_id: UUID) -> None:
     )
     count = await cast(Awaitable[Any], redis.eval(script, 1, f"rate:{user_id}"))
     if int(count) > limit:
-        raise AppError(429, "rate_limit_exceeded", "Too many requests; try again shortly")
+        raise AppError(429, "rate_limit_exceeded", "請求過於頻繁，請稍後再試")

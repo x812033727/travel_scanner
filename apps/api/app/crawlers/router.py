@@ -33,7 +33,7 @@ Session = Annotated[AsyncSession, Depends(get_session)]
 
 def require_idempotency_key(value: str | None) -> str:
     if value is None or not 8 <= len(value) <= 255:
-        raise AppError(422, "idempotency_key_required", "Idempotency-Key is required")
+        raise AppError(422, "idempotency_key_required", "缺少 Idempotency-Key")
     return value
 
 

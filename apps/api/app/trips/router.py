@@ -5,7 +5,7 @@ import secrets
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from typing import Annotated, Any, cast
-from uuid import UUID, uuid4
+from uuid import UUID, uuid4, uuid5
 
 from fastapi import APIRouter, Depends, Header
 from pydantic import BaseModel, Field, model_validator
@@ -88,11 +88,7 @@ def destination_timezone(destination: str) -> str:
         (("泰國", "曼谷", "清邁", "普吉", "喀比"), "Asia/Bangkok"),
     )
     return next(
-        (
-            timezone
-            for tokens, timezone in rules
-            if any(token in destination for token in tokens)
-        ),
+        (timezone for tokens, timezone in rules if any(token in destination for token in tokens)),
         "UTC",
     )
 
@@ -169,9 +165,19 @@ async def limit_for(session: AsyncSession, user_id: UUID, key: str) -> int:
     return COMMON_LIMITS.get(key, 0)
 
 
-def item_record(trip_id: UUID, item: ItineraryItem | ItineraryItemRequest) -> TripPlanItem:
+def item_record(
+    trip_id: UUID,
+    item: ItineraryItem | ItineraryItemRequest,
+    *,
+    preserve_source_id: bool = True,
+) -> TripPlanItem:
+    item_id = item.id or uuid4()
+    if item.id is not None and not preserve_source_id:
+        # Optimized itinerary IDs are deterministic for a search. Scope them to
+        # the saved trip so two users can persist the same provider result.
+        item_id = uuid5(trip_id, str(item.id))
     return TripPlanItem(
-        id=item.id or uuid4(),
+        id=item_id,
         trip_plan_id=trip_id,
         item_type=item.item_type,
         offer_id=item.offer_id,
@@ -239,7 +245,7 @@ async def hydrate_legacy_items(
     for raw_day in raw_days:
         for raw_item in raw_day.get("items", []):
             parsed = ItineraryItem.model_validate(raw_item)
-            session.add(item_record(trip.id, parsed))
+            session.add(item_record(trip.id, parsed, preserve_source_id=False))
     if raw_days:
         await session.commit()
         return await load_items(session, trip.id)
@@ -291,7 +297,7 @@ async def owned_trip(session: AsyncSession, user_id: UUID, trip_id: UUID) -> Tri
         select(TripPlan).where(TripPlan.id == trip_id, TripPlan.user_id == user_id)
     )
     if trip is None:
-        raise AppError(404, "trip_not_found", "Saved trip was not found")
+        raise AppError(404, "trip_not_found", "找不到這個已儲存旅程")
     return trip
 
 
@@ -393,7 +399,7 @@ async def run_provider_module(
 async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPlanResult, list[str]]:
     search = await session.get(SearchRequest, trip.search_id)
     if search is None:
-        raise AppError(409, "trip_search_missing", "The original search is unavailable")
+        raise AppError(409, "trip_search_missing", "原始搜尋已無法使用")
     query = SearchCreate.model_validate(search.request_json)
     redis = get_redis()
     settings = await load_runtime_settings(session)
@@ -487,7 +493,7 @@ async def save_trip(
         )
     )
     if search is None:
-        raise AppError(404, "search_not_found", "Search was not found")
+        raise AppError(404, "search_not_found", "找不到這次搜尋")
     plan = next(
         (
             item
@@ -497,7 +503,7 @@ async def save_trip(
         None,
     )
     if plan is None:
-        raise AppError(404, "plan_not_found", "Optimized plan was not found")
+        raise AppError(404, "plan_not_found", "找不到最佳化方案")
     itinerary_days = cast(list[dict[str, Any]], plan.get("itinerary", []))
     first_item_data = next(
         (
@@ -535,7 +541,13 @@ async def save_trip(
     await session.flush()
     for raw_day in itinerary_days:
         for raw_item in raw_day.get("items", []):
-            session.add(item_record(trip.id, ItineraryItem.model_validate(raw_item)))
+            session.add(
+                item_record(
+                    trip.id,
+                    ItineraryItem.model_validate(raw_item),
+                    preserve_source_id=False,
+                )
+            )
     await session.commit()
     await session.refresh(trip)
     return await serialize_trip(session, trip)
@@ -587,7 +599,7 @@ async def update_itinerary(
     )
     if next_version is None:
         await session.rollback()
-        raise AppError(409, "trip_version_conflict", "Trip changed; reload before saving again")
+        raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再儲存")
     await session.execute(delete(TripPlanItem).where(TripPlanItem.trip_plan_id == trip.id))
     for item in payload.items:
         session.add(item_record(trip.id, item))
@@ -608,7 +620,7 @@ async def compute_trip_routes(
 ) -> dict[str, Any]:
     trip = await owned_trip(session, user.id, trip_id)
     if trip.version != payload.version:
-        raise AppError(409, "trip_version_conflict", "Trip changed; reload before routing")
+        raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再計算路線")
     rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
     if payload.from_item_id and payload.to_item_id:
         selected = [
@@ -691,7 +703,7 @@ async def optimize_trip_itinerary(
     reservation.resource_id = trip.id
     try:
         if trip.version != payload.version:
-            raise AppError(409, "trip_version_conflict", "Trip changed; reload before optimizing")
+            raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再最佳化")
         all_rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
         target_days = (
             [payload.day_date]
@@ -847,7 +859,7 @@ async def reoptimize_trip(
         for item in day.items:
             if item.locked:
                 continue
-            row = item_record(trip.id, item)
+            row = item_record(trip.id, item, preserve_source_id=False)
             if day.date in locked_dates:
                 row.position += 100
             row.data = {**row.data, "reoptimized_at": checked_at}
@@ -900,7 +912,7 @@ async def revoke_share(trip_id: UUID, user: CurrentUser, session: Session) -> No
 @public_router.get("/{token}")
 async def shared_trip(token: str, session: Session) -> dict[str, Any]:
     if len(token) < 32 or len(token) > 128:
-        raise AppError(404, "shared_trip_not_found", "Shared trip was not found")
+        raise AppError(404, "shared_trip_not_found", "找不到這個分享旅程")
     token_hash = hashlib.sha256(token.encode()).hexdigest()
     share = await session.scalar(
         select(TripShare).where(
@@ -909,10 +921,10 @@ async def shared_trip(token: str, session: Session) -> dict[str, Any]:
         )
     )
     if share is None:
-        raise AppError(404, "shared_trip_not_found", "Shared trip was not found")
+        raise AppError(404, "shared_trip_not_found", "找不到這個分享旅程")
     trip = await session.get(TripPlan, share.trip_plan_id)
     if trip is None:
-        raise AppError(404, "shared_trip_not_found", "Shared trip was not found")
+        raise AppError(404, "shared_trip_not_found", "找不到這個分享旅程")
     payload = await serialize_trip(session, trip)
     return {
         key: payload[key]

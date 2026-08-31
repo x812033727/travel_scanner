@@ -42,7 +42,7 @@ def decode_access_token(token: str) -> UUID:
         payload = jwt.decode(token, get_settings().app_secret_key, algorithms=[ALGORITHM])
         return UUID(payload["sub"])
     except (InvalidTokenError, KeyError, ValueError) as exc:
-        raise AppError(401, "invalid_token", "The access token is invalid or expired") from exc
+        raise AppError(401, "invalid_token", "登入憑證無效或已過期") from exc
 
 
 async def current_user(
@@ -54,10 +54,10 @@ async def current_user(
     if authorization and authorization.lower().startswith("bearer "):
         token = authorization[7:]
     if not token:
-        raise AppError(401, "authentication_required", "Please sign in to continue")
+        raise AppError(401, "authentication_required", "請先登入再繼續")
     user = await session.get(User, decode_access_token(token))
     if user is None or not user.is_active:
-        raise AppError(401, "invalid_user", "The account is unavailable")
+        raise AppError(401, "invalid_user", "這個帳號目前無法使用")
     return user
 
 

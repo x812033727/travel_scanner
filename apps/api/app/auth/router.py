@@ -49,7 +49,7 @@ def set_auth_cookie(response: Response, token: str) -> None:
 @router.post("/register", response_model=TokenResponse, status_code=201)
 async def register(payload: RegisterRequest, response: Response, session: Session) -> TokenResponse:
     if await find_user_by_email(session, str(payload.email)):
-        raise AppError(409, "email_exists", "This email is already registered")
+        raise AppError(409, "email_exists", "這個 Email 已經註冊")
     user = User(email=str(payload.email).lower(), password_hash=hash_password(payload.password))
     session.add(user)
     await session.flush()
@@ -64,7 +64,7 @@ async def register(payload: RegisterRequest, response: Response, session: Sessio
 async def login(payload: LoginRequest, response: Response, session: Session) -> TokenResponse:
     user = await find_user_by_email(session, str(payload.email))
     if user is None or not verify_password(payload.password, user.password_hash):
-        raise AppError(401, "invalid_credentials", "Email or password is incorrect")
+        raise AppError(401, "invalid_credentials", "Email 或密碼不正確")
     token = create_access_token(user.id)
     set_auth_cookie(response, token)
     return TokenResponse(access_token=token, user=await user_response(session, user))
@@ -85,6 +85,6 @@ async def change_password(
     payload: ChangePasswordRequest, user: CurrentUser, session: Session
 ) -> None:
     if not verify_password(payload.current_password, user.password_hash):
-        raise AppError(401, "invalid_credentials", "The current password is incorrect")
+        raise AppError(401, "invalid_credentials", "目前密碼不正確")
     user.password_hash = hash_password(payload.new_password)
     await session.commit()

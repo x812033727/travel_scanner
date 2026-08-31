@@ -74,4 +74,16 @@ describe("FlightOfferCard", () => {
     ));
     expect(screen.getByText(/已更新為供應商最新價格/)).toBeTruthy();
   });
+
+  it("creates a price alert with the displayed price", async () => {
+    apiMock.mockResolvedValue({ id: "alert-1" });
+    render(<FlightOfferCard offer={offer} fallbackUrl="https://example.test/recheck" />);
+    fireEvent.click(screen.getByRole("button", { name: "建立價格通知" }));
+    fireEvent.click(screen.getByRole("button", { name: "確認建立" }));
+    await waitFor(() => expect(apiMock).toHaveBeenCalledWith(
+      "/alerts",
+      { method: "POST", body: JSON.stringify({ resource_type: "flight", resource_id: "flight-1", target_price: 15000 }) },
+    ));
+    expect(screen.getByText(/價格通知已建立/)).toBeTruthy();
+  });
 });

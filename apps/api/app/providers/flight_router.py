@@ -29,7 +29,7 @@ async def compare_live_back_to_back(
     idempotency_key: Annotated[str | None, Header(alias="Idempotency-Key")] = None,
 ) -> LiveBackToBackResponse:
     if idempotency_key is None or not 8 <= len(idempotency_key) <= 255:
-        raise AppError(422, "idempotency_key_required", "Idempotency-Key is required")
+        raise AppError(422, "idempotency_key_required", "缺少 Idempotency-Key")
     settings = await load_runtime_settings(session)
     status = flight_provider_status(settings)
     if status.status != "ready":
