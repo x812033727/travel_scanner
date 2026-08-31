@@ -146,7 +146,8 @@ For provider-backed search, set `TRAVEL_PROVIDER_MODE=live` together with
 `production`. `GOOGLE_MAPS_API_KEY` is optional and enriches hotels, activities,
 photos, opening hours, and route estimates. Secrets belong in the runtime
 environment and must never be committed. `GET /api/v1/providers/status` reports
-whether live, test, mock, or disabled data is active.
+whether live, test, mock, or disabled data is active, plus the selected and
+fallback provider for each search module.
 
 Flights can be selected independently with
 `FLIGHT_PROVIDER_MODE=auto|skyscanner|amadeus|mock`. In `auto` mode an approved
@@ -157,6 +158,18 @@ searches use Indicative Prices and never expose booking actions. Provider
 session tokens and booking URLs stay server-side. The browser posts to
 `POST /api/v1/offers/{offer_id}/clickout`, which validates ownership and expiry,
 records an audit event, and responds with a secure 303 redirect.
+
+Hotels can be selected independently with
+`HOTEL_PROVIDER_MODE=auto|booking|amadeus|mock|disabled`. In `auto` mode an
+enabled Booking.com Demand API integration wins, Amadeus is the fallback, and
+mock is available only outside production. Booking.com requires
+`BOOKING_DEMAND_ENABLED=true`, an Affiliate ID, and a Bearer Token. It uses the
+official v3.1 sandbox by default, resolves the app's IATA destination through
+`/common/locations/cities` to a Booking city ID, caches that mapping in Redis, searches available
+accommodations, and returns only validated HTTPS Booking.com redirect URLs.
+Affiliate link settings remain separate from Demand API hotel search settings.
+Technical timeouts, rate limits, and provider errors trigger one Amadeus
+fallback; a valid empty response does not call a second provider.
 
 Amadeus now sends every leg of a `multi_city` request rather than silently using
 only the first route. Its offers remain recheck-only because the adapter does

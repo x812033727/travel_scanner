@@ -182,7 +182,9 @@ async def refresh_offer(offer_id: UUID, user: CurrentUser, session: Session) -> 
         raise AppError(404, "offer_not_found", "Offer was not found")
     search = await session.get(SearchRequest, record.search_id)
     assert search is not None
-    provider = build_flight_provider(get_redis(), provider_name=record.provider)
+    provider = build_flight_provider(
+        get_redis(), await load_runtime_settings(session), provider_name=record.provider
+    )
     if provider is None:
         raise AppError(503, "provider_unavailable", "The original flight provider is unavailable")
     offer = FlightOffer.model_validate(record.data)
@@ -227,7 +229,9 @@ async def clickout_offer(offer_id: UUID, user: CurrentUser, session: Session) ->
     offer = FlightOffer.model_validate(record.data)
     if not offer.clickout_available or offer.expires_at <= datetime.now(UTC):
         raise AppError(409, "offer_expired", "Offer must be refreshed before booking")
-    provider = build_flight_provider(get_redis(), provider_name=record.provider)
+    provider = build_flight_provider(
+        get_redis(), await load_runtime_settings(session), provider_name=record.provider
+    )
     if provider is None:
         raise AppError(503, "provider_unavailable", "The original flight provider is unavailable")
     target = await provider.clickout(offer)

@@ -22,12 +22,17 @@ from app.models import (
 from app.optimization.engine import TripOptimizer
 from app.places.google import GoogleTravelService
 from app.providers.base import (
+    ActivityProvider,
     FlexibleFlightProvider,
     FlightProvider,
     FlightSearchState,
-    TravelProvider,
+    HotelProvider,
+    TransportProvider,
 )
-from app.providers.registry import build_module_providers, provider_status
+from app.providers.registry import (
+    build_module_provider_candidates,
+    provider_status,
+)
 from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import (
     ActivityOffer,
@@ -112,32 +117,34 @@ async def run_module(
                 lambda: flight_provider.search_flights(query),
             ),
         )
-    travel_provider = cast(TravelProvider, provider)
     if module == "hotel":
+        hotel_provider = cast(HotelProvider, provider)
         return cast(
             list[Offer],
             await runner.run(
-                travel_provider.name,
+                hotel_provider.name,
                 module,
-                lambda: travel_provider.search_hotels(query),
+                lambda: hotel_provider.search_hotels(query),
             ),
         )
     if module == "activities":
+        activity_provider = cast(ActivityProvider, provider)
         return cast(
             list[Offer],
             await runner.run(
-                travel_provider.name,
+                activity_provider.name,
                 module,
-                lambda: travel_provider.search_activities(query),
+                lambda: activity_provider.search_activities(query),
             ),
         )
     if module == "transport":
+        transport_provider = cast(TransportProvider, provider)
         return cast(
             list[Offer],
             await runner.run(
-                travel_provider.name,
+                transport_provider.name,
                 module,
-                lambda: travel_provider.search_transport(query),
+                lambda: transport_provider.search_transport(query),
             ),
         )
     return []
@@ -158,7 +165,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
     await publish_event(redis, search_id, "search.created", 0, {"status": "processing"})
     query = SearchCreate.model_validate(search.request_json)
     settings = await load_runtime_settings(session)
-    providers = build_module_providers(redis, settings)
+    providers = build_module_provider_candidates(redis, settings)
     runner = ProviderRunner(redis, settings)
     place_service = GoogleTravelService(redis, settings)
     status = provider_status(settings)
@@ -191,153 +198,217 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
 
     async def collect(
         module: str,
-    ) -> tuple[str, str, list[Offer], str | None, int, str, bool]:
+    ) -> tuple[
+        str,
+        str,
+        list[Offer],
+        str | None,
+        int,
+        str,
+        bool,
+        list[tuple[str, int, str]],
+    ]:
         nonlocal flight_date_options
-        started = time.perf_counter()
-        provider = providers.get(module)
-        if provider is None:
+        candidates = providers.get(module, [])
+        if not candidates:
+            module_message = status.module_statuses.get(module)
             return (
                 module,
                 "none",
                 [],
-                f"{module} provider is not configured",
+                (
+                    module_message.message
+                    if module_message
+                    else f"{module} provider is not configured"
+                ),
                 0,
                 "failed",
                 False,
+                [],
             )
-        try:
+        failed_attempts: list[tuple[str, int, str]] = []
+        for candidate_index, provider in enumerate(candidates):
+            started = time.perf_counter()
             provider_name = str(getattr(provider, "name", "unknown"))
-            completion = "complete"
-            progressive = False
-            if module == "flight" and hasattr(provider, "start_search"):
-                progressive = True
-                flight_provider = cast(FlightProvider, provider)
-                first = await runner.run(
-                    provider_name,
-                    module,
-                    lambda: flight_provider.start_search(query),  # type: ignore[attr-defined]
-                )
-                collected = {item.provider_offer_id: item for item in first.offers}
-                await publish_event(
-                    redis,
-                    search_id,
-                    "module.results",
-                    15,
-                    {
-                        "module": module,
-                        "offers": [item.model_dump(mode="json") for item in first.offers],
-                        "status": first.state.value,
-                    },
-                )
-                current = first
-                attempts = 0
-                while (
-                    current.state == FlightSearchState.INCOMPLETE
-                    and attempts < settings.skyscanner_poll_attempts
-                ):
-                    await asyncio.sleep(settings.skyscanner_poll_interval_seconds)
-                    current = await runner.run(
+            try:
+                completion = "complete"
+                progressive = False
+                if module == "flight" and hasattr(provider, "start_search"):
+                    progressive = True
+                    flight_provider = cast(FlightProvider, provider)
+                    first = await runner.run(
                         provider_name,
                         module,
-                        lambda: flight_provider.poll_search(first.session_id),  # type: ignore[attr-defined]
+                        lambda selected=flight_provider: selected.start_search(query),  # type: ignore[attr-defined,misc]
                     )
-                    collected.update({item.provider_offer_id: item for item in current.offers})
-                    attempts += 1
+                    collected = {item.provider_offer_id: item for item in first.offers}
                     await publish_event(
                         redis,
                         search_id,
                         "module.results",
-                        min(24, 15 + attempts * 2),
+                        15,
                         {
                             "module": module,
-                            "offers": [item.model_dump(mode="json") for item in current.offers],
-                            "status": current.state.value,
+                            "offers": [item.model_dump(mode="json") for item in first.offers],
+                            "status": first.state.value,
                         },
                     )
-                offers = cast(
-                    list[Offer],
-                    sorted(
-                        collected.values(),
-                        key=lambda item: (item.total_price, item.provider_offer_id),
-                    ),
-                )
-                completion = (
-                    "timeout"
-                    if current.state == FlightSearchState.INCOMPLETE
-                    else current.state.value
-                )
-            else:
-                offers = await run_module(provider, runner, module, query)
-            if module == "flight" and query.flex_days:
-                flexible: list[FlightDateOption] = []
-                if hasattr(provider, "search_flexible_dates"):
-                    try:
-                        flexible_provider = cast(FlexibleFlightProvider, provider)
-                        flexible = await flexible_provider.search_flexible_dates(
-                            query, query.flex_days
+                    current = first
+                    attempts = 0
+                    while (
+                        current.state == FlightSearchState.INCOMPLETE
+                        and attempts < settings.skyscanner_poll_attempts
+                    ):
+                        await asyncio.sleep(settings.skyscanner_poll_interval_seconds)
+                        session_id = first.session_id
+                        current = await runner.run(
+                            provider_name,
+                            module,
+                            lambda selected=flight_provider, token=session_id: selected.poll_search(  # type: ignore[attr-defined,misc]
+                                token
+                            ),
                         )
-                    except (ConnectionError, ProviderUnavailableError):
-                        flex_warnings.append("彈性日期估價暫時無法取得，原日期班次仍可使用。")
+                        collected.update({item.provider_offer_id: item for item in current.offers})
+                        attempts += 1
+                        await publish_event(
+                            redis,
+                            search_id,
+                            "module.results",
+                            min(24, 15 + attempts * 2),
+                            {
+                                "module": module,
+                                "offers": [
+                                    item.model_dump(mode="json") for item in current.offers
+                                ],
+                                "status": current.state.value,
+                            },
+                        )
+                    offers = cast(
+                        list[Offer],
+                        sorted(
+                            collected.values(),
+                            key=lambda item: (item.total_price, item.provider_offer_id),
+                        ),
+                    )
+                    completion = (
+                        "timeout"
+                        if current.state == FlightSearchState.INCOMPLETE
+                        else current.state.value
+                    )
                 else:
-                    flex_warnings.append("目前航班供應商不支援彈性日期估價。")
-                exact_flights = [item for item in offers if isinstance(item, FlightOffer)]
-                if exact_flights and query.departure_date:
-                    cheapest = min(exact_flights, key=lambda item: item.total_price)
-                    current = FlightDateOption(
-                        shift_days=0,
-                        departure_date=query.departure_date,
-                        return_date=query.return_date,
-                        lowest_price=cheapest.total_price,
-                        currency=cheapest.currency,
-                        provider=cheapest.provider,
-                        source_mode=cheapest.source_mode,
-                        is_current=True,
-                        offer_count=len(exact_flights),
+                    offers = await run_module(provider, runner, module, query)
+                if candidate_index > 0:
+                    offers = [offer.model_copy(update={"is_fallback": True}) for offer in offers]
+                if module == "flight" and query.flex_days:
+                    flexible: list[FlightDateOption] = []
+                    if hasattr(provider, "search_flexible_dates"):
+                        try:
+                            flexible_provider = cast(FlexibleFlightProvider, provider)
+                            flexible = await flexible_provider.search_flexible_dates(
+                                query, query.flex_days
+                            )
+                        except (ConnectionError, ProviderUnavailableError):
+                            flex_warnings.append(
+                                "彈性日期估價暫時無法取得，原日期班次仍可使用。"
+                            )
+                    else:
+                        flex_warnings.append("目前航班供應商不支援彈性日期估價。")
+                    exact_flights = [item for item in offers if isinstance(item, FlightOffer)]
+                    if exact_flights and query.departure_date:
+                        cheapest = min(exact_flights, key=lambda item: item.total_price)
+                        current_option = FlightDateOption(
+                            shift_days=0,
+                            departure_date=query.departure_date,
+                            return_date=query.return_date,
+                            lowest_price=cheapest.total_price,
+                            currency=cheapest.currency,
+                            provider=cheapest.provider,
+                            source_mode=cheapest.source_mode,
+                            is_current=True,
+                            offer_count=len(exact_flights),
+                        )
+                        flexible = [item for item in flexible if item.shift_days != 0]
+                        flexible.append(current_option)
+                    flight_date_options = sorted(flexible, key=lambda item: item.shift_days)
+                    if flight_date_options:
+                        await publish_event(
+                            redis,
+                            search_id,
+                            "flight.date_options",
+                            24,
+                            {
+                                "options": [
+                                    item.model_dump(mode="json") for item in flight_date_options
+                                ]
+                            },
+                        )
+                if module == "hotel" and place_service.configured:
+                    hotels = [item for item in offers if isinstance(item, HotelOffer)]
+                    offers = cast(list[Offer], await place_service.enrich_hotels(hotels))
+                elif module == "activities" and place_service.configured:
+                    activities = [item for item in offers if isinstance(item, ActivityOffer)]
+                    offers = cast(list[Offer], await place_service.enrich_activities(activities))
+                latency_ms = int((time.perf_counter() - started) * 1000)
+                if candidate_index > 0:
+                    warnings.append(
+                        f"{module} 主要供應商暫時無法使用，已切換至 {provider_name}。"
                     )
-                    flexible = [item for item in flexible if item.shift_days != 0]
-                    flexible.append(current)
-                flight_date_options = sorted(flexible, key=lambda item: item.shift_days)
-                if flight_date_options:
-                    await publish_event(
-                        redis,
-                        search_id,
-                        "flight.date_options",
-                        24,
-                        {"options": [item.model_dump(mode="json") for item in flight_date_options]},
-                    )
-            if module == "hotel" and place_service.configured:
-                hotels = [item for item in offers if isinstance(item, HotelOffer)]
-                offers = cast(list[Offer], await place_service.enrich_hotels(hotels))
-            elif module == "activities" and place_service.configured:
-                activities = [item for item in offers if isinstance(item, ActivityOffer)]
-                offers = cast(list[Offer], await place_service.enrich_activities(activities))
-            latency_ms = int((time.perf_counter() - started) * 1000)
-            return (
-                module,
-                provider_name,
-                offers,
-                None,
-                latency_ms,
-                completion,
-                progressive,
-            )
-        except ProviderUnavailableError as exc:
-            latency_ms = int((time.perf_counter() - started) * 1000)
-            detail = str(exc)
-            completion = "rate_limited" if "429" in detail or "rate_limited" in detail else "failed"
-            return (
-                module,
-                str(getattr(provider, "name", "unknown")),
-                [],
-                detail,
-                latency_ms,
-                completion,
-                False,
-            )
+                return (
+                    module,
+                    provider_name,
+                    offers,
+                    None,
+                    latency_ms,
+                    completion,
+                    progressive,
+                    failed_attempts,
+                )
+            except ProviderUnavailableError as exc:
+                latency_ms = int((time.perf_counter() - started) * 1000)
+                detail = str(exc)
+                failed_attempts.append((provider_name, latency_ms, detail))
+                if candidate_index + 1 < len(candidates):
+                    continue
+                completion = (
+                    "rate_limited"
+                    if "429" in detail or "rate_limited" in detail
+                    else "failed"
+                )
+                return (
+                    module,
+                    provider_name,
+                    [],
+                    detail,
+                    latency_ms,
+                    completion,
+                    False,
+                    failed_attempts[:-1],
+                )
+        raise RuntimeError("provider candidate loop ended unexpectedly")
 
     tasks = [asyncio.create_task(collect(str(module))) for module in query.modules]
     for completed in asyncio.as_completed(tasks):
-        module, provider_name, offers, error, latency_ms, completion, progressive = await completed
+        (
+            module,
+            provider_name,
+            offers,
+            error,
+            latency_ms,
+            completion,
+            progressive,
+            failed_attempts,
+        ) = await completed
+        for failed_provider, failed_latency, failed_error in failed_attempts:
+            session.add(
+                ProviderRequest(
+                    search_id=search_id,
+                    provider=failed_provider,
+                    module=module,
+                    status="failed",
+                    latency_ms=failed_latency,
+                    error=failed_error,
+                )
+            )
         provider_request = ProviderRequest(
             search_id=search_id,
             provider=provider_name,

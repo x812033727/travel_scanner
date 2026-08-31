@@ -6,8 +6,10 @@ from httpx import ASGITransport, AsyncClient
 import app.admin.service as admin_service
 from app.admin.service import (
     _default_provider_enabled,
+    _merge_secret_values,
     _safe_test_message,
     _test_google,
+    _validate_provider_values,
     apply_runtime_overrides,
     decrypt_secrets,
     encrypt_secrets,
@@ -17,6 +19,7 @@ from app.auth.service import current_user
 from app.config import Settings
 from app.main import app
 from app.models import ProviderConfig, User
+from app.problems import AppError
 from app.trips.routing import GoogleRoutesProbeResult, RoutePoint
 
 
@@ -49,9 +52,17 @@ def test_provider_secrets_are_encrypted_and_round_trip() -> None:
     assert decrypt_secrets(encrypted, settings) == {"google_maps_api_key": "server-secret-key"}
 
 
+def test_blank_secret_keeps_existing_value_and_null_clears_it() -> None:
+    assert _merge_secret_values({"token": "original"}, {"token": "   "}) == {
+        "token": "original"
+    }
+    assert _merge_secret_values({"token": "original"}, {"token": None}) == {}
+
+
 def test_new_affiliate_provider_rows_default_to_disabled() -> None:
     assert not _default_provider_enabled("travelpayouts")
     assert not _default_provider_enabled("booking")
+    assert not _default_provider_enabled("booking_demand")
     assert _default_provider_enabled("google_maps")
 
 
@@ -84,6 +95,58 @@ def test_connection_failure_message_redacts_provider_secrets() -> None:
         settings,
     )
     assert message == "request with *** was rejected"
+
+
+def test_runtime_accepts_independent_hotel_provider_mode() -> None:
+    validated = _validate_provider_values(
+        "runtime",
+        {},
+        admin_service.ProviderSettingsUpdate(
+            config={
+                "travel_provider_mode": "amadeus",
+                "flight_provider_mode": "auto",
+                "hotel_provider_mode": "booking",
+            }
+        ),
+    )
+
+    assert validated["hotel_provider_mode"] == "booking"
+
+
+def test_booking_demand_environment_uses_only_official_v31_url() -> None:
+    validated = _validate_provider_values(
+        "booking_demand",
+        {},
+        admin_service.ProviderSettingsUpdate(
+            config={
+                "booking_demand_env": "production",
+                "booking_demand_api_base_url": "https://demandapi-sandbox.booking.com/3.1",
+                "booking_demand_affiliate_id": "12345",
+                "booking_booker_country": "TW",
+                "booking_language": "ZH-TW",
+            }
+        ),
+    )
+    assert validated["booking_demand_api_base_url"] == "https://demandapi.booking.com/3.1"
+    assert validated["booking_booker_country"] == "tw"
+    assert validated["booking_language"] == "zh-tw"
+
+    with pytest.raises(AppError, match="Booking Demand API"):
+        _validate_provider_values(
+            "booking_demand",
+            {},
+            admin_service.ProviderSettingsUpdate(
+                config={"booking_demand_api_base_url": "https://example.com/3.1"}
+            ),
+        )
+    with pytest.raises(AppError, match="Booking Demand API"):
+        _validate_provider_values(
+            "booking_demand",
+            {},
+            admin_service.ProviderSettingsUpdate(
+                config={"booking_demand_api_base_url": "https://demandapi.booking.com/3.1"}
+            ),
+        )
 
 
 @pytest.mark.asyncio
@@ -174,6 +237,34 @@ async def test_admin_snapshot_never_returns_plaintext_secret() -> None:
     google = next(item for item in snapshot.providers if item.provider == "google_maps")
     assert google.secrets["google_maps_api_key"].masked == "••••••••leak"
     assert google.secrets["google_maps_api_key"].source == "database"
+
+
+@pytest.mark.asyncio
+async def test_production_booking_is_not_marked_available_until_connection_test_passes() -> None:
+    base = Settings()
+    row = ProviderConfig(
+        provider="booking_demand",
+        enabled=True,
+        config={
+            "booking_demand_env": "production",
+            "booking_demand_api_base_url": "https://demandapi.booking.com/3.1",
+            "booking_demand_affiliate_id": "12345",
+        },
+        secret_config_encrypted=encrypt_secrets(
+            {"booking_demand_api_token": "booking-production-secret"}, base
+        ),
+    )
+    pending = await settings_snapshot(SnapshotSession([row]))  # type: ignore[arg-type]
+    booking = next(item for item in pending.providers if item.provider == "booking_demand")
+    assert booking.configured is False
+    assert booking.status == "test_required"
+
+    row.last_test_status = "success"
+    ready = await settings_snapshot(SnapshotSession([row]))  # type: ignore[arg-type]
+    booking = next(item for item in ready.providers if item.provider == "booking_demand")
+    assert booking.configured is True
+    assert booking.status == "ready"
+    assert "booking-production-secret" not in ready.model_dump_json()
 
 
 @pytest.mark.asyncio

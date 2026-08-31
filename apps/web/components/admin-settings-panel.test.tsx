@@ -79,4 +79,66 @@ describe("AdminSettingsPanel", () => {
 
     expect((await screen.findByRole("alert")).textContent).toContain("API key 無效（42 ms）");
   });
+
+  it("edits Booking Demand search settings separately from affiliate links", async () => {
+    const bookingSnapshot = {
+      ...snapshot,
+      providers: [{
+        provider: "booking_demand",
+        label: "Booking.com Demand API",
+        description: "飯店即時查價",
+        enabled: false,
+        configured: false,
+        status: "not_configured",
+        status_message: "請啟用並設定憑證",
+        config: {
+          booking_demand_env: "sandbox",
+          booking_demand_api_base_url: "https://demandapi-sandbox.booking.com/3.1",
+          booking_demand_affiliate_id: "",
+          booking_booker_country: "tw",
+          booking_language: "zh-tw",
+          booking_location_cache_ttl_seconds: 2592000,
+        },
+        config_sources: {
+          booking_demand_env: "environment",
+          booking_demand_api_base_url: "environment",
+          booking_demand_affiliate_id: "environment",
+          booking_booker_country: "environment",
+          booking_language: "environment",
+          booking_location_cache_ttl_seconds: "environment",
+        },
+        secrets: {
+          booking_demand_api_token: { configured: false, source: "none" },
+        },
+      }],
+    };
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify(bookingSnapshot), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(bookingSnapshot), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminSettingsPanel />);
+
+    const heading = await screen.findByRole("heading", { name: "Booking.com Demand API" });
+    const section = heading.closest("section");
+    expect(section).toBeTruthy();
+    fireEvent.click(within(section!).getByLabelText("啟用"));
+    fireEvent.change(within(section!).getByLabelText(/^Demand API 環境/), {
+      target: { value: "production" },
+    });
+    fireEvent.change(within(section!).getByLabelText(/^Demand API Affiliate ID/), {
+      target: { value: "affiliate-456" },
+    });
+    fireEvent.change(within(section!).getByLabelText("Demand API Bearer Token"), {
+      target: { value: "new-booking-token" },
+    });
+    fireEvent.click(within(section!).getByRole("button", { name: "儲存設定" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    const request = fetchMock.mock.calls[1][1] as RequestInit;
+    const body = JSON.parse(String(request.body));
+    expect(body.enabled).toBe(true);
+    expect(body.config.booking_demand_env).toBe("production");
+    expect(body.config.booking_demand_affiliate_id).toBe("affiliate-456");
+    expect(body.secrets.booking_demand_api_token).toBe("new-booking-token");
+  });
 });

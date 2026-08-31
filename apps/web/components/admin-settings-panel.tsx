@@ -29,7 +29,8 @@ type FieldMeta = { label: string; type?: "text" | "number" | "url"; options?: Ar
 
 const fieldMeta: Record<string, FieldMeta> = {
   travel_provider_mode: { label: "旅遊資料供應商", options: [{ value: "amadeus", label: "Amadeus" }, { value: "mock", label: "Mock（僅開發）" }, { value: "disabled", label: "停用" }] },
-  flight_provider_mode: { label: "航班供應商", options: [{ value: "auto", label: "自動選擇" }, { value: "skyscanner", label: "Skyscanner" }, { value: "amadeus", label: "Amadeus" }, { value: "mock", label: "Mock（僅開發）" }, { value: "disabled", label: "停用" }] },
+  flight_provider_mode: { label: "航空查詢來源", options: [{ value: "auto", label: "自動：Skyscanner → Amadeus" }, { value: "skyscanner", label: "Skyscanner" }, { value: "amadeus", label: "Amadeus" }, { value: "mock", label: "Mock（僅開發）" }, { value: "disabled", label: "停用" }], help: "自動模式會在 Skyscanner 尚未設定時先使用 Amadeus；技術失敗時也只備援一次。" },
+  hotel_provider_mode: { label: "飯店查詢來源", options: [{ value: "auto", label: "自動：Booking.com → Amadeus" }, { value: "booking", label: "Booking.com Demand API" }, { value: "amadeus", label: "Amadeus" }, { value: "mock", label: "Mock（僅開發）" }, { value: "disabled", label: "停用" }], help: "自動模式會在 Booking.com Demand API 尚未核准時先使用 Amadeus。" },
   provider_timeout_seconds: { label: "供應商逾時（秒）", type: "number", help: "單次外部請求等待上限。" },
   provider_failure_threshold: { label: "斷路器失敗門檻", type: "number" },
   provider_circuit_seconds: { label: "斷路器暫停秒數", type: "number" },
@@ -69,7 +70,12 @@ const fieldMeta: Record<string, FieldMeta> = {
   booking_affiliate_id: { label: "Booking.com Affiliate ID" },
   booking_affiliate_url_template: { label: "合作連結範本", type: "url" },
   booking_allowed_hosts: { label: "允許跳轉網域" },
-  booking_demand_api_base_url: { label: "Demand API Base URL", type: "url" },
+  booking_demand_env: { label: "Demand API 環境", options: [{ value: "sandbox", label: "Sandbox" }, { value: "production", label: "Production" }], help: "切換 production 後請儲存並重新執行連線測試。" },
+  booking_demand_api_base_url: { label: "Demand API v3.1 Base URL", type: "url", help: "僅允許 Booking.com 官方 sandbox 或 production 網域。" },
+  booking_demand_affiliate_id: { label: "Demand API Affiliate ID", help: "與分潤導流 ID 分開保存；留空時才沿用 Affiliate 區塊的 ID。" },
+  booking_booker_country: { label: "Booker 國家代碼", help: "兩碼小寫國家代碼；台灣使用 tw。" },
+  booking_language: { label: "Booking 回傳語系", help: "例如 zh-tw 或 en-gb。" },
+  booking_location_cache_ttl_seconds: { label: "目的地 ID 快取秒數", type: "number" },
   skyscanner_affiliate_url_template: { label: "Impact Affiliate 合作連結", type: "url" },
   skyscanner_affiliate_allowed_hosts: { label: "允許跳轉網域" },
 };
@@ -214,7 +220,7 @@ export function AdminSettingsPanel() {
       const draft = drafts[provider.provider];
       const busy = busyProvider === provider.provider;
       return <section key={provider.provider} className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm md:p-7">
-        <div className="flex flex-wrap items-start justify-between gap-4"><div className="max-w-2xl"><div className="flex flex-wrap items-center gap-2"><h2 className="text-xl font-bold">{provider.label}</h2><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(provider.status)}`}>{provider.status === "ready" ? "已設定" : provider.status === "disabled" ? "已停用" : "待設定"}</span></div><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{provider.description}</p><p className="mt-1 text-xs font-semibold text-[var(--teal)]">{provider.status_message}</p></div>{provider.provider !== "runtime" && <label className="flex items-center gap-2 rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-semibold"><input type="checkbox" checked={draft.enabled} onChange={(event) => patchDraft(provider.provider, { enabled: event.target.checked })} />啟用</label>}</div>
+        <div className="flex flex-wrap items-start justify-between gap-4"><div className="max-w-2xl"><div className="flex flex-wrap items-center gap-2"><h2 className="text-xl font-bold">{provider.label}</h2><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(provider.status)}`}>{provider.status === "ready" ? "已設定" : provider.status === "disabled" ? "已停用" : provider.status === "test_required" ? "待測試" : provider.status === "error" ? "連線失敗" : "待設定"}</span></div><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{provider.description}</p><p className="mt-1 text-xs font-semibold text-[var(--teal)]">{provider.status_message}</p></div>{provider.provider !== "runtime" && <label className="flex items-center gap-2 rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-semibold"><input type="checkbox" checked={draft.enabled} onChange={(event) => patchDraft(provider.provider, { enabled: event.target.checked })} />啟用</label>}</div>
 
         {Object.keys(provider.config).length > 0 && <div className="mt-6 grid gap-4 md:grid-cols-2">{Object.entries(provider.config).map(([field]) => {
           const meta = fieldMeta[field] || { label: field };

@@ -3,6 +3,7 @@ from __future__ import annotations
 import base64
 import hashlib
 import json
+import re
 import time
 from dataclasses import dataclass
 from datetime import UTC, date, datetime, timedelta
@@ -30,8 +31,9 @@ from app.models import AdminAuditLog, ProviderConfig, User
 from app.places.google import GoogleTravelService
 from app.problems import AppError
 from app.providers.amadeus import AmadeusProvider
+from app.providers.booking import BOOKING_API_HOSTS, BookingHotelProvider
 from app.providers.skyscanner import SkyscannerProvider
-from app.search.schemas import SearchCreate
+from app.search.schemas import SearchCreate, SearchModule
 from app.trips.routing import (
     GoogleRouteProvider,
     NavitimeRouteProvider,
@@ -55,6 +57,7 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         (
             "travel_provider_mode",
             "flight_provider_mode",
+            "hotel_provider_mode",
             "provider_timeout_seconds",
             "provider_failure_threshold",
             "provider_circuit_seconds",
@@ -146,15 +149,28 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     ),
     "booking": ProviderDefinition(
         "Booking.com Affiliate",
-        "住宿 affiliate ID 導流，並預留 Demand API sandbox／production 設定。",
+        "住宿 affiliate ID 與合作連結導流；即時飯店查價在獨立 Demand API 區塊設定。",
         (
             "booking_affiliate_id",
             "booking_affiliate_url_template",
             "booking_allowed_hosts",
+        ),
+        (),
+        "booking_enabled",
+    ),
+    "booking_demand": ProviderDefinition(
+        "Booking.com Demand API",
+        "飯店即時查價與 Search and Redirect；不建立站內訂單或處理付款。",
+        (
+            "booking_demand_env",
             "booking_demand_api_base_url",
+            "booking_demand_affiliate_id",
+            "booking_booker_country",
+            "booking_language",
+            "booking_location_cache_ttl_seconds",
         ),
         ("booking_demand_api_token",),
-        "booking_enabled",
+        "booking_demand_enabled",
     ),
     "skyscanner_affiliate": ProviderDefinition(
         "Skyscanner Affiliate",
@@ -245,7 +261,18 @@ async def load_runtime_settings(session: AsyncSession) -> Settings:
 
 def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
     if provider == "runtime":
-        return True, "ready", "執行模式設定已套用"
+        from app.providers.registry import flight_provider_status, hotel_provider_status
+
+        flight = flight_provider_status(settings)
+        hotel = hotel_provider_status(settings)
+        return (
+            True,
+            "ready",
+            (
+                f"目前航空：{flight.selected_provider}（{flight.status}）；"
+                f"飯店：{hotel.selected_provider}（{hotel.status}）"
+            ),
+        )
     if provider == "google_maps":
         configured = bool(settings.google_maps_api_key)
         browser = bool(settings.next_public_google_maps_browser_key)
@@ -270,6 +297,17 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             "Skyscanner API key 已設定"
             if settings.skyscanner_configured
             else "缺少 Skyscanner API key",
+        )
+    if provider == "booking_demand":
+        configured = settings.booking_demand_configured
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            (
+                f"Booking.com Demand API {settings.booking_demand_env} 飯店查價已設定"
+                if configured
+                else "請啟用並設定 Demand Affiliate ID 與 Bearer Token"
+            ),
         )
     affiliate_codes = {
         "travelpayouts": "travelpayouts",
@@ -325,6 +363,14 @@ def _field_sources(
     return config_sources, secret_states
 
 
+def _production_test_required(provider: str, settings: Settings) -> bool:
+    if provider == "amadeus":
+        return settings.amadeus_env.lower() == "production"
+    if provider == "booking_demand":
+        return settings.booking_demand_env.lower() == "production"
+    return provider == "skyscanner"
+
+
 async def settings_snapshot(session: AsyncSession) -> ProviderSettingsSnapshot:
     base = get_settings()
     rows = await provider_rows(session)
@@ -343,6 +389,16 @@ async def settings_snapshot(session: AsyncSession) -> ProviderSettingsSnapshot:
         configured, status, message = _configured(provider, effective)
         if not enabled and provider != "runtime":
             configured, status, message = False, "disabled", "已由管理後台停用"
+        elif configured and row is not None and row.last_test_status == "failed":
+            configured, status = False, "error"
+            message = f"最近一次連線測試失敗：{row.last_test_message or '請重新測試'}"
+        elif (
+            configured
+            and _production_test_required(provider, effective)
+            and (row is None or row.last_test_status != "success")
+        ):
+            configured, status = False, "test_required"
+            message = "Production 憑證已設定，必須通過連線測試後才標示為可用"
         config_sources, secret_states = _field_sources(definition, row, base)
         providers.append(
             ProviderSettingsView(
@@ -419,7 +475,9 @@ def _validate_provider_values(
     modes = {
         "travel_provider_mode": {"mock", "amadeus", "live", "disabled"},
         "flight_provider_mode": {"auto", "skyscanner", "amadeus", "mock", "disabled"},
+        "hotel_provider_mode": {"auto", "booking", "amadeus", "mock", "disabled"},
         "amadeus_env": {"test", "production"},
+        "booking_demand_env": {"sandbox", "production"},
     }
     for field, allowed in modes.items():
         if field in merged and str(merged[field]).lower() not in allowed:
@@ -458,6 +516,42 @@ def _validate_provider_values(
         merged["skyscanner_market"] = str(merged["skyscanner_market"]).upper()
     if "skyscanner_currency" in merged:
         merged["skyscanner_currency"] = str(merged["skyscanner_currency"]).upper()
+    if "booking_demand_env" in merged:
+        environment = str(merged["booking_demand_env"]).lower()
+        merged["booking_demand_env"] = environment
+        official_urls = {
+            "sandbox": "https://demandapi-sandbox.booking.com/3.1",
+            "production": "https://demandapi.booking.com/3.1",
+        }
+        current_url = str(merged.get("booking_demand_api_base_url") or "")
+        if not current_url or (urlparse(current_url).hostname or "").lower() in BOOKING_API_HOSTS:
+            merged["booking_demand_api_base_url"] = official_urls[environment]
+    if "booking_demand_api_base_url" in merged:
+        booking_url = urlparse(str(merged["booking_demand_api_base_url"]))
+        booking_environment = str(
+            merged.get("booking_demand_env", get_settings().booking_demand_env)
+        ).lower()
+        expected_host = {
+            "sandbox": "demandapi-sandbox.booking.com",
+            "production": "demandapi.booking.com",
+        }.get(booking_environment)
+        if (
+            (booking_url.hostname or "").lower() not in BOOKING_API_HOSTS
+            or (expected_host is not None and booking_url.hostname != expected_host)
+            or booking_url.path.rstrip("/") != "/3.1"
+        ):
+            raise AppError(
+                422,
+                "provider_setting_invalid",
+                "Booking Demand API 必須使用官方 v3.1 sandbox 或 production URL",
+            )
+    for field in ("booking_booker_country", "booking_language"):
+        if field in merged:
+            merged[field] = str(merged[field]).lower()
+    if "booking_booker_country" in merged and not re.fullmatch(
+        r"[a-z]{2}", str(merged["booking_booker_country"])
+    ):
+        raise AppError(422, "provider_setting_invalid", "Booker country 必須是兩碼國家代碼")
     try:
         Settings.model_validate({**get_settings().model_dump(), **merged})
     except ValidationError as exc:
@@ -484,15 +578,9 @@ async def update_provider_settings(
         )
         session.add(row)
     row.config = _validate_provider_values(provider, row.config or {}, payload)
-    stored = decrypt_secrets(row.secret_config_encrypted)
-    for field, value in payload.secrets.items():
-        if value is None:
-            stored.pop(field, None)
-            continue
-        cleaned = value.strip()
-        if not cleaned or len(cleaned) > 2048:
-            raise AppError(422, "provider_secret_invalid", f"{field} 金鑰格式不正確")
-        stored[field] = cleaned
+    stored = _merge_secret_values(
+        decrypt_secrets(row.secret_config_encrypted), payload.secrets
+    )
     row.secret_config_encrypted = encrypt_secrets(stored)
     if payload.enabled is not None:
         row.enabled = payload.enabled
@@ -515,6 +603,23 @@ async def update_provider_settings(
     if provider == "amadeus":
         await redis.delete("provider:amadeus:oauth-token")
     return await settings_snapshot(session)
+
+
+def _merge_secret_values(
+    current: dict[str, str], updates: dict[str, str | None]
+) -> dict[str, str]:
+    merged = dict(current)
+    for field, value in updates.items():
+        if value is None:
+            merged.pop(field, None)
+            continue
+        cleaned = value.strip()
+        if not cleaned:
+            continue
+        if len(cleaned) > 2048:
+            raise AppError(422, "provider_secret_invalid", f"{field} 金鑰格式不正確")
+        merged[field] = cleaned
+    return merged
 
 
 async def _test_google(settings: Settings, redis: Redis) -> str:
@@ -558,10 +663,13 @@ async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str
             destination="NRT",
             departure_date=date.today() + timedelta(days=45),
             return_date=date.today() + timedelta(days=49),
-            modules=["flight"],
+            modules=[SearchModule.FLIGHT],
         )
         await SkyscannerProvider(redis, settings).start_search(query)
         return "Skyscanner Live Flights 驗證成功"
+    if provider == "booking_demand":
+        await BookingHotelProvider(redis, settings).probe()
+        return f"Booking.com Demand API {settings.booking_demand_env} 驗證成功"
     if provider == "navitime":
         segment = await NavitimeRouteProvider(settings).compute(
             RoutePoint(item_id=uuid4(), name="東京", latitude=35.6812, longitude=139.7671),
