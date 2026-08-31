@@ -241,7 +241,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                     first = await runner.run(
                         provider_name,
                         module,
-                        lambda selected=flight_provider: selected.start_search(query),  # type: ignore[attr-defined,misc]
+                        lambda selected=flight_provider: selected.start_search(query),  # type: ignore[misc]
                     )
                     collected = {item.provider_offer_id: item for item in first.offers}
                     await publish_event(
@@ -266,7 +266,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                         current = await runner.run(
                             provider_name,
                             module,
-                            lambda selected=flight_provider, token=session_id: selected.poll_search(  # type: ignore[attr-defined,misc]
+                            lambda selected=flight_provider, token=session_id: selected.poll_search(  # type: ignore[misc]
                                 token
                             ),
                         )
