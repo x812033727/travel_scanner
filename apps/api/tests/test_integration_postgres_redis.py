@@ -445,6 +445,16 @@ async def test_blank_trip_creation_and_structured_itinerary_fields(
                 "start_date": "2026-11-10",
                 "end_date": "2026-11-12",
                 "route_preference": "FEWER_TRANSFERS",
+                "travelers": {"adults": 2, "children": 1, "children_ages": [7], "rooms": 1},
+                "preferences": {
+                    "budget_twd": 60000,
+                    "accepted_property_types": ["hotel", "vacation_rental"],
+                    "hotel_min_rating": 4,
+                    "hotel_min_review_count": 100,
+                    "pace": "balanced",
+                    "interests": ["food", "culture"],
+                },
+                "notes": "不要一直換飯店",
             },
         )
         assert created.status_code == 201
@@ -452,6 +462,15 @@ async def test_blank_trip_creation_and_structured_itinerary_fields(
         assert trip["mode"] == "manual"
         assert trip["timezone"] == "Asia/Tokyo"
         assert trip["items"] == []
+        assert trip["data"]["travelers"] == {
+            "adults": 2,
+            "children": 1,
+            "children_ages": [7],
+            "rooms": 1,
+        }
+        assert trip["data"]["preferences"]["budget_twd"] == 60000
+        assert trip["data"]["preferences"]["hotel_min_review_count"] == 100
+        assert trip["data"]["notes"] == "不要一直換飯店"
         item_id = str(uuid4())
         second_item_id = str(uuid4())
         third_item_id = str(uuid4())

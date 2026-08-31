@@ -29,7 +29,7 @@ from app.providers.base import TravelProvider
 from app.providers.registry import build_provider, provider_status
 from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, Offer, TransportOffer
-from app.search.schemas import SearchCreate
+from app.search.schemas import SearchCreate, SearchPreferences, Travelers
 from app.trips.itinerary import ItineraryItem
 from app.trips.routing import RoutePoint, RouteSegment, RouteService, is_japan_trip
 from app.usage.service import (
@@ -56,6 +56,9 @@ class SaveTripRequest(BaseModel):
     end_date: date | None = None
     timezone: str | None = Field(default=None, max_length=64)
     route_preference: str = "FEWER_TRANSFERS"
+    travelers: Travelers = Field(default_factory=Travelers)
+    preferences: SearchPreferences = Field(default_factory=SearchPreferences)
+    notes: str | None = Field(default=None, max_length=1000)
 
     @model_validator(mode="after")
     def validate_source(self) -> "SaveTripRequest":
@@ -72,7 +75,25 @@ class SaveTripRequest(BaseModel):
                 raise ValueError("blank trips may be at most 61 days")
         if self.route_preference not in {"FEWER_TRANSFERS", "LESS_WALKING", "FASTEST"}:
             raise ValueError("unsupported route preference")
+        if self.notes is not None:
+            self.notes = self.notes.strip() or None
         return self
+
+
+def destination_timezone(destination: str) -> str:
+    rules = (
+        (("日本", "東京", "大阪", "京都", "北海道", "沖繩", "福岡", "名古屋"), "Asia/Tokyo"),
+        (("韓國", "首爾", "釜山", "濟州"), "Asia/Seoul"),
+        (("泰國", "曼谷", "清邁", "普吉", "喀比"), "Asia/Bangkok"),
+    )
+    return next(
+        (
+            timezone
+            for tokens, timezone in rules
+            if any(token in destination for token in tokens)
+        ),
+        "UTC",
+    )
 
 
 class ItineraryItemRequest(BaseModel):
@@ -423,10 +444,8 @@ async def save_trip(
         raise AppError(403, "trip_limit_reached", "已達所有會員共用的 20 筆儲存旅程上限")
     if payload.source == "blank":
         destination = payload.destination_name or "未命名目的地"
-        japan_tokens = ("日本", "東京", "大阪", "京都", "北海道", "沖繩", "福岡", "名古屋")
-        timezone = payload.timezone or (
-            "Asia/Tokyo" if any(token in destination for token in japan_tokens) else "UTC"
-        )
+        timezone = payload.timezone or destination_timezone(destination)
+        preferences = payload.preferences.model_dump(mode="json")
         trip = TripPlan(
             user_id=user.id,
             search_id=None,
@@ -437,7 +456,14 @@ async def save_trip(
             data={
                 "source": "blank",
                 "destination_city": destination,
-                "destination_country": "日本" if timezone == "Asia/Tokyo" else None,
+                "destination_country": {
+                    "Asia/Tokyo": "日本",
+                    "Asia/Seoul": "韓國",
+                    "Asia/Bangkok": "泰國",
+                }.get(timezone),
+                "travelers": payload.travelers.model_dump(mode="json"),
+                "preferences": preferences,
+                "notes": payload.notes,
             },
             version=1,
             destination_name=destination,

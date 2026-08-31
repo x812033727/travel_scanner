@@ -5,9 +5,7 @@ import { NewTripForm } from "./new-trip-form";
 const { push } = vi.hoisted(() => ({ push: vi.fn() }));
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
 vi.mock("./place-picker", () => ({
-  PlacePicker: ({ value, onTextChange }: { value: string; onTextChange: (value: string) => void }) => (
-    <input aria-label="目的地" value={value} onChange={(event) => onTextChange(event.target.value)} />
-  ),
+  PlacePicker: ({ value, onTextChange }: { value: string; onTextChange: (value: string) => void }) => <input aria-label="目的地" value={value} onChange={(event) => onTextChange(event.target.value)} />,
 }));
 
 function fillRequiredFields() {
@@ -17,41 +15,71 @@ function fillRequiredFields() {
   fireEvent.change(screen.getByLabelText("結束日期"), { target: { value: "2026-11-15" } });
 }
 
+function next() {
+  fireEvent.click(screen.getByRole("button", { name: /下一步/ }));
+}
+
+function reachReview() {
+  next(); next(); next();
+}
+
 describe("NewTripForm", () => {
   beforeEach(() => push.mockReset());
   afterEach(() => vi.unstubAllGlobals());
 
-  it("submits normalized blank-trip fields and opens the editor", async () => {
-    const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "trip-1" }), {
-      status: 201,
-      headers: { "Content-Type": "application/json" },
-    }));
+  it("submits structured travelers, lodging, interests and routing preferences", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "trip-1" }), { status: 201, headers: { "Content-Type": "application/json" } }));
     vi.stubGlobal("fetch", fetchMock);
     render(<NewTripForm />);
     fillRequiredFields();
-    fireEvent.click(screen.getByRole("button", { name: /建立空白行程/ }));
+    next();
+    fireEvent.change(screen.getByLabelText("成人"), { target: { value: "3" } });
+    fireEvent.change(screen.getByLabelText("兒童"), { target: { value: "1" } });
+    fireEvent.change(screen.getByLabelText("整趟總預算 TWD"), { target: { value: "90000" } });
+    fireEvent.click(screen.getByRole("button", { name: "悠閒" }));
+    fireEvent.click(screen.getByRole("button", { name: "美食" }));
+    next();
+    fireEvent.click(screen.getByRole("button", { name: "兩種都接受" }));
+    fireEvent.change(screen.getByLabelText("每晚最低 TWD"), { target: { value: "3000" } });
+    fireEvent.change(screen.getByLabelText("每晚最高 TWD"), { target: { value: "7000" } });
+    fireEvent.change(screen.getByLabelText("最低星級"), { target: { value: "4" } });
+    fireEvent.change(screen.getByLabelText("最低評論數"), { target: { value: "100" } });
+    next();
+    fireEvent.change(screen.getByLabelText("大眾運輸偏好"), { target: { value: "LESS_WALKING" } });
+    fireEvent.change(screen.getByLabelText("其他補充"), { target: { value: " 不要一直換飯店 " } });
+    fireEvent.click(screen.getByRole("button", { name: /建立行程並開始編排/ }));
 
     await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/trip-1"));
     const request = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body));
-    expect(request).toEqual({
-      source: "blank",
-      name: "東京五日賞楓",
-      destination_name: "東京",
-      destination_place_id: null,
-      start_date: "2026-11-10",
-      end_date: "2026-11-15",
-      route_preference: "FEWER_TRANSFERS",
+    expect(request).toMatchObject({
+      source: "blank", name: "東京五日賞楓", destination_name: "東京", destination_place_id: null,
+      start_date: "2026-11-10", end_date: "2026-11-15", route_preference: "LESS_WALKING",
+      travelers: { adults: 3, children: 1, rooms: 1 },
+      preferences: {
+        budget_twd: 90000, pace: "relaxed", accepted_property_types: ["hotel", "vacation_rental"],
+        hotel_min_nightly_twd: 3000, hotel_max_nightly_twd: 7000, hotel_min_rating: 4,
+        hotel_min_review_count: 100, interests: ["food"],
+      },
+      notes: "不要一直換飯店",
     });
   });
 
-  it("shows a readable API validation message", async () => {
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({
-      detail: [{ type: "missing", loc: ["body", "plan_id"], msg: "Field required" }],
-    }), { status: 422, headers: { "Content-Type": "application/json" } })));
+  it("blocks an inverted nightly price range before review", () => {
     render(<NewTripForm />);
     fillRequiredFields();
-    fireEvent.click(screen.getByRole("button", { name: /建立空白行程/ }));
+    next(); next();
+    fireEvent.change(screen.getByLabelText("每晚最低 TWD"), { target: { value: "8000" } });
+    fireEvent.change(screen.getByLabelText("每晚最高 TWD"), { target: { value: "3000" } });
+    next();
+    expect(screen.getByRole("alert").textContent).toContain("最低價格不可高於最高價格");
+  });
 
+  it("shows a readable API validation message", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({ detail: [{ type: "missing", loc: ["body", "plan_id"], msg: "Field required" }] }), { status: 422, headers: { "Content-Type": "application/json" } })));
+    render(<NewTripForm />);
+    fillRequiredFields();
+    reachReview();
+    fireEvent.click(screen.getByRole("button", { name: /建立行程並開始編排/ }));
     const alert = await screen.findByRole("alert");
     expect(alert.textContent).toContain("行程方案：必填");
     expect(alert.textContent).not.toContain("[object Object]");

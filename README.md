@@ -137,6 +137,12 @@ share link, and keep provider-confirmed amounts separate from estimates.
 
 ## Itinerary and transit planning
 
+Blank-trip creation is a four-step, option-driven flow. It stores travelers, rooms, total
+budget, pace, interests, lodging types, nightly price range, hotel stars, review thresholds,
+preferred area, station walking limit, breakfast/refund requirements, red-eye preference,
+routing preference, and notes in the trip's existing JSON data. Optional filters always offer
+an explicit "no preference" path and require no database migration.
+
 `POST /api/v1/trips` accepts both saved search plans and `source=blank` trips.
 The planner supports structured Places selections, per-day ordering, fixed
 appointments, duration and notes, detailed transit steps, and read-only shared
