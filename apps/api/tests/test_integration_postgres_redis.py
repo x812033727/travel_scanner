@@ -8,6 +8,11 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy import func, select, update
 from sqlalchemy.exc import DBAPIError
 
+from app.ai.itinerary import (
+    AIItineraryPlanner,
+    AIItineraryRequest,
+    AIPlanningResult,
+)
 from app.db import SessionFactory, engine
 from app.infra import get_redis
 from app.main import app
@@ -501,7 +506,15 @@ async def test_blank_trip_creation_and_structured_itinerary_fields(
         trip = created.json()
         assert trip["mode"] == "manual"
         assert trip["timezone"] == "Asia/Tokyo"
-        assert trip["items"] == []
+        assert trip["planning"]["status"] in {"live", "partial", "fallback"}
+        assert trip["planning"]["provider"] in {"openai", "anthropic", "minimax", "catalog"}
+        assert trip["items"]
+        assert {item["day_date"] for item in trip["items"]} == {
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+        }
+        assert all(item["data"]["generated_by"] == "ai_planner" for item in trip["items"])
         assert trip["data"]["travelers"] == {
             "adults": 2,
             "children": 1,
@@ -518,7 +531,7 @@ async def test_blank_trip_creation_and_structured_itinerary_fields(
             f"/api/v1/trips/{trip['id']}/itinerary",
             headers=headers,
             json={
-                "version": 1,
+                "version": trip["version"],
                 "items": [
                     {
                         "id": item_id,
@@ -613,3 +626,96 @@ async def test_blank_trip_creation_and_structured_itinerary_fields(
         )
         assert replay.status_code == 200
         assert replay.json()["usage"]["reference"] == optimized.json()["usage"]["reference"]
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_ai_regeneration_preserves_items_charges_once_and_replays(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    email = f"ai-regenerate-{uuid4()}@example.com"
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        registered = await client.post(
+            "/api/v1/auth/register",
+            json={"email": email, "password": "integration-password-123"},
+        )
+        token = registered.json()["access_token"]
+        headers = {"Authorization": f"Bearer {token}"}
+        created = await client.post(
+            "/api/v1/trips",
+            headers=headers,
+            json={
+                "source": "blank",
+                "name": "東京四日 AI 行程",
+                "destination_name": "日本東京",
+                "start_date": "2026-11-10",
+                "end_date": "2026-11-13",
+                "route_preference": "LESS_WALKING",
+                "travelers": {"adults": 2, "children": 0, "rooms": 1},
+                "preferences": {"pace": "balanced", "interests": ["food", "culture"]},
+            },
+        )
+        assert created.status_code == 201
+        trip = created.json()
+        locked_item = {**trip["items"][0], "locked": True, "position": 0}
+        manual_id = str(uuid4())
+        manual_item = {
+            "id": manual_id,
+            "item_type": "custom",
+            "day_date": "2026-11-11",
+            "position": 0,
+            "title": "已訂位生日晚餐",
+            "location_name": "銀座",
+            "locked": False,
+            "fixed_time": True,
+            "is_estimated": False,
+            "duration_minutes": 120,
+            "data": {"source_mode": "manual"},
+        }
+        saved = await client.put(
+            f"/api/v1/trips/{trip['id']}/itinerary",
+            headers=headers,
+            json={"version": trip["version"], "items": [locked_item, manual_item]},
+        )
+        assert saved.status_code == 200
+
+        original_generate = AIItineraryPlanner.generate
+        live_calls = 0
+
+        async def live_generate(
+            planner: AIItineraryPlanner, request: AIItineraryRequest
+        ) -> AIPlanningResult:
+            nonlocal live_calls
+            live_calls += 1
+            result = await original_generate(planner, request)
+            result.planning.status = "live"
+            result.planning.provider = "openai"
+            result.planning.model = "gpt-test"
+            return result
+
+        monkeypatch.setattr(AIItineraryPlanner, "generate", live_generate)
+        idempotency_key = f"ai-regenerate-{uuid4()}"
+        regenerated = await client.post(
+            f"/api/v1/trips/{trip['id']}/itinerary/generate",
+            headers={**headers, "Idempotency-Key": idempotency_key},
+            json={"version": saved.json()["version"]},
+        )
+        assert regenerated.status_code == 200
+        result = regenerated.json()
+        assert result["usage"]["status"] == "charged"
+        assert result["planning"]["provider"] == "openai"
+        ids = {item["id"] for item in result["items"]}
+        assert locked_item["id"] in ids
+        assert manual_id in ids
+
+        replay = await client.post(
+            f"/api/v1/trips/{trip['id']}/itinerary/generate",
+            headers={**headers, "Idempotency-Key": idempotency_key},
+            json={"version": saved.json()["version"]},
+        )
+        assert replay.status_code == 200
+        assert replay.json()["version"] == result["version"]
+        assert replay.json()["usage"]["reference"] == result["usage"]["reference"]
+        assert live_calls == 1
+        usage = await client.get("/api/v1/usage", headers=headers)
+        assert usage.json()["remaining_uses"] == 2

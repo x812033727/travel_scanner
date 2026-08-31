@@ -67,6 +67,13 @@ export type Trip = {
   total_price: number;
   currency: string;
   data: Record<string, unknown>;
+  planning?: {
+    status: "live" | "fallback" | "partial";
+    provider: "openai" | "anthropic" | "minimax" | "catalog";
+    model?: string | null;
+    generated_at: string;
+    warnings: string[];
+  } | null;
   version: number;
   destination_name?: string | null;
   destination_place_id?: string | null;

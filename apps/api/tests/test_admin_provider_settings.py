@@ -4,6 +4,7 @@ import pytest
 from httpx import ASGITransport, AsyncClient
 
 import app.admin.service as admin_service
+from app.admin.schemas import ProviderSettingsUpdate
 from app.admin.service import (
     _default_provider_enabled,
     _merge_secret_values,
@@ -265,6 +266,48 @@ async def test_production_booking_is_not_marked_available_until_connection_test_
     assert booking.configured is True
     assert booking.status == "ready"
     assert "booking-production-secret" not in ready.model_dump_json()
+
+
+@pytest.mark.asyncio
+async def test_ai_planner_secrets_are_masked_and_reported_as_configured() -> None:
+    base = Settings()
+    secrets = {
+        "openai_api_key": "openai-secret-ending-1234",
+        "anthropic_api_key": "anthropic-secret-ending-5678",
+    }
+    row = ProviderConfig(
+        provider="ai_planner",
+        enabled=True,
+        config={"ai_planner_mode": "auto"},
+        secret_config_encrypted=encrypt_secrets(secrets, base),
+    )
+    snapshot = await settings_snapshot(SnapshotSession([row]))  # type: ignore[arg-type]
+    payload = snapshot.model_dump_json()
+    assert all(secret not in payload for secret in secrets.values())
+    planner = next(item for item in snapshot.providers if item.provider == "ai_planner")
+    assert planner.configured is True
+    assert planner.secrets["openai_api_key"].masked == "••••••••1234"
+    assert planner.secrets["anthropic_api_key"].source == "database"
+
+
+def test_ai_planner_rejects_non_official_base_url_and_invalid_priority() -> None:
+    with pytest.raises(AppError) as host_error:
+        _validate_provider_values(
+            "ai_planner",
+            {},
+            ProviderSettingsUpdate(
+                config={"openai_api_base_url": "https://attacker.example/v1"}
+            ),
+        )
+    assert getattr(host_error.value, "code", None) == "provider_setting_invalid"
+
+    with pytest.raises(AppError) as priority_error:
+        _validate_provider_values(
+            "ai_planner",
+            {},
+            ProviderSettingsUpdate(config={"ai_planner_priority": "openai,openai"}),
+        )
+    assert getattr(priority_error.value, "code", None) == "provider_setting_invalid"
 
 
 @pytest.mark.asyncio

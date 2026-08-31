@@ -53,7 +53,8 @@ describe("NewTripForm", () => {
     expect(review.getByText("4 星以上")).toBeTruthy();
     expect(review.getByText("100 則以上")).toBeTruthy();
     expect(review.getByText("少走路")).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: /建立行程並開始編排/ }));
+    expect(screen.getByText(/不會傳送 Email、姓名或帳號識別資料/)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: /交給 AI 排好行程/ }));
 
     await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/trip-1"));
     const request = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body));
@@ -85,7 +86,7 @@ describe("NewTripForm", () => {
     render(<NewTripForm />);
     fillRequiredFields();
     reachReview();
-    fireEvent.click(screen.getByRole("button", { name: /建立行程並開始編排/ }));
+    fireEvent.click(screen.getByRole("button", { name: /交給 AI 排好行程/ }));
     const alert = await screen.findByRole("alert");
     expect(alert.textContent).toContain("行程方案：必填");
     expect(alert.textContent).not.toContain("[object Object]");

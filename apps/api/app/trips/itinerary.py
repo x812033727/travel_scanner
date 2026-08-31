@@ -25,6 +25,11 @@ class ItineraryItem(BaseModel):
     locked: bool = False
     is_estimated: bool = False
     data: dict[str, Any] = Field(default_factory=dict)
+    provider_place_id: str | None = None
+    location_source: str | None = None
+    duration_minutes: int | None = None
+    notes: str | None = None
+    fixed_time: bool = False
 
 
 class ItineraryDay(BaseModel):

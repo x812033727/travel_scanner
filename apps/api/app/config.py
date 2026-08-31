@@ -47,6 +47,21 @@ class Settings(BaseSettings):
     auth_register_ip_limit: int = Field(default=30, ge=1, le=1_000)
     auth_register_window_seconds: int = Field(default=3_600, ge=60, le=86_400)
     trust_proxy_client_ip: bool = False
+    ai_planner_enabled: bool = True
+    ai_planner_mode: str = "auto"
+    ai_planner_priority: str = "openai,anthropic,minimax"
+    ai_planner_timeout_seconds: float = Field(default=15.0, gt=0, le=60)
+    ai_planner_total_timeout_seconds: float = Field(default=35.0, gt=0, le=120)
+    ai_planner_max_output_tokens: int = Field(default=12_000, ge=1_000, le=32_000)
+    openai_api_base_url: str = "https://api.openai.com/v1"
+    openai_model: str = "gpt-5.6-terra"
+    openai_api_key: str | None = None
+    anthropic_api_base_url: str = "https://api.anthropic.com/v1"
+    anthropic_model: str = "claude-sonnet-5"
+    anthropic_api_key: str | None = None
+    minimax_api_base_url: str = "https://api.minimaxi.com/v1"
+    minimax_model: str = "MiniMax-M3"
+    minimax_api_key: str | None = None
     travel_provider_mode: str = "mock"
     flight_provider_mode: str = "auto"
     flight_search_strategy: str = "hybrid"
