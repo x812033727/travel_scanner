@@ -168,6 +168,16 @@ class Settings(BaseSettings):
         "TravelScannerBot/0.1 (+https://github.com/x812033727/travel_scanner)"
     )
     hotspot_wikimedia_timeout_seconds: float = Field(default=10.0, gt=0, le=30)
+    line_messaging_enabled: bool = False
+    line_channel_secret: str | None = None
+    line_channel_access_token: str | None = None
+    line_official_account_id: str | None = None
+    line_add_friend_url: str | None = None
+    line_api_base_url: str = "https://api.line.me"
+    line_webhook_max_body_bytes: int = Field(default=1_048_576, ge=1_024, le=5_242_880)
+    price_alert_check_interval_seconds: int = Field(default=21_600, ge=3_600, le=86_400)
+    price_alert_scheduler_poll_seconds: int = Field(default=60, ge=15, le=300)
+    price_alert_delivery_max_attempts: int = Field(default=5, ge=1, le=10)
     fx_rate_base_url: str = "https://api.frankfurter.dev/v2"
     fx_rate_timeout_seconds: float = Field(default=3.0, gt=0, le=10)
     fx_rate_cache_ttl_seconds: int = Field(default=86_400, ge=300, le=86_400)
@@ -231,6 +241,15 @@ class Settings(BaseSettings):
             self.navitime_api_base_url and self.navitime_client_id and self.navitime_api_key
         )
 
+    @property
+    def line_messaging_configured(self) -> bool:
+        return bool(
+            self.line_messaging_enabled
+            and self.line_channel_secret
+            and self.line_channel_access_token
+            and self.line_official_account_id
+        )
+
     def validate_deployment_security(self) -> None:
         if not self.production:
             return
@@ -259,6 +278,11 @@ class Settings(BaseSettings):
         redis = urlparse(self.redis_url)
         if not redis.password:
             errors.append("REDIS_URL must include a password")
+        if self.line_messaging_enabled and not self.line_messaging_configured:
+            errors.append(
+                "LINE messaging requires LINE_CHANNEL_SECRET, LINE_CHANNEL_ACCESS_TOKEN, "
+                "and LINE_OFFICIAL_ACCOUNT_ID"
+            )
         if errors:
             raise RuntimeError("Unsafe production configuration: " + "; ".join(errors))
 

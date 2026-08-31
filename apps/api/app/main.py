@@ -16,6 +16,7 @@ from app.db import engine
 from app.flights.router import router as flight_status_router
 from app.hotspots.router import router as hotspots_router
 from app.infra import get_redis
+from app.line.router import router as line_router
 from app.middleware import RequestContextMiddleware
 from app.places.router import public_router as public_places_router
 from app.places.router import router as places_router
@@ -64,6 +65,7 @@ app.include_router(providers_router, prefix="/api/v1")
 app.include_router(flight_router, prefix="/api/v1")
 app.include_router(crawlers_router, prefix="/api/v1")
 app.include_router(hotspots_router, prefix="/api/v1")
+app.include_router(line_router, prefix="/api/v1")
 
 
 @app.get("/health", tags=["system"])

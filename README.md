@@ -29,6 +29,11 @@ startup, and `/ready` remains unavailable when the database revision is stale:
 docker compose up --build postgres redis migrate api worker
 ```
 
+To run the six-hour flight/hotel price monitor and LINE delivery queue locally,
+also start `alert-scheduler` and `alert-worker`. LINE account linking requires a
+Messaging API channel and the environment values documented in
+[`docs/line-price-alerts.md`](docs/line-price-alerts.md).
+
 Run the frontend separately:
 
 ```bash
