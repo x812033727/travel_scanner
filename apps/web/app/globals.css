@@ -162,6 +162,10 @@ a { color: inherit; text-decoration: none; }
   box-shadow: var(--shadow-sm);
 }
 
+.planner-day-summary {
+  color: color-mix(in srgb, var(--muted) 88%, var(--teal));
+}
+
 .planner-itinerary-card {
   border: 1px solid color-mix(in srgb, var(--line) 88%, transparent);
   border-radius: 1.25rem;
@@ -338,6 +342,22 @@ a { color: inherit; text-decoration: none; }
   border-radius: 999px;
   background: linear-gradient(180deg, var(--teal), color-mix(in srgb, var(--teal) 15%, transparent));
   content: "";
+}
+
+.planner-timeline-marker {
+  left: .4rem;
+  display: grid;
+  width: 1.55rem;
+  height: 1.55rem;
+  place-items: center;
+  border: 3px solid var(--surface-raised);
+  border-radius: 999px;
+  background: var(--teal);
+  color: white;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--teal) 26%, transparent);
+  font-size: .62rem;
+  font-weight: 850;
+  line-height: 1;
 }
 
 .planner-overlay {
