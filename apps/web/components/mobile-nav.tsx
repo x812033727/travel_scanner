@@ -1,10 +1,8 @@
 "use client";
 
-
 import { Luggage, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-
 
 const links = [
   ["首頁", "/"],
@@ -16,11 +14,9 @@ const links = [
   ["會員帳號", "/account"],
 ] as const;
 
-
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   const closeButton = useRef<HTMLButtonElement>(null);
-
 
   useEffect(() => {
     if (!open) return;
@@ -32,7 +28,6 @@ export function MobileNav() {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [open]);
 
-
   return <div className="flex items-center gap-2 md:hidden">
     <Link href="/trips" className="flex min-h-11 items-center gap-1.5 whitespace-nowrap rounded-xl px-2.5 text-sm font-semibold text-[var(--teal)] hover:bg-[var(--teal-soft)] focus:bg-[var(--teal-soft)]">
       <Luggage aria-hidden size={17} />
@@ -43,8 +38,7 @@ export function MobileNav() {
       <nav id="mobile-navigation" aria-label="手機主要導覽" onMouseDown={(event) => event.stopPropagation()} className="ml-auto flex h-full w-[min(84vw,22rem)] flex-col bg-white p-5 shadow-2xl">
         <div className="mb-5 flex items-center justify-between"><strong>Travel Scanner</strong><button ref={closeButton} type="button" aria-label="關閉導覽選單" onClick={() => setOpen(false)} className="rounded-xl border border-[var(--line)] p-2"><X size={20} /></button></div>
         <div className="grid gap-2">{links.map(([label, href]) => <Link key={href} href={href} onClick={() => setOpen(false)} className="rounded-xl px-4 py-3 font-semibold text-[var(--ink)] hover:bg-[var(--teal-soft)] focus:bg-[var(--teal-soft)]">{label}</Link>)}</div>
-
-    <Link href="/login" className="mt-auto rounded-xl border border-[var(--line)] px-4 py-3 text-center text-sm font-semibold text-[var(--muted)]">登入／切換帳號</Link>
+        <Link href="/login" onClick={() => setOpen(false)} className="mt-auto rounded-xl bg-[var(--teal)] px-4 py-3 text-center font-semibold text-white">登入／切換帳號</Link>
       </nav>
     </div>}
   </div>;
