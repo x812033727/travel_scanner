@@ -28,7 +28,13 @@ from app.trips.router import router as trips_router
 from app.usage.router import router as usage_router
 
 settings = get_settings()
-app = FastAPI(title="Travel Scanner API", version="0.1.0")
+app = FastAPI(
+    title="Travel Scanner API",
+    version="0.1.0",
+    docs_url=None if settings.production else "/docs",
+    redoc_url=None if settings.production else "/redoc",
+    openapi_url=None if settings.production else "/openapi.json",
+)
 app.add_middleware(RequestContextMiddleware)
 app.add_middleware(
     CORSMiddleware,

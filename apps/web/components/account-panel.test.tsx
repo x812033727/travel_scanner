@@ -88,7 +88,7 @@ describe("account panel", () => {
       if (url.endsWith("/auth/me")) return ok(me);
       if (url.endsWith("/usage")) return ok(usage);
       if (url.includes("/usage/history")) return ok(history);
-      if (url.endsWith("/auth/change-password") && init?.method === "POST") return { ok: true, status: 204, json: async () => null };
+      if (url.endsWith("/auth/change-password") && init?.method === "POST") return ok({ user: me, expires_in: 3600 });
       return { ok: false, status: 404, json: async () => ({ detail: "not found" }) };
     });
     vi.stubGlobal("fetch", fetchMock);

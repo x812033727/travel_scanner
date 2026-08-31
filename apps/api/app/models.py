@@ -41,6 +41,7 @@ class User(Timestamped, Base):
     password_hash: Mapped[str] = mapped_column(String(255))
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
+    auth_version: Mapped[int] = mapped_column(Integer, default=1)
 
 
 class UsagePackage(Timestamped, Base):

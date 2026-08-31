@@ -198,6 +198,7 @@ async def update_admin_user(
     changed: dict[str, bool] = {}
     if payload.is_active is not None and payload.is_active != user.is_active:
         user.is_active = payload.is_active
+        user.auth_version = (user.auth_version or 1) + 1
         changed["is_active"] = payload.is_active
     if payload.is_admin is not None and payload.is_admin != user.is_admin:
         user.is_admin = payload.is_admin

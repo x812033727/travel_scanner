@@ -10,11 +10,11 @@ class RegisterRequest(BaseModel):
 
 class LoginRequest(BaseModel):
     email: EmailStr
-    password: str
+    password: str = Field(max_length=128)
 
 
 class ChangePasswordRequest(BaseModel):
-    current_password: str
+    current_password: str = Field(max_length=128)
     new_password: str = Field(min_length=10, max_length=128)
 
 
@@ -27,4 +27,5 @@ class UserResponse(BaseModel):
 class TokenResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
+    expires_in: int
     user: UserResponse

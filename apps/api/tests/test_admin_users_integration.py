@@ -133,4 +133,15 @@ async def test_admin_can_manage_accounts_roles_and_usage() -> None:
             "user_account_updated",
             "user_usage_adjusted",
         }
-        assert (await client.get("/api/v1/admin/users", headers=member_headers)).status_code == 200
+        assert (await client.get("/api/v1/admin/users", headers=member_headers)).status_code == 401
+        member_login = await client.post(
+            "/api/v1/auth/login",
+            json={"email": member_email, "password": "integration-password-123"},
+        )
+        assert member_login.status_code == 200
+        refreshed_member_headers = {
+            "Authorization": f"Bearer {member_login.json()['access_token']}"
+        }
+        assert (
+            await client.get("/api/v1/admin/users", headers=refreshed_member_headers)
+        ).status_code == 200
