@@ -88,6 +88,7 @@ class Settings(BaseSettings):
     skyscanner_affiliate_allowed_hosts: str = "skyscanner.net,www.skyscanner.net"
     google_maps_api_key: str | None = None
     next_public_google_maps_browser_key: str | None = None
+    google_maps_monthly_request_limit: int = Field(default=10_000, ge=1, le=10_000_000)
     route_cache_ttl_seconds: int = Field(default=900, ge=60, le=86_400)
     navitime_api_base_url: str | None = None
     navitime_client_id: str | None = None

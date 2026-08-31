@@ -10,6 +10,7 @@ from redis.asyncio import Redis
 
 from app.config import Settings, get_settings
 from app.providers.schemas import ActivityOffer, HotelOffer
+from app.providers.usage_meter import record_google_maps_request
 from app.trips.itinerary import ItineraryDay
 
 
@@ -34,7 +35,12 @@ class GoogleTravelService:
         return bool(self.settings.google_maps_api_key)
 
     async def _post(
-        self, url: str, *, json_data: dict[str, Any], field_mask: str
+        self,
+        url: str,
+        *,
+        json_data: dict[str, Any],
+        field_mask: str,
+        operation: str,
     ) -> dict[str, Any]:
         if not self.settings.google_maps_api_key:
             return {}
@@ -55,12 +61,15 @@ class GoogleTravelService:
             return cast(dict[str, Any], response.json())
         except httpx.HTTPError:
             return {}
+        finally:
+            await record_google_maps_request(self.redis, operation)
 
     async def _get(
         self,
         url: str,
         *,
         field_mask: str,
+        operation: str,
         params: dict[str, str] | None = None,
     ) -> dict[str, Any]:
         if not self.settings.google_maps_api_key:
@@ -81,6 +90,8 @@ class GoogleTravelService:
             return cast(dict[str, Any], response.json())
         except httpx.HTTPError:
             return {}
+        finally:
+            await record_google_maps_request(self.redis, operation)
 
     async def autocomplete(
         self,
@@ -111,6 +122,7 @@ class GoogleTravelService:
                 "suggestions.placePrediction.structuredFormat,"
                 "suggestions.placePrediction.distanceMeters"
             ),
+            operation="places_autocomplete",
         )
         results: list[dict[str, Any]] = []
         for suggestion in cast(list[dict[str, Any]], payload.get("suggestions", [])):
@@ -144,6 +156,7 @@ class GoogleTravelService:
                 "id,displayName,formattedAddress,location,googleMapsUri,"
                 "regularOpeningHours,entrances"
             ),
+            operation="place_details",
             params=params,
         )
         if not payload:
@@ -191,6 +204,7 @@ class GoogleTravelService:
                 "places.userRatingCount,places.photos,places.attributions,"
                 "places.regularOpeningHours,places.displayName,places.googleMapsUri"
             ),
+            operation="places_text_search",
         )
         places = cast(list[dict[str, Any]], payload.get("places", []))
         result = places[0] if places else {}
@@ -371,6 +385,7 @@ class GoogleTravelService:
                 "languageCode": "zh-TW",
             },
             field_mask="routes.duration",
+            operation="routes",
         )
         routes = cast(list[dict[str, Any]], payload.get("routes", []))
         if not routes:

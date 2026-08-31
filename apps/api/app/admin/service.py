@@ -23,6 +23,7 @@ from app.admin.schemas import (
     ProviderSettingsUpdate,
     ProviderSettingsView,
     ProviderTestResult,
+    ProviderUsageView,
     PublicRuntimeConfig,
     SecretState,
 )
@@ -33,6 +34,7 @@ from app.problems import AppError
 from app.providers.amadeus import AmadeusProvider
 from app.providers.booking import BOOKING_API_HOSTS, BookingHotelProvider
 from app.providers.skyscanner import SkyscannerProvider
+from app.providers.usage_meter import google_maps_usage_snapshot
 from app.search.schemas import SearchCreate, SearchModule
 from app.trips.routing import (
     GoogleRouteProvider,
@@ -67,7 +69,7 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     "google_maps": ProviderDefinition(
         "Google Maps",
         "Google Places 地點搜尋、Routes 大眾運輸路線與瀏覽器 Embed 地圖。",
-        ("route_cache_ttl_seconds",),
+        ("route_cache_ttl_seconds", "google_maps_monthly_request_limit"),
         ("google_maps_api_key", "next_public_google_maps_browser_key"),
     ),
     "amadeus": ProviderDefinition(
@@ -371,11 +373,18 @@ def _production_test_required(provider: str, settings: Settings) -> bool:
     return provider == "skyscanner"
 
 
-async def settings_snapshot(session: AsyncSession) -> ProviderSettingsSnapshot:
+async def settings_snapshot(
+    session: AsyncSession, redis: Redis | None = None
+) -> ProviderSettingsSnapshot:
     base = get_settings()
     rows = await provider_rows(session)
     by_provider = {row.provider: row for row in rows}
     effective = apply_runtime_overrides(base, rows)
+    google_usage = (
+        await google_maps_usage_snapshot(redis, effective.google_maps_monthly_request_limit)
+        if redis is not None
+        else None
+    )
     providers: list[ProviderSettingsView] = []
     for provider, definition in PROVIDER_DEFINITIONS.items():
         row = by_provider.get(provider)
@@ -419,6 +428,13 @@ async def settings_snapshot(session: AsyncSession) -> ProviderSettingsSnapshot:
                 last_test_status=row.last_test_status if row else None,
                 last_test_message=row.last_test_message if row else None,
                 updated_at=row.updated_at if row else None,
+                usage=(
+                    ProviderUsageView(
+                        **google_usage.__dict__,
+                    )
+                    if provider == "google_maps" and google_usage is not None
+                    else None
+                ),
             )
         )
     audit_rows = list(
@@ -602,7 +618,7 @@ async def update_provider_settings(
     await session.commit()
     if provider == "amadeus":
         await redis.delete("provider:amadeus:oauth-token")
-    return await settings_snapshot(session)
+    return await settings_snapshot(session, redis)
 
 
 def _merge_secret_values(
@@ -627,7 +643,7 @@ async def _test_google(settings: Settings, redis: Redis) -> str:
     places = await service.autocomplete("東京車站", None, ["jp"])
     if not places:
         raise ConnectionError("Places API 未回傳結果，請檢查 API 啟用狀態與金鑰限制")
-    routes = await GoogleRouteProvider(settings).probe(
+    routes = await GoogleRouteProvider(settings, None, redis).probe(
         RoutePoint(
             item_id=uuid4(),
             name="東京車站",

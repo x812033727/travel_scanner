@@ -15,6 +15,7 @@ from pydantic import BaseModel, Field
 from redis.asyncio import Redis
 
 from app.config import Settings, get_settings
+from app.providers.usage_meter import record_google_maps_request
 
 
 class RoutePoint(BaseModel):
@@ -122,9 +123,15 @@ class GoogleRouteProvider:
     name = "google_routes"
     url = "https://routes.googleapis.com/directions/v2:computeRoutes"
 
-    def __init__(self, settings: Settings, client: httpx.AsyncClient | None = None) -> None:
+    def __init__(
+        self,
+        settings: Settings,
+        client: httpx.AsyncClient | None = None,
+        redis: Redis | None = None,
+    ) -> None:
         self.settings = settings
         self.client = client
+        self.redis = redis
 
     @staticmethod
     def waypoint(point: RoutePoint) -> dict[str, Any]:
@@ -138,10 +145,14 @@ class GoogleRouteProvider:
             "X-Goog-Api-Key": self.settings.google_maps_api_key or "",
             "X-Goog-FieldMask": field_mask,
         }
-        if self.client is not None:
-            return await self.client.post(self.url, json=body, headers=headers)
-        async with httpx.AsyncClient(timeout=self.settings.provider_timeout_seconds) as client:
-            return await client.post(self.url, json=body, headers=headers)
+        try:
+            if self.client is not None:
+                return await self.client.post(self.url, json=body, headers=headers)
+            async with httpx.AsyncClient(timeout=self.settings.provider_timeout_seconds) as client:
+                return await client.post(self.url, json=body, headers=headers)
+        finally:
+            if self.redis is not None:
+                await record_google_maps_request(self.redis, "routes")
 
     async def probe(
         self,
@@ -423,7 +434,7 @@ class RouteService:
     ) -> None:
         self.redis = redis
         self.settings = settings or get_settings()
-        self.google = google or GoogleRouteProvider(self.settings)
+        self.google = google or GoogleRouteProvider(self.settings, None, redis)
         self.navitime = navitime or NavitimeRouteProvider(self.settings)
 
     def _providers(self, japan: bool) -> list[RouteProvider]:
