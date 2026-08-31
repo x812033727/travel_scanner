@@ -117,6 +117,12 @@ class GoogleRouteProvider:
         self.settings = settings
         self.client = client
 
+    @staticmethod
+    def waypoint(point: RoutePoint) -> dict[str, Any]:
+        if point.provider_place_id:
+            return {"placeId": point.provider_place_id}
+        return {"location": {"latLng": {"latitude": point.latitude, "longitude": point.longitude}}}
+
     async def compute(
         self,
         origin: RoutePoint,
@@ -131,14 +137,8 @@ class GoogleRouteProvider:
             preference if preference in {"FEWER_TRANSFERS", "LESS_WALKING"} else None
         )
         body: dict[str, Any] = {
-            "origin": {
-                "location": {"latLng": {"latitude": origin.latitude, "longitude": origin.longitude}}
-            },
-            "destination": {
-                "location": {
-                    "latLng": {"latitude": destination.latitude, "longitude": destination.longitude}
-                }
-            },
+            "origin": self.waypoint(origin),
+            "destination": self.waypoint(destination),
             "travelMode": "TRANSIT",
             "languageCode": "zh-TW",
             "units": "METRIC",
@@ -216,9 +216,20 @@ class GoogleRouteProvider:
         params = urlencode(
             {
                 "api": 1,
-                "origin": f"{origin.latitude},{origin.longitude}",
-                "destination": f"{destination.latitude},{destination.longitude}",
+                "origin": origin.name or f"{origin.latitude},{origin.longitude}",
+                "destination": destination.name
+                or f"{destination.latitude},{destination.longitude}",
                 "travelmode": "transit",
+                **(
+                    {"origin_place_id": origin.provider_place_id}
+                    if origin.provider_place_id
+                    else {}
+                ),
+                **(
+                    {"destination_place_id": destination.provider_place_id}
+                    if destination.provider_place_id
+                    else {}
+                ),
             }
         )
         details = ["steps", "stops", "headsign"] if steps else []
@@ -360,7 +371,7 @@ class RouteService:
         self.navitime = navitime or NavitimeRouteProvider(self.settings)
 
     def _providers(self, japan: bool) -> list[RouteProvider]:
-        return [self.navitime, self.google] if japan else [self.google]
+        return [self.google, self.navitime] if japan else [self.google]
 
     async def compute(
         self,
@@ -376,6 +387,8 @@ class RouteService:
             {
                 "o": [round(origin.latitude, 6), round(origin.longitude, 6)],
                 "d": [round(destination.latitude, 6), round(destination.longitude, 6)],
+                "opi": origin.provider_place_id,
+                "dpi": destination.provider_place_id,
                 "t": departure_time.isoformat() if departure_time else None,
                 "p": preference,
                 "j": japan,
