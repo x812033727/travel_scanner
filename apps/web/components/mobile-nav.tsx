@@ -1,11 +1,12 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { Luggage, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const links = [
   ["首頁", "/"],
+  ["熱門景點", "/hotspots"],
   ["我的旅程", "/trips"],
   ["價格通知", "/alerts"],
   ["航班動態", "/flights/status"],
@@ -28,7 +29,11 @@ export function MobileNav() {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [open]);
 
-  return <div className="md:hidden">
+  return <div className="flex items-center gap-2 md:hidden">
+    <Link href="/trips" className="flex min-h-11 items-center gap-1.5 whitespace-nowrap rounded-xl px-2.5 text-sm font-semibold text-[var(--teal)] hover:bg-[var(--teal-soft)] focus:bg-[var(--teal-soft)]">
+      <Luggage aria-hidden size={17} />
+      我的旅行
+    </Link>
     <button type="button" aria-label="開啟導覽選單" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(true)} className="rounded-xl border border-[var(--line)] bg-white p-2.5 text-[var(--ink)]"><Menu size={21} /></button>
     {open && <div className="fixed inset-0 z-50 bg-black/30" onMouseDown={() => setOpen(false)}>
       <nav id="mobile-navigation" aria-label="手機主要導覽" onMouseDown={(event) => event.stopPropagation()} className="ml-auto flex h-full w-[min(84vw,22rem)] flex-col bg-white p-5 shadow-2xl">

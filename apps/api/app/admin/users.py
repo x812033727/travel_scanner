@@ -35,7 +35,11 @@ def _effective_admin(user: User) -> bool:
     return _admin_source(user) != "none"
 
 
-def _summary(user: User, account: UsageAccount | None, actor_id: UUID) -> AdminUserSummary:
+def _can_adjust_usage(user_id: UUID, actor: User) -> bool:
+    return user_id != actor.id or actor.email.lower() in get_settings().admin_email_set
+
+
+def _summary(user: User, account: UsageAccount | None, actor: User) -> AdminUserSummary:
     remaining = account.remaining_uses if account else 0
     reserved = account.reserved_uses if account else 0
     return AdminUserSummary(
@@ -45,7 +49,8 @@ def _summary(user: User, account: UsageAccount | None, actor_id: UUID) -> AdminU
         is_admin=user.is_admin,
         effective_is_admin=_effective_admin(user),
         admin_source=_admin_source(user),
-        is_self=user.id == actor_id,
+        is_self=user.id == actor.id,
+        can_adjust_usage=_can_adjust_usage(user.id, actor),
         remaining_uses=remaining,
         reserved_uses=reserved,
         available_uses=remaining - reserved,
@@ -100,7 +105,7 @@ async def list_admin_users(
         )
     ).all()
     return AdminUserList(
-        items=[_summary(user, account, actor.id) for user, account in rows],
+        items=[_summary(user, account, actor) for user, account in rows],
         page=page,
         limit=limit,
         total=total,
@@ -149,7 +154,7 @@ async def admin_user_detail(session: AsyncSession, user_id: UUID, actor: User) -
             )
         ).all()
     )
-    summary = _summary(user, account, actor.id)
+    summary = _summary(user, account, actor)
     return AdminUserDetail(
         **summary.model_dump(),
         usage_history=[
@@ -233,7 +238,7 @@ async def adjust_admin_user_usage(
     actor: User,
     idempotency_key: str,
 ) -> AdminUsageAdjustmentResult:
-    if user_id == actor.id:
+    if not _can_adjust_usage(user_id, actor):
         raise AppError(
             409,
             "admin_self_usage_adjustment",

@@ -1,7 +1,7 @@
 """Add an authentication version for server-side session invalidation.
 
-Revision ID: 0010_auth_session_version
-Revises: 0009_usage_account_status
+Revision ID: 0011_auth_session_version
+Revises: 0010_hotspot_intelligence
 """
 
 from collections.abc import Sequence
@@ -9,8 +9,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0010_auth_session_version"
-down_revision: str | None = "0009_usage_account_status"
+revision: str = "0011_auth_session_version"
+down_revision: str | None = "0010_hotspot_intelligence"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

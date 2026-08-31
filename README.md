@@ -89,8 +89,12 @@ administrator access. Administrators cannot suspend or demote their own active
 session, while `ADMIN_EMAILS` roles must be removed from the host environment.
 Manual usage changes require a reason and an idempotency key. Every change is a
 new `usage_ledger` entry plus an administrator audit event; deductions cannot
-reduce the balance below in-flight reservations. Administrators cannot adjust
-their own balance, so a second administrator must authorize that operation.
+reduce the balance below in-flight reservations. Database-backed administrators
+cannot adjust their own balance, so a second administrator must authorize that
+operation. Administrators whose email is currently listed in `ADMIN_EMAILS` may
+increase or deduct their own balance, including accounts that also hold the
+database-backed role; these self-adjustments use the same ledger, audit, and
+reserved-balance safeguards.
 
 The page manages runtime modes, timeouts and encrypted credentials for Google
 Maps, Amadeus, Skyscanner, Duffel, FlightAware, Google Travel Impact, and NAVITIME.
@@ -271,6 +275,22 @@ Japan transit enhancement is optional. Set `NAVITIME_API_BASE_URL`,
 commercial rights. When configured, sourced exit, platform, and recommended-car
 fields are displayed. Missing details are explicitly marked unavailable and are
 never inferred.
+
+## Travel hotspot intelligence
+
+The public `/hotspots` page searches a time-stamped attraction catalog and shows global or city
+rankings for Japan, South Korea and Thailand. The scheduled `hotspot-collector` seeds stable place
+identities, collects the latest and preceding 30-day Wikimedia pageview totals, and writes
+explainable global and per-city ranking snapshots. Cold-start values remain visibly marked as
+estimates rather than live popularity.
+
+The API exposes `/api/v1/hotspots/rankings`, `/api/v1/hotspots/sources`, and the compact
+`/api/v1/hotspots/for-planner` feed. The last endpoint is intended for AI itinerary candidate
+selection; route feasibility, opening hours and traveler preferences still decide the final plan.
+Google Places remains an on-demand lookup because its content cannot be persisted as a general
+ranking database. Discussion sources stay disabled until the intended use has an applicable API
+and retention agreement. See [`docs/hotspot-intelligence.md`](docs/hotspot-intelligence.md) for the
+formula, source policy, settings and manual collection command.
 
 ## Experimental public airline fares
 

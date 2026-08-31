@@ -1,0 +1,47 @@
+from datetime import date, timedelta
+
+import httpx
+import pytest
+
+from app.hotspots.wikimedia import WikimediaPageviewClient
+
+
+@pytest.mark.asyncio
+async def test_wikimedia_client_compares_two_complete_thirty_day_windows() -> None:
+    start = date(2026, 7, 2)
+    items = [
+        {
+            "timestamp": f"{start + timedelta(days=index):%Y%m%d}00",
+            "views": 10 if index < 30 else 20,
+        }
+        for index in range(60)
+    ]
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        assert request.headers["User-Agent"] == "TravelScannerBot/0.1 (test@example.com)"
+        assert "Tokyo_Skytree" in str(request.url)
+        return httpx.Response(200, json={"items": items})
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    collector = WikimediaPageviewClient(
+        "TravelScannerBot/0.1 (test@example.com)",
+        client=client,
+    )
+    result = await collector.pageviews(
+        "en.wikipedia.org",
+        "Tokyo Skytree",
+        observed_on=date(2026, 8, 30),
+    )
+    await client.aclose()
+
+    assert result.previous == 300
+    assert result.current == 600
+    assert result.observed_on == date(2026, 8, 30)
+
+
+def test_hotspot_catalog_has_stable_unique_identifiers() -> None:
+    from app.hotspots.catalog import HOTSPOT_SEEDS
+
+    assert len(HOTSPOT_SEEDS) >= 20
+    assert len({item.slug for item in HOTSPOT_SEEDS}) == len(HOTSPOT_SEEDS)
+    assert {item.country_code for item in HOTSPOT_SEEDS} == {"JP", "KR", "TH"}
