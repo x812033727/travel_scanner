@@ -11,7 +11,7 @@ type CreatedTrip = { id: string };
 type LodgingMode = "hotel" | "vacation_rental" | "both" | "any";
 type Pace = "relaxed" | "balanced" | "packed";
 
-const steps = ["基本資料", "旅伴預算", "住宿偏好", "確認建立"];
+const steps = ["基本資料", "旅伴預算", "住宿偏好", "路線與確認"];
 const fieldClass = "mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 font-normal outline-none focus:border-[var(--teal)] focus:ring-4 focus:ring-[var(--teal-soft)]";
 
 function optionClass(active: boolean) {
@@ -52,6 +52,30 @@ export function NewTripForm() {
     lodgingMode === "hotel" ? "只住飯店" : lodgingMode === "vacation_rental" ? "公寓／民宿" : lodgingMode === "both" ? "飯店或民宿" : "住宿類型不拘",
     ...selectedInterests.map(interestLabel),
   ].filter(Boolean) as string[], [days, form.budget_twd, form.rooms, lodgingMode, selectedInterests, travelerCount]);
+  const nightlyMin = optionalNumber(form.nightly_min);
+  const nightlyMax = optionalNumber(form.nightly_max);
+  const nightlyLabel = nightlyMin != null && nightlyMax != null
+    ? `${twd.format(nightlyMin)}～${twd.format(nightlyMax)}`
+    : nightlyMin != null ? `${twd.format(nightlyMin)} 起` : nightlyMax != null ? `${twd.format(nightlyMax)} 以下` : "不設限";
+  const routeLabel = form.route_preference === "FASTEST" ? "最快抵達" : form.route_preference === "LESS_WALKING" ? "少走路" : "少轉乘";
+  const paceLabel = form.pace === "relaxed" ? "悠閒" : form.pace === "packed" ? "充實" : "適中";
+  const reviewDetails = [
+    ["旅伴與房間", `${travelerCount} 位旅客・${form.rooms} 間房`],
+    ["整趟總預算", form.budget_twd ? twd.format(Number(form.budget_twd)) : "不設限"],
+    ["旅行步調", paceLabel],
+    ["興趣", selectedInterests.length ? selectedInterests.map(interestLabel).join("、") : "不介意"],
+    ["住宿類型", summary.find((item) => item.includes("飯店") || item.includes("民宿") || item.includes("住宿類型")) || "住宿類型不拘"],
+    ["每晚住宿預算", nightlyLabel],
+    ["最低星級", form.hotel_min_rating ? `${form.hotel_min_rating} 星以上` : "不介意"],
+    ["偏好住宿區域", form.preferred_area.trim() || "不介意"],
+    ["車站步行上限", form.max_station_walk_minutes ? `${form.max_station_walk_minutes} 分鐘` : "不介意"],
+    ["最低住客評分", form.min_review_score ? `${form.min_review_score}+` : "不介意"],
+    ["最低評論數", form.min_review_count ? `${form.min_review_count} 則以上` : "不介意"],
+    ["早餐", form.breakfast_required ? "需要含早餐" : "不要求"],
+    ["取消政策", form.refundable_required ? "需要免費取消" : "不要求"],
+    ["大眾運輸", routeLabel],
+    ["航班時間", form.avoid_red_eye ? "避開紅眼航班" : "可接受紅眼航班"],
+  ];
 
   function update<K extends keyof typeof form>(key: K, value: (typeof form)[K]) {
     setForm((current) => ({ ...current, [key]: value }));
@@ -131,7 +155,7 @@ export function NewTripForm() {
 
       <div className={step === 0 ? "grid gap-5" : "hidden"}>
         <label className="text-sm font-semibold">旅程名稱<input required maxLength={255} value={form.name} onChange={(event) => update("name", event.target.value)} placeholder="例如：東京五日賞楓" className={fieldClass} /></label>
-        <label className="text-sm font-semibold">目的地<div className="mt-2"><PlacePicker value={form.destination_name} confirmed={Boolean(form.destination_place_id)} countryCodes={["jp", "kr", "th"]} onTextChange={(value) => setForm((current) => ({ ...current, destination_name: value, destination_place_id: "" }))} onSelect={(place) => setForm((current) => ({ ...current, destination_name: place.name, destination_place_id: place.place_id }))} /></div><span className="mt-1 block text-xs font-normal text-[var(--muted)]">由 Google Maps 搜尋日本、韓國與泰國城市；未啟用服務時仍可直接輸入。</span></label>
+        <div><label htmlFor="trip-destination" className="text-sm font-semibold">目的地</label><div className="mt-2"><PlacePicker inputId="trip-destination" label="目的地" descriptionId="trip-destination-help" value={form.destination_name} confirmed={Boolean(form.destination_place_id)} countryCodes={["jp", "kr", "th"]} onTextChange={(value) => setForm((current) => ({ ...current, destination_name: value, destination_place_id: "" }))} onSelect={(place) => setForm((current) => ({ ...current, destination_name: place.name, destination_place_id: place.place_id }))} /></div><p id="trip-destination-help" className="mt-1 text-xs font-normal text-[var(--muted)]">由 Google Maps 搜尋日本、韓國與泰國城市；未啟用服務時仍可直接輸入。</p></div>
         <div className="grid gap-4 sm:grid-cols-2"><label className="text-sm font-semibold">開始日期<input required type="date" value={form.start_date} onChange={(event) => setForm((current) => ({ ...current, start_date: event.target.value, end_date: current.end_date && current.end_date < event.target.value ? "" : current.end_date }))} className={fieldClass} /></label><label className="text-sm font-semibold">結束日期<input required type="date" min={form.start_date} value={form.end_date} onChange={(event) => update("end_date", event.target.value)} className={fieldClass} /></label></div>
         {days > 0 && <p className="rounded-xl bg-[var(--paper)] px-4 py-3 text-sm">共 <strong>{days} 天</strong>，建立後會自動產生每天的行程區段。</p>}
       </div>
@@ -153,10 +177,10 @@ export function NewTripForm() {
       </div>
 
       <div className={step === 3 ? "grid gap-5" : "hidden"}>
-        <div><h2 className="flex items-center gap-2 text-lg font-bold"><Check size={19} />建立前確認</h2><p className="mt-1 text-sm text-[var(--muted)]">這些條件會一起保存，之後排景點與查價格時可以沿用。</p></div>
-        <div className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5"><p className="text-xs font-semibold text-[var(--teal)]">{form.start_date} → {form.end_date}</p><h3 className="mt-1 text-2xl font-bold">{form.name.trim()}</h3><p className="mt-1 text-sm text-[var(--muted)]">{form.destination_name.trim()}</p><div className="mt-4 flex flex-wrap gap-2">{summary.map((item) => <span key={item} className="rounded-full bg-white px-3 py-1.5 text-xs font-medium">{item}</span>)}</div></div>
+        <div><h2 className="flex items-center gap-2 text-lg font-bold"><Check size={19} />路線偏好與建立前確認</h2><p className="mt-1 text-sm text-[var(--muted)]">確認全部條件後再建立；需要修改可回到前一步。</p></div>
         <div className="grid gap-3 sm:grid-cols-2"><label className="text-sm font-semibold">大眾運輸偏好<select value={form.route_preference} onChange={(event) => update("route_preference", event.target.value)} className={fieldClass}><option value="FEWER_TRANSFERS">少轉乘</option><option value="FASTEST">最快抵達</option><option value="LESS_WALKING">少走路</option></select></label><label className="flex items-center gap-2 self-end rounded-xl bg-[var(--paper)] p-3 text-sm"><input type="checkbox" checked={form.avoid_red_eye} onChange={(event) => update("avoid_red_eye", event.target.checked)} />之後搜尋時避開紅眼航班</label></div>
         <label className="text-sm font-semibold">其他補充<textarea rows={3} maxLength={1000} value={form.notes} onChange={(event) => update("notes", event.target.value)} placeholder="例如：有長輩同行、不要一直換飯店、想安排生日晚餐。" className={fieldClass} /></label>
+        <section role="region" aria-label="完整行程條件" className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5"><p className="text-xs font-semibold text-[var(--teal)]">{form.start_date} → {form.end_date}</p><h3 className="mt-1 text-2xl font-bold">{form.name.trim()}</h3><p className="mt-1 text-sm text-[var(--muted)]">{form.destination_name.trim()}</p><dl className="mt-5 grid gap-x-5 gap-y-3 sm:grid-cols-2">{reviewDetails.map(([label, value]) => <div key={label} className="border-t border-[var(--line)] pt-3"><dt className="text-xs font-semibold text-[var(--muted)]">{label}</dt><dd className="mt-1 text-sm font-medium">{value}</dd></div>)}</dl>{form.notes.trim() && <div className="mt-4 border-t border-[var(--line)] pt-4"><p className="text-xs font-semibold text-[var(--muted)]">其他補充</p><p className="mt-1 whitespace-pre-wrap text-sm">{form.notes.trim()}</p></div>}</section>
       </div>
 
       {error && <p role="alert" aria-live="polite" className="mt-5 rounded-xl bg-red-50 p-4 text-sm text-red-800">{error}</p>}

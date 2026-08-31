@@ -17,6 +17,7 @@ from app.places.router import router as places_router
 from app.problems import AppError, app_error_handler
 from app.providers.flight_router import router as flight_router
 from app.providers.router import router as providers_router
+from app.schema import expected_schema_revision, schema_is_current
 from app.search.router import router as search_router
 from app.trips.router import public_router as public_trips_router
 from app.trips.router import router as trips_router
@@ -59,7 +60,24 @@ async def ready() -> dict[str, str]:
     try:
         async with engine.connect() as connection:
             await connection.execute(text("SELECT 1"))
+            current_revision = await connection.scalar(
+                text("SELECT version_num FROM alembic_version")
+            )
+            if not schema_is_current(current_revision):
+                raise RuntimeError(
+                    "Database schema is not current: "
+                    f"expected {expected_schema_revision()}, found {current_revision or 'none'}"
+                )
         await get_redis().ping()
     except Exception as exc:
-        raise AppError(503, "dependencies_unavailable", "Database or Redis is unavailable") from exc
-    return {"status": "ready", "database": "ok", "redis": "ok"}
+        raise AppError(
+            503,
+            "dependencies_unavailable",
+            "Database, schema migration, or Redis is unavailable",
+        ) from exc
+    return {
+        "status": "ready",
+        "database": "ok",
+        "redis": "ok",
+        "schema": str(current_revision),
+    }

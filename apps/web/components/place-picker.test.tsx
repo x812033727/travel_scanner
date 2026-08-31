@@ -58,7 +58,7 @@ describe("PlacePicker", () => {
     expect(screen.getByText("地點資料：Google Maps")).toBeTruthy();
 
     await act(async () => {
-      fireEvent.click(screen.getByRole("button", { name: /淺草寺/ }));
+      fireEvent.click(screen.getByRole("option", { name: /淺草寺/ }));
       await Promise.resolve();
     });
     expect(fetchMock).toHaveBeenCalledTimes(2);
@@ -69,6 +69,30 @@ describe("PlacePicker", () => {
       latitude: 35.7148,
       attribution: "Google Maps",
     }));
+  });
+
+  it("exposes combobox semantics and supports keyboard selection", async () => {
+    const onSelect = vi.fn();
+    vi.stubGlobal("fetch", vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify([
+        { provider: "google_places", place_id: "one", name: "東京站" },
+        { provider: "google_places", place_id: "two", name: "淺草站" },
+      ]), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify({ provider: "google_places", place_id: "two", name: "淺草站" }), { status: 200 })));
+    render(<PlacePicker inputId="destination" descriptionId="destination-help" value="東京" confirmed={false} onTextChange={() => undefined} onSelect={onSelect} />);
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(320);
+      await Promise.resolve();
+    });
+    const input = screen.getByRole("combobox", { name: "目的地" });
+    expect(input.getAttribute("aria-describedby")).toBe("destination-help");
+    expect(input.getAttribute("aria-expanded")).toBe("true");
+    await act(async () => {
+      fireEvent.keyDown(input, { key: "ArrowDown" });
+      fireEvent.keyDown(input, { key: "Enter" });
+      await Promise.resolve();
+    });
+    expect(onSelect).toHaveBeenCalledWith(expect.objectContaining({ place_id: "two" }));
   });
 
   it("shows when the Google Maps service is not configured", async () => {

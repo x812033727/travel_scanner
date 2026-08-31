@@ -50,7 +50,9 @@ async function proxy(request: NextRequest, context: Context) {
     : typeof payload === "string"
       ? new NextResponse(payload, { status: upstream.status })
       : NextResponse.json(payload, { status: upstream.status });
-  if (endpoint === "auth/logout") response.cookies.delete("travel_access");
+  if (endpoint === "auth/logout" || (endpoint === "auth/me" && upstream.status === 401)) {
+    response.cookies.delete("travel_access");
+  }
   return response;
 }
 

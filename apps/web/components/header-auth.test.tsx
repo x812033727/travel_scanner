@@ -17,6 +17,13 @@ describe("header auth", () => {
     expect(await screen.findByRole("link", { name: "登入" })).toBeTruthy();
   });
 
+  it("does not disguise a server failure as a signed-out visitor", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, status: 500, json: async () => ({ detail: "資料庫錯誤" }) }));
+    render(<HeaderAuth />);
+    expect((await screen.findByRole("status")).textContent).toContain("登入狀態異常");
+    expect(screen.queryByRole("link", { name: "登入" })).toBeNull();
+  });
+
   it("shows the account email and logout button when authenticated", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(ok({ id: "u1", email: "user@example.com" })));
     render(<HeaderAuth />);
