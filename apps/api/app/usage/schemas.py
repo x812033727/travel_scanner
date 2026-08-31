@@ -7,4 +7,3 @@ class UsageStatus(BaseModel):
     status: Literal["reserved", "charged", "released"]
     uses: int = 1
     reference: str
-

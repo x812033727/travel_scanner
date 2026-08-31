@@ -12,8 +12,9 @@ from pydantic import BaseModel, Field, model_validator
 from sqlalchemy import delete, func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.admin.service import load_runtime_settings
 from app.auth.service import CurrentUser
-from app.config import get_settings
+from app.config import Settings, get_settings
 from app.db import get_session
 from app.infra import get_redis
 from app.models import (
@@ -310,6 +311,7 @@ async def compute_routes_for_rows(
     trip: TripPlan,
     rows: list[TripPlanItem],
     preference: str,
+    settings: Settings,
     *,
     refresh: bool = False,
 ) -> tuple[list[RouteSegment], list[tuple[UUID, UUID]]]:
@@ -321,7 +323,7 @@ async def compute_routes_for_rows(
             pair_ids.append((first.id, second.id))
             continue
         pairs.append((origin, destination, first.end_time or first.start_time))
-    service = RouteService(get_redis())
+    service = RouteService(get_redis(), settings)
     results = await service.compute_many(
         pairs,
         preference,
@@ -373,11 +375,12 @@ async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPla
         raise AppError(409, "trip_search_missing", "The original search is unavailable")
     query = SearchCreate.model_validate(search.request_json)
     redis = get_redis()
-    provider = build_provider(redis)
-    status = provider_status()
+    settings = await load_runtime_settings(session)
+    provider = build_provider(redis, settings)
+    status = provider_status(settings)
     if provider is None:
         raise AppError(503, "travel_provider_unavailable", status.message)
-    runner = ProviderRunner(redis)
+    runner = ProviderRunner(redis, settings)
 
     async def collect(module: str) -> tuple[str, list[Offer], str | None]:
         try:
@@ -388,7 +391,7 @@ async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPla
     refreshed = await asyncio.gather(*(collect(str(module)) for module in query.modules))
     offers = {module: rows for module, rows, _ in refreshed}
     warnings = [warning for _, _, warning in refreshed if warning]
-    place_service = GoogleTravelService(redis)
+    place_service = GoogleTravelService(redis, settings)
     hotels = [item for item in offers.get("hotel", []) if isinstance(item, HotelOffer)]
     activities = [item for item in offers.get("activities", []) if isinstance(item, ActivityOffer)]
     if place_service.configured:
@@ -596,11 +599,11 @@ async def compute_trip_routes(
     if len(rows) < 2:
         raise AppError(422, "route_items_insufficient", "至少需要兩個有位置的行程項目")
     preference = payload.route_preference or trip.route_preference
+    settings = await load_runtime_settings(session)
     segments, failed = await compute_routes_for_rows(
-        trip, rows, preference, refresh=payload.refresh
+        trip, rows, preference, settings, refresh=payload.refresh
     )
     if not segments:
-        settings = get_settings()
         if not settings.google_maps_api_key and not (
             is_japan_trip(trip.timezone, trip.destination_name, trip.data)
             and settings.navitime_configured
@@ -672,6 +675,7 @@ async def optimize_trip_itinerary(
         changed = False
         any_route = False
         preference = payload.route_preference or trip.route_preference
+        settings = await load_runtime_settings(session)
         final_segments: list[RouteSegment] = []
         for target_day in target_days:
             day_rows = [row for row in all_rows if row.day_date == target_day]
@@ -698,7 +702,7 @@ async def optimize_trip_itinerary(
                 for second in movable
                 if first.id != second.id
             ]
-            results = await RouteService(get_redis()).compute_many(
+            results = await RouteService(get_redis(), settings).compute_many(
                 pairs,
                 preference,
                 japan=is_japan_trip(trip.timezone, trip.destination_name, trip.data),
@@ -727,7 +731,7 @@ async def optimize_trip_itinerary(
                 day_rows[slot] = row
             for position, row in enumerate(day_rows):
                 row.position = position
-            segments, _ = await compute_routes_for_rows(trip, day_rows, preference)
+            segments, _ = await compute_routes_for_rows(trip, day_rows, preference, settings)
             by_pair = {(segment.from_item_id, segment.to_item_id): segment for segment in segments}
             for previous, following in zip(day_rows, day_rows[1:], strict=False):
                 segment = by_pair.get((previous.id, following.id))

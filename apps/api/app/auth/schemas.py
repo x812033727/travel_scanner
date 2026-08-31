@@ -21,6 +21,7 @@ class ChangePasswordRequest(BaseModel):
 class UserResponse(BaseModel):
     id: UUID
     email: EmailStr
+    is_admin: bool = False
 
 
 class TokenResponse(BaseModel):

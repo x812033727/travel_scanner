@@ -3,6 +3,7 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, Header
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.admin.service import load_runtime_settings
 from app.auth.service import CurrentUser
 from app.db import get_session
 from app.infra import enforce_rate_limit, get_redis
@@ -29,7 +30,8 @@ async def compare_live_back_to_back(
 ) -> LiveBackToBackResponse:
     if idempotency_key is None or not 8 <= len(idempotency_key) <= 255:
         raise AppError(422, "idempotency_key_required", "Idempotency-Key is required")
-    status = flight_provider_status()
+    settings = await load_runtime_settings(session)
+    status = flight_provider_status(settings)
     if status.status != "ready":
         raise AppError(503, "provider_not_configured", status.message)
     await enforce_rate_limit(user.id)
@@ -59,7 +61,7 @@ async def compare_live_back_to_back(
     reservation.resource_id = search.id
     await session.commit()
     try:
-        provider = build_flight_provider(get_redis())
+        provider = build_flight_provider(get_redis(), settings)
         if provider is None:
             raise AppError(503, "provider_not_configured", status.message)
         result = await LiveBackToBackService(provider).search(payload)

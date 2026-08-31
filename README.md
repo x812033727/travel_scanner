@@ -43,6 +43,41 @@ uv run python -m app.cli add-usage-package --email you@example.com \
   --package PACK_30 --reference local-test-001
 ```
 
+## API and provider administration
+
+After applying the database migration, grant an existing account administrator
+access and open `http://localhost:3000/admin/settings`:
+
+```bash
+cd apps/api
+uv run python -m app.cli set-admin --email you@example.com
+```
+
+Use `--revoke` to remove the database role. `ADMIN_EMAILS` is also accepted as a
+comma-separated bootstrap or recovery allowlist; remove the address from that
+environment value before revoking its access. The header only exposes the
+administration link to administrator accounts, and every administration API
+still enforces the role server-side.
+
+The page manages runtime modes, timeouts and encrypted credentials for Google
+Maps, Amadeus, Skyscanner, and NAVITIME. Changes take effect for API and worker
+requests without rebuilding the web image. Connection checks and configuration
+changes are recorded in `admin_audit_logs`, without secret values. Responses
+only include whether a key exists, its source, and a masked suffix.
+
+Set a stable, randomly generated `SETTINGS_ENCRYPTION_KEY` in production before
+saving credentials. It is used to derive the Fernet key for database values;
+changing it makes existing encrypted settings unreadable. `APP_SECRET_KEY` is
+only a backwards-compatible fallback. Restrict the Google server key by API and
+server egress IP. Restrict the browser Embed key by API and the production HTTP
+referrer. Do not commit either value.
+
+The management API is under `/api/v1/admin/provider-settings`; the safe runtime
+browser configuration is served separately from
+`/api/v1/runtime/public-config`. Environment variables remain the fallback when
+no database override exists, and disabling a provider never silently enables
+mock pricing in production.
+
 ## Database migration
 
 ```bash

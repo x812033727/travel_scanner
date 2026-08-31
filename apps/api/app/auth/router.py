@@ -15,6 +15,7 @@ from app.auth.service import (
     create_access_token,
     find_user_by_email,
     hash_password,
+    is_admin_user,
     verify_password,
 )
 from app.config import get_settings
@@ -29,7 +30,7 @@ Session = Annotated[AsyncSession, Depends(get_session)]
 
 async def user_response(session: AsyncSession, user: User) -> UserResponse:
     _ = session
-    return UserResponse(id=user.id, email=user.email)
+    return UserResponse(id=user.id, email=user.email, is_admin=is_admin_user(user))
 
 
 def set_auth_cookie(response: Response, token: str) -> None:
