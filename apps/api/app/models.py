@@ -166,6 +166,22 @@ class ProviderResponse(Base):
     received_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
+class AffiliateClick(Base):
+    __tablename__ = "affiliate_clicks"
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(index=True)
+    search_id: Mapped[UUID | None] = mapped_column(nullable=True, index=True)
+    trip_id: Mapped[UUID | None] = mapped_column(nullable=True, index=True)
+    offer_id: Mapped[UUID | None] = mapped_column(nullable=True, index=True)
+    partner: Mapped[str] = mapped_column(String(64), index=True)
+    module: Mapped[str] = mapped_column(String(32), index=True)
+    sub_id: Mapped[str] = mapped_column(String(64), index=True)
+    destination_summary: Mapped[str] = mapped_column(String(128))
+    target_host: Mapped[str] = mapped_column(String(255))
+    status: Mapped[str] = mapped_column(String(32), default="redirected")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
 class FlightOfferRecord(Timestamped, Base):
     __tablename__ = "flight_offers"
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)

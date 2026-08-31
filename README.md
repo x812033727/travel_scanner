@@ -45,10 +45,11 @@ uv run python -m app.cli add-usage-package --email you@example.com \
   --package PACK_30 --reference local-test-001
 ```
 
-## API and provider administration
+## Administration
 
 After applying the database migration, grant an existing account administrator
-access and open `http://localhost:3000/admin/settings`:
+access and open `http://localhost:3000/admin/users` or
+`http://localhost:3000/admin/settings`:
 
 ```bash
 cd apps/api
@@ -60,6 +61,15 @@ comma-separated bootstrap or recovery allowlist; remove the address from that
 environment value before revoking its access. The header only exposes the
 administration link to administrator accounts, and every administration API
 still enforces the role server-side.
+
+The member page searches and paginates accounts, shows available and reserved
+uses, activates or suspends accounts, and grants or revokes database-backed
+administrator access. Administrators cannot suspend or demote their own active
+session, while `ADMIN_EMAILS` roles must be removed from the host environment.
+Manual usage changes require a reason and an idempotency key. Every change is a
+new `usage_ledger` entry plus an administrator audit event; deductions cannot
+reduce the balance below in-flight reservations. Administrators cannot adjust
+their own balance, so a second administrator must authorize that operation.
 
 The page manages runtime modes, timeouts and encrypted credentials for Google
 Maps, Amadeus, Skyscanner, and NAVITIME. Changes take effect for API and worker
@@ -74,8 +84,8 @@ only a backwards-compatible fallback. Restrict the Google server key by API and
 server egress IP. Restrict the browser Embed key by API and the production HTTP
 referrer. Do not commit either value.
 
-The management API is under `/api/v1/admin/provider-settings`; the safe runtime
-browser configuration is served separately from
+The management APIs are under `/api/v1/admin/users` and
+`/api/v1/admin/provider-settings`; the safe runtime browser configuration is served separately from
 `/api/v1/runtime/public-config`. Environment variables remain the fallback when
 no database override exists, and disabling a provider never silently enables
 mock pricing in production.

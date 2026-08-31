@@ -12,6 +12,7 @@ from app.db import SessionFactory, engine
 from app.infra import get_redis
 from app.main import app
 from app.models import (
+    AffiliateClick,
     SearchJob,
     SearchRequest,
     UsageAccount,
@@ -33,6 +34,40 @@ pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
     reason="requires PostgreSQL and Redis services",
 )
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_affiliate_click_ledger_is_append_only() -> None:
+    async with SessionFactory() as session:
+        user = User(
+            email=f"affiliate-ledger-{uuid4()}@example.com",
+            password_hash="unused",
+            is_active=True,
+        )
+        session.add(user)
+        await session.flush()
+        click = AffiliateClick(
+            user_id=user.id,
+            partner="booking",
+            module="hotel",
+            sub_id=uuid4().hex,
+            destination_summary="東京",
+            target_host="www.booking.com",
+            status="redirected",
+        )
+        session.add(click)
+        await session.commit()
+        click_id = click.id
+
+    async with SessionFactory() as session:
+        with pytest.raises(DBAPIError):
+            await session.execute(
+                update(AffiliateClick)
+                .where(AffiliateClick.id == click_id)
+                .values(destination_summary="tampered")
+            )
+            await session.commit()
+        await session.rollback()
 
 
 @pytest.mark.asyncio(loop_scope="module")

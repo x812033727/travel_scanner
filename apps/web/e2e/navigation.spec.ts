@@ -118,6 +118,7 @@ test("search criteria can be revised before running a new comparison", async ({ 
 
 test("flexible flight dates show local schedules and require confirmation before a new search", async ({ page }) => {
   const submitted: Array<Record<string, unknown>> = [];
+  let affiliateClickMethod = "";
   const flight = {
     id: "flight-live-1", provider: "skyscanner", source_mode: "live", marketing_airline: "星宇航空", airline: "星宇航空", operating_airlines: ["星宇航空"], selling_agent: "測試售票平台", origin: "TPE", destination: "NRT", departure_time: "2026-11-10T08:00:00+08:00", arrival_time: "2026-11-10T12:00:00+09:00", return_departure_time: "2026-11-15T13:00:00+09:00", return_arrival_time: "2026-11-15T16:00:00+08:00", total_price: 15000, stops: 0, clickout_available: false, segments: [
       { origin: "TPE", destination: "NRT", departure_time: "2026-11-10T08:00:00+08:00", arrival_time: "2026-11-10T12:00:00+09:00", airline: "星宇航空", flight_number: "JX800", leg_index: 0 },
@@ -144,6 +145,22 @@ test("flexible flight dates show local schedules and require confirmation before
     ].join("\n\n") + "\n\n",
   }));
   await page.route(/\/api\/travel\/searches\/search-\d+$/, (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ status: "completed", result: { modules: { flight: [flight] }, plans: [], flight_date_options: options }, warnings: [], usage: { status: "charged", uses: 1, reference: "usage" } }) }));
+  await page.route("**/api/travel/affiliates/options?*", (route) => {
+    const affiliateModule = new URL(route.request().url()).searchParams.get("module");
+    return route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        module: affiliateModule,
+        disclosure: "透過合作連結預訂，本站可能獲得分潤，價格不因此增加。",
+        options: affiliateModule === "flight" ? [{ partner: "trip_com", display_name: "Trip.com", module: "flight", cta: "到 Trip.com 查看", clickout_url: "/api/travel/affiliates/trip_com/clickout?token=safe-token" }] : [],
+      }),
+    });
+  });
+  await page.context().route("**/api/travel/affiliates/trip_com/clickout?token=safe-token", (route) => {
+    affiliateClickMethod = route.request().method();
+    return route.fulfill({ status: 200, contentType: "text/html", body: "<p>safe affiliate redirect</p>" });
+  });
 
   await page.goto("/search?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=1&rooms=1&flex_days=7");
   await page.getByRole("button", { name: "確認條件並開始搜尋" }).click();
@@ -152,6 +169,14 @@ test("flexible flight dates show local schedules and require confirmation before
   await page.getByRole("tab", { name: "機票" }).click();
   await expect(page.getByText("08:00")).toBeVisible();
   await expect(page.getByText("JX800")).toBeVisible();
+  await expect(page.getByText(/本站可能獲得分潤/)).toBeVisible();
+  const [popup] = await Promise.all([
+    page.waitForEvent("popup"),
+    page.getByRole("button", { name: /到 Trip.com 查看/ }).click(),
+  ]);
+  await expect(popup.getByText("safe affiliate redirect")).toBeVisible();
+  expect(affiliateClickMethod).toBe("POST");
+  await popup.close();
   await page.getByRole("button", { name: /晚 2 日/ }).click();
   expect(submitted).toHaveLength(1);
   await page.getByRole("button", { name: "套用並重新搜尋整趟" }).click();

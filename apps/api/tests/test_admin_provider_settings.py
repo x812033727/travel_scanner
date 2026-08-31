@@ -4,6 +4,7 @@ import pytest
 from httpx import ASGITransport, AsyncClient
 
 from app.admin.service import (
+    _default_provider_enabled,
     _safe_test_message,
     apply_runtime_overrides,
     decrypt_secrets,
@@ -43,6 +44,12 @@ def test_provider_secrets_are_encrypted_and_round_trip() -> None:
     assert encrypted is not None
     assert "server-secret-key" not in encrypted
     assert decrypt_secrets(encrypted, settings) == {"google_maps_api_key": "server-secret-key"}
+
+
+def test_new_affiliate_provider_rows_default_to_disabled() -> None:
+    assert not _default_provider_enabled("travelpayouts")
+    assert not _default_provider_enabled("booking")
+    assert _default_provider_enabled("google_maps")
 
 
 def test_database_provider_settings_override_environment_and_can_disable_provider() -> None:

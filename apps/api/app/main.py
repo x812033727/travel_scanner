@@ -4,6 +4,8 @@ from sqlalchemy import text
 
 from app.admin.router import router as admin_router
 from app.admin.router import runtime_router
+from app.admin.user_router import router as admin_user_router
+from app.affiliates.router import router as affiliates_router
 from app.ai.router import router as ai_router
 from app.alerts.router import router as alerts_router
 from app.auth.router import router as auth_router
@@ -36,7 +38,9 @@ app.add_middleware(
 app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(admin_router, prefix="/api/v1")
+app.include_router(admin_user_router, prefix="/api/v1")
 app.include_router(runtime_router, prefix="/api/v1")
+app.include_router(affiliates_router, prefix="/api/v1")
 app.include_router(usage_router, prefix="/api/v1")
 app.include_router(search_router, prefix="/api/v1")
 app.include_router(trips_router, prefix="/api/v1")
