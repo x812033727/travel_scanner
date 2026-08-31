@@ -24,13 +24,29 @@ async def autocomplete_places(
     user: CurrentUser,
     q: str,
     session_token: str | None = None,
+    country_codes: str | None = None,
+    latitude: float | None = None,
+    longitude: float | None = None,
 ) -> list[dict[str, Any]]:
     _ = user
     if len(q.strip()) < 2 or len(q) > 120:
         raise AppError(422, "invalid_place_query", "地點關鍵字須為 2 至 120 個字元")
-    if session_token is not None and not 8 <= len(session_token) <= 128:
+    if session_token is not None and not 8 <= len(session_token) <= 36:
         raise AppError(422, "invalid_session_token", "地點搜尋工作階段代碼格式錯誤")
-    return await GoogleTravelService(get_redis()).autocomplete(q, session_token)
+    if (latitude is None) != (longitude is None):
+        raise AppError(422, "invalid_place_bias", "地點搜尋中心必須同時包含經緯度")
+    if latitude is not None and not -90 <= latitude <= 90:
+        raise AppError(422, "invalid_place_bias", "地點搜尋緯度格式錯誤")
+    if longitude is not None and not -180 <= longitude <= 180:
+        raise AppError(422, "invalid_place_bias", "地點搜尋經度格式錯誤")
+    codes = [code.strip().lower() for code in (country_codes or "").split(",") if code.strip()]
+    allowed_codes = {"jp", "kr", "th"}
+    if len(codes) > 3 or any(code not in allowed_codes for code in codes):
+        raise AppError(422, "invalid_place_regions", "地點搜尋目前支援日本、韓國與泰國")
+    service = GoogleTravelService(get_redis())
+    if not service.configured:
+        raise AppError(503, "google_maps_not_configured", "Google Maps 地點搜尋尚未啟用")
+    return await service.autocomplete(q, session_token, codes, latitude, longitude)
 
 
 @public_router.get("/{provider}/{place_id}")
@@ -38,11 +54,17 @@ async def get_place_details(
     provider: str,
     place_id: str,
     user: CurrentUser,
+    session_token: str | None = None,
 ) -> dict[str, Any]:
     _ = user
     if provider != "google_places":
         raise AppError(404, "place_provider_not_found", "不支援的地點來源")
-    result = await GoogleTravelService(get_redis()).place_details(place_id)
+    if session_token is not None and not 8 <= len(session_token) <= 36:
+        raise AppError(422, "invalid_session_token", "地點搜尋工作階段代碼格式錯誤")
+    service = GoogleTravelService(get_redis())
+    if not service.configured:
+        raise AppError(503, "google_maps_not_configured", "Google Maps 地點搜尋尚未啟用")
+    result = await service.place_details(place_id, session_token)
     if not result:
         raise AppError(404, "place_not_found", "找不到這個地點")
     return result

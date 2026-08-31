@@ -56,7 +56,13 @@ class GoogleTravelService:
         except httpx.HTTPError:
             return {}
 
-    async def _get(self, url: str, *, field_mask: str) -> dict[str, Any]:
+    async def _get(
+        self,
+        url: str,
+        *,
+        field_mask: str,
+        params: dict[str, str] | None = None,
+    ) -> dict[str, Any]:
         if not self.settings.google_maps_api_key:
             return {}
         headers = {
@@ -65,31 +71,45 @@ class GoogleTravelService:
         }
         try:
             if self.client is not None:
-                response = await self.client.get(url, headers=headers)
+                response = await self.client.get(url, headers=headers, params=params)
             else:
                 async with httpx.AsyncClient(
                     timeout=self.settings.provider_timeout_seconds
                 ) as client:
-                    response = await client.get(url, headers=headers)
+                    response = await client.get(url, headers=headers, params=params)
             response.raise_for_status()
             return cast(dict[str, Any], response.json())
         except httpx.HTTPError:
             return {}
 
     async def autocomplete(
-        self, query: str, session_token: str | None = None
+        self,
+        query: str,
+        session_token: str | None = None,
+        country_codes: list[str] | None = None,
+        latitude: float | None = None,
+        longitude: float | None = None,
     ) -> list[dict[str, Any]]:
         if not self.configured or len(query.strip()) < 2:
             return []
         body: dict[str, Any] = {"input": query.strip(), "languageCode": "zh-TW"}
         if session_token:
             body["sessionToken"] = session_token
+        if country_codes:
+            body["includedRegionCodes"] = [code.lower() for code in country_codes]
+            if len(country_codes) == 1:
+                body["regionCode"] = country_codes[0].lower()
+        if latitude is not None and longitude is not None:
+            location = {"latitude": latitude, "longitude": longitude}
+            body["origin"] = location
+            body["locationBias"] = {"circle": {"center": location, "radius": 50_000.0}}
         payload = await self._post(
             self.autocomplete_url,
             json_data=body,
             field_mask=(
                 "suggestions.placePrediction.placeId,suggestions.placePrediction.text,"
-                "suggestions.placePrediction.structuredFormat"
+                "suggestions.placePrediction.structuredFormat,"
+                "suggestions.placePrediction.distanceMeters"
             ),
         )
         results: list[dict[str, Any]] = []
@@ -106,17 +126,25 @@ class GoogleTravelService:
                         "place_id": prediction["placeId"],
                         "name": main_text.get("text") or text.get("text") or query,
                         "address": secondary_text.get("text"),
+                        "distance_meters": prediction.get("distanceMeters"),
+                        "attribution": "Google Maps",
                     }
                 )
         return results
 
-    async def place_details(self, place_id: str) -> dict[str, Any]:
+    async def place_details(
+        self, place_id: str, session_token: str | None = None
+    ) -> dict[str, Any]:
+        params = {"languageCode": "zh-TW"}
+        if session_token:
+            params["sessionToken"] = session_token
         payload = await self._get(
             f"{self.place_details_url}/{quote(place_id, safe='')}",
             field_mask=(
                 "id,displayName,formattedAddress,location,googleMapsUri,"
                 "regularOpeningHours,entrances"
             ),
+            params=params,
         )
         if not payload:
             return {}
