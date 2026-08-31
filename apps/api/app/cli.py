@@ -6,13 +6,14 @@ from io import TextIOWrapper
 
 from sqlalchemy import select
 
+from app.admin.service import load_runtime_settings
 from app.config import get_settings
 from app.crawlers.airlines import AirlineFareCrawlerService
 from app.crawlers.schemas import AirlineFareSearch
 from app.crawlers.verification import build_verification_report
 from app.db import SessionFactory
 from app.infra import get_redis
-from app.models import User
+from app.models import AdminAuditLog, User
 from app.providers.registry import build_provider, provider_status
 from app.search.schemas import SearchCreate
 from app.usage.service import PACKAGE_DEFAULTS, grant_package
@@ -33,6 +34,26 @@ async def add_usage_package(email: str, package_code: str, reference: str) -> No
         )
 
 
+async def set_admin(email: str, enabled: bool) -> None:
+    normalized_email = email.strip().lower()
+    async with SessionFactory() as session:
+        user = await session.scalar(select(User).where(User.email == normalized_email))
+        if user is None:
+            raise SystemExit("User was not found")
+        user.is_admin = enabled
+        session.add(
+            AdminAuditLog(
+                actor_user_id=None,
+                action="admin_role.updated",
+                target=f"user:{user.id}",
+                metadata_json={"email": normalized_email, "is_admin": enabled, "source": "cli"},
+            )
+        )
+        await session.commit()
+        state = "administrator" if enabled else "regular user"
+        print(f"Updated {normalized_email} to {state}")
+
+
 async def verify_airline_crawlers(origin: str, destination: str) -> bool:
     query = AirlineFareSearch(
         origin=origin,
@@ -48,7 +69,9 @@ async def verify_airline_crawlers(origin: str, destination: str) -> bool:
 
 
 async def verify_live_provider(origin: str, destination: str) -> bool:
-    status = provider_status()
+    async with SessionFactory() as session:
+        settings = await load_runtime_settings(session)
+    status = provider_status(settings)
     if status.status != "ready":
         print(status.model_dump_json(indent=2))
         return False
@@ -62,7 +85,7 @@ async def verify_live_provider(origin: str, destination: str) -> bool:
         modules=["flight", "hotel", "activities", "transport"],
         preferences={"interests": ["food", "culture"]},
     )
-    provider = build_provider(get_redis())
+    provider = build_provider(get_redis(), settings)
     if provider is None:
         print(status.model_dump_json(indent=2))
         return False
@@ -102,6 +125,13 @@ def main() -> None:
         required=True,
     )
     command.add_argument("--reference", required=True)
+    admin = subparsers.add_parser("set-admin")
+    admin.add_argument("--email", required=True)
+    admin.add_argument(
+        "--revoke",
+        action="store_true",
+        help="Remove database administrator access instead of granting it",
+    )
     verify = subparsers.add_parser("verify-airline-crawlers")
     verify.add_argument("--origin", default="TPE")
     verify.add_argument("--destination", default="NRT")
@@ -113,6 +143,8 @@ def main() -> None:
     args = parser.parse_args()
     if args.command == "add-usage-package":
         asyncio.run(add_usage_package(args.email, args.package, args.reference))
+    elif args.command == "set-admin":
+        asyncio.run(set_admin(args.email, not args.revoke))
     elif args.command == "verify-airline-crawlers":
         passed = asyncio.run(verify_airline_crawlers(args.origin, args.destination))
         if args.strict and not passed:

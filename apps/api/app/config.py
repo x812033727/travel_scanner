@@ -9,6 +9,8 @@ class Settings(BaseSettings):
 
     app_env: str = "development"
     app_secret_key: str = "development-secret-change-me-please-32"
+    settings_encryption_key: str | None = None
+    admin_emails: str = ""
     database_url: str = "postgresql+asyncpg://travel:travel@localhost:5432/travel_scanner"
     redis_url: str = "redis://localhost:6379/0"
     api_cors_origins: str = "http://localhost:3000"
@@ -33,6 +35,7 @@ class Settings(BaseSettings):
     skyscanner_poll_attempts: int = Field(default=4, ge=1, le=10)
     skyscanner_poll_interval_seconds: float = Field(default=0.5, ge=0, le=5)
     google_maps_api_key: str | None = None
+    next_public_google_maps_browser_key: str | None = None
     route_cache_ttl_seconds: int = Field(default=900, ge=60, le=86_400)
     navitime_api_base_url: str | None = None
     navitime_client_id: str | None = None
@@ -55,6 +58,10 @@ class Settings(BaseSettings):
     @property
     def cors_origins(self) -> list[str]:
         return [origin.strip() for origin in self.api_cors_origins.split(",") if origin.strip()]
+
+    @property
+    def admin_email_set(self) -> set[str]:
+        return {email.strip().lower() for email in self.admin_emails.split(",") if email.strip()}
 
     @property
     def amadeus_base_url(self) -> str:

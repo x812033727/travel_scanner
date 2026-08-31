@@ -1,10 +1,19 @@
 "use client";
 
 import { Map, MapPin } from "lucide-react";
+import { useEffect, useState } from "react";
+import { api } from "@/lib/api";
 import type { RouteSegment, TripItem } from "@/lib/trip-types";
 
 export function RouteMap({ items, segment }: { items: TripItem[]; segment?: RouteSegment }) {
-  const browserKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY;
+  const [browserKey, setBrowserKey] = useState<string>();
+  useEffect(() => {
+    let active = true;
+    api<{ google_maps_browser_key?: string | null }>("/runtime/public-config")
+      .then((config) => { if (active) setBrowserKey(config.google_maps_browser_key || undefined); })
+      .catch(() => { if (active) setBrowserKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY); });
+    return () => { active = false; };
+  }, []);
   const origin = items.find((item) => item.id === segment?.from_item_id);
   const destination = items.find((item) => item.id === segment?.to_item_id);
   const canEmbed = browserKey && origin?.latitude != null && origin.longitude != null && destination?.latitude != null && destination.longitude != null;

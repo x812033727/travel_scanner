@@ -6,7 +6,7 @@ from uuid import UUID
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.config import get_settings
+from app.admin.service import load_runtime_settings
 from app.infra import get_redis
 from app.models import (
     ActivityOfferRecord,
@@ -157,9 +157,11 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
     await session.commit()
     await publish_event(redis, search_id, "search.created", 0, {"status": "processing"})
     query = SearchCreate.model_validate(search.request_json)
-    providers, runner = build_module_providers(redis), ProviderRunner(redis)
-    place_service = GoogleTravelService(redis)
-    status = provider_status()
+    settings = await load_runtime_settings(session)
+    providers = build_module_providers(redis, settings)
+    runner = ProviderRunner(redis, settings)
+    place_service = GoogleTravelService(redis, settings)
+    status = provider_status(settings)
     if not any(providers.get(str(module)) for module in query.modules):
         search.status = "failed"
         search.progress = 100
@@ -231,17 +233,15 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                 attempts = 0
                 while (
                     current.state == FlightSearchState.INCOMPLETE
-                    and attempts < get_settings().skyscanner_poll_attempts
+                    and attempts < settings.skyscanner_poll_attempts
                 ):
-                    await asyncio.sleep(get_settings().skyscanner_poll_interval_seconds)
+                    await asyncio.sleep(settings.skyscanner_poll_interval_seconds)
                     current = await runner.run(
                         provider_name,
                         module,
                         lambda: flight_provider.poll_search(first.session_id),  # type: ignore[attr-defined]
                     )
-                    collected.update(
-                        {item.provider_offer_id: item for item in current.offers}
-                    )
+                    collected.update({item.provider_offer_id: item for item in current.offers})
                     attempts += 1
                     await publish_event(
                         redis,
@@ -250,9 +250,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                         min(24, 15 + attempts * 2),
                         {
                             "module": module,
-                            "offers": [
-                                item.model_dump(mode="json") for item in current.offers
-                            ],
+                            "offers": [item.model_dump(mode="json") for item in current.offers],
                             "status": current.state.value,
                         },
                     )
@@ -305,11 +303,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                         search_id,
                         "flight.date_options",
                         24,
-                        {
-                            "options": [
-                                item.model_dump(mode="json") for item in flight_date_options
-                            ]
-                        },
+                        {"options": [item.model_dump(mode="json") for item in flight_date_options]},
                     )
             if module == "hotel" and place_service.configured:
                 hotels = [item for item in offers if isinstance(item, HotelOffer)]
@@ -391,9 +385,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
         search.progress = progress
         search.result_json = {
             "modules": results,
-            "flight_date_options": [
-                item.model_dump(mode="json") for item in flight_date_options
-            ],
+            "flight_date_options": [item.model_dump(mode="json") for item in flight_date_options],
         }
         search.warnings_json = warnings
         await session.commit()
@@ -417,9 +409,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
     search.result_json = {
         "modules": results,
         "plans": plans,
-        "flight_date_options": [
-            item.model_dump(mode="json") for item in flight_date_options
-        ],
+        "flight_date_options": [item.model_dump(mode="json") for item in flight_date_options],
     }
     search.warnings_json = warnings
     if job:

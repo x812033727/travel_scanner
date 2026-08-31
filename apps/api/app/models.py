@@ -40,6 +40,7 @@ class User(Timestamped, Base):
     email: Mapped[str] = mapped_column(String(320), unique=True, index=True)
     password_hash: Mapped[str] = mapped_column(String(255))
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+    is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
 
 
 class UsagePackage(Timestamped, Base):
@@ -361,3 +362,22 @@ class ProviderConfig(Timestamped, Base):
     enabled: Mapped[bool] = mapped_column(Boolean, default=True)
     priority: Mapped[int] = mapped_column(Integer, default=100)
     config: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    secret_config_encrypted: Mapped[str | None] = mapped_column(Text, nullable=True)
+    updated_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    last_tested_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_test_status: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    last_test_message: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+
+class AdminAuditLog(Base):
+    __tablename__ = "admin_audit_logs"
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    actor_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    action: Mapped[str] = mapped_column(String(64), index=True)
+    target: Mapped[str] = mapped_column(String(128), index=True)
+    metadata_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)

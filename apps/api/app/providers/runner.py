@@ -4,7 +4,7 @@ from typing import TypeVar
 
 from redis.asyncio import Redis
 
-from app.config import get_settings
+from app.config import Settings, get_settings
 
 T = TypeVar("T")
 
@@ -14,9 +14,9 @@ class ProviderUnavailableError(RuntimeError):
 
 
 class ProviderRunner:
-    def __init__(self, redis: Redis) -> None:
+    def __init__(self, redis: Redis, settings: Settings | None = None) -> None:
         self.redis = redis
-        self.settings = get_settings()
+        self.settings = settings or get_settings()
 
     async def run(self, provider: str, module: str, call: Callable[[], Awaitable[T]]) -> T:
         circuit_key = f"provider:circuit:{provider}:{module}"

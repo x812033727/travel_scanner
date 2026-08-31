@@ -64,5 +64,18 @@ async def current_user(
 CurrentUser = Annotated[User, Depends(current_user)]
 
 
+def is_admin_user(user: User) -> bool:
+    return user.is_admin or user.email.lower() in get_settings().admin_email_set
+
+
+async def require_admin(user: CurrentUser) -> User:
+    if not is_admin_user(user):
+        raise AppError(403, "admin_required", "此功能僅限系統管理員使用")
+    return user
+
+
+AdminUser = Annotated[User, Depends(require_admin)]
+
+
 async def find_user_by_email(session: AsyncSession, email: str) -> User | None:
     return cast(User | None, await session.scalar(select(User).where(User.email == email.lower())))
