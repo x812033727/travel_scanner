@@ -32,9 +32,25 @@ function response(payload: unknown) {
   return { ok: true, status: 200, json: async () => payload };
 }
 
-afterEach(() => vi.unstubAllGlobals());
-
+afterEach(() => {
+  window.localStorage.clear();
+  window.history.replaceState({}, "", window.location.href);
+  vi.unstubAllGlobals();
+});
 describe("trip editor", () => {
+  it("opens mobile trip tools and remembers the selected color theme", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(trip))));
+    const { container } = render(<TripEditor tripId={trip.id} />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "開啟旅程工具" }));
+    expect(screen.getByRole("dialog", { name: "旅程工具" })).toBeTruthy();
+    expect(screen.getByRole("group", { name: "路線偏好" })).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("radio", { name: /海岸/ }));
+    expect(container.querySelector("[data-planner-theme='ocean']")).toBeTruthy();
+    expect(window.localStorage.getItem("travel-planner-theme")).toBe("ocean");
+  });
+
   it("edits and saves an itinerary with the current version", async () => {
     const fetchMock = vi.fn(async (_url: string, init?: RequestInit) => {
       if (init?.method === "PUT") {
@@ -45,7 +61,8 @@ describe("trip editor", () => {
     });
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
-    const title = await screen.findByDisplayValue("淺草散步");
+    fireEvent.click(await screen.findByRole("button", { name: "編輯 淺草散步" }));
+    const title = screen.getByLabelText("安排名稱");
     fireEvent.change(title, { target: { value: "淺草與晴空塔" } });
     fireEvent.click(screen.getByRole("button", { name: "儲存變更" }));
     expect(await screen.findByText("行程已儲存")).toBeTruthy();
@@ -58,56 +75,179 @@ describe("trip editor", () => {
     });
   });
 
-  it("keeps current edits, shows planning provenance and regenerates with the saved version", async () => {
-    const plannedTrip = {
-      ...trip,
-      planning: {
-        status: "fallback",
-        provider: "catalog",
-        model: null,
-        generated_at: "2026-08-31T10:00:00Z",
-        warnings: ["已改用內建目的地資料產生備援草稿"],
-      },
-      items: [
-        {
-          ...trip.items[0],
-          data: {
-            generated_by: "ai_planner",
-            reason: "符合文化與散步偏好",
-            needs_place_confirmation: true,
-          },
-        },
-      ],
+  it("flushes the newest revision before requesting an optimization", async () => {
+    let resolveFirstSave: ((value: ReturnType<typeof response>) => void) | undefined;
+    const firstSave = new Promise<ReturnType<typeof response>>((resolve) => {
+      resolveFirstSave = resolve;
+    });
+    const putBodies: Array<{ version: number; items: typeof trip.items }> = [];
+    const preview = {
+      preview_id: "00000000-0000-4000-8000-000000000098",
+      expires_at: "2026-11-01T10:10:00Z",
+      base_version: 3,
+      route_preference: "FEWER_TRANSFERS",
+      changed: false,
+      warnings: [],
+      segments: [],
+      total_duration_before_minutes: 0,
+      total_duration_after_minutes: 0,
+      charge_on_apply: 1,
+      days: [],
     };
     const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
       if (init?.method === "PUT") {
         const body = JSON.parse(String(init.body));
-        return response({ ...plannedTrip, version: 2, items: body.items });
+        putBodies.push(body);
+        if (putBodies.length === 1) return firstSave;
+        return response({ ...trip, version: 3, items: body.items });
       }
-      if (url.includes("/itinerary/generate")) {
-        const body = JSON.parse(String(init?.body));
-        expect(body.version).toBe(2);
-        return response({
-          ...plannedTrip,
-          version: 3,
-          usage: { status: "released", uses: 1, reference: "reservation-1" },
-        });
-      }
-      return response(plannedTrip);
+      if (url.includes("/optimize/preview")) return response(preview);
+      return response(trip);
     });
     vi.stubGlobal("fetch", fetchMock);
-    vi.stubGlobal("confirm", vi.fn(() => true));
-
     render(<TripEditor tripId={trip.id} />);
-    expect(await screen.findByText("已使用內建備援草稿")).toBeTruthy();
-    expect(screen.getByText("AI 建議")).toBeTruthy();
-    expect(screen.getByText("地點待確認")).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: "AI 重新排行程" }));
+    fireEvent.click(await screen.findByRole("button", { name: "編輯 淺草散步" }));
+    const title = screen.getByLabelText("安排名稱");
+    fireEvent.change(title, { target: { value: "第一次修改" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存變更" }));
+    await waitFor(() => expect(putBodies).toHaveLength(1));
 
-    expect(await screen.findByText(/已使用內建備援重新排行程，本次未扣次/)).toBeTruthy();
-    const generateCall = fetchMock.mock.calls.find(([url]) =>
-      String(url).includes("/itinerary/generate"),
-    );
-    expect(generateCall?.[1]?.headers).toMatchObject({ "Idempotency-Key": expect.any(String) });
+    fireEvent.change(title, { target: { value: "最後一次修改" } });
+    fireEvent.click(screen.getByRole("button", { name: "最佳化整趟" }));
+    resolveFirstSave?.(response({ ...trip, version: 2, items: putBodies[0].items }));
+
+    await waitFor(() => expect(putBodies).toHaveLength(2));
+    await waitFor(() => expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/optimize/preview"))).toBe(true));
+    expect(putBodies[1].version).toBe(2);
+    expect(putBodies[1].items[0].title).toBe("最後一次修改");
+  });
+
+  it("previews an optimization before applying and charging it", async () => {
+    const twoStopTrip = {
+      ...trip,
+      items: [
+        trip.items[0],
+        { ...trip.items[0], id: "00000000-0000-4000-8000-000000000003", position: 1, title: "晴空塔", location_name: "押上" },
+      ],
+    };
+    const preview = {
+      preview_id: "00000000-0000-4000-8000-000000000099",
+      expires_at: "2026-11-01T10:10:00Z",
+      base_version: 1,
+      route_preference: "FEWER_TRANSFERS",
+      changed: true,
+      warnings: [],
+      segments: [],
+      total_duration_before_minutes: 45,
+      total_duration_after_minutes: 25,
+      charge_on_apply: 1,
+      days: [{
+        date: "2026-11-11", duration_before_minutes: 45, duration_after_minutes: 25, saved_minutes: 20,
+        before: twoStopTrip.items.map((item, index) => ({ id: item.id, title: item.title, position: index, locked: false, fixed_time: false })),
+        after: [...twoStopTrip.items].reverse().map((item, index) => ({ id: item.id, title: item.title, position: index, locked: false, fixed_time: false })),
+      }],
+    };
+    let applyAttempts = 0;
+    const fetchMock = vi.fn(async (url: string, _init?: RequestInit) => {
+      void _init;
+      if (url.includes("/optimize/preview")) return response(preview);
+      if (url.includes("/optimize/apply")) {
+        applyAttempts += 1;
+        if (applyAttempts === 1) throw new TypeError("連線中斷");
+        return response({ ...twoStopTrip, version: 2, usage: { status: "charged", uses: 1, reference: "use-1" } });
+      }
+      return response(twoStopTrip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    fireEvent.click(await screen.findByRole("button", { name: "最佳化" }));
+    expect(await screen.findByRole("dialog", { name: "最佳化預覽" })).toBeTruthy();
+    expect(screen.getByText("預計節省")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "套用並扣 1 次" }));
+    expect(await screen.findByText(/結果尚未確認/)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "套用並扣 1 次" }));
+    expect(await screen.findByText(/已套用最佳動線並扣除 1 次/)).toBeTruthy();
+    const applyCalls = fetchMock.mock.calls.filter(([url]) => String(url).includes("/optimize/apply"));
+    expect(applyCalls).toHaveLength(2);
+    expect((applyCalls[0][1]?.headers as Record<string, string>)["Idempotency-Key"])
+      .toBe((applyCalls[1][1]?.headers as Record<string, string>)["Idempotency-Key"]);
+  });
+
+  it("keeps delete recoverable from the mobile-friendly editor", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(trip))));
+    render(<TripEditor tripId={trip.id} />);
+    fireEvent.click(await screen.findByRole("button", { name: "編輯 淺草散步" }));
+    fireEvent.click(screen.getByRole("button", { name: "刪除這個安排" }));
+    expect(screen.getByText(/8 秒內復原/)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "復原" }));
+    expect(await screen.findByText("淺草散步")).toBeTruthy();
+  });
+
+  it("restores an unsynced local draft for the same server version", async () => {
+    window.localStorage.setItem(`trip-planner-draft:${trip.id}`, JSON.stringify({
+      baseVersion: 1,
+      savedAt: new Date().toISOString(),
+      items: [{ ...trip.items[0], title: "離線保存的淺草行程" }],
+      routePreference: "FEWER_TRANSFERS",
+    }));
+    vi.stubGlobal("fetch", vi.fn().mockImplementation((_url: string, init?: RequestInit) => {
+      if (init?.method === "PUT") {
+        const body = JSON.parse(String(init.body));
+        return Promise.resolve(response({ ...trip, version: 2, items: body.items }));
+      }
+      return Promise.resolve(response(trip));
+    }));
+    render(<TripEditor tripId={trip.id} />);
+    expect(await screen.findByText("離線保存的淺草行程")).toBeTruthy();
+    expect(screen.getByText(/已復原尚未同步的本機草稿/)).toBeTruthy();
+  });
+
+  it("opens the mobile route sheet on demand, expands it, and closes it on back", async () => {
+    const destination = {
+      ...trip.items[0],
+      id: "00000000-0000-4000-8000-000000000003",
+      position: 1,
+      title: "晴空塔",
+      location_name: "押上",
+    };
+    const routedTrip = {
+      ...trip,
+      items: [trip.items[0], destination],
+      route_segments: [{
+        from_item_id: trip.items[0].id,
+        to_item_id: destination.id,
+        status: "available",
+        provider: "google",
+        attribution: "Google Maps",
+        generated_at: "2026-11-01T10:00:00Z",
+        schedule_mode: "scheduled",
+        preference: "FEWER_TRANSFERS",
+        duration_minutes: 18,
+        steps: [],
+        details_available: [],
+        warnings: [],
+      }],
+    };
+    vi.stubGlobal("matchMedia", vi.fn((query: string) => ({
+      matches: query.includes("max-width"),
+      media: query,
+      onchange: null,
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    })));
+    vi.stubGlobal("fetch", vi.fn().mockImplementation((url: string) => Promise.resolve(
+      response(url.includes("/runtime/public-config") ? { google_maps_browser_key: null } : routedTrip),
+    )));
+    render(<TripEditor tripId={trip.id} />);
+    fireEvent.click(await screen.findByRole("button", { name: "查看前往 晴空塔 的路線" }));
+    expect(await screen.findByRole("dialog", { name: "這段路怎麼走" })).toBeTruthy();
+    const expand = screen.getByRole("button", { name: "全螢幕顯示路線面板" });
+    fireEvent.click(expand);
+    expect(screen.getByRole("button", { name: "縮小路線面板" }).getAttribute("aria-pressed")).toBe("true");
+    fireEvent.popState(window);
+    await waitFor(() => expect(screen.queryByRole("dialog", { name: "這段路怎麼走" })).toBeNull());
   });
 });

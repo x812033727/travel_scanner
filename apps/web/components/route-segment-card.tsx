@@ -4,11 +4,11 @@ import { BusFront, ChevronDown, CircleDollarSign, ExternalLink, Footprints, MapP
 import { useState } from "react";
 import type { RouteSegment } from "@/lib/trip-types";
 
-export function RouteSegmentCard({ segment, selected, onSelect }: { segment: RouteSegment; selected?: boolean; onSelect?: () => void }) {
-  const [expanded, setExpanded] = useState(false);
+export function RouteSegmentCard({ segment, selected, onSelect, defaultExpanded = false }: { segment: RouteSegment; selected?: boolean; onSelect?: () => void; defaultExpanded?: boolean }) {
+  const [expanded, setExpanded] = useState(defaultExpanded);
   const transitSteps = segment.steps.filter((step) => step.travel_mode === "TRANSIT");
-  return <div className={`ml-8 rounded-2xl border bg-white p-3 ${selected ? "border-[var(--teal)] shadow-sm" : "border-[var(--line)]"}`}>
-    <button type="button" onClick={() => { setExpanded(!expanded); onSelect?.(); }} className="flex w-full items-center justify-between gap-3 text-left">
+  return <div className={`rounded-2xl border bg-white p-3 ${selected ? "border-[var(--teal)] shadow-sm" : "border-[var(--line)]"}`}>
+    <button type="button" aria-expanded={expanded} onClick={() => { setExpanded(!expanded); onSelect?.(); }} className="flex min-h-11 w-full items-center justify-between gap-3 text-left">
       <span className="flex min-w-0 items-center gap-2 text-sm"><span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-sky-50 text-sky-700">{transitSteps.length ? <TrainFront size={16} /> : <Footprints size={16} />}</span><span><span className="font-semibold">移動約 {segment.duration_minutes} 分鐘</span><span className="ml-2 text-xs text-[var(--muted)]">{transitSteps.map((step) => step.line_short_name || step.line_name).filter(Boolean).join(" → ") || "步行"}</span></span></span>
       <ChevronDown size={16} className={`shrink-0 transition ${expanded ? "rotate-180" : ""}`} />
     </button>

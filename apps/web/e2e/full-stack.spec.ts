@@ -28,7 +28,14 @@ test("guest recommendation through alert management uses the real first-party st
   await page.getByRole("button", { name: "儲存並編輯行程" }).first().click();
 
   await expect(page).toHaveURL(/\/trips\/[0-9a-f-]+$/, { timeout: 15_000 });
-  await expect(page.getByText(/行程規劃器/)).toBeVisible();
+  const tripTools = page.getByRole("button", { name: "開啟旅程工具" });
+  if (test.info().project.name === "mobile-chromium") {
+    await expect(tripTools).toBeVisible();
+    await tripTools.click();
+    await expect(page.getByRole("dialog", { name: "旅程工具" })).toBeVisible();
+  } else {
+    await expect(page.getByText(/行程規劃器/)).toBeVisible();
+  }
   await page.getByRole("button", { name: "建立價格通知" }).click();
   await page.getByRole("button", { name: "確認建立" }).click();
   await expect(page.getByText(/價格通知已建立/)).toBeVisible();
