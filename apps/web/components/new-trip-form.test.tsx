@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { NewTripForm } from "./new-trip-form";
 
@@ -47,6 +47,12 @@ describe("NewTripForm", () => {
     next();
     fireEvent.change(screen.getByLabelText("大眾運輸偏好"), { target: { value: "LESS_WALKING" } });
     fireEvent.change(screen.getByLabelText("其他補充"), { target: { value: " 不要一直換飯店 " } });
+    const review = within(screen.getByRole("region", { name: "完整行程條件" }));
+    expect(review.getByText("每晚住宿預算")).toBeTruthy();
+    expect(review.getByText("$3,000～$7,000")).toBeTruthy();
+    expect(review.getByText("4 星以上")).toBeTruthy();
+    expect(review.getByText("100 則以上")).toBeTruthy();
+    expect(review.getByText("少走路")).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: /建立行程並開始編排/ }));
 
     await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/trip-1"));

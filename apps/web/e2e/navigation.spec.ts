@@ -11,6 +11,29 @@ test("primary travel flow is visible", async ({ page }) => {
   await expect(page.getByRole("heading", { name: /不綁月租的旅遊查價次數/ })).toBeVisible();
 });
 
+test("new trip asks visitors to sign in before showing the long form", async ({ page }) => {
+  await page.route("**/api/travel/auth/me", (route) => route.fulfill({
+    status: 401,
+    contentType: "application/json",
+    body: JSON.stringify({ detail: "未登入" }),
+  }));
+  await page.goto("/trips/new");
+  await expect(page.getByRole("heading", { name: "先登入，再建立你的行程" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "前往登入" })).toBeVisible();
+  await expect(page.getByLabel("旅程名稱")).toHaveCount(0);
+});
+
+test("new trip surfaces authentication service failures", async ({ page }) => {
+  await page.route("**/api/travel/auth/me", (route) => route.fulfill({
+    status: 500,
+    contentType: "application/json",
+    body: JSON.stringify({ detail: "資料庫錯誤" }),
+  }));
+  await page.goto("/trips/new");
+  await expect(page.getByRole("heading", { name: "目前無法確認登入狀態" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "前往登入" })).toHaveCount(0);
+});
+
 test("Japan Korea Thailand workbench carries structured preferences", async ({ page }) => {
   await page.route("**/api/travel/destinations/discover", (route) => route.fulfill({
     status: 200,

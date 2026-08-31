@@ -19,10 +19,12 @@ public-fare research surface.
 
 ## Local development
 
-Copy `.env.example` to `.env`, then run infrastructure and API:
+Copy `.env.example` to `.env`, then run infrastructure and API. Compose runs
+`alembic upgrade head` in a one-shot migration service before API and worker
+startup, and `/ready` remains unavailable when the database revision is stale:
 
 ```bash
-docker compose up --build postgres redis api worker
+docker compose up --build postgres redis migrate api worker
 ```
 
 Run the frontend separately:
