@@ -13,5 +13,5 @@ export default async function TripPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  return <><SiteHeader /><TripEditor tripId={id} /></>;
+  return <><div className="hidden lg:block"><SiteHeader /></div><TripEditor tripId={id} /></>;
 }

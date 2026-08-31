@@ -7,7 +7,6 @@ test.beforeEach(async ({ page }) => {
     body: JSON.stringify({ id: "00000000-0000-4000-8000-000000000001", email: "tester@example.com" }),
   }));
 });
-
 test("primary travel flow is visible", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { name: /少開十個分頁/ })).toBeVisible();
@@ -42,6 +41,77 @@ test("new trip surfaces authentication service failures", async ({ page }) => {
   await page.goto("/trips/new");
   await expect(page.getByRole("heading", { name: "目前無法確認登入狀態" })).toBeVisible();
   await expect(page.getByRole("link", { name: "前往登入" })).toHaveCount(0);
+});
+
+test("mobile-first planner edits, autosaves, and previews before charging", async ({ page }) => {
+  const baseTrip = {
+    id: "mobile-trip", name: "東京手機行程", mode: "manual", total_price: 0, currency: "TWD",
+    data: {}, version: 1, destination_name: "東京", start_date: "2026-11-11", end_date: "2026-11-11",
+    timezone: "Asia/Tokyo", route_preference: "FEWER_TRANSFERS", share_enabled: false, route_segments: [],
+    items: [
+      { id: "stop-1", item_type: "custom", day_date: "2026-11-11", position: 0, title: "淺草寺", location_name: "淺草", latitude: 35.71, longitude: 139.79, provider_place_id: "asakusa", locked: false, fixed_time: false, is_estimated: false, duration_minutes: 60, data: {} },
+      { id: "stop-2", item_type: "custom", day_date: "2026-11-11", position: 1, title: "晴空塔", location_name: "押上", latitude: 35.71, longitude: 139.81, provider_place_id: "skytree", locked: false, fixed_time: false, is_estimated: false, duration_minutes: 60, data: {} },
+    ],
+  };
+  let currentTrip = baseTrip;
+  let saves = 0;
+  await page.route("**/api/travel/runtime/public-config", (route) => route.fulfill({ status: 200, contentType: "application/json", body: "{}" }));
+  await page.route("**/api/travel/affiliates/options**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ options: [] }) }));
+  await page.route("**/api/travel/trips/mobile-trip**", async (route) => {
+    const url = route.request().url();
+    const method = route.request().method();
+    if (url.endsWith("/itinerary/optimize/preview")) {
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({
+        preview_id: "preview-1", expires_at: "2026-11-11T10:10:00Z", base_version: currentTrip.version,
+        route_preference: "FEWER_TRANSFERS", changed: true, warnings: [], segments: [], charge_on_apply: 1,
+        total_duration_before_minutes: 40, total_duration_after_minutes: 24,
+        days: [{ date: "2026-11-11", duration_before_minutes: 40, duration_after_minutes: 24, saved_minutes: 16,
+          before: currentTrip.items.map((item, index) => ({ id: item.id, title: item.title, position: index, locked: false, fixed_time: false })),
+          after: [...currentTrip.items].reverse().map((item, index) => ({ id: item.id, title: item.title, position: index, locked: false, fixed_time: false })),
+        }],
+      }) });
+      return;
+    }
+    if (url.endsWith("/itinerary/optimize/apply")) {
+      currentTrip = { ...currentTrip, version: currentTrip.version + 1 };
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ...currentTrip, usage: { status: "charged", uses: 1, reference: "usage-1" } }) });
+      return;
+    }
+    if (method === "PUT") {
+      const body = route.request().postDataJSON();
+      currentTrip = { ...currentTrip, version: currentTrip.version + 1, items: body.items };
+      saves += 1;
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(currentTrip) });
+      return;
+    }
+    await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(currentTrip) });
+  });
+
+  await page.goto("/trips/mobile-trip");
+  if (test.info().project.name !== "mobile-chromium") {
+    await expect(page.locator(".planner-app-bar")).toBeHidden();
+    await expect(page.getByText(/行程規劃器/)).toBeVisible();
+    return;
+  }
+  await expect(page.getByRole("heading", { name: "東京手機行程" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "返回我的旅行" })).toBeVisible();
+  await page.getByRole("button", { name: "開啟旅程工具" }).click();
+  await expect(page.getByRole("dialog", { name: "旅程工具" })).toBeVisible();
+  await page.getByRole("radio", { name: /暮紫/ }).click();
+  await expect(page.locator("[data-planner-theme='lavender']")).toBeVisible();
+  await page.getByRole("button", { name: "關閉" }).click();
+  await page.getByRole("button", { name: "編輯 淺草寺" }).click();
+  await page.getByLabel("安排名稱").fill("淺草寺與雷門");
+  await page.getByRole("button", { name: "關閉" }).click();
+  await expect.poll(() => saves).toBe(1);
+  await page.getByRole("button", { name: "最佳化", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "最佳化預覽" })).toBeVisible();
+  await expect(page.getByText("預計節省")).toBeVisible();
+  await page.getByRole("button", { name: "套用並扣 1 次" }).click();
+  await expect(page.getByText(/已套用最佳動線並扣除 1 次/)).toBeVisible();
+  const addButton = page.getByRole("button", { name: "新增安排" });
+  const box = await addButton.boundingBox();
+  expect(box?.height || 0).toBeGreaterThanOrEqual(44);
 });
 
 test("Japan Korea Thailand workbench carries structured preferences", async ({ page }) => {
@@ -159,6 +229,8 @@ test("failed login keeps email and clears only password", async ({ page }) => {
 test("mobile menu exposes trips alerts and account links", async ({ page }) => {
   await page.setViewportSize({ width: 412, height: 915 });
   await page.goto("/");
+  await expect(page.getByRole("link", { name: "我的旅行" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "我的旅行" })).toHaveAttribute("href", "/trips");
   await page.getByRole("button", { name: "開啟導覽選單" }).click();
   await expect(page.getByRole("navigation", { name: "手機主要導覽" })).toBeVisible();
   await expect(page.getByRole("link", { name: "我的旅程" })).toBeVisible();

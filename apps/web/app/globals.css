@@ -11,7 +11,12 @@
   --coral: #ed735d;
   --coral-soft: #fff0eb;
   --line: #dce4dc;
+  --surface-raised: #fffefa;
+  --surface-tint: #eef4ee;
+  --shadow-sm: 0 6px 20px rgba(16, 42, 43, .07);
+  --shadow-md: 0 16px 44px rgba(16, 42, 43, .12);
   --shadow-lg: 0 24px 80px rgba(16, 42, 43, .12);
+  --ease-app: cubic-bezier(.2,.8,.2,1);
 }
 
 * { box-sizing: border-box; }
@@ -28,3 +33,438 @@ button, input, textarea, select { font: inherit; }
 button { cursor: pointer; }
 a { color: inherit; text-decoration: none; }
 
+.planner-app-shell {
+  min-height: 100dvh;
+  isolation: isolate;
+  transition: color .24s var(--ease-app), background-color .24s var(--ease-app);
+}
+
+.planner-app-shell[data-planner-theme="ocean"] {
+  --ink: #142f3d;
+  --muted: #637984;
+  --paper: #f1f6f8;
+  --surface-raised: #fcfeff;
+  --surface-tint: #e7f1f5;
+  --teal: #27658a;
+  --teal-dark: #194963;
+  --teal-soft: #dbeaf2;
+  --coral: #e7785f;
+  --coral-soft: #fff0eb;
+  --line: #d6e2e7;
+}
+
+.planner-app-shell[data-planner-theme="sunset"] {
+  --ink: #3b2922;
+  --muted: #7e6d63;
+  --paper: #fbf5ec;
+  --surface-raised: #fffdf8;
+  --surface-tint: #f7ead9;
+  --teal: #a94f38;
+  --teal-dark: #7d3929;
+  --teal-soft: #f5dfd6;
+  --coral: #d9943b;
+  --coral-soft: #fff1dc;
+  --line: #eadfd1;
+}
+
+.planner-app-shell[data-planner-theme="lavender"] {
+  --ink: #332d3f;
+  --muted: #756d7e;
+  --paper: #f7f4f8;
+  --surface-raised: #fffdfd;
+  --surface-tint: #efe9f2;
+  --teal: #675587;
+  --teal-dark: #4d3c6c;
+  --teal-soft: #e8e0ef;
+  --coral: #c36e7e;
+  --coral-soft: #fae8ec;
+  --line: #e4dce8;
+}
+
+.planner-app-bar {
+  position: sticky;
+  top: 0;
+  z-index: 45;
+  min-height: calc(4.2rem + env(safe-area-inset-top));
+  margin: 0 -1rem;
+  padding: max(.55rem, env(safe-area-inset-top)) .85rem .55rem;
+  align-items: center;
+  gap: .75rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  box-shadow: 0 8px 28px rgba(16, 42, 43, .05);
+  backdrop-filter: blur(20px) saturate(1.25);
+}
+
+.planner-icon-button,
+.planner-secondary-button,
+.planner-reorder-button {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: .95rem;
+  background: color-mix(in srgb, var(--surface-raised) 92%, transparent);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  transition: transform .18s var(--ease-app), border-color .18s, background-color .18s;
+}
+
+.planner-icon-button { display: grid; }
+
+.planner-secondary-button {
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  padding: 0 .75rem;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.planner-icon-button:active,
+.planner-secondary-button:active,
+.planner-reorder-button:active { transform: scale(.95); }
+.planner-secondary-button:disabled,
+.planner-reorder-button:disabled { cursor: default; opacity: .38; box-shadow: none; }
+
+.planner-day-strip {
+  top: calc(4.2rem + env(safe-area-inset-top));
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  backdrop-filter: blur(18px) saturate(1.2);
+}
+
+.planner-day-scroll {
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+.planner-day-scroll::-webkit-scrollbar { display: none; }
+
+.planner-day-chip {
+  scroll-snap-align: start;
+  border-color: var(--line);
+  background: color-mix(in srgb, var(--surface-raised) 92%, transparent);
+  box-shadow: 0 3px 12px rgba(16, 42, 43, .045);
+  transition: transform .2s var(--ease-app), box-shadow .2s, background-color .2s, color .2s;
+}
+
+.planner-day-chip-active {
+  border-color: var(--teal);
+  background: var(--teal);
+  color: white;
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--teal) 28%, transparent);
+  transform: translateY(-1px);
+}
+
+.planner-day-panel {
+  min-width: 0;
+  width: 100%;
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-sm);
+}
+
+.planner-itinerary-card {
+  border: 1px solid color-mix(in srgb, var(--line) 88%, transparent);
+  border-radius: 1.25rem;
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-sm);
+  transition: transform .18s var(--ease-app), border-color .18s, box-shadow .18s;
+}
+
+.planner-itinerary-card:active { transform: scale(.992); }
+.planner-itinerary-card-reordering {
+  border-color: color-mix(in srgb, var(--teal) 48%, var(--line));
+  background: color-mix(in srgb, var(--teal-soft) 34%, var(--surface-raised));
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--teal) 12%, transparent);
+}
+
+.planner-time-badge {
+  display: inline-flex;
+  min-height: 1.7rem;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--teal-soft);
+  padding: .25rem .6rem;
+  color: var(--teal-dark);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .025em;
+}
+
+.planner-route-link {
+  border: 1px solid color-mix(in srgb, var(--teal) 15%, var(--line));
+  background: color-mix(in srgb, var(--surface-tint) 72%, white);
+  transition: transform .18s var(--ease-app), background-color .18s;
+}
+.planner-route-link:active { transform: scale(.985); }
+
+.planner-mobile-bar {
+  padding-bottom: max(.75rem, env(safe-area-inset-bottom));
+  pointer-events: none;
+}
+
+.planner-mobile-dock {
+  padding: .55rem;
+  border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+  border-radius: 1.4rem;
+  background: color-mix(in srgb, var(--surface-raised) 88%, transparent);
+  box-shadow: 0 18px 52px rgba(16, 42, 43, .2);
+  backdrop-filter: blur(22px) saturate(1.25);
+  pointer-events: auto;
+}
+
+.planner-save-status {
+  display: grid;
+  min-width: 2.9rem;
+  min-height: 2.9rem;
+  place-items: center;
+  border: 0;
+  border-radius: 1rem;
+  background: var(--surface-tint);
+  color: var(--teal-dark);
+}
+.planner-save-status-error { background: #fff0ed; color: #b33b2d; }
+
+.planner-dock-button {
+  display: flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  border: 0;
+  border-radius: 1rem;
+  padding: .6rem .75rem;
+  font-size: .86rem;
+  font-weight: 800;
+  transition: transform .18s var(--ease-app), filter .18s;
+}
+.planner-dock-button:active { transform: scale(.97); }
+.planner-dock-button:disabled { cursor: default; opacity: .42; }
+.planner-dock-button-secondary { background: var(--surface-tint); color: var(--teal-dark); }
+.planner-dock-button-primary {
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  color: white;
+  box-shadow: 0 9px 22px color-mix(in srgb, var(--teal) 28%, transparent);
+}
+
+.planner-tool-card {
+  border: 1px solid var(--line);
+  border-radius: 1.3rem;
+  background: var(--surface-raised);
+  padding: 1rem;
+  box-shadow: 0 5px 18px rgba(16, 42, 43, .04);
+}
+
+.planner-tool-row {
+  display: flex;
+  min-height: 3.6rem;
+  width: 100%;
+  align-items: center;
+  gap: .8rem;
+  border: 0;
+  border-radius: 1rem;
+  background: transparent;
+  padding: .55rem;
+  font-size: .88rem;
+}
+.planner-tool-row:active { background: var(--surface-tint); }
+.planner-tool-row:disabled { opacity: .4; }
+.planner-tool-icon {
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: .9rem;
+  background: var(--teal-soft);
+  color: var(--teal-dark);
+}
+
+.planner-theme-option {
+  position: relative;
+  min-height: 6.7rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--surface-raised);
+  padding: .8rem;
+  text-align: left;
+  transition: transform .18s var(--ease-app), border-color .18s, background-color .18s;
+}
+.planner-theme-option:active { transform: scale(.97); }
+.planner-theme-option-active {
+  border-color: var(--teal);
+  background: color-mix(in srgb, var(--teal-soft) 38%, var(--surface-raised));
+}
+.planner-theme-swatch { width: 1.15rem; height: 1.15rem; border: 1px solid rgba(0,0,0,.06); border-radius: 999px; }
+.planner-theme-check { position: absolute; top: .75rem; right: .75rem; color: var(--teal); }
+
+.planner-advanced-settings {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--surface-raised);
+}
+.planner-advanced-settings summary {
+  display: flex;
+  min-height: 3.25rem;
+  cursor: pointer;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: .75rem 1rem;
+  font-size: .86rem;
+  font-weight: 750;
+}
+.planner-advanced-settings summary::-webkit-details-marker { display: none; }
+.planner-advanced-settings summary::after { color: var(--teal); content: "+"; font-size: 1.25rem; }
+.planner-advanced-settings[open] summary::after { content: "−"; }
+
+.planner-enter {
+  animation: planner-rise .32s cubic-bezier(.2,.8,.2,1) both;
+  animation-delay: calc(var(--planner-index, 0) * 45ms);
+}
+
+.planner-timeline {
+  position: relative;
+}
+
+.planner-timeline::before {
+  position: absolute;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.15rem;
+  width: 2px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--teal), color-mix(in srgb, var(--teal) 15%, transparent));
+  content: "";
+}
+
+.planner-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(16, 42, 43, .42);
+  backdrop-filter: blur(7px);
+  animation: planner-fade .18s ease-out both;
+}
+
+.planner-sheet {
+  display: flex;
+  width: 100%;
+  max-height: min(92dvh, 920px);
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 2rem 2rem 0 0;
+  background: var(--surface-raised);
+  box-shadow: 0 -24px 80px rgba(16, 42, 43, .2);
+  animation: planner-sheet-up .28s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.planner-sheet-handle {
+  display: block;
+  width: 2.75rem;
+  height: .3rem;
+  margin: .65rem auto 0;
+  border-radius: 999px;
+  background: var(--line);
+}
+
+.planner-sheet-toggle {
+  display: grid;
+  min-height: 2.75rem;
+  width: 100%;
+  place-items: center;
+  border: 0;
+  background: transparent;
+}
+
+.planner-sheet-toggle .planner-sheet-handle { margin: 0; }
+
+.planner-sheet-collapsible { max-height: 62dvh; }
+
+.planner-sheet-expanded {
+  max-height: 100dvh;
+  border-radius: 0;
+}
+
+.planner-sheet-body {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1.25rem 1.25rem max(1.25rem, env(safe-area-inset-bottom));
+}
+
+.planner-sheet-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: color-mix(in srgb, var(--surface-raised) 94%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+.planner-sheet-footer {
+  border-top: 1px solid var(--line);
+  background: rgba(255,255,255,.94);
+  padding: .85rem 1.25rem max(.85rem, env(safe-area-inset-bottom));
+  backdrop-filter: blur(14px);
+}
+
+@media (max-width: 1023px) {
+  .planner-app-shell { background: var(--paper); }
+  .planner-day-panel { border-color: color-mix(in srgb, var(--line) 85%, transparent); }
+}
+
+@media (min-width: 1024px) {
+  .planner-overlay {
+    align-items: stretch;
+    justify-content: flex-end;
+  }
+
+  .planner-sheet {
+    width: min(32rem, 44vw);
+    max-height: 100dvh;
+    border-radius: 2rem 0 0 2rem;
+    box-shadow: -24px 0 80px rgba(16, 42, 43, .18);
+    animation-name: planner-sheet-left;
+  }
+
+  .planner-sheet-collapsible,
+  .planner-sheet-expanded { max-height: 100dvh; }
+
+  .planner-sheet-wide { width: min(44rem, 56vw); }
+  .planner-sheet-handle,
+  .planner-sheet-toggle { display: none; }
+  .planner-sheet-body { padding: 1.5rem; }
+}
+
+@keyframes planner-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes planner-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes planner-sheet-up {
+  from { opacity: .7; transform: translateY(2rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes planner-sheet-left {
+  from { opacity: .7; transform: translateX(2rem); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
