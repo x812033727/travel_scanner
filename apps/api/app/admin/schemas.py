@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from uuid import UUID
 
 from pydantic import BaseModel, Field
@@ -18,6 +18,21 @@ class SecretState(BaseModel):
     source: str = "none"
 
 
+class ProviderUsageView(BaseModel):
+    period: str
+    period_start: date
+    period_end: date
+    used: int | None
+    monthly_limit: int
+    remaining: int | None
+    percentage: float | None
+    breakdown: dict[str, int]
+    tracking_started_at: datetime | None = None
+    observed_at: datetime
+    available: bool
+    scope: str = "server_requests"
+
+
 class ProviderSettingsView(BaseModel):
     provider: str
     label: str
@@ -33,6 +48,7 @@ class ProviderSettingsView(BaseModel):
     last_test_status: str | None = None
     last_test_message: str | None = None
     updated_at: datetime | None = None
+    usage: ProviderUsageView | None = None
     requests_24h: int = 0
     errors_24h: int = 0
     last_error_at: datetime | None = None

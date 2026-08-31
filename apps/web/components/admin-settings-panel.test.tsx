@@ -19,6 +19,26 @@ const snapshot = {
         google_maps_api_key: { configured: true, masked: "••••••••abcd", source: "database" },
         next_public_google_maps_browser_key: { configured: false, source: "none" },
       },
+      usage: {
+        period: "2026-08",
+        period_start: "2026-08-01",
+        period_end: "2026-08-31",
+        used: 321,
+        monthly_limit: 10000,
+        remaining: 9679,
+        percentage: 3.2,
+        breakdown: {
+          places_autocomplete: 200,
+          place_details: 80,
+          places_text_search: 20,
+          places_photo: 11,
+          routes: 10,
+        },
+        tracking_started_at: "2026-08-01T00:00:00Z",
+        observed_at: "2026-08-31T12:00:00Z",
+        available: true,
+        scope: "server_requests",
+      },
     },
   ],
   audit: [],
@@ -27,6 +47,20 @@ const snapshot = {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("AdminSettingsPanel", () => {
+  it("shows the current Google Maps monthly usage and remaining free allowance", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
+      new Response(JSON.stringify(snapshot), { status: 200 }),
+    ));
+    render(<AdminSettingsPanel />);
+
+    const usage = await screen.findByLabelText("Google Maps 本月用量");
+    expect(within(usage).getByText("321")).toBeTruthy();
+    expect(within(usage).getByText(/10,000 次/)).toBeTruthy();
+    expect(within(usage).getByText("剩餘 9,679 次")).toBeTruthy();
+    expect(within(usage).getByText("地點自動完成")).toBeTruthy();
+    expect(within(usage).getByRole("progressbar").getAttribute("aria-valuenow")).toBe("321");
+  });
+
   it("shows only masked secrets and sends a newly entered key", async () => {
     const fetchMock = vi.fn()
       .mockResolvedValueOnce(new Response(JSON.stringify(snapshot), { status: 200 }))

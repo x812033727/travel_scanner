@@ -241,6 +241,11 @@ Places and Routes calls and an origin-restricted
 `NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY` for the optional embedded planner map.
 Google provider responses are kept in short-lived Redis caches; durable trip
 records retain provider IDs and user-authored fields instead of raw payloads.
+The administrator settings page also shows an application-side monthly request
+counter for server-side Places, Routes, and photo calls. Its default budget is
+10,000 requests (`GOOGLE_MAPS_MONTHLY_REQUEST_LIMIT`); browser Embed loads and
+Google Cloud usage from before this counter was deployed are not included. The
+bundled Redis service enables append-only persistence for these monthly counters.
 
 Japan transit enhancement is optional. Set `NAVITIME_API_BASE_URL`,
 `NAVITIME_CLIENT_ID`, and `NAVITIME_API_KEY` only after obtaining the required

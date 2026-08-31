@@ -1,11 +1,25 @@
 "use client";
 
-import { Check, EyeOff, KeyRound, LoaderCircle, PlugZap, Save, ShieldCheck, Trash2 } from "lucide-react";
+import { Check, EyeOff, Gauge, KeyRound, LoaderCircle, PlugZap, RefreshCw, Save, ShieldCheck, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 
 type Scalar = string | number | boolean;
 type SecretState = { configured: boolean; masked?: string | null; source: string };
+type ProviderUsage = {
+  period: string;
+  period_start: string;
+  period_end: string;
+  used?: number | null;
+  monthly_limit: number;
+  remaining?: number | null;
+  percentage?: number | null;
+  breakdown: Record<string, number>;
+  tracking_started_at?: string | null;
+  observed_at: string;
+  available: boolean;
+  scope: string;
+};
 type ProviderView = {
   provider: string;
   label: string;
@@ -21,6 +35,7 @@ type ProviderView = {
   last_test_status?: string | null;
   last_test_message?: string | null;
   updated_at?: string | null;
+  usage?: ProviderUsage | null;
   requests_24h?: number;
   errors_24h?: number;
   last_error_at?: string | null;
@@ -40,6 +55,7 @@ const fieldMeta: Record<string, FieldMeta> = {
   provider_failure_threshold: { label: "斷路器失敗門檻", type: "number" },
   provider_circuit_seconds: { label: "斷路器暫停秒數", type: "number" },
   route_cache_ttl_seconds: { label: "路線快取秒數", type: "number" },
+  google_maps_monthly_request_limit: { label: "每月免費額度參考值", type: "number", help: "預設 10,000 次；用於後臺進度提示，不會自動阻擋 Google API 請求。" },
   amadeus_env: { label: "Amadeus 環境", options: [{ value: "test", label: "Test" }, { value: "production", label: "Production" }] },
   skyscanner_base_url: { label: "API Base URL", type: "url" },
   skyscanner_market: { label: "市場代碼" },
@@ -119,6 +135,14 @@ const auditActionLabel: Record<string, string> = {
   "admin_role.updated": "更新管理員權限",
 };
 const dateTime = new Intl.DateTimeFormat("zh-TW", { dateStyle: "medium", timeStyle: "short" });
+const dateOnly = new Intl.DateTimeFormat("zh-TW", { dateStyle: "medium", timeZone: "UTC" });
+const usageOperationLabel: Record<string, string> = {
+  places_autocomplete: "地點自動完成",
+  place_details: "地點詳細資料",
+  places_text_search: "地點文字搜尋",
+  places_photo: "地點照片",
+  routes: "路線計算",
+};
 
 function auditSummary(metadata: Record<string, unknown>): string {
   for (const field of ["status", "enabled", "is_admin"]) {
@@ -153,6 +177,7 @@ export function AdminSettingsPanel() {
   const [busyProvider, setBusyProvider] = useState<string>();
   const [notice, setNotice] = useState<string>();
   const [actionError, setActionError] = useState<string>();
+  const [usageRefreshing, setUsageRefreshing] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -189,6 +214,14 @@ export function AdminSettingsPanel() {
       secrets: { ...draft.secrets, [field]: "" },
       clearSecrets: [...new Set([...draft.clearSecrets, field])],
     });
+  }
+
+  async function refreshUsage() {
+    setUsageRefreshing(true); setActionError(undefined);
+    try {
+      setSnapshot(await api<Snapshot>("/admin/provider-settings"));
+    } catch (reason) { setActionError((reason as Error).message); }
+    finally { setUsageRefreshing(false); }
   }
 
   async function save(provider: ProviderView) {
@@ -236,8 +269,16 @@ export function AdminSettingsPanel() {
     <div className="grid gap-6">{snapshot.providers.map((provider) => {
       const draft = drafts[provider.provider];
       const busy = busyProvider === provider.provider;
+      const usage = provider.usage;
+      const usageWidth = Math.min(100, Math.max(0, usage?.percentage || 0));
       return <section key={provider.provider} className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm md:p-7">
         <div className="flex flex-wrap items-start justify-between gap-4"><div className="max-w-2xl"><div className="flex flex-wrap items-center gap-2"><h2 className="text-xl font-bold">{provider.label}</h2><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(provider.status)}`}>{provider.status === "ready" ? "已設定" : provider.status === "disabled" ? "已停用" : provider.status === "test_required" ? "待測試" : provider.status === "error" ? "連線失敗" : "待設定"}</span></div><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{provider.description}</p><p className="mt-1 text-xs font-semibold text-[var(--teal)]">{provider.status_message}</p>{provider.provider !== "runtime" && <p className="mt-2 text-xs text-[var(--muted)]">近 24 小時：{provider.requests_24h || 0} 次呼叫 · {provider.errors_24h || 0} 次失敗{provider.last_error_at ? ` · 最近失敗 ${dateTime.format(new Date(provider.last_error_at))}` : ""}</p>}</div>{provider.provider !== "runtime" && <label className="flex items-center gap-2 rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-semibold"><input type="checkbox" checked={draft.enabled} onChange={(event) => patchDraft(provider.provider, { enabled: event.target.checked })} />啟用</label>}</div>
+
+        {provider.provider === "google_maps" && usage && <div className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5" aria-label="Google Maps 本月用量">
+          <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="flex items-center gap-2 text-sm font-bold text-[var(--teal)]"><Gauge size={17} />本月 Google API 用量</p>{usage.available ? <p className="mt-2 text-3xl font-bold tabular-nums">{usage.used?.toLocaleString("zh-TW")} <span className="text-base font-medium text-[var(--muted)]">/ {usage.monthly_limit.toLocaleString("zh-TW")} 次</span></p> : <p className="mt-2 font-semibold text-amber-800">目前無法讀取用量計數</p>}</div><button type="button" onClick={refreshUsage} disabled={usageRefreshing} className="flex items-center gap-2 rounded-xl border border-[var(--line)] bg-white px-3 py-2 text-sm font-semibold disabled:opacity-50"><RefreshCw size={15} className={usageRefreshing ? "animate-spin" : ""} />重新整理用量</button></div>
+          {usage.available && <><div className="mt-4 h-2.5 overflow-hidden rounded-full bg-white" role="progressbar" aria-label="Google Maps 月用量" aria-valuemin={0} aria-valuemax={usage.monthly_limit} aria-valuenow={usage.used || 0}><div className={`h-full rounded-full ${usageWidth >= 90 ? "bg-red-500" : usageWidth >= 75 ? "bg-amber-500" : "bg-[var(--teal)]"}`} style={{ width: `${usageWidth}%` }} /></div><div className="mt-2 flex flex-wrap justify-between gap-2 text-xs text-[var(--muted)]"><span>已使用 {usage.percentage?.toLocaleString("zh-TW")}%</span><span>剩餘 {(usage.remaining || 0).toLocaleString("zh-TW")} 次</span></div><dl className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">{Object.entries(usage.breakdown).map(([operation, count]) => <div key={operation} className="rounded-xl bg-white px-3 py-2"><dt className="text-[.68rem] text-[var(--muted)]">{usageOperationLabel[operation] || operation}</dt><dd className="mt-0.5 font-bold tabular-nums">{count.toLocaleString("zh-TW")}</dd></div>)}</dl></>}
+          <p className="mt-4 text-xs leading-5 text-[var(--muted)]">統計期間：{dateOnly.format(new Date(`${usage.period_start}T00:00:00Z`))} 至 {dateOnly.format(new Date(`${usage.period_end}T00:00:00Z`))}。此為本站自導入計數後送出的伺服器 API 請求，不含瀏覽器 Embed 地圖與 Google Cloud 控制台既有歷史；Google 官方帳單仍以 Cloud Console 為準。</p>
+        </div>}
 
         {Object.keys(provider.config).length > 0 && <div className="mt-6 grid gap-4 md:grid-cols-2">{Object.entries(provider.config).map(([field]) => {
           const meta = fieldMeta[field] || { label: field };
