@@ -33,6 +33,9 @@ class ProviderSettingsView(BaseModel):
     last_test_status: str | None = None
     last_test_message: str | None = None
     updated_at: datetime | None = None
+    requests_24h: int = 0
+    errors_24h: int = 0
+    last_error_at: datetime | None = None
 
 
 class AdminAuditView(BaseModel):

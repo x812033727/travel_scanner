@@ -68,6 +68,7 @@ class UsageAccount(Timestamped, Base):
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
     remaining_uses: Mapped[int] = mapped_column(Integer, default=0)
     reserved_uses: Mapped[int] = mapped_column(Integer, default=0)
+    status: Mapped[str] = mapped_column(String(32), default="active")
 
 
 class UsageLedger(Base):
@@ -120,6 +121,20 @@ class SearchRequest(Timestamped, Base):
     request_json: Mapped[dict[str, Any]] = mapped_column(JSON)
     result_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     warnings_json: Mapped[list[str]] = mapped_column(JSON, default=list)
+
+
+class FlightStatusLookup(Timestamped, Base):
+    __tablename__ = "flight_status_lookups"
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    reservation_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("usage_reservations.id"), nullable=True, index=True
+    )
+    provider: Mapped[str] = mapped_column(String(64), default="flightaware")
+    query_json: Mapped[dict[str, Any]] = mapped_column(JSON)
+    result_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    cache_hit: Mapped[bool] = mapped_column(Boolean, default=False)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
 
 
 class SearchConstraint(Base):

@@ -106,6 +106,8 @@ type ProviderStatus = {
     available: boolean;
     configured: boolean;
     fallback_provider?: string | null;
+    candidate_providers?: string[];
+    strategy?: string | null;
     environment: string;
     message: string;
   }>;
@@ -248,6 +250,7 @@ export function SearchExperience() {
   const [searchId, setSearchId] = useState<string>();
   const [error, setError] = useState<string>();
   const [busy, setBusy] = useState(false);
+  const [expandingSources, setExpandingSources] = useState(false);
   const [usageState, setUsageState] = useState<UsageStatus>();
   const [flightDateOptions, setFlightDateOptions] = useState<FlightDateOption[]>([]);
   const [selectedDateOption, setSelectedDateOption] = useState<FlightDateOption>();
@@ -311,6 +314,21 @@ export function SearchExperience() {
     setFlightDateOptions(result.result?.flight_date_options || []);
     setWarnings(result.warnings || []);
     if (result.usage) setUsageState(result.usage);
+  }
+
+  async function expandFlightSources() {
+    if (!searchId) return;
+    setExpandingSources(true); setError(undefined);
+    try {
+      const result = await api<{ offers: Offer[]; provider_statuses: Array<{ provider: string; status: string }> }>(`/searches/${searchId}/flight-sources/expand`, {
+        method: "POST",
+        headers: { "Idempotency-Key": crypto.randomUUID() },
+      });
+      setOffers((current) => ({ ...current, flight: result.offers }));
+      const failed = result.provider_statuses.filter((item) => item.status === "failed").map((item) => `${item.provider} 暫時無法取得`);
+      if (failed.length) setWarnings((current) => Array.from(new Set([...current, ...failed])));
+    } catch (reason) { setError((reason as Error).message); }
+    finally { setExpandingSources(false); }
   }
 
   async function begin(
@@ -532,6 +550,16 @@ export function SearchExperience() {
     return rows;
   }, [activeTab, activityInterest, breakfastOnly, directOnly, hotelMaxWalk, hotelMinRating, hotelNightlyMax, hotelSort, offers, refundableFlightOnly, refundableOnly, sortByPrice]);
 
+  const flightGroups = useMemo(() => {
+    const grouped = new Map<string, Offer[]>();
+    for (const offer of visibleOffers) {
+      const key = String(offer.itinerary_key || offer.id);
+      grouped.set(key, [...(grouped.get(key) || []), offer]);
+    }
+    return [...grouped.entries()].map(([key, values]) => [key, values.sort((left, right) => amount(left) - amount(right))] as const)
+      .sort((left, right) => amount(left[1][0]) - amount(right[1][0]));
+  }, [visibleOffers]);
+
   const destination = destinationByAirport(parsed?.destination);
   const includeAirbnb = parsed?.include_airbnb ?? params.get("include_airbnb") !== "false";
   const countryName = destination?.country === "JP" ? "日本" : destination?.country === "KR" ? "韓國" : destination?.country === "TH" ? "泰國" : "";
@@ -596,7 +624,7 @@ export function SearchExperience() {
 
         {activeTab === "airbnb" && airbnbCriteria && <AirbnbSearchPanel criteria={airbnbCriteria} />}
 
-        {activeTab === "flight" && <FlightDateOptions options={flightDateOptions} selected={selectedDateOption} busy={busy} onSelect={setSelectedDateOption} onApply={applyDateOption} />}
+        {activeTab === "flight" && <><FlightDateOptions options={flightDateOptions} selected={selectedDateOption} busy={busy} onSelect={setSelectedDateOption} onApply={applyDateOption} />{searchId && <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[var(--line)] bg-white p-4"><div><strong>多來源售票比較</strong><p className="text-xs text-[var(--muted)]">同一班次依艙等分組，保留各售票來源的稅費、行李與退改條件。</p></div><button type="button" disabled={expandingSources} onClick={expandFlightSources} className="rounded-xl border border-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-[var(--teal)] disabled:opacity-50">{expandingSources ? "比較中…" : "比較更多來源"}</button></div>}</>}
 
         {searchId && !["plans", "airbnb"].includes(activeTab) && <AffiliatePartnerOptions searchId={searchId} modules={[activeTab as AffiliateModule]} title={activeTab === "connectivity" ? "旅途中保持連線" : "更多合作平台"} />}
 
@@ -608,9 +636,10 @@ export function SearchExperience() {
           {activeTab === "activities" && <label className="flex items-center gap-2">興趣<select className="rounded-lg border border-[var(--line)] px-2 py-1.5" value={activityInterest} onChange={(event) => setActivityInterest(event.target.value)}><option value="all">全部</option>{destinationInterests.map((interest) => <option key={interest.code} value={interest.code}>{interest.label}</option>)}</select></label>}
         </div>}
 
-        {activeTab !== "plans" && activeTab !== "airbnb" && activeTab !== "connectivity" && <div className={activeTab === "flight" ? "space-y-4" : "grid gap-5 md:grid-cols-2 lg:grid-cols-3"}>{visibleOffers.map((offer) => {
+        {activeTab === "flight" && <div className="space-y-6">{flightGroups.map(([key, group], groupIndex) => <section key={key} className="rounded-[1.75rem] border border-[var(--line)] bg-[var(--paper)] p-3 md:p-4"><div className="mb-3 flex flex-wrap items-center justify-between gap-2 px-2"><div><p className="text-xs font-bold uppercase tracking-wide text-[var(--teal)]">行程組 {groupIndex + 1}</p><h2 className="font-bold">{String(group[0].origin || "—")} → {String(group[0].destination || "—")} · {String(group[0].cabin_class || "economy")}</h2></div><p className="text-sm text-[var(--muted)]">{new Set(group.map((offer) => offer.provider)).size} 個售票來源 · 最低 {twd.format(amount(group[0]))}</p></div><div className="space-y-3">{group.map((offer) => <FlightOfferCard key={offer.id} offer={offer} fallbackUrl={recheckUrl(activeTab, offer, parsed, dates)} alertReturnPath={searchReturnPath} />)}</div></section>)}</div>}
+
+        {activeTab !== "plans" && activeTab !== "airbnb" && activeTab !== "connectivity" && activeTab !== "flight" && <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{visibleOffers.map((offer) => {
           if (activeTab === "hotel") return <HotelOfferCard key={offer.id} offer={offer} actionUrl={recheckUrl(activeTab, offer, parsed, dates)} alertReturnPath={searchReturnPath} />;
-          if (activeTab === "flight") return <FlightOfferCard key={offer.id} offer={offer} fallbackUrl={recheckUrl(activeTab, offer, parsed, dates)} alertReturnPath={searchReturnPath} />;
           const image = offer.images?.[0];
           const mode = offer.source_mode || (offer.is_mock ? "mock" : "estimate");
           return <article key={offer.id} className="overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-white">

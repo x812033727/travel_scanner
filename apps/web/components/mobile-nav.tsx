@@ -8,6 +8,7 @@ const links = [
   ["首頁", "/"],
   ["我的旅程", "/trips"],
   ["價格通知", "/alerts"],
+  ["航班動態", "/flights/status"],
   ["航空票價", "/labs/airlines"],
   ["方案", "/pricing"],
   ["會員帳號", "/account"],
