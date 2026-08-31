@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import UTC, datetime
 from decimal import Decimal
 from typing import Annotated, Any, Literal, cast
 from uuid import UUID
@@ -10,6 +10,7 @@ from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.alerts.monitoring import automatic_monitoring_supported, monitor_identity
 from app.auth.service import CurrentUser
 from app.db import get_session
 from app.models import (
@@ -52,6 +53,10 @@ class AlertResponse(BaseModel):
     current_price: Decimal | None
     price_updated_at: datetime | None
     source_mode: str | None
+    monitoring_mode: str
+    monitoring_status: str
+    last_checked_at: datetime | None
+    next_check_at: datetime | None
 
 
 @dataclass(frozen=True)
@@ -62,6 +67,9 @@ class ResourceSnapshot:
     currency: str
     price_updated_at: datetime | None
     source_mode: str | None
+    provider: str | None
+    monitoring_mode: str
+    monitor_key: dict[str, Any]
 
 
 def _text(data: dict[str, Any], key: str, fallback: str = "") -> str:
@@ -99,6 +107,9 @@ async def resource_snapshot(
             currency=trip.currency,
             price_updated_at=trip.updated_at,
             source_mode="saved_trip",
+            provider=None,
+            monitoring_mode="manual_only",
+            monitor_key={},
         )
 
     if resource_type == "flight":
@@ -141,6 +152,13 @@ async def resource_snapshot(
         currency=record.currency,
         price_updated_at=_data_timestamp(data, record.updated_at),
         source_mode=_text(data, "source_mode") or None,
+        provider=record.provider,
+        monitoring_mode=(
+            "automatic"
+            if automatic_monitoring_supported(resource_type, record.provider)
+            else "manual_only"
+        ),
+        monitor_key=monitor_identity(resource_type, data),
     )
 
 
@@ -152,6 +170,9 @@ def serialize(alert: PriceAlert, snapshot: ResourceSnapshot | None) -> AlertResp
         currency=alert.currency,
         price_updated_at=None,
         source_mode=None,
+        provider=alert.provider,
+        monitoring_mode=alert.monitoring_mode,
+        monitor_key=alert.monitor_key,
     )
     value = snapshot or missing
     return AlertResponse(
@@ -165,9 +186,17 @@ def serialize(alert: PriceAlert, snapshot: ResourceSnapshot | None) -> AlertResp
         updated_at=alert.updated_at,
         title=value.title,
         subtitle=value.subtitle,
-        current_price=value.current_price,
-        price_updated_at=value.price_updated_at,
+        current_price=(
+            alert.last_observed_price
+            if alert.last_observed_price is not None
+            else value.current_price
+        ),
+        price_updated_at=alert.last_checked_at or value.price_updated_at,
         source_mode=value.source_mode,
+        monitoring_mode=alert.monitoring_mode,
+        monitoring_status=alert.monitoring_status,
+        last_checked_at=alert.last_checked_at,
+        next_check_at=alert.next_check_at,
     )
 
 
@@ -209,6 +238,15 @@ async def create_alert(
         resource_id=payload.resource_id,
         target_price=payload.target_price,
         currency=snapshot.currency,
+        provider=snapshot.provider,
+        monitoring_mode=snapshot.monitoring_mode,
+        monitoring_status=(
+            "scheduled" if snapshot.monitoring_mode == "automatic" else "manual_only"
+        ),
+        monitor_key=snapshot.monitor_key,
+        baseline_price=snapshot.current_price,
+        last_observed_price=snapshot.current_price,
+        next_check_at=(datetime.now(UTC) if snapshot.monitoring_mode == "automatic" else None),
     )
     session.add(alert)
     try:
@@ -263,6 +301,9 @@ async def update_alert(
     alert = await owned_alert(session, user.id, alert_id)
     if "target_price" in payload.model_fields_set:
         alert.target_price = payload.target_price
+        alert.armed = True
+        if alert.active and alert.monitoring_mode == "automatic":
+            alert.next_check_at = datetime.now(UTC)
     if "active" in payload.model_fields_set and payload.active is not None:
         if payload.active and not alert.active:
             count = await session.scalar(
@@ -273,6 +314,12 @@ async def update_alert(
             if int(count or 0) >= await limit_for(session, user.id, "price_alerts"):
                 raise AppError(403, "alert_limit_reached", "已達 20 筆價格通知上限")
         alert.active = payload.active
+        if alert.active and alert.monitoring_mode == "automatic":
+            alert.monitoring_status = "scheduled"
+            alert.next_check_at = datetime.now(UTC)
+        elif not alert.active and alert.monitoring_mode == "automatic":
+            alert.monitoring_status = "paused"
+            alert.next_check_at = None
     await session.commit()
     await session.refresh(alert)
     snapshot = await resource_snapshot(

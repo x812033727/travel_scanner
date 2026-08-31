@@ -458,6 +458,73 @@ class PriceAlert(Timestamped, Base):
     target_price: Mapped[Decimal | None] = mapped_column(Numeric(14, 2), nullable=True)
     currency: Mapped[str] = mapped_column(String(3), default="TWD")
     active: Mapped[bool] = mapped_column(Boolean, default=True)
+    provider: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
+    monitoring_mode: Mapped[str] = mapped_column(String(24), default="manual_only", index=True)
+    monitoring_status: Mapped[str] = mapped_column(String(32), default="manual_only", index=True)
+    monitor_key: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    baseline_price: Mapped[Decimal | None] = mapped_column(Numeric(14, 2), nullable=True)
+    last_observed_price: Mapped[Decimal | None] = mapped_column(Numeric(14, 2), nullable=True)
+    last_notified_price: Mapped[Decimal | None] = mapped_column(Numeric(14, 2), nullable=True)
+    last_checked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    next_check_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True, index=True
+    )
+    armed: Mapped[bool] = mapped_column(Boolean, default=True)
+    consecutive_failures: Mapped[int] = mapped_column(Integer, default=0)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class LineConnection(Timestamped, Base):
+    __tablename__ = "line_connections"
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), unique=True, index=True
+    )
+    line_user_id: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    display_name: Mapped[str] = mapped_column(String(255))
+    friend_status: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+    linked_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    last_delivery_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    last_delivery_error: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+
+class PriceAlertCheck(Base):
+    __tablename__ = "price_alert_checks"
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    alert_id: Mapped[UUID] = mapped_column(
+        ForeignKey("price_alerts.id", ondelete="CASCADE"), index=True
+    )
+    status: Mapped[str] = mapped_column(String(32), index=True)
+    previous_price: Mapped[Decimal | None] = mapped_column(Numeric(14, 2), nullable=True)
+    observed_price: Mapped[Decimal | None] = mapped_column(Numeric(14, 2), nullable=True)
+    currency: Mapped[str] = mapped_column(String(3), default="TWD")
+    provider: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    detail: Mapped[str | None] = mapped_column(Text, nullable=True)
+    checked_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utcnow, index=True
+    )
+
+
+class AlertNotificationDelivery(Base):
+    __tablename__ = "alert_notification_deliveries"
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    alert_id: Mapped[UUID] = mapped_column(
+        ForeignKey("price_alerts.id", ondelete="CASCADE"), index=True
+    )
+    line_connection_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("line_connections.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    dedupe_key: Mapped[str] = mapped_column(String(255), unique=True, index=True)
+    event_type: Mapped[str] = mapped_column(String(32))
+    observed_price: Mapped[Decimal] = mapped_column(Numeric(14, 2))
+    status: Mapped[str] = mapped_column(String(24), default="pending", index=True)
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    next_attempt_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    sent_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_error: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
 class ProviderHealth(Timestamped, Base):
