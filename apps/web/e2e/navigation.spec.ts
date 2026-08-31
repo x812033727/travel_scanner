@@ -95,6 +95,18 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   }
   await expect(page.getByRole("heading", { name: "東京手機行程" })).toBeVisible();
   await expect(page.getByRole("button", { name: "返回我的旅行" })).toBeVisible();
+  await page.setViewportSize({ width: 320, height: 700 });
+  await expect(page.getByRole("heading", { name: "11月11日週三" })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
+    await page.evaluate(() => document.documentElement.clientWidth),
+  );
+  await page.getByRole("button", { name: "排序行程" }).click();
+  await expect(page.getByRole("button", { name: "完成排序" })).toBeVisible();
+  const moveUp = await page.getByRole("button", { name: "上移 晴空塔" }).boundingBox();
+  const moveDown = await page.getByRole("button", { name: "下移 晴空塔" }).boundingBox();
+  expect(Math.abs((moveUp?.x || 0) - (moveDown?.x || 0))).toBeLessThan(2);
+  expect(moveUp?.height || 0).toBeGreaterThanOrEqual(44);
+  await page.getByRole("button", { name: "完成排序" }).click();
   await page.getByRole("button", { name: "開啟旅程工具" }).click();
   await expect(page.getByRole("dialog", { name: "旅程工具" })).toBeVisible();
   await page.getByRole("radio", { name: /暮紫/ }).click();
