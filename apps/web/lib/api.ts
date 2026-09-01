@@ -62,6 +62,7 @@ const CODE_MESSAGES: Record<string, string> = {
   rate_limited: "操作太頻繁，請稍後再試",
   rate_limit_exceeded: "操作太頻繁，請稍後再試",
   rate_limit_unavailable: "限流服務暫時無法使用，請稍後再試",
+  registration_closed: "目前暫停開放新帳號註冊",
   insufficient_uses: "可用次數不足，請先取得更多次數",
 };
 

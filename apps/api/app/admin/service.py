@@ -60,8 +60,9 @@ class ProviderDefinition:
 PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     "runtime": ProviderDefinition(
         "執行模式與保護設定",
-        "控制即時／測試供應商選擇、逾時、重試斷路器及每分鐘請求上限。",
+        "控制公開註冊、即時／測試供應商選擇、逾時與重試斷路器。",
         (
+            "registration_enabled",
             "travel_provider_mode",
             "flight_provider_mode",
             "flight_search_strategy",
@@ -314,6 +315,15 @@ def apply_runtime_overrides(base: Settings, rows: list[ProviderConfig]) -> Setti
 
 async def load_runtime_settings(session: AsyncSession) -> Settings:
     return apply_runtime_overrides(get_settings(), await provider_rows(session))
+
+
+async def effective_registration_enabled(session: AsyncSession) -> bool:
+    row = await session.scalar(
+        select(ProviderConfig).where(ProviderConfig.provider == "runtime")
+    )
+    if row is None:
+        return get_settings().registration_enabled
+    return apply_runtime_overrides(get_settings(), [row]).registration_enabled
 
 
 def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
@@ -580,7 +590,11 @@ async def settings_snapshot(
                 select(AdminAuditLog)
                 .where(
                     AdminAuditLog.action.in_(
-                        ["provider_settings_updated", "provider_connection_tested"]
+                        [
+                            "provider_settings_updated",
+                            "provider_connection_tested",
+                            "system_settings_updated",
+                        ]
                     )
                 )
                 .order_by(AdminAuditLog.created_at.desc())
@@ -625,6 +639,14 @@ def _validate_provider_values(
             merged.pop(field, None)
         else:
             merged[field] = value
+    if "registration_enabled" in merged and not isinstance(
+        merged["registration_enabled"], bool
+    ):
+        raise AppError(
+            422,
+            "provider_setting_invalid",
+            "registration_enabled 必須是布林值",
+        )
     modes = {
         "travel_provider_mode": {"mock", "amadeus", "live", "disabled"},
         "flight_provider_mode": {"auto", "skyscanner", "duffel", "amadeus", "mock", "disabled"},
@@ -764,7 +786,8 @@ async def update_provider_settings(
             config={},
         )
         session.add(row)
-    row.config = _validate_provider_values(provider, row.config or {}, payload)
+    previous_config = dict(row.config or {})
+    row.config = _validate_provider_values(provider, previous_config, payload)
     stored = _merge_secret_values(decrypt_secrets(row.secret_config_encrypted), payload.secrets)
     row.secret_config_encrypted = encrypt_secrets(stored)
     if payload.enabled is not None:
@@ -772,16 +795,34 @@ async def update_provider_settings(
     row.updated_by_user_id = actor.id
     row.last_test_status = None
     row.last_test_message = None
+    audit_metadata: dict[str, object] = {
+        "config_fields": sorted(payload.config),
+    }
+    if provider == "runtime":
+        missing = object()
+        audit_metadata["config_fields"] = sorted(
+            field
+            for field in payload.config
+            if previous_config.get(field, missing) != row.config.get(field, missing)
+        )
+        audit_action = "system_settings_updated"
+        audit_metadata["registration_enabled"] = apply_runtime_overrides(
+            get_settings(), [row]
+        ).registration_enabled
+    else:
+        audit_action = "provider_settings_updated"
+        audit_metadata.update(
+            {
+                "enabled": row.enabled,
+                "secret_fields": sorted(payload.secrets),
+            }
+        )
     session.add(
         AdminAuditLog(
             actor_user_id=actor.id,
-            action="provider_settings_updated",
+            action=audit_action,
             target=provider,
-            metadata_json={
-                "enabled": row.enabled,
-                "config_fields": sorted(payload.config),
-                "secret_fields": sorted(payload.secrets),
-            },
+            metadata_json=audit_metadata,
         )
     )
     await session.commit()

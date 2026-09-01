@@ -64,9 +64,95 @@ const snapshot = {
   audit: [],
 };
 
+const systemSnapshot = {
+  ...snapshot,
+  providers: [
+    {
+      provider: "runtime",
+      label: "執行模式與保護設定",
+      description: "系統執行設定",
+      enabled: true,
+      configured: true,
+      status: "ready",
+      status_message: "目前設定已套用",
+      config: {
+        registration_enabled: true,
+        travel_provider_mode: "amadeus",
+        provider_timeout_seconds: 8,
+      },
+      config_sources: {
+        registration_enabled: "environment",
+        travel_provider_mode: "environment",
+        provider_timeout_seconds: "database",
+      },
+      secrets: {},
+    },
+    ...snapshot.providers,
+  ],
+  audit: [
+    {
+      id: "audit-system",
+      action: "system_settings_updated",
+      target: "runtime",
+      metadata: { registration_enabled: false },
+      created_at: "2026-09-01T12:00:00Z",
+    },
+    {
+      id: "audit-provider",
+      action: "provider_settings_updated",
+      target: "google_maps",
+      metadata: { enabled: true },
+      created_at: "2026-09-01T11:00:00Z",
+    },
+  ],
+};
+
 afterEach(() => vi.unstubAllGlobals());
 
 describe("AdminSettingsPanel", () => {
+  it("separates runtime settings from provider credentials", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
+      new Response(JSON.stringify(systemSnapshot), { status: 200 }),
+    ));
+
+    const { rerender } = render(<AdminSettingsPanel scope="providers" />);
+    expect(await screen.findByRole("heading", { name: "Google Maps" })).toBeTruthy();
+    expect(screen.queryByRole("heading", { name: "執行模式與保護設定" })).toBeNull();
+
+    rerender(<AdminSettingsPanel scope="system" />);
+    expect(await screen.findByRole("heading", { name: "執行模式與保護設定" })).toBeTruthy();
+    expect(screen.queryByRole("heading", { name: "Google Maps" })).toBeNull();
+    expect(screen.getByText(/更新系統設定/)).toBeTruthy();
+    expect(screen.queryByText(/更新供應商設定/)).toBeNull();
+  });
+
+  it("loads and saves the public registration switch as a boolean", async () => {
+    const disabledSnapshot = {
+      ...systemSnapshot,
+      providers: systemSnapshot.providers.map((provider) => provider.provider === "runtime" ? {
+        ...provider,
+        config: { ...provider.config, registration_enabled: false },
+        config_sources: { ...provider.config_sources, registration_enabled: "database" },
+      } : provider),
+    };
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify(systemSnapshot), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(disabledSnapshot), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminSettingsPanel scope="system" />);
+
+    const registrationSwitch = await screen.findByRole("switch", { name: /開放公開註冊/ });
+    expect((registrationSwitch as HTMLInputElement).checked).toBe(true);
+    fireEvent.click(registrationSwitch);
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    const request = fetchMock.mock.calls[1][1] as RequestInit;
+    const body = JSON.parse(String(request.body));
+    expect(body.config).toEqual({ registration_enabled: false });
+    expect(await screen.findByText("系統設定已儲存並立即套用。")).toBeTruthy();
+  });
+
   it("shows the current Google Maps monthly usage and remaining free allowance", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
       new Response(JSON.stringify(snapshot), { status: 200 }),

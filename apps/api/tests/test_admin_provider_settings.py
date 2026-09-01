@@ -14,13 +14,15 @@ from app.admin.service import (
     _validate_provider_values,
     apply_runtime_overrides,
     decrypt_secrets,
+    effective_registration_enabled,
     encrypt_secrets,
     settings_snapshot,
+    update_provider_settings,
 )
 from app.auth.service import current_user
 from app.config import Settings
 from app.main import app
-from app.models import ProviderConfig, User
+from app.models import AdminAuditLog, ProviderConfig, User
 from app.problems import AppError
 from app.providers.usage_meter import record_google_maps_request
 from app.trips.routing import GoogleRoutesProbeResult, RoutePoint
@@ -42,6 +44,29 @@ class SnapshotSession:
     async def scalars(self, _statement: object) -> ScalarRows:
         self.calls += 1
         return ScalarRows(self.providers if self.calls == 1 else [])
+
+
+class RegistrationSession:
+    def __init__(self, row: ProviderConfig | None) -> None:
+        self.row = row
+
+    async def scalar(self, _statement: object) -> ProviderConfig | None:
+        return self.row
+
+
+class UpdateSession:
+    def __init__(self) -> None:
+        self.added: list[object] = []
+        self.committed = False
+
+    async def scalar(self, _statement: object) -> None:
+        return None
+
+    def add(self, value: object) -> None:
+        self.added.append(value)
+
+    async def commit(self) -> None:
+        self.committed = True
 
 
 def test_provider_secrets_are_encrypted_and_round_trip() -> None:
@@ -114,6 +139,80 @@ def test_runtime_accepts_independent_hotel_provider_mode() -> None:
     )
 
     assert validated["hotel_provider_mode"] == "booking"
+
+
+def test_registration_defaults_to_open() -> None:
+    assert Settings.model_construct().registration_enabled is True
+
+
+def test_registration_setting_rejects_non_boolean_values() -> None:
+    with pytest.raises(AppError, match="registration_enabled 必須是布林值"):
+        _validate_provider_values(
+            "runtime",
+            {},
+            ProviderSettingsUpdate(config={"registration_enabled": 0}),
+        )
+
+
+@pytest.mark.asyncio
+async def test_registration_database_value_overrides_environment_default(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(
+        admin_service,
+        "get_settings",
+        lambda: Settings(registration_enabled=False),
+    )
+    assert not await effective_registration_enabled(RegistrationSession(None))  # type: ignore[arg-type]
+
+    row = ProviderConfig(
+        provider="runtime",
+        enabled=True,
+        config={"registration_enabled": True},
+    )
+    assert await effective_registration_enabled(RegistrationSession(row))  # type: ignore[arg-type]
+
+
+@pytest.mark.asyncio
+async def test_runtime_update_uses_system_audit_without_sensitive_values(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    expected_snapshot = object()
+
+    async def fake_snapshot(*_args: object) -> object:
+        return expected_snapshot
+
+    monkeypatch.setattr(admin_service, "settings_snapshot", fake_snapshot)
+    session = UpdateSession()
+    actor = User(
+        id=admin_service.uuid4(),
+        email="admin@example.com",
+        password_hash="unused",
+        is_admin=True,
+    )
+
+    result = await update_provider_settings(
+        session,  # type: ignore[arg-type]
+        "runtime",
+        ProviderSettingsUpdate(
+            config={"registration_enabled": False, "provider_timeout_seconds": 8}
+        ),
+        actor,
+        object(),  # type: ignore[arg-type]
+    )
+
+    assert result is expected_snapshot
+    assert session.committed
+    row = next(item for item in session.added if isinstance(item, ProviderConfig))
+    audit = next(item for item in session.added if isinstance(item, AdminAuditLog))
+    assert row.config["registration_enabled"] is False
+    assert audit.action == "system_settings_updated"
+    assert audit.actor_user_id == actor.id
+    assert audit.target == "runtime"
+    assert audit.metadata_json == {
+        "config_fields": ["provider_timeout_seconds", "registration_enabled"],
+        "registration_enabled": False,
+    }
 
 
 def test_booking_demand_environment_uses_only_official_v31_url() -> None:

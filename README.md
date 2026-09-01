@@ -75,6 +75,7 @@ uv run python -m app.cli add-usage-package --email you@example.com \
 
 After applying the database migration, grant an existing account administrator
 access and open `http://localhost:3000/admin/users` or
+`http://localhost:3000/admin/system-settings` or
 `http://localhost:3000/admin/settings`:
 
 ```bash
@@ -101,12 +102,25 @@ increase or deduct their own balance, including accounts that also hold the
 database-backed role; these self-adjustments use the same ledger, audit, and
 reserved-balance safeguards.
 
-The page manages runtime modes, timeouts and encrypted credentials for Google
-Maps, Amadeus, Skyscanner, Duffel, FlightAware, Google Travel Impact, and NAVITIME.
-It also shows each provider's last-24-hour request and failure counts. Changes take effect for API and worker
-requests without rebuilding the web image. Connection checks and configuration
-changes are recorded in `admin_audit_logs`, without secret values. Responses
-only include whether a key exists, its source, and a masked suffix.
+The system settings page manages public registration, runtime modes and timeout
+or circuit-breaker protection. `REGISTRATION_ENABLED=true` is the environment
+default. Saving the public-registration switch stores `registration_enabled` in
+the existing `provider_configs.runtime` JSON row; that database value takes
+priority and applies immediately to later requests. Turning it off blocks every
+new self-registration, including addresses in `ADMIN_EMAILS`, without affecting
+existing account login, password changes or administrator features. The public
+`GET /api/v1/auth/registration-status` response is never cached, and failed
+status checks do not expose a usable registration form.
+
+The API and keys page separately manages encrypted credentials for Google Maps,
+Amadeus, Skyscanner, Duffel, FlightAware, Google Travel Impact, NAVITIME and
+affiliate providers. It also shows each provider's last-24-hour request and
+failure counts. Changes take effect for API and worker requests without
+rebuilding the web image. Provider connection checks and configuration changes
+are recorded in `admin_audit_logs`, without secret values. System setting
+changes use the `system_settings_updated` action and record only the changed
+field names and effective registration result. Responses only include whether
+a key exists, its source, and a masked suffix.
 
 Set a stable, randomly generated `SETTINGS_ENCRYPTION_KEY` in production before
 saving credentials. It is used to derive the Fernet key for database values;
