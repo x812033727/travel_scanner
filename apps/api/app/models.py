@@ -50,10 +50,25 @@ class UsagePackage(Timestamped, Base):
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     code: Mapped[str] = mapped_column(String(32), unique=True)
     name: Mapped[str] = mapped_column(String(100))
+    localized_names: Mapped[dict[str, str]] = mapped_column(JSON, default=dict)
     uses: Mapped[int] = mapped_column(Integer)
     price_twd: Mapped[int] = mapped_column(Integer, default=0)
+    display_order: Mapped[int] = mapped_column(Integer, default=100)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+    is_featured: Mapped[bool] = mapped_column(Boolean, default=False)
     purchasable: Mapped[bool] = mapped_column(Boolean, default=False)
+
+
+class UsageOperationCost(Timestamped, Base):
+    __tablename__ = "usage_operation_costs"
+    __table_args__ = (
+        CheckConstraint("uses >= 0 AND uses <= 100", name="ck_usage_operation_cost_range"),
+    )
+    operation: Mapped[str] = mapped_column(String(64), primary_key=True)
+    uses: Mapped[int] = mapped_column(Integer, default=1)
+    updated_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
 
 
 class UsageAccount(Timestamped, Base):

@@ -1,6 +1,7 @@
 {
   "navigation": {
     "users": "会員と利用回数",
+    "usage": "プランと消費回数",
     "system": "システム設定",
     "layout": "画面管理",
     "providers": "API とキー",
@@ -10,6 +11,30 @@
     "label": "API プロバイダー設定タブ",
     "mobileLabel": "API プロバイダーを選択",
     "audit": "最近の管理履歴"
+  },
+  "usage": {
+    "eyebrow": "SYSTEM ADMIN", "title": "プランと消費回数", "description": "登録特典、公開利用パック、各機能の消費回数を管理します。変更は今後の新しい操作にのみ適用されます。", "loading": "プランと消費回数の設定を読み込み中…", "save": "設定を保存", "cancel": "キャンセル",
+    "tabs": { "label": "プランと消費回数の設定タブ", "mobileLabel": "設定カテゴリを選択", "trial": "登録トライアル", "packages": "公開プラン", "costs": "機能別消費", "audit": "管理履歴" },
+    "trial": { "title": "登録トライアル回数", "help": "保存後に作成されたアカウントだけに適用され、既存会員の残高は変わりません。", "uses": "新規会員への付与回数", "saved": "登録トライアル回数を更新しました。" },
+    "packages": { "title": "公開利用パック", "help": "有効なプランは表示順に料金ページへ掲載されます。決済機能は含みません。", "add": "プランを追加", "createTitle": "新規プランを作成", "editTitle": "プランを編集", "saved": "プラン設定を保存しました。", "archived": "プランをアーカイブしました。", "restored": "プランを再有効化しました。", "archiveConfirm": "「{name}」をアーカイブしますか？過去の台帳は変更されません。", "name": "プラン名", "uses": "利用回数", "price": "価格（TWD）", "order": "表示順", "active": "公開中", "featured": "おすすめ", "status": "状態", "actions": "操作", "enabled": "有効", "archivedStatus": "アーカイブ済み", "editNamed": "{name} を編集", "archiveNamed": "{name} をアーカイブ", "restoreNamed": "{name} を再有効化" },
+    "costs": { "title": "機能別の消費回数", "help": "0 は無料を意味します。開始済みまたは完了済みの操作には影響しません。", "unit": "回", "save": "すべての消費回数を保存", "saved": "機能別の消費回数を更新しました。" },
+    "locales": { "zh-TW": "繁体字中国語名", "zh-CN": "簡体字中国語名", "en": "英語名", "ja": "日本語名", "ko": "韓国語名" },
+    "operations": {
+      "travel_search": { "label": "通常の旅行検索", "help": "通常の航空券、宿泊、アクティビティ検索。" },
+      "flexible_flight_search": { "label": "日付変更可能な航空券検索", "help": "日付の幅を指定した航空券検索。" },
+      "flight_hotel_search": { "label": "航空券＋宿泊検索", "help": "航空券と宿泊を同時に検索します。" },
+      "full_trip_search": { "label": "旅行全体検索", "help": "3 つ以上のモジュールを横断して最適化します。" },
+      "multi_city_search": { "label": "複数都市検索", "help": "複数区間を含む旅行検索。" },
+      "public_airline_fare_search": { "label": "航空会社公開運賃", "help": "航空会社の公開運賃を検索します。" },
+      "back_to_back_fare_search": { "label": "公開運賃の二重発券比較", "help": "公開運賃で 2 旅行を比較します。" },
+      "live_back_to_back_fare_search": { "label": "リアルタイム二重発券比較", "help": "ライブプロバイダーで運賃を比較します。" },
+      "flight_status_lookup": { "label": "運航状況検索", "help": "便名または路線から運航状況を確認します。" },
+      "ai_itinerary_generation": { "label": "AI 旅程作成", "help": "AI が 1 日または旅行全体を作成します。" },
+      "itinerary_optimization": { "label": "旅程動線最適化", "help": "既存旅程へ最適な動線を適用します。" },
+      "price_reoptimization": { "label": "旅行の再検索", "help": "既存旅行を再検索して最適化します。" }
+    },
+    "audit": { "title": "最近の管理履歴", "help": "操作者、対象、変更前後の値を保存します。", "empty": "プランまたは消費回数の変更履歴はまだありません。" },
+    "auditActions": { "usage_operation_costs_updated": "機能別消費を更新", "usage_package_created": "プランを作成", "usage_package_updated": "プランを更新", "usage_package_archived": "プランをアーカイブ", "registration_trial_updated": "登録トライアルを更新" }
   },
   "layout": {
     "eyebrow": "SYSTEM ADMIN",

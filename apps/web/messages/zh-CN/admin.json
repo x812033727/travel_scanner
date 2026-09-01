@@ -1,6 +1,7 @@
 {
   "navigation": {
     "users": "会员与次数",
+    "usage": "方案与扣次",
     "system": "系统设置",
     "layout": "版面管理",
     "providers": "API 与密钥",
@@ -10,6 +11,33 @@
     "label": "API 供应商设置分页",
     "mobileLabel": "选择 API 供应商",
     "audit": "最近管理记录"
+  },
+  "usage": {
+    "eyebrow": "SYSTEM ADMIN",
+    "title": "方案与扣次",
+    "description": "管理注册赠送、公开次数包与各功能消耗次数；变更只应用于之后的新操作。",
+    "loading": "正在加载方案与扣次设置…", "save": "保存设置", "cancel": "取消",
+    "tabs": { "label": "方案与扣次设置分页", "mobileLabel": "选择设置分类", "trial": "注册体验", "packages": "公开方案", "costs": "功能扣次", "audit": "管理记录" },
+    "trial": { "title": "注册体验次数", "help": "只影响保存后新创建的账号；现有会员余额不会改变。", "uses": "新会员赠送次数", "saved": "注册体验次数已更新。" },
+    "packages": { "title": "公开次数包", "help": "启用的方案会按顺序显示在方案页；本功能不包含付款。", "add": "新增方案", "createTitle": "创建新方案", "editTitle": "编辑方案", "saved": "方案设置已保存。", "archived": "方案已封存。", "restored": "方案已重新启用。", "archiveConfirm": "确定封存“{name}”？历史账本不受影响。", "name": "方案名称", "uses": "包含次数", "price": "价格（TWD）", "order": "显示顺序", "active": "公开启用", "featured": "推荐方案", "status": "状态", "actions": "操作", "enabled": "已启用", "archivedStatus": "已封存", "editNamed": "编辑 {name}", "archiveNamed": "封存 {name}", "restoreNamed": "重新启用 {name}" },
+    "costs": { "title": "各功能消耗次数", "help": "0 代表免费；新设置不会改变已开始或完成的操作。", "unit": "次", "save": "保存全部扣次", "saved": "功能扣次设置已更新。" },
+    "locales": { "zh-TW": "繁体中文名称", "zh-CN": "简体中文名称", "en": "英文名称", "ja": "日文名称", "ko": "韩文名称" },
+    "operations": {
+      "travel_search": { "label": "一般行程搜索", "help": "一般机票、住宿或活动搜索。" },
+      "flexible_flight_search": { "label": "灵活日期航班搜索", "help": "启用灵活日期的机票搜索。" },
+      "flight_hotel_search": { "label": "机票加住宿搜索", "help": "同时搜索机票与住宿。" },
+      "full_trip_search": { "label": "完整行程搜索", "help": "跨三个以上模块的行程优化搜索。" },
+      "multi_city_search": { "label": "多城市搜索", "help": "包含多个航段的城市行程搜索。" },
+      "public_airline_fare_search": { "label": "航空公开票价", "help": "查询航空公司公开票价。" },
+      "back_to_back_fare_search": { "label": "公开倒买比较", "help": "使用公开票价进行两趟倒买比较。" },
+      "live_back_to_back_fare_search": { "label": "实时倒买比较", "help": "使用实时供应商进行倒买比较。" },
+      "flight_status_lookup": { "label": "航班动态查询", "help": "按航班号或航线查询实时状态。" },
+      "ai_itinerary_generation": { "label": "AI 行程安排", "help": "由 AI 生成单日或完整行程。" },
+      "itinerary_optimization": { "label": "行程路线优化", "help": "应用现有行程的路线优化。" },
+      "price_reoptimization": { "label": "行程重新查价", "help": "重新查价并优化现有行程。" }
+    },
+    "audit": { "title": "最近管理记录", "help": "保留操作者、目标与变更前后值。", "empty": "目前没有方案或扣次变更记录。" },
+    "auditActions": { "usage_operation_costs_updated": "更新功能扣次", "usage_package_created": "创建方案", "usage_package_updated": "更新方案", "usage_package_archived": "封存方案", "registration_trial_updated": "更新注册体验" }
   },
   "layout": {
     "eyebrow": "SYSTEM ADMIN",

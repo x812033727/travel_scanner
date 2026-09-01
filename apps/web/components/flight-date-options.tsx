@@ -1,6 +1,7 @@
 "use client";
 
 import { CalendarRange, LoaderCircle } from "lucide-react";
+import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { twd } from "@/lib/api";
 
 export type FlightDateOption = {
@@ -33,6 +34,7 @@ export function FlightDateOptions({
   onSelect: (option: FlightDateOption) => void;
   onApply: (option: FlightDateOption) => void;
 }) {
+  const charge = useOperationCharge("full_trip_search");
   if (!options.length) return null;
   return (
     <section aria-labelledby="flexible-dates-title" className="mb-5 rounded-2xl border border-[var(--line)] bg-white p-4">
@@ -55,8 +57,8 @@ export function FlightDateOptions({
         })}
       </div>
       {selected && !selected.is_current && <div className="mt-3 flex flex-col gap-3 rounded-xl bg-[var(--paper)] p-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm"><strong>{compactDate(selected.departure_date)}{selected.return_date ? ` → ${compactDate(selected.return_date)}` : ""}</strong><span className="ml-2 text-[var(--muted)]">確認後會更新機票、住宿、活動與接送；成功扣 1 次。</span></p>
-        <button type="button" disabled={busy} onClick={() => onApply(selected)} className="flex shrink-0 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-white disabled:opacity-50">{busy && <LoaderCircle size={16} className="animate-spin" />}套用並重新搜尋整趟</button>
+        <p className="text-sm"><strong>{compactDate(selected.departure_date)}{selected.return_date ? ` → ${compactDate(selected.return_date)}` : ""}</strong><span className="ml-2 text-[var(--muted)]">確認後會更新機票、住宿、活動與接送；{charge.status === "ready" ? charge.label : charge.unavailableHelp}。</span></p>
+        <button type="button" disabled={busy || charge.status !== "ready"} onClick={() => onApply(selected)} className="flex shrink-0 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-white disabled:opacity-50">{busy && <LoaderCircle size={16} className="animate-spin" />}套用並重新搜尋整趟 · {charge.label}</button>
       </div>}
     </section>
   );

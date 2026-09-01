@@ -62,7 +62,8 @@ docker compose -f docker-compose.prod.yml up --build -d
 The production Compose file runs API processes as non-root users, drops Linux
 capabilities, and rejects startup when required secrets are missing or unsafe.
 
-Create an account in the UI to receive three free, non-expiring uses. To grant a
+Create an account in the UI to receive the currently configured number of free,
+non-expiring uses. To grant a
 usage pack locally before online checkout is available:
 
 ```bash
@@ -75,6 +76,7 @@ uv run python -m app.cli add-usage-package --email you@example.com \
 
 After applying the database migration, grant an existing account administrator
 access and open `http://localhost:3000/admin/users` or
+`http://localhost:3000/admin/usage-settings` or
 `http://localhost:3000/admin/system-settings` or
 `http://localhost:3000/admin/layout-settings` or
 `http://localhost:3000/admin/settings`:
@@ -103,6 +105,28 @@ operation. Administrators whose email is currently listed in `ADMIN_EMAILS` may
 increase or deduct their own balance, including accounts that also hold the
 database-backed role; these self-adjustments use the same ledger, audit, and
 reserved-balance safeguards.
+
+The plans and usage page manages the registration trial, public one-time usage
+packs, and the cost of all 12 metered operations. Trial grants accept 1–10,000
+uses. Public packs require names in Traditional Chinese, Simplified Chinese,
+English, Japanese, and Korean; each pack contains 1–100,000 uses, costs
+NT$0–10,000,000, has an explicit display order, and can be archived or restored.
+Pack codes are generated once and remain immutable. At most one active pack is
+featured, and archived packs remain available to historical ledger references.
+This catalog intentionally does not process payments or issue purchased packs.
+
+Each operation cost accepts 0–100 uses. A zero-cost operation is still reserved
+idempotently and writes a successful zero-amount ledger entry, but leaves the
+member balance unchanged. Changes apply immediately to new operations and new
+registrations. Existing balances, ledger entries, prior package grants, and
+in-flight reservations are not rewritten: every reservation snapshots the cost
+that was effective when it began. The public, uncached
+`GET /api/v1/usage-catalog?locale=...` endpoint exposes only the effective trial
+grant, active localized packs, and operation costs. The existing `/api/v1/plans`
+endpoint remains available for compatibility. Administrative changes are stored
+in `admin_audit_logs` with before/after values and the actions
+`registration_trial_updated`, `usage_operation_costs_updated`,
+`usage_package_created`, `usage_package_updated`, or `usage_package_archived`.
 
 The system settings page manages public registration, runtime modes and timeout
 or circuit-breaker protection. `REGISTRATION_ENABLED=true` is the environment
@@ -149,8 +173,8 @@ only a backwards-compatible fallback. Restrict the Google server key by API and
 server egress IP. Restrict the browser Embed key by API and the production HTTP
 referrer. Do not commit either value.
 
-The management APIs are under `/api/v1/admin/users` and
-`/api/v1/admin/provider-settings`; the safe runtime browser configuration is served separately from
+The management APIs are under `/api/v1/admin/users`,
+`/api/v1/admin/usage-settings`, and `/api/v1/admin/provider-settings`; the safe runtime browser configuration is served separately from
 `/api/v1/runtime/public-config` and `/api/v1/runtime/site-visibility`.
 Environment variables remain the fallback when no database override exists,
 and disabling a provider never silently enables mock pricing in production.
@@ -191,14 +215,15 @@ optimization as those modules are introduced.
 
 ## Usage packs and audit history
 
-Registration grants three uses. The inactive-checkout catalog contains 10 uses
-for NT$199, 30 for NT$499, and 100 for NT$1,299. Uses stack, never expire, and
-every successful full-trip search, public-airline-fare search, back-to-back fare
-comparison, or trip re-optimization costs exactly one use.
+Registration trial uses, the public inactive-checkout catalog, and the cost of
+each metered operation are configured on the plans and usage administration
+page. The initial catalog contains packs of 10 uses for NT$199, 30 for NT$499,
+and 100 for NT$1,299, and every operation initially costs one use. Uses stack
+and never expire.
 
-One use is reserved while work is in flight and charged only when a usable
-result exists. Empty results and failures release it and create a visible
-zero-charge record. The append-only PostgreSQL `usage_ledger` records grants,
+The configured cost is reserved while work is in flight and charged only when
+a usable result exists. Empty results and failures release the reservation and
+create a visible zero-charge record. The append-only PostgreSQL `usage_ledger` records grants,
 charges, releases, migrations, and adjustments; the `usage_reservations` unique
 key prevents duplicate charges. Members can review these records and their
 reference numbers at `GET /api/v1/usage/history` and in the account page.
@@ -311,9 +336,11 @@ current trip version. The request accepts `scope=day` with `day_date`, or the
 backward-compatible default `scope=trip`. Day scope leaves every other date
 untouched. Both scopes replace only unlocked AI suggestions, preserving manual,
 provider-generated, locked, and fixed-time items. Initial generation is
-free. A successfully applied live-AI regeneration charges one use; catalog
+free. A successfully applied live-AI regeneration charges the configured
+`ai_itinerary_generation` cost; catalog
 fallback and failed application release the reservation. Fixed-order route
-calculation remains free, while same-day itinerary optimization charges one use
+calculation remains free, while same-day itinerary optimization charges its
+configured `itinerary_optimization` cost
 only after a usable order is applied.
 
 The planner also supports structured Places selections, per-day ordering,

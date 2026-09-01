@@ -18,6 +18,7 @@ import { useRouter } from "@/i18n/navigation";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { BackToBackFareSearch } from "@/components/back-to-back-fare-search";
 import { LiveBackToBackSearch } from "@/components/live-back-to-back-search";
+import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, isUsageInsufficient, twd } from "@/lib/api";
 
 type AirlineCode = "CI" | "BR" | "JX";
@@ -106,6 +107,7 @@ function sourceFor(code: AirlineCode, sources: CrawlerSource[]) {
 }
 
 export function AirlineFareLab() {
+  const charge = useOperationCharge("public_airline_fare_search");
   const router = useRouter();
   const [mode, setMode] = useState<"conventional" | "back_to_back" | "live_back_to_back">("conventional");
   const [status, setStatus] = useState<CrawlerStatus>();
@@ -260,10 +262,10 @@ export function AirlineFareLab() {
             <label className="text-sm font-semibold">艙等<select aria-label="艙等" value={cabinClass} onChange={(event) => setCabinClass(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-[#fbfcf9] p-3"><option value="economy">經濟艙</option><option value="premium_economy">豪華經濟艙</option><option value="business">商務艙</option><option value="first">頭等艙</option></select></label>
           </div>
 
-          <button disabled={busy || !selectedAirlines.length} className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3.5 font-semibold text-white transition hover:bg-[var(--teal-dark)] disabled:cursor-not-allowed disabled:opacity-50">
-            {busy ? <><LoaderCircle className="animate-spin" size={18} />正在讀取官方公開頁面</> : <><Search size={18} />搜尋公開票價</>}
+          <button disabled={busy || !selectedAirlines.length || charge.status !== "ready"} className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3.5 font-semibold text-white transition hover:bg-[var(--teal-dark)] disabled:cursor-not-allowed disabled:opacity-50">
+            {busy ? <><LoaderCircle className="animate-spin" size={18} />正在讀取官方公開頁面</> : <><Search size={18} />搜尋公開票價 · {charge.label}</>}
           </button>
-          <p className="mt-3 text-center text-xs text-[var(--muted)]">需要登入 Travel Scanner；成功取得公開票價才扣 1 次，失敗不扣。</p>
+          <p className="mt-3 text-center text-xs text-[var(--muted)]">{charge.status === "ready" ? `需要登入 Travel Scanner；成功取得公開票價才${charge.label}，失敗不扣。` : charge.unavailableHelp}</p>
         </form>
 
         <div aria-live="polite" className="min-h-[34rem] rounded-[1.75rem] border border-[var(--line)] bg-white p-5 md:p-7">
@@ -279,7 +281,7 @@ export function AirlineFareLab() {
           {busy && <div className="grid min-h-[25rem] place-items-center text-center"><div><LoaderCircle className="mx-auto animate-spin text-[var(--teal)]" size={36} /><p className="mt-4 font-semibold">逐家確認來源政策與票價頁…</p></div></div>}
 
           {result && !busy && <div className="mt-5 space-y-4">
-            {result.usage && <p className={`rounded-xl p-3 text-sm font-semibold ${result.usage.status === "charged" ? "bg-[#fff4ef] text-[#7e4439]" : "bg-emerald-50 text-emerald-800"}`}>{result.usage.status === "charged" ? "本次已扣除 1 次" : "未取得可用票價，本次未扣次"}</p>}
+            {result.usage && <p className={`rounded-xl p-3 text-sm font-semibold ${result.usage.status === "charged" ? "bg-[#fff4ef] text-[#7e4439]" : "bg-emerald-50 text-emerald-800"}`}>{result.usage.status === "charged" ? `本次已扣除 ${result.usage.uses} 次` : "未取得可用票價，本次未扣次"}</p>}
             {result.warnings.map((warning) => <div key={warning} className="flex gap-2 rounded-xl bg-amber-50 p-3 text-sm text-amber-900"><Info className="mt-0.5 shrink-0" size={17} />{warning}</div>)}
             {result.quotes.length === 0 ? <div className="grid min-h-64 place-items-center text-center text-[var(--muted)]"><div><Search className="mx-auto mb-3" size={28} /><p>指定日期附近沒有公開快取票價。</p></div></div> : result.quotes.map((quote) => (
               <article key={quote.id} className="rounded-2xl border border-[var(--line)] p-4 transition hover:border-[#b7cbc0] md:p-5">

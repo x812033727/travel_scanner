@@ -17,8 +17,8 @@ describe("FlightDateOptions", () => {
     expect(apply).not.toHaveBeenCalled();
 
     rerender(<FlightDateOptions options={options} selected={options[1]} onSelect={select} onApply={apply} />);
-    expect(screen.getByText(/成功扣 1 次/)).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: "套用並重新搜尋整趟" }));
+    expect(screen.getAllByText(/消耗 1 次/)).toHaveLength(2);
+    fireEvent.click(screen.getByRole("button", { name: /^套用並重新搜尋整趟/ }));
     expect(apply).toHaveBeenCalledWith(options[1]);
   });
 });

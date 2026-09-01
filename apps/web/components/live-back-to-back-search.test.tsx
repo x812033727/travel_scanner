@@ -35,7 +35,7 @@ describe("LiveBackToBackSearch", () => {
     });
     render(<LiveBackToBackSearch />);
     fireEvent.change(screen.getByLabelText("成人"), { target: { value: "2" } });
-    fireEvent.click(screen.getByRole("button", { name: "開始即時比較" }));
+    fireEvent.click(screen.getByRole("button", { name: /^開始即時比較/ }));
 
     await waitFor(() => expect(apiMock).toHaveBeenCalled());
     const [path, init] = apiMock.mock.calls[0];

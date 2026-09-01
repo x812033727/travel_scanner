@@ -1,6 +1,7 @@
 {
   "navigation": {
     "users": "회원 및 사용 횟수",
+    "usage": "요금제 및 차감",
     "system": "시스템 설정",
     "layout": "화면 관리",
     "providers": "API 및 키",
@@ -10,6 +11,30 @@
     "label": "API 공급자 설정 탭",
     "mobileLabel": "API 공급자 선택",
     "audit": "최근 관리 기록"
+  },
+  "usage": {
+    "eyebrow": "SYSTEM ADMIN", "title": "요금제 및 사용 차감", "description": "가입 혜택, 공개 사용 팩 및 기능별 차감 횟수를 관리합니다. 변경 사항은 이후의 새 작업에만 적용됩니다.", "loading": "요금제 및 차감 설정을 불러오는 중…", "save": "설정 저장", "cancel": "취소",
+    "tabs": { "label": "요금제 및 차감 설정 탭", "mobileLabel": "설정 분류 선택", "trial": "가입 체험", "packages": "공개 요금제", "costs": "기능별 차감", "audit": "관리 기록" },
+    "trial": { "title": "가입 체험 횟수", "help": "저장 후 새로 생성된 계정에만 적용되며 기존 회원 잔액은 바뀌지 않습니다.", "uses": "신규 회원 지급 횟수", "saved": "가입 체험 횟수를 업데이트했습니다." },
+    "packages": { "title": "공개 사용 팩", "help": "활성 요금제는 표시 순서대로 요금 페이지에 나타납니다. 결제 기능은 포함되지 않습니다.", "add": "요금제 추가", "createTitle": "새 요금제 만들기", "editTitle": "요금제 편집", "saved": "요금제 설정을 저장했습니다.", "archived": "요금제를 보관했습니다.", "restored": "요금제를 다시 활성화했습니다.", "archiveConfirm": "‘{name}’을(를) 보관할까요? 기존 원장은 변경되지 않습니다.", "name": "요금제 이름", "uses": "포함 횟수", "price": "가격(TWD)", "order": "표시 순서", "active": "공개 활성", "featured": "추천 요금제", "status": "상태", "actions": "작업", "enabled": "활성", "archivedStatus": "보관됨", "editNamed": "{name} 편집", "archiveNamed": "{name} 보관", "restoreNamed": "{name} 다시 활성화" },
+    "costs": { "title": "기능별 차감 횟수", "help": "0은 무료를 의미합니다. 이미 시작했거나 완료한 작업에는 영향을 주지 않습니다.", "unit": "회", "save": "모든 차감 저장", "saved": "기능별 차감 설정을 업데이트했습니다." },
+    "locales": { "zh-TW": "번체 중국어 이름", "zh-CN": "간체 중국어 이름", "en": "영문 이름", "ja": "일본어 이름", "ko": "한국어 이름" },
+    "operations": {
+      "travel_search": { "label": "일반 여행 검색", "help": "일반 항공편, 숙소 또는 액티비티 검색입니다." },
+      "flexible_flight_search": { "label": "유연한 날짜 항공편 검색", "help": "유연한 날짜를 사용하는 항공편 검색입니다." },
+      "flight_hotel_search": { "label": "항공편 및 숙소 검색", "help": "항공편과 숙소를 함께 검색합니다." },
+      "full_trip_search": { "label": "전체 여행 검색", "help": "세 가지 이상 모듈을 아우르는 최적화 검색입니다." },
+      "multi_city_search": { "label": "다구간 검색", "help": "여러 항공 구간을 포함한 여행 검색입니다." },
+      "public_airline_fare_search": { "label": "항공사 공개 운임", "help": "항공사의 공개 운임을 조회합니다." },
+      "back_to_back_fare_search": { "label": "공개 운임 연속 발권 비교", "help": "공개 운임으로 두 여행을 비교합니다." },
+      "live_back_to_back_fare_search": { "label": "실시간 연속 발권 비교", "help": "실시간 공급자로 운임을 비교합니다." },
+      "flight_status_lookup": { "label": "항공편 상태 조회", "help": "편명 또는 노선으로 실시간 상태를 확인합니다." },
+      "ai_itinerary_generation": { "label": "AI 일정 구성", "help": "AI가 하루 또는 전체 일정을 만듭니다." },
+      "itinerary_optimization": { "label": "일정 동선 최적화", "help": "기존 일정에 최적 동선을 적용합니다." },
+      "price_reoptimization": { "label": "여행 재검색", "help": "기존 여행을 다시 검색하고 최적화합니다." }
+    },
+    "audit": { "title": "최근 관리 기록", "help": "작업자, 대상 및 변경 전후 값을 보관합니다.", "empty": "아직 요금제 또는 차감 변경 기록이 없습니다." },
+    "auditActions": { "usage_operation_costs_updated": "기능별 차감 업데이트", "usage_package_created": "요금제 생성", "usage_package_updated": "요금제 업데이트", "usage_package_archived": "요금제 보관", "registration_trial_updated": "가입 체험 업데이트" }
   },
   "layout": {
     "eyebrow": "SYSTEM ADMIN",

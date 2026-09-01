@@ -6,10 +6,12 @@ import auth from "./messages/zh-TW/auth.json";
 import availability from "./messages/zh-TW/availability.json";
 import common from "./messages/zh-TW/common.json";
 import navigation from "./messages/zh-TW/navigation.json";
+import pricing from "./messages/zh-TW/pricing.json";
 import search from "./messages/zh-TW/search.json";
 import trips from "./messages/zh-TW/trips.json";
+import usage from "./messages/zh-TW/usage.json";
 
-const catalogs: Record<string, unknown> = { account, admin, auth, availability, common, navigation, search, trips };
+const catalogs: Record<string, unknown> = { account, admin, auth, availability, common, navigation, pricing, search, trips, usage };
 
 function message(namespace: string, key: string): string | undefined {
   let current: unknown = catalogs;
@@ -36,7 +38,7 @@ vi.mock("next-intl", () => ({
 }));
 
 vi.mock("next-intl/server", () => ({
-  getTranslations: async (namespace: string) => translator(namespace),
+  getTranslations: async (input: string | { namespace: string }) => translator(typeof input === "string" ? input : input.namespace),
 }));
 
 vi.mock("@/i18n/navigation", () => ({

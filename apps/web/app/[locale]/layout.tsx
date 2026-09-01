@@ -4,8 +4,10 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { LegacyUiLocalizer } from "@/components/legacy-ui-localizer";
 import { SiteVisibilityProvider } from "@/components/site-visibility-provider";
+import { UsageCatalogProvider } from "@/components/usage-catalog-provider";
 import { routing } from "@/i18n/routing";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
+import { getUsageCatalog } from "@/lib/usage-catalog.server";
 import "../globals.css";
 
 type Props = Readonly<{
@@ -49,17 +51,20 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-  const [messages, siteVisibility] = await Promise.all([
+  const [messages, siteVisibility, usageCatalog] = await Promise.all([
     getMessages(),
     getSiteVisibility(),
+    getUsageCatalog(locale),
   ]);
   return (
     <html lang={locale}>
       <body>
         <NextIntlClientProvider messages={messages}>
           <SiteVisibilityProvider state={siteVisibility}>
-            <LegacyUiLocalizer />
-            {children}
+            <UsageCatalogProvider state={usageCatalog}>
+              <LegacyUiLocalizer />
+              {children}
+            </UsageCatalogProvider>
           </SiteVisibilityProvider>
         </NextIntlClientProvider>
       </body>

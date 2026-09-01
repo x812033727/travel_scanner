@@ -81,11 +81,11 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
 
-    const aiButtons = await screen.findAllByRole("button", { name: "AI 幫我安排" });
+    const aiButtons = await screen.findAllByRole("button", { name: /^AI 幫我安排/ });
     fireEvent.click(aiButtons[0]);
     expect(screen.getByRole("dialog", { name: "AI 幫我安排" })).toBeTruthy();
     fireEvent.click(screen.getByRole("radio", { name: /\u55ae\u65e5\u5b89\u6392/ }));
-    fireEvent.click(screen.getByRole("button", { name: "安排這一天" }));
+    fireEvent.click(screen.getByRole("button", { name: /^安排這一天/ }));
 
     await waitFor(() => expect(generationBody).toEqual({
       version: 1,
@@ -122,11 +122,11 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
 
-    const aiButtons = await screen.findAllByRole("button", { name: "AI 幫我安排" });
+    const aiButtons = await screen.findAllByRole("button", { name: /^AI 幫我安排/ });
     fireEvent.click(aiButtons[0]);
     const fullTrip = screen.getByRole("radio", { name: /\u5168\u884c\u7a0b\u5b89\u6392/ });
     expect(fullTrip.getAttribute("aria-checked")).toBe("true");
-    fireEvent.click(screen.getByRole("button", { name: "安排全行程" }));
+    fireEvent.click(screen.getByRole("button", { name: /^安排全行程/ }));
 
     await waitFor(() => expect(generationBody).toEqual({
       version: 1,
@@ -222,7 +222,7 @@ describe("trip editor", () => {
     await waitFor(() => expect(putBodies).toHaveLength(1));
 
     fireEvent.change(title, { target: { value: "最後一次修改" } });
-    fireEvent.click(screen.getByRole("button", { name: "最佳化動線" }));
+    fireEvent.click(screen.getByRole("button", { name: /^最佳化動線/ }));
     resolveFirstSave?.(response({ ...trip, version: 2, items: putBodies[0].items }));
 
     await waitFor(() => expect(putBodies).toHaveLength(2));
@@ -269,14 +269,14 @@ describe("trip editor", () => {
     });
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
-    const aiButtons = await screen.findAllByRole("button", { name: "AI 幫我安排" });
+    const aiButtons = await screen.findAllByRole("button", { name: /^AI 幫我安排/ });
     fireEvent.click(aiButtons[0]);
     fireEvent.click(screen.getByRole("button", { name: /只調整現有動線/ }));
     expect(await screen.findByRole("dialog", { name: "最佳化預覽" })).toBeTruthy();
     expect(screen.getByText("預計節省")).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: "套用並扣 1 次" }));
+    fireEvent.click(screen.getByRole("button", { name: /^套用 · 消耗 1 次/ }));
     expect(await screen.findByText(/結果尚未確認/)).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: "套用並扣 1 次" }));
+    fireEvent.click(screen.getByRole("button", { name: /^套用 · 消耗 1 次/ }));
     expect(await screen.findByText(/已套用最佳動線並扣除 1 次/)).toBeTruthy();
     const applyCalls = fetchMock.mock.calls.filter(([url]) => String(url).includes("/optimize/apply"));
     expect(applyCalls).toHaveLength(2);

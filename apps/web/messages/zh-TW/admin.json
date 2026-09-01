@@ -1,6 +1,7 @@
 {
   "navigation": {
     "users": "會員與次數",
+    "usage": "方案與扣次",
     "system": "系統設定",
     "layout": "版面管理",
     "providers": "API 與金鑰",
@@ -10,6 +11,35 @@
     "label": "API 供應商設定分頁",
     "mobileLabel": "選擇 API 供應商",
     "audit": "最近管理紀錄"
+  },
+  "usage": {
+    "eyebrow": "SYSTEM ADMIN",
+    "title": "方案與扣次",
+    "description": "管理註冊贈送、公開次數包與各功能消耗次數；變更只套用到之後的新操作。",
+    "loading": "正在載入方案與扣次設定…",
+    "save": "儲存設定",
+    "cancel": "取消",
+    "tabs": { "label": "方案與扣次設定分頁", "mobileLabel": "選擇設定分類", "trial": "註冊體驗", "packages": "公開方案", "costs": "功能扣次", "audit": "管理紀錄" },
+    "trial": { "title": "註冊體驗次數", "help": "只影響儲存後新建立的帳號；既有會員餘額不會改變。", "uses": "新會員贈送次數", "saved": "註冊體驗次數已更新。" },
+    "packages": { "title": "公開次數包", "help": "啟用的方案會依排序顯示在方案頁；本功能不包含付款。", "add": "新增方案", "createTitle": "建立新方案", "editTitle": "編輯方案", "saved": "方案設定已儲存。", "archived": "方案已封存。", "restored": "方案已重新啟用。", "archiveConfirm": "確定封存「{name}」？歷史帳本不受影響。", "name": "方案名稱", "uses": "包含次數", "price": "價格（TWD）", "order": "顯示順序", "active": "公開啟用", "featured": "推薦方案", "status": "狀態", "actions": "操作", "enabled": "已啟用", "archivedStatus": "已封存", "editNamed": "編輯 {name}", "archiveNamed": "封存 {name}", "restoreNamed": "重新啟用 {name}" },
+    "costs": { "title": "各功能消耗次數", "help": "0 代表免費；新設定不會改變已開始或已完成的操作。", "unit": "次", "save": "儲存全部扣次", "saved": "功能扣次設定已更新。" },
+    "locales": { "zh-TW": "繁體中文名稱", "zh-CN": "簡體中文名稱", "en": "英文名稱", "ja": "日文名稱", "ko": "韓文名稱" },
+    "operations": {
+      "travel_search": { "label": "一般旅程搜尋", "help": "一般機票、住宿或活動搜尋。" },
+      "flexible_flight_search": { "label": "彈性日期航班搜尋", "help": "啟用彈性日期的機票搜尋。" },
+      "flight_hotel_search": { "label": "機票加住宿搜尋", "help": "同時搜尋機票與住宿。" },
+      "full_trip_search": { "label": "完整旅程搜尋", "help": "跨三種以上模組的旅程最佳化搜尋。" },
+      "multi_city_search": { "label": "多城市搜尋", "help": "包含多個航段的城市旅程搜尋。" },
+      "public_airline_fare_search": { "label": "航空公開票價", "help": "查詢航空公司公開票價。" },
+      "back_to_back_fare_search": { "label": "公開倒買比較", "help": "使用公開票價進行兩趟倒買比較。" },
+      "live_back_to_back_fare_search": { "label": "即時倒買比較", "help": "使用即時供應商進行倒買比較。" },
+      "flight_status_lookup": { "label": "航班動態查詢", "help": "依班號或航線查詢即時航班狀態。" },
+      "ai_itinerary_generation": { "label": "AI 行程安排", "help": "AI 產生單日或完整行程。" },
+      "itinerary_optimization": { "label": "行程動線最佳化", "help": "套用現有行程的動線最佳化。" },
+      "price_reoptimization": { "label": "旅程重新查價", "help": "重新查價並最佳化既有旅程。" }
+    },
+    "audit": { "title": "最近管理紀錄", "help": "保留操作者、目標與異動前後值。", "empty": "目前沒有方案或扣次異動紀錄。" },
+    "auditActions": { "usage_operation_costs_updated": "更新功能扣次", "usage_package_created": "建立方案", "usage_package_updated": "更新方案", "usage_package_archived": "封存方案", "registration_trial_updated": "更新註冊體驗" }
   },
   "layout": {
     "eyebrow": "SYSTEM ADMIN",

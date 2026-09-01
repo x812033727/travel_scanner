@@ -4,17 +4,34 @@ from datetime import datetime
 from typing import Annotated, Any, Literal
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, Response
 from sqlalchemy import and_, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.auth.service import CurrentUser
+from app.auth.service import AdminUser, CurrentUser
 from app.db import get_session
 from app.models import UsageLedger, UsagePackage
 from app.problems import AppError
-from app.usage.service import COMMON_LIMITS, get_usage_account
+from app.usage.schemas import (
+    OperationCostsUpdate,
+    TrialSettingsUpdate,
+    UsageCatalog,
+    UsagePackageInput,
+    UsageSettingsSnapshot,
+)
+from app.usage.service import (
+    COMMON_LIMITS,
+    create_usage_package,
+    get_usage_account,
+    public_usage_catalog,
+    update_operation_costs,
+    update_trial_uses,
+    update_usage_package,
+    usage_settings_snapshot,
+)
 
 router = APIRouter(tags=["usage"])
+admin_router = APIRouter(prefix="/admin/usage-settings", tags=["admin usage settings"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 HistoryKind = Literal["all", "charged", "granted", "released"]
 
@@ -58,6 +75,53 @@ async def list_plans(session: Session) -> list[dict[str, Any]]:
         }
         for package in packages
     ]
+
+
+@router.get("/usage-catalog", response_model=UsageCatalog)
+async def usage_catalog(
+    response: Response,
+    session: Session,
+    locale: Literal["zh-TW", "zh-CN", "en", "ja", "ko"] = "zh-TW",
+) -> UsageCatalog:
+    response.headers["Cache-Control"] = "no-store"
+    return await public_usage_catalog(session, locale)
+
+
+@admin_router.get("", response_model=UsageSettingsSnapshot)
+async def get_usage_settings(user: AdminUser, session: Session) -> UsageSettingsSnapshot:
+    _ = user
+    return await usage_settings_snapshot(session)
+
+
+@admin_router.put("/trial", response_model=UsageSettingsSnapshot)
+async def put_trial_settings(
+    payload: TrialSettingsUpdate, user: AdminUser, session: Session
+) -> UsageSettingsSnapshot:
+    return await update_trial_uses(session, payload.uses, user)
+
+
+@admin_router.put("/operation-costs", response_model=UsageSettingsSnapshot)
+async def put_operation_costs(
+    payload: OperationCostsUpdate, user: AdminUser, session: Session
+) -> UsageSettingsSnapshot:
+    return await update_operation_costs(session, payload, user)
+
+
+@admin_router.post("/packages", response_model=UsageSettingsSnapshot, status_code=201)
+async def post_usage_package(
+    payload: UsagePackageInput, user: AdminUser, session: Session
+) -> UsageSettingsSnapshot:
+    return await create_usage_package(session, payload, user)
+
+
+@admin_router.put("/packages/{package_id}", response_model=UsageSettingsSnapshot)
+async def put_usage_package(
+    package_id: UUID,
+    payload: UsagePackageInput,
+    user: AdminUser,
+    session: Session,
+) -> UsageSettingsSnapshot:
+    return await update_usage_package(session, package_id, payload, user)
 
 
 @router.get("/usage")
