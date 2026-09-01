@@ -225,18 +225,18 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await page.getByLabel("安排名稱").fill("淺草寺與雷門");
   await page.getByRole("button", { name: "關閉" }).click();
   await expect.poll(() => saves).toBe(2);
-  await page.getByRole("button", { name: "AI 幫我安排", exact: true }).click();
+  await page.getByRole("button", { name: /^AI 幫我安排 · 消耗 1 次$/ }).click();
   await expect(page.getByRole("dialog", { name: "AI 幫我安排" })).toBeVisible();
   await expect(page.getByRole("radio", { name: /單日安排/ })).toHaveAttribute("aria-checked", "true");
   await expect(page.getByRole("radio", { name: /全行程安排/ })).toBeVisible();
-  await page.getByRole("button", { name: "安排這一天" }).click();
+  await page.getByRole("button", { name: /^安排這一天 · 消耗 1 次$/ }).click();
   await expect.poll(() => aiRequest).toEqual({ scope: "day", day_date: "2026-11-11" });
   await expect(page.getByText(/MiniMax 已完成.*並扣除 1 次/)).toBeVisible();
-  await page.getByRole("button", { name: "AI 幫我安排", exact: true }).click();
+  await page.getByRole("button", { name: /^AI 幫我安排 · 消耗 1 次$/ }).click();
   await page.getByRole("button", { name: /只調整現有動線/ }).click();
   await expect(page.getByRole("dialog", { name: "最佳化預覽" })).toBeVisible();
   await expect(page.getByText("預計節省")).toBeVisible();
-  await page.getByRole("button", { name: "套用並扣 1 次" }).click();
+  await page.getByRole("button", { name: /^套用 · 消耗 1 次$/ }).click();
   await expect(page.getByText(/已套用最佳動線並扣除 1 次/)).toBeVisible();
   const box = await addButton.boundingBox();
   expect(box?.height || 0).toBeGreaterThanOrEqual(44);
@@ -501,7 +501,7 @@ test("flexible flight dates show local schedules and require confirmation before
   });
 
   await page.goto("/zh-TW/search?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=1&rooms=1&flex_days=7");
-  await page.getByRole("button", { name: "確認條件並開始搜尋" }).click();
+  await page.getByRole("button", { name: /^確認條件並開始搜尋 · 消耗 1 次$/ }).click();
   await expect.poll(() => submitted.length).toBe(1);
   expect(submitted[0]).toMatchObject({ flex_days: 7, flexible_dates: true });
   await page.getByRole("tab", { name: "機票" }).click();
@@ -517,7 +517,7 @@ test("flexible flight dates show local schedules and require confirmation before
   await popup.close();
   await page.getByRole("button", { name: /晚 2 日/ }).click();
   expect(submitted).toHaveLength(1);
-  await page.getByRole("button", { name: "套用並重新搜尋整趟" }).click();
+  await page.getByRole("button", { name: /^套用並重新搜尋整趟 · 消耗 1 次$/ }).click();
   await expect.poll(() => submitted.length).toBe(2);
   expect(submitted[1]).toMatchObject({ departure_date: "2026-11-12", return_date: "2026-11-17", flex_days: 0, flexible_dates: false });
   await expect(page).toHaveURL(/departure_date=2026-11-12/);
@@ -526,7 +526,7 @@ test("flexible flight dates show local schedules and require confirmation before
 test("airline public fare lab is available", async ({ page }) => {
   await page.goto("/zh-TW/labs/airlines");
   await expect(page.getByRole("heading", { name: /三家航空/ })).toBeVisible();
-  await expect(page.getByRole("button", { name: "搜尋公開票價" })).toBeVisible();
+  await expect(page.getByRole("button", { name: /^搜尋公開票價 · 消耗 1 次$/ })).toBeVisible();
   await expect(page.getByText("中華航空")).toBeVisible();
   await expect(page.getByText("長榮航空")).toBeVisible();
   await expect(page.getByText("星宇航空")).toBeVisible();
@@ -584,7 +584,7 @@ test("back-to-back fare comparison renders both strategy modes", async ({ page }
   await backToBackTab.click();
   await expect(backToBackTab).toHaveAttribute("aria-selected", "true");
   await expect(page.getByRole("heading", { name: "設定兩趟旅行" })).toBeVisible({ timeout: 15_000 });
-  await page.getByRole("button", { name: "比較倒買價格" }).click();
+  await page.getByRole("button", { name: /^比較倒買價格 · 消耗 1 次$/ }).click();
   await expect(page.getByRole("heading", { name: "最低混搭" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "最低同航空公司" })).toBeVisible();
   await expect(page.getByText(/外站兩段票估算省下.*2,000/).first()).toBeVisible();
@@ -659,7 +659,7 @@ test("different destinations can complete an external two-segment comparison", a
   await page.getByLabel("尾段單程每人價格").fill("4000");
   await page.getByLabel("第一次一般來回每人價格").fill("12000");
   await page.getByLabel("第二次一般來回每人價格").fill("10000");
-  await page.getByRole("button", { name: "比較倒買價格" }).click();
+  await page.getByRole("button", { name: /^比較倒買價格 · 消耗 1 次$/ }).click();
 
   await expect(page.getByText("不同目的地的外站兩段票已支援")).toBeVisible();
   await expect(page.getByText(/外站兩段票估算省下.*6,000/).first()).toBeVisible();
@@ -700,7 +700,7 @@ test("live flight provider submits the five-ticket reverse comparison", async ({
   await page.getByRole("tab", { name: "即時倒買 API" }).click();
   await expect(page.getByRole("heading", { name: "即時倒買價格比較" })).toBeVisible();
   await page.getByLabel("成人").selectOption("2");
-  await page.getByRole("button", { name: "開始即時比較" }).click();
+  await page.getByRole("button", { name: /^開始即時比較 · 消耗 1 次$/ }).click();
 
   await expect(page.getByRole("heading", { name: "最低混搭" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "最低同航空公司" })).toBeVisible();

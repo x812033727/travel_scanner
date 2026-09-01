@@ -39,6 +39,7 @@ import {
 } from "@/components/hotel-offer-card";
 import { FlightOfferCard } from "@/components/flight-offer-card";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
+import { useOperationCharge } from "@/components/usage-catalog-provider";
 import {
   FlightDateOptions,
   type FlightDateOption,
@@ -280,6 +281,7 @@ function parseInterests(raw: string): string[] {
 }
 
 export function SearchExperience() {
+  const charge = useOperationCharge("full_trip_search");
   const visibility = useSiteVisibility();
   const tripsEnabled = featureEnabled(visibility, "trips");
   const locale = useLocale();
@@ -920,7 +922,8 @@ export function SearchExperience() {
                   disabled={
                     busy ||
                     providerStatus?.status !== "ready" ||
-                    authState !== "signed_in"
+                    authState !== "signed_in" ||
+                    charge.status !== "ready"
                   }
                   onClick={() => begin()}
                   className="rounded-2xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50"
@@ -929,7 +932,7 @@ export function SearchExperience() {
                     ? "確認登入狀態…"
                     : authState === "error"
                       ? "暫時無法確認登入狀態"
-                      : "確認條件並開始搜尋"}
+                      : `確認條件並開始搜尋 · ${charge.label}`}
                 </button>
               )}
               {includeAirbnb && airbnbCriteria && (
@@ -949,8 +952,7 @@ export function SearchExperience() {
               </p>
             )}
             <p className="mt-2 text-xs text-[var(--muted)]">
-              站內比較成功取得至少一筆可用結果才扣 1 次；Airbnb
-              官方外站搜尋不扣次。
+              {charge.status === "ready" ? `站內比較成功取得至少一筆可用結果才${charge.label}；Airbnb 官方外站搜尋不扣次。` : charge.unavailableHelp}
             </p>
           </>
         )}
@@ -997,10 +999,12 @@ export function SearchExperience() {
               className={`mt-3 text-sm font-semibold ${usageState.status === "charged" ? "text-[#9d4e3f]" : usageState.status === "released" ? "text-emerald-700" : "text-[var(--teal)]"}`}
             >
               {usageState.status === "charged"
-                ? "已成功扣除 1 次"
+                ? `已成功扣除 ${usageState.uses} 次`
                 : usageState.status === "released"
                   ? "本次未扣次（保留次數已退回）"
-                  : "已暫時保留 1 次，完成後才會正式扣除"}
+                  : charge.uses === 0
+                    ? "本次為免費操作，完成後仍會留下使用紀錄"
+                    : `已暫時保留 ${charge.uses ?? usageState.uses} 次，完成後才會正式扣除`}
             </p>
           )}
           <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">

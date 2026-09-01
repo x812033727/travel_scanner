@@ -28,6 +28,7 @@ from app.schema import expected_schema_revision, schema_is_current
 from app.search.router import router as search_router
 from app.trips.router import public_router as public_trips_router
 from app.trips.router import router as trips_router
+from app.usage.router import admin_router as admin_usage_router
 from app.usage.router import router as usage_router
 
 settings = get_settings()
@@ -54,6 +55,7 @@ app.include_router(admin_user_router, prefix="/api/v1")
 app.include_router(runtime_router, prefix="/api/v1")
 app.include_router(affiliates_router, prefix="/api/v1")
 app.include_router(usage_router, prefix="/api/v1")
+app.include_router(admin_usage_router, prefix="/api/v1")
 app.include_router(search_router, prefix="/api/v1")
 app.include_router(flight_status_router, prefix="/api/v1")
 app.include_router(trips_router, prefix="/api/v1")

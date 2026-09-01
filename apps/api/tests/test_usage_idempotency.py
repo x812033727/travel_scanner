@@ -26,7 +26,7 @@ def reservation_fixture(
         idempotency_key="same-request-key",
         operation="public_airline_fare_search",
         summary="fare search",
-        uses=1,
+        uses=4,
         status="committed",
         resource_id=resource_id,
     )
@@ -71,4 +71,6 @@ async def test_reserve_use_allows_replay_when_the_result_resource_exists() -> No
 
     assert existing is reservation
     assert existing.resource_id == resource_id
+    assert existing.uses == 4
     assert created is False
+    session.get.assert_not_awaited()

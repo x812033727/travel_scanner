@@ -4,6 +4,7 @@ import { ArrowRight, CalendarDays, Check, ChevronLeft, ChevronRight, Hotel, MapP
 import { useRouter } from "@/i18n/navigation";
 import { useMemo, useState } from "react";
 import { PlacePicker } from "@/components/place-picker";
+import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, twd } from "@/lib/api";
 import { interestLabel, interests } from "@/lib/destinations";
 
@@ -30,6 +31,8 @@ function tripDayCount(start: string, end: string) {
 
 export function NewTripForm() {
   const router = useRouter();
+  const aiCharge = useOperationCharge("ai_itinerary_generation");
+  const optimizationCharge = useOperationCharge("itinerary_optimization");
   const [step, setStep] = useState(0);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>();
@@ -196,7 +199,7 @@ export function NewTripForm() {
     <aside className="rounded-[2rem] bg-[var(--ink)] p-6 text-white md:p-8">
       <p className="text-xs font-semibold tracking-[.18em] text-emerald-200">行程設定摘要</p><h2 className="mt-2 text-2xl font-bold">{form.destination_name.trim() || "還沒決定目的地"}</h2><div className="mt-5 flex flex-wrap gap-2">{summary.map((item) => <span key={item} className="rounded-full bg-white/10 px-3 py-1.5 text-xs text-white/80">{item}</span>)}</div>
       <div className="mt-7 space-y-5"><div className="flex gap-3"><CalendarDays className="mt-0.5 shrink-0 text-emerald-200" size={21} /><div><h3 className="font-semibold">AI 安排每天的景點</h3><p className="mt-1 text-sm leading-6 text-white/65">建立後每一天都有可編輯草稿，可再新增、鎖定或調整時間。</p></div></div><div className="flex gap-3"><Route className="mt-0.5 shrink-0 text-emerald-200" size={21} /><div><h3 className="font-semibold">計算移動路線</h3><p className="mt-1 text-sm leading-6 text-white/65">確認地點後，依少轉乘、最快或少走路偏好規劃每一段交通。</p></div></div><div className="flex gap-3"><Sparkles className="mt-0.5 shrink-0 text-emerald-200" size={21} /><div><h3 className="font-semibold">保留旅行偏好</h3><p className="mt-1 text-sm leading-6 text-white/65">旅伴、預算、住宿及興趣會保存，之後可讓 AI 重新編排。</p></div></div></div>
-      <p className="mt-8 rounded-2xl bg-white/10 p-4 text-sm leading-6 text-white/75">首次 AI 草稿、手動編排與查路免費；真實 AI 重排或成功套用整日動線最佳化各扣 1 次，內建備援不扣次。</p>
+      <p className="mt-8 rounded-2xl bg-white/10 p-4 text-sm leading-6 text-white/75">首次 AI 草稿、手動編排與查路免費；真實 AI 重排為{aiCharge.label}，成功套用整日動線最佳化為{optimizationCharge.label}，內建備援不扣次。</p>
     </aside>
   </form>;
 }

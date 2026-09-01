@@ -2,8 +2,9 @@ from app.schema import expected_schema_revision, schema_is_current
 
 
 def test_expected_schema_revision_is_current_head() -> None:
-    assert expected_schema_revision() == "0016_trip_route_segments"
-    assert schema_is_current("0016_trip_route_segments") is True
+    assert expected_schema_revision() == "0017_usage_settings"
+    assert schema_is_current("0017_usage_settings") is True
+    assert schema_is_current("0016_trip_route_segments") is False
     assert schema_is_current("0015_hotspot_depth_travel") is False
     assert schema_is_current("0014_user_preferred_locale") is False
     assert schema_is_current("0013_hotspot_discovery") is False

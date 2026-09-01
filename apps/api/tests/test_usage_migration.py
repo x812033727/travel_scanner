@@ -130,6 +130,21 @@ async def test_legacy_balance_migrates_one_to_one_and_ledger_is_immutable() -> N
                 "SELECT status, balance_after FROM usage_ledger WHERE entry_type = 'migration'"
             )
             assert dict(conversion) == {"status": "migrated", "balance_after": 7}
+            operation_costs = await migrated.fetch(
+                "SELECT operation, uses FROM usage_operation_costs ORDER BY operation"
+            )
+            assert len(operation_costs) == 12
+            assert {row["uses"] for row in operation_costs} == {1}
+            fallback_package = await migrated.fetchrow(
+                "SELECT localized_names, display_order, is_featured "
+                "FROM usage_packages WHERE code = 'FREE'"
+            )
+            assert fallback_package is not None
+            assert fallback_package["localized_names"] == {
+                locale: "Free" for locale in ("zh-TW", "zh-CN", "en", "ja", "ko")
+            }
+            assert fallback_package["display_order"] == 100
+            assert fallback_package["is_featured"] is False
             with pytest.raises(asyncpg.RaiseError, match="append-only"):
                 await migrated.execute("DELETE FROM usage_ledger WHERE reference = 'legacy-use'")
         finally:

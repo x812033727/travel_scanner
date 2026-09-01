@@ -7,13 +7,16 @@ const registrationState = vi.hoisted(() => ({ value: "open" as "open" | "closed"
 vi.mock("@/lib/registration", () => ({
   getRegistrationAvailability: () => Promise.resolve(registrationState.value),
 }));
+vi.mock("@/lib/usage-catalog.server", () => ({
+  getUsageCatalog: () => Promise.resolve({ status: "ready", catalog: { trial_uses: 7 } }),
+}));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => <header>Travel Scanner</header> }));
 vi.mock("@/components/auth-form", () => ({
   AuthForm: ({ mode }: { mode: string }) => <form data-testid={`${mode}-form`} />,
 }));
 
 async function renderPage() {
-  render(await RegisterPage({ searchParams: Promise.resolve({ next: "/trips" }) }));
+  render(await RegisterPage({ searchParams: Promise.resolve({ next: "/trips" }), params: Promise.resolve({ locale: "zh-TW" }) }));
 }
 
 describe("registration page", () => {
@@ -22,6 +25,7 @@ describe("registration page", () => {
   it("shows the registration form when registration is open", async () => {
     await renderPage();
     expect(screen.getByRole("heading", { name: "建立你的旅行帳號" })).toBeTruthy();
+    expect(screen.getByText("註冊免費取得 7 次")).toBeTruthy();
     expect(screen.getByTestId("register-form")).toBeTruthy();
   });
 

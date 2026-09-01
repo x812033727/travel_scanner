@@ -64,7 +64,7 @@ describe("airline fare lab", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<AirlineFareLab />);
     await screen.findByText("政策停用");
-    fireEvent.click(screen.getByRole("button", { name: "搜尋公開票價" }));
+    fireEvent.click(screen.getByRole("button", { name: /^搜尋公開票價/ }));
     expect(await screen.findByText(/14,075/)).toBeTruthy();
     expect(screen.getByText("非即時 · 不可直接訂位 · 3 hours ago")).toBeTruthy();
     expect(screen.getByText("本次已扣除 1 次")).toBeTruthy();
@@ -79,7 +79,7 @@ describe("airline fare lab", () => {
     render(<AirlineFareLab />);
     await screen.findByText("政策停用");
     fireEvent.change(screen.getByLabelText("回程日期"), { target: { value: "2026-11-01" } });
-    fireEvent.click(screen.getByRole("button", { name: "搜尋公開票價" }));
+    fireEvent.click(screen.getByRole("button", { name: /^搜尋公開票價/ }));
     expect((await screen.findByRole("alert")).textContent).toContain("回程日期不能早於出發日期");
   });
 
@@ -94,7 +94,7 @@ describe("airline fare lab", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<AirlineFareLab />);
     await screen.findByText("政策停用");
-    fireEvent.click(screen.getByRole("button", { name: "搜尋公開票價" }));
+    fireEvent.click(screen.getByRole("button", { name: /^搜尋公開票價/ }));
     await waitFor(() => expect(routerPush).toHaveBeenCalledWith("/pricing"));
   });
 
@@ -160,7 +160,7 @@ describe("airline fare lab", () => {
     await screen.findByText("政策停用");
     fireEvent.click(screen.getByRole("tab", { name: "倒買法" }));
     fireEvent.click(screen.getByRole("radio", { name: /包覆倒買/ }));
-    fireEvent.click(screen.getByRole("button", { name: "比較倒買價格" }));
+    fireEvent.click(screen.getByRole("button", { name: /^比較倒買價格/ }));
 
     expect(await screen.findByText("最低混搭")).toBeTruthy();
     expect(screen.getByText("最低同航空公司")).toBeTruthy();
@@ -240,7 +240,7 @@ describe("airline fare lab", () => {
     fireEvent.change(screen.getByLabelText("尾段單程每人價格"), { target: { value: "4000" } });
     fireEvent.change(screen.getByLabelText("頭段單程航空公司"), { target: { value: "CI" } });
     fireEvent.change(screen.getByLabelText("尾段單程航空公司"), { target: { value: "CI" } });
-    fireEvent.click(screen.getByRole("button", { name: "比較倒買價格" }));
+    fireEvent.click(screen.getByRole("button", { name: /^比較倒買價格/ }));
 
     expect((await screen.findAllByText(/外站兩段票估算省下.*9,000/)).length).toBe(2);
     expect(screen.getAllByText(/頭段單程票.*手動輸入/).length).toBeGreaterThan(0);
@@ -335,7 +335,7 @@ describe("airline fare lab", () => {
     ]) {
       fireEvent.change(screen.getByLabelText(label), { target: { value } });
     }
-    fireEvent.click(screen.getByRole("button", { name: "比較倒買價格" }));
+    fireEvent.click(screen.getByRole("button", { name: /^比較倒買價格/ }));
 
     expect((await screen.findAllByText(/外站兩段票估算省下.*6,000/)).length).toBe(2);
     expect(screen.getByText("不同目的地的外站兩段票已支援")).toBeTruthy();
@@ -359,7 +359,7 @@ describe("airline fare lab", () => {
     await screen.findByText("政策停用");
     fireEvent.click(screen.getByRole("tab", { name: "倒買法" }));
     fireEvent.change(screen.getByLabelText("第二次出發日"), { target: { value: "2026-11-14" } });
-    fireEvent.click(screen.getByRole("button", { name: "比較倒買價格" }));
+    fireEvent.click(screen.getByRole("button", { name: /^比較倒買價格/ }));
     expect((await screen.findByRole("alert")).textContent).toContain("日期必須依序");
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });

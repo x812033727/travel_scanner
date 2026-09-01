@@ -5,6 +5,7 @@ import { FormEvent, useState } from "react";
 import { useLocale } from "next-intl";
 import { api, isUsageInsufficient, twd } from "@/lib/api";
 import { useRouter } from "@/i18n/navigation";
+import { useOperationCharge } from "@/components/usage-catalog-provider";
 
 type FlightOffer = {
   id: string;
@@ -37,7 +38,7 @@ type Response = {
   provider: string;
   comparisons: Comparison[];
   warnings: string[];
-  usage?: { status: string };
+  usage?: { status: string; uses: number };
 };
 
 const destinations = [
@@ -96,6 +97,7 @@ function StrategyCard({ strategy, title }: { strategy?: Strategy | null; title: 
 }
 
 export function LiveBackToBackSearch() {
+  const charge = useOperationCharge("live_back_to_back_fare_search");
   const locale = useLocale();
   const router = useRouter();
   const [firstDestination, setFirstDestination] = useState("NRT");
@@ -168,9 +170,10 @@ export function LiveBackToBackSearch() {
             <select aria-label="即時艙等" value={cabinClass} onChange={(event) => setCabinClass(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] p-3"><option value="economy">經濟艙</option><option value="premium_economy">豪華經濟艙</option><option value="business">商務艙</option><option value="first">頭等艙</option></select>
           </label>
         </div>
-        <button disabled={busy} className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3.5 font-semibold text-white disabled:opacity-50">
-          {busy ? <><LoaderCircle className="animate-spin" size={18} />查詢五組票價</> : <><Search size={18} />開始即時比較</>}
+        <button disabled={busy || charge.status !== "ready"} className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3.5 font-semibold text-white disabled:opacity-50">
+          {busy ? <><LoaderCircle className="animate-spin" size={18} />查詢五組票價</> : <><Search size={18} />開始即時比較 · {charge.label}</>}
         </button>
+        {charge.status !== "ready" && <p className="mt-3 text-center text-xs text-[var(--muted)]">{charge.unavailableHelp}</p>}
       </form>
       <div aria-live="polite" className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 md:p-7">
         <h2 className="text-2xl font-bold">比較結果</h2>

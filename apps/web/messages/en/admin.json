@@ -1,6 +1,7 @@
 {
   "navigation": {
     "users": "Members & usage",
+    "usage": "Plans & charges",
     "system": "System settings",
     "layout": "Layout management",
     "providers": "APIs & keys",
@@ -10,6 +11,35 @@
     "label": "API provider settings tabs",
     "mobileLabel": "Choose an API provider",
     "audit": "Recent admin activity"
+  },
+  "usage": {
+    "eyebrow": "SYSTEM ADMIN",
+    "title": "Plans and usage charges",
+    "description": "Manage registration grants, public usage packs, and the number of uses charged by each feature. Changes apply only to new operations.",
+    "loading": "Loading plan and charge settings…",
+    "save": "Save settings",
+    "cancel": "Cancel",
+    "tabs": { "label": "Plan and charge settings tabs", "mobileLabel": "Choose a settings category", "trial": "Registration trial", "packages": "Public plans", "costs": "Feature charges", "audit": "Admin history" },
+    "trial": { "title": "Registration trial uses", "help": "Applies only to accounts created after saving. Existing member balances do not change.", "uses": "Uses granted to new members", "saved": "Registration trial uses updated." },
+    "packages": { "title": "Public usage packs", "help": "Active plans appear on the pricing page in display order. Payment is not included in this feature.", "add": "Add plan", "createTitle": "Create a plan", "editTitle": "Edit plan", "saved": "Plan settings saved.", "archived": "Plan archived.", "restored": "Plan reactivated.", "archiveConfirm": "Archive “{name}”? Historical ledgers will not be changed.", "name": "Plan name", "uses": "Included uses", "price": "Price (TWD)", "order": "Display order", "active": "Publicly active", "featured": "Featured plan", "status": "Status", "actions": "Actions", "enabled": "Active", "archivedStatus": "Archived", "editNamed": "Edit {name}", "archiveNamed": "Archive {name}", "restoreNamed": "Reactivate {name}" },
+    "costs": { "title": "Charges by feature", "help": "Zero makes a feature free. New values do not change operations that have already started or completed.", "unit": "uses", "save": "Save all charges", "saved": "Feature charges updated." },
+    "locales": { "zh-TW": "Traditional Chinese name", "zh-CN": "Simplified Chinese name", "en": "English name", "ja": "Japanese name", "ko": "Korean name" },
+    "operations": {
+      "travel_search": { "label": "Standard trip search", "help": "A standard flight, hotel, or activity search." },
+      "flexible_flight_search": { "label": "Flexible-date flight search", "help": "A flight search with flexible dates enabled." },
+      "flight_hotel_search": { "label": "Flight and hotel search", "help": "Searches flights and hotels together." },
+      "full_trip_search": { "label": "Full trip search", "help": "Optimizes a trip across at least three modules." },
+      "multi_city_search": { "label": "Multi-city search", "help": "Searches a trip containing multiple flight legs." },
+      "public_airline_fare_search": { "label": "Public airline fares", "help": "Checks publicly available airline fares." },
+      "back_to_back_fare_search": { "label": "Public back-to-back comparison", "help": "Compares two trips using public fares." },
+      "live_back_to_back_fare_search": { "label": "Live back-to-back comparison", "help": "Compares back-to-back fares through live providers." },
+      "flight_status_lookup": { "label": "Flight status lookup", "help": "Checks live flight status by number or route." },
+      "ai_itinerary_generation": { "label": "AI itinerary planning", "help": "Generates a day or complete itinerary with AI." },
+      "itinerary_optimization": { "label": "Route optimization", "help": "Applies optimized routing to an existing itinerary." },
+      "price_reoptimization": { "label": "Trip repricing", "help": "Reprices and reoptimizes an existing trip." }
+    },
+    "audit": { "title": "Recent admin history", "help": "Records the operator, target, and before-and-after values.", "empty": "No plan or charge changes have been recorded yet." },
+    "auditActions": { "usage_operation_costs_updated": "Updated feature charges", "usage_package_created": "Created plan", "usage_package_updated": "Updated plan", "usage_package_archived": "Archived plan", "registration_trial_updated": "Updated registration trial" }
   },
   "layout": {
     "eyebrow": "SYSTEM ADMIN",

@@ -3,6 +3,7 @@
 import { Clock3, LoaderCircle, Map, Plane, Search } from "lucide-react";
 import { useState } from "react";
 import { api } from "@/lib/api";
+import { useOperationCharge } from "@/components/usage-catalog-provider";
 
 type StatusItem = {
   item_id: string;
@@ -33,7 +34,7 @@ type Lookup = {
   id: string;
   items: StatusItem[];
   cache_hit: boolean;
-  usage?: { status: "reserved" | "charged" | "released" };
+  usage?: { status: "reserved" | "charged" | "released"; uses: number };
 };
 
 type Track = {
@@ -80,6 +81,7 @@ function TrackPreview({ track }: { track: Track }) {
 }
 
 export function FlightStatusSearch() {
+  const charge = useOperationCharge("flight_status_lookup");
   const [mode, setMode] = useState<"ident" | "route">("ident");
   const [ident, setIdent] = useState("");
   const [origin, setOrigin] = useState("TPE");
@@ -121,13 +123,13 @@ export function FlightStatusSearch() {
       <div className="grid gap-4 md:grid-cols-[1fr_1fr_auto]">
         {mode === "ident" ? <label className="grid gap-1 text-sm font-semibold">班號<input required value={ident} onChange={(event) => setIdent(event.target.value.toUpperCase())} placeholder="例如 BR198" className="rounded-xl border border-[var(--line)] px-4 py-3 font-normal uppercase" /></label> : <div className="grid grid-cols-2 gap-3"><label className="grid gap-1 text-sm font-semibold">出發機場<input required value={origin} onChange={(event) => setOrigin(event.target.value.toUpperCase())} maxLength={4} className="rounded-xl border border-[var(--line)] px-4 py-3 font-normal uppercase" /></label><label className="grid gap-1 text-sm font-semibold">抵達機場<input required value={destination} onChange={(event) => setDestination(event.target.value.toUpperCase())} maxLength={4} className="rounded-xl border border-[var(--line)] px-4 py-3 font-normal uppercase" /></label></div>}
         <label className="grid gap-1 text-sm font-semibold">出發日期<input required type="date" value={departureDate} onChange={(event) => setDepartureDate(event.target.value)} className="rounded-xl border border-[var(--line)] px-4 py-3 font-normal" /></label>
-        <button disabled={busy} className="mt-auto flex items-center justify-center gap-2 rounded-xl bg-[var(--coral)] px-6 py-3 font-semibold text-white disabled:opacity-60">{busy ? <LoaderCircle size={18} className="animate-spin" /> : <Search size={18} />}查詢</button>
+        <button disabled={busy || charge.status !== "ready"} className="mt-auto flex items-center justify-center gap-2 rounded-xl bg-[var(--coral)] px-6 py-3 font-semibold text-white disabled:opacity-60">{busy ? <LoaderCircle size={18} className="animate-spin" /> : <Search size={18} />}查詢 · {charge.label}</button>
       </div>
-      <p className="mt-3 text-xs text-[var(--muted)]">快取命中、空結果或供應商失敗不扣次；成功取得新的外部資料才扣 1 次。</p>
+      <p className="mt-3 text-xs text-[var(--muted)]">{charge.status === "ready" ? `快取命中、空結果或供應商失敗不扣次；成功取得新的外部資料才${charge.label}。` : charge.unavailableHelp}</p>
       {error && <p role="alert" className="mt-4 rounded-xl bg-red-50 p-3 text-sm text-red-800">{error}</p>}
     </form>
     {lookup && <section className="mt-8 space-y-4">
-      <div className="flex flex-wrap items-center justify-between gap-2"><h2 className="text-2xl font-bold">查詢結果</h2><p className="text-sm text-[var(--muted)]">{lookup.cache_hit ? "快取命中，本次未扣次" : lookup.usage?.status === "charged" ? "已扣 1 次" : "無結果，本次未扣次"}</p></div>
+      <div className="flex flex-wrap items-center justify-between gap-2"><h2 className="text-2xl font-bold">查詢結果</h2><p className="text-sm text-[var(--muted)]">{lookup.cache_hit ? "快取命中，本次未扣次" : lookup.usage?.status === "charged" ? `已扣 ${lookup.usage.uses} 次` : "無結果，本次未扣次"}</p></div>
       {!lookup.items.length && <p className="rounded-2xl border border-dashed border-[var(--line)] bg-white p-10 text-center text-[var(--muted)]">找不到完全符合班號、日期與機場的航班；系統不會套用近似班次。</p>}
       {lookup.items.map((item) => <article key={item.item_id} className="rounded-2xl border border-[var(--line)] bg-white p-5 md:p-6">
         <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="flex items-center gap-2 text-xs font-bold text-[var(--teal)]"><Plane size={16} />{item.ident || "班號未提供"}</p><h3 className="mt-1 text-2xl font-bold">{item.origin} → {item.destination}</h3></div><span className={`rounded-full px-3 py-1.5 text-sm font-semibold ${item.cancelled ? "bg-red-50 text-red-800" : "bg-emerald-50 text-emerald-800"}`}>{item.cancelled ? "已取消" : statusLabels[item.status || ""] || item.status || "狀態待確認"}</span></div>
