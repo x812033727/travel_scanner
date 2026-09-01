@@ -26,7 +26,9 @@ def _create_localizations() -> None:
         sa.Column("search_terms", sa.JSON(), nullable=False),
         sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
         sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False),
-        sa.CheckConstraint("locale IN ('en', 'ja', 'ko', 'zh-TW', 'zh-CN')", name="ck_hotspot_localization_locale"),
+        sa.CheckConstraint(
+            "locale IN ('en', 'ja', 'ko', 'zh-TW', 'zh-CN')", name="ck_hotspot_localization_locale"
+        ),
         sa.ForeignKeyConstraint(["hotspot_id"], ["travel_hotspots.id"], ondelete="CASCADE"),
         sa.PrimaryKeyConstraint("id"),
         sa.UniqueConstraint("hotspot_id", "locale", name="uq_hotspot_localization_locale"),
@@ -63,15 +65,30 @@ def _create_guides() -> None:
         sa.Column("metadata_json", sa.JSON(), nullable=False),
         sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
         sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False),
-        sa.CheckConstraint("content_type IN ('article', 'video')", name="ck_hotspot_guide_content_type"),
-        sa.CheckConstraint("locale IN ('en', 'ja', 'ko', 'zh-TW', 'zh-CN')", name="ck_hotspot_guide_locale"),
-        sa.CheckConstraint("review_status IN ('pending', 'approved', 'rejected', 'disabled')", name="ck_hotspot_guide_review_status"),
+        sa.CheckConstraint(
+            "content_type IN ('article', 'video')", name="ck_hotspot_guide_content_type"
+        ),
+        sa.CheckConstraint(
+            "locale IN ('en', 'ja', 'ko', 'zh-TW', 'zh-CN')", name="ck_hotspot_guide_locale"
+        ),
+        sa.CheckConstraint(
+            "review_status IN ('pending', 'approved', 'rejected', 'disabled')",
+            name="ck_hotspot_guide_review_status",
+        ),
         sa.ForeignKeyConstraint(["hotspot_id"], ["travel_hotspots.id"], ondelete="CASCADE"),
         sa.ForeignKeyConstraint(["reviewed_by_user_id"], ["users.id"], ondelete="SET NULL"),
         sa.PrimaryKeyConstraint("id"),
         sa.UniqueConstraint("hotspot_id", "canonical_url", name="uq_hotspot_guide_canonical_url"),
     )
-    for column in ("hotspot_id", "content_type", "provider", "locale", "provider_content_id", "review_status", "reviewed_by_user_id"):
+    for column in (
+        "hotspot_id",
+        "content_type",
+        "provider",
+        "locale",
+        "provider_content_id",
+        "review_status",
+        "reviewed_by_user_id",
+    ):
         op.create_index(f"ix_hotspot_guides_{column}", "hotspot_guides", [column])
 
 
@@ -87,8 +104,12 @@ def _create_clicks() -> None:
         sa.PrimaryKeyConstraint("id"),
         sa.UniqueConstraint("guide_id", "observed_on", name="uq_hotspot_guide_click_day"),
     )
-    op.create_index("ix_hotspot_guide_click_daily_guide_id", "hotspot_guide_click_daily", ["guide_id"])
-    op.create_index("ix_hotspot_guide_click_daily_observed_on", "hotspot_guide_click_daily", ["observed_on"])
+    op.create_index(
+        "ix_hotspot_guide_click_daily_guide_id", "hotspot_guide_click_daily", ["guide_id"]
+    )
+    op.create_index(
+        "ix_hotspot_guide_click_daily_observed_on", "hotspot_guide_click_daily", ["observed_on"]
+    )
 
 
 def upgrade() -> None:
