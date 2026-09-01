@@ -107,5 +107,23 @@ async def require_admin(user: CurrentUser) -> User:
 AdminUser = Annotated[User, Depends(require_admin)]
 
 
+def can_deploy_user(user: User) -> bool:
+    settings = get_settings()
+    return bool(
+        settings.deployments_configured
+        and is_admin_user(user)
+        and user.email.lower() in settings.deploy_admin_email_set
+    )
+
+
+async def require_deploy_admin(user: CurrentUser) -> User:
+    if not can_deploy_user(user):
+        raise AppError(403, "deployment_admin_required", "此功能僅限部署管理員使用")
+    return user
+
+
+DeployAdminUser = Annotated[User, Depends(require_deploy_admin)]
+
+
 async def find_user_by_email(session: AsyncSession, email: str) -> User | None:
     return cast(User | None, await session.scalar(select(User).where(User.email == email.lower())))

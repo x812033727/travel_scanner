@@ -53,6 +53,12 @@ class Settings(BaseSettings):
     app_secret_key: str = "development-secret-change-me-please-32"
     settings_encryption_key: str | None = None
     admin_emails: str = ""
+    deployments_enabled: bool = False
+    deploy_admin_emails: str = ""
+    deploy_agent_socket: str = "/run/travel-scanner-deployer/deployer.sock"
+    deploy_agent_hmac_key: str | None = None
+    deploy_agent_timeout_seconds: float = Field(default=10.0, gt=0, le=30)
+    deploy_cooldown_seconds: int = Field(default=300, ge=0, le=3_600)
     database_url: str = "postgresql+asyncpg://travel:travel@localhost:5432/travel_scanner"
     redis_url: str = "redis://localhost:6379/0"
     api_cors_origins: str = "http://localhost:3000"
@@ -253,6 +259,24 @@ class Settings(BaseSettings):
         return {email.strip().lower() for email in self.admin_emails.split(",") if email.strip()}
 
     @property
+    def deploy_admin_email_set(self) -> set[str]:
+        return {
+            email.strip().lower()
+            for email in self.deploy_admin_emails.split(",")
+            if email.strip()
+        }
+
+    @property
+    def deployments_configured(self) -> bool:
+        return bool(
+            self.deployments_enabled
+            and self.deploy_admin_email_set
+            and self.deploy_agent_hmac_key
+            and len(self.deploy_agent_hmac_key) >= 32
+            and self.deploy_agent_socket.startswith("/")
+        )
+
+    @property
     def amadeus_base_url(self) -> str:
         return (
             "https://api.amadeus.com"
@@ -348,6 +372,13 @@ class Settings(BaseSettings):
                 "LINE messaging requires LINE_CHANNEL_SECRET, LINE_CHANNEL_ACCESS_TOKEN, "
                 "and LINE_OFFICIAL_ACCOUNT_ID"
             )
+        if self.deployments_enabled:
+            if not self.deploy_admin_email_set:
+                errors.append("DEPLOY_ADMIN_EMAILS must contain at least one email")
+            if not self.deploy_agent_hmac_key or len(self.deploy_agent_hmac_key) < 32:
+                errors.append("DEPLOY_AGENT_HMAC_KEY must be set to at least 32 characters")
+            if not self.deploy_agent_socket.startswith("/"):
+                errors.append("DEPLOY_AGENT_SOCKET must be an absolute Unix socket path")
         official_ai_hosts = {
             "OPENAI_API_BASE_URL": (
                 self.openai_api_key,

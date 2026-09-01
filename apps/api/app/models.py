@@ -12,11 +12,13 @@ from sqlalchemy import (
     Date,
     DateTime,
     ForeignKey,
+    Index,
     Integer,
     Numeric,
     String,
     Text,
     UniqueConstraint,
+    text,
 )
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -897,4 +899,88 @@ class AdminAuditLog(Base):
     action: Mapped[str] = mapped_column(String(64), index=True)
     target: Mapped[str] = mapped_column(String(128), index=True)
     metadata_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+DEPLOYMENT_STATUSES = (
+    "queued",
+    "preflight",
+    "building",
+    "backing_up",
+    "migrating",
+    "activating",
+    "verifying",
+    "rolling_back",
+    "succeeded",
+    "failed",
+    "rolled_back",
+    "manual_intervention_required",
+)
+ACTIVE_DEPLOYMENT_STATUSES = DEPLOYMENT_STATUSES[:8]
+
+
+class DeploymentRun(Timestamped, Base):
+    __tablename__ = "deployment_runs"
+    __table_args__ = (
+        UniqueConstraint(
+            "requested_by_user_id",
+            "idempotency_key",
+            name="uq_deployment_request_idempotency",
+        ),
+        CheckConstraint(
+            "status IN (" + ", ".join(f"'{status}'" for status in DEPLOYMENT_STATUSES) + ")",
+            name="ck_deployment_run_status",
+        ),
+        Index(
+            "uq_deployment_one_active",
+            text("(1)"),
+            unique=True,
+            postgresql_where=text(
+                "status IN (" + ", ".join(
+                    f"'{status}'" for status in ACTIVE_DEPLOYMENT_STATUSES
+                ) + ")"
+            ),
+            sqlite_where=text(
+                "status IN (" + ", ".join(
+                    f"'{status}'" for status in ACTIVE_DEPLOYMENT_STATUSES
+                ) + ")"
+            ),
+        ),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    requested_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    idempotency_key: Mapped[str] = mapped_column(String(255))
+    agent_job_id: Mapped[str | None] = mapped_column(String(64), nullable=True, unique=True)
+    status: Mapped[str] = mapped_column(String(32), default="queued", index=True)
+    stage: Mapped[str] = mapped_column(String(32), default="queued")
+    previous_sha: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    target_sha: Mapped[str] = mapped_column(String(40), index=True)
+    target_commit_subject: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    ci_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+    backup_name: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    rollback_status: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    failure_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    failure_detail: Mapped[str | None] = mapped_column(Text, nullable=True)
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    metadata_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+
+
+class DeploymentEvent(Base):
+    __tablename__ = "deployment_events"
+    __table_args__ = (
+        UniqueConstraint("run_id", "sequence", name="uq_deployment_event_sequence"),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("deployment_runs.id", ondelete="CASCADE"), index=True
+    )
+    sequence: Mapped[int] = mapped_column(Integer)
+    stage: Mapped[str] = mapped_column(String(32))
+    status: Mapped[str] = mapped_column(String(32))
+    message: Mapped[str] = mapped_column(Text)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
