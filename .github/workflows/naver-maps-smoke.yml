@@ -1,0 +1,37 @@
+name: NAVER Maps credential smoke
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-seoul:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      redis:
+        image: redis:7.4-alpine
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+    env:
+      REDIS_URL: redis://127.0.0.1:6379/0
+      NAVER_MAPS_CLIENT_ID: ${{ secrets.NAVER_MAPS_CLIENT_ID }}
+      NAVER_MAPS_CLIENT_SECRET: ${{ secrets.NAVER_MAPS_CLIENT_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.13"
+      - run: uv sync --frozen
+        working-directory: apps/api
+      - name: Verify Seoul places and driving route
+        run: uv run python -m app.cli verify-naver-maps --strict
+        working-directory: apps/api
+      - name: Dynamic Map verification reminder
+        run: >-
+          echo "Server APIs passed. Verify Web Dynamic Map separately from an
+          origin registered in the NAVER Cloud application."

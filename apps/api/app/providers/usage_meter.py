@@ -24,6 +24,9 @@ GOOGLE_MAPS_OPERATIONS = (
     "weather_current",
     "weather_daily_forecast",
 )
+NAVER_MAPS_PROVIDER = "naver_maps"
+NAVER_BILLING_TIMEZONE = ZoneInfo("Asia/Seoul")
+NAVER_MAPS_OPERATIONS = ("local_search", "geocode", "directions")
 
 
 @dataclass(frozen=True)
@@ -344,4 +347,130 @@ async def google_maps_usage_snapshot(
         tracking_started_at=current.tracking_started_at,
         observed_at=observed_at,
         available=True,
+    )
+
+
+def _naver_usage_key(now: datetime) -> str:
+    return f"provider-usage:{NAVER_MAPS_PROVIDER}:{now:%Y-%m}"
+
+
+async def record_naver_maps_request(
+    redis: Redis,
+    operation: str,
+    *,
+    now: datetime | None = None,
+) -> None:
+    """Record server-observed NAVER API calls without affecting provider availability."""
+    if operation not in NAVER_MAPS_OPERATIONS:
+        raise ValueError(f"unsupported NAVER Maps usage operation: {operation}")
+    observed_at = now or datetime.now(UTC)
+    billing_month = observed_at.astimezone(NAVER_BILLING_TIMEZONE)
+    _, period_end = _month_window(billing_month)
+    expires_at = datetime.combine(
+        period_end + timedelta(days=1),
+        time.min,
+        tzinfo=NAVER_BILLING_TIMEZONE,
+    ) + timedelta(days=GOOGLE_USAGE_RETENTION_DAYS)
+    key = _naver_usage_key(billing_month)
+    try:
+        pipeline = redis.pipeline(transaction=True)
+        pipeline.hincrby(key, "total", 1)
+        pipeline.hincrby(key, f"operation:{operation}", 1)
+        pipeline.hsetnx(key, "tracking_started_at", observed_at.isoformat())
+        pipeline.expireat(key, expires_at)
+        await pipeline.execute()
+    except RedisError:
+        return
+
+
+async def naver_maps_usage_snapshot(
+    redis: Redis,
+    monthly_limit: int = 0,
+    *,
+    history_months: int = GOOGLE_USAGE_HISTORY_MONTHS,
+    now: datetime | None = None,
+) -> ProviderUsageSnapshot:
+    """Return app-observed NAVER server requests.
+
+    The optional limit is administrator supplied and is not presented as NAVER billing data.
+    Browser Dynamic Map loads are intentionally outside this meter.
+    """
+    observed_at = now or datetime.now(UTC)
+    billing_now = observed_at.astimezone(NAVER_BILLING_TIMEZONE)
+    period_start, period_end = _month_window(billing_now)
+    months = tuple(_month_at(billing_now, -offset) for offset in range(max(1, history_months)))
+    try:
+        raw_months = [
+            await cast(Awaitable[dict[Any, Any]], redis.hgetall(_naver_usage_key(month)))
+            for month in months
+        ]
+    except RedisError:
+        return ProviderUsageSnapshot(
+            period=f"{billing_now:%Y-%m}",
+            period_start=period_start,
+            period_end=period_end,
+            used=None,
+            monthly_limit=monthly_limit,
+            remaining=None,
+            percentage=None,
+            free_limit=monthly_limit,
+            free_usage=None,
+            free_remaining=None,
+            billable_overage=None,
+            breakdown={},
+            sku_usage=(),
+            monthly_history=(),
+            tracking_started_at=None,
+            observed_at=observed_at,
+            available=False,
+            billing_timezone="Asia/Seoul",
+            pricing_region="kr",
+        )
+
+    history: list[ProviderMonthlyUsageSnapshot] = []
+    for month, raw in zip(months, raw_months, strict=True):
+        values = {_text(key): _text(value) for key, value in raw.items()}
+        used = int(values.get("total", 0))
+        breakdown = {
+            operation: int(values.get(f"operation:{operation}", 0))
+            for operation in NAVER_MAPS_OPERATIONS
+        }
+        month_start, month_end = _month_window(month)
+        started = values.get("tracking_started_at")
+        history.append(
+            ProviderMonthlyUsageSnapshot(
+                period=f"{month:%Y-%m}",
+                period_start=month_start,
+                period_end=month_end,
+                used=used,
+                free_limit=monthly_limit,
+                free_usage=min(used, monthly_limit) if monthly_limit else 0,
+                free_remaining=max(0, monthly_limit - used) if monthly_limit else 0,
+                billable_overage=max(0, used - monthly_limit) if monthly_limit else 0,
+                breakdown=breakdown,
+                sku_usage=(),
+                tracking_started_at=datetime.fromisoformat(started) if started else None,
+            )
+        )
+    current = history[0]
+    return ProviderUsageSnapshot(
+        period=current.period,
+        period_start=current.period_start,
+        period_end=current.period_end,
+        used=current.used,
+        monthly_limit=monthly_limit,
+        remaining=max(0, monthly_limit - current.used) if monthly_limit else None,
+        percentage=round(current.used / monthly_limit * 100, 1) if monthly_limit else None,
+        free_limit=monthly_limit,
+        free_usage=min(current.used, monthly_limit) if monthly_limit else None,
+        free_remaining=max(0, monthly_limit - current.used) if monthly_limit else None,
+        billable_overage=max(0, current.used - monthly_limit) if monthly_limit else None,
+        breakdown=current.breakdown,
+        sku_usage=(),
+        monthly_history=tuple(history),
+        tracking_started_at=current.tracking_started_at,
+        observed_at=observed_at,
+        available=True,
+        billing_timezone="Asia/Seoul",
+        pricing_region="kr",
     )

@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from typing import Any, Literal, Protocol, cast
-from urllib.parse import urlencode
+from urllib.parse import quote, urlencode
 from uuid import UUID
 
 import httpx
@@ -16,12 +16,24 @@ from pydantic import BaseModel, Field
 from redis.asyncio import Redis
 
 from app.config import Settings, get_settings
-from app.providers.usage_meter import record_google_maps_request
+from app.providers.usage_meter import record_google_maps_request, record_naver_maps_request
 
 logger = logging.getLogger(__name__)
 
 TravelMode = Literal["transit", "walk", "drive"]
 TRAVEL_MODES: set[str] = {"transit", "walk", "drive"}
+
+
+def infer_place_provider(location_source: str | None, data: dict[str, Any] | None) -> str | None:
+    explicit = str((data or {}).get("place_provider") or "")
+    if explicit in {"google_places", "naver_local"}:
+        return explicit
+    source = location_source or ""
+    if source.startswith("google_places"):
+        return "google_places"
+    if source.startswith("naver_local"):
+        return "naver_local"
+    return None
 
 
 class RoutePoint(BaseModel):
@@ -30,6 +42,7 @@ class RoutePoint(BaseModel):
     latitude: float
     longitude: float
     provider_place_id: str | None = None
+    place_provider: str | None = None
 
 
 class RouteStep(BaseModel):
@@ -77,6 +90,15 @@ class RouteSegment(BaseModel):
     steps: list[RouteStep] = Field(default_factory=list)
     details_available: list[str] = Field(default_factory=list)
     warnings: list[str] = Field(default_factory=list)
+
+
+class ExternalNavigation(BaseModel):
+    provider: str = "naver_maps"
+    label: str = "NAVER Maps"
+    travel_mode: TravelMode
+    app_url: str
+    web_url: str
+    reason: str
 
 
 @dataclass(frozen=True)
@@ -158,7 +180,7 @@ class GoogleRouteProvider:
 
     @staticmethod
     def waypoint(point: RoutePoint) -> dict[str, Any]:
-        if point.provider_place_id:
+        if point.provider_place_id and point.place_provider in {None, "google_places"}:
             return {"placeId": point.provider_place_id}
         return {"location": {"latLng": {"latitude": point.latitude, "longitude": point.longitude}}}
 
@@ -385,11 +407,13 @@ class GoogleRouteProvider:
                 **(
                     {"origin_place_id": origin.provider_place_id}
                     if origin.provider_place_id
+                    and origin.place_provider in {None, "google_places"}
                     else {}
                 ),
                 **(
                     {"destination_place_id": destination.provider_place_id}
                     if destination.provider_place_id
+                    and destination.place_provider in {None, "google_places"}
                     else {}
                 ),
             }
@@ -522,6 +546,195 @@ class NavitimeRouteProvider:
         )
 
 
+def _encode_polyline(points: list[tuple[float, float]]) -> str | None:
+    if not points:
+        return None
+    output: list[str] = []
+    previous_latitude = 0
+    previous_longitude = 0
+    for latitude, longitude in points:
+        encoded_latitude = round(latitude * 100_000)
+        encoded_longitude = round(longitude * 100_000)
+        for delta in (
+            encoded_latitude - previous_latitude,
+            encoded_longitude - previous_longitude,
+        ):
+            value = ~(delta << 1) if delta < 0 else delta << 1
+            while value >= 0x20:
+                output.append(chr((0x20 | (value & 0x1F)) + 63))
+                value >>= 5
+            output.append(chr(value + 63))
+        previous_latitude = encoded_latitude
+        previous_longitude = encoded_longitude
+    return "".join(output)
+
+
+def naver_external_navigation(
+    origin: RoutePoint,
+    destination: RoutePoint,
+    travel_mode: TravelMode,
+    *,
+    reason: str,
+) -> ExternalNavigation:
+    mode = {"transit": "public", "walk": "walk", "drive": "car"}[travel_mode]
+    params = urlencode(
+        {
+            "slat": f"{origin.latitude:.7f}",
+            "slng": f"{origin.longitude:.7f}",
+            "sname": origin.name,
+            "dlat": f"{destination.latitude:.7f}",
+            "dlng": f"{destination.longitude:.7f}",
+            "dname": destination.name,
+            "appname": "travelscanner.aibubu.cloud",
+        }
+    )
+    start = f"{origin.longitude:.7f},{origin.latitude:.7f},{quote(origin.name, safe='')},PLACE_POI"
+    goal = (
+        f"{destination.longitude:.7f},{destination.latitude:.7f},"
+        f"{quote(destination.name, safe='')},PLACE_POI"
+    )
+    web_mode = {"transit": "transit", "walk": "walk", "drive": "car"}[travel_mode]
+    return ExternalNavigation(
+        travel_mode=travel_mode,
+        app_url=f"nmap://route/{mode}?{params}",
+        web_url=f"https://map.naver.com/p/directions/{start}/{goal}/-/{web_mode}",
+        reason=reason,
+    )
+
+
+class NaverDirectionsProvider:
+    name = "naver_maps"
+    url = "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving"
+
+    def __init__(
+        self,
+        settings: Settings,
+        client: httpx.AsyncClient | None = None,
+        redis: Redis | None = None,
+    ) -> None:
+        self.settings = settings
+        self.client = client
+        self.redis = redis
+
+    async def compute(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        departure_time: datetime | None,
+        preference: str,
+        travel_mode: TravelMode = "drive",
+    ) -> RouteSegment | None:
+        if travel_mode != "drive" or not self.settings.naver_maps_configured:
+            return None
+        headers = {
+            "X-NCP-APIGW-API-KEY-ID": self.settings.naver_maps_client_id or "",
+            "X-NCP-APIGW-API-KEY": self.settings.naver_maps_client_secret or "",
+            "Accept": "application/json",
+        }
+        params = {
+            "start": f"{origin.longitude:.7f},{origin.latitude:.7f}",
+            "goal": f"{destination.longitude:.7f},{destination.latitude:.7f}",
+            "option": "trafast",
+        }
+        try:
+            if self.client is not None:
+                response = await self.client.get(self.url, params=params, headers=headers)
+            else:
+                async with httpx.AsyncClient(
+                    timeout=self.settings.provider_timeout_seconds
+                ) as client:
+                    response = await client.get(self.url, params=params, headers=headers)
+            response.raise_for_status()
+            raw_payload = response.json()
+            payload = cast(dict[str, Any], raw_payload) if isinstance(raw_payload, dict) else {}
+        except httpx.HTTPStatusError as exc:
+            logger.warning(
+                "naver_directions_http_error",
+                extra={
+                    "provider": self.name,
+                    "status_code": exc.response.status_code,
+                    "reason_code": "rate_limited"
+                    if exc.response.status_code == 429
+                    else "provider_http_error",
+                },
+            )
+            return None
+        except (httpx.HTTPError, ValueError):
+            logger.warning(
+                "naver_directions_unavailable",
+                extra={"provider": self.name, "reason_code": "provider_unavailable"},
+            )
+            return None
+        finally:
+            if self.redis is not None:
+                await record_naver_maps_request(self.redis, "directions")
+        if payload.get("code") not in (None, 0):
+            return None
+        candidates = cast(
+            list[dict[str, Any]],
+            cast(dict[str, Any], payload.get("route") or {}).get("trafast") or [],
+        )
+        if not candidates:
+            return None
+        route = candidates[0]
+        summary = cast(dict[str, Any], route.get("summary") or {})
+        try:
+            total_minutes = max(1, round(float(summary.get("duration") or 0) / 60_000))
+        except (TypeError, ValueError):
+            return None
+        path: list[tuple[float, float]] = []
+        for point in cast(list[list[object]], route.get("path") or []):
+            if len(point) < 2:
+                continue
+            try:
+                path.append((float(str(point[1])), float(str(point[0]))))
+            except (TypeError, ValueError):
+                continue
+        steps: list[RouteStep] = []
+        for guide in cast(list[dict[str, Any]], route.get("guide") or []):
+            raw_duration = guide.get("duration")
+            try:
+                guide_minutes = (
+                    max(1, round(float(str(raw_duration)) / 60_000))
+                    if raw_duration not in (None, 0, "0")
+                    else None
+                )
+            except (TypeError, ValueError):
+                guide_minutes = None
+            steps.append(
+                RouteStep(
+                    travel_mode="DRIVE",
+                    instruction=str(guide.get("instructions") or "依道路行駛"),
+                    duration_minutes=guide_minutes,
+                    distance_meters=guide.get("distance"),
+                )
+            )
+        navigation = naver_external_navigation(
+            origin,
+            destination,
+            "drive",
+            reason="在 NAVER Maps 查看即時道路導航。",
+        )
+        return RouteSegment(
+            from_item_id=origin.item_id,
+            to_item_id=destination.item_id,
+            travel_mode="drive",
+            provider=self.name,
+            attribution="NAVER Maps",
+            generated_at=datetime.now(UTC),
+            requested_departure_time=departure_time,
+            schedule_mode="preview" if departure_time else "live",
+            preference=preference,
+            duration_minutes=total_minutes,
+            distance_meters=summary.get("distance"),
+            encoded_polyline=_encode_polyline(path),
+            maps_url=navigation.web_url,
+            steps=steps,
+            details_available=["steps", "traffic"] if steps else ["traffic"],
+            warnings=["NAVER 汽車路線依目前路況估算，不代表行程日期的即時路況。"],
+        )
+
+
 class RouteService:
     def __init__(
         self,
@@ -529,15 +742,20 @@ class RouteService:
         settings: Settings | None = None,
         google: RouteProvider | None = None,
         navitime: RouteProvider | None = None,
+        naver: RouteProvider | None = None,
     ) -> None:
         self.redis = redis
         self.settings = settings or get_settings()
         self.google = google or GoogleRouteProvider(self.settings, None, redis)
         self.navitime = navitime or NavitimeRouteProvider(self.settings)
+        self.naver = naver or NaverDirectionsProvider(self.settings, None, redis)
 
-    def _providers(self, japan: bool, travel_mode: TravelMode) -> list[RouteProvider]:
-        if japan and travel_mode == "transit":
+    def _providers(self, region_code: str | None, travel_mode: TravelMode) -> list[RouteProvider]:
+        region = (region_code or "").upper()
+        if region == "JP" and travel_mode == "transit":
             return [self.navitime, self.google]
+        if region == "KR" and travel_mode == "drive":
+            return [self.naver, self.google]
         return [self.google]
 
     async def compute(
@@ -547,7 +765,8 @@ class RouteService:
         departure_time: datetime | None,
         preference: str,
         *,
-        japan: bool,
+        region_code: str | None = None,
+        japan: bool | None = None,
         travel_mode: TravelMode = "transit",
         refresh: bool = False,
     ) -> RouteSegment | None:
@@ -557,9 +776,11 @@ class RouteService:
                 "d": [round(destination.latitude, 6), round(destination.longitude, 6)],
                 "opi": origin.provider_place_id,
                 "dpi": destination.provider_place_id,
+                "opp": origin.place_provider,
+                "dpp": destination.place_provider,
                 "t": departure_time.isoformat() if departure_time else None,
                 "p": preference,
-                "j": japan,
+                "r": region_code or ("JP" if japan else None),
                 "m": travel_mode,
             },
             sort_keys=True,
@@ -573,7 +794,8 @@ class RouteService:
                 return cached_segment.model_copy(
                     update={"from_item_id": origin.item_id, "to_item_id": destination.item_id}
                 )
-        for provider in self._providers(japan, travel_mode):
+        effective_region = region_code or ("JP" if japan else None)
+        for provider in self._providers(effective_region, travel_mode):
             provider_segment = await provider.compute(
                 origin, destination, departure_time, preference, travel_mode
             )
@@ -591,7 +813,8 @@ class RouteService:
         pairs: list[tuple[RoutePoint, RoutePoint, datetime | None]],
         preference: str,
         *,
-        japan: bool,
+        region_code: str | None = None,
+        japan: bool | None = None,
         travel_mode: TravelMode = "transit",
         refresh: bool = False,
     ) -> list[RouteSegment | None]:
@@ -600,19 +823,50 @@ class RouteService:
         async def one(pair: tuple[RoutePoint, RoutePoint, datetime | None]) -> RouteSegment | None:
             async with semaphore:
                 return await self.compute(
-                    pair[0], pair[1], pair[2], preference, japan=japan, refresh=refresh
-                    , travel_mode=travel_mode
+                    pair[0],
+                    pair[1],
+                    pair[2],
+                    preference,
+                    region_code=region_code,
+                    japan=japan,
+                    refresh=refresh,
+                    travel_mode=travel_mode,
                 )
 
         return await asyncio.gather(*(one(pair) for pair in pairs))
 
 
 def is_japan_trip(timezone: str, destination_name: str | None, data: dict[str, Any]) -> bool:
+    return trip_region_code(timezone, destination_name, data) == "JP"
+
+
+def trip_region_code(
+    timezone: str, destination_name: str | None, data: dict[str, Any]
+) -> str | None:
+    explicit = str(data.get("destination_country_code") or "").upper()
+    if explicit in {"JP", "KR", "TH"}:
+        return explicit
     country = str(data.get("destination_country") or "")
-    return (
-        timezone == "Asia/Tokyo"
-        or country in {"日本", "Japan"}
-        or "日本" in (destination_name or "")
+    destination = destination_name or ""
+    if timezone == "Asia/Tokyo" or country in {"日本", "Japan"} or "日本" in destination:
+        return "JP"
+    if timezone == "Asia/Seoul" or country in {"韓國", "韩国", "Korea"} or any(
+        token in destination for token in ("韓國", "首爾", "釜山")
+    ):
+        return "KR"
+    if timezone == "Asia/Bangkok" or country in {"泰國", "泰国", "Thailand"}:
+        return "TH"
+    return None
+
+
+def route_provider_configured(
+    settings: Settings, region_code: str | None, travel_mode: TravelMode
+) -> bool:
+    region = (region_code or "").upper()
+    return bool(
+        settings.google_maps_api_key
+        or (region == "JP" and travel_mode == "transit" and settings.navitime_configured)
+        or (region == "KR" and travel_mode == "drive" and settings.naver_maps_configured)
     )
 
 

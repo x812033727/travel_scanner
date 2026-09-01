@@ -119,6 +119,11 @@ class PublicRuntimeConfig(BaseModel):
     google_places_enabled: bool = False
     google_maps_embed_enabled: bool = False
     navitime_enabled: bool = False
+    naver_maps_browser_client_id: str | None = None
+    naver_maps_enabled: bool = False
+    naver_places_enabled: bool = False
+    naver_directions_enabled: bool = False
+    naver_dynamic_map_enabled: bool = False
 
 
 class SiteVisibility(BaseModel):

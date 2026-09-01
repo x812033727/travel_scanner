@@ -23,7 +23,14 @@ from app.trips.route_planner import (
     project_day_schedule,
     segment_from_record,
 )
-from app.trips.routing import RoutePoint, RouteSegment, RouteService, TravelMode, is_japan_trip
+from app.trips.routing import (
+    RoutePoint,
+    RouteSegment,
+    RouteService,
+    TravelMode,
+    infer_place_provider,
+    trip_region_code,
+)
 from app.trips.schedule import active_route_rows, route_pair_count
 
 
@@ -36,6 +43,7 @@ def _route_point(item: TripPlanItem) -> RoutePoint | None:
         latitude=float(item.latitude),
         longitude=float(item.longitude),
         provider_place_id=item.provider_place_id,
+        place_provider=infer_place_provider(item.location_source, item.data),
     )
 
 
@@ -169,7 +177,7 @@ async def compute_and_apply_routes(
                 destination,
                 projected_end,
                 setting.route_preference,
-                japan=is_japan_trip(trip.timezone, trip.destination_name, trip.data),
+                region_code=trip_region_code(trip.timezone, trip.destination_name, trip.data),
                 travel_mode=travel_mode,
                 refresh=refresh,
             )

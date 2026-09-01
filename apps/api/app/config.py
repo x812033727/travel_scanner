@@ -177,6 +177,10 @@ class Settings(BaseSettings):
     google_maps_essentials_free_limit: int = Field(default=10_000, ge=1, le=10_000_000)
     google_maps_pro_free_limit: int = Field(default=5_000, ge=1, le=10_000_000)
     google_maps_enterprise_free_limit: int = Field(default=1_000, ge=1, le=10_000_000)
+    naver_maps_client_id: str | None = None
+    naver_maps_client_secret: str | None = None
+    naver_maps_monthly_request_limit: int = Field(default=0, ge=0, le=10_000_000)
+    naver_place_cache_ttl_seconds: int = Field(default=900, ge=60, le=86_400)
     place_photo_ip_limit: int = Field(default=120, ge=1, le=10_000)
     place_photo_window_seconds: int = Field(default=60, ge=10, le=3_600)
     place_photo_cache_ttl_seconds: int = Field(default=3_600, ge=60, le=86_400)
@@ -295,6 +299,10 @@ class Settings(BaseSettings):
         return bool(
             self.navitime_api_base_url and self.navitime_client_id and self.navitime_api_key
         )
+
+    @property
+    def naver_maps_configured(self) -> bool:
+        return bool(self.naver_maps_client_id and self.naver_maps_client_secret)
 
     @property
     def line_messaging_configured(self) -> bool:

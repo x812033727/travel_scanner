@@ -8,6 +8,9 @@ export default defineConfig({
     pool: "threads",
     maxWorkers: 1,
     fileParallelism: false,
+    // OneDrive filesystem hooks make the interaction-heavy jsdom suites slower on Windows.
+    // Keep the existing fail-fast budget in Linux CI.
+    testTimeout: process.platform === "win32" ? 15_000 : 5_000,
   },
   resolve: { alias: { "@": import.meta.dirname } },
 });

@@ -19,6 +19,7 @@ from app.destinations.catalog import DESTINATIONS, SEARCHABLE_DESTINATIONS
 from app.i18n import Locale, current_locale
 from app.infra import client_ip, enforce_named_rate_limit, get_redis
 from app.places.google import GoogleTravelService
+from app.places.naver import NaverPlaceService
 from app.problems import AppError
 from app.providers.usage_meter import record_google_maps_request
 from app.search.schemas import PropertyType, Travelers, TripPace
@@ -77,8 +78,13 @@ async def autocomplete_places(
     allowed_codes = {"jp", "kr", "th"}
     if len(codes) > 3 or any(code not in allowed_codes for code in codes):
         raise AppError(422, "invalid_place_regions", "地點搜尋目前支援日本、韓國與泰國")
-    service = GoogleTravelService(get_redis(), await load_runtime_settings(session), locale=locale)
-    if not service.configured:
+    settings = await load_runtime_settings(session)
+    redis = get_redis()
+    google = GoogleTravelService(redis, settings, locale=locale)
+    naver = NaverPlaceService(redis, settings)
+    if codes == ["kr"] and not naver.configured and not google.configured:
+        raise AppError(503, "place_provider_not_configured", "韓國地點搜尋服務尚未啟用")
+    if codes != ["kr"] and not google.configured:
         raise AppError(503, "google_maps_not_configured", "Google Maps 地點搜尋尚未啟用")
     await enforce_named_rate_limit(
         "google-places-user",
@@ -86,7 +92,11 @@ async def autocomplete_places(
         limit=GOOGLE_PLACES_USER_LIMIT,
         window_seconds=GOOGLE_PLACES_USER_WINDOW_SECONDS,
     )
-    return await service.autocomplete(q, session_token, codes, latitude, longitude)
+    if codes == ["kr"] and naver.configured:
+        results = await naver.autocomplete(q, session_token)
+        if results:
+            return results
+    return await google.autocomplete(q, session_token, codes, latitude, longitude)
 
 
 @public_router.get("/{provider}/{place_id}")
@@ -99,20 +109,28 @@ async def get_place_details(
     session_token: str | None = None,
 ) -> dict[str, Any]:
     _ = user
-    if provider != "google_places":
-        raise AppError(404, "place_provider_not_found", "不支援的地點來源")
     if session_token is not None and not 8 <= len(session_token) <= 36:
         raise AppError(422, "invalid_session_token", "地點搜尋工作階段代碼格式錯誤")
-    service = GoogleTravelService(get_redis(), await load_runtime_settings(session), locale=locale)
-    if not service.configured:
-        raise AppError(503, "google_maps_not_configured", "Google Maps 地點搜尋尚未啟用")
+    settings = await load_runtime_settings(session)
+    redis = get_redis()
     await enforce_named_rate_limit(
         "google-places-user",
         str(user.id),
         limit=GOOGLE_PLACES_USER_LIMIT,
         window_seconds=GOOGLE_PLACES_USER_WINDOW_SECONDS,
     )
-    result = await service.place_details(place_id, session_token)
+    if provider == "google_places":
+        google_service = GoogleTravelService(redis, settings, locale=locale)
+        if not google_service.configured:
+            raise AppError(503, "google_maps_not_configured", "Google Maps 地點搜尋尚未啟用")
+        result = await google_service.place_details(place_id, session_token)
+    elif provider == "naver_local":
+        naver_service = NaverPlaceService(redis, settings)
+        if not naver_service.configured:
+            raise AppError(503, "naver_maps_not_configured", "NAVER Maps 地點搜尋尚未啟用")
+        result = await naver_service.place_details(place_id, session_token)
+    else:
+        raise AppError(404, "place_provider_not_found", "不支援的地點來源")
     if not result:
         raise AppError(404, "place_not_found", "找不到這個地點")
     return result

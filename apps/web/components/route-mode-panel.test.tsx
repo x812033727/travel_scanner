@@ -76,6 +76,44 @@ describe("route mode panel", () => {
     expect(fetchMock.mock.calls.some(([url]) => String(url).endsWith("/routes/preview"))).toBe(true);
   });
 
+  it("offers NAVER external navigation without enabling apply when Korean transit has no internal route", async () => {
+    const koreanTrip = {
+      ...trip,
+      destination_country_code: "KR",
+      route_segments: [],
+      routing: { ...trip.routing, status: "idle" as const, completed: 0 },
+    };
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.endsWith("/runtime/public-config")) {
+        return ok({ google_maps_embed_enabled: false, naver_dynamic_map_enabled: false });
+      }
+      return ok({
+        kind: "external_only",
+        preview_id: null,
+        expires_at: null,
+        segment: null,
+        schedule_impact: null,
+        external_navigation: {
+          provider: "naver_maps",
+          label: "NAVER Maps",
+          travel_mode: "transit",
+          app_url: "nmap://route/public?slat=35.7&slng=139.7&dlat=35.71&dlng=139.8",
+          web_url: "https://map.naver.com/p/directions/35.7,139.7,上野/35.71,139.8,淺草/-/transit",
+          reason: "NAVER 官方 Directions API 不提供可保存的大眾運輸班次；請到 NAVER Maps 查看。",
+        },
+      });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<RouteModePanel trip={koreanTrip} items={items} fromItemId="from" toItemId="to" onApplied={() => undefined} onError={() => undefined} />);
+
+    const externalLink = await screen.findByRole("link", { name: /用 NAVER Maps 規劃/ });
+    expect(externalLink.getAttribute("href")).toContain("https://map.naver.com/");
+    expect((screen.getByRole("button", { name: "外部導航，無法套用" }) as HTMLButtonElement).disabled).toBe(true);
+    expect(screen.queryByRole("button", { name: "套用此路線" })).toBeNull();
+    expect(screen.getByText(/外部結果不會自動套用/)).toBeTruthy();
+  });
+
   it("resolves missing endpoints and opens the correct item editor when unresolved", async () => {
     const missingItems = items.map((item) => ({
       ...item,

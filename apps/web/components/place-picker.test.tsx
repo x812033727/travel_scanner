@@ -95,6 +95,47 @@ describe("PlacePicker", () => {
     expect(onSelect).toHaveBeenCalledWith(expect.objectContaining({ place_id: "two" }));
   });
 
+  it("labels NAVER Korean results and preserves the provider on selection", async () => {
+    const onSelect = vi.fn();
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify([{
+        provider: "naver_local",
+        place_id: "naver-opaque-place",
+        name: "景福宮",
+        address: "서울특별시 종로구 사직로 161",
+        attribution: "NAVER",
+      }]), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify({
+        provider: "naver_local",
+        place_id: "naver-opaque-place",
+        name: "景福宮",
+        address: "서울특별시 종로구 사직로 161",
+        latitude: 37.5796,
+        longitude: 126.977,
+        naver_maps_url: "https://map.naver.com/p/search/%EA%B2%BD%EB%B3%B5%EA%B6%81",
+        attribution: "NAVER",
+      }), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<PlacePicker value="景福宮" confirmed={false} countryCodes={["kr"]} onTextChange={() => undefined} onSelect={onSelect} />);
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(320);
+      await Promise.resolve();
+    });
+    expect(screen.getByText("地點資料：NAVER")).toBeTruthy();
+    expect(screen.getAllByText("NAVER").length).toBeGreaterThan(0);
+    await act(async () => {
+      fireEvent.click(screen.getByRole("option", { name: /景福宮/ }));
+      await Promise.resolve();
+    });
+    expect(onSelect).toHaveBeenCalledWith(expect.objectContaining({
+      provider: "naver_local",
+      latitude: 37.5796,
+    }));
+    const autocompleteUrl = new URL(String(fetchMock.mock.calls[0][0]), "https://travel.test");
+    expect(autocompleteUrl.searchParams.get("country_codes")).toBe("kr");
+  });
+
   it("shows when the Google Maps service is not configured", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({
       code: "google_maps_not_configured",
