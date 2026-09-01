@@ -23,6 +23,8 @@ type SourceStatus = { id: string; name: string; status: string; purpose: string;
 type SourcesResponse = { collection_interval_seconds: number; sources: SourceStatus[] };
 type RankedHotspot = {
   id: string; slug: string; rank: number; name: string; city_code: string; city_name: string;
+  destination_id: string; destination_role: "primary" | "secondary" | "extension";
+  parent_destination_id: string | null; is_cross_city: boolean;
   country_code: string; country_name: string; category: string; score: number;
   components: { interest: number; growth: number; quality: number; confidence: number };
   pageviews_30d: number | null; growth_rate: number | null; trend_label: string;
@@ -36,7 +38,7 @@ type RankingResponse = { scope: string; scope_key: string; observed_on: string |
 type FacetsResponse = {
   total: number;
   countries: { code: string; name: string; count: number }[];
-  cities: { code: string; name: string; country_code: string; count: number }[];
+  cities: { code: string; destination_id: string; name: string; country_code: string; count: number; destination_role: "primary" | "secondary" | "extension"; parent_destination_id: string | null; is_cross_city: boolean }[];
   categories: { code: string; count: number }[];
   styles: { code: "all" | "deep"; name: string; count: number }[];
 };
@@ -183,6 +185,7 @@ export function HotspotExplorer() {
   const [query, setQuery] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
+  const [role, setRole] = useState("");
   const [category, setCategory] = useState("");
   const [style, setStyle] = useState<"all" | "deep">("all");
   const [ranking, setRanking] = useState<RankingResponse | null>(null);
@@ -198,7 +201,8 @@ export function HotspotExplorer() {
     const params = new URLSearchParams({ limit: "30", style });
     if (query.trim()) params.set("q", query.trim());
     if (country) params.set("country_code", country);
-    if (city) params.set("city_code", city);
+    if (city) params.set("destination_id", city);
+    if (role) params.set("role", role);
     if (category) params.set("category", category);
     if (append && ranking?.next_cursor) params.set("after_rank", String(ranking.next_cursor));
     try {
@@ -232,11 +236,12 @@ export function HotspotExplorer() {
       <p className="flex items-center gap-2 text-sm font-semibold text-[var(--teal)]"><Sparkles size={16} />{t("eyebrow")}</p>
       <div className="mt-3 flex flex-wrap items-end justify-between gap-4"><div><h1 className="text-3xl font-bold tracking-[-.035em] md:text-5xl">{t("title")}</h1><p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{t("description")}</p></div><div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--muted)]"><span className="font-semibold text-[var(--ink)]">{t("updated")}</span> {ranking?.observed_on || t("waiting")}</div></div>
     </section>
-    <form onSubmit={(event: FormEvent<HTMLFormElement>) => { event.preventDefault(); void load(); }} aria-label={t("searchLabel")} className="grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-[1fr_9rem_10rem_10rem_9rem_auto] md:p-5">
+    <form onSubmit={(event: FormEvent<HTMLFormElement>) => { event.preventDefault(); void load(); }} aria-label={t("searchLabel")} className="grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-[1fr_repeat(5,9rem)_auto] md:p-5">
       <label className="relative"><span className="sr-only">{t("searchPlaceholder")}</span><Search className="pointer-events-none absolute left-4 top-3.5 text-[var(--muted)]" size={19} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t("searchPlaceholder")} className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] pl-11 pr-4 outline-none focus:border-[var(--teal)]" /></label>
       <select aria-label={t("allCountries")} value={country} onChange={(event) => { setCountry(event.target.value); setCity(""); }} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allCountries")}</option>{facets?.countries.map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}</select>
+      <select aria-label={t("allRoles")} value={role} onChange={(event) => { setRole(event.target.value); setCity(""); }} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allRoles")}</option><option value="primary">{t("primaryCities")}</option><option value="secondary">{t("secondaryCities")}</option><option value="extension">{t("extensionCities")}</option></select>
       <select aria-label={t("allStyles")} value={style} onChange={(event) => setStyle(event.target.value as "all" | "deep")} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="all">{t("allStyles")}</option><option value="deep">{t("deepStyle")}</option></select>
-      <select aria-label={t("allCities")} value={city} onChange={(event) => setCity(event.target.value)} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allCities")}</option>{facets?.cities.filter((item) => !country || item.country_code === country).map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}</select>
+      <select aria-label={t("allCities")} value={city} onChange={(event) => setCity(event.target.value)} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allCities")}</option>{(["primary", "secondary", "extension"] as const).map((groupRole) => { const cities = facets?.cities.filter((item) => (!country || item.country_code === country) && (!role || item.destination_role === role) && item.destination_role === groupRole) ?? []; return cities.length ? <optgroup key={groupRole} label={t(`${groupRole}Cities`)}>{cities.map((item) => <option key={item.destination_id} value={item.destination_id}>{item.name} ({item.count})</option>)}</optgroup> : null; })}</select>
       <select aria-label={t("allCategories")} value={category} onChange={(event) => setCategory(event.target.value)} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3">{categoryCodes.map((code) => <option key={code} value={code}>{code ? t(`categories.${code}`) : t("allCategories")}</option>)}</select>
       <button type="submit" className="h-12 rounded-xl bg-[var(--teal)] px-6 font-semibold text-white">{t("submit")}</button>
     </form>
@@ -249,7 +254,7 @@ export function HotspotExplorer() {
           <div className="flex items-start justify-between gap-4"><div className="flex gap-3"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{item.rank}</span><div><h3 className="text-lg font-bold">{item.name}</h3>{item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}<p className="mt-1 flex items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{item.city_name} · {t(`categories.${item.category}`)}</p></div></div><div className="text-right"><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><p className="text-xs text-[var(--muted)]">{t("score")}</p></div></div>
           <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl bg-[var(--paper)] p-4 text-sm"><div><p className="text-[var(--muted)]">{t("views30")}</p><p className="mt-1 font-semibold">{item.pageviews_30d === null ? t("pending") : number.format(item.pageviews_30d)}</p></div><div><p className="text-[var(--muted)]">{t("previous")}</p><p className="mt-1 flex items-center gap-1 font-semibold">{trendIcon(item)}{percent(item.growth_rate)}</p></div></div>
           <button type="button" onClick={() => openGuides(item)} className="mt-4 flex min-h-12 w-full items-center gap-3 rounded-2xl bg-[var(--teal)] px-4 py-3 text-left text-white shadow-sm transition hover:bg-[var(--teal-dark)]"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/15"><BookOpenText size={17} /></span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("guides")}</strong><span className="block text-xs text-white/75">{t("guideCount", { articles: item.guide_counts?.article || 0, videos: item.guide_counts?.video || 0 })}</span></span><ExternalLink size={16} /></button>
-          <div className="mt-4 flex flex-wrap items-center gap-2">{item.is_deep_travel && <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-900">{t("deep")}</span>}{item.depth_kind && <span className="rounded-full border border-amber-300 px-2.5 py-1 text-xs text-amber-900">{item.depth_kind === "day_trip" ? t("dayTrip") : t("urbanLocal")}</span>}{item.source_urls[0] && <a href={item.source_urls[0]} target="_blank" rel="noopener noreferrer" className="ml-auto text-xs font-semibold text-[var(--teal)]">{t("source")}</a>}</div>
+          <div className="mt-4 flex flex-wrap items-center gap-2">{item.destination_role === "secondary" && <span className="rounded-full bg-sky-100 px-2.5 py-1 text-xs font-semibold text-sky-900">{t("secondaryTag")}</span>}{item.is_cross_city && <span className="rounded-full bg-violet-100 px-2.5 py-1 text-xs font-semibold text-violet-900">{t("crossCityTag")}</span>}{item.is_deep_travel && <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-900">{t("deep")}</span>}{item.depth_kind && <span className="rounded-full border border-amber-300 px-2.5 py-1 text-xs text-amber-900">{item.depth_kind === "day_trip" ? t("dayTrip") : t("urbanLocal")}</span>}{item.source_urls[0] && <a href={item.source_urls[0]} target="_blank" rel="noopener noreferrer" className="ml-auto text-xs font-semibold text-[var(--teal)]">{t("source")}</a>}</div>
           {item.is_deep_travel && item.access_minutes && item.recommended_duration_minutes && <p className="mt-3 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-950">{t("depthDetail", { access: item.access_minutes, duration: item.recommended_duration_minutes })}</p>}
         </li>)}</ol>}
         {!loading && !error && ranking?.has_more && <div className="mt-6 text-center"><button type="button" onClick={() => void load(true)} className="rounded-xl border border-[var(--teal)] bg-white px-6 py-3 font-semibold text-[var(--teal)]">{t("loadMore")}</button></div>}

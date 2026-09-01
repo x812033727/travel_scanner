@@ -123,24 +123,40 @@ class WikimediaDiscoveryClient:
                     "action": "query",
                     "format": "json",
                     "formatversion": "2",
-                    "generator": "geosearch",
-                    "ggscoord": f"{center.latitude}|{center.longitude}",
-                    "ggsradius": str(min(center.radius_km * 1000, 10_000)),
-                    "ggslimit": str(min(limit, 100)),
-                    "ggsnamespace": "0",
-                    "prop": "coordinates|pageprops",
+                    "list": "geosearch",
+                    "gscoord": f"{center.latitude}|{center.longitude}",
+                    "gsradius": str(min(center.radius_km * 1000, 10_000)),
+                    "gslimit": str(min(limit, 100)),
+                    "gsnamespace": "0",
                 },
             )
-            for page in payload.get("query", {}).get("pages", []):
-                qid = (page.get("pageprops") or {}).get("wikibase_item")
-                coordinates = page.get("coordinates") or []
-                if qid and coordinates:
+            nearby = payload.get("query", {}).get("geosearch", [])
+            for start in range(0, len(nearby), 50):
+                batch = nearby[start : start + 50]
+                details = await self._get(
+                    api,
+                    {
+                        "action": "query",
+                        "format": "json",
+                        "formatversion": "2",
+                        "pageids": "|".join(str(page["pageid"]) for page in batch),
+                        "prop": "pageprops",
+                    },
+                )
+                qid_by_page_id = {
+                    page["pageid"]: (page.get("pageprops") or {}).get("wikibase_item")
+                    for page in details.get("query", {}).get("pages", [])
+                }
+                for page in batch:
+                    qid = qid_by_page_id.get(page["pageid"])
+                    if not qid:
+                        continue
                     pages_by_qid.setdefault(
                         qid,
                         {
                             "title": page["title"],
-                            "latitude": coordinates[0]["lat"],
-                            "longitude": coordinates[0]["lon"],
+                            "latitude": page["lat"],
+                            "longitude": page["lon"],
                         },
                     )
         qids = list(pages_by_qid)[:limit]

@@ -22,7 +22,9 @@ layer.
 
 The `hotspots` module is a separate, public planning-intelligence surface. A
 scheduled collector stores a stable attraction catalog, aggregate source
-observations, and explainable global and per-city ranking snapshots. It exposes
+observations, and explainable global, city-code, and stable destination ranking snapshots. The
+canonical destination directory distinguishes primary, secondary, and parent-linked extension
+destinations; only searchable destinations are passed to flight and lodging providers. It exposes
 compact, source-labelled candidates to itinerary planning; popularity never
 bypasses opening-hour, route, date, or traveler-preference checks. Restricted
 provider content is not copied into this durable ranking store.

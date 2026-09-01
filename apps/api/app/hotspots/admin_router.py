@@ -13,6 +13,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.admin.service import load_runtime_settings
 from app.auth.service import AdminUser
 from app.db import get_session
+from app.destinations.catalog import DESTINATIONS, destination_for_id
 from app.hotspots.guides import (
     GuideCandidate,
     YouTubeGuideProvider,
@@ -45,6 +46,7 @@ class HotspotReviewRequest(BaseModel):
     depth_reason: str | None = Field(default=None, max_length=1000)
     access_minutes: int | None = Field(default=None, ge=1, le=90)
     recommended_duration_minutes: int | None = Field(default=None, ge=30, le=480)
+    destination_id: str | None = Field(default=None, min_length=2, max_length=64)
 
     @model_validator(mode="after")
     def validate_depth(self) -> HotspotReviewRequest:
@@ -101,6 +103,9 @@ async def list_hotspot_candidates(
     user: AdminUser,
     session: Session,
     city_code: Annotated[str | None, Query(min_length=3, max_length=3)] = None,
+    destination_id: Annotated[str | None, Query(min_length=2, max_length=64)] = None,
+    role: Annotated[str | None, Query(pattern="^(primary|secondary|extension)$")] = None,
+    parent_id: Annotated[str | None, Query(min_length=2, max_length=64)] = None,
     origin: Annotated[str | None, Query(max_length=32)] = None,
     status: Annotated[str | None, Query(max_length=24)] = None,
     page: Annotated[int, Query(ge=1)] = 1,
@@ -110,6 +115,16 @@ async def list_hotspot_candidates(
     filters = []
     if city_code:
         filters.append(TravelHotspot.city_code == city_code.upper())
+    if destination_id:
+        filters.append(TravelHotspot.destination_id == destination_id.casefold())
+    if role:
+        role_ids = [item.id for item in DESTINATIONS if item.role == role]
+        filters.append(TravelHotspot.destination_id.in_(role_ids))
+    if parent_id:
+        child_ids = [
+            item.id for item in DESTINATIONS if item.parent_destination_id == parent_id.casefold()
+        ]
+        filters.append(TravelHotspot.destination_id.in_(child_ids))
     if origin:
         filters.append(TravelHotspot.origin == origin)
     if status:
@@ -141,6 +156,7 @@ async def list_hotspot_candidates(
             {
                 "id": str(hotspot.id),
                 "name": hotspot.name,
+                "destination_id": hotspot.destination_id,
                 "qid": hotspot.wikidata_item_id,
                 "city_code": hotspot.city_code,
                 "city_name": hotspot.city_name,
@@ -165,6 +181,14 @@ async def list_hotspot_candidates(
                     "recommended_duration_minutes"
                 ),
                 "depth_components": hotspot.metadata_json.get("depth_components"),
+                **(
+                    {
+                        "destination_role": profile.role,
+                        "parent_destination_id": profile.parent_destination_id,
+                    }
+                    if (profile := destination_for_id(hotspot.destination_id))
+                    else {"destination_role": "primary", "parent_destination_id": None}
+                ),
             }
         )
     return {"items": items, "total": total, "page": page, "pages": (total + limit - 1) // limit}
@@ -190,12 +214,32 @@ async def review_hotspot_candidates(
         "update": rows[0].review_status,
     }[payload.action]
     now = datetime.now(UTC)
+    target_destination = (
+        destination_for_id(payload.destination_id) if payload.destination_id else None
+    )
+    if payload.destination_id and target_destination is None:
+        raise AppError(422, "unsupported_destination", "目前不支援這個目的地")
     for hotspot in rows:
         if payload.action != "update":
             hotspot.review_status = status
             hotspot.review_reason = payload.reason
         hotspot.reviewed_at = now
         hotspot.reviewed_by_user_id = user.id
+        if target_destination:
+            hotspot.destination_id = target_destination.id
+            hotspot.city_code = target_destination.code
+            hotspot.city_name = target_destination.city
+            hotspot.country_name = target_destination.country_label
+            country_codes = {
+                "Japan": "JP",
+                "South Korea": "KR",
+                "Thailand": "TH",
+                "Taiwan": "TW",
+                "Singapore": "SG",
+                "Hong Kong": "HK",
+                "Vietnam": "VN",
+            }
+            hotspot.country_code = country_codes[target_destination.country]
         if payload.action != "update":
             hotspot.is_active = payload.action == "approve"
         if payload.is_deep_travel is False:
@@ -248,6 +292,7 @@ async def review_hotspot_candidates(
                 "reason": payload.reason,
                 "is_deep_travel": payload.is_deep_travel,
                 "depth_kind": payload.depth_kind,
+                "destination_id": payload.destination_id,
                 "depth_score": float(rows[0].depth_score)
                 if rows[0].depth_score is not None
                 else None,

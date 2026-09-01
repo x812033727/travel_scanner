@@ -165,3 +165,39 @@ async def test_one_full_day_never_schedules_a_deep_day_trip() -> None:
     )
     itinerary = build_itinerary(query, None, None, None, None, [candidate])
     assert not any(item.item_type == "hotspot" for day in itinerary for item in day.items)
+
+
+@pytest.mark.parametrize(("trip_days", "expected"), [(3, 0), (4, 1), (7, 2)])
+def test_cross_city_days_follow_trip_length_limits(trip_days: int, expected: int) -> None:
+    query = sample_query()
+    query = query.model_copy(
+        update={
+            "return_date": query.departure_date + timedelta(days=trip_days - 1),
+            "preferences": query.preferences.model_copy(update={"interests": ["deep_travel"]}),
+        }
+    )
+    candidates = [
+        ItineraryHotspot(
+            hotspot_id=uuid4(),
+            name=f"跨城 {index}",
+            category="culture",
+            latitude=22.9 + index * 0.1,
+            longitude=120.2 + index * 0.1,
+            depth_kind="urban_local",
+            depth_score=84,
+            depth_reason="地方文化",
+            access_minutes=55,
+            recommended_duration_minutes=180,
+            destination_id=f"extension-{index}",
+            destination_role="extension",
+            parent_destination_id="kaohsiung",
+            is_cross_city=True,
+        )
+        for index in range(2)
+    ]
+    itinerary = build_itinerary(query, None, None, None, None, candidates)
+    placed = [
+        item for day in itinerary for item in day.items if item.data.get("is_cross_city") is True
+    ]
+    assert len(placed) == expected
+    assert all(item.data["round_trip_buffer_minutes"] == 90 for item in placed)

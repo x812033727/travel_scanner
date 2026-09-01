@@ -409,17 +409,20 @@ never inferred.
 
 ## Travel hotspot intelligence
 
-The public `/hotspots` page searches a time-stamped attraction catalog and shows global or city
-rankings for Japan, South Korea and Thailand. The scheduled `hotspot-collector` seeds stable place
-identities, collects the latest and preceding 30-day Wikimedia pageview totals, and writes
-explainable global and per-city ranking snapshots. Cold-start values remain visibly marked as
-estimates rather than live popularity.
+The public `/hotspots` page searches a time-stamped attraction catalog and shows global,
+destination, main-city, secondary-city and deep-travel rankings across 31 destinations in seven
+Asian markets. The offline catalog contains 445 reviewed places; weekly discovery can expand it
+to 529. The scheduled `hotspot-collector` seeds stable place identities, collects the latest and
+preceding 30-day Wikimedia pageview totals, and writes explainable ranking snapshots. Cold-start
+values remain visibly marked as estimates rather than live popularity.
 
 The collector is opt-in in production: it sits behind the `hotspots` compose profile, so start it
 with `docker compose -f docker-compose.prod.yml --profile hotspots up -d`. See
 `docs/hotspot-intelligence.md`.
 
-The API exposes `/api/v1/hotspots/rankings`, `/api/v1/hotspots/sources`, and the compact
+The canonical `/api/v1/destinations` catalog separates searchable destinations from cross-city
+extensions. The API also exposes `/api/v1/hotspots/rankings`, `/api/v1/hotspots/facets`,
+`/api/v1/hotspots/sources`, and the compact
 `/api/v1/hotspots/for-planner` feed. The last endpoint is intended for AI itinerary candidate
 selection; route feasibility, opening hours and traveler preferences still decide the final plan.
 Google Places remains an on-demand lookup because its content cannot be persisted as a general

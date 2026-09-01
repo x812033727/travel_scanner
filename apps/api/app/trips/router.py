@@ -679,9 +679,7 @@ async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPla
                 offers = await run_provider_module(provider, runner, module, query)
                 warning = None
                 if index > 0:
-                    offers = [
-                        offer.model_copy(update={"is_fallback": True}) for offer in offers
-                    ]
+                    offers = [offer.model_copy(update={"is_fallback": True}) for offer in offers]
                     warning = (
                         f"{module} 主要供應商 {primary_name} 暫時無法使用，"
                         f"已切換至 {getattr(provider, 'name', 'backup')}。"
@@ -709,8 +707,16 @@ async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPla
             city_code=query.destination,
             interests=query.preferences.interests,
             limit=12,
+            extension_destination_ids=query.preferences.extension_destination_ids,
+            days=(query.return_date - query.departure_date).days + 1
+            if query.return_date and query.departure_date
+            else None,
         )
-        if "deep_travel" in query.preferences.interests and query.destination
+        if (
+            "deep_travel" in query.preferences.interests
+            or query.preferences.extension_destination_ids
+        )
+        and query.destination
         else []
     )
     plans = TripOptimizer().optimize(

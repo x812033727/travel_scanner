@@ -22,7 +22,7 @@ describe("HotspotExplorer", () => {
         return new Response(JSON.stringify({
           total: 170,
           countries: [{ code: "JP", name: "日本", count: 56 }],
-          cities: [{ code: "NRT", name: "東京", country_code: "JP", count: 12 }],
+          cities: [{ code: "NRT", destination_id: "tokyo", name: "東京", country_code: "JP", count: 12, destination_role: "primary", parent_destination_id: null, is_cross_city: false }],
           categories: [{ code: "culture", count: 80 }],
           styles: [{ code: "all", name: "全部旅遊", count: 170 }, { code: "deep", name: "深度旅遊", count: 95 }],
         }));
@@ -65,6 +65,10 @@ describe("HotspotExplorer", () => {
           slug: "sensoji",
           rank: 1,
           name: "淺草寺",
+          destination_id: "tokyo",
+          destination_role: "primary",
+          parent_destination_id: null,
+          is_cross_city: false,
           city_code: "NRT",
           city_name: "東京",
           country_code: "JP",

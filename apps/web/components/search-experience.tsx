@@ -70,6 +70,7 @@ type Parsed = {
   trip_length_days?: number;
   budget_twd?: number;
   interests: string[];
+  extension_destination_ids: string[];
   avoid_red_eye: boolean;
   hotel_min_rating?: number;
   hotel_min_nightly_twd?: number;
@@ -310,6 +311,9 @@ export function SearchExperience() {
       },
       budget_twd: Number(params.get("budget_twd") || 0) || undefined,
       interests: parseInterests(rawInterests),
+      extension_destination_ids: (params.get("extension_destination_ids") || "")
+        .split(",")
+        .filter(Boolean),
       avoid_red_eye:
         params.get("avoid_red_eye") === "true" || rawInterests.includes("紅眼"),
       hotel_min_rating:
@@ -527,6 +531,7 @@ export function SearchExperience() {
                 (parsed.preferred_area ? [parsed.preferred_area] : []),
               optimization_mode: "balanced",
               interests: parsed.interests,
+              extension_destination_ids: parsed.extension_destination_ids,
               pace: parsed.pace || "balanced",
             },
           }),

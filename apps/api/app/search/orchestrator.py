@@ -589,8 +589,16 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                 city_code=query.destination,
                 interests=query.preferences.interests,
                 limit=12,
+                extension_destination_ids=query.preferences.extension_destination_ids,
+                days=(query.return_date - query.departure_date).days + 1
+                if query.return_date and query.departure_date
+                else None,
             )
-            if "deep_travel" in query.preferences.interests and query.destination
+            if (
+                "deep_travel" in query.preferences.interests
+                or query.preferences.extension_destination_ids
+            )
+            and query.destination
             else []
         )
         optimized = TripOptimizer().optimize(

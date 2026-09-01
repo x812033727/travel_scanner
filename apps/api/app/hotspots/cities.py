@@ -1,5 +1,7 @@
 from dataclasses import dataclass, replace
 
+from app.destinations.catalog import LEGACY_DESTINATION_IDS
+
 
 @dataclass(frozen=True)
 class DiscoveryCenter:
@@ -17,6 +19,13 @@ class HotspotCity:
     local_wikipedia: str
     target_count: int
     centers: tuple[DiscoveryCenter, ...]
+    destination_id: str | None = None
+    role: str = "primary"
+    parent_destination_id: str | None = None
+
+    @property
+    def id(self) -> str:
+        return self.destination_id or LEGACY_DESTINATION_IDS[self.code]
 
 
 def _center(latitude: float, longitude: float, radius_km: int) -> DiscoveryCenter:
@@ -87,6 +96,142 @@ HOTSPOT_CITIES: tuple[HotspotCity, ...] = (
     HotspotCity(
         "DAD", "峴港", "VN", "越南", "vi.wikipedia.org", 15, (_center(16.0544, 108.2022, 45),)
     ),
+    HotspotCity(
+        "RMQ",
+        "台中",
+        "TW",
+        "台灣",
+        "zh.wikipedia.org",
+        18,
+        (_center(24.1477, 120.6736, 28),),
+        "taichung",
+        "secondary",
+    ),
+    HotspotCity(
+        "KHH",
+        "高雄",
+        "TW",
+        "台灣",
+        "zh.wikipedia.org",
+        18,
+        (_center(22.6273, 120.3014, 30),),
+        "kaohsiung",
+        "secondary",
+    ),
+    HotspotCity(
+        "SDJ",
+        "仙台",
+        "JP",
+        "日本",
+        "ja.wikipedia.org",
+        18,
+        (_center(38.2682, 140.8694, 30),),
+        "sendai",
+        "secondary",
+    ),
+    HotspotCity(
+        "KMQ",
+        "金澤",
+        "JP",
+        "日本",
+        "ja.wikipedia.org",
+        18,
+        (_center(36.5613, 136.6562, 28),),
+        "kanazawa",
+        "secondary",
+    ),
+    HotspotCity(
+        "HIJ",
+        "廣島",
+        "JP",
+        "日本",
+        "ja.wikipedia.org",
+        18,
+        (_center(34.3853, 132.4553, 30),),
+        "hiroshima",
+        "secondary",
+    ),
+    HotspotCity(
+        "TAE",
+        "大邱",
+        "KR",
+        "韓國",
+        "ko.wikipedia.org",
+        18,
+        (_center(35.8714, 128.6014, 30),),
+        "daegu",
+        "secondary",
+    ),
+    HotspotCity(
+        "CEI",
+        "清萊",
+        "TH",
+        "泰國",
+        "th.wikipedia.org",
+        18,
+        (_center(19.9105, 99.8406, 35),),
+        "chiang-rai",
+        "secondary",
+    ),
+    HotspotCity(
+        "DLI",
+        "大叻",
+        "VN",
+        "越南",
+        "vi.wikipedia.org",
+        18,
+        (_center(11.9404, 108.4583, 35),),
+        "da-lat",
+        "secondary",
+    ),
+    HotspotCity(
+        "TNN",
+        "台南",
+        "TW",
+        "台灣",
+        "zh.wikipedia.org",
+        18,
+        (_center(22.9999, 120.2269, 28),),
+        "tainan",
+        "extension",
+        "kaohsiung",
+    ),
+    HotspotCity(
+        "GYE",
+        "慶州",
+        "KR",
+        "韓國",
+        "ko.wikipedia.org",
+        18,
+        (_center(35.8562, 129.2247, 32),),
+        "gyeongju",
+        "extension",
+        "busan",
+    ),
+    HotspotCity(
+        "JEO",
+        "全州",
+        "KR",
+        "韓國",
+        "ko.wikipedia.org",
+        18,
+        (_center(35.8242, 127.1480, 28),),
+        "jeonju",
+        "extension",
+        "seoul",
+    ),
+    HotspotCity(
+        "HUI",
+        "順化",
+        "VN",
+        "越南",
+        "vi.wikipedia.org",
+        18,
+        (_center(16.4637, 107.5909, 30),),
+        "hue",
+        "extension",
+        "da-nang",
+    ),
 )
 
 # Reviewed near-suburban centers, all intended to remain within about 90 minutes
@@ -112,10 +257,23 @@ DAY_TRIP_CENTERS = {
     "HAN": (_center(21.0810, 105.6540, 18),),
     "SGN": (_center(10.9900, 106.4900, 18),),
     "DAD": (_center(15.8800, 108.3200, 18),),
+    "RMQ": (_center(24.2521, 120.7200, 15),),
+    "KHH": (_center(22.7498, 120.4453, 16),),
+    "SDJ": (_center(38.3117, 140.5954, 16),),
+    "KMQ": (_center(36.2456, 136.8992, 16),),
+    "HIJ": (_center(34.2958, 132.3199, 16),),
+    "TAE": (_center(35.9900, 128.6950, 16),),
+    "CEI": (_center(20.2160, 99.8780, 18),),
+    "DLI": (_center(11.7790, 108.3830, 18),),
+    "TNN": (_center(23.1220, 120.4610, 16),),
+    "GYE": (_center(35.7900, 129.3320, 16),),
+    "JEO": (_center(35.9740, 127.2130, 16),),
+    "HUI": (_center(16.1040, 107.9550, 18),),
 }
 HOTSPOT_CITIES = tuple(
     replace(city, centers=city.centers + DAY_TRIP_CENTERS[city.code]) for city in HOTSPOT_CITIES
 )
 
 CITY_BY_CODE = {city.code: city for city in HOTSPOT_CITIES}
+CITY_BY_DESTINATION_ID = {city.id: city for city in HOTSPOT_CITIES}
 TARGET_PUBLIC_HOTSPOTS = sum(city.target_count for city in HOTSPOT_CITIES)

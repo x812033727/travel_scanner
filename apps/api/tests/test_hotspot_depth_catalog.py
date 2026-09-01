@@ -6,11 +6,11 @@ from app.hotspots.cities import HOTSPOT_CITIES, TARGET_PUBLIC_HOTSPOTS
 
 def test_deep_bootstrap_contract() -> None:
     deep = [item for item in HOTSPOT_SEEDS if item.is_deep_travel]
-    assert len(HOTSPOT_SEEDS) == 265
-    assert len(deep) == 95
-    assert TARGET_PUBLIC_HOTSPOTS == 313
-    assert len({item.slug for item in HOTSPOT_SEEDS}) == 265
-    assert len({item.wikidata_item_id for item in HOTSPOT_SEEDS}) == 265
+    assert len(HOTSPOT_SEEDS) == 445
+    assert len(deep) == 155
+    assert TARGET_PUBLIC_HOTSPOTS == 529
+    assert len({item.slug for item in HOTSPOT_SEEDS}) == 445
+    assert len({item.wikidata_item_id for item in HOTSPOT_SEEDS}) == 445
 
     by_city = defaultdict(list)
     for item in deep:

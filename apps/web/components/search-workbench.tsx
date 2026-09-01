@@ -2,9 +2,9 @@
 
 import { CalendarDays, Check, ChevronLeft, ChevronRight, Hotel, LoaderCircle, MapPin, Sparkles, Users } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
-import { type FormEvent, useMemo, useState } from "react";
+import { type FormEvent, useEffect, useMemo, useState } from "react";
 import { api, twd } from "@/lib/api";
-import { citiesForCountry, countries, interestLabel, interests, type CountryKey } from "@/lib/destinations";
+import { destinations, countries, interestLabel, interests, type CountryKey, type DestinationCity } from "@/lib/destinations";
 
 const fieldClass = "mt-2 w-full rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-[var(--ink)] outline-none focus:border-[var(--teal)] focus:ring-4 focus:ring-[var(--teal-soft)]";
 const steps = ["日期", "目的地", "旅伴", "住宿", "偏好"];
@@ -16,6 +16,12 @@ type Recommendation = {
   estimated_total_twd: number; score: number; matched_interests: string[]; relaxed_preferences: string[];
 };
 type DiscoveryResult = { recommendations: Recommendation[]; assumptions: string[] };
+type CatalogDestination = {
+  id: string; code: string; city: string; country_code: CountryKey; role: "primary" | "secondary" | "extension";
+  parent_destination_id: string | null; gateway_codes: string[]; primary_gateway: string; areas: string[];
+  recommended_days: { min: number; max: number }; timezone: string; currency: string; reason: string; searchable: boolean;
+};
+type CatalogResponse = { items: CatalogDestination[] };
 type LodgingMode = "hotel" | "vacation_rental" | "both" | "any";
 
 function futureDate(days: number) {
@@ -33,6 +39,8 @@ export function SearchWorkbench() {
   const [lengthAny, setLengthAny] = useState(false);
   const [countriesSelected, setCountriesSelected] = useState<CountryKey[]>(["JP"]);
   const [destinationCode, setDestinationCode] = useState("");
+  const [catalog, setCatalog] = useState<CatalogDestination[]>([]);
+  const [selectedExtensions, setSelectedExtensions] = useState<string[]>([]);
   const [children, setChildren] = useState(0);
   const [childAges, setChildAges] = useState<number[]>([]);
   const [lodgingMode, setLodgingMode] = useState<LodgingMode>("hotel");
@@ -42,11 +50,28 @@ export function SearchWorkbench() {
   const [assumptions, setAssumptions] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>();
-  const availableCities = useMemo(() => countriesSelected.flatMap(citiesForCountry), [countriesSelected]);
+  useEffect(() => {
+    void api<CatalogResponse>("/destinations")
+      .then((response) => setCatalog(response.items || []))
+      .catch(() => undefined);
+  }, []);
+  const dynamicCities = useMemo<DestinationCity[]>(() => catalog.filter((item) => item.searchable).map((item) => ({
+    id: item.id, country: item.country_code, name: item.city, airport: item.primary_gateway,
+    airportName: item.gateway_codes.join("／"), summary: item.reason,
+    recommendedStay: `${item.recommended_days.min}–${item.recommended_days.max} 天`, areas: item.areas,
+    tags: item.role === "secondary" ? ["二線城市"] : [], timezone: item.timezone, currency: item.currency,
+  })), [catalog]);
+  const availableCities = useMemo(
+    () => (dynamicCities.length ? dynamicCities : destinations).filter((item) => countriesSelected.includes(item.country)),
+    [countriesSelected, dynamicCities],
+  );
+  const selectedDestination = catalog.find((item) => item.primary_gateway === destinationCode);
+  const availableExtensions = catalog.filter((item) => item.parent_destination_id === selectedDestination?.id);
 
   function toggleCountry(country: CountryKey) {
     setCountriesSelected((current) => current.includes(country) ? current.filter((item) => item !== country) : [...current, country]);
     setDestinationCode("");
+    setSelectedExtensions([]);
   }
   function changeChildren(count: number) {
     setChildren(count); setChildAges((current) => Array.from({ length: count }, (_, index) => current[index] ?? 8));
@@ -88,6 +113,9 @@ export function SearchWorkbench() {
   function chooseRecommendation(item: Recommendation, form: HTMLFormElement) {
     const data = new FormData(form);
     const query = new URLSearchParams({ q: String(data.get("notes") || ""), country: item.country_code, origin: String(data.get("origin") || "TPE"), destination: item.airport, departure_date: item.departure_date, return_date: item.return_date, adults: String(data.get("adults") || "1"), children: String(children), children_ages: childAges.join(","), rooms: String(data.get("rooms") || "1"), interests: selectedInterests.join(","), pace: String(data.get("pace") || "balanced"), accepted_property_types: propertyTypes().join(","), preferred_areas: selectedAreas[item.candidate_id] || "", avoid_red_eye: String(data.get("avoid_red_eye") === "on"), breakfast_required: String(data.get("breakfast_required") === "on"), refundable_required: String(data.get("refundable_required") === "on"), include_airbnb: String(lodgingMode !== "hotel") });
+    const recommendationProfile = catalog.find((profile) => profile.primary_gateway === item.airport);
+    const validExtensions = selectedExtensions.filter((id) => catalog.find((profile) => profile.id === id)?.parent_destination_id === recommendationProfile?.id);
+    if (validExtensions.length) query.set("extension_destination_ids", validExtensions.join(","));
     for (const [source, target] of [["budget_twd","budget_twd"],["nightly_min","hotel_min_nightly_twd"],["nightly_max","hotel_max_nightly_twd"],["hotel_min_rating","hotel_min_rating"],["min_review_score","hotel_min_review_score"],["min_review_count","hotel_min_review_count"],["max_station_walk_minutes","max_station_walk_minutes"]]) { const value = String(data.get(source) || ""); if (value) query.set(target, value); }
     router.push(`/search?${query.toString()}`);
   }
@@ -98,7 +126,7 @@ export function SearchWorkbench() {
 
     <section className={step === 0 ? "block" : "hidden"}><h3 className="flex items-center gap-2 text-lg font-bold"><CalendarDays size={19} />你大概什麼時候能出發？</h3><label className="mt-3 flex items-center gap-2 text-sm"><input type="checkbox" checked={dateAny} onChange={(event) => setDateAny(event.target.checked)} />日期我不介意（由 AI 看未來 30–180 天）</label><div className="mt-3 grid gap-3 sm:grid-cols-2"><label className="text-sm font-semibold">最早出發日<input disabled={dateAny} name="window_start" type="date" defaultValue={futureDate(30)} min={futureDate(1)} className={fieldClass} /></label><label className="text-sm font-semibold">最晚回程日<input disabled={dateAny} name="window_end" type="date" defaultValue={futureDate(120)} min={futureDate(3)} className={fieldClass} /></label></div><label className="mt-4 flex items-center gap-2 text-sm"><input type="checkbox" checked={lengthAny} onChange={(event) => setLengthAny(event.target.checked)} />旅行天數我不介意</label><div className="mt-3 grid grid-cols-2 gap-3"><label className="text-sm font-semibold">最短天數<select disabled={lengthAny} name="min_days" defaultValue="4" className={fieldClass}>{Array.from({ length: 12 }, (_, index) => index + 2).map((value) => <option key={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">最長天數<select disabled={lengthAny} name="max_days" defaultValue="6" className={fieldClass}>{Array.from({ length: 16 }, (_, index) => index + 2).map((value) => <option key={value}>{value}</option>)}</select></label></div></section>
 
-    <section className={step === 1 ? "block" : "hidden"}><h3 className="flex items-center gap-2 text-lg font-bold"><MapPin size={19} />想去哪個國家？</h3><p className="mt-1 text-sm text-[var(--muted)]">可複選；全部取消就是「我不介意」。</p><div className="mt-4 grid grid-cols-3 gap-2">{countries.map((item) => <button key={item.key} type="button" aria-pressed={countriesSelected.includes(item.key)} onClick={() => toggleCountry(item.key)} className={optionClass(countriesSelected.includes(item.key))}><strong>{item.label}</strong><span className="mt-1 hidden text-xs sm:block">{item.caption}</span></button>)}</div><label className="mt-4 block text-sm font-semibold">指定城市（可不選）<select aria-label="指定城市" value={destinationCode} onChange={(event) => setDestinationCode(event.target.value)} className={fieldClass}><option value="">我不介意，讓 AI 推薦</option>{availableCities.map((city) => <option key={city.id} value={city.airport}>{city.name} · {city.airport}</option>)}</select></label></section>
+    <section className={step === 1 ? "block" : "hidden"}><h3 className="flex items-center gap-2 text-lg font-bold"><MapPin size={19} />想去哪個國家？</h3><p className="mt-1 text-sm text-[var(--muted)]">可複選；全部取消就是「我不介意」。</p><div className="mt-4 grid grid-cols-3 gap-2">{countries.map((item) => <button key={item.key} type="button" aria-pressed={countriesSelected.includes(item.key)} onClick={() => toggleCountry(item.key)} className={optionClass(countriesSelected.includes(item.key))}><strong>{item.label}</strong><span className="mt-1 hidden text-xs sm:block">{item.caption}</span></button>)}</div><label className="mt-4 block text-sm font-semibold">指定城市（可不選）<select aria-label="指定城市" value={destinationCode} onChange={(event) => { setDestinationCode(event.target.value); setSelectedExtensions([]); }} className={fieldClass}><option value="">我不介意，讓 AI 推薦</option><optgroup label="主要與熱門城市">{availableCities.filter((city) => !city.tags.includes("二線城市")).map((city) => <option key={city.id} value={city.airport}>{city.name} · {city.airport}</option>)}</optgroup><optgroup label="二線城市">{availableCities.filter((city) => city.tags.includes("二線城市")).map((city) => <option key={city.id} value={city.airport}>{city.name} · {city.airport}</option>)}</optgroup></select></label>{availableExtensions.length > 0 && <fieldset className="mt-4 rounded-2xl border border-violet-200 bg-violet-50 p-4"><legend className="px-1 text-sm font-semibold">加入跨城延伸（至少四天）</legend><div className="mt-2 flex flex-wrap gap-2">{availableExtensions.map((item) => <label key={item.id} className="flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-sm"><input type="checkbox" checked={selectedExtensions.includes(item.id)} onChange={(event) => setSelectedExtensions((current) => event.target.checked ? [...current, item.id].slice(0, 2) : current.filter((id) => id !== item.id))} />{item.city}</label>)}</div></fieldset>}</section>
 
     <section className={step === 2 ? "block" : "hidden"}><h3 className="flex items-center gap-2 text-lg font-bold"><Users size={19} />這趟有誰一起去？</h3><div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4"><label className="text-sm font-semibold">出發機場<select name="origin" defaultValue="TPE" className={fieldClass}><option value="TPE">桃園 TPE</option><option value="TSA">松山 TSA</option><option value="KHH">高雄 KHH</option></select></label><label className="text-sm font-semibold">成人<select name="adults" defaultValue="2" className={fieldClass}>{[1,2,3,4,5,6,7,8,9].map((value) => <option key={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">兒童<select aria-label="兒童人數" value={children} onChange={(event) => changeChildren(Number(event.target.value))} className={fieldClass}>{[0,1,2,3,4].map((value) => <option key={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">房間<select name="rooms" defaultValue="1" className={fieldClass}>{[1,2,3,4].map((value) => <option key={value}>{value}</option>)}</select></label></div>{children > 0 && <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">{childAges.map((age, index) => <label key={index} className="text-sm font-semibold">第 {index + 1} 位兒童年齡<select aria-label={`第 ${index + 1} 位兒童年齡`} value={age} onChange={(event) => setChildAges((current) => current.map((item, childIndex) => childIndex === index ? Number(event.target.value) : item))} className={fieldClass}>{Array.from({ length: 18 }, (_, value) => <option key={value} value={value}>{value} 歲</option>)}</select></label>)}</div>}<label className="mt-4 block text-sm font-semibold">整趟總預算 TWD（可留空）<input name="budget_twd" type="number" min="1" placeholder="我不介意" className={fieldClass} /></label></section>
 

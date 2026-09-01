@@ -137,7 +137,7 @@ async def test_wikimedia_client_does_not_retry_not_found(monkeypatch) -> None:
 def test_hotspot_catalog_has_stable_unique_identifiers() -> None:
     from app.hotspots.catalog import HOTSPOT_SEEDS
 
-    assert len(HOTSPOT_SEEDS) == 265
+    assert len(HOTSPOT_SEEDS) == 445
     assert len({item.slug for item in HOTSPOT_SEEDS}) == len(HOTSPOT_SEEDS)
     assert len({item.wikidata_item_id for item in HOTSPOT_SEEDS}) == len(HOTSPOT_SEEDS)
     assert {item.country_code for item in HOTSPOT_SEEDS} == {
@@ -153,5 +153,5 @@ def test_hotspot_catalog_has_stable_unique_identifiers() -> None:
         city: sum(seed.city_code == city for seed in HOTSPOT_SEEDS)
         for city in {seed.city_code for seed in HOTSPOT_SEEDS}
     }
-    assert len(city_counts) == 19
+    assert len(city_counts) == 31
     assert min(city_counts.values()) >= 13

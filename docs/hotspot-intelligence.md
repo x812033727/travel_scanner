@@ -21,7 +21,7 @@ aggregate counters over post or review bodies.
 
 ## Ranking formula
 
-Every collection creates both a global snapshot and one snapshot for each city. Scores are scoped:
+Every collection creates global, legacy city-code, and stable `destination_id` snapshots. Scores are scoped:
 a score of 80 in Tokyo is comparable within that Tokyo snapshot, not an absolute measure of global
 visitor volume.
 
@@ -40,6 +40,12 @@ responses expose the component scores, sources, signal date and whether the resu
 `hotspot-collector` runs once on startup and then at
 `HOTSPOT_COLLECTION_INTERVAL_SECONDS` (six hours by default). Daily Wikimedia observations are
 idempotent, so multiple runs refresh the same dated signal and ranking snapshot.
+
+The checked-in cold-start catalog contains 445 reviewed attractions across 31 destinations. The
+12 secondary destinations contribute exactly 180 entries (10 general and five deep-travel places
+each). Weekly Wikipedia/Wikidata discovery can fill each new destination to 18 public places, for
+a complete target of 529. Discovered candidates never receive a deep-travel designation without
+an administrator review.
 
 In `docker-compose.prod.yml` the collector sits behind the `hotspots` compose profile, so it is
 opt-in — it reaches out to the Wikimedia API on a schedule, which not every deployment wants. Start
@@ -69,11 +75,21 @@ Relevant settings:
 
 ## API surfaces
 
-- `GET /api/v1/hotspots/rankings`: searchable ranking; filters are `q`, `city_code`, `category`
-  and `limit`.
+- `GET /api/v1/destinations`: the canonical destination directory, including role, parent,
+  gateways, lodging areas and recommended days.
+- `GET /api/v1/hotspots/rankings`: searchable ranking with stable `destination_id`, legacy
+  `city_code`, role, country, category, style and cursor filters.
+- `GET /api/v1/hotspots/facets`: dynamic country, destination, category and travel-style counts.
 - `GET /api/v1/hotspots/sources`: public source purpose, persistence and readiness status.
 - `GET /api/v1/hotspots/for-planner`: compact, source-labelled candidates for the itinerary
-  planner. It accepts `city_code`, comma-separated `interests` and `limit`.
+  planner. It accepts `destination_id` or legacy `city_code`, comma-separated `interests`, trip
+  days and explicitly selected extension destinations.
+
+Eight secondary destinations are searchable for flights and lodging: Taichung, Kaohsiung,
+Sendai, Kanazawa, Hiroshima, Daegu, Chiang Rai and Da Lat. Tainan, Gyeongju, Jeonju and Hue are
+extension destinations only; they keep independent attraction rankings but are added through
+Kaohsiung, Busan, Seoul and Da Nang respectively. Trips of 1–3 days do not include extension
+cities, 4–6 day trips allow one, and trips of at least seven days allow two.
 
 The planner endpoint supplies candidates only. Opening hours, route feasibility, trip dates,
 traveler interests and explicit preferences must still be applied before an itinerary is saved.

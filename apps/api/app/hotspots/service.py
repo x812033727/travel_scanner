@@ -11,6 +11,7 @@ from sqlalchemy import delete, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import Settings
+from app.destinations.catalog import DESTINATIONS, destination_for_code, destination_for_id
 from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.cities import HOTSPOT_CITIES
 from app.hotspots.discovery import WikimediaDiscoveryClient
@@ -92,6 +93,7 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
         if hotspot is None:
             hotspot = TravelHotspot(slug=seed.slug)
         hotspot.name = seed.name
+        hotspot.destination_id = seed.destination_id
         hotspot.city_code = seed.city_code
         hotspot.city_name = seed.city_name
         hotspot.country_code = seed.country_code
@@ -204,6 +206,13 @@ async def refresh_rankings(session: AsyncSession, observed_on: date) -> int:
     for hotspot in hotspots:
         by_city[hotspot.city_code].append(hotspot)
     scopes.extend(("city", city_code, items) for city_code, items in sorted(by_city.items()))
+    by_destination: dict[str, list[TravelHotspot]] = defaultdict(list)
+    for hotspot in hotspots:
+        by_destination[hotspot.destination_id].append(hotspot)
+    scopes.extend(
+        ("destination", destination_id, items)
+        for destination_id, items in sorted(by_destination.items())
+    )
     deep_hotspots = [item for item in hotspots if item.is_deep_travel]
     scopes.append(("deep_global", "global", deep_hotspots))
     deep_by_city: dict[str, list[TravelHotspot]] = defaultdict(list)
@@ -211,6 +220,13 @@ async def refresh_rankings(session: AsyncSession, observed_on: date) -> int:
         deep_by_city[hotspot.city_code].append(hotspot)
     scopes.extend(
         ("deep_city", city_code, items) for city_code, items in sorted(deep_by_city.items())
+    )
+    deep_by_destination: dict[str, list[TravelHotspot]] = defaultdict(list)
+    for hotspot in deep_hotspots:
+        deep_by_destination[hotspot.destination_id].append(hotspot)
+    scopes.extend(
+        ("deep_destination", destination_id, items)
+        for destination_id, items in sorted(deep_by_destination.items())
     )
 
     inserted = 0
@@ -315,6 +331,7 @@ async def discover_hotspots(
                     else:
                         pending += 1
                     hotspot.name = candidate.name
+                    hotspot.destination_id = city.id
                     hotspot.city_code = city.code
                     hotspot.city_name = city.name
                     hotspot.country_code = city.country_code
@@ -519,22 +536,42 @@ def _trend_label(growth_rate: float | None) -> str:
     return "熱度持平"
 
 
+def _destination_fields(destination_id: str) -> dict[str, Any]:
+    profile = destination_for_id(destination_id)
+    if profile is None:
+        return {
+            "destination_role": "primary",
+            "parent_destination_id": None,
+            "is_cross_city": False,
+        }
+    return {
+        "destination_role": profile.role,
+        "parent_destination_id": profile.parent_destination_id,
+        "is_cross_city": profile.role == "extension",
+    }
+
+
 async def list_rankings(
     session: AsyncSession,
     *,
     q: str | None = None,
     city_code: str | None = None,
+    destination_id: str | None = None,
     country_code: str | None = None,
     category: str | None = None,
+    role: str | None = None,
     after_rank: int | None = None,
     limit: int = 20,
     style: str = "all",
     locale: str = "zh-TW",
 ) -> dict[str, Any]:
     prefix = "deep_" if style == "deep" else ""
-    scope, scope_key = (
-        (f"{prefix}city", city_code.upper()) if city_code else (f"{prefix}global", "global")
-    )
+    if destination_id:
+        scope, scope_key = f"{prefix}destination", destination_id.casefold()
+    elif city_code:
+        scope, scope_key = f"{prefix}city", city_code.upper()
+    else:
+        scope, scope_key = f"{prefix}global", "global"
     latest_date = await session.scalar(
         select(func.max(HotspotRanking.observed_on)).where(
             HotspotRanking.scope == scope,
@@ -574,6 +611,9 @@ async def list_rankings(
         query = query.where(TravelHotspot.category == category.casefold())
     if country_code:
         query = query.where(TravelHotspot.country_code == country_code.upper())
+    if role:
+        role_ids = [item.id for item in DESTINATIONS if item.role == role]
+        query = query.where(TravelHotspot.destination_id.in_(role_ids))
     total = int(await session.scalar(select(func.count()).select_from(query.subquery())) or 0)
     if after_rank is not None:
         query = query.where(HotspotRanking.rank > after_rank)
@@ -619,6 +659,7 @@ async def list_rankings(
                 "slug": hotspot.slug,
                 "rank": ranking.rank,
                 "name": localized_names.get(hotspot.id, hotspot.name),
+                "destination_id": hotspot.destination_id,
                 "city_code": hotspot.city_code,
                 "city_name": hotspot.city_name,
                 "country_code": hotspot.country_code,
@@ -655,6 +696,7 @@ async def list_rankings(
                     "article": guide_counts.get((hotspot.id, "article"), 0),
                     "video": guide_counts.get((hotspot.id, "video"), 0),
                 },
+                **_destination_fields(hotspot.destination_id),
             }
         )
     return {
@@ -689,6 +731,7 @@ async def hotspot_facets(session: AsyncSession) -> dict[str, Any]:
 
     countries = await grouped(TravelHotspot.country_code, TravelHotspot.country_name)
     cities = await grouped(
+        TravelHotspot.destination_id,
         TravelHotspot.city_code,
         TravelHotspot.city_name,
         TravelHotspot.country_code,
@@ -711,9 +754,11 @@ async def hotspot_facets(session: AsyncSession) -> dict[str, Any]:
         "cities": [
             {
                 "code": row.city_code,
+                "destination_id": row.destination_id,
                 "name": row.city_name,
                 "country_code": row.country_code,
                 "count": row.count,
+                **_destination_fields(row.destination_id),
             }
             for row in cities
         ],
@@ -728,15 +773,35 @@ async def hotspot_facets(session: AsyncSession) -> dict[str, Any]:
 async def load_planner_hotspots(
     session: AsyncSession,
     *,
-    city_code: str,
+    city_code: str | None = None,
+    destination_id: str | None = None,
     interests: list[str] | None = None,
     limit: int = 12,
+    extension_destination_ids: list[str] | None = None,
+    days: int | None = None,
 ) -> list[ItineraryHotspot]:
     """Load only approved deep-ranking rows for the real itinerary builder."""
     result = await list_rankings(
-        session, city_code=city_code, style="deep", limit=min(50, max(1, limit))
+        session,
+        city_code=city_code,
+        destination_id=destination_id,
+        style="deep",
+        limit=min(50, max(1, limit)),
     )
     ranked_items = result["items"]
+    primary_id = destination_id
+    if primary_id is None and city_code:
+        resolved = destination_for_code(city_code)
+        primary_id = resolved.id if resolved else None
+    extension_limit = 0 if (days or 0) < 4 else (2 if (days or 0) >= 7 else 1)
+    for extension_id in (extension_destination_ids or [])[:extension_limit]:
+        extension = destination_for_id(extension_id)
+        if extension is None or extension.parent_destination_id != primary_id:
+            continue
+        extension_result = await list_rankings(
+            session, destination_id=extension.id, style="deep", limit=1
+        )
+        ranked_items.extend(extension_result["items"])
     requested = {interest for interest in (interests or []) if interest != "deep_travel"}
     if requested:
         ranked_items = sorted(
@@ -768,6 +833,10 @@ async def load_planner_hotspots(
                 depth_reason=item["depth_reason"],
                 access_minutes=item["access_minutes"],
                 recommended_duration_minutes=item["recommended_duration_minutes"],
+                destination_id=item["destination_id"],
+                destination_role=item["destination_role"],
+                parent_destination_id=item["parent_destination_id"],
+                is_cross_city=item["is_cross_city"],
             )
         )
     return rows
