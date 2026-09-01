@@ -25,6 +25,7 @@ from app.models import (
     TravelHotspot,
     User,
 )
+from app.restaurants.admin_sources_router import restaurant_editorial_coverage
 
 pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
@@ -66,6 +67,45 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         assert int(await session.scalar(select(func.count(FoodHotspot.id))) or 0) >= 70
         assert int(await session.scalar(select(func.count(FoodMerchant.id))) or 0) == 155
         assert int(await session.scalar(select(func.count(FoodMerchantFood.id))) or 0) == 173
+        assert int(await session.scalar(select(func.count(FoodMerchantSource.id))) or 0) == 202
+        assert (
+            int(
+                await session.scalar(
+                    select(func.count(func.distinct(FoodMerchantSource.merchant_id))).where(
+                        FoodMerchantSource.source_scope.in_(
+                            ("merchant_listing", "merchant_website")
+                        )
+                    )
+                )
+                or 0
+            )
+            == 47
+        )
+        assert (
+            int(
+                await session.scalar(
+                    select(func.count(FoodMerchant.id)).where(
+                        FoodMerchant.official_website_url.is_not(None)
+                    )
+                )
+                or 0
+            )
+            == 21
+        )
+        coverage = await restaurant_editorial_coverage(
+            User(email="coverage@example.test", password_hash="not-used", is_admin=True),
+            session,
+            limit=200,
+        )
+        food_merchant_coverage = coverage["food_merchants"]
+        assert food_merchant_coverage["direct_merchant_evidence"] == 47
+        assert food_merchant_coverage["official_website"] == 21
+        by_country = {
+            country["country_code"]: country for country in food_merchant_coverage["by_country"]
+        }
+        assert by_country["JP"]["direct_merchant_evidence"] == 0
+        assert by_country["TW"]["direct_merchant_evidence"] == 14
+        assert by_country["SG"]["official_website"] == 6
 
         korean_food = await session.scalar(
             select(TravelFood).where(TravelFood.country_code == "KR").limit(1)
@@ -128,6 +168,12 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         assert facets["total"] == 70
         assert len(facets["countries"]) == 7
 
+        seeded_merchant = await session.scalar(
+            select(FoodMerchant).where(FoodMerchant.slug == "taipei-din-tai-fung")
+        )
+        assert seeded_merchant is not None
+        seeded_merchant.official_website_url = "https://example.test/admin-verified"
+
         disabled = await session.scalar(select(TravelFood).order_by(TravelFood.slug).limit(1))
         assert disabled is not None
         disabled.review_status = "disabled"
@@ -142,6 +188,11 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         assert disabled.review_status == "disabled"
         assert disabled.is_active is False
         assert int(await session.scalar(select(func.count(TravelFood.id))) or 0) == 70
+        seeded_merchant = await session.scalar(
+            select(FoodMerchant).where(FoodMerchant.slug == "taipei-din-tai-fung")
+        )
+        assert seeded_merchant is not None
+        assert seeded_merchant.official_website_url == "https://example.test/admin-verified"
 
         admin = User(
             email="food-admin-integration@example.test",

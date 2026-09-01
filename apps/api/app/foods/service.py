@@ -12,7 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.destinations.catalog import destination_for_id
 from app.foods.catalog import COUNTRY_NAMES, FOOD_SEEDS
-from app.foods.merchant_catalog import MERCHANT_SEEDS
+from app.foods.merchant_catalog import MERCHANT_DIRECT_SOURCE_SEEDS, MERCHANT_SEEDS
 from app.hotspots.maps import build_map_links, has_exact_map_identity
 from app.locations.plus_codes import has_durable_coordinates
 from app.models import (
@@ -148,6 +148,9 @@ async def seed_food_catalog(session: AsyncSession) -> int:
             "Official destination food guide (regional context only)",
         }
     }
+    direct_sources_by_slug: dict[str, list[Any]] = defaultdict(list)
+    for direct_source_seed in MERCHANT_DIRECT_SOURCE_SEEDS:
+        direct_sources_by_slug[direct_source_seed.merchant_slug].append(direct_source_seed)
     for merchant_seed in MERCHANT_SEEDS:
         merchant = existing_merchants.get(merchant_seed.slug)
         if merchant is None:
@@ -208,6 +211,45 @@ async def seed_food_catalog(session: AsyncSession) -> int:
             if source_url_changed:
                 source.last_verified_at = datetime.now(UTC)
             existing_sources[source_key] = source
+
+        for direct_source_seed in direct_sources_by_slug.get(merchant_seed.slug, []):
+            direct_source_key = (merchant.id, direct_source_seed.source_url, None)
+            direct_source = existing_sources.get(direct_source_key)
+            if direct_source is None:
+                direct_source = FoodMerchantSource(
+                    merchant_id=merchant.id,
+                    source_type=direct_source_seed.source_type,
+                    source_scope=direct_source_seed.source_scope,
+                    source_title=direct_source_seed.source_title,
+                    source_url=direct_source_seed.source_url,
+                    claims_json=list(direct_source_seed.claims),
+                    edition_year=None,
+                    distinction=None,
+                    is_current=True,
+                    last_verified_at=datetime.now(UTC),
+                )
+                session.add(direct_source)
+                existing_sources[direct_source_key] = direct_source
+            else:
+                source_changed = any(
+                    (
+                        direct_source.source_type != direct_source_seed.source_type,
+                        direct_source.source_scope != direct_source_seed.source_scope,
+                        direct_source.source_title != direct_source_seed.source_title,
+                        direct_source.claims_json != list(direct_source_seed.claims),
+                        not direct_source.is_current,
+                    )
+                )
+                direct_source.source_type = direct_source_seed.source_type
+                direct_source.source_scope = direct_source_seed.source_scope
+                direct_source.source_title = direct_source_seed.source_title
+                direct_source.claims_json = list(direct_source_seed.claims)
+                direct_source.is_current = True
+                if source_changed:
+                    direct_source.last_verified_at = datetime.now(UTC)
+            if direct_source_seed.official_website_url and merchant.official_website_url is None:
+                merchant.official_website_url = direct_source_seed.official_website_url
+                merchant.official_website_verified_at = datetime.now(UTC)
 
     food_areas = list(
         (

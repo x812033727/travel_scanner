@@ -480,27 +480,61 @@ async def restaurant_editorial_coverage(
                 "source_count": source_count,
             }
         )
-    merchant_total = int(await session.scalar(select(func.count(FoodMerchant.id))) or 0)
-    merchant_context = int(
-        await session.scalar(
-            select(func.count(func.distinct(FoodMerchantSource.merchant_id))).where(
-                FoodMerchantSource.source_scope == "destination_context",
-                FoodMerchantSource.is_current.is_(True),
+    merchant_rows = list(
+        (
+            await session.execute(
+                select(
+                    FoodMerchant.id,
+                    FoodMerchant.country_code,
+                    FoodMerchant.official_website_url,
+                )
             )
-        )
-        or 0
+        ).all()
     )
-    merchant_direct = int(
-        await session.scalar(
-            select(func.count(func.distinct(FoodMerchantSource.merchant_id))).where(
-                FoodMerchantSource.source_scope.in_(
-                    ("merchant_listing", "merchant_website", "coordinates")
-                ),
-                FoodMerchantSource.is_current.is_(True),
+    merchant_context_ids = set(
+        (
+            await session.scalars(
+                select(FoodMerchantSource.merchant_id).where(
+                    FoodMerchantSource.source_scope == "destination_context",
+                    FoodMerchantSource.is_current.is_(True),
+                )
             )
-        )
-        or 0
+        ).all()
     )
+    merchant_direct_ids = set(
+        (
+            await session.scalars(
+                select(FoodMerchantSource.merchant_id).where(
+                    FoodMerchantSource.source_scope.in_(
+                        ("merchant_listing", "merchant_website", "coordinates")
+                    ),
+                    FoodMerchantSource.is_current.is_(True),
+                )
+            )
+        ).all()
+    )
+    merchant_country_coverage: dict[str, dict[str, int | str]] = {}
+    for merchant_id, country_code, official_website_url in merchant_rows:
+        country = merchant_country_coverage.setdefault(
+            country_code,
+            {
+                "country_code": country_code,
+                "total": 0,
+                "destination_context": 0,
+                "direct_merchant_evidence": 0,
+                "official_website": 0,
+            },
+        )
+        country["total"] = int(country["total"]) + 1
+        if merchant_id in merchant_context_ids:
+            country["destination_context"] = int(country["destination_context"]) + 1
+        if merchant_id in merchant_direct_ids:
+            country["direct_merchant_evidence"] = int(country["direct_merchant_evidence"]) + 1
+        if official_website_url:
+            country["official_website"] = int(country["official_website"]) + 1
+    merchant_total = len(merchant_rows)
+    merchant_context = len(merchant_context_ids)
+    merchant_direct = len(merchant_direct_ids)
     return {
         "items": items,
         "restaurant_places": {
@@ -512,6 +546,11 @@ async def restaurant_editorial_coverage(
             "total": merchant_total,
             "destination_context": merchant_context,
             "direct_merchant_evidence": merchant_direct,
+            "official_website": sum(bool(row.official_website_url) for row in merchant_rows),
+            "by_country": [
+                merchant_country_coverage[country_code]
+                for country_code in sorted(merchant_country_coverage)
+            ],
             "disclosure": (
                 "Destination context proves only the official regional food guide exists; "
                 "it does not prove the guide lists that merchant."
