@@ -7,8 +7,46 @@ test.beforeEach(async ({ page }) => {
     body: JSON.stringify({ id: "00000000-0000-4000-8000-000000000001", email: "tester@example.com" }),
   }));
 });
+
+for (const [locale, heading] of [
+  ["en", /Open fewer tabs\.\s*Understand more of your trip\./],
+  ["ja", /タブを減らして、\s*旅をもっと深く理解。/],
+  ["ko", /탭은 적게 열고,\s*여행은 더 깊이 이해하세요\./],
+  ["zh-TW", /少開十個分頁，\s*多看懂一趟旅行。/],
+  ["zh-CN", /少开十个页面，\s*多看懂一趟旅行。/],
+] as const) {
+  test(`${locale} home has localized metadata shell and hero`, async ({ page }) => {
+    await page.goto(`/${locale}`);
+    await expect(page.locator("html")).toHaveAttribute("lang", locale);
+    await expect(page.getByRole("heading", { name: heading })).toBeVisible();
+  });
+}
+
+test("first visit detects browser language and preserves query", async ({ request }) => {
+  const response = await request.get("/?campaign=autumn", {
+    headers: { "Accept-Language": "ja-JP,ja;q=0.9" },
+    maxRedirects: 0,
+  });
+  expect(response.status()).toBeGreaterThanOrEqual(300);
+  expect(response.status()).toBeLessThan(400);
+  expect(response.headers().location).toMatch(/\/ja\/?\?campaign=autumn$/);
+});
+
+for (const width of [320, 390]) {
+  test(`mobile language switch keeps the current page at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 760 });
+    await page.goto("/en?campaign=mobile");
+    await page.getByRole("button", { name: "Open navigation menu" }).click();
+    await page.getByRole("navigation", { name: "Mobile primary navigation" }).getByLabel("Language").selectOption("ja");
+    await expect(page).toHaveURL(/\/ja\/?\?campaign=mobile$/);
+    await expect(page.locator("html")).toHaveAttribute("lang", "ja");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
+      await page.evaluate(() => document.documentElement.clientWidth),
+    );
+  });
+}
 test("primary travel flow is visible", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/zh-TW");
   await expect(page.getByRole("heading", { name: /少開十個分頁/ })).toBeVisible();
   await expect(page.getByRole("button", { name: /下一步/ })).toBeVisible();
   const mobileMenu = page.getByRole("button", { name: "開啟導覽選單" });
@@ -26,7 +64,7 @@ test("new trip asks visitors to sign in before showing the long form", async ({ 
     contentType: "application/json",
     body: JSON.stringify({ detail: "未登入" }),
   }));
-  await page.goto("/trips/new");
+  await page.goto("/zh-TW/trips/new");
   await expect(page.getByRole("heading", { name: "先登入，再建立你的行程" })).toBeVisible();
   await expect(page.getByRole("link", { name: "前往登入" })).toBeVisible();
   await expect(page.getByLabel("旅程名稱")).toHaveCount(0);
@@ -38,7 +76,7 @@ test("new trip surfaces authentication service failures", async ({ page }) => {
     contentType: "application/json",
     body: JSON.stringify({ detail: "資料庫錯誤" }),
   }));
-  await page.goto("/trips/new");
+  await page.goto("/zh-TW/trips/new");
   await expect(page.getByRole("heading", { name: "目前無法確認登入狀態" })).toBeVisible();
   await expect(page.getByRole("link", { name: "前往登入" })).toHaveCount(0);
 });
@@ -107,7 +145,7 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
     await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(currentTrip) });
   });
 
-  await page.goto("/trips/mobile-trip");
+  await page.goto("/zh-TW/trips/mobile-trip");
   if (test.info().project.name !== "mobile-chromium") {
     await expect(page.locator(".planner-app-bar")).toBeHidden();
     await expect(page.getByText(/行程規劃器/)).toBeVisible();
@@ -191,7 +229,7 @@ test("Japan Korea Thailand workbench carries structured preferences", async ({ p
       recommendations: [{ candidate_id: "HKT:2026-11-10:5", city: "普吉", airport: "HKT", country: "泰國", country_code: "TH", areas: ["普吉老城", "卡塔"], reason: "海灘與度假選擇完整", departure_date: "2026-11-10", return_date: "2026-11-15", trip_length_days: 5, estimated_flight_twd: 21000, estimated_lodging_twd: 18000, estimated_total_twd: 55000, score: 92, matched_interests: ["beach"], relaxed_preferences: [] }],
     }),
   }));
-  await page.goto("/");
+  await page.goto("/zh-TW");
   await page.getByRole("button", { name: /下一步/ }).click();
   await page.getByRole("button", { name: /泰國/ }).click();
   await page.getByLabel("指定城市").selectOption("HKT");
@@ -227,7 +265,7 @@ test("Airbnb official search is available without running the paid comparison", 
       message: "供應商測試資料已啟用",
     }),
   }));
-  await page.goto("/search?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=2&children=1&rooms=1&preferred_area=%E6%96%B0%E5%AE%BF&include_airbnb=true");
+  await page.goto("/zh-TW/search?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=2&children=1&rooms=1&preferred_area=%E6%96%B0%E5%AE%BF&include_airbnb=true");
   const link = page.getByRole("link", { name: /Airbnb 官方外站搜尋/ });
   await expect(link).toBeVisible();
   const href = await link.getAttribute("href");
@@ -245,9 +283,9 @@ test("alerts page distinguishes signed-out state from service failures", async (
     contentType: "application/problem+json",
     body: JSON.stringify({ status: 401, code: "authentication_required", detail: "請先登入再繼續" }),
   }));
-  await page.goto("/alerts");
+  await page.goto("/zh-TW/alerts");
   await expect(page.getByText("登入後才能查看這裡的內容")).toBeVisible();
-  await expect(page.getByRole("link", { name: "前往登入" })).toHaveAttribute("href", "/login?next=%2Falerts");
+  await expect(page.getByRole("link", { name: "前往登入" })).toHaveAttribute("href", "/zh-TW/login?next=%2Falerts");
 });
 
 test("guest keeps search criteria and is sent back after login", async ({ page }) => {
@@ -261,10 +299,10 @@ test("guest keeps search criteria and is sent back after login", async ({ page }
     contentType: "application/json",
     body: JSON.stringify({ provider: "mock", mode: "mock", status: "ready", modules: ["flight", "hotel"], message: "模擬資料已啟用" }),
   }));
-  await page.goto("/search?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=2&include_airbnb=true");
+  await page.goto("/zh-TW/search?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=2&include_airbnb=true");
   const login = page.getByRole("link", { name: "登入後開始搜尋" });
   await expect(login).toBeVisible();
-  await expect(login).toHaveAttribute("href", /\/login\?next=%2Fsearch%3Forigin%3DTPE/);
+  await expect(login).toHaveAttribute("href", /\/zh-TW\/login\?next=%2Fsearch%3Forigin%3DTPE/);
   await expect(page.getByRole("link", { name: /Airbnb 官方外站搜尋/ })).toBeVisible();
 });
 
@@ -274,9 +312,9 @@ test("empty search explains missing fields and links home", async ({ page }) => 
     contentType: "application/json",
     body: JSON.stringify({ provider: "mock", mode: "mock", status: "ready", modules: [], message: "模擬資料已啟用" }),
   }));
-  await page.goto("/search");
+  await page.goto("/zh-TW/search");
   await expect(page.getByText(/缺少出發地、目的地或出發日期/)).toBeVisible();
-  await expect(page.getByRole("link", { name: "回首頁設定條件" })).toHaveAttribute("href", "/");
+  await expect(page.getByRole("link", { name: "回首頁設定條件" })).toHaveAttribute("href", "/zh-TW");
 });
 
 test("failed login keeps email and clears only password", async ({ page }) => {
@@ -285,7 +323,7 @@ test("failed login keeps email and clears only password", async ({ page }) => {
     contentType: "application/problem+json",
     body: JSON.stringify({ status: 401, code: "invalid_credentials", detail: "Email 或密碼不正確" }),
   }));
-  await page.goto("/login?next=%2Falerts");
+  await page.goto("/zh-TW/login?next=%2Falerts");
   await page.getByLabel("Email").fill("traveler@example.com");
   await page.getByLabel("密碼").fill("wrong-password");
   await page.getByRole("button", { name: "登入" }).click();
@@ -296,9 +334,9 @@ test("failed login keeps email and clears only password", async ({ page }) => {
 
 test("mobile menu exposes trips alerts and account links", async ({ page }) => {
   await page.setViewportSize({ width: 412, height: 915 });
-  await page.goto("/");
+  await page.goto("/zh-TW");
   await expect(page.getByRole("link", { name: "我的旅行" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "我的旅行" })).toHaveAttribute("href", "/trips");
+  await expect(page.getByRole("link", { name: "我的旅行" })).toHaveAttribute("href", "/zh-TW/trips");
   await page.getByRole("button", { name: "開啟導覽選單" }).click();
   await expect(page.getByRole("navigation", { name: "手機主要導覽" })).toBeVisible();
   await expect(page.getByRole("link", { name: "我的旅程" })).toBeVisible();
@@ -318,7 +356,7 @@ test("search criteria can be revised before running a new comparison", async ({ 
       message: "供應商測試資料已啟用",
     }),
   }));
-  await page.goto("/search?origin=TPE&destination=HKT&departure_date=2026-11-10&return_date=2026-11-15&adults=2&children=0&rooms=1&budget_twd=60000&interests=food&preferred_area=%E6%99%AE%E5%90%89%E8%80%81%E5%9F%8E&pace=balanced");
+  await page.goto("/zh-TW/search?origin=TPE&destination=HKT&departure_date=2026-11-10&return_date=2026-11-15&adults=2&children=0&rooms=1&budget_twd=60000&interests=food&preferred_area=%E6%99%AE%E5%90%89%E8%80%81%E5%9F%8E&pace=balanced");
   await expect(page.getByRole("heading", { name: "泰國・普吉完整旅程" })).toBeVisible();
   await page.getByRole("button", { name: "修改搜尋條件" }).click();
   await page.getByLabel("總預算 TWD").fill("85000");
@@ -377,7 +415,7 @@ test("flexible flight dates show local schedules and require confirmation before
     return route.fulfill({ status: 200, contentType: "text/html", body: "<p>safe affiliate redirect</p>" });
   });
 
-  await page.goto("/search?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=1&rooms=1&flex_days=7");
+  await page.goto("/zh-TW/search?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=1&rooms=1&flex_days=7");
   await page.getByRole("button", { name: "確認條件並開始搜尋" }).click();
   await expect.poll(() => submitted.length).toBe(1);
   expect(submitted[0]).toMatchObject({ flex_days: 7, flexible_dates: true });
@@ -401,7 +439,7 @@ test("flexible flight dates show local schedules and require confirmation before
 });
 
 test("airline public fare lab is available", async ({ page }) => {
-  await page.goto("/labs/airlines");
+  await page.goto("/zh-TW/labs/airlines");
   await expect(page.getByRole("heading", { name: /三家航空/ })).toBeVisible();
   await expect(page.getByRole("button", { name: "搜尋公開票價" })).toBeVisible();
   await expect(page.getByText("中華航空")).toBeVisible();
@@ -455,7 +493,7 @@ test("back-to-back fare comparison renders both strategy modes", async ({ page }
     }),
   }));
 
-  await page.goto("/labs/airlines");
+  await page.goto("/zh-TW/labs/airlines");
   await expect(page.getByText("政策停用")).toBeVisible();
   const backToBackTab = page.getByRole("tab", { name: "倒買法" });
   await backToBackTab.click();
@@ -528,7 +566,7 @@ test("different destinations can complete an external two-segment comparison", a
     });
   });
 
-  await page.goto("/labs/airlines");
+  await page.goto("/zh-TW/labs/airlines");
   await page.getByRole("tab", { name: "倒買法" }).click();
   await page.getByLabel("第二次目的地").selectOption("SEL");
   await page.getByLabel("頭段單程每人價格").fill("3000");
@@ -573,7 +611,7 @@ test("live flight provider submits the five-ticket reverse comparison", async ({
     });
   });
 
-  await page.goto("/labs/airlines");
+  await page.goto("/zh-TW/labs/airlines");
   await page.getByRole("tab", { name: "即時倒買 API" }).click();
   await expect(page.getByRole("heading", { name: "即時倒買價格比較" })).toBeVisible();
   await page.getByLabel("成人").selectOption("2");

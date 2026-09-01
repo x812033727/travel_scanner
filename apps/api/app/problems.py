@@ -4,6 +4,8 @@ from fastapi import Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
+from app.i18n import ERROR_DETAILS, GENERIC_DETAILS, PROBLEM_TITLES, request_locale
+
 
 class AppError(Exception):
     def __init__(self, status: int, code: str, detail: str) -> None:
@@ -13,24 +15,17 @@ class AppError(Exception):
 
 
 async def app_error_handler(request: Request, exc: AppError) -> JSONResponse:
-    titles = {
-        400: "請求內容不正確",
-        401: "需要登入",
-        402: "可用次數不足",
-        403: "沒有操作權限",
-        404: "找不到資料",
-        409: "資料狀態衝突",
-        422: "輸入內容不正確",
-        429: "操作太頻繁",
-        500: "伺服器發生錯誤",
-        503: "服務暫時無法使用",
-    }
+    locale = request_locale(request.headers)
+    titles = PROBLEM_TITLES[locale]
+    detail = exc.detail if locale == "zh-TW" else ERROR_DETAILS[locale].get(
+        exc.code, GENERIC_DETAILS[locale]
+    )
     payload: dict[str, Any] = {
         "type": f"https://travel-scanner.local/problems/{exc.code}",
-        "title": titles.get(exc.status, "請求未完成"),
+        "title": titles.get(exc.status, titles["default"]),
         "status": exc.status,
         "code": exc.code,
-        "detail": exc.detail,
+        "detail": detail,
         "request_id": getattr(request.state, "request_id", None),
     }
     return JSONResponse(payload, status_code=exc.status, media_type="application/problem+json")
@@ -95,13 +90,14 @@ def _localized_issue(error: dict[str, Any]) -> str:
 
 
 async def validation_error_handler(request: Request, exc: RequestValidationError) -> JSONResponse:
+    locale = request_locale(request.headers)
     details = list(dict.fromkeys(_localized_issue(error) for error in exc.errors()))
     payload: dict[str, Any] = {
         "type": "https://travel-scanner.local/problems/validation_error",
-        "title": "輸入內容不正確",
+        "title": PROBLEM_TITLES[locale][422],
         "status": 422,
         "code": "validation_error",
-        "detail": "；".join(details),
+        "detail": "；".join(details) if locale == "zh-TW" else GENERIC_DETAILS[locale],
         "request_id": getattr(request.state, "request_id", None),
     }
     return JSONResponse(payload, status_code=422, media_type="application/problem+json")

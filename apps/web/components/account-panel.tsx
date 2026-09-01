@@ -1,9 +1,10 @@
 "use client";
 
 import { Check, Copy, History, LoaderCircle } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
+import { activeLocale } from "@/lib/locale-format";
 
 type Me = { id: string; email: string };
 type Usage = {
@@ -28,8 +29,8 @@ type UsageHistoryItem = {
 };
 type UsageHistory = { items: UsageHistoryItem[]; next_cursor?: string };
 
-const dateFormat = new Intl.DateTimeFormat("zh-TW", { dateStyle: "medium", timeStyle: "short" });
-const inputClass = "mt-2 w-full rounded-xl border border-[var(--line)] p-3 font-normal";
+const inputClass =
+  "mt-2 w-full rounded-xl border border-[var(--line)] p-3 font-normal";
 const historyFilters: Array<{ key: HistoryKind; label: string }> = [
   { key: "all", label: "全部" },
   { key: "charged", label: "成功扣次" },
@@ -66,6 +67,7 @@ function changeLabel(item: UsageHistoryItem) {
 }
 
 export function AccountPanel() {
+  const dateFormat = new Intl.DateTimeFormat(activeLocale(), { dateStyle: "medium", timeStyle: "short" });
   const [me, setMe] = useState<Me>();
   const [usage, setUsage] = useState<Usage>();
   const [history, setHistory] = useState<UsageHistoryItem[]>([]);
@@ -79,8 +81,12 @@ export function AccountPanel() {
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    api<Me>("/auth/me").then(setMe).catch((reason: Error) => setLoadError(reason.message));
-    api<Usage>("/usage").then(setUsage).catch(() => undefined);
+    api<Me>("/auth/me")
+      .then(setMe)
+      .catch((reason: Error) => setLoadError(reason.message));
+    api<Usage>("/usage")
+      .then(setUsage)
+      .catch(() => undefined);
   }, []);
 
   useEffect(() => {
@@ -110,7 +116,9 @@ export function AccountPanel() {
     if (!nextCursor) return;
     setHistoryBusy(true);
     try {
-      const result = await api<UsageHistory>(`/usage/history?kind=${historyKind}&cursor=${encodeURIComponent(nextCursor)}`);
+      const result = await api<UsageHistory>(
+        `/usage/history?kind=${historyKind}&cursor=${encodeURIComponent(nextCursor)}`,
+      );
       setHistory((current) => [...current, ...result.items]);
       setNextCursor(result.next_cursor);
     } catch {
@@ -121,15 +129,22 @@ export function AccountPanel() {
   }
 
   async function changePassword(form: FormData) {
-    setBusy(true); setFormError(undefined); setDone(false);
+    setBusy(true);
+    setFormError(undefined);
+    setDone(false);
     const newPassword = form.get("new_password");
     if (newPassword !== form.get("confirm_password")) {
-      setFormError("兩次輸入的新密碼不一致"); setBusy(false); return;
+      setFormError("兩次輸入的新密碼不一致");
+      setBusy(false);
+      return;
     }
     try {
       await api("/auth/change-password", {
         method: "POST",
-        body: JSON.stringify({ current_password: form.get("current_password"), new_password: newPassword }),
+        body: JSON.stringify({
+          current_password: form.get("current_password"),
+          new_password: newPassword,
+        }),
       });
       setDone(true);
     } catch (reason) {
@@ -139,51 +154,236 @@ export function AccountPanel() {
     }
   }
 
-  if (loadError) return <p className="rounded-xl bg-red-50 p-4 text-red-700">{loadError}，請先<Link className="underline" href="/login">登入</Link>。</p>;
+  if (loadError)
+    return (
+      <p className="rounded-xl bg-red-50 p-4 text-red-700">
+        {loadError}，請先
+        <Link className="underline" href="/login">
+          登入
+        </Link>
+        。
+      </p>
+    );
   if (!me) return <p className="text-[var(--muted)]">正在載入帳號資料…</p>;
 
   return (
     <div className="space-y-6">
       <section className="rounded-[2rem] border border-[var(--line)] bg-white p-6 md:p-8">
         <div className="flex flex-wrap items-start justify-between gap-4">
-          <div><h2 className="text-xl font-bold">帳號與使用次數</h2><p className="mt-1 text-sm text-[var(--muted)]">次數不會按月歸零，成功取得可用查價結果才扣除。</p></div>
-          <Link href="/pricing" className="rounded-xl border border-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-[var(--teal)]">查看次數包</Link>
+          <div>
+            <h2 className="text-xl font-bold">帳號與使用次數</h2>
+            <p className="mt-1 text-sm text-[var(--muted)]">
+              次數不會按月歸零，成功取得可用查價結果才扣除。
+            </p>
+          </div>
+          <Link
+            href="/pricing"
+            className="rounded-xl border border-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-[var(--teal)]"
+          >
+            查看次數包
+          </Link>
         </div>
         <dl className="mt-6 grid gap-4 sm:grid-cols-3">
-          <div className="rounded-2xl bg-[var(--paper)] p-4"><dt className="text-sm text-[var(--muted)]">會員 Email</dt><dd className="mt-1 break-all font-semibold">{me.email}</dd></div>
-          <div className="rounded-2xl bg-[var(--teal-soft)] p-4"><dt className="text-sm text-[var(--teal-dark)]">目前可用</dt><dd className="mt-1 text-3xl font-bold text-[var(--teal-dark)]">{usage ? `${usage.available_uses} 次` : "—"}</dd></div>
-          <div className="rounded-2xl bg-[var(--paper)] p-4"><dt className="text-sm text-[var(--muted)]">處理中保留</dt><dd className="mt-1 text-2xl font-bold">{usage ? `${usage.reserved_uses} 次` : "—"}</dd></div>
+          <div className="rounded-2xl bg-[var(--paper)] p-4">
+            <dt className="text-sm text-[var(--muted)]">會員 Email</dt>
+            <dd className="mt-1 break-all font-semibold">{me.email}</dd>
+          </div>
+          <div className="rounded-2xl bg-[var(--teal-soft)] p-4">
+            <dt className="text-sm text-[var(--teal-dark)]">目前可用</dt>
+            <dd className="mt-1 text-3xl font-bold text-[var(--teal-dark)]">
+              {usage ? `${usage.available_uses} 次` : "—"}
+            </dd>
+          </div>
+          <div className="rounded-2xl bg-[var(--paper)] p-4">
+            <dt className="text-sm text-[var(--muted)]">處理中保留</dt>
+            <dd className="mt-1 text-2xl font-bold">
+              {usage ? `${usage.reserved_uses} 次` : "—"}
+            </dd>
+          </div>
         </dl>
-        {usage && <p className="mt-4 text-sm text-[var(--muted)]">帳面剩餘 {usage.remaining_uses} 次；可儲存 {usage.limits.saved_trips} 份旅程及建立 {usage.limits.price_alerts} 個價格通知。</p>}
+        {usage && (
+          <p className="mt-4 text-sm text-[var(--muted)]">
+            帳面剩餘 {usage.remaining_uses} 次；可儲存{" "}
+            {usage.limits.saved_trips} 份旅程及建立 {usage.limits.price_alerts}{" "}
+            個價格通知。
+          </p>
+        )}
       </section>
 
       <section className="rounded-[2rem] border border-[var(--line)] bg-white p-6 md:p-8">
-        <div className="flex flex-wrap items-start justify-between gap-4"><div><h2 className="flex items-center gap-2 text-xl font-bold"><History size={21} className="text-[var(--teal)]" />使用紀錄</h2><p className="mt-1 text-sm text-[var(--muted)]">每筆成功、失敗未扣與加值都有獨立流水號。</p></div><div className="flex flex-wrap gap-2">{historyFilters.map((item) => <button key={item.key} onClick={() => selectHistoryKind(item.key)} aria-pressed={historyKind === item.key} className={`rounded-full border px-3 py-1.5 text-sm font-semibold ${historyKind === item.key ? "border-[var(--teal)] bg-[var(--teal)] text-white" : "border-[var(--line)] text-[var(--muted)]"}`}>{item.label}</button>)}</div></div>
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <h2 className="flex items-center gap-2 text-xl font-bold">
+              <History size={21} className="text-[var(--teal)]" />
+              使用紀錄
+            </h2>
+            <p className="mt-1 text-sm text-[var(--muted)]">
+              每筆成功、失敗未扣與加值都有獨立流水號。
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {historyFilters.map((item) => (
+              <button
+                key={item.key}
+                onClick={() => selectHistoryKind(item.key)}
+                aria-pressed={historyKind === item.key}
+                className={`rounded-full border px-3 py-1.5 text-sm font-semibold ${historyKind === item.key ? "border-[var(--teal)] bg-[var(--teal)] text-white" : "border-[var(--line)] text-[var(--muted)]"}`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
 
-        {historyBusy && history.length === 0 && <p className="mt-6 flex items-center gap-2 text-sm text-[var(--muted)]"><LoaderCircle className="animate-spin" size={17} />正在載入使用紀錄…</p>}
-        {historyError && <p role="alert" className="mt-6 rounded-xl bg-red-50 p-4 text-sm text-red-800">{historyError}</p>}
-        {!historyBusy && !historyError && history.length === 0 && <div className="mt-6 rounded-2xl border border-dashed border-[var(--line)] p-8 text-center text-[var(--muted)]">這個分類目前沒有紀錄。</div>}
-        {history.length > 0 && <div className="mt-6 overflow-hidden rounded-2xl border border-[var(--line)]">
-          <div className="hidden grid-cols-[9rem_1fr_8rem_6rem] gap-4 bg-[var(--paper)] px-4 py-3 text-xs font-semibold text-[var(--muted)] md:grid"><span>時間／狀態</span><span>查詢摘要／流水號</span><span>次數變動</span><span>扣後餘額</span></div>
-          <ol className="divide-y divide-[var(--line)]">{history.map((item) => <li key={item.id} className="grid gap-3 p-4 md:grid-cols-[9rem_1fr_8rem_6rem] md:items-center md:gap-4">
-            <div><span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(item)}`}>{statusLabel(item)}</span><time className="mt-2 block text-xs text-[var(--muted)]">{dateFormat.format(new Date(item.occurred_at))}</time></div>
-            <div className="min-w-0"><p className="font-semibold">{item.summary}</p><p className="mt-1 flex min-w-0 items-center gap-1 text-xs text-[var(--muted)]"><span className="truncate">流水號 {item.reference}</span><button title="複製流水號" aria-label={`複製流水號 ${item.reference}`} onClick={() => navigator.clipboard?.writeText(item.reference)} className="shrink-0 rounded p-1 hover:bg-[var(--paper)]"><Copy size={13} /></button></p></div>
-            <strong className={item.change > 0 ? "text-[var(--teal)]" : item.change < 0 ? "text-[#9d4e3f]" : "text-emerald-700"}>{changeLabel(item)}</strong>
-            <span className="text-sm"><span className="md:hidden text-[var(--muted)]">扣後餘額 </span>{item.balance_after} 次</span>
-          </li>)}</ol>
-        </div>}
-        {nextCursor && <button onClick={loadMore} disabled={historyBusy} className="mt-4 w-full rounded-xl border border-[var(--line)] py-3 text-sm font-semibold disabled:opacity-50">{historyBusy ? "載入中…" : "載入更多紀錄"}</button>}
+        {historyBusy && history.length === 0 && (
+          <p className="mt-6 flex items-center gap-2 text-sm text-[var(--muted)]">
+            <LoaderCircle className="animate-spin" size={17} />
+            正在載入使用紀錄…
+          </p>
+        )}
+        {historyError && (
+          <p
+            role="alert"
+            className="mt-6 rounded-xl bg-red-50 p-4 text-sm text-red-800"
+          >
+            {historyError}
+          </p>
+        )}
+        {!historyBusy && !historyError && history.length === 0 && (
+          <div className="mt-6 rounded-2xl border border-dashed border-[var(--line)] p-8 text-center text-[var(--muted)]">
+            這個分類目前沒有紀錄。
+          </div>
+        )}
+        {history.length > 0 && (
+          <div className="mt-6 overflow-hidden rounded-2xl border border-[var(--line)]">
+            <div className="hidden grid-cols-[9rem_1fr_8rem_6rem] gap-4 bg-[var(--paper)] px-4 py-3 text-xs font-semibold text-[var(--muted)] md:grid">
+              <span>時間／狀態</span>
+              <span>查詢摘要／流水號</span>
+              <span>次數變動</span>
+              <span>扣後餘額</span>
+            </div>
+            <ol className="divide-y divide-[var(--line)]">
+              {history.map((item) => (
+                <li
+                  key={item.id}
+                  className="grid gap-3 p-4 md:grid-cols-[9rem_1fr_8rem_6rem] md:items-center md:gap-4"
+                >
+                  <div>
+                    <span
+                      className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(item)}`}
+                    >
+                      {statusLabel(item)}
+                    </span>
+                    <time className="mt-2 block text-xs text-[var(--muted)]">
+                      {dateFormat.format(new Date(item.occurred_at))}
+                    </time>
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-semibold">{item.summary}</p>
+                    <p className="mt-1 flex min-w-0 items-center gap-1 text-xs text-[var(--muted)]">
+                      <span className="truncate">流水號 {item.reference}</span>
+                      <button
+                        title="複製流水號"
+                        aria-label={`複製流水號 ${item.reference}`}
+                        onClick={() =>
+                          navigator.clipboard?.writeText(item.reference)
+                        }
+                        className="shrink-0 rounded p-1 hover:bg-[var(--paper)]"
+                      >
+                        <Copy size={13} />
+                      </button>
+                    </p>
+                  </div>
+                  <strong
+                    className={
+                      item.change > 0
+                        ? "text-[var(--teal)]"
+                        : item.change < 0
+                          ? "text-[#9d4e3f]"
+                          : "text-emerald-700"
+                    }
+                  >
+                    {changeLabel(item)}
+                  </strong>
+                  <span className="text-sm">
+                    <span className="md:hidden text-[var(--muted)]">
+                      扣後餘額{" "}
+                    </span>
+                    {item.balance_after} 次
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+        {nextCursor && (
+          <button
+            onClick={loadMore}
+            disabled={historyBusy}
+            className="mt-4 w-full rounded-xl border border-[var(--line)] py-3 text-sm font-semibold disabled:opacity-50"
+          >
+            {historyBusy ? "載入中…" : "載入更多紀錄"}
+          </button>
+        )}
       </section>
 
       <section className="rounded-[2rem] border border-[var(--line)] bg-white p-6 md:p-8">
         <h2 className="text-xl font-bold">修改密碼</h2>
         <form action={changePassword} className="mt-5 max-w-md space-y-4">
-          <label className="block text-sm font-semibold">目前密碼<input required type="password" name="current_password" autoComplete="current-password" className={inputClass} /></label>
-          <label className="block text-sm font-semibold">新密碼（至少 10 個字元）<input required minLength={10} maxLength={128} type="password" name="new_password" autoComplete="new-password" className={inputClass} /></label>
-          <label className="block text-sm font-semibold">確認新密碼<input required minLength={10} maxLength={128} type="password" name="confirm_password" autoComplete="new-password" className={inputClass} /></label>
-          {formError && <p role="alert" className="text-sm text-red-700">{formError}</p>}
-          {done && <p className="flex items-center gap-2 text-sm text-[var(--teal)]" role="status"><Check size={16} />密碼已更新，下次登入請使用新密碼。</p>}
-          <button disabled={busy} className="rounded-xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:opacity-50">{busy ? "處理中…" : "更新密碼"}</button>
+          <label className="block text-sm font-semibold">
+            目前密碼
+            <input
+              required
+              type="password"
+              name="current_password"
+              autoComplete="current-password"
+              className={inputClass}
+            />
+          </label>
+          <label className="block text-sm font-semibold">
+            新密碼（至少 10 個字元）
+            <input
+              required
+              minLength={10}
+              maxLength={128}
+              type="password"
+              name="new_password"
+              autoComplete="new-password"
+              className={inputClass}
+            />
+          </label>
+          <label className="block text-sm font-semibold">
+            確認新密碼
+            <input
+              required
+              minLength={10}
+              maxLength={128}
+              type="password"
+              name="confirm_password"
+              autoComplete="new-password"
+              className={inputClass}
+            />
+          </label>
+          {formError && (
+            <p role="alert" className="text-sm text-red-700">
+              {formError}
+            </p>
+          )}
+          {done && (
+            <p
+              className="flex items-center gap-2 text-sm text-[var(--teal)]"
+              role="status"
+            >
+              <Check size={16} />
+              密碼已更新，下次登入請使用新密碼。
+            </p>
+          )}
+          <button
+            disabled={busy}
+            className="rounded-xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:opacity-50"
+          >
+            {busy ? "處理中…" : "更新密碼"}
+          </button>
         </form>
       </section>
     </div>

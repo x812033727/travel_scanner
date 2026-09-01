@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckCircle2, LoaderCircle } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useState } from "react";
 import { ApiError, api } from "@/lib/api";
 import { loginPath } from "@/lib/navigation";

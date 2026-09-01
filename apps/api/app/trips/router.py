@@ -569,7 +569,7 @@ async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPla
     refreshed = await asyncio.gather(*(collect(str(module)) for module in query.modules))
     offers = {module: rows for module, rows, _ in refreshed}
     warnings = [warning for _, _, warning in refreshed if warning]
-    place_service = GoogleTravelService(redis, settings)
+    place_service = GoogleTravelService(redis, settings, locale=query.locale)
     hotels = [item for item in offers.get("hotel", []) if isinstance(item, HotelOffer)]
     activities = [item for item in offers.get("activities", []) if isinstance(item, ActivityOffer)]
     if place_service.configured:

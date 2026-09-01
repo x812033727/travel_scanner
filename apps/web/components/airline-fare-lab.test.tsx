@@ -3,7 +3,10 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { AirlineFareLab } from "./airline-fare-lab";
 
 const { routerPush } = vi.hoisted(() => ({ routerPush: vi.fn() }));
-vi.mock("next/navigation", () => ({ useRouter: () => ({ push: routerPush }) }));
+vi.mock("@/i18n/navigation", () => ({
+  useRouter: () => ({ push: routerPush }),
+  Link: ({ href, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => <a href={href} {...props}>{children}</a>,
+}));
 
 const status = {
   sources: [

@@ -172,7 +172,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
     settings = await load_runtime_settings(session)
     providers = build_module_provider_candidates(redis, settings)
     runner = ProviderRunner(redis, settings)
-    place_service = GoogleTravelService(redis, settings)
+    place_service = GoogleTravelService(redis, settings, locale=query.locale)
     status = provider_status(settings)
     if not any(providers.get(str(module)) for module in query.modules):
         search.status = "failed"

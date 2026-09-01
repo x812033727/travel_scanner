@@ -2,6 +2,7 @@ import { BedDouble, Check, CircleDollarSign, Clock3, ExternalLink, Hotel, MapPin
 import Image from "next/image";
 import { twd } from "@/lib/api";
 import { PriceAlertButton } from "@/components/price-alert-button";
+import { activeLocale } from "@/lib/locale-format";
 
 export type HotelOfferView = {
   id: string;
@@ -74,8 +75,8 @@ export function HotelOfferCard({ offer, actionUrl, alertReturnPath }: { offer: H
   const starRating = hotelStarRating(offer);
   const reviewScore = number(offer.review_score);
   const amenities = Array.isArray(offer.amenities) ? offer.amenities.filter((item): item is string => typeof item === "string").slice(0, 4) : [];
-  const retrievedAt = offer.retrieved_at ? new Date(offer.retrieved_at).toLocaleString("zh-TW") : undefined;
-  const expiresAt = offer.expires_at ? new Date(offer.expires_at).toLocaleString("zh-TW") : undefined;
+  const retrievedAt = offer.retrieved_at ? new Date(offer.retrieved_at).toLocaleString(activeLocale()) : undefined;
+  const expiresAt = offer.expires_at ? new Date(offer.expires_at).toLocaleString(activeLocale()) : undefined;
 
   return (
     <article className="overflow-hidden rounded-[1.5rem] border border-[var(--line)] bg-white">
@@ -91,7 +92,7 @@ export function HotelOfferCard({ offer, actionUrl, alertReturnPath }: { offer: H
 
         <div className="mt-4 flex flex-wrap gap-2 text-xs">
           {starRating > 0 && <span className="flex items-center gap-1 rounded-full bg-amber-50 px-2.5 py-1.5 font-semibold text-amber-900"><Star size={14} fill="currentColor" />{starRating.toFixed(1)} 星</span>}
-          {reviewScore > 0 && <span className="rounded-full bg-[var(--paper)] px-2.5 py-1.5 font-semibold">旅客 {reviewScore.toFixed(1)}{number(offer.review_count) ? `（${number(offer.review_count).toLocaleString("zh-TW")} 則）` : ""}</span>}
+          {reviewScore > 0 && <span className="rounded-full bg-[var(--paper)] px-2.5 py-1.5 font-semibold">旅客 {reviewScore.toFixed(1)}{number(offer.review_count) ? `（${number(offer.review_count).toLocaleString(activeLocale())} 則）` : ""}</span>}
           <span className="flex items-center gap-1 rounded-full bg-[var(--paper)] px-2.5 py-1.5"><BedDouble size={14} />{text(offer.room_type, "客房")} · {number(offer.nights) || "-"} 晚</span>
           {number(offer.station_walk_minutes) > 0 && <span className="flex items-center gap-1 rounded-full bg-[var(--paper)] px-2.5 py-1.5"><TrainFront size={14} />車站步行 {number(offer.station_walk_minutes)} 分</span>}
         </div>

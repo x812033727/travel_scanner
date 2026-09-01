@@ -13,6 +13,7 @@ from redis.asyncio import Redis
 
 from app.config import Settings, get_settings
 from app.destinations.catalog import DestinationProfile, destination_for_code
+from app.i18n import normalize_locale, provider_locale
 from app.providers.schemas import ActionKind, HotelOffer, SourceMode
 from app.search.schemas import PropertyType, SearchCreate, SearchModule
 
@@ -201,14 +202,19 @@ class BookingHotelProvider:
         destination = query.destination or (query.legs[0].destination if query.legs else None)
         return destination_for_code(destination)
 
+    @staticmethod
+    def _language(query: SearchCreate) -> str:
+        return provider_locale("booking", normalize_locale(query.locale))
+
     async def _city_id(self, query: SearchCreate) -> int | None:
         profile = self._destination_profile(query)
         if profile is None:
             return None
         destination = (query.destination or profile.code).upper()
+        language = self._language(query)
         cache_key = (
             f"provider:booking:location:{self.settings.booking_demand_env.lower()}:"
-            f"{self.settings.booking_language.lower()}:{destination}"
+            f"{language}:{destination}"
         )
         cached = await self.redis.get(cache_key)
         if cached is not None:
@@ -219,7 +225,7 @@ class BookingHotelProvider:
             "/common/locations/cities",
             {
                 "airport": destination,
-                "languages": [self.settings.booking_language.lower(), "en-gb"],
+                "languages": [language, "en-gb"],
                 "rows": 10,
             },
         )
@@ -231,7 +237,7 @@ class BookingHotelProvider:
         aliases.add(_normalized_name(query_name))
         selected: int | None = None
         for row in cast(list[dict[str, Any]], payload.get("data", [])):
-            name = _localized(row.get("name"), self.settings.booking_language)
+            name = _localized(row.get("name"), language)
             if _normalized_name(name) not in aliases:
                 continue
             raw_id = row.get("id")
@@ -260,6 +266,7 @@ class BookingHotelProvider:
         return check_in, check_out
 
     async def search_hotels(self, query: SearchCreate) -> list[HotelOffer]:
+        language = self._language(query)
         city_id = await self._city_id(query)
         if city_id is None:
             return []
@@ -294,7 +301,7 @@ class BookingHotelProvider:
             {
                 "accommodations": accommodation_ids,
                 "extras": ["description", "facilities", "photos"],
-                "languages": [self.settings.booking_language.lower()],
+                "languages": [language],
             },
         )
         details = {
@@ -345,12 +352,12 @@ class BookingHotelProvider:
             ]
             facilities = cast(list[Any], detail.get("facilities") or [])
             amenities = [
-                _localized(item, self.settings.booking_language, str(item))
+                _localized(item, language, str(item))
                 for item in facilities[:20]
             ]
             property_raw = detail.get("type") or detail.get("accommodation_type")
             room = product.get("room")
-            room_type = _localized(room, self.settings.booking_language, "供應商房型")
+            room_type = _localized(room, language, "Provider room")
             offers.append(
                 HotelOffer(
                     id=stable_booking_offer_id(provider_offer_id),
@@ -371,7 +378,7 @@ class BookingHotelProvider:
                     hotel_id=hotel_id,
                     hotel_name=_localized(
                         detail.get("name"),
-                        self.settings.booking_language,
+                        language,
                         f"Booking.com #{hotel_id}",
                     ),
                     latitude=_float(coordinates.get("latitude")),
@@ -390,7 +397,7 @@ class BookingHotelProvider:
                     and "non_refundable" not in cancellation_folded,
                     station_walk_minutes=0,
                     nightly_price=(total / nights).quantize(Decimal("0.01")),
-                    address=_address_text(detail.get("address"), self.settings.booking_language),
+                    address=_address_text(detail.get("address"), language),
                     amenities=[item for item in amenities if item],
                     review_score=_float(
                         review.get("score") or detail.get("review_score_value")

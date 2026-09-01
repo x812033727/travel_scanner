@@ -1,3 +1,5 @@
+import { formatCurrency } from "@/lib/locale-format";
+
 export class ApiError extends Error {
   constructor(
     message: string,
@@ -126,5 +128,6 @@ export function isUsageInsufficient(reason: unknown): boolean {
   return reason instanceof ApiError && reason.code === "insufficient_uses";
 }
 
-export const twd = new Intl.NumberFormat("zh-TW", { style: "currency", currency: "TWD", maximumFractionDigits: 0 });
+export { formatCurrency };
+export const twd = { format: (value: number | bigint) => formatCurrency(Number(value), "TWD") };
 

@@ -1,11 +1,15 @@
+from typing import Literal
 from uuid import UUID
 
 from pydantic import BaseModel, EmailStr, Field
+
+Locale = Literal["en", "ja", "ko", "zh-TW", "zh-CN"]
 
 
 class RegisterRequest(BaseModel):
     email: EmailStr
     password: str = Field(min_length=10, max_length=128)
+    preferred_locale: Locale = "zh-TW"
 
 
 class LoginRequest(BaseModel):
@@ -22,6 +26,11 @@ class UserResponse(BaseModel):
     id: UUID
     email: EmailStr
     is_admin: bool = False
+    preferred_locale: Locale = "zh-TW"
+
+
+class UserPreferencesUpdate(BaseModel):
+    preferred_locale: Locale
 
 
 class TokenResponse(BaseModel):

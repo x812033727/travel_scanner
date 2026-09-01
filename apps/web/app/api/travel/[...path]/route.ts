@@ -12,6 +12,7 @@ type Context = { params: Promise<{ path: string[] }> };
 const MAX_REQUEST_BYTES = Number(process.env.API_PROXY_MAX_BODY_BYTES || 5 * 1024 * 1024);
 const MAX_RESPONSE_BYTES = Number(process.env.API_PROXY_MAX_RESPONSE_BYTES || 10 * 1024 * 1024);
 const UPSTREAM_TIMEOUT_MS = Number(process.env.API_PROXY_TIMEOUT_MS || 15_000);
+const SUPPORTED_LOCALES = new Set(["en", "ja", "ko", "zh-TW", "zh-CN"]);
 
 function problem(status: number, code: string, detail: string) {
   return NextResponse.json(
@@ -65,10 +66,12 @@ async function proxy(request: NextRequest, context: Context) {
   const url = `${base}/api/v1/${endpoint}${request.nextUrl.search}`;
   const jar = await cookies();
   const token = jar.get("travel_access")?.value;
+  const localeCookie = jar.get("travel_locale")?.value;
   const headers = new Headers();
   const contentType = request.headers.get("content-type");
   if (contentType) headers.set("Content-Type", contentType);
   if (token) headers.set("Authorization", `Bearer ${token}`);
+  headers.set("X-Travel-Locale", SUPPORTED_LOCALES.has(localeCookie || "") ? localeCookie! : "zh-TW");
   for (const name of ["idempotency-key", "last-event-id"]) {
     const value = request.headers.get(name);
     if (value) headers.set(name, value);
@@ -133,6 +136,12 @@ async function proxy(request: NextRequest, context: Context) {
     const response = NextResponse.json(payload, { status: upstream.status });
     response.headers.set("Cache-Control", "no-store");
     response.cookies.set("travel_access", accessToken, { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", path: "/", maxAge: expiresIn });
+    const preferredLocale = "user" in payload && payload.user && typeof payload.user === "object" && "preferred_locale" in payload.user
+      ? payload.user.preferred_locale
+      : undefined;
+    if (typeof preferredLocale === "string" && SUPPORTED_LOCALES.has(preferredLocale)) {
+      response.cookies.set("travel_locale", preferredLocale, { sameSite: "lax", path: "/", maxAge: 31_536_000 });
+    }
     return response;
   }
   const response = upstream.status === 204

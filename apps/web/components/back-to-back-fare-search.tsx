@@ -10,7 +10,7 @@ import {
   ShieldAlert,
   Shuffle,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { FormEvent, useMemo, useState } from "react";
 import { api, isUsageInsufficient, twd } from "@/lib/api";
 

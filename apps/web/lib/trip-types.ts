@@ -91,9 +91,9 @@ export type Trip = {
   usage?: { status: "reserved" | "charged" | "released"; uses: number; reference: string };
 };
 
-export function formatTime(value?: string | null) {
+export function formatTime(value?: string | null, locale?: string) {
   if (!value) return "彈性時段";
-  return new Intl.DateTimeFormat("zh-TW", {
+  return new Intl.DateTimeFormat(locale || activeLocale(), {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
@@ -107,3 +107,4 @@ export function groupTripItems(items: TripItem[]) {
   }
   return [...grouped.entries()];
 }
+import { activeLocale } from "@/lib/locale-format";

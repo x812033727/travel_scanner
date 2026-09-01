@@ -22,6 +22,7 @@ def test_photo_proxy_only_accepts_google_resource_names_and_https_targets() -> N
 async def test_autocomplete_biases_google_results_and_returns_distance() -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         body = json.loads(request.read())
+        assert body["languageCode"] == "ko"
         assert body["sessionToken"] == "session-token-123"
         assert body["includedRegionCodes"] == ["jp"]
         assert body["regionCode"] == "jp"
@@ -51,6 +52,7 @@ async def test_autocomplete_biases_google_results_and_returns_distance() -> None
         fakeredis.aioredis.FakeRedis(decode_responses=True),
         Settings(google_maps_api_key="key"),
         client,
+        locale="ko",
     )
     results = await service.autocomplete(
         "淺草",
@@ -76,7 +78,7 @@ async def test_autocomplete_biases_google_results_and_returns_distance() -> None
 async def test_place_details_finishes_the_google_autocomplete_session() -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         assert request.url.params["sessionToken"] == "session-token-123"
-        assert request.url.params["languageCode"] == "zh-TW"
+        assert request.url.params["languageCode"] == "ja"
         return httpx.Response(
             200,
             json={
@@ -93,6 +95,7 @@ async def test_place_details_finishes_the_google_autocomplete_session() -> None:
         fakeredis.aioredis.FakeRedis(decode_responses=True),
         Settings(google_maps_api_key="key"),
         client,
+        locale="ja",
     )
     result = await service.place_details("ChIJ-test", "session-token-123")
     await client.aclose()
