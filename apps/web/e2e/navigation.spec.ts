@@ -138,6 +138,24 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await page.getByRole("button", { name: "取消" }).click();
   await expect(page.getByRole("dialog", { name: "新增安排" })).toBeHidden();
   await expect(page.locator(".planner-timeline-marker")).toHaveCount(2);
+  await addButton.click();
+  await page.getByLabel("安排名稱").fill("銀座午餐");
+  await page.getByRole("button", { name: "加入行程" }).click();
+  const addedCard = page.getByRole("heading", { name: "銀座午餐" }).locator("xpath=ancestor::article");
+  await expect(addedCard).toBeVisible();
+  await expect(addedCard).toHaveClass(/planner-itinerary-card-new/);
+  await expect(page.getByText("已加入行程")).toBeVisible();
+  await expect.poll(() => page.evaluate(() => {
+    const card = document.querySelector(".planner-itinerary-card-new")?.getBoundingClientRect();
+    return Boolean(card && card.top >= 0 && card.bottom <= window.innerHeight);
+  })).toBe(true);
+  const completionLayout = await page.evaluate(() => {
+    const toast = document.querySelector(".planner-toast-stack")?.getBoundingClientRect();
+    const dock = document.querySelector(".planner-mobile-dock")?.getBoundingClientRect();
+    return { toastBottom: toast?.bottom, dockTop: dock?.top };
+  });
+  expect(completionLayout.toastBottom || 701).toBeLessThan(completionLayout.dockTop || 0);
+  await expect.poll(() => saves).toBe(1);
   await page.getByRole("button", { name: "開啟旅程工具" }).click();
   await expect(page.getByRole("dialog", { name: "旅程工具" })).toBeVisible();
   await page.getByRole("radio", { name: /暮紫/ }).click();
@@ -146,7 +164,7 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await page.getByRole("button", { name: "編輯 淺草寺" }).click();
   await page.getByLabel("安排名稱").fill("淺草寺與雷門");
   await page.getByRole("button", { name: "關閉" }).click();
-  await expect.poll(() => saves).toBe(1);
+  await expect.poll(() => saves).toBe(2);
   await page.getByRole("button", { name: "AI 幫我安排", exact: true }).click();
   await expect(page.getByRole("dialog", { name: "AI 幫我安排" })).toBeVisible();
   await expect(page.getByRole("radio", { name: /單日安排/ })).toHaveAttribute("aria-checked", "true");
