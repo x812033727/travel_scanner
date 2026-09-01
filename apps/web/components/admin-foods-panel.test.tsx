@@ -29,7 +29,10 @@ const item = {
 
 describe("AdminFoodsPanel", () => {
   it("lists reviewed content and performs an audited batch action", async () => {
-    const fetchMock = vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      if (String(input).includes("/admin/foods/merchants?")) {
+        return new Response(JSON.stringify({ items: [], total: 0, page: 1, pages: 0 }));
+      }
       if (init?.method === "POST") {
         expect(JSON.parse(String(init.body))).toEqual({ ids: [item.id], action: "approve" });
         return new Response(JSON.stringify({ updated: 1, status: "approved" }));
@@ -44,6 +47,6 @@ describe("AdminFoodsPanel", () => {
     fireEvent.click(screen.getByRole("button", { name: "核准" }));
 
     expect(await screen.findByText("已更新 1 筆美食資料")).toBeTruthy();
-    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(3));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(4));
   });
 });

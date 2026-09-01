@@ -23,7 +23,9 @@ from app.hotspots.ranking import RankingInput, score_deep_hotspots, score_hotspo
 from app.hotspots.wikimedia import WikimediaPageviewClient
 from app.i18n import LOCALES
 from app.infra import get_redis
+from app.locations.plus_codes import has_durable_coordinates, plus_code_for_coordinates
 from app.models import (
+    FoodMerchant,
     HotspotGuide,
     HotspotLocalization,
     HotspotPlaceProfile,
@@ -31,9 +33,94 @@ from app.models import (
     HotspotSignal,
     TravelHotspot,
 )
+from app.places.google import GoogleTravelService
 from app.trips.itinerary import ItineraryHotspot
 
 PUBLIC_REVIEW_STATUSES = ("approved", "auto_approved")
+
+
+async def refresh_due_map_place_ids(
+    session: AsyncSession,
+    settings: Settings,
+    *,
+    client: httpx.AsyncClient | None = None,
+    limit: int = 20,
+) -> dict[str, int | bool]:
+    """Refresh exact Google Place IDs after 12 months without persisting Places coordinates."""
+
+    if not settings.google_maps_api_key:
+        return {"configured": False, "checked": 0, "refreshed": 0, "failed": 0}
+    cutoff = datetime.now(UTC) - timedelta(days=365)
+    hotspots = list(
+        (
+            await session.scalars(
+                select(TravelHotspot)
+                .where(
+                    TravelHotspot.google_place_id.is_not(None),
+                    TravelHotspot.map_match_status == "verified",
+                    or_(
+                        TravelHotspot.map_verified_at.is_(None),
+                        TravelHotspot.map_verified_at <= cutoff,
+                    ),
+                )
+                .order_by(TravelHotspot.map_verified_at.asc().nullsfirst())
+                .limit(limit)
+            )
+        ).all()
+    )
+    remaining = max(0, limit - len(hotspots))
+    merchants = list(
+        (
+            await session.scalars(
+                select(FoodMerchant)
+                .where(
+                    FoodMerchant.google_place_id.is_not(None),
+                    FoodMerchant.map_match_status == "verified",
+                    or_(FoodMerchant.verified_at.is_(None), FoodMerchant.verified_at <= cutoff),
+                )
+                .order_by(FoodMerchant.verified_at.asc().nullsfirst())
+                .limit(remaining)
+            )
+        ).all()
+    )
+    rows: list[TravelHotspot | FoodMerchant] = [*hotspots, *merchants]
+    service = GoogleTravelService(get_redis(), settings, client=client)
+    semaphore = asyncio.Semaphore(3)
+
+    async def refresh(
+        row: TravelHotspot | FoodMerchant,
+    ) -> tuple[TravelHotspot | FoodMerchant, str | None]:
+        async with semaphore:
+            return row, await service.refresh_place_id(str(row.google_place_id))
+
+    refreshed = 0
+    failed = 0
+    now = datetime.now(UTC)
+    for row, place_id in await asyncio.gather(*(refresh(row) for row in rows)):
+        if not place_id:
+            failed += 1
+            continue
+        model = TravelHotspot if isinstance(row, TravelHotspot) else FoodMerchant
+        duplicate = await session.scalar(
+            select(model.id).where(model.google_place_id == place_id, model.id != row.id)
+        )
+        if duplicate is not None:
+            failed += 1
+            continue
+        row.google_place_id = place_id
+        if isinstance(row, TravelHotspot):
+            row.map_verified_at = now
+        else:
+            row.verified_at = now
+        refreshed += 1
+    if rows:
+        await session.commit()
+    return {
+        "configured": True,
+        "checked": len(rows),
+        "refreshed": refreshed,
+        "failed": failed,
+    }
 
 
 async def _upsert_signal(
@@ -106,6 +193,16 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
         hotspot.search_text = seed.search_text
         hotspot.latitude = Decimal(str(seed.latitude))
         hotspot.longitude = Decimal(str(seed.longitude))
+        hotspot.plus_code_global = plus_code_for_coordinates(seed.latitude, seed.longitude)
+        hotspot.coordinate_source_type = (
+            "wikidata" if seed.coordinate_source == "wikidata_p625" else "curated"
+        )
+        hotspot.coordinate_source_url = (
+            seed.wikidata_url
+            if hotspot.coordinate_source_type == "wikidata"
+            else next(iter(seed.source_urls), None) or seed.wikipedia_url or seed.wikidata_url
+        )
+        hotspot.coordinate_verified_at = hotspot.coordinate_verified_at or datetime.now(UTC)
         hotspot.wikipedia_project = seed.wikipedia_project
         hotspot.wikipedia_title = seed.wikipedia_title
         hotspot.wikidata_item_id = seed.wikidata_item_id
@@ -335,6 +432,8 @@ async def discover_hotspots(
                     status, reason = candidate.review_status, candidate.review_reason
                     if status == "auto_approved" and public_count >= city.target_count:
                         status, reason = "pending", "city_quota_reached"
+                    elif status == "auto_approved":
+                        status, reason = "pending", "map_identity_required"
                     if status == "auto_approved":
                         public_count += 1
                         auto_approved += 1
@@ -352,6 +451,12 @@ async def discover_hotspots(
                     )
                     hotspot.latitude = Decimal(str(candidate.latitude))
                     hotspot.longitude = Decimal(str(candidate.longitude))
+                    hotspot.plus_code_global = plus_code_for_coordinates(
+                        candidate.latitude, candidate.longitude
+                    )
+                    hotspot.coordinate_source_type = "wikidata"
+                    hotspot.coordinate_source_url = next(iter(candidate.source_urls), None)
+                    hotspot.coordinate_verified_at = now
                     hotspot.wikipedia_project = candidate.wikipedia_project
                     hotspot.wikipedia_title = candidate.wikipedia_title
                     hotspot.origin = "wikimedia_discovery"
@@ -484,6 +589,7 @@ async def collect_hotspots(
         await session.commit()
     rankings = await refresh_rankings(session, target_date)
     await session.commit()
+    map_id_refresh = await refresh_due_map_place_ids(session, settings, client=client)
     guide_report: dict[str, Any] = {"skipped": True, "reason": "disabled_or_unconfigured"}
     if settings.hotspot_guides_enabled and (
         (settings.hotspot_guide_youtube_enabled and settings.hotspot_guide_youtube_api_key)
@@ -532,6 +638,7 @@ async def collect_hotspots(
         "discovery": discovery_report,
         "wikimedia_collected": collected,
         "ranking_count": rankings,
+        "map_id_refresh": map_id_refresh,
         "guides": guide_report,
         "errors": errors,
     }
@@ -691,6 +798,18 @@ async def list_rankings(
                 "category": hotspot.category,
                 "latitude": float(hotspot.latitude) if hotspot.latitude is not None else None,
                 "longitude": float(hotspot.longitude) if hotspot.longitude is not None else None,
+                "plus_code_global": hotspot.plus_code_global,
+                "coordinate_source": {
+                    "type": hotspot.coordinate_source_type,
+                    "url": hotspot.coordinate_source_url,
+                    "verified_at": hotspot.coordinate_verified_at.isoformat()
+                    if hotspot.coordinate_verified_at is not None
+                    else None,
+                },
+                "map_match_status": hotspot.map_match_status,
+                "map_verified_at": hotspot.map_verified_at.isoformat()
+                if hotspot.map_verified_at is not None
+                else None,
                 "score": float(ranking.score),
                 "components": {
                     "interest": float(ranking.interest_score),
@@ -728,6 +847,8 @@ async def list_rankings(
                     latitude=hotspot.latitude,
                     longitude=hotspot.longitude,
                     google_place_id=hotspot.google_place_id,
+                    naver_map_url=hotspot.naver_map_url,
+                    map_match_status=hotspot.map_match_status,
                 ),
                 "place_summary": place_summary_payload(
                     hotspot,
@@ -856,8 +977,20 @@ async def load_planner_hotspots(
             item["depth_reason"],
             item["access_minutes"],
             item["recommended_duration_minutes"],
+            item["plus_code_global"],
         )
-        if any(value is None for value in required):
+        if (
+            any(value is None for value in required)
+            or item["map_match_status"] != "verified"
+            or not item["map_links"]
+            or not has_durable_coordinates(
+                item["latitude"],
+                item["longitude"],
+                item["plus_code_global"],
+                item["coordinate_source"].get("type"),
+                item["coordinate_source"].get("url"),
+            )
+        ):
             continue
         rows.append(
             ItineraryHotspot(
@@ -866,6 +999,8 @@ async def load_planner_hotspots(
                 category=item["category"],
                 latitude=item["latitude"],
                 longitude=item["longitude"],
+                plus_code_global=item["plus_code_global"],
+                map_links=item["map_links"],
                 depth_kind=item["depth_kind"],
                 depth_score=item["depth_score"],
                 depth_reason=item["depth_reason"],

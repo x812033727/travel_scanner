@@ -46,6 +46,8 @@ class ItineraryHotspot(BaseModel):
     category: str
     latitude: float
     longitude: float
+    plus_code_global: str | None = None
+    map_links: list[dict[str, str | bool]] = Field(default_factory=list)
     depth_kind: str
     depth_score: float
     depth_reason: str
@@ -63,10 +65,13 @@ class ItineraryFood(BaseModel):
     local_name: str
     food_kind: str
     meal_types: list[str]
+    merchant_id: UUID | None = None
+    merchant_name: str | None = None
     hotspot_id: UUID | None = None
     hotspot_name: str | None = None
     latitude: float | None = None
     longitude: float | None = None
+    plus_code_global: str | None = None
     map_links: list[dict[str, str | bool]] = Field(default_factory=list)
     merchant_status: str = "merchant_pending"
 
@@ -102,12 +107,16 @@ def _flight_info(flight: FlightOffer, *, returning: bool) -> dict[str, Any]:
     departure = (
         flight.return_departure_time
         if returning
-        else first.departure_time if first else flight.departure_time
+        else first.departure_time
+        if first
+        else flight.departure_time
     )
     arrival = (
         flight.return_arrival_time
         if returning
-        else last.arrival_time if last else flight.arrival_time
+        else last.arrival_time
+        if last
+        else flight.arrival_time
     )
     return {
         "airline": first.airline if first else flight.airline,
@@ -121,9 +130,7 @@ def _flight_info(flight: FlightOffer, *, returning: bool) -> dict[str, Any]:
         "departure_timezone": _flight_timezone(
             departure, first.departure_timezone if first else None
         ),
-        "arrival_timezone": _flight_timezone(
-            arrival, last.arrival_timezone if last else None
-        ),
+        "arrival_timezone": _flight_timezone(arrival, last.arrival_timezone if last else None),
         "stops": max(0, len(segments) - 1),
         "segments": [segment.model_dump(mode="json") for segment in segments],
     }
@@ -336,6 +343,8 @@ def build_itinerary(
                 data={
                     "source_mode": "approved_hotspot",
                     "hotspot_id": str(hotspot.hotspot_id),
+                    "plus_code_global": hotspot.plus_code_global,
+                    "map_links": hotspot.map_links,
                     "destination_id": hotspot.destination_id,
                     "parent_destination_id": hotspot.parent_destination_id,
                     "is_cross_city": True,
@@ -368,6 +377,8 @@ def build_itinerary(
                 data={
                     "source_mode": "approved_hotspot",
                     "hotspot_id": str(hotspot.hotspot_id),
+                    "plus_code_global": hotspot.plus_code_global,
+                    "map_links": hotspot.map_links,
                     "depth_kind": hotspot.depth_kind,
                     "depth_score": hotspot.depth_score,
                     "depth_reason": hotspot.depth_reason,
@@ -399,6 +410,8 @@ def build_itinerary(
                     data={
                         "source_mode": "approved_hotspot",
                         "hotspot_id": str(hotspot.hotspot_id),
+                        "plus_code_global": hotspot.plus_code_global,
+                        "map_links": hotspot.map_links,
                         "depth_kind": hotspot.depth_kind,
                         "depth_score": hotspot.depth_score,
                         "depth_reason": hotspot.depth_reason,
@@ -469,7 +482,7 @@ def build_itinerary(
             item: ItineraryFood, current_anchor: tuple[float, float] | None = anchor
         ) -> tuple[bool, float]:
             if current_anchor is None or item.latitude is None or item.longitude is None:
-                return (item.hotspot_id is None, 0.0)
+                return (item.merchant_id is None, 0.0)
             return (
                 False,
                 (item.latitude - current_anchor[0]) ** 2
@@ -480,12 +493,19 @@ def build_itinerary(
         food_candidates.remove(food)
         meal_type = "dinner" if "dinner" in food.meal_types else food.meal_types[0]
         start_hour = 18 if meal_type == "dinner" else 12
-        confirmed = food.hotspot_id is not None
+        confirmed = (
+            food.merchant_id is not None
+            and food.merchant_status == "verified"
+            and food.latitude is not None
+            and food.longitude is not None
+            and food.plus_code_global is not None
+            and bool(food.map_links)
+        )
         add(
             day,
             item_type="food",
             title=food.name,
-            location_name=food.hotspot_name or "店家待確認",
+            location_name=food.merchant_name or "店家待確認",
             start_time=_at(day, start_hour, timezone=destination_timezone),
             end_time=_at(day, start_hour + 1, 30, timezone=destination_timezone),
             latitude=food.latitude,
@@ -500,6 +520,9 @@ def build_itinerary(
                 "local_name": food.local_name,
                 "food_kind": food.food_kind,
                 "meal_type": meal_type,
+                "merchant_id": str(food.merchant_id) if food.merchant_id else None,
+                "merchant_name": food.merchant_name,
+                "plus_code_global": food.plus_code_global,
                 "hotspot_id": str(food.hotspot_id) if food.hotspot_id else None,
                 "map_links": food.map_links,
                 "merchant_status": food.merchant_status,
@@ -508,7 +531,7 @@ def build_itinerary(
                 **destination_context,
             },
             notes=(
-                "請由地圖確認最新店家、營業時間與評價"
+                "店家來自核准目錄；請由地圖確認最新營業時間"
                 if confirmed
                 else "店家待確認；不指定未驗證的餐廳"
             ),
@@ -585,9 +608,7 @@ def build_itinerary(
             ("dinner", 18, 30, 90, 1, "晚餐"),
         ):
             title = (
-                meal_titles[(day_index * 2 + offset) % len(meal_titles)]
-                if meal_titles
-                else label
+                meal_titles[(day_index * 2 + offset) % len(meal_titles)] if meal_titles else label
             )
             starts = _at(day_value, hour, minute, timezone=destination_timezone)
             add(
@@ -633,9 +654,7 @@ def build_itinerary(
         outbound_flights = [
             item for item in rows[day_value] if item.system_role == "outbound_flight"
         ]
-        return_flights = [
-            item for item in rows[day_value] if item.system_role == "return_flight"
-        ]
+        return_flights = [item for item in rows[day_value] if item.system_role == "return_flight"]
         route_rows = [
             item
             for item in rows[day_value]

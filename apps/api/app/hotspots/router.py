@@ -14,6 +14,7 @@ from app.hotspots.places import place_detail_payload
 from app.hotspots.service import hotspot_facets, list_rankings
 from app.i18n import Locale, current_locale
 from app.infra import client_ip, enforce_named_rate_limit, get_redis
+from app.locations.plus_codes import has_durable_coordinates
 from app.models import HotspotPlaceProfile, TravelHotspot
 from app.problems import AppError
 
@@ -182,6 +183,21 @@ async def hotspots_for_planner(
         matched = [item for item in items if item["category"] in requested]
         unmatched = [item for item in items if item["category"] not in requested]
         items = matched + unmatched
+
+    def planner_ready(item: dict[str, Any]) -> bool:
+        return bool(
+            item["map_match_status"] == "verified"
+            and has_durable_coordinates(
+                item["latitude"],
+                item["longitude"],
+                item["plus_code_global"],
+                item["coordinate_source"].get("type"),
+                item["coordinate_source"].get("url"),
+            )
+            and item["map_links"]
+        )
+
+    items = [item for item in items if planner_ready(item)]
     chosen_extensions: list[str] = []
     extension_items: list[dict[str, Any]] = []
     if include_extensions and resolved_destination_id and (days or 0) >= 4:
@@ -206,8 +222,9 @@ async def hotspots_for_planner(
                     runtime.google_maps_api_key and runtime.hotspot_place_enrichment_enabled
                 ),
             )
-            if child_result["items"]:
-                extension_items.append(child_result["items"][0])
+            child_items = [item for item in child_result["items"] if planner_ready(item)]
+            if child_items:
+                extension_items.append(child_items[0])
                 chosen_extensions.append(child.id)
     if extension_items:
         # Cross-city choices must survive the endpoint limit instead of being
@@ -220,6 +237,9 @@ async def hotspots_for_planner(
             "category": item["category"],
             "latitude": item["latitude"],
             "longitude": item["longitude"],
+            "plus_code_global": item["plus_code_global"],
+            "coordinate_source": item["coordinate_source"],
+            "map_match_status": item["map_match_status"],
             "popularity_score": item["score"],
             "popularity_rank": item["rank"],
             "trend": item["trend_label"],

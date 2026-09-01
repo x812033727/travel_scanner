@@ -3,6 +3,7 @@ from __future__ import annotations
 import base64
 import binascii
 from collections import Counter, defaultdict
+from datetime import UTC, datetime
 from typing import Any
 from uuid import UUID
 
@@ -11,11 +12,16 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.destinations.catalog import destination_for_id
 from app.foods.catalog import COUNTRY_NAMES, FOOD_SEEDS
-from app.hotspots.maps import build_map_links
+from app.foods.merchant_catalog import MERCHANT_SEEDS
+from app.hotspots.maps import build_map_links, has_exact_map_identity
+from app.locations.plus_codes import has_durable_coordinates
 from app.models import (
     FoodDestination,
     FoodHotspot,
     FoodLocalization,
+    FoodMerchant,
+    FoodMerchantFood,
+    FoodMerchantSource,
     HotspotLocalization,
     TravelFood,
     TravelHotspot,
@@ -118,6 +124,66 @@ async def seed_food_catalog(session: AsyncSession) -> int:
         seeded.append((food, seed))
     await session.flush()
 
+    food_by_slug = {food.slug: food for food, _ in seeded}
+    existing_merchants = {
+        row.slug: row for row in (await session.scalars(select(FoodMerchant))).all()
+    }
+    existing_merchant_foods = {
+        (row.merchant_id, row.food_id)
+        for row in (await session.scalars(select(FoodMerchantFood))).all()
+    }
+    existing_sources = {
+        (row.merchant_id, row.source_url, row.edition_year)
+        for row in (await session.scalars(select(FoodMerchantSource))).all()
+    }
+    for merchant_seed in MERCHANT_SEEDS:
+        merchant = existing_merchants.get(merchant_seed.slug)
+        if merchant is None:
+            merchant = FoodMerchant(
+                slug=merchant_seed.slug,
+                destination_id=merchant_seed.destination_id,
+                country_code=merchant_seed.country_code,
+                name=merchant_seed.name,
+                local_name=merchant_seed.local_name,
+                google_place_id=None,
+                naver_map_url=None,
+                map_match_status="unverified",
+                review_status="pending",
+                is_active=False,
+                verified_at=None,
+                display_order=merchant_seed.display_order,
+            )
+            session.add(merchant)
+            await session.flush()
+        for order, food_slug in enumerate(merchant_seed.food_slugs, start=1):
+            food = food_by_slug[food_slug]
+            key = (merchant.id, food.id)
+            if key not in existing_merchant_foods:
+                session.add(
+                    FoodMerchantFood(
+                        merchant_id=merchant.id,
+                        food_id=food.id,
+                        is_primary=True,
+                        display_order=order,
+                    )
+                )
+                existing_merchant_foods.add(key)
+        source_key = (merchant.id, merchant_seed.source_url, None)
+        if source_key not in existing_sources:
+            session.add(
+                FoodMerchantSource(
+                    merchant_id=merchant.id,
+                    source_type="official_tourism",
+                    source_title=merchant_seed.source_title,
+                    source_url=merchant_seed.source_url,
+                    edition_year=None,
+                    distinction=None,
+                    is_current=True,
+                    last_verified_at=datetime.now(UTC),
+                )
+            )
+            existing_sources.add(source_key)
+
     food_areas = list(
         (
             await session.scalars(
@@ -153,7 +219,10 @@ async def seed_food_catalog(session: AsyncSession) -> int:
 
 
 async def _serialize_foods(
-    session: AsyncSession, foods: list[TravelFood], locale: str
+    session: AsyncSession,
+    foods: list[TravelFood],
+    locale: str,
+    merchant_destination_id: str | None = None,
 ) -> list[dict[str, Any]]:
     if not foods:
         return []
@@ -228,7 +297,120 @@ async def _serialize_foods(
                     latitude=hotspot.latitude,
                     longitude=hotspot.longitude,
                     google_place_id=hotspot.google_place_id,
+                    naver_map_url=hotspot.naver_map_url,
+                    map_match_status=hotspot.map_match_status,
                 ),
+            }
+        )
+
+    merchant_filters = [
+        FoodMerchantFood.food_id.in_(food_ids),
+        FoodMerchant.review_status == PUBLIC_FOOD_STATUS,
+        FoodMerchant.is_active.is_(True),
+        FoodMerchant.map_match_status == "verified",
+        FoodMerchant.latitude.is_not(None),
+        FoodMerchant.longitude.is_not(None),
+        FoodMerchant.plus_code_global.is_not(None),
+        FoodMerchant.coordinate_source_type.is_not(None),
+        FoodMerchant.coordinate_source_url.is_not(None),
+    ]
+    if merchant_destination_id:
+        merchant_filters.append(FoodMerchant.destination_id == merchant_destination_id)
+    merchant_rows = (
+        await session.execute(
+            select(FoodMerchantFood, FoodMerchant)
+            .join(FoodMerchant, FoodMerchant.id == FoodMerchantFood.merchant_id)
+            .where(*merchant_filters)
+            .order_by(
+                FoodMerchantFood.food_id,
+                FoodMerchantFood.display_order,
+                FoodMerchant.display_order,
+                FoodMerchant.name,
+            )
+        )
+    ).all()
+    merchant_ids = {merchant.id for _, merchant in merchant_rows}
+    source_rows = list(
+        (
+            await session.scalars(
+                select(FoodMerchantSource)
+                .where(
+                    FoodMerchantSource.merchant_id.in_(merchant_ids),
+                    FoodMerchantSource.is_current.is_(True),
+                )
+                .order_by(FoodMerchantSource.edition_year.desc().nullslast())
+            )
+        ).all()
+    )
+    sources_by_merchant: dict[UUID, list[dict[str, Any]]] = defaultdict(list)
+    for source in source_rows:
+        sources_by_merchant[source.merchant_id].append(
+            {
+                "source_type": source.source_type,
+                "title": source.source_title,
+                "url": source.source_url,
+                "edition_year": source.edition_year,
+                "distinction": source.distinction,
+                "last_verified_at": source.last_verified_at.isoformat(),
+            }
+        )
+    merchants_by_food: dict[UUID, list[dict[str, Any]]] = defaultdict(list)
+    destinations_seen: dict[UUID, set[str]] = defaultdict(set)
+    for relation, merchant in merchant_rows:
+        merchant_sources = sources_by_merchant.get(merchant.id, [])
+        if not merchant_sources:
+            continue
+        if not has_exact_map_identity(
+            merchant.country_code, merchant.google_place_id, merchant.naver_map_url
+        ) or not has_durable_coordinates(
+            merchant.latitude,
+            merchant.longitude,
+            merchant.plus_code_global,
+            merchant.coordinate_source_type,
+            merchant.coordinate_source_url,
+        ):
+            continue
+        if merchant_destination_id:
+            if len(merchants_by_food[relation.food_id]) >= 3:
+                continue
+        elif merchant.destination_id in destinations_seen[relation.food_id]:
+            continue
+        destinations_seen[relation.food_id].add(merchant.destination_id)
+        profile = destination_for_id(merchant.destination_id)
+        city_name = profile.city if profile else merchant.destination_id
+        merchants_by_food[relation.food_id].append(
+            {
+                "merchant_id": str(merchant.id),
+                "slug": merchant.slug,
+                "name": merchant.name,
+                "local_name": merchant.local_name,
+                "destination_id": merchant.destination_id,
+                "address": merchant.address,
+                "latitude": float(merchant.latitude) if merchant.latitude is not None else None,
+                "longitude": float(merchant.longitude) if merchant.longitude is not None else None,
+                "plus_code_global": merchant.plus_code_global,
+                "coordinate_source": {
+                    "type": merchant.coordinate_source_type,
+                    "url": merchant.coordinate_source_url,
+                    "verified_at": merchant.coordinate_verified_at.isoformat()
+                    if merchant.coordinate_verified_at is not None
+                    else None,
+                },
+                "map_links": build_map_links(
+                    name=merchant.name,
+                    local_name=merchant.local_name,
+                    city_name=city_name,
+                    country_code=merchant.country_code,
+                    latitude=merchant.latitude,
+                    longitude=merchant.longitude,
+                    google_place_id=merchant.google_place_id,
+                    naver_map_url=merchant.naver_map_url,
+                    map_match_status=merchant.map_match_status,
+                ),
+                "verified_at": merchant.verified_at.isoformat()
+                if merchant.verified_at is not None
+                else None,
+                "sources": merchant_sources,
             }
         )
     return [
@@ -259,6 +441,7 @@ async def _serialize_foods(
                 for row in destinations_by_food.get(food.id, [])
             ],
             "food_hotspots": hotspots_by_food.get(food.id, []),
+            "recommended_merchants": merchants_by_food.get(food.id, []),
         }
         for food in foods
     ]
@@ -329,7 +512,12 @@ async def list_foods(
         "total": len(filtered),
         "has_more": next_offset < len(filtered),
         "next_cursor": _encode_cursor(next_offset) if next_offset < len(filtered) else None,
-        "items": await _serialize_foods(session, page, locale),
+        "items": await _serialize_foods(
+            session,
+            page,
+            locale,
+            merchant_destination_id=destination_id.casefold() if destination_id else None,
+        ),
     }
 
 
@@ -395,6 +583,14 @@ async def foods_for_planner(
     )
     recommendations = []
     for item in result["items"]:
+        merchant = next(
+            (
+                candidate
+                for candidate in item["recommended_merchants"]
+                if candidate["destination_id"] == destination_id
+            ),
+            None,
+        )
         hotspot = next(
             (
                 candidate
@@ -410,19 +606,22 @@ async def foods_for_planner(
                 "local_name": item["local_name"],
                 "food_kind": item["food_kind"],
                 "meal_types": item["meal_types"],
+                "merchant_id": merchant["merchant_id"] if merchant else None,
+                "merchant_name": merchant["name"] if merchant else None,
                 "hotspot_id": hotspot["hotspot_id"] if hotspot else None,
                 "hotspot_name": hotspot["name"] if hotspot else None,
-                "latitude": hotspot["latitude"] if hotspot else None,
-                "longitude": hotspot["longitude"] if hotspot else None,
-                "map_links": hotspot["map_links"] if hotspot else [],
-                "merchant_status": "area_confirmed" if hotspot else "merchant_pending",
+                "latitude": merchant["latitude"] if merchant else None,
+                "longitude": merchant["longitude"] if merchant else None,
+                "plus_code_global": merchant["plus_code_global"] if merchant else None,
+                "map_links": merchant["map_links"] if merchant else [],
+                "merchant_status": "verified" if merchant else "merchant_pending",
             }
         )
     return {
         "destination_id": destination_id,
         "days": days,
         "recommendations": recommendations,
-        "planner_note": "每個完整日最多安排一道代表料理；實際店家、營業時間與評價請於地圖確認。",
+        "planner_note": "每個完整日最多安排一道代表料理；店家來自核准目錄，營業時間請於地圖確認。",
     }
 
 

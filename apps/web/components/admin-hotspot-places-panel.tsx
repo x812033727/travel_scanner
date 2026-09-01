@@ -11,7 +11,7 @@ type PlaceItem = {
   website_review_status: string; provider_website_url: string | null;
   manual_official_website_url: string | null; address: string | null;
   refresh_after: string | null; expires_at: string | null;
-  summary: { google_maps_url: string; official_website_url: string | null; status: string };
+  summary: { google_maps_url: string | null; official_website_url: string | null; status: string };
 };
 type UsageSku = { sku: string; used: number; free_limit: number; percentage: number };
 type Overview = {

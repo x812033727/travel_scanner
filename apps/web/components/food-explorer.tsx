@@ -26,6 +26,21 @@ type FoodHotspot = {
   longitude: number;
   map_links: MapLink[];
 };
+type FoodMerchant = {
+  merchant_id: string;
+  slug: string;
+  name: string;
+  local_name: string;
+  destination_id: string;
+  address: string | null;
+  latitude: number | null;
+  longitude: number | null;
+  plus_code_global: string;
+  coordinate_source: { type: string; url: string; verified_at: string | null };
+  map_links: MapLink[];
+  verified_at: string | null;
+  sources: { source_type: string; title: string; url: string; edition_year: number | null; distinction: string | null; last_verified_at: string }[];
+};
 type FoodItem = {
   id: string;
   slug: string;
@@ -42,6 +57,7 @@ type FoodItem = {
   source_urls: string[];
   destinations: FoodDestination[];
   food_hotspots: FoodHotspot[];
+  recommended_merchants: FoodMerchant[];
 };
 type FoodsResponse = {
   total: number;
@@ -139,7 +155,8 @@ export function FoodExplorer() {
         <p className="mt-4 leading-7 text-[var(--muted)]">{food.summary}</p>
         <div className="mt-4 flex flex-wrap gap-2">{food.meal_types.map((item) => <span key={item} className="rounded-full border border-[var(--line)] px-2.5 py-1 text-xs">{t(`meals.${item}`)}</span>)}{food.dietary_notes.map((item) => <span key={item} className="rounded-full bg-amber-50 px-2.5 py-1 text-xs text-amber-950">{item}</span>)}</div>
         <div className="mt-5 border-t border-[var(--line)] pt-4"><p className="text-xs font-semibold text-[var(--muted)]">{t("cities")}</p><p className="mt-1 text-sm font-semibold">{food.destinations.map((item) => item.name).join("、")}</p></div>
-        <div className="mt-4 grid gap-2">{food.food_hotspots.slice(0, 3).map((area) => <div key={area.hotspot_id} className="flex flex-wrap items-center gap-2 rounded-2xl bg-[var(--paper)] px-3 py-2"><MapPin size={15} className="text-[var(--teal)]" /><span className="mr-auto text-sm font-semibold">{area.name}</span>{area.map_links.filter((link) => link.primary).map((link) => <a key={link.provider} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 rounded-xl bg-white px-3 text-xs font-semibold text-[var(--teal)]">{link.label}<ExternalLink size={13} /></a>)}</div>)}</div>
+        <div className="mt-4"><p className="text-xs font-semibold text-[var(--muted)]">{t("recommendedMerchants")}</p><div className="mt-2 grid gap-2">{food.recommended_merchants.slice(0, 3).map((merchant) => { const map = merchant.map_links.find((link) => link.primary) ?? merchant.map_links[0]; return map ? <a key={merchant.merchant_id} href={map.url} target="_blank" rel="noopener noreferrer" aria-label={`${map.label}: ${merchant.name}`} className="flex min-h-11 items-center gap-2 rounded-2xl bg-[var(--paper)] px-3 py-2 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"><MapPin size={15} /><span className="mr-auto text-[var(--ink)]">{merchant.name}{merchant.local_name !== merchant.name && <span className="ml-1 text-xs font-normal text-[var(--muted)]">· {merchant.local_name}</span>}</span><ExternalLink size={13} /></a> : null; })}{food.recommended_merchants.length === 0 && <p className="rounded-2xl bg-[var(--paper)] px-3 py-3 text-sm text-[var(--muted)]">{t("noVerifiedMerchant")}</p>}</div></div>
+        {food.food_hotspots.length > 0 && <div className="mt-4"><p className="text-xs font-semibold text-[var(--muted)]">{t("foodAreas")}</p><p className="mt-1 text-sm text-[var(--muted)]">{food.food_hotspots.slice(0, 3).map((area) => area.name).join("、")}</p></div>}
         <div className="mt-auto flex flex-wrap items-center gap-2 pt-5">{food.destinations[0] && <Link href={`/hotspots?category=food&destination_id=${encodeURIComponent(food.destinations[0].id)}`} className="inline-flex min-h-11 items-center rounded-xl bg-[var(--teal)] px-4 text-sm font-semibold text-white">{t("viewFoodAreas")}</Link>}{food.source_urls[0] && <a href={food.source_urls[0]} target="_blank" rel="noopener noreferrer" className="ml-auto inline-flex min-h-11 items-center gap-1 px-2 text-xs font-semibold text-[var(--muted)]">{t("source")}<ExternalLink size={13} /></a>}</div>
       </article>)}</div>}
       {!loading && !error && foods?.has_more && <div className="mt-7 text-center"><button type="button" onClick={() => void load(true)} className="min-h-12 rounded-xl border border-[var(--teal)] bg-white px-7 font-semibold text-[var(--teal)]">{t("loadMore")}</button></div>}

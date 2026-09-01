@@ -1,10 +1,14 @@
 from collections import Counter
-from urllib.parse import parse_qs, unquote, urlparse
+from urllib.parse import parse_qs, urlparse
+
+import pytest
 
 from app.foods.catalog import FOOD_SEEDS
+from app.foods.merchant_catalog import MERCHANT_SEEDS
 from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.maps import build_map_links
 from app.i18n import LOCALES
+from app.locations.plus_codes import plus_code_for_coordinates
 
 
 def test_food_catalog_has_exactly_ten_complete_items_per_country() -> None:
@@ -58,7 +62,7 @@ def test_every_destination_has_an_approved_coordinate_complete_food_area() -> No
     assert not wrong_categories & {item.name for item in food_areas}
 
 
-def test_google_map_link_prefers_place_id_then_coordinates() -> None:
+def test_google_map_link_uses_verified_place_id_and_never_coordinates() -> None:
     links = build_map_links(
         name="築地場外市場",
         local_name="築地場外市場",
@@ -67,15 +71,17 @@ def test_google_map_link_prefers_place_id_then_coordinates() -> None:
         latitude=35.6654,
         longitude=139.7707,
         google_place_id="ChIJ example/id",
+        map_match_status="verified",
     )
     assert [item["provider"] for item in links] == ["google"]
     query = parse_qs(urlparse(str(links[0]["url"])).query)
-    assert query["query"] == ["35.665400,139.770700"]
+    assert query["query"] == ["築地場外市場 東京"]
     assert query["query_place_id"] == ["ChIJ example/id"]
+    assert "35.665400" not in str(links[0]["url"])
     assert links[0]["primary"] is True
 
 
-def test_korean_map_links_put_encoded_naver_search_first() -> None:
+def test_korean_map_links_return_only_a_verified_exact_naver_place() -> None:
     links = build_map_links(
         name="廣藏市場",
         local_name="광장시장",
@@ -83,21 +89,53 @@ def test_korean_map_links_put_encoded_naver_search_first() -> None:
         country_code="KR",
         latitude=37.5701,
         longitude=126.9996,
+        naver_map_url="https://map.naver.com/p/entry/place/13543735",
+        map_match_status="verified",
     )
-    assert [item["provider"] for item in links] == ["naver", "google"]
+    assert [item["provider"] for item in links] == ["naver"]
     assert links[0]["primary"] is True
-    assert links[1]["primary"] is False
-    assert unquote(urlparse(str(links[0]["url"])).path).endswith("/광장시장")
+    assert links[0]["url"] == "https://map.naver.com/p/entry/place/13543735"
 
 
-def test_google_map_link_falls_back_to_name_and_city() -> None:
-    link = build_map_links(
-        name="清萊夜市",
-        local_name="เชียงรายไนท์บาซาร์",
-        city_name="清萊",
-        country_code="TH",
-        latitude=None,
-        longitude=None,
-    )[0]
-    query = parse_qs(urlparse(str(link["url"])).query)
-    assert query["query"] == ["清萊夜市 清萊"]
+def test_unverified_or_search_only_map_identity_is_not_published() -> None:
+    assert (
+        build_map_links(
+            name="清萊夜市",
+            local_name="เชียงรายไนท์บาซาร์",
+            city_name="清萊",
+            country_code="TH",
+            latitude=None,
+            longitude=None,
+        )
+        == []
+    )
+    assert (
+        build_map_links(
+            name="廣藏市場",
+            local_name="광장시장",
+            city_name="首爾",
+            country_code="KR",
+            latitude=37.5701,
+            longitude=126.9996,
+            naver_map_url="https://map.naver.com/p/search/test",
+            map_match_status="verified",
+        )
+        == []
+    )
+
+
+def test_plus_code_is_locally_derived_and_rejects_invalid_ranges() -> None:
+    assert plus_code_for_coordinates(22.2467, 114.1757) == "7PJP65WG+M7"
+    assert plus_code_for_coordinates(35.6654, 139.7707) == "8Q7XMQ8C+57"
+    with pytest.raises(ValueError):
+        plus_code_for_coordinates(91, 139.7707)
+
+
+def test_merchant_candidates_cover_all_relations_but_are_not_fake_map_matches() -> None:
+    assert len(MERCHANT_SEEDS) == 155
+    actual_pairs = {
+        (merchant.destination_id, food_slug)
+        for merchant in MERCHANT_SEEDS
+        for food_slug in merchant.food_slugs
+    }
+    assert len(actual_pairs) == 173

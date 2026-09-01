@@ -37,6 +37,7 @@ from app.hotspots.guides import (
     guide_quota_status,
     save_candidates,
 )
+from app.hotspots.maps import has_exact_map_identity
 from app.hotspots.place_tasks import enqueue_place_enrichment_run
 from app.hotspots.places import (
     RunMode,
@@ -49,6 +50,8 @@ from app.hotspots.places import (
 from app.hotspots.ranking import calculate_depth_value
 from app.i18n import LOCALES, Locale
 from app.infra import get_redis
+from app.locations.google_match import preview_google_place_match
+from app.locations.plus_codes import is_durable_coordinate_source, plus_code_for_coordinates
 from app.models import (
     AdminAuditLog,
     HotspotGuide,
@@ -79,9 +82,25 @@ class HotspotReviewRequest(BaseModel):
     access_minutes: int | None = Field(default=None, ge=1, le=90)
     recommended_duration_minutes: int | None = Field(default=None, ge=30, le=480)
     destination_id: str | None = Field(default=None, min_length=2, max_length=64)
+    google_place_id: str | None = Field(default=None, max_length=255)
+    naver_map_url: str | None = Field(
+        default=None,
+        pattern=r"^https://map\.naver\.com/(?:p|v5)/entry/place/",
+        max_length=2048,
+    )
+    latitude: float | None = Field(default=None, ge=-90, le=90)
+    longitude: float | None = Field(default=None, ge=-180, le=180)
+    coordinate_source_type: (
+        Literal["curated", "wikidata", "official_tourism", "merchant_official", "admin_verified"]
+        | None
+    ) = None
+    coordinate_source_url: str | None = Field(default=None, pattern=r"^https://", max_length=2048)
+    map_match_status: Literal["unverified", "verified", "ambiguous", "disabled"] | None = None
 
     @model_validator(mode="after")
     def validate_depth(self) -> HotspotReviewRequest:
+        if (self.latitude is None) != (self.longitude is None):
+            raise ValueError("緯度與經度必須同時提供")
         if self.is_deep_travel:
             required = (
                 self.depth_kind,
@@ -108,11 +127,49 @@ class HotspotReviewRequest(BaseModel):
         return self
 
 
+def _validated_hotspot_plus_code(
+    *,
+    country_code: str,
+    latitude: float | Decimal | None,
+    longitude: float | Decimal | None,
+    coordinate_source_type: str | None,
+    coordinate_source_url: str | None,
+    google_place_id: str | None,
+    naver_map_url: str | None,
+) -> str:
+    if not has_exact_map_identity(country_code, google_place_id, naver_map_url):
+        provider = "Naver 精準地點頁" if country_code == "KR" else "Google Place ID"
+        raise AppError(422, "exact_map_identity_required", f"核准前必須提供{provider}")
+    if latitude is None or longitude is None:
+        raise AppError(422, "permanent_coordinates_required", "核准前必須提供永久 WGS84 座標")
+    if not is_durable_coordinate_source(coordinate_source_type, coordinate_source_url):
+        raise AppError(422, "coordinate_source_required", "核准前必須提供可稽核的永久座標來源")
+    return plus_code_for_coordinates(latitude, longitude)
+
+
 class GuideReviewRequest(BaseModel):
     ids: list[UUID] = Field(min_length=1, max_length=100)
     action: Literal["approve", "reject", "disable"]
     reason: str | None = Field(default=None, max_length=500)
     locale: Locale | None = None
+
+
+class GoogleMapCandidateRequest(BaseModel):
+    query: str = Field(min_length=2, max_length=255)
+    country_code: str = Field(min_length=2, max_length=2)
+    latitude: float | None = Field(default=None, ge=-90, le=90)
+    longitude: float | None = Field(default=None, ge=-180, le=180)
+
+    @model_validator(mode="after")
+    def validate_coordinate_pair(self) -> GoogleMapCandidateRequest:
+        if (self.latitude is None) != (self.longitude is None):
+            raise ValueError("緯度與經度必須同時提供")
+        return self
+
+
+class CoordinatePreviewRequest(BaseModel):
+    latitude: float = Field(ge=-90, le=90)
+    longitude: float = Field(ge=-180, le=180)
 
 
 class GuideDiscoverRequest(BaseModel):
@@ -270,6 +327,7 @@ async def list_hotspot_candidates(
                 "qid": hotspot.wikidata_item_id,
                 "city_code": hotspot.city_code,
                 "city_name": hotspot.city_name,
+                "country_code": hotspot.country_code,
                 "category": hotspot.category,
                 "origin": hotspot.origin,
                 "status": hotspot.review_status,
@@ -290,6 +348,16 @@ async def list_hotspot_candidates(
                 "recommended_duration_minutes": hotspot.metadata_json.get(
                     "recommended_duration_minutes"
                 ),
+                "google_place_id": hotspot.google_place_id,
+                "naver_map_url": hotspot.naver_map_url,
+                "map_match_status": hotspot.map_match_status,
+                "map_verified_at": hotspot.map_verified_at,
+                "latitude": float(hotspot.latitude) if hotspot.latitude is not None else None,
+                "longitude": float(hotspot.longitude) if hotspot.longitude is not None else None,
+                "plus_code_global": hotspot.plus_code_global,
+                "coordinate_source_type": hotspot.coordinate_source_type,
+                "coordinate_source_url": hotspot.coordinate_source_url,
+                "coordinate_verified_at": hotspot.coordinate_verified_at,
                 "depth_components": hotspot.metadata_json.get("depth_components"),
                 **(
                     {
@@ -329,7 +397,80 @@ async def review_hotspot_candidates(
     )
     if payload.destination_id and target_destination is None:
         raise AppError(422, "unsupported_destination", "目前不支援這個目的地")
+    if len(rows) > 1 and (payload.google_place_id or payload.naver_map_url):
+        raise AppError(422, "bulk_map_identity_not_allowed", "單一地圖識別只能套用至一筆景點")
+    if payload.google_place_id:
+        duplicate = await session.scalar(
+            select(TravelHotspot.id).where(
+                TravelHotspot.google_place_id == payload.google_place_id,
+                TravelHotspot.id.not_in(payload.ids),
+            )
+        )
+        if duplicate:
+            raise AppError(409, "hotspot_map_identity_exists", "Google Place ID 已由其他景點使用")
+    if payload.naver_map_url:
+        duplicate = await session.scalar(
+            select(TravelHotspot.id).where(
+                TravelHotspot.naver_map_url == payload.naver_map_url,
+                TravelHotspot.id.not_in(payload.ids),
+            )
+        )
+        if duplicate:
+            raise AppError(409, "hotspot_map_identity_exists", "Naver 地點網址已由其他景點使用")
     for hotspot in rows:
+        prospective_country = target_destination.country if target_destination else None
+        country_code = hotspot.country_code
+        if prospective_country:
+            country_code = {
+                "Japan": "JP",
+                "South Korea": "KR",
+                "Thailand": "TH",
+                "Taiwan": "TW",
+                "Singapore": "SG",
+                "Hong Kong": "HK",
+                "Vietnam": "VN",
+            }[prospective_country]
+        google_place_id = (
+            payload.google_place_id
+            if "google_place_id" in payload.model_fields_set
+            else hotspot.google_place_id
+        )
+        naver_map_url = (
+            payload.naver_map_url
+            if "naver_map_url" in payload.model_fields_set
+            else hotspot.naver_map_url
+        )
+        latitude = payload.latitude if "latitude" in payload.model_fields_set else hotspot.latitude
+        longitude = (
+            payload.longitude if "longitude" in payload.model_fields_set else hotspot.longitude
+        )
+        coordinate_source_type = (
+            payload.coordinate_source_type
+            if "coordinate_source_type" in payload.model_fields_set
+            else hotspot.coordinate_source_type
+        )
+        coordinate_source_url = (
+            payload.coordinate_source_url
+            if "coordinate_source_url" in payload.model_fields_set
+            else hotspot.coordinate_source_url
+        )
+        if (latitude is None) != (longitude is None):
+            raise AppError(422, "coordinate_pair_required", "緯度與經度必須同時提供")
+        map_status = payload.map_match_status or hotspot.map_match_status
+        if payload.action == "approve" and map_status != "verified":
+            raise AppError(422, "map_verification_required", "核准前必須完成精準地點比對")
+        if map_status == "verified":
+            hotspot.plus_code_global = _validated_hotspot_plus_code(
+                country_code=country_code,
+                latitude=latitude,
+                longitude=longitude,
+                coordinate_source_type=coordinate_source_type,
+                coordinate_source_url=coordinate_source_url,
+                google_place_id=google_place_id,
+                naver_map_url=naver_map_url,
+            )
+        elif latitude is not None and longitude is not None:
+            hotspot.plus_code_global = plus_code_for_coordinates(latitude, longitude)
         if payload.action != "update":
             hotspot.review_status = status
             hotspot.review_reason = payload.reason
@@ -350,6 +491,44 @@ async def review_hotspot_candidates(
                 "Vietnam": "VN",
             }
             hotspot.country_code = country_codes[target_destination.country]
+        if "google_place_id" in payload.model_fields_set:
+            hotspot.google_place_id = payload.google_place_id
+        if "naver_map_url" in payload.model_fields_set:
+            hotspot.naver_map_url = payload.naver_map_url
+        if "latitude" in payload.model_fields_set:
+            hotspot.latitude = (
+                Decimal(str(payload.latitude)) if payload.latitude is not None else None
+            )
+        if "longitude" in payload.model_fields_set:
+            hotspot.longitude = (
+                Decimal(str(payload.longitude)) if payload.longitude is not None else None
+            )
+        if "coordinate_source_type" in payload.model_fields_set:
+            hotspot.coordinate_source_type = payload.coordinate_source_type
+        if "coordinate_source_url" in payload.model_fields_set:
+            hotspot.coordinate_source_url = payload.coordinate_source_url
+        if any(
+            field in payload.model_fields_set
+            for field in (
+                "latitude",
+                "longitude",
+                "coordinate_source_type",
+                "coordinate_source_url",
+            )
+        ):
+            hotspot.coordinate_verified_at = (
+                now
+                if is_durable_coordinate_source(coordinate_source_type, coordinate_source_url)
+                else None
+            )
+        if payload.map_match_status:
+            hotspot.map_match_status = payload.map_match_status
+            if payload.map_match_status == "verified":
+                hotspot.map_verified_at = now
+                hotspot.map_verified_by_user_id = user.id
+            else:
+                hotspot.map_verified_at = None
+                hotspot.map_verified_by_user_id = None
         if payload.action != "update":
             hotspot.is_active = payload.action == "approve"
         if payload.is_deep_travel is False:
@@ -403,6 +582,13 @@ async def review_hotspot_candidates(
                 "is_deep_travel": payload.is_deep_travel,
                 "depth_kind": payload.depth_kind,
                 "destination_id": payload.destination_id,
+                "map_match_status": payload.map_match_status,
+                "google_place_id_changed": "google_place_id" in payload.model_fields_set,
+                "naver_map_url_changed": "naver_map_url" in payload.model_fields_set,
+                "coordinates_changed": bool({"latitude", "longitude"} & payload.model_fields_set),
+                "coordinate_source_changed": bool(
+                    {"coordinate_source_type", "coordinate_source_url"} & payload.model_fields_set
+                ),
                 "depth_score": float(rows[0].depth_score)
                 if rows[0].depth_score is not None
                 else None,
@@ -411,6 +597,32 @@ async def review_hotspot_candidates(
     )
     await session.commit()
     return {"updated": len(rows), "status": status}
+
+
+@router.post("/map-candidates")
+async def hotspot_map_candidates(
+    payload: GoogleMapCandidateRequest,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, object]:
+    _ = user
+    return await preview_google_place_match(
+        session,
+        get_redis(),
+        query=payload.query,
+        country_code=payload.country_code,
+        latitude=payload.latitude,
+        longitude=payload.longitude,
+    )
+
+
+@router.post("/plus-code-preview")
+async def hotspot_plus_code_preview(
+    payload: CoordinatePreviewRequest,
+    user: AdminUser,
+) -> dict[str, str]:
+    _ = user
+    return {"plus_code_global": plus_code_for_coordinates(payload.latitude, payload.longitude)}
 
 
 @router.get("/guides")
