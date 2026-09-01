@@ -31,9 +31,9 @@ async def test_google_maps_usage_counts_requests_by_month_and_operation() -> Non
     assert snapshot.period_start.isoformat() == "2026-08-01"
     assert snapshot.period_end.isoformat() == "2026-08-31"
     assert snapshot.used == 3
-    assert snapshot.free_limit == 38_000  # +5,000 for the Pro-tier text_search_pro SKU
+    assert snapshot.free_limit == 44_000
     assert snapshot.free_usage == 3
-    assert snapshot.free_remaining == 37_997
+    assert snapshot.free_remaining == 43_997
     assert snapshot.billable_overage == 0
     assert snapshot.percentage == 0.0
     assert snapshot.breakdown["places_autocomplete"] == 2
@@ -72,7 +72,7 @@ async def test_google_maps_usage_starts_a_new_counter_each_month() -> None:
     assert august_snapshot.used == 1
     assert snapshot.period == "2026-09"
     assert snapshot.used == 0
-    assert snapshot.free_remaining == 38_000
+    assert snapshot.free_remaining == 44_000
     assert snapshot.tracking_started_at is None
     await redis.aclose()
 

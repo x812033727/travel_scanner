@@ -13,6 +13,7 @@ from app.hotspots.places import (
 )
 from app.hotspots.service import collect_hotspots
 from app.infra import get_redis
+from app.restaurants.tasks import enqueue_next_automatic_scan
 
 
 async def collect_once() -> dict[str, Any]:
@@ -40,4 +41,5 @@ async def collect_once() -> dict[str, Any]:
                 place_report = {"skipped": True, "reason": "usage_threshold_or_unavailable"}
         report["place_enrichment"] = place_report
         report["place_cache_purged"] = purged
+        report["restaurant_scan"] = await enqueue_next_automatic_scan(session, settings)
         return report

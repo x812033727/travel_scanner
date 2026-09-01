@@ -183,6 +183,14 @@ class Settings(BaseSettings):
     google_maps_essentials_free_limit: int = Field(default=10_000, ge=1, le=10_000_000)
     google_maps_pro_free_limit: int = Field(default=5_000, ge=1, le=10_000_000)
     google_maps_enterprise_free_limit: int = Field(default=1_000, ge=1, le=10_000_000)
+    restaurant_scan_enabled: bool = True
+    restaurant_aggregate_monthly_budget: int = Field(default=4_000, ge=1, le=10_000_000)
+    restaurant_nearby_monthly_budget: int = Field(default=800, ge=1, le=10_000_000)
+    restaurant_details_monthly_budget: int = Field(default=800, ge=1, le=10_000_000)
+    restaurant_scan_refresh_days: int = Field(default=90, ge=7, le=365)
+    restaurant_scan_max_depth: int = Field(default=7, ge=1, le=8)
+    restaurant_scan_batch_call_limit: int = Field(default=50, ge=1, le=1_000)
+    restaurant_location_cache_days: int = Field(default=30, ge=1, le=30)
     naver_maps_client_id: str | None = None
     naver_maps_client_secret: str | None = None
     naver_maps_monthly_request_limit: int = Field(default=0, ge=0, le=10_000_000)

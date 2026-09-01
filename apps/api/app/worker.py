@@ -18,6 +18,7 @@ def main() -> None:
             Queue("trip-routes", connection=connection),
             Queue("hotspot-guides", connection=connection),
             Queue("hotspot-places", connection=connection),
+            Queue("restaurant-scans", connection=connection),
         ],
         connection=connection,
     ).work()

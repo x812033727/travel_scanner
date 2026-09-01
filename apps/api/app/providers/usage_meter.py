@@ -8,7 +8,7 @@ from typing import Any, Literal, cast
 from zoneinfo import ZoneInfo
 
 from redis.asyncio import Redis
-from redis.exceptions import RedisError
+from redis.exceptions import RedisError, WatchError
 
 GOOGLE_MAPS_PROVIDER = "google_maps"
 YOUTUBE_GUIDES_PROVIDER = "youtube_guides"
@@ -21,6 +21,9 @@ GOOGLE_MAPS_OPERATIONS = (
     "place_id_refresh",
     "places_text_search",
     "places_text_search_locate",
+    "places_aggregate_restaurants",
+    "places_nearby_restaurants",
+    "place_details_restaurant",
     "places_photo",
     "routes",
     "weather_current",
@@ -51,7 +54,7 @@ GOOGLE_SKUS = (
         "place_details_enterprise",
         "Place Details Enterprise",
         "enterprise",
-        ("place_details",),
+        ("place_details", "place_details_restaurant"),
     ),
     GoogleSkuDefinition(
         "text_search_enterprise",
@@ -64,6 +67,18 @@ GOOGLE_SKUS = (
         "Text Search Pro",
         "pro",
         ("places_text_search_locate",),
+    ),
+    GoogleSkuDefinition(
+        "places_aggregate",
+        "Places Aggregate API",
+        "pro",
+        ("places_aggregate_restaurants",),
+    ),
+    GoogleSkuDefinition(
+        "nearby_search_enterprise",
+        "Nearby Search Enterprise",
+        "enterprise",
+        ("places_nearby_restaurants",),
     ),
     GoogleSkuDefinition(
         "place_details_photos",
@@ -273,6 +288,71 @@ async def record_google_maps_request(
     except RedisError:
         # Usage telemetry must never turn a successful provider request into an application error.
         return
+
+
+async def reserve_google_maps_request(
+    redis: Redis,
+    operation: str,
+    monthly_budget: int,
+    *,
+    shared_operations: tuple[str, ...] = (),
+    shared_monthly_budget: int | None = None,
+    now: datetime | None = None,
+) -> bool:
+    """Atomically reserve and meter a budget-controlled Google request.
+
+    Restaurant discovery fails closed when Redis cannot verify the configured
+    safety limit, avoiding an unmetered paid request. The reservation remains
+    counted when Google rejects the outbound call because it still represents
+    an attempted provider request.
+    """
+    if operation not in GOOGLE_MAPS_OPERATIONS:
+        raise ValueError(f"unsupported Google Maps usage operation: {operation}")
+    if any(item not in GOOGLE_MAPS_OPERATIONS for item in shared_operations):
+        raise ValueError("unsupported Google Maps shared usage operation")
+    if shared_monthly_budget is not None and not shared_operations:
+        raise ValueError("shared_operations are required with shared_monthly_budget")
+    observed_at = now or datetime.now(UTC)
+    billing_month = _billing_now(observed_at)
+    _, period_end = _month_window(billing_month)
+    expires_at = datetime.combine(
+        period_end + timedelta(days=1),
+        time.min,
+        tzinfo=GOOGLE_BILLING_TIMEZONE,
+    ) + timedelta(days=GOOGLE_USAGE_RETENTION_DAYS)
+    key = _usage_key(billing_month)
+    operation_field = f"operation:{operation}"
+    try:
+        async with redis.pipeline(transaction=True) as pipeline:
+            while True:
+                try:
+                    await pipeline.watch(key)
+                    current_value = await cast(Awaitable[Any], pipeline.hget(key, operation_field))
+                    current = int(current_value or 0)
+                    if current >= monthly_budget:
+                        return False
+                    if shared_monthly_budget is not None:
+                        shared_values = await cast(
+                            Awaitable[Any],
+                            pipeline.hmget(
+                                key,
+                                [f"operation:{item}" for item in shared_operations],
+                            ),
+                        )
+                        shared_used = sum(int(item or 0) for item in shared_values)
+                        if shared_used >= shared_monthly_budget:
+                            return False
+                    pipeline.multi()  # type: ignore[no-untyped-call]
+                    pipeline.hincrby(key, "total", 1)
+                    pipeline.hincrby(key, operation_field, 1)
+                    pipeline.hsetnx(key, "tracking_started_at", observed_at.isoformat())
+                    pipeline.expireat(key, expires_at)
+                    await pipeline.execute()
+                    return True
+                except WatchError:
+                    continue
+    except RedisError:
+        return False
 
 
 async def record_youtube_request(
