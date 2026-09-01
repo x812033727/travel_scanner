@@ -43,20 +43,23 @@ type RankingResponse = {
   scope_key: string;
   observed_on: string | null;
   window_days: number;
+  total: number;
+  has_more: boolean;
+  next_cursor: number | null;
   items: RankedHotspot[];
 };
 
-const cities = [
-  ["", "全部城市"], ["NRT", "東京"], ["KIX", "大阪／京都"], ["FUK", "福岡"],
-  ["CTS", "札幌"], ["OKA", "沖繩"], ["NGO", "名古屋"], ["ICN", "首爾"],
-  ["PUS", "釜山"], ["CJU", "濟州"], ["BKK", "曼谷"], ["CNX", "清邁"],
-  ["HKT", "普吉"], ["KBV", "喀比"],
-] as const;
+type FacetsResponse = {
+  total: number;
+  countries: { code: string; name: string; count: number }[];
+  cities: { code: string; name: string; country_code: string; count: number }[];
+  categories: { code: string; count: number }[];
+};
 
 const categories = [
   ["", "所有類型"], ["culture", "文化古蹟"], ["food", "美食街區"],
   ["nature", "自然景觀"], ["beach", "海灘"], ["family", "親子"],
-  ["viewpoint", "觀景地標"],
+  ["viewpoint", "觀景地標"], ["shopping", "購物"], ["nightlife", "夜生活"],
 ] as const;
 
 const categoryLabels = Object.fromEntries(categories) as Record<string, string>;
@@ -79,22 +82,27 @@ function percent(value: number | null) {
 
 export function HotspotExplorer() {
   const [query, setQuery] = useState("");
+  const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [category, setCategory] = useState("");
   const [ranking, setRanking] = useState<RankingResponse | null>(null);
   const [sources, setSources] = useState<SourcesResponse | null>(null);
+  const [facets, setFacets] = useState<FacetsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  async function load(nextQuery = query, nextCity = city, nextCategory = category) {
+  async function load(append = false) {
     setLoading(true);
     setError("");
     const params = new URLSearchParams({ limit: "30" });
-    if (nextQuery.trim()) params.set("q", nextQuery.trim());
-    if (nextCity) params.set("city_code", nextCity);
-    if (nextCategory) params.set("category", nextCategory);
+    if (query.trim()) params.set("q", query.trim());
+    if (country) params.set("country_code", country);
+    if (city) params.set("city_code", city);
+    if (category) params.set("category", category);
+    if (append && ranking?.next_cursor) params.set("after_rank", String(ranking.next_cursor));
     try {
-      setRanking(await api<RankingResponse>(`/hotspots/rankings?${params}`));
+      const result = await api<RankingResponse>(`/hotspots/rankings?${params}`);
+      setRanking(append && ranking ? { ...result, items: [...ranking.items, ...result.items] } : result);
     } catch (reason) {
       setError((reason as Error).message);
     } finally {
@@ -104,6 +112,7 @@ export function HotspotExplorer() {
 
   useEffect(() => {
     api<SourcesResponse>("/hotspots/sources").then(setSources).catch(() => undefined);
+    api<FacetsResponse>("/hotspots/facets").then(setFacets).catch(() => undefined);
     api<RankingResponse>("/hotspots/rankings?limit=30")
       .then(setRanking)
       .catch((reason: Error) => setError(reason.message))
@@ -112,7 +121,7 @@ export function HotspotExplorer() {
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    void load();
+    void load(false);
   }
 
   return (
@@ -122,7 +131,7 @@ export function HotspotExplorer() {
         <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold tracking-[-.035em] md:text-5xl">現在，大家在看哪裡？</h1>
-            <p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">搜尋日本、韓國與泰國景點，查看最近 30 天關注度、升溫幅度與資料可信度。排行是行程候選訊號，不等同即時人潮。</p>
+            <p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">搜尋日本、韓國、泰國、台灣、新加坡、香港與越南景點，查看最近 30 天關注度、升溫幅度與資料可信度。排行是行程候選訊號，不等同即時人潮。</p>
           </div>
           <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--muted)]">
             <span className="font-semibold text-[var(--ink)]">更新日期</span> {ranking?.observed_on || "等待首次蒐集"}
@@ -130,16 +139,24 @@ export function HotspotExplorer() {
         </div>
       </section>
 
-      <form onSubmit={submit} aria-label="熱門景點搜尋" className="grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-[1fr_11rem_11rem_auto] md:p-5">
+      <form onSubmit={submit} aria-label="熱門景點搜尋" className="grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-[1fr_9rem_10rem_10rem_auto] md:p-5">
         <label className="relative">
           <span className="sr-only">景點關鍵字</span>
           <Search className="pointer-events-none absolute left-4 top-3.5 text-[var(--muted)]" size={19} />
           <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜尋景點、別名或城市" className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] pl-11 pr-4 outline-none focus:border-[var(--teal)]" />
         </label>
         <label>
+          <span className="sr-only">國家或地區</span>
+          <select value={country} onChange={(event) => { setCountry(event.target.value); setCity(""); }} className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3 outline-none focus:border-[var(--teal)]">
+            <option value="">全部國家</option>
+            {facets?.countries?.map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}
+          </select>
+        </label>
+        <label>
           <span className="sr-only">城市</span>
           <select value={city} onChange={(event) => setCity(event.target.value)} className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3 outline-none focus:border-[var(--teal)]">
-            {cities.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+            <option value="">全部城市</option>
+            {facets?.cities?.filter((item) => !country || item.country_code === country).map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}
           </select>
         </label>
         <label>
@@ -155,7 +172,7 @@ export function HotspotExplorer() {
         <section aria-live="polite" aria-busy={loading}>
           <div className="mb-4 flex items-center justify-between gap-4">
             <h2 className="flex items-center gap-2 text-xl font-bold"><BarChart3 size={20} className="text-[var(--coral)]" />熱門排行榜</h2>
-            <p className="text-sm text-[var(--muted)]">{ranking?.items.length ?? 0} 個結果</p>
+            <p className="text-sm text-[var(--muted)]">已載入 {ranking?.items.length ?? 0}／{ranking?.total ?? 0} 個結果</p>
           </div>
           {loading && <div className="rounded-3xl border border-[var(--line)] bg-white p-8 text-[var(--muted)]">正在整理最新排行…</div>}
           {!loading && error && <div role="alert" className="rounded-3xl border border-[var(--coral)] bg-[var(--coral-soft)] p-6">{error}</div>}
@@ -180,6 +197,7 @@ export function HotspotExplorer() {
               </div>
             </li>
           ))}</ol>}
+          {!loading && !error && ranking?.has_more && <div className="mt-6 text-center"><button type="button" onClick={() => void load(true)} className="rounded-xl border border-[var(--teal)] bg-white px-6 py-3 font-semibold text-[var(--teal)] hover:bg-[var(--teal-soft)]">載入更多</button></div>}
         </section>
 
         <aside className="h-fit rounded-3xl border border-[var(--line)] bg-white/80 p-5 lg:sticky lg:top-5">
