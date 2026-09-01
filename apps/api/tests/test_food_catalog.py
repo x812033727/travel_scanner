@@ -4,7 +4,11 @@ from urllib.parse import parse_qs, urlparse
 import pytest
 
 from app.foods.catalog import FOOD_SEEDS
-from app.foods.merchant_catalog import MERCHANT_SEEDS, OFFICIAL_DESTINATION_FOOD_SOURCES
+from app.foods.merchant_catalog import (
+    MERCHANT_DIRECT_SOURCE_SEEDS,
+    MERCHANT_SEEDS,
+    OFFICIAL_DESTINATION_FOOD_SOURCES,
+)
 from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.maps import build_map_links
 from app.i18n import LOCALES
@@ -158,3 +162,33 @@ def test_merchant_candidates_cover_all_relations_but_are_not_fake_map_matches() 
             "vietnam-food-20-must-try-dishes",
         )
     )
+
+
+def test_non_japan_direct_sources_are_verified_and_country_balanced() -> None:
+    merchant_country = {merchant.slug: merchant.country_code for merchant in MERCHANT_SEEDS}
+    assert len(MERCHANT_DIRECT_SOURCE_SEEDS) == 47
+    assert len({seed.merchant_slug for seed in MERCHANT_DIRECT_SOURCE_SEEDS}) == 47
+    assert Counter(
+        merchant_country[seed.merchant_slug] for seed in MERCHANT_DIRECT_SOURCE_SEEDS
+    ) == {
+        "HK": 7,
+        "KR": 6,
+        "SG": 7,
+        "TH": 6,
+        "TW": 14,
+        "VN": 7,
+    }
+    assert sum(seed.official_website_url is not None for seed in MERCHANT_DIRECT_SOURCE_SEEDS) == 21
+    for seed in MERCHANT_DIRECT_SOURCE_SEEDS:
+        assert merchant_country[seed.merchant_slug] != "JP"
+        assert seed.source_url.startswith("https://")
+        assert seed.claims
+        assert not any(
+            excluded in seed.source_url
+            for excluded in ("google.com/maps", "maps.app.goo.gl", "tripadvisor.", "wikipedia.")
+        )
+        if seed.official_website_url:
+            assert seed.source_type == "merchant_official"
+            assert seed.source_scope == "merchant_website"
+            assert "official_website" in seed.claims
+            assert seed.official_website_url == seed.source_url

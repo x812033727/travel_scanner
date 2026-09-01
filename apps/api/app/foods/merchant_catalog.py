@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Literal
 
 from app.foods.catalog import FOOD_SEEDS
 
@@ -941,6 +942,328 @@ MERCHANT_SEEDS: tuple[MerchantSeed, ...] = (
 )
 
 
+MerchantSourceType = Literal["merchant_official", "official_tourism"]
+MerchantSourceScope = Literal["merchant_listing", "merchant_website"]
+MerchantSourceClaim = Literal["display_name", "address", "official_website"]
+
+
+@dataclass(frozen=True)
+class MerchantDirectSourceSeed:
+    merchant_slug: str
+    source_type: MerchantSourceType
+    source_scope: MerchantSourceScope
+    source_title: str
+    source_url: str
+    claims: tuple[MerchantSourceClaim, ...]
+    official_website_url: str | None = None
+
+
+def _merchant_website(
+    merchant_slug: str,
+    source_title: str,
+    source_url: str,
+    *,
+    includes_address: bool = False,
+) -> MerchantDirectSourceSeed:
+    claims: tuple[MerchantSourceClaim, ...] = (
+        ("display_name", "address", "official_website")
+        if includes_address
+        else ("display_name", "official_website")
+    )
+    return MerchantDirectSourceSeed(
+        merchant_slug=merchant_slug,
+        source_type="merchant_official",
+        source_scope="merchant_website",
+        source_title=source_title,
+        source_url=source_url,
+        claims=claims,
+        official_website_url=source_url,
+    )
+
+
+def _official_listing(
+    merchant_slug: str,
+    source_title: str,
+    source_url: str,
+    *,
+    includes_address: bool = True,
+) -> MerchantDirectSourceSeed:
+    claims: tuple[MerchantSourceClaim, ...] = (
+        ("display_name", "address") if includes_address else ("display_name",)
+    )
+    return MerchantDirectSourceSeed(
+        merchant_slug=merchant_slug,
+        source_type="official_tourism",
+        source_scope="merchant_listing",
+        source_title=source_title,
+        source_url=source_url,
+        claims=claims,
+    )
+
+
+# Merchant-level evidence verified against first-party merchant sites or government /
+# official-tourism listings. Missing merchants intentionally remain pending instead of
+# inheriting the destination-level context source as proof that the merchant is listed.
+MERCHANT_DIRECT_SOURCE_SEEDS: tuple[MerchantDirectSourceSeed, ...] = (
+    # South Korea
+    _merchant_website(
+        "seoul-korea-house",
+        "Korea House official website",
+        "https://www.kh.or.kr/kh/eng",
+        includes_address=True,
+    ),
+    _official_listing(
+        "seoul-mokmyeoksanbang",
+        "Visit Seoul listing for Mokmyeoksanbang",
+        "https://english.visitseoul.net/hallyu/NCT-Hot-Young-Seoul-Trip/27243",
+    ),
+    _official_listing(
+        "seoul-woo-lae-oak",
+        "Visit Seoul listing for Wooraeok",
+        "https://english.visitseoul.net/eat/Wooraeok/ENP003207",
+    ),
+    _official_listing(
+        "seoul-maple-tree-house",
+        "Visit Seoul listing for Maple Tree House Itaewon",
+        "https://english.visitseoul.net/area/DanpungnamujipItaewon-branch-EN/ENP006582",
+    ),
+    _official_listing(
+        "seoul-mabongnim",
+        "Visit Seoul listing for Mabongnim Halmeonijip",
+        "https://english.visitseoul.net/attractions/MabongnimHalmeonijip/ENP8wjib6",
+    ),
+    _official_listing(
+        "seoul-tosokchon",
+        "Visit Seoul listing for Tosokchon Samgyetang",
+        "https://english.visitseoul.net/PalaceArea/TosokchonSamgyetang/ENPywjsmm",
+    ),
+    # Taiwan
+    _merchant_website(
+        "taipei-din-tai-fung",
+        "Din Tai Fung Taiwan locations",
+        "https://www.dintaifung.com.tw/eng/store.php",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "taipei-chun-shui-tang",
+        "Chun Shui Tang Taiwan locations",
+        "https://www.chunshuitang.com.tw/en/",
+    ),
+    _official_listing(
+        "taipei-lan-jia",
+        "Taipei City listing for Lan's Taiwanese Sandwich Shop",
+        "https://travel.taipei/en/shop/details/619",
+    ),
+    _official_listing(
+        "taipei-chia-te",
+        "Taipei City listing for Chia Te Bakery",
+        "https://travel.taipei/en/shop/details/549",
+    ),
+    _official_listing(
+        "taichung-qin-yuan-chun",
+        "Taichung City listing for Qin Yuan Chun",
+        "https://travel.taichung.gov.tw/zh-tw/shop/consume/5448",
+    ),
+    _merchant_website(
+        "taichung-chun-shui-siwei",
+        "Chun Shui Tang original store",
+        "https://www.chunshuitang.com.tw/location-detail/original_store/",
+        includes_address=True,
+    ),
+    _official_listing(
+        "kaohsiung-gang-yuan",
+        "Kaohsiung City listing for Gang Yuan Beef Noodles",
+        "https://khh.travel/zh-tw/shop/gourmet/810/",
+    ),
+    _merchant_website(
+        "kaohsiung-chun-shui-tang",
+        "Chun Shui Tang Kaohsiung locations",
+        "https://www.chunshuitang.com.tw/location/taiwan/southern_taiwan/kaohsiung_city/",
+    ),
+    _merchant_website(
+        "kaohsiung-jiu-zhen-nan",
+        "Jiu Zhen Nan Taiwan locations",
+        "https://www.jzn.com.tw/location",
+    ),
+    _official_listing(
+        "tainan-fu-sheng-hao",
+        "Tainan City listing for Fu Sheng Hao",
+        "https://www.twtainan.net/zh-tw/shop/consume/2199/",
+    ),
+    _official_listing(
+        "tainan-shi-jing-jiu",
+        "Tainan City listing for Shi Jing Jiu Oyster Omelet",
+        "https://www.twtainan.net/zh-tw/shop/consume/2075/",
+    ),
+    _merchant_website(
+        "tainan-hanlin",
+        "Hanlin Tea Room official website",
+        "https://www.hanlin-tea.com.tw/",
+    ),
+    _official_listing(
+        "tainan-a-song-gua-bao",
+        "Tainan City listing for A-Song Gua Bao",
+        "https://www.twtainan.net/zh-tw/shop/consume/1741/",
+    ),
+    _merchant_website(
+        "tainan-du-xiao-yue",
+        "Du Hsiao Yueh Tainan original store",
+        "https://noodle1895.com/en/branch-2/tainan-original-store/",
+        includes_address=True,
+    ),
+    # Singapore
+    _merchant_website(
+        "singapore-tian-tian",
+        "Tian Tian Hainanese Chicken Rice official website",
+        "https://www.tiantianchickenrice.com.sg/",
+    ),
+    _merchant_website(
+        "singapore-328-katong-laksa",
+        "328 Katong Laksa official website",
+        "https://www.328katonglaksa.sg/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "singapore-jumbo-riverside",
+        "JUMBO Seafood Riverside Point",
+        "https://www.jumboseafood.com.sg/en/riverside-point",
+        includes_address=True,
+    ),
+    _official_listing(
+        "singapore-hill-street-kway-teow",
+        "Singapore Tourism Board food guide listing",
+        "https://www.visitsingapore.com/content/dam/desktop/global/deals/hk/Singapore_Food_Guide_PDF.pdf",
+    ),
+    _merchant_website(
+        "singapore-song-fa",
+        "Song Fa Bak Kut Teh official locations",
+        "https://songfa.com.sg/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "singapore-ya-kun",
+        "Ya Kun official store locator",
+        "https://app.yakun.com/find-us",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "singapore-samys-curry",
+        "Samy's Curry official contact page",
+        "https://www.samyscurry.com/contact-us/",
+        includes_address=True,
+    ),
+    # Hong Kong
+    _merchant_website(
+        "hong-kong-tim-ho-wan",
+        "Tim Ho Wan Hong Kong official website",
+        "https://www.timhowan.com.hk/",
+        includes_address=True,
+    ),
+    _official_listing(
+        "hong-kong-yat-lok",
+        "Hong Kong Tourism Board listing for Yat Lok Restaurant",
+        "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-yat-lok-restaurant.html",
+    ),
+    _merchant_website(
+        "hong-kong-tai-cheong",
+        "Tai Cheong Bakery official website",
+        "https://www.taicheongbakery.com.hk/en/brands/tai_cheong/index.html",
+    ),
+    _official_listing(
+        "hong-kong-kam-wah",
+        "Hong Kong Tourism Board listing for Kam Wah Cafe",
+        "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-kam-wah-cafe.html",
+    ),
+    _official_listing(
+        "hong-kong-hing-kee",
+        "Hong Kong Tourism Board Temple Street dining guide",
+        "https://www.discoverhongkong.com/eng/food-and-drink/local-cuisine-to-try-on-temple-street.html",
+    ),
+    _official_listing(
+        "hong-kong-man-kee",
+        "Hong Kong Tourism Board listing for Man Kee Cart Noodle",
+        "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-man-kee-cart-noodles.html",
+    ),
+    _official_listing(
+        "hong-kong-trusty-congee",
+        "Hong Kong Tourism Board listing for Trusty Congee King",
+        "https://www.discoverhongkong.com/eng/travel-guide/qts/restaurants-results/restaurants-details.id18984.congee-king.html",
+    ),
+    # Thailand
+    _merchant_website(
+        "bangkok-thipsamai",
+        "Thipsamai official locations",
+        "https://thipsamai.com/contact-us/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "bangkok-krua-apsorn",
+        "Krua Apsorn official website",
+        "https://www.krua-apsorn.com/",
+        includes_address=True,
+    ),
+    _official_listing(
+        "bangkok-go-ang",
+        "Tourism Authority of Thailand listing for Go-Ang Pratunam",
+        "https://www.thailandtravel.or.jp/go-ang-kaomunkai-pratunam/",
+    ),
+    _official_listing(
+        "bangkok-kor-panich",
+        "Tourism Authority of Thailand listing for K. Panich",
+        "https://www.thailandtravel.or.jp/kpanich/",
+    ),
+    _official_listing(
+        "chiang-mai-huen-muan-jai",
+        "Tourism Authority of Thailand listing for Huen Muan Jai",
+        "https://www.thailandtravel.or.jp/huen-muan-jai/",
+    ),
+    _official_listing(
+        "krabi-ruen-mai",
+        "Tourism Authority of Thailand Krabi restaurant guide",
+        "https://www.thailandtravel.or.jp/common/pdf/Krabi_trang2019.pdf",
+    ),
+    # Vietnam
+    _merchant_website(
+        "hanoi-banh-mi-25",
+        "Banh Mi 25 official website",
+        "https://banhmi25.net/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "hanoi-cafe-giang",
+        "Cafe Giang official website",
+        "https://cafegiang.vn/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "da-nang-madame-lan",
+        "Madame Lan official website",
+        "https://www.madamelan.vn/",
+        includes_address=True,
+    ),
+    _official_listing(
+        "da-nang-banh-xeo-ba-duong",
+        "Da Nang official food portal listing for Ba Duong Pancake",
+        "https://www.foodtourdanang.vn/en/banh-xeo-ba-duong?food=56",
+    ),
+    _official_listing(
+        "da-nang-bep-cuon",
+        "Da Nang official food portal 2025 restaurant list",
+        "https://foodtourdanang.vn/en/michelin-guide-2025-goi-ten-am-thuc-da-nang-nhung-quan-an-nho-ma-co-vo-chinh-thuc-ghi-danh-tren-ban-do-am-thuc-the-gioi",
+    ),
+    _official_listing(
+        "da-nang-bun-bo-ba-thuong",
+        "Da Nang official food portal 2025 restaurant list",
+        "https://foodtourdanang.vn/en/michelin-guide-2025-goi-ten-am-thuc-da-nang-nhung-quan-an-nho-ma-co-vo-chinh-thuc-ghi-danh-tren-ban-do-am-thuc-the-gioi",
+    ),
+    _official_listing(
+        "da-nang-che-lien",
+        "Da Nang official food portal listing for Che Lien",
+        "https://www.foodtourdanang.vn/en/che-lien-da-nang-dien-bien-phu-2?food=106",
+    ),
+)
+
+
 def validate_merchant_catalog() -> None:
     slugs = [item.slug for item in MERCHANT_SEEDS]
     if len(slugs) != len(set(slugs)):
@@ -969,6 +1292,27 @@ def validate_merchant_catalog() -> None:
         for item in MERCHANT_SEEDS
     ):
         raise RuntimeError("merchant bootstrap names and official sources are required")
+    merchant_slugs = set(slugs)
+    direct_source_keys = [
+        (item.merchant_slug, item.source_url) for item in MERCHANT_DIRECT_SOURCE_SEEDS
+    ]
+    if len(direct_source_keys) != len(set(direct_source_keys)):
+        raise RuntimeError("merchant direct-source keys must be unique")
+    if any(
+        item.merchant_slug not in merchant_slugs
+        or not item.source_url.startswith("https://")
+        or not item.claims
+        or (
+            item.official_website_url is not None
+            and (
+                item.source_scope != "merchant_website"
+                or "official_website" not in item.claims
+                or not item.official_website_url.startswith("https://")
+            )
+        )
+        for item in MERCHANT_DIRECT_SOURCE_SEEDS
+    ):
+        raise RuntimeError("merchant direct sources must be scoped, claimed, and HTTPS")
 
 
 validate_merchant_catalog()
