@@ -83,12 +83,8 @@ async def seed_food_catalog(session: AsyncSession) -> int:
     seeded: list[tuple[TravelFood, Any]] = []
     for seed in FOOD_SEEDS:
         food = existing_foods.get(seed.slug)
-        created = food is None
         if food is None:
             food = TravelFood(slug=seed.slug)
-            session.add(food)
-            await session.flush()
-        if created:
             food.country_code = seed.country_code
             food.local_name = seed.local_name
             food.romanized_name = seed.romanized_name
@@ -101,6 +97,8 @@ async def seed_food_catalog(session: AsyncSession) -> int:
             food.review_status = PUBLIC_FOOD_STATUS
             food.is_active = True
             food.display_order = seed.display_order
+            session.add(food)
+            await session.flush()
         for locale, name in seed.localized_names.items():
             localization = localizations.get((food.id, locale))
             if localization is None:
