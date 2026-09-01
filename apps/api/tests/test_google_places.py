@@ -89,6 +89,7 @@ async def test_place_details_finishes_the_google_autocomplete_session() -> None:
                 "displayName": {"text": "淺草寺"},
                 "formattedAddress": "日本東京都台東區",
                 "location": {"latitude": 35.7148, "longitude": 139.7967},
+                "plusCode": {"globalCode": "8Q7XMQ7W+WP"},
                 "googleMapsUri": "https://maps.google.com/example",
                 "plusCode": {"globalCode": "8Q7XMP7W+W2", "compoundCode": "MP7W+W2 東京"},
                 "websiteUri": "https://www.senso-ji.jp/",
@@ -160,6 +161,7 @@ def _billing_month() -> str:
 
     return datetime.now(tz=GOOGLE_BILLING_TIMEZONE).strftime("%Y-%m")
 
+
 def _place_payload() -> dict[str, object]:
     return {
         "places": [
@@ -202,6 +204,7 @@ async def test_locate_search_stays_on_the_pro_field_mask() -> None:
         assert enterprise_field not in masks[0]
     assert "places.location" in masks[0]
     assert "places.displayName" in masks[0]
+    assert "places.plusCode" in masks[0]
 
     usage = await redis.hgetall("provider-usage:google_maps:" + _billing_month())
     assert usage["operation:places_text_search_locate"] == "1"
@@ -276,3 +279,22 @@ async def test_locate_cache_does_not_starve_a_later_detailed_lookup() -> None:
     await service.search_place("淺草寺", None, None)
     await client.aclose()
     assert requests == 2
+
+
+@pytest.mark.asyncio
+async def test_place_id_refresh_uses_id_only_and_does_not_request_coordinates() -> None:
+    masks: list[str] = []
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        masks.append(request.headers["X-Goog-FieldMask"])
+        return httpx.Response(200, json={"id": "ChIJ-refreshed"})
+
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    service = GoogleTravelService(redis, Settings(google_maps_api_key="key"), client)
+    assert await service.refresh_place_id("ChIJ-old") == "ChIJ-refreshed"
+    await client.aclose()
+
+    assert masks == ["id"]
+    usage = await redis.hgetall("provider-usage:google_maps:" + _billing_month())
+    assert usage["operation:place_id_refresh"] == "1"

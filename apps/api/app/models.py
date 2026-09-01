@@ -52,9 +52,7 @@ class UsagePackage(Timestamped, Base):
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     code: Mapped[str] = mapped_column(String(32), unique=True)
     name: Mapped[str] = mapped_column(String(100))
-    localized_names: Mapped[dict[str, str]] = mapped_column(
-        JSON, default=dict, server_default="{}"
-    )
+    localized_names: Mapped[dict[str, str]] = mapped_column(JSON, default=dict, server_default="{}")
     uses: Mapped[int] = mapped_column(Integer)
     price_twd: Mapped[int] = mapped_column(Integer, default=0)
     display_order: Mapped[int] = mapped_column(Integer, default=100, server_default="100")
@@ -300,6 +298,16 @@ class TransportOfferRecord(Timestamped, Base):
 
 class TravelHotspot(Timestamped, Base):
     __tablename__ = "travel_hotspots"
+    __table_args__ = (
+        CheckConstraint(
+            "map_match_status IN ('unverified', 'verified', 'ambiguous', 'disabled')",
+            name="ck_travel_hotspot_map_match_status",
+        ),
+        CheckConstraint(
+            "(latitude IS NULL) = (longitude IS NULL)",
+            name="ck_travel_hotspot_coordinate_pair",
+        ),
+    )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     slug: Mapped[str] = mapped_column(String(128), unique=True, index=True)
     name: Mapped[str] = mapped_column(String(255), index=True)
@@ -312,9 +320,23 @@ class TravelHotspot(Timestamped, Base):
     search_text: Mapped[str] = mapped_column(Text)
     latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
     longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    plus_code_global: Mapped[str | None] = mapped_column(String(16), nullable=True, index=True)
+    coordinate_source_type: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    coordinate_source_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    coordinate_verified_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
     wikipedia_project: Mapped[str | None] = mapped_column(String(64), nullable=True)
     wikipedia_title: Mapped[str | None] = mapped_column(String(255), nullable=True)
-    google_place_id: Mapped[str | None] = mapped_column(String(255), nullable=True, index=True)
+    google_place_id: Mapped[str | None] = mapped_column(
+        String(255), nullable=True, unique=True, index=True
+    )
+    naver_map_url: Mapped[str | None] = mapped_column(String(2048), nullable=True, unique=True)
+    map_match_status: Mapped[str] = mapped_column(String(24), default="unverified", index=True)
+    map_verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    map_verified_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
     wikidata_item_id: Mapped[str | None] = mapped_column(
         String(32), nullable=True, unique=True, index=True
     )
@@ -502,6 +524,95 @@ class FoodHotspot(Base):
         ForeignKey("travel_hotspots.id", ondelete="CASCADE"), index=True
     )
     display_order: Mapped[int] = mapped_column(Integer, default=100)
+
+
+class FoodMerchant(Timestamped, Base):
+    __tablename__ = "food_merchants"
+    __table_args__ = (
+        CheckConstraint(
+            "review_status IN ('pending', 'approved', 'rejected', 'disabled')",
+            name="ck_food_merchant_review_status",
+        ),
+        CheckConstraint(
+            "map_match_status IN ('unverified', 'verified', 'ambiguous', 'disabled')",
+            name="ck_food_merchant_map_match_status",
+        ),
+        CheckConstraint(
+            "(latitude IS NULL) = (longitude IS NULL)",
+            name="ck_food_merchant_coordinate_pair",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    slug: Mapped[str] = mapped_column(String(128), unique=True, index=True)
+    destination_id: Mapped[str] = mapped_column(String(64), index=True)
+    country_code: Mapped[str] = mapped_column(String(2), index=True)
+    name: Mapped[str] = mapped_column(String(255), index=True)
+    local_name: Mapped[str] = mapped_column(String(255))
+    address: Mapped[str | None] = mapped_column(Text, nullable=True)
+    latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    plus_code_global: Mapped[str | None] = mapped_column(String(16), nullable=True, index=True)
+    coordinate_source_type: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    coordinate_source_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    coordinate_verified_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    google_place_id: Mapped[str | None] = mapped_column(
+        String(255), nullable=True, unique=True, index=True
+    )
+    naver_map_url: Mapped[str | None] = mapped_column(String(2048), nullable=True, unique=True)
+    map_match_status: Mapped[str] = mapped_column(String(24), default="unverified", index=True)
+    review_status: Mapped[str] = mapped_column(String(24), default="pending", index=True)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
+    verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    verified_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    display_order: Mapped[int] = mapped_column(Integer, default=100)
+
+
+class FoodMerchantFood(Base):
+    __tablename__ = "food_merchant_foods"
+    __table_args__ = (UniqueConstraint("merchant_id", "food_id", name="uq_food_merchant_food"),)
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    merchant_id: Mapped[UUID] = mapped_column(
+        ForeignKey("food_merchants.id", ondelete="CASCADE"), index=True
+    )
+    food_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_foods.id", ondelete="CASCADE"), index=True
+    )
+    is_primary: Mapped[bool] = mapped_column(Boolean, default=False)
+    display_order: Mapped[int] = mapped_column(Integer, default=100)
+
+
+class FoodMerchantSource(Timestamped, Base):
+    __tablename__ = "food_merchant_sources"
+    __table_args__ = (
+        UniqueConstraint(
+            "merchant_id", "source_url", "edition_year", name="uq_food_merchant_source"
+        ),
+        CheckConstraint(
+            "source_type IN ('official_tourism', 'merchant_official', 'michelin_licensed')",
+            name="ck_food_merchant_source_type",
+        ),
+        CheckConstraint(
+            "distinction IS NULL OR distinction IN "
+            "('three_star', 'two_star', 'one_star', 'green_star', "
+            "'bib_gourmand', 'selected')",
+            name="ck_food_merchant_distinction",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    merchant_id: Mapped[UUID] = mapped_column(
+        ForeignKey("food_merchants.id", ondelete="CASCADE"), index=True
+    )
+    source_type: Mapped[str] = mapped_column(String(32), index=True)
+    source_title: Mapped[str] = mapped_column(String(255))
+    source_url: Mapped[str] = mapped_column(String(2048))
+    edition_year: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    distinction: Mapped[str | None] = mapped_column(String(24), nullable=True)
+    is_current: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+    last_verified_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
 class HotspotLocalization(Timestamped, Base):
@@ -740,6 +851,12 @@ class TripPlanItem(Base):
     end_time: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
     longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    plus_code_global: Mapped[str | None] = mapped_column(String(16), nullable=True, index=True)
+    coordinate_source_type: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    coordinate_source_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    coordinate_verified_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
     locked: Mapped[bool] = mapped_column(Boolean, default=False)
     is_estimated: Mapped[bool] = mapped_column(Boolean, default=False)
     data: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)

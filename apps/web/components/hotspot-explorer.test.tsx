@@ -111,7 +111,7 @@ describe("HotspotExplorer", () => {
           access_minutes: 20,
           recommended_duration_minutes: 90,
           guide_counts: { article: 0, video: 1 },
-          map_links: [{ provider: "google", label: "Google Maps", url: "https://www.google.com/maps/search/?api=1&query=35.7%2C139.7", primary: true }],
+          map_links: [{ provider: "google", label: "Google Maps", url: "https://www.google.com/maps/search/?api=1&query=%E6%B5%85%E8%8D%89%E5%AF%BA%20%E6%9D%B1%E4%BA%AC&query_place_id=ChIJ-test", primary: true }],
           place_summary: { status: "ready", google_maps_url: "https://www.google.com/maps/place/?q=place_id:test", official_website_url: "https://www.senso-ji.jp/", official_website_verified: true, has_details: true, updated_at: "2026-08-31T00:00:00Z" },
         }],
       }));
@@ -129,8 +129,12 @@ describe("HotspotExplorer", () => {
     expect(screen.getByText(/交通約 20 分鐘/)).toBeTruthy();
     expect(screen.getByRole("button", { name: /景點詳情/ })).toBeTruthy();
     const map = screen.getByRole("link", { name: /Google Maps/ });
+    expect(map.textContent).toContain("東京 · 文化古蹟");
+    expect(map.getAttribute("href")).toContain("query_place_id=ChIJ-test");
+    expect(map.getAttribute("href")).not.toContain("35.7");
     expect(map.getAttribute("target")).toBe("_blank");
     expect(map.getAttribute("rel")).toContain("noopener");
+    expect(screen.getAllByRole("link", { name: /Google Maps/ })).toHaveLength(1);
     fireEvent.click(screen.getByRole("button", { name: /景點詳情/ }));
     expect(await screen.findByRole("heading", { name: "認識 淺草寺" })).toBeTruthy();
     expect(await screen.findByText("東京都台東区浅草2丁目3-1")).toBeTruthy();

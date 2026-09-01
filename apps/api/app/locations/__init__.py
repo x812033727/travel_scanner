@@ -1,0 +1,1 @@
+"""Durable location identity helpers."""

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime
+from decimal import Decimal
 from typing import Annotated, Literal
 from uuid import UUID
 
@@ -12,12 +13,19 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.auth.service import AdminUser
 from app.db import get_session
 from app.destinations.catalog import destination_for_id
+from app.hotspots.maps import has_exact_map_identity
 from app.i18n import LOCALES, Locale
+from app.infra import get_redis
+from app.locations.google_match import preview_google_place_match
+from app.locations.plus_codes import is_durable_coordinate_source, plus_code_for_coordinates
 from app.models import (
     AdminAuditLog,
     FoodDestination,
     FoodHotspot,
     FoodLocalization,
+    FoodMerchant,
+    FoodMerchantFood,
+    FoodMerchantSource,
     TravelFood,
     TravelHotspot,
 )
@@ -27,6 +35,11 @@ router = APIRouter(prefix="/admin/foods", tags=["admin foods"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 FoodKind = Literal["main", "noodle_soup", "street_food", "dessert", "drink"]
 ReviewStatus = Literal["pending", "approved", "rejected", "disabled"]
+MapMatchStatus = Literal["unverified", "verified", "ambiguous", "disabled"]
+MerchantSourceType = Literal["official_tourism", "merchant_official", "michelin_licensed"]
+MichelinDistinction = Literal[
+    "three_star", "two_star", "one_star", "green_star", "bib_gourmand", "selected"
+]
 
 
 class FoodLocalizationPayload(BaseModel):
@@ -81,6 +94,116 @@ class FoodBatchPayload(BaseModel):
     ids: list[UUID] = Field(min_length=1, max_length=100)
     action: Literal["approve", "reject", "disable", "activate"]
     reason: str | None = Field(default=None, max_length=500)
+
+
+class FoodMerchantSourcePayload(BaseModel):
+    source_type: MerchantSourceType
+    source_title: str = Field(min_length=1, max_length=255)
+    source_url: str = Field(pattern=r"^https://", max_length=2048)
+    edition_year: int | None = Field(default=None, ge=1900, le=2100)
+    distinction: MichelinDistinction | None = None
+    is_current: bool = True
+
+    @model_validator(mode="after")
+    def validate_michelin_fields(self) -> FoodMerchantSourcePayload:
+        if self.source_type != "michelin_licensed" and (
+            self.edition_year is not None or self.distinction is not None
+        ):
+            raise ValueError("只有取得授權的米其林來源可設定年度與級別")
+        if self.source_type == "michelin_licensed" and (
+            self.edition_year is None or self.distinction is None
+        ):
+            raise ValueError("米其林授權來源必須同時填寫年度與級別")
+        return self
+
+
+class FoodMerchantWritePayload(BaseModel):
+    slug: str = Field(pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$", max_length=128)
+    destination_id: str = Field(min_length=2, max_length=64)
+    country_code: str = Field(min_length=2, max_length=2)
+    name: str = Field(min_length=1, max_length=255)
+    local_name: str = Field(min_length=1, max_length=255)
+    address: str | None = Field(default=None, max_length=1000)
+    latitude: float | None = Field(default=None, ge=-90, le=90)
+    longitude: float | None = Field(default=None, ge=-180, le=180)
+    coordinate_source_type: (
+        Literal["curated", "wikidata", "official_tourism", "merchant_official", "admin_verified"]
+        | None
+    ) = None
+    coordinate_source_url: str | None = Field(default=None, max_length=2048)
+    google_place_id: str | None = Field(default=None, max_length=255)
+    naver_map_url: str | None = Field(
+        default=None, pattern=r"^https://map\.naver\.com/", max_length=2048
+    )
+    map_match_status: MapMatchStatus = "unverified"
+    review_status: ReviewStatus = "pending"
+    is_active: bool = True
+    display_order: int = Field(default=100, ge=0, le=10_000)
+    food_ids: list[UUID] = Field(min_length=1, max_length=70)
+    sources: list[FoodMerchantSourcePayload] = Field(min_length=1, max_length=20)
+
+    @model_validator(mode="after")
+    def validate_location_fields(self) -> FoodMerchantWritePayload:
+        if (self.latitude is None) != (self.longitude is None):
+            raise ValueError("緯度與經度必須同時提供")
+        if self.coordinate_source_url and not self.coordinate_source_url.startswith("https://"):
+            raise ValueError("座標來源必須是 HTTPS 網址")
+        return self
+
+
+class FoodMerchantUpdatePayload(BaseModel):
+    destination_id: str | None = Field(default=None, min_length=2, max_length=64)
+    country_code: str | None = Field(default=None, min_length=2, max_length=2)
+    name: str | None = Field(default=None, min_length=1, max_length=255)
+    local_name: str | None = Field(default=None, min_length=1, max_length=255)
+    address: str | None = Field(default=None, max_length=1000)
+    latitude: float | None = Field(default=None, ge=-90, le=90)
+    longitude: float | None = Field(default=None, ge=-180, le=180)
+    coordinate_source_type: (
+        Literal["curated", "wikidata", "official_tourism", "merchant_official", "admin_verified"]
+        | None
+    ) = None
+    coordinate_source_url: str | None = Field(default=None, max_length=2048)
+    google_place_id: str | None = Field(default=None, max_length=255)
+    naver_map_url: str | None = Field(
+        default=None, pattern=r"^https://map\.naver\.com/", max_length=2048
+    )
+    map_match_status: MapMatchStatus | None = None
+    review_status: ReviewStatus | None = None
+    is_active: bool | None = None
+    display_order: int | None = Field(default=None, ge=0, le=10_000)
+    food_ids: list[UUID] | None = Field(default=None, min_length=1, max_length=70)
+    sources: list[FoodMerchantSourcePayload] | None = Field(default=None, max_length=20)
+
+    @model_validator(mode="after")
+    def validate_source_url(self) -> FoodMerchantUpdatePayload:
+        if self.coordinate_source_url and not self.coordinate_source_url.startswith("https://"):
+            raise ValueError("座標來源必須是 HTTPS 網址")
+        return self
+
+
+class FoodMerchantBatchPayload(BaseModel):
+    ids: list[UUID] = Field(min_length=1, max_length=100)
+    action: Literal["approve", "reject", "disable", "activate", "verify", "ambiguous"]
+    reason: str | None = Field(default=None, max_length=500)
+
+
+class GoogleMapCandidateRequest(BaseModel):
+    query: str = Field(min_length=2, max_length=255)
+    country_code: str = Field(min_length=2, max_length=2)
+    latitude: float | None = Field(default=None, ge=-90, le=90)
+    longitude: float | None = Field(default=None, ge=-180, le=180)
+
+    @model_validator(mode="after")
+    def validate_coordinate_pair(self) -> GoogleMapCandidateRequest:
+        if (self.latitude is None) != (self.longitude is None):
+            raise ValueError("緯度與經度必須同時提供")
+        return self
+
+
+class CoordinatePreviewRequest(BaseModel):
+    latitude: float = Field(ge=-90, le=90)
+    longitude: float = Field(ge=-180, le=180)
 
 
 async def _validate_relations(
@@ -382,3 +505,500 @@ async def batch_foods(
     )
     await session.commit()
     return {"updated": len(foods), "status": status}
+
+
+async def _validate_merchant_relations(
+    session: AsyncSession,
+    *,
+    destination_id: str,
+    food_ids: list[UUID],
+    google_place_id: str | None,
+    naver_map_url: str | None,
+    current_id: UUID | None = None,
+) -> None:
+    if destination_for_id(destination_id) is None:
+        raise AppError(422, "unsupported_destination", "目前不支援這個目的地")
+    foods = list(
+        (await session.scalars(select(TravelFood.id).where(TravelFood.id.in_(food_ids)))).all()
+    )
+    if len(foods) != len(set(food_ids)):
+        raise AppError(404, "merchant_food_not_found", "部分料理資料不存在")
+    for field, value in (
+        (FoodMerchant.google_place_id, google_place_id),
+        (FoodMerchant.naver_map_url, naver_map_url),
+    ):
+        if not value:
+            continue
+        query = select(FoodMerchant.id).where(field == value)
+        if current_id:
+            query = query.where(FoodMerchant.id != current_id)
+        if await session.scalar(query):
+            raise AppError(409, "merchant_map_identity_exists", "地圖識別已由其他店家使用")
+
+
+def _validate_publishable_merchant(
+    *,
+    country_code: str,
+    latitude: float | Decimal | None,
+    longitude: float | Decimal | None,
+    coordinate_source_type: str | None,
+    coordinate_source_url: str | None,
+    google_place_id: str | None,
+    naver_map_url: str | None,
+) -> str:
+    if not has_exact_map_identity(country_code, google_place_id, naver_map_url):
+        provider = "Naver 精準地點頁" if country_code.upper() == "KR" else "Google Place ID"
+        raise AppError(422, "exact_map_identity_required", f"發布前必須提供{provider}")
+    if latitude is None or longitude is None:
+        raise AppError(422, "permanent_coordinates_required", "發布前必須提供永久 WGS84 座標")
+    if not is_durable_coordinate_source(coordinate_source_type, coordinate_source_url):
+        raise AppError(422, "coordinate_source_required", "發布前必須提供可稽核的永久座標來源")
+    return plus_code_for_coordinates(latitude, longitude)
+
+
+async def _replace_merchant_relations(
+    session: AsyncSession,
+    merchant: FoodMerchant,
+    food_ids: list[UUID] | None,
+    sources: list[FoodMerchantSourcePayload] | None,
+) -> None:
+    if food_ids is not None:
+        rows = list(
+            (
+                await session.scalars(
+                    select(FoodMerchantFood).where(FoodMerchantFood.merchant_id == merchant.id)
+                )
+            ).all()
+        )
+        for row in rows:
+            await session.delete(row)
+        for order, food_id in enumerate(food_ids, start=1):
+            session.add(
+                FoodMerchantFood(
+                    merchant_id=merchant.id,
+                    food_id=food_id,
+                    is_primary=True,
+                    display_order=order,
+                )
+            )
+    if sources is not None:
+        source_rows = list(
+            (
+                await session.scalars(
+                    select(FoodMerchantSource).where(FoodMerchantSource.merchant_id == merchant.id)
+                )
+            ).all()
+        )
+        for source_row in source_rows:
+            await session.delete(source_row)
+        for source in sources:
+            session.add(
+                FoodMerchantSource(
+                    merchant_id=merchant.id,
+                    source_type=source.source_type,
+                    source_title=source.source_title,
+                    source_url=source.source_url,
+                    edition_year=source.edition_year,
+                    distinction=source.distinction,
+                    is_current=source.is_current,
+                    last_verified_at=datetime.now(UTC),
+                )
+            )
+
+
+async def _merchant_admin_item(session: AsyncSession, merchant: FoodMerchant) -> dict[str, object]:
+    foods = (
+        await session.execute(
+            select(FoodMerchantFood.food_id, TravelFood.slug, TravelFood.local_name)
+            .join(TravelFood, TravelFood.id == FoodMerchantFood.food_id)
+            .where(FoodMerchantFood.merchant_id == merchant.id)
+            .order_by(FoodMerchantFood.display_order)
+        )
+    ).all()
+    sources = list(
+        (
+            await session.scalars(
+                select(FoodMerchantSource)
+                .where(FoodMerchantSource.merchant_id == merchant.id)
+                .order_by(FoodMerchantSource.created_at)
+            )
+        ).all()
+    )
+    return {
+        "id": str(merchant.id),
+        "slug": merchant.slug,
+        "destination_id": merchant.destination_id,
+        "country_code": merchant.country_code,
+        "name": merchant.name,
+        "local_name": merchant.local_name,
+        "address": merchant.address,
+        "latitude": float(merchant.latitude) if merchant.latitude is not None else None,
+        "longitude": float(merchant.longitude) if merchant.longitude is not None else None,
+        "plus_code_global": merchant.plus_code_global,
+        "coordinate_source_type": merchant.coordinate_source_type,
+        "coordinate_source_url": merchant.coordinate_source_url,
+        "coordinate_verified_at": merchant.coordinate_verified_at,
+        "google_place_id": merchant.google_place_id,
+        "naver_map_url": merchant.naver_map_url,
+        "map_match_status": merchant.map_match_status,
+        "review_status": merchant.review_status,
+        "is_active": merchant.is_active,
+        "verified_at": merchant.verified_at,
+        "display_order": merchant.display_order,
+        "foods": [
+            {"id": str(food_id), "slug": slug, "name": name} for food_id, slug, name in foods
+        ],
+        "sources": [
+            {
+                "id": str(source.id),
+                "source_type": source.source_type,
+                "source_title": source.source_title,
+                "source_url": source.source_url,
+                "edition_year": source.edition_year,
+                "distinction": source.distinction,
+                "is_current": source.is_current,
+                "last_verified_at": source.last_verified_at,
+            }
+            for source in sources
+        ],
+    }
+
+
+@router.get("/merchants")
+async def list_food_merchants(
+    user: AdminUser,
+    session: Session,
+    destination_id: Annotated[str | None, Query(min_length=2, max_length=64)] = None,
+    status: ReviewStatus | None = None,
+    map_status: MapMatchStatus | None = None,
+    q: Annotated[str | None, Query(max_length=100)] = None,
+    page: Annotated[int, Query(ge=1)] = 1,
+    limit: Annotated[int, Query(ge=1, le=100)] = 30,
+) -> dict[str, object]:
+    _ = user
+    filters = []
+    if destination_id:
+        filters.append(FoodMerchant.destination_id == destination_id.casefold())
+    if status:
+        filters.append(FoodMerchant.review_status == status)
+    if map_status:
+        filters.append(FoodMerchant.map_match_status == map_status)
+    if q:
+        term = f"%{q.strip()}%"
+        filters.append(
+            FoodMerchant.name.ilike(term)
+            | FoodMerchant.local_name.ilike(term)
+            | FoodMerchant.slug.ilike(term)
+        )
+    total = int(await session.scalar(select(func.count(FoodMerchant.id)).where(*filters)) or 0)
+    merchants = list(
+        (
+            await session.scalars(
+                select(FoodMerchant)
+                .where(*filters)
+                .order_by(
+                    FoodMerchant.destination_id, FoodMerchant.display_order, FoodMerchant.name
+                )
+                .offset((page - 1) * limit)
+                .limit(limit)
+            )
+        ).all()
+    )
+    return {
+        "items": [await _merchant_admin_item(session, item) for item in merchants],
+        "total": total,
+        "page": page,
+        "pages": (total + limit - 1) // limit,
+    }
+
+
+@router.post("/merchants/map-candidates")
+async def food_merchant_map_candidates(
+    payload: GoogleMapCandidateRequest,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, object]:
+    _ = user
+    return await preview_google_place_match(
+        session,
+        get_redis(),
+        query=payload.query,
+        country_code=payload.country_code,
+        latitude=payload.latitude,
+        longitude=payload.longitude,
+    )
+
+
+@router.post("/merchants/plus-code-preview")
+async def food_merchant_plus_code_preview(
+    payload: CoordinatePreviewRequest,
+    user: AdminUser,
+) -> dict[str, str]:
+    _ = user
+    return {"plus_code_global": plus_code_for_coordinates(payload.latitude, payload.longitude)}
+
+
+@router.post("/merchants", status_code=201)
+async def create_food_merchant(
+    payload: FoodMerchantWritePayload, user: AdminUser, session: Session
+) -> dict[str, object]:
+    if await session.scalar(select(FoodMerchant.id).where(FoodMerchant.slug == payload.slug)):
+        raise AppError(409, "merchant_slug_exists", "店家 slug 已存在")
+    await _validate_merchant_relations(
+        session,
+        destination_id=payload.destination_id,
+        food_ids=payload.food_ids,
+        google_place_id=payload.google_place_id,
+        naver_map_url=payload.naver_map_url,
+    )
+    plus_code = None
+    if (
+        payload.review_status == "approved"
+        and payload.is_active
+        and payload.map_match_status != "verified"
+    ):
+        raise AppError(422, "map_verification_required", "發布前必須完成精準地點比對")
+    if payload.map_match_status == "verified" or (
+        payload.review_status == "approved" and payload.is_active
+    ):
+        plus_code = _validate_publishable_merchant(
+            country_code=payload.country_code,
+            latitude=payload.latitude,
+            longitude=payload.longitude,
+            coordinate_source_type=payload.coordinate_source_type,
+            coordinate_source_url=payload.coordinate_source_url,
+            google_place_id=payload.google_place_id,
+            naver_map_url=payload.naver_map_url,
+        )
+    elif payload.latitude is not None and payload.longitude is not None:
+        plus_code = plus_code_for_coordinates(payload.latitude, payload.longitude)
+    now = datetime.now(UTC)
+    merchant = FoodMerchant(
+        slug=payload.slug,
+        destination_id=payload.destination_id.casefold(),
+        country_code=payload.country_code.upper(),
+        name=payload.name,
+        local_name=payload.local_name,
+        address=payload.address,
+        latitude=payload.latitude,
+        longitude=payload.longitude,
+        plus_code_global=plus_code,
+        coordinate_source_type=payload.coordinate_source_type,
+        coordinate_source_url=payload.coordinate_source_url,
+        coordinate_verified_at=(
+            now
+            if is_durable_coordinate_source(
+                payload.coordinate_source_type, payload.coordinate_source_url
+            )
+            else None
+        ),
+        google_place_id=payload.google_place_id,
+        naver_map_url=payload.naver_map_url,
+        map_match_status=payload.map_match_status,
+        review_status=payload.review_status,
+        is_active=payload.is_active,
+        verified_at=now if payload.map_match_status == "verified" else None,
+        verified_by_user_id=user.id if payload.map_match_status == "verified" else None,
+        display_order=payload.display_order,
+    )
+    session.add(merchant)
+    await session.flush()
+    await _replace_merchant_relations(session, merchant, payload.food_ids, payload.sources)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="food_merchant_created",
+            target=f"food_merchant:{merchant.id}",
+            metadata_json={"slug": merchant.slug, "destination_id": merchant.destination_id},
+        )
+    )
+    await session.commit()
+    return await _merchant_admin_item(session, merchant)
+
+
+@router.patch("/merchants/{merchant_id}")
+async def update_food_merchant(
+    merchant_id: UUID,
+    payload: FoodMerchantUpdatePayload,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, object]:
+    merchant = await session.get(FoodMerchant, merchant_id)
+    if merchant is None:
+        raise AppError(404, "food_merchant_not_found", "找不到這筆店家資料")
+    food_ids = payload.food_ids or list(
+        (
+            await session.scalars(
+                select(FoodMerchantFood.food_id).where(FoodMerchantFood.merchant_id == merchant.id)
+            )
+        ).all()
+    )
+    destination_id = payload.destination_id or merchant.destination_id
+    google_place_id = (
+        payload.google_place_id
+        if "google_place_id" in payload.model_fields_set
+        else merchant.google_place_id
+    )
+    naver_map_url = (
+        payload.naver_map_url
+        if "naver_map_url" in payload.model_fields_set
+        else merchant.naver_map_url
+    )
+    latitude = payload.latitude if "latitude" in payload.model_fields_set else merchant.latitude
+    longitude = payload.longitude if "longitude" in payload.model_fields_set else merchant.longitude
+    coordinate_source_type = (
+        payload.coordinate_source_type
+        if "coordinate_source_type" in payload.model_fields_set
+        else merchant.coordinate_source_type
+    )
+    coordinate_source_url = (
+        payload.coordinate_source_url
+        if "coordinate_source_url" in payload.model_fields_set
+        else merchant.coordinate_source_url
+    )
+    country_code = payload.country_code or merchant.country_code
+    map_status = payload.map_match_status or merchant.map_match_status
+    review_status = payload.review_status or merchant.review_status
+    is_active = payload.is_active if payload.is_active is not None else merchant.is_active
+    if (latitude is None) != (longitude is None):
+        raise AppError(422, "coordinate_pair_required", "緯度與經度必須同時提供")
+    plus_code = None
+    if review_status == "approved" and is_active and map_status != "verified":
+        raise AppError(422, "map_verification_required", "發布前必須完成精準地點比對")
+    if map_status == "verified" or (review_status == "approved" and is_active):
+        plus_code = _validate_publishable_merchant(
+            country_code=country_code,
+            latitude=latitude,
+            longitude=longitude,
+            coordinate_source_type=coordinate_source_type,
+            coordinate_source_url=coordinate_source_url,
+            google_place_id=google_place_id,
+            naver_map_url=naver_map_url,
+        )
+    elif latitude is not None and longitude is not None:
+        plus_code = plus_code_for_coordinates(latitude, longitude)
+    await _validate_merchant_relations(
+        session,
+        destination_id=destination_id,
+        food_ids=food_ids,
+        google_place_id=google_place_id,
+        naver_map_url=naver_map_url,
+        current_id=merchant.id,
+    )
+    scalar_fields = (
+        "destination_id",
+        "country_code",
+        "name",
+        "local_name",
+        "address",
+        "latitude",
+        "longitude",
+        "coordinate_source_type",
+        "coordinate_source_url",
+        "google_place_id",
+        "naver_map_url",
+        "map_match_status",
+        "review_status",
+        "is_active",
+        "display_order",
+    )
+    for field in scalar_fields:
+        if field not in payload.model_fields_set:
+            continue
+        value = getattr(payload, field)
+        if field == "country_code" and value:
+            value = value.upper()
+        if field == "destination_id" and value:
+            value = value.casefold()
+        setattr(merchant, field, value)
+    merchant.plus_code_global = plus_code
+    if any(
+        field in payload.model_fields_set
+        for field in ("latitude", "longitude", "coordinate_source_type", "coordinate_source_url")
+    ):
+        merchant.coordinate_verified_at = (
+            datetime.now(UTC)
+            if is_durable_coordinate_source(coordinate_source_type, coordinate_source_url)
+            else None
+        )
+    if payload.map_match_status == "verified":
+        merchant.verified_at = datetime.now(UTC)
+        merchant.verified_by_user_id = user.id
+    elif payload.map_match_status in {"unverified", "ambiguous", "disabled"}:
+        merchant.verified_at = None
+        merchant.verified_by_user_id = None
+    await _replace_merchant_relations(session, merchant, payload.food_ids, payload.sources)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="food_merchant_updated",
+            target=f"food_merchant:{merchant.id}",
+            metadata_json={"fields": sorted(payload.model_fields_set)},
+        )
+    )
+    await session.commit()
+    return await _merchant_admin_item(session, merchant)
+
+
+@router.post("/merchants/batch")
+async def batch_food_merchants(
+    payload: FoodMerchantBatchPayload, user: AdminUser, session: Session
+) -> dict[str, int | str]:
+    merchants = list(
+        (await session.scalars(select(FoodMerchant).where(FoodMerchant.id.in_(payload.ids)))).all()
+    )
+    if len(merchants) != len(set(payload.ids)):
+        raise AppError(404, "food_merchant_not_found", "部分店家資料不存在")
+    now = datetime.now(UTC)
+    for merchant in merchants:
+        if payload.action in {"approve", "activate"}:
+            if merchant.map_match_status != "verified":
+                raise AppError(422, "map_verification_required", "發布前必須完成精準地點比對")
+            merchant.plus_code_global = _validate_publishable_merchant(
+                country_code=merchant.country_code,
+                latitude=merchant.latitude,
+                longitude=merchant.longitude,
+                coordinate_source_type=merchant.coordinate_source_type,
+                coordinate_source_url=merchant.coordinate_source_url,
+                google_place_id=merchant.google_place_id,
+                naver_map_url=merchant.naver_map_url,
+            )
+            merchant.review_status = "approved"
+            merchant.is_active = True
+        elif payload.action == "reject":
+            merchant.review_status = "rejected"
+            merchant.is_active = False
+        elif payload.action == "disable":
+            merchant.review_status = "disabled"
+            merchant.is_active = False
+        elif payload.action == "verify":
+            merchant.plus_code_global = _validate_publishable_merchant(
+                country_code=merchant.country_code,
+                latitude=merchant.latitude,
+                longitude=merchant.longitude,
+                coordinate_source_type=merchant.coordinate_source_type,
+                coordinate_source_url=merchant.coordinate_source_url,
+                google_place_id=merchant.google_place_id,
+                naver_map_url=merchant.naver_map_url,
+            )
+            merchant.map_match_status = "verified"
+            merchant.verified_at = now
+            merchant.verified_by_user_id = user.id
+        elif payload.action == "ambiguous":
+            merchant.map_match_status = "ambiguous"
+            merchant.verified_at = None
+            merchant.verified_by_user_id = None
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="food_merchants_batch_updated",
+            target=f"food_merchants:{len(merchants)}",
+            metadata_json={
+                "action": payload.action,
+                "ids": [str(item.id) for item in merchants],
+                "reason": payload.reason,
+            },
+        )
+    )
+    await session.commit()
+    return {"updated": len(merchants), "status": payload.action}

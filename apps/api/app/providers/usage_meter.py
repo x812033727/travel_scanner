@@ -18,6 +18,7 @@ GOOGLE_USAGE_RETENTION_DAYS = 400
 GOOGLE_MAPS_OPERATIONS = (
     "places_autocomplete",
     "place_details",
+    "place_id_refresh",
     "places_text_search",
     "places_text_search_locate",
     "places_photo",

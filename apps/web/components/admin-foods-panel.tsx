@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
+import { AdminFoodMerchantsPanel } from "./admin-food-merchants-panel";
 
 const locales = ["zh-TW", "zh-CN", "en", "ja", "ko"] as const;
 type Locale = typeof locales[number];
@@ -124,7 +125,7 @@ export function AdminFoodsPanel() {
 
   function csv(value: string) { return value.split(",").map((item) => item.trim()).filter(Boolean); }
 
-  return <section className="mt-8">
+  return <><section className="mt-8">
     <div className="grid gap-3 rounded-2xl border border-[var(--line)] bg-white p-4 md:grid-cols-5">
       <input aria-label={t("search")} value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t("searchPlaceholder")} className="h-11 rounded-xl border border-[var(--line)] px-3" />
       <select aria-label={t("country")} value={country} onChange={(event) => setCountry(event.target.value)} className="h-11 rounded-xl border border-[var(--line)] px-3"><option value="">{t("allCountries")}</option>{["JP", "KR", "TH", "TW", "SG", "HK", "VN"].map((code) => <option key={code}>{code}</option>)}</select>
@@ -142,5 +143,5 @@ export function AdminFoodsPanel() {
       <div className="mt-5 grid gap-4">{editing.localizations.map((localization, index) => <fieldset key={localization.locale} className="rounded-2xl border border-[var(--line)] bg-white p-4"><legend className="px-2 font-bold">{localization.locale}</legend><input aria-label={t("localizedName", { locale: localization.locale })} value={localization.name} onChange={(event) => { const next = [...editing.localizations]; next[index] = { ...localization, name: event.target.value }; setEditing({ ...editing, localizations: next }); }} placeholder={t("fields.name")} className="h-11 w-full rounded-xl border px-3" /><textarea aria-label={t("localizedSummary", { locale: localization.locale })} value={localization.summary} onChange={(event) => { const next = [...editing.localizations]; next[index] = { ...localization, summary: event.target.value }; setEditing({ ...editing, localizations: next }); }} placeholder={t("summaryPlaceholder")} rows={3} className="mt-3 w-full rounded-xl border p-3" /></fieldset>)}</div>
       <div className="mt-5 flex flex-wrap items-center gap-4"><label className="flex items-center gap-2"><input type="checkbox" checked={editing.is_active} onChange={(event) => setEditing({ ...editing, is_active: event.target.checked })} />{t("active")}</label><select value={editing.review_status} onChange={(event) => setEditing({ ...editing, review_status: event.target.value as AdminFood["review_status"] })} className="h-11 rounded-xl border px-3"><option value="pending">{t("statuses.pending")}</option><option value="approved">{t("statuses.approved")}</option><option value="rejected">{t("statuses.rejected")}</option><option value="disabled">{t("statuses.disabled")}</option></select><button type="button" disabled={loading} onClick={() => void save()} className="ml-auto min-h-12 rounded-xl bg-[var(--teal)] px-6 font-semibold text-white disabled:opacity-40">{t("save")}</button></div>
     </div></div>}
-  </section>;
+  </section><AdminFoodMerchantsPanel /></>;
 }

@@ -20,7 +20,7 @@ from app.trips.itinerary import ItineraryDay
 # Callers that only need to place a pin ask for LOCATE_FIELD_MASK and stay on Pro.
 LOCATE_FIELD_MASK = (
     "places.id,places.displayName,places.formattedAddress,places.location,"
-    "places.googleMapsUri,places.postalAddress.regionCode"
+    "places.googleMapsUri,places.postalAddress.regionCode,places.plusCode"
 )
 PLACE_PROFILE_FIELD_MASK = (
     "id,displayName,formattedAddress,location,plusCode,googleMapsUri,"
@@ -262,6 +262,17 @@ class GoogleTravelService:
                 }
             )
         return candidates
+
+    async def refresh_place_id(self, place_id: str) -> str | None:
+        """Refresh a persisted Place ID using the ID-only Places field mask."""
+
+        payload = await self._get(
+            f"{self.place_details_url}/{quote(place_id, safe='')}",
+            field_mask="id",
+            operation="place_id_refresh",
+        )
+        refreshed = payload.get("id") if payload else None
+        return str(refreshed) if refreshed else None
 
     async def search_place(
         self,
