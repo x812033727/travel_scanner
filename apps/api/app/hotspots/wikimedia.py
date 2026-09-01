@@ -1,11 +1,16 @@
 from __future__ import annotations
 
+import asyncio
+import random
 from dataclasses import dataclass
 from datetime import date, timedelta
 from typing import Any, cast
 from urllib.parse import quote
 
 import httpx
+
+RETRY_STATUS_CODES = frozenset({429, 503})
+MAX_RETRY_DELAY_SECONDS = 30.0
 
 
 @dataclass(frozen=True)
@@ -24,10 +29,35 @@ class WikimediaPageviewClient:
         user_agent: str,
         timeout_seconds: float = 10.0,
         client: httpx.AsyncClient | None = None,
+        max_retries: int = 3,
+        retry_backoff_seconds: float = 1.0,
     ) -> None:
         self.user_agent = user_agent
         self.timeout_seconds = timeout_seconds
         self.client = client
+        self.max_retries = max_retries
+        self.retry_backoff_seconds = retry_backoff_seconds
+
+    def _retry_delay(self, response: httpx.Response, attempt: int) -> float:
+        retry_after = response.headers.get("Retry-After")
+        if retry_after:
+            try:
+                return min(max(float(retry_after), 0.0), MAX_RETRY_DELAY_SECONDS)
+            except ValueError:
+                pass
+        backoff = self.retry_backoff_seconds * (2.0**attempt)
+        # Jitter keeps the concurrent collectors from retrying in lockstep.
+        return min(backoff * (1 + random.random() * 0.25), MAX_RETRY_DELAY_SECONDS)
+
+    async def _get(self, client: httpx.AsyncClient, source_url: str) -> httpx.Response:
+        headers = {"User-Agent": self.user_agent, "Accept": "application/json"}
+        for attempt in range(self.max_retries + 1):
+            response = await client.get(source_url, headers=headers)
+            if response.status_code not in RETRY_STATUS_CODES or attempt == self.max_retries:
+                break
+            await asyncio.sleep(self._retry_delay(response, attempt))
+        response.raise_for_status()
+        return response
 
     async def pageviews(
         self,
@@ -46,11 +76,7 @@ class WikimediaPageviewClient:
         owns_client = self.client is None
         client = self.client or httpx.AsyncClient(timeout=self.timeout_seconds)
         try:
-            response = await client.get(
-                source_url,
-                headers={"User-Agent": self.user_agent, "Accept": "application/json"},
-            )
-            response.raise_for_status()
+            response = await self._get(client, source_url)
             payload = cast(dict[str, Any], response.json())
         finally:
             if owns_client:

@@ -195,6 +195,8 @@ class Settings(BaseSettings):
         "TravelScannerBot/0.1 (+https://github.com/x812033727/travel_scanner)"
     )
     hotspot_wikimedia_timeout_seconds: float = Field(default=10.0, gt=0, le=30)
+    hotspot_wikimedia_max_retries: int = Field(default=3, ge=0, le=5)
+    hotspot_wikimedia_retry_backoff_seconds: float = Field(default=1.0, gt=0, le=10)
     hotspot_discovery_enabled: bool = True
     hotspot_discovery_interval_seconds: int = Field(default=604_800, ge=86_400)
     hotspot_discovery_candidate_limit: int = Field(default=100, ge=20, le=100)
