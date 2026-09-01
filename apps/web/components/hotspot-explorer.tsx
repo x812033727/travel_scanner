@@ -20,6 +20,7 @@ import { FormEvent, KeyboardEvent, TouchEvent, useEffect, useRef, useState } fro
 import { api } from "@/lib/api";
 
 type SourceStatus = { id: string; name: string; status: string; purpose: string; persistence: string };
+type MapLink = { provider: "google" | "naver"; label: string; url: string; primary: boolean };
 type SourcesResponse = { collection_interval_seconds: number; sources: SourceStatus[] };
 type RankedHotspot = {
   id: string; slug: string; rank: number; name: string; city_code: string; city_name: string;
@@ -33,6 +34,7 @@ type RankedHotspot = {
   depth_score: number | null; depth_reason: string | null; local_name: string | null;
   access_minutes: number | null; recommended_duration_minutes: number | null;
   guide_counts: { article: number; video: number };
+  map_links: MapLink[];
 };
 type RankingResponse = { scope: string; scope_key: string; observed_on: string | null; window_days: number; total: number; has_more: boolean; next_cursor: number | null; items: RankedHotspot[] };
 type FacetsResponse = {
@@ -213,9 +215,23 @@ export function HotspotExplorer() {
   }
 
   useEffect(() => {
+    const initial = new URLSearchParams(window.location.search);
+    const initialCategory = initial.get("category") ?? "";
+    const initialDestination = initial.get("destination_id") ?? "";
+    const rankingParams = new URLSearchParams({ limit: "30" });
+    if (initialCategory) {
+      rankingParams.set("category", initialCategory);
+    }
+    if (initialDestination) {
+      rankingParams.set("destination_id", initialDestination);
+    }
     api<SourcesResponse>("/hotspots/sources").then(setSources).catch(() => undefined);
     api<FacetsResponse>("/hotspots/facets").then(setFacets).catch(() => undefined);
-    api<RankingResponse>("/hotspots/rankings?limit=30").then(setRanking).catch((reason: Error) => setError(reason.message)).finally(() => setLoading(false));
+    api<RankingResponse>(`/hotspots/rankings?${rankingParams}`).then((result) => {
+      setRanking(result);
+      setCategory(initialCategory);
+      setCity(initialDestination);
+    }).catch((reason: Error) => setError(reason.message)).finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
@@ -254,6 +270,7 @@ export function HotspotExplorer() {
           <div className="flex items-start justify-between gap-4"><div className="flex gap-3"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{item.rank}</span><div><h3 className="text-lg font-bold">{item.name}</h3>{item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}<p className="mt-1 flex items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{item.city_name} · {t(`categories.${item.category}`)}</p></div></div><div className="text-right"><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><p className="text-xs text-[var(--muted)]">{t("score")}</p></div></div>
           <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl bg-[var(--paper)] p-4 text-sm"><div><p className="text-[var(--muted)]">{t("views30")}</p><p className="mt-1 font-semibold">{item.pageviews_30d === null ? t("pending") : number.format(item.pageviews_30d)}</p></div><div><p className="text-[var(--muted)]">{t("previous")}</p><p className="mt-1 flex items-center gap-1 font-semibold">{trendIcon(item)}{percent(item.growth_rate)}</p></div></div>
           <button type="button" onClick={() => openGuides(item)} className="mt-4 flex min-h-12 w-full items-center gap-3 rounded-2xl bg-[var(--teal)] px-4 py-3 text-left text-white shadow-sm transition hover:bg-[var(--teal-dark)]"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/15"><BookOpenText size={17} /></span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("guides")}</strong><span className="block text-xs text-white/75">{t("guideCount", { articles: item.guide_counts?.article || 0, videos: item.guide_counts?.video || 0 })}</span></span><ExternalLink size={16} /></button>
+          <div className="mt-2 grid gap-2 sm:grid-cols-2">{(item.map_links ?? []).map((link) => <a key={link.provider} href={link.url} target="_blank" rel="noopener noreferrer" className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold ${link.primary ? "bg-[var(--ink)] text-white" : "border border-[var(--line)] bg-white text-[var(--ink)]"}`}><MapPin size={16} />{link.label}<ExternalLink size={14} /></a>)}</div>
           <div className="mt-4 flex flex-wrap items-center gap-2">{item.destination_role === "secondary" && <span className="rounded-full bg-sky-100 px-2.5 py-1 text-xs font-semibold text-sky-900">{t("secondaryTag")}</span>}{item.is_cross_city && <span className="rounded-full bg-violet-100 px-2.5 py-1 text-xs font-semibold text-violet-900">{t("crossCityTag")}</span>}{item.is_deep_travel && <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-900">{t("deep")}</span>}{item.depth_kind && <span className="rounded-full border border-amber-300 px-2.5 py-1 text-xs text-amber-900">{item.depth_kind === "day_trip" ? t("dayTrip") : t("urbanLocal")}</span>}{item.source_urls[0] && <a href={item.source_urls[0]} target="_blank" rel="noopener noreferrer" className="ml-auto text-xs font-semibold text-[var(--teal)]">{t("source")}</a>}</div>
           {item.is_deep_travel && item.access_minutes && item.recommended_duration_minutes && <p className="mt-3 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-950">{t("depthDetail", { access: item.access_minutes, duration: item.recommended_duration_minutes })}</p>}
         </li>)}</ol>}

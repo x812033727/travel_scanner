@@ -91,6 +91,7 @@ describe("HotspotExplorer", () => {
           access_minutes: 20,
           recommended_duration_minutes: 90,
           guide_counts: { article: 0, video: 1 },
+          map_links: [{ provider: "google", label: "Google Maps", url: "https://www.google.com/maps/search/?api=1&query=35.7%2C139.7", primary: true }],
         }],
       }));
     }));
@@ -106,6 +107,9 @@ describe("HotspotExplorer", () => {
     expect(screen.getByText("市區巷弄")).toBeTruthy();
     expect(screen.getByText(/交通約 20 分鐘/)).toBeTruthy();
     expect(screen.getByRole("button", { name: /文章與影片介紹/ })).toBeTruthy();
+    const map = screen.getByRole("link", { name: /Google Maps/ });
+    expect(map.getAttribute("target")).toBe("_blank");
+    expect(map.getAttribute("rel")).toContain("noopener");
     fireEvent.click(screen.getByRole("button", { name: /文章與影片介紹/ }));
     expect(await screen.findByRole("heading", { name: "認識 淺草寺" })).toBeTruthy();
     const guide = await screen.findByRole("link", { name: /第一次去淺草寺/ });

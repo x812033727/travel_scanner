@@ -12,10 +12,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import Settings
 from app.destinations.catalog import DESTINATIONS, destination_for_code, destination_for_id
+from app.foods.service import seed_food_catalog
 from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.cities import HOTSPOT_CITIES
 from app.hotspots.discovery import WikimediaDiscoveryClient
 from app.hotspots.guides import discover_guides
+from app.hotspots.maps import build_map_links
 from app.hotspots.ranking import RankingInput, score_deep_hotspots, score_hotspots
 from app.hotspots.wikimedia import WikimediaPageviewClient
 from app.i18n import LOCALES
@@ -76,7 +78,7 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
     hotspots: list[TravelHotspot] = []
     for seed in HOTSPOT_SEEDS:
         hotspot = existing.get(seed.slug)
-        claimed = by_wikidata.get(seed.wikidata_item_id)
+        claimed = by_wikidata.get(seed.wikidata_item_id) if seed.wikidata_item_id else None
         if hotspot is None and claimed is not None:
             # Discovery reaches a place before the curated catalog does and stores it
             # under a generated slug. wikidata_item_id is unique, so inserting a second
@@ -108,11 +110,17 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
         hotspot.origin = "curated"
         hotspot.review_status = "approved"
         hotspot.review_reason = None
-        hotspot.source_urls = [seed.wikipedia_url, seed.wikidata_url]
+        hotspot.source_urls = [
+            url for url in (seed.wikipedia_url, seed.wikidata_url) if url is not None
+        ]
         hotspot.metadata_json = {
             "aliases": list(seed.aliases),
             "editorial_relevance": seed.editorial_relevance,
-            "pageview_pages": [[seed.wikipedia_project, seed.wikipedia_title]],
+            "pageview_pages": (
+                [[seed.wikipedia_project, seed.wikipedia_title]]
+                if seed.wikipedia_project and seed.wikipedia_title
+                else []
+            ),
             "local_name": seed.local_name,
             "depth_reason": seed.depth_reason,
             "access_minutes": seed.access_minutes,
@@ -379,6 +387,7 @@ async def collect_hotspots(
 ) -> dict[str, Any]:
     target_date = observed_on or date.today()
     hotspots = await seed_catalog(session, target_date)
+    await seed_food_catalog(session)
     await session.commit()
     discovery_report: dict[str, Any] = {"skipped": True, "errors": []}
     latest_discovery = await session.scalar(
@@ -653,12 +662,14 @@ async def list_rankings(
     items: list[dict[str, Any]] = []
     for ranking, hotspot in rows:
         growth_rate = ranking.explanation.get("growth_rate")
+        localized_name = localized_names.get(hotspot.id, hotspot.name)
+        local_name = hotspot.metadata_json.get("local_name")
         items.append(
             {
                 "id": str(hotspot.id),
                 "slug": hotspot.slug,
                 "rank": ranking.rank,
-                "name": localized_names.get(hotspot.id, hotspot.name),
+                "name": localized_name,
                 "destination_id": hotspot.destination_id,
                 "city_code": hotspot.city_code,
                 "city_name": hotspot.city_name,
@@ -687,7 +698,7 @@ async def list_rankings(
                 if hotspot.depth_score is not None
                 else None,
                 "depth_reason": hotspot.metadata_json.get("depth_reason"),
-                "local_name": hotspot.metadata_json.get("local_name"),
+                "local_name": local_name,
                 "access_minutes": hotspot.metadata_json.get("access_minutes"),
                 "recommended_duration_minutes": hotspot.metadata_json.get(
                     "recommended_duration_minutes"
@@ -696,6 +707,15 @@ async def list_rankings(
                     "article": guide_counts.get((hotspot.id, "article"), 0),
                     "video": guide_counts.get((hotspot.id, "video"), 0),
                 },
+                "map_links": build_map_links(
+                    name=localized_name,
+                    local_name=local_name,
+                    city_name=hotspot.city_name,
+                    country_code=hotspot.country_code,
+                    latitude=hotspot.latitude,
+                    longitude=hotspot.longitude,
+                    google_place_id=hotspot.google_place_id,
+                ),
                 **_destination_fields(hotspot.destination_id),
             }
         )

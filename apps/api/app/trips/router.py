@@ -18,6 +18,8 @@ from app.ai.itinerary import AIItineraryPlanner, AIItineraryRequest, AIPlanningR
 from app.auth.service import CurrentUser
 from app.config import Settings, get_settings
 from app.db import get_session
+from app.destinations.catalog import destination_for_code
+from app.foods.service import load_planner_foods
 from app.hotspots.service import load_planner_hotspots
 from app.infra import enforce_named_rate_limit, get_redis
 from app.models import (
@@ -1022,6 +1024,11 @@ async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPla
             place_service.enrich_hotels(hotels),
             place_service.enrich_activities(activities),
         )
+    trip_days = (
+        (query.return_date - query.departure_date).days + 1
+        if query.return_date and query.departure_date
+        else 4
+    )
     hotspots = (
         await load_planner_hotspots(
             session,
@@ -1029,15 +1036,25 @@ async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPla
             interests=query.preferences.interests,
             limit=12,
             extension_destination_ids=query.preferences.extension_destination_ids,
-            days=(query.return_date - query.departure_date).days + 1
-            if query.return_date and query.departure_date
-            else None,
+            days=trip_days,
         )
         if (
             "deep_travel" in query.preferences.interests
             or query.preferences.extension_destination_ids
         )
         and query.destination
+        else []
+    )
+    destination = destination_for_code(query.destination)
+    foods = (
+        await load_planner_foods(
+            session,
+            destination_id=destination.id,
+            locale=query.locale,
+            days=trip_days,
+            limit=10,
+        )
+        if "food" in query.preferences.interests and destination
         else []
     )
     plans = TripOptimizer().optimize(
@@ -1047,6 +1064,7 @@ async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPla
         activities,
         [item for item in offers.get("transport", []) if isinstance(item, TransportOffer)],
         hotspots,
+        foods,
     )
     if not plans:
         detail = "；".join(warnings) or "供應商目前沒有可用組合"

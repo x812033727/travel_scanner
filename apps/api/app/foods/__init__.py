@@ -1,0 +1,1 @@
+"""Curated country food catalog."""

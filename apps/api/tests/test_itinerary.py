@@ -8,7 +8,7 @@ from app.config import Settings
 from app.places.google import GoogleTravelService
 from app.providers.mock import MockProvider
 from app.search.schemas import TripPace
-from app.trips.itinerary import ItineraryHotspot, build_itinerary
+from app.trips.itinerary import ItineraryFood, ItineraryHotspot, build_itinerary
 from tests.test_mock_providers import sample_query
 
 
@@ -201,3 +201,44 @@ def test_cross_city_days_follow_trip_length_limits(trip_days: int, expected: int
     ]
     assert len(placed) == expected
     assert all(item.data["round_trip_buffer_minutes"] == 90 for item in placed)
+
+
+def test_food_itinerary_uses_catalog_ids_once_per_full_day_without_fake_restaurants() -> None:
+    query = sample_query()
+    query = query.model_copy(
+        update={"preferences": query.preferences.model_copy(update={"interests": ["food"]})}
+    )
+    foods = [
+        ItineraryFood(
+            food_id=uuid4(),
+            name=f"代表料理 {index}",
+            local_name=f"Local food {index}",
+            food_kind="main",
+            meal_types=["lunch", "dinner"],
+            hotspot_id=uuid4() if index < 3 else None,
+            hotspot_name=f"公共市場 {index}" if index < 3 else None,
+            latitude=35.6 + index * 0.01 if index < 3 else None,
+            longitude=139.6 + index * 0.01 if index < 3 else None,
+            map_links=[
+                {
+                    "provider": "google",
+                    "label": "Google Maps",
+                    "url": "https://www.google.com/maps/search/?api=1&query=market",
+                    "primary": True,
+                }
+            ]
+            if index < 3
+            else [],
+            merchant_status="area_confirmed" if index < 3 else "merchant_pending",
+        )
+        for index in range(6)
+    ]
+    itinerary = build_itinerary(query, None, None, None, None, foods=foods)
+    full_days = itinerary[1:-1]
+    food_items = [item for day in full_days for item in day.items if item.item_type == "food"]
+    assert len(food_items) == len(full_days)
+    assert len({item.data["food_id"] for item in food_items}) == len(food_items)
+    assert all(item.data["food_name"] for item in food_items)
+    assert all("restaurant" not in item.location_name.casefold() for item in food_items)
+    pending = [item for item in food_items if item.data["merchant_status"] == "merchant_pending"]
+    assert all(item.location_name == "店家待確認" and item.is_estimated for item in pending)

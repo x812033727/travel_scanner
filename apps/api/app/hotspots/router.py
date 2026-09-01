@@ -213,6 +213,7 @@ async def hotspots_for_planner(
             "destination_role": item["destination_role"],
             "parent_destination_id": item["parent_destination_id"],
             "is_cross_city": item["is_cross_city"],
+            "map_links": item["map_links"],
         }
         for item in items[:limit]
     ]

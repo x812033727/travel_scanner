@@ -7,6 +7,8 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.destinations.catalog import destination_for_code
+from app.foods.service import load_planner_foods
 from app.hotspots.service import load_planner_hotspots
 from app.infra import get_redis
 from app.models import (
@@ -583,6 +585,11 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
         hotels = [HotelOffer.model_validate(item) for item in results.get("hotel", [])]
         activities = [ActivityOffer.model_validate(item) for item in results.get("activities", [])]
         transports = [TransportOffer.model_validate(item) for item in results.get("transport", [])]
+        trip_days = (
+            (query.return_date - query.departure_date).days + 1
+            if query.return_date and query.departure_date
+            else 4
+        )
         hotspots = (
             await load_planner_hotspots(
                 session,
@@ -590,9 +597,7 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
                 interests=query.preferences.interests,
                 limit=12,
                 extension_destination_ids=query.preferences.extension_destination_ids,
-                days=(query.return_date - query.departure_date).days + 1
-                if query.return_date and query.departure_date
-                else None,
+                days=trip_days,
             )
             if (
                 "deep_travel" in query.preferences.interests
@@ -601,8 +606,20 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
             and query.destination
             else []
         )
+        destination = destination_for_code(query.destination)
+        foods = (
+            await load_planner_foods(
+                session,
+                destination_id=destination.id,
+                locale=query.locale,
+                days=trip_days,
+                limit=10,
+            )
+            if "food" in query.preferences.interests and destination
+            else []
+        )
         optimized = TripOptimizer().optimize(
-            query, flights, hotels, activities, transports, hotspots
+            query, flights, hotels, activities, transports, hotspots, foods
         )
         if place_service.configured:
             await asyncio.gather(

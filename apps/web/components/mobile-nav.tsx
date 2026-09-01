@@ -10,12 +10,13 @@ import { Link } from "@/i18n/navigation";
 import { featureEnabled, type SiteFeature } from "@/lib/site-features";
 
 const links: Array<{
-  key: "home" | "hotspots" | "trips" | "alerts" | "flightStatus" | "airlines" | "pricing" | "account";
+  key: "home" | "hotspots" | "foods" | "trips" | "alerts" | "flightStatus" | "airlines" | "pricing" | "account";
   href: string;
   feature?: SiteFeature;
 }> = [
   { key: "home", href: "/" },
   { key: "hotspots", href: "/hotspots", feature: "hotspots" },
+  { key: "foods", href: "/foods" },
   { key: "trips", href: "/trips", feature: "trips" },
   { key: "alerts", href: "/alerts", feature: "alerts" },
   { key: "flightStatus", href: "/flights/status", feature: "flight_status" },
