@@ -4,7 +4,7 @@ import hashlib
 import ipaddress
 import re
 from collections.abc import Awaitable
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from typing import Any, cast
@@ -68,6 +68,7 @@ class GuideCandidate:
     view_count: int | None = None
     language_confidence: Decimal = Decimal("0.750")
     discovery_rank: int | None = None
+    metadata: dict[str, Any] = field(default_factory=dict)
 
 
 def canonical_external_url(value: str) -> str:
@@ -328,6 +329,7 @@ async def save_candidates(
             existing.view_count = candidate.view_count
             existing.last_verified_at = now
             existing.metadata_expires_at = now + timedelta(days=7)
+            existing.metadata_json = {**existing.metadata_json, **candidate.metadata}
             continue
         session.add(
             HotspotGuide(
@@ -349,6 +351,7 @@ async def save_candidates(
                 review_status="pending",
                 last_verified_at=now,
                 metadata_expires_at=now + timedelta(days=7),
+                metadata_json=candidate.metadata,
             )
         )
         created += 1

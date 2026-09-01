@@ -2,18 +2,31 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 from decimal import Decimal
-from typing import Annotated, Literal
-from uuid import UUID
+from typing import Annotated, Literal, cast
+from uuid import UUID, uuid4
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Header, Query
 from pydantic import BaseModel, Field, model_validator
-from sqlalchemy import func, select
+from redis import Redis as SyncRedis
+from rq import Queue, Retry
+from sqlalchemy import func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
 from app.auth.service import AdminUser
+from app.config import get_settings
 from app.db import get_session
 from app.destinations.catalog import DESTINATIONS, destination_for_id
+from app.hotspots.ai_search import (
+    AIProviderName,
+    ContentType,
+    SearchDepth,
+    ai_quota_status,
+    configured_research_providers,
+    consume_ai_run,
+    estimate_calls,
+    research_model,
+)
 from app.hotspots.guides import (
     GuideCandidate,
     YouTubeGuideProvider,
@@ -26,7 +39,13 @@ from app.hotspots.guides import (
 from app.hotspots.ranking import calculate_depth_value
 from app.i18n import LOCALES, Locale
 from app.infra import get_redis
-from app.models import AdminAuditLog, HotspotGuide, HotspotSignal, TravelHotspot
+from app.models import (
+    AdminAuditLog,
+    HotspotGuide,
+    HotspotGuideAISearchRun,
+    HotspotSignal,
+    TravelHotspot,
+)
 from app.problems import AppError
 
 router = APIRouter(prefix="/admin/hotspots", tags=["admin hotspots"])
@@ -96,6 +115,53 @@ class ManualGuideRequest(BaseModel):
     title: str | None = Field(default=None, max_length=500)
     creator_name: str | None = Field(default=None, max_length=255)
     summary: str | None = Field(default=None, max_length=500)
+
+
+class GuideAISearchRequest(BaseModel):
+    hotspot_id: UUID
+    locales: list[Locale] = Field(default_factory=lambda: list(LOCALES), min_length=1, max_length=5)
+    content_types: list[ContentType] = Field(
+        default_factory=lambda: cast(list[ContentType], ["article", "video"]),
+        min_length=1,
+        max_length=2,
+    )
+    provider: AIProviderName = "minimax"
+    depth: SearchDepth = "deep"
+    only_missing: bool = True
+    custom_instructions: str | None = Field(default=None, max_length=500)
+
+    @model_validator(mode="after")
+    def unique_scope(self) -> GuideAISearchRequest:
+        self.locales = list(dict.fromkeys(self.locales))
+        self.content_types = list(dict.fromkeys(self.content_types))
+        if self.custom_instructions:
+            self.custom_instructions = self.custom_instructions.strip() or None
+        return self
+
+
+def _ai_search_payload(run: HotspotGuideAISearchRun) -> dict[str, object]:
+    return {
+        "run_id": str(run.id),
+        "hotspot_id": str(run.hotspot_id),
+        "status": run.status,
+        "progress": run.progress,
+        "current": run.progress_json,
+        "provider": run.provider,
+        "model": run.model,
+        "depth": run.depth,
+        "locales": run.requested_locales,
+        "content_types": run.content_types,
+        "only_missing": run.only_missing,
+        "query_plan": run.query_plan_json,
+        "usage": run.usage_json,
+        "result": run.result_json,
+        "error_code": run.error_code,
+        "retryable": run.error_code
+        in {"ai_search_failed", "queue_unavailable", "provider_unavailable"},
+        "created_at": run.created_at,
+        "started_at": run.started_at,
+        "completed_at": run.completed_at,
+    }
 
 
 @router.get("/candidates")
@@ -311,6 +377,9 @@ async def list_guide_candidates(
     locale: Locale | None = None,
     type: Literal["article", "video"] | None = None,
     status: Annotated[str | None, Query(max_length=24)] = None,
+    discovery_method: Literal["standard", "ai_research", "manual"] | None = None,
+    ai_provider: AIProviderName | None = None,
+    run_id: UUID | None = None,
     page: Annotated[int, Query(ge=1)] = 1,
     limit: Annotated[int, Query(ge=1, le=100)] = 50,
 ) -> dict[str, object]:
@@ -324,6 +393,21 @@ async def list_guide_candidates(
         filters.append(HotspotGuide.content_type == type)
     if status:
         filters.append(HotspotGuide.review_status == status)
+    if discovery_method == "ai_research":
+        filters.append(HotspotGuide.metadata_json["discovery_method"].as_string() == "ai_research")
+    elif discovery_method == "standard":
+        filters.append(
+            or_(
+                HotspotGuide.metadata_json["discovery_method"].as_string().is_(None),
+                HotspotGuide.metadata_json["discovery_method"].as_string() != "ai_research",
+            )
+        )
+    elif discovery_method == "manual":
+        filters.append(HotspotGuide.provider == "manual")
+    if ai_provider:
+        filters.append(HotspotGuide.metadata_json["ai_provider"].as_string() == ai_provider)
+    if run_id:
+        filters.append(HotspotGuide.metadata_json["ai_search_run_id"].as_string() == str(run_id))
     total = int(await session.scalar(select(func.count(HotspotGuide.id)).where(*filters)) or 0)
     rows = (
         await session.execute(
@@ -354,6 +438,14 @@ async def list_guide_candidates(
                 "reason": guide.review_reason,
                 "last_verified_at": guide.last_verified_at,
                 "metadata_expires_at": guide.metadata_expires_at,
+                "discovery_method": guide.metadata_json.get("discovery_method", "standard"),
+                "ai_search_run_id": guide.metadata_json.get("ai_search_run_id"),
+                "ai_provider": guide.metadata_json.get("ai_provider"),
+                "ai_model": guide.metadata_json.get("ai_model"),
+                "relevance_score": guide.metadata_json.get("relevance_score"),
+                "quality_score": guide.metadata_json.get("quality_score"),
+                "recommendation_reason": guide.metadata_json.get("recommendation_reason"),
+                "search_query": guide.metadata_json.get("search_query"),
             }
             for guide, name in rows
         ],
@@ -433,6 +525,138 @@ async def discover_guide_candidates(
     return {"reports": reports}
 
 
+@router.post("/guides/ai-search", status_code=202)
+async def create_guide_ai_search(
+    payload: GuideAISearchRequest,
+    user: AdminUser,
+    session: Session,
+    idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
+) -> dict[str, object]:
+    existing = await session.scalar(
+        select(HotspotGuideAISearchRun).where(
+            HotspotGuideAISearchRun.actor_user_id == user.id,
+            HotspotGuideAISearchRun.idempotency_key == idempotency_key,
+        )
+    )
+    if existing is not None:
+        return {
+            **_ai_search_payload(existing),
+            "estimated_calls": estimate_calls(
+                len(existing.requested_locales),
+                cast(list[ContentType], existing.content_types),
+                cast(SearchDepth, existing.depth),
+            ),
+        }
+    hotspot = await session.get(TravelHotspot, payload.hotspot_id)
+    if hotspot is None:
+        raise AppError(404, "hotspot_not_found", "找不到這個景點")
+    settings = await load_runtime_settings(session)
+    if not settings.hotspot_guide_ai_search_enabled:
+        raise AppError(503, "hotspot_guide_ai_search_disabled", "AI 景點搜尋目前未啟用")
+    providers = configured_research_providers(settings)
+    if not providers[payload.provider]:
+        raise AppError(503, "hotspot_guide_ai_provider_not_configured", "所選 AI 供應商尚未設定")
+    required_types = set(payload.content_types)
+    if payload.only_missing:
+        for content_type in tuple(required_types):
+            approved_locales = set(
+                (
+                    await session.scalars(
+                        select(HotspotGuide.locale)
+                        .where(
+                            HotspotGuide.hotspot_id == payload.hotspot_id,
+                            HotspotGuide.content_type == content_type,
+                            HotspotGuide.review_status == "approved",
+                            HotspotGuide.locale.in_(payload.locales),
+                        )
+                        .distinct()
+                    )
+                ).all()
+            )
+            if approved_locales.issuperset(payload.locales):
+                required_types.remove(content_type)
+    if "article" in required_types and not (
+        settings.hotspot_guide_brave_enabled and settings.hotspot_guide_brave_api_key
+    ):
+        raise AppError(503, "hotspot_guide_brave_not_configured", "文章搜尋需要 Brave Search 設定")
+    if "video" in required_types and not (
+        settings.hotspot_guide_youtube_enabled and settings.hotspot_guide_youtube_api_key
+    ):
+        raise AppError(
+            503, "hotspot_guide_youtube_not_configured", "影片搜尋需要 YouTube Data API 設定"
+        )
+    if not await consume_ai_run(get_redis(), settings):
+        raise AppError(429, "hotspot_guide_ai_quota_exhausted", "今日 AI 搜尋執行額度已用完")
+    run = HotspotGuideAISearchRun(
+        id=uuid4(),
+        actor_user_id=user.id,
+        hotspot_id=payload.hotspot_id,
+        idempotency_key=idempotency_key,
+        requested_locales=list(payload.locales),
+        content_types=list(payload.content_types),
+        provider=payload.provider,
+        model=research_model(settings, payload.provider),
+        depth=payload.depth,
+        only_missing=payload.only_missing,
+        custom_instructions=payload.custom_instructions,
+        status="queued",
+        progress=0,
+    )
+    session.add(run)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="hotspot_guide_ai_search_started",
+            target=f"hotspot-guide-ai-search:{run.id}",
+            metadata_json={
+                "hotspot_id": str(payload.hotspot_id),
+                "provider": payload.provider,
+                "depth": payload.depth,
+                "locales": payload.locales,
+                "content_types": payload.content_types,
+            },
+        )
+    )
+    await session.commit()
+    try:
+        connection = SyncRedis.from_url(get_settings().redis_url)
+        queued = Queue("hotspot-guides", connection=connection).enqueue(
+            "app.hotspots.ai_tasks.run_hotspot_guide_ai_search",
+            str(run.id),
+            job_timeout=900,
+            retry=Retry(max=2, interval=[30, 120]),
+        )
+        run.queue_job_id = queued.id
+        await session.commit()
+    except Exception as exc:
+        run.status = "failed"
+        run.progress = 100
+        run.error_code = "queue_unavailable"
+        run.error_message = "AI 景點搜尋佇列暫時無法使用"
+        run.completed_at = datetime.now(UTC)
+        await session.commit()
+        raise AppError(503, "queue_unavailable", "AI 景點搜尋佇列暫時無法使用") from exc
+    return {
+        **_ai_search_payload(run),
+        "estimated_calls": estimate_calls(
+            len(payload.locales), payload.content_types, payload.depth
+        ),
+    }
+
+
+@router.get("/guides/ai-search/{run_id}")
+async def get_guide_ai_search(
+    run_id: UUID,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, object]:
+    _ = user
+    run = await session.get(HotspotGuideAISearchRun, run_id)
+    if run is None:
+        raise AppError(404, "hotspot_guide_ai_search_not_found", "找不到這次 AI 搜尋")
+    return _ai_search_payload(run)
+
+
 @router.post("/guides/manual")
 async def add_manual_guide(
     payload: ManualGuideRequest,
@@ -476,5 +700,20 @@ async def add_manual_guide(
 async def hotspot_guide_coverage(user: AdminUser, session: Session) -> dict[str, object]:
     _ = user
     result = await guide_coverage(session)
-    result["quotas"] = await guide_quota_status(get_redis(), await load_runtime_settings(session))
+    settings = await load_runtime_settings(session)
+    result["quotas"] = await guide_quota_status(get_redis(), settings)
+    result["ai_search"] = {
+        "enabled": settings.hotspot_guide_ai_search_enabled,
+        "default_provider": settings.hotspot_guide_ai_default_provider,
+        "providers": configured_research_providers(settings),
+        "sources": {
+            "brave": bool(
+                settings.hotspot_guide_brave_enabled and settings.hotspot_guide_brave_api_key
+            ),
+            "youtube": bool(
+                settings.hotspot_guide_youtube_enabled and settings.hotspot_guide_youtube_api_key
+            ),
+        },
+        "quota": await ai_quota_status(get_redis(), settings),
+    }
     return result

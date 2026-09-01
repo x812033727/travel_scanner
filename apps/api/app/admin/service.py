@@ -111,6 +111,19 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         ("openai_api_key", "anthropic_api_key", "minimax_api_key"),
         "ai_planner_enabled",
     ),
+    "ai_guide_search": ProviderDefinition(
+        "AI 景點介紹搜尋",
+        "由 MiniMax、OpenAI 或 Claude 規劃與評選多語搜尋；網址只接受 Brave 與 YouTube。",
+        (
+            "hotspot_guide_ai_default_provider",
+            "hotspot_guide_ai_timeout_seconds",
+            "hotspot_guide_ai_max_output_tokens",
+            "hotspot_guide_ai_daily_run_limit",
+            "hotspot_guide_ai_daily_call_budget",
+        ),
+        (),
+        "hotspot_guide_ai_search_enabled",
+    ),
     "google_maps": ProviderDefinition(
         "Google Maps",
         "Google Places 地點搜尋、Routes 大眾運輸路線、Weather 天氣與瀏覽器 Embed 地圖。",
@@ -405,6 +418,27 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             f"已設定：{'、'.join(configured_names)}"
             if configured
             else "尚未設定真實 AI 金鑰，建立行程時會使用內建備援",
+        )
+    if provider == "ai_guide_search":
+        selected = settings.hotspot_guide_ai_default_provider
+        key = {
+            "openai": settings.openai_api_key,
+            "anthropic": settings.anthropic_api_key,
+            "minimax": settings.minimax_api_key,
+        }[selected]
+        sources = bool(
+            settings.hotspot_guide_brave_enabled
+            and settings.hotspot_guide_brave_api_key
+            or settings.hotspot_guide_youtube_enabled
+            and settings.hotspot_guide_youtube_api_key
+        )
+        configured = bool(key and sources)
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            f"預設 {selected}；Brave／YouTube 受控搜尋已可用"
+            if configured
+            else f"預設 {selected}；請設定對應 AI 金鑰與至少一個搜尋來源",
         )
     if provider == "google_maps":
         configured = bool(settings.google_maps_api_key)
@@ -721,6 +755,7 @@ def _validate_provider_values(
             "fallback",
             "disabled",
         },
+        "hotspot_guide_ai_default_provider": {"openai", "anthropic", "minimax"},
     }
     for field, allowed in modes.items():
         if field in merged and str(merged[field]).lower() not in allowed:
@@ -977,6 +1012,11 @@ async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str
         if result.planning.provider == "catalog":
             raise ConnectionError("沒有任何真實 AI 供應商成功回傳結構化行程")
         return f"{result.planning.provider} / {result.planning.model} 結構化行程驗證成功"
+    if provider == "ai_guide_search":
+        from app.hotspots.ai_search import test_research_provider
+
+        selected, model = await test_research_provider(settings)
+        return f"{selected} / {model} AI 景點搜尋結構化輸出驗證成功"
     if provider == "google_maps":
         return await _test_google(settings, redis)
     if provider == "youtube_guides":
