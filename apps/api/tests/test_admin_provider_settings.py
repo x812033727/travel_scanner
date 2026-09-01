@@ -1,5 +1,6 @@
 from typing import Any
 
+import fakeredis.aioredis
 import pytest
 from httpx import ASGITransport, AsyncClient
 
@@ -21,6 +22,7 @@ from app.config import Settings
 from app.main import app
 from app.models import ProviderConfig, User
 from app.problems import AppError
+from app.providers.usage_meter import record_google_maps_request
 from app.trips.routing import GoogleRoutesProbeResult, RoutePoint
 
 
@@ -249,6 +251,36 @@ async def test_admin_snapshot_never_returns_plaintext_secret() -> None:
     google = next(item for item in snapshot.providers if item.provider == "google_maps")
     assert google.secrets["google_maps_api_key"].masked == "••••••••leak"
     assert google.secrets["google_maps_api_key"].source == "database"
+
+
+@pytest.mark.asyncio
+async def test_admin_snapshot_lists_google_monthly_free_usage_by_sku() -> None:
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    await record_google_maps_request(redis, "weather_current")
+    await record_google_maps_request(redis, "weather_daily_forecast")
+    row = ProviderConfig(
+        provider="google_maps",
+        enabled=True,
+        config={
+            "google_maps_essentials_free_limit": 100,
+            "google_maps_enterprise_free_limit": 10,
+        },
+    )
+
+    snapshot = await settings_snapshot(
+        SnapshotSession([row]),  # type: ignore[arg-type]
+        redis,
+    )
+
+    google = next(item for item in snapshot.providers if item.provider == "google_maps")
+    assert google.usage is not None
+    assert google.usage.used == 2
+    weather = next(item for item in google.usage.sku_usage if item.sku == "weather_usage")
+    assert weather.used == 2
+    assert weather.free_limit == 100
+    assert weather.free_remaining == 98
+    assert len(google.usage.monthly_history) == 6
+    await redis.aclose()
 
 
 @pytest.mark.asyncio

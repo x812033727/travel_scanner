@@ -24,20 +24,40 @@ const snapshot = {
         period_start: "2026-08-01",
         period_end: "2026-08-31",
         used: 321,
-        monthly_limit: 10000,
-        remaining: 9679,
-        percentage: 3.2,
+        monthly_limit: 33000,
+        remaining: 32679,
+        percentage: 1,
+        free_limit: 33000,
+        free_usage: 321,
+        free_remaining: 32679,
+        billable_overage: 0,
         breakdown: {
           places_autocomplete: 200,
           place_details: 80,
           places_text_search: 20,
           places_photo: 11,
           routes: 10,
+          weather_current: 0,
+          weather_daily_forecast: 0,
         },
+        sku_usage: [
+          { sku: "autocomplete_requests", label: "Autocomplete Requests", category: "essentials", operations: ["places_autocomplete"], used: 200, free_limit: 10000, free_usage: 200, free_remaining: 9800, billable_overage: 0, percentage: 2 },
+          { sku: "place_details_enterprise", label: "Place Details Enterprise", category: "enterprise", operations: ["place_details"], used: 80, free_limit: 1000, free_usage: 80, free_remaining: 920, billable_overage: 0, percentage: 8 },
+          { sku: "text_search_enterprise", label: "Text Search Enterprise", category: "enterprise", operations: ["places_text_search"], used: 20, free_limit: 1000, free_usage: 20, free_remaining: 980, billable_overage: 0, percentage: 2 },
+          { sku: "place_details_photos", label: "Place Details Photos", category: "enterprise", operations: ["places_photo"], used: 11, free_limit: 1000, free_usage: 11, free_remaining: 989, billable_overage: 0, percentage: 1.1 },
+          { sku: "compute_routes_essentials", label: "Compute Routes Essentials", category: "essentials", operations: ["routes"], used: 10, free_limit: 10000, free_usage: 10, free_remaining: 9990, billable_overage: 0, percentage: 0.1 },
+          { sku: "weather_usage", label: "Weather Usage", category: "essentials", operations: ["weather_current", "weather_daily_forecast"], used: 0, free_limit: 10000, free_usage: 0, free_remaining: 10000, billable_overage: 0, percentage: 0 },
+        ],
+        monthly_history: [
+          { period: "2026-08", period_start: "2026-08-01", period_end: "2026-08-31", used: 321, free_limit: 33000, free_usage: 321, free_remaining: 32679, billable_overage: 0, breakdown: {}, sku_usage: [], tracking_started_at: "2026-08-01T00:00:00Z" },
+          { period: "2026-07", period_start: "2026-07-01", period_end: "2026-07-31", used: 120, free_limit: 33000, free_usage: 120, free_remaining: 32880, billable_overage: 0, breakdown: {}, sku_usage: [], tracking_started_at: "2026-07-10T00:00:00Z" },
+        ],
         tracking_started_at: "2026-08-01T00:00:00Z",
         observed_at: "2026-08-31T12:00:00Z",
         available: true,
         scope: "server_requests",
+        billing_timezone: "America/Los_Angeles",
+        pricing_region: "global",
       },
     },
   ],
@@ -54,11 +74,14 @@ describe("AdminSettingsPanel", () => {
     render(<AdminSettingsPanel />);
 
     const usage = await screen.findByLabelText("Google Maps 本月用量");
-    expect(within(usage).getByText("321")).toBeTruthy();
-    expect(within(usage).getByText(/10,000 次/)).toBeTruthy();
-    expect(within(usage).getByText("剩餘 9,679 次")).toBeTruthy();
+    expect(within(usage).getAllByText("321").length).toBeGreaterThan(0);
+    expect(within(usage).getAllByText("免費額度內使用").length).toBe(2);
+    expect(within(usage).getByText("Autocomplete Requests")).toBeTruthy();
+    expect(within(usage).getByText("最近 6 個帳務月份")).toBeTruthy();
+    expect(within(usage).getByText("2026-07")).toBeTruthy();
+    expect(within(usage).getByRole("progressbar", { name: "Autocomplete Requests 月用量" }).getAttribute("aria-valuenow")).toBe("200");
+    fireEvent.click(within(usage).getByText("查看站內操作明細"));
     expect(within(usage).getByText("地點自動完成")).toBeTruthy();
-    expect(within(usage).getByRole("progressbar").getAttribute("aria-valuenow")).toBe("321");
   });
 
   it("shows only masked secrets and sends a newly entered key", async () => {
