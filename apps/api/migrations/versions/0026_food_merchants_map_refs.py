@@ -1,7 +1,7 @@
 """Add reviewed food merchants and named map references.
 
-Revision ID: 0024_food_merchants_and_map_refs
-Revises: 0023_flight_anchors
+Revision ID: 0026_food_merchants_map_refs
+Revises: 0025_hotspot_place_enrichment
 """
 
 from collections.abc import Sequence
@@ -9,8 +9,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0024_food_merchants_and_map_refs"
-down_revision: str | None = "0023_flight_anchors"
+revision: str = "0026_food_merchants_map_refs"
+down_revision: str | None = "0025_hotspot_place_enrichment"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
