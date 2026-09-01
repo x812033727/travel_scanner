@@ -14,6 +14,19 @@ from app.providers.schemas import ActivityOffer, HotelOffer
 from app.providers.usage_meter import record_google_maps_request
 from app.trips.itinerary import ItineraryDay
 
+# Places API (New) bills a request at the highest SKU tier its field mask touches.
+# places.rating, places.userRatingCount and places.regularOpeningHours are Enterprise
+# fields (1,000 free calls/month); everything below them is Pro (5,000 free/month).
+# Callers that only need to place a pin ask for LOCATE_FIELD_MASK and stay on Pro.
+LOCATE_FIELD_MASK = (
+    "places.id,places.displayName,places.formattedAddress,places.location,places.googleMapsUri"
+)
+DETAIL_FIELD_MASK = (
+    "places.id,places.formattedAddress,places.location,places.rating,"
+    "places.userRatingCount,places.photos,places.attributions,"
+    "places.regularOpeningHours,places.displayName,places.googleMapsUri"
+)
+
 
 class GoogleTravelService:
     text_search_url = "https://places.googleapis.com/v1/places:searchText"
@@ -181,11 +194,23 @@ class GoogleTravelService:
         }
 
     async def search_place(
-        self, name: str, latitude: float | None, longitude: float | None
+        self,
+        name: str,
+        latitude: float | None,
+        longitude: float | None,
+        *,
+        detailed: bool = True,
     ) -> dict[str, Any]:
+        """Text Search for a place.
+
+        detailed=False drops the Enterprise-tier fields (rating, review count, opening
+        hours, photos) so the call bills as Pro. Use it wherever the caller only needs
+        coordinates and a display name.
+        """
         if not self.configured:
             return {}
-        raw_key = f"{self.locale}:{name}:{latitude}:{longitude}".encode()
+        variant = "detail" if detailed else "locate"
+        raw_key = f"{variant}:{self.locale}:{name}:{latitude}:{longitude}".encode()
         key = f"places:google:{hashlib.sha256(raw_key).hexdigest()}"
         cached = await self.redis.get(key)
         if cached:
@@ -202,12 +227,8 @@ class GoogleTravelService:
         payload = await self._post(
             self.text_search_url,
             json_data=body,
-            field_mask=(
-                "places.id,places.formattedAddress,places.location,places.rating,"
-                "places.userRatingCount,places.photos,places.attributions,"
-                "places.regularOpeningHours,places.displayName,places.googleMapsUri"
-            ),
-            operation="places_text_search",
+            field_mask=DETAIL_FIELD_MASK if detailed else LOCATE_FIELD_MASK,
+            operation="places_text_search" if detailed else "places_text_search_locate",
         )
         places = cast(list[dict[str, Any]], payload.get("places", []))
         result = places[0] if places else {}

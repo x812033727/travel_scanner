@@ -18,6 +18,7 @@ GOOGLE_MAPS_OPERATIONS = (
     "places_autocomplete",
     "place_details",
     "places_text_search",
+    "places_text_search_locate",
     "places_photo",
     "routes",
     "weather_current",
@@ -51,6 +52,12 @@ GOOGLE_SKUS = (
         "Text Search Enterprise",
         "enterprise",
         ("places_text_search",),
+    ),
+    GoogleSkuDefinition(
+        "text_search_pro",
+        "Text Search Pro",
+        "pro",
+        ("places_text_search_locate",),
     ),
     GoogleSkuDefinition(
         "place_details_photos",

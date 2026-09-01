@@ -380,7 +380,9 @@ async def _enrich_ai_places(
 
     async def resolve(item: ItineraryItem) -> bool:
         async with semaphore:
-            place = await service.search_place(item.location_name or item.title, None, None)
+            place = await service.search_place(
+                item.location_name or item.title, None, None, detailed=False
+            )
         if not place:
             item.data = {**item.data, "places_status": "unavailable"}
             return False
@@ -794,6 +796,7 @@ async def get_trip_weather(
             trip.destination_name or trip.name,
             None,
             None,
+            detailed=False,
         )
         location = cast(dict[str, Any], place.get("location") or {})
         if location.get("latitude") is not None and location.get("longitude") is not None:
