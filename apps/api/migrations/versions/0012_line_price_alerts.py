@@ -35,11 +35,11 @@ def upgrade() -> None:
         ("completed_at", sa.DateTime(timezone=True), True),
     )
     defaults = {
-        "monitoring_mode": "'manual_only'",
-        "monitoring_status": "'manual_only'",
-        "monitor_key": "'{}'",
+        "monitoring_mode": sa.text("'manual_only'"),
+        "monitoring_status": sa.text("'manual_only'"),
+        "monitor_key": sa.text("'{}'"),
         "armed": sa.true(),
-        "consecutive_failures": "0",
+        "consecutive_failures": sa.text("0"),
     }
     for name, column_type, nullable in additions:
         if name in alert_columns:
