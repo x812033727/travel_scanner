@@ -182,6 +182,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const [reorderMode, setReorderMode] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
   const [plannerTheme, setPlannerTheme] = useState<PlannerTheme>("forest");
+  const [draftItem, setDraftItem] = useState<TripItem>();
 
   const tripRef = useRef<Trip | undefined>(undefined);
   const itemsRef = useRef<TripItem[]>([]);
@@ -352,7 +353,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       ? { latitude: reference.latitude, longitude: reference.longitude }
       : undefined;
   }, [items]);
-  const editingItem = items.find((item) => item.id === editingId);
+  const editingItem = draftItem || items.find((item) => item.id === editingId);
 
   function markEdited(staleDay?: string) {
     revisionRef.current += 1;
@@ -371,6 +372,10 @@ export function TripEditor({ tripId }: { tripId: string }) {
   }
 
   function patchItem(id: string, patch: Partial<TripItem>, routeImpact = true) {
+    if (draftItem?.id === id) {
+      setDraftItem((current) => current ? { ...current, ...patch } : current);
+      return;
+    }
     const currentItem = itemsRef.current.find((item) => item.id === id);
     const affectedDays = new Set([currentItem?.day_date, patch.day_date].filter(Boolean) as string[]);
     updateItems(
@@ -497,17 +502,30 @@ export function TripEditor({ tripId }: { tripId: string }) {
     const item: TripItem = {
       id: crypto.randomUUID(), item_type: "custom", day_date: day,
       position: itemsRef.current.filter((row) => row.day_date === day).length,
-      title: "新的行程安排", location_name: "", locked: false, fixed_time: false,
+      title: "", location_name: "", locked: false, fixed_time: false,
       is_estimated: true, duration_minutes: 60, data: { source_mode: "manual" },
     };
-    updateItems((current) => [...current, item], day);
     setActiveDay(day);
-    setEditingId(item.id);
+    setDraftItem(item);
+  }
+
+  function closeEditor() {
+    setDraftItem(undefined);
+    setEditingId(undefined);
+  }
+
+  function commitDraftItem() {
+    if (!draftItem?.title.trim()) return;
+    const item = { ...draftItem, title: draftItem.title.trim() };
+    updateItems((current) => [...current, item], item.day_date);
+    setActiveDay(item.day_date);
+    setDraftItem(undefined);
+    setNotice("已加入行程");
   }
 
   function choosePlace(item: TripItem, place: Place) {
     patchItem(item.id, {
-      title: item.title === "新的行程安排" ? place.name : item.title,
+      title: item.title.trim() ? item.title : place.name,
       location_name: place.address || place.name,
       latitude: place.latitude,
       longitude: place.longitude,
@@ -827,12 +845,12 @@ export function TripEditor({ tripId }: { tripId: string }) {
       </div>
     </PlannerOverlay>
 
-    <PlannerOverlay open={Boolean(editingItem)} onClose={() => setEditingId(undefined)} title="編輯安排" description="修改會自動儲存；變更地點或時間後需重新查路。">{editingItem && <div className="grid gap-5">
-      <label className="text-sm font-semibold">安排名稱<input value={editingItem.title} maxLength={255} onChange={(event) => patchItem(editingItem.id, { title: event.target.value }, false)} className={fieldClass} /></label>
-      <div><label className="text-sm font-semibold">地點</label><PlacePicker value={editingItem.location_name || ""} confirmed={Boolean(editingItem.provider_place_id && editingItem.latitude != null)} countryCodes={placeCountryCodes} bias={placeBias} onTextChange={(value) => patchItem(editingItem.id, { location_name: value, provider_place_id: null, latitude: null, longitude: null, is_estimated: true })} onSelect={(place) => choosePlace(editingItem, place)} /><p className="mt-2 flex items-center gap-1.5 text-xs text-[var(--muted)]">{editingItem.provider_place_id ? <><Check size={13} className="text-emerald-600" />地點已確認，可計算路線</> : <><CircleAlert size={13} />請從搜尋結果選取地點</>}</p></div>
-      <div className="grid grid-cols-2 gap-3"><label className="text-sm font-semibold">日期<select value={editingItem.day_date} onChange={(event) => { const previousDay = editingItem.day_date; patchItem(editingItem.id, { day_date: event.target.value, start_time: withTime(event.target.value, timeValue(editingItem.start_time)) }); setActiveDay(event.target.value); setStaleDays((current) => new Set([...current, previousDay, event.target.value])); }} className={fieldClass}>{days.map((value) => <option key={value} value={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">開始時間<input type="time" value={timeValue(editingItem.start_time)} onChange={(event) => patchItem(editingItem.id, { start_time: withTime(editingItem.day_date, event.target.value) })} className={fieldClass} /></label><label className="col-span-2 text-sm font-semibold sm:col-span-1">停留時間<select value={editingItem.duration_minutes || 60} onChange={(event) => patchItem(editingItem.id, { duration_minutes: Number(event.target.value) })} className={fieldClass}><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="90">1.5 小時</option><option value="120">2 小時</option><option value="180">3 小時</option></select></label></div>
+    <PlannerOverlay open={Boolean(editingItem)} onClose={closeEditor} title={draftItem ? "新增安排" : "編輯安排"} description={draftItem ? "先填寫名稱；確認加入前不會修改目前行程。" : "修改會自動儲存；變更地點或時間後需重新查路。"} footer={draftItem && <div className="flex gap-3"><button type="button" onClick={closeEditor} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold">取消</button><button type="button" onClick={commitDraftItem} disabled={!draftItem.title.trim()} className="min-h-12 flex-[1.4] rounded-xl bg-[var(--teal)] px-4 font-semibold text-white disabled:opacity-40">加入行程</button></div>}>{editingItem && <div className="grid gap-5">
+      <label className="text-sm font-semibold">安排名稱<input value={editingItem.title} maxLength={255} onChange={(event) => patchItem(editingItem.id, { title: event.target.value }, false)} placeholder="例如：淺草寺與雷門" className={fieldClass} /></label>
+      <div><label className="text-sm font-semibold">地點</label><PlacePicker value={editingItem.location_name || ""} confirmed={Boolean(editingItem.provider_place_id && editingItem.latitude != null)} countryCodes={placeCountryCodes} bias={placeBias} onTextChange={(value) => patchItem(editingItem.id, { location_name: value, provider_place_id: null, latitude: null, longitude: null, is_estimated: true })} onSelect={(place) => choosePlace(editingItem, place)} /><p className="mt-2 flex items-center gap-1.5 text-xs text-[var(--muted)]">{editingItem.provider_place_id ? <><Check size={13} className="text-emerald-600" />地點已確認，可計算路線</> : editingItem.location_name ? <><CircleAlert size={13} />請從搜尋結果選取，才能計算路線</> : <><MapPin size={13} />可稍後補上地點</>}</p></div>
+      <div className="grid grid-cols-2 gap-3"><label className="text-sm font-semibold">日期<select value={editingItem.day_date} onChange={(event) => { const previousDay = editingItem.day_date; patchItem(editingItem.id, { day_date: event.target.value, start_time: withTime(event.target.value, timeValue(editingItem.start_time)) }); setActiveDay(event.target.value); if (!draftItem) setStaleDays((current) => new Set([...current, previousDay, event.target.value])); }} className={fieldClass}>{days.map((value) => <option key={value} value={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">開始時間<input type="time" value={timeValue(editingItem.start_time)} onChange={(event) => patchItem(editingItem.id, { start_time: withTime(editingItem.day_date, event.target.value) })} className={fieldClass} /></label><label className="col-span-2 text-sm font-semibold sm:col-span-1">停留時間<select value={editingItem.duration_minutes || 60} onChange={(event) => patchItem(editingItem.id, { duration_minutes: Number(event.target.value) })} className={fieldClass}><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="90">1.5 小時</option><option value="120">2 小時</option><option value="180">3 小時</option></select></label></div>
       <details className="planner-advanced-settings"><summary>備註與進階設定</summary><div className="grid gap-4 px-4 pb-4"><label className="text-sm font-semibold">備註<textarea rows={4} maxLength={4000} value={editingItem.notes || ""} onChange={(event) => patchItem(editingItem.id, { notes: event.target.value }, false)} placeholder="票券、集合方式、入口或集合點" className={fieldClass} /></label><div className="grid gap-2"><button type="button" aria-pressed={editingItem.locked} onClick={() => patchItem(editingItem.id, { locked: !editingItem.locked }, false)} className={`flex min-h-12 items-center gap-3 rounded-xl border px-4 text-left text-sm font-semibold ${editingItem.locked ? "border-amber-300 bg-amber-50 text-amber-900" : "border-[var(--line)]"}`}>{editingItem.locked ? <LockKeyhole size={18} /> : <Unlock size={18} />}{editingItem.locked ? "已鎖定，不參與排序" : "鎖定這個安排"}</button><button type="button" aria-pressed={Boolean(editingItem.fixed_time)} onClick={() => patchItem(editingItem.id, { fixed_time: !editingItem.fixed_time }, false)} className={`flex min-h-12 items-center gap-3 rounded-xl border px-4 text-left text-sm font-semibold ${editingItem.fixed_time ? "border-violet-300 bg-violet-50 text-violet-900" : "border-[var(--line)]"}`}><Clock3 size={18} />{editingItem.fixed_time ? "已固定預約時間" : "設為固定預約時間"}</button></div></div></details>
-      <button type="button" onClick={() => removeItem(editingItem)} className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-red-200 bg-red-50 font-semibold text-red-800"><Trash2 size={18} />刪除這個安排</button>
+      {!draftItem && <button type="button" onClick={() => removeItem(editingItem)} className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-red-200 bg-red-50 font-semibold text-red-800"><Trash2 size={18} />刪除這個安排</button>}
     </div>}</PlannerOverlay>
 
     <PlannerOverlay open={routeDrawerOpen && Boolean(selectedRoute)} onClose={closeRouteDrawer} title="這段路怎麼走" description={selectedRoute ? `預計 ${selectedRoute.duration_minutes} 分鐘，時間以當地交通資料為準。` : undefined} size="wide" expandable>{selectedRoute && <div className="space-y-4"><RouteMap items={items} segment={selectedRoute} /><RouteSegmentCard segment={selectedRoute} selected defaultExpanded /></div>}</PlannerOverlay>

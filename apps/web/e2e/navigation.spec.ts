@@ -109,6 +109,15 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   expect(Math.abs((moveUp?.x || 0) - (moveDown?.x || 0))).toBeLessThan(2);
   expect(moveUp?.height || 0).toBeGreaterThanOrEqual(44);
   await page.getByRole("button", { name: "完成排序" }).click();
+  const addButton = page.getByRole("button", { name: "新增安排" });
+  await addButton.click();
+  await expect(page.getByRole("dialog", { name: "新增安排" })).toBeVisible();
+  await expect(page.locator(".planner-timeline-marker")).toHaveCount(2);
+  await page.waitForTimeout(1_100);
+  expect(saves).toBe(0);
+  await page.getByRole("button", { name: "取消" }).click();
+  await expect(page.getByRole("dialog", { name: "新增安排" })).toBeHidden();
+  await expect(page.locator(".planner-timeline-marker")).toHaveCount(2);
   await page.getByRole("button", { name: "開啟旅程工具" }).click();
   await expect(page.getByRole("dialog", { name: "旅程工具" })).toBeVisible();
   await page.getByRole("radio", { name: /暮紫/ }).click();
@@ -123,7 +132,6 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await expect(page.getByText("預計節省")).toBeVisible();
   await page.getByRole("button", { name: "套用並扣 1 次" }).click();
   await expect(page.getByText(/已套用最佳動線並扣除 1 次/)).toBeVisible();
-  const addButton = page.getByRole("button", { name: "新增安排" });
   const box = await addButton.boundingBox();
   expect(box?.height || 0).toBeGreaterThanOrEqual(44);
 });
