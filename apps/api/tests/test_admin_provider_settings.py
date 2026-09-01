@@ -175,12 +175,23 @@ async def test_google_connection_accepts_reachable_empty_route(
             observed_points.extend([origin, destination])
             return GoogleRoutesProbeResult(True, False, status_code=200)
 
+    class WeatherStub:
+        def __init__(self, *_args: object) -> None:
+            pass
+
+        async def lookup(self, **_kwargs: object) -> object:
+            return type("Weather", (), {"current": object(), "days": []})()
+
     monkeypatch.setattr(admin_service, "GoogleTravelService", PlacesStub)
     monkeypatch.setattr(admin_service, "GoogleRouteProvider", RoutesStub)
+    monkeypatch.setattr(admin_service, "GoogleWeatherService", WeatherStub)
 
     message = await _test_google(Settings(google_maps_api_key="key"), object())  # type: ignore[arg-type]
 
-    assert message == "Google Places 與 Routes API 連線成功；測試路線目前無可用班次"
+    assert message == (
+        "Google Places、Routes API 可連線；測試路線目前無可用班次；"
+        "Weather API 連線成功"
+    )
     assert observed_points[0].provider_place_id is None
     assert observed_points[0].latitude == 35.6812
 

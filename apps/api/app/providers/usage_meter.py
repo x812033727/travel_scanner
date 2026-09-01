@@ -16,6 +16,8 @@ GOOGLE_MAPS_OPERATIONS = (
     "places_text_search",
     "places_photo",
     "routes",
+    "weather_current",
+    "weather_daily_forecast",
 )
 
 

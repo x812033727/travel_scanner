@@ -66,7 +66,8 @@ const fieldMeta: Record<string, FieldMeta> = {
   provider_failure_threshold: { label: "斷路器失敗門檻", type: "number" },
   provider_circuit_seconds: { label: "斷路器暫停秒數", type: "number" },
   route_cache_ttl_seconds: { label: "路線快取秒數", type: "number" },
-  google_maps_monthly_request_limit: { label: "每月免費額度參考值", type: "number", help: "預設 10,000 次；用於後臺進度提示，不會自動阻擋 Google API 請求。" },
+  weather_cache_ttl_seconds: { label: "天氣快取秒數", type: "number", help: "Google Weather 預設快取 15 分鐘，降低重複查詢。" },
+  google_maps_monthly_request_limit: { label: "每月用量參考值", type: "number", help: "預設 10,000 次；只用於後臺進度提示，各 API 的實際計價仍以 Google Cloud 為準。" },
   amadeus_env: { label: "Amadeus 環境", options: [{ value: "test", label: "Test" }, { value: "production", label: "Production" }] },
   skyscanner_base_url: { label: "API Base URL", type: "url" },
   skyscanner_market: { label: "市場代碼" },
@@ -125,7 +126,7 @@ const secretLabels: Record<string, { label: string; help?: string }> = {
   openai_api_key: { label: "OpenAI API Key", help: "只在伺服器端加密保存，不會傳到瀏覽器。" },
   anthropic_api_key: { label: "Anthropic API Key", help: "用於 Claude Messages API。" },
   minimax_api_key: { label: "MiniMax API Key", help: "用於 MiniMax Responses API。" },
-  google_maps_api_key: { label: "伺服器 API Key", help: "啟用 Places API (New) 與 Routes API；建議限制主機出口 IP。" },
+  google_maps_api_key: { label: "伺服器 API Key", help: "啟用 Places API (New)、Routes API 與 Weather API；建議限制主機出口 IP。" },
   next_public_google_maps_browser_key: { label: "瀏覽器 Embed Key", help: "只用於 Maps Embed，必須限制 travelscanner.aibubu.cloud HTTP referrer。" },
   amadeus_client_id: { label: "Client ID" },
   amadeus_client_secret: { label: "Client Secret" },
@@ -156,6 +157,8 @@ const usageOperationLabel: Record<string, string> = {
   places_text_search: "地點文字搜尋",
   places_photo: "地點照片",
   routes: "路線計算",
+  weather_current: "目前天氣",
+  weather_daily_forecast: "10 日預報",
 };
 
 function auditSummary(metadata: Record<string, unknown>): string {
@@ -290,7 +293,7 @@ export function AdminSettingsPanel() {
 
         {provider.provider === "google_maps" && usage && <div className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5" aria-label="Google Maps 本月用量">
           <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="flex items-center gap-2 text-sm font-bold text-[var(--teal)]"><Gauge size={17} />本月 Google API 用量</p>{usage.available ? <p className="mt-2 text-3xl font-bold tabular-nums">{usage.used?.toLocaleString("zh-TW")} <span className="text-base font-medium text-[var(--muted)]">/ {usage.monthly_limit.toLocaleString("zh-TW")} 次</span></p> : <p className="mt-2 font-semibold text-amber-800">目前無法讀取用量計數</p>}</div><button type="button" onClick={refreshUsage} disabled={usageRefreshing} className="flex items-center gap-2 rounded-xl border border-[var(--line)] bg-white px-3 py-2 text-sm font-semibold disabled:opacity-50"><RefreshCw size={15} className={usageRefreshing ? "animate-spin" : ""} />重新整理用量</button></div>
-          {usage.available && <><div className="mt-4 h-2.5 overflow-hidden rounded-full bg-white" role="progressbar" aria-label="Google Maps 月用量" aria-valuemin={0} aria-valuemax={usage.monthly_limit} aria-valuenow={usage.used || 0}><div className={`h-full rounded-full ${usageWidth >= 90 ? "bg-red-500" : usageWidth >= 75 ? "bg-amber-500" : "bg-[var(--teal)]"}`} style={{ width: `${usageWidth}%` }} /></div><div className="mt-2 flex flex-wrap justify-between gap-2 text-xs text-[var(--muted)]"><span>已使用 {usage.percentage?.toLocaleString("zh-TW")}%</span><span>剩餘 {(usage.remaining || 0).toLocaleString("zh-TW")} 次</span></div><dl className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">{Object.entries(usage.breakdown).map(([operation, count]) => <div key={operation} className="rounded-xl bg-white px-3 py-2"><dt className="text-[.68rem] text-[var(--muted)]">{usageOperationLabel[operation] || operation}</dt><dd className="mt-0.5 font-bold tabular-nums">{count.toLocaleString("zh-TW")}</dd></div>)}</dl></>}
+          {usage.available && <><div className="mt-4 h-2.5 overflow-hidden rounded-full bg-white" role="progressbar" aria-label="Google Maps 月用量" aria-valuemin={0} aria-valuemax={usage.monthly_limit} aria-valuenow={usage.used || 0}><div className={`h-full rounded-full ${usageWidth >= 90 ? "bg-red-500" : usageWidth >= 75 ? "bg-amber-500" : "bg-[var(--teal)]"}`} style={{ width: `${usageWidth}%` }} /></div><div className="mt-2 flex flex-wrap justify-between gap-2 text-xs text-[var(--muted)]"><span>已使用 {usage.percentage?.toLocaleString("zh-TW")}%</span><span>剩餘 {(usage.remaining || 0).toLocaleString("zh-TW")} 次</span></div><dl className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">{Object.entries(usage.breakdown).map(([operation, count]) => <div key={operation} className="rounded-xl bg-white px-3 py-2"><dt className="text-[.68rem] text-[var(--muted)]">{usageOperationLabel[operation] || operation}</dt><dd className="mt-0.5 font-bold tabular-nums">{count.toLocaleString("zh-TW")}</dd></div>)}</dl></>}
           <p className="mt-4 text-xs leading-5 text-[var(--muted)]">統計期間：{dateOnly.format(new Date(`${usage.period_start}T00:00:00Z`))} 至 {dateOnly.format(new Date(`${usage.period_end}T00:00:00Z`))}。此為本站自導入計數後送出的伺服器 API 請求，不含瀏覽器 Embed 地圖與 Google Cloud 控制台既有歷史；Google 官方帳單仍以 Cloud Console 為準。</p>
         </div>}
 

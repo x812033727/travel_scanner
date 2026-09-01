@@ -46,6 +46,8 @@ from app.usage.service import (
     reserve_use,
     usage_status,
 )
+from app.weather.google import GoogleWeatherService
+from app.weather.schemas import TripWeather
 
 router = APIRouter(prefix="/trips", tags=["trips"])
 public_router = APIRouter(prefix="/shared-trips", tags=["shared trips"])
@@ -723,6 +725,77 @@ async def list_trips(user: CurrentUser, session: Session) -> list[dict[str, Any]
 async def get_trip(trip_id: UUID, user: CurrentUser, session: Session) -> dict[str, Any]:
     trip = await owned_trip(session, user.id, trip_id)
     return await serialize_trip(session, trip)
+
+
+@router.get("/{trip_id}/weather", response_model=TripWeather)
+async def get_trip_weather(
+    trip_id: UUID,
+    user: CurrentUser,
+    session: Session,
+) -> TripWeather:
+    trip = await owned_trip(session, user.id, trip_id)
+    settings = await load_runtime_settings(session)
+    if not settings.google_maps_api_key:
+        raise AppError(
+            503,
+            "weather_not_configured",
+            "Google Weather 尚未設定，請先在管理後台設定伺服器 API 金鑰",
+        )
+    rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    located_rows = [
+        item for item in rows if item.latitude is not None and item.longitude is not None
+    ]
+    preferred_types = {"activity", "hotel", "suggestion", "accommodation"}
+    located = next(
+        (item for item in located_rows if item.item_type in preferred_types),
+        located_rows[0] if located_rows else None,
+    )
+    location_name = trip.destination_name or (
+        located.location_name if located and located.location_name else trip.name
+    )
+    latitude = float(located.latitude) if located and located.latitude is not None else None
+    longitude = float(located.longitude) if located and located.longitude is not None else None
+    if latitude is None or longitude is None:
+        place = await GoogleTravelService(get_redis(), settings).search_place(
+            trip.destination_name or trip.name,
+            None,
+            None,
+        )
+        location = cast(dict[str, Any], place.get("location") or {})
+        if location.get("latitude") is not None and location.get("longitude") is not None:
+            latitude = float(location["latitude"])
+            longitude = float(location["longitude"])
+            display = cast(dict[str, Any], place.get("displayName") or {})
+            location_name = str(display.get("text") or location_name)
+    if latitude is None or longitude is None:
+        raise AppError(
+            422,
+            "weather_location_unavailable",
+            "旅程尚無可用座標，請先確認至少一個行程地點",
+        )
+
+    weather = await GoogleWeatherService(get_redis(), settings).lookup(
+        latitude=latitude,
+        longitude=longitude,
+        location_name=location_name,
+    )
+    warnings = list(weather.warnings)
+    if (
+        weather.available_start_date
+        and weather.available_end_date
+        and trip.start_date
+        and trip.end_date
+    ):
+        if trip.end_date < weather.available_start_date:
+            warnings.append("旅程日期已過，Google Weather 不提供這段期間的歷史預報")
+        elif trip.start_date > weather.available_end_date:
+            warnings.append("旅程日期超出目前 10 日預報範圍")
+        elif (
+            trip.start_date < weather.available_start_date
+            or trip.end_date > weather.available_end_date
+        ):
+            warnings.append("目前只能顯示旅程中落在 10 日預報範圍內的日期")
+    return weather.model_copy(update={"warnings": list(dict.fromkeys(warnings))})
 
 
 @router.put("/{trip_id}/itinerary")

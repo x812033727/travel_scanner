@@ -45,6 +45,7 @@ from app.trips.routing import (
     NavitimeRouteProvider,
     RoutePoint,
 )
+from app.weather.google import GoogleWeatherService
 
 
 @dataclass(frozen=True)
@@ -93,8 +94,12 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     ),
     "google_maps": ProviderDefinition(
         "Google Maps",
-        "Google Places 地點搜尋、Routes 大眾運輸路線與瀏覽器 Embed 地圖。",
-        ("route_cache_ttl_seconds", "google_maps_monthly_request_limit"),
+        "Google Places 地點搜尋、Routes 大眾運輸路線、Weather 天氣與瀏覽器 Embed 地圖。",
+        (
+            "route_cache_ttl_seconds",
+            "weather_cache_ttl_seconds",
+            "google_maps_monthly_request_limit",
+        ),
         ("google_maps_api_key", "next_public_google_maps_browser_key"),
     ),
     "amadeus": ProviderDefinition(
@@ -347,9 +352,9 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
         configured = bool(settings.google_maps_api_key)
         browser = bool(settings.next_public_google_maps_browser_key)
         message = (
-            "Places 與 Routes 已設定；Embed 地圖已設定"
+            "Places、Routes 與 Weather 已設定；Embed 地圖已設定"
             if configured and browser
-            else "Places 與 Routes 已設定；Embed 地圖尚未設定"
+            else "Places、Routes 與 Weather 已設定；Embed 地圖尚未設定"
             if configured
             else "缺少伺服器 Google Maps API key"
         )
@@ -817,9 +822,19 @@ async def _test_google(settings: Settings, redis: Redis) -> str:
         if routes.status_code is not None:
             details = f"HTTP {routes.status_code} / {details}"
         raise ConnectionError(f"Places 可用，但 Routes API 連線失敗（{details}）")
-    if not routes.route_available:
-        return "Google Places 與 Routes API 連線成功；測試路線目前無可用班次"
-    return "Google Places 與 Routes 連線成功"
+    route_message = (
+        "Routes API 可連線"
+        if routes.route_available
+        else "Routes API 可連線；測試路線目前無可用班次"
+    )
+    weather = await GoogleWeatherService(redis, settings).lookup(
+        latitude=35.6812,
+        longitude=139.7671,
+        location_name="東京車站",
+    )
+    if weather.current is None and not weather.days:
+        raise ConnectionError("Weather API 未回傳目前天氣或預報")
+    return f"Google Places、{route_message}；Weather API 連線成功"
 
 
 async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str:

@@ -34,6 +34,8 @@ async def test_google_maps_usage_counts_requests_by_month_and_operation() -> Non
     assert snapshot.breakdown["places_autocomplete"] == 2
     assert snapshot.breakdown["routes"] == 1
     assert snapshot.breakdown["places_photo"] == 0
+    assert snapshot.breakdown["weather_current"] == 0
+    assert snapshot.breakdown["weather_daily_forecast"] == 0
     assert snapshot.tracking_started_at == observed_at
     assert await redis.ttl("provider-usage:google_maps:2026-08") > 0
     await redis.aclose()
