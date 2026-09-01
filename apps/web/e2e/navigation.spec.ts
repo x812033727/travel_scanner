@@ -53,8 +53,9 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
       { id: "stop-2", item_type: "custom", day_date: "2026-11-11", position: 1, title: "晴空塔", location_name: "押上", latitude: 35.71, longitude: 139.81, provider_place_id: "skytree", locked: false, fixed_time: false, is_estimated: false, duration_minutes: 60, data: {} },
     ],
   };
-  let currentTrip = baseTrip;
+  let currentTrip: typeof baseTrip & { planning?: Record<string, unknown> } = baseTrip;
   let saves = 0;
+  let aiRequest: { scope: string; day_date: string | null } | undefined;
   await page.route("**/api/travel/runtime/public-config", (route) => route.fulfill({ status: 200, contentType: "application/json", body: "{}" }));
   await page.route("**/api/travel/affiliates/options**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ options: [] }) }));
   await page.route("**/api/travel/trips/mobile-trip**", async (route) => {
@@ -75,6 +76,25 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
     if (url.endsWith("/itinerary/optimize/apply")) {
       currentTrip = { ...currentTrip, version: currentTrip.version + 1 };
       await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ...currentTrip, usage: { status: "charged", uses: 1, reference: "usage-1" } }) });
+      return;
+    }
+    if (url.endsWith("/itinerary/generate")) {
+      const body = route.request().postDataJSON();
+      aiRequest = { scope: body.scope, day_date: body.day_date };
+      currentTrip = {
+        ...currentTrip,
+        version: currentTrip.version + 1,
+        planning: {
+          status: "live",
+          provider: "minimax",
+          model: "MiniMax-M2.1",
+          generated_at: "2026-11-11T10:00:00Z",
+          warnings: [],
+          scope: body.scope,
+          day_date: body.day_date,
+        },
+      };
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ...currentTrip, usage: { status: "charged", uses: 1, reference: "ai-usage-1" } }) });
       return;
     }
     if (method === "PUT") {
@@ -145,7 +165,15 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await page.getByLabel("安排名稱").fill("淺草寺與雷門");
   await page.getByRole("button", { name: "關閉" }).click();
   await expect.poll(() => saves).toBe(2);
-  await page.getByRole("button", { name: "最佳化", exact: true }).click();
+  await page.getByRole("button", { name: "AI 幫我安排", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "AI 幫我安排" })).toBeVisible();
+  await expect(page.getByRole("radio", { name: /單日安排/ })).toHaveAttribute("aria-checked", "true");
+  await expect(page.getByRole("radio", { name: /全行程安排/ })).toBeVisible();
+  await page.getByRole("button", { name: "安排這一天" }).click();
+  await expect.poll(() => aiRequest).toEqual({ scope: "day", day_date: "2026-11-11" });
+  await expect(page.getByText(/MiniMax 已完成.*並扣除 1 次/)).toBeVisible();
+  await page.getByRole("button", { name: "AI 幫我安排", exact: true }).click();
+  await page.getByRole("button", { name: /只調整現有動線/ }).click();
   await expect(page.getByRole("dialog", { name: "最佳化預覽" })).toBeVisible();
   await expect(page.getByText("預計節省")).toBeVisible();
   await page.getByRole("button", { name: "套用並扣 1 次" }).click();

@@ -191,6 +191,11 @@ class Settings(BaseSettings):
         "TravelScannerBot/0.1 (+https://github.com/x812033727/travel_scanner)"
     )
     hotspot_wikimedia_timeout_seconds: float = Field(default=10.0, gt=0, le=30)
+    hotspot_discovery_enabled: bool = True
+    hotspot_discovery_interval_seconds: int = Field(default=604_800, ge=86_400)
+    hotspot_discovery_candidate_limit: int = Field(default=100, ge=20, le=100)
+    hotspot_discovery_pageview_limit: int = Field(default=30, ge=10, le=50)
+    hotspot_discovery_concurrency: int = Field(default=3, ge=1, le=3)
     line_messaging_enabled: bool = False
     line_channel_secret: str | None = None
     line_channel_access_token: str | None = None

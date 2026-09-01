@@ -5,6 +5,7 @@ from typing import Protocol
 from pydantic import BaseModel, Field
 
 from app.destinations.catalog import (
+    DESTINATIONS,
     destination_for_code,
     infer_destination_region,
     match_destination,
@@ -58,6 +59,18 @@ class MockAITripParser:
         if origin is None and iata_codes:
             origin = iata_codes[0]
         destination_profile = match_destination(text)
+        if destination_profile and destination_profile.code == origin:
+            explicit_country = next(
+                (
+                    profile
+                    for profile in DESTINATIONS
+                    if profile.country_label in text
+                    or profile.country.casefold() in text.casefold()
+                ),
+                None,
+            )
+            if explicit_country and explicit_country.country != destination_profile.country:
+                destination_profile = explicit_country
         if len(iata_codes) > 1:
             destination = iata_codes[1]
             destination_profile = destination_for_code(destination)

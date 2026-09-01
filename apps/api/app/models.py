@@ -294,6 +294,19 @@ class TravelHotspot(Timestamped, Base):
     wikipedia_project: Mapped[str | None] = mapped_column(String(64), nullable=True)
     wikipedia_title: Mapped[str | None] = mapped_column(String(255), nullable=True)
     google_place_id: Mapped[str | None] = mapped_column(String(255), nullable=True, index=True)
+    wikidata_item_id: Mapped[str | None] = mapped_column(
+        String(32), nullable=True, unique=True, index=True
+    )
+    origin: Mapped[str] = mapped_column(String(32), default="curated", index=True)
+    review_status: Mapped[str] = mapped_column(String(24), default="approved", index=True)
+    review_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
+    discovery_distance_km: Mapped[Decimal | None] = mapped_column(Numeric(8, 2), nullable=True)
+    discovered_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_seen_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    reviewed_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
     source_urls: Mapped[list[str]] = mapped_column(JSON, default=list)
     metadata_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
