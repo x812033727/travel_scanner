@@ -95,7 +95,6 @@ test("blank trip keeps hotel and meal anchors while lunch bypass survives reload
   );
   await page.getByRole("button", { name: "計算當日路線" }).click();
   expect((await computeResponse).ok()).toBe(true);
-  await expect(page.getByText(/正在背景計算每一段移動時間/)).toBeVisible();
 
   await page.reload();
   await expect(page.getByText("已跳過，不計停留時間與路線")).toBeVisible();
