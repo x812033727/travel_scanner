@@ -418,6 +418,53 @@ class HotspotGuideClickDaily(Base):
     )
 
 
+class HotspotGuideAISearchRun(Timestamped, Base):
+    __tablename__ = "hotspot_guide_ai_search_runs"
+    __table_args__ = (
+        UniqueConstraint(
+            "actor_user_id", "idempotency_key", name="uq_hotspot_guide_ai_search_idempotency"
+        ),
+        CheckConstraint(
+            "provider IN ('minimax', 'openai', 'anthropic')",
+            name="ck_hotspot_guide_ai_search_provider",
+        ),
+        CheckConstraint(
+            "depth IN ('economy', 'balanced', 'deep')",
+            name="ck_hotspot_guide_ai_search_depth",
+        ),
+        CheckConstraint(
+            "status IN ('queued', 'running', 'partial', 'completed', 'failed')",
+            name="ck_hotspot_guide_ai_search_status",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    actor_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    hotspot_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="CASCADE"), index=True
+    )
+    idempotency_key: Mapped[str] = mapped_column(String(255))
+    requested_locales: Mapped[list[str]] = mapped_column(JSON, default=list)
+    content_types: Mapped[list[str]] = mapped_column(JSON, default=list)
+    provider: Mapped[str] = mapped_column(String(16), index=True)
+    model: Mapped[str] = mapped_column(String(128))
+    depth: Mapped[str] = mapped_column(String(16))
+    only_missing: Mapped[bool] = mapped_column(Boolean, default=True)
+    custom_instructions: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    status: Mapped[str] = mapped_column(String(16), default="queued", index=True)
+    progress: Mapped[int] = mapped_column(Integer, default=0)
+    progress_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    query_plan_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    usage_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    result_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
+    queue_job_id: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
 class HotspotSignal(Base):
     __tablename__ = "hotspot_signals"
     __table_args__ = (

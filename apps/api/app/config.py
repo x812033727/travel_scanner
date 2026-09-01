@@ -1,4 +1,5 @@
 from functools import lru_cache
+from typing import Literal
 from urllib.parse import urlparse
 
 from pydantic import Field
@@ -216,6 +217,12 @@ class Settings(BaseSettings):
     hotspot_guide_youtube_daily_search_budget: int = Field(default=80, ge=1, le=80)
     hotspot_guide_brave_daily_search_budget: int = Field(default=30, ge=1, le=1000)
     hotspot_guide_refresh_days: int = Field(default=7, ge=1, le=30)
+    hotspot_guide_ai_search_enabled: bool = True
+    hotspot_guide_ai_default_provider: Literal["minimax", "openai", "anthropic"] = "minimax"
+    hotspot_guide_ai_timeout_seconds: float = Field(default=45.0, gt=0, le=120)
+    hotspot_guide_ai_max_output_tokens: int = Field(default=8_000, ge=1_000, le=32_000)
+    hotspot_guide_ai_daily_run_limit: int = Field(default=10, ge=1, le=100)
+    hotspot_guide_ai_daily_call_budget: int = Field(default=60, ge=1, le=500)
     line_messaging_enabled: bool = False
     line_channel_secret: str | None = None
     line_channel_access_token: str | None = None
