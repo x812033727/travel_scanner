@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.admin.service import load_runtime_settings
 from app.config import get_settings
 from app.db import get_session
-from app.hotspots.service import list_rankings
+from app.hotspots.service import hotspot_facets, list_rankings
 
 router = APIRouter(prefix="/hotspots", tags=["hotspots"])
 Session = Annotated[AsyncSession, Depends(get_session)]
@@ -25,6 +25,13 @@ async def hotspot_sources(session: Session) -> dict[str, Any]:
                 "status": "ready",
                 "purpose": "建立景點識別、別名、城市與分類；只作冷啟動基準",
                 "persistence": "景點主檔與基準分數",
+            },
+            {
+                "id": "wikimedia_discovery",
+                "name": "Wikipedia + Wikidata 探索",
+                "status": "ready" if settings.hotspot_discovery_enabled else "disabled",
+                "purpose": "每週探索鄰近條目，以 Wikidata 類型、名稱與座標分級發布",
+                "persistence": "保存 QID、分類、距離、來源與審核狀態",
             },
             {
                 "id": "wikimedia_pageviews",
@@ -56,16 +63,25 @@ async def hotspot_rankings(
     session: Session,
     q: Annotated[str | None, Query(min_length=1, max_length=100)] = None,
     city_code: Annotated[str | None, Query(min_length=3, max_length=3)] = None,
+    country_code: Annotated[str | None, Query(min_length=2, max_length=2)] = None,
     category: Annotated[str | None, Query(min_length=2, max_length=32)] = None,
+    after_rank: Annotated[int | None, Query(ge=0)] = None,
     limit: Annotated[int, Query(ge=1, le=50)] = 20,
 ) -> dict[str, Any]:
     return await list_rankings(
         session,
         q=q,
         city_code=city_code,
+        country_code=country_code,
         category=category,
+        after_rank=after_rank,
         limit=limit,
     )
+
+
+@router.get("/facets")
+async def hotspots_facets(session: Session) -> dict[str, Any]:
+    return await hotspot_facets(session)
 
 
 @router.get("/for-planner")

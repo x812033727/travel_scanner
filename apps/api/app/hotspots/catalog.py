@@ -1,4 +1,11 @@
+from __future__ import annotations
+
+import json
 from dataclasses import dataclass
+from pathlib import Path
+from urllib.parse import quote
+
+from app.hotspots.cities import CITY_BY_CODE
 
 
 @dataclass(frozen=True)
@@ -13,17 +20,19 @@ class HotspotSeed:
     category: str
     latitude: float
     longitude: float
+    wikipedia_project: str
     wikipedia_title: str
-    editorial_relevance: int
-
-    @property
-    def wikipedia_project(self) -> str:
-        return "en.wikipedia.org"
+    wikidata_item_id: str
+    editorial_relevance: int = 88
 
     @property
     def wikipedia_url(self) -> str:
-        title = self.wikipedia_title.replace(" ", "_")
-        return f"https://en.wikipedia.org/wiki/{title}"
+        path = quote(self.wikipedia_title.replace(" ", "_"))
+        return f"https://{self.wikipedia_project}/wiki/{path}"
+
+    @property
+    def wikidata_url(self) -> str:
+        return f"https://www.wikidata.org/wiki/{self.wikidata_item_id}"
 
     @property
     def search_text(self) -> str:
@@ -40,369 +49,66 @@ class HotspotSeed:
         ).casefold()
 
 
-HOTSPOT_SEEDS: tuple[HotspotSeed, ...] = (
-    HotspotSeed(
-        "sensoji",
-        "淺草寺",
-        ("Sensoji", "Sensō-ji", "浅草寺"),
-        "NRT",
-        "東京",
-        "JP",
-        "日本",
-        "culture",
-        35.7148,
-        139.7967,
-        "Sensō-ji",
-        92,
-    ),
-    HotspotSeed(
-        "tokyo-skytree",
-        "東京晴空塔",
-        ("Tokyo Skytree", "東京天空樹"),
-        "NRT",
-        "東京",
-        "JP",
-        "日本",
-        "viewpoint",
-        35.7101,
-        139.8107,
-        "Tokyo Skytree",
-        86,
-    ),
-    HotspotSeed(
-        "dotonbori",
-        "道頓堀",
-        ("Dotonbori", "Dōtonbori", "道顿堀"),
-        "KIX",
-        "大阪／京都",
-        "JP",
-        "日本",
-        "food",
-        34.6687,
-        135.5013,
-        "Dōtonbori",
-        94,
-    ),
-    HotspotSeed(
-        "fushimi-inari",
-        "伏見稻荷大社",
-        ("Fushimi Inari", "伏见稻荷大社"),
-        "KIX",
-        "大阪／京都",
-        "JP",
-        "日本",
-        "culture",
-        34.9671,
-        135.7727,
-        "Fushimi Inari-taisha",
-        96,
-    ),
-    HotspotSeed(
-        "dazaifu-tenmangu",
-        "太宰府天滿宮",
-        ("Dazaifu Tenmangu", "太宰府天满宫"),
-        "FUK",
-        "福岡",
-        "JP",
-        "日本",
-        "culture",
-        33.5214,
-        130.5349,
-        "Dazaifu Tenmangū",
-        86,
-    ),
-    HotspotSeed(
-        "ohori-park",
-        "大濠公園",
-        ("Ohori Park", "大濠公园"),
-        "FUK",
-        "福岡",
-        "JP",
-        "日本",
-        "nature",
-        33.5861,
-        130.3764,
-        "Ōhori Park",
-        78,
-    ),
-    HotspotSeed(
-        "sapporo-clock-tower",
-        "札幌時計台",
-        ("Sapporo Clock Tower", "札幌市時計台"),
-        "CTS",
-        "札幌",
-        "JP",
-        "日本",
-        "culture",
-        43.0626,
-        141.3535,
-        "Sapporo Clock Tower",
-        78,
-    ),
-    HotspotSeed(
-        "otaru-canal",
-        "小樽運河",
-        ("Otaru Canal", "小樽运河"),
-        "CTS",
-        "札幌",
-        "JP",
-        "日本",
-        "viewpoint",
-        43.1988,
-        140.9947,
-        "Otaru Canal",
-        88,
-    ),
-    HotspotSeed(
-        "shuri-castle",
-        "首里城",
-        ("Shuri Castle",),
-        "OKA",
-        "沖繩",
-        "JP",
-        "日本",
-        "culture",
-        26.2170,
-        127.7195,
-        "Shuri Castle",
-        90,
-    ),
-    HotspotSeed(
-        "churaumi-aquarium",
-        "沖繩美麗海水族館",
-        ("Churaumi Aquarium", "沖绳美丽海水族馆"),
-        "OKA",
-        "沖繩",
-        "JP",
-        "日本",
-        "family",
-        26.6943,
-        127.8779,
-        "Okinawa Churaumi Aquarium",
-        96,
-    ),
-    HotspotSeed(
-        "nagoya-castle",
-        "名古屋城",
-        ("Nagoya Castle",),
-        "NGO",
-        "名古屋",
-        "JP",
-        "日本",
-        "culture",
-        35.1856,
-        136.8990,
-        "Nagoya Castle",
-        90,
-    ),
-    HotspotSeed(
-        "atsuta-shrine",
-        "熱田神宮",
-        ("Atsuta Shrine", "热田神宫"),
-        "NGO",
-        "名古屋",
-        "JP",
-        "日本",
-        "culture",
-        35.1273,
-        136.9084,
-        "Atsuta Shrine",
-        82,
-    ),
-    HotspotSeed(
-        "gyeongbokgung",
-        "景福宮",
-        ("Gyeongbokgung", "景福宫"),
-        "ICN",
-        "首爾",
-        "KR",
-        "韓國",
-        "culture",
-        37.5796,
-        126.9770,
-        "Gyeongbokgung",
-        96,
-    ),
-    HotspotSeed(
-        "n-seoul-tower",
-        "南山首爾塔",
-        ("N Seoul Tower", "南山首尔塔"),
-        "ICN",
-        "首爾",
-        "KR",
-        "韓國",
-        "viewpoint",
-        37.5512,
-        126.9882,
-        "N Seoul Tower",
-        91,
-    ),
-    HotspotSeed(
-        "haeundae-beach",
-        "海雲台海水浴場",
-        ("Haeundae Beach", "海云台"),
-        "PUS",
-        "釜山",
-        "KR",
-        "韓國",
-        "beach",
-        35.1587,
-        129.1604,
-        "Haeundae Beach",
-        94,
-    ),
-    HotspotSeed(
-        "gamcheon-culture-village",
-        "甘川文化村",
-        ("Gamcheon Culture Village",),
-        "PUS",
-        "釜山",
-        "KR",
-        "韓國",
-        "culture",
-        35.0975,
-        129.0106,
-        "Gamcheon Culture Village",
-        91,
-    ),
-    HotspotSeed(
-        "seongsan-ilchulbong",
-        "城山日出峰",
-        ("Seongsan Ilchulbong",),
-        "CJU",
-        "濟州",
-        "KR",
-        "韓國",
-        "nature",
-        33.4581,
-        126.9425,
-        "Seongsan Ilchulbong",
-        96,
-    ),
-    HotspotSeed(
-        "hallasan",
-        "漢拏山",
-        ("Hallasan", "汉拏山"),
-        "CJU",
-        "濟州",
-        "KR",
-        "韓國",
-        "nature",
-        33.3617,
-        126.5292,
-        "Hallasan",
-        90,
-    ),
-    HotspotSeed(
-        "grand-palace-bangkok",
-        "曼谷大皇宮",
-        ("Grand Palace Bangkok", "大皇宫"),
-        "BKK",
-        "曼谷",
-        "TH",
-        "泰國",
-        "culture",
-        13.7500,
-        100.4913,
-        "Grand Palace",
-        98,
-    ),
-    HotspotSeed(
-        "wat-arun",
-        "鄭王廟",
-        ("Wat Arun", "黎明寺", "郑王庙"),
-        "BKK",
-        "曼谷",
-        "TH",
-        "泰國",
-        "culture",
-        13.7437,
-        100.4889,
-        "Wat Arun",
-        94,
-    ),
-    HotspotSeed(
-        "doi-suthep",
-        "素帖山雙龍寺",
-        ("Wat Phra That Doi Suthep", "双龙寺"),
-        "CNX",
-        "清邁",
-        "TH",
-        "泰國",
-        "culture",
-        18.8048,
-        98.9216,
-        "Wat Phra That Doi Suthep",
-        94,
-    ),
-    HotspotSeed(
-        "tha-phae-gate",
-        "塔佩門",
-        ("Tha Phae Gate", "塔佩门"),
-        "CNX",
-        "清邁",
-        "TH",
-        "泰國",
-        "culture",
-        18.7877,
-        98.9931,
-        "Tha Phae Gate",
-        82,
-    ),
-    HotspotSeed(
-        "phuket-old-town",
-        "普吉老城",
-        ("Phuket Old Town",),
-        "HKT",
-        "普吉",
-        "TH",
-        "泰國",
-        "culture",
-        7.8840,
-        98.3891,
-        "Old Phuket Town",
-        87,
-    ),
-    HotspotSeed(
-        "patong-beach",
-        "芭東海灘",
-        ("Patong Beach", "芭东海滩"),
-        "HKT",
-        "普吉",
-        "TH",
-        "泰國",
-        "beach",
-        7.8965,
-        98.2950,
-        "Patong Beach",
-        91,
-    ),
-    HotspotSeed(
-        "railay-beach",
-        "萊雷海灘",
-        ("Railay Beach", "莱雷海滩"),
-        "KBV",
-        "喀比",
-        "TH",
-        "泰國",
-        "beach",
-        8.0110,
-        98.8373,
-        "Railay Beach",
-        96,
-    ),
-    HotspotSeed(
-        "ao-nang",
-        "奧南海灘",
-        ("Ao Nang", "奥南海滩"),
-        "KBV",
-        "喀比",
-        "TH",
-        "泰國",
-        "beach",
-        8.0323,
-        98.8225,
-        "Ao Nang",
-        88,
-    ),
-)
+LEGACY_SLUGS = {
+    "Sensō-ji": "sensoji",
+    "Tokyo Skytree": "tokyo-skytree",
+    "Dōtonbori": "dotonbori",
+    "Fushimi Inari-taisha": "fushimi-inari",
+    "Dazaifu Tenmangū": "dazaifu-tenmangu",
+    "Ōhori Park": "ohori-park",
+    "Sapporo Clock Tower": "sapporo-clock-tower",
+    "Otaru Canal": "otaru-canal",
+    "Shuri Castle": "shuri-castle",
+    "Okinawa Churaumi Aquarium": "churaumi-aquarium",
+    "Nagoya Castle": "nagoya-castle",
+    "Atsuta Shrine": "atsuta-shrine",
+    "Gyeongbokgung": "gyeongbokgung",
+    "N Seoul Tower": "n-seoul-tower",
+    "Haeundae Beach": "haeundae-beach",
+    "Gamcheon Culture Village": "gamcheon-culture-village",
+    "Seongsan Ilchulbong": "seongsan-ilchulbong",
+    "Hallasan": "hallasan",
+    "Grand Palace": "grand-palace-bangkok",
+    "Wat Arun": "wat-arun",
+    "Wat Phra That Doi Suthep": "doi-suthep",
+    "Tha Phae Gate": "tha-phae-gate",
+    "Old Phuket Town": "phuket-old-town",
+    "Patong Beach": "patong-beach",
+    "Railay Beach": "railay-beach",
+    "Ao Nang": "ao-nang",
+}
+
+
+def _load_seeds() -> tuple[HotspotSeed, ...]:
+    rows = json.loads(Path(__file__).with_name("bootstrap.json").read_text(encoding="utf-8"))
+    seeds: list[HotspotSeed] = []
+    for row in rows:
+        city = CITY_BY_CODE[row["city_code"]]
+        title = row["wikipedia_title"]
+        seeds.append(
+            HotspotSeed(
+                slug=LEGACY_SLUGS.get(title, f"wikidata-{row['wikidata_item_id'].lower()}"),
+                name=row["name"],
+                aliases=(title, row["name"]),
+                city_code=city.code,
+                city_name=city.name,
+                country_code=city.country_code,
+                country_name=city.country_name,
+                category=row["category"],
+                latitude=float(row["latitude"]),
+                longitude=float(row["longitude"]),
+                wikipedia_project=row["wikipedia_project"],
+                wikipedia_title=title,
+                wikidata_item_id=row["wikidata_item_id"],
+            )
+        )
+    if len(seeds) != 170:
+        raise RuntimeError(f"expected 170 reviewed hotspots, found {len(seeds)}")
+    if len({seed.wikidata_item_id for seed in seeds}) != len(seeds):
+        raise RuntimeError("bootstrap hotspot Wikidata IDs must be unique")
+    if len({seed.slug for seed in seeds}) != len(seeds):
+        raise RuntimeError("bootstrap hotspot slugs must be unique")
+    return tuple(seeds)
+
+
+HOTSPOT_SEEDS = _load_seeds()

@@ -18,11 +18,22 @@ describe("HotspotExplorer", () => {
           }],
         }));
       }
+      if (url.includes("/hotspots/facets")) {
+        return new Response(JSON.stringify({
+          total: 170,
+          countries: [{ code: "JP", name: "日本", count: 56 }],
+          cities: [{ code: "NRT", name: "東京", country_code: "JP", count: 12 }],
+          categories: [{ code: "culture", count: 80 }],
+        }));
+      }
       return new Response(JSON.stringify({
         scope: "global",
         scope_key: "global",
         observed_on: "2026-08-31",
         window_days: 30,
+        total: 170,
+        has_more: true,
+        next_cursor: 1,
         items: [{
           id: "hotspot-1",
           slug: "sensoji",
@@ -52,5 +63,7 @@ describe("HotspotExplorer", () => {
     expect(screen.getByText("12,345")).toBeTruthy();
     expect(screen.getByText("Wikimedia 趨勢")).toBeTruthy();
     expect(await screen.findByText("Wikimedia Analytics")).toBeTruthy();
+    expect(screen.getByText("已載入 1／170 個結果")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "載入更多" })).toBeTruthy();
   });
 });

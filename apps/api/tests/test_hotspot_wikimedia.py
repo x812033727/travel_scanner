@@ -42,6 +42,21 @@ async def test_wikimedia_client_compares_two_complete_thirty_day_windows() -> No
 def test_hotspot_catalog_has_stable_unique_identifiers() -> None:
     from app.hotspots.catalog import HOTSPOT_SEEDS
 
-    assert len(HOTSPOT_SEEDS) >= 20
+    assert len(HOTSPOT_SEEDS) == 170
     assert len({item.slug for item in HOTSPOT_SEEDS}) == len(HOTSPOT_SEEDS)
-    assert {item.country_code for item in HOTSPOT_SEEDS} == {"JP", "KR", "TH"}
+    assert len({item.wikidata_item_id for item in HOTSPOT_SEEDS}) == len(HOTSPOT_SEEDS)
+    assert {item.country_code for item in HOTSPOT_SEEDS} == {
+        "JP",
+        "KR",
+        "TH",
+        "TW",
+        "SG",
+        "HK",
+        "VN",
+    }
+    city_counts = {
+        city: sum(seed.city_code == city for seed in HOTSPOT_SEEDS)
+        for city in {seed.city_code for seed in HOTSPOT_SEEDS}
+    }
+    assert len(city_counts) == 19
+    assert min(city_counts.values()) >= 8

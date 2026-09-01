@@ -1,4 +1,4 @@
-export type CountryKey = "JP" | "KR" | "TH";
+export type CountryKey = "JP" | "KR" | "TH" | "TW" | "SG" | "HK" | "VN";
 
 export type DestinationCity = {
   id: string;
@@ -18,6 +18,10 @@ export const countries = [
   { key: "JP" as const, label: "日本", caption: "城市、文化與四季自然" },
   { key: "KR" as const, label: "韓國", caption: "美食、購物與海岸城市" },
   { key: "TH" as const, label: "泰國", caption: "度假、夜市與療癒慢旅" },
+  { key: "TW" as const, label: "台灣", caption: "美食、文化與山海近郊" },
+  { key: "SG" as const, label: "新加坡", caption: "親子、多元文化與城市花園" },
+  { key: "HK" as const, label: "香港", caption: "城市夜景、飲茶與離島健行" },
+  { key: "VN" as const, label: "越南", caption: "古城、街頭美食與海岸度假" },
 ];
 
 export const destinations: DestinationCity[] = [
@@ -34,6 +38,12 @@ export const destinations: DestinationCity[] = [
   { id: "chiang-mai", country: "TH", name: "清邁", airport: "CNX", airportName: "清邁國際機場", summary: "古城、咖啡、手作與近郊自然", recommendedStay: "4–6 天", areas: ["古城", "尼曼區", "湄平河畔", "夜市周邊"], tags: ["文化", "自然", "慢旅"], timezone: "Asia/Bangkok", currency: "THB" },
   { id: "phuket", country: "TH", name: "普吉", airport: "HKT", airportName: "普吉國際機場", summary: "海灘、跳島、度假村與夜生活", recommendedStay: "5–7 天", areas: ["普吉老城", "芭東", "卡塔", "卡隆"], tags: ["海灘", "跳島", "夜生活"], timezone: "Asia/Bangkok", currency: "THB" },
   { id: "krabi", country: "TH", name: "喀比", airport: "KBV", airportName: "喀比國際機場", summary: "島嶼、石灰岩海岸與悠閒度假", recommendedStay: "4–6 天", areas: ["奧南", "喀比鎮", "萊雷", "克隆芒"], tags: ["海灘", "自然", "慢旅"], timezone: "Asia/Bangkok", currency: "THB" },
+  { id: "taipei", country: "TW", name: "台北", airport: "TPE", airportName: "桃園／松山", summary: "美食、文化與近郊自然都容易抵達", recommendedStay: "3–5 天", areas: ["台北車站", "西門町", "信義區", "中山"], tags: ["美食", "文化", "夜景"], timezone: "Asia/Taipei", currency: "TWD" },
+  { id: "singapore", country: "SG", name: "新加坡", airport: "SIN", airportName: "樟宜機場", summary: "交通簡單，多元文化與親子景點集中", recommendedStay: "4–5 天", areas: ["濱海灣", "烏節路", "牛車水", "武吉士"], tags: ["親子", "美食", "文化"], timezone: "Asia/Singapore", currency: "SGD" },
+  { id: "hong-kong", country: "HK", name: "香港", airport: "HKG", airportName: "香港國際機場", summary: "城市夜景、飲茶購物與離島路線密集", recommendedStay: "3–5 天", areas: ["中環／上環", "尖沙咀", "銅鑼灣", "旺角"], tags: ["美食", "購物", "夜景"], timezone: "Asia/Hong_Kong", currency: "HKD" },
+  { id: "hanoi", country: "VN", name: "河內", airport: "HAN", airportName: "內排國際機場", summary: "老城街區、咖啡與歷史文化適合慢遊", recommendedStay: "4–5 天", areas: ["還劍湖", "老城區", "西湖", "巴亭"], tags: ["文化", "美食", "慢旅"], timezone: "Asia/Ho_Chi_Minh", currency: "VND" },
+  { id: "ho-chi-minh-city", country: "VN", name: "胡志明市", airport: "SGN", airportName: "新山一國際機場", summary: "法式建築、市場、美食與夜生活集中", recommendedStay: "4–5 天", areas: ["第一郡", "第三郡", "濱城市場", "草田"], tags: ["美食", "文化", "夜生活"], timezone: "Asia/Ho_Chi_Minh", currency: "VND" },
+  { id: "da-nang", country: "VN", name: "峴港", airport: "DAD", airportName: "峴港國際機場", summary: "海灘、山景與會安古城可一次安排", recommendedStay: "4–6 天", areas: ["美溪海灘", "漢江", "山茶半島", "會安古城"], tags: ["海灘", "自然", "文化"], timezone: "Asia/Ho_Chi_Minh", currency: "VND" },
 ];
 
 export const interests = [

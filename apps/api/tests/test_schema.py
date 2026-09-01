@@ -2,8 +2,9 @@ from app.schema import expected_schema_revision, schema_is_current
 
 
 def test_expected_schema_revision_is_current_head() -> None:
-    assert expected_schema_revision() == "0012_line_price_alerts"
-    assert schema_is_current("0012_line_price_alerts") is True
+    assert expected_schema_revision() == "0013_hotspot_discovery"
+    assert schema_is_current("0013_hotspot_discovery") is True
+    assert schema_is_current("0012_line_price_alerts") is False
     assert schema_is_current("0011_auth_session_version") is False
     assert schema_is_current("0010_hotspot_intelligence") is False
     assert schema_is_current("0009_usage_account_status") is False
