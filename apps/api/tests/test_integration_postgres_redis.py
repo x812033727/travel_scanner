@@ -546,7 +546,20 @@ async def test_blank_trip_creation_and_structured_itinerary_fields(
             "2026-11-11",
             "2026-11-12",
         }
-        assert all(item["data"]["generated_by"] == "ai_planner" for item in trip["items"])
+        for day_value in {"2026-11-10", "2026-11-11", "2026-11-12"}:
+            assert {
+                item["system_role"]
+                for item in trip["items"]
+                if item["day_date"] == day_value and item["system_role"]
+            } == {"hotel_start", "lunch", "dinner", "hotel_end"}
+        assert all(
+            item["data"]["generated_by"] == "ai_planner"
+            for item in trip["items"]
+            if item["system_role"] not in {"hotel_start", "hotel_end"}
+        )
+        assert trip["primary_lodging"] is None
+        assert trip["schedule_defaults"]["lunch_time"] == "12:00"
+        assert trip["schedule_defaults"]["dinner_duration_minutes"] == 90
         assert trip["data"]["travelers"] == {
             "adults": 2,
             "children": 1,
@@ -619,7 +632,9 @@ async def test_blank_trip_creation_and_structured_itinerary_fields(
             },
         )
         assert updated.status_code == 200
-        saved_item = updated.json()["items"][0]
+        saved_item = next(
+            item for item in updated.json()["items"] if item["id"] == item_id
+        )
         assert saved_item["provider_place_id"] == "asakusa-place"
         assert saved_item["duration_minutes"] == 90
         assert saved_item["fixed_time"] is True
@@ -661,6 +676,115 @@ async def test_blank_trip_creation_and_structured_itinerary_fields(
 
 
 @pytest.mark.asyncio(loop_scope="module")
+async def test_system_schedule_endpoints_sync_skip_persist_and_enforce_version() -> None:
+    email = f"system-schedule-{uuid4()}@example.com"
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        registered = await client.post(
+            "/api/v1/auth/register",
+            json={"email": email, "password": "integration-password-123"},
+        )
+        headers = {"Authorization": f"Bearer {registered.json()['access_token']}"}
+        created = await client.post(
+            "/api/v1/trips",
+            headers=headers,
+            json={
+                "source": "blank",
+                "name": "固定餐食測試",
+                "destination_name": "日本東京",
+                "start_date": "2026-11-10",
+                "end_date": "2026-11-10",
+                "travelers": {"adults": 1, "children": 0, "rooms": 1},
+                "preferences": {"pace": "balanced", "interests": ["food"]},
+            },
+        )
+        assert created.status_code == 201
+        trip = created.json()
+        assert {item["system_role"] for item in trip["items"] if item["system_role"]} == {
+            "hotel_start",
+            "lunch",
+            "dinner",
+            "hotel_end",
+        }
+        initial_route_total = trip["routing"]["total"]
+
+        lodging = await client.put(
+            f"/api/v1/trips/{trip['id']}/primary-lodging",
+            headers=headers,
+            json={
+                "version": trip["version"],
+                "name": "丸之內飯店",
+                "location_name": "東京都千代田區",
+                "provider_place_id": "hotel-place",
+                "latitude": 35.6812,
+                "longitude": 139.7671,
+                "location_source": "google_places",
+            },
+        )
+        assert lodging.status_code == 200
+        trip = lodging.json()
+        hotel_anchors = [
+            item
+            for item in trip["items"]
+            if item["system_role"] in {"hotel_start", "hotel_end"}
+        ]
+        assert all("丸之內飯店" in item["title"] for item in hotel_anchors)
+        assert all(item["provider_place_id"] == "hotel-place" for item in hotel_anchors)
+
+        defaults = await client.put(
+            f"/api/v1/trips/{trip['id']}/schedule-defaults",
+            headers=headers,
+            json={
+                "version": trip["version"],
+                "lunch_time": "11:45",
+                "lunch_duration_minutes": 45,
+                "dinner_time": "19:15",
+                "dinner_duration_minutes": 120,
+            },
+        )
+        assert defaults.status_code == 200
+        trip = defaults.json()
+        lunch = next(item for item in trip["items"] if item["system_role"] == "lunch")
+        dinner = next(item for item in trip["items"] if item["system_role"] == "dinner")
+        assert lunch["start_time"].endswith("T11:45:00+09:00")
+        assert lunch["duration_minutes"] == 45
+        assert dinner["start_time"].endswith("T19:15:00+09:00")
+        assert dinner["duration_minutes"] == 120
+
+        skipped = await client.patch(
+            f"/api/v1/trips/{trip['id']}/items/{lunch['id']}/skip",
+            headers=headers,
+            json={"version": trip["version"], "skipped": True},
+        )
+        assert skipped.status_code == 200
+        trip = skipped.json()
+        assert next(
+            item for item in trip["items"] if item["id"] == lunch["id"]
+        )["is_skipped"] is True
+        assert trip["routing"]["total"] == initial_route_total - 1
+
+        stale_restore = await client.patch(
+            f"/api/v1/trips/{trip['id']}/items/{lunch['id']}/skip",
+            headers=headers,
+            json={"version": trip["version"] - 1, "skipped": False},
+        )
+        assert stale_restore.status_code == 409
+        reloaded = await client.get(f"/api/v1/trips/{trip['id']}", headers=headers)
+        assert reloaded.status_code == 200
+        assert next(
+            item for item in reloaded.json()["items"] if item["id"] == lunch["id"]
+        )["is_skipped"] is True
+
+        restored = await client.patch(
+            f"/api/v1/trips/{trip['id']}/items/{lunch['id']}/skip",
+            headers=headers,
+            json={"version": trip["version"], "skipped": False},
+        )
+        assert restored.status_code == 200
+        assert restored.json()["routing"]["total"] == initial_route_total
+
+
+@pytest.mark.asyncio(loop_scope="module")
 async def test_ai_regeneration_preserves_items_charges_once_and_replays(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -689,7 +813,29 @@ async def test_ai_regeneration_preserves_items_charges_once_and_replays(
         )
         assert created.status_code == 201
         trip = created.json()
-        locked_item = {**trip["items"][0], "locked": True, "position": 0}
+        generated_activity = next(
+            item
+            for item in trip["items"]
+            if item["system_role"] is None
+            and item["data"].get("generated_by") == "ai_planner"
+        )
+        locked_item = {**generated_activity, "locked": True}
+        meal_item = next(
+            item
+            for item in trip["items"]
+            if item["day_date"] == "2026-11-11" and item["system_role"] == "dinner"
+        )
+        manual_meal = {
+            **meal_item,
+            "title": "手選銀座餐廳",
+            "location_name": "東京都中央區銀座",
+            "provider_place_id": "manual-restaurant-place",
+            "location_source": "google_places",
+            "latitude": 35.6717,
+            "longitude": 139.7650,
+            "is_estimated": False,
+            "data": {**meal_item["data"], "meal_selection_source": "user"},
+        }
         manual_id = str(uuid4())
         manual_item = {
             "id": manual_id,
@@ -707,7 +853,10 @@ async def test_ai_regeneration_preserves_items_charges_once_and_replays(
         saved = await client.put(
             f"/api/v1/trips/{trip['id']}/itinerary",
             headers=headers,
-            json={"version": trip["version"], "items": [locked_item, manual_item]},
+            json={
+                "version": trip["version"],
+                "items": [locked_item, manual_meal, manual_item],
+            },
         )
         assert saved.status_code == 200
 
@@ -743,6 +892,9 @@ async def test_ai_regeneration_preserves_items_charges_once_and_replays(
         ids = {item["id"] for item in result["items"]}
         assert locked_item["id"] in ids
         assert manual_id in ids
+        preserved_meal = next(item for item in result["items"] if item["id"] == meal_item["id"])
+        assert preserved_meal["title"] == "手選銀座餐廳"
+        assert preserved_meal["provider_place_id"] == "manual-restaurant-place"
 
         replay = await client.post(
             f"/api/v1/trips/{trip['id']}/itinerary/generate",
@@ -776,7 +928,11 @@ async def test_ai_regeneration_preserves_items_charges_once_and_replays(
             if item["day_date"] != target_date
         }
         target_titles_before = {
-            item["title"] for item in result["items"] if item["day_date"] == target_date
+            item["title"]
+            for item in result["items"]
+            if item["day_date"] == target_date
+            and item["system_role"] is None
+            and item["data"].get("generated_by") == "ai_planner"
         }
         regenerated_day = await client.post(
             f"/api/v1/trips/{trip['id']}/itinerary/generate",
@@ -798,7 +954,11 @@ async def test_ai_regeneration_preserves_items_charges_once_and_replays(
         }
         assert outside_after == outside_before
         target_titles_after = {
-            item["title"] for item in day_result["items"] if item["day_date"] == target_date
+            item["title"]
+            for item in day_result["items"]
+            if item["day_date"] == target_date
+            and item["system_role"] is None
+            and item["data"].get("generated_by") == "ai_planner"
         }
         assert target_titles_after != target_titles_before
         assert all("（單日）" in title for title in target_titles_after)

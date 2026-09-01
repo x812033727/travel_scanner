@@ -20,12 +20,14 @@ export function RouteTimelineLink({
   nextTitle,
   loading,
   stale,
+  timezone,
   onClick,
 }: {
   segment?: RouteSegment;
   nextTitle: string;
   loading?: boolean;
   stale?: boolean;
+  timezone?: string;
   onClick: () => void;
 }) {
   if (loading) return <div className="route-timeline-loading" aria-live="polite"><Loader2 size={16} className="animate-spin" /><span>正在計算前往 {nextTitle} 的移動時間…</span></div>;
@@ -34,5 +36,5 @@ export function RouteTimelineLink({
   const mode = segment.travel_mode || "transit";
   const Icon = modeIcon[mode];
   const lines = segment.steps.filter((step) => step.travel_mode === "TRANSIT").map((step) => step.line_short_name || step.line_name).filter(Boolean).join(" → ");
-  return <button type="button" aria-label={`查看前往 ${nextTitle} 的路線`} onClick={onClick} className={`route-timeline-segment ${segment.status === "conflict" ? "route-timeline-conflict" : ""}`}><span className={`route-timeline-mode route-timeline-mode-${mode}`}><Icon size={17} /></span><span className="min-w-0 flex-1"><span className="flex flex-wrap items-center gap-2"><strong>{formatTime(segment.departure_time)} → {formatTime(segment.arrival_time)}</strong><span className="route-timeline-duration">{segment.duration_minutes} 分</span>{segment.buffer_minutes ? <span className="route-timeline-buffer">＋緩衝 {segment.buffer_minutes} 分</span> : null}{segment.is_override && <span className="route-override-badge">單段</span>}</span><span className="mt-1 flex items-center gap-1.5 truncate text-xs text-[var(--muted)]"><Clock3 size={13} />{modeLabel[mode]}{lines ? ` · ${lines}` : ""} · {formatTime(segment.ready_time)} 可開始下一站</span></span>{segment.status === "conflict" ? <TriangleAlert size={18} className="shrink-0 text-red-700" /> : <ChevronRight size={18} className="shrink-0 text-[var(--teal)]" />}</button>;
+  return <button type="button" aria-label={`查看前往 ${nextTitle} 的路線`} onClick={onClick} className={`route-timeline-segment ${segment.status === "conflict" ? "route-timeline-conflict" : ""}`}><span className={`route-timeline-mode route-timeline-mode-${mode}`}><Icon size={17} /></span><span className="min-w-0 flex-1"><span className="flex flex-wrap items-center gap-2"><strong>{formatTime(segment.departure_time, undefined, timezone)} → {formatTime(segment.arrival_time, undefined, timezone)}</strong><span className="route-timeline-duration">{segment.duration_minutes} 分</span>{segment.buffer_minutes ? <span className="route-timeline-buffer">＋緩衝 {segment.buffer_minutes} 分</span> : null}{segment.is_override && <span className="route-override-badge">單段</span>}</span><span className="mt-1 flex items-center gap-1.5 truncate text-xs text-[var(--muted)]"><Clock3 size={13} />{modeLabel[mode]}{lines ? ` · ${lines}` : ""} · {formatTime(segment.ready_time, undefined, timezone)} 可開始下一站</span></span>{segment.status === "conflict" ? <TriangleAlert size={18} className="shrink-0 text-red-700" /> : <ChevronRight size={18} className="shrink-0 text-[var(--teal)]" />}</button>;
 }

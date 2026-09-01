@@ -24,6 +24,7 @@ from app.trips.route_planner import (
     segment_from_record,
 )
 from app.trips.routing import RoutePoint, RouteSegment, RouteService, TravelMode, is_japan_trip
+from app.trips.schedule import active_route_rows, route_pair_count
 
 
 def _route_point(item: TripPlanItem) -> RoutePoint | None:
@@ -96,13 +97,12 @@ async def compute_and_apply_routes(
     item_updates: dict[UUID, tuple[datetime | None, datetime | None]] = {}
     warnings: list[str] = []
     conflicts: list[dict[str, Any]] = []
-    total_pairs = sum(
-        max(0, len([row for row in rows if row.day_date == day_value]) - 1)
-        for day_value in target_days
+    total_pairs = route_pair_count(
+        [row for row in rows if row.day_date in set(target_days)]
     )
 
     for day_value in target_days:
-        day_rows = [row for row in rows if row.day_date == day_value]
+        day_rows = active_route_rows(rows, day_value)
         if len(day_rows) < 2:
             continue
         defaults = cast(dict[str, Any], trip.data.get("routing_defaults") or {})

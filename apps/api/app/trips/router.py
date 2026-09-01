@@ -60,6 +60,16 @@ from app.trips.routing import (
     TravelMode,
     is_japan_trip,
 )
+from app.trips.schedule import (
+    active_route_rows,
+    apply_schedule_defaults,
+    canonicalize_positions,
+    ensure_system_slots,
+    primary_lodging,
+    route_pair_count,
+    schedule_defaults,
+    sync_primary_lodging,
+)
 from app.usage.service import (
     COMMON_LIMITS,
     commit_reservation,
@@ -146,9 +156,46 @@ class ItineraryItemRequest(BaseModel):
     data: dict[str, Any] = Field(default_factory=dict)
     provider_place_id: str | None = Field(default=None, max_length=255)
     location_source: str | None = Field(default=None, max_length=32)
-    duration_minutes: int | None = Field(default=None, ge=1, le=1440)
+    duration_minutes: int | None = Field(default=None, ge=0, le=1440)
     notes: str | None = Field(default=None, max_length=4000)
     fixed_time: bool = False
+    system_role: Literal["hotel_start", "lunch", "dinner", "hotel_end"] | None = None
+    is_skipped: bool = False
+
+
+class PrimaryLodgingUpdateRequest(BaseModel):
+    version: int = Field(ge=1)
+    name: str = Field(min_length=1, max_length=255)
+    location_name: str = Field(min_length=1, max_length=255)
+    provider_place_id: str | None = Field(default=None, max_length=255)
+    latitude: float | None = Field(default=None, ge=-90, le=90)
+    longitude: float | None = Field(default=None, ge=-180, le=180)
+    location_source: str = Field(default="google_places", min_length=1, max_length=32)
+
+    @model_validator(mode="after")
+    def validate_coordinates(self) -> "PrimaryLodgingUpdateRequest":
+        if (self.latitude is None) != (self.longitude is None):
+            raise ValueError("latitude and longitude must be provided together")
+        return self
+
+
+class ScheduleDefaultsUpdateRequest(BaseModel):
+    version: int = Field(ge=1)
+    lunch_time: str = Field(pattern=r"^(?:[01]\d|2[0-3]):[0-5]\d$")
+    lunch_duration_minutes: int = Field(ge=30, le=180)
+    dinner_time: str = Field(pattern=r"^(?:[01]\d|2[0-3]):[0-5]\d$")
+    dinner_duration_minutes: int = Field(ge=30, le=180)
+
+    @model_validator(mode="after")
+    def validate_order(self) -> "ScheduleDefaultsUpdateRequest":
+        if self.lunch_time >= self.dinner_time:
+            raise ValueError("lunch_time must be before dinner_time")
+        return self
+
+
+class MealSkipRequest(BaseModel):
+    version: int = Field(ge=1)
+    skipped: bool
 
 
 class ItineraryUpdateRequest(BaseModel):
@@ -320,6 +367,8 @@ def item_record(
         duration_minutes=getattr(item, "duration_minutes", None),
         notes=getattr(item, "notes", None),
         fixed_time=getattr(item, "fixed_time", False),
+        system_role=getattr(item, "system_role", None),
+        is_skipped=getattr(item, "is_skipped", False),
     )
 
 
@@ -342,6 +391,8 @@ def apply_item_request(record: TripPlanItem, item: ItineraryItemRequest) -> None
     record.duration_minutes = item.duration_minutes
     record.notes = item.notes
     record.fixed_time = item.fixed_time
+    record.system_role = item.system_role
+    record.is_skipped = item.is_skipped
 
 
 def serialize_item(item: TripPlanItem) -> dict[str, Any]:
@@ -365,6 +416,8 @@ def serialize_item(item: TripPlanItem) -> dict[str, Any]:
         "duration_minutes": item.duration_minutes,
         "notes": item.notes,
         "fixed_time": item.fixed_time,
+        "system_role": item.system_role,
+        "is_skipped": item.is_skipped,
     }
 
 
@@ -383,17 +436,23 @@ async def load_items(session: AsyncSession, trip_id: UUID) -> list[TripPlanItem]
 async def hydrate_legacy_items(
     session: AsyncSession, trip: TripPlan, items: list[TripPlanItem]
 ) -> list[TripPlanItem]:
-    if items:
-        return items
-    raw_days = trip.data.get("itinerary", [])
-    for raw_day in raw_days:
-        for raw_item in raw_day.get("items", []):
-            parsed = ItineraryItem.model_validate(raw_item)
-            session.add(item_record(trip.id, parsed, preserve_source_id=False))
-    if raw_days:
+    changed = False
+    if not items:
+        raw_days = trip.data.get("itinerary", [])
+        for raw_day in raw_days:
+            for raw_item in raw_day.get("items", []):
+                parsed = ItineraryItem.model_validate(raw_item)
+                session.add(item_record(trip.id, parsed, preserve_source_id=False))
+        if raw_days:
+            await session.flush()
+            items = await load_items(session, trip.id)
+            changed = True
+    if ensure_system_slots(session, trip, items):
+        changed = True
+    if changed:
         await session.commit()
         return await load_items(session, trip.id)
-    return []
+    return items
 
 
 async def serialize_trip(
@@ -433,6 +492,12 @@ async def serialize_trip(
         "total_price": trip.total_price,
         "currency": trip.currency,
         "data": trip.data,
+        "primary_lodging": (
+            primary_lodging(trip, items)
+            if include_items
+            else trip.data.get("primary_lodging")
+        ),
+        "schedule_defaults": schedule_defaults(trip),
         "planning": trip.data.get("planning"),
         "version": trip.version,
         "destination_name": trip.destination_name,
@@ -457,6 +522,91 @@ async def owned_trip(session: AsyncSession, user_id: UUID, trip_id: UUID) -> Tri
     if trip is None:
         raise AppError(404, "trip_not_found", "找不到這個已儲存旅程")
     return trip
+
+
+async def persist_system_schedule_change(
+    session: AsyncSession,
+    trip: TripPlan,
+    user_id: UUID,
+    expected_version: int,
+    rows: list[TripPlanItem],
+    *,
+    warning: str,
+    target_day: date | None = None,
+) -> dict[str, Any]:
+    with session.no_autoflush:
+        runtime = await load_runtime_settings(session)
+        routing_defaults = RoutingOptions.model_validate(
+            trip.data.get("routing_defaults") or {}
+        )
+        routing_available = bool(
+            runtime.google_maps_api_key
+            or (
+                routing_defaults.default_travel_mode == "transit"
+                and is_japan_trip(trip.timezone, trip.destination_name, trip.data)
+                and runtime.navitime_configured
+            )
+        )
+        total = route_pair_count(rows)
+        status = (
+            "queued"
+            if routing_defaults.auto_compute and routing_available and total
+            else "unavailable"
+            if routing_defaults.auto_compute and total
+            else "idle"
+        )
+        next_data = {
+            **trip.data,
+            "edited": True,
+            "routing": {
+                "status": status,
+                "total": total,
+                "completed": 0,
+                "warnings": [] if status == "queued" else [warning] if total else [],
+                "updated_at": datetime.now(UTC).isoformat(),
+            },
+        }
+        next_version = await session.scalar(
+            update(TripPlan)
+            .where(
+                TripPlan.id == trip.id,
+                TripPlan.user_id == user_id,
+                TripPlan.version == expected_version,
+            )
+            .values(version=TripPlan.version + 1, data=next_data)
+            .returning(TripPlan.version)
+        )
+    if next_version is None:
+        await session.rollback()
+        raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再操作")
+    route_delete = delete(TripRouteSegment).where(TripRouteSegment.trip_plan_id == trip.id)
+    if target_day is not None:
+        route_delete = route_delete.where(TripRouteSegment.day_date == target_day)
+    await session.execute(route_delete)
+    await session.commit()
+    await get_redis().delete(f"routes:trip:{trip.id}")
+    await session.refresh(trip)
+    if status == "queued":
+        try:
+            await asyncio.to_thread(
+                enqueue_trip_routing,
+                trip.id,
+                int(next_version),
+                target_day,
+            )
+        except Exception:
+            trip.data = {
+                **trip.data,
+                "routing": {
+                    **cast(dict[str, Any], trip.data.get("routing") or {}),
+                    "status": "stale",
+                    "warnings": [warning],
+                    "updated_at": datetime.now(UTC).isoformat(),
+                },
+            }
+            await session.commit()
+            await session.refresh(trip)
+    return await serialize_trip(session, trip)
 
 
 def _planning_request(
@@ -489,6 +639,8 @@ def _planning_request(
                 "duration_minutes": item.duration_minutes,
                 "locked": item.locked,
                 "fixed_time": item.fixed_time,
+                "system_role": item.system_role,
+                "is_skipped": item.is_skipped,
             }
             for item in (preserved_items or [])
         ],
@@ -505,7 +657,10 @@ async def _enrich_ai_places(
     if not service.configured:
         return
     suggestions = [
-        item for day in planning.itinerary for item in day.items if item.item_type == "suggestion"
+        item
+        for day in planning.itinerary
+        for item in day.items
+        if item.item_type in {"suggestion", "meal"}
     ][:24]
     semaphore = asyncio.Semaphore(4)
     region = _destination_region_values(destination_name, timezone)
@@ -739,6 +894,7 @@ async def compute_routes_for_rows(
     buffer_minutes: int = DEFAULT_BUFFER_MINUTES,
     refresh: bool = False,
 ) -> tuple[list[RouteSegment], list[tuple[UUID, UUID]]]:
+    rows = active_route_rows(rows)
     pairs: list[tuple[RoutePoint, RoutePoint, datetime | None]] = []
     pair_ids: list[tuple[UUID, UUID]] = []
     for first, second in zip(rows, rows[1:], strict=False):
@@ -927,7 +1083,9 @@ async def save_trip(
             destination_name=destination,
             timezone=timezone,
         )
-        route_pairs = sum(max(0, len(day.items) - 1) for day in planning.itinerary)
+        # The two hotel anchors are reconciled immediately after persistence, so
+        # each day has one more adjacent pair than the generated activity/meal rows.
+        route_pairs = sum(len(day.items) + 1 for day in planning.itinerary)
         routing_available = bool(
             settings.google_maps_api_key
             or (
@@ -1183,9 +1341,33 @@ async def update_itinerary(
     trip = await owned_trip(session, user.id, trip_id)
     previous_routing = cast(dict[str, Any], trip.data.get("routing") or {})
     existing_rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    existing_by_id = {row.id: row for row in existing_rows}
+    incoming_items = list(payload.items)
+    incoming_ids = {item.id for item in incoming_items if item.id is not None}
+    incoming_items.extend(
+        ItineraryItemRequest.model_validate(serialize_item(row))
+        for row in existing_rows
+        if row.system_role is not None and row.id not in incoming_ids
+    )
+    for item in incoming_items:
+        existing = existing_by_id.get(item.id) if item.id is not None else None
+        if existing is None and item.system_role is not None:
+            raise AppError(
+                422,
+                "system_itinerary_item_immutable",
+                "固定飯店與餐食卡只能由系統建立",
+            )
+        if existing is not None and existing.system_role is not None and (
+            item.system_role != existing.system_role or item.day_date != existing.day_date
+        ):
+            raise AppError(
+                422,
+                "system_itinerary_item_immutable",
+                "固定飯店與餐食卡不可改變日期或類型",
+            )
     if trip.start_date and any(
         item.day_date < trip.start_date or (trip.end_date and item.day_date > trip.end_date)
-        for item in payload.items
+        for item in incoming_items
     ):
         raise AppError(422, "itinerary_date_out_of_range", "行程項目日期超出旅程範圍")
     next_data = {
@@ -1193,7 +1375,7 @@ async def update_itinerary(
         "edited": True,
         "routing": {
             "status": "stale",
-            "total": max(0, len(payload.items) - len({item.day_date for item in payload.items})),
+            "total": route_pair_count(existing_rows),
             "completed": 0,
             "warnings": ["行程已變更，受影響的移動時間需要重新計算。"],
             "updated_at": datetime.now(UTC).isoformat(),
@@ -1215,10 +1397,7 @@ async def update_itinerary(
     def adjacent_pairs(values: list[TripPlanItem]) -> set[tuple[UUID, UUID]]:
         pairs: set[tuple[UUID, UUID]] = set()
         for day_value in {row.day_date for row in values}:
-            day_rows = sorted(
-                (row for row in values if row.day_date == day_value),
-                key=lambda row: row.position,
-            )
+            day_rows = active_route_rows(values, day_value)
             pairs.update(
                 (first.id, second.id)
                 for first, second in zip(day_rows, day_rows[1:], strict=False)
@@ -1226,9 +1405,12 @@ async def update_itinerary(
         return pairs
 
     old_pairs = adjacent_pairs(existing_rows)
-    existing_by_id = {row.id: row for row in existing_rows}
-    incoming_ids = {item.id for item in payload.items if item.id is not None}
-    removed_ids = set(existing_by_id) - incoming_ids
+    incoming_ids = {item.id for item in incoming_items if item.id is not None}
+    removed_ids = {
+        item_id
+        for item_id, row in existing_by_id.items()
+        if item_id not in incoming_ids and row.system_role is None
+    }
     if removed_ids:
         await session.execute(
             delete(TripPlanItem).where(
@@ -1239,7 +1421,7 @@ async def update_itinerary(
     route_impact_ids: set[UUID] = set(removed_ids)
     next_rows: list[TripPlanItem] = []
     new_route_rows: list[TripPlanItem] = []
-    for item in payload.items:
+    for item in incoming_items:
         row = existing_by_id.get(item.id) if item.id is not None else None
         if row is None:
             row = item_record(trip.id, item)
@@ -1256,7 +1438,33 @@ async def update_itinerary(
                 row.provider_place_id,
                 row.duration_minutes,
                 row.fixed_time,
+                row.is_skipped,
             )
+            if row.system_role is not None:
+                protected: dict[str, Any] = {
+                    "position": row.position,
+                    "locked": True,
+                    "fixed_time": row.system_role in {"hotel_start", "lunch", "dinner"},
+                    "start_time": row.start_time,
+                    "end_time": row.end_time,
+                    "duration_minutes": row.duration_minutes,
+                    "is_skipped": row.is_skipped,
+                }
+                if row.system_role in {"hotel_start", "hotel_end"}:
+                    protected.update(
+                        {
+                            "title": row.title,
+                            "location_name": row.location_name,
+                            "latitude": row.latitude,
+                            "longitude": row.longitude,
+                            "provider_place_id": row.provider_place_id,
+                            "location_source": row.location_source,
+                            "is_estimated": row.is_estimated,
+                            "notes": row.notes,
+                            "data": row.data,
+                        }
+                    )
+                item = item.model_copy(update=protected)
             after = (
                 item.day_date,
                 item.position,
@@ -1267,11 +1475,14 @@ async def update_itinerary(
                 item.provider_place_id,
                 item.duration_minutes,
                 item.fixed_time,
+                item.is_skipped,
             )
             if before != after:
                 route_impact_ids.add(row.id)
             apply_item_request(row, item)
         next_rows.append(row)
+
+    canonicalize_positions(next_rows)
 
     if new_route_rows:
         await session.flush()
@@ -1317,7 +1528,7 @@ async def update_itinerary(
                     "status": "queued",
                     "total": max(
                         0,
-                        len(payload.items) - len({item.day_date for item in payload.items}),
+                        route_pair_count(next_rows),
                     ),
                     "completed": 0,
                     "warnings": [],
@@ -1334,8 +1545,7 @@ async def update_itinerary(
                         "status": "stale",
                         "total": max(
                             0,
-                            len(payload.items)
-                            - len({item.day_date for item in payload.items}),
+                            route_pair_count(next_rows),
                         ),
                         "completed": 0,
                         "warnings": ["行程已變更，請在行程頁重新計算移動時間。"],
@@ -1345,6 +1555,88 @@ async def update_itinerary(
                 await session.commit()
             await session.refresh(trip)
     return await serialize_trip(session, trip)
+
+
+@router.put("/{trip_id}/primary-lodging")
+async def update_primary_lodging(
+    trip_id: UUID,
+    payload: PrimaryLodgingUpdateRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    trip = await owned_trip(session, user.id, trip_id)
+    rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    lodging = {
+        "name": payload.name.strip(),
+        "location_name": payload.location_name.strip(),
+        "provider_place_id": payload.provider_place_id,
+        "latitude": payload.latitude,
+        "longitude": payload.longitude,
+        "location_source": payload.location_source,
+    }
+    sync_primary_lodging(trip, rows, lodging)
+    return await persist_system_schedule_change(
+        session,
+        trip,
+        user.id,
+        payload.version,
+        rows,
+        warning="主要飯店已更新，請重新計算每日來回路線。",
+    )
+
+
+@router.put("/{trip_id}/schedule-defaults")
+async def update_schedule_defaults(
+    trip_id: UUID,
+    payload: ScheduleDefaultsUpdateRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    trip = await owned_trip(session, user.id, trip_id)
+    rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    trip.data = {
+        **trip.data,
+        "schedule_defaults": {
+            **schedule_defaults(trip),
+            **payload.model_dump(exclude={"version"}),
+        },
+    }
+    apply_schedule_defaults(trip, rows)
+    return await persist_system_schedule_change(
+        session,
+        trip,
+        user.id,
+        payload.version,
+        rows,
+        warning="餐食時間已更新，請重新計算受影響的移動時間。",
+    )
+
+
+@router.patch("/{trip_id}/items/{item_id}/skip")
+async def update_meal_skip(
+    trip_id: UUID,
+    item_id: UUID,
+    payload: MealSkipRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    trip = await owned_trip(session, user.id, trip_id)
+    rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    item = next((row for row in rows if row.id == item_id), None)
+    if item is None:
+        raise AppError(404, "trip_item_not_found", "找不到這張餐食卡")
+    if item.system_role not in {"lunch", "dinner"}:
+        raise AppError(422, "meal_skip_not_supported", "只有午餐與晚餐可以跳過")
+    item.is_skipped = payload.skipped
+    return await persist_system_schedule_change(
+        session,
+        trip,
+        user.id,
+        payload.version,
+        rows,
+        warning="餐食狀態已更新，請重新計算這一天的路線。",
+        target_day=item.day_date,
+    )
 
 
 @router.post("/{trip_id}/itinerary/generate")
@@ -1390,7 +1682,13 @@ async def generate_trip_itinerary(
         replaceable_ids = {item.id for item in replaceable}
         preserved = [item for item in existing if item.id not in replaceable_ids]
         planning_preserved = [
-            item for item in preserved if target_date is None or item.day_date == target_date
+            item
+            for item in preserved
+            if (target_date is None or item.day_date == target_date)
+            and (
+                item.system_role not in {"lunch", "dinner"}
+                or item.data.get("meal_selection_source") == "user"
+            )
         ]
         travelers = Travelers.model_validate(trip.data.get("travelers", {}))
         preferences = SearchPreferences.model_validate(trip.data.get("preferences", {}))
@@ -1414,11 +1712,48 @@ async def generate_trip_itinerary(
             destination_name=trip.destination_name,
             timezone=trip.timezone or "UTC",
         )
+        meals_by_role = {
+            (item.day_date, item.system_role): item
+            for item in preserved
+            if item.system_role in {"lunch", "dinner"}
+        }
+        generated_meals = [
+            item
+            for day in planning.itinerary
+            for item in day.items
+            if item.system_role in {"lunch", "dinner"}
+        ]
+        for meal in generated_meals:
+            meal_role = cast(str, meal.system_role)
+            current_meal = meals_by_role.get((meal.day_date, meal_role))
+            if (
+                current_meal is None
+                or current_meal.data.get("meal_selection_source") == "user"
+            ):
+                continue
+            current_meal.title = meal.title
+            current_meal.location_name = meal.location_name
+            current_meal.latitude = (
+                Decimal(str(meal.latitude)) if meal.latitude is not None else None
+            )
+            current_meal.longitude = (
+                Decimal(str(meal.longitude)) if meal.longitude is not None else None
+            )
+            current_meal.provider_place_id = meal.provider_place_id
+            current_meal.location_source = meal.location_source
+            current_meal.is_estimated = meal.is_estimated
+            current_meal.notes = meal.notes
+            current_meal.data = {
+                **current_meal.data,
+                **meal.data,
+                "meal_selection_source": "ai",
+            }
         preserved_keys = {(item.day_date, (item.title or "").casefold()) for item in preserved}
         generated = [
             item
             for day in planning.itinerary
             for item in day.items
+            if item.system_role is None
             if (item.day_date, item.title.casefold()) not in preserved_keys
         ]
         if replaceable_ids:
@@ -1434,17 +1769,7 @@ async def generate_trip_itinerary(
         for record in generated_records:
             session.add(record)
         all_rows = [*preserved, *generated_records]
-        for day_value in sorted({item.day_date for item in all_rows if item.day_date is not None}):
-            day_rows = sorted(
-                (item for item in all_rows if item.day_date == day_value),
-                key=lambda item: (
-                    item.start_time is None,
-                    item.start_time or datetime.max.replace(tzinfo=UTC),
-                    item.position,
-                ),
-            )
-            for position, item in enumerate(day_rows):
-                item.position = position
+        canonicalize_positions(all_rows)
         planning_data = {
             **planning.planning.model_dump(mode="json"),
             "scope": payload.scope,
@@ -1454,7 +1779,7 @@ async def generate_trip_itinerary(
         route_rows = [
             item for item in all_rows if target_date is None or item.day_date == target_date
         ]
-        route_pairs = max(0, len(route_rows) - len({item.day_date for item in route_rows}))
+        route_pairs = route_pair_count(route_rows)
         routing_available = bool(
             settings.google_maps_api_key
             or (
@@ -1520,9 +1845,11 @@ async def generate_trip_itinerary(
         return result
     except Exception:
         await session.rollback()
-        current = await session.get(UsageReservation, reservation_id)
-        if current is not None:
-            await release_reservation(session, current, "ai_itinerary_generation_failed")
+        reservation_row = await session.get(UsageReservation, reservation_id)
+        if reservation_row is not None:
+            await release_reservation(
+                session, reservation_row, "ai_itinerary_generation_failed"
+            )
         await session.commit()
         raise
 
@@ -1550,6 +1877,7 @@ async def compute_trip_routes(
         rows = selected
     elif payload.day_date:
         rows = [item for item in rows if item.day_date == payload.day_date]
+    rows = active_route_rows(rows)
     if len(rows) < 2:
         raise AppError(422, "route_items_insufficient", "至少需要兩個有位置的行程項目")
     if len(rows) > TRIP_ROUTE_MAX_ITEMS:
@@ -1724,7 +2052,9 @@ async def preview_trip_route(
     if trip.version != payload.version:
         raise AppError(409, "trip_version_conflict", "旅程已更新，請重新載入後再預覽路線")
     rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
-    first, second = _adjacent_route_rows(rows, payload.from_item_id, payload.to_item_id)
+    first, second = _adjacent_route_rows(
+        active_route_rows(rows), payload.from_item_id, payload.to_item_id
+    )
     origin, destination = route_point(first), route_point(second)
     if origin is None or destination is None:
         raise AppError(422, "route_location_unavailable", "請先確認這兩個行程地點後再查路")
@@ -1770,7 +2100,7 @@ async def preview_trip_route(
             "is_override": payload.travel_mode != setting.default_travel_mode,
         }
     )
-    day_rows = [row for row in rows if row.day_date == first.day_date]
+    day_rows = active_route_rows(rows, first.day_date)
     persisted = [
         segment_from_record(record)
         for record in await load_route_segments(session, trip.id, day_date=first.day_date)
@@ -1854,7 +2184,9 @@ async def apply_trip_route(
                 warnings=["此移動時間由使用者手動輸入，未經地圖服務驗證。"],
             )
             manual_note = payload.note.strip() if payload.note else None
-        first, second = _adjacent_route_rows(rows, segment.from_item_id, segment.to_item_id)
+        first, second = _adjacent_route_rows(
+            active_route_rows(rows), segment.from_item_id, segment.to_item_id
+        )
         day_value = cast(date, first.day_date)
         setting = await get_or_create_day_setting(
             session,
@@ -1888,7 +2220,7 @@ async def apply_trip_route(
                 else segment.buffer_minutes,
             }
         )
-        day_rows = [row for row in rows if row.day_date == day_value]
+        day_rows = active_route_rows(rows, day_value)
         projection = project_day_schedule(day_rows, [*current_segments, segment])
         next_data = {
             **trip.data,
@@ -1963,7 +2295,7 @@ async def compute_trip_routes_for_day(
         if trip.version != payload.version:
             raise AppError(409, "trip_version_conflict", "旅程已更新，請重新載入後再計算路線")
         rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
-        day_rows = [row for row in rows if row.day_date == payload.day_date]
+        day_rows = active_route_rows(rows, payload.day_date)
         if len(day_rows) < 2:
             raise AppError(422, "route_items_insufficient", "這一天至少需要兩個行程地點")
         _, unresolved = await _resolve_trip_locations(
@@ -2118,7 +2450,7 @@ async def optimize_trip_itinerary(
         settings = await load_runtime_settings(session)
         final_segments: list[RouteSegment] = []
         for target_day in target_days:
-            day_rows = [row for row in all_rows if row.day_date == target_day]
+            day_rows = active_route_rows(all_rows, target_day)
             movable_slots = [
                 index
                 for index, row in enumerate(day_rows)
@@ -2266,11 +2598,26 @@ async def reoptimize_trip(
             row.data = {**row.data, "reoptimized_at": checked_at}
             session.add(row)
     plan_data = plan.model_dump(mode="json")
+    next_lodging = primary_lodging(trip, existing_items)
+    if plan.hotel is not None:
+        next_lodging = {
+            "name": plan.hotel.hotel_name,
+            "location_name": plan.hotel.address or plan.hotel.hotel_name,
+            "provider_place_id": None,
+            "latitude": plan.hotel.latitude,
+            "longitude": plan.hotel.longitude,
+            "location_source": "provider",
+            "offer_id": str(plan.hotel.id),
+        }
+        sync_primary_lodging(trip, existing_items, next_lodging)
+    canonicalize_positions(existing_items)
     trip.mode = plan.mode
     trip.total_price = plan.total_cost.total_cost
     trip.currency = plan.total_cost.currency
     trip.data = {
         **plan_data,
+        "primary_lodging": next_lodging,
+        "schedule_defaults": schedule_defaults(trip),
         "reoptimized_at": checked_at,
         "prices_checked": True,
         "provider_warnings": warnings,

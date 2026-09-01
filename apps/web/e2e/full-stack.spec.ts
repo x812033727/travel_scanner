@@ -53,3 +53,53 @@ test("guest recommendation through alert management uses the real first-party st
   await page.getByRole("button", { name: "確定刪除" }).click();
   await expect(page.getByText(/目前還沒有價格通知/)).toBeVisible();
 });
+
+test("blank trip keeps hotel and meal anchors while lunch bypass survives reload", async ({ page }) => {
+  test.setTimeout(120_000);
+  const email = `schedule${Date.now()}${test.info().workerIndex}@example.com`;
+  await page.goto("/zh-TW/register?next=/trips/new");
+  await page.getByLabel("Email").fill(email);
+  await page.getByLabel("密碼").fill("full-stack-password-123");
+  await page.getByRole("button", { name: "建立帳號" }).click();
+  await expect(page).toHaveURL(/\/trips\/new$/, { timeout: 15_000 });
+
+  await page.getByLabel("旅程名稱").fill("東京固定餐食行程");
+  await page.getByLabel("目的地").fill("日本東京");
+  await page.getByLabel("開始日期").fill("2026-11-10");
+  await page.getByLabel("結束日期").fill("2026-11-10");
+  await page.getByRole("button", { name: /下一步/ }).click();
+  await page.getByRole("button", { name: /下一步/ }).click();
+  await page.getByRole("button", { name: /下一步/ }).click();
+  await page.getByRole("button", { name: /交給 AI 排好行程/ }).click();
+  await expect(page).toHaveURL(/\/trips\/[0-9a-f-]+$/, { timeout: 30_000 });
+
+  const systemCards = page.locator(".planner-system-card");
+  await expect(systemCards).toHaveCount(4);
+  await expect(systemCards.first()).toContainText("住宿據點 · 出發");
+  await expect(systemCards.last()).toContainText("住宿據點 · 返回");
+  await expect(page.getByText("午餐", { exact: true })).toBeVisible();
+  await expect(page.getByText("晚餐", { exact: true })).toBeVisible();
+
+  await page.getByRole("button", { name: "設定主要飯店" }).first().click();
+  await page.getByLabel("飯店名稱").fill("丸之內測試飯店");
+  await page.getByLabel("飯店地點").fill("東京都千代田區丸之內");
+  await page.getByRole("button", { name: "同步所有日期" }).click();
+  await expect(page.getByRole("dialog", { name: "設定主要飯店" })).toBeHidden();
+  await expect(systemCards.first()).toContainText("丸之內測試飯店");
+  await expect(systemCards.last()).toContainText("丸之內測試飯店");
+
+  await page.getByRole("button", { name: "跳過" }).first().click();
+  await expect(page.getByText("已跳過，不計停留時間與路線")).toBeVisible();
+  const computeResponse = page.waitForResponse((response) =>
+    response.url().includes("/routes/compute-day") && response.request().method() === "POST",
+  );
+  await page.getByRole("button", { name: "計算當日路線" }).click();
+  expect((await computeResponse).ok()).toBe(true);
+  await expect(page.getByText(/正在背景計算每一段移動時間/)).toBeVisible();
+
+  await page.reload();
+  await expect(page.getByText("已跳過，不計停留時間與路線")).toBeVisible();
+  await page.getByRole("button", { name: "恢復" }).click();
+  await expect(page.getByText("午餐", { exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "跳過" }).first()).toBeVisible();
+});

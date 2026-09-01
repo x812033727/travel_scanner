@@ -495,6 +495,19 @@ class TripPlan(Timestamped, Base):
 
 class TripPlanItem(Base):
     __tablename__ = "trip_plan_items"
+    __table_args__ = (
+        CheckConstraint(
+            "system_role IS NULL OR system_role IN "
+            "('hotel_start', 'lunch', 'dinner', 'hotel_end')",
+            name="ck_trip_plan_item_system_role",
+        ),
+        UniqueConstraint(
+            "trip_plan_id",
+            "day_date",
+            "system_role",
+            name="uq_trip_plan_item_system_role",
+        ),
+    )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     trip_plan_id: Mapped[UUID] = mapped_column(
         ForeignKey("trip_plans.id", ondelete="CASCADE"), index=True
@@ -517,6 +530,8 @@ class TripPlanItem(Base):
     duration_minutes: Mapped[int | None] = mapped_column(Integer, nullable=True)
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
     fixed_time: Mapped[bool] = mapped_column(Boolean, default=False)
+    system_role: Mapped[str | None] = mapped_column(String(24), nullable=True)
+    is_skipped: Mapped[bool] = mapped_column(Boolean, default=False)
 
 
 class TripRouteDaySetting(Timestamped, Base):

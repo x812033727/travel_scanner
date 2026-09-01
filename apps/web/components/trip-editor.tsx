@@ -48,10 +48,11 @@ import { RouteMap } from "@/components/route-map";
 import { RouteModePanel } from "@/components/route-mode-panel";
 import { RouteSegmentCard } from "@/components/route-segment-card";
 import { RouteTimelineLink } from "@/components/route-timeline-link";
+import { SystemItineraryCard } from "@/components/system-itinerary-card";
 import { TripWeatherPanel } from "@/components/trip-weather-panel";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, ApiError, isUsageInsufficient, twd } from "@/lib/api";
-import { formatTime, groupTripItems, type RouteSegment, type TravelMode, type Trip, type TripItem, type TripRouting } from "@/lib/trip-types";
+import { formatTime, groupTripItems, isActiveRouteItem, isLogisticsItem, type RouteSegment, type ScheduleDefaults, type TravelMode, type Trip, type TripItem, type TripRouting } from "@/lib/trip-types";
 
 function normalize(items: TripItem[]) {
   const positions = new Map<string, number>();
@@ -147,6 +148,7 @@ type PublicRuntimeConfig = {
   navitime_enabled?: boolean;
 };
 type Place = { place_id: string; provider: string; name: string; address?: string | null; latitude?: number | null; longitude?: number | null; opening_hours?: string[]; google_maps_url?: string | null; attribution?: string };
+type LodgingDraft = { name: string; location_name: string; provider_place_id: string; latitude?: number; longitude?: number; location_source: string };
 type SaveState = "saved" | "dirty" | "saving" | "offline" | "conflict";
 type StoredTripDraft = {
   baseVersion: number;
@@ -187,6 +189,7 @@ const plannerThemes: Array<{ id: PlannerTheme; name: string; description: string
 ];
 
 const fieldClass = "mt-2 min-h-11 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-2.5 text-sm text-[var(--ink)] outline-none transition focus:border-[var(--teal)] focus:ring-4 focus:ring-[var(--teal-soft)]";
+const defaultSchedule: ScheduleDefaults = { day_start_time: "09:00", lunch_time: "12:00", lunch_duration_minutes: 60, dinner_time: "18:30", dinner_duration_minutes: 90 };
 
 export function TripEditor({ tripId }: { tripId: string }) {
   const aiCharge = useOperationCharge("ai_itinerary_generation");
@@ -223,6 +226,9 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const [draftItem, setDraftItem] = useState<TripItem>();
   const [recentItemId, setRecentItemId] = useState<string>();
   const [runtimeConfig, setRuntimeConfig] = useState<PublicRuntimeConfig>({});
+  const [lodgingOpen, setLodgingOpen] = useState(false);
+  const [lodgingDraft, setLodgingDraft] = useState<LodgingDraft>({ name: "", location_name: "", provider_place_id: "", location_source: "google_places" });
+  const [scheduleDraft, setScheduleDraft] = useState<ScheduleDefaults>(defaultSchedule);
 
   const tripRef = useRef<Trip | undefined>(undefined);
   const itemsRef = useRef<TripItem[]>([]);
@@ -453,8 +459,13 @@ export function TripEditor({ tripId }: { tripId: string }) {
     return explicit.length ? explicit : [...new Set(items.map((item) => item.day_date))].sort();
   }, [items, trip?.end_date, trip?.start_date]);
   const groups = useMemo(() => new Map(groupTripItems(normalize(items))), [items]);
-  const activeRows = groups.get(activeDay) || [];
-  const activeDurationMinutes = activeRows.reduce((total, item) => total + (item.duration_minutes || 0), 0);
+  const activeDayItems = groups.get(activeDay) || [];
+  const allLogistics = items.filter(isLogisticsItem);
+  const activeRows = activeDayItems.filter((item) => !isLogisticsItem(item));
+  const activeRouteRows = activeRows.filter(isActiveRouteItem);
+  const activeArrangementCount = activeRouteRows.filter((item) => !item.system_role?.startsWith("hotel_")).length;
+  const activeDurationMinutes = activeRouteRows.reduce((total, item) => total + (item.duration_minutes || 0), 0);
+  const tripRouteItemCount = items.filter(isActiveRouteItem).length;
   const placeCountryCodes = useMemo(() => countryCodesForTrip(trip), [trip]);
   const placeBias = useMemo(() => {
     const reference = items.find((item) => item.latitude != null && item.longitude != null);
@@ -463,6 +474,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       : undefined;
   }, [items]);
   const editingItem = draftItem || items.find((item) => item.id === editingId);
+  const editingMeal = editingItem?.system_role === "lunch" || editingItem?.system_role === "dinner";
 
   function markEdited(staleDay?: string) {
     revisionRef.current += 1;
@@ -572,9 +584,11 @@ export function TripEditor({ tripId }: { tripId: string }) {
 
   function move(id: string, direction: -1 | 1) {
     const item = itemsRef.current.find((row) => row.id === id);
-    if (!item) return;
+    if (!item || item.system_role) return;
     updateItems((current) => {
-      const sameDay = current.filter((row) => row.day_date === item.day_date).sort((a, b) => a.position - b.position);
+      const sameDay = current
+        .filter((row) => row.day_date === item.day_date && !row.system_role && !isLogisticsItem(row))
+        .sort((a, b) => a.position - b.position);
       const index = sameDay.findIndex((row) => row.id === id);
       const target = sameDay[index + direction];
       if (!target) return current;
@@ -594,7 +608,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
     if (!dragged || dragged === targetId) return;
     const source = itemsRef.current.find((item) => item.id === dragged);
     const target = itemsRef.current.find((item) => item.id === targetId);
-    if (!source || !target) return;
+    if (!source || !target || source.system_role || target.system_role) return;
     updateItems((current) => current.map((item) => item.id === source.id
       ? { ...item, day_date: target.day_date, position: target.position }
       : item.id === target.id && source.day_date === target.day_date
@@ -642,11 +656,103 @@ export function TripEditor({ tripId }: { tripId: string }) {
       provider_place_id: place.place_id,
       location_source: "confirmed",
       is_estimated: false,
-      data: { ...item.data, opening_hours: place.opening_hours || [], google_maps_url: place.google_maps_url, attribution: place.attribution, place_match_status: "confirmed", needs_place_confirmation: false },
+      data: { ...item.data, opening_hours: place.opening_hours || [], google_maps_url: place.google_maps_url, attribution: place.attribution, place_match_status: "confirmed", needs_place_confirmation: false, ...(item.system_role === "lunch" || item.system_role === "dinner" ? { meal_selection_source: "user" } : {}) },
     });
   }
 
+  function openLodgingEditor() {
+    const lodging = tripRef.current?.primary_lodging;
+    setLodgingDraft({
+      name: lodging?.name || "",
+      location_name: lodging?.location_name || "",
+      provider_place_id: lodging?.provider_place_id || "",
+      latitude: lodging?.latitude ?? undefined,
+      longitude: lodging?.longitude ?? undefined,
+      location_source: lodging?.location_source || "google_places",
+    });
+    setLodgingOpen(true);
+  }
+
+  function chooseLodgingPlace(place: Place) {
+    setLodgingDraft((current) => ({
+      ...current,
+      name: current.name.trim() || place.name,
+      location_name: place.address || place.name,
+      provider_place_id: place.place_id,
+      latitude: place.latitude ?? undefined,
+      longitude: place.longitude ?? undefined,
+      location_source: place.provider,
+    }));
+  }
+
+  async function savePrimaryLodging() {
+    const currentTrip = await flushChanges(false);
+    if (!currentTrip || !lodgingDraft.name.trim() || !lodgingDraft.location_name.trim()) return;
+    setAction("lodging");
+    setError(undefined);
+    try {
+      const updated = await api<Trip>(`/trips/${currentTrip.id}/primary-lodging`, {
+        method: "PUT",
+        body: JSON.stringify({ ...lodgingDraft, name: lodgingDraft.name.trim(), location_name: lodgingDraft.location_name.trim() || lodgingDraft.name.trim(), provider_place_id: lodgingDraft.provider_place_id || null, version: currentTrip.version }),
+      });
+      replaceTrip(updated);
+      setRoutes(updated.route_segments || []);
+      setSelectedRoute(undefined);
+      setLodgingOpen(false);
+      setStaleDays(new Set(days));
+      setNotice(lodgingDraft.latitude == null ? "主要飯店已同步；確認地點後即可計算完整來回路線。" : "主要飯店已同步到每天的出發與返回卡片。");
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : "無法更新主要飯店");
+    } finally { setAction(undefined); }
+  }
+
+  function openTools() {
+    setScheduleDraft(tripRef.current?.schedule_defaults || defaultSchedule);
+    setToolsOpen(true);
+  }
+
+  async function saveScheduleDefaults() {
+    const currentTrip = await flushChanges(false);
+    if (!currentTrip) return;
+    setAction("schedule-defaults");
+    setError(undefined);
+    try {
+      const updated = await api<Trip>(`/trips/${currentTrip.id}/schedule-defaults`, {
+        method: "PUT",
+        body: JSON.stringify({ ...scheduleDraft, version: currentTrip.version }),
+      });
+      replaceTrip(updated);
+      setRoutes(updated.route_segments || []);
+      setSelectedRoute(undefined);
+      setStaleDays(new Set(days));
+      setNotice("午餐與晚餐時間已套用到整趟旅程。");
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : "無法更新餐食時間");
+    } finally { setAction(undefined); }
+  }
+
+  async function toggleMealSkip(item: TripItem) {
+    const currentTrip = await flushChanges(false);
+    if (!currentTrip) return;
+    setAction(`skip-${item.id}`);
+    setError(undefined);
+    try {
+      const updated = await api<Trip>(`/trips/${currentTrip.id}/items/${item.id}/skip`, {
+        method: "PATCH",
+        body: JSON.stringify({ version: currentTrip.version, skipped: !item.is_skipped }),
+      });
+      replaceTrip(updated);
+      setRoutes(updated.route_segments || []);
+      setSelectedRoute(undefined);
+      setStaleDays((current) => new Set(current).add(item.day_date));
+      setNotice(item.is_skipped ? "餐食已恢復，路線會重新納入這一站。" : "餐食已跳過，時間與路線已直接略過。");
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : "無法更新餐食狀態");
+    } finally { setAction(undefined); }
+  }
+
   function removeItem(item: TripItem) {
+    if (item.system_role) return;
     updateItems((current) => current.filter((row) => row.id !== item.id), item.day_date);
     setRoutes((current) => current.filter((route) => route.from_item_id !== item.id && route.to_item_id !== item.id));
     if (selectedRoute?.from_item_id === item.id || selectedRoute?.to_item_id === item.id) {
@@ -966,7 +1072,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
     : saveState === "offline" ? <WifiOff size={15} />
       : saveState === "conflict" ? <CircleAlert size={15} /> : <Check size={15} />;
   const today = todayForTimezone(trip?.timezone);
-  const activeHasRoutes = routes.some((route) => activeRows.some((item) => item.id === route.from_item_id));
+  const activeHasRoutes = routes.some((route) => activeRouteRows.some((item) => item.id === route.from_item_id));
   const activeDayRouteSetting = trip?.routing?.day_settings.find((setting) => setting.day_date === activeDay);
   const activeTravelMode = activeDayRouteSetting?.default_travel_mode || "transit";
   const activeTravelBuffer = activeDayRouteSetting?.default_buffer_minutes ?? 10;
@@ -989,7 +1095,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
         <p className="truncate text-[.68rem] font-semibold tracking-[.12em] text-[var(--muted)]">{trip.destination_name || "我的旅程"}</p>
         <h1 className="truncate text-base font-bold tracking-tight">{trip.name}</h1>
       </div>
-      <button type="button" aria-label="開啟旅程工具" aria-expanded={toolsOpen} onClick={() => setToolsOpen(true)} className="planner-icon-button">
+      <button type="button" aria-label="開啟旅程工具" aria-expanded={toolsOpen} onClick={openTools} className="planner-icon-button">
         <Settings2 size={20} />
       </button>
     </header>
@@ -1014,7 +1120,9 @@ export function TripEditor({ tripId }: { tripId: string }) {
     {trip.routing && ["queued", "processing"].includes(trip.routing.status) && <section aria-live="polite" className="mb-4 flex items-center gap-3 rounded-2xl border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-950"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white"><Loader2 size={18} className="animate-spin text-sky-700" /></span><div className="min-w-0 flex-1"><p className="font-semibold">正在安排每天的移動時間</p><p className="mt-0.5 text-xs opacity-75">已完成 {trip.routing.completed}/{trip.routing.total} 段；可以先查看或編輯景點。</p></div></section>}
     {trip.routing && ["partial", "failed", "unavailable", "needs_locations"].includes(trip.routing.status) && trip.routing.warnings?.length ? <section className="mb-4 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950"><p className="flex items-center gap-2 font-semibold"><TriangleAlert size={17} />部分移動時間需要確認</p><div className="mt-2 grid gap-2">{trip.routing.warnings.map((warning) => <div key={warning} className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-white/70 px-3 py-2"><p className="min-w-0 flex-1 text-xs leading-5">{warning}</p><button type="button" onClick={() => void computeRoutes(activeDay, true)} className="min-h-10 shrink-0 rounded-lg px-3 text-xs font-bold text-[var(--teal)]">重新處理</button></div>)}</div></section> : null}
 
-    <section className="planner-day-strip sticky z-30 -mx-4 mb-4 border-y border-[var(--line)] px-4 py-3 lg:top-0 lg:mx-0 lg:mb-5 lg:rounded-2xl lg:border"><div ref={dayScrollRef} className="planner-day-scroll flex gap-2 overflow-x-auto pb-1" aria-label="選擇行程日期">{days.map((day, index) => { const label = dayLabel(day, index, locale); const count = groups.get(day)?.length || 0; const selected = activeDay === day; return <button key={day} ref={selected ? activeDayChipRef : undefined} type="button" aria-current={selected ? "date" : undefined} aria-pressed={selected} onClick={() => { const dayIds = new Set((groups.get(day) || []).map((item) => item.id)); setActiveDay(day); setSelectedRoute(routes.find((route) => dayIds.has(route.from_item_id))); setRouteDrawerOpen(false); setRouteTarget(undefined); setReorderMode(false); }} className={`planner-day-chip min-h-14 min-w-[5.1rem] shrink-0 rounded-2xl border px-3 py-2 text-left ${selected ? "planner-day-chip-active" : ""}`}><span className="block text-[.65rem] font-semibold tracking-[.12em] opacity-75">{day === today ? "今天" : label.eyebrow}</span><span className="mt-0.5 block text-sm font-bold">{label.short} {label.weekday}</span><span className="block text-[.65rem] opacity-70">{count} 個安排</span></button>; })}</div></section>
+    {allLogistics.length > 0 && <details className="planner-logistics-panel mb-4 px-4 py-3"><summary className="min-h-11 cursor-pointer py-2 text-sm font-bold">交通與住宿資訊 · {allLogistics.length} 項</summary><p className="mb-3 text-xs leading-5 text-[var(--muted)]">航班、接送與入住退房獨立保存，不加入每天的景點路線。</p><div className="grid gap-2 pb-1 sm:grid-cols-2">{allLogistics.map((item) => <div key={item.id} className="rounded-xl bg-white px-3 py-2.5"><p className="text-xs font-semibold text-[var(--muted)]">{item.day_date} · {formatTime(item.start_time, locale, trip.timezone)}</p><p className="mt-1 text-sm font-bold">{item.title}</p>{item.location_name && <p className="mt-1 text-xs text-[var(--muted)]">{item.location_name}</p>}</div>)}</div></details>}
+
+    <section className="planner-day-strip sticky z-30 -mx-4 mb-4 border-y border-[var(--line)] px-4 py-3 lg:top-0 lg:mx-0 lg:mb-5 lg:rounded-2xl lg:border"><div ref={dayScrollRef} className="planner-day-scroll flex gap-2 overflow-x-auto pb-1" aria-label="選擇行程日期">{days.map((day, index) => { const label = dayLabel(day, index, locale); const count = (groups.get(day) || []).filter((item) => !isLogisticsItem(item) && !item.is_skipped && !item.system_role?.startsWith("hotel_")).length; const selected = activeDay === day; return <button key={day} ref={selected ? activeDayChipRef : undefined} type="button" aria-current={selected ? "date" : undefined} aria-pressed={selected} onClick={() => { const dayIds = new Set((groups.get(day) || []).filter(isActiveRouteItem).map((item) => item.id)); setActiveDay(day); setSelectedRoute(routes.find((route) => dayIds.has(route.from_item_id))); setRouteDrawerOpen(false); setRouteTarget(undefined); setReorderMode(false); }} className={`planner-day-chip min-h-14 min-w-[5.1rem] shrink-0 rounded-2xl border px-3 py-2 text-left ${selected ? "planner-day-chip-active" : ""}`}><span className="block text-[.65rem] font-semibold tracking-[.12em] opacity-75">{day === today ? "今天" : label.eyebrow}</span><span className="mt-0.5 block text-sm font-bold">{label.short} {label.weekday}</span><span className="block text-[.65rem] opacity-70">{count} 個安排</span></button>; })}</div></section>
 
     {trip.destination_name && trip.start_date && <TripWeatherPanel tripId={trip.id} activeDay={activeDay} />}
 
@@ -1022,22 +1130,31 @@ export function TripEditor({ tripId }: { tripId: string }) {
 
     {desktopMapVisible && <AffiliatePartnerOptions tripId={trip.id} modules={["flight", "hotel", "activities", "transport", "connectivity"]} title="這趟旅程的合作平台" />}
 
-    <div className="mt-2 grid items-start gap-6 lg:mt-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,.65fr)]"><section className="planner-day-panel rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-sm sm:p-6"><header className="mb-4 flex items-start justify-between gap-3 sm:mb-5"><div className="min-w-0"><p className="text-xs font-semibold tracking-[.16em] text-[var(--teal)]">{days.indexOf(activeDay) >= 0 ? `DAY ${days.indexOf(activeDay) + 1}` : "ITINERARY"}{activeDay === today ? " · 今天" : ""}</p><h2 className="mt-1 text-xl font-bold sm:text-2xl"><span className="lg:hidden">{mobileDayHeading(activeDay, locale)}</span><span className="hidden lg:inline">{activeDay || "尚未設定日期"}</span></h2><p className="planner-day-summary mt-1.5 text-xs font-semibold text-[var(--muted)]">{activeRows.length ? `${activeRows.length} 個安排${activeDurationMinutes ? ` · 停留約 ${durationSummary(activeDurationMinutes)}` : ""}` : "尚無安排，從第一站開始"}</p></div><div className="flex shrink-0 items-center gap-2"><button type="button" aria-label="計算當日路線" onClick={() => void computeRoutes(activeDay, activeHasRoutes || activeDay === today)} disabled={Boolean(action) || activeRows.length < 2} className="planner-secondary-button flex">{action === `route-${activeDay}` ? <Loader2 size={17} className="animate-spin" /> : <RouteIcon size={17} />}<span className="hidden sm:inline">查路</span></button><button type="button" aria-label={reorderMode ? "完成排序" : "排序行程"} aria-pressed={reorderMode} onClick={() => setReorderMode((value) => !value)} disabled={activeRows.length < 2} className="planner-secondary-button flex md:hidden">{reorderMode ? <Check size={17} /> : <GripVertical size={17} />}<span className="planner-sort-label">{reorderMode ? "完成" : "排序"}</span></button>{desktopMapVisible && <><button type="button" onClick={() => void previewOptimization(activeDay)} disabled={Boolean(action) || activeRows.length < 2} className="hidden min-h-11 items-center justify-center gap-1.5 rounded-xl border border-[var(--line)] px-3 text-sm font-semibold disabled:opacity-40 md:flex">{action === `preview-${activeDay}` ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}最佳化</button><button type="button" onClick={() => add(activeDay)} disabled={!activeDay} className="hidden min-h-11 items-center justify-center gap-1.5 rounded-xl bg-[var(--paper)] px-3 text-sm font-semibold disabled:opacity-40 md:flex"><Plus size={16} />新增</button></>}</div></header>
-      {activeRows.length > 1 && <section className="route-day-settings mb-4"><div><p className="text-xs font-semibold text-[var(--muted)]">這一天預設怎麼移動</p><div className="mt-2 flex gap-1.5" role="radiogroup" aria-label="當日預設交通工具">{([['transit', '大眾運輸', TrainFront], ['walk', '步行', Footprints], ['drive', '汽車', CarFront]] as const).map(([value, label, Icon]) => <button key={value} type="button" role="radio" aria-checked={activeTravelMode === value} onClick={() => void computeRoutes(activeDay, true, { mode: value })} disabled={Boolean(action)} className={`route-day-mode ${activeTravelMode === value ? "route-day-mode-active" : ""}`}><Icon size={15} /><span>{label}</span></button>)}</div></div><label className="shrink-0 text-xs font-semibold text-[var(--muted)]">轉場緩衝<select aria-label="當日移動緩衝時間" value={activeTravelBuffer} onChange={(event) => void computeRoutes(activeDay, true, { buffer: Number(event.target.value) })} disabled={Boolean(action)} className="mt-2 block min-h-11 rounded-xl border border-[var(--line)] bg-white px-3 text-sm font-bold text-[var(--ink)]"><option value="0">0 分</option><option value="5">5 分</option><option value="10">10 分</option><option value="15">15 分</option><option value="30">30 分</option></select></label></section>}
-      {staleDays.has(activeDay) && activeRows.length > 1 && <button type="button" onClick={() => void computeRoutes(activeDay, true)} className="mb-4 flex min-h-11 w-full items-center justify-between gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-left text-sm text-amber-950"><span className="flex items-center gap-2"><CircleAlert size={17} />行程內容已變更，舊路線不再使用</span><span className="shrink-0 font-semibold">重新計算</span></button>}
-      {reorderMode && <div className="mb-3 flex min-h-12 items-center gap-2 rounded-2xl bg-[var(--teal-soft)] px-4 py-3 text-sm font-semibold text-[var(--teal-dark)] md:hidden"><GripVertical size={17} /><span>使用箭頭調整順序</span></div>}
-      {activeRows.length === 0 ? <button type="button" onClick={() => add(activeDay)} className="grid min-h-48 w-full place-items-center rounded-2xl border border-dashed border-[var(--line)] bg-[linear-gradient(135deg,#f8faf6,#edf5f1)] p-8 text-center"><span><MapPin size={28} className="mx-auto text-[var(--teal)]" /><strong className="mt-3 block">這天還沒有安排</strong><span className="mt-1 block text-sm text-[var(--muted)]">加入第一個地點，開始建立旅行時間軸</span></span></button> : <ol className="planner-timeline space-y-3">{activeRows.map((item, index) => {
-        const nextItem = activeRows[index + 1];
-        const segment = routes.find((route) => route.from_item_id === item.id && route.to_item_id === nextItem?.id);
-        const itemConflict = trip.routing?.conflicts?.find((conflict) => conflict.item_id === item.id);
-        const itemLocationConfirmed = item.location_source === "confirmed"
-          || (item.location_source === "google_places" && item.data.needs_place_confirmation !== true);
-        const locationStatus = itemLocationConfirmed
-          ? "已確認"
-          : item.location_source === "google_places_auto" ? "Google 自動配對" : "尚未設定";
-        return <li id={`trip-item-${item.id}`} key={item.id} className="planner-enter relative pl-9" style={{ "--planner-index": index } as CSSProperties}><span aria-hidden="true" className="planner-timeline-marker absolute top-6 z-10">{index + 1}</span><article draggable={desktopMapVisible} onDragStart={() => setDragged(item.id)} onDragOver={(event) => event.preventDefault()} onDrop={() => drop(item.id)} className={`planner-itinerary-card group p-4 ${reorderMode ? "planner-itinerary-card-reordering" : ""} ${recentItemId === item.id ? "planner-itinerary-card-new" : ""}`}><div className="flex items-start gap-3"><span className="hidden cursor-grab pt-1 text-[var(--muted)] lg:block" title="拖曳排序"><GripVertical size={19} /></span><button type="button" onClick={() => setEditingId(item.id)} className="min-w-0 flex-1 text-left"><div className="flex flex-wrap items-center gap-2"><span className="planner-time-badge">{formatTime(item.start_time, locale)}</span>{item.duration_minutes && <span className="text-xs text-[var(--muted)]">停留 {item.duration_minutes} 分鐘</span>}{item.data.generated_by === "ai_planner" && <span className="rounded-full bg-violet-100 px-2 py-1 text-[.68rem] font-semibold text-violet-800">AI 建議</span>}{item.locked && <span className="rounded-full bg-amber-50 px-2 py-1 text-[.68rem] font-semibold text-amber-800">已鎖定</span>}{item.fixed_time && <span className="rounded-full bg-violet-50 px-2 py-1 text-[.68rem] font-semibold text-violet-800">固定時間</span>}</div><h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tight">{item.title}</h3><p className="mt-1 flex items-start gap-1.5 text-sm leading-5 text-[var(--muted)]"><MapPin size={15} className="mt-0.5 shrink-0" />{item.location_name || "尚未選擇地點"}</p><span className={`mt-2 inline-flex rounded-full px-2 py-1 text-[.68rem] font-semibold ${itemLocationConfirmed ? "bg-emerald-50 text-emerald-800" : item.location_source === "google_places_auto" ? "bg-sky-50 text-sky-800" : "bg-amber-50 text-amber-800"}`}>{locationStatus}{item.location_source === "google_places_auto" ? " · 可點擊更正" : ""}</span>{itemConflict && <p className="mt-2 rounded-xl bg-red-50 px-3 py-2 text-xs font-semibold leading-5 text-red-800">預定 {formatTime(itemConflict.scheduled_start_time, locale)}／預計 {formatTime(itemConflict.projected_start_time, locale)}，可能遲到 {itemConflict.late_minutes} 分鐘</p>}{item.notes && <p className="mt-2 line-clamp-2 text-xs leading-5 text-[var(--muted)]">{item.notes}</p>}</button><div className={`flex shrink-0 items-center gap-1 ${reorderMode ? "flex-col md:flex-row" : ""}`}><button type="button" aria-label={`上移 ${item.title}`} disabled={index === 0} onClick={() => move(item.id, -1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowUp size={18} /></button><button type="button" aria-label={`下移 ${item.title}`} disabled={index === activeRows.length - 1} onClick={() => move(item.id, 1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowDown size={18} /></button><button type="button" aria-label={`編輯 ${item.title}`} onClick={() => setEditingId(item.id)} className={`${reorderMode ? "hidden" : "grid"} min-h-11 min-w-11 place-items-center rounded-xl bg-[var(--teal-soft)] text-[var(--teal)] md:grid`}><Edit3 size={17} /></button></div></div></article>{nextItem && <div className="py-2 pl-2"><RouteTimelineLink segment={segment} nextTitle={nextItem.title} loading={["queued", "processing"].includes(trip.routing?.status || "")} stale={staleDays.has(activeDay) || segment?.status === "stale"} onClick={() => { setRouteTarget({ fromItemId: item.id, toItemId: nextItem.id }); setSelectedRoute(segment); setRouteDrawerOpen(true); }} /></div>}</li>;
-      })}</ol>}
-    </section>{desktopMapVisible && <aside className="min-w-0 space-y-4 lg:sticky lg:top-24 lg:self-start"><RouteMap items={items} segment={selectedRoute} variant="sidebar" />{selectedRoute && <RouteSegmentCard segment={selectedRoute} selected defaultExpanded />}</aside>}</div>
+    <div className="mt-2 grid items-start gap-6 lg:mt-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,.65fr)]">
+      <section className="planner-day-panel rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-sm sm:p-6">
+        <header className="mb-4 flex items-start justify-between gap-3 sm:mb-5">
+          <div className="min-w-0"><p className="text-xs font-semibold tracking-[.16em] text-[var(--teal)]">{days.indexOf(activeDay) >= 0 ? `DAY ${days.indexOf(activeDay) + 1}` : "ITINERARY"}{activeDay === today ? " · 今天" : ""}</p><h2 className="mt-1 text-xl font-bold sm:text-2xl"><span className="lg:hidden">{mobileDayHeading(activeDay, locale)}</span><span className="hidden lg:inline">{activeDay || "尚未設定日期"}</span></h2><p className="planner-day-summary mt-1.5 text-xs font-semibold text-[var(--muted)]">{activeArrangementCount ? `${activeArrangementCount} 個安排${activeDurationMinutes ? ` · 停留約 ${durationSummary(activeDurationMinutes)}` : ""}` : "尚無安排，從第一站開始"}</p></div>
+          <div className="flex shrink-0 items-center gap-2"><button type="button" aria-label="計算當日路線" onClick={() => void computeRoutes(activeDay, activeHasRoutes || activeDay === today)} disabled={Boolean(action) || activeRouteRows.length < 2} className="planner-secondary-button flex">{action === `route-${activeDay}` ? <Loader2 size={17} className="animate-spin" /> : <RouteIcon size={17} />}<span className="hidden sm:inline">查路</span></button><button type="button" aria-label={reorderMode ? "完成排序" : "排序行程"} aria-pressed={reorderMode} onClick={() => setReorderMode((value) => !value)} disabled={activeRows.filter((item) => !item.system_role).length < 2} className="planner-secondary-button flex md:hidden">{reorderMode ? <Check size={17} /> : <GripVertical size={17} />}<span className="planner-sort-label">{reorderMode ? "完成" : "排序"}</span></button>{desktopMapVisible && <><button type="button" onClick={() => void previewOptimization(activeDay)} disabled={Boolean(action) || activeRouteRows.length < 2} className="hidden min-h-11 items-center justify-center gap-1.5 rounded-xl border border-[var(--line)] px-3 text-sm font-semibold disabled:opacity-40 md:flex">{action === `preview-${activeDay}` ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}最佳化</button><button type="button" onClick={() => add(activeDay)} disabled={!activeDay} className="hidden min-h-11 items-center justify-center gap-1.5 rounded-xl bg-[var(--paper)] px-3 text-sm font-semibold disabled:opacity-40 md:flex"><Plus size={16} />新增</button></>}</div>
+        </header>
+        {activeRouteRows.length > 1 && <section className="route-day-settings mb-4"><div><p className="text-xs font-semibold text-[var(--muted)]">這一天預設怎麼移動</p><div className="mt-2 flex gap-1.5" role="radiogroup" aria-label="當日預設交通工具">{([['transit', '大眾運輸', TrainFront], ['walk', '步行', Footprints], ['drive', '汽車', CarFront]] as const).map(([value, label, Icon]) => <button key={value} type="button" role="radio" aria-checked={activeTravelMode === value} onClick={() => void computeRoutes(activeDay, true, { mode: value })} disabled={Boolean(action)} className={`route-day-mode ${activeTravelMode === value ? "route-day-mode-active" : ""}`}><Icon size={15} /><span>{label}</span></button>)}</div></div><label className="shrink-0 text-xs font-semibold text-[var(--muted)]">轉場緩衝<select aria-label="當日移動緩衝時間" value={activeTravelBuffer} onChange={(event) => void computeRoutes(activeDay, true, { buffer: Number(event.target.value) })} disabled={Boolean(action)} className="mt-2 block min-h-11 rounded-xl border border-[var(--line)] bg-white px-3 text-sm font-bold text-[var(--ink)]"><option value="0">0 分</option><option value="5">5 分</option><option value="10">10 分</option><option value="15">15 分</option><option value="30">30 分</option></select></label></section>}
+        {staleDays.has(activeDay) && activeRouteRows.length > 1 && <button type="button" onClick={() => void computeRoutes(activeDay, true)} className="mb-4 flex min-h-11 w-full items-center justify-between gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-left text-sm text-amber-950"><span className="flex items-center gap-2"><CircleAlert size={17} />行程內容已變更，舊路線不再使用</span><span className="shrink-0 font-semibold">重新計算</span></button>}
+        {reorderMode && <div className="mb-3 flex min-h-12 items-center gap-2 rounded-2xl bg-[var(--teal-soft)] px-4 py-3 text-sm font-semibold text-[var(--teal-dark)] md:hidden"><GripVertical size={17} /><span>固定飯店與餐食不移動；使用箭頭調整其他安排</span></div>}
+        <ol className="planner-timeline space-y-3">{activeRows.map((item, index) => {
+          const routeIndex = activeRouteRows.findIndex((row) => row.id === item.id);
+          const nextItem = routeIndex >= 0 ? activeRouteRows[routeIndex + 1] : undefined;
+          const segment = routes.find((route) => route.from_item_id === item.id && route.to_item_id === nextItem?.id);
+          const itemConflict = trip.routing?.conflicts?.find((conflict) => conflict.item_id === item.id);
+          const itemLocationConfirmed = item.location_source === "confirmed"
+            || (item.location_source === "google_places" && item.data.needs_place_confirmation !== true);
+          const locationStatus = itemLocationConfirmed
+            ? "已確認"
+            : item.location_source === "google_places_auto" ? "Google 自動配對" : "尚未設定";
+          const marker = item.system_role ? "•" : activeRows.slice(0, index + 1).filter((row) => !row.system_role).length;
+          return <li id={`trip-item-${item.id}`} key={item.id} className="planner-enter relative pl-9" style={{ "--planner-index": index } as CSSProperties}><span aria-hidden="true" className="planner-timeline-marker absolute top-6 z-10">{marker}</span>{item.system_role ? <SystemItineraryCard item={item} locale={locale} timezone={trip.timezone} busy={action === `skip-${item.id}`} onEdit={() => item.system_role?.startsWith("hotel_") ? openLodgingEditor() : setEditingId(item.id)} onSkip={item.system_role === "lunch" || item.system_role === "dinner" ? () => void toggleMealSkip(item) : undefined} /> : <article draggable={desktopMapVisible} onDragStart={() => setDragged(item.id)} onDragOver={(event) => event.preventDefault()} onDrop={() => drop(item.id)} className={`planner-itinerary-card group p-4 ${reorderMode ? "planner-itinerary-card-reordering" : ""} ${recentItemId === item.id ? "planner-itinerary-card-new" : ""}`}><div className="flex items-start gap-3"><span className="hidden cursor-grab pt-1 text-[var(--muted)] lg:block" title="拖曳排序"><GripVertical size={19} /></span><button type="button" onClick={() => setEditingId(item.id)} className="min-w-0 flex-1 text-left"><div className="flex flex-wrap items-center gap-2"><span className="planner-time-badge">{formatTime(item.start_time, locale, trip.timezone)}</span>{item.duration_minutes ? <span className="text-xs text-[var(--muted)]">停留 {item.duration_minutes} 分鐘</span> : null}{item.data.generated_by === "ai_planner" && <span className="rounded-full bg-violet-100 px-2 py-1 text-[.68rem] font-semibold text-violet-800">AI 建議</span>}{item.locked && <span className="rounded-full bg-amber-50 px-2 py-1 text-[.68rem] font-semibold text-amber-800">已鎖定</span>}{item.fixed_time && <span className="rounded-full bg-violet-50 px-2 py-1 text-[.68rem] font-semibold text-violet-800">固定時間</span>}</div><h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tight">{item.title}</h3><p className="mt-1 flex items-start gap-1.5 text-sm leading-5 text-[var(--muted)]"><MapPin size={15} className="mt-0.5 shrink-0" />{item.location_name || "尚未選擇地點"}</p><span className={`mt-2 inline-flex rounded-full px-2 py-1 text-[.68rem] font-semibold ${itemLocationConfirmed ? "bg-emerald-50 text-emerald-800" : item.location_source === "google_places_auto" ? "bg-sky-50 text-sky-800" : "bg-amber-50 text-amber-800"}`}>{locationStatus}{item.location_source === "google_places_auto" ? " · 可點擊更正" : ""}</span>{itemConflict && <p className="mt-2 rounded-xl bg-red-50 px-3 py-2 text-xs font-semibold leading-5 text-red-800">預定 {formatTime(itemConflict.scheduled_start_time, locale, trip.timezone)}／預計 {formatTime(itemConflict.projected_start_time, locale, trip.timezone)}，可能遲到 {itemConflict.late_minutes} 分鐘</p>}{item.notes && <p className="mt-2 line-clamp-2 text-xs leading-5 text-[var(--muted)]">{item.notes}</p>}</button><div className={`flex shrink-0 items-center gap-1 ${reorderMode ? "flex-col md:flex-row" : ""}`}><button type="button" aria-label={`上移 ${item.title}`} onClick={() => move(item.id, -1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowUp size={18} /></button><button type="button" aria-label={`下移 ${item.title}`} onClick={() => move(item.id, 1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowDown size={18} /></button><button type="button" aria-label={`編輯 ${item.title}`} onClick={() => setEditingId(item.id)} className={`${reorderMode ? "hidden" : "grid"} min-h-11 min-w-11 place-items-center rounded-xl bg-[var(--teal-soft)] text-[var(--teal)] md:grid`}><Edit3 size={17} /></button></div></div></article>}{nextItem && !item.is_skipped && <div className="py-2 pl-2"><RouteTimelineLink segment={segment} nextTitle={nextItem.title} loading={["queued", "processing"].includes(trip.routing?.status || "")} stale={staleDays.has(activeDay) || segment?.status === "stale"} timezone={trip.timezone} onClick={() => { setRouteTarget({ fromItemId: item.id, toItemId: nextItem.id }); setSelectedRoute(segment); setRouteDrawerOpen(true); }} /></div>}</li>;
+        })}</ol>
+      </section>
+      {desktopMapVisible && <aside className="min-w-0 space-y-4 lg:sticky lg:top-24 lg:self-start"><RouteMap items={items} segment={selectedRoute} variant="sidebar" />{selectedRoute && <RouteSegmentCard segment={selectedRoute} selected defaultExpanded timezone={trip.timezone} />}</aside>}
+    </div>
 
     <div className="planner-mobile-bar fixed inset-x-0 bottom-0 z-40 px-3 pt-3 lg:hidden"><div className="planner-mobile-dock mx-auto grid max-w-lg grid-cols-[auto_1fr_1.2fr] items-center gap-2"><button type="button" aria-live="polite" aria-label={saveState === "offline" ? "儲存失敗，點擊重試" : saveLabel} onClick={() => { if (saveState === "offline") void flushChanges(true); }} disabled={saveState !== "offline"} className={`planner-save-status ${saveState === "offline" ? "planner-save-status-error" : ""}`}>{saveIcon}<span className="sr-only">{saveLabel}</span></button><button type="button" aria-label="新增安排" onClick={() => add(activeDay)} disabled={!activeDay} className="planner-dock-button planner-dock-button-secondary"><Plus size={18} /><span className="planner-add-label-long">新增安排</span><span className="planner-add-label-short">新增</span></button><button type="button" aria-label={`AI 幫我安排 · ${aiCharge.label}`} onClick={() => openAIPlanner(activeDay ? "day" : "trip")} disabled={Boolean(action) || aiCharge.status !== "ready"} className="planner-dock-button planner-dock-button-primary"><Sparkles size={18} />AI 安排 · {aiCharge.label}</button></div></div>
 
@@ -1046,11 +1163,11 @@ export function TripEditor({ tripId }: { tripId: string }) {
     <PlannerOverlay open={aiMenuOpen} onClose={() => { if (!action) setAIMenuOpen(false); }} title="AI 幫我安排" description={`先選擇要安排的範圍；AI 會依興趣、步調、日期與已有安排產生可編輯建議。${aiCharge.label}`} footer={<div className="flex gap-3"><button type="button" onClick={() => setAIMenuOpen(false)} disabled={Boolean(action)} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold disabled:opacity-40">取消</button><button type="button" onClick={() => void generateAIItinerary(aiScope)} disabled={Boolean(action) || (aiScope === "day" && !activeDay) || aiCharge.status !== "ready"} className="flex min-h-12 flex-[1.5] items-center justify-center gap-2 rounded-xl bg-violet-700 px-4 font-semibold text-white disabled:opacity-45">{action === `ai-${aiScope}` ? <Loader2 size={17} className="animate-spin" /> : <Sparkles size={17} />}{aiScope === "day" ? "安排這一天" : "安排全行程"} · {aiCharge.label}</button></div>}>
       <div className="space-y-5">
         <div role="radiogroup" aria-label="AI 安排範圍" className="grid gap-3 sm:grid-cols-2">
-          <button type="button" role="radio" aria-checked={aiScope === "day"} onClick={() => setAIScope("day")} disabled={!activeDay || Boolean(action)} className={`min-h-36 rounded-2xl border p-4 text-left transition disabled:opacity-45 ${aiScope === "day" ? "border-violet-500 bg-violet-50 ring-2 ring-violet-100" : "border-[var(--line)] bg-white"}`}><span className="flex items-center justify-between gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-white text-violet-700"><CalendarDays size={20} /></span><span className={`h-5 w-5 rounded-full border-2 ${aiScope === "day" ? "border-violet-600 bg-violet-600 shadow-[inset_0_0_0_4px_white]" : "border-[var(--line)]"}`} /></span><strong className="mt-3 block">單日安排</strong><span className="mt-1 block text-xs leading-5 text-[var(--muted)]">{activeDay ? `${mobileDayHeading(activeDay, locale)} · 目前 ${activeRows.length} 個安排` : "請先選擇日期"}</span></button>
+          <button type="button" role="radio" aria-checked={aiScope === "day"} onClick={() => setAIScope("day")} disabled={!activeDay || Boolean(action)} className={`min-h-36 rounded-2xl border p-4 text-left transition disabled:opacity-45 ${aiScope === "day" ? "border-violet-500 bg-violet-50 ring-2 ring-violet-100" : "border-[var(--line)] bg-white"}`}><span className="flex items-center justify-between gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-white text-violet-700"><CalendarDays size={20} /></span><span className={`h-5 w-5 rounded-full border-2 ${aiScope === "day" ? "border-violet-600 bg-violet-600 shadow-[inset_0_0_0_4px_white]" : "border-[var(--line)]"}`} /></span><strong className="mt-3 block">單日安排</strong><span className="mt-1 block text-xs leading-5 text-[var(--muted)]">{activeDay ? `${mobileDayHeading(activeDay, locale)} · 目前 ${activeArrangementCount} 個安排` : "請先選擇日期"}</span></button>
           <button type="button" role="radio" aria-checked={aiScope === "trip"} onClick={() => setAIScope("trip")} disabled={Boolean(action)} className={`min-h-36 rounded-2xl border p-4 text-left transition disabled:opacity-45 ${aiScope === "trip" ? "border-violet-500 bg-violet-50 ring-2 ring-violet-100" : "border-[var(--line)] bg-white"}`}><span className="flex items-center justify-between gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-white text-violet-700"><Sparkles size={20} /></span><span className={`h-5 w-5 rounded-full border-2 ${aiScope === "trip" ? "border-violet-600 bg-violet-600 shadow-[inset_0_0_0_4px_white]" : "border-[var(--line)]"}`} /></span><strong className="mt-3 block">全行程安排</strong><span className="mt-1 block text-xs leading-5 text-[var(--muted)]">重新整理全部 {days.length} 天，並配合每日步調。</span></button>
         </div>
         <section className="rounded-2xl bg-[var(--paper)] p-4 text-sm leading-6"><p className="font-semibold">AI 會保留的內容</p><ul className="mt-2 grid gap-1.5 text-xs text-[var(--muted)]"><li>• 你手動新增的景點、餐廳與備註</li><li>• 已鎖定的項目與固定預約時間</li><li>• 單日模式下其他日期的所有行程</li></ul></section>
-        <button type="button" onClick={() => { setAIMenuOpen(false); void previewOptimization(aiScope === "day" ? activeDay : undefined); }} disabled={Boolean(action) || (aiScope === "day" ? activeRows.length < 2 : items.length < 2)} className="flex min-h-12 w-full items-center justify-between gap-3 rounded-xl border border-[var(--line)] bg-white px-4 text-left text-sm disabled:opacity-40"><span><strong className="block">只調整現有動線</strong><span className="mt-0.5 block text-xs font-normal text-[var(--muted)]">不新增景點，先預覽順序與移動時間</span></span><RouteIcon size={18} className="shrink-0 text-[var(--teal)]" /></button>
+        <button type="button" onClick={() => { setAIMenuOpen(false); void previewOptimization(aiScope === "day" ? activeDay : undefined); }} disabled={Boolean(action) || (aiScope === "day" ? activeRouteRows.length < 2 : tripRouteItemCount < 2)} className="flex min-h-12 w-full items-center justify-between gap-3 rounded-xl border border-[var(--line)] bg-white px-4 text-left text-sm disabled:opacity-40"><span><strong className="block">只調整現有動線</strong><span className="mt-0.5 block text-xs font-normal text-[var(--muted)]">不新增景點，先預覽順序與移動時間</span></span><RouteIcon size={18} className="shrink-0 text-[var(--teal)]" /></button>
       </div>
     </PlannerOverlay>
 
@@ -1061,6 +1178,15 @@ export function TripEditor({ tripId }: { tripId: string }) {
           <div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label="行程色系">
             {plannerThemes.map((theme) => <button key={theme.id} type="button" role="radio" aria-checked={plannerTheme === theme.id} onClick={() => selectPlannerTheme(theme.id)} className={`planner-theme-option ${plannerTheme === theme.id ? "planner-theme-option-active" : ""}`}><span className="flex gap-1.5" aria-hidden="true">{theme.colors.map((color) => <span key={color} className="planner-theme-swatch" style={{ backgroundColor: color }} />)}</span><strong className="mt-2 block text-sm">{theme.name}</strong><span className="mt-0.5 block text-[.68rem] text-[var(--muted)]">{theme.description}</span>{plannerTheme === theme.id && <Check size={16} className="planner-theme-check" />}</button>)}
           </div>
+        </section>
+        <section className="planner-tool-card">
+          <div className="mb-3"><h3 className="font-bold">全程餐食時間</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">一次調整每天的午餐與晚餐錨點；已跳過的餐卡仍保留設定。</p></div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <fieldset className="rounded-xl border border-amber-200 bg-amber-50/60 p-3"><legend className="px-1 text-sm font-bold text-amber-950">午餐</legend><div className="grid grid-cols-2 gap-2"><label className="text-xs font-semibold">時間<input type="time" value={scheduleDraft.lunch_time} onChange={(event) => setScheduleDraft((current) => ({ ...current, lunch_time: event.target.value }))} className={fieldClass} /></label><label className="text-xs font-semibold">停留<select value={scheduleDraft.lunch_duration_minutes} onChange={(event) => setScheduleDraft((current) => ({ ...current, lunch_duration_minutes: Number(event.target.value) }))} className={fieldClass}>{[30, 60, 90, 120, 150, 180].map((minutes) => <option key={minutes} value={minutes}>{minutes} 分</option>)}</select></label></div></fieldset>
+            <fieldset className="rounded-xl border border-orange-200 bg-orange-50/60 p-3"><legend className="px-1 text-sm font-bold text-orange-950">晚餐</legend><div className="grid grid-cols-2 gap-2"><label className="text-xs font-semibold">時間<input type="time" value={scheduleDraft.dinner_time} onChange={(event) => setScheduleDraft((current) => ({ ...current, dinner_time: event.target.value }))} className={fieldClass} /></label><label className="text-xs font-semibold">停留<select value={scheduleDraft.dinner_duration_minutes} onChange={(event) => setScheduleDraft((current) => ({ ...current, dinner_duration_minutes: Number(event.target.value) }))} className={fieldClass}>{[30, 60, 90, 120, 150, 180].map((minutes) => <option key={minutes} value={minutes}>{minutes} 分</option>)}</select></label></div></fieldset>
+          </div>
+          <button type="button" onClick={() => void saveScheduleDefaults()} disabled={Boolean(action) || scheduleDraft.lunch_time >= scheduleDraft.dinner_time} className="mt-3 flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 text-sm font-bold text-white disabled:opacity-45">{action === "schedule-defaults" ? <Loader2 size={16} className="animate-spin" /> : <Clock3 size={16} />}套用到所有日期</button>
+          {scheduleDraft.lunch_time >= scheduleDraft.dinner_time && <p className="mt-2 text-xs font-semibold text-red-700">午餐時間必須早於晚餐時間。</p>}
         </section>
         <section className="planner-tool-card">
           <div className="mb-3 flex items-center justify-between gap-3"><div><p className="font-bold">路線偏好</p><p className="mt-1 text-xs text-[var(--muted)]">套用到下一次查路與智慧調整</p></div><span className="rounded-full bg-[var(--teal-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--teal)]">{runtimeConfig.google_routes_enabled ? "Google Maps" : "Provider 未設定"}{runtimeConfig.navitime_enabled ? " · NAVITIME" : ""}</span></div>
@@ -1077,12 +1203,19 @@ export function TripEditor({ tripId }: { tripId: string }) {
       </div>
     </PlannerOverlay>
 
-    <PlannerOverlay open={Boolean(editingItem)} onClose={closeEditor} title={draftItem ? "新增安排" : "編輯安排"} description={draftItem ? "先填寫名稱；確認加入前不會修改目前行程。" : "修改會自動儲存；變更地點或時間後需重新查路。"} footer={draftItem && <div className="flex gap-3"><button type="button" onClick={closeEditor} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold">取消</button><button type="button" onClick={commitDraftItem} disabled={!draftItem.title.trim()} className="min-h-12 flex-[1.4] rounded-xl bg-[var(--teal)] px-4 font-semibold text-white disabled:opacity-40">加入行程</button></div>}>{editingItem && <div className="grid gap-5">
-      <label className="text-sm font-semibold">安排名稱<input value={editingItem.title} maxLength={255} onChange={(event) => patchItem(editingItem.id, { title: event.target.value }, false)} placeholder="例如：淺草寺與雷門" className={fieldClass} /></label>
-      <div><label className="text-sm font-semibold">地點</label><PlacePicker value={editingItem.location_name || ""} confirmed={editingItem.location_source === "confirmed" || (editingItem.location_source === "google_places" && editingItem.data.needs_place_confirmation !== true)} countryCodes={placeCountryCodes} bias={placeBias} onTextChange={(value) => patchItem(editingItem.id, { location_name: value, provider_place_id: null, latitude: null, longitude: null, location_source: null, is_estimated: true, data: { ...editingItem.data, place_match_status: "unresolved", needs_place_confirmation: true } })} onSelect={(place) => choosePlace(editingItem, place)} /><p className="mt-2 flex items-center gap-1.5 text-xs text-[var(--muted)]">{editingItem.location_source === "confirmed" || (editingItem.location_source === "google_places" && editingItem.data.needs_place_confirmation !== true) ? <><Check size={13} className="text-emerald-600" />地點已確認，可計算路線</> : editingItem.location_source === "google_places_auto" ? <><CircleAlert size={13} className="text-sky-700" />Google 自動配對，可直接搜尋更正</> : editingItem.location_name ? <><CircleAlert size={13} />請從搜尋結果選取，才能計算路線</> : <><MapPin size={13} />可稍後補上地點</>}</p></div>
-      <div className="grid grid-cols-2 gap-3"><label className="text-sm font-semibold">日期<select value={editingItem.day_date} onChange={(event) => { const previousDay = editingItem.day_date; patchItem(editingItem.id, { day_date: event.target.value, start_time: withTime(event.target.value, timeValue(editingItem.start_time)) }); setActiveDay(event.target.value); if (!draftItem) setStaleDays((current) => new Set([...current, previousDay, event.target.value])); }} className={fieldClass}>{days.map((value) => <option key={value} value={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">開始時間<input type="time" value={timeValue(editingItem.start_time)} onChange={(event) => patchItem(editingItem.id, { start_time: withTime(editingItem.day_date, event.target.value) })} className={fieldClass} /></label><label className="col-span-2 text-sm font-semibold sm:col-span-1">停留時間<select value={editingItem.duration_minutes || 60} onChange={(event) => patchItem(editingItem.id, { duration_minutes: Number(event.target.value) })} className={fieldClass}><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="90">1.5 小時</option><option value="120">2 小時</option><option value="180">3 小時</option></select></label></div>
-      <details className="planner-advanced-settings"><summary>備註與進階設定</summary><div className="grid gap-4 px-4 pb-4"><label className="text-sm font-semibold">備註<textarea rows={4} maxLength={4000} value={editingItem.notes || ""} onChange={(event) => patchItem(editingItem.id, { notes: event.target.value }, false)} placeholder="票券、集合方式、入口或集合點" className={fieldClass} /></label><div className="grid gap-2"><button type="button" aria-pressed={editingItem.locked} onClick={() => patchItem(editingItem.id, { locked: !editingItem.locked }, false)} className={`flex min-h-12 items-center gap-3 rounded-xl border px-4 text-left text-sm font-semibold ${editingItem.locked ? "border-amber-300 bg-amber-50 text-amber-900" : "border-[var(--line)]"}`}>{editingItem.locked ? <LockKeyhole size={18} /> : <Unlock size={18} />}{editingItem.locked ? "已鎖定，不參與排序" : "鎖定這個安排"}</button><button type="button" aria-pressed={Boolean(editingItem.fixed_time)} onClick={() => patchItem(editingItem.id, { fixed_time: !editingItem.fixed_time }, false)} className={`flex min-h-12 items-center gap-3 rounded-xl border px-4 text-left text-sm font-semibold ${editingItem.fixed_time ? "border-violet-300 bg-violet-50 text-violet-900" : "border-[var(--line)]"}`}><Clock3 size={18} />{editingItem.fixed_time ? "已固定預約時間" : "設為固定預約時間"}</button></div></div></details>
-      {!draftItem && <button type="button" onClick={() => removeItem(editingItem)} className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-red-200 bg-red-50 font-semibold text-red-800"><Trash2 size={18} />刪除這個安排</button>}
+    <PlannerOverlay open={lodgingOpen} onClose={() => { if (!action) setLodgingOpen(false); }} title="設定主要飯店" description="確認一次後會同步成每天的出發與返回錨點，不會把入住或退房事件混入外出路線。" footer={<div className="flex gap-3"><button type="button" onClick={() => setLodgingOpen(false)} disabled={Boolean(action)} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold disabled:opacity-40">取消</button><button type="button" onClick={() => void savePrimaryLodging()} disabled={Boolean(action) || !lodgingDraft.name.trim() || !lodgingDraft.location_name.trim()} className="flex min-h-12 flex-[1.4] items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 font-semibold text-white disabled:opacity-45">{action === "lodging" ? <Loader2 size={17} className="animate-spin" /> : <Check size={17} />}同步所有日期</button></div>}>
+      <div className="grid gap-5">
+        <label className="text-sm font-semibold">飯店名稱<input value={lodgingDraft.name} maxLength={255} onChange={(event) => setLodgingDraft((current) => ({ ...current, name: event.target.value }))} placeholder="例如：東京車站飯店" className={fieldClass} /></label>
+        <div><label className="text-sm font-semibold">搜尋並確認飯店地點</label><PlacePicker label="飯店地點" value={lodgingDraft.location_name} confirmed={Boolean(lodgingDraft.provider_place_id && lodgingDraft.latitude != null && lodgingDraft.longitude != null)} countryCodes={placeCountryCodes} bias={placeBias} onTextChange={(value) => setLodgingDraft((current) => ({ ...current, location_name: value, provider_place_id: "", latitude: undefined, longitude: undefined, location_source: "manual" }))} onSelect={chooseLodgingPlace} /><p className="mt-2 flex items-center gap-1.5 text-xs text-[var(--muted)]">{lodgingDraft.latitude != null && lodgingDraft.longitude != null ? <><Check size={13} className="text-emerald-600" />飯店地點已確認</> : <><CircleAlert size={13} />可先儲存；從搜尋結果確認後，才能建立完整每日來回路線</>}</p></div>
+      </div>
+    </PlannerOverlay>
+
+    <PlannerOverlay open={Boolean(editingItem)} onClose={closeEditor} title={editingMeal ? `編輯${editingItem?.system_role === "lunch" ? "午餐" : "晚餐"}` : draftItem ? "新增安排" : "編輯安排"} description={editingMeal ? "固定時間與停留長度由全程餐食設定管理；這裡只調整餐廳與備註。" : draftItem ? "先填寫名稱；確認加入前不會修改目前行程。" : "修改會自動儲存；變更地點或時間後需重新查路。"} footer={draftItem && <div className="flex gap-3"><button type="button" onClick={closeEditor} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold">取消</button><button type="button" onClick={commitDraftItem} disabled={!draftItem.title.trim()} className="min-h-12 flex-[1.4] rounded-xl bg-[var(--teal)] px-4 font-semibold text-white disabled:opacity-40">加入行程</button></div>}>{editingItem && <div className="grid gap-5">
+      <label className="text-sm font-semibold">{editingMeal ? "餐廳名稱" : "安排名稱"}<input value={editingItem.title} maxLength={255} onChange={(event) => patchItem(editingItem.id, { title: event.target.value, ...(editingMeal ? { data: { ...editingItem.data, meal_selection_source: "user" } } : {}) }, false)} placeholder={editingMeal ? "例如：車站旁的定食餐廳" : "例如：淺草寺與雷門"} className={fieldClass} /></label>
+      <div><label className="text-sm font-semibold">{editingMeal ? "餐廳地點" : "地點"}</label><PlacePicker label={editingMeal ? "餐廳地點" : "地點"} value={editingItem.location_name || ""} confirmed={editingItem.location_source === "confirmed" || (editingItem.location_source === "google_places" && editingItem.data.needs_place_confirmation !== true)} countryCodes={placeCountryCodes} bias={placeBias} onTextChange={(value) => patchItem(editingItem.id, { location_name: value, provider_place_id: null, latitude: null, longitude: null, location_source: null, is_estimated: true, data: { ...editingItem.data, place_match_status: "unresolved", needs_place_confirmation: true, ...(editingMeal ? { meal_selection_source: "user" } : {}) } })} onSelect={(place) => choosePlace(editingItem, place)} /><p className="mt-2 flex items-center gap-1.5 text-xs text-[var(--muted)]">{editingItem.location_source === "confirmed" || (editingItem.location_source === "google_places" && editingItem.data.needs_place_confirmation !== true) ? <><Check size={13} className="text-emerald-600" />地點已確認，可計算路線</> : editingItem.location_source === "google_places_auto" ? <><CircleAlert size={13} className="text-sky-700" />Google 自動配對，可直接搜尋更正</> : editingItem.location_name ? <><CircleAlert size={13} />請從搜尋結果選取，才能計算路線</> : <><MapPin size={13} />可稍後補上地點</>}</p></div>
+      {!editingItem.system_role && <div className="grid grid-cols-2 gap-3"><label className="text-sm font-semibold">日期<select value={editingItem.day_date} onChange={(event) => { const previousDay = editingItem.day_date; patchItem(editingItem.id, { day_date: event.target.value, start_time: withTime(event.target.value, timeValue(editingItem.start_time)) }); setActiveDay(event.target.value); if (!draftItem) setStaleDays((current) => new Set([...current, previousDay, event.target.value])); }} className={fieldClass}>{days.map((value) => <option key={value} value={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">開始時間<input type="time" value={timeValue(editingItem.start_time)} onChange={(event) => patchItem(editingItem.id, { start_time: withTime(editingItem.day_date, event.target.value) })} className={fieldClass} /></label><label className="col-span-2 text-sm font-semibold sm:col-span-1">停留時間<select value={editingItem.duration_minutes || 60} onChange={(event) => patchItem(editingItem.id, { duration_minutes: Number(event.target.value) })} className={fieldClass}><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="90">1.5 小時</option><option value="120">2 小時</option><option value="180">3 小時</option></select></label></div>}
+      {editingMeal ? <label className="text-sm font-semibold">備註<textarea rows={4} maxLength={4000} value={editingItem.notes || ""} onChange={(event) => patchItem(editingItem.id, { notes: event.target.value }, false)} placeholder="訂位資訊、飲食需求或集合方式" className={fieldClass} /></label> : <details className="planner-advanced-settings"><summary>備註與進階設定</summary><div className="grid gap-4 px-4 pb-4"><label className="text-sm font-semibold">備註<textarea rows={4} maxLength={4000} value={editingItem.notes || ""} onChange={(event) => patchItem(editingItem.id, { notes: event.target.value }, false)} placeholder="票券、集合方式、入口或集合點" className={fieldClass} /></label><div className="grid gap-2"><button type="button" aria-pressed={editingItem.locked} onClick={() => patchItem(editingItem.id, { locked: !editingItem.locked }, false)} className={`flex min-h-12 items-center gap-3 rounded-xl border px-4 text-left text-sm font-semibold ${editingItem.locked ? "border-amber-300 bg-amber-50 text-amber-900" : "border-[var(--line)]"}`}>{editingItem.locked ? <LockKeyhole size={18} /> : <Unlock size={18} />}{editingItem.locked ? "已鎖定，不參與排序" : "鎖定這個安排"}</button><button type="button" aria-pressed={Boolean(editingItem.fixed_time)} onClick={() => patchItem(editingItem.id, { fixed_time: !editingItem.fixed_time }, false)} className={`flex min-h-12 items-center gap-3 rounded-xl border px-4 text-left text-sm font-semibold ${editingItem.fixed_time ? "border-violet-300 bg-violet-50 text-violet-900" : "border-[var(--line)]"}`}><Clock3 size={18} />{editingItem.fixed_time ? "已固定預約時間" : "設為固定預約時間"}</button></div></div></details>}
+      {!draftItem && !editingItem.system_role && <button type="button" onClick={() => removeItem(editingItem)} className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-red-200 bg-red-50 font-semibold text-red-800"><Trash2 size={18} />刪除這個安排</button>}
     </div>}</PlannerOverlay>
 
     <PlannerOverlay open={routeDrawerOpen && Boolean(routeTarget)} onClose={closeRouteDrawer} title="這段路怎麼走" description="比較交通方式與下一站時間；確認套用前不會修改行程。" size="wide" expandable>{routeTarget && <RouteModePanel key={`${routeTarget.fromItemId}-${routeTarget.toItemId}-${trip.version}`} trip={trip} items={items} fromItemId={routeTarget.fromItemId} toItemId={routeTarget.toItemId} initialSegment={selectedRoute} onError={setError} onResolved={(updated) => { replaceTrip(updated); setRoutes(updated.route_segments || []); setSelectedRoute(updated.route_segments?.find((route) => route.from_item_id === routeTarget.fromItemId && route.to_item_id === routeTarget.toItemId)); persistedRevisionRef.current = revisionRef.current; updateSaveState("saved"); setNotice("已用 Google 自動配對地點，正在取得路線預覽。"); }} onEditItem={(itemId) => { closeRouteDrawer(); window.setTimeout(() => setEditingId(itemId), 0); }} onApplied={(updated) => { replaceTrip(updated); setRoutes(updated.route_segments || []); const applied = updated.route_segments?.find((route) => route.from_item_id === routeTarget.fromItemId && route.to_item_id === routeTarget.toItemId); setSelectedRoute(applied); setStaleDays((current) => { const next = new Set(current); const day = updated.items.find((item) => item.id === routeTarget.fromItemId)?.day_date; if (day) next.delete(day); return next; }); persistedRevisionRef.current = revisionRef.current; updateSaveState("saved"); setNotice("已套用交通方式，後續可調整的開始時間已重新計算。"); }} />}</PlannerOverlay>
