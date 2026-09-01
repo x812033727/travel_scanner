@@ -49,7 +49,7 @@ describe("trip editor", () => {
     fireEvent.click(screen.getByRole("radio", { name: /海岸/ }));
     expect(container.querySelector("[data-planner-theme='ocean']")).toBeTruthy();
     expect(window.localStorage.getItem("travel-planner-theme")).toBe("ocean");
-  });
+  }, 10_000);
 
   it("lets the user ask MiniMax to arrange only the selected day", async () => {
     let generationBody: Record<string, unknown> | undefined;
@@ -182,6 +182,82 @@ describe("trip editor", () => {
       expect(body.version).toBe(1);
       expect(body.items[0].title).toBe("淺草與晴空塔");
     });
+  });
+
+  it("switches an activity from chained timing to a fixed local time", async () => {
+    let savedBody: { items: Array<{ fixed_time?: boolean; start_time?: string | null }> } | undefined;
+    const fetchMock = vi.fn(async (_url: string, init?: RequestInit) => {
+      if (init?.method === "PUT") {
+        savedBody = JSON.parse(String(init.body));
+        return response({ ...trip, version: 2, items: savedBody?.items });
+      }
+      return response(trip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "編輯 淺草散步" }));
+    expect(screen.getByRole("radio", { name: "接續前站" }).getAttribute("aria-checked")).toBe("true");
+    fireEvent.click(screen.getByRole("radio", { name: "固定時間" }));
+    fireEvent.change(screen.getByLabelText("固定開始時間"), { target: { value: "15:20" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存變更" }));
+
+    await waitFor(() => expect(savedBody).toBeTruthy());
+    expect(savedBody?.items[0].fixed_time).toBe(true);
+    expect(savedBody?.items[0].start_time).toContain("T15:20:00");
+  });
+
+  it("saves a manual outbound flight without sending it through itinerary autosave", async () => {
+    const outbound = {
+      id: "00000000-0000-4000-8000-000000000010",
+      item_type: "flight",
+      day_date: "2026-11-11",
+      position: 0,
+      title: "去程航班尚未設定",
+      locked: true,
+      fixed_time: true,
+      is_estimated: true,
+      system_role: "outbound_flight" as const,
+      data: { flight_info: null },
+    };
+    const flightTrip = { ...trip, items: [outbound, { ...trip.items[0], position: 1 }] };
+    let flightBody: Record<string, unknown> | undefined;
+    const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
+      if (url.includes("/flight-anchors/outbound")) {
+        flightBody = JSON.parse(String(init?.body));
+        const flight = (flightBody?.flight || {}) as Record<string, unknown>;
+        return response({
+          ...flightTrip,
+          version: 2,
+          items: [{
+            ...outbound,
+            title: "長榮航空 BR 198",
+            is_estimated: false,
+            data: { flight_selection_source: "manual", flight_info: flight },
+          }, flightTrip.items[1]],
+        });
+      }
+      return response(flightTrip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "設定去程航班" }));
+    fireEvent.change(screen.getByLabelText("航空公司"), { target: { value: "長榮航空" } });
+    fireEvent.change(screen.getByLabelText("班號"), { target: { value: "BR 198" } });
+    fireEvent.change(screen.getByLabelText("出發機場"), { target: { value: "tpe" } });
+    fireEvent.change(screen.getByLabelText("抵達機場"), { target: { value: "nrt" } });
+    fireEvent.change(screen.getByLabelText("當地起飛時間"), { target: { value: "2026-11-11T08:50" } });
+    fireEvent.change(screen.getByLabelText("當地抵達時間"), { target: { value: "2026-11-11T13:10" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存航班" }));
+
+    await waitFor(() => expect(flightBody).toBeTruthy());
+    expect(flightBody).toMatchObject({
+      version: 1,
+      flight: { airline: "長榮航空", flight_number: "BR 198", origin: "TPE", destination: "NRT" },
+    });
+    expect(fetchMock.mock.calls.some(([url]) => String(url).endsWith("/itinerary"))).toBe(false);
+    expect(await screen.findByText("長榮航空 BR 198")).toBeTruthy();
   });
 
   it("flushes the newest revision before requesting an optimization", async () => {

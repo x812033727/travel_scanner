@@ -37,11 +37,13 @@ const directRoute: RouteSegment = {
 describe("readonly itinerary timeline", () => {
   it("hides skipped meals, keeps hotel anchors, and separates logistics", () => {
     const items = [
+      item("flight-out", "長榮航空 BR 198", 0, { item_type: "flight", system_role: "outbound_flight", fixed_time: true, locked: true, data: { flight_info: { airline: "長榮航空", flight_number: "BR 198", origin: "TPE", destination: "NRT", departure_local: "2026-11-10T08:50", arrival_local: "2026-11-10T13:10" } } }),
       item("hotel-start", "從丸之內飯店出發", 0, { item_type: "hotel_anchor", system_role: "hotel_start", locked: true }),
       item("activity", "淺草寺", 1),
       item("lunch", "已跳過午餐", 2, { item_type: "meal", system_role: "lunch", is_skipped: true, locked: true }),
       item("dinner", "銀座晚餐", 3, { item_type: "meal", system_role: "dinner", locked: true }),
       item("hotel-end", "返回丸之內飯店", 4, { item_type: "hotel_anchor", system_role: "hotel_end", locked: true }),
+      item("flight-return", "回程航班尚未設定", 5, { item_type: "flight", system_role: "return_flight", fixed_time: true, locked: true, data: { flight_info: null } }),
       item("flight", "抵達羽田機場", 5, { item_type: "flight", data: { timeline_section: "logistics" } }),
     ];
 
@@ -52,6 +54,8 @@ describe("readonly itinerary timeline", () => {
     expect(screen.getByText("返回丸之內飯店")).toBeTruthy();
     expect(screen.getByText("交通與住宿資訊")).toBeTruthy();
     expect(screen.getByText("抵達羽田機場")).toBeTruthy();
+    expect(screen.getByText("去程航班")).toBeTruthy();
+    expect(screen.getByText("回程航班尚未設定")).toBeTruthy();
     expect(screen.getByText("步行 · 18 分鐘")).toBeTruthy();
   });
 });

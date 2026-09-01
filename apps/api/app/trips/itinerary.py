@@ -79,6 +79,56 @@ def _at(day: date, hour: int, minute: int = 0, timezone: ZoneInfo | None = None)
     return datetime.combine(day, time(hour, minute), tzinfo=timezone or UTC)
 
 
+def _local_flight_time(value: datetime | None) -> str | None:
+    if value is None:
+        return None
+    return value.replace(tzinfo=None).isoformat(timespec="minutes")
+
+
+def _flight_timezone(value: datetime | None, provider_timezone: str | None) -> str | None:
+    if provider_timezone:
+        return provider_timezone
+    if value is None or value.utcoffset() is None:
+        return None
+    offset = value.strftime("%z")
+    return f"{offset[:3]}:{offset[3:]}" if len(offset) == 5 else offset or None
+
+
+def _flight_info(flight: FlightOffer, *, returning: bool) -> dict[str, Any]:
+    leg_index = 1 if returning else 0
+    segments = [segment for segment in flight.segments if segment.leg_index == leg_index]
+    first = segments[0] if segments else None
+    last = segments[-1] if segments else None
+    departure = (
+        flight.return_departure_time
+        if returning
+        else first.departure_time if first else flight.departure_time
+    )
+    arrival = (
+        flight.return_arrival_time
+        if returning
+        else last.arrival_time if last else flight.arrival_time
+    )
+    return {
+        "airline": first.airline if first else flight.airline,
+        "flight_number": first.flight_number if first else flight.flight_number,
+        "origin": first.origin if first else (flight.destination if returning else flight.origin),
+        "destination": (
+            last.destination if last else (flight.origin if returning else flight.destination)
+        ),
+        "departure_local": _local_flight_time(departure),
+        "arrival_local": _local_flight_time(arrival),
+        "departure_timezone": _flight_timezone(
+            departure, first.departure_timezone if first else None
+        ),
+        "arrival_timezone": _flight_timezone(
+            arrival, last.arrival_timezone if last else None
+        ),
+        "stops": max(0, len(segments) - 1),
+        "segments": [segment.model_dump(mode="json") for segment in segments],
+    }
+
+
 def _date_range(start: date, end: date) -> list[date]:
     return [start + timedelta(days=offset) for offset in range(max(1, (end - start).days + 1))]
 
@@ -175,6 +225,7 @@ def build_itinerary(
         )
 
     if flight:
+        flight_info = _flight_info(flight, returning=False)
         add(
             days[0],
             item_type="flight",
@@ -184,10 +235,15 @@ def build_itinerary(
             start_time=flight.departure_time,
             end_time=flight.arrival_time,
             locked=True,
+            fixed_time=True,
+            system_role="outbound_flight",
             data={
                 "source_mode": flight.source_mode,
                 "is_bookable": flight.is_bookable,
-                "timeline_section": "logistics",
+                "timeline_section": "flight_anchor",
+                "flight_leg": "outbound",
+                "flight_selection_source": "provider",
+                "flight_info": flight_info,
                 **destination_context,
             },
         )
@@ -477,19 +533,25 @@ def build_itinerary(
             },
         )
     if flight and flight.return_departure_time:
+        flight_info = _flight_info(flight, returning=True)
         add(
             days[-1],
             item_type="flight",
             offer_id=flight.id,
-            title=f"搭乘 {flight.airline} 返回",
-            location_name=f"{flight.destination} → {flight.origin}",
+            title=f"{flight_info['airline']} {flight_info['flight_number']} 返回",
+            location_name=f"{flight_info['origin']} → {flight_info['destination']}",
             start_time=flight.return_departure_time,
             end_time=flight.return_arrival_time,
             locked=True,
+            fixed_time=True,
+            system_role="return_flight",
             data={
                 "source_mode": flight.source_mode,
                 "is_bookable": flight.is_bookable,
-                "timeline_section": "logistics",
+                "timeline_section": "flight_anchor",
+                "flight_leg": "return",
+                "flight_selection_source": "provider",
+                "flight_info": flight_info,
                 **destination_context,
             },
         )
@@ -568,12 +630,24 @@ def build_itinerary(
 
     logistics_types = {"flight", "transport", "hotel"}
     for day_value in days:
+        outbound_flights = [
+            item for item in rows[day_value] if item.system_role == "outbound_flight"
+        ]
+        return_flights = [
+            item for item in rows[day_value] if item.system_role == "return_flight"
+        ]
         route_rows = [
             item
             for item in rows[day_value]
             if not (item.system_role is None and item.item_type in logistics_types)
+            and item.system_role not in {"outbound_flight", "return_flight"}
         ]
-        logistics = [item for item in rows[day_value] if item not in route_rows]
+        logistics = [
+            item
+            for item in rows[day_value]
+            if item not in route_rows
+            and item.system_role not in {"outbound_flight", "return_flight"}
+        ]
         route_rows.sort(
             key=lambda item: (
                 0
@@ -585,7 +659,12 @@ def build_itinerary(
                 item.position,
             )
         )
-        rows[day_value] = [*route_rows, *logistics]
+        rows[day_value] = [
+            *outbound_flights,
+            *route_rows,
+            *return_flights,
+            *logistics,
+        ]
         for position, item in enumerate(rows[day_value]):
             item.position = position
 

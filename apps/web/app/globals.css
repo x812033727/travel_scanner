@@ -201,10 +201,65 @@ a { color: inherit; text-decoration: none; }
   color: #70461d;
 }
 .planner-system-card-skipped {
-  border-style: dashed;
-  background: color-mix(in srgb, var(--paper) 82%, white);
+  border-color: #cbd5e1;
+  background: linear-gradient(135deg, #f1f5f9, #e8edf2);
+  color: #64748b;
   box-shadow: none;
 }
+.planner-system-card-skipped > :first-child {
+  filter: grayscale(.8);
+  opacity: .78;
+}
+.planner-system-card-skipped .planner-system-primary {
+  border: 1px solid #94a3b8;
+  background: #fff;
+  color: #334155;
+}
+.planner-flight-card {
+  border: 1px solid color-mix(in srgb, #3b82a8 34%, var(--line));
+  border-radius: 1.25rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #eef7fb, #e8f1f7);
+  box-shadow: 0 5px 18px rgba(35, 82, 110, .07);
+}
+.planner-flight-icon {
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: .9rem;
+  background: #fff;
+  color: #27658a;
+  box-shadow: 0 3px 10px rgba(39, 101, 138, .1);
+}
+.planner-flight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.76);
+  padding: .3rem .55rem;
+  color: #526b7b;
+  font-size: .67rem;
+  font-weight: 750;
+}
+.planner-flight-action {
+  display: inline-flex;
+  min-height: 2.75rem;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  margin-top: .85rem;
+  border: 1px solid rgba(39, 101, 138, .22);
+  border-radius: .85rem;
+  background: rgba(255,255,255,.82);
+  color: #275d7d;
+  font-size: .8rem;
+  font-weight: 800;
+}
+.planner-flight-action:disabled { opacity: .45; }
 .planner-system-icon {
   display: grid;
   width: 2.45rem;
@@ -397,17 +452,6 @@ a { color: inherit; text-decoration: none; }
 
 .planner-timeline {
   position: relative;
-}
-
-.planner-timeline::before {
-  position: absolute;
-  top: 1.5rem;
-  bottom: 1.5rem;
-  left: 1.15rem;
-  width: 2px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, var(--teal), color-mix(in srgb, var(--teal) 15%, transparent));
-  content: "";
 }
 
 .planner-timeline-marker {

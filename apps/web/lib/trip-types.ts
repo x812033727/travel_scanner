@@ -21,7 +21,7 @@ export type TripItem = {
   duration_minutes?: number | null;
   notes?: string | null;
   fixed_time?: boolean;
-  system_role?: "hotel_start" | "lunch" | "dinner" | "hotel_end" | null;
+  system_role?: "outbound_flight" | "hotel_start" | "lunch" | "dinner" | "hotel_end" | "return_flight" | null;
   is_skipped?: boolean;
 };
 
@@ -170,6 +170,10 @@ export type Trip = {
 
 export function formatTime(value?: string | null, locale?: string, timeZone?: string) {
   if (!value) return "彈性時段";
+  const localWallClock = value.match(
+    /^\d{4}-\d{2}-\d{2}T(\d{2}):(\d{2})(?::\d{2}(?:\.\d+)?)?$/,
+  );
+  if (localWallClock) return `${localWallClock[1]}:${localWallClock[2]}`;
   return new Intl.DateTimeFormat(locale || activeLocale(), {
     hour: "2-digit",
     minute: "2-digit",
@@ -193,6 +197,12 @@ export function isLogisticsItem(item: TripItem) {
   );
 }
 
+export function isFlightAnchor(item: TripItem): item is TripItem & {
+  system_role: "outbound_flight" | "return_flight";
+} {
+  return item.system_role === "outbound_flight" || item.system_role === "return_flight";
+}
+
 export function isActiveRouteItem(item: TripItem) {
-  return !item.is_skipped && !isLogisticsItem(item);
+  return !item.is_skipped && !isFlightAnchor(item) && !isLogisticsItem(item);
 }
