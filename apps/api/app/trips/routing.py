@@ -6,7 +6,7 @@ import json
 from dataclasses import dataclass
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
-from typing import Any, Protocol, cast
+from typing import Any, Literal, Protocol, cast
 from urllib.parse import urlencode
 from uuid import UUID
 
@@ -16,6 +16,9 @@ from redis.asyncio import Redis
 
 from app.config import Settings, get_settings
 from app.providers.usage_meter import record_google_maps_request
+
+TravelMode = Literal["transit", "walk", "drive"]
+TRAVEL_MODES: set[str] = {"transit", "walk", "drive"}
 
 
 class RoutePoint(BaseModel):
@@ -49,6 +52,8 @@ class RouteSegment(BaseModel):
     from_item_id: UUID
     to_item_id: UUID
     status: str = "resolved"
+    travel_mode: TravelMode = "transit"
+    is_override: bool = False
     provider: str
     attribution: str
     generated_at: datetime
@@ -56,6 +61,11 @@ class RouteSegment(BaseModel):
     schedule_mode: str = "scheduled"
     preference: str = "FEWER_TRANSFERS"
     duration_minutes: int
+    buffer_minutes: int = 0
+    departure_time: datetime | None = None
+    arrival_time: datetime | None = None
+    ready_time: datetime | None = None
+    expires_at: datetime | None = None
     distance_meters: int | None = None
     fare: Decimal | None = None
     currency: str | None = None
@@ -83,6 +93,7 @@ class RouteProvider(Protocol):
         destination: RoutePoint,
         departure_time: datetime | None,
         preference: str,
+        travel_mode: TravelMode,
     ) -> RouteSegment | None: ...
 
 
@@ -207,25 +218,39 @@ class GoogleRouteProvider:
         destination: RoutePoint,
         departure_time: datetime | None,
         preference: str,
+        travel_mode: TravelMode = "transit",
     ) -> RouteSegment | None:
         if not self.settings.google_maps_api_key:
             return None
-        effective_time, schedule_mode, warnings = supported_transit_time(departure_time)
+        if travel_mode == "transit":
+            effective_time, schedule_mode, warnings = supported_transit_time(departure_time)
+        elif travel_mode == "drive" and departure_time is not None:
+            effective_time = max(departure_time.astimezone(UTC), datetime.now(UTC))
+            schedule_mode, warnings = "scheduled", []
+        else:
+            effective_time, schedule_mode, warnings = None, "live", []
+        if travel_mode == "walk":
+            warnings.append("步行路線為測試版，請依現場道路與安全狀況調整。")
         transit_preference = (
-            preference if preference in {"FEWER_TRANSFERS", "LESS_WALKING"} else None
+            preference
+            if travel_mode == "transit"
+            and preference in {"FEWER_TRANSFERS", "LESS_WALKING"}
+            else None
         )
         body: dict[str, Any] = {
             "origin": self.waypoint(origin),
             "destination": self.waypoint(destination),
-            "travelMode": "TRANSIT",
+            "travelMode": travel_mode.upper(),
             "languageCode": "zh-TW",
             "units": "METRIC",
             "computeAlternativeRoutes": False,
         }
-        if effective_time is not None:
+        if effective_time is not None and travel_mode in {"transit", "drive"}:
             body["departureTime"] = effective_time.isoformat().replace("+00:00", "Z")
         if transit_preference:
             body["transitPreferences"] = {"routingPreference": transit_preference}
+        if travel_mode == "drive":
+            body["routingPreference"] = "TRAFFIC_AWARE"
         fields = (
             "routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline,"
             "routes.travelAdvisory.transitFare,routes.legs.steps.travelMode,"
@@ -286,7 +311,7 @@ class GoogleRouteProvider:
                 "origin": origin.name or f"{origin.latitude},{origin.longitude}",
                 "destination": destination.name
                 or f"{destination.latitude},{destination.longitude}",
-                "travelmode": "transit",
+                "travelmode": travel_mode,
                 **(
                     {"origin_place_id": origin.provider_place_id}
                     if origin.provider_place_id
@@ -303,6 +328,7 @@ class GoogleRouteProvider:
         return RouteSegment(
             from_item_id=origin.item_id,
             to_item_id=destination.item_id,
+            travel_mode=travel_mode,
             provider=self.name,
             attribution="Google Maps",
             generated_at=datetime.now(UTC),
@@ -336,8 +362,9 @@ class NavitimeRouteProvider:
         destination: RoutePoint,
         departure_time: datetime | None,
         preference: str,
+        travel_mode: TravelMode = "transit",
     ) -> RouteSegment | None:
-        if not self.settings.navitime_configured:
+        if travel_mode != "transit" or not self.settings.navitime_configured:
             return None
         base = str(self.settings.navitime_api_base_url).rstrip("/")
         url = f"{base}/{self.settings.navitime_client_id}/v1/route_transit"
@@ -410,6 +437,7 @@ class NavitimeRouteProvider:
         return RouteSegment(
             from_item_id=origin.item_id,
             to_item_id=destination.item_id,
+            travel_mode="transit",
             provider=self.name,
             attribution="NAVITIME JAPAN",
             generated_at=datetime.now(UTC),
@@ -437,8 +465,10 @@ class RouteService:
         self.google = google or GoogleRouteProvider(self.settings, None, redis)
         self.navitime = navitime or NavitimeRouteProvider(self.settings)
 
-    def _providers(self, japan: bool) -> list[RouteProvider]:
-        return [self.google, self.navitime] if japan else [self.google]
+    def _providers(self, japan: bool, travel_mode: TravelMode) -> list[RouteProvider]:
+        if japan and travel_mode == "transit":
+            return [self.navitime, self.google]
+        return [self.google]
 
     async def compute(
         self,
@@ -448,6 +478,7 @@ class RouteService:
         preference: str,
         *,
         japan: bool,
+        travel_mode: TravelMode = "transit",
         refresh: bool = False,
     ) -> RouteSegment | None:
         raw_key = json.dumps(
@@ -459,6 +490,7 @@ class RouteService:
                 "t": departure_time.isoformat() if departure_time else None,
                 "p": preference,
                 "j": japan,
+                "m": travel_mode,
             },
             sort_keys=True,
         ).encode()
@@ -471,9 +503,9 @@ class RouteService:
                 return cached_segment.model_copy(
                     update={"from_item_id": origin.item_id, "to_item_id": destination.item_id}
                 )
-        for provider in self._providers(japan):
+        for provider in self._providers(japan, travel_mode):
             provider_segment = await provider.compute(
-                origin, destination, departure_time, preference
+                origin, destination, departure_time, preference, travel_mode
             )
             if provider_segment is not None:
                 await self.redis.set(
@@ -490,6 +522,7 @@ class RouteService:
         preference: str,
         *,
         japan: bool,
+        travel_mode: TravelMode = "transit",
         refresh: bool = False,
     ) -> list[RouteSegment | None]:
         semaphore = asyncio.Semaphore(4)
@@ -498,6 +531,7 @@ class RouteService:
             async with semaphore:
                 return await self.compute(
                     pair[0], pair[1], pair[2], preference, japan=japan, refresh=refresh
+                    , travel_mode=travel_mode
                 )
 
         return await asyncio.gather(*(one(pair) for pair in pairs))

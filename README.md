@@ -320,6 +320,31 @@ The planner also supports structured Places selections, per-day ordering,
 fixed appointments, duration and notes, detailed transit steps, and read-only
 shared views.
 
+Saved trips automatically enqueue a `trip-routes` RQ job after AI place
+resolution. Routes are calculated in itinerary order, one day at a time, so
+each next start is based on the previous stop's end, the provider duration, and
+the day's buffer (transit and 10 minutes by default). Flexible and locked stops
+may move in time; `fixed_time` appointments keep their scheduled time and expose
+the predicted arrival plus a lateness warning instead of being silently moved.
+Normalized day settings and applied segments are durable PostgreSQL records;
+third-party raw responses and 15-minute route previews stay in Redis.
+
+The planner route API supports lightweight status polling and deliberate
+preview-before-apply interactions:
+
+- `GET /api/v1/trips/{id}/routes/status`
+- `POST /api/v1/trips/{id}/routes/compute-day`
+- `POST /api/v1/trips/{id}/routes/preview`
+- `POST /api/v1/trips/{id}/routes/apply`
+
+Each day can default to transit, walking, or driving with a 0, 5, 10, 15, or
+30 minute buffer. Individual adjacent segments may override the day default.
+Changing tabs only loads a preview and its downstream schedule impact; the
+trip version and saved times change only after the user applies it. If no
+provider route is available, an explicitly labelled manual duration can be
+saved without inventing distance, fare, or navigation steps. Existing
+`/routes/compute` and `/routes/refresh` callers remain supported.
+
 Google Routes is the global fallback. Set `GOOGLE_MAPS_API_KEY` after enabling
 Places API (New), Routes API, and Weather API for server-side calls, and use an origin-restricted
 `NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY` for the optional embedded planner map.
@@ -347,7 +372,9 @@ window remain usable and show that weather is not yet available instead of
 inventing a long-range forecast. Enable the service by following the official
 [Google Weather API setup guide](https://developers.google.com/maps/documentation/weather/cloud-setup).
 
-Japan transit enhancement is optional. Set `NAVITIME_API_BASE_URL`,
+Japan transit enhancement is optional and is preferred for transit journeys in
+Japan, with Google Routes as fallback. Walking and driving use Google Routes.
+Set `NAVITIME_API_BASE_URL`,
 `NAVITIME_CLIENT_ID`, and `NAVITIME_API_KEY` only after obtaining the required
 commercial rights. When configured, sourced exit, platform, and recommended-car
 fields are displayed. Missing details are explicitly marked unavailable and are

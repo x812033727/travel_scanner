@@ -12,7 +12,10 @@ def worker_class(os_name: str = os.name) -> type[Worker] | type[SimpleWorker]:
 
 def main() -> None:
     connection = Redis.from_url(get_settings().redis_url)
-    worker_class()([Queue("search", connection=connection)], connection=connection).work()
+    worker_class()(
+        [Queue("search", connection=connection), Queue("trip-routes", connection=connection)],
+        connection=connection,
+    ).work()
 
 
 if __name__ == "__main__":

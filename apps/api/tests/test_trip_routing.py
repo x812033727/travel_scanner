@@ -255,12 +255,12 @@ class CountingProvider:
 
 
 @pytest.mark.asyncio
-async def test_japan_routes_prefer_google_before_navitime() -> None:
+async def test_japan_transit_routes_prefer_navitime_before_google() -> None:
     service = RouteService(
         fakeredis.aioredis.FakeRedis(decode_responses=True),
         Settings(route_cache_ttl_seconds=300),
-        google=WorkingProvider(),
-        navitime=UnexpectedProvider(),
+        google=UnexpectedProvider(),
+        navitime=WorkingProvider(),
     )
     segment = await service.compute(
         point("A", 35.1, 139.1),
@@ -278,8 +278,8 @@ async def test_japan_provider_falls_back_and_cached_ids_are_rebound() -> None:
     service = RouteService(
         redis,
         Settings(route_cache_ttl_seconds=300),
-        google=EmptyProvider(),
-        navitime=WorkingProvider(),
+        google=WorkingProvider(),
+        navitime=EmptyProvider(),
     )
     first = await service.compute(
         point("A", 35.1, 139.1),

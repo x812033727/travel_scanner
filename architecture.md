@@ -49,6 +49,22 @@ locked, and fixed-time rows are copied into the AI context without database IDs
 and preserved in storage. Live AI commits one use after the replacement is
 saved, while catalog fallback or failure releases the reservation.
 
+Trip routing is a child workflow of the saved itinerary. AI creation returns
+the itinerary immediately and enqueues a `trip-routes` job; the worker computes
+adjacent pairs sequentially within each day because later start times depend on
+earlier travel and buffer durations. `trip_route_day_settings` stores the daily
+mode, preference, and buffer. `trip_route_segments` stores only normalized,
+applied provider or manual results. Alternate-mode previews are user-triggered,
+cached in Redis for 15 minutes, and carry a projected schedule impact without
+mutating the trip.
+
+Route writes use optimistic trip versions. Editing a stop invalidates only its
+incoming and outgoing pairs. Flexible and locked-but-not-fixed stops propagate
+forward; fixed-time appointments preserve their scheduled start and record a
+lateness conflict. Stale background jobs discard their result instead of
+overwriting newer edits. Google Routes covers transit, walking, and driving;
+configured NAVITIME is preferred for Japan transit only.
+
 Provider selection is module-specific. Flights choose Skyscanner, Amadeus or
 mock through `FLIGHT_PROVIDER_MODE`, while lodging, activities and transport
 retain their existing travel provider. Skyscanner uses create/poll batches that

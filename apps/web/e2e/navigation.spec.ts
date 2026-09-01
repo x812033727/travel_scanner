@@ -242,6 +242,69 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   expect(box?.height || 0).toBeGreaterThanOrEqual(44);
 });
 
+test("route drawer previews a car route before applying and keeps it after reload", async ({ page }) => {
+  const transitSegment = {
+    from_item_id: "route-stop-1", to_item_id: "route-stop-2", status: "resolved", travel_mode: "transit", is_override: false,
+    provider: "google_routes", attribution: "Google Maps", generated_at: "2026-09-01T01:00:00Z", expires_at: "2026-09-01T01:15:00Z",
+    schedule_mode: "scheduled", preference: "FEWER_TRANSFERS", duration_minutes: 24, buffer_minutes: 10,
+    departure_time: "2026-11-11T01:00:00Z", arrival_time: "2026-11-11T01:24:00Z", ready_time: "2026-11-11T01:34:00Z",
+    distance_meters: 7200, steps: [], details_available: [] as string[], warnings: [] as string[],
+  };
+  const carSegment = {
+    ...transitSegment, travel_mode: "drive", is_override: true, duration_minutes: 12, buffer_minutes: 10,
+    arrival_time: "2026-11-11T01:12:00Z", ready_time: "2026-11-11T01:22:00Z", distance_meters: 6100,
+    warnings: ["汽車時間不包含停車或叫車等待時間"],
+  };
+  const routeItems = [
+    { id: "route-stop-1", item_type: "custom", day_date: "2026-11-11", position: 0, title: "淺草寺", location_name: "淺草", latitude: 35.71, longitude: 139.79, provider_place_id: "asakusa", locked: false, fixed_time: false, is_estimated: false, start_time: "2026-11-11T00:00:00Z", duration_minutes: 60, data: {} },
+    { id: "route-stop-2", item_type: "custom", day_date: "2026-11-11", position: 1, title: "晴空塔", location_name: "押上", latitude: 35.71, longitude: 139.81, provider_place_id: "skytree", locked: false, fixed_time: false, is_estimated: false, start_time: "2026-11-11T01:34:00Z", duration_minutes: 60, data: {} },
+  ];
+  let currentTrip = {
+    id: "routing-trip", name: "東京交通行程", mode: "manual", total_price: 0, currency: "TWD", data: {}, version: 2,
+    destination_name: "東京", start_date: "2026-11-11", end_date: "2026-11-11", timezone: "Asia/Tokyo",
+    route_preference: "FEWER_TRANSFERS", share_enabled: false, items: routeItems, route_segments: [transitSegment],
+    routing: { status: "complete", total: 1, completed: 1, warnings: [], conflicts: [], day_settings: [{ day_date: "2026-11-11", default_travel_mode: "transit", default_buffer_minutes: 10, route_preference: "FEWER_TRANSFERS", auto_compute: true }] },
+  };
+  let previewBody: Record<string, unknown> | undefined;
+  let applyBody: Record<string, unknown> | undefined;
+  await page.route("**/api/travel/runtime/public-config", (route) => route.fulfill({ status: 200, contentType: "application/json", body: "{}" }));
+  await page.route("**/api/travel/affiliates/options**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ options: [] }) }));
+  await page.route("**/api/travel/trips/routing-trip**", async (route) => {
+    const url = route.request().url();
+    if (url.endsWith("/routes/preview")) {
+      previewBody = route.request().postDataJSON();
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({
+        preview_id: "route-preview-1", expires_at: "2026-09-01T01:15:00Z", segment: carSegment,
+        schedule_impact: { affected_items: [{ item_id: "route-stop-2", title: "晴空塔", old_start_time: "2026-11-11T01:34:00Z", new_start_time: "2026-11-11T01:22:00Z", delta_minutes: -12 }], conflicts: [] },
+      }) });
+      return;
+    }
+    if (url.endsWith("/routes/apply")) {
+      applyBody = route.request().postDataJSON();
+      currentTrip = { ...currentTrip, version: 3, items: [routeItems[0], { ...routeItems[1], start_time: "2026-11-11T01:22:00Z" }], route_segments: [carSegment] };
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(currentTrip) });
+      return;
+    }
+    await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(currentTrip) });
+  });
+
+  await page.goto("/zh-TW/trips/routing-trip");
+  await page.getByRole("button", { name: "查看前往 晴空塔 的路線" }).click();
+  const routeDialog = page.getByRole("dialog", { name: "這段路怎麼走" });
+  await expect(routeDialog).toBeVisible();
+  await routeDialog.getByRole("tab", { name: "汽車" }).click();
+  await expect(routeDialog.locator(".route-apply-bar strong")).toHaveText("汽車 · 12 分鐘");
+  expect(previewBody).toMatchObject({ version: 2, travel_mode: "drive", buffer_minutes: 10 });
+  await expect(routeDialog.getByText("晴空塔").first()).toBeVisible();
+  await routeDialog.getByRole("button", { name: "套用此路線" }).click();
+  await expect(page.getByText("已套用交通方式，後續可調整的開始時間已重新計算。")).toBeVisible();
+  expect(applyBody).toMatchObject({ version: 2, source: "provider", preview_id: "route-preview-1" });
+  await routeDialog.getByRole("button", { name: "關閉" }).click();
+  await expect(page.getByRole("button", { name: "查看前往 晴空塔 的路線" })).toContainText("汽車");
+  await page.reload();
+  await expect(page.getByRole("button", { name: "查看前往 晴空塔 的路線" })).toContainText("汽車");
+});
+
 test("Japan Korea Thailand workbench carries structured preferences", async ({ page }) => {
   await page.route("**/api/travel/destinations/discover", (route) => route.fulfill({
     status: 200,

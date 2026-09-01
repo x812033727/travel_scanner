@@ -366,4 +366,37 @@ describe("trip editor", () => {
     fireEvent.popState(window);
     await waitFor(() => expect(screen.queryByRole("dialog", { name: "這段路怎麼走" })).toBeNull());
   });
+
+  it("shows the scheduled and projected time when a fixed booking will be late", async () => {
+    const fixed = {
+      ...trip.items[0],
+      id: "00000000-0000-4000-8000-000000000004",
+      position: 1,
+      title: "壽司預約",
+      fixed_time: true,
+      start_time: "2026-11-11T05:00:00Z",
+    };
+    const conflictTrip = {
+      ...trip,
+      items: [trip.items[0], fixed],
+      routing: {
+        status: "complete",
+        total: 1,
+        completed: 1,
+        day_settings: [],
+        conflicts: [{
+          item_id: fixed.id,
+          title: fixed.title,
+          scheduled_start_time: "2026-11-11T05:00:00Z",
+          projected_start_time: "2026-11-11T05:18:00Z",
+          late_minutes: 18,
+          suggestions: ["提早離開前一站", "改用汽車"],
+        }],
+      },
+    };
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(conflictTrip))));
+    render(<TripEditor tripId={trip.id} />);
+
+    expect(await screen.findByText(/預定 .*／預計 .*，可能遲到 18 分鐘/)).toBeTruthy();
+  });
 });

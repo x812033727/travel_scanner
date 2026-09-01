@@ -5,11 +5,13 @@ import {
   ArrowDown,
   ArrowUp,
   CalendarDays,
+  CarFront,
   Check,
   CircleAlert,
   Clock3,
   Copy,
   Edit3,
+  Footprints,
   GripVertical,
   Link2,
   Loader2,
@@ -22,6 +24,8 @@ import {
   Settings2,
   Sparkles,
   Trash2,
+  TrainFront,
+  TriangleAlert,
   Undo2,
   Unlock,
   WifiOff,
@@ -41,10 +45,12 @@ import { PlacePicker } from "@/components/place-picker";
 import { PlannerOverlay } from "@/components/planner-overlay";
 import { PriceAlertButton } from "@/components/price-alert-button";
 import { RouteMap } from "@/components/route-map";
+import { RouteModePanel } from "@/components/route-mode-panel";
 import { RouteSegmentCard } from "@/components/route-segment-card";
+import { RouteTimelineLink } from "@/components/route-timeline-link";
 import { TripWeatherPanel } from "@/components/trip-weather-panel";
 import { api, ApiError, isUsageInsufficient, twd } from "@/lib/api";
-import { formatTime, groupTripItems, type RouteSegment, type Trip, type TripItem } from "@/lib/trip-types";
+import { formatTime, groupTripItems, type RouteSegment, type TravelMode, type Trip, type TripItem } from "@/lib/trip-types";
 
 function normalize(items: TripItem[]) {
   const positions = new Map<string, number>();
@@ -125,7 +131,7 @@ function aiProviderLabel(provider?: "openai" | "anthropic" | "minimax" | "catalo
   return "內建備援";
 }
 
-type RouteResponse = { segments: RouteSegment[]; failed_pairs: unknown[]; partial: boolean };
+type RouteDayComputeResponse = { version: number; status: string; total: number; completed: number; job_id?: string };
 type Place = { place_id: string; provider: string; name: string; address?: string | null; latitude?: number | null; longitude?: number | null; opening_hours?: string[]; google_maps_url?: string | null; attribution?: string };
 type SaveState = "saved" | "dirty" | "saving" | "offline" | "conflict";
 type StoredTripDraft = {
@@ -178,6 +184,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const [activeDay, setActiveDay] = useState("");
   const [editingId, setEditingId] = useState<string>();
   const [routeDrawerOpen, setRouteDrawerOpen] = useState(false);
+  const [routeTarget, setRouteTarget] = useState<{ fromItemId: string; toItemId: string }>();
   const [error, setError] = useState<string>();
   const [notice, setNotice] = useState<string>();
   const [action, setAction] = useState<string>();
@@ -258,6 +265,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
     }
     routeHistoryTokenRef.current = undefined;
     setRouteDrawerOpen(false);
+    setRouteTarget(undefined);
   }, []);
 
   useEffect(() => {
@@ -301,6 +309,39 @@ export function TripEditor({ tripId }: { tripId: string }) {
       .catch((reason: Error) => setError(reason.message));
     return () => { active = false; };
   }, [draftKey, replaceTrip, tripId, updateSaveState]);
+
+  useEffect(() => {
+    if (!trip || !["queued", "processing"].includes(trip.routing?.status || "")) return;
+    let active = true;
+    let running = false;
+    const poll = async () => {
+      if (running || saveStateRef.current !== "saved") return;
+      running = true;
+      try {
+        const status = await api<{ version: number; status: string }>(`/trips/${trip.id}/routes/status`);
+        if (!active) return;
+        if (!["queued", "processing"].includes(status.status)) {
+          const latest = await api<Trip>(`/trips/${trip.id}`);
+          if (!active) return;
+          replaceTrip(latest);
+          setRoutes(latest.route_segments || []);
+          setSelectedRoute((current) => latest.route_segments?.find((route) =>
+            route.from_item_id === current?.from_item_id && route.to_item_id === current?.to_item_id,
+          ) || latest.route_segments?.[0]);
+          setStaleDays(new Set());
+          if (status.status === "partial") setNotice("移動時間已更新；部分路段仍需確認地點或手動補上。");
+          if (status.status === "complete") setNotice("每天的移動時間與下一站開始時間已自動排好。");
+        }
+      } catch {
+        // The itinerary remains usable while a background status check is unavailable.
+      } finally {
+        running = false;
+      }
+    };
+    void poll();
+    const timer = window.setInterval(() => void poll(), 1_800);
+    return () => { active = false; window.clearInterval(timer); };
+  }, [replaceTrip, trip]);
 
   useEffect(() => {
     if (!undoItem) return;
@@ -362,6 +403,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       if (routeHistoryTokenRef.current !== token) return;
       routeHistoryTokenRef.current = undefined;
       setRouteDrawerOpen(false);
+      setRouteTarget(undefined);
     };
     window.addEventListener("popstate", closeFromBack);
     return () => window.removeEventListener("popstate", closeFromBack);
@@ -594,24 +636,52 @@ export function TripEditor({ tripId }: { tripId: string }) {
     setNotice("安排已復原");
   }
 
-  async function computeRoutes(day: string, refresh = false) {
+  async function computeRoutes(
+    day: string,
+    refresh = false,
+    override?: { mode?: TravelMode; buffer?: number },
+  ) {
     const currentTrip = await flushChanges(false);
     if (!currentTrip || saveStateRef.current === "conflict") return;
     setAction(`route-${day}`);
     setError(undefined);
     try {
-      const result = await api<RouteResponse>(`/trips/${currentTrip.id}/routes/${refresh ? "refresh" : "compute"}`, {
+      const daySetting = currentTrip.routing?.day_settings.find((setting) => setting.day_date === day);
+      const selectedMode = override?.mode || daySetting?.default_travel_mode || "transit";
+      const selectedBuffer = override?.buffer ?? daySetting?.default_buffer_minutes ?? 10;
+      const result = await api<RouteDayComputeResponse>(`/trips/${currentTrip.id}/routes/compute-day`, {
         method: "POST",
-        body: JSON.stringify({ version: currentTrip.version, day_date: day, route_preference: currentTrip.route_preference }),
+        headers: { "Idempotency-Key": crypto.randomUUID() },
+        body: JSON.stringify({
+          version: currentTrip.version,
+          day_date: day,
+          default_travel_mode: selectedMode,
+          default_buffer_minutes: selectedBuffer,
+          route_preference: currentTrip.route_preference,
+          refresh,
+        }),
       });
-      const dayIds = new Set(itemsRef.current.filter((item) => item.day_date === day).map((item) => item.id));
-      setRoutes((current) => [...current.filter((route) => !dayIds.has(route.from_item_id)), ...result.segments]);
-      setStaleDays((current) => { const next = new Set(current); next.delete(day); return next; });
-      setSelectedRoute(result.segments[0]);
-      const providers = [...new Set(result.segments.map((segment) => segment.attribution))].join("、");
-      setNotice(result.partial
-        ? `已透過 ${providers} 更新可取得的路線；部分地點尚未確認位置。`
-        : `路線已透過 ${providers} 更新，本次不扣次。`);
+      replaceTrip({
+        ...currentTrip,
+        version: result.version,
+        routing: {
+          status: "queued",
+          total: result.total,
+          completed: result.completed,
+          warnings: [],
+          day_settings: [
+            ...(currentTrip.routing?.day_settings || []).filter((setting) => setting.day_date !== day),
+            {
+              day_date: day,
+              default_travel_mode: selectedMode,
+              default_buffer_minutes: selectedBuffer,
+              route_preference: currentTrip.route_preference || "FEWER_TRANSFERS",
+              auto_compute: true,
+            },
+          ].sort((a, b) => a.day_date.localeCompare(b.day_date)),
+        },
+      }, false);
+      setNotice("正在背景計算每一段移動時間；行程仍可查看，本次不扣次。");
     } catch (reason) {
       setError(`${reason instanceof Error ? reason.message : "路線計算失敗"}；本次未扣次。`);
     } finally { setAction(undefined); }
@@ -864,6 +934,9 @@ export function TripEditor({ tripId }: { tripId: string }) {
       : saveState === "conflict" ? <CircleAlert size={15} /> : <Check size={15} />;
   const today = todayForTimezone(trip?.timezone);
   const activeHasRoutes = routes.some((route) => activeRows.some((item) => item.id === route.from_item_id));
+  const activeDayRouteSetting = trip?.routing?.day_settings.find((setting) => setting.day_date === activeDay);
+  const activeTravelMode = activeDayRouteSetting?.default_travel_mode || "transit";
+  const activeTravelBuffer = activeDayRouteSetting?.default_buffer_minutes ?? 10;
   const confirmCopy: Record<ConfirmAction, { title: string; description: string; label: string; danger?: boolean }> = {
     reprice: { title: "重新查價整趟旅程？", description: "成功取得新的機票、住宿或活動結果後會扣 1 次；供應商失敗或沒有結果不扣次。", label: "確認重新查價" },
     "revoke-share": { title: "撤銷分享連結？", description: "目前持有連結的人將立即無法查看這趟旅程。", label: "撤銷連結", danger: true },
@@ -905,6 +978,9 @@ export function TripEditor({ tripId }: { tripId: string }) {
 
     {trip.planning && <section aria-label="AI 安排狀態" className={`mb-4 flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm ${trip.planning.status === "fallback" ? "border-amber-200 bg-amber-50 text-amber-950" : "border-violet-200 bg-violet-50 text-violet-950"}`}><span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/80"><Sparkles size={16} /></span><div className="min-w-0 flex-1"><p className="font-semibold">{aiProviderLabel(trip.planning.provider)} 已產生可編輯的行程建議</p><p className="mt-0.5 text-xs leading-5 opacity-75">{trip.planning.scope === "day" && trip.planning.day_date ? `上次安排：${trip.planning.day_date}` : "上次安排：全行程"}。鎖定、固定時間與手動項目不會被取代。</p></div><button type="button" onClick={() => openAIPlanner(activeDay ? "day" : "trip")} className="min-h-10 shrink-0 rounded-xl bg-white/80 px-3 text-xs font-bold">再安排</button></section>}
 
+    {trip.routing && ["queued", "processing"].includes(trip.routing.status) && <section aria-live="polite" className="mb-4 flex items-center gap-3 rounded-2xl border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-950"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white"><Loader2 size={18} className="animate-spin text-sky-700" /></span><div className="min-w-0 flex-1"><p className="font-semibold">正在安排每天的移動時間</p><p className="mt-0.5 text-xs opacity-75">已完成 {trip.routing.completed}/{trip.routing.total} 段；可以先查看或編輯景點。</p></div></section>}
+    {trip.routing && ["partial", "failed", "unavailable"].includes(trip.routing.status) && trip.routing.warnings?.length ? <section className="mb-4 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950"><p className="flex items-center gap-2 font-semibold"><TriangleAlert size={17} />部分移動時間需要確認</p>{trip.routing.warnings.slice(0, 2).map((warning) => <p key={warning} className="mt-1 text-xs leading-5">{warning}</p>)}</section> : null}
+
     <section className="planner-day-strip sticky z-30 -mx-4 mb-4 border-y border-[var(--line)] px-4 py-3 lg:top-0 lg:mx-0 lg:mb-5 lg:rounded-2xl lg:border"><div ref={dayScrollRef} className="planner-day-scroll flex gap-2 overflow-x-auto pb-1" aria-label="選擇行程日期">{days.map((day, index) => { const label = dayLabel(day, index, locale); const count = groups.get(day)?.length || 0; const selected = activeDay === day; return <button key={day} ref={selected ? activeDayChipRef : undefined} type="button" aria-current={selected ? "date" : undefined} aria-pressed={selected} onClick={() => { setActiveDay(day); setReorderMode(false); }} className={`planner-day-chip min-h-14 min-w-[5.1rem] shrink-0 rounded-2xl border px-3 py-2 text-left ${selected ? "planner-day-chip-active" : ""}`}><span className="block text-[.65rem] font-semibold tracking-[.12em] opacity-75">{day === today ? "今天" : label.eyebrow}</span><span className="mt-0.5 block text-sm font-bold">{label.short} {label.weekday}</span><span className="block text-[.65rem] opacity-70">{count} 個安排</span></button>; })}</div></section>
 
     {trip.destination_name && trip.start_date && <TripWeatherPanel tripId={trip.id} activeDay={activeDay} />}
@@ -914,12 +990,14 @@ export function TripEditor({ tripId }: { tripId: string }) {
     {desktopMapVisible && <AffiliatePartnerOptions tripId={trip.id} modules={["flight", "hotel", "activities", "transport", "connectivity"]} title="這趟旅程的合作平台" />}
 
     <div className="mt-2 grid items-start gap-6 lg:mt-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,.65fr)]"><section className="planner-day-panel rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-sm sm:p-6"><header className="mb-4 flex items-start justify-between gap-3 sm:mb-5"><div className="min-w-0"><p className="text-xs font-semibold tracking-[.16em] text-[var(--teal)]">{days.indexOf(activeDay) >= 0 ? `DAY ${days.indexOf(activeDay) + 1}` : "ITINERARY"}{activeDay === today ? " · 今天" : ""}</p><h2 className="mt-1 text-xl font-bold sm:text-2xl"><span className="lg:hidden">{mobileDayHeading(activeDay, locale)}</span><span className="hidden lg:inline">{activeDay || "尚未設定日期"}</span></h2><p className="planner-day-summary mt-1.5 text-xs font-semibold text-[var(--muted)]">{activeRows.length ? `${activeRows.length} 個安排${activeDurationMinutes ? ` · 停留約 ${durationSummary(activeDurationMinutes)}` : ""}` : "尚無安排，從第一站開始"}</p></div><div className="flex shrink-0 items-center gap-2"><button type="button" aria-label="計算當日路線" onClick={() => void computeRoutes(activeDay, activeHasRoutes || activeDay === today)} disabled={Boolean(action) || activeRows.length < 2} className="planner-secondary-button flex">{action === `route-${activeDay}` ? <Loader2 size={17} className="animate-spin" /> : <RouteIcon size={17} />}<span className="hidden sm:inline">查路</span></button><button type="button" aria-label={reorderMode ? "完成排序" : "排序行程"} aria-pressed={reorderMode} onClick={() => setReorderMode((value) => !value)} disabled={activeRows.length < 2} className="planner-secondary-button flex md:hidden">{reorderMode ? <Check size={17} /> : <GripVertical size={17} />}<span className="planner-sort-label">{reorderMode ? "完成" : "排序"}</span></button>{desktopMapVisible && <><button type="button" onClick={() => void previewOptimization(activeDay)} disabled={Boolean(action) || activeRows.length < 2} className="hidden min-h-11 items-center justify-center gap-1.5 rounded-xl border border-[var(--line)] px-3 text-sm font-semibold disabled:opacity-40 md:flex">{action === `preview-${activeDay}` ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}最佳化</button><button type="button" onClick={() => add(activeDay)} disabled={!activeDay} className="hidden min-h-11 items-center justify-center gap-1.5 rounded-xl bg-[var(--paper)] px-3 text-sm font-semibold disabled:opacity-40 md:flex"><Plus size={16} />新增</button></>}</div></header>
+      {activeRows.length > 1 && <section className="route-day-settings mb-4"><div><p className="text-xs font-semibold text-[var(--muted)]">這一天預設怎麼移動</p><div className="mt-2 flex gap-1.5" role="radiogroup" aria-label="當日預設交通工具">{([['transit', '大眾運輸', TrainFront], ['walk', '步行', Footprints], ['drive', '汽車', CarFront]] as const).map(([value, label, Icon]) => <button key={value} type="button" role="radio" aria-checked={activeTravelMode === value} onClick={() => void computeRoutes(activeDay, true, { mode: value })} disabled={Boolean(action)} className={`route-day-mode ${activeTravelMode === value ? "route-day-mode-active" : ""}`}><Icon size={15} /><span>{label}</span></button>)}</div></div><label className="shrink-0 text-xs font-semibold text-[var(--muted)]">轉場緩衝<select aria-label="當日移動緩衝時間" value={activeTravelBuffer} onChange={(event) => void computeRoutes(activeDay, true, { buffer: Number(event.target.value) })} disabled={Boolean(action)} className="mt-2 block min-h-11 rounded-xl border border-[var(--line)] bg-white px-3 text-sm font-bold text-[var(--ink)]"><option value="0">0 分</option><option value="5">5 分</option><option value="10">10 分</option><option value="15">15 分</option><option value="30">30 分</option></select></label></section>}
       {staleDays.has(activeDay) && activeRows.length > 1 && <button type="button" onClick={() => void computeRoutes(activeDay, true)} className="mb-4 flex min-h-11 w-full items-center justify-between gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-left text-sm text-amber-950"><span className="flex items-center gap-2"><CircleAlert size={17} />行程內容已變更，舊路線不再使用</span><span className="shrink-0 font-semibold">重新計算</span></button>}
       {reorderMode && <div className="mb-3 flex min-h-12 items-center gap-2 rounded-2xl bg-[var(--teal-soft)] px-4 py-3 text-sm font-semibold text-[var(--teal-dark)] md:hidden"><GripVertical size={17} /><span>使用箭頭調整順序</span></div>}
       {activeRows.length === 0 ? <button type="button" onClick={() => add(activeDay)} className="grid min-h-48 w-full place-items-center rounded-2xl border border-dashed border-[var(--line)] bg-[linear-gradient(135deg,#f8faf6,#edf5f1)] p-8 text-center"><span><MapPin size={28} className="mx-auto text-[var(--teal)]" /><strong className="mt-3 block">這天還沒有安排</strong><span className="mt-1 block text-sm text-[var(--muted)]">加入第一個地點，開始建立旅行時間軸</span></span></button> : <ol className="planner-timeline space-y-3">{activeRows.map((item, index) => {
         const nextItem = activeRows[index + 1];
         const segment = routes.find((route) => route.from_item_id === item.id && route.to_item_id === nextItem?.id);
-        return <li id={`trip-item-${item.id}`} key={item.id} className="planner-enter relative pl-9" style={{ "--planner-index": index } as CSSProperties}><span aria-hidden="true" className="planner-timeline-marker absolute top-6 z-10">{index + 1}</span><article draggable={desktopMapVisible} onDragStart={() => setDragged(item.id)} onDragOver={(event) => event.preventDefault()} onDrop={() => drop(item.id)} className={`planner-itinerary-card group p-4 ${reorderMode ? "planner-itinerary-card-reordering" : ""} ${recentItemId === item.id ? "planner-itinerary-card-new" : ""}`}><div className="flex items-start gap-3"><span className="hidden cursor-grab pt-1 text-[var(--muted)] lg:block" title="拖曳排序"><GripVertical size={19} /></span><button type="button" onClick={() => setEditingId(item.id)} className="min-w-0 flex-1 text-left"><div className="flex flex-wrap items-center gap-2"><span className="planner-time-badge">{formatTime(item.start_time, locale)}</span>{item.duration_minutes && <span className="text-xs text-[var(--muted)]">停留 {item.duration_minutes} 分鐘</span>}{item.data.generated_by === "ai_planner" && <span className="rounded-full bg-violet-100 px-2 py-1 text-[.68rem] font-semibold text-violet-800">AI 建議</span>}{item.locked && <span className="rounded-full bg-amber-50 px-2 py-1 text-[.68rem] font-semibold text-amber-800">已鎖定</span>}{item.fixed_time && <span className="rounded-full bg-violet-50 px-2 py-1 text-[.68rem] font-semibold text-violet-800">固定時間</span>}</div><h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tight">{item.title}</h3><p className="mt-1 flex items-start gap-1.5 text-sm leading-5 text-[var(--muted)]"><MapPin size={15} className="mt-0.5 shrink-0" />{item.location_name || "尚未選擇地點"}</p>{item.notes && <p className="mt-2 line-clamp-2 text-xs leading-5 text-[var(--muted)]">{item.notes}</p>}</button><div className={`flex shrink-0 items-center gap-1 ${reorderMode ? "flex-col md:flex-row" : ""}`}><button type="button" aria-label={`上移 ${item.title}`} disabled={index === 0} onClick={() => move(item.id, -1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowUp size={18} /></button><button type="button" aria-label={`下移 ${item.title}`} disabled={index === activeRows.length - 1} onClick={() => move(item.id, 1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowDown size={18} /></button><button type="button" aria-label={`編輯 ${item.title}`} onClick={() => setEditingId(item.id)} className={`${reorderMode ? "hidden" : "grid"} min-h-11 min-w-11 place-items-center rounded-xl bg-[var(--teal-soft)] text-[var(--teal)] md:grid`}><Edit3 size={17} /></button></div></div></article>{nextItem && <div className="py-2 pl-2">{segment && !staleDays.has(activeDay) ? <button type="button" aria-label={`查看前往 ${nextItem.title} 的路線`} onClick={() => { setSelectedRoute(segment); setRouteDrawerOpen(true); }} className="planner-route-link flex min-h-11 w-full items-center gap-3 rounded-2xl px-3 py-2 text-left text-sm"><span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white text-sky-700"><RouteIcon size={16} /></span><span className="min-w-0 flex-1"><strong>移動約 {segment.duration_minutes} 分鐘</strong><span className="ml-2 text-xs text-[var(--muted)]">{segment.steps.filter((step) => step.travel_mode === "TRANSIT").map((step) => step.line_short_name || step.line_name).filter(Boolean).join(" → ") || "步行／大眾運輸"}</span></span><span className="font-semibold text-[var(--teal)]">查看</span></button> : <div className="flex min-h-11 items-center gap-2 px-3 text-xs text-[var(--muted)]"><span className="h-px flex-1 border-t border-dashed border-[var(--line)]" /><span>{staleDays.has(activeDay) ? "路線待更新" : "尚未計算路線"}</span><span className="h-px flex-1 border-t border-dashed border-[var(--line)]" /></div>}</div>}</li>;
+        const itemConflict = trip.routing?.conflicts?.find((conflict) => conflict.item_id === item.id);
+        return <li id={`trip-item-${item.id}`} key={item.id} className="planner-enter relative pl-9" style={{ "--planner-index": index } as CSSProperties}><span aria-hidden="true" className="planner-timeline-marker absolute top-6 z-10">{index + 1}</span><article draggable={desktopMapVisible} onDragStart={() => setDragged(item.id)} onDragOver={(event) => event.preventDefault()} onDrop={() => drop(item.id)} className={`planner-itinerary-card group p-4 ${reorderMode ? "planner-itinerary-card-reordering" : ""} ${recentItemId === item.id ? "planner-itinerary-card-new" : ""}`}><div className="flex items-start gap-3"><span className="hidden cursor-grab pt-1 text-[var(--muted)] lg:block" title="拖曳排序"><GripVertical size={19} /></span><button type="button" onClick={() => setEditingId(item.id)} className="min-w-0 flex-1 text-left"><div className="flex flex-wrap items-center gap-2"><span className="planner-time-badge">{formatTime(item.start_time, locale)}</span>{item.duration_minutes && <span className="text-xs text-[var(--muted)]">停留 {item.duration_minutes} 分鐘</span>}{item.data.generated_by === "ai_planner" && <span className="rounded-full bg-violet-100 px-2 py-1 text-[.68rem] font-semibold text-violet-800">AI 建議</span>}{item.locked && <span className="rounded-full bg-amber-50 px-2 py-1 text-[.68rem] font-semibold text-amber-800">已鎖定</span>}{item.fixed_time && <span className="rounded-full bg-violet-50 px-2 py-1 text-[.68rem] font-semibold text-violet-800">固定時間</span>}</div><h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tight">{item.title}</h3><p className="mt-1 flex items-start gap-1.5 text-sm leading-5 text-[var(--muted)]"><MapPin size={15} className="mt-0.5 shrink-0" />{item.location_name || "尚未選擇地點"}</p>{itemConflict && <p className="mt-2 rounded-xl bg-red-50 px-3 py-2 text-xs font-semibold leading-5 text-red-800">預定 {formatTime(itemConflict.scheduled_start_time, locale)}／預計 {formatTime(itemConflict.projected_start_time, locale)}，可能遲到 {itemConflict.late_minutes} 分鐘</p>}{item.notes && <p className="mt-2 line-clamp-2 text-xs leading-5 text-[var(--muted)]">{item.notes}</p>}</button><div className={`flex shrink-0 items-center gap-1 ${reorderMode ? "flex-col md:flex-row" : ""}`}><button type="button" aria-label={`上移 ${item.title}`} disabled={index === 0} onClick={() => move(item.id, -1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowUp size={18} /></button><button type="button" aria-label={`下移 ${item.title}`} disabled={index === activeRows.length - 1} onClick={() => move(item.id, 1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowDown size={18} /></button><button type="button" aria-label={`編輯 ${item.title}`} onClick={() => setEditingId(item.id)} className={`${reorderMode ? "hidden" : "grid"} min-h-11 min-w-11 place-items-center rounded-xl bg-[var(--teal-soft)] text-[var(--teal)] md:grid`}><Edit3 size={17} /></button></div></div></article>{nextItem && <div className="py-2 pl-2"><RouteTimelineLink segment={segment} nextTitle={nextItem.title} loading={["queued", "processing"].includes(trip.routing?.status || "")} stale={staleDays.has(activeDay) || segment?.status === "stale"} onClick={() => { setRouteTarget({ fromItemId: item.id, toItemId: nextItem.id }); setSelectedRoute(segment); setRouteDrawerOpen(true); }} /></div>}</li>;
       })}</ol>}
     </section>{desktopMapVisible && <aside className="space-y-4"><RouteMap items={items} segment={selectedRoute} />{selectedRoute && <RouteSegmentCard segment={selectedRoute} selected defaultExpanded />}</aside>}</div>
 
@@ -969,7 +1047,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       {!draftItem && <button type="button" onClick={() => removeItem(editingItem)} className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-red-200 bg-red-50 font-semibold text-red-800"><Trash2 size={18} />刪除這個安排</button>}
     </div>}</PlannerOverlay>
 
-    <PlannerOverlay open={routeDrawerOpen && Boolean(selectedRoute)} onClose={closeRouteDrawer} title="這段路怎麼走" description={selectedRoute ? `預計 ${selectedRoute.duration_minutes} 分鐘，時間以當地交通資料為準。` : undefined} size="wide" expandable>{selectedRoute && <div className="space-y-4"><RouteMap items={items} segment={selectedRoute} /><RouteSegmentCard segment={selectedRoute} selected defaultExpanded /></div>}</PlannerOverlay>
+    <PlannerOverlay open={routeDrawerOpen && Boolean(routeTarget)} onClose={closeRouteDrawer} title="這段路怎麼走" description="比較交通方式與下一站時間；確認套用前不會修改行程。" size="wide" expandable>{routeTarget && <RouteModePanel key={`${routeTarget.fromItemId}-${routeTarget.toItemId}-${trip.version}`} trip={trip} items={items} fromItemId={routeTarget.fromItemId} toItemId={routeTarget.toItemId} initialSegment={selectedRoute} onError={setError} onApplied={(updated) => { replaceTrip(updated); setRoutes(updated.route_segments || []); const applied = updated.route_segments?.find((route) => route.from_item_id === routeTarget.fromItemId && route.to_item_id === routeTarget.toItemId); setSelectedRoute(applied); setStaleDays((current) => { const next = new Set(current); const day = updated.items.find((item) => item.id === routeTarget.fromItemId)?.day_date; if (day) next.delete(day); return next; }); persistedRevisionRef.current = revisionRef.current; updateSaveState("saved"); setNotice("已套用交通方式，後續可調整的開始時間已重新計算。"); }} />}</PlannerOverlay>
 
     <PlannerOverlay open={previewOpen && Boolean(preview)} onClose={() => setPreviewOpen(false)} title="最佳化預覽" description="先比較調整前後，只有確認並成功套用才扣 1 次。" size="wide" footer={preview && <div className="flex gap-3"><button type="button" onClick={() => setPreviewOpen(false)} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold">先不套用</button><button type="button" onClick={() => void applyOptimization()} disabled={!preview.changed || action === "apply-preview"} className="flex min-h-12 flex-[1.4] items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 font-semibold text-white disabled:opacity-45">{action === "apply-preview" ? <Loader2 size={17} className="animate-spin" /> : <Sparkles size={17} />}{preview.changed ? "套用並扣 1 次" : "目前已是建議安排"}</button></div>}>{preview && <div className="space-y-5"><section className={`rounded-2xl p-5 ${preview.changed ? "bg-[var(--teal-soft)]" : "bg-emerald-50"}`}><p className="text-sm font-semibold text-[var(--teal-dark)]">{preview.changed ? "找到更順的移動方式" : "目前已是建議安排"}</p><div className="mt-3 grid grid-cols-3 gap-3 text-center"><div><span className="block text-xs text-[var(--muted)]">調整前</span><strong className="mt-1 block text-xl">{preview.total_duration_before_minutes} 分</strong></div><div><span className="block text-xs text-[var(--muted)]">調整後</span><strong className="mt-1 block text-xl">{preview.total_duration_after_minutes} 分</strong></div><div><span className="block text-xs text-[var(--muted)]">預計節省</span><strong className="mt-1 block text-xl text-[var(--teal)]">{Math.max(0, preview.total_duration_before_minutes - preview.total_duration_after_minutes)} 分</strong></div></div></section>{preview.days.map((day) => <section key={day.date} className="rounded-2xl border border-[var(--line)] p-4"><div className="flex items-center justify-between"><h3 className="font-bold">{day.date}</h3><span className="rounded-full bg-[var(--paper)] px-3 py-1 text-xs font-semibold">節省 {day.saved_minutes} 分鐘</span></div><div className="mt-4 grid gap-4 sm:grid-cols-2"><div><p className="text-xs font-semibold tracking-[.12em] text-[var(--muted)]">調整前</p><ol className="mt-2 space-y-2">{day.before.map((item, index) => <li key={item.id} className="flex items-center gap-2 text-sm"><span className="grid h-6 w-6 place-items-center rounded-full bg-[var(--paper)] text-xs font-bold">{index + 1}</span><span className="truncate">{item.title}</span></li>)}</ol></div><div><p className="text-xs font-semibold tracking-[.12em] text-[var(--teal)]">建議安排</p><ol className="mt-2 space-y-2">{day.after.map((item, index) => <li key={item.id} className="flex items-center gap-2 text-sm"><span className="grid h-6 w-6 place-items-center rounded-full bg-[var(--teal)] text-xs font-bold text-white">{index + 1}</span><span className="truncate font-medium">{item.title}</span></li>)}</ol></div></div></section>)}{preview.warnings.map((warning) => <p key={warning} className="rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">{warning}</p>)}</div>}</PlannerOverlay>
 
