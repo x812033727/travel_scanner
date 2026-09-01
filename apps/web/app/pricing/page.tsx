@@ -1,6 +1,7 @@
 import { Check, History, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
+import { getRegistrationAvailability } from "@/lib/registration";
 
 const packages = [
   { name: "輕量包", uses: 10, price: "NT$199", perUse: "每次約 NT$20" },
@@ -8,13 +9,14 @@ const packages = [
   { name: "大量包", uses: 100, price: "NT$1,299", perUse: "每次約 NT$13" },
 ];
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const registration = await getRegistrationAvailability();
   return <><SiteHeader /><main className="mx-auto max-w-6xl px-5 py-14">
     <div className="mx-auto max-w-3xl text-center">
       <p className="text-sm font-semibold text-[var(--teal)]">買多少、用多少</p>
       <h1 className="mt-2 text-4xl font-bold md:text-5xl">不綁月租的旅遊查價次數</h1>
       <p className="mt-4 leading-7 text-[var(--muted)]">註冊先送 3 次。每次正式查價成功取得可用結果才扣 1 次，失敗不扣；未用完的次數永久保留。</p>
-      <Link href="/register" className="mt-7 inline-flex rounded-xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white">免費取得 3 次</Link>
+      {registration === "open" ? <Link href="/register" className="mt-7 inline-flex rounded-xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white">免費取得 3 次</Link> : <p className="mt-7 inline-flex rounded-xl bg-[#e4ebe6] px-6 py-3.5 font-semibold text-[var(--muted)]">{registration === "closed" ? "目前暫停開放註冊" : "暫時無法確認註冊狀態"}</p>}
     </div>
 
     <section aria-label="次數包" className="mt-12 grid gap-5 md:grid-cols-3">

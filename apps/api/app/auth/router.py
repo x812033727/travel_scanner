@@ -3,10 +3,12 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, Request, Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.admin.service import effective_registration_enabled
 from app.auth.schemas import (
     ChangePasswordRequest,
     LoginRequest,
     RegisterRequest,
+    RegistrationStatus,
     TokenResponse,
     UserResponse,
 )
@@ -74,6 +76,8 @@ async def register(
         limit=settings.auth_register_ip_limit,
         window_seconds=settings.auth_register_window_seconds,
     )
+    if not await effective_registration_enabled(session):
+        raise AppError(403, "registration_closed", "目前暫停開放新帳號註冊")
     if await find_user_by_email(session, str(payload.email)):
         raise AppError(409, "email_exists", "這個 Email 已經註冊")
     user = User(email=str(payload.email).lower(), password_hash=hash_password(payload.password))
@@ -84,6 +88,14 @@ async def register(
     token = create_access_token(user.id, user.auth_version)
     set_auth_cookie(response, token)
     return token_response(token, await user_response(session, user))
+
+
+@router.get("/registration-status", response_model=RegistrationStatus)
+async def registration_status(response: Response, session: Session) -> RegistrationStatus:
+    response.headers["Cache-Control"] = "no-store"
+    return RegistrationStatus(
+        registration_enabled=await effective_registration_enabled(session)
+    )
 
 
 @router.post("/login", response_model=TokenResponse)

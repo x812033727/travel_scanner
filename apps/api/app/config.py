@@ -68,6 +68,7 @@ class Settings(BaseSettings):
     auth_login_window_seconds: int = Field(default=900, ge=60, le=86_400)
     auth_register_ip_limit: int = Field(default=30, ge=1, le=1_000)
     auth_register_window_seconds: int = Field(default=3_600, ge=60, le=86_400)
+    registration_enabled: bool = True
     trust_proxy_client_ip: bool = False
     ai_planner_enabled: bool = True
     ai_planner_mode: str = "auto"
