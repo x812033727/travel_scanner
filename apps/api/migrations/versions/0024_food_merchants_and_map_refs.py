@@ -16,36 +16,56 @@ depends_on: str | Sequence[str] | None = None
 
 
 def upgrade() -> None:
-    op.add_column(
-        "travel_hotspots", sa.Column("naver_map_url", sa.String(length=2048), nullable=True)
-    )
-    op.add_column(
-        "travel_hotspots", sa.Column("plus_code_global", sa.String(length=16), nullable=True)
-    )
-    op.add_column(
-        "travel_hotspots", sa.Column("coordinate_source_type", sa.String(length=32), nullable=True)
-    )
-    op.add_column(
-        "travel_hotspots", sa.Column("coordinate_source_url", sa.String(length=2048), nullable=True)
-    )
-    op.add_column(
-        "travel_hotspots",
-        sa.Column("coordinate_verified_at", sa.DateTime(timezone=True), nullable=True),
-    )
-    op.add_column(
-        "travel_hotspots",
-        sa.Column(
-            "map_match_status",
-            sa.String(length=24),
-            nullable=False,
-            server_default="unverified",
-        ),
-    )
-    op.add_column(
-        "travel_hotspots",
-        sa.Column("map_verified_at", sa.DateTime(timezone=True), nullable=True),
-    )
-    op.add_column("travel_hotspots", sa.Column("map_verified_by_user_id", sa.Uuid(), nullable=True))
+    inspector = sa.inspect(op.get_bind())
+    tables = set(inspector.get_table_names())
+    hotspot_columns = {
+        column["name"] for column in inspector.get_columns("travel_hotspots")
+    }
+    if "naver_map_url" not in hotspot_columns:
+        op.add_column(
+            "travel_hotspots",
+            sa.Column("naver_map_url", sa.String(length=2048), nullable=True),
+        )
+    if "plus_code_global" not in hotspot_columns:
+        op.add_column(
+            "travel_hotspots",
+            sa.Column("plus_code_global", sa.String(length=16), nullable=True),
+        )
+    if "coordinate_source_type" not in hotspot_columns:
+        op.add_column(
+            "travel_hotspots",
+            sa.Column("coordinate_source_type", sa.String(length=32), nullable=True),
+        )
+    if "coordinate_source_url" not in hotspot_columns:
+        op.add_column(
+            "travel_hotspots",
+            sa.Column("coordinate_source_url", sa.String(length=2048), nullable=True),
+        )
+    if "coordinate_verified_at" not in hotspot_columns:
+        op.add_column(
+            "travel_hotspots",
+            sa.Column("coordinate_verified_at", sa.DateTime(timezone=True), nullable=True),
+        )
+    if "map_match_status" not in hotspot_columns:
+        op.add_column(
+            "travel_hotspots",
+            sa.Column(
+                "map_match_status",
+                sa.String(length=24),
+                nullable=False,
+                server_default="unverified",
+            ),
+        )
+    if "map_verified_at" not in hotspot_columns:
+        op.add_column(
+            "travel_hotspots",
+            sa.Column("map_verified_at", sa.DateTime(timezone=True), nullable=True),
+        )
+    if "map_verified_by_user_id" not in hotspot_columns:
+        op.add_column(
+            "travel_hotspots",
+            sa.Column("map_verified_by_user_id", sa.Uuid(), nullable=True),
+        )
     op.execute(
         sa.text(
             "UPDATE travel_hotspots SET latitude = NULL, longitude = NULL "
@@ -69,37 +89,65 @@ def upgrade() -> None:
             "FROM ranked WHERE hotspot.id = ranked.id AND ranked.rn > 1"
         )
     )
-    op.create_check_constraint(
-        "ck_travel_hotspot_map_match_status",
-        "travel_hotspots",
-        "map_match_status IN ('unverified', 'verified', 'ambiguous', 'disabled')",
+    check_names = {
+        constraint["name"]
+        for constraint in inspector.get_check_constraints("travel_hotspots")
+    }
+    if "ck_travel_hotspot_map_match_status" not in check_names:
+        op.create_check_constraint(
+            "ck_travel_hotspot_map_match_status",
+            "travel_hotspots",
+            "map_match_status IN ('unverified', 'verified', 'ambiguous', 'disabled')",
+        )
+    if "ck_travel_hotspot_coordinate_pair" not in check_names:
+        op.create_check_constraint(
+            "ck_travel_hotspot_coordinate_pair",
+            "travel_hotspots",
+            "(latitude IS NULL) = (longitude IS NULL)",
+        )
+    foreign_key_columns = {
+        tuple(constraint["constrained_columns"])
+        for constraint in inspector.get_foreign_keys("travel_hotspots")
+    }
+    if ("map_verified_by_user_id",) not in foreign_key_columns:
+        op.create_foreign_key(
+            "fk_travel_hotspots_map_verified_by_user_id",
+            "travel_hotspots",
+            "users",
+            ["map_verified_by_user_id"],
+            ["id"],
+            ondelete="SET NULL",
+        )
+    index_names = {index["name"] for index in inspector.get_indexes("travel_hotspots")}
+    for index_name, column in (
+        ("ix_travel_hotspots_map_match_status", "map_match_status"),
+        ("ix_travel_hotspots_plus_code_global", "plus_code_global"),
+        ("ix_travel_hotspots_map_verified_by_user_id", "map_verified_by_user_id"),
+    ):
+        if index_name not in index_names:
+            op.create_index(index_name, "travel_hotspots", [column])
+    unique_columns = {
+        tuple(constraint["column_names"])
+        for constraint in inspector.get_unique_constraints("travel_hotspots")
+    }
+    unique_columns.update(
+        tuple(index["column_names"])
+        for index in inspector.get_indexes("travel_hotspots")
+        if index["unique"]
     )
-    op.create_check_constraint(
-        "ck_travel_hotspot_coordinate_pair",
-        "travel_hotspots",
-        "(latitude IS NULL) = (longitude IS NULL)",
-    )
-    op.create_foreign_key(
-        "fk_travel_hotspots_map_verified_by_user_id",
-        "travel_hotspots",
-        "users",
-        ["map_verified_by_user_id"],
-        ["id"],
-        ondelete="SET NULL",
-    )
-    op.create_index("ix_travel_hotspots_map_match_status", "travel_hotspots", ["map_match_status"])
-    op.create_index("ix_travel_hotspots_plus_code_global", "travel_hotspots", ["plus_code_global"])
-    op.create_index(
-        "ix_travel_hotspots_map_verified_by_user_id",
-        "travel_hotspots",
-        ["map_verified_by_user_id"],
-    )
-    op.create_unique_constraint(
-        "uq_travel_hotspots_google_place_id", "travel_hotspots", ["google_place_id"]
-    )
-    op.create_unique_constraint(
-        "uq_travel_hotspots_naver_map_url", "travel_hotspots", ["naver_map_url"]
-    )
+    if ("google_place_id",) not in unique_columns:
+        op.create_unique_constraint(
+            "uq_travel_hotspots_google_place_id", "travel_hotspots", ["google_place_id"]
+        )
+    if ("naver_map_url",) not in unique_columns:
+        op.create_unique_constraint(
+            "uq_travel_hotspots_naver_map_url", "travel_hotspots", ["naver_map_url"]
+        )
+
+    # The initial migration creates current metadata on a fresh database. In that
+    # path all merchant tables already exist and this revision only needs to stamp.
+    if "food_merchants" in tables:
+        return
 
     op.create_table(
         "food_merchants",
@@ -212,28 +260,63 @@ def upgrade() -> None:
 
 
 def downgrade() -> None:
-    op.drop_table("food_merchant_sources")
-    op.drop_table("food_merchant_foods")
-    op.drop_table("food_merchants")
-    op.drop_index("ix_travel_hotspots_map_verified_by_user_id", table_name="travel_hotspots")
-    op.drop_index("ix_travel_hotspots_plus_code_global", table_name="travel_hotspots")
-    op.drop_index("ix_travel_hotspots_map_match_status", table_name="travel_hotspots")
-    op.drop_constraint("uq_travel_hotspots_naver_map_url", "travel_hotspots", type_="unique")
-    op.drop_constraint("uq_travel_hotspots_google_place_id", "travel_hotspots", type_="unique")
-    op.drop_constraint(
-        "ck_travel_hotspot_coordinate_pair", "travel_hotspots", type_="check"
-    )
-    op.drop_constraint(
-        "ck_travel_hotspot_map_match_status", "travel_hotspots", type_="check"
-    )
-    op.drop_constraint(
-        "fk_travel_hotspots_map_verified_by_user_id", "travel_hotspots", type_="foreignkey"
-    )
-    op.drop_column("travel_hotspots", "map_verified_by_user_id")
-    op.drop_column("travel_hotspots", "map_verified_at")
-    op.drop_column("travel_hotspots", "map_match_status")
-    op.drop_column("travel_hotspots", "coordinate_verified_at")
-    op.drop_column("travel_hotspots", "coordinate_source_url")
-    op.drop_column("travel_hotspots", "coordinate_source_type")
-    op.drop_column("travel_hotspots", "plus_code_global")
-    op.drop_column("travel_hotspots", "naver_map_url")
+    inspector = sa.inspect(op.get_bind())
+    tables = set(inspector.get_table_names())
+    for table in ("food_merchant_sources", "food_merchant_foods", "food_merchants"):
+        if table in tables:
+            op.drop_table(table)
+
+    hotspot_indexes = {
+        index["name"]: index for index in inspector.get_indexes("travel_hotspots")
+    }
+    recreated_google_index = False
+    for constraint in inspector.get_unique_constraints("travel_hotspots"):
+        if tuple(constraint["column_names"]) in {
+            ("google_place_id",),
+            ("naver_map_url",),
+        } and constraint["name"]:
+            op.drop_constraint(constraint["name"], "travel_hotspots", type_="unique")
+    for index_name, index in hotspot_indexes.items():
+        columns = tuple(index["column_names"])
+        if index["unique"] and columns in {("google_place_id",), ("naver_map_url",)}:
+            op.drop_index(index_name, table_name="travel_hotspots")
+            recreated_google_index = recreated_google_index or columns == ("google_place_id",)
+    for index_name in (
+        "ix_travel_hotspots_map_verified_by_user_id",
+        "ix_travel_hotspots_plus_code_global",
+        "ix_travel_hotspots_map_match_status",
+    ):
+        if index_name in hotspot_indexes:
+            op.drop_index(index_name, table_name="travel_hotspots")
+    if recreated_google_index:
+        op.create_index(
+            "ix_travel_hotspots_google_place_id",
+            "travel_hotspots",
+            ["google_place_id"],
+        )
+
+    for constraint in inspector.get_check_constraints("travel_hotspots"):
+        if constraint["name"] in {
+            "ck_travel_hotspot_coordinate_pair",
+            "ck_travel_hotspot_map_match_status",
+        }:
+            op.drop_constraint(constraint["name"], "travel_hotspots", type_="check")
+    for constraint in inspector.get_foreign_keys("travel_hotspots"):
+        if tuple(constraint["constrained_columns"]) == ("map_verified_by_user_id",):
+            op.drop_constraint(constraint["name"], "travel_hotspots", type_="foreignkey")
+
+    hotspot_columns = {
+        column["name"] for column in inspector.get_columns("travel_hotspots")
+    }
+    for column in (
+        "map_verified_by_user_id",
+        "map_verified_at",
+        "map_match_status",
+        "coordinate_verified_at",
+        "coordinate_source_url",
+        "coordinate_source_type",
+        "plus_code_global",
+        "naver_map_url",
+    ):
+        if column in hotspot_columns:
+            op.drop_column("travel_hotspots", column)
