@@ -73,7 +73,7 @@ LEGACY_SLUGS = {
     "Nagoya Castle": "nagoya-castle",
     "Atsuta Shrine": "atsuta-shrine",
     "Gyeongbokgung": "gyeongbokgung",
-    "N Seoul Tower": "n-seoul-tower",
+    "Namsan Seoul Tower": "n-seoul-tower",
     "Haeundae Beach": "haeundae-beach",
     "Gamcheon Culture Village": "gamcheon-culture-village",
     "Seongsan Ilchulbong": "seongsan-ilchulbong",
@@ -82,8 +82,8 @@ LEGACY_SLUGS = {
     "Wat Arun": "wat-arun",
     "Wat Phra That Doi Suthep": "doi-suthep",
     "Tha Phae Gate": "tha-phae-gate",
-    "Old Phuket Town": "phuket-old-town",
-    "Patong Beach": "patong-beach",
+    "Phuket Old Town": "phuket-old-town",
+    "Patong": "patong-beach",
     "Railay Beach": "railay-beach",
     "Ao Nang": "ao-nang",
 }
@@ -136,6 +136,12 @@ def _load_seeds() -> tuple[HotspotSeed, ...]:
         raise RuntimeError("bootstrap hotspot Wikidata IDs must be unique")
     if len({seed.slug for seed in seeds}) != len(seeds):
         raise RuntimeError("bootstrap hotspot slugs must be unique")
+    unmatched = sorted(LEGACY_SLUGS.keys() - {row["wikipedia_title"] for row in rows})
+    if unmatched:
+        # A renamed wikipedia_title silently drops its curated slug: the attraction
+        # re-seeds as wikidata-<id> and the old row is orphaned with no Wikidata id,
+        # so it keeps collecting against the stale title. Fail the import instead.
+        raise RuntimeError(f"LEGACY_SLUGS keys match no wikipedia_title: {unmatched}")
     deep = [seed for seed in seeds if seed.is_deep_travel]
     if len(deep) != 95 or any((seed.depth_score or 0) < 70 for seed in deep):
         raise RuntimeError("deep bootstrap must contain exactly 95 reviewed scores >= 70")
