@@ -325,6 +325,8 @@ async def collect_hotspots(
             settings.hotspot_wikimedia_user_agent,
             settings.hotspot_wikimedia_timeout_seconds,
             client,
+            settings.hotspot_wikimedia_max_retries,
+            settings.hotspot_wikimedia_retry_backoff_seconds,
         )
         semaphore = asyncio.Semaphore(settings.hotspot_discovery_concurrency)
         existing_signal_ids = set(
