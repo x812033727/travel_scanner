@@ -18,6 +18,33 @@ class SecretState(BaseModel):
     source: str = "none"
 
 
+class ProviderSkuUsageView(BaseModel):
+    sku: str
+    label: str
+    category: str
+    operations: tuple[str, ...]
+    used: int
+    free_limit: int
+    free_usage: int
+    free_remaining: int
+    billable_overage: int
+    percentage: float
+
+
+class ProviderMonthlyUsageView(BaseModel):
+    period: str
+    period_start: date
+    period_end: date
+    used: int
+    free_limit: int
+    free_usage: int
+    free_remaining: int
+    billable_overage: int
+    breakdown: dict[str, int]
+    sku_usage: tuple[ProviderSkuUsageView, ...]
+    tracking_started_at: datetime | None = None
+
+
 class ProviderUsageView(BaseModel):
     period: str
     period_start: date
@@ -26,11 +53,19 @@ class ProviderUsageView(BaseModel):
     monthly_limit: int
     remaining: int | None
     percentage: float | None
+    free_limit: int
+    free_usage: int | None
+    free_remaining: int | None
+    billable_overage: int | None
     breakdown: dict[str, int]
+    sku_usage: tuple[ProviderSkuUsageView, ...]
+    monthly_history: tuple[ProviderMonthlyUsageView, ...]
     tracking_started_at: datetime | None = None
     observed_at: datetime
     available: bool
     scope: str = "server_requests"
+    billing_timezone: str = "America/Los_Angeles"
+    pricing_region: str = "global"
 
 
 class ProviderSettingsView(BaseModel):

@@ -144,6 +144,9 @@ class Settings(BaseSettings):
     google_maps_api_key: str | None = None
     next_public_google_maps_browser_key: str | None = None
     google_maps_monthly_request_limit: int = Field(default=10_000, ge=1, le=10_000_000)
+    google_maps_essentials_free_limit: int = Field(default=10_000, ge=1, le=10_000_000)
+    google_maps_pro_free_limit: int = Field(default=5_000, ge=1, le=10_000_000)
+    google_maps_enterprise_free_limit: int = Field(default=1_000, ge=1, le=10_000_000)
     place_photo_ip_limit: int = Field(default=120, ge=1, le=10_000)
     place_photo_window_seconds: int = Field(default=60, ge=10, le=3_600)
     place_photo_cache_ttl_seconds: int = Field(default=3_600, ge=60, le=86_400)

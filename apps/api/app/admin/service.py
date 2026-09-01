@@ -5,7 +5,7 @@ import hashlib
 import json
 import re
 import time
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from datetime import UTC, date, datetime, timedelta
 from typing import Any, cast
 from urllib.parse import urlparse
@@ -98,7 +98,9 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         (
             "route_cache_ttl_seconds",
             "weather_cache_ttl_seconds",
-            "google_maps_monthly_request_limit",
+            "google_maps_essentials_free_limit",
+            "google_maps_pro_free_limit",
+            "google_maps_enterprise_free_limit",
         ),
         ("google_maps_api_key", "next_public_google_maps_browser_key"),
     ),
@@ -483,7 +485,12 @@ async def settings_snapshot(
     by_provider = {row.provider: row for row in rows}
     effective = apply_runtime_overrides(base, rows)
     google_usage = (
-        await google_maps_usage_snapshot(redis, effective.google_maps_monthly_request_limit)
+        await google_maps_usage_snapshot(
+            redis,
+            essentials_free_limit=effective.google_maps_essentials_free_limit,
+            pro_free_limit=effective.google_maps_pro_free_limit,
+            enterprise_free_limit=effective.google_maps_enterprise_free_limit,
+        )
         if redis is not None
         else None
     )
@@ -541,7 +548,7 @@ async def settings_snapshot(
                 updated_at=row.updated_at if row else None,
                 usage=(
                     ProviderUsageView(
-                        **google_usage.__dict__,
+                        **asdict(google_usage),
                     )
                     if provider == "google_maps" and google_usage is not None
                     else None

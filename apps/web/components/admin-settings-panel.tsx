@@ -6,6 +6,31 @@ import { api } from "@/lib/api";
 
 type Scalar = string | number | boolean;
 type SecretState = { configured: boolean; masked?: string | null; source: string };
+type ProviderSkuUsage = {
+  sku: string;
+  label: string;
+  category: string;
+  operations: string[];
+  used: number;
+  free_limit: number;
+  free_usage: number;
+  free_remaining: number;
+  billable_overage: number;
+  percentage: number;
+};
+type ProviderMonthlyUsage = {
+  period: string;
+  period_start: string;
+  period_end: string;
+  used: number;
+  free_limit: number;
+  free_usage: number;
+  free_remaining: number;
+  billable_overage: number;
+  breakdown: Record<string, number>;
+  sku_usage: ProviderSkuUsage[];
+  tracking_started_at?: string | null;
+};
 type ProviderUsage = {
   period: string;
   period_start: string;
@@ -14,11 +39,19 @@ type ProviderUsage = {
   monthly_limit: number;
   remaining?: number | null;
   percentage?: number | null;
+  free_limit: number;
+  free_usage?: number | null;
+  free_remaining?: number | null;
+  billable_overage?: number | null;
   breakdown: Record<string, number>;
+  sku_usage: ProviderSkuUsage[];
+  monthly_history: ProviderMonthlyUsage[];
   tracking_started_at?: string | null;
   observed_at: string;
   available: boolean;
   scope: string;
+  billing_timezone: string;
+  pricing_region: string;
 };
 type ProviderView = {
   provider: string;
@@ -67,7 +100,9 @@ const fieldMeta: Record<string, FieldMeta> = {
   provider_circuit_seconds: { label: "斷路器暫停秒數", type: "number" },
   route_cache_ttl_seconds: { label: "路線快取秒數", type: "number" },
   weather_cache_ttl_seconds: { label: "天氣快取秒數", type: "number", help: "Google Weather 預設快取 15 分鐘，降低重複查詢。" },
-  google_maps_monthly_request_limit: { label: "每月用量參考值", type: "number", help: "預設 10,000 次；只用於後臺進度提示，各 API 的實際計價仍以 Google Cloud 為準。" },
+  google_maps_essentials_free_limit: { label: "Essentials 每 SKU 免費額度", type: "number", help: "全球公開定價預設每個 SKU 每月 10,000 次；若合約不同可在此調整。" },
+  google_maps_pro_free_limit: { label: "Pro 每 SKU 免費額度", type: "number", help: "全球公開定價預設每個 SKU 每月 5,000 次。" },
+  google_maps_enterprise_free_limit: { label: "Enterprise 每 SKU 免費額度", type: "number", help: "全球公開定價預設每個 SKU 每月 1,000 次。" },
   amadeus_env: { label: "Amadeus 環境", options: [{ value: "test", label: "Test" }, { value: "production", label: "Production" }] },
   skyscanner_base_url: { label: "API Base URL", type: "url" },
   skyscanner_market: { label: "市場代碼" },
@@ -160,6 +195,12 @@ const usageOperationLabel: Record<string, string> = {
   weather_current: "目前天氣",
   weather_daily_forecast: "10 日預報",
 };
+const usageCategoryLabel: Record<string, string> = {
+  essentials: "Essentials",
+  pro: "Pro",
+  enterprise: "Enterprise",
+};
+const numberFormat = new Intl.NumberFormat("zh-TW");
 
 function auditSummary(metadata: Record<string, unknown>): string {
   for (const field of ["status", "enabled", "is_admin"]) {
@@ -185,6 +226,61 @@ function statusClass(status: string) {
   if (status === "ready" || status === "success") return "bg-emerald-50 text-emerald-800";
   if (status === "disabled") return "bg-slate-100 text-slate-700";
   return "bg-amber-50 text-amber-800";
+}
+
+function GoogleUsagePanel({ usage, refreshing, onRefresh }: {
+  usage: ProviderUsage;
+  refreshing: boolean;
+  onRefresh: () => void;
+}) {
+  return <div className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5" aria-label="Google Maps 本月用量">
+    <div className="flex flex-wrap items-start justify-between gap-4">
+      <div>
+        <p className="flex items-center gap-2 text-sm font-bold text-[var(--teal)]"><Gauge size={17} />Google API 每月用量</p>
+        {usage.available
+          ? <p className="mt-2 text-3xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)} <span className="text-base font-medium text-[var(--muted)]">次站內觀測請求</span></p>
+          : <p className="mt-2 font-semibold text-amber-800">目前無法讀取用量計數</p>}
+      </div>
+      <button type="button" onClick={onRefresh} disabled={refreshing} className="flex items-center gap-2 rounded-xl border border-[var(--line)] bg-white px-3 py-2 text-sm font-semibold disabled:opacity-50"><RefreshCw size={15} className={refreshing ? "animate-spin" : ""} />重新整理用量</button>
+    </div>
+
+    {usage.available && <>
+      <dl className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">本月站內請求</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)}</dd></div>
+        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">免費額度內使用</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(usage.free_usage || 0)}</dd></div>
+        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">各 SKU 剩餘合計</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(usage.free_remaining || 0)}</dd></div>
+        <div className={`rounded-xl p-3 ${usage.billable_overage ? "bg-red-50 text-red-800" : "bg-emerald-50 text-emerald-800"}`}><dt className="text-xs">可能超出免費額度</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(usage.billable_overage || 0)}</dd></div>
+      </dl>
+
+      <div className="mt-5">
+        <h3 className="text-sm font-bold">本月各 SKU 免費額度</h3>
+        <p className="mt-1 text-xs leading-5 text-[var(--muted)]">免費額度由各 SKU 獨立計算，不能用其他 SKU 的剩餘量抵銷超額。</p>
+        <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          {usage.sku_usage.map((item) => {
+            const width = Math.min(100, Math.max(0, item.percentage));
+            return <article key={item.sku} className="rounded-xl bg-white p-4">
+              <div className="flex items-start justify-between gap-3"><div><h4 className="text-sm font-bold">{item.label}</h4><p className="mt-0.5 text-[.68rem] text-[var(--muted)]">{usageCategoryLabel[item.category] || item.category}</p></div><span className="text-sm font-bold tabular-nums">{numberFormat.format(item.used)} / {numberFormat.format(item.free_limit)}</span></div>
+              <div className="mt-3 h-2 overflow-hidden rounded-full bg-[var(--paper)]" role="progressbar" aria-label={`${item.label} 月用量`} aria-valuemin={0} aria-valuemax={item.free_limit} aria-valuenow={Math.min(item.used, item.free_limit)}><div className={`h-full rounded-full ${item.billable_overage ? "bg-red-500" : item.percentage >= 75 ? "bg-amber-500" : "bg-[var(--teal)]"}`} style={{ width: `${width}%` }} /></div>
+              <p className={`mt-2 text-xs ${item.billable_overage ? "font-semibold text-red-700" : "text-[var(--muted)]"}`}>{item.billable_overage ? `可能超額 ${numberFormat.format(item.billable_overage)} 次` : `剩餘免費 ${numberFormat.format(item.free_remaining)} 次`}</p>
+            </article>;
+          })}
+        </div>
+      </div>
+
+      <div className="mt-5">
+        <h3 className="text-sm font-bold">最近 6 個帳務月份</h3>
+        <div className="mt-3 overflow-x-auto rounded-xl border border-[var(--line)] bg-white">
+          <table className="min-w-[42rem] w-full text-left text-sm">
+            <thead className="bg-[var(--paper)] text-xs text-[var(--muted)]"><tr><th className="px-3 py-2 font-semibold">月份</th><th className="px-3 py-2 font-semibold">站內請求</th><th className="px-3 py-2 font-semibold">免費額度內使用</th><th className="px-3 py-2 font-semibold">各 SKU 剩餘合計</th><th className="px-3 py-2 font-semibold">可能超額</th></tr></thead>
+            <tbody className="divide-y divide-[var(--line)]">{usage.monthly_history.map((month) => <tr key={month.period}><th className="px-3 py-2.5 font-semibold">{month.period}</th><td className="px-3 py-2.5 tabular-nums">{numberFormat.format(month.used)}</td><td className="px-3 py-2.5 tabular-nums">{numberFormat.format(month.free_usage)}</td><td className="px-3 py-2.5 tabular-nums">{numberFormat.format(month.free_remaining)}</td><td className={`px-3 py-2.5 tabular-nums ${month.billable_overage ? "font-semibold text-red-700" : ""}`}>{numberFormat.format(month.billable_overage)}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </div>
+
+      <details className="mt-4 rounded-xl bg-white px-4 py-3"><summary className="cursor-pointer text-sm font-semibold">查看站內操作明細</summary><dl className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">{Object.entries(usage.breakdown).map(([operation, count]) => <div key={operation}><dt className="text-[.68rem] text-[var(--muted)]">{usageOperationLabel[operation] || operation}</dt><dd className="mt-0.5 font-bold tabular-nums">{numberFormat.format(count)}</dd></div>)}</dl></details>
+    </>}
+    <p className="mt-4 text-xs leading-5 text-[var(--muted)]">帳務期間依 Google Pacific Time：{dateOnly.format(new Date(`${usage.period_start}T00:00:00Z`))} 至 {dateOnly.format(new Date(`${usage.period_end}T00:00:00Z`))}。本站會保守計入送出的伺服器請求（包含失敗請求），不含瀏覽器 Embed 與計數啟用前的歷史；實際成功計費事件、優惠與帳單仍以 Google Cloud Console 為準。</p>
+  </div>;
 }
 
 export function AdminSettingsPanel() {
@@ -287,15 +383,10 @@ export function AdminSettingsPanel() {
       const draft = drafts[provider.provider];
       const busy = busyProvider === provider.provider;
       const usage = provider.usage;
-      const usageWidth = Math.min(100, Math.max(0, usage?.percentage || 0));
       return <section key={provider.provider} className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm md:p-7">
         <div className="flex flex-wrap items-start justify-between gap-4"><div className="max-w-2xl"><div className="flex flex-wrap items-center gap-2"><h2 className="text-xl font-bold">{provider.label}</h2><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(provider.status)}`}>{provider.status === "ready" ? "已設定" : provider.status === "disabled" ? "已停用" : provider.status === "test_required" ? "待測試" : provider.status === "error" ? "連線失敗" : "待設定"}</span></div><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{provider.description}</p><p className="mt-1 text-xs font-semibold text-[var(--teal)]">{provider.status_message}</p>{provider.provider !== "runtime" && <p className="mt-2 text-xs text-[var(--muted)]">近 24 小時：{provider.requests_24h || 0} 次呼叫 · {provider.errors_24h || 0} 次失敗{provider.last_error_at ? ` · 最近失敗 ${dateTime.format(new Date(provider.last_error_at))}` : ""}</p>}</div>{provider.provider !== "runtime" && <label className="flex items-center gap-2 rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-semibold"><input type="checkbox" checked={draft.enabled} onChange={(event) => patchDraft(provider.provider, { enabled: event.target.checked })} />啟用</label>}</div>
 
-        {provider.provider === "google_maps" && usage && <div className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5" aria-label="Google Maps 本月用量">
-          <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="flex items-center gap-2 text-sm font-bold text-[var(--teal)]"><Gauge size={17} />本月 Google API 用量</p>{usage.available ? <p className="mt-2 text-3xl font-bold tabular-nums">{usage.used?.toLocaleString("zh-TW")} <span className="text-base font-medium text-[var(--muted)]">/ {usage.monthly_limit.toLocaleString("zh-TW")} 次</span></p> : <p className="mt-2 font-semibold text-amber-800">目前無法讀取用量計數</p>}</div><button type="button" onClick={refreshUsage} disabled={usageRefreshing} className="flex items-center gap-2 rounded-xl border border-[var(--line)] bg-white px-3 py-2 text-sm font-semibold disabled:opacity-50"><RefreshCw size={15} className={usageRefreshing ? "animate-spin" : ""} />重新整理用量</button></div>
-          {usage.available && <><div className="mt-4 h-2.5 overflow-hidden rounded-full bg-white" role="progressbar" aria-label="Google Maps 月用量" aria-valuemin={0} aria-valuemax={usage.monthly_limit} aria-valuenow={usage.used || 0}><div className={`h-full rounded-full ${usageWidth >= 90 ? "bg-red-500" : usageWidth >= 75 ? "bg-amber-500" : "bg-[var(--teal)]"}`} style={{ width: `${usageWidth}%` }} /></div><div className="mt-2 flex flex-wrap justify-between gap-2 text-xs text-[var(--muted)]"><span>已使用 {usage.percentage?.toLocaleString("zh-TW")}%</span><span>剩餘 {(usage.remaining || 0).toLocaleString("zh-TW")} 次</span></div><dl className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">{Object.entries(usage.breakdown).map(([operation, count]) => <div key={operation} className="rounded-xl bg-white px-3 py-2"><dt className="text-[.68rem] text-[var(--muted)]">{usageOperationLabel[operation] || operation}</dt><dd className="mt-0.5 font-bold tabular-nums">{count.toLocaleString("zh-TW")}</dd></div>)}</dl></>}
-          <p className="mt-4 text-xs leading-5 text-[var(--muted)]">統計期間：{dateOnly.format(new Date(`${usage.period_start}T00:00:00Z`))} 至 {dateOnly.format(new Date(`${usage.period_end}T00:00:00Z`))}。此為本站自導入計數後送出的伺服器 API 請求，不含瀏覽器 Embed 地圖與 Google Cloud 控制台既有歷史；Google 官方帳單仍以 Cloud Console 為準。</p>
-        </div>}
+        {provider.provider === "google_maps" && usage && <GoogleUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
 
         {Object.keys(provider.config).length > 0 && <div className="mt-6 grid gap-4 md:grid-cols-2">{Object.entries(provider.config).map(([field]) => {
           const meta = fieldMeta[field] || { label: field };
