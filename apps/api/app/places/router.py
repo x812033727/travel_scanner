@@ -26,6 +26,8 @@ router = APIRouter(prefix="/destinations", tags=["destinations"])
 public_router = APIRouter(prefix="/places", tags=["places"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 PHOTO_NAME_PATTERN = re.compile(r"^places/[A-Za-z0-9._~-]{1,255}/photos/[A-Za-z0-9._~-]{1,512}$")
+GOOGLE_PLACES_USER_LIMIT = 120
+GOOGLE_PLACES_USER_WINDOW_SECONDS = 600
 
 
 def _safe_photo_uri(value: object) -> str | None:
@@ -75,6 +77,12 @@ async def autocomplete_places(
     service = GoogleTravelService(get_redis(), await load_runtime_settings(session))
     if not service.configured:
         raise AppError(503, "google_maps_not_configured", "Google Maps 地點搜尋尚未啟用")
+    await enforce_named_rate_limit(
+        "google-places-user",
+        str(user.id),
+        limit=GOOGLE_PLACES_USER_LIMIT,
+        window_seconds=GOOGLE_PLACES_USER_WINDOW_SECONDS,
+    )
     return await service.autocomplete(q, session_token, codes, latitude, longitude)
 
 
@@ -94,6 +102,12 @@ async def get_place_details(
     service = GoogleTravelService(get_redis(), await load_runtime_settings(session))
     if not service.configured:
         raise AppError(503, "google_maps_not_configured", "Google Maps 地點搜尋尚未啟用")
+    await enforce_named_rate_limit(
+        "google-places-user",
+        str(user.id),
+        limit=GOOGLE_PLACES_USER_LIMIT,
+        window_seconds=GOOGLE_PLACES_USER_WINDOW_SECONDS,
+    )
     result = await service.place_details(place_id, session_token)
     if not result:
         raise AppError(404, "place_not_found", "找不到這個地點")

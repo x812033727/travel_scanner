@@ -21,6 +21,7 @@ async def test_trip_weather_uses_an_owned_trip_coordinate_and_marks_future_dates
     trip_id = uuid4()
     user_id = uuid4()
     observed_owner: list[tuple[UUID, UUID]] = []
+    observed_limits: list[tuple[str, str, int, int]] = []
     trip = SimpleNamespace(
         id=trip_id,
         name="東京五日",
@@ -74,6 +75,15 @@ async def test_trip_weather_uses_an_owned_trip_coordinate_and_marks_future_dates
     async def hydrate(_session: object, _trip: object, rows: list[object]) -> list[object]:
         return rows
 
+    async def enforce_limit(
+        namespace: str,
+        identifier: str,
+        *,
+        limit: int,
+        window_seconds: int,
+    ) -> None:
+        observed_limits.append((namespace, identifier, limit, window_seconds))
+
     class WeatherStub:
         def __init__(self, *_args: object) -> None:
             pass
@@ -90,6 +100,7 @@ async def test_trip_weather_uses_an_owned_trip_coordinate_and_marks_future_dates
     monkeypatch.setattr(trips_router, "hydrate_legacy_items", hydrate)
     monkeypatch.setattr(trips_router, "GoogleWeatherService", WeatherStub)
     monkeypatch.setattr(trips_router, "get_redis", lambda: object())
+    monkeypatch.setattr(trips_router, "enforce_named_rate_limit", enforce_limit)
 
     result = await trips_router.get_trip_weather(
         trip_id,
@@ -98,5 +109,13 @@ async def test_trip_weather_uses_an_owned_trip_coordinate_and_marks_future_dates
     )
 
     assert observed_owner == [(user_id, trip_id)]
+    assert observed_limits == [
+        (
+            "trip-weather-user",
+            str(user_id),
+            trips_router.TRIP_WEATHER_USER_LIMIT,
+            trips_router.TRIP_WEATHER_USER_WINDOW_SECONDS,
+        )
+    ]
     assert result.location_name == "東京"
     assert result.warnings == ["旅程日期超出目前 10 日預報範圍"]
