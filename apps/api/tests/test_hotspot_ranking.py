@@ -1,6 +1,11 @@
 from datetime import date
 
-from app.hotspots.ranking import RankingInput, score_hotspots
+from app.hotspots.ranking import (
+    RankingInput,
+    calculate_depth_value,
+    score_deep_hotspots,
+    score_hotspots,
+)
 
 
 def test_ranking_rewards_recent_interest_and_growth() -> None:
@@ -26,3 +31,15 @@ def test_ranking_marks_cold_start_catalog_values_as_estimates() -> None:
     assert result.confidence_score == 35
     assert result.sources == ("curated_catalog",)
     assert result.is_estimate is True
+
+
+def test_depth_value_and_ranking_keep_local_value_dominant() -> None:
+    assert calculate_depth_value(locality=80, distinctiveness=80, feasibility=80, evidence=80) == 80
+    results = score_deep_hotspots(
+        [
+            RankingInput("deep", 70, 100, depth_score=95),
+            RankingInput("popular", 70, 1_000_000, depth_score=70),
+        ]
+    )
+    assert [item.hotspot_id for item in results] == ["deep", "popular"]
+    assert results[0].quality_score == 95

@@ -50,3 +50,10 @@ async def test_parser_extracts_family_hotel_and_pace_preferences() -> None:
     assert result.max_station_walk_minutes == 8
     assert result.preferred_area == "暹羅"
     assert result.pace == "relaxed"
+
+
+@pytest.mark.asyncio
+async def test_parser_recognizes_deep_travel_language() -> None:
+    for phrase in ("深度旅遊", "在地小眾", "巷弄冷門", "近郊"):
+        result = await MockAITripParser().parse(f"台北 4 天，想走{phrase}行程")
+        assert "deep_travel" in result.interests

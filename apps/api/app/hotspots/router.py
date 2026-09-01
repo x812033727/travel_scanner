@@ -1,4 +1,4 @@
-from typing import Annotated, Any
+from typing import Annotated, Any, Literal
 
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -67,6 +67,7 @@ async def hotspot_rankings(
     category: Annotated[str | None, Query(min_length=2, max_length=32)] = None,
     after_rank: Annotated[int | None, Query(ge=0)] = None,
     limit: Annotated[int, Query(ge=1, le=50)] = 20,
+    style: Literal["all", "deep"] = "all",
 ) -> dict[str, Any]:
     return await list_rankings(
         session,
@@ -76,6 +77,7 @@ async def hotspot_rankings(
         category=category,
         after_rank=after_rank,
         limit=limit,
+        style=style,
     )
 
 
@@ -90,10 +92,14 @@ async def hotspots_for_planner(
     city_code: Annotated[str, Query(min_length=3, max_length=3)],
     interests: Annotated[str | None, Query(max_length=200)] = None,
     limit: Annotated[int, Query(ge=1, le=12)] = 8,
+    style: Literal["all", "deep"] = "all",
+    days: Annotated[int | None, Query(ge=1, le=30)] = None,
 ) -> dict[str, Any]:
     requested = {item.strip().casefold() for item in (interests or "").split(",") if item.strip()}
-    result = await list_rankings(session, city_code=city_code, limit=50)
+    result = await list_rankings(session, city_code=city_code, limit=50, style=style)
     items = result["items"]
+    if style == "deep" and days == 1:
+        items = [item for item in items if item["depth_kind"] != "day_trip"]
     if requested:
         matched = [item for item in items if item["category"] in requested]
         unmatched = [item for item in items if item["category"] not in requested]
@@ -110,12 +116,20 @@ async def hotspots_for_planner(
             "trend": item["trend_label"],
             "is_estimate": item["is_estimate"],
             "sources": item["sources"],
+            "is_deep_travel": item["is_deep_travel"],
+            "depth_kind": item["depth_kind"],
+            "depth_score": item["depth_score"],
+            "depth_reason": item["depth_reason"],
+            "access_minutes": item["access_minutes"],
+            "recommended_duration_minutes": item["recommended_duration_minutes"],
         }
         for item in items[:limit]
     ]
     return {
         "city_code": city_code.upper(),
         "observed_on": result["observed_on"],
+        "style": style,
+        "days": days,
         "recommendations": recommendations,
         "planner_note": "熱門度只作候選訊號，仍須配合營業時間、距離與旅客偏好排程",
     }

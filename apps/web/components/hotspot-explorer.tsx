@@ -36,6 +36,13 @@ type RankedHotspot = {
   source_urls: string[];
   signal_date: string | null;
   is_estimate: boolean;
+  is_deep_travel: boolean;
+  depth_kind: "urban_local" | "day_trip" | null;
+  depth_score: number | null;
+  depth_reason: string | null;
+  local_name: string | null;
+  access_minutes: number | null;
+  recommended_duration_minutes: number | null;
 };
 
 type RankingResponse = {
@@ -54,6 +61,7 @@ type FacetsResponse = {
   countries: { code: string; name: string; count: number }[];
   cities: { code: string; name: string; country_code: string; count: number }[];
   categories: { code: string; count: number }[];
+  styles: { code: "all" | "deep"; name: string; count: number }[];
 };
 
 const categories = [
@@ -85,6 +93,7 @@ export function HotspotExplorer() {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [category, setCategory] = useState("");
+  const [style, setStyle] = useState<"all" | "deep">("all");
   const [ranking, setRanking] = useState<RankingResponse | null>(null);
   const [sources, setSources] = useState<SourcesResponse | null>(null);
   const [facets, setFacets] = useState<FacetsResponse | null>(null);
@@ -99,6 +108,7 @@ export function HotspotExplorer() {
     if (country) params.set("country_code", country);
     if (city) params.set("city_code", city);
     if (category) params.set("category", category);
+    params.set("style", style);
     if (append && ranking?.next_cursor) params.set("after_rank", String(ranking.next_cursor));
     try {
       const result = await api<RankingResponse>(`/hotspots/rankings?${params}`);
@@ -139,7 +149,7 @@ export function HotspotExplorer() {
         </div>
       </section>
 
-      <form onSubmit={submit} aria-label="熱門景點搜尋" className="grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-[1fr_9rem_10rem_10rem_auto] md:p-5">
+      <form onSubmit={submit} aria-label="熱門景點搜尋" className="grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-[1fr_9rem_10rem_10rem_9rem_auto] md:p-5">
         <label className="relative">
           <span className="sr-only">景點關鍵字</span>
           <Search className="pointer-events-none absolute left-4 top-3.5 text-[var(--muted)]" size={19} />
@@ -150,6 +160,12 @@ export function HotspotExplorer() {
           <select value={country} onChange={(event) => { setCountry(event.target.value); setCity(""); }} className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3 outline-none focus:border-[var(--teal)]">
             <option value="">全部國家</option>
             {facets?.countries?.map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}
+          </select>
+        </label>
+        <label>
+          <span className="sr-only">旅遊風格</span>
+          <select value={style} onChange={(event) => setStyle(event.target.value as "all" | "deep")} className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3 outline-none focus:border-[var(--teal)]">
+            {(facets?.styles || [{ code: "all", name: "全部旅遊", count: facets?.total || 0 }, { code: "deep", name: "深度旅遊", count: 0 }]).map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}
           </select>
         </label>
         <label>
@@ -182,7 +198,7 @@ export function HotspotExplorer() {
               <div className="flex items-start justify-between gap-4">
                 <div className="flex gap-3">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{item.rank}</span>
-                  <div><h3 className="text-lg font-bold">{item.name}</h3><p className="mt-1 flex items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{item.city_name}・{categoryLabels[item.category] || item.category}</p></div>
+                  <div><h3 className="text-lg font-bold">{item.name}</h3>{item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}<p className="mt-1 flex items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{item.city_name}・{categoryLabels[item.category] || item.category}</p></div>
                 </div>
                 <div className="text-right"><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><p className="text-xs text-[var(--muted)]">熱門分數</p></div>
               </div>
@@ -191,10 +207,13 @@ export function HotspotExplorer() {
                 <div><p className="text-[var(--muted)]">相較前期</p><p className="mt-1 flex items-center gap-1 font-semibold">{trendIcon(item)}{percent(item.growth_rate)}</p></div>
               </div>
               <div className="mt-4 flex flex-wrap items-center gap-2">
+                {item.is_deep_travel && <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-900">深度旅遊</span>}
+                {item.depth_kind && <span className="rounded-full border border-amber-300 px-2.5 py-1 text-xs text-amber-900">{item.depth_kind === "day_trip" ? "近郊" : "市區巷弄"}</span>}
                 <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${item.is_estimate ? "bg-[var(--coral-soft)] text-[var(--coral)]" : "bg-[var(--teal-soft)] text-[var(--teal-dark)]"}`}>{item.is_estimate ? "冷啟動估算" : item.trend_label}</span>
                 {item.sources.map((source) => <span key={source} className="rounded-full border border-[var(--line)] px-2.5 py-1 text-xs text-[var(--muted)]">{sourceLabels[source] || source}</span>)}
                 {item.source_urls[0] && <a href={item.source_urls[0]} target="_blank" rel="noreferrer" className="ml-auto text-xs font-semibold text-[var(--teal)]">查看來源</a>}
               </div>
+              {item.is_deep_travel && <div className="mt-3 rounded-2xl border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-950"><p>{item.depth_reason}</p><p className="mt-1 font-semibold">交通約 {item.access_minutes} 分鐘・建議停留 {item.recommended_duration_minutes} 分鐘・深度分數 {Math.round(item.depth_score || 0)}</p></div>}
             </li>
           ))}</ol>}
           {!loading && !error && ranking?.has_more && <div className="mt-6 text-center"><button type="button" onClick={() => void load(true)} className="rounded-xl border border-[var(--teal)] bg-white px-6 py-3 font-semibold text-[var(--teal)] hover:bg-[var(--teal-soft)]">載入更多</button></div>}

@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 from app.pricing.engine import TotalCost, TotalCostEngine
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, TransportOffer
 from app.search.schemas import SearchCreate
-from app.trips.itinerary import ItineraryDay, build_itinerary
+from app.trips.itinerary import ItineraryDay, ItineraryHotspot, build_itinerary
 
 WEIGHTS = {
     "balanced": {"price": 0.35, "time": 0.20, "convenience": 0.20, "quality": 0.15, "risk": 0.10},
@@ -31,6 +31,7 @@ INTEREST_LABELS = {
     "nightlife": "夜生活",
     "spa": "溫泉／SPA",
     "beach": "海灘／跳島",
+    "deep_travel": "深度旅遊",
 }
 
 INTEREST_KEYWORDS = {
@@ -348,6 +349,7 @@ class TripOptimizer:
         hotels: list[HotelOffer],
         activities: list[ActivityOffer],
         transports: list[TransportOffer],
+        hotspots: list[ItineraryHotspot] | None = None,
     ) -> list[TripPlanResult]:
         candidates = self._candidates(query, flights, hotels, activities, transports)
         if not candidates:
@@ -441,6 +443,7 @@ class TripOptimizer:
                         candidate.hotel,
                         candidate.activity,
                         candidate.transport,
+                        hotspots,
                     ),
                 )
             )

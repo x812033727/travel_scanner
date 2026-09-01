@@ -12,6 +12,7 @@ class RankingInput:
     pageviews_current: float | None = None
     pageviews_previous: float | None = None
     signal_date: date | None = None
+    depth_score: float | None = None
 
 
 @dataclass(frozen=True)
@@ -88,6 +89,51 @@ def score_hotspots(inputs: list[RankingInput]) -> list[RankingScore]:
                 if has_wikimedia
                 else ("curated_catalog",),
                 is_estimate=not has_wikimedia,
+            )
+        )
+    return sorted(results, key=lambda item: (-item.score, item.hotspot_id))
+
+
+def calculate_depth_value(
+    *, locality: float, distinctiveness: float, feasibility: float, evidence: float
+) -> float:
+    """Apply the editorial deep-value formula without hidden popularity signals."""
+    return round(
+        _clamp(locality) * 0.35
+        + _clamp(distinctiveness) * 0.30
+        + _clamp(feasibility) * 0.25
+        + _clamp(evidence) * 0.10,
+        2,
+    )
+
+
+def score_deep_hotspots(inputs: list[RankingInput]) -> list[RankingScore]:
+    interest_scores = _interest_scores(inputs)
+    results: list[RankingScore] = []
+    for item in inputs:
+        depth = _clamp(item.depth_score or 0)
+        interest = _clamp(interest_scores[item.hotspot_id])
+        confidence = 90.0 if item.pageviews_current is not None else 70.0
+        score = depth * 0.80 + interest * 0.15 + confidence * 0.05
+        results.append(
+            RankingScore(
+                hotspot_id=item.hotspot_id,
+                score=round(score, 2),
+                interest_score=round(interest, 2),
+                growth_score=50.0,
+                quality_score=round(depth, 2),
+                confidence_score=confidence,
+                pageviews_current=(
+                    round(item.pageviews_current) if item.pageviews_current is not None else None
+                ),
+                pageviews_previous=(
+                    round(item.pageviews_previous) if item.pageviews_previous is not None else None
+                ),
+                growth_rate=None,
+                sources=("curated_catalog", "wikimedia_pageviews")
+                if item.pageviews_current is not None
+                else ("curated_catalog",),
+                is_estimate=item.pageviews_current is None,
             )
         )
     return sorted(results, key=lambda item: (-item.score, item.hotspot_id))

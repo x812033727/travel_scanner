@@ -115,6 +115,7 @@ class MockAITripParser:
                 (["夜生活", "酒吧", "夜店"], "nightlife"),
                 (["按摩", "溫泉", "水療", "SPA", "spa"], "spa"),
                 (["海灘", "沙灘", "跳島"], "beach"),
+                (["深度旅遊", "在地", "小眾", "巷弄", "冷門", "近郊"], "deep_travel"),
             )
             if any(word in text for word in words)
         ]

@@ -311,6 +311,9 @@ class TravelHotspot(Timestamped, Base):
     source_urls: Mapped[list[str]] = mapped_column(JSON, default=list)
     metadata_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+    is_deep_travel: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
+    depth_kind: Mapped[str | None] = mapped_column(String(24), nullable=True)
+    depth_score: Mapped[Decimal | None] = mapped_column(Numeric(5, 2), nullable=True)
 
 
 class HotspotSignal(Base):
