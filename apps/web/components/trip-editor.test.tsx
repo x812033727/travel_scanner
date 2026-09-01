@@ -51,6 +51,31 @@ describe("trip editor", () => {
     expect(window.localStorage.getItem("travel-planner-theme")).toBe("ocean");
   });
 
+  it("keeps a new stop as a draft until the user confirms it", async () => {
+    const fetchMock = vi.fn(async (_url: string, init?: RequestInit) => {
+      if (init?.method === "PUT") {
+        const body = JSON.parse(String(init.body));
+        return response({ ...trip, version: 2, items: body.items });
+      }
+      return response(trip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "新增安排" }));
+    expect(screen.getByRole("dialog", { name: "新增安排" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "加入行程" }).hasAttribute("disabled")).toBe(true);
+    fireEvent.click(screen.getByRole("button", { name: "取消" }));
+    expect(screen.queryByRole("dialog", { name: "新增安排" })).toBeNull();
+    expect(fetchMock.mock.calls.some(([, init]) => init?.method === "PUT")).toBe(false);
+
+    fireEvent.click(screen.getByRole("button", { name: "新增安排" }));
+    fireEvent.change(screen.getByLabelText("安排名稱"), { target: { value: "銀座午餐" } });
+    fireEvent.click(screen.getByRole("button", { name: "加入行程" }));
+    expect(await screen.findByText("銀座午餐")).toBeTruthy();
+    await waitFor(() => expect(fetchMock.mock.calls.some(([, init]) => init?.method === "PUT")).toBe(true), { timeout: 2_000 });
+  });
+
   it("edits and saves an itinerary with the current version", async () => {
     const fetchMock = vi.fn(async (_url: string, init?: RequestInit) => {
       if (init?.method === "PUT") {
