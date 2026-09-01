@@ -61,7 +61,8 @@ def upgrade() -> None:
     op.execute(
         sa.text(
             "WITH ranked AS ("
-            "SELECT id, row_number() OVER (PARTITION BY google_place_id ORDER BY created_at, id) rn "
+            "SELECT id, row_number() OVER "
+            "(PARTITION BY google_place_id ORDER BY created_at, id) rn "
             "FROM travel_hotspots WHERE google_place_id IS NOT NULL"
             ") UPDATE travel_hotspots AS hotspot "
             "SET google_place_id = NULL, map_match_status = 'ambiguous' "
