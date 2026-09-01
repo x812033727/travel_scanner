@@ -60,7 +60,7 @@ test("blank trip keeps hotel and meal anchors while lunch bypass survives reload
   await page.goto("/zh-TW/register?next=/trips/new");
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("密碼").fill("full-stack-password-123");
-  await page.getByRole("button", { name: "建立帳號" }).click();
+  await page.getByRole("button", { name: "建立免費帳號" }).click();
   await expect(page).toHaveURL(/\/trips\/new$/, { timeout: 15_000 });
 
   await page.getByLabel("旅程名稱").fill("東京固定餐食行程");
