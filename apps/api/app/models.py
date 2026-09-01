@@ -614,6 +614,109 @@ class FoodMerchantSource(Timestamped, Base):
     is_current: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
     last_verified_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
+class RestaurantPlace(Timestamped, Base):
+    """Durable restaurant identity.
+
+    Google Place IDs are the only provider content kept indefinitely. The Maps
+    URL is an app-generated value derived from that ID, not a provider response.
+    Display fields such as the name, rating and opening hours are fetched live
+    and are intentionally absent from this table.
+    """
+
+    __tablename__ = "restaurant_places"
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    google_place_id: Mapped[str] = mapped_column(String(255), unique=True, index=True)
+    generated_maps_url: Mapped[str] = mapped_column(String(2048))
+    is_suppressed: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
+    suppression_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
+    suppressed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    suppressed_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+
+
+class RestaurantScanRun(Timestamped, Base):
+    __tablename__ = "restaurant_scan_runs"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('queued', 'running', 'partial', 'completed', 'failed', 'quota_paused')",
+            name="ck_restaurant_scan_status",
+        ),
+        CheckConstraint("radius_meters IN (5000, 10000)", name="ck_restaurant_scan_radius"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    hotspot_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="CASCADE"), index=True
+    )
+    actor_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    idempotency_key: Mapped[str] = mapped_column(String(255), unique=True)
+    status: Mapped[str] = mapped_column(String(24), default="queued", index=True)
+    radius_meters: Mapped[int] = mapped_column(Integer, default=10_000)
+    cells_total: Mapped[int] = mapped_column(Integer, default=1)
+    cells_completed: Mapped[int] = mapped_column(Integer, default=0)
+    candidate_count: Mapped[int] = mapped_column(Integer, default=0)
+    aggregate_calls: Mapped[int] = mapped_column(Integer, default=0)
+    details_calls: Mapped[int] = mapped_column(Integer, default=0)
+    failure_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    failure_detail: Mapped[str | None] = mapped_column(Text, nullable=True)
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    metadata_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+
+
+class RestaurantScanCell(Timestamped, Base):
+    __tablename__ = "restaurant_scan_cells"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('queued', 'running', 'split', 'completed', 'partial', 'failed')",
+            name="ck_restaurant_scan_cell_status",
+        ),
+        UniqueConstraint(
+            "run_id",
+            "center_latitude",
+            "center_longitude",
+            "radius_meters",
+            "depth",
+            name="uq_restaurant_scan_cell_geometry",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("restaurant_scan_runs.id", ondelete="CASCADE"), index=True
+    )
+    parent_cell_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("restaurant_scan_cells.id", ondelete="CASCADE"), nullable=True, index=True
+    )
+    status: Mapped[str] = mapped_column(String(24), default="queued", index=True)
+    center_latitude: Mapped[Decimal] = mapped_column(Numeric(9, 6))
+    center_longitude: Mapped[Decimal] = mapped_column(Numeric(9, 6))
+    radius_meters: Mapped[int] = mapped_column(Integer)
+    depth: Mapped[int] = mapped_column(Integer, default=0)
+    provider_place_ids: Mapped[list[str]] = mapped_column(JSON, default=list)
+    details_cursor: Mapped[int] = mapped_column(Integer, default=0)
+    error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+
+
+class HotspotRestaurantCandidate(Timestamped, Base):
+    __tablename__ = "hotspot_restaurant_candidates"
+    __table_args__ = (
+        UniqueConstraint(
+            "hotspot_id", "restaurant_place_id", name="uq_hotspot_restaurant_candidate"
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    hotspot_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="CASCADE"), index=True
+    )
+    restaurant_place_id: Mapped[UUID] = mapped_column(
+        ForeignKey("restaurant_places.id", ondelete="CASCADE"), index=True
+    )
+    scan_run_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("restaurant_scan_runs.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    discovery_radius_meters: Mapped[int] = mapped_column(Integer, default=10_000)
 
 class HotspotLocalization(Timestamped, Base):
     __tablename__ = "hotspot_localizations"
