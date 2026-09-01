@@ -29,13 +29,23 @@ async def test_google_maps_usage_counts_requests_by_month_and_operation() -> Non
     assert snapshot.period_start.isoformat() == "2026-08-01"
     assert snapshot.period_end.isoformat() == "2026-08-31"
     assert snapshot.used == 3
-    assert snapshot.remaining == 9_997
+    assert snapshot.free_limit == 33_000
+    assert snapshot.free_usage == 3
+    assert snapshot.free_remaining == 32_997
+    assert snapshot.billable_overage == 0
     assert snapshot.percentage == 0.0
     assert snapshot.breakdown["places_autocomplete"] == 2
     assert snapshot.breakdown["routes"] == 1
     assert snapshot.breakdown["places_photo"] == 0
     assert snapshot.breakdown["weather_current"] == 0
     assert snapshot.breakdown["weather_daily_forecast"] == 0
+    autocomplete = next(item for item in snapshot.sku_usage if item.sku == "autocomplete_requests")
+    routes = next(item for item in snapshot.sku_usage if item.sku == "compute_routes_essentials")
+    assert autocomplete.used == 2
+    assert autocomplete.free_limit == 10_000
+    assert routes.used == 1
+    assert len(snapshot.monthly_history) == 6
+    assert snapshot.monthly_history[1].period == "2026-07"
     assert snapshot.tracking_started_at == observed_at
     assert await redis.ttl("provider-usage:google_maps:2026-08") > 0
     await redis.aclose()
@@ -49,29 +59,69 @@ async def test_google_maps_usage_starts_a_new_counter_each_month() -> None:
         "place_details",
         now=datetime(2026, 8, 31, 23, 59, tzinfo=UTC),
     )
-    september = datetime(2026, 9, 1, 0, 0, tzinfo=UTC)
+    before_pacific_reset = datetime(2026, 9, 1, 6, 59, tzinfo=UTC)
+    september = datetime(2026, 9, 1, 7, 0, tzinfo=UTC)
 
-    snapshot = await google_maps_usage_snapshot(redis, 10_000, now=september)
+    august_snapshot = await google_maps_usage_snapshot(redis, now=before_pacific_reset)
+    snapshot = await google_maps_usage_snapshot(redis, now=september)
 
+    assert august_snapshot.period == "2026-08"
+    assert august_snapshot.used == 1
     assert snapshot.period == "2026-09"
     assert snapshot.used == 0
-    assert snapshot.remaining == 10_000
+    assert snapshot.free_remaining == 33_000
     assert snapshot.tracking_started_at is None
     await redis.aclose()
 
 
 @pytest.mark.asyncio
-async def test_google_maps_usage_can_exceed_the_reference_limit() -> None:
+async def test_google_maps_usage_reports_overage_per_sku() -> None:
     redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
-    observed_at = datetime(2026, 8, 1, tzinfo=UTC)
+    observed_at = datetime(2026, 8, 1, 12, tzinfo=UTC)
     for _ in range(3):
-        await record_google_maps_request(redis, "routes", now=observed_at)
+        await record_google_maps_request(redis, "place_details", now=observed_at)
 
-    snapshot = await google_maps_usage_snapshot(redis, 2, now=observed_at)
+    snapshot = await google_maps_usage_snapshot(
+        redis,
+        enterprise_free_limit=2,
+        now=observed_at,
+    )
 
     assert snapshot.used == 3
-    assert snapshot.remaining == 0
-    assert snapshot.percentage == 150.0
+    assert snapshot.billable_overage == 1
+    details = next(item for item in snapshot.sku_usage if item.sku == "place_details_enterprise")
+    assert details.free_usage == 2
+    assert details.free_remaining == 0
+    assert details.billable_overage == 1
+    assert details.percentage == 150.0
+    await redis.aclose()
+
+
+@pytest.mark.asyncio
+async def test_google_maps_usage_returns_recent_month_history() -> None:
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    await record_google_maps_request(
+        redis,
+        "weather_current",
+        now=datetime(2026, 7, 20, 12, tzinfo=UTC),
+    )
+    await record_google_maps_request(
+        redis,
+        "weather_daily_forecast",
+        now=datetime(2026, 8, 20, 12, tzinfo=UTC),
+    )
+
+    snapshot = await google_maps_usage_snapshot(
+        redis,
+        history_months=2,
+        now=datetime(2026, 8, 31, 12, tzinfo=UTC),
+    )
+
+    assert [month.period for month in snapshot.monthly_history] == ["2026-08", "2026-07"]
+    assert [month.used for month in snapshot.monthly_history] == [1, 1]
+    weather = next(item for item in snapshot.sku_usage if item.sku == "weather_usage")
+    assert weather.used == 1
+    assert weather.operations == ("weather_current", "weather_daily_forecast")
     await redis.aclose()
 
 

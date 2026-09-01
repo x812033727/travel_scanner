@@ -291,11 +291,19 @@ Places API (New), Routes API, and Weather API for server-side calls, and use an 
 `NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY` for the optional embedded planner map.
 Google provider responses are kept in short-lived Redis caches; durable trip
 records retain provider IDs and user-authored fields instead of raw payloads.
-The administrator settings page also shows an application-side monthly request
-counter for server-side Places, Routes, Weather, and photo calls. Its default budget is
-10,000 requests (`GOOGLE_MAPS_MONTHLY_REQUEST_LIMIT`); browser Embed loads and
-Google Cloud usage from before this counter was deployed are not included. The
-bundled Redis service enables append-only persistence for these monthly counters.
+The administrator settings page also shows the current and five previous Google
+billing months for server-side Places, Routes, Weather, and photo calls. Usage is
+grouped by billable SKU because Google applies the global monthly no-cost thresholds
+independently: Essentials 10,000, Pro 5,000, and Enterprise 1,000 billable events per
+SKU. These defaults can be adjusted with `GOOGLE_MAPS_ESSENTIALS_FREE_LIMIT`,
+`GOOGLE_MAPS_PRO_FREE_LIMIT`, and `GOOGLE_MAPS_ENTERPRISE_FREE_LIMIT` when a contract
+differs. See the official [pricing categories](https://developers.google.com/maps/billing-and-pricing/pricing-categories)
+and [global SKU price list](https://developers.google.com/maps/billing-and-pricing/pricing).
+Months reset on Pacific Time. The application meter conservatively counts outbound
+requests, including failed requests; browser Embed loads, pre-deployment history, and
+the provider's final billable-event decisions are not included. Google Cloud Console
+remains the billing source of truth. The bundled Redis service enables append-only
+persistence, and new counters are retained for monthly history.
 
 The saved-trip planner requests `GET /api/v1/trips/{trip_id}/weather` through
 the authenticated BFF. It displays current conditions plus Google's daily
