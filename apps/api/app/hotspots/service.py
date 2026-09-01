@@ -60,9 +60,24 @@ async def _upsert_signal(
 async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelHotspot]:
     rows = list((await session.scalars(select(TravelHotspot))).all())
     existing = {item.slug: item for item in rows}
+    by_wikidata = {item.wikidata_item_id: item for item in rows if item.wikidata_item_id}
     hotspots: list[TravelHotspot] = []
     for seed in HOTSPOT_SEEDS:
         hotspot = existing.get(seed.slug)
+        claimed = by_wikidata.get(seed.wikidata_item_id)
+        if hotspot is None and claimed is not None:
+            # Discovery reaches a place before the curated catalog does and stores it
+            # under a generated slug. wikidata_item_id is unique, so inserting a second
+            # row for the same item aborts the entire seeding transaction. Adopt the
+            # discovered row: it already carries the pageviews collected against it.
+            hotspot = claimed
+            hotspot.slug = seed.slug
+        elif hotspot is not None and claimed is not None and claimed is not hotspot:
+            # The seed now points at a different Wikidata item than it used to. Release
+            # the id from the row that no longer owns it so the assignment below cannot
+            # collide with it.
+            claimed.wikidata_item_id = None
+            claimed.is_active = False
         if hotspot is None:
             hotspot = TravelHotspot(slug=seed.slug)
         hotspot.name = seed.name
