@@ -15,7 +15,7 @@ Browser -> Next.js BFF -> FastAPI -> Search Orchestrator -> Provider adapters
 ```
 
 The API is organized by product modules (`auth`, `usage`, `search`, `providers`,
-`pricing`, `optimization`, `trips`, `alerts`, `hotspots`, and `ai`). PostgreSQL is
+`pricing`, `optimization`, `trips`, `alerts`, `hotspots`, `weather`, and `ai`). PostgreSQL is
 the source of truth. Redis is used for queues, short-lived caching, streams, rate limiting,
 and circuit-breaker state. Provider-specific payloads never escape the adapter
 layer.
@@ -34,6 +34,13 @@ structured output. The planner normalizes dates, counts, safe time slots, and
 durations server-side, then fills missing or invalid coverage from the
 destination catalog. Optional Google Places enrichment happens after this
 validation, so a Places outage cannot erase the itinerary.
+
+Trip weather is an authenticated, ownership-checked child resource of a saved
+trip. The `weather` adapter sends only a representative trip coordinate to
+Google Weather, normalizes current conditions and the 10-day daily forecast,
+and stores the result in a short-lived Redis cache. Weather never becomes
+durable trip state, and dates beyond the provider forecast window are reported
+as unavailable rather than estimated.
 
 Initial planning is free and persisted with the trip in one transaction. AI
 regeneration uses the usage reservation ledger and optimistic trip version.

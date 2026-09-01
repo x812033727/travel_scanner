@@ -148,6 +148,7 @@ class Settings(BaseSettings):
     place_photo_window_seconds: int = Field(default=60, ge=10, le=3_600)
     place_photo_cache_ttl_seconds: int = Field(default=3_600, ge=60, le=86_400)
     route_cache_ttl_seconds: int = Field(default=900, ge=60, le=86_400)
+    weather_cache_ttl_seconds: int = Field(default=900, ge=300, le=3_600)
     navitime_api_base_url: str | None = None
     navitime_client_id: str | None = None
     navitime_api_key: str | None = None
