@@ -8,6 +8,7 @@ from app.trips.router import (
     FlightAnchorDetails,
     ItineraryUpdateRequest,
     apply_flight_anchor_details,
+    localize_itinerary_time,
 )
 from app.trips.schedule import (
     SYSTEM_ROLES,
@@ -43,6 +44,14 @@ def trip() -> TripPlan:
         timezone="Asia/Tokyo",
         route_preference="FEWER_TRANSFERS",
     )
+
+
+def test_offset_free_editor_time_is_localized_to_trip_timezone() -> None:
+    localized = localize_itinerary_time(datetime(2026, 11, 10, 15), "Asia/Tokyo")
+
+    assert localized is not None
+    assert localized.isoformat() == "2026-11-10T15:00:00+09:00"
+    assert localize_itinerary_time(localized, "Asia/Taipei") is localized
 
 
 def test_system_slots_are_idempotent_and_skipped_meals_leave_route_graph() -> None:

@@ -6,6 +6,7 @@ from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from typing import Annotated, Any, Literal, cast
 from uuid import UUID, uuid4, uuid5
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import httpx
 from fastapi import APIRouter, Depends, Header
@@ -144,6 +145,17 @@ def destination_timezone(destination: str) -> str:
         (timezone for tokens, timezone in rules if any(token in destination for token in tokens)),
         "UTC",
     )
+
+
+def localize_itinerary_time(value: datetime | None, timezone_name: str) -> datetime | None:
+    """Interpret offset-free editor values as wall-clock times in the trip timezone."""
+    if value is None or (value.tzinfo is not None and value.utcoffset() is not None):
+        return value
+    try:
+        timezone = ZoneInfo(timezone_name or "UTC")
+    except ZoneInfoNotFoundError:
+        timezone = ZoneInfo("UTC")
+    return value.replace(tzinfo=timezone)
 
 
 class ItineraryItemRequest(BaseModel):
@@ -1520,7 +1532,15 @@ async def update_itinerary(
     previous_routing = cast(dict[str, Any], trip.data.get("routing") or {})
     existing_rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
     existing_by_id = {row.id: row for row in existing_rows}
-    incoming_items = list(payload.items)
+    incoming_items = [
+        item.model_copy(
+            update={
+                "start_time": localize_itinerary_time(item.start_time, trip.timezone),
+                "end_time": localize_itinerary_time(item.end_time, trip.timezone),
+            }
+        )
+        for item in payload.items
+    ]
     incoming_ids = {item.id for item in incoming_items if item.id is not None}
     incoming_items.extend(
         ItineraryItemRequest.model_validate(serialize_item(row))
