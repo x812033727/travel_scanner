@@ -5,6 +5,7 @@ from datetime import date
 
 import httpx
 import pytest
+from pydantic import ValidationError
 
 import app.ai.itinerary as itinerary_module
 from app.ai.itinerary import (
@@ -20,6 +21,7 @@ from app.ai.itinerary import (
 )
 from app.config import Settings
 from app.search.schemas import SearchPreferences, Travelers, TripPace
+from app.trips.router import ItineraryGenerateRequest
 
 
 def request_for(*, pace: TripPace = TripPace.BALANCED) -> AIItineraryRequest:
@@ -244,3 +246,26 @@ async def test_auto_mode_fails_over_to_next_provider(monkeypatch: pytest.MonkeyP
     assert result.planning.model == "claude-test"
     assert result.planning.status == "live"
     assert result.planning.warnings == ["openai 暫時無法產生有效行程（ReadTimeout）"]
+
+
+def test_itinerary_generation_scope_is_backward_compatible_and_validated() -> None:
+    full_trip = ItineraryGenerateRequest(version=3)
+    assert full_trip.scope == "trip"
+    assert full_trip.day_date is None
+
+    single_day = ItineraryGenerateRequest(
+        version=3,
+        scope="day",
+        day_date=date(2026, 11, 11),
+    )
+    assert single_day.scope == "day"
+    assert single_day.day_date == date(2026, 11, 11)
+
+    with pytest.raises(ValidationError):
+        ItineraryGenerateRequest(version=3, scope="day")
+    with pytest.raises(ValidationError):
+        ItineraryGenerateRequest(
+            version=3,
+            scope="trip",
+            day_date=date(2026, 11, 11),
+        )

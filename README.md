@@ -273,8 +273,10 @@ sent to a selected AI provider; account identity and email are excluded. Google
 Places optionally resolves up to 24 suggested locations after generation.
 
 `POST /api/v1/trips/{id}/itinerary/generate` requires `Idempotency-Key` and the
-current trip version. It replaces only unlocked AI suggestions, preserving
-manual, provider-generated, locked, and fixed-time items. Initial generation is
+current trip version. The request accepts `scope=day` with `day_date`, or the
+backward-compatible default `scope=trip`. Day scope leaves every other date
+untouched. Both scopes replace only unlocked AI suggestions, preserving manual,
+provider-generated, locked, and fixed-time items. Initial generation is
 free. A successfully applied live-AI regeneration charges one use; catalog
 fallback and failed application release the reservation. Fixed-order route
 calculation remains free, while same-day itinerary optimization charges one use

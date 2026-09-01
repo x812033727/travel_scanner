@@ -4,7 +4,7 @@ import json
 import secrets
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
-from typing import Annotated, Any, cast
+from typing import Annotated, Any, Literal, cast
 from uuid import UUID, uuid4, uuid5
 
 import httpx
@@ -147,6 +147,16 @@ class ItineraryUpdateRequest(BaseModel):
 
 class ItineraryGenerateRequest(BaseModel):
     version: int = Field(ge=1)
+    scope: Literal["day", "trip"] = "trip"
+    day_date: date | None = None
+
+    @model_validator(mode="after")
+    def validate_scope(self) -> "ItineraryGenerateRequest":
+        if self.scope == "day" and self.day_date is None:
+            raise ValueError("day_date is required for day scope")
+        if self.scope == "trip" and self.day_date is not None:
+            raise ValueError("day_date is only supported for day scope")
+        return self
 
 
 class RouteComputeRequest(BaseModel):
@@ -774,12 +784,16 @@ async def generate_trip_itinerary(
     trip = await owned_trip(session, user.id, trip_id)
     if not trip.destination_name or not trip.start_date or not trip.end_date:
         raise AppError(422, "trip_planning_fields_missing", "旅程缺少目的地或日期，無法重新排行程")
+    target_date = payload.day_date if payload.scope == "day" else None
+    if target_date and not (trip.start_date <= target_date <= trip.end_date):
+        raise AppError(422, "itinerary_date_out_of_range", "AI 單日安排的日期超出旅程範圍")
+    scope_label = target_date.isoformat() if target_date else "全行程"
     reservation, created = await reserve_use(
         session,
         user.id,
         idempotency_key,
         "ai_itinerary_generation",
-        f"AI 重新排行程：{trip.name}",
+        f"AI 重新排行程：{trip.name}（{scope_label}）",
     )
     if not created and reservation.resource_id == trip.id:
         replay = await serialize_trip(session, trip)
@@ -797,23 +811,27 @@ async def generate_trip_itinerary(
             if item.data.get("generated_by") == "ai_planner"
             and not item.locked
             and not item.fixed_time
+            and (target_date is None or item.day_date == target_date)
         ]
         replaceable_ids = {item.id for item in replaceable}
         preserved = [item for item in existing if item.id not in replaceable_ids]
+        planning_preserved = [
+            item for item in preserved if target_date is None or item.day_date == target_date
+        ]
         travelers = Travelers.model_validate(trip.data.get("travelers", {}))
         preferences = SearchPreferences.model_validate(trip.data.get("preferences", {}))
         settings = await load_runtime_settings(session)
         planning = await AIItineraryPlanner(settings).generate(
             _planning_request(
                 destination_name=trip.destination_name,
-                start_date=trip.start_date,
-                end_date=trip.end_date,
+                start_date=target_date or trip.start_date,
+                end_date=target_date or trip.end_date,
                 timezone=trip.timezone or "UTC",
                 route_preference=trip.route_preference,
                 travelers=travelers,
                 preferences=preferences,
                 notes=cast(str | None, trip.data.get("notes")),
-                preserved_items=preserved,
+                preserved_items=planning_preserved,
             )
         )
         await _enrich_ai_places(planning, GoogleTravelService(get_redis(), settings))
@@ -848,9 +866,14 @@ async def generate_trip_itinerary(
             )
             for position, item in enumerate(day_rows):
                 item.position = position
+        planning_data = {
+            **planning.planning.model_dump(mode="json"),
+            "scope": payload.scope,
+            "day_date": target_date.isoformat() if target_date else None,
+        }
         trip.data = {
             **trip.data,
-            "planning": planning.planning.model_dump(mode="json"),
+            "planning": planning_data,
             "ai_regenerated": True,
         }
         trip.version += 1

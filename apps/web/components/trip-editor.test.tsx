@@ -51,6 +51,90 @@ describe("trip editor", () => {
     expect(window.localStorage.getItem("travel-planner-theme")).toBe("ocean");
   });
 
+  it("lets the user ask MiniMax to arrange only the selected day", async () => {
+    let generationBody: Record<string, unknown> | undefined;
+    const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
+      if (url.includes("/itinerary/generate")) {
+        generationBody = JSON.parse(String(init?.body));
+        return response({
+          ...trip,
+          version: 2,
+          planning: {
+            status: "live",
+            provider: "minimax",
+            model: "MiniMax-M2.1",
+            generated_at: "2026-11-01T10:00:00Z",
+            warnings: [],
+            scope: "day",
+            day_date: "2026-11-11",
+          },
+          usage: { status: "charged", uses: 1, reference: "ai-day-1" },
+          items: [{
+            ...trip.items[0],
+            title: "MiniMax 安排的淺草散步",
+            data: { generated_by: "ai_planner" },
+          }],
+        });
+      }
+      return response(trip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    const aiButtons = await screen.findAllByRole("button", { name: "AI 幫我安排" });
+    fireEvent.click(aiButtons[0]);
+    expect(screen.getByRole("dialog", { name: "AI 幫我安排" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("radio", { name: /\u55ae\u65e5\u5b89\u6392/ }));
+    fireEvent.click(screen.getByRole("button", { name: "安排這一天" }));
+
+    await waitFor(() => expect(generationBody).toEqual({
+      version: 1,
+      scope: "day",
+      day_date: "2026-11-11",
+    }));
+    expect(await screen.findByText(/MiniMax 已完成.*並扣除 1 次/)).toBeTruthy();
+    expect(screen.getByText("MiniMax 安排的淺草散步")).toBeTruthy();
+    expect(screen.getByText("AI 建議")).toBeTruthy();
+  });
+
+  it("offers a full-trip AI arrangement from the same menu", async () => {
+    let generationBody: Record<string, unknown> | undefined;
+    const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
+      if (url.includes("/itinerary/generate")) {
+        generationBody = JSON.parse(String(init?.body));
+        return response({
+          ...trip,
+          version: 2,
+          planning: {
+            status: "live",
+            provider: "minimax",
+            model: "MiniMax-M2.1",
+            generated_at: "2026-11-01T10:00:00Z",
+            warnings: [],
+            scope: "trip",
+            day_date: null,
+          },
+          usage: { status: "charged", uses: 1, reference: "ai-trip-1" },
+        });
+      }
+      return response(trip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    const aiButtons = await screen.findAllByRole("button", { name: "AI 幫我安排" });
+    fireEvent.click(aiButtons[0]);
+    const fullTrip = screen.getByRole("radio", { name: /\u5168\u884c\u7a0b\u5b89\u6392/ });
+    expect(fullTrip.getAttribute("aria-checked")).toBe("true");
+    fireEvent.click(screen.getByRole("button", { name: "安排全行程" }));
+
+    await waitFor(() => expect(generationBody).toEqual({
+      version: 1,
+      scope: "trip",
+      day_date: null,
+    }));
+  });
+
   it("keeps a new stop as a draft until the user confirms it", async () => {
     const fetchMock = vi.fn(async (_url: string, init?: RequestInit) => {
       if (init?.method === "PUT") {
@@ -138,7 +222,7 @@ describe("trip editor", () => {
     await waitFor(() => expect(putBodies).toHaveLength(1));
 
     fireEvent.change(title, { target: { value: "最後一次修改" } });
-    fireEvent.click(screen.getByRole("button", { name: "最佳化整趟" }));
+    fireEvent.click(screen.getByRole("button", { name: "最佳化動線" }));
     resolveFirstSave?.(response({ ...trip, version: 2, items: putBodies[0].items }));
 
     await waitFor(() => expect(putBodies).toHaveLength(2));
@@ -185,7 +269,9 @@ describe("trip editor", () => {
     });
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
-    fireEvent.click(await screen.findByRole("button", { name: "最佳化" }));
+    const aiButtons = await screen.findAllByRole("button", { name: "AI 幫我安排" });
+    fireEvent.click(aiButtons[0]);
+    fireEvent.click(screen.getByRole("button", { name: /只調整現有動線/ }));
     expect(await screen.findByRole("dialog", { name: "最佳化預覽" })).toBeTruthy();
     expect(screen.getByText("預計節省")).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "套用並扣 1 次" }));

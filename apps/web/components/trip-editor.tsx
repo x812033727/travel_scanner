@@ -4,6 +4,7 @@ import {
   ArrowLeft,
   ArrowDown,
   ArrowUp,
+  CalendarDays,
   Check,
   CircleAlert,
   Clock3,
@@ -115,6 +116,13 @@ function durationSummary(minutes: number) {
   return remainder ? `${hours} 小時 ${remainder} 分` : `${hours} 小時`;
 }
 
+function aiProviderLabel(provider?: "openai" | "anthropic" | "minimax" | "catalog") {
+  if (provider === "minimax") return "MiniMax";
+  if (provider === "openai") return "OpenAI";
+  if (provider === "anthropic") return "Anthropic";
+  return "內建備援";
+}
+
 type RouteResponse = { segments: RouteSegment[]; failed_pairs: unknown[]; partial: boolean };
 type Place = { place_id: string; provider: string; name: string; address?: string | null; latitude?: number | null; longitude?: number | null; opening_hours?: string[]; google_maps_url?: string | null; attribution?: string };
 type SaveState = "saved" | "dirty" | "saving" | "offline" | "conflict";
@@ -146,6 +154,7 @@ type OptimizationPreview = {
   }>;
 };
 type ConfirmAction = "reprice" | "revoke-share" | "rotate-share" | "overwrite-conflict";
+type AIPlanningScope = "day" | "trip";
 type PlannerTheme = "forest" | "ocean" | "sunset" | "lavender";
 
 const plannerThemes: Array<{ id: PlannerTheme; name: string; description: string; colors: [string, string, string] }> = [
@@ -181,6 +190,8 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const [desktopMapVisible, setDesktopMapVisible] = useState(false);
   const [reorderMode, setReorderMode] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
+  const [aiMenuOpen, setAIMenuOpen] = useState(false);
+  const [aiScope, setAIScope] = useState<AIPlanningScope>("day");
   const [plannerTheme, setPlannerTheme] = useState<PlannerTheme>("forest");
   const [draftItem, setDraftItem] = useState<TripItem>();
 
@@ -192,6 +203,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const savePromiseRef = useRef<Promise<Trip | undefined> | undefined>(undefined);
   const optimizationApplyRef = useRef<{ previewId: string; key: string } | undefined>(undefined);
   const repriceRequestRef = useRef<{ tripVersion: number; key: string } | undefined>(undefined);
+  const aiRequestRef = useRef<{ signature: string; key: string } | undefined>(undefined);
   const routeHistoryTokenRef = useRef<string | undefined>(undefined);
   const dayScrollRef = useRef<HTMLDivElement>(null);
   const activeDayChipRef = useRef<HTMLButtonElement>(null);
@@ -673,6 +685,68 @@ export function TripEditor({ tripId }: { tripId: string }) {
     } finally { setAction(undefined); }
   }
 
+  function openAIPlanner(defaultScope: AIPlanningScope) {
+    setAIScope(defaultScope === "day" && !activeDay ? "trip" : defaultScope);
+    setAIMenuOpen(true);
+  }
+
+  async function generateAIItinerary(scope: AIPlanningScope) {
+    const dayDate = scope === "day" ? activeDay : undefined;
+    if (scope === "day" && !dayDate) {
+      setError("請先選擇要安排的日期。");
+      return;
+    }
+    const currentTrip = await flushChanges(false);
+    if (!currentTrip || saveStateRef.current === "conflict") return;
+    const signature = `${currentTrip.version}:${scope}:${dayDate || "all"}`;
+    const requestIdentity = aiRequestRef.current?.signature === signature
+      ? aiRequestRef.current
+      : { signature, key: crypto.randomUUID() };
+    aiRequestRef.current = requestIdentity;
+    setAction(`ai-${scope}`);
+    setError(undefined);
+    setNotice(undefined);
+    try {
+      const updated = await api<Trip>(`/trips/${currentTrip.id}/itinerary/generate`, {
+        method: "POST",
+        headers: { "Idempotency-Key": requestIdentity.key },
+        body: JSON.stringify({
+          version: currentTrip.version,
+          scope,
+          day_date: dayDate || null,
+        }),
+      });
+      replaceTrip(updated);
+      setRoutes([]);
+      setSelectedRoute(undefined);
+      closeRouteDrawer();
+      setStaleDays(new Set(scope === "day" && dayDate ? [dayDate] : days));
+      revisionRef.current = 0;
+      persistedRevisionRef.current = 0;
+      setRevision(0);
+      updateSaveState("saved");
+      aiRequestRef.current = undefined;
+      setAIMenuOpen(false);
+      try { window.localStorage.removeItem(draftKey); } catch { /* storage can be blocked */ }
+      const provider = aiProviderLabel(updated.planning?.provider);
+      const scopeLabel = scope === "day" ? mobileDayHeading(dayDate || "") : `全部 ${days.length} 天`;
+      setNotice(updated.usage?.status === "charged"
+        ? `${provider} 已完成${scopeLabel}安排並扣除 1 次；手動、鎖定與固定時間項目均已保留。`
+        : `${provider} 已完成${scopeLabel}安排，本次未扣次；手動、鎖定與固定時間項目均已保留。`);
+    } catch (reason) {
+      if (isUsageInsufficient(reason)) {
+        aiRequestRef.current = undefined;
+        setAIMenuOpen(false);
+        router.push("/pricing");
+      } else if (reason instanceof ApiError) {
+        aiRequestRef.current = undefined;
+        setError(`${reason.message}；原行程保持不變，本次未扣次。`);
+      } else {
+        setError(`${reason instanceof Error ? reason.message : "AI 安排失敗"}；結果尚未確認，重試會沿用同一請求編號。`);
+      }
+    } finally { setAction(undefined); }
+  }
+
   async function createShare() {
     if (!tripRef.current) return;
     setAction("share");
@@ -794,13 +868,15 @@ export function TripEditor({ tripId }: { tripId: string }) {
           <div className="flex flex-wrap items-center gap-2 text-xs font-semibold"><span className="rounded-full bg-white/75 px-3 py-1.5 text-[var(--teal)]">行程規劃器 · 版本 {trip.version}</span><span aria-live="polite" className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 ${saveState === "saved" ? "bg-emerald-50 text-emerald-800" : saveState === "dirty" || saveState === "saving" ? "bg-amber-50 text-amber-900" : "bg-red-50 text-red-800"}`}>{saveIcon}{saveLabel}</span></div>
           <h1 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{trip.name}</h1>
           <p className="mt-2 text-sm leading-6 text-[var(--muted)] sm:text-base">{trip.destination_name || "旅程"}{trip.start_date ? ` · ${trip.start_date} 至 ${trip.end_date}` : ""}{Number(trip.total_price) > 0 ? ` · ${twd.format(Number(trip.total_price))}` : ""}</p>
-          <p className="mt-2 text-xs text-[var(--muted)]">手動編輯與查路免費；最佳化先預覽，確認成功套用後才扣 1 次。</p>
+          <p className="mt-2 text-xs text-[var(--muted)]">AI 可安排單日或全行程；真實 AI 成功套用才扣 1 次，內建備援不扣次。</p>
           {desktopMapVisible && <div className="mt-3 max-w-xs"><PriceAlertButton resourceType="trip" resourceId={trip.id} currentPrice={Number(trip.total_price)} currency={trip.currency} returnPath={`/trips/${trip.id}`} /></div>}
         </div>
-        <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap"><button type="button" onClick={() => setConfirmAction("reprice")} disabled={Boolean(action) || trip.mode === "manual"} className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[var(--line)] bg-white/75 px-4 py-3 text-sm font-semibold disabled:opacity-40"><RefreshCw size={16} />重新查價</button><button type="button" onClick={() => previewOptimization()} disabled={Boolean(action)} className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[var(--teal)] bg-white/75 px-4 py-3 text-sm font-semibold text-[var(--teal)] disabled:opacity-40">{action === "preview-all" ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}最佳化整趟</button><button type="button" onClick={() => void flushChanges(true)} disabled={saveState === "saving"} className="col-span-2 flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white disabled:opacity-60"><Save size={16} />儲存變更</button></div>
+        <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap"><button type="button" onClick={() => setConfirmAction("reprice")} disabled={Boolean(action) || trip.mode === "manual"} className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[var(--line)] bg-white/75 px-4 py-3 text-sm font-semibold disabled:opacity-40"><RefreshCw size={16} />重新查價</button><button type="button" onClick={() => openAIPlanner("trip")} disabled={Boolean(action)} className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-violet-300 bg-violet-50/90 px-4 py-3 text-sm font-semibold text-violet-900 disabled:opacity-40"><Sparkles size={16} />AI 幫我安排</button><button type="button" onClick={() => previewOptimization()} disabled={Boolean(action)} className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[var(--teal)] bg-white/75 px-4 py-3 text-sm font-semibold text-[var(--teal)] disabled:opacity-40">{action === "preview-all" ? <Loader2 size={16} className="animate-spin" /> : <RouteIcon size={16} />}最佳化動線</button><button type="button" onClick={() => void flushChanges(true)} disabled={saveState === "saving"} className="flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white disabled:opacity-60"><Save size={16} />儲存變更</button></div>
       </div>
       {saveState === "conflict" && <div role="alert" className="relative mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><p className="font-semibold">偵測到其他版本</p><p className="mt-1 leading-6">本機修改仍保留。你可以載入雲端版本，或確認後以本機內容覆蓋。</p><div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={() => void loadCloudVersion()} className="min-h-11 rounded-xl border border-amber-300 bg-white px-4 font-semibold">載入雲端版本</button><button type="button" onClick={() => setConfirmAction("overwrite-conflict")} className="min-h-11 rounded-xl bg-amber-900 px-4 font-semibold text-white">保留本機修改</button></div></div>}
     </section>
+
+    {trip.planning && <section aria-label="AI 安排狀態" className={`mb-4 flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm ${trip.planning.status === "fallback" ? "border-amber-200 bg-amber-50 text-amber-950" : "border-violet-200 bg-violet-50 text-violet-950"}`}><span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/80"><Sparkles size={16} /></span><div className="min-w-0 flex-1"><p className="font-semibold">{aiProviderLabel(trip.planning.provider)} 已產生可編輯的行程建議</p><p className="mt-0.5 text-xs leading-5 opacity-75">{trip.planning.scope === "day" && trip.planning.day_date ? `上次安排：${trip.planning.day_date}` : "上次安排：全行程"}。鎖定、固定時間與手動項目不會被取代。</p></div><button type="button" onClick={() => openAIPlanner(activeDay ? "day" : "trip")} className="min-h-10 shrink-0 rounded-xl bg-white/80 px-3 text-xs font-bold">再安排</button></section>}
 
     <section className="planner-day-strip sticky z-30 -mx-4 mb-4 border-y border-[var(--line)] px-4 py-3 lg:top-0 lg:mx-0 lg:mb-5 lg:rounded-2xl lg:border"><div ref={dayScrollRef} className="planner-day-scroll flex gap-2 overflow-x-auto pb-1" aria-label="選擇行程日期">{days.map((day, index) => { const label = dayLabel(day, index); const count = groups.get(day)?.length || 0; const selected = activeDay === day; return <button key={day} ref={selected ? activeDayChipRef : undefined} type="button" aria-current={selected ? "date" : undefined} aria-pressed={selected} onClick={() => { setActiveDay(day); setReorderMode(false); }} className={`planner-day-chip min-h-14 min-w-[5.1rem] shrink-0 rounded-2xl border px-3 py-2 text-left ${selected ? "planner-day-chip-active" : ""}`}><span className="block text-[.65rem] font-semibold tracking-[.12em] opacity-75">{day === today ? "今天" : label.eyebrow}</span><span className="mt-0.5 block text-sm font-bold">{label.short} {label.weekday}</span><span className="block text-[.65rem] opacity-70">{count} 個安排</span></button>; })}</div></section>
 
@@ -814,13 +890,24 @@ export function TripEditor({ tripId }: { tripId: string }) {
       {activeRows.length === 0 ? <button type="button" onClick={() => add(activeDay)} className="grid min-h-48 w-full place-items-center rounded-2xl border border-dashed border-[var(--line)] bg-[linear-gradient(135deg,#f8faf6,#edf5f1)] p-8 text-center"><span><MapPin size={28} className="mx-auto text-[var(--teal)]" /><strong className="mt-3 block">這天還沒有安排</strong><span className="mt-1 block text-sm text-[var(--muted)]">加入第一個地點，開始建立旅行時間軸</span></span></button> : <ol className="planner-timeline space-y-3">{activeRows.map((item, index) => {
         const nextItem = activeRows[index + 1];
         const segment = routes.find((route) => route.from_item_id === item.id && route.to_item_id === nextItem?.id);
-        return <li key={item.id} className="planner-enter relative pl-9" style={{ "--planner-index": index } as CSSProperties}><span aria-hidden="true" className="planner-timeline-marker absolute top-6 z-10">{index + 1}</span><article draggable={desktopMapVisible} onDragStart={() => setDragged(item.id)} onDragOver={(event) => event.preventDefault()} onDrop={() => drop(item.id)} className={`planner-itinerary-card group p-4 ${reorderMode ? "planner-itinerary-card-reordering" : ""}`}><div className="flex items-start gap-3"><span className="hidden cursor-grab pt-1 text-[var(--muted)] lg:block" title="拖曳排序"><GripVertical size={19} /></span><button type="button" onClick={() => setEditingId(item.id)} className="min-w-0 flex-1 text-left"><div className="flex flex-wrap items-center gap-2"><span className="planner-time-badge">{formatTime(item.start_time)}</span>{item.duration_minutes && <span className="text-xs text-[var(--muted)]">停留 {item.duration_minutes} 分鐘</span>}{item.locked && <span className="rounded-full bg-amber-50 px-2 py-1 text-[.68rem] font-semibold text-amber-800">已鎖定</span>}{item.fixed_time && <span className="rounded-full bg-violet-50 px-2 py-1 text-[.68rem] font-semibold text-violet-800">固定時間</span>}</div><h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tight">{item.title}</h3><p className="mt-1 flex items-start gap-1.5 text-sm leading-5 text-[var(--muted)]"><MapPin size={15} className="mt-0.5 shrink-0" />{item.location_name || "尚未選擇地點"}</p>{item.notes && <p className="mt-2 line-clamp-2 text-xs leading-5 text-[var(--muted)]">{item.notes}</p>}</button><div className={`flex shrink-0 items-center gap-1 ${reorderMode ? "flex-col md:flex-row" : ""}`}><button type="button" aria-label={`上移 ${item.title}`} disabled={index === 0} onClick={() => move(item.id, -1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowUp size={18} /></button><button type="button" aria-label={`下移 ${item.title}`} disabled={index === activeRows.length - 1} onClick={() => move(item.id, 1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowDown size={18} /></button><button type="button" aria-label={`編輯 ${item.title}`} onClick={() => setEditingId(item.id)} className={`${reorderMode ? "hidden" : "grid"} min-h-11 min-w-11 place-items-center rounded-xl bg-[var(--teal-soft)] text-[var(--teal)] md:grid`}><Edit3 size={17} /></button></div></div></article>{nextItem && <div className="py-2 pl-2">{segment && !staleDays.has(activeDay) ? <button type="button" aria-label={`查看前往 ${nextItem.title} 的路線`} onClick={() => { setSelectedRoute(segment); setRouteDrawerOpen(true); }} className="planner-route-link flex min-h-11 w-full items-center gap-3 rounded-2xl px-3 py-2 text-left text-sm"><span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white text-sky-700"><RouteIcon size={16} /></span><span className="min-w-0 flex-1"><strong>移動約 {segment.duration_minutes} 分鐘</strong><span className="ml-2 text-xs text-[var(--muted)]">{segment.steps.filter((step) => step.travel_mode === "TRANSIT").map((step) => step.line_short_name || step.line_name).filter(Boolean).join(" → ") || "步行／大眾運輸"}</span></span><span className="font-semibold text-[var(--teal)]">查看</span></button> : <div className="flex min-h-11 items-center gap-2 px-3 text-xs text-[var(--muted)]"><span className="h-px flex-1 border-t border-dashed border-[var(--line)]" /><span>{staleDays.has(activeDay) ? "路線待更新" : "尚未計算路線"}</span><span className="h-px flex-1 border-t border-dashed border-[var(--line)]" /></div>}</div>}</li>;
+        return <li key={item.id} className="planner-enter relative pl-9" style={{ "--planner-index": index } as CSSProperties}><span aria-hidden="true" className="planner-timeline-marker absolute top-6 z-10">{index + 1}</span><article draggable={desktopMapVisible} onDragStart={() => setDragged(item.id)} onDragOver={(event) => event.preventDefault()} onDrop={() => drop(item.id)} className={`planner-itinerary-card group p-4 ${reorderMode ? "planner-itinerary-card-reordering" : ""}`}><div className="flex items-start gap-3"><span className="hidden cursor-grab pt-1 text-[var(--muted)] lg:block" title="拖曳排序"><GripVertical size={19} /></span><button type="button" onClick={() => setEditingId(item.id)} className="min-w-0 flex-1 text-left"><div className="flex flex-wrap items-center gap-2"><span className="planner-time-badge">{formatTime(item.start_time)}</span>{item.duration_minutes && <span className="text-xs text-[var(--muted)]">停留 {item.duration_minutes} 分鐘</span>}{item.data.generated_by === "ai_planner" && <span className="rounded-full bg-violet-100 px-2 py-1 text-[.68rem] font-semibold text-violet-800">AI 建議</span>}{item.locked && <span className="rounded-full bg-amber-50 px-2 py-1 text-[.68rem] font-semibold text-amber-800">已鎖定</span>}{item.fixed_time && <span className="rounded-full bg-violet-50 px-2 py-1 text-[.68rem] font-semibold text-violet-800">固定時間</span>}</div><h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tight">{item.title}</h3><p className="mt-1 flex items-start gap-1.5 text-sm leading-5 text-[var(--muted)]"><MapPin size={15} className="mt-0.5 shrink-0" />{item.location_name || "尚未選擇地點"}</p>{item.notes && <p className="mt-2 line-clamp-2 text-xs leading-5 text-[var(--muted)]">{item.notes}</p>}</button><div className={`flex shrink-0 items-center gap-1 ${reorderMode ? "flex-col md:flex-row" : ""}`}><button type="button" aria-label={`上移 ${item.title}`} disabled={index === 0} onClick={() => move(item.id, -1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowUp size={18} /></button><button type="button" aria-label={`下移 ${item.title}`} disabled={index === activeRows.length - 1} onClick={() => move(item.id, 1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowDown size={18} /></button><button type="button" aria-label={`編輯 ${item.title}`} onClick={() => setEditingId(item.id)} className={`${reorderMode ? "hidden" : "grid"} min-h-11 min-w-11 place-items-center rounded-xl bg-[var(--teal-soft)] text-[var(--teal)] md:grid`}><Edit3 size={17} /></button></div></div></article>{nextItem && <div className="py-2 pl-2">{segment && !staleDays.has(activeDay) ? <button type="button" aria-label={`查看前往 ${nextItem.title} 的路線`} onClick={() => { setSelectedRoute(segment); setRouteDrawerOpen(true); }} className="planner-route-link flex min-h-11 w-full items-center gap-3 rounded-2xl px-3 py-2 text-left text-sm"><span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white text-sky-700"><RouteIcon size={16} /></span><span className="min-w-0 flex-1"><strong>移動約 {segment.duration_minutes} 分鐘</strong><span className="ml-2 text-xs text-[var(--muted)]">{segment.steps.filter((step) => step.travel_mode === "TRANSIT").map((step) => step.line_short_name || step.line_name).filter(Boolean).join(" → ") || "步行／大眾運輸"}</span></span><span className="font-semibold text-[var(--teal)]">查看</span></button> : <div className="flex min-h-11 items-center gap-2 px-3 text-xs text-[var(--muted)]"><span className="h-px flex-1 border-t border-dashed border-[var(--line)]" /><span>{staleDays.has(activeDay) ? "路線待更新" : "尚未計算路線"}</span><span className="h-px flex-1 border-t border-dashed border-[var(--line)]" /></div>}</div>}</li>;
       })}</ol>}
     </section>{desktopMapVisible && <aside className="space-y-4"><RouteMap items={items} segment={selectedRoute} />{selectedRoute && <RouteSegmentCard segment={selectedRoute} selected defaultExpanded />}</aside>}</div>
 
-    <div className="planner-mobile-bar fixed inset-x-0 bottom-0 z-40 px-3 pt-3 lg:hidden"><div className="planner-mobile-dock mx-auto grid max-w-lg grid-cols-[auto_1fr_1.2fr] items-center gap-2"><button type="button" aria-live="polite" aria-label={saveState === "offline" ? "儲存失敗，點擊重試" : saveLabel} onClick={() => { if (saveState === "offline") void flushChanges(true); }} disabled={saveState !== "offline"} className={`planner-save-status ${saveState === "offline" ? "planner-save-status-error" : ""}`}>{saveIcon}<span className="sr-only">{saveLabel}</span></button><button type="button" aria-label="新增安排" onClick={() => add(activeDay)} disabled={!activeDay} className="planner-dock-button planner-dock-button-secondary"><Plus size={18} /><span className="planner-add-label-long">新增安排</span><span className="planner-add-label-short">新增</span></button><button type="button" aria-label="最佳化" onClick={() => void previewOptimization(activeDay)} disabled={Boolean(action) || activeRows.length < 2} className="planner-dock-button planner-dock-button-primary">{action === `preview-${activeDay}` ? <Loader2 size={18} className="animate-spin" /> : <Sparkles size={18} />}智慧調整</button></div></div>
+    <div className="planner-mobile-bar fixed inset-x-0 bottom-0 z-40 px-3 pt-3 lg:hidden"><div className="planner-mobile-dock mx-auto grid max-w-lg grid-cols-[auto_1fr_1.2fr] items-center gap-2"><button type="button" aria-live="polite" aria-label={saveState === "offline" ? "儲存失敗，點擊重試" : saveLabel} onClick={() => { if (saveState === "offline") void flushChanges(true); }} disabled={saveState !== "offline"} className={`planner-save-status ${saveState === "offline" ? "planner-save-status-error" : ""}`}>{saveIcon}<span className="sr-only">{saveLabel}</span></button><button type="button" aria-label="新增安排" onClick={() => add(activeDay)} disabled={!activeDay} className="planner-dock-button planner-dock-button-secondary"><Plus size={18} /><span className="planner-add-label-long">新增安排</span><span className="planner-add-label-short">新增</span></button><button type="button" aria-label="AI 幫我安排" onClick={() => openAIPlanner(activeDay ? "day" : "trip")} disabled={Boolean(action)} className="planner-dock-button planner-dock-button-primary"><Sparkles size={18} />AI 安排</button></div></div>
 
     {(error || notice) && <div className="fixed bottom-24 left-1/2 z-50 w-[min(92vw,38rem)] -translate-x-1/2 lg:bottom-6" aria-live="polite">{error && <div role="alert" className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-900 shadow-lg">{error}{saveState === "offline" && <button type="button" onClick={() => void flushChanges(true)} className="ml-3 font-bold underline">重試</button>}</div>}{notice && <div className="mt-2 flex items-center justify-between gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900 shadow-lg"><span className="flex items-center gap-2"><Check size={16} />{notice}</span>{undoItem && <button type="button" onClick={undoDelete} className="flex min-h-11 shrink-0 items-center gap-1 font-bold"><Undo2 size={16} />復原</button>}</div>}</div>}
+
+    <PlannerOverlay open={aiMenuOpen} onClose={() => { if (!action) setAIMenuOpen(false); }} title="AI 幫我安排" description="先選擇要安排的範圍；AI 會依興趣、步調、日期與已有安排產生可編輯建議。" footer={<div className="flex gap-3"><button type="button" onClick={() => setAIMenuOpen(false)} disabled={Boolean(action)} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold disabled:opacity-40">取消</button><button type="button" onClick={() => void generateAIItinerary(aiScope)} disabled={Boolean(action) || (aiScope === "day" && !activeDay)} className="flex min-h-12 flex-[1.5] items-center justify-center gap-2 rounded-xl bg-violet-700 px-4 font-semibold text-white disabled:opacity-45">{action === `ai-${aiScope}` ? <Loader2 size={17} className="animate-spin" /> : <Sparkles size={17} />}{aiScope === "day" ? "安排這一天" : "安排全行程"}</button></div>}>
+      <div className="space-y-5">
+        <div role="radiogroup" aria-label="AI 安排範圍" className="grid gap-3 sm:grid-cols-2">
+          <button type="button" role="radio" aria-checked={aiScope === "day"} onClick={() => setAIScope("day")} disabled={!activeDay || Boolean(action)} className={`min-h-36 rounded-2xl border p-4 text-left transition disabled:opacity-45 ${aiScope === "day" ? "border-violet-500 bg-violet-50 ring-2 ring-violet-100" : "border-[var(--line)] bg-white"}`}><span className="flex items-center justify-between gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-white text-violet-700"><CalendarDays size={20} /></span><span className={`h-5 w-5 rounded-full border-2 ${aiScope === "day" ? "border-violet-600 bg-violet-600 shadow-[inset_0_0_0_4px_white]" : "border-[var(--line)]"}`} /></span><strong className="mt-3 block">單日安排</strong><span className="mt-1 block text-xs leading-5 text-[var(--muted)]">{activeDay ? `${mobileDayHeading(activeDay)} · 目前 ${activeRows.length} 個安排` : "請先選擇日期"}</span></button>
+          <button type="button" role="radio" aria-checked={aiScope === "trip"} onClick={() => setAIScope("trip")} disabled={Boolean(action)} className={`min-h-36 rounded-2xl border p-4 text-left transition disabled:opacity-45 ${aiScope === "trip" ? "border-violet-500 bg-violet-50 ring-2 ring-violet-100" : "border-[var(--line)] bg-white"}`}><span className="flex items-center justify-between gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-white text-violet-700"><Sparkles size={20} /></span><span className={`h-5 w-5 rounded-full border-2 ${aiScope === "trip" ? "border-violet-600 bg-violet-600 shadow-[inset_0_0_0_4px_white]" : "border-[var(--line)]"}`} /></span><strong className="mt-3 block">全行程安排</strong><span className="mt-1 block text-xs leading-5 text-[var(--muted)]">重新整理全部 {days.length} 天，並配合每日步調。</span></button>
+        </div>
+        <section className="rounded-2xl bg-[var(--paper)] p-4 text-sm leading-6"><p className="font-semibold">AI 會保留的內容</p><ul className="mt-2 grid gap-1.5 text-xs text-[var(--muted)]"><li>• 你手動新增的景點、餐廳與備註</li><li>• 已鎖定的項目與固定預約時間</li><li>• 單日模式下其他日期的所有行程</li></ul></section>
+        <button type="button" onClick={() => { setAIMenuOpen(false); void previewOptimization(aiScope === "day" ? activeDay : undefined); }} disabled={Boolean(action) || (aiScope === "day" ? activeRows.length < 2 : items.length < 2)} className="flex min-h-12 w-full items-center justify-between gap-3 rounded-xl border border-[var(--line)] bg-white px-4 text-left text-sm disabled:opacity-40"><span><strong className="block">只調整現有動線</strong><span className="mt-0.5 block text-xs font-normal text-[var(--muted)]">不新增景點，先預覽順序與移動時間</span></span><RouteIcon size={18} className="shrink-0 text-[var(--teal)]" /></button>
+      </div>
+    </PlannerOverlay>
 
     <PlannerOverlay open={toolsOpen} onClose={() => setToolsOpen(false)} title="旅程工具" description="不常用的設定集中在這裡，規劃時間軸時保持畫面清爽。">
       <div className="space-y-4">
