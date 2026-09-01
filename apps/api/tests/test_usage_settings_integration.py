@@ -54,6 +54,9 @@ async def test_admin_usage_settings_apply_without_rewriting_existing_usage() -> 
     async with AsyncClient(
         transport=ASGITransport(app=app), base_url="http://test"
     ) as client:
+        anonymous = await client.get("/api/v1/admin/usage-settings")
+        assert anonymous.status_code == 401
+
         admin_registration = await client.post(
             "/api/v1/auth/register",
             json={"email": admin_email, "password": "integration-password-123"},
@@ -63,14 +66,16 @@ async def test_admin_usage_settings_apply_without_rewriting_existing_usage() -> 
         admin_headers = {
             "Authorization": f"Bearer {admin_registration.json()['access_token']}"
         }
+        not_admin = await client.get(
+            "/api/v1/admin/usage-settings", headers=admin_headers
+        )
+        assert not_admin.status_code == 403
+
         async with SessionFactory() as session:
             admin = await session.get(User, admin_id)
             assert admin is not None
             admin.is_admin = True
             await session.commit()
-
-        anonymous = await client.get("/api/v1/admin/usage-settings")
-        assert anonymous.status_code == 401
 
         initial = await client.get("/api/v1/admin/usage-settings", headers=admin_headers)
         assert initial.status_code == 200
