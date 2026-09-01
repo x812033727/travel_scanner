@@ -73,6 +73,8 @@ export type Trip = {
     model?: string | null;
     generated_at: string;
     warnings: string[];
+    scope?: "day" | "trip";
+    day_date?: string | null;
   } | null;
   version: number;
   destination_name?: string | null;

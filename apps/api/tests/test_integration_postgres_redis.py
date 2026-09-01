@@ -688,6 +688,10 @@ async def test_ai_regeneration_preserves_items_charges_once_and_replays(
             nonlocal live_calls
             live_calls += 1
             result = await original_generate(planner, request)
+            if request.start_date == request.end_date:
+                for day in result.itinerary:
+                    for item in day.items:
+                        item.title = f"{item.title}（單日）"
             result.planning.status = "live"
             result.planning.provider = "openai"
             result.planning.model = "gpt-test"
@@ -719,3 +723,53 @@ async def test_ai_regeneration_preserves_items_charges_once_and_replays(
         assert live_calls == 1
         usage = await client.get("/api/v1/usage", headers=headers)
         assert usage.json()["remaining_uses"] == 2
+
+        invalid_scope = await client.post(
+            f"/api/v1/trips/{trip['id']}/itinerary/generate",
+            headers={**headers, "Idempotency-Key": f"ai-invalid-day-{uuid4()}"},
+            json={
+                "version": result["version"],
+                "scope": "day",
+                "day_date": "2026-12-01",
+            },
+        )
+        assert invalid_scope.status_code == 422
+        usage_after_invalid = await client.get("/api/v1/usage", headers=headers)
+        assert usage_after_invalid.json()["remaining_uses"] == 2
+
+        target_date = "2026-11-12"
+        outside_before = {
+            (item["id"], item["day_date"], item["title"], item["position"])
+            for item in result["items"]
+            if item["day_date"] != target_date
+        }
+        target_titles_before = {
+            item["title"] for item in result["items"] if item["day_date"] == target_date
+        }
+        regenerated_day = await client.post(
+            f"/api/v1/trips/{trip['id']}/itinerary/generate",
+            headers={**headers, "Idempotency-Key": f"ai-regenerate-day-{uuid4()}"},
+            json={
+                "version": result["version"],
+                "scope": "day",
+                "day_date": target_date,
+            },
+        )
+        assert regenerated_day.status_code == 200
+        day_result = regenerated_day.json()
+        assert day_result["planning"]["scope"] == "day"
+        assert day_result["planning"]["day_date"] == target_date
+        outside_after = {
+            (item["id"], item["day_date"], item["title"], item["position"])
+            for item in day_result["items"]
+            if item["day_date"] != target_date
+        }
+        assert outside_after == outside_before
+        target_titles_after = {
+            item["title"] for item in day_result["items"] if item["day_date"] == target_date
+        }
+        assert target_titles_after != target_titles_before
+        assert all("（單日）" in title for title in target_titles_after)
+        assert live_calls == 2
+        usage_after_day = await client.get("/api/v1/usage", headers=headers)
+        assert usage_after_day.json()["remaining_uses"] == 1
