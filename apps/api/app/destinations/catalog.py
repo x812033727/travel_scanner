@@ -1,4 +1,27 @@
 from dataclasses import dataclass, field
+from typing import Literal
+
+LEGACY_DESTINATION_IDS = {
+    "NRT": "tokyo",
+    "KIX": "osaka-kyoto",
+    "FUK": "fukuoka",
+    "CTS": "sapporo",
+    "OKA": "okinawa",
+    "NGO": "nagoya",
+    "ICN": "seoul",
+    "PUS": "busan",
+    "CJU": "jeju",
+    "BKK": "bangkok",
+    "CNX": "chiang-mai",
+    "HKT": "phuket",
+    "KBV": "krabi",
+    "TPE": "taipei",
+    "SIN": "singapore",
+    "HKG": "hong-kong",
+    "HAN": "hanoi",
+    "SGN": "ho-chi-minh-city",
+    "DAD": "da-nang",
+}
 
 
 @dataclass(frozen=True)
@@ -14,6 +37,26 @@ class DestinationProfile:
     estimated_flight_twd: int
     reason: str
     suggestions: dict[str, tuple[str, ...]] = field(default_factory=dict)
+    destination_id: str | None = None
+    role: Literal["primary", "secondary", "extension"] = "primary"
+    parent_destination_id: str | None = None
+    local_name: str | None = None
+    english_name: str | None = None
+    gateway_codes: tuple[str, ...] = ()
+    center: tuple[float, float] | None = None
+    recommended_days: tuple[int, int] = (4, 6)
+
+    @property
+    def id(self) -> str:
+        return self.destination_id or LEGACY_DESTINATION_IDS[self.code]
+
+    @property
+    def is_searchable(self) -> bool:
+        return self.role != "extension"
+
+    @property
+    def primary_gateway(self) -> str:
+        return self.gateway_codes[0] if self.gateway_codes else self.code
 
 
 DESTINATIONS: tuple[DestinationProfile, ...] = (
@@ -384,24 +427,314 @@ DESTINATIONS: tuple[DestinationProfile, ...] = (
             "family": ("巴拿山親子一日", "會安燈籠體驗", "海灘休閒日"),
         },
     ),
+    DestinationProfile(
+        code="RMQ",
+        city="台中",
+        country="Taiwan",
+        country_label="台灣",
+        timezone="Asia/Taipei",
+        currency="TWD",
+        aliases=("台中", "臺中", "Taichung", "RMQ"),
+        areas=("中區", "西區", "草悟道", "逢甲"),
+        estimated_flight_twd=3_200,
+        reason="老城街區、文化聚落與山海近郊適合慢遊",
+        suggestions={
+            "food": ("第二市場小吃", "第五市場散步"),
+            "culture": ("霧峰文化路線", "中區老城散步"),
+            "nature": ("大坑步道", "高美濕地黃昏"),
+            "shopping": ("草悟道選物", "審計新村"),
+        },
+        destination_id="taichung",
+        role="secondary",
+        local_name="臺中",
+        english_name="Taichung",
+        gateway_codes=("RMQ",),
+        center=(24.1477, 120.6736),
+        recommended_days=(3, 5),
+    ),
+    DestinationProfile(
+        code="KHH",
+        city="高雄",
+        country="Taiwan",
+        country_label="台灣",
+        timezone="Asia/Taipei",
+        currency="TWD",
+        aliases=("高雄", "Kaohsiung", "KHH"),
+        areas=("鹽埕", "前金", "左營", "三多商圈"),
+        estimated_flight_twd=3_000,
+        reason="港都景觀、老城文化與南台灣美食集中",
+        suggestions={
+            "food": ("鹽埕小吃巡禮", "三民市場"),
+            "culture": ("哈瑪星文化散步", "鳳山老城"),
+            "nature": ("柴山步道", "旗津海岸"),
+            "shopping": ("駁二選物", "新堀江散步"),
+        },
+        destination_id="kaohsiung",
+        role="secondary",
+        local_name="高雄",
+        english_name="Kaohsiung",
+        gateway_codes=("KHH",),
+        center=(22.6273, 120.3014),
+        recommended_days=(3, 5),
+    ),
+    DestinationProfile(
+        code="SDJ",
+        city="仙台",
+        country="Japan",
+        country_label="日本",
+        timezone="Asia/Tokyo",
+        currency="JPY",
+        aliases=("仙台", "Sendai", "SDJ"),
+        areas=("仙台站", "一番町", "國分町", "青葉通"),
+        estimated_flight_twd=12_000,
+        reason="城下町文化、東北美食與松島近郊可組成四季行程",
+        suggestions={
+            "food": ("仙台朝市", "牛舌與在地料理"),
+            "culture": ("青葉城與瑞鳳殿", "博物館巡禮"),
+            "nature": ("松島海岸", "秋保溪谷"),
+            "shopping": ("一番町商店街", "仙台站採買"),
+        },
+        destination_id="sendai",
+        role="secondary",
+        local_name="仙台",
+        english_name="Sendai",
+        gateway_codes=("SDJ",),
+        center=(38.2682, 140.8694),
+        recommended_days=(4, 6),
+    ),
+    DestinationProfile(
+        code="KMQ",
+        city="金澤",
+        country="Japan",
+        country_label="日本",
+        timezone="Asia/Tokyo",
+        currency="JPY",
+        aliases=("金澤", "金沢", "Kanazawa", "KMQ"),
+        areas=("金澤站", "近江町", "香林坊", "東茶屋街"),
+        estimated_flight_twd=11_000,
+        reason="工藝、茶屋街與北陸飲食適合文化深度旅行",
+        suggestions={
+            "food": ("近江町市場", "主計町料理"),
+            "culture": ("茶屋街工藝散步", "長町武家屋敷"),
+            "nature": ("兼六園", "卯辰山"),
+            "shopping": ("金澤工藝選物", "香林坊"),
+        },
+        destination_id="kanazawa",
+        role="secondary",
+        local_name="金沢",
+        english_name="Kanazawa",
+        gateway_codes=("KMQ",),
+        center=(36.5613, 136.6562),
+        recommended_days=(3, 5),
+    ),
+    DestinationProfile(
+        code="HIJ",
+        city="廣島",
+        country="Japan",
+        country_label="日本",
+        timezone="Asia/Tokyo",
+        currency="JPY",
+        aliases=("廣島", "広島", "Hiroshima", "HIJ"),
+        areas=("紙屋町", "八丁堀", "廣島站", "和平公園"),
+        estimated_flight_twd=10_500,
+        reason="和平文化、瀨戶內景觀與宮島可兼顧歷史及自然",
+        suggestions={
+            "food": ("廣島燒村", "本通周邊料理"),
+            "culture": ("和平紀念路線", "廣島城下町"),
+            "nature": ("宮島彌山", "縮景園"),
+            "shopping": ("本通商店街", "廣島站採買"),
+        },
+        destination_id="hiroshima",
+        role="secondary",
+        local_name="広島",
+        english_name="Hiroshima",
+        gateway_codes=("HIJ",),
+        center=(34.3853, 132.4553),
+        recommended_days=(4, 6),
+    ),
+    DestinationProfile(
+        code="TAE",
+        city="大邱",
+        country="South Korea",
+        country_label="韓國",
+        timezone="Asia/Seoul",
+        currency="KRW",
+        aliases=("大邱", "대구", "Daegu", "TAE"),
+        areas=("東城路", "半月堂", "壽城池", "大邱站"),
+        estimated_flight_twd=8_000,
+        reason="市場、近代街區與山城景觀兼具在地生活感",
+        suggestions={
+            "food": ("西門市場", "安吉郎烤腸街"),
+            "culture": ("近代文化胡同", "藥令市"),
+            "nature": ("八公山", "壽城池"),
+            "shopping": ("東城路", "前山咖啡街"),
+        },
+        destination_id="daegu",
+        role="secondary",
+        local_name="대구",
+        english_name="Daegu",
+        gateway_codes=("TAE",),
+        center=(35.8714, 128.6014),
+        recommended_days=(3, 5),
+    ),
+    DestinationProfile(
+        code="CEI",
+        city="清萊",
+        country="Thailand",
+        country_label="泰國",
+        timezone="Asia/Bangkok",
+        currency="THB",
+        aliases=("清萊", "เชียงราย", "Chiang Rai", "CEI"),
+        areas=("鐘樓", "夜市", "河畔", "舊城"),
+        estimated_flight_twd=9_500,
+        reason="蘭納藝術、山區自然與地方市場適合慢節奏探索",
+        suggestions={
+            "food": ("清萊夜市", "在地早市"),
+            "culture": ("蘭納寺院路線", "地方藝術館"),
+            "nature": ("辛哈公園", "山區茶園"),
+            "shopping": ("週末步行街", "手工藝市集"),
+        },
+        destination_id="chiang-rai",
+        role="secondary",
+        local_name="เชียงราย",
+        english_name="Chiang Rai",
+        gateway_codes=("CEI",),
+        center=(19.9105, 99.8406),
+        recommended_days=(4, 6),
+    ),
+    DestinationProfile(
+        code="DLI",
+        city="大叻",
+        country="Vietnam",
+        country_label="越南",
+        timezone="Asia/Ho_Chi_Minh",
+        currency="VND",
+        aliases=("大叻", "Đà Lạt", "Da Lat", "DLI"),
+        areas=("大叻市場", "春香湖", "第三坊", "舊法國區"),
+        estimated_flight_twd=10_500,
+        reason="高原氣候、法式街區、花園與咖啡產地適合深度慢遊",
+        suggestions={
+            "food": ("大叻市場", "高原咖啡巡禮"),
+            "culture": ("舊法國建築", "地方工藝空間"),
+            "nature": ("泉林湖", "高原瀑布"),
+            "shopping": ("夜市", "農產選物"),
+        },
+        destination_id="da-lat",
+        role="secondary",
+        local_name="Đà Lạt",
+        english_name="Da Lat",
+        gateway_codes=("DLI",),
+        center=(11.9404, 108.4583),
+        recommended_days=(4, 6),
+    ),
+    DestinationProfile(
+        code="TNN",
+        city="台南",
+        country="Taiwan",
+        country_label="台灣",
+        timezone="Asia/Taipei",
+        currency="TWD",
+        aliases=("台南", "臺南", "Tainan", "TNN"),
+        areas=("中西區", "安平", "孔廟", "海安路"),
+        estimated_flight_twd=0,
+        reason="由高雄延伸的府城古蹟、巷弄與飲食一日行程",
+        destination_id="tainan",
+        role="extension",
+        parent_destination_id="kaohsiung",
+        local_name="臺南",
+        english_name="Tainan",
+        gateway_codes=("KHH", "TNN"),
+        center=(22.9999, 120.2269),
+        recommended_days=(1, 2),
+    ),
+    DestinationProfile(
+        code="GYE",
+        city="慶州",
+        country="South Korea",
+        country_label="韓國",
+        timezone="Asia/Seoul",
+        currency="KRW",
+        aliases=("慶州", "경주", "Gyeongju"),
+        areas=("皇理團路", "大陵苑", "普門湖", "佛國寺"),
+        estimated_flight_twd=0,
+        reason="由釜山延伸的新羅古都文化一日行程",
+        destination_id="gyeongju",
+        role="extension",
+        parent_destination_id="busan",
+        local_name="경주",
+        english_name="Gyeongju",
+        gateway_codes=("PUS", "USN"),
+        center=(35.8562, 129.2247),
+        recommended_days=(1, 2),
+    ),
+    DestinationProfile(
+        code="JEO",
+        city="全州",
+        country="South Korea",
+        country_label="韓國",
+        timezone="Asia/Seoul",
+        currency="KRW",
+        aliases=("全州", "전주", "Jeonju"),
+        areas=("韓屋村", "南部市場", "客理團路", "完山公園"),
+        estimated_flight_twd=0,
+        reason="由首爾延伸的韓屋、飲食與地方工藝一日行程",
+        destination_id="jeonju",
+        role="extension",
+        parent_destination_id="seoul",
+        local_name="전주",
+        english_name="Jeonju",
+        gateway_codes=("ICN", "GMP"),
+        center=(35.8242, 127.1480),
+        recommended_days=(1, 2),
+    ),
+    DestinationProfile(
+        code="HUI",
+        city="順化",
+        country="Vietnam",
+        country_label="越南",
+        timezone="Asia/Ho_Chi_Minh",
+        currency="VND",
+        aliases=("順化", "Huế", "Hue", "HUI"),
+        areas=("皇城", "香江南岸", "東巴市場", "新城區"),
+        estimated_flight_twd=0,
+        reason="由峴港延伸的阮朝古都、香江與地方飲食一日行程",
+        destination_id="hue",
+        role="extension",
+        parent_destination_id="da-nang",
+        local_name="Huế",
+        english_name="Hue",
+        gateway_codes=("DAD", "HUI"),
+        center=(16.4637, 107.5909),
+        recommended_days=(1, 2),
+    ),
 )
 
 
 _BY_CODE: dict[str, DestinationProfile] = {}
+_BY_ID: dict[str, DestinationProfile] = {}
 for _destination in DESTINATIONS:
     _BY_CODE[_destination.code] = _destination
+    _BY_ID[_destination.id] = _destination
     for _alias in _destination.aliases:
         if len(_alias) == 3 and _alias.isascii():
             _BY_CODE[_alias.upper()] = _destination
 
 
 def destination_for_code(code: str | None) -> DestinationProfile | None:
-    return _BY_CODE.get((code or "").upper())
+    value = code or ""
+    return _BY_CODE.get(value.upper()) or _BY_ID.get(value.casefold())
+
+
+def destination_for_id(destination_id: str | None) -> DestinationProfile | None:
+    return _BY_ID.get((destination_id or "").casefold())
+
+
+SEARCHABLE_DESTINATIONS = tuple(item for item in DESTINATIONS if item.is_searchable)
 
 
 def match_destination(text: str) -> DestinationProfile | None:
     folded = text.casefold()
-    for destination in DESTINATIONS:
+    for destination in SEARCHABLE_DESTINATIONS:
         if any(alias.casefold() in folded for alias in destination.aliases):
             return destination
     return None

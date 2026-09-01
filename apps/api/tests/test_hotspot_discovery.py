@@ -5,8 +5,8 @@ from app.hotspots.cities import TARGET_PUBLIC_HOTSPOTS, DiscoveryCenter, Hotspot
 from app.hotspots.discovery import WikimediaDiscoveryClient, classify_types, haversine_km
 
 
-def test_hotspot_city_targets_total_313() -> None:
-    assert TARGET_PUBLIC_HOTSPOTS == 313
+def test_hotspot_city_targets_total_529() -> None:
+    assert TARGET_PUBLIC_HOTSPOTS == 529
 
 
 def test_haversine_distance_and_radius_boundary() -> None:
@@ -42,20 +42,34 @@ async def test_geosearch_deduplicates_qids_and_uses_chinese_label() -> None:
                     }
                 },
             )
+        if "pageids" in request.url.params:
+            return httpx.Response(
+                200,
+                json={
+                    "query": {
+                        "pages": [
+                            {"pageid": 1, "pageprops": {"wikibase_item": "Q1"}},
+                            {"pageid": 2, "pageprops": {"wikibase_item": "Q1"}},
+                        ]
+                    }
+                },
+            )
         return httpx.Response(
             200,
             json={
                 "query": {
-                    "pages": [
+                    "geosearch": [
                         {
+                            "pageid": 1,
                             "title": "測試館",
-                            "coordinates": [{"lat": 25.034, "lon": 121.5654}],
-                            "pageprops": {"wikibase_item": "Q1"},
+                            "lat": 25.034,
+                            "lon": 121.5654,
                         },
                         {
+                            "pageid": 2,
                             "title": "測試館別名",
-                            "coordinates": [{"lat": 25.034, "lon": 121.5654}],
-                            "pageprops": {"wikibase_item": "Q1"},
+                            "lat": 25.034,
+                            "lon": 121.5654,
                         },
                     ]
                 }

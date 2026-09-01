@@ -4,6 +4,8 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, model_validator
 
+from app.destinations.catalog import destination_for_code, destination_for_id
+
 
 class TripType(StrEnum):
     ROUND_TRIP = "round_trip"
@@ -85,6 +87,7 @@ class SearchPreferences(BaseModel):
     pace: TripPace = TripPace.BALANCED
     optimization_mode: OptimizationMode | None = None
     interests: list[str] = Field(default_factory=list, max_length=10)
+    extension_destination_ids: list[str] = Field(default_factory=list, max_length=2)
 
     @model_validator(mode="after")
     def validate_hotel_price_range(self) -> "SearchPreferences":
@@ -134,4 +137,24 @@ class SearchCreate(BaseModel):
         if self.return_date and self.departure_date and self.return_date <= self.departure_date:
             raise ValueError("return_date must be after departure_date")
         self.currency = self.currency.upper()
+        if self.preferences.extension_destination_ids and self.departure_date and self.return_date:
+            trip_days = (self.return_date - self.departure_date).days + 1
+            if trip_days < 4:
+                raise ValueError("跨城延伸行程至少需要四天，請延長旅程")
+            allowed = 2 if trip_days >= 7 else 1
+            if len(self.preferences.extension_destination_ids) > allowed:
+                raise ValueError(f"目前旅程天數最多可加入 {allowed} 個跨城延伸城市")
+            extension_ids = list(dict.fromkeys(self.preferences.extension_destination_ids))
+            if len(extension_ids) != len(self.preferences.extension_destination_ids):
+                raise ValueError("跨城延伸城市不可重複")
+            parent = destination_for_code(self.destination)
+            extensions = [destination_for_id(item) for item in extension_ids]
+            if any(
+                item is None
+                or item.role != "extension"
+                or parent is None
+                or item.parent_destination_id != parent.id
+                for item in extensions
+            ):
+                raise ValueError("跨城延伸城市必須屬於目前主要目的地")
         return self

@@ -302,6 +302,7 @@ class TravelHotspot(Timestamped, Base):
     slug: Mapped[str] = mapped_column(String(128), unique=True, index=True)
     name: Mapped[str] = mapped_column(String(255), index=True)
     city_code: Mapped[str] = mapped_column(String(8), index=True)
+    destination_id: Mapped[str] = mapped_column(String(64), index=True, default="unknown")
     city_name: Mapped[str] = mapped_column(String(100))
     country_code: Mapped[str] = mapped_column(String(2), index=True)
     country_name: Mapped[str] = mapped_column(String(100))

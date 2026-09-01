@@ -5,7 +5,7 @@ from typing import Annotated, Any
 from urllib.parse import urlparse
 
 import httpx
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Depends, Query, Request
 from fastapi.responses import RedirectResponse
 from pydantic import BaseModel, Field, model_validator
 from redis.exceptions import RedisError
@@ -15,7 +15,7 @@ from app.admin.service import load_runtime_settings
 from app.ai.parser import MockAITripParser
 from app.auth.service import CurrentUser
 from app.db import get_session
-from app.destinations.catalog import DESTINATIONS
+from app.destinations.catalog import DESTINATIONS, SEARCHABLE_DESTINATIONS
 from app.i18n import Locale, current_locale
 from app.infra import client_ip, enforce_named_rate_limit, get_redis
 from app.places.google import GoogleTravelService
@@ -238,6 +238,10 @@ _COUNTRIES = {
     "JP": "Japan",
     "KR": "South Korea",
     "TH": "Thailand",
+    "TW": "Taiwan",
+    "SG": "Singapore",
+    "HK": "Hong Kong",
+    "VN": "Vietnam",
 }
 _RECOMMENDED_DAYS = {
     "FUK": (3, 5),
@@ -247,6 +251,60 @@ _RECOMMENDED_DAYS = {
     "HKT": (5, 7),
     "KBV": (4, 6),
 }
+
+
+@router.get("")
+async def destination_catalog(
+    country_code: str | None = Query(default=None, min_length=2, max_length=2),
+    role: str | None = Query(default=None, pattern="^(primary|secondary|extension)$"),
+    parent_id: str | None = Query(default=None, min_length=2, max_length=64),
+) -> dict[str, Any]:
+    reverse_countries = {name: code for code, name in _COUNTRIES.items()}
+    rows = [
+        item
+        for item in DESTINATIONS
+        if (country_code is None or reverse_countries[item.country] == country_code.upper())
+        and (role is None or item.role == role)
+        and (parent_id is None or item.parent_destination_id == parent_id.casefold())
+    ]
+    children: dict[str, list[str]] = {}
+    for item in DESTINATIONS:
+        if item.parent_destination_id:
+            children.setdefault(item.parent_destination_id, []).append(item.id)
+    return {
+        "total": len(rows),
+        "items": [
+            {
+                "id": item.id,
+                "code": item.code,
+                "city": item.city,
+                "local_name": item.local_name or item.city,
+                "english_name": item.english_name or item.city,
+                "country": item.country_label,
+                "country_code": reverse_countries[item.country],
+                "role": item.role,
+                "parent_destination_id": item.parent_destination_id,
+                "extension_ids": sorted(children.get(item.id, [])),
+                "gateway_codes": list(item.gateway_codes or (item.code,)),
+                "primary_gateway": item.primary_gateway,
+                "areas": list(item.areas),
+                "recommended_days": {
+                    "min": item.recommended_days[0],
+                    "max": item.recommended_days[1],
+                },
+                "timezone": item.timezone,
+                "currency": item.currency,
+                "center": (
+                    {"latitude": item.center[0], "longitude": item.center[1]}
+                    if item.center
+                    else None
+                ),
+                "reason": item.reason,
+                "searchable": item.is_searchable,
+            }
+            for item in rows
+        ],
+    }
 
 
 def _estimate(
@@ -348,7 +406,7 @@ async def discover(payload: DiscoveryRequest) -> dict[str, Any]:
     selected_codes = {item.upper() for item in payload.destination_codes}
     profiles = [
         item
-        for item in DESTINATIONS
+        for item in SEARCHABLE_DESTINATIONS
         if item.country in selected_countries
         and (not selected_codes or item.code in selected_codes)
     ]
@@ -362,7 +420,7 @@ async def discover(payload: DiscoveryRequest) -> dict[str, Any]:
         )
         recommendations: list[dict[str, Any]] = []
         for profile in profiles:
-            recommended = _RECOMMENDED_DAYS.get(profile.code, (4, 6))
+            recommended = _RECOMMENDED_DAYS.get(profile.code, profile.recommended_days)
             lengths = payload.trip_length_range or TripLengthRange(
                 min_days=recommended[0], max_days=recommended[1]
             )

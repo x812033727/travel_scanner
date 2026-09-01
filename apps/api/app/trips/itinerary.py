@@ -49,6 +49,10 @@ class ItineraryHotspot(BaseModel):
     depth_reason: str
     access_minutes: int
     recommended_duration_minutes: int
+    destination_id: str | None = None
+    destination_role: str = "primary"
+    parent_destination_id: str | None = None
+    is_cross_city: bool = False
 
 
 def _id(day: date, position: int, title: str) -> UUID:
@@ -204,19 +208,62 @@ def build_itinerary(
         blocks = 3
     suggestion_pool = _suggestion_pool(query.preferences.interests, destination)
     suggestion_index = 0
-    deep_requested = "deep_travel" in query.preferences.interests
+    deep_requested = "deep_travel" in query.preferences.interests or any(
+        item.is_cross_city for item in (hotspots or [])
+    )
     deep_candidates = (hotspots or []) if deep_requested else []
     day_trip_limit = 0 if len(full_days) <= 1 else (2 if len(full_days) >= 5 else 1)
-    day_trips = [item for item in deep_candidates if item.depth_kind == "day_trip"][:day_trip_limit]
+    cross_city_limit = 0 if len(days) < 4 else (2 if len(days) >= 7 else 1)
+    cross_city = [item for item in deep_candidates if item.is_cross_city][:cross_city_limit]
+    day_trips = [
+        item for item in deep_candidates if item.depth_kind == "day_trip" and not item.is_cross_city
+    ][:day_trip_limit]
     urban = _cluster_urban_hotspots(
-        [item for item in deep_candidates if item.depth_kind == "urban_local"],
+        [
+            item
+            for item in deep_candidates
+            if item.depth_kind == "urban_local" and not item.is_cross_city
+        ],
         (hotel.latitude, hotel.longitude)
         if hotel and hotel.latitude is not None and hotel.longitude is not None
         else None,
     )
     urban_index = 0
     day_trip_index = 0
+    cross_city_index = 0
     for day in full_days:
+        if cross_city_index < len(cross_city):
+            hotspot = cross_city[cross_city_index]
+            cross_city_index += 1
+            start = _at(day, 8, 30, timezone=destination_timezone)
+            add(
+                day,
+                item_type="hotspot",
+                title=f"{hotspot.name}跨城深度行程",
+                location_name=hotspot.name,
+                start_time=start,
+                end_time=start
+                + timedelta(
+                    minutes=hotspot.access_minutes * 2 + hotspot.recommended_duration_minutes + 90
+                ),
+                latitude=hotspot.latitude,
+                longitude=hotspot.longitude,
+                duration_minutes=hotspot.recommended_duration_minutes,
+                is_estimated=False,
+                location_source="hotspot_catalog",
+                data={
+                    "source_mode": "approved_hotspot",
+                    "hotspot_id": str(hotspot.hotspot_id),
+                    "destination_id": hotspot.destination_id,
+                    "parent_destination_id": hotspot.parent_destination_id,
+                    "is_cross_city": True,
+                    "access_minutes_each_way": hotspot.access_minutes,
+                    "round_trip_buffer_minutes": 90,
+                    "interest": "deep_travel",
+                    **destination_context,
+                },
+            )
+            continue
         if day_trip_index < len(day_trips):
             hotspot = day_trips[day_trip_index]
             day_trip_index += 1

@@ -13,6 +13,7 @@ class HotspotSeed:
     slug: str
     name: str
     aliases: tuple[str, ...]
+    destination_id: str
     city_code: str
     city_name: str
     country_code: str
@@ -50,6 +51,7 @@ class HotspotSeed:
             (
                 self.name,
                 *self.aliases,
+                self.destination_id,
                 self.city_code,
                 self.city_name,
                 self.country_code,
@@ -94,7 +96,10 @@ def _load_seeds() -> tuple[HotspotSeed, ...]:
     deep_rows = json.loads(
         Path(__file__).with_name("deep_bootstrap.json").read_text(encoding="utf-8")
     )
-    rows = [*base_rows, *deep_rows]
+    secondary_rows = json.loads(
+        Path(__file__).with_name("secondary_bootstrap.json").read_text(encoding="utf-8")
+    )
+    rows = [*base_rows, *deep_rows, *secondary_rows]
     seeds: list[HotspotSeed] = []
     for row in rows:
         city = CITY_BY_CODE[row["city_code"]]
@@ -106,6 +111,7 @@ def _load_seeds() -> tuple[HotspotSeed, ...]:
                 ),
                 name=row["name"],
                 aliases=(title, row["name"], *row.get("aliases", ())),
+                destination_id=city.id,
                 city_code=city.code,
                 city_name=city.name,
                 country_code=city.country_code,
@@ -128,9 +134,15 @@ def _load_seeds() -> tuple[HotspotSeed, ...]:
                 coordinate_source=row.get("coordinate_source"),
             )
         )
-    if len(base_rows) != 170 or len(deep_rows) != 95 or len(seeds) != 265:
+    if (
+        len(base_rows) != 170
+        or len(deep_rows) != 95
+        or len(secondary_rows) != 180
+        or len(seeds) != 445
+    ):
         raise RuntimeError(
-            f"expected 170 standard + 95 deep hotspots, found {len(base_rows)} + {len(deep_rows)}"
+            "expected 170 standard + 95 deep + 180 secondary hotspots, "
+            f"found {len(base_rows)} + {len(deep_rows)} + {len(secondary_rows)}"
         )
     if len({seed.wikidata_item_id for seed in seeds}) != len(seeds):
         raise RuntimeError("bootstrap hotspot Wikidata IDs must be unique")
@@ -143,8 +155,8 @@ def _load_seeds() -> tuple[HotspotSeed, ...]:
         # so it keeps collecting against the stale title. Fail the import instead.
         raise RuntimeError(f"LEGACY_SLUGS keys match no wikipedia_title: {unmatched}")
     deep = [seed for seed in seeds if seed.is_deep_travel]
-    if len(deep) != 95 or any((seed.depth_score or 0) < 70 for seed in deep):
-        raise RuntimeError("deep bootstrap must contain exactly 95 reviewed scores >= 70")
+    if len(deep) != 155 or any((seed.depth_score or 0) < 70 for seed in deep):
+        raise RuntimeError("deep bootstrap must contain exactly 155 reviewed scores >= 70")
     return tuple(seeds)
 
 
