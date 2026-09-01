@@ -13,6 +13,7 @@ from app.auth.router import router as auth_router
 from app.config import get_settings
 from app.crawlers.router import router as crawlers_router
 from app.db import engine
+from app.deployments.router import router as deployments_router
 from app.flights.router import router as flight_status_router
 from app.foods.admin_router import router as admin_foods_router
 from app.foods.router import router as foods_router
@@ -54,6 +55,7 @@ app.add_exception_handler(RequestValidationError, validation_error_handler)  # t
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(admin_router, prefix="/api/v1")
 app.include_router(admin_user_router, prefix="/api/v1")
+app.include_router(deployments_router, prefix="/api/v1")
 app.include_router(runtime_router, prefix="/api/v1")
 app.include_router(affiliates_router, prefix="/api/v1")
 app.include_router(usage_router, prefix="/api/v1")

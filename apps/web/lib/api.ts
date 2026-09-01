@@ -36,6 +36,8 @@ const FIELD_LABELS: Record<string, string> = {
   target_price: "目標價格",
   resource_id: "追蹤項目",
   resource_type: "追蹤類型",
+  expected_target_sha: "目標版本",
+  confirmation: "部署確認文字",
 };
 
 const CODE_MESSAGES: Record<string, string> = {
@@ -66,6 +68,23 @@ const CODE_MESSAGES: Record<string, string> = {
   rate_limit_unavailable: "限流服務暫時無法使用，請稍後再試",
   registration_closed: "目前暫停開放新帳號註冊",
   insufficient_uses: "可用次數不足，請先取得更多次數",
+  deployment_admin_required: "此功能僅限部署管理員使用",
+  deployment_agent_unavailable: "部署代理目前無法連線，請檢查主機服務",
+  deployment_agent_invalid_response: "部署代理回應格式不正確",
+  deployment_reauth_failed: "目前密碼不正確",
+  deployment_in_progress: "目前已有部署正在執行",
+  deployment_cooldown: "前一次部署剛完成，請稍候五分鐘",
+  deployment_ci_not_green: "最新 main 尚未通過 CI",
+  deployment_target_changed: "main 已更新，請重新檢查後再部署",
+  deployment_already_current: "目前已是最新綠燈版本",
+  deployment_confirmation_invalid: "部署確認文字不正確",
+  deployment_not_found: "找不到這筆部署紀錄",
+  deployment_build_failed: "新版本映像建置失敗",
+  deployment_backup_failed: "資料庫備份失敗，部署已停止",
+  deployment_migration_failed: "資料庫 migration 失敗，尚未切換應用程式",
+  deployment_activation_failed: "新版本服務啟動失敗",
+  deployment_health_failed: "新版本未通過健康檢查",
+  deployment_rollback_failed: "自動回退失敗，需要主機管理員處理",
 };
 
 function validationMessage(issue: unknown): string {

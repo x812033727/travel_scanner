@@ -16,6 +16,7 @@ from app.auth.schemas import (
 from app.auth.service import (
     DUMMY_PASSWORD_HASH,
     CurrentUser,
+    can_deploy_user,
     create_access_token,
     find_user_by_email,
     hash_password,
@@ -44,6 +45,7 @@ async def user_response(session: AsyncSession, user: User) -> UserResponse:
         id=user.id,
         email=user.email,
         is_admin=is_admin_user(user),
+        can_deploy=can_deploy_user(user),
         preferred_locale=normalize_locale(user.preferred_locale),
     )
 

@@ -14,6 +14,26 @@ Browser -> Next.js BFF -> FastAPI -> Search Orchestrator -> Provider adapters
                                RQ / Redis <- events <- Cost + optimizer
 ```
 
+Production deployment is a separate privilege boundary:
+
+```text
+Deploy admin -> Next.js BFF -> FastAPI -> read-only Unix socket -> host deploy agent
+                                                        agent -> pinned Git mirror
+                                                              -> GitHub CI metadata
+                                                              -> Docker Compose
+                                                              -> pg_dump / releases
+```
+
+FastAPI owns authorization, current-password verification, idempotency, the
+public deployment history, and sanitized audit events. It does not receive a
+Docker socket, Git checkout, GitHub token, runtime environment, or arbitrary
+host command. The systemd agent authenticates fixed requests with HMAC,
+timestamp, and a persisted one-time nonce; SQLite and a host file lock preserve
+job state and global exclusivity while application containers restart. Only
+the newest green `origin/main` is deployable. Automatic rollback changes
+application images only, so every migration must remain compatible with the
+previous release.
+
 The API is organized by product modules (`auth`, `usage`, `search`, `providers`,
 `pricing`, `optimization`, `trips`, `alerts`, `hotspots`, `weather`, and `ai`). PostgreSQL is
 the source of truth. Redis is used for queues, short-lived caching, streams, rate limiting,

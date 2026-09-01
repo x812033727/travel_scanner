@@ -62,6 +62,32 @@ docker compose -f docker-compose.prod.yml up --build -d
 The production Compose file runs API processes as non-root users, drops Linux
 capabilities, and rejects startup when required secrets are missing or unsafe.
 
+### Deployment center
+
+`/admin/deployments` can deploy only the latest `origin/main` commit whose
+push run of the `CI` workflow succeeded. The feature is off by default. Do not
+enable it until this version has been deployed manually and the restricted host
+agent has passed preflight. Installation and host directory details are in
+[`ops/deployer/README.md`](ops/deployer/README.md).
+
+The API container receives only the agent Unix socket directory as a read-only
+mount; it never receives a Git checkout or the Docker socket. Requests are
+timestamped, single-use, and HMAC authenticated. The host agent pins the
+repository, branch, workflow, Compose project name, release directories, and
+health endpoints. It builds SHA-tagged images while the prior services run,
+requires a PostgreSQL custom-format backup before migration, then requires
+three consecutive API/Web health checks. A failed activation returns to the
+previous application images without downgrading the database. Keep migrations
+backward compatible.
+
+Only an effective administrator whose email also appears in
+`DEPLOY_ADMIN_EMAILS` receives `can_deploy=true`. Starting a deployment requires
+the current password and `DEPLOY <7-char-SHA>`. Set the same random 32+ character
+`DEPLOY_AGENT_HMAC_KEY` in the API runtime environment and the root-owned agent
+environment. The browser cannot select a branch, tag, repository, command, or
+historical version. Agent upgrades, database restores, and manual rollback
+remain host administrator actions.
+
 Create an account in the UI to receive the currently configured number of free,
 non-expiring uses. To grant a
 usage pack locally before online checkout is available:
@@ -79,7 +105,8 @@ access and open `http://localhost:3000/admin/users` or
 `http://localhost:3000/admin/usage-settings` or
 `http://localhost:3000/admin/system-settings` or
 `http://localhost:3000/admin/layout-settings` or
-`http://localhost:3000/admin/settings`:
+`http://localhost:3000/admin/settings`; deployment allowlisted administrators
+also see `http://localhost:3000/admin/deployments`:
 
 ```bash
 cd apps/api
@@ -174,7 +201,8 @@ server egress IP. Restrict the browser Embed key by API and the production HTTP
 referrer. Do not commit either value.
 
 The management APIs are under `/api/v1/admin/users`,
-`/api/v1/admin/usage-settings`, and `/api/v1/admin/provider-settings`; the safe runtime browser configuration is served separately from
+`/api/v1/admin/usage-settings`, `/api/v1/admin/provider-settings`, and
+`/api/v1/admin/deployments`; the safe runtime browser configuration is served separately from
 `/api/v1/runtime/public-config` and `/api/v1/runtime/site-visibility`.
 Environment variables remain the fallback when no database override exists,
 and disabling a provider never silently enables mock pricing in production.

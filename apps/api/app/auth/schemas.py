@@ -26,6 +26,7 @@ class UserResponse(BaseModel):
     id: UUID
     email: EmailStr
     is_admin: bool = False
+    can_deploy: bool = False
     preferred_locale: Locale = "zh-TW"
 
 

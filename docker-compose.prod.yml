@@ -27,9 +27,9 @@ services:
       retries: 10
 
   migrate:
-    build: ./apps/api
+    image: travel-scanner-api:${RELEASE_SHA:-local}
     restart: "no"
-    env_file: .env
+    env_file: ${RUNTIME_ENV_FILE:-.env}
     environment:
       APP_ENV: production
       DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
@@ -41,9 +41,10 @@ services:
       postgres: { condition: service_healthy }
 
   api:
+    image: travel-scanner-api:${RELEASE_SHA:-local}
     build: ./apps/api
     restart: unless-stopped
-    env_file: .env
+    env_file: ${RUNTIME_ENV_FILE:-.env}
     environment:
       APP_ENV: production
       DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
@@ -51,6 +52,9 @@ services:
       TRUST_PROXY_CLIENT_IP: "true"
     command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
     ports: ["127.0.0.1:8090:8000"]
+    volumes:
+      - ${DEPLOY_AGENT_SOCKET_DIR:-/run/travel-scanner-deployer}:/run/travel-scanner-deployer:ro
+    group_add: ["${DEPLOY_AGENT_GID:-10002}"]
     security_opt: ["no-new-privileges:true"]
     cap_drop: ["ALL"]
     depends_on:
@@ -59,9 +63,9 @@ services:
       redis: { condition: service_healthy }
 
   worker:
-    build: ./apps/api
+    image: travel-scanner-api:${RELEASE_SHA:-local}
     restart: unless-stopped
-    env_file: .env
+    env_file: ${RUNTIME_ENV_FILE:-.env}
     environment:
       APP_ENV: production
       DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
@@ -75,9 +79,9 @@ services:
       redis: { condition: service_healthy }
 
   alert-worker:
-    build: ./apps/api
+    image: travel-scanner-api:${RELEASE_SHA:-local}
     restart: unless-stopped
-    env_file: .env
+    env_file: ${RUNTIME_ENV_FILE:-.env}
     environment:
       APP_ENV: production
       DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
@@ -91,9 +95,9 @@ services:
       redis: { condition: service_healthy }
 
   alert-scheduler:
-    build: ./apps/api
+    image: travel-scanner-api:${RELEASE_SHA:-local}
     restart: unless-stopped
-    env_file: .env
+    env_file: ${RUNTIME_ENV_FILE:-.env}
     environment:
       APP_ENV: production
       DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
@@ -107,10 +111,10 @@ services:
       redis: { condition: service_healthy }
 
   hotspot-collector:
-    build: ./apps/api
+    image: travel-scanner-api:${RELEASE_SHA:-local}
     profiles: ["hotspots"]
     restart: unless-stopped
-    env_file: .env
+    env_file: ${RUNTIME_ENV_FILE:-.env}
     environment:
       APP_ENV: production
       DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
@@ -124,6 +128,7 @@ services:
       redis: { condition: service_healthy }
 
   web:
+    image: travel-scanner-web:${RELEASE_SHA:-local}
     build:
       context: .
       dockerfile: apps/web/Dockerfile

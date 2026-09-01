@@ -54,6 +54,30 @@ jobs:
       - run: cp .env.example .env
       - run: docker compose config
       - run: docker compose build api worker
+      - name: Validate production release Compose
+        run: docker compose -f docker-compose.prod.yml config --quiet
+        env:
+          POSTGRES_PASSWORD: ci-postgres-password
+          REDIS_PASSWORD: ci-redis-password
+          DATABASE_URL: postgresql+asyncpg://travel:ci-postgres-password@postgres:5432/travel_scanner
+          REDIS_URL: redis://:ci-redis-password@redis:6379/0
+          NEXT_PUBLIC_SITE_URL: https://mocair.io
+          RUNTIME_ENV_FILE: .env
+          DEPLOY_AGENT_SOCKET_DIR: /tmp/travel-scanner-deployer
+          DEPLOY_AGENT_GID: "10002"
+          RELEASE_SHA: ci
+      - name: Build SHA-tagged production images
+        run: docker compose -f docker-compose.prod.yml build api web
+        env:
+          POSTGRES_PASSWORD: ci-postgres-password
+          REDIS_PASSWORD: ci-redis-password
+          DATABASE_URL: postgresql+asyncpg://travel:ci-postgres-password@postgres:5432/travel_scanner
+          REDIS_URL: redis://:ci-redis-password@redis:6379/0
+          NEXT_PUBLIC_SITE_URL: https://mocair.io
+          RUNTIME_ENV_FILE: .env
+          DEPLOY_AGENT_SOCKET_DIR: /tmp/travel-scanner-deployer
+          DEPLOY_AGENT_GID: "10002"
+          RELEASE_SHA: ci
   full-stack-smoke:
     runs-on: ubuntu-latest
     services:
