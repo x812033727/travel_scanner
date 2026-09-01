@@ -333,6 +333,90 @@ class TravelHotspot(Timestamped, Base):
     depth_score: Mapped[Decimal | None] = mapped_column(Numeric(5, 2), nullable=True)
 
 
+class HotspotLocalization(Timestamped, Base):
+    __tablename__ = "hotspot_localizations"
+    __table_args__ = (
+        UniqueConstraint("hotspot_id", "locale", name="uq_hotspot_localization_locale"),
+        CheckConstraint(
+            "locale IN ('en', 'ja', 'ko', 'zh-TW', 'zh-CN')",
+            name="ck_hotspot_localization_locale",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    hotspot_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="CASCADE"), index=True
+    )
+    locale: Mapped[str] = mapped_column(String(16), index=True)
+    name: Mapped[str] = mapped_column(String(255))
+    aliases: Mapped[list[str]] = mapped_column(JSON, default=list)
+    search_terms: Mapped[list[str]] = mapped_column(JSON, default=list)
+
+
+class HotspotGuide(Timestamped, Base):
+    __tablename__ = "hotspot_guides"
+    __table_args__ = (
+        UniqueConstraint("hotspot_id", "canonical_url", name="uq_hotspot_guide_canonical_url"),
+        CheckConstraint(
+            "content_type IN ('article', 'video')", name="ck_hotspot_guide_content_type"
+        ),
+        CheckConstraint(
+            "locale IN ('en', 'ja', 'ko', 'zh-TW', 'zh-CN')",
+            name="ck_hotspot_guide_locale",
+        ),
+        CheckConstraint(
+            "review_status IN ('pending', 'approved', 'rejected', 'disabled')",
+            name="ck_hotspot_guide_review_status",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    hotspot_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="CASCADE"), index=True
+    )
+    content_type: Mapped[str] = mapped_column(String(16), index=True)
+    provider: Mapped[str] = mapped_column(String(32), index=True)
+    locale: Mapped[str] = mapped_column(String(16), index=True)
+    title: Mapped[str] = mapped_column(String(500))
+    creator_name: Mapped[str] = mapped_column(String(255))
+    canonical_url: Mapped[str] = mapped_column(Text)
+    provider_content_id: Mapped[str | None] = mapped_column(String(255), nullable=True, index=True)
+    thumbnail_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+    summary: Mapped[str | None] = mapped_column(Text, nullable=True)
+    published_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    duration_seconds: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    view_count: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    language_confidence: Mapped[Decimal] = mapped_column(Numeric(4, 3), default=1)
+    discovery_rank: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    review_status: Mapped[str] = mapped_column(String(24), default="pending", index=True)
+    review_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
+    reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    reviewed_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    last_verified_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    metadata_expires_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    metadata_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+
+
+class HotspotGuideClickDaily(Base):
+    __tablename__ = "hotspot_guide_click_daily"
+    __table_args__ = (
+        UniqueConstraint("guide_id", "observed_on", name="uq_hotspot_guide_click_day"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    guide_id: Mapped[UUID] = mapped_column(
+        ForeignKey("hotspot_guides.id", ondelete="CASCADE"), index=True
+    )
+    observed_on: Mapped[date] = mapped_column(Date, index=True)
+    unique_opens: Mapped[int] = mapped_column(Integer, default=0)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utcnow, onupdate=utcnow
+    )
+
+
 class HotspotSignal(Base):
     __tablename__ = "hotspot_signals"
     __table_args__ = (

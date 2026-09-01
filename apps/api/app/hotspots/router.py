@@ -1,15 +1,20 @@
 from typing import Annotated, Any, Literal
+from uuid import UUID
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, Request
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
 from app.config import get_settings
 from app.db import get_session
+from app.hotspots.guides import list_guides, resolve_guide_open
 from app.hotspots.service import hotspot_facets, list_rankings
+from app.i18n import Locale, current_locale
+from app.infra import client_ip, enforce_named_rate_limit, get_redis
 
 router = APIRouter(prefix="/hotspots", tags=["hotspots"])
 Session = Annotated[AsyncSession, Depends(get_session)]
+RequestLocale = Annotated[Locale, Depends(current_locale)]
 
 
 @router.get("/sources")
@@ -48,6 +53,24 @@ async def hotspot_sources(session: Session) -> dict[str, Any]:
                 "persistence": "僅 Place ID 可長期保存",
             },
             {
+                "id": "youtube_guides",
+                "name": "YouTube 景點介紹",
+                "status": "ready"
+                if runtime.hotspot_guide_youtube_enabled and runtime.hotspot_guide_youtube_api_key
+                else "not_configured",
+                "purpose": "依目前語系探索景點影片，管理員核准後才公開",
+                "persistence": "保存官方 metadata，最遲 30 天內刷新或刪除",
+            },
+            {
+                "id": "brave_guides",
+                "name": "Brave 多語文章搜尋",
+                "status": "ready"
+                if runtime.hotspot_guide_brave_enabled and runtime.hotspot_guide_brave_api_key
+                else "not_configured",
+                "purpose": "依目前語系探索旅遊文章，管理員核准後才公開",
+                "persistence": "只保存標題、短摘要、來源與 canonical URL",
+            },
+            {
                 "id": "reddit_discussions",
                 "name": "Reddit 討論",
                 "status": "requires_agreement",
@@ -61,6 +84,7 @@ async def hotspot_sources(session: Session) -> dict[str, Any]:
 @router.get("/rankings")
 async def hotspot_rankings(
     session: Session,
+    locale: RequestLocale,
     q: Annotated[str | None, Query(min_length=1, max_length=100)] = None,
     city_code: Annotated[str | None, Query(min_length=3, max_length=3)] = None,
     country_code: Annotated[str | None, Query(min_length=2, max_length=2)] = None,
@@ -78,6 +102,7 @@ async def hotspot_rankings(
         after_rank=after_rank,
         limit=limit,
         style=style,
+        locale=locale,
     )
 
 
@@ -89,6 +114,7 @@ async def hotspots_facets(session: Session) -> dict[str, Any]:
 @router.get("/for-planner")
 async def hotspots_for_planner(
     session: Session,
+    locale: RequestLocale,
     city_code: Annotated[str, Query(min_length=3, max_length=3)],
     interests: Annotated[str | None, Query(max_length=200)] = None,
     limit: Annotated[int, Query(ge=1, le=12)] = 8,
@@ -96,7 +122,7 @@ async def hotspots_for_planner(
     days: Annotated[int | None, Query(ge=1, le=30)] = None,
 ) -> dict[str, Any]:
     requested = {item.strip().casefold() for item in (interests or "").split(",") if item.strip()}
-    result = await list_rankings(session, city_code=city_code, limit=50, style=style)
+    result = await list_rankings(session, city_code=city_code, limit=50, style=style, locale=locale)
     items = result["items"]
     if style == "deep" and days == 1:
         items = [item for item in items if item["depth_kind"] != "day_trip"]
@@ -133,3 +159,34 @@ async def hotspots_for_planner(
         "recommendations": recommendations,
         "planner_note": "熱門度只作候選訊號，仍須配合營業時間、距離與旅客偏好排程",
     }
+
+
+@router.post("/guides/{guide_id}/open")
+async def open_hotspot_guide(
+    guide_id: UUID,
+    request: Request,
+    session: Session,
+) -> dict[str, str]:
+    address = client_ip(request)
+    await enforce_named_rate_limit("hotspot-guide-open", address, limit=120, window_seconds=3_600)
+    visitor = f"{address}|{request.headers.get('user-agent', '')[:200]}"
+    return {"url": await resolve_guide_open(session, get_redis(), guide_id, visitor)}
+
+
+@router.get("/{hotspot_id}/guides")
+async def hotspot_guides(
+    hotspot_id: UUID,
+    session: Session,
+    locale: RequestLocale,
+    type: Literal["all", "article", "video"] = "all",
+    include_other_languages: bool = False,
+    limit_per_type: Annotated[int, Query(ge=1, le=10)] = 5,
+) -> dict[str, Any]:
+    return await list_guides(
+        session,
+        hotspot_id,
+        locale,
+        type,
+        include_other_languages,
+        limit_per_type,
+    )

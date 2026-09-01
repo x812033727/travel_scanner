@@ -1,61 +1,38 @@
 "use client";
 
-import { ArrowDownRight, ArrowUpRight, BarChart3, Database, MapPin, Minus, Search, Sparkles } from "lucide-react";
-import { FormEvent, useEffect, useState } from "react";
+import {
+  ArrowDownRight,
+  ArrowUpRight,
+  BarChart3,
+  BookOpenText,
+  Database,
+  ExternalLink,
+  FileText,
+  MapPin,
+  Minus,
+  Play,
+  Search,
+  Sparkles,
+  X,
+} from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { FormEvent, KeyboardEvent, TouchEvent, useEffect, useRef, useState } from "react";
 import { api } from "@/lib/api";
 
-type SourceStatus = {
-  id: string;
-  name: string;
-  status: string;
-  purpose: string;
-  persistence: string;
-};
-
-type SourcesResponse = {
-  collection_interval_seconds: number;
-  sources: SourceStatus[];
-};
-
+type SourceStatus = { id: string; name: string; status: string; purpose: string; persistence: string };
+type SourcesResponse = { collection_interval_seconds: number; sources: SourceStatus[] };
 type RankedHotspot = {
-  id: string;
-  slug: string;
-  rank: number;
-  name: string;
-  city_code: string;
-  city_name: string;
-  country_code: string;
-  country_name: string;
-  category: string;
-  score: number;
+  id: string; slug: string; rank: number; name: string; city_code: string; city_name: string;
+  country_code: string; country_name: string; category: string; score: number;
   components: { interest: number; growth: number; quality: number; confidence: number };
-  pageviews_30d: number | null;
-  growth_rate: number | null;
-  trend_label: string;
-  sources: string[];
-  source_urls: string[];
-  signal_date: string | null;
-  is_estimate: boolean;
-  is_deep_travel: boolean;
-  depth_kind: "urban_local" | "day_trip" | null;
-  depth_score: number | null;
-  depth_reason: string | null;
-  local_name: string | null;
-  access_minutes: number | null;
-  recommended_duration_minutes: number | null;
+  pageviews_30d: number | null; growth_rate: number | null; trend_label: string;
+  sources: string[]; source_urls: string[]; signal_date: string | null; is_estimate: boolean;
+  is_deep_travel: boolean; depth_kind: "urban_local" | "day_trip" | null;
+  depth_score: number | null; depth_reason: string | null; local_name: string | null;
+  access_minutes: number | null; recommended_duration_minutes: number | null;
+  guide_counts: { article: number; video: number };
 };
-
-type RankingResponse = {
-  scope: string;
-  scope_key: string;
-  observed_on: string | null;
-  window_days: number;
-  total: number;
-  has_more: boolean;
-  next_cursor: number | null;
-  items: RankedHotspot[];
-};
-
+type RankingResponse = { scope: string; scope_key: string; observed_on: string | null; window_days: number; total: number; has_more: boolean; next_cursor: number | null; items: RankedHotspot[] };
 type FacetsResponse = {
   total: number;
   countries: { code: string; name: string; count: number }[];
@@ -63,18 +40,19 @@ type FacetsResponse = {
   categories: { code: string; count: number }[];
   styles: { code: "all" | "deep"; name: string; count: number }[];
 };
-
-const categories = [
-  ["", "所有類型"], ["culture", "文化古蹟"], ["food", "美食街區"],
-  ["nature", "自然景觀"], ["beach", "海灘"], ["family", "親子"],
-  ["viewpoint", "觀景地標"], ["shopping", "購物"], ["nightlife", "夜生活"],
-] as const;
-
-const categoryLabels = Object.fromEntries(categories) as Record<string, string>;
-const sourceLabels: Record<string, string> = {
-  curated_catalog: "精選主檔",
-  wikimedia_pageviews: "Wikimedia 趨勢",
+type Guide = {
+  id: string; type: "article" | "video"; provider: string; locale: string; title: string;
+  creator_name: string; thumbnail_url: string | null; summary: string | null;
+  published_at: string | null; duration_seconds: number | null; view_count: number | null;
+  opens_30d: number; updated_at: string;
 };
+type GuidesResponse = {
+  hotspot_id: string; hotspot_name: string; locale: string; videos: Guide[]; articles: Guide[];
+  other_languages_available: boolean; updated_at: string | null;
+};
+
+const categoryCodes = ["", "culture", "food", "nature", "beach", "family", "viewpoint", "shopping", "nightlife"] as const;
+const localeLabels: Record<string, string> = { en: "EN", ja: "日本語", ko: "한국어", "zh-TW": "繁中", "zh-CN": "简中" };
 
 function trendIcon(item: RankedHotspot) {
   if (item.growth_rate === null) return <Minus size={15} />;
@@ -83,12 +61,125 @@ function trendIcon(item: RankedHotspot) {
   return <Minus size={15} />;
 }
 
-function percent(value: number | null) {
-  if (value === null) return "尚無比較資料";
-  return `${value >= 0 ? "+" : ""}${Math.round(value * 100)}%`;
+function GuidesPanel({ hotspot, onClose }: { hotspot: RankedHotspot; onClose: () => void }) {
+  const t = useTranslations("hotspots");
+  const locale = useLocale();
+  const [data, setData] = useState<GuidesResponse | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [otherLanguages, setOtherLanguages] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const touchStart = useRef<number | null>(null);
+  const number = new Intl.NumberFormat(locale);
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+    return () => { document.body.style.overflow = previousOverflow; };
+  }, []);
+
+  useEffect(() => {
+    const closeOnEscape = (event: globalThis.KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [onClose]);
+
+  useEffect(() => {
+    api<GuidesResponse>(`/hotspots/${hotspot.id}/guides?limit_per_type=5&include_other_languages=${otherLanguages}`)
+      .then(setData)
+      .catch(() => setError(true))
+      .finally(() => setLoading(false));
+  }, [hotspot.id, otherLanguages]);
+
+  function trapFocus(event: KeyboardEvent<HTMLDivElement>) {
+    if (event.key !== "Tab") return;
+    const nodes = dialogRef.current?.querySelectorAll<HTMLElement>("button:not([disabled]), a[href]");
+    if (!nodes?.length) return;
+    const first = nodes[0];
+    const last = nodes[nodes.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  }
+
+  function touchStartHandler(event: TouchEvent) { touchStart.current = event.touches[0]?.clientY ?? null; }
+  function touchEndHandler(event: TouchEvent) {
+    const end = event.changedTouches[0]?.clientY;
+    if (touchStart.current !== null && end !== undefined && end - touchStart.current > 90) onClose();
+    touchStart.current = null;
+  }
+
+  function guideCard(guide: Guide) {
+    const metric = guide.type === "video"
+      ? t("youtubeViews", { count: number.format(guide.view_count || 0) })
+      : t("articleOpens", { count: number.format(guide.opens_30d) });
+    return <a
+      key={guide.id}
+      href={`/${locale}/out/guides/${guide.id}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${guide.title} — ${t("openNew")}`}
+      className="group grid grid-cols-[5rem_1fr_auto] gap-3 rounded-2xl border border-[var(--line)] bg-white p-3 transition hover:-translate-y-0.5 hover:border-[var(--teal)] hover:shadow-md"
+    >
+      <div className="relative grid h-20 place-items-center overflow-hidden rounded-xl bg-[var(--paper)]">
+        {guide.thumbnail_url
+          ? <div role="img" aria-label="" className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${JSON.stringify(guide.thumbnail_url)})` }} />
+          : guide.type === "video" ? <Play className="text-[var(--teal)]" /> : <FileText className="text-[var(--teal)]" />}
+        {guide.type === "video" && guide.thumbnail_url && <span className="relative grid h-8 w-8 place-items-center rounded-full bg-black/70 text-white"><Play size={14} fill="currentColor" /></span>}
+      </div>
+      <div className="min-w-0 self-center">
+        <div className="mb-1 flex flex-wrap items-center gap-1.5 text-[11px] font-semibold">
+          <span className="rounded-full bg-[var(--teal-soft)] px-2 py-0.5 text-[var(--teal-dark)]">{localeLabels[guide.locale] || guide.locale}</span>
+          <span className="text-[var(--muted)]">{guide.provider === "youtube" ? "YouTube" : guide.creator_name}</span>
+        </div>
+        <h4 className="line-clamp-2 text-sm font-bold leading-5">{guide.title}</h4>
+        <p className="mt-1 text-xs text-[var(--muted)]">{guide.creator_name} · {metric}</p>
+      </div>
+      <ExternalLink size={16} className="mt-1 text-[var(--muted)] transition group-hover:text-[var(--teal)]" />
+    </a>;
+  }
+
+  const empty = !loading && !error && data && data.videos.length === 0 && data.articles.length === 0;
+  return <div className="fixed inset-0 z-[80] bg-slate-950/45 backdrop-blur-sm" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
+    <div
+      ref={dialogRef}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="guide-panel-title"
+      onKeyDown={trapFocus}
+      onTouchStart={touchStartHandler}
+      onTouchEnd={touchEndHandler}
+      className="absolute inset-x-0 bottom-0 flex max-h-[94dvh] flex-col rounded-t-[2rem] bg-[var(--paper)] shadow-2xl md:inset-y-0 md:left-auto md:h-full md:max-h-none md:w-[34rem] md:rounded-none md:rounded-l-[2rem]"
+    >
+      <div className="mx-auto mt-2 h-1.5 w-11 rounded-full bg-slate-300 md:hidden" />
+      <header className="flex items-start gap-3 border-b border-[var(--line)] px-5 pb-4 pt-4 md:px-7 md:pt-7">
+        <div className="min-w-0 flex-1">
+          <p className="text-xs font-bold uppercase tracking-[.16em] text-[var(--teal)]">{t("guides")}</p>
+          <h2 id="guide-panel-title" className="mt-1 text-2xl font-bold tracking-tight">{t("guideTitle", { name: hotspot.name })}</h2>
+          <p className="mt-1 text-sm text-[var(--muted)]">{t("guideIntro")}</p>
+        </div>
+        <button ref={closeRef} type="button" onClick={onClose} aria-label={t("close")} className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[var(--line)] bg-white"><X /></button>
+      </header>
+      <div className="overflow-y-auto overscroll-contain px-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-5 md:px-7">
+        {loading && <div className="rounded-2xl bg-white p-6 text-sm text-[var(--muted)]">{t("guideLoading")}</div>}
+        {error && <div role="alert" className="rounded-2xl bg-[var(--coral-soft)] p-6 text-sm">{t("guideError")}</div>}
+        {empty && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white p-7 text-center"><BookOpenText className="mx-auto text-[var(--teal)]" /><p className="mt-3 font-semibold">{t("strictEmpty")}</p></div>}
+        {!loading && !error && data && <div className="grid gap-7">
+          <section><h3 className="mb-3 flex items-center gap-2 text-lg font-bold"><Play size={18} className="text-red-600" />{t("videos")}</h3><div className="grid gap-3">{data.videos.length ? data.videos.map(guideCard) : <p className="rounded-2xl bg-white p-4 text-sm text-[var(--muted)]">{t("noVideos")}</p>}</div></section>
+          <section><h3 className="mb-3 flex items-center gap-2 text-lg font-bold"><FileText size={18} className="text-[var(--teal)]" />{t("articles")}</h3><div className="grid gap-3">{data.articles.length ? data.articles.map(guideCard) : <p className="rounded-2xl bg-white p-4 text-sm text-[var(--muted)]">{t("noArticles")}</p>}</div></section>
+          {data.other_languages_available && !otherLanguages && <button type="button" onClick={() => { setLoading(true); setError(false); setOtherLanguages(true); }} className="min-h-12 rounded-2xl border border-[var(--teal)] bg-white px-5 py-3 font-semibold text-[var(--teal)]">{t("otherLanguages")}<span className="mt-1 block text-xs font-normal text-[var(--muted)]">{t("otherLanguageNotice")}</span></button>}
+        </div>}
+      </div>
+    </div>
+  </div>;
 }
 
 export function HotspotExplorer() {
+  const t = useTranslations("hotspots");
+  const locale = useLocale();
   const [query, setQuery] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
@@ -99,137 +190,72 @@ export function HotspotExplorer() {
   const [facets, setFacets] = useState<FacetsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [selected, setSelected] = useState<RankedHotspot | null>(null);
+  const number = new Intl.NumberFormat(locale);
 
   async function load(append = false) {
-    setLoading(true);
-    setError("");
-    const params = new URLSearchParams({ limit: "30" });
+    setLoading(true); setError("");
+    const params = new URLSearchParams({ limit: "30", style });
     if (query.trim()) params.set("q", query.trim());
     if (country) params.set("country_code", country);
     if (city) params.set("city_code", city);
     if (category) params.set("category", category);
-    params.set("style", style);
     if (append && ranking?.next_cursor) params.set("after_rank", String(ranking.next_cursor));
     try {
       const result = await api<RankingResponse>(`/hotspots/rankings?${params}`);
       setRanking(append && ranking ? { ...result, items: [...ranking.items, ...result.items] } : result);
-    } catch (reason) {
-      setError((reason as Error).message);
-    } finally {
-      setLoading(false);
-    }
+    } catch (reason) { setError((reason as Error).message); }
+    finally { setLoading(false); }
   }
 
   useEffect(() => {
     api<SourcesResponse>("/hotspots/sources").then(setSources).catch(() => undefined);
     api<FacetsResponse>("/hotspots/facets").then(setFacets).catch(() => undefined);
-    api<RankingResponse>("/hotspots/rankings?limit=30")
-      .then(setRanking)
-      .catch((reason: Error) => setError(reason.message))
-      .finally(() => setLoading(false));
+    api<RankingResponse>("/hotspots/rankings?limit=30").then(setRanking).catch((reason: Error) => setError(reason.message)).finally(() => setLoading(false));
   }, []);
 
-  function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    void load(false);
+  useEffect(() => {
+    const closeOnBack = () => setSelected(null);
+    window.addEventListener("popstate", closeOnBack);
+    return () => window.removeEventListener("popstate", closeOnBack);
+  }, []);
+
+  function openGuides(item: RankedHotspot) { window.history.pushState({ hotspotGuides: item.id }, ""); setSelected(item); }
+  function closeGuides() {
+    setSelected(null);
+    if (window.history.state?.hotspotGuides) window.history.back();
   }
+  function percent(value: number | null) { return value === null ? t("noComparison") : `${value >= 0 ? "+" : ""}${Math.round(value * 100)}%`; }
 
-  return (
-    <main className="mx-auto min-h-screen max-w-6xl px-5 pb-20 md:px-8">
-      <section className="pb-7 pt-5 md:pb-9 md:pt-9">
-        <p className="flex items-center gap-2 text-sm font-semibold text-[var(--teal)]"><Sparkles size={16} />旅遊熱點情報庫</p>
-        <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold tracking-[-.035em] md:text-5xl">現在，大家在看哪裡？</h1>
-            <p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">搜尋日本、韓國、泰國、台灣、新加坡、香港與越南景點，查看最近 30 天關注度、升溫幅度與資料可信度。排行是行程候選訊號，不等同即時人潮。</p>
-          </div>
-          <div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--muted)]">
-            <span className="font-semibold text-[var(--ink)]">更新日期</span> {ranking?.observed_on || "等待首次蒐集"}
-          </div>
-        </div>
+  return <main className="mx-auto min-h-screen max-w-6xl px-5 pb-20 md:px-8">
+    <section className="pb-7 pt-5 md:pb-9 md:pt-9">
+      <p className="flex items-center gap-2 text-sm font-semibold text-[var(--teal)]"><Sparkles size={16} />{t("eyebrow")}</p>
+      <div className="mt-3 flex flex-wrap items-end justify-between gap-4"><div><h1 className="text-3xl font-bold tracking-[-.035em] md:text-5xl">{t("title")}</h1><p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{t("description")}</p></div><div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--muted)]"><span className="font-semibold text-[var(--ink)]">{t("updated")}</span> {ranking?.observed_on || t("waiting")}</div></div>
+    </section>
+    <form onSubmit={(event: FormEvent<HTMLFormElement>) => { event.preventDefault(); void load(); }} aria-label={t("searchLabel")} className="grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-[1fr_9rem_10rem_10rem_9rem_auto] md:p-5">
+      <label className="relative"><span className="sr-only">{t("searchPlaceholder")}</span><Search className="pointer-events-none absolute left-4 top-3.5 text-[var(--muted)]" size={19} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t("searchPlaceholder")} className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] pl-11 pr-4 outline-none focus:border-[var(--teal)]" /></label>
+      <select aria-label={t("allCountries")} value={country} onChange={(event) => { setCountry(event.target.value); setCity(""); }} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allCountries")}</option>{facets?.countries.map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}</select>
+      <select aria-label={t("allStyles")} value={style} onChange={(event) => setStyle(event.target.value as "all" | "deep")} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="all">{t("allStyles")}</option><option value="deep">{t("deepStyle")}</option></select>
+      <select aria-label={t("allCities")} value={city} onChange={(event) => setCity(event.target.value)} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allCities")}</option>{facets?.cities.filter((item) => !country || item.country_code === country).map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}</select>
+      <select aria-label={t("allCategories")} value={category} onChange={(event) => setCategory(event.target.value)} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3">{categoryCodes.map((code) => <option key={code} value={code}>{code ? t(`categories.${code}`) : t("allCategories")}</option>)}</select>
+      <button type="submit" className="h-12 rounded-xl bg-[var(--teal)] px-6 font-semibold text-white">{t("submit")}</button>
+    </form>
+    <div className="mt-7 grid gap-7 lg:grid-cols-[1fr_18rem]">
+      <section aria-live="polite" aria-busy={loading}><div className="mb-4 flex items-center justify-between gap-4"><h2 className="flex items-center gap-2 text-xl font-bold"><BarChart3 size={20} className="text-[var(--coral)]" />{t("ranking")}</h2><p className="text-sm text-[var(--muted)]">{t("loaded", { shown: ranking?.items.length ?? 0, total: ranking?.total ?? 0 })}</p></div>
+        {loading && <div className="rounded-3xl border border-[var(--line)] bg-white p-8 text-[var(--muted)]">{t("loading")}</div>}
+        {!loading && error && <div role="alert" className="rounded-3xl bg-[var(--coral-soft)] p-6">{error}</div>}
+        {!loading && !error && ranking?.items.length === 0 && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white/70 p-8 text-center"><h3 className="font-bold">{t("emptyTitle")}</h3><p className="mt-2 text-sm text-[var(--muted)]">{t("emptyBody")}</p></div>}
+        {!loading && !error && ranking && <ol className="grid gap-4 md:grid-cols-2">{ranking.items.map((item) => <li key={item.id} className="relative overflow-hidden rounded-3xl border border-[var(--line)] bg-white p-5">
+          <div className="flex items-start justify-between gap-4"><div className="flex gap-3"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{item.rank}</span><div><h3 className="text-lg font-bold">{item.name}</h3>{item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}<p className="mt-1 flex items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{item.city_name} · {t(`categories.${item.category}`)}</p></div></div><div className="text-right"><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><p className="text-xs text-[var(--muted)]">{t("score")}</p></div></div>
+          <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl bg-[var(--paper)] p-4 text-sm"><div><p className="text-[var(--muted)]">{t("views30")}</p><p className="mt-1 font-semibold">{item.pageviews_30d === null ? t("pending") : number.format(item.pageviews_30d)}</p></div><div><p className="text-[var(--muted)]">{t("previous")}</p><p className="mt-1 flex items-center gap-1 font-semibold">{trendIcon(item)}{percent(item.growth_rate)}</p></div></div>
+          <button type="button" onClick={() => openGuides(item)} className="mt-4 flex min-h-12 w-full items-center gap-3 rounded-2xl bg-[var(--teal)] px-4 py-3 text-left text-white shadow-sm transition hover:bg-[var(--teal-dark)]"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/15"><BookOpenText size={17} /></span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("guides")}</strong><span className="block text-xs text-white/75">{t("guideCount", { articles: item.guide_counts?.article || 0, videos: item.guide_counts?.video || 0 })}</span></span><ExternalLink size={16} /></button>
+          <div className="mt-4 flex flex-wrap items-center gap-2">{item.is_deep_travel && <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-900">{t("deep")}</span>}{item.depth_kind && <span className="rounded-full border border-amber-300 px-2.5 py-1 text-xs text-amber-900">{item.depth_kind === "day_trip" ? t("dayTrip") : t("urbanLocal")}</span>}{item.source_urls[0] && <a href={item.source_urls[0]} target="_blank" rel="noopener noreferrer" className="ml-auto text-xs font-semibold text-[var(--teal)]">{t("source")}</a>}</div>
+          {item.is_deep_travel && item.access_minutes && item.recommended_duration_minutes && <p className="mt-3 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-950">{t("depthDetail", { access: item.access_minutes, duration: item.recommended_duration_minutes })}</p>}
+        </li>)}</ol>}
+        {!loading && !error && ranking?.has_more && <div className="mt-6 text-center"><button type="button" onClick={() => void load(true)} className="rounded-xl border border-[var(--teal)] bg-white px-6 py-3 font-semibold text-[var(--teal)]">{t("loadMore")}</button></div>}
       </section>
-
-      <form onSubmit={submit} aria-label="熱門景點搜尋" className="grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-[1fr_9rem_10rem_10rem_9rem_auto] md:p-5">
-        <label className="relative">
-          <span className="sr-only">景點關鍵字</span>
-          <Search className="pointer-events-none absolute left-4 top-3.5 text-[var(--muted)]" size={19} />
-          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜尋景點、別名或城市" className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] pl-11 pr-4 outline-none focus:border-[var(--teal)]" />
-        </label>
-        <label>
-          <span className="sr-only">國家或地區</span>
-          <select value={country} onChange={(event) => { setCountry(event.target.value); setCity(""); }} className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3 outline-none focus:border-[var(--teal)]">
-            <option value="">全部國家</option>
-            {facets?.countries?.map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}
-          </select>
-        </label>
-        <label>
-          <span className="sr-only">旅遊風格</span>
-          <select value={style} onChange={(event) => setStyle(event.target.value as "all" | "deep")} className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3 outline-none focus:border-[var(--teal)]">
-            {(facets?.styles || [{ code: "all", name: "全部旅遊", count: facets?.total || 0 }, { code: "deep", name: "深度旅遊", count: 0 }]).map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}
-          </select>
-        </label>
-        <label>
-          <span className="sr-only">城市</span>
-          <select value={city} onChange={(event) => setCity(event.target.value)} className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3 outline-none focus:border-[var(--teal)]">
-            <option value="">全部城市</option>
-            {facets?.cities?.filter((item) => !country || item.country_code === country).map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}
-          </select>
-        </label>
-        <label>
-          <span className="sr-only">景點類型</span>
-          <select value={category} onChange={(event) => setCategory(event.target.value)} className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3 outline-none focus:border-[var(--teal)]">
-            {categories.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-          </select>
-        </label>
-        <button type="submit" className="h-12 rounded-xl bg-[var(--teal)] px-6 font-semibold text-white hover:bg-[var(--teal-dark)]">查看排行</button>
-      </form>
-
-      <div className="mt-7 grid gap-7 lg:grid-cols-[1fr_18rem]">
-        <section aria-live="polite" aria-busy={loading}>
-          <div className="mb-4 flex items-center justify-between gap-4">
-            <h2 className="flex items-center gap-2 text-xl font-bold"><BarChart3 size={20} className="text-[var(--coral)]" />熱門排行榜</h2>
-            <p className="text-sm text-[var(--muted)]">已載入 {ranking?.items.length ?? 0}／{ranking?.total ?? 0} 個結果</p>
-          </div>
-          {loading && <div className="rounded-3xl border border-[var(--line)] bg-white p-8 text-[var(--muted)]">正在整理最新排行…</div>}
-          {!loading && error && <div role="alert" className="rounded-3xl border border-[var(--coral)] bg-[var(--coral-soft)] p-6">{error}</div>}
-          {!loading && !error && ranking?.items.length === 0 && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white/70 p-8 text-center"><h3 className="font-bold">目前沒有符合的景點</h3><p className="mt-2 text-sm text-[var(--muted)]">可清除關鍵字或切換城市；若顯示等待首次蒐集，請先執行熱點蒐集工作。</p></div>}
-          {!loading && !error && ranking && ranking.items.length > 0 && <ol className="grid gap-4 md:grid-cols-2">{ranking.items.map((item) => (
-            <li key={item.id} className="relative overflow-hidden rounded-3xl border border-[var(--line)] bg-white p-5">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex gap-3">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{item.rank}</span>
-                  <div><h3 className="text-lg font-bold">{item.name}</h3>{item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}<p className="mt-1 flex items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{item.city_name}・{categoryLabels[item.category] || item.category}</p></div>
-                </div>
-                <div className="text-right"><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><p className="text-xs text-[var(--muted)]">熱門分數</p></div>
-              </div>
-              <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl bg-[var(--paper)] p-4 text-sm">
-                <div><p className="text-[var(--muted)]">30 天瀏覽</p><p className="mt-1 font-semibold">{item.pageviews_30d?.toLocaleString("zh-TW") ?? "尚待蒐集"}</p></div>
-                <div><p className="text-[var(--muted)]">相較前期</p><p className="mt-1 flex items-center gap-1 font-semibold">{trendIcon(item)}{percent(item.growth_rate)}</p></div>
-              </div>
-              <div className="mt-4 flex flex-wrap items-center gap-2">
-                {item.is_deep_travel && <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-900">深度旅遊</span>}
-                {item.depth_kind && <span className="rounded-full border border-amber-300 px-2.5 py-1 text-xs text-amber-900">{item.depth_kind === "day_trip" ? "近郊" : "市區巷弄"}</span>}
-                <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${item.is_estimate ? "bg-[var(--coral-soft)] text-[var(--coral)]" : "bg-[var(--teal-soft)] text-[var(--teal-dark)]"}`}>{item.is_estimate ? "冷啟動估算" : item.trend_label}</span>
-                {item.sources.map((source) => <span key={source} className="rounded-full border border-[var(--line)] px-2.5 py-1 text-xs text-[var(--muted)]">{sourceLabels[source] || source}</span>)}
-                {item.source_urls[0] && <a href={item.source_urls[0]} target="_blank" rel="noreferrer" className="ml-auto text-xs font-semibold text-[var(--teal)]">查看來源</a>}
-              </div>
-              {item.is_deep_travel && <div className="mt-3 rounded-2xl border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-950"><p>{item.depth_reason}</p><p className="mt-1 font-semibold">交通約 {item.access_minutes} 分鐘・建議停留 {item.recommended_duration_minutes} 分鐘・深度分數 {Math.round(item.depth_score || 0)}</p></div>}
-            </li>
-          ))}</ol>}
-          {!loading && !error && ranking?.has_more && <div className="mt-6 text-center"><button type="button" onClick={() => void load(true)} className="rounded-xl border border-[var(--teal)] bg-white px-6 py-3 font-semibold text-[var(--teal)] hover:bg-[var(--teal-soft)]">載入更多</button></div>}
-        </section>
-
-        <aside className="h-fit rounded-3xl border border-[var(--line)] bg-white/80 p-5 lg:sticky lg:top-5">
-          <h2 className="flex items-center gap-2 font-bold"><Database size={18} className="text-[var(--teal)]" />資料來源狀態</h2>
-          <div className="mt-4 grid gap-4">{sources?.sources.map((source) => (
-            <article key={source.id} className="border-b border-[var(--line)] pb-4 last:border-0 last:pb-0">
-              <div className="flex items-center justify-between gap-2"><h3 className="text-sm font-semibold">{source.name}</h3><span className="rounded-full bg-[var(--paper)] px-2 py-1 text-[11px] text-[var(--muted)]">{source.status}</span></div>
-              <p className="mt-2 text-xs leading-5 text-[var(--muted)]">{source.purpose}</p>
-            </article>
-          )) || <p className="text-sm text-[var(--muted)]">正在讀取來源狀態…</p>}</div>
-          <p className="mt-5 border-t border-[var(--line)] pt-4 text-xs leading-5 text-[var(--muted)]">AI 規劃行程時會把這份排行當候選清單，再依日期、動線、興趣與營業時間篩選。</p>
-        </aside>
-      </div>
-    </main>
-  );
+      <aside className="h-fit rounded-3xl border border-[var(--line)] bg-white/80 p-5 lg:sticky lg:top-5"><h2 className="flex items-center gap-2 font-bold"><Database size={18} className="text-[var(--teal)]" />{t("sources")}</h2><div className="mt-4 grid gap-4">{sources?.sources.map((source) => <article key={source.id} className="border-b border-[var(--line)] pb-4 last:border-0"><div className="flex items-center justify-between gap-2"><h3 className="text-sm font-semibold">{t(`sourceNames.${source.id}`)}</h3><span className="rounded-full bg-[var(--paper)] px-2 py-1 text-[11px] text-[var(--muted)]">{source.status}</span></div></article>)}</div><p className="mt-5 border-t border-[var(--line)] pt-4 text-xs leading-5 text-[var(--muted)]">{t("plannerNote")}</p></aside>
+    </div>
+    {selected && <GuidesPanel hotspot={selected} onClose={closeGuides} />}
+  </main>;
 }

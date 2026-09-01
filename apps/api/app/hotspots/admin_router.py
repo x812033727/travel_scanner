@@ -10,10 +10,22 @@ from pydantic import BaseModel, Field, model_validator
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.admin.service import load_runtime_settings
 from app.auth.service import AdminUser
 from app.db import get_session
+from app.hotspots.guides import (
+    GuideCandidate,
+    YouTubeGuideProvider,
+    canonical_external_url,
+    discover_guides,
+    guide_coverage,
+    guide_quota_status,
+    save_candidates,
+)
 from app.hotspots.ranking import calculate_depth_value
-from app.models import AdminAuditLog, HotspotSignal, TravelHotspot
+from app.i18n import LOCALES, Locale
+from app.infra import get_redis
+from app.models import AdminAuditLog, HotspotGuide, HotspotSignal, TravelHotspot
 from app.problems import AppError
 
 router = APIRouter(prefix="/admin/hotspots", tags=["admin hotspots"])
@@ -60,6 +72,28 @@ class HotspotReviewRequest(BaseModel):
             if score < 70:
                 raise ValueError("深度價值分數必須至少 70")
         return self
+
+
+class GuideReviewRequest(BaseModel):
+    ids: list[UUID] = Field(min_length=1, max_length=100)
+    action: Literal["approve", "reject", "disable"]
+    reason: str | None = Field(default=None, max_length=500)
+    locale: Locale | None = None
+
+
+class GuideDiscoverRequest(BaseModel):
+    hotspot_ids: list[UUID] = Field(min_length=1, max_length=10)
+    locales: list[Locale] = Field(default_factory=lambda: list(LOCALES), min_length=1, max_length=5)
+
+
+class ManualGuideRequest(BaseModel):
+    hotspot_id: UUID
+    locale: Locale
+    content_type: Literal["article", "video"]
+    url: str = Field(min_length=12, max_length=2048)
+    title: str | None = Field(default=None, max_length=500)
+    creator_name: str | None = Field(default=None, max_length=255)
+    summary: str | None = Field(default=None, max_length=500)
 
 
 @router.get("/candidates")
@@ -222,3 +256,180 @@ async def review_hotspot_candidates(
     )
     await session.commit()
     return {"updated": len(rows), "status": status}
+
+
+@router.get("/guides")
+async def list_guide_candidates(
+    user: AdminUser,
+    session: Session,
+    hotspot_id: UUID | None = None,
+    locale: Locale | None = None,
+    type: Literal["article", "video"] | None = None,
+    status: Annotated[str | None, Query(max_length=24)] = None,
+    page: Annotated[int, Query(ge=1)] = 1,
+    limit: Annotated[int, Query(ge=1, le=100)] = 50,
+) -> dict[str, object]:
+    _ = user
+    filters = []
+    if hotspot_id:
+        filters.append(HotspotGuide.hotspot_id == hotspot_id)
+    if locale:
+        filters.append(HotspotGuide.locale == locale)
+    if type:
+        filters.append(HotspotGuide.content_type == type)
+    if status:
+        filters.append(HotspotGuide.review_status == status)
+    total = int(await session.scalar(select(func.count(HotspotGuide.id)).where(*filters)) or 0)
+    rows = (
+        await session.execute(
+            select(HotspotGuide, TravelHotspot.name)
+            .join(TravelHotspot, TravelHotspot.id == HotspotGuide.hotspot_id)
+            .where(*filters)
+            .order_by(HotspotGuide.updated_at.desc())
+            .offset((page - 1) * limit)
+            .limit(limit)
+        )
+    ).all()
+    return {
+        "items": [
+            {
+                "id": str(guide.id),
+                "hotspot_id": str(guide.hotspot_id),
+                "hotspot_name": name,
+                "type": guide.content_type,
+                "provider": guide.provider,
+                "locale": guide.locale,
+                "title": guide.title,
+                "creator_name": guide.creator_name,
+                "url": guide.canonical_url,
+                "thumbnail_url": guide.thumbnail_url,
+                "view_count": guide.view_count,
+                "language_confidence": float(guide.language_confidence),
+                "status": guide.review_status,
+                "reason": guide.review_reason,
+                "last_verified_at": guide.last_verified_at,
+                "metadata_expires_at": guide.metadata_expires_at,
+            }
+            for guide, name in rows
+        ],
+        "total": total,
+        "page": page,
+        "pages": (total + limit - 1) // limit,
+    }
+
+
+@router.post("/guides/review")
+async def review_guides(
+    payload: GuideReviewRequest,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, int | str]:
+    rows = list(
+        (await session.scalars(select(HotspotGuide).where(HotspotGuide.id.in_(payload.ids)))).all()
+    )
+    if len(rows) != len(set(payload.ids)):
+        raise AppError(404, "hotspot_guide_not_found", "部分介紹候選不存在")
+    status = {"approve": "approved", "reject": "rejected", "disable": "disabled"}[payload.action]
+    now = datetime.now(UTC)
+    for guide in rows:
+        guide.review_status = status
+        guide.review_reason = payload.reason
+        guide.reviewed_at = now
+        guide.reviewed_by_user_id = user.id
+        if payload.locale:
+            guide.locale = payload.locale
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="hotspot_guides_reviewed",
+            target=f"hotspot-guides:{len(rows)}",
+            metadata_json={
+                "action": payload.action,
+                "ids": [str(row.id) for row in rows],
+                "locale": payload.locale,
+            },
+        )
+    )
+    await session.commit()
+    return {"updated": len(rows), "status": status}
+
+
+@router.post("/guides/discover")
+async def discover_guide_candidates(
+    payload: GuideDiscoverRequest,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, object]:
+    _ = user
+    settings = await load_runtime_settings(session)
+    hotspots = list(
+        (
+            await session.scalars(
+                select(TravelHotspot).where(TravelHotspot.id.in_(payload.hotspot_ids))
+            )
+        ).all()
+    )
+    if len(hotspots) != len(set(payload.hotspot_ids)):
+        raise AppError(404, "hotspot_not_found", "部分景點不存在")
+    reports = []
+    for hotspot in hotspots:
+        reports.append(
+            {
+                "hotspot_id": str(hotspot.id),
+                **await discover_guides(
+                    session,
+                    settings,
+                    hotspot,
+                    payload.locales,
+                    redis=get_redis(),
+                ),
+            }
+        )
+    return {"reports": reports}
+
+
+@router.post("/guides/manual")
+async def add_manual_guide(
+    payload: ManualGuideRequest,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, object]:
+    hotspot = await session.get(TravelHotspot, payload.hotspot_id)
+    if hotspot is None:
+        raise AppError(404, "hotspot_not_found", "找不到這個景點")
+    settings = await load_runtime_settings(session)
+    if payload.content_type == "video":
+        if not settings.hotspot_guide_youtube_api_key:
+            raise AppError(
+                503, "hotspot_guide_youtube_not_configured", "尚未設定 YouTube Data API key"
+            )
+        provider = YouTubeGuideProvider(settings.hotspot_guide_youtube_api_key)
+        try:
+            candidate = await provider.import_video(payload.url, payload.locale)
+        finally:
+            await provider.close()
+    else:
+        url = canonical_external_url(payload.url)
+        if not payload.title or not payload.creator_name:
+            raise AppError(422, "hotspot_guide_metadata_required", "手動文章需要標題與網站名稱")
+        candidate = GuideCandidate(
+            content_type="article",
+            provider="manual",
+            locale=payload.locale,
+            title=payload.title,
+            creator_name=payload.creator_name,
+            canonical_url=url,
+            summary=payload.summary,
+            language_confidence=Decimal("1.000"),
+        )
+    created = await save_candidates(session, hotspot.id, [candidate])
+    await session.commit()
+    return {"created": created}
+
+
+@router.get("/guides/coverage")
+async def hotspot_guide_coverage(user: AdminUser, session: Session) -> dict[str, object]:
+    _ = user
+    result = await guide_coverage(session)
+    result["quotas"] = await guide_quota_status(get_redis(), await load_runtime_settings(session))
+    return result
