@@ -154,7 +154,7 @@ use the `layout_settings_updated` audit action with the operator, fields that
 actually changed, and resulting visibility values.
 
 The API and keys page separately manages encrypted credentials for Google Maps,
-Amadeus, Skyscanner, Duffel, FlightAware, Google Travel Impact, NAVITIME and
+NAVER Maps, Amadeus, Skyscanner, Duffel, FlightAware, Google Travel Impact, NAVITIME and
 affiliate providers. Desktop uses keyboard-accessible, horizontally scrollable
 provider tabs, mobile uses a provider selector, and only the active provider is
 rendered. Unsaved input remains intact while switching providers, and recent
@@ -406,6 +406,28 @@ Set `NAVITIME_API_BASE_URL`,
 commercial rights. When configured, sourced exit, platform, and recommended-car
 fields are displayed. Missing details are explicitly marked unavailable and are
 never inferred.
+
+Korean itineraries use NAVER Maps first where its official APIs provide
+structured data. Set `NAVER_MAPS_CLIENT_ID` and `NAVER_MAPS_CLIENT_SECRET` after
+enabling Web Dynamic Map, Directions 5, Geocoding, and NAVER API HUB Local
+Search for the same NCP application. Restrict the browser Client ID to the
+production HTTP referrer. Korean place lookup tries NAVER Local Search and
+Geocoding before Google, the planner renders NAVER Dynamic Map before Google
+Embed, and driving uses NAVER Directions before Google. NAVER place IDs are
+never passed to Google; only WGS84 coordinates cross the provider boundary.
+
+NAVER Directions does not return structured transit or walking routes. Google
+remains the in-app provider for those modes; if it has no result, the API
+returns `kind=external_only` with server-generated official NAVER app/web links.
+That result cannot be applied to itinerary times, and the user may enter a
+clearly labelled manual duration instead. The administrator usage card counts
+server-side `local_search`, `geocode`, and `directions` requests only. It excludes
+browser Dynamic Map loads and is not NAVER billing data; NAVER Cloud Console is
+the source of truth. After adding the two repository secrets, run the manual
+`NAVER Maps credential smoke` workflow (or
+`uv run python -m app.cli verify-naver-maps --strict`) to verify Seoul Local
+Search, Geocoding fallback, and a real Directions 5 response without making
+external availability part of normal CI.
 
 ## Travel hotspot intelligence
 

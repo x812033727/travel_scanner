@@ -16,6 +16,8 @@ type Place = Suggestion & {
   latitude?: number | null;
   longitude?: number | null;
   google_maps_url?: string | null;
+  naver_maps_url?: string | null;
+  external_url?: string | null;
   opening_hours?: string[];
   attribution?: string;
 };
@@ -73,7 +75,7 @@ export function PlacePicker({
           setSuggestions(rows);
           setOpen(true);
           setActiveIndex(rows.length ? 0 : -1);
-          if (!rows.length) setError("Google Maps 沒有符合的地點，請換一組關鍵字。");
+          if (!rows.length) setError("地圖服務沒有符合的地點，請換一組關鍵字。");
         })
         .catch((reason: Error) => {
           if (cancelled) return;
@@ -98,7 +100,7 @@ export function PlacePicker({
       setActiveIndex(-1);
       token.current = crypto.randomUUID();
     } catch (reason) {
-      setError(reason instanceof Error ? reason.message : "Google Maps 地點詳細資料目前無法取得。");
+      setError(reason instanceof Error ? reason.message : "地點詳細資料目前無法取得。");
     } finally {
       setLoading(false);
     }
@@ -132,8 +134,8 @@ export function PlacePicker({
       {loading && <span className="text-xs text-[var(--muted)]">搜尋中</span>}
     </div>
     {open && visibleSuggestions.length > 0 && <div id={listboxId} role="listbox" aria-label={`${label}建議`} className="absolute z-30 mt-1 max-h-64 w-full overflow-auto rounded-xl border border-[var(--line)] bg-white p-1 shadow-[var(--shadow-lg)]">
-      {visibleSuggestions.map((suggestion, index) => <button id={`${listboxId}-option-${index}`} role="option" aria-selected={index === activeIndex} key={suggestion.place_id} type="button" onMouseDown={(event) => event.preventDefault()} onMouseEnter={() => setActiveIndex(index)} onClick={() => choose(suggestion)} className={`flex w-full items-start gap-2 rounded-lg px-3 py-2.5 text-left ${index === activeIndex ? "bg-[var(--paper)]" : "hover:bg-[var(--paper)]"}`}><MapPin size={15} className="mt-0.5 shrink-0 text-[var(--teal)]" /><span><span className="block text-sm font-semibold">{suggestion.name}</span>{suggestion.address && <span className="mt-0.5 block text-xs text-[var(--muted)]">{suggestion.address}{suggestion.distance_meters != null ? ` · 約 ${Math.max(1, Math.round(suggestion.distance_meters / 1000))} 公里` : ""}</span>}</span></button>)}
-      <p className="px-3 py-2 text-right text-[.65rem] font-semibold text-[var(--muted)]">地點資料：Google Maps</p>
+      {visibleSuggestions.map((suggestion, index) => <button id={`${listboxId}-option-${index}`} role="option" aria-selected={index === activeIndex} key={`${suggestion.provider}-${suggestion.place_id}`} type="button" onMouseDown={(event) => event.preventDefault()} onMouseEnter={() => setActiveIndex(index)} onClick={() => choose(suggestion)} className={`flex w-full items-start gap-2 rounded-lg px-3 py-2.5 text-left ${index === activeIndex ? "bg-[var(--paper)]" : "hover:bg-[var(--paper)]"}`}><MapPin size={15} className="mt-0.5 shrink-0 text-[var(--teal)]" /><span className="min-w-0 flex-1"><span className="flex items-center gap-2"><span className="block truncate text-sm font-semibold">{suggestion.name}</span><span className="shrink-0 rounded-full bg-[var(--paper)] px-2 py-0.5 text-[.6rem] font-bold text-[var(--muted)]">{suggestion.provider === "naver_local" ? "NAVER" : "Google"}</span></span>{suggestion.address && <span className="mt-0.5 block text-xs text-[var(--muted)]">{suggestion.address}{suggestion.distance_meters != null ? ` · 約 ${Math.max(1, Math.round(suggestion.distance_meters / 1000))} 公里` : ""}</span>}</span></button>)}
+      <p className="px-3 py-2 text-right text-[.65rem] font-semibold text-[var(--muted)]">地點資料：{[...new Set(visibleSuggestions.map((row) => row.provider === "naver_local" ? "NAVER" : "Google Maps"))].join("、")}</p>
     </div>}
     {error && canSearch && <p role="alert" className="mt-1 text-xs text-red-700">{error}</p>}
   </div>;

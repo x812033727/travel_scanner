@@ -295,6 +295,60 @@ describe("AdminSettingsPanel", () => {
     expect(within(usage).getByText("地點自動完成")).toBeTruthy();
   });
 
+  it("shows NAVER server usage separately from browser map and billing data", async () => {
+    const naverProvider = {
+      provider: "naver_maps",
+      label: "NAVER Maps",
+      description: "韓國地點與汽車路線",
+      enabled: true,
+      configured: true,
+      status: "ready",
+      status_message: "NAVER Maps 已設定",
+      config: { naver_place_cache_ttl_seconds: 900, naver_maps_monthly_request_limit: 1000 },
+      config_sources: { naver_place_cache_ttl_seconds: "environment", naver_maps_monthly_request_limit: "database" },
+      secrets: {
+        naver_maps_client_id: { configured: true, masked: "••••••••id12", source: "database" },
+        naver_maps_client_secret: { configured: true, masked: "••••••••sec3", source: "database" },
+      },
+      usage: {
+        period: "2026-09",
+        period_start: "2026-09-01",
+        period_end: "2026-09-30",
+        used: 27,
+        monthly_limit: 1000,
+        remaining: 973,
+        percentage: 2.7,
+        free_limit: 1000,
+        free_usage: 27,
+        free_remaining: 973,
+        billable_overage: 0,
+        breakdown: { local_search: 12, geocode: 5, directions: 10 },
+        sku_usage: [],
+        monthly_history: [{ period: "2026-09", period_start: "2026-09-01", period_end: "2026-09-30", used: 27, free_limit: 1000, free_usage: 27, free_remaining: 973, billable_overage: 0, breakdown: {}, sku_usage: [] }],
+        observed_at: "2026-09-01T10:00:00Z",
+        available: true,
+        scope: "server_requests",
+        billing_timezone: "Asia/Seoul",
+        pricing_region: "kr",
+      },
+    };
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      ...snapshot,
+      providers: [...snapshot.providers, naverProvider],
+    }), { status: 200 })));
+    render(<AdminSettingsPanel />);
+    await screen.findByRole("heading", { name: "Google Maps" });
+    fireEvent.click(screen.getByRole("tab", { name: "NAVER Maps" }));
+
+    const usage = await screen.findByLabelText("NAVER Maps 本月用量");
+    expect(within(usage).getAllByText("27").length).toBeGreaterThan(0);
+    expect(within(usage).getAllByText("973").length).toBeGreaterThan(0);
+    expect(within(usage).getByText(/不含瀏覽器 Dynamic Map/)).toBeTruthy();
+    fireEvent.click(within(usage).getByText("查看站內操作明細"));
+    expect(within(usage).getByText("Directions 5")).toBeTruthy();
+    expect(screen.getByLabelText(/^NAVER Cloud Client ID/)).toBeTruthy();
+  });
+
   it("shows only masked secrets and sends a newly entered key", async () => {
     const fetchMock = vi.fn()
       .mockResolvedValueOnce(new Response(JSON.stringify(snapshot), { status: 200 }))

@@ -65,7 +65,12 @@ incoming and outgoing pairs. Flexible and locked-but-not-fixed stops propagate
 forward; fixed-time appointments preserve their scheduled start and record a
 lateness conflict. Stale background jobs discard their result instead of
 overwriting newer edits. Google Routes covers transit, walking, and driving;
-configured NAVITIME is preferred for Japan transit only.
+configured NAVITIME is preferred for Japan transit only. Korean place lookup,
+Dynamic Map rendering, and driving prefer NAVER before Google. Korean transit
+and walking remain Google-backed because NAVER Directions is drive-only; when
+Google has no result, the response is an external-only NAVER navigation link
+that cannot mutate the itinerary schedule. Provider-specific place IDs never
+cross adapter boundaries, so a NAVER place reaches Google only as coordinates.
 
 Provider selection is module-specific. Flights choose Skyscanner, Amadeus or
 mock through `FLIGHT_PROVIDER_MODE`, while lodging, activities and transport

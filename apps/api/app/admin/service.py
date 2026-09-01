@@ -33,6 +33,7 @@ from app.ai.itinerary import AIItineraryPlanner, AIItineraryRequest
 from app.config import Settings, get_settings
 from app.models import AdminAuditLog, ProviderConfig, ProviderRequest, User
 from app.places.google import GoogleTravelService
+from app.places.naver import NaverPlaceService
 from app.problems import AppError
 from app.providers.amadeus import AmadeusProvider
 from app.providers.booking import BOOKING_API_HOSTS, BookingHotelProvider
@@ -40,10 +41,11 @@ from app.providers.duffel import DuffelProvider
 from app.providers.flightaware import FlightAwareProvider
 from app.providers.google_travel_impact import GoogleTravelImpactProvider
 from app.providers.skyscanner import SkyscannerProvider
-from app.providers.usage_meter import google_maps_usage_snapshot
+from app.providers.usage_meter import google_maps_usage_snapshot, naver_maps_usage_snapshot
 from app.search.schemas import SearchCreate, SearchModule, SearchPreferences, Travelers
 from app.trips.routing import (
     GoogleRouteProvider,
+    NaverDirectionsProvider,
     NavitimeRouteProvider,
     RoutePoint,
 )
@@ -135,6 +137,16 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "google_maps_enterprise_free_limit",
         ),
         ("google_maps_api_key", "next_public_google_maps_browser_key"),
+    ),
+    "naver_maps": ProviderDefinition(
+        "NAVER Maps",
+        "韓國地點搜尋、地址解析、Dynamic Map 與汽車路線；大眾運輸維持外部導航。",
+        (
+            "route_cache_ttl_seconds",
+            "naver_place_cache_ttl_seconds",
+            "naver_maps_monthly_request_limit",
+        ),
+        ("naver_maps_client_id", "naver_maps_client_secret"),
     ),
     "youtube_guides": ProviderDefinition(
         "YouTube 景點介紹",
@@ -451,6 +463,15 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             else "缺少伺服器 Google Maps API key"
         )
         return configured, "ready" if configured else "not_configured", message
+    if provider == "naver_maps":
+        configured = settings.naver_maps_configured
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            "NAVER 憑證已設定；請再以正式網站來源驗證 Dynamic Map"
+            if configured
+            else "缺少 NAVER Cloud Client ID 或 Client Secret",
+        )
     if provider == "youtube_guides":
         configured = bool(settings.hotspot_guide_youtube_api_key)
         return (
@@ -578,7 +599,7 @@ def _production_test_required(provider: str, settings: Settings) -> bool:
         return settings.booking_demand_env.lower() == "production"
     if provider == "duffel":
         return settings.duffel_env.lower() == "live"
-    return provider in {"skyscanner", "flightaware", "google_travel_impact"}
+    return provider in {"skyscanner", "flightaware", "google_travel_impact", "naver_maps"}
 
 
 async def settings_snapshot(
@@ -594,6 +615,14 @@ async def settings_snapshot(
             essentials_free_limit=effective.google_maps_essentials_free_limit,
             pro_free_limit=effective.google_maps_pro_free_limit,
             enterprise_free_limit=effective.google_maps_enterprise_free_limit,
+        )
+        if redis is not None
+        else None
+    )
+    naver_usage = (
+        await naver_maps_usage_snapshot(
+            redis,
+            monthly_limit=effective.naver_maps_monthly_request_limit,
         )
         if redis is not None
         else None
@@ -655,6 +684,8 @@ async def settings_snapshot(
                         **asdict(google_usage),
                     )
                     if provider == "google_maps" and google_usage is not None
+                    else ProviderUsageView(**asdict(naver_usage))
+                    if provider == "naver_maps" and naver_usage is not None
                     else None
                 ),
                 requests_24h=sum(
@@ -996,6 +1027,34 @@ async def _test_google(settings: Settings, redis: Redis) -> str:
     return f"Google Places、{route_message}；Weather API 連線成功"
 
 
+async def _test_naver(settings: Settings, redis: Redis) -> str:
+    places = await NaverPlaceService(redis, settings).autocomplete("景福宮", "connection-test")
+    if not places:
+        raise ConnectionError("NAVER Local Search／Geocoding 未回傳韓國地點")
+    segment = await NaverDirectionsProvider(settings, None, redis).compute(
+        RoutePoint(
+            item_id=uuid4(),
+            name="景福宮",
+            latitude=37.5796,
+            longitude=126.9770,
+            place_provider="naver_local",
+        ),
+        RoutePoint(
+            item_id=uuid4(),
+            name="北村韓屋村",
+            latitude=37.5826,
+            longitude=126.9830,
+            place_provider="naver_local",
+        ),
+        None,
+        "FASTEST",
+        "drive",
+    )
+    if segment is None:
+        raise ConnectionError("NAVER Directions 未回傳首爾汽車路線")
+    return "NAVER 韓國地點搜尋與汽車路線驗證成功；Dynamic Map 仍需由已授權網站來源載入確認"
+
+
 async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str:
     if provider == "ai_planner":
         request = AIItineraryRequest(
@@ -1019,6 +1078,8 @@ async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str
         return f"{selected} / {model} AI 景點搜尋結構化輸出驗證成功"
     if provider == "google_maps":
         return await _test_google(settings, redis)
+    if provider == "naver_maps":
+        return await _test_naver(settings, redis)
     if provider == "youtube_guides":
         from app.hotspots.guides import YouTubeGuideProvider
 
@@ -1199,4 +1260,9 @@ async def public_runtime_config(session: AsyncSession) -> PublicRuntimeConfig:
         google_places_enabled=bool(settings.google_maps_api_key),
         google_maps_embed_enabled=bool(settings.next_public_google_maps_browser_key),
         navitime_enabled=settings.navitime_configured,
+        naver_maps_browser_client_id=settings.naver_maps_client_id,
+        naver_maps_enabled=settings.naver_maps_configured,
+        naver_places_enabled=settings.naver_maps_configured,
+        naver_directions_enabled=settings.naver_maps_configured,
+        naver_dynamic_map_enabled=bool(settings.naver_maps_client_id),
     )

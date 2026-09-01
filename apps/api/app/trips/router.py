@@ -32,6 +32,7 @@ from app.models import (
 )
 from app.optimization.engine import TripOptimizer, TripPlanResult
 from app.places.google import GoogleTravelService
+from app.places.naver import NaverPlaceService
 from app.problems import AppError
 from app.providers.base import ActivityProvider, FlightProvider, HotelProvider, TransportProvider
 from app.providers.registry import (
@@ -56,11 +57,15 @@ from app.trips.route_planner import (
 )
 from app.trips.route_tasks import enqueue_trip_routing
 from app.trips.routing import (
+    ExternalNavigation,
     RoutePoint,
     RouteSegment,
     RouteService,
     TravelMode,
-    is_japan_trip,
+    infer_place_provider,
+    naver_external_navigation,
+    route_provider_configured,
+    trip_region_code,
 )
 from app.trips.schedule import (
     active_route_rows,
@@ -421,6 +426,7 @@ def serialize_item(item: TripPlanItem) -> dict[str, Any]:
         "data": item.data,
         "provider_place_id": item.provider_place_id,
         "location_source": item.location_source,
+        "location_provider": infer_place_provider(item.location_source, item.data),
         "duration_minutes": item.duration_minutes,
         "notes": item.notes,
         "fixed_time": item.fixed_time,
@@ -513,6 +519,9 @@ async def serialize_trip(
         "start_date": trip.start_date,
         "end_date": trip.end_date,
         "timezone": trip.timezone,
+        "destination_country_code": trip_region_code(
+            trip.timezone, trip.destination_name, trip.data
+        ),
         "route_preference": trip.route_preference,
         "items": [serialize_item(item) for item in items],
         "route_segments": route_segments,
@@ -547,13 +556,10 @@ async def persist_system_schedule_change(
         routing_defaults = RoutingOptions.model_validate(
             trip.data.get("routing_defaults") or {}
         )
-        routing_available = bool(
-            runtime.google_maps_api_key
-            or (
-                routing_defaults.default_travel_mode == "transit"
-                and is_japan_trip(trip.timezone, trip.destination_name, trip.data)
-                and runtime.navitime_configured
-            )
+        routing_available = route_provider_configured(
+            runtime,
+            trip_region_code(trip.timezone, trip.destination_name, trip.data),
+            routing_defaults.default_travel_mode,
         )
         total = route_pair_count(rows)
         status = (
@@ -657,12 +663,14 @@ def _planning_request(
 
 async def _enrich_ai_places(
     planning: AIPlanningResult,
-    service: GoogleTravelService,
+    google: GoogleTravelService,
     *,
+    naver: NaverPlaceService | None = None,
     destination_name: str,
     timezone: str,
 ) -> None:
-    if not service.configured:
+    region = _destination_region_values(destination_name, timezone)
+    if not google.configured and not (region == "kr" and naver and naver.configured):
         return
     suggestions = [
         item
@@ -671,41 +679,54 @@ async def _enrich_ai_places(
         if item.item_type in {"suggestion", "meal"}
     ][:24]
     semaphore = asyncio.Semaphore(4)
-    region = _destination_region_values(destination_name, timezone)
 
     async def resolve(item: ItineraryItem) -> bool:
-        async with semaphore:
-            place = await service.search_place(
-                f"{item.location_name or item.title}, {destination_name}",
-                None,
-                None,
-                detailed=False,
-                region_code=region,
-            )
-        if not place or not _place_matches_region(place, region):
+        query = f"{item.location_name or item.title}, {destination_name}"
+        place: dict[str, Any] = {}
+        if region == "kr" and naver and naver.configured:
+            async with semaphore:
+                place = await naver.search_place(query)
+        if not place and google.configured:
+            async with semaphore:
+                raw_google = await google.search_place(
+                    query,
+                    None,
+                    None,
+                    detailed=False,
+                    region_code=region,
+                )
+            if raw_google and _place_matches_region(raw_google, region):
+                location = cast(dict[str, Any], raw_google.get("location") or {})
+                display = cast(dict[str, Any], raw_google.get("displayName") or {})
+                place = {
+                    "provider": "google_places",
+                    "place_id": raw_google.get("id"),
+                    "name": display.get("text") or raw_google.get("formattedAddress"),
+                    "address": raw_google.get("formattedAddress"),
+                    "latitude": location.get("latitude"),
+                    "longitude": location.get("longitude"),
+                    "google_maps_url": raw_google.get("googleMapsUri"),
+                }
+        latitude = place.get("latitude")
+        longitude = place.get("longitude")
+        if not place or latitude is None or longitude is None:
             item.data = {**item.data, "places_status": "unavailable"}
             return False
-        location = cast(dict[str, Any], place.get("location", {}))
-        display = cast(dict[str, Any], place.get("displayName", {}))
-        latitude = location.get("latitude")
-        longitude = location.get("longitude")
-        if latitude is None or longitude is None:
-            item.data = {**item.data, "places_status": "unavailable"}
-            return False
-        item.location_name = str(
-            display.get("text") or place.get("formattedAddress") or item.location_name
-        )
+        provider = str(place.get("provider") or "google_places")
+        item.location_name = str(place.get("name") or place.get("address") or item.location_name)
         item.latitude = float(latitude)
         item.longitude = float(longitude)
-        item.provider_place_id = str(place.get("id") or "") or None
-        item.location_source = "google_places_auto"
+        item.provider_place_id = str(place.get("place_id") or "") or None
+        item.location_source = f"{provider}_auto"
         item.is_estimated = True
         item.data = {
             **item.data,
             "places_status": "resolved",
             "place_match_status": "auto_matched",
             "needs_place_confirmation": True,
-            "google_maps_url": place.get("googleMapsUri"),
+            "place_provider": provider,
+            "google_maps_url": place.get("google_maps_url"),
+            "naver_maps_url": place.get("naver_maps_url"),
         }
         return True
 
@@ -730,6 +751,7 @@ def route_point(item: TripPlanItem) -> RoutePoint | None:
         latitude=float(item.latitude),
         longitude=float(item.longitude),
         provider_place_id=item.provider_place_id,
+        place_provider=infer_place_provider(item.location_source, item.data),
     )
 
 
@@ -789,12 +811,15 @@ async def _resolve_trip_locations(
     if not candidates:
         return [], []
     runtime = await load_runtime_settings(session)
-    service = GoogleTravelService(get_redis(), runtime)
-    if not service.configured:
-        return [], [
-            _unresolved_location(item, "Google Places 尚未設定") for item in candidates
-        ]
+    redis = get_redis()
+    google = GoogleTravelService(redis, runtime)
+    naver = NaverPlaceService(redis, runtime)
     region = _destination_region(trip)
+    if not google.configured and not (region == "kr" and naver.configured):
+        return [], [
+            _unresolved_location(item, "旅程目的地的地點搜尋服務尚未設定")
+            for item in candidates
+        ]
     reference = next(
         (row for row in rows if row.latitude is not None and row.longitude is not None),
         None,
@@ -816,42 +841,56 @@ async def _resolve_trip_locations(
         if destination and destination.casefold() not in query.casefold():
             query = f"{query}, {destination}"
         try:
-            place = await service.search_place(
-                query,
-                latitude,
-                longitude,
-                detailed=False,
-                region_code=region,
-            )
+            place: dict[str, Any] = {}
+            if region == "kr" and naver.configured:
+                place = await naver.search_place(query)
+            if not place and google.configured:
+                raw_google = await google.search_place(
+                    query,
+                    latitude,
+                    longitude,
+                    detailed=False,
+                    region_code=region,
+                )
+                if raw_google and _place_matches_region(raw_google, region):
+                    location = cast(dict[str, Any], raw_google.get("location") or {})
+                    display = cast(dict[str, Any], raw_google.get("displayName") or {})
+                    place = {
+                        "provider": "google_places",
+                        "place_id": raw_google.get("id"),
+                        "name": display.get("text") or raw_google.get("formattedAddress"),
+                        "address": raw_google.get("formattedAddress"),
+                        "latitude": location.get("latitude"),
+                        "longitude": location.get("longitude"),
+                        "google_maps_url": raw_google.get("googleMapsUri"),
+                    }
         except (httpx.HTTPError, TimeoutError):
-            unresolved.append(_unresolved_location(item, "Google Places 暫時無法回應"))
+            unresolved.append(_unresolved_location(item, "地點搜尋服務暫時無法回應"))
             continue
-        location = cast(dict[str, Any], place.get("location") or {})
-        place_latitude = location.get("latitude")
-        place_longitude = location.get("longitude")
+        place_latitude = place.get("latitude")
+        place_longitude = place.get("longitude")
         if (
             not place
             or place_latitude is None
             or place_longitude is None
-            or not _place_matches_region(place, region)
         ):
             unresolved.append(_unresolved_location(item, "找不到位於旅程目的地的可靠候選"))
             continue
-        display = cast(dict[str, Any], place.get("displayName") or {})
-        item.location_name = str(
-            display.get("text") or place.get("formattedAddress") or label
-        )
+        provider = str(place.get("provider") or "google_places")
+        item.location_name = str(place.get("name") or place.get("address") or label)
         item.latitude = Decimal(str(place_latitude))
         item.longitude = Decimal(str(place_longitude))
-        item.provider_place_id = str(place.get("id") or "") or None
-        item.location_source = "google_places_auto"
+        item.provider_place_id = str(place.get("place_id") or "") or None
+        item.location_source = f"{provider}_auto"
         item.is_estimated = True
         item.data = {
             **(item.data or {}),
             "places_status": "resolved",
             "place_match_status": "auto_matched",
             "needs_place_confirmation": True,
-            "google_maps_url": place.get("googleMapsUri"),
+            "place_provider": provider,
+            "google_maps_url": place.get("google_maps_url"),
+            "naver_maps_url": place.get("naver_maps_url"),
         }
         changed_ids.add(item.id)
         matched.append({"item_id": str(item.id), "title": item.title or item.item_type})
@@ -915,7 +954,7 @@ async def compute_routes_for_rows(
     results = await service.compute_many(
         pairs,
         preference,
-        japan=is_japan_trip(trip.timezone, trip.destination_name, trip.data),
+        region_code=trip_region_code(trip.timezone, trip.destination_name, trip.data),
         travel_mode=travel_mode,
         refresh=refresh,
     )
@@ -1104,19 +1143,17 @@ async def save_trip(
         await _enrich_ai_places(
             planning,
             GoogleTravelService(get_redis(), settings),
+            naver=NaverPlaceService(get_redis(), settings),
             destination_name=destination,
             timezone=timezone,
         )
         # The two hotel anchors are reconciled immediately after persistence, so
         # each day has one more adjacent pair than the generated activity/meal rows.
         route_pairs = sum(len(day.items) + 1 for day in planning.itinerary)
-        routing_available = bool(
-            settings.google_maps_api_key
-            or (
-                timezone == "Asia/Tokyo"
-                and settings.navitime_configured
-                and payload.routing.default_travel_mode == "transit"
-            )
+        routing_available = route_provider_configured(
+            settings,
+            trip_region_code(timezone, destination, {}),
+            payload.routing.default_travel_mode,
         )
         routing_status = (
             "queued"
@@ -1537,13 +1574,10 @@ async def update_itinerary(
             trip.data.get("routing_defaults") or {}
         )
         runtime = await load_runtime_settings(session)
-        routing_available = bool(
-            runtime.google_maps_api_key
-            or (
-                routing_defaults.default_travel_mode == "transit"
-                and is_japan_trip(trip.timezone, trip.destination_name, trip.data)
-                and runtime.navitime_configured
-            )
+        routing_available = route_provider_configured(
+            runtime,
+            trip_region_code(trip.timezone, trip.destination_name, trip.data),
+            routing_defaults.default_travel_mode,
         )
         if routing_defaults.auto_compute and routing_available:
             trip.data = {
@@ -1733,6 +1767,7 @@ async def generate_trip_itinerary(
         await _enrich_ai_places(
             planning,
             GoogleTravelService(get_redis(), settings),
+            naver=NaverPlaceService(get_redis(), settings),
             destination_name=trip.destination_name,
             timezone=trip.timezone or "UTC",
         )
@@ -1804,13 +1839,10 @@ async def generate_trip_itinerary(
             item for item in all_rows if target_date is None or item.day_date == target_date
         ]
         route_pairs = route_pair_count(route_rows)
-        routing_available = bool(
-            settings.google_maps_api_key
-            or (
-                trip.timezone == "Asia/Tokyo"
-                and settings.navitime_configured
-                and routing_defaults.default_travel_mode == "transit"
-            )
+        routing_available = route_provider_configured(
+            settings,
+            trip_region_code(trip.timezone, trip.destination_name, trip.data),
+            routing_defaults.default_travel_mode,
         )
         routing_status = (
             "queued"
@@ -1928,14 +1960,15 @@ async def compute_trip_routes(
         refresh=payload.refresh,
     )
     if not segments:
-        if not settings.google_maps_api_key and not (
-            is_japan_trip(trip.timezone, trip.destination_name, trip.data)
-            and settings.navitime_configured
+        if not route_provider_configured(
+            settings,
+            trip_region_code(trip.timezone, trip.destination_name, trip.data),
+            payload.travel_mode,
         ):
             raise AppError(
                 503,
-                "google_routes_not_configured",
-                "Google Maps 路線服務尚未啟用，請先設定伺服器 API 金鑰",
+                "route_provider_not_configured",
+                "此交通方式的路線服務尚未啟用，請先設定對應 Provider",
             )
         raise AppError(503, "route_unavailable", "目前無法取得可用路線，請稍後再試")
     trip.route_preference = preference
@@ -2101,15 +2134,35 @@ async def preview_trip_route(
         destination,
         first.end_time or first.start_time,
         preference,
-        japan=is_japan_trip(trip.timezone, trip.destination_name, trip.data),
+        region_code=trip_region_code(trip.timezone, trip.destination_name, trip.data),
         travel_mode=payload.travel_mode,
     )
     if segment is None:
-        if not settings.google_maps_api_key and not (
-            payload.travel_mode == "transit"
-            and is_japan_trip(trip.timezone, trip.destination_name, trip.data)
-            and settings.navitime_configured
-        ):
+        region = trip_region_code(trip.timezone, trip.destination_name, trip.data)
+        if region == "KR":
+            reason = (
+                "NAVER 官方 Directions API 不提供可保存的大眾運輸班次；請到 NAVER Maps 查看。"
+                if payload.travel_mode == "transit"
+                else "目前沒有可套用的站內步行路線；請到 NAVER Maps 查看。"
+                if payload.travel_mode == "walk"
+                else "目前沒有可套用的汽車路線；請到 NAVER Maps 查看即時導航。"
+            )
+            external: ExternalNavigation = naver_external_navigation(
+                origin,
+                destination,
+                payload.travel_mode,
+                reason=reason,
+            )
+            await session.rollback()
+            return {
+                "kind": "external_only",
+                "preview_id": None,
+                "expires_at": None,
+                "segment": None,
+                "schedule_impact": None,
+                "external_navigation": external.model_dump(mode="json"),
+            }
+        if not route_provider_configured(settings, region, payload.travel_mode):
             raise AppError(
                 503,
                 "route_provider_not_configured",
@@ -2153,6 +2206,7 @@ async def preview_trip_route(
     )
     await session.rollback()
     return {
+        "kind": "provider",
         "preview_id": str(preview_id),
         "expires_at": expires_at,
         "segment": projected.model_dump(mode="json"),
@@ -2501,7 +2555,9 @@ async def optimize_trip_itinerary(
             results = await RouteService(get_redis(), settings).compute_many(
                 pairs,
                 preference,
-                japan=is_japan_trip(trip.timezone, trip.destination_name, trip.data),
+                region_code=trip_region_code(
+                    trip.timezone, trip.destination_name, trip.data
+                ),
             )
             costs = {
                 (segment.from_item_id, segment.to_item_id): segment.duration_minutes

@@ -114,6 +114,8 @@ const fieldMeta: Record<string, FieldMeta> = {
   provider_failure_threshold: { label: "斷路器失敗門檻", type: "number" },
   provider_circuit_seconds: { label: "斷路器暫停秒數", type: "number" },
   route_cache_ttl_seconds: { label: "路線快取秒數", type: "number" },
+  naver_place_cache_ttl_seconds: { label: "NAVER 地點快取秒數", type: "number", help: "地點詳情以不透明 ID 暫存在 Redis；預設 15 分鐘。" },
+  naver_maps_monthly_request_limit: { label: "站內每月提醒額度", type: "number", help: "選填的內部提醒門檻，不代表 NAVER 免費額度或帳單上限；0 表示不設定。" },
   weather_cache_ttl_seconds: { label: "天氣快取秒數", type: "number", help: "Google Weather 預設快取 15 分鐘，降低重複查詢。" },
   google_maps_essentials_free_limit: { label: "Essentials 每 SKU 免費額度", type: "number", help: "全球公開定價預設每個 SKU 每月 10,000 次；若合約不同可在此調整。" },
   google_maps_pro_free_limit: { label: "Pro 每 SKU 免費額度", type: "number", help: "全球公開定價預設每個 SKU 每月 5,000 次。" },
@@ -178,6 +180,8 @@ const secretLabels: Record<string, { label: string; help?: string }> = {
   minimax_api_key: { label: "MiniMax API Key", help: "用於 MiniMax Responses API。" },
   google_maps_api_key: { label: "伺服器 API Key", help: "啟用 Places API (New)、Routes API 與 Weather API；建議限制主機出口 IP。" },
   next_public_google_maps_browser_key: { label: "瀏覽器 Embed Key", help: "只用於 Maps Embed，必須限制 travelscanner.aibubu.cloud HTTP referrer。" },
+  naver_maps_client_id: { label: "NAVER Cloud Client ID", help: "伺服器 API 與瀏覽器 Dynamic Map 使用；瀏覽器公開值必須限制正式網站來源。" },
+  naver_maps_client_secret: { label: "NAVER Cloud Client Secret", help: "只在伺服器端加密保存，絕不回傳瀏覽器。" },
   amadeus_client_id: { label: "Client ID" },
   amadeus_client_secret: { label: "Client Secret" },
   skyscanner_api_key: { label: "API Key" },
@@ -210,6 +214,9 @@ const usageOperationLabel: Record<string, string> = {
   routes: "路線計算",
   weather_current: "目前天氣",
   weather_daily_forecast: "10 日預報",
+  local_search: "Local Search",
+  geocode: "Geocoding",
+  directions: "Directions 5",
 };
 const usageCategoryLabel: Record<string, string> = {
   essentials: "Essentials",
@@ -299,6 +306,32 @@ function GoogleUsagePanel({ usage, refreshing, onRefresh }: {
       <details className="mt-4 rounded-xl bg-white px-4 py-3"><summary className="cursor-pointer text-sm font-semibold">查看站內操作明細</summary><dl className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">{Object.entries(usage.breakdown).map(([operation, count]) => <div key={operation}><dt className="text-[.68rem] text-[var(--muted)]">{usageOperationLabel[operation] || operation}</dt><dd className="mt-0.5 font-bold tabular-nums">{numberFormat.format(count)}</dd></div>)}</dl></details>
     </>}
     <p className="mt-4 text-xs leading-5 text-[var(--muted)]">帳務期間依 Google Pacific Time：{dateOnly.format(new Date(`${usage.period_start}T00:00:00Z`))} 至 {dateOnly.format(new Date(`${usage.period_end}T00:00:00Z`))}。本站會保守計入送出的伺服器請求（包含失敗請求），不含瀏覽器 Embed 與計數啟用前的歷史；實際成功計費事件、優惠與帳單仍以 Google Cloud Console 為準。</p>
+  </div>;
+}
+
+function NaverUsagePanel({ usage, refreshing, onRefresh }: {
+  usage: ProviderUsage;
+  refreshing: boolean;
+  onRefresh: () => void;
+}) {
+  const hasLimit = usage.monthly_limit > 0;
+  const width = hasLimit ? Math.min(100, Math.max(0, usage.percentage || 0)) : 0;
+  return <div className="mt-6 rounded-2xl border border-[#b8e7ca] bg-[#f2fbf5] p-5" aria-label="NAVER Maps 本月用量">
+    <div className="flex flex-wrap items-start justify-between gap-4">
+      <div><p className="flex items-center gap-2 text-sm font-bold text-[#087a3f]"><Gauge size={17} />NAVER Maps 本月伺服器用量</p>{usage.available ? <p className="mt-2 text-3xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)} <span className="text-base font-medium text-[var(--muted)]">次站內請求</span></p> : <p className="mt-2 font-semibold text-amber-800">目前無法讀取用量計數</p>}</div>
+      <button type="button" onClick={onRefresh} disabled={refreshing} className="flex items-center gap-2 rounded-xl border border-[#b8e7ca] bg-white px-3 py-2 text-sm font-semibold disabled:opacity-50"><RefreshCw size={15} className={refreshing ? "animate-spin" : ""} />重新整理用量</button>
+    </div>
+    {usage.available && <>
+      <dl className="mt-4 grid gap-3 sm:grid-cols-3">
+        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">本月站內請求</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)}</dd></div>
+        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">內部提醒門檻</dt><dd className="mt-1 text-xl font-bold tabular-nums">{hasLimit ? numberFormat.format(usage.monthly_limit) : "未設定"}</dd></div>
+        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">門檻內剩餘</dt><dd className="mt-1 text-xl font-bold tabular-nums">{hasLimit ? numberFormat.format(usage.remaining || 0) : "—"}</dd></div>
+      </dl>
+      {hasLimit && <div className="mt-4 h-2 overflow-hidden rounded-full bg-white" role="progressbar" aria-label="NAVER Maps 月用量" aria-valuemin={0} aria-valuemax={usage.monthly_limit} aria-valuenow={Math.min(usage.used || 0, usage.monthly_limit)}><div className={`h-full rounded-full ${(usage.percentage || 0) >= 100 ? "bg-red-500" : (usage.percentage || 0) >= 75 ? "bg-amber-500" : "bg-[#03c75a]"}`} style={{ width: `${width}%` }} /></div>}
+      <details className="mt-4 rounded-xl bg-white px-4 py-3"><summary className="cursor-pointer text-sm font-semibold">查看站內操作明細</summary><dl className="mt-3 grid gap-2 sm:grid-cols-3">{Object.entries(usage.breakdown).map(([operation, count]) => <div key={operation}><dt className="text-[.68rem] text-[var(--muted)]">{usageOperationLabel[operation] || operation}</dt><dd className="mt-0.5 font-bold tabular-nums">{numberFormat.format(count)}</dd></div>)}</dl></details>
+      <div className="mt-4 overflow-x-auto rounded-xl border border-[#d7eee0] bg-white"><table className="min-w-[32rem] w-full text-left text-sm"><thead className="bg-[#f2fbf5] text-xs text-[var(--muted)]"><tr><th className="px-3 py-2 font-semibold">月份</th><th className="px-3 py-2 font-semibold">站內請求</th><th className="px-3 py-2 font-semibold">內部門檻</th><th className="px-3 py-2 font-semibold">剩餘</th></tr></thead><tbody className="divide-y divide-[var(--line)]">{usage.monthly_history.map((month) => <tr key={month.period}><th className="px-3 py-2.5 font-semibold">{month.period}</th><td className="px-3 py-2.5 tabular-nums">{numberFormat.format(month.used)}</td><td className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_limit) : "—"}</td><td className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_remaining) : "—"}</td></tr>)}</tbody></table></div>
+    </>}
+    <p className="mt-4 text-xs leading-5 text-[var(--muted)]">帳務月份以韓國時間統計。本站只記錄 Local Search、Geocoding 與 Directions 5 的伺服器請求，不含瀏覽器 Dynamic Map 載入，也不等同 NAVER 帳務；實際用量與費用請以 NAVER Cloud Console 為準。</p>
   </div>;
 }
 
@@ -458,6 +491,7 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
         <div className="flex flex-wrap items-start justify-between gap-4"><div className="max-w-2xl"><div className="flex flex-wrap items-center gap-2"><h2 className="text-xl font-bold">{provider.label}</h2><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(provider.status)}`}>{provider.status === "ready" ? "已設定" : provider.status === "disabled" ? "已停用" : provider.status === "test_required" ? "待測試" : provider.status === "error" ? "連線失敗" : "待設定"}</span></div><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{provider.description}</p><p className="mt-1 text-xs font-semibold text-[var(--teal)]">{provider.status_message}</p>{!internal && <p className="mt-2 text-xs text-[var(--muted)]">近 24 小時：{provider.requests_24h || 0} 次呼叫 · {provider.errors_24h || 0} 次失敗{provider.last_error_at ? ` · 最近失敗 ${dateTime.format(new Date(provider.last_error_at))}` : ""}</p>}</div>{!internal && <label className="flex items-center gap-2 rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-semibold"><input type="checkbox" checked={draft.enabled} onChange={(event) => patchDraft(provider.provider, { enabled: event.target.checked })} />啟用</label>}</div>
 
         {provider.provider === "google_maps" && usage && <GoogleUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
+        {provider.provider === "naver_maps" && usage && <NaverUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
 
         {Object.keys(provider.config).length > 0 && <div className="mt-6 grid gap-4 md:grid-cols-2">{Object.entries(provider.config).map(([field]) => {
           const meta = fieldMeta[field] || { label: field };

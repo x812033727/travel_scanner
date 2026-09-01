@@ -17,6 +17,7 @@ export type TripItem = {
   data: Record<string, unknown>;
   provider_place_id?: string | null;
   location_source?: string | null;
+  location_provider?: string | null;
   duration_minutes?: number | null;
   notes?: string | null;
   fixed_time?: boolean;
@@ -152,6 +153,7 @@ export type Trip = {
   } | null;
   version: number;
   destination_name?: string | null;
+  destination_country_code?: string | null;
   destination_place_id?: string | null;
   start_date?: string | null;
   end_date?: string | null;

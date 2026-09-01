@@ -588,3 +588,27 @@ async def test_public_runtime_capabilities_do_not_claim_unconfigured_navitime(
     assert result.google_places_enabled is True
     assert result.google_maps_embed_enabled is True
     assert result.navitime_enabled is False
+    assert result.naver_maps_enabled is False
+    assert result.naver_maps_browser_client_id is None
+
+
+@pytest.mark.asyncio
+async def test_public_runtime_exposes_naver_browser_capabilities_but_not_secret(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    async def runtime(_session: object) -> Settings:
+        return Settings(
+            naver_maps_client_id="public-browser-id",
+            naver_maps_client_secret="never-expose-this-secret",
+        )
+
+    monkeypatch.setattr(admin_service, "load_runtime_settings", runtime)
+    result = await public_runtime_config(object())  # type: ignore[arg-type]
+    payload = result.model_dump(mode="json")
+    assert payload["naver_maps_browser_client_id"] == "public-browser-id"
+    assert payload["naver_maps_enabled"] is True
+    assert payload["naver_places_enabled"] is True
+    assert payload["naver_directions_enabled"] is True
+    assert payload["naver_dynamic_map_enabled"] is True
+    assert "never-expose-this-secret" not in str(payload)
+    assert "naver_maps_client_secret" not in payload

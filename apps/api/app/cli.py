@@ -1,8 +1,10 @@
 import argparse
 import asyncio
+import json
 import sys
 from datetime import UTC, datetime, timedelta
 from io import TextIOWrapper
+from uuid import UUID
 
 from sqlalchemy import select
 
@@ -15,8 +17,10 @@ from app.db import SessionFactory
 from app.hotspots.jobs import collect_once
 from app.infra import get_redis
 from app.models import AdminAuditLog, User
+from app.places.naver import NaverPlaceService
 from app.providers.registry import build_provider, provider_status
 from app.search.schemas import SearchCreate
+from app.trips.routing import NaverDirectionsProvider, RoutePoint
 from app.usage.service import PACKAGE_DEFAULTS, grant_package
 
 
@@ -113,6 +117,56 @@ async def verify_live_provider(origin: str, destination: str) -> bool:
     return bool(report["all_modules_returned"])
 
 
+async def verify_naver_maps() -> bool:
+    settings = get_settings()
+    redis = get_redis()
+    service = NaverPlaceService(redis, settings)
+    palace = await service.search_place("景福宮 서울")
+    village = await service.search_place("北村韓屋村 서울")
+    route = None
+    if palace and village:
+        route = await NaverDirectionsProvider(settings, None, redis).compute(
+            RoutePoint(
+                item_id=UUID("00000000-0000-4000-8000-000000000001"),
+                name=str(palace.get("name") or "景福宮"),
+                latitude=float(palace["latitude"]),
+                longitude=float(palace["longitude"]),
+                provider_place_id=str(palace.get("place_id") or "") or None,
+                place_provider="naver_local",
+            ),
+            RoutePoint(
+                item_id=UUID("00000000-0000-4000-8000-000000000002"),
+                name=str(village.get("name") or "北村韓屋村"),
+                latitude=float(village["latitude"]),
+                longitude=float(village["longitude"]),
+                provider_place_id=str(village.get("place_id") or "") or None,
+                place_provider="naver_local",
+            ),
+            None,
+            "FASTEST",
+            "drive",
+        )
+    report = {
+        "provider": "naver_maps",
+        "configured": settings.naver_maps_configured,
+        "places": {
+            "gyeongbokgung": bool(palace),
+            "bukchon_hanok_village": bool(village),
+        },
+        "drive_route": {
+            "available": route is not None,
+            "duration_minutes": route.duration_minutes if route else None,
+            "distance_meters": route.distance_meters if route else None,
+        },
+        "dynamic_map": {
+            "client_id_configured": bool(settings.naver_maps_client_id),
+            "requires_browser_origin_check": True,
+        },
+    }
+    print(json.dumps(report, ensure_ascii=False, indent=2))
+    return bool(settings.naver_maps_configured and palace and village and route)
+
+
 def main() -> None:
     if isinstance(sys.stdout, TextIOWrapper):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -141,6 +195,8 @@ def main() -> None:
     live.add_argument("--origin", default="TPE")
     live.add_argument("--destination", default="NRT")
     live.add_argument("--strict", action="store_true")
+    naver = subparsers.add_parser("verify-naver-maps")
+    naver.add_argument("--strict", action="store_true")
     subparsers.add_parser("collect-hotspots")
     args = parser.parse_args()
     if args.command == "add-usage-package":
@@ -153,6 +209,10 @@ def main() -> None:
             raise SystemExit(1)
     elif args.command == "verify-live-provider":
         passed = asyncio.run(verify_live_provider(args.origin, args.destination))
+        if args.strict and not passed:
+            raise SystemExit(1)
+    elif args.command == "verify-naver-maps":
+        passed = asyncio.run(verify_naver_maps())
         if args.strict and not passed:
             raise SystemExit(1)
     elif args.command == "collect-hotspots":
