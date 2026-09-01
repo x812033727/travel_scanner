@@ -1,6 +1,6 @@
 from typing import Annotated
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.schemas import (
@@ -8,8 +8,10 @@ from app.admin.schemas import (
     ProviderSettingsUpdate,
     ProviderTestResult,
     PublicRuntimeConfig,
+    SiteVisibility,
 )
 from app.admin.service import (
+    effective_site_visibility,
     public_runtime_config,
     settings_snapshot,
     test_provider_connection,
@@ -53,3 +55,9 @@ async def test_provider(
 async def get_public_runtime_config(user: CurrentUser, session: Session) -> PublicRuntimeConfig:
     _ = user
     return await public_runtime_config(session)
+
+
+@runtime_router.get("/site-visibility", response_model=SiteVisibility)
+async def get_site_visibility(response: Response, session: Session) -> SiteVisibility:
+    response.headers["Cache-Control"] = "no-store"
+    return await effective_site_visibility(session)

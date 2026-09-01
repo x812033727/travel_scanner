@@ -1,6 +1,8 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { closedSiteVisibility } from "@/lib/site-features";
 import { AccountPanel } from "./account-panel";
+import { SiteVisibilityProvider } from "./site-visibility-provider";
 
 const me = { id: "u1", email: "user@example.com" };
 const usage = {
@@ -68,6 +70,17 @@ describe("account panel", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<AccountPanel />);
     expect(await screen.findByText("目前無法載入使用紀錄，請稍後再試。")).toBeTruthy();
+  });
+
+  it("hides the usage-pack link when pricing is closed", async () => {
+    vi.stubGlobal("fetch", stubApi({ "/auth/me": me, "/usage/history": history, "/usage": usage }));
+    render(
+      <SiteVisibilityProvider state={{ status: "ready", features: closedSiteVisibility }}>
+        <AccountPanel />
+      </SiteVisibilityProvider>,
+    );
+    await screen.findByText("user@example.com");
+    expect(screen.queryByRole("link", { name: "查看次數包" })).toBeNull();
   });
 
   it("rejects mismatched new passwords without calling the API", async () => {

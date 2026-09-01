@@ -3,8 +3,10 @@
 import { Check, Copy, History, LoaderCircle } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
+import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { api } from "@/lib/api";
 import { activeLocale } from "@/lib/locale-format";
+import { featureEnabled } from "@/lib/site-features";
 
 type Me = { id: string; email: string };
 type Usage = {
@@ -67,6 +69,7 @@ function changeLabel(item: UsageHistoryItem) {
 }
 
 export function AccountPanel() {
+  const visibility = useSiteVisibility();
   const dateFormat = new Intl.DateTimeFormat(activeLocale(), { dateStyle: "medium", timeStyle: "short" });
   const [me, setMe] = useState<Me>();
   const [usage, setUsage] = useState<Usage>();
@@ -176,12 +179,12 @@ export function AccountPanel() {
               次數不會按月歸零，成功取得可用查價結果才扣除。
             </p>
           </div>
-          <Link
+          {featureEnabled(visibility, "pricing") && <Link
             href="/pricing"
             className="rounded-xl border border-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-[var(--teal)]"
           >
             查看次數包
-          </Link>
+          </Link>}
         </div>
         <dl className="mt-6 grid gap-4 sm:grid-cols-3">
           <div className="rounded-2xl bg-[var(--paper)] p-4">

@@ -1,7 +1,9 @@
 "use client";
 
 import { Check, EyeOff, Gauge, KeyRound, LoaderCircle, PlugZap, RefreshCw, Save, ShieldCheck, Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { useRouter } from "@/i18n/navigation";
 import { api } from "@/lib/api";
 
 type Scalar = string | number | boolean;
@@ -77,10 +79,16 @@ type Audit = { id: string; action: string; target: string; metadata: Record<stri
 type Snapshot = { providers: ProviderView[]; audit: Audit[]; encryption_source: string };
 type Draft = { enabled: boolean; config: Record<string, string>; secrets: Record<string, string>; clearSecrets: string[] };
 type FieldMeta = { label: string; type?: "text" | "number" | "url" | "boolean"; options?: Array<{ value: string; label: string }>; help?: string };
-type AdminSettingsScope = "providers" | "system";
+type AdminSettingsScope = "providers" | "system" | "layout";
 
 const fieldMeta: Record<string, FieldMeta> = {
   registration_enabled: { label: "開放公開註冊", type: "boolean", help: "關閉後所有新帳號（包含環境管理員 Email）都無法自行註冊；既有會員仍可正常登入。" },
+  hotspots_enabled: { label: "", type: "boolean" },
+  trips_enabled: { label: "", type: "boolean" },
+  alerts_enabled: { label: "", type: "boolean" },
+  flight_status_enabled: { label: "", type: "boolean" },
+  airline_fares_enabled: { label: "", type: "boolean" },
+  pricing_enabled: { label: "", type: "boolean" },
   ai_planner_mode: { label: "AI 行程來源", options: [{ value: "auto", label: "自動備援" }, { value: "openai", label: "OpenAI／ChatGPT" }, { value: "anthropic", label: "Claude" }, { value: "minimax", label: "MiniMax" }, { value: "fallback", label: "只用內建備援" }, { value: "disabled", label: "停用真實 AI" }] },
   ai_planner_priority: { label: "自動備援順序", help: "用逗號分隔，例如 openai,anthropic,minimax。" },
   ai_planner_timeout_seconds: { label: "每家 AI 逾時（秒）", type: "number" },
@@ -209,6 +217,7 @@ function auditSummary(metadata: Record<string, unknown>): string {
   for (const field of ["registration_enabled", "status", "enabled", "is_admin"]) {
     if (field in metadata) return String(metadata[field]);
   }
+  if (Array.isArray(metadata.config_fields)) return metadata.config_fields.join(", ");
   return "";
 }
 
@@ -289,6 +298,8 @@ function GoogleUsagePanel({ usage, refreshing, onRefresh }: {
 }
 
 export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSettingsScope }) {
+  const t = useTranslations("admin");
+  const router = useRouter();
   const [snapshot, setSnapshot] = useState<Snapshot>();
   const [drafts, setDrafts] = useState<Record<string, Draft>>({});
   const [loadError, setLoadError] = useState<string>();
@@ -296,6 +307,7 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
   const [notice, setNotice] = useState<string>();
   const [actionError, setActionError] = useState<string>();
   const [usageRefreshing, setUsageRefreshing] = useState(false);
+  const [activePanel, setActivePanel] = useState<string>();
 
   useEffect(() => {
     let active = true;
@@ -304,6 +316,7 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
         if (!active) return;
         setSnapshot(result);
         setDrafts(makeDrafts(result));
+        setActivePanel((current) => current || result.providers.find((provider) => provider.provider !== "runtime" && provider.provider !== "layout")?.provider);
       })
       .catch((reason: Error) => { if (active) setLoadError(reason.message); });
     return () => { active = false; };
@@ -350,19 +363,21 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
     for (const key of draft.clearSecrets) secrets[key] = null;
     try {
       const config = Object.fromEntries(Object.entries(draft.config).map(([key, value]) => [key, value.trim() === "" ? null : valueForApi(key, value)]));
-      const submittedConfig = provider.provider === "runtime"
+      const isInternalSettings = provider.provider === "runtime" || provider.provider === "layout";
+      const submittedConfig = isInternalSettings
         ? Object.fromEntries(Object.entries(config).filter(([key, value]) => value !== provider.config[key]))
         : config;
       const result = await api<Snapshot>(`/admin/provider-settings/${provider.provider}`, {
         method: "PUT",
         body: JSON.stringify({
-          enabled: provider.provider === "runtime" ? true : draft.enabled,
+          enabled: isInternalSettings ? true : draft.enabled,
           config: submittedConfig,
           secrets,
         }),
       });
       setSnapshot(result); setDrafts(makeDrafts(result));
-      setNotice(provider.provider === "runtime" ? "系統設定已儲存並立即套用。" : `${provider.label} 設定已加密儲存並立即套用。`);
+      setNotice(provider.provider === "runtime" ? "系統設定已儲存並立即套用。" : provider.provider === "layout" ? t("layout.saveSuccess") : `${provider.label} 設定已加密儲存並立即套用。`);
+      if (provider.provider === "layout") router.refresh();
     } catch (reason) { setActionError((reason as Error).message); }
     finally { setBusyProvider(undefined); }
   }
@@ -383,40 +398,77 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
   if (loadError) return <div className="mt-8 rounded-2xl bg-red-50 p-5 text-red-800"><strong>無法開啟管理後台</strong><p className="mt-1 text-sm">{loadError}</p><p className="mt-2 text-xs">請先在主機設定 ADMIN_EMAILS，或將帳號的 is_admin 設為 true。</p></div>;
   if (!snapshot) return <p className="mt-8 flex items-center gap-2 text-[var(--muted)]"><LoaderCircle className="animate-spin" size={18} />正在讀取加密設定…</p>;
 
-  const visibleProviders = snapshot.providers.filter((provider) =>
-    scope === "system" ? provider.provider === "runtime" : provider.provider !== "runtime"
-  );
+  const visibleProviders = snapshot.providers.filter((provider) => {
+    if (scope === "system") return provider.provider === "runtime";
+    if (scope === "layout") return provider.provider === "layout";
+    return provider.provider !== "runtime" && provider.provider !== "layout";
+  });
   const visibleAudit = snapshot.audit.filter((item) =>
-    scope === "system" ? item.target === "runtime" : item.target !== "runtime"
+    scope === "system" ? item.target === "runtime" : scope === "layout" ? item.target === "layout" : item.target !== "runtime" && item.target !== "layout"
   );
+  const auditPanel = "__audit";
+  const providerPanels = [...visibleProviders.map((provider) => provider.provider), auditPanel];
+  const displayedProviders = scope === "providers"
+    ? visibleProviders.filter((provider) => provider.provider === activePanel)
+    : visibleProviders;
+  const showAudit = scope !== "providers" || activePanel === auditPanel;
+
+  function moveTab(event: React.KeyboardEvent<HTMLButtonElement>, index: number) {
+    if (!(["ArrowLeft", "ArrowRight", "Home", "End"] as string[]).includes(event.key)) return;
+    event.preventDefault();
+    const nextIndex = event.key === "Home" ? 0 : event.key === "End" ? providerPanels.length - 1 : (index + (event.key === "ArrowRight" ? 1 : -1) + providerPanels.length) % providerPanels.length;
+    const next = providerPanels[nextIndex];
+    setActivePanel(next);
+    requestAnimationFrame(() => document.getElementById(`provider-tab-${next}`)?.focus());
+  }
 
   return <div className="mt-8 space-y-6">
     {scope === "providers" && <section className="grid gap-4 rounded-[1.75rem] border border-[var(--line)] bg-[var(--ink)] p-6 text-white md:grid-cols-[auto_1fr] md:items-center"><ShieldCheck size={32} className="text-emerald-200" /><div><h2 className="font-bold">秘密資料不會回傳前端</h2><p className="mt-1 text-sm leading-6 text-white/70">資料庫只保存 Fernet 加密內容；畫面只顯示末四碼。此次使用 {snapshot.encryption_source} 衍生加密金鑰，正式環境建議固定設定 SETTINGS_ENCRYPTION_KEY。</p></div></section>}
     {notice && <p role="status" className="flex items-center gap-2 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800"><Check size={17} />{notice}</p>}
     {actionError && <p role="alert" className="rounded-xl bg-red-50 p-4 text-sm text-red-800">{actionError}</p>}
 
-    <div className="grid gap-6">{visibleProviders.map((provider) => {
+    {scope === "providers" && <>
+      <label className="block text-sm font-semibold md:hidden">
+        {t("providerTabs.mobileLabel")}
+        <select value={activePanel || visibleProviders[0]?.provider || auditPanel} onChange={(event) => setActivePanel(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-normal">
+          {visibleProviders.map((provider) => <option key={provider.provider} value={provider.provider}>{provider.label}</option>)}
+          <option value={auditPanel}>{t("providerTabs.audit")}</option>
+        </select>
+      </label>
+      <div role="tablist" aria-label={t("providerTabs.label")} className="hidden gap-2 overflow-x-auto pb-2 md:flex">
+        {providerPanels.map((panel, index) => {
+          const selected = panel === activePanel;
+          const label = panel === auditPanel ? t("providerTabs.audit") : visibleProviders.find((provider) => provider.provider === panel)?.label || panel;
+          return <button key={panel} id={`provider-tab-${panel}`} type="button" role="tab" aria-selected={selected} aria-controls={`provider-panel-${panel}`} tabIndex={selected ? 0 : -1} onClick={() => setActivePanel(panel)} onKeyDown={(event) => moveTab(event, index)} className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition ${selected ? "border-[var(--teal)] bg-[var(--teal)] text-white" : "border-[var(--line)] bg-white text-[var(--ink)] hover:border-[var(--teal)]"}`}>{label}</button>;
+        })}
+      </div>
+    </>}
+
+    <div className="grid gap-6">{displayedProviders.map((provider) => {
       const draft = drafts[provider.provider];
       const busy = busyProvider === provider.provider;
       const usage = provider.usage;
-      return <section key={provider.provider} className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm md:p-7">
-        <div className="flex flex-wrap items-start justify-between gap-4"><div className="max-w-2xl"><div className="flex flex-wrap items-center gap-2"><h2 className="text-xl font-bold">{provider.label}</h2><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(provider.status)}`}>{provider.status === "ready" ? "已設定" : provider.status === "disabled" ? "已停用" : provider.status === "test_required" ? "待測試" : provider.status === "error" ? "連線失敗" : "待設定"}</span></div><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{provider.description}</p><p className="mt-1 text-xs font-semibold text-[var(--teal)]">{provider.status_message}</p>{provider.provider !== "runtime" && <p className="mt-2 text-xs text-[var(--muted)]">近 24 小時：{provider.requests_24h || 0} 次呼叫 · {provider.errors_24h || 0} 次失敗{provider.last_error_at ? ` · 最近失敗 ${dateTime.format(new Date(provider.last_error_at))}` : ""}</p>}</div>{provider.provider !== "runtime" && <label className="flex items-center gap-2 rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-semibold"><input type="checkbox" checked={draft.enabled} onChange={(event) => patchDraft(provider.provider, { enabled: event.target.checked })} />啟用</label>}</div>
+      const internal = provider.provider === "runtime" || provider.provider === "layout";
+      return <section key={provider.provider} id={scope === "providers" ? `provider-panel-${provider.provider}` : undefined} role={scope === "providers" ? "tabpanel" : undefined} aria-labelledby={scope === "providers" ? `provider-tab-${provider.provider}` : undefined} className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm md:p-7">
+        <div className="flex flex-wrap items-start justify-between gap-4"><div className="max-w-2xl"><div className="flex flex-wrap items-center gap-2"><h2 className="text-xl font-bold">{provider.label}</h2><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(provider.status)}`}>{provider.status === "ready" ? "已設定" : provider.status === "disabled" ? "已停用" : provider.status === "test_required" ? "待測試" : provider.status === "error" ? "連線失敗" : "待設定"}</span></div><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{provider.description}</p><p className="mt-1 text-xs font-semibold text-[var(--teal)]">{provider.status_message}</p>{!internal && <p className="mt-2 text-xs text-[var(--muted)]">近 24 小時：{provider.requests_24h || 0} 次呼叫 · {provider.errors_24h || 0} 次失敗{provider.last_error_at ? ` · 最近失敗 ${dateTime.format(new Date(provider.last_error_at))}` : ""}</p>}</div>{!internal && <label className="flex items-center gap-2 rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-semibold"><input type="checkbox" checked={draft.enabled} onChange={(event) => patchDraft(provider.provider, { enabled: event.target.checked })} />啟用</label>}</div>
 
         {provider.provider === "google_maps" && usage && <GoogleUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
 
         {Object.keys(provider.config).length > 0 && <div className="mt-6 grid gap-4 md:grid-cols-2">{Object.entries(provider.config).map(([field]) => {
           const meta = fieldMeta[field] || { label: field };
-          if (meta.type === "boolean") return <label key={field} className="flex items-start gap-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 md:col-span-2"><input type="checkbox" role="switch" checked={draft.config[field] === "true"} onChange={(event) => patchConfig(provider.provider, field, String(event.target.checked))} className="mt-1" /><span><span className="font-semibold">{meta.label}</span><span className="ml-2 text-[.65rem] font-normal text-[var(--muted)]">{provider.config_sources[field] === "database" ? "後台值" : "環境預設"}</span>{meta.help && <span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted)]">{meta.help}</span>}</span></label>;
+          const label = provider.provider === "layout" ? t(`layout.fields.${field}.label`) : meta.label;
+          const help = provider.provider === "layout" ? t(`layout.fields.${field}.help`) : meta.help;
+          if (meta.type === "boolean") return <label key={field} className="flex items-start gap-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 md:col-span-2"><input type="checkbox" role="switch" checked={draft.config[field] === "true"} onChange={(event) => patchConfig(provider.provider, field, String(event.target.checked))} className="mt-1" /><span><span className="font-semibold">{label}</span><span className="ml-2 text-[.65rem] font-normal text-[var(--muted)]">{provider.config_sources[field] === "database" ? "後台值" : "環境預設"}</span>{help && <span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted)]">{help}</span>}</span></label>;
           return <label key={field} className="text-sm font-semibold">{meta.label}<span className="ml-2 text-[.65rem] font-normal text-[var(--muted)]">{provider.config_sources[field] === "database" ? "後台值" : "環境預設"}</span>{meta.options ? <select value={draft.config[field]} onChange={(event) => patchConfig(provider.provider, field, event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-normal">{meta.options.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select> : <input type={meta.type || "text"} step={meta.type === "number" ? "any" : undefined} value={draft.config[field]} onChange={(event) => patchConfig(provider.provider, field, event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] px-3 py-3 font-normal" />}{meta.help && <span className="mt-1 block text-xs font-normal text-[var(--muted)]">{meta.help}</span>}</label>;
         })}</div>}
 
         {Object.keys(provider.secrets).length > 0 && <div className="mt-6"><h3 className="flex items-center gap-2 text-sm font-bold"><KeyRound size={16} className="text-[var(--teal)]" />API 金鑰與憑證</h3><div className="mt-3 grid gap-4 md:grid-cols-2">{Object.entries(provider.secrets).map(([field, secret]) => { const meta = secretLabels[field] || { label: field }; const clearing = draft.clearSecrets.includes(field); return <div key={field} className="rounded-2xl bg-[var(--paper)] p-4"><label className="text-sm font-semibold">{meta.label}<input type="password" autoComplete="off" value={draft.secrets[field]} onChange={(event) => patchSecret(provider.provider, field, event.target.value)} placeholder={secret.masked || "貼上新金鑰"} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-mono text-sm font-normal" /></label><div className="mt-2 flex items-center justify-between gap-3 text-xs text-[var(--muted)]"><span className="flex items-center gap-1"><EyeOff size={13} />{clearing ? "儲存後清除後台值" : sourceLabel[secret.source] || secret.source}</span>{secret.source === "database" && !clearing && <button type="button" onClick={() => clearSecret(provider.provider, field)} className="flex items-center gap-1 font-semibold text-red-700"><Trash2 size={13} />清除</button>}</div>{meta.help && <p className="mt-2 text-xs leading-5 text-[var(--muted)]">{meta.help}</p>}</div>; })}</div></div>}
 
-        <div className="mt-6 flex flex-wrap items-center gap-3"><button type="button" onClick={() => save(provider)} disabled={Boolean(busyProvider)} className="flex items-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3 text-sm font-semibold text-white disabled:opacity-50">{busy ? <LoaderCircle size={16} className="animate-spin" /> : <Save size={16} />}儲存設定</button>{provider.provider !== "runtime" && <button type="button" onClick={() => testConnection(provider)} disabled={Boolean(busyProvider) || !draft.enabled} className="flex items-center gap-2 rounded-xl border border-[var(--line)] px-5 py-3 text-sm font-semibold disabled:opacity-40"><PlugZap size={16} />測試連線</button>}{provider.provider !== "runtime" && <span className="text-xs text-[var(--muted)]">空白金鑰不會覆蓋現有值；清除後會改用主機環境設定。</span>}</div>
+        <div className="mt-6 flex flex-wrap items-center gap-3"><button type="button" onClick={() => save(provider)} disabled={Boolean(busyProvider)} className="flex items-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3 text-sm font-semibold text-white disabled:opacity-50">{busy ? <LoaderCircle size={16} className="animate-spin" /> : <Save size={16} />}儲存設定</button>{!internal && <button type="button" onClick={() => testConnection(provider)} disabled={Boolean(busyProvider) || !draft.enabled} className="flex items-center gap-2 rounded-xl border border-[var(--line)] px-5 py-3 text-sm font-semibold disabled:opacity-40"><PlugZap size={16} />測試連線</button>}{!internal && <span className="text-xs text-[var(--muted)]">空白金鑰不會覆蓋現有值；清除後會改用主機環境設定。</span>}</div>
         {provider.last_tested_at && <p className={`mt-4 rounded-xl px-4 py-3 text-sm ${statusClass(provider.last_test_status || "")}`}>上次測試：{dateTime.format(new Date(provider.last_tested_at))} · {provider.last_test_message}</p>}
       </section>;
     })}</div>
 
-    <section className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 md:p-7"><h2 className="text-xl font-bold">最近管理紀錄</h2><p className="mt-1 text-sm text-[var(--muted)]">{scope === "system" ? "只記錄異動欄位、操作者與公開註冊結果，不記錄敏感設定內容。" : "只記錄變更欄位名稱、操作者與測試結果，不記錄金鑰內容。"}</p>{visibleAudit.length ? <ol className="mt-5 divide-y divide-[var(--line)]">{visibleAudit.map((item) => <li key={item.id} className="grid gap-1 py-3 text-sm md:grid-cols-[10rem_1fr_auto]"><time className="text-[var(--muted)]">{dateTime.format(new Date(item.created_at))}</time><span className="font-semibold">{auditActionLabel[item.action] || item.action} · {item.target}</span><code className="text-xs text-[var(--muted)]">{auditSummary(item.metadata)}</code></li>)}</ol> : <p className="mt-5 rounded-xl bg-[var(--paper)] p-5 text-sm text-[var(--muted)]">尚無管理操作紀錄。</p>}</section>
+    {showAudit && <section id={scope === "providers" ? `provider-panel-${auditPanel}` : undefined} role={scope === "providers" ? "tabpanel" : undefined} aria-labelledby={scope === "providers" ? `provider-tab-${auditPanel}` : undefined} className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 md:p-7"><h2 className="text-xl font-bold">最近管理紀錄</h2><p className="mt-1 text-sm text-[var(--muted)]">{scope === "system" ? "只記錄異動欄位、操作者與公開註冊結果，不記錄敏感設定內容。" : scope === "layout" ? t("layout.auditDescription") : "只記錄變更欄位名稱、操作者與測試結果，不記錄金鑰內容。"}</p>{visibleAudit.length ? <ol className="mt-5 divide-y divide-[var(--line)]">{visibleAudit.map((item) => <li key={item.id} className="grid gap-1 py-3 text-sm md:grid-cols-[10rem_1fr_auto]"><time className="text-[var(--muted)]">{dateTime.format(new Date(item.created_at))}</time><span className="font-semibold">{item.action === "layout_settings_updated" ? t("layout.auditAction") : auditActionLabel[item.action] || item.action} · {item.target}</span><code className="text-xs text-[var(--muted)]">{auditSummary(item.metadata)}</code></li>)}</ol> : <p className="mt-5 rounded-xl bg-[var(--paper)] p-5 text-sm text-[var(--muted)]">尚無管理操作紀錄。</p>}</section>}
   </div>;
 }

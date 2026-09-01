@@ -1,1 +1,30 @@
-{}
+{
+  "navigation": {
+    "users": "会员与次数",
+    "system": "系统设置",
+    "layout": "版面管理",
+    "providers": "API 与密钥",
+    "hotspots": "景点候选审核"
+  },
+  "providerTabs": {
+    "label": "API 供应商设置分页",
+    "mobileLabel": "选择 API 供应商",
+    "audit": "最近管理记录"
+  },
+  "layout": {
+    "eyebrow": "SYSTEM ADMIN",
+    "title": "版面管理",
+    "description": "控制前台功能入口与页面是否开放。关闭只会隐藏 Web 界面，不会停用底层 API 或删除现有数据。",
+    "saveSuccess": "版面设置已保存，前台状态已更新。",
+    "auditDescription": "只记录操作者、实际变更字段与更新后结果。",
+    "auditAction": "更新版面设置",
+    "fields": {
+      "hotspots_enabled": { "label": "热门景点", "help": "控制热门景点导航与 /hotspots 页面。" },
+      "trips_enabled": { "label": "我的旅行", "help": "控制旅行导航、保存旅行操作与 /trips 下的页面。只读分享链接不受影响。" },
+      "alerts_enabled": { "label": "价格通知", "help": "控制价格通知导航、创建通知操作与 /alerts 页面。" },
+      "flight_status_enabled": { "label": "航班动态", "help": "控制航班动态导航与 /flights/status 页面。" },
+      "airline_fares_enabled": { "label": "航空票价实验室", "help": "控制航空票价入口与 /labs/airlines 页面。" },
+      "pricing_enabled": { "label": "方案与次数包", "help": "控制方案导航、查看次数包操作与 /pricing 页面。" }
+    }
+  }
+}

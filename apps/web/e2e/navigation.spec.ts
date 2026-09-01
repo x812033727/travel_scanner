@@ -32,6 +32,28 @@ test("first visit detects browser language and preserves query", async ({ reques
   expect(response.headers().location).toMatch(/\/ja\/?\?campaign=autumn$/);
 });
 
+test("mobile navigation shows the admin entry from the shared auth state", async ({ page }) => {
+  let authRequests = 0;
+  await page.unroute("**/api/travel/auth/me");
+  await page.route("**/api/travel/auth/me", (route) => {
+    authRequests += 1;
+    return route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        id: "00000000-0000-4000-8000-000000000001",
+        email: "admin@example.com",
+        is_admin: true,
+      }),
+    });
+  });
+  await page.setViewportSize({ width: 390, height: 760 });
+  await page.goto("/zh-TW");
+  await page.getByRole("button", { name: "開啟導覽選單" }).click();
+  await expect(page.getByRole("navigation", { name: "手機主要導覽" }).getByRole("link", { name: "管理後台" })).toBeVisible();
+  expect(authRequests).toBe(1);
+});
+
 for (const width of [320, 390]) {
   test(`mobile language switch keeps the current page at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 760 });

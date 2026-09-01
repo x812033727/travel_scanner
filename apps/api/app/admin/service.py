@@ -26,6 +26,7 @@ from app.admin.schemas import (
     ProviderUsageView,
     PublicRuntimeConfig,
     SecretState,
+    SiteVisibility,
 )
 from app.ai.itinerary import AIItineraryPlanner, AIItineraryRequest
 from app.config import Settings, get_settings
@@ -57,6 +58,16 @@ class ProviderDefinition:
     enabled_field: str | None = None
 
 
+SITE_VISIBILITY_FIELDS = (
+    "hotspots_enabled",
+    "trips_enabled",
+    "alerts_enabled",
+    "flight_status_enabled",
+    "airline_fares_enabled",
+    "pricing_enabled",
+)
+
+
 PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     "runtime": ProviderDefinition(
         "執行模式與保護設定",
@@ -72,6 +83,12 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "provider_failure_threshold",
             "provider_circuit_seconds",
         ),
+        (),
+    ),
+    "layout": ProviderDefinition(
+        "前台版面管理",
+        "控制公開前台功能入口與頁面是否顯示；不會停用底層 API 或刪除資料。",
+        SITE_VISIBILITY_FIELDS,
         (),
     ),
     "ai_planner": ProviderDefinition(
@@ -326,6 +343,22 @@ async def effective_registration_enabled(session: AsyncSession) -> bool:
     return apply_runtime_overrides(get_settings(), [row]).registration_enabled
 
 
+def _site_visibility(settings: Settings) -> SiteVisibility:
+    return SiteVisibility(
+        **{field: bool(getattr(settings, field)) for field in SITE_VISIBILITY_FIELDS}
+    )
+
+
+async def effective_site_visibility(session: AsyncSession) -> SiteVisibility:
+    row = await session.scalar(
+        select(ProviderConfig).where(ProviderConfig.provider == "layout")
+    )
+    base = get_settings()
+    return _site_visibility(
+        base if row is None else apply_runtime_overrides(base, [row])
+    )
+
+
 def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
     if provider == "runtime":
         from app.providers.registry import flight_provider_status, hotel_provider_status
@@ -340,6 +373,10 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
                 f"飯店：{hotel.selected_provider}（{hotel.status}）"
             ),
         )
+    if provider == "layout":
+        visible = sum(bool(getattr(settings, field)) for field in SITE_VISIBILITY_FIELDS)
+        message = f"目前開放 {visible}／{len(SITE_VISIBILITY_FIELDS)} 個前台模組"
+        return True, "ready", message
     if provider == "ai_planner":
         configured_names = [
             label
@@ -594,6 +631,7 @@ async def settings_snapshot(
                             "provider_settings_updated",
                             "provider_connection_tested",
                             "system_settings_updated",
+                            "layout_settings_updated",
                         ]
                     )
                 )
@@ -639,14 +677,14 @@ def _validate_provider_values(
             merged.pop(field, None)
         else:
             merged[field] = value
-    if "registration_enabled" in merged and not isinstance(
-        merged["registration_enabled"], bool
-    ):
-        raise AppError(
-            422,
-            "provider_setting_invalid",
-            "registration_enabled 必須是布林值",
-        )
+    boolean_fields = {"registration_enabled", *SITE_VISIBILITY_FIELDS}
+    for field in boolean_fields:
+        if field in merged and not isinstance(merged[field], bool):
+            raise AppError(
+                422,
+                "provider_setting_invalid",
+                f"{field} 必須是布林值",
+            )
     modes = {
         "travel_provider_mode": {"mock", "amadeus", "live", "disabled"},
         "flight_provider_mode": {"auto", "skyscanner", "duffel", "amadeus", "mock", "disabled"},
@@ -790,7 +828,9 @@ async def update_provider_settings(
     row.config = _validate_provider_values(provider, previous_config, payload)
     stored = _merge_secret_values(decrypt_secrets(row.secret_config_encrypted), payload.secrets)
     row.secret_config_encrypted = encrypt_secrets(stored)
-    if payload.enabled is not None:
+    if provider in {"runtime", "layout"}:
+        row.enabled = True
+    elif payload.enabled is not None:
         row.enabled = payload.enabled
     row.updated_by_user_id = actor.id
     row.last_test_status = None
@@ -809,6 +849,17 @@ async def update_provider_settings(
         audit_metadata["registration_enabled"] = apply_runtime_overrides(
             get_settings(), [row]
         ).registration_enabled
+    elif provider == "layout":
+        missing = object()
+        audit_metadata["config_fields"] = sorted(
+            field
+            for field in payload.config
+            if previous_config.get(field, missing) != row.config.get(field, missing)
+        )
+        audit_action = "layout_settings_updated"
+        audit_metadata["visibility"] = _site_visibility(
+            apply_runtime_overrides(get_settings(), [row])
+        ).model_dump()
     else:
         audit_action = "provider_settings_updated"
         audit_metadata.update(

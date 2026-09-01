@@ -1,1 +1,30 @@
-{}
+{
+  "navigation": {
+    "users": "會員與次數",
+    "system": "系統設定",
+    "layout": "版面管理",
+    "providers": "API 與金鑰",
+    "hotspots": "景點候選審核"
+  },
+  "providerTabs": {
+    "label": "API 供應商設定分頁",
+    "mobileLabel": "選擇 API 供應商",
+    "audit": "最近管理紀錄"
+  },
+  "layout": {
+    "eyebrow": "SYSTEM ADMIN",
+    "title": "版面管理",
+    "description": "控制前台功能入口與頁面是否開放。關閉只會隱藏 Web 介面，不會停用底層 API 或刪除既有資料。",
+    "saveSuccess": "版面設定已儲存，前台狀態已更新。",
+    "auditDescription": "只記錄操作者、實際異動欄位與更新後結果。",
+    "auditAction": "更新版面設定",
+    "fields": {
+      "hotspots_enabled": { "label": "熱門景點", "help": "控制熱門景點導覽與 /hotspots 頁面。" },
+      "trips_enabled": { "label": "我的旅行", "help": "控制旅程導覽、儲存旅程操作與 /trips 下的頁面。唯讀分享連結不受影響。" },
+      "alerts_enabled": { "label": "價格通知", "help": "控制價格通知導覽、建立通知操作與 /alerts 頁面。" },
+      "flight_status_enabled": { "label": "航班動態", "help": "控制航班動態導覽與 /flights/status 頁面。" },
+      "airline_fares_enabled": { "label": "航空票價實驗室", "help": "控制航空票價入口與 /labs/airlines 頁面。" },
+      "pricing_enabled": { "label": "方案與次數包", "help": "控制方案導覽、查看次數包操作與 /pricing 頁面。" }
+    }
+  }
+}

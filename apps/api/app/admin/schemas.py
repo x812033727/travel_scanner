@@ -115,3 +115,12 @@ class ProviderTestResult(BaseModel):
 class PublicRuntimeConfig(BaseModel):
     google_maps_browser_key: str | None = None
     google_maps_enabled: bool = False
+
+
+class SiteVisibility(BaseModel):
+    hotspots_enabled: bool = True
+    trips_enabled: bool = True
+    alerts_enabled: bool = True
+    flight_status_enabled: bool = True
+    airline_fares_enabled: bool = True
+    pricing_enabled: bool = True

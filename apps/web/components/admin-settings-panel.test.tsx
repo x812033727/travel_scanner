@@ -107,9 +107,134 @@ const systemSnapshot = {
   ],
 };
 
+const bookingProvider = {
+  provider: "booking_demand",
+  label: "Booking.com Demand API",
+  description: "飯店即時查價",
+  enabled: true,
+  configured: true,
+  status: "ready",
+  status_message: "Demand API 已設定",
+  config: { booking_demand_env: "sandbox" },
+  config_sources: { booking_demand_env: "environment" },
+  secrets: {},
+};
+
+const providerTabsSnapshot = {
+  ...snapshot,
+  providers: [...snapshot.providers, bookingProvider],
+  audit: [{
+    id: "audit-provider",
+    action: "provider_settings_updated",
+    target: "google_maps",
+    metadata: { config_fields: ["route_cache_ttl_seconds"] },
+    created_at: "2026-09-01T11:00:00Z",
+  }],
+};
+
+const layoutSnapshot = {
+  ...snapshot,
+  providers: [{
+    provider: "layout",
+    label: "前台版面管理",
+    description: "控制公開前台功能入口",
+    enabled: true,
+    configured: true,
+    status: "ready",
+    status_message: "目前開放 6／6 個前台模組",
+    config: {
+      hotspots_enabled: true,
+      trips_enabled: true,
+      alerts_enabled: true,
+      flight_status_enabled: true,
+      airline_fares_enabled: true,
+      pricing_enabled: true,
+    },
+    config_sources: {
+      hotspots_enabled: "environment",
+      trips_enabled: "environment",
+      alerts_enabled: "environment",
+      flight_status_enabled: "environment",
+      airline_fares_enabled: "environment",
+      pricing_enabled: "environment",
+    },
+    secrets: {},
+  }],
+  audit: [],
+};
+
 afterEach(() => vi.unstubAllGlobals());
 
 describe("AdminSettingsPanel", () => {
+  it("renders one provider tab at a time and preserves unsaved drafts", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
+      new Response(JSON.stringify(providerTabsSnapshot), { status: 200 }),
+    ));
+    render(<AdminSettingsPanel scope="providers" />);
+
+    const googleHeading = await screen.findByRole("heading", { name: "Google Maps" });
+    fireEvent.change(within(googleHeading.closest("section")!).getByLabelText(/^路線快取秒數/), {
+      target: { value: "1200" },
+    });
+    fireEvent.click(screen.getByRole("tab", { name: "Booking.com Demand API" }));
+    expect(screen.queryByRole("heading", { name: "Google Maps" })).toBeNull();
+    expect(screen.getByRole("heading", { name: "Booking.com Demand API" })).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("tab", { name: "Google Maps" }));
+    expect((screen.getByLabelText(/^路線快取秒數/) as HTMLInputElement).value).toBe("1200");
+    fireEvent.click(screen.getByRole("tab", { name: "最近管理紀錄" }));
+    expect(screen.queryByRole("heading", { name: "Google Maps" })).toBeNull();
+    expect(screen.getByRole("heading", { name: "最近管理紀錄" })).toBeTruthy();
+  });
+
+  it("switches the single visible provider with the mobile selector", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
+      new Response(JSON.stringify(providerTabsSnapshot), { status: 200 }),
+    ));
+    render(<AdminSettingsPanel scope="providers" />);
+    await screen.findByRole("heading", { name: "Google Maps" });
+
+    fireEvent.change(screen.getByLabelText("選擇 API 供應商"), {
+      target: { value: "booking_demand" },
+    });
+    expect(screen.queryByRole("heading", { name: "Google Maps" })).toBeNull();
+    expect(screen.getByRole("heading", { name: "Booking.com Demand API" })).toBeTruthy();
+  });
+
+  it("loads and saves all layout switches without provider-only controls", async () => {
+    const updated = {
+      ...layoutSnapshot,
+      providers: layoutSnapshot.providers.map((provider) => ({
+        ...provider,
+        config: { ...provider.config, trips_enabled: false, pricing_enabled: false },
+        config_sources: { ...provider.config_sources, trips_enabled: "database", pricing_enabled: "database" },
+      })),
+    };
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify(layoutSnapshot), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(updated), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminSettingsPanel scope="layout" />);
+
+    const trips = await screen.findByRole("switch", { name: /我的旅行/ });
+    const pricing = screen.getByRole("switch", { name: /方案與次數包/ });
+    expect(screen.getAllByRole("switch")).toHaveLength(6);
+    expect(screen.getAllByText("環境預設")).toHaveLength(6);
+    expect(screen.queryByRole("button", { name: "測試連線" })).toBeNull();
+    expect(screen.queryByLabelText("啟用")).toBeNull();
+    fireEvent.click(trips);
+    fireEvent.click(pricing);
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    const request = fetchMock.mock.calls[1][1] as RequestInit;
+    expect(JSON.parse(String(request.body)).config).toEqual({
+      trips_enabled: false,
+      pricing_enabled: false,
+    });
+    expect(await screen.findByText("版面設定已儲存，前台狀態已更新。")).toBeTruthy();
+  });
+
   it("separates runtime settings from provider credentials", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
       new Response(JSON.stringify(systemSnapshot), { status: 200 }),
