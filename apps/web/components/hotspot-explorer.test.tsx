@@ -52,6 +52,26 @@ describe("HotspotExplorer", () => {
           articles: [],
         }));
       }
+      if (url.includes("/hotspots/hotspot-1/place")) {
+        return new Response(JSON.stringify({
+          hotspot_id: "hotspot-1",
+          hotspot_name: "淺草寺",
+          status: "ready",
+          google_maps_url: "https://www.google.com/maps/place/?q=place_id:test",
+          official_website_url: "https://www.senso-ji.jp/",
+          official_website_verified: true,
+          has_details: true,
+          updated_at: "2026-08-31T00:00:00Z",
+          address: "東京都台東区浅草2丁目3-1",
+          plus_code: { global_code: "8Q7XPR6F+82", compound_code: "PR6F+82 台東区" },
+          coordinates: { latitude: 35.714765, longitude: 139.796655, source: "google_places" },
+          opening_hours: { weekday_descriptions: ["星期一：06:00–17:00"] },
+          data_locale: "ja",
+          fetched_at: "2026-08-31T00:00:00Z",
+          expires_at: "2026-09-30T00:00:00Z",
+          attribution: { provider: "Google Maps", provider_url: "https://maps.google.com", third_party: [] },
+        }));
+      }
       return new Response(JSON.stringify({
         scope: "global",
         scope_key: "global",
@@ -92,6 +112,7 @@ describe("HotspotExplorer", () => {
           recommended_duration_minutes: 90,
           guide_counts: { article: 0, video: 1 },
           map_links: [{ provider: "google", label: "Google Maps", url: "https://www.google.com/maps/search/?api=1&query=35.7%2C139.7", primary: true }],
+          place_summary: { status: "ready", google_maps_url: "https://www.google.com/maps/place/?q=place_id:test", official_website_url: "https://www.senso-ji.jp/", official_website_verified: true, has_details: true, updated_at: "2026-08-31T00:00:00Z" },
         }],
       }));
     }));
@@ -106,12 +127,16 @@ describe("HotspotExplorer", () => {
     expect(screen.getAllByText(/深度旅遊/).length).toBeGreaterThan(0);
     expect(screen.getByText("市區巷弄")).toBeTruthy();
     expect(screen.getByText(/交通約 20 分鐘/)).toBeTruthy();
-    expect(screen.getByRole("button", { name: /文章與影片介紹/ })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /景點詳情/ })).toBeTruthy();
     const map = screen.getByRole("link", { name: /Google Maps/ });
     expect(map.getAttribute("target")).toBe("_blank");
     expect(map.getAttribute("rel")).toContain("noopener");
-    fireEvent.click(screen.getByRole("button", { name: /文章與影片介紹/ }));
+    fireEvent.click(screen.getByRole("button", { name: /景點詳情/ }));
     expect(await screen.findByRole("heading", { name: "認識 淺草寺" })).toBeTruthy();
+    expect(await screen.findByText("東京都台東区浅草2丁目3-1")).toBeTruthy();
+    expect(screen.getByText("PR6F+82 台東区")).toBeTruthy();
+    const official = screen.getAllByRole("link", { name: /官方網站/ })[0];
+    expect(official.getAttribute("rel")).toContain("noopener");
     const guide = await screen.findByRole("link", { name: /第一次去淺草寺/ });
     expect(guide.getAttribute("target")).toBe("_blank");
     expect(guide.getAttribute("href")).toContain("/zh-TW/out/guides/");

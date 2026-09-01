@@ -19,7 +19,12 @@ from app.trips.itinerary import ItineraryDay
 # fields (1,000 free calls/month); everything below them is Pro (5,000 free/month).
 # Callers that only need to place a pin ask for LOCATE_FIELD_MASK and stay on Pro.
 LOCATE_FIELD_MASK = (
-    "places.id,places.displayName,places.formattedAddress,places.location,places.googleMapsUri"
+    "places.id,places.displayName,places.formattedAddress,places.location,"
+    "places.googleMapsUri,places.postalAddress.regionCode"
+)
+PLACE_PROFILE_FIELD_MASK = (
+    "id,displayName,formattedAddress,location,plusCode,googleMapsUri,"
+    "regularOpeningHours,websiteUri,attributions"
 )
 DETAIL_FIELD_MASK = (
     "places.id,places.formattedAddress,places.location,places.rating,"
@@ -168,10 +173,7 @@ class GoogleTravelService:
             params["sessionToken"] = session_token
         payload = await self._get(
             f"{self.place_details_url}/{quote(place_id, safe='')}",
-            field_mask=(
-                "id,displayName,formattedAddress,location,googleMapsUri,"
-                "regularOpeningHours,entrances"
-            ),
+            field_mask=f"{PLACE_PROFILE_FIELD_MASK},entrances",
             operation="place_details",
             params=params,
         )
@@ -180,6 +182,7 @@ class GoogleTravelService:
         display = cast(dict[str, Any], payload.get("displayName") or {})
         location = cast(dict[str, Any], payload.get("location") or {})
         regular = cast(dict[str, Any], payload.get("regularOpeningHours") or {})
+        plus_code = cast(dict[str, Any], payload.get("plusCode") or {})
         return {
             "provider": "google_places",
             "place_id": payload.get("id") or place_id,
@@ -189,9 +192,76 @@ class GoogleTravelService:
             "longitude": location.get("longitude"),
             "google_maps_url": payload.get("googleMapsUri"),
             "opening_hours": regular.get("weekdayDescriptions", []),
+            "opening_hours_structured": {
+                "weekday_descriptions": regular.get("weekdayDescriptions", []),
+                "periods": regular.get("periods", []),
+                "open_now": regular.get("openNow"),
+                "next_open_time": regular.get("nextOpenTime"),
+                "next_close_time": regular.get("nextCloseTime"),
+            },
+            "plus_code": {
+                "global_code": plus_code.get("globalCode"),
+                "compound_code": plus_code.get("compoundCode"),
+            },
+            "website_url": payload.get("websiteUri"),
+            "attributions": payload.get("attributions", []),
+            "data_locale": self.locale,
             "entrances": payload.get("entrances", []),
             "attribution": "Google Maps",
         }
+
+    async def search_place_candidates(
+        self,
+        name: str,
+        latitude: float | None,
+        longitude: float | None,
+        *,
+        region_code: str | None = None,
+        limit: int = 3,
+    ) -> list[dict[str, Any]]:
+        """Return a small locate-only candidate set for policy-aware matching."""
+        if not self.configured:
+            return []
+        page_size = max(1, min(limit, 5))
+        body: dict[str, Any] = {
+            "textQuery": name.strip(),
+            "languageCode": self.locale,
+            "pageSize": page_size,
+        }
+        if region_code:
+            body["regionCode"] = region_code.upper()
+        if latitude is not None and longitude is not None:
+            body["locationBias"] = {
+                "circle": {
+                    "center": {"latitude": latitude, "longitude": longitude},
+                    "radius": 5000,
+                }
+            }
+        payload = await self._post(
+            self.text_search_url,
+            json_data=body,
+            field_mask=LOCATE_FIELD_MASK,
+            operation="places_text_search_locate",
+        )
+        candidates: list[dict[str, Any]] = []
+        for place in cast(list[dict[str, Any]], payload.get("places", []))[:page_size]:
+            display = cast(dict[str, Any], place.get("displayName") or {})
+            location = cast(dict[str, Any], place.get("location") or {})
+            postal_address = cast(dict[str, Any], place.get("postalAddress") or {})
+            if not place.get("id"):
+                continue
+            candidates.append(
+                {
+                    "place_id": place["id"],
+                    "name": display.get("text") or place.get("formattedAddress") or name,
+                    "address": place.get("formattedAddress"),
+                    "country_code": postal_address.get("regionCode"),
+                    "latitude": location.get("latitude"),
+                    "longitude": location.get("longitude"),
+                    "google_maps_url": place.get("googleMapsUri"),
+                }
+            )
+        return candidates
 
     async def search_place(
         self,
