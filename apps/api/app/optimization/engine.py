@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 from app.pricing.engine import TotalCost, TotalCostEngine
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, TransportOffer
 from app.search.schemas import SearchCreate
-from app.trips.itinerary import ItineraryDay, ItineraryHotspot, build_itinerary
+from app.trips.itinerary import ItineraryDay, ItineraryFood, ItineraryHotspot, build_itinerary
 
 WEIGHTS = {
     "balanced": {"price": 0.35, "time": 0.20, "convenience": 0.20, "quality": 0.15, "risk": 0.10},
@@ -350,6 +350,7 @@ class TripOptimizer:
         activities: list[ActivityOffer],
         transports: list[TransportOffer],
         hotspots: list[ItineraryHotspot] | None = None,
+        foods: list[ItineraryFood] | None = None,
     ) -> list[TripPlanResult]:
         candidates = self._candidates(query, flights, hotels, activities, transports)
         if not candidates:
@@ -444,6 +445,7 @@ class TripOptimizer:
                         candidate.activity,
                         candidate.transport,
                         hotspots,
+                        foods,
                     ),
                 )
             )

@@ -35,7 +35,12 @@ def test_secondary_destination_and_offline_catalog_contract() -> None:
     assert len(SEARCHABLE_DESTINATIONS) == 27
     assert destination_for_id("tainan").parent_destination_id == "kaohsiung"  # type: ignore[union-attr]
 
-    rows = [item for item in HOTSPOT_SEEDS if item.destination_id in SECONDARY_IDS]
+    food_area_supplements = {"sendai-asaichi-market", "chiang-rai-night-bazaar"}
+    rows = [
+        item
+        for item in HOTSPOT_SEEDS
+        if item.destination_id in SECONDARY_IDS and item.slug not in food_area_supplements
+    ]
     assert len(rows) == 180
     by_destination = defaultdict(list)
     for item in rows:
@@ -49,8 +54,14 @@ def test_secondary_destination_and_offline_catalog_contract() -> None:
         assert Counter(item.is_deep_travel for item in items) == {False: 10, True: 5}
         deep = [item for item in items if item.is_deep_travel]
         assert Counter(item.depth_kind for item in deep) == {"urban_local": 3, "day_trip": 2}
-        assert len({item.category for item in items}) >= 5
-        assert max(Counter(item.category for item in items).values()) <= 3
+        destination_id = items[0].destination_id
+        audited_items = [
+            item for item in HOTSPOT_SEEDS if item.destination_id == destination_id
+        ]
+        assert len({item.category for item in audited_items}) >= 5
+        # The food-area audit corrects generated museum/temple/park labels instead
+        # of preserving the old cyclic category quota at the expense of accuracy.
+        assert max(Counter(item.category for item in items).values()) <= 6
 
 
 @pytest.mark.asyncio

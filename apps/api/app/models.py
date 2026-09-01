@@ -334,6 +334,76 @@ class TravelHotspot(Timestamped, Base):
     depth_score: Mapped[Decimal | None] = mapped_column(Numeric(5, 2), nullable=True)
 
 
+class TravelFood(Timestamped, Base):
+    __tablename__ = "travel_foods"
+    __table_args__ = (
+        CheckConstraint(
+            "food_kind IN ('main', 'noodle_soup', 'street_food', 'dessert', 'drink')",
+            name="ck_travel_food_kind",
+        ),
+        CheckConstraint(
+            "review_status IN ('pending', 'approved', 'rejected', 'disabled')",
+            name="ck_travel_food_review_status",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    slug: Mapped[str] = mapped_column(String(128), unique=True, index=True)
+    country_code: Mapped[str] = mapped_column(String(2), index=True)
+    local_name: Mapped[str] = mapped_column(String(255))
+    romanized_name: Mapped[str] = mapped_column(String(255))
+    food_kind: Mapped[str] = mapped_column(String(24), index=True)
+    meal_types: Mapped[list[str]] = mapped_column(JSON, default=list)
+    ingredient_tags: Mapped[list[str]] = mapped_column(JSON, default=list)
+    dietary_notes: Mapped[list[str]] = mapped_column(JSON, default=list)
+    search_text: Mapped[str] = mapped_column(Text)
+    source_urls: Mapped[list[str]] = mapped_column(JSON, default=list)
+    review_status: Mapped[str] = mapped_column(String(24), default="approved", index=True)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+    display_order: Mapped[int] = mapped_column(Integer, default=100)
+
+
+class FoodLocalization(Timestamped, Base):
+    __tablename__ = "food_localizations"
+    __table_args__ = (
+        UniqueConstraint("food_id", "locale", name="uq_food_localization_locale"),
+        CheckConstraint(
+            "locale IN ('en', 'ja', 'ko', 'zh-TW', 'zh-CN')",
+            name="ck_food_localization_locale",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    food_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_foods.id", ondelete="CASCADE"), index=True
+    )
+    locale: Mapped[str] = mapped_column(String(16), index=True)
+    name: Mapped[str] = mapped_column(String(255))
+    summary: Mapped[str] = mapped_column(Text)
+
+
+class FoodDestination(Base):
+    __tablename__ = "food_destinations"
+    __table_args__ = (UniqueConstraint("food_id", "destination_id", name="uq_food_destination"),)
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    food_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_foods.id", ondelete="CASCADE"), index=True
+    )
+    destination_id: Mapped[str] = mapped_column(String(64), index=True)
+    display_order: Mapped[int] = mapped_column(Integer, default=100)
+
+
+class FoodHotspot(Base):
+    __tablename__ = "food_hotspots"
+    __table_args__ = (UniqueConstraint("food_id", "hotspot_id", name="uq_food_hotspot"),)
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    food_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_foods.id", ondelete="CASCADE"), index=True
+    )
+    hotspot_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="CASCADE"), index=True
+    )
+    display_order: Mapped[int] = mapped_column(Integer, default=100)
+
+
 class HotspotLocalization(Timestamped, Base):
     __tablename__ = "hotspot_localizations"
     __table_args__ = (

@@ -57,6 +57,20 @@ class ItineraryHotspot(BaseModel):
     is_cross_city: bool = False
 
 
+class ItineraryFood(BaseModel):
+    food_id: UUID
+    name: str
+    local_name: str
+    food_kind: str
+    meal_types: list[str]
+    hotspot_id: UUID | None = None
+    hotspot_name: str | None = None
+    latitude: float | None = None
+    longitude: float | None = None
+    map_links: list[dict[str, str | bool]] = Field(default_factory=list)
+    merchant_status: str = "merchant_pending"
+
+
 def _id(day: date, position: int, title: str) -> UUID:
     return uuid5(NAMESPACE_URL, f"travel-scanner:itinerary:{day}:{position}:{title}")
 
@@ -131,6 +145,7 @@ def build_itinerary(
     activity: ActivityOffer | None,
     transport: TransportOffer | None,
     hotspots: list[ItineraryHotspot] | None = None,
+    foods: list[ItineraryFood] | None = None,
 ) -> list[ItineraryDay]:
     departure = query.departure_date or datetime.now(UTC).date()
     returning = query.return_date or departure + timedelta(days=4)
@@ -382,6 +397,66 @@ def build_itinerary(
                     is_estimated=True,
                     data={"source_mode": "estimate", "minutes": 30, **destination_context},
                 )
+
+    food_candidates = list(foods or []) if "food" in query.preferences.interests else []
+    for day in full_days:
+        if not food_candidates:
+            break
+        anchors = [
+            (item.latitude, item.longitude)
+            for item in rows[day]
+            if item.latitude is not None and item.longitude is not None
+        ]
+        anchor = anchors[-1] if anchors else None
+
+        def food_distance(
+            item: ItineraryFood, current_anchor: tuple[float, float] | None = anchor
+        ) -> tuple[bool, float]:
+            if current_anchor is None or item.latitude is None or item.longitude is None:
+                return (item.hotspot_id is None, 0.0)
+            return (
+                False,
+                (item.latitude - current_anchor[0]) ** 2
+                + (item.longitude - current_anchor[1]) ** 2,
+            )
+
+        food = min(food_candidates, key=food_distance)
+        food_candidates.remove(food)
+        meal_type = "dinner" if "dinner" in food.meal_types else food.meal_types[0]
+        start_hour = 18 if meal_type == "dinner" else 12
+        confirmed = food.hotspot_id is not None
+        add(
+            day,
+            item_type="food",
+            title=food.name,
+            location_name=food.hotspot_name or "店家待確認",
+            start_time=_at(day, start_hour, timezone=destination_timezone),
+            end_time=_at(day, start_hour + 1, 30, timezone=destination_timezone),
+            latitude=food.latitude,
+            longitude=food.longitude,
+            duration_minutes=90,
+            is_estimated=not confirmed,
+            location_source="food_catalog",
+            data={
+                "source_mode": "approved_food_catalog",
+                "food_id": str(food.food_id),
+                "food_name": food.name,
+                "local_name": food.local_name,
+                "food_kind": food.food_kind,
+                "meal_type": meal_type,
+                "hotspot_id": str(food.hotspot_id) if food.hotspot_id else None,
+                "map_links": food.map_links,
+                "merchant_status": food.merchant_status,
+                "needs_place_confirmation": not confirmed,
+                "interest": "food",
+                **destination_context,
+            },
+            notes=(
+                "請由地圖確認最新店家、營業時間與評價"
+                if confirmed
+                else "店家待確認；不指定未驗證的餐廳"
+            ),
+        )
 
     if hotel and len(days) > 1:
         add(

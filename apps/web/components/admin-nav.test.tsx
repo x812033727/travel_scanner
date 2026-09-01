@@ -13,6 +13,7 @@ describe("AdminNav", () => {
       "版面管理",
       "API 與金鑰",
       "景點候選審核",
+      "美食目錄管理",
     ]);
     expect(links.map((link) => link.getAttribute("href"))).toEqual([
       "/admin/users",
@@ -21,6 +22,7 @@ describe("AdminNav", () => {
       "/admin/layout-settings",
       "/admin/settings",
       "/admin/hotspots",
+      "/admin/foods",
     ]);
     expect(screen.getByRole("link", { name: "系統設定" }).getAttribute("aria-current")).toBe("page");
   });
