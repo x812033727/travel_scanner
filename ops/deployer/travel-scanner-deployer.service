@@ -1,0 +1,32 @@
+[Unit]
+Description=Travel Scanner restricted deployment agent
+After=docker.service network-online.target
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=simple
+User=travel-deployer
+Group=travel-deployer
+SupplementaryGroups=docker travel-api
+WorkingDirectory=/opt/travel-scanner-deployer
+EnvironmentFile=/etc/travel-scanner/deployer.env
+ExecStart=/usr/bin/python3 -m deployment_agent
+ExecStartPost=/usr/bin/chgrp travel-api /run/travel-scanner-deployer/deployer.sock
+Restart=on-failure
+RestartSec=5
+UMask=0007
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/run/travel-scanner-deployer /var/lib/travel-scanner-deployer /srv/travel-scanner /var/backups/travel-scanner
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target
