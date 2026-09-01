@@ -8,6 +8,15 @@
   "sortLabel": "排序方式",
   "sort": { "recommended": "綜合推薦", "rating": "星等最高", "reviews": "評論最多", "distance": "距離最近" },
   "recommendationNote": "綜合推薦以貝葉斯修正平衡星等與評論量，不將付費廣告納入排名。",
+  "preferenceSaved": "搜尋範圍與排序會保存在這台裝置，下次直接沿用。",
+  "verifiedEditorial": "官方來源已核准",
+  "favorite": "收藏", "favorited": "已收藏", "favoriteSaved": "已加入收藏。", "favoriteRemoved": "已取消收藏。",
+  "addToTrip": "加入行程", "openUber": "用 Uber 前往",
+  "verifiedWebsite": "已查核官方網站", "websiteLive": "官方網站（Google 即時）",
+  "sourceEvidence": "查看 {count} 筆來源證據",
+  "tripPickerTitle": "選擇要加入的旅程", "closeTripPicker": "關閉行程選擇",
+  "tripLabel": "我的旅行", "dateLabel": "日期", "mealLabel": "餐食", "lunch": "午餐", "dinner": "晚餐",
+  "savingTrip": "儲存中…", "confirmTrip": "確認加入行程", "noTrips": "尚無可加入的旅程，請先建立有日期的旅行。", "tripSaved": "已加入「{trip}」。",
   "coverage": { "title": "10 公里覆蓋掃描", "not_started": "即時結果", "queued": "排隊中", "running": "掃描中", "quota_paused": "安全暫停", "partial": "部分完成", "completed": "已完成", "failed": "需處理", "detail": "已保存 {candidates} 個 Place ID・網格 {completed}/{total}" },
   "loading": "正在查詢 Google Maps 最新的餐飲資料…",
   "retry": "再試一次",
@@ -30,9 +39,22 @@
   "admin": {
     "eyebrow": "餐廳覆蓋率", "title": "附近用餐掃描", "description": "逐步掃描每個已核准景點 10 公里內的餐飲地點，並將 Google 每月呼叫控制在設定的安全預算內。",
     "scanMissing": "掃描尚未覆蓋景點", "refresh": "重新整理", "scanStarted": "已排入 {count} 個掃描作業。", "nothingToScan": "所有符合資格的景點都已覆蓋或正在掃描。",
-    "usage": { "aggregate": "Aggregate 覆蓋掃描", "nearby": "Nearby 即時首頁", "details": "Place 即時詳情" },
+    "usage": { "aggregate": "Aggregate 覆蓋掃描", "nearby": "Nearby 即時首頁", "details": "Place 即時詳情", "idsOnly": "免費 IDs Only" },
+    "pauseAutomation": "暫停自動掃描", "resumeAutomation": "恢復自動掃描",
+    "projectedUsage": "月底預估 {projected} 次（{percent}%）", "alert": { "normal": "用量正常", "watch": "已達 70% 觀察線", "warning": "已達 80% 警戒線", "critical": "已達 90% 停損線" },
+    "idsOnlyFree": "不計費；與付費 SKU 分開統計", "idsOnlyBreakdown": "文字查找 {search}・ID 健康檢查 {refresh}", "hotspotCalls": "此景點 Aggregate {aggregate}・Details {details}",
     "safetyBudget": "{period} 安全預算・剩餘 {remaining}", "featureUsage": "其中餐廳功能使用 {used} 次", "googleFreeTier": "Google 每月免費用量觀測：",
     "search": "搜尋景點或城市", "statusFilter": "覆蓋狀態", "allStatuses": "全部狀態", "coverage": "已完成 {completed}/{total}",
     "placeIds": "{count} 個 Place ID", "scanOne": "掃描 10 公里", "empty": "沒有符合條件的景點"
+  },
+  "adminSources": {
+    "eyebrow": "資料來源治理", "title": "Place ID、店家官網與政府觀光資料", "description": "Google 只長期保存 Place ID；店名、官網與叫車座標必須由店家官網或政府／官方觀光來源逐欄佐證，核准後才公開。",
+    "previewReady": "找到 {count} 個 Place ID 候選。", "imported": "Place ID 已確認門檻並加入景點。", "saved": "官方來源資料已儲存。", "identityResult": "Place ID 狀態：{status}",
+    "importTitle": "貼上 Maps 網址或 Place ID", "importDescription": "安全展開 Google 短網址；網址沒有 ID 時才用免費 Text Search IDs Only。確認匯入時會即時檢查 3.8 星與 1,000 則評論。",
+    "hotspot": "對應景點", "mapsInput": "Google Maps 網址／Place ID", "fallbackQuery": "備用店名或地址", "fallbackPlaceholder": "只有網址沒有 ID 時使用", "preview": "免費預覽 Place ID", "idsOnlyNotice": "預覽與 ID 健康檢查只要求識別欄位，不讀取或保存店名等 Google 顯示資料。", "openMap": "開啟地圖", "confirmImport": "確認門檻並匯入",
+    "coverageTitle": "官方資料補齊進度", "approved": "已核准", "missing": "待補資料", "governmentContext": "官方目的地背景", "contextDisclosure": "155 家既有候選皆有官方目的地飲食指南；這只代表地區背景，不代表官方列出該店。已有 {direct} 家具備店家級直接證據。",
+    "status": { "missing": "待建立", "pending": "待審核", "approved": "已核准", "rejected": "已拒絕", "disabled": "已停用" }, "yes": "有", "no": "無", "itemCoverage": "來源 {sources}・官網 {website}・叫車座標 {ride}", "refreshIdentity": "檢查 Place ID", "editSources": "補齊來源", "empty": "目前沒有餐廳 Place ID", "editing": "編輯官方資料",
+    "displayName": "來源佐證店名", "localName": "當地店名", "address": "來源佐證地址", "officialWebsite": "店家官方網站", "latitude": "叫車緯度（非 Google）", "longitude": "叫車經度（非 Google）",
+    "sourceNumber": "來源 {number}", "removeSource": "移除來源", "merchantOfficial": "店家官方", "officialTourism": "政府／官方觀光", "sourceTitle": "來源標題", "claim": { "display_name": "佐證店名", "address": "佐證地址", "official_website": "佐證官網", "coordinates": "佐證座標" }, "addSource": "新增來源", "save": "儲存官方資料"
   }
 }

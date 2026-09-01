@@ -30,6 +30,7 @@ from app.models import (
     TravelHotspot,
 )
 from app.problems import AppError
+from app.restaurants.editorial import validate_editorial_url
 
 router = APIRouter(prefix="/admin/foods", tags=["admin foods"])
 Session = Annotated[AsyncSession, Depends(get_session)]
@@ -37,6 +38,9 @@ FoodKind = Literal["main", "noodle_soup", "street_food", "dessert", "drink"]
 ReviewStatus = Literal["pending", "approved", "rejected", "disabled"]
 MapMatchStatus = Literal["unverified", "verified", "ambiguous", "disabled"]
 MerchantSourceType = Literal["official_tourism", "merchant_official", "michelin_licensed"]
+MerchantSourceScope = Literal[
+    "destination_context", "merchant_listing", "merchant_website", "coordinates"
+]
 MichelinDistinction = Literal[
     "three_star", "two_star", "one_star", "green_star", "bib_gourmand", "selected"
 ]
@@ -98,14 +102,19 @@ class FoodBatchPayload(BaseModel):
 
 class FoodMerchantSourcePayload(BaseModel):
     source_type: MerchantSourceType
+    source_scope: MerchantSourceScope = "destination_context"
     source_title: str = Field(min_length=1, max_length=255)
     source_url: str = Field(pattern=r"^https://", max_length=2048)
+    claims: list[Literal["display_name", "address", "official_website", "coordinates"]] = Field(
+        default_factory=list, max_length=4
+    )
     edition_year: int | None = Field(default=None, ge=1900, le=2100)
     distinction: MichelinDistinction | None = None
     is_current: bool = True
 
     @model_validator(mode="after")
     def validate_michelin_fields(self) -> FoodMerchantSourcePayload:
+        validate_editorial_url(self.source_url)
         if self.source_type != "michelin_licensed" and (
             self.edition_year is not None or self.distinction is not None
         ):
@@ -114,6 +123,8 @@ class FoodMerchantSourcePayload(BaseModel):
             self.edition_year is None or self.distinction is None
         ):
             raise ValueError("米其林授權來源必須同時填寫年度與級別")
+        if self.source_scope == "destination_context" and self.claims:
+            raise ValueError("目的地背景來源不可佐證特定店家欄位")
         return self
 
 
@@ -135,6 +146,7 @@ class FoodMerchantWritePayload(BaseModel):
     naver_map_url: str | None = Field(
         default=None, pattern=r"^https://map\.naver\.com/", max_length=2048
     )
+    official_website_url: str | None = Field(default=None, max_length=2048)
     map_match_status: MapMatchStatus = "unverified"
     review_status: ReviewStatus = "pending"
     is_active: bool = True
@@ -148,6 +160,13 @@ class FoodMerchantWritePayload(BaseModel):
             raise ValueError("緯度與經度必須同時提供")
         if self.coordinate_source_url and not self.coordinate_source_url.startswith("https://"):
             raise ValueError("座標來源必須是 HTTPS 網址")
+        if self.official_website_url:
+            validate_editorial_url(self.official_website_url)
+            if not any(
+                source.source_scope == "merchant_website" and "official_website" in source.claims
+                for source in self.sources
+            ):
+                raise ValueError("店家官網必須附上 merchant_website 來源佐證")
         return self
 
 
@@ -168,17 +187,27 @@ class FoodMerchantUpdatePayload(BaseModel):
     naver_map_url: str | None = Field(
         default=None, pattern=r"^https://map\.naver\.com/", max_length=2048
     )
+    official_website_url: str | None = Field(default=None, max_length=2048)
     map_match_status: MapMatchStatus | None = None
     review_status: ReviewStatus | None = None
     is_active: bool | None = None
     display_order: int | None = Field(default=None, ge=0, le=10_000)
     food_ids: list[UUID] | None = Field(default=None, min_length=1, max_length=70)
-    sources: list[FoodMerchantSourcePayload] | None = Field(default=None, max_length=20)
+    sources: list[FoodMerchantSourcePayload] | None = Field(
+        default=None, min_length=1, max_length=20
+    )
 
     @model_validator(mode="after")
     def validate_source_url(self) -> FoodMerchantUpdatePayload:
         if self.coordinate_source_url and not self.coordinate_source_url.startswith("https://"):
             raise ValueError("座標來源必須是 HTTPS 網址")
+        if self.official_website_url:
+            validate_editorial_url(self.official_website_url)
+            if not self.sources or not any(
+                source.source_scope == "merchant_website" and "official_website" in source.claims
+                for source in self.sources
+            ):
+                raise ValueError("更新店家官網時必須一併提供 merchant_website 來源佐證")
         return self
 
 
@@ -596,8 +625,10 @@ async def _replace_merchant_relations(
                 FoodMerchantSource(
                     merchant_id=merchant.id,
                     source_type=source.source_type,
+                    source_scope=source.source_scope,
                     source_title=source.source_title,
                     source_url=source.source_url,
+                    claims_json=list(source.claims),
                     edition_year=source.edition_year,
                     distinction=source.distinction,
                     is_current=source.is_current,
@@ -640,6 +671,8 @@ async def _merchant_admin_item(session: AsyncSession, merchant: FoodMerchant) ->
         "coordinate_verified_at": merchant.coordinate_verified_at,
         "google_place_id": merchant.google_place_id,
         "naver_map_url": merchant.naver_map_url,
+        "official_website_url": merchant.official_website_url,
+        "official_website_verified_at": merchant.official_website_verified_at,
         "map_match_status": merchant.map_match_status,
         "review_status": merchant.review_status,
         "is_active": merchant.is_active,
@@ -652,8 +685,10 @@ async def _merchant_admin_item(session: AsyncSession, merchant: FoodMerchant) ->
             {
                 "id": str(source.id),
                 "source_type": source.source_type,
+                "source_scope": source.source_scope,
                 "source_title": source.source_title,
                 "source_url": source.source_url,
+                "claims": source.claims_json,
                 "edition_year": source.edition_year,
                 "distinction": source.distinction,
                 "is_current": source.is_current,
@@ -794,6 +829,8 @@ async def create_food_merchant(
         ),
         google_place_id=payload.google_place_id,
         naver_map_url=payload.naver_map_url,
+        official_website_url=payload.official_website_url,
+        official_website_verified_at=now if payload.official_website_url else None,
         map_match_status=payload.map_match_status,
         review_status=payload.review_status,
         is_active=payload.is_active,
@@ -856,6 +893,41 @@ async def update_food_merchant(
         if "coordinate_source_url" in payload.model_fields_set
         else merchant.coordinate_source_url
     )
+    official_website_url = (
+        payload.official_website_url
+        if "official_website_url" in payload.model_fields_set
+        else merchant.official_website_url
+    )
+    if official_website_url:
+        validate_editorial_url(official_website_url)
+        if payload.sources is not None:
+            has_website_evidence = any(
+                source.source_scope == "merchant_website"
+                and "official_website" in source.claims
+                and source.is_current
+                for source in payload.sources
+            )
+        else:
+            website_sources = list(
+                (
+                    await session.scalars(
+                        select(FoodMerchantSource).where(
+                            FoodMerchantSource.merchant_id == merchant.id,
+                            FoodMerchantSource.source_scope == "merchant_website",
+                            FoodMerchantSource.is_current.is_(True),
+                        )
+                    )
+                ).all()
+            )
+            has_website_evidence = any(
+                "official_website" in source.claims_json for source in website_sources
+            )
+        if not has_website_evidence:
+            raise AppError(
+                422,
+                "restaurant_source_evidence_missing",
+                "店家官網缺少仍有效的 merchant_website 來源佐證",
+            )
     country_code = payload.country_code or merchant.country_code
     map_status = payload.map_match_status or merchant.map_match_status
     review_status = payload.review_status or merchant.review_status
@@ -897,6 +969,7 @@ async def update_food_merchant(
         "coordinate_source_url",
         "google_place_id",
         "naver_map_url",
+        "official_website_url",
         "map_match_status",
         "review_status",
         "is_active",
@@ -912,6 +985,10 @@ async def update_food_merchant(
             value = value.casefold()
         setattr(merchant, field, value)
     merchant.plus_code_global = plus_code
+    if "official_website_url" in payload.model_fields_set:
+        merchant.official_website_verified_at = (
+            datetime.now(UTC) if payload.official_website_url else None
+        )
     if any(
         field in payload.model_fields_set
         for field in ("latitude", "longitude", "coordinate_source_type", "coordinate_source_url")

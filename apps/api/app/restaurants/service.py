@@ -20,14 +20,18 @@ from app.hotspots.service import PUBLIC_REVIEW_STATUSES
 from app.i18n import Locale
 from app.models import (
     HotspotRestaurantCandidate,
+    RestaurantEditorialProfile,
+    RestaurantFavorite,
     RestaurantPlace,
     RestaurantScanCell,
     RestaurantScanRun,
     TravelHotspot,
 )
 from app.problems import AppError
+from app.restaurants.editorial import editorial_by_google_place_id
 from app.restaurants.google import (
     GoogleRestaurantProvider,
+    RestaurantIdentityResult,
     RestaurantProviderError,
     RestaurantQuotaExceeded,
     RestaurantSnapshot,
@@ -157,7 +161,7 @@ async def cache_restaurant_location(
         return
 
 
-async def _save_identity(
+async def save_restaurant_identity(
     session: AsyncSession,
     hotspot_id: UUID,
     place_id: str,
@@ -178,6 +182,9 @@ async def _save_identity(
         await session.flush()
     elif place.generated_maps_url != generated_maps_url:
         place.generated_maps_url = generated_maps_url
+    place.identity_status = "active"
+    place.identity_checked_at = datetime.now(UTC)
+    place.identity_error_code = None
     candidate = await session.scalar(
         select(HotspotRestaurantCandidate).where(
             HotspotRestaurantCandidate.hotspot_id == hotspot_id,
@@ -229,6 +236,7 @@ async def _coverage_status(session: AsyncSession, hotspot_id: UUID) -> dict[str,
             .where(
                 HotspotRestaurantCandidate.hotspot_id == hotspot_id,
                 RestaurantPlace.is_suppressed.is_(False),
+                RestaurantPlace.identity_status.not_in(("moved", "not_found")),
             )
         )
         or 0
@@ -292,6 +300,7 @@ async def search_restaurants(
             .where(
                 HotspotRestaurantCandidate.hotspot_id == hotspot_id,
                 RestaurantPlace.is_suppressed.is_(False),
+                RestaurantPlace.identity_status.not_in(("moved", "not_found")),
             )
         )
         if exclude_place_ids:
@@ -322,7 +331,7 @@ async def search_restaurants(
     for snapshot in snapshots:
         if not snapshot.qualified:
             continue
-        await _save_identity(
+        await save_restaurant_identity(
             session,
             hotspot.id,
             snapshot.place_id,
@@ -333,6 +342,11 @@ async def search_restaurants(
         item = _serialize_snapshot(snapshot, hotspot, observed_at=observed_at)
         if item is not None and item["distance_km"] <= radius_km:
             items.append(item)
+    editorial = await editorial_by_google_place_id(
+        session, [str(item["place_id"]) for item in items]
+    )
+    for item in items:
+        item["editorial"] = editorial.get(str(item["place_id"]))
     await session.commit()
     coverage = await _coverage_status(session, hotspot_id)
     if not coverage["candidate_count"]:
@@ -356,6 +370,100 @@ async def search_restaurants(
             "other_google_fields": "live_only",
         },
     }
+
+
+async def ensure_restaurant_place(
+    session: AsyncSession,
+    place_id: str,
+) -> RestaurantPlace:
+    place = await session.scalar(
+        select(RestaurantPlace).where(RestaurantPlace.google_place_id == place_id)
+    )
+    if place is None:
+        place = RestaurantPlace(
+            google_place_id=place_id,
+            generated_maps_url=build_place_maps_url(place_id),
+        )
+        session.add(place)
+        await session.flush()
+    return place
+
+
+async def refresh_restaurant_identity(
+    session: AsyncSession,
+    provider: GoogleRestaurantProvider,
+    place: RestaurantPlace,
+) -> RestaurantIdentityResult:
+    now = datetime.now(UTC)
+    try:
+        result = await provider.refresh_identity(place.google_place_id)
+    except RestaurantProviderError:
+        place.identity_error_code = "place_id_refresh_failed"
+        place.identity_checked_at = now
+        await session.commit()
+        raise
+    place.identity_status = result.status
+    place.identity_checked_at = now
+    place.identity_error_code = None
+    place.successor_place_id = result.moved_place_id
+    if result.moved_place_id:
+        successor = await ensure_restaurant_place(session, result.moved_place_id)
+        successor.identity_status = "active"
+        successor.identity_checked_at = now
+        old_candidates = list(
+            (
+                await session.scalars(
+                    select(HotspotRestaurantCandidate).where(
+                        HotspotRestaurantCandidate.restaurant_place_id == place.id
+                    )
+                )
+            ).all()
+        )
+        for candidate in old_candidates:
+            duplicate = await session.scalar(
+                select(HotspotRestaurantCandidate).where(
+                    HotspotRestaurantCandidate.hotspot_id == candidate.hotspot_id,
+                    HotspotRestaurantCandidate.restaurant_place_id == successor.id,
+                )
+            )
+            if duplicate is None:
+                candidate.restaurant_place_id = successor.id
+            else:
+                await session.delete(candidate)
+        old_favorites = list(
+            (
+                await session.scalars(
+                    select(RestaurantFavorite).where(
+                        RestaurantFavorite.restaurant_place_id == place.id
+                    )
+                )
+            ).all()
+        )
+        for favorite in old_favorites:
+            duplicate = await session.scalar(
+                select(RestaurantFavorite).where(
+                    RestaurantFavorite.user_id == favorite.user_id,
+                    RestaurantFavorite.restaurant_place_id == successor.id,
+                )
+            )
+            if duplicate is None:
+                favorite.restaurant_place_id = successor.id
+            else:
+                await session.delete(favorite)
+        old_profile = await session.scalar(
+            select(RestaurantEditorialProfile).where(
+                RestaurantEditorialProfile.restaurant_place_id == place.id
+            )
+        )
+        successor_profile = await session.scalar(
+            select(RestaurantEditorialProfile).where(
+                RestaurantEditorialProfile.restaurant_place_id == successor.id
+            )
+        )
+        if old_profile is not None and successor_profile is None:
+            old_profile.restaurant_place_id = successor.id
+    await session.commit()
+    return result
 
 
 def split_circle(
@@ -461,7 +569,7 @@ async def execute_scan(
                     observed_at = datetime.now(UTC)
                     item = _serialize_snapshot(snapshot, hotspot, observed_at=observed_at)
                     if item is not None and item["distance_km"] <= run.radius_meters / 1_000:
-                        await _save_identity(
+                        await save_restaurant_identity(
                             session,
                             run.hotspot_id,
                             place_id,

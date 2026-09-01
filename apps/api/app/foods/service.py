@@ -132,9 +132,21 @@ async def seed_food_catalog(session: AsyncSession) -> int:
         (row.merchant_id, row.food_id)
         for row in (await session.scalars(select(FoodMerchantFood))).all()
     }
+    source_rows = list((await session.scalars(select(FoodMerchantSource))).all())
     existing_sources = {
-        (row.merchant_id, row.source_url, row.edition_year)
-        for row in (await session.scalars(select(FoodMerchantSource))).all()
+        (row.merchant_id, row.source_url, row.edition_year): row for row in source_rows
+    }
+    seed_context_sources = {
+        row.merchant_id: row
+        for row in source_rows
+        if row.source_type == "official_tourism"
+        and row.source_scope == "destination_context"
+        and row.edition_year is None
+        and row.source_title
+        in {
+            "Official destination food guide",
+            "Official destination food guide (regional context only)",
+        }
     }
     for merchant_seed in MERCHANT_SEEDS:
         merchant = existing_merchants.get(merchant_seed.slug)
@@ -169,20 +181,33 @@ async def seed_food_catalog(session: AsyncSession) -> int:
                 )
                 existing_merchant_foods.add(key)
         source_key = (merchant.id, merchant_seed.source_url, None)
-        if source_key not in existing_sources:
-            session.add(
-                FoodMerchantSource(
-                    merchant_id=merchant.id,
-                    source_type="official_tourism",
-                    source_title=merchant_seed.source_title,
-                    source_url=merchant_seed.source_url,
-                    edition_year=None,
-                    distinction=None,
-                    is_current=True,
-                    last_verified_at=datetime.now(UTC),
-                )
+        source = existing_sources.get(source_key) or seed_context_sources.get(merchant.id)
+        if source is None:
+            source = FoodMerchantSource(
+                merchant_id=merchant.id,
+                source_type="official_tourism",
+                source_scope="destination_context",
+                source_title=merchant_seed.source_title,
+                source_url=merchant_seed.source_url,
+                claims_json=[],
+                edition_year=None,
+                distinction=None,
+                is_current=True,
+                last_verified_at=datetime.now(UTC),
             )
-            existing_sources.add(source_key)
+            session.add(source)
+            existing_sources[source_key] = source
+        else:
+            source_url_changed = source.source_url != merchant_seed.source_url
+            source.source_url = merchant_seed.source_url
+            source.source_type = "official_tourism"
+            source.source_scope = "destination_context"
+            source.source_title = merchant_seed.source_title
+            source.claims_json = []
+            source.is_current = True
+            if source_url_changed:
+                source.last_verified_at = datetime.now(UTC)
+            existing_sources[source_key] = source
 
     food_areas = list(
         (
@@ -347,8 +372,10 @@ async def _serialize_foods(
         sources_by_merchant[source.merchant_id].append(
             {
                 "source_type": source.source_type,
+                "source_scope": source.source_scope,
                 "title": source.source_title,
                 "url": source.source_url,
+                "claims": source.claims_json,
                 "edition_year": source.edition_year,
                 "distinction": source.distinction,
                 "last_verified_at": source.last_verified_at.isoformat(),
@@ -396,6 +423,7 @@ async def _serialize_foods(
                     if merchant.coordinate_verified_at is not None
                     else None,
                 },
+                "official_website_url": merchant.official_website_url,
                 "map_links": build_map_links(
                     name=merchant.name,
                     local_name=merchant.local_name,

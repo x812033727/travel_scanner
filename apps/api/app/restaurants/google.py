@@ -9,7 +9,7 @@ from redis.asyncio import Redis
 
 from app.config import Settings
 from app.i18n import Locale, normalize_locale
-from app.providers.usage_meter import reserve_google_maps_request
+from app.providers.usage_meter import record_google_maps_request, reserve_google_maps_request
 
 DINING_PLACE_TYPES = (
     "restaurant",
@@ -86,6 +86,13 @@ class RestaurantSnapshot:
         )
 
 
+@dataclass(frozen=True)
+class RestaurantIdentityResult:
+    status: str
+    place_id: str | None
+    moved_place_id: str | None = None
+
+
 def _snapshot(payload: dict[str, Any]) -> RestaurantSnapshot | None:
     place_id = str(payload.get("id") or "").strip()
     if not place_id:
@@ -117,6 +124,7 @@ def _snapshot(payload: dict[str, Any]) -> RestaurantSnapshot | None:
 
 class GoogleRestaurantProvider:
     nearby_url = "https://places.googleapis.com/v1/places:searchNearby"
+    text_search_url = "https://places.googleapis.com/v1/places:searchText"
     details_url = "https://places.googleapis.com/v1/places"
     aggregate_url = "https://areainsights.googleapis.com/v1:computeInsights"
 
@@ -134,8 +142,8 @@ class GoogleRestaurantProvider:
         self.client = client
 
     def _headers(self, field_mask: str | None = None) -> dict[str, str]:
-        if not self.settings.google_maps_api_key or not self.settings.restaurant_scan_enabled:
-            raise RestaurantProviderNotConfigured("Google restaurant discovery is disabled")
+        if not self.settings.google_maps_api_key:
+            raise RestaurantProviderNotConfigured("Google restaurant discovery is not configured")
         headers = {
             "Content-Type": "application/json",
             "X-Goog-Api-Key": self.settings.google_maps_api_key,
@@ -241,6 +249,8 @@ class GoogleRestaurantProvider:
         longitude: float,
         radius_meters: int,
     ) -> RestaurantAggregateResult:
+        if not self.settings.restaurant_scan_enabled:
+            raise RestaurantProviderNotConfigured("Google restaurant automation is paused")
         payload = await self._post(
             self.aggregate_url,
             {
@@ -269,3 +279,73 @@ class GoogleRestaurantProvider:
             if (value := str(item.get("place") or ""))
         )
         return RestaurantAggregateResult(count=int(payload.get("count") or 0), place_ids=place_ids)
+
+    async def search_ids_only(
+        self,
+        query: str,
+        *,
+        latitude: float | None = None,
+        longitude: float | None = None,
+        limit: int = 5,
+    ) -> tuple[str, ...]:
+        """Resolve text to Place IDs without requesting provider display fields."""
+
+        body: dict[str, Any] = {
+            "textQuery": query,
+            "languageCode": self.locale,
+            "pageSize": min(10, max(1, limit)),
+        }
+        if latitude is not None and longitude is not None:
+            body["locationBias"] = {
+                "circle": {
+                    "center": {"latitude": latitude, "longitude": longitude},
+                    "radius": 10_000.0,
+                }
+            }
+        headers = self._headers("places.id")
+        await record_google_maps_request(self.redis, "places_text_search_ids_only")
+        try:
+            if self.client is not None:
+                response = await self.client.post(self.text_search_url, json=body, headers=headers)
+            else:
+                async with httpx.AsyncClient(
+                    timeout=self.settings.provider_timeout_seconds
+                ) as client:
+                    response = await client.post(self.text_search_url, json=body, headers=headers)
+            response.raise_for_status()
+            payload = cast(dict[str, Any], response.json())
+        except httpx.HTTPError as exc:
+            raise RestaurantProviderError("places_text_search_ids_only failed") from exc
+        return tuple(
+            place_id
+            for item in cast(list[dict[str, Any]], payload.get("places", []))
+            if (place_id := str(item.get("id") or "").strip())
+        )
+
+    async def refresh_identity(self, place_id: str) -> RestaurantIdentityResult:
+        """Check a durable Place ID with the IDs-only field mask."""
+
+        headers = self._headers("id,movedPlaceId")
+        await record_google_maps_request(self.redis, "place_id_refresh")
+        try:
+            url = f"{self.details_url}/{quote(place_id, safe='')}"
+            if self.client is not None:
+                response = await self.client.get(url, headers=headers)
+            else:
+                async with httpx.AsyncClient(
+                    timeout=self.settings.provider_timeout_seconds
+                ) as client:
+                    response = await client.get(url, headers=headers)
+            if response.status_code == 404:
+                return RestaurantIdentityResult("not_found", None)
+            response.raise_for_status()
+            payload = cast(dict[str, Any], response.json())
+        except httpx.HTTPError as exc:
+            raise RestaurantProviderError("place_id_refresh failed") from exc
+        refreshed = str(payload.get("id") or "").strip() or None
+        moved = str(payload.get("movedPlaceId") or "").strip() or None
+        return RestaurantIdentityResult(
+            "moved" if moved else "active",
+            refreshed,
+            moved,
+        )

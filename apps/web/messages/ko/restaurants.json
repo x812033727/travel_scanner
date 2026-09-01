@@ -8,6 +8,15 @@
   "sortLabel": "정렬",
   "sort": { "recommended": "추천순", "rating": "평점순", "reviews": "리뷰순", "distance": "거리순" },
   "recommendationNote": "추천순은 베이지안 보정으로 평점과 리뷰 수를 균형 있게 반영하며 광고비를 순위에 사용하지 않습니다.",
+  "preferenceSaved": "검색 범위와 정렬 방식은 이 기기에 저장됩니다.",
+  "verifiedEditorial": "공식 출처 확인 완료",
+  "favorite": "저장", "favorited": "저장됨", "favoriteSaved": "저장했습니다.", "favoriteRemoved": "저장을 취소했습니다.",
+  "addToTrip": "여행에 추가", "openUber": "Uber로 이동",
+  "verifiedWebsite": "확인된 공식 웹사이트", "websiteLive": "공식 웹사이트 (Google 실시간)",
+  "sourceEvidence": "출처 {count}개 보기",
+  "tripPickerTitle": "추가할 여행 선택", "closeTripPicker": "여행 선택 닫기",
+  "tripLabel": "내 여행", "dateLabel": "날짜", "mealLabel": "식사", "lunch": "점심", "dinner": "저녁",
+  "savingTrip": "저장 중…", "confirmTrip": "일정에 추가", "noTrips": "먼저 날짜가 있는 여행을 만들어 주세요.", "tripSaved": "‘{trip}’에 추가했습니다.",
   "coverage": { "title": "10 km 커버리지", "not_started": "빠른 결과", "queued": "대기 중", "running": "스캔 중", "quota_paused": "안전 일시 정지", "partial": "일부 완료", "completed": "완료", "failed": "확인 필요", "detail": "Place ID {candidates}개 · 셀 {completed}/{total}" },
   "loading": "Google Maps의 최신 음식점 정보를 확인 중…",
   "retry": "다시 시도",
@@ -30,9 +39,13 @@
   "admin": {
     "eyebrow": "음식점 커버리지", "title": "주변 음식점 스캔", "description": "승인된 명소 10 km 반경을 단계적으로 수집하고 Google 월간 호출을 설정된 안전 예산 이내로 유지합니다.",
     "scanMissing": "미수집 스캔", "refresh": "새로고침", "scanStarted": "스캔 {count}개를 대기열에 추가했습니다.", "nothingToScan": "모든 대상이 수집되었거나 스캔 중입니다.",
-    "usage": { "aggregate": "Aggregate 스캔", "nearby": "Nearby 빠른 검색", "details": "Place 실시간 상세" },
+    "usage": { "aggregate": "Aggregate 스캔", "nearby": "Nearby 빠른 검색", "details": "Place 실시간 상세", "idsOnly": "무료 IDs Only" },
+    "pauseAutomation": "자동 스캔 중지", "resumeAutomation": "자동 스캔 재개", "projectedUsage": "월말 예상 {projected}회 ({percent}%)", "alert": { "normal": "사용량 정상", "watch": "70% 관찰선", "warning": "80% 경고선", "critical": "90% 중지선" }, "idsOnlyFree": "무료이며 유료 SKU와 별도 집계", "idsOnlyBreakdown": "텍스트 조회 {search}・ID 상태 확인 {refresh}", "hotspotCalls": "이 명소 Aggregate {aggregate}・Details {details}",
     "safetyBudget": "{period} 안전 예산 · {remaining} 남음", "featureUsage": "이 중 음식점 기능 {used}회", "googleFreeTier": "Google 월간 무료 구간 관측:",
     "search": "명소 또는 도시 검색", "statusFilter": "커버리지 상태", "allStatuses": "모든 상태", "coverage": "완료 {completed}/{total}",
     "placeIds": "Place ID {count}개", "scanOne": "10 km 스캔", "empty": "일치하는 명소가 없습니다"
+  },
+  "adminSources": {
+    "eyebrow": "출처 관리", "title": "Place ID, 매장 공식 사이트, 정부 관광 자료", "description": "Google은 Place ID만 영구 저장합니다. 상호명, 공식 사이트, 호출 좌표는 매장 또는 정부 관광 출처의 항목별 근거가 필요합니다.", "previewReady": "Place ID 후보 {count}개를 찾았습니다.", "imported": "기준을 확인하고 추가했습니다.", "saved": "공식 출처 자료를 저장했습니다.", "identityResult": "Place ID 상태: {status}", "importTitle": "Maps 링크 또는 Place ID 붙여넣기", "importDescription": "단축 링크를 안전하게 확장하고 필요할 때 무료 IDs Only 검색 후 평점 3.8, 리뷰 1,000개 기준을 확인합니다.", "hotspot": "대상 명소", "mapsInput": "Google Maps 링크 / Place ID", "fallbackQuery": "보조 상호명 또는 주소", "fallbackPlaceholder": "링크에 ID가 없을 때만 사용", "preview": "무료 Place ID 미리보기", "idsOnlyNotice": "식별 필드만 요청하며 Google 표시 정보는 저장하지 않습니다.", "openMap": "지도 열기", "confirmImport": "기준 확인 후 가져오기", "coverageTitle": "공식 자료 완성도", "approved": "승인", "missing": "미완성", "governmentContext": "공식 지역 배경", "contextDisclosure": "공식 지역 음식 가이드는 해당 매장이 실제로 등재됐다는 증거가 아닙니다. 직접 근거가 있는 매장은 {direct}개입니다.", "status": { "missing": "미생성", "pending": "검토 대기", "approved": "승인", "rejected": "거부", "disabled": "중지" }, "yes": "있음", "no": "없음", "itemCoverage": "출처 {sources}・사이트 {website}・호출 좌표 {ride}", "refreshIdentity": "Place ID 확인", "editSources": "출처 보완", "empty": "Place ID가 없습니다", "editing": "공식 자료 편집", "displayName": "출처 기반 상호명", "localName": "현지 상호명", "address": "출처 기반 주소", "officialWebsite": "매장 공식 사이트", "latitude": "호출 위도 (Google 외)", "longitude": "호출 경도 (Google 외)", "sourceNumber": "출처 {number}", "removeSource": "출처 제거", "merchantOfficial": "매장 공식", "officialTourism": "정부 / 공식 관광", "sourceTitle": "출처 제목", "claim": { "display_name": "상호명 근거", "address": "주소 근거", "official_website": "공식 사이트 근거", "coordinates": "좌표 근거" }, "addSource": "출처 추가", "save": "공식 자료 저장"
   }
 }

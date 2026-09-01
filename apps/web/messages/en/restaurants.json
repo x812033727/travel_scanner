@@ -8,6 +8,15 @@
   "sortLabel": "Sort by",
   "sort": { "recommended": "Recommended", "rating": "Rating", "reviews": "Review count", "distance": "Distance" },
   "recommendationNote": "Recommended balances rating and review volume with a Bayesian prior; it never mixes in paid placement.",
+  "preferenceSaved": "Your radius and sort order are remembered on this device.",
+  "verifiedEditorial": "Verified official sources",
+  "favorite": "Save", "favorited": "Saved", "favoriteSaved": "Restaurant saved.", "favoriteRemoved": "Restaurant removed from saved items.",
+  "addToTrip": "Add to trip", "openUber": "Go with Uber",
+  "verifiedWebsite": "Verified official website", "websiteLive": "Official website (live from Google)",
+  "sourceEvidence": "View {count} source records",
+  "tripPickerTitle": "Choose a trip", "closeTripPicker": "Close trip picker",
+  "tripLabel": "My trip", "dateLabel": "Date", "mealLabel": "Meal", "lunch": "Lunch", "dinner": "Dinner",
+  "savingTrip": "Saving…", "confirmTrip": "Add to itinerary", "noTrips": "Create a dated trip before adding this restaurant.", "tripSaved": "Added to “{trip}”.",
   "coverage": { "title": "10 km coverage", "not_started": "Quick results", "queued": "Queued", "running": "Scanning", "quota_paused": "Safety pause", "partial": "Partial", "completed": "Complete", "failed": "Needs attention", "detail": "{candidates} saved Place IDs · cells {completed}/{total}" },
   "loading": "Checking current Google Maps restaurant data…",
   "retry": "Try again",
@@ -30,9 +39,15 @@
   "admin": {
     "eyebrow": "Restaurant coverage", "title": "Nearby dining scans", "description": "Progressively cover approved attractions within 10 km while keeping monthly Google calls inside the configured safety budgets.",
     "scanMissing": "Scan missing coverage", "refresh": "Refresh", "scanStarted": "Queued {count} scans.", "nothingToScan": "All eligible attractions already have coverage or an active scan.",
-    "usage": { "aggregate": "Aggregate scans", "nearby": "Nearby quick search", "details": "Live Place details" },
+    "usage": { "aggregate": "Aggregate scans", "nearby": "Nearby quick search", "details": "Live Place details", "idsOnly": "Free IDs Only" },
+    "pauseAutomation": "Pause automatic scans", "resumeAutomation": "Resume automatic scans", "projectedUsage": "Projected month end: {projected} ({percent}%)", "alert": { "normal": "Usage is normal", "watch": "70% watch threshold", "warning": "80% warning threshold", "critical": "90% stop threshold" }, "idsOnlyFree": "No charge; counted separately from paid SKUs", "idsOnlyBreakdown": "Text lookups {search} · ID health checks {refresh}", "hotspotCalls": "This attraction: Aggregate {aggregate} · Details {details}",
     "safetyBudget": "{period} safety budget · {remaining} remaining", "featureUsage": "Restaurant feature used {used}", "googleFreeTier": "Google monthly free-tier observation:",
     "search": "Search attraction or city", "statusFilter": "Coverage status", "allStatuses": "All statuses", "coverage": "Completed {completed}/{total}",
     "placeIds": "{count} Place IDs", "scanOne": "Scan 10 km", "empty": "No matching attractions"
+  },
+  "adminSources": {
+    "eyebrow": "Source governance", "title": "Place IDs, merchant sites, and official tourism data", "description": "Google records retain only Place IDs. Names, websites, and ride coordinates require field-level evidence from a merchant or government tourism source before approval.",
+    "previewReady": "Found {count} Place ID candidates.", "imported": "Place ID passed the threshold and was added.", "saved": "Official-source data saved.", "identityResult": "Place ID status: {status}", "importTitle": "Paste a Maps link or Place ID", "importDescription": "Safely expand Google short links, use free Text Search IDs Only when needed, then verify 3.8 stars and 1,000 reviews live before import.", "hotspot": "Attraction", "mapsInput": "Google Maps link / Place ID", "fallbackQuery": "Fallback name or address", "fallbackPlaceholder": "Used only when the link has no ID", "preview": "Preview Place IDs free", "idsOnlyNotice": "Preview and health checks request identity fields only and never store Google display data.", "openMap": "Open map", "confirmImport": "Verify threshold and import",
+    "coverageTitle": "Official-data completeness", "approved": "Approved", "missing": "Missing", "governmentContext": "Official destination context", "contextDisclosure": "Existing candidates have an official destination dining guide, but this does not mean the guide lists that merchant. {direct} merchants have direct evidence.", "status": { "missing": "Missing", "pending": "Pending", "approved": "Approved", "rejected": "Rejected", "disabled": "Disabled" }, "yes": "Yes", "no": "No", "itemCoverage": "Sources {sources} · Website {website} · Ride coordinates {ride}", "refreshIdentity": "Check Place ID", "editSources": "Complete sources", "empty": "No restaurant Place IDs yet", "editing": "Edit official data", "displayName": "Source-backed name", "localName": "Local name", "address": "Source-backed address", "officialWebsite": "Merchant official website", "latitude": "Ride latitude (non-Google)", "longitude": "Ride longitude (non-Google)", "sourceNumber": "Source {number}", "removeSource": "Remove source", "merchantOfficial": "Merchant official", "officialTourism": "Government / official tourism", "sourceTitle": "Source title", "claim": { "display_name": "Supports name", "address": "Supports address", "official_website": "Supports website", "coordinates": "Supports coordinates" }, "addSource": "Add source", "save": "Save official data"
   }
 }

@@ -14,8 +14,9 @@ from app.config import Settings
 from app.db import SessionFactory, engine
 from app.hotspots.service import PUBLIC_REVIEW_STATUSES
 from app.infra import get_redis
-from app.models import RestaurantScanRun, TravelHotspot
-from app.restaurants.service import create_scan_run, execute_scan
+from app.models import RestaurantPlace, RestaurantScanRun, TravelHotspot
+from app.restaurants.google import GoogleRestaurantProvider, RestaurantProviderError
+from app.restaurants.service import create_scan_run, execute_scan, refresh_restaurant_identity
 
 
 def enqueue_restaurant_scan(run_id: UUID, settings: Settings) -> str:
@@ -86,6 +87,36 @@ async def enqueue_next_automatic_scan(
     )
     enqueue_restaurant_scan(run.id, settings)
     return {"status": "queued", "run_id": str(run.id), "hotspot_id": str(hotspot.id)}
+
+
+async def refresh_next_stale_identity(
+    session: AsyncSession, settings: Settings
+) -> dict[str, str | None]:
+    if not settings.google_maps_api_key:
+        return {"status": "disabled", "place_id": None}
+    cutoff = datetime.now(UTC) - timedelta(days=180)
+    place = await session.scalar(
+        select(RestaurantPlace)
+        .where(
+            or_(
+                RestaurantPlace.identity_checked_at.is_(None),
+                RestaurantPlace.identity_checked_at < cutoff,
+            )
+        )
+        .order_by(RestaurantPlace.identity_checked_at.asc().nullsfirst())
+        .limit(1)
+    )
+    if place is None:
+        return {"status": "current", "place_id": None}
+    try:
+        result = await refresh_restaurant_identity(
+            session,
+            GoogleRestaurantProvider(get_redis(), settings),
+            place,
+        )
+    except RestaurantProviderError:
+        return {"status": "failed", "place_id": place.google_place_id}
+    return {"status": result.status, "place_id": place.google_place_id}
 
 
 async def _mark_failed(run_id: UUID) -> None:

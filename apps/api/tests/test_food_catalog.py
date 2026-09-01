@@ -4,7 +4,7 @@ from urllib.parse import parse_qs, urlparse
 import pytest
 
 from app.foods.catalog import FOOD_SEEDS
-from app.foods.merchant_catalog import MERCHANT_SEEDS
+from app.foods.merchant_catalog import MERCHANT_SEEDS, OFFICIAL_DESTINATION_FOOD_SOURCES
 from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.maps import build_map_links
 from app.i18n import LOCALES
@@ -139,3 +139,22 @@ def test_merchant_candidates_cover_all_relations_but_are_not_fake_map_matches() 
         for food_slug in merchant.food_slugs
     }
     assert len(actual_pairs) == 173
+    assert all(merchant.source_url.startswith("https://") for merchant in MERCHANT_SEEDS)
+    assert all(
+        merchant.source_title == "Official destination food guide (regional context only)"
+        for merchant in MERCHANT_SEEDS
+    )
+    assert len(OFFICIAL_DESTINATION_FOOD_SOURCES) == 30
+    assert set(OFFICIAL_DESTINATION_FOOD_SOURCES) == {
+        merchant.destination_id for merchant in MERCHANT_SEEDS
+    }
+    assert not any(
+        stale in url
+        for url in OFFICIAL_DESTINATION_FOOD_SOURCES.values()
+        for stale in (
+            "gofukuoka.jp/gourmet.html",
+            "dive-hiroshima.com/en/explore/food/",
+            "visitkanazawa.jp/en/gourmet",
+            "vietnam-food-20-must-try-dishes",
+        )
+    )

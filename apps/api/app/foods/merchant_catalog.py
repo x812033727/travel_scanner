@@ -7,12 +7,12 @@ from app.foods.catalog import FOOD_SEEDS
 OFFICIAL_DESTINATION_FOOD_SOURCES = {
     "tokyo": "https://www.gotokyo.org/en/see-and-do/drinking-and-dining/index.html",
     "osaka-kyoto": "https://osaka-info.jp/en/gourmet/",
-    "fukuoka": "https://gofukuoka.jp/gourmet.html",
+    "fukuoka": "https://www.gofukuoka.jp/en/articles/detail/d773d813-d160-4b3f-8092-8f7c2fe5d17d",
     "sapporo": "https://www.sapporo.travel/en/gourmet/",
-    "kanazawa": "https://visitkanazawa.jp/en/gourmet",
+    "kanazawa": "https://visitkanazawa.jp/en/restaurants/",
     "nagoya": "https://www.nagoya-info.jp/en/gourmet/",
     "sendai": "https://www.sentabi.jp/guidebook/attractions/",
-    "hiroshima": "https://dive-hiroshima.com/en/explore/food/",
+    "hiroshima": "https://dive-hiroshima.com/en/feature/ichioshi/",
     "seoul": "https://english.visitseoul.net/restaurants",
     "busan": "https://www.visitbusan.net/en/index.do?menuCd=DOM_000000302002001000",
     "jeju": "https://www.visitjeju.net/en/themtour/list?menuId=DOM_000001832000000000",
@@ -30,11 +30,11 @@ OFFICIAL_DESTINATION_FOOD_SOURCES = {
     "tainan": "https://eng.taiwan.net.tw/m1.aspx?sNo=0002091",
     "singapore": "https://www.visitsingapore.com/dining-drinks-singapore/local-dishes/",
     "hong-kong": "https://www.discoverhongkong.com/eng/explore/dining.html",
-    "hanoi": "https://vietnam.travel/things-to-do/vietnam-food-20-must-try-dishes",
-    "ho-chi-minh-city": "https://vietnam.travel/things-to-do/vietnam-food-20-must-try-dishes",
-    "da-nang": "https://vietnam.travel/things-to-do/vietnam-food-20-must-try-dishes",
-    "hue": "https://vietnam.travel/things-to-do/vietnam-food-20-must-try-dishes",
-    "da-lat": "https://vietnam.travel/things-to-do/vietnam-food-20-must-try-dishes",
+    "hanoi": "https://www.vietnam.travel/things-to-do/food",
+    "ho-chi-minh-city": "https://www.vietnam.travel/things-to-do/food",
+    "da-nang": "https://www.vietnam.travel/things-to-do/food",
+    "hue": "https://www.vietnam.travel/things-to-do/food",
+    "da-lat": "https://www.vietnam.travel/things-to-do/food",
 }
 
 
@@ -50,7 +50,7 @@ class MerchantSeed:
 
     @property
     def source_title(self) -> str:
-        return "Official destination food guide"
+        return "Official destination food guide (regional context only)"
 
     @property
     def source_url(self) -> str:
