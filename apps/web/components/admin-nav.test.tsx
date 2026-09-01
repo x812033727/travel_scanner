@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminNav } from "./admin-nav";
 
 describe("AdminNav", () => {
+  afterEach(() => vi.unstubAllGlobals());
   it("places usage management after member management", () => {
     render(<AdminNav current="system" />);
     const links = screen.getAllByRole("link");
@@ -25,5 +26,13 @@ describe("AdminNav", () => {
       "/admin/foods",
     ]);
     expect(screen.getByRole("link", { name: "系統設定" }).getAttribute("aria-current")).toBe("page");
+  });
+
+  it("only reveals deployment center when the backend grants can_deploy", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(new Response(JSON.stringify({ can_deploy: true }), { status: 200 }))));
+    render(<AdminNav current="deployments" />);
+    const link = await screen.findByRole("link", { name: "部署中心" });
+    expect(link.getAttribute("href")).toBe("/admin/deployments");
+    expect(link.getAttribute("aria-current")).toBe("page");
   });
 });
