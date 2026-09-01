@@ -1,1 +1,30 @@
-{}
+{
+  "navigation": {
+    "users": "회원 및 사용 횟수",
+    "system": "시스템 설정",
+    "layout": "화면 관리",
+    "providers": "API 및 키",
+    "hotspots": "명소 후보 검토"
+  },
+  "providerTabs": {
+    "label": "API 공급자 설정 탭",
+    "mobileLabel": "API 공급자 선택",
+    "audit": "최근 관리 기록"
+  },
+  "layout": {
+    "eyebrow": "SYSTEM ADMIN",
+    "title": "화면 관리",
+    "description": "공개 기능 진입점과 페이지 표시 여부를 관리합니다. 비활성화해도 Web 화면만 숨겨지며 API가 중단되거나 기존 데이터가 삭제되지는 않습니다.",
+    "saveSuccess": "화면 설정을 저장하고 공개 상태를 새로 고쳤습니다.",
+    "auditDescription": "작업자, 실제 변경된 필드 및 변경 후 값만 기록합니다.",
+    "auditAction": "화면 설정 업데이트",
+    "fields": {
+      "hotspots_enabled": { "label": "인기 명소", "help": "인기 명소 탐색 메뉴와 /hotspots 페이지를 제어합니다." },
+      "trips_enabled": { "label": "내 여행", "help": "여행 탐색 메뉴, 여행 저장 작업 및 /trips 하위 페이지를 제어합니다. 읽기 전용 공유 링크는 유지됩니다." },
+      "alerts_enabled": { "label": "가격 알림", "help": "가격 알림 탐색 메뉴, 알림 만들기 작업 및 /alerts 페이지를 제어합니다." },
+      "flight_status_enabled": { "label": "항공편 상태", "help": "항공편 상태 탐색 메뉴와 /flights/status 페이지를 제어합니다." },
+      "airline_fares_enabled": { "label": "항공 운임 연구실", "help": "항공 운임 진입점과 /labs/airlines 페이지를 제어합니다." },
+      "pricing_enabled": { "label": "요금제 및 사용 팩", "help": "요금 탐색 메뉴, 사용 팩 작업 및 /pricing 페이지를 제어합니다." }
+    }
+  }
+}

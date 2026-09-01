@@ -1,1 +1,30 @@
-{}
+{
+  "navigation": {
+    "users": "会員と利用回数",
+    "system": "システム設定",
+    "layout": "画面管理",
+    "providers": "API とキー",
+    "hotspots": "スポット候補審査"
+  },
+  "providerTabs": {
+    "label": "API プロバイダー設定タブ",
+    "mobileLabel": "API プロバイダーを選択",
+    "audit": "最近の管理履歴"
+  },
+  "layout": {
+    "eyebrow": "SYSTEM ADMIN",
+    "title": "画面管理",
+    "description": "公開機能の入口とページの表示を管理します。無効化しても Web 画面が非表示になるだけで、API の停止や既存データの削除は行いません。",
+    "saveSuccess": "画面設定を保存し、公開状態を更新しました。",
+    "auditDescription": "操作者、実際に変更された項目、変更後の値のみを記録します。",
+    "auditAction": "画面設定を更新",
+    "fields": {
+      "hotspots_enabled": { "label": "人気スポット", "help": "人気スポットのナビゲーションと /hotspots ページを制御します。" },
+      "trips_enabled": { "label": "マイトリップ", "help": "旅行ナビゲーション、旅行保存操作、/trips 配下のページを制御します。閲覧専用の共有リンクは維持されます。" },
+      "alerts_enabled": { "label": "価格アラート", "help": "価格アラートのナビゲーション、作成操作、/alerts ページを制御します。" },
+      "flight_status_enabled": { "label": "運航状況", "help": "運航状況のナビゲーションと /flights/status ページを制御します。" },
+      "airline_fares_enabled": { "label": "航空運賃ラボ", "help": "航空運賃の入口と /labs/airlines ページを制御します。" },
+      "pricing_enabled": { "label": "プランと利用パック", "help": "料金ナビゲーション、利用パック操作、/pricing ページを制御します。" }
+    }
+  }
+}

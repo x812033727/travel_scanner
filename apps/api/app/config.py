@@ -69,6 +69,12 @@ class Settings(BaseSettings):
     auth_register_ip_limit: int = Field(default=30, ge=1, le=1_000)
     auth_register_window_seconds: int = Field(default=3_600, ge=60, le=86_400)
     registration_enabled: bool = True
+    hotspots_enabled: bool = True
+    trips_enabled: bool = True
+    alerts_enabled: bool = True
+    flight_status_enabled: bool = True
+    airline_fares_enabled: bool = True
+    pricing_enabled: bool = True
     trust_proxy_client_ip: bool = False
     ai_planner_enabled: bool = True
     ai_planner_mode: str = "auto"

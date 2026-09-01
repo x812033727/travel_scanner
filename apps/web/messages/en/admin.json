@@ -1,1 +1,30 @@
-{}
+{
+  "navigation": {
+    "users": "Members & usage",
+    "system": "System settings",
+    "layout": "Layout management",
+    "providers": "APIs & keys",
+    "hotspots": "Hotspot review"
+  },
+  "providerTabs": {
+    "label": "API provider settings tabs",
+    "mobileLabel": "Choose an API provider",
+    "audit": "Recent admin activity"
+  },
+  "layout": {
+    "eyebrow": "SYSTEM ADMIN",
+    "title": "Layout management",
+    "description": "Control which public features and pages are visible. Disabling one hides the Web interface only; it does not disable APIs or delete existing data.",
+    "saveSuccess": "Layout settings saved and the public state has been refreshed.",
+    "auditDescription": "Records only the operator, fields that actually changed, and the resulting values.",
+    "auditAction": "Updated layout settings",
+    "fields": {
+      "hotspots_enabled": { "label": "Popular hotspots", "help": "Controls hotspot navigation and the /hotspots page." },
+      "trips_enabled": { "label": "My trips", "help": "Controls trip navigation, save-trip actions, and pages under /trips. Read-only share links remain available." },
+      "alerts_enabled": { "label": "Price alerts", "help": "Controls alert navigation, create-alert actions, and the /alerts page." },
+      "flight_status_enabled": { "label": "Flight status", "help": "Controls flight-status navigation and the /flights/status page." },
+      "airline_fares_enabled": { "label": "Airline fare lab", "help": "Controls the airline-fares entry and the /labs/airlines page." },
+      "pricing_enabled": { "label": "Plans & usage packs", "help": "Controls pricing navigation, usage-pack actions, and the /pricing page." }
+    }
+  }
+}

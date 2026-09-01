@@ -76,6 +76,7 @@ uv run python -m app.cli add-usage-package --email you@example.com \
 After applying the database migration, grant an existing account administrator
 access and open `http://localhost:3000/admin/users` or
 `http://localhost:3000/admin/system-settings` or
+`http://localhost:3000/admin/layout-settings` or
 `http://localhost:3000/admin/settings`:
 
 ```bash
@@ -85,9 +86,10 @@ uv run python -m app.cli set-admin --email you@example.com
 
 Use `--revoke` to remove the database role. `ADMIN_EMAILS` is also accepted as a
 comma-separated bootstrap or recovery allowlist; remove the address from that
-environment value before revoking its access. The header only exposes the
-administration link to administrator accounts, and every administration API
-still enforces the role server-side.
+environment value before revoking its access. The desktop and mobile headers
+use the same `/auth/me` result and expose the administration link only to
+accounts with an effective database or `ADMIN_EMAILS` role. Every administration
+API still enforces the role server-side.
 
 The member page searches and paginates accounts, shows available and reserved
 uses, activates or suspends accounts, and grants or revokes database-backed
@@ -112,15 +114,33 @@ existing account login, password changes or administrator features. The public
 `GET /api/v1/auth/registration-status` response is never cached, and failed
 status checks do not expose a usable registration form.
 
+The layout management page controls the public Hotspots, Trips, Price Alerts,
+Flight Status, Airline Fares, and Pricing surfaces. Their environment defaults
+are `HOTSPOTS_ENABLED`, `TRIPS_ENABLED`, `ALERTS_ENABLED`,
+`FLIGHT_STATUS_ENABLED`, `AIRLINE_FARES_ENABLED`, and `PRICING_ENABLED`; all
+default to `true`. Saving creates or updates the existing
+`provider_configs.layout` JSON row, whose values take priority over the
+environment immediately. A disabled feature is removed from desktop and mobile
+navigation and related Web actions, and direct visits show a localized paused
+page. APIs and stored data remain available, and read-only `/share/[token]`
+links are unaffected. The public `GET /api/v1/runtime/site-visibility` endpoint
+returns only the six effective booleans with `Cache-Control: no-store`; failed
+checks hide controlled entries and show an unavailable state. Layout changes
+use the `layout_settings_updated` audit action with the operator, fields that
+actually changed, and resulting visibility values.
+
 The API and keys page separately manages encrypted credentials for Google Maps,
 Amadeus, Skyscanner, Duffel, FlightAware, Google Travel Impact, NAVITIME and
-affiliate providers. It also shows each provider's last-24-hour request and
-failure counts. Changes take effect for API and worker requests without
-rebuilding the web image. Provider connection checks and configuration changes
-are recorded in `admin_audit_logs`, without secret values. System setting
-changes use the `system_settings_updated` action and record only the changed
-field names and effective registration result. Responses only include whether
-a key exists, its source, and a masked suffix.
+affiliate providers. Desktop uses keyboard-accessible, horizontally scrollable
+provider tabs, mobile uses a provider selector, and only the active provider is
+rendered. Unsaved input remains intact while switching providers, and recent
+administration activity has its own tab. The page also shows each provider's
+last-24-hour request and failure counts. Changes take effect for API and worker
+requests without rebuilding the web image. Provider connection checks and
+configuration changes are recorded in `admin_audit_logs`, without secret values.
+System setting changes use the `system_settings_updated` action and record only
+the changed field names and effective registration result. Responses only
+include whether a key exists, its source, and a masked suffix.
 
 Set a stable, randomly generated `SETTINGS_ENCRYPTION_KEY` in production before
 saving credentials. It is used to derive the Fernet key for database values;
@@ -131,9 +151,9 @@ referrer. Do not commit either value.
 
 The management APIs are under `/api/v1/admin/users` and
 `/api/v1/admin/provider-settings`; the safe runtime browser configuration is served separately from
-`/api/v1/runtime/public-config`. Environment variables remain the fallback when
-no database override exists, and disabling a provider never silently enables
-mock pricing in production.
+`/api/v1/runtime/public-config` and `/api/v1/runtime/site-visibility`.
+Environment variables remain the fallback when no database override exists,
+and disabling a provider never silently enables mock pricing in production.
 
 ## Database migration
 

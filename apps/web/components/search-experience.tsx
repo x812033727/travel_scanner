@@ -38,6 +38,7 @@ import {
   hotelStarRating,
 } from "@/components/hotel-offer-card";
 import { FlightOfferCard } from "@/components/flight-offer-card";
+import { useSiteVisibility } from "@/components/site-visibility-provider";
 import {
   FlightDateOptions,
   type FlightDateOption,
@@ -50,6 +51,7 @@ import {
   SearchCriteriaEditor,
   type CriteriaUpdate,
 } from "@/components/search-criteria-editor";
+import { featureEnabled } from "@/lib/site-features";
 
 type Parsed = {
   origin?: string;
@@ -278,6 +280,8 @@ function parseInterests(raw: string): string[] {
 }
 
 export function SearchExperience() {
+  const visibility = useSiteVisibility();
+  const tripsEnabled = featureEnabled(visibility, "trips");
   const locale = useLocale();
   const params = useSearchParams();
   const router = useRouter();
@@ -1067,13 +1071,13 @@ export function SearchExperience() {
                         整趟旅程預估總額
                       </p>
                     </div>
-                    <button
+                    {tripsEnabled && <button
                       onClick={() => save(plan)}
                       aria-label={`儲存${plan.title}`}
                       className="rounded-xl border border-[var(--line)] p-2 text-[var(--teal)]"
                     >
                       <Save size={18} />
-                    </button>
+                    </button>}
                   </div>
                   <BudgetBreakdown
                     cost={plan.total_cost}
@@ -1145,12 +1149,12 @@ export function SearchExperience() {
                       </li>
                     ))}
                   </ul>
-                  <button
+                  {tripsEnabled && <button
                     onClick={() => save(plan)}
                     className="mt-5 w-full rounded-xl bg-[var(--teal)] px-4 py-3 font-semibold text-white"
                   >
                     儲存並編輯行程
-                  </button>
+                  </button>}
                 </article>
               ))}
             </div>

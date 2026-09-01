@@ -3,7 +3,7 @@ import { getRequestConfig } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "./routing";
 
-const namespaces = ["common", "metadata", "navigation", "auth", "search", "trips", "alerts", "pricing", "account", "admin", "errors", "legacy"] as const;
+const namespaces = ["common", "metadata", "navigation", "auth", "search", "trips", "alerts", "pricing", "account", "admin", "availability", "errors", "legacy"] as const;
 
 export default getRequestConfig(async ({ requestLocale }) => {
   const requested = await requestLocale;

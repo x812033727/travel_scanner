@@ -15,6 +15,7 @@ from app.admin.service import (
     apply_runtime_overrides,
     decrypt_secrets,
     effective_registration_enabled,
+    effective_site_visibility,
     encrypt_secrets,
     settings_snapshot,
     update_provider_settings,
@@ -145,12 +146,31 @@ def test_registration_defaults_to_open() -> None:
     assert Settings.model_construct().registration_enabled is True
 
 
+def test_site_visibility_defaults_to_open() -> None:
+    settings = Settings.model_construct()
+    assert settings.hotspots_enabled is True
+    assert settings.trips_enabled is True
+    assert settings.alerts_enabled is True
+    assert settings.flight_status_enabled is True
+    assert settings.airline_fares_enabled is True
+    assert settings.pricing_enabled is True
+
+
 def test_registration_setting_rejects_non_boolean_values() -> None:
     with pytest.raises(AppError, match="registration_enabled 必須是布林值"):
         _validate_provider_values(
             "runtime",
             {},
             ProviderSettingsUpdate(config={"registration_enabled": 0}),
+        )
+
+
+def test_layout_settings_reject_non_boolean_values() -> None:
+    with pytest.raises(AppError, match="trips_enabled 必須是布林值"):
+        _validate_provider_values(
+            "layout",
+            {},
+            ProviderSettingsUpdate(config={"trips_enabled": 1}),
         )
 
 
@@ -171,6 +191,36 @@ async def test_registration_database_value_overrides_environment_default(
         config={"registration_enabled": True},
     )
     assert await effective_registration_enabled(RegistrationSession(row))  # type: ignore[arg-type]
+
+
+@pytest.mark.asyncio
+async def test_layout_database_values_override_environment_defaults(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(
+        admin_service,
+        "get_settings",
+        lambda: Settings(trips_enabled=False, pricing_enabled=True),
+    )
+    environment = await effective_site_visibility(RegistrationSession(None))  # type: ignore[arg-type]
+    assert environment.trips_enabled is False
+    assert environment.pricing_enabled is True
+
+    row = ProviderConfig(
+        provider="layout",
+        enabled=True,
+        config={"trips_enabled": True, "pricing_enabled": False},
+    )
+    database = await effective_site_visibility(RegistrationSession(row))  # type: ignore[arg-type]
+    assert database.trips_enabled is True
+    assert database.pricing_enabled is False
+
+    snapshot = await settings_snapshot(SnapshotSession([row]))  # type: ignore[arg-type]
+    layout = next(item for item in snapshot.providers if item.provider == "layout")
+    assert layout.config["trips_enabled"] is True
+    assert layout.config["pricing_enabled"] is False
+    assert layout.config_sources["trips_enabled"] == "database"
+    assert layout.config_sources["alerts_enabled"] == "environment"
 
 
 @pytest.mark.asyncio
@@ -212,6 +262,54 @@ async def test_runtime_update_uses_system_audit_without_sensitive_values(
     assert audit.metadata_json == {
         "config_fields": ["provider_timeout_seconds", "registration_enabled"],
         "registration_enabled": False,
+    }
+
+
+@pytest.mark.asyncio
+async def test_layout_update_records_changed_fields_and_effective_visibility(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    expected_snapshot = object()
+
+    async def fake_snapshot(*_args: object) -> object:
+        return expected_snapshot
+
+    monkeypatch.setattr(admin_service, "settings_snapshot", fake_snapshot)
+    session = UpdateSession()
+    actor = User(
+        id=admin_service.uuid4(),
+        email="admin@example.com",
+        password_hash="unused",
+        is_admin=True,
+    )
+
+    result = await update_provider_settings(
+        session,  # type: ignore[arg-type]
+        "layout",
+        ProviderSettingsUpdate(
+            enabled=False,
+            config={"trips_enabled": False, "pricing_enabled": True},
+        ),
+        actor,
+        object(),  # type: ignore[arg-type]
+    )
+
+    assert result is expected_snapshot
+    row = next(item for item in session.added if isinstance(item, ProviderConfig))
+    audit = next(item for item in session.added if isinstance(item, AdminAuditLog))
+    assert row.enabled is True
+    assert audit.action == "layout_settings_updated"
+    assert audit.target == "layout"
+    assert audit.metadata_json == {
+        "config_fields": ["pricing_enabled", "trips_enabled"],
+        "visibility": {
+            "hotspots_enabled": True,
+            "trips_enabled": False,
+            "alerts_enabled": True,
+            "flight_status_enabled": True,
+            "airline_fares_enabled": True,
+            "pricing_enabled": True,
+        },
     }
 
 
