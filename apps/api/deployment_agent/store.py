@@ -1,5 +1,7 @@
 import json
 import sqlite3
+from collections.abc import Iterator
+from contextlib import contextmanager
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, cast
@@ -32,8 +34,17 @@ class AgentStore:
         connection.execute("PRAGMA foreign_keys=ON")
         return connection
 
+    @contextmanager
+    def _connection(self) -> Iterator[sqlite3.Connection]:
+        connection = self._connect()
+        try:
+            with connection:
+                yield connection
+        finally:
+            connection.close()
+
     def _initialize(self) -> None:
-        with self._connect() as db:
+        with self._connection() as db:
             db.executescript(
                 """
                 PRAGMA journal_mode=WAL;
@@ -76,7 +87,7 @@ class AgentStore:
 
     def consume_nonce(self, nonce: str, instant: int) -> bool:
         try:
-            with self._connect() as db:
+            with self._connection() as db:
                 db.execute("DELETE FROM nonces WHERE created_at < ?", (instant - 120,))
                 db.execute("INSERT INTO nonces(nonce, created_at) VALUES (?, ?)", (nonce, instant))
             return True
@@ -87,7 +98,7 @@ class AgentStore:
         existing = self.get_job(job_id)
         if existing:
             return existing
-        with self._connect() as db:
+        with self._connection() as db:
             db.execute(
                 "INSERT INTO jobs(job_id,status,stage,target_sha,created_at) VALUES(?,?,?,?,?)",
                 (job_id, "queued", "queued", target_sha, now_iso()),
@@ -116,14 +127,14 @@ class AgentStore:
         if not selected:
             return
         assignments = ",".join(f"{key}=?" for key in selected)
-        with self._connect() as db:
+        with self._connection() as db:
             db.execute(
                 f"UPDATE jobs SET {assignments} WHERE job_id=?",  # noqa: S608
                 (*selected.values(), job_id),
             )
 
     def claim_job(self, job_id: str) -> bool:
-        with self._connect() as db:
+        with self._connection() as db:
             result = db.execute(
                 "UPDATE jobs SET status='preflight', stage='preflight' "
                 "WHERE job_id=? AND status='queued'",
@@ -132,7 +143,7 @@ class AgentStore:
         return result.rowcount == 1
 
     def event(self, job_id: str, stage: str, status: str, message: str) -> None:
-        with self._connect() as db:
+        with self._connection() as db:
             sequence = int(
                 db.execute(
                     "SELECT COALESCE(MAX(sequence),0)+1 FROM events WHERE job_id=?", (job_id,)
@@ -145,7 +156,7 @@ class AgentStore:
 
     def active_job(self) -> dict[str, Any] | None:
         placeholders = ",".join("?" for _ in ACTIVE)
-        with self._connect() as db:
+        with self._connection() as db:
             row = db.execute(
                 f"SELECT * FROM jobs WHERE status IN ({placeholders}) ORDER BY created_at DESC LIMIT 1",  # noqa: S608
                 ACTIVE,
@@ -153,13 +164,13 @@ class AgentStore:
         return self._with_events(row) if row else None
 
     def get_job(self, job_id: str) -> dict[str, Any] | None:
-        with self._connect() as db:
+        with self._connection() as db:
             row = db.execute("SELECT * FROM jobs WHERE job_id=?", (job_id,)).fetchone()
         return self._with_events(row) if row else None
 
     def _with_events(self, row: sqlite3.Row) -> dict[str, Any]:
         result = dict(row)
-        with self._connect() as db:
+        with self._connection() as db:
             events = [
                 dict(item)
                 for item in db.execute(

@@ -59,7 +59,9 @@ async def test_deployment_requires_allowlist_reauth_confirmation_and_is_idempote
         )
     )
     create_mock = AsyncMock(
-        return_value=AgentCreateResponse(job_id=str(uuid4()), status="preflight")
+        side_effect=lambda run_id, _target_sha: AgentCreateResponse(
+            job_id=run_id, status="preflight"
+        )
     )
     monkeypatch.setattr(DeploymentAgentClient, "overview", overview_mock)
     monkeypatch.setattr(DeploymentAgentClient, "create", create_mock)
