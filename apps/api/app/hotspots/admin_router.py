@@ -8,6 +8,7 @@ from uuid import UUID, uuid4
 from fastapi import APIRouter, Depends, Header, Query
 from pydantic import BaseModel, Field, model_validator
 from redis import Redis as SyncRedis
+from redis.asyncio import Redis
 from rq import Queue, Retry
 from sqlalchemy import func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -50,6 +51,7 @@ from app.problems import AppError
 
 router = APIRouter(prefix="/admin/hotspots", tags=["admin hotspots"])
 Session = Annotated[AsyncSession, Depends(get_session)]
+RedisDep = Annotated[Redis, Depends(get_redis)]
 
 
 class HotspotReviewRequest(BaseModel):
@@ -662,6 +664,7 @@ async def add_manual_guide(
     payload: ManualGuideRequest,
     user: AdminUser,
     session: Session,
+    redis: RedisDep,
 ) -> dict[str, object]:
     hotspot = await session.get(TravelHotspot, payload.hotspot_id)
     if hotspot is None:
@@ -672,7 +675,7 @@ async def add_manual_guide(
             raise AppError(
                 503, "hotspot_guide_youtube_not_configured", "尚未設定 YouTube Data API key"
             )
-        provider = YouTubeGuideProvider(settings.hotspot_guide_youtube_api_key)
+        provider = YouTubeGuideProvider(settings.hotspot_guide_youtube_api_key, redis=redis)
         try:
             candidate = await provider.import_video(payload.url, payload.locale)
         finally:

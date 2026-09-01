@@ -1,5 +1,6 @@
 from decimal import Decimal
 
+import fakeredis.aioredis
 import httpx
 import pytest
 
@@ -11,6 +12,7 @@ from app.hotspots.guides import (
     youtube_video_id,
 )
 from app.problems import AppError
+from app.providers.usage_meter import youtube_usage_snapshot
 
 
 def test_external_urls_are_canonical_and_block_private_targets() -> None:
@@ -78,8 +80,9 @@ async def test_youtube_search_uses_locale_and_preserves_official_metadata() -> N
             },
         )
 
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
     async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
-        provider = YouTubeGuideProvider("secret", http)
+        provider = YouTubeGuideProvider("secret", http, redis)
         results = await provider.search("浅草 観光", "ja")
 
     assert len(results) == 1
@@ -87,6 +90,25 @@ async def test_youtube_search_uses_locale_and_preserves_official_metadata() -> N
     assert results[0].creator_name == "旅チャンネル"
     assert results[0].view_count == 12345
     assert results[0].language_confidence == Decimal("1.000")
+    usage = await youtube_usage_snapshot(redis)
+    assert usage.breakdown == {"search_list": 1, "videos_list": 1}
+    await redis.aclose()
+
+
+@pytest.mark.asyncio
+async def test_youtube_usage_counts_rejected_outbound_search() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(403, json={"error": {"status": "quotaExceeded"}})
+
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        provider = YouTubeGuideProvider("secret", http, redis)
+        with pytest.raises(httpx.HTTPStatusError):
+            await provider.search("Tokyo travel guide", "en")
+
+    usage = await youtube_usage_snapshot(redis)
+    assert usage.breakdown == {"search_list": 1, "videos_list": 0}
+    await redis.aclose()
 
 
 @pytest.mark.asyncio

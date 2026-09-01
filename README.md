@@ -391,6 +391,19 @@ the provider's final billable-event decisions are not included. Google Cloud Con
 remains the billing source of truth. The bundled Redis service enables append-only
 persistence, and new counters are retained for monthly history.
 
+The YouTube guide provider uses the same administrator usage disclosure for its
+Pacific-Time daily quota day. It tracks outbound `search.list` calls against the
+default 100-call Search Queries allocation and `videos.list` calls against the
+default 10,000-unit core allocation. Override these display thresholds with
+`HOTSPOT_GUIDE_YOUTUBE_SEARCH_DAILY_FREE_LIMIT` and
+`HOTSPOT_GUIDE_YOUTUBE_CORE_DAILY_FREE_LIMIT` if Google approves different project
+quotas. `HOTSPOT_GUIDE_YOUTUBE_DAILY_SEARCH_BUDGET=80` keeps 20 default search calls
+available for manual administrator actions. Counters include failed requests but
+exclude pre-deployment history and calls made by other clients, so Google Cloud
+Console remains the quota source of truth. See YouTube's official
+[quota costs](https://developers.google.com/youtube/v3/determine_quota_cost) and
+[`search.list` reference](https://developers.google.com/youtube/v3/docs/search/list).
+
 The saved-trip planner requests `GET /api/v1/trips/{trip_id}/weather` through
 the authenticated BFF. It displays current conditions plus Google's daily
 forecast (up to 10 days) for a confirmed trip coordinate. Results default to a

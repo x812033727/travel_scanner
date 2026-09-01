@@ -4,13 +4,14 @@ from calendar import monthrange
 from collections.abc import Awaitable
 from dataclasses import dataclass
 from datetime import UTC, date, datetime, time, timedelta
-from typing import Any, cast
+from typing import Any, Literal, cast
 from zoneinfo import ZoneInfo
 
 from redis.asyncio import Redis
 from redis.exceptions import RedisError
 
 GOOGLE_MAPS_PROVIDER = "google_maps"
+YOUTUBE_GUIDES_PROVIDER = "youtube_guides"
 GOOGLE_BILLING_TIMEZONE = ZoneInfo("America/Los_Angeles")
 GOOGLE_USAGE_HISTORY_MONTHS = 6
 GOOGLE_USAGE_RETENTION_DAYS = 400
@@ -27,6 +28,7 @@ GOOGLE_MAPS_OPERATIONS = (
 NAVER_MAPS_PROVIDER = "naver_maps"
 NAVER_BILLING_TIMEZONE = ZoneInfo("Asia/Seoul")
 NAVER_MAPS_OPERATIONS = ("local_search", "geocode", "directions")
+YOUTUBE_OPERATIONS = ("search_list", "videos_list")
 
 
 @dataclass(frozen=True)
@@ -131,6 +133,7 @@ class ProviderUsageSnapshot:
     tracking_started_at: datetime | None
     observed_at: datetime
     available: bool
+    period_kind: Literal["month", "day"] = "month"
     billing_timezone: str = "America/Los_Angeles"
     pricing_region: str = "global"
 
@@ -163,6 +166,10 @@ def _month_at(now: datetime, offset: int) -> datetime:
 
 def _usage_key(now: datetime) -> str:
     return f"provider-usage:{GOOGLE_MAPS_PROVIDER}:{now:%Y-%m}"
+
+
+def _youtube_usage_key(now: datetime) -> str:
+    return f"provider-usage:{YOUTUBE_GUIDES_PROVIDER}:{now:%Y-%m-%d}"
 
 
 def _text(value: object) -> str:
@@ -267,6 +274,131 @@ async def record_google_maps_request(
         return
 
 
+async def record_youtube_request(
+    redis: Redis,
+    operation: str,
+    *,
+    now: datetime | None = None,
+) -> None:
+    """Record a YouTube Data API request in the current Pacific Time quota day."""
+    if operation not in YOUTUBE_OPERATIONS:
+        raise ValueError(f"unsupported YouTube usage operation: {operation}")
+    observed_at = now or datetime.now(UTC)
+    billing_day = _billing_now(observed_at)
+    expires_at = datetime.combine(
+        billing_day.date() + timedelta(days=GOOGLE_USAGE_RETENTION_DAYS),
+        time.min,
+        tzinfo=GOOGLE_BILLING_TIMEZONE,
+    )
+    key = _youtube_usage_key(billing_day)
+    try:
+        pipeline = redis.pipeline(transaction=True)
+        pipeline.hincrby(key, "total", 1)
+        pipeline.hincrby(key, f"operation:{operation}", 1)
+        pipeline.hsetnx(key, "tracking_started_at", observed_at.isoformat())
+        pipeline.expireat(key, expires_at)
+        await pipeline.execute()
+    except RedisError:
+        return
+
+
+async def youtube_usage_snapshot(
+    redis: Redis,
+    *,
+    search_daily_free_limit: int = 100,
+    core_daily_free_limit: int = 10_000,
+    now: datetime | None = None,
+) -> ProviderUsageSnapshot:
+    """Return app-observed YouTube calls against the two daily quota buckets."""
+    observed_at = now or datetime.now(UTC)
+    billing_now = _billing_now(observed_at)
+    period = f"{billing_now:%Y-%m-%d}"
+    try:
+        raw = await cast(Awaitable[dict[Any, Any]], redis.hgetall(_youtube_usage_key(billing_now)))
+    except RedisError:
+        return ProviderUsageSnapshot(
+            period=period,
+            period_start=billing_now.date(),
+            period_end=billing_now.date(),
+            used=None,
+            monthly_limit=0,
+            remaining=None,
+            percentage=None,
+            free_limit=0,
+            free_usage=None,
+            free_remaining=None,
+            billable_overage=None,
+            breakdown={},
+            sku_usage=(),
+            monthly_history=(),
+            tracking_started_at=None,
+            observed_at=observed_at,
+            available=False,
+            period_kind="day",
+        )
+
+    values = {_text(key): _text(value) for key, value in raw.items()}
+    breakdown = {
+        operation: int(values.get(f"operation:{operation}", 0)) for operation in YOUTUBE_OPERATIONS
+    }
+    definitions = (
+        (
+            "search_queries",
+            "Search Queries (search.list)",
+            "search",
+            ("search_list",),
+            search_daily_free_limit,
+        ),
+        (
+            "core_api_units",
+            "Core API units (videos.list)",
+            "core",
+            ("videos_list",),
+            core_daily_free_limit,
+        ),
+    )
+    sku_usage = tuple(
+        ProviderSkuUsageSnapshot(
+            sku=sku,
+            label=label,
+            category=category,
+            operations=operations,
+            used=(used := sum(breakdown[operation] for operation in operations)),
+            free_limit=free_limit,
+            free_usage=min(used, free_limit),
+            free_remaining=max(0, free_limit - used),
+            billable_overage=max(0, used - free_limit),
+            percentage=round(used / free_limit * 100, 1),
+        )
+        for sku, label, category, operations, free_limit in definitions
+    )
+    free_limit = sum(item.free_limit for item in sku_usage)
+    free_usage = sum(item.free_usage for item in sku_usage)
+    free_remaining = sum(item.free_remaining for item in sku_usage)
+    billable_overage = sum(item.billable_overage for item in sku_usage)
+    started = values.get("tracking_started_at")
+    return ProviderUsageSnapshot(
+        period=period,
+        period_start=billing_now.date(),
+        period_end=billing_now.date(),
+        used=sum(breakdown.values()),
+        monthly_limit=free_limit,
+        remaining=free_remaining,
+        percentage=round(free_usage / free_limit * 100, 1),
+        free_limit=free_limit,
+        free_usage=free_usage,
+        free_remaining=free_remaining,
+        billable_overage=billable_overage,
+        breakdown=breakdown,
+        sku_usage=sku_usage,
+        monthly_history=(),
+        tracking_started_at=datetime.fromisoformat(started) if started else None,
+        observed_at=observed_at,
+        available=True,
+        period_kind="day",
+    )
+
+
 async def google_maps_usage_snapshot(
     redis: Redis,
     monthly_limit: int | None = None,
@@ -325,9 +457,7 @@ async def google_maps_usage_snapshot(
     )
     current = history[0]
     percentage = (
-        round(current.free_usage / current.free_limit * 100, 1)
-        if current.free_limit
-        else 0.0
+        round(current.free_usage / current.free_limit * 100, 1) if current.free_limit else 0.0
     )
     return ProviderUsageSnapshot(
         period=current.period,

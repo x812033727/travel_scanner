@@ -27,6 +27,7 @@ from app.models import (
     TravelHotspot,
 )
 from app.problems import AppError
+from app.providers.usage_meter import record_youtube_request
 
 PUBLIC_HOTSPOT_STATUSES = ("approved", "auto_approved")
 SEARCH_SUFFIXES: dict[Locale, str] = {
@@ -143,16 +144,24 @@ def classify_content_locale(
 
 
 class YouTubeGuideProvider:
-    def __init__(self, api_key: str, client: httpx.AsyncClient | None = None) -> None:
+    def __init__(
+        self,
+        api_key: str,
+        client: httpx.AsyncClient | None = None,
+        redis: Redis | None = None,
+    ) -> None:
         self.api_key = api_key
         self._external_client = client
         self._client = client or httpx.AsyncClient(timeout=10)
+        self._redis = redis
 
     async def close(self) -> None:
         if self._external_client is None:
             await self._client.aclose()
 
     async def search(self, query: str, locale: Locale, limit: int = 10) -> list[GuideCandidate]:
+        if self._redis is not None:
+            await record_youtube_request(self._redis, "search_list")
         response = await self._client.get(
             "https://www.googleapis.com/youtube/v3/search",
             params={
@@ -171,6 +180,8 @@ class YouTubeGuideProvider:
         ids = [item for item in ids if isinstance(item, str)]
         if not ids:
             return []
+        if self._redis is not None:
+            await record_youtube_request(self._redis, "videos_list")
         details = await self._client.get(
             "https://www.googleapis.com/youtube/v3/videos",
             params={
@@ -218,6 +229,8 @@ class YouTubeGuideProvider:
         video_id = youtube_video_id(url)
         if not video_id:
             raise AppError(422, "hotspot_guide_youtube_url_invalid", "無法辨識 YouTube 影片 ID")
+        if self._redis is not None:
+            await record_youtube_request(self._redis, "videos_list")
         response = await self._client.get(
             "https://www.googleapis.com/youtube/v3/videos",
             params={
@@ -370,7 +383,7 @@ async def discover_guides(
 ) -> dict[str, Any]:
     report: dict[str, Any] = {"created": 0, "providers": {}, "errors": []}
     youtube = (
-        YouTubeGuideProvider(settings.hotspot_guide_youtube_api_key, client)
+        YouTubeGuideProvider(settings.hotspot_guide_youtube_api_key, client, redis)
         if settings.hotspot_guide_youtube_enabled and settings.hotspot_guide_youtube_api_key
         else None
     )

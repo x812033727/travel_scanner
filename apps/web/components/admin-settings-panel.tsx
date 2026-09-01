@@ -51,6 +51,7 @@ type ProviderUsage = {
   tracking_started_at?: string | null;
   observed_at: string;
   available: boolean;
+  period_kind?: "month" | "day";
   scope: string;
   billing_timezone: string;
   pricing_region: string;
@@ -120,6 +121,10 @@ const fieldMeta: Record<string, FieldMeta> = {
   google_maps_essentials_free_limit: { label: "Essentials 每 SKU 免費額度", type: "number", help: "全球公開定價預設每個 SKU 每月 10,000 次；若合約不同可在此調整。" },
   google_maps_pro_free_limit: { label: "Pro 每 SKU 免費額度", type: "number", help: "全球公開定價預設每個 SKU 每月 5,000 次。" },
   google_maps_enterprise_free_limit: { label: "Enterprise 每 SKU 免費額度", type: "number", help: "全球公開定價預設每個 SKU 每月 1,000 次。" },
+  hotspot_guide_youtube_daily_search_budget: { label: "每日自動搜尋上限", type: "number", help: "預設 80 次，自每日 Search Queries 額度中保留 20 次供管理員操作。" },
+  hotspot_guide_youtube_search_daily_free_limit: { label: "Search Queries 每日額度", type: "number", help: "YouTube 預設每日 100 次 search.list 查詢；若 Cloud 專案核准額度不同可在此調整。" },
+  hotspot_guide_youtube_core_daily_free_limit: { label: "Core API 每日額度", type: "number", help: "YouTube 預設每日 10,000 單位；目前 videos.list 每次請求計 1 單位。" },
+  hotspot_guide_refresh_days: { label: "Metadata 更新週期（天）", type: "number" },
   amadeus_env: { label: "Amadeus 環境", options: [{ value: "test", label: "Test" }, { value: "production", label: "Production" }] },
   skyscanner_base_url: { label: "API Base URL", type: "url" },
   skyscanner_market: { label: "市場代碼" },
@@ -217,6 +222,8 @@ const usageOperationLabel: Record<string, string> = {
   local_search: "Local Search",
   geocode: "Geocoding",
   directions: "Directions 5",
+  search_list: "影片搜尋（search.list）",
+  videos_list: "影片詳細資料（videos.list）",
 };
 const usageCategoryLabel: Record<string, string> = {
   essentials: "Essentials",
@@ -332,6 +339,64 @@ function NaverUsagePanel({ usage, refreshing, onRefresh }: {
       <div className="mt-4 overflow-x-auto rounded-xl border border-[#d7eee0] bg-white"><table className="min-w-[32rem] w-full text-left text-sm"><thead className="bg-[#f2fbf5] text-xs text-[var(--muted)]"><tr><th className="px-3 py-2 font-semibold">月份</th><th className="px-3 py-2 font-semibold">站內請求</th><th className="px-3 py-2 font-semibold">內部門檻</th><th className="px-3 py-2 font-semibold">剩餘</th></tr></thead><tbody className="divide-y divide-[var(--line)]">{usage.monthly_history.map((month) => <tr key={month.period}><th className="px-3 py-2.5 font-semibold">{month.period}</th><td className="px-3 py-2.5 tabular-nums">{numberFormat.format(month.used)}</td><td className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_limit) : "—"}</td><td className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_remaining) : "—"}</td></tr>)}</tbody></table></div>
     </>}
     <p className="mt-4 text-xs leading-5 text-[var(--muted)]">帳務月份以韓國時間統計。本站只記錄 Local Search、Geocoding 與 Directions 5 的伺服器請求，不含瀏覽器 Dynamic Map 載入，也不等同 NAVER 帳務；實際用量與費用請以 NAVER Cloud Console 為準。</p>
+  </div>;
+}
+
+function YouTubeUsagePanel({ usage, automaticSearchBudget, refreshing, onRefresh }: {
+  usage: ProviderUsage;
+  automaticSearchBudget: number;
+  refreshing: boolean;
+  onRefresh: () => void;
+}) {
+  const search = usage.sku_usage.find((item) => item.sku === "search_queries");
+  const core = usage.sku_usage.find((item) => item.sku === "core_api_units");
+  const manualReserve = search ? Math.max(0, search.free_limit - automaticSearchBudget) : 0;
+  const automaticBudgetExceedsAllowance = Boolean(search && automaticSearchBudget > search.free_limit);
+
+  return <div className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5" aria-label="YouTube Data API 今日用量">
+    <div className="flex flex-wrap items-start justify-between gap-4">
+      <div>
+        <p className="flex items-center gap-2 text-sm font-bold text-[var(--teal)]"><Gauge size={17} />YouTube Data API 每日用量</p>
+        {usage.available
+          ? <p className="mt-2 text-3xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)} <span className="text-base font-medium text-[var(--muted)]">次站內觀測請求</span></p>
+          : <p className="mt-2 font-semibold text-amber-800">目前無法讀取用量計數</p>}
+      </div>
+      <button type="button" onClick={onRefresh} disabled={refreshing} className="flex items-center gap-2 rounded-xl border border-[var(--line)] bg-white px-3 py-2 text-sm font-semibold disabled:opacity-50"><RefreshCw size={15} className={refreshing ? "animate-spin" : ""} />重新整理用量</button>
+    </div>
+
+    {usage.available && <>
+      <dl className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">今日搜尋使用量</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(search?.used || 0)}</dd></div>
+        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">搜尋額度剩餘</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(search?.free_remaining || 0)}</dd></div>
+        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">今日 Core API 使用量</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(core?.used || 0)}</dd></div>
+        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">Core API 額度剩餘</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(core?.free_remaining || 0)}</dd></div>
+      </dl>
+
+      <div className="mt-5">
+        <h3 className="text-sm font-bold">今日各額度池</h3>
+        <p className="mt-1 text-xs leading-5 text-[var(--muted)]">Search Queries 與 Core API 額度分開計算，不能互相抵用。</p>
+        <div className="mt-3 grid gap-3 md:grid-cols-2">
+          {usage.sku_usage.map((item) => {
+            const width = Math.min(100, Math.max(0, item.percentage));
+            return <article key={item.sku} className="rounded-xl bg-white p-4">
+              <div className="flex items-start justify-between gap-3"><div><h4 className="text-sm font-bold">{item.label}</h4><p className="mt-0.5 text-[.68rem] text-[var(--muted)]">Google 預設每日額度</p></div><span className="text-sm font-bold tabular-nums">{numberFormat.format(item.used)} / {numberFormat.format(item.free_limit)}</span></div>
+              <div className="mt-3 h-2 overflow-hidden rounded-full bg-[var(--paper)]" role="progressbar" aria-label={`${item.label} 日用量`} aria-valuemin={0} aria-valuemax={item.free_limit} aria-valuenow={Math.min(item.used, item.free_limit)}><div className={`h-full rounded-full ${item.billable_overage ? "bg-red-500" : item.percentage >= 75 ? "bg-amber-500" : "bg-[var(--teal)]"}`} style={{ width: `${width}%` }} /></div>
+              <p className={`mt-2 text-xs ${item.billable_overage ? "font-semibold text-red-700" : "text-[var(--muted)]"}`}>{item.billable_overage ? `高於設定額度 ${numberFormat.format(item.billable_overage)}` : `剩餘 ${numberFormat.format(item.free_remaining)}`}</p>
+            </article>;
+          })}
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-xl border border-teal-100 bg-teal-50 px-4 py-3 text-sm leading-6 text-teal-950">
+        <p className="font-bold">自動探索預算</p>
+        <p>{automaticBudgetExceedsAllowance
+          ? `每日自動搜尋上限 ${numberFormat.format(automaticSearchBudget)} 次，高於目前 Search Queries 額度 ${numberFormat.format(search?.free_limit || 0)}；請調低自動搜尋上限。`
+          : `每日最多 ${numberFormat.format(automaticSearchBudget)} 次搜尋；依目前設定保留 ${numberFormat.format(manualReserve)} 次給管理員搜尋與連線測試。`}</p>
+      </div>
+
+      <details className="mt-4 rounded-xl bg-white px-4 py-3"><summary className="cursor-pointer text-sm font-semibold">查看站內操作明細</summary><dl className="mt-3 grid gap-2 sm:grid-cols-2">{Object.entries(usage.breakdown).map(([operation, count]) => <div key={operation}><dt className="text-[.68rem] text-[var(--muted)]">{usageOperationLabel[operation] || operation}</dt><dd className="mt-0.5 font-bold tabular-nums">{numberFormat.format(count)}</dd></div>)}</dl></details>
+    </>}
+    <p className="mt-4 text-xs leading-5 text-[var(--muted)]">每日額度依 Google Pacific Time 重設，目前帳務日為 {dateOnly.format(new Date(`${usage.period_start}T00:00:00Z`))}。本站會保守計入送出的伺服器 search.list 與 videos.list 請求（包含失敗請求），不含計數啟用前、其他服務或其他 Cloud 專案的流量；實際配額與調整結果仍以 Google Cloud Console 為準。</p>
   </div>;
 }
 
@@ -492,6 +557,7 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
 
         {provider.provider === "google_maps" && usage && <GoogleUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "naver_maps" && usage && <NaverUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
+        {provider.provider === "youtube_guides" && usage && <YouTubeUsagePanel usage={usage} automaticSearchBudget={Number(provider.config.hotspot_guide_youtube_daily_search_budget || 80)} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
 
         {Object.keys(provider.config).length > 0 && <div className="mt-6 grid gap-4 md:grid-cols-2">{Object.entries(provider.config).map(([field]) => {
           const meta = fieldMeta[field] || { label: field };

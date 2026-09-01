@@ -10,6 +10,8 @@ from app.places.google import GoogleTravelService
 from app.providers.usage_meter import (
     google_maps_usage_snapshot,
     record_google_maps_request,
+    record_youtube_request,
+    youtube_usage_snapshot,
 )
 from app.trips.routing import GoogleRouteProvider, RoutePoint
 
@@ -152,4 +154,55 @@ async def test_google_clients_record_successful_and_rejected_outbound_requests()
     assert snapshot.breakdown["place_details"] == 1
     assert snapshot.breakdown["routes"] == 1
     await client.aclose()
+    await redis.aclose()
+
+
+@pytest.mark.asyncio
+async def test_youtube_usage_counts_daily_quota_buckets() -> None:
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    observed_at = datetime(2026, 9, 1, 12, tzinfo=UTC)
+    await record_youtube_request(redis, "search_list", now=observed_at)
+    await record_youtube_request(redis, "search_list", now=observed_at)
+    await record_youtube_request(redis, "videos_list", now=observed_at)
+
+    snapshot = await youtube_usage_snapshot(
+        redis,
+        search_daily_free_limit=2,
+        core_daily_free_limit=10,
+        now=observed_at,
+    )
+
+    assert snapshot.available
+    assert snapshot.period_kind == "day"
+    assert snapshot.period == "2026-09-01"
+    assert snapshot.period_start == snapshot.period_end
+    assert snapshot.used == 3
+    assert snapshot.breakdown == {"search_list": 2, "videos_list": 1}
+    search = next(item for item in snapshot.sku_usage if item.sku == "search_queries")
+    core = next(item for item in snapshot.sku_usage if item.sku == "core_api_units")
+    assert search.used == 2
+    assert search.free_remaining == 0
+    assert core.used == 1
+    assert core.free_remaining == 9
+    assert await redis.ttl("provider-usage:youtube_guides:2026-09-01") > 0
+    await redis.aclose()
+
+
+@pytest.mark.asyncio
+async def test_youtube_usage_resets_at_pacific_midnight() -> None:
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    await record_youtube_request(
+        redis,
+        "search_list",
+        now=datetime(2026, 9, 1, 6, 59, tzinfo=UTC),
+    )
+
+    august = await youtube_usage_snapshot(redis, now=datetime(2026, 9, 1, 6, 59, tzinfo=UTC))
+    september = await youtube_usage_snapshot(redis, now=datetime(2026, 9, 1, 7, 0, tzinfo=UTC))
+
+    assert august.period == "2026-08-31"
+    assert august.used == 1
+    assert september.period == "2026-09-01"
+    assert september.used == 0
+    assert september.free_remaining == 10_100
     await redis.aclose()

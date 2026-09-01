@@ -27,7 +27,7 @@ from app.config import Settings
 from app.main import app
 from app.models import AdminAuditLog, ProviderConfig, User
 from app.problems import AppError
-from app.providers.usage_meter import record_google_maps_request
+from app.providers.usage_meter import record_google_maps_request, record_youtube_request
 from app.trips.routing import GoogleRoutesProbeResult, RoutePoint
 
 
@@ -84,9 +84,7 @@ def test_provider_secrets_are_encrypted_and_round_trip() -> None:
 
 
 def test_blank_secret_keeps_existing_value_and_null_clears_it() -> None:
-    assert _merge_secret_values({"token": "original"}, {"token": "   "}) == {
-        "token": "original"
-    }
+    assert _merge_secret_values({"token": "original"}, {"token": "   "}) == {"token": "original"}
     assert _merge_secret_values({"token": "original"}, {"token": None}) == {}
 
 
@@ -391,8 +389,7 @@ async def test_google_connection_accepts_reachable_empty_route(
     message = await _test_google(Settings(google_maps_api_key="key"), object())  # type: ignore[arg-type]
 
     assert message == (
-        "Google Places、Routes API 可連線；測試路線目前無可用班次；"
-        "Weather API 連線成功"
+        "Google Places、Routes API 可連線；測試路線目前無可用班次；Weather API 連線成功"
     )
     assert observed_points[0].provider_place_id is None
     assert observed_points[0].latitude == 35.6812
@@ -485,6 +482,38 @@ async def test_admin_snapshot_lists_google_monthly_free_usage_by_sku() -> None:
 
 
 @pytest.mark.asyncio
+async def test_admin_snapshot_lists_youtube_daily_allowance_and_usage() -> None:
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    await record_youtube_request(redis, "search_list")
+    await record_youtube_request(redis, "videos_list")
+    row = ProviderConfig(
+        provider="youtube_guides",
+        enabled=True,
+        config={
+            "hotspot_guide_youtube_search_daily_free_limit": 50,
+            "hotspot_guide_youtube_core_daily_free_limit": 500,
+        },
+    )
+
+    snapshot = await settings_snapshot(
+        SnapshotSession([row]),  # type: ignore[arg-type]
+        redis,
+    )
+
+    youtube = next(item for item in snapshot.providers if item.provider == "youtube_guides")
+    assert youtube.usage is not None
+    assert youtube.usage.period_kind == "day"
+    assert youtube.usage.used == 2
+    search = next(item for item in youtube.usage.sku_usage if item.sku == "search_queries")
+    core = next(item for item in youtube.usage.sku_usage if item.sku == "core_api_units")
+    assert search.free_limit == 50
+    assert search.free_remaining == 49
+    assert core.free_limit == 500
+    assert core.free_remaining == 499
+    await redis.aclose()
+
+
+@pytest.mark.asyncio
 async def test_production_booking_is_not_marked_available_until_connection_test_passes() -> None:
     base = Settings()
     row = ProviderConfig(
@@ -539,9 +568,7 @@ def test_ai_planner_rejects_non_official_base_url_and_invalid_priority() -> None
         _validate_provider_values(
             "ai_planner",
             {},
-            ProviderSettingsUpdate(
-                config={"openai_api_base_url": "https://attacker.example/v1"}
-            ),
+            ProviderSettingsUpdate(config={"openai_api_base_url": "https://attacker.example/v1"}),
         )
     assert getattr(host_error.value, "code", None) == "provider_setting_invalid"
 
