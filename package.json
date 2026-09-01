@@ -11,6 +11,7 @@
     "typecheck:web": "npm run typecheck --workspace @travel-scanner/web",
     "test:web": "npm run test --workspace @travel-scanner/web",
     "test:tools": "node --test tools/*.test.mjs",
+    "check:i18n": "node tools/check-i18n.mjs",
     "crawl:airlines:chrome": "node tools/airline-chrome-crawler.mjs"
   },
   "engines": {

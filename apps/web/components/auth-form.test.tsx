@@ -10,7 +10,7 @@ vi.mock("@/lib/api", async () => {
   const actual = await vi.importActual<typeof import("@/lib/api")>("@/lib/api");
   return { ...actual, api: (...args: unknown[]) => apiMock(...args) };
 });
-vi.mock("next/navigation", () => ({ useRouter: () => ({ push: pushMock, refresh: refreshMock }) }));
+vi.mock("@/i18n/navigation", () => ({ useRouter: () => ({ push: pushMock, refresh: refreshMock }) }));
 
 describe("AuthForm", () => {
   beforeEach(() => { apiMock.mockReset(); pushMock.mockReset(); refreshMock.mockReset(); });
@@ -38,6 +38,6 @@ describe("AuthForm", () => {
     apiMock.mockResolvedValueOnce({});
     rerender(<AuthForm mode="login" nextPath="//evil.example" />);
     fireEvent.click(screen.getByRole("button", { name: "登入" }));
-    await waitFor(() => expect(pushMock).toHaveBeenCalledWith("/"));
+    await waitFor(() => expect(pushMock).toHaveBeenCalledWith("/", { locale: "zh-TW" }));
   });
 });

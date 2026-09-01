@@ -2,8 +2,9 @@
 
 import { AlertCircle, ExternalLink, LoaderCircle, Search } from "lucide-react";
 import { FormEvent, useState } from "react";
+import { useLocale } from "next-intl";
 import { api, isUsageInsufficient, twd } from "@/lib/api";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 
 type FlightOffer = {
   id: string;
@@ -95,6 +96,7 @@ function StrategyCard({ strategy, title }: { strategy?: Strategy | null; title: 
 }
 
 export function LiveBackToBackSearch() {
+  const locale = useLocale();
   const router = useRouter();
   const [firstDestination, setFirstDestination] = useState("NRT");
   const [secondDestination, setSecondDestination] = useState("KIX");
@@ -126,7 +128,7 @@ export function LiveBackToBackSearch() {
           travelers: { adults: Number(adults), children: 0, rooms: 1 },
           cabin_class: cabinClass,
           currency: "TWD",
-          locale: "zh-TW",
+          locale,
         }),
       }));
     } catch (reason) {

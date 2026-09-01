@@ -4,6 +4,7 @@ import { ChevronDown, ChevronUp, ExternalLink, Leaf, Plane, RefreshCw } from "lu
 import { useMemo, useState } from "react";
 import { api, twd } from "@/lib/api";
 import { PriceAlertButton } from "@/components/price-alert-button";
+import { activeLocale } from "@/lib/locale-format";
 
 type FlightSegment = {
   origin?: string;
@@ -141,12 +142,12 @@ export function FlightOfferCard({ offer, fallbackUrl, alertReturnPath }: { offer
       {expanded && <div className="mt-3 space-y-3 border-l-2 border-[var(--teal-soft)] pl-4">{([[
         "去程", outbound,
       ], ["回程", returning]] as Array<[string, FlightSegment[]]>).map(([label, segments]) => segments.length ? <div key={label}><p className="mb-2 text-xs font-bold text-[var(--teal-dark)]">{label}</p>{segments.map((segment, index) => { const depart = localParts(segment.departure_time); const arrive = localParts(segment.arrival_time); const previous = segments[index - 1]; const layover = previous?.arrival_time && segment.departure_time ? Math.round((Date.parse(segment.departure_time) - Date.parse(previous.arrival_time)) / 60000) : 0; return <div key={`${segment.flight_number || "segment"}-${index}`} className="mb-2 rounded-xl border border-[var(--line)] p-3 text-sm">{index > 0 && layover > 0 ? <p className="mb-2 text-xs font-semibold text-[var(--coral)]">轉機停留 {durationLabel(layover)}</p> : null}<div className="flex flex-wrap justify-between gap-2"><strong>{segment.airline || "航空公司：供應商未提供"} · {segment.flight_number || "班號：供應商未提供"}</strong><span>{depart?.date || "供應商未提供"} {depart?.time || "供應商未提供"} {segment.origin || "—"} → {arrive?.time || "供應商未提供"} {segment.destination || "—"}</span></div><p className="mt-1 text-xs text-[var(--muted)]">{segment.departure_timezone || "當地時間"} → {segment.arrival_timezone || "當地時間"}</p></div>; })}</div> : null)}</div>}
-      <p className="mt-3 text-xs text-[var(--muted)]">來源：{offer.provider || "未標示"}{verifiedAt ? ` · 驗價 ${new Date(verifiedAt).toLocaleString("zh-TW")}` : ""}</p>
+      <p className="mt-3 text-xs text-[var(--muted)]">來源：{offer.provider || "未標示"}{verifiedAt ? ` · 驗價 ${new Date(verifiedAt).toLocaleString(activeLocale())}` : ""}</p>
       <div className="mt-3 grid gap-2 rounded-xl bg-[var(--paper)] p-3 text-xs text-[var(--muted)] sm:grid-cols-2">
         <p>票價 {twd.format(Number(offer.base_price || 0))} · 稅費 {twd.format(Number(offer.taxes || 0))}{Number(offer.fees || 0) ? ` · 其他費用 ${twd.format(Number(offer.fees))}` : ""}</p>
         <p>{offer.refundable ? "可退款" : "不可退款／需確認"} · {offer.changeable ? "可更改" : "不可更改／需確認"}</p>
-        {offer.original_currency && offer.original_total_price != null && offer.original_currency !== "TWD" ? <p>原幣 {offer.original_currency} {Number(offer.original_total_price).toLocaleString("zh-TW")} · 匯率 {String(offer.exchange_rate || "待確認")}</p> : null}
-        <p>{offer.expires_at ? `報價期限 ${new Date(offer.expires_at).toLocaleString("zh-TW")}` : "報價期限待確認"}</p>
+        {offer.original_currency && offer.original_total_price != null && offer.original_currency !== "TWD" ? <p>原幣 {offer.original_currency} {Number(offer.original_total_price).toLocaleString(activeLocale())} · 匯率 {String(offer.exchange_rate || "待確認")}</p> : null}
+        <p>{offer.expires_at ? `報價期限 ${new Date(offer.expires_at).toLocaleString(activeLocale())}` : "報價期限待確認"}</p>
       </div>
       <p className="mt-3 flex items-center gap-2 text-sm"><Leaf size={16} className="text-emerald-700" />{offer.emissions_kg_per_pax != null ? `每位旅客 ${Number(offer.emissions_kg_per_pax).toFixed(1)} kg CO₂e · Google Travel Impact Model${offer.emissions_model_version ? ` ${offer.emissions_model_version}` : ""}` : "碳排資料不足"}</p>
       {offer.status_details?.map((status, index) => <p key={`${String(status.fa_flight_id || status.ident)}-${index}`} className="mt-2 rounded-lg bg-sky-50 px-3 py-2 text-xs text-sky-900">FlightAware：{status.schedule_only ? "班表已核對" : String(status.status || "動態已更新")}{status.cancelled ? " · 已取消" : ""}{Number(status.departure_delay_seconds || 0) > 0 ? ` · 延誤 ${Math.round(Number(status.departure_delay_seconds) / 60)} 分` : ""}{status.departure_terminal ? ` · 航廈 ${String(status.departure_terminal)}` : ""}{status.departure_gate ? ` · 登機門 ${String(status.departure_gate)}` : ""}</p>)}

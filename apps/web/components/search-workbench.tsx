@@ -1,7 +1,7 @@
 "use client";
 
 import { CalendarDays, Check, ChevronLeft, ChevronRight, Hotel, LoaderCircle, MapPin, Sparkles, Users } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { type FormEvent, useMemo, useState } from "react";
 import { api, twd } from "@/lib/api";
 import { citiesForCountry, countries, interestLabel, interests, type CountryKey } from "@/lib/destinations";

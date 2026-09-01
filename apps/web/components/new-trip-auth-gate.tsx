@@ -1,7 +1,7 @@
 "use client";
 
 import { AlertCircle, LogIn } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
 import { ApiError, api } from "@/lib/api";
 import { NewTripForm } from "@/components/new-trip-form";

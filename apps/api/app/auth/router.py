@@ -10,6 +10,7 @@ from app.auth.schemas import (
     RegisterRequest,
     RegistrationStatus,
     TokenResponse,
+    UserPreferencesUpdate,
     UserResponse,
 )
 from app.auth.service import (
@@ -23,6 +24,7 @@ from app.auth.service import (
 )
 from app.config import get_settings
 from app.db import get_session
+from app.i18n import normalize_locale
 from app.infra import (
     clear_named_rate_limit,
     client_ip,
@@ -38,7 +40,12 @@ Session = Annotated[AsyncSession, Depends(get_session)]
 
 async def user_response(session: AsyncSession, user: User) -> UserResponse:
     _ = session
-    return UserResponse(id=user.id, email=user.email, is_admin=is_admin_user(user))
+    return UserResponse(
+        id=user.id,
+        email=user.email,
+        is_admin=is_admin_user(user),
+        preferred_locale=normalize_locale(user.preferred_locale),
+    )
 
 
 def set_auth_cookie(response: Response, token: str) -> None:
@@ -80,7 +87,11 @@ async def register(
         raise AppError(403, "registration_closed", "目前暫停開放新帳號註冊")
     if await find_user_by_email(session, str(payload.email)):
         raise AppError(409, "email_exists", "這個 Email 已經註冊")
-    user = User(email=str(payload.email).lower(), password_hash=hash_password(payload.password))
+    user = User(
+        email=str(payload.email).lower(),
+        password_hash=hash_password(payload.password),
+        preferred_locale=payload.preferred_locale,
+    )
     session.add(user)
     await session.flush()
     await create_usage_account(session, user)
@@ -140,6 +151,17 @@ async def logout(response: Response) -> None:
 
 @router.get("/me", response_model=UserResponse)
 async def me(user: CurrentUser, session: Session) -> UserResponse:
+    return await user_response(session, user)
+
+
+@router.patch("/me", response_model=UserResponse)
+async def update_me(
+    payload: UserPreferencesUpdate,
+    user: CurrentUser,
+    session: Session,
+) -> UserResponse:
+    user.preferred_locale = payload.preferred_locale
+    await session.commit()
     return await user_response(session, user)
 
 

@@ -13,8 +13,8 @@ import {
   Search,
   ShieldCheck,
 } from "lucide-react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { Link } from "@/i18n/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { BackToBackFareSearch } from "@/components/back-to-back-fare-search";
 import { LiveBackToBackSearch } from "@/components/live-back-to-back-search";

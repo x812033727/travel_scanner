@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 test("guest recommendation through alert management uses the real first-party stack", async ({ page }) => {
   test.setTimeout(120_000);
-  await page.goto("/");
+  await page.goto("/zh-TW");
   for (let step = 0; step < 4; step += 1) await page.getByRole("button", { name: /下一步/ }).click();
   await page.getByRole("button", { name: /請 AI 推薦 3 組/ }).click();
   await expect(page.getByRole("heading", { name: "AI 推薦的三組旅行" })).toBeVisible();

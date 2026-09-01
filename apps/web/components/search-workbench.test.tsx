@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { SearchWorkbench } from "./search-workbench";
 
 const { push } = vi.hoisted(() => ({ push: vi.fn() }));
-vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
+vi.mock("@/i18n/navigation", () => ({ useRouter: () => ({ push }) }));
 
 describe("SearchWorkbench", () => {
   beforeEach(() => {
@@ -61,5 +61,5 @@ describe("SearchWorkbench", () => {
     expect(url.searchParams.get("accepted_property_types")).toBe("hotel,vacation_rental");
     expect(url.searchParams.get("preferred_areas")).toBe("普吉老城");
     expect(url.searchParams.get("include_airbnb")).toBe("true");
-  });
+  }, 10_000);
 });

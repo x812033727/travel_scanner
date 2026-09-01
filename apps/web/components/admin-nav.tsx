@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 export function AdminNav({ current }: { current: "users" | "system" | "providers" | "hotspots" }) {
   const linkClass = (active: boolean) => `rounded-xl px-4 py-2.5 text-sm font-semibold ${active ? "bg-[var(--ink)] text-white" : "hover:bg-[var(--paper)]"}`;

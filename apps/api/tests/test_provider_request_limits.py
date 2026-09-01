@@ -33,7 +33,7 @@ async def test_google_place_requests_share_a_per_user_rate_limit(
     class PlacesStub:
         configured = True
 
-        def __init__(self, *_args: object) -> None:
+        def __init__(self, *_args: object, **_kwargs: object) -> None:
             pass
 
         async def autocomplete(self, *_args: object) -> list[dict[str, object]]:
@@ -52,12 +52,14 @@ async def test_google_place_requests_share_a_per_user_rate_limit(
         user,  # type: ignore[arg-type]
         object(),  # type: ignore[arg-type]
         q="東京",
+        locale="zh-TW",
     )
     await places_router.get_place_details(
         "google_places",
         "places/example",
         user,  # type: ignore[arg-type]
         object(),  # type: ignore[arg-type]
+        locale="zh-TW",
     )
 
     assert observed == [

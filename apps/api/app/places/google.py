@@ -9,6 +9,7 @@ import httpx
 from redis.asyncio import Redis
 
 from app.config import Settings, get_settings
+from app.i18n import Locale, normalize_locale
 from app.providers.schemas import ActivityOffer, HotelOffer
 from app.providers.usage_meter import record_google_maps_request
 from app.trips.itinerary import ItineraryDay
@@ -25,10 +26,12 @@ class GoogleTravelService:
         redis: Redis,
         settings: Settings | None = None,
         client: httpx.AsyncClient | None = None,
+        locale: Locale | str = "zh-TW",
     ) -> None:
         self.redis = redis
         self.settings = settings or get_settings()
         self.client = client
+        self.locale = normalize_locale(locale)
 
     @property
     def configured(self) -> bool:
@@ -103,7 +106,7 @@ class GoogleTravelService:
     ) -> list[dict[str, Any]]:
         if not self.configured or len(query.strip()) < 2:
             return []
-        body: dict[str, Any] = {"input": query.strip(), "languageCode": "zh-TW"}
+        body: dict[str, Any] = {"input": query.strip(), "languageCode": self.locale}
         if session_token:
             body["sessionToken"] = session_token
         if country_codes:
@@ -147,7 +150,7 @@ class GoogleTravelService:
     async def place_details(
         self, place_id: str, session_token: str | None = None
     ) -> dict[str, Any]:
-        params = {"languageCode": "zh-TW"}
+        params: dict[str, str] = {"languageCode": self.locale}
         if session_token:
             params["sessionToken"] = session_token
         payload = await self._get(
@@ -182,13 +185,13 @@ class GoogleTravelService:
     ) -> dict[str, Any]:
         if not self.configured:
             return {}
-        raw_key = f"{name}:{latitude}:{longitude}".encode()
+        raw_key = f"{self.locale}:{name}:{latitude}:{longitude}".encode()
         key = f"places:google:{hashlib.sha256(raw_key).hexdigest()}"
         cached = await self.redis.get(key)
         if cached:
             value = cached.decode() if isinstance(cached, bytes) else str(cached)
             return cast(dict[str, Any], json.loads(value))
-        body: dict[str, Any] = {"textQuery": name, "languageCode": "zh-TW", "pageSize": 1}
+        body: dict[str, Any] = {"textQuery": name, "languageCode": self.locale, "pageSize": 1}
         if latitude is not None and longitude is not None and (latitude or longitude):
             body["locationBias"] = {
                 "circle": {
@@ -382,7 +385,7 @@ class GoogleTravelService:
                     }
                 },
                 "travelMode": "TRANSIT",
-                "languageCode": "zh-TW",
+                "languageCode": self.locale,
             },
             field_mask="routes.duration",
             operation="routes",

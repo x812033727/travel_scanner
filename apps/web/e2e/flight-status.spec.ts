@@ -50,7 +50,7 @@ test("flight status lookup shows exact match and loads track on demand", async (
     });
   });
 
-  await page.goto("/flights/status");
+  await page.goto("/zh-TW/flights/status");
   await page.getByLabel("班號").fill("BR198");
   await page.getByLabel("出發日期").fill("2026-09-01");
   await page.getByRole("button", { name: "查詢", exact: true }).click();

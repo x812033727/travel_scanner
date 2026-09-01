@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight, CalendarDays, Check, ChevronLeft, ChevronRight, Hotel, MapPinned, Route, Sparkles, Users } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { useMemo, useState } from "react";
 import { PlacePicker } from "@/components/place-picker";
 import { api, twd } from "@/lib/api";

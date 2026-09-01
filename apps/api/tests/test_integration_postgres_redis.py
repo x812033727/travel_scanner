@@ -127,6 +127,38 @@ async def test_registration_and_concurrent_idempotent_reservation() -> None:
 
 
 @pytest.mark.asyncio(loop_scope="module")
+async def test_account_locale_is_persisted_and_can_be_updated() -> None:
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        registered = await client.post(
+            "/api/v1/auth/register",
+            json={
+                "email": f"locale-{uuid4()}@example.com",
+                "password": "integration-password-123",
+                "preferred_locale": "ja",
+            },
+        )
+        assert registered.status_code == 201
+        assert registered.json()["user"]["preferred_locale"] == "ja"
+        headers = {"Authorization": f"Bearer {registered.json()['access_token']}"}
+
+        updated = await client.patch(
+            "/api/v1/auth/me",
+            json={"preferred_locale": "ko"},
+            headers=headers,
+        )
+        assert updated.status_code == 200
+        assert updated.json()["preferred_locale"] == "ko"
+
+        invalid = await client.patch(
+            "/api/v1/auth/me",
+            json={"preferred_locale": "fr"},
+            headers=headers,
+        )
+        assert invalid.status_code == 422
+
+
+@pytest.mark.asyncio(loop_scope="module")
 async def test_concurrent_provider_search_persists_results_without_sharing_session_work() -> None:
     email = f"search-orchestrator-{uuid4()}@example.com"
     transport = ASGITransport(app=app)

@@ -16,6 +16,7 @@ from app.ai.parser import MockAITripParser
 from app.auth.service import CurrentUser
 from app.db import get_session
 from app.destinations.catalog import DESTINATIONS
+from app.i18n import Locale, current_locale
 from app.infra import client_ip, enforce_named_rate_limit, get_redis
 from app.places.google import GoogleTravelService
 from app.problems import AppError
@@ -25,6 +26,7 @@ from app.search.schemas import PropertyType, Travelers, TripPace
 router = APIRouter(prefix="/destinations", tags=["destinations"])
 public_router = APIRouter(prefix="/places", tags=["places"])
 Session = Annotated[AsyncSession, Depends(get_session)]
+CurrentLocale = Annotated[Locale, Depends(current_locale)]
 PHOTO_NAME_PATTERN = re.compile(r"^places/[A-Za-z0-9._~-]{1,255}/photos/[A-Za-z0-9._~-]{1,512}$")
 GOOGLE_PLACES_USER_LIMIT = 120
 GOOGLE_PLACES_USER_WINDOW_SECONDS = 600
@@ -54,6 +56,7 @@ async def autocomplete_places(
     user: CurrentUser,
     session: Session,
     q: str,
+    locale: CurrentLocale,
     session_token: str | None = None,
     country_codes: str | None = None,
     latitude: float | None = None,
@@ -74,7 +77,7 @@ async def autocomplete_places(
     allowed_codes = {"jp", "kr", "th"}
     if len(codes) > 3 or any(code not in allowed_codes for code in codes):
         raise AppError(422, "invalid_place_regions", "地點搜尋目前支援日本、韓國與泰國")
-    service = GoogleTravelService(get_redis(), await load_runtime_settings(session))
+    service = GoogleTravelService(get_redis(), await load_runtime_settings(session), locale=locale)
     if not service.configured:
         raise AppError(503, "google_maps_not_configured", "Google Maps 地點搜尋尚未啟用")
     await enforce_named_rate_limit(
@@ -92,6 +95,7 @@ async def get_place_details(
     place_id: str,
     user: CurrentUser,
     session: Session,
+    locale: CurrentLocale,
     session_token: str | None = None,
 ) -> dict[str, Any]:
     _ = user
@@ -99,7 +103,7 @@ async def get_place_details(
         raise AppError(404, "place_provider_not_found", "不支援的地點來源")
     if session_token is not None and not 8 <= len(session_token) <= 36:
         raise AppError(422, "invalid_session_token", "地點搜尋工作階段代碼格式錯誤")
-    service = GoogleTravelService(get_redis(), await load_runtime_settings(session))
+    service = GoogleTravelService(get_redis(), await load_runtime_settings(session), locale=locale)
     if not service.configured:
         raise AppError(503, "google_maps_not_configured", "Google Maps 地點搜尋尚未啟用")
     await enforce_named_rate_limit(
