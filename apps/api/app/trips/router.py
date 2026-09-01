@@ -166,7 +166,14 @@ class ItineraryItemRequest(BaseModel):
     duration_minutes: int | None = Field(default=None, ge=0, le=1440)
     notes: str | None = Field(default=None, max_length=4000)
     fixed_time: bool = False
-    system_role: Literal["hotel_start", "lunch", "dinner", "hotel_end"] | None = None
+    system_role: Literal[
+        "outbound_flight",
+        "hotel_start",
+        "lunch",
+        "dinner",
+        "hotel_end",
+        "return_flight",
+    ] | None = None
     is_skipped: bool = False
 
 
@@ -203,6 +210,43 @@ class ScheduleDefaultsUpdateRequest(BaseModel):
 class MealSkipRequest(BaseModel):
     version: int = Field(ge=1)
     skipped: bool
+
+
+class FlightAnchorDetails(BaseModel):
+    airline: str = Field(min_length=1, max_length=120)
+    flight_number: str = Field(min_length=1, max_length=32)
+    origin: str = Field(min_length=1, max_length=16)
+    destination: str = Field(min_length=1, max_length=16)
+    departure_local: str = Field(
+        pattern=r"^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d$"
+    )
+    arrival_local: str = Field(
+        pattern=r"^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d$"
+    )
+    departure_timezone: str | None = Field(default=None, min_length=1, max_length=64)
+    arrival_timezone: str | None = Field(default=None, min_length=1, max_length=64)
+
+    @model_validator(mode="after")
+    def normalize_local_details(self) -> "FlightAnchorDetails":
+        for field_name in ("airline", "flight_number", "origin", "destination"):
+            value = cast(str, getattr(self, field_name)).strip()
+            if not value:
+                raise ValueError(f"{field_name} must not be blank")
+            setattr(self, field_name, value)
+        self.origin = self.origin.upper()
+        self.destination = self.destination.upper()
+        for field_name in ("departure_local", "arrival_local"):
+            datetime.fromisoformat(cast(str, getattr(self, field_name)))
+        if self.departure_timezone is not None:
+            self.departure_timezone = self.departure_timezone.strip() or None
+        if self.arrival_timezone is not None:
+            self.arrival_timezone = self.arrival_timezone.strip() or None
+        return self
+
+
+class FlightAnchorUpdateRequest(BaseModel):
+    version: int = Field(ge=1)
+    flight: FlightAnchorDetails | None
 
 
 class ItineraryUpdateRequest(BaseModel):
@@ -621,6 +665,79 @@ async def persist_system_schedule_change(
             await session.commit()
             await session.refresh(trip)
     return await serialize_trip(session, trip)
+
+
+async def persist_information_anchor_change(
+    session: AsyncSession,
+    trip: TripPlan,
+    user_id: UUID,
+    expected_version: int,
+) -> dict[str, Any]:
+    next_version = await session.scalar(
+        update(TripPlan)
+        .where(
+            TripPlan.id == trip.id,
+            TripPlan.user_id == user_id,
+            TripPlan.version == expected_version,
+        )
+        .values(
+            version=TripPlan.version + 1,
+            data={**trip.data, "edited": True},
+        )
+        .returning(TripPlan.version)
+    )
+    if next_version is None:
+        await session.rollback()
+        raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再操作")
+    await session.commit()
+    await session.refresh(trip)
+    return await serialize_trip(session, trip)
+
+
+def apply_flight_anchor_details(
+    item: TripPlanItem,
+    role: Literal["outbound_flight", "return_flight"],
+    flight: FlightAnchorDetails | None,
+) -> None:
+    label = "去程" if role == "outbound_flight" else "回程"
+    item.item_type = "flight"
+    item.locked = True
+    item.fixed_time = True
+    item.is_skipped = False
+    item.offer_id = None
+    item.start_time = None
+    item.end_time = None
+    item.duration_minutes = None
+    item.latitude = None
+    item.longitude = None
+    item.provider_place_id = None
+    item.location_source = None
+    item.is_estimated = flight is None
+    if flight is None:
+        item.title = f"{label}航班尚未設定"
+        item.location_name = None
+        item.data = {
+            **item.data,
+            "source_mode": "system",
+            "timeline_section": "flight_anchor",
+            "flight_selection_source": "unset",
+            "flight_info": None,
+        }
+        return
+    details = flight.model_dump()
+    item.title = f"{flight.airline.strip()} {flight.flight_number.strip()}"
+    item.location_name = f"{flight.origin.strip()} → {flight.destination.strip()}"
+    item.data = {
+        **item.data,
+        "source_mode": "manual",
+        "timeline_section": "flight_anchor",
+        "flight_leg": "outbound" if role == "outbound_flight" else "return",
+        "flight_selection_source": "manual",
+        "flight_info": {
+            key: value.strip() if isinstance(value, str) else value
+            for key, value in details.items()
+        },
+    }
 
 
 def _planning_request(
@@ -1416,7 +1533,7 @@ async def update_itinerary(
             raise AppError(
                 422,
                 "system_itinerary_item_immutable",
-                "固定飯店與餐食卡只能由系統建立",
+                "固定航班、飯店與餐食卡只能由系統建立",
             )
         if existing is not None and existing.system_role is not None and (
             item.system_role != existing.system_role or item.day_date != existing.day_date
@@ -1424,7 +1541,7 @@ async def update_itinerary(
             raise AppError(
                 422,
                 "system_itinerary_item_immutable",
-                "固定飯店與餐食卡不可改變日期或類型",
+                "固定航班、飯店與餐食卡不可改變日期或類型",
             )
     if trip.start_date and any(
         item.day_date < trip.start_date or (trip.end_date and item.day_date > trip.end_date)
@@ -1505,13 +1622,25 @@ async def update_itinerary(
                 protected: dict[str, Any] = {
                     "position": row.position,
                     "locked": True,
-                    "fixed_time": row.system_role in {"hotel_start", "lunch", "dinner"},
+                    "fixed_time": row.system_role
+                    in {
+                        "outbound_flight",
+                        "hotel_start",
+                        "lunch",
+                        "dinner",
+                        "return_flight",
+                    },
                     "start_time": row.start_time,
                     "end_time": row.end_time,
                     "duration_minutes": row.duration_minutes,
                     "is_skipped": row.is_skipped,
                 }
-                if row.system_role in {"hotel_start", "hotel_end"}:
+                if row.system_role in {
+                    "outbound_flight",
+                    "hotel_start",
+                    "hotel_end",
+                    "return_flight",
+                }:
                     protected.update(
                         {
                             "title": row.title,
@@ -1670,6 +1799,31 @@ async def update_schedule_defaults(
     )
 
 
+@router.put("/{trip_id}/flight-anchors/{direction}")
+async def update_flight_anchor(
+    trip_id: UUID,
+    direction: Literal["outbound", "return"],
+    payload: FlightAnchorUpdateRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    trip = await owned_trip(session, user.id, trip_id)
+    rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    role: Literal["outbound_flight", "return_flight"] = (
+        "outbound_flight" if direction == "outbound" else "return_flight"
+    )
+    item = next((row for row in rows if row.system_role == role), None)
+    if item is None:
+        raise AppError(422, "flight_anchor_unavailable", "旅程日期不完整，無法設定航班")
+    apply_flight_anchor_details(item, role, payload.flight)
+    return await persist_information_anchor_change(
+        session,
+        trip,
+        user.id,
+        payload.version,
+    )
+
+
 @router.patch("/{trip_id}/items/{item_id}/skip")
 async def update_meal_skip(
     trip_id: UUID,
@@ -1743,6 +1897,7 @@ async def generate_trip_itinerary(
             item
             for item in preserved
             if (target_date is None or item.day_date == target_date)
+            and item.system_role not in {"outbound_flight", "return_flight"}
             and (
                 item.system_role not in {"lunch", "dinner"}
                 or item.data.get("meal_selection_source") == "user"
@@ -2666,10 +2821,30 @@ async def reoptimize_trip(
         )
     )
     locked_dates = {item.day_date for item in existing_items if item.locked}
+    flight_anchors = {
+        item.system_role: item
+        for item in existing_items
+        if item.system_role in {"outbound_flight", "return_flight"}
+    }
     for day in plan.itinerary:
         # User-locked anchors remain byte-for-byte intact. Fresh movable items are
         # rebuilt around them, and provider-generated fixed duplicates are omitted.
         for item in day.items:
+            if item.system_role in {"outbound_flight", "return_flight"}:
+                current = flight_anchors.get(item.system_role)
+                if (
+                    current is not None
+                    and current.data.get("flight_selection_source") != "manual"
+                ):
+                    current.item_type = item.item_type
+                    current.offer_id = item.offer_id
+                    current.title = item.title
+                    current.location_name = item.location_name
+                    current.start_time = item.start_time
+                    current.end_time = item.end_time
+                    current.is_estimated = item.is_estimated
+                    current.data = item.data
+                continue
             if item.locked:
                 continue
             row = item_record(trip.id, item, preserve_source_id=False)

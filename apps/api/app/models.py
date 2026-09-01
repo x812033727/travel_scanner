@@ -615,7 +615,8 @@ class TripPlanItem(Base):
     __table_args__ = (
         CheckConstraint(
             "system_role IS NULL OR system_role IN "
-            "('hotel_start', 'lunch', 'dinner', 'hotel_end')",
+            "('outbound_flight', 'hotel_start', 'lunch', 'dinner', "
+            "'hotel_end', 'return_flight')",
             name="ck_trip_plan_item_system_role",
         ),
         UniqueConstraint(

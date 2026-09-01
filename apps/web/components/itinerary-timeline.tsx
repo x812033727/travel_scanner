@@ -8,11 +8,14 @@ import {
   Sparkles,
   Utensils,
 } from "lucide-react";
+import { FlightAnchorCard } from "@/components/flight-anchor-card";
 import { RouteSegmentCard } from "@/components/route-segment-card";
 import { activeLocale } from "@/lib/locale-format";
 import {
   formatTime,
   groupTripItems,
+  isActiveRouteItem,
+  isFlightAnchor,
   isLogisticsItem,
   type RouteSegment,
   type TripItem,
@@ -55,7 +58,7 @@ export function ItineraryTimeline({
             <div>
               <h2 className="font-bold text-slate-900">交通與住宿資訊</h2>
               <p className="mt-1 text-xs leading-5 text-slate-600">
-                航班、接送與入住退房資訊獨立保存，不加入每日外出路線。
+                接送與入住退房資訊獨立保存，不加入每日外出路線。
               </p>
             </div>
           </div>
@@ -74,7 +77,10 @@ export function ItineraryTimeline({
       )}
 
       {groupTripItems(dailyItems).map(([day, rows], dayIndex) => {
-        const arrangementCount = rows.filter((item) => !item.system_role?.startsWith("hotel_")).length;
+        const arrangementCount = rows.filter((item) =>
+          !isFlightAnchor(item) && !item.system_role?.startsWith("hotel_"),
+        ).length;
+        const routeRows = rows.filter(isActiveRouteItem);
         return (
           <section
             key={day}
@@ -92,15 +98,26 @@ export function ItineraryTimeline({
               </div>
               <span className="text-xs text-[var(--muted)]">{arrangementCount} 個安排</span>
             </div>
-            <ol className="relative space-y-3 before:absolute before:bottom-4 before:left-[1.15rem] before:top-4 before:w-px before:bg-[var(--line)]">
-              {rows.map((item, index) => {
+            <ol className="relative space-y-3">
+              {rows.map((item) => {
+                if (isFlightAnchor(item)) {
+                  return <li key={item.id}><FlightAnchorCard item={item} /></li>;
+                }
+                const routeIndex = routeRows.findIndex((row) => row.id === item.id);
+                const nextItem = routeIndex >= 0 ? routeRows[routeIndex + 1] : undefined;
                 const route = routes.find(
                   (segment) =>
                     segment.from_item_id === item.id
-                    && segment.to_item_id === rows[index + 1]?.id,
+                    && segment.to_item_id === nextItem?.id,
                 );
+                const incomingRoute = routes.find((segment) => segment.to_item_id === item.id);
                 const meal = item.system_role === "lunch" || item.system_role === "dinner";
                 const hotel = item.system_role === "hotel_start" || item.system_role === "hotel_end";
+                const timeMode = item.fixed_time
+                  ? `固定時間 · ${formatTime(item.start_time, undefined, timezone)}`
+                  : incomingRoute
+                    ? `接續前站 · 預計 ${formatTime(item.start_time, undefined, timezone)}`
+                    : "接續前站 · 待路線更新";
                 return (
                   <li key={item.id}>
                     <div className="relative grid grid-cols-[2.3rem_1fr] gap-3">
@@ -111,8 +128,8 @@ export function ItineraryTimeline({
                         <div className="flex flex-wrap items-start justify-between gap-2">
                           <div>
                             <p className="text-xs font-semibold text-[var(--muted)]">
-                              {item.system_role ? `${systemLabel(item)} · ` : ""}{formatTime(item.start_time, undefined, timezone)}
-                              {item.end_time ? `–${formatTime(item.end_time, undefined, timezone)}` : ""}
+                              {item.system_role ? `${systemLabel(item)} · ` : ""}{timeMode}
+                              {item.fixed_time && item.end_time ? `–${formatTime(item.end_time, undefined, timezone)}` : ""}
                             </p>
                             <h3 className="mt-1 font-semibold">{item.title}</h3>
                           </div>
@@ -133,7 +150,7 @@ export function ItineraryTimeline({
                         </p>
                       </div>
                     </div>
-                    {route && <div className="mt-3"><RouteSegmentCard segment={route} timezone={timezone} /></div>}
+                    {routeIndex >= 0 && nextItem && route && <div className="mt-3"><RouteSegmentCard segment={route} timezone={timezone} /></div>}
                   </li>
                 );
               })}

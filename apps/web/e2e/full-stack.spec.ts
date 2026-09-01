@@ -54,7 +54,7 @@ test("guest recommendation through alert management uses the real first-party st
   await expect(page.getByText(/目前還沒有價格通知/)).toBeVisible();
 });
 
-test("blank trip keeps hotel and meal anchors while lunch bypass survives reload", async ({ page }) => {
+test("blank trip keeps flight, hotel and meal anchors with two time modes", async ({ page }) => {
   test.setTimeout(120_000);
   const email = `schedule${Date.now()}${test.info().workerIndex}@example.com`;
   await page.goto("/zh-TW/register?next=/trips/new");
@@ -74,11 +74,44 @@ test("blank trip keeps hotel and meal anchors while lunch bypass survives reload
   await expect(page).toHaveURL(/\/trips\/[0-9a-f-]+$/, { timeout: 30_000 });
 
   const systemCards = page.locator(".planner-system-card");
+  const flightCards = page.locator(".planner-flight-card");
   await expect(systemCards).toHaveCount(4);
+  await expect(flightCards).toHaveCount(2);
+  await expect(flightCards.first()).toContainText("去程航班尚未設定");
+  await expect(flightCards.last()).toContainText("回程航班尚未設定");
   await expect(systemCards.first()).toContainText("住宿據點 · 出發");
   await expect(systemCards.last()).toContainText("住宿據點 · 返回");
   await expect(page.getByText("午餐", { exact: true })).toBeVisible();
   await expect(page.getByText("晚餐", { exact: true })).toBeVisible();
+
+  await page.getByRole("button", { name: "設定去程航班" }).click();
+  await page.getByLabel("航空公司").fill("長榮航空");
+  await page.getByLabel("班號").fill("BR 198");
+  await page.getByLabel("出發機場").fill("TPE");
+  await page.getByLabel("抵達機場").fill("NRT");
+  await page.getByLabel("當地起飛時間").fill("2026-11-10T08:50");
+  await page.getByLabel("當地抵達時間").fill("2026-11-10T13:10");
+  await page.getByRole("button", { name: "儲存航班" }).click();
+  await expect(page.getByRole("dialog", { name: "設定去程航班" })).toBeHidden();
+  await expect(flightCards.first()).toContainText("長榮航空 BR 198");
+
+  await page.getByRole("button", { name: "設定回程航班" }).click();
+  await page.getByLabel("航空公司").fill("長榮航空");
+  await page.getByLabel("班號").fill("BR 197");
+  await page.getByLabel("出發機場").fill("NRT");
+  await page.getByLabel("抵達機場").fill("TPE");
+  await page.getByLabel("當地起飛時間").fill("2026-11-10T20:20");
+  await page.getByLabel("當地抵達時間").fill("2026-11-10T23:10");
+  await page.getByRole("button", { name: "儲存航班" }).click();
+  await expect(flightCards.last()).toContainText("長榮航空 BR 197");
+
+  const generalCard = page.locator(".planner-itinerary-card").first();
+  await expect(generalCard).toContainText("接續前站");
+  await generalCard.getByRole("button", { name: /^編輯 / }).click();
+  await page.getByRole("radio", { name: "固定時間" }).click();
+  await page.getByLabel("固定開始時間").fill("15:00");
+  await page.getByRole("dialog", { name: "編輯安排" }).getByRole("button", { name: "關閉" }).click();
+  await expect(generalCard).toContainText("固定時間 · 15:00");
 
   await page.getByRole("button", { name: "設定主要飯店" }).first().click();
   await page.getByLabel("飯店名稱").fill("丸之內測試飯店");
@@ -90,6 +123,8 @@ test("blank trip keeps hotel and meal anchors while lunch bypass survives reload
 
   await page.getByRole("button", { name: "跳過" }).first().click();
   await expect(page.getByText("已跳過，不計停留時間與路線")).toBeVisible();
+  await expect(systemCards.filter({ hasText: "午餐" })).toContainText("固定時間");
+  await expect(systemCards.filter({ hasText: "午餐" })).toHaveClass(/planner-system-card-skipped/);
   const computeResponse = page.waitForResponse((response) =>
     response.url().includes("/routes/compute-day") && response.request().method() === "POST",
   );
@@ -97,6 +132,8 @@ test("blank trip keeps hotel and meal anchors while lunch bypass survives reload
   expect((await computeResponse).ok()).toBe(true);
 
   await page.reload();
+  await expect(flightCards.first()).toContainText("長榮航空 BR 198");
+  await expect(flightCards.last()).toContainText("長榮航空 BR 197");
   await expect(page.getByText("已跳過，不計停留時間與路線")).toBeVisible();
   await page.getByRole("button", { name: "恢復" }).click();
   await expect(page.getByText("午餐", { exact: true })).toBeVisible();

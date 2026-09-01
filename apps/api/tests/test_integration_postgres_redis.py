@@ -546,16 +546,23 @@ async def test_blank_trip_creation_and_structured_itinerary_fields(
             "2026-11-11",
             "2026-11-12",
         }
+        daily_roles = {"hotel_start", "lunch", "dinner", "hotel_end"}
         for day_value in {"2026-11-10", "2026-11-11", "2026-11-12"}:
+            expected = set(daily_roles)
+            if day_value == "2026-11-10":
+                expected.add("outbound_flight")
+            if day_value == "2026-11-12":
+                expected.add("return_flight")
             assert {
                 item["system_role"]
                 for item in trip["items"]
                 if item["day_date"] == day_value and item["system_role"]
-            } == {"hotel_start", "lunch", "dinner", "hotel_end"}
+            } == expected
         assert all(
             item["data"]["generated_by"] == "ai_planner"
             for item in trip["items"]
-            if item["system_role"] not in {"hotel_start", "hotel_end"}
+            if item["system_role"]
+            not in {"outbound_flight", "hotel_start", "hotel_end", "return_flight"}
         )
         assert trip["primary_lodging"] is None
         assert trip["schedule_defaults"]["lunch_time"] == "12:00"
@@ -701,12 +708,76 @@ async def test_system_schedule_endpoints_sync_skip_persist_and_enforce_version()
         assert created.status_code == 201
         trip = created.json()
         assert {item["system_role"] for item in trip["items"] if item["system_role"]} == {
+            "outbound_flight",
             "hotel_start",
             "lunch",
             "dinner",
             "hotel_end",
+            "return_flight",
         }
         initial_route_total = trip["routing"]["total"]
+
+        flight_payload = {
+            "airline": "長榮航空",
+            "flight_number": "BR 198",
+            "origin": "TPE",
+            "destination": "NRT",
+            "departure_local": "2026-11-10T08:50",
+            "arrival_local": "2026-11-10T13:10",
+            "departure_timezone": "Asia/Taipei",
+            "arrival_timezone": "Asia/Tokyo",
+        }
+        outbound = await client.put(
+            f"/api/v1/trips/{trip['id']}/flight-anchors/outbound",
+            headers=headers,
+            json={"version": trip["version"], "flight": flight_payload},
+        )
+        assert outbound.status_code == 200
+        trip = outbound.json()
+        outbound_anchor = next(
+            item for item in trip["items"] if item["system_role"] == "outbound_flight"
+        )
+        assert outbound_anchor["data"]["flight_selection_source"] == "manual"
+        assert outbound_anchor["data"]["flight_info"]["departure_local"] == "2026-11-10T08:50"
+        assert trip["routing"]["total"] == initial_route_total
+
+        stale_flight = await client.put(
+            f"/api/v1/trips/{trip['id']}/flight-anchors/return",
+            headers=headers,
+            json={"version": trip["version"] - 1, "flight": flight_payload},
+        )
+        assert stale_flight.status_code == 409
+        returning = await client.put(
+            f"/api/v1/trips/{trip['id']}/flight-anchors/return",
+            headers=headers,
+            json={
+                "version": trip["version"],
+                "flight": {
+                    **flight_payload,
+                    "flight_number": "BR 197",
+                    "origin": "NRT",
+                    "destination": "TPE",
+                    "departure_local": "2026-11-10T20:20",
+                    "arrival_local": "2026-11-10T23:10",
+                    "departure_timezone": "Asia/Tokyo",
+                    "arrival_timezone": "Asia/Taipei",
+                },
+            },
+        )
+        assert returning.status_code == 200
+        trip = returning.json()
+        cleared = await client.put(
+            f"/api/v1/trips/{trip['id']}/flight-anchors/return",
+            headers=headers,
+            json={"version": trip["version"], "flight": None},
+        )
+        assert cleared.status_code == 200
+        trip = cleared.json()
+        return_anchor = next(
+            item for item in trip["items"] if item["system_role"] == "return_flight"
+        )
+        assert return_anchor["data"]["flight_info"] is None
+        assert return_anchor["title"] == "回程航班尚未設定"
 
         lodging = await client.put(
             f"/api/v1/trips/{trip['id']}/primary-lodging",

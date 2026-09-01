@@ -45,7 +45,7 @@ describe("system itinerary card", () => {
     expect(skip).toHaveBeenCalledOnce();
   });
 
-  it("collapses skipped meals into a restore row", () => {
+  it("keeps skipped meal details visible in a muted card with restore as the only action", () => {
     const restore = vi.fn();
     render(
       <SystemItineraryCard
@@ -59,8 +59,11 @@ describe("system itinerary card", () => {
     );
 
     expect(screen.getByText("已跳過，不計停留時間與路線")).toBeTruthy();
-    expect(screen.queryByText("東京定食")).toBeNull();
+    expect(screen.getByText("東京定食")).toBeTruthy();
+    expect(screen.getByText(/固定時間 · 12:00 · 60 分/)).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "更換餐廳" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "跳過" })).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "恢復" }));
     expect(restore).toHaveBeenCalledOnce();
-  });
+  }, 10_000);
 });

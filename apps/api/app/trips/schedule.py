@@ -10,8 +10,28 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import TripPlan, TripPlanItem
 
-SystemRole = Literal["hotel_start", "lunch", "dinner", "hotel_end"]
-SYSTEM_ROLES: tuple[SystemRole, ...] = ("hotel_start", "lunch", "dinner", "hotel_end")
+SystemRole = Literal[
+    "outbound_flight",
+    "hotel_start",
+    "lunch",
+    "dinner",
+    "hotel_end",
+    "return_flight",
+]
+DailySystemRole = Literal["hotel_start", "lunch", "dinner", "hotel_end"]
+FlightSystemRole = Literal["outbound_flight", "return_flight"]
+DAILY_SYSTEM_ROLES: tuple[DailySystemRole, ...] = (
+    "hotel_start",
+    "lunch",
+    "dinner",
+    "hotel_end",
+)
+FLIGHT_SYSTEM_ROLES = frozenset({"outbound_flight", "return_flight"})
+SYSTEM_ROLES: tuple[SystemRole, ...] = (
+    "outbound_flight",
+    *DAILY_SYSTEM_ROLES,
+    "return_flight",
+)
 LOGISTICS_ITEM_TYPES = frozenset({"flight", "transport", "hotel"})
 DEFAULT_SCHEDULE: dict[str, Any] = {
     "day_start_time": "09:00",
@@ -65,7 +85,11 @@ def is_logistics_item(item: TripPlanItem) -> bool:
 
 
 def is_active_route_item(item: TripPlanItem) -> bool:
-    return not item.is_skipped and not is_logistics_item(item)
+    return (
+        not item.is_skipped
+        and item.system_role not in FLIGHT_SYSTEM_ROLES
+        and not is_logistics_item(item)
+    )
 
 
 def active_route_rows(
@@ -194,6 +218,90 @@ def _new_slot(
     )
 
 
+def _new_flight_slot(
+    trip: TripPlan, day_value: date, role: FlightSystemRole
+) -> TripPlanItem:
+    label = "去程" if role == "outbound_flight" else "回程"
+    return TripPlanItem(
+        id=_role_id(trip.id, day_value, role),
+        trip_plan_id=trip.id,
+        item_type="flight",
+        day_date=day_value,
+        position=0,
+        title=f"{label}航班尚未設定",
+        locked=True,
+        fixed_time=True,
+        is_estimated=True,
+        data={
+            "source_mode": "system",
+            "timeline_section": "flight_anchor",
+            "flight_selection_source": "unset",
+            "flight_info": None,
+        },
+        system_role=role,
+        is_skipped=False,
+    )
+
+
+def _promote_legacy_flights(
+    trip: TripPlan, rows: list[TripPlanItem], days: list[date]
+) -> bool:
+    if not days:
+        return False
+    changed = False
+    assigned = {
+        item.system_role
+        for item in rows
+        if item.system_role in FLIGHT_SYSTEM_ROLES
+    }
+    candidates = [
+        item
+        for item in rows
+        if item.item_type == "flight"
+        and item.system_role is None
+        and item.day_date in {days[0], days[-1]}
+    ]
+    candidates.sort(key=lambda item: (item.day_date or date.min, item.position))
+
+    def is_return(item: TripPlanItem) -> bool:
+        marker = str(item.data.get("flight_leg") or "").casefold()
+        title = (item.title or "").casefold()
+        return marker in {"return", "inbound"} or "返回" in title or "回程" in title
+
+    outbound = next(
+        (item for item in candidates if item.day_date == days[0] and not is_return(item)),
+        None,
+    )
+    returning = next(
+        (item for item in reversed(candidates) if item.day_date == days[-1] and is_return(item)),
+        None,
+    )
+    if returning is None:
+        returning = next(
+            (
+                item
+                for item in reversed(candidates)
+                if item.day_date == days[-1] and item is not outbound
+            ),
+            None,
+        )
+    for role, item in (("outbound_flight", outbound), ("return_flight", returning)):
+        if role in assigned or item is None:
+            continue
+        item.system_role = role
+        item.locked = True
+        item.fixed_time = True
+        item.is_skipped = False
+        item.data = {
+            **item.data,
+            "timeline_section": "flight_anchor",
+            "flight_selection_source": item.data.get("flight_selection_source", "provider"),
+        }
+        assigned.add(role)
+        changed = True
+    return changed
+
+
 def _sync_lodging(item: TripPlanItem, lodging: dict[str, Any] | None) -> bool:
     if item.system_role not in {"hotel_start", "hotel_end"}:
         return False
@@ -237,7 +345,14 @@ def canonicalize_positions(rows: list[TripPlanItem]) -> bool:
     changed = False
     for day_value in sorted({item.day_date for item in rows if item.day_date is not None}):
         day_rows = [item for item in rows if item.day_date == day_value]
-        route_rows = [item for item in day_rows if not is_logistics_item(item)]
+        outbound = [item for item in day_rows if item.system_role == "outbound_flight"]
+        returning = [item for item in day_rows if item.system_role == "return_flight"]
+        route_rows = [
+            item
+            for item in day_rows
+            if not is_logistics_item(item)
+            and item.system_role not in FLIGHT_SYSTEM_ROLES
+        ]
         logistics = [item for item in day_rows if is_logistics_item(item)]
 
         def route_key(item: TripPlanItem) -> tuple[int, datetime, int]:
@@ -254,7 +369,9 @@ def canonicalize_positions(rows: list[TripPlanItem]) -> bool:
             )
 
         ordered = [
+            *outbound,
             *sorted(route_rows, key=route_key),
+            *returning,
             *sorted(logistics, key=lambda row: row.position),
         ]
         for position, item in enumerate(ordered):
@@ -275,16 +392,28 @@ def ensure_system_slots(
     if "schedule_defaults" not in trip.data:
         trip.data = {**trip.data, "schedule_defaults": schedule_defaults(trip)}
         changed = True
+    days = _days(trip, rows)
+    changed = _promote_legacy_flights(trip, rows, days) or changed
     by_role = {
         (item.day_date, cast(SystemRole, item.system_role)): item
         for item in rows
         if item.day_date is not None and item.system_role in SYSTEM_ROLES
     }
-    for day_value in _days(trip, rows):
-        for role in SYSTEM_ROLES:
+    for day_index, day_value in enumerate(days):
+        roles: list[SystemRole] = []
+        if day_index == 0:
+            roles.append("outbound_flight")
+        roles.extend(DAILY_SYSTEM_ROLES)
+        if day_index == len(days) - 1:
+            roles.append("return_flight")
+        for role in roles:
             item = by_role.get((day_value, role))
             if item is None:
-                item = _new_slot(trip, day_value, role, lodging)
+                item = (
+                    _new_flight_slot(trip, day_value, cast(FlightSystemRole, role))
+                    if role in FLIGHT_SYSTEM_ROLES
+                    else _new_slot(trip, day_value, cast(DailySystemRole, role), lodging)
+                )
                 session.add(item)
                 rows.append(item)
                 changed = True

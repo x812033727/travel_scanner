@@ -24,7 +24,21 @@ async def test_itinerary_respects_fixed_items_and_marks_estimates() -> None:
     )
     assert len(itinerary) == 6
     items = [item for day in itinerary for item in day.items]
-    assert any(item.item_type == "flight" and item.locked for item in items)
+    flight_anchors = [
+        item
+        for item in items
+        if item.system_role in {"outbound_flight", "return_flight"}
+    ]
+    assert {item.system_role for item in flight_anchors} == {
+        "outbound_flight",
+        "return_flight",
+    }
+    assert all(
+        item.item_type == "flight" and item.locked and item.fixed_time
+        for item in flight_anchors
+    )
+    assert all(item.data["timeline_section"] == "flight_anchor" for item in flight_anchors)
+    assert all(item.data["flight_info"]["departure_local"] for item in flight_anchors)
     assert any(item.item_type == "hotel" and item.locked for item in items)
     assert any(item.item_type == "activity" and not item.is_estimated for item in items)
     assert any(item.item_type == "suggestion" and item.is_estimated for item in items)
