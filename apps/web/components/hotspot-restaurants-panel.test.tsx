@@ -4,12 +4,17 @@ import { HotspotRestaurantsPanel } from "./hotspot-restaurants-panel";
 
 describe("HotspotRestaurantsPanel", () => {
   it("shows only qualified live restaurant data and safe external links", async () => {
-    const fetchMock = vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) => {
+    let searchCalls = 0;
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      if (String(input).endsWith("/restaurants/favorites")) {
+        return new Response(JSON.stringify({ code: "authentication_required" }), { status: 401 });
+      }
+      searchCalls += 1;
       expect(init?.method).toBe("POST");
       expect(init?.headers).toMatchObject({ "Idempotency-Key": expect.any(String) });
       const body = JSON.parse(String(init?.body));
       expect(body).toMatchObject({
-        radius_km: fetchMock.mock.calls.length === 1 ? 5 : 10,
+        radius_km: searchCalls === 1 ? 5 : 10,
         sort: "recommended",
       });
       return new Response(JSON.stringify({
@@ -35,6 +40,7 @@ describe("HotspotRestaurantsPanel", () => {
           plus_code: "9FW3+5C 廣島市 日本廣島縣",
           primary_type: "japanese_restaurant",
           observed_at: "2026-09-01T12:00:00Z",
+          editorial: null,
         }],
         next_cursor: null,
         coverage: { status: "completed", cells_completed: 7, cells_total: 7, candidate_count: 42 },
@@ -68,11 +74,11 @@ describe("HotspotRestaurantsPanel", () => {
     const sort = screen.getByLabelText("排序方式") as HTMLSelectElement;
     fireEvent.change(sort, { target: { value: "rating" } });
     expect(sort.value).toBe("rating");
-    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(searchCalls).toBe(1);
 
     const radius = screen.getByLabelText("搜尋範圍") as HTMLSelectElement;
     fireEvent.change(radius, { target: { value: "10" } });
     expect(radius.value).toBe("10");
-    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    await waitFor(() => expect(searchCalls).toBe(2));
   });
 });

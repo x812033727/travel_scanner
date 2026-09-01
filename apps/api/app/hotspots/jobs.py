@@ -13,7 +13,7 @@ from app.hotspots.places import (
 )
 from app.hotspots.service import collect_hotspots
 from app.infra import get_redis
-from app.restaurants.tasks import enqueue_next_automatic_scan
+from app.restaurants.tasks import enqueue_next_automatic_scan, refresh_next_stale_identity
 
 
 async def collect_once() -> dict[str, Any]:
@@ -42,4 +42,5 @@ async def collect_once() -> dict[str, Any]:
         report["place_enrichment"] = place_report
         report["place_cache_purged"] = purged
         report["restaurant_scan"] = await enqueue_next_automatic_scan(session, settings)
+        report["restaurant_place_identity"] = await refresh_next_stale_identity(session, settings)
         return report

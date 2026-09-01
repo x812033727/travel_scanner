@@ -19,6 +19,7 @@ GOOGLE_MAPS_OPERATIONS = (
     "places_autocomplete",
     "place_details",
     "place_id_refresh",
+    "places_text_search_ids_only",
     "places_text_search",
     "places_text_search_locate",
     "places_aggregate_restaurants",

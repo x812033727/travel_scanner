@@ -371,8 +371,7 @@ class HotspotPlaceProfile(Timestamped, Base):
             name="ck_hotspot_place_profile_place_id_source",
         ),
         CheckConstraint(
-            "website_review_status IN ('none', 'pending', 'auto_approved', 'approved', "
-            "'rejected')",
+            "website_review_status IN ('none', 'pending', 'auto_approved', 'approved', 'rejected')",
             name="ck_hotspot_place_profile_website_review_status",
         ),
     )
@@ -561,6 +560,10 @@ class FoodMerchant(Timestamped, Base):
         String(255), nullable=True, unique=True, index=True
     )
     naver_map_url: Mapped[str | None] = mapped_column(String(2048), nullable=True, unique=True)
+    official_website_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    official_website_verified_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
     map_match_status: Mapped[str] = mapped_column(String(24), default="unverified", index=True)
     review_status: Mapped[str] = mapped_column(String(24), default="pending", index=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
@@ -596,6 +599,11 @@ class FoodMerchantSource(Timestamped, Base):
             name="ck_food_merchant_source_type",
         ),
         CheckConstraint(
+            "source_scope IN ('destination_context', 'merchant_listing', "
+            "'merchant_website', 'coordinates')",
+            name="ck_food_merchant_source_scope",
+        ),
+        CheckConstraint(
             "distinction IS NULL OR distinction IN "
             "('three_star', 'two_star', 'one_star', 'green_star', "
             "'bib_gourmand', 'selected')",
@@ -607,12 +615,15 @@ class FoodMerchantSource(Timestamped, Base):
         ForeignKey("food_merchants.id", ondelete="CASCADE"), index=True
     )
     source_type: Mapped[str] = mapped_column(String(32), index=True)
+    source_scope: Mapped[str] = mapped_column(String(32), default="destination_context", index=True)
     source_title: Mapped[str] = mapped_column(String(255))
     source_url: Mapped[str] = mapped_column(String(2048))
+    claims_json: Mapped[list[str]] = mapped_column(JSON, default=list)
     edition_year: Mapped[int | None] = mapped_column(Integer, nullable=True)
     distinction: Mapped[str | None] = mapped_column(String(24), nullable=True)
     is_current: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
     last_verified_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
 
 class RestaurantPlace(Timestamped, Base):
     """Durable restaurant identity.
@@ -624,15 +635,91 @@ class RestaurantPlace(Timestamped, Base):
     """
 
     __tablename__ = "restaurant_places"
+    __table_args__ = (
+        CheckConstraint(
+            "identity_status IN ('unknown', 'active', 'moved', 'not_found')",
+            name="ck_restaurant_place_identity_status",
+        ),
+    )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     google_place_id: Mapped[str] = mapped_column(String(255), unique=True, index=True)
     generated_maps_url: Mapped[str] = mapped_column(String(2048))
+    identity_status: Mapped[str] = mapped_column(String(24), default="unknown", index=True)
+    successor_place_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    identity_checked_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True, index=True
+    )
+    identity_error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
     is_suppressed: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
     suppression_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
     suppressed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     suppressed_by_user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
     )
+
+
+class RestaurantFavorite(Timestamped, Base):
+    __tablename__ = "restaurant_favorites"
+    __table_args__ = (
+        UniqueConstraint("user_id", "restaurant_place_id", name="uq_restaurant_favorite"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    restaurant_place_id: Mapped[UUID] = mapped_column(
+        ForeignKey("restaurant_places.id", ondelete="CASCADE"), index=True
+    )
+
+
+class RestaurantEditorialProfile(Timestamped, Base):
+    """Independently sourced restaurant data owned by Travel Scanner."""
+
+    __tablename__ = "restaurant_editorial_profiles"
+    __table_args__ = (
+        CheckConstraint(
+            "review_status IN ('pending', 'approved', 'rejected', 'disabled')",
+            name="ck_restaurant_editorial_review_status",
+        ),
+        CheckConstraint(
+            "(ride_latitude IS NULL) = (ride_longitude IS NULL)",
+            name="ck_restaurant_editorial_coordinate_pair",
+        ),
+        UniqueConstraint("restaurant_place_id", name="uq_restaurant_editorial_place"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    restaurant_place_id: Mapped[UUID] = mapped_column(
+        ForeignKey("restaurant_places.id", ondelete="CASCADE"), index=True
+    )
+    display_name: Mapped[str] = mapped_column(String(255), index=True)
+    local_name: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    address: Mapped[str | None] = mapped_column(Text, nullable=True)
+    official_website_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    ride_latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    ride_longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    review_status: Mapped[str] = mapped_column(String(24), default="pending", index=True)
+    verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    verified_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+
+
+class RestaurantEditorialSource(Timestamped, Base):
+    __tablename__ = "restaurant_editorial_sources"
+    __table_args__ = (
+        CheckConstraint(
+            "source_type IN ('merchant_official', 'official_tourism')",
+            name="ck_restaurant_editorial_source_type",
+        ),
+        UniqueConstraint("profile_id", "source_url", name="uq_restaurant_editorial_source_url"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    profile_id: Mapped[UUID] = mapped_column(
+        ForeignKey("restaurant_editorial_profiles.id", ondelete="CASCADE"), index=True
+    )
+    source_type: Mapped[str] = mapped_column(String(32), index=True)
+    source_title: Mapped[str] = mapped_column(String(255))
+    source_url: Mapped[str] = mapped_column(String(2048))
+    claims_json: Mapped[list[str]] = mapped_column(JSON, default=list)
+    last_verified_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
 class RestaurantScanRun(Timestamped, Base):
@@ -717,6 +804,7 @@ class HotspotRestaurantCandidate(Timestamped, Base):
         ForeignKey("restaurant_scan_runs.id", ondelete="SET NULL"), nullable=True, index=True
     )
     discovery_radius_meters: Mapped[int] = mapped_column(Integer, default=10_000)
+
 
 class HotspotLocalization(Timestamped, Base):
     __tablename__ = "hotspot_localizations"
@@ -1254,14 +1342,14 @@ class DeploymentRun(Timestamped, Base):
             text("(1)"),
             unique=True,
             postgresql_where=text(
-                "status IN (" + ", ".join(
-                    f"'{status}'" for status in ACTIVE_DEPLOYMENT_STATUSES
-                ) + ")"
+                "status IN ("
+                + ", ".join(f"'{status}'" for status in ACTIVE_DEPLOYMENT_STATUSES)
+                + ")"
             ),
             sqlite_where=text(
-                "status IN (" + ", ".join(
-                    f"'{status}'" for status in ACTIVE_DEPLOYMENT_STATUSES
-                ) + ")"
+                "status IN ("
+                + ", ".join(f"'{status}'" for status in ACTIVE_DEPLOYMENT_STATUSES)
+                + ")"
             ),
         ),
     )
@@ -1289,9 +1377,7 @@ class DeploymentRun(Timestamped, Base):
 
 class DeploymentEvent(Base):
     __tablename__ = "deployment_events"
-    __table_args__ = (
-        UniqueConstraint("run_id", "sequence", name="uq_deployment_event_sequence"),
-    )
+    __table_args__ = (UniqueConstraint("run_id", "sequence", name="uq_deployment_event_sequence"),)
 
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     run_id: Mapped[UUID] = mapped_column(

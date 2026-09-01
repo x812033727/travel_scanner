@@ -8,6 +8,15 @@
   "sortLabel": "並び順",
   "sort": { "recommended": "おすすめ", "rating": "評価", "reviews": "クチコミ数", "distance": "距離" },
   "recommendationNote": "おすすめ順はベイズ補正で評価とクチコミ数を調整し、広告費は順位に使用しません。",
+  "preferenceSaved": "検索範囲と並び順はこの端末に保存されます。",
+  "verifiedEditorial": "公式情報源を確認済み",
+  "favorite": "保存", "favorited": "保存済み", "favoriteSaved": "保存しました。", "favoriteRemoved": "保存を解除しました。",
+  "addToTrip": "旅程に追加", "openUber": "Uberで向かう",
+  "verifiedWebsite": "確認済み公式サイト", "websiteLive": "公式サイト（Google ライブ情報）",
+  "sourceEvidence": "情報源 {count} 件を表示",
+  "tripPickerTitle": "追加する旅行を選択", "closeTripPicker": "旅行選択を閉じる",
+  "tripLabel": "マイトリップ", "dateLabel": "日付", "mealLabel": "食事", "lunch": "昼食", "dinner": "夕食",
+  "savingTrip": "保存中…", "confirmTrip": "旅程に追加", "noTrips": "先に日付のある旅行を作成してください。", "tripSaved": "「{trip}」に追加しました。",
   "coverage": { "title": "10 kmカバー率", "not_started": "速報", "queued": "待機中", "running": "スキャン中", "quota_paused": "安全停止", "partial": "一部完了", "completed": "完了", "failed": "要確認", "detail": "Place ID {candidates}件・セル {completed}/{total}" },
   "loading": "Google Mapsの最新の飲食店情報を確認中…",
   "retry": "再試行",
@@ -30,9 +39,13 @@
   "admin": {
     "eyebrow": "飲食店カバー率", "title": "周辺飲食店スキャン", "description": "承認済みスポットの10 km圏内を段階的に収集し、Googleの月間利用量を安全上限内に保ちます。",
     "scanMissing": "未収集をスキャン", "refresh": "更新", "scanStarted": "{count}件のスキャンを予約しました。", "nothingToScan": "対象のスポットは収集済み、または実行中です。",
-    "usage": { "aggregate": "Aggregateスキャン", "nearby": "Nearby速報", "details": "Place詳細の取得" },
+    "usage": { "aggregate": "Aggregateスキャン", "nearby": "Nearby速報", "details": "Place詳細の取得", "idsOnly": "無料 IDs Only" },
+    "pauseAutomation": "自動スキャンを停止", "resumeAutomation": "自動スキャンを再開", "projectedUsage": "月末予測 {projected} 回（{percent}%）", "alert": { "normal": "利用量は正常", "watch": "70%監視ライン", "warning": "80%警戒ライン", "critical": "90%停止ライン" }, "idsOnlyFree": "課金なし・有料SKUとは別集計", "idsOnlyBreakdown": "テキスト検索 {search}・ID確認 {refresh}", "hotspotCalls": "このスポット Aggregate {aggregate}・Details {details}",
     "safetyBudget": "{period}安全上限・残り{remaining}", "featureUsage": "うち飲食店機能は{used}回", "googleFreeTier": "Google月間無料枠の利用状況：",
     "search": "スポットまたは都市を検索", "statusFilter": "収集状況", "allStatuses": "すべての状況", "coverage": "完了 {completed}/{total}",
     "placeIds": "Place ID {count}件", "scanOne": "10 kmをスキャン", "empty": "該当するスポットはありません"
+  },
+  "adminSources": {
+    "eyebrow": "情報源管理", "title": "Place ID・店舗公式サイト・政府観光情報", "description": "GoogleはPlace IDのみ永続保存します。店名、公式サイト、配車座標は店舗公式または政府観光情報の根拠が必要です。", "previewReady": "Place ID候補を{count}件取得しました。", "imported": "基準を確認して追加しました。", "saved": "公式情報を保存しました。", "identityResult": "Place ID状態：{status}", "importTitle": "Maps URLまたはPlace IDを貼り付け", "importDescription": "短縮URLを安全に展開し、必要時のみ無料のIDs Only検索を行い、3.8評価・1,000口コミを確認します。", "hotspot": "対象スポット", "mapsInput": "Google Maps URL／Place ID", "fallbackQuery": "補助の店名・住所", "fallbackPlaceholder": "URLにIDがない場合のみ", "preview": "無料でIDを確認", "idsOnlyNotice": "識別項目のみ取得し、Google表示情報は保存しません。", "openMap": "地図を開く", "confirmImport": "基準確認して追加", "coverageTitle": "公式情報の補完状況", "approved": "承認済み", "missing": "未補完", "governmentContext": "公式地域情報", "contextDisclosure": "公式の地域飲食ガイドは店舗掲載の証明ではありません。店舗単位の直接根拠は{direct}件です。", "status": { "missing": "未作成", "pending": "審査待ち", "approved": "承認済み", "rejected": "却下", "disabled": "停止" }, "yes": "あり", "no": "なし", "itemCoverage": "情報源 {sources}・サイト {website}・配車座標 {ride}", "refreshIdentity": "Place ID確認", "editSources": "情報源を補完", "empty": "Place IDがありません", "editing": "公式情報を編集", "displayName": "根拠付き店名", "localName": "現地名", "address": "根拠付き住所", "officialWebsite": "店舗公式サイト", "latitude": "配車緯度（Google以外）", "longitude": "配車経度（Google以外）", "sourceNumber": "情報源 {number}", "removeSource": "情報源を削除", "merchantOfficial": "店舗公式", "officialTourism": "政府／公式観光", "sourceTitle": "情報源タイトル", "claim": { "display_name": "店名", "address": "住所", "official_website": "公式サイト", "coordinates": "座標" }, "addSource": "情報源を追加", "save": "公式情報を保存"
   }
 }

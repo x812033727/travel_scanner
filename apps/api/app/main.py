@@ -28,7 +28,9 @@ from app.problems import AppError, app_error_handler, validation_error_handler
 from app.providers.flight_router import router as flight_router
 from app.providers.router import router as providers_router
 from app.restaurants.admin_router import router as admin_restaurants_router
+from app.restaurants.admin_sources_router import router as admin_restaurant_sources_router
 from app.restaurants.router import router as restaurants_router
+from app.restaurants.user_router import router as restaurant_user_router
 from app.schema import expected_schema_revision, schema_is_current
 from app.search.router import router as search_router
 from app.trips.router import public_router as public_trips_router
@@ -76,7 +78,9 @@ app.include_router(crawlers_router, prefix="/api/v1")
 app.include_router(hotspots_router, prefix="/api/v1")
 app.include_router(admin_hotspots_router, prefix="/api/v1")
 app.include_router(restaurants_router, prefix="/api/v1")
+app.include_router(restaurant_user_router, prefix="/api/v1")
 app.include_router(admin_restaurants_router, prefix="/api/v1")
+app.include_router(admin_restaurant_sources_router, prefix="/api/v1")
 app.include_router(foods_router, prefix="/api/v1")
 app.include_router(admin_foods_router, prefix="/api/v1")
 app.include_router(line_router, prefix="/api/v1")

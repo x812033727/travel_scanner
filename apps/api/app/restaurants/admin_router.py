@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import math
 from datetime import UTC, datetime
 from typing import Annotated
 from uuid import UUID
@@ -171,7 +172,10 @@ async def restaurant_coverage(
                 RestaurantPlace,
                 RestaurantPlace.id == HotspotRestaurantCandidate.restaurant_place_id,
             )
-            .where(RestaurantPlace.is_suppressed.is_(False))
+            .where(
+                RestaurantPlace.is_suppressed.is_(False),
+                RestaurantPlace.identity_status.not_in(("moved", "not_found")),
+            )
             .group_by(HotspotRestaurantCandidate.hotspot_id)
         )
     ).all()
@@ -193,6 +197,18 @@ async def restaurant_coverage(
     latest_runs: dict[UUID, RestaurantScanRun] = {}
     for run in runs:
         latest_runs.setdefault(run.hotspot_id, run)
+    call_totals: dict[UUID, tuple[int, int]] = {}
+    call_rows = (
+        await session.execute(
+            select(
+                RestaurantScanRun.hotspot_id,
+                func.sum(RestaurantScanRun.aggregate_calls),
+                func.sum(RestaurantScanRun.details_calls),
+            ).group_by(RestaurantScanRun.hotspot_id)
+        )
+    ).all()
+    for hotspot_id, aggregate_calls, details_calls in call_rows:
+        call_totals[hotspot_id] = (int(aggregate_calls or 0), int(details_calls or 0))
     items: list[dict[str, object]] = []
     for hotspot in hotspots:
         latest_run = latest_runs.get(hotspot.id)
@@ -206,39 +222,88 @@ async def restaurant_coverage(
                 "status": latest_run.status if latest_run else "not_started",
                 "run_id": str(latest_run.id) if latest_run else None,
                 "updated_at": latest_run.updated_at.isoformat() if latest_run else None,
+                "usage": {
+                    "aggregate_calls": call_totals.get(hotspot.id, (0, 0))[0],
+                    "details_calls": call_totals.get(hotspot.id, (0, 0))[1],
+                    "total_paid_calls": sum(call_totals.get(hotspot.id, (0, 0))),
+                },
             }
         )
+    elapsed_days = max(1, (datetime.now(UTC).date() - usage.period_start).days + 1)
+    period_days = (usage.period_end - usage.period_start).days + 1
+
+    def operation_view(*, used: int, feature_used: int, budget: int) -> dict[str, object]:
+        projected = math.ceil(feature_used / elapsed_days * period_days)
+        percentage = round(feature_used / budget * 100, 1)
+        projected_percentage = round(projected / budget * 100, 1)
+        risk_percentage = max(percentage, projected_percentage)
+        alert = (
+            "critical"
+            if risk_percentage >= 90
+            else "warning"
+            if risk_percentage >= 80
+            else "watch"
+            if risk_percentage >= 70
+            else "normal"
+        )
+        return {
+            "used": used,
+            "feature_used": feature_used,
+            "budget": budget,
+            "percentage": percentage,
+            "projected_month_end": projected,
+            "projected_percentage": projected_percentage,
+            "alert": alert,
+        }
+
     return {
         "total": len(items),
         "completed": sum(item["status"] == "completed" for item in items),
         "items": items,
+        "automation_enabled": settings.restaurant_scan_enabled,
         "usage": {
             "period": usage.period,
             "available": usage.available,
             "operations": {
                 "aggregate": {
-                    "used": sku_usage["places_aggregate"].used,
-                    "feature_used": usage.breakdown.get("places_aggregate_restaurants", 0),
-                    "budget": min(
-                        settings.restaurant_aggregate_monthly_budget,
-                        sku_usage["places_aggregate"].free_limit,
+                    **operation_view(
+                        used=sku_usage["places_aggregate"].used,
+                        feature_used=usage.breakdown.get("places_aggregate_restaurants", 0),
+                        budget=min(
+                            settings.restaurant_aggregate_monthly_budget,
+                            sku_usage["places_aggregate"].free_limit,
+                        ),
                     ),
                 },
                 "nearby": {
-                    "used": sku_usage["nearby_search_enterprise"].used,
-                    "feature_used": usage.breakdown.get("places_nearby_restaurants", 0),
-                    "budget": min(
-                        settings.restaurant_nearby_monthly_budget,
-                        sku_usage["nearby_search_enterprise"].free_limit,
+                    **operation_view(
+                        used=sku_usage["nearby_search_enterprise"].used,
+                        feature_used=usage.breakdown.get("places_nearby_restaurants", 0),
+                        budget=min(
+                            settings.restaurant_nearby_monthly_budget,
+                            sku_usage["nearby_search_enterprise"].free_limit,
+                        ),
                     ),
                 },
                 "details": {
-                    "used": sku_usage["place_details_enterprise"].used,
-                    "feature_used": usage.breakdown.get("place_details_restaurant", 0),
-                    "budget": min(
-                        settings.restaurant_details_monthly_budget,
-                        sku_usage["place_details_enterprise"].free_limit,
+                    **operation_view(
+                        used=sku_usage["place_details_enterprise"].used,
+                        feature_used=usage.breakdown.get("place_details_restaurant", 0),
+                        budget=min(
+                            settings.restaurant_details_monthly_budget,
+                            sku_usage["place_details_enterprise"].free_limit,
+                        ),
                     ),
+                },
+                "ids_only": {
+                    "used": usage.breakdown.get("places_text_search_ids_only", 0)
+                    + usage.breakdown.get("place_id_refresh", 0),
+                    "billing": "no_charge",
+                    "budget": None,
+                    "operations": {
+                        "text_search": usage.breakdown.get("places_text_search_ids_only", 0),
+                        "place_id_refresh": usage.breakdown.get("place_id_refresh", 0),
+                    },
                 },
             },
             "skus": [
