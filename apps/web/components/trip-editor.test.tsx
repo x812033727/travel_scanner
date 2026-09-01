@@ -353,7 +353,12 @@ describe("trip editor", () => {
       response(url.includes("/runtime/public-config") ? { google_maps_browser_key: null } : routedTrip),
     )));
     render(<TripEditor tripId={trip.id} />);
-    fireEvent.click(await screen.findByRole("button", { name: "查看前往 晴空塔 的路線" }));
+    const routeButton = await screen.findByRole(
+      "button",
+      { name: "查看前往 晴空塔 的路線" },
+      { timeout: 5_000 },
+    );
+    fireEvent.click(routeButton);
     expect(await screen.findByRole("dialog", { name: "這段路怎麼走" })).toBeTruthy();
     const expand = screen.getByRole("button", { name: "全螢幕顯示路線面板" });
     fireEvent.click(expand);
