@@ -39,3 +39,21 @@ def test_legacy_slugs_all_resolve() -> None:
     assert by_slug["n-seoul-tower"].wikidata_item_id == "Q69134"
     assert by_slug["phuket-old-town"].wikidata_item_id == "Q17063772"
     assert by_slug["patong-beach"].wikidata_item_id == "Q630024"
+
+
+def test_pageview_articles_use_a_wiki_that_has_them() -> None:
+    # These five had no en.wikipedia article, so every pageviews lookup returned 404
+    # and they never scored. Each now points at the wiki Wikidata actually links.
+    by_id = {item.wikidata_item_id: item for item in HOTSPOT_SEEDS}
+    expected = {
+        "Q56963453": ("ja.wikipedia.org", "白い恋人パーク", "Shiroi Koibito Park"),
+        "Q11558610": ("ja.wikipedia.org", "国営海の中道海浜公園", "Uminonakamichi Seaside Park"),
+        "Q13026486": ("th.wikipedia.org", "แหลมพรหมเทพ", "Promthep Cape"),
+        "Q283373": ("en.wikipedia.org", "Nagoya TV Tower", "Chubu Electric Power MIRAI TOWER"),
+        "Q4616917": ("ja.wikipedia.org", "国際通り", "Kokusai-dōri"),
+    }
+    for item_id, (project, title, legacy_name) in expected.items():
+        seed = by_id[item_id]
+        assert (seed.wikipedia_project, seed.wikipedia_title) == (project, title)
+        # The romanised name stays searchable now that it is no longer the title.
+        assert legacy_name in seed.aliases

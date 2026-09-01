@@ -105,7 +105,7 @@ def _load_seeds() -> tuple[HotspotSeed, ...]:
                     "slug", LEGACY_SLUGS.get(title, f"wikidata-{row['wikidata_item_id'].lower()}")
                 ),
                 name=row["name"],
-                aliases=(title, row["name"]),
+                aliases=(title, row["name"], *row.get("aliases", ())),
                 city_code=city.code,
                 city_name=city.name,
                 country_code=city.country_code,
