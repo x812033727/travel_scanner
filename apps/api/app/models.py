@@ -417,6 +417,88 @@ class TripPlanItem(Base):
     fixed_time: Mapped[bool] = mapped_column(Boolean, default=False)
 
 
+class TripRouteDaySetting(Timestamped, Base):
+    __tablename__ = "trip_route_day_settings"
+    __table_args__ = (
+        UniqueConstraint("trip_plan_id", "day_date", name="uq_trip_route_day_setting"),
+        CheckConstraint(
+            "default_travel_mode IN ('transit', 'walk', 'drive')",
+            name="ck_trip_route_day_mode",
+        ),
+        CheckConstraint(
+            "default_buffer_minutes >= 0 AND default_buffer_minutes <= 180",
+            name="ck_trip_route_day_buffer",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    trip_plan_id: Mapped[UUID] = mapped_column(
+        ForeignKey("trip_plans.id", ondelete="CASCADE"), index=True
+    )
+    day_date: Mapped[date] = mapped_column(Date, index=True)
+    default_travel_mode: Mapped[str] = mapped_column(String(16), default="transit")
+    default_buffer_minutes: Mapped[int] = mapped_column(Integer, default=10)
+    route_preference: Mapped[str] = mapped_column(String(32), default="FEWER_TRANSFERS")
+    auto_compute: Mapped[bool] = mapped_column(Boolean, default=True)
+
+
+class TripRouteSegment(Timestamped, Base):
+    __tablename__ = "trip_route_segments"
+    __table_args__ = (
+        UniqueConstraint(
+            "trip_plan_id",
+            "from_item_id",
+            "to_item_id",
+            name="uq_trip_route_segment_pair",
+        ),
+        CheckConstraint(
+            "travel_mode IN ('transit', 'walk', 'drive')",
+            name="ck_trip_route_segment_mode",
+        ),
+        CheckConstraint(
+            "buffer_minutes >= 0 AND buffer_minutes <= 180",
+            name="ck_trip_route_segment_buffer",
+        ),
+        CheckConstraint("duration_minutes > 0", name="ck_trip_route_segment_duration"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    trip_plan_id: Mapped[UUID] = mapped_column(
+        ForeignKey("trip_plans.id", ondelete="CASCADE"), index=True
+    )
+    day_date: Mapped[date] = mapped_column(Date, index=True)
+    from_item_id: Mapped[UUID] = mapped_column(
+        ForeignKey("trip_plan_items.id", ondelete="CASCADE"), index=True
+    )
+    to_item_id: Mapped[UUID] = mapped_column(
+        ForeignKey("trip_plan_items.id", ondelete="CASCADE"), index=True
+    )
+    status: Mapped[str] = mapped_column(String(24), default="resolved")
+    travel_mode: Mapped[str] = mapped_column(String(16), default="transit")
+    is_override: Mapped[bool] = mapped_column(Boolean, default=False)
+    provider: Mapped[str] = mapped_column(String(64))
+    attribution: Mapped[str] = mapped_column(String(255))
+    preference: Mapped[str] = mapped_column(String(32), default="FEWER_TRANSFERS")
+    schedule_mode: Mapped[str] = mapped_column(String(24), default="scheduled")
+    requested_departure_time: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    departure_time: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    arrival_time: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    ready_time: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    duration_minutes: Mapped[int] = mapped_column(Integer)
+    buffer_minutes: Mapped[int] = mapped_column(Integer, default=10)
+    distance_meters: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    fare: Mapped[Decimal | None] = mapped_column(Numeric(14, 2), nullable=True)
+    currency: Mapped[str | None] = mapped_column(String(3), nullable=True)
+    encoded_polyline: Mapped[str | None] = mapped_column(Text, nullable=True)
+    maps_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+    steps: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
+    details_available: Mapped[list[str]] = mapped_column(JSON, default=list)
+    warnings: Mapped[list[str]] = mapped_column(JSON, default=list)
+    manual_note: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    generated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
 class TripShare(Timestamped, Base):
     __tablename__ = "trip_shares"
     __table_args__ = (UniqueConstraint("trip_plan_id", name="uq_trip_share_trip"),)

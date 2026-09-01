@@ -39,10 +39,37 @@ export type RouteStep = {
   recommended_car?: string | null;
 };
 
+export type TravelMode = "transit" | "walk" | "drive";
+
+export type RouteScheduleChange = {
+  item_id: string;
+  title: string;
+  old_start_time?: string | null;
+  new_start_time?: string | null;
+  delta_minutes: number;
+  fixed_time: boolean;
+};
+
+export type RouteScheduleConflict = {
+  item_id: string;
+  title: string;
+  scheduled_start_time: string;
+  projected_start_time: string;
+  late_minutes: number;
+  suggestions: string[];
+};
+
+export type RouteScheduleImpact = {
+  affected_items: RouteScheduleChange[];
+  conflicts: RouteScheduleConflict[];
+};
+
 export type RouteSegment = {
   from_item_id: string;
   to_item_id: string;
   status: string;
+  travel_mode?: TravelMode;
+  is_override?: boolean;
   provider: string;
   attribution: string;
   generated_at: string;
@@ -50,6 +77,11 @@ export type RouteSegment = {
   schedule_mode: "scheduled" | "preview" | "live";
   preference: string;
   duration_minutes: number;
+  buffer_minutes?: number;
+  departure_time?: string | null;
+  arrival_time?: string | null;
+  ready_time?: string | null;
+  expires_at?: string | null;
   distance_meters?: number | null;
   fare?: number | string | null;
   currency?: string | null;
@@ -58,6 +90,24 @@ export type RouteSegment = {
   steps: RouteStep[];
   details_available: string[];
   warnings: string[];
+};
+
+export type TripRouteDaySetting = {
+  day_date: string;
+  default_travel_mode: TravelMode;
+  default_buffer_minutes: number;
+  route_preference: "FEWER_TRANSFERS" | "LESS_WALKING" | "FASTEST";
+  auto_compute: boolean;
+};
+
+export type TripRouting = {
+  status: "idle" | "queued" | "processing" | "complete" | "partial" | "failed" | "stale" | "unavailable";
+  total: number;
+  completed: number;
+  warnings?: string[];
+  conflicts?: RouteScheduleConflict[];
+  updated_at?: string;
+  day_settings: TripRouteDaySetting[];
 };
 
 export type Trip = {
@@ -85,6 +135,7 @@ export type Trip = {
   route_preference?: "FEWER_TRANSFERS" | "LESS_WALKING" | "FASTEST";
   items: TripItem[];
   route_segments?: RouteSegment[];
+  routing?: TripRouting;
   share_enabled?: boolean;
   created_at?: string;
   updated_at?: string;

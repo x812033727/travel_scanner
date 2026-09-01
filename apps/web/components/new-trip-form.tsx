@@ -129,6 +129,11 @@ export function NewTripForm() {
           start_date: form.start_date,
           end_date: form.end_date,
           route_preference: form.route_preference,
+          routing: {
+            auto_compute: true,
+            default_travel_mode: "transit",
+            default_buffer_minutes: 10,
+          },
           travelers: { adults: Number(form.adults), children: Number(form.children), rooms: Number(form.rooms) },
           preferences: {
             budget_twd: optionalNumber(form.budget_twd), avoid_red_eye: form.avoid_red_eye,

@@ -19,6 +19,7 @@ const base = {
     instruction: "搭乘銀座線",
     line_name: "銀座線",
     line_short_name: "G",
+    line_color: "#ff9500",
     departure_stop: "上野",
     arrival_stop: "淺草",
     headsign: "淺草方向",
@@ -32,6 +33,7 @@ describe("route segment card", () => {
     fireEvent.click(screen.getByRole("button"));
     expect(screen.getByText("此路線來源未提供可驗證的出口編號。")).toBeTruthy();
     expect(screen.getByText(/往 淺草方向/)).toBeTruthy();
+    expect(screen.getAllByText("G").length).toBeGreaterThan(0);
   });
 
   it("shows sourced Japan platform, exit and recommended car", () => {
