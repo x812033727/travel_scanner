@@ -396,7 +396,7 @@ async def _scope_for_run(
     for raw_locale in run.requested_locales:
         if raw_locale not in LOCALES:
             continue
-        locale = cast(Locale, raw_locale)
+        locale = raw_locale
         types: list[ContentType] = []
         for raw_type in run.content_types:
             if raw_type not in {"article", "video"}:
@@ -675,9 +675,7 @@ async def execute_ai_search(
 
 
 async def test_research_provider(settings: Settings) -> tuple[str, str]:
-    provider = research_provider(
-        settings, cast(AIProviderName, settings.hotspot_guide_ai_default_provider)
-    )
+    provider = research_provider(settings, settings.hotspot_guide_ai_default_provider)
     try:
         result, _ = await provider.structured(
             QueryPlan,
