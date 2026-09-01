@@ -183,7 +183,7 @@ non-bookable example URL.
 For provider-backed search, set `TRAVEL_PROVIDER_MODE=live` together with
 `AMADEUS_CLIENT_ID`, `AMADEUS_CLIENT_SECRET`, and `AMADEUS_ENV=test` or
 `production`. `GOOGLE_MAPS_API_KEY` is optional and enriches hotels, activities,
-photos, opening hours, and route estimates. Secrets belong in the runtime
+photos, opening hours, route estimates, and saved-trip weather. Secrets belong in the runtime
 environment and must never be committed. `GET /api/v1/providers/status` reports
 whether live, test, mock, or disabled data is active, plus the selected and
 fallback provider for each search module.
@@ -286,16 +286,24 @@ The planner also supports structured Places selections, per-day ordering,
 fixed appointments, duration and notes, detailed transit steps, and read-only
 shared views.
 
-Google Routes is the global fallback. Set `GOOGLE_MAPS_API_KEY` for server-side
-Places and Routes calls and an origin-restricted
+Google Routes is the global fallback. Set `GOOGLE_MAPS_API_KEY` after enabling
+Places API (New), Routes API, and Weather API for server-side calls, and use an origin-restricted
 `NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY` for the optional embedded planner map.
 Google provider responses are kept in short-lived Redis caches; durable trip
 records retain provider IDs and user-authored fields instead of raw payloads.
 The administrator settings page also shows an application-side monthly request
-counter for server-side Places, Routes, and photo calls. Its default budget is
+counter for server-side Places, Routes, Weather, and photo calls. Its default budget is
 10,000 requests (`GOOGLE_MAPS_MONTHLY_REQUEST_LIMIT`); browser Embed loads and
 Google Cloud usage from before this counter was deployed are not included. The
 bundled Redis service enables append-only persistence for these monthly counters.
+
+The saved-trip planner requests `GET /api/v1/trips/{trip_id}/weather` through
+the authenticated BFF. It displays current conditions plus Google's daily
+forecast (up to 10 days) for a confirmed trip coordinate. Results default to a
+15-minute cache (`WEATHER_CACHE_TTL_SECONDS=900`). Trips outside the forecast
+window remain usable and show that weather is not yet available instead of
+inventing a long-range forecast. Enable the service by following the official
+[Google Weather API setup guide](https://developers.google.com/maps/documentation/weather/cloud-setup).
 
 Japan transit enhancement is optional. Set `NAVITIME_API_BASE_URL`,
 `NAVITIME_CLIENT_ID`, and `NAVITIME_API_KEY` only after obtaining the required
