@@ -41,7 +41,11 @@ from app.providers.duffel import DuffelProvider
 from app.providers.flightaware import FlightAwareProvider
 from app.providers.google_travel_impact import GoogleTravelImpactProvider
 from app.providers.skyscanner import SkyscannerProvider
-from app.providers.usage_meter import google_maps_usage_snapshot, naver_maps_usage_snapshot
+from app.providers.usage_meter import (
+    google_maps_usage_snapshot,
+    naver_maps_usage_snapshot,
+    youtube_usage_snapshot,
+)
 from app.search.schemas import SearchCreate, SearchModule, SearchPreferences, Travelers
 from app.trips.routing import (
     GoogleRouteProvider,
@@ -151,7 +155,12 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     "youtube_guides": ProviderDefinition(
         "YouTube 景點介紹",
         "依景點與目前語系探索 YouTube 影片；候選必須經管理員核准才公開。",
-        ("hotspot_guide_youtube_daily_search_budget", "hotspot_guide_refresh_days"),
+        (
+            "hotspot_guide_youtube_daily_search_budget",
+            "hotspot_guide_youtube_search_daily_free_limit",
+            "hotspot_guide_youtube_core_daily_free_limit",
+            "hotspot_guide_refresh_days",
+        ),
         ("hotspot_guide_youtube_api_key",),
         "hotspot_guide_youtube_enabled",
     ),
@@ -627,6 +636,15 @@ async def settings_snapshot(
         if redis is not None
         else None
     )
+    youtube_usage = (
+        await youtube_usage_snapshot(
+            redis,
+            search_daily_free_limit=effective.hotspot_guide_youtube_search_daily_free_limit,
+            core_daily_free_limit=effective.hotspot_guide_youtube_core_daily_free_limit,
+        )
+        if redis is not None
+        else None
+    )
     recent_requests = list(
         (
             await session.scalars(
@@ -680,12 +698,12 @@ async def settings_snapshot(
                 last_test_message=row.last_test_message if row else None,
                 updated_at=row.updated_at if row else None,
                 usage=(
-                    ProviderUsageView(
-                        **asdict(google_usage),
-                    )
+                    ProviderUsageView(**asdict(google_usage))
                     if provider == "google_maps" and google_usage is not None
                     else ProviderUsageView(**asdict(naver_usage))
                     if provider == "naver_maps" and naver_usage is not None
+                    else ProviderUsageView(**asdict(youtube_usage))
+                    if provider == "youtube_guides" and youtube_usage is not None
                     else None
                 ),
                 requests_24h=sum(
@@ -1085,7 +1103,7 @@ async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str
 
         if not settings.hotspot_guide_youtube_api_key:
             raise ConnectionError("缺少 YouTube Data API key")
-        youtube_client = YouTubeGuideProvider(settings.hotspot_guide_youtube_api_key)
+        youtube_client = YouTubeGuideProvider(settings.hotspot_guide_youtube_api_key, redis=redis)
         try:
             await youtube_client.search("Tokyo travel guide", "en", 1)
         finally:

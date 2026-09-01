@@ -1,4 +1,5 @@
 from datetime import date, datetime
+from typing import Literal
 from uuid import UUID
 
 from pydantic import BaseModel, Field
@@ -63,6 +64,7 @@ class ProviderUsageView(BaseModel):
     tracking_started_at: datetime | None = None
     observed_at: datetime
     available: bool
+    period_kind: Literal["month", "day"] = "month"
     scope: str = "server_requests"
     billing_timezone: str = "America/Los_Angeles"
     pricing_region: str = "global"

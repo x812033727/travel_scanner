@@ -219,6 +219,8 @@ class Settings(BaseSettings):
     hotspot_guide_youtube_api_key: str | None = None
     hotspot_guide_brave_api_key: str | None = None
     hotspot_guide_youtube_daily_search_budget: int = Field(default=80, ge=1, le=80)
+    hotspot_guide_youtube_search_daily_free_limit: int = Field(default=100, ge=1, le=1_000_000)
+    hotspot_guide_youtube_core_daily_free_limit: int = Field(default=10_000, ge=1, le=10_000_000)
     hotspot_guide_brave_daily_search_budget: int = Field(default=30, ge=1, le=1000)
     hotspot_guide_refresh_days: int = Field(default=7, ge=1, le=30)
     hotspot_guide_ai_search_enabled: bool = True

@@ -455,7 +455,7 @@ async def execute_ai_search(
     await session.commit()
     provider = research_provider(settings, cast(AIProviderName, run.provider), client)
     youtube = (
-        YouTubeGuideProvider(settings.hotspot_guide_youtube_api_key, client)
+        YouTubeGuideProvider(settings.hotspot_guide_youtube_api_key, client, redis)
         if settings.hotspot_guide_youtube_enabled and settings.hotspot_guide_youtube_api_key
         else None
     )

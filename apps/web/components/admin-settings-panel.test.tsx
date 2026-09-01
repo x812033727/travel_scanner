@@ -55,6 +55,55 @@ const snapshot = {
         tracking_started_at: "2026-08-01T00:00:00Z",
         observed_at: "2026-08-31T12:00:00Z",
         available: true,
+        period_kind: "month",
+        scope: "server_requests",
+        billing_timezone: "America/Los_Angeles",
+        pricing_region: "global",
+      },
+    },
+    {
+      provider: "youtube_guides",
+      label: "YouTube 景點介紹",
+      description: "多語景點影片搜尋",
+      enabled: true,
+      configured: true,
+      status: "ready",
+      status_message: "YouTube Data API 已設定",
+      config: {
+        hotspot_guide_youtube_daily_search_budget: 80,
+        hotspot_guide_youtube_search_daily_free_limit: 100,
+        hotspot_guide_youtube_core_daily_free_limit: 10000,
+      },
+      config_sources: {
+        hotspot_guide_youtube_daily_search_budget: "environment",
+        hotspot_guide_youtube_search_daily_free_limit: "environment",
+        hotspot_guide_youtube_core_daily_free_limit: "environment",
+      },
+      secrets: {
+        hotspot_guide_youtube_api_key: { configured: true, masked: "••••••••tube", source: "database" },
+      },
+      usage: {
+        period: "2026-09-01",
+        period_start: "2026-09-01",
+        period_end: "2026-09-01",
+        used: 13,
+        monthly_limit: 10100,
+        remaining: 10087,
+        percentage: 0.1,
+        free_limit: 10100,
+        free_usage: 13,
+        free_remaining: 10087,
+        billable_overage: 0,
+        breakdown: { search_list: 8, videos_list: 5 },
+        sku_usage: [
+          { sku: "search_queries", label: "Search Queries (search.list)", category: "search", operations: ["search_list"], used: 8, free_limit: 100, free_usage: 8, free_remaining: 92, billable_overage: 0, percentage: 8 },
+          { sku: "core_api_units", label: "Core API units (videos.list)", category: "core", operations: ["videos_list"], used: 5, free_limit: 10000, free_usage: 5, free_remaining: 9995, billable_overage: 0, percentage: 0.1 },
+        ],
+        monthly_history: [],
+        tracking_started_at: "2026-09-01T00:00:00Z",
+        observed_at: "2026-09-01T12:00:00Z",
+        available: true,
+        period_kind: "day",
         scope: "server_requests",
         billing_timezone: "America/Los_Angeles",
         pricing_region: "global",
@@ -347,6 +396,26 @@ describe("AdminSettingsPanel", () => {
     fireEvent.click(within(usage).getByText("查看站內操作明細"));
     expect(within(usage).getByText("Directions 5")).toBeTruthy();
     expect(screen.getByLabelText(/^NAVER Cloud Client ID/)).toBeTruthy();
+  });
+
+  it("shows YouTube daily allowance, current usage, and automatic reserve", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
+      new Response(JSON.stringify(snapshot), { status: 200 }),
+    ));
+    render(<AdminSettingsPanel />);
+
+    await screen.findByRole("heading", { name: "Google Maps" });
+    fireEvent.click(screen.getByRole("tab", { name: "YouTube 景點介紹" }));
+    const usage = await screen.findByLabelText("YouTube Data API 今日用量");
+    const searchUsed = within(usage).getByText("今日搜尋使用量").parentElement;
+    const searchRemaining = within(usage).getByText("搜尋額度剩餘").parentElement;
+    expect(within(searchUsed!).getByText("8")).toBeTruthy();
+    expect(within(searchRemaining!).getByText("92")).toBeTruthy();
+    expect(within(usage).getByText(/每日最多 80 次搜尋/)).toBeTruthy();
+    expect(within(usage).getByText(/保留 20 次/)).toBeTruthy();
+    expect(within(usage).getByRole("progressbar", { name: "Search Queries (search.list) 日用量" }).getAttribute("aria-valuenow")).toBe("8");
+    fireEvent.click(within(usage).getByText("查看站內操作明細"));
+    expect(within(usage).getByText("影片搜尋（search.list）")).toBeTruthy();
   });
 
   it("shows only masked secrets and sends a newly entered key", async () => {
