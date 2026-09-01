@@ -18,7 +18,7 @@ from app.ai.itinerary import AIItineraryPlanner, AIItineraryRequest, AIPlanningR
 from app.auth.service import CurrentUser
 from app.config import Settings, get_settings
 from app.db import get_session
-from app.infra import get_redis
+from app.infra import enforce_named_rate_limit, get_redis
 from app.models import (
     SearchRequest,
     TripPlan,
@@ -52,6 +52,12 @@ from app.weather.schemas import TripWeather
 router = APIRouter(prefix="/trips", tags=["trips"])
 public_router = APIRouter(prefix="/shared-trips", tags=["shared trips"])
 Session = Annotated[AsyncSession, Depends(get_session)]
+TRIP_WEATHER_USER_LIMIT = 30
+TRIP_WEATHER_USER_WINDOW_SECONDS = 3_600
+TRIP_ROUTE_USER_LIMIT = 60
+TRIP_ROUTE_REFRESH_USER_LIMIT = 10
+TRIP_ROUTE_USER_WINDOW_SECONDS = 3_600
+TRIP_ROUTE_MAX_ITEMS = 12
 
 
 class SaveTripRequest(BaseModel):
@@ -741,6 +747,12 @@ async def get_trip_weather(
             "weather_not_configured",
             "Google Weather 尚未設定，請先在管理後台設定伺服器 API 金鑰",
         )
+    await enforce_named_rate_limit(
+        "trip-weather-user",
+        str(user.id),
+        limit=TRIP_WEATHER_USER_LIMIT,
+        window_seconds=TRIP_WEATHER_USER_WINDOW_SECONDS,
+    )
     rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
     located_rows = [
         item for item in rows if item.latitude is not None and item.longitude is not None
@@ -971,8 +983,20 @@ async def compute_trip_routes(
         rows = [item for item in rows if item.day_date == payload.day_date]
     if len(rows) < 2:
         raise AppError(422, "route_items_insufficient", "至少需要兩個有位置的行程項目")
+    if len(rows) > TRIP_ROUTE_MAX_ITEMS:
+        raise AppError(
+            422,
+            "route_items_limit",
+            f"每次最多計算 {TRIP_ROUTE_MAX_ITEMS} 個行程地點，請指定單日或較小範圍",
+        )
     preference = payload.route_preference or trip.route_preference
     settings = await load_runtime_settings(session)
+    await enforce_named_rate_limit(
+        "trip-routes-refresh-user" if payload.refresh else "trip-routes-user",
+        str(user.id),
+        limit=TRIP_ROUTE_REFRESH_USER_LIMIT if payload.refresh else TRIP_ROUTE_USER_LIMIT,
+        window_seconds=TRIP_ROUTE_USER_WINDOW_SECONDS,
+    )
     segments, failed = await compute_routes_for_rows(
         trip, rows, preference, settings, refresh=payload.refresh
     )

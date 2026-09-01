@@ -23,6 +23,28 @@ def _is_explicit_https_origin(value: str) -> bool:
     )
 
 
+def _is_official_https_url(
+    value: str,
+    allowed_hosts: set[str],
+    *,
+    allow_query: bool = False,
+) -> bool:
+    parsed = urlparse(value)
+    try:
+        port = parsed.port
+    except ValueError:
+        return False
+    return bool(
+        parsed.scheme == "https"
+        and (parsed.hostname or "").lower() in allowed_hosts
+        and parsed.username is None
+        and parsed.password is None
+        and port in (None, 443)
+        and (allow_query or not parsed.query)
+        and not parsed.fragment
+    )
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file="../../.env", extra="ignore")
 
@@ -284,6 +306,36 @@ class Settings(BaseSettings):
                 "LINE messaging requires LINE_CHANNEL_SECRET, LINE_CHANNEL_ACCESS_TOKEN, "
                 "and LINE_OFFICIAL_ACCOUNT_ID"
             )
+        official_ai_hosts = {
+            "OPENAI_API_BASE_URL": (
+                self.openai_api_key,
+                self.openai_api_base_url,
+                {"api.openai.com"},
+            ),
+            "ANTHROPIC_API_BASE_URL": (
+                self.anthropic_api_key,
+                self.anthropic_api_base_url,
+                {"api.anthropic.com"},
+            ),
+            "MINIMAX_API_BASE_URL": (
+                self.minimax_api_key,
+                self.minimax_api_base_url,
+                {"api.minimaxi.com", "api.minimax.io"},
+            ),
+        }
+        for field, (api_key, endpoint, allowed_hosts) in official_ai_hosts.items():
+            if api_key and not _is_official_https_url(endpoint, allowed_hosts):
+                errors.append(f"{field} must use an official HTTPS API endpoint")
+        if self.line_messaging_enabled and not _is_official_https_url(
+            self.line_api_base_url, {"api.line.me"}
+        ):
+            errors.append("LINE_API_BASE_URL must use the official HTTPS API endpoint")
+        if self.line_add_friend_url and not _is_official_https_url(
+            self.line_add_friend_url,
+            {"line.me", "www.line.me", "lin.ee"},
+            allow_query=True,
+        ):
+            errors.append("LINE_ADD_FRIEND_URL must use an official LINE HTTPS domain")
         if errors:
             raise RuntimeError("Unsafe production configuration: " + "; ".join(errors))
 

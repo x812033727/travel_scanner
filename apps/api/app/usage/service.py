@@ -144,6 +144,12 @@ async def reserve_use(
                 "idempotency_key_reused",
                 "Idempotency-Key has already been used for another operation",
             )
+        if existing.resource_id is None:
+            raise AppError(
+                409,
+                "idempotency_result_unavailable",
+                "This Idempotency-Key has no replayable result; use a new key",
+            )
         return existing, False
     if account.remaining_uses - account.reserved_uses < 1:
         raise AppError(402, "insufficient_uses", "可用次數不足，請前往方案頁查看次數包")
