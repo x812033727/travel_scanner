@@ -9,6 +9,7 @@ from sqlalchemy import func, select
 
 from app.config import get_settings
 from app.db import SessionFactory, engine
+from app.infra import get_redis
 from app.main import app
 from app.models import AdminAuditLog, ProviderConfig, UsageAccount, UsageLedger, User
 
@@ -19,9 +20,16 @@ pytestmark = pytest.mark.skipif(
 
 
 @pytest_asyncio.fixture(scope="module", loop_scope="module", autouse=True)
-async def dispose_engine_after_module() -> AsyncIterator[None]:
+async def isolate_async_clients_for_module() -> AsyncIterator[None]:
+    # The preceding integration module can leave pooled clients bound to its
+    # module-scoped event loop. Drop those pools without trying to close their
+    # already-stopped loop, then clean up this module's clients normally.
+    await engine.dispose(close=False)
+    get_redis.cache_clear()
     yield
     await engine.dispose()
+    await get_redis().aclose()
+    get_redis.cache_clear()
 
 
 async def set_registration_enabled(value: bool) -> None:
