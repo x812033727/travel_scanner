@@ -85,7 +85,17 @@ async def test_route_compute_rejects_unbounded_provider_fanout(
     trip_id = uuid4()
     user_id = uuid4()
     trip = SimpleNamespace(id=trip_id, version=1)
-    rows = [SimpleNamespace(day_date=date(2026, 9, 1)) for _ in range(13)]
+    rows = [
+        SimpleNamespace(
+            day_date=date(2026, 9, 1),
+            position=position,
+            item_type="suggestion",
+            system_role=None,
+            is_skipped=False,
+            data={},
+        )
+        for position in range(13)
+    ]
 
     async def owned_trip(_session: object, _user_id: object, _trip_id: object) -> object:
         return trip

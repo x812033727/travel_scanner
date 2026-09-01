@@ -30,6 +30,8 @@ class ItineraryItem(BaseModel):
     duration_minutes: int | None = None
     notes: str | None = None
     fixed_time: bool = False
+    system_role: str | None = None
+    is_skipped: bool = False
 
 
 class ItineraryDay(BaseModel):
@@ -170,6 +172,7 @@ def build_itinerary(
             data={
                 "source_mode": flight.source_mode,
                 "is_bookable": flight.is_bookable,
+                "timeline_section": "logistics",
                 **destination_context,
             },
         )
@@ -184,7 +187,11 @@ def build_itinerary(
             end_time=transport.arrival_time,
             locked=True,
             is_estimated=transport.is_estimated,
-            data={"source_mode": transport.source_mode, **destination_context},
+            data={
+                "source_mode": transport.source_mode,
+                "timeline_section": "logistics",
+                **destination_context,
+            },
         )
     if hotel:
         add(
@@ -198,7 +205,11 @@ def build_itinerary(
             latitude=hotel.latitude,
             longitude=hotel.longitude,
             locked=True,
-            data={"source_mode": hotel.source_mode, **destination_context},
+            data={
+                "source_mode": hotel.source_mode,
+                "timeline_section": "logistics",
+                **destination_context,
+            },
         )
 
     full_days = days[1:-1] if len(days) > 2 else days[1:]
@@ -384,7 +395,11 @@ def build_itinerary(
             latitude=hotel.latitude,
             longitude=hotel.longitude,
             locked=True,
-            data={"source_mode": hotel.source_mode, **destination_context},
+            data={
+                "source_mode": hotel.source_mode,
+                "timeline_section": "logistics",
+                **destination_context,
+            },
         )
     if flight and flight.return_departure_time:
         add(
@@ -399,9 +414,105 @@ def build_itinerary(
             data={
                 "source_mode": flight.source_mode,
                 "is_bookable": flight.is_bookable,
+                "timeline_section": "logistics",
                 **destination_context,
             },
         )
+
+    meal_titles = list((destination.suggestions if destination else {}).get("food", ()))
+    hotel_name = hotel.hotel_name if hotel else "尚未設定飯店"
+    hotel_location = (hotel.address or hotel.hotel_name) if hotel else None
+    for day_index, day_value in enumerate(days):
+        add(
+            day_value,
+            item_type="hotel_anchor",
+            title=f"從 {hotel_name} 出發",
+            location_name=hotel_location,
+            start_time=_at(day_value, 9, timezone=destination_timezone),
+            end_time=_at(day_value, 9, timezone=destination_timezone),
+            latitude=hotel.latitude if hotel else None,
+            longitude=hotel.longitude if hotel else None,
+            locked=True,
+            fixed_time=True,
+            is_estimated=hotel is None,
+            duration_minutes=0,
+            system_role="hotel_start",
+            data={
+                "source_mode": "system",
+                "needs_place_confirmation": hotel is None,
+                **destination_context,
+            },
+        )
+        for role, hour, minute, duration, offset, label in (
+            ("lunch", 12, 0, 60, 0, "午餐"),
+            ("dinner", 18, 30, 90, 1, "晚餐"),
+        ):
+            title = (
+                meal_titles[(day_index * 2 + offset) % len(meal_titles)]
+                if meal_titles
+                else label
+            )
+            starts = _at(day_value, hour, minute, timezone=destination_timezone)
+            add(
+                day_value,
+                item_type="meal",
+                title=title,
+                location_name=(destination.city if destination else query.destination),
+                start_time=starts,
+                end_time=starts + timedelta(minutes=duration),
+                locked=True,
+                fixed_time=True,
+                is_estimated=True,
+                duration_minutes=duration,
+                system_role=role,
+                data={
+                    "source_mode": "catalog",
+                    "meal_kind": role,
+                    "meal_selection_source": "catalog" if meal_titles else "unset",
+                    "needs_place_confirmation": True,
+                    **destination_context,
+                },
+            )
+        add(
+            day_value,
+            item_type="hotel_anchor",
+            title=f"返回 {hotel_name}",
+            location_name=hotel_location,
+            latitude=hotel.latitude if hotel else None,
+            longitude=hotel.longitude if hotel else None,
+            locked=True,
+            is_estimated=hotel is None,
+            duration_minutes=0,
+            system_role="hotel_end",
+            data={
+                "source_mode": "system",
+                "needs_place_confirmation": hotel is None,
+                **destination_context,
+            },
+        )
+
+    logistics_types = {"flight", "transport", "hotel"}
+    for day_value in days:
+        route_rows = [
+            item
+            for item in rows[day_value]
+            if not (item.system_role is None and item.item_type in logistics_types)
+        ]
+        logistics = [item for item in rows[day_value] if item not in route_rows]
+        route_rows.sort(
+            key=lambda item: (
+                0
+                if item.system_role == "hotel_start"
+                else 2
+                if item.system_role == "hotel_end"
+                else 1,
+                item.start_time or datetime.max.replace(tzinfo=destination_timezone or UTC),
+                item.position,
+            )
+        )
+        rows[day_value] = [*route_rows, *logistics]
+        for position, item in enumerate(rows[day_value]):
+            item.position = position
 
     labels = [
         "抵達與入住",

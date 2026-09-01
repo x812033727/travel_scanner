@@ -58,7 +58,7 @@ def item_end(item: TripPlanItem, start: datetime | None = None) -> datetime | No
     effective_start = start or item.start_time
     if effective_start is None:
         return item.end_time
-    if item.duration_minutes:
+    if item.duration_minutes is not None:
         return effective_start + timedelta(minutes=item.duration_minutes)
     if item.start_time and item.end_time:
         return effective_start + (item.end_time - item.start_time)

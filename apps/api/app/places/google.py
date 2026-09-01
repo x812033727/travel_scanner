@@ -314,7 +314,7 @@ class GoogleTravelService:
         """Resolve suggested places, then replace generic travel buffers with Routes estimates."""
         for day in itinerary:
             for item in day.items:
-                if item.item_type != "suggestion":
+                if item.item_type not in {"suggestion", "meal"}:
                     continue
                 place = await self.search_place(
                     f"{item.title} {item.location_name or ''}", item.latitude, item.longitude
@@ -331,9 +331,13 @@ class GoogleTravelService:
                 )
                 item.latitude = float(location.get("latitude") or 0) or item.latitude
                 item.longitude = float(location.get("longitude") or 0) or item.longitude
+                item.provider_place_id = str(place.get("id") or "") or None
+                item.location_source = "google_places"
+                item.is_estimated = False
                 item.data = {
                     **item.data,
                     "places_status": "resolved",
+                    "needs_place_confirmation": False,
                     "opening_hours": regular.get("weekdayDescriptions", []),
                     "google_maps_url": place.get("googleMapsUri"),
                     "attributions": attributions,

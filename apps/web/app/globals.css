@@ -184,6 +184,65 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 10px 28px color-mix(in srgb, var(--teal) 12%, transparent);
 }
 
+.planner-system-card {
+  border: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
+  border-radius: 1.15rem;
+  padding: .9rem 1rem;
+  box-shadow: 0 4px 14px rgba(16, 42, 43, .045);
+}
+.planner-hotel-card {
+  border-color: color-mix(in srgb, #4f7790 30%, var(--line));
+  background: linear-gradient(135deg, #f2f7fa, #edf3f6);
+  color: #294c61;
+}
+.planner-meal-card {
+  border-color: color-mix(in srgb, #d58a42 32%, var(--line));
+  background: linear-gradient(135deg, #fff9ed, #fff3df);
+  color: #70461d;
+}
+.planner-system-card-skipped {
+  border-style: dashed;
+  background: color-mix(in srgb, var(--paper) 82%, white);
+  box-shadow: none;
+}
+.planner-system-icon {
+  display: grid;
+  width: 2.45rem;
+  height: 2.45rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: .85rem;
+  background: color-mix(in srgb, currentColor 10%, white);
+}
+.planner-system-primary,
+.planner-system-action {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  border-radius: .85rem;
+  padding: .55rem .8rem;
+  font-size: .78rem;
+  font-weight: 800;
+}
+.planner-system-primary {
+  flex: 1;
+  border: 0;
+  background: color-mix(in srgb, currentColor 12%, white);
+}
+.planner-system-action {
+  border: 1px solid color-mix(in srgb, currentColor 16%, var(--line));
+  background: rgba(255,255,255,.64);
+}
+.planner-system-primary:disabled,
+.planner-system-action:disabled { opacity: .45; }
+.planner-logistics-panel {
+  border: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
+  border-radius: 1.15rem;
+  background: color-mix(in srgb, var(--paper) 72%, white);
+}
+
 .planner-time-badge {
   display: inline-flex;
   min-height: 1.7rem;

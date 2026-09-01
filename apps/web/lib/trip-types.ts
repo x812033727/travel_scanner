@@ -1,3 +1,5 @@
+import { activeLocale } from "@/lib/locale-format";
+
 export type TripItem = {
   id: string;
   item_type: string;
@@ -18,6 +20,25 @@ export type TripItem = {
   duration_minutes?: number | null;
   notes?: string | null;
   fixed_time?: boolean;
+  system_role?: "hotel_start" | "lunch" | "dinner" | "hotel_end" | null;
+  is_skipped?: boolean;
+};
+
+export type PrimaryLodging = {
+  name: string;
+  location_name: string;
+  provider_place_id?: string | null;
+  latitude?: number | null;
+  longitude?: number | null;
+  location_source: string;
+};
+
+export type ScheduleDefaults = {
+  day_start_time: string;
+  lunch_time: string;
+  lunch_duration_minutes: number;
+  dinner_time: string;
+  dinner_duration_minutes: number;
 };
 
 export type RouteStep = {
@@ -118,6 +139,8 @@ export type Trip = {
   total_price: number;
   currency: string;
   data: Record<string, unknown>;
+  primary_lodging?: PrimaryLodging | null;
+  schedule_defaults?: ScheduleDefaults;
   planning?: {
     status: "live" | "fallback" | "partial";
     provider: "openai" | "anthropic" | "minimax" | "catalog";
@@ -143,12 +166,13 @@ export type Trip = {
   usage?: { status: "reserved" | "charged" | "released"; uses: number; reference: string };
 };
 
-export function formatTime(value?: string | null, locale?: string) {
+export function formatTime(value?: string | null, locale?: string, timeZone?: string) {
   if (!value) return "彈性時段";
   return new Intl.DateTimeFormat(locale || activeLocale(), {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
+    timeZone,
   }).format(new Date(value));
 }
 
@@ -159,4 +183,14 @@ export function groupTripItems(items: TripItem[]) {
   }
   return [...grouped.entries()];
 }
-import { activeLocale } from "@/lib/locale-format";
+
+export function isLogisticsItem(item: TripItem) {
+  return !item.system_role && (
+    ["flight", "transport", "hotel"].includes(item.item_type)
+    || item.data.timeline_section === "logistics"
+  );
+}
+
+export function isActiveRouteItem(item: TripItem) {
+  return !item.is_skipped && !isLogisticsItem(item);
+}

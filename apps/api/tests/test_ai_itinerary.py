@@ -42,6 +42,31 @@ def request_for(*, pace: TripPace = TripPace.BALANCED) -> AIItineraryRequest:
     )
 
 
+def meal_items() -> list[AIDraftItem]:
+    return [
+        AIDraftItem(
+            title="東京定食午餐",
+            location_query="東京 定食 餐廳",
+            start_time="12:00",
+            duration_minutes=60,
+            category="food",
+            reason="保留固定午餐時間",
+            notes="",
+            slot_type="lunch",
+        ),
+        AIDraftItem(
+            title="東京在地晚餐",
+            location_query="東京 在地料理 餐廳",
+            start_time="18:30",
+            duration_minutes=90,
+            category="food",
+            reason="保留固定晚餐時間",
+            notes="",
+            slot_type="dinner",
+        ),
+    ]
+
+
 def draft_json() -> str:
     return AIItineraryDraft(
         summary="東京文化與美食四日草稿",
@@ -57,7 +82,8 @@ def draft_json() -> str:
                         category="culture",
                         reason="首日以步調較輕鬆的文化景點開始",
                         notes="",
-                    )
+                    ),
+                    *meal_items(),
                 ],
             ),
             *[
@@ -73,6 +99,7 @@ def draft_json() -> str:
                             reason="符合美食偏好",
                             notes="",
                         ),
+                        *meal_items(),
                         AIDraftItem(
                             title=f"上野公園 {index}",
                             location_query="上野公園 東京",
@@ -99,7 +126,8 @@ def draft_json() -> str:
                         category="sight",
                         reason="末日安排交通便利的輕鬆散步",
                         notes="",
-                    )
+                    ),
+                    *meal_items(),
                 ],
             )
         ],
@@ -168,7 +196,12 @@ def test_fallback_covers_every_day_and_obeys_pace_counts() -> None:
         date(2026, 11, 12),
         date(2026, 11, 13),
     ]
-    assert [len(day.items) for day in draft.days] == [1, 3, 3, 1]
+    assert [len(day.items) for day in draft.days] == [3, 5, 5, 3]
+    assert all(
+        [item.slot_type for item in day.items].count("lunch") == 1
+        and [item.slot_type for item in day.items].count("dinner") == 1
+        for day in draft.days
+    )
 
 
 def test_normalize_fills_missing_days_and_rewrites_safe_slots() -> None:
@@ -219,6 +252,10 @@ async def test_planner_without_keys_returns_persistable_catalog_fallback() -> No
         item.data["generated_by"] == "ai_planner"
         for day in result.itinerary
         for item in day.items
+    )
+    assert all(
+        {item.system_role for item in day.items if item.system_role} == {"lunch", "dinner"}
+        for day in result.itinerary
     )
 
 
