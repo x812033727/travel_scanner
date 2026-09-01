@@ -50,12 +50,14 @@ class UsagePackage(Timestamped, Base):
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     code: Mapped[str] = mapped_column(String(32), unique=True)
     name: Mapped[str] = mapped_column(String(100))
-    localized_names: Mapped[dict[str, str]] = mapped_column(JSON, default=dict)
+    localized_names: Mapped[dict[str, str]] = mapped_column(
+        JSON, default=dict, server_default="{}"
+    )
     uses: Mapped[int] = mapped_column(Integer)
     price_twd: Mapped[int] = mapped_column(Integer, default=0)
-    display_order: Mapped[int] = mapped_column(Integer, default=100)
+    display_order: Mapped[int] = mapped_column(Integer, default=100, server_default="100")
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
-    is_featured: Mapped[bool] = mapped_column(Boolean, default=False)
+    is_featured: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
     purchasable: Mapped[bool] = mapped_column(Boolean, default=False)
 
 
