@@ -50,6 +50,59 @@ function ok(payload: unknown) {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("route mode panel", () => {
+  it("auto-previews the default mode when no route has been applied", async () => {
+    const noRouteTrip = {
+      ...trip,
+      route_segments: [],
+      routing: { ...trip.routing, status: "idle" as const, completed: 0 },
+    };
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.endsWith("/runtime/public-config")) {
+        return ok({ google_maps_browser_key: null, google_maps_embed_enabled: false });
+      }
+      return ok({
+        preview_id: "preview-default",
+        expires_at: "2026-09-01T00:15:00Z",
+        segment: initialSegment,
+        schedule_impact: { affected_items: [], conflicts: [] },
+      });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<RouteModePanel trip={noRouteTrip} items={items} fromItemId="from" toItemId="to" onApplied={() => undefined} onError={() => undefined} />);
+
+    expect((await screen.findByRole("button", { name: "套用此路線" }) as HTMLButtonElement).disabled).toBe(false);
+    expect(screen.queryByText("目前已套用")).toBeNull();
+    expect(fetchMock.mock.calls.some(([url]) => String(url).endsWith("/routes/preview"))).toBe(true);
+  });
+
+  it("resolves missing endpoints and opens the correct item editor when unresolved", async () => {
+    const missingItems = items.map((item) => ({
+      ...item,
+      latitude: undefined,
+      longitude: undefined,
+      location_name: item.id === "from" ? "" : item.title,
+    }));
+    const noRouteTrip = {
+      ...trip,
+      items: missingItems,
+      route_segments: [],
+      routing: { ...trip.routing, status: "needs_locations" as const, completed: 0 },
+    };
+    const onEditItem = vi.fn();
+    vi.stubGlobal("fetch", vi.fn(async () => ok({
+      trip: noRouteTrip,
+      matched_items: [],
+      unresolved_items: [{ item_id: "from", title: "上野", reason: "尚未輸入可辨識的地點名稱" }],
+    })));
+
+    render(<RouteModePanel trip={noRouteTrip} items={missingItems} fromItemId="from" toItemId="to" onApplied={() => undefined} onEditItem={onEditItem} onError={() => undefined} />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "補上地點" }));
+    expect(onEditItem).toHaveBeenCalledWith("from");
+    expect(screen.queryByText("目前已套用")).toBeNull();
+  });
+
   it("previews a selected mode before applying it", async () => {
     let previewBody: Record<string, unknown> | undefined;
     let applyBody: Record<string, unknown> | undefined;

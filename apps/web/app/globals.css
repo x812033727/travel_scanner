@@ -572,6 +572,56 @@ a { color: inherit; text-decoration: none; }
   text-align: center;
 }
 
+.route-preview-skeleton.compact { min-height: 8rem; }
+
+.route-empty-state {
+  display: flex;
+  min-height: 5.75rem;
+  align-items: center;
+  gap: .8rem;
+  border: 1px dashed var(--line);
+  border-radius: 1.2rem;
+  background: var(--paper);
+  padding: 1rem;
+  color: var(--teal-dark);
+}
+
+.route-empty-state p {
+  margin-top: .2rem;
+  color: var(--muted);
+  font-size: .75rem;
+  line-height: 1.35rem;
+}
+
+.route-panel-layout {
+  display: grid;
+  min-width: 0;
+  gap: 1rem;
+}
+
+.route-panel-controls,
+.route-panel-detail { min-width: 0; }
+
+.route-map-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  background: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.route-map-frame {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  min-height: 200px;
+  overflow: hidden;
+  contain: layout paint;
+}
+
+.route-map-sidebar .route-map-frame { height: 310px; }
+
 .route-impact-card {
   border: 1px solid color-mix(in srgb, var(--teal) 25%, var(--line));
   border-radius: 1.2rem;
@@ -687,6 +737,7 @@ a { color: inherit; text-decoration: none; }
   .route-day-settings label select { margin-top: 0; }
   .route-day-mode { flex: 1; padding-inline: .35rem; }
   .route-time-grid { grid-template-columns: 1fr auto 1fr; }
+  .route-map-drawer .route-map-frame { height: 240px; }
 }
 
 @media (max-width: 1023px) {
@@ -723,6 +774,21 @@ a { color: inherit; text-decoration: none; }
   .planner-sheet-handle,
   .planner-sheet-toggle { display: none; }
   .planner-sheet-body { padding: 1.5rem; }
+
+  .route-panel-layout {
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    align-items: start;
+  }
+
+  .route-panel-detail {
+    max-height: calc(100dvh - 10rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: .2rem;
+  }
+
+  .route-panel-layout > .route-apply-bar { grid-column: 1 / -1; }
+  .route-map-drawer .route-map-frame { height: 300px; }
 }
 
 @keyframes planner-rise {

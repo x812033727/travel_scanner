@@ -206,7 +206,7 @@ async def compute_and_apply_routes(
                     "is_override": is_override,
                     "expires_at": (
                         None
-                        if segment.provider == "manual"
+                        if computed_segment.provider == "manual"
                         else datetime.now(UTC)
                         + timedelta(seconds=runtime.route_cache_ttl_seconds)
                     ),

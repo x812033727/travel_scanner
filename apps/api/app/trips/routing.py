@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import json
+import logging
 from dataclasses import dataclass
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
@@ -16,6 +17,8 @@ from redis.asyncio import Redis
 
 from app.config import Settings, get_settings
 from app.providers.usage_meter import record_google_maps_request
+
+logger = logging.getLogger(__name__)
 
 TravelMode = Literal["transit", "walk", "drive"]
 TRAVEL_MODES: set[str] = {"transit", "walk", "drive"}
@@ -119,13 +122,22 @@ def supported_transit_time(value: datetime | None) -> tuple[datetime | None, str
     if value is None:
         return None, "live", []
     now = datetime.now(UTC)
-    requested = value.astimezone(UTC)
-    if now - timedelta(days=7) <= requested <= now + timedelta(days=100):
-        return requested, "scheduled", []
-    if requested > now + timedelta(days=100):
-        days_until_weekday = (requested.weekday() - now.weekday()) % 7
-        preview_day = (now + timedelta(days=max(1, days_until_weekday))).date()
-        preview = datetime.combine(preview_day, requested.timetz()).astimezone(UTC)
+    local_zone = value.tzinfo or UTC
+    requested_local = value.replace(tzinfo=local_zone) if value.tzinfo is None else value
+    requested_utc = requested_local.astimezone(UTC)
+    if now - timedelta(days=7) <= requested_utc <= now + timedelta(days=100):
+        return requested_utc, "scheduled", []
+    if requested_utc > now + timedelta(days=100):
+        local_now = now.astimezone(local_zone)
+        days_until_weekday = (requested_local.weekday() - local_now.weekday()) % 7
+        if days_until_weekday == 0:
+            days_until_weekday = 7
+        preview_day = (local_now + timedelta(days=days_until_weekday)).date()
+        preview = datetime.combine(
+            preview_day,
+            requested_local.timetz().replace(tzinfo=None),
+            tzinfo=local_zone,
+        ).astimezone(UTC)
         return preview, "preview", ["旅程超過可查班次範圍，這是相同星期與時段的預覽路線。"]
     return now, "preview", ["日期已超過可查班次範圍，顯示目前可用的參考路線。"]
 
@@ -169,6 +181,7 @@ class GoogleRouteProvider:
         self,
         origin: RoutePoint,
         destination: RoutePoint,
+        departure_time: datetime | None = None,
     ) -> GoogleRoutesProbeResult:
         """Verify Routes API authorization without treating an empty route as a connection error."""
         if not self.settings.google_maps_api_key:
@@ -181,6 +194,9 @@ class GoogleRouteProvider:
             "units": "METRIC",
             "computeAlternativeRoutes": False,
         }
+        effective_time, _, _ = supported_transit_time(departure_time)
+        if effective_time is not None:
+            body["departureTime"] = effective_time.isoformat().replace("+00:00", "Z")
         try:
             response = await self._post(body, "routes.duration")
         except httpx.HTTPError:
@@ -258,15 +274,69 @@ class GoogleRouteProvider:
             "routes.legs.steps.navigationInstruction.instructions,"
             "routes.legs.steps.transitDetails"
         )
-        try:
-            response = await self._post(body, fields)
-            response.raise_for_status()
-            payload = cast(dict[str, Any], response.json())
-        except (httpx.HTTPError, ValueError):
+        payload: dict[str, Any] = {}
+        used_preference_fallback = False
+        attempts = [body]
+        if transit_preference:
+            attempts.append(
+                {key: value for key, value in body.items() if key != "transitPreferences"}
+            )
+        for attempt_index, attempt_body in enumerate(attempts):
+            try:
+                response = await self._post(attempt_body, fields)
+                response.raise_for_status()
+                parsed = response.json()
+                payload = cast(dict[str, Any], parsed) if isinstance(parsed, dict) else {}
+            except httpx.HTTPStatusError as exc:
+                logger.warning(
+                    "google_routes_http_error",
+                    extra={
+                        "provider": self.name,
+                        "status_code": exc.response.status_code,
+                        "reason_code": "rate_limited"
+                        if exc.response.status_code == 429
+                        else "provider_http_error",
+                        "travel_mode": travel_mode,
+                        "preference_fallback": attempt_index > 0,
+                    },
+                )
+                if attempt_index + 1 < len(attempts):
+                    continue
+                return None
+            except httpx.HTTPError:
+                logger.warning(
+                    "google_routes_network_error",
+                    extra={"provider": self.name, "reason_code": "provider_network_error"},
+                )
+                if attempt_index + 1 < len(attempts):
+                    continue
+                return None
+            except ValueError:
+                logger.warning(
+                    "google_routes_invalid_response",
+                    extra={"provider": self.name, "reason_code": "provider_invalid_response"},
+                )
+                if attempt_index + 1 < len(attempts):
+                    continue
+                return None
+            routes = cast(list[dict[str, Any]], payload.get("routes", []))
+            if routes:
+                used_preference_fallback = attempt_index > 0
+                break
+            logger.info(
+                "google_routes_empty",
+                extra={
+                    "provider": self.name,
+                    "reason_code": "no_route",
+                    "travel_mode": travel_mode,
+                    "preference_fallback": attempt_index > 0,
+                },
+            )
+        else:
             return None
         routes = cast(list[dict[str, Any]], payload.get("routes", []))
-        if not routes:
-            return None
+        if used_preference_fallback:
+            warnings.append("偏好條件沒有結果，已改用一般大眾運輸路線。")
         route = routes[0]
         total_minutes = duration_minutes(route.get("duration"))
         if total_minutes is None:

@@ -10,6 +10,7 @@ from datetime import UTC, date, datetime, timedelta
 from typing import Any, cast
 from urllib.parse import urlparse
 from uuid import uuid4
+from zoneinfo import ZoneInfo
 
 from cryptography.fernet import Fernet, InvalidToken
 from pydantic import ValidationError
@@ -921,6 +922,10 @@ async def _test_google(settings: Settings, redis: Redis) -> str:
     places = await service.autocomplete("東京車站", None, ["jp"])
     if not places:
         raise ConnectionError("Places API 未回傳結果，請檢查 API 啟用狀態與金鑰限制")
+    route_test_time = datetime.now(ZoneInfo("Asia/Tokyo")) + timedelta(days=1)
+    while route_test_time.weekday() >= 5:
+        route_test_time += timedelta(days=1)
+    route_test_time = route_test_time.replace(hour=10, minute=0, second=0, microsecond=0)
     routes = await GoogleRouteProvider(settings, None, redis).probe(
         RoutePoint(
             item_id=uuid4(),
@@ -934,6 +939,7 @@ async def _test_google(settings: Settings, redis: Redis) -> str:
             latitude=35.7148,
             longitude=139.7967,
         ),
+        route_test_time,
     )
     if not routes.reachable:
         details = routes.error_code or "UNKNOWN_ERROR"
@@ -1149,4 +1155,8 @@ async def public_runtime_config(session: AsyncSession) -> PublicRuntimeConfig:
     return PublicRuntimeConfig(
         google_maps_browser_key=settings.next_public_google_maps_browser_key,
         google_maps_enabled=bool(settings.google_maps_api_key),
+        google_routes_enabled=bool(settings.google_maps_api_key),
+        google_places_enabled=bool(settings.google_maps_api_key),
+        google_maps_embed_enabled=bool(settings.next_public_google_maps_browser_key),
+        navitime_enabled=settings.navitime_configured,
     )

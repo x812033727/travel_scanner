@@ -115,6 +115,10 @@ class ProviderTestResult(BaseModel):
 class PublicRuntimeConfig(BaseModel):
     google_maps_browser_key: str | None = None
     google_maps_enabled: bool = False
+    google_routes_enabled: bool = False
+    google_places_enabled: bool = False
+    google_maps_embed_enabled: bool = False
+    navitime_enabled: bool = False
 
 
 class SiteVisibility(BaseModel):

@@ -159,6 +159,23 @@ async def test_locate_search_stays_on_the_pro_field_mask() -> None:
 
 
 @pytest.mark.asyncio
+async def test_locate_search_sends_destination_region_code() -> None:
+    body: dict[str, object] = {}
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        body.update(json.loads(request.content))
+        return httpx.Response(200, json=_place_payload())
+
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    service = GoogleTravelService(redis, Settings(google_maps_api_key="key"), client)
+    await service.search_place("淺草寺, 東京", None, None, detailed=False, region_code="jp")
+    await client.aclose()
+    assert body["regionCode"] == "JP"
+    assert body["textQuery"] == "淺草寺, 東京"
+
+
+@pytest.mark.asyncio
 async def test_detailed_search_keeps_the_enterprise_field_mask() -> None:
     masks: list[str] = []
 
