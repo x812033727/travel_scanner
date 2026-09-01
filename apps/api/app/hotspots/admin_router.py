@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 from decimal import Decimal
-from typing import Annotated, Literal, cast
+from typing import Annotated, Any, Literal, cast
 from uuid import UUID, uuid4
 
 from fastapi import APIRouter, Depends, Header, Query
@@ -37,6 +37,15 @@ from app.hotspots.guides import (
     guide_quota_status,
     save_candidates,
 )
+from app.hotspots.place_tasks import enqueue_place_enrichment_run
+from app.hotspots.places import (
+    RunMode,
+    canonical_official_website,
+    enrichment_targets,
+    place_summary_payload,
+    profile_overview,
+    run_payload,
+)
 from app.hotspots.ranking import calculate_depth_value
 from app.i18n import LOCALES, Locale
 from app.infra import get_redis
@@ -44,6 +53,8 @@ from app.models import (
     AdminAuditLog,
     HotspotGuide,
     HotspotGuideAISearchRun,
+    HotspotPlaceEnrichmentRun,
+    HotspotPlaceProfile,
     HotspotSignal,
     TravelHotspot,
 )
@@ -139,6 +150,37 @@ class GuideAISearchRequest(BaseModel):
         if self.custom_instructions:
             self.custom_instructions = self.custom_instructions.strip() or None
         return self
+
+
+class PlaceEnrichmentRunRequest(BaseModel):
+    scope: Literal["all", "country", "hotspots"] = "all"
+    mode: RunMode = "missing_or_expired"
+    country_code: str | None = Field(default=None, min_length=2, max_length=2)
+    hotspot_ids: list[UUID] = Field(default_factory=list, max_length=450)
+    confirm_usage: bool = False
+
+    @model_validator(mode="after")
+    def validate_scope(self) -> PlaceEnrichmentRunRequest:
+        if self.scope == "country" and not self.country_code:
+            raise ValueError("國家範圍需要 country_code")
+        if self.scope == "hotspots" and not self.hotspot_ids:
+            raise ValueError("指定景點範圍需要 hotspot_ids")
+        self.hotspot_ids = list(dict.fromkeys(self.hotspot_ids))
+        return self
+
+
+class PlaceProfileUpdateRequest(BaseModel):
+    action: Literal["approve", "reject", "save", "refresh"]
+    google_place_id: str | None = Field(default=None, max_length=255)
+    official_website_url: str | None = Field(default=None, max_length=2048)
+    official_website_source_url: str | None = Field(default=None, max_length=2048)
+    reason: str | None = Field(default=None, max_length=500)
+
+
+class PlaceProfileReviewRequest(BaseModel):
+    ids: list[UUID] = Field(min_length=1, max_length=100)
+    action: Literal["approve", "reject"]
+    reason: str | None = Field(default=None, max_length=500)
 
 
 def _ai_search_payload(run: HotspotGuideAISearchRun) -> dict[str, object]:
@@ -720,3 +762,351 @@ async def hotspot_guide_coverage(user: AdminUser, session: Session) -> dict[str,
         "quota": await ai_quota_status(get_redis(), settings),
     }
     return result
+
+
+async def _create_place_run(
+    session: AsyncSession,
+    *,
+    actor_user_id: UUID | None,
+    idempotency_key: str,
+    mode: RunMode,
+    scope: dict[str, object],
+    targets: list[TravelHotspot],
+) -> HotspotPlaceEnrichmentRun:
+    run = HotspotPlaceEnrichmentRun(
+        id=uuid4(),
+        actor_user_id=actor_user_id,
+        idempotency_key=idempotency_key,
+        mode=mode,
+        scope_json=scope,
+        status="queued" if targets else "completed",
+        total_count=len(targets),
+        estimated_google_calls=len(targets)
+        + sum(1 for item in targets if not item.google_place_id),
+        result_json={"processed_ids": []},
+        completed_at=datetime.now(UTC) if not targets else None,
+    )
+    session.add(run)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=actor_user_id,
+            action="hotspot_place_enrichment_started",
+            target=f"hotspot-place-enrichment:{run.id}",
+            metadata_json={
+                "mode": mode,
+                "scope": scope,
+                "total": len(targets),
+                "estimated_google_calls": run.estimated_google_calls,
+            },
+        )
+    )
+    await session.commit()
+    if not targets:
+        return run
+    try:
+        jobs = enqueue_place_enrichment_run(run.id, [item.id for item in targets])
+        run.progress_json = {"queue_job_ids": jobs}
+        await session.commit()
+    except Exception as exc:
+        run.status = "failed"
+        run.error_json = [{"code": "queue_unavailable"}]
+        run.completed_at = datetime.now(UTC)
+        await session.commit()
+        raise AppError(503, "queue_unavailable", "Google 地點資料佇列暫時無法使用") from exc
+    return run
+
+
+@router.post("/place-enrichment/runs", status_code=202)
+async def create_place_enrichment_run(
+    payload: PlaceEnrichmentRunRequest,
+    user: AdminUser,
+    session: Session,
+    idempotency_key: Annotated[
+        str, Header(alias="Idempotency-Key", min_length=8, max_length=255)
+    ],
+) -> dict[str, Any]:
+    existing = await session.scalar(
+        select(HotspotPlaceEnrichmentRun).where(
+            HotspotPlaceEnrichmentRun.actor_user_id == user.id,
+            HotspotPlaceEnrichmentRun.idempotency_key == idempotency_key,
+        )
+    )
+    if existing is not None:
+        return run_payload(existing)
+    settings = await load_runtime_settings(session)
+    if not settings.hotspot_place_enrichment_enabled or not settings.google_maps_api_key:
+        raise AppError(503, "google_maps_not_configured", "Google Maps 地點資料目前未設定")
+    if not payload.confirm_usage:
+        raise AppError(
+            422,
+            "google_maps_usage_confirmation_required",
+            "請先確認預估 Google API 用量",
+        )
+    targets = await enrichment_targets(
+        session,
+        mode=payload.mode,
+        country_code=payload.country_code if payload.scope == "country" else None,
+        hotspot_ids=payload.hotspot_ids if payload.scope == "hotspots" else None,
+    )
+    scope: dict[str, object] = {"type": payload.scope}
+    if payload.scope == "country":
+        scope["country_code"] = cast(str, payload.country_code).upper()
+    elif payload.scope == "hotspots":
+        scope["hotspot_ids"] = [str(item) for item in payload.hotspot_ids]
+    run = await _create_place_run(
+        session,
+        actor_user_id=user.id,
+        idempotency_key=idempotency_key,
+        mode=payload.mode,
+        scope=scope,
+        targets=targets,
+    )
+    return run_payload(run)
+
+
+@router.get("/place-enrichment/runs/{run_id}")
+async def get_place_enrichment_run(
+    run_id: UUID, user: AdminUser, session: Session
+) -> dict[str, Any]:
+    _ = user
+    run = await session.get(HotspotPlaceEnrichmentRun, run_id)
+    if run is None:
+        raise AppError(404, "hotspot_place_enrichment_not_found", "找不到這次地點資料更新")
+    return run_payload(run)
+
+
+@router.get("/place-profiles")
+async def list_place_profiles(
+    user: AdminUser,
+    session: Session,
+    redis: RedisDep,
+    q: Annotated[str | None, Query(min_length=1, max_length=100)] = None,
+    country_code: Annotated[str | None, Query(min_length=2, max_length=2)] = None,
+    status: Annotated[str | None, Query(max_length=24)] = None,
+    page: Annotated[int, Query(ge=1)] = 1,
+    limit: Annotated[int, Query(ge=1, le=100)] = 50,
+) -> dict[str, Any]:
+    _ = user
+    query = select(TravelHotspot, HotspotPlaceProfile).outerjoin(
+        HotspotPlaceProfile, HotspotPlaceProfile.hotspot_id == TravelHotspot.id
+    )
+    filters: list[Any] = [
+        TravelHotspot.is_active.is_(True),
+        TravelHotspot.review_status.in_(("approved", "auto_approved")),
+    ]
+    if q:
+        term = f"%{q.strip()}%"
+        filters.append(or_(TravelHotspot.name.ilike(term), TravelHotspot.search_text.ilike(term)))
+    if country_code:
+        filters.append(TravelHotspot.country_code == country_code.upper())
+    if status == "missing":
+        filters.append(HotspotPlaceProfile.id.is_(None))
+    elif status:
+        filters.append(HotspotPlaceProfile.match_status == status)
+    query = query.where(*filters)
+    total = int(await session.scalar(select(func.count()).select_from(query.subquery())) or 0)
+    rows = (
+        await session.execute(
+            query.order_by(TravelHotspot.country_code, TravelHotspot.name)
+            .offset((page - 1) * limit)
+            .limit(limit)
+        )
+    ).all()
+    settings = await load_runtime_settings(session)
+    items = []
+    for hotspot, profile in rows:
+        items.append(
+            {
+                "hotspot_id": str(hotspot.id),
+                "name": hotspot.name,
+                "city_name": hotspot.city_name,
+                "country_code": hotspot.country_code,
+                "google_place_id": hotspot.google_place_id,
+                "place_id_source": profile.place_id_source if profile else "none",
+                "match_status": profile.match_status if profile else "missing",
+                "match_confidence": (
+                    float(profile.match_confidence)
+                    if profile and profile.match_confidence is not None
+                    else None
+                ),
+                "candidate": (
+                    {
+                        "place_id": profile.candidate_place_id,
+                        "name": profile.candidate_name,
+                        "address": profile.candidate_address,
+                    }
+                    if profile and profile.candidate_place_id
+                    else None
+                ),
+                "website_review_status": (
+                    profile.website_review_status if profile else "none"
+                ),
+                "provider_website_url": profile.provider_website_uri if profile else None,
+                "manual_official_website_url": (
+                    profile.manual_official_website_url if profile else None
+                ),
+                "address": profile.formatted_address if profile else None,
+                "refresh_after": profile.provider_refresh_after if profile else None,
+                "expires_at": profile.provider_expires_at if profile else None,
+                "summary": place_summary_payload(
+                    hotspot,
+                    profile,
+                    configured=bool(settings.google_maps_api_key),
+                ),
+            }
+        )
+    return {
+        "items": items,
+        "total": total,
+        "page": page,
+        "pages": max(1, (total + limit - 1) // limit),
+        "overview": await profile_overview(session, redis, settings),
+    }
+
+
+@router.patch("/{hotspot_id}/place-profile")
+async def update_place_profile(
+    hotspot_id: UUID,
+    payload: PlaceProfileUpdateRequest,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, Any]:
+    hotspot = await session.get(TravelHotspot, hotspot_id)
+    if hotspot is None:
+        raise AppError(404, "hotspot_not_found", "找不到這個景點")
+    profile = await session.scalar(
+        select(HotspotPlaceProfile).where(HotspotPlaceProfile.hotspot_id == hotspot.id)
+    )
+    if profile is None:
+        profile = HotspotPlaceProfile(
+            hotspot_id=hotspot.id,
+            place_id_source="legacy" if hotspot.google_place_id else "none",
+            match_status="approved" if hotspot.google_place_id else "unmatched",
+        )
+        session.add(profile)
+    needs_refresh = payload.action == "refresh"
+    if payload.action == "approve":
+        if profile.candidate_place_id:
+            hotspot.google_place_id = profile.candidate_place_id
+            profile.place_id_source = "manual"
+            needs_refresh = True
+        profile.match_status = "approved"
+        if profile.website_review_status == "pending":
+            profile.website_review_status = "approved"
+    elif payload.action == "reject":
+        if profile.match_status == "pending":
+            profile.match_status = "rejected"
+        if profile.website_review_status == "pending":
+            profile.website_review_status = "rejected"
+    elif payload.action == "save":
+        if "google_place_id" in payload.model_fields_set:
+            previous_place_id = hotspot.google_place_id
+            hotspot.google_place_id = (
+                payload.google_place_id.strip() if payload.google_place_id else None
+            )
+            profile.place_id_source = "manual" if hotspot.google_place_id else "none"
+            profile.match_status = "approved" if hotspot.google_place_id else "unmatched"
+            needs_refresh = bool(hotspot.google_place_id)
+            if hotspot.google_place_id != previous_place_id:
+                profile.provider_expires_at = datetime.now(UTC)
+        if "official_website_url" in payload.model_fields_set:
+            profile.manual_official_website_url = (
+                canonical_official_website(payload.official_website_url)
+                if payload.official_website_url
+                else None
+            )
+            profile.website_review_status = (
+                "approved" if profile.manual_official_website_url else "none"
+            )
+        if "official_website_source_url" in payload.model_fields_set:
+            profile.manual_official_website_source_url = (
+                canonical_external_url(payload.official_website_source_url)
+                if payload.official_website_source_url
+                else None
+            )
+    if payload.action in {"approve", "reject"}:
+        profile.candidate_place_id = None
+        profile.candidate_name = None
+        profile.candidate_address = None
+        profile.candidate_latitude = None
+        profile.candidate_longitude = None
+    profile.review_reason = payload.reason
+    profile.reviewed_at = datetime.now(UTC)
+    profile.reviewed_by_user_id = user.id
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action=f"hotspot_place_profile_{payload.action}",
+            target=f"hotspot:{hotspot.id}",
+            metadata_json={"google_place_id": hotspot.google_place_id},
+        )
+    )
+    await session.commit()
+    run = None
+    if needs_refresh and hotspot.google_place_id:
+        run = await _create_place_run(
+            session,
+            actor_user_id=user.id,
+            idempotency_key=f"profile:{hotspot.id}:{uuid4()}",
+            mode="force",
+            scope={"type": "hotspots", "hotspot_ids": [str(hotspot.id)]},
+            targets=[hotspot],
+        )
+    return {
+        "hotspot_id": str(hotspot.id),
+        "match_status": profile.match_status,
+        "run": run_payload(run) if run else None,
+    }
+
+
+@router.post("/place-profiles/review")
+async def review_place_profiles(
+    payload: PlaceProfileReviewRequest,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, Any]:
+    rows = (
+        await session.execute(
+            select(TravelHotspot, HotspotPlaceProfile)
+            .join(HotspotPlaceProfile, HotspotPlaceProfile.hotspot_id == TravelHotspot.id)
+            .where(TravelHotspot.id.in_(payload.ids))
+        )
+    ).all()
+    if len(rows) != len(set(payload.ids)):
+        raise AppError(404, "hotspot_place_profile_not_found", "部分地點資料不存在")
+    refresh: list[TravelHotspot] = []
+    now = datetime.now(UTC)
+    for hotspot, profile in rows:
+        if payload.action == "approve":
+            if profile.candidate_place_id:
+                hotspot.google_place_id = profile.candidate_place_id
+                profile.place_id_source = "manual"
+                refresh.append(hotspot)
+            profile.match_status = "approved"
+            if profile.website_review_status == "pending":
+                profile.website_review_status = "approved"
+        else:
+            if profile.match_status == "pending":
+                profile.match_status = "rejected"
+            if profile.website_review_status == "pending":
+                profile.website_review_status = "rejected"
+        profile.candidate_place_id = None
+        profile.candidate_name = None
+        profile.candidate_address = None
+        profile.candidate_latitude = None
+        profile.candidate_longitude = None
+        profile.review_reason = payload.reason
+        profile.reviewed_at = now
+        profile.reviewed_by_user_id = user.id
+    await session.commit()
+    run = None
+    if refresh:
+        run = await _create_place_run(
+            session,
+            actor_user_id=user.id,
+            idempotency_key=f"review:{uuid4()}",
+            mode="force",
+            scope={"type": "hotspots", "hotspot_ids": [str(item.id) for item in refresh]},
+            targets=refresh,
+        )
+    return {"updated": len(rows), "run": run_payload(run) if run else None}

@@ -10,7 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.db import SessionFactory, engine
 from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.service import seed_catalog
-from app.models import HotspotSignal, TravelHotspot
+from app.models import HotspotPlaceProfile, HotspotSignal, TravelHotspot
 
 pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
@@ -110,4 +110,41 @@ async def test_seeding_is_idempotent_on_a_clean_catalog() -> None:
     async with SessionFactory() as session:
         total = len(list((await session.scalars(select(TravelHotspot))).all()))
         assert total == len(HOTSPOT_SEEDS)
+        await _clear(session)
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_seeding_preserves_place_id_and_manual_official_website() -> None:
+    async with SessionFactory() as session:
+        await _clear(session)
+        hotspots = await seed_catalog(session, date(2026, 9, 1))
+        hotspot = hotspots[0]
+        hotspot.google_place_id = "ChIJ-legacy-locked"
+        session.add(
+            HotspotPlaceProfile(
+                hotspot_id=hotspot.id,
+                place_id_source="manual",
+                match_status="approved",
+                manual_official_website_url="https://example.gov/official",
+                manual_official_website_source_url="https://example.gov/directory",
+                website_review_status="approved",
+            )
+        )
+        await session.commit()
+        hotspot_id = hotspot.id
+
+    async with SessionFactory() as session:
+        await seed_catalog(session, date(2026, 9, 2))
+        await session.commit()
+
+    async with SessionFactory() as session:
+        hotspot = await session.get(TravelHotspot, hotspot_id)
+        profile = await session.scalar(
+            select(HotspotPlaceProfile).where(HotspotPlaceProfile.hotspot_id == hotspot_id)
+        )
+        assert hotspot is not None
+        assert hotspot.google_place_id == "ChIJ-legacy-locked"
+        assert profile is not None
+        assert profile.place_id_source == "manual"
+        assert profile.manual_official_website_url == "https://example.gov/official"
         await _clear(session)

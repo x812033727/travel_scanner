@@ -2,6 +2,7 @@ from typing import Annotated, Any, Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query, Request
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
@@ -9,9 +10,11 @@ from app.config import get_settings
 from app.db import get_session
 from app.destinations.catalog import DESTINATIONS, destination_for_code, destination_for_id
 from app.hotspots.guides import list_guides, resolve_guide_open
+from app.hotspots.places import place_detail_payload
 from app.hotspots.service import hotspot_facets, list_rankings
 from app.i18n import Locale, current_locale
 from app.infra import client_ip, enforce_named_rate_limit, get_redis
+from app.models import HotspotPlaceProfile, TravelHotspot
 from app.problems import AppError
 
 router = APIRouter(prefix="/hotspots", tags=["hotspots"])
@@ -67,9 +70,13 @@ async def hotspot_sources(session: Session) -> dict[str, Any]:
             {
                 "id": "google_places",
                 "name": "Google Places",
-                "status": "on_demand" if runtime.google_maps_api_key else "not_configured",
-                "purpose": "使用者查詢時補地點識別與即時顯示，不作長期排行資料庫",
-                "persistence": "僅 Place ID 可長期保存",
+                "status": (
+                    "ready"
+                    if runtime.google_maps_api_key and runtime.hotspot_place_enrichment_enabled
+                    else "not_configured"
+                ),
+                "purpose": "補齊地圖、地址、營業時間、Plus Code 與官方網站",
+                "persistence": "Place ID 長期保存；地點內容最長快取 30 天並標示來源",
             },
             {
                 "id": "youtube_guides",
@@ -115,6 +122,7 @@ async def hotspot_rankings(
     style: Literal["all", "deep"] = "all",
 ) -> dict[str, Any]:
     resolved_city_code, resolved_destination_id = _resolve_destination(city_code, destination_id)
+    runtime = await load_runtime_settings(session)
     return await list_rankings(
         session,
         q=q,
@@ -127,6 +135,9 @@ async def hotspot_rankings(
         limit=limit,
         style=style,
         locale=locale,
+        places_configured=bool(
+            runtime.google_maps_api_key and runtime.hotspot_place_enrichment_enabled
+        ),
     )
 
 
@@ -151,6 +162,7 @@ async def hotspots_for_planner(
     if not city_code and not destination_id:
         raise AppError(422, "destination_required", "必須提供 city_code 或 destination_id")
     resolved_city_code, resolved_destination_id = _resolve_destination(city_code, destination_id)
+    runtime = await load_runtime_settings(session)
     requested = {item.strip().casefold() for item in (interests or "").split(",") if item.strip()}
     result = await list_rankings(
         session,
@@ -159,6 +171,9 @@ async def hotspots_for_planner(
         limit=50,
         style=style,
         locale=locale,
+        places_configured=bool(
+            runtime.google_maps_api_key and runtime.hotspot_place_enrichment_enabled
+        ),
     )
     items = result["items"]
     if style == "deep" and days == 1:
@@ -182,7 +197,14 @@ async def hotspots_for_planner(
         ][:allowed]
         for child in children:
             child_result = await list_rankings(
-                session, destination_id=child.id, limit=4, style=style, locale=locale
+                session,
+                destination_id=child.id,
+                limit=4,
+                style=style,
+                locale=locale,
+                places_configured=bool(
+                    runtime.google_maps_api_key and runtime.hotspot_place_enrichment_enabled
+                ),
             )
             if child_result["items"]:
                 extension_items.append(child_result["items"][0])
@@ -227,6 +249,28 @@ async def hotspots_for_planner(
         "recommendations": recommendations,
         "planner_note": "熱門度只作候選訊號，仍須配合營業時間、距離與旅客偏好排程",
     }
+
+
+@router.get("/{hotspot_id}/place")
+async def hotspot_place(hotspot_id: UUID, session: Session) -> dict[str, Any]:
+    hotspot = await session.get(TravelHotspot, hotspot_id)
+    if (
+        hotspot is None
+        or not hotspot.is_active
+        or hotspot.review_status not in {"approved", "auto_approved"}
+    ):
+        raise AppError(404, "hotspot_not_found", "找不到這個景點")
+    profile = await session.scalar(
+        select(HotspotPlaceProfile).where(HotspotPlaceProfile.hotspot_id == hotspot.id)
+    )
+    runtime = await load_runtime_settings(session)
+    return place_detail_payload(
+        hotspot,
+        profile,
+        configured=bool(
+            runtime.google_maps_api_key and runtime.hotspot_place_enrichment_enabled
+        ),
+    )
 
 
 @router.post("/guides/{guide_id}/open")

@@ -219,6 +219,10 @@ class Settings(BaseSettings):
     hotspot_discovery_candidate_limit: int = Field(default=100, ge=20, le=100)
     hotspot_discovery_pageview_limit: int = Field(default=30, ge=10, le=50)
     hotspot_discovery_concurrency: int = Field(default=3, ge=1, le=3)
+    hotspot_place_enrichment_enabled: bool = True
+    hotspot_place_refresh_after_days: int = Field(default=21, ge=1, le=29)
+    hotspot_place_cache_days: int = Field(default=30, ge=2, le=30)
+    hotspot_place_refresh_batch_size: int = Field(default=20, ge=1, le=100)
     hotspot_guides_enabled: bool = True
     hotspot_guide_youtube_enabled: bool = True
     hotspot_guide_brave_enabled: bool = True

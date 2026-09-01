@@ -18,6 +18,7 @@ from app.hotspots.cities import HOTSPOT_CITIES
 from app.hotspots.discovery import WikimediaDiscoveryClient
 from app.hotspots.guides import discover_guides
 from app.hotspots.maps import build_map_links
+from app.hotspots.places import place_summary_payload
 from app.hotspots.ranking import RankingInput, score_deep_hotspots, score_hotspots
 from app.hotspots.wikimedia import WikimediaPageviewClient
 from app.i18n import LOCALES
@@ -25,6 +26,7 @@ from app.infra import get_redis
 from app.models import (
     HotspotGuide,
     HotspotLocalization,
+    HotspotPlaceProfile,
     HotspotRanking,
     HotspotSignal,
     TravelHotspot,
@@ -573,6 +575,7 @@ async def list_rankings(
     limit: int = 20,
     style: str = "all",
     locale: str = "zh-TW",
+    places_configured: bool = False,
 ) -> dict[str, Any]:
     prefix = "deep_" if style == "deep" else ""
     if destination_id:
@@ -659,6 +662,16 @@ async def list_rankings(
             )
         ).all()
     }
+    place_profiles = {
+        profile.hotspot_id: profile
+        for profile in (
+            await session.scalars(
+                select(HotspotPlaceProfile).where(
+                    HotspotPlaceProfile.hotspot_id.in_(hotspot_ids)
+                )
+            )
+        ).all()
+    }
     items: list[dict[str, Any]] = []
     for ranking, hotspot in rows:
         growth_rate = ranking.explanation.get("growth_rate")
@@ -715,6 +728,11 @@ async def list_rankings(
                     latitude=hotspot.latitude,
                     longitude=hotspot.longitude,
                     google_place_id=hotspot.google_place_id,
+                ),
+                "place_summary": place_summary_payload(
+                    hotspot,
+                    place_profiles.get(hotspot.id),
+                    configured=places_configured,
                 ),
                 **_destination_fields(hotspot.destination_id),
             }

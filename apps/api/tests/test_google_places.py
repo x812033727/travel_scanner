@@ -76,9 +76,12 @@ async def test_autocomplete_biases_google_results_and_returns_distance() -> None
 
 @pytest.mark.asyncio
 async def test_place_details_finishes_the_google_autocomplete_session() -> None:
+    masks: list[str] = []
+
     async def handler(request: httpx.Request) -> httpx.Response:
         assert request.url.params["sessionToken"] == "session-token-123"
         assert request.url.params["languageCode"] == "ja"
+        masks.append(request.headers["X-Goog-FieldMask"])
         return httpx.Response(
             200,
             json={
@@ -87,6 +90,13 @@ async def test_place_details_finishes_the_google_autocomplete_session() -> None:
                 "formattedAddress": "日本東京都台東區",
                 "location": {"latitude": 35.7148, "longitude": 139.7967},
                 "googleMapsUri": "https://maps.google.com/example",
+                "plusCode": {"globalCode": "8Q7XMP7W+W2", "compoundCode": "MP7W+W2 東京"},
+                "websiteUri": "https://www.senso-ji.jp/",
+                "regularOpeningHours": {
+                    "weekdayDescriptions": ["月曜日: 6:00～17:00"],
+                    "periods": [{"open": {"day": 1, "hour": 6}}],
+                },
+                "attributions": [{"provider": "Google", "providerUri": "https://google.com"}],
             },
         )
 
@@ -101,6 +111,46 @@ async def test_place_details_finishes_the_google_autocomplete_session() -> None:
     await client.aclose()
     assert result["place_id"] == "ChIJ-test"
     assert result["attribution"] == "Google Maps"
+    assert result["plus_code"]["global_code"] == "8Q7XMP7W+W2"
+    assert result["website_url"] == "https://www.senso-ji.jp/"
+    assert result["opening_hours_structured"]["periods"]
+    assert "plusCode" in masks[0]
+    assert "websiteUri" in masks[0]
+
+
+@pytest.mark.asyncio
+async def test_place_candidate_search_returns_three_locate_only_matches() -> None:
+    captured: dict[str, object] = {}
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        captured.update(json.loads(request.content))
+        assert "places.regularOpeningHours" not in request.headers["X-Goog-FieldMask"]
+        return httpx.Response(
+            200,
+            json={
+                "places": [
+                    {
+                        "id": f"place-{index}",
+                        "displayName": {"text": f"景點 {index}"},
+                        "formattedAddress": "日本廣島縣廣島市",
+                        "location": {"latitude": 34.39 + index / 1000, "longitude": 132.45},
+                        "postalAddress": {"regionCode": "JP"},
+                    }
+                    for index in range(3)
+                ]
+            },
+        )
+
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        service = GoogleTravelService(redis, Settings(google_maps_api_key="key"), client)
+        candidates = await service.search_place_candidates(
+            "原爆ドーム 廣島", 34.395, 132.453, region_code="jp"
+        )
+    assert len(candidates) == 3
+    assert captured["pageSize"] == 3
+    assert captured["regionCode"] == "JP"
+    assert candidates[0]["country_code"] == "JP"
 
 
 def _billing_month() -> str:

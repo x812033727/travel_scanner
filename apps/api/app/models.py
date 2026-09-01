@@ -336,6 +336,104 @@ class TravelHotspot(Timestamped, Base):
     depth_score: Mapped[Decimal | None] = mapped_column(Numeric(5, 2), nullable=True)
 
 
+class HotspotPlaceProfile(Timestamped, Base):
+    __tablename__ = "hotspot_place_profiles"
+    __table_args__ = (
+        CheckConstraint(
+            "match_status IN ('unmatched', 'pending', 'auto_approved', 'approved', "
+            "'rejected', 'failed')",
+            name="ck_hotspot_place_profile_match_status",
+        ),
+        CheckConstraint(
+            "place_id_source IN ('none', 'legacy', 'automatic', 'manual')",
+            name="ck_hotspot_place_profile_place_id_source",
+        ),
+        CheckConstraint(
+            "website_review_status IN ('none', 'pending', 'auto_approved', 'approved', "
+            "'rejected')",
+            name="ck_hotspot_place_profile_website_review_status",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    hotspot_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="CASCADE"), unique=True, index=True
+    )
+    place_id_source: Mapped[str] = mapped_column(String(16), default="none")
+    match_status: Mapped[str] = mapped_column(String(24), default="unmatched", index=True)
+    match_confidence: Mapped[Decimal | None] = mapped_column(Numeric(5, 4), nullable=True)
+    match_evidence_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    candidate_place_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    candidate_name: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    candidate_address: Mapped[str | None] = mapped_column(Text, nullable=True)
+    candidate_latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    candidate_longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    manual_official_website_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+    manual_official_website_source_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+    website_review_status: Mapped[str] = mapped_column(String(24), default="none", index=True)
+    google_maps_uri: Mapped[str | None] = mapped_column(Text, nullable=True)
+    formatted_address: Mapped[str | None] = mapped_column(Text, nullable=True)
+    google_latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    google_longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    plus_code_global: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    plus_code_compound: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    opening_hours_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    provider_website_uri: Mapped[str | None] = mapped_column(Text, nullable=True)
+    provider_locale: Mapped[str | None] = mapped_column(String(16), nullable=True)
+    provider_attributions_json: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
+    provider_fetched_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    provider_refresh_after: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True, index=True
+    )
+    provider_expires_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True, index=True
+    )
+    reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    reviewed_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    review_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+
+class HotspotPlaceEnrichmentRun(Timestamped, Base):
+    __tablename__ = "hotspot_place_enrichment_runs"
+    __table_args__ = (
+        UniqueConstraint(
+            "actor_user_id", "idempotency_key", name="uq_hotspot_place_enrichment_idempotency"
+        ),
+        CheckConstraint(
+            "status IN ('queued', 'running', 'partial', 'completed', 'failed')",
+            name="ck_hotspot_place_enrichment_status",
+        ),
+        CheckConstraint(
+            "mode IN ('missing_or_expired', 'force')",
+            name="ck_hotspot_place_enrichment_mode",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    actor_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    idempotency_key: Mapped[str] = mapped_column(String(255))
+    mode: Mapped[str] = mapped_column(String(32), default="missing_or_expired")
+    scope_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    status: Mapped[str] = mapped_column(String(16), default="queued", index=True)
+    total_count: Mapped[int] = mapped_column(Integer, default=0)
+    processed_count: Mapped[int] = mapped_column(Integer, default=0)
+    published_count: Mapped[int] = mapped_column(Integer, default=0)
+    pending_count: Mapped[int] = mapped_column(Integer, default=0)
+    unmatched_count: Mapped[int] = mapped_column(Integer, default=0)
+    failed_count: Mapped[int] = mapped_column(Integer, default=0)
+    estimated_google_calls: Mapped[int] = mapped_column(Integer, default=0)
+    actual_google_calls: Mapped[int] = mapped_column(Integer, default=0)
+    progress_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    result_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    error_json: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
 class TravelFood(Timestamped, Base):
     __tablename__ = "travel_foods"
     __table_args__ = (
