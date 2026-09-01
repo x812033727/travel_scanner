@@ -218,7 +218,13 @@ class ItineraryUpdateRequest(BaseModel):
                 raise ValueError("positions must be unique within each day")
             positions.add(key)
             if item.start_time and item.end_time and item.end_time <= item.start_time:
-                raise ValueError("end_time must be after start_time")
+                zero_duration_hotel_anchor = (
+                    item.system_role in {"hotel_start", "hotel_end"}
+                    and item.duration_minutes == 0
+                    and item.end_time == item.start_time
+                )
+                if not zero_duration_hotel_anchor:
+                    raise ValueError("end_time must be after start_time")
         return self
 
 

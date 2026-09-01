@@ -4,6 +4,7 @@ from uuid import uuid4
 from zoneinfo import ZoneInfo
 
 from app.models import TripPlan, TripPlanItem
+from app.trips.router import ItineraryUpdateRequest
 from app.trips.schedule import (
     SYSTEM_ROLES,
     active_route_rows,
@@ -142,3 +143,29 @@ def test_lodging_and_meal_defaults_sync_across_every_day() -> None:
     assert all(row.duration_minutes == 45 for row in lunches)
     assert all(row.start_time and row.start_time.strftime("%H:%M") == "19:15" for row in dinners)
     assert all(row.duration_minutes == 120 for row in dinners)
+
+
+def test_itinerary_update_accepts_zero_duration_hotel_anchors() -> None:
+    starts = datetime(2026, 11, 10, 9, tzinfo=ZoneInfo("Asia/Tokyo"))
+
+    payload = ItineraryUpdateRequest.model_validate(
+        {
+            "version": 1,
+            "items": [
+                {
+                    "item_type": "hotel_anchor",
+                    "day_date": "2026-11-10",
+                    "position": 0,
+                    "title": "從飯店出發",
+                    "start_time": starts.isoformat(),
+                    "end_time": starts.isoformat(),
+                    "duration_minutes": 0,
+                    "locked": True,
+                    "fixed_time": True,
+                    "system_role": "hotel_start",
+                }
+            ],
+        }
+    )
+
+    assert payload.items[0].end_time == payload.items[0].start_time
