@@ -36,6 +36,11 @@ def _hotspot(*, latitude: Decimal | None = Decimal("34.395483")) -> TravelHotspo
         search_text="原子彈爆炸圓頂屋 原爆ドーム",
         latitude=latitude,
         longitude=Decimal("132.453592") if latitude is not None else None,
+        plus_code_global="8Q6J9FW3+5C" if latitude is not None else None,
+        coordinate_source_type="wikidata" if latitude is not None else None,
+        coordinate_source_url=(
+            "https://www.wikidata.org/wiki/Q346357" if latitude is not None else None
+        ),
         metadata_json={
             "local_name": "原爆ドーム",
             "aliases": ["Atomic Bomb Dome"],
@@ -208,6 +213,8 @@ async def test_enrichment_persists_normalized_cache_and_expiry(
     assert outcome == "published"
     assert calls == 2
     assert hotspot.google_place_id == "ChIJ-dome"
+    assert hotspot.map_match_status == "verified"
+    assert hotspot.map_verified_at == now
     assert profile.match_status == "auto_approved"
     assert profile.plus_code_compound == "9FW3+5C 廣島"
     assert profile.website_review_status == "auto_approved"
@@ -340,6 +347,7 @@ async def test_expired_provider_content_is_purged_but_manual_identity_survives()
 def test_public_payload_hides_expired_google_fields_but_keeps_curated_coordinates() -> None:
     hotspot = _hotspot()
     hotspot.google_place_id = "ChIJ-dome"
+    hotspot.map_match_status = "verified"
     now = datetime(2026, 9, 1, tzinfo=UTC)
     profile = HotspotPlaceProfile(
         hotspot_id=hotspot.id,
@@ -362,6 +370,10 @@ def test_public_payload_hides_expired_google_fields_but_keeps_curated_coordinate
     }
     assert payload["field_sources"]["address"] is None
     assert payload["field_sources"]["coordinates"] == "wikidata"
+    assert payload["plus_code"] == {
+        "global_code": "8Q6J9FW3+5C",
+        "compound_code": None,
+    }
     assert "query_place_id=ChIJ-dome" in payload["google_maps_url"]
 
 
@@ -370,4 +382,19 @@ def test_public_payload_is_explicitly_unavailable_without_a_provider_key() -> No
     assert payload["status"] == "unavailable"
     assert payload["has_details"] is False
     assert payload["address"] is None
-    assert payload["google_maps_url"].startswith("https://www.google.com/maps/search/")
+    assert payload["google_maps_url"] is None
+    assert payload["map_links"] == []
+
+
+def test_public_korean_place_payload_exposes_only_exact_naver_link() -> None:
+    hotspot = _hotspot()
+    hotspot.country_code = "KR"
+    hotspot.google_place_id = "ChIJ-google-is-not-public"
+    hotspot.naver_map_url = "https://map.naver.com/p/entry/place/13543735"
+    hotspot.map_match_status = "verified"
+
+    payload = place_detail_payload(hotspot, None, configured=False)
+
+    assert payload["google_maps_url"] is None
+    assert [link["provider"] for link in payload["map_links"]] == ["naver"]
+    assert payload["map_links"][0]["url"] == hotspot.naver_map_url

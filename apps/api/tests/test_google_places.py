@@ -89,7 +89,6 @@ async def test_place_details_finishes_the_google_autocomplete_session() -> None:
                 "displayName": {"text": "淺草寺"},
                 "formattedAddress": "日本東京都台東區",
                 "location": {"latitude": 35.7148, "longitude": 139.7967},
-                "plusCode": {"globalCode": "8Q7XMQ7W+WP"},
                 "googleMapsUri": "https://maps.google.com/example",
                 "plusCode": {"globalCode": "8Q7XMP7W+W2", "compoundCode": "MP7W+W2 東京"},
                 "websiteUri": "https://www.senso-ji.jp/",

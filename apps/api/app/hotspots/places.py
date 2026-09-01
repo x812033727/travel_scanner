@@ -18,6 +18,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config import Settings
 from app.hotspots.guides import canonical_external_url
 from app.hotspots.maps import build_map_links
+from app.locations.plus_codes import has_durable_coordinates
 from app.models import HotspotPlaceEnrichmentRun, HotspotPlaceProfile, TravelHotspot
 from app.places.google import GoogleTravelService
 from app.problems import AppError
@@ -296,6 +297,9 @@ async def enrich_hotspot_place(
             return "pending", calls
         place_id = str(match.candidate["place_id"])
         hotspot.google_place_id = place_id
+        if hotspot.country_code.upper() != "KR":
+            hotspot.map_match_status = "verified"
+            hotspot.map_verified_at = observed_at
         profile.place_id_source = "automatic"
         profile.match_status = "auto_approved"
 
@@ -368,10 +372,8 @@ def _current(profile: HotspotPlaceProfile | None, now: datetime) -> bool:
     return bool(profile and profile.provider_expires_at and profile.provider_expires_at > now)
 
 
-def _map_url(hotspot: TravelHotspot, profile: HotspotPlaceProfile | None, current: bool) -> str:
-    if current and profile and profile.google_maps_uri:
-        return profile.google_maps_uri
-    links = build_map_links(
+def _exact_map_links(hotspot: TravelHotspot) -> list[dict[str, str | bool]]:
+    return build_map_links(
         name=hotspot.name,
         local_name=cast(str | None, hotspot.metadata_json.get("local_name")),
         city_name=hotspot.city_name,
@@ -379,8 +381,20 @@ def _map_url(hotspot: TravelHotspot, profile: HotspotPlaceProfile | None, curren
         latitude=hotspot.latitude,
         longitude=hotspot.longitude,
         google_place_id=hotspot.google_place_id,
+        naver_map_url=hotspot.naver_map_url,
+        map_match_status=hotspot.map_match_status,
     )
-    return str(next(item["url"] for item in links if item["provider"] == "google"))
+
+
+def _map_url(hotspot: TravelHotspot) -> str | None:
+    return next(
+        (
+            str(item["url"])
+            for item in _exact_map_links(hotspot)
+            if item["provider"] == "google"
+        ),
+        None,
+    )
 
 
 def place_status(
@@ -423,7 +437,8 @@ def place_summary_payload(
     ) or provider_website
     return {
         "status": place_status(profile, configured=configured, now=observed_at),
-        "google_maps_url": _map_url(hotspot, profile, current),
+        "google_maps_url": _map_url(hotspot),
+        "map_links": _exact_map_links(hotspot),
         "official_website_url": official_website,
         "official_website_verified": bool(profile and profile.manual_official_website_url),
         "has_details": bool(
@@ -449,17 +464,19 @@ def place_detail_payload(
     summary = place_summary_payload(
         hotspot, profile, configured=configured, now=observed_at
     )
-    canonical_coordinates = hotspot.latitude is not None and hotspot.longitude is not None
+    durable_coordinates = has_durable_coordinates(
+        hotspot.latitude,
+        hotspot.longitude,
+        hotspot.plus_code_global,
+        hotspot.coordinate_source_type,
+        hotspot.coordinate_source_url,
+    )
     latitude: float | None = None
     longitude: float | None = None
-    if hotspot.latitude is not None and hotspot.longitude is not None:
+    if durable_coordinates and hotspot.latitude is not None and hotspot.longitude is not None:
         latitude = float(hotspot.latitude)
         longitude = float(hotspot.longitude)
-    coordinate_source = cast(str | None, hotspot.metadata_json.get("coordinate_source"))
-    if not canonical_coordinates and current and profile:
-        latitude = _optional_float(profile.google_latitude)
-        longitude = _optional_float(profile.google_longitude)
-        coordinate_source = "google_places_cache"
+    coordinate_source = hotspot.coordinate_source_type if durable_coordinates else None
     website_source = None
     if profile and profile.manual_official_website_url:
         website_source = "manual_review"
@@ -471,13 +488,13 @@ def place_detail_payload(
         **summary,
         "address": profile.formatted_address if current and profile else None,
         "plus_code": {
-            "global_code": profile.plus_code_global if current and profile else None,
-            "compound_code": profile.plus_code_compound if current and profile else None,
+            "global_code": hotspot.plus_code_global if durable_coordinates else None,
+            "compound_code": None,
         },
         "coordinates": {
             "latitude": latitude,
             "longitude": longitude,
-            "source": coordinate_source or ("curated_catalog" if canonical_coordinates else None),
+            "source": coordinate_source,
         },
         "opening_hours": profile.opening_hours_json if current and profile else {},
         "data_locale": profile.provider_locale if current and profile else None,
@@ -490,11 +507,7 @@ def place_detail_payload(
         },
         "field_sources": {
             "google_maps_url": (
-                "google_places_cache"
-                if current and profile and profile.google_maps_uri
-                else "google_place_id"
-                if hotspot.google_place_id
-                else "curated_catalog"
+                "google_place_id" if summary["google_maps_url"] else None
             ),
             "official_website_url": website_source,
             "address": (
@@ -503,14 +516,9 @@ def place_detail_payload(
                 else None
             ),
             "plus_code": (
-                "google_places_cache"
-                if current
-                and profile
-                and (profile.plus_code_global or profile.plus_code_compound)
-                else None
+                coordinate_source if durable_coordinates else None
             ),
-            "coordinates": coordinate_source
-            or ("curated_catalog" if canonical_coordinates else None),
+            "coordinates": coordinate_source,
             "opening_hours": (
                 "google_places_cache"
                 if current and profile and profile.opening_hours_json
