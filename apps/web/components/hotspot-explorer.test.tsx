@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { HotspotExplorer } from "./hotspot-explorer";
 
@@ -25,6 +25,31 @@ describe("HotspotExplorer", () => {
           cities: [{ code: "NRT", name: "東京", country_code: "JP", count: 12 }],
           categories: [{ code: "culture", count: 80 }],
           styles: [{ code: "all", name: "全部旅遊", count: 170 }, { code: "deep", name: "深度旅遊", count: 95 }],
+        }));
+      }
+      if (url.includes("/hotspots/hotspot-1/guides")) {
+        return new Response(JSON.stringify({
+          hotspot_id: "hotspot-1",
+          hotspot_name: "淺草寺",
+          locale: "zh-TW",
+          other_languages_available: true,
+          updated_at: "2026-08-31T00:00:00Z",
+          videos: [{
+            id: "11111111-1111-1111-1111-111111111111",
+            type: "video",
+            provider: "youtube",
+            locale: "zh-TW",
+            title: "第一次去淺草寺",
+            creator_name: "旅行頻道",
+            thumbnail_url: null,
+            summary: null,
+            published_at: "2026-08-01T00:00:00Z",
+            duration_seconds: null,
+            view_count: 45678,
+            opens_30d: 0,
+            updated_at: "2026-08-31T00:00:00Z",
+          }],
+          articles: [],
         }));
       }
       return new Response(JSON.stringify({
@@ -61,6 +86,7 @@ describe("HotspotExplorer", () => {
           local_name: "浅草寺",
           access_minutes: 20,
           recommended_duration_minutes: 90,
+          guide_counts: { article: 0, video: 1 },
         }],
       }));
     }));
@@ -69,12 +95,17 @@ describe("HotspotExplorer", () => {
 
     expect(await screen.findByRole("heading", { name: "淺草寺" })).toBeTruthy();
     expect(screen.getByText("12,345")).toBeTruthy();
-    expect(screen.getByText("Wikimedia 趨勢")).toBeTruthy();
-    expect(await screen.findByText("Wikimedia Analytics")).toBeTruthy();
+    expect(await screen.findByText("Wikimedia 趨勢")).toBeTruthy();
     expect(screen.getByText("已載入 1／170 個結果")).toBeTruthy();
     expect(screen.getByRole("button", { name: "載入更多" })).toBeTruthy();
     expect(screen.getAllByText(/深度旅遊/).length).toBeGreaterThan(0);
     expect(screen.getByText("市區巷弄")).toBeTruthy();
     expect(screen.getByText(/交通約 20 分鐘/)).toBeTruthy();
+    expect(screen.getByRole("button", { name: /文章與影片介紹/ })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: /文章與影片介紹/ }));
+    expect(await screen.findByRole("heading", { name: "認識 淺草寺" })).toBeTruthy();
+    const guide = await screen.findByRole("link", { name: /第一次去淺草寺/ });
+    expect(guide.getAttribute("target")).toBe("_blank");
+    expect(guide.getAttribute("href")).toContain("/zh-TW/out/guides/");
   });
 });

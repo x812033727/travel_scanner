@@ -14,9 +14,18 @@ from app.config import Settings
 from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.cities import HOTSPOT_CITIES
 from app.hotspots.discovery import WikimediaDiscoveryClient
+from app.hotspots.guides import discover_guides
 from app.hotspots.ranking import RankingInput, score_deep_hotspots, score_hotspots
 from app.hotspots.wikimedia import WikimediaPageviewClient
-from app.models import HotspotRanking, HotspotSignal, TravelHotspot
+from app.i18n import LOCALES
+from app.infra import get_redis
+from app.models import (
+    HotspotGuide,
+    HotspotLocalization,
+    HotspotRanking,
+    HotspotSignal,
+    TravelHotspot,
+)
 from app.trips.itinerary import ItineraryHotspot
 
 PUBLIC_REVIEW_STATUSES = ("approved", "auto_approved")
@@ -59,6 +68,8 @@ async def _upsert_signal(
 
 async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelHotspot]:
     rows = list((await session.scalars(select(TravelHotspot))).all())
+    localization_rows = list((await session.scalars(select(HotspotLocalization))).all())
+    localizations = {(item.hotspot_id, item.locale): item for item in localization_rows}
     existing = {item.slug: item for item in rows}
     by_wikidata = {item.wikidata_item_id: item for item in rows if item.wikidata_item_id}
     hotspots: list[TravelHotspot] = []
@@ -120,6 +131,18 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
         hotspot.reviewed_at = hotspot.reviewed_at or datetime.now(UTC)
         session.add(hotspot)
         await session.flush()
+        for locale in LOCALES:
+            localization = localizations.get((hotspot.id, locale))
+            if localization is None:
+                localization = HotspotLocalization(
+                    hotspot_id=hotspot.id,
+                    locale=locale,
+                    name=seed.name,
+                    aliases=list(seed.aliases),
+                    search_terms=[],
+                )
+                localizations[(hotspot.id, locale)] = localization
+                session.add(localization)
         await _upsert_signal(
             session,
             hotspot.id,
@@ -433,12 +456,55 @@ async def collect_hotspots(
         await session.commit()
     rankings = await refresh_rankings(session, target_date)
     await session.commit()
+    guide_report: dict[str, Any] = {"skipped": True, "reason": "disabled_or_unconfigured"}
+    if settings.hotspot_guides_enabled and (
+        (settings.hotspot_guide_youtube_enabled and settings.hotspot_guide_youtube_api_key)
+        or (settings.hotspot_guide_brave_enabled and settings.hotspot_guide_brave_api_key)
+    ):
+        stale_cutoff = datetime.now(UTC) - timedelta(days=settings.hotspot_guide_refresh_days)
+        last_verified = (
+            select(func.max(HotspotGuide.last_verified_at))
+            .where(HotspotGuide.hotspot_id == TravelHotspot.id)
+            .correlate(TravelHotspot)
+            .scalar_subquery()
+        )
+        target = await session.scalar(
+            select(TravelHotspot)
+            .where(
+                TravelHotspot.is_active.is_(True),
+                TravelHotspot.review_status.in_(PUBLIC_REVIEW_STATUSES),
+                or_(last_verified.is_(None), last_verified < stale_cutoff),
+            )
+            .order_by(last_verified.asc().nullsfirst(), TravelHotspot.updated_at.desc())
+            .limit(1)
+        )
+        if target:
+            guide_report = {
+                "hotspot_id": str(target.id),
+                **await discover_guides(
+                    session,
+                    settings,
+                    target,
+                    list(LOCALES),
+                    client=client,
+                    redis=get_redis(),
+                    automatic=True,
+                ),
+            }
+        await session.execute(
+            delete(HotspotGuide).where(
+                HotspotGuide.provider == "youtube",
+                HotspotGuide.last_verified_at < datetime.now(UTC) - timedelta(days=30),
+            )
+        )
+        await session.commit()
     return {
         "observed_on": target_date.isoformat(),
         "catalog_count": len(hotspots),
         "discovery": discovery_report,
         "wikimedia_collected": collected,
         "ranking_count": rankings,
+        "guides": guide_report,
         "errors": errors,
     }
 
@@ -463,6 +529,7 @@ async def list_rankings(
     after_rank: int | None = None,
     limit: int = 20,
     style: str = "all",
+    locale: str = "zh-TW",
 ) -> dict[str, Any]:
     prefix = "deep_" if style == "deep" else ""
     scope, scope_key = (
@@ -513,6 +580,36 @@ async def list_rankings(
     rows = (await session.execute(query.limit(limit + 1))).all()
     has_more = len(rows) > limit
     rows = rows[:limit]
+    hotspot_ids = [hotspot.id for _, hotspot in rows]
+    localized_names = {
+        row.hotspot_id: row.name
+        for row in (
+            await session.scalars(
+                select(HotspotLocalization).where(
+                    HotspotLocalization.hotspot_id.in_(hotspot_ids),
+                    HotspotLocalization.locale == locale,
+                )
+            )
+        ).all()
+    }
+    guide_counts = {
+        (hotspot_id, kind): int(count)
+        for hotspot_id, kind, count in (
+            await session.execute(
+                select(
+                    HotspotGuide.hotspot_id,
+                    HotspotGuide.content_type,
+                    func.count(HotspotGuide.id),
+                )
+                .where(
+                    HotspotGuide.hotspot_id.in_(hotspot_ids),
+                    HotspotGuide.locale == locale,
+                    HotspotGuide.review_status == "approved",
+                )
+                .group_by(HotspotGuide.hotspot_id, HotspotGuide.content_type)
+            )
+        ).all()
+    }
     items: list[dict[str, Any]] = []
     for ranking, hotspot in rows:
         growth_rate = ranking.explanation.get("growth_rate")
@@ -521,7 +618,7 @@ async def list_rankings(
                 "id": str(hotspot.id),
                 "slug": hotspot.slug,
                 "rank": ranking.rank,
-                "name": hotspot.name,
+                "name": localized_names.get(hotspot.id, hotspot.name),
                 "city_code": hotspot.city_code,
                 "city_name": hotspot.city_name,
                 "country_code": hotspot.country_code,
@@ -554,6 +651,10 @@ async def list_rankings(
                 "recommended_duration_minutes": hotspot.metadata_json.get(
                     "recommended_duration_minutes"
                 ),
+                "guide_counts": {
+                    "article": guide_counts.get((hotspot.id, "article"), 0),
+                    "video": guide_counts.get((hotspot.id, "video"), 0),
+                },
             }
         )
     return {

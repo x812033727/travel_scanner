@@ -10,8 +10,10 @@ import pricing from "./messages/zh-TW/pricing.json";
 import search from "./messages/zh-TW/search.json";
 import trips from "./messages/zh-TW/trips.json";
 import usage from "./messages/zh-TW/usage.json";
+import hotspots from "./messages/zh-TW/hotspots.json";
+import hotspotAdmin from "./messages/zh-TW/hotspotAdmin.json";
 
-const catalogs: Record<string, unknown> = { account, admin, auth, availability, common, navigation, pricing, search, trips, usage };
+const catalogs: Record<string, unknown> = { account, admin, auth, availability, common, navigation, pricing, search, trips, usage, hotspots, hotspotAdmin };
 
 function message(namespace: string, key: string): string | undefined {
   let current: unknown = catalogs;

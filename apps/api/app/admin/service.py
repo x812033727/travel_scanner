@@ -122,6 +122,20 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         ),
         ("google_maps_api_key", "next_public_google_maps_browser_key"),
     ),
+    "youtube_guides": ProviderDefinition(
+        "YouTube 景點介紹",
+        "依景點與目前語系探索 YouTube 影片；候選必須經管理員核准才公開。",
+        ("hotspot_guide_youtube_daily_search_budget", "hotspot_guide_refresh_days"),
+        ("hotspot_guide_youtube_api_key",),
+        "hotspot_guide_youtube_enabled",
+    ),
+    "brave_guides": ProviderDefinition(
+        "Brave 多語文章搜尋",
+        "依景點與目前語系探索公開旅遊文章；只保存搜尋結果允許的摘要資料。",
+        ("hotspot_guide_brave_daily_search_budget", "hotspot_guide_refresh_days"),
+        ("hotspot_guide_brave_api_key",),
+        "hotspot_guide_brave_enabled",
+    ),
     "amadeus": ProviderDefinition(
         "Amadeus",
         "航班、飯店、活動與機場接送；可切換 Self-Service test 或 production。",
@@ -335,9 +349,7 @@ async def load_runtime_settings(session: AsyncSession) -> Settings:
 
 
 async def effective_registration_enabled(session: AsyncSession) -> bool:
-    row = await session.scalar(
-        select(ProviderConfig).where(ProviderConfig.provider == "runtime")
-    )
+    row = await session.scalar(select(ProviderConfig).where(ProviderConfig.provider == "runtime"))
     if row is None:
         return get_settings().registration_enabled
     return apply_runtime_overrides(get_settings(), [row]).registration_enabled
@@ -350,13 +362,9 @@ def _site_visibility(settings: Settings) -> SiteVisibility:
 
 
 async def effective_site_visibility(session: AsyncSession) -> SiteVisibility:
-    row = await session.scalar(
-        select(ProviderConfig).where(ProviderConfig.provider == "layout")
-    )
+    row = await session.scalar(select(ProviderConfig).where(ProviderConfig.provider == "layout"))
     base = get_settings()
-    return _site_visibility(
-        base if row is None else apply_runtime_overrides(base, [row])
-    )
+    return _site_visibility(base if row is None else apply_runtime_overrides(base, [row]))
 
 
 def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
@@ -408,6 +416,20 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             else "缺少伺服器 Google Maps API key"
         )
         return configured, "ready" if configured else "not_configured", message
+    if provider == "youtube_guides":
+        configured = bool(settings.hotspot_guide_youtube_api_key)
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            "YouTube Data API 已設定" if configured else "缺少 YouTube Data API key",
+        )
+    if provider == "brave_guides":
+        configured = bool(settings.hotspot_guide_brave_api_key)
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            "Brave Search API 已設定" if configured else "缺少 Brave Search API key",
+        )
     if provider == "amadeus":
         return (
             settings.amadeus_configured,
@@ -601,9 +623,7 @@ async def settings_snapshot(
                     else None
                 ),
                 requests_24h=sum(
-                    1
-                    for request in recent_requests
-                    if provider in request.provider.split(",")
+                    1 for request in recent_requests if provider in request.provider.split(",")
                 ),
                 errors_24h=sum(
                     1
@@ -614,8 +634,7 @@ async def settings_snapshot(
                     (
                         request.created_at
                         for request in recent_requests
-                        if provider in request.provider.split(",")
-                        and request.status == "failed"
+                        if provider in request.provider.split(",") and request.status == "failed"
                     ),
                     default=None,
                 ),
@@ -954,6 +973,28 @@ async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str
         return f"{result.planning.provider} / {result.planning.model} 結構化行程驗證成功"
     if provider == "google_maps":
         return await _test_google(settings, redis)
+    if provider == "youtube_guides":
+        from app.hotspots.guides import YouTubeGuideProvider
+
+        if not settings.hotspot_guide_youtube_api_key:
+            raise ConnectionError("缺少 YouTube Data API key")
+        youtube_client = YouTubeGuideProvider(settings.hotspot_guide_youtube_api_key)
+        try:
+            await youtube_client.search("Tokyo travel guide", "en", 1)
+        finally:
+            await youtube_client.close()
+        return "YouTube 景點影片搜尋成功"
+    if provider == "brave_guides":
+        from app.hotspots.guides import BraveGuideProvider
+
+        if not settings.hotspot_guide_brave_api_key:
+            raise ConnectionError("缺少 Brave Search API key")
+        brave_client = BraveGuideProvider(settings.hotspot_guide_brave_api_key)
+        try:
+            await brave_client.search("Tokyo travel guide", "en", 1)
+        finally:
+            await brave_client.close()
+        return "Brave 多語文章搜尋成功"
     if provider == "amadeus":
         await AmadeusProvider(redis, settings)._token()
         return f"Amadeus {settings.amadeus_env} OAuth 驗證成功"

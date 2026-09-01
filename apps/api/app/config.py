@@ -208,6 +208,14 @@ class Settings(BaseSettings):
     hotspot_discovery_candidate_limit: int = Field(default=100, ge=20, le=100)
     hotspot_discovery_pageview_limit: int = Field(default=30, ge=10, le=50)
     hotspot_discovery_concurrency: int = Field(default=3, ge=1, le=3)
+    hotspot_guides_enabled: bool = True
+    hotspot_guide_youtube_enabled: bool = True
+    hotspot_guide_brave_enabled: bool = True
+    hotspot_guide_youtube_api_key: str | None = None
+    hotspot_guide_brave_api_key: str | None = None
+    hotspot_guide_youtube_daily_search_budget: int = Field(default=80, ge=1, le=80)
+    hotspot_guide_brave_daily_search_budget: int = Field(default=30, ge=1, le=1000)
+    hotspot_guide_refresh_days: int = Field(default=7, ge=1, le=30)
     line_messaging_enabled: bool = False
     line_channel_secret: str | None = None
     line_channel_access_token: str | None = None
