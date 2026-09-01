@@ -101,3 +101,111 @@ async def test_place_details_finishes_the_google_autocomplete_session() -> None:
     await client.aclose()
     assert result["place_id"] == "ChIJ-test"
     assert result["attribution"] == "Google Maps"
+
+
+def _billing_month() -> str:
+    from datetime import datetime
+
+    from app.providers.usage_meter import GOOGLE_BILLING_TIMEZONE
+
+    return datetime.now(tz=GOOGLE_BILLING_TIMEZONE).strftime("%Y-%m")
+
+def _place_payload() -> dict[str, object]:
+    return {
+        "places": [
+            {
+                "id": "ChIJ-test",
+                "displayName": {"text": "淺草寺"},
+                "formattedAddress": "日本東京都台東區",
+                "location": {"latitude": 35.7148, "longitude": 139.7967},
+                "googleMapsUri": "https://maps.google.com/?cid=1",
+                "rating": 4.5,
+                "userRatingCount": 1200,
+            }
+        ]
+    }
+
+
+@pytest.mark.asyncio
+async def test_locate_search_stays_on_the_pro_field_mask() -> None:
+    masks: list[str] = []
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        masks.append(request.headers["X-Goog-FieldMask"])
+        return httpx.Response(200, json=_place_payload())
+
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    service = GoogleTravelService(redis, Settings(google_maps_api_key="key"), client)
+    place = await service.search_place("淺草寺", None, None, detailed=False)
+    await client.aclose()
+
+    assert place["id"] == "ChIJ-test"
+    assert len(masks) == 1
+    # Enterprise-tier fields would bill this request at 1,000 free calls/month.
+    enterprise_fields = (
+        "places.rating",
+        "places.userRatingCount",
+        "places.regularOpeningHours",
+    )
+    for enterprise_field in enterprise_fields:
+        assert enterprise_field not in masks[0]
+    assert "places.location" in masks[0]
+    assert "places.displayName" in masks[0]
+
+    usage = await redis.hgetall("provider-usage:google_maps:" + _billing_month())
+    assert usage["operation:places_text_search_locate"] == "1"
+    assert "operation:places_text_search" not in usage
+
+
+@pytest.mark.asyncio
+async def test_detailed_search_keeps_the_enterprise_field_mask() -> None:
+    masks: list[str] = []
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        masks.append(request.headers["X-Goog-FieldMask"])
+        return httpx.Response(200, json=_place_payload())
+
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    service = GoogleTravelService(redis, Settings(google_maps_api_key="key"), client)
+    place = await service.search_place("淺草寺", None, None)
+    await client.aclose()
+
+    assert place["rating"] == 4.5
+    assert "places.rating" in masks[0]
+    assert "places.regularOpeningHours" in masks[0]
+
+    usage = await redis.hgetall("provider-usage:google_maps:" + _billing_month())
+    assert usage["operation:places_text_search"] == "1"
+
+
+@pytest.mark.asyncio
+async def test_locate_cache_does_not_starve_a_later_detailed_lookup() -> None:
+    """The two variants must not share a cache entry.
+
+    A locate response has no rating or photos, so serving it to enrich_hotel would
+    silently drop the review score the caller asked for.
+    """
+    requests = 0
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal requests
+        requests += 1
+        return httpx.Response(200, json=_place_payload())
+
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    service = GoogleTravelService(redis, Settings(google_maps_api_key="key"), client)
+
+    await service.search_place("淺草寺", None, None, detailed=False)
+    assert requests == 1
+    # Same name and coordinates, but the detailed variant must go back to Google.
+    detailed = await service.search_place("淺草寺", None, None)
+    assert requests == 2
+    assert detailed["rating"] == 4.5
+    # Each variant still caches on its own key.
+    await service.search_place("淺草寺", None, None, detailed=False)
+    await service.search_place("淺草寺", None, None)
+    await client.aclose()
+    assert requests == 2
