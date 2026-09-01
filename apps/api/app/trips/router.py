@@ -18,6 +18,7 @@ from app.ai.itinerary import AIItineraryPlanner, AIItineraryRequest, AIPlanningR
 from app.auth.service import CurrentUser
 from app.config import Settings, get_settings
 from app.db import get_session
+from app.hotspots.service import load_planner_hotspots
 from app.infra import enforce_named_rate_limit, get_redis
 from app.models import (
     SearchRequest,
@@ -577,12 +578,23 @@ async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPla
             place_service.enrich_hotels(hotels),
             place_service.enrich_activities(activities),
         )
+    hotspots = (
+        await load_planner_hotspots(
+            session,
+            city_code=query.destination,
+            interests=query.preferences.interests,
+            limit=12,
+        )
+        if "deep_travel" in query.preferences.interests and query.destination
+        else []
+    )
     plans = TripOptimizer().optimize(
         query,
         [item for item in offers.get("flight", []) if isinstance(item, FlightOffer)],
         hotels,
         activities,
         [item for item in offers.get("transport", []) if isinstance(item, TransportOffer)],
+        hotspots,
     )
     if not plans:
         detail = "；".join(warnings) or "供應商目前沒有可用組合"

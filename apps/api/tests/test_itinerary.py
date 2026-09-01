@@ -1,3 +1,6 @@
+from datetime import timedelta
+from uuid import uuid4
+
 import fakeredis.aioredis
 import pytest
 
@@ -5,7 +8,7 @@ from app.config import Settings
 from app.places.google import GoogleTravelService
 from app.providers.mock import MockProvider
 from app.search.schemas import TripPace
-from app.trips.itinerary import build_itinerary
+from app.trips.itinerary import ItineraryHotspot, build_itinerary
 from tests.test_mock_providers import sample_query
 
 
@@ -106,3 +109,59 @@ async def test_google_places_and_routes_resolve_suggestions_and_travel_buffers(
     assert suggestion.data["opening_hours"]
     assert travel.data["provider"] == "google_routes"
     assert travel.data["minutes"] == 18
+
+
+@pytest.mark.asyncio
+async def test_deep_itinerary_uses_approved_hotspot_ids_coordinates_and_duration() -> None:
+    query = sample_query()
+    query = query.model_copy(
+        update={"preferences": query.preferences.model_copy(update={"interests": ["deep_travel"]})}
+    )
+    hotspots = [
+        ItineraryHotspot(
+            hotspot_id=uuid4(),
+            name=f"深度景點 {index}",
+            category="culture",
+            latitude=35.60 + index * 0.01,
+            longitude=139.60 + index * 0.01,
+            depth_kind="day_trip" if index >= 3 else "urban_local",
+            depth_score=85,
+            depth_reason="在地生活脈絡",
+            access_minutes=70 if index >= 3 else 25,
+            recommended_duration_minutes=180 if index >= 3 else 90,
+        )
+        for index in range(5)
+    ]
+    itinerary = build_itinerary(query, None, None, None, None, hotspots)
+    placed = [item for day in itinerary for item in day.items if item.item_type == "hotspot"]
+    assert placed
+    assert all(item.location_source == "hotspot_catalog" for item in placed)
+    assert all(item.data["hotspot_id"] for item in placed)
+    assert all(item.latitude is not None and item.longitude is not None for item in placed)
+    assert all(item.duration_minutes in {90, 180} for item in placed)
+    assert sum(item.data["depth_kind"] == "day_trip" for item in placed) <= 1
+
+
+@pytest.mark.asyncio
+async def test_one_full_day_never_schedules_a_deep_day_trip() -> None:
+    _provider, query = MockProvider(), sample_query()
+    query = query.model_copy(
+        update={
+            "return_date": query.departure_date + timedelta(days=2),
+            "preferences": query.preferences.model_copy(update={"interests": ["deep_travel"]}),
+        }
+    )
+    candidate = ItineraryHotspot(
+        hotspot_id=uuid4(),
+        name="近郊景點",
+        category="nature",
+        latitude=35.1,
+        longitude=139.1,
+        depth_kind="day_trip",
+        depth_score=88,
+        depth_reason="地方自然",
+        access_minutes=75,
+        recommended_duration_minutes=240,
+    )
+    itinerary = build_itinerary(query, None, None, None, None, [candidate])
+    assert not any(item.item_type == "hotspot" for day in itinerary for item in day.items)

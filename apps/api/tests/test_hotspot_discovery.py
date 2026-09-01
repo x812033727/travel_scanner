@@ -5,8 +5,8 @@ from app.hotspots.cities import TARGET_PUBLIC_HOTSPOTS, DiscoveryCenter, Hotspot
 from app.hotspots.discovery import WikimediaDiscoveryClient, classify_types, haversine_km
 
 
-def test_hotspot_city_targets_total_218() -> None:
-    assert TARGET_PUBLIC_HOTSPOTS == 218
+def test_hotspot_city_targets_total_313() -> None:
+    assert TARGET_PUBLIC_HOTSPOTS == 313
 
 
 def test_haversine_distance_and_radius_boundary() -> None:
@@ -35,9 +35,7 @@ async def test_geosearch_deduplicates_qids_and_uses_chinese_label() -> None:
                         "Q1": {
                             "labels": {"zh-hant": {"value": "測試博物館"}},
                             "claims": {
-                                "P31": [
-                                    {"mainsnak": {"datavalue": {"value": {"id": "Q33506"}}}}
-                                ]
+                                "P31": [{"mainsnak": {"datavalue": {"value": {"id": "Q33506"}}}}]
                             },
                             "sitelinks": {"enwiki": {"title": "Test Museum"}},
                         }

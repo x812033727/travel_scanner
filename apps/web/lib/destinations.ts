@@ -47,6 +47,7 @@ export const destinations: DestinationCity[] = [
 ];
 
 export const interests = [
+  { code: "deep_travel", label: "深度旅遊" },
   { code: "food", label: "美食" },
   { code: "shopping", label: "購物" },
   { code: "culture", label: "文化" },

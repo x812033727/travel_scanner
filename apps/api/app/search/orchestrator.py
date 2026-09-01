@@ -7,6 +7,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.hotspots.service import load_planner_hotspots
 from app.infra import get_redis
 from app.models import (
     ActivityOfferRecord,
@@ -582,7 +583,19 @@ async def orchestrate_search(session: AsyncSession, search_id: UUID) -> None:
         hotels = [HotelOffer.model_validate(item) for item in results.get("hotel", [])]
         activities = [ActivityOffer.model_validate(item) for item in results.get("activities", [])]
         transports = [TransportOffer.model_validate(item) for item in results.get("transport", [])]
-        optimized = TripOptimizer().optimize(query, flights, hotels, activities, transports)
+        hotspots = (
+            await load_planner_hotspots(
+                session,
+                city_code=query.destination,
+                interests=query.preferences.interests,
+                limit=12,
+            )
+            if "deep_travel" in query.preferences.interests and query.destination
+            else []
+        )
+        optimized = TripOptimizer().optimize(
+            query, flights, hotels, activities, transports, hotspots
+        )
         if place_service.configured:
             await asyncio.gather(
                 *(place_service.enrich_itinerary(plan.itinerary) for plan in optimized)

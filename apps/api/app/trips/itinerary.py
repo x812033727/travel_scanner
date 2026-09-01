@@ -38,6 +38,19 @@ class ItineraryDay(BaseModel):
     items: list[ItineraryItem]
 
 
+class ItineraryHotspot(BaseModel):
+    hotspot_id: UUID
+    name: str
+    category: str
+    latitude: float
+    longitude: float
+    depth_kind: str
+    depth_score: float
+    depth_reason: str
+    access_minutes: int
+    recommended_duration_minutes: int
+
+
 def _id(day: date, position: int, title: str) -> UUID:
     return uuid5(NAMESPACE_URL, f"travel-scanner:itinerary:{day}:{position}:{title}")
 
@@ -62,6 +75,7 @@ def _suggestion_pool(
         "nightlife": "夜景與夜間街區",
         "spa": "按摩、溫泉與療癒時段",
         "beach": "海灘與海岸慢遊",
+        "deep_travel": "在地巷弄與深度街區",
     }
     if not interests:
         return [(None, "自由探索推薦街區")]
@@ -80,12 +94,37 @@ def _suggestion_pool(
     return pool or [(None, "依照興趣探索城市")]
 
 
+def _cluster_urban_hotspots(
+    hotspots: list[ItineraryHotspot], start: tuple[float, float] | None
+) -> list[ItineraryHotspot]:
+    """Nearest-neighbour ordering keeps each day's urban route geographically compact."""
+    remaining = list(hotspots)
+    ordered: list[ItineraryHotspot] = []
+    current = start
+    while remaining:
+        if current is None:
+            selected = min(remaining, key=lambda item: (item.latitude, item.longitude))
+        else:
+            origin = current
+            selected = min(
+                remaining,
+                key=lambda item: (
+                    (item.latitude - origin[0]) ** 2 + (item.longitude - origin[1]) ** 2
+                ),
+            )
+        ordered.append(selected)
+        remaining.remove(selected)
+        current = (selected.latitude, selected.longitude)
+    return ordered
+
+
 def build_itinerary(
     query: SearchCreate,
     flight: FlightOffer | None,
     hotel: HotelOffer | None,
     activity: ActivityOffer | None,
     transport: TransportOffer | None,
+    hotspots: list[ItineraryHotspot] | None = None,
 ) -> list[ItineraryDay]:
     departure = query.departure_date or datetime.now(UTC).date()
     returning = query.return_date or departure + timedelta(days=4)
@@ -165,10 +204,81 @@ def build_itinerary(
         blocks = 3
     suggestion_pool = _suggestion_pool(query.preferences.interests, destination)
     suggestion_index = 0
+    deep_requested = "deep_travel" in query.preferences.interests
+    deep_candidates = (hotspots or []) if deep_requested else []
+    day_trip_limit = 0 if len(full_days) <= 1 else (2 if len(full_days) >= 5 else 1)
+    day_trips = [item for item in deep_candidates if item.depth_kind == "day_trip"][:day_trip_limit]
+    urban = _cluster_urban_hotspots(
+        [item for item in deep_candidates if item.depth_kind == "urban_local"],
+        (hotel.latitude, hotel.longitude)
+        if hotel and hotel.latitude is not None and hotel.longitude is not None
+        else None,
+    )
+    urban_index = 0
+    day_trip_index = 0
     for day in full_days:
+        if day_trip_index < len(day_trips):
+            hotspot = day_trips[day_trip_index]
+            day_trip_index += 1
+            start = _at(day, 9, timezone=destination_timezone)
+            add(
+                day,
+                item_type="hotspot",
+                title=hotspot.name,
+                location_name=hotspot.name,
+                start_time=start,
+                end_time=start
+                + timedelta(
+                    minutes=hotspot.access_minutes * 2 + hotspot.recommended_duration_minutes + 60
+                ),
+                latitude=hotspot.latitude,
+                longitude=hotspot.longitude,
+                duration_minutes=hotspot.recommended_duration_minutes,
+                is_estimated=False,
+                location_source="hotspot_catalog",
+                data={
+                    "source_mode": "approved_hotspot",
+                    "hotspot_id": str(hotspot.hotspot_id),
+                    "depth_kind": hotspot.depth_kind,
+                    "depth_score": hotspot.depth_score,
+                    "depth_reason": hotspot.depth_reason,
+                    "access_minutes_each_way": hotspot.access_minutes,
+                    "round_trip_buffer_minutes": 60,
+                    "interest": "deep_travel",
+                    **destination_context,
+                },
+            )
+            continue
         for block in range(blocks):
             start_hour = 10 + block * 3
-            if activity and not activity_used:
+            if urban_index < len(urban):
+                hotspot = urban[urban_index]
+                urban_index += 1
+                start = _at(day, start_hour, timezone=destination_timezone)
+                add(
+                    day,
+                    item_type="hotspot",
+                    title=hotspot.name,
+                    location_name=hotspot.name,
+                    start_time=start,
+                    end_time=start + timedelta(minutes=hotspot.recommended_duration_minutes),
+                    latitude=hotspot.latitude,
+                    longitude=hotspot.longitude,
+                    duration_minutes=hotspot.recommended_duration_minutes,
+                    is_estimated=False,
+                    location_source="hotspot_catalog",
+                    data={
+                        "source_mode": "approved_hotspot",
+                        "hotspot_id": str(hotspot.hotspot_id),
+                        "depth_kind": hotspot.depth_kind,
+                        "depth_score": hotspot.depth_score,
+                        "depth_reason": hotspot.depth_reason,
+                        "access_minutes": hotspot.access_minutes,
+                        "interest": "deep_travel",
+                        **destination_context,
+                    },
+                )
+            elif activity and not activity_used:
                 title = activity.title
                 duration = activity.duration_minutes
                 add(

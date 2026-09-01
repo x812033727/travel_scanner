@@ -14,9 +14,10 @@ from app.config import Settings
 from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.cities import HOTSPOT_CITIES
 from app.hotspots.discovery import WikimediaDiscoveryClient
-from app.hotspots.ranking import RankingInput, score_hotspots
+from app.hotspots.ranking import RankingInput, score_deep_hotspots, score_hotspots
 from app.hotspots.wikimedia import WikimediaPageviewClient
 from app.models import HotspotRanking, HotspotSignal, TravelHotspot
+from app.trips.itinerary import ItineraryHotspot
 
 PUBLIC_REVIEW_STATUSES = ("approved", "auto_approved")
 
@@ -84,7 +85,20 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
             "aliases": list(seed.aliases),
             "editorial_relevance": seed.editorial_relevance,
             "pageview_pages": [[seed.wikipedia_project, seed.wikipedia_title]],
+            "local_name": seed.local_name,
+            "depth_reason": seed.depth_reason,
+            "access_minutes": seed.access_minutes,
+            "recommended_duration_minutes": seed.recommended_duration_minutes,
+            "depth_components": seed.depth_components,
+            "coordinate_source": seed.coordinate_source,
         }
+        hotspot.is_deep_travel = seed.is_deep_travel
+        hotspot.depth_kind = seed.depth_kind
+        hotspot.depth_score = (
+            Decimal(str(seed.depth_score)) if seed.depth_score is not None else None
+        )
+        if seed.source_urls:
+            hotspot.source_urls = list(seed.source_urls)
         hotspot.is_active = True
         hotspot.discovered_at = hotspot.discovered_at or datetime.now(UTC)
         hotspot.last_seen_at = datetime.now(UTC)
@@ -143,6 +157,7 @@ async def refresh_rankings(session: AsyncSession, observed_on: date) -> int:
             pageviews_current=float(current.value) if current else None,
             pageviews_previous=float(previous.value) if previous else None,
             signal_date=current.observed_on if current else None,
+            depth_score=float(hotspot.depth_score) if hotspot.depth_score is not None else None,
         )
 
     await session.execute(delete(HotspotRanking).where(HotspotRanking.observed_on == observed_on))
@@ -151,12 +166,21 @@ async def refresh_rankings(session: AsyncSession, observed_on: date) -> int:
     for hotspot in hotspots:
         by_city[hotspot.city_code].append(hotspot)
     scopes.extend(("city", city_code, items) for city_code, items in sorted(by_city.items()))
+    deep_hotspots = [item for item in hotspots if item.is_deep_travel]
+    scopes.append(("deep_global", "global", deep_hotspots))
+    deep_by_city: dict[str, list[TravelHotspot]] = defaultdict(list)
+    for hotspot in deep_hotspots:
+        deep_by_city[hotspot.city_code].append(hotspot)
+    scopes.extend(
+        ("deep_city", city_code, items) for city_code, items in sorted(deep_by_city.items())
+    )
 
     inserted = 0
     for scope, scope_key, scoped_hotspots in scopes:
         by_id = {str(item.id): item for item in scoped_hotspots}
+        scoring = score_deep_hotspots if scope.startswith("deep_") else score_hotspots
         for rank, scored in enumerate(
-            score_hotspots([ranking_input(item) for item in scoped_hotspots]), start=1
+            scoring([ranking_input(item) for item in scoped_hotspots]), start=1
         ):
             hotspot = by_id[scored.hotspot_id]
             signal = latest.get((hotspot.id, "pageviews_30d"))
@@ -180,12 +204,16 @@ async def refresh_rankings(session: AsyncSession, observed_on: date) -> int:
                         "sources": list(scored.sources),
                         "is_estimate": scored.is_estimate,
                         "signal_date": signal.observed_on.isoformat() if signal else None,
-                        "formula": {
-                            "interest": 0.45,
-                            "growth": 0.25,
-                            "quality": 0.20,
-                            "confidence": 0.10,
-                        },
+                        "formula": (
+                            {"depth": 0.80, "interest": 0.15, "confidence": 0.05}
+                            if scope.startswith("deep_")
+                            else {
+                                "interest": 0.45,
+                                "growth": 0.25,
+                                "quality": 0.20,
+                                "confidence": 0.10,
+                            }
+                        ),
                     },
                 )
             )
@@ -419,8 +447,12 @@ async def list_rankings(
     category: str | None = None,
     after_rank: int | None = None,
     limit: int = 20,
+    style: str = "all",
 ) -> dict[str, Any]:
-    scope, scope_key = ("city", city_code.upper()) if city_code else ("global", "global")
+    prefix = "deep_" if style == "deep" else ""
+    scope, scope_key = (
+        (f"{prefix}city", city_code.upper()) if city_code else (f"{prefix}global", "global")
+    )
     latest_date = await session.scalar(
         select(func.max(HotspotRanking.observed_on)).where(
             HotspotRanking.scope == scope,
@@ -496,6 +528,17 @@ async def list_rankings(
                 "source_urls": hotspot.source_urls,
                 "signal_date": ranking.explanation.get("signal_date"),
                 "is_estimate": bool(ranking.explanation.get("is_estimate", True)),
+                "is_deep_travel": hotspot.is_deep_travel,
+                "depth_kind": hotspot.depth_kind,
+                "depth_score": float(hotspot.depth_score)
+                if hotspot.depth_score is not None
+                else None,
+                "depth_reason": hotspot.metadata_json.get("depth_reason"),
+                "local_name": hotspot.metadata_json.get("local_name"),
+                "access_minutes": hotspot.metadata_json.get("access_minutes"),
+                "recommended_duration_minutes": hotspot.metadata_json.get(
+                    "recommended_duration_minutes"
+                ),
             }
         )
     return {
@@ -535,6 +578,14 @@ async def hotspot_facets(session: AsyncSession) -> dict[str, Any]:
         TravelHotspot.country_code,
     )
     categories = await grouped(TravelHotspot.category)
+    deep_count = int(
+        await session.scalar(
+            select(func.count(TravelHotspot.id)).where(
+                *conditions, TravelHotspot.is_deep_travel.is_(True)
+            )
+        )
+        or 0
+    )
     return {
         "total": sum(int(row.count) for row in countries),
         "countries": [
@@ -551,4 +602,56 @@ async def hotspot_facets(session: AsyncSession) -> dict[str, Any]:
             for row in cities
         ],
         "categories": [{"code": row.category, "count": row.count} for row in categories],
+        "styles": [
+            {"code": "all", "name": "全部旅遊", "count": sum(int(row.count) for row in countries)},
+            {"code": "deep", "name": "深度旅遊", "count": deep_count},
+        ],
     }
+
+
+async def load_planner_hotspots(
+    session: AsyncSession,
+    *,
+    city_code: str,
+    interests: list[str] | None = None,
+    limit: int = 12,
+) -> list[ItineraryHotspot]:
+    """Load only approved deep-ranking rows for the real itinerary builder."""
+    result = await list_rankings(
+        session, city_code=city_code, style="deep", limit=min(50, max(1, limit))
+    )
+    ranked_items = result["items"]
+    requested = {interest for interest in (interests or []) if interest != "deep_travel"}
+    if requested:
+        ranked_items = sorted(
+            ranked_items,
+            key=lambda item: (item["category"] not in requested, item["rank"]),
+        )
+    rows: list[ItineraryHotspot] = []
+    for item in ranked_items:
+        required = (
+            item["latitude"],
+            item["longitude"],
+            item["depth_kind"],
+            item["depth_score"],
+            item["depth_reason"],
+            item["access_minutes"],
+            item["recommended_duration_minutes"],
+        )
+        if any(value is None for value in required):
+            continue
+        rows.append(
+            ItineraryHotspot(
+                hotspot_id=item["id"],
+                name=item["name"],
+                category=item["category"],
+                latitude=item["latitude"],
+                longitude=item["longitude"],
+                depth_kind=item["depth_kind"],
+                depth_score=item["depth_score"],
+                depth_reason=item["depth_reason"],
+                access_minutes=item["access_minutes"],
+                recommended_duration_minutes=item["recommended_duration_minutes"],
+            )
+        )
+    return rows
