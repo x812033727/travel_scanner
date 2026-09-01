@@ -227,6 +227,18 @@ class RouteDayComputeRequest(BaseModel):
         return self
 
 
+class TripLocationResolveRequest(BaseModel):
+    version: int = Field(ge=1)
+    item_ids: list[UUID] | None = Field(default=None, min_length=1, max_length=24)
+    day_date: date | None = None
+
+    @model_validator(mode="after")
+    def validate_scope(self) -> "TripLocationResolveRequest":
+        if self.item_ids is not None and self.day_date is not None:
+            raise ValueError("item_ids and day_date cannot be used together")
+        return self
+
+
 class RoutePreviewRequest(BaseModel):
     version: int = Field(ge=1)
     from_item_id: UUID
@@ -486,6 +498,9 @@ def _planning_request(
 async def _enrich_ai_places(
     planning: AIPlanningResult,
     service: GoogleTravelService,
+    *,
+    destination_name: str,
+    timezone: str,
 ) -> None:
     if not service.configured:
         return
@@ -493,13 +508,18 @@ async def _enrich_ai_places(
         item for day in planning.itinerary for item in day.items if item.item_type == "suggestion"
     ][:24]
     semaphore = asyncio.Semaphore(4)
+    region = _destination_region_values(destination_name, timezone)
 
     async def resolve(item: ItineraryItem) -> bool:
         async with semaphore:
             place = await service.search_place(
-                item.location_name or item.title, None, None, detailed=False
+                f"{item.location_name or item.title}, {destination_name}",
+                None,
+                None,
+                detailed=False,
+                region_code=region,
             )
-        if not place:
+        if not place or not _place_matches_region(place, region):
             item.data = {**item.data, "places_status": "unavailable"}
             return False
         location = cast(dict[str, Any], place.get("location", {}))
@@ -515,12 +535,13 @@ async def _enrich_ai_places(
         item.latitude = float(latitude)
         item.longitude = float(longitude)
         item.provider_place_id = str(place.get("id") or "") or None
-        item.location_source = "google_places"
-        item.is_estimated = False
+        item.location_source = "google_places_auto"
+        item.is_estimated = True
         item.data = {
             **item.data,
             "places_status": "resolved",
-            "needs_place_confirmation": False,
+            "place_match_status": "auto_matched",
+            "needs_place_confirmation": True,
             "google_maps_url": place.get("googleMapsUri"),
         }
         return True
@@ -547,6 +568,144 @@ def route_point(item: TripPlanItem) -> RoutePoint | None:
         longitude=float(item.longitude),
         provider_place_id=item.provider_place_id,
     )
+
+
+def _destination_region_values(destination_name: str | None, timezone: str | None) -> str | None:
+    destination = f"{destination_name or ''} {timezone or ''}"
+    japan_tokens = ("日本", "東京", "大阪", "京都", "Japan", "Tokyo", "Asia/Tokyo")
+    korea_tokens = ("韓國", "首爾", "釜山", "Korea", "Seoul", "Asia/Seoul")
+    thailand_tokens = ("泰國", "曼谷", "Thailand", "Bangkok", "Asia/Bangkok")
+    if any(token in destination for token in japan_tokens):
+        return "jp"
+    if any(token in destination for token in korea_tokens):
+        return "kr"
+    if any(token in destination for token in thailand_tokens):
+        return "th"
+    return None
+
+
+def _destination_region(trip: TripPlan) -> str | None:
+    return _destination_region_values(trip.destination_name, trip.timezone)
+
+
+def _place_matches_region(place: dict[str, Any], region: str | None) -> bool:
+    if region is None:
+        return True
+    address = str(place.get("formattedAddress") or "").casefold()
+    region_tokens = {
+        "jp": ("日本", "japan", " jp"),
+        "kr": ("韓國", "韩国", "korea", " kr"),
+        "th": ("泰國", "泰国", "thailand", " th"),
+    }
+    return bool(address) and any(token in address for token in region_tokens.get(region, ()))
+
+
+def _unresolved_location(item: TripPlanItem, reason: str) -> dict[str, str]:
+    return {
+        "item_id": str(item.id),
+        "title": item.title or item.item_type,
+        "reason": reason,
+    }
+
+
+async def _resolve_trip_locations(
+    session: AsyncSession,
+    trip: TripPlan,
+    rows: list[TripPlanItem],
+    *,
+    item_ids: set[UUID] | None = None,
+    day_value: date | None = None,
+) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+    candidates = [
+        row
+        for row in rows
+        if (item_ids is None or row.id in item_ids)
+        and (day_value is None or row.day_date == day_value)
+        and (row.latitude is None or row.longitude is None)
+    ]
+    if not candidates:
+        return [], []
+    runtime = await load_runtime_settings(session)
+    service = GoogleTravelService(get_redis(), runtime)
+    if not service.configured:
+        return [], [
+            _unresolved_location(item, "Google Places 尚未設定") for item in candidates
+        ]
+    region = _destination_region(trip)
+    reference = next(
+        (row for row in rows if row.latitude is not None and row.longitude is not None),
+        None,
+    )
+    latitude = float(reference.latitude) if reference and reference.latitude is not None else None
+    longitude = (
+        float(reference.longitude) if reference and reference.longitude is not None else None
+    )
+    matched: list[dict[str, str]] = []
+    unresolved: list[dict[str, str]] = []
+    changed_ids: set[UUID] = set()
+    for item in candidates[:24]:
+        label = (item.location_name or item.title or "").strip()
+        if not label or label in {"新的行程安排", "尚未選擇地點"}:
+            unresolved.append(_unresolved_location(item, "尚未輸入可辨識的地點名稱"))
+            continue
+        query = label
+        destination = (trip.destination_name or "").strip()
+        if destination and destination.casefold() not in query.casefold():
+            query = f"{query}, {destination}"
+        try:
+            place = await service.search_place(
+                query,
+                latitude,
+                longitude,
+                detailed=False,
+                region_code=region,
+            )
+        except (httpx.HTTPError, TimeoutError):
+            unresolved.append(_unresolved_location(item, "Google Places 暫時無法回應"))
+            continue
+        location = cast(dict[str, Any], place.get("location") or {})
+        place_latitude = location.get("latitude")
+        place_longitude = location.get("longitude")
+        if (
+            not place
+            or place_latitude is None
+            or place_longitude is None
+            or not _place_matches_region(place, region)
+        ):
+            unresolved.append(_unresolved_location(item, "找不到位於旅程目的地的可靠候選"))
+            continue
+        display = cast(dict[str, Any], place.get("displayName") or {})
+        item.location_name = str(
+            display.get("text") or place.get("formattedAddress") or label
+        )
+        item.latitude = Decimal(str(place_latitude))
+        item.longitude = Decimal(str(place_longitude))
+        item.provider_place_id = str(place.get("id") or "") or None
+        item.location_source = "google_places_auto"
+        item.is_estimated = True
+        item.data = {
+            **(item.data or {}),
+            "places_status": "resolved",
+            "place_match_status": "auto_matched",
+            "needs_place_confirmation": True,
+            "google_maps_url": place.get("googleMapsUri"),
+        }
+        changed_ids.add(item.id)
+        matched.append({"item_id": str(item.id), "title": item.title or item.item_type})
+    if changed_ids:
+        await session.execute(
+            delete(TripRouteSegment).where(
+                TripRouteSegment.trip_plan_id == trip.id,
+                TripRouteSegment.from_item_id.in_(changed_ids),
+            )
+        )
+        await session.execute(
+            delete(TripRouteSegment).where(
+                TripRouteSegment.trip_plan_id == trip.id,
+                TripRouteSegment.to_item_id.in_(changed_ids),
+            )
+        )
+    return matched, unresolved
 
 
 async def cache_trip_routes(trip_id: UUID, segments: list[RouteSegment]) -> None:
@@ -762,7 +921,12 @@ async def save_trip(
                 notes=payload.notes,
             )
         )
-        await _enrich_ai_places(planning, GoogleTravelService(get_redis(), settings))
+        await _enrich_ai_places(
+            planning,
+            GoogleTravelService(get_redis(), settings),
+            destination_name=destination,
+            timezone=timezone,
+        )
         route_pairs = sum(max(0, len(day.items) - 1) for day in planning.itinerary)
         routing_available = bool(
             settings.google_maps_api_key
@@ -1244,7 +1408,12 @@ async def generate_trip_itinerary(
                 preserved_items=planning_preserved,
             )
         )
-        await _enrich_ai_places(planning, GoogleTravelService(get_redis(), settings))
+        await _enrich_ai_places(
+            planning,
+            GoogleTravelService(get_redis(), settings),
+            destination_name=trip.destination_name,
+            timezone=trip.timezone or "UTC",
+        )
         preserved_keys = {(item.day_date, (item.title or "").casefold()) for item in preserved}
         generated = [
             item
@@ -1448,6 +1617,88 @@ def _preview_key(user_id: UUID, trip_id: UUID, preview_id: UUID) -> str:
 def _route_idempotency_key(user_id: UUID, trip_id: UUID, operation: str, key: str) -> str:
     digest = hashlib.sha256(key.encode()).hexdigest()
     return f"routes:idempotency:{operation}:{user_id}:{trip_id}:{digest}"
+
+
+@router.post("/{trip_id}/locations/resolve")
+async def resolve_trip_locations(
+    trip_id: UUID,
+    payload: TripLocationResolveRequest,
+    user: CurrentUser,
+    session: Session,
+    idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
+) -> dict[str, Any]:
+    redis = get_redis()
+    idem_key = _route_idempotency_key(user.id, trip_id, "locations", idempotency_key)
+    marker = await redis.get(idem_key)
+    trip = await owned_trip(session, user.id, trip_id)
+    if marker == "complete":
+        rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+        unresolved = [
+            _unresolved_location(row, "仍需手動確認地點")
+            for row in rows
+            if (payload.item_ids is None or row.id in set(payload.item_ids))
+            and (payload.day_date is None or row.day_date == payload.day_date)
+            and (row.latitude is None or row.longitude is None)
+        ]
+        return {
+            "trip": await serialize_trip(session, trip),
+            "matched_items": [],
+            "unresolved_items": unresolved,
+        }
+    if not await redis.set(idem_key, "processing", ex=86_400, nx=True):
+        raise AppError(409, "location_resolve_in_progress", "相同地點正在配對，請稍候")
+    try:
+        if trip.version != payload.version:
+            raise AppError(409, "trip_version_conflict", "旅程已更新，請重新載入後再配對地點")
+        rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+        matched, unresolved = await _resolve_trip_locations(
+            session,
+            trip,
+            rows,
+            item_ids=set(payload.item_ids) if payload.item_ids is not None else None,
+            day_value=payload.day_date,
+        )
+        if matched:
+            previous = cast(dict[str, Any], trip.data.get("routing") or {})
+            next_data = {
+                **trip.data,
+                "routing": {
+                    **previous,
+                    "status": "stale",
+                    "warnings": ["地點已更新，受影響路段需要重新查詢。"],
+                    "updated_at": datetime.now(UTC).isoformat(),
+                },
+            }
+            next_version = await session.scalar(
+                update(TripPlan)
+                .where(
+                    TripPlan.id == trip.id,
+                    TripPlan.user_id == user.id,
+                    TripPlan.version == payload.version,
+                )
+                .values(version=TripPlan.version + 1, data=next_data)
+                .returning(TripPlan.version)
+            )
+            if next_version is None:
+                await session.rollback()
+                raise AppError(
+                    409,
+                    "trip_version_conflict",
+                    "旅程在配對地點期間已更新，請重新載入後再試",
+                )
+            await session.commit()
+            await redis.delete(f"routes:trip:{trip.id}")
+            await session.refresh(trip)
+        await redis.set(idem_key, "complete", ex=86_400)
+        return {
+            "trip": await serialize_trip(session, trip),
+            "matched_items": matched,
+            "unresolved_items": unresolved,
+        }
+    except Exception:
+        await session.rollback()
+        await redis.delete(idem_key)
+        raise
 
 
 @router.get("/{trip_id}/routes/status")
@@ -1715,6 +1966,17 @@ async def compute_trip_routes_for_day(
         day_rows = [row for row in rows if row.day_date == payload.day_date]
         if len(day_rows) < 2:
             raise AppError(422, "route_items_insufficient", "這一天至少需要兩個行程地點")
+        _, unresolved = await _resolve_trip_locations(
+            session,
+            trip,
+            rows,
+            day_value=payload.day_date,
+        )
+        routable_pairs = [
+            (first, second)
+            for first, second in zip(day_rows, day_rows[1:], strict=False)
+            if route_point(first) is not None and route_point(second) is not None
+        ]
         await enforce_named_rate_limit(
             "trip-routes-refresh-user" if payload.refresh else "trip-routes-user",
             str(user.id),
@@ -1732,13 +1994,41 @@ async def compute_trip_routes_for_day(
         next_version = trip.version + 1
         trip.version = next_version
         trip.route_preference = payload.route_preference
+        if not routable_pairs:
+            warnings = [
+                f"{item['title']}：{item['reason']}" for item in unresolved
+            ] or ["這一天沒有可定位的相鄰行程，請先補上地點。"]
+            trip.data = {
+                **trip.data,
+                "routing": {
+                    "status": "needs_locations",
+                    "total": len(day_rows) - 1,
+                    "completed": 0,
+                    "warnings": warnings,
+                    "unresolved_items": unresolved,
+                    "updated_at": datetime.now(UTC).isoformat(),
+                },
+            }
+            await session.commit()
+            await redis.delete(f"routes:trip:{trip.id}")
+            await redis.set(idem_key, "complete", ex=86_400)
+            return {
+                "version": next_version,
+                "status": "needs_locations",
+                "total": len(day_rows) - 1,
+                "completed": 0,
+                "unresolved_items": unresolved,
+            }
         trip.data = {
             **trip.data,
             "routing": {
                 "status": "queued",
                 "total": len(day_rows) - 1,
                 "completed": 0,
-                "warnings": [],
+                "warnings": [
+                    f"{item['title']}：{item['reason']}" for item in unresolved
+                ],
+                "unresolved_items": unresolved,
                 "updated_at": datetime.now(UTC).isoformat(),
             },
         }
@@ -1770,6 +2060,7 @@ async def compute_trip_routes_for_day(
             "total": len(day_rows) - 1,
             "completed": 0,
             "job_id": job_id,
+            "unresolved_items": unresolved,
         }
     except Exception:
         await redis.delete(idem_key)

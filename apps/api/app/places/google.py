@@ -200,6 +200,7 @@ class GoogleTravelService:
         longitude: float | None,
         *,
         detailed: bool = True,
+        region_code: str | None = None,
     ) -> dict[str, Any]:
         """Text Search for a place.
 
@@ -210,13 +211,17 @@ class GoogleTravelService:
         if not self.configured:
             return {}
         variant = "detail" if detailed else "locate"
-        raw_key = f"{variant}:{self.locale}:{name}:{latitude}:{longitude}".encode()
+        raw_key = (
+            f"{variant}:{self.locale}:{region_code or '-'}:{name}:{latitude}:{longitude}"
+        ).encode()
         key = f"places:google:{hashlib.sha256(raw_key).hexdigest()}"
         cached = await self.redis.get(key)
         if cached:
             value = cached.decode() if isinstance(cached, bytes) else str(cached)
             return cast(dict[str, Any], json.loads(value))
         body: dict[str, Any] = {"textQuery": name, "languageCode": self.locale, "pageSize": 1}
+        if region_code:
+            body["regionCode"] = region_code.upper()
         if latitude is not None and longitude is not None and (latitude or longitude):
             body["locationBias"] = {
                 "circle": {

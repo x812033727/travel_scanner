@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Any
 
 import fakeredis.aioredis
@@ -17,6 +18,7 @@ from app.admin.service import (
     effective_registration_enabled,
     effective_site_visibility,
     encrypt_secrets,
+    public_runtime_config,
     settings_snapshot,
     update_provider_settings,
 )
@@ -370,6 +372,7 @@ async def test_google_connection_accepts_reachable_empty_route(
             self,
             origin: RoutePoint,
             destination: RoutePoint,
+            _departure_time: datetime | None = None,
         ) -> GoogleRoutesProbeResult:
             observed_points.extend([origin, destination])
             return GoogleRoutesProbeResult(True, False, status_code=200)
@@ -414,6 +417,7 @@ async def test_google_connection_reports_routes_http_error(
             self,
             _origin: RoutePoint,
             _destination: RoutePoint,
+            _departure_time: datetime | None = None,
         ) -> GoogleRoutesProbeResult:
             return GoogleRoutesProbeResult(
                 False,
@@ -566,3 +570,21 @@ async def test_admin_api_rejects_regular_user() -> None:
         app.dependency_overrides.clear()
     assert response.status_code == 403
     assert response.json()["code"] == "admin_required"
+
+
+@pytest.mark.asyncio
+async def test_public_runtime_capabilities_do_not_claim_unconfigured_navitime(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    async def runtime(_session: object) -> Settings:
+        return Settings(
+            google_maps_api_key="server-key",
+            next_public_google_maps_browser_key="browser-key",
+        )
+
+    monkeypatch.setattr(admin_service, "load_runtime_settings", runtime)
+    result = await public_runtime_config(object())  # type: ignore[arg-type]
+    assert result.google_routes_enabled is True
+    assert result.google_places_enabled is True
+    assert result.google_maps_embed_enabled is True
+    assert result.navitime_enabled is False

@@ -305,6 +305,46 @@ test("route drawer previews a car route before applying and keeps it after reloa
   await expect(page.getByRole("button", { name: "查看前往 晴空塔 的路線" })).toContainText("汽車");
 });
 
+test("route drawer auto-previews an unapplied Tokyo transit route without layout overflow", async ({ page }) => {
+  const routeItems = [
+    { id: "tokyo-station", item_type: "custom", day_date: "2026-11-12", position: 0, title: "東京車站", location_name: "東京車站", latitude: 35.6812, longitude: 139.7671, provider_place_id: "tokyo-station", location_source: "confirmed", locked: false, fixed_time: false, is_estimated: false, start_time: "2026-11-12T00:00:00Z", duration_minutes: 60, data: {} },
+    { id: "sensoji", item_type: "custom", day_date: "2026-11-12", position: 1, title: "淺草寺", location_name: "淺草寺", latitude: 35.7148, longitude: 139.7967, provider_place_id: "sensoji", location_source: "google_places_auto", locked: false, fixed_time: false, is_estimated: true, start_time: "2026-11-12T01:30:00Z", duration_minutes: 60, data: { needs_place_confirmation: true } },
+  ];
+  const segment = {
+    from_item_id: "tokyo-station", to_item_id: "sensoji", status: "resolved", travel_mode: "transit", is_override: false,
+    provider: "google_routes", attribution: "Google Maps", generated_at: "2026-09-01T01:00:00Z", expires_at: "2026-09-01T01:15:00Z",
+    schedule_mode: "preview", preference: "FEWER_TRANSFERS", duration_minutes: 22, buffer_minutes: 10,
+    distance_meters: 5100, steps: [], details_available: [] as string[], warnings: ["遠期班次預覽"],
+  };
+  const currentTrip = {
+    id: "tokyo-preview-trip", name: "東京交通預覽", mode: "manual", total_price: 0, currency: "TWD", data: {}, version: 4,
+    destination_name: "東京", start_date: "2026-11-12", end_date: "2026-11-12", timezone: "Asia/Tokyo",
+    route_preference: "FEWER_TRANSFERS", share_enabled: false, items: routeItems, route_segments: [],
+    routing: { status: "idle", total: 1, completed: 0, warnings: [], conflicts: [], day_settings: [{ day_date: "2026-11-12", default_travel_mode: "transit", default_buffer_minutes: 10, route_preference: "FEWER_TRANSFERS", auto_compute: true }] },
+  };
+  await page.route("**/api/travel/runtime/public-config", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ google_routes_enabled: true, google_places_enabled: true, google_maps_embed_enabled: false, navitime_enabled: false }) }));
+  await page.route("**/api/travel/affiliates/options**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ options: [] }) }));
+  await page.route("**/api/travel/trips/tokyo-preview-trip**", async (route) => {
+    if (route.request().url().endsWith("/routes/preview")) {
+      await new Promise((resolve) => setTimeout(resolve, 150));
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ preview_id: "tokyo-preview", expires_at: "2026-09-01T01:15:00Z", segment, schedule_impact: { affected_items: [], conflicts: [] } }) });
+      return;
+    }
+    await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(currentTrip) });
+  });
+
+  await page.goto("/zh-TW/trips/tokyo-preview-trip");
+  await page.getByRole("button", { name: /選擇這段交通方式.*淺草寺/ }).click();
+  const dialog = page.getByRole("dialog", { name: "這段路怎麼走" });
+  await expect(dialog.getByRole("button", { name: "套用此路線" })).toBeVisible();
+  await expect(dialog.getByText("目前已套用")).toHaveCount(0);
+  const mapHeight = await dialog.locator(".route-map-frame").evaluate((element) => element.getBoundingClientRect().height);
+  expect(mapHeight).toBeGreaterThanOrEqual(220);
+  expect(mapHeight).toBeLessThanOrEqual(320);
+  const noHorizontalOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth);
+  expect(noHorizontalOverflow).toBe(true);
+});
+
 test("Japan Korea Thailand workbench carries structured preferences", async ({ page }) => {
   await page.route("**/api/travel/destinations/discover", (route) => route.fulfill({
     status: 200,

@@ -1,5 +1,6 @@
 from datetime import UTC, datetime, timedelta
 from uuid import uuid4
+from zoneinfo import ZoneInfo
 
 import fakeredis.aioredis
 import httpx
@@ -334,3 +335,49 @@ def test_transit_time_window_marks_far_future_as_preview() -> None:
     assert effective is not None
     assert mode == "preview"
     assert warnings
+
+
+def test_far_future_transit_preview_preserves_destination_weekday_and_time() -> None:
+    tokyo = ZoneInfo("Asia/Tokyo")
+    requested = (datetime.now(tokyo) + timedelta(days=180)).replace(
+        hour=10,
+        minute=35,
+        second=0,
+        microsecond=0,
+    )
+    effective, mode, _ = supported_transit_time(requested)
+    assert effective is not None
+    preview_local = effective.astimezone(tokyo)
+    assert mode == "preview"
+    assert preview_local.weekday() == requested.weekday()
+    assert (preview_local.hour, preview_local.minute) == (10, 35)
+
+
+@pytest.mark.asyncio
+async def test_google_transit_retries_once_without_empty_preference() -> None:
+    bodies: list[str] = []
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        body = request.read().decode()
+        bodies.append(body)
+        if "transitPreferences" in body:
+            return httpx.Response(200, json={"routes": []})
+        return httpx.Response(
+            200,
+            json={"routes": [{"duration": "720s", "legs": []}]},
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = GoogleRouteProvider(Settings(google_maps_api_key="key"), client)
+    segment = await provider.compute(
+        point("東京車站", 35.6812, 139.7671),
+        point("淺草寺", 35.7148, 139.7967),
+        datetime.now(ZoneInfo("Asia/Tokyo")) + timedelta(days=2),
+        "FEWER_TRANSFERS",
+    )
+    await client.aclose()
+    assert segment is not None and segment.duration_minutes == 12
+    assert len(bodies) == 2
+    assert "transitPreferences" in bodies[0]
+    assert "transitPreferences" not in bodies[1]
+    assert any("已改用一般大眾運輸" in warning for warning in segment.warnings)

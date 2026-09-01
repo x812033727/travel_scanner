@@ -101,10 +101,11 @@ export type TripRouteDaySetting = {
 };
 
 export type TripRouting = {
-  status: "idle" | "queued" | "processing" | "complete" | "partial" | "failed" | "stale" | "unavailable";
+  status: "idle" | "queued" | "processing" | "complete" | "partial" | "failed" | "stale" | "unavailable" | "needs_locations";
   total: number;
   completed: number;
   warnings?: string[];
+  unresolved_items?: Array<{ item_id: string; title: string; reason: string }>;
   conflicts?: RouteScheduleConflict[];
   updated_at?: string;
   day_settings: TripRouteDaySetting[];
