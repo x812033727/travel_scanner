@@ -16,7 +16,7 @@ from app.models import AnalyticsDailyRollup
 def test_normalize_path_removes_locale_queries_and_dynamic_ids() -> None:
     assert (
         normalize_path(
-            "https://mocair.io/zh-TW/trips/550e8400-e29b-41d4-a716-446655440000?email=a%40b.com#secret"
+            "https://mokaair.com/zh-TW/trips/550e8400-e29b-41d4-a716-446655440000?email=a%40b.com#secret"
         )
         == "/trips/:id"
     )
@@ -37,11 +37,11 @@ def test_user_agent_and_referrer_are_reduced_to_categories() -> None:
     device, browser, os_name, bot = _client_details("Mozilla/5.0 (iPhone) AppleWebKit Safari/605.1")
     assert (device, browser, os_name, bot) == ("mobile", "safari", "ios", False)
     assert _client_details("ExampleBot/1.0")[3] is True
-    assert _referrer("https://www.google.com/search?q=private", "https://mocair.io") == (
+    assert _referrer("https://www.google.com/search?q=private", "https://mokaair.com") == (
         "search",
         "www.google.com",
     )
-    assert _referrer("https://mocair.io/zh-TW/search?private=yes", "https://mocair.io") == (
+    assert _referrer("https://mokaair.com/zh-TW/search?private=yes", "https://mokaair.com") == (
         "internal",
         None,
     )
