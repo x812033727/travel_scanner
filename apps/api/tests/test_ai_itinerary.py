@@ -8,6 +8,7 @@ import pytest
 from pydantic import ValidationError
 
 import app.ai.itinerary as itinerary_module
+import app.trips.router as trip_router
 from app.ai.itinerary import (
     AIDraftDay,
     AIDraftItem,
@@ -22,6 +23,7 @@ from app.ai.itinerary import (
 )
 from app.config import Settings
 from app.search.schemas import SearchPreferences, Travelers, TripPace
+from app.trips.itinerary import ItineraryHotspot
 from app.trips.router import ItineraryGenerateRequest
 
 
@@ -351,6 +353,148 @@ def test_tokyo_four_day_fallback_keeps_exact_pois_in_neighboring_day_groups() ->
     assert all(
         "與" not in candidates[item.candidate_key].name for items in activity_days for item in items
     )
+
+
+def test_standard_tokyo_plan_never_mixes_a_ranked_day_trip_into_an_urban_day() -> None:
+    day_trip = AIPlannerCandidate(
+        key="hotspot:kawagoe-kita-in",
+        kind="hotspot",
+        name="喜多院",
+        category="culture",
+        latitude=35.917525,
+        longitude=139.48906667,
+        duration_minutes=150,
+        depth_kind="day_trip",
+        access_minutes=70,
+        rank=1,
+    )
+    request = request_for().model_copy(
+        update={"candidates": [day_trip, *planner_candidates()[:8]]}
+    )
+
+    draft = fallback_draft(request)
+    selected = {
+        item.candidate_key
+        for day in draft.days
+        for item in day.items
+        if item.slot_type == "activity"
+    }
+
+    assert day_trip.key not in selected
+    assert len(selected) == 6
+
+
+def test_deep_tokyo_plan_keeps_the_day_trip_as_a_dedicated_middle_day() -> None:
+    day_trip = AIPlannerCandidate(
+        key="hotspot:kawagoe-kita-in",
+        kind="hotspot",
+        name="喜多院",
+        category="culture",
+        latitude=35.917525,
+        longitude=139.48906667,
+        duration_minutes=150,
+        depth_kind="day_trip",
+        access_minutes=70,
+        rank=1,
+    )
+    request = request_for().model_copy(
+        update={
+            "candidates": [day_trip, *planner_candidates()[:8]],
+            "preferences": request_for().preferences.model_copy(
+                update={"interests": ["culture", "deep_travel"]}
+            ),
+        }
+    )
+
+    draft = fallback_draft(request)
+    activity_days = [
+        [item for item in day.items if item.slot_type == "activity"]
+        for day in draft.days
+    ]
+
+    assert [item.candidate_key for item in activity_days[2]] == [day_trip.key]
+    assert all(item.candidate_key != day_trip.key for item in activity_days[0])
+    assert all(item.candidate_key != day_trip.key for item in activity_days[-1])
+    assert all(item.slot_type == "activity" for item in draft.days[2].items)
+
+
+@pytest.mark.asyncio
+async def test_candidate_loader_hides_unrequested_excursions_and_forwards_extensions(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    rows = [
+        ItineraryHotspot(
+            hotspot_id="40000000-0000-0000-0000-000000000001",
+            name="明治神宮",
+            category="culture",
+            latitude=35.6764,
+            longitude=139.6993,
+            map_links=[{"provider": "google", "url": "https://maps.example/meiji"}],
+        ),
+        ItineraryHotspot(
+            hotspot_id="40000000-0000-0000-0000-000000000002",
+            name="喜多院",
+            category="culture",
+            latitude=35.917525,
+            longitude=139.48906667,
+            map_links=[{"provider": "google", "url": "https://maps.example/kitain"}],
+            depth_kind="day_trip",
+            access_minutes=70,
+        ),
+        ItineraryHotspot(
+            hotspot_id="40000000-0000-0000-0000-000000000003",
+            name="延伸城市景點",
+            category="culture",
+            latitude=35.01,
+            longitude=135.75,
+            map_links=[{"provider": "google", "url": "https://maps.example/extension"}],
+            destination_id="requested-extension",
+            destination_role="extension",
+            is_cross_city=True,
+        ),
+    ]
+    captured: dict[str, object] = {}
+
+    async def load_hotspots(*_args: object, **kwargs: object) -> list[ItineraryHotspot]:
+        captured.update(kwargs)
+        return rows
+
+    async def load_foods(*_args: object, **_kwargs: object) -> list[object]:
+        return []
+
+    monkeypatch.setattr(trip_router, "load_planner_hotspots", load_hotspots)
+    monkeypatch.setattr(trip_router, "load_planner_foods", load_foods)
+    base = request_for().preferences.model_copy(update={"interests": ["culture"]})
+
+    standard = await trip_router._load_ai_planner_candidates(
+        object(),
+        "東京",
+        base,
+        start_date=date(2027, 4, 8),
+        end_date=date(2027, 4, 11),
+    )
+    deep = await trip_router._load_ai_planner_candidates(
+        object(),
+        "東京",
+        base.model_copy(
+            update={
+                "interests": ["culture", "deep_travel"],
+                "extension_destination_ids": ["requested-extension"],
+            }
+        ),
+        start_date=date(2027, 4, 8),
+        end_date=date(2027, 4, 11),
+    )
+
+    assert [candidate.name for candidate in standard] == ["明治神宮"]
+    assert [candidate.name for candidate in deep] == [
+        "明治神宮",
+        "喜多院",
+        "延伸城市景點",
+    ]
+    assert deep[1].depth_kind == "day_trip"
+    assert deep[2].is_cross_city is True
+    assert captured["extension_destination_ids"] == ["requested-extension"]
 
 
 @pytest.mark.asyncio

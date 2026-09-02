@@ -877,6 +877,7 @@ async def _load_ai_planner_candidates(
             destination_id=destination.id,
             interests=preferences.interests,
             limit=40,
+            extension_destination_ids=preferences.extension_destination_ids,
             days=day_count,
             style="all",
         ),
@@ -888,6 +889,17 @@ async def _load_ai_planner_candidates(
             limit=20,
         ),
     )
+    deep_requested = "deep_travel" in preferences.interests
+    requested_extensions = set(preferences.extension_destination_ids)
+    eligible_hotspots = [
+        hotspot
+        for hotspot in hotspots
+        if (deep_requested or hotspot.depth_kind != "day_trip")
+        and (
+            not hotspot.is_cross_city
+            or hotspot.destination_id in requested_extensions
+        )
+    ]
     candidates = [
         AIPlannerCandidate(
             key=f"hotspot:{hotspot.hotspot_id}",
@@ -899,9 +911,14 @@ async def _load_ai_planner_candidates(
             duration_minutes=hotspot.recommended_duration_minutes,
             map_links=hotspot.map_links,
             hotspot_id=hotspot.hotspot_id,
+            depth_kind=(
+                "day_trip" if hotspot.depth_kind == "day_trip" else "urban_local"
+            ),
+            access_minutes=hotspot.access_minutes,
+            is_cross_city=hotspot.is_cross_city,
             rank=rank,
         )
-        for rank, hotspot in enumerate(hotspots, 1)
+        for rank, hotspot in enumerate(eligible_hotspots, 1)
     ]
     seen_merchants: set[UUID] = set()
     for rank, food in enumerate(foods, 1):

@@ -34,6 +34,9 @@ class AIPlannerCandidate(BaseModel):
     food_id: UUID | None = None
     merchant_id: UUID | None = None
     meal_types: list[str] = Field(default_factory=list)
+    depth_kind: Literal["urban_local", "day_trip"] | None = None
+    access_minutes: int = Field(default=0, ge=0, le=180)
+    is_cross_city: bool = False
     rank: int = Field(default=999, ge=1)
 
 
@@ -122,6 +125,8 @@ SYSTEM_PROMPT = "\n".join(
         "dinner 只能選 meal_types 含 dinner 的 merchant。"
         "同一 candidate_key 全程只能出現一次。安排時間只能在 09:00 到 21:30，項目不可重疊。"
         "並考量興趣、旅伴、住宿區域及少轉乘／少走路／最快抵達偏好。",
+        "depth_kind 為 day_trip 或 is_cross_city=true 的候選不可與其他景點排在同一天，"
+        "也不可安排在首日或末日；它會占用一個完整日間區段。",
         "不要虛構航班、飯店入住時間、價格、庫存、訂位狀態或即時營業時間。"
         "reason 只說明推薦原因，不得宣稱已即時查證。",
         "preserved_items 是不可移動或不可重複的既有安排；請在其他時段補充行程。",
@@ -320,10 +325,20 @@ def _distance_squared(first: AIPlannerCandidate, second: AIPlannerCandidate) -> 
     ) ** 2
 
 
+def _is_excursion(candidate: AIPlannerCandidate) -> bool:
+    return candidate.depth_kind == "day_trip" or candidate.is_cross_city
+
+
 def _ordered_hotspots(request: AIItineraryRequest) -> list[AIPlannerCandidate]:
     interests = set(request.preferences.interests)
     remaining = sorted(
-        (candidate for candidate in request.candidates if candidate.kind == "hotspot"),
+        (
+            candidate
+            for candidate in request.candidates
+            if candidate.kind == "hotspot"
+            and candidate.depth_kind != "day_trip"
+            and not candidate.is_cross_city
+        ),
         key=lambda candidate: (candidate.category not in interests, candidate.rank),
     )
     ordered: list[AIPlannerCandidate] = []
@@ -342,6 +357,26 @@ def _ordered_hotspots(request: AIItineraryRequest) -> list[AIPlannerCandidate]:
         ordered.append(selected)
         remaining.remove(selected)
     return ordered
+
+
+def _ordered_excursions(request: AIItineraryRequest) -> list[AIPlannerCandidate]:
+    deep_requested = "deep_travel" in request.preferences.interests
+    cross_city_requested = bool(request.preferences.extension_destination_ids)
+    if not deep_requested and not cross_city_requested:
+        return []
+    interests = set(request.preferences.interests)
+    return sorted(
+        (
+            candidate
+            for candidate in request.candidates
+            if candidate.kind == "hotspot"
+            and (
+                (deep_requested and candidate.depth_kind == "day_trip")
+                or (cross_city_requested and candidate.is_cross_city)
+            )
+        ),
+        key=lambda candidate: (candidate.category not in interests, candidate.rank),
+    )
 
 
 def _minutes(value: str) -> int:
@@ -371,6 +406,20 @@ def _meal_slots(
 def fallback_draft(request: AIItineraryRequest) -> AIItineraryDraft:
     days = _date_range(request.start_date, request.end_date)
     hotspots = _ordered_hotspots(request)
+    excursions = _ordered_excursions(request)
+    excursion_limit = 0 if len(days) < 4 else (2 if len(days) >= 7 else 1)
+    eligible_excursion_days = list(range(1, max(1, len(days) - 1)))
+    excursion_day_indices = (
+        eligible_excursion_days[-excursion_limit:] if excursion_limit else []
+    )
+    excursion_by_day = {
+        day_index: candidate
+        for day_index, candidate in zip(
+            excursion_day_indices,
+            excursions[:excursion_limit],
+            strict=False,
+        )
+    }
     merchants = sorted(
         (candidate for candidate in request.candidates if candidate.kind == "merchant"),
         key=lambda candidate: candidate.rank,
@@ -380,10 +429,21 @@ def fallback_draft(request: AIItineraryRequest) -> AIItineraryDraft:
     hotspot_index = 0
     draft_days: list[AIDraftDay] = []
     for day_index, day_value in enumerate(days):
-        count = _target_count(day_index, len(days), request.preferences.pace)
+        excursion = excursion_by_day.get(day_index)
+        count = 1 if excursion else _target_count(day_index, len(days), request.preferences.pace)
         activity_slots = _safe_slots(request, day_index, len(days), count)
         items: list[AIDraftItem] = []
-        for slot in activity_slots:
+        if excursion and activity_slots:
+            used.add(excursion.key)
+            items.append(
+                AIDraftItem(
+                    candidate_key=excursion.key,
+                    start_time=activity_slots[0].strftime("%H:%M"),
+                    reason="近郊或跨城景點獨立占用完整日間區段",
+                    slot_type="activity",
+                )
+            )
+        for slot in ([] if excursion else activity_slots):
             while hotspot_index < len(hotspots) and hotspots[hotspot_index].key in used:
                 hotspot_index += 1
             if hotspot_index >= len(hotspots):
@@ -399,7 +459,7 @@ def fallback_draft(request: AIItineraryRequest) -> AIItineraryDraft:
                     slot_type="activity",
                 )
             )
-        for meal_slot in _meal_slots(day_index, len(days), request):
+        for meal_slot in (() if excursion else _meal_slots(day_index, len(days), request)):
             available_merchants = [
                 merchant
                 for merchant in merchants
@@ -554,6 +614,10 @@ def normalize_draft(
             compatible = bool(
                 candidate
                 and item.candidate_key not in used
+                and not (
+                    _is_excursion(candidate)
+                    and day_index in {0, len(dates) - 1}
+                )
                 and (
                     (item.slot_type == "activity" and candidate.kind == "hotspot")
                     or (
@@ -579,6 +643,29 @@ def normalize_draft(
                     used.add(item.candidate_key)
                 if len(provider_activities) >= count:
                     break
+        excursion_items = [
+            item
+            for item in provider_activities
+            if _is_excursion(candidates[item.candidate_key])
+        ]
+        has_excursion = bool(excursion_items)
+        if has_excursion:
+            if day_index in {0, len(dates) - 1}:
+                partial = True
+                provider_activities = fallback_activities
+                has_excursion = any(
+                    _is_excursion(candidates[item.candidate_key])
+                    for item in provider_activities
+                )
+            else:
+                partial = partial or len(provider_activities) > 1
+                kept_excursion = excursion_items[0]
+                for item in provider_items:
+                    if item.candidate_key != kept_excursion.candidate_key:
+                        used.discard(item.candidate_key)
+                provider_items = [kept_excursion]
+                provider_activities = [kept_excursion]
+                count = 1
         provider_activities = provider_activities[:count]
         slots = _safe_slots(request, day_index, len(dates), count)
         provider_activities = provider_activities[: len(slots)]
@@ -592,6 +679,8 @@ def normalize_draft(
             ("lunch", "12:00", 60),
             ("dinner", "18:30", 90),
         ):
+            if has_excursion:
+                continue
             if slot_type not in _meal_slots(day_index, len(dates), request):
                 continue
             meal = next(
@@ -628,6 +717,13 @@ def normalize_draft(
         )
     if len(provider_by_date) != len(dates):
         partial = True
+    if any(
+        _is_excursion(candidates[item.candidate_key])
+        for day in normalized_days
+        for item in day.items
+        if item.slot_type == "activity"
+    ):
+        return AIItineraryDraft(summary=draft.summary, days=normalized_days), partial
     clustered = _cluster_selected_activities(
         [
             item
@@ -733,6 +829,9 @@ def draft_to_itinerary(
                         "merchant_id": (
                             str(candidate.merchant_id) if candidate.merchant_id else None
                         ),
+                        "depth_kind": candidate.depth_kind,
+                        "access_minutes": candidate.access_minutes,
+                        "is_cross_city": candidate.is_cross_city,
                         "map_links": candidate.map_links,
                         "map_match_status": "verified",
                         "destination_city": request.destination_name,
@@ -758,7 +857,17 @@ def _unscheduled_slots(
     for index, day_value in enumerate(days):
         items = by_date.get(day_value, [])
         activity_count = sum(item.system_role is None for item in items)
-        requested_target = _target_count(index, len(days), request.preferences.pace)
+        has_excursion = any(
+            item.system_role is None
+            and (
+                item.data.get("depth_kind") == "day_trip"
+                or item.data.get("is_cross_city") is True
+            )
+            for item in items
+        )
+        requested_target = (
+            1 if has_excursion else _target_count(index, len(days), request.preferences.pace)
+        )
         target = len(_safe_slots(request, index, len(days), requested_target))
         for _ in range(max(0, target - activity_count)):
             missing.append({"date": day_value.isoformat(), "slot": "activity"})
