@@ -53,6 +53,27 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 describe("trip editor", () => {
+  it("shows durable catalog coordinates as a confirmed place", async () => {
+    const exactCatalogTrip = {
+      ...trip,
+      items: [{
+        ...trip.items[0],
+        title: "淺草寺",
+        location_name: "淺草寺",
+        latitude: 35.7148,
+        longitude: 139.7967,
+        location_source: "hotspot_catalog",
+        data: { needs_place_confirmation: false, hotspot_id: "hotspot-1" },
+      }],
+    };
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(exactCatalogTrip))));
+
+    render(<TripEditor tripId={trip.id} />);
+
+    expect(await screen.findByText("已確認")).toBeTruthy();
+    expect(screen.queryByText("尚未設定")).toBeNull();
+  });
+
   it("opens mobile trip tools and remembers the selected color theme", async () => {
     vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(trip))));
     const { container } = render(<TripEditor tripId={trip.id} />);

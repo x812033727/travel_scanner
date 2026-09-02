@@ -207,7 +207,7 @@ def _new_slot(
         item_type="meal",
         day_date=day_value,
         position=0,
-        title=label,
+        title=f"{label}尚未安排",
         location_name=None,
         start_time=starts,
         end_time=starts + timedelta(minutes=duration),
