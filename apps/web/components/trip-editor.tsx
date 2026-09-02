@@ -55,6 +55,20 @@ import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, ApiError, isUsageInsufficient, twd } from "@/lib/api";
 import { formatTime, groupTripItems, isActiveRouteItem, isFlightAnchor, isLogisticsItem, type RouteSegment, type ScheduleDefaults, type TravelMode, type Trip, type TripItem, type TripRouting } from "@/lib/trip-types";
 
+const activityDurationOptions = [
+  [20, "20 分鐘"],
+  [30, "30 分鐘"],
+  [45, "45 分鐘"],
+  [60, "1 小時"],
+  [90, "1.5 小時"],
+  [120, "2 小時"],
+  [150, "2.5 小時"],
+  [180, "3 小時"],
+  [240, "4 小時"],
+  [360, "6 小時"],
+  [540, "9 小時（全天）"],
+] as const;
+
 function normalize(items: TripItem[]) {
   const positions = new Map<string, number>();
   return [...items]
@@ -1377,7 +1391,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       {!editingItem.system_role && <div className="grid gap-4">
         <label className="text-sm font-semibold">日期<select value={editingItem.day_date} onChange={(event) => { const previousDay = editingItem.day_date; patchItem(editingItem.id, { day_date: event.target.value, start_time: editingItem.start_time ? withTime(event.target.value, timeValue(editingItem.start_time, trip.timezone)) : null, end_time: null }); setActiveDay(event.target.value); if (!draftItem) setStaleDays((current) => new Set([...current, previousDay, event.target.value])); }} className={fieldClass}>{days.map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
         <fieldset><legend className="text-sm font-semibold">時間模式</legend><div className="mt-2 grid grid-cols-2 gap-2" role="radiogroup" aria-label="時間模式"><button type="button" role="radio" aria-checked={Boolean(editingItem.fixed_time)} onClick={() => patchItem(editingItem.id, { fixed_time: true, start_time: editingItem.start_time || withTime(editingItem.day_date, "09:00"), end_time: null })} className={`min-h-12 rounded-xl border px-3 text-sm font-bold ${editingItem.fixed_time ? "border-violet-500 bg-violet-50 text-violet-900" : "border-[var(--line)] bg-white"}`}><Clock3 size={16} className="mr-1.5 inline" />固定時間</button><button type="button" role="radio" aria-checked={!editingItem.fixed_time} onClick={() => patchItem(editingItem.id, { fixed_time: false, start_time: null, end_time: null })} className={`min-h-12 rounded-xl border px-3 text-sm font-bold ${!editingItem.fixed_time ? "border-[var(--teal)] bg-[var(--teal-soft)] text-[var(--teal-dark)]" : "border-[var(--line)] bg-white"}`}><RouteIcon size={16} className="mr-1.5 inline" />接續前站</button></div><p className="mt-2 text-xs leading-5 text-[var(--muted)]">{editingItem.fixed_time ? "保留你指定的開始時間；若路線無法準時抵達會顯示遲到提醒。" : "開始時間會依上一站結束、交通時間與每日緩衝自動推算。"}</p></fieldset>
-        <div className="grid grid-cols-2 gap-3">{editingItem.fixed_time && <label className="text-sm font-semibold">固定開始時間<input type="time" value={timeValue(editingItem.start_time, trip.timezone)} onChange={(event) => patchItem(editingItem.id, { start_time: withTime(editingItem.day_date, event.target.value), end_time: null })} className={fieldClass} /></label>}<label className="text-sm font-semibold">停留時間<select value={editingItem.duration_minutes || 60} onChange={(event) => patchItem(editingItem.id, { duration_minutes: Number(event.target.value), end_time: null })} className={fieldClass}><option value="30">30 分鐘</option><option value="60">1 小時</option><option value="90">1.5 小時</option><option value="120">2 小時</option><option value="180">3 小時</option></select></label></div>
+        <div className="grid grid-cols-2 gap-3">{editingItem.fixed_time && <label className="text-sm font-semibold">固定開始時間<input type="time" value={timeValue(editingItem.start_time, trip.timezone)} onChange={(event) => patchItem(editingItem.id, { start_time: withTime(editingItem.day_date, event.target.value), end_time: null })} className={fieldClass} /></label>}<label className="text-sm font-semibold">停留時間<select value={editingItem.duration_minutes || 60} onChange={(event) => patchItem(editingItem.id, { duration_minutes: Number(event.target.value), end_time: null })} className={fieldClass}>{activityDurationOptions.map(([minutes, label]) => <option key={minutes} value={minutes}>{label}</option>)}</select></label></div>
       </div>}
       {editingMeal ? <label className="text-sm font-semibold">備註<textarea rows={4} maxLength={4000} value={editingItem.notes || ""} onChange={(event) => patchItem(editingItem.id, { notes: event.target.value }, false)} placeholder="訂位資訊、飲食需求或集合方式" className={fieldClass} /></label> : <details className="planner-advanced-settings"><summary>備註與進階設定</summary><div className="grid gap-4 px-4 pb-4"><label className="text-sm font-semibold">備註<textarea rows={4} maxLength={4000} value={editingItem.notes || ""} onChange={(event) => patchItem(editingItem.id, { notes: event.target.value }, false)} placeholder="票券、集合方式、入口或集合點" className={fieldClass} /></label><button type="button" aria-pressed={editingItem.locked} onClick={() => patchItem(editingItem.id, { locked: !editingItem.locked }, false)} className={`flex min-h-12 items-center gap-3 rounded-xl border px-4 text-left text-sm font-semibold ${editingItem.locked ? "border-amber-300 bg-amber-50 text-amber-900" : "border-[var(--line)]"}`}>{editingItem.locked ? <LockKeyhole size={18} /> : <Unlock size={18} />}{editingItem.locked ? "已鎖定，不參與排序" : "鎖定這個安排"}</button></div></details>}
       {!draftItem && !editingItem.system_role && <button type="button" onClick={() => removeItem(editingItem)} className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-red-200 bg-red-50 font-semibold text-red-800"><Trash2 size={18} />刪除這個安排</button>}

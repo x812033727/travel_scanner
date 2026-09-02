@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { TripEditor } from "./trip-editor";
 
@@ -195,6 +195,36 @@ describe("trip editor", () => {
     fireEvent.click(screen.getByRole("button", { name: "加入行程" }));
     expect(await screen.findByText("銀座午餐")).toBeTruthy();
     await waitFor(() => expect(fetchMock.mock.calls.some(([, init]) => init?.method === "PUT")).toBe(true), { timeout: 2_000 });
+  });
+
+  it("supports short, half-day, and full-day stop durations", async () => {
+    const fetchMock = vi.fn(async (_url: string, init?: RequestInit) => {
+      if (init?.method === "PUT") {
+        const body = JSON.parse(String(init.body));
+        return response({ ...trip, version: 2, items: body.items });
+      }
+      return response(trip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "新增安排" }));
+    fireEvent.change(screen.getByLabelText("安排名稱"), { target: { value: "輕井澤一日遊" } });
+    const duration = screen.getByLabelText("停留時間");
+    expect(within(duration).getByRole("option", { name: "20 分鐘" })).toBeTruthy();
+    expect(within(duration).getByRole("option", { name: "2.5 小時" })).toBeTruthy();
+    expect(within(duration).getByRole("option", { name: "4 小時" })).toBeTruthy();
+    fireEvent.change(duration, { target: { value: "540" } });
+    fireEvent.click(screen.getByRole("button", { name: "加入行程" }));
+
+    expect(await screen.findByText("停留 540 分鐘")).toBeTruthy();
+    await waitFor(() => {
+      expect(fetchMock.mock.calls.some(([, init]) => {
+        if (init?.method !== "PUT") return false;
+        const body = JSON.parse(String(init.body)) as { items: Array<{ title: string; duration_minutes?: number }> };
+        return body.items.some((item) => item.title === "輕井澤一日遊" && item.duration_minutes === 540);
+      })).toBe(true);
+    }, { timeout: 2_000 });
   });
 
   it("edits and saves an itinerary with the current version", async () => {
