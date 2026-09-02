@@ -81,8 +81,8 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await expect(flightCards.last()).toContainText("回程航班尚未設定");
   await expect(systemCards.first()).toContainText("住宿據點 · 出發");
   await expect(systemCards.last()).toContainText("住宿據點 · 返回");
-  await expect(page.getByText("午餐", { exact: true })).toBeVisible();
-  await expect(page.getByText("晚餐", { exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "午餐", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "晚餐", exact: true })).toBeVisible();
 
   await page.getByRole("button", { name: "設定去程航班" }).click();
   await page.getByLabel("航空公司").fill("長榮航空");
@@ -105,6 +105,9 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await page.getByRole("button", { name: "儲存航班" }).click();
   await expect(flightCards.last()).toContainText("長榮航空 BR 197");
 
+  await page.getByRole("button", { name: /^新增(?:安排)?$/ }).click();
+  await page.getByLabel("安排名稱").fill("東京手動散步");
+  await page.getByRole("button", { name: "加入行程" }).click();
   const generalCard = page.locator(".planner-itinerary-card").first();
   await expect(generalCard).toContainText("接續前站");
   await generalCard.getByRole("button", { name: /^編輯 / }).click();
@@ -125,17 +128,13 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await expect(page.getByText("已跳過，不計停留時間與路線")).toBeVisible();
   await expect(systemCards.filter({ hasText: "午餐" })).toContainText("固定時間");
   await expect(systemCards.filter({ hasText: "午餐" })).toHaveClass(/planner-system-card-skipped/);
-  const computeResponse = page.waitForResponse((response) =>
-    response.url().includes("/routes/compute-day") && response.request().method() === "POST",
-  );
-  await page.getByRole("button", { name: "計算當日路線" }).click();
-  expect((await computeResponse).ok()).toBe(true);
+  await expect(page.getByRole("button", { name: "計算當日路線" })).toBeDisabled();
 
   await page.reload();
   await expect(flightCards.first()).toContainText("長榮航空 BR 198");
   await expect(flightCards.last()).toContainText("長榮航空 BR 197");
   await expect(page.getByText("已跳過，不計停留時間與路線")).toBeVisible();
   await page.getByRole("button", { name: "恢復" }).click();
-  await expect(page.getByText("午餐", { exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "午餐", exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "跳過" }).first()).toBeVisible();
 });

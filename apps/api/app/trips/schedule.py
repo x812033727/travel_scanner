@@ -85,10 +85,18 @@ def is_logistics_item(item: TripPlanItem) -> bool:
 
 
 def is_active_route_item(item: TripPlanItem) -> bool:
+    location_ready = (
+        getattr(item, "latitude", None) is not None
+        and getattr(item, "longitude", None) is not None
+    )
     return (
         not item.is_skipped
         and item.system_role not in FLIGHT_SYSTEM_ROLES
         and not is_logistics_item(item)
+        and (
+            item.system_role not in {"hotel_start", "hotel_end", "lunch", "dinner"}
+            or location_ready
+        )
     )
 
 

@@ -933,13 +933,14 @@ async def load_planner_hotspots(
     limit: int = 12,
     extension_destination_ids: list[str] | None = None,
     days: int | None = None,
+    style: str = "deep",
 ) -> list[ItineraryHotspot]:
-    """Load only approved deep-ranking rows for the real itinerary builder."""
+    """Load only approved, exact-map hotspots for itinerary generation."""
     result = await list_rankings(
         session,
         city_code=city_code,
         destination_id=destination_id,
-        style="deep",
+        style=style,
         limit=min(50, max(1, limit)),
     )
     ranked_items = result["items"]
@@ -967,11 +968,6 @@ async def load_planner_hotspots(
         required = (
             item["latitude"],
             item["longitude"],
-            item["depth_kind"],
-            item["depth_score"],
-            item["depth_reason"],
-            item["access_minutes"],
-            item["recommended_duration_minutes"],
         )
         if (
             any(value is None for value in required)
@@ -993,11 +989,11 @@ async def load_planner_hotspots(
                 latitude=item["latitude"],
                 longitude=item["longitude"],
                 map_links=item["map_links"],
-                depth_kind=item["depth_kind"],
-                depth_score=item["depth_score"],
-                depth_reason=item["depth_reason"],
-                access_minutes=item["access_minutes"],
-                recommended_duration_minutes=item["recommended_duration_minutes"],
+                depth_kind=item["depth_kind"] or "urban_local",
+                depth_score=item["depth_score"] or 0,
+                depth_reason=item["depth_reason"] or "",
+                access_minutes=item["access_minutes"] or 0,
+                recommended_duration_minutes=item["recommended_duration_minutes"] or 120,
                 destination_id=item["destination_id"],
                 destination_role=item["destination_role"],
                 parent_destination_id=item["parent_destination_id"],

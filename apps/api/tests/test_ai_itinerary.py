@@ -14,6 +14,7 @@ from app.ai.itinerary import (
     AIItineraryDraft,
     AIItineraryPlanner,
     AIItineraryRequest,
+    AIPlannerCandidate,
     AnthropicPlannerProvider,
     ResponsesPlannerProvider,
     fallback_draft,
@@ -22,6 +23,43 @@ from app.ai.itinerary import (
 from app.config import Settings
 from app.search.schemas import SearchPreferences, Travelers, TripPace
 from app.trips.router import ItineraryGenerateRequest
+
+
+def planner_candidates() -> list[AIPlannerCandidate]:
+    rows = [
+        AIPlannerCandidate(
+            key=f"hotspot:{index}",
+            kind="hotspot",
+            name=f"東京景點 {index}",
+            category="culture" if index % 2 == 0 else "nature",
+            latitude=35.68 + index * 0.002,
+            longitude=139.76 + index * 0.002,
+            duration_minutes=90,
+            map_links=[{"provider": "google", "url": f"https://maps.example/{index}"}],
+            hotspot_id=f"00000000-0000-0000-0000-{index + 1:012d}",
+            rank=index + 1,
+        )
+        for index in range(8)
+    ]
+    rows.extend(
+        AIPlannerCandidate(
+            key=f"merchant:{index}",
+            kind="merchant",
+            name=f"東京店家 {index}",
+            local_name=f"東京料理 {index}",
+            category="food",
+            latitude=35.69 + index * 0.001,
+            longitude=139.77 + index * 0.001,
+            duration_minutes=75,
+            map_links=[{"provider": "google", "url": f"https://maps.example/m/{index}"}],
+            food_id=f"10000000-0000-0000-0000-{index + 1:012d}",
+            merchant_id=f"20000000-0000-0000-0000-{index + 1:012d}",
+            meal_types=["lunch", "dinner"],
+            rank=index + 1,
+        )
+        for index in range(6)
+    )
+    return rows
 
 
 def request_for(*, pace: TripPace = TripPace.BALANCED) -> AIItineraryRequest:
@@ -39,32 +77,8 @@ def request_for(*, pace: TripPace = TripPace.BALANCED) -> AIItineraryRequest:
             hotel_min_rating=4,
         ),
         notes="不要一直換飯店",
+        candidates=planner_candidates(),
     )
-
-
-def meal_items() -> list[AIDraftItem]:
-    return [
-        AIDraftItem(
-            title="東京定食午餐",
-            location_query="東京 定食 餐廳",
-            start_time="12:00",
-            duration_minutes=60,
-            category="food",
-            reason="保留固定午餐時間",
-            notes="",
-            slot_type="lunch",
-        ),
-        AIDraftItem(
-            title="東京在地晚餐",
-            location_query="東京 在地料理 餐廳",
-            start_time="18:30",
-            duration_minutes=90,
-            category="food",
-            reason="保留固定晚餐時間",
-            notes="",
-            slot_type="dinner",
-        ),
-    ]
 
 
 def draft_json() -> str:
@@ -75,15 +89,16 @@ def draft_json() -> str:
                 date=date(2026, 11, 10),
                 items=[
                     AIDraftItem(
-                        title="淺草寺",
-                        location_query="淺草寺 東京",
+                        candidate_key="hotspot:0",
                         start_time="15:00",
-                        duration_minutes=90,
-                        category="culture",
                         reason="首日以步調較輕鬆的文化景點開始",
-                        notes="",
                     ),
-                    *meal_items(),
+                    AIDraftItem(
+                        candidate_key="merchant:0",
+                        start_time="18:30",
+                        reason="晚餐",
+                        slot_type="dinner",
+                    ),
                 ],
             ),
             *[
@@ -91,45 +106,47 @@ def draft_json() -> str:
                     date=day,
                     items=[
                         AIDraftItem(
-                            title=f"築地場外市場 {index}",
-                            location_query="築地場外市場 東京",
+                            candidate_key=f"hotspot:{index * 2 - 1}",
                             start_time="10:00",
-                            duration_minutes=120,
-                            category="food",
                             reason="符合美食偏好",
-                            notes="",
                         ),
-                        *meal_items(),
                         AIDraftItem(
-                            title=f"上野公園 {index}",
-                            location_query="上野公園 東京",
+                            candidate_key=f"merchant:{index * 2 - 1}",
+                            start_time="12:00",
+                            reason="午餐",
+                            slot_type="lunch",
+                        ),
+                        AIDraftItem(
+                            candidate_key=f"hotspot:{index * 2}",
                             start_time="14:00",
-                            duration_minutes=120,
-                            category="culture",
                             reason="兼顧文化與少走路偏好",
-                            notes="",
+                        ),
+                        AIDraftItem(
+                            candidate_key=f"merchant:{index * 2}",
+                            start_time="18:30",
+                            reason="晚餐",
+                            slot_type="dinner",
                         ),
                     ],
                 )
-                for index, day in enumerate(
-                    (date(2026, 11, 11), date(2026, 11, 12)), 1
-                )
+                for index, day in enumerate((date(2026, 11, 11), date(2026, 11, 12)), 1)
             ],
             AIDraftDay(
                 date=date(2026, 11, 13),
                 items=[
                     AIDraftItem(
-                        title="東京車站丸之內",
-                        location_query="東京車站丸之內",
+                        candidate_key="hotspot:7",
                         start_time="10:00",
-                        duration_minutes=90,
-                        category="sight",
                         reason="末日安排交通便利的輕鬆散步",
-                        notes="",
                     ),
-                    *meal_items(),
+                    AIDraftItem(
+                        candidate_key="merchant:5",
+                        start_time="12:00",
+                        reason="午餐",
+                        slot_type="lunch",
+                    ),
                 ],
-            )
+            ),
         ],
     ).model_dump_json()
 
@@ -159,7 +176,7 @@ async def test_openai_responses_uses_schema_store_false_and_rest_output_shape() 
         )
         result = await provider.generate(request_for())
 
-    assert result.days[0].items[0].title == "淺草寺"
+    assert result.days[0].items[0].candidate_key == "hotspot:0"
     assert captured["store"] is False
     assert captured["text"]["format"]["type"] == "json_schema"  # type: ignore[index]
     serialized_input = str(captured["input"])
@@ -196,12 +213,33 @@ def test_fallback_covers_every_day_and_obeys_pace_counts() -> None:
         date(2026, 11, 12),
         date(2026, 11, 13),
     ]
-    assert [len(day.items) for day in draft.days] == [3, 5, 5, 3]
-    assert all(
-        [item.slot_type for item in day.items].count("lunch") == 1
-        and [item.slot_type for item in day.items].count("dinner") == 1
-        for day in draft.days
+    assert [len(day.items) for day in draft.days] == [2, 5, 5, 2]
+    meal_roles = [
+        [item.slot_type for item in day.items if item.slot_type != "activity"] for day in draft.days
+    ]
+    assert meal_roles == [
+        ["dinner"],
+        ["lunch", "dinner"],
+        ["lunch", "dinner"],
+        ["lunch"],
+    ]
+
+
+def test_fallback_leaves_unusable_arrival_and_departure_windows_empty() -> None:
+    request = request_for(pace=TripPace.PACKED).model_copy(
+        update={
+            "first_day_available_from": "20:30",
+            "last_day_available_until": "09:00",
+        }
     )
+
+    draft = fallback_draft(request)
+    normalized, partial = normalize_draft(request, draft)
+
+    assert partial is False
+    assert normalized.days[0].items == []
+    assert normalized.days[-1].items == []
+    assert [len(day.items) for day in normalized.days[1:-1]] == [5, 5]
 
 
 def test_normalize_fills_missing_days_and_rewrites_safe_slots() -> None:
@@ -212,13 +250,9 @@ def test_normalize_fills_missing_days_and_rewrites_safe_slots() -> None:
                 date=date(2026, 11, 11),
                 items=[
                     AIDraftItem(
-                        title="明治神宮",
-                        location_query="明治神宮 東京",
+                        candidate_key="hotspot:1",
                         start_time="21:00",
-                        duration_minutes=240,
-                        category="culture",
                         reason="文化景點",
-                        notes="",
                     )
                 ],
             )
@@ -229,6 +263,94 @@ def test_normalize_fills_missing_days_and_rewrites_safe_slots() -> None:
     assert len(normalized.days) == 4
     assert all(day.items for day in normalized.days)
     assert normalized.days[1].items[0].start_time == "10:00"
+
+
+def test_normalize_rejects_unknown_candidate_and_never_persists_free_text() -> None:
+    request = request_for()
+    draft = AIItineraryDraft(
+        summary="包含未知地點",
+        days=[
+            AIDraftDay(
+                date=request.start_date,
+                items=[
+                    AIDraftItem(
+                        candidate_key="hotspot:not-approved",
+                        start_time="15:00",
+                        reason="模型自行產生的候選",
+                    )
+                ],
+            )
+        ],
+    )
+
+    normalized, partial = normalize_draft(request, draft)
+
+    assert partial is True
+    assert all(
+        item.candidate_key != "hotspot:not-approved"
+        for day in normalized.days
+        for item in day.items
+    )
+
+
+@pytest.mark.asyncio
+async def test_catalog_without_exact_candidates_returns_explicit_gaps() -> None:
+    request = request_for().model_copy(update={"candidates": []})
+    result = await AIItineraryPlanner(
+        Settings(
+            ai_planner_mode="fallback",
+            openai_api_key=None,
+            anthropic_api_key=None,
+            minimax_api_key=None,
+        )
+    ).generate(request)
+
+    assert result.planning.readiness == "needs_setup"
+    assert all(not day.items for day in result.itinerary)
+    assert result.unscheduled_slots
+
+
+def test_tokyo_four_day_fallback_keeps_exact_pois_in_neighboring_day_groups() -> None:
+    places = [
+        ("淺草寺", 35.7148, 139.7967),
+        ("東京晴空塔", 35.7101, 139.8107),
+        ("上野公園", 35.7140, 139.7730),
+        ("新宿御苑", 35.6852, 139.7101),
+        ("明治神宮", 35.6764, 139.6993),
+        ("澀谷十字路口", 35.6595, 139.7005),
+    ]
+    exact_hotspots = [
+        AIPlannerCandidate(
+            key=f"hotspot:tokyo:{index}",
+            kind="hotspot",
+            name=name,
+            category="culture",
+            latitude=latitude,
+            longitude=longitude,
+            duration_minutes=90,
+            map_links=[{"provider": "google", "url": f"https://maps.example/tokyo/{index}"}],
+            hotspot_id=f"30000000-0000-0000-0000-{index + 1:012d}",
+            rank=index + 1,
+        )
+        for index, (name, latitude, longitude) in enumerate(places)
+    ]
+    request = request_for().model_copy(update={"candidates": exact_hotspots})
+
+    draft = fallback_draft(request)
+    itinerary = normalize_draft(request, draft)[0]
+    activity_days = [
+        [item for item in day.items if item.slot_type == "activity"] for day in itinerary.days
+    ]
+
+    assert [len(items) for items in activity_days] == [1, 2, 2, 1]
+    assert len({item.candidate_key for items in activity_days for item in items}) == 6
+    candidates = {candidate.key: candidate for candidate in exact_hotspots}
+    for items in activity_days:
+        longitudes = [candidates[item.candidate_key].longitude for item in items]
+        assert not longitudes or max(longitudes) - min(longitudes) < 0.04
+    assert all(
+        "與" not in candidates[item.candidate_key].name for items in activity_days for item in items
+    )
 
 
 @pytest.mark.asyncio
@@ -249,13 +371,21 @@ async def test_planner_without_keys_returns_persistable_catalog_fallback() -> No
         date(2026, 11, 13),
     }
     assert all(
-        item.data["generated_by"] == "ai_planner"
+        item.data["generated_by"] == "ai_planner" for day in result.itinerary for item in day.items
+    )
+    assert [
+        {item.system_role for item in day.items if item.system_role} for day in result.itinerary
+    ] == [{"dinner"}, {"lunch", "dinner"}, {"lunch", "dinner"}, {"lunch"}]
+    assert not result.unscheduled_slots
+    assert all(
+        item.latitude is not None and item.longitude is not None
         for day in result.itinerary
         for item in day.items
     )
     assert all(
-        {item.system_role for item in day.items if item.system_role} == {"lunch", "dinner"}
+        item.data["needs_place_confirmation"] is False
         for day in result.itinerary
+        for item in day.items
     )
 
 

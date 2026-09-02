@@ -646,7 +646,7 @@ async def foods_for_planner(
         session,
         locale=locale,
         destination_id=destination_id,
-        limit=min(limit, max(1, days)),
+        limit=min(limit, max(1, days * 2 - 2)),
     )
     recommendations = []
     for item in result["items"]:

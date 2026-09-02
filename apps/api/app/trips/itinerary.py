@@ -47,11 +47,11 @@ class ItineraryHotspot(BaseModel):
     latitude: float
     longitude: float
     map_links: list[dict[str, str | bool]] = Field(default_factory=list)
-    depth_kind: str
-    depth_score: float
-    depth_reason: str
-    access_minutes: int
-    recommended_duration_minutes: int
+    depth_kind: str = "urban_local"
+    depth_score: float = 0
+    depth_reason: str = ""
+    access_minutes: int = 0
+    recommended_duration_minutes: int = 120
     destination_id: str | None = None
     destination_role: str = "primary"
     parent_destination_id: str | None = None
