@@ -6,8 +6,6 @@ import {
   BarChart3,
   BookOpenText,
   Building2,
-  CalendarClock,
-  Database,
   ExternalLink,
   FileText,
   LockKeyhole,
@@ -30,14 +28,12 @@ import { TravelCardActions } from "@/components/travel-card-actions";
 import { Link, usePathname } from "@/i18n/navigation";
 import { loginPath } from "@/lib/navigation";
 
-type SourceStatus = { id: string; name: string; status: string; purpose: string; persistence: string };
 type MapLink = { provider: "google" | "naver"; label: string; url: string; primary: boolean };
 type PlaceSummary = {
   status: "ready" | "pending_review" | "stale" | "unavailable";
   google_maps_url: string | null; map_links: MapLink[]; official_website_url: string | null;
   official_website_verified: boolean; has_details: boolean; updated_at: string | null;
 };
-type SourcesResponse = { collection_interval_seconds: number; sources: SourceStatus[] };
 type RankedHotspot = {
   id: string; slug: string; rank: number; name: string; city_code: string; city_name: string;
   destination_id: string; destination_role: "primary" | "secondary" | "extension";
@@ -45,7 +41,7 @@ type RankedHotspot = {
   country_code: string; country_name: string; category: string; score: number;
   components: { interest: number; growth: number; quality: number; confidence: number };
   pageviews_30d: number | null; growth_rate: number | null; trend_label: string;
-  sources: string[]; source_urls: string[]; signal_date: string | null; is_estimate: boolean;
+  sources: string[]; has_source: boolean; signal_date: string | null; is_estimate: boolean;
   is_deep_travel: boolean; depth_kind: "urban_local" | "day_trip" | null;
   depth_score: number | null; depth_reason: string | null; local_name: string | null;
   access_minutes: number | null; recommended_duration_minutes: number | null;
@@ -179,9 +175,6 @@ function PlaceDetailsPanel({ hotspot, onClose }: { hotspot: RankedHotspot; onClo
   }
 
   const empty = !loading && !error && data && data.videos.length === 0 && data.articles.length === 0;
-  const primaryMapLink = place?.map_links.find((link) => link.primary) ?? place?.map_links[0] ?? null;
-  const openingHourLines = place?.opening_hours.weekday_descriptions ?? [];
-  const showGoogleAttribution = Boolean(place?.attribution.provider === "Google Maps" && (place.address || openingHourLines.length));
   return <div className="fixed inset-0 z-[80] bg-slate-950/45 backdrop-blur-sm" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
     <div
       ref={dialogRef}
@@ -208,11 +201,6 @@ function PlaceDetailsPanel({ hotspot, onClose }: { hotspot: RankedHotspot; onClo
         {!placeLoading && !placeError && place && <section className="mb-7 grid gap-4" aria-label={t("placeDetails")}>
           {place.status !== "ready" && <p className={`rounded-2xl px-4 py-3 text-sm ${place.status === "pending_review" ? "bg-amber-50 text-amber-950" : place.status === "stale" ? "bg-sky-50 text-sky-950" : "bg-slate-100 text-slate-700"}`}>{t(place.status === "pending_review" ? "placeDataPending" : place.status === "stale" ? "placeDataStale" : "placeDataUnavailable")}</p>}
           {place.official_website_url && <a href={place.official_website_url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-[var(--line)] bg-white px-4 text-sm font-semibold"><Building2 size={16} />{t("officialWebsite")}<ExternalLink size={13} /></a>}
-          <div className="rounded-2xl bg-white p-4">
-            {place.address && <section><h3 className="flex items-center gap-2 text-sm font-bold"><MapPin size={16} className="text-[var(--teal)]" />{t("address")}</h3>{primaryMapLink ? <a href={primaryMapLink.url} target="_blank" rel="noopener noreferrer" aria-label={`${place.address} — ${primaryMapLink.label} — ${t("openNew")}`} className="mt-2 flex min-h-11 items-center justify-between gap-3 rounded-xl bg-[var(--paper)] px-3 py-2 text-sm font-semibold leading-6 text-[var(--teal-dark)] transition hover:bg-[var(--teal-soft)] hover:text-[var(--teal)]"><span>{place.address}</span><ExternalLink size={15} className="shrink-0" /></a> : <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{place.address}</p>}</section>}
-            <section className={place.address ? "mt-4 border-t border-[var(--line)] pt-4" : ""}><h3 className="flex items-center gap-2 text-sm font-bold"><CalendarClock size={16} className="text-[var(--coral)]" />{t("openingHours")}</h3>{openingHourLines.length ? <ul className="mt-2 grid gap-1.5 text-sm text-[var(--muted)]">{openingHourLines.map((line) => <li key={line}>{line}</li>)}</ul> : <p className="mt-2 text-sm text-[var(--muted)]">{t("noOpeningHours")}</p>}</section>
-            {showGoogleAttribution && <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-[var(--line)] pt-3 text-xs font-normal text-[#5e5e5e]"><span translate="no" className="whitespace-nowrap">Google Maps</span>{place.attribution.third_party.map((item) => item.providerUri ? <a key={`${item.provider}-${item.providerUri}`} href={item.providerUri} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 underline-offset-4 hover:underline">{item.provider || item.providerUri}<ExternalLink size={12} /></a> : item.provider ? <span key={item.provider}>{item.provider}</span> : null)}</div>}
-          </div>
         </section>}
         <div className="mb-4 border-t border-[var(--line)] pt-5"><h3 className="flex items-center gap-2 text-lg font-bold"><BookOpenText size={18} className="text-[var(--teal)]" />{t("guides")}</h3><p className="mt-1 text-sm text-[var(--muted)]">{t("guideIntro")}</p></div>
         {loading && <div className="rounded-2xl bg-white p-6 text-sm text-[var(--muted)]">{t("guideLoading")}</div>}
@@ -240,13 +228,17 @@ export function HotspotExplorer() {
   const [category, setCategory] = useState("");
   const [style, setStyle] = useState<"all" | "deep">("all");
   const [ranking, setRanking] = useState<RankingResponse | null>(null);
-  const [sources, setSources] = useState<SourcesResponse | null>(null);
   const [facets, setFacets] = useState<FacetsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [selected, setSelected] = useState<RankedHotspot | null>(null);
+  const [contentAuthNotice, setContentAuthNotice] = useState<"login" | "unavailable" | null>(null);
+  const [contentLoginHref, setContentLoginHref] = useState(() => loginPath(pathname));
   const detailTriggerRef = useRef<HTMLElement | null>(null);
+  const contentAuthTriggerRef = useRef<HTMLElement | null>(null);
+  const contentAuthRef = useRef<HTMLDivElement>(null);
+  const contentAuthCloseRef = useRef<HTMLButtonElement>(null);
   const [selectedRestaurants, setSelectedRestaurants] = useState<RankedHotspot | null>(null);
   const [restaurantAuthNotice, setRestaurantAuthNotice] = useState<"login" | "unavailable" | null>(null);
   const [restaurantLoginHref, setRestaurantLoginHref] = useState(() => loginPath(pathname));
@@ -282,7 +274,6 @@ export function HotspotExplorer() {
     if (initialDestination) {
       rankingParams.set("destination_id", initialDestination);
     }
-    api<SourcesResponse>("/hotspots/sources").then(setSources).catch(() => undefined);
     api<FacetsResponse>("/hotspots/facets").then(setFacets).catch(() => undefined);
     api<RankingResponse>(`/hotspots/rankings?${rankingParams}`).then((result) => {
       setRanking(result);
@@ -305,6 +296,14 @@ export function HotspotExplorer() {
   }, [selected]);
 
   useEffect(() => {
+    if (contentAuthNotice) contentAuthCloseRef.current?.focus();
+    else if (contentAuthTriggerRef.current) {
+      contentAuthTriggerRef.current.focus();
+      contentAuthTriggerRef.current = null;
+    }
+  }, [contentAuthNotice]);
+
+  useEffect(() => {
     if (!selectedRestaurants && !restaurantAuthNotice && restaurantTriggerRef.current) {
       restaurantTriggerRef.current.focus();
       restaurantTriggerRef.current = null;
@@ -315,7 +314,23 @@ export function HotspotExplorer() {
     if (restaurantAuthNotice) authNoticeCloseRef.current?.focus();
   }, [restaurantAuthNotice]);
 
-  function openDetails(item: RankedHotspot) { detailTriggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null; window.history.pushState({ hotspotDetails: item.id }, ""); setSelected(item); }
+  function requireContentAuth(action: () => void) {
+    if (auth.status === "authenticated") {
+      action();
+      return;
+    }
+    contentAuthTriggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    setContentLoginHref(loginPath(`${pathname}${window.location.search}`));
+    if (auth.status === "signed_out") setContentAuthNotice("login");
+    else if (auth.status === "unavailable") setContentAuthNotice("unavailable");
+  }
+  function openDetails(item: RankedHotspot) {
+    requireContentAuth(() => {
+      detailTriggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      window.history.pushState({ hotspotDetails: item.id }, "");
+      setSelected(item);
+    });
+  }
   function closeDetails() {
     setSelected(null);
     if (window.history.state?.hotspotDetails) window.history.back();
@@ -348,6 +363,15 @@ export function HotspotExplorer() {
     if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
     else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   }
+  function trapContentAuthFocus(event: KeyboardEvent<HTMLDivElement>) {
+    if (event.key !== "Tab") return;
+    const nodes = contentAuthRef.current?.querySelectorAll<HTMLElement>("button:not([disabled]), a[href]");
+    if (!nodes?.length) return;
+    const first = nodes[0];
+    const last = nodes[nodes.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  }
   function percent(value: number | null) { return value === null ? t("noComparison") : `${value >= 0 ? "+" : ""}${Math.round(value * 100)}%`; }
 
   return <main className="mx-auto min-h-screen max-w-6xl px-5 pb-20 md:px-8">
@@ -367,7 +391,7 @@ export function HotspotExplorer() {
       <select aria-label={t("allCategories")} value={category} onChange={(event) => setCategory(event.target.value)} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3">{categoryCodes.map((code) => <option key={code} value={code}>{code ? t(`categories.${code}`) : t("allCategories")}</option>)}</select>
       <button type="submit" className="h-12 rounded-xl bg-[var(--teal)] px-6 font-semibold text-white">{t("submit")}</button>
     </form>
-    <div className="mt-7 grid gap-7 lg:grid-cols-[1fr_18rem]">
+    <div className="mt-7 grid gap-7">
       <section aria-live="polite" aria-busy={loading}><div className="mb-4 flex items-center justify-between gap-4"><h2 className="flex items-center gap-2 text-xl font-bold"><BarChart3 size={20} className="text-[var(--coral)]" />{t("ranking")}</h2><p className="text-sm text-[var(--muted)]">{t("loaded", { shown: ranking?.items.length ?? 0, total: ranking?.total ?? 0 })}</p></div>
         {loading && <div className="rounded-3xl border border-[var(--line)] bg-white p-8 text-[var(--muted)]">{t("loading")}</div>}
         {!loading && error && <div role="alert" className="rounded-3xl bg-[var(--coral-soft)] p-6">{error}</div>}
@@ -375,17 +399,17 @@ export function HotspotExplorer() {
         {!loading && !error && ranking && <ol className="grid gap-4 md:grid-cols-2">{ranking.items.map((item) => <li key={item.id} className={`travel-result-card travel-result-card-${item.category} relative overflow-hidden rounded-3xl border border-[var(--line)] bg-white p-5`}>
           <div className="flex items-start justify-between gap-4"><div className="flex gap-3"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{item.rank}</span><div><h3 className="text-lg font-bold">{item.name}</h3>{item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}{item.map_links?.[0] ? <a href={item.map_links[0].url} target="_blank" rel="noopener noreferrer" aria-label={`${item.map_links[0].label}: ${item.name}`} className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"><MapPin size={14} />{item.city_name} · {t(`categories.${item.category}`)}<ExternalLink size={13} /></a> : <p className="mt-1 flex min-h-11 items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{item.city_name} · {t(`categories.${item.category}`)}</p>}</div></div><div className="text-right"><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><p className="text-xs text-[var(--muted)]">{t("score")}</p></div></div>
           <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl bg-[var(--paper)] p-4 text-sm"><div><p className="text-[var(--muted)]">{t("views30")}</p><p className="mt-1 font-semibold">{item.pageviews_30d === null ? t("pending") : number.format(item.pageviews_30d)}</p></div><div><p className="text-[var(--muted)]">{t("previous")}</p><p className="mt-1 flex items-center gap-1 font-semibold">{trendIcon(item)}{percent(item.growth_rate)}</p></div></div>
-          <button type="button" onClick={() => openDetails(item)} className="mt-4 flex min-h-12 w-full items-center gap-3 rounded-2xl bg-[var(--teal)] px-4 py-3 text-left text-white shadow-sm transition hover:bg-[var(--teal-dark)]"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/15"><BookOpenText size={17} /></span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("placeDetails")}</strong><span className="block text-xs text-white/75">{t("guideCount", { articles: item.guide_counts?.article || 0, videos: item.guide_counts?.video || 0 })}</span></span><ExternalLink size={16} /></button>
+          <button type="button" disabled={auth.status === "loading"} onClick={() => openDetails(item)} className="mt-4 flex min-h-12 w-full items-center gap-3 rounded-2xl bg-[var(--teal)] px-4 py-3 text-left text-white shadow-sm transition hover:bg-[var(--teal-dark)] disabled:cursor-wait disabled:opacity-60"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/15">{auth.status === "authenticated" ? <BookOpenText size={17} /> : <LockKeyhole size={17} />}</span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("placeDetails")}</strong><span className="block text-xs text-white/75">{auth.status === "authenticated" ? t("guideCount", { articles: item.guide_counts?.article || 0, videos: item.guide_counts?.video || 0 }) : t("protectedFeatureLocked")}</span></span>{auth.status === "authenticated" ? <ExternalLink size={16} /> : <LockKeyhole size={16} />}</button>
           <button type="button" disabled={auth.status === "loading"} aria-busy={auth.status === "loading"} onClick={() => openRestaurants(item)} className="mt-2 flex min-h-12 w-full items-center gap-3 rounded-2xl border border-[var(--coral)] bg-[var(--coral-soft)] px-4 py-3 text-left text-[var(--ink)] transition hover:-translate-y-0.5 hover:shadow-sm disabled:cursor-wait disabled:opacity-60"><span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[var(--coral)]">{auth.status === "authenticated" ? <UtensilsCrossed size={17} /> : <LockKeyhole size={17} />}</span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("nearbyRestaurants")}</strong><span className="block text-xs text-[var(--muted)]">{t(auth.status === "loading" ? "nearbyRestaurantsChecking" : auth.status === "authenticated" ? "nearbyRestaurantsDetail" : "nearbyRestaurantsLocked")}</span></span><span className="text-xs font-bold text-[var(--coral)]">{auth.status === "authenticated" ? "5–10 km" : <LockKeyhole size={15} />}</span></button>
-          <TravelCardActions type="hotspot" id={item.id} title={item.name} selectionPath={`/hotspots/${item.id}/trip-selections`} />
-          <div className="mt-4 flex flex-wrap items-center gap-2">{item.destination_role === "secondary" && <span className="rounded-full bg-sky-100 px-2.5 py-1 text-xs font-semibold text-sky-900">{t("secondaryTag")}</span>}{item.is_cross_city && <span className="rounded-full bg-violet-100 px-2.5 py-1 text-xs font-semibold text-violet-900">{t("crossCityTag")}</span>}{item.is_deep_travel && <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-900">{t("deep")}</span>}{item.depth_kind && <span className="rounded-full border border-amber-300 px-2.5 py-1 text-xs text-amber-900">{item.depth_kind === "day_trip" ? t("dayTrip") : t("urbanLocal")}</span>}{item.source_urls[0] && <a href={item.source_urls[0]} target="_blank" rel="noopener noreferrer" className="ml-auto text-xs font-semibold text-[var(--teal)]">{t("source")}</a>}</div>
+          <TravelCardActions type="hotspot" id={item.id} title={item.name} selectionPath={`/hotspots/${item.id}/trip-selections`} shareRequiresAuth />
+          <div className="mt-4 flex flex-wrap items-center gap-2">{item.destination_role === "secondary" && <span className="rounded-full bg-sky-100 px-2.5 py-1 text-xs font-semibold text-sky-900">{t("secondaryTag")}</span>}{item.is_cross_city && <span className="rounded-full bg-violet-100 px-2.5 py-1 text-xs font-semibold text-violet-900">{t("crossCityTag")}</span>}{item.is_deep_travel && <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-900">{t("deep")}</span>}{item.depth_kind && <span className="rounded-full border border-amber-300 px-2.5 py-1 text-xs text-amber-900">{item.depth_kind === "day_trip" ? t("dayTrip") : t("urbanLocal")}</span>}{item.has_source && (auth.status === "authenticated" ? <a href={`/${locale}/out/hotspots/${item.id}/source`} target="_blank" rel="noopener noreferrer" className="ml-auto inline-flex min-h-11 items-center text-xs font-semibold text-[var(--teal)]">{t("source")}</a> : <button type="button" disabled={auth.status === "loading"} onClick={() => requireContentAuth(() => undefined)} className="ml-auto inline-flex min-h-11 items-center gap-1 text-xs font-semibold text-[var(--teal)] disabled:opacity-60"><LockKeyhole size={13} />{t("source")}</button>)}</div>
           {item.is_deep_travel && item.access_minutes && item.recommended_duration_minutes && <p className="mt-3 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-950">{t("depthDetail", { access: item.access_minutes, duration: item.recommended_duration_minutes })}</p>}
         </li>)}</ol>}
         {!loading && !error && ranking?.has_more && <div className="mt-6 text-center"><button type="button" onClick={() => void load(true)} className="rounded-xl border border-[var(--teal)] bg-white px-6 py-3 font-semibold text-[var(--teal)]">{t("loadMore")}</button></div>}
       </section>
-      <aside className="h-fit rounded-3xl border border-[var(--line)] bg-white/80 p-5 lg:sticky lg:top-5"><h2 className="flex items-center gap-2 font-bold"><Database size={18} className="text-[var(--teal)]" />{t("sources")}</h2><div className="mt-4 grid gap-4">{sources?.sources.map((source) => <article key={source.id} className="border-b border-[var(--line)] pb-4 last:border-0"><div className="flex items-center justify-between gap-2"><h3 className="text-sm font-semibold">{t(`sourceNames.${source.id}`)}</h3><span className="rounded-full bg-[var(--paper)] px-2 py-1 text-[11px] text-[var(--muted)]">{source.status}</span></div></article>)}</div><p className="mt-5 border-t border-[var(--line)] pt-4 text-xs leading-5 text-[var(--muted)]">{t("plannerNote")}</p></aside>
     </div>
-    {selected && <PlaceDetailsPanel hotspot={selected} onClose={closeDetails} />}
+    {auth.status === "authenticated" && selected && <PlaceDetailsPanel hotspot={selected} onClose={closeDetails} />}
+    {contentAuthNotice && <div className="fixed inset-0 z-[90] bg-slate-950/45 backdrop-blur-sm" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setContentAuthNotice(null); }} onKeyDown={(event) => { if (event.key === "Escape") setContentAuthNotice(null); }}><div ref={contentAuthRef} role="dialog" aria-modal="true" aria-labelledby="content-auth-title" onKeyDown={trapContentAuthFocus} className="absolute inset-x-0 bottom-0 rounded-t-[2rem] bg-white p-6 shadow-2xl md:bottom-6 md:left-1/2 md:max-w-md md:-translate-x-1/2 md:rounded-[2rem]"><button ref={contentAuthCloseRef} type="button" onClick={() => setContentAuthNotice(null)} aria-label={t("protectedFeatureClose")} className="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-full border border-[var(--line)]"><X size={18} /></button><LockKeyhole className="text-[var(--teal)]" size={30} /><h2 id="content-auth-title" className="mt-4 pr-12 text-xl font-bold">{t(contentAuthNotice === "login" ? "protectedFeatureTitle" : "protectedFeatureUnavailableTitle")}</h2><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{t(contentAuthNotice === "login" ? "protectedFeatureBody" : "protectedFeatureUnavailableBody")}</p>{contentAuthNotice === "login" && <Link href={contentLoginHref} className="mt-5 flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-[var(--ink)] px-5 font-semibold text-white"><LogIn size={18} />{t("protectedFeatureAction")}</Link>}</div></div>}
     {auth.status === "authenticated" && selectedRestaurants && <HotspotRestaurantsPanel hotspot={selectedRestaurants} loginHref={restaurantLoginHref} onClose={closeRestaurants} />}
     {restaurantAuthNotice && <div className="fixed inset-0 z-[90] bg-slate-950/45 backdrop-blur-sm" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setRestaurantAuthNotice(null); }} onKeyDown={(event) => { if (event.key === "Escape") setRestaurantAuthNotice(null); }}>
       <div ref={authNoticeRef} role="dialog" aria-modal="true" aria-labelledby="restaurant-auth-title" onKeyDown={trapAuthNoticeFocus} className="absolute inset-x-0 bottom-0 rounded-t-[2rem] bg-white px-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-3 shadow-2xl md:bottom-6 md:left-1/2 md:max-w-md md:-translate-x-1/2 md:rounded-[2rem] md:p-6">

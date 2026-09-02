@@ -3,8 +3,9 @@
 import { AlertCircle, CalendarPlus, Check, Heart, LoaderCircle, LogIn, Share2, X } from "lucide-react";
 import { useLocale } from "next-intl";
 import { useState } from "react";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { api } from "@/lib/api";
+import { loginPath } from "@/lib/navigation";
 import { useSavedItems } from "@/components/saved-items-provider";
 
 type SavedType = "hotspot" | "food";
@@ -22,7 +23,7 @@ const labels = {
     saved: "已收藏",
     add: "加入行程",
     share: "分享",
-    login: "登入後同步收藏與行程",
+    login: "登入後繼續使用此功能",
     loginAction: "前往登入",
     close: "關閉",
     trip: "選擇旅程",
@@ -39,7 +40,7 @@ const labels = {
     saved: "已收藏",
     add: "加入行程",
     share: "分享",
-    login: "登录后同步收藏与行程",
+    login: "登录后继续使用此功能",
     loginAction: "前往登录",
     close: "关闭",
     trip: "选择旅程",
@@ -56,7 +57,7 @@ const labels = {
     saved: "Saved",
     add: "Add to trip",
     share: "Share",
-    login: "Sign in to sync saved items and trips",
+    login: "Sign in to continue",
     loginAction: "Sign in",
     close: "Close",
     trip: "Choose a trip",
@@ -73,7 +74,7 @@ const labels = {
     saved: "保存済み",
     add: "旅程に追加",
     share: "共有",
-    login: "ログインして保存と旅程を同期",
+    login: "ログインして続行",
     loginAction: "ログイン",
     close: "閉じる",
     trip: "旅行を選択",
@@ -90,7 +91,7 @@ const labels = {
     saved: "저장됨",
     add: "여행에 추가",
     share: "공유",
-    login: "로그인하여 저장 항목과 여행 동기화",
+    login: "로그인하여 계속하기",
     loginAction: "로그인",
     close: "닫기",
     trip: "여행 선택",
@@ -110,16 +111,19 @@ export function TravelCardActions({
   title,
   selectionPath,
   merchantId,
+  shareRequiresAuth = false,
 }: {
   type: SavedType;
   id: string;
   title: string;
   selectionPath: string;
   merchantId?: string;
+  shareRequiresAuth?: boolean;
 }) {
   const locale = useLocale() as keyof typeof labels;
   const text = labels[locale] ?? labels.en;
   const savedItems = useSavedItems();
+  const pathname = usePathname();
   const saved = savedItems.isSaved(type, id);
   const [sheet, setSheet] = useState<"login" | "trip" | null>(null);
   const [trips, setTrips] = useState<TripOption[]>([]);
@@ -130,6 +134,7 @@ export function TravelCardActions({
   const [saving, setSaving] = useState(false);
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
+  const [loginHref, setLoginHref] = useState(() => loginPath(pathname));
 
   function clearFeedback() {
     setNotice("");
@@ -137,7 +142,10 @@ export function TravelCardActions({
   }
 
   function requireAuth(action: () => void) {
-    if (savedItems.status !== "authenticated") setSheet("login");
+    if (savedItems.status !== "authenticated") {
+      setLoginHref(loginPath(`${pathname}${window.location.search}`));
+      setSheet("login");
+    }
     else action();
   }
   async function openTrip() {
@@ -238,8 +246,9 @@ export function TravelCardActions({
         </button>
         <button
           type="button"
-          onClick={() => void share()}
-          className="travel-card-action"
+          disabled={shareRequiresAuth && savedItems.status === "loading"}
+          onClick={() => shareRequiresAuth ? requireAuth(() => void share()) : void share()}
+          className="travel-card-action disabled:cursor-wait disabled:opacity-60"
         >
           <Share2 size={18} />
           <span>{text.share}</span>
@@ -279,7 +288,7 @@ export function TravelCardActions({
                 <LogIn className="mx-auto text-[var(--teal)]" size={30} />
                 <h3 className="mt-4 text-xl font-bold">{text.login}</h3>
                 <Link
-                  href="/login"
+                  href={loginHref}
                   className="mt-6 inline-flex min-h-12 items-center rounded-2xl bg-[var(--teal)] px-6 font-bold text-white"
                 >
                   {text.loginAction}

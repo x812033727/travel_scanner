@@ -12,12 +12,12 @@ from app.auth.service import CurrentUser
 from app.config import get_settings
 from app.db import get_session
 from app.destinations.catalog import DESTINATIONS, destination_for_code, destination_for_id
-from app.hotspots.guides import list_guides, resolve_guide_open
+from app.hotspots.guides import canonical_external_url, list_guides, resolve_guide_open
 from app.hotspots.maps import build_map_links
 from app.hotspots.places import place_detail_payload
 from app.hotspots.service import hotspot_facets, list_rankings
 from app.i18n import Locale, current_locale
-from app.infra import client_ip, enforce_named_rate_limit, get_redis
+from app.infra import enforce_named_rate_limit, get_redis
 from app.locations.plus_codes import has_durable_coordinates
 from app.models import HotspotPlaceProfile, TravelHotspot, TripPlanItem
 from app.problems import AppError
@@ -135,7 +135,7 @@ async def hotspot_rankings(
 ) -> dict[str, Any]:
     resolved_city_code, resolved_destination_id = _resolve_destination(city_code, destination_id)
     runtime = await load_runtime_settings(session)
-    return await list_rankings(
+    result = await list_rankings(
         session,
         q=q,
         city_code=resolved_city_code if destination_id is None else None,
@@ -151,6 +151,10 @@ async def hotspot_rankings(
             runtime.google_maps_api_key and runtime.hotspot_place_enrichment_enabled
         ),
     )
+    for item in result["items"]:
+        source_urls = item.pop("source_urls", [])
+        item["has_source"] = bool(source_urls)
+    return result
 
 
 @router.get("/facets")
@@ -364,7 +368,12 @@ async def select_hotspot_for_trip(
 
 
 @router.get("/{hotspot_id}/place")
-async def hotspot_place(hotspot_id: UUID, session: Session) -> dict[str, Any]:
+async def hotspot_place(
+    hotspot_id: UUID,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    _ = user
     hotspot = await session.get(TravelHotspot, hotspot_id)
     if (
         hotspot is None
@@ -389,23 +398,45 @@ async def hotspot_place(hotspot_id: UUID, session: Session) -> dict[str, Any]:
 async def open_hotspot_guide(
     guide_id: UUID,
     request: Request,
+    user: CurrentUser,
     session: Session,
 ) -> dict[str, str]:
-    address = client_ip(request)
-    await enforce_named_rate_limit("hotspot-guide-open", address, limit=120, window_seconds=3_600)
-    visitor = f"{address}|{request.headers.get('user-agent', '')[:200]}"
+    await enforce_named_rate_limit(
+        "hotspot-guide-open-user", str(user.id), limit=120, window_seconds=3_600
+    )
+    visitor = f"{user.id}|{request.headers.get('user-agent', '')[:200]}"
     return {"url": await resolve_guide_open(session, get_redis(), guide_id, visitor)}
+
+
+@router.get("/{hotspot_id}/source")
+async def hotspot_source(
+    hotspot_id: UUID,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, str]:
+    _ = user
+    hotspot = await session.get(TravelHotspot, hotspot_id)
+    if (
+        hotspot is None
+        or not hotspot.is_active
+        or hotspot.review_status not in {"approved", "auto_approved"}
+        or not hotspot.source_urls
+    ):
+        raise AppError(404, "hotspot_source_not_found", "找不到這個景點來源")
+    return {"url": canonical_external_url(hotspot.source_urls[0])}
 
 
 @router.get("/{hotspot_id}/guides")
 async def hotspot_guides(
     hotspot_id: UUID,
+    user: CurrentUser,
     session: Session,
     locale: RequestLocale,
     type: Literal["all", "article", "video"] = "all",
     include_other_languages: bool = False,
     limit_per_type: Annotated[int, Query(ge=1, le=10)] = 5,
 ) -> dict[str, Any]:
+    _ = user
     return await list_guides(
         session,
         hotspot_id,
