@@ -6,6 +6,7 @@ describe("AdminNav", () => {
   afterEach(() => vi.unstubAllGlobals());
   it("groups analytics and daily content work ahead of configuration", () => {
     render(<AdminNav current="system" />);
+    expect(screen.getByRole("img", { name: "Mokaair" })).toBeTruthy();
     const links = screen.getAllByRole("link");
     expect(links.map((link) => link.textContent)).toEqual([
       "營運總覽",

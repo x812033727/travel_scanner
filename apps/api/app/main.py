@@ -44,7 +44,7 @@ from app.usage.router import router as usage_router
 
 settings = get_settings()
 app = FastAPI(
-    title="Travel Scanner API",
+    title="Mokaair API",
     version="0.1.0",
     docs_url=None if settings.production else "/docs",
     redoc_url=None if settings.production else "/redoc",

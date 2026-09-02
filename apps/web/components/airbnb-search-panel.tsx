@@ -42,7 +42,7 @@ export function AirbnbSearchPanel({ criteria, compact = false }: { criteria: Air
             <p className="flex items-center gap-2 text-sm font-semibold text-[var(--teal)]"><House size={18} />Airbnb 官方外站搜尋</p>
             <h2 className="mt-2 text-2xl font-bold">用相同條件查看民宿與整套房源</h2>
             <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-              Travel Scanner 只協助帶入搜尋條件，不擷取 Airbnb 報價。請在 Airbnb 確認即時庫存、完整總價與退訂規則。
+              Mokaair 只協助帶入搜尋條件，不擷取 Airbnb 報價。請在 Airbnb 確認即時庫存、完整總價與退訂規則。
             </p>
           </div>
           <a
@@ -64,7 +64,7 @@ export function AirbnbSearchPanel({ criteria, compact = false }: { criteria: Air
 
       <div className="grid gap-4 p-6 text-sm md:grid-cols-2 md:p-8">
         <p className="flex items-start gap-3 rounded-2xl bg-[var(--paper)] p-4 leading-6"><ReceiptText className="mt-0.5 shrink-0 text-[var(--coral)]" size={19} /><span><strong>比較完整總價</strong><br /><span className="text-[var(--muted)]">清潔費、服務費與稅金可能在 Airbnb 結帳流程才完整顯示。</span></span></p>
-        <p className="flex items-start gap-3 rounded-2xl bg-[var(--paper)] p-4 leading-6"><ShieldCheck className="mt-0.5 shrink-0 text-[var(--teal)]" size={19} /><span><strong>下訂前再次確認</strong><br /><span className="text-[var(--muted)]">查看房東評價、住宿守則、取消政策與精確位置；此入口不扣 Travel Scanner 搜尋次數。</span></span></p>
+        <p className="flex items-start gap-3 rounded-2xl bg-[var(--paper)] p-4 leading-6"><ShieldCheck className="mt-0.5 shrink-0 text-[var(--teal)]" size={19} /><span><strong>下訂前再次確認</strong><br /><span className="text-[var(--muted)]">查看房東評價、住宿守則、取消政策與精確位置；此入口不扣 Mokaair 搜尋次數。</span></span></p>
       </div>
     </article>
   );

@@ -49,7 +49,7 @@ def validate_editorial_url(value: str) -> str:
         raise AppError(
             422,
             "restaurant_source_provider_owned",
-            "Google／地圖頁不可當成 Travel Scanner 自有編輯資料來源",
+            "Google／地圖頁不可當成 Mokaair 自有編輯資料來源",
         )
     if host in {"localhost", "localhost.localdomain"}:
         raise AppError(422, "restaurant_source_url_private", "來源網址不可指向內部網路")

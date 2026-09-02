@@ -337,7 +337,7 @@ export async function runChromeCrawler(options) {
 }
 
 export function helpText() {
-  return `Travel Scanner Chrome airline crawler
+  return `Mokaair Chrome airline crawler
 
 Usage:
   npm run crawl:airlines:chrome -- [options]

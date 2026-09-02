@@ -1,6 +1,6 @@
 # LINE price alerts
 
-Travel Scanner can link one website account to one LINE user through the official LINE Messaging API account-link flow. Users add the official account, send `綁定`, open the one-time link, sign in, and confirm the connection. The website never asks users to type or expose their LINE user ID.
+Mokaair can link one website account to one LINE user through the official LINE Messaging API account-link flow. Users add the official account, send `綁定`, open the one-time link, sign in, and confirm the connection. The website never asks users to type or expose their LINE user ID.
 
 ## LINE Console setup
 

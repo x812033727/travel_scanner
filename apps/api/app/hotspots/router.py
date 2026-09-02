@@ -60,7 +60,7 @@ async def hotspot_sources(session: Session) -> dict[str, Any]:
         "sources": [
             {
                 "id": "curated_catalog",
-                "name": "Travel Scanner 精選主檔",
+                "name": "Mokaair 精選主檔",
                 "status": "ready",
                 "purpose": "建立景點識別、別名、城市與分類；只作冷啟動基準",
                 "persistence": "景點主檔與基準分數",

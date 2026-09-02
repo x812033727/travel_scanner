@@ -37,6 +37,8 @@
   --muted: #607676;
   --paper: #f5f7f2;
   --surface: #ffffff;
+  --brand-mocha: #6b4a3a;
+  --brand-cream: #f7f1e8;
   --teal: #0d6b68;
   --teal-dark: #074f4d;
   --teal-soft: #dcefeb;
@@ -68,6 +70,22 @@ body {
     ),
     linear-gradient(180deg, #eff5ef 0, var(--paper) 35rem);
   font-family: "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
+}
+.mokaair-wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  color: var(--brand-mocha);
+  font-family: ui-rounded, "Arial Rounded MT Bold", "Noto Sans", system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.065em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.mokaair-wordmark-air {
+  color: var(--teal);
+}
+.mokaair-wordmark-compact {
+  letter-spacing: -0.08em;
 }
 .public-app-shell {
   min-height: 100dvh;
