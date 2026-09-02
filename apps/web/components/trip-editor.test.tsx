@@ -32,6 +32,21 @@ function response(payload: unknown) {
   return { ok: true, status: 200, json: async () => payload };
 }
 
+function itineraryPreview(scope: "day" | "trip") {
+  return {
+    preview_id: `preview-${scope}`,
+    base_version: 1,
+    expires_at: "2026-11-01T10:15:00Z",
+    scope,
+    day_date: scope === "day" ? "2026-11-11" : null,
+    planning: { status: "live", readiness: "ready", provider: "minimax", model: "MiniMax-M2.1", generated_at: "2026-11-01T10:00:00Z", warnings: [] },
+    days: [{ date: "2026-11-11", label: "2026-11-11", items: [{ ...trip.items[0], title: "MiniMax 安排的淺草寺", location_name: "淺草寺", latitude: 35.7148, longitude: 139.7967, data: { generated_by: "ai_planner", hotspot_id: "hotspot-1" } }] }],
+    unscheduled_slots: [],
+    readiness: { status: "ready", has_lodging: false, exact_item_count: 1, hotspot_candidate_count: 16, merchant_candidate_count: 6, preserved_item_count: 1, assumptions: ["尚未設定飯店；本次只依景點區域分組，不建立飯店往返路線。"] },
+    routing_summary: { exact_items: 1, eligible_pairs: 0, hotel_pairs_deferred: 2 },
+  };
+}
+
 afterEach(() => {
   window.localStorage.clear();
   window.history.replaceState({}, "", window.location.href);
@@ -52,15 +67,20 @@ describe("trip editor", () => {
   }, 10_000);
 
   it("lets the user ask MiniMax to arrange only the selected day", async () => {
-    let generationBody: Record<string, unknown> | undefined;
+    let previewBody: Record<string, unknown> | undefined;
+    let applyBody: Record<string, unknown> | undefined;
     const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
-      if (url.includes("/itinerary/generate")) {
-        generationBody = JSON.parse(String(init?.body));
+      if (url.includes("/itinerary/preview")) {
+        previewBody = JSON.parse(String(init?.body));
+        return response(itineraryPreview("day"));
+      }
+      if (url.includes("/itinerary/apply")) {
+        applyBody = JSON.parse(String(init?.body));
         return response({
           ...trip,
           version: 2,
           planning: {
-            status: "live",
+            status: "live", readiness: "ready",
             provider: "minimax",
             model: "MiniMax-M2.1",
             generated_at: "2026-11-01T10:00:00Z",
@@ -71,8 +91,11 @@ describe("trip editor", () => {
           usage: { status: "charged", uses: 1, reference: "ai-day-1" },
           items: [{
             ...trip.items[0],
-            title: "MiniMax 安排的淺草散步",
-            data: { generated_by: "ai_planner" },
+            title: "MiniMax 安排的淺草寺",
+            location_name: "淺草寺",
+            latitude: 35.7148,
+            longitude: 139.7967,
+            data: { generated_by: "ai_planner", hotspot_id: "hotspot-1" },
           }],
         });
       }
@@ -85,37 +108,29 @@ describe("trip editor", () => {
     fireEvent.click(aiButtons[0]);
     expect(screen.getByRole("dialog", { name: "AI 幫我安排" })).toBeTruthy();
     fireEvent.click(screen.getByRole("radio", { name: /\u55ae\u65e5\u5b89\u6392/ }));
-    fireEvent.click(screen.getByRole("button", { name: /^安排這一天/ }));
+    fireEvent.click(screen.getByRole("button", { name: /^產生預覽/ }));
 
-    await waitFor(() => expect(generationBody).toEqual({
+    await waitFor(() => expect(previewBody).toEqual({
       version: 1,
       scope: "day",
       day_date: "2026-11-11",
     }));
-    expect(await screen.findByText(/MiniMax 已完成.*並扣除 1 次/)).toBeTruthy();
-    expect(screen.getByText("MiniMax 安排的淺草散步")).toBeTruthy();
+    expect(screen.getByText("淺草散步")).toBeTruthy();
+    expect(await screen.findByRole("dialog", { name: "確認 AI 行程預覽" })).toBeTruthy();
+    expect(screen.getByText("MiniMax 安排的淺草寺")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: /^套用行程/ }));
+    await waitFor(() => expect(applyBody).toEqual({ version: 1, preview_id: "preview-day" }));
+    expect(await screen.findByText(/MiniMax 已套用.*並扣除 1 次/)).toBeTruthy();
+    expect(screen.getByText("MiniMax 安排的淺草寺")).toBeTruthy();
     expect(screen.getByText("AI 建議")).toBeTruthy();
   });
 
   it("offers a full-trip AI arrangement from the same menu", async () => {
-    let generationBody: Record<string, unknown> | undefined;
+    let previewBody: Record<string, unknown> | undefined;
     const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
-      if (url.includes("/itinerary/generate")) {
-        generationBody = JSON.parse(String(init?.body));
-        return response({
-          ...trip,
-          version: 2,
-          planning: {
-            status: "live",
-            provider: "minimax",
-            model: "MiniMax-M2.1",
-            generated_at: "2026-11-01T10:00:00Z",
-            warnings: [],
-            scope: "trip",
-            day_date: null,
-          },
-          usage: { status: "charged", uses: 1, reference: "ai-trip-1" },
-        });
+      if (url.includes("/itinerary/preview")) {
+        previewBody = JSON.parse(String(init?.body));
+        return response(itineraryPreview("trip"));
       }
       return response(trip);
     });
@@ -126,13 +141,14 @@ describe("trip editor", () => {
     fireEvent.click(aiButtons[0]);
     const fullTrip = screen.getByRole("radio", { name: /\u5168\u884c\u7a0b\u5b89\u6392/ });
     expect(fullTrip.getAttribute("aria-checked")).toBe("true");
-    fireEvent.click(screen.getByRole("button", { name: /^安排全行程/ }));
+    fireEvent.click(screen.getByRole("button", { name: /^產生預覽/ }));
 
-    await waitFor(() => expect(generationBody).toEqual({
+    await waitFor(() => expect(previewBody).toEqual({
       version: 1,
       scope: "trip",
       day_date: null,
     }));
+    expect(await screen.findByRole("dialog", { name: "確認 AI 行程預覽" })).toBeTruthy();
   });
 
   it("keeps a new stop as a draft until the user confirms it", async () => {
@@ -436,7 +452,11 @@ describe("trip editor", () => {
     );
     fireEvent.click(routeButton);
     expect(await screen.findByRole("dialog", { name: "這段路怎麼走" })).toBeTruthy();
+    const collapse = screen.getByRole("button", { name: "縮小路線面板" });
+    expect(collapse.getAttribute("aria-pressed")).toBe("true");
+    fireEvent.click(collapse);
     const expand = screen.getByRole("button", { name: "全螢幕顯示路線面板" });
+    expect(expand.getAttribute("aria-pressed")).toBe("false");
     fireEvent.click(expand);
     expect(screen.getByRole("button", { name: "縮小路線面板" }).getAttribute("aria-pressed")).toBe("true");
     fireEvent.popState(window);

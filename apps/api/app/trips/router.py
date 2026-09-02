@@ -2,7 +2,7 @@ import asyncio
 import hashlib
 import json
 import secrets
-from datetime import UTC, date, datetime, timedelta
+from datetime import UTC, date, datetime, time, timedelta
 from decimal import Decimal
 from typing import Annotated, Any, Literal, cast
 from uuid import UUID, uuid4, uuid5
@@ -15,11 +15,16 @@ from sqlalchemy import delete, func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
-from app.ai.itinerary import AIItineraryPlanner, AIItineraryRequest, AIPlanningResult
+from app.ai.itinerary import (
+    AIItineraryPlanner,
+    AIItineraryRequest,
+    AIPlannerCandidate,
+    AIPlanningResult,
+)
 from app.auth.service import CurrentUser
 from app.config import Settings, get_settings
 from app.db import get_session
-from app.destinations.catalog import destination_for_code
+from app.destinations.catalog import destination_for_code, match_destination
 from app.foods.service import load_planner_foods
 from app.hotspots.service import load_planner_hotspots
 from app.infra import enforce_named_rate_limit, get_redis
@@ -178,14 +183,17 @@ class ItineraryItemRequest(BaseModel):
     duration_minutes: int | None = Field(default=None, ge=0, le=1440)
     notes: str | None = Field(default=None, max_length=4000)
     fixed_time: bool = False
-    system_role: Literal[
-        "outbound_flight",
-        "hotel_start",
-        "lunch",
-        "dinner",
-        "hotel_end",
-        "return_flight",
-    ] | None = None
+    system_role: (
+        Literal[
+            "outbound_flight",
+            "hotel_start",
+            "lunch",
+            "dinner",
+            "hotel_end",
+            "return_flight",
+        ]
+        | None
+    ) = None
     is_skipped: bool = False
 
 
@@ -229,12 +237,8 @@ class FlightAnchorDetails(BaseModel):
     flight_number: str = Field(min_length=1, max_length=32)
     origin: str = Field(min_length=1, max_length=16)
     destination: str = Field(min_length=1, max_length=16)
-    departure_local: str = Field(
-        pattern=r"^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d$"
-    )
-    arrival_local: str = Field(
-        pattern=r"^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d$"
-    )
+    departure_local: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d$")
+    arrival_local: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}T(?:[01]\d|2[0-3]):[0-5]\d$")
     departure_timezone: str | None = Field(default=None, min_length=1, max_length=64)
     arrival_timezone: str | None = Field(default=None, min_length=1, max_length=64)
 
@@ -303,6 +307,14 @@ class ItineraryGenerateRequest(BaseModel):
         if self.scope == "trip" and self.day_date is not None:
             raise ValueError("day_date is only supported for day scope")
         return self
+
+
+class ItineraryApplyRequest(BaseModel):
+    version: int = Field(ge=1)
+    preview_id: UUID
+
+
+AI_ITINERARY_PREVIEW_TTL_SECONDS = 15 * 60
 
 
 class RouteComputeRequest(BaseModel):
@@ -391,9 +403,7 @@ class RouteApplyRequest(BaseModel):
         if self.source == "provider" and self.preview_id is None:
             raise ValueError("preview_id is required for provider routes")
         if self.source == "manual" and (
-            self.from_item_id is None
-            or self.to_item_id is None
-            or self.duration_minutes is None
+            self.from_item_id is None or self.to_item_id is None or self.duration_minutes is None
         ):
             raise ValueError("manual routes require item ids and duration_minutes")
         return self
@@ -563,9 +573,7 @@ async def serialize_trip(
         "currency": trip.currency,
         "data": trip.data,
         "primary_lodging": (
-            primary_lodging(trip, items)
-            if include_items
-            else trip.data.get("primary_lodging")
+            primary_lodging(trip, items) if include_items else trip.data.get("primary_lodging")
         ),
         "schedule_defaults": schedule_defaults(trip),
         "planning": trip.data.get("planning"),
@@ -609,9 +617,7 @@ async def persist_system_schedule_change(
 ) -> dict[str, Any]:
     with session.no_autoflush:
         runtime = await load_runtime_settings(session)
-        routing_defaults = RoutingOptions.model_validate(
-            trip.data.get("routing_defaults") or {}
-        )
+        routing_defaults = RoutingOptions.model_validate(trip.data.get("routing_defaults") or {})
         routing_available = route_provider_configured(
             runtime,
             trip_region_code(trip.timezone, trip.destination_name, trip.data),
@@ -763,6 +769,9 @@ def _planning_request(
     preferences: SearchPreferences,
     notes: str | None,
     preserved_items: list[TripPlanItem] | None = None,
+    candidates: list[AIPlannerCandidate] | None = None,
+    first_day_available_from: str = "14:00",
+    last_day_available_until: str = "16:00",
 ) -> AIItineraryRequest:
     return AIItineraryRequest(
         destination_name=destination_name,
@@ -773,6 +782,9 @@ def _planning_request(
         travelers=travelers,
         preferences=preferences,
         notes=notes,
+        candidates=candidates or [],
+        first_day_available_from=first_day_available_from,
+        last_day_available_until=last_day_available_until,
         preserved_items=[
             {
                 "date": item.day_date.isoformat() if item.day_date else None,
@@ -788,6 +800,143 @@ def _planning_request(
             for item in (preserved_items or [])
         ],
     )
+
+
+def _planner_availability(
+    items: list[TripPlanItem],
+    *,
+    trip_start: date,
+    trip_end: date,
+    target_date: date | None,
+) -> dict[str, str | bool]:
+    first_day = target_date or trip_start
+    last_day = target_date or trip_end
+    first_from = "14:00" if first_day == trip_start else "09:00"
+    last_until = "16:00" if last_day == trip_end else "21:30"
+    used_outbound = False
+    used_return = False
+
+    for item in items:
+        info = item.data.get("flight_info")
+        if not isinstance(info, dict):
+            continue
+        if item.system_role == "outbound_flight" and first_day == trip_start:
+            value = info.get("arrival_local")
+            if isinstance(value, str):
+                try:
+                    arrival = datetime.fromisoformat(value)
+                except ValueError:
+                    pass
+                else:
+                    if arrival.date() == trip_start:
+                        available = min(
+                            arrival + timedelta(minutes=120),
+                            datetime.combine(trip_start, time(23, 59)),
+                        )
+                        first_from = available.strftime("%H:%M")
+                        used_outbound = True
+        if item.system_role == "return_flight" and last_day == trip_end:
+            value = info.get("departure_local")
+            if isinstance(value, str):
+                try:
+                    departure = datetime.fromisoformat(value)
+                except ValueError:
+                    pass
+                else:
+                    if departure.date() == trip_end:
+                        available = max(
+                            departure - timedelta(minutes=180),
+                            datetime.combine(trip_end, time(0, 0)),
+                        )
+                        last_until = available.strftime("%H:%M")
+                        used_return = True
+    return {
+        "first_day_available_from": first_from,
+        "last_day_available_until": last_until,
+        "used_outbound_flight": used_outbound,
+        "used_return_flight": used_return,
+    }
+
+
+async def _load_ai_planner_candidates(
+    session: AsyncSession,
+    destination_name: str,
+    preferences: SearchPreferences,
+    *,
+    start_date: date,
+    end_date: date,
+    locale: str = "zh-TW",
+) -> list[AIPlannerCandidate]:
+    destination = match_destination(destination_name)
+    if destination is None:
+        return []
+    day_count = max(1, (end_date - start_date).days + 1)
+    hotspots, foods = await asyncio.gather(
+        load_planner_hotspots(
+            session,
+            destination_id=destination.id,
+            interests=preferences.interests,
+            limit=40,
+            days=day_count,
+            style="all",
+        ),
+        load_planner_foods(
+            session,
+            destination_id=destination.id,
+            locale=locale,
+            days=day_count,
+            limit=20,
+        ),
+    )
+    candidates = [
+        AIPlannerCandidate(
+            key=f"hotspot:{hotspot.hotspot_id}",
+            kind="hotspot",
+            name=hotspot.name,
+            category=hotspot.category,
+            latitude=hotspot.latitude,
+            longitude=hotspot.longitude,
+            duration_minutes=hotspot.recommended_duration_minutes,
+            map_links=hotspot.map_links,
+            hotspot_id=hotspot.hotspot_id,
+            rank=rank,
+        )
+        for rank, hotspot in enumerate(hotspots, 1)
+    ]
+    seen_merchants: set[UUID] = set()
+    for rank, food in enumerate(foods, 1):
+        if (
+            food.merchant_status != "verified"
+            or food.merchant_id is None
+            or food.merchant_name is None
+            or food.latitude is None
+            or food.longitude is None
+            or not food.map_links
+            or food.merchant_id in seen_merchants
+        ):
+            continue
+        meal_types = [meal for meal in food.meal_types if meal in {"lunch", "dinner"}]
+        if not meal_types:
+            continue
+        seen_merchants.add(food.merchant_id)
+        candidates.append(
+            AIPlannerCandidate(
+                key=f"merchant:{food.merchant_id}",
+                kind="merchant",
+                name=food.merchant_name,
+                local_name=food.local_name or food.name,
+                category="food",
+                latitude=food.latitude,
+                longitude=food.longitude,
+                duration_minutes=75,
+                map_links=food.map_links,
+                food_id=food.food_id,
+                merchant_id=food.merchant_id,
+                meal_types=meal_types,
+                rank=rank,
+            )
+        )
+    return candidates
 
 
 async def _enrich_ai_places(
@@ -946,8 +1095,7 @@ async def _resolve_trip_locations(
     region = _destination_region(trip)
     if not google.configured and not (region == "kr" and naver.configured):
         return [], [
-            _unresolved_location(item, "旅程目的地的地點搜尋服務尚未設定")
-            for item in candidates
+            _unresolved_location(item, "旅程目的地的地點搜尋服務尚未設定") for item in candidates
         ]
     reference = next(
         (row for row in rows if row.latitude is not None and row.longitude is not None),
@@ -998,11 +1146,7 @@ async def _resolve_trip_locations(
             continue
         place_latitude = place.get("latitude")
         place_longitude = place.get("longitude")
-        if (
-            not place
-            or place_latitude is None
-            or place_longitude is None
-        ):
+        if not place or place_latitude is None or place_longitude is None:
             unresolved.append(_unresolved_location(item, "找不到位於旅程目的地的可靠候選"))
             continue
         provider = str(place.get("provider") or "google_places")
@@ -1257,6 +1401,13 @@ async def save_trip(
         timezone = payload.timezone or destination_timezone(destination)
         preferences = payload.preferences.model_dump(mode="json")
         settings = await load_runtime_settings(session)
+        candidates = await _load_ai_planner_candidates(
+            session,
+            destination,
+            payload.preferences,
+            start_date=cast(date, payload.start_date),
+            end_date=cast(date, payload.end_date),
+        )
         planning = await AIItineraryPlanner(settings).generate(
             _planning_request(
                 destination_name=destination,
@@ -1267,18 +1418,11 @@ async def save_trip(
                 travelers=payload.travelers,
                 preferences=payload.preferences,
                 notes=payload.notes,
+                candidates=candidates,
             )
         )
-        await _enrich_ai_places(
-            planning,
-            GoogleTravelService(get_redis(), settings),
-            naver=NaverPlaceService(get_redis(), settings),
-            destination_name=destination,
-            timezone=timezone,
-        )
-        # The two hotel anchors are reconciled immediately after persistence, so
-        # each day has one more adjacent pair than the generated activity/meal rows.
-        route_pairs = sum(len(day.items) + 1 for day in planning.itinerary)
+        # Only exact adjacent locations enter routing; unset hotel anchors are excluded.
+        route_pairs = sum(max(0, len(day.items) - 1) for day in planning.itinerary)
         routing_available = route_provider_configured(
             settings,
             trip_region_code(timezone, destination, {}),
@@ -1309,7 +1453,10 @@ async def save_trip(
                 "travelers": payload.travelers.model_dump(mode="json"),
                 "preferences": preferences,
                 "notes": payload.notes,
-                "planning": planning.planning.model_dump(mode="json"),
+                "planning": {
+                    **planning.planning.model_dump(mode="json"),
+                    "unscheduled_slots": planning.unscheduled_slots,
+                },
                 "routing_defaults": payload.routing.model_dump(mode="json"),
                 "routing": {
                     "status": routing_status,
@@ -1583,8 +1730,10 @@ async def update_itinerary(
                 "system_itinerary_item_immutable",
                 "固定航班、飯店與餐食卡只能由系統建立",
             )
-        if existing is not None and existing.system_role is not None and (
-            item.system_role != existing.system_role or item.day_date != existing.day_date
+        if (
+            existing is not None
+            and existing.system_role is not None
+            and (item.system_role != existing.system_role or item.day_date != existing.day_date)
         ):
             raise AppError(
                 422,
@@ -1620,13 +1769,13 @@ async def update_itinerary(
     if next_version is None:
         await session.rollback()
         raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再儲存")
+
     def adjacent_pairs(values: list[TripPlanItem]) -> set[tuple[UUID, UUID]]:
         pairs: set[tuple[UUID, UUID]] = set()
         for day_value in {row.day_date for row in values}:
             day_rows = active_route_rows(values, day_value)
             pairs.update(
-                (first.id, second.id)
-                for first, second in zip(day_rows, day_rows[1:], strict=False)
+                (first.id, second.id) for first, second in zip(day_rows, day_rows[1:], strict=False)
             )
         return pairs
 
@@ -1747,9 +1896,7 @@ async def update_itinerary(
     await get_redis().delete(f"routes:trip:{trip.id}")
     await session.refresh(trip)
     if invalid_pairs:
-        routing_defaults = RoutingOptions.model_validate(
-            trip.data.get("routing_defaults") or {}
-        )
+        routing_defaults = RoutingOptions.model_validate(trip.data.get("routing_defaults") or {})
         runtime = await load_runtime_settings(session)
         routing_available = route_provider_configured(
             runtime,
@@ -1899,6 +2046,231 @@ async def update_meal_skip(
     )
 
 
+def _itinerary_preview_key(user_id: UUID, trip_id: UUID, preview_id: UUID) -> str:
+    return f"itinerary:preview:{user_id}:{trip_id}:{preview_id}"
+
+
+def _itinerary_preview_request_key(user_id: UUID, trip_id: UUID, idempotency_key: str) -> str:
+    digest = hashlib.sha256(idempotency_key.encode()).hexdigest()
+    return f"itinerary:preview-request:{user_id}:{trip_id}:{digest}"
+
+
+def _candidate_signatures(
+    candidates: list[AIPlannerCandidate], selected_keys: set[str]
+) -> dict[str, str]:
+    return {
+        candidate.key: hashlib.sha256(
+            json.dumps(
+                candidate.model_dump(mode="json"),
+                ensure_ascii=False,
+                separators=(",", ":"),
+                sort_keys=True,
+            ).encode()
+        ).hexdigest()
+        for candidate in candidates
+        if candidate.key in selected_keys
+    }
+
+
+def _replaceable_ai_items(
+    existing: list[TripPlanItem], target_date: date | None
+) -> tuple[list[TripPlanItem], list[TripPlanItem]]:
+    replaceable = [
+        item
+        for item in existing
+        if item.data.get("generated_by") == "ai_planner"
+        and not item.locked
+        and not item.fixed_time
+        and (target_date is None or item.day_date == target_date)
+    ]
+    replaceable_ids = {item.id for item in replaceable}
+    return replaceable, [item for item in existing if item.id not in replaceable_ids]
+
+
+def _planning_preserved_items(
+    preserved: list[TripPlanItem], target_date: date | None
+) -> list[TripPlanItem]:
+    return [
+        item
+        for item in preserved
+        if (target_date is None or item.day_date == target_date)
+        and item.system_role not in {"outbound_flight", "return_flight"}
+        and (
+            item.system_role not in {"lunch", "dinner"}
+            or item.data.get("meal_selection_source") == "user"
+        )
+    ]
+
+
+async def _build_ai_planning(
+    session: AsyncSession,
+    trip: TripPlan,
+    payload: ItineraryGenerateRequest,
+) -> tuple[AIPlanningResult, list[TripPlanItem], list[TripPlanItem], list[AIPlannerCandidate]]:
+    if not trip.destination_name or not trip.start_date or not trip.end_date:
+        raise AppError(422, "trip_planning_fields_missing", "旅程缺少目的地或日期，無法重新排行程")
+    target_date = payload.day_date if payload.scope == "day" else None
+    if target_date and not (trip.start_date <= target_date <= trip.end_date):
+        raise AppError(422, "itinerary_date_out_of_range", "AI 單日安排的日期超出旅程範圍")
+    if trip.version != payload.version:
+        raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再讓 AI 重排")
+    existing = await load_items(session, trip.id)
+    _, preserved = _replaceable_ai_items(existing, target_date)
+    planning_preserved = _planning_preserved_items(preserved, target_date)
+    availability = _planner_availability(
+        preserved,
+        trip_start=trip.start_date,
+        trip_end=trip.end_date,
+        target_date=target_date,
+    )
+    travelers = Travelers.model_validate(trip.data.get("travelers", {}))
+    preferences = SearchPreferences.model_validate(trip.data.get("preferences", {}))
+    candidates = await _load_ai_planner_candidates(
+        session,
+        trip.destination_name or "",
+        preferences,
+        start_date=target_date or trip.start_date,
+        end_date=target_date or trip.end_date,
+        locale=str(trip.data.get("locale") or "zh-TW"),
+    )
+    settings = await load_runtime_settings(session)
+    planning = await AIItineraryPlanner(settings).generate(
+        _planning_request(
+            destination_name=trip.destination_name,
+            start_date=target_date or trip.start_date,
+            end_date=target_date or trip.end_date,
+            timezone=trip.timezone or "UTC",
+            route_preference=trip.route_preference,
+            travelers=travelers,
+            preferences=preferences,
+            notes=cast(str | None, trip.data.get("notes")),
+            preserved_items=planning_preserved,
+            candidates=candidates,
+            first_day_available_from=cast(str, availability["first_day_available_from"]),
+            last_day_available_until=cast(str, availability["last_day_available_until"]),
+        )
+    )
+    return planning, preserved, planning_preserved, candidates
+
+
+@router.post("/{trip_id}/itinerary/preview")
+async def preview_trip_itinerary(
+    trip_id: UUID,
+    payload: ItineraryGenerateRequest,
+    user: CurrentUser,
+    session: Session,
+    idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
+) -> dict[str, Any]:
+    redis = get_redis()
+    request_key = _itinerary_preview_request_key(user.id, trip_id, idempotency_key)
+    replay_id = await redis.get(request_key)
+    if replay_id:
+        cached = await redis.get(_itinerary_preview_key(user.id, trip_id, UUID(str(replay_id))))
+        if cached:
+            return cast(dict[str, Any], json.loads(str(cached)))
+    await enforce_named_rate_limit(
+        "ai-itinerary-preview-user",
+        str(user.id),
+        limit=12,
+        window_seconds=3_600,
+    )
+    trip = await owned_trip(session, user.id, trip_id)
+    planning, preserved, planning_preserved, candidates = await _build_ai_planning(
+        session, trip, payload
+    )
+    preview_id = uuid4()
+    expires_at = datetime.now(UTC) + timedelta(seconds=AI_ITINERARY_PREVIEW_TTL_SECONDS)
+    has_lodging = primary_lodging(trip, await load_items(session, trip.id)) is not None
+    candidate_keys = {candidate.key for candidate in candidates}
+    selected_keys = {
+        str(item.data.get("candidate_key"))
+        for day in planning.itinerary
+        for item in day.items
+        if item.data.get("candidate_key")
+    }
+    if not selected_keys.issubset(candidate_keys):
+        raise AppError(422, "itinerary_candidate_invalid", "AI 回傳了不存在的正式地點")
+    assumptions = []
+    if not has_lodging:
+        assumptions.append("尚未設定飯店；本次只依景點區域分組，不建立飯店往返路線。")
+    target_date = payload.day_date if payload.scope == "day" else None
+    availability = _planner_availability(
+        preserved,
+        trip_start=cast(date, trip.start_date),
+        trip_end=cast(date, trip.end_date),
+        target_date=target_date,
+    )
+    if not availability["used_outbound_flight"] and (
+        target_date is None or target_date == trip.start_date
+    ):
+        assumptions.append("未設定抵達時間；首日採 14:00 後的保守時段。")
+    if not availability["used_return_flight"] and (
+        target_date is None or target_date == trip.end_date
+    ):
+        assumptions.append("未設定離開時間；末日採 16:00 前的保守時段。")
+    exact_items = sum(len(day.items) for day in planning.itinerary)
+    preview_days: list[dict[str, Any]] = []
+    for day in planning.itinerary:
+        day_payload = day.model_dump(mode="json")
+        anchor = next(
+            (
+                item
+                for item in day.items
+                if item.system_role not in {"lunch", "dinner"} and item.location_name
+            ),
+            None,
+        )
+        day_payload["label"] = f"{anchor.location_name}周邊" if anchor else "當日相近區域"
+        preview_days.append(day_payload)
+    result: dict[str, Any] = {
+        "preview_id": str(preview_id),
+        "base_version": trip.version,
+        "expires_at": expires_at.isoformat(),
+        "scope": payload.scope,
+        "day_date": payload.day_date.isoformat() if payload.day_date else None,
+        "planning": planning.planning.model_dump(mode="json"),
+        "days": preview_days,
+        "unscheduled_slots": planning.unscheduled_slots,
+        "readiness": {
+            "status": planning.planning.readiness,
+            "has_lodging": has_lodging,
+            "exact_item_count": exact_items,
+            "hotspot_candidate_count": sum(candidate.kind == "hotspot" for candidate in candidates),
+            "merchant_candidate_count": sum(
+                candidate.kind == "merchant" for candidate in candidates
+            ),
+            "preserved_item_count": len(planning_preserved),
+            "assumptions": assumptions,
+            "first_day_available_from": availability["first_day_available_from"],
+            "last_day_available_until": availability["last_day_available_until"],
+            "uses_flight_times": bool(
+                availability["used_outbound_flight"] or availability["used_return_flight"]
+            ),
+        },
+        "routing_summary": {
+            "exact_items": exact_items,
+            "eligible_pairs": sum(max(0, len(day.items) - 1) for day in planning.itinerary),
+            "hotel_pairs_deferred": 0 if has_lodging else len(planning.itinerary) * 2,
+        },
+    }
+    cached_payload = {
+        **result,
+        "candidate_keys": sorted(selected_keys),
+        "candidate_signatures": _candidate_signatures(candidates, selected_keys),
+    }
+    await redis.set(
+        _itinerary_preview_key(user.id, trip.id, preview_id),
+        json.dumps(cached_payload, ensure_ascii=False),
+        ex=AI_ITINERARY_PREVIEW_TTL_SECONDS,
+    )
+    await redis.set(
+        request_key,
+        str(preview_id),
+        ex=AI_ITINERARY_PREVIEW_TTL_SECONDS,
+    )
+    return result
+
+
 @router.post("/{trip_id}/itinerary/generate")
 async def generate_trip_itinerary(
     trip_id: UUID,
@@ -1951,9 +2323,23 @@ async def generate_trip_itinerary(
                 or item.data.get("meal_selection_source") == "user"
             )
         ]
+        availability = _planner_availability(
+            preserved,
+            trip_start=trip.start_date,
+            trip_end=trip.end_date,
+            target_date=target_date,
+        )
         travelers = Travelers.model_validate(trip.data.get("travelers", {}))
         preferences = SearchPreferences.model_validate(trip.data.get("preferences", {}))
         settings = await load_runtime_settings(session)
+        candidates = await _load_ai_planner_candidates(
+            session,
+            trip.destination_name or "",
+            preferences,
+            start_date=target_date or trip.start_date,
+            end_date=target_date or trip.end_date,
+            locale=str(trip.data.get("locale") or "zh-TW"),
+        )
         planning = await AIItineraryPlanner(settings).generate(
             _planning_request(
                 destination_name=trip.destination_name,
@@ -1965,15 +2351,17 @@ async def generate_trip_itinerary(
                 preferences=preferences,
                 notes=cast(str | None, trip.data.get("notes")),
                 preserved_items=planning_preserved,
+                candidates=candidates,
+                first_day_available_from=cast(str, availability["first_day_available_from"]),
+                last_day_available_until=cast(str, availability["last_day_available_until"]),
             )
         )
-        await _enrich_ai_places(
-            planning,
-            GoogleTravelService(get_redis(), settings),
-            naver=NaverPlaceService(get_redis(), settings),
-            destination_name=trip.destination_name,
-            timezone=trip.timezone or "UTC",
-        )
+        if planning.planning.readiness == "needs_setup":
+            raise AppError(
+                422,
+                "itinerary_exact_locations_required",
+                "正式景點或店家不足，原行程保持不變",
+            )
         meals_by_role = {
             (item.day_date, item.system_role): item
             for item in preserved
@@ -1988,10 +2376,7 @@ async def generate_trip_itinerary(
         for meal in generated_meals:
             meal_role = cast(str, meal.system_role)
             current_meal = meals_by_role.get((meal.day_date, meal_role))
-            if (
-                current_meal is None
-                or current_meal.data.get("meal_selection_source") == "user"
-            ):
+            if current_meal is None or current_meal.data.get("meal_selection_source") == "user":
                 continue
             current_meal.title = meal.title
             current_meal.location_name = meal.location_name
@@ -2036,6 +2421,7 @@ async def generate_trip_itinerary(
             **planning.planning.model_dump(mode="json"),
             "scope": payload.scope,
             "day_date": target_date.isoformat() if target_date else None,
+            "unscheduled_slots": planning.unscheduled_slots,
         }
         routing_defaults = RoutingOptions.model_validate(trip.data.get("routing_defaults") or {})
         route_rows = [
@@ -2106,10 +2492,209 @@ async def generate_trip_itinerary(
         await session.rollback()
         reservation_row = await session.get(UsageReservation, reservation_id)
         if reservation_row is not None:
-            await release_reservation(
-                session, reservation_row, "ai_itinerary_generation_failed"
-            )
+            await release_reservation(session, reservation_row, "ai_itinerary_generation_failed")
         await session.commit()
+        raise
+
+
+@router.post("/{trip_id}/itinerary/apply")
+async def apply_trip_itinerary_preview(
+    trip_id: UUID,
+    payload: ItineraryApplyRequest,
+    user: CurrentUser,
+    session: Session,
+    idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
+) -> dict[str, Any]:
+    redis = get_redis()
+    replay_key = _route_idempotency_key(user.id, trip_id, "itinerary-apply", idempotency_key)
+    replay_usage = await redis.get(replay_key)
+    if replay_usage:
+        replay_trip = await serialize_trip(session, await owned_trip(session, user.id, trip_id))
+        replay_trip["usage"] = json.loads(str(replay_usage))
+        return replay_trip
+    preview_key = _itinerary_preview_key(user.id, trip_id, payload.preview_id)
+    raw_preview = await redis.get(preview_key)
+    if not raw_preview:
+        raise AppError(409, "itinerary_preview_expired", "行程預覽已過期，請重新產生")
+    preview = cast(dict[str, Any], json.loads(str(raw_preview)))
+    trip = await owned_trip(session, user.id, trip_id)
+    if trip.version != payload.version or int(preview.get("base_version") or 0) != trip.version:
+        raise AppError(409, "trip_version_conflict", "旅程已更新，請重新預覽後再套用")
+    scope = cast(Literal["day", "trip"], preview.get("scope") or "trip")
+    day_date_value = preview.get("day_date")
+    target_date = date.fromisoformat(str(day_date_value)) if day_date_value else None
+    generation_payload = ItineraryGenerateRequest(
+        version=payload.version,
+        scope=scope,
+        day_date=target_date,
+    )
+    preferences = SearchPreferences.model_validate(trip.data.get("preferences", {}))
+    candidates = await _load_ai_planner_candidates(
+        session,
+        trip.destination_name or "",
+        preferences,
+        start_date=target_date or cast(date, trip.start_date),
+        end_date=target_date or cast(date, trip.end_date),
+        locale=str(trip.data.get("locale") or "zh-TW"),
+    )
+    selected_keys = set(preview.get("candidate_keys") or [])
+    expected_signatures = preview.get("candidate_signatures") or {}
+    if _candidate_signatures(candidates, selected_keys) != expected_signatures:
+        raise AppError(409, "itinerary_candidates_changed", "部分景點或店家已變更，請重新預覽")
+    planning = AIPlanningResult.model_validate(
+        {
+            "itinerary": preview.get("days") or [],
+            "planning": preview.get("planning") or {},
+            "unscheduled_slots": preview.get("unscheduled_slots") or [],
+        }
+    )
+    if planning.planning.readiness == "needs_setup":
+        raise AppError(
+            422,
+            "itinerary_exact_locations_required",
+            "正式景點或店家不足，暫時無法套用",
+        )
+    scope_label = target_date.isoformat() if target_date else "全行程"
+    reservation, created = await reserve_use(
+        session,
+        user.id,
+        idempotency_key,
+        "ai_itinerary_generation",
+        f"AI 重新排行程：{trip.name}（{scope_label}）",
+    )
+    if not created and reservation.resource_id == trip.id:
+        replay = await serialize_trip(session, trip)
+        replay["usage"] = usage_status(reservation).model_dump()
+        return replay
+    reservation.resource_id = trip.id
+    reservation_id = reservation.id
+    try:
+        existing = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+        replaceable, preserved = _replaceable_ai_items(existing, target_date)
+        replaceable_ids = {item.id for item in replaceable}
+        meals_by_role = {
+            (item.day_date, item.system_role): item
+            for item in preserved
+            if item.system_role in {"lunch", "dinner"}
+        }
+        generated_meals = [
+            item
+            for day in planning.itinerary
+            for item in day.items
+            if item.system_role in {"lunch", "dinner"}
+        ]
+        for meal in generated_meals:
+            meal_role = cast(str, meal.system_role)
+            current_meal = meals_by_role.get((meal.day_date, meal_role))
+            if current_meal is None or current_meal.data.get("meal_selection_source") == "user":
+                continue
+            current_meal.title = meal.title
+            current_meal.location_name = meal.location_name
+            current_meal.latitude = Decimal(str(meal.latitude))
+            current_meal.longitude = Decimal(str(meal.longitude))
+            current_meal.provider_place_id = meal.provider_place_id
+            current_meal.location_source = meal.location_source
+            current_meal.is_estimated = False
+            current_meal.notes = meal.notes
+            current_meal.data = {**current_meal.data, **meal.data, "meal_selection_source": "ai"}
+        preserved_keys = {(item.day_date, (item.title or "").casefold()) for item in preserved}
+        generated = [
+            item
+            for day in planning.itinerary
+            for item in day.items
+            if item.system_role is None
+            and (item.day_date, item.title.casefold()) not in preserved_keys
+        ]
+        if replaceable_ids:
+            await session.execute(
+                delete(TripPlanItem).where(
+                    TripPlanItem.trip_plan_id == trip.id,
+                    TripPlanItem.id.in_(replaceable_ids),
+                )
+            )
+        generated_records = [
+            item_record(trip.id, item, preserve_source_id=False) for item in generated
+        ]
+        session.add_all(generated_records)
+        all_rows = [*preserved, *generated_records]
+        canonicalize_positions(all_rows)
+        settings = await load_runtime_settings(session)
+        routing_defaults = RoutingOptions.model_validate(trip.data.get("routing_defaults") or {})
+        route_rows = [
+            item for item in all_rows if target_date is None or item.day_date == target_date
+        ]
+        route_pairs = route_pair_count(route_rows)
+        routing_available = route_provider_configured(
+            settings,
+            trip_region_code(trip.timezone, trip.destination_name, trip.data),
+            routing_defaults.default_travel_mode,
+        )
+        routing_status = (
+            "queued"
+            if routing_defaults.auto_compute and route_pairs and routing_available
+            else "unavailable"
+            if routing_defaults.auto_compute and route_pairs
+            else "idle"
+        )
+        trip.data = {
+            **trip.data,
+            "planning": {
+                **planning.planning.model_dump(mode="json"),
+                "scope": generation_payload.scope,
+                "day_date": target_date.isoformat() if target_date else None,
+                "unscheduled_slots": planning.unscheduled_slots,
+            },
+            "ai_regenerated": True,
+            "routing": {
+                "status": routing_status,
+                "total": route_pairs,
+                "completed": 0,
+                "warnings": (
+                    []
+                    if routing_status != "unavailable"
+                    else ["路線服務尚未啟用，可先使用手動移動時間。"]
+                ),
+                "updated_at": datetime.now(UTC).isoformat(),
+            },
+        }
+        trip.version += 1
+        if planning.planning.provider == "catalog":
+            await release_reservation(session, reservation, "ai_planner_fallback_used")
+        else:
+            await commit_reservation(session, reservation, trip.id)
+        await session.commit()
+        await redis.delete(f"routes:trip:{trip.id}", preview_key)
+        await session.refresh(trip)
+        result = await serialize_trip(session, trip)
+        result["usage"] = usage_status(reservation).model_dump()
+        await redis.set(
+            replay_key,
+            json.dumps(result["usage"], ensure_ascii=False),
+            ex=86_400,
+        )
+        if routing_status == "queued":
+            try:
+                await asyncio.to_thread(enqueue_trip_routing, trip.id, trip.version, target_date)
+            except Exception:
+                trip.data = {
+                    **trip.data,
+                    "routing": {
+                        "status": "failed",
+                        "total": route_pairs,
+                        "completed": 0,
+                        "warnings": ["背景路線服務暫時無法使用，可在行程頁重新計算。"],
+                        "updated_at": datetime.now(UTC).isoformat(),
+                    },
+                }
+                await session.commit()
+                result["routing"] = trip.data["routing"]
+        return result
+    except Exception:
+        await session.rollback()
+        reservation_row = await session.get(UsageReservation, reservation_id)
+        if reservation_row is not None:
+            await release_reservation(session, reservation_row, "ai_itinerary_apply_failed")
+            await session.commit()
         raise
 
 
@@ -2484,9 +3069,7 @@ async def apply_trip_route(
             if (record.from_item_id, record.to_item_id) != (first.id, second.id)
         ]
         override_pairs = {
-            (record.from_item_id, record.to_item_id)
-            for record in day_records
-            if record.is_override
+            (record.from_item_id, record.to_item_id) for record in day_records if record.is_override
         }
         pair = (first.id, second.id)
         if payload.inherit_day_default:
@@ -2608,9 +3191,9 @@ async def compute_trip_routes_for_day(
         trip.version = next_version
         trip.route_preference = payload.route_preference
         if not routable_pairs:
-            warnings = [
-                f"{item['title']}：{item['reason']}" for item in unresolved
-            ] or ["這一天沒有可定位的相鄰行程，請先補上地點。"]
+            warnings = [f"{item['title']}：{item['reason']}" for item in unresolved] or [
+                "這一天沒有可定位的相鄰行程，請先補上地點。"
+            ]
             trip.data = {
                 **trip.data,
                 "routing": {
@@ -2638,9 +3221,7 @@ async def compute_trip_routes_for_day(
                 "status": "queued",
                 "total": len(day_rows) - 1,
                 "completed": 0,
-                "warnings": [
-                    f"{item['title']}：{item['reason']}" for item in unresolved
-                ],
+                "warnings": [f"{item['title']}：{item['reason']}" for item in unresolved],
                 "unresolved_items": unresolved,
                 "updated_at": datetime.now(UTC).isoformat(),
             },
@@ -2758,9 +3339,7 @@ async def optimize_trip_itinerary(
             results = await RouteService(get_redis(), settings).compute_many(
                 pairs,
                 preference,
-                region_code=trip_region_code(
-                    trip.timezone, trip.destination_name, trip.data
-                ),
+                region_code=trip_region_code(trip.timezone, trip.destination_name, trip.data),
             )
             costs = {
                 (segment.from_item_id, segment.to_item_id): segment.duration_minutes
@@ -2790,11 +3369,7 @@ async def optimize_trip_itinerary(
             by_pair = {(segment.from_item_id, segment.to_item_id): segment for segment in segments}
             for previous, following in zip(day_rows, day_rows[1:], strict=False):
                 segment = by_pair.get((previous.id, following.id))
-                if (
-                    segment is None
-                    or previous.end_time is None
-                    or following.fixed_time
-                ):
+                if segment is None or previous.end_time is None or following.fixed_time:
                     continue
                 following.start_time = previous.end_time + timedelta(
                     minutes=segment.duration_minutes + segment.buffer_minutes
@@ -2880,10 +3455,7 @@ async def reoptimize_trip(
         for item in day.items:
             if item.system_role in {"outbound_flight", "return_flight"}:
                 current = flight_anchors.get(item.system_role)
-                if (
-                    current is not None
-                    and current.data.get("flight_selection_source") != "manual"
-                ):
+                if current is not None and current.data.get("flight_selection_source") != "manual":
                     current.item_type = item.item_type
                     current.offer_id = item.offer_id
                     current.title = item.title

@@ -895,6 +895,9 @@ a {
 }
 
 .planner-day-scroll {
+  margin-inline: -0.25rem;
+  padding-inline: 0.25rem 1.25rem;
+  scroll-padding-inline: 0.25rem 1.25rem;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
 }
@@ -1576,11 +1579,143 @@ a {
   display: grid;
   min-width: 0;
   gap: 1rem;
+  grid-template-areas:
+    "map"
+    "modes"
+    "detail"
+    "controls"
+    "apply";
 }
 
+.route-panel-map,
+.route-panel-modes,
 .route-panel-controls,
 .route-panel-detail {
   min-width: 0;
+}
+
+.route-panel-map {
+  grid-area: map;
+}
+
+.route-panel-modes {
+  grid-area: modes;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1.3rem;
+  background: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.route-panel-controls {
+  grid-area: controls;
+}
+
+.route-panel-detail {
+  grid-area: detail;
+}
+
+.route-endpoints {
+  display: grid;
+  gap: 0;
+  padding: 0.85rem 1rem;
+}
+
+.route-endpoint {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.7rem;
+  padding-block: 0.35rem;
+}
+
+.route-endpoint:first-child::after {
+  position: absolute;
+  top: 2.45rem;
+  bottom: -0.35rem;
+  left: 0.95rem;
+  width: 2px;
+  background: color-mix(in srgb, var(--coral) 45%, var(--line));
+  content: "";
+}
+
+.route-endpoint > span {
+  z-index: 1;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 2px solid var(--coral);
+  border-radius: 999px;
+  background: white;
+  color: var(--coral);
+  font-size: 0.75rem;
+  font-weight: 850;
+}
+
+.route-endpoint p {
+  min-width: 0;
+}
+
+.route-endpoint small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.route-endpoint strong {
+  display: block;
+  overflow: hidden;
+  margin-top: 0.1rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.route-mode-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-top: 1px solid var(--line);
+  padding: 0.55rem;
+}
+
+.route-mode-toolbar .route-mode-tabs {
+  min-width: 0;
+  flex: 1;
+}
+
+.route-navigation-link {
+  display: inline-flex;
+  min-height: 2.85rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border-radius: 0.9rem;
+  background: var(--teal);
+  padding-inline: 0.8rem;
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.route-selection-summary {
+  display: flex;
+  min-height: 3.1rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--line);
+  padding: 0.65rem 1rem;
+  font-size: 0.78rem;
+}
+
+.route-selection-summary span {
+  color: var(--muted);
+  font-size: 0.7rem;
 }
 
 .route-map-card {
@@ -1613,6 +1748,7 @@ a {
 }
 
 .route-apply-bar {
+  grid-area: apply;
   position: sticky;
   bottom: -0.05rem;
   z-index: 2;
@@ -1766,6 +1902,7 @@ a {
 @media (max-width: 1023px) {
   .planner-app-shell {
     background: var(--paper);
+    padding-bottom: calc(10rem + env(safe-area-inset-bottom));
   }
   .planner-day-panel {
     border-color: color-mix(in srgb, var(--line) 85%, transparent);
@@ -1822,9 +1959,15 @@ a {
 
   .route-panel-layout {
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-template-areas:
+      "modes map"
+      "controls map"
+      "controls detail"
+      "apply apply";
     align-items: start;
   }
 
+  .route-panel-map,
   .route-panel-detail {
     max-height: calc(100dvh - 10rem);
     overflow-y: auto;
@@ -1832,9 +1975,6 @@ a {
     padding-right: 0.2rem;
   }
 
-  .route-panel-layout > .route-apply-bar {
-    grid-column: 1 / -1;
-  }
   .route-map-drawer .route-map-frame {
     height: 300px;
   }

@@ -203,6 +203,30 @@ type OptimizationPreview = {
 };
 type ConfirmAction = "reprice" | "revoke-share" | "rotate-share" | "overwrite-conflict";
 type AIPlanningScope = "day" | "trip";
+type AIItineraryPreview = {
+  preview_id: string;
+  base_version: number;
+  expires_at: string;
+  scope: AIPlanningScope;
+  day_date?: string | null;
+  planning: NonNullable<Trip["planning"]>;
+  days: Array<{ date: string; label: string; items: TripItem[] }>;
+  unscheduled_slots: Array<{ date: string; slot: "activity" | "lunch" | "dinner" }>;
+  readiness: {
+    status: "ready" | "partial" | "needs_setup" | "fallback";
+    has_lodging: boolean;
+    exact_item_count: number;
+    hotspot_candidate_count: number;
+    merchant_candidate_count: number;
+    preserved_item_count: number;
+    assumptions: string[];
+  };
+  routing_summary: {
+    exact_items: number;
+    eligible_pairs: number;
+    hotel_pairs_deferred: number;
+  };
+};
 type PlannerTheme = "forest" | "ocean" | "sunset" | "lavender";
 
 const plannerThemes: Array<{ id: PlannerTheme; name: string; description: string; colors: [string, string, string] }> = [
@@ -247,6 +271,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const [toolsOpen, setToolsOpen] = useState(false);
   const [aiMenuOpen, setAIMenuOpen] = useState(false);
   const [aiScope, setAIScope] = useState<AIPlanningScope>("day");
+  const [aiPreview, setAIPreview] = useState<AIItineraryPreview>();
   const [plannerTheme, setPlannerTheme] = useState<PlannerTheme>("forest");
   const [draftItem, setDraftItem] = useState<TripItem>();
   const [recentItemId, setRecentItemId] = useState<string>();
@@ -266,6 +291,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const optimizationApplyRef = useRef<{ previewId: string; key: string } | undefined>(undefined);
   const repriceRequestRef = useRef<{ tripVersion: number; key: string } | undefined>(undefined);
   const aiRequestRef = useRef<{ signature: string; key: string } | undefined>(undefined);
+  const aiApplyRef = useRef<{ previewId: string; key: string } | undefined>(undefined);
   const routeHistoryTokenRef = useRef<string | undefined>(undefined);
   const dayScrollRef = useRef<HTMLDivElement>(null);
   const activeDayChipRef = useRef<HTMLButtonElement>(null);
@@ -1004,6 +1030,8 @@ export function TripEditor({ tripId }: { tripId: string }) {
 
   function openAIPlanner(defaultScope: AIPlanningScope) {
     setAIScope(defaultScope === "day" && !activeDay ? "trip" : defaultScope);
+    setAIPreview(undefined);
+    aiApplyRef.current = undefined;
     setAIMenuOpen(true);
   }
 
@@ -1024,7 +1052,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
     setError(undefined);
     setNotice(undefined);
     try {
-      const updated = await api<Trip>(`/trips/${currentTrip.id}/itinerary/generate`, {
+      const previewResult = await api<AIItineraryPreview>(`/trips/${currentTrip.id}/itinerary/preview`, {
         method: "POST",
         headers: { "Idempotency-Key": requestIdentity.key },
         body: JSON.stringify({
@@ -1033,23 +1061,9 @@ export function TripEditor({ tripId }: { tripId: string }) {
           day_date: dayDate || null,
         }),
       });
-      replaceTrip(updated);
-      setRoutes([]);
-      setSelectedRoute(undefined);
-      closeRouteDrawer();
-      setStaleDays(new Set(scope === "day" && dayDate ? [dayDate] : days));
-      revisionRef.current = 0;
-      persistedRevisionRef.current = 0;
-      setRevision(0);
-      updateSaveState("saved");
+      setAIPreview(previewResult);
       aiRequestRef.current = undefined;
-      setAIMenuOpen(false);
-      try { window.localStorage.removeItem(draftKey); } catch { /* storage can be blocked */ }
-      const provider = aiProviderLabel(updated.planning?.provider);
-      const scopeLabel = scope === "day" ? mobileDayHeading(dayDate || "", locale) : `全部 ${days.length} 天`;
-      setNotice(updated.usage?.status === "charged"
-        ? `${provider} 已完成${scopeLabel}安排並扣除 ${updated.usage.uses} 次；手動、鎖定與固定時間項目均已保留。`
-        : `${provider} 已完成${scopeLabel}安排，本次未扣次；手動、鎖定與固定時間項目均已保留。`);
+      setNotice("預覽已準備完成；確認套用前，原行程沒有變更，也不會扣次。");
     } catch (reason) {
       if (isUsageInsufficient(reason)) {
         aiRequestRef.current = undefined;
@@ -1060,6 +1074,58 @@ export function TripEditor({ tripId }: { tripId: string }) {
         setError(`${reason.message}；原行程保持不變，本次未扣次。`);
       } else {
         setError(`${reason instanceof Error ? reason.message : "AI 安排失敗"}；結果尚未確認，重試會沿用同一請求編號。`);
+      }
+    } finally { setAction(undefined); }
+  }
+
+  async function applyAIItinerary() {
+    if (!trip || !aiPreview) return;
+    const requestIdentity = aiApplyRef.current?.previewId === aiPreview.preview_id
+      ? aiApplyRef.current
+      : { previewId: aiPreview.preview_id, key: crypto.randomUUID() };
+    aiApplyRef.current = requestIdentity;
+    setAction("ai-apply");
+    setError(undefined);
+    setNotice(undefined);
+    try {
+      const updated = await api<Trip>(`/trips/${trip.id}/itinerary/apply`, {
+        method: "POST",
+        headers: { "Idempotency-Key": requestIdentity.key },
+        body: JSON.stringify({
+          version: aiPreview.base_version,
+          preview_id: aiPreview.preview_id,
+        }),
+      });
+      replaceTrip(updated);
+      setRoutes([]);
+      setSelectedRoute(undefined);
+      closeRouteDrawer();
+      setStaleDays(new Set(aiPreview.scope === "day" && aiPreview.day_date ? [aiPreview.day_date] : days));
+      revisionRef.current = 0;
+      persistedRevisionRef.current = 0;
+      setRevision(0);
+      updateSaveState("saved");
+      aiApplyRef.current = undefined;
+      setAIPreview(undefined);
+      setAIMenuOpen(false);
+      try { window.localStorage.removeItem(draftKey); } catch { /* storage can be blocked */ }
+      const provider = aiProviderLabel(updated.planning?.provider);
+      const scopeLabel = aiPreview.scope === "day"
+        ? mobileDayHeading(aiPreview.day_date || "", locale)
+        : `全部 ${days.length} 天`;
+      setNotice(updated.usage?.status === "charged"
+        ? `${provider} 已套用${scopeLabel}安排並扣除 ${updated.usage.uses} 次。`
+        : `${provider} 已套用${scopeLabel}安排，本次未扣次。`);
+    } catch (reason) {
+      if (isUsageInsufficient(reason)) {
+        aiApplyRef.current = undefined;
+        setAIMenuOpen(false);
+        router.push("/pricing");
+      } else if (reason instanceof ApiError) {
+        aiApplyRef.current = undefined;
+        setError(`${reason.message}；原行程保持不變，請重新預覽。`);
+      } else {
+        setError(`${reason instanceof Error ? reason.message : "套用行程失敗"}；原行程保持不變。`);
       }
     } finally { setAction(undefined); }
   }
@@ -1158,6 +1224,12 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const activeDayRouteSetting = trip?.routing?.day_settings.find((setting) => setting.day_date === activeDay);
   const activeTravelMode = activeDayRouteSetting?.default_travel_mode || "transit";
   const activeTravelBuffer = activeDayRouteSetting?.default_buffer_minutes ?? 10;
+  const lodgingReady = trip?.primary_lodging?.latitude != null && trip.primary_lodging.longitude != null;
+  const outboundReady = items.some((item) => item.system_role === "outbound_flight" && item.data.flight_selection_source !== "unset");
+  const returnReady = items.some((item) => item.system_role === "return_flight" && item.data.flight_selection_source !== "unset");
+  const unresolvedRouteItems = items.filter((item) => !item.is_skipped && !isFlightAnchor(item) && !isLogisticsItem(item) && !item.system_role?.startsWith("hotel_") && item.latitude == null && item.longitude == null);
+  const routeWarnings = trip?.routing?.warnings || [];
+  const routeNeedsLocations = trip?.routing?.status === "needs_locations" || routeWarnings.some((warning) => warning.includes("缺少已確認地點"));
   const confirmCopy: Record<ConfirmAction, { title: string; description: string; label: string; danger?: boolean }> = {
     reprice: { title: "重新查價整趟旅程？", description: repriceCharge.status === "ready" ? `成功取得新的機票、住宿或活動結果後會${repriceCharge.label}；供應商失敗或沒有結果不扣次。` : repriceCharge.unavailableHelp, label: `確認重新查價 · ${repriceCharge.label}` },
     "revoke-share": { title: "撤銷分享連結？", description: "目前持有連結的人將立即無法查看這趟旅程。", label: "撤銷連結", danger: true },
@@ -1197,11 +1269,9 @@ export function TripEditor({ tripId }: { tripId: string }) {
       {saveState === "conflict" && <div role="alert" className="relative mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><p className="font-semibold">偵測到其他版本</p><p className="mt-1 leading-6">本機修改仍保留。你可以載入雲端版本，或確認後以本機內容覆蓋。</p><div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={() => void loadCloudVersion()} className="min-h-11 rounded-xl border border-amber-300 bg-white px-4 font-semibold">載入雲端版本</button><button type="button" onClick={() => setConfirmAction("overwrite-conflict")} className="min-h-11 rounded-xl bg-amber-900 px-4 font-semibold text-white">保留本機修改</button></div></div>}
     </section>
 
-    {trip.planning && <section aria-label="AI 安排狀態" className={`mb-4 flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm ${trip.planning.status === "fallback" ? "border-amber-200 bg-amber-50 text-amber-950" : "border-violet-200 bg-violet-50 text-violet-950"}`}><span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/80"><Sparkles size={16} /></span><div className="min-w-0 flex-1"><p className="font-semibold">{aiProviderLabel(trip.planning.provider)} 已產生可編輯的行程建議</p><p className="mt-0.5 text-xs leading-5 opacity-75">{trip.planning.scope === "day" && trip.planning.day_date ? `上次安排：${trip.planning.day_date}` : "上次安排：全行程"}。鎖定、固定時間與手動項目不會被取代。</p></div><button type="button" onClick={() => openAIPlanner(activeDay ? "day" : "trip")} className="min-h-10 shrink-0 rounded-xl bg-white/80 px-3 text-xs font-bold">再安排</button></section>}
+    {trip.planning && <section aria-label="AI 安排狀態" className={`mb-4 flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm ${trip.planning.readiness === "partial" || trip.planning.readiness === "needs_setup" || trip.planning.status === "fallback" ? "border-amber-200 bg-amber-50 text-amber-950" : "border-violet-200 bg-violet-50 text-violet-950"}`}><span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/80"><Sparkles size={16} /></span><div className="min-w-0 flex-1"><p className="font-semibold">{trip.planning.readiness === "needs_setup" ? "需要先補齊正式地點" : trip.planning.readiness === "partial" ? "已套用可確認的部分行程" : trip.planning.status === "fallback" ? "已套用核准目錄備援行程" : `${aiProviderLabel(trip.planning.provider)} 已套用正式地點行程`}</p><p className="mt-0.5 text-xs leading-5 opacity-75">{trip.planning.scope === "day" && trip.planning.day_date ? `上次安排：${trip.planning.day_date}` : "上次安排：全行程"}。鎖定、固定時間與手動項目不會被取代。</p></div><button type="button" onClick={() => openAIPlanner(activeDay ? "day" : "trip")} className="min-h-10 shrink-0 rounded-xl bg-white/80 px-3 text-xs font-bold">再安排</button></section>}
 
     {trip.routing && ["queued", "processing"].includes(trip.routing.status) && <section aria-live="polite" className="mb-4 flex items-center gap-3 rounded-2xl border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-950"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white"><Loader2 size={18} className="animate-spin text-sky-700" /></span><div className="min-w-0 flex-1"><p className="font-semibold">正在安排每天的移動時間</p><p className="mt-0.5 text-xs opacity-75">已完成 {trip.routing.completed}/{trip.routing.total} 段；可以先查看或編輯景點。</p></div></section>}
-    {trip.routing && ["partial", "failed", "unavailable", "needs_locations"].includes(trip.routing.status) && trip.routing.warnings?.length ? <section className="mb-4 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950"><p className="flex items-center gap-2 font-semibold"><TriangleAlert size={17} />部分移動時間需要確認</p><div className="mt-2 grid gap-2">{trip.routing.warnings.map((warning) => <div key={warning} className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-white/70 px-3 py-2"><p className="min-w-0 flex-1 text-xs leading-5">{warning}</p><button type="button" onClick={() => void computeRoutes(activeDay, true)} className="min-h-10 shrink-0 rounded-lg px-3 text-xs font-bold text-[var(--teal)]">重新處理</button></div>)}</div></section> : null}
-
     {allLogistics.length > 0 && <details className="planner-logistics-panel mb-4 px-4 py-3"><summary className="min-h-11 cursor-pointer py-2 text-sm font-bold">交通與住宿資訊 · {allLogistics.length} 項</summary><p className="mb-3 text-xs leading-5 text-[var(--muted)]">接送、入住與退房獨立保存，不加入每天的景點路線。</p><div className="grid gap-2 pb-1 sm:grid-cols-2">{allLogistics.map((item) => <div key={item.id} className="rounded-xl bg-white px-3 py-2.5"><p className="text-xs font-semibold text-[var(--muted)]">{item.day_date} · {formatTime(item.start_time, locale, trip.timezone)}</p><p className="mt-1 text-sm font-bold">{item.title}</p>{item.location_name && <p className="mt-1 text-xs text-[var(--muted)]">{item.location_name}</p>}</div>)}</div></details>}
 
     <section className="planner-day-strip sticky z-30 -mx-4 mb-4 border-y border-[var(--line)] px-4 py-3 lg:top-0 lg:mx-0 lg:mb-5 lg:rounded-2xl lg:border"><div ref={dayScrollRef} className="planner-day-scroll flex gap-2 overflow-x-auto pb-1" aria-label="選擇行程日期">{days.map((day, index) => { const label = dayLabel(day, index, locale); const count = (groups.get(day) || []).filter((item) => !isLogisticsItem(item) && !isFlightAnchor(item) && !item.is_skipped && !item.system_role?.startsWith("hotel_")).length; const selected = activeDay === day; return <button key={day} ref={selected ? activeDayChipRef : undefined} type="button" aria-current={selected ? "date" : undefined} aria-pressed={selected} onClick={() => { const dayIds = new Set((groups.get(day) || []).filter(isActiveRouteItem).map((item) => item.id)); setActiveDay(day); setSelectedRoute(routes.find((route) => dayIds.has(route.from_item_id))); setRouteDrawerOpen(false); setRouteTarget(undefined); setReorderMode(false); }} className={`planner-day-chip min-h-14 min-w-[5.1rem] shrink-0 rounded-2xl border px-3 py-2 text-left ${selected ? "planner-day-chip-active" : ""}`}><span className="block text-[.65rem] font-semibold tracking-[.12em] opacity-75">{day === today ? "今天" : label.eyebrow}</span><span className="mt-0.5 block text-sm font-bold">{label.short} {label.weekday}</span><span className="block text-[.65rem] opacity-70">{count} 個安排</span></button>; })}</div></section>
@@ -1238,6 +1308,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
             : `接續前站 · 預計 ${formatTime(item.start_time, locale, trip.timezone)}`;
           return <li id={`trip-item-${item.id}`} key={item.id} className={`planner-enter relative ${isFlightAnchor(item) ? "" : "pl-9"}`} style={{ "--planner-index": index } as CSSProperties}>{!isFlightAnchor(item) && <span aria-hidden="true" className="planner-timeline-marker absolute top-6 z-10">{marker}</span>}{isFlightAnchor(item) ? <FlightAnchorCard item={item} busy={action === `flight-${item.system_role === "outbound_flight" ? "outbound" : "return"}`} onEdit={() => openFlightEditor(item)} /> : item.system_role ? <SystemItineraryCard item={item} locale={locale} timezone={trip.timezone} busy={action === `skip-${item.id}`} routeStale={staleDays.has(activeDay) || (!item.fixed_time && !routes.some((route) => route.to_item_id === item.id))} onEdit={() => item.system_role?.startsWith("hotel_") ? openLodgingEditor() : setEditingId(item.id)} onSkip={item.system_role === "lunch" || item.system_role === "dinner" ? () => void toggleMealSkip(item) : undefined} /> : <article draggable={desktopMapVisible} onDragStart={() => setDragged(item.id)} onDragOver={(event) => event.preventDefault()} onDrop={() => drop(item.id)} className={`planner-itinerary-card group p-4 ${reorderMode ? "planner-itinerary-card-reordering" : ""} ${recentItemId === item.id ? "planner-itinerary-card-new" : ""}`}><div className="flex items-start gap-3"><span className="hidden cursor-grab pt-1 text-[var(--muted)] lg:block" title="拖曳排序"><GripVertical size={19} /></span><button type="button" onClick={() => setEditingId(item.id)} className="min-w-0 flex-1 text-left"><div className="flex flex-wrap items-center gap-2"><span className="planner-time-badge">{item.fixed_time ? `固定時間 · ${formatTime(item.start_time, locale, trip.timezone)}` : chainedTime}</span>{item.duration_minutes ? <span className="text-xs text-[var(--muted)]">停留 {item.duration_minutes} 分鐘</span> : null}{item.data.generated_by === "ai_planner" && <span className="rounded-full bg-violet-100 px-2 py-1 text-[.68rem] font-semibold text-violet-800">AI 建議</span>}{item.locked && <span className="rounded-full bg-amber-50 px-2 py-1 text-[.68rem] font-semibold text-amber-800">已鎖定</span>}</div><h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tight">{item.title}</h3><p className="mt-1 flex items-start gap-1.5 text-sm leading-5 text-[var(--muted)]"><MapPin size={15} className="mt-0.5 shrink-0" />{item.location_name || "尚未選擇地點"}</p><span className={`mt-2 inline-flex rounded-full px-2 py-1 text-[.68rem] font-semibold ${itemLocationConfirmed ? "bg-emerald-50 text-emerald-800" : autoLocation ? "bg-sky-50 text-sky-800" : "bg-amber-50 text-amber-800"}`}>{locationStatus}{autoLocation ? " · 可點擊更正" : ""}</span>{itemConflict && <p className="mt-2 rounded-xl bg-red-50 px-3 py-2 text-xs font-semibold leading-5 text-red-800">預定 {formatTime(itemConflict.scheduled_start_time, locale, trip.timezone)}／預計 {formatTime(itemConflict.projected_start_time, locale, trip.timezone)}，可能遲到 {itemConflict.late_minutes} 分鐘</p>}{item.notes && <p className="mt-2 line-clamp-2 text-xs leading-5 text-[var(--muted)]">{item.notes}</p>}</button><div className={`flex shrink-0 items-center gap-1 ${reorderMode ? "flex-col md:flex-row" : ""}`}><button type="button" aria-label={`上移 ${item.title}`} onClick={() => move(item.id, -1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowUp size={18} /></button><button type="button" aria-label={`下移 ${item.title}`} onClick={() => move(item.id, 1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowDown size={18} /></button><button type="button" aria-label={`編輯 ${item.title}`} onClick={() => setEditingId(item.id)} className={`${reorderMode ? "hidden" : "grid"} min-h-11 min-w-11 place-items-center rounded-xl bg-[var(--teal-soft)] text-[var(--teal)] md:grid`}><Edit3 size={17} /></button></div></div></article>}{nextItem && !item.is_skipped && <div className="py-2 pl-2"><RouteTimelineLink segment={segment} nextTitle={nextItem.title} loading={["queued", "processing"].includes(trip.routing?.status || "")} stale={staleDays.has(activeDay) || segment?.status === "stale"} timezone={trip.timezone} onClick={() => { setRouteTarget({ fromItemId: item.id, toItemId: nextItem.id }); setSelectedRoute(segment); setRouteDrawerOpen(true); }} /></div>}</li>;
         })}</ol>
+        {trip.routing && ["partial", "failed", "unavailable", "needs_locations"].includes(trip.routing.status) && routeWarnings.length ? <details className="mt-5 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950"><summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-semibold"><span className="flex items-center gap-2"><TriangleAlert size={17} />部分移動時間需要確認</span><span className="rounded-full bg-white/80 px-2.5 py-1 text-xs">{routeWarnings.length} 類問題</span></summary><div className="mt-2 grid gap-2 border-t border-amber-200/70 pt-3">{routeWarnings.map((warning) => <p key={warning} className="rounded-xl bg-white/70 px-3 py-2 text-xs leading-5">{warning}</p>)}<div className="flex flex-wrap gap-2">{!lodgingReady && <button type="button" onClick={openLodgingEditor} className="min-h-11 rounded-xl bg-amber-900 px-4 text-xs font-bold text-white">設定主要飯店</button>}{routeNeedsLocations && unresolvedRouteItems[0] && <button type="button" onClick={() => setEditingId(unresolvedRouteItems[0].id)} className="min-h-11 rounded-xl bg-white px-4 text-xs font-bold text-[var(--teal)]">選擇正式地點</button>}{!routeNeedsLocations && activeRouteRows.length > 1 && <button type="button" onClick={() => void computeRoutes(activeDay, true)} className="min-h-11 rounded-xl bg-white px-4 text-xs font-bold text-[var(--teal)]">重新查詢可用路線</button>}</div></div></details> : null}
       </section>
       {desktopMapVisible && <aside className="min-w-0 space-y-4 lg:sticky lg:top-24 lg:self-start"><RouteMap items={items} segment={selectedRoute} variant="sidebar" countryCode={trip.destination_country_code} />{selectedRoute && <RouteSegmentCard segment={selectedRoute} selected defaultExpanded timezone={trip.timezone} />}</aside>}
     </div>
@@ -1246,15 +1317,16 @@ export function TripEditor({ tripId }: { tripId: string }) {
 
     {(error || notice) && <div className="planner-toast-stack fixed left-1/2 z-50 w-[min(92vw,38rem)] -translate-x-1/2" aria-live="polite">{error && <div role="alert" className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-900 shadow-lg">{error}{saveState === "offline" && <button type="button" onClick={() => void flushChanges(true)} className="ml-3 font-bold underline">重試</button>}</div>}{notice && <div className="mt-2 flex items-center justify-between gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900 shadow-lg"><span className="flex items-center gap-2"><Check size={16} />{notice}</span>{undoItem && <button type="button" onClick={undoDelete} className="flex min-h-11 shrink-0 items-center gap-1 font-bold"><Undo2 size={16} />復原</button>}</div>}</div>}
 
-    <PlannerOverlay open={aiMenuOpen} onClose={() => { if (!action) setAIMenuOpen(false); }} title="AI 幫我安排" description={`先選擇要安排的範圍；AI 會依興趣、步調、日期與已有安排產生可編輯建議。${aiCharge.label}`} footer={<div className="flex gap-3"><button type="button" onClick={() => setAIMenuOpen(false)} disabled={Boolean(action)} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold disabled:opacity-40">取消</button><button type="button" onClick={() => void generateAIItinerary(aiScope)} disabled={Boolean(action) || (aiScope === "day" && !activeDay) || aiCharge.status !== "ready"} className="flex min-h-12 flex-[1.5] items-center justify-center gap-2 rounded-xl bg-violet-700 px-4 font-semibold text-white disabled:opacity-45">{action === `ai-${aiScope}` ? <Loader2 size={17} className="animate-spin" /> : <Sparkles size={17} />}{aiScope === "day" ? "安排這一天" : "安排全行程"} · {aiCharge.label}</button></div>}>
-      <div className="space-y-5">
+    <PlannerOverlay open={aiMenuOpen} onClose={() => { if (!action) { setAIMenuOpen(false); setAIPreview(undefined); } }} title={aiPreview ? "確認 AI 行程預覽" : "AI 幫我安排"} description={aiPreview ? "預覽不會修改原行程；確認套用後才更新並依實際結果計次。" : `先檢查規劃條件，再產生使用正式地點的可編輯預覽。${aiCharge.label}`} size={aiPreview ? "wide" : "default"} footer={<div className="flex gap-3"><button type="button" onClick={() => { if (aiPreview) setAIPreview(undefined); else setAIMenuOpen(false); }} disabled={Boolean(action)} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold disabled:opacity-40">{aiPreview ? "返回調整" : "取消"}</button><button type="button" onClick={() => void (aiPreview ? applyAIItinerary() : generateAIItinerary(aiScope))} disabled={Boolean(action) || (!aiPreview && ((aiScope === "day" && !activeDay) || aiCharge.status !== "ready")) || (aiPreview?.readiness.status === "needs_setup")} className="flex min-h-12 flex-[1.5] items-center justify-center gap-2 rounded-xl bg-violet-700 px-4 font-semibold text-white disabled:opacity-45">{action?.startsWith("ai-") ? <Loader2 size={17} className="animate-spin" /> : <Sparkles size={17} />}{aiPreview ? `套用行程 · ${aiPreview.planning.provider === "catalog" ? "不扣次" : aiCharge.label}` : "產生預覽 · 不扣次"}</button></div>}>
+      {!aiPreview ? <div className="space-y-5">
         <div role="radiogroup" aria-label="AI 安排範圍" className="grid gap-3 sm:grid-cols-2">
           <button type="button" role="radio" aria-checked={aiScope === "day"} onClick={() => setAIScope("day")} disabled={!activeDay || Boolean(action)} className={`min-h-36 rounded-2xl border p-4 text-left transition disabled:opacity-45 ${aiScope === "day" ? "border-violet-500 bg-violet-50 ring-2 ring-violet-100" : "border-[var(--line)] bg-white"}`}><span className="flex items-center justify-between gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-white text-violet-700"><CalendarDays size={20} /></span><span className={`h-5 w-5 rounded-full border-2 ${aiScope === "day" ? "border-violet-600 bg-violet-600 shadow-[inset_0_0_0_4px_white]" : "border-[var(--line)]"}`} /></span><strong className="mt-3 block">單日安排</strong><span className="mt-1 block text-xs leading-5 text-[var(--muted)]">{activeDay ? `${mobileDayHeading(activeDay, locale)} · 目前 ${activeArrangementCount} 個安排` : "請先選擇日期"}</span></button>
           <button type="button" role="radio" aria-checked={aiScope === "trip"} onClick={() => setAIScope("trip")} disabled={Boolean(action)} className={`min-h-36 rounded-2xl border p-4 text-left transition disabled:opacity-45 ${aiScope === "trip" ? "border-violet-500 bg-violet-50 ring-2 ring-violet-100" : "border-[var(--line)] bg-white"}`}><span className="flex items-center justify-between gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-white text-violet-700"><Sparkles size={20} /></span><span className={`h-5 w-5 rounded-full border-2 ${aiScope === "trip" ? "border-violet-600 bg-violet-600 shadow-[inset_0_0_0_4px_white]" : "border-[var(--line)]"}`} /></span><strong className="mt-3 block">全行程安排</strong><span className="mt-1 block text-xs leading-5 text-[var(--muted)]">重新整理全部 {days.length} 天，並配合每日步調。</span></button>
         </div>
+        <section aria-label="規劃前檢查" className="rounded-2xl border border-[var(--line)] bg-white p-4"><div className="flex items-center justify-between gap-3"><p className="font-semibold">規劃前檢查</p><span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-1 text-xs font-bold text-[var(--teal)]">可先預覽</span></div><ul className="mt-3 grid gap-2 text-xs"><li className="flex items-center gap-2"><span className={`h-2 w-2 rounded-full ${lodgingReady ? "bg-emerald-500" : "bg-amber-500"}`} />{lodgingReady ? "主要飯店已有精準位置" : "飯店未設定：先按區域分組，不建立飯店路線"}</li><li className="flex items-center gap-2"><span className={`h-2 w-2 rounded-full ${outboundReady ? "bg-emerald-500" : "bg-amber-500"}`} />{outboundReady ? "已取得抵達時間" : "抵達時間未設定：首日從 14:00 後安排"}</li><li className="flex items-center gap-2"><span className={`h-2 w-2 rounded-full ${returnReady ? "bg-emerald-500" : "bg-amber-500"}`} />{returnReady ? "已取得離開時間" : "離開時間未設定：末日安排至 16:00 前"}</li></ul>{!lodgingReady && <button type="button" onClick={() => { setAIMenuOpen(false); openLodgingEditor(); }} className="mt-3 min-h-11 rounded-xl border border-[var(--line)] bg-white px-4 text-xs font-bold text-[var(--teal)]">先設定主要飯店</button>}</section>
         <section className="rounded-2xl bg-[var(--paper)] p-4 text-sm leading-6"><p className="font-semibold">AI 會保留的內容</p><ul className="mt-2 grid gap-1.5 text-xs text-[var(--muted)]"><li>• 你手動新增的景點、餐廳與備註</li><li>• 已鎖定的項目與固定預約時間</li><li>• 單日模式下其他日期的所有行程</li></ul></section>
         <button type="button" onClick={() => { setAIMenuOpen(false); void previewOptimization(aiScope === "day" ? activeDay : undefined); }} disabled={Boolean(action) || (aiScope === "day" ? activeRouteRows.length < 2 : tripRouteItemCount < 2)} className="flex min-h-12 w-full items-center justify-between gap-3 rounded-xl border border-[var(--line)] bg-white px-4 text-left text-sm disabled:opacity-40"><span><strong className="block">只調整現有動線</strong><span className="mt-0.5 block text-xs font-normal text-[var(--muted)]">不新增景點，先預覽順序與移動時間</span></span><RouteIcon size={18} className="shrink-0 text-[var(--teal)]" /></button>
-      </div>
+      </div> : <div className="space-y-5"><section className={`rounded-2xl border p-4 ${aiPreview.readiness.status === "ready" || aiPreview.readiness.status === "fallback" ? "border-emerald-200 bg-emerald-50" : "border-amber-200 bg-amber-50"}`}><div className="flex flex-wrap items-center justify-between gap-2"><div><p className="font-bold">{aiPreview.readiness.status === "needs_setup" ? "正式地點不足，暫時無法套用" : aiPreview.readiness.status === "partial" ? "部分時段需要手動補充" : aiPreview.planning.provider === "catalog" ? "核准目錄備援預覽" : `${aiProviderLabel(aiPreview.planning.provider)} 精準地點預覽`}</p><p className="mt-1 text-xs text-[var(--muted)]">{aiPreview.readiness.exact_item_count} 個正式安排 · {aiPreview.routing_summary.eligible_pairs} 段可計算動線</p></div><span className="rounded-full bg-white px-3 py-1.5 text-xs font-bold">{aiPreview.readiness.hotspot_candidate_count} 景點 · {aiPreview.readiness.merchant_candidate_count} 店家</span></div></section>{aiPreview.readiness.assumptions.length > 0 && <section className="rounded-2xl bg-[var(--paper)] p-4"><p className="text-sm font-bold">本次採用的假設</p><ul className="mt-2 grid gap-1.5 text-xs leading-5 text-[var(--muted)]">{aiPreview.readiness.assumptions.map((assumption) => <li key={assumption}>• {assumption}</li>)}</ul></section>}<div className="grid gap-3 sm:grid-cols-2">{aiPreview.days.map((day, index) => <section key={day.date} className="rounded-2xl border border-[var(--line)] bg-white p-4"><div className="flex items-center justify-between"><div><p className="text-[.65rem] font-bold tracking-[.14em] text-violet-700">DAY {days.indexOf(day.date) >= 0 ? days.indexOf(day.date) + 1 : index + 1}</p><h3 className="mt-1 font-bold">{mobileDayHeading(day.date, locale)}</h3><p className="mt-1 text-xs text-[var(--muted)]">{day.label}</p></div><span className="rounded-full bg-violet-50 px-2.5 py-1 text-xs font-semibold text-violet-800">{day.items.length} 項</span></div><ol className="mt-3 grid gap-2">{day.items.map((item) => <li key={item.id} className="flex gap-3 rounded-xl bg-[var(--paper)] px-3 py-2.5"><span className="shrink-0 text-xs font-bold text-[var(--teal)]">{formatTime(item.start_time, locale, trip.timezone)}</span><span className="min-w-0 flex-1"><strong className="block truncate text-sm">{item.title}</strong><span className="mt-0.5 block truncate text-xs text-[var(--muted)]">{item.location_name}</span><span className="mt-1 block text-[.68rem] font-semibold text-[var(--teal)]">停留 {item.duration_minutes || 60} 分鐘</span></span></li>)}</ol>{day.items.length === 0 && <p className="mt-3 rounded-xl bg-amber-50 px-3 py-3 text-xs text-amber-900">這天目前沒有足夠的正式地點。</p>}</section>)}</div>{aiPreview.unscheduled_slots.length > 0 && <details className="rounded-2xl border border-amber-200 bg-amber-50 p-4"><summary className="min-h-8 cursor-pointer text-sm font-bold">{aiPreview.unscheduled_slots.length} 個時段尚未安排</summary><ul className="mt-2 grid gap-1 text-xs text-amber-950">{aiPreview.unscheduled_slots.map((slot, index) => <li key={`${slot.date}-${slot.slot}-${index}`}>• {slot.date} · {slot.slot === "activity" ? "景點" : slot.slot === "lunch" ? "午餐" : "晚餐"}</li>)}</ul></details>}</div>}
     </PlannerOverlay>
 
     <PlannerOverlay open={toolsOpen} onClose={() => setToolsOpen(false)} title="旅程工具" description="不常用的設定集中在這裡，規劃時間軸時保持畫面清爽。">

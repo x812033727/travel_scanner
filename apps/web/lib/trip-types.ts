@@ -144,10 +144,14 @@ export type Trip = {
   schedule_defaults?: ScheduleDefaults;
   planning?: {
     status: "live" | "fallback" | "partial";
+    readiness?: "ready" | "partial" | "needs_setup" | "fallback";
     provider: "openai" | "anthropic" | "minimax" | "catalog";
     model?: string | null;
     generated_at: string;
     warnings: string[];
+    exact_item_count?: number;
+    candidate_count?: number;
+    unscheduled_slots?: Array<{ date: string; slot: "activity" | "lunch" | "dinner" }>;
     scope?: "day" | "trip";
     day_date?: string | null;
   } | null;
@@ -204,5 +208,9 @@ export function isFlightAnchor(item: TripItem): item is TripItem & {
 }
 
 export function isActiveRouteItem(item: TripItem) {
-  return !item.is_skipped && !isFlightAnchor(item) && !isLogisticsItem(item);
+  const systemLocationReady = item.latitude != null && item.longitude != null;
+  return !item.is_skipped
+    && !isFlightAnchor(item)
+    && !isLogisticsItem(item)
+    && (!["hotel_start", "hotel_end", "lunch", "dinner"].includes(item.system_role || "") || systemLocationReady);
 }

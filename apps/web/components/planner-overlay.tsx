@@ -12,6 +12,7 @@ type PlannerOverlayProps = {
   footer?: ReactNode;
   size?: "default" | "wide";
   expandable?: boolean;
+  defaultExpanded?: boolean;
 };
 
 export function PlannerOverlay({
@@ -23,19 +24,20 @@ export function PlannerOverlay({
   footer,
   size = "default",
   expandable = false,
+  defaultExpanded = false,
 }: PlannerOverlayProps) {
   const panelRef = useRef<HTMLElement>(null);
   const onCloseRef = useRef(onClose);
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(defaultExpanded || expandable);
 
   useEffect(() => {
     onCloseRef.current = onClose;
   }, [onClose]);
 
   const closeOverlay = useCallback(() => {
-    setExpanded(false);
+    setExpanded(defaultExpanded || expandable);
     onCloseRef.current();
-  }, []);
+  }, [defaultExpanded, expandable]);
 
   useEffect(() => {
     if (!open) return;

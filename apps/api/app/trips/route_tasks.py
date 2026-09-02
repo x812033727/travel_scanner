@@ -104,6 +104,8 @@ async def compute_and_apply_routes(
     override_by_day: dict[date, set[tuple[UUID, UUID]]] = {}
     item_updates: dict[UUID, tuple[datetime | None, datetime | None]] = {}
     warnings: list[str] = []
+    missing_location_pairs = 0
+    unavailable_pairs = 0
     conflicts: list[dict[str, Any]] = []
     total_pairs = route_pair_count(
         [row for row in rows if row.day_date in set(target_days)]
@@ -156,10 +158,7 @@ async def compute_and_apply_routes(
                 continue
             origin, destination = _route_point(previous), _route_point(following)
             if origin is None or destination is None:
-                warnings.append(
-                    f"{previous.title or previous.item_type} → "
-                    f"{following.title or following.item_type} 缺少已確認座標"
-                )
+                missing_location_pairs += 1
                 if saved is not None:
                     retained = segment_from_record(saved)
                     segments.append(retained)
@@ -182,10 +181,7 @@ async def compute_and_apply_routes(
                 refresh=refresh,
             )
             if computed_segment is None:
-                warnings.append(
-                    f"{previous.title or previous.item_type} → "
-                    f"{following.title or following.item_type} 暫無可用路線"
-                )
+                unavailable_pairs += 1
                 if saved is not None:
                     stale = segment_from_record(saved)
                     retained = stale.model_copy(
@@ -235,6 +231,13 @@ async def compute_and_apply_routes(
         conflicts.extend(
             conflict.model_dump(mode="json") for conflict in projection.impact.conflicts
         )
+
+    if missing_location_pairs:
+        warnings.append(
+            f"{missing_location_pairs} 段移動缺少已確認地點，請先完成地點設定。"
+        )
+    if unavailable_pairs:
+        warnings.append(f"{unavailable_pairs} 段移動暫時沒有可用路線。")
 
     completed = sum(len(value) for value in computed_by_day.values())
     has_stale = any(

@@ -9,6 +9,7 @@ import {
   Footprints,
   Loader2,
   MapPin,
+  Navigation,
   RefreshCw,
   TriangleAlert,
 } from "lucide-react";
@@ -251,9 +252,26 @@ export function RouteModePanel({
     ? `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(fromItem.location_name || fromItem.title)}&destination=${encodeURIComponent(toItem.location_name || toItem.title)}&travelmode=${mode === "walk" ? "walking" : mode === "drive" ? "driving" : "transit"}`
     : undefined;
 
+  const navigationUrl = externalNavigation?.web_url || activeSegment?.maps_url || directionsUrl;
+
   return <div className="route-panel-layout">
+    <div className="route-panel-map min-w-0">
+      <RouteMap items={items} segment={activeSegment} fromItemId={fromItemId} toItemId={toItemId} travelMode={mode} variant="drawer" countryCode={trip.destination_country_code} />
+    </div>
+
+    <section className="route-panel-modes" aria-label="路線起訖與交通方式">
+      <div className="route-endpoints">
+        <div className="route-endpoint"><span aria-hidden="true">1</span><p><small>從</small><strong>{fromItem?.location_name || fromItem?.title || "起點待確認"}</strong></p></div>
+        <div className="route-endpoint"><span aria-hidden="true">2</span><p><small>到</small><strong>{toItem?.location_name || toItem?.title || "終點待確認"}</strong></p></div>
+      </div>
+      <div className="route-mode-toolbar">
+        <div className="route-mode-tabs" role="tablist" aria-label="選擇交通工具">{modes.map(({ value, label, icon: Icon }) => <button key={value} type="button" role="tab" aria-selected={mode === value} onClick={() => { if (previews[value] || initialSegment?.travel_mode === value) setMode(value); else void previewMode(value); }} className={`route-mode-tab ${mode === value ? "route-mode-tab-active" : ""}`}><Icon size={18} />{label}{loadingMode === value && <Loader2 size={14} className="animate-spin" />}</button>)}</div>
+        {navigationUrl && <a href={navigationUrl} target="_blank" rel="noreferrer" className="route-navigation-link" aria-label={`導航：${fromItem?.title || "起點"}到${toItem?.title || "終點"}`}><Navigation size={16} />導航</a>}
+      </div>
+      <div className="route-selection-summary"><strong>{activeSegment ? `${activeSegment.duration_minutes} 分鐘` : externalNavigation ? "外部導航" : "正在取得路線"}</strong><span>{activeSegment?.schedule_mode === "preview" ? "自訂時間預覽" : activeSegment?.schedule_mode === "live" ? "目前路線" : "依行程時間規劃"}</span></div>
+    </section>
+
     <div className="route-panel-controls space-y-4">
-      <div className="route-mode-tabs" role="tablist" aria-label="選擇交通工具">{modes.map(({ value, label, icon: Icon }) => <button key={value} type="button" role="tab" aria-selected={mode === value} onClick={() => { if (previews[value] || initialSegment?.travel_mode === value) setMode(value); else void previewMode(value); }} className={`route-mode-tab ${mode === value ? "route-mode-tab-active" : ""}`}><Icon size={18} />{label}{loadingMode === value && <Loader2 size={14} className="animate-spin" />}</button>)}</div>
       <section className="route-buffer-control"><div><p className="font-semibold">預留轉場時間</p><p className="mt-1 text-xs text-[var(--muted)]">找路、等車或停車不會被算進純路程時間。</p></div><select aria-label="移動緩衝時間" value={buffer} onChange={(event) => { const value = Number(event.target.value); setBuffer(value); void previewMode(mode, value); }} className="min-h-11 rounded-xl border border-[var(--line)] bg-white px-3 text-sm font-semibold">{bufferOptions.map((value) => <option key={value} value={value}>{value} 分鐘</option>)}</select></section>
 
       {resolvingLocations && <div className="route-preview-skeleton compact" aria-live="polite"><Loader2 size={22} className="animate-spin text-[var(--teal)]" /><strong>正在補齊兩端地點…</strong><span>依旅程國家使用 NAVER 或 Google 搜尋</span></div>}
@@ -269,7 +287,7 @@ export function RouteModePanel({
       {manualOpen && <section className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4"><h3 className="font-bold">手動輸入移動時間</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">查不到路線時可使用；畫面會明確標示未經地圖服務驗證。</p><label className="mt-3 block text-sm font-semibold">移動分鐘<input type="number" min="1" max="1440" value={manualMinutes} onChange={(event) => setManualMinutes(event.target.value)} className="mt-2 min-h-11 w-full rounded-xl border border-[var(--line)] bg-white px-3" /></label><button type="button" onClick={() => void applyManual()} disabled={applying} className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] font-bold text-white disabled:opacity-45">{applying ? <Loader2 size={17} className="animate-spin" /> : <Check size={17} />}套用手動時間</button></section>}
     </div>
 
-    {(activeSegment || externalNavigation) && <div className="route-panel-detail min-w-0 space-y-4"><RouteMap items={items} segment={activeSegment} fromItemId={fromItemId} toItemId={toItemId} travelMode={mode} variant="drawer" countryCode={trip.destination_country_code} />{activeSegment && <RouteSegmentCard segment={activeSegment} selected defaultExpanded timezone={trip.timezone} />}</div>}
+    <div className="route-panel-detail min-w-0">{activeSegment && <RouteSegmentCard segment={activeSegment} selected defaultExpanded timezone={trip.timezone} />}</div>
 
     <div className="route-apply-bar"><div className="min-w-0"><span className="block text-xs text-[var(--muted)]">目前選擇</span><strong className="block truncate">{modes.find((item) => item.value === mode)?.label}{activeSegment ? ` · ${activeSegment.duration_minutes} 分鐘` : externalNavigation ? " · 外部導航" : " · 尚未取得"}</strong></div><button type="button" onClick={() => providerPreview ? void applyPreview() : void previewMode(mode)} disabled={applying || Boolean(loadingMode) || resolvingLocations || unresolvedItems.length > 0 || isApplied || Boolean(externalNavigation)} className="flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 font-bold text-white disabled:opacity-45">{applying ? <Loader2 size={17} className="animate-spin" /> : isApplied ? <Check size={17} /> : null}{isApplied ? "目前已套用" : providerPreview ? "套用此路線" : externalNavigation ? "外部導航，無法套用" : loadingMode ? "取得中…" : "取得路線"}</button></div>
   </div>;

@@ -8,9 +8,11 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy import func, select, update
 from sqlalchemy.exc import DBAPIError
 
+import app.trips.router as trips_router_module
 from app.ai.itinerary import (
     AIItineraryPlanner,
     AIItineraryRequest,
+    AIPlannerCandidate,
     AIPlanningResult,
 )
 from app.db import SessionFactory, engine
@@ -558,11 +560,21 @@ async def test_blank_trip_creation_and_structured_itinerary_fields(
                 for item in trip["items"]
                 if item["day_date"] == day_value and item["system_role"]
             } == expected
-        assert all(
-            item["data"]["generated_by"] == "ai_planner"
+        planned_items = [
+            item
             for item in trip["items"]
-            if item["system_role"]
-            not in {"outbound_flight", "hotel_start", "hotel_end", "return_flight"}
+            if item["data"].get("generated_by") == "ai_planner"
+        ]
+        assert all(
+            item["latitude"] is not None
+            and item["longitude"] is not None
+            and item["data"].get("needs_place_confirmation") is False
+            for item in planned_items
+        )
+        assert all(
+            item["data"].get("meal_selection_source") in {"unset", "ai"}
+            for item in trip["items"]
+            if item["system_role"] in {"lunch", "dinner"}
         )
         assert trip["primary_lodging"] is None
         assert trip["schedule_defaults"]["lunch_time"] == "12:00"
@@ -821,6 +833,7 @@ async def test_system_schedule_endpoints_sync_skip_persist_and_enforce_version()
         assert lunch["duration_minutes"] == 45
         assert dinner["start_time"].endswith("T19:15:00+09:00")
         assert dinner["duration_minutes"] == 120
+        route_total_before_skip = trip["routing"]["total"]
 
         skipped = await client.patch(
             f"/api/v1/trips/{trip['id']}/items/{lunch['id']}/skip",
@@ -832,7 +845,7 @@ async def test_system_schedule_endpoints_sync_skip_persist_and_enforce_version()
         assert next(
             item for item in trip["items"] if item["id"] == lunch["id"]
         )["is_skipped"] is True
-        assert trip["routing"]["total"] == initial_route_total - 1
+        assert trip["routing"]["total"] == route_total_before_skip
 
         stale_restore = await client.patch(
             f"/api/v1/trips/{trip['id']}/items/{lunch['id']}/skip",
@@ -852,7 +865,7 @@ async def test_system_schedule_endpoints_sync_skip_persist_and_enforce_version()
             json={"version": trip["version"], "skipped": False},
         )
         assert restored.status_code == 200
-        assert restored.json()["routing"]["total"] == initial_route_total
+        assert restored.json()["routing"]["total"] == route_total_before_skip
 
 
 @pytest.mark.asyncio(loop_scope="module")
@@ -884,13 +897,28 @@ async def test_ai_regeneration_preserves_items_charges_once_and_replays(
         )
         assert created.status_code == 201
         trip = created.json()
-        generated_activity = next(
-            item
-            for item in trip["items"]
-            if item["system_role"] is None
-            and item["data"].get("generated_by") == "ai_planner"
-        )
-        locked_item = {**generated_activity, "locked": True}
+        locked_item = {
+            "id": str(uuid4()),
+            "item_type": "hotspot",
+            "day_date": "2026-11-10",
+            "position": 0,
+            "title": "使用者鎖定的核准景點",
+            "location_name": "淺草寺",
+            "latitude": 35.7148,
+            "longitude": 139.7967,
+            "locked": True,
+            "fixed_time": False,
+            "is_estimated": False,
+            "duration_minutes": 120,
+            "location_source": "hotspot_catalog",
+            "data": {
+                "source_mode": "fallback",
+                "generated_by": "ai_planner",
+                "candidate_key": "hotspot:locked-test",
+                "hotspot_id": "locked-test",
+                "needs_place_confirmation": False,
+            },
+        }
         meal_item = next(
             item
             for item in trip["items"]
@@ -933,6 +961,45 @@ async def test_ai_regeneration_preserves_items_charges_once_and_replays(
 
         original_generate = AIItineraryPlanner.generate
         live_calls = 0
+        exact_candidates = [
+            AIPlannerCandidate(
+                key=f"hotspot:{index}",
+                kind="hotspot",
+                name=f"核准景點 {index}",
+                category="culture",
+                latitude=35.68 + index * 0.002,
+                longitude=139.76 + index * 0.002,
+                duration_minutes=90,
+                map_links=[{"provider": "google", "url": f"https://maps.test/{index}"}],
+                hotspot_id=uuid4(),
+                rank=index + 1,
+            )
+            for index in range(4)
+        ]
+        exact_candidates.extend(
+            AIPlannerCandidate(
+                key=f"merchant:{index}",
+                kind="merchant",
+                name=f"核准店家 {index}",
+                category="food",
+                latitude=35.69 + index * 0.002,
+                longitude=139.77 + index * 0.002,
+                duration_minutes=75,
+                map_links=[
+                    {"provider": "google", "url": f"https://maps.test/m/{index}"}
+                ],
+                food_id=uuid4(),
+                merchant_id=uuid4(),
+                meal_types=["lunch", "dinner"],
+                rank=index + 1,
+            )
+            for index in range(4)
+        )
+
+        async def exact_candidate_loader(
+            *_args: object, **_kwargs: object
+        ) -> list[AIPlannerCandidate]:
+            return exact_candidates
 
         async def live_generate(
             planner: AIItineraryPlanner, request: AIItineraryRequest
@@ -950,11 +1017,32 @@ async def test_ai_regeneration_preserves_items_charges_once_and_replays(
             return result
 
         monkeypatch.setattr(AIItineraryPlanner, "generate", live_generate)
-        idempotency_key = f"ai-regenerate-{uuid4()}"
-        regenerated = await client.post(
-            f"/api/v1/trips/{trip['id']}/itinerary/generate",
-            headers={**headers, "Idempotency-Key": idempotency_key},
+        monkeypatch.setattr(
+            trips_router_module,
+            "_load_ai_planner_candidates",
+            exact_candidate_loader,
+        )
+        preview = await client.post(
+            f"/api/v1/trips/{trip['id']}/itinerary/preview",
+            headers={**headers, "Idempotency-Key": f"ai-preview-{uuid4()}"},
             json={"version": saved.json()["version"]},
+        )
+        assert preview.status_code == 200
+        preview_body = preview.json()
+        assert preview_body["base_version"] == saved.json()["version"]
+        unchanged = await client.get(f"/api/v1/trips/{trip['id']}", headers=headers)
+        assert unchanged.json()["version"] == saved.json()["version"]
+        usage_after_preview = await client.get("/api/v1/usage", headers=headers)
+        assert usage_after_preview.json()["remaining_uses"] == 3
+
+        idempotency_key = f"ai-apply-{uuid4()}"
+        regenerated = await client.post(
+            f"/api/v1/trips/{trip['id']}/itinerary/apply",
+            headers={**headers, "Idempotency-Key": idempotency_key},
+            json={
+                "version": preview_body["base_version"],
+                "preview_id": preview_body["preview_id"],
+            },
         )
         assert regenerated.status_code == 200
         result = regenerated.json()
@@ -968,9 +1056,12 @@ async def test_ai_regeneration_preserves_items_charges_once_and_replays(
         assert preserved_meal["provider_place_id"] == "manual-restaurant-place"
 
         replay = await client.post(
-            f"/api/v1/trips/{trip['id']}/itinerary/generate",
+            f"/api/v1/trips/{trip['id']}/itinerary/apply",
             headers={**headers, "Idempotency-Key": idempotency_key},
-            json={"version": saved.json()["version"]},
+            json={
+                "version": preview_body["base_version"],
+                "preview_id": preview_body["preview_id"],
+            },
         )
         assert replay.status_code == 200
         assert replay.json()["version"] == result["version"]

@@ -7,6 +7,7 @@ from app.models import TripPlan, TripPlanItem
 from app.trips.router import (
     FlightAnchorDetails,
     ItineraryUpdateRequest,
+    _planner_availability,
     apply_flight_anchor_details,
     localize_itinerary_time,
 )
@@ -104,9 +105,9 @@ def test_system_slots_are_idempotent_and_skipped_meals_leave_route_graph() -> No
     assert len([row for row in rows if row.system_role in SYSTEM_ROLES]) == 10
 
     first_day_route = active_route_rows(rows, date(2026, 11, 10))
-    assert first_day_route[0].system_role == "hotel_start"
-    assert first_day_route[-1].system_role == "hotel_end"
+    assert first_day_route == [activity]
     assert legacy_hotel not in first_day_route
+    assert not any(row.system_role for row in first_day_route)
     original_pairs = route_pair_count(rows)
     lunch = next(
         row
@@ -116,9 +117,8 @@ def test_system_slots_are_idempotent_and_skipped_meals_leave_route_graph() -> No
     lunch.is_skipped = True
     without_lunch = active_route_rows(rows, date(2026, 11, 10))
     assert lunch not in without_lunch
-    activity_index = without_lunch.index(activity)
-    assert without_lunch[activity_index + 1].system_role == "dinner"
-    assert route_pair_count(rows) == original_pairs - 1
+    assert without_lunch == [activity]
+    assert route_pair_count(rows) == original_pairs
 
 
 def test_legacy_flights_are_promoted_without_changing_identity_or_entering_routes() -> None:
@@ -178,12 +178,7 @@ def test_single_day_trip_places_both_flights_outside_the_city_route() -> None:
     ordered = sorted(rows, key=lambda item: item.position)
     assert ordered[0].system_role == "outbound_flight"
     assert ordered[-1].system_role == "return_flight"
-    assert [item.system_role for item in active_route_rows(rows)] == [
-        "hotel_start",
-        "lunch",
-        "dinner",
-        "hotel_end",
-    ]
+    assert active_route_rows(rows) == []
 
 
 def test_manual_flight_uses_local_wall_clock_strings_and_can_be_cleared() -> None:
@@ -219,6 +214,53 @@ def test_manual_flight_uses_local_wall_clock_strings_and_can_be_cleared() -> Non
     apply_flight_anchor_details(outbound, "outbound_flight", None)
     assert outbound.title == "去程航班尚未設定"
     assert outbound.data["flight_info"] is None
+
+
+def test_planner_availability_uses_flight_times_and_transfer_buffers() -> None:
+    target = trip()
+    rows: list[TripPlanItem] = []
+    session = AddOnlySession()
+    ensure_system_slots(session, target, rows)  # type: ignore[arg-type]
+    outbound = next(item for item in rows if item.system_role == "outbound_flight")
+    returning = next(item for item in rows if item.system_role == "return_flight")
+    apply_flight_anchor_details(
+        outbound,
+        "outbound_flight",
+        FlightAnchorDetails(
+            airline="長榮航空",
+            flight_number="BR 198",
+            origin="TPE",
+            destination="NRT",
+            departure_local="2026-11-10T08:50",
+            arrival_local="2026-11-10T13:10",
+        ),
+    )
+    apply_flight_anchor_details(
+        returning,
+        "return_flight",
+        FlightAnchorDetails(
+            airline="長榮航空",
+            flight_number="BR 197",
+            origin="NRT",
+            destination="TPE",
+            departure_local="2026-11-11T19:00",
+            arrival_local="2026-11-11T22:00",
+        ),
+    )
+
+    availability = _planner_availability(
+        rows,
+        trip_start=target.start_date,  # type: ignore[arg-type]
+        trip_end=target.end_date,  # type: ignore[arg-type]
+        target_date=None,
+    )
+
+    assert availability == {
+        "first_day_available_from": "15:10",
+        "last_day_available_until": "16:00",
+        "used_outbound_flight": True,
+        "used_return_flight": True,
+    }
 
 
 def test_lodging_and_meal_defaults_sync_across_every_day() -> None:

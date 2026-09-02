@@ -50,6 +50,35 @@ function ok(payload: unknown) {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("route mode panel", () => {
+  it("shows an app-style map, named endpoints and verified transit steps", async () => {
+    const detailedSegment = {
+      ...initialSegment,
+      maps_url: "https://www.google.com/maps/dir/?api=1&origin_place_id=from&destination_place_id=to",
+      departure_time: "2026-11-10T17:54:00+09:00",
+      arrival_time: "2026-11-10T18:06:00+09:00",
+      distance_meters: 850,
+      details_available: ["steps", "stops", "headsign", "platform"],
+      steps: [
+        { travel_mode: "WALK", instruction: "步行至東京晴空塔站", duration_minutes: 8, distance_meters: 550 },
+        { travel_mode: "TRANSIT", instruction: "搭乘都營淺草線", duration_minutes: 1, departure_stop: "TOKYO SKYTREE Sta.", arrival_stop: "言問橋", line_name: "都營淺草線", line_short_name: "A", platform: "1", stop_count: 1 },
+        { travel_mode: "WALK", instruction: "步行至牛嶋神社", duration_minutes: 4, distance_meters: 300 },
+      ],
+    };
+    vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_browser_key: null, google_maps_embed_enabled: false })));
+
+    const { container } = render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={detailedSegment} onApplied={() => undefined} onError={() => undefined} />);
+
+    expect(screen.getByRole("region", { name: "路線起訖與交通方式" }).textContent).toContain("上野");
+    expect(screen.getByRole("region", { name: "路線起訖與交通方式" }).textContent).toContain("淺草");
+    expect(screen.getByRole("link", { name: "導航：上野到淺草" }).getAttribute("href")).toContain("origin_place_id=from");
+    expect(screen.getByText("步行至東京晴空塔站")).toBeTruthy();
+    expect(screen.getByText(/TOKYO SKYTREE Sta\. → 言問橋/)).toBeTruthy();
+    expect(screen.getByText("月台 1")).toBeTruthy();
+    const map = container.querySelector(".route-panel-map");
+    const details = container.querySelector(".route-panel-detail");
+    expect(map && details && Boolean(map.compareDocumentPosition(details) & Node.DOCUMENT_POSITION_FOLLOWING)).toBe(true);
+  });
+
   it("auto-previews the default mode when no route has been applied", async () => {
     const noRouteTrip = {
       ...trip,
