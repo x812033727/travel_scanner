@@ -2,8 +2,10 @@
 
 import {
   Bell,
-  LoaderCircle,
+  CalendarDays,
+  ChevronRight,
   Luggage,
+  MapPinned,
   Pause,
   Pencil,
   Play,
@@ -159,13 +161,11 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
 
   if (loading)
     return (
-      <p
-        role="status"
-        className="flex items-center justify-center gap-2 rounded-2xl border border-[var(--line)] bg-white p-10 text-[var(--muted)]"
-      >
-        <LoaderCircle className="animate-spin" size={19} />
-        正在載入…
-      </p>
+      <div role="status" className="grid gap-3">
+        <span className="app-skeleton h-28" />
+        <span className="app-skeleton h-28" />
+        <span className="sr-only">正在載入…</span>
+      </div>
     );
   if (error)
     return (
@@ -177,7 +177,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
     );
   if (!items.length)
     return (
-      <div className="rounded-[2rem] border border-dashed border-[var(--line)] bg-white p-12 text-center text-[var(--muted)]">
+      <div className="app-empty-state min-h-64">
         {kind === "trips" ? (
           <Luggage className="mx-auto mb-3" />
         ) : (
@@ -204,11 +204,17 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
         const isAlert = kind === "alerts";
         const alert = row as AlertItem;
         const trip = row as TripItem;
+        const currentPrice = Number(alert.current_price || 0);
+        const targetPrice = Number(alert.target_price || 0);
+        const targetReached = Boolean(
+          currentPrice && targetPrice && currentPrice <= targetPrice,
+        );
+        const targetProgress =
+          currentPrice && targetPrice
+            ? Math.min(100, Math.max(8, (targetPrice / currentPrice) * 100))
+            : 0;
         return (
-          <article
-            key={row.id}
-            className="rounded-2xl border border-[var(--line)] bg-white p-5"
-          >
+          <article key={row.id} className="account-app-card">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div className="min-w-0 flex-1">
                 {isAlert ? (
@@ -247,6 +253,26 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                         )}
                       </p>
                     )}
+                    {currentPrice > 0 && targetPrice > 0 && (
+                      <div
+                        className={`alert-goal mt-4 ${targetReached ? "alert-goal-reached" : ""}`}
+                      >
+                        <div className="flex items-center justify-between gap-3 text-xs">
+                          <span>
+                            {targetReached
+                              ? "已達到目標價格"
+                              : `距離目標還差 ${money(Math.max(0, currentPrice - targetPrice), alert.currency)}`}
+                          </span>
+                          <strong>{Math.round(targetProgress)}%</strong>
+                        </div>
+                        <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white">
+                          <span
+                            className="block h-full rounded-full bg-current transition-all"
+                            style={{ width: `${targetProgress}%` }}
+                          />
+                        </div>
+                      </div>
+                    )}
                     {alert.monitoring_mode === "manual_only" && (
                       <p className="mt-2 text-xs text-amber-800">
                         此來源不允許背景定期重查或自動通知；請在搜尋頁手動查看最新價格。
@@ -254,27 +280,37 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                     )}
                   </>
                 ) : (
-                  <>
-                    <Link
-                      href={`/trips/${trip.id}`}
-                      className="font-semibold text-[var(--teal)] hover:underline"
-                    >
-                      {trip.name}
-                    </Link>
-                    <p className="mt-1 text-sm text-[var(--muted)]">
-                      {[
-                        trip.destination_name,
-                        trip.start_date && trip.end_date
-                          ? `${trip.start_date} 至 ${trip.end_date}`
-                          : undefined,
-                      ]
-                        .filter(Boolean)
-                        .join(" · ") ||
-                        (trip.total_price
-                          ? twd.format(trip.total_price)
-                          : "尚未安排")}
-                    </p>
-                  </>
+                  <Link
+                    href={`/trips/${trip.id}`}
+                    className="flex min-h-16 items-center gap-3 rounded-2xl p-1 transition hover:bg-[var(--paper)]"
+                  >
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-[var(--teal-dark)]">
+                      <MapPinned size={21} />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <strong className="block truncate text-lg">
+                        {trip.name}
+                      </strong>
+                      <span className="mt-1 flex items-center gap-1.5 text-sm text-[var(--muted)]">
+                        <CalendarDays size={14} />
+                        {[
+                          trip.destination_name,
+                          trip.start_date && trip.end_date
+                            ? `${trip.start_date} 至 ${trip.end_date}`
+                            : undefined,
+                        ]
+                          .filter(Boolean)
+                          .join(" · ") ||
+                          (trip.total_price
+                            ? twd.format(trip.total_price)
+                            : "尚未安排")}
+                      </span>
+                    </span>
+                    <ChevronRight
+                      className="shrink-0 text-[var(--muted)]"
+                      size={19}
+                    />
+                  </Link>
                 )}
               </div>
               <div className="flex flex-wrap gap-2">
@@ -289,7 +325,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                         );
                       }}
                       aria-label={`編輯 ${alert.title}`}
-                      className="rounded-xl border border-[var(--line)] p-2 text-[var(--muted)]"
+                      className="app-icon-button"
                     >
                       <Pencil size={17} />
                     </button>
@@ -303,7 +339,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                           ? `暫停 ${alert.title}`
                           : `啟用 ${alert.title}`
                       }
-                      className="rounded-xl border border-[var(--line)] p-2 text-[var(--muted)]"
+                      className="app-icon-button"
                     >
                       {alert.active ? <Pause size={17} /> : <Play size={17} />}
                     </button>
@@ -313,7 +349,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                   type="button"
                   onClick={() => setPendingDelete(row.id)}
                   aria-label={`刪除${isAlert ? "通知" : "旅程"}`}
-                  className="rounded-xl border border-[var(--line)] p-2 text-[var(--muted)]"
+                  className="app-icon-button"
                 >
                   <Trash2 size={17} />
                 </button>

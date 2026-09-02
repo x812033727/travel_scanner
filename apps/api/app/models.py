@@ -216,6 +216,78 @@ class AffiliateClick(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
+ANALYTICS_EVENT_NAMES = (
+    "page_view",
+    "registration_completed",
+    "search_completed",
+    "trip_created",
+    "outbound_click",
+)
+
+
+class AnalyticsEvent(Base):
+    __tablename__ = "analytics_events"
+    __table_args__ = (
+        UniqueConstraint("event_id", name="uq_analytics_event_id"),
+        CheckConstraint(
+            "event_name IN ("
+            + ", ".join(f"'{name}'" for name in ANALYTICS_EVENT_NAMES)
+            + ")",
+            name="ck_analytics_event_name",
+        ),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    event_id: Mapped[UUID] = mapped_column(index=True)
+    event_name: Mapped[str] = mapped_column(String(32), index=True)
+    occurred_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    received_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utcnow, index=True
+    )
+    normalized_path: Mapped[str] = mapped_column(String(128), index=True)
+    locale: Mapped[str] = mapped_column(String(16), index=True)
+    session_hash: Mapped[str] = mapped_column(String(64), index=True)
+    visitor_day_hash: Mapped[str] = mapped_column(String(64), index=True)
+    country_code: Mapped[str | None] = mapped_column(String(2), nullable=True, index=True)
+    device_type: Mapped[str] = mapped_column(String(16), default="unknown", index=True)
+    browser_family: Mapped[str] = mapped_column(String(32), default="unknown")
+    os_family: Mapped[str] = mapped_column(String(32), default="unknown")
+    referrer_type: Mapped[str] = mapped_column(String(16), default="direct", index=True)
+    referrer_host: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    utm_source: Mapped[str | None] = mapped_column(String(100), nullable=True, index=True)
+    utm_medium: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    utm_campaign: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    is_authenticated: Mapped[bool] = mapped_column(Boolean, default=False)
+    is_bot: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
+    environment: Mapped[str] = mapped_column(String(16), default="production", index=True)
+    properties_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+
+
+class AnalyticsDailyRollup(Timestamped, Base):
+    __tablename__ = "analytics_daily_rollups"
+    __table_args__ = (
+        UniqueConstraint(
+            "day",
+            "environment",
+            "is_bot",
+            "metric",
+            "dimension",
+            "dimension_value",
+            name="uq_analytics_daily_rollup_key",
+        ),
+        CheckConstraint("value >= 0", name="ck_analytics_daily_rollup_value"),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    day: Mapped[date] = mapped_column(Date, index=True)
+    environment: Mapped[str] = mapped_column(String(16), default="production", index=True)
+    is_bot: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
+    metric: Mapped[str] = mapped_column(String(32), index=True)
+    dimension: Mapped[str] = mapped_column(String(32), index=True)
+    dimension_value: Mapped[str] = mapped_column(String(128))
+    value: Mapped[int] = mapped_column(Integer, default=0)
+
+
 class FlightOfferRecord(Timestamped, Base):
     __tablename__ = "flight_offers"
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)

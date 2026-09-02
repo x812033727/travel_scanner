@@ -8,6 +8,7 @@
     "providers": "API とキー",
     "hotspots": "スポット候補審査",
     "foods": "グルメ管理",
+    "analytics": "トラフィック分析",
     "deployments": "デプロイセンター"
   },
   "providerTabs": {
@@ -38,6 +39,14 @@
     },
     "audit": { "title": "最近の管理履歴", "help": "操作者、対象、変更前後の値を保存します。", "empty": "プランまたは消費回数の変更履歴はまだありません。" },
     "auditActions": { "usage_operation_costs_updated": "機能別消費を更新", "usage_package_created": "プランを作成", "usage_package_updated": "プランを更新", "usage_package_archived": "プランをアーカイブ", "registration_trial_updated": "登録トライアルを更新" }
+  },
+  "analytics": {
+    "eyebrow": "PRODUCT ANALYTICS", "title": "トラフィック・プロダクト分析", "description": "個別会員の行動を表示せず、ファーストパーティデータで流入と主要ファネルを確認します。", "loadError": "分析データを読み込めませんでした。", "retry": "再試行", "rangeLabel": "分析期間", "ranges": { "24h": "24時間", "7d": "7日", "30d": "30日", "90d": "90日", "12m": "12か月" }, "includeBots": "Botを含める", "refresh": "更新", "noComparison": "前期間データなし", "trend": "トラフィック推移", "timezone": "タイムゾーン：{timezone}", "period": "期間", "funnel": "主要プロダクトファネル", "funnelRaw": "重複しないセッションで計算します。", "funnelRollup": "生イベント保持期間を超える場合は日次集計を使用します。", "authoritative": "運用上の確定値", "authoritativeHelp": "会員・検索・旅程・外部リンクの各テーブルから直接算出し、ブラウザイベントとは分けて表示します。", "heatmap": "曜日・時間帯ヒートマップ", "heatmapHelp": "公開ページビューを台北時間で表示します。", "heatmapUnavailable": "この期間の時間別データはありません。", "weekday": "曜日", "quality": "データ品質", "enabled": "有効", "disabled": "無効または未設定", "excluded": "除外済み", "included": "含む", "days": "日", "months": "か月",
+    "metrics": { "live_sessions_30m": "直近30分のセッション", "page_views": "ページビュー", "avg_daily_visitors": "1日平均ユニーク訪問者", "sessions": "セッション", "pages_per_session": "ページ／セッション", "registration_completed": "登録完了", "search_completed": "検索完了", "trip_created": "旅程作成", "outbound_click": "外部リンク" },
+    "funnelSteps": { "sessions": "セッション", "search_completed": "検索完了", "trip_created": "旅程作成", "outbound_click": "外部リンク" },
+    "authoritativeMetrics": { "registrations": "会員登録", "completed_searches": "検索完了", "trips_created": "旅程作成", "affiliate_clicks": "アフィリエイト遷移" },
+    "rankings": { "pages": "人気ページ", "sources": "流入元", "devices": "デバイス", "locales": "言語", "countries": "国", "utm": "UTM流入元" },
+    "qualityFields": { "ga4": "GA4 cookieless 状態", "started": "計測開始", "lastEvent": "最終イベント", "lastRollup": "最終集計日", "country": "国コード網羅率", "bots": "Botトラフィック", "rawRetention": "生イベント保持", "rollupRetention": "集計保持" }
   },
   "layout": {
     "eyebrow": "SYSTEM ADMIN",

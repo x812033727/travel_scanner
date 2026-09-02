@@ -78,6 +78,17 @@ async function proxy(request: NextRequest, context: Context) {
   }
   const sourceAddress = forwardedClientAddress(request.headers);
   if (sourceAddress) headers.set("X-Travel-Client-IP", sourceAddress);
+  const userAgent = request.headers.get("user-agent")?.slice(0, 512);
+  if (userAgent) headers.set("X-Travel-User-Agent", userAgent);
+  for (const name of ["sec-gpc", "dnt"]) {
+    const value = request.headers.get(name);
+    if (value === "1") headers.set(name, "1");
+  }
+  const trustedCountryHeader = process.env.ANALYTICS_COUNTRY_HEADER?.trim().toLowerCase();
+  if (trustedCountryHeader) {
+    const country = request.headers.get(trustedCountryHeader)?.trim().toUpperCase();
+    if (country && /^[A-Z]{2}$/.test(country)) headers.set("X-Travel-Country", country);
+  }
   let body: ArrayBuffer | undefined;
   if (request.method !== "GET" && request.method !== "HEAD") {
     const declared = Number(request.headers.get("content-length") || 0);

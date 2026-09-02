@@ -1,7 +1,7 @@
 """Add coordinate provenance columns to trip plan items.
 
-Revision ID: 0030_trip_item_coordinates
-Revises: 0029_ui_saved_items
+Revision ID: 0031_trip_item_coordinates
+Revises: 0030_analytics_events
 """
 
 from collections.abc import Sequence
@@ -9,8 +9,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import context, op
 
-revision: str = "0030_trip_item_coordinates"
-down_revision: str | None = "0029_ui_saved_items"
+revision: str = "0031_trip_item_coordinates"
+down_revision: str | None = "0030_analytics_events"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

@@ -76,6 +76,21 @@ SITE_VISIBILITY_FIELDS = (
 
 
 PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
+    "analytics": ProviderDefinition(
+        "流量分析與 GA4",
+        "第一方隱私分析與選配的 GA4 cookieless 事件；不保存原始 IP 或長期訪客 ID。",
+        (
+            "ga4_enabled",
+            "ga4_measurement_id",
+            "analytics_trust_country_header",
+            "analytics_event_ip_limit",
+            "analytics_event_session_limit",
+            "analytics_retention_days",
+            "analytics_rollup_retention_months",
+        ),
+        (),
+        "analytics_enabled",
+    ),
     "runtime": ProviderDefinition(
         "執行模式與保護設定",
         "控制公開註冊、即時／測試供應商選擇、逾時與重試斷路器。",
@@ -411,6 +426,17 @@ async def effective_site_visibility(session: AsyncSession) -> SiteVisibility:
 
 
 def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
+    if provider == "analytics":
+        ga4_configured = bool(settings.ga4_measurement_id)
+        configured = bool(settings.analytics_enabled) and (
+            not settings.ga4_enabled or ga4_configured
+        )
+        message = "第一方分析已啟用" if settings.analytics_enabled else "第一方分析尚未啟用"
+        if settings.ga4_enabled:
+            message += "；GA4 已設定" if ga4_configured else "；GA4 缺少 Measurement ID"
+        else:
+            message += "；GA4 未啟用"
+        return configured, "ready" if configured else "not_configured", message
     if provider == "runtime":
         from app.providers.registry import flight_provider_status, hotel_provider_status
 
@@ -788,7 +814,12 @@ def _validate_provider_values(
             merged.pop(field, None)
         else:
             merged[field] = value
-    boolean_fields = {"registration_enabled", *SITE_VISIBILITY_FIELDS}
+    boolean_fields = {
+        "registration_enabled",
+        "ga4_enabled",
+        "analytics_trust_country_header",
+        *SITE_VISIBILITY_FIELDS,
+    }
     for field in boolean_fields:
         if field in merged and not isinstance(merged[field], bool):
             raise AppError(
@@ -796,6 +827,15 @@ def _validate_provider_values(
                 "provider_setting_invalid",
                 f"{field} 必須是布林值",
             )
+    if "ga4_measurement_id" in merged:
+        measurement_id = str(merged["ga4_measurement_id"] or "").strip().upper()
+        if measurement_id and not re.fullmatch(r"G-[A-Z0-9]{4,16}", measurement_id):
+            raise AppError(
+                422,
+                "provider_setting_invalid",
+                "ga4_measurement_id 必須是有效的 G-... Measurement ID",
+            )
+        merged["ga4_measurement_id"] = measurement_id
     modes = {
         "travel_provider_mode": {"mock", "amadeus", "live", "disabled"},
         "flight_provider_mode": {"auto", "skyscanner", "duffel", "amadeus", "mock", "disabled"},

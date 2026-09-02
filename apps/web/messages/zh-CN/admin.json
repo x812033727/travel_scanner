@@ -8,6 +8,7 @@
     "providers": "API 与密钥",
     "hotspots": "景点候选审核",
     "foods": "美食目录管理",
+    "analytics": "流量与分析",
     "deployments": "部署中心"
   },
   "providerTabs": {
@@ -41,6 +42,14 @@
     },
     "audit": { "title": "最近管理记录", "help": "保留操作者、目标与变更前后值。", "empty": "目前没有方案或扣次变更记录。" },
     "auditActions": { "usage_operation_costs_updated": "更新功能扣次", "usage_package_created": "创建方案", "usage_package_updated": "更新方案", "usage_package_archived": "封存方案", "registration_trial_updated": "更新注册体验" }
+  },
+  "analytics": {
+    "eyebrow": "PRODUCT ANALYTICS", "title": "流量与产品分析", "description": "使用站内第一方数据观察流量、来源与核心产品漏斗，不显示个人会员行为。", "loadError": "无法加载分析数据。", "retry": "重试", "rangeLabel": "分析期间", "ranges": { "24h": "24 小时", "7d": "7 天", "30d": "30 天", "90d": "90 天", "12m": "12 个月" }, "includeBots": "包含机器人流量", "refresh": "刷新", "noComparison": "前期无数据", "trend": "流量趋势", "timezone": "时区：{timezone}", "period": "期间", "funnel": "核心产品漏斗", "funnelRaw": "按不重复会话计算。", "funnelRollup": "超过原始数据保存期时使用每日汇总口径。", "authoritative": "权威运营总量", "authoritativeHelp": "直接由会员、搜索、行程和外链数据表计算，与浏览器事件口径分开。", "heatmap": "星期与小时热区", "heatmapHelp": "以台北时区的公开页面浏览量显示。", "heatmapUnavailable": "此期间没有可用的小时数据。", "weekday": "星期", "quality": "数据质量", "enabled": "已启用", "disabled": "未启用或未设置", "excluded": "已排除", "included": "已包含", "days": "天", "months": "个月",
+    "metrics": { "live_sessions_30m": "最近 30 分钟会话", "page_views": "浏览量", "avg_daily_visitors": "平均每日不重复访客", "sessions": "会话", "pages_per_session": "每次浏览页数", "registration_completed": "完成注册", "search_completed": "完成搜索", "trip_created": "创建行程", "outbound_click": "外部链接" },
+    "funnelSteps": { "sessions": "会话", "search_completed": "完成搜索", "trip_created": "创建行程", "outbound_click": "外部链接" },
+    "authoritativeMetrics": { "registrations": "会员注册", "completed_searches": "完成搜索", "trips_created": "创建行程", "affiliate_clicks": "联盟外链" },
+    "rankings": { "pages": "热门页面", "sources": "来源", "devices": "设备", "locales": "语言", "countries": "国家", "utm": "UTM 来源" },
+    "qualityFields": { "ga4": "GA4 cookieless 状态", "started": "追踪开始时间", "lastEvent": "最后事件", "lastRollup": "最后汇总日期", "country": "国家码覆盖率", "bots": "机器人流量", "rawRetention": "原始事件保存", "rollupRetention": "汇总保存" }
   },
   "layout": {
     "eyebrow": "SYSTEM ADMIN",

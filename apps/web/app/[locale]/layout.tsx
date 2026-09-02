@@ -7,6 +7,7 @@ import { AppBottomNav } from "@/components/app-bottom-nav";
 import { SavedItemsProvider } from "@/components/saved-items-provider";
 import { SiteVisibilityProvider } from "@/components/site-visibility-provider";
 import { UsageCatalogProvider } from "@/components/usage-catalog-provider";
+import { AnalyticsProvider } from "@/components/analytics-provider";
 import { routing } from "@/i18n/routing";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import { getUsageCatalog } from "@/lib/usage-catalog.server";
@@ -64,11 +65,13 @@ export default async function LocaleLayout({ children, params }: Props) {
         <NextIntlClientProvider messages={messages}>
           <SiteVisibilityProvider state={siteVisibility}>
             <UsageCatalogProvider state={usageCatalog}>
-              <LegacyUiLocalizer />
-              <SavedItemsProvider>
-                <div className="public-app-shell">{children}</div>
-                <AppBottomNav />
-              </SavedItemsProvider>
+              <AnalyticsProvider>
+                <LegacyUiLocalizer />
+                <SavedItemsProvider>
+                  <div className="public-app-shell">{children}</div>
+                  <AppBottomNav />
+                </SavedItemsProvider>
+              </AnalyticsProvider>
             </UsageCatalogProvider>
           </SiteVisibilityProvider>
         </NextIntlClientProvider>

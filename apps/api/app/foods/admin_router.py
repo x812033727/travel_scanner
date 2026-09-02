@@ -213,7 +213,15 @@ class FoodMerchantUpdatePayload(BaseModel):
 
 class FoodMerchantBatchPayload(BaseModel):
     ids: list[UUID] = Field(min_length=1, max_length=100)
-    action: Literal["approve", "reject", "disable", "activate", "verify", "ambiguous"]
+    action: Literal[
+        "approve",
+        "reject",
+        "disable",
+        "activate",
+        "verify",
+        "verify_activate",
+        "ambiguous",
+    ]
     reason: str | None = Field(default=None, max_length=500)
 
 
@@ -706,6 +714,7 @@ async def list_food_merchants(
     destination_id: Annotated[str | None, Query(min_length=2, max_length=64)] = None,
     status: ReviewStatus | None = None,
     map_status: MapMatchStatus | None = None,
+    official_data: Literal["filled", "missing"] | None = None,
     q: Annotated[str | None, Query(max_length=100)] = None,
     page: Annotated[int, Query(ge=1)] = 1,
     limit: Annotated[int, Query(ge=1, le=100)] = 30,
@@ -718,6 +727,10 @@ async def list_food_merchants(
         filters.append(FoodMerchant.review_status == status)
     if map_status:
         filters.append(FoodMerchant.map_match_status == map_status)
+    if official_data == "filled":
+        filters.append(FoodMerchant.official_website_url.is_not(None))
+    elif official_data == "missing":
+        filters.append(FoodMerchant.official_website_url.is_(None))
     if q:
         term = f"%{q.strip()}%"
         filters.append(
@@ -1048,7 +1061,7 @@ async def batch_food_merchants(
         elif payload.action == "disable":
             merchant.review_status = "disabled"
             merchant.is_active = False
-        elif payload.action == "verify":
+        elif payload.action in {"verify", "verify_activate"}:
             merchant.plus_code_global = _validate_publishable_merchant(
                 country_code=merchant.country_code,
                 latitude=merchant.latitude,
@@ -1061,6 +1074,9 @@ async def batch_food_merchants(
             merchant.map_match_status = "verified"
             merchant.verified_at = now
             merchant.verified_by_user_id = user.id
+            if payload.action == "verify_activate":
+                merchant.review_status = "approved"
+                merchant.is_active = True
         elif payload.action == "ambiguous":
             merchant.map_match_status = "ambiguous"
             merchant.verified_at = None
