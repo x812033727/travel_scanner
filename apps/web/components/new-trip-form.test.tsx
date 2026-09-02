@@ -93,6 +93,22 @@ describe("NewTripForm", () => {
     });
   });
 
+  it("does not submit while moving from lodging preferences to review", () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    render(<NewTripForm />);
+    fillRequiredFields();
+    next();
+    next();
+
+    const defaultActionAllowed = fireEvent.click(screen.getByRole("button", { name: "下一步" }));
+
+    expect(defaultActionAllowed).toBe(false);
+    expect(screen.getByRole("heading", { name: "路線偏好與建立前確認" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /空白手動規劃/ })).toBeTruthy();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
   it("blocks an inverted nightly price range before review", () => {
     render(<NewTripForm />);
     fillRequiredFields();
