@@ -43,7 +43,16 @@ for (const width of [320, 390]) {
     const dialog = page.getByRole("dialog", { name: "認識 Senso-ji" });
     await expect(dialog).toBeVisible();
     await expect(dialog.getByText("淺草寺第一次自由行")).toBeVisible();
-    await expect(dialog.getByText("8Q7XPQ7W+WM")).toBeVisible();
+    const address = dialog.getByRole("link", { name: /2-3-1 Asakusa.*Google Maps/ });
+    await expect(address).toHaveAttribute("href", /query_place_id=ChIJ-test/);
+    await expect(address).toHaveAttribute("target", "_blank");
+    await expect(address).toHaveAttribute("rel", /noopener/);
+    await expect(dialog.getByRole("img", { name: "Google Maps" })).toBeVisible();
+    await expect(dialog.getByRole("link", { name: /Google Maps/ })).toHaveCount(1);
+    await expect(dialog.getByText("8Q7XPQ7W+WM")).toHaveCount(0);
+    await expect(dialog.getByText("35.714765, 139.796655")).toHaveCount(0);
+    await expect(dialog.getByText(/Google 資料更新/)).toHaveCount(0);
+    await expect(dialog.getByText(/供應商內容語系/)).toHaveCount(0);
     const external = dialog.getByRole("link", { name: /淺草寺第一次自由行/ });
     await expect(external).toHaveAttribute("target", "_blank");
     await expect(external).toHaveAttribute("rel", /noopener/);

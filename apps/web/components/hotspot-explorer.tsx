@@ -7,13 +7,10 @@ import {
   BookOpenText,
   Building2,
   CalendarClock,
-  Check,
-  Copy,
   Database,
   ExternalLink,
   FileText,
   MapPin,
-  Navigation,
   Minus,
   Play,
   Search,
@@ -23,6 +20,7 @@ import {
   X,
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 import { FormEvent, KeyboardEvent, TouchEvent, useEffect, useRef, useState } from "react";
 import { api } from "@/lib/api";
 import { HotspotRestaurantsPanel } from "@/components/hotspot-restaurants-panel";
@@ -71,10 +69,7 @@ type GuidesResponse = {
 };
 type PlaceDetail = PlaceSummary & {
   hotspot_id: string; hotspot_name: string; address: string | null;
-  plus_code: { global_code: string | null; compound_code: string | null };
-  coordinates: { latitude: number | null; longitude: number | null; source: string | null };
   opening_hours: { weekday_descriptions?: string[]; periods?: Array<Record<string, unknown>> };
-  data_locale: string | null; fetched_at: string | null; expires_at: string | null;
   attribution: { provider: string | null; provider_url: string | null; third_party: Array<{ provider?: string; providerUri?: string }> };
 };
 
@@ -97,7 +92,6 @@ function PlaceDetailsPanel({ hotspot, onClose }: { hotspot: RankedHotspot; onClo
   const [placeLoading, setPlaceLoading] = useState(true);
   const [error, setError] = useState(false);
   const [placeError, setPlaceError] = useState(false);
-  const [copied, setCopied] = useState("");
   const [otherLanguages, setOtherLanguages] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -132,16 +126,6 @@ function PlaceDetailsPanel({ hotspot, onClose }: { hotspot: RankedHotspot; onClo
       .catch(() => setPlaceError(true))
       .finally(() => setPlaceLoading(false));
   }, [hotspot.id]);
-
-  async function copyValue(label: string, value: string) {
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopied(label);
-      window.setTimeout(() => setCopied(""), 1600);
-    } catch {
-      setCopied("");
-    }
-  }
 
   function trapFocus(event: KeyboardEvent<HTMLDivElement>) {
     if (event.key !== "Tab") return;
@@ -191,6 +175,9 @@ function PlaceDetailsPanel({ hotspot, onClose }: { hotspot: RankedHotspot; onClo
   }
 
   const empty = !loading && !error && data && data.videos.length === 0 && data.articles.length === 0;
+  const primaryMapLink = place?.map_links.find((link) => link.primary) ?? place?.map_links[0] ?? null;
+  const openingHourLines = place?.opening_hours.weekday_descriptions ?? [];
+  const showGoogleAttribution = Boolean(place?.attribution.provider === "Google Maps" && (place.address || openingHourLines.length));
   return <div className="fixed inset-0 z-[80] bg-slate-950/45 backdrop-blur-sm" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
     <div
       ref={dialogRef}
@@ -216,17 +203,12 @@ function PlaceDetailsPanel({ hotspot, onClose }: { hotspot: RankedHotspot; onClo
         {placeError && <div role="alert" className="rounded-2xl bg-[var(--coral-soft)] p-6 text-sm">{t("placeError")}</div>}
         {!placeLoading && !placeError && place && <section className="mb-7 grid gap-4" aria-label={t("placeDetails")}>
           {place.status !== "ready" && <p className={`rounded-2xl px-4 py-3 text-sm ${place.status === "pending_review" ? "bg-amber-50 text-amber-950" : place.status === "stale" ? "bg-sky-50 text-sky-950" : "bg-slate-100 text-slate-700"}`}>{t(place.status === "pending_review" ? "placeDataPending" : place.status === "stale" ? "placeDataStale" : "placeDataUnavailable")}</p>}
-          <div className="grid grid-cols-2 gap-2">
-            {place.map_links[0] && <a href={place.map_links[0].url} target="_blank" rel="noopener noreferrer" aria-label={`${place.map_links[0].label}: ${hotspot.name}`} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[var(--ink)] px-3 text-sm font-semibold text-white"><Navigation size={16} />{place.map_links[0].label}<ExternalLink size={13} /></a>}
-            {place.official_website_url && <a href={place.official_website_url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[var(--line)] bg-white px-3 text-sm font-semibold"><Building2 size={16} />{t("officialWebsite")}<ExternalLink size={13} /></a>}
+          {place.official_website_url && <a href={place.official_website_url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-[var(--line)] bg-white px-4 text-sm font-semibold"><Building2 size={16} />{t("officialWebsite")}<ExternalLink size={13} /></a>}
+          <div className="rounded-2xl bg-white p-4">
+            {place.address && <section><h3 className="flex items-center gap-2 text-sm font-bold"><MapPin size={16} className="text-[var(--teal)]" />{t("address")}</h3>{primaryMapLink ? <a href={primaryMapLink.url} target="_blank" rel="noopener noreferrer" aria-label={`${place.address} — ${primaryMapLink.label} — ${t("openNew")}`} className="mt-2 flex min-h-11 items-center justify-between gap-3 rounded-xl bg-[var(--paper)] px-3 py-2 text-sm font-semibold leading-6 text-[var(--teal-dark)] transition hover:bg-[var(--teal-soft)] hover:text-[var(--teal)]"><span>{place.address}</span><ExternalLink size={15} className="shrink-0" /></a> : <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{place.address}</p>}</section>}
+            <section className={place.address ? "mt-4 border-t border-[var(--line)] pt-4" : ""}><h3 className="flex items-center gap-2 text-sm font-bold"><CalendarClock size={16} className="text-[var(--coral)]" />{t("openingHours")}</h3>{openingHourLines.length ? <ul className="mt-2 grid gap-1.5 text-sm text-[var(--muted)]">{openingHourLines.map((line) => <li key={line}>{line}</li>)}</ul> : <p className="mt-2 text-sm text-[var(--muted)]">{t("noOpeningHours")}</p>}</section>
+            {showGoogleAttribution && <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-[var(--line)] pt-[10px] text-xs text-[#5e5e5e]"><span className="inline-flex px-[10px] pb-[5px]"><Image src="/google-maps-attribution-dark-gray.svg" alt="Google Maps" width={98} height={18} className="h-[18px] w-[98px]" /></span>{place.attribution.third_party.map((item) => item.providerUri ? <a key={`${item.provider}-${item.providerUri}`} href={item.providerUri} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 underline-offset-4 hover:underline">{item.provider || item.providerUri}<ExternalLink size={12} /></a> : item.provider ? <span key={item.provider}>{item.provider}</span> : null)}</div>}
           </div>
-          {place.address && <div className="rounded-2xl bg-white p-4"><h3 className="flex items-center gap-2 text-sm font-bold"><MapPin size={16} className="text-[var(--teal)]" />{t("address")}</h3><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{place.address}</p></div>}
-          <div className="rounded-2xl bg-white p-4"><h3 className="flex items-center gap-2 text-sm font-bold"><CalendarClock size={16} className="text-[var(--coral)]" />{t("openingHours")}</h3>{place.opening_hours.weekday_descriptions?.length ? <ul className="mt-2 grid gap-1.5 text-sm text-[var(--muted)]">{place.opening_hours.weekday_descriptions.map((line) => <li key={line}>{line}</li>)}</ul> : <p className="mt-2 text-sm text-[var(--muted)]">{t("noOpeningHours")}</p>}</div>
-          {(place.plus_code.compound_code || place.plus_code.global_code) && <div className="rounded-2xl bg-white p-4"><h3 className="text-sm font-bold">{t("plusCode")}</h3><button type="button" onClick={() => void copyValue("plus", place.plus_code.compound_code || place.plus_code.global_code || "")} className="mt-2 flex min-h-11 w-full items-center justify-between rounded-xl bg-[var(--paper)] px-3 text-left text-sm"><span>{place.plus_code.compound_code || place.plus_code.global_code}</span>{copied === "plus" ? <Check size={16} className="text-emerald-600" aria-label={t("copied")} /> : <Copy size={16} aria-label={t("copy")} />}</button></div>}
-          {place.coordinates.latitude !== null && place.coordinates.longitude !== null && <div className="rounded-2xl bg-white p-4"><h3 className="text-sm font-bold">{t("coordinates")}</h3><button type="button" onClick={() => void copyValue("coordinates", `${place.coordinates.latitude}, ${place.coordinates.longitude}`)} className="mt-2 flex min-h-11 w-full items-center justify-between rounded-xl bg-[var(--paper)] px-3 text-left text-sm"><span>{place.coordinates.latitude}, {place.coordinates.longitude}</span>{copied === "coordinates" ? <Check size={16} className="text-emerald-600" aria-label={t("copied")} /> : <Copy size={16} aria-label={t("copy")} />}</button></div>}
-          {place.fetched_at && <p className="text-xs text-[var(--muted)]">{t("lastUpdated", { date: new Intl.DateTimeFormat(locale, { dateStyle: "medium" }).format(new Date(place.fetched_at)) })}</p>}
-          {place.data_locale && <p className="text-xs text-[var(--muted)]">{t("dataLanguage", { locale: place.data_locale })}</p>}
-          {place.attribution.provider && place.attribution.provider_url && <div className="flex flex-wrap gap-2"><a href={place.attribution.provider_url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[var(--line)] bg-white px-3 text-xs font-semibold text-[var(--muted)]"><span className="text-base font-bold text-[#4285f4]">G</span>{t("googleAttribution")}</a>{place.attribution.third_party.map((item) => item.providerUri ? <a key={`${item.provider}-${item.providerUri}`} href={item.providerUri} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-xl border border-[var(--line)] bg-white px-3 text-xs font-semibold text-[var(--muted)]">{item.provider || item.providerUri}<ExternalLink size={12} className="ml-1" /></a> : item.provider ? <span key={item.provider} className="inline-flex min-h-11 items-center rounded-xl border border-[var(--line)] bg-white px-3 text-xs font-semibold text-[var(--muted)]">{item.provider}</span> : null)}</div>}
         </section>}
         <div className="mb-4 border-t border-[var(--line)] pt-5"><h3 className="flex items-center gap-2 text-lg font-bold"><BookOpenText size={18} className="text-[var(--teal)]" />{t("guides")}</h3><p className="mt-1 text-sm text-[var(--muted)]">{t("guideIntro")}</p></div>
         {loading && <div className="rounded-2xl bg-white p-6 text-sm text-[var(--muted)]">{t("guideLoading")}</div>}

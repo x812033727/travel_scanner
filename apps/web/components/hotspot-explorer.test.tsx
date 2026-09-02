@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { HotspotExplorer } from "./hotspot-explorer";
 
@@ -70,7 +70,7 @@ describe("HotspotExplorer", () => {
           data_locale: "ja",
           fetched_at: "2026-08-31T00:00:00Z",
           expires_at: "2026-09-30T00:00:00Z",
-          attribution: { provider: "Google Maps", provider_url: "https://maps.google.com", third_party: [] },
+          attribution: { provider: "Google Maps", provider_url: "https://maps.google.com", third_party: [{ provider: "Japan Map Center", providerUri: "https://example.com/attribution" }] },
         }));
       }
       return new Response(JSON.stringify({
@@ -138,9 +138,19 @@ describe("HotspotExplorer", () => {
     expect(screen.getAllByRole("link", { name: /Google Maps/ })).toHaveLength(1);
     fireEvent.click(screen.getByRole("button", { name: /景點詳情/ }));
     expect(await screen.findByRole("heading", { name: "認識 淺草寺" })).toBeTruthy();
-    expect(await screen.findByText("東京都台東区浅草2丁目3-1")).toBeTruthy();
-    expect(screen.getByText("8Q7XPQ7W+WM")).toBeTruthy();
-    const official = screen.getAllByRole("link", { name: /官方網站/ })[0];
+    const dialog = screen.getByRole("dialog", { name: "認識 淺草寺" });
+    const address = within(dialog).getByRole("link", { name: /東京都台東区浅草2丁目3-1.*Google Maps/ });
+    expect(address.getAttribute("href")).toContain("query_place_id=ChIJ-test");
+    expect(address.getAttribute("target")).toBe("_blank");
+    expect(address.getAttribute("rel")).toContain("noopener");
+    expect(within(dialog).getAllByRole("link", { name: /Google Maps/ })).toHaveLength(1);
+    expect(within(dialog).getByRole("img", { name: "Google Maps" })).toBeTruthy();
+    expect(within(dialog).getByRole("link", { name: /Japan Map Center/ }).getAttribute("rel")).toContain("noopener");
+    expect(within(dialog).queryByText("8Q7XPQ7W+WM")).toBeNull();
+    expect(within(dialog).queryByText("35.714765, 139.796655")).toBeNull();
+    expect(within(dialog).queryByText(/Google 資料更新/)).toBeNull();
+    expect(within(dialog).queryByText(/供應商內容語系/)).toBeNull();
+    const official = within(dialog).getByRole("link", { name: /官方網站/ });
     expect(official.getAttribute("rel")).toContain("noopener");
     const guide = await screen.findByRole("link", { name: /第一次去淺草寺/ });
     expect(guide.getAttribute("target")).toBe("_blank");
