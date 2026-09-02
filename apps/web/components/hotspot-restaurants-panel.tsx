@@ -26,6 +26,7 @@ import {
   useState,
 } from "react";
 import { api, ApiError } from "@/lib/api";
+import { Link } from "@/i18n/navigation";
 
 type RestaurantSort = "recommended" | "rating" | "reviews" | "distance";
 type EditorialSource = {
@@ -123,9 +124,11 @@ function sortRestaurants(items: Restaurant[], sort: RestaurantSort) {
 
 export function HotspotRestaurantsPanel({
   hotspot,
+  loginHref,
   onClose,
 }: {
   hotspot: { id: string; name: string };
+  loginHref?: string;
   onClose: () => void;
 }) {
   const t = useTranslations("restaurants");
@@ -139,6 +142,7 @@ export function HotspotRestaurantsPanel({
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState("");
+  const [authRequired, setAuthRequired] = useState(false);
   const [actionMessage, setActionMessage] = useState("");
   const [tripRestaurant, setTripRestaurant] = useState<Restaurant | null>(null);
   const [tripOptions, setTripOptions] = useState<TripOption[]>([]);
@@ -182,6 +186,7 @@ export function HotspotRestaurantsPanel({
       if (cursor === undefined) setLoading(true);
       else setLoadingMore(true);
       setError("");
+      setAuthRequired(false);
       try {
         const result = await api<RestaurantResponse>(`/hotspots/${hotspot.id}/restaurant-searches`, {
           method: "POST",
@@ -203,7 +208,11 @@ export function HotspotRestaurantsPanel({
           return [...merged.values()];
         });
       } catch (reason) {
-        setError((reason as Error).message);
+        if (reason instanceof ApiError && reason.status === 401) {
+          setAuthRequired(true);
+        } else {
+          setError((reason as Error).message);
+        }
       } finally {
         setLoading(false);
         setLoadingMore(false);
@@ -354,9 +363,10 @@ export function HotspotRestaurantsPanel({
           {actionMessage && <p role="status" className="mb-3 rounded-xl bg-[var(--teal-soft)] px-4 py-3 text-sm text-[var(--teal-dark)]">{actionMessage}</p>}
           {data && <section className="mb-4 rounded-2xl border border-[var(--line)] bg-white p-4 text-xs"><div className="flex items-center justify-between gap-3"><strong>{t("coverage.title")}</strong><span className="rounded-full bg-[var(--teal-soft)] px-2 py-1 font-semibold text-[var(--teal-dark)]">{t(`coverage.${data.coverage.status}`)}</span></div><div className="mt-3 h-1.5 overflow-hidden rounded-full bg-slate-100"><div className="h-full rounded-full bg-[var(--teal)]" style={{ width: `${coveragePercent}%` }} /></div><p className="mt-2 text-[var(--muted)]">{t("coverage.detail", { candidates: data.coverage.candidate_count, completed: data.coverage.cells_completed, total: data.coverage.cells_total })}</p></section>}
           {loading && <div className="rounded-2xl bg-white p-7 text-sm text-[var(--muted)]">{t("loading")}</div>}
-          {!loading && error && <div role="alert" className="rounded-2xl bg-[var(--coral-soft)] p-5 text-sm"><p>{error}</p><button type="button" onClick={() => void search()} className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl bg-white px-4 font-semibold"><RefreshCw size={16} />{t("retry")}</button></div>}
-          {!loading && !error && !items.length && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white p-8 text-center"><UtensilsCrossed className="mx-auto text-[var(--coral)]" /><h3 className="mt-3 font-bold">{t("emptyTitle")}</h3><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{t("emptyBody")}</p></div>}
-          {!loading && !error && sortedItems.length > 0 && <ol className="grid gap-3">{sortedItems.map((restaurant, index) => {
+          {!loading && authRequired && <div role="alert" className="rounded-2xl bg-[var(--coral-soft)] p-5 text-sm"><p className="font-bold">{t("loginRequiredTitle")}</p><p className="mt-2 leading-6">{t("loginRequiredBody")}</p><Link href={loginHref || "/login"} className="mt-3 inline-flex min-h-11 items-center rounded-xl bg-white px-4 font-semibold">{t("loginAction")}</Link></div>}
+          {!loading && !authRequired && error && <div role="alert" className="rounded-2xl bg-[var(--coral-soft)] p-5 text-sm"><p>{error}</p><button type="button" onClick={() => void search()} className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl bg-white px-4 font-semibold"><RefreshCw size={16} />{t("retry")}</button></div>}
+          {!loading && !authRequired && !error && !items.length && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white p-8 text-center"><UtensilsCrossed className="mx-auto text-[var(--coral)]" /><h3 className="mt-3 font-bold">{t("emptyTitle")}</h3><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{t("emptyBody")}</p></div>}
+          {!loading && !authRequired && !error && sortedItems.length > 0 && <ol className="grid gap-3">{sortedItems.map((restaurant, index) => {
             const ownedWebsite = restaurant.editorial?.official_website_url;
             const website = ownedWebsite || restaurant.official_website_url;
             return <li key={restaurant.place_id} className="rounded-3xl border border-[var(--line)] bg-white p-4 shadow-sm">

@@ -81,4 +81,32 @@ describe("HotspotRestaurantsPanel", () => {
     expect(radius.value).toBe("10");
     await waitFor(() => expect(searchCalls).toBe(2));
   });
+
+  it("shows a sign-in action without retrying when the session expires", async () => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      if (String(input).endsWith("/restaurants/favorites")) {
+        return new Response(JSON.stringify({ place_ids: [] }));
+      }
+      return new Response(
+        JSON.stringify({ code: "authentication_required", message: "請先登入" }),
+        { status: 401 },
+      );
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(
+      <HotspotRestaurantsPanel
+        hotspot={{ id: "hotspot-1", name: "平和紀念公園" }}
+        loginHref="/login?next=%2Fhotspots%3Fcategory%3Dfood"
+        onClose={vi.fn()}
+      />,
+    );
+
+    expect(await screen.findByText("登入已失效")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "再試一次" })).toBeNull();
+    expect(screen.getByRole("link", { name: "重新登入" }).getAttribute("href")).toBe(
+      "/login?next=%2Fhotspots%3Fcategory%3Dfood",
+    );
+    expect(fetchMock.mock.calls.filter(([input]) => String(input).includes("restaurant-searches"))).toHaveLength(1);
+  });
 });

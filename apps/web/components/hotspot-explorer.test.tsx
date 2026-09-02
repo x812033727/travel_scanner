@@ -1,11 +1,15 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
+import { SavedItemsProvider } from "./saved-items-provider";
 import { HotspotExplorer } from "./hotspot-explorer";
 
 describe("HotspotExplorer", () => {
   it("shows ranked hotspots with provenance and freshness", async () => {
-    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
       const url = String(input);
+      if (url.includes("/saved-items")) {
+        return new Response(JSON.stringify({ code: "authentication_required" }), { status: 401 });
+      }
       if (url.includes("/hotspots/sources")) {
         return new Response(JSON.stringify({
           collection_interval_seconds: 21600,
@@ -116,9 +120,10 @@ describe("HotspotExplorer", () => {
           place_summary: { status: "ready", google_maps_url: "https://www.google.com/maps/search/?api=1&query=%E6%B5%85%E8%8D%89%E5%AF%BA%20%E6%9D%B1%E4%BA%AC&query_place_id=ChIJ-test", map_links: [{ provider: "google", label: "Google Maps", url: "https://www.google.com/maps/search/?api=1&query=%E6%B5%85%E8%8D%89%E5%AF%BA%20%E6%9D%B1%E4%BA%AC&query_place_id=ChIJ-test", primary: true }], official_website_url: "https://www.senso-ji.jp/", official_website_verified: true, has_details: true, updated_at: "2026-08-31T00:00:00Z" },
         }],
       }));
-    }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
 
-    render(<HotspotExplorer />);
+    render(<SavedItemsProvider><HotspotExplorer /></SavedItemsProvider>);
 
     expect(await screen.findByRole("heading", { name: "淺草寺" })).toBeTruthy();
     expect(screen.getByText("12,345")).toBeTruthy();
@@ -136,6 +141,16 @@ describe("HotspotExplorer", () => {
     expect(map.getAttribute("target")).toBe("_blank");
     expect(map.getAttribute("rel")).toContain("noopener");
     expect(screen.getAllByRole("link", { name: /Google Maps/ })).toHaveLength(1);
+    const diningButton = screen.getByRole("button", { name: /附近用餐/ });
+    expect(diningButton.textContent).toContain("登入後查詢");
+    diningButton.focus();
+    fireEvent.click(diningButton);
+    expect(await screen.findByRole("heading", { name: "登入後查看附近用餐" })).toBeTruthy();
+    const loginLink = screen.getByRole("link", { name: "登入後繼續" });
+    expect(loginLink.getAttribute("href")).toContain("/login?next=");
+    expect(fetchMock.mock.calls.some(([input]) => String(input).includes("restaurant-searches"))).toBe(false);
+    fireEvent.click(screen.getByRole("button", { name: "關閉登入提示" }));
+    await waitFor(() => expect(document.activeElement).toBe(diningButton));
     fireEvent.click(screen.getByRole("button", { name: /景點詳情/ }));
     expect(await screen.findByRole("heading", { name: "認識 淺草寺" })).toBeTruthy();
     const dialog = screen.getByRole("dialog", { name: "認識 淺草寺" });
