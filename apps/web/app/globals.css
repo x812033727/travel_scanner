@@ -1,5 +1,37 @@
 @import "tailwindcss";
 
+.analytics-dashboard {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+  contain: inline-size;
+}
+
+.analytics-dashboard > section,
+.analytics-dashboard > div {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.analytics-dashboard > section {
+  width: 100%;
+  overflow: hidden;
+}
+
+.analytics-dashboard .overflow-x-auto {
+  max-width: 100%;
+}
+
+/* Tailwind's sr-only dimensions do not override the intrinsic width of wide tables. */
+.analytics-dashboard table.sr-only {
+  display: block;
+  width: 1px;
+  max-width: 1px;
+  table-layout: fixed;
+  overflow: hidden;
+}
+
 :root {
   --ink: #102a2b;
   --muted: #607676;

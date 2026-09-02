@@ -19,6 +19,7 @@ def main() -> None:
             Queue("hotspot-guides", connection=connection),
             Queue("hotspot-places", connection=connection),
             Queue("restaurant-scans", connection=connection),
+            Queue("analytics", connection=connection),
         ],
         connection=connection,
     ).work()

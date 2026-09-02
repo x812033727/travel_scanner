@@ -70,6 +70,15 @@ class Settings(BaseSettings):
     provider_failure_threshold: int = 3
     provider_circuit_seconds: int = 60
     rate_limit_per_minute: int = Field(default=120, ge=1)
+    analytics_enabled: bool = False
+    ga4_enabled: bool = False
+    ga4_measurement_id: str | None = None
+    analytics_trust_country_header: bool = False
+    analytics_event_ip_limit: int = Field(default=120, ge=10, le=10_000)
+    analytics_event_session_limit: int = Field(default=60, ge=10, le=10_000)
+    analytics_retention_days: int = Field(default=90, ge=30, le=365)
+    analytics_rollup_retention_months: int = Field(default=25, ge=13, le=60)
+    analytics_scheduler_interval_seconds: int = Field(default=3_600, ge=300, le=86_400)
     auth_login_account_limit: int = Field(default=10, ge=1, le=100)
     auth_login_ip_limit: int = Field(default=30, ge=1, le=1_000)
     auth_login_window_seconds: int = Field(default=900, ge=60, le=86_400)

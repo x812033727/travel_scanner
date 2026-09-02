@@ -20,6 +20,7 @@ import { useSearchParams } from "next/navigation";
 import { Link, useRouter } from "@/i18n/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ApiError, api, isUsageInsufficient, twd } from "@/lib/api";
+import { trackAnalytics } from "@/lib/analytics";
 import { loginPath } from "@/lib/navigation";
 import {
   destinationByAirport,
@@ -586,6 +587,7 @@ export function SearchExperience() {
         setProgress(100);
         setBusy(false);
         stream.close();
+        trackAnalytics("search_completed");
         await loadFinal(accepted.search_id).catch(() => undefined);
       });
       stream.addEventListener("search.failed", async (message) => {
@@ -628,6 +630,7 @@ export function SearchExperience() {
           name: `${parsed?.destination || "目的地"}・${plan.title}旅程`,
         }),
       });
+      trackAnalytics("trip_created");
       router.push(`/trips/${trip.id}`);
     } catch (reason) {
       setError((reason as Error).message);

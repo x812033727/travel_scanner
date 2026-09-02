@@ -8,6 +8,7 @@
     "providers": "API 與金鑰",
     "hotspots": "景點候選審核",
     "foods": "美食目錄管理",
+    "analytics": "流量與分析",
     "deployments": "部署中心"
   },
   "providerTabs": {
@@ -43,6 +44,14 @@
     },
     "audit": { "title": "最近管理紀錄", "help": "保留操作者、目標與異動前後值。", "empty": "目前沒有方案或扣次異動紀錄。" },
     "auditActions": { "usage_operation_costs_updated": "更新功能扣次", "usage_package_created": "建立方案", "usage_package_updated": "更新方案", "usage_package_archived": "封存方案", "registration_trial_updated": "更新註冊體驗" }
+  },
+  "analytics": {
+    "eyebrow": "PRODUCT ANALYTICS", "title": "流量與產品分析", "description": "以站內第一方資料觀察流量、來源與核心產品漏斗；不顯示個別會員行為。", "loadError": "無法載入分析資料。", "retry": "重試", "rangeLabel": "分析期間", "ranges": { "24h": "24 小時", "7d": "7 天", "30d": "30 天", "90d": "90 天", "12m": "12 個月" }, "includeBots": "包含機器流量", "refresh": "重新整理", "noComparison": "前期無資料", "trend": "流量趨勢", "timezone": "時區：{timezone}", "period": "期間", "funnel": "核心產品漏斗", "funnelRaw": "依不重複工作階段計算。", "funnelRollup": "超過原始資料保存期時採每日彙總口徑。", "authoritative": "權威營運總量", "authoritativeHelp": "直接由會員、搜尋、行程與外連資料表計算，與瀏覽器事件口徑分開。", "heatmap": "星期與小時熱區", "heatmapHelp": "以台北時區的公開頁面瀏覽量顯示。", "heatmapUnavailable": "此期間沒有可用的小時資料。", "weekday": "星期", "quality": "資料品質", "enabled": "已啟用", "disabled": "未啟用或未設定", "excluded": "已排除", "included": "已包含", "days": "天", "months": "個月",
+    "metrics": { "live_sessions_30m": "最近 30 分鐘工作階段", "page_views": "瀏覽量", "avg_daily_visitors": "平均每日不重複訪客", "sessions": "工作階段", "pages_per_session": "每次瀏覽頁數", "registration_completed": "完成註冊", "search_completed": "完成搜尋", "trip_created": "建立行程", "outbound_click": "外部連結" },
+    "funnelSteps": { "sessions": "工作階段", "search_completed": "完成搜尋", "trip_created": "建立行程", "outbound_click": "外部連結" },
+    "authoritativeMetrics": { "registrations": "會員註冊", "completed_searches": "完成搜尋", "trips_created": "建立行程", "affiliate_clicks": "聯盟外連" },
+    "rankings": { "pages": "熱門頁面", "sources": "來源", "devices": "裝置", "locales": "語言", "countries": "國家", "utm": "UTM 來源" },
+    "qualityFields": { "ga4": "GA4 cookieless 狀態", "started": "追蹤起始時間", "lastEvent": "最後事件", "lastRollup": "最後彙總日期", "country": "國碼覆蓋率", "bots": "機器流量", "rawRetention": "原始事件保存", "rollupRetention": "彙總保存" }
   },
   "layout": {
     "eyebrow": "SYSTEM ADMIN",
