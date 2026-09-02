@@ -1,10 +1,11 @@
 "use client";
 
-import { ExternalLink, MapPin, Search, Soup, Sparkles, UtensilsCrossed } from "lucide-react";
+import { ExternalLink, MapPin, Search, SlidersHorizontal, Soup, Sparkles, UtensilsCrossed, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { FormEvent, useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { api } from "@/lib/api";
+import { TravelCardActions } from "@/components/travel-card-actions";
 
 type MapLink = { provider: "google" | "naver"; label: string; url: string; primary: boolean };
 type FoodDestination = {
@@ -87,6 +88,7 @@ export function FoodExplorer() {
   const [foods, setFoods] = useState<FoodsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   async function load(
     append = false,
@@ -137,7 +139,10 @@ export function FoodExplorer() {
       </div>
     </section>
 
-    <form onSubmit={(event: FormEvent<HTMLFormElement>) => { event.preventDefault(); void load(); }} className="grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-[1.35fr_repeat(3,1fr)_auto] md:p-5" aria-label={t("filters")}>
+    <button type="button" onClick={() => setFiltersOpen(true)} className="mb-3 flex min-h-12 w-full items-center justify-between rounded-2xl border border-[var(--line)] bg-white px-4 font-semibold shadow-[var(--shadow-sm)] md:hidden"><span className="flex items-center gap-2"><SlidersHorizontal size={18} />{t("filters")}</span><span className="rounded-full bg-[var(--coral-soft)] px-2.5 py-1 text-xs">{[destination, kind, meal].filter(Boolean).length}</span></button>
+    {filtersOpen && <button type="button" aria-label={t("filters")} onClick={() => setFiltersOpen(false)} className="fixed inset-0 z-[70] bg-slate-950/40 md:hidden" />}
+    <form onSubmit={(event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setFiltersOpen(false); void load(); }} className={`${filtersOpen ? "mobile-filter-sheet-open" : ""} mobile-filter-sheet grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-[1.35fr_repeat(3,1fr)_auto] md:p-5`} aria-label={t("filters")}>
+      <div className="mb-1 flex items-center justify-between md:hidden"><strong>{t("filters")}</strong><button type="button" onClick={() => setFiltersOpen(false)} aria-label={t("filters")} className="grid h-11 w-11 place-items-center rounded-full border border-[var(--line)]"><X size={19} /></button></div>
       <label className="relative"><span className="sr-only">{t("searchPlaceholder")}</span><Search className="pointer-events-none absolute left-4 top-3.5 text-[var(--muted)]" size={19} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t("searchPlaceholder")} className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] pl-11 pr-4 outline-none focus:border-[var(--teal)]" /></label>
       <select value={destination} onChange={(event) => setDestination(event.target.value)} aria-label={t("allDestinations")} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allDestinations")}</option>{visibleDestinations.map((item) => <option key={item.id} value={item.id}>{item.name} ({item.count})</option>)}</select>
       <select value={kind} onChange={(event) => setKind(event.target.value)} aria-label={t("allKinds")} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3">{kinds.map((item) => <option key={item} value={item}>{item ? t(`kinds.${item}`) : t("allKinds")}</option>)}</select>
@@ -150,7 +155,7 @@ export function FoodExplorer() {
       {loading && <div className="rounded-3xl border border-[var(--line)] bg-white p-8 text-[var(--muted)]">{t("loading")}</div>}
       {!loading && error && <div role="alert" className="rounded-3xl bg-[var(--coral-soft)] p-6">{error}</div>}
       {!loading && !error && foods?.items.length === 0 && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white p-8 text-center"><Soup className="mx-auto text-[var(--teal)]" /><h3 className="mt-3 font-bold">{t("emptyTitle")}</h3><p className="mt-2 text-sm text-[var(--muted)]">{t("emptyBody")}</p></div>}
-      {!loading && !error && foods && <div className="grid gap-5 md:grid-cols-2">{foods.items.map((food) => <article key={food.id} className="flex flex-col rounded-3xl border border-[var(--line)] bg-white p-5">
+      {!loading && !error && foods && <div className="grid gap-5 md:grid-cols-2">{foods.items.map((food) => <article key={food.id} className={`travel-result-card travel-result-card-food flex flex-col rounded-3xl border border-[var(--line)] bg-white p-5`}>
         <div className="flex items-start justify-between gap-4"><div><p className="text-xs font-bold uppercase tracking-[.14em] text-[var(--coral)]">{food.country_name}</p><h3 className="mt-1 text-2xl font-bold">{food.name}</h3><p className="mt-1 text-sm text-[var(--muted)]">{food.local_name}{food.romanized_name !== food.name && ` · ${food.romanized_name}`}</p></div><span className="rounded-full bg-[var(--teal-soft)] px-3 py-1 text-xs font-semibold text-[var(--teal-dark)]">{t(`kinds.${food.food_kind}`)}</span></div>
         <p className="mt-4 leading-7 text-[var(--muted)]">{food.summary}</p>
         <div className="mt-4 flex flex-wrap gap-2">{food.meal_types.map((item) => <span key={item} className="rounded-full border border-[var(--line)] px-2.5 py-1 text-xs">{t(`meals.${item}`)}</span>)}{food.dietary_notes.map((item) => <span key={item} className="rounded-full bg-amber-50 px-2.5 py-1 text-xs text-amber-950">{item}</span>)}</div>
@@ -158,6 +163,7 @@ export function FoodExplorer() {
         <div className="mt-4"><p className="text-xs font-semibold text-[var(--muted)]">{t("recommendedMerchants")}</p><div className="mt-2 grid gap-2">{food.recommended_merchants.slice(0, 3).map((merchant) => { const map = merchant.map_links.find((link) => link.primary) ?? merchant.map_links[0]; return map ? <a key={merchant.merchant_id} href={map.url} target="_blank" rel="noopener noreferrer" aria-label={`${map.label}: ${merchant.name}`} className="flex min-h-11 items-center gap-2 rounded-2xl bg-[var(--paper)] px-3 py-2 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"><MapPin size={15} /><span className="mr-auto text-[var(--ink)]">{merchant.name}{merchant.local_name !== merchant.name && <span className="ml-1 text-xs font-normal text-[var(--muted)]">· {merchant.local_name}</span>}</span><ExternalLink size={13} /></a> : null; })}{food.recommended_merchants.length === 0 && <p className="rounded-2xl bg-[var(--paper)] px-3 py-3 text-sm text-[var(--muted)]">{t("noVerifiedMerchant")}</p>}</div></div>
         {food.food_hotspots.length > 0 && <div className="mt-4"><p className="text-xs font-semibold text-[var(--muted)]">{t("foodAreas")}</p><p className="mt-1 text-sm text-[var(--muted)]">{food.food_hotspots.slice(0, 3).map((area) => area.name).join("、")}</p></div>}
         <div className="mt-auto flex flex-wrap items-center gap-2 pt-5">{food.destinations[0] && <Link href={`/hotspots?category=food&destination_id=${encodeURIComponent(food.destinations[0].id)}`} className="inline-flex min-h-11 items-center rounded-xl bg-[var(--teal)] px-4 text-sm font-semibold text-white">{t("viewFoodAreas")}</Link>}{food.source_urls[0] && <a href={food.source_urls[0]} target="_blank" rel="noopener noreferrer" className="ml-auto inline-flex min-h-11 items-center gap-1 px-2 text-xs font-semibold text-[var(--muted)]">{t("source")}<ExternalLink size={13} /></a>}</div>
+        <TravelCardActions type="food" id={food.id} title={food.name} selectionPath={`/foods/${food.id}/trip-selections`} merchantId={food.recommended_merchants[0]?.merchant_id} />
       </article>)}</div>}
       {!loading && !error && foods?.has_more && <div className="mt-7 text-center"><button type="button" onClick={() => void load(true)} className="min-h-12 rounded-xl border border-[var(--teal)] bg-white px-7 font-semibold text-[var(--teal)]">{t("loadMore")}</button></div>}
       <p className="mt-8 rounded-2xl bg-white px-5 py-4 text-sm leading-6 text-[var(--muted)]">{t("merchantNotice")}</p>

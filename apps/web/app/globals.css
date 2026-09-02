@@ -29,6 +29,50 @@ body {
     linear-gradient(180deg, #eff5ef 0, var(--paper) 35rem);
   font-family: "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
 }
+.public-app-shell { min-height: 100dvh; padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
+.site-header {
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(20px) saturate(1.2);
+}
+.app-bottom-nav {
+  position: fixed; inset: auto .7rem max(.65rem, env(safe-area-inset-bottom)) .7rem; z-index: 60;
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+  min-height: 4.25rem; padding: .35rem; border: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
+  border-radius: 1.35rem; background: color-mix(in srgb, white 92%, transparent);
+  box-shadow: 0 18px 50px rgba(16,42,43,.18); backdrop-filter: blur(22px) saturate(1.35);
+}
+.app-bottom-nav-item { display: flex; min-width: 0; min-height: 3.5rem; align-items: center; justify-content: center; flex-direction: column; gap: .18rem; border-radius: 1rem; color: var(--muted); font-size: .65rem; font-weight: 700; transition: color .18s, background-color .18s, transform .18s var(--ease-app); }
+.app-bottom-nav-item:active { transform: scale(.94); }
+.app-bottom-nav-item-active { color: var(--teal-dark); background: var(--teal-soft); }
+.public-app-shell:has(.planner-app-shell) + .app-bottom-nav { display: none; }
+.travel-card-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .45rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.travel-result-card { isolation: isolate; box-shadow: var(--shadow-sm); transition: transform .2s var(--ease-app), box-shadow .2s, border-color .2s; }
+.travel-result-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: .28rem; background: var(--teal); opacity: .9; }
+.travel-result-card:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--teal) 34%, var(--line)); box-shadow: var(--shadow-md); }
+.travel-result-card-food::before { background: var(--coral); }
+.travel-result-card-nature::before, .travel-result-card-beach::before { background: #3f9a76; }
+.travel-result-card-culture::before { background: #8b6bb3; }
+.travel-result-card-nightlife::before { background: #46547d; }
+.travel-card-action { display: flex; min-width: 0; min-height: 2.9rem; align-items: center; justify-content: center; gap: .35rem; border-radius: .9rem; color: var(--muted); font-size: .76rem; font-weight: 750; transition: transform .18s var(--ease-app), background-color .18s, color .18s; }
+.travel-card-action:hover { background: var(--paper); color: var(--teal-dark); }
+.travel-card-action:active { transform: scale(.96); }
+.travel-card-action-active { background: var(--coral-soft); color: #b64938; }
+.app-sheet-backdrop { position: fixed; inset: 0; z-index: 90; display: grid; align-items: end; background: rgba(15,23,42,.42); backdrop-filter: blur(5px); }
+.app-sheet { position: relative; max-height: 88dvh; overflow-y: auto; border-radius: 1.75rem 1.75rem 0 0; background: white; padding: 1.25rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom)); box-shadow: var(--shadow-lg); }
+.app-sheet-handle { width: 2.75rem; height: .32rem; margin: -.45rem auto 1rem; border-radius: 999px; background: #cbd5e1; }
+.app-field { min-height: 3rem; width: 100%; border: 1px solid var(--line); border-radius: .85rem; background: var(--paper); padding: 0 .85rem; font-weight: 500; }
+.app-toast { position: fixed; left: 50%; bottom: calc(5.7rem + env(safe-area-inset-bottom)); z-index: 100; display: flex; transform: translateX(-50%); align-items: center; gap: .45rem; border-radius: 999px; background: var(--ink); padding: .75rem 1rem; color: white; font-size: .82rem; font-weight: 700; box-shadow: var(--shadow-lg); }
+.mobile-filter-sheet { display: none; }
+.mobile-filter-sheet-open { position: fixed; inset: auto 0 0; z-index: 80; display: grid; max-height: 88dvh; overflow-y: auto; border-radius: 1.75rem 1.75rem 0 0; padding: 1.25rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom)); }
+@media (min-width: 768px) { .mobile-filter-sheet { display: grid; } }
+@media (min-width: 768px) { .app-sheet-backdrop { justify-items: end; align-items: stretch; } .app-sheet { width: min(28rem, 100vw); max-height: 100dvh; border-radius: 1.75rem 0 0 1.75rem; padding: 2rem; } .app-sheet-handle { display: none; } .app-toast { bottom: 2rem; } }
+@media (min-width: 768px) { .public-app-shell { padding-bottom: 0; } }
+.admin-app-shell { min-height: calc(100dvh - 4.5rem); }
+.admin-sidebar { position: fixed; inset: 0 auto 0 0; z-index: 80; width: min(84vw, 19rem); overflow-y: auto; transform: translateX(-105%); border-right: 1px solid var(--line); background: white; padding: 1.25rem; box-shadow: var(--shadow-lg); transition: transform .22s var(--ease-app); }
+.admin-sidebar-open { transform: translateX(0); }
+.admin-page { min-width: 0; padding: 1rem .25rem 4rem; }
+@media (min-width: 1024px) { .admin-app-shell { display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: 2rem; } .admin-sidebar { position: sticky; top: 5.5rem; z-index: 20; width: auto; height: calc(100dvh - 6.5rem); transform: none; border: 1px solid var(--line); border-radius: 1.5rem; padding: 1rem; box-shadow: var(--shadow-sm); } .admin-page { padding-top: 1rem; } }
 button, input, textarea, select { font: inherit; }
 button { cursor: pointer; }
 a { color: inherit; text-decoration: none; }

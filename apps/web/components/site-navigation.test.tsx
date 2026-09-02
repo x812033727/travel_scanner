@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { StrictMode } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { closedSiteVisibility, openSiteVisibility } from "@/lib/site-features";
@@ -8,7 +8,7 @@ import { SiteVisibilityProvider } from "./site-visibility-provider";
 afterEach(() => vi.unstubAllGlobals());
 
 describe("SiteNavigation", () => {
-  it("shares one auth request across desktop and mobile admin entries", async () => {
+  it("shares one auth request across desktop and compact mobile controls", async () => {
     const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({
       id: "admin-1",
       email: "admin@example.com",
@@ -23,9 +23,8 @@ describe("SiteNavigation", () => {
       </StrictMode>,
     );
 
-    expect((await screen.findByRole("link", { name: "管理後台" })).getAttribute("href")).toBe("/admin/users");
-    fireEvent.click(screen.getByRole("button", { name: "開啟導覽選單" }));
-    expect(screen.getAllByRole("link", { name: "管理後台" })).toHaveLength(2);
+    expect((await screen.findByRole("link", { name: "管理後台" })).getAttribute("href")).toBe("/admin");
+    expect(screen.getByRole("link", { name: "Account" }).getAttribute("href")).toBe("/account");
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 

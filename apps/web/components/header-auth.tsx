@@ -15,7 +15,7 @@ export function HeaderAuth() {
   if (status === "signed_out" || !user) return <Link className={pillClass} href="/login">{t("signIn")}</Link>;
   return (
     <span className="flex items-center gap-3">
-      {user.is_admin && <Link className="font-semibold text-[var(--teal)]" href="/admin/users">{nav("admin")}</Link>}
+      {user.is_admin && <Link className="font-semibold text-[var(--teal)]" href="/admin">{nav("admin")}</Link>}
       <Link className="hidden max-w-48 truncate text-[var(--ink)] sm:inline" title={user.email} href="/account">{user.email}</Link>
       <button onClick={() => void logout()} className={pillClass}>{t("signOut")}</button>
     </span>

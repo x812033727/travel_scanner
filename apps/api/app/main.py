@@ -3,6 +3,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
+from app.admin.dashboard_router import router as admin_dashboard_router
 from app.admin.router import router as admin_router
 from app.admin.router import runtime_router
 from app.admin.user_router import router as admin_user_router
@@ -31,6 +32,7 @@ from app.restaurants.admin_router import router as admin_restaurants_router
 from app.restaurants.admin_sources_router import router as admin_restaurant_sources_router
 from app.restaurants.router import router as restaurants_router
 from app.restaurants.user_router import router as restaurant_user_router
+from app.saved.router import router as saved_items_router
 from app.schema import expected_schema_revision, schema_is_current
 from app.search.router import router as search_router
 from app.trips.router import public_router as public_trips_router
@@ -58,6 +60,7 @@ app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
 app.add_exception_handler(RequestValidationError, validation_error_handler)  # type: ignore[arg-type]
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(admin_router, prefix="/api/v1")
+app.include_router(admin_dashboard_router, prefix="/api/v1")
 app.include_router(admin_user_router, prefix="/api/v1")
 app.include_router(deployments_router, prefix="/api/v1")
 app.include_router(runtime_router, prefix="/api/v1")
@@ -79,6 +82,7 @@ app.include_router(hotspots_router, prefix="/api/v1")
 app.include_router(admin_hotspots_router, prefix="/api/v1")
 app.include_router(restaurants_router, prefix="/api/v1")
 app.include_router(restaurant_user_router, prefix="/api/v1")
+app.include_router(saved_items_router, prefix="/api/v1")
 app.include_router(admin_restaurants_router, prefix="/api/v1")
 app.include_router(admin_restaurant_sources_router, prefix="/api/v1")
 app.include_router(foods_router, prefix="/api/v1")

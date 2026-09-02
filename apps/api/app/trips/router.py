@@ -1437,6 +1437,34 @@ async def list_trips(user: CurrentUser, session: Session) -> list[dict[str, Any]
     return [await serialize_trip(session, trip, include_items=False) for trip in trips]
 
 
+@router.get("/options")
+async def trip_options(user: CurrentUser, session: Session) -> dict[str, object]:
+    """Compact, shared trip picker used by cards across the public app."""
+    trips = list(
+        (
+            await session.scalars(
+                select(TripPlan)
+                .where(TripPlan.user_id == user.id)
+                .order_by(TripPlan.updated_at.desc())
+            )
+        ).all()
+    )
+    return {
+        "items": [
+            {
+                "trip_id": str(trip.id),
+                "name": trip.name,
+                "version": trip.version,
+                "start_date": trip.start_date,
+                "end_date": trip.end_date,
+                "destination_name": trip.destination_name,
+            }
+            for trip in trips
+            if trip.start_date is not None and trip.end_date is not None
+        ]
+    }
+
+
 @router.get("/{trip_id}")
 async def get_trip(trip_id: UUID, user: CurrentUser, session: Session) -> dict[str, Any]:
     trip = await owned_trip(session, user.id, trip_id)

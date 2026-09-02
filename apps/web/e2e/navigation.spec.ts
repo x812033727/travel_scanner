@@ -32,7 +32,7 @@ test("first visit detects browser language and preserves query", async ({ reques
   expect(response.headers().location).toMatch(/\/ja\/?\?campaign=autumn$/);
 });
 
-test("mobile navigation shows the admin entry from the shared auth state", async ({ page }) => {
+test("mobile app shell shows five primary destinations and compact account state", async ({ page }) => {
   let authRequests = 0;
   await page.unroute("**/api/travel/auth/me");
   await page.route("**/api/travel/auth/me", (route) => {
@@ -49,8 +49,10 @@ test("mobile navigation shows the admin entry from the shared auth state", async
   });
   await page.setViewportSize({ width: 390, height: 760 });
   await page.goto("/zh-TW");
-  await page.getByRole("button", { name: "開啟導覽選單" }).click();
-  await expect(page.getByRole("navigation", { name: "手機主要導覽" }).getByRole("link", { name: "管理後台" })).toBeVisible();
+  const navigation = page.getByRole("navigation", { name: "手機主要導覽" });
+  await expect(navigation.getByRole("link")).toHaveCount(5);
+  await expect(navigation.getByRole("link", { name: "探索" })).toHaveAttribute("href", "/zh-TW/hotspots");
+  await expect(page.getByRole("link", { name: "Account" })).toHaveAttribute("href", "/zh-TW/account");
   expect(authRequests).toBe(1);
 });
 
@@ -58,8 +60,7 @@ for (const width of [320, 390]) {
   test(`mobile language switch keeps the current page at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 760 });
     await page.goto("/en?campaign=mobile");
-    await page.getByRole("button", { name: "Open navigation menu" }).click();
-    await page.getByRole("navigation", { name: "Mobile primary navigation" }).getByLabel("Language").selectOption("ja");
+    await page.getByRole("banner").locator("select:visible").selectOption("ja");
     await expect(page).toHaveURL(/\/ja\/?\?campaign=mobile$/);
     await expect(page.locator("html")).toHaveAttribute("lang", "ja");
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
@@ -71,12 +72,7 @@ test("primary travel flow is visible", async ({ page }) => {
   await page.goto("/zh-TW");
   await expect(page.getByRole("heading", { name: /少開十個分頁/ })).toBeVisible();
   await expect(page.getByRole("button", { name: /下一步/ })).toBeVisible();
-  const mobileMenu = page.getByRole("button", { name: "開啟導覽選單" });
-  if (await mobileMenu.isVisible()) await mobileMenu.click();
-  await Promise.all([
-    page.waitForURL(/\/pricing$/, { timeout: 30_000 }),
-    page.getByRole("link", { name: "方案" }).click(),
-  ]);
+  await page.goto("/zh-TW/pricing");
   await expect(page.getByRole("heading", { name: /不綁月租的旅遊查價次數/ })).toBeVisible();
 });
 
@@ -517,16 +513,14 @@ test("failed login keeps email and clears only password", async ({ page }) => {
   await expect(page.getByLabel("密碼")).toHaveValue("");
 });
 
-test("mobile menu exposes trips alerts and account links", async ({ page }) => {
+test("mobile bottom navigation exposes trips alerts and account links", async ({ page }) => {
   await page.setViewportSize({ width: 412, height: 915 });
   await page.goto("/zh-TW");
-  await expect(page.getByRole("link", { name: "我的旅行" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "我的旅行" })).toHaveAttribute("href", "/zh-TW/trips");
-  await page.getByRole("button", { name: "開啟導覽選單" }).click();
-  await expect(page.getByRole("navigation", { name: "手機主要導覽" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "我的旅程" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "價格通知" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "會員帳號" })).toBeVisible();
+  const navigation = page.getByRole("navigation", { name: "手機主要導覽" });
+  await expect(navigation).toBeVisible();
+  await expect(navigation.getByRole("link", { name: "旅程" })).toHaveAttribute("href", "/zh-TW/trips");
+  await expect(navigation.getByRole("link", { name: "通知" })).toHaveAttribute("href", "/zh-TW/alerts");
+  await expect(navigation.getByRole("link", { name: "我的" })).toHaveAttribute("href", "/zh-TW/account");
 });
 
 test("search criteria can be revised before running a new comparison", async ({ page }) => {

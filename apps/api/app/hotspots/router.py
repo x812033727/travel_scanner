@@ -1,26 +1,37 @@
+from datetime import date
 from typing import Annotated, Any, Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query, Request
+from pydantic import BaseModel, Field
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.auth.service import CurrentUser
 from app.config import get_settings
 from app.db import get_session
 from app.destinations.catalog import DESTINATIONS, destination_for_code, destination_for_id
 from app.hotspots.guides import list_guides, resolve_guide_open
+from app.hotspots.maps import build_map_links
 from app.hotspots.places import place_detail_payload
 from app.hotspots.service import hotspot_facets, list_rankings
 from app.i18n import Locale, current_locale
 from app.infra import client_ip, enforce_named_rate_limit, get_redis
 from app.locations.plus_codes import has_durable_coordinates
-from app.models import HotspotPlaceProfile, TravelHotspot
+from app.models import HotspotPlaceProfile, TravelHotspot, TripPlanItem
 from app.problems import AppError
+from app.trips.router import load_items, owned_trip, persist_system_schedule_change
 
 router = APIRouter(prefix="/hotspots", tags=["hotspots"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 RequestLocale = Annotated[Locale, Depends(current_locale)]
+
+
+class HotspotTripSelectionRequest(BaseModel):
+    trip_id: UUID
+    version: int = Field(ge=1)
+    day_date: date
 
 
 def _resolve_destination(
@@ -269,6 +280,87 @@ async def hotspots_for_planner(
         "recommendations": recommendations,
         "planner_note": "熱門度只作候選訊號，仍須配合營業時間、距離與旅客偏好排程",
     }
+
+
+@router.post("/{hotspot_id}/trip-selections")
+async def select_hotspot_for_trip(
+    hotspot_id: UUID,
+    payload: HotspotTripSelectionRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    hotspot = await session.get(TravelHotspot, hotspot_id)
+    if (
+        hotspot is None
+        or not hotspot.is_active
+        or hotspot.review_status not in {"approved", "auto_approved"}
+        or hotspot.map_match_status != "verified"
+        or not has_durable_coordinates(
+            hotspot.latitude,
+            hotspot.longitude,
+            hotspot.plus_code_global,
+            hotspot.coordinate_source_type,
+            hotspot.coordinate_source_url,
+        )
+    ):
+        raise AppError(404, "hotspot_not_found", "找不到可加入行程的景點")
+    trip = await owned_trip(session, user.id, payload.trip_id)
+    if (
+        trip.start_date is None
+        or trip.end_date is None
+        or not trip.start_date <= payload.day_date <= trip.end_date
+    ):
+        raise AppError(422, "itinerary_date_out_of_range", "景點日期超出旅程範圍")
+    rows = await load_items(session, trip.id)
+    position = max(
+        (item.position for item in rows if item.day_date == payload.day_date),
+        default=-1,
+    ) + 1
+    map_links = build_map_links(
+        name=hotspot.name,
+        local_name=hotspot.metadata_json.get("local_name"),
+        city_name=hotspot.city_name,
+        country_code=hotspot.country_code,
+        latitude=hotspot.latitude,
+        longitude=hotspot.longitude,
+        google_place_id=hotspot.google_place_id,
+        naver_map_url=hotspot.naver_map_url,
+        map_match_status=hotspot.map_match_status,
+    )
+    item = TripPlanItem(
+        trip_plan_id=trip.id,
+        item_type="activity",
+        day_date=payload.day_date,
+        position=position,
+        title=hotspot.name,
+        location_name=hotspot.name,
+        latitude=hotspot.latitude,
+        longitude=hotspot.longitude,
+        plus_code_global=hotspot.plus_code_global,
+        coordinate_source_type=hotspot.coordinate_source_type,
+        coordinate_source_url=hotspot.coordinate_source_url,
+        coordinate_verified_at=hotspot.coordinate_verified_at,
+        provider_place_id=hotspot.google_place_id,
+        location_source=hotspot.coordinate_source_type,
+        duration_minutes=int(hotspot.metadata_json.get("recommended_duration_minutes") or 90),
+        data={
+            "hotspot_id": str(hotspot.id),
+            "hotspot_slug": hotspot.slug,
+            "map_links": map_links,
+            "selection_source": "hotspot_card",
+        },
+    )
+    session.add(item)
+    rows.append(item)
+    return await persist_system_schedule_change(
+        session,
+        trip,
+        user.id,
+        payload.version,
+        rows,
+        warning="景點已加入，請重新計算這一天的路線。",
+        target_day=payload.day_date,
+    )
 
 
 @router.get("/{hotspot_id}/place")

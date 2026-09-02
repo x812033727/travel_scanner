@@ -358,6 +358,18 @@ class TravelHotspot(Timestamped, Base):
     depth_score: Mapped[Decimal | None] = mapped_column(Numeric(5, 2), nullable=True)
 
 
+class HotspotFavorite(Timestamped, Base):
+    __tablename__ = "hotspot_favorites"
+    __table_args__ = (
+        UniqueConstraint("user_id", "hotspot_id", name="uq_hotspot_favorite"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    hotspot_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="CASCADE"), index=True
+    )
+
+
 class HotspotPlaceProfile(Timestamped, Base):
     __tablename__ = "hotspot_place_profiles"
     __table_args__ = (
@@ -481,6 +493,18 @@ class TravelFood(Timestamped, Base):
     review_status: Mapped[str] = mapped_column(String(24), default="approved", index=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
     display_order: Mapped[int] = mapped_column(Integer, default=100)
+
+
+class FoodFavorite(Timestamped, Base):
+    __tablename__ = "food_favorites"
+    __table_args__ = (
+        UniqueConstraint("user_id", "food_id", name="uq_food_favorite"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    food_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_foods.id", ondelete="CASCADE"), index=True
+    )
 
 
 class FoodLocalization(Timestamped, Base):

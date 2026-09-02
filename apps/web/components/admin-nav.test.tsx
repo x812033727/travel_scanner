@@ -4,26 +4,16 @@ import { AdminNav } from "./admin-nav";
 
 describe("AdminNav", () => {
   afterEach(() => vi.unstubAllGlobals());
-  it("places usage management after member management", () => {
+  it("groups daily content work ahead of configuration", () => {
     render(<AdminNav current="system" />);
     const links = screen.getAllByRole("link");
     expect(links.map((link) => link.textContent)).toEqual([
-      "會員與次數",
-      "方案與扣次",
-      "系統設定",
-      "版面管理",
-      "API 與金鑰",
-      "景點候選審核",
-      "美食目錄管理",
+      "營運總覽", "會員與次數", "景點候選審核", "美食目錄管理",
+      "方案與扣次", "版面管理", "系統設定", "API 與金鑰",
     ]);
     expect(links.map((link) => link.getAttribute("href"))).toEqual([
-      "/admin/users",
-      "/admin/usage-settings",
-      "/admin/system-settings",
-      "/admin/layout-settings",
-      "/admin/settings",
-      "/admin/hotspots",
-      "/admin/foods",
+      "/admin", "/admin/users", "/admin/hotspots", "/admin/foods",
+      "/admin/usage-settings", "/admin/layout-settings", "/admin/system-settings", "/admin/settings",
     ]);
     expect(screen.getByRole("link", { name: "系統設定" }).getAttribute("aria-current")).toBe("page");
   });
