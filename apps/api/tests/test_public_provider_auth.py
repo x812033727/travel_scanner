@@ -8,6 +8,7 @@ from httpx import ASGITransport, AsyncClient
 from starlette.requests import Request
 
 from app.config import Settings
+from app.hotspots import router as hotspots_router
 from app.main import app
 from app.models import User
 from app.places import router as places_router
@@ -56,6 +57,50 @@ async def test_anonymous_provider_endpoints_stop_before_external_work(
     restaurant_limiter.assert_not_awaited()
     photo_usage.assert_not_awaited()
     photo_limiter.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_anonymous_hotspot_content_stops_before_protected_work(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    place_payload = AsyncMock()
+    guides = AsyncMock()
+    guide_open = AsyncMock()
+    guide_limiter = AsyncMock()
+    monkeypatch.setattr(hotspots_router, "place_detail_payload", place_payload)
+    monkeypatch.setattr(hotspots_router, "list_guides", guides)
+    monkeypatch.setattr(hotspots_router, "resolve_guide_open", guide_open)
+    monkeypatch.setattr(hotspots_router, "enforce_named_rate_limit", guide_limiter)
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        hotspot_id = uuid4()
+        place_response = await client.get(f"/api/v1/hotspots/{hotspot_id}/place")
+        guides_response = await client.get(f"/api/v1/hotspots/{hotspot_id}/guides")
+        source_response = await client.get(f"/api/v1/hotspots/{hotspot_id}/source")
+        guide_response = await client.post(f"/api/v1/hotspots/guides/{uuid4()}/open")
+
+    for response in (place_response, guides_response, source_response, guide_response):
+        assert response.status_code == 401
+        assert response.json()["code"] == "authentication_required"
+    place_payload.assert_not_awaited()
+    guides.assert_not_awaited()
+    guide_open.assert_not_awaited()
+    guide_limiter.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_public_rankings_hide_source_urls(monkeypatch: pytest.MonkeyPatch) -> None:
+    rankings = AsyncMock(return_value={"items": [{"id": "one", "source_urls": ["https://example.com"]}]})
+    monkeypatch.setattr(hotspots_router, "list_rankings", rankings)
+    monkeypatch.setattr(
+        hotspots_router,
+        "load_runtime_settings",
+        AsyncMock(return_value=Settings()),
+    )
+
+    result = await hotspots_router.hotspot_rankings(AsyncMock(), "zh-TW")
+
+    assert result["items"] == [{"id": "one", "has_source": True}]
 
 
 @pytest.mark.asyncio

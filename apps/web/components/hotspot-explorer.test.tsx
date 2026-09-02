@@ -8,19 +8,7 @@ describe("HotspotExplorer", () => {
     const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
       const url = String(input);
       if (url.includes("/saved-items")) {
-        return new Response(JSON.stringify({ code: "authentication_required" }), { status: 401 });
-      }
-      if (url.includes("/hotspots/sources")) {
-        return new Response(JSON.stringify({
-          collection_interval_seconds: 21600,
-          sources: [{
-            id: "wikimedia_pageviews",
-            name: "Wikimedia Analytics",
-            status: "ready",
-            purpose: "比較公開頁面瀏覽趨勢",
-            persistence: "每日彙總數字",
-          }],
-        }));
+        return new Response(JSON.stringify({ items: [] }));
       }
       if (url.includes("/hotspots/facets")) {
         return new Response(JSON.stringify({
@@ -105,7 +93,7 @@ describe("HotspotExplorer", () => {
           growth_rate: 0.2,
           trend_label: "近期升溫",
           sources: ["curated_catalog", "wikimedia_pageviews"],
-          source_urls: ["https://en.wikipedia.org/wiki/Sens%C5%8D-ji"],
+          has_source: true,
           signal_date: "2026-08-30",
           is_estimate: false,
           is_deep_travel: true,
@@ -127,7 +115,8 @@ describe("HotspotExplorer", () => {
 
     expect(await screen.findByRole("heading", { name: "淺草寺" })).toBeTruthy();
     expect(screen.getByText("12,345")).toBeTruthy();
-    expect(await screen.findByText("Wikimedia 趨勢")).toBeTruthy();
+    expect(screen.queryByText("資料來源狀態")).toBeNull();
+    expect(fetchMock.mock.calls.some(([input]) => String(input).includes("/hotspots/sources"))).toBe(false);
     expect(screen.getByText("已載入 1／170 個結果")).toBeTruthy();
     expect(screen.getByRole("button", { name: "載入更多" })).toBeTruthy();
     expect(screen.getAllByText(/深度旅遊/).length).toBeGreaterThan(0);
@@ -142,27 +131,17 @@ describe("HotspotExplorer", () => {
     expect(map.getAttribute("rel")).toContain("noopener");
     expect(screen.getAllByRole("link", { name: /Google Maps/ })).toHaveLength(1);
     const diningButton = screen.getByRole("button", { name: /附近用餐/ });
-    expect(diningButton.textContent).toContain("登入後查詢");
-    diningButton.focus();
-    fireEvent.click(diningButton);
-    expect(await screen.findByRole("heading", { name: "登入後查看附近用餐" })).toBeTruthy();
-    const loginLink = screen.getByRole("link", { name: "登入後繼續" });
-    expect(loginLink.getAttribute("href")).toContain("/login?next=");
-    expect(fetchMock.mock.calls.some(([input]) => String(input).includes("restaurant-searches"))).toBe(false);
-    fireEvent.click(screen.getByRole("button", { name: "關閉登入提示" }));
-    await waitFor(() => expect(document.activeElement).toBe(diningButton));
+    expect(diningButton.textContent).toContain("即時星等");
+    const source = screen.getByRole("link", { name: "查看來源" });
+    expect(source.getAttribute("href")).toBe("/zh-TW/out/hotspots/hotspot-1/source");
     fireEvent.click(screen.getByRole("button", { name: /景點詳情/ }));
     expect(await screen.findByRole("heading", { name: "認識 淺草寺" })).toBeTruthy();
     const dialog = screen.getByRole("dialog", { name: "認識 淺草寺" });
-    const address = within(dialog).getByRole("link", { name: /東京都台東区浅草2丁目3-1.*Google Maps/ });
-    expect(address.getAttribute("href")).toContain("query_place_id=ChIJ-test");
-    expect(address.getAttribute("target")).toBe("_blank");
-    expect(address.getAttribute("rel")).toContain("noopener");
-    expect(within(dialog).getAllByRole("link", { name: /Google Maps/ })).toHaveLength(1);
-    const attribution = within(dialog).getByText("Google Maps");
-    expect(attribution.getAttribute("translate")).toBe("no");
-    expect(within(dialog).queryByRole("img", { name: "Google Maps" })).toBeNull();
-    expect(within(dialog).getByRole("link", { name: /Japan Map Center/ }).getAttribute("rel")).toContain("noopener");
+    expect(within(dialog).queryByText("地址")).toBeNull();
+    expect(within(dialog).queryByText("東京都台東区浅草2丁目3-1")).toBeNull();
+    expect(within(dialog).queryByText("營業時間")).toBeNull();
+    expect(within(dialog).queryByText("星期一：06:00–17:00")).toBeNull();
+    expect(within(dialog).queryByText("Google Maps")).toBeNull();
     expect(within(dialog).queryByText("8Q7XPQ7W+WM")).toBeNull();
     expect(within(dialog).queryByText("35.714765, 139.796655")).toBeNull();
     expect(within(dialog).queryByText(/Google 資料更新/)).toBeNull();
@@ -172,5 +151,58 @@ describe("HotspotExplorer", () => {
     const guide = await screen.findByRole("link", { name: /第一次去淺草寺/ });
     expect(guide.getAttribute("target")).toBe("_blank");
     expect(guide.getAttribute("href")).toContain("/zh-TW/out/guides/");
+  });
+
+  it("requires sign-in for details, sources, and sharing without loading protected content", async () => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/saved-items")) {
+        return new Response(JSON.stringify({ code: "authentication_required" }), { status: 401 });
+      }
+      if (url.includes("/hotspots/facets")) {
+        return new Response(JSON.stringify({ total: 1, countries: [], cities: [], categories: [], styles: [] }));
+      }
+      return new Response(JSON.stringify({
+        scope: "global", scope_key: "global", observed_on: "2026-08-31", window_days: 30,
+        total: 1, has_more: false, next_cursor: null,
+        items: [{
+          id: "hotspot-1", slug: "sensoji", rank: 1, name: "淺草寺", local_name: "浅草寺",
+          destination_id: "tokyo", destination_role: "primary", parent_destination_id: null,
+          is_cross_city: false, city_code: "NRT", city_name: "東京", country_code: "JP", country_name: "日本",
+          category: "culture", score: 88, components: { interest: 90, growth: 80, quality: 92, confidence: 80 },
+          pageviews_30d: 12345, growth_rate: 0.2, trend_label: "近期升溫", sources: ["curated_catalog"],
+          has_source: true, signal_date: "2026-08-30", is_estimate: false, is_deep_travel: false,
+          depth_kind: null, depth_score: null, depth_reason: null, access_minutes: null,
+          recommended_duration_minutes: 90, guide_counts: { article: 0, video: 1 },
+          map_links: [{ provider: "google", label: "Google Maps", url: "https://www.google.com/maps/search/?api=1&query_place_id=ChIJ-test", primary: true }],
+          place_summary: { status: "ready", google_maps_url: null, map_links: [], official_website_url: null, official_website_verified: false, has_details: true, updated_at: null },
+        }],
+      }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const share = vi.fn();
+    Object.defineProperty(navigator, "share", { configurable: true, value: share });
+
+    render(<SavedItemsProvider><HotspotExplorer /></SavedItemsProvider>);
+    expect(await screen.findByRole("heading", { name: "淺草寺" })).toBeTruthy();
+    expect(screen.queryByText("資料來源狀態")).toBeNull();
+
+    const details = screen.getByRole("button", { name: /景點詳情/ });
+    details.focus();
+    fireEvent.click(details);
+    expect(await screen.findByRole("heading", { name: "登入後繼續使用景點功能" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "登入後繼續" }).getAttribute("href")).toContain("/login?next=");
+    expect(fetchMock.mock.calls.some(([input]) => /hotspots\/hotspot-1\/(place|guides)/.test(String(input)))).toBe(false);
+    fireEvent.click(screen.getByRole("button", { name: "關閉登入提示" }));
+    await waitFor(() => expect(document.activeElement).toBe(details));
+
+    fireEvent.click(screen.getByRole("button", { name: "查看來源" }));
+    expect(await screen.findByRole("heading", { name: "登入後繼續使用景點功能" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "關閉登入提示" }));
+
+    fireEvent.click(screen.getByRole("button", { name: "分享" }));
+    expect(await screen.findByRole("heading", { name: "登入後繼續使用此功能" })).toBeTruthy();
+    expect(share).not.toHaveBeenCalled();
+    expect(fetchMock.mock.calls.some(([input]) => String(input).includes("/hotspots/sources"))).toBe(false);
   });
 });
