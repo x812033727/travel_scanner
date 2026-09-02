@@ -41,6 +41,6 @@ describe("header auth", () => {
       id: "u1", email: "admin@example.com", is_admin: true,
     })));
     renderHeaderAuth();
-    expect((await screen.findByRole("link", { name: "管理後台" })).getAttribute("href")).toBe("/admin/users");
+    expect((await screen.findByRole("link", { name: "管理後台" })).getAttribute("href")).toBe("/admin");
   });
 });

@@ -33,6 +33,12 @@ for (const width of [320, 390]) {
   test(`mobile guide sheet is app-like at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 760 });
     await page.goto("/zh-TW/hotspots");
+    const saveButton = page.getByRole("button", { name: "收藏" }).first();
+    await expect(saveButton).toBeVisible();
+    expect((await saveButton.boundingBox())?.height || 0).toBeGreaterThanOrEqual(44);
+    await saveButton.click();
+    await expect(page.getByRole("dialog", { name: "登入後同步收藏與行程" })).toBeVisible();
+    await page.getByRole("button", { name: "關閉" }).click();
     await page.getByRole("button", { name: /景點詳情/ }).click();
     const dialog = page.getByRole("dialog", { name: "認識 Senso-ji" });
     await expect(dialog).toBeVisible();
