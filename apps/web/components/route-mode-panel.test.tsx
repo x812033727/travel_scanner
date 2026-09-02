@@ -105,6 +105,29 @@ describe("route mode panel", () => {
     expect(fetchMock.mock.calls.some(([url]) => String(url).endsWith("/routes/preview"))).toBe(true);
   });
 
+  it("stops showing a loading summary after the route provider fails", async () => {
+    const noRouteTrip = {
+      ...trip,
+      route_segments: [],
+      routing: { ...trip.routing, status: "idle" as const, completed: 0 },
+    };
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      if (url.endsWith("/runtime/public-config")) {
+        return ok({ google_maps_browser_key: null, google_maps_embed_enabled: false });
+      }
+      return new Response(JSON.stringify({ detail: "目前找不到這個交通方式的可用路線" }), {
+        status: 503,
+        headers: { "Content-Type": "application/json" },
+      });
+    }));
+
+    render(<RouteModePanel trip={noRouteTrip} items={items} fromItemId="from" toItemId="to" onApplied={() => undefined} onError={() => undefined} />);
+
+    expect(await screen.findByText("路線暫時無法取得")).toBeTruthy();
+    expect(screen.queryByText("正在取得路線")).toBeNull();
+    expect(screen.getByRole("button", { name: "重試" })).toBeTruthy();
+  });
+
   it("offers NAVER external navigation without enabling apply when Korean transit has no internal route", async () => {
     const koreanTrip = {
       ...trip,

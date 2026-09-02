@@ -253,6 +253,17 @@ export function RouteModePanel({
     : undefined;
 
   const navigationUrl = externalNavigation?.web_url || activeSegment?.maps_url || directionsUrl;
+  const routeSummary = activeSegment
+    ? `${activeSegment.duration_minutes} 分鐘`
+    : externalNavigation
+      ? "外部導航"
+      : resolvingLocations || loadingMode === mode
+        ? "正在取得路線"
+        : unresolvedItems.length
+          ? "地點待確認"
+          : localError
+            ? "路線暫時無法取得"
+            : "尚未取得路線";
 
   return <div className="route-panel-layout">
     <div className="route-panel-map min-w-0">
@@ -268,7 +279,7 @@ export function RouteModePanel({
         <div className="route-mode-tabs" role="tablist" aria-label="選擇交通工具">{modes.map(({ value, label, icon: Icon }) => <button key={value} type="button" role="tab" aria-selected={mode === value} onClick={() => { if (previews[value] || initialSegment?.travel_mode === value) setMode(value); else void previewMode(value); }} className={`route-mode-tab ${mode === value ? "route-mode-tab-active" : ""}`}><Icon size={18} />{label}{loadingMode === value && <Loader2 size={14} className="animate-spin" />}</button>)}</div>
         {navigationUrl && <a href={navigationUrl} target="_blank" rel="noreferrer" className="route-navigation-link" aria-label={`導航：${fromItem?.title || "起點"}到${toItem?.title || "終點"}`}><Navigation size={16} />導航</a>}
       </div>
-      <div className="route-selection-summary"><strong>{activeSegment ? `${activeSegment.duration_minutes} 分鐘` : externalNavigation ? "外部導航" : "正在取得路線"}</strong><span>{activeSegment?.schedule_mode === "preview" ? "自訂時間預覽" : activeSegment?.schedule_mode === "live" ? "目前路線" : "依行程時間規劃"}</span></div>
+      <div className="route-selection-summary"><strong>{routeSummary}</strong><span>{activeSegment?.schedule_mode === "preview" ? "自訂時間預覽" : activeSegment?.schedule_mode === "live" ? "目前路線" : "依行程時間規劃"}</span></div>
     </section>
 
     <div className="route-panel-controls space-y-4">

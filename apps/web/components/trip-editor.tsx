@@ -1296,8 +1296,11 @@ export function TripEditor({ tripId }: { tripId: string }) {
           const nextItem = routeIndex >= 0 ? activeRouteRows[routeIndex + 1] : undefined;
           const segment = routes.find((route) => route.from_item_id === item.id && route.to_item_id === nextItem?.id);
           const itemConflict = trip.routing?.conflicts?.find((conflict) => conflict.item_id === item.id);
+          const catalogLocation = ["hotspot_catalog", "food_merchant_catalog"].includes(item.location_source || "")
+            && item.latitude != null
+            && item.longitude != null;
           const itemLocationConfirmed = item.location_source === "confirmed"
-            || (["google_places", "naver_local"].includes(item.location_source || "") && item.data.needs_place_confirmation !== true);
+            || ((catalogLocation || ["google_places", "naver_local"].includes(item.location_source || "")) && item.data.needs_place_confirmation !== true);
           const autoLocation = item.location_source?.endsWith("_auto");
           const locationStatus = itemLocationConfirmed
             ? "已確認"

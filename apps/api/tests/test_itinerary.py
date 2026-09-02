@@ -42,6 +42,10 @@ async def test_itinerary_respects_fixed_items_and_marks_estimates() -> None:
     assert any(item.item_type == "hotel" and item.locked for item in items)
     assert any(item.item_type == "activity" and not item.is_estimated for item in items)
     assert any(item.item_type == "suggestion" and item.is_estimated for item in items)
+    meal_slots = [item for item in items if item.system_role in {"lunch", "dinner"}]
+    assert {item.title for item in meal_slots} == {"午餐尚未安排", "晚餐尚未安排"}
+    assert all(item.location_name is None for item in meal_slots)
+    assert all(item.data["meal_selection_source"] == "unset" for item in meal_slots)
     for day in itinerary:
         assert [item.position for item in day.items] == list(range(len(day.items)))
 

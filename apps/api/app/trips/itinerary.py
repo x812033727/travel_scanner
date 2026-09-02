@@ -572,10 +572,9 @@ def build_itinerary(
             },
         )
 
-    meal_titles = list((destination.suggestions if destination else {}).get("food", ()))
     hotel_name = hotel.hotel_name if hotel else "尚未設定飯店"
     hotel_location = (hotel.address or hotel.hotel_name) if hotel else None
-    for day_index, day_value in enumerate(days):
+    for day_value in days:
         add(
             day_value,
             item_type="hotel_anchor",
@@ -596,19 +595,16 @@ def build_itinerary(
                 **destination_context,
             },
         )
-        for role, hour, minute, duration, offset, label in (
-            ("lunch", 12, 0, 60, 0, "午餐"),
-            ("dinner", 18, 30, 90, 1, "晚餐"),
+        for role, hour, minute, duration, label in (
+            ("lunch", 12, 0, 60, "午餐"),
+            ("dinner", 18, 30, 90, "晚餐"),
         ):
-            title = (
-                meal_titles[(day_index * 2 + offset) % len(meal_titles)] if meal_titles else label
-            )
             starts = _at(day_value, hour, minute, timezone=destination_timezone)
             add(
                 day_value,
                 item_type="meal",
-                title=title,
-                location_name=(destination.city if destination else query.destination),
+                title=f"{label}尚未安排",
+                location_name=None,
                 start_time=starts,
                 end_time=starts + timedelta(minutes=duration),
                 locked=True,
@@ -617,9 +613,9 @@ def build_itinerary(
                 duration_minutes=duration,
                 system_role=role,
                 data={
-                    "source_mode": "catalog",
+                    "source_mode": "system",
                     "meal_kind": role,
-                    "meal_selection_source": "catalog" if meal_titles else "unset",
+                    "meal_selection_source": "unset",
                     "needs_place_confirmation": True,
                     **destination_context,
                 },

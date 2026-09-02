@@ -2119,6 +2119,89 @@ def _planning_preserved_items(
     ]
 
 
+_MEAL_LOCATION_DATA_KEYS = {
+    "attribution",
+    "candidate_key",
+    "food_id",
+    "generated_by",
+    "google_maps_url",
+    "map_links",
+    "merchant_id",
+    "naver_maps_url",
+    "place_match_status",
+    "place_provider",
+}
+
+
+def _sync_ai_meal_slots(
+    preserved: list[TripPlanItem],
+    generated_meals: list[ItineraryItem],
+    target_date: date | None = None,
+) -> None:
+    """Replace non-user meal slots with exact merchants or an explicit empty state."""
+    generated_by_role: dict[tuple[date | None, str], ItineraryItem] = {
+        (meal.day_date, meal.system_role): meal
+        for meal in generated_meals
+        if meal.system_role in {"lunch", "dinner"}
+    }
+    for current_meal in preserved:
+        if target_date is not None and current_meal.day_date != target_date:
+            continue
+        if current_meal.system_role not in {"lunch", "dinner"}:
+            continue
+        if current_meal.data.get("meal_selection_source") == "user":
+            continue
+        role = current_meal.system_role
+        meal = generated_by_role.get((current_meal.day_date, role))
+        if meal is not None:
+            current_meal.title = meal.title
+            current_meal.location_name = meal.location_name
+            current_meal.latitude = (
+                Decimal(str(meal.latitude)) if meal.latitude is not None else None
+            )
+            current_meal.longitude = (
+                Decimal(str(meal.longitude)) if meal.longitude is not None else None
+            )
+            current_meal.provider_place_id = meal.provider_place_id
+            current_meal.location_source = meal.location_source
+            current_meal.is_estimated = meal.is_estimated
+            current_meal.notes = meal.notes
+            current_meal.data = {
+                **{
+                    key: value
+                    for key, value in current_meal.data.items()
+                    if key not in _MEAL_LOCATION_DATA_KEYS
+                },
+                **meal.data,
+                "meal_selection_source": "ai",
+            }
+            continue
+
+        label = "午餐" if role == "lunch" else "晚餐"
+        current_meal.title = f"{label}尚未安排"
+        current_meal.location_name = None
+        current_meal.latitude = None
+        current_meal.longitude = None
+        current_meal.provider_place_id = None
+        current_meal.location_source = None
+        current_meal.coordinate_source_type = None
+        current_meal.coordinate_source_url = None
+        current_meal.coordinate_verified_at = None
+        current_meal.is_estimated = True
+        current_meal.notes = None
+        current_meal.data = {
+            **{
+                key: value
+                for key, value in current_meal.data.items()
+                if key not in _MEAL_LOCATION_DATA_KEYS
+            },
+            "source_mode": "system",
+            "meal_kind": role,
+            "meal_selection_source": "unset",
+            "needs_place_confirmation": True,
+        }
+
+
 async def _build_ai_planning(
     session: AsyncSession,
     trip: TripPlan,
@@ -2379,39 +2462,13 @@ async def generate_trip_itinerary(
                 "itinerary_exact_locations_required",
                 "正式景點或店家不足，原行程保持不變",
             )
-        meals_by_role = {
-            (item.day_date, item.system_role): item
-            for item in preserved
-            if item.system_role in {"lunch", "dinner"}
-        }
         generated_meals = [
             item
             for day in planning.itinerary
             for item in day.items
             if item.system_role in {"lunch", "dinner"}
         ]
-        for meal in generated_meals:
-            meal_role = cast(str, meal.system_role)
-            current_meal = meals_by_role.get((meal.day_date, meal_role))
-            if current_meal is None or current_meal.data.get("meal_selection_source") == "user":
-                continue
-            current_meal.title = meal.title
-            current_meal.location_name = meal.location_name
-            current_meal.latitude = (
-                Decimal(str(meal.latitude)) if meal.latitude is not None else None
-            )
-            current_meal.longitude = (
-                Decimal(str(meal.longitude)) if meal.longitude is not None else None
-            )
-            current_meal.provider_place_id = meal.provider_place_id
-            current_meal.location_source = meal.location_source
-            current_meal.is_estimated = meal.is_estimated
-            current_meal.notes = meal.notes
-            current_meal.data = {
-                **current_meal.data,
-                **meal.data,
-                "meal_selection_source": "ai",
-            }
+        _sync_ai_meal_slots(preserved, generated_meals, target_date)
         preserved_keys = {(item.day_date, (item.title or "").casefold()) for item in preserved}
         generated = [
             item
@@ -2589,31 +2646,13 @@ async def apply_trip_itinerary_preview(
         existing = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
         replaceable, preserved = _replaceable_ai_items(existing, target_date)
         replaceable_ids = {item.id for item in replaceable}
-        meals_by_role = {
-            (item.day_date, item.system_role): item
-            for item in preserved
-            if item.system_role in {"lunch", "dinner"}
-        }
         generated_meals = [
             item
             for day in planning.itinerary
             for item in day.items
             if item.system_role in {"lunch", "dinner"}
         ]
-        for meal in generated_meals:
-            meal_role = cast(str, meal.system_role)
-            current_meal = meals_by_role.get((meal.day_date, meal_role))
-            if current_meal is None or current_meal.data.get("meal_selection_source") == "user":
-                continue
-            current_meal.title = meal.title
-            current_meal.location_name = meal.location_name
-            current_meal.latitude = Decimal(str(meal.latitude))
-            current_meal.longitude = Decimal(str(meal.longitude))
-            current_meal.provider_place_id = meal.provider_place_id
-            current_meal.location_source = meal.location_source
-            current_meal.is_estimated = False
-            current_meal.notes = meal.notes
-            current_meal.data = {**current_meal.data, **meal.data, "meal_selection_source": "ai"}
+        _sync_ai_meal_slots(preserved, generated_meals, target_date)
         preserved_keys = {(item.day_date, (item.title or "").casefold()) for item in preserved}
         generated = [
             item

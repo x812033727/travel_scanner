@@ -4,10 +4,12 @@ from uuid import uuid4
 from zoneinfo import ZoneInfo
 
 from app.models import TripPlan, TripPlanItem
+from app.trips.itinerary import ItineraryItem
 from app.trips.router import (
     FlightAnchorDetails,
     ItineraryUpdateRequest,
     _planner_availability,
+    _sync_ai_meal_slots,
     apply_flight_anchor_details,
     localize_itinerary_time,
 )
@@ -114,11 +116,130 @@ def test_system_slots_are_idempotent_and_skipped_meals_leave_route_graph() -> No
         for row in rows
         if row.day_date == date(2026, 11, 10) and row.system_role == "lunch"
     )
+    assert lunch.title == "午餐尚未安排"
+    assert lunch.data["meal_selection_source"] == "unset"
     lunch.is_skipped = True
     without_lunch = active_route_rows(rows, date(2026, 11, 10))
     assert lunch not in without_lunch
     assert without_lunch == [activity]
     assert route_pair_count(rows) == original_pairs
+
+
+def test_ai_refresh_clears_catalog_meal_placeholders_without_touching_user_choice() -> None:
+    target = trip()
+    lunch = TripPlanItem(
+        id=uuid4(),
+        trip_plan_id=target.id,
+        item_type="meal",
+        day_date=target.start_date,
+        position=1,
+        title="築地場外市場早餐",
+        location_name="東京",
+        latitude=Decimal("35.665000"),
+        longitude=Decimal("139.770000"),
+        provider_place_id="stale-place",
+        location_source="google_places_auto",
+        locked=True,
+        fixed_time=True,
+        is_estimated=True,
+        system_role="lunch",
+        data={
+            "source_mode": "catalog",
+            "meal_kind": "lunch",
+            "meal_selection_source": "catalog",
+            "candidate_key": "merchant:stale",
+            "merchant_id": "stale",
+        },
+    )
+    dinner = TripPlanItem(
+        id=uuid4(),
+        trip_plan_id=target.id,
+        item_type="meal",
+        day_date=target.start_date,
+        position=2,
+        title="使用者已選餐廳",
+        location_name="銀座",
+        locked=True,
+        fixed_time=True,
+        is_estimated=False,
+        system_role="dinner",
+        data={"meal_kind": "dinner", "meal_selection_source": "user"},
+    )
+
+    _sync_ai_meal_slots([lunch, dinner], [])
+
+    assert lunch.title == "午餐尚未安排"
+    assert lunch.location_name is None
+    assert lunch.latitude is None and lunch.longitude is None
+    assert lunch.provider_place_id is None and lunch.location_source is None
+    assert lunch.data["meal_selection_source"] == "unset"
+    assert "candidate_key" not in lunch.data and "merchant_id" not in lunch.data
+    assert dinner.title == "使用者已選餐廳"
+
+
+def test_ai_refresh_assigns_only_exact_merchant_to_open_meal_slot() -> None:
+    target = trip()
+    lunch = TripPlanItem(
+        id=uuid4(),
+        trip_plan_id=target.id,
+        item_type="meal",
+        day_date=target.start_date,
+        position=1,
+        title="午餐尚未安排",
+        locked=True,
+        fixed_time=True,
+        is_estimated=True,
+        system_role="lunch",
+        data={"meal_kind": "lunch", "meal_selection_source": "unset"},
+    )
+    exact_meal = ItineraryItem(
+        id=uuid4(),
+        item_type="meal",
+        day_date=target.start_date,
+        position=1,
+        title="核准壽司店",
+        location_name="銀座 核准壽司店",
+        latitude=35.6717,
+        longitude=139.7650,
+        provider_place_id="verified-place",
+        location_source="food_merchant_catalog",
+        duration_minutes=75,
+        locked=True,
+        fixed_time=True,
+        is_estimated=False,
+        system_role="lunch",
+        data={"candidate_key": "merchant:verified", "merchant_id": "verified"},
+    )
+
+    _sync_ai_meal_slots([lunch], [exact_meal])
+
+    assert lunch.title == "核准壽司店"
+    assert lunch.provider_place_id == "verified-place"
+    assert lunch.data["meal_selection_source"] == "ai"
+
+
+def test_ai_single_day_refresh_does_not_change_meals_on_other_dates() -> None:
+    target = trip()
+    untouched = TripPlanItem(
+        id=uuid4(),
+        trip_plan_id=target.id,
+        item_type="meal",
+        day_date=target.end_date,
+        position=1,
+        title="第二天原有餐廳",
+        location_name="銀座",
+        locked=True,
+        fixed_time=True,
+        is_estimated=False,
+        system_role="lunch",
+        data={"meal_kind": "lunch", "meal_selection_source": "ai"},
+    )
+
+    _sync_ai_meal_slots([untouched], [], target.start_date)
+
+    assert untouched.title == "第二天原有餐廳"
+    assert untouched.location_name == "銀座"
+    assert untouched.data["meal_selection_source"] == "ai"
 
 
 def test_legacy_flights_are_promoted_without_changing_identity_or_entering_routes() -> None:
