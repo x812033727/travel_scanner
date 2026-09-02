@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { PlacePicker } from "@/components/place-picker";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, twd } from "@/lib/api";
+import { trackAnalytics } from "@/lib/analytics";
 import { interestLabel, interests } from "@/lib/destinations";
 
 type CreatedTrip = { id: string };
@@ -150,6 +151,7 @@ export function NewTripForm() {
           notes: form.notes.trim() || null,
         }),
       });
+      trackAnalytics("trip_created");
       router.push(`/trips/${trip.id}`);
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "建立行程失敗，請稍後再試。");

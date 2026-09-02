@@ -10,6 +10,8 @@ from app.admin.user_router import router as admin_user_router
 from app.affiliates.router import router as affiliates_router
 from app.ai.router import router as ai_router
 from app.alerts.router import router as alerts_router
+from app.analytics.router import admin_router as admin_analytics_router
+from app.analytics.router import router as analytics_router
 from app.auth.router import router as auth_router
 from app.config import get_settings
 from app.crawlers.router import router as crawlers_router
@@ -72,6 +74,8 @@ app.include_router(flight_status_router, prefix="/api/v1")
 app.include_router(trips_router, prefix="/api/v1")
 app.include_router(public_trips_router, prefix="/api/v1")
 app.include_router(alerts_router, prefix="/api/v1")
+app.include_router(analytics_router, prefix="/api/v1")
+app.include_router(admin_analytics_router, prefix="/api/v1")
 app.include_router(ai_router, prefix="/api/v1")
 app.include_router(places_router, prefix="/api/v1")
 app.include_router(public_places_router, prefix="/api/v1")

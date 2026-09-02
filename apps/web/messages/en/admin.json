@@ -8,6 +8,7 @@
     "providers": "APIs & keys",
     "hotspots": "Hotspot review",
     "foods": "Food catalog",
+    "analytics": "Traffic & analytics",
     "deployments": "Deployments"
   },
   "providerTabs": {
@@ -43,6 +44,14 @@
     },
     "audit": { "title": "Recent admin history", "help": "Records the operator, target, and before-and-after values.", "empty": "No plan or charge changes have been recorded yet." },
     "auditActions": { "usage_operation_costs_updated": "Updated feature charges", "usage_package_created": "Created plan", "usage_package_updated": "Updated plan", "usage_package_archived": "Archived plan", "registration_trial_updated": "Updated registration trial" }
+  },
+  "analytics": {
+    "eyebrow": "PRODUCT ANALYTICS", "title": "Traffic and product analytics", "description": "Understand traffic, acquisition, and the core product funnel using first-party data without exposing individual member activity.", "loadError": "Analytics data could not be loaded.", "retry": "Retry", "rangeLabel": "Analytics range", "ranges": { "24h": "24 hours", "7d": "7 days", "30d": "30 days", "90d": "90 days", "12m": "12 months" }, "includeBots": "Include bots", "refresh": "Refresh", "noComparison": "No prior data", "trend": "Traffic trend", "timezone": "Timezone: {timezone}", "period": "Period", "funnel": "Core product funnel", "funnelRaw": "Calculated from unique browser sessions.", "funnelRollup": "Daily aggregate counts are used beyond raw-event retention.", "authoritative": "Authoritative operating totals", "authoritativeHelp": "Calculated directly from member, search, trip, and affiliate tables and kept separate from browser event metrics.", "heatmap": "Weekday and hour heatmap", "heatmapHelp": "Public page views shown in Asia/Taipei time.", "heatmapUnavailable": "Hourly data is unavailable for this range.", "weekday": "Weekday", "quality": "Data quality", "enabled": "Enabled", "disabled": "Disabled or not configured", "excluded": "Excluded", "included": "Included", "days": "days", "months": "months",
+    "metrics": { "live_sessions_30m": "Sessions in the last 30 minutes", "page_views": "Page views", "avg_daily_visitors": "Average daily unique visitors", "sessions": "Sessions", "pages_per_session": "Pages per session", "registration_completed": "Registrations", "search_completed": "Completed searches", "trip_created": "Trips created", "outbound_click": "Outbound clicks" },
+    "funnelSteps": { "sessions": "Sessions", "search_completed": "Completed search", "trip_created": "Trip created", "outbound_click": "Outbound link" },
+    "authoritativeMetrics": { "registrations": "Member registrations", "completed_searches": "Completed searches", "trips_created": "Trips created", "affiliate_clicks": "Affiliate clicks" },
+    "rankings": { "pages": "Top pages", "sources": "Sources", "devices": "Devices", "locales": "Languages", "countries": "Countries", "utm": "UTM sources" },
+    "qualityFields": { "ga4": "GA4 cookieless status", "started": "Tracking started", "lastEvent": "Last event", "lastRollup": "Last rollup date", "country": "Country-code coverage", "bots": "Bot traffic", "rawRetention": "Raw-event retention", "rollupRetention": "Rollup retention" }
   },
   "layout": {
     "eyebrow": "SYSTEM ADMIN",

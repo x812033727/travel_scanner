@@ -5,6 +5,7 @@ import { type FormEvent, useState, useSyncExternalStore } from "react";
 import { useRouter } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { ApiError, api } from "@/lib/api";
+import { trackAnalytics } from "@/lib/analytics";
 import { safeNextPath } from "@/lib/navigation";
 
 export function AuthForm({ mode, nextPath = "/" }: { mode: "login" | "register"; nextPath?: string }) {
@@ -29,6 +30,7 @@ export function AuthForm({ mode, nextPath = "/" }: { mode: "login" | "register";
         body: JSON.stringify({ email, password, ...(mode === "register" ? { preferred_locale: locale } : {}) }),
       });
       const preferredLocale = result.user?.preferred_locale || locale;
+      if (mode === "register") trackAnalytics("registration_completed");
       document.cookie = `travel_locale=${preferredLocale}; path=/; max-age=31536000; samesite=lax`;
       router.push(safeNextPath(nextPath), { locale: preferredLocale });
       router.refresh();

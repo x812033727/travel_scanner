@@ -83,6 +83,13 @@ type FieldMeta = { label: string; type?: "text" | "number" | "url" | "boolean"; 
 type AdminSettingsScope = "providers" | "system" | "layout";
 
 const fieldMeta: Record<string, FieldMeta> = {
+  ga4_enabled: { label: "同步送出 GA4 cookieless 事件", type: "boolean", help: "只在 Consent Mode 全部 denied 下送出清洗後事件，不在站內保存 GA Cookie。" },
+  ga4_measurement_id: { label: "GA4 Measurement ID", help: "格式為 G-...；這是公開識別碼，不是 Data API 金鑰。" },
+  analytics_trust_country_header: { label: "信任代理伺服器國碼", type: "boolean", help: "只讀取 BFF 從設定好的可信代理標頭轉送的兩碼國碼；未設定時一律為未知。" },
+  analytics_event_ip_limit: { label: "每 IP 每分鐘事件上限", type: "number" },
+  analytics_event_session_limit: { label: "每工作階段每分鐘事件上限", type: "number" },
+  analytics_retention_days: { label: "原始事件保存天數", type: "number", help: "預設 90 天；到期後由維護工作刪除。" },
+  analytics_rollup_retention_months: { label: "每日彙總保存月數", type: "number", help: "預設 25 個月。" },
   registration_enabled: { label: "開放公開註冊", type: "boolean", help: "關閉後所有新帳號（包含環境管理員 Email）都無法自行註冊；既有會員仍可正常登入。" },
   hotspots_enabled: { label: "", type: "boolean" },
   trips_enabled: { label: "", type: "boolean" },

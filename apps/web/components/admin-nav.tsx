@@ -20,6 +20,7 @@ import { api } from "@/lib/api";
 
 const items = [
   { key: "dashboard", href: "/admin", icon: LayoutDashboard },
+  { key: "analytics", href: "/admin/analytics", icon: BarChart3 },
   { key: "users", href: "/admin/users", icon: UsersRound },
   { key: "hotspots", href: "/admin/hotspots", icon: Database },
   { key: "foods", href: "/admin/foods", icon: Soup },
@@ -52,6 +53,7 @@ export function AdminNav({ current }: { current?: string } = {}) {
   );
   const legacyCurrentHref: Record<string, string> = {
     dashboard: "/admin",
+    analytics: "/admin/analytics",
     users: "/admin/users",
     hotspots: "/admin/hotspots",
     foods: "/admin/foods",

@@ -4,11 +4,12 @@ import { AdminNav } from "./admin-nav";
 
 describe("AdminNav", () => {
   afterEach(() => vi.unstubAllGlobals());
-  it("groups daily content work ahead of configuration", () => {
+  it("groups analytics and daily content work ahead of configuration", () => {
     render(<AdminNav current="system" />);
     const links = screen.getAllByRole("link");
     expect(links.map((link) => link.textContent)).toEqual([
       "營運總覽",
+      "流量與分析",
       "會員與次數",
       "景點候選審核",
       "美食目錄管理",
@@ -19,6 +20,7 @@ describe("AdminNav", () => {
     ]);
     expect(links.map((link) => link.getAttribute("href"))).toEqual([
       "/admin",
+      "/admin/analytics",
       "/admin/users",
       "/admin/hotspots",
       "/admin/foods",
