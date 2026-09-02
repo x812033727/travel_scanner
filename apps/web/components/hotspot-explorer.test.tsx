@@ -159,7 +159,9 @@ describe("HotspotExplorer", () => {
     expect(address.getAttribute("target")).toBe("_blank");
     expect(address.getAttribute("rel")).toContain("noopener");
     expect(within(dialog).getAllByRole("link", { name: /Google Maps/ })).toHaveLength(1);
-    expect(within(dialog).getByRole("img", { name: "Google Maps" })).toBeTruthy();
+    const attribution = within(dialog).getByText("Google Maps");
+    expect(attribution.getAttribute("translate")).toBe("no");
+    expect(within(dialog).queryByRole("img", { name: "Google Maps" })).toBeNull();
     expect(within(dialog).getByRole("link", { name: /Japan Map Center/ }).getAttribute("rel")).toContain("noopener");
     expect(within(dialog).queryByText("8Q7XPQ7W+WM")).toBeNull();
     expect(within(dialog).queryByText("35.714765, 139.796655")).toBeNull();

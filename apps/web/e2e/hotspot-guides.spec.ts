@@ -47,7 +47,8 @@ for (const width of [320, 390]) {
     await expect(address).toHaveAttribute("href", /query_place_id=ChIJ-test/);
     await expect(address).toHaveAttribute("target", "_blank");
     await expect(address).toHaveAttribute("rel", /noopener/);
-    await expect(dialog.getByRole("img", { name: "Google Maps" })).toBeVisible();
+    await expect(dialog.locator('[translate="no"]', { hasText: "Google Maps" })).toBeVisible();
+    await expect(dialog.getByRole("img", { name: "Google Maps" })).toHaveCount(0);
     await expect(dialog.getByRole("link", { name: /Google Maps/ })).toHaveCount(1);
     await expect(dialog.getByText("8Q7XPQ7W+WM")).toHaveCount(0);
     await expect(dialog.getByText("35.714765, 139.796655")).toHaveCount(0);
