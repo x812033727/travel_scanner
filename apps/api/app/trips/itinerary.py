@@ -46,7 +46,6 @@ class ItineraryHotspot(BaseModel):
     category: str
     latitude: float
     longitude: float
-    plus_code_global: str | None = None
     map_links: list[dict[str, str | bool]] = Field(default_factory=list)
     depth_kind: str
     depth_score: float
@@ -71,7 +70,6 @@ class ItineraryFood(BaseModel):
     hotspot_name: str | None = None
     latitude: float | None = None
     longitude: float | None = None
-    plus_code_global: str | None = None
     map_links: list[dict[str, str | bool]] = Field(default_factory=list)
     merchant_status: str = "merchant_pending"
 
@@ -343,7 +341,6 @@ def build_itinerary(
                 data={
                     "source_mode": "approved_hotspot",
                     "hotspot_id": str(hotspot.hotspot_id),
-                    "plus_code_global": hotspot.plus_code_global,
                     "map_links": hotspot.map_links,
                     "destination_id": hotspot.destination_id,
                     "parent_destination_id": hotspot.parent_destination_id,
@@ -377,7 +374,6 @@ def build_itinerary(
                 data={
                     "source_mode": "approved_hotspot",
                     "hotspot_id": str(hotspot.hotspot_id),
-                    "plus_code_global": hotspot.plus_code_global,
                     "map_links": hotspot.map_links,
                     "depth_kind": hotspot.depth_kind,
                     "depth_score": hotspot.depth_score,
@@ -410,7 +406,6 @@ def build_itinerary(
                     data={
                         "source_mode": "approved_hotspot",
                         "hotspot_id": str(hotspot.hotspot_id),
-                        "plus_code_global": hotspot.plus_code_global,
                         "map_links": hotspot.map_links,
                         "depth_kind": hotspot.depth_kind,
                         "depth_score": hotspot.depth_score,
@@ -498,7 +493,6 @@ def build_itinerary(
             and food.merchant_status == "verified"
             and food.latitude is not None
             and food.longitude is not None
-            and food.plus_code_global is not None
             and bool(food.map_links)
         )
         add(
@@ -522,7 +516,6 @@ def build_itinerary(
                 "meal_type": meal_type,
                 "merchant_id": str(food.merchant_id) if food.merchant_id else None,
                 "merchant_name": food.merchant_name,
-                "plus_code_global": food.plus_code_global,
                 "hotspot_id": str(food.hotspot_id) if food.hotspot_id else None,
                 "map_links": food.map_links,
                 "merchant_status": food.merchant_status,

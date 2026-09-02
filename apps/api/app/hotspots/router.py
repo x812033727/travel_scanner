@@ -18,7 +18,7 @@ from app.hotspots.places import place_detail_payload
 from app.hotspots.service import hotspot_facets, list_rankings
 from app.i18n import Locale, current_locale
 from app.infra import enforce_named_rate_limit, get_redis
-from app.locations.plus_codes import has_durable_coordinates
+from app.locations.coordinates import has_durable_coordinates
 from app.models import HotspotPlaceProfile, TravelHotspot, TripPlanItem
 from app.problems import AppError
 from app.trips.router import load_items, owned_trip, persist_system_schedule_change
@@ -87,7 +87,7 @@ async def hotspot_sources(session: Session) -> dict[str, Any]:
                     if runtime.google_maps_api_key and runtime.hotspot_place_enrichment_enabled
                     else "not_configured"
                 ),
-                "purpose": "補齊地圖、地址、營業時間、Plus Code 與官方網站",
+                "purpose": "補齊地圖、地址、營業時間與官方網站",
                 "persistence": "Place ID 長期保存；地點內容最長快取 30 天並標示來源",
             },
             {
@@ -205,7 +205,6 @@ async def hotspots_for_planner(
             and has_durable_coordinates(
                 item["latitude"],
                 item["longitude"],
-                item["plus_code_global"],
                 item["coordinate_source"].get("type"),
                 item["coordinate_source"].get("url"),
             )
@@ -252,7 +251,6 @@ async def hotspots_for_planner(
             "category": item["category"],
             "latitude": item["latitude"],
             "longitude": item["longitude"],
-            "plus_code_global": item["plus_code_global"],
             "coordinate_source": item["coordinate_source"],
             "map_match_status": item["map_match_status"],
             "popularity_score": item["score"],
@@ -302,7 +300,6 @@ async def select_hotspot_for_trip(
         or not has_durable_coordinates(
             hotspot.latitude,
             hotspot.longitude,
-            hotspot.plus_code_global,
             hotspot.coordinate_source_type,
             hotspot.coordinate_source_url,
         )
@@ -340,7 +337,6 @@ async def select_hotspot_for_trip(
         location_name=hotspot.name,
         latitude=hotspot.latitude,
         longitude=hotspot.longitude,
-        plus_code_global=hotspot.plus_code_global,
         coordinate_source_type=hotspot.coordinate_source_type,
         coordinate_source_url=hotspot.coordinate_source_url,
         coordinate_verified_at=hotspot.coordinate_verified_at,

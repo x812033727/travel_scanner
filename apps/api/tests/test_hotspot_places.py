@@ -36,7 +36,6 @@ def _hotspot(*, latitude: Decimal | None = Decimal("34.395483")) -> TravelHotspo
         search_text="原子彈爆炸圓頂屋 原爆ドーム",
         latitude=latitude,
         longitude=Decimal("132.453592") if latitude is not None else None,
-        plus_code_global="8Q6J9FW3+5C" if latitude is not None else None,
         coordinate_source_type="wikidata" if latitude is not None else None,
         coordinate_source_url=(
             "https://www.wikidata.org/wiki/Q346357" if latitude is not None else None
@@ -193,7 +192,6 @@ async def test_enrichment_persists_normalized_cache_and_expiry(
                     "weekday_descriptions": ["星期一: 24 小時營業"],
                     "periods": [{"open": {"day": 0, "hour": 0, "minute": 0}}],
                 },
-                "plus_code": {"global_code": "8Q6J9FW3+5C", "compound_code": "9FW3+5C 廣島"},
                 "website_url": "https://www.city.hiroshima.lg.jp/atomicbomb-peace/",
                 "attributions": [],
                 "data_locale": "zh-TW",
@@ -216,7 +214,6 @@ async def test_enrichment_persists_normalized_cache_and_expiry(
     assert hotspot.map_match_status == "verified"
     assert hotspot.map_verified_at == now
     assert profile.match_status == "auto_approved"
-    assert profile.plus_code_compound == "9FW3+5C 廣島"
     assert profile.website_review_status == "auto_approved"
     assert profile.provider_refresh_after == now + timedelta(days=21)
     assert profile.provider_expires_at == now + timedelta(days=30)
@@ -323,7 +320,6 @@ async def test_expired_provider_content_is_purged_but_manual_identity_survives()
         website_review_status="approved",
         google_maps_uri="https://maps.google.com/expired",
         formatted_address="expired address",
-        plus_code_compound="9FW3+5C 廣島",
         opening_hours_json={"weekday_descriptions": ["24 小時營業"]},
         provider_website_uri="https://provider.example/",
         provider_attributions_json=[{"provider": "Example"}],
@@ -354,7 +350,6 @@ def test_public_payload_hides_expired_google_fields_but_keeps_curated_coordinate
         match_status="approved",
         place_id_source="legacy",
         formatted_address="日本廣島縣廣島市",
-        plus_code_compound="9FW3+5C 廣島",
         opening_hours_json={"weekday_descriptions": ["24 小時營業"]},
         provider_expires_at=now - timedelta(seconds=1),
         provider_fetched_at=now - timedelta(days=30),
@@ -370,10 +365,8 @@ def test_public_payload_hides_expired_google_fields_but_keeps_curated_coordinate
     }
     assert payload["field_sources"]["address"] is None
     assert payload["field_sources"]["coordinates"] == "wikidata"
-    assert payload["plus_code"] == {
-        "global_code": "8Q6J9FW3+5C",
-        "compound_code": None,
-    }
+    assert "plus_code" not in payload
+    assert "plus_code" not in payload["field_sources"]
     assert "query_place_id=ChIJ-dome" in payload["google_maps_url"]
 
 

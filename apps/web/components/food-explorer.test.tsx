@@ -27,7 +27,7 @@ describe("FoodExplorer", () => {
           source_urls: ["https://en.wikipedia.org/wiki/Bibimbap"],
           destinations: [{ id: "seoul", name: "首爾", local_name: "서울", english_name: "Seoul", country_code: "KR", role: "primary", parent_destination_id: null }],
           food_hotspots: [{ hotspot_id: "hotspot-1", slug: "gwangjang-market", name: "廣藏市場", local_name: "광장시장", destination_id: "seoul", latitude: 37.57, longitude: 126.99, map_links: [{ provider: "naver", label: "Naver Map", url: "https://map.naver.com/p/entry/place/13304114", primary: true }] }],
-          recommended_merchants: [{ merchant_id: "merchant-1", slug: "seoul-hankook-jib", name: "Hankook Jib", local_name: "한국집", destination_id: "seoul", address: "Seoul", latitude: 37.57, longitude: 126.99, plus_code_global: "8Q98HXCF+2R", map_links: [{ provider: "naver", label: "Naver Map", url: "https://map.naver.com/p/entry/place/123456", primary: true }], verified_at: "2026-09-01T00:00:00Z", sources: [] }],
+          recommended_merchants: [{ merchant_id: "merchant-1", slug: "seoul-hankook-jib", name: "Hankook Jib", local_name: "한국집", destination_id: "seoul", address: "Seoul", latitude: 37.57, longitude: 126.99, map_links: [{ provider: "naver", label: "Naver Map", url: "https://map.naver.com/p/entry/place/123456", primary: true }], verified_at: "2026-09-01T00:00:00Z", sources: [] }],
         }],
       }));
     }));

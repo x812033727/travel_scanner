@@ -55,7 +55,6 @@ async def test_nearby_restaurants_requests_all_dining_types_and_live_fields() ->
                         "currentOpeningHours": {"openNow": True},
                         "websiteUri": "https://restaurant.example/",
                         "googleMapsUri": "https://maps.google.com/?cid=1",
-                        "plusCode": {"compoundCode": "9FW4+R2 Hiroshima"},
                         "primaryType": "japanese_restaurant",
                         "businessStatus": "OPERATIONAL",
                     }
@@ -87,7 +86,7 @@ async def test_nearby_restaurants_requests_all_dining_types_and_live_fields() ->
     assert results[0].qualified
     assert results[0].rating == 4.6
     assert results[0].review_count == 2345
-    assert results[0].plus_code == "9FW4+R2 Hiroshima"
+    assert "plusCode" not in field_mask
     assert not replace(results[0], rating=3.79).qualified
     assert not replace(results[0], review_count=999).qualified
     await client.aclose()
@@ -206,7 +205,6 @@ async def test_restaurant_coordinates_use_an_enforced_30_day_redis_ttl() -> None
         open_now=True,
         official_website_url="https://restaurant.example/",
         google_maps_url="https://maps.example/",
-        plus_code="9FW4+R2 Hiroshima",
         primary_type="japanese_restaurant",
         business_status="OPERATIONAL",
     )
@@ -276,7 +274,6 @@ def test_restaurant_identity_table_contains_no_google_display_fields() -> None:
             "official_website_url",
             "latitude",
             "longitude",
-            "plus_code",
             "google_maps_url",
             "recommendation_score",
         }

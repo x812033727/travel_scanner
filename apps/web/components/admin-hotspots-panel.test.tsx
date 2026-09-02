@@ -28,7 +28,6 @@ const item = {
   recommended_duration_minutes: 360,
   latitude: 22.2467,
   longitude: 114.1757,
-  plus_code_global: null,
   coordinate_source_type: "official_tourism",
   coordinate_source_url: "https://www.oceanpark.com.hk/",
   google_place_id: "ChIJ-ocean-park",
@@ -37,12 +36,9 @@ const item = {
 };
 
 describe("AdminHotspotsPanel", () => {
-  it("previews Plus Code and saves an exact reviewed place", async () => {
+  it("saves an exact reviewed place with durable coordinates", async () => {
     const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input);
-      if (url.includes("plus-code-preview")) {
-        return new Response(JSON.stringify({ plus_code_global: "7PJP65WG+M7" }));
-      }
       if (init?.method === "POST" && url.includes("/review")) {
         const body = JSON.parse(String(init.body));
         expect(body.google_place_id).toBe("ChIJ-ocean-park");
@@ -57,11 +53,9 @@ describe("AdminHotspotsPanel", () => {
     render(<AdminHotspotsPanel />);
     expect(await screen.findByText("香港海洋公園")).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "編輯地點" }));
-    fireEvent.click(screen.getByRole("button", { name: "預覽 Plus Code" }));
-    expect(await screen.findByText("7PJP65WG+M7")).toBeTruthy();
     fireEvent.change(screen.getByLabelText("比對狀態"), { target: { value: "verified" } });
     fireEvent.click(screen.getByRole("button", { name: "儲存地點" }));
-    expect(await screen.findByText("已儲存精準地點，Plus Code 已由伺服器重算。")).toBeTruthy();
+    expect(await screen.findByText("已儲存精準地點。")).toBeTruthy();
     await waitFor(() => expect(fetchMock).toHaveBeenCalled());
   });
 });

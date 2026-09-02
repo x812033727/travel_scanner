@@ -29,7 +29,6 @@ type Candidate = {
   recommended_duration_minutes: number | null;
   latitude: number | null;
   longitude: number | null;
-  plus_code_global: string | null;
   coordinate_source_type: string | null;
   coordinate_source_url: string | null;
   google_place_id: string | null;
@@ -49,7 +48,6 @@ type MapCandidate = {
   temporary_match_coordinates: {
     latitude: number;
     longitude: number;
-    plus_code_global: string;
     usage: string;
   };
 };
@@ -190,33 +188,6 @@ export function AdminHotspotsPanel() {
     }
   }
 
-  async function previewPlusCode() {
-    if (
-      !locationDraft ||
-      locationDraft.latitude === null ||
-      locationDraft.longitude === null
-    )
-      return;
-    try {
-      const result = await api<{ plus_code_global: string }>(
-        "/admin/hotspots/plus-code-preview",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            latitude: locationDraft.latitude,
-            longitude: locationDraft.longitude,
-          }),
-        },
-      );
-      setLocationDraft({
-        ...locationDraft,
-        plus_code_global: result.plus_code_global,
-      });
-    } catch (error) {
-      setMessage((error as Error).message);
-    }
-  }
-
   async function searchMapCandidate() {
     if (!locationDraft || locationDraft.country_code === "KR") return;
     setLoading(true);
@@ -272,7 +243,7 @@ export function AdminHotspotsPanel() {
           map_match_status: locationDraft.map_match_status,
         }),
       });
-      setMessage("已儲存精準地點，Plus Code 已由伺服器重算。");
+      setMessage("已儲存精準地點。");
       setLocationDraft(null);
       setMapCandidate(null);
       await load();
@@ -584,12 +555,6 @@ export function AdminHotspotsPanel() {
                 <option value="disabled">停用</option>
               </select>
             </label>
-            <div>
-              <p className="text-xs font-semibold">Plus Code 預覽</p>
-              <p className="mt-1 flex h-10 items-center rounded-xl bg-white px-3 font-mono text-xs">
-                {locationDraft.plus_code_global || "尚未計算"}
-              </p>
-            </div>
           </div>
           <div className="mt-3 flex flex-wrap gap-2">
             <button
@@ -599,13 +564,6 @@ export function AdminHotspotsPanel() {
               className="min-h-11 rounded-xl border border-sky-700 px-4 font-semibold text-sky-900 disabled:opacity-40"
             >
               搜尋 Google 候選
-            </button>
-            <button
-              type="button"
-              onClick={() => void previewPlusCode()}
-              className="min-h-11 rounded-xl border px-4 font-semibold"
-            >
-              預覽 Plus Code
             </button>
             <button
               type="button"
@@ -730,7 +688,7 @@ export function AdminHotspotsPanel() {
                 <td className="p-3">
                   {item.map_match_status}
                   <span className="block text-xs text-[var(--muted)]">
-                    {item.plus_code_global || "待計算"}
+                    {item.coordinate_source_type || "待補座標來源"}
                   </span>
                   <button
                     type="button"

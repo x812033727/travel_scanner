@@ -13,7 +13,7 @@ from app.destinations.catalog import destination_for_id
 from app.foods.service import food_facets, foods_for_planner, list_foods
 from app.hotspots.maps import build_map_links, has_exact_map_identity
 from app.i18n import Locale, current_locale
-from app.locations.plus_codes import has_durable_coordinates
+from app.locations.coordinates import has_durable_coordinates
 from app.models import FoodMerchant, FoodMerchantFood, TravelFood
 from app.problems import AppError
 from app.trips.router import (
@@ -120,7 +120,6 @@ async def select_food_for_trip(
     ) or not has_durable_coordinates(
         merchant.latitude,
         merchant.longitude,
-        merchant.plus_code_global,
         merchant.coordinate_source_type,
         merchant.coordinate_source_url,
     ):
@@ -160,7 +159,6 @@ async def select_food_for_trip(
     meal.provider_place_id = merchant.google_place_id
     meal.latitude = merchant.latitude
     meal.longitude = merchant.longitude
-    meal.plus_code_global = merchant.plus_code_global
     meal.coordinate_source_type = merchant.coordinate_source_type
     meal.coordinate_source_url = merchant.coordinate_source_url
     meal.coordinate_verified_at = merchant.coordinate_verified_at
@@ -173,7 +171,6 @@ async def select_food_for_trip(
         "food_id": str(food.id),
         "merchant_id": str(merchant.id),
         "merchant_map_links": map_links,
-        "plus_code_global": merchant.plus_code_global,
     }
     result = await persist_system_schedule_change(
         session,

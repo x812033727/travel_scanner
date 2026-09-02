@@ -90,7 +90,6 @@ async def test_place_details_finishes_the_google_autocomplete_session() -> None:
                 "formattedAddress": "日本東京都台東區",
                 "location": {"latitude": 35.7148, "longitude": 139.7967},
                 "googleMapsUri": "https://maps.google.com/example",
-                "plusCode": {"globalCode": "8Q7XMP7W+W2", "compoundCode": "MP7W+W2 東京"},
                 "websiteUri": "https://www.senso-ji.jp/",
                 "regularOpeningHours": {
                     "weekdayDescriptions": ["月曜日: 6:00～17:00"],
@@ -111,10 +110,10 @@ async def test_place_details_finishes_the_google_autocomplete_session() -> None:
     await client.aclose()
     assert result["place_id"] == "ChIJ-test"
     assert result["attribution"] == "Google Maps"
-    assert result["plus_code"]["global_code"] == "8Q7XMP7W+W2"
+    assert "plus_code" not in result
     assert result["website_url"] == "https://www.senso-ji.jp/"
     assert result["opening_hours_structured"]["periods"]
-    assert "plusCode" in masks[0]
+    assert "plusCode" not in masks[0]
     assert "websiteUri" in masks[0]
 
 
@@ -203,7 +202,12 @@ async def test_locate_search_stays_on_the_pro_field_mask() -> None:
         assert enterprise_field not in masks[0]
     assert "places.location" in masks[0]
     assert "places.displayName" in masks[0]
-    assert "places.plusCode" in masks[0]
+    assert "places.plusCode" not in masks[0]
+
+    cache_keys = await redis.keys("places:google:v2:*")
+    assert len(cache_keys) == 1
+    cached_place = json.loads(await redis.get(cache_keys[0]))
+    assert "plusCode" not in cached_place
 
     usage = await redis.hgetall("provider-usage:google_maps:" + _billing_month())
     assert usage["operation:places_text_search_locate"] == "1"

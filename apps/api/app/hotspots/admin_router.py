@@ -50,8 +50,12 @@ from app.hotspots.places import (
 from app.hotspots.ranking import calculate_depth_value
 from app.i18n import LOCALES, Locale
 from app.infra import get_redis
+from app.locations.coordinates import (
+    has_durable_coordinates,
+    is_durable_coordinate_source,
+    valid_coordinate_pair,
+)
 from app.locations.google_match import preview_google_place_match
-from app.locations.plus_codes import is_durable_coordinate_source, plus_code_for_coordinates
 from app.models import (
     AdminAuditLog,
     HotspotGuide,
@@ -127,7 +131,7 @@ class HotspotReviewRequest(BaseModel):
         return self
 
 
-def _validated_hotspot_plus_code(
+def _validate_hotspot_location(
     *,
     country_code: str,
     latitude: float | Decimal | None,
@@ -136,15 +140,14 @@ def _validated_hotspot_plus_code(
     coordinate_source_url: str | None,
     google_place_id: str | None,
     naver_map_url: str | None,
-) -> str:
+) -> None:
     if not has_exact_map_identity(country_code, google_place_id, naver_map_url):
         provider = "Naver 精準地點頁" if country_code == "KR" else "Google Place ID"
         raise AppError(422, "exact_map_identity_required", f"核准前必須提供{provider}")
-    if latitude is None or longitude is None:
+    if not valid_coordinate_pair(latitude, longitude):
         raise AppError(422, "permanent_coordinates_required", "核准前必須提供永久 WGS84 座標")
     if not is_durable_coordinate_source(coordinate_source_type, coordinate_source_url):
         raise AppError(422, "coordinate_source_required", "核准前必須提供可稽核的永久座標來源")
-    return plus_code_for_coordinates(latitude, longitude)
 
 
 class GuideReviewRequest(BaseModel):
@@ -165,11 +168,6 @@ class GoogleMapCandidateRequest(BaseModel):
         if (self.latitude is None) != (self.longitude is None):
             raise ValueError("緯度與經度必須同時提供")
         return self
-
-
-class CoordinatePreviewRequest(BaseModel):
-    latitude: float = Field(ge=-90, le=90)
-    longitude: float = Field(ge=-180, le=180)
 
 
 class GuideDiscoverRequest(BaseModel):
@@ -354,7 +352,6 @@ async def list_hotspot_candidates(
                 "map_verified_at": hotspot.map_verified_at,
                 "latitude": float(hotspot.latitude) if hotspot.latitude is not None else None,
                 "longitude": float(hotspot.longitude) if hotspot.longitude is not None else None,
-                "plus_code_global": hotspot.plus_code_global,
                 "coordinate_source_type": hotspot.coordinate_source_type,
                 "coordinate_source_url": hotspot.coordinate_source_url,
                 "coordinate_verified_at": hotspot.coordinate_verified_at,
@@ -460,7 +457,7 @@ async def review_hotspot_candidates(
         if payload.action == "approve" and map_status != "verified":
             raise AppError(422, "map_verification_required", "核准前必須完成精準地點比對")
         if map_status == "verified":
-            hotspot.plus_code_global = _validated_hotspot_plus_code(
+            _validate_hotspot_location(
                 country_code=country_code,
                 latitude=latitude,
                 longitude=longitude,
@@ -469,8 +466,6 @@ async def review_hotspot_candidates(
                 google_place_id=google_place_id,
                 naver_map_url=naver_map_url,
             )
-        elif latitude is not None and longitude is not None:
-            hotspot.plus_code_global = plus_code_for_coordinates(latitude, longitude)
         if payload.action != "update":
             hotspot.review_status = status
             hotspot.review_reason = payload.reason
@@ -518,7 +513,12 @@ async def review_hotspot_candidates(
         ):
             hotspot.coordinate_verified_at = (
                 now
-                if is_durable_coordinate_source(coordinate_source_type, coordinate_source_url)
+                if has_durable_coordinates(
+                    latitude,
+                    longitude,
+                    coordinate_source_type,
+                    coordinate_source_url,
+                )
                 else None
             )
         if payload.map_match_status:
@@ -614,15 +614,6 @@ async def hotspot_map_candidates(
         latitude=payload.latitude,
         longitude=payload.longitude,
     )
-
-
-@router.post("/plus-code-preview")
-async def hotspot_plus_code_preview(
-    payload: CoordinatePreviewRequest,
-    user: AdminUser,
-) -> dict[str, str]:
-    _ = user
-    return {"plus_code_global": plus_code_for_coordinates(payload.latitude, payload.longitude)}
 
 
 @router.get("/guides")

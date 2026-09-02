@@ -12,7 +12,6 @@ from app.db import SessionFactory, engine
 from app.foods.admin_router import FoodBatchPayload, batch_foods
 from app.foods.service import food_facets, list_foods, seed_food_catalog
 from app.hotspots.service import seed_catalog
-from app.locations.plus_codes import plus_code_for_coordinates
 from app.models import (
     AdminAuditLog,
     FoodDestination,
@@ -120,7 +119,6 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             local_name="검증 식당",
             latitude=latitude,
             longitude=longitude,
-            plus_code_global=plus_code_for_coordinates(latitude, longitude),
             coordinate_source_type="official_tourism",
             coordinate_source_url="https://english.visitseoul.net/restaurants",
             coordinate_verified_at=datetime.now(UTC),
@@ -163,7 +161,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         ]
         assert len(published_merchants) == 1
         assert published_merchants[0]["map_links"][0]["provider"] == "naver"
-        assert published_merchants[0]["plus_code_global"]
+        assert "plus_code_global" not in published_merchants[0]
         facets = await food_facets(session)
         assert facets["total"] == 70
         assert len(facets["countries"]) == 7

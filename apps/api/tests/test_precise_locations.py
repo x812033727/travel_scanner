@@ -9,12 +9,12 @@ import pytest
 from app.config import Settings
 from app.foods.admin_router import _validate_publishable_merchant
 from app.locations import google_match
-from app.locations.plus_codes import has_durable_coordinates, plus_code_for_coordinates
+from app.locations.coordinates import has_durable_coordinates, valid_coordinate_pair
 from app.problems import AppError
 
 
 def test_publishable_merchant_requires_exact_provider_identity_and_durable_source() -> None:
-    code = _validate_publishable_merchant(
+    result = _validate_publishable_merchant(
         country_code="HK",
         latitude=Decimal("22.246700"),
         longitude=Decimal("114.175700"),
@@ -23,11 +23,10 @@ def test_publishable_merchant_requires_exact_provider_identity_and_durable_sourc
         google_place_id="ChIJ-ocean-park",
         naver_map_url=None,
     )
-    assert code == "7PJP65WG+M7"
+    assert result is None
     assert has_durable_coordinates(
         Decimal("22.246700"),
         Decimal("114.175700"),
-        code,
         "official_tourism",
         "https://www.discoverhongkong.com/",
     )
@@ -57,10 +56,36 @@ def test_publishable_merchant_requires_exact_provider_identity_and_durable_sourc
     assert search_only_naver.value.code == "exact_map_identity_required"
 
 
-def test_coordinate_change_produces_a_different_plus_code() -> None:
-    before = plus_code_for_coordinates(22.2467, 114.1757)
-    after = plus_code_for_coordinates(22.3069, 114.1772)
-    assert before != after
+def test_coordinate_validation_rejects_missing_non_finite_and_out_of_range_values() -> None:
+    assert valid_coordinate_pair(22.2467, 114.1757)
+    assert not valid_coordinate_pair(None, 114.1757)
+    assert not valid_coordinate_pair(float("nan"), 114.1757)
+    assert not valid_coordinate_pair(91, 114.1757)
+    assert not valid_coordinate_pair(22.2467, 181)
+
+
+@pytest.mark.parametrize(
+    ("source_type", "source_url"),
+    [
+        ("official_tourism", "http://www.discoverhongkong.com/"),
+        ("google_places", "https://maps.google.com/"),
+    ],
+)
+def test_publishable_merchant_rejects_non_https_or_transient_coordinate_sources(
+    source_type: str,
+    source_url: str,
+) -> None:
+    with pytest.raises(AppError) as error:
+        _validate_publishable_merchant(
+            country_code="HK",
+            latitude=22.2467,
+            longitude=114.1757,
+            coordinate_source_type=source_type,
+            coordinate_source_url=source_url,
+            google_place_id="ChIJ-ocean-park",
+            naver_map_url=None,
+        )
+    assert error.value.code == "coordinate_source_required"
 
 
 @pytest.mark.asyncio
@@ -101,7 +126,6 @@ async def test_google_match_marks_provider_coordinates_as_transient(
                 "displayName": {"text": "Ocean Park Hong Kong"},
                 "formattedAddress": "Aberdeen, Hong Kong",
                 "location": {"latitude": 22.2467, "longitude": 114.1757},
-                "plusCode": {"globalCode": "7PJP65WG+M7"},
                 "googleMapsUri": "https://maps.google.com/example",
             }
 
@@ -118,3 +142,4 @@ async def test_google_match_marks_provider_coordinates_as_transient(
     assert candidate["suggested_status"] == "unverified"
     assert candidate["temporary_match_coordinates"]["usage"] == "comparison_only"
     assert candidate["temporary_match_coordinates"]["expires_in_days"] == 30
+    assert "plus_code_global" not in candidate["temporary_match_coordinates"]

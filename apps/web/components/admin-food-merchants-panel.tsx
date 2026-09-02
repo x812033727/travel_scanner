@@ -32,7 +32,6 @@ type Merchant = {
   address: string | null;
   latitude: number | null;
   longitude: number | null;
-  plus_code_global: string | null;
   coordinate_source_type: string | null;
   coordinate_source_url: string | null;
   coordinate_verified_at: string | null;
@@ -60,7 +59,6 @@ type MapCandidateResponse = {
     temporary_match_coordinates: {
       latitude: number;
       longitude: number;
-      plus_code_global: string;
       expires_in_days: number;
       usage: "comparison_only";
     };

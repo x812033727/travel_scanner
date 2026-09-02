@@ -16,8 +16,12 @@ from app.destinations.catalog import destination_for_id
 from app.hotspots.maps import has_exact_map_identity
 from app.i18n import LOCALES, Locale
 from app.infra import get_redis
+from app.locations.coordinates import (
+    has_durable_coordinates,
+    is_durable_coordinate_source,
+    valid_coordinate_pair,
+)
 from app.locations.google_match import preview_google_place_match
-from app.locations.plus_codes import is_durable_coordinate_source, plus_code_for_coordinates
 from app.models import (
     AdminAuditLog,
     FoodDestination,
@@ -236,11 +240,6 @@ class GoogleMapCandidateRequest(BaseModel):
         if (self.latitude is None) != (self.longitude is None):
             raise ValueError("緯度與經度必須同時提供")
         return self
-
-
-class CoordinatePreviewRequest(BaseModel):
-    latitude: float = Field(ge=-90, le=90)
-    longitude: float = Field(ge=-180, le=180)
 
 
 async def _validate_relations(
@@ -582,15 +581,14 @@ def _validate_publishable_merchant(
     coordinate_source_url: str | None,
     google_place_id: str | None,
     naver_map_url: str | None,
-) -> str:
+) -> None:
     if not has_exact_map_identity(country_code, google_place_id, naver_map_url):
         provider = "Naver 精準地點頁" if country_code.upper() == "KR" else "Google Place ID"
         raise AppError(422, "exact_map_identity_required", f"發布前必須提供{provider}")
-    if latitude is None or longitude is None:
+    if not valid_coordinate_pair(latitude, longitude):
         raise AppError(422, "permanent_coordinates_required", "發布前必須提供永久 WGS84 座標")
     if not is_durable_coordinate_source(coordinate_source_type, coordinate_source_url):
         raise AppError(422, "coordinate_source_required", "發布前必須提供可稽核的永久座標來源")
-    return plus_code_for_coordinates(latitude, longitude)
 
 
 async def _replace_merchant_relations(
@@ -673,7 +671,6 @@ async def _merchant_admin_item(session: AsyncSession, merchant: FoodMerchant) ->
         "address": merchant.address,
         "latitude": float(merchant.latitude) if merchant.latitude is not None else None,
         "longitude": float(merchant.longitude) if merchant.longitude is not None else None,
-        "plus_code_global": merchant.plus_code_global,
         "coordinate_source_type": merchant.coordinate_source_type,
         "coordinate_source_url": merchant.coordinate_source_url,
         "coordinate_verified_at": merchant.coordinate_verified_at,
@@ -777,15 +774,6 @@ async def food_merchant_map_candidates(
     )
 
 
-@router.post("/merchants/plus-code-preview")
-async def food_merchant_plus_code_preview(
-    payload: CoordinatePreviewRequest,
-    user: AdminUser,
-) -> dict[str, str]:
-    _ = user
-    return {"plus_code_global": plus_code_for_coordinates(payload.latitude, payload.longitude)}
-
-
 @router.post("/merchants", status_code=201)
 async def create_food_merchant(
     payload: FoodMerchantWritePayload, user: AdminUser, session: Session
@@ -799,7 +787,6 @@ async def create_food_merchant(
         google_place_id=payload.google_place_id,
         naver_map_url=payload.naver_map_url,
     )
-    plus_code = None
     if (
         payload.review_status == "approved"
         and payload.is_active
@@ -809,7 +796,7 @@ async def create_food_merchant(
     if payload.map_match_status == "verified" or (
         payload.review_status == "approved" and payload.is_active
     ):
-        plus_code = _validate_publishable_merchant(
+        _validate_publishable_merchant(
             country_code=payload.country_code,
             latitude=payload.latitude,
             longitude=payload.longitude,
@@ -818,8 +805,6 @@ async def create_food_merchant(
             google_place_id=payload.google_place_id,
             naver_map_url=payload.naver_map_url,
         )
-    elif payload.latitude is not None and payload.longitude is not None:
-        plus_code = plus_code_for_coordinates(payload.latitude, payload.longitude)
     now = datetime.now(UTC)
     merchant = FoodMerchant(
         slug=payload.slug,
@@ -830,13 +815,15 @@ async def create_food_merchant(
         address=payload.address,
         latitude=payload.latitude,
         longitude=payload.longitude,
-        plus_code_global=plus_code,
         coordinate_source_type=payload.coordinate_source_type,
         coordinate_source_url=payload.coordinate_source_url,
         coordinate_verified_at=(
             now
-            if is_durable_coordinate_source(
-                payload.coordinate_source_type, payload.coordinate_source_url
+            if has_durable_coordinates(
+                payload.latitude,
+                payload.longitude,
+                payload.coordinate_source_type,
+                payload.coordinate_source_url,
             )
             else None
         ),
@@ -947,11 +934,10 @@ async def update_food_merchant(
     is_active = payload.is_active if payload.is_active is not None else merchant.is_active
     if (latitude is None) != (longitude is None):
         raise AppError(422, "coordinate_pair_required", "緯度與經度必須同時提供")
-    plus_code = None
     if review_status == "approved" and is_active and map_status != "verified":
         raise AppError(422, "map_verification_required", "發布前必須完成精準地點比對")
     if map_status == "verified" or (review_status == "approved" and is_active):
-        plus_code = _validate_publishable_merchant(
+        _validate_publishable_merchant(
             country_code=country_code,
             latitude=latitude,
             longitude=longitude,
@@ -960,8 +946,6 @@ async def update_food_merchant(
             google_place_id=google_place_id,
             naver_map_url=naver_map_url,
         )
-    elif latitude is not None and longitude is not None:
-        plus_code = plus_code_for_coordinates(latitude, longitude)
     await _validate_merchant_relations(
         session,
         destination_id=destination_id,
@@ -997,7 +981,6 @@ async def update_food_merchant(
         if field == "destination_id" and value:
             value = value.casefold()
         setattr(merchant, field, value)
-    merchant.plus_code_global = plus_code
     if "official_website_url" in payload.model_fields_set:
         merchant.official_website_verified_at = (
             datetime.now(UTC) if payload.official_website_url else None
@@ -1008,7 +991,12 @@ async def update_food_merchant(
     ):
         merchant.coordinate_verified_at = (
             datetime.now(UTC)
-            if is_durable_coordinate_source(coordinate_source_type, coordinate_source_url)
+            if has_durable_coordinates(
+                latitude,
+                longitude,
+                coordinate_source_type,
+                coordinate_source_url,
+            )
             else None
         )
     if payload.map_match_status == "verified":
@@ -1044,7 +1032,7 @@ async def batch_food_merchants(
         if payload.action in {"approve", "activate"}:
             if merchant.map_match_status != "verified":
                 raise AppError(422, "map_verification_required", "發布前必須完成精準地點比對")
-            merchant.plus_code_global = _validate_publishable_merchant(
+            _validate_publishable_merchant(
                 country_code=merchant.country_code,
                 latitude=merchant.latitude,
                 longitude=merchant.longitude,
@@ -1062,7 +1050,7 @@ async def batch_food_merchants(
             merchant.review_status = "disabled"
             merchant.is_active = False
         elif payload.action in {"verify", "verify_activate"}:
-            merchant.plus_code_global = _validate_publishable_merchant(
+            _validate_publishable_merchant(
                 country_code=merchant.country_code,
                 latitude=merchant.latitude,
                 longitude=merchant.longitude,

@@ -20,10 +20,10 @@ from app.trips.itinerary import ItineraryDay
 # Callers that only need to place a pin ask for LOCATE_FIELD_MASK and stay on Pro.
 LOCATE_FIELD_MASK = (
     "places.id,places.displayName,places.formattedAddress,places.location,"
-    "places.googleMapsUri,places.postalAddress.regionCode,places.plusCode"
+    "places.googleMapsUri,places.postalAddress.regionCode"
 )
 PLACE_PROFILE_FIELD_MASK = (
-    "id,displayName,formattedAddress,location,plusCode,googleMapsUri,"
+    "id,displayName,formattedAddress,location,googleMapsUri,"
     "regularOpeningHours,websiteUri,attributions"
 )
 DETAIL_FIELD_MASK = (
@@ -182,7 +182,6 @@ class GoogleTravelService:
         display = cast(dict[str, Any], payload.get("displayName") or {})
         location = cast(dict[str, Any], payload.get("location") or {})
         regular = cast(dict[str, Any], payload.get("regularOpeningHours") or {})
-        plus_code = cast(dict[str, Any], payload.get("plusCode") or {})
         return {
             "provider": "google_places",
             "place_id": payload.get("id") or place_id,
@@ -198,10 +197,6 @@ class GoogleTravelService:
                 "open_now": regular.get("openNow"),
                 "next_open_time": regular.get("nextOpenTime"),
                 "next_close_time": regular.get("nextCloseTime"),
-            },
-            "plus_code": {
-                "global_code": plus_code.get("globalCode"),
-                "compound_code": plus_code.get("compoundCode"),
             },
             "website_url": payload.get("websiteUri"),
             "attributions": payload.get("attributions", []),
@@ -295,7 +290,8 @@ class GoogleTravelService:
         raw_key = (
             f"{variant}:{self.locale}:{region_code or '-'}:{name}:{latitude}:{longitude}"
         ).encode()
-        key = f"places:google:{hashlib.sha256(raw_key).hexdigest()}"
+        # Version the raw provider cache so legacy entries cannot be read back.
+        key = f"places:google:v2:{hashlib.sha256(raw_key).hexdigest()}"
         cached = await self.redis.get(key)
         if cached:
             value = cached.decode() if isinstance(cached, bytes) else str(cached)

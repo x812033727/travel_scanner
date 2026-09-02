@@ -67,10 +67,12 @@ describe("AdminHotspotGuidesPanel AI research", () => {
     vi.stubGlobal("fetch", fetchMock);
 
     render(<AdminHotspotGuidesPanel />);
-    fireEvent.click(
-      await screen.findByRole("button", { name: "全選目前項目" }),
+    const selectAll = await screen.findByRole("button", { name: "全選目前項目" });
+    await waitFor(() =>
+      expect(selectAll.hasAttribute("disabled")).toBe(false),
     );
-    expect(screen.getByText("已選 2 筆")).toBeTruthy();
+    fireEvent.click(selectAll);
+    expect(await screen.findByText("已選 2 筆")).toBeTruthy();
     expect(
       screen
         .getByRole("button", { name: "取消全選" })
