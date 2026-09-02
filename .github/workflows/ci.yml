@@ -61,7 +61,7 @@ jobs:
           REDIS_PASSWORD: ci-redis-password
           DATABASE_URL: postgresql+asyncpg://travel:ci-postgres-password@postgres:5432/travel_scanner
           REDIS_URL: redis://:ci-redis-password@redis:6379/0
-          NEXT_PUBLIC_SITE_URL: https://mocair.io
+          NEXT_PUBLIC_SITE_URL: https://mokaair.com
           RUNTIME_ENV_FILE: .env
           DEPLOY_AGENT_SOCKET_DIR: /tmp/travel-scanner-deployer
           DEPLOY_AGENT_GID: "10002"
@@ -73,7 +73,7 @@ jobs:
           REDIS_PASSWORD: ci-redis-password
           DATABASE_URL: postgresql+asyncpg://travel:ci-postgres-password@postgres:5432/travel_scanner
           REDIS_URL: redis://:ci-redis-password@redis:6379/0
-          NEXT_PUBLIC_SITE_URL: https://mocair.io
+          NEXT_PUBLIC_SITE_URL: https://mokaair.com
           RUNTIME_ENV_FILE: .env
           DEPLOY_AGENT_SOCKET_DIR: /tmp/travel-scanner-deployer
           DEPLOY_AGENT_GID: "10002"
