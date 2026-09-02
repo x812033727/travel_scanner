@@ -125,7 +125,6 @@ def _serialize_snapshot(
         "open_now": snapshot.open_now,
         "official_website_url": snapshot.official_website_url,
         "google_maps_url": snapshot.google_maps_url or build_place_maps_url(snapshot.place_id),
-        "plus_code": snapshot.plus_code,
         "primary_type": snapshot.primary_type,
         "business_status": snapshot.business_status,
         "observed_at": observed_at.isoformat(),

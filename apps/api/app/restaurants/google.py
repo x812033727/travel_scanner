@@ -30,13 +30,13 @@ NEARBY_FIELD_MASK = (
     "places.id,places.displayName,places.formattedAddress,places.location,"
     "places.rating,places.userRatingCount,places.regularOpeningHours,"
     "places.currentOpeningHours,places.websiteUri,places.googleMapsUri,"
-    "places.plusCode,places.primaryType,places.businessStatus"
+    "places.primaryType,places.businessStatus"
 )
 
 DETAIL_FIELD_MASK = (
     "id,displayName,formattedAddress,location,rating,userRatingCount,"
     "regularOpeningHours,currentOpeningHours,websiteUri,googleMapsUri,"
-    "plusCode,primaryType,businessStatus,movedPlaceId"
+    "primaryType,businessStatus,movedPlaceId"
 )
 
 
@@ -71,7 +71,6 @@ class RestaurantSnapshot:
     open_now: bool | None
     official_website_url: str | None
     google_maps_url: str | None
-    plus_code: str | None
     primary_type: str | None
     business_status: str | None
 
@@ -101,7 +100,6 @@ def _snapshot(payload: dict[str, Any]) -> RestaurantSnapshot | None:
     location = cast(dict[str, Any], payload.get("location") or {})
     regular = cast(dict[str, Any], payload.get("regularOpeningHours") or {})
     current = cast(dict[str, Any], payload.get("currentOpeningHours") or {})
-    plus_code = cast(dict[str, Any], payload.get("plusCode") or {})
     rating = payload.get("rating")
     review_count = payload.get("userRatingCount")
     return RestaurantSnapshot(
@@ -116,7 +114,6 @@ def _snapshot(payload: dict[str, Any]) -> RestaurantSnapshot | None:
         open_now=bool(current["openNow"]) if current.get("openNow") is not None else None,
         official_website_url=str(payload["websiteUri"]) if payload.get("websiteUri") else None,
         google_maps_url=str(payload["googleMapsUri"]) if payload.get("googleMapsUri") else None,
-        plus_code=str(plus_code.get("compoundCode") or plus_code.get("globalCode") or "") or None,
         primary_type=str(payload["primaryType"]) if payload.get("primaryType") else None,
         business_status=str(payload["businessStatus"]) if payload.get("businessStatus") else None,
     )

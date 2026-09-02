@@ -40,7 +40,6 @@ async def preview_google_place_match(
         return {"configured": True, "candidates": [], "reason": "no_unique_candidate"}
     display = cast(dict[str, Any], place.get("displayName") or {})
     location = cast(dict[str, Any], place.get("location") or {})
-    plus_code = cast(dict[str, Any], place.get("plusCode") or {})
     return {
         "configured": True,
         "candidates": [
@@ -52,7 +51,6 @@ async def preview_google_place_match(
                 "temporary_match_coordinates": {
                     "latitude": location.get("latitude"),
                     "longitude": location.get("longitude"),
-                    "plus_code_global": plus_code.get("globalCode"),
                     "expires_in_days": 30,
                     "usage": "comparison_only",
                 },

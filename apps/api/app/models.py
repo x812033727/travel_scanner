@@ -392,7 +392,6 @@ class TravelHotspot(Timestamped, Base):
     search_text: Mapped[str] = mapped_column(Text)
     latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
     longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
-    plus_code_global: Mapped[str | None] = mapped_column(String(16), nullable=True, index=True)
     coordinate_source_type: Mapped[str | None] = mapped_column(String(32), nullable=True)
     coordinate_source_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
     coordinate_verified_at: Mapped[datetime | None] = mapped_column(
@@ -479,8 +478,6 @@ class HotspotPlaceProfile(Timestamped, Base):
     formatted_address: Mapped[str | None] = mapped_column(Text, nullable=True)
     google_latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
     google_longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
-    plus_code_global: Mapped[str | None] = mapped_column(String(32), nullable=True)
-    plus_code_compound: Mapped[str | None] = mapped_column(String(255), nullable=True)
     opening_hours_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     provider_website_uri: Mapped[str | None] = mapped_column(Text, nullable=True)
     provider_locale: Mapped[str | None] = mapped_column(String(16), nullable=True)
@@ -646,7 +643,6 @@ class FoodMerchant(Timestamped, Base):
     address: Mapped[str | None] = mapped_column(Text, nullable=True)
     latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
     longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
-    plus_code_global: Mapped[str | None] = mapped_column(String(16), nullable=True, index=True)
     coordinate_source_type: Mapped[str | None] = mapped_column(String(32), nullable=True)
     coordinate_source_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
     coordinate_verified_at: Mapped[datetime | None] = mapped_column(
@@ -1138,7 +1134,6 @@ class TripPlanItem(Base):
     end_time: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
     longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
-    plus_code_global: Mapped[str | None] = mapped_column(String(16), nullable=True, index=True)
     coordinate_source_type: Mapped[str | None] = mapped_column(String(32), nullable=True)
     coordinate_source_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
     coordinate_verified_at: Mapped[datetime | None] = mapped_column(

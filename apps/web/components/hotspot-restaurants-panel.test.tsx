@@ -37,7 +37,6 @@ describe("HotspotRestaurantsPanel", () => {
           open_now: true,
           official_website_url: "https://restaurant.example/",
           google_maps_url: "https://maps.google.com/?cid=1",
-          plus_code: "9FW3+5C 廣島市 日本廣島縣",
           primary_type: "japanese_restaurant",
           observed_at: "2026-09-01T12:00:00Z",
           editorial: null,
@@ -62,7 +61,6 @@ describe("HotspotRestaurantsPanel", () => {
     expect(await screen.findByRole("heading", { name: "廣島燒名店" })).toBeTruthy();
     expect(screen.getByText("4.6")).toBeTruthy();
     expect(screen.getByText("2,345")).toBeTruthy();
-    expect(screen.getByText(/9FW3\+5C/)).toBeTruthy();
     expect(screen.getByText("34.39712, 132.45531")).toBeTruthy();
     expect(screen.getByText(/3.8 以上且至少 1,000/)).toBeTruthy();
     const map = screen.getByRole("link", { name: /Google Maps/ });

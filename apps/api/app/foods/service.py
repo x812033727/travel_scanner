@@ -14,7 +14,7 @@ from app.destinations.catalog import destination_for_id
 from app.foods.catalog import COUNTRY_NAMES, FOOD_SEEDS
 from app.foods.merchant_catalog import MERCHANT_DIRECT_SOURCE_SEEDS, MERCHANT_SEEDS
 from app.hotspots.maps import build_map_links, has_exact_map_identity
-from app.locations.plus_codes import has_durable_coordinates
+from app.locations.coordinates import has_durable_coordinates
 from app.models import (
     FoodDestination,
     FoodHotspot,
@@ -377,7 +377,6 @@ async def _serialize_foods(
         FoodMerchant.map_match_status == "verified",
         FoodMerchant.latitude.is_not(None),
         FoodMerchant.longitude.is_not(None),
-        FoodMerchant.plus_code_global.is_not(None),
         FoodMerchant.coordinate_source_type.is_not(None),
         FoodMerchant.coordinate_source_url.is_not(None),
     ]
@@ -434,7 +433,6 @@ async def _serialize_foods(
         ) or not has_durable_coordinates(
             merchant.latitude,
             merchant.longitude,
-            merchant.plus_code_global,
             merchant.coordinate_source_type,
             merchant.coordinate_source_url,
         ):
@@ -457,7 +455,6 @@ async def _serialize_foods(
                 "address": merchant.address,
                 "latitude": float(merchant.latitude) if merchant.latitude is not None else None,
                 "longitude": float(merchant.longitude) if merchant.longitude is not None else None,
-                "plus_code_global": merchant.plus_code_global,
                 "coordinate_source": {
                     "type": merchant.coordinate_source_type,
                     "url": merchant.coordinate_source_url,
@@ -682,7 +679,6 @@ async def foods_for_planner(
                 "hotspot_name": hotspot["name"] if hotspot else None,
                 "latitude": merchant["latitude"] if merchant else None,
                 "longitude": merchant["longitude"] if merchant else None,
-                "plus_code_global": merchant["plus_code_global"] if merchant else None,
                 "map_links": merchant["map_links"] if merchant else [],
                 "merchant_status": "verified" if merchant else "merchant_pending",
             }

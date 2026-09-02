@@ -56,7 +56,6 @@ describe("HotspotExplorer", () => {
           has_details: true,
           updated_at: "2026-08-31T00:00:00Z",
           address: "東京都台東区浅草2丁目3-1",
-          plus_code: { global_code: "8Q7XPQ7W+WM", compound_code: null },
           coordinates: { latitude: 35.714765, longitude: 139.796655, source: "wikidata" },
           opening_hours: { weekday_descriptions: ["星期一：06:00–17:00"] },
           data_locale: "ja",

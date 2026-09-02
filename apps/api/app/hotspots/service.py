@@ -23,7 +23,7 @@ from app.hotspots.ranking import RankingInput, score_deep_hotspots, score_hotspo
 from app.hotspots.wikimedia import WikimediaPageviewClient
 from app.i18n import LOCALES
 from app.infra import get_redis
-from app.locations.plus_codes import has_durable_coordinates, plus_code_for_coordinates
+from app.locations.coordinates import has_durable_coordinates
 from app.models import (
     FoodMerchant,
     HotspotGuide,
@@ -193,7 +193,6 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
         hotspot.search_text = seed.search_text
         hotspot.latitude = Decimal(str(seed.latitude))
         hotspot.longitude = Decimal(str(seed.longitude))
-        hotspot.plus_code_global = plus_code_for_coordinates(seed.latitude, seed.longitude)
         hotspot.coordinate_source_type = (
             "wikidata" if seed.coordinate_source == "wikidata_p625" else "curated"
         )
@@ -451,9 +450,6 @@ async def discover_hotspots(
                     )
                     hotspot.latitude = Decimal(str(candidate.latitude))
                     hotspot.longitude = Decimal(str(candidate.longitude))
-                    hotspot.plus_code_global = plus_code_for_coordinates(
-                        candidate.latitude, candidate.longitude
-                    )
                     hotspot.coordinate_source_type = "wikidata"
                     hotspot.coordinate_source_url = next(iter(candidate.source_urls), None)
                     hotspot.coordinate_verified_at = now
@@ -798,7 +794,6 @@ async def list_rankings(
                 "category": hotspot.category,
                 "latitude": float(hotspot.latitude) if hotspot.latitude is not None else None,
                 "longitude": float(hotspot.longitude) if hotspot.longitude is not None else None,
-                "plus_code_global": hotspot.plus_code_global,
                 "coordinate_source": {
                     "type": hotspot.coordinate_source_type,
                     "url": hotspot.coordinate_source_url,
@@ -977,7 +972,6 @@ async def load_planner_hotspots(
             item["depth_reason"],
             item["access_minutes"],
             item["recommended_duration_minutes"],
-            item["plus_code_global"],
         )
         if (
             any(value is None for value in required)
@@ -986,7 +980,6 @@ async def load_planner_hotspots(
             or not has_durable_coordinates(
                 item["latitude"],
                 item["longitude"],
-                item["plus_code_global"],
                 item["coordinate_source"].get("type"),
                 item["coordinate_source"].get("url"),
             )
@@ -999,7 +992,6 @@ async def load_planner_hotspots(
                 category=item["category"],
                 latitude=item["latitude"],
                 longitude=item["longitude"],
-                plus_code_global=item["plus_code_global"],
                 map_links=item["map_links"],
                 depth_kind=item["depth_kind"],
                 depth_score=item["depth_score"],

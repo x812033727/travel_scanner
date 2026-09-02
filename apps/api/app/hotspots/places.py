@@ -18,7 +18,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config import Settings
 from app.hotspots.guides import canonical_external_url
 from app.hotspots.maps import build_map_links
-from app.locations.plus_codes import has_durable_coordinates
+from app.locations.coordinates import has_durable_coordinates
 from app.models import HotspotPlaceEnrichmentRun, HotspotPlaceProfile, TravelHotspot
 from app.places.google import GoogleTravelService
 from app.problems import AppError
@@ -325,9 +325,6 @@ async def enrich_hotspot_place(
     profile.formatted_address = cast(str | None, details.get("address"))
     profile.google_latitude = _decimal(details.get("latitude"))
     profile.google_longitude = _decimal(details.get("longitude"))
-    plus_code = cast(dict[str, Any], details.get("plus_code") or {})
-    profile.plus_code_global = cast(str | None, plus_code.get("global_code"))
-    profile.plus_code_compound = cast(str | None, plus_code.get("compound_code"))
     profile.opening_hours_json = cast(
         dict[str, Any], details.get("opening_hours_structured") or {}
     )
@@ -467,7 +464,6 @@ def place_detail_payload(
     durable_coordinates = has_durable_coordinates(
         hotspot.latitude,
         hotspot.longitude,
-        hotspot.plus_code_global,
         hotspot.coordinate_source_type,
         hotspot.coordinate_source_url,
     )
@@ -487,10 +483,6 @@ def place_detail_payload(
         "hotspot_name": hotspot.name,
         **summary,
         "address": profile.formatted_address if current and profile else None,
-        "plus_code": {
-            "global_code": hotspot.plus_code_global if durable_coordinates else None,
-            "compound_code": None,
-        },
         "coordinates": {
             "latitude": latitude,
             "longitude": longitude,
@@ -514,9 +506,6 @@ def place_detail_payload(
                 "google_places_cache"
                 if current and profile and profile.formatted_address
                 else None
-            ),
-            "plus_code": (
-                coordinate_source if durable_coordinates else None
             ),
             "coordinates": coordinate_source,
             "opening_hours": (
@@ -660,8 +649,6 @@ async def purge_expired_place_content(
         profile.formatted_address = None
         profile.google_latitude = None
         profile.google_longitude = None
-        profile.plus_code_global = None
-        profile.plus_code_compound = None
         profile.opening_hours_json = {}
         profile.provider_website_uri = None
         profile.provider_locale = None

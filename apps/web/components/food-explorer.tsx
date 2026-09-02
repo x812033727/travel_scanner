@@ -36,7 +36,6 @@ type FoodMerchant = {
   address: string | null;
   latitude: number | null;
   longitude: number | null;
-  plus_code_global: string;
   coordinate_source: { type: string; url: string; verified_at: string | null };
   map_links: MapLink[];
   verified_at: string | null;

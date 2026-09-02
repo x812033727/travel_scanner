@@ -12,7 +12,6 @@ const merchant = {
   address: "Hong Kong",
   latitude: 22.2821,
   longitude: 114.1556,
-  plus_code_global: null,
   coordinate_source_type: "merchant_official",
   coordinate_source_url: "https://example.test/yat-lok",
   coordinate_verified_at: null,
@@ -40,7 +39,7 @@ const merchant = {
 };
 
 describe("AdminFoodMerchantsPanel", () => {
-  it("shows unavailable auto matching and saves permanent coordinates without Plus Code controls", async () => {
+  it("shows unavailable auto matching and saves permanent coordinates", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
@@ -82,7 +81,6 @@ describe("AdminFoodMerchantsPanel", () => {
     fireEvent.click(screen.getByRole("button", { name: "編輯地點與來源" }));
     fireEvent.click(screen.getByRole("button", { name: "搜尋 Google 候選" }));
     expect(await screen.findByText("Google Places 金鑰未設定")).toBeTruthy();
-    expect(screen.queryByText(/Plus Code/)).toBeNull();
     fireEvent.change(screen.getByLabelText("店家官方網站"), {
       target: { value: "https://restaurant.example/" },
     });
@@ -158,7 +156,6 @@ describe("AdminFoodMerchantsPanel", () => {
                   temporary_match_coordinates: {
                     latitude: 22.2821,
                     longitude: 114.1556,
-                    plus_code_global: "7PJP75J4+R6",
                     expires_in_days: 30,
                     usage: "comparison_only",
                   },

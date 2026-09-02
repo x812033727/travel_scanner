@@ -1,8 +1,6 @@
 from collections import Counter
 from urllib.parse import parse_qs, urlparse
 
-import pytest
-
 from app.foods.catalog import FOOD_SEEDS
 from app.foods.merchant_catalog import (
     MERCHANT_DIRECT_SOURCE_SEEDS,
@@ -12,7 +10,6 @@ from app.foods.merchant_catalog import (
 from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.maps import build_map_links
 from app.i18n import LOCALES
-from app.locations.plus_codes import plus_code_for_coordinates
 
 
 def test_food_catalog_has_exactly_ten_complete_items_per_country() -> None:
@@ -126,13 +123,6 @@ def test_unverified_or_search_only_map_identity_is_not_published() -> None:
         )
         == []
     )
-
-
-def test_plus_code_is_locally_derived_and_rejects_invalid_ranges() -> None:
-    assert plus_code_for_coordinates(22.2467, 114.1757) == "7PJP65WG+M7"
-    assert plus_code_for_coordinates(35.6654, 139.7707) == "8Q7XMQ8C+57"
-    with pytest.raises(ValueError):
-        plus_code_for_coordinates(91, 139.7707)
 
 
 def test_merchant_candidates_cover_all_relations_but_are_not_fake_map_matches() -> None:
