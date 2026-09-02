@@ -44,6 +44,7 @@ async def test_saved_items_are_account_scoped_idempotent_and_public_only() -> No
         hotspot_id, food_id = hotspot.id, food.id
 
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        assert (await client.get("/api/v1/saved-items")).status_code == 401
         registration = await client.post(
             "/api/v1/auth/register",
             json={
@@ -54,7 +55,6 @@ async def test_saved_items_are_account_scoped_idempotent_and_public_only() -> No
         assert registration.status_code == 201
         user_id = UUID(registration.json()["user"]["id"])
         headers = {"Authorization": f"Bearer {registration.json()['access_token']}"}
-        assert (await client.get("/api/v1/saved-items")).status_code == 401
         for item_type, item_id in (("hotspot", hotspot_id), ("food", food_id)):
             first = await client.put(f"/api/v1/saved-items/{item_type}/{item_id}", headers=headers)
             replay = await client.put(f"/api/v1/saved-items/{item_type}/{item_id}", headers=headers)
