@@ -60,7 +60,8 @@ for (const width of [320, 390]) {
   test(`mobile language switch keeps the current page at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 760 });
     await page.goto("/en?campaign=mobile");
-    await page.getByRole("banner").locator("select:visible").selectOption("ja");
+    await expect(page.getByRole("combobox", { name: "Appearance" })).toBeEnabled({ timeout: 15_000 });
+    await page.getByRole("combobox", { name: "Language" }).selectOption("ja");
     await expect(page).toHaveURL(/\/ja\/?\?campaign=mobile$/);
     await expect(page.locator("html")).toHaveAttribute("lang", "ja");
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
@@ -68,6 +69,20 @@ for (const width of [320, 390]) {
     );
   });
 }
+
+test("appearance selection persists after reload", async ({ page }) => {
+  await page.goto("/en");
+  const appearance = page.getByRole("combobox", { name: "Appearance" });
+  await expect(appearance).toBeEnabled({ timeout: 15_000 });
+  await appearance.selectOption("dark");
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await expect.poll(() => page.evaluate(() => localStorage.getItem("mokaair-theme"))).toBe("dark");
+
+  await page.reload();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await expect(page.getByRole("combobox", { name: "Appearance" })).toHaveValue("dark");
+});
+
 test("primary travel flow is visible", async ({ page }) => {
   await page.goto("/zh-TW");
   await expect(page.getByRole("heading", { name: /少開十個分頁/ })).toBeVisible();

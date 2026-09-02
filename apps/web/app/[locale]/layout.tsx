@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -10,6 +11,7 @@ import { UsageCatalogProvider } from "@/components/usage-catalog-provider";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { routing } from "@/i18n/routing";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
+import { THEME_BOOTSTRAP_SCRIPT } from "@/lib/theme";
 import { getUsageCatalog } from "@/lib/usage-catalog.server";
 import "../globals.css";
 
@@ -60,8 +62,13 @@ export default async function LocaleLayout({ children, params }: Props) {
     getUsageCatalog(locale),
   ]);
   return (
-    <html lang={locale}>
+    <html lang={locale} data-theme-preference="system" suppressHydrationWarning>
       <body>
+        <Script
+          id="mokaair-theme-bootstrap"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP_SCRIPT }}
+        />
         <NextIntlClientProvider messages={messages}>
           <SiteVisibilityProvider state={siteVisibility}>
             <UsageCatalogProvider state={usageCatalog}>

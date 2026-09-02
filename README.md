@@ -13,6 +13,16 @@ cream (`#F7F1E8`) background. Reusable SVG and PNG artwork lives in
 `apps/web/app`. Internal database, package, service, and environment identifiers
 retain their existing `travel_scanner` / `travel-scanner` names for compatibility.
 
+### Appearance themes
+
+The desktop and mobile headers provide System, Light, and Dark appearance
+choices. The preference is applied before the page paints, stored only in the
+current browser as `mokaair-theme`, and follows operating-system changes while
+System is selected. It does not require an account or sync between devices.
+The trip planner's Ocean, Sunset, and Lavender accent themes remain available;
+dark mode adapts their surfaces and contrast without replacing the selected
+accent.
+
 Trip search supports an explicit mock development mode, an Amadeus-backed test
 or live mode, Skyscanner Flights Live Prices, and Duffel Offer Requests for
 approved partners. FlightAware supplies status rather than fares, while Google

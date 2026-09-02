@@ -5,6 +5,8 @@ import { HeaderAuth } from "@/components/header-auth";
 import { HeaderSessionProvider } from "@/components/header-session";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { MobileNav } from "@/components/mobile-nav";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { Link } from "@/i18n/navigation";
 import { featureEnabled, type SiteFeature } from "@/lib/site-features";
@@ -27,15 +29,18 @@ export function SiteNavigation() {
   const t = useTranslations("navigation");
   const visibility = useSiteVisibility();
   return (
-    <HeaderSessionProvider>
-      <MobileNav />
-      <nav aria-label={t("primaryLabel")} className="hidden items-center justify-between gap-5 text-sm text-[var(--muted)] md:flex">
-        {desktopLinks.filter((item) => !item.feature || featureEnabled(visibility, item.feature)).map((item) => (
-          <Link key={item.href} href={item.href}>{t(item.key)}</Link>
-        ))}
-        <LanguageSwitcher compact />
-        <HeaderAuth />
-      </nav>
-    </HeaderSessionProvider>
+    <ThemeProvider>
+      <HeaderSessionProvider>
+        <MobileNav />
+        <nav aria-label={t("primaryLabel")} className="hidden items-center justify-between gap-5 text-sm text-[var(--muted)] md:flex">
+          {desktopLinks.filter((item) => !item.feature || featureEnabled(visibility, item.feature)).map((item) => (
+            <Link key={item.href} href={item.href}>{t(item.key)}</Link>
+          ))}
+          <ThemeSwitcher />
+          <LanguageSwitcher compact />
+          <HeaderAuth />
+        </nav>
+      </HeaderSessionProvider>
+    </ThemeProvider>
   );
 }
