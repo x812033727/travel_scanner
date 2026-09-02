@@ -2,10 +2,10 @@ from app.schema import expected_schema_revision, schema_is_current
 
 
 def test_expected_schema_revision_is_current_head() -> None:
-    assert expected_schema_revision() == "0030_analytics_events"
+    assert expected_schema_revision() == "0031_trip_item_coordinates"
     assert len(expected_schema_revision()) <= 32
-    assert schema_is_current("0030_analytics_events") is True
-    assert schema_is_current("0029_analytics_events") is False
+    assert schema_is_current("0031_trip_item_coordinates") is True
+    assert schema_is_current("0030_analytics_events") is False
     assert schema_is_current("0029_ui_saved_items") is False
     assert schema_is_current("0028_restaurant_sources") is False
     assert schema_is_current("0027_hotspot_restaurants") is False
