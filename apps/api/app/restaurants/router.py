@@ -3,15 +3,16 @@ from __future__ import annotations
 from typing import Annotated, Literal
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Header, Request
+from fastapi import APIRouter, Depends, Header
 from pydantic import BaseModel, Field
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.auth.service import CurrentUser
 from app.db import get_session
 from app.i18n import Locale, current_locale
-from app.infra import client_ip, enforce_named_rate_limit, get_redis
+from app.infra import enforce_named_rate_limit, get_redis
 from app.problems import AppError
 from app.restaurants.google import (
     RestaurantProviderError,
@@ -38,15 +39,15 @@ class RestaurantSearchRequest(BaseModel):
 async def restaurant_search(
     hotspot_id: UUID,
     payload: RestaurantSearchRequest,
-    request: Request,
+    user: CurrentUser,
     session: Session,
     redis: RedisDep,
     locale: RequestLocale,
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
 ) -> dict[str, object]:
     await enforce_named_rate_limit(
-        "hotspot-restaurant-search",
-        client_ip(request),
+        "hotspot-restaurant-search-user",
+        str(user.id),
         limit=30,
         window_seconds=3_600,
     )

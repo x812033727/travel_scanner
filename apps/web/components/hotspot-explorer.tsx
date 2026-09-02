@@ -10,6 +10,8 @@ import {
   Database,
   ExternalLink,
   FileText,
+  LockKeyhole,
+  LogIn,
   MapPin,
   Minus,
   Play,
@@ -24,7 +26,10 @@ import Image from "next/image";
 import { FormEvent, KeyboardEvent, TouchEvent, useEffect, useRef, useState } from "react";
 import { api } from "@/lib/api";
 import { HotspotRestaurantsPanel } from "@/components/hotspot-restaurants-panel";
+import { useSavedItems } from "@/components/saved-items-provider";
 import { TravelCardActions } from "@/components/travel-card-actions";
+import { Link, usePathname } from "@/i18n/navigation";
+import { loginPath } from "@/lib/navigation";
 
 type SourceStatus = { id: string; name: string; status: string; purpose: string; persistence: string };
 type MapLink = { provider: "google" | "naver"; label: string; url: string; primary: boolean };
@@ -227,6 +232,8 @@ function PlaceDetailsPanel({ hotspot, onClose }: { hotspot: RankedHotspot; onClo
 export function HotspotExplorer() {
   const t = useTranslations("hotspots");
   const locale = useLocale();
+  const pathname = usePathname();
+  const auth = useSavedItems();
   const [query, setQuery] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
@@ -242,7 +249,11 @@ export function HotspotExplorer() {
   const [selected, setSelected] = useState<RankedHotspot | null>(null);
   const detailTriggerRef = useRef<HTMLElement | null>(null);
   const [selectedRestaurants, setSelectedRestaurants] = useState<RankedHotspot | null>(null);
+  const [restaurantAuthNotice, setRestaurantAuthNotice] = useState<"login" | "unavailable" | null>(null);
+  const [restaurantLoginHref, setRestaurantLoginHref] = useState(() => loginPath(pathname));
   const restaurantTriggerRef = useRef<HTMLElement | null>(null);
+  const authNoticeRef = useRef<HTMLDivElement>(null);
+  const authNoticeCloseRef = useRef<HTMLButtonElement>(null);
   const number = new Intl.NumberFormat(locale);
 
   async function load(append = false) {
@@ -295,21 +306,48 @@ export function HotspotExplorer() {
   }, [selected]);
 
   useEffect(() => {
-    if (!selectedRestaurants && restaurantTriggerRef.current) {
+    if (!selectedRestaurants && !restaurantAuthNotice && restaurantTriggerRef.current) {
       restaurantTriggerRef.current.focus();
       restaurantTriggerRef.current = null;
     }
-  }, [selectedRestaurants]);
+  }, [restaurantAuthNotice, selectedRestaurants]);
+
+  useEffect(() => {
+    if (restaurantAuthNotice) authNoticeCloseRef.current?.focus();
+  }, [restaurantAuthNotice]);
 
   function openDetails(item: RankedHotspot) { detailTriggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null; window.history.pushState({ hotspotDetails: item.id }, ""); setSelected(item); }
   function closeDetails() {
     setSelected(null);
     if (window.history.state?.hotspotDetails) window.history.back();
   }
-  function openRestaurants(item: RankedHotspot) { restaurantTriggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null; window.history.pushState({ hotspotRestaurants: item.id }, ""); setSelectedRestaurants(item); }
+  function openRestaurants(item: RankedHotspot) {
+    restaurantTriggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    setRestaurantLoginHref(loginPath(`${pathname}${window.location.search}`));
+    if (auth.status === "signed_out") {
+      setRestaurantAuthNotice("login");
+      return;
+    }
+    if (auth.status === "unavailable") {
+      setRestaurantAuthNotice("unavailable");
+      return;
+    }
+    if (auth.status !== "authenticated") return;
+    window.history.pushState({ hotspotRestaurants: item.id }, "");
+    setSelectedRestaurants(item);
+  }
   function closeRestaurants() {
     setSelectedRestaurants(null);
     if (window.history.state?.hotspotRestaurants) window.history.back();
+  }
+  function trapAuthNoticeFocus(event: KeyboardEvent<HTMLDivElement>) {
+    if (event.key !== "Tab") return;
+    const nodes = authNoticeRef.current?.querySelectorAll<HTMLElement>("button:not([disabled]), a[href]");
+    if (!nodes?.length) return;
+    const first = nodes[0];
+    const last = nodes[nodes.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   }
   function percent(value: number | null) { return value === null ? t("noComparison") : `${value >= 0 ? "+" : ""}${Math.round(value * 100)}%`; }
 
@@ -339,7 +377,7 @@ export function HotspotExplorer() {
           <div className="flex items-start justify-between gap-4"><div className="flex gap-3"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{item.rank}</span><div><h3 className="text-lg font-bold">{item.name}</h3>{item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}{item.map_links?.[0] ? <a href={item.map_links[0].url} target="_blank" rel="noopener noreferrer" aria-label={`${item.map_links[0].label}: ${item.name}`} className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"><MapPin size={14} />{item.city_name} · {t(`categories.${item.category}`)}<ExternalLink size={13} /></a> : <p className="mt-1 flex min-h-11 items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{item.city_name} · {t(`categories.${item.category}`)}</p>}</div></div><div className="text-right"><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><p className="text-xs text-[var(--muted)]">{t("score")}</p></div></div>
           <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl bg-[var(--paper)] p-4 text-sm"><div><p className="text-[var(--muted)]">{t("views30")}</p><p className="mt-1 font-semibold">{item.pageviews_30d === null ? t("pending") : number.format(item.pageviews_30d)}</p></div><div><p className="text-[var(--muted)]">{t("previous")}</p><p className="mt-1 flex items-center gap-1 font-semibold">{trendIcon(item)}{percent(item.growth_rate)}</p></div></div>
           <button type="button" onClick={() => openDetails(item)} className="mt-4 flex min-h-12 w-full items-center gap-3 rounded-2xl bg-[var(--teal)] px-4 py-3 text-left text-white shadow-sm transition hover:bg-[var(--teal-dark)]"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/15"><BookOpenText size={17} /></span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("placeDetails")}</strong><span className="block text-xs text-white/75">{t("guideCount", { articles: item.guide_counts?.article || 0, videos: item.guide_counts?.video || 0 })}</span></span><ExternalLink size={16} /></button>
-          <button type="button" onClick={() => openRestaurants(item)} className="mt-2 flex min-h-12 w-full items-center gap-3 rounded-2xl border border-[var(--coral)] bg-[var(--coral-soft)] px-4 py-3 text-left text-[var(--ink)] transition hover:-translate-y-0.5 hover:shadow-sm"><span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[var(--coral)]"><UtensilsCrossed size={17} /></span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("nearbyRestaurants")}</strong><span className="block text-xs text-[var(--muted)]">{t("nearbyRestaurantsDetail")}</span></span><span className="text-xs font-bold text-[var(--coral)]">5–10 km</span></button>
+          <button type="button" disabled={auth.status === "loading"} aria-busy={auth.status === "loading"} onClick={() => openRestaurants(item)} className="mt-2 flex min-h-12 w-full items-center gap-3 rounded-2xl border border-[var(--coral)] bg-[var(--coral-soft)] px-4 py-3 text-left text-[var(--ink)] transition hover:-translate-y-0.5 hover:shadow-sm disabled:cursor-wait disabled:opacity-60"><span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[var(--coral)]">{auth.status === "authenticated" ? <UtensilsCrossed size={17} /> : <LockKeyhole size={17} />}</span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("nearbyRestaurants")}</strong><span className="block text-xs text-[var(--muted)]">{t(auth.status === "loading" ? "nearbyRestaurantsChecking" : auth.status === "authenticated" ? "nearbyRestaurantsDetail" : "nearbyRestaurantsLocked")}</span></span><span className="text-xs font-bold text-[var(--coral)]">{auth.status === "authenticated" ? "5–10 km" : <LockKeyhole size={15} />}</span></button>
           <TravelCardActions type="hotspot" id={item.id} title={item.name} selectionPath={`/hotspots/${item.id}/trip-selections`} />
           <div className="mt-4 flex flex-wrap items-center gap-2">{item.destination_role === "secondary" && <span className="rounded-full bg-sky-100 px-2.5 py-1 text-xs font-semibold text-sky-900">{t("secondaryTag")}</span>}{item.is_cross_city && <span className="rounded-full bg-violet-100 px-2.5 py-1 text-xs font-semibold text-violet-900">{t("crossCityTag")}</span>}{item.is_deep_travel && <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-900">{t("deep")}</span>}{item.depth_kind && <span className="rounded-full border border-amber-300 px-2.5 py-1 text-xs text-amber-900">{item.depth_kind === "day_trip" ? t("dayTrip") : t("urbanLocal")}</span>}{item.source_urls[0] && <a href={item.source_urls[0]} target="_blank" rel="noopener noreferrer" className="ml-auto text-xs font-semibold text-[var(--teal)]">{t("source")}</a>}</div>
           {item.is_deep_travel && item.access_minutes && item.recommended_duration_minutes && <p className="mt-3 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-950">{t("depthDetail", { access: item.access_minutes, duration: item.recommended_duration_minutes })}</p>}
@@ -349,6 +387,13 @@ export function HotspotExplorer() {
       <aside className="h-fit rounded-3xl border border-[var(--line)] bg-white/80 p-5 lg:sticky lg:top-5"><h2 className="flex items-center gap-2 font-bold"><Database size={18} className="text-[var(--teal)]" />{t("sources")}</h2><div className="mt-4 grid gap-4">{sources?.sources.map((source) => <article key={source.id} className="border-b border-[var(--line)] pb-4 last:border-0"><div className="flex items-center justify-between gap-2"><h3 className="text-sm font-semibold">{t(`sourceNames.${source.id}`)}</h3><span className="rounded-full bg-[var(--paper)] px-2 py-1 text-[11px] text-[var(--muted)]">{source.status}</span></div></article>)}</div><p className="mt-5 border-t border-[var(--line)] pt-4 text-xs leading-5 text-[var(--muted)]">{t("plannerNote")}</p></aside>
     </div>
     {selected && <PlaceDetailsPanel hotspot={selected} onClose={closeDetails} />}
-    {selectedRestaurants && <HotspotRestaurantsPanel hotspot={selectedRestaurants} onClose={closeRestaurants} />}
+    {auth.status === "authenticated" && selectedRestaurants && <HotspotRestaurantsPanel hotspot={selectedRestaurants} loginHref={restaurantLoginHref} onClose={closeRestaurants} />}
+    {restaurantAuthNotice && <div className="fixed inset-0 z-[90] bg-slate-950/45 backdrop-blur-sm" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setRestaurantAuthNotice(null); }} onKeyDown={(event) => { if (event.key === "Escape") setRestaurantAuthNotice(null); }}>
+      <div ref={authNoticeRef} role="dialog" aria-modal="true" aria-labelledby="restaurant-auth-title" onKeyDown={trapAuthNoticeFocus} className="absolute inset-x-0 bottom-0 rounded-t-[2rem] bg-white px-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-3 shadow-2xl md:bottom-6 md:left-1/2 md:max-w-md md:-translate-x-1/2 md:rounded-[2rem] md:p-6">
+        <div className="mx-auto mb-5 h-1.5 w-11 rounded-full bg-slate-300 md:hidden" />
+        <div className="flex items-start gap-4"><span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[var(--coral-soft)] text-[var(--coral)]"><LockKeyhole size={22} /></span><div className="min-w-0 flex-1"><h2 id="restaurant-auth-title" className="text-xl font-bold">{t(restaurantAuthNotice === "login" ? "restaurantLoginTitle" : "restaurantAuthUnavailableTitle")}</h2><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{t(restaurantAuthNotice === "login" ? "restaurantLoginBody" : "restaurantAuthUnavailableBody")}</p></div><button ref={authNoticeCloseRef} type="button" onClick={() => setRestaurantAuthNotice(null)} aria-label={t("restaurantLoginClose")} className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[var(--line)]"><X size={18} /></button></div>
+        {restaurantAuthNotice === "login" && <Link href={restaurantLoginHref} className="mt-5 flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-[var(--ink)] px-5 font-semibold text-white"><LogIn size={18} />{t("restaurantLoginAction")}</Link>}
+      </div>
+    </div>}
   </main>;
 }

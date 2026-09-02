@@ -137,7 +137,13 @@ async def get_place_details(
 
 
 @public_router.get("/photo")
-async def place_photo(name: str, request: Request, session: Session) -> RedirectResponse:
+async def place_photo(
+    name: str,
+    request: Request,
+    session: Session,
+    user: CurrentUser,
+) -> RedirectResponse:
+    _ = user
     settings = await load_runtime_settings(session)
     if not settings.google_maps_api_key or not PHOTO_NAME_PATTERN.fullmatch(name):
         raise AppError(404, "photo_not_found", "目前沒有可用的地點照片")
