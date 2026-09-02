@@ -46,7 +46,10 @@ async def test_saved_items_are_account_scoped_idempotent_and_public_only() -> No
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         registration = await client.post(
             "/api/v1/auth/register",
-            json={"email": f"saved-{suffix}@example.test", "password": "integration-password-123"},
+            json={
+                "email": f"saved-{suffix}@example.com",
+                "password": "integration-password-123",
+            },
         )
         assert registration.status_code == 201
         user_id = UUID(registration.json()["user"]["id"])
