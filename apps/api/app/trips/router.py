@@ -106,6 +106,7 @@ TRIP_ROUTE_MAX_ITEMS = 12
 
 class SaveTripRequest(BaseModel):
     source: str = "search"
+    planning_mode: Literal["ai_draft", "manual_blank"] = "ai_draft"
     search_id: UUID | None = None
     plan_id: UUID | None = None
     name: str = Field(min_length=1, max_length=255)
@@ -133,6 +134,8 @@ class SaveTripRequest(BaseModel):
                 raise ValueError("end_date must not be before start_date")
             if (self.end_date - self.start_date).days > 60:
                 raise ValueError("blank trips may be at most 61 days")
+        elif self.planning_mode != "ai_draft":
+            raise ValueError("manual_blank planning is only available for blank trips")
         if self.route_preference not in {"FEWER_TRANSFERS", "LESS_WALKING", "FASTEST"}:
             raise ValueError("unsupported route preference")
         if self.notes is not None:
@@ -1417,39 +1420,51 @@ async def save_trip(
         destination = payload.destination_name or "未命名目的地"
         timezone = payload.timezone or destination_timezone(destination)
         preferences = payload.preferences.model_dump(mode="json")
-        settings = await load_runtime_settings(session)
-        candidates = await _load_ai_planner_candidates(
-            session,
-            destination,
-            payload.preferences,
-            start_date=cast(date, payload.start_date),
-            end_date=cast(date, payload.end_date),
-        )
-        planning = await AIItineraryPlanner(settings).generate(
-            _planning_request(
-                destination_name=destination,
+        planning: AIPlanningResult | None = None
+        settings: Settings | None = None
+        routing_options = payload.routing
+        if payload.planning_mode == "manual_blank":
+            routing_options = payload.routing.model_copy(update={"auto_compute": False})
+        else:
+            settings = await load_runtime_settings(session)
+            candidates = await _load_ai_planner_candidates(
+                session,
+                destination,
+                payload.preferences,
                 start_date=cast(date, payload.start_date),
                 end_date=cast(date, payload.end_date),
-                timezone=timezone,
-                route_preference=payload.route_preference,
-                travelers=payload.travelers,
-                preferences=payload.preferences,
-                notes=payload.notes,
-                candidates=candidates,
             )
-        )
+            planning = await AIItineraryPlanner(settings).generate(
+                _planning_request(
+                    destination_name=destination,
+                    start_date=cast(date, payload.start_date),
+                    end_date=cast(date, payload.end_date),
+                    timezone=timezone,
+                    route_preference=payload.route_preference,
+                    travelers=payload.travelers,
+                    preferences=payload.preferences,
+                    notes=payload.notes,
+                    candidates=candidates,
+                )
+            )
         # Only exact adjacent locations enter routing; unset hotel anchors are excluded.
-        route_pairs = sum(max(0, len(day.items) - 1) for day in planning.itinerary)
-        routing_available = route_provider_configured(
-            settings,
-            trip_region_code(timezone, destination, {}),
-            payload.routing.default_travel_mode,
+        route_pairs = (
+            sum(max(0, len(day.items) - 1) for day in planning.itinerary)
+            if planning
+            else 0
         )
+        routing_available = False
+        if planning is not None and settings is not None:
+            routing_available = route_provider_configured(
+                settings,
+                trip_region_code(timezone, destination, {}),
+                routing_options.default_travel_mode,
+            )
         routing_status = (
             "queued"
-            if payload.routing.auto_compute and route_pairs and routing_available
+            if routing_options.auto_compute and route_pairs and routing_available
             else "unavailable"
-            if payload.routing.auto_compute and route_pairs
+            if routing_options.auto_compute and route_pairs
             else "idle"
         )
         trip = TripPlan(
@@ -1461,6 +1476,7 @@ async def save_trip(
             currency="TWD",
             data={
                 "source": "blank",
+                "creation_mode": payload.planning_mode,
                 "destination_city": destination,
                 "destination_country": {
                     "Asia/Tokyo": "日本",
@@ -1470,11 +1486,15 @@ async def save_trip(
                 "travelers": payload.travelers.model_dump(mode="json"),
                 "preferences": preferences,
                 "notes": payload.notes,
-                "planning": {
-                    **planning.planning.model_dump(mode="json"),
-                    "unscheduled_slots": planning.unscheduled_slots,
-                },
-                "routing_defaults": payload.routing.model_dump(mode="json"),
+                "planning": (
+                    {
+                        **planning.planning.model_dump(mode="json"),
+                        "unscheduled_slots": planning.unscheduled_slots,
+                    }
+                    if planning
+                    else None
+                ),
+                "routing_defaults": routing_options.model_dump(mode="json"),
                 "routing": {
                     "status": routing_status,
                     "total": route_pairs,
@@ -1497,9 +1517,12 @@ async def save_trip(
         )
         session.add(trip)
         await session.flush()
-        for day in planning.itinerary:
-            for item in day.items:
-                session.add(item_record(trip.id, item, preserve_source_id=False))
+        if planning is not None:
+            for day in planning.itinerary:
+                for item in day.items:
+                    session.add(item_record(trip.id, item, preserve_source_id=False))
+        else:
+            ensure_system_slots(session, trip, [])
         await session.commit()
         await session.refresh(trip)
         result = await serialize_trip(session, trip)

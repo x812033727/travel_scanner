@@ -12,6 +12,7 @@ import { interestLabel, interests } from "@/lib/destinations";
 type CreatedTrip = { id: string };
 type LodgingMode = "hotel" | "vacation_rental" | "both" | "any";
 type Pace = "relaxed" | "balanced" | "packed";
+type PlanningMode = "ai_draft" | "manual_blank";
 
 const steps = ["基本資料", "旅伴預算", "住宿偏好", "路線與確認"];
 const fieldClass = "mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 font-normal outline-none focus:border-[var(--teal)] focus:ring-4 focus:ring-[var(--teal-soft)]";
@@ -38,6 +39,7 @@ export function NewTripForm() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>();
   const [lodgingMode, setLodgingMode] = useState<LodgingMode>("any");
+  const [planningMode, setPlanningMode] = useState<PlanningMode>("ai_draft");
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const [form, setForm] = useState({
     name: "", destination_name: "", destination_place_id: "", start_date: "", end_date: "",
@@ -79,6 +81,7 @@ export function NewTripForm() {
     ["取消政策", form.refundable_required ? "需要免費取消" : "不要求"],
     ["大眾運輸", routeLabel],
     ["航班時間", form.avoid_red_eye ? "避開紅眼航班" : "可接受紅眼航班"],
+    ["起始方式", planningMode === "manual_blank" ? "空白手動規劃" : "AI 可編輯草稿"],
   ];
 
   function update<K extends keyof typeof form>(key: K, value: (typeof form)[K]) {
@@ -127,6 +130,7 @@ export function NewTripForm() {
         method: "POST",
         body: JSON.stringify({
           source: "blank",
+          planning_mode: planningMode,
           name: form.name.trim(),
           destination_name: form.destination_name.trim(),
           destination_place_id: form.destination_place_id || null,
@@ -134,7 +138,7 @@ export function NewTripForm() {
           end_date: form.end_date,
           route_preference: form.route_preference,
           routing: {
-            auto_compute: true,
+            auto_compute: planningMode === "ai_draft",
             default_travel_mode: "transit",
             default_buffer_minutes: 10,
           },
@@ -187,20 +191,21 @@ export function NewTripForm() {
       </div>
 
       <div className={step === 3 ? "grid gap-5" : "hidden"}>
-        <div><h2 className="flex items-center gap-2 text-lg font-bold"><Check size={19} />路線偏好與建立前確認</h2><p className="mt-1 text-sm text-[var(--muted)]">確認後會由後台設定的 AI 產生每天的可編輯草稿；需要修改可回到前一步。</p></div>
+        <div><h2 className="flex items-center gap-2 text-lg font-bold"><Check size={19} />路線偏好與建立前確認</h2><p className="mt-1 text-sm text-[var(--muted)]">選擇先由 AI 建立草稿，或從只有航班、住宿與餐期卡的空白行程開始。</p></div>
+        <fieldset><legend className="text-sm font-semibold">建立方式</legend><div className="mt-2 grid gap-3 sm:grid-cols-2"><button type="button" aria-pressed={planningMode === "ai_draft"} onClick={() => setPlanningMode("ai_draft")} className={optionClass(planningMode === "ai_draft")}><strong className="block">AI 可編輯草稿</strong><span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted)]">使用核准景點先排出每天內容，建立後仍可修改。</span></button><button type="button" aria-pressed={planningMode === "manual_blank"} onClick={() => setPlanningMode("manual_blank")} className={optionClass(planningMode === "manual_blank")}><strong className="block">空白手動規劃</strong><span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted)]">不呼叫 AI；逐項新增時不自動查路，排完再集中計算。</span></button></div></fieldset>
         <div className="grid gap-3 sm:grid-cols-2"><label className="text-sm font-semibold">大眾運輸偏好<select value={form.route_preference} onChange={(event) => update("route_preference", event.target.value)} className={fieldClass}><option value="FEWER_TRANSFERS">少轉乘</option><option value="FASTEST">最快抵達</option><option value="LESS_WALKING">少走路</option></select></label><label className="flex items-center gap-2 self-end rounded-xl bg-[var(--paper)] p-3 text-sm"><input type="checkbox" checked={form.avoid_red_eye} onChange={(event) => update("avoid_red_eye", event.target.checked)} />之後搜尋時避開紅眼航班</label></div>
         <label className="text-sm font-semibold">其他補充<textarea rows={3} maxLength={1000} value={form.notes} onChange={(event) => update("notes", event.target.value)} placeholder="例如：有長輩同行、不要一直換飯店、想安排生日晚餐。" className={fieldClass} /></label>
         <section role="region" aria-label="完整行程條件" className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5"><p className="text-xs font-semibold text-[var(--teal)]">{form.start_date} → {form.end_date}</p><h3 className="mt-1 text-2xl font-bold">{form.name.trim()}</h3><p className="mt-1 text-sm text-[var(--muted)]">{form.destination_name.trim()}</p><dl className="mt-5 grid gap-x-5 gap-y-3 sm:grid-cols-2">{reviewDetails.map(([label, value]) => <div key={label} className="border-t border-[var(--line)] pt-3"><dt className="text-xs font-semibold text-[var(--muted)]">{label}</dt><dd className="mt-1 text-sm font-medium">{value}</dd></div>)}</dl>{form.notes.trim() && <div className="mt-4 border-t border-[var(--line)] pt-4"><p className="text-xs font-semibold text-[var(--muted)]">其他補充</p><p className="mt-1 whitespace-pre-wrap text-sm">{form.notes.trim()}</p></div>}</section>
-        <p className="rounded-xl bg-amber-50 px-4 py-3 text-xs leading-5 text-amber-900">建立時會把目的地、日期、人數、旅行偏好及補充說明傳給後台選定的 AI 供應商；不會傳送 Email、姓名或帳號識別資料。AI 內容是可編輯草稿，景點營業時間與預約仍需確認。</p>
+        {planningMode === "ai_draft" ? <p className="rounded-xl bg-amber-50 px-4 py-3 text-xs leading-5 text-amber-900">建立時會把目的地、日期、人數、旅行偏好及補充說明傳給後台選定的 AI 供應商；不會傳送 Email、姓名或帳號識別資料。AI 內容是可編輯草稿，景點營業時間與預約仍需確認。</p> : <p className="rounded-xl bg-emerald-50 px-4 py-3 text-xs leading-5 text-emerald-900">空白手動規劃不會呼叫 AI。系統只建立每天必要的航班、住宿與餐期卡；完成景點順序後，再按「計算當日路線」取得交通資訊。</p>}
       </div>
 
       {error && <p role="alert" aria-live="polite" className="mt-5 rounded-xl bg-red-50 p-4 text-sm text-red-800">{error}</p>}
-      <div className="mt-7 flex gap-3">{step > 0 && <button type="button" disabled={busy} onClick={() => { setError(undefined); setStep((current) => current - 1); }} className="flex items-center gap-1 rounded-xl border border-[var(--line)] px-4 py-3 font-semibold disabled:opacity-40"><ChevronLeft size={18} />上一步</button>}{step < steps.length - 1 ? <button type="button" onClick={next} className="ml-auto flex items-center gap-1 rounded-xl bg-[var(--teal)] px-5 py-3 font-semibold text-white">下一步<ChevronRight size={18} /></button> : <button type="submit" disabled={busy} className="ml-auto flex items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3 font-semibold text-white disabled:opacity-60">{busy ? "AI 正在安排每天行程…" : "交給 AI 排好行程"}<ArrowRight size={18} /></button>}</div>
+      <div className="mt-7 flex gap-3">{step > 0 && <button type="button" disabled={busy} onClick={() => { setError(undefined); setStep((current) => current - 1); }} className="flex items-center gap-1 rounded-xl border border-[var(--line)] px-4 py-3 font-semibold disabled:opacity-40"><ChevronLeft size={18} />上一步</button>}{step < steps.length - 1 ? <button type="button" onClick={next} className="ml-auto flex items-center gap-1 rounded-xl bg-[var(--teal)] px-5 py-3 font-semibold text-white">下一步<ChevronRight size={18} /></button> : <button type="submit" disabled={busy} className="ml-auto flex items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3 font-semibold text-white disabled:opacity-60">{busy ? planningMode === "manual_blank" ? "正在建立空白行程…" : "AI 正在安排每天行程…" : planningMode === "manual_blank" ? "建立空白手動行程" : "交給 AI 排好行程"}<ArrowRight size={18} /></button>}</div>
     </section>
 
     <aside className="rounded-[2rem] bg-[var(--ink)] p-6 text-white md:p-8">
       <p className="text-xs font-semibold tracking-[.18em] text-emerald-200">行程設定摘要</p><h2 className="mt-2 text-2xl font-bold">{form.destination_name.trim() || "還沒決定目的地"}</h2><div className="mt-5 flex flex-wrap gap-2">{summary.map((item) => <span key={item} className="rounded-full bg-white/10 px-3 py-1.5 text-xs text-white/80">{item}</span>)}</div>
-      <div className="mt-7 space-y-5"><div className="flex gap-3"><CalendarDays className="mt-0.5 shrink-0 text-emerald-200" size={21} /><div><h3 className="font-semibold">AI 安排每天的景點</h3><p className="mt-1 text-sm leading-6 text-white/65">建立後每一天都有可編輯草稿，可再新增、鎖定或調整時間。</p></div></div><div className="flex gap-3"><Route className="mt-0.5 shrink-0 text-emerald-200" size={21} /><div><h3 className="font-semibold">計算移動路線</h3><p className="mt-1 text-sm leading-6 text-white/65">確認地點後，依少轉乘、最快或少走路偏好規劃每一段交通。</p></div></div><div className="flex gap-3"><Sparkles className="mt-0.5 shrink-0 text-emerald-200" size={21} /><div><h3 className="font-semibold">保留旅行偏好</h3><p className="mt-1 text-sm leading-6 text-white/65">旅伴、預算、住宿及興趣會保存，之後可讓 AI 重新編排。</p></div></div></div>
+      <div className="mt-7 space-y-5"><div className="flex gap-3"><CalendarDays className="mt-0.5 shrink-0 text-emerald-200" size={21} /><div><h3 className="font-semibold">{planningMode === "manual_blank" ? "從空白時間軸開始" : "AI 安排每天的景點"}</h3><p className="mt-1 text-sm leading-6 text-white/65">{planningMode === "manual_blank" ? "只保留航班、住宿與餐期卡，由你逐日加入精準地點。" : "建立後每一天都有可編輯草稿，可再新增、鎖定或調整時間。"}</p></div></div><div className="flex gap-3"><Route className="mt-0.5 shrink-0 text-emerald-200" size={21} /><div><h3 className="font-semibold">計算移動路線</h3><p className="mt-1 text-sm leading-6 text-white/65">{planningMode === "manual_blank" ? "排完當天順序後再按一次查路，避免每次新增都呼叫地圖服務。" : "確認地點後，依少轉乘、最快或少走路偏好規劃每一段交通。"}</p></div></div><div className="flex gap-3"><Sparkles className="mt-0.5 shrink-0 text-emerald-200" size={21} /><div><h3 className="font-semibold">保留旅行偏好</h3><p className="mt-1 text-sm leading-6 text-white/65">旅伴、預算、住宿及興趣會保存，之後仍可選擇讓 AI 重新編排。</p></div></div></div>
       <p className="mt-8 rounded-2xl bg-white/10 p-4 text-sm leading-6 text-white/75">首次 AI 草稿、手動編排與查路免費；真實 AI 重排為{aiCharge.label}，成功套用整日動線最佳化為{optimizationCharge.label}，內建備援不扣次。</p>
     </aside>
   </form>;
