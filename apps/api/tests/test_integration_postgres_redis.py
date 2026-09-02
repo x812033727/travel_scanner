@@ -695,6 +695,63 @@ async def test_blank_trip_creation_and_structured_itinerary_fields(
 
 
 @pytest.mark.asyncio(loop_scope="module")
+async def test_manual_blank_trip_skips_ai_and_automatic_routing(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    async def unexpected_generate(*_args: object, **_kwargs: object) -> AIPlanningResult:
+        raise AssertionError("manual blank creation must not call the AI planner")
+
+    def unexpected_enqueue(*_args: object, **_kwargs: object) -> None:
+        raise AssertionError("manual blank creation must not enqueue routing")
+
+    monkeypatch.setattr(AIItineraryPlanner, "generate", unexpected_generate)
+    monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", unexpected_enqueue)
+
+    email = f"manual-blank-{uuid4()}@example.com"
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        registered = await client.post(
+            "/api/v1/auth/register",
+            json={"email": email, "password": "integration-password-123"},
+        )
+        headers = {"Authorization": f"Bearer {registered.json()['access_token']}"}
+        created = await client.post(
+            "/api/v1/trips",
+            headers=headers,
+            json={
+                "source": "blank",
+                "planning_mode": "manual_blank",
+                "name": "東京手動行程",
+                "destination_name": "日本東京",
+                "start_date": "2026-11-10",
+                "end_date": "2026-11-12",
+                "routing": {
+                    "auto_compute": True,
+                    "default_travel_mode": "transit",
+                    "default_buffer_minutes": 10,
+                },
+            },
+        )
+
+    assert created.status_code == 201
+    trip = created.json()
+    assert trip["planning"] is None
+    assert trip["data"]["creation_mode"] == "manual_blank"
+    assert trip["data"]["routing_defaults"]["auto_compute"] is False
+    assert trip["routing"]["status"] == "idle"
+    assert trip["routing"]["total"] == 0
+    assert all(item["system_role"] is not None for item in trip["items"])
+    assert not any(
+        item["data"].get("generated_by") == "ai_planner" for item in trip["items"]
+    )
+    assert {item["day_date"] for item in trip["items"]} == {
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+    }
+
+
+@pytest.mark.asyncio(loop_scope="module")
 async def test_system_schedule_endpoints_sync_skip_persist_and_enforce_version() -> None:
     email = f"system-schedule-{uuid4()}@example.com"
     transport = ASGITransport(app=app)

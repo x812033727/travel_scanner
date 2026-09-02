@@ -30,8 +30,22 @@ def test_blank_trip_preferences_are_normalized_for_persistence() -> None:
     assert request.travelers.children_ages == [8]
     assert request.preferences.accepted_property_types == ["hotel", "vacation_rental"]
     assert request.preferences.pace == "relaxed"
+    assert request.planning_mode == "ai_draft"
     assert request.notes == "不要一直換飯店"
     assert destination_timezone(request.destination_name or "") == "Asia/Seoul"
+
+
+def test_manual_blank_mode_is_rejected_for_saved_search_plans() -> None:
+    with pytest.raises(ValidationError, match="only available for blank trips"):
+        SaveTripRequest.model_validate(
+            {
+                "source": "search",
+                "planning_mode": "manual_blank",
+                "search_id": "77f4bb8e-55c4-457c-a7e0-9aac2a33a836",
+                "plan_id": "4bdfd2c8-eaac-45b5-810d-a4d086d1d879",
+                "name": "搜尋結果行程",
+            }
+        )
 
 
 def test_blank_trip_rejects_invalid_hotel_price_range() -> None:

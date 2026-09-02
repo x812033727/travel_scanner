@@ -59,8 +59,9 @@ describe("NewTripForm", () => {
     await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/trip-1"));
     const request = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body));
     expect(request).toMatchObject({
-      source: "blank", name: "東京五日賞楓", destination_name: "東京", destination_place_id: null,
+      source: "blank", planning_mode: "ai_draft", name: "東京五日賞楓", destination_name: "東京", destination_place_id: null,
       start_date: "2026-11-10", end_date: "2026-11-15", route_preference: "LESS_WALKING",
+      routing: { auto_compute: true, default_travel_mode: "transit", default_buffer_minutes: 10 },
       travelers: { adults: 3, children: 1, rooms: 1 },
       preferences: {
         budget_twd: 90000, pace: "relaxed", accepted_property_types: ["hotel", "vacation_rental"],
@@ -68,6 +69,27 @@ describe("NewTripForm", () => {
         hotel_min_review_count: 100, interests: ["food"],
       },
       notes: "不要一直換飯店",
+    });
+  });
+
+  it("creates a blank manual timeline without automatic route computation", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "manual-trip" }), { status: 201, headers: { "Content-Type": "application/json" } }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<NewTripForm />);
+    fillRequiredFields();
+    reachReview();
+
+    fireEvent.click(screen.getByRole("button", { name: /空白手動規劃/ }));
+    expect(screen.getByText(/空白手動規劃不會呼叫 AI/)).toBeTruthy();
+    expect(screen.queryByText(/傳給後台選定的 AI 供應商/)).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "建立空白手動行程" }));
+
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/manual-trip"));
+    const request = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body));
+    expect(request).toMatchObject({
+      source: "blank",
+      planning_mode: "manual_blank",
+      routing: { auto_compute: false, default_travel_mode: "transit", default_buffer_minutes: 10 },
     });
   });
 
