@@ -95,10 +95,10 @@ class LineMessagingClient:
                 "messages": [
                     {
                         "type": "template",
-                        "altText": "連結 Travel Scanner 帳號",
+                        "altText": "連結 Mokaair 帳號",
                         "template": {
                             "type": "buttons",
-                            "text": "登入 Travel Scanner，將價格通知安全連結到這個 LINE 帳號。",
+                            "text": "登入 Mokaair，將價格通知安全連結到這個 LINE 帳號。",
                             "actions": [
                                 {"type": "uri", "label": "連結帳號", "uri": link_url}
                             ],

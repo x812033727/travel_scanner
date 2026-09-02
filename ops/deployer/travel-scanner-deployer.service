@@ -1,5 +1,5 @@
 [Unit]
-Description=Travel Scanner restricted deployment agent
+Description=Mokaair restricted deployment agent
 After=docker.service network-online.target
 Wants=network-online.target
 Requires=docker.service

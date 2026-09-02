@@ -265,7 +265,7 @@ export function AirlineFareLab() {
           <button disabled={busy || !selectedAirlines.length || charge.status !== "ready"} className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3.5 font-semibold text-white transition hover:bg-[var(--teal-dark)] disabled:cursor-not-allowed disabled:opacity-50">
             {busy ? <><LoaderCircle className="animate-spin" size={18} />正在讀取官方公開頁面</> : <><Search size={18} />搜尋公開票價 · {charge.label}</>}
           </button>
-          <p className="mt-3 text-center text-xs text-[var(--muted)]">{charge.status === "ready" ? `需要登入 Travel Scanner；成功取得公開票價才${charge.label}，失敗不扣。` : charge.unavailableHelp}</p>
+          <p className="mt-3 text-center text-xs text-[var(--muted)]">{charge.status === "ready" ? `需要登入 Mokaair；成功取得公開票價才${charge.label}，失敗不扣。` : charge.unavailableHelp}</p>
         </form>
 
         <div aria-live="polite" className="min-h-[34rem] rounded-[1.75rem] border border-[var(--line)] bg-white p-5 md:p-7">

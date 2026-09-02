@@ -1,1 +1,1 @@
-"""Travel Scanner API."""
+"""Mokaair API."""

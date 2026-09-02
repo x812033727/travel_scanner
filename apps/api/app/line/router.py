@@ -135,7 +135,7 @@ async def send_line_test_message(
     try:
         await LineMessagingClient(settings).push_text(
             connection.line_user_id,
-            "Travel Scanner LINE 價格通知已成功連結。",
+            "Mokaair LINE 價格通知已成功連結。",
             retry_key=uuid4(),
         )
     except LineApiError as exc:
@@ -237,7 +237,7 @@ async def _handle_account_link(
         return
     await redis.delete(nonce_key)
     if isinstance(reply_token, str):
-        await client.reply_text(reply_token, f"已連結 Travel Scanner 帳號（{display_name}）。")
+        await client.reply_text(reply_token, f"已連結 Mokaair 帳號（{display_name}）。")
 
 
 async def _handle_event(
@@ -279,7 +279,7 @@ async def _handle_event(
                 if existing is not None:
                     existing.friend_status = True
                     await session.commit()
-                    await client.reply_text(reply_token, "這個 LINE 已連結 Travel Scanner 帳號。")
+                    await client.reply_text(reply_token, "這個 LINE 已連結 Mokaair 帳號。")
                 else:
                     await _send_link_prompt(client, settings, line_user_id, reply_token)
         if isinstance(event_id, str):

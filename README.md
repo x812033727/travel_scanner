@@ -1,8 +1,17 @@
-# Travel Scanner
+# Mokaair
 
-Travel Scanner is a mock-first, API-first travel comparison MVP. It combines
+Mokaair is a mock-first, API-first travel comparison MVP. It combines
 flights, hotels, activities, and transportation into complete trip plans and
 explains the trade-off between the cheapest, balanced, and comfortable choices.
+
+## Brand
+
+The public product name is **Mokaair**. The primary wordmark is typography-only:
+`Moka` uses mocha brown (`#6B4A3A`) and `air` uses deep teal (`#0D6B68`) on a
+cream (`#F7F1E8`) background. Reusable SVG and PNG artwork lives in
+`apps/web/public/brand`; Next.js favicon and Apple icon assets live in
+`apps/web/app`. Internal database, package, service, and environment identifiers
+retain their existing `travel_scanner` / `travel-scanner` names for compatibility.
 
 Trip search supports an explicit mock development mode, an Amadeus-backed test
 or live mode, Skyscanner Flights Live Prices, and Duffel Offer Requests for
@@ -569,7 +578,7 @@ captures older than 15 minutes, limits row count and payload size, and records
 a SHA-256 digest. The bridge never accepts an arbitrary target URL and does not
 reuse a personal Chrome profile, log in to an airline, or bypass a challenge.
 
-Set either a short-lived API token or local Travel Scanner credentials, then
+Set either a short-lived API token or local Mokaair credentials, then
 run the tool from the repository root. Credentials remain in memory; prefer
 environment variables over command-line arguments.
 
@@ -589,7 +598,7 @@ only when Google Chrome is unavailable. `BR` is reported as policy-disabled
 until its robots policy can be verified; the Chrome path does not override it.
 
 The bridge endpoints are `POST /api/v1/crawlers/airlines/browser-targets` and
-`POST /api/v1/crawlers/airlines/browser-captures`. Both require Travel Scanner
+`POST /api/v1/crawlers/airlines/browser-captures`. Both require Mokaair
 authentication and use the normal per-user rate limit.
 
 Safety controls include a fixed HTTPS host allowlist, runtime `robots.txt`

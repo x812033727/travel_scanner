@@ -10,7 +10,7 @@ vi.mock("@/lib/registration", () => ({
 vi.mock("@/lib/usage-catalog.server", () => ({
   getUsageCatalog: () => Promise.resolve({ status: "ready", catalog: { trial_uses: 7 } }),
 }));
-vi.mock("@/components/site-header", () => ({ SiteHeader: () => <header>Travel Scanner</header> }));
+vi.mock("@/components/site-header", () => ({ SiteHeader: () => <header>Mokaair</header> }));
 vi.mock("@/components/auth-form", () => ({
   AuthForm: ({ mode }: { mode: string }) => <form data-testid={`${mode}-form`} />,
 }));

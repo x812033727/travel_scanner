@@ -1,15 +1,15 @@
 # Skyscanner partnership application
 
-Travel Scanner should request access to Flights Live Prices and Flights Indicative Prices only
+Mokaair should request access to Flights Live Prices and Flights Indicative Prices only
 after a public HTTPS preview is available. Do not include API keys, test credentials, personal
 data, or provider responses in the application materials.
 
 ## Product description
 
-Travel Scanner is a Traditional Chinese travel comparison product for Taiwan. A user supplies
+Mokaair is a Traditional Chinese travel comparison product for Taiwan. A user supplies
 their route, exact dates, travellers, cabin and preferences. The product displays normalized
 flight choices alongside lodging and trip costs, then sends the user to the airline or OTA to
-complete the booking. Travel Scanner does not issue tickets, take payment, manage PNRs or provide
+complete the booking. Mokaair does not issue tickets, take payment, manage PNRs or provide
 post-booking servicing.
 
 Flexible-date discovery uses indicative prices. A Live Prices search is created only after a user

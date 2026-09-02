@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { MokaairLogo } from "@/components/mokaair-logo";
 import { Link, usePathname } from "@/i18n/navigation";
 import { api } from "@/lib/api";
 
@@ -76,7 +77,7 @@ export function AdminNav({ current }: { current?: string } = {}) {
           <p className="text-[11px] font-bold uppercase tracking-[.16em] text-[var(--teal)]">
             Control center
           </p>
-          <strong className="text-lg">Travel Scanner</strong>
+          <MokaairLogo className="text-xl" />
         </div>
         <button
           type="button"

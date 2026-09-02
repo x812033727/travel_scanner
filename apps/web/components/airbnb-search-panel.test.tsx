@@ -24,7 +24,7 @@ describe("AirbnbSearchPanel", () => {
   it("labels the result as an external search instead of a live quote", () => {
     render(<AirbnbSearchPanel criteria={criteria} />);
     expect(screen.getByText(/不擷取 Airbnb 報價/)).toBeTruthy();
-    expect(screen.getByText(/此入口不扣 Travel Scanner 搜尋次數/)).toBeTruthy();
+    expect(screen.getByText(/此入口不扣 Mokaair 搜尋次數/)).toBeTruthy();
     expect(screen.getByRole("link", { name: /前往 Airbnb 搜尋/ }).getAttribute("href")).toContain("airbnb.com");
   });
 });

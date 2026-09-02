@@ -170,7 +170,7 @@ async def verify_naver_maps() -> bool:
 def main() -> None:
     if isinstance(sys.stdout, TextIOWrapper):
         sys.stdout.reconfigure(encoding="utf-8")
-    parser = argparse.ArgumentParser(description="Travel Scanner development utilities")
+    parser = argparse.ArgumentParser(description="Mokaair development utilities")
     subparsers = parser.add_subparsers(dest="command", required=True)
     command = subparsers.add_parser("add-usage-package")
     command.add_argument("--email", required=True)

@@ -1,4 +1,4 @@
-# Travel Scanner deployment agent
+# Mokaair deployment agent
 
 The deployment button never mounts the Docker socket or a Git checkout into the API container.
 This host-only agent owns those permissions and exposes four fixed operations through a Unix socket.

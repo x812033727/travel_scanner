@@ -7,7 +7,7 @@ const registrationState = vi.hoisted(() => ({ value: "open" as "open" | "closed"
 vi.mock("@/lib/registration", () => ({
   getRegistrationAvailability: () => Promise.resolve(registrationState.value),
 }));
-vi.mock("@/components/site-header", () => ({ SiteHeader: () => <header>Travel Scanner</header> }));
+vi.mock("@/components/site-header", () => ({ SiteHeader: () => <header>Mokaair</header> }));
 vi.mock("@/components/auth-form", () => ({
   AuthForm: ({ mode }: { mode: string }) => <form data-testid={`${mode}-form`} />,
 }));

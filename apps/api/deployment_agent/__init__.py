@@ -1,1 +1,1 @@
-"""Restricted host deployment agent for Travel Scanner."""
+"""Restricted host deployment agent for Mokaair."""

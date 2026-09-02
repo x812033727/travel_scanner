@@ -763,7 +763,7 @@ class RestaurantFavorite(Timestamped, Base):
 
 
 class RestaurantEditorialProfile(Timestamped, Base):
-    """Independently sourced restaurant data owned by Travel Scanner."""
+    """Independently sourced restaurant data owned by Mokaair."""
 
     __tablename__ = "restaurant_editorial_profiles"
     __table_args__ = (

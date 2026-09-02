@@ -1,6 +1,6 @@
-# Travel Scanner architecture
+# Mokaair architecture
 
-Travel Scanner is an API-first modular monolith. The browser talks only to the
+Mokaair is an API-first modular monolith. The browser talks only to the
 Next.js BFF. The BFF forwards authenticated requests to FastAPI, which owns all
 business rules and all provider access.
 
