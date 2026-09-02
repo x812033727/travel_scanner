@@ -1,6 +1,6 @@
 import os
 from collections.abc import AsyncIterator
-from uuid import UUID, uuid4
+from uuid import uuid4
 
 import pytest
 import pytest_asyncio
@@ -9,7 +9,7 @@ from sqlalchemy import delete
 
 from app.db import SessionFactory, engine
 from app.main import app
-from app.models import FoodFavorite, HotspotFavorite, TravelFood, TravelHotspot, User
+from app.models import FoodFavorite, HotspotFavorite, TravelFood, TravelHotspot
 
 pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
@@ -53,7 +53,6 @@ async def test_saved_items_are_account_scoped_idempotent_and_public_only() -> No
             },
         )
         assert registration.status_code == 201
-        user_id = UUID(registration.json()["user"]["id"])
         headers = {"Authorization": f"Bearer {registration.json()['access_token']}"}
         for item_type, item_id in (("hotspot", hotspot_id), ("food", food_id)):
             first = await client.put(f"/api/v1/saved-items/{item_type}/{item_id}", headers=headers)
@@ -74,5 +73,4 @@ async def test_saved_items_are_account_scoped_idempotent_and_public_only() -> No
         await session.execute(delete(FoodFavorite).where(FoodFavorite.food_id == food_id))
         await session.execute(delete(TravelHotspot).where(TravelHotspot.id == hotspot_id))
         await session.execute(delete(TravelFood).where(TravelFood.id == food_id))
-        await session.execute(delete(User).where(User.id == user_id))
         await session.commit()
