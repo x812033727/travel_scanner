@@ -11,7 +11,7 @@ describe("hotspot source redirect", () => {
       return new Response(JSON.stringify({ url: "https://example.com/source" }));
     });
     vi.stubGlobal("fetch", fetchMock);
-    const request = new NextRequest("https://mocair.io/zh-TW/out/hotspots/11111111-1111-1111-1111-111111111111/source", {
+    const request = new NextRequest("https://mokaair.com/zh-TW/out/hotspots/11111111-1111-1111-1111-111111111111/source", {
       headers: { cookie: "session=member" },
     });
 

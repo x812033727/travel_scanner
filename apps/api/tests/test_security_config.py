@@ -10,8 +10,8 @@ def secure_production_settings(**overrides: object) -> Settings:
         "settings_encryption_key": "settings-secret-that-is-separate-and-at-least-32",
         "database_url": "postgresql+asyncpg://travel:strong-db-password@postgres:5432/travel_scanner",
         "redis_url": "redis://:strong-redis-password@redis:6379/0",
-        "api_cors_origins": "https://mocair.io",
-        "next_public_site_url": "https://mocair.io",
+        "api_cors_origins": "https://mokaair.com",
+        "next_public_site_url": "https://mokaair.com",
         "cookie_secure": True,
     }
     values.update(overrides)
@@ -29,9 +29,9 @@ def test_secure_production_configuration_is_accepted() -> None:
         ({"settings_encryption_key": None}, "SETTINGS_ENCRYPTION_KEY"),
         ({"cookie_secure": False}, "COOKIE_SECURE"),
         ({"api_cors_origins": "*"}, "API_CORS_ORIGINS"),
-        ({"api_cors_origins": "https://mocair.io/path"}, "API_CORS_ORIGINS"),
-        ({"next_public_site_url": "http://mocair.io"}, "NEXT_PUBLIC_SITE_URL"),
-        ({"next_public_site_url": "https://user@mocair.io"}, "NEXT_PUBLIC_SITE_URL"),
+        ({"api_cors_origins": "https://mokaair.com/path"}, "API_CORS_ORIGINS"),
+        ({"next_public_site_url": "http://mokaair.com"}, "NEXT_PUBLIC_SITE_URL"),
+        ({"next_public_site_url": "https://user@mokaair.com"}, "NEXT_PUBLIC_SITE_URL"),
         (
             {
                 "openai_api_key": "production-openai-key",

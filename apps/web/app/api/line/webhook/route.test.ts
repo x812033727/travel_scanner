@@ -14,7 +14,7 @@ describe("LINE webhook proxy", () => {
       return new Response("{}", { status: 200, headers: { "Content-Type": "application/json" } });
     });
     vi.stubGlobal("fetch", fetchMock);
-    const request = new NextRequest("https://mocair.io/api/line/webhook", {
+    const request = new NextRequest("https://mokaair.com/api/line/webhook", {
       method: "POST",
       headers: { "Content-Type": "application/json", "X-Line-Signature": "signed-value" },
       body: '{"events":[]}\n',
@@ -27,7 +27,7 @@ describe("LINE webhook proxy", () => {
   it("rejects unsigned requests before forwarding", async () => {
     const fetchMock = vi.fn();
     vi.stubGlobal("fetch", fetchMock);
-    const request = new NextRequest("https://mocair.io/api/line/webhook", {
+    const request = new NextRequest("https://mokaair.com/api/line/webhook", {
       method: "POST",
       body: "{}",
     });

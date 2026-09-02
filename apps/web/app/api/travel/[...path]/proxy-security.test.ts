@@ -18,10 +18,10 @@ describe("travel API proxy security", () => {
   });
 
   it("rejects cross-site state changes while allowing reads and same-site posts", () => {
-    expect(isAllowedMutationOrigin("GET", "https://evil.example", "https://mocair.io")).toBe(true);
-    expect(isAllowedMutationOrigin("POST", "https://mocair.io", "https://mocair.io")).toBe(true);
-    expect(isAllowedMutationOrigin("POST", "https://evil.example", "https://mocair.io")).toBe(false);
-    expect(isAllowedMutationOrigin("POST", null, "https://mocair.io")).toBe(false);
+    expect(isAllowedMutationOrigin("GET", "https://evil.example", "https://mokaair.com")).toBe(true);
+    expect(isAllowedMutationOrigin("POST", "https://mokaair.com", "https://mokaair.com")).toBe(true);
+    expect(isAllowedMutationOrigin("POST", "https://evil.example", "https://mokaair.com")).toBe(false);
+    expect(isAllowedMutationOrigin("POST", null, "https://mokaair.com")).toBe(false);
   });
 
   it("uses the observed Host when Next normalizes a development URL", () => {
@@ -34,10 +34,10 @@ describe("travel API proxy security", () => {
   });
 
   it("only forwards relative, same-origin HTTP, or HTTPS redirects", () => {
-    expect(safeRedirectLocation("/login", "https://mocair.io")).toBe("/login");
-    expect(safeRedirectLocation("https://www.booking.com/", "https://mocair.io")).toBe("https://www.booking.com/");
-    expect(safeRedirectLocation("javascript:alert(1)", "https://mocair.io")).toBeUndefined();
-    expect(safeRedirectLocation("http://evil.example/", "https://mocair.io")).toBeUndefined();
+    expect(safeRedirectLocation("/login", "https://mokaair.com")).toBe("/login");
+    expect(safeRedirectLocation("https://www.booking.com/", "https://mokaair.com")).toBe("https://www.booking.com/");
+    expect(safeRedirectLocation("javascript:alert(1)", "https://mokaair.com")).toBeUndefined();
+    expect(safeRedirectLocation("http://evil.example/", "https://mokaair.com")).toBeUndefined();
   });
 
   it("uses the right-most proxy address and bounds forwarded header length", () => {
