@@ -66,8 +66,10 @@ function ok(payload: unknown) {
 afterEach(() => {
   vi.unstubAllGlobals();
   vi.unstubAllEnvs();
+  document.getElementById("google-route-maps-js")?.remove();
   window.gm_authFailure = undefined;
   window.mokaairGoogleMapsAuthFailed = undefined;
+  window.__mokaairGoogleMapsReady = undefined;
   window.google = undefined;
   window.naver = undefined;
 });
@@ -108,6 +110,18 @@ describe("RouteMap", () => {
   });
 
   it("loads a Google JavaScript basemap with endpoints before a provider route exists", async () => {
+    const mapOptions: Array<Record<string, unknown>> = [];
+    class TestMap {
+      constructor(_element: HTMLElement, options: Record<string, unknown>) { mapOptions.push(options); }
+      fitBounds() { return undefined; }
+    }
+    class TestBounds {
+      extend() { return undefined; }
+    }
+    class TestOverlay {
+      setMap() { return undefined; }
+      addListener() { return undefined; }
+    }
     vi.stubGlobal("fetch", vi.fn(async () => ok({
       google_maps_browser_key: "google-browser-key",
       google_maps_javascript_enabled: true,
@@ -117,13 +131,28 @@ describe("RouteMap", () => {
       <RouteMap items={items} fromItemId="from" toItemId="to" countryCode="JP" />,
     );
 
-    const script = await screen.findByTestId("next-script");
-    expect(script.getAttribute("data-src")).toContain("https://maps.googleapis.com/maps/api/js");
-    expect(script.getAttribute("data-src")).toContain("key=google-browser-key");
-    expect(script.getAttribute("data-src")).toContain("loading=async");
+    await waitFor(() => expect(document.getElementById("google-route-maps-js")).toBeTruthy());
+    const script = document.getElementById("google-route-maps-js") as HTMLScriptElement;
+    expect(script.src).toContain("https://maps.googleapis.com/maps/api/js");
+    expect(script.src).toContain("key=google-browser-key");
+    expect(script.src).toContain("v=quarterly");
+    expect(script.src).toContain("loading=async");
+    expect(script.src).toContain("callback=__mokaairGoogleMapsReady");
+    expect(script.src).toContain("auth_referrer_policy=origin");
     expect(screen.getByRole("img", { name: /景福宮到北村韓屋村的Google Maps路線地圖/ })).toBeTruthy();
     expect(screen.getByText("示意連線，非實際路線")).toBeTruthy();
     expect(container.querySelector("iframe")).toBeNull();
+
+    window.google = { maps: {
+      RenderingType: { RASTER: "RASTER" },
+      Map: TestMap,
+      LatLngBounds: TestBounds,
+      Marker: TestOverlay,
+      Polyline: TestOverlay,
+    } };
+    act(() => window.__mokaairGoogleMapsReady?.());
+    await waitFor(() => expect(mapOptions).toHaveLength(1));
+    expect(mapOptions[0].renderingType).toBe("RASTER");
   });
 
   it("does not load Google Maps when a browser key exists without the explicit safety gate", async () => {
@@ -135,7 +164,7 @@ describe("RouteMap", () => {
 
     expect(await screen.findByText("瀏覽器地圖已安全停用")).toBeTruthy();
     expect(screen.getByText(/再開啟安全閘門/)).toBeTruthy();
-    expect(screen.queryByTestId("next-script")).toBeNull();
+    expect(document.getElementById("google-route-maps-js")).toBeNull();
   });
 
   it("fails closed when public runtime config cannot be loaded", async () => {
@@ -144,7 +173,7 @@ describe("RouteMap", () => {
     render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="JP" />);
 
     expect(await screen.findByText("瀏覽器地圖服務尚未啟用")).toBeTruthy();
-    expect(screen.queryByTestId("next-script")).toBeNull();
+    expect(document.getElementById("google-route-maps-js")).toBeNull();
   });
 
   it("shows an actionable state when Google rejects the current referrer", async () => {
@@ -161,7 +190,7 @@ describe("RouteMap", () => {
     expect(await screen.findByText("地圖載入失敗")).toBeTruthy();
     expect(screen.getByText(/尚未允許目前網站網域/)).toBeTruthy();
     expect(screen.queryByRole("img", { name: /Google Maps路線地圖/ })).toBeNull();
-    expect(screen.queryByTestId("next-script")).toBeNull();
+    expect(document.getElementById("google-route-maps-js")).toBeNull();
   });
 
   it("installs the Google authorization guard before the public config enables the SDK", async () => {
@@ -172,13 +201,13 @@ describe("RouteMap", () => {
     render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="JP" />);
 
     await waitFor(() => expect(window.gm_authFailure).toBeTypeOf("function"));
-    expect(screen.queryByTestId("next-script")).toBeNull();
+    expect(document.getElementById("google-route-maps-js")).toBeNull();
     act(() => releaseConfig?.(ok({
       google_maps_browser_key: "google-browser-key",
       google_maps_javascript_enabled: true,
     })));
 
-    expect(await screen.findByTestId("next-script")).toBeTruthy();
+    await waitFor(() => expect(document.getElementById("google-route-maps-js")).toBeTruthy());
   });
 
   it("does not let an earlier Google authorization failure disable NAVER Maps", async () => {
@@ -197,7 +226,9 @@ describe("RouteMap", () => {
   it("draws every provider option and makes each line selectable", async () => {
     const lineOptions: Array<Record<string, unknown>> = [];
     const lineClicks: Array<() => void> = [];
+    const mapConstructed = vi.fn();
     class TestMap {
+      constructor() { mapConstructed(); }
       fitBounds() { return undefined; }
     }
     class TestBounds {
@@ -231,12 +262,16 @@ describe("RouteMap", () => {
         : index === 1 ? "_p~iF~ps|U_mqNvxq`@" : "_p~iF~ps|U_ulLnnqC",
     }));
 
-    render(<RouteMap items={items} segments={options} selectedSegmentIndex={1} onSelectSegment={onSelect} fromItemId="from" toItemId="to" countryCode="JP" />);
+    const { rerender } = render(<RouteMap items={items} segments={options} selectedSegmentIndex={1} onSelectSegment={onSelect} fromItemId="from" toItemId="to" countryCode="JP" />);
 
     await waitFor(() => expect(lineOptions).toHaveLength(3));
     expect(lineOptions.map((option) => option.strokeOpacity)).toEqual([0.3, 0.96, 0.3]);
+    expect(mapConstructed).toHaveBeenCalledTimes(1);
+    rerender(<RouteMap items={items} segments={options} selectedSegmentIndex={2} onSelectSegment={onSelect} fromItemId="from" toItemId="to" countryCode="JP" />);
+    await waitFor(() => expect(lineOptions).toHaveLength(6));
+    expect(mapConstructed).toHaveBeenCalledTimes(1);
     fireEvent.click(screen.getByRole("img", { name: /Google Maps路線地圖/ }));
-    lineClicks[2]();
+    lineClicks[5]();
     expect(onSelect).toHaveBeenCalledWith(2);
   });
 });
