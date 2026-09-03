@@ -14,6 +14,14 @@ from rq import Queue
 from sqlalchemy import func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.admin.listing import (
+    COUNTRY_ORDER,
+    HOTSPOT_CATEGORY_ORDER,
+    country_name_for,
+    country_rank,
+    destination_rank,
+    ranked,
+)
 from app.admin.service import load_runtime_settings
 from app.auth.service import AdminUser
 from app.config import get_settings
@@ -52,7 +60,7 @@ from app.hotspots.places import (
     run_payload,
 )
 from app.hotspots.ranking import calculate_depth_value
-from app.i18n import LOCALES, Locale
+from app.i18n import LOCALES, Locale, current_locale
 from app.infra import get_redis
 from app.locations.coordinates import (
     has_durable_coordinates,
@@ -74,6 +82,7 @@ from app.problems import AppError
 router = APIRouter(prefix="/admin/hotspots", tags=["admin hotspots"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 RedisDep = Annotated[Redis, Depends(get_redis)]
+RequestLocale = Annotated[Locale, Depends(current_locale)]
 
 
 class HotspotReviewRequest(BaseModel):
@@ -273,45 +282,96 @@ def _ai_search_payload(run: HotspotGuideAISearchRun) -> dict[str, object]:
 async def list_hotspot_candidates(
     user: AdminUser,
     session: Session,
+    locale: RequestLocale,
     city_code: Annotated[str | None, Query(min_length=3, max_length=3)] = None,
     destination_id: Annotated[str | None, Query(min_length=2, max_length=64)] = None,
     role: Annotated[str | None, Query(pattern="^(primary|secondary|extension)$")] = None,
     parent_id: Annotated[str | None, Query(min_length=2, max_length=64)] = None,
     origin: Annotated[str | None, Query(max_length=32)] = None,
     status: Annotated[str | None, Query(max_length=24)] = None,
+    country_code: Annotated[str | None, Query(min_length=2, max_length=2)] = None,
+    category: Annotated[str | None, Query(max_length=32, pattern="^[a-z_]+$")] = None,
     page: Annotated[int, Query(ge=1)] = 1,
     limit: Annotated[int, Query(ge=1, le=100)] = 30,
 ) -> dict[str, object]:
     _ = user
-    filters = []
+    # Keyed by dimension so each facet can drop only its own filter.
+    filters: dict[str, Any] = {}
     if city_code:
-        filters.append(TravelHotspot.city_code == city_code.upper())
+        filters["city_code"] = TravelHotspot.city_code == city_code.upper()
     if destination_id:
-        filters.append(TravelHotspot.destination_id == destination_id.casefold())
+        filters["destination_id"] = TravelHotspot.destination_id == destination_id.casefold()
     if role:
         role_ids = [item.id for item in DESTINATIONS if item.role == role]
-        filters.append(TravelHotspot.destination_id.in_(role_ids))
+        filters["role"] = TravelHotspot.destination_id.in_(role_ids)
     if parent_id:
         child_ids = [
             item.id for item in DESTINATIONS if item.parent_destination_id == parent_id.casefold()
         ]
-        filters.append(TravelHotspot.destination_id.in_(child_ids))
+        filters["parent_id"] = TravelHotspot.destination_id.in_(child_ids)
     if origin:
-        filters.append(TravelHotspot.origin == origin)
+        filters["origin"] = TravelHotspot.origin == origin
     if status:
-        filters.append(TravelHotspot.review_status == status)
-    total = int(await session.scalar(select(func.count(TravelHotspot.id)).where(*filters)) or 0)
+        filters["status"] = TravelHotspot.review_status == status
+    if country_code:
+        filters["country_code"] = TravelHotspot.country_code == country_code.upper()
+    if category:
+        filters["category"] = TravelHotspot.category == category
+    where = list(filters.values())
+
+    def without(dimension: str) -> list[Any]:
+        return [clause for key, clause in filters.items() if key != dimension]
+
+    total = int(await session.scalar(select(func.count(TravelHotspot.id)).where(*where)) or 0)
     rows = list(
         (
             await session.scalars(
                 select(TravelHotspot)
-                .where(*filters)
-                .order_by(TravelHotspot.updated_at.desc(), TravelHotspot.name)
+                .where(*where)
+                .order_by(
+                    country_rank(TravelHotspot.country_code),
+                    TravelHotspot.country_code,
+                    destination_rank(TravelHotspot.destination_id),
+                    TravelHotspot.destination_id,
+                    TravelHotspot.name,
+                )
                 .offset((page - 1) * limit)
                 .limit(limit)
             )
         ).all()
     )
+    country_rows = (
+        await session.execute(
+            select(
+                TravelHotspot.country_code,
+                func.min(TravelHotspot.country_name).label("country_name"),
+                func.count(TravelHotspot.id).label("count"),
+            )
+            .where(*without("country_code"))
+            .group_by(TravelHotspot.country_code)
+        )
+    ).all()
+    category_rows = (
+        await session.execute(
+            select(TravelHotspot.category, func.count(TravelHotspot.id).label("count"))
+            .where(*without("category"))
+            .group_by(TravelHotspot.category)
+        )
+    ).all()
+    facets = {
+        "countries": [
+            {
+                "code": row.country_code,
+                "name": country_name_for(row.country_code, locale, row.country_name),
+                "count": int(row.count),
+            }
+            for row in ranked(country_rows, "country_code", COUNTRY_ORDER)
+        ],
+        "categories": [
+            {"code": row.category, "count": int(row.count)}
+            for row in ranked(category_rows, "category", HOTSPOT_CATEGORY_ORDER)
+        ],
+    }
     items = []
     for hotspot in rows:
         pageviews = await session.scalar(
@@ -332,6 +392,7 @@ async def list_hotspot_candidates(
                 "city_code": hotspot.city_code,
                 "city_name": hotspot.city_name,
                 "country_code": hotspot.country_code,
+                "country_name": hotspot.country_name,
                 "category": hotspot.category,
                 "area_code": hotspot.area_code,
                 "area_name": area_name(area, "zh-TW")
@@ -376,7 +437,13 @@ async def list_hotspot_candidates(
                 ),
             }
         )
-    return {"items": items, "total": total, "page": page, "pages": (total + limit - 1) // limit}
+    return {
+        "items": items,
+        "total": total,
+        "page": page,
+        "pages": (total + limit - 1) // limit,
+        "facets": facets,
+    }
 
 
 @router.post("/review")
@@ -1079,9 +1146,7 @@ async def create_place_enrichment_run(
     payload: PlaceEnrichmentRunRequest,
     user: AdminUser,
     session: Session,
-    idempotency_key: Annotated[
-        str, Header(alias="Idempotency-Key", min_length=8, max_length=255)
-    ],
+    idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
 ) -> dict[str, Any]:
     existing = await session.scalar(
         select(HotspotPlaceEnrichmentRun).where(
@@ -1201,9 +1266,7 @@ async def list_place_profiles(
                     if profile and profile.candidate_place_id
                     else None
                 ),
-                "website_review_status": (
-                    profile.website_review_status if profile else "none"
-                ),
+                "website_review_status": (profile.website_review_status if profile else "none"),
                 "provider_website_url": profile.provider_website_uri if profile else None,
                 "manual_official_website_url": (
                     profile.manual_official_website_url if profile else None

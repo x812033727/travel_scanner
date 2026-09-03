@@ -1,8 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
+import { HOTSPOT_CATEGORY_CODES, isHotspotCategoryCode } from "@/lib/hotspot-categories";
 import { safeExternalHref } from "@/lib/navigation";
+import { FilterPills } from "./admin-filter-pills";
 
 type Candidate = {
   id: string;
@@ -12,6 +15,7 @@ type Candidate = {
   city_code: string;
   city_name: string;
   country_code: string;
+  country_name?: string;
   destination_role: "primary" | "secondary" | "extension";
   parent_destination_id: string | null;
   category: string;
@@ -38,12 +42,75 @@ type Candidate = {
   naver_map_url: string | null;
   map_match_status: "unverified" | "verified" | "ambiguous" | "disabled";
 };
+type Facets = {
+  countries: { code: string; name: string; count: number }[];
+  categories: { code: string; count: number }[];
+};
 type Response = {
   items: Candidate[];
   total: number;
   page: number;
   pages: number;
+  facets?: Facets;
 };
+type DestinationGroup = {
+  destinationId: string;
+  cityName: string;
+  cityCode: string;
+  role: Candidate["destination_role"];
+  parentId: string | null;
+  items: Candidate[];
+};
+type CountryGroup = {
+  countryCode: string;
+  countryName: string;
+  destinations: DestinationGroup[];
+  count: number;
+};
+
+const PAGE_SIZE = 50;
+
+function roleLabel(role: Candidate["destination_role"], parentId: string | null) {
+  if (role === "extension") return `跨城（${parentId}）`;
+  return role === "secondary" ? "二線城市" : "主要城市";
+}
+
+// The API already orders rows by country, then destination, so grouping only
+// needs to split the page wherever those keys change.
+function groupCandidates(items: Candidate[]): CountryGroup[] {
+  const groups: CountryGroup[] = [];
+  for (const item of items) {
+    let country = groups[groups.length - 1];
+    if (!country || country.countryCode !== item.country_code) {
+      country = {
+        countryCode: item.country_code,
+        countryName: item.country_name || item.country_code,
+        destinations: [],
+        count: 0,
+      };
+      groups.push(country);
+    }
+    let destination = country.destinations[country.destinations.length - 1];
+    if (!destination || destination.destinationId !== item.destination_id) {
+      destination = {
+        destinationId: item.destination_id,
+        cityName: item.city_name,
+        cityCode: item.city_code,
+        role: item.destination_role,
+        parentId: item.parent_destination_id,
+        items: [],
+      };
+      country.destinations.push(destination);
+    }
+    destination.items.push(item);
+    country.count += 1;
+  }
+  return groups;
+}
+
+function sumCounts(rows: { count: number }[]) {
+  return rows.reduce((sum, row) => sum + row.count, 0);
+}
 type MapCandidate = {
   place_id: string;
   name: string;
@@ -56,6 +123,7 @@ type MapCandidate = {
 };
 
 export function AdminHotspotsPanel() {
+  const t = useTranslations("hotspots");
   const [data, setData] = useState<Response | null>(null);
   const [status, setStatus] = useState("pending");
   const [city, setCity] = useState("");
@@ -63,6 +131,9 @@ export function AdminHotspotsPanel() {
   const [role, setRole] = useState("");
   const [parentId, setParentId] = useState("");
   const [origin, setOrigin] = useState("");
+  const [country, setCountry] = useState("");
+  const [category, setCategory] = useState("");
+  const [page, setPage] = useState(1);
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
@@ -84,35 +155,51 @@ export function AdminHotspotsPanel() {
 
   const load = useCallback(async () => {
     setLoading(true);
-    const params = new URLSearchParams({ limit: "100" });
+    const params = new URLSearchParams({ limit: String(PAGE_SIZE), page: String(page) });
     if (status) params.set("status", status);
     if (city) params.set("city_code", city);
     if (destinationId) params.set("destination_id", destinationId);
     if (role) params.set("role", role);
     if (parentId) params.set("parent_id", parentId);
     if (origin) params.set("origin", origin);
+    if (country) params.set("country_code", country);
+    if (category) params.set("category", category);
     try {
-      setData(await api<Response>(`/admin/hotspots/candidates?${params}`));
+      const result = await api<Response>(`/admin/hotspots/candidates?${params}`);
+      setData(result);
+      // A batch action can empty the last page; fall back to the new last page.
+      if (result.pages > 0 && page > result.pages) setPage(result.pages);
     } catch (error) {
       setMessage((error as Error).message);
     } finally {
       setLoading(false);
     }
-  }, [city, destinationId, origin, parentId, role, status]);
+  }, [category, city, country, destinationId, origin, page, parentId, role, status]);
 
   useEffect(() => {
-    const params = new URLSearchParams({ limit: "100" });
-    if (status) params.set("status", status);
-    if (city) params.set("city_code", city);
-    if (destinationId) params.set("destination_id", destinationId);
-    if (role) params.set("role", role);
-    if (parentId) params.set("parent_id", parentId);
-    if (origin) params.set("origin", origin);
-    void api<Response>(`/admin/hotspots/candidates?${params}`)
-      .then(setData)
-      .catch((error: Error) => setMessage(error.message))
-      .finally(() => setLoading(false));
-  }, [city, destinationId, origin, parentId, role, status]);
+    const timer = window.setTimeout(() => void load(), 0);
+    return () => window.clearTimeout(timer);
+  }, [load]);
+
+  function updateFilter(setter: (value: string) => void, value: string) {
+    setter(value);
+    setPage(1);
+  }
+
+  function toggleMany(ids: string[], checked: boolean) {
+    setSelected((current) => {
+      const next = new Set(current);
+      for (const id of ids) {
+        if (checked) next.add(id);
+        else next.delete(id);
+      }
+      return next;
+    });
+  }
+
+  function categoryLabel(code: string) {
+    return isHotspotCategoryCode(code) ? t(`categories.${code}`) : code;
+  }
 
   async function review(action: "approve" | "reject" | "disable") {
     if (!selected.size) return;
@@ -256,13 +343,54 @@ export function AdminHotspotsPanel() {
     }
   }
 
+  const facets = data?.facets;
+  const countryOptions = (facets?.countries ?? []).map((item) => ({
+    code: item.code,
+    label: item.name,
+    count: item.count,
+  }));
+  if (country && !countryOptions.some((item) => item.code === country)) {
+    countryOptions.push({ code: country, label: country, count: 0 });
+  }
+  const categoryCounts = new Map(
+    (facets?.categories ?? []).map((item) => [item.code, item.count]),
+  );
+  const categoryCodes: string[] = [...HOTSPOT_CATEGORY_CODES];
+  for (const code of [...categoryCounts.keys(), category]) {
+    if (code && !categoryCodes.includes(code)) categoryCodes.push(code);
+  }
+  const categoryOptions = categoryCodes.map((code) => ({
+    code,
+    label: categoryLabel(code),
+    count: facets ? (categoryCounts.get(code) ?? 0) : undefined,
+  }));
+  const groups = groupCandidates(data?.items ?? []);
+
   return (
     <section className="mt-8">
-      <div className="grid gap-3 rounded-2xl border border-[var(--line)] bg-white p-4 md:grid-cols-3 lg:grid-cols-6">
+      <div className="grid gap-2">
+        <FilterPills
+          label="國家／地區"
+          allLabel={t("allCountries")}
+          allCount={facets ? sumCounts(facets.countries) : undefined}
+          options={countryOptions}
+          value={country}
+          onChange={(code) => updateFilter(setCountry, code)}
+        />
+        <FilterPills
+          label="景點分類"
+          allLabel={t("allCategories")}
+          allCount={facets ? sumCounts(facets.categories) : undefined}
+          options={categoryOptions}
+          value={category}
+          onChange={(code) => updateFilter(setCategory, code)}
+        />
+      </div>
+      <div className="mt-3 grid gap-3 rounded-2xl border border-[var(--line)] bg-white p-4 md:grid-cols-3 lg:grid-cols-6">
         <select
           aria-label="審核狀態"
           value={status}
-          onChange={(e) => setStatus(e.target.value)}
+          onChange={(e) => updateFilter(setStatus, e.target.value)}
           className="h-11 rounded-xl border border-[var(--line)] px-3"
         >
           <option value="pending">待審</option>
@@ -275,7 +403,7 @@ export function AdminHotspotsPanel() {
         <input
           aria-label="城市代碼"
           value={city}
-          onChange={(e) => setCity(e.target.value.toUpperCase())}
+          onChange={(e) => updateFilter(setCity, e.target.value.toUpperCase())}
           maxLength={3}
           placeholder="城市代碼，例如 TPE"
           className="h-11 rounded-xl border border-[var(--line)] px-3"
@@ -283,14 +411,14 @@ export function AdminHotspotsPanel() {
         <input
           aria-label="目的地 ID"
           value={destinationId}
-          onChange={(e) => setDestinationId(e.target.value)}
+          onChange={(e) => updateFilter(setDestinationId, e.target.value)}
           placeholder="目的地 ID"
           className="h-11 rounded-xl border border-[var(--line)] px-3"
         />
         <select
           aria-label="城市層級"
           value={role}
-          onChange={(e) => setRole(e.target.value)}
+          onChange={(e) => updateFilter(setRole, e.target.value)}
           className="h-11 rounded-xl border border-[var(--line)] px-3"
         >
           <option value="">全部層級</option>
@@ -301,14 +429,14 @@ export function AdminHotspotsPanel() {
         <input
           aria-label="母目的地 ID"
           value={parentId}
-          onChange={(e) => setParentId(e.target.value)}
+          onChange={(e) => updateFilter(setParentId, e.target.value)}
           placeholder="母目的地 ID"
           className="h-11 rounded-xl border border-[var(--line)] px-3"
         />
         <select
           aria-label="資料來源"
           value={origin}
-          onChange={(e) => setOrigin(e.target.value)}
+          onChange={(e) => updateFilter(setOrigin, e.target.value)}
           className="h-11 rounded-xl border border-[var(--line)] px-3"
         >
           <option value="">全部來源</option>
@@ -623,107 +751,143 @@ export function AdminHotspotsPanel() {
             </tr>
           </thead>
           <tbody>
-            {data?.items.map((item) => (
-              <tr key={item.id} className="border-t border-[var(--line)]">
-                <td className="p-3">
-                  <input
-                    type="checkbox"
-                    checked={selected.has(item.id)}
-                    aria-label={`選取 ${item.name}`}
-                    onChange={(e) =>
-                      setSelected((current) => {
-                        const next = new Set(current);
-                        if (e.target.checked) next.add(item.id);
-                        else next.delete(item.id);
-                        return next;
-                      })
-                    }
-                  />
-                </td>
-                <td className="p-3 font-semibold">
-                  {item.name}
-                  <span className="block text-xs font-normal text-[var(--muted)]">
-                    {item.qid || "無 QID"}
-                  </span>
-                </td>
-                <td className="p-3">
-                  {item.category}
-                  <span className="block text-xs text-[var(--muted)]">
-                    {item.city_name} ({item.city_code})
-                  </span>
-                  <span className="block text-xs text-[var(--muted)]">
-                    {item.destination_id} ·{" "}
-                    {item.destination_role === "extension"
-                      ? `跨城（${item.parent_destination_id}）`
-                      : item.destination_role === "secondary"
-                        ? "二線城市"
-                        : "主要城市"}
-                  </span>
-                  {item.area_name && (
-                    <span className="block text-xs text-[var(--muted)]">
-                      區域：{item.area_name}
-                    </span>
-                  )}
-                </td>
-                <td className="p-3">
-                  {item.is_deep_travel ? (
-                    <>
-                      <span className="rounded-full bg-amber-100 px-2 py-1 text-xs">
-                        {item.depth_kind === "day_trip" ? "近郊" : "市區巷弄"} ·{" "}
-                        {Math.round(item.depth_score || 0)}
-                      </span>
-                      <span className="mt-1 block text-xs text-[var(--muted)]">
-                        交通 {item.access_minutes}／停留{" "}
-                        {item.recommended_duration_minutes} 分
-                      </span>
-                    </>
-                  ) : (
-                    "—"
-                  )}
-                </td>
-                <td className="p-3">
-                  {item.distance_km?.toFixed(1) ?? "—"} km
-                </td>
-                <td className="p-3">
-                  {item.pageviews_30d?.toLocaleString("zh-TW") ?? "—"}
-                </td>
-                <td className="p-3">
-                  {item.status}
-                  <span className="block text-xs text-[var(--muted)]">
-                    {item.reason || "—"}
-                  </span>
-                </td>
-                <td className="p-3">
-                  {item.map_match_status}
-                  <span className="block text-xs text-[var(--muted)]">
-                    {item.coordinate_source_type || "待補座標來源"}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setLocationDraft({ ...item });
-                      setMapCandidate(null);
-                    }}
-                    className="mt-2 min-h-10 rounded-xl border border-sky-700 px-3 font-semibold text-sky-900"
-                  >
-                    編輯地點
-                  </button>
-                </td>
-                <td className="p-3">
-                  {item.source_urls.map((url, index) => (
-                    <a
-                      key={url}
-                      href={safeExternalHref(url)}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mr-2 font-semibold text-[var(--teal)]"
-                    >
-                      來源 {index + 1}
-                    </a>
-                  ))}
-                </td>
-              </tr>
-            ))}
+            {groups.map((countryGroup) => {
+              const countryIds = countryGroup.destinations.flatMap((group) =>
+                group.items.map((item) => item.id),
+              );
+              return (
+                <Fragment key={countryGroup.countryCode}>
+                  <tr className="admin-group-row admin-group-row-country">
+                    <th colSpan={9} scope="colgroup">
+                      <input
+                        type="checkbox"
+                        aria-label={`全選 ${countryGroup.countryName}（${countryGroup.countryCode}）`}
+                        checked={countryIds.every((id) => selected.has(id))}
+                        onChange={(e) => toggleMany(countryIds, e.target.checked)}
+                      />
+                      {countryGroup.countryName} ({countryGroup.countryCode}) · 本頁{" "}
+                      {countryGroup.count} 筆
+                    </th>
+                  </tr>
+                  {countryGroup.destinations.map((group) => {
+                    const ids = group.items.map((item) => item.id);
+                    return (
+                      <Fragment key={group.destinationId}>
+                        <tr className="admin-group-row">
+                          <th colSpan={9} scope="colgroup">
+                            <input
+                              type="checkbox"
+                              aria-label={`全選 ${group.cityName}（${group.cityCode}）`}
+                              checked={ids.every((id) => selected.has(id))}
+                              onChange={(e) => toggleMany(ids, e.target.checked)}
+                            />
+                            {group.cityName} ({group.cityCode}) · {group.destinationId} ·{" "}
+                            {roleLabel(group.role, group.parentId)} · 本頁 {ids.length} 筆
+                          </th>
+                        </tr>
+                        {group.items.map((item) => (
+                          <tr key={item.id} className="border-t border-[var(--line)]">
+                            <td className="p-3">
+                              <input
+                                type="checkbox"
+                                checked={selected.has(item.id)}
+                                aria-label={`選取 ${item.name}`}
+                                onChange={(e) =>
+                                  setSelected((current) => {
+                                    const next = new Set(current);
+                                    if (e.target.checked) next.add(item.id);
+                                    else next.delete(item.id);
+                                    return next;
+                                  })
+                                }
+                              />
+                            </td>
+                            <td className="p-3 font-semibold">
+                              {item.name}
+                              <span className="block text-xs font-normal text-[var(--muted)]">
+                                {item.qid || "無 QID"}
+                              </span>
+                            </td>
+                            <td className="p-3">
+                              {categoryLabel(item.category)}
+                              <span className="block text-xs text-[var(--muted)]">
+                                {item.city_name} ({item.city_code})
+                              </span>
+                              <span className="block text-xs text-[var(--muted)]">
+                                {item.destination_id} ·{" "}
+                                {roleLabel(item.destination_role, item.parent_destination_id)}
+                              </span>
+                              {item.area_name && (
+                                <span className="block text-xs text-[var(--muted)]">
+                                  區域：{item.area_name}
+                                </span>
+                              )}
+                            </td>
+                            <td className="p-3">
+                              {item.is_deep_travel ? (
+                                <>
+                                  <span className="rounded-full bg-amber-100 px-2 py-1 text-xs">
+                                    {item.depth_kind === "day_trip" ? "近郊" : "市區巷弄"} ·{" "}
+                                    {Math.round(item.depth_score || 0)}
+                                  </span>
+                                  <span className="mt-1 block text-xs text-[var(--muted)]">
+                                    交通 {item.access_minutes}／停留{" "}
+                                    {item.recommended_duration_minutes} 分
+                                  </span>
+                                </>
+                              ) : (
+                                "—"
+                              )}
+                            </td>
+                            <td className="p-3">
+                              {item.distance_km?.toFixed(1) ?? "—"} km
+                            </td>
+                            <td className="p-3">
+                              {item.pageviews_30d?.toLocaleString("zh-TW") ?? "—"}
+                            </td>
+                            <td className="p-3">
+                              {item.status}
+                              <span className="block text-xs text-[var(--muted)]">
+                                {item.reason || "—"}
+                              </span>
+                            </td>
+                            <td className="p-3">
+                              {item.map_match_status}
+                              <span className="block text-xs text-[var(--muted)]">
+                                {item.coordinate_source_type || "待補座標來源"}
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setLocationDraft({ ...item });
+                                  setMapCandidate(null);
+                                }}
+                                className="mt-2 min-h-10 rounded-xl border border-sky-700 px-3 font-semibold text-sky-900"
+                              >
+                                編輯地點
+                              </button>
+                            </td>
+                            <td className="p-3">
+                              {item.source_urls.map((url, index) => (
+                                <a
+                                  key={url}
+                                  href={safeExternalHref(url)}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="mr-2 font-semibold text-[var(--teal)]"
+                                >
+                                  來源 {index + 1}
+                                </a>
+                              ))}
+                            </td>
+                          </tr>
+                        ))}
+                      </Fragment>
+                    );
+                  })}
+                </Fragment>
+              );
+            })}
           </tbody>
         </table>
         {!loading && data?.items.length === 0 && (
@@ -732,6 +896,29 @@ export function AdminHotspotsPanel() {
           </p>
         )}
       </div>
+      {data && data.pages > 1 && (
+        <nav aria-label="景點候選換頁" className="mt-4 flex items-center justify-end gap-3">
+          <button
+            type="button"
+            disabled={page <= 1 || loading}
+            onClick={() => setPage((current) => Math.max(1, current - 1))}
+            className="min-h-11 rounded-xl border px-4 text-sm font-semibold disabled:opacity-40"
+          >
+            上一頁
+          </button>
+          <span className="text-sm text-[var(--muted)]">
+            第 {page}／{data.pages} 頁
+          </span>
+          <button
+            type="button"
+            disabled={page >= data.pages || loading}
+            onClick={() => setPage((current) => Math.min(data.pages, current + 1))}
+            className="min-h-11 rounded-xl border px-4 text-sm font-semibold disabled:opacity-40"
+          >
+            下一頁
+          </button>
+        </nav>
+      )}
     </section>
   );
 }
