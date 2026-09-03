@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { FoodExplorer } from "@/components/food-explorer";
+import { FoodBrowser } from "@/components/food-browser";
 import { SiteHeader } from "@/components/site-header";
 import type { Locale } from "@/i18n/routing";
 
@@ -11,5 +11,5 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
 }
 
 export default function FoodsPage() {
-  return <><SiteHeader /><FoodExplorer /></>;
+  return <><SiteHeader /><FoodBrowser /></>;
 }

@@ -6,9 +6,8 @@ import { useState } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { api } from "@/lib/api";
 import { loginPath } from "@/lib/navigation";
-import { useSavedItems } from "@/components/saved-items-provider";
+import { useSavedItems, type SavedType } from "@/components/saved-items-provider";
 
-type SavedType = "hotspot" | "food";
 type TripOption = {
   trip_id: string;
   name: string;
@@ -237,7 +236,7 @@ export function TravelCardActions({
         </button>
         <button
           type="button"
-          disabled={type === "food" && !merchantId}
+          disabled={(type === "food" || type === "merchant") && !merchantId}
           onClick={() => requireAuth(() => void openTrip())}
           className="travel-card-action disabled:cursor-not-allowed disabled:opacity-35"
         >
