@@ -220,6 +220,19 @@ def _next_matching_transit_time(
     return preview.astimezone(UTC)
 
 
+def _next_matching_transit_daytime(
+    value: datetime,
+    *,
+    now: datetime | None = None,
+) -> datetime:
+    """Return a nearby same-weekday daytime reference in the trip timezone."""
+
+    local_zone = value.tzinfo or UTC
+    requested_local = value.replace(tzinfo=local_zone) if value.tzinfo is None else value
+    daytime = requested_local.replace(hour=10, minute=0, second=0, microsecond=0)
+    return _next_matching_transit_time(daytime, now=now)
+
+
 def supported_transit_time(value: datetime | None) -> tuple[datetime | None, str, list[str]]:
     if value is None:
         return None, "live", []
@@ -485,24 +498,25 @@ class GoogleRouteProvider:
         )
         payload: dict[str, Any] = {}
         used_preference_fallback = False
-        used_live_preview_fallback = False
+        used_current_schedule_fallback = False
+        used_daytime_schedule_fallback = False
         used_coordinate_fallback = False
         used_near_term_schedule_fallback = False
-        attempts: list[tuple[dict[str, Any], str]] = [(body, "requested")]
+        attempts: list[tuple[dict[str, Any], str]] = []
+        attempt_signatures: set[str] = set()
+
+        def add_attempt(candidate: dict[str, Any], kind: str) -> None:
+            signature = json.dumps(candidate, sort_keys=True, default=str)
+            if signature not in attempt_signatures:
+                attempt_signatures.add(signature)
+                attempts.append((candidate, kind))
+
+        add_attempt(body, "requested")
         if transit_preference:
-            attempts.append(
-                (
-                    {key: value for key, value in body.items() if key != "transitPreferences"},
-                    "without_preference",
-                )
+            add_attempt(
+                {key: value for key, value in body.items() if key != "transitPreferences"},
+                "without_preference",
             )
-        if travel_mode == "transit" and schedule_mode == "preview":
-            current_route_body = {
-                key: value
-                for key, value in body.items()
-                if key not in {"departureTime", "transitPreferences"}
-            }
-            attempts.append((current_route_body, "current_schedule"))
         uses_google_place_id = bool(
             origin.provider_place_id and origin.place_provider in {None, "google_places"}
         ) or bool(
@@ -526,7 +540,7 @@ class GoogleRouteProvider:
                     }
                 }
             }
-            attempts.append((coordinate_body, "coordinates"))
+            add_attempt(coordinate_body, "coordinates")
         if (
             travel_mode == "transit"
             and schedule_mode == "scheduled"
@@ -542,7 +556,28 @@ class GoogleRouteProvider:
                 .isoformat()
                 .replace("+00:00", "Z")
             )
-            attempts.append((near_term_body, "near_term_schedule"))
+            add_attempt(near_term_body, "near_term_schedule")
+        if (
+            travel_mode == "transit"
+            and schedule_mode == "scheduled"
+            and departure_time is not None
+        ):
+            daytime_body = {
+                key: value for key, value in body.items() if key != "transitPreferences"
+            }
+            daytime_body["departureTime"] = (
+                _next_matching_transit_daytime(departure_time)
+                .isoformat()
+                .replace("+00:00", "Z")
+            )
+            add_attempt(daytime_body, "near_term_daytime")
+        if travel_mode == "transit" and schedule_mode in {"scheduled", "preview"}:
+            current_route_body = {
+                key: value
+                for key, value in body.items()
+                if key not in {"departureTime", "transitPreferences"}
+            }
+            add_attempt(current_route_body, "current_schedule")
         for attempt_index, (attempt_body, attempt_kind) in enumerate(attempts):
             try:
                 response = await self._post(attempt_body, fields)
@@ -594,10 +629,8 @@ class GoogleRouteProvider:
             routes = cast(list[dict[str, Any]], payload.get("routes", []))
             if routes:
                 used_preference_fallback = attempt_kind != "requested" and bool(transit_preference)
-                used_live_preview_fallback = attempt_kind in {
-                    "current_schedule",
-                    "coordinates",
-                } and (travel_mode == "transit" and schedule_mode == "preview")
+                used_current_schedule_fallback = attempt_kind == "current_schedule"
+                used_daytime_schedule_fallback = attempt_kind == "near_term_daytime"
                 used_coordinate_fallback = attempt_kind == "coordinates"
                 used_near_term_schedule_fallback = attempt_kind == "near_term_schedule"
                 break
@@ -615,9 +648,17 @@ class GoogleRouteProvider:
         routes = cast(list[dict[str, Any]], payload.get("routes", []))
         if used_preference_fallback:
             warnings.append("偏好條件沒有結果，已改用一般大眾運輸路線。")
-        if used_live_preview_fallback:
+        if used_current_schedule_fallback:
+            schedule_mode = "preview"
             warnings.append(
-                "相同星期與時段沒有結果，已改用目前可取得的參考路線；出發前請重新確認。"
+                "指定日期與近期參考時段都沒有結果，已改用 Google 目前可取得的參考路線；"
+                "可以先套用移動時間，出發前請重新確認。"
+            )
+        if used_daytime_schedule_fallback:
+            schedule_mode = "preview"
+            warnings.append(
+                "指定時段沒有可用班次，已改用近期相同星期的日間參考路線；"
+                "可以先套用移動時間，出發前請重新確認。"
             )
         if used_near_term_schedule_fallback:
             schedule_mode = "preview"

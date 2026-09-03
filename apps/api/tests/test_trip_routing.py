@@ -616,6 +616,52 @@ async def test_scheduled_transit_without_published_timetable_uses_near_term_prev
 
 
 @pytest.mark.asyncio
+async def test_scheduled_transit_uses_current_google_schedule_after_empty_references() -> None:
+    tokyo = ZoneInfo("Asia/Tokyo")
+    requested = (datetime.now(tokyo) + timedelta(days=45)).replace(
+        hour=11,
+        minute=30,
+        second=0,
+        microsecond=0,
+    )
+    bodies: list[dict[str, object]] = []
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        body = cast(dict[str, object], json.loads(request.read()))
+        bodies.append(body)
+        if "departureTime" in body:
+            return httpx.Response(200, json={"routes": []})
+        return httpx.Response(
+            200,
+            json={"routes": [{"duration": "1380s", "legs": []}]},
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = GoogleRouteProvider(Settings(google_maps_api_key="key"), client)
+    segment = await provider.compute(
+        point("谷中靈園", 35.725278, 139.770556),
+        point("淺草寺", 35.714722, 139.796750),
+        requested,
+        "FEWER_TRANSFERS",
+    )
+    await client.aclose()
+
+    assert segment is not None and segment.duration_minutes == 23
+    assert segment.schedule_mode == "preview"
+    assert segment.requested_departure_time == requested
+    assert len(bodies) == 5
+    daytime_utc = datetime.fromisoformat(
+        str(bodies[-2]["departureTime"]).replace("Z", "+00:00")
+    )
+    daytime_local = daytime_utc.astimezone(tokyo)
+    assert daytime_local.weekday() == requested.weekday()
+    assert (daytime_local.hour, daytime_local.minute) == (10, 0)
+    assert "departureTime" not in bodies[-1]
+    assert any("Google 目前可取得" in warning for warning in segment.warnings)
+    assert any("可以先套用移動時間" in warning for warning in segment.warnings)
+
+
+@pytest.mark.asyncio
 async def test_far_future_transit_retries_with_current_schedule() -> None:
     bodies: list[dict[str, object]] = []
 

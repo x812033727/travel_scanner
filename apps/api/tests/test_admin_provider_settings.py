@@ -443,6 +443,47 @@ async def test_google_connection_reports_routes_http_error(
 
 
 @pytest.mark.asyncio
+async def test_google_connection_keeps_places_and_routes_ready_when_weather_is_disabled(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    class PlacesStub:
+        def __init__(self, *_args: object) -> None:
+            pass
+
+        async def autocomplete(self, *_args: object) -> list[dict[str, Any]]:
+            return [{"place_id": "tokyo"}]
+
+    class RoutesStub:
+        def __init__(self, *_args: object) -> None:
+            pass
+
+        async def probe(
+            self,
+            _origin: RoutePoint,
+            _destination: RoutePoint,
+            _departure_time: datetime | None = None,
+        ) -> GoogleRoutesProbeResult:
+            return GoogleRoutesProbeResult(True, True, status_code=200)
+
+    class WeatherStub:
+        def __init__(self, *_args: object) -> None:
+            pass
+
+        async def lookup(self, **_kwargs: object) -> object:
+            raise AppError(503, "weather_api_not_enabled", "Weather API 尚未啟用")
+
+    monkeypatch.setattr(admin_service, "GoogleTravelService", PlacesStub)
+    monkeypatch.setattr(admin_service, "GoogleRouteProvider", RoutesStub)
+    monkeypatch.setattr(admin_service, "GoogleWeatherService", WeatherStub)
+
+    message = await _test_google(Settings(google_maps_api_key="key"), object())  # type: ignore[arg-type]
+
+    assert "Routes API 可連線" in message
+    assert "weather_api_not_enabled" in message
+    assert "不影響地圖與路線" in message
+
+
+@pytest.mark.asyncio
 async def test_admin_snapshot_never_returns_plaintext_secret() -> None:
     base = Settings()
     secret = "google-key-that-must-not-leak"

@@ -1135,14 +1135,29 @@ async def _test_google(settings: Settings, redis: Redis) -> str:
         if routes.route_available
         else "Routes API 可連線；測試路線目前無可用班次"
     )
-    weather = await GoogleWeatherService(redis, settings).lookup(
-        latitude=35.6812,
-        longitude=139.7671,
-        location_name="東京車站",
-    )
-    if weather.current is None and not weather.days:
-        raise ConnectionError("Weather API 未回傳目前天氣或預報")
-    return f"Google Places、{route_message}；Weather API 連線成功"
+    weather_message = "Weather API 連線成功"
+    try:
+        weather = await GoogleWeatherService(redis, settings).lookup(
+            latitude=35.6812,
+            longitude=139.7671,
+            location_name="東京車站",
+        )
+        if weather.current is None and not weather.days:
+            weather_message = "Weather API 未回傳資料（不影響地圖與路線）"
+    except AppError as exc:
+        logger.info(
+            "google_weather_connection_test_partial",
+            extra={"reason_code": exc.code},
+        )
+        weather_message = f"Weather API 暫時不可用（{exc.code}；不影響地圖與路線）"
+    except Exception:
+        logger.warning(
+            "google_weather_connection_test_failed",
+            extra={"reason_code": "weather_connection_failed"},
+            exc_info=True,
+        )
+        weather_message = "Weather API 暫時不可用（不影響地圖與路線）"
+    return f"Google Places、{route_message}；{weather_message}"
 
 
 async def _test_naver(settings: Settings, redis: Redis) -> str:
