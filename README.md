@@ -482,13 +482,23 @@ window remain usable and show that weather is not yet available instead of
 inventing a long-range forecast. Enable the service by following the official
 [Google Weather API setup guide](https://developers.google.com/maps/documentation/weather/cloud-setup).
 
-Japan transit enhancement is optional and is preferred for transit journeys in
-Japan, with Google Routes as fallback. Walking and driving use Google Routes.
-Set `NAVITIME_API_BASE_URL`,
-`NAVITIME_CLIENT_ID`, and `NAVITIME_API_KEY` only after obtaining the required
-commercial rights. When configured, sourced exit, platform, and recommended-car
-fields are displayed. Missing details are explicitly marked unavailable and are
-never inferred.
+Japanese transit comes only from NAVITIME. Google Maps Platform does not
+license Japanese transit partners to the Routes API (Google's FAQ names Japan
+and IRCTC as the exceptions), and the legacy Directions API has been closed to
+new Cloud projects since March 2025, so Japan transit requests never reach
+Google; walking and driving in Japan still use Google Routes. Subscribe to the
+[NAVITIME Route (totalnavi)](https://rapidapi.com/navitimejapan-navitimejapan/api/navitime-route-totalnavi)
+listing on RapidAPI (the Basic plan is free with 500 requests per month and 50
+per minute; RapidAPI requires a card on file), then set
+`NAVITIME_API_BASE_URL=https://navitime-route-totalnavi.p.rapidapi.com` and
+`NAVITIME_API_KEY` to the RapidAPI key. `NAVITIME_CLIENT_ID` is only needed for
+a direct NAVITIME contract, whose gateway host and authentication follow the
+contract documents; the base URL is pinned to the RapidAPI listing and
+NAVITIME's own domains. Without NAVITIME the planner shows a Google Maps deep
+link plus a manual travel-time input instead of inventing a schedule. When
+NAVITIME returns them, sourced departure and arrival times, line colours, fares,
+platforms, exits, and recommended cars are displayed; missing details are
+explicitly marked unavailable and are never inferred.
 
 Korean itineraries use NAVER Maps first where its official APIs provide
 structured data. Set `NAVER_MAPS_CLIENT_ID` and `NAVER_MAPS_CLIENT_SECRET` after

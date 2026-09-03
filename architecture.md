@@ -84,8 +84,10 @@ Route writes use optimistic trip versions. Editing a stop invalidates only its
 incoming and outgoing pairs. Flexible and locked-but-not-fixed stops propagate
 forward; fixed-time appointments preserve their scheduled start and record a
 lateness conflict. Stale background jobs discard their result instead of
-overwriting newer edits. Google Routes covers transit, walking, and driving;
-configured NAVITIME is preferred for Japan transit only. Korean place lookup,
+overwriting newer edits. Google Routes covers transit, walking, and driving,
+except that Japanese transit is served only by NAVITIME (the RapidAPI listing or
+a direct contract) because Google does not license Japanese transit data to the
+Routes API. Korean place lookup,
 Dynamic Map rendering, and driving prefer NAVER before Google. Korean transit
 and walking remain Google-backed because NAVER Directions is drive-only; when
 Google has no result, the response is an external-only NAVER navigation link

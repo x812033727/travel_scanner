@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from calendar import monthrange
-from collections.abc import Awaitable
+from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
 from datetime import UTC, date, datetime, time, timedelta
 from typing import Any, Literal, cast
@@ -33,6 +33,9 @@ GOOGLE_MAPS_OPERATIONS = (
 NAVER_MAPS_PROVIDER = "naver_maps"
 NAVER_BILLING_TIMEZONE = ZoneInfo("Asia/Seoul")
 NAVER_MAPS_OPERATIONS = ("local_search", "geocode", "directions")
+NAVITIME_PROVIDER = "navitime"
+NAVITIME_BILLING_TIMEZONE = ZoneInfo("Asia/Tokyo")
+NAVITIME_OPERATIONS = ("route_transit",)
 YOUTUBE_OPERATIONS = ("search_list", "videos_list")
 
 
@@ -595,25 +598,26 @@ async def record_naver_maps_request(
         return
 
 
-async def naver_maps_usage_snapshot(
+async def _monthly_request_snapshot(
     redis: Redis,
-    monthly_limit: int = 0,
     *,
-    history_months: int = GOOGLE_USAGE_HISTORY_MONTHS,
-    now: datetime | None = None,
+    key_for: Callable[[datetime], str],
+    operations: tuple[str, ...],
+    billing_timezone: ZoneInfo,
+    billing_timezone_name: str,
+    pricing_region: str,
+    monthly_limit: int,
+    history_months: int,
+    now: datetime | None,
 ) -> ProviderUsageSnapshot:
-    """Return app-observed NAVER server requests.
-
-    The optional limit is administrator supplied and is not presented as NAVER billing data.
-    Browser Dynamic Map loads are intentionally outside this meter.
-    """
+    """Summarise a per-month request counter kept in one Redis hash per billing month."""
     observed_at = now or datetime.now(UTC)
-    billing_now = observed_at.astimezone(NAVER_BILLING_TIMEZONE)
+    billing_now = observed_at.astimezone(billing_timezone)
     period_start, period_end = _month_window(billing_now)
     months = tuple(_month_at(billing_now, -offset) for offset in range(max(1, history_months)))
     try:
         raw_months = [
-            await cast(Awaitable[dict[Any, Any]], redis.hgetall(_naver_usage_key(month)))
+            await cast(Awaitable[dict[Any, Any]], redis.hgetall(key_for(month)))
             for month in months
         ]
     except RedisError:
@@ -635,8 +639,8 @@ async def naver_maps_usage_snapshot(
             tracking_started_at=None,
             observed_at=observed_at,
             available=False,
-            billing_timezone="Asia/Seoul",
-            pricing_region="kr",
+            billing_timezone=billing_timezone_name,
+            pricing_region=pricing_region,
         )
 
     history: list[ProviderMonthlyUsageSnapshot] = []
@@ -644,8 +648,7 @@ async def naver_maps_usage_snapshot(
         values = {_text(key): _text(value) for key, value in raw.items()}
         used = int(values.get("total", 0))
         breakdown = {
-            operation: int(values.get(f"operation:{operation}", 0))
-            for operation in NAVER_MAPS_OPERATIONS
+            operation: int(values.get(f"operation:{operation}", 0)) for operation in operations
         }
         month_start, month_end = _month_window(month)
         started = values.get("tracking_started_at")
@@ -683,6 +686,105 @@ async def naver_maps_usage_snapshot(
         tracking_started_at=current.tracking_started_at,
         observed_at=observed_at,
         available=True,
-        billing_timezone="Asia/Seoul",
+        billing_timezone=billing_timezone_name,
+        pricing_region=pricing_region,
+    )
+
+
+async def naver_maps_usage_snapshot(
+    redis: Redis,
+    monthly_limit: int = 0,
+    *,
+    history_months: int = GOOGLE_USAGE_HISTORY_MONTHS,
+    now: datetime | None = None,
+) -> ProviderUsageSnapshot:
+    """Return app-observed NAVER server requests.
+
+    The optional limit is administrator supplied and is not presented as NAVER billing data.
+    Browser Dynamic Map loads are intentionally outside this meter.
+    """
+    return await _monthly_request_snapshot(
+        redis,
+        key_for=_naver_usage_key,
+        operations=NAVER_MAPS_OPERATIONS,
+        billing_timezone=NAVER_BILLING_TIMEZONE,
+        billing_timezone_name="Asia/Seoul",
         pricing_region="kr",
+        monthly_limit=monthly_limit,
+        history_months=history_months,
+        now=now,
+    )
+
+
+def _navitime_usage_key(now: datetime) -> str:
+    return f"provider-usage:{NAVITIME_PROVIDER}:{now:%Y-%m}"
+
+
+async def reserve_navitime_request(
+    redis: Redis,
+    monthly_budget: int,
+    *,
+    operation: str = "route_transit",
+    now: datetime | None = None,
+) -> bool:
+    """Atomically reserve one NAVITIME request against the calendar-month budget.
+
+    RapidAPI enforces its own hard monthly quota, so this guard exists to stop paid
+    overage plans and abusive bursts before they reach the gateway. A budget of zero
+    keeps counting without blocking; Redis failures fail closed.
+    """
+    if operation not in NAVITIME_OPERATIONS:
+        raise ValueError(f"unsupported NAVITIME usage operation: {operation}")
+    observed_at = now or datetime.now(UTC)
+    billing_month = observed_at.astimezone(NAVITIME_BILLING_TIMEZONE)
+    _, period_end = _month_window(billing_month)
+    expires_at = datetime.combine(
+        period_end + timedelta(days=1),
+        time.min,
+        tzinfo=NAVITIME_BILLING_TIMEZONE,
+    ) + timedelta(days=GOOGLE_USAGE_RETENTION_DAYS)
+    key = _navitime_usage_key(billing_month)
+    try:
+        async with redis.pipeline(transaction=True) as pipeline:
+            while True:
+                try:
+                    await pipeline.watch(key)
+                    current_value = await cast(Awaitable[Any], pipeline.hget(key, "total"))
+                    if monthly_budget > 0 and int(current_value or 0) >= monthly_budget:
+                        return False
+                    pipeline.multi()  # type: ignore[no-untyped-call]
+                    pipeline.hincrby(key, "total", 1)
+                    pipeline.hincrby(key, f"operation:{operation}", 1)
+                    pipeline.hsetnx(key, "tracking_started_at", observed_at.isoformat())
+                    pipeline.expireat(key, expires_at)
+                    await pipeline.execute()
+                    return True
+                except WatchError:
+                    continue
+    except RedisError:
+        return False
+
+
+async def navitime_usage_snapshot(
+    redis: Redis,
+    monthly_limit: int = 0,
+    *,
+    history_months: int = GOOGLE_USAGE_HISTORY_MONTHS,
+    now: datetime | None = None,
+) -> ProviderUsageSnapshot:
+    """Return app-observed NAVITIME route requests against the configured monthly cap.
+
+    ``reserve_navitime_request`` enforces the cap per calendar month in Japan time, whereas
+    RapidAPI resets its own quota on the subscription anniversary.
+    """
+    return await _monthly_request_snapshot(
+        redis,
+        key_for=_navitime_usage_key,
+        operations=NAVITIME_OPERATIONS,
+        billing_timezone=NAVITIME_BILLING_TIMEZONE,
+        billing_timezone_name="Asia/Tokyo",
+        pricing_region="jp",
+        monthly_limit=monthly_limit,
+        history_months=history_months,
+        now=now,
     )

@@ -9,8 +9,10 @@ from app.config import Settings
 from app.places.google import GoogleTravelService
 from app.providers.usage_meter import (
     google_maps_usage_snapshot,
+    navitime_usage_snapshot,
     record_google_maps_request,
     record_youtube_request,
+    reserve_navitime_request,
     youtube_usage_snapshot,
 )
 from app.trips.routing import GoogleRouteProvider, RoutePoint
@@ -206,3 +208,24 @@ async def test_youtube_usage_resets_at_pacific_midnight() -> None:
     assert september.used == 0
     assert september.free_remaining == 10_100
     await redis.aclose()
+
+
+@pytest.mark.asyncio
+async def test_navitime_budget_reserves_requests_per_japan_month() -> None:
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    # 20:00 UTC on 30 September is already 1 October in Japan.
+    observed_at = datetime(2026, 9, 30, 20, 0, tzinfo=UTC)
+
+    assert await reserve_navitime_request(redis, 2, now=observed_at)
+    assert await reserve_navitime_request(redis, 2, now=observed_at)
+    assert not await reserve_navitime_request(redis, 2, now=observed_at)
+    assert await reserve_navitime_request(redis, 0, now=observed_at)
+
+    snapshot = await navitime_usage_snapshot(redis, 2, now=observed_at)
+    assert snapshot.available and snapshot.period == "2026-10"
+    assert snapshot.used == 3 and snapshot.monthly_limit == 2
+    assert snapshot.remaining == 0 and snapshot.billable_overage == 1
+    assert snapshot.breakdown == {"route_transit": 3}
+    assert snapshot.billing_timezone == "Asia/Tokyo" and snapshot.pricing_region == "jp"
+    september = await navitime_usage_snapshot(redis, 2, now=datetime(2026, 9, 15, tzinfo=UTC))
+    assert september.period == "2026-09" and september.used == 0

@@ -51,6 +51,7 @@ from app.providers.skyscanner import SkyscannerProvider
 from app.providers.usage_meter import (
     google_maps_usage_snapshot,
     naver_maps_usage_snapshot,
+    navitime_usage_snapshot,
     youtube_usage_snapshot,
 )
 from app.search.schemas import SearchCreate, SearchModule, SearchPreferences, Travelers
@@ -269,9 +270,10 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     ),
     "navitime": ProviderDefinition(
         "NAVITIME",
-        "日本大眾運輸正式路線；Google Routes API 不提供日本交通資料，"
-        "並可補充月台、出口及建議車廂資訊。",
-        ("navitime_api_base_url",),
+        "日本大眾運輸班次；Google Routes API 不提供日本交通資料。"
+        "可使用 RapidAPI 的 NAVITIME Route(totalnavi) 金鑰，或直接契約的 Client ID 與金鑰，"
+        "並補充班次時刻、票價、月台、出口及建議車廂資訊。",
+        ("navitime_api_base_url", "navitime_monthly_request_limit"),
         ("navitime_client_id", "navitime_api_key"),
     ),
     "travelpayouts": ProviderDefinition(
@@ -668,11 +670,12 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             else "缺少安全合作連結或必要憑證",
         )
     configured = settings.navitime_configured
-    return (
-        configured,
-        "ready" if configured else "not_configured",
-        "NAVITIME 憑證已設定" if configured else "缺少 API URL、Client ID 或 API key",
-    )
+    if configured:
+        gateway = "RapidAPI" if settings.navitime_rapidapi else "直接契約"
+        detail = f"NAVITIME 憑證已設定（{gateway}）"
+    else:
+        detail = "缺少 API Base URL 或 API key；直接契約另需 Client ID"
+    return (configured, "ready" if configured else "not_configured", detail)
 
 
 def _field_sources(
@@ -730,6 +733,14 @@ async def settings_snapshot(
         await naver_maps_usage_snapshot(
             redis,
             monthly_limit=effective.naver_maps_monthly_request_limit,
+        )
+        if redis is not None
+        else None
+    )
+    navitime_usage = (
+        await navitime_usage_snapshot(
+            redis,
+            monthly_limit=effective.navitime_monthly_request_limit,
         )
         if redis is not None
         else None
@@ -800,6 +811,8 @@ async def settings_snapshot(
                     if provider == "google_maps" and google_usage is not None
                     else ProviderUsageView(**asdict(naver_usage))
                     if provider == "naver_maps" and naver_usage is not None
+                    else ProviderUsageView(**asdict(navitime_usage))
+                    if provider == "navitime" and navitime_usage is not None
                     else ProviderUsageView(**asdict(youtube_usage))
                     if provider == "youtube_guides" and youtube_usage is not None
                     else None
@@ -1300,15 +1313,19 @@ async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str
         await BookingHotelProvider(redis, settings).probe()
         return f"Booking.com Demand API {settings.booking_demand_env} 驗證成功"
     if provider == "navitime":
-        segment = await NavitimeRouteProvider(settings).compute(
+        gateway = "RapidAPI" if settings.navitime_rapidapi else "直接契約"
+        probe = await NavitimeRouteProvider(settings, None, redis).probe(
             RoutePoint(item_id=uuid4(), name="東京", latitude=35.6812, longitude=139.7671),
             RoutePoint(item_id=uuid4(), name="淺草", latitude=35.7148, longitude=139.7967),
-            None,
-            "FEWER_TRANSFERS",
         )
-        if segment is None:
-            raise ConnectionError("NAVITIME 未回傳測試路線")
-        return "NAVITIME 路線驗證成功"
+        if not probe.reachable:
+            details = probe.error_code or "UNKNOWN_ERROR"
+            if probe.status_code is not None:
+                details = f"HTTP {probe.status_code} / {details}"
+            raise ConnectionError(f"NAVITIME（{gateway}）連線失敗（{details}）")
+        if not probe.route_available:
+            raise ConnectionError(f"NAVITIME（{gateway}）可連線，但未回傳東京→淺草的測試路線")
+        return f"NAVITIME（{gateway}）路線驗證成功"
     affiliate_codes = {
         "travelpayouts": "travelpayouts",
         "kkday": "kkday",
