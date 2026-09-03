@@ -1174,7 +1174,11 @@ class RouteService:
     def _providers(self, region_code: str | None, travel_mode: TravelMode) -> list[RouteProvider]:
         region = (region_code or "").upper()
         if region == "JP" and travel_mode == "transit":
-            return [self.navitime, self.google]
+            # Google Maps Platform does not expose Japanese transit directions
+            # through the Routes API even though the consumer Google Maps app
+            # can display them. NAVITIME is therefore the only provider that
+            # can produce a structured, persistable Japanese transit segment.
+            return [self.navitime]
         if region == "KR" and travel_mode == "drive":
             return [self.naver]
         if region == "KR":
@@ -1382,9 +1386,10 @@ def route_provider_configured(
     settings: Settings, region_code: str | None, travel_mode: TravelMode
 ) -> bool:
     region = (region_code or "").upper()
+    if region == "JP" and travel_mode == "transit":
+        return settings.navitime_configured
     return bool(
         settings.google_maps_api_key
-        or (region == "JP" and travel_mode == "transit" and settings.navitime_configured)
         or (region == "KR" and travel_mode == "drive" and settings.naver_maps_configured)
     )
 

@@ -3051,6 +3051,32 @@ async def preview_trip_route(
                 "destination": destination.model_dump(mode="json"),
                 "external_navigation": external.model_dump(mode="json"),
             }
+        if region == "JP" and payload.travel_mode == "transit":
+            reason = (
+                "NAVITIME 目前沒有回傳可套用的班次；Google Maps Platform 的 Routes API "
+                "不提供日本大眾運輸資料，可先到 Google Maps 查看即時路線。"
+                if settings.navitime_configured
+                else "Google Maps Platform 的 Routes API 不提供日本大眾運輸資料；"
+                "站內班次需先設定 NAVITIME，可先到 Google Maps 查看即時路線。"
+            )
+            external = google_external_navigation(
+                origin,
+                destination,
+                payload.travel_mode,
+                reason=reason,
+            )
+            await session.rollback()
+            return {
+                "kind": "external_only",
+                "preview_id": None,
+                "expires_at": None,
+                "segment": None,
+                "schedule_impact": None,
+                "options": [],
+                "origin": origin.model_dump(mode="json"),
+                "destination": destination.model_dump(mode="json"),
+                "external_navigation": external.model_dump(mode="json"),
+            }
         if not route_provider_configured(settings, region, payload.travel_mode):
             raise AppError(
                 503,

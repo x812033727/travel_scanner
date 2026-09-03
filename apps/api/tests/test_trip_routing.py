@@ -17,6 +17,7 @@ from app.trips.routing import (
     RouteSegment,
     RouteService,
     google_external_navigation,
+    route_provider_configured,
     supported_transit_time,
 )
 
@@ -422,7 +423,27 @@ async def test_japan_transit_routes_prefer_navitime_before_google() -> None:
 
 
 @pytest.mark.asyncio
-async def test_japan_provider_falls_back_and_cached_ids_are_rebound() -> None:
+async def test_japan_transit_does_not_send_google_routes_requests() -> None:
+    service = RouteService(
+        fakeredis.aioredis.FakeRedis(decode_responses=True),
+        Settings(google_maps_api_key="key", route_cache_ttl_seconds=300),
+        google=UnexpectedProvider(),
+        navitime=EmptyProvider(),
+    )
+
+    segment = await service.compute(
+        point("谷中靈園", 35.725278, 139.770556),
+        point("淺草寺", 35.714722, 139.796750),
+        datetime.now(ZoneInfo("Asia/Tokyo")) + timedelta(days=2),
+        "FEWER_TRANSFERS",
+        japan=True,
+    )
+
+    assert segment is None
+
+
+@pytest.mark.asyncio
+async def test_route_cache_rebinds_item_ids() -> None:
     redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
     service = RouteService(
         redis,
@@ -435,7 +456,7 @@ async def test_japan_provider_falls_back_and_cached_ids_are_rebound() -> None:
         point("B", 35.2, 139.2),
         None,
         "FEWER_TRANSFERS",
-        japan=True,
+        japan=False,
     )
     second_origin, second_destination = point("A2", 35.1, 139.1), point("B2", 35.2, 139.2)
     second = await service.compute(
@@ -443,11 +464,24 @@ async def test_japan_provider_falls_back_and_cached_ids_are_rebound() -> None:
         second_destination,
         None,
         "FEWER_TRANSFERS",
-        japan=True,
+        japan=False,
     )
     assert first is not None and first.provider == "working"
     assert second is not None and second.from_item_id == second_origin.item_id
     assert second.to_item_id == second_destination.item_id
+
+
+def test_japan_transit_requires_navitime_configuration() -> None:
+    google_only = Settings(google_maps_api_key="key")
+    with_navitime = Settings(
+        navitime_api_base_url="https://example.test/navitime",
+        navitime_client_id="client",
+        navitime_api_key="secret",
+    )
+
+    assert route_provider_configured(google_only, "JP", "transit") is False
+    assert route_provider_configured(with_navitime, "JP", "transit") is True
+    assert route_provider_configured(google_only, "JP", "walk") is True
 
 
 @pytest.mark.asyncio

@@ -398,10 +398,11 @@ async def test_google_connection_accepts_reachable_empty_route(
     message = await _test_google(Settings(google_maps_api_key="key"), object())  # type: ignore[arg-type]
 
     assert message == (
-        "Google Places、Routes API 可連線；測試路線目前無可用班次；Weather API 連線成功"
+        "Google Places、Routes API 可連線；非日本測試路線目前無可用班次"
+        "（日本大眾運輸需使用 NAVITIME）；Weather API 連線成功"
     )
     assert observed_points[0].provider_place_id is None
-    assert observed_points[0].latitude == 35.6812
+    assert observed_points[0].latitude == 25.0478
 
 
 @pytest.mark.asyncio
