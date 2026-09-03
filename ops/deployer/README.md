@@ -28,9 +28,25 @@ sudo -u travel-deployer bash -lc \
   'cd /opt/travel-scanner-deployer && set -a && source /etc/travel-scanner/deployer.env && set +a && python3 -m deployment_agent bootstrap-current'
 ```
 
-The token needs read-only access to repository Actions metadata. The repository, branch, workflow,
+The token needs read-only access to repository Actions metadata: use a fine-grained personal access
+token scoped to this repository with only `Actions: Read`. The repository, branch, workflow,
 Compose project name, release paths, and health endpoints are compiled into the agent and cannot be
 provided by a browser request. Agent upgrades remain a manual host administration action.
+
+## Trust boundary
+
+- `travel-deployer` belongs to the `docker` group, and access to the Docker socket is
+  root-equivalent on the host. The systemd hardening in the unit file restricts the agent process
+  itself, not the containers it is allowed to start, so treat `DEPLOY_AGENT_HMAC_KEY` and
+  membership in the `travel-api` group as host root credentials. If that is not acceptable, run a
+  rootless Docker daemon or a socket proxy that exposes only the Compose endpoints the agent uses.
+- `/etc/travel-scanner` is `root:travel-deployer` with mode `0750`; `deployer.env` and
+  `runtime.env` are `0640`. The installer re-applies these permissions on every run, so re-run it
+  after editing the files by hand, and never widen the directory to world-readable.
+- `/run/travel-scanner-deployer` is recreated by `ExecStartPre` on every start with the
+  `travel-api` group so that the API container keeps socket access after a reboot.
+- After changing the unit file, the installer, or the agent code, re-run the `preflight` command
+  shown above before enabling the web button again.
 
 Before enabling the UI, keep `DEPLOYMENTS_ENABLED=false`, deploy this version manually, install the
 agent, and verify the preflight endpoint. Backups are PostgreSQL custom-format dumps retained for the

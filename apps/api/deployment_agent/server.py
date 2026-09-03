@@ -97,12 +97,36 @@ class UnixHTTPServer(
     daemon_threads = True
 
 
+MAX_BODY_BYTES = 65_536
+
+
 def make_handler(application: AgentApplication) -> type[BaseHTTPRequestHandler]:
     class Handler(BaseHTTPRequestHandler):
+        # Drop half-open connections instead of holding a worker thread forever.
+        timeout = 15
+
         def _handle(self) -> None:
-            length = min(int(self.headers.get("Content-Length", "0")), 65_536)
+            try:
+                length = int(self.headers.get("Content-Length", "0"))
+            except ValueError:
+                length = -1
+            if length < 0:
+                self._respond(
+                    HTTPStatus.BAD_REQUEST,
+                    {"code": "invalid_content_length", "detail": "invalid Content-Length header"},
+                )
+                return
+            if length > MAX_BODY_BYTES:
+                self._respond(
+                    HTTPStatus.REQUEST_ENTITY_TOO_LARGE,
+                    {"code": "request_too_large", "detail": "request body exceeds the agent limit"},
+                )
+                return
             body = self.rfile.read(length) if length else b""
             status, payload = application.handle(self.command, self.path, body, self.headers)
+            self._respond(status, payload)
+
+        def _respond(self, status: int, payload: dict[str, Any]) -> None:
             encoded = json.dumps(payload, separators=(",", ":")).encode()
             self.send_response(status)
             self.send_header("Content-Type", "application/json")
