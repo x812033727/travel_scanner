@@ -6,7 +6,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import AdminUser, can_deploy_user
 from app.db import get_session
-from app.foods.publication import publishable_merchant_filters
 from app.models import (
     FoodMerchant,
     FoodMerchantCategory,
@@ -48,16 +47,16 @@ async def dashboard(user: AdminUser, session: Session) -> dict[str, Any]:
             "merchants_pending": await _count(
                 session, FoodMerchant, FoodMerchant.review_status == "pending"
             ),
+            # Count every merchant the quick-action list shows, not only publishable
+            # ones, so the badge never reads 0 while the linked list has rows.
             "merchants_missing_area": await _count(
                 session,
                 FoodMerchant,
-                *publishable_merchant_filters(),
                 FoodMerchant.area_id.is_(None),
             ),
             "merchants_missing_category": await _count(
                 session,
                 FoodMerchant,
-                *publishable_merchant_filters(),
                 FoodMerchant.id.not_in(select(FoodMerchantCategory.merchant_id)),
             ),
             "guides_pending": await _count(
