@@ -1,14 +1,16 @@
 from collections.abc import AsyncIterator, Iterator
+from datetime import UTC, datetime, timedelta
 from unittest.mock import AsyncMock
 from uuid import uuid4
 
 import fakeredis.aioredis
+import jwt
 import pytest
 from httpx import ASGITransport, AsyncClient
 from redis.exceptions import RedisError
 from starlette.applications import Starlette
 from starlette.requests import Request
-from starlette.responses import PlainTextResponse
+from starlette.responses import PlainTextResponse, Response
 from starlette.routing import Route
 
 import app.auth.router as auth_router
@@ -133,7 +135,12 @@ async def test_logout_revokes_the_presented_token(monkeypatch: pytest.MonkeyPatc
     session = AsyncMock()
     session.get.return_value = user
     token = create_access_token(user.id, user.auth_version)
-    assert await current_user(session, authorization=f"Bearer {token}", travel_access=None) is user
+    assert (
+        await current_user(
+            session, Response(), authorization=f"Bearer {token}", travel_access=None
+        )
+        is user
+    )
 
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         response = await client.post(
@@ -143,12 +150,83 @@ async def test_logout_revokes_the_presented_token(monkeypatch: pytest.MonkeyPatc
     assert 'travel_access=""' in response.headers["set-cookie"]
 
     with pytest.raises(AppError) as caught:
-        await current_user(session, authorization=f"Bearer {token}", travel_access=None)
+        await current_user(
+            session, Response(), authorization=f"Bearer {token}", travel_access=None
+        )
     assert caught.value.code == "invalid_token"
     with pytest.raises(AppError):
-        await current_user(session, authorization=None, travel_access=token)
+        await current_user(session, Response(), authorization=None, travel_access=token)
     claims = decode_access_token_claims(token)
     assert 0 < await redis.ttl(f"auth:revoked:{claims.token_id}") <= 3600
+    await redis.aclose()
+
+
+def aged_token(user: User, *, issued_ago: timedelta, session_age: timedelta) -> str:
+    """Mint a token as if it had been issued earlier, without waiting."""
+    settings = get_settings()
+    now = datetime.now(UTC)
+    issued = now - issued_ago
+    return jwt.encode(
+        {
+            "sub": str(user.id),
+            "ver": user.auth_version,
+            "iss": auth_service.ISSUER,
+            "aud": auth_service.AUDIENCE,
+            "jti": str(uuid4()),
+            "iat": issued,
+            "nbf": issued,
+            "exp": issued + timedelta(minutes=settings.access_token_expire_minutes),
+            "sid_iat": int((now - session_age).timestamp()),
+        },
+        settings.app_secret_key,
+        algorithm=auth_service.ALGORITHM,
+    )
+
+
+@pytest.mark.asyncio
+async def test_cookie_session_slides_forward_after_half_its_lifetime(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    monkeypatch.setattr(auth_service, "get_redis", lambda: redis)
+    user = make_user()
+    session = AsyncMock()
+    session.get.return_value = user
+    lifetime = timedelta(minutes=get_settings().access_token_expire_minutes)
+
+    fresh = Response()
+    await current_user(
+        session,
+        fresh,
+        authorization=None,
+        travel_access=aged_token(user, issued_ago=lifetime * 0.2, session_age=lifetime * 0.2),
+    )
+    assert "set-cookie" not in fresh.headers
+
+    stale = aged_token(user, issued_ago=lifetime * 0.7, session_age=timedelta(days=2))
+    renewed = Response()
+    await current_user(session, renewed, authorization=None, travel_access=stale)
+    cookie = renewed.headers["set-cookie"]
+    assert cookie.startswith("travel_access=") and "HttpOnly" in cookie
+    new_token = cookie.split("travel_access=", 1)[1].split(";", 1)[0]
+    new_claims = decode_access_token_claims(new_token)
+    old_claims = decode_access_token_claims(stale)
+    assert new_claims.expires_at > old_claims.expires_at
+    assert new_claims.session_started_at == old_claims.session_started_at
+    assert new_claims.token_id != old_claims.token_id
+
+    bearer = Response()
+    await current_user(session, bearer, authorization=f"Bearer {stale}", travel_access=None)
+    assert "set-cookie" not in bearer.headers
+
+    expired_session = aged_token(
+        user,
+        issued_ago=lifetime * 0.7,
+        session_age=timedelta(days=get_settings().session_absolute_max_days + 1),
+    )
+    capped = Response()
+    await current_user(session, capped, authorization=None, travel_access=expired_session)
+    assert "set-cookie" not in capped.headers
     await redis.aclose()
 
 
@@ -183,7 +261,9 @@ async def test_revocation_check_fails_closed_when_redis_is_unavailable(
     session.get.return_value = user
     token = create_access_token(user.id, user.auth_version)
     with pytest.raises(AppError) as caught:
-        await current_user(session, authorization=f"Bearer {token}", travel_access=None)
+        await current_user(
+            session, Response(), authorization=f"Bearer {token}", travel_access=None
+        )
     assert caught.value.status == 503
     assert caught.value.code == "session_check_unavailable"
 

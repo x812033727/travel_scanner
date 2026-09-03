@@ -3,6 +3,7 @@ from uuid import uuid4
 
 import pytest
 from httpx import ASGITransport, AsyncClient
+from starlette.responses import Response
 
 from app.auth.service import (
     create_access_token,
@@ -108,7 +109,9 @@ async def test_change_password_updates_the_stored_hash() -> None:
 
     session.get.return_value = user
     with pytest.raises(AppError) as caught:
-        await current_user(session, authorization=f"Bearer {old_token}", travel_access=None)
+        await current_user(
+            session, Response(), authorization=f"Bearer {old_token}", travel_access=None
+        )
     assert caught.value.code == "invalid_user"
     assert verify_password("brand-new-password-1", user.password_hash)
     assert not verify_password("correct-password-1", user.password_hash)

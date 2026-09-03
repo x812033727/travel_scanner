@@ -99,6 +99,9 @@ class Settings(BaseSettings):
     redis_url: str = "redis://localhost:6379/0"
     api_cors_origins: str = "http://localhost:3000"
     access_token_expire_minutes: int = Field(default=60, ge=5, le=1440)
+    # Cookie sessions renew on activity once past half their lifetime, but
+    # never beyond this many days after the original sign-in.
+    session_absolute_max_days: int = Field(default=30, ge=1, le=365)
     cookie_secure: bool = False
     offer_cache_ttl_seconds: int = 300
     reference_cache_ttl_seconds: int = 86_400
