@@ -1,17 +1,21 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
-import { AdminFoodMerchantsPanel } from "./admin-food-merchants-panel";
+import { FilterPills } from "./admin-filter-pills";
 
 const locales = ["zh-TW", "zh-CN", "en", "ja", "ko"] as const;
+const countryCodes = ["JP", "KR", "TH", "TW", "SG", "HK", "VN"] as const;
+const foodKinds = ["main", "noodle_soup", "street_food", "dessert", "drink"] as const;
+const PAGE_SIZE = 50;
 type Locale = (typeof locales)[number];
 type Localization = { locale: Locale; name: string; summary: string };
 type AdminFood = {
   id: string;
   slug: string;
   country_code: string;
+  country_name?: string;
   local_name: string;
   romanized_name: string;
   food_kind: "main" | "noodle_soup" | "street_food" | "dessert" | "drink";
@@ -26,12 +30,36 @@ type AdminFood = {
   destination_ids: string[];
   hotspots: { id: string; name: string }[];
 };
+type Facets = {
+  countries: { code: string; name: string; count: number }[];
+  food_kinds: { code: string; count: number }[];
+};
 type Response = {
   items: AdminFood[];
   total: number;
   page: number;
   pages: number;
+  facets?: Facets;
 };
+type CountryGroup = { code: string; name: string; items: AdminFood[] };
+
+// The API orders rows by country, so grouping only splits the page where it changes.
+function groupByCountry(items: AdminFood[]): CountryGroup[] {
+  const groups: CountryGroup[] = [];
+  for (const food of items) {
+    let group = groups[groups.length - 1];
+    if (!group || group.code !== food.country_code) {
+      group = { code: food.country_code, name: food.country_name || food.country_code, items: [] };
+      groups.push(group);
+    }
+    group.items.push(food);
+  }
+  return groups;
+}
+
+function sumCounts(rows: { count: number }[]) {
+  return rows.reduce((sum, row) => sum + row.count, 0);
+}
 
 function blankFood(): AdminFood {
   return {
@@ -74,7 +102,9 @@ export function AdminFoodsPanel() {
   const [country, setCountry] = useState("");
   const [destination, setDestination] = useState("");
   const [status, setStatus] = useState("");
+  const [kind, setKind] = useState("");
   const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [editing, setEditing] = useState<AdminFood | null>(null);
   const [message, setMessage] = useState("");
@@ -82,31 +112,44 @@ export function AdminFoodsPanel() {
 
   const load = useCallback(async () => {
     setLoading(true);
-    const params = new URLSearchParams({ limit: "100" });
+    const params = new URLSearchParams({ limit: String(PAGE_SIZE), page: String(page) });
     if (country) params.set("country_code", country);
     if (destination) params.set("destination_id", destination);
     if (status) params.set("status", status);
+    if (kind) params.set("food_kind", kind);
     if (query.trim()) params.set("q", query.trim());
     try {
-      setData(await api<Response>(`/admin/foods?${params}`));
+      const result = await api<Response>(`/admin/foods?${params}`);
+      setData(result);
+      // A batch action can empty the last page; fall back to the new last page.
+      if (result.pages > 0 && page > result.pages) setPage(result.pages);
     } catch (reason) {
       setMessage((reason as Error).message);
     } finally {
       setLoading(false);
     }
-  }, [country, destination, query, status]);
+  }, [country, destination, kind, page, query, status]);
 
   useEffect(() => {
-    const params = new URLSearchParams({ limit: "100" });
-    if (country) params.set("country_code", country);
-    if (destination) params.set("destination_id", destination);
-    if (status) params.set("status", status);
-    if (query.trim()) params.set("q", query.trim());
-    void api<Response>(`/admin/foods?${params}`)
-      .then(setData)
-      .catch((reason: Error) => setMessage(reason.message))
-      .finally(() => setLoading(false));
-  }, [country, destination, query, status]);
+    const timer = window.setTimeout(() => void load(), 0);
+    return () => window.clearTimeout(timer);
+  }, [load]);
+
+  function updateFilter(setter: (value: string) => void, value: string) {
+    setter(value);
+    setPage(1);
+  }
+
+  function toggleMany(ids: string[], checked: boolean) {
+    setSelected((current) => {
+      const next = new Set(current);
+      for (const id of ids) {
+        if (checked) next.add(id);
+        else next.delete(id);
+      }
+      return next;
+    });
+  }
 
   async function batch(action: "approve" | "reject" | "disable" | "activate") {
     if (!selected.size) return;
@@ -166,39 +209,66 @@ export function AdminFoodsPanel() {
       .filter(Boolean);
   }
 
+  const facets = data?.facets;
+  const countryNames = new Map((facets?.countries ?? []).map((item) => [item.code, item.name]));
+  const countryCounts = new Map((facets?.countries ?? []).map((item) => [item.code, item.count]));
+  const countryList: string[] = [...countryCodes];
+  for (const code of [...countryCounts.keys(), country]) {
+    if (code && !countryList.includes(code)) countryList.push(code);
+  }
+  const countryOptions = countryList.map((code) => ({
+    code,
+    label: countryNames.get(code) ?? code,
+    count: facets ? (countryCounts.get(code) ?? 0) : undefined,
+  }));
+  const kindCounts = new Map((facets?.food_kinds ?? []).map((item) => [item.code, item.count]));
+  const kindOptions = foodKinds.map((code) => ({
+    code,
+    label: t(`kinds.${code}`),
+    count: facets ? (kindCounts.get(code) ?? 0) : undefined,
+  }));
+  const groups = groupByCountry(data?.items ?? []);
+
   return (
     <>
       <section className="mt-8">
-        <div className="grid gap-3 rounded-2xl border border-[var(--line)] bg-white p-4 md:grid-cols-5">
+        <div className="grid gap-2">
+          <FilterPills
+            label={t("country")}
+            allLabel={t("allCountries")}
+            allCount={facets ? sumCounts(facets.countries) : undefined}
+            options={countryOptions}
+            value={country}
+            onChange={(code) => updateFilter(setCountry, code)}
+          />
+          <FilterPills
+            label={t("kindFilter")}
+            allLabel={t("allKinds")}
+            allCount={facets ? sumCounts(facets.food_kinds) : undefined}
+            options={kindOptions}
+            value={kind}
+            onChange={(code) => updateFilter(setKind, code)}
+          />
+        </div>
+        <div className="mt-3 grid gap-3 rounded-2xl border border-[var(--line)] bg-white p-4 md:grid-cols-4">
           <input
             aria-label={t("search")}
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => updateFilter(setQuery, event.target.value)}
             placeholder={t("searchPlaceholder")}
             className="h-11 rounded-xl border border-[var(--line)] px-3"
           />
-          <select
-            aria-label={t("country")}
-            value={country}
-            onChange={(event) => setCountry(event.target.value)}
-            className="h-11 rounded-xl border border-[var(--line)] px-3"
-          >
-            <option value="">{t("allCountries")}</option>
-            {["JP", "KR", "TH", "TW", "SG", "HK", "VN"].map((code) => (
-              <option key={code}>{code}</option>
-            ))}
-          </select>
           <input
             aria-label={t("destinationId")}
             value={destination}
-            onChange={(event) => setDestination(event.target.value)}
+            onChange={(event) => updateFilter(setDestination, event.target.value)}
             placeholder={t("destinationId")}
             className="h-11 rounded-xl border border-[var(--line)] px-3"
           />
           <select
             aria-label={t("reviewStatus")}
             value={status}
-            onChange={(event) => setStatus(event.target.value)}
+            onChange={(event) => updateFilter(setStatus, event.target.value)}
             className="h-11 rounded-xl border border-[var(--line)] px-3"
           >
             <option value="">{t("allStatuses")}</option>
@@ -269,69 +339,115 @@ export function AdminFoodsPanel() {
               </tr>
             </thead>
             <tbody>
-              {data?.items.map((food) => (
-                <tr key={food.id} className="border-t border-[var(--line)]">
-                  <td className="p-3">
-                    <input
-                      type="checkbox"
-                      checked={selected.has(food.id)}
-                      aria-label={t("selectFood", { name: food.local_name })}
-                      onChange={(event) =>
-                        setSelected((current) => {
-                          const next = new Set(current);
-                          if (event.target.checked) next.add(food.id);
-                          else next.delete(food.id);
-                          return next;
-                        })
-                      }
-                    />
-                  </td>
-                  <td className="p-3">
-                    <strong>
-                      {food.localizations.find(
-                        (item) => item.locale === "zh-TW",
-                      )?.name ?? food.romanized_name}
-                    </strong>
-                    <span className="block text-xs text-[var(--muted)]">
-                      {food.local_name} · {food.slug}
-                    </span>
-                  </td>
-                  <td className="p-3">
-                    {t(`kinds.${food.food_kind}`)}
-                    <span className="block text-xs text-[var(--muted)]">
-                      {food.meal_types.join(" · ")}
-                    </span>
-                  </td>
-                  <td className="p-3">
-                    {food.destination_ids.join(" · ")}
-                    <span className="block text-xs text-[var(--muted)]">
-                      {food.hotspots.map((item) => item.name).join(" · ") ||
-                        t("noFoodArea")}
-                    </span>
-                  </td>
-                  <td className="p-3">
-                    {t(`statuses.${food.review_status}`)}
-                    <span className="block text-xs text-[var(--muted)]">
-                      {food.is_active ? t("active") : t("inactive")}
-                    </span>
-                  </td>
-                  <td className="p-3">
-                    <button
-                      type="button"
-                      onClick={() => setEditing(completeLocalizations(food))}
-                      className="min-h-10 rounded-xl border border-[var(--teal)] px-3 font-semibold text-[var(--teal)]"
-                    >
-                      {t("edit")}
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {groups.map((group) => {
+                const ids = group.items.map((food) => food.id);
+                return (
+                  <Fragment key={group.code}>
+                    <tr className="admin-group-row admin-group-row-country">
+                      <th colSpan={6} scope="colgroup">
+                        <input
+                          type="checkbox"
+                          aria-label={t("groupSelectAll", {
+                            name: `${group.name}（${group.code}）`,
+                          })}
+                          checked={ids.every((id) => selected.has(id))}
+                          onChange={(event) => toggleMany(ids, event.target.checked)}
+                        />
+                        {group.name} ({group.code}) · {t("groupCount", { count: ids.length })}
+                      </th>
+                    </tr>
+                    {group.items.map((food) => (
+                      <tr key={food.id} className="border-t border-[var(--line)]">
+                        <td className="p-3">
+                          <input
+                            type="checkbox"
+                            checked={selected.has(food.id)}
+                            aria-label={t("selectFood", { name: food.local_name })}
+                            onChange={(event) =>
+                              setSelected((current) => {
+                                const next = new Set(current);
+                                if (event.target.checked) next.add(food.id);
+                                else next.delete(food.id);
+                                return next;
+                              })
+                            }
+                          />
+                        </td>
+                        <td className="p-3">
+                          <strong>
+                            {food.localizations.find(
+                              (item) => item.locale === "zh-TW",
+                            )?.name ?? food.romanized_name}
+                          </strong>
+                          <span className="block text-xs text-[var(--muted)]">
+                            {food.local_name} · {food.slug}
+                          </span>
+                        </td>
+                        <td className="p-3">
+                          {t(`kinds.${food.food_kind}`)}
+                          <span className="block text-xs text-[var(--muted)]">
+                            {food.meal_types.join(" · ")}
+                          </span>
+                        </td>
+                        <td className="p-3">
+                          {food.destination_ids.join(" · ")}
+                          <span className="block text-xs text-[var(--muted)]">
+                            {food.hotspots.map((item) => item.name).join(" · ") ||
+                              t("noFoodArea")}
+                          </span>
+                        </td>
+                        <td className="p-3">
+                          {t(`statuses.${food.review_status}`)}
+                          <span className="block text-xs text-[var(--muted)]">
+                            {food.is_active ? t("active") : t("inactive")}
+                          </span>
+                        </td>
+                        <td className="p-3">
+                          <button
+                            type="button"
+                            onClick={() => setEditing(completeLocalizations(food))}
+                            className="min-h-10 rounded-xl border border-[var(--teal)] px-3 font-semibold text-[var(--teal)]"
+                          >
+                            {t("edit")}
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </Fragment>
+                );
+              })}
             </tbody>
           </table>
           {!loading && data?.items.length === 0 && (
             <p className="p-8 text-center text-[var(--muted)]">{t("empty")}</p>
           )}
         </div>
+        {data && data.pages > 1 && (
+          <nav
+            aria-label={t("pagination.label")}
+            className="mt-4 flex items-center justify-end gap-3"
+          >
+            <button
+              type="button"
+              disabled={page <= 1 || loading}
+              onClick={() => setPage((current) => Math.max(1, current - 1))}
+              className="min-h-11 rounded-xl border px-4 text-sm font-semibold disabled:opacity-40"
+            >
+              {t("pagination.previous")}
+            </button>
+            <span className="text-sm text-[var(--muted)]">
+              {t("pagination.pageOf", { page, pages: data.pages })}
+            </span>
+            <button
+              type="button"
+              disabled={page >= data.pages || loading}
+              onClick={() => setPage((current) => Math.min(data.pages, current + 1))}
+              className="min-h-11 rounded-xl border px-4 text-sm font-semibold disabled:opacity-40"
+            >
+              {t("pagination.next")}
+            </button>
+          </nav>
+        )}
 
         {editing && (
           <div
@@ -620,7 +736,6 @@ export function AdminFoodsPanel() {
           </div>
         )}
       </section>
-      <AdminFoodMerchantsPanel />
     </>
   );
 }

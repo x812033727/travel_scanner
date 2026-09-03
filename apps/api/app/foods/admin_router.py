@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 from decimal import Decimal
-from typing import Annotated, Literal
+from typing import Annotated, Any, Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query
@@ -10,11 +10,18 @@ from pydantic import BaseModel, Field, model_validator
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.admin.listing import (
+    COUNTRY_ORDER,
+    FOOD_KIND_ORDER,
+    country_name_for,
+    country_rank,
+    ranked,
+)
 from app.auth.service import AdminUser
 from app.db import escape_like, get_session
 from app.destinations.catalog import destination_for_id
 from app.hotspots.maps import has_exact_map_identity
-from app.i18n import LOCALES, Locale
+from app.i18n import DEFAULT_LOCALE, LOCALES, Locale, current_locale
 from app.infra import get_redis
 from app.locations.coordinates import (
     has_durable_coordinates,
@@ -38,6 +45,7 @@ from app.restaurants.editorial import validate_editorial_url
 
 router = APIRouter(prefix="/admin/foods", tags=["admin foods"])
 Session = Annotated[AsyncSession, Depends(get_session)]
+RequestLocale = Annotated[Locale, Depends(current_locale)]
 FoodKind = Literal["main", "noodle_soup", "street_food", "dessert", "drink"]
 ReviewStatus = Literal["pending", "approved", "rejected", "disabled"]
 MapMatchStatus = Literal["unverified", "verified", "ambiguous", "disabled"]
@@ -323,7 +331,9 @@ async def _upsert_localizations(
         session.add(row)
 
 
-async def _admin_item(session: AsyncSession, food: TravelFood) -> dict[str, object]:
+async def _admin_item(
+    session: AsyncSession, food: TravelFood, locale: Locale = DEFAULT_LOCALE
+) -> dict[str, object]:
     localizations = list(
         (
             await session.scalars(
@@ -354,6 +364,7 @@ async def _admin_item(session: AsyncSession, food: TravelFood) -> dict[str, obje
         "id": str(food.id),
         "slug": food.slug,
         "country_code": food.country_code,
+        "country_name": country_name_for(food.country_code, locale),
         "local_name": food.local_name,
         "romanized_name": food.romanized_name,
         "food_kind": food.food_kind,
@@ -377,43 +388,86 @@ async def _admin_item(session: AsyncSession, food: TravelFood) -> dict[str, obje
 async def list_admin_foods(
     user: AdminUser,
     session: Session,
+    locale: RequestLocale,
     country_code: Annotated[str | None, Query(min_length=2, max_length=2)] = None,
     destination_id: Annotated[str | None, Query(min_length=2, max_length=64)] = None,
     status: ReviewStatus | None = None,
+    food_kind: FoodKind | None = None,
     q: Annotated[str | None, Query(max_length=100)] = None,
     page: Annotated[int, Query(ge=1)] = 1,
     limit: Annotated[int, Query(ge=1, le=100)] = 30,
 ) -> dict[str, object]:
     _ = user
-    filters = []
+    # Keyed by dimension so each facet can drop only its own filter.
+    filters: dict[str, Any] = {}
     if country_code:
-        filters.append(TravelFood.country_code == country_code.upper())
+        filters["country_code"] = TravelFood.country_code == country_code.upper()
     if status:
-        filters.append(TravelFood.review_status == status)
+        filters["status"] = TravelFood.review_status == status
+    if food_kind:
+        filters["food_kind"] = TravelFood.food_kind == food_kind
     if q:
-        filters.append(TravelFood.search_text.ilike(f"%{escape_like(q.strip())}%", escape="\\"))
+        filters["q"] = TravelFood.search_text.ilike(f"%{escape_like(q.strip())}%", escape="\\")
     if destination_id:
         food_ids = select(FoodDestination.food_id).where(
             FoodDestination.destination_id == destination_id.casefold()
         )
-        filters.append(TravelFood.id.in_(food_ids))
-    total = int(await session.scalar(select(func.count(TravelFood.id)).where(*filters)) or 0)
+        filters["destination_id"] = TravelFood.id.in_(food_ids)
+    where = list(filters.values())
+
+    def without(dimension: str) -> list[Any]:
+        return [clause for key, clause in filters.items() if key != dimension]
+
+    total = int(await session.scalar(select(func.count(TravelFood.id)).where(*where)) or 0)
     rows = list(
         (
             await session.scalars(
                 select(TravelFood)
-                .where(*filters)
-                .order_by(TravelFood.display_order, TravelFood.slug)
+                .where(*where)
+                .order_by(
+                    country_rank(TravelFood.country_code),
+                    TravelFood.country_code,
+                    TravelFood.display_order,
+                    TravelFood.slug,
+                )
                 .offset((page - 1) * limit)
                 .limit(limit)
             )
         ).all()
     )
+    country_rows = (
+        await session.execute(
+            select(TravelFood.country_code, func.count(TravelFood.id).label("count"))
+            .where(*without("country_code"))
+            .group_by(TravelFood.country_code)
+        )
+    ).all()
+    kind_rows = (
+        await session.execute(
+            select(TravelFood.food_kind, func.count(TravelFood.id).label("count"))
+            .where(*without("food_kind"))
+            .group_by(TravelFood.food_kind)
+        )
+    ).all()
     return {
-        "items": [await _admin_item(session, food) for food in rows],
+        "items": [await _admin_item(session, food, locale) for food in rows],
         "total": total,
         "page": page,
         "pages": (total + limit - 1) // limit,
+        "facets": {
+            "countries": [
+                {
+                    "code": row.country_code,
+                    "name": country_name_for(row.country_code, locale),
+                    "count": int(row.count),
+                }
+                for row in ranked(country_rows, "country_code", COUNTRY_ORDER)
+            ],
+            "food_kinds": [
+                {"code": row.food_kind, "count": int(row.count)}
+                for row in ranked(kind_rows, "food_kind", FOOD_KIND_ORDER)
+            ],
+        },
     }
 
 
