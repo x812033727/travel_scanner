@@ -157,7 +157,6 @@ export function RouteMap({
       window.mokaairGoogleMapsAuthFailed = true;
       setSdkReady(false);
       setMapFailure("authorization");
-      document.getElementById(GOOGLE_MAPS_SCRIPT_ID)?.remove();
     };
     window.gm_authFailure = handleAuthorizationFailure;
     return () => {
