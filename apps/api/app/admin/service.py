@@ -177,7 +177,7 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     ),
     "google_maps": ProviderDefinition(
         "Google Maps",
-        "Google Places 地點搜尋、Routes 大眾運輸路線、Weather 天氣與瀏覽器 Embed 地圖。",
+        "Google Places 地點搜尋、Routes 路線（日本大眾運輸除外）、Weather 天氣與瀏覽器地圖。",
         (
             "route_cache_ttl_seconds",
             "weather_cache_ttl_seconds",
@@ -269,7 +269,8 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     ),
     "navitime": ProviderDefinition(
         "NAVITIME",
-        "日本大眾運輸備援，補充月台、出口及建議車廂資訊。",
+        "日本大眾運輸正式路線；Google Routes API 不提供日本交通資料，"
+        "並可補充月台、出口及建議車廂資訊。",
         ("navitime_api_base_url",),
         ("navitime_client_id", "navitime_api_key"),
     ),
@@ -1103,25 +1104,25 @@ def _merge_secret_values(current: dict[str, str], updates: dict[str, str | None]
 
 async def _test_google(settings: Settings, redis: Redis) -> str:
     service = GoogleTravelService(redis, settings)
-    places = await service.autocomplete("東京車站", None, ["jp"])
+    places = await service.autocomplete("台北車站", None, ["tw"])
     if not places:
         raise ConnectionError("Places API 未回傳結果，請檢查 API 啟用狀態與金鑰限制")
-    route_test_time = datetime.now(ZoneInfo("Asia/Tokyo")) + timedelta(days=1)
+    route_test_time = datetime.now(ZoneInfo("Asia/Taipei")) + timedelta(days=1)
     while route_test_time.weekday() >= 5:
         route_test_time += timedelta(days=1)
     route_test_time = route_test_time.replace(hour=10, minute=0, second=0, microsecond=0)
     routes = await GoogleRouteProvider(settings, None, redis).probe(
         RoutePoint(
             item_id=uuid4(),
-            name="東京車站",
-            latitude=35.6812,
-            longitude=139.7671,
+            name="台北車站",
+            latitude=25.0478,
+            longitude=121.5170,
         ),
         RoutePoint(
             item_id=uuid4(),
-            name="淺草寺",
-            latitude=35.7148,
-            longitude=139.7967,
+            name="台北 101",
+            latitude=25.0330,
+            longitude=121.5654,
         ),
         route_test_time,
     )
@@ -1131,9 +1132,9 @@ async def _test_google(settings: Settings, redis: Redis) -> str:
             details = f"HTTP {routes.status_code} / {details}"
         raise ConnectionError(f"Places 可用，但 Routes API 連線失敗（{details}）")
     route_message = (
-        "Routes API 可連線"
+        "Routes API 可連線（日本大眾運輸需使用 NAVITIME）"
         if routes.route_available
-        else "Routes API 可連線；測試路線目前無可用班次"
+        else "Routes API 可連線；非日本測試路線目前無可用班次（日本大眾運輸需使用 NAVITIME）"
     )
     weather_message = "Weather API 連線成功"
     try:
