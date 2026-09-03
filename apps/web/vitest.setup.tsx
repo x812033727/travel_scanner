@@ -15,8 +15,9 @@ import hotspotAdmin from "./messages/zh-TW/hotspotAdmin.json";
 import restaurants from "./messages/zh-TW/restaurants.json";
 import foods from "./messages/zh-TW/foods.json";
 import foodAdmin from "./messages/zh-TW/foodAdmin.json";
+import newTrip from "./messages/zh-TW/newTrip.json";
 
-const catalogs: Record<string, unknown> = { account, admin, auth, availability, common, navigation, pricing, search, trips, usage, hotspots, hotspotAdmin, restaurants, foods, foodAdmin };
+const catalogs: Record<string, unknown> = { account, admin, auth, availability, common, navigation, pricing, search, trips, usage, hotspots, hotspotAdmin, restaurants, foods, foodAdmin, newTrip };
 
 function message(namespace: string, key: string): string | undefined {
   let current: unknown = catalogs;
