@@ -212,6 +212,11 @@ System setting changes use the `system_settings_updated` action and record only
 the changed field names and effective registration result. Responses only
 include whether a key exists, its source, and a masked suffix.
 
+Google, LINE, and Apple member login are configured on the same API and keys
+page. Each provider remains hidden until it is both enabled and fully
+configured. Exact callback URLs, provider-console setup, linking rules, and
+security behavior are documented in [`docs/social-login.md`](docs/social-login.md).
+
 Set a stable, randomly generated `SETTINGS_ENCRYPTION_KEY` in production before
 saving credentials. It is used to derive the Fernet key for database values;
 changing it makes existing encrypted settings unreadable. `APP_SECRET_KEY` is

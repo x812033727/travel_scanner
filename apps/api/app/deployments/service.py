@@ -258,7 +258,7 @@ async def create_deployment(
     )
     if replay is not None:
         return await _view(session, replay, include_events=True)
-    if not verify_password(payload.password, actor.password_hash):
+    if not actor.password_hash or not verify_password(payload.password, actor.password_hash):
         raise AppError(401, "deployment_reauth_failed", "目前密碼不正確")
     overview = await deployment_overview(session)
     if overview.active_run is not None:

@@ -94,8 +94,103 @@ GENERIC_DETAILS: dict[Locale, str] = {
     "zh-CN": "请求未完成，请稍后再试。",
 }
 
+OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
+    "en": {
+        "password_not_set": "This account does not have a password yet",
+        "oauth_cancelled": "Sign-in was cancelled",
+        "oauth_state_invalid": "This sign-in request expired. Please try again.",
+        "oauth_state_unavailable": "Sign-in verification is temporarily unavailable",
+        "oauth_nonce_invalid": "This sign-in request is no longer valid",
+        "oauth_token_invalid": "The provider could not verify this account",
+        "oauth_secret_unreadable": "The provider credential could not be read",
+        "oauth_email_required": "A verified email is required to create an account",
+        "oauth_account_exists": (
+            "An account already uses this email. Sign in and link it from Account."
+        ),
+        "oauth_identity_conflict": "This provider account is linked to another member",
+        "oauth_identity_revoked": "Sign in and link this provider account again",
+        "oauth_provider_unavailable": "This sign-in provider is not configured",
+        "oauth_link_session_invalid": "The account-linking session expired",
+        "oauth_identity_not_found": "This sign-in method could not be found",
+        "oauth_last_method": "Keep at least one working sign-in method",
+    },
+    "ja": {
+        "password_not_set": "このアカウントにはまだパスワードがありません",
+        "oauth_cancelled": "ログインをキャンセルしました",
+        "oauth_state_invalid": "ログイン操作の有効期限が切れました。もう一度お試しください",
+        "oauth_state_unavailable": "ログイン確認を一時的に利用できません",
+        "oauth_nonce_invalid": "このログイン操作は無効です",
+        "oauth_token_invalid": "プロバイダーでアカウントを確認できませんでした",
+        "oauth_secret_unreadable": "ログイン資格情報を読み取れませんでした",
+        "oauth_email_required": "アカウント作成には確認済みメールアドレスが必要です",
+        "oauth_account_exists": (
+            "このメールのアカウントは既にあります。ログイン後、アカウント画面で連携してください"
+        ),
+        "oauth_identity_conflict": "このプロバイダーアカウントは別の会員に連携されています",
+        "oauth_identity_revoked": "ログイン後、このプロバイダーを再連携してください",
+        "oauth_provider_unavailable": "このログイン方法は未設定です",
+        "oauth_link_session_invalid": "アカウント連携の有効期限が切れました",
+        "oauth_identity_not_found": "このログイン方法が見つかりません",
+        "oauth_last_method": "利用可能なログイン方法を1つ以上残してください",
+    },
+    "ko": {
+        "password_not_set": "이 계정에는 아직 비밀번호가 없습니다",
+        "oauth_cancelled": "로그인을 취소했습니다",
+        "oauth_state_invalid": "로그인 요청이 만료되었습니다. 다시 시도하세요",
+        "oauth_state_unavailable": "로그인 확인을 일시적으로 사용할 수 없습니다",
+        "oauth_nonce_invalid": "이 로그인 요청은 더 이상 유효하지 않습니다",
+        "oauth_token_invalid": "제공자가 이 계정을 확인하지 못했습니다",
+        "oauth_secret_unreadable": "로그인 자격 증명을 읽을 수 없습니다",
+        "oauth_email_required": "계정을 만들려면 확인된 이메일이 필요합니다",
+        "oauth_account_exists": (
+            "이 이메일을 사용하는 계정이 있습니다. 로그인 후 계정 화면에서 연결하세요"
+        ),
+        "oauth_identity_conflict": "이 제공자 계정은 다른 회원에게 연결되어 있습니다",
+        "oauth_identity_revoked": "로그인 후 이 제공자 계정을 다시 연결하세요",
+        "oauth_provider_unavailable": "이 로그인 방법이 설정되지 않았습니다",
+        "oauth_link_session_invalid": "계정 연결 세션이 만료되었습니다",
+        "oauth_identity_not_found": "이 로그인 방법을 찾을 수 없습니다",
+        "oauth_last_method": "사용 가능한 로그인 방법을 하나 이상 유지하세요",
+    },
+    "zh-TW": {
+        "password_not_set": "這個帳號尚未設定密碼",
+        "oauth_cancelled": "已取消登入",
+        "oauth_state_invalid": "登入驗證已失效，請重新操作",
+        "oauth_state_unavailable": "登入驗證服務暫時無法使用",
+        "oauth_nonce_invalid": "登入驗證已失效，請重新操作",
+        "oauth_token_invalid": "登入身份驗證失敗",
+        "oauth_secret_unreadable": "登入憑證無法解密",
+        "oauth_email_required": "首次建立帳號需要已驗證的 Email",
+        "oauth_account_exists": "此 Email 已有帳號，請先登入再到帳號頁連結",
+        "oauth_identity_conflict": "這個登入帳號已連結其他會員",
+        "oauth_identity_revoked": "請登入後重新連結此登入方式",
+        "oauth_provider_unavailable": "這個登入方式尚未設定",
+        "oauth_link_session_invalid": "帳號連結工作階段已失效",
+        "oauth_identity_not_found": "找不到這個登入方式",
+        "oauth_last_method": "至少需要保留一種可用的登入方式",
+    },
+    "zh-CN": {
+        "password_not_set": "这个账号尚未设置密码",
+        "oauth_cancelled": "已取消登录",
+        "oauth_state_invalid": "登录验证已失效，请重新操作",
+        "oauth_state_unavailable": "登录验证服务暂时无法使用",
+        "oauth_nonce_invalid": "登录验证已失效，请重新操作",
+        "oauth_token_invalid": "登录身份验证失败",
+        "oauth_secret_unreadable": "无法读取登录凭证",
+        "oauth_email_required": "首次创建账号需要已验证的邮箱",
+        "oauth_account_exists": "此邮箱已有账号，请先登录再到账户页关联",
+        "oauth_identity_conflict": "这个登录账号已关联其他会员",
+        "oauth_identity_revoked": "请登录后重新关联此登录方式",
+        "oauth_provider_unavailable": "这个登录方式尚未设置",
+        "oauth_link_session_invalid": "账号关联会话已失效",
+        "oauth_identity_not_found": "找不到这个登录方式",
+        "oauth_last_method": "至少需要保留一种可用的登录方式",
+    },
+}
+
 ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     "en": {
+        **OAUTH_ERROR_DETAILS["en"],
         "authentication_required": "Sign in to continue",
         "invalid_credentials": "Incorrect email or password",
         "email_exists": "This email is already registered",
@@ -153,6 +248,7 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "trip_meal_slot_unavailable": "This day does not have an available meal slot",
     },
     "ja": {
+        **OAUTH_ERROR_DETAILS["ja"],
         "authentication_required": "続行するにはログインしてください",
         "invalid_credentials": "メールアドレスまたはパスワードが正しくありません",
         "email_exists": "このメールアドレスは登録済みです",
@@ -204,6 +300,7 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "trip_meal_slot_unavailable": "この日には利用可能な食事枠がありません",
     },
     "ko": {
+        **OAUTH_ERROR_DETAILS["ko"],
         "authentication_required": "계속하려면 로그인하세요",
         "invalid_credentials": "이메일 또는 비밀번호가 올바르지 않습니다",
         "email_exists": "이미 등록된 이메일입니다",
@@ -253,6 +350,7 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "trip_meal_slot_unavailable": "이 날짜에는 사용할 수 있는 식사 슬롯이 없습니다",
     },
     "zh-TW": {
+        **OAUTH_ERROR_DETAILS["zh-TW"],
         "hotspot_not_found": "找不到這個景點",
         "hotspot_guide_not_found": "這筆景點介紹已無法使用",
         "hotspot_guide_url_invalid": "請使用公開 HTTPS 介紹連結",
@@ -292,6 +390,7 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "trip_meal_slot_unavailable": "這一天沒有可設定的餐食卡",
     },
     "zh-CN": {
+        **OAUTH_ERROR_DETAILS["zh-CN"],
         "authentication_required": "请先登录后再继续",
         "invalid_credentials": "Email 或密码不正确",
         "email_exists": "这个 Email 已经注册",

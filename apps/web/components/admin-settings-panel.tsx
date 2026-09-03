@@ -83,6 +83,13 @@ type FieldMeta = { label: string; type?: "text" | "number" | "url" | "boolean"; 
 type AdminSettingsScope = "providers" | "system" | "layout";
 
 const fieldMeta: Record<string, FieldMeta> = {
+  auth_google_client_id: { label: "Google OAuth Client ID", help: "Google Cloud OAuth 2.0 Web Client ID。" },
+  auth_line_channel_id: { label: "LINE Login Channel ID", help: "需在 LINE Developers 申請 OpenID Connect Email 權限。" },
+  auth_apple_services_id: { label: "Apple Services ID" },
+  auth_apple_team_id: { label: "Apple Team ID" },
+  auth_apple_key_id: { label: "Apple Key ID" },
+  auth_oauth_flow_ttl_seconds: { label: "登入流程有效秒數", type: "number", help: "一次性 state、nonce 與 PKCE 預設保留 10 分鐘。" },
+  auth_oauth_ip_limit: { label: "每 IP 每小時啟動上限", type: "number" },
   ga4_enabled: { label: "同步送出 GA4 cookieless 事件", type: "boolean", help: "只在 Consent Mode 全部 denied 下送出清洗後事件，不在站內保存 GA Cookie。" },
   ga4_measurement_id: { label: "GA4 Measurement ID", help: "格式為 G-...；這是公開識別碼，不是 Data API 金鑰。" },
   analytics_trust_country_header: { label: "信任代理伺服器國碼", type: "boolean", help: "只讀取 BFF 從設定好的可信代理標頭轉送的兩碼國碼；未設定時一律為未知。" },
@@ -195,6 +202,9 @@ const fieldMeta: Record<string, FieldMeta> = {
 };
 
 const secretLabels: Record<string, { label: string; help?: string }> = {
+  auth_google_client_secret: { label: "Google OAuth Client Secret", help: "只在伺服器端加密保存。" },
+  auth_line_channel_secret: { label: "LINE Channel Secret", help: "只用於 LINE Login token exchange。" },
+  auth_apple_private_key: { label: "Apple .p8 Private Key", help: "可貼上 PEM 或將換行寫成 \\n；只在伺服器端加密保存。" },
   openai_api_key: { label: "OpenAI API Key", help: "只在伺服器端加密保存，不會傳到瀏覽器。" },
   anthropic_api_key: { label: "Anthropic API Key", help: "用於 Claude Messages API。" },
   minimax_api_key: { label: "MiniMax API Key", help: "用於 MiniMax Responses API。" },

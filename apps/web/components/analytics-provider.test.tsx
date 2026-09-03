@@ -12,6 +12,7 @@ describe("AnalyticsProvider", () => {
     sessionStorage.clear();
     window.dataLayer = undefined;
     window.gtag = undefined;
+    document.cookie = "travel_oauth_registered=; path=/; max-age=0";
     Object.defineProperty(navigator, "doNotTrack", { configurable: true, value: null });
   });
 
@@ -40,5 +41,23 @@ describe("AnalyticsProvider", () => {
     render(<AnalyticsProvider><div>content</div></AnalyticsProvider>);
     await new Promise((resolve) => setTimeout(resolve, 0));
     expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("records a social registration once and consumes its short-lived marker", async () => {
+    document.cookie = "travel_oauth_registered=1; path=/";
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      void init;
+      if (String(input).endsWith("/analytics/config")) return new Response(JSON.stringify({ first_party_enabled: true, ga4_enabled: false }));
+      return new Response(JSON.stringify({ accepted: 1, enabled: true }), { status: 202 });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AnalyticsProvider><div>content</div></AnalyticsProvider>);
+    await waitFor(() => {
+      const events = fetchMock.mock.calls
+        .filter(([url]) => String(url).endsWith("/analytics/events"))
+        .flatMap(([, init]) => JSON.parse(String(init?.body)).events);
+      expect(events.some((event: { name: string }) => event.name === "registration_completed")).toBe(true);
+    });
+    expect(document.cookie).not.toContain("travel_oauth_registered=1");
   });
 });
