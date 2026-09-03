@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { AdminFoodMerchantsPanel } from "./admin-food-merchants-panel";
 
@@ -22,6 +22,10 @@ const merchant = {
   map_match_status: "unverified",
   review_status: "pending",
   is_active: false,
+  display_order: 1,
+  area: null,
+  area_source: null,
+  categories: [{ id: "cat-1", slug: "bbq-grill", name: "燒烤／烤肉", is_primary: true, source: "seed" }],
   foods: [{ id: "food-1", slug: "hk-roast-goose", name: "燒鵝" }],
   sources: [
     {
@@ -38,12 +42,66 @@ const merchant = {
   ],
 };
 
+const names = { "zh-TW": "中環／上環", "zh-CN": "中环／上环", en: "Central / Sheung Wan", ja: "セントラル・上環", ko: "센트럴·셩완" };
+const taxonomy = {
+  cities: {
+    total_merchants: 0,
+    countries: [
+      {
+        code: "HK",
+        name: "香港",
+        merchant_count: 0,
+        cities: [{ id: "hong-kong", name: "香港", country_code: "HK", merchant_count: 0, area_count: 4 }],
+      },
+    ],
+  },
+  categories: [
+    { id: "cat-1", slug: "bbq-grill", name: "燒烤／烤肉", names, is_active: true, display_order: 7, source: "seed", merchant_count: 1 },
+    { id: "cat-2", slug: "cafe-tea", name: "咖啡／茶飲", names, is_active: true, display_order: 15, source: "seed", merchant_count: 0 },
+  ],
+  areas: [
+    {
+      id: "area-1",
+      slug: "hong-kong-central-sheung-wan",
+      destination_id: "hong-kong",
+      destination_name: "香港",
+      country_code: "HK",
+      name: "中環／上環",
+      names,
+      match_terms: [],
+      latitude: null,
+      longitude: null,
+      is_active: true,
+      display_order: 1,
+      source: "seed",
+      merchant_count: 1,
+    },
+  ],
+  dishes: [{ id: "food-1", slug: "hk-roast-goose", local_name: "燒鵝", country_code: "HK" }],
+};
+
+function taxonomyResponse(url: string): Response | null {
+  if (url.includes("/foods/cities")) return new Response(JSON.stringify(taxonomy.cities));
+  if (url.includes("/admin/foods/categories")) {
+    return new Response(JSON.stringify({ items: taxonomy.categories, total: 2, page: 1, pages: 1 }));
+  }
+  if (url.includes("/admin/foods/areas")) {
+    return new Response(JSON.stringify({ items: taxonomy.areas, total: 1, page: 1, pages: 1 }));
+  }
+  if (url.includes("/admin/foods?")) {
+    return new Response(JSON.stringify({ items: taxonomy.dishes, total: 1, page: 1, pages: 1 }));
+  }
+  return null;
+}
+
 describe("AdminFoodMerchantsPanel", () => {
   it("shows unavailable auto matching and saves permanent coordinates", async () => {
     vi.stubGlobal(
       "fetch",
       vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
         const url = String(input);
+        const stub = taxonomyResponse(url);
+        if (stub) return stub;
         if (url.includes("map-candidates")) {
           return new Response(
             JSON.stringify({
@@ -56,6 +114,10 @@ describe("AdminFoodMerchantsPanel", () => {
         }
         if (init?.method === "PATCH") {
           const body = JSON.parse(String(init.body));
+          expect(body.area_slug).toBe("hong-kong-central-sheung-wan");
+          expect(body.category_slugs).toEqual(["cafe-tea", "bbq-grill"]);
+          expect(body.food_ids).toEqual(["food-1"]);
+          expect(body.display_order).toBe(1);
           expect(body.google_place_id).toBe("ChIJ-yat-lok");
           expect(body.coordinate_source_type).toBe("merchant_official");
           expect(body.official_website_url).toBe("https://restaurant.example/");
@@ -79,6 +141,12 @@ describe("AdminFoodMerchantsPanel", () => {
     render(<AdminFoodMerchantsPanel />);
     expect(await screen.findByText("Yat Lok Restaurant")).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "編輯地點與來源" }));
+    const editor = screen.getByRole("dialog");
+    const areaSelect = within(editor).getByLabelText("區域");
+    await waitFor(() => expect(areaSelect.querySelectorAll("option").length).toBe(2));
+    fireEvent.change(areaSelect, { target: { value: "hong-kong-central-sheung-wan" } });
+    fireEvent.click(screen.getByRole("checkbox", { name: "咖啡／茶飲" }));
+    fireEvent.click(screen.getByRole("radio", { name: "主要 咖啡／茶飲" }));
     fireEvent.click(screen.getByRole("button", { name: "搜尋 Google 候選" }));
     expect(await screen.findByText("Google Places 金鑰未設定")).toBeTruthy();
     fireEvent.change(screen.getByLabelText("店家官方網站"), {
@@ -101,6 +169,8 @@ describe("AdminFoodMerchantsPanel", () => {
     const fetchMock = vi.fn(
       async (input: RequestInfo | URL, init?: RequestInit) => {
         const url = String(input);
+        const stub = taxonomyResponse(url);
+        if (stub) return stub;
         if (url.includes("/merchants/batch")) {
           expect(JSON.parse(String(init?.body))).toEqual({
             ids: [merchant.id],
@@ -141,6 +211,8 @@ describe("AdminFoodMerchantsPanel", () => {
     const fetchMock = vi.fn(
       async (input: RequestInfo | URL, init?: RequestInit) => {
         const url = String(input);
+        const stub = taxonomyResponse(url);
+        if (stub) return stub;
         if (url.includes("map-candidates")) {
           return new Response(
             JSON.stringify({
@@ -191,5 +263,53 @@ describe("AdminFoodMerchantsPanel", () => {
     expect(
       await screen.findByText(/已套用 Place ID，仍保留人工審核/),
     ).toBeTruthy();
+  });
+
+  it("creates a merchant with destination, area, cuisine and signature dish", async () => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      const stub = taxonomyResponse(url);
+      if (stub) return stub;
+      if (init?.method === "POST") {
+        const body = JSON.parse(String(init.body));
+        expect(body.slug).toBe("hong-kong-test-shop");
+        expect(body.destination_id).toBe("hong-kong");
+        expect(body.country_code).toBe("HK");
+        expect(body.area_slug).toBe("hong-kong-central-sheung-wan");
+        expect(body.category_slugs).toEqual(["bbq-grill"]);
+        expect(body.food_ids).toEqual(["food-1"]);
+        expect(body.sources[0].source_url).toBe("https://tourism.example/hong-kong/dining");
+        return new Response(JSON.stringify({ ...merchant, id: "new-id", slug: body.slug }), { status: 201 });
+      }
+      return new Response(JSON.stringify({ items: [merchant], total: 1, page: 1, pages: 1 }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<AdminFoodMerchantsPanel />);
+    expect(await screen.findByText("Yat Lok Restaurant")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "新增店家" }));
+    const dialog = screen.getByRole("dialog");
+    fireEvent.change(within(dialog).getByLabelText("Slug"), {
+      target: { value: "hong-kong-test-shop" },
+    });
+    const destinationSelect = within(dialog).getByLabelText("目的地");
+    await waitFor(() => expect(destinationSelect.querySelectorAll("option").length).toBe(2));
+    fireEvent.change(destinationSelect, { target: { value: "hong-kong" } });
+    fireEvent.change(within(dialog).getAllByLabelText("店名")[0], {
+      target: { value: "Test Shop" },
+    });
+    fireEvent.change(within(dialog).getByLabelText("當地店名"), { target: { value: "測試店" } });
+    const areaSelect = within(dialog).getByLabelText("區域");
+    await waitFor(() => expect(areaSelect.querySelectorAll("option").length).toBe(2));
+    fireEvent.change(areaSelect, { target: { value: "hong-kong-central-sheung-wan" } });
+    fireEvent.click(screen.getByRole("checkbox", { name: "燒烤／烤肉" }));
+    fireEvent.click(await screen.findByRole("checkbox", { name: "燒鵝" }));
+    fireEvent.change(screen.getAllByLabelText("來源標題")[0], { target: { value: "Official guide" } });
+    fireEvent.change(screen.getAllByLabelText("HTTPS 來源網址")[0], {
+      target: { value: "https://tourism.example/hong-kong/dining" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "儲存店家地點" }));
+    expect(await screen.findByText("店家已新增")).toBeTruthy();
+    expect(fetchMock.mock.calls.some(([, init]) => init?.method === "POST")).toBe(true);
   });
 });

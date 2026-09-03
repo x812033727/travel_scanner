@@ -47,6 +47,6 @@ describe("AdminFoodsPanel", () => {
     fireEvent.click(screen.getByRole("button", { name: "核准" }));
 
     expect(await screen.findByText("已更新 1 筆美食資料")).toBeTruthy();
-    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(4));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(3));
   });
 });

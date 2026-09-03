@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
-import { AdminFoodMerchantsPanel } from "./admin-food-merchants-panel";
 
 const locales = ["zh-TW", "zh-CN", "en", "ja", "ko"] as const;
 type Locale = (typeof locales)[number];
@@ -620,7 +619,6 @@ export function AdminFoodsPanel() {
           </div>
         )}
       </section>
-      <AdminFoodMerchantsPanel />
     </>
   );
 }
