@@ -68,6 +68,7 @@ from app.trips.routing import (
     RouteSegment,
     RouteService,
     TravelMode,
+    google_external_navigation,
     infer_place_provider,
     naver_external_navigation,
     route_provider_configured,
@@ -3035,7 +3036,27 @@ async def preview_trip_route(
                 "route_provider_not_configured",
                 "此交通方式的路線服務尚未啟用，可先輸入手動移動時間",
             )
-        raise AppError(503, "route_unavailable", "目前找不到這個交通方式的可用路線")
+        external = google_external_navigation(
+            origin,
+            destination,
+            payload.travel_mode,
+            reason=(
+                "目前無法取得可套用的站內大眾運輸班次；已保留精準起訖點，"
+                "可先到 Google Maps 查看，並在接近旅程時重新查詢。"
+                if payload.travel_mode == "transit"
+                else "目前無法取得可套用的站內路線；已保留精準起訖點，"
+                "可先到 Google Maps 查看。"
+            ),
+        )
+        await session.rollback()
+        return {
+            "kind": "external_only",
+            "preview_id": None,
+            "expires_at": None,
+            "segment": None,
+            "schedule_impact": None,
+            "external_navigation": external.model_dump(mode="json"),
+        }
     expires_at = datetime.now(UTC) + timedelta(seconds=ROUTE_PREVIEW_TTL_SECONDS)
     segment = segment.model_copy(
         update={

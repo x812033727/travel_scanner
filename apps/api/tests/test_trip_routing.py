@@ -1,4 +1,6 @@
+import json
 from datetime import UTC, datetime, timedelta
+from typing import cast
 from uuid import uuid4
 from zoneinfo import ZoneInfo
 
@@ -14,6 +16,7 @@ from app.trips.routing import (
     RoutePoint,
     RouteSegment,
     RouteService,
+    google_external_navigation,
     supported_transit_time,
 )
 
@@ -381,3 +384,76 @@ async def test_google_transit_retries_once_without_empty_preference() -> None:
     assert "transitPreferences" in bodies[0]
     assert "transitPreferences" not in bodies[1]
     assert any("已改用一般大眾運輸" in warning for warning in segment.warnings)
+
+
+@pytest.mark.asyncio
+async def test_far_future_transit_retries_with_current_schedule() -> None:
+    bodies: list[dict[str, object]] = []
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        body = cast(dict[str, object], json.loads(request.read()))
+        bodies.append(body)
+        if "departureTime" in body:
+            return httpx.Response(200, json={"routes": []})
+        return httpx.Response(200, json={"routes": [{"duration": "1800s", "legs": []}]})
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = GoogleRouteProvider(Settings(google_maps_api_key="key"), client)
+    segment = await provider.compute(
+        point("成田國際機場", 35.772, 140.392),
+        point("東京晴空塔", 35.710, 139.811),
+        datetime.now(ZoneInfo("Asia/Tokyo")) + timedelta(days=180),
+        "FEWER_TRANSFERS",
+    )
+    await client.aclose()
+
+    assert segment is not None and segment.duration_minutes == 30
+    assert segment.schedule_mode == "preview"
+    assert len(bodies) == 3
+    assert "departureTime" not in bodies[-1]
+    assert any("目前可取得的參考路線" in warning for warning in segment.warnings)
+
+
+@pytest.mark.asyncio
+async def test_google_route_retries_coordinates_when_place_ids_have_no_route() -> None:
+    bodies: list[dict[str, object]] = []
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        body = cast(dict[str, object], json.loads(request.read()))
+        bodies.append(body)
+        origin = cast(dict[str, object], body["origin"])
+        if "placeId" in origin:
+            return httpx.Response(200, json={"routes": []})
+        return httpx.Response(200, json={"routes": [{"duration": "900s", "legs": []}]})
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = GoogleRouteProvider(Settings(google_maps_api_key="key"), client)
+    segment = await provider.compute(
+        point("東京站", 35.6812, 139.7671, "google-origin"),
+        point("淺草寺", 35.7148, 139.7967, "google-destination"),
+        datetime.now(ZoneInfo("Asia/Tokyo")) + timedelta(days=2),
+        "FEWER_TRANSFERS",
+    )
+    await client.aclose()
+
+    assert segment is not None and segment.duration_minutes == 15
+    assert len(bodies) == 3
+    assert "location" in cast(dict[str, object], bodies[-1]["origin"])
+    assert any("座標重試" in warning for warning in segment.warnings)
+
+
+def test_google_external_navigation_preserves_exact_place_ids() -> None:
+    origin = point("成田國際機場", 35.772, 140.392, "google-origin")
+    destination = point("東京晴空塔", 35.710, 139.811, "google-destination")
+    navigation = google_external_navigation(
+        origin,
+        destination,
+        "transit",
+        reason="站內路線暫時無法取得",
+    )
+
+    assert navigation.provider == "google_maps"
+    assert navigation.label == "Google Maps"
+    assert "origin_place_id=google-origin" in navigation.web_url
+    assert "destination_place_id=google-destination" in navigation.web_url
+    assert navigation.app_url == navigation.web_url

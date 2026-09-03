@@ -33,7 +33,7 @@ type ProviderRoutePreview = {
   schedule_impact: RouteScheduleImpact;
 };
 type ExternalNavigation = {
-  provider: "naver_maps";
+  provider: "naver_maps" | "google_maps";
   label: string;
   travel_mode: TravelMode;
   app_url: string;
@@ -113,6 +113,7 @@ export function RouteModePanel({
   const preview = previews[mode];
   const providerPreview = isProviderPreview(preview) ? preview : undefined;
   const externalNavigation = preview?.kind === "external_only" ? preview.external_navigation : undefined;
+  const externalIsNaver = externalNavigation?.provider === "naver_maps";
   const activeSegment = providerPreview?.segment
     || (initialSegment?.travel_mode === mode ? initialSegment : undefined);
   const activeImpact = providerPreview?.schedule_impact;
@@ -291,7 +292,7 @@ export function RouteModePanel({
       {loadingMode === mode && !activeSegment && <div className="route-preview-skeleton compact" aria-live="polite"><Loader2 size={22} className="animate-spin text-[var(--teal)]" /><strong>正在取得{modes.find((item) => item.value === mode)?.label}路線…</strong><span>只查詢你目前選擇的交通方式</span></div>}
       {!resolvingLocations && !loadingMode && !activeSegment && !externalNavigation && !localError && !unresolvedItems.length && <div className="route-empty-state"><MapPin size={20} /><div><strong>尚未取得路線</strong><p>取得 Provider 驗證結果後，才會開放套用。</p></div></div>}
 
-      {externalNavigation && <section className="rounded-2xl border border-[#b8e7ca] bg-[#eefaf2] p-4 text-sm text-[#075c31]" aria-label="NAVER Maps 外部導航"><p className="flex items-center gap-2 font-bold"><ExternalLink size={18} />改用 NAVER Maps 規劃</p><p className="mt-2 leading-6">{externalNavigation.reason}</p><p className="mt-2 text-xs leading-5 text-[#397354]">離開本站後才能查看即時班次；外部結果不會自動套用到行程時間。</p><div className="mt-3 flex flex-wrap gap-2"><a href={externalNavigation.web_url} target="_blank" rel="noreferrer" className="flex min-h-11 items-center gap-2 rounded-xl bg-[#03c75a] px-4 font-bold text-white">用 NAVER Maps 規劃<ExternalLink size={15} /></a><a href={externalNavigation.app_url} className="flex min-h-11 items-center gap-2 rounded-xl border border-[#7fd5a3] bg-white px-4 font-bold">開啟 NAVER App</a><button type="button" onClick={() => setManualOpen(true)} className="min-h-11 rounded-xl px-3 font-bold">手動輸入時間</button></div></section>}
+      {externalNavigation && <section className={`rounded-2xl border p-4 text-sm ${externalIsNaver ? "border-[#b8e7ca] bg-[#eefaf2] text-[#075c31]" : "border-sky-200 bg-sky-50 text-sky-950"}`} aria-label={`${externalNavigation.label} 外部導航`}><p className="flex items-center gap-2 font-bold"><ExternalLink size={18} />改用 {externalNavigation.label} 規劃</p><p className="mt-2 leading-6">{externalNavigation.reason}</p><p className={`mt-2 text-xs leading-5 ${externalIsNaver ? "text-[#397354]" : "text-sky-800"}`}>離開本站後才能查看即時班次；外部結果不會自動套用到行程時間。</p><div className="mt-3 flex flex-wrap gap-2"><a href={externalNavigation.web_url} target="_blank" rel="noreferrer" className={`flex min-h-11 items-center gap-2 rounded-xl px-4 font-bold text-white ${externalIsNaver ? "bg-[#03c75a]" : "bg-sky-700"}`}>用 {externalNavigation.label} 規劃<ExternalLink size={15} /></a>{externalIsNaver && externalNavigation.app_url !== externalNavigation.web_url && <a href={externalNavigation.app_url} className="flex min-h-11 items-center gap-2 rounded-xl border border-[#7fd5a3] bg-white px-4 font-bold">開啟 NAVER App</a>}<button type="button" onClick={() => setManualOpen(true)} className="min-h-11 rounded-xl px-3 font-bold">手動輸入時間</button></div></section>}
 
       {activeImpact && (activeImpact.affected_items.length > 0 || activeImpact.conflicts.length > 0) && <section className="route-impact-card"><div className="flex items-center gap-2"><Clock3 size={18} /><h3 className="font-bold">套用後的時間影響</h3></div>{activeImpact.affected_items.slice(0, 4).map((item) => <p key={item.item_id} className="mt-2 flex justify-between gap-3 text-sm"><span className="truncate">{item.title}</span><strong className="shrink-0">{item.delta_minutes > 0 ? "+" : ""}{item.delta_minutes} 分</strong></p>)}{activeImpact.conflicts.map((conflict) => <div key={conflict.item_id} className="mt-3 rounded-xl bg-red-50 p-3 text-sm text-red-900"><strong>可能遲到 {conflict.late_minutes} 分鐘</strong><p className="mt-1">{conflict.title} 保留原訂時間，不會被自動延後。</p><p className="mt-1 text-xs">建議：{conflict.suggestions.join("、")}</p></div>)}</section>}
 

@@ -209,7 +209,7 @@ const secretLabels: Record<string, { label: string; help?: string }> = {
   anthropic_api_key: { label: "Anthropic API Key", help: "用於 Claude Messages API。" },
   minimax_api_key: { label: "MiniMax API Key", help: "用於 MiniMax Responses API。" },
   google_maps_api_key: { label: "伺服器 API Key", help: "啟用 Places API (New)、Routes API 與 Weather API；建議限制主機出口 IP。" },
-  next_public_google_maps_browser_key: { label: "瀏覽器 Embed Key", help: "只用於 Maps Embed，必須限制 travelscanner.aibubu.cloud HTTP referrer。" },
+  next_public_google_maps_browser_key: { label: "瀏覽器 Embed Key", help: "只用於 Maps Embed；Google Cloud 的 HTTP referrer 必須允許目前正式網域，例如 https://mokaair.com/*。" },
   naver_maps_client_id: { label: "NAVER Cloud Client ID", help: "伺服器 API 與瀏覽器 Dynamic Map 使用；瀏覽器公開值必須限制正式網站來源。" },
   naver_maps_client_secret: { label: "NAVER Cloud Client Secret", help: "只在伺服器端加密保存，絕不回傳瀏覽器。" },
   amadeus_client_id: { label: "Client ID" },

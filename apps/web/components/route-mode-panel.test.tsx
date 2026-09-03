@@ -166,6 +166,44 @@ describe("route mode panel", () => {
     expect(screen.getByText(/外部結果不會自動套用/)).toBeTruthy();
   });
 
+  it("offers exact Google navigation when an internal route is unavailable", async () => {
+    const noRouteTrip = {
+      ...trip,
+      destination_country_code: "JP",
+      route_segments: [],
+      routing: { ...trip.routing, status: "idle" as const, completed: 0 },
+    };
+    const fetchMock = vi.fn(async (url: string) => {
+      if (url.endsWith("/runtime/public-config")) {
+        return ok({ google_maps_embed_enabled: false });
+      }
+      return ok({
+        kind: "external_only",
+        preview_id: null,
+        expires_at: null,
+        segment: null,
+        schedule_impact: null,
+        external_navigation: {
+          provider: "google_maps",
+          label: "Google Maps",
+          travel_mode: "transit",
+          app_url: "https://www.google.com/maps/dir/?api=1&origin_place_id=from&destination_place_id=to",
+          web_url: "https://www.google.com/maps/dir/?api=1&origin_place_id=from&destination_place_id=to",
+          reason: "目前無法取得可套用的站內大眾運輸班次。",
+        },
+      });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<RouteModePanel trip={noRouteTrip} items={items} fromItemId="from" toItemId="to" onApplied={() => undefined} onError={() => undefined} />);
+
+    const externalLink = await screen.findByRole("link", { name: /用 Google Maps 規劃/ });
+    expect(externalLink.getAttribute("href")).toContain("origin_place_id=from");
+    expect(screen.getByRole("region", { name: "Google Maps 外部導航" })).toBeTruthy();
+    expect(screen.queryByRole("link", { name: "開啟 NAVER App" })).toBeNull();
+    expect((screen.getByRole("button", { name: "外部導航，無法套用" }) as HTMLButtonElement).disabled).toBe(true);
+  });
+
   it("resolves missing endpoints and opens the correct item editor when unresolved", async () => {
     const missingItems = items.map((item) => ({
       ...item,
