@@ -187,6 +187,38 @@ async def test_openai_responses_uses_schema_store_false_and_rest_output_shape() 
 
 
 @pytest.mark.asyncio
+async def test_responses_provider_accepts_markdown_fenced_json() -> None:
+    """MiniMax reasoning models ignore text.format and fence their JSON."""
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            json={
+                "status": "completed",
+                "output_text": f"```json\n{draft_json()}\n```",
+            },
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        provider = ResponsesPlannerProvider(
+            "minimax", "https://api.minimax.io/v1", "secret", "MiniMax-M3", 1, 4000, client
+        )
+        result = await provider.generate(request_for())
+
+    assert result.days[0].items[0].candidate_key == "hotspot:0"
+
+
+def test_json_document_strips_fences_and_keeps_plain_json() -> None:
+    from app.ai.itinerary import _json_document
+
+    payload = '{"summary": "ok", "days": []}'
+    assert _json_document(payload) == payload
+    assert _json_document(f"```json\n{payload}\n```") == payload
+    assert _json_document(f"```\n{payload}\n```") == payload
+    assert _json_document(f"  ```json\n{payload}\n```  ") == payload
+
+
+@pytest.mark.asyncio
 async def test_anthropic_uses_structured_output_config() -> None:
     captured: dict[str, object] = {}
 
