@@ -25,7 +25,40 @@ function reachReview() {
 
 describe("NewTripForm", () => {
   beforeEach(() => push.mockReset());
-  afterEach(() => vi.unstubAllGlobals());
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    window.sessionStorage.clear();
+  });
+
+  it("rejects a start date in the past", () => {
+    render(<NewTripForm />);
+    fireEvent.change(screen.getByLabelText("旅程名稱"), { target: { value: "回到過去" } });
+    fireEvent.change(screen.getByLabelText("目的地"), { target: { value: "東京" } });
+    fireEvent.change(screen.getByLabelText("開始日期"), { target: { value: "2020-01-01" } });
+    fireEvent.change(screen.getByLabelText("結束日期"), { target: { value: "2020-01-06" } });
+    next();
+    expect(screen.getByRole("alert").textContent).toContain("開始日期不可早於今天");
+  });
+
+  it("clears the validation error as soon as the user edits a field", () => {
+    render(<NewTripForm />);
+    next();
+    expect(screen.getByRole("alert")).toBeTruthy();
+    fireEvent.change(screen.getByLabelText("旅程名稱"), { target: { value: "東京散步" } });
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+
+  it("autosaves the draft and restores it after a reload", async () => {
+    const first = render(<NewTripForm />);
+    fireEvent.change(screen.getByLabelText("旅程名稱"), { target: { value: "草稿旅程" } });
+    fireEvent.click(screen.getByRole("button", { name: "美食" }));
+    await waitFor(() => expect(window.sessionStorage.getItem("mokaair-new-trip-draft")).toContain("草稿旅程"));
+    first.unmount();
+
+    render(<NewTripForm />);
+    await waitFor(() => expect((screen.getByLabelText("旅程名稱") as HTMLInputElement).value).toBe("草稿旅程"));
+    expect(screen.getByRole("button", { name: "美食" }).getAttribute("aria-pressed")).toBe("true");
+  });
 
   it("submits structured travelers, lodging, interests and routing preferences", async () => {
     const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "trip-1" }), { status: 201, headers: { "Content-Type": "application/json" } }));
@@ -57,6 +90,7 @@ describe("NewTripForm", () => {
     fireEvent.click(screen.getByRole("button", { name: /交給 AI 排好行程/ }));
 
     await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/trip-1"));
+    expect(window.sessionStorage.getItem("mokaair-new-trip-draft")).toBeNull();
     const request = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body));
     expect(request).toMatchObject({
       source: "blank", planning_mode: "ai_draft", name: "東京五日賞楓", destination_name: "東京", destination_place_id: null,
