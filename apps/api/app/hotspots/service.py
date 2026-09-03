@@ -11,6 +11,7 @@ from sqlalchemy import delete, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import Settings
+from app.db import escape_like
 from app.destinations.catalog import DESTINATIONS, destination_for_code, destination_for_id
 from app.foods.service import seed_food_catalog
 from app.hotspots.catalog import HOTSPOT_SEEDS
@@ -718,9 +719,12 @@ async def list_rankings(
         .order_by(HotspotRanking.rank)
     )
     if q and q.strip():
-        term = f"%{q.strip().casefold()}%"
+        term = f"%{escape_like(q.strip().casefold())}%"
         query = query.where(
-            or_(TravelHotspot.search_text.ilike(term), TravelHotspot.name.ilike(term))
+            or_(
+                TravelHotspot.search_text.ilike(term, escape="\\"),
+                TravelHotspot.name.ilike(term, escape="\\"),
+            )
         )
     if category:
         query = query.where(TravelHotspot.category == category.casefold())

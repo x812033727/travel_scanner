@@ -3,6 +3,7 @@ from __future__ import annotations
 import base64
 import hashlib
 import json
+import logging
 import re
 import time
 from dataclasses import asdict, dataclass
@@ -31,7 +32,12 @@ from app.admin.schemas import (
     SiteVisibility,
 )
 from app.ai.itinerary import AIItineraryPlanner, AIItineraryRequest
-from app.config import Settings, get_settings
+from app.config import (
+    OFFICIAL_PROVIDER_HOSTS,
+    Settings,
+    get_settings,
+    official_provider_url_ok,
+)
 from app.models import AdminAuditLog, ProviderConfig, ProviderRequest, User
 from app.places.google import GoogleTravelService
 from app.places.naver import NaverPlaceService
@@ -55,6 +61,8 @@ from app.trips.routing import (
     RoutePoint,
 )
 from app.weather.google import GoogleWeatherService
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -418,6 +426,15 @@ def apply_runtime_overrides(base: Settings, rows: list[ProviderConfig]) -> Setti
         for field in definition.secret_fields:
             if field in stored_secrets:
                 updates[field] = stored_secrets[field]
+    for field in [name for name in updates if name in OFFICIAL_PROVIDER_HOSTS]:
+        stored_url = updates[field]
+        if isinstance(stored_url, str) and stored_url and not official_provider_url_ok(
+            field, stored_url
+        ):
+            logger.warning(
+                "Ignoring stored %s because it does not use an official provider host", field
+            )
+            del updates[field]
     try:
         return Settings.model_validate({**base.model_dump(), **updates})
     except ValidationError as exc:
@@ -921,25 +938,13 @@ def _validate_provider_values(
                 "provider_setting_invalid",
                 f"{field} 必須是逗號分隔的完整網域，不可包含協定、路徑或萬用字元",
             )
-    if "travelpayouts_api_base_url" in merged:
-        host = urlparse(str(merged["travelpayouts_api_base_url"])).hostname
-        if host != "api.travelpayouts.com":
+    for field, allowed_hosts in OFFICIAL_PROVIDER_HOSTS.items():
+        pinned_value = merged.get(field)
+        if pinned_value and not official_provider_url_ok(field, str(pinned_value)):
             raise AppError(
                 422,
                 "provider_setting_invalid",
-                "Travelpayouts API Base URL 必須使用官方 api.travelpayouts.com",
-            )
-    official_ai_hosts = {
-        "openai_api_base_url": {"api.openai.com"},
-        "anthropic_api_base_url": {"api.anthropic.com"},
-        "minimax_api_base_url": {"api.minimaxi.com", "api.minimax.io"},
-    }
-    for field, allowed_hosts in official_ai_hosts.items():
-        if field in merged and urlparse(str(merged[field])).hostname not in allowed_hosts:
-            raise AppError(
-                422,
-                "provider_setting_invalid",
-                f"{field} 必須使用官方 API 網域",
+                f"{field} 必須使用官方 API 網域（{', '.join(sorted(allowed_hosts))}）",
             )
     if "ai_planner_priority" in merged:
         priority = [item.strip().lower() for item in str(merged["ai_planner_priority"]).split(",")]

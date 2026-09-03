@@ -297,6 +297,9 @@ async def line_webhook(
     x_line_signature: Annotated[str | None, Header(alias="X-Line-Signature")] = None,
 ) -> Response:
     _require_line(settings)
+    declared_length = request.headers.get("content-length", "")
+    if declared_length.isdigit() and int(declared_length) > settings.line_webhook_max_body_bytes:
+        raise AppError(413, "line_webhook_too_large", "LINE webhook 內容過大")
     body = await request.body()
     if len(body) > settings.line_webhook_max_body_bytes:
         raise AppError(413, "line_webhook_too_large", "LINE webhook 內容過大")

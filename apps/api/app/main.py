@@ -24,7 +24,7 @@ from app.hotspots.admin_router import router as admin_hotspots_router
 from app.hotspots.router import router as hotspots_router
 from app.infra import get_redis
 from app.line.router import router as line_router
-from app.middleware import RequestContextMiddleware
+from app.middleware import RequestBodyLimitMiddleware, RequestContextMiddleware
 from app.places.router import public_router as public_places_router
 from app.places.router import router as places_router
 from app.problems import AppError, app_error_handler, validation_error_handler
@@ -43,6 +43,7 @@ from app.usage.router import admin_router as admin_usage_router
 from app.usage.router import router as usage_router
 
 settings = get_settings()
+settings.validate_api_serving_security()
 app = FastAPI(
     title="Mokaair API",
     version="0.1.0",
@@ -50,6 +51,7 @@ app = FastAPI(
     redoc_url=None if settings.production else "/redoc",
     openapi_url=None if settings.production else "/openapi.json",
 )
+app.add_middleware(RequestBodyLimitMiddleware, max_bytes=settings.api_max_request_bytes)
 app.add_middleware(RequestContextMiddleware)
 app.add_middleware(
     CORSMiddleware,

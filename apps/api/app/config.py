@@ -46,6 +46,29 @@ def _is_official_https_url(
     )
 
 
+# Provider endpoints that carry a credential must stay on the vendor's official host, both
+# when set from the environment and when edited from the administration panel.
+OFFICIAL_PROVIDER_HOSTS: dict[str, frozenset[str]] = {
+    "openai_api_base_url": frozenset({"api.openai.com"}),
+    "anthropic_api_base_url": frozenset({"api.anthropic.com"}),
+    "minimax_api_base_url": frozenset({"api.minimaxi.com", "api.minimax.io"}),
+    "flightaware_base_url": frozenset({"aeroapi.flightaware.com"}),
+    "skyscanner_base_url": frozenset({"partners.api.skyscanner.net"}),
+    "duffel_base_url": frozenset({"api.duffel.com"}),
+    "google_travel_impact_base_url": frozenset({"travelimpactmodel.googleapis.com"}),
+    "travelpayouts_api_base_url": frozenset({"api.travelpayouts.com"}),
+    "line_api_base_url": frozenset({"api.line.me"}),
+}
+
+
+def official_provider_url_ok(field: str, value: str | None) -> bool:
+    """Return True unless ``field`` is host-pinned and ``value`` leaves the official host."""
+    allowed = OFFICIAL_PROVIDER_HOSTS.get(field)
+    if allowed is None or not value:
+        return True
+    return _is_official_https_url(value, set(allowed))
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file="../../.env", extra="ignore")
 
@@ -62,7 +85,7 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+asyncpg://travel:travel@localhost:5432/travel_scanner"
     redis_url: str = "redis://localhost:6379/0"
     api_cors_origins: str = "http://localhost:3000"
-    access_token_expire_minutes: int = 60
+    access_token_expire_minutes: int = Field(default=60, ge=5, le=1440)
     cookie_secure: bool = False
     offer_cache_ttl_seconds: int = 300
     reference_cache_ttl_seconds: int = 86_400
@@ -70,6 +93,7 @@ class Settings(BaseSettings):
     provider_failure_threshold: int = 3
     provider_circuit_seconds: int = 60
     rate_limit_per_minute: int = Field(default=120, ge=1)
+    api_max_request_bytes: int = Field(default=5_242_880, ge=65_536, le=52_428_800)
     analytics_enabled: bool = False
     ga4_enabled: bool = False
     ga4_measurement_id: str | None = None
@@ -413,26 +437,25 @@ class Settings(BaseSettings):
                 errors.append("DEPLOY_AGENT_HMAC_KEY must be set to at least 32 characters")
             if not self.deploy_agent_socket.startswith("/"):
                 errors.append("DEPLOY_AGENT_SOCKET must be an absolute Unix socket path")
-        official_ai_hosts = {
-            "OPENAI_API_BASE_URL": (
-                self.openai_api_key,
-                self.openai_api_base_url,
-                {"api.openai.com"},
+        pinned_endpoints = {
+            "OPENAI_API_BASE_URL": (self.openai_api_key, "openai_api_base_url"),
+            "ANTHROPIC_API_BASE_URL": (self.anthropic_api_key, "anthropic_api_base_url"),
+            "MINIMAX_API_BASE_URL": (self.minimax_api_key, "minimax_api_base_url"),
+            "FLIGHTAWARE_BASE_URL": (self.flightaware_api_key, "flightaware_base_url"),
+            "SKYSCANNER_BASE_URL": (self.skyscanner_api_key, "skyscanner_base_url"),
+            "DUFFEL_BASE_URL": (self.duffel_access_token, "duffel_base_url"),
+            "GOOGLE_TRAVEL_IMPACT_BASE_URL": (
+                self.google_travel_impact_api_key,
+                "google_travel_impact_base_url",
             ),
-            "ANTHROPIC_API_BASE_URL": (
-                self.anthropic_api_key,
-                self.anthropic_api_base_url,
-                {"api.anthropic.com"},
-            ),
-            "MINIMAX_API_BASE_URL": (
-                self.minimax_api_key,
-                self.minimax_api_base_url,
-                {"api.minimaxi.com", "api.minimax.io"},
+            "TRAVELPAYOUTS_API_BASE_URL": (
+                self.travelpayouts_api_token if self.travelpayouts_enabled else None,
+                "travelpayouts_api_base_url",
             ),
         }
-        for field, (api_key, endpoint, allowed_hosts) in official_ai_hosts.items():
-            if api_key and not _is_official_https_url(endpoint, allowed_hosts):
-                errors.append(f"{field} must use an official HTTPS API endpoint")
+        for env_name, (credential, field) in pinned_endpoints.items():
+            if credential and not official_provider_url_ok(field, getattr(self, field)):
+                errors.append(f"{env_name} must use an official HTTPS API endpoint")
         if self.line_messaging_enabled and not _is_official_https_url(
             self.line_api_base_url, {"api.line.me"}
         ):
@@ -445,6 +468,21 @@ class Settings(BaseSettings):
             errors.append("LINE_ADD_FRIEND_URL must use an official LINE HTTPS domain")
         if errors:
             raise RuntimeError("Unsafe production configuration: " + "; ".join(errors))
+
+    def validate_api_serving_security(self) -> None:
+        """Checks that only matter for the HTTP API process, not for workers or the CLI."""
+        errors: list[str] = []
+        if any(origin == "*" for origin in self.cors_origins):
+            errors.append(
+                "API_CORS_ORIGINS must not contain '*' because credentials are allowed cross-origin"
+            )
+        if self.production and not self.trust_proxy_client_ip:
+            errors.append(
+                "TRUST_PROXY_CLIENT_IP must be true in production because the web BFF is the "
+                "only API caller and per-client rate limits depend on the forwarded address"
+            )
+        if errors:
+            raise RuntimeError("Unsafe API configuration: " + "; ".join(errors))
 
 
 @lru_cache

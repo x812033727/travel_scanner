@@ -11,7 +11,7 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import AdminUser
-from app.db import get_session
+from app.db import escape_like, get_session
 from app.destinations.catalog import destination_for_id
 from app.hotspots.maps import has_exact_map_identity
 from app.i18n import LOCALES, Locale
@@ -391,7 +391,7 @@ async def list_admin_foods(
     if status:
         filters.append(TravelFood.review_status == status)
     if q:
-        filters.append(TravelFood.search_text.ilike(f"%{q.strip()}%"))
+        filters.append(TravelFood.search_text.ilike(f"%{escape_like(q.strip())}%", escape="\\"))
     if destination_id:
         food_ids = select(FoodDestination.food_id).where(
             FoodDestination.destination_id == destination_id.casefold()
@@ -729,11 +729,11 @@ async def list_food_merchants(
     elif official_data == "missing":
         filters.append(FoodMerchant.official_website_url.is_(None))
     if q:
-        term = f"%{q.strip()}%"
+        term = f"%{escape_like(q.strip())}%"
         filters.append(
-            FoodMerchant.name.ilike(term)
-            | FoodMerchant.local_name.ilike(term)
-            | FoodMerchant.slug.ilike(term)
+            FoodMerchant.name.ilike(term, escape="\\")
+            | FoodMerchant.local_name.ilike(term, escape="\\")
+            | FoodMerchant.slug.ilike(term, escape="\\")
         )
     total = int(await session.scalar(select(func.count(FoodMerchant.id)).where(*filters)) or 0)
     merchants = list(

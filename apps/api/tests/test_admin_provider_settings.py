@@ -639,3 +639,50 @@ async def test_public_runtime_exposes_naver_browser_capabilities_but_not_secret(
     assert payload["naver_dynamic_map_enabled"] is True
     assert "never-expose-this-secret" not in str(payload)
     assert "naver_maps_client_secret" not in payload
+
+
+@pytest.mark.parametrize(
+    ("provider", "field", "value"),
+    [
+        ("flightaware", "flightaware_base_url", "https://attacker.example/aeroapi"),
+        ("skyscanner", "skyscanner_base_url", "https://partners.api.skyscanner.net.evil.example"),
+        ("duffel", "duffel_base_url", "http://api.duffel.com"),
+        ("google_travel_impact", "google_travel_impact_base_url", "https://attacker.example/v1"),
+        ("travelpayouts", "travelpayouts_api_base_url", "https://attacker.example"),
+    ],
+)
+def test_credentialed_provider_base_urls_must_stay_on_official_hosts(
+    provider: str, field: str, value: str
+) -> None:
+    with pytest.raises(AppError) as error:
+        _validate_provider_values(provider, {}, ProviderSettingsUpdate(config={field: value}))
+    assert error.value.code == "provider_setting_invalid"
+
+
+def test_official_provider_base_urls_are_accepted() -> None:
+    validated = _validate_provider_values(
+        "flightaware",
+        {},
+        ProviderSettingsUpdate(
+            config={"flightaware_base_url": "https://aeroapi.flightaware.com/aeroapi"}
+        ),
+    )
+    assert validated["flightaware_base_url"] == "https://aeroapi.flightaware.com/aeroapi"
+
+
+def test_stored_provider_base_url_on_unofficial_host_is_ignored_when_read() -> None:
+    base = Settings(
+        app_secret_key="test-app-secret-at-least-thirty-two-characters",
+        flightaware_api_key="environment-key",
+    )
+    row = ProviderConfig(
+        provider="flightaware",
+        enabled=True,
+        config={
+            "flightaware_base_url": "https://attacker.example/aeroapi",
+            "flightaware_enrich_offer_limit": 3,
+        },
+    )
+    effective = apply_runtime_overrides(base, [row])
+    assert effective.flightaware_base_url == base.flightaware_base_url
+    assert effective.flightaware_enrich_offer_limit == 3

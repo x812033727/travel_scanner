@@ -19,6 +19,7 @@ from app.admin.user_schemas import (
     AdminUserUpdate,
 )
 from app.config import get_settings
+from app.db import escape_like
 from app.models import AdminAuditLog, UsageAccount, UsageLedger, User
 from app.problems import AppError
 
@@ -62,8 +63,7 @@ def _summary(user: User, account: UsageAccount | None, actor: User) -> AdminUser
 def _search_filter(query: str | None) -> ColumnElement[bool]:
     if not query or not query.strip():
         return true()
-    escaped = query.strip().replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
-    return User.email.ilike(f"%{escaped}%", escape="\\")
+    return User.email.ilike(f"%{escape_like(query.strip())}%", escape="\\")
 
 
 async def list_admin_users(
