@@ -148,6 +148,11 @@ class SaveTripRequest(BaseModel):
 
 
 def destination_timezone(destination: str) -> str:
+    # The catalog carries the authoritative zone for every supported city
+    # (仙台, "Tokyo", 台中 …); the keyword rules below only cover free text.
+    matched = match_destination(destination)
+    if matched is not None:
+        return matched.timezone
     rules = (
         (("日本", "東京", "大阪", "京都", "北海道", "沖繩", "福岡", "名古屋"), "Asia/Tokyo"),
         (("韓國", "首爾", "釜山", "濟州"), "Asia/Seoul"),

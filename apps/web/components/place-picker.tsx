@@ -32,6 +32,8 @@ export function PlacePicker({
   inputId,
   label = "目的地",
   descriptionId,
+  kinds,
+  placeholder = "搜尋景點、餐廳或車站",
 }: {
   value: string;
   confirmed: boolean;
@@ -42,6 +44,8 @@ export function PlacePicker({
   inputId?: string;
   label?: string;
   descriptionId?: string;
+  kinds?: "cities";
+  placeholder?: string;
 }) {
   const token = useRef(crypto.randomUUID());
   const generatedListboxId = useId();
@@ -65,6 +69,7 @@ export function PlacePicker({
       setError(undefined);
       const params = new URLSearchParams({ q: value.trim(), session_token: token.current });
       if (countryKey) params.set("country_codes", countryKey);
+      if (kinds) params.set("kinds", kinds);
       if (biasLatitude != null && biasLongitude != null) {
         params.set("latitude", String(biasLatitude));
         params.set("longitude", String(biasLongitude));
@@ -86,7 +91,7 @@ export function PlacePicker({
         .finally(() => { if (!cancelled) setLoading(false); });
     }, 320);
     return () => { cancelled = true; window.clearTimeout(timeout); };
-  }, [biasLatitude, biasLongitude, canSearch, countryKey, value]);
+  }, [biasLatitude, biasLongitude, canSearch, countryKey, kinds, value]);
 
   async function choose(suggestion: Suggestion) {
     setLoading(true);
@@ -130,7 +135,7 @@ export function PlacePicker({
   return <div className="relative">
     <div className="flex items-center rounded-xl border border-[var(--line)] bg-white px-3 focus-within:border-[var(--teal)]">
       {confirmed ? <Check size={15} className="shrink-0 text-emerald-600" /> : <Search size={15} className="shrink-0 text-[var(--muted)]" />}
-      <input id={inputId} aria-label={label} aria-describedby={descriptionId} role="combobox" aria-autocomplete="list" aria-expanded={open && visibleSuggestions.length > 0} aria-controls={listboxId} aria-activedescendant={open && activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined} value={value} onFocus={() => setOpen(true)} onKeyDown={handleKeyDown} onChange={(event) => { setError(undefined); setActiveIndex(-1); onTextChange(event.target.value); }} placeholder="搜尋景點、餐廳或車站" className="min-w-0 flex-1 bg-transparent px-2 py-2.5 text-sm outline-none" />
+      <input id={inputId} aria-label={label} aria-describedby={descriptionId} role="combobox" aria-autocomplete="list" aria-expanded={open && visibleSuggestions.length > 0} aria-controls={listboxId} aria-activedescendant={open && activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined} value={value} onFocus={() => setOpen(true)} onKeyDown={handleKeyDown} onChange={(event) => { setError(undefined); setActiveIndex(-1); onTextChange(event.target.value); }} placeholder={placeholder} className="min-w-0 flex-1 bg-transparent px-2 py-2.5 text-sm outline-none" />
       {loading && <span className="text-xs text-[var(--muted)]">搜尋中</span>}
     </div>
     {open && visibleSuggestions.length > 0 && <div id={listboxId} role="listbox" aria-label={`${label}建議`} className="absolute z-30 mt-1 max-h-64 w-full overflow-auto rounded-xl border border-[var(--line)] bg-white p-1 shadow-[var(--shadow-lg)]">
