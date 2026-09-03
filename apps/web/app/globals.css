@@ -448,6 +448,14 @@ body {
   box-shadow: 0 18px 50px rgba(16, 42, 43, 0.18);
   backdrop-filter: blur(22px) saturate(1.35);
 }
+/* This file sits outside Tailwind's cascade layers, so the component's layered
+   md:hidden utility can never win over the display: grid above; mirror the md
+   breakpoint here to keep the bar mobile-only. */
+@media (min-width: 48rem) {
+  .app-bottom-nav {
+    display: none;
+  }
+}
 .app-bottom-nav-item {
   display: flex;
   min-width: 0;
