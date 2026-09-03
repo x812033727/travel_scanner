@@ -52,10 +52,14 @@ jobs:
       - run: uv run alembic upgrade head
         working-directory: apps/api
       - name: Verify public airline fare adapters
+        # Inputs are passed through the environment so that a crafted value cannot inject shell.
+        env:
+          ROUTE_ORIGIN: ${{ inputs.origin }}
+          ROUTE_DESTINATION: ${{ inputs.destination }}
         run: >-
           uv run python -m app.cli verify-airline-crawlers
-          --origin "${{ inputs.origin }}"
-          --destination "${{ inputs.destination }}"
+          --origin "$ROUTE_ORIGIN"
+          --destination "$ROUTE_DESTINATION"
           --strict
         working-directory: apps/api
       - run: npm ci
@@ -84,11 +88,14 @@ jobs:
           echo "::add-mask::$token"
           echo "TRAVEL_SCANNER_TOKEN=$token" >> "$GITHUB_ENV"
       - name: Run Chrome-to-API fare extraction
+        env:
+          ROUTE_ORIGIN: ${{ inputs.origin }}
+          ROUTE_DESTINATION: ${{ inputs.destination }}
         run: >-
           npm run crawl:airlines:chrome --
           --api-base http://127.0.0.1:8000
-          --origin "${{ inputs.origin }}"
-          --destination "${{ inputs.destination }}"
+          --origin "$ROUTE_ORIGIN"
+          --destination "$ROUTE_DESTINATION"
           --airlines CI,BR,JX
           --channel chromium
           --timeout-ms 60000
@@ -96,11 +103,14 @@ jobs:
           --output chrome-live-report.json
       - name: Probe reverse route in Chrome for back-to-back fares
         continue-on-error: true
+        env:
+          ROUTE_ORIGIN: ${{ inputs.origin }}
+          ROUTE_DESTINATION: ${{ inputs.destination }}
         run: >-
           npm run crawl:airlines:chrome --
           --api-base http://127.0.0.1:8000
-          --origin "${{ inputs.destination }}"
-          --destination "${{ inputs.origin }}"
+          --origin "$ROUTE_DESTINATION"
+          --destination "$ROUTE_ORIGIN"
           --airlines CI,BR,JX
           --channel chromium
           --timeout-ms 60000

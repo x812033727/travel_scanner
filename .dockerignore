@@ -1,0 +1,23 @@
+# Build context for apps/web/Dockerfile (context = repository root).
+# Keep the context minimal so secrets, caches, and unrelated services never reach an image layer.
+.git
+.github
+.env
+.env.*
+**/.env
+**/.env.*
+**/node_modules
+**/.next
+**/.venv
+**/__pycache__
+**/.pytest_cache
+**/.mypy_cache
+**/.ruff_cache
+**/coverage
+**/playwright-report
+**/test-results
+apps/api
+docs
+ops
+tools
+*.md
