@@ -236,6 +236,41 @@ def test_normalize_trims_an_oversized_provider_day_to_pace_rules() -> None:
     assert len(day.items) <= 5
 
 
+def test_off_hours_and_overlong_draft_fields_survive_parsing_and_normalize() -> None:
+    """MiniMax likes 08:30 starts and long prose; parse must clamp, and
+    normalize must rewrite times into the slot grid instead of failing."""
+    draft = AIItineraryDraft.model_validate(
+        {
+            "summary": "很".join("長" for _ in range(600)),
+            "days": [
+                {
+                    "date": "2026-11-11",
+                    "items": [
+                        {
+                            "candidate_key": "hotspot:1",
+                            "start_time": "08:30",
+                            "reason": "理" * 400,
+                        },
+                        {
+                            "candidate_key": "merchant:1",
+                            "start_time": "23:45",
+                            "reason": "宵夜",
+                            "slot_type": "dinner",
+                        },
+                    ],
+                }
+            ],
+        }
+    )
+    assert len(draft.summary) == 500
+    assert len(draft.days[0].items[0].reason) == 240
+
+    normalized, _ = normalize_draft(request_for(), draft)
+    day = next(day for day in normalized.days if day.date == date(2026, 11, 11))
+    for item in day.items:
+        assert "09:00" <= item.start_time <= "21:30"
+
+
 def test_json_document_strips_fences_and_keeps_plain_json() -> None:
     from app.ai.itinerary import _json_document
 
