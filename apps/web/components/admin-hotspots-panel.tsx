@@ -15,6 +15,8 @@ type Candidate = {
   destination_role: "primary" | "secondary" | "extension";
   parent_destination_id: string | null;
   category: string;
+  area_code?: string | null;
+  area_name?: string | null;
   origin: string;
   status: string;
   reason: string | null;
@@ -657,6 +659,11 @@ export function AdminHotspotsPanel() {
                         ? "二線城市"
                         : "主要城市"}
                   </span>
+                  {item.area_name && (
+                    <span className="block text-xs text-[var(--muted)]">
+                      區域：{item.area_name}
+                    </span>
+                  )}
                 </td>
                 <td className="p-3">
                   {item.is_deep_travel ? (
