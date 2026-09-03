@@ -1,6 +1,7 @@
 "use client";
 
 import { Check, MapPin, Search } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect, useId, useRef, useState } from "react";
 import { api } from "@/lib/api";
 
@@ -30,10 +31,10 @@ export function PlacePicker({
   countryCodes = [],
   bias,
   inputId,
-  label = "目的地",
+  label,
   descriptionId,
   kinds,
-  placeholder = "搜尋景點、餐廳或車站",
+  placeholder,
 }: {
   value: string;
   confirmed: boolean;
@@ -47,6 +48,11 @@ export function PlacePicker({
   kinds?: "cities";
   placeholder?: string;
 }) {
+  const t = useTranslations("common");
+  const resolvedLabel = label ?? t("placePicker.destination");
+  const resolvedPlaceholder = placeholder ?? t("placePicker.placeholder");
+  // Read once per render so the search effect does not depend on `t` itself.
+  const noMatchesMessage = t("placePicker.noMatches");
   const token = useRef(crypto.randomUUID());
   const generatedListboxId = useId();
   const listboxId = `place-suggestions-${generatedListboxId}`;
@@ -80,7 +86,7 @@ export function PlacePicker({
           setSuggestions(rows);
           setOpen(true);
           setActiveIndex(rows.length ? 0 : -1);
-          if (!rows.length) setError("地圖服務沒有符合的地點，請換一組關鍵字。");
+          if (!rows.length) setError(noMatchesMessage);
         })
         .catch((reason: Error) => {
           if (cancelled) return;
@@ -91,7 +97,7 @@ export function PlacePicker({
         .finally(() => { if (!cancelled) setLoading(false); });
     }, 320);
     return () => { cancelled = true; window.clearTimeout(timeout); };
-  }, [biasLatitude, biasLongitude, canSearch, countryKey, kinds, value]);
+  }, [biasLatitude, biasLongitude, canSearch, countryKey, kinds, noMatchesMessage, value]);
 
   async function choose(suggestion: Suggestion) {
     setLoading(true);
@@ -105,7 +111,7 @@ export function PlacePicker({
       setActiveIndex(-1);
       token.current = crypto.randomUUID();
     } catch (reason) {
-      setError(reason instanceof Error ? reason.message : "地點詳細資料目前無法取得。");
+      setError(reason instanceof Error ? reason.message : t("placePicker.detailsUnavailable"));
     } finally {
       setLoading(false);
     }
@@ -135,12 +141,12 @@ export function PlacePicker({
   return <div className="relative">
     <div className="flex items-center rounded-xl border border-[var(--line)] bg-white px-3 focus-within:border-[var(--teal)]">
       {confirmed ? <Check size={15} className="shrink-0 text-emerald-600" /> : <Search size={15} className="shrink-0 text-[var(--muted)]" />}
-      <input id={inputId} aria-label={label} aria-describedby={descriptionId} role="combobox" aria-autocomplete="list" aria-expanded={open && visibleSuggestions.length > 0} aria-controls={listboxId} aria-activedescendant={open && activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined} value={value} onFocus={() => setOpen(true)} onKeyDown={handleKeyDown} onChange={(event) => { setError(undefined); setActiveIndex(-1); onTextChange(event.target.value); }} placeholder={placeholder} className="min-w-0 flex-1 bg-transparent px-2 py-2.5 text-sm outline-none" />
-      {loading && <span className="text-xs text-[var(--muted)]">搜尋中</span>}
+      <input id={inputId} aria-label={resolvedLabel} aria-describedby={descriptionId} role="combobox" aria-autocomplete="list" aria-expanded={open && visibleSuggestions.length > 0} aria-controls={listboxId} aria-activedescendant={open && activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined} value={value} onFocus={() => setOpen(true)} onKeyDown={handleKeyDown} onChange={(event) => { setError(undefined); setActiveIndex(-1); onTextChange(event.target.value); }} placeholder={resolvedPlaceholder} className="min-w-0 flex-1 bg-transparent px-2 py-2.5 text-sm outline-none" />
+      {loading && <span className="text-xs text-[var(--muted)]">{t("placePicker.searching")}</span>}
     </div>
-    {open && visibleSuggestions.length > 0 && <div id={listboxId} role="listbox" aria-label={`${label}建議`} className="absolute z-30 mt-1 max-h-64 w-full overflow-auto rounded-xl border border-[var(--line)] bg-white p-1 shadow-[var(--shadow-lg)]">
-      {visibleSuggestions.map((suggestion, index) => <button id={`${listboxId}-option-${index}`} role="option" aria-selected={index === activeIndex} key={`${suggestion.provider}-${suggestion.place_id}`} type="button" onMouseDown={(event) => event.preventDefault()} onMouseEnter={() => setActiveIndex(index)} onClick={() => choose(suggestion)} className={`flex w-full items-start gap-2 rounded-lg px-3 py-2.5 text-left ${index === activeIndex ? "bg-[var(--paper)]" : "hover:bg-[var(--paper)]"}`}><MapPin size={15} className="mt-0.5 shrink-0 text-[var(--teal)]" /><span className="min-w-0 flex-1"><span className="flex items-center gap-2"><span className="block truncate text-sm font-semibold">{suggestion.name}</span><span className="shrink-0 rounded-full bg-[var(--paper)] px-2 py-0.5 text-[.6rem] font-bold text-[var(--muted)]">{suggestion.provider === "naver_local" ? "NAVER" : "Google"}</span></span>{suggestion.address && <span className="mt-0.5 block text-xs text-[var(--muted)]">{suggestion.address}{suggestion.distance_meters != null ? ` · 約 ${Math.max(1, Math.round(suggestion.distance_meters / 1000))} 公里` : ""}</span>}</span></button>)}
-      <p className="px-3 py-2 text-right text-[.65rem] font-semibold text-[var(--muted)]">地點資料：{[...new Set(visibleSuggestions.map((row) => row.provider === "naver_local" ? "NAVER" : "Google Maps"))].join("、")}</p>
+    {open && visibleSuggestions.length > 0 && <div id={listboxId} role="listbox" aria-label={t("placePicker.suggestions", { label: resolvedLabel })} className="absolute z-30 mt-1 max-h-64 w-full overflow-auto rounded-xl border border-[var(--line)] bg-white p-1 shadow-[var(--shadow-lg)]">
+      {visibleSuggestions.map((suggestion, index) => <button id={`${listboxId}-option-${index}`} role="option" aria-selected={index === activeIndex} key={`${suggestion.provider}-${suggestion.place_id}`} type="button" onMouseDown={(event) => event.preventDefault()} onMouseEnter={() => setActiveIndex(index)} onClick={() => choose(suggestion)} className={`flex w-full items-start gap-2 rounded-lg px-3 py-2.5 text-left ${index === activeIndex ? "bg-[var(--paper)]" : "hover:bg-[var(--paper)]"}`}><MapPin size={15} className="mt-0.5 shrink-0 text-[var(--teal)]" /><span className="min-w-0 flex-1"><span className="flex items-center gap-2"><span className="block truncate text-sm font-semibold">{suggestion.name}</span><span className="shrink-0 rounded-full bg-[var(--paper)] px-2 py-0.5 text-[.6rem] font-bold text-[var(--muted)]">{suggestion.provider === "naver_local" ? "NAVER" : "Google"}</span></span>{suggestion.address && <span className="mt-0.5 block text-xs text-[var(--muted)]">{suggestion.address}{suggestion.distance_meters != null ? ` · ${t("placePicker.distanceKm", { km: Math.max(1, Math.round(suggestion.distance_meters / 1000)) })}` : ""}</span>}</span></button>)}
+      <p className="px-3 py-2 text-right text-[.65rem] font-semibold text-[var(--muted)]">{t("placePicker.source", { providers: [...new Set(visibleSuggestions.map((row) => row.provider === "naver_local" ? "NAVER" : "Google Maps"))].join(t("placePicker.listSeparator")) })}</p>
     </div>}
     {error && canSearch && <p role="alert" className="mt-1 text-xs text-red-700">{error}</p>}
   </div>;

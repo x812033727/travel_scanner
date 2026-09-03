@@ -1,4 +1,17 @@
-import { formatCurrency } from "@/lib/locale-format";
+import { activeLocale, formatCurrency } from "@/lib/locale-format";
+import genericEn from "@/messages/en/errors.json";
+import genericJa from "@/messages/ja/errors.json";
+import genericKo from "@/messages/ko/errors.json";
+import genericZhCN from "@/messages/zh-CN/errors.json";
+import genericZhTW from "@/messages/zh-TW/errors.json";
+
+const GENERIC_FAILURE: Record<string, string> = {
+  en: genericEn.generic,
+  ja: genericJa.generic,
+  ko: genericKo.generic,
+  "zh-CN": genericZhCN.generic,
+  "zh-TW": genericZhTW.generic,
+};
 
 export class ApiError extends Error {
   constructor(
@@ -109,18 +122,26 @@ function validationMessage(issue: unknown): string {
 }
 
 export function apiProblemMessage(problem: unknown, status: number): string {
+  const locale = activeLocale();
+  // The API localises `detail` from the X-Travel-Locale header; the Chinese
+  // dictionaries above only add friendlier wording for the default locale and
+  // must not overwrite an already-translated response.
+  const chineseCatalog = locale === "zh-TW";
   if (problem && typeof problem === "object") {
     const code = (problem as { code?: unknown }).code;
-    if (typeof code === "string" && CODE_MESSAGES[code]) return CODE_MESSAGES[code];
+    if (chineseCatalog && typeof code === "string" && CODE_MESSAGES[code]) return CODE_MESSAGES[code];
     const detail = (problem as { detail?: unknown }).detail;
     if (typeof detail === "string" && detail.trim()) return detail;
-    if (Array.isArray(detail) && detail.length > 0) return detail.map(validationMessage).join("；");
-    if (detail && typeof detail === "object") {
+    if (Array.isArray(detail) && detail.length > 0 && chineseCatalog) {
+      return detail.map(validationMessage).join("；");
+    }
+    if (detail && typeof detail === "object" && !Array.isArray(detail)) {
       const message = (detail as { message?: unknown }).message;
       if (typeof message === "string" && message.trim()) return message;
     }
   }
-  return `請求失敗（HTTP ${status}）`;
+  if (chineseCatalog) return `請求失敗（HTTP ${status}）`;
+  return `${GENERIC_FAILURE[locale] ?? GENERIC_FAILURE.en} (HTTP ${status})`;
 }
 
 export async function api<T>(path: string, init?: RequestInit): Promise<T> {
