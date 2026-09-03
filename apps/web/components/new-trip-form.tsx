@@ -79,6 +79,9 @@ export function NewTripForm() {
     breakfast_required: false, refundable_required: false, avoid_red_eye: true, notes: "",
   });
   const errorRef = useRef<HTMLParagraphElement>(null);
+  // One key per creation attempt, kept across retries so a proxy timeout
+  // followed by a second click replays the same trip instead of duplicating it.
+  const submitKey = useRef<string | undefined>(undefined);
   const today = useMemo(() => new Date().toLocaleDateString("sv"), []);
   const days = tripDayCount(form.start_date, form.end_date);
   const travelerCount = Number(form.adults) + Number(form.children);
@@ -209,9 +212,11 @@ export function NewTripForm() {
     if (message) { setError(message); return; }
     setBusy(true);
     setError(undefined);
+    if (!submitKey.current) submitKey.current = crypto.randomUUID();
     try {
       const trip = await api<CreatedTrip>("/trips", {
         method: "POST",
+        headers: { "Idempotency-Key": submitKey.current },
         body: JSON.stringify({
           source: "blank",
           planning_mode: planningMode,
@@ -241,6 +246,7 @@ export function NewTripForm() {
       });
       trackAnalytics("trip_created");
       clearDraft();
+      submitKey.current = undefined;
       router.push(`/trips/${trip.id}`);
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "建立行程失敗，請稍後再試。");

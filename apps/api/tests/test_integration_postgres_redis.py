@@ -469,13 +469,23 @@ async def test_trip_edit_share_and_revoke_flow() -> None:
             await session.commit()
             await session.refresh(search)
 
-        saved = await client.post(
-            "/api/v1/trips",
-            headers=headers,
-            json={"search_id": str(search.id), "plan_id": str(plan_id), "name": "東京測試旅程"},
-        )
+        create_headers = {**headers, "Idempotency-Key": "create-attempt-0001"}
+        create_payload = {
+            "search_id": str(search.id),
+            "plan_id": str(plan_id),
+            "name": "東京測試旅程",
+        }
+        saved = await client.post("/api/v1/trips", headers=create_headers, json=create_payload)
         assert saved.status_code == 201
         trip = saved.json()
+        # A retry with the same key (e.g. after a proxy timeout) must replay, not duplicate.
+        replayed = await client.post("/api/v1/trips", headers=create_headers, json=create_payload)
+        assert replayed.status_code == 201
+        assert replayed.json()["id"] == trip["id"]
+        listing = await client.get("/api/v1/trips", headers=headers)
+        assert listing.status_code == 200
+        assert [row["id"] for row in listing.json()].count(trip["id"]) == 1
+        assert len(listing.json()) == 1
         update = await client.put(
             f"/api/v1/trips/{trip['id']}/itinerary",
             headers=headers,

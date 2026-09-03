@@ -327,6 +327,9 @@ class ItineraryApplyRequest(BaseModel):
 
 
 AI_ITINERARY_PREVIEW_TTL_SECONDS = 15 * 60
+# AI-drafted creation can outlive the browser's patience; a retry within a day
+# must return the trip that was already created, not a duplicate.
+TRIP_CREATE_REPLAY_TTL_SECONDS = 24 * 60 * 60
 
 
 class RouteComputeRequest(BaseModel):
@@ -1420,8 +1423,27 @@ async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPla
 
 @router.post("", status_code=201)
 async def save_trip(
-    payload: SaveTripRequest, user: CurrentUser, session: Session
+    payload: SaveTripRequest,
+    user: CurrentUser,
+    session: Session,
+    idempotency_key: Annotated[
+        str | None, Header(alias="Idempotency-Key", min_length=8, max_length=255)
+    ] = None,
 ) -> dict[str, Any]:
+    redis = get_redis()
+    request_key = (
+        _trip_create_request_key(user.id, idempotency_key) if idempotency_key else None
+    )
+    if request_key:
+        replay_id = await redis.get(request_key)
+        if replay_id:
+            existing = await session.scalar(
+                select(TripPlan).where(
+                    TripPlan.id == UUID(str(replay_id)), TripPlan.user_id == user.id
+                )
+            )
+            if existing is not None:
+                return await serialize_trip(session, existing)
     count = await session.scalar(
         select(func.count()).select_from(TripPlan).where(TripPlan.user_id == user.id)
     )
@@ -1536,6 +1558,8 @@ async def save_trip(
             ensure_system_slots(session, trip, [])
         await session.commit()
         await session.refresh(trip)
+        if request_key:
+            await redis.set(request_key, str(trip.id), ex=TRIP_CREATE_REPLAY_TTL_SECONDS)
         result = await serialize_trip(session, trip)
         if routing_status == "queued":
             try:
@@ -1618,6 +1642,8 @@ async def save_trip(
             )
     await session.commit()
     await session.refresh(trip)
+    if request_key:
+        await redis.set(request_key, str(trip.id), ex=TRIP_CREATE_REPLAY_TTL_SECONDS)
     return await serialize_trip(session, trip)
 
 
@@ -2104,6 +2130,11 @@ def _itinerary_preview_key(user_id: UUID, trip_id: UUID, preview_id: UUID) -> st
 def _itinerary_preview_request_key(user_id: UUID, trip_id: UUID, idempotency_key: str) -> str:
     digest = hashlib.sha256(idempotency_key.encode()).hexdigest()
     return f"itinerary:preview-request:{user_id}:{trip_id}:{digest}"
+
+
+def _trip_create_request_key(user_id: UUID, idempotency_key: str) -> str:
+    digest = hashlib.sha256(idempotency_key.encode()).hexdigest()
+    return f"trip:create-request:{user_id}:{digest}"
 
 
 def _candidate_signatures(
