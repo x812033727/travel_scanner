@@ -28,6 +28,7 @@ from app.hotspots.ai_search import (
     estimate_calls,
     research_model,
 )
+from app.hotspots.areas import area_by_code, area_name, resolve_area_code
 from app.hotspots.guides import (
     GuideCandidate,
     YouTubeGuideProvider,
@@ -327,6 +328,10 @@ async def list_hotspot_candidates(
                 "city_name": hotspot.city_name,
                 "country_code": hotspot.country_code,
                 "category": hotspot.category,
+                "area_code": hotspot.area_code,
+                "area_name": area_name(area, "zh-TW")
+                if (area := area_by_code(hotspot.city_code, hotspot.area_code))
+                else None,
                 "origin": hotspot.origin,
                 "status": hotspot.review_status,
                 "reason": hotspot.review_reason,
@@ -521,6 +526,11 @@ async def review_hotspot_candidates(
                 )
                 else None
             )
+        # The destination or the coordinates may have just moved; keep the derived area
+        # in step instead of waiting for the next collect run to re-sync it.
+        hotspot.area_code = resolve_area_code(
+            hotspot.city_code, hotspot.latitude, hotspot.longitude
+        )
         if payload.map_match_status:
             hotspot.map_match_status = payload.map_match_status
             if payload.map_match_status == "verified":

@@ -14,6 +14,13 @@ from app.config import Settings
 from app.db import escape_like
 from app.destinations.catalog import DESTINATIONS, destination_for_code, destination_for_id
 from app.foods.service import seed_food_catalog
+from app.hotspots.areas import (
+    HOTSPOT_AREAS,
+    area_by_code,
+    area_name,
+    area_payload,
+    resolve_area_code,
+)
 from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.cities import HOTSPOT_CITIES
 from app.hotspots.discovery import WikimediaDiscoveryClient
@@ -22,7 +29,7 @@ from app.hotspots.maps import build_map_links
 from app.hotspots.places import place_summary_payload
 from app.hotspots.ranking import RankingInput, score_deep_hotspots, score_hotspots
 from app.hotspots.wikimedia import WikimediaPageviewClient
-from app.i18n import LOCALES
+from app.i18n import LOCALES, Locale
 from app.infra import get_redis
 from app.locations.coordinates import has_durable_coordinates
 from app.models import (
@@ -194,6 +201,7 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
         hotspot.search_text = seed.search_text
         hotspot.latitude = Decimal(str(seed.latitude))
         hotspot.longitude = Decimal(str(seed.longitude))
+        hotspot.area_code = resolve_area_code(seed.city_code, seed.latitude, seed.longitude)
         hotspot.coordinate_source_type = (
             "wikidata" if seed.coordinate_source == "wikidata_p625" else "curated"
         )
@@ -265,6 +273,23 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
         )
         hotspots.append(hotspot)
     return hotspots
+
+
+async def sync_hotspot_areas(session: AsyncSession) -> int:
+    """Recompute every hotspot's area from its coordinates.
+
+    Areas are derived data: a radius or center tweak in the catalog must reach rows
+    discovered months ago too, so this recomputes all rows rather than filling NULLs.
+    Returns the number of rows whose area changed.
+    """
+
+    changed = 0
+    for hotspot in (await session.scalars(select(TravelHotspot))).all():
+        code = resolve_area_code(hotspot.city_code, hotspot.latitude, hotspot.longitude)
+        if code != hotspot.area_code:
+            hotspot.area_code = code
+            changed += 1
+    return changed
 
 
 def _latest_signals(signals: list[HotspotSignal]) -> dict[tuple[Any, str], HotspotSignal]:
@@ -451,6 +476,9 @@ async def discover_hotspots(
                     )
                     hotspot.latitude = Decimal(str(candidate.latitude))
                     hotspot.longitude = Decimal(str(candidate.longitude))
+                    hotspot.area_code = resolve_area_code(
+                        city.code, candidate.latitude, candidate.longitude
+                    )
                     hotspot.coordinate_source_type = "wikidata"
                     hotspot.coordinate_source_url = next(iter(candidate.source_urls), None)
                     hotspot.coordinate_verified_at = now
@@ -584,6 +612,8 @@ async def collect_hotspots(
                 collected += 1
             await session.commit()
         await session.commit()
+    await sync_hotspot_areas(session)
+    await session.commit()
     rankings = await refresh_rankings(session, target_date)
     await session.commit()
     map_id_refresh = await refresh_due_map_place_ids(session, settings, client=client)
@@ -675,10 +705,11 @@ async def list_rankings(
     country_code: str | None = None,
     category: str | None = None,
     role: str | None = None,
+    area: str | None = None,
     after_rank: int | None = None,
     limit: int = 20,
     style: str = "all",
-    locale: str = "zh-TW",
+    locale: Locale = "zh-TW",
     places_configured: bool = False,
 ) -> dict[str, Any]:
     prefix = "deep_" if style == "deep" else ""
@@ -733,6 +764,8 @@ async def list_rankings(
     if role:
         role_ids = [item.id for item in DESTINATIONS if item.role == role]
         query = query.where(TravelHotspot.destination_id.in_(role_ids))
+    if area:
+        query = query.where(TravelHotspot.area_code == area)
     total = int(await session.scalar(select(func.count()).select_from(query.subquery())) or 0)
     if after_rank is not None:
         query = query.where(HotspotRanking.rank > after_rank)
@@ -796,6 +829,7 @@ async def list_rankings(
                 "country_code": hotspot.country_code,
                 "country_name": hotspot.country_name,
                 "category": hotspot.category,
+                "area": area_payload(area_by_code(hotspot.city_code, hotspot.area_code), locale),
                 "latitude": float(hotspot.latitude) if hotspot.latitude is not None else None,
                 "longitude": float(hotspot.longitude) if hotspot.longitude is not None else None,
                 "coordinate_source": {
@@ -869,7 +903,7 @@ async def list_rankings(
     }
 
 
-async def hotspot_facets(session: AsyncSession) -> dict[str, Any]:
+async def hotspot_facets(session: AsyncSession, locale: Locale = "zh-TW") -> dict[str, Any]:
     conditions = (
         TravelHotspot.is_active.is_(True),
         TravelHotspot.review_status.in_(PUBLIC_REVIEW_STATUSES),
@@ -895,13 +929,33 @@ async def hotspot_facets(session: AsyncSession) -> dict[str, Any]:
         TravelHotspot.country_code,
     )
     categories = await grouped(TravelHotspot.category)
-    deep_count = int(
-        await session.scalar(
-            select(func.count(TravelHotspot.id)).where(
-                *conditions, TravelHotspot.is_deep_travel.is_(True)
-            )
+    area_rows = await grouped(
+        TravelHotspot.destination_id, TravelHotspot.city_code, TravelHotspot.area_code
+    )
+    # Areas follow the catalog order (city, then area) rather than the SQL sort, and a
+    # code the catalog no longer knows is skipped until the next collect run re-syncs it.
+    city_order = {city.code: index for index, city in enumerate(HOTSPOT_CITIES)}
+    area_order = {
+        (city_code, area.code): index
+        for city_code, city_areas in HOTSPOT_AREAS.items()
+        for index, area in enumerate(city_areas)
+    }
+    areas = [
+        {
+            "destination_id": row.destination_id,
+            "city_code": row.city_code,
+            "code": area.code,
+            "name": area_name(area, locale),
+            "count": row.count,
+        }
+        for row in area_rows
+        if (area := area_by_code(row.city_code, row.area_code)) is not None
+    ]
+    areas.sort(
+        key=lambda item: (
+            city_order.get(item["city_code"], len(city_order)),
+            area_order[(item["city_code"], item["code"])],
         )
-        or 0
     )
     return {
         "total": sum(int(row.count) for row in countries),
@@ -921,10 +975,7 @@ async def hotspot_facets(session: AsyncSession) -> dict[str, Any]:
             for row in cities
         ],
         "categories": [{"code": row.category, "count": row.count} for row in categories],
-        "styles": [
-            {"code": "all", "name": "全部旅遊", "count": sum(int(row.count) for row in countries)},
-            {"code": "deep", "name": "深度旅遊", "count": deep_count},
-        ],
+        "areas": areas,
     }
 
 
