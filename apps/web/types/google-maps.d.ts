@@ -2,6 +2,8 @@ export {};
 
 declare global {
   interface Window {
+    gm_authFailure?: () => void;
+    mokaairGoogleMapsAuthFailed?: boolean;
     google?: {
       maps: {
         Map: new (element: HTMLElement, options: Record<string, unknown>) => {

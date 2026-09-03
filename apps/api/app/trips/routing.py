@@ -134,6 +134,60 @@ def duration_minutes(value: object) -> int | None:
         return None
 
 
+def google_directions_params(
+    origin: RoutePoint,
+    destination: RoutePoint,
+    travel_mode: TravelMode,
+) -> dict[str, object]:
+    """Build deterministic Directions URL parameters without fuzzy name-only endpoints."""
+
+    origin_has_place_id = bool(
+        origin.provider_place_id and origin.place_provider in {None, "google_places"}
+    )
+    destination_has_place_id = bool(
+        destination.provider_place_id
+        and destination.place_provider in {None, "google_places"}
+    )
+    params: dict[str, object] = {
+        "api": 1,
+        "origin": origin.name
+        if origin_has_place_id
+        else f"{origin.latitude:.7f},{origin.longitude:.7f}",
+        "destination": destination.name
+        if destination_has_place_id
+        else f"{destination.latitude:.7f},{destination.longitude:.7f}",
+        "travelmode": {
+            "transit": "transit",
+            "walk": "walking",
+            "drive": "driving",
+        }[travel_mode],
+    }
+    if origin_has_place_id:
+        params["origin_place_id"] = origin.provider_place_id
+    if destination_has_place_id:
+        params["destination_place_id"] = destination.provider_place_id
+    return params
+
+
+def route_option_sort_key(
+    segment: RouteSegment,
+    preference: str,
+    travel_mode: TravelMode,
+) -> tuple[int, int, int]:
+    distance = segment.distance_meters if segment.distance_meters is not None else 2**31 - 1
+    if travel_mode != "transit":
+        return segment.duration_minutes, distance, segment.route_option_rank or 0
+    transit_legs = sum(step.travel_mode == "TRANSIT" for step in segment.steps)
+    walking_minutes = sum(
+        step.duration_minutes or 0 for step in segment.steps if step.travel_mode == "WALK"
+    )
+    if preference == "LESS_WALKING":
+        return walking_minutes, segment.duration_minutes, transit_legs
+    if preference == "FASTEST":
+        return segment.duration_minutes, transit_legs, walking_minutes
+    return max(0, transit_legs - 1), segment.duration_minutes, walking_minutes
+
+
 def _money(payload: object) -> tuple[Decimal | None, str | None]:
     if not isinstance(payload, dict):
         return None, None
@@ -309,27 +363,7 @@ class GoogleRouteProvider:
             fare, currency = _money(
                 cast(dict[str, Any], route.get("travelAdvisory") or {}).get("transitFare")
             )
-            params = urlencode(
-                {
-                    "api": 1,
-                    "origin": origin.name or f"{origin.latitude},{origin.longitude}",
-                    "destination": destination.name
-                    or f"{destination.latitude},{destination.longitude}",
-                    "travelmode": travel_mode,
-                    **(
-                        {"origin_place_id": origin.provider_place_id}
-                        if origin.provider_place_id
-                        and origin.place_provider in {None, "google_places"}
-                        else {}
-                    ),
-                    **(
-                        {"destination_place_id": destination.provider_place_id}
-                        if destination.provider_place_id
-                        and destination.place_provider in {None, "google_places"}
-                        else {}
-                    ),
-                }
-            )
+            params = urlencode(google_directions_params(origin, destination, travel_mode))
             labels = [
                 str(label)
                 for label in cast(list[object], route.get("routeLabels") or [])
@@ -856,19 +890,7 @@ def google_external_navigation(
     *,
     reason: str,
 ) -> ExternalNavigation:
-    params = {
-        "api": 1,
-        "origin": origin.name,
-        "destination": destination.name,
-        "travelmode": travel_mode,
-    }
-    if origin.provider_place_id and origin.place_provider in {None, "google_places"}:
-        params["origin_place_id"] = origin.provider_place_id
-    if destination.provider_place_id and destination.place_provider in {
-        None,
-        "google_places",
-    }:
-        params["destination_place_id"] = destination.provider_place_id
+    params = google_directions_params(origin, destination, travel_mode)
     url = f"https://www.google.com/maps/dir/?{urlencode(params)}"
     return ExternalNavigation(
         provider="google_maps",
@@ -1207,7 +1229,12 @@ class RouteService:
                 )
                 provider_segments = []
             if provider_segments:
-                normalized = provider_segments[:option_limit]
+                normalized = sorted(
+                    provider_segments,
+                    key=lambda segment: route_option_sort_key(
+                        segment, preference, travel_mode
+                    ),
+                )[:option_limit]
                 for index, segment in enumerate(normalized):
                     segment.route_option_rank = index + 1
                 await self.redis.set(

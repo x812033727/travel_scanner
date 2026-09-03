@@ -74,6 +74,64 @@ describe("trip editor", () => {
     expect(screen.queryByText("尚未設定")).toBeNull();
   });
 
+  it("uses one honest count and one compact lodging prompt before a hotel is set", async () => {
+    const unsetLodgingTrip = {
+      ...trip,
+      start_date: "2026-11-11",
+      end_date: "2026-11-11",
+      primary_lodging: null,
+      items: [
+        {
+          ...trip.items[0],
+          latitude: 35.7148,
+          longitude: 139.7967,
+          location_source: "hotspot_catalog",
+        },
+        {
+          ...trip.items[0],
+          id: "00000000-0000-4000-8000-000000000010",
+          position: -1,
+          item_type: "hotel_anchor",
+          title: "從 尚未設定飯店 出發",
+          location_name: null,
+          system_role: "hotel_start" as const,
+          fixed_time: true,
+          data: { needs_place_confirmation: true },
+        },
+        {
+          ...trip.items[0],
+          id: "00000000-0000-4000-8000-000000000011",
+          position: 99,
+          item_type: "hotel_anchor",
+          title: "返回 尚未設定飯店",
+          location_name: null,
+          system_role: "hotel_end" as const,
+          data: { needs_place_confirmation: true },
+        },
+        {
+          ...trip.items[0],
+          id: "00000000-0000-4000-8000-000000000012",
+          position: 3,
+          item_type: "meal",
+          title: "午餐尚未安排",
+          location_name: null,
+          system_role: "lunch" as const,
+          fixed_time: true,
+          data: { needs_place_confirmation: true },
+        },
+      ],
+    };
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(unsetLodgingTrip))));
+
+    render(<TripEditor tripId={trip.id} />);
+
+    expect(await screen.findAllByText("1 個已安排")).not.toHaveLength(0);
+    expect(screen.getByText("尚未設定主要飯店")).toBeTruthy();
+    expect(screen.getByText("設定一次後，會建立每天的出發與返回路線")).toBeTruthy();
+    expect(screen.queryByText("返回 尚未設定飯店")).toBeNull();
+    expect(screen.getByText("午餐尚未安排")).toBeTruthy();
+  });
+
   it("opens mobile trip tools and remembers the selected color theme", async () => {
     vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(trip))));
     const { container } = render(<TripEditor tripId={trip.id} />);
@@ -154,7 +212,10 @@ describe("trip editor", () => {
     const aiButtons = await screen.findAllByRole("button", { name: /^AI 幫我安排/ });
     fireEvent.click(aiButtons[0]);
     expect(screen.getByRole("dialog", { name: "AI 幫我安排" })).toBeTruthy();
-    fireEvent.click(screen.getByRole("radio", { name: /\u55ae\u65e5\u5b89\u6392/ }));
+    const singleDay = screen.getByRole("radio", { name: /\u55ae\u65e5\u5b89\u6392/ });
+    fireEvent.click(singleDay);
+    expect(singleDay.className).toContain("text-violet-950");
+    expect(within(singleDay).getByText(/目前 1 個已安排/).className).toContain("text-violet-700");
     fireEvent.click(screen.getByRole("button", { name: /^產生預覽/ }));
 
     await waitFor(() => expect(previewBody).toEqual({

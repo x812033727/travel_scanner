@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { RouteMap } from "./route-map";
 
@@ -65,6 +65,8 @@ function ok(payload: unknown) {
 
 afterEach(() => {
   vi.unstubAllGlobals();
+  window.gm_authFailure = undefined;
+  window.mokaairGoogleMapsAuthFailed = undefined;
   window.google = undefined;
   window.naver = undefined;
 });
@@ -117,9 +119,26 @@ describe("RouteMap", () => {
     const script = await screen.findByTestId("next-script");
     expect(script.getAttribute("data-src")).toContain("https://maps.googleapis.com/maps/api/js");
     expect(script.getAttribute("data-src")).toContain("key=google-browser-key");
+    expect(script.getAttribute("data-src")).toContain("loading=async");
     expect(screen.getByRole("img", { name: /景福宮到北村韓屋村的Google Maps路線地圖/ })).toBeTruthy();
     expect(screen.getByText("示意連線，非實際路線")).toBeTruthy();
     expect(container.querySelector("iframe")).toBeNull();
+  });
+
+  it("shows an actionable state when Google rejects the current referrer", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => ok({
+      google_maps_browser_key: "google-browser-key",
+      google_maps_javascript_enabled: true,
+    })));
+    render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="JP" />);
+
+    expect(await screen.findByRole("img", { name: /Google Maps路線地圖/ })).toBeTruthy();
+    expect(window.gm_authFailure).toBeTypeOf("function");
+    act(() => window.gm_authFailure?.());
+
+    expect(await screen.findByText("地圖載入失敗")).toBeTruthy();
+    expect(screen.getByText(/尚未允許目前網站網域/)).toBeTruthy();
+    expect(screen.queryByRole("img", { name: /Google Maps路線地圖/ })).toBeNull();
   });
 
   it("draws every provider option and makes each line selectable", async () => {
