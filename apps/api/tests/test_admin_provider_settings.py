@@ -165,6 +165,15 @@ def test_registration_setting_rejects_non_boolean_values() -> None:
         )
 
 
+def test_google_browser_map_safety_gate_rejects_non_boolean_values() -> None:
+    with pytest.raises(AppError, match="google_maps_javascript_enabled 必須是布林值"):
+        _validate_provider_values(
+            "google_maps",
+            {},
+            ProviderSettingsUpdate(config={"google_maps_javascript_enabled": 1}),
+        )
+
+
 def test_layout_settings_reject_non_boolean_values() -> None:
     with pytest.raises(AppError, match="trips_enabled 必須是布林值"):
         _validate_provider_values(
@@ -600,7 +609,7 @@ async def test_admin_api_rejects_regular_user() -> None:
 
 
 @pytest.mark.asyncio
-async def test_public_runtime_capabilities_do_not_claim_unconfigured_navitime(
+async def test_public_runtime_keeps_browser_map_disabled_until_explicitly_enabled(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     async def runtime(_session: object) -> Settings:
@@ -613,11 +622,40 @@ async def test_public_runtime_capabilities_do_not_claim_unconfigured_navitime(
     result = await public_runtime_config(object())  # type: ignore[arg-type]
     assert result.google_routes_enabled is True
     assert result.google_places_enabled is True
-    assert result.google_maps_embed_enabled is True
-    assert result.google_maps_javascript_enabled is True
+    assert result.google_maps_embed_enabled is False
+    assert result.google_maps_javascript_enabled is False
     assert result.navitime_enabled is False
     assert result.naver_maps_enabled is False
     assert result.naver_maps_browser_client_id is None
+
+
+@pytest.mark.asyncio
+async def test_public_runtime_enables_browser_map_only_with_key_and_safety_gate(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    async def runtime(_session: object) -> Settings:
+        return Settings(
+            next_public_google_maps_browser_key="browser-key",
+            google_maps_javascript_enabled=True,
+        )
+
+    monkeypatch.setattr(admin_service, "load_runtime_settings", runtime)
+    result = await public_runtime_config(object())  # type: ignore[arg-type]
+    assert result.google_maps_embed_enabled is True
+    assert result.google_maps_javascript_enabled is True
+
+
+@pytest.mark.asyncio
+async def test_public_runtime_does_not_enable_browser_map_without_key(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    async def runtime(_session: object) -> Settings:
+        return Settings(google_maps_javascript_enabled=True)
+
+    monkeypatch.setattr(admin_service, "load_runtime_settings", runtime)
+    result = await public_runtime_config(object())  # type: ignore[arg-type]
+    assert result.google_maps_embed_enabled is False
+    assert result.google_maps_javascript_enabled is False
 
 
 @pytest.mark.asyncio

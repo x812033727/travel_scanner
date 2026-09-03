@@ -13,8 +13,8 @@ const snapshot = {
       configured: true,
       status: "ready",
       status_message: "Places 與 Routes 已設定",
-      config: { route_cache_ttl_seconds: 900 },
-      config_sources: { route_cache_ttl_seconds: "environment" },
+      config: { route_cache_ttl_seconds: 900, google_maps_javascript_enabled: false },
+      config_sources: { route_cache_ttl_seconds: "environment", google_maps_javascript_enabled: "environment" },
       secrets: {
         google_maps_api_key: { configured: true, masked: "••••••••abcd", source: "database" },
         next_public_google_maps_browser_key: { configured: false, source: "none" },
@@ -440,6 +440,25 @@ describe("AdminSettingsPanel", () => {
     const body = JSON.parse(String(request.body));
     expect(body.secrets.google_maps_api_key).toBe("new-server-key");
     expect(body.secrets.next_public_google_maps_browser_key).toBeUndefined();
+  });
+
+  it("saves the browser map safety gate as a boolean", async () => {
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify(snapshot), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(snapshot), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminSettingsPanel />);
+
+    const section = (await screen.findByRole("heading", { name: "Google Maps" })).closest("section");
+    const safetyGate = within(section!).getByRole("switch", { name: /啟用瀏覽器路線地圖/ });
+    expect((safetyGate as HTMLInputElement).checked).toBe(false);
+    fireEvent.click(safetyGate);
+    fireEvent.click(within(section!).getByRole("button", { name: "儲存設定" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    const request = fetchMock.mock.calls[1][1] as RequestInit;
+    const body = JSON.parse(String(request.body));
+    expect(body.config.google_maps_javascript_enabled).toBe(true);
   });
 
   it("explains when the account is not an administrator", async () => {

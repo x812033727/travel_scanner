@@ -440,8 +440,11 @@ Places API (New), Routes API, and Weather API for server-side calls, and use an 
 `NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY` for the route drawer after enabling Maps
 JavaScript API. Restrict the browser key by HTTP referrer to
 `https://mokaair.com/*` and `https://www.mokaair.com/*`, and keep it separate
-from the server Routes key. A missing production referrer is surfaced inside
-the route drawer instead of leaving an unexplained blank map.
+from the server Routes key. The browser SDK is fail-closed: setting a key alone
+does not load it. Set `GOOGLE_MAPS_JAVASCRIPT_ENABLED=true` (or enable the same
+switch in the admin provider settings) only after the API and both production
+referrers are verified. While the switch is off, route options and exact
+external navigation remain available without loading the browser map SDK.
 Google provider responses are kept in short-lived Redis caches; durable trip
 records retain provider IDs and user-authored fields instead of raw payloads.
 The administrator settings page also shows the current and five previous Google

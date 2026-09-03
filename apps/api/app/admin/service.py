@@ -181,6 +181,7 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         (
             "route_cache_ttl_seconds",
             "weather_cache_ttl_seconds",
+            "google_maps_javascript_enabled",
             "google_maps_essentials_free_limit",
             "google_maps_pro_free_limit",
             "google_maps_enterprise_free_limit",
@@ -557,10 +558,13 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
     if provider == "google_maps":
         configured = bool(settings.google_maps_api_key)
         browser = bool(settings.next_public_google_maps_browser_key)
+        browser_enabled = browser and settings.google_maps_javascript_enabled
         message = (
-            "Places、Routes 與 Weather 已設定；Embed 地圖已設定"
+            "Places、Routes 與 Weather 已設定；瀏覽器地圖已明確啟用"
+            if configured and browser_enabled
+            else "Places、Routes 與 Weather 已設定；瀏覽器地圖安全閘門關閉"
             if configured and browser
-            else "Places、Routes 與 Weather 已設定；Embed 地圖尚未設定"
+            else "Places、Routes 與 Weather 已設定；瀏覽器地圖 Key 尚未設定"
             if configured
             else "缺少伺服器 Google Maps API key"
         )
@@ -877,6 +881,7 @@ def _validate_provider_values(
         "registration_enabled",
         "ga4_enabled",
         "analytics_trust_country_header",
+        "google_maps_javascript_enabled",
         *SITE_VISIBILITY_FIELDS,
     }
     for field in boolean_fields:
@@ -1381,13 +1386,17 @@ async def test_provider_connection(
 
 async def public_runtime_config(session: AsyncSession) -> PublicRuntimeConfig:
     settings = await load_runtime_settings(session)
+    google_browser_map_enabled = bool(
+        settings.next_public_google_maps_browser_key
+        and settings.google_maps_javascript_enabled
+    )
     return PublicRuntimeConfig(
         google_maps_browser_key=settings.next_public_google_maps_browser_key,
         google_maps_enabled=bool(settings.google_maps_api_key),
         google_routes_enabled=bool(settings.google_maps_api_key),
         google_places_enabled=bool(settings.google_maps_api_key),
-        google_maps_embed_enabled=bool(settings.next_public_google_maps_browser_key),
-        google_maps_javascript_enabled=bool(settings.next_public_google_maps_browser_key),
+        google_maps_embed_enabled=google_browser_map_enabled,
+        google_maps_javascript_enabled=google_browser_map_enabled,
         navitime_enabled=settings.navitime_configured,
         naver_maps_browser_client_id=settings.naver_maps_client_id,
         naver_maps_enabled=settings.naver_maps_configured,
