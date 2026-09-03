@@ -36,6 +36,42 @@ def test_access_tokens_require_issuer_audience_and_session_version() -> None:
         raise AssertionError("legacy token without required claims was accepted")
 
 
+def test_tokens_carry_the_session_start_and_renew_only_inside_the_window() -> None:
+    from datetime import UTC, datetime, timedelta
+
+    from app.auth.service import (
+        AccessTokenClaims,
+        decode_access_token_claims,
+        should_renew_session,
+    )
+
+    settings = get_settings()
+    started = datetime.now(UTC) - timedelta(days=3)
+    claims = decode_access_token_claims(create_access_token(uuid4(), session_started_at=started))
+    assert abs((claims.session_started_at - started).total_seconds()) < 1
+    # A token minted before this change has no sid_iat and starts its own session.
+    legacy = decode_access_token_claims(create_access_token(uuid4()))
+    assert legacy.session_started_at == legacy.issued_at
+
+    lifetime = timedelta(minutes=settings.access_token_expire_minutes)
+    now = datetime.now(UTC)
+
+    def claims_at(*, issued_ago: timedelta, session_age: timedelta) -> AccessTokenClaims:
+        return AccessTokenClaims(
+            uuid4(), 1, "jti", now - issued_ago + lifetime, now - issued_ago, now - session_age
+        )
+
+    assert not should_renew_session(claims_at(issued_ago=lifetime * 0.1, session_age=lifetime), now)
+    assert should_renew_session(claims_at(issued_ago=lifetime * 0.6, session_age=lifetime), now)
+    assert not should_renew_session(
+        claims_at(
+            issued_ago=lifetime * 0.6,
+            session_age=timedelta(days=settings.session_absolute_max_days + 1),
+        ),
+        now,
+    )
+
+
 def test_search_operations_all_use_one_accounting_unit() -> None:
     assert search_operation({"trip_type": "multi_city", "modules": ["flight"]}) == (
         "multi_city_search"

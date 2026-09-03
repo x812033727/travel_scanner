@@ -4,7 +4,7 @@ from typing import Annotated, cast
 from uuid import UUID, uuid4
 
 import jwt
-from fastapi import Cookie, Depends, Header
+from fastapi import Cookie, Depends, Header, Response
 from jwt import InvalidTokenError
 from pwdlib import PasswordHash
 from redis.exceptions import RedisError
@@ -23,6 +23,9 @@ ISSUER = "travel-scanner-api"
 AUDIENCE = "travel-scanner"
 DUMMY_PASSWORD_HASH = password_hash.hash("not-a-real-travel-scanner-password")
 REVOKED_TOKEN_PREFIX = "auth:revoked:"
+# Renew a cookie session once the presented token has used up this share of
+# its lifetime, so an active user never sees the hourly logout.
+SESSION_RENEWAL_FRACTION = 0.5
 
 
 @dataclass(frozen=True)
@@ -31,6 +34,8 @@ class AccessTokenClaims:
     auth_version: int
     token_id: str
     expires_at: datetime
+    issued_at: datetime
+    session_started_at: datetime
 
 
 def hash_password(password: str) -> str:
@@ -41,7 +46,12 @@ def verify_password(password: str, hashed: str) -> bool:
     return password_hash.verify(password, hashed)
 
 
-def create_access_token(user_id: UUID, auth_version: int = 1) -> str:
+def create_access_token(
+    user_id: UUID,
+    auth_version: int = 1,
+    *,
+    session_started_at: datetime | None = None,
+) -> str:
     settings = get_settings()
     now = datetime.now(UTC)
     payload = {
@@ -53,8 +63,32 @@ def create_access_token(user_id: UUID, auth_version: int = 1) -> str:
         "iat": now,
         "nbf": now,
         "exp": now + timedelta(minutes=settings.access_token_expire_minutes),
+        # Original sign-in time survives renewals so the absolute cap holds.
+        "sid_iat": int((session_started_at or now).timestamp()),
     }
     return jwt.encode(payload, settings.app_secret_key, algorithm=ALGORITHM)
+
+
+def should_renew_session(claims: AccessTokenClaims, now: datetime | None = None) -> bool:
+    settings = get_settings()
+    moment = now or datetime.now(UTC)
+    lifetime = timedelta(minutes=settings.access_token_expire_minutes)
+    if moment - claims.issued_at < lifetime * SESSION_RENEWAL_FRACTION:
+        return False
+    return moment - claims.session_started_at < timedelta(days=settings.session_absolute_max_days)
+
+
+def set_auth_cookie(response: Response, token: str) -> None:
+    settings = get_settings()
+    response.set_cookie(
+        "travel_access",
+        token,
+        httponly=True,
+        secure=settings.cookie_secure,
+        samesite="lax",
+        max_age=settings.access_token_expire_minutes * 60,
+        path="/",
+    )
 
 
 def decode_access_token_claims(token: str) -> AccessTokenClaims:
@@ -74,7 +108,15 @@ def decode_access_token_claims(token: str) -> AccessTokenClaims:
         if not token_id:
             raise ValueError("invalid token id")
         expires_at = datetime.fromtimestamp(int(payload["exp"]), tz=UTC)
-        return AccessTokenClaims(UUID(payload["sub"]), auth_version, token_id, expires_at)
+        issued_at = datetime.fromtimestamp(int(payload["iat"]), tz=UTC)
+        # Tokens minted before sliding renewal carry no sid_iat; treat their
+        # issue time as the session start.
+        session_started_at = datetime.fromtimestamp(
+            int(payload.get("sid_iat", payload["iat"])), tz=UTC
+        )
+        return AccessTokenClaims(
+            UUID(payload["sub"]), auth_version, token_id, expires_at, issued_at, session_started_at
+        )
     except (InvalidTokenError, KeyError, TypeError, ValueError, OverflowError, OSError) as exc:
         raise AppError(401, "invalid_token", "登入憑證無效或已過期") from exc
 
@@ -113,24 +155,41 @@ def _presented_token(authorization: str | None, travel_access: str | None) -> st
     return travel_access
 
 
-async def _authenticate(session: AsyncSession, token: str) -> User:
+async def _authenticate(session: AsyncSession, token: str) -> tuple[User, AccessTokenClaims]:
     claims = decode_access_token_claims(token)
     user = await session.get(User, claims.user_id)
     if user is None or not user.is_active or user.auth_version != claims.auth_version:
         raise AppError(401, "invalid_user", "這個帳號目前無法使用")
     await ensure_token_not_revoked(claims)
-    return user
+    return user, claims
+
+
+def _renew_cookie_session(
+    response: Response, user: User, claims: AccessTokenClaims, *, from_cookie: bool
+) -> None:
+    """Slide a cookie session forward; bearer clients manage their own tokens."""
+    if not from_cookie or not should_renew_session(claims):
+        return
+    set_auth_cookie(
+        response,
+        create_access_token(
+            user.id, user.auth_version, session_started_at=claims.session_started_at
+        ),
+    )
 
 
 async def current_user(
     session: Annotated[AsyncSession, Depends(get_session)],
+    response: Response,
     authorization: Annotated[str | None, Header()] = None,
     travel_access: Annotated[str | None, Cookie()] = None,
 ) -> User:
     token = _presented_token(authorization, travel_access)
     if not token:
         raise AppError(401, "authentication_required", "請先登入再繼續")
-    return await _authenticate(session, token)
+    user, claims = await _authenticate(session, token)
+    _renew_cookie_session(response, user, claims, from_cookie=not authorization)
+    return user
 
 
 CurrentUser = Annotated[User, Depends(current_user)]
@@ -138,13 +197,16 @@ CurrentUser = Annotated[User, Depends(current_user)]
 
 async def optional_current_user(
     session: Annotated[AsyncSession, Depends(get_session)],
+    response: Response,
     authorization: Annotated[str | None, Header()] = None,
     travel_access: Annotated[str | None, Cookie()] = None,
 ) -> User | None:
     token = _presented_token(authorization, travel_access)
     if not token:
         return None
-    return await _authenticate(session, token)
+    user, claims = await _authenticate(session, token)
+    _renew_cookie_session(response, user, claims, from_cookie=not authorization)
+    return user
 
 
 OptionalCurrentUser = Annotated[User | None, Depends(optional_current_user)]

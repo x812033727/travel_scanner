@@ -42,6 +42,7 @@ from app.auth.service import (
     is_admin_user,
     is_reserved_admin_email,
     revoke_access_token,
+    set_auth_cookie,
     verify_password,
 )
 from app.config import get_settings
@@ -72,19 +73,6 @@ async def user_response(session: AsyncSession, user: User) -> UserResponse:
         has_password=bool(user.password_hash),
         auth_methods=methods,
         identity_count=len(identities),
-    )
-
-
-def set_auth_cookie(response: Response, token: str) -> None:
-    settings = get_settings()
-    response.set_cookie(
-        "travel_access",
-        token,
-        httponly=True,
-        secure=settings.cookie_secure,
-        samesite="lax",
-        max_age=settings.access_token_expire_minutes * 60,
-        path="/",
     )
 
 
