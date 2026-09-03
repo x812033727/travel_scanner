@@ -47,7 +47,7 @@ def test_validate_names_requires_every_site_locale() -> None:
 
 
 def test_areas_mirror_destination_profiles_with_five_locales() -> None:
-    assert len(AREA_SEEDS) == 124
+    assert len(AREA_SEEDS) == 132
     assert Counter(seed.destination_id for seed in AREA_SEEDS) == {
         profile.id: 4 for profile in DESTINATIONS
     }
@@ -59,7 +59,7 @@ def test_areas_mirror_destination_profiles_with_five_locales() -> None:
             assert set(seed.names) == set(LOCALES)
             assert seed.names["zh-TW"] == source_name
     combined = [seed for seed in AREA_SEEDS if "／" in seed.source_name]
-    assert len(combined) == 5
+    assert len(combined) == 8
     assert all(" / " in seed.names["en"] for seed in combined)
     assert AREA_SEEDS_BY_SLUG["osaka-kyoto-namba-shinsaibashi"].names["ja"] == "難波・心斎橋"
     assert AREA_SEEDS_BY_SLUG["tokyo-shibuya"].names["zh-CN"] == "涩谷"

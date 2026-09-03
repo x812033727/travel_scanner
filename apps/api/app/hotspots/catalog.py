@@ -35,6 +35,9 @@ class HotspotSeed:
     depth_components: dict[str, int] | None = None
     source_urls: tuple[str, ...] = ()
     coordinate_source: str | None = None
+    # Who proposed the place ("gemini" for the AI-curated Kanto list, "editorial" for
+    # rows added by hand to complete a destination); surfaced to admins only.
+    provenance: str | None = None
 
     @property
     def wikipedia_url(self) -> str | None:
@@ -179,7 +182,10 @@ def _load_seeds() -> tuple[HotspotSeed, ...]:
     food_area_rows = json.loads(
         Path(__file__).with_name("food_area_bootstrap.json").read_text(encoding="utf-8")
     )
-    rows = [*base_rows, *deep_rows, *secondary_rows, *food_area_rows]
+    kanto_rows = json.loads(
+        Path(__file__).with_name("kanto_expansion_bootstrap.json").read_text(encoding="utf-8")
+    )
+    rows = [*base_rows, *deep_rows, *secondary_rows, *food_area_rows, *kanto_rows]
     seeds: list[HotspotSeed] = []
     for row in rows:
         city = CITY_BY_CODE[row["city_code"]]
@@ -222,6 +228,7 @@ def _load_seeds() -> tuple[HotspotSeed, ...]:
                 depth_components=row.get("depth_components"),
                 source_urls=tuple(row.get("source_urls", ())),
                 coordinate_source=row.get("coordinate_source"),
+                provenance=row.get("provenance"),
             )
         )
     if (
@@ -229,12 +236,14 @@ def _load_seeds() -> tuple[HotspotSeed, ...]:
         or len(deep_rows) != 95
         or len(secondary_rows) != 180
         or len(food_area_rows) != 5
-        or len(seeds) != 450
+        or len(kanto_rows) != 113
+        or len(seeds) != 563
     ):
         raise RuntimeError(
-            "expected 170 standard + 95 deep + 180 secondary + 5 food-area hotspots, "
-            f"found {len(base_rows)} + {len(deep_rows)} + "
-            f"{len(secondary_rows)} + {len(food_area_rows)}"
+            "expected 170 standard + 95 deep + 180 secondary + 5 food-area "
+            "+ 113 Kanto-expansion hotspots, "
+            f"found {len(base_rows)} + {len(deep_rows)} + {len(secondary_rows)} + "
+            f"{len(food_area_rows)} + {len(kanto_rows)}"
         )
     qids = [seed.wikidata_item_id for seed in seeds if seed.wikidata_item_id]
     if len(set(qids)) != len(qids):
@@ -248,13 +257,13 @@ def _load_seeds() -> tuple[HotspotSeed, ...]:
         # so it keeps collecting against the stale title. Fail the import instead.
         raise RuntimeError(f"LEGACY_SLUGS keys match no wikipedia_title: {unmatched}")
     deep = [seed for seed in seeds if seed.is_deep_travel]
-    if len(deep) != 155 or any((seed.depth_score or 0) < 70 for seed in deep):
-        raise RuntimeError("deep bootstrap must contain exactly 155 reviewed scores >= 70")
+    if len(deep) != 165 or any((seed.depth_score or 0) < 70 for seed in deep):
+        raise RuntimeError("deep bootstrap must contain exactly 165 reviewed scores >= 70")
     food_destinations = {seed.destination_id for seed in seeds if seed.category == "food"}
     missing_food_destinations = sorted(
         set(CITY_BY_CODE) - {seed.city_code for seed in seeds if seed.category == "food"}
     )
-    if missing_food_destinations or len(food_destinations) != 31:
+    if missing_food_destinations or len(food_destinations) != 33:
         raise RuntimeError(
             f"every destination must have a reviewed food area; missing {missing_food_destinations}"
         )

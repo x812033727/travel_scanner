@@ -121,10 +121,13 @@ class GoogleTravelService:
         country_codes: list[str] | None = None,
         latitude: float | None = None,
         longitude: float | None = None,
+        kinds: str | None = None,
     ) -> list[dict[str, Any]]:
         if not self.configured or len(query.strip()) < 2:
             return []
         body: dict[str, Any] = {"input": query.strip(), "languageCode": self.locale}
+        if kinds == "cities":
+            body["includedPrimaryTypes"] = ["(cities)"]
         if session_token:
             body["sessionToken"] = session_token
         if country_codes:

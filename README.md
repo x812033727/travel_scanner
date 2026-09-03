@@ -535,9 +535,9 @@ external availability part of normal CI.
 ## Travel hotspot intelligence
 
 The public `/hotspots` page searches a time-stamped attraction catalog and shows global,
-destination, main-city, secondary-city and deep-travel rankings across 31 destinations in seven
-Asian markets. The offline catalog contains 450 reviewed places; weekly discovery can expand it
-to 529. The scheduled `hotspot-collector` seeds stable place identities, collects the latest and
+destination, main-city, secondary-city and deep-travel rankings across 33 destinations in seven
+Asian markets. The offline catalog contains 563 reviewed places; weekly discovery can expand it
+to 649. The scheduled `hotspot-collector` seeds stable place identities, collects the latest and
 preceding 30-day Wikimedia pageview totals, and writes explainable ranking snapshots. Cold-start
 values remain visibly marked as estimates rather than live popularity.
 

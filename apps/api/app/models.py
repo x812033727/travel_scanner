@@ -451,6 +451,8 @@ class TravelHotspot(Timestamped, Base):
     is_deep_travel: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
     depth_kind: Mapped[str | None] = mapped_column(String(24), nullable=True)
     depth_score: Mapped[Decimal | None] = mapped_column(Numeric(5, 2), nullable=True)
+    # Derived from the coordinates by app.hotspots.areas; recomputed on every collect run.
+    area_code: Mapped[str | None] = mapped_column(String(32), nullable=True, index=True)
 
 
 class HotspotFavorite(Timestamped, Base):

@@ -387,6 +387,94 @@ AREA_SEEDS: tuple[AreaSeed, ...] = (
         order=4,
         terms=("平和記念公園", "Peace Park"),
     ),
+    _a(
+        "yokohama",
+        "minato-mirai",
+        "港未來",
+        "Minato Mirai",
+        "みなとみらい",
+        "미나토미라이",
+        "港未来",
+        order=1,
+        terms=("みなとみらい", "Minato Mirai"),
+    ),
+    _a(
+        "yokohama",
+        "kannai-bashamichi",
+        "關內／馬車道",
+        "Kannai / Bashamichi",
+        "関内・馬車道",
+        "간나이·바샤미치",
+        "关内／马车道",
+        order=2,
+        terms=("関内", "馬車道", "Kannai", "Bashamichi"),
+    ),
+    _a(
+        "yokohama",
+        "chinatown-motomachi",
+        "中華街／元町",
+        "Chinatown / Motomachi",
+        "中華街・元町",
+        "차이나타운·모토마치",
+        "中华街／元町",
+        order=3,
+        terms=("中華街", "元町", "Chinatown", "Motomachi"),
+    ),
+    _a(
+        "yokohama",
+        "yokohama-station",
+        "橫濱站",
+        "Yokohama Station",
+        "横浜駅",
+        "요코하마역",
+        "横滨站",
+        order=4,
+        terms=("横浜駅", "Yokohama Station"),
+    ),
+    _a(
+        "kamakura",
+        "kamakura-station-komachi",
+        "鎌倉站／小町通",
+        "Kamakura Station / Komachi-dori",
+        "鎌倉駅・小町通り",
+        "가마쿠라역·고마치도리",
+        "镰仓站／小町通",
+        order=1,
+        terms=("鎌倉駅", "小町通り", "Kamakura Station", "Komachi"),
+    ),
+    _a(
+        "kamakura",
+        "hase",
+        "長谷",
+        "Hase",
+        "長谷",
+        "하세",
+        "长谷",
+        order=2,
+        terms=("長谷", "Hase"),
+    ),
+    _a(
+        "kamakura",
+        "kita-kamakura",
+        "北鎌倉",
+        "Kita-Kamakura",
+        "北鎌倉",
+        "기타카마쿠라",
+        "北镰仓",
+        order=3,
+        terms=("北鎌倉", "Kita-Kamakura"),
+    ),
+    _a(
+        "kamakura",
+        "yuigahama",
+        "由比濱",
+        "Yuigahama",
+        "由比ヶ浜",
+        "유이가하마",
+        "由比滨",
+        order=4,
+        terms=("由比ヶ浜", "Yuigahama"),
+    ),
     # South Korea.
     _a(
         "seoul",
@@ -1192,8 +1280,8 @@ def area_seed_for(destination_id: str, source_name: str) -> AreaSeed | None:
 
 
 def validate_area_catalog() -> None:
-    if len(AREA_SEEDS) != 124:
-        raise RuntimeError("area catalog must contain exactly 124 areas")
+    if len(AREA_SEEDS) != 132:
+        raise RuntimeError("area catalog must contain exactly 132 areas")
     slugs = [seed.slug for seed in AREA_SEEDS]
     if len(set(slugs)) != len(slugs):
         raise RuntimeError("area slugs must be unique")

@@ -82,7 +82,7 @@ describe("NewTripForm", () => {
     fireEvent.change(screen.getByLabelText("其他補充"), { target: { value: " 不要一直換飯店 " } });
     const review = within(screen.getByRole("region", { name: "完整行程條件" }));
     expect(review.getByText("每晚住宿預算")).toBeTruthy();
-    expect(review.getByText("$3,000～$7,000")).toBeTruthy();
+    expect(review.getByText("NT$3,000～NT$7,000")).toBeTruthy();
     expect(review.getByText("4 星以上")).toBeTruthy();
     expect(review.getByText("100 則以上")).toBeTruthy();
     expect(review.getByText("少走路")).toBeTruthy();
@@ -91,6 +91,8 @@ describe("NewTripForm", () => {
 
     await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/trip-1"));
     expect(window.sessionStorage.getItem("mokaair-new-trip-draft")).toBeNull();
+    const headers = (fetchMock.mock.calls[0][1] as RequestInit).headers as Record<string, string>;
+    expect(headers["Idempotency-Key"]).toMatch(/^[0-9a-f-]{36}$/);
     const request = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body));
     expect(request).toMatchObject({
       source: "blank", planning_mode: "ai_draft", name: "東京五日賞楓", destination_name: "東京", destination_place_id: null,
@@ -104,6 +106,25 @@ describe("NewTripForm", () => {
       },
       notes: "不要一直換飯店",
     });
+  });
+
+  it("reuses the same idempotency key when the user retries after a failure", async () => {
+    const fetchMock = vi.fn()
+      .mockRejectedValueOnce(new Error("API 服務回應逾時"))
+      .mockResolvedValueOnce(new Response(JSON.stringify({ id: "trip-2" }), { status: 201, headers: { "Content-Type": "application/json" } }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<NewTripForm />);
+    fillRequiredFields();
+    reachReview();
+
+    fireEvent.click(screen.getByRole("button", { name: /交給 AI 排好行程/ }));
+    await waitFor(() => expect(screen.getByRole("alert").textContent).toContain("逾時"));
+    fireEvent.click(screen.getByRole("button", { name: /交給 AI 排好行程/ }));
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/trip-2"));
+
+    const keys = fetchMock.mock.calls.map((call) => ((call[1] as RequestInit).headers as Record<string, string>)["Idempotency-Key"]);
+    expect(keys).toHaveLength(2);
+    expect(keys[0]).toBe(keys[1]);
   });
 
   it("creates a blank manual timeline without automatic route computation", async () => {

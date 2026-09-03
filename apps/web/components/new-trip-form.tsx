@@ -79,6 +79,9 @@ export function NewTripForm() {
     breakfast_required: false, refundable_required: false, avoid_red_eye: true, notes: "",
   });
   const errorRef = useRef<HTMLParagraphElement>(null);
+  // One key per creation attempt, kept across retries so a proxy timeout
+  // followed by a second click replays the same trip instead of duplicating it.
+  const submitKey = useRef<string | undefined>(undefined);
   const today = useMemo(() => new Date().toLocaleDateString("sv"), []);
   const days = tripDayCount(form.start_date, form.end_date);
   const travelerCount = Number(form.adults) + Number(form.children);
@@ -209,9 +212,11 @@ export function NewTripForm() {
     if (message) { setError(message); return; }
     setBusy(true);
     setError(undefined);
+    if (!submitKey.current) submitKey.current = crypto.randomUUID();
     try {
       const trip = await api<CreatedTrip>("/trips", {
         method: "POST",
+        headers: { "Idempotency-Key": submitKey.current },
         body: JSON.stringify({
           source: "blank",
           planning_mode: planningMode,
@@ -241,6 +246,7 @@ export function NewTripForm() {
       });
       trackAnalytics("trip_created");
       clearDraft();
+      submitKey.current = undefined;
       router.push(`/trips/${trip.id}`);
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : "建立行程失敗，請稍後再試。");
@@ -254,7 +260,7 @@ export function NewTripForm() {
 
       <div className={step === 0 ? "grid gap-5" : "hidden"}>
         <label className="text-sm font-semibold">旅程名稱<input required maxLength={255} value={form.name} onChange={(event) => update("name", event.target.value)} placeholder="例如：東京五日賞楓" className={fieldClass} /></label>
-        <div><label htmlFor="trip-destination" className="text-sm font-semibold">目的地</label><div className="mt-2"><PlacePicker inputId="trip-destination" label="目的地" descriptionId="trip-destination-help" value={form.destination_name} confirmed={Boolean(form.destination_place_id)} countryCodes={["jp", "kr", "th"]} onTextChange={(value) => setForm((current) => ({ ...current, destination_name: value, destination_place_id: "" }))} onSelect={(place) => setForm((current) => ({ ...current, destination_name: place.name, destination_place_id: place.place_id }))} /></div><p id="trip-destination-help" className="mt-1 text-xs font-normal text-[var(--muted)]">由 Google Maps 搜尋日本、韓國與泰國城市；未啟用服務時仍可直接輸入。</p></div>
+        <div><label htmlFor="trip-destination" className="text-sm font-semibold">目的地</label><div className="mt-2"><PlacePicker inputId="trip-destination" label="目的地" descriptionId="trip-destination-help" value={form.destination_name} confirmed={Boolean(form.destination_place_id)} countryCodes={["jp", "kr", "th"]} kinds="cities" placeholder="搜尋城市，例如：東京、首爾、曼谷" onTextChange={(value) => setForm((current) => ({ ...current, destination_name: value, destination_place_id: "" }))} onSelect={(place) => setForm((current) => ({ ...current, destination_name: place.name, destination_place_id: place.place_id }))} /></div><p id="trip-destination-help" className="mt-1 text-xs font-normal text-[var(--muted)]">由 Google Maps 搜尋日本、韓國與泰國城市；未啟用服務時仍可直接輸入。</p></div>
         <div className="grid gap-4 sm:grid-cols-2"><label className="text-sm font-semibold">開始日期<input required type="date" min={today} value={form.start_date} onChange={(event) => { setError(undefined); setForm((current) => ({ ...current, start_date: event.target.value, end_date: current.end_date && current.end_date < event.target.value ? "" : current.end_date })); }} className={fieldClass} /></label><label className="text-sm font-semibold">結束日期<input required type="date" min={form.start_date || today} value={form.end_date} onChange={(event) => update("end_date", event.target.value)} className={fieldClass} /></label></div>
         {days > 0 && <p className="rounded-xl bg-[var(--paper)] px-4 py-3 text-sm">共 <strong>{days} 天</strong>，建立後會自動產生每天的行程區段。</p>}
       </div>

@@ -1,7 +1,7 @@
 """Add food areas, categories, merchant taxonomy links and merchant favorites.
 
-Revision ID: 0035_food_taxonomy
-Revises: 0034_route_alternatives
+Revision ID: 0036_food_taxonomy
+Revises: 0035_hotspot_area_code
 """
 
 from collections.abc import Sequence
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 from alembic import context, op
 from sqlalchemy.dialects import postgresql
 
-revision: str = "0035_food_taxonomy"
-down_revision: str | None = "0034_route_alternatives"
+revision: str = "0036_food_taxonomy"
+down_revision: str | None = "0035_hotspot_area_code"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

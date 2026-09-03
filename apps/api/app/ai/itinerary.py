@@ -11,6 +11,12 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 import httpx
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 
+from app.ai.structured_output import (
+    anthropic_output_text,
+    ensure_response_completed,
+    extract_json_document,
+    responses_output_text,
+)
 from app.config import Settings
 from app.search.schemas import SearchPreferences, Travelers, TripPace
 from app.trips.itinerary import ItineraryDay, ItineraryItem
@@ -189,49 +195,6 @@ def _schema() -> dict[str, Any]:
     return AIItineraryDraft.model_json_schema()
 
 
-def _json_document(text: str) -> str:
-    """Providers without enforced schemas tend to wrap the JSON in a ``` fence."""
-    stripped = text.strip()
-    if not stripped.startswith("```"):
-        return stripped
-    first_break = stripped.find("\n")
-    if first_break == -1:
-        return stripped
-    stripped = stripped[first_break + 1 :].strip()
-    if stripped.endswith("```"):
-        stripped = stripped[:-3].strip()
-    return stripped
-
-
-def _responses_output_text(body: dict[str, Any]) -> str:
-    """Read both the REST response shape and SDK-style convenience field."""
-    output_text = body.get("output_text")
-    if isinstance(output_text, str) and output_text.strip():
-        return output_text
-    output = body.get("output")
-    if not isinstance(output, list):
-        raise ValueError("AI 沒有回傳行程內容")
-    texts: list[str] = []
-    for message in output:
-        if not isinstance(message, dict):
-            continue
-        content = message.get("content")
-        if not isinstance(content, list):
-            continue
-        for item in content:
-            if not isinstance(item, dict):
-                continue
-            if item.get("type") == "refusal":
-                raise ValueError("AI 拒絕產生這份行程")
-            text = item.get("text")
-            if item.get("type") == "output_text" and isinstance(text, str):
-                texts.append(text)
-    joined = "".join(texts).strip()
-    if not joined:
-        raise ValueError("AI 沒有回傳行程內容")
-    return joined
-
-
 class ResponsesPlannerProvider:
     def __init__(
         self,
@@ -277,10 +240,9 @@ class ResponsesPlannerProvider:
             )
             response.raise_for_status()
             body = cast(dict[str, Any], response.json())
-            if body.get("status") not in {None, "completed"}:
-                raise ValueError("AI 回應未完成")
-            output_text = _responses_output_text(body)
-            return AIItineraryDraft.model_validate_json(_json_document(output_text))
+            ensure_response_completed(body)
+            output_text = responses_output_text(body)
+            return AIItineraryDraft.model_validate_json(extract_json_document(output_text))
         finally:
             if owns_client:
                 await client.aclose()
@@ -332,22 +294,8 @@ class AnthropicPlannerProvider:
             )
             response.raise_for_status()
             body = cast(dict[str, Any], response.json())
-            content = body.get("content")
-            if not isinstance(content, list):
-                raise ValueError("Claude 沒有回傳行程內容")
-            output_text = next(
-                (
-                    item.get("text")
-                    for item in content
-                    if isinstance(item, dict)
-                    and item.get("type") == "text"
-                    and isinstance(item.get("text"), str)
-                ),
-                None,
-            )
-            if not output_text:
-                raise ValueError("Claude 沒有回傳行程內容")
-            return AIItineraryDraft.model_validate_json(_json_document(output_text))
+            output_text = anthropic_output_text(body)
+            return AIItineraryDraft.model_validate_json(extract_json_document(output_text))
         finally:
             if owns_client:
                 await client.aclose()

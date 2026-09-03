@@ -8,6 +8,7 @@ import pytest_asyncio
 from sqlalchemy import delete, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.admin.listing import COUNTRY_RANK
 from app.db import SessionFactory, engine
 from app.foods.admin_router import (
     FoodAreaWritePayload,
@@ -15,8 +16,10 @@ from app.foods.admin_router import (
     FoodMerchantUpdatePayload,
     batch_foods,
     create_food_area,
+    list_admin_foods,
     update_food_merchant,
 )
+from app.foods.catalog import COUNTRY_NAMES
 from app.foods.service import (
     food_facets,
     list_foods,
@@ -88,7 +91,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         assert int(await session.scalar(select(func.count(FoodMerchant.id))) or 0) == 155
         assert int(await session.scalar(select(func.count(FoodMerchantFood.id))) or 0) == 173
         assert int(await session.scalar(select(func.count(FoodMerchantSource.id))) or 0) == 202
-        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == 124
+        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == 132
         assert int(await session.scalar(select(func.count(FoodCategory.id))) or 0) == 18
         assert int(await session.scalar(select(func.count(FoodMerchantCategory.id))) or 0) == 242
         assert (
@@ -273,8 +276,10 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         by_city = {
             city["id"]: city for country in cities["countries"] for city in country["cities"]
         }
-        assert len(by_city) == 31
+        assert len(by_city) == 33
         assert by_city["seoul"]["merchant_count"] == 1 and by_city["seoul"]["area_count"] == 4
+        assert by_city["yokohama"]["area_count"] == 4
+        assert by_city["kamakura"]["area_count"] == 4
         assert by_city["okinawa"]["merchant_count"] == 0
         assert by_city["tainan"]["parent_destination_id"] == "kaohsiung"
         assert cities["countries"][0]["code"] == "KR"
@@ -282,6 +287,28 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         assert {item["slug"]: item["merchant_count"] for item in seoul_categories["items"]}[
             "home-style"
         ] == 1
+
+        admin_listing = await list_admin_foods(
+            User(email="food-listing@example.test", password_hash="not-used", is_admin=True),
+            session,
+            locale="ja",
+            food_kind="dessert",
+            limit=100,
+        )
+        assert admin_listing["total"] == len(admin_listing["items"]) > 0
+        assert all(item["food_kind"] == "dessert" for item in admin_listing["items"])
+        assert all(
+            item["country_name"] == COUNTRY_NAMES[item["country_code"]]["ja"]
+            for item in admin_listing["items"]
+        )
+        ranks = [COUNTRY_RANK[item["country_code"]] for item in admin_listing["items"]]
+        assert ranks == sorted(ranks)
+        # The kind facet ignores the kind filter; the country facet honours it.
+        assert sum(kind["count"] for kind in admin_listing["facets"]["food_kinds"]) == 70
+        assert (
+            sum(country["count"] for country in admin_listing["facets"]["countries"])
+            == admin_listing["total"]
+        )
 
         seeded_merchant = await session.scalar(
             select(FoodMerchant).where(FoodMerchant.slug == "taipei-din-tai-fung")
@@ -397,7 +424,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             select(FoodCategory).where(FoodCategory.slug == "ramen")
         )
         assert renamed_category is not None and renamed_category.names_json["zh-TW"] == "拉麵專門店"
-        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == 124
+        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == 132
         assert int(await session.scalar(select(func.count(FoodCategory.id))) or 0) == 18
 
         admin = User(

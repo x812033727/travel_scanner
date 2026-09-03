@@ -296,6 +296,20 @@ async def enrich_hotspot_place(
             profile.match_status = "pending"
             return "pending", calls
         place_id = str(match.candidate["place_id"])
+        owner = await session.scalar(
+            select(TravelHotspot.id).where(
+                TravelHotspot.google_place_id == place_id, TravelHotspot.id != hotspot.id
+            )
+        )
+        if owner is not None:
+            # google_place_id is unique: assigning it would abort the whole chunk with an
+            # IntegrityError. Keep the candidate for a human to decide which row owns it.
+            profile.match_status = "pending"
+            profile.match_evidence_json = {
+                **(profile.match_evidence_json or {}),
+                "duplicate_place_id": str(owner),
+            }
+            return "pending", calls
         hotspot.google_place_id = place_id
         if hotspot.country_code.upper() != "KR":
             hotspot.map_match_status = "verified"

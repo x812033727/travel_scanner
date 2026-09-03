@@ -20,6 +20,12 @@ from app.crawlers.verification import build_verification_report
 from app.db import SessionFactory
 from app.foods.service import seed_food_catalog
 from app.hotspots.jobs import collect_once
+from app.hotspots.place_matching import (
+    MatchReport,
+    approve_pending_candidate,
+    match_missing_places,
+    missing_place_targets,
+)
 from app.infra import get_redis
 from app.models import (
     AdminAuditLog,
@@ -27,6 +33,7 @@ from app.models import (
     FoodCategory,
     FoodMerchant,
     FoodMerchantCategory,
+    TravelHotspot,
     User,
 )
 from app.places.naver import NaverPlaceService
@@ -250,6 +257,65 @@ async def seed_foods() -> dict[str, int]:
     return counts
 
 
+def _format_match(report: MatchReport) -> str:
+    line = f"{report.outcome:16} {report.slug:44} {report.name}"
+    if report.candidate:
+        details = ", ".join(
+            f"{key}={value}" for key, value in report.candidate.items() if value is not None
+        )
+        line += f"\n{'':17}candidate: {details}"
+    return line
+
+
+async def match_hotspot_places(
+    destination_ids: list[str],
+    slug_prefix: str | None,
+    limit: int | None,
+    dry_run: bool,
+    approve: list[str],
+) -> None:
+    """Fill Google Place IDs for public hotspots that have none, or approve candidates."""
+
+    async with SessionFactory() as session:
+        settings = await load_runtime_settings(session)
+        if not settings.google_maps_api_key or not settings.hotspot_place_enrichment_enabled:
+            raise SystemExit("Google Maps 尚未設定，或地點補齊已停用")
+        redis = get_redis()
+        if approve:
+            for slug in approve:
+                hotspot = await session.scalar(
+                    select(TravelHotspot).where(TravelHotspot.slug == slug.strip().casefold())
+                )
+                if hotspot is None:
+                    print(f"{'not_found':16} {slug}")
+                    continue
+                print(
+                    _format_match(
+                        await approve_pending_candidate(session, redis, settings, hotspot)
+                    )
+                )
+            return
+        targets = await missing_place_targets(
+            session,
+            destination_ids=tuple(destination_ids),
+            slug_prefix=slug_prefix,
+            limit=limit,
+        )
+        print(f"{len(targets)} public hotspots without a Google Place ID")
+        if dry_run:
+            for hotspot in targets:
+                print(f"  {hotspot.slug:44} {hotspot.name}")
+            return
+        reports = await match_missing_places(session, redis, settings, targets)
+        for report in reports:
+            print(_format_match(report))
+        summary = {
+            outcome: sum(1 for report in reports if report.outcome == outcome)
+            for outcome in sorted({report.outcome for report in reports})
+        }
+        print(f"summary: {summary} google_calls={sum(report.calls for report in reports)}")
+
+
 def main() -> None:
     if isinstance(sys.stdout, TextIOWrapper):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -292,6 +358,29 @@ def main() -> None:
         "seed-foods",
         help="Upsert the food catalog, merchants, areas and categories, then print the counts",
     )
+    places = subparsers.add_parser(
+        "match-hotspot-places",
+        help="Fill Google Place IDs for public hotspots that have none (uses the live key)",
+    )
+    places.add_argument(
+        "--destination",
+        action="append",
+        default=[],
+        metavar="DESTINATION_ID",
+        help="Limit to a destination id such as tokyo; repeatable",
+    )
+    places.add_argument("--slug-prefix", help="Limit to hotspot slugs starting with this text")
+    places.add_argument("--limit", type=int, help="Stop after this many hotspots")
+    places.add_argument(
+        "--dry-run", action="store_true", help="List the targets without calling Google"
+    )
+    places.add_argument(
+        "--approve",
+        action="append",
+        default=[],
+        metavar="SLUG",
+        help="Promote the stored pending candidate of this hotspot slug; repeatable",
+    )
     args = parser.parse_args()
     if args.command == "add-usage-package":
         asyncio.run(add_usage_package(args.email, args.package, args.reference))
@@ -315,6 +404,12 @@ def main() -> None:
         print(asyncio.run(collect_once()))
     elif args.command == "seed-foods":
         print(json.dumps(asyncio.run(seed_foods()), ensure_ascii=False))
+    elif args.command == "match-hotspot-places":
+        asyncio.run(
+            match_hotspot_places(
+                args.destination, args.slug_prefix, args.limit, args.dry_run, args.approve
+            )
+        )
 
 
 if __name__ == "__main__":

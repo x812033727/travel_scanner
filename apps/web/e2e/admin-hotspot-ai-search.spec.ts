@@ -54,7 +54,7 @@ test.beforeEach(async ({ page }) => {
 for (const width of [320, 390]) {
   test(`AI deep-search sheet is app-like at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 760 });
-    await page.goto("/zh-TW/admin/hotspots");
+    await page.goto("/zh-TW/admin/hotspots#guides");
     await page.getByRole("button", { name: "AI 搜尋" }).click();
     const dialog = page.getByRole("dialog", { name: "淺草寺" });
     await expect(dialog).toBeVisible();
@@ -73,7 +73,7 @@ for (const width of [320, 390]) {
 
 test("desktop uses a focused side panel", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop-chromium", "desktop layout only");
-  await page.goto("/zh-TW/admin/hotspots");
+  await page.goto("/zh-TW/admin/hotspots#guides");
   await page.getByRole("button", { name: "AI 搜尋" }).click();
   const dialog = page.getByRole("dialog", { name: "淺草寺" });
   await expect(dialog).toBeVisible();
