@@ -9,7 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import SessionFactory, engine
 from app.hotspots.catalog import HOTSPOT_SEEDS
-from app.hotspots.service import seed_catalog
+from app.hotspots.service import hotspot_facets, seed_catalog, sync_hotspot_areas
 from app.models import HotspotPlaceProfile, HotspotSignal, TravelHotspot
 
 pytestmark = pytest.mark.skipif(
@@ -110,6 +110,41 @@ async def test_seeding_is_idempotent_on_a_clean_catalog() -> None:
     async with SessionFactory() as session:
         total = len(list((await session.scalars(select(TravelHotspot))).all()))
         assert total == len(HOTSPOT_SEEDS)
+        await _clear(session)
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_seeding_assigns_areas_and_sync_repairs_them() -> None:
+    async with SessionFactory() as session:
+        await _clear(session)
+        await seed_catalog(session, date(2026, 9, 1))
+        await session.commit()
+
+    async with SessionFactory() as session:
+        hotspot = await session.scalar(select(TravelHotspot).where(TravelHotspot.slug == "sensoji"))
+        assert hotspot is not None
+        assert hotspot.area_code == "asakusa"
+        facets = await hotspot_facets(session, "en")
+        assert "styles" not in facets
+        assert {
+            "destination_id": "tokyo",
+            "city_code": "NRT",
+            "code": "asakusa",
+            "name": "Asakusa & Tokyo Skytree",
+            "count": 2,
+        } in facets["areas"]
+        # A radius tweak or a coordinate fix must reach rows seeded earlier too.
+        hotspot.area_code = "stale"
+        await session.commit()
+
+    async with SessionFactory() as session:
+        assert await sync_hotspot_areas(session) == 1
+        await session.commit()
+
+    async with SessionFactory() as session:
+        hotspot = await session.scalar(select(TravelHotspot).where(TravelHotspot.slug == "sensoji"))
+        assert hotspot is not None
+        assert hotspot.area_code == "asakusa"
         await _clear(session)
 
 

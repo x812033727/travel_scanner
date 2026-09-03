@@ -16,7 +16,10 @@ describe("HotspotExplorer", () => {
           countries: [{ code: "JP", name: "日本", count: 56 }],
           cities: [{ code: "NRT", destination_id: "tokyo", name: "東京", country_code: "JP", count: 12, destination_role: "primary", parent_destination_id: null, is_cross_city: false }],
           categories: [{ code: "culture", count: 80 }],
-          styles: [{ code: "all", name: "全部旅遊", count: 170 }, { code: "deep", name: "深度旅遊", count: 95 }],
+          areas: [
+            { destination_id: "tokyo", city_code: "NRT", code: "asakusa", name: "淺草／晴空塔", count: 2 },
+            { destination_id: "tokyo", city_code: "NRT", code: "akihabara", name: "秋葉原／神田", count: 1 },
+          ],
         }));
       }
       if (url.includes("/hotspots/hotspot-1/guides")) {
@@ -86,6 +89,7 @@ describe("HotspotExplorer", () => {
           country_code: "JP",
           country_name: "日本",
           category: "culture",
+          area: { code: "asakusa", name: "淺草／晴空塔" },
           score: 88,
           components: { interest: 90, growth: 80, quality: 92, confidence: 80 },
           pageviews_30d: 12345,
@@ -118,12 +122,15 @@ describe("HotspotExplorer", () => {
     expect(fetchMock.mock.calls.some(([input]) => String(input).includes("/hotspots/sources"))).toBe(false);
     expect(screen.getByText("已載入 1／170 個結果")).toBeTruthy();
     expect(screen.getByRole("button", { name: "載入更多" })).toBeTruthy();
-    expect(screen.getAllByText(/深度旅遊/).length).toBeGreaterThan(0);
-    expect(screen.getByText("市區巷弄")).toBeTruthy();
-    expect(screen.getByText(/交通約 20 分鐘/)).toBeTruthy();
+    // City tiers and deep-travel styles are gone from the public page: no selects, no chips.
+    expect(screen.queryByText(/深度旅遊/)).toBeNull();
+    expect(screen.queryByText("市區巷弄")).toBeNull();
+    expect(screen.queryByText(/交通約 20 分鐘/)).toBeNull();
+    expect(screen.queryByRole("combobox", { name: "全部城市層級" })).toBeNull();
+    expect(screen.queryByRole("combobox", { name: "全部旅遊" })).toBeNull();
     expect(screen.getByRole("button", { name: /景點詳情/ })).toBeTruthy();
     const map = screen.getByRole("link", { name: /Google Maps/ });
-    expect(map.textContent).toContain("東京 · 文化古蹟");
+    expect(map.textContent).toContain("東京 · 淺草／晴空塔 · 文化古蹟");
     expect(map.getAttribute("href")).toContain("query_place_id=ChIJ-test");
     expect(map.getAttribute("href")).not.toContain("35.7");
     expect(map.getAttribute("target")).toBe("_blank");
@@ -150,6 +157,21 @@ describe("HotspotExplorer", () => {
     const guide = await screen.findByRole("link", { name: /第一次去淺草寺/ });
     expect(guide.getAttribute("target")).toBe("_blank");
     expect(guide.getAttribute("href")).toContain("/zh-TW/out/guides/");
+    fireEvent.keyDown(document, { key: "Escape" });
+    await waitFor(() => expect(screen.queryByRole("dialog", { name: "認識 淺草寺" })).toBeNull());
+
+    // The area filter only opens once a city is chosen, then scopes the ranking request.
+    const areaSelect = screen.getByRole("combobox", { name: "全部區域" }) as HTMLSelectElement;
+    expect(areaSelect.disabled).toBe(true);
+    fireEvent.change(screen.getByRole("combobox", { name: "全部城市" }), { target: { value: "tokyo" } });
+    await waitFor(() => expect(areaSelect.disabled).toBe(false));
+    expect(within(areaSelect).getByRole("option", { name: "秋葉原／神田 (1)" })).toBeTruthy();
+    fireEvent.change(areaSelect, { target: { value: "akihabara" } });
+    fireEvent.click(screen.getByRole("button", { name: "查看排行" }));
+    await waitFor(() => expect(fetchMock.mock.calls.some(([input]) => {
+      const url = String(input);
+      return url.includes("/hotspots/rankings?") && url.includes("destination_id=tokyo") && url.includes("area=akihabara") && !url.includes("style=");
+    })).toBe(true));
   });
 
   it("requires sign-in for details, sources, and sharing without loading protected content", async () => {
@@ -159,7 +181,7 @@ describe("HotspotExplorer", () => {
         return new Response(JSON.stringify({ code: "authentication_required" }), { status: 401 });
       }
       if (url.includes("/hotspots/facets")) {
-        return new Response(JSON.stringify({ total: 1, countries: [], cities: [], categories: [], styles: [] }));
+        return new Response(JSON.stringify({ total: 1, countries: [], cities: [], categories: [], areas: [] }));
       }
       return new Response(JSON.stringify({
         scope: "global", scope_key: "global", observed_on: "2026-08-31", window_days: 30,

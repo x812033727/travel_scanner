@@ -102,8 +102,11 @@ scraping fallback in production.
 - `GET /api/v1/destinations`: the canonical destination directory, including role, parent,
   gateways, lodging areas and recommended days.
 - `GET /api/v1/hotspots/rankings`: searchable ranking with stable `destination_id`, legacy
-  `city_code`, role, country, category, style and cursor filters.
-- `GET /api/v1/hotspots/facets`: dynamic country, destination, category and travel-style counts.
+  `city_code`, country, category, `area` and cursor filters (`area` is a district code
+  scoped to the destination, see below); the `role` and `style` filters remain for the
+  planner but the public explorer no longer exposes city tiers or deep-travel styles.
+- `GET /api/v1/hotspots/facets`: dynamic country, destination, category and per-destination
+  area counts, with area names localized through `X-Travel-Locale`.
 - `GET /api/v1/hotspots/sources`: public source purpose, persistence and readiness status.
 - `GET /api/v1/hotspots/{id}/place`: policy-aware current place details, field sources,
   freshness and Google attribution.

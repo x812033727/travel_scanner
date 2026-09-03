@@ -272,7 +272,7 @@ def test_off_hours_and_overlong_draft_fields_survive_parsing_and_normalize() -> 
 
 
 def test_json_document_strips_fences_and_keeps_plain_json() -> None:
-    from app.ai.itinerary import _json_document
+    from app.ai.structured_output import extract_json_document as _json_document
 
     payload = '{"summary": "ok", "days": []}'
     assert _json_document(payload) == payload

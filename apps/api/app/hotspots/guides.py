@@ -14,7 +14,7 @@ from uuid import UUID
 import httpx
 from redis.asyncio import Redis
 from redis.exceptions import RedisError
-from sqlalchemy import case, func, or_, select
+from sqlalchemy import ColumnElement, Delete, and_, case, delete, func, or_, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -133,7 +133,7 @@ def classify_content_locale(
         return "en", Decimal("1.000")
     if re.search(r"[\uac00-\ud7af]", text):
         return "ko", Decimal("0.900")
-    if re.search(r"[\u3040-\u30ff]", text):
+    if re.search(r"[\u3040-\u30fa\u30fd-\u30ff]", text):
         return "ja", Decimal("0.900")
     if re.search(r"[\u4e00-\u9fff]", text):
         return requested, Decimal("0.700")
@@ -287,7 +287,10 @@ class BraveGuideProvider:
         response.raise_for_status()
         candidates: list[GuideCandidate] = []
         for rank, item in enumerate(response.json().get("web", {}).get("results", []), start=1):
-            url = canonical_external_url(str(item.get("url") or ""))
+            try:
+                url = canonical_external_url(str(item.get("url") or ""))
+            except AppError:
+                continue
             if youtube_video_id(url):
                 continue
             detected_locale, confidence = classify_content_locale(
@@ -319,55 +322,91 @@ async def _search_name(session: AsyncSession, hotspot: TravelHotspot, locale: Lo
     return localization.name if localization else hotspot.name
 
 
+def manual_guide_filter() -> ColumnElement[bool]:
+    """Rows an admin added by hand: provider ``manual`` or tagged in metadata (videos)."""
+    return or_(
+        HotspotGuide.provider == "manual",
+        HotspotGuide.metadata_json["discovery_method"].as_string() == "manual",
+    )
+
+
+def not_manual_guide_filter() -> ColumnElement[bool]:
+    discovery_method = HotspotGuide.metadata_json["discovery_method"].as_string()
+    return and_(
+        HotspotGuide.provider != "manual",
+        or_(discovery_method.is_(None), discovery_method != "manual"),
+    )
+
+
+def stale_youtube_guides_delete(cutoff: datetime) -> Delete:
+    """Delete YouTube rows whose metadata was never re-verified; manual picks are kept."""
+    return delete(HotspotGuide).where(
+        HotspotGuide.provider == "youtube",
+        HotspotGuide.last_verified_at < cutoff,
+        not_manual_guide_filter(),
+    )
+
+
+async def upsert_guide(
+    session: AsyncSession, hotspot_id: UUID, candidate: GuideCandidate
+) -> tuple[HotspotGuide, bool]:
+    """Insert ``candidate`` or refresh the row that already stores its URL.
+
+    Returns the row and whether it was newly created. A refreshed row keeps its
+    locale and review status so re-discovery never undoes an admin decision.
+    """
+    now = datetime.now(UTC)
+    existing = await session.scalar(
+        select(HotspotGuide).where(
+            HotspotGuide.hotspot_id == hotspot_id,
+            HotspotGuide.canonical_url == candidate.canonical_url,
+        )
+    )
+    if existing:
+        existing.title = candidate.title
+        existing.creator_name = candidate.creator_name
+        existing.thumbnail_url = candidate.thumbnail_url
+        existing.summary = candidate.summary
+        existing.published_at = candidate.published_at
+        existing.view_count = candidate.view_count
+        existing.last_verified_at = now
+        existing.metadata_expires_at = now + timedelta(days=7)
+        existing.metadata_json = {**existing.metadata_json, **candidate.metadata}
+        return existing, False
+    guide = HotspotGuide(
+        hotspot_id=hotspot_id,
+        content_type=candidate.content_type,
+        provider=candidate.provider,
+        locale=candidate.locale,
+        title=candidate.title,
+        creator_name=candidate.creator_name,
+        canonical_url=candidate.canonical_url,
+        provider_content_id=candidate.provider_content_id,
+        thumbnail_url=candidate.thumbnail_url,
+        summary=candidate.summary,
+        published_at=candidate.published_at,
+        duration_seconds=candidate.duration_seconds,
+        view_count=candidate.view_count,
+        language_confidence=candidate.language_confidence,
+        discovery_rank=candidate.discovery_rank,
+        review_status="pending",
+        last_verified_at=now,
+        metadata_expires_at=now + timedelta(days=7),
+        metadata_json=candidate.metadata,
+    )
+    session.add(guide)
+    return guide, True
+
+
 async def save_candidates(
     session: AsyncSession, hotspot_id: UUID, candidates: list[GuideCandidate]
 ) -> int:
     created = 0
-    now = datetime.now(UTC)
     for candidate in candidates:
         if not candidate.title:
             continue
-        existing = await session.scalar(
-            select(HotspotGuide).where(
-                HotspotGuide.hotspot_id == hotspot_id,
-                HotspotGuide.canonical_url == candidate.canonical_url,
-            )
-        )
-        if existing:
-            existing.title = candidate.title
-            existing.creator_name = candidate.creator_name
-            existing.thumbnail_url = candidate.thumbnail_url
-            existing.summary = candidate.summary
-            existing.published_at = candidate.published_at
-            existing.view_count = candidate.view_count
-            existing.last_verified_at = now
-            existing.metadata_expires_at = now + timedelta(days=7)
-            existing.metadata_json = {**existing.metadata_json, **candidate.metadata}
-            continue
-        session.add(
-            HotspotGuide(
-                hotspot_id=hotspot_id,
-                content_type=candidate.content_type,
-                provider=candidate.provider,
-                locale=candidate.locale,
-                title=candidate.title,
-                creator_name=candidate.creator_name,
-                canonical_url=candidate.canonical_url,
-                provider_content_id=candidate.provider_content_id,
-                thumbnail_url=candidate.thumbnail_url,
-                summary=candidate.summary,
-                published_at=candidate.published_at,
-                duration_seconds=candidate.duration_seconds,
-                view_count=candidate.view_count,
-                language_confidence=candidate.language_confidence,
-                discovery_rank=candidate.discovery_rank,
-                review_status="pending",
-                last_verified_at=now,
-                metadata_expires_at=now + timedelta(days=7),
-                metadata_json=candidate.metadata,
-            )
-        )
-        created += 1
+        _, is_new = await upsert_guide(session, hotspot_id, candidate)
+        created += int(is_new)
     return created
 
 
@@ -502,6 +541,7 @@ async def list_guides(
     since = date.today() - timedelta(days=29)
     youtube_freshness = or_(
         HotspotGuide.provider != "youtube",
+        manual_guide_filter(),
         HotspotGuide.last_verified_at >= datetime.now(UTC) - timedelta(days=30),
     )
     clicks = (

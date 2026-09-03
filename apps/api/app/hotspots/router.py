@@ -12,6 +12,8 @@ from app.auth.service import CurrentUser
 from app.config import get_settings
 from app.db import get_session
 from app.destinations.catalog import DESTINATIONS, destination_for_code, destination_for_id
+from app.hotspots.areas import area_by_code
+from app.hotspots.cities import CITY_BY_DESTINATION_ID
 from app.hotspots.guides import canonical_external_url, list_guides, resolve_guide_open
 from app.hotspots.maps import build_map_links
 from app.hotspots.places import place_detail_payload
@@ -49,6 +51,19 @@ def _resolve_destination(
         raise AppError(422, "destination_mismatch", "city_code 與 destination_id 不一致")
     selected = by_id or by_code
     return (city_code.upper() if city_code else None, selected.id if selected else None)
+
+
+def _resolve_area(destination_id: str | None, area: str | None) -> str | None:
+    # Area codes are only unique inside a city ("old-town" exists in several), so an
+    # area filter is meaningless without the destination that scopes it.
+    if not area:
+        return None
+    city = CITY_BY_DESTINATION_ID.get(destination_id) if destination_id else None
+    if city is None:
+        raise AppError(422, "area_requires_destination", "篩選區域時必須同時指定目的地")
+    if area_by_code(city.code, area) is None:
+        raise AppError(422, "unsupported_area", "這個目的地沒有這個區域")
+    return area
 
 
 @router.get("/sources")
@@ -129,11 +144,13 @@ async def hotspot_rankings(
     country_code: Annotated[str | None, Query(min_length=2, max_length=2)] = None,
     category: Annotated[str | None, Query(min_length=2, max_length=32)] = None,
     role: Annotated[Literal["primary", "secondary", "extension"] | None, Query()] = None,
+    area: Annotated[str | None, Query(min_length=2, max_length=32)] = None,
     after_rank: Annotated[int | None, Query(ge=0)] = None,
     limit: Annotated[int, Query(ge=1, le=50)] = 20,
     style: Literal["all", "deep"] = "all",
 ) -> dict[str, Any]:
     resolved_city_code, resolved_destination_id = _resolve_destination(city_code, destination_id)
+    resolved_area = _resolve_area(resolved_destination_id, area)
     runtime = await load_runtime_settings(session)
     result = await list_rankings(
         session,
@@ -143,6 +160,7 @@ async def hotspot_rankings(
         country_code=country_code,
         category=category,
         role=role,
+        area=resolved_area,
         after_rank=after_rank,
         limit=limit,
         style=style,
@@ -158,8 +176,8 @@ async def hotspot_rankings(
 
 
 @router.get("/facets")
-async def hotspots_facets(session: Session) -> dict[str, Any]:
-    return await hotspot_facets(session)
+async def hotspots_facets(session: Session, locale: RequestLocale) -> dict[str, Any]:
+    return await hotspot_facets(session, locale)
 
 
 @router.get("/for-planner")
