@@ -91,7 +91,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         assert int(await session.scalar(select(func.count(FoodMerchant.id))) or 0) == 155
         assert int(await session.scalar(select(func.count(FoodMerchantFood.id))) or 0) == 173
         assert int(await session.scalar(select(func.count(FoodMerchantSource.id))) or 0) == 202
-        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == 124
+        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == 132
         assert int(await session.scalar(select(func.count(FoodCategory.id))) or 0) == 18
         assert int(await session.scalar(select(func.count(FoodMerchantCategory.id))) or 0) == 242
         assert (
@@ -422,7 +422,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             select(FoodCategory).where(FoodCategory.slug == "ramen")
         )
         assert renamed_category is not None and renamed_category.names_json["zh-TW"] == "拉麵專門店"
-        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == 124
+        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == 132
         assert int(await session.scalar(select(func.count(FoodCategory.id))) or 0) == 18
 
         admin = User(
