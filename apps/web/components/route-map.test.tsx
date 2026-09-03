@@ -190,7 +190,7 @@ describe("RouteMap", () => {
     expect(await screen.findByText("地圖載入失敗")).toBeTruthy();
     expect(screen.getByText(/尚未允許目前網站網域/)).toBeTruthy();
     expect(screen.queryByRole("img", { name: /Google Maps路線地圖/ })).toBeNull();
-    expect(document.getElementById("google-route-maps-js")).toBeNull();
+    expect(window.mokaairGoogleMapsAuthFailed).toBe(true);
   });
 
   it("installs the Google authorization guard before the public config enables the SDK", async () => {
