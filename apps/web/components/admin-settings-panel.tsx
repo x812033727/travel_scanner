@@ -81,6 +81,36 @@ type Snapshot = { providers: ProviderView[]; audit: Audit[]; encryption_source: 
 type Draft = { enabled: boolean; config: Record<string, string>; secrets: Record<string, string>; clearSecrets: string[] };
 type FieldMeta = { label: string; type?: "text" | "number" | "url" | "boolean"; options?: Array<{ value: string; label: string }>; help?: string };
 type AdminSettingsScope = "providers" | "system" | "layout";
+type ProviderCategory = "auth" | "ai" | "maps" | "content" | "travelData" | "affiliate" | "other";
+
+const providerCategories: ProviderCategory[] = ["auth", "ai", "maps", "content", "travelData", "affiliate", "other"];
+const providerCategoryOf: Record<string, ProviderCategory> = {
+  google_login: "auth",
+  line_login: "auth",
+  apple_login: "auth",
+  analytics: "auth",
+  ai_planner: "ai",
+  ai_guide_search: "ai",
+  google_maps: "maps",
+  naver_maps: "maps",
+  navitime: "maps",
+  youtube_guides: "content",
+  brave_guides: "content",
+  amadeus: "travelData",
+  skyscanner: "travelData",
+  duffel: "travelData",
+  flightaware: "travelData",
+  google_travel_impact: "travelData",
+  booking_demand: "travelData",
+  travelpayouts: "affiliate",
+  kkday: "affiliate",
+  klook: "affiliate",
+  airalo: "affiliate",
+  trip_com: "affiliate",
+  agoda: "affiliate",
+  booking: "affiliate",
+  skyscanner_affiliate: "affiliate",
+};
 
 const fieldMeta: Record<string, FieldMeta> = {
   auth_google_client_id: { label: "Google OAuth Client ID", help: "Google Cloud OAuth 2.0 Web Client ID。" },
@@ -536,19 +566,37 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
     scope === "system" ? item.target === "runtime" : scope === "layout" ? item.target === "layout" : item.target !== "runtime" && item.target !== "layout"
   );
   const auditPanel = "__audit";
-  const providerPanels = [...visibleProviders.map((provider) => provider.provider), auditPanel];
+  const categoryGroups = providerCategories
+    .map((category) => ({ category, providers: visibleProviders.filter((provider) => (providerCategoryOf[provider.provider] || "other") === category) }))
+    .filter((group) => group.providers.length > 0);
+  const categoryPanels: string[] = [...categoryGroups.map((group) => group.category), auditPanel];
+  const activeCategory = activePanel === auditPanel
+    ? auditPanel
+    : categoryGroups.find((group) => group.providers.some((provider) => provider.provider === activePanel))?.category || categoryPanels[0];
+  const activeGroupProviders = categoryGroups.find((group) => group.category === activeCategory)?.providers || [];
+  const providerPanels = activeGroupProviders.map((provider) => provider.provider);
   const displayedProviders = scope === "providers"
     ? visibleProviders.filter((provider) => provider.provider === activePanel)
     : visibleProviders;
   const showAudit = scope !== "providers" || activePanel === auditPanel;
 
-  function moveTab(event: React.KeyboardEvent<HTMLButtonElement>, index: number) {
+  function selectCategory(category: string) {
+    if (category === auditPanel) { setActivePanel(auditPanel); return; }
+    const first = categoryGroups.find((group) => group.category === category)?.providers[0];
+    if (first) setActivePanel(first.provider);
+  }
+
+  function categoryLabel(category: string) {
+    return category === auditPanel ? t("providerTabs.audit") : t(`providerTabs.categories.${category}`);
+  }
+
+  function moveTab(event: React.KeyboardEvent<HTMLButtonElement>, index: number, panels: string[], select: (panel: string) => void, idPrefix: string) {
     if (!(["ArrowLeft", "ArrowRight", "Home", "End"] as string[]).includes(event.key)) return;
     event.preventDefault();
-    const nextIndex = event.key === "Home" ? 0 : event.key === "End" ? providerPanels.length - 1 : (index + (event.key === "ArrowRight" ? 1 : -1) + providerPanels.length) % providerPanels.length;
-    const next = providerPanels[nextIndex];
-    setActivePanel(next);
-    requestAnimationFrame(() => document.getElementById(`provider-tab-${next}`)?.focus());
+    const nextIndex = event.key === "Home" ? 0 : event.key === "End" ? panels.length - 1 : (index + (event.key === "ArrowRight" ? 1 : -1) + panels.length) % panels.length;
+    const next = panels[nextIndex];
+    select(next);
+    requestAnimationFrame(() => document.getElementById(`${idPrefix}-${next}`)?.focus());
   }
 
   return <div className="mt-8 space-y-6">
@@ -557,19 +605,36 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
     {actionError && <p role="alert" className="rounded-xl bg-red-50 p-4 text-sm text-red-800">{actionError}</p>}
 
     {scope === "providers" && <>
-      <label className="block text-sm font-semibold md:hidden">
-        {t("providerTabs.mobileLabel")}
-        <select value={activePanel || visibleProviders[0]?.provider || auditPanel} onChange={(event) => setActivePanel(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-normal">
-          {visibleProviders.map((provider) => <option key={provider.provider} value={provider.provider}>{provider.label}</option>)}
-          <option value={auditPanel}>{t("providerTabs.audit")}</option>
-        </select>
-      </label>
-      <div role="tablist" aria-label={t("providerTabs.label")} className="hidden gap-2 overflow-x-auto pb-2 md:flex">
-        {providerPanels.map((panel, index) => {
-          const selected = panel === activePanel;
-          const label = panel === auditPanel ? t("providerTabs.audit") : visibleProviders.find((provider) => provider.provider === panel)?.label || panel;
-          return <button key={panel} id={`provider-tab-${panel}`} type="button" role="tab" aria-selected={selected} aria-controls={`provider-panel-${panel}`} tabIndex={selected ? 0 : -1} onClick={() => setActivePanel(panel)} onKeyDown={(event) => moveTab(event, index)} className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition ${selected ? "border-[var(--teal)] bg-[var(--teal)] text-white" : "border-[var(--line)] bg-white text-[var(--ink)] hover:border-[var(--teal)]"}`}>{label}</button>;
-        })}
+      <div className="grid gap-3 md:hidden">
+        <label className="block text-sm font-semibold">
+          {t("providerTabs.mobileCategoryLabel")}
+          <select value={activeCategory} onChange={(event) => selectCategory(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-normal">
+            {categoryPanels.map((category) => <option key={category} value={category}>{categoryLabel(category)}</option>)}
+          </select>
+        </label>
+        {activeCategory !== auditPanel && <label className="block text-sm font-semibold">
+          {t("providerTabs.mobileLabel")}
+          <select value={activePanel || providerPanels[0] || ""} onChange={(event) => setActivePanel(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-normal">
+            {activeGroupProviders.map((provider) => <option key={provider.provider} value={provider.provider}>{provider.label}</option>)}
+          </select>
+        </label>}
+      </div>
+      <div className="hidden md:block">
+        <div role="tablist" aria-label={t("providerTabs.categoryLabel")} className="flex gap-2 overflow-x-auto pb-2">
+          {categoryPanels.map((category, index) => {
+            const selected = category === activeCategory;
+            const group = categoryGroups.find((item) => item.category === category);
+            const readyCount = group ? group.providers.filter((provider) => provider.status === "ready").length : 0;
+            return <button key={category} id={`provider-category-tab-${category}`} type="button" role="tab" aria-selected={selected} tabIndex={selected ? 0 : -1} onClick={() => selectCategory(category)} onKeyDown={(event) => moveTab(event, index, categoryPanels, selectCategory, "provider-category-tab")} className={`flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition ${selected ? "border-[var(--teal)] bg-[var(--teal)] text-white" : "border-[var(--line)] bg-white text-[var(--ink)] hover:border-[var(--teal)]"}`}>{categoryLabel(category)}{group && <span className={`rounded-full px-2 py-0.5 text-[.65rem] tabular-nums ${selected ? "bg-white/20" : "bg-[var(--paper)] text-[var(--muted)]"}`}>{readyCount}/{group.providers.length}</span>}</button>;
+          })}
+        </div>
+        {activeCategory !== auditPanel && <div role="tablist" aria-label={t("providerTabs.label")} className="mt-3 flex gap-2 overflow-x-auto border-t border-[var(--line)] pb-2 pt-3">
+          {activeGroupProviders.map((provider, index) => {
+            const panel = provider.provider;
+            const selected = panel === activePanel;
+            return <button key={panel} id={`provider-tab-${panel}`} type="button" role="tab" aria-selected={selected} aria-controls={`provider-panel-${panel}`} tabIndex={selected ? 0 : -1} onClick={() => setActivePanel(panel)} onKeyDown={(event) => moveTab(event, index, providerPanels, setActivePanel, "provider-tab")} className={`flex shrink-0 items-center gap-2 rounded-xl border px-3.5 py-2 text-sm font-semibold transition ${selected ? "border-[var(--ink)] bg-[var(--ink)] text-white" : "border-[var(--line)] bg-white text-[var(--ink)] hover:border-[var(--ink)]"}`}><span aria-hidden="true" className={`h-2 w-2 rounded-full ${provider.status === "ready" ? "bg-emerald-400" : provider.status === "disabled" ? "bg-slate-300" : "bg-amber-400"}`} />{provider.label}</button>;
+          })}
+        </div>}
       </div>
     </>}
 
@@ -600,6 +665,6 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
       </section>;
     })}</div>
 
-    {showAudit && <section id={scope === "providers" ? `provider-panel-${auditPanel}` : undefined} role={scope === "providers" ? "tabpanel" : undefined} aria-labelledby={scope === "providers" ? `provider-tab-${auditPanel}` : undefined} className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 md:p-7"><h2 className="text-xl font-bold">最近管理紀錄</h2><p className="mt-1 text-sm text-[var(--muted)]">{scope === "system" ? "只記錄異動欄位、操作者與公開註冊結果，不記錄敏感設定內容。" : scope === "layout" ? t("layout.auditDescription") : "只記錄變更欄位名稱、操作者與測試結果，不記錄金鑰內容。"}</p>{visibleAudit.length ? <ol className="mt-5 divide-y divide-[var(--line)]">{visibleAudit.map((item) => <li key={item.id} className="grid gap-1 py-3 text-sm md:grid-cols-[10rem_1fr_auto]"><time className="text-[var(--muted)]">{dateTime.format(new Date(item.created_at))}</time><span className="font-semibold">{item.action === "layout_settings_updated" ? t("layout.auditAction") : auditActionLabel[item.action] || item.action} · {item.target}</span><code className="text-xs text-[var(--muted)]">{auditSummary(item.metadata)}</code></li>)}</ol> : <p className="mt-5 rounded-xl bg-[var(--paper)] p-5 text-sm text-[var(--muted)]">尚無管理操作紀錄。</p>}</section>}
+    {showAudit && <section id={scope === "providers" ? `provider-panel-${auditPanel}` : undefined} role={scope === "providers" ? "tabpanel" : undefined} aria-labelledby={scope === "providers" ? `provider-category-tab-${auditPanel}` : undefined} className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 md:p-7"><h2 className="text-xl font-bold">最近管理紀錄</h2><p className="mt-1 text-sm text-[var(--muted)]">{scope === "system" ? "只記錄異動欄位、操作者與公開註冊結果，不記錄敏感設定內容。" : scope === "layout" ? t("layout.auditDescription") : "只記錄變更欄位名稱、操作者與測試結果，不記錄金鑰內容。"}</p>{visibleAudit.length ? <ol className="mt-5 divide-y divide-[var(--line)]">{visibleAudit.map((item) => <li key={item.id} className="grid gap-1 py-3 text-sm md:grid-cols-[10rem_1fr_auto]"><time className="text-[var(--muted)]">{dateTime.format(new Date(item.created_at))}</time><span className="font-semibold">{item.action === "layout_settings_updated" ? t("layout.auditAction") : auditActionLabel[item.action] || item.action} · {item.target}</span><code className="text-xs text-[var(--muted)]">{auditSummary(item.metadata)}</code></li>)}</ol> : <p className="mt-5 rounded-xl bg-[var(--paper)] p-5 text-sm text-[var(--muted)]">尚無管理操作紀錄。</p>}</section>}
   </div>;
 }
