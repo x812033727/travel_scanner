@@ -93,8 +93,8 @@ class RouteSegment(BaseModel):
 
 
 class ExternalNavigation(BaseModel):
-    provider: str = "naver_maps"
-    label: str = "NAVER Maps"
+    provider: str
+    label: str
     travel_mode: TravelMode
     app_url: str
     web_url: str
@@ -298,12 +298,49 @@ class GoogleRouteProvider:
         )
         payload: dict[str, Any] = {}
         used_preference_fallback = False
-        attempts = [body]
+        used_live_preview_fallback = False
+        used_coordinate_fallback = False
+        attempts: list[tuple[dict[str, Any], str]] = [(body, "requested")]
         if transit_preference:
             attempts.append(
-                {key: value for key, value in body.items() if key != "transitPreferences"}
+                (
+                    {key: value for key, value in body.items() if key != "transitPreferences"},
+                    "without_preference",
+                )
             )
-        for attempt_index, attempt_body in enumerate(attempts):
+        if travel_mode == "transit" and schedule_mode == "preview":
+            current_route_body = {
+                key: value
+                for key, value in body.items()
+                if key not in {"departureTime", "transitPreferences"}
+            }
+            attempts.append((current_route_body, "current_schedule"))
+        uses_google_place_id = bool(
+            origin.provider_place_id and origin.place_provider in {None, "google_places"}
+        ) or bool(
+            destination.provider_place_id
+            and destination.place_provider in {None, "google_places"}
+        )
+        if uses_google_place_id:
+            coordinate_body = dict(attempts[-1][0])
+            coordinate_body["origin"] = {
+                "location": {
+                    "latLng": {
+                        "latitude": origin.latitude,
+                        "longitude": origin.longitude,
+                    }
+                }
+            }
+            coordinate_body["destination"] = {
+                "location": {
+                    "latLng": {
+                        "latitude": destination.latitude,
+                        "longitude": destination.longitude,
+                    }
+                }
+            }
+            attempts.append((coordinate_body, "coordinates"))
+        for attempt_index, (attempt_body, attempt_kind) in enumerate(attempts):
             try:
                 response = await self._post(attempt_body, fields)
                 response.raise_for_status()
@@ -319,16 +356,23 @@ class GoogleRouteProvider:
                         if exc.response.status_code == 429
                         else "provider_http_error",
                         "travel_mode": travel_mode,
-                        "preference_fallback": attempt_index > 0,
+                        "attempt_kind": attempt_kind,
                     },
                 )
-                if attempt_index + 1 < len(attempts):
+                if (
+                    exc.response.status_code not in {401, 403, 429}
+                    and attempt_index + 1 < len(attempts)
+                ):
                     continue
                 return None
             except httpx.HTTPError:
                 logger.warning(
                     "google_routes_network_error",
-                    extra={"provider": self.name, "reason_code": "provider_network_error"},
+                    extra={
+                        "provider": self.name,
+                        "reason_code": "provider_network_error",
+                        "attempt_kind": attempt_kind,
+                    },
                 )
                 if attempt_index + 1 < len(attempts):
                     continue
@@ -336,14 +380,25 @@ class GoogleRouteProvider:
             except ValueError:
                 logger.warning(
                     "google_routes_invalid_response",
-                    extra={"provider": self.name, "reason_code": "provider_invalid_response"},
+                    extra={
+                        "provider": self.name,
+                        "reason_code": "provider_invalid_response",
+                        "attempt_kind": attempt_kind,
+                    },
                 )
                 if attempt_index + 1 < len(attempts):
                     continue
                 return None
             routes = cast(list[dict[str, Any]], payload.get("routes", []))
             if routes:
-                used_preference_fallback = attempt_index > 0
+                used_preference_fallback = attempt_kind != "requested" and bool(
+                    transit_preference
+                )
+                used_live_preview_fallback = attempt_kind in {
+                    "current_schedule",
+                    "coordinates",
+                } and (travel_mode == "transit" and schedule_mode == "preview")
+                used_coordinate_fallback = attempt_kind == "coordinates"
                 break
             logger.info(
                 "google_routes_empty",
@@ -351,7 +406,7 @@ class GoogleRouteProvider:
                     "provider": self.name,
                     "reason_code": "no_route",
                     "travel_mode": travel_mode,
-                    "preference_fallback": attempt_index > 0,
+                    "attempt_kind": attempt_kind,
                 },
             )
         else:
@@ -359,6 +414,12 @@ class GoogleRouteProvider:
         routes = cast(list[dict[str, Any]], payload.get("routes", []))
         if used_preference_fallback:
             warnings.append("偏好條件沒有結果，已改用一般大眾運輸路線。")
+        if used_live_preview_fallback:
+            warnings.append(
+                "相同星期與時段沒有結果，已改用目前可取得的參考路線；出發前請重新確認。"
+            )
+        if used_coordinate_fallback:
+            warnings.append("精準地點識別無法建立路線，已用相同地點的座標重試。")
         route = routes[0]
         total_minutes = duration_minutes(route.get("duration"))
         if total_minutes is None:
@@ -595,9 +656,42 @@ def naver_external_navigation(
     )
     web_mode = {"transit": "transit", "walk": "walk", "drive": "car"}[travel_mode]
     return ExternalNavigation(
+        provider="naver_maps",
+        label="NAVER Maps",
         travel_mode=travel_mode,
         app_url=f"nmap://route/{mode}?{params}",
         web_url=f"https://map.naver.com/p/directions/{start}/{goal}/-/{web_mode}",
+        reason=reason,
+    )
+
+
+def google_external_navigation(
+    origin: RoutePoint,
+    destination: RoutePoint,
+    travel_mode: TravelMode,
+    *,
+    reason: str,
+) -> ExternalNavigation:
+    params = {
+        "api": 1,
+        "origin": origin.name,
+        "destination": destination.name,
+        "travelmode": travel_mode,
+    }
+    if origin.provider_place_id and origin.place_provider in {None, "google_places"}:
+        params["origin_place_id"] = origin.provider_place_id
+    if destination.provider_place_id and destination.place_provider in {
+        None,
+        "google_places",
+    }:
+        params["destination_place_id"] = destination.provider_place_id
+    url = f"https://www.google.com/maps/dir/?{urlencode(params)}"
+    return ExternalNavigation(
+        provider="google_maps",
+        label="Google Maps",
+        travel_mode=travel_mode,
+        app_url=url,
+        web_url=url,
         reason=reason,
     )
 

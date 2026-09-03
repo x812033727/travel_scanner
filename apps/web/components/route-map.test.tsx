@@ -37,6 +37,22 @@ const items = [
   },
 ];
 
+const segment = {
+  from_item_id: "from",
+  to_item_id: "to",
+  status: "resolved",
+  travel_mode: "transit" as const,
+  provider: "google_routes",
+  attribution: "Google Maps",
+  generated_at: "2026-09-03T00:00:00Z",
+  schedule_mode: "preview" as const,
+  preference: "FEWER_TRANSFERS",
+  duration_minutes: 24,
+  steps: [],
+  details_available: [],
+  warnings: [],
+};
+
 function ok(payload: unknown) {
   return new Response(JSON.stringify(payload), {
     status: 200,
@@ -72,7 +88,7 @@ describe("RouteMap", () => {
       google_maps_embed_enabled: true,
       naver_dynamic_map_enabled: false,
     })));
-    render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="KR" />);
+    render(<RouteMap items={items} segment={segment} fromItemId="from" toItemId="to" countryCode="KR" />);
 
     await waitFor(() => expect(screen.getByTitle("行程路線地圖")).toBeTruthy());
     const src = screen.getByTitle("行程路線地圖").getAttribute("src") || "";
@@ -80,5 +96,20 @@ describe("RouteMap", () => {
     expect(src).toContain("destination=37.5826%2C126.985");
     expect(src).not.toContain("naver-origin-id");
     expect(src).not.toContain("naver-destination-id");
+  });
+
+  it("does not load an embed before the provider returns a route", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => ok({
+      google_maps_browser_key: "google-browser-key",
+      google_maps_embed_enabled: true,
+      naver_dynamic_map_enabled: false,
+    })));
+    const { container } = render(
+      <RouteMap items={items} fromItemId="from" toItemId="to" countryCode="JP" />,
+    );
+
+    expect(await screen.findByText("取得路線後顯示互動地圖")).toBeTruthy();
+    expect(container.querySelector("iframe")).toBeNull();
+    expect(screen.getByText(/會提供保留精準起訖點的外部導航/)).toBeTruthy();
   });
 });

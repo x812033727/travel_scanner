@@ -147,10 +147,12 @@ export function RouteMap({
     : `${destination?.latitude},${destination?.longitude}`;
   const selectedMode = segment?.travel_mode || travelMode;
   const mapMode = selectedMode === "walk" ? "walking" : selectedMode === "drive" ? "driving" : "transit";
-  const googleSrc = browserKey && hasCoordinates
+  const googleSrc = browserKey && hasCoordinates && segment
     ? `https://www.google.com/maps/embed/v1/directions?key=${encodeURIComponent(browserKey)}&origin=${encodeURIComponent(originValue)}&destination=${encodeURIComponent(destinationValue)}&mode=${mapMode}&language=${encodeURIComponent(locale)}`
     : undefined;
-  const emptyTitle = !hasCoordinates ? "補齊兩端地點後顯示地圖" : segment ? "路線步驟已準備好" : "正在準備路線預覽";
+  const emptyTitle = !hasCoordinates
+    ? "補齊兩端地點後顯示地圖"
+    : segment ? "路線步驟已準備好" : "取得路線後顯示互動地圖";
   const mapSource = useNaver ? "NAVER Maps" : googleSrc ? "Google Maps" : undefined;
 
   return <section className={`route-map-card route-map-${variant}`}>
@@ -161,7 +163,7 @@ export function RouteMap({
         ? <div ref={mapElement} role="img" aria-label={`${origin?.title || "起點"}到${destination?.title || "終點"}的 NAVER 地圖`} className="absolute inset-0 h-full w-full" />
         : googleSrc
           ? <iframe title="行程路線地圖" src={googleSrc} className="absolute inset-0 h-full w-full border-0" loading="lazy" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
-          : <div className="absolute inset-0 grid place-items-center bg-[linear-gradient(135deg,#edf5f1,#f8f5ee)] p-6 text-center"><div><MapPin size={28} className="mx-auto text-[var(--teal)]" /><p className="mt-3 font-semibold">{emptyTitle}</p><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-[var(--muted)]">{!hasCoordinates ? "系統會依目的地使用 NAVER 或 Google 自動配對；仍找不到時可直接編輯景點。" : "地圖服務未設定或受網域限制；仍可查看已驗證的移動步驟。"}</p></div></div>}
+          : <div className="absolute inset-0 grid place-items-center bg-[linear-gradient(135deg,#edf5f1,#f8f5ee)] p-6 text-center"><div><MapPin size={28} className="mx-auto text-[var(--teal)]" /><p className="mt-3 font-semibold">{emptyTitle}</p><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-[var(--muted)]">{!hasCoordinates ? "系統會依目的地使用 NAVER 或 Google 自動配對；仍找不到時可直接編輯景點。" : !segment ? "先取得 Provider 路線；若站內班次不可用，會提供保留精準起訖點的外部導航。" : "地圖服務未設定或受網域限制；仍可查看已驗證的移動步驟。"}</p></div></div>}
     </div>
     <div className="border-t border-[var(--line)] px-5 py-3 text-xs text-[var(--muted)]">{segment ? `${segment.schedule_mode === "preview" ? "預覽班次" : segment.schedule_mode === "live" ? "目前路線" : "指定日期班次"} · ${segment.attribution}` : `${mapSource || "地圖"}僅供視覺確認；有 Provider 路線後才可套用時間`}</div>
   </section>;

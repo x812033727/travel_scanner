@@ -87,6 +87,32 @@ describe("trip editor", () => {
     expect(window.localStorage.getItem("travel-planner-theme")).toBe("ocean");
   }, 10_000);
 
+  it("hides the mobile quick toolbar while reordering to prevent covered controls", async () => {
+    const twoStopTrip = {
+      ...trip,
+      items: [
+        trip.items[0],
+        {
+          ...trip.items[0],
+          id: "00000000-0000-4000-8000-000000000003",
+          position: 1,
+          title: "晴空塔",
+          location_name: "押上",
+        },
+      ],
+    };
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(twoStopTrip))));
+    render(<TripEditor tripId={trip.id} />);
+
+    expect(await screen.findByRole("toolbar", { name: "行程快速操作" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "排序行程" }));
+
+    expect(screen.queryByRole("toolbar", { name: "行程快速操作" })).toBeNull();
+    expect(screen.getByRole("button", { name: "上移 晴空塔" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "完成排序" }));
+    expect(screen.getByRole("toolbar", { name: "行程快速操作" })).toBeTruthy();
+  });
+
   it("lets the user ask MiniMax to arrange only the selected day", async () => {
     let previewBody: Record<string, unknown> | undefined;
     let applyBody: Record<string, unknown> | undefined;
