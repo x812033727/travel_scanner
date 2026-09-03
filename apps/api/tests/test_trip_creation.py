@@ -45,6 +45,20 @@ def test_destination_timezone_prefers_the_catalog_over_keyword_rules() -> None:
     assert destination_timezone("火星基地") == "UTC"
 
 
+def test_trip_create_request_key_is_scoped_per_user_and_hashes_the_client_key() -> None:
+    from uuid import uuid4
+
+    from app.trips.router import _trip_create_request_key
+
+    user_a, user_b = uuid4(), uuid4()
+    key = _trip_create_request_key(user_a, "attempt-1234-5678")
+    assert key.startswith(f"trip:create-request:{user_a}:")
+    assert "attempt-1234-5678" not in key
+    assert key == _trip_create_request_key(user_a, "attempt-1234-5678")
+    assert key != _trip_create_request_key(user_b, "attempt-1234-5678")
+    assert key != _trip_create_request_key(user_a, "attempt-1234-5679")
+
+
 def test_manual_blank_mode_is_rejected_for_saved_search_plans() -> None:
     with pytest.raises(ValidationError, match="only available for blank trips"):
         SaveTripRequest.model_validate(
