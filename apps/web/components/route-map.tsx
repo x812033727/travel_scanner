@@ -16,7 +16,14 @@ type PublicMapConfig = {
 };
 type Coordinate = { latitude: number; longitude: number };
 type MapOverlay = { setMap(map: unknown | null): void };
+type GoogleMapInstance = {
+  fitBounds(bounds: unknown, padding?: number | Record<string, number>): void;
+};
 type MapFailureReason = "load" | "authorization";
+
+const GOOGLE_MAPS_SCRIPT_ID = "google-route-maps-js";
+const GOOGLE_MAPS_READY_CALLBACK = "__mokaairGoogleMapsReady";
+const GOOGLE_MAPS_READY_EVENT = "mokaair:google-maps-ready";
 
 function decodePolyline(value?: string | null): Coordinate[] {
   if (!value) return [];
@@ -75,6 +82,7 @@ export function RouteMap({
   const locale = useLocale();
   const isKorea = countryCode?.toUpperCase() === "KR";
   const mapElement = useRef<HTMLDivElement>(null);
+  const googleMap = useRef<GoogleMapInstance | null>(null);
   const destroyMap = useRef<(() => void) | null>(null);
   const overlays = useRef<MapOverlay[]>([]);
   const [config, setConfig] = useState<PublicMapConfig>({});
@@ -126,12 +134,21 @@ export function RouteMap({
   const showSchematic = hasCoordinates
     && (externalOnly || optionCoordinates.every((coordinates) => coordinates.length === 0));
 
-  const clearMap = useCallback(() => {
+  const clearOverlays = useCallback(() => {
     for (const overlay of overlays.current) overlay.setMap(null);
     overlays.current = [];
+  }, []);
+
+  const disposeMap = useCallback(() => {
+    clearOverlays();
     destroyMap.current?.();
     destroyMap.current = null;
-  }, []);
+    if (googleMap.current) {
+      window.google?.maps.event?.clearInstanceListeners(googleMap.current);
+      googleMap.current = null;
+    }
+    mapElement.current?.replaceChildren();
+  }, [clearOverlays]);
 
   useEffect(() => {
     if (isKorea) return;
@@ -140,6 +157,7 @@ export function RouteMap({
       window.mokaairGoogleMapsAuthFailed = true;
       setSdkReady(false);
       setMapFailure("authorization");
+      document.getElementById(GOOGLE_MAPS_SCRIPT_ID)?.remove();
     };
     window.gm_authFailure = handleAuthorizationFailure;
     return () => {
@@ -149,9 +167,56 @@ export function RouteMap({
     };
   }, [isKorea]);
 
+  useEffect(() => {
+    if (!useGoogle || mapFailed) return;
+    let active = true;
+    let timeoutId: number | undefined;
+    const isReady = () => Boolean(window.google?.maps?.Map);
+    const handleReady = () => {
+      if (!active || !isReady() || window.mokaairGoogleMapsAuthFailed) return;
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+      setSdkReady(true);
+    };
+    const handleLoadFailure = () => {
+      if (!active) return;
+      document.getElementById(GOOGLE_MAPS_SCRIPT_ID)?.remove();
+      setSdkReady(false);
+      setMapFailure("load");
+    };
+
+    window.addEventListener(GOOGLE_MAPS_READY_EVENT, handleReady);
+    if (isReady()) {
+      handleReady();
+    } else {
+      window[GOOGLE_MAPS_READY_CALLBACK] = () => {
+        window.dispatchEvent(new Event(GOOGLE_MAPS_READY_EVENT));
+      };
+      let script = document.getElementById(GOOGLE_MAPS_SCRIPT_ID) as HTMLScriptElement | null;
+      if (!script) {
+        script = document.createElement("script");
+        script.id = GOOGLE_MAPS_SCRIPT_ID;
+        script.async = true;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(config.google_maps_browser_key || "")}&v=quarterly&loading=async&callback=${GOOGLE_MAPS_READY_CALLBACK}&auth_referrer_policy=origin&language=${encodeURIComponent(locale)}`;
+        document.head.append(script);
+      }
+      script.addEventListener("error", handleLoadFailure, { once: true });
+      timeoutId = window.setTimeout(() => {
+        if (!isReady()) handleLoadFailure();
+      }, 15_000);
+    }
+
+    return () => {
+      active = false;
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+      window.removeEventListener(GOOGLE_MAPS_READY_EVENT, handleReady);
+      document.getElementById(GOOGLE_MAPS_SCRIPT_ID)
+        ?.removeEventListener("error", handleLoadFailure);
+    };
+  }, [config.google_maps_browser_key, locale, mapFailed, useGoogle]);
+
   const renderNaverMap = useCallback(() => {
     if (mapFailed || !useNaver || !hasCoordinates || !mapElement.current || !window.naver?.maps || !origin || !destination) return;
-    clearMap();
+    disposeMap();
     const maps = window.naver.maps;
     const originPoint = new maps.LatLng(origin.latitude as number, origin.longitude as number);
     const destinationPoint = new maps.LatLng(destination.latitude as number, destination.longitude as number);
@@ -198,15 +263,23 @@ export function RouteMap({
       new maps.LatLng(Math.max(...latitudes), Math.max(...longitudes)),
     );
     map.fitBounds(bounds, { top: 42, right: 42, bottom: 42, left: 42 });
-  }, [clearMap, destination, hasCoordinates, mapFailed, onSelectSegment, optionCoordinates, origin, selectedIndex, showSchematic, useNaver]);
+  }, [destination, disposeMap, hasCoordinates, mapFailed, onSelectSegment, optionCoordinates, origin, selectedIndex, showSchematic, useNaver]);
 
   const renderGoogleMap = useCallback(() => {
     if (mapFailed || !useGoogle || !hasCoordinates || !mapElement.current || !window.google?.maps || !origin || !destination) return;
-    clearMap();
+    clearOverlays();
     const maps = window.google.maps;
     const originPoint = { lat: origin.latitude as number, lng: origin.longitude as number };
     const destinationPoint = { lat: destination.latitude as number, lng: destination.longitude as number };
-    const map = new maps.Map(mapElement.current, { center: originPoint, zoom: 13, mapTypeControl: false, fullscreenControl: false, streetViewControl: false });
+    const map = googleMap.current || new maps.Map(mapElement.current, {
+      center: originPoint,
+      zoom: 13,
+      renderingType: maps.RenderingType?.RASTER || "RASTER",
+      mapTypeControl: false,
+      fullscreenControl: false,
+      streetViewControl: false,
+    });
+    googleMap.current = map;
     overlays.current.push(
       new maps.Marker({ position: originPoint, map, label: "1", title: origin.title }),
       new maps.Marker({ position: destinationPoint, map, label: "2", title: destination.title }),
@@ -241,18 +314,19 @@ export function RouteMap({
       }));
     }
     map.fitBounds(bounds, 44);
-  }, [clearMap, destination, hasCoordinates, mapFailed, onSelectSegment, optionCoordinates, origin, selectedIndex, showSchematic, useGoogle]);
+  }, [clearOverlays, destination, hasCoordinates, mapFailed, onSelectSegment, optionCoordinates, origin, selectedIndex, showSchematic, useGoogle]);
 
   useEffect(() => {
     if (mapFailed) {
-      clearMap();
+      disposeMap();
       return;
     }
     if (!sdkReady) return;
     if (useNaver) renderNaverMap();
     if (useGoogle) renderGoogleMap();
-    return clearMap;
-  }, [clearMap, mapFailed, renderGoogleMap, renderNaverMap, sdkReady, useGoogle, useNaver]);
+  }, [disposeMap, mapFailed, renderGoogleMap, renderNaverMap, sdkReady, useGoogle, useNaver]);
+
+  useEffect(() => disposeMap, [disposeMap]);
 
   const mapSource = useNaver ? "NAVER Maps" : useGoogle ? "Google Maps" : undefined;
   const emptyTitle = !hasCoordinates
@@ -265,7 +339,6 @@ export function RouteMap({
 
   return <section className={`route-map-card route-map-${variant}`}>
     {useNaver && <Script id="naver-maps-js" src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(config.naver_maps_browser_client_id || "")}`} strategy="afterInteractive" onReady={() => setSdkReady(true)} onError={() => setMapFailure("load")} />}
-    {useGoogle && !mapFailed && <Script id="google-route-maps-js" src={`https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(config.google_maps_browser_key || "")}&v=weekly&loading=async&language=${encodeURIComponent(locale)}`} strategy="afterInteractive" onReady={() => { if (!window.mokaairGoogleMapsAuthFailed) setSdkReady(true); }} onError={() => setMapFailure("load")} />}
     <div className="flex items-center justify-between border-b border-[var(--line)] px-5 py-3.5"><div className="min-w-0"><p className="text-xs font-semibold tracking-[.14em] text-[var(--teal)]">ROUTE MAP{mapSource ? ` · ${mapSource}` : ""}</p><h2 className="mt-1 truncate font-bold">{selectedSegment ? `方案 ${selectedIndex + 1} · 約 ${selectedSegment.duration_minutes} 分鐘` : `${origin?.title || "起點"} → ${destination?.title || "終點"}`}</h2></div><Map size={20} className="shrink-0 text-[var(--teal)]" /></div>
     <div className="route-map-frame overflow-hidden">
       {mapSource && hasCoordinates && !mapFailed
