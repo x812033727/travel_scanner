@@ -1,14 +1,18 @@
 "use client";
 
-import { Check, Copy, History, LoaderCircle } from "lucide-react";
+import { Check, Copy, History, Link2, LoaderCircle, Unlink } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { api } from "@/lib/api";
 import { activeLocale } from "@/lib/locale-format";
 import { featureEnabled } from "@/lib/site-features";
 
-type Me = { id: string; email: string };
+type Provider = "google" | "line" | "apple";
+type Me = { id: string; email: string; has_password?: boolean; auth_methods?: string[]; identity_count?: number };
+type Identity = { id: string; provider: Provider; email?: string | null; linked_at: string; last_login_at?: string | null };
+type ProviderStatus = { providers: Record<Provider, boolean> };
 type Usage = {
   remaining_uses: number;
   reserved_uses: number;
@@ -68,7 +72,17 @@ function changeLabel(item: UsageHistoryItem) {
   return `${item.change > 0 ? "+" : ""}${item.change}${suffix}`;
 }
 
+function maskEmail(email?: string | null) {
+  if (!email) return undefined;
+  const [name, domain] = email.split("@");
+  if (!domain) return email;
+  const visible = name.slice(0, Math.min(2, name.length));
+  return `${visible}${"*".repeat(Math.max(3, name.length - visible.length))}@${domain}`;
+}
+
 export function AccountPanel() {
+  const locale = useLocale();
+  const accountT = useTranslations("account");
   const visibility = useSiteVisibility();
   const dateFormat = new Intl.DateTimeFormat(activeLocale(), { dateStyle: "medium", timeStyle: "short" });
   const [me, setMe] = useState<Me>();
@@ -82,6 +96,9 @@ export function AccountPanel() {
   const [formError, setFormError] = useState<string>();
   const [done, setDone] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [identities, setIdentities] = useState<Identity[]>([]);
+  const [oauthProviders, setOauthProviders] = useState<ProviderStatus>();
+  const [identityError, setIdentityError] = useState<string>();
 
   useEffect(() => {
     api<Me>("/auth/me")
@@ -90,7 +107,20 @@ export function AccountPanel() {
     api<Usage>("/usage")
       .then(setUsage)
       .catch(() => undefined);
+    api<Identity[]>("/auth/identities").then(setIdentities).catch(() => undefined);
+    api<ProviderStatus>("/auth/oauth/providers").then(setOauthProviders).catch(() => undefined);
   }, []);
+
+  async function unlinkIdentity(identity: Identity) {
+    setIdentityError(undefined);
+    try {
+      const result = await api<{ user: Me }>(`/auth/identities/${identity.id}`, { method: "DELETE" });
+      setMe(result.user);
+      setIdentities((current) => current.filter((item) => item.id !== identity.id));
+    } catch (reason) {
+      setIdentityError((reason as Error).message);
+    }
+  }
 
   useEffect(() => {
     api<UsageHistory>(`/usage/history?kind=${historyKind}`)
@@ -168,6 +198,11 @@ export function AccountPanel() {
       </p>
     );
   if (!me) return <p className="text-[var(--muted)]">正在載入帳號資料…</p>;
+  const hasPassword = me.has_password !== false;
+  const oauthLinkError = typeof window !== "undefined"
+    && new URLSearchParams(window.location.search).has("oauth_error")
+    ? accountT("linkFailed")
+    : undefined;
 
   return (
     <div className="space-y-6">
@@ -211,6 +246,22 @@ export function AccountPanel() {
             個價格通知。
           </p>
         )}
+      </section>
+
+      <section className="rounded-[2rem] border border-[var(--line)] bg-white p-6 md:p-8">
+        <h2 className="flex items-center gap-2 text-xl font-bold"><Link2 size={21} className="text-[var(--teal)]" />{accountT("signInMethods")}</h2>
+        <p className="mt-1 text-sm text-[var(--muted)]">{accountT("signInMethodsHelp")}</p>
+        {(identityError || oauthLinkError) && <p role="alert" className="mt-4 rounded-xl bg-red-50 p-3 text-sm text-red-800">{identityError || oauthLinkError}</p>}
+        <div className="mt-5 space-y-3">
+          {hasPassword && <div className="flex min-h-14 items-center justify-between rounded-2xl border border-[var(--line)] px-4"><span className="font-semibold">Email</span><span className="text-sm text-[var(--muted)]">{accountT("connected")}</span></div>}
+          {identities.map((identity) => {
+            const canUnlink = hasPassword || identities.length > 1;
+            return <div key={identity.id} className="flex min-h-16 items-center justify-between gap-3 rounded-2xl border border-[var(--line)] px-4 py-3"><div className="min-w-0"><p className="font-semibold">{accountT(`providers.${identity.provider}`)}</p><p className="truncate text-xs text-[var(--muted)]">{maskEmail(identity.email) || accountT("emailUnavailable")}</p></div><button type="button" disabled={!canUnlink} onClick={() => void unlinkIdentity(identity)} className="flex min-h-11 shrink-0 items-center gap-2 rounded-xl px-3 text-sm font-semibold text-red-700 disabled:cursor-not-allowed disabled:opacity-40" title={!canUnlink ? accountT("keepOneMethod") : undefined}><Unlink size={16} />{accountT("disconnect")}</button></div>;
+          })}
+        </div>
+        <div className="mt-5 grid gap-3 sm:grid-cols-3">
+          {(["google", "line", "apple"] as Provider[]).filter((provider) => oauthProviders?.providers[provider]).map((provider) => <a key={provider} href={`/api/auth/oauth/${provider}/start?intent=link&locale=${locale}&next=%2Faccount`} className="flex min-h-12 items-center justify-center rounded-xl border border-[var(--line)] px-3 text-sm font-semibold text-[var(--teal)]">{accountT("connectProvider", { provider: accountT(`providers.${provider}`) })}</a>)}
+        </div>
       </section>
 
       <section className="rounded-[2rem] border border-[var(--line)] bg-white p-6 md:p-8">
@@ -330,7 +381,7 @@ export function AccountPanel() {
         )}
       </section>
 
-      <section className="rounded-[2rem] border border-[var(--line)] bg-white p-6 md:p-8">
+      {hasPassword && <section className="rounded-[2rem] border border-[var(--line)] bg-white p-6 md:p-8">
         <h2 className="text-xl font-bold">修改密碼</h2>
         <form action={changePassword} className="mt-5 max-w-md space-y-4">
           <label className="block text-sm font-semibold">
@@ -388,7 +439,7 @@ export function AccountPanel() {
             {busy ? "處理中…" : "更新密碼"}
           </button>
         </form>
-      </section>
+      </section>}
     </div>
   );
 }

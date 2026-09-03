@@ -40,11 +40,35 @@ class User(Timestamped, Base):
     __tablename__ = "users"
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     email: Mapped[str] = mapped_column(String(320), unique=True, index=True)
-    password_hash: Mapped[str] = mapped_column(String(255))
+    password_hash: Mapped[str | None] = mapped_column(String(255), nullable=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
     auth_version: Mapped[int] = mapped_column(Integer, default=1)
     preferred_locale: Mapped[str] = mapped_column(String(16), default="zh-TW")
+
+
+class UserAuthIdentity(Timestamped, Base):
+    __tablename__ = "user_auth_identities"
+    __table_args__ = (
+        UniqueConstraint("provider", "subject", name="uq_user_auth_identity_provider_subject"),
+        CheckConstraint(
+            "provider IN ('google', 'line', 'apple')",
+            name="ck_user_auth_identity_provider",
+        ),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True
+    )
+    provider: Mapped[str] = mapped_column(String(16), index=True)
+    subject: Mapped[str] = mapped_column(String(255))
+    provider_email: Mapped[str | None] = mapped_column(String(320), nullable=True)
+    email_verified: Mapped[bool] = mapped_column(Boolean, default=False)
+    refresh_token_encrypted: Mapped[str | None] = mapped_column(Text, nullable=True)
+    last_login_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    revocation_pending: Mapped[bool] = mapped_column(Boolean, default=False)
 
 
 class UsagePackage(Timestamped, Base):

@@ -1,12 +1,29 @@
 from typing import Annotated
+from uuid import UUID
 
 from fastapi import APIRouter, Depends, Request, Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.admin.service import effective_registration_enabled
+from app.admin.service import effective_registration_enabled, load_runtime_settings
+from app.auth.jobs import enqueue_provider_revocation
+from app.auth.oauth import (
+    active_identities,
+    attempt_provider_revocation,
+    exchange_oauth,
+    provider_status,
+    revoke_identity,
+    start_oauth,
+)
 from app.auth.schemas import (
+    AuthIdentityResponse,
     ChangePasswordRequest,
     LoginRequest,
+    OAuthExchangeRequest,
+    OAuthExchangeResponse,
+    OAuthProvider,
+    OAuthProvidersResponse,
+    OAuthStartRequest,
+    OAuthStartResponse,
     RegisterRequest,
     RegistrationStatus,
     TokenResponse,
@@ -16,6 +33,7 @@ from app.auth.schemas import (
 from app.auth.service import (
     DUMMY_PASSWORD_HASH,
     CurrentUser,
+    OptionalCurrentUser,
     can_deploy_user,
     create_access_token,
     find_user_by_email,
@@ -40,13 +58,17 @@ Session = Annotated[AsyncSession, Depends(get_session)]
 
 
 async def user_response(session: AsyncSession, user: User) -> UserResponse:
-    _ = session
+    identities = await active_identities(session, user.id)
+    methods = (["password"] if user.password_hash else []) + [item.provider for item in identities]
     return UserResponse(
         id=user.id,
         email=user.email,
         is_admin=is_admin_user(user),
         can_deploy=can_deploy_user(user),
         preferred_locale=normalize_locale(user.preferred_locale),
+        has_password=bool(user.password_hash),
+        auth_methods=methods,
+        identity_count=len(identities),
     )
 
 
@@ -136,7 +158,7 @@ async def login(
     user = await find_user_by_email(session, email)
     password_valid = verify_password(
         payload.password,
-        user.password_hash if user is not None else DUMMY_PASSWORD_HASH,
+        user.password_hash if user is not None and user.password_hash else DUMMY_PASSWORD_HASH,
     )
     if user is None or not password_valid:
         raise AppError(401, "invalid_credentials", "Email 或密碼不正確")
@@ -180,6 +202,8 @@ async def change_password(
         limit=5,
         window_seconds=3_600,
     )
+    if not user.password_hash:
+        raise AppError(409, "password_not_set", "這個帳號尚未設定密碼")
     if not verify_password(payload.current_password, user.password_hash):
         raise AppError(401, "invalid_credentials", "目前密碼不正確")
     user.password_hash = hash_password(payload.new_password)
@@ -187,4 +211,75 @@ async def change_password(
     await session.commit()
     token = create_access_token(user.id, user.auth_version)
     set_auth_cookie(response, token)
+    return token_response(token, await user_response(session, user))
+
+
+@router.get("/oauth/providers", response_model=OAuthProvidersResponse)
+async def oauth_providers(session: Session) -> OAuthProvidersResponse:
+    return OAuthProvidersResponse(providers=provider_status(await load_runtime_settings(session)))
+
+
+@router.post("/oauth/{provider}/start", response_model=OAuthStartResponse)
+async def oauth_start(
+    provider: OAuthProvider,
+    payload: OAuthStartRequest,
+    request: Request,
+    user: OptionalCurrentUser,
+    session: Session,
+) -> OAuthStartResponse:
+    settings = await load_runtime_settings(session)
+    await enforce_named_rate_limit(
+        "auth-oauth-start-ip",
+        client_ip(request),
+        limit=settings.auth_oauth_ip_limit,
+        window_seconds=3_600,
+    )
+    return await start_oauth(session, payload, provider, user)
+
+
+@router.post("/oauth/{provider}/exchange", response_model=OAuthExchangeResponse)
+async def oauth_exchange(
+    provider: OAuthProvider,
+    payload: OAuthExchangeRequest,
+    user: OptionalCurrentUser,
+    session: Session,
+) -> OAuthExchangeResponse:
+    result = await exchange_oauth(
+        session,
+        provider,
+        flow_id=payload.flow_id,
+        state=payload.state,
+        code=payload.code,
+        browser_binding=payload.browser_binding,
+        current_user=user,
+    )
+    token = create_access_token(result.user.id, result.user.auth_version)
+    response = token_response(token, await user_response(session, result.user))
+    return OAuthExchangeResponse(**response.model_dump(), new_account=result.created)
+
+
+@router.get("/identities", response_model=list[AuthIdentityResponse])
+async def list_identities(user: CurrentUser, session: Session) -> list[AuthIdentityResponse]:
+    return [
+        AuthIdentityResponse(
+            id=item.id,
+            provider=item.provider,
+            email=item.provider_email,
+            linked_at=item.created_at,
+            last_login_at=item.last_login_at,
+        )
+        for item in await active_identities(session, user.id)
+    ]
+
+
+@router.delete("/identities/{identity_id}", response_model=TokenResponse)
+async def unlink_identity(
+    identity_id: UUID,
+    user: CurrentUser,
+    session: Session,
+) -> TokenResponse:
+    identity = await revoke_identity(session, user, identity_id)
+    if not await attempt_provider_revocation(session, identity):
+        enqueue_provider_revocation(identity.id)
+    token = create_access_token(user.id, user.auth_version)
     return token_response(token, await user_response(session, user))

@@ -94,6 +94,26 @@ async def current_user(
 CurrentUser = Annotated[User, Depends(current_user)]
 
 
+async def optional_current_user(
+    session: Annotated[AsyncSession, Depends(get_session)],
+    authorization: Annotated[str | None, Header()] = None,
+    travel_access: Annotated[str | None, Cookie()] = None,
+) -> User | None:
+    token = travel_access
+    if authorization and authorization.lower().startswith("bearer "):
+        token = authorization[7:]
+    if not token:
+        return None
+    claims = decode_access_token_claims(token)
+    user = await session.get(User, claims.user_id)
+    if user is None or not user.is_active or user.auth_version != claims.auth_version:
+        raise AppError(401, "invalid_user", "這個帳號目前無法使用")
+    return user
+
+
+OptionalCurrentUser = Annotated[User | None, Depends(optional_current_user)]
+
+
 def is_admin_user(user: User) -> bool:
     return user.is_admin or user.email.lower() in get_settings().admin_email_set
 

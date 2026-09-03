@@ -84,6 +84,19 @@ class Settings(BaseSettings):
     auth_login_window_seconds: int = Field(default=900, ge=60, le=86_400)
     auth_register_ip_limit: int = Field(default=30, ge=1, le=1_000)
     auth_register_window_seconds: int = Field(default=3_600, ge=60, le=86_400)
+    auth_oauth_flow_ttl_seconds: int = Field(default=600, ge=300, le=1_800)
+    auth_oauth_ip_limit: int = Field(default=30, ge=1, le=1_000)
+    auth_google_enabled: bool = False
+    auth_google_client_id: str | None = None
+    auth_google_client_secret: str | None = None
+    auth_line_enabled: bool = False
+    auth_line_channel_id: str | None = None
+    auth_line_channel_secret: str | None = None
+    auth_apple_enabled: bool = False
+    auth_apple_services_id: str | None = None
+    auth_apple_team_id: str | None = None
+    auth_apple_key_id: str | None = None
+    auth_apple_private_key: str | None = None
     registration_enabled: bool = True
     hotspots_enabled: bool = True
     trips_enabled: bool = True

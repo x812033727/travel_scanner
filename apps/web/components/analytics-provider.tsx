@@ -127,6 +127,12 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
   }, [config, emit, pathname]);
 
   useEffect(() => {
+    if (!config || !document.cookie.split("; ").includes("travel_oauth_registered=1")) return;
+    document.cookie = "travel_oauth_registered=; path=/; max-age=0; samesite=lax";
+    emit("registration_completed");
+  }, [config, emit]);
+
+  useEffect(() => {
     const listener = (event: Event) => {
       const name = (event as CustomEvent<{ name?: AnalyticsEventName }>).detail?.name;
       if (name && name !== "page_view") emit(name);

@@ -12,6 +12,7 @@ from urllib.parse import urlparse
 from uuid import uuid4
 from zoneinfo import ZoneInfo
 
+import httpx
 from cryptography.fernet import Fernet, InvalidToken
 from pydantic import ValidationError
 from redis.asyncio import Redis
@@ -76,6 +77,27 @@ SITE_VISIBILITY_FIELDS = (
 
 
 PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
+    "google_login": ProviderDefinition(
+        "Google 登入",
+        "使用 Google OpenID Connect 登入；callback 固定由正式網站網域產生。",
+        ("auth_google_client_id", "auth_oauth_flow_ttl_seconds", "auth_oauth_ip_limit"),
+        ("auth_google_client_secret",),
+        "auth_google_enabled",
+    ),
+    "line_login": ProviderDefinition(
+        "LINE 登入",
+        "使用 LINE Login v2.1 與已核准的 Email scope 登入。",
+        ("auth_line_channel_id",),
+        ("auth_line_channel_secret",),
+        "auth_line_enabled",
+    ),
+    "apple_login": ProviderDefinition(
+        "Apple 登入",
+        "使用 Sign in with Apple；Private Key 僅在伺服器端加密保存。",
+        ("auth_apple_services_id", "auth_apple_team_id", "auth_apple_key_id"),
+        ("auth_apple_private_key",),
+        "auth_apple_enabled",
+    ),
     "analytics": ProviderDefinition(
         "流量分析與 GA4",
         "第一方隱私分析與選配的 GA4 cookieless 事件；不保存原始 IP 或長期訪客 ID。",
@@ -426,6 +448,26 @@ async def effective_site_visibility(session: AsyncSession) -> SiteVisibility:
 
 
 def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
+    if provider in {"google_login", "line_login", "apple_login"}:
+        from app.auth.oauth import provider_enabled
+
+        oauth_provider = {
+            "google_login": "google",
+            "line_login": "line",
+            "apple_login": "apple",
+        }[provider]
+        configured = provider_enabled(cast(Any, oauth_provider), settings)
+        callback = (
+            f"{settings.next_public_site_url.rstrip('/')}"
+            f"/api/auth/oauth/{oauth_provider}/callback"
+        )
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            f"設定完整；Callback：{callback}"
+            if configured
+            else f"缺少必要憑證；Callback：{callback}",
+        )
     if provider == "analytics":
         ga4_configured = bool(settings.ga4_measurement_id)
         configured = bool(settings.analytics_enabled) and (
@@ -1122,6 +1164,21 @@ async def _test_naver(settings: Settings, redis: Redis) -> str:
 
 
 async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str:
+    if provider in {"google_login", "line_login", "apple_login"}:
+        from app.auth.oauth import APPLE_JWKS, GOOGLE_JWKS, apple_client_secret
+
+        if provider == "apple_login":
+            _ = apple_client_secret(settings)
+            url = APPLE_JWKS
+        elif provider == "google_login":
+            url = GOOGLE_JWKS
+        else:
+            url = "https://access.line.me/.well-known/openid-configuration"
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            response = await client.get(url)
+            response.raise_for_status()
+            _ = response.json()
+        return "官方 OpenID metadata 可連線；完整憑證會在實際互動登入時驗證"
     if provider == "ai_planner":
         request = AIItineraryRequest(
             destination_name="東京",
