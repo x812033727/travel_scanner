@@ -208,6 +208,34 @@ async def test_responses_provider_accepts_markdown_fenced_json() -> None:
     assert result.days[0].items[0].candidate_key == "hotspot:0"
 
 
+def test_normalize_trims_an_oversized_provider_day_to_pace_rules() -> None:
+    """MiniMax sometimes stuffs 6+ items into one day; parse must accept it and
+    normalize must trim it instead of dropping the whole draft."""
+    request = request_for()
+    overfilled = AIItineraryDraft(
+        summary="模型塞爆第二天",
+        days=[
+            AIDraftDay(
+                date=date(2026, 11, 11),
+                items=[
+                    AIDraftItem(
+                        candidate_key=f"hotspot:{index}",
+                        start_time=f"{9 + index:02d}:00",
+                        reason="行程",
+                    )
+                    for index in range(8)
+                ],
+            ),
+        ],
+    )
+    normalized, partial = normalize_draft(request, overfilled)
+    assert partial is True
+    day = next(day for day in normalized.days if day.date == date(2026, 11, 11))
+    activities = [item for item in day.items if item.slot_type == "activity"]
+    assert len(activities) <= 2  # balanced pace on a middle day
+    assert len(day.items) <= 5
+
+
 def test_json_document_strips_fences_and_keeps_plain_json() -> None:
     from app.ai.itinerary import _json_document
 
