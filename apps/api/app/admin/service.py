@@ -1387,6 +1387,7 @@ async def public_runtime_config(session: AsyncSession) -> PublicRuntimeConfig:
         google_routes_enabled=bool(settings.google_maps_api_key),
         google_places_enabled=bool(settings.google_maps_api_key),
         google_maps_embed_enabled=bool(settings.next_public_google_maps_browser_key),
+        google_maps_javascript_enabled=bool(settings.next_public_google_maps_browser_key),
         navitime_enabled=settings.navitime_configured,
         naver_maps_browser_client_id=settings.naver_maps_client_id,
         naver_maps_enabled=settings.naver_maps_configured,

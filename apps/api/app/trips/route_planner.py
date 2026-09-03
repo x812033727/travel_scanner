@@ -176,6 +176,8 @@ def segment_from_record(record: TripRouteSegment) -> RouteSegment:
         currency=record.currency,
         encoded_polyline=record.encoded_polyline,
         maps_url=record.maps_url,
+        provider_route_key=record.provider_route_key,
+        route_option_rank=record.route_option_rank,
         steps=[RouteStep.model_validate(step) for step in record.steps],
         details_available=record.details_available,
         warnings=record.warnings,
@@ -277,6 +279,8 @@ def update_record_from_segment(
     record.currency = segment.currency
     record.encoded_polyline = segment.encoded_polyline
     record.maps_url = segment.maps_url
+    record.provider_route_key = segment.provider_route_key
+    record.route_option_rank = segment.route_option_rank
     record.steps = [step.model_dump(mode="json") for step in segment.steps]
     record.details_available = segment.details_available
     record.warnings = segment.warnings

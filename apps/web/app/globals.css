@@ -1793,6 +1793,71 @@ a {
   contain: layout paint;
 }
 
+.route-map-schematic-notice {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background: rgba(16, 42, 43, 0.82);
+  padding: 0.4rem 0.7rem;
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 800;
+  box-shadow: 0 5px 18px rgba(16, 42, 43, 0.18);
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+
+.route-option-scroll {
+  display: grid;
+  grid-auto-columns: minmax(13.5rem, 82%);
+  grid-auto-flow: column;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding: 0.1rem 0.15rem 0.55rem;
+  scroll-padding-inline: 0.15rem;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+}
+
+.route-option-card {
+  min-height: 9rem;
+  scroll-snap-align: start;
+  border: 1px solid var(--line);
+  border-radius: 1.15rem;
+  background: var(--surface);
+  padding: 0.9rem;
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.18s var(--ease-app), box-shadow 0.18s var(--ease-app), transform 0.18s var(--ease-app);
+}
+
+.route-option-card:hover,
+.route-option-card:focus-visible {
+  border-color: color-mix(in srgb, var(--teal) 54%, var(--line));
+}
+
+.route-option-card:active {
+  transform: scale(0.985);
+}
+
+.route-option-card-selected {
+  border-color: var(--teal);
+  background: color-mix(in srgb, var(--teal-soft) 32%, var(--surface));
+  box-shadow: 0 9px 24px color-mix(in srgb, var(--teal) 14%, transparent);
+}
+
+.route-option-recommended {
+  border-radius: 999px;
+  background: var(--teal-fill);
+  padding: 0.25rem 0.5rem;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 850;
+}
+
 .route-map-sidebar .route-map-frame {
   height: 310px;
 }
@@ -2034,6 +2099,10 @@ a {
 
   .route-map-drawer .route-map-frame {
     height: 300px;
+  }
+
+  .route-option-scroll {
+    grid-auto-columns: minmax(12rem, 1fr);
   }
 }
 

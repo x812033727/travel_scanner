@@ -109,6 +109,8 @@ export type RouteSegment = {
   currency?: string | null;
   encoded_polyline?: string | null;
   maps_url?: string | null;
+  provider_route_key?: string | null;
+  route_option_rank?: number | null;
   steps: RouteStep[];
   details_available: string[];
   warnings: string[];

@@ -249,9 +249,55 @@ describe("route mode panel", () => {
 
     fireEvent.click(screen.getByRole("tab", { name: "步行" }));
     expect(await screen.findAllByText("步行 · 31 分鐘")).not.toHaveLength(0);
-    expect(previewBody).toMatchObject({ version: 3, travel_mode: "walk", buffer_minutes: 10 });
+    expect(previewBody).toMatchObject({ version: 3, travel_mode: "walk", buffer_minutes: 10, include_alternatives: true, max_options: 3 });
     fireEvent.click(screen.getByRole("button", { name: "套用此路線" }));
     await waitFor(() => expect(applied).toHaveBeenCalledOnce());
     expect(applyBody).toMatchObject({ version: 3, source: "provider", preview_id: "preview-1" });
+  });
+
+  it("switches among cached route options and applies only the selected preview", async () => {
+    let previewCalls = 0;
+    let applyBody: Record<string, unknown> | undefined;
+    const routeOptions = [18, 21, 25].map((duration, index) => ({
+      preview_id: `preview-${index + 1}`,
+      rank: index + 1,
+      provider_route_key: `route-${index + 1}`,
+      expires_at: "2026-09-01T00:15:00Z",
+      segment: {
+        ...initialSegment,
+        travel_mode: "walk" as const,
+        duration_minutes: duration,
+        route_option_rank: index + 1,
+        encoded_polyline: `_p~iF~ps|U_ulLnnqC_mqNvxq\`${index}`,
+      },
+      schedule_impact: { affected_items: [], conflicts: [] },
+    }));
+    vi.stubGlobal("fetch", vi.fn(async (url: string, init?: RequestInit) => {
+      if (url.endsWith("/runtime/public-config")) {
+        return ok({ google_maps_browser_key: null, google_maps_javascript_enabled: false });
+      }
+      if (url.endsWith("/routes/preview")) {
+        previewCalls += 1;
+        return ok({
+          kind: "provider",
+          ...routeOptions[0],
+          options: routeOptions,
+        });
+      }
+      applyBody = JSON.parse(String(init?.body));
+      return ok({ ...trip, version: 4, route_segments: [routeOptions[1].segment] });
+    }));
+
+    render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={initialSegment} onApplied={() => undefined} onError={() => undefined} />);
+    fireEvent.click(screen.getByRole("tab", { name: "步行" }));
+    const secondOption = await screen.findByRole("option", { name: /方案 2/ });
+    fireEvent.click(secondOption);
+    expect(secondOption.getAttribute("aria-selected")).toBe("true");
+    expect(screen.getByText(/步行 · 方案 2 · 21 分鐘/)).toBeTruthy();
+    expect(previewCalls).toBe(1);
+
+    fireEvent.click(screen.getByRole("button", { name: "套用此路線" }));
+    await waitFor(() => expect(applyBody).toMatchObject({ preview_id: "preview-2" }));
+    expect(previewCalls).toBe(1);
   });
 });

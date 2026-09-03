@@ -47,6 +47,7 @@ async def test_google_route_normalizes_transit_steps_and_preview_warning() -> No
             200,
             json={
                 "routes": [
+                    None,
                     {
                         "duration": "1500s",
                         "distanceMeters": 9200,
@@ -99,6 +100,59 @@ async def test_google_route_normalizes_transit_steps_and_preview_warning() -> No
     assert segment.steps[0].headsign == "淺草方向"
     assert "exit" not in segment.details_available
     assert "origin_place_id=google-origin" in str(segment.maps_url)
+
+
+@pytest.mark.asyncio
+async def test_google_route_returns_up_to_three_unique_alternatives() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        payload = cast(dict[str, object], json.loads(request.read()))
+        assert payload["computeAlternativeRoutes"] is True
+        return httpx.Response(
+            200,
+            json={
+                "routes": [
+                    {
+                        "duration": "600s",
+                        "distanceMeters": 1000,
+                        "routeLabels": ["DEFAULT_ROUTE"],
+                        "polyline": {"encodedPolyline": "route-a"},
+                    },
+                    {
+                        "duration": "600s",
+                        "distanceMeters": 1000,
+                        "routeLabels": ["DEFAULT_ROUTE_ALTERNATE"],
+                        "polyline": {"encodedPolyline": "route-a"},
+                    },
+                    {
+                        "duration": "720s",
+                        "distanceMeters": 900,
+                        "routeLabels": ["DEFAULT_ROUTE_ALTERNATE"],
+                        "polyline": {"encodedPolyline": "route-b"},
+                    },
+                    {
+                        "duration": "780s",
+                        "distanceMeters": 800,
+                        "polyline": {"encodedPolyline": "route-c"},
+                    },
+                ]
+            },
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = GoogleRouteProvider(Settings(google_maps_api_key="key"), client)
+    options = await provider.compute_options(
+        point("上野", 35.7, 139.7),
+        point("淺草", 35.71, 139.8),
+        None,
+        "FASTEST",
+        "walk",
+        max_options=3,
+    )
+    await client.aclose()
+
+    assert [option.duration_minutes for option in options] == [10, 12, 13]
+    assert [option.route_option_rank for option in options] == [1, 2, 3]
+    assert options[0].provider_route_key == "DEFAULT_ROUTE"
 
 
 @pytest.mark.asyncio
@@ -202,6 +256,61 @@ async def test_navitime_route_preserves_sourced_exit_platform_and_car() -> None:
     assert {"platform", "exit", "recommended_car"} <= set(segment.details_available)
 
 
+@pytest.mark.asyncio
+async def test_navitime_returns_multiple_routes_with_provider_shapes() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        assert request.url.params["shape"] == "true"
+        return httpx.Response(
+            200,
+            json={
+                "items": [
+                    {
+                        "no": index,
+                        "time": 10 + index,
+                        "distance": 1000 + index,
+                        "nodes": [],
+                        "shapes": {
+                            "features": [
+                                {
+                                    "geometry": {
+                                        "type": "LineString",
+                                        "coordinates": [
+                                            [139.7, 35.7],
+                                            [139.7 + index / 1000, 35.71],
+                                        ],
+                                    }
+                                }
+                            ]
+                        },
+                    }
+                    for index in range(1, 4)
+                ]
+            },
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = NavitimeRouteProvider(
+        Settings(
+            navitime_api_base_url="https://example.test",
+            navitime_client_id="client",
+            navitime_api_key="key",
+        ),
+        client,
+    )
+    options = await provider.compute_options(
+        point("上野", 35.7, 139.7),
+        point("淺草", 35.71, 139.8),
+        datetime.now(UTC),
+        "FEWER_TRANSFERS",
+        max_options=3,
+    )
+    await client.aclose()
+
+    assert len(options) == 3
+    assert [option.provider_route_key for option in options] == ["1", "2", "3"]
+    assert all(option.encoded_polyline for option in options)
+
+
 class EmptyProvider:
     name = "empty"
 
@@ -233,6 +342,13 @@ class UnexpectedProvider:
 
     async def compute(self, *_args: object) -> None:
         raise AssertionError("fallback provider should not run when Google returned a route")
+
+
+class MalformedProvider:
+    name = "malformed"
+
+    async def compute(self, *_args: object) -> None:
+        raise TypeError("unexpected provider payload")
 
 
 class CountingProvider:
@@ -331,6 +447,24 @@ async def test_route_cache_separates_different_google_place_ids_at_same_coordina
     assert provider.calls == 2
     assert first is not None and first.duration_minutes == 1
     assert second is not None and second.duration_minutes == 2
+
+
+@pytest.mark.asyncio
+async def test_route_service_converts_provider_exceptions_to_unavailable_options() -> None:
+    service = RouteService(
+        fakeredis.aioredis.FakeRedis(decode_responses=True),
+        Settings(route_cache_ttl_seconds=300),
+        google=MalformedProvider(),
+    )
+    options = await service.compute_options(
+        point("A", 35.1, 139.1),
+        point("B", 35.2, 139.2),
+        None,
+        "FASTEST",
+        travel_mode="walk",
+        max_options=3,
+    )
+    assert options == []
 
 
 def test_transit_time_window_marks_far_future_as_preview() -> None:

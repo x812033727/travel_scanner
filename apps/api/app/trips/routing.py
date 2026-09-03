@@ -87,6 +87,8 @@ class RouteSegment(BaseModel):
     currency: str | None = None
     encoded_polyline: str | None = None
     maps_url: str | None = None
+    provider_route_key: str | None = None
+    route_option_rank: int | None = None
     steps: list[RouteStep] = Field(default_factory=list)
     details_available: list[str] = Field(default_factory=list)
     warnings: list[str] = Field(default_factory=list)
@@ -135,8 +137,11 @@ def duration_minutes(value: object) -> int | None:
 def _money(payload: object) -> tuple[Decimal | None, str | None]:
     if not isinstance(payload, dict):
         return None, None
-    units = Decimal(str(payload.get("units") or 0))
-    nanos = Decimal(str(payload.get("nanos") or 0)) / Decimal("1000000000")
+    try:
+        units = Decimal(str(payload.get("units") or 0))
+        nanos = Decimal(str(payload.get("nanos") or 0)) / Decimal("1000000000")
+    except (ArithmeticError, ValueError):
+        return None, None
     return units + nanos, cast(str | None, payload.get("currencyCode"))
 
 
@@ -250,6 +255,122 @@ class GoogleRouteProvider:
             status_code=response.status_code,
         )
 
+    def _segment_from_route(
+        self,
+        route: object,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        departure_time: datetime | None,
+        preference: str,
+        travel_mode: TravelMode,
+        schedule_mode: str,
+        warnings: list[str],
+        rank: int,
+    ) -> RouteSegment | None:
+        if not isinstance(route, dict):
+            return None
+        try:
+            total_minutes = duration_minutes(route.get("duration"))
+            if total_minutes is None:
+                return None
+            steps: list[RouteStep] = []
+            for leg in cast(list[dict[str, Any]], route.get("legs", [])):
+                for raw in cast(list[dict[str, Any]], leg.get("steps", [])):
+                    transit = cast(dict[str, Any], raw.get("transitDetails") or {})
+                    stop_details = cast(dict[str, Any], transit.get("stopDetails") or {})
+                    line = cast(dict[str, Any], transit.get("transitLine") or {})
+                    departure_stop = cast(dict[str, Any], stop_details.get("departureStop") or {})
+                    arrival_stop = cast(dict[str, Any], stop_details.get("arrivalStop") or {})
+                    navigation = cast(dict[str, Any], raw.get("navigationInstruction") or {})
+                    mode = str(raw.get("travelMode") or "WALK")
+                    instruction = str(navigation.get("instructions") or "")
+                    if not instruction and transit:
+                        instruction = (
+                            f"搭乘 {line.get('name') or line.get('nameShort') or '大眾運輸'}"
+                        )
+                    steps.append(
+                        RouteStep(
+                            travel_mode=mode,
+                            instruction=instruction
+                            or ("步行前往下一站" if mode == "WALK" else "前往下一段"),
+                            duration_minutes=duration_minutes(raw.get("staticDuration")),
+                            distance_meters=raw.get("distanceMeters"),
+                            departure_stop=departure_stop.get("name"),
+                            arrival_stop=arrival_stop.get("name"),
+                            departure_time=stop_details.get("departureTime"),
+                            arrival_time=stop_details.get("arrivalTime"),
+                            line_name=line.get("name"),
+                            line_short_name=line.get("nameShort"),
+                            line_color=line.get("color"),
+                            headsign=transit.get("headsign"),
+                            stop_count=transit.get("stopCount"),
+                        )
+                    )
+            fare, currency = _money(
+                cast(dict[str, Any], route.get("travelAdvisory") or {}).get("transitFare")
+            )
+            params = urlencode(
+                {
+                    "api": 1,
+                    "origin": origin.name or f"{origin.latitude},{origin.longitude}",
+                    "destination": destination.name
+                    or f"{destination.latitude},{destination.longitude}",
+                    "travelmode": travel_mode,
+                    **(
+                        {"origin_place_id": origin.provider_place_id}
+                        if origin.provider_place_id
+                        and origin.place_provider in {None, "google_places"}
+                        else {}
+                    ),
+                    **(
+                        {"destination_place_id": destination.provider_place_id}
+                        if destination.provider_place_id
+                        and destination.place_provider in {None, "google_places"}
+                        else {}
+                    ),
+                }
+            )
+            labels = [
+                str(label)
+                for label in cast(list[object], route.get("routeLabels") or [])
+                if str(label)
+            ]
+            return RouteSegment(
+                from_item_id=origin.item_id,
+                to_item_id=destination.item_id,
+                travel_mode=travel_mode,
+                provider=self.name,
+                attribution="Google Maps",
+                generated_at=datetime.now(UTC),
+                requested_departure_time=departure_time,
+                schedule_mode=schedule_mode,
+                preference=preference,
+                duration_minutes=total_minutes,
+                distance_meters=route.get("distanceMeters"),
+                fare=fare,
+                currency=currency,
+                encoded_polyline=cast(dict[str, Any], route.get("polyline") or {}).get(
+                    "encodedPolyline"
+                ),
+                maps_url=f"https://www.google.com/maps/dir/?{params}",
+                provider_route_key=(labels[0] if labels else f"google:{rank}")[:64],
+                route_option_rank=rank,
+                steps=steps,
+                details_available=["steps", "stops", "headsign"] if steps else [],
+                warnings=list(warnings),
+            )
+        except (ArithmeticError, TypeError, ValueError):
+            logger.warning(
+                "google_routes_candidate_invalid",
+                extra={
+                    "provider": self.name,
+                    "reason_code": "candidate_invalid",
+                    "travel_mode": travel_mode,
+                    "route_rank": rank,
+                },
+            )
+            return None
+
     async def compute(
         self,
         origin: RoutePoint,
@@ -258,8 +379,28 @@ class GoogleRouteProvider:
         preference: str,
         travel_mode: TravelMode = "transit",
     ) -> RouteSegment | None:
+        options = await self.compute_options(
+            origin,
+            destination,
+            departure_time,
+            preference,
+            travel_mode,
+            max_options=1,
+        )
+        return options[0] if options else None
+
+    async def compute_options(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        departure_time: datetime | None,
+        preference: str,
+        travel_mode: TravelMode = "transit",
+        *,
+        max_options: int = 3,
+    ) -> list[RouteSegment]:
         if not self.settings.google_maps_api_key:
-            return None
+            return []
         if travel_mode == "transit":
             effective_time, schedule_mode, warnings = supported_transit_time(departure_time)
         elif travel_mode == "drive" and departure_time is not None:
@@ -271,8 +412,7 @@ class GoogleRouteProvider:
             warnings.append("步行路線為測試版，請依現場道路與安全狀況調整。")
         transit_preference = (
             preference
-            if travel_mode == "transit"
-            and preference in {"FEWER_TRANSFERS", "LESS_WALKING"}
+            if travel_mode == "transit" and preference in {"FEWER_TRANSFERS", "LESS_WALKING"}
             else None
         )
         body: dict[str, Any] = {
@@ -281,7 +421,7 @@ class GoogleRouteProvider:
             "travelMode": travel_mode.upper(),
             "languageCode": "zh-TW",
             "units": "METRIC",
-            "computeAlternativeRoutes": False,
+            "computeAlternativeRoutes": max_options > 1,
         }
         if effective_time is not None and travel_mode in {"transit", "drive"}:
             body["departureTime"] = effective_time.isoformat().replace("+00:00", "Z")
@@ -290,7 +430,8 @@ class GoogleRouteProvider:
         if travel_mode == "drive":
             body["routingPreference"] = "TRAFFIC_AWARE"
         fields = (
-            "routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline,"
+            "routes.duration,routes.distanceMeters,routes.routeLabels,"
+            "routes.polyline.encodedPolyline,"
             "routes.travelAdvisory.transitFare,routes.legs.steps.travelMode,"
             "routes.legs.steps.distanceMeters,routes.legs.steps.staticDuration,"
             "routes.legs.steps.navigationInstruction.instructions,"
@@ -318,8 +459,7 @@ class GoogleRouteProvider:
         uses_google_place_id = bool(
             origin.provider_place_id and origin.place_provider in {None, "google_places"}
         ) or bool(
-            destination.provider_place_id
-            and destination.place_provider in {None, "google_places"}
+            destination.provider_place_id and destination.place_provider in {None, "google_places"}
         )
         if uses_google_place_id:
             coordinate_body = dict(attempts[-1][0])
@@ -359,12 +499,11 @@ class GoogleRouteProvider:
                         "attempt_kind": attempt_kind,
                     },
                 )
-                if (
-                    exc.response.status_code not in {401, 403, 429}
-                    and attempt_index + 1 < len(attempts)
+                if exc.response.status_code not in {401, 403, 429} and attempt_index + 1 < len(
+                    attempts
                 ):
                     continue
-                return None
+                return []
             except httpx.HTTPError:
                 logger.warning(
                     "google_routes_network_error",
@@ -376,7 +515,7 @@ class GoogleRouteProvider:
                 )
                 if attempt_index + 1 < len(attempts):
                     continue
-                return None
+                return []
             except ValueError:
                 logger.warning(
                     "google_routes_invalid_response",
@@ -388,12 +527,10 @@ class GoogleRouteProvider:
                 )
                 if attempt_index + 1 < len(attempts):
                     continue
-                return None
+                return []
             routes = cast(list[dict[str, Any]], payload.get("routes", []))
             if routes:
-                used_preference_fallback = attempt_kind != "requested" and bool(
-                    transit_preference
-                )
+                used_preference_fallback = attempt_kind != "requested" and bool(transit_preference)
                 used_live_preview_fallback = attempt_kind in {
                     "current_schedule",
                     "coordinates",
@@ -410,7 +547,7 @@ class GoogleRouteProvider:
                 },
             )
         else:
-            return None
+            return []
         routes = cast(list[dict[str, Any]], payload.get("routes", []))
         if used_preference_fallback:
             warnings.append("偏好條件沒有結果，已改用一般大眾運輸路線。")
@@ -420,88 +557,38 @@ class GoogleRouteProvider:
             )
         if used_coordinate_fallback:
             warnings.append("精準地點識別無法建立路線，已用相同地點的座標重試。")
-        route = routes[0]
-        total_minutes = duration_minutes(route.get("duration"))
-        if total_minutes is None:
-            return None
-        steps: list[RouteStep] = []
-        for leg in cast(list[dict[str, Any]], route.get("legs", [])):
-            for raw in cast(list[dict[str, Any]], leg.get("steps", [])):
-                transit = cast(dict[str, Any], raw.get("transitDetails") or {})
-                stop_details = cast(dict[str, Any], transit.get("stopDetails") or {})
-                line = cast(dict[str, Any], transit.get("transitLine") or {})
-                departure_stop = cast(dict[str, Any], stop_details.get("departureStop") or {})
-                arrival_stop = cast(dict[str, Any], stop_details.get("arrivalStop") or {})
-                navigation = cast(dict[str, Any], raw.get("navigationInstruction") or {})
-                mode = str(raw.get("travelMode") or "WALK")
-                instruction = str(navigation.get("instructions") or "")
-                if not instruction and transit:
-                    instruction = f"搭乘 {line.get('name') or line.get('nameShort') or '大眾運輸'}"
-                steps.append(
-                    RouteStep(
-                        travel_mode=mode,
-                        instruction=instruction
-                        or ("步行前往下一站" if mode == "WALK" else "前往下一段"),
-                        duration_minutes=duration_minutes(raw.get("staticDuration")),
-                        distance_meters=raw.get("distanceMeters"),
-                        departure_stop=departure_stop.get("name"),
-                        arrival_stop=arrival_stop.get("name"),
-                        departure_time=stop_details.get("departureTime"),
-                        arrival_time=stop_details.get("arrivalTime"),
-                        line_name=line.get("name"),
-                        line_short_name=line.get("nameShort"),
-                        line_color=line.get("color"),
-                        headsign=transit.get("headsign"),
-                        stop_count=transit.get("stopCount"),
-                    )
-                )
-        fare, currency = _money(
-            cast(dict[str, Any], route.get("travelAdvisory") or {}).get("transitFare")
-        )
-        params = urlencode(
-            {
-                "api": 1,
-                "origin": origin.name or f"{origin.latitude},{origin.longitude}",
-                "destination": destination.name
-                or f"{destination.latitude},{destination.longitude}",
-                "travelmode": travel_mode,
-                **(
-                    {"origin_place_id": origin.provider_place_id}
-                    if origin.provider_place_id
-                    and origin.place_provider in {None, "google_places"}
-                    else {}
+        segments: list[RouteSegment] = []
+        seen: set[tuple[object, ...]] = set()
+        for route in routes:
+            segment = self._segment_from_route(
+                route,
+                origin,
+                destination,
+                departure_time,
+                preference,
+                travel_mode,
+                schedule_mode,
+                warnings,
+                len(segments) + 1,
+            )
+            if segment is None:
+                continue
+            signature = (
+                segment.encoded_polyline,
+                segment.duration_minutes,
+                segment.distance_meters,
+                tuple(
+                    (step.travel_mode, step.line_name, step.departure_stop, step.arrival_stop)
+                    for step in segment.steps
                 ),
-                **(
-                    {"destination_place_id": destination.provider_place_id}
-                    if destination.provider_place_id
-                    and destination.place_provider in {None, "google_places"}
-                    else {}
-                ),
-            }
-        )
-        details = ["steps", "stops", "headsign"] if steps else []
-        return RouteSegment(
-            from_item_id=origin.item_id,
-            to_item_id=destination.item_id,
-            travel_mode=travel_mode,
-            provider=self.name,
-            attribution="Google Maps",
-            generated_at=datetime.now(UTC),
-            requested_departure_time=departure_time,
-            schedule_mode=schedule_mode,
-            preference=preference,
-            duration_minutes=total_minutes,
-            distance_meters=route.get("distanceMeters"),
-            fare=fare,
-            currency=currency,
-            encoded_polyline=cast(dict[str, Any], route.get("polyline") or {}).get(
-                "encodedPolyline"
-            ),
-            maps_url=f"https://www.google.com/maps/dir/?{params}",
-            steps=steps,
-            details_available=details,
-            warnings=warnings,
-        )
+            )
+            if signature in seen:
+                continue
+            seen.add(signature)
+            segments.append(segment)
+            if len(segments) >= max(1, min(max_options, 3)):
+                break
+        return segments
 
 
 class NavitimeRouteProvider:
@@ -519,8 +606,28 @@ class NavitimeRouteProvider:
         preference: str,
         travel_mode: TravelMode = "transit",
     ) -> RouteSegment | None:
+        options = await self.compute_options(
+            origin,
+            destination,
+            departure_time,
+            preference,
+            travel_mode,
+            max_options=1,
+        )
+        return options[0] if options else None
+
+    async def compute_options(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        departure_time: datetime | None,
+        preference: str,
+        travel_mode: TravelMode = "transit",
+        *,
+        max_options: int = 3,
+    ) -> list[RouteSegment]:
         if travel_mode != "transit" or not self.settings.navitime_configured:
-            return None
+            return []
         base = str(self.settings.navitime_api_base_url).rstrip("/")
         url = f"{base}/{self.settings.navitime_client_id}/v1/route_transit"
         effective_time, schedule_mode, warnings = supported_transit_time(departure_time)
@@ -528,6 +635,9 @@ class NavitimeRouteProvider:
             "start": f"{origin.latitude},{origin.longitude}",
             "goal": f"{destination.latitude},{destination.longitude}",
             "lang": "zh-TW",
+            "shape": "true",
+            "shape_color": "railway_line",
+            "limit": str(max(1, min(max_options, 3))),
         }
         if effective_time:
             params["start_time"] = effective_time.isoformat()
@@ -543,68 +653,115 @@ class NavitimeRouteProvider:
             response.raise_for_status()
             payload = cast(dict[str, Any], response.json())
         except (httpx.HTTPError, ValueError):
-            return None
+            return []
         candidates = cast(list[dict[str, Any]], payload.get("items", []))
         if not candidates:
-            return None
-        route = candidates[0]
-        summary = cast(dict[str, Any], route.get("summary") or {})
-        raw_nodes = cast(list[dict[str, Any]], route.get("nodes") or route.get("sections") or [])
-        steps: list[RouteStep] = []
-        for raw in raw_nodes:
-            transport = cast(dict[str, Any], raw.get("transport") or raw)
-            departure = cast(dict[str, Any], raw.get("departure") or raw.get("from") or {})
-            arrival = cast(dict[str, Any], raw.get("arrival") or raw.get("to") or {})
-            line_name = transport.get("name") or transport.get("line_name")
-            mode = "TRANSIT" if line_name else "WALK"
-            steps.append(
-                RouteStep(
-                    travel_mode=mode,
-                    instruction=str(
-                        raw.get("instruction")
-                        or (f"搭乘 {line_name}" if line_name else "步行前往下一站")
-                    ),
-                    duration_minutes=raw.get("time") or raw.get("duration"),
-                    distance_meters=raw.get("distance"),
-                    departure_stop=departure.get("name"),
-                    arrival_stop=arrival.get("name"),
-                    line_name=line_name,
-                    headsign=cast(dict[str, Any], transport.get("destination") or {}).get("name"),
-                    platform=departure.get("start_platform") or raw.get("start_platform"),
-                    exit_name=arrival.get("gateway") or raw.get("gateway"),
-                    recommended_car=transport.get("getoff"),
+            return []
+        options: list[RouteSegment] = []
+        seen: set[tuple[object, ...]] = set()
+        for index, route in enumerate(candidates):
+            if not isinstance(route, dict):
+                continue
+            try:
+                summary = cast(dict[str, Any], route.get("summary") or {})
+                summary_move = cast(dict[str, Any], summary.get("move") or {})
+                raw_nodes = cast(
+                    list[dict[str, Any]], route.get("nodes") or route.get("sections") or []
                 )
-            )
-        total = route.get("time") or summary.get("move_time") or summary.get("time")
-        try:
-            total_minutes = max(1, int(str(total)))
-        except (TypeError, ValueError):
-            total_minutes = sum(step.duration_minutes or 0 for step in steps)
-        if total_minutes <= 0:
-            return None
-        details = ["steps", "stops", "headsign"]
-        if any(step.platform for step in steps):
-            details.append("platform")
-        if any(step.exit_name for step in steps):
-            details.append("exit")
-        if any(step.recommended_car for step in steps):
-            details.append("recommended_car")
-        return RouteSegment(
-            from_item_id=origin.item_id,
-            to_item_id=destination.item_id,
-            travel_mode="transit",
-            provider=self.name,
-            attribution="NAVITIME JAPAN",
-            generated_at=datetime.now(UTC),
-            requested_departure_time=departure_time,
-            schedule_mode=schedule_mode,
-            preference=preference,
-            duration_minutes=total_minutes,
-            distance_meters=route.get("distance") or summary.get("move_distance"),
-            steps=steps,
-            details_available=details,
-            warnings=warnings,
-        )
+                steps: list[RouteStep] = []
+                for raw in raw_nodes:
+                    transport = cast(dict[str, Any], raw.get("transport") or raw)
+                    departure = cast(dict[str, Any], raw.get("departure") or raw.get("from") or {})
+                    arrival = cast(dict[str, Any], raw.get("arrival") or raw.get("to") or {})
+                    line_name = transport.get("name") or transport.get("line_name")
+                    mode = "TRANSIT" if line_name else "WALK"
+                    steps.append(
+                        RouteStep(
+                            travel_mode=mode,
+                            instruction=str(
+                                raw.get("instruction")
+                                or (f"搭乘 {line_name}" if line_name else "步行前往下一站")
+                            ),
+                            duration_minutes=raw.get("time") or raw.get("duration"),
+                            distance_meters=raw.get("distance"),
+                            departure_stop=departure.get("name"),
+                            arrival_stop=arrival.get("name"),
+                            line_name=line_name,
+                            headsign=cast(dict[str, Any], transport.get("destination") or {}).get(
+                                "name"
+                            ),
+                            platform=departure.get("start_platform") or raw.get("start_platform"),
+                            exit_name=arrival.get("gateway") or raw.get("gateway"),
+                            recommended_car=transport.get("getoff"),
+                        )
+                    )
+                total = (
+                    route.get("time")
+                    or summary_move.get("time")
+                    or summary.get("move_time")
+                    or summary.get("time")
+                )
+                try:
+                    total_minutes = max(1, int(str(total)))
+                except (TypeError, ValueError):
+                    total_minutes = sum(step.duration_minutes or 0 for step in steps)
+                if total_minutes <= 0:
+                    continue
+                details = ["steps", "stops", "headsign"]
+                if any(step.platform for step in steps):
+                    details.append("platform")
+                if any(step.exit_name for step in steps):
+                    details.append("exit")
+                if any(step.recommended_car for step in steps):
+                    details.append("recommended_car")
+                encoded = _encode_polyline(_geojson_route_points(route.get("shapes")))
+                provider_key = str(summary.get("no") or route.get("no") or f"navitime:{index + 1}")
+                segment = RouteSegment(
+                    from_item_id=origin.item_id,
+                    to_item_id=destination.item_id,
+                    travel_mode="transit",
+                    provider=self.name,
+                    attribution="NAVITIME JAPAN",
+                    generated_at=datetime.now(UTC),
+                    requested_departure_time=departure_time,
+                    schedule_mode=schedule_mode,
+                    preference=preference,
+                    duration_minutes=total_minutes,
+                    distance_meters=(
+                        route.get("distance")
+                        or summary_move.get("distance")
+                        or summary.get("move_distance")
+                    ),
+                    encoded_polyline=encoded,
+                    provider_route_key=provider_key[:64],
+                    route_option_rank=len(options) + 1,
+                    steps=steps,
+                    details_available=details,
+                    warnings=list(warnings),
+                )
+                signature = (
+                    segment.encoded_polyline,
+                    segment.duration_minutes,
+                    tuple(
+                        (step.line_name, step.departure_stop, step.arrival_stop) for step in steps
+                    ),
+                )
+                if signature in seen:
+                    continue
+                seen.add(signature)
+                options.append(segment)
+            except (ArithmeticError, TypeError, ValueError):
+                logger.warning(
+                    "navitime_route_candidate_invalid",
+                    extra={
+                        "provider": self.name,
+                        "reason_code": "candidate_invalid",
+                        "route_rank": index + 1,
+                    },
+                )
+            if len(options) >= max(1, min(max_options, 3)):
+                break
+        return options
 
 
 def _encode_polyline(points: list[tuple[float, float]]) -> str | None:
@@ -628,6 +785,33 @@ def _encode_polyline(points: list[tuple[float, float]]) -> str | None:
         previous_latitude = encoded_latitude
         previous_longitude = encoded_longitude
     return "".join(output)
+
+
+def _geojson_route_points(value: object) -> list[tuple[float, float]]:
+    if not isinstance(value, dict):
+        return []
+    features = value.get("features")
+    if not isinstance(features, list):
+        return []
+    points: list[tuple[float, float]] = []
+
+    def append_coordinates(raw: object) -> None:
+        if not isinstance(raw, list) or not raw:
+            return
+        if len(raw) >= 2 and all(isinstance(item, (int, float)) for item in raw[:2]):
+            longitude, latitude = raw[:2]
+            points.append((float(latitude), float(longitude)))
+            return
+        for child in raw:
+            append_coordinates(child)
+
+    for feature in features:
+        if not isinstance(feature, dict):
+            continue
+        geometry = feature.get("geometry")
+        if isinstance(geometry, dict):
+            append_coordinates(geometry.get("coordinates"))
+    return points
 
 
 def naver_external_navigation(
@@ -718,8 +902,28 @@ class NaverDirectionsProvider:
         preference: str,
         travel_mode: TravelMode = "drive",
     ) -> RouteSegment | None:
+        options = await self.compute_options(
+            origin,
+            destination,
+            departure_time,
+            preference,
+            travel_mode,
+            max_options=1,
+        )
+        return options[0] if options else None
+
+    async def compute_options(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        departure_time: datetime | None,
+        preference: str,
+        travel_mode: TravelMode = "drive",
+        *,
+        max_options: int = 3,
+    ) -> list[RouteSegment]:
         if travel_mode != "drive" or not self.settings.naver_maps_configured:
-            return None
+            return []
         headers = {
             "X-NCP-APIGW-API-KEY-ID": self.settings.naver_maps_client_id or "",
             "X-NCP-APIGW-API-KEY": self.settings.naver_maps_client_secret or "",
@@ -728,7 +932,7 @@ class NaverDirectionsProvider:
         params = {
             "start": f"{origin.longitude:.7f},{origin.latitude:.7f}",
             "goal": f"{destination.longitude:.7f},{destination.latitude:.7f}",
-            "option": "trafast",
+            "option": ("traoptimal:trafast:tracomfort" if max_options > 1 else "traoptimal"),
         }
         try:
             if self.client is not None:
@@ -752,81 +956,105 @@ class NaverDirectionsProvider:
                     else "provider_http_error",
                 },
             )
-            return None
+            return []
         except (httpx.HTTPError, ValueError):
             logger.warning(
                 "naver_directions_unavailable",
                 extra={"provider": self.name, "reason_code": "provider_unavailable"},
             )
-            return None
+            return []
         finally:
             if self.redis is not None:
                 await record_naver_maps_request(self.redis, "directions")
         if payload.get("code") not in (None, 0):
-            return None
-        candidates = cast(
-            list[dict[str, Any]],
-            cast(dict[str, Any], payload.get("route") or {}).get("trafast") or [],
-        )
-        if not candidates:
-            return None
-        route = candidates[0]
-        summary = cast(dict[str, Any], route.get("summary") or {})
-        try:
-            total_minutes = max(1, round(float(summary.get("duration") or 0) / 60_000))
-        except (TypeError, ValueError):
-            return None
-        path: list[tuple[float, float]] = []
-        for point in cast(list[list[object]], route.get("path") or []):
-            if len(point) < 2:
-                continue
-            try:
-                path.append((float(str(point[1])), float(str(point[0]))))
-            except (TypeError, ValueError):
-                continue
-        steps: list[RouteStep] = []
-        for guide in cast(list[dict[str, Any]], route.get("guide") or []):
-            raw_duration = guide.get("duration")
-            try:
-                guide_minutes = (
-                    max(1, round(float(str(raw_duration)) / 60_000))
-                    if raw_duration not in (None, 0, "0")
-                    else None
-                )
-            except (TypeError, ValueError):
-                guide_minutes = None
-            steps.append(
-                RouteStep(
-                    travel_mode="DRIVE",
-                    instruction=str(guide.get("instructions") or "依道路行駛"),
-                    duration_minutes=guide_minutes,
-                    distance_meters=guide.get("distance"),
-                )
-            )
+            return []
+        route_groups = cast(dict[str, Any], payload.get("route") or {})
+        requested_keys = ["traoptimal", "trafast", "tracomfort"]
         navigation = naver_external_navigation(
             origin,
             destination,
             "drive",
             reason="在 NAVER Maps 查看即時道路導航。",
         )
-        return RouteSegment(
-            from_item_id=origin.item_id,
-            to_item_id=destination.item_id,
-            travel_mode="drive",
-            provider=self.name,
-            attribution="NAVER Maps",
-            generated_at=datetime.now(UTC),
-            requested_departure_time=departure_time,
-            schedule_mode="preview" if departure_time else "live",
-            preference=preference,
-            duration_minutes=total_minutes,
-            distance_meters=summary.get("distance"),
-            encoded_polyline=_encode_polyline(path),
-            maps_url=navigation.web_url,
-            steps=steps,
-            details_available=["steps", "traffic"] if steps else ["traffic"],
-            warnings=["NAVER 汽車路線依目前路況估算，不代表行程日期的即時路況。"],
-        )
+        options: list[RouteSegment] = []
+        seen: set[tuple[object, ...]] = set()
+        for route_key in requested_keys:
+            candidates = route_groups.get(route_key)
+            if not isinstance(candidates, list):
+                continue
+            for route in candidates:
+                if not isinstance(route, dict):
+                    continue
+                try:
+                    summary = cast(dict[str, Any], route.get("summary") or {})
+                    total_minutes = max(1, round(float(summary.get("duration") or 0) / 60_000))
+                    path: list[tuple[float, float]] = []
+                    for point in cast(list[list[object]], route.get("path") or []):
+                        if len(point) < 2:
+                            continue
+                        try:
+                            path.append((float(str(point[1])), float(str(point[0]))))
+                        except (TypeError, ValueError):
+                            continue
+                    steps: list[RouteStep] = []
+                    for guide in cast(list[dict[str, Any]], route.get("guide") or []):
+                        raw_duration = guide.get("duration")
+                        try:
+                            guide_minutes = (
+                                max(1, round(float(str(raw_duration)) / 60_000))
+                                if raw_duration not in (None, 0, "0")
+                                else None
+                            )
+                        except (TypeError, ValueError):
+                            guide_minutes = None
+                        steps.append(
+                            RouteStep(
+                                travel_mode="DRIVE",
+                                instruction=str(guide.get("instructions") or "依道路行駛"),
+                                duration_minutes=guide_minutes,
+                                distance_meters=guide.get("distance"),
+                            )
+                        )
+                    encoded = _encode_polyline(path)
+                    signature = (encoded, total_minutes, summary.get("distance"))
+                    if signature in seen:
+                        continue
+                    seen.add(signature)
+                    rank = len(options) + 1
+                    options.append(
+                        RouteSegment(
+                            from_item_id=origin.item_id,
+                            to_item_id=destination.item_id,
+                            travel_mode="drive",
+                            provider=self.name,
+                            attribution="NAVER Maps",
+                            generated_at=datetime.now(UTC),
+                            requested_departure_time=departure_time,
+                            schedule_mode="preview" if departure_time else "live",
+                            preference=preference,
+                            duration_minutes=total_minutes,
+                            distance_meters=summary.get("distance"),
+                            encoded_polyline=encoded,
+                            maps_url=navigation.web_url,
+                            provider_route_key=route_key,
+                            route_option_rank=rank,
+                            steps=steps,
+                            details_available=["steps", "traffic"] if steps else ["traffic"],
+                            warnings=["NAVER 汽車路線依目前路況估算，不代表行程日期的即時路況。"],
+                        )
+                    )
+                except (ArithmeticError, TypeError, ValueError):
+                    logger.warning(
+                        "naver_route_candidate_invalid",
+                        extra={
+                            "provider": self.name,
+                            "reason_code": "candidate_invalid",
+                            "route_key": route_key,
+                        },
+                    )
+                if len(options) >= max(1, min(max_options, 3)):
+                    return options
+        return options
 
 
 class RouteService:
@@ -849,7 +1077,9 @@ class RouteService:
         if region == "JP" and travel_mode == "transit":
             return [self.navitime, self.google]
         if region == "KR" and travel_mode == "drive":
-            return [self.naver, self.google]
+            return [self.naver]
+        if region == "KR":
+            return []
         return [self.google]
 
     async def compute(
@@ -864,6 +1094,33 @@ class RouteService:
         travel_mode: TravelMode = "transit",
         refresh: bool = False,
     ) -> RouteSegment | None:
+        options = await self.compute_options(
+            origin,
+            destination,
+            departure_time,
+            preference,
+            region_code=region_code,
+            japan=japan,
+            travel_mode=travel_mode,
+            refresh=refresh,
+            max_options=1,
+        )
+        return options[0] if options else None
+
+    async def compute_options(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        departure_time: datetime | None,
+        preference: str,
+        *,
+        region_code: str | None = None,
+        japan: bool | None = None,
+        travel_mode: TravelMode = "transit",
+        refresh: bool = False,
+        max_options: int = 3,
+    ) -> list[RouteSegment]:
+        option_limit = max(1, min(max_options, 3))
         raw_key = json.dumps(
             {
                 "o": [round(origin.latitude, 6), round(origin.longitude, 6)],
@@ -876,31 +1133,93 @@ class RouteService:
                 "p": preference,
                 "r": region_code or ("JP" if japan else None),
                 "m": travel_mode,
+                "alternatives": option_limit,
             },
             sort_keys=True,
         ).encode()
-        key = f"routes:segment:{hashlib.sha256(raw_key).hexdigest()}"
+        key = f"routes:options:{hashlib.sha256(raw_key).hexdigest()}"
         if not refresh:
             cached = await self.redis.get(key)
             if cached:
-                value = cached.decode() if isinstance(cached, bytes) else str(cached)
-                cached_segment = RouteSegment.model_validate_json(value)
-                return cached_segment.model_copy(
-                    update={"from_item_id": origin.item_id, "to_item_id": destination.item_id}
-                )
+                try:
+                    value = cached.decode() if isinstance(cached, bytes) else str(cached)
+                    cached_segments = [
+                        RouteSegment.model_validate(item)
+                        for item in cast(list[object], json.loads(value))
+                    ]
+                    return [
+                        segment.model_copy(
+                            update={
+                                "from_item_id": origin.item_id,
+                                "to_item_id": destination.item_id,
+                            }
+                        )
+                        for segment in cached_segments[:option_limit]
+                    ]
+                except (TypeError, UnicodeError, ValueError):
+                    logger.warning(
+                        "route_options_cache_invalid",
+                        extra={"reason_code": "cache_invalid", "travel_mode": travel_mode},
+                    )
+                    await self.redis.delete(key)
         effective_region = region_code or ("JP" if japan else None)
         for provider in self._providers(effective_region, travel_mode):
-            provider_segment = await provider.compute(
-                origin, destination, departure_time, preference, travel_mode
-            )
-            if provider_segment is not None:
+            try:
+                compute_options = getattr(provider, "compute_options", None)
+                if callable(compute_options):
+                    provider_segments = await compute_options(
+                        origin,
+                        destination,
+                        departure_time,
+                        preference,
+                        travel_mode,
+                        max_options=option_limit,
+                    )
+                else:
+                    segment = await provider.compute(
+                        origin,
+                        destination,
+                        departure_time,
+                        preference,
+                        travel_mode,
+                    )
+                    provider_segments = [segment] if segment is not None else []
+            except Exception:
+                logger.exception(
+                    "route_provider_failed",
+                    extra={
+                        "provider": provider.name,
+                        "reason_code": "provider_exception",
+                        "travel_mode": travel_mode,
+                    },
+                )
+                provider_segments = []
+            if not isinstance(provider_segments, list) or not all(
+                isinstance(segment, RouteSegment) for segment in provider_segments
+            ):
+                logger.warning(
+                    "route_provider_invalid_options",
+                    extra={
+                        "provider": provider.name,
+                        "reason_code": "provider_invalid_response",
+                        "travel_mode": travel_mode,
+                    },
+                )
+                provider_segments = []
+            if provider_segments:
+                normalized = provider_segments[:option_limit]
+                for index, segment in enumerate(normalized):
+                    segment.route_option_rank = index + 1
                 await self.redis.set(
                     key,
-                    provider_segment.model_dump_json(),
+                    json.dumps(
+                        [segment.model_dump(mode="json") for segment in normalized],
+                        ensure_ascii=False,
+                    ),
                     ex=self.settings.route_cache_ttl_seconds,
                 )
-                return provider_segment
-        return None
+                return normalized
+        return []
 
     async def compute_many(
         self,
@@ -944,8 +1263,10 @@ def trip_region_code(
     destination = destination_name or ""
     if timezone == "Asia/Tokyo" or country in {"日本", "Japan"} or "日本" in destination:
         return "JP"
-    if timezone == "Asia/Seoul" or country in {"韓國", "韩国", "Korea"} or any(
-        token in destination for token in ("韓國", "首爾", "釜山")
+    if (
+        timezone == "Asia/Seoul"
+        or country in {"韓國", "韩国", "Korea"}
+        or any(token in destination for token in ("韓國", "首爾", "釜山"))
     ):
         return "KR"
     if timezone == "Asia/Bangkok" or country in {"泰國", "泰国", "Thailand"}:

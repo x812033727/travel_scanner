@@ -1,9 +1,12 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { RouteMap } from "./route-map";
 
 vi.mock("next/script", () => ({
-  default: ({ src }: { src: string }) => <div data-testid="next-script" data-src={src} />,
+  default: ({ src, onReady }: { src: string; onReady?: () => void }) => {
+    if (onReady) setTimeout(onReady, 0);
+    return <div data-testid="next-script" data-src={src} />;
+  },
 }));
 
 const items = [
@@ -60,7 +63,11 @@ function ok(payload: unknown) {
   });
 }
 
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => {
+  vi.unstubAllGlobals();
+  window.google = undefined;
+  window.naver = undefined;
+});
 
 describe("RouteMap", () => {
   it("loads NAVER Dynamic Map for Korean trips in a fixed map frame", async () => {
@@ -77,28 +84,27 @@ describe("RouteMap", () => {
     expect(script.getAttribute("data-src")).toBe(
       "https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=browser-client-id",
     );
-    expect(screen.getByRole("img", { name: /景福宮到北村韓屋村的 NAVER 地圖/ })).toBeTruthy();
+    expect(screen.getByRole("img", { name: /景福宮到北村韓屋村的NAVER Maps路線地圖/ })).toBeTruthy();
+    expect(screen.getByText("示意連線，非實際路線")).toBeTruthy();
     expect(container.querySelector(".route-map-frame")).toBeTruthy();
     expect(container.querySelector("iframe")).toBeNull();
   });
 
-  it("falls back to Google Embed with coordinates instead of NAVER place IDs", async () => {
+  it("does not load Google Maps for a Korean trip when NAVER Dynamic Map is unavailable", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => ok({
       google_maps_browser_key: "google-browser-key",
       google_maps_embed_enabled: true,
       naver_dynamic_map_enabled: false,
     })));
-    render(<RouteMap items={items} segment={segment} fromItemId="from" toItemId="to" countryCode="KR" />);
+    const { container } = render(<RouteMap items={items} segment={segment} fromItemId="from" toItemId="to" countryCode="KR" />);
 
-    await waitFor(() => expect(screen.getByTitle("行程路線地圖")).toBeTruthy());
-    const src = screen.getByTitle("行程路線地圖").getAttribute("src") || "";
-    expect(src).toContain("origin=37.5796%2C126.977");
-    expect(src).toContain("destination=37.5826%2C126.985");
-    expect(src).not.toContain("naver-origin-id");
-    expect(src).not.toContain("naver-destination-id");
+    expect(await screen.findByText("瀏覽器地圖服務尚未啟用")).toBeTruthy();
+    expect(screen.getByText("請在管理設定啟用 NAVER Dynamic Map。")).toBeTruthy();
+    expect(container.querySelector("iframe")).toBeNull();
+    expect(screen.queryByTestId("next-script")).toBeNull();
   });
 
-  it("does not load an embed before the provider returns a route", async () => {
+  it("loads a Google JavaScript basemap with endpoints before a provider route exists", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => ok({
       google_maps_browser_key: "google-browser-key",
       google_maps_embed_enabled: true,
@@ -108,8 +114,57 @@ describe("RouteMap", () => {
       <RouteMap items={items} fromItemId="from" toItemId="to" countryCode="JP" />,
     );
 
-    expect(await screen.findByText("取得路線後顯示互動地圖")).toBeTruthy();
+    const script = await screen.findByTestId("next-script");
+    expect(script.getAttribute("data-src")).toContain("https://maps.googleapis.com/maps/api/js");
+    expect(script.getAttribute("data-src")).toContain("key=google-browser-key");
+    expect(screen.getByRole("img", { name: /景福宮到北村韓屋村的Google Maps路線地圖/ })).toBeTruthy();
+    expect(screen.getByText("示意連線，非實際路線")).toBeTruthy();
     expect(container.querySelector("iframe")).toBeNull();
-    expect(screen.getByText(/會提供保留精準起訖點的外部導航/)).toBeTruthy();
+  });
+
+  it("draws every provider option and makes each line selectable", async () => {
+    const lineOptions: Array<Record<string, unknown>> = [];
+    const lineClicks: Array<() => void> = [];
+    class TestMap {
+      fitBounds() { return undefined; }
+    }
+    class TestBounds {
+      extend() { return undefined; }
+    }
+    class TestMarker {
+      constructor() {}
+      setMap() { return undefined; }
+    }
+    class TestPolyline {
+      constructor(options: Record<string, unknown>) { lineOptions.push(options); }
+      setMap() { return undefined; }
+      addListener(_eventName: string, handler: () => void) { lineClicks.push(handler); }
+    }
+    window.google = { maps: {
+      Map: TestMap,
+      LatLngBounds: TestBounds,
+      Marker: TestMarker,
+      Polyline: TestPolyline,
+    } };
+    vi.stubGlobal("fetch", vi.fn(async () => ok({
+      google_maps_browser_key: "google-browser-key",
+      google_maps_javascript_enabled: true,
+    })));
+    const onSelect = vi.fn();
+    const options = [18, 21, 25].map((duration, index) => ({
+      ...segment,
+      duration_minutes: duration,
+      encoded_polyline: index === 0
+        ? "_p~iF~ps|U_ulLnnqC_mqNvxq`@"
+        : index === 1 ? "_p~iF~ps|U_mqNvxq`@" : "_p~iF~ps|U_ulLnnqC",
+    }));
+
+    render(<RouteMap items={items} segments={options} selectedSegmentIndex={1} onSelectSegment={onSelect} fromItemId="from" toItemId="to" countryCode="JP" />);
+
+    await waitFor(() => expect(lineOptions).toHaveLength(3));
+    expect(lineOptions.map((option) => option.strokeOpacity)).toEqual([0.3, 0.96, 0.3]);
+    fireEvent.click(screen.getByRole("img", { name: /Google Maps路線地圖/ }));
+    lineClicks[2]();
+    expect(onSelect).toHaveBeenCalledWith(2);
   });
 });
