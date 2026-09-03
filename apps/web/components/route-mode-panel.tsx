@@ -397,7 +397,7 @@ export function RouteModePanel({
         <div className="route-mode-tabs" role="tablist" aria-label="選擇交通工具">{modes.map(({ value, label, icon: Icon }) => <button key={value} type="button" role="tab" aria-selected={mode === value} onClick={() => { if (previews[value] || initialSegment?.travel_mode === value) setMode(value); else void previewMode(value); }} className={`route-mode-tab ${mode === value ? "route-mode-tab-active" : ""}`}><Icon size={18} />{label}{loadingMode === value && <Loader2 size={14} className="animate-spin" />}</button>)}</div>
         {navigationUrl && <a href={safeExternalHref(navigationUrl)} target="_blank" rel="noreferrer" className="route-navigation-link" aria-label={`導航：${fromItem?.title || "起點"}到${toItem?.title || "終點"}`}><Navigation size={16} /><span>導航</span></a>}
       </div>
-      <div className="route-selection-summary"><strong>{routeSummary}</strong><span>{activeSegment?.schedule_mode === "preview" ? "自訂時間預覽" : activeSegment?.schedule_mode === "live" ? "目前路線" : "依行程時間規劃"}</span></div>
+      <div className="route-selection-summary"><strong>{routeSummary}</strong><span>{activeSegment?.schedule_mode === "preview" ? "近期參考班次" : activeSegment?.schedule_mode === "live" ? "目前路線" : "依行程時間規劃"}</span></div>
     </section>
 
     <div className="route-panel-controls space-y-4">
