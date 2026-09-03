@@ -66,14 +66,24 @@ class AIDraftItem(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     candidate_key: str = Field(min_length=3, max_length=160)
-    start_time: str = Field(pattern=r"^(?:0[9]|1\d|2[01]):[0-5]\d$")
+    # Any valid HH:MM is accepted here; normalize_draft rewrites every time
+    # into the 09:00–21:30 slot grid, so an off-hours draft time (a MiniMax
+    # habit) must not sink the whole itinerary.
+    start_time: str = Field(pattern=r"^(?:[01]\d|2[0-3]):[0-5]\d$")
     reason: str = Field(min_length=1, max_length=240)
     slot_type: SlotType = "activity"
 
-    @field_validator("candidate_key", "reason")
+    @field_validator("candidate_key")
     @classmethod
     def strip_text(cls, value: str) -> str:
         return value.strip()
+
+    @field_validator("reason", mode="before")
+    @classmethod
+    def clamp_reason(cls, value: object) -> object:
+        if isinstance(value, str):
+            return value.strip()[:240]
+        return value
 
 
 class AIDraftDay(BaseModel):
@@ -91,6 +101,13 @@ class AIItineraryDraft(BaseModel):
 
     summary: str = Field(min_length=1, max_length=500)
     days: list[AIDraftDay] = Field(min_length=1, max_length=61)
+
+    @field_validator("summary", mode="before")
+    @classmethod
+    def clamp_summary(cls, value: object) -> object:
+        if isinstance(value, str):
+            return value.strip()[:500]
+        return value
 
 
 class PlanningMetadata(BaseModel):
