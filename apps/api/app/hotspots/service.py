@@ -234,6 +234,7 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
             "recommended_duration_minutes": seed.recommended_duration_minutes,
             "depth_components": seed.depth_components,
             "coordinate_source": seed.coordinate_source,
+            "provenance": seed.provenance,
         }
         hotspot.is_deep_travel = seed.is_deep_travel
         hotspot.depth_kind = seed.depth_kind

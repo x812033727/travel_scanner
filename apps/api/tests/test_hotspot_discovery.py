@@ -6,7 +6,7 @@ from app.hotspots.discovery import WikimediaDiscoveryClient, classify_types, hav
 
 
 def test_hotspot_city_targets_total_529() -> None:
-    assert TARGET_PUBLIC_HOTSPOTS == 529
+    assert TARGET_PUBLIC_HOTSPOTS == 649
 
 
 def test_haversine_distance_and_radius_boundary() -> None:

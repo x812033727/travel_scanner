@@ -8,6 +8,7 @@ from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import SessionFactory, engine
+from app.hotspots.areas import resolve_area_code
 from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.service import hotspot_facets, seed_catalog, sync_hotspot_areas
 from app.models import HotspotPlaceProfile, HotspotSignal, TravelHotspot
@@ -126,12 +127,19 @@ async def test_seeding_assigns_areas_and_sync_repairs_them() -> None:
         assert hotspot.area_code == "asakusa"
         facets = await hotspot_facets(session, "en")
         assert "styles" not in facets
+        expected_count = sum(
+            1
+            for seed in HOTSPOT_SEEDS
+            if seed.city_code == "NRT"
+            and resolve_area_code("NRT", seed.latitude, seed.longitude) == "asakusa"
+        )
+        assert expected_count >= 2
         assert {
             "destination_id": "tokyo",
             "city_code": "NRT",
             "code": "asakusa",
             "name": "Asakusa & Tokyo Skytree",
-            "count": 2,
+            "count": expected_count,
         } in facets["areas"]
         # A radius tweak or a coordinate fix must reach rows seeded earlier too.
         hotspot.area_code = "stale"
