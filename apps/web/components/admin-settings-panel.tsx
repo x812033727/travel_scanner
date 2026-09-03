@@ -94,6 +94,8 @@ const providerCategoryOf: Record<string, ProviderCategory> = {
   google_maps: "maps",
   naver_maps: "maps",
   navitime: "maps",
+  ekispert: "maps",
+  odsay: "maps",
   youtube_guides: "content",
   brave_guides: "content",
   amadeus: "travelData",
@@ -196,6 +198,12 @@ const fieldMeta: Record<string, FieldMeta> = {
   travel_impact_cache_ttl_seconds: { label: "碳排快取秒數", type: "number" },
   navitime_api_base_url: { label: "API Base URL", type: "url", help: "RapidAPI 填 https://navitime-route-totalnavi.p.rapidapi.com；直接契約填 NAVITIME 提供的 gateway 主機（navitime.co.jp／navitime.biz）。" },
   navitime_monthly_request_limit: { label: "站內每月請求上限", type: "number", help: "以日本時間按月計算站內送出的 NAVITIME 請求；達到上限後停止呼叫、改顯示 Google Maps 連結。預設 450，替 RapidAPI Basic 的 500 次留下後台測試空間；0 表示只計數不限制。" },
+  ekispert_api_base_url: { label: "API Base URL", type: "url", help: "固定使用 Ekispert 官方 https://api.ekispert.jp；系統不接受第三方轉送主機。" },
+  ekispert_search_type: { label: "路線資料模式", options: [{ value: "plain", label: "平均等待時間（低成本方案）" }, { value: "departure", label: "指定時刻表（需合約開通）" }], help: "plain 不代表指定日期班次；只有確認合約含時刻表搜尋後才選 departure。" },
+  ekispert_monthly_request_limit: { label: "站內每月請求上限", type: "number", help: "達到上限後停止外部呼叫並提供 Google Maps 精準導航；預設 450，0 表示只計數不限制。" },
+  odsay_api_base_url: { label: "API Base URL", type: "url", help: "固定使用 ODsay 官方 https://api.odsay.com/v1/api。" },
+  odsay_language: { label: "路線資料語言", options: [{ value: "0", label: "韓文（Standard 相容）" }, { value: "1", label: "英文" }, { value: "2", label: "日文" }, { value: "3", label: "簡體中文" }, { value: "4", label: "繁體中文" }], help: "ODsay Standard 方案只提供韓文；請僅在合約含多語服務時選擇其他語言。" },
+  odsay_daily_request_limit: { label: "站內每日請求上限", type: "number", help: "Basic 方案每日 30 次；預設站內只用 25 次並保留 5 次測試空間。正式商用方案可依合約調整；0 表示只計數不限制。" },
   travelpayouts_api_base_url: { label: "Partner Links API Base URL", type: "url" },
   travelpayouts_marker: { label: "Marker" },
   travelpayouts_project_id: { label: "Project ID" },
@@ -252,6 +260,8 @@ const secretLabels: Record<string, { label: string; help?: string }> = {
   google_travel_impact_api_key: { label: "Travel Impact API Key" },
   navitime_client_id: { label: "Client ID", help: "只有直接契約需要，會放在請求路徑；使用 RapidAPI 金鑰時可留空。" },
   navitime_api_key: { label: "API Key", help: "RapidAPI 的 X-RapidAPI-Key（Basic 方案每月 500 次），或直接契約金鑰。" },
+  ekispert_api_key: { label: "Ekispert Access Key", help: "只在伺服器端加密保存；路線請求會使用官方 key 參數。" },
+  odsay_api_key: { label: "ODsay Server Key", help: "請使用已綁定正式伺服器固定出口 IP 的 Server Key，不要填入瀏覽器 Web Key。" },
   travelpayouts_api_token: { label: "API Token" },
   kkday_api_key: { label: "核准後 API Key" },
   klook_api_key: { label: "核准後 API Key" },
@@ -280,6 +290,8 @@ const usageOperationLabel: Record<string, string> = {
   geocode: "Geocoding",
   directions: "Directions 5",
   route_transit: "NAVITIME 路線查詢",
+  search_course: "Ekispert 路線查詢",
+  search_pub_trans_path: "ODsay 大眾運輸查詢",
   search_list: "影片搜尋（search.list）",
   videos_list: "影片詳細資料（videos.list）",
 };
@@ -377,8 +389,10 @@ function GoogleUsagePanel({ usage, refreshing, onRefresh }: {
 type UsageTone = { border: string; bg: string; text: string; bar: string; tableBorder: string };
 const naverUsageTone: UsageTone = { border: "border-[#b8e7ca]", bg: "bg-[#f2fbf5]", text: "text-[#087a3f]", bar: "bg-[#03c75a]", tableBorder: "border-[#d7eee0]" };
 const navitimeUsageTone: UsageTone = { border: "border-sky-200", bg: "bg-sky-50", text: "text-sky-800", bar: "bg-sky-600", tableBorder: "border-sky-100" };
+const ekispertUsageTone: UsageTone = { border: "border-indigo-200", bg: "bg-indigo-50", text: "text-indigo-800", bar: "bg-indigo-600", tableBorder: "border-indigo-100" };
+const odsayUsageTone: UsageTone = { border: "border-fuchsia-200", bg: "bg-fuchsia-50", text: "text-fuchsia-800", bar: "bg-fuchsia-600", tableBorder: "border-fuchsia-100" };
 
-function MonthlyUsagePanel({ usage, refreshing, onRefresh, title, ariaLabel, progressLabel, limitLabel, remainingLabel, note, tone }: {
+function MonthlyUsagePanel({ usage, refreshing, onRefresh, title, ariaLabel, progressLabel, limitLabel, remainingLabel, note, tone, periodLabel = "本月" }: {
   usage: ProviderUsage;
   refreshing: boolean;
   onRefresh: () => void;
@@ -389,6 +403,7 @@ function MonthlyUsagePanel({ usage, refreshing, onRefresh, title, ariaLabel, pro
   remainingLabel: string;
   note: string;
   tone: UsageTone;
+  periodLabel?: "本月" | "今日";
 }) {
   const hasLimit = usage.monthly_limit > 0;
   const width = hasLimit ? Math.min(100, Math.max(0, usage.percentage || 0)) : 0;
@@ -399,13 +414,13 @@ function MonthlyUsagePanel({ usage, refreshing, onRefresh, title, ariaLabel, pro
     </div>
     {usage.available && <>
       <dl className="mt-4 grid gap-3 sm:grid-cols-3">
-        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">本月站內請求</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)}</dd></div>
+        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">{periodLabel}站內請求</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)}</dd></div>
         <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">{limitLabel}</dt><dd className="mt-1 text-xl font-bold tabular-nums">{hasLimit ? numberFormat.format(usage.monthly_limit) : "未設定"}</dd></div>
         <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">{remainingLabel}</dt><dd className="mt-1 text-xl font-bold tabular-nums">{hasLimit ? numberFormat.format(usage.remaining || 0) : "—"}</dd></div>
       </dl>
       {hasLimit && <div className="mt-4 h-2 overflow-hidden rounded-full bg-white" role="progressbar" aria-label={progressLabel} aria-valuemin={0} aria-valuemax={usage.monthly_limit} aria-valuenow={Math.min(usage.used || 0, usage.monthly_limit)}><div className={`h-full rounded-full ${(usage.percentage || 0) >= 100 ? "bg-red-500" : (usage.percentage || 0) >= 75 ? "bg-amber-500" : tone.bar}`} style={{ width: `${width}%` }} /></div>}
       <details className="mt-4 rounded-xl bg-white px-4 py-3"><summary className="cursor-pointer text-sm font-semibold">查看站內操作明細</summary><dl className="mt-3 grid gap-2 sm:grid-cols-3">{Object.entries(usage.breakdown).map(([operation, count]) => <div key={operation}><dt className="text-[.68rem] text-[var(--muted)]">{usageOperationLabel[operation] || operation}</dt><dd className="mt-0.5 font-bold tabular-nums">{numberFormat.format(count)}</dd></div>)}</dl></details>
-      <div className={`mt-4 overflow-x-auto rounded-xl border ${tone.tableBorder} bg-white`}><table className="min-w-[32rem] w-full text-left text-sm"><thead className={`${tone.bg} text-xs text-[var(--muted)]`}><tr><th className="px-3 py-2 font-semibold">月份</th><th className="px-3 py-2 font-semibold">站內請求</th><th className="px-3 py-2 font-semibold">{limitLabel}</th><th className="px-3 py-2 font-semibold">剩餘</th></tr></thead><tbody className="divide-y divide-[var(--line)]">{usage.monthly_history.map((month) => <tr key={month.period}><th className="px-3 py-2.5 font-semibold">{month.period}</th><td className="px-3 py-2.5 tabular-nums">{numberFormat.format(month.used)}</td><td className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_limit) : "—"}</td><td className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_remaining) : "—"}</td></tr>)}</tbody></table></div>
+      {usage.monthly_history.length > 0 && <div className={`mt-4 overflow-x-auto rounded-xl border ${tone.tableBorder} bg-white`}><table className="min-w-[32rem] w-full text-left text-sm"><thead className={`${tone.bg} text-xs text-[var(--muted)]`}><tr><th className="px-3 py-2 font-semibold">月份</th><th className="px-3 py-2 font-semibold">站內請求</th><th className="px-3 py-2 font-semibold">{limitLabel}</th><th className="px-3 py-2 font-semibold">剩餘</th></tr></thead><tbody className="divide-y divide-[var(--line)]">{usage.monthly_history.map((month) => <tr key={month.period}><th className="px-3 py-2.5 font-semibold">{month.period}</th><td className="px-3 py-2.5 tabular-nums">{numberFormat.format(month.used)}</td><td className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_limit) : "—"}</td><td className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_remaining) : "—"}</td></tr>)}</tbody></table></div>}
     </>}
     <p className="mt-4 text-xs leading-5 text-[var(--muted)]">{note}</p>
   </div>;
@@ -417,6 +432,14 @@ function NaverUsagePanel(props: { usage: ProviderUsage; refreshing: boolean; onR
 
 function NavitimeUsagePanel(props: { usage: ProviderUsage; refreshing: boolean; onRefresh: () => void }) {
   return <MonthlyUsagePanel {...props} title="NAVITIME 本月路線查詢" ariaLabel="NAVITIME 本月用量" progressLabel="NAVITIME 月用量" limitLabel="站內每月上限" remainingLabel="上限內剩餘" tone={navitimeUsageTone} note="以日本時間按月統計站內送出的 route_transit 請求（含失敗與後台測試）；達到上限後站內會停止呼叫 NAVITIME，改顯示 Google Maps 連結。RapidAPI 的配額以訂閱日為週期重置，實際用量請以 RapidAPI 後台為準。" />;
+}
+
+function EkispertUsagePanel(props: { usage: ProviderUsage; refreshing: boolean; onRefresh: () => void }) {
+  return <MonthlyUsagePanel {...props} title="Ekispert 本月路線查詢" ariaLabel="Ekispert 本月用量" progressLabel="Ekispert 月用量" limitLabel="站內每月上限" remainingLabel="上限內剩餘" tone={ekispertUsageTone} note="以日本時間按月統計所有送出的 search/course 請求（包含失敗與後台測試）。達到安全上限後會停止呼叫，並改顯示 Google Maps 精準導航；實際合約額度與費用仍以 Ekispert 管理頁面為準。" />;
+}
+
+function OdsayUsagePanel(props: { usage: ProviderUsage; refreshing: boolean; onRefresh: () => void }) {
+  return <MonthlyUsagePanel {...props} title="ODsay 今日路線查詢" ariaLabel="ODsay 今日用量" progressLabel="ODsay 日用量" limitLabel="站內每日上限" remainingLabel="上限內剩餘" periodLabel="今日" tone={odsayUsageTone} note="以韓國時間每日統計 searchPubTransPathT 請求（包含失敗與後台測試）。預設 25 次是 Basic 每日 30 次內的保守安全閘門；正式方案請依 ODsay 合約調整，並在供應商控制台另外設定固定 IP 限制。" />;
 }
 
 function YouTubeUsagePanel({ usage, automaticSearchBudget, refreshing, onRefresh }: {
@@ -670,6 +693,8 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
         {provider.provider === "google_maps" && usage && <GoogleUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "naver_maps" && usage && <NaverUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "navitime" && usage && <NavitimeUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
+        {provider.provider === "ekispert" && usage && <EkispertUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
+        {provider.provider === "odsay" && usage && <OdsayUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "youtube_guides" && usage && <YouTubeUsagePanel usage={usage} automaticSearchBudget={Number(provider.config.hotspot_guide_youtube_daily_search_budget || 80)} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
 
         {Object.keys(provider.config).length > 0 && <div className="mt-6 grid gap-4 md:grid-cols-2">{Object.entries(provider.config).map(([field]) => {

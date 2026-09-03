@@ -119,7 +119,7 @@
 
 `app/config.py` 新增 `OFFICIAL_PROVIDER_HOSTS` 與 `official_provider_url_ok()`，後台寫入驗證（`_validate_provider_values`）、生產環境啟動驗證（有對應金鑰時）與資料庫覆寫讀取（`apply_runtime_overrides`）共用同一份表：OpenAI、Anthropic、MiniMax、FlightAware（`aeroapi.flightaware.com`）、Skyscanner（`partners.api.skyscanner.net`）、Duffel（`api.duffel.com`）、Google Travel Impact（`travelimpactmodel.googleapis.com`）、Travelpayouts、LINE。讀取時若資料庫值不在官方主機，忽略該欄位並記錄警告，回到環境變數值。
 
-NAVITIME 隨後補綁：`navitime_api_base_url` 只接受 RapidAPI 的 `navitime-route-totalnavi.p.rapidapi.com`，或直接契約的 `*.navitime.co.jp`／`*.navitime.biz`（表內以 `.` 開頭的項目代表後綴比對）。未綁定：KKday／Klook／Agoda（`*_api_base_url` 目前沒有任何 client 使用），這三個仍只驗 HTTPS；若日後啟用，請在同一張表加入官方主機。
+NAVITIME 隨後補綁：`navitime_api_base_url` 只接受 RapidAPI 的 `navitime-route-totalnavi.p.rapidapi.com`，或直接契約的 `*.navitime.co.jp`／`*.navitime.biz`（表內以 `.` 開頭的項目代表後綴比對）。Ekispert 與 ODsay 也分別固定為 `api.ekispert.jp` 與 `api.odsay.com`。未綁定：KKday／Klook／Agoda（`*_api_base_url` 目前沒有任何 client 使用），這三個仍只驗 HTTPS；若日後啟用，請在同一張表加入官方主機。
 
 ### API-05 請求大小上限（Medium）
 

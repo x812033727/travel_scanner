@@ -20,7 +20,9 @@ from app.config import Settings, get_settings
 from app.providers.usage_meter import (
     record_google_maps_request,
     record_naver_maps_request,
+    reserve_ekispert_request,
     reserve_navitime_request,
+    reserve_odsay_request,
 )
 
 logger = logging.getLogger(__name__)
@@ -150,8 +152,7 @@ def google_directions_params(
         origin.provider_place_id and origin.place_provider in {None, "google_places"}
     )
     destination_has_place_id = bool(
-        destination.provider_place_id
-        and destination.place_provider in {None, "google_places"}
+        destination.provider_place_id and destination.place_provider in {None, "google_places"}
     )
     params: dict[str, object] = {
         "api": 1,
@@ -557,23 +558,15 @@ class GoogleRouteProvider:
                 key: value for key, value in body.items() if key != "transitPreferences"
             }
             near_term_body["departureTime"] = (
-                _next_matching_transit_time(departure_time)
-                .isoformat()
-                .replace("+00:00", "Z")
+                _next_matching_transit_time(departure_time).isoformat().replace("+00:00", "Z")
             )
             add_attempt(near_term_body, "near_term_schedule")
-        if (
-            travel_mode == "transit"
-            and schedule_mode == "scheduled"
-            and departure_time is not None
-        ):
+        if travel_mode == "transit" and schedule_mode == "scheduled" and departure_time is not None:
             daytime_body = {
                 key: value for key, value in body.items() if key != "transitPreferences"
             }
             daytime_body["departureTime"] = (
-                _next_matching_transit_daytime(departure_time)
-                .isoformat()
-                .replace("+00:00", "Z")
+                _next_matching_transit_daytime(departure_time).isoformat().replace("+00:00", "Z")
             )
             add_attempt(daytime_body, "near_term_daytime")
         if travel_mode == "transit" and schedule_mode in {"scheduled", "preview"}:
@@ -1123,7 +1116,9 @@ class NavitimeRouteProvider:
                     arrival_time=arrival_at,
                     line_name=line_name,
                     line_color=_navitime_color(transport.get("color")),
-                    headsign=_navitime_text(_navitime_dict(transport.get("destination")).get("name")),
+                    headsign=_navitime_text(
+                        _navitime_dict(transport.get("destination")).get("name")
+                    ),
                     platform=_navitime_text(before.get("start_platform")),
                     exit_name=_navitime_text(after.get("gateway")),
                     recommended_car=_navitime_text(transport.get("getoff")),
@@ -1413,6 +1408,720 @@ class NaverDirectionsProvider:
         return options
 
 
+@dataclass(frozen=True)
+class EkispertProbeResult:
+    reachable: bool
+    route_available: bool
+    status_code: int | None = None
+    error_code: str | None = None
+
+
+@dataclass(frozen=True)
+class OdsayProbeResult:
+    reachable: bool
+    route_available: bool
+    status_code: int | None = None
+    error_code: str | None = None
+
+
+def _provider_dict(value: object) -> dict[str, Any]:
+    return cast(dict[str, Any], value) if isinstance(value, dict) else {}
+
+
+def _provider_list(value: object) -> list[object]:
+    if isinstance(value, list):
+        return cast(list[object], value)
+    return [] if value is None else [value]
+
+
+def _provider_text(value: object) -> str | None:
+    if isinstance(value, dict):
+        value = cast(dict[str, Any], value).get("text")
+    text = " ".join(str(value).split()) if value is not None else ""
+    return text or None
+
+
+def _provider_int(value: object) -> int | None:
+    if isinstance(value, dict):
+        value = cast(dict[str, Any], value).get("text")
+    if value is None or isinstance(value, bool):
+        return None
+    try:
+        return int(round(float(str(value))))
+    except (TypeError, ValueError):
+        return None
+
+
+def _provider_float(value: object) -> float | None:
+    if isinstance(value, dict):
+        value = cast(dict[str, Any], value).get("text")
+    if value is None or isinstance(value, bool):
+        return None
+    try:
+        return float(str(value))
+    except (TypeError, ValueError):
+        return None
+
+
+def _ekispert_datetime(value: object) -> datetime | None:
+    raw = _provider_text(value)
+    if not raw or "T" not in raw:
+        return None
+    try:
+        parsed = datetime.fromisoformat(raw)
+    except ValueError:
+        return None
+    return parsed if parsed.tzinfo else parsed.replace(tzinfo=NAVITIME_TIMEZONE)
+
+
+def _ekispert_color(value: object) -> str | None:
+    raw = _provider_text(value)
+    if not raw:
+        return None
+    if raw.startswith("#") and len(raw) == 7:
+        return raw
+    if len(raw) == 9 and raw.isdigit():
+        channels = [min(255, int(raw[index : index + 3])) for index in (0, 3, 6)]
+        return "#" + "".join(f"{channel:02X}" for channel in channels)
+    return None
+
+
+def _ekispert_point_name(point: dict[str, Any], fallback: str) -> str:
+    station = _provider_dict(point.get("Station"))
+    return _provider_text(station.get("Name")) or _provider_text(point.get("Name")) or fallback
+
+
+def _ekispert_points(route: dict[str, Any]) -> list[tuple[float, float]]:
+    points: list[tuple[float, float]] = []
+    for raw_point in _provider_list(route.get("Point")):
+        point = _provider_dict(raw_point)
+        geo = _provider_dict(point.get("GeoPoint"))
+        latitude = _provider_float(geo.get("lati_d"))
+        longitude = _provider_float(geo.get("longi_d"))
+        if latitude is not None and longitude is not None:
+            points.append((latitude, longitude))
+    return points
+
+
+def _ekispert_fare(course: dict[str, Any]) -> Decimal | None:
+    prices = [_provider_dict(item) for item in _provider_list(course.get("Price"))]
+    summary = next((price for price in prices if price.get("kind") == "FareSummary"), None)
+    if summary is not None:
+        amount = _provider_int(summary.get("Oneway"))
+        return Decimal(amount) if amount is not None else None
+    selected = [
+        price
+        for price in prices
+        if str(price.get("selected") or "").lower() == "true"
+        and price.get("kind") in {"Fare", "Charge"}
+    ]
+    amounts = [_provider_int(price.get("Oneway")) for price in selected]
+    valid = [amount for amount in amounts if amount is not None]
+    return Decimal(sum(valid)) if valid else None
+
+
+def _ekispert_error_code(status_code: int, payload: dict[str, Any]) -> str:
+    result = _provider_dict(payload.get("ResultSet"))
+    error = _provider_dict(result.get("Error"))
+    message = _provider_text(error.get("Message")) or _provider_text(error.get("code"))
+    return (message or f"HTTP_{status_code}")[:120]
+
+
+class EkispertRouteProvider:
+    """Ekispert course search using reviewed WGS84 points and one request per preview."""
+
+    name = "ekispert"
+
+    def __init__(
+        self,
+        settings: Settings,
+        client: httpx.AsyncClient | None = None,
+        redis: Redis | None = None,
+    ) -> None:
+        self.settings = settings
+        self.client = client
+        self.redis = redis
+
+    @property
+    def endpoint(self) -> str:
+        return f"{self.settings.ekispert_api_base_url.rstrip('/')}/v1/json/search/course/extreme"
+
+    def _params(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        departure_time: datetime | None,
+        preference: str,
+        max_options: int,
+    ) -> dict[str, str]:
+        search_type = self.settings.ekispert_search_type
+        params = {
+            "key": self.settings.ekispert_api_key or "",
+            "viaList": (
+                f"{origin.latitude:.6f},{origin.longitude:.6f},wgs84:"
+                f"{destination.latitude:.6f},{destination.longitude:.6f},wgs84"
+            ),
+            "gcs": "wgs84",
+            "searchType": search_type,
+            "sort": {
+                "FASTEST": "time",
+                "FEWER_TRANSFERS": "transfer",
+                "LESS_WALKING": "ekispert",
+            }.get(preference, "ekispert"),
+            "answerCount": str(max(1, min(max_options, 3))),
+            "searchCount": str(max(1, min(max_options, 3))),
+        }
+        if departure_time is not None:
+            local = (
+                departure_time.replace(tzinfo=NAVITIME_TIMEZONE)
+                if departure_time.tzinfo is None
+                else departure_time.astimezone(NAVITIME_TIMEZONE)
+            )
+            params["date"] = local.strftime("%Y%m%d")
+            if search_type == "departure":
+                params["time"] = local.strftime("%H%M")
+        return params
+
+    async def _request(self, params: dict[str, str]) -> httpx.Response:
+        if self.client is not None:
+            return await self.client.get(self.endpoint, params=params)
+        async with httpx.AsyncClient(timeout=self.settings.provider_timeout_seconds) as client:
+            return await client.get(self.endpoint, params=params)
+
+    async def _reserve(self) -> bool:
+        if self.redis is None:
+            return True
+        return await reserve_ekispert_request(
+            self.redis, self.settings.ekispert_monthly_request_limit
+        )
+
+    async def probe(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        departure_time: datetime | None = None,
+    ) -> EkispertProbeResult:
+        if not self.settings.ekispert_configured:
+            return EkispertProbeResult(False, False, error_code="NOT_CONFIGURED")
+        if not await self._reserve():
+            return EkispertProbeResult(False, False, error_code="MONTHLY_BUDGET_EXHAUSTED")
+        try:
+            response = await self._request(
+                self._params(origin, destination, departure_time, "FASTEST", 1)
+            )
+        except httpx.HTTPError:
+            return EkispertProbeResult(False, False, error_code="NETWORK_ERROR")
+        payload = _response_object(response)
+        if response.status_code >= 400 or _provider_dict(payload.get("ResultSet")).get("Error"):
+            return EkispertProbeResult(
+                False,
+                False,
+                status_code=response.status_code,
+                error_code=_ekispert_error_code(response.status_code, payload),
+            )
+        courses = _provider_list(_provider_dict(payload.get("ResultSet")).get("Course"))
+        return EkispertProbeResult(True, bool(courses), status_code=response.status_code)
+
+    async def compute(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        departure_time: datetime | None,
+        preference: str,
+        travel_mode: TravelMode = "transit",
+    ) -> RouteSegment | None:
+        options = await self.compute_options(
+            origin, destination, departure_time, preference, travel_mode, max_options=1
+        )
+        return options[0] if options else None
+
+    async def compute_options(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        departure_time: datetime | None,
+        preference: str,
+        travel_mode: TravelMode = "transit",
+        *,
+        max_options: int = 3,
+    ) -> list[RouteSegment]:
+        if travel_mode != "transit" or not self.settings.ekispert_configured:
+            return []
+        if not await self._reserve():
+            logger.warning(
+                "ekispert_route_request_skipped",
+                extra={"provider": self.name, "reason_code": "monthly_budget_exhausted"},
+            )
+            return []
+        option_limit = max(1, min(max_options, 3))
+        try:
+            response = await self._request(
+                self._params(origin, destination, departure_time, preference, option_limit)
+            )
+        except httpx.HTTPError:
+            logger.warning(
+                "ekispert_route_request_failed",
+                extra={"provider": self.name, "reason_code": "network_error"},
+            )
+            return []
+        payload = _response_object(response)
+        result = _provider_dict(payload.get("ResultSet"))
+        if response.status_code >= 400 or result.get("Error"):
+            logger.warning(
+                "ekispert_route_request_failed",
+                extra={
+                    "provider": self.name,
+                    "reason_code": "provider_error",
+                    "status_code": response.status_code,
+                    "error_code": _ekispert_error_code(response.status_code, payload),
+                },
+            )
+            return []
+        options: list[RouteSegment] = []
+        seen: set[tuple[object, ...]] = set()
+        for index, raw_course in enumerate(_provider_list(result.get("Course"))):
+            course = _provider_dict(raw_course)
+            segment = self._segment_from_course(
+                course,
+                origin,
+                destination,
+                departure_time=departure_time,
+                preference=preference,
+                rank=len(options) + 1,
+                index=index,
+            )
+            if segment is None:
+                continue
+            signature = (
+                segment.duration_minutes,
+                segment.distance_meters,
+                tuple(
+                    (step.line_name, step.departure_stop, step.arrival_stop)
+                    for step in segment.steps
+                ),
+            )
+            if signature in seen:
+                continue
+            seen.add(signature)
+            options.append(segment)
+            if len(options) >= option_limit:
+                break
+        return options
+
+    def _segment_from_course(
+        self,
+        course: dict[str, Any],
+        origin: RoutePoint,
+        destination: RoutePoint,
+        *,
+        departure_time: datetime | None,
+        preference: str,
+        rank: int,
+        index: int,
+    ) -> RouteSegment | None:
+        route = _provider_dict(course.get("Route"))
+        lines = [_provider_dict(item) for item in _provider_list(route.get("Line"))]
+        points = [_provider_dict(item) for item in _provider_list(route.get("Point"))]
+        total_minutes = sum(
+            value or 0
+            for value in (
+                _provider_int(route.get("timeOnBoard")),
+                _provider_int(route.get("timeOther")),
+                _provider_int(route.get("timeWalk")),
+            )
+        )
+        if total_minutes <= 0:
+            return None
+        steps = self._steps(lines, points, origin, destination)
+        route_points = [(origin.latitude, origin.longitude)]
+        route_points.extend(_ekispert_points(route))
+        route_points.append((destination.latitude, destination.longitude))
+        serialized = _provider_text(course.get("SerializeData")) or f"course-{index + 1}"
+        route_key = f"ekispert:{hashlib.sha256(serialized.encode()).hexdigest()[:32]}"
+        timetable = self.settings.ekispert_search_type == "departure"
+        warnings = [
+            "Ekispert 以地點座標尋找鄰近車站；地點到車站的步行時間為直線距離估算。",
+            "地圖線依車站序列繪製，不是逐道路或逐軌道導航。",
+        ]
+        if not timetable:
+            warnings.insert(0, "此方案使用平均等待時間，不代表指定日期的實際班次。")
+        distance = _provider_int(route.get("distance"))
+        details = ["steps", "stops"]
+        if any(step.headsign for step in steps):
+            details.append("headsign")
+        if any(step.platform for step in steps):
+            details.append("platform")
+        if any(step.exit_name for step in steps):
+            details.append("exit")
+        maps = google_external_navigation(
+            origin, destination, "transit", reason="在 Google Maps 查看日本即時導航。"
+        )
+        return RouteSegment(
+            from_item_id=origin.item_id,
+            to_item_id=destination.item_id,
+            travel_mode="transit",
+            provider=self.name,
+            attribution="Ekispert",
+            generated_at=datetime.now(UTC),
+            requested_departure_time=departure_time,
+            schedule_mode=(
+                "scheduled" if timetable and departure_time else "live" if timetable else "preview"
+            ),
+            preference=preference,
+            duration_minutes=total_minutes,
+            distance_meters=distance * 100 if distance is not None else None,
+            fare=_ekispert_fare(course),
+            currency="JPY",
+            encoded_polyline=_encode_polyline(route_points),
+            maps_url=maps.web_url,
+            provider_route_key=route_key,
+            route_option_rank=rank,
+            steps=steps,
+            details_available=details,
+            warnings=warnings,
+        )
+
+    @staticmethod
+    def _steps(
+        lines: list[dict[str, Any]],
+        points: list[dict[str, Any]],
+        origin: RoutePoint,
+        destination: RoutePoint,
+    ) -> list[RouteStep]:
+        steps: list[RouteStep] = []
+        for index, line in enumerate(lines):
+            before = points[index] if index < len(points) else {}
+            after = points[index + 1] if index + 1 < len(points) else {}
+            departure_name = _ekispert_point_name(before, origin.name)
+            arrival_name = _ekispert_point_name(after, destination.name)
+            line_type = (_provider_text(line.get("Type")) or "").lower()
+            raw_line_name = _provider_text(line.get("Name"))
+            # Ekispert can omit ``Type`` on coordinate-to-station walking legs;
+            # the official JSON example identifies those legs only as ``徒歩``.
+            walking = line_type in {"walk", "徒歩"} or raw_line_name == "徒歩"
+            line_name = raw_line_name or ("步行" if walking else "大眾運輸")
+            departure_state = _provider_dict(line.get("DepartureState"))
+            arrival_state = _provider_dict(line.get("ArrivalState"))
+            distance = _provider_int(line.get("distance"))
+            symbol = _provider_dict(line.get("LineSymbol"))
+            destination_value = line.get("Destination")
+            destination_info = _provider_dict(destination_value)
+            steps.append(
+                RouteStep(
+                    travel_mode="WALK" if walking else "TRANSIT",
+                    instruction=(f"步行前往 {arrival_name}" if walking else f"搭乘 {line_name}"),
+                    duration_minutes=_provider_int(line.get("timeOnBoard")),
+                    distance_meters=distance * 100 if distance is not None else None,
+                    departure_stop=None if walking else departure_name,
+                    arrival_stop=None if walking else arrival_name,
+                    departure_time=_ekispert_datetime(departure_state.get("Datetime")),
+                    arrival_time=_ekispert_datetime(arrival_state.get("Datetime")),
+                    line_name=None if walking else line_name,
+                    line_short_name=_provider_text(symbol.get("Name")),
+                    line_color=_ekispert_color(line.get("Color")),
+                    headsign=_provider_text(destination_value)
+                    or _provider_text(destination_info.get("Name")),
+                    stop_count=_provider_int(line.get("stopStationCount")),
+                    platform=_provider_text(departure_state.get("no")),
+                    exit_name=_provider_text(_provider_dict(arrival_state.get("Gate")).get("Name")),
+                )
+            )
+        return steps
+
+
+def _odsay_error_code(status_code: int, payload: dict[str, Any]) -> str:
+    error = _provider_dict(payload.get("error"))
+    return (
+        _provider_text(error.get("code"))
+        or _provider_text(error.get("msg"))
+        or f"HTTP_{status_code}"
+    )[:120]
+
+
+class OdsayRouteProvider:
+    """ODsay public-transit search for Korean routes using a server-IP-bound key."""
+
+    name = "odsay"
+
+    def __init__(
+        self,
+        settings: Settings,
+        client: httpx.AsyncClient | None = None,
+        redis: Redis | None = None,
+    ) -> None:
+        self.settings = settings
+        self.client = client
+        self.redis = redis
+
+    @property
+    def endpoint(self) -> str:
+        return f"{self.settings.odsay_api_base_url.rstrip('/')}/searchPubTransPathT"
+
+    def _params(self, origin: RoutePoint, destination: RoutePoint) -> dict[str, str]:
+        return {
+            "apiKey": self.settings.odsay_api_key or "",
+            "SX": f"{origin.longitude:.7f}",
+            "SY": f"{origin.latitude:.7f}",
+            "EX": f"{destination.longitude:.7f}",
+            "EY": f"{destination.latitude:.7f}",
+            "OPT": "0",
+            "SearchType": "0",
+            "SearchPathType": "0",
+            "lang": self.settings.odsay_language,
+            "output": "json",
+        }
+
+    async def _request(self, params: dict[str, str]) -> httpx.Response:
+        if self.client is not None:
+            return await self.client.get(self.endpoint, params=params)
+        async with httpx.AsyncClient(timeout=self.settings.provider_timeout_seconds) as client:
+            return await client.get(self.endpoint, params=params)
+
+    async def _reserve(self) -> bool:
+        if self.redis is None:
+            return True
+        return await reserve_odsay_request(self.redis, self.settings.odsay_daily_request_limit)
+
+    async def probe(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        departure_time: datetime | None = None,
+    ) -> OdsayProbeResult:
+        del departure_time
+        if not self.settings.odsay_configured:
+            return OdsayProbeResult(False, False, error_code="NOT_CONFIGURED")
+        if not await self._reserve():
+            return OdsayProbeResult(False, False, error_code="DAILY_BUDGET_EXHAUSTED")
+        try:
+            response = await self._request(self._params(origin, destination))
+        except httpx.HTTPError:
+            return OdsayProbeResult(False, False, error_code="NETWORK_ERROR")
+        payload = _response_object(response)
+        if response.status_code >= 400 or payload.get("error"):
+            return OdsayProbeResult(
+                False,
+                False,
+                status_code=response.status_code,
+                error_code=_odsay_error_code(response.status_code, payload),
+            )
+        paths = _provider_list(_provider_dict(payload.get("result")).get("path"))
+        return OdsayProbeResult(True, bool(paths), status_code=response.status_code)
+
+    async def compute(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        departure_time: datetime | None,
+        preference: str,
+        travel_mode: TravelMode = "transit",
+    ) -> RouteSegment | None:
+        options = await self.compute_options(
+            origin, destination, departure_time, preference, travel_mode, max_options=1
+        )
+        return options[0] if options else None
+
+    async def compute_options(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        departure_time: datetime | None,
+        preference: str,
+        travel_mode: TravelMode = "transit",
+        *,
+        max_options: int = 3,
+    ) -> list[RouteSegment]:
+        if travel_mode != "transit" or not self.settings.odsay_configured:
+            return []
+        if not await self._reserve():
+            logger.warning(
+                "odsay_route_request_skipped",
+                extra={"provider": self.name, "reason_code": "daily_budget_exhausted"},
+            )
+            return []
+        try:
+            response = await self._request(self._params(origin, destination))
+        except httpx.HTTPError:
+            logger.warning(
+                "odsay_route_request_failed",
+                extra={"provider": self.name, "reason_code": "network_error"},
+            )
+            return []
+        payload = _response_object(response)
+        if response.status_code >= 400 or payload.get("error"):
+            logger.warning(
+                "odsay_route_request_failed",
+                extra={
+                    "provider": self.name,
+                    "reason_code": "provider_error",
+                    "status_code": response.status_code,
+                    "error_code": _odsay_error_code(response.status_code, payload),
+                },
+            )
+            return []
+        option_limit = max(1, min(max_options, 3))
+        options: list[RouteSegment] = []
+        seen: set[tuple[object, ...]] = set()
+        for index, raw_path in enumerate(
+            _provider_list(_provider_dict(payload.get("result")).get("path"))
+        ):
+            path = _provider_dict(raw_path)
+            segment = self._segment_from_path(
+                path,
+                origin,
+                destination,
+                departure_time=departure_time,
+                preference=preference,
+                rank=len(options) + 1,
+                index=index,
+            )
+            if segment is None:
+                continue
+            signature = (
+                segment.duration_minutes,
+                segment.distance_meters,
+                tuple(
+                    (step.line_name, step.departure_stop, step.arrival_stop)
+                    for step in segment.steps
+                ),
+            )
+            if signature in seen:
+                continue
+            seen.add(signature)
+            options.append(segment)
+            if len(options) >= option_limit:
+                break
+        return options
+
+    def _segment_from_path(
+        self,
+        path: dict[str, Any],
+        origin: RoutePoint,
+        destination: RoutePoint,
+        *,
+        departure_time: datetime | None,
+        preference: str,
+        rank: int,
+        index: int,
+    ) -> RouteSegment | None:
+        info = _provider_dict(path.get("info"))
+        total_minutes = _provider_int(info.get("totalTime"))
+        if total_minutes is None or total_minutes <= 0:
+            return None
+        subpaths = [_provider_dict(item) for item in _provider_list(path.get("subPath"))]
+        steps = self._steps(subpaths, departure_time)
+        points = [(origin.latitude, origin.longitude)]
+        for subpath in subpaths:
+            start = (_provider_float(subpath.get("startY")), _provider_float(subpath.get("startX")))
+            if start[0] is not None and start[1] is not None:
+                points.append((start[0], start[1]))
+            pass_stops = _provider_dict(subpath.get("passStopList"))
+            for raw_stop in _provider_list(pass_stops.get("stations")):
+                stop = _provider_dict(raw_stop)
+                latitude = _provider_float(stop.get("y"))
+                longitude = _provider_float(stop.get("x"))
+                if latitude is not None and longitude is not None:
+                    points.append((latitude, longitude))
+            end = (_provider_float(subpath.get("endY")), _provider_float(subpath.get("endX")))
+            if end[0] is not None and end[1] is not None:
+                points.append((end[0], end[1]))
+        points.append((destination.latitude, destination.longitude))
+        deduped_points = list(dict.fromkeys(points))
+        map_obj = _provider_text(info.get("mapObj")) or f"path-{index + 1}"
+        route_key = f"odsay:{hashlib.sha256(map_obj.encode()).hexdigest()[:32]}"
+        navigation = naver_external_navigation(
+            origin, destination, "transit", reason="在 NAVER Maps 查看韓國即時導航。"
+        )
+        fare_amount = _provider_int(info.get("payment"))
+        details = ["steps", "stops"]
+        if any(step.exit_name for step in steps):
+            details.append("exit")
+        if any(step.recommended_car for step in steps):
+            details.append("recommended_car")
+        return RouteSegment(
+            from_item_id=origin.item_id,
+            to_item_id=destination.item_id,
+            travel_mode="transit",
+            provider=self.name,
+            attribution="ODsay",
+            generated_at=datetime.now(UTC),
+            requested_departure_time=departure_time,
+            schedule_mode="preview",
+            preference=preference,
+            duration_minutes=total_minutes,
+            distance_meters=_provider_int(info.get("totalDistance")),
+            fare=Decimal(fare_amount) if fare_amount is not None else None,
+            currency="KRW" if fare_amount is not None else None,
+            encoded_polyline=_encode_polyline(deduped_points),
+            maps_url=navigation.web_url,
+            provider_route_key=route_key,
+            route_option_rank=rank,
+            steps=steps,
+            details_available=details,
+            warnings=[
+                "ODsay 提供目前一般大眾運輸路線，不代表指定日期的即時班次。",
+                "地圖線依停靠站序列繪製，不是逐道路或逐軌道導航。",
+            ],
+        )
+
+    @staticmethod
+    def _steps(subpaths: list[dict[str, Any]], departure_time: datetime | None) -> list[RouteStep]:
+        steps: list[RouteStep] = []
+        cursor = departure_time
+        for subpath in subpaths:
+            traffic_type = _provider_int(subpath.get("trafficType"))
+            duration = _provider_int(subpath.get("sectionTime"))
+            arrival = cursor + timedelta(minutes=duration) if cursor and duration else None
+            if traffic_type == 3:
+                arrival_name = _provider_text(subpath.get("endName"))
+                steps.append(
+                    RouteStep(
+                        travel_mode="WALK",
+                        instruction=f"步行前往 {arrival_name or '下一個轉乘點'}",
+                        duration_minutes=duration,
+                        distance_meters=_provider_int(subpath.get("distance")),
+                        departure_time=cursor,
+                        arrival_time=arrival,
+                    )
+                )
+                cursor = arrival
+                continue
+            lanes = [_provider_dict(item) for item in _provider_list(subpath.get("lane"))]
+            first_lane = lanes[0] if lanes else {}
+            line_name = (
+                _provider_text(first_lane.get("name"))
+                or _provider_text(first_lane.get("busNo"))
+                or "大眾運輸"
+            )
+            start_name = _provider_text(subpath.get("startName"))
+            end_name = _provider_text(subpath.get("endName"))
+            way = _provider_text(subpath.get("way"))
+            door = _provider_text(subpath.get("door"))
+            fast_train = _provider_int(subpath.get("fastTrain"))
+            recommended = door or (
+                f"第 {fast_train} 節車廂" if fast_train and fast_train > 0 else None
+            )
+            steps.append(
+                RouteStep(
+                    travel_mode="TRANSIT",
+                    instruction=f"搭乘 {line_name}",
+                    duration_minutes=duration,
+                    distance_meters=_provider_int(subpath.get("distance")),
+                    departure_stop=start_name,
+                    arrival_stop=end_name,
+                    departure_time=cursor,
+                    arrival_time=arrival,
+                    line_name=line_name,
+                    headsign=way,
+                    stop_count=_provider_int(subpath.get("stationCount")),
+                    exit_name=_provider_text(subpath.get("endExitNo")),
+                    recommended_car=recommended,
+                )
+            )
+            cursor = arrival
+        return steps
+
+
 class RouteService:
     def __init__(
         self,
@@ -1421,12 +2130,16 @@ class RouteService:
         google: RouteProvider | None = None,
         navitime: RouteProvider | None = None,
         naver: RouteProvider | None = None,
+        ekispert: RouteProvider | None = None,
+        odsay: RouteProvider | None = None,
     ) -> None:
         self.redis = redis
         self.settings = settings or get_settings()
         self.google = google or GoogleRouteProvider(self.settings, None, redis)
         self.navitime = navitime or NavitimeRouteProvider(self.settings, None, redis)
         self.naver = naver or NaverDirectionsProvider(self.settings, None, redis)
+        self.ekispert = ekispert or EkispertRouteProvider(self.settings, None, redis)
+        self.odsay = odsay or OdsayRouteProvider(self.settings, None, redis)
 
     def _providers(self, region_code: str | None, travel_mode: TravelMode) -> list[RouteProvider]:
         region = (region_code or "").upper()
@@ -1434,9 +2147,12 @@ class RouteService:
             # Google Maps Platform does not license Japanese transit partners to
             # the Routes API (and the legacy Directions API is closed to new
             # projects), even though the consumer Google Maps app shows them.
-            # NAVITIME is therefore the only provider that can produce a
-            # structured, persistable Japanese transit segment.
-            return [self.navitime]
+            # Ekispert is the preferred structured provider. NAVITIME remains a
+            # selectable deployment fallback, but never receives a second paid
+            # request after Ekispert has already been chosen.
+            return [self.ekispert] if self.settings.ekispert_configured else [self.navitime]
+        if region == "KR" and travel_mode == "transit":
+            return [self.odsay]
         if region == "KR" and travel_mode == "drive":
             return [self.naver]
         if region == "KR":
@@ -1482,6 +2198,8 @@ class RouteService:
         max_options: int = 3,
     ) -> list[RouteSegment]:
         option_limit = max(1, min(max_options, 3))
+        effective_region = region_code or ("JP" if japan else None)
+        providers = self._providers(effective_region, travel_mode)
         raw_key = json.dumps(
             {
                 "o": [round(origin.latitude, 6), round(origin.longitude, 6)],
@@ -1495,6 +2213,10 @@ class RouteService:
                 "r": region_code or ("JP" if japan else None),
                 "m": travel_mode,
                 "alternatives": option_limit,
+                "providers": [provider.name for provider in providers],
+                "ekispert_search_type": self.settings.ekispert_search_type
+                if any(provider.name == "ekispert" for provider in providers)
+                else None,
             },
             sort_keys=True,
         ).encode()
@@ -1523,8 +2245,7 @@ class RouteService:
                         extra={"reason_code": "cache_invalid", "travel_mode": travel_mode},
                     )
                     await self.redis.delete(key)
-        effective_region = region_code or ("JP" if japan else None)
-        for provider in self._providers(effective_region, travel_mode):
+        for provider in providers:
             try:
                 compute_options = getattr(provider, "compute_options", None)
                 if callable(compute_options):
@@ -1570,9 +2291,7 @@ class RouteService:
             if provider_segments:
                 normalized = sorted(
                     provider_segments,
-                    key=lambda segment: route_option_sort_key(
-                        segment, preference, travel_mode
-                    ),
+                    key=lambda segment: route_option_sort_key(segment, preference, travel_mode),
                 )[:option_limit]
                 for index, segment in enumerate(normalized):
                     segment.route_option_rank = index + 1
@@ -1645,7 +2364,9 @@ def route_provider_configured(
 ) -> bool:
     region = (region_code or "").upper()
     if region == "JP" and travel_mode == "transit":
-        return settings.navitime_configured
+        return settings.ekispert_configured or settings.navitime_configured
+    if region == "KR" and travel_mode == "transit":
+        return settings.odsay_configured
     return bool(
         settings.google_maps_api_key
         or (region == "KR" and travel_mode == "drive" and settings.naver_maps_configured)

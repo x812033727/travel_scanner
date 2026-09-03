@@ -512,6 +512,67 @@ describe("AdminSettingsPanel", () => {
     expect(screen.getByLabelText(/^站內每月請求上限/)).toBeTruthy();
   });
 
+  it("shows separate Ekispert monthly and ODsay daily hard caps", async () => {
+    const usageBase = {
+      period_start: "2026-09-01",
+      period_end: "2026-09-30",
+      free_usage: 12,
+      billable_overage: 0,
+      sku_usage: [],
+      monthly_history: [],
+      observed_at: "2026-09-01T10:00:00Z",
+      available: true,
+      scope: "server_requests",
+    };
+    const ekispertProvider = {
+      provider: "ekispert",
+      label: "Ekispert（駅すぱあと）",
+      description: "日本大眾運輸路線",
+      enabled: true,
+      configured: true,
+      status: "ready",
+      status_message: "Ekispert 憑證已設定（平均等待時間模式）",
+      config: { ekispert_api_base_url: "https://api.ekispert.jp", ekispert_search_type: "plain", ekispert_monthly_request_limit: 450 },
+      config_sources: { ekispert_api_base_url: "environment", ekispert_search_type: "environment", ekispert_monthly_request_limit: "environment" },
+      secrets: { ekispert_api_key: { configured: true, masked: "••••••••key1", source: "database" } },
+      usage: { ...usageBase, period: "2026-09", used: 12, monthly_limit: 450, remaining: 438, percentage: 2.7, free_limit: 450, free_remaining: 438, breakdown: { search_course: 12 }, billing_timezone: "Asia/Tokyo", pricing_region: "jp", period_kind: "month" },
+    };
+    const odsayProvider = {
+      provider: "odsay",
+      label: "ODsay",
+      description: "韓國大眾運輸多路線",
+      enabled: true,
+      configured: true,
+      status: "ready",
+      status_message: "ODsay Server Key 已設定",
+      config: { odsay_api_base_url: "https://api.odsay.com/v1/api", odsay_language: "0", odsay_daily_request_limit: 25 },
+      config_sources: { odsay_api_base_url: "environment", odsay_language: "environment", odsay_daily_request_limit: "environment" },
+      secrets: { odsay_api_key: { configured: true, masked: "••••••••key2", source: "database" } },
+      usage: { ...usageBase, period: "2026-09-01", period_end: "2026-09-01", used: 8, monthly_limit: 25, remaining: 17, percentage: 32, free_limit: 25, free_usage: 8, free_remaining: 17, breakdown: { search_pub_trans_path: 8 }, billing_timezone: "Asia/Seoul", pricing_region: "kr", period_kind: "day" },
+    };
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      ...snapshot,
+      providers: [...snapshot.providers, ekispertProvider, odsayProvider],
+    }), { status: 200 })));
+    render(<AdminSettingsPanel />);
+
+    await screen.findByRole("heading", { name: "Google Maps" });
+    fireEvent.click(screen.getByRole("tab", { name: "Ekispert（駅すぱあと）" }));
+    const ekispertUsage = await screen.findByLabelText("Ekispert 本月用量");
+    expect(within(ekispertUsage).getAllByText("438").length).toBeGreaterThan(0);
+    expect(screen.getByLabelText(/^路線資料模式/)).toBeTruthy();
+    fireEvent.click(within(ekispertUsage).getByText("查看站內操作明細"));
+    expect(within(ekispertUsage).getByText("Ekispert 路線查詢")).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("tab", { name: "ODsay" }));
+    const odsayUsage = await screen.findByLabelText("ODsay 今日用量");
+    expect(within(odsayUsage).getByText("今日站內請求")).toBeTruthy();
+    expect(within(odsayUsage).getAllByText("17").length).toBeGreaterThan(0);
+    fireEvent.click(within(odsayUsage).getByText("查看站內操作明細"));
+    expect(within(odsayUsage).getByText("ODsay 大眾運輸查詢")).toBeTruthy();
+    expect(screen.getByLabelText(/^站內每日請求上限/)).toBeTruthy();
+  });
+
   it("shows YouTube daily allowance, current usage, and automatic reserve", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
       new Response(JSON.stringify(snapshot), { status: 200 }),

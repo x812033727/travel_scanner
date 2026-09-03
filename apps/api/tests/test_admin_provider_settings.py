@@ -399,7 +399,7 @@ async def test_google_connection_accepts_reachable_empty_route(
 
     assert message == (
         "Google Places、Routes API 可連線；非日本測試路線目前無可用班次"
-        "（日本大眾運輸需使用 NAVITIME）；Weather API 連線成功"
+        "（日本大眾運輸使用 Ekispert 或 NAVITIME）；Weather API 連線成功"
     )
     assert observed_points[0].provider_place_id is None
     assert observed_points[0].latitude == 25.0478
@@ -667,6 +667,8 @@ async def test_public_runtime_keeps_browser_map_disabled_until_explicitly_enable
     assert result.google_maps_embed_enabled is False
     assert result.google_maps_javascript_enabled is False
     assert result.navitime_enabled is False
+    assert result.ekispert_enabled is False
+    assert result.odsay_enabled is False
     assert result.naver_maps_enabled is False
     assert result.naver_maps_browser_client_id is None
 
@@ -722,6 +724,21 @@ async def test_public_runtime_exposes_naver_browser_capabilities_but_not_secret(
     assert "naver_maps_client_secret" not in payload
 
 
+@pytest.mark.asyncio
+async def test_public_runtime_exposes_transit_provider_capabilities_without_keys(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    async def runtime(_session: object) -> Settings:
+        return Settings(ekispert_api_key="japan-secret", odsay_api_key="korea-secret")
+
+    monkeypatch.setattr(admin_service, "load_runtime_settings", runtime)
+    payload = (await public_runtime_config(object())).model_dump(mode="json")  # type: ignore[arg-type]
+    assert payload["ekispert_enabled"] is True
+    assert payload["odsay_enabled"] is True
+    assert "japan-secret" not in str(payload)
+    assert "korea-secret" not in str(payload)
+
+
 @pytest.mark.parametrize(
     ("provider", "field", "value"),
     [
@@ -729,6 +746,8 @@ async def test_public_runtime_exposes_naver_browser_capabilities_but_not_secret(
         ("skyscanner", "skyscanner_base_url", "https://partners.api.skyscanner.net.evil.example"),
         ("duffel", "duffel_base_url", "http://api.duffel.com"),
         ("google_travel_impact", "google_travel_impact_base_url", "https://attacker.example/v1"),
+        ("ekispert", "ekispert_api_base_url", "https://api.ekispert.jp.evil.example"),
+        ("odsay", "odsay_api_base_url", "http://api.odsay.com/v1/api"),
         ("travelpayouts", "travelpayouts_api_base_url", "https://attacker.example"),
     ],
 )

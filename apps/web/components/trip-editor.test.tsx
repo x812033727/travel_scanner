@@ -66,6 +66,26 @@ describe("trip editor", () => {
     ).toBe(false);
   });
 
+  it("shows Ekispert and ODsay as the regional transit providers without exposing keys", async () => {
+    const runtime = {
+      ekispert_enabled: true,
+      odsay_enabled: true,
+      navitime_enabled: true,
+      naver_directions_enabled: true,
+      google_routes_enabled: true,
+    };
+    const fetchMock = vi.fn().mockImplementation((url: string) => Promise.resolve(response(
+      url.includes("/runtime/public-config") ? runtime : { ...trip, destination_country_code: "JP" },
+    )));
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<TripEditor tripId={trip.id} />);
+
+    expect(await screen.findByText("Ekispert · 日本大眾運輸")).toBeTruthy();
+    expect(screen.queryByText("NAVITIME · 日本備援")).toBeNull();
+    expect(JSON.stringify(fetchMock.mock.calls)).not.toContain("server-key");
+  });
+
   it("surfaces fallback warnings and jumps to a day from an unscheduled slot", async () => {
     const fallbackTrip = {
       ...trip,

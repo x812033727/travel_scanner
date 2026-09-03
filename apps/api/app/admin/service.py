@@ -49,16 +49,20 @@ from app.providers.flightaware import FlightAwareProvider
 from app.providers.google_travel_impact import GoogleTravelImpactProvider
 from app.providers.skyscanner import SkyscannerProvider
 from app.providers.usage_meter import (
+    ekispert_usage_snapshot,
     google_maps_usage_snapshot,
     naver_maps_usage_snapshot,
     navitime_usage_snapshot,
+    odsay_usage_snapshot,
     youtube_usage_snapshot,
 )
 from app.search.schemas import SearchCreate, SearchModule, SearchPreferences, Travelers
 from app.trips.routing import (
+    EkispertRouteProvider,
     GoogleRouteProvider,
     NaverDirectionsProvider,
     NavitimeRouteProvider,
+    OdsayRouteProvider,
     RoutePoint,
 )
 from app.weather.google import GoogleWeatherService
@@ -276,6 +280,24 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         ("navitime_api_base_url", "navitime_monthly_request_limit"),
         ("navitime_client_id", "navitime_api_key"),
     ),
+    "ekispert": ProviderDefinition(
+        "Ekispert（駅すぱあと）",
+        "日本大眾運輸路線。預設使用平均等待時間的 plain 模式以控制成本；"
+        "只有合約已開通時刻表查詢時，才切換為 departure 模式。",
+        (
+            "ekispert_api_base_url",
+            "ekispert_search_type",
+            "ekispert_monthly_request_limit",
+        ),
+        ("ekispert_api_key",),
+    ),
+    "odsay": ProviderDefinition(
+        "ODsay",
+        "韓國大眾運輸多路線。伺服器端必須使用綁定正式主機固定 IP 的 Server Key；"
+        "單次查詢直接回傳多個方案，不額外呼叫圖形 API。",
+        ("odsay_api_base_url", "odsay_language", "odsay_daily_request_limit"),
+        ("odsay_api_key",),
+    ),
     "travelpayouts": ProviderDefinition(
         "Travelpayouts Affiliate",
         "航班、住宿、活動與交通合作連結；可透過 Partner Links API 產生追蹤網址。",
@@ -432,8 +454,10 @@ def apply_runtime_overrides(base: Settings, rows: list[ProviderConfig]) -> Setti
                 updates[field] = stored_secrets[field]
     for field in [name for name in updates if name in OFFICIAL_PROVIDER_HOSTS]:
         stored_url = updates[field]
-        if isinstance(stored_url, str) and stored_url and not official_provider_url_ok(
-            field, stored_url
+        if (
+            isinstance(stored_url, str)
+            and stored_url
+            and not official_provider_url_ok(field, stored_url)
         ):
             logger.warning(
                 "Ignoring stored %s because it does not use an official provider host", field
@@ -479,8 +503,7 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
         }[provider]
         configured = provider_enabled(cast(Any, oauth_provider), settings)
         callback = (
-            f"{settings.next_public_site_url.rstrip('/')}"
-            f"/api/auth/oauth/{oauth_provider}/callback"
+            f"{settings.next_public_site_url.rstrip('/')}/api/auth/oauth/{oauth_provider}/callback"
         )
         return (
             configured,
@@ -636,6 +659,23 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             if settings.google_travel_impact_configured
             else "缺少 Google Travel Impact API key",
         )
+    if provider == "ekispert":
+        configured = settings.ekispert_configured
+        mode = "時刻表" if settings.ekispert_search_type == "departure" else "平均等待時間"
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            f"Ekispert 憑證已設定（{mode}模式）" if configured else "缺少 Ekispert API key",
+        )
+    if provider == "odsay":
+        configured = settings.odsay_configured
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            "ODsay Server Key 已設定；請確認已綁定正式主機固定 IP"
+            if configured
+            else "缺少 ODsay Server Key",
+        )
     if provider == "booking_demand":
         configured = settings.booking_demand_configured
         return (
@@ -709,7 +749,14 @@ def _production_test_required(provider: str, settings: Settings) -> bool:
         return settings.booking_demand_env.lower() == "production"
     if provider == "duffel":
         return settings.duffel_env.lower() == "live"
-    return provider in {"skyscanner", "flightaware", "google_travel_impact", "naver_maps"}
+    return provider in {
+        "skyscanner",
+        "flightaware",
+        "google_travel_impact",
+        "naver_maps",
+        "ekispert",
+        "odsay",
+    }
 
 
 async def settings_snapshot(
@@ -741,6 +788,22 @@ async def settings_snapshot(
         await navitime_usage_snapshot(
             redis,
             monthly_limit=effective.navitime_monthly_request_limit,
+        )
+        if redis is not None
+        else None
+    )
+    ekispert_usage = (
+        await ekispert_usage_snapshot(
+            redis,
+            monthly_limit=effective.ekispert_monthly_request_limit,
+        )
+        if redis is not None
+        else None
+    )
+    odsay_usage = (
+        await odsay_usage_snapshot(
+            redis,
+            daily_limit=effective.odsay_daily_request_limit,
         )
         if redis is not None
         else None
@@ -813,6 +876,10 @@ async def settings_snapshot(
                     if provider == "naver_maps" and naver_usage is not None
                     else ProviderUsageView(**asdict(navitime_usage))
                     if provider == "navitime" and navitime_usage is not None
+                    else ProviderUsageView(**asdict(ekispert_usage))
+                    if provider == "ekispert" and ekispert_usage is not None
+                    else ProviderUsageView(**asdict(odsay_usage))
+                    if provider == "odsay" and odsay_usage is not None
                     else ProviderUsageView(**asdict(youtube_usage))
                     if provider == "youtube_guides" and youtube_usage is not None
                     else None
@@ -1145,9 +1212,10 @@ async def _test_google(settings: Settings, redis: Redis) -> str:
             details = f"HTTP {routes.status_code} / {details}"
         raise ConnectionError(f"Places 可用，但 Routes API 連線失敗（{details}）")
     route_message = (
-        "Routes API 可連線（日本大眾運輸需使用 NAVITIME）"
+        "Routes API 可連線（日本大眾運輸使用 Ekispert 或 NAVITIME）"
         if routes.route_available
-        else "Routes API 可連線；非日本測試路線目前無可用班次（日本大眾運輸需使用 NAVITIME）"
+        else "Routes API 可連線；非日本測試路線目前無可用班次"
+        "（日本大眾運輸使用 Ekispert 或 NAVITIME）"
     )
     weather_message = "Weather API 連線成功"
     try:
@@ -1312,18 +1380,44 @@ async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str
     if provider == "booking_demand":
         await BookingHotelProvider(redis, settings).probe()
         return f"Booking.com Demand API {settings.booking_demand_env} 驗證成功"
-    if provider == "navitime":
-        gateway = "RapidAPI" if settings.navitime_rapidapi else "直接契約"
-        probe = await NavitimeRouteProvider(settings, None, redis).probe(
+    if provider == "ekispert":
+        ekispert_probe = await EkispertRouteProvider(settings, None, redis).probe(
             RoutePoint(item_id=uuid4(), name="東京", latitude=35.6812, longitude=139.7671),
             RoutePoint(item_id=uuid4(), name="淺草", latitude=35.7148, longitude=139.7967),
         )
-        if not probe.reachable:
-            details = probe.error_code or "UNKNOWN_ERROR"
-            if probe.status_code is not None:
-                details = f"HTTP {probe.status_code} / {details}"
+        if not ekispert_probe.reachable:
+            details = ekispert_probe.error_code or "UNKNOWN_ERROR"
+            if ekispert_probe.status_code is not None:
+                details = f"HTTP {ekispert_probe.status_code} / {details}"
+            raise ConnectionError(f"Ekispert 連線失敗（{details}）")
+        if not ekispert_probe.route_available:
+            raise ConnectionError("Ekispert 可連線，但未回傳東京→淺草的測試路線")
+        return "Ekispert 日本大眾運輸路線驗證成功"
+    if provider == "odsay":
+        odsay_probe = await OdsayRouteProvider(settings, None, redis).probe(
+            RoutePoint(item_id=uuid4(), name="首爾站", latitude=37.5547, longitude=126.9707),
+            RoutePoint(item_id=uuid4(), name="景福宮", latitude=37.5796, longitude=126.9770),
+        )
+        if not odsay_probe.reachable:
+            details = odsay_probe.error_code or "UNKNOWN_ERROR"
+            if odsay_probe.status_code is not None:
+                details = f"HTTP {odsay_probe.status_code} / {details}"
+            raise ConnectionError(f"ODsay 連線失敗（{details}）")
+        if not odsay_probe.route_available:
+            raise ConnectionError("ODsay 可連線，但未回傳首爾站→景福宮的測試路線")
+        return "ODsay 韓國大眾運輸路線驗證成功"
+    if provider == "navitime":
+        gateway = "RapidAPI" if settings.navitime_rapidapi else "直接契約"
+        navitime_probe = await NavitimeRouteProvider(settings, None, redis).probe(
+            RoutePoint(item_id=uuid4(), name="東京", latitude=35.6812, longitude=139.7671),
+            RoutePoint(item_id=uuid4(), name="淺草", latitude=35.7148, longitude=139.7967),
+        )
+        if not navitime_probe.reachable:
+            details = navitime_probe.error_code or "UNKNOWN_ERROR"
+            if navitime_probe.status_code is not None:
+                details = f"HTTP {navitime_probe.status_code} / {details}"
             raise ConnectionError(f"NAVITIME（{gateway}）連線失敗（{details}）")
-        if not probe.route_available:
+        if not navitime_probe.route_available:
             raise ConnectionError(f"NAVITIME（{gateway}）可連線，但未回傳東京→淺草的測試路線")
         return f"NAVITIME（{gateway}）路線驗證成功"
     affiliate_codes = {
@@ -1420,8 +1514,7 @@ async def test_provider_connection(
 async def public_runtime_config(session: AsyncSession) -> PublicRuntimeConfig:
     settings = await load_runtime_settings(session)
     google_browser_map_enabled = bool(
-        settings.next_public_google_maps_browser_key
-        and settings.google_maps_javascript_enabled
+        settings.next_public_google_maps_browser_key and settings.google_maps_javascript_enabled
     )
     return PublicRuntimeConfig(
         google_maps_browser_key=settings.next_public_google_maps_browser_key,
@@ -1431,6 +1524,8 @@ async def public_runtime_config(session: AsyncSession) -> PublicRuntimeConfig:
         google_maps_embed_enabled=google_browser_map_enabled,
         google_maps_javascript_enabled=google_browser_map_enabled,
         navitime_enabled=settings.navitime_configured,
+        ekispert_enabled=settings.ekispert_configured,
+        odsay_enabled=settings.odsay_configured,
         naver_maps_browser_client_id=settings.naver_maps_client_id,
         naver_maps_enabled=settings.naver_maps_configured,
         naver_places_enabled=settings.naver_maps_configured,

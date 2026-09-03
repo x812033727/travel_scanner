@@ -912,10 +912,7 @@ async def _load_ai_planner_candidates(
         hotspot
         for hotspot in hotspots
         if (deep_requested or hotspot.depth_kind != "day_trip")
-        and (
-            not hotspot.is_cross_city
-            or hotspot.destination_id in requested_extensions
-        )
+        and (not hotspot.is_cross_city or hotspot.destination_id in requested_extensions)
     ]
     candidates = [
         AIPlannerCandidate(
@@ -928,9 +925,7 @@ async def _load_ai_planner_candidates(
             duration_minutes=hotspot.recommended_duration_minutes,
             map_links=hotspot.map_links,
             hotspot_id=hotspot.hotspot_id,
-            depth_kind=(
-                "day_trip" if hotspot.depth_kind == "day_trip" else "urban_local"
-            ),
+            depth_kind=("day_trip" if hotspot.depth_kind == "day_trip" else "urban_local"),
             access_minutes=hotspot.access_minutes,
             is_cross_city=hotspot.is_cross_city,
             rank=rank,
@@ -1431,9 +1426,7 @@ async def save_trip(
     ] = None,
 ) -> dict[str, Any]:
     redis = get_redis()
-    request_key = (
-        _trip_create_request_key(user.id, idempotency_key) if idempotency_key else None
-    )
+    request_key = _trip_create_request_key(user.id, idempotency_key) if idempotency_key else None
     if request_key:
         replay_id = await redis.get(request_key)
         if replay_id:
@@ -1482,9 +1475,7 @@ async def save_trip(
             )
         # Only exact adjacent locations enter routing; unset hotel anchors are excluded.
         route_pairs = (
-            sum(max(0, len(day.items) - 1) for day in planning.itinerary)
-            if planning
-            else 0
+            sum(max(0, len(day.items) - 1) for day in planning.itinerary) if planning else 0
         )
         routing_available = False
         if planning is not None and settings is not None:
@@ -3063,7 +3054,9 @@ async def preview_trip_route(
     if not segments:
         if region == "KR":
             reason = (
-                "NAVER 官方 Directions API 不提供可保存的大眾運輸班次；請到 NAVER Maps 查看。"
+                "ODsay 目前沒有回傳可套用的大眾運輸路線；請到 NAVER Maps 查看。"
+                if payload.travel_mode == "transit" and settings.odsay_configured
+                else "韓國站內大眾運輸需先設定 ODsay Server Key；請到 NAVER Maps 查看。"
                 if payload.travel_mode == "transit"
                 else "目前沒有可套用的站內步行路線；請到 NAVER Maps 查看。"
                 if payload.travel_mode == "walk"
@@ -3088,12 +3081,19 @@ async def preview_trip_route(
                 "external_navigation": external.model_dump(mode="json"),
             }
         if region == "JP" and payload.travel_mode == "transit":
-            reason = (
-                "NAVITIME 目前沒有回傳可套用的班次；Google Maps Platform 的 Routes API "
-                "不提供日本大眾運輸資料，可先到 Google Maps 查看即時路線。"
+            japanese_provider = (
+                "Ekispert"
+                if settings.ekispert_configured
+                else "NAVITIME"
                 if settings.navitime_configured
+                else None
+            )
+            reason = (
+                f"{japanese_provider} 目前沒有回傳可套用的路線；Google Maps Platform 的 Routes API "
+                "不提供日本大眾運輸資料，可先到 Google Maps 查看即時路線。"
+                if japanese_provider
                 else "Google Maps Platform 的 Routes API 不提供日本大眾運輸資料；"
-                "站內班次需先設定 NAVITIME，可先到 Google Maps 查看即時路線。"
+                "站內路線需先設定 Ekispert（或 NAVITIME 備援），可先到 Google Maps 查看即時路線。"
             )
             external = google_external_navigation(
                 origin,
@@ -3127,8 +3127,7 @@ async def preview_trip_route(
                 "目前無法取得可套用的站內大眾運輸班次；已保留精準起訖點，"
                 "可先到 Google Maps 查看，並在接近旅程時重新查詢。"
                 if payload.travel_mode == "transit"
-                else "目前無法取得可套用的站內路線；已保留精準起訖點，"
-                "可先到 Google Maps 查看。"
+                else "目前無法取得可套用的站內路線；已保留精準起訖點，可先到 Google Maps 查看。"
             ),
         )
         await session.rollback()

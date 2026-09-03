@@ -12,10 +12,14 @@ import pytest
 from app.config import Settings, official_provider_url_ok
 from app.providers.usage_meter import navitime_usage_snapshot
 from app.trips.routing import (
+    EkispertProbeResult,
+    EkispertRouteProvider,
     GoogleRouteProvider,
     GoogleRoutesProbeResult,
     NavitimeProbeResult,
     NavitimeRouteProvider,
+    OdsayProbeResult,
+    OdsayRouteProvider,
     RoutePoint,
     RouteSegment,
     RouteService,
@@ -82,7 +86,7 @@ async def test_google_route_normalizes_transit_steps_and_preview_warning() -> No
                                 ]
                             }
                         ],
-                    }
+                    },
                 ]
             },
         )
@@ -319,6 +323,247 @@ NAVITIME_GINZA_ROUTE = {
         "currency": "JPY",
     },
 }
+
+
+EKISPERT_TOKYO_ROUTE = {
+    "ResultSet": {
+        "Course": [
+            {
+                "searchType": "plain",
+                "dataType": "plain",
+                "SerializeData": "stable-ekispert-route-a",
+                "Price": {"kind": "FareSummary", "Oneway": "210"},
+                "Route": {
+                    "timeOnBoard": "12",
+                    "timeOther": "4",
+                    "timeWalk": "6",
+                    "distance": "31",
+                    "transferCount": "0",
+                    "Point": [
+                        {"Name": "東京車站"},
+                        {
+                            "Station": {"Name": "東京"},
+                            "GeoPoint": {"lati_d": "35.681236", "longi_d": "139.767125"},
+                        },
+                        {
+                            "Station": {"Name": "淺草"},
+                            "GeoPoint": {"lati_d": "35.710733", "longi_d": "139.797592"},
+                        },
+                    ],
+                    "Line": [
+                        {
+                            # The official response may omit Type for the
+                            # coordinate-to-station walking leg.
+                            "Name": "徒歩",
+                            "timeOnBoard": "6",
+                            "distance": "4",
+                        },
+                        {
+                            "Name": "東京メトロ銀座線",
+                            "Type": "train",
+                            "timeOnBoard": "12",
+                            "distance": "27",
+                            "stopStationCount": "7",
+                            "Color": "255149000",
+                            "LineSymbol": {"Name": "G"},
+                            "Destination": "浅草",
+                        },
+                    ],
+                },
+            }
+        ]
+    }
+}
+
+
+ODSAY_SEOUL_ROUTES = {
+    "result": {
+        "path": [
+            {
+                "pathType": 1,
+                "info": {
+                    "totalTime": 18,
+                    "totalDistance": 4100,
+                    "payment": 1400,
+                    "mapObj": "1:2@3:4",
+                },
+                "subPath": [
+                    {
+                        "trafficType": 3,
+                        "sectionTime": 4,
+                        "distance": 280,
+                        "endName": "首爾站",
+                    },
+                    {
+                        "trafficType": 1,
+                        "sectionTime": 11,
+                        "distance": 3500,
+                        "stationCount": 3,
+                        "startName": "首爾站",
+                        "startX": 126.9707,
+                        "startY": 37.5547,
+                        "endName": "景福宮",
+                        "endX": 126.9770,
+                        "endY": 37.5796,
+                        "way": "독립문 방면",
+                        "door": "4-1",
+                        "lane": [{"name": "수도권 3호선"}],
+                        "passStopList": {
+                            "stations": [{"stationName": "종로3가", "x": 126.9910, "y": 37.5716}]
+                        },
+                    },
+                    {
+                        "trafficType": 3,
+                        "sectionTime": 3,
+                        "distance": 220,
+                        "endName": "景福宮",
+                    },
+                ],
+            },
+            {
+                "pathType": 2,
+                "info": {
+                    "totalTime": 24,
+                    "totalDistance": 4500,
+                    "payment": 1500,
+                    "mapObj": "5:6@7:8",
+                },
+                "subPath": [
+                    {
+                        "trafficType": 2,
+                        "sectionTime": 20,
+                        "distance": 4200,
+                        "stationCount": 9,
+                        "startName": "首爾站",
+                        "endName": "景福宮",
+                        "lane": [{"busNo": "1711"}],
+                    }
+                ],
+            },
+        ]
+    }
+}
+
+
+@pytest.mark.asyncio
+async def test_ekispert_uses_wgs84_points_and_parses_plain_route() -> None:
+    seen: dict[str, str] = {}
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        seen.update(dict(request.url.params))
+        assert request.url.path == "/v1/json/search/course/extreme"
+        return httpx.Response(200, json=EKISPERT_TOKYO_ROUTE)
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    settings = Settings(ekispert_api_key="ekispert-key", ekispert_monthly_request_limit=10)
+    provider = EkispertRouteProvider(settings, client)
+    departure = datetime(2026, 10, 3, 8, 30, tzinfo=ZoneInfo("Asia/Tokyo"))
+    segment = await provider.compute(
+        point("東京車站", 35.681236, 139.767125),
+        point("淺草寺", 35.710733, 139.797592),
+        departure,
+        "FEWER_TRANSFERS",
+    )
+    await client.aclose()
+
+    assert seen["key"] == "ekispert-key"
+    assert seen["viaList"] == ("35.681236,139.767125,wgs84:35.710733,139.797592,wgs84")
+    assert seen["gcs"] == "wgs84"
+    assert seen["searchType"] == "plain"
+    assert seen["date"] == "20261003"
+    assert seen["sort"] == "transfer"
+    assert segment is not None
+    assert segment.provider == "ekispert" and segment.attribution == "Ekispert"
+    assert segment.schedule_mode == "preview"
+    assert segment.duration_minutes == 22 and segment.distance_meters == 3100
+    assert segment.fare == Decimal("210") and segment.currency == "JPY"
+    assert [step.travel_mode for step in segment.steps] == ["WALK", "TRANSIT"]
+    assert segment.steps[1].line_short_name == "G"
+    assert segment.steps[1].line_color == "#FF9500"
+    assert segment.steps[1].headsign == "浅草"
+    assert "headsign" in segment.details_available
+    assert segment.encoded_polyline
+    assert "平均等待時間" in segment.warnings[0]
+
+
+@pytest.mark.asyncio
+async def test_ekispert_probe_reports_provider_error_without_leaking_key() -> None:
+    async def handler(_: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            403,
+            json={"ResultSet": {"Error": {"Message": "Access key is invalid"}}},
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = EkispertRouteProvider(Settings(ekispert_api_key="secret"), client)
+    result = await provider.probe(
+        point("東京", 35.6812, 139.7671), point("淺草", 35.7148, 139.7967)
+    )
+    await client.aclose()
+
+    assert result == EkispertProbeResult(False, False, 403, "Access key is invalid")
+
+
+@pytest.mark.asyncio
+async def test_odsay_returns_multiple_korean_transit_options_from_one_request() -> None:
+    calls = 0
+    seen: dict[str, str] = {}
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        seen.update(dict(request.url.params))
+        return httpx.Response(200, json=ODSAY_SEOUL_ROUTES)
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = OdsayRouteProvider(Settings(odsay_api_key="server-key"), client)
+    departure = datetime(2026, 10, 3, 9, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+    options = await provider.compute_options(
+        point("首爾站", 37.5547, 126.9707),
+        point("景福宮", 37.5796, 126.9770),
+        departure,
+        "FASTEST",
+        max_options=3,
+    )
+    await client.aclose()
+
+    assert calls == 1
+    assert seen == {
+        "apiKey": "server-key",
+        "SX": "126.9707000",
+        "SY": "37.5547000",
+        "EX": "126.9770000",
+        "EY": "37.5796000",
+        "OPT": "0",
+        "SearchType": "0",
+        "SearchPathType": "0",
+        "lang": "0",
+        "output": "json",
+    }
+    assert len(options) == 2
+    assert options[0].provider == "odsay" and options[0].attribution == "ODsay"
+    assert options[0].duration_minutes == 18
+    assert options[0].fare == Decimal("1400") and options[0].currency == "KRW"
+    assert options[0].steps[1].line_name == "수도권 3호선"
+    assert options[0].steps[1].recommended_car == "4-1"
+    assert options[0].encoded_polyline
+    assert "naver.com" in str(options[0].maps_url)
+    assert options[0].schedule_mode == "preview"
+
+
+@pytest.mark.asyncio
+async def test_odsay_probe_handles_structured_no_result_error() -> None:
+    async def handler(_: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, json={"error": {"code": "-99", "msg": "no result"}})
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = OdsayRouteProvider(Settings(odsay_api_key="server-key"), client)
+    result = await provider.probe(
+        point("首爾", 37.5547, 126.9707), point("景福宮", 37.5796, 126.9770)
+    )
+    await client.aclose()
+
+    assert result == OdsayProbeResult(False, False, 200, "-99")
 
 
 def rapidapi_navitime(
@@ -657,6 +902,45 @@ async def test_japan_transit_routes_prefer_navitime_before_google() -> None:
 
 
 @pytest.mark.asyncio
+async def test_japan_transit_prefers_ekispert_when_configured() -> None:
+    service = RouteService(
+        fakeredis.aioredis.FakeRedis(decode_responses=True),
+        Settings(ekispert_api_key="key", route_cache_ttl_seconds=300),
+        google=UnexpectedProvider(),
+        navitime=UnexpectedProvider(),
+        ekispert=WorkingProvider(),
+    )
+    segment = await service.compute(
+        point("A", 35.1, 139.1),
+        point("B", 35.2, 139.2),
+        None,
+        "FEWER_TRANSFERS",
+        region_code="JP",
+    )
+    assert segment is not None and segment.provider == "working"
+
+
+@pytest.mark.asyncio
+async def test_korean_transit_uses_odsay_and_not_naver_directions() -> None:
+    service = RouteService(
+        fakeredis.aioredis.FakeRedis(decode_responses=True),
+        Settings(odsay_api_key="server-key", route_cache_ttl_seconds=300),
+        google=UnexpectedProvider(),
+        naver=UnexpectedProvider(),
+        odsay=WorkingProvider(),
+    )
+    segment = await service.compute(
+        point("A", 37.55, 126.97),
+        point("B", 37.58, 126.98),
+        None,
+        "FEWER_TRANSFERS",
+        region_code="KR",
+        travel_mode="transit",
+    )
+    assert segment is not None and segment.provider == "working"
+
+
+@pytest.mark.asyncio
 async def test_japan_transit_does_not_send_google_routes_requests() -> None:
     service = RouteService(
         fakeredis.aioredis.FakeRedis(decode_responses=True),
@@ -728,6 +1012,9 @@ def test_japan_transit_requires_navitime_configuration() -> None:
     assert route_provider_configured(direct, "JP", "transit") is True
     assert direct.navitime_rapidapi is False
     assert route_provider_configured(google_only, "JP", "walk") is True
+    assert route_provider_configured(Settings(ekispert_api_key="key"), "JP", "transit") is True
+    assert route_provider_configured(Settings(odsay_api_key="key"), "KR", "transit") is True
+    assert route_provider_configured(google_only, "KR", "transit") is False
 
 
 def test_navitime_base_url_is_pinned_to_official_gateways() -> None:
@@ -740,6 +1027,12 @@ def test_navitime_base_url_is_pinned_to_official_gateways() -> None:
     assert not official_provider_url_ok(field, "http://navitime-route-totalnavi.p.rapidapi.com")
     assert official_provider_url_ok("line_api_base_url", "https://api.line.me")
     assert not official_provider_url_ok("line_api_base_url", "https://evil.api.line.me")
+    assert official_provider_url_ok("ekispert_api_base_url", "https://api.ekispert.jp")
+    assert not official_provider_url_ok(
+        "ekispert_api_base_url", "https://api.ekispert.jp.example.test"
+    )
+    assert official_provider_url_ok("odsay_api_base_url", "https://api.odsay.com/v1/api")
+    assert not official_provider_url_ok("odsay_api_base_url", "https://odsay.example.test")
 
 
 @pytest.mark.asyncio
@@ -942,9 +1235,7 @@ async def test_scheduled_transit_uses_current_google_schedule_after_empty_refere
     assert segment.schedule_mode == "preview"
     assert segment.requested_departure_time == requested
     assert len(bodies) == 5
-    daytime_utc = datetime.fromisoformat(
-        str(bodies[-2]["departureTime"]).replace("Z", "+00:00")
-    )
+    daytime_utc = datetime.fromisoformat(str(bodies[-2]["departureTime"]).replace("Z", "+00:00"))
     daytime_local = daytime_utc.astimezone(tokyo)
     assert daytime_local.weekday() == requested.weekday()
     assert (daytime_local.hour, daytime_local.minute) == (10, 0)

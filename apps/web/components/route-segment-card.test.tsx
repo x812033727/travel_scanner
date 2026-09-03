@@ -43,4 +43,11 @@ describe("route segment card", () => {
     expect(screen.getByText("出口 B3")).toBeTruthy();
     expect(screen.getByText("建議車廂 前方第 2 節")).toBeTruthy();
   });
+
+  it("keeps ODsay route handoff on NAVER Maps", () => {
+    render(<RouteSegmentCard segment={{ ...base, provider: "odsay", attribution: "ODsay", maps_url: "https://map.naver.com/p/directions/example" }} />);
+    fireEvent.click(screen.getByRole("button"));
+    const link = screen.getByRole("link", { name: /用 NAVER Maps 開啟/ });
+    expect(link.getAttribute("href")).toContain("map.naver.com");
+  });
 });

@@ -122,6 +122,8 @@ class PublicRuntimeConfig(BaseModel):
     google_maps_embed_enabled: bool = False
     google_maps_javascript_enabled: bool = False
     navitime_enabled: bool = False
+    ekispert_enabled: bool = False
+    odsay_enabled: bool = False
     naver_maps_browser_client_id: str | None = None
     naver_maps_enabled: bool = False
     naver_places_enabled: bool = False

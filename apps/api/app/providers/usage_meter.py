@@ -36,6 +36,12 @@ NAVER_MAPS_OPERATIONS = ("local_search", "geocode", "directions")
 NAVITIME_PROVIDER = "navitime"
 NAVITIME_BILLING_TIMEZONE = ZoneInfo("Asia/Tokyo")
 NAVITIME_OPERATIONS = ("route_transit",)
+EKISPERT_PROVIDER = "ekispert"
+EKISPERT_BILLING_TIMEZONE = ZoneInfo("Asia/Tokyo")
+EKISPERT_OPERATIONS = ("search_course",)
+ODSAY_PROVIDER = "odsay"
+ODSAY_BILLING_TIMEZONE = ZoneInfo("Asia/Seoul")
+ODSAY_OPERATIONS = ("search_pub_trans_path",)
 YOUTUBE_OPERATIONS = ("search_list", "videos_list")
 
 
@@ -617,8 +623,7 @@ async def _monthly_request_snapshot(
     months = tuple(_month_at(billing_now, -offset) for offset in range(max(1, history_months)))
     try:
         raw_months = [
-            await cast(Awaitable[dict[Any, Any]], redis.hgetall(key_for(month)))
-            for month in months
+            await cast(Awaitable[dict[Any, Any]], redis.hgetall(key_for(month))) for month in months
         ]
     except RedisError:
         return ProviderUsageSnapshot(
@@ -787,4 +792,185 @@ async def navitime_usage_snapshot(
         monthly_limit=monthly_limit,
         history_months=history_months,
         now=now,
+    )
+
+
+def _ekispert_usage_key(now: datetime) -> str:
+    return f"provider-usage:{EKISPERT_PROVIDER}:{now:%Y-%m}"
+
+
+async def reserve_ekispert_request(
+    redis: Redis,
+    monthly_budget: int,
+    *,
+    operation: str = "search_course",
+    now: datetime | None = None,
+) -> bool:
+    """Atomically reserve one Ekispert request against the configured monthly cap."""
+    return await _reserve_hash_request(
+        redis,
+        key=_ekispert_usage_key,
+        operations=EKISPERT_OPERATIONS,
+        operation=operation,
+        limit=monthly_budget,
+        billing_timezone=EKISPERT_BILLING_TIMEZONE,
+        period="month",
+        now=now,
+    )
+
+
+async def ekispert_usage_snapshot(
+    redis: Redis,
+    monthly_limit: int = 0,
+    *,
+    history_months: int = GOOGLE_USAGE_HISTORY_MONTHS,
+    now: datetime | None = None,
+) -> ProviderUsageSnapshot:
+    """Return app-observed Ekispert route searches against the monthly hard cap."""
+    return await _monthly_request_snapshot(
+        redis,
+        key_for=_ekispert_usage_key,
+        operations=EKISPERT_OPERATIONS,
+        billing_timezone=EKISPERT_BILLING_TIMEZONE,
+        billing_timezone_name="Asia/Tokyo",
+        pricing_region="jp",
+        monthly_limit=monthly_limit,
+        history_months=history_months,
+        now=now,
+    )
+
+
+def _odsay_usage_key(now: datetime) -> str:
+    return f"provider-usage:{ODSAY_PROVIDER}:{now:%Y-%m-%d}"
+
+
+async def _reserve_hash_request(
+    redis: Redis,
+    *,
+    key: Callable[[datetime], str],
+    operations: tuple[str, ...],
+    operation: str,
+    limit: int,
+    billing_timezone: ZoneInfo,
+    period: Literal["month", "day"],
+    now: datetime | None,
+) -> bool:
+    """Reserve a provider request in Redis and fail closed if the counter is unavailable."""
+    if operation not in operations:
+        raise ValueError(f"unsupported provider usage operation: {operation}")
+    observed_at = now or datetime.now(UTC)
+    billing_now = observed_at.astimezone(billing_timezone)
+    if period == "month":
+        _, period_end = _month_window(billing_now)
+        reset_at = datetime.combine(
+            period_end + timedelta(days=1), time.min, tzinfo=billing_timezone
+        )
+    else:
+        reset_at = datetime.combine(
+            billing_now.date() + timedelta(days=1), time.min, tzinfo=billing_timezone
+        )
+    expires_at = reset_at + timedelta(days=GOOGLE_USAGE_RETENTION_DAYS)
+    usage_key = key(billing_now)
+    try:
+        async with redis.pipeline(transaction=True) as pipeline:
+            while True:
+                try:
+                    await pipeline.watch(usage_key)
+                    current_value = await cast(Awaitable[Any], pipeline.hget(usage_key, "total"))
+                    if limit > 0 and int(current_value or 0) >= limit:
+                        return False
+                    pipeline.multi()  # type: ignore[no-untyped-call]
+                    pipeline.hincrby(usage_key, "total", 1)
+                    pipeline.hincrby(usage_key, f"operation:{operation}", 1)
+                    pipeline.hsetnx(usage_key, "tracking_started_at", observed_at.isoformat())
+                    pipeline.expireat(usage_key, expires_at)
+                    await pipeline.execute()
+                    return True
+                except WatchError:
+                    continue
+    except RedisError:
+        return False
+
+
+async def reserve_odsay_request(
+    redis: Redis,
+    daily_budget: int,
+    *,
+    operation: str = "search_pub_trans_path",
+    now: datetime | None = None,
+) -> bool:
+    """Reserve one ODsay request against the Korea-calendar-day hard cap."""
+    return await _reserve_hash_request(
+        redis,
+        key=_odsay_usage_key,
+        operations=ODSAY_OPERATIONS,
+        operation=operation,
+        limit=daily_budget,
+        billing_timezone=ODSAY_BILLING_TIMEZONE,
+        period="day",
+        now=now,
+    )
+
+
+async def odsay_usage_snapshot(
+    redis: Redis,
+    daily_limit: int = 0,
+    *,
+    now: datetime | None = None,
+) -> ProviderUsageSnapshot:
+    """Return app-observed ODsay calls for the current Korean quota day."""
+    observed_at = now or datetime.now(UTC)
+    billing_now = observed_at.astimezone(ODSAY_BILLING_TIMEZONE)
+    try:
+        raw = await cast(Awaitable[dict[Any, Any]], redis.hgetall(_odsay_usage_key(billing_now)))
+    except RedisError:
+        return ProviderUsageSnapshot(
+            period=f"{billing_now:%Y-%m-%d}",
+            period_start=billing_now.date(),
+            period_end=billing_now.date(),
+            used=None,
+            monthly_limit=daily_limit,
+            remaining=None,
+            percentage=None,
+            free_limit=daily_limit,
+            free_usage=None,
+            free_remaining=None,
+            billable_overage=None,
+            breakdown={},
+            sku_usage=(),
+            monthly_history=(),
+            tracking_started_at=None,
+            observed_at=observed_at,
+            available=False,
+            period_kind="day",
+            billing_timezone="Asia/Seoul",
+            pricing_region="kr",
+        )
+    values = {_text(item_key): _text(value) for item_key, value in raw.items()}
+    breakdown = {
+        operation: int(values.get(f"operation:{operation}", 0)) for operation in ODSAY_OPERATIONS
+    }
+    used = int(values.get("total", 0))
+    started = values.get("tracking_started_at")
+    return ProviderUsageSnapshot(
+        period=f"{billing_now:%Y-%m-%d}",
+        period_start=billing_now.date(),
+        period_end=billing_now.date(),
+        used=used,
+        monthly_limit=daily_limit,
+        remaining=max(0, daily_limit - used) if daily_limit else None,
+        percentage=round(used / daily_limit * 100, 1) if daily_limit else None,
+        free_limit=daily_limit,
+        free_usage=min(used, daily_limit) if daily_limit else None,
+        free_remaining=max(0, daily_limit - used) if daily_limit else None,
+        billable_overage=max(0, used - daily_limit) if daily_limit else None,
+        breakdown=breakdown,
+        sku_usage=(),
+        monthly_history=(),
+        tracking_started_at=datetime.fromisoformat(started) if started else None,
+        observed_at=observed_at,
+        available=True,
+        period_kind="day",
+        billing_timezone="Asia/Seoul",
+        pricing_region="kr",
     )

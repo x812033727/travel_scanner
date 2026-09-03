@@ -220,7 +220,7 @@ API container so the tables are populated without waiting for the hotspot
 collector, which only runs under the `hotspots` compose profile.
 
 The API and keys page separately manages encrypted credentials for Google Maps,
-NAVER Maps, Amadeus, Skyscanner, Duffel, FlightAware, Google Travel Impact, NAVITIME and
+NAVER Maps, Ekispert, ODsay, Amadeus, Skyscanner, Duffel, FlightAware, Google Travel Impact, NAVITIME and
 affiliate providers. Desktop uses keyboard-accessible, horizontally scrollable
 provider tabs, mobile uses a provider selector, and only the active provider is
 rendered. Unsaved input remains intact while switching providers, and recent
@@ -492,26 +492,34 @@ window remain usable and show that weather is not yet available instead of
 inventing a long-range forecast. Enable the service by following the official
 [Google Weather API setup guide](https://developers.google.com/maps/documentation/weather/cloud-setup).
 
-Japanese transit comes only from NAVITIME. Google Maps Platform does not
-license Japanese transit partners to the Routes API (Google's FAQ names Japan
-and IRCTC as the exceptions), and the legacy Directions API has been closed to
-new Cloud projects since March 2025, so Japan transit requests never reach
-Google; walking and driving in Japan still use Google Routes. Subscribe to the
-[NAVITIME Route (totalnavi)](https://rapidapi.com/navitimejapan-navitimejapan/api/navitime-route-totalnavi)
-listing on RapidAPI (the Basic plan is free with 500 requests per month and 50
-per minute; RapidAPI requires a card on file), then set
-`NAVITIME_API_BASE_URL=https://navitime-route-totalnavi.p.rapidapi.com` and
-`NAVITIME_API_KEY` to the RapidAPI key. `NAVITIME_CLIENT_ID` is only needed for
-a direct NAVITIME contract, whose gateway host and authentication follow the
-contract documents; the base URL is pinned to the RapidAPI listing and
-NAVITIME's own domains. Without NAVITIME the planner shows a Google Maps deep
-link plus a manual travel-time input instead of inventing a schedule. When
-NAVITIME returns them, sourced departure and arrival times, line colours, fares,
-platforms, exits, and recommended cars are displayed; missing details are
-explicitly marked unavailable and are never inferred.
+Japanese transit prefers the official [Ekispert API](https://docs.ekispert.com/v1/api/).
+Set `EKISPERT_API_KEY`; the API origin is pinned to `api.ekispert.jp`. The default
+`EKISPERT_SEARCH_TYPE=plain` uses average waiting times and is explicitly shown as
+a preview rather than a dated timetable. Set it to `departure` only when the
+Ekispert contract includes timetable search. `EKISPERT_MONTHLY_REQUEST_LIMIT`
+is an atomic server-side hard cap (450 by default). One route search returns up
+to three alternatives, and the map line uses the returned station sequence so
+the UI labels it as a schematic rather than exact track geometry. Existing
+NAVITIME support remains a deployment fallback when Ekispert is not configured;
+the app never calls both paid providers for the same preview. Without either
+provider, the planner offers an exact Google Maps deep link and manual duration
+instead of inventing a route.
 
-Korean itineraries use NAVER Maps first where its official APIs provide
-structured data. Set `NAVER_MAPS_CLIENT_ID` and `NAVER_MAPS_CLIENT_SECRET` after
+Korean transit uses the official ODsay `searchPubTransPathT` endpoint. Set
+`ODSAY_API_KEY` to a **Server Key** restricted to the production server's fixed
+egress IP, not a browser Web Key. `ODSAY_DAILY_REQUEST_LIMIT=25` reserves five of
+the Basic plan's 30 daily calls for connection checks; commercial contracts can
+raise this value. `ODSAY_LANGUAGE=0` requests the Korean response supported by
+Standard contracts; select another documented language only when the contract
+includes multilingual output. A single request supplies up to three alternatives. The app
+does not call ODsay's additional route-geometry endpoint for every candidate;
+it draws a clearly labelled stop-sequence line and keeps NAVER Maps as the exact
+external navigation destination. ODsay's general route data is a preview, not a
+promise of the future departure timetable.
+
+Korean place lookup, browser maps, and driving routes use NAVER Maps where its
+official APIs provide structured data; public transit uses ODsay as described
+above. Set `NAVER_MAPS_CLIENT_ID` and `NAVER_MAPS_CLIENT_SECRET` after
 enabling Web Dynamic Map, Directions 5, Geocoding, and NAVER API HUB Local
 Search for the same NCP application. Restrict the browser Client ID to the
 production HTTP referrer. Korean place lookup tries NAVER Local Search and
@@ -519,8 +527,9 @@ Geocoding before Google, the planner renders NAVER Dynamic Map before Google
 Embed, and driving uses NAVER Directions before Google. NAVER place IDs are
 never passed to Google; only WGS84 coordinates cross the provider boundary.
 
-NAVER Directions does not return structured transit or walking routes. Google
-remains the in-app provider for those modes; if it has no result, the API
+NAVER Directions does not return structured transit or walking routes. ODsay
+provides the structured Korean public-transit preview, while walking remains an
+exact external NAVER handoff. If either mode has no structured result, the API
 returns `kind=external_only` with server-generated official NAVER app/web links.
 That result cannot be applied to itinerary times, and the user may enter a
 clearly labelled manual duration instead. The administrator usage card counts
