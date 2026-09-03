@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { AdminFoodsPanel } from "./admin-foods-panel";
 
@@ -6,6 +6,7 @@ const item = {
   id: "11111111-1111-4111-8111-111111111111",
   slug: "kr-bibimbap",
   country_code: "KR",
+  country_name: "韓國",
   local_name: "비빔밥",
   romanized_name: "Bibimbap",
   food_kind: "main",
@@ -27,17 +28,25 @@ const item = {
   hotspots: [{ id: "22222222-2222-4222-8222-222222222222", name: "廣藏市場" }],
 };
 
+const listing = {
+  items: [item],
+  total: 1,
+  page: 1,
+  pages: 1,
+  facets: {
+    countries: [{ code: "KR", name: "韓國", count: 1 }],
+    food_kinds: [{ code: "main", count: 1 }],
+  },
+};
+
 describe("AdminFoodsPanel", () => {
   it("lists reviewed content and performs an audited batch action", async () => {
     const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
-      if (String(input).includes("/admin/foods/merchants?")) {
-        return new Response(JSON.stringify({ items: [], total: 0, page: 1, pages: 0 }));
-      }
       if (init?.method === "POST") {
         expect(JSON.parse(String(init.body))).toEqual({ ids: [item.id], action: "approve" });
         return new Response(JSON.stringify({ updated: 1, status: "approved" }));
       }
-      return new Response(JSON.stringify({ items: [item], total: 1, page: 1, pages: 1 }));
+      return new Response(JSON.stringify(listing));
     });
     vi.stubGlobal("fetch", fetchMock);
 
@@ -48,5 +57,32 @@ describe("AdminFoodsPanel", () => {
 
     expect(await screen.findByText("已更新 1 筆美食資料")).toBeTruthy();
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(3));
+  });
+
+  it("groups dishes by country and filters by dish type", async () => {
+    const fetchMock = vi.fn<(input: RequestInfo | URL, init?: RequestInit) => Promise<Response>>(
+      async () => new Response(JSON.stringify(listing)),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<AdminFoodsPanel />);
+    expect(await screen.findByText("韓式拌飯")).toBeTruthy();
+    expect(screen.getByText(/韓國 \(KR\) · 本頁 1 筆/)).toBeTruthy();
+
+    const countries = screen.getByRole("group", { name: "國家或地區" });
+    expect(within(countries).getByRole("button", { name: /^韓國/ })).toBeTruthy();
+    expect(within(countries).getByRole("button", { name: /^JP/ }).hasAttribute("disabled")).toBe(true);
+
+    const kinds = screen.getByRole("group", { name: "料理分類" });
+    expect(within(kinds).getByRole("button", { name: /主食/ }).getAttribute("aria-pressed")).toBe("false");
+    fireEvent.click(within(kinds).getByRole("button", { name: /全部料理分類/ }));
+    fireEvent.click(within(kinds).getByRole("button", { name: /主食/ }));
+    await waitFor(() =>
+      expect(fetchMock.mock.calls.some(([input]) => String(input).includes("food_kind=main"))).toBe(true),
+    );
+
+    fireEvent.click(screen.getByRole("checkbox", { name: "全選 韓國（KR）" }));
+    expect((screen.getByRole("checkbox", { name: "選取 비빔밥" }) as HTMLInputElement).checked).toBe(true);
+    expect(screen.getByText("共 1 筆，已選 1 筆")).toBeTruthy();
   });
 });

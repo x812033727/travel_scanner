@@ -13,6 +13,7 @@ from app.hotspots.ai_search import (
     configured_research_providers,
     estimate_calls,
     research_provider,
+    summarize_provider_error,
 )
 from app.hotspots.guides import GuideCandidate
 from app.problems import AppError
@@ -148,3 +149,114 @@ async def test_invalid_json_after_one_repair_fails_closed() -> None:
         )
         with pytest.raises(ValidationError):
             await provider.structured(QueryPlan, "query_plan", "Return JSON", {})
+
+
+@pytest.mark.asyncio
+async def test_minimax_fenced_json_next_to_reasoning_parses_on_the_first_call() -> None:
+    calls = 0
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        body = json.loads(request.content)
+        assert body["instructions"].startswith("Return JSON")
+        assert "article_queries" in body["instructions"]
+        assert "code fences" in body["instructions"]
+        fenced = (
+            "Plan:\n```json\n"
+            '{"article_queries": ["淺草寺 旅遊"], "video_queries": ["淺草寺 vlog"]}'
+            "\n```"
+        )
+        return httpx.Response(
+            200,
+            json={
+                "status": "completed",
+                "output": [
+                    {"type": "reasoning", "id": "rs_1", "summary": []},
+                    {"type": "message", "content": [{"type": "output_text", "text": fenced}]},
+                ],
+                "usage": {"input_tokens": 30, "output_tokens": 20},
+            },
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        provider = ResponsesResearchProvider(
+            "minimax", "https://api.minimax.io/v1", "secret", "MiniMax-M3", 10, 1000, client
+        )
+        result, usage = await provider.structured(
+            QueryPlan, "query_plan", "Return JSON", {"attraction": "淺草寺"}
+        )
+    assert calls == 1
+    assert result.article_queries == ["淺草寺 旅遊"]
+    assert result.video_queries == ["淺草寺 vlog"]
+    assert usage == {"input_tokens": 30, "output_tokens": 20}
+
+
+@pytest.mark.asyncio
+async def test_incomplete_response_fails_without_a_repair_round_trip() -> None:
+    calls = 0
+
+    def handler(_: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        return httpx.Response(
+            200,
+            json={
+                "status": "incomplete",
+                "incomplete_details": {"reason": "max_output_tokens"},
+                "output": [],
+            },
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        provider = ResponsesResearchProvider(
+            "minimax", "https://ai.example", "secret", "model", 10, 1000, client
+        )
+        with pytest.raises(ValueError, match="max_output_tokens"):
+            await provider.structured(QueryPlan, "query_plan", "Return JSON", {})
+    assert calls == 1
+
+
+def test_summarize_provider_error_is_short_and_never_leaks_the_query_string() -> None:
+    request = httpx.Request(
+        "GET", "https://www.googleapis.com/youtube/v3/search?key=SECRET-KEY&q=asakusa"
+    )
+    response = httpx.Response(
+        403,
+        json={"error": {"message": "The request cannot be completed because quota exceeded."}},
+        request=request,
+    )
+    summary = summarize_provider_error(
+        httpx.HTTPStatusError("boom", request=request, response=response)
+    )
+    assert summary.startswith("HTTP 403 from www.googleapis.com: The request cannot be completed")
+    assert "SECRET-KEY" not in summary
+    assert "key=" not in summary
+    assert len(summary) <= 200
+
+    minimax_request = httpx.Request("POST", "https://api.minimaxi.com/v1/responses")
+    minimax = httpx.Response(
+        401,
+        json={"base_resp": {"status_code": 2049, "status_msg": "invalid api key"}},
+        request=minimax_request,
+    )
+    assert (
+        summarize_provider_error(
+            httpx.HTTPStatusError("x", request=minimax_request, response=minimax)
+        )
+        == "HTTP 401 from api.minimaxi.com: 2049 invalid api key"
+    )
+
+    with pytest.raises(ValidationError) as error:
+        QueryPlan.model_validate_json('{"article_queries": "nope"}')
+    validation = summarize_provider_error(error.value)
+    assert validation.startswith("AI output failed schema validation (1 errors): article_queries:")
+    assert len(validation) <= 200
+
+    assert summarize_provider_error(AppError(404, "hotspot_not_found", "找不到這個景點")) == (
+        "找不到這個景點"
+    )
+    assert len(summarize_provider_error(ValueError("x" * 500))) <= 200
+    assert "[redacted]" in summarize_provider_error(
+        ValueError("see https://example.com/?key=abc for details")
+    )

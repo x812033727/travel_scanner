@@ -82,7 +82,7 @@ describe("NewTripForm", () => {
     fireEvent.change(screen.getByLabelText("其他補充"), { target: { value: " 不要一直換飯店 " } });
     const review = within(screen.getByRole("region", { name: "完整行程條件" }));
     expect(review.getByText("每晚住宿預算")).toBeTruthy();
-    expect(review.getByText("$3,000～$7,000")).toBeTruthy();
+    expect(review.getByText("NT$3,000～NT$7,000")).toBeTruthy();
     expect(review.getByText("4 星以上")).toBeTruthy();
     expect(review.getByText("100 則以上")).toBeTruthy();
     expect(review.getByText("少走路")).toBeTruthy();

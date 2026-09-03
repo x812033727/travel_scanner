@@ -1,16 +1,23 @@
+from datetime import UTC, datetime
 from decimal import Decimal
+from uuid import uuid4
 
 import fakeredis.aioredis
 import httpx
 import pytest
+from sqlalchemy.dialects import postgresql
 
 from app.hotspots.guides import (
     BraveGuideProvider,
+    GuideCandidate,
     YouTubeGuideProvider,
     canonical_external_url,
     classify_content_locale,
+    stale_youtube_guides_delete,
+    upsert_guide,
     youtube_video_id,
 )
+from app.models import HotspotGuide
 from app.problems import AppError
 from app.providers.usage_meter import youtube_usage_snapshot
 
@@ -47,6 +54,13 @@ def test_content_language_prefers_provider_then_detects_script() -> None:
     )
     assert classify_content_locale("서울 여행 후기", "en") == ("ko", Decimal("0.900"))
     assert classify_content_locale("浅草を歩く", "en") == ("ja", Decimal("0.900"))
+    assert classify_content_locale("ソウル旅行", "en") == ("ja", Decimal("0.900"))
+
+
+def test_katakana_punctuation_does_not_turn_chinese_or_korean_into_japanese() -> None:
+    assert classify_content_locale("台北・淡水 一日遊", "zh-TW") == ("zh-TW", Decimal("0.700"))
+    assert classify_content_locale("九份ー十分 老街", "zh-TW") == ("zh-TW", Decimal("0.700"))
+    assert classify_content_locale("서울・부산 여행", "en") == ("ko", Decimal("0.900"))
 
 
 @pytest.mark.asyncio
@@ -141,3 +155,115 @@ async def test_brave_search_is_language_scoped_and_excludes_youtube() -> None:
 
     assert [item.title for item in results] == ["서울 여행 후기"]
     assert results[0].locale == "ko"
+
+
+@pytest.mark.asyncio
+async def test_brave_search_skips_unusable_urls_instead_of_aborting() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            json={
+                "web": {
+                    "results": [
+                        {"title": "insecure", "url": "http://blog.example/post"},
+                        {"title": "internal", "url": "https://127.0.0.1/admin"},
+                        {
+                            "title": "淺草寺 一日遊",
+                            "url": "https://blog.example/asakusa",
+                            "description": "散步路線",
+                        },
+                    ]
+                }
+            },
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        provider = BraveGuideProvider("secret", http)
+        results = await provider.search("淺草寺 旅遊", "zh-TW")
+
+    assert [item.title for item in results] == ["淺草寺 一日遊"]
+    assert results[0].discovery_rank == 3
+
+
+class FakeGuideSession:
+    def __init__(self, existing: HotspotGuide | None = None) -> None:
+        self.existing = existing
+        self.added: list[object] = []
+
+    async def scalar(self, _statement: object) -> HotspotGuide | None:
+        return self.existing
+
+    def add(self, item: object) -> None:
+        self.added.append(item)
+
+
+def candidate_for(url: str, **overrides: object) -> GuideCandidate:
+    values: dict[str, object] = {
+        "content_type": "article",
+        "provider": "manual",
+        "locale": "zh-TW",
+        "title": "淺草寺散步",
+        "creator_name": "blog.example",
+        "canonical_url": url,
+        "metadata": {"discovery_method": "manual"},
+    }
+    values.update(overrides)
+    return GuideCandidate(**values)  # type: ignore[arg-type]
+
+
+@pytest.mark.asyncio
+async def test_upsert_guide_inserts_new_rows_as_pending() -> None:
+    session = FakeGuideSession()
+    guide, created = await upsert_guide(session, uuid4(), candidate_for("https://blog.example/a"))  # type: ignore[arg-type]
+
+    assert created is True
+    assert session.added == [guide]
+    assert guide.review_status == "pending"
+    assert guide.locale == "zh-TW"
+    assert guide.metadata_json == {"discovery_method": "manual"}
+    assert guide.last_verified_at is not None
+
+
+@pytest.mark.asyncio
+async def test_upsert_guide_refreshes_metadata_but_keeps_review_and_locale() -> None:
+    hotspot_id = uuid4()
+    existing = HotspotGuide(
+        id=uuid4(),
+        hotspot_id=hotspot_id,
+        content_type="article",
+        provider="brave",
+        locale="en",
+        title="Old",
+        creator_name="blog.example",
+        canonical_url="https://blog.example/a",
+        review_status="rejected",
+        metadata_json={"search_query": "asakusa"},
+    )
+    session = FakeGuideSession(existing)
+    guide, created = await upsert_guide(
+        session,  # type: ignore[arg-type]
+        hotspot_id,
+        candidate_for("https://blog.example/a", title="New title", summary="更新後摘要"),
+    )
+
+    assert created is False
+    assert guide is existing
+    assert session.added == []
+    assert guide.title == "New title"
+    assert guide.summary == "更新後摘要"
+    assert guide.review_status == "rejected"
+    assert guide.locale == "en"
+    assert guide.metadata_json == {"search_query": "asakusa", "discovery_method": "manual"}
+    assert guide.last_verified_at is not None
+
+
+def test_stale_youtube_purge_spares_manual_picks() -> None:
+    compiled = stale_youtube_guides_delete(datetime.now(UTC)).compile(
+        dialect=postgresql.dialect()
+    )
+    sql = str(compiled)
+    assert "DELETE FROM hotspot_guides" in sql
+    assert "IS NULL" in sql
+    assert "discovery_method" in compiled.params.values()
+    assert "manual" in compiled.params.values()
+    assert "youtube" in compiled.params.values()

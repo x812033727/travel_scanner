@@ -66,7 +66,11 @@ async def dashboard(user: AdminUser, session: Session) -> dict[str, Any]:
         },
         "quick_actions": [
             {"id": "review_hotspots", "href": "/admin/hotspots", "count_key": "hotspots_pending"},
-            {"id": "review_merchants", "href": "/admin/foods", "count_key": "merchants_pending"},
+            {
+                "id": "review_merchants",
+                "href": "/admin/foods#merchants",
+                "count_key": "merchants_pending",
+            },
             {
                 "id": "categorise_merchants",
                 "href": "/admin/foods?taxonomy=missing_area",

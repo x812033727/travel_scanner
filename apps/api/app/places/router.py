@@ -62,8 +62,11 @@ async def autocomplete_places(
     country_codes: str | None = None,
     latitude: float | None = None,
     longitude: float | None = None,
+    kinds: str | None = None,
 ) -> list[dict[str, Any]]:
     _ = user
+    if kinds is not None and kinds != "cities":
+        raise AppError(422, "invalid_place_kinds", "地點類型目前只支援 cities")
     if len(q.strip()) < 2 or len(q) > 120:
         raise AppError(422, "invalid_place_query", "地點關鍵字須為 2 至 120 個字元")
     if session_token is not None and not 8 <= len(session_token) <= 36:
@@ -92,11 +95,12 @@ async def autocomplete_places(
         limit=GOOGLE_PLACES_USER_LIMIT,
         window_seconds=GOOGLE_PLACES_USER_WINDOW_SECONDS,
     )
-    if codes == ["kr"] and naver.configured:
+    # NAVER Local only knows POIs, so a city-level search goes to Google even for Korea.
+    if codes == ["kr"] and naver.configured and kinds is None:
         results = await naver.autocomplete(q, session_token)
         if results:
             return results
-    return await google.autocomplete(q, session_token, codes, latitude, longitude)
+    return await google.autocomplete(q, session_token, codes, latitude, longitude, kinds)
 
 
 @public_router.get("/{provider}/{place_id}")

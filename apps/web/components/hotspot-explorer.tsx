@@ -34,17 +34,15 @@ type PlaceSummary = {
   google_maps_url: string | null; map_links: MapLink[]; official_website_url: string | null;
   official_website_verified: boolean; has_details: boolean; updated_at: string | null;
 };
+type HotspotArea = { code: string; name: string };
 type RankedHotspot = {
   id: string; slug: string; rank: number; name: string; city_code: string; city_name: string;
-  destination_id: string; destination_role: "primary" | "secondary" | "extension";
-  parent_destination_id: string | null; is_cross_city: boolean;
-  country_code: string; country_name: string; category: string; score: number;
+  destination_id: string;
+  country_code: string; country_name: string; category: string; area: HotspotArea | null; score: number;
   components: { interest: number; growth: number; quality: number; confidence: number };
   pageviews_30d: number | null; growth_rate: number | null; trend_label: string;
   sources: string[]; has_source: boolean; signal_date: string | null; is_estimate: boolean;
-  is_deep_travel: boolean; depth_kind: "urban_local" | "day_trip" | null;
-  depth_score: number | null; depth_reason: string | null; local_name: string | null;
-  access_minutes: number | null; recommended_duration_minutes: number | null;
+  local_name: string | null;
   guide_counts: { article: number; video: number };
   map_links: MapLink[];
   place_summary: PlaceSummary;
@@ -53,9 +51,9 @@ type RankingResponse = { scope: string; scope_key: string; observed_on: string |
 type FacetsResponse = {
   total: number;
   countries: { code: string; name: string; count: number }[];
-  cities: { code: string; destination_id: string; name: string; country_code: string; count: number; destination_role: "primary" | "secondary" | "extension"; parent_destination_id: string | null; is_cross_city: boolean }[];
+  cities: { code: string; destination_id: string; name: string; country_code: string; count: number }[];
   categories: { code: string; count: number }[];
-  styles: { code: "all" | "deep"; name: string; count: number }[];
+  areas: { destination_id: string; city_code: string; code: string; name: string; count: number }[];
 };
 type Guide = {
   id: string; type: "article" | "video"; provider: string; locale: string; title: string;
@@ -224,9 +222,8 @@ export function HotspotExplorer() {
   const [query, setQuery] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
-  const [role, setRole] = useState("");
+  const [area, setArea] = useState("");
   const [category, setCategory] = useState("");
-  const [style, setStyle] = useState<"all" | "deep">("all");
   const [ranking, setRanking] = useState<RankingResponse | null>(null);
   const [facets, setFacets] = useState<FacetsResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -249,11 +246,11 @@ export function HotspotExplorer() {
 
   async function load(append = false) {
     setLoading(true); setError("");
-    const params = new URLSearchParams({ limit: "30", style });
+    const params = new URLSearchParams({ limit: "30" });
     if (query.trim()) params.set("q", query.trim());
     if (country) params.set("country_code", country);
     if (city) params.set("destination_id", city);
-    if (role) params.set("role", role);
+    if (city && area) params.set("area", area);
     if (category) params.set("category", category);
     if (append && ranking?.next_cursor) params.set("after_rank", String(ranking.next_cursor));
     try {
@@ -267,6 +264,8 @@ export function HotspotExplorer() {
     const initial = new URLSearchParams(window.location.search);
     const initialCategory = initial.get("category") ?? "";
     const initialDestination = initial.get("destination_id") ?? "";
+    // An area only means something inside its destination, so ignore it on its own.
+    const initialArea = initialDestination ? initial.get("area") ?? "" : "";
     const rankingParams = new URLSearchParams({ limit: "30" });
     if (initialCategory) {
       rankingParams.set("category", initialCategory);
@@ -274,11 +273,15 @@ export function HotspotExplorer() {
     if (initialDestination) {
       rankingParams.set("destination_id", initialDestination);
     }
+    if (initialArea) {
+      rankingParams.set("area", initialArea);
+    }
     api<FacetsResponse>("/hotspots/facets").then(setFacets).catch(() => undefined);
     api<RankingResponse>(`/hotspots/rankings?${rankingParams}`).then((result) => {
       setRanking(result);
       setCategory(initialCategory);
       setCity(initialDestination);
+      setArea(initialArea);
     }).catch((reason: Error) => setError(reason.message)).finally(() => setLoading(false));
   }, []);
 
@@ -379,15 +382,14 @@ export function HotspotExplorer() {
       <p className="flex items-center gap-2 text-sm font-semibold text-[var(--teal)]"><Sparkles size={16} />{t("eyebrow")}</p>
       <div className="mt-3 flex flex-wrap items-end justify-between gap-4"><div><h1 className="text-3xl font-bold tracking-[-.035em] md:text-5xl">{t("title")}</h1><p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{t("description")}</p></div><div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--muted)]"><span className="font-semibold text-[var(--ink)]">{t("updated")}</span> {ranking?.observed_on || t("waiting")}</div></div>
     </section>
-    <button type="button" onClick={() => setFiltersOpen(true)} className="mb-3 flex min-h-12 w-full items-center justify-between rounded-2xl border border-[var(--line)] bg-white px-4 font-semibold shadow-[var(--shadow-sm)] md:hidden"><span className="flex items-center gap-2"><SlidersHorizontal size={18} />{t("searchLabel")}</span><span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-1 text-xs text-[var(--teal-dark)]">{[country, city, role, category, style === "deep" ? style : ""].filter(Boolean).length}</span></button>
+    <button type="button" onClick={() => setFiltersOpen(true)} className="mb-3 flex min-h-12 w-full items-center justify-between rounded-2xl border border-[var(--line)] bg-white px-4 font-semibold shadow-[var(--shadow-sm)] md:hidden"><span className="flex items-center gap-2"><SlidersHorizontal size={18} />{t("searchLabel")}</span><span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-1 text-xs text-[var(--teal-dark)]">{[country, city, area, category].filter(Boolean).length}</span></button>
     {filtersOpen && <button type="button" aria-label={t("close")} onClick={() => setFiltersOpen(false)} className="fixed inset-0 z-[70] bg-slate-950/40 md:hidden" />}
-    <form onSubmit={(event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setFiltersOpen(false); void load(); }} aria-label={t("searchLabel")} className={`${filtersOpen ? "mobile-filter-sheet-open" : ""} mobile-filter-sheet grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-[1fr_repeat(5,9rem)_auto] md:p-5`}>
+    <form onSubmit={(event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setFiltersOpen(false); void load(); }} aria-label={t("searchLabel")} className={`${filtersOpen ? "mobile-filter-sheet-open" : ""} mobile-filter-sheet grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-[1fr_repeat(4,9rem)_auto] md:p-5`}>
       <div className="mb-1 flex items-center justify-between md:hidden"><strong>{t("searchLabel")}</strong><button type="button" onClick={() => setFiltersOpen(false)} aria-label={t("close")} className="grid h-11 w-11 place-items-center rounded-full border border-[var(--line)]"><X size={19} /></button></div>
       <label className="relative"><span className="sr-only">{t("searchPlaceholder")}</span><Search className="pointer-events-none absolute left-4 top-3.5 text-[var(--muted)]" size={19} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t("searchPlaceholder")} className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] pl-11 pr-4 outline-none focus:border-[var(--teal)]" /></label>
-      <select aria-label={t("allCountries")} value={country} onChange={(event) => { setCountry(event.target.value); setCity(""); }} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allCountries")}</option>{facets?.countries.map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}</select>
-      <select aria-label={t("allRoles")} value={role} onChange={(event) => { setRole(event.target.value); setCity(""); }} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allRoles")}</option><option value="primary">{t("primaryCities")}</option><option value="secondary">{t("secondaryCities")}</option><option value="extension">{t("extensionCities")}</option></select>
-      <select aria-label={t("allStyles")} value={style} onChange={(event) => setStyle(event.target.value as "all" | "deep")} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="all">{t("allStyles")}</option><option value="deep">{t("deepStyle")}</option></select>
-      <select aria-label={t("allCities")} value={city} onChange={(event) => setCity(event.target.value)} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allCities")}</option>{(["primary", "secondary", "extension"] as const).map((groupRole) => { const cities = facets?.cities.filter((item) => (!country || item.country_code === country) && (!role || item.destination_role === role) && item.destination_role === groupRole) ?? []; return cities.length ? <optgroup key={groupRole} label={t(`${groupRole}Cities`)}>{cities.map((item) => <option key={item.destination_id} value={item.destination_id}>{item.name} ({item.count})</option>)}</optgroup> : null; })}</select>
+      <select aria-label={t("allCountries")} value={country} onChange={(event) => { setCountry(event.target.value); setCity(""); setArea(""); }} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allCountries")}</option>{facets?.countries.map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}</select>
+      <select aria-label={t("allCities")} value={city} onChange={(event) => { setCity(event.target.value); setArea(""); }} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allCities")}</option>{facets?.cities.filter((item) => !country || item.country_code === country).map((item) => <option key={item.destination_id} value={item.destination_id}>{item.name} ({item.count})</option>)}</select>
+      <select aria-label={t("allAreas")} value={area} disabled={!city} onChange={(event) => setArea(event.target.value)} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3 disabled:cursor-not-allowed disabled:opacity-60"><option value="">{t("allAreas")}</option>{facets?.areas.filter((item) => item.destination_id === city).map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}</select>
       <select aria-label={t("allCategories")} value={category} onChange={(event) => setCategory(event.target.value)} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3">{categoryCodes.map((code) => <option key={code} value={code}>{code ? t(`categories.${code}`) : t("allCategories")}</option>)}</select>
       <button type="submit" className="h-12 rounded-xl bg-[var(--teal)] px-6 font-semibold text-white">{t("submit")}</button>
     </form>
@@ -397,13 +399,12 @@ export function HotspotExplorer() {
         {!loading && error && <div role="alert" className="rounded-3xl bg-[var(--coral-soft)] p-6">{error}</div>}
         {!loading && !error && ranking?.items.length === 0 && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white/70 p-8 text-center"><h3 className="font-bold">{t("emptyTitle")}</h3><p className="mt-2 text-sm text-[var(--muted)]">{t("emptyBody")}</p></div>}
         {!loading && !error && ranking && <ol className="grid gap-4 md:grid-cols-2">{ranking.items.map((item) => <li key={item.id} className={`travel-result-card travel-result-card-${item.category} relative overflow-hidden rounded-3xl border border-[var(--line)] bg-white p-5`}>
-          <div className="flex items-start justify-between gap-4"><div className="flex gap-3"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{item.rank}</span><div><h3 className="text-lg font-bold">{item.name}</h3>{item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}{item.map_links?.[0] ? <a href={safeExternalHref(item.map_links[0].url)} target="_blank" rel="noopener noreferrer" aria-label={`${item.map_links[0].label}: ${item.name}`} className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"><MapPin size={14} />{item.city_name} · {t(`categories.${item.category}`)}<ExternalLink size={13} /></a> : <p className="mt-1 flex min-h-11 items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{item.city_name} · {t(`categories.${item.category}`)}</p>}</div></div><div className="text-right"><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><p className="text-xs text-[var(--muted)]">{t("score")}</p></div></div>
+          <div className="flex items-start justify-between gap-4"><div className="flex gap-3"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{item.rank}</span><div><h3 className="text-lg font-bold">{item.name}</h3>{item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}{item.map_links?.[0] ? <a href={safeExternalHref(item.map_links[0].url)} target="_blank" rel="noopener noreferrer" aria-label={`${item.map_links[0].label}: ${item.name}`} className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"><MapPin size={14} />{[item.city_name, item.area?.name, t(`categories.${item.category}`)].filter(Boolean).join(" · ")}<ExternalLink size={13} /></a> : <p className="mt-1 flex min-h-11 items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{[item.city_name, item.area?.name, t(`categories.${item.category}`)].filter(Boolean).join(" · ")}</p>}</div></div><div className="text-right"><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><p className="text-xs text-[var(--muted)]">{t("score")}</p></div></div>
           <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl bg-[var(--paper)] p-4 text-sm"><div><p className="text-[var(--muted)]">{t("views30")}</p><p className="mt-1 font-semibold">{item.pageviews_30d === null ? t("pending") : number.format(item.pageviews_30d)}</p></div><div><p className="text-[var(--muted)]">{t("previous")}</p><p className="mt-1 flex items-center gap-1 font-semibold">{trendIcon(item)}{percent(item.growth_rate)}</p></div></div>
           <button type="button" disabled={auth.status === "loading"} onClick={() => openDetails(item)} className="mt-4 flex min-h-12 w-full items-center gap-3 rounded-2xl bg-[var(--teal)] px-4 py-3 text-left text-white shadow-sm transition hover:bg-[var(--teal-dark)] disabled:cursor-wait disabled:opacity-60"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/15">{auth.status === "authenticated" ? <BookOpenText size={17} /> : <LockKeyhole size={17} />}</span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("placeDetails")}</strong><span className="block text-xs text-white/75">{auth.status === "authenticated" ? t("guideCount", { articles: item.guide_counts?.article || 0, videos: item.guide_counts?.video || 0 }) : t("protectedFeatureLocked")}</span></span>{auth.status === "authenticated" ? <ExternalLink size={16} /> : <LockKeyhole size={16} />}</button>
           <button type="button" disabled={auth.status === "loading"} aria-busy={auth.status === "loading"} onClick={() => openRestaurants(item)} className="mt-2 flex min-h-12 w-full items-center gap-3 rounded-2xl border border-[var(--coral)] bg-[var(--coral-soft)] px-4 py-3 text-left text-[var(--ink)] transition hover:-translate-y-0.5 hover:shadow-sm disabled:cursor-wait disabled:opacity-60"><span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[var(--coral)]">{auth.status === "authenticated" ? <UtensilsCrossed size={17} /> : <LockKeyhole size={17} />}</span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("nearbyRestaurants")}</strong><span className="block text-xs text-[var(--muted)]">{t(auth.status === "loading" ? "nearbyRestaurantsChecking" : auth.status === "authenticated" ? "nearbyRestaurantsDetail" : "nearbyRestaurantsLocked")}</span></span><span className="text-xs font-bold text-[var(--coral)]">{auth.status === "authenticated" ? "5–10 km" : <LockKeyhole size={15} />}</span></button>
           <TravelCardActions type="hotspot" id={item.id} title={item.name} selectionPath={`/hotspots/${item.id}/trip-selections`} shareRequiresAuth />
-          <div className="mt-4 flex flex-wrap items-center gap-2">{item.destination_role === "secondary" && <span className="rounded-full bg-sky-100 px-2.5 py-1 text-xs font-semibold text-sky-900">{t("secondaryTag")}</span>}{item.is_cross_city && <span className="rounded-full bg-violet-100 px-2.5 py-1 text-xs font-semibold text-violet-900">{t("crossCityTag")}</span>}{item.is_deep_travel && <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-900">{t("deep")}</span>}{item.depth_kind && <span className="rounded-full border border-amber-300 px-2.5 py-1 text-xs text-amber-900">{item.depth_kind === "day_trip" ? t("dayTrip") : t("urbanLocal")}</span>}{item.has_source && (auth.status === "authenticated" ? <a href={`/${locale}/out/hotspots/${item.id}/source`} target="_blank" rel="noopener noreferrer" className="ml-auto inline-flex min-h-11 items-center text-xs font-semibold text-[var(--teal)]">{t("source")}</a> : <button type="button" disabled={auth.status === "loading"} onClick={() => requireContentAuth(() => undefined)} className="ml-auto inline-flex min-h-11 items-center gap-1 text-xs font-semibold text-[var(--teal)] disabled:opacity-60"><LockKeyhole size={13} />{t("source")}</button>)}</div>
-          {item.is_deep_travel && item.access_minutes && item.recommended_duration_minutes && <p className="mt-3 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-950">{t("depthDetail", { access: item.access_minutes, duration: item.recommended_duration_minutes })}</p>}
+          <div className="mt-4 flex flex-wrap items-center gap-2">{item.has_source && (auth.status === "authenticated" ? <a href={`/${locale}/out/hotspots/${item.id}/source`} target="_blank" rel="noopener noreferrer" className="ml-auto inline-flex min-h-11 items-center text-xs font-semibold text-[var(--teal)]">{t("source")}</a> : <button type="button" disabled={auth.status === "loading"} onClick={() => requireContentAuth(() => undefined)} className="ml-auto inline-flex min-h-11 items-center gap-1 text-xs font-semibold text-[var(--teal)] disabled:opacity-60"><LockKeyhole size={13} />{t("source")}</button>)}</div>
         </li>)}</ol>}
         {!loading && !error && ranking?.has_more && <div className="mt-6 text-center"><button type="button" onClick={() => void load(true)} className="rounded-xl border border-[var(--teal)] bg-white px-6 py-3 font-semibold text-[var(--teal)]">{t("loadMore")}</button></div>}
       </section>
