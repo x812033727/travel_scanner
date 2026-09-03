@@ -3001,10 +3001,21 @@ async def preview_trip_route(
     settings = await load_runtime_settings(session)
     region = trip_region_code(trip.timezone, trip.destination_name, trip.data)
     option_limit = payload.max_options if payload.include_alternatives else 1
+    route_departure_time = first.end_time or first.start_time
+    if route_departure_time is not None:
+        try:
+            trip_timezone = ZoneInfo(trip.timezone or "UTC")
+        except ZoneInfoNotFoundError:
+            trip_timezone = ZoneInfo("UTC")
+        route_departure_time = (
+            route_departure_time.replace(tzinfo=trip_timezone)
+            if route_departure_time.tzinfo is None
+            else route_departure_time.astimezone(trip_timezone)
+        )
     segments = await RouteService(get_redis(), settings).compute_options(
         origin,
         destination,
-        first.end_time or first.start_time,
+        route_departure_time,
         preference,
         region_code=region,
         travel_mode=payload.travel_mode,
