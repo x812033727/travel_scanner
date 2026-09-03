@@ -1270,7 +1270,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       </button>
     </header>
 
-    <section className="relative mb-5 hidden overflow-hidden rounded-[2rem] border border-white/70 bg-[linear-gradient(135deg,#ffffff_15%,#eaf5f0_68%,#fff0eb)] p-5 shadow-[var(--shadow-lg)] sm:p-7 lg:block">
+    <section className="planner-hero-panel relative mb-5 hidden overflow-hidden rounded-[2rem] border p-5 shadow-[var(--shadow-lg)] sm:p-7 lg:block">
       <div aria-hidden="true" className="absolute -right-12 -top-16 h-44 w-44 rounded-full bg-[var(--coral)]/10 blur-2xl" />
       <div className="relative flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
         <div>
