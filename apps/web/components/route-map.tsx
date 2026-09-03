@@ -73,13 +73,16 @@ export function RouteMap({
   externalOnly?: boolean;
 }) {
   const locale = useLocale();
+  const isKorea = countryCode?.toUpperCase() === "KR";
   const mapElement = useRef<HTMLDivElement>(null);
   const destroyMap = useRef<(() => void) | null>(null);
   const overlays = useRef<MapOverlay[]>([]);
   const [config, setConfig] = useState<PublicMapConfig>({});
   const [sdkReady, setSdkReady] = useState(false);
   const [mapFailure, setMapFailure] = useState<MapFailureReason | undefined>(
-    () => typeof window !== "undefined" && window.mokaairGoogleMapsAuthFailed
+    () => !isKorea
+      && typeof window !== "undefined"
+      && window.mokaairGoogleMapsAuthFailed
       ? "authorization"
       : undefined,
   );
@@ -109,7 +112,6 @@ export function RouteMap({
   const destination = items.find((item) => item.id === (selectedSegment?.to_item_id || toItemId));
   const hasCoordinates = origin?.latitude != null && origin.longitude != null
     && destination?.latitude != null && destination.longitude != null;
-  const isKorea = countryCode?.toUpperCase() === "KR";
   const useNaver = isKorea
     && config.naver_dynamic_map_enabled
     && Boolean(config.naver_maps_browser_client_id);
@@ -135,7 +137,7 @@ export function RouteMap({
   }, []);
 
   useEffect(() => {
-    if (!useGoogle) return;
+    if (isKorea) return;
     const previousHandler = window.gm_authFailure;
     const handleAuthorizationFailure = () => {
       window.mokaairGoogleMapsAuthFailed = true;
@@ -148,7 +150,7 @@ export function RouteMap({
         window.gm_authFailure = previousHandler;
       }
     };
-  }, [useGoogle]);
+  }, [isKorea]);
 
   const renderNaverMap = useCallback(() => {
     if (mapFailed || !useNaver || !hasCoordinates || !mapElement.current || !window.naver?.maps || !origin || !destination) return;
@@ -262,7 +264,7 @@ export function RouteMap({
 
   return <section className={`route-map-card route-map-${variant}`}>
     {useNaver && <Script id="naver-maps-js" src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(config.naver_maps_browser_client_id || "")}`} strategy="afterInteractive" onReady={() => setSdkReady(true)} onError={() => setMapFailure("load")} />}
-    {useGoogle && <Script id="google-route-maps-js" src={`https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(config.google_maps_browser_key || "")}&v=weekly&loading=async&language=${encodeURIComponent(locale)}`} strategy="afterInteractive" onReady={() => setSdkReady(true)} onError={() => setMapFailure("load")} />}
+    {useGoogle && !mapFailed && <Script id="google-route-maps-js" src={`https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(config.google_maps_browser_key || "")}&v=weekly&loading=async&language=${encodeURIComponent(locale)}`} strategy="afterInteractive" onReady={() => { if (!window.mokaairGoogleMapsAuthFailed) setSdkReady(true); }} onError={() => setMapFailure("load")} />}
     <div className="flex items-center justify-between border-b border-[var(--line)] px-5 py-3.5"><div className="min-w-0"><p className="text-xs font-semibold tracking-[.14em] text-[var(--teal)]">ROUTE MAP{mapSource ? ` · ${mapSource}` : ""}</p><h2 className="mt-1 truncate font-bold">{selectedSegment ? `方案 ${selectedIndex + 1} · 約 ${selectedSegment.duration_minutes} 分鐘` : `${origin?.title || "起點"} → ${destination?.title || "終點"}`}</h2></div><Map size={20} className="shrink-0 text-[var(--teal)]" /></div>
     <div className="route-map-frame overflow-hidden">
       {mapSource && hasCoordinates && !mapFailed

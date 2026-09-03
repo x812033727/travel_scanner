@@ -139,6 +139,37 @@ describe("RouteMap", () => {
     expect(await screen.findByText("地圖載入失敗")).toBeTruthy();
     expect(screen.getByText(/尚未允許目前網站網域/)).toBeTruthy();
     expect(screen.queryByRole("img", { name: /Google Maps路線地圖/ })).toBeNull();
+    expect(screen.queryByTestId("next-script")).toBeNull();
+  });
+
+  it("installs the Google authorization guard before the public config enables the SDK", async () => {
+    let releaseConfig: ((response: Response) => void) | undefined;
+    vi.stubGlobal("fetch", vi.fn(() => new Promise<Response>((resolve) => {
+      releaseConfig = resolve;
+    })));
+    render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="JP" />);
+
+    await waitFor(() => expect(window.gm_authFailure).toBeTypeOf("function"));
+    expect(screen.queryByTestId("next-script")).toBeNull();
+    act(() => releaseConfig?.(ok({
+      google_maps_browser_key: "google-browser-key",
+      google_maps_javascript_enabled: true,
+    })));
+
+    expect(await screen.findByTestId("next-script")).toBeTruthy();
+  });
+
+  it("does not let an earlier Google authorization failure disable NAVER Maps", async () => {
+    window.mokaairGoogleMapsAuthFailed = true;
+    vi.stubGlobal("fetch", vi.fn(async () => ok({
+      naver_maps_browser_client_id: "browser-client-id",
+      naver_dynamic_map_enabled: true,
+    })));
+    render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="KR" />);
+
+    expect((await screen.findByTestId("next-script")).getAttribute("data-src"))
+      .toContain("oapi.map.naver.com");
+    expect(screen.queryByText("地圖載入失敗")).toBeNull();
   });
 
   it("draws every provider option and makes each line selectable", async () => {
