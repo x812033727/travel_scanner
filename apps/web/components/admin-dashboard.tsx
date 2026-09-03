@@ -46,6 +46,7 @@ const cards = [
 const actionLabels: Record<string, string> = {
   review_hotspots: "審核景點候選",
   review_merchants: "審核美食店家",
+  categorise_merchants: "補齊店家區域",
   manage_users: "管理會員與次數",
 };
 

@@ -45,6 +45,10 @@ from app.places.google import GoogleTravelService
 from app.trips.itinerary import ItineraryHotspot
 
 PUBLIC_REVIEW_STATUSES = ("approved", "auto_approved")
+# The planner pages the ranking until it has enough verified rows; 6 × 50 bounds
+# the scan for cities whose imports have not been map-verified yet.
+PLANNER_RANKING_PAGE_SIZE = 50
+PLANNER_RANKING_MAX_PAGES = 6
 
 
 async def refresh_due_map_place_ids(
@@ -977,6 +981,20 @@ async def hotspot_facets(session: AsyncSession, locale: Locale = "zh-TW") -> dic
     }
 
 
+def _planner_eligible(item: dict[str, Any]) -> bool:
+    """Only verified, durably located hotspots may be placed on an itinerary."""
+    source = item.get("coordinate_source") or {}
+    return (
+        item.get("latitude") is not None
+        and item.get("longitude") is not None
+        and item.get("map_match_status") == "verified"
+        and bool(item.get("map_links"))
+        and has_durable_coordinates(
+            item["latitude"], item["longitude"], source.get("type"), source.get("url")
+        )
+    )
+
+
 async def load_planner_hotspots(
     session: AsyncSession,
     *,
@@ -989,14 +1007,34 @@ async def load_planner_hotspots(
     style: str = "deep",
 ) -> list[ItineraryHotspot]:
     """Load only approved, exact-map hotspots for itinerary generation."""
-    result = await list_rankings(
-        session,
-        city_code=city_code,
-        destination_id=destination_id,
-        style=style,
-        limit=min(50, max(1, limit)),
-    )
-    ranked_items = result["items"]
+    wanted = max(1, limit)
+    ranked_items: list[dict[str, Any]] = []
+    eligible_seen = 0
+    after_rank: int | None = None
+    # Freshly imported hotspots sit high in the ranking but stay unverified until
+    # the map pass runs, so a single top-N page can hold almost no planner-eligible
+    # rows. Page through the ranking until enough eligible rows are collected.
+    for _ in range(PLANNER_RANKING_MAX_PAGES):
+        page = await list_rankings(
+            session,
+            city_code=city_code,
+            destination_id=destination_id,
+            style=style,
+            limit=PLANNER_RANKING_PAGE_SIZE,
+            after_rank=after_rank,
+        )
+        items = page["items"]
+        if not items:
+            break
+        ranked_items.extend(items)
+        eligible_seen += sum(1 for item in items if _planner_eligible(item))
+        last_rank = items[-1]["rank"]
+        has_more = page.get("has_more", len(items) >= PLANNER_RANKING_PAGE_SIZE)
+        if eligible_seen >= wanted or not has_more:
+            break
+        if after_rank is not None and last_rank <= after_rank:
+            break
+        after_rank = last_rank
     primary_id = destination_id
     if primary_id is None and city_code:
         resolved = destination_for_code(city_code)
@@ -1018,21 +1056,9 @@ async def load_planner_hotspots(
         )
     rows: list[ItineraryHotspot] = []
     for item in ranked_items:
-        required = (
-            item["latitude"],
-            item["longitude"],
-        )
-        if (
-            any(value is None for value in required)
-            or item["map_match_status"] != "verified"
-            or not item["map_links"]
-            or not has_durable_coordinates(
-                item["latitude"],
-                item["longitude"],
-                item["coordinate_source"].get("type"),
-                item["coordinate_source"].get("url"),
-            )
-        ):
+        if len(rows) >= wanted:
+            break
+        if not _planner_eligible(item):
             continue
         rows.append(
             ItineraryHotspot(
