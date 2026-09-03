@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from datetime import UTC, datetime
 from decimal import Decimal
 from typing import Any, Literal, Protocol, TypeVar, cast
@@ -12,6 +13,13 @@ from redis.exceptions import RedisError
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.ai.structured_output import (
+    anthropic_output_text,
+    ensure_response_completed,
+    extract_json_document,
+    responses_output_text,
+    schema_instructions,
+)
 from app.config import Settings
 from app.hotspots.guides import (
     BraveGuideProvider,
@@ -104,33 +112,9 @@ class ResearchProvider(Protocol):
     async def close(self) -> None: ...
 
 
-def _responses_text(body: dict[str, Any]) -> str:
-    direct = body.get("output_text")
-    if isinstance(direct, str) and direct.strip():
-        return direct
-    texts: list[str] = []
-    for output in body.get("output", []):
-        if not isinstance(output, dict):
-            continue
-        for item in output.get("content", []):
-            if isinstance(item, dict) and item.get("type") == "output_text":
-                text = item.get("text")
-                if isinstance(text, str):
-                    texts.append(text)
-    if not texts:
-        raise ValueError("AI response did not contain structured output")
-    return "".join(texts)
-
-
-def _anthropic_text(body: dict[str, Any]) -> str:
-    texts = [
-        str(item.get("text"))
-        for item in body.get("content", [])
-        if isinstance(item, dict) and item.get("type") == "text" and item.get("text")
-    ]
-    if not texts:
-        raise ValueError("AI response did not contain structured output")
-    return "".join(texts)
+def _with_schema(instructions: str, schema: type[BaseModel]) -> str:
+    """System prompt with the schema embedded for providers that ignore text.format."""
+    return f"{instructions.rstrip()}\n{schema_instructions(schema)}"
 
 
 class ResponsesResearchProvider:
@@ -164,6 +148,7 @@ class ResponsesResearchProvider:
         payload: dict[str, Any],
     ) -> tuple[TModel, dict[str, int]]:
         previous = ""
+        system_prompt = _with_schema(instructions, schema)
         for attempt in range(2):
             user_input = json.dumps(payload, ensure_ascii=False)
             if attempt:
@@ -175,7 +160,7 @@ class ResponsesResearchProvider:
                 headers={"Authorization": f"Bearer {self.api_key}"},
                 json={
                     "model": self.model,
-                    "instructions": instructions,
+                    "instructions": system_prompt,
                     "input": user_input,
                     "max_output_tokens": self.max_output_tokens,
                     "store": False,
@@ -191,7 +176,8 @@ class ResponsesResearchProvider:
             )
             response.raise_for_status()
             body = cast(dict[str, Any], response.json())
-            previous = _responses_text(body)
+            ensure_response_completed(body)
+            previous = extract_json_document(responses_output_text(body))
             try:
                 parsed = schema.model_validate_json(previous)
             except ValidationError:
@@ -238,6 +224,7 @@ class AnthropicResearchProvider:
         payload: dict[str, Any],
     ) -> tuple[TModel, dict[str, int]]:
         previous = ""
+        system_prompt = _with_schema(instructions, schema)
         for attempt in range(2):
             user_input = json.dumps(payload, ensure_ascii=False)
             if attempt:
@@ -254,7 +241,7 @@ class AnthropicResearchProvider:
                 json={
                     "model": self.model,
                     "max_tokens": self.max_output_tokens,
-                    "system": instructions,
+                    "system": system_prompt,
                     "messages": [{"role": "user", "content": user_input}],
                     "output_config": {
                         "format": {"type": "json_schema", "schema": schema.model_json_schema()}
@@ -263,7 +250,7 @@ class AnthropicResearchProvider:
             )
             response.raise_for_status()
             body = cast(dict[str, Any], response.json())
-            previous = _anthropic_text(body)
+            previous = extract_json_document(anthropic_output_text(body))
             try:
                 parsed = schema.model_validate_json(previous)
             except ValidationError:
@@ -340,6 +327,79 @@ def estimate_calls(
         "ai": locale_count * 2,
         "brave": locale_count * query_count if "article" in content_types else 0,
         "youtube": locale_count * query_count if "video" in content_types else 0,
+    }
+
+
+SEARCH_ERRORS = (httpx.HTTPError, AppError, KeyError, TypeError, ValueError)
+ISSUE_MESSAGES: dict[str, str] = {
+    "ai_quota_exhausted": "今日 AI 呼叫額度已用完",
+    "brave_not_configured": "Brave 文章搜尋尚未設定",
+    "brave_quota_exhausted": "Brave 搜尋額度已用完",
+    "brave_search_failed": "Brave 搜尋失敗",
+    "youtube_not_configured": "YouTube 影片搜尋尚未設定",
+    "youtube_quota_exhausted": "YouTube 搜尋額度已用完",
+    "youtube_search_failed": "YouTube 搜尋失敗",
+    "no_new_candidates": "搜尋結果都已在候選清單中",
+    "scope_covered": "要求的語系與類型都已有核准內容",
+}
+_SENSITIVE = re.compile(r"https?://\S+|(?i:key|token|secret|authorization)=[^\s&]+")
+
+
+def _clip(text: str, limit: int = 200) -> str:
+    collapsed = " ".join(_SENSITIVE.sub("[redacted]", text).split())
+    return collapsed if len(collapsed) <= limit else collapsed[: limit - 1] + "…"
+
+
+def _response_excerpt(response: httpx.Response) -> str:
+    try:
+        body = response.json()
+    except ValueError:
+        body = None
+    if isinstance(body, dict):
+        error = body.get("error")
+        if isinstance(error, dict) and isinstance(error.get("message"), str):
+            return str(error["message"])
+        if isinstance(error, str):
+            return error
+        base = body.get("base_resp")
+        if isinstance(base, dict) and isinstance(base.get("status_msg"), str):
+            return f"{base.get('status_code')} {base['status_msg']}"
+        if isinstance(body.get("message"), str):
+            return str(body["message"])
+    return response.text[:120]
+
+
+def summarize_provider_error(exc: BaseException) -> str:
+    """One admin-readable line about a failed provider call; never carries URLs or keys."""
+    if isinstance(exc, httpx.HTTPStatusError):
+        host = exc.request.url.host
+        status = exc.response.status_code
+        return _clip(f"HTTP {status} from {host}: {_response_excerpt(exc.response)}")
+    if isinstance(exc, httpx.TimeoutException):
+        return _clip(f"{type(exc).__name__}: provider did not answer in time")
+    if isinstance(exc, httpx.HTTPError):
+        return _clip(f"{type(exc).__name__}: {str(exc)[:120]}")
+    if isinstance(exc, ValidationError):
+        errors = exc.errors()
+        location = "root"
+        message = ""
+        if errors:
+            location = ".".join(str(part) for part in errors[0]["loc"]) or "root"
+            message = errors[0]["msg"]
+        return _clip(
+            f"AI output failed schema validation ({len(errors)} errors): {location}: {message}"
+        )
+    if isinstance(exc, AppError):
+        return _clip(exc.detail)
+    return _clip(f"{type(exc).__name__}: {str(exc)[:160]}")
+
+
+def _issue(locale: str | None, code: str, detail: str | None = None) -> dict[str, Any]:
+    return {
+        "locale": locale,
+        "code": code,
+        "message": ISSUE_MESSAGES.get(code, code),
+        "detail": detail,
     }
 
 
@@ -465,7 +525,13 @@ async def execute_ai_search(
         else None
     )
     usage: dict[str, int] = {"ai_calls": 0, "input_tokens": 0, "output_tokens": 0}
-    result: dict[str, Any] = {"created": 0, "evaluated": 0, "errors": [], "locales": {}}
+    result: dict[str, Any] = {
+        "created": 0,
+        "evaluated": 0,
+        "errors": [],
+        "notices": [],
+        "locales": {},
+    }
     query_plans: dict[str, Any] = {}
     try:
         hotspot = await session.get(TravelHotspot, run.hotspot_id)
@@ -473,6 +539,7 @@ async def execute_ai_search(
             raise AppError(404, "hotspot_not_found", "找不到這個景點")
         scope = await _scope_for_run(session, run)
         if not scope:
+            result["notices"].append(_issue(None, "scope_covered"))
             run.status = "completed"
             run.progress = 100
             run.result_json = result
@@ -486,7 +553,7 @@ async def execute_ai_search(
             run.progress = 5 + int(locale_index / len(scope) * 80)
             await session.commit()
             if not await _consume_ai_call(redis, settings):
-                result["errors"].append({"locale": locale, "code": "ai_quota_exhausted"})
+                result["errors"].append(_issue(locale, "ai_quota_exhausted"))
                 continue
             plan, plan_usage = await provider.structured(
                 QueryPlan,
@@ -512,27 +579,41 @@ async def execute_ai_search(
             candidates_by_url: dict[str, GuideCandidate] = {}
             candidate_query: dict[str, str] = {}
             if article_queries and brave is None:
-                result["errors"].append({"locale": locale, "code": "brave_not_configured"})
+                result["errors"].append(_issue(locale, "brave_not_configured"))
             for query in article_queries if brave else []:
                 if not await consume_search_budget(
                     redis, "brave", settings.hotspot_guide_brave_daily_search_budget
                 ):
-                    result["errors"].append({"locale": locale, "code": "brave_quota_exhausted"})
+                    result["errors"].append(_issue(locale, "brave_quota_exhausted"))
                     break
                 usage["brave_calls"] = usage.get("brave_calls", 0) + 1
                 assert brave is not None
-                for candidate in await brave.search(query, locale, 10):
+                try:
+                    found = await brave.search(query, locale, 10)
+                except SEARCH_ERRORS as exc:
+                    result["errors"].append(
+                        _issue(locale, "brave_search_failed", summarize_provider_error(exc))
+                    )
+                    break
+                for candidate in found:
                     candidates_by_url.setdefault(candidate.canonical_url, candidate)
                     candidate_query.setdefault(candidate.canonical_url, query)
             if video_queries and youtube is None:
-                result["errors"].append({"locale": locale, "code": "youtube_not_configured"})
+                result["errors"].append(_issue(locale, "youtube_not_configured"))
             for query in video_queries if youtube else []:
                 if not await consume_search_budget(redis, "youtube", 100):
-                    result["errors"].append({"locale": locale, "code": "youtube_quota_exhausted"})
+                    result["errors"].append(_issue(locale, "youtube_quota_exhausted"))
                     break
                 usage["youtube_calls"] = usage.get("youtube_calls", 0) + 1
                 assert youtube is not None
-                for candidate in await youtube.search(query, locale, 10):
+                try:
+                    found = await youtube.search(query, locale, 10)
+                except SEARCH_ERRORS as exc:
+                    result["errors"].append(
+                        _issue(locale, "youtube_search_failed", summarize_provider_error(exc))
+                    )
+                    break
+                for candidate in found:
                     candidates_by_url.setdefault(candidate.canonical_url, candidate)
                     candidate_query.setdefault(candidate.canonical_url, query)
             existing_urls: set[str] = set()
@@ -567,12 +648,24 @@ async def execute_ai_search(
                 per_type[candidate.content_type] += 1
                 shortlisted.append(candidate)
             if not shortlisted:
-                result["locales"][locale] = {"evaluated": 0, "created": 0}
+                result["locales"][locale] = {
+                    "evaluated": 0,
+                    "created": 0,
+                    "already_known": len(existing_urls),
+                }
+                if candidates_by_url:
+                    result["notices"].append(
+                        _issue(
+                            locale,
+                            "no_new_candidates",
+                            f"{len(existing_urls)} 筆搜尋結果已在候選清單中",
+                        )
+                    )
                 continue
             run.progress_json = {"locale": locale, "stage": "assessing"}
             await session.commit()
             if not await _consume_ai_call(redis, settings):
-                result["errors"].append({"locale": locale, "code": "ai_quota_exhausted"})
+                result["errors"].append(_issue(locale, "ai_quota_exhausted"))
                 continue
             by_id = {f"c{index}": candidate for index, candidate in enumerate(shortlisted)}
             assessment, assessment_usage = await provider.structured(

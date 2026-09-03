@@ -24,7 +24,7 @@ from app.hotspots.areas import (
 from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.cities import HOTSPOT_CITIES
 from app.hotspots.discovery import WikimediaDiscoveryClient
-from app.hotspots.guides import discover_guides
+from app.hotspots.guides import discover_guides, stale_youtube_guides_delete
 from app.hotspots.maps import build_map_links
 from app.hotspots.places import place_summary_payload
 from app.hotspots.ranking import RankingInput, score_deep_hotspots, score_hotspots
@@ -653,10 +653,7 @@ async def collect_hotspots(
                 ),
             }
         await session.execute(
-            delete(HotspotGuide).where(
-                HotspotGuide.provider == "youtube",
-                HotspotGuide.last_verified_at < datetime.now(UTC) - timedelta(days=30),
-            )
+            stale_youtube_guides_delete(datetime.now(UTC) - timedelta(days=30))
         )
         await session.commit()
     return {
