@@ -8,15 +8,20 @@ from dataclasses import dataclass
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from typing import Any, Literal, Protocol, cast
-from urllib.parse import quote, urlencode
+from urllib.parse import quote, urlencode, urlparse
 from uuid import UUID
+from zoneinfo import ZoneInfo
 
 import httpx
 from pydantic import BaseModel, Field
 from redis.asyncio import Redis
 
 from app.config import Settings, get_settings
-from app.providers.usage_meter import record_google_maps_request, record_naver_maps_request
+from app.providers.usage_meter import (
+    record_google_maps_request,
+    record_naver_maps_request,
+    reserve_navitime_request,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -702,12 +707,202 @@ class GoogleRouteProvider:
         return segments
 
 
+NAVITIME_TIMEZONE = ZoneInfo("Asia/Tokyo")
+# NAVITIME ``order`` values that correspond to the planner route preferences.
+NAVITIME_ORDER_BY_PREFERENCE: dict[str, str] = {
+    "FEWER_TRANSFERS": "transit",
+    "FASTEST": "time",
+    "LESS_WALKING": "walk_distance",
+}
+
+
+@dataclass(frozen=True)
+class NavitimeProbeResult:
+    reachable: bool
+    route_available: bool
+    status_code: int | None = None
+    error_code: str | None = None
+
+
+def _response_object(response: httpx.Response) -> dict[str, Any]:
+    try:
+        payload = response.json()
+    except ValueError:
+        return {}
+    return cast(dict[str, Any], payload) if isinstance(payload, dict) else {}
+
+
+def _navitime_dict(value: object) -> dict[str, Any]:
+    return cast(dict[str, Any], value) if isinstance(value, dict) else {}
+
+
+def _navitime_int(value: object) -> int | None:
+    if value is None or isinstance(value, bool):
+        return None
+    try:
+        return int(float(str(value)))
+    except ValueError:
+        return None
+
+
+def _navitime_text(value: object) -> str | None:
+    text = " ".join(str(value).split()) if value is not None else ""
+    return text or None
+
+
+def _navitime_time(value: object) -> datetime | None:
+    if not isinstance(value, str) or not value:
+        return None
+    try:
+        parsed = datetime.fromisoformat(value)
+    except ValueError:
+        return None
+    return parsed if parsed.tzinfo else parsed.replace(tzinfo=NAVITIME_TIMEZONE)
+
+
+def _navitime_fare(value: object) -> Decimal | None:
+    """Prefer the regular ticket fare (``unit_0``), then the IC-card fare, then any amount."""
+    fares = _navitime_dict(value)
+    for key in ("unit_0", "unit_48", *sorted(fares)):
+        raw = fares.get(key)
+        if isinstance(raw, (int, float)) and not isinstance(raw, bool):
+            amount = Decimal(str(raw))
+            return amount.quantize(Decimal(1)) if amount == amount.to_integral_value() else amount
+    return None
+
+
+def _navitime_color(value: object) -> str | None:
+    text = _navitime_text(value)
+    return text if text and len(text) == 7 and text.startswith("#") else None
+
+
+def _navitime_error_code(status_code: int, payload: dict[str, Any]) -> str:
+    message: object = (
+        payload.get("message") or payload.get("error") or payload.get("status_message")
+    )
+    if isinstance(message, dict):
+        message = cast(dict[str, Any], message).get("message")
+    return (_navitime_text(message) or "")[:120] or f"HTTP_{status_code}"
+
+
+def _navitime_point(sections: list[dict[str, Any]], index: int) -> dict[str, Any]:
+    if 0 <= index < len(sections) and sections[index].get("type") == "point":
+        return sections[index]
+    return {}
+
+
+def _navitime_point_name(point: dict[str, Any], fallback: str) -> str:
+    name = _navitime_text(point.get("name"))
+    # Coordinates that are not stations come back as literal "start"/"goal" markers.
+    if not name or name.lower() in {"start", "goal"}:
+        return fallback
+    return name
+
+
 class NavitimeRouteProvider:
+    """NAVITIME Route (totalnavi) ``route_transit`` client.
+
+    Both gateways speak the NAVITIME API 2.0 contract: the RapidAPI listing
+    (``https://navitime-route-totalnavi.p.rapidapi.com``, authenticated with
+    ``x-rapidapi-key``) and direct contracts (``https://{host}/{client_id}/v1``).
+    Routes come back as ``items[].summary`` plus ``items[].sections`` that
+    alternate between ``point`` and ``move`` entries.
+    """
+
     name = "navitime"
 
-    def __init__(self, settings: Settings, client: httpx.AsyncClient | None = None) -> None:
+    def __init__(
+        self,
+        settings: Settings,
+        client: httpx.AsyncClient | None = None,
+        redis: Redis | None = None,
+    ) -> None:
         self.settings = settings
         self.client = client
+        self.redis = redis
+
+    def _endpoint(self) -> tuple[str, dict[str, str]]:
+        base = str(self.settings.navitime_api_base_url or "").rstrip("/")
+        api_key = str(self.settings.navitime_api_key or "")
+        if self.settings.navitime_rapidapi:
+            host = (urlparse(base).hostname or "").lower()
+            return f"{base}/route_transit", {"x-rapidapi-key": api_key, "x-rapidapi-host": host}
+        client_id = quote(str(self.settings.navitime_client_id or ""), safe="")
+        return f"{base}/{client_id}/v1/route_transit", {"X-Api-Key": api_key}
+
+    def _params(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        effective_time: datetime | None,
+        preference: str,
+        limit: int,
+    ) -> dict[str, str]:
+        params = {
+            "start": f"{origin.latitude:.6f},{origin.longitude:.6f}",
+            "goal": f"{destination.latitude:.6f},{destination.longitude:.6f}",
+            "order": NAVITIME_ORDER_BY_PREFERENCE.get(preference, "time_optimized"),
+            "limit": str(limit),
+            "shape": "true",
+            "shape_color": "railway_line",
+        }
+        if effective_time is not None:
+            # NAVITIME reads start_time as naive Japan Standard Time.
+            params["start_time"] = effective_time.astimezone(NAVITIME_TIMEZONE).strftime(
+                "%Y-%m-%dT%H:%M:%S"
+            )
+        if not self.settings.navitime_rapidapi:
+            # The RapidAPI listing answers in Japanese only; direct contracts accept lang.
+            params["lang"] = "zh-TW"
+        return params
+
+    async def _request(self, params: dict[str, str]) -> httpx.Response:
+        url, headers = self._endpoint()
+        if self.client is not None:
+            return await self.client.get(url, params=params, headers=headers)
+        async with httpx.AsyncClient(timeout=self.settings.provider_timeout_seconds) as client:
+            return await client.get(url, params=params, headers=headers)
+
+    async def _reserve(self) -> bool:
+        """Consume one unit of the monthly NAVITIME budget; False when it is exhausted."""
+        if self.redis is None:
+            return True
+        return await reserve_navitime_request(
+            self.redis, self.settings.navitime_monthly_request_limit
+        )
+
+    async def probe(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        departure_time: datetime | None = None,
+    ) -> NavitimeProbeResult:
+        """Verify credentials and quota without treating an empty route as a connection error."""
+        if not self.settings.navitime_configured:
+            return NavitimeProbeResult(False, False, error_code="NOT_CONFIGURED")
+        if not await self._reserve():
+            return NavitimeProbeResult(False, False, error_code="MONTHLY_BUDGET_EXHAUSTED")
+        effective_time, _, _ = supported_transit_time(departure_time)
+        try:
+            response = await self._request(
+                self._params(origin, destination, effective_time, "FASTEST", 1)
+            )
+        except httpx.HTTPError:
+            return NavitimeProbeResult(False, False, error_code="NETWORK_ERROR")
+        payload = _response_object(response)
+        if response.status_code >= 400:
+            return NavitimeProbeResult(
+                False,
+                False,
+                status_code=response.status_code,
+                error_code=_navitime_error_code(response.status_code, payload),
+            )
+        items = payload.get("items")
+        return NavitimeProbeResult(
+            True,
+            isinstance(items, list) and bool(items),
+            status_code=response.status_code,
+        )
 
     async def compute(
         self,
@@ -739,140 +934,202 @@ class NavitimeRouteProvider:
     ) -> list[RouteSegment]:
         if travel_mode != "transit" or not self.settings.navitime_configured:
             return []
-        base = str(self.settings.navitime_api_base_url).rstrip("/")
-        url = f"{base}/{self.settings.navitime_client_id}/v1/route_transit"
+        if not await self._reserve():
+            logger.warning(
+                "navitime_route_request_skipped",
+                extra={"provider": self.name, "reason_code": "monthly_budget_exhausted"},
+            )
+            return []
+        option_limit = max(1, min(max_options, 3))
         effective_time, schedule_mode, warnings = supported_transit_time(departure_time)
-        params: dict[str, Any] = {
-            "start": f"{origin.latitude},{origin.longitude}",
-            "goal": f"{destination.latitude},{destination.longitude}",
-            "lang": "zh-TW",
-            "shape": "true",
-            "shape_color": "railway_line",
-            "limit": str(max(1, min(max_options, 3))),
-        }
-        if effective_time:
-            params["start_time"] = effective_time.isoformat()
-        headers = {"X-Api-Key": str(self.settings.navitime_api_key)}
         try:
-            if self.client is not None:
-                response = await self.client.get(url, params=params, headers=headers)
-            else:
-                async with httpx.AsyncClient(
-                    timeout=self.settings.provider_timeout_seconds
-                ) as client:
-                    response = await client.get(url, params=params, headers=headers)
-            response.raise_for_status()
-            payload = cast(dict[str, Any], response.json())
-        except (httpx.HTTPError, ValueError):
+            response = await self._request(
+                self._params(origin, destination, effective_time, preference, option_limit)
+            )
+        except httpx.HTTPError:
+            logger.warning(
+                "navitime_route_request_failed",
+                extra={"provider": self.name, "reason_code": "network_error"},
+            )
             return []
-        candidates = cast(list[dict[str, Any]], payload.get("items", []))
-        if not candidates:
+        payload = _response_object(response)
+        if response.status_code >= 400:
+            logger.warning(
+                "navitime_route_request_failed",
+                extra={
+                    "provider": self.name,
+                    "reason_code": "http_error",
+                    "status_code": response.status_code,
+                    "error_code": _navitime_error_code(response.status_code, payload),
+                },
+            )
             return []
+        currency = _navitime_text(_navitime_dict(payload.get("unit")).get("currency")) or "JPY"
         options: list[RouteSegment] = []
         seen: set[tuple[object, ...]] = set()
-        for index, route in enumerate(candidates):
-            if not isinstance(route, dict):
+        for index, route in enumerate(cast(list[object], payload.get("items") or [])):
+            segment = self._segment_from_route(
+                route,
+                origin,
+                destination,
+                departure_time=departure_time,
+                preference=preference,
+                schedule_mode=schedule_mode,
+                warnings=warnings,
+                currency=currency,
+                rank=len(options) + 1,
+                index=index,
+            )
+            if segment is None:
                 continue
-            try:
-                summary = cast(dict[str, Any], route.get("summary") or {})
-                summary_move = cast(dict[str, Any], summary.get("move") or {})
-                raw_nodes = cast(
-                    list[dict[str, Any]], route.get("nodes") or route.get("sections") or []
-                )
-                steps: list[RouteStep] = []
-                for raw in raw_nodes:
-                    transport = cast(dict[str, Any], raw.get("transport") or raw)
-                    departure = cast(dict[str, Any], raw.get("departure") or raw.get("from") or {})
-                    arrival = cast(dict[str, Any], raw.get("arrival") or raw.get("to") or {})
-                    line_name = transport.get("name") or transport.get("line_name")
-                    mode = "TRANSIT" if line_name else "WALK"
-                    steps.append(
-                        RouteStep(
-                            travel_mode=mode,
-                            instruction=str(
-                                raw.get("instruction")
-                                or (f"搭乘 {line_name}" if line_name else "步行前往下一站")
-                            ),
-                            duration_minutes=raw.get("time") or raw.get("duration"),
-                            distance_meters=raw.get("distance"),
-                            departure_stop=departure.get("name"),
-                            arrival_stop=arrival.get("name"),
-                            line_name=line_name,
-                            headsign=cast(dict[str, Any], transport.get("destination") or {}).get(
-                                "name"
-                            ),
-                            platform=departure.get("start_platform") or raw.get("start_platform"),
-                            exit_name=arrival.get("gateway") or raw.get("gateway"),
-                            recommended_car=transport.get("getoff"),
-                        )
-                    )
-                total = (
-                    route.get("time")
-                    or summary_move.get("time")
-                    or summary.get("move_time")
-                    or summary.get("time")
-                )
-                try:
-                    total_minutes = max(1, int(str(total)))
-                except (TypeError, ValueError):
-                    total_minutes = sum(step.duration_minutes or 0 for step in steps)
-                if total_minutes <= 0:
-                    continue
-                details = ["steps", "stops", "headsign"]
-                if any(step.platform for step in steps):
-                    details.append("platform")
-                if any(step.exit_name for step in steps):
-                    details.append("exit")
-                if any(step.recommended_car for step in steps):
-                    details.append("recommended_car")
-                encoded = _encode_polyline(_geojson_route_points(route.get("shapes")))
-                provider_key = str(summary.get("no") or route.get("no") or f"navitime:{index + 1}")
-                segment = RouteSegment(
-                    from_item_id=origin.item_id,
-                    to_item_id=destination.item_id,
-                    travel_mode="transit",
-                    provider=self.name,
-                    attribution="NAVITIME JAPAN",
-                    generated_at=datetime.now(UTC),
-                    requested_departure_time=departure_time,
-                    schedule_mode=schedule_mode,
-                    preference=preference,
-                    duration_minutes=total_minutes,
-                    distance_meters=(
-                        route.get("distance")
-                        or summary_move.get("distance")
-                        or summary.get("move_distance")
-                    ),
-                    encoded_polyline=encoded,
-                    provider_route_key=provider_key[:64],
-                    route_option_rank=len(options) + 1,
-                    steps=steps,
-                    details_available=details,
-                    warnings=list(warnings),
-                )
-                signature = (
-                    segment.encoded_polyline,
-                    segment.duration_minutes,
-                    tuple(
-                        (step.line_name, step.departure_stop, step.arrival_stop) for step in steps
-                    ),
-                )
-                if signature in seen:
-                    continue
-                seen.add(signature)
-                options.append(segment)
-            except (ArithmeticError, TypeError, ValueError):
-                logger.warning(
-                    "navitime_route_candidate_invalid",
-                    extra={
-                        "provider": self.name,
-                        "reason_code": "candidate_invalid",
-                        "route_rank": index + 1,
-                    },
-                )
-            if len(options) >= max(1, min(max_options, 3)):
+            signature = (
+                segment.encoded_polyline,
+                segment.duration_minutes,
+                tuple(
+                    (step.line_name, step.departure_stop, step.arrival_stop)
+                    for step in segment.steps
+                ),
+            )
+            if signature in seen:
+                continue
+            seen.add(signature)
+            options.append(segment)
+            if len(options) >= option_limit:
                 break
         return options
+
+    def _segment_from_route(
+        self,
+        route: object,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        *,
+        departure_time: datetime | None,
+        preference: str,
+        schedule_mode: str,
+        warnings: list[str],
+        currency: str,
+        rank: int,
+        index: int,
+    ) -> RouteSegment | None:
+        if not isinstance(route, dict):
+            return None
+        try:
+            data = cast(dict[str, Any], route)
+            summary = _navitime_dict(data.get("summary"))
+            move = _navitime_dict(summary.get("move"))
+            sections = [
+                _navitime_dict(item) for item in cast(list[object], data.get("sections") or [])
+            ]
+            steps = self._steps(sections, origin, destination)
+            total_minutes = _navitime_int(move.get("time"))
+            if total_minutes is None:
+                total_minutes = sum(step.duration_minutes or 0 for step in steps)
+            if total_minutes <= 0:
+                return None
+            details = ["steps", "stops", "headsign"] if steps else []
+            if any(step.platform for step in steps):
+                details.append("platform")
+            if any(step.exit_name for step in steps):
+                details.append("exit")
+            if any(step.recommended_car for step in steps):
+                details.append("recommended_car")
+            fare = _navitime_fare(move.get("fare"))
+            params = urlencode(google_directions_params(origin, destination, "transit"))
+            route_key = _navitime_text(summary.get("no")) or f"navitime:{index + 1}"
+            return RouteSegment(
+                from_item_id=origin.item_id,
+                to_item_id=destination.item_id,
+                travel_mode="transit",
+                provider=self.name,
+                attribution="NAVITIME",
+                generated_at=datetime.now(UTC),
+                requested_departure_time=departure_time,
+                schedule_mode=schedule_mode,
+                preference=preference,
+                duration_minutes=total_minutes,
+                distance_meters=_navitime_int(move.get("distance")),
+                fare=fare,
+                currency=currency if fare is not None else None,
+                encoded_polyline=_encode_polyline(_geojson_route_points(data.get("shapes"))),
+                maps_url=f"https://www.google.com/maps/dir/?{params}",
+                provider_route_key=route_key[:64],
+                route_option_rank=rank,
+                steps=steps,
+                details_available=details,
+                warnings=list(warnings),
+            )
+        except (ArithmeticError, TypeError, ValueError):
+            logger.warning(
+                "navitime_route_candidate_invalid",
+                extra={
+                    "provider": self.name,
+                    "reason_code": "candidate_invalid",
+                    "route_rank": index + 1,
+                },
+            )
+            return None
+
+    @staticmethod
+    def _steps(
+        sections: list[dict[str, Any]],
+        origin: RoutePoint,
+        destination: RoutePoint,
+    ) -> list[RouteStep]:
+        steps: list[RouteStep] = []
+        for index, section in enumerate(sections):
+            if section.get("type") != "move":
+                continue
+            before = _navitime_point(sections, index - 1)
+            after = _navitime_point(sections, index + 1)
+            departure_name = _navitime_point_name(before, origin.name)
+            arrival_name = _navitime_point_name(after, destination.name)
+            duration = _navitime_int(section.get("time"))
+            distance = _navitime_int(section.get("distance"))
+            departure_at = _navitime_time(section.get("from_time"))
+            arrival_at = _navitime_time(section.get("to_time"))
+            transport = _navitime_dict(section.get("transport"))
+            if not transport:
+                verb = "步行前往" if str(section.get("move") or "walk") == "walk" else "前往"
+                steps.append(
+                    RouteStep(
+                        travel_mode="WALK",
+                        instruction=f"{verb} {arrival_name}",
+                        duration_minutes=duration,
+                        distance_meters=distance,
+                        departure_time=departure_at,
+                        arrival_time=arrival_at,
+                    )
+                )
+                continue
+            line_name = (
+                _navitime_text(transport.get("name"))
+                or _navitime_text(section.get("line_name"))
+                or "大眾運輸"
+            )
+            service_type = _navitime_text(transport.get("type"))
+            instruction = f"搭乘 {line_name}"
+            if service_type and service_type not in line_name:
+                instruction += f"（{service_type}）"
+            steps.append(
+                RouteStep(
+                    travel_mode="TRANSIT",
+                    instruction=instruction,
+                    duration_minutes=duration,
+                    distance_meters=distance,
+                    departure_stop=departure_name,
+                    arrival_stop=arrival_name,
+                    departure_time=departure_at,
+                    arrival_time=arrival_at,
+                    line_name=line_name,
+                    line_color=_navitime_color(transport.get("color")),
+                    headsign=_navitime_text(_navitime_dict(transport.get("destination")).get("name")),
+                    platform=_navitime_text(before.get("start_platform")),
+                    exit_name=_navitime_text(after.get("gateway")),
+                    recommended_car=_navitime_text(transport.get("getoff")),
+                )
+            )
+        return steps
 
 
 def _encode_polyline(points: list[tuple[float, float]]) -> str | None:
@@ -1168,16 +1425,17 @@ class RouteService:
         self.redis = redis
         self.settings = settings or get_settings()
         self.google = google or GoogleRouteProvider(self.settings, None, redis)
-        self.navitime = navitime or NavitimeRouteProvider(self.settings)
+        self.navitime = navitime or NavitimeRouteProvider(self.settings, None, redis)
         self.naver = naver or NaverDirectionsProvider(self.settings, None, redis)
 
     def _providers(self, region_code: str | None, travel_mode: TravelMode) -> list[RouteProvider]:
         region = (region_code or "").upper()
         if region == "JP" and travel_mode == "transit":
-            # Google Maps Platform does not expose Japanese transit directions
-            # through the Routes API even though the consumer Google Maps app
-            # can display them. NAVITIME is therefore the only provider that
-            # can produce a structured, persistable Japanese transit segment.
+            # Google Maps Platform does not license Japanese transit partners to
+            # the Routes API (and the legacy Directions API is closed to new
+            # projects), even though the consumer Google Maps app shows them.
+            # NAVITIME is therefore the only provider that can produce a
+            # structured, persistable Japanese transit segment.
             return [self.navitime]
         if region == "KR" and travel_mode == "drive":
             return [self.naver]

@@ -28,7 +28,7 @@ from app.main import app
 from app.models import AdminAuditLog, ProviderConfig, User
 from app.problems import AppError
 from app.providers.usage_meter import record_google_maps_request, record_youtube_request
-from app.trips.routing import GoogleRoutesProbeResult, RoutePoint
+from app.trips.routing import GoogleRoutesProbeResult, NavitimeProbeResult, RoutePoint
 
 
 class ScalarRows:
@@ -767,3 +767,72 @@ def test_stored_provider_base_url_on_unofficial_host_is_ignored_when_read() -> N
     effective = apply_runtime_overrides(base, [row])
     assert effective.flightaware_base_url == base.flightaware_base_url
     assert effective.flightaware_enrich_offer_limit == 3
+
+
+@pytest.mark.asyncio
+async def test_navitime_connection_reports_gateway_error(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    class NavitimeStub:
+        def __init__(self, *_args: object) -> None:
+            pass
+
+        async def probe(
+            self,
+            _origin: RoutePoint,
+            _destination: RoutePoint,
+            _departure_time: datetime | None = None,
+        ) -> NavitimeProbeResult:
+            return NavitimeProbeResult(
+                False,
+                False,
+                status_code=403,
+                error_code="You are not subscribed to this API.",
+            )
+
+    monkeypatch.setattr(admin_service, "NavitimeRouteProvider", NavitimeStub)
+    settings = Settings(
+        navitime_api_base_url="https://navitime-route-totalnavi.p.rapidapi.com",
+        navitime_api_key="key",
+    )
+
+    with pytest.raises(
+        ConnectionError,
+        match=r"NAVITIME（RapidAPI）連線失敗（HTTP 403 / You are not subscribed to this API.）",
+    ):
+        await admin_service._test_provider("navitime", settings, object())  # type: ignore[arg-type]
+
+
+@pytest.mark.asyncio
+async def test_navitime_connection_succeeds_through_rapidapi(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    observed: list[RoutePoint] = []
+
+    class NavitimeStub:
+        def __init__(self, *_args: object) -> None:
+            pass
+
+        async def probe(
+            self,
+            origin: RoutePoint,
+            destination: RoutePoint,
+            _departure_time: datetime | None = None,
+        ) -> NavitimeProbeResult:
+            observed.extend([origin, destination])
+            return NavitimeProbeResult(True, True, status_code=200)
+
+    monkeypatch.setattr(admin_service, "NavitimeRouteProvider", NavitimeStub)
+    settings = Settings(
+        navitime_api_base_url="https://navitime-route-totalnavi.p.rapidapi.com",
+        navitime_api_key="key",
+    )
+
+    message = await admin_service._test_provider("navitime", settings, object())  # type: ignore[arg-type]
+
+    assert message == "NAVITIME（RapidAPI）路線驗證成功"
+    assert [item.name for item in observed] == ["東京", "淺草"]
+    assert admin_service._configured("navitime", settings)[2] == "NAVITIME 憑證已設定（RapidAPI）"
+    assert admin_service._configured("navitime", Settings())[2] == (
+        "缺少 API Base URL 或 API key；直接契約另需 Client ID"
+    )

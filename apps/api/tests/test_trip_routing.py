@@ -1,5 +1,6 @@
 import json
 from datetime import UTC, datetime, timedelta
+from decimal import Decimal
 from typing import cast
 from uuid import uuid4
 from zoneinfo import ZoneInfo
@@ -8,10 +9,12 @@ import fakeredis.aioredis
 import httpx
 import pytest
 
-from app.config import Settings
+from app.config import Settings, official_provider_url_ok
+from app.providers.usage_meter import navitime_usage_snapshot
 from app.trips.routing import (
     GoogleRouteProvider,
     GoogleRoutesProbeResult,
+    NavitimeProbeResult,
     NavitimeRouteProvider,
     RoutePoint,
     RouteSegment,
@@ -212,68 +215,239 @@ async def test_google_routes_probe_reports_sanitized_api_error() -> None:
     )
 
 
-@pytest.mark.asyncio
-async def test_navitime_route_preserves_sourced_exit_platform_and_car() -> None:
-    async def handler(_: httpx.Request) -> httpx.Response:
-        return httpx.Response(
-            200,
-            json={
-                "items": [
-                    {
-                        "time": 18,
-                        "distance": 6400,
-                        "nodes": [
-                            {
-                                "departure": {"name": "表參道", "start_platform": "1"},
-                                "arrival": {"name": "澀谷", "gateway": "B3"},
-                                "transport": {
-                                    "name": "東京地下鐵銀座線",
-                                    "destination": {"name": "澀谷"},
-                                    "getoff": "前方第 2 節",
-                                },
-                            }
-                        ],
-                    }
-                ]
+NAVITIME_GINZA_ROUTE = {
+    "items": [
+        {
+            "summary": {
+                "no": "1",
+                "start": {
+                    "type": "point",
+                    "name": "start",
+                    "coord": {"lat": 35.6653, "lon": 139.7126},
+                },
+                "goal": {
+                    "type": "point",
+                    "name": "goal",
+                    "coord": {"lat": 35.6713, "lon": 139.7651},
+                },
+                "move": {
+                    "type": "move",
+                    "from_time": "2026-10-03T08:01:00+09:00",
+                    "to_time": "2026-10-03T08:24:00+09:00",
+                    "time": 23,
+                    "distance": 6400,
+                    "transit_count": 0,
+                    "fare": {"unit_0": 170.0, "unit_48": 165.0},
+                },
             },
+            "sections": [
+                {"type": "point", "name": "start", "coord": {"lat": 35.6653, "lon": 139.7126}},
+                {
+                    "type": "move",
+                    "move": "walk",
+                    "line_name": "徒歩",
+                    "time": 5,
+                    "distance": 400,
+                    "from_time": "2026-10-03T08:01:00+09:00",
+                    "to_time": "2026-10-03T08:06:00+09:00",
+                },
+                {
+                    "type": "point",
+                    "name": "表参道",
+                    "node_id": "00007820",
+                    "node_types": ["station"],
+                    "start_platform": "1",
+                    "gateway": "B1",
+                },
+                {
+                    "type": "move",
+                    "move": "local_train",
+                    "line_name": "東京メトロ銀座線",
+                    "time": 13,
+                    "distance": 5900,
+                    "from_time": "2026-10-03T08:06:00+09:00",
+                    "to_time": "2026-10-03T08:19:00+09:00",
+                    "next_transit": False,
+                    "transport": {
+                        "id": "00000559",
+                        "name": "東京メトロ銀座線",
+                        "color": "#FF9500",
+                        "company": {"id": "00000113", "name": "東京地下鉄（メトロ）"},
+                        "type": "普通",
+                        "fare": {"unit_0": 170.0, "unit_48": 165.0},
+                        "destination": {"name": "浅草", "id": "00005270"},
+                        "getoff": "前方第 2 節",
+                    },
+                },
+                {
+                    "type": "point",
+                    "name": "銀座",
+                    "node_id": "00001908",
+                    "node_types": ["station"],
+                    "gateway": "A3",
+                },
+                {
+                    "type": "move",
+                    "move": "walk",
+                    "line_name": "徒歩",
+                    "time": 5,
+                    "distance": 100,
+                    "from_time": "2026-10-03T08:19:00+09:00",
+                    "to_time": "2026-10-03T08:24:00+09:00",
+                },
+                {"type": "point", "name": "goal", "coord": {"lat": 35.6713, "lon": 139.7651}},
+            ],
+            "shapes": {
+                "type": "FeatureCollection",
+                "features": [
+                    {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "LineString",
+                            "coordinates": [[139.7126, 35.6653], [139.7651, 35.6713]],
+                        },
+                    }
+                ],
+            },
+        }
+    ],
+    "unit": {
+        "datum": "wgs84",
+        "coord_unit": "degree",
+        "distance": "m",
+        "time": "minute",
+        "currency": "JPY",
+    },
+}
+
+
+def rapidapi_navitime(
+    client: httpx.AsyncClient,
+    redis: fakeredis.aioredis.FakeRedis | None = None,
+    **overrides: int,
+) -> NavitimeRouteProvider:
+    return NavitimeRouteProvider(
+        Settings(
+            navitime_api_base_url="https://navitime-route-totalnavi.p.rapidapi.com",
+            navitime_api_key="rapid-key",
+            **overrides,
+        ),
+        client,
+        redis,
+    )
+
+
+@pytest.mark.asyncio
+async def test_navitime_rapidapi_request_and_section_parsing() -> None:
+    seen: dict[str, object] = {}
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        seen["url"] = str(request.url.copy_with(query=None))
+        seen["headers"] = dict(request.headers)
+        seen["params"] = dict(request.url.params)
+        return httpx.Response(200, json=NAVITIME_GINZA_ROUTE)
+
+    departure = (datetime.now(UTC) + timedelta(days=3)).replace(
+        hour=23, minute=30, second=0, microsecond=0
+    )
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    segment = await rapidapi_navitime(client).compute(
+        point("表參道之丘", 35.6653, 139.7126),
+        point("銀座三越", 35.6713, 139.7651),
+        departure,
+        "FEWER_TRANSFERS",
+    )
+    await client.aclose()
+
+    assert seen["url"] == "https://navitime-route-totalnavi.p.rapidapi.com/route_transit"
+    headers = cast(dict[str, str], seen["headers"])
+    assert headers["x-rapidapi-key"] == "rapid-key"
+    assert headers["x-rapidapi-host"] == "navitime-route-totalnavi.p.rapidapi.com"
+    params = cast(dict[str, str], seen["params"])
+    assert params["start"] == "35.665300,139.712600"
+    assert params["goal"] == "35.671300,139.765100"
+    # 23:30 UTC is 08:30 the next day in Japan; NAVITIME wants naive JST.
+    assert params["start_time"] == (departure + timedelta(hours=9)).strftime("%Y-%m-%dT%H:%M:%S")
+    assert params["order"] == "transit"
+    assert params["limit"] == "1"
+    assert params["shape"] == "true"
+    assert "lang" not in params
+
+    assert segment is not None
+    assert segment.provider == "navitime" and segment.attribution == "NAVITIME"
+    assert segment.schedule_mode == "scheduled"
+    assert segment.duration_minutes == 23 and segment.distance_meters == 6400
+    assert segment.fare == Decimal("170") and str(segment.fare) == "170"
+    assert segment.currency == "JPY"
+    assert segment.provider_route_key == "1"
+    assert segment.encoded_polyline
+    assert segment.maps_url and segment.maps_url.startswith("https://www.google.com/maps/dir/?")
+    assert [step.travel_mode for step in segment.steps] == ["WALK", "TRANSIT", "WALK"]
+    walk_in, ride, walk_out = segment.steps
+    assert walk_in.instruction == "步行前往 表参道"
+    assert walk_in.departure_stop is None and walk_in.line_name is None
+    assert walk_in.duration_minutes == 5 and walk_in.distance_meters == 400
+    assert ride.instruction == "搭乘 東京メトロ銀座線（普通）"
+    assert ride.line_name == "東京メトロ銀座線" and ride.line_color == "#FF9500"
+    assert ride.departure_stop == "表参道" and ride.arrival_stop == "銀座"
+    assert ride.headsign == "浅草"
+    assert ride.platform == "1" and ride.exit_name == "A3"
+    assert ride.recommended_car == "前方第 2 節"
+    assert ride.departure_time == datetime(2026, 10, 3, 8, 6, tzinfo=ZoneInfo("Asia/Tokyo"))
+    assert ride.arrival_time == datetime(2026, 10, 3, 8, 19, tzinfo=ZoneInfo("Asia/Tokyo"))
+    assert walk_out.instruction == "步行前往 銀座三越"
+    assert {"steps", "stops", "headsign", "platform", "exit", "recommended_car"} <= set(
+        segment.details_available
+    )
+
+
+@pytest.mark.asyncio
+async def test_navitime_direct_contract_uses_client_id_path_and_language() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        assert str(request.url.copy_with(query=None)) == (
+            "https://api.navitime.biz/cid-1/v1/route_transit"
         )
+        assert request.headers["x-api-key"] == "secret"
+        assert "x-rapidapi-key" not in request.headers
+        assert request.url.params["lang"] == "zh-TW"
+        return httpx.Response(200, json=NAVITIME_GINZA_ROUTE)
 
     client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
     provider = NavitimeRouteProvider(
         Settings(
-            navitime_api_base_url="https://example.test",
-            navitime_client_id="client",
-            navitime_api_key="key",
+            navitime_api_base_url="https://api.navitime.biz/",
+            navitime_client_id="cid-1",
+            navitime_api_key="secret",
         ),
         client,
     )
     segment = await provider.compute(
-        point("表參道", 35.66, 139.71),
-        point("澀谷", 35.65, 139.70),
-        datetime.now(UTC),
-        "FEWER_TRANSFERS",
+        point("表參道", 35.6653, 139.7126),
+        point("銀座", 35.6713, 139.7651),
+        None,
+        "FASTEST",
     )
     await client.aclose()
-    assert segment is not None
-    assert segment.steps[0].platform == "1"
-    assert segment.steps[0].exit_name == "B3"
-    assert segment.steps[0].recommended_car == "前方第 2 節"
-    assert {"platform", "exit", "recommended_car"} <= set(segment.details_available)
+
+    assert segment is not None and segment.schedule_mode == "live"
+    assert segment.steps[1].line_name == "東京メトロ銀座線"
 
 
 @pytest.mark.asyncio
 async def test_navitime_returns_multiple_routes_with_provider_shapes() -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         assert request.url.params["shape"] == "true"
+        assert request.url.params["limit"] == "3"
         return httpx.Response(
             200,
             json={
                 "items": [
                     {
-                        "no": index,
-                        "time": 10 + index,
-                        "distance": 1000 + index,
-                        "nodes": [],
+                        "summary": {
+                            "no": str(index),
+                            "move": {"type": "move", "time": 10 + index, "distance": 1000 + index},
+                        },
+                        "sections": [],
                         "shapes": {
                             "features": [
                                 {
@@ -294,15 +468,7 @@ async def test_navitime_returns_multiple_routes_with_provider_shapes() -> None:
         )
 
     client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
-    provider = NavitimeRouteProvider(
-        Settings(
-            navitime_api_base_url="https://example.test",
-            navitime_client_id="client",
-            navitime_api_key="key",
-        ),
-        client,
-    )
-    options = await provider.compute_options(
+    options = await rapidapi_navitime(client).compute_options(
         point("上野", 35.7, 139.7),
         point("淺草", 35.71, 139.8),
         datetime.now(UTC),
@@ -313,7 +479,75 @@ async def test_navitime_returns_multiple_routes_with_provider_shapes() -> None:
 
     assert len(options) == 3
     assert [option.provider_route_key for option in options] == ["1", "2", "3"]
+    assert [option.route_option_rank for option in options] == [1, 2, 3]
+    assert [option.duration_minutes for option in options] == [11, 12, 13]
     assert all(option.encoded_polyline for option in options)
+    assert all(option.fare is None and option.currency is None for option in options)
+
+
+@pytest.mark.asyncio
+async def test_navitime_reports_gateway_errors_without_inventing_routes() -> None:
+    async def handler(_: httpx.Request) -> httpx.Response:
+        return httpx.Response(403, json={"message": "You are not subscribed to this API."})
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = rapidapi_navitime(client)
+    probe = await provider.probe(point("東京", 35.6812, 139.7671), point("淺草", 35.7148, 139.7967))
+    options = await provider.compute_options(
+        point("東京", 35.6812, 139.7671),
+        point("淺草", 35.7148, 139.7967),
+        None,
+        "FEWER_TRANSFERS",
+    )
+    await client.aclose()
+
+    assert probe == NavitimeProbeResult(
+        False, False, status_code=403, error_code="You are not subscribed to this API."
+    )
+    assert options == []
+
+
+@pytest.mark.asyncio
+async def test_navitime_probe_distinguishes_empty_routes_from_failures() -> None:
+    async def handler(_: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, json={"items": [], "unit": {"currency": "JPY"}})
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    probe = await rapidapi_navitime(client).probe(
+        point("東京", 35.6812, 139.7671), point("淺草", 35.7148, 139.7967)
+    )
+    await client.aclose()
+
+    assert probe == NavitimeProbeResult(True, False, status_code=200)
+    assert await NavitimeRouteProvider(Settings()).probe(
+        point("東京", 35.6812, 139.7671), point("淺草", 35.7148, 139.7967)
+    ) == NavitimeProbeResult(False, False, error_code="NOT_CONFIGURED")
+
+
+@pytest.mark.asyncio
+async def test_navitime_monthly_budget_stops_requests_when_exhausted() -> None:
+    calls = 0
+
+    async def handler(_: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        return httpx.Response(200, json=NAVITIME_GINZA_ROUTE)
+
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = rapidapi_navitime(client, redis, navitime_monthly_request_limit=1)
+    origin, destination = point("東京", 35.6812, 139.7671), point("淺草", 35.7148, 139.7967)
+    first = await provider.compute_options(origin, destination, None, "FEWER_TRANSFERS")
+    second = await provider.compute_options(origin, destination, None, "FEWER_TRANSFERS")
+    probe = await provider.probe(origin, destination)
+    await client.aclose()
+
+    assert len(first) == 1 and second == []
+    assert probe == NavitimeProbeResult(False, False, error_code="MONTHLY_BUDGET_EXHAUSTED")
+    assert calls == 1
+    usage = await navitime_usage_snapshot(redis, monthly_limit=1)
+    assert usage.used == 1 and usage.remaining == 0
+    assert usage.breakdown == {"route_transit": 1}
 
 
 class EmptyProvider:
@@ -473,15 +707,39 @@ async def test_route_cache_rebinds_item_ids() -> None:
 
 def test_japan_transit_requires_navitime_configuration() -> None:
     google_only = Settings(google_maps_api_key="key")
-    with_navitime = Settings(
-        navitime_api_base_url="https://example.test/navitime",
+    rapidapi = Settings(
+        navitime_api_base_url="https://navitime-route-totalnavi.p.rapidapi.com",
+        navitime_api_key="secret",
+    )
+    direct_without_client = Settings(
+        navitime_api_base_url="https://api.navitime.biz",
+        navitime_api_key="secret",
+    )
+    direct = Settings(
+        navitime_api_base_url="https://api.navitime.biz",
         navitime_client_id="client",
         navitime_api_key="secret",
     )
 
     assert route_provider_configured(google_only, "JP", "transit") is False
-    assert route_provider_configured(with_navitime, "JP", "transit") is True
+    assert route_provider_configured(rapidapi, "JP", "transit") is True
+    assert rapidapi.navitime_rapidapi is True
+    assert route_provider_configured(direct_without_client, "JP", "transit") is False
+    assert route_provider_configured(direct, "JP", "transit") is True
+    assert direct.navitime_rapidapi is False
     assert route_provider_configured(google_only, "JP", "walk") is True
+
+
+def test_navitime_base_url_is_pinned_to_official_gateways() -> None:
+    field = "navitime_api_base_url"
+    assert official_provider_url_ok(field, "https://navitime-route-totalnavi.p.rapidapi.com")
+    assert official_provider_url_ok(field, "https://api.navitime.biz")
+    assert official_provider_url_ok(field, "https://api-sdk.navitime.co.jp")
+    assert not official_provider_url_ok(field, "https://other-api.p.rapidapi.com")
+    assert not official_provider_url_ok(field, "https://navitime.co.jp.example.test")
+    assert not official_provider_url_ok(field, "http://navitime-route-totalnavi.p.rapidapi.com")
+    assert official_provider_url_ok("line_api_base_url", "https://api.line.me")
+    assert not official_provider_url_ok("line_api_base_url", "https://evil.api.line.me")
 
 
 @pytest.mark.asyncio

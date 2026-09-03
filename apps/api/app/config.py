@@ -24,6 +24,14 @@ def _is_explicit_https_origin(value: str) -> bool:
     )
 
 
+def _host_allowed(hostname: str, allowed_hosts: set[str]) -> bool:
+    """Match a host exactly, or by suffix for entries written as ``.example.com``."""
+    return any(
+        hostname == allowed or (allowed.startswith(".") and hostname.endswith(allowed))
+        for allowed in allowed_hosts
+    )
+
+
 def _is_official_https_url(
     value: str,
     allowed_hosts: set[str],
@@ -37,7 +45,7 @@ def _is_official_https_url(
         return False
     return bool(
         parsed.scheme == "https"
-        and (parsed.hostname or "").lower() in allowed_hosts
+        and _host_allowed((parsed.hostname or "").lower(), allowed_hosts)
         and parsed.username is None
         and parsed.password is None
         and port in (None, 443)
@@ -58,6 +66,11 @@ OFFICIAL_PROVIDER_HOSTS: dict[str, frozenset[str]] = {
     "google_travel_impact_base_url": frozenset({"travelimpactmodel.googleapis.com"}),
     "travelpayouts_api_base_url": frozenset({"api.travelpayouts.com"}),
     "line_api_base_url": frozenset({"api.line.me"}),
+    # NAVITIME serves the same API 2.0 contract through its RapidAPI listing and, for
+    # direct contracts, gateway hosts under its own domains.
+    "navitime_api_base_url": frozenset(
+        {"navitime-route-totalnavi.p.rapidapi.com", ".navitime.co.jp", ".navitime.biz"}
+    ),
 }
 
 
@@ -250,6 +263,8 @@ class Settings(BaseSettings):
     navitime_api_base_url: str | None = None
     navitime_client_id: str | None = None
     navitime_api_key: str | None = None
+    # Calendar-month cap on outbound NAVITIME requests; 0 counts without blocking.
+    navitime_monthly_request_limit: int = Field(default=450, ge=0, le=10_000_000)
     next_public_site_url: str = "http://localhost:3000"
     airline_crawler_user_agent: str = (
         "TravelScannerBot/0.1 (+https://github.com/x812033727/travel_scanner)"
@@ -380,10 +395,18 @@ class Settings(BaseSettings):
         return self.app_env.lower() in {"production", "prod"}
 
     @property
+    def navitime_rapidapi(self) -> bool:
+        """True when the NAVITIME base URL points at the RapidAPI gateway."""
+        host = (urlparse(self.navitime_api_base_url or "").hostname or "").lower()
+        return host.endswith(".p.rapidapi.com")
+
+    @property
     def navitime_configured(self) -> bool:
-        return bool(
-            self.navitime_api_base_url and self.navitime_client_id and self.navitime_api_key
-        )
+        # RapidAPI authenticates with the key alone; direct contracts also need the
+        # client ID that forms part of the request path.
+        if not (self.navitime_api_base_url and self.navitime_api_key):
+            return False
+        return self.navitime_rapidapi or bool(self.navitime_client_id)
 
     @property
     def naver_maps_configured(self) -> bool:
@@ -449,6 +472,7 @@ class Settings(BaseSettings):
                 self.google_travel_impact_api_key,
                 "google_travel_impact_base_url",
             ),
+            "NAVITIME_API_BASE_URL": (self.navitime_api_key, "navitime_api_base_url"),
             "TRAVELPAYOUTS_API_BASE_URL": (
                 self.travelpayouts_api_token if self.travelpayouts_enabled else None,
                 "travelpayouts_api_base_url",

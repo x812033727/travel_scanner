@@ -457,6 +457,61 @@ describe("AdminSettingsPanel", () => {
     expect(screen.getByLabelText(/^NAVER Cloud Client ID/)).toBeTruthy();
   });
 
+  it("shows the NAVITIME monthly cap and remaining requests", async () => {
+    const navitimeProvider = {
+      provider: "navitime",
+      label: "NAVITIME",
+      description: "日本大眾運輸班次",
+      enabled: true,
+      configured: true,
+      status: "ready",
+      status_message: "NAVITIME 憑證已設定（RapidAPI）",
+      config: { navitime_api_base_url: "https://navitime-route-totalnavi.p.rapidapi.com", navitime_monthly_request_limit: 450 },
+      config_sources: { navitime_api_base_url: "database", navitime_monthly_request_limit: "environment" },
+      secrets: {
+        navitime_client_id: { configured: false, masked: null, source: "none" },
+        navitime_api_key: { configured: true, masked: "••••••••key1", source: "database" },
+      },
+      usage: {
+        period: "2026-09",
+        period_start: "2026-09-01",
+        period_end: "2026-09-30",
+        used: 120,
+        monthly_limit: 450,
+        remaining: 330,
+        percentage: 26.7,
+        free_limit: 450,
+        free_usage: 120,
+        free_remaining: 330,
+        billable_overage: 0,
+        breakdown: { route_transit: 120 },
+        sku_usage: [],
+        monthly_history: [{ period: "2026-09", period_start: "2026-09-01", period_end: "2026-09-30", used: 120, free_limit: 450, free_usage: 120, free_remaining: 330, billable_overage: 0, breakdown: {}, sku_usage: [] }],
+        observed_at: "2026-09-01T10:00:00Z",
+        available: true,
+        scope: "server_requests",
+        billing_timezone: "Asia/Tokyo",
+        pricing_region: "jp",
+      },
+    };
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      ...snapshot,
+      providers: [...snapshot.providers, navitimeProvider],
+    }), { status: 200 })));
+    render(<AdminSettingsPanel />);
+    await screen.findByRole("heading", { name: "Google Maps" });
+    fireEvent.click(screen.getByRole("tab", { name: "NAVITIME" }));
+
+    const usage = await screen.findByLabelText("NAVITIME 本月用量");
+    expect(within(usage).getAllByText("120").length).toBeGreaterThan(0);
+    expect(within(usage).getAllByText("330").length).toBeGreaterThan(0);
+    expect(within(usage).getByRole("progressbar", { name: "NAVITIME 月用量" }).getAttribute("aria-valuenow")).toBe("120");
+    expect(within(usage).getByText(/停止呼叫 NAVITIME/)).toBeTruthy();
+    fireEvent.click(within(usage).getByText("查看站內操作明細"));
+    expect(within(usage).getByText("NAVITIME 路線查詢")).toBeTruthy();
+    expect(screen.getByLabelText(/^站內每月請求上限/)).toBeTruthy();
+  });
+
   it("shows YouTube daily allowance, current usage, and automatic reserve", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
       new Response(JSON.stringify(snapshot), { status: 200 }),
