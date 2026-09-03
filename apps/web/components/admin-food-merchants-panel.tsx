@@ -1,7 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
+import {
+  loadCities,
+  type AdminArea,
+  type AdminCategory,
+  type FoodCity,
+} from "./admin-food-taxonomy-panel";
 
 type MerchantClaim =
   "display_name" | "address" | "official_website" | "coordinates";
@@ -42,10 +49,16 @@ type Merchant = {
   map_match_status: "unverified" | "verified" | "ambiguous" | "disabled";
   review_status: "pending" | "approved" | "rejected" | "disabled";
   is_active: boolean;
+  display_order: number;
+  area: { id: string; slug: string; name: string; destination_id: string } | null;
+  area_source: string | null;
+  categories: { id: string; slug: string; name: string; is_primary: boolean; source: string }[];
   foods: { id: string; slug: string; name: string }[];
   sources: MerchantSource[];
 };
 
+export type MerchantTaxonomyFilter = "missing_area" | "missing_category";
+type DishOption = { id: string; slug: string; local_name: string; country_code: string };
 type MerchantResponse = { items: Merchant[]; total: number };
 type MapCandidateResponse = {
   configured: boolean;
@@ -88,7 +101,84 @@ function emptyDirectSource(): MerchantSource {
   };
 }
 
-export function AdminFoodMerchantsPanel() {
+function withTaxonomyDefaults(merchant: Merchant): Merchant {
+  return {
+    ...merchant,
+    display_order: merchant.display_order ?? 100,
+    area: merchant.area ?? null,
+    area_source: merchant.area_source ?? null,
+    categories: merchant.categories ?? [],
+    foods: merchant.foods ?? [],
+  };
+}
+
+function normalise(response: MerchantResponse): MerchantResponse {
+  return { ...response, items: (response.items ?? []).map(withTaxonomyDefaults) };
+}
+
+function blankMerchant(): Merchant {
+  return {
+    id: "",
+    slug: "",
+    destination_id: "",
+    country_code: "",
+    name: "",
+    local_name: "",
+    address: null,
+    latitude: null,
+    longitude: null,
+    coordinate_source_type: null,
+    coordinate_source_url: null,
+    coordinate_verified_at: null,
+    google_place_id: null,
+    naver_map_url: null,
+    official_website_url: null,
+    official_website_verified_at: null,
+    map_match_status: "unverified",
+    review_status: "pending",
+    is_active: false,
+    display_order: 100,
+    area: null,
+    area_source: null,
+    categories: [],
+    foods: [],
+    sources: [
+      {
+        source_type: "official_tourism",
+        source_scope: "destination_context",
+        source_title: "",
+        source_url: "",
+        claims: [],
+        edition_year: null,
+        distinction: null,
+        is_current: true,
+      },
+    ],
+  };
+}
+
+function orderedCategorySlugs(merchant: Merchant): string[] {
+  const primary = merchant.categories.find((item) => item.is_primary);
+  return [
+    ...(primary ? [primary.slug] : []),
+    ...merchant.categories.filter((item) => !item.is_primary).map((item) => item.slug),
+  ];
+}
+
+export function AdminFoodMerchantsPanel({
+  initialTaxonomy = "",
+}: {
+  initialTaxonomy?: MerchantTaxonomyFilter | "";
+} = {}) {
+  const t = useTranslations("foodAdmin");
+  const [cities, setCities] = useState<FoodCity[]>([]);
+  const [categories, setCategories] = useState<AdminCategory[]>([]);
+  const [filterArea, setFilterArea] = useState("");
+  const [filterCategory, setFilterCategory] = useState("");
+  const [taxonomy, setTaxonomy] = useState<MerchantTaxonomyFilter | "">(initialTaxonomy);
+  const [filterAreas, setFilterAreas] = useState<AdminArea[]>([]);
+  const [editorAreas, setEditorAreas] = useState<AdminArea[]>([]);
+  const [dishOptions, setDishOptions] = useState<DishOption[]>([]);
   const [data, setData] = useState<MerchantResponse | null>(null);
   const [destination, setDestination] = useState("");
   const [mapStatus, setMapStatus] = useState("");
@@ -108,31 +198,81 @@ export function AdminFoodMerchantsPanel() {
     if (destination.trim()) params.set("destination_id", destination.trim());
     if (mapStatus) params.set("map_status", mapStatus);
     if (officialData) params.set("official_data", officialData);
+    if (filterArea) params.set("area_slug", filterArea);
+    if (filterCategory) params.set("category", filterCategory);
+    if (taxonomy) params.set("taxonomy", taxonomy);
     if (query.trim()) params.set("q", query.trim());
     try {
-      setData(await api<MerchantResponse>(`/admin/foods/merchants?${params}`));
+      setData(normalise(await api<MerchantResponse>(`/admin/foods/merchants?${params}`)));
       setSelected(new Set());
       setBatchCandidates([]);
     } catch (reason) {
       setMessage((reason as Error).message);
     }
-  }, [destination, mapStatus, officialData, query]);
+  }, [destination, filterArea, filterCategory, mapStatus, officialData, query, taxonomy]);
 
   useEffect(() => {
     const params = new URLSearchParams({ limit: "100" });
     if (destination.trim()) params.set("destination_id", destination.trim());
     if (mapStatus) params.set("map_status", mapStatus);
     if (officialData) params.set("official_data", officialData);
+    if (filterArea) params.set("area_slug", filterArea);
+    if (filterCategory) params.set("category", filterCategory);
+    if (taxonomy) params.set("taxonomy", taxonomy);
     if (query.trim()) params.set("q", query.trim());
     void api<MerchantResponse>(`/admin/foods/merchants?${params}`)
       .then((response) => {
-        setData(response);
+        setData(normalise(response));
         setSelected(new Set());
         setBatchCandidates([]);
       })
       .catch((reason: Error) => setMessage(reason.message));
-  }, [destination, mapStatus, officialData, query]);
+  }, [destination, filterArea, filterCategory, mapStatus, officialData, query, taxonomy]);
 
+  useEffect(() => {
+    loadCities()
+      .then(setCities)
+      .catch((reason: Error) => setMessage(reason.message));
+    api<{ items: AdminCategory[] }>("/admin/foods/categories")
+      .then((response) => setCategories(response.items ?? []))
+      .catch((reason: Error) => setMessage(reason.message));
+  }, []);
+
+  useEffect(() => {
+    if (!destination) return;
+    api<{ items: AdminArea[] }>(
+      `/admin/foods/areas?destination_id=${encodeURIComponent(destination)}&limit=200`,
+    )
+      .then((response) => setFilterAreas(response.items ?? []))
+      .catch((reason: Error) => setMessage(reason.message));
+  }, [destination]);
+
+  const editingDestination = editing?.destination_id ?? "";
+  const editingCountry = editing?.country_code ?? "";
+
+  useEffect(() => {
+    if (!editingDestination) return;
+    api<{ items: AdminArea[] }>(
+      `/admin/foods/areas?destination_id=${encodeURIComponent(editingDestination)}&status=active&limit=200`,
+    )
+      .then((response) => setEditorAreas(response.items ?? []))
+      .catch((reason: Error) => setMessage(reason.message));
+  }, [editingDestination]);
+
+  useEffect(() => {
+    if (!editingCountry) return;
+    api<{ items: DishOption[] }>(
+      `/admin/foods?country_code=${encodeURIComponent(editingCountry)}&limit=100`,
+    )
+      .then((response) => setDishOptions(response.items ?? []))
+      .catch((reason: Error) => setMessage(reason.message));
+  }, [editingCountry]);
+
+  const scopedFilterAreas = filterAreas.filter((area) => area.destination_id === destination);
+  const scopedEditorAreas = editorAreas.filter(
+    (area) => area.destination_id === editingDestination,
+  );
+  const scopedDishOptions = dishOptions.filter((dish) => dish.country_code === editingCountry);
   const visibleIds = data?.items.map((merchant) => merchant.id) ?? [];
   const allVisibleSelected =
     visibleIds.length > 0 && visibleIds.every((id) => selected.has(id));
@@ -303,9 +443,14 @@ export function AdminFoodMerchantsPanel() {
     if (!editing) return;
     setLoading(true);
     try {
-      await api(`/admin/foods/merchants/${editing.id}`, {
-        method: "PATCH",
+      await api(editing.id ? `/admin/foods/merchants/${editing.id}` : "/admin/foods/merchants", {
+        method: editing.id ? "PATCH" : "POST",
         body: JSON.stringify({
+          ...(editing.id ? {} : { slug: editing.slug }),
+          area_slug: editing.area?.slug ?? null,
+          category_slugs: orderedCategorySlugs(editing),
+          food_ids: editing.foods.map((food) => food.id),
+          display_order: editing.display_order,
           destination_id: editing.destination_id,
           country_code: editing.country_code,
           name: editing.name,
@@ -335,7 +480,7 @@ export function AdminFoodMerchantsPanel() {
           })),
         }),
       });
-      setMessage("已儲存店家地點與來源資料。");
+      setMessage(editing.id ? "已儲存店家地點與來源資料。" : t("merchants.created"));
       setEditing(null);
       setCandidate(null);
       await load();
@@ -353,6 +498,46 @@ export function AdminFoodMerchantsPanel() {
       sources: editing.sources.map((source, sourceIndex) =>
         sourceIndex === index ? { ...source, ...patch } : source,
       ),
+    });
+  }
+
+  function toggleCategory(category: AdminCategory) {
+    if (!editing) return;
+    const exists = editing.categories.some((item) => item.slug === category.slug);
+    const next = exists
+      ? editing.categories.filter((item) => item.slug !== category.slug)
+      : [
+          ...editing.categories,
+          {
+            id: category.id,
+            slug: category.slug,
+            name: category.name,
+            is_primary: false,
+            source: "admin",
+          },
+        ];
+    if (next.length && !next.some((item) => item.is_primary)) {
+      next[0] = { ...next[0], is_primary: true };
+    }
+    setEditing({ ...editing, categories: next });
+  }
+
+  function setPrimaryCategory(slug: string) {
+    if (!editing) return;
+    setEditing({
+      ...editing,
+      categories: editing.categories.map((item) => ({ ...item, is_primary: item.slug === slug })),
+    });
+  }
+
+  function toggleDish(dish: DishOption) {
+    if (!editing) return;
+    const exists = editing.foods.some((food) => food.id === dish.id);
+    setEditing({
+      ...editing,
+      foods: exists
+        ? editing.foods.filter((food) => food.id !== dish.id)
+        : [...editing.foods, { id: dish.id, slug: dish.slug, name: dish.local_name }],
     });
   }
 
@@ -386,13 +571,59 @@ export function AdminFoodMerchantsPanel() {
           placeholder="店名或 slug"
           className="h-11 rounded-xl border px-3"
         />
-        <input
-          aria-label="店家目的地"
+        <select
+          aria-label={t("merchants.destination")}
           value={destination}
-          onChange={(event) => setDestination(event.target.value)}
-          placeholder="目的地 ID"
+          onChange={(event) => {
+            setDestination(event.target.value);
+            setFilterArea("");
+          }}
           className="h-11 rounded-xl border px-3"
-        />
+        >
+          <option value="">{t("merchants.allDestinations")}</option>
+          {cities.map((city) => (
+            <option key={city.id} value={city.id}>
+              {city.name}
+            </option>
+          ))}
+        </select>
+        <select
+          aria-label={t("merchants.area")}
+          value={filterArea}
+          disabled={!destination}
+          onChange={(event) => setFilterArea(event.target.value)}
+          className="h-11 rounded-xl border px-3 disabled:opacity-50"
+        >
+          <option value="">{t("merchants.allAreas")}</option>
+          {scopedFilterAreas.map((area) => (
+            <option key={area.id} value={area.slug}>
+              {area.name}
+            </option>
+          ))}
+        </select>
+        <select
+          aria-label={t("merchants.category")}
+          value={filterCategory}
+          onChange={(event) => setFilterCategory(event.target.value)}
+          className="h-11 rounded-xl border px-3"
+        >
+          <option value="">{t("merchants.allCategories")}</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.slug}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+        <select
+          aria-label={t("merchants.taxonomyFilter")}
+          value={taxonomy}
+          onChange={(event) => setTaxonomy(event.target.value as MerchantTaxonomyFilter | "")}
+          className="h-11 rounded-xl border px-3"
+        >
+          <option value="">{t("merchants.allTaxonomy")}</option>
+          <option value="missing_area">{t("merchants.missingArea")}</option>
+          <option value="missing_category">{t("merchants.missingCategory")}</option>
+        </select>
         <select
           aria-label="地圖比對狀態"
           value={mapStatus}
@@ -415,6 +646,16 @@ export function AdminFoodMerchantsPanel() {
           <option value="filled">官方資料已填</option>
           <option value="missing">官方資料未填</option>
         </select>
+        <button
+          type="button"
+          onClick={() => {
+            setEditing(blankMerchant());
+            setCandidate(null);
+          }}
+          className="h-11 rounded-xl bg-[var(--teal)] px-4 font-semibold text-white"
+        >
+          {t("merchants.add")}
+        </button>
       </div>
       {message && (
         <p
@@ -552,8 +793,12 @@ export function AdminFoodMerchantsPanel() {
                   </td>
                   <td className="p-3">
                     {merchant.destination_id}
+                    {merchant.area ? ` · ${merchant.area.name}` : ""}
                     <span className="block text-xs text-[var(--muted)]">
-                      {merchant.foods.map((food) => food.name).join("、")}
+                      {[
+                        ...merchant.categories.map((category) => category.name),
+                        ...merchant.foods.map((food) => food.name),
+                      ].join("、")}
                     </span>
                   </td>
                   <td className="p-3">
@@ -619,7 +864,7 @@ export function AdminFoodMerchantsPanel() {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <h3 id="merchant-map-title" className="text-2xl font-bold">
-                  {editing.name}
+                  {editing.id ? editing.name : t("merchants.createTitle")}
                 </h3>
                 <p className="text-sm text-[var(--muted)]">
                   {editing.destination_id} · {editing.country_code}
@@ -650,6 +895,89 @@ export function AdminFoodMerchantsPanel() {
                   value={editing.local_name}
                   onChange={(event) =>
                     setEditing({ ...editing, local_name: event.target.value })
+                  }
+                  className="mt-1 h-11 w-full rounded-xl border px-3"
+                />
+              </label>
+              {!editing.id && (
+                <label className="text-sm font-semibold">
+                  {t("merchants.slug")}
+                  <input
+                    aria-label={t("merchants.slug")}
+                    value={editing.slug}
+                    onChange={(event) => setEditing({ ...editing, slug: event.target.value })}
+                    className="mt-1 h-11 w-full rounded-xl border px-3"
+                  />
+                </label>
+              )}
+              <label className="text-sm font-semibold">
+                {t("merchants.destination")}
+                <select
+                  aria-label={t("merchants.destination")}
+                  value={editing.destination_id}
+                  onChange={(event) => {
+                    const city = cities.find((item) => item.id === event.target.value);
+                    const countryChanged = Boolean(city) && city?.country_code !== editing.country_code;
+                    setEditing({
+                      ...editing,
+                      destination_id: event.target.value,
+                      country_code: city?.country_code ?? editing.country_code,
+                      area: null,
+                      foods: countryChanged ? [] : editing.foods,
+                    });
+                  }}
+                  className="mt-1 h-11 w-full rounded-xl border px-3"
+                >
+                  <option value="">—</option>
+                  {cities.map((city) => (
+                    <option key={city.id} value={city.id}>
+                      {city.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="text-sm font-semibold">
+                {t("merchants.area")}
+                <select
+                  aria-label={t("merchants.area")}
+                  value={editing.area?.slug ?? ""}
+                  onChange={(event) => {
+                    const area = scopedEditorAreas.find(
+                      (item) => item.slug === event.target.value,
+                    );
+                    setEditing({
+                      ...editing,
+                      area: area
+                        ? {
+                            id: area.id,
+                            slug: area.slug,
+                            name: area.name,
+                            destination_id: area.destination_id,
+                          }
+                        : null,
+                    });
+                  }}
+                  className="mt-1 h-11 w-full rounded-xl border px-3"
+                >
+                  <option value="">{t("merchants.noArea")}</option>
+                  {scopedEditorAreas.map((area) => (
+                    <option key={area.id} value={area.slug}>
+                      {area.name}
+                    </option>
+                  ))}
+                </select>
+                <span className="mt-1 block text-xs font-normal text-[var(--muted)]">
+                  {t("merchants.areaHelp")}
+                </span>
+              </label>
+              <label className="text-sm font-semibold">
+                {t("merchants.displayOrder")}
+                <input
+                  type="number"
+                  aria-label={t("merchants.displayOrder")}
+                  value={editing.display_order}
+                  onChange={(event) =>
+                    setEditing({ ...editing, display_order: Number(event.target.value) })
                   }
                   className="mt-1 h-11 w-full rounded-xl border px-3"
                 />
@@ -787,6 +1115,65 @@ export function AdminFoodMerchantsPanel() {
                 </button>
               </div>
             )}
+            <fieldset className="mt-5 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4">
+              <legend className="px-1 font-bold">{t("merchants.category")}</legend>
+              <p className="text-xs text-[var(--muted)]">{t("merchants.categoriesHelp")}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {categories
+                  .filter((category) => category.is_active)
+                  .map((category) => {
+                    const link = editing.categories.find((item) => item.slug === category.slug);
+                    return (
+                      <span
+                        key={category.id}
+                        className="inline-flex min-h-10 items-center gap-2 rounded-lg border bg-white px-3 text-xs"
+                      >
+                        <label className="inline-flex items-center gap-1">
+                          <input
+                            type="checkbox"
+                            aria-label={category.name}
+                            checked={Boolean(link)}
+                            onChange={() => toggleCategory(category)}
+                          />
+                          {category.name}
+                        </label>
+                        {link && (
+                          <label className="inline-flex items-center gap-1 text-[var(--muted)]">
+                            <input
+                              type="radio"
+                              name="primary-category"
+                              aria-label={`${t("merchants.primary")} ${category.name}`}
+                              checked={link.is_primary}
+                              onChange={() => setPrimaryCategory(category.slug)}
+                            />
+                            {t("merchants.primary")}
+                          </label>
+                        )}
+                      </span>
+                    );
+                  })}
+              </div>
+            </fieldset>
+            <fieldset className="mt-5 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4">
+              <legend className="px-1 font-bold">{t("merchants.dishes")}</legend>
+              <p className="text-xs text-[var(--muted)]">{t("merchants.dishesHelp")}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {scopedDishOptions.map((dish) => (
+                  <label
+                    key={dish.id}
+                    className="inline-flex min-h-10 items-center gap-2 rounded-lg border bg-white px-3 text-xs"
+                  >
+                    <input
+                      type="checkbox"
+                      aria-label={dish.local_name}
+                      checked={editing.foods.some((food) => food.id === dish.id)}
+                      onChange={() => toggleDish(dish)}
+                    />
+                    {dish.local_name}
+                  </label>
+                ))}
+              </div>
+            </fieldset>
             <section className="mt-5 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>

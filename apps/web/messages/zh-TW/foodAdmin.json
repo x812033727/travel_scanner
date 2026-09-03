@@ -1,7 +1,7 @@
 {
   "eyebrow": "系統管理",
   "title": "各國美食目錄",
-  "description": "管理五語料理內容、可信來源、審核與啟用狀態，以及目的地和核准美食景點關聯；所有異動都會寫入稽核紀錄。",
+  "description": "管理店家目錄（城市 → 區域 → 美食分類）、五語料理內容、可信來源、審核與啟用狀態；所有異動都會寫入稽核紀錄。",
   "search": "搜尋美食",
   "searchPlaceholder": "料理名稱或 slug",
   "country": "國家或地區",
@@ -36,5 +36,9 @@
   "statuses": {"pending": "待審", "approved": "核准", "rejected": "拒絕", "disabled": "停用"},
   "kinds": {"main": "主食", "noodle_soup": "麵飯／湯品", "street_food": "街頭小吃", "dessert": "甜點", "drink": "飲品"},
   "table": {"select": "選取", "food": "料理", "kindMeal": "分類／餐期", "destinationArea": "目的地／美食區", "status": "狀態", "actions": "操作"},
-  "fields": {"slug": "Slug", "countryCode": "國家代碼", "kind": "分類", "localName": "當地名稱", "romanizedName": "羅馬拼音", "displayOrder": "排序", "meals": "餐期（逗號分隔）", "ingredients": "食材標籤（逗號分隔）", "dietaryNotes": "飲食提醒（逗號分隔）", "destinations": "目的地 ID（逗號分隔）", "sources": "來源網址（每行一個）", "hotspots": "美食景點 UUID（逗號分隔）", "name": "名稱"}
+  "fields": {"slug": "Slug", "countryCode": "國家代碼", "kind": "分類", "localName": "當地名稱", "romanizedName": "羅馬拼音", "displayOrder": "排序", "meals": "餐期（逗號分隔）", "ingredients": "食材標籤（逗號分隔）", "dietaryNotes": "飲食提醒（逗號分隔）", "destinations": "目的地 ID（逗號分隔）", "sources": "來源網址（每行一個）", "hotspots": "美食景點 UUID（逗號分隔）", "name": "名稱"},
+  "tabs": {"label": "美食管理分頁", "mobileLabel": "選擇分頁", "merchants": "店家", "taxonomy": "區域與分類", "dishes": "料理"},
+  "merchants": {"add": "新增店家", "createTitle": "新增店家", "created": "店家已新增", "destination": "目的地", "allDestinations": "全部目的地", "area": "區域", "allAreas": "全部區域", "noArea": "未指定區域", "category": "美食分類", "allCategories": "全部分類", "primary": "主要", "categoriesHelp": "至少勾選一個分類；點「主要」設定主要分類。", "dishes": "招牌料理", "dishesHelp": "從同國家的料理目錄勾選，可留空。", "areaHelp": "先選目的地再選區域；區域在「區域與分類」分頁維護。", "slug": "Slug", "displayOrder": "排序", "taxonomyFilter": "資料完整度", "allTaxonomy": "全部店家", "missingArea": "缺少區域", "missingCategory": "缺少分類"},
+  "areas": {"title": "區域（商圈）", "description": "每座城市可瀏覽的區域，名稱需填五種語系；停用的區域不會出現在公開頁。", "add": "新增區域", "createTitle": "新增區域", "editTitle": "編輯區域 {name}", "created": "區域已新增", "updated": "區域已更新", "batchUpdated": "已更新 {count} 個區域", "destination": "所屬城市", "slug": "Slug", "matchTerms": "比對關鍵字（逗號分隔）", "latitude": "緯度（選填）", "longitude": "經度（選填）", "displayOrder": "排序", "activate": "啟用", "deactivate": "停用", "merchantCount": "{count} 間店家", "empty": "沒有符合條件的區域", "select": "選取 {name}", "save": "儲存區域", "status": "狀態", "allStatuses": "全部狀態", "search": "搜尋區域", "searchPlaceholder": "區域名稱或 slug", "table": {"select": "選取", "name": "區域", "destination": "城市", "order": "排序", "merchants": "店家數", "status": "狀態", "actions": "操作"}},
+  "categories": {"title": "美食分類", "description": "全站共用的美食分類，名稱需填五種語系；停用後既有店家連結保留但不公開。", "add": "新增分類", "createTitle": "新增分類", "editTitle": "編輯分類 {name}", "created": "分類已新增", "updated": "分類已更新", "batchUpdated": "已更新 {count} 個分類", "slug": "Slug", "displayOrder": "排序", "activate": "啟用", "deactivate": "停用", "merchantCount": "{count} 間店家", "empty": "沒有分類", "select": "選取 {name}", "save": "儲存分類", "table": {"select": "選取", "name": "分類", "order": "排序", "merchants": "店家數", "status": "狀態", "actions": "操作"}}
 }
