@@ -53,6 +53,42 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 describe("trip editor", () => {
+  it("surfaces fallback warnings and jumps to a day from an unscheduled slot", async () => {
+    const fallbackTrip = {
+      ...trip,
+      start_date: "2026-11-11",
+      end_date: "2026-11-12",
+      items: [
+        trip.items[0],
+        { ...trip.items[0], id: "00000000-0000-4000-8000-000000000011", day_date: "2026-11-12", title: "晴空塔" },
+      ],
+      planning: {
+        status: "fallback" as const,
+        readiness: "partial" as const,
+        provider: "catalog" as const,
+        model: null,
+        generated_at: "2026-11-01T10:00:00Z",
+        scope: "trip" as const,
+        warnings: ["minimax 暫時無法產生有效行程（HTTPStatusError）", "已改用核准地點目錄產生備援草稿"],
+        unscheduled_slots: [{ date: "2026-11-12", slot: "lunch" as const }],
+      },
+    };
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(fallbackTrip))));
+
+    render(<TripEditor tripId={trip.id} />);
+
+    expect(await screen.findByText("AI 暫時無法使用，已套用核准目錄備援行程")).toBeTruthy();
+    const reminders = screen.getByRole("list", { name: "AI 安排提醒" });
+    expect(within(reminders).getByText(/minimax 暫時無法產生有效行程/)).toBeTruthy();
+    expect(within(reminders).getByText(/已改用核准地點目錄產生備援草稿/)).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("button", { name: "11/12 午餐" }));
+    await waitFor(() => {
+      const dayChip = screen.getAllByRole("button", { pressed: true }).find((button) => button.textContent?.includes("11/12"));
+      expect(dayChip).toBeTruthy();
+    });
+  });
+
   it("shows durable catalog coordinates as a confirmed place", async () => {
     const exactCatalogTrip = {
       ...trip,
