@@ -12,8 +12,9 @@ export async function GET(
   }
   const base = process.env.API_INTERNAL_URL || "http://localhost:8000";
   const headers = new Headers({ "X-Travel-Locale": locale });
-  const cookie = request.headers.get("cookie");
-  if (cookie) headers.set("Cookie", cookie);
+  // Only the session token travels upstream, never the browser's whole cookie jar.
+  const token = request.cookies.get("travel_access")?.value;
+  if (token) headers.set("Authorization", `Bearer ${token}`);
   let response: Response;
   try {
     response = await fetch(`${base}/api/v1/hotspots/${hotspotId}/source`, {
@@ -30,7 +31,12 @@ export async function GET(
   if (typeof payload.url !== "string") {
     return NextResponse.json({ code: "unsafe_upstream_redirect" }, { status: 502 });
   }
-  const target = new URL(payload.url);
+  let target: URL;
+  try {
+    target = new URL(payload.url);
+  } catch {
+    return NextResponse.json({ code: "unsafe_upstream_redirect" }, { status: 502 });
+  }
   if (target.protocol !== "https:" || target.username || target.password) {
     return NextResponse.json({ code: "unsafe_upstream_redirect" }, { status: 502 });
   }

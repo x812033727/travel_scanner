@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { api } from "@/lib/api";
+import { safeExternalHref } from "@/lib/navigation";
 
 type Candidate = {
   id: string;
@@ -705,7 +706,7 @@ export function AdminHotspotsPanel() {
                   {item.source_urls.map((url, index) => (
                     <a
                       key={url}
-                      href={url}
+                      href={safeExternalHref(url)}
                       target="_blank"
                       rel="noreferrer"
                       className="mr-2 font-semibold text-[var(--teal)]"

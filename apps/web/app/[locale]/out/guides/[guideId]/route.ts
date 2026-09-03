@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { forwardedClientAddress } from "@/app/api/travel/[...path]/proxy-security";
 
 const locales = new Set(["en", "ja", "ko", "zh-TW", "zh-CN"]);
 
@@ -12,11 +13,13 @@ export async function GET(
   }
   const base = process.env.API_INTERNAL_URL || "http://localhost:8000";
   const headers = new Headers({ "X-Travel-Locale": locale });
-  const userAgent = request.headers.get("user-agent");
-  const cookie = request.headers.get("cookie");
-  const clientAddress = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  // Only the session token travels upstream, never the browser's whole cookie jar; the client
+  // address uses the same right-most-proxy rule as the main API proxy so it cannot be spoofed.
+  const token = request.cookies.get("travel_access")?.value;
+  if (token) headers.set("Authorization", `Bearer ${token}`);
+  const userAgent = request.headers.get("user-agent")?.slice(0, 512);
   if (userAgent) headers.set("User-Agent", userAgent);
-  if (cookie) headers.set("Cookie", cookie);
+  const clientAddress = forwardedClientAddress(request.headers);
   if (clientAddress) headers.set("X-Travel-Client-IP", clientAddress);
   let response: Response;
   try {
@@ -35,7 +38,12 @@ export async function GET(
   if (typeof payload.url !== "string") {
     return NextResponse.json({ code: "unsafe_upstream_redirect" }, { status: 502 });
   }
-  const target = new URL(payload.url);
+  let target: URL;
+  try {
+    target = new URL(payload.url);
+  } catch {
+    return NextResponse.json({ code: "unsafe_upstream_redirect" }, { status: 502 });
+  }
   if (target.protocol !== "https:" || target.username || target.password) {
     return NextResponse.json({ code: "unsafe_upstream_redirect" }, { status: 502 });
   }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { LegacyUiLocalizer } from "@/components/legacy-ui-localizer";
 import { AppBottomNav } from "@/components/app-bottom-nav";
@@ -56,17 +57,21 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-  const [messages, siteVisibility, usageCatalog] = await Promise.all([
+  const [messages, siteVisibility, usageCatalog, requestHeaders] = await Promise.all([
     getMessages(),
     getSiteVisibility(),
     getUsageCatalog(locale),
+    headers(),
   ]);
+  // Set by proxy.ts so the inline theme bootstrap can satisfy the nonce-based CSP.
+  const nonce = requestHeaders.get("x-nonce") ?? undefined;
   return (
     <html lang={locale} data-theme-preference="system" suppressHydrationWarning>
       <body>
         <Script
           id="mokaair-theme-bootstrap"
           strategy="beforeInteractive"
+          nonce={nonce}
           dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP_SCRIPT }}
         />
         <NextIntlClientProvider messages={messages}>

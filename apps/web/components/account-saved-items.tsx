@@ -11,6 +11,7 @@ import { useLocale } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { useSavedItems } from "@/components/saved-items-provider";
 import { api } from "@/lib/api";
+import { safeExternalHref } from "@/lib/navigation";
 
 type SavedType = "hotspot" | "food" | "restaurant";
 type SavedItem = {
@@ -201,7 +202,7 @@ export function AccountSavedItems() {
                 </div>
                 {map && (
                   <a
-                    href={map.url}
+                    href={safeExternalHref(map.url)}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${text.map}：${item.title}`}
