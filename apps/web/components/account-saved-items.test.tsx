@@ -33,6 +33,13 @@ const items = [
       { label: "Google Maps", url: "https://maps.example/restaurant" },
     ],
   },
+  {
+    type: "merchant",
+    id: "merchant-1",
+    title: "Hankook Jib",
+    subtitle: "首爾 · 明洞",
+    map_links: [{ label: "Naver Map", url: "https://map.naver.com/p/entry/place/1" }],
+  },
 ];
 
 describe("AccountSavedItems", () => {
@@ -65,6 +72,19 @@ describe("AccountSavedItems", () => {
         method: "DELETE",
       }),
     );
+    expect(screen.queryByText("香港海洋公園")).toBeNull();
+  });
+
+  it("lists saved merchants under their own tab", async () => {
+    render(
+      <SavedItemsProvider>
+        <AccountSavedItems />
+      </SavedItemsProvider>,
+    );
+    await screen.findByText("Hankook Jib");
+    fireEvent.click(screen.getByRole("tab", { name: /店家/ }));
+    expect(screen.getByText("Hankook Jib")).toBeTruthy();
+    expect(screen.queryByText("港式奶茶")).toBeNull();
     expect(screen.queryByText("香港海洋公園")).toBeNull();
   });
 });

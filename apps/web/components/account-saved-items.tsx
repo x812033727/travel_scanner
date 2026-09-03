@@ -7,13 +7,14 @@ import {
   MapPin,
   Trash2,
 } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { useSavedItems } from "@/components/saved-items-provider";
 import { api } from "@/lib/api";
 import { safeExternalHref } from "@/lib/navigation";
 
-type SavedType = "hotspot" | "food" | "restaurant";
+type SavedType = "hotspot" | "food" | "restaurant" | "merchant";
+type CopyFilter = "all" | "hotspot" | "food" | "restaurant";
 type SavedItem = {
   type: SavedType;
   id: string;
@@ -89,6 +90,9 @@ const copy = {
 export function AccountSavedItems() {
   const locale = useLocale() as keyof typeof copy;
   const text = copy[locale] ?? copy.en;
+  const tAccount = useTranslations("account");
+  const filterLabel = (key: Filter) =>
+    key === "merchant" ? tAccount("savedMerchants") : text.filters[key as CopyFilter];
   const saved = useSavedItems();
   const [items, setItems] = useState<SavedItem[]>([]);
   const [filter, setFilter] = useState<Filter>("all");
@@ -114,6 +118,7 @@ export function AccountSavedItems() {
       hotspot: items.filter((item) => item.type === "hotspot").length,
       food: items.filter((item) => item.type === "food").length,
       restaurant: items.filter((item) => item.type === "restaurant").length,
+      merchant: items.filter((item) => item.type === "merchant").length,
     }),
     [items],
   );
@@ -149,7 +154,7 @@ export function AccountSavedItems() {
         </div>
       </div>
       <div className="app-chip-row mt-5" role="tablist" aria-label={text.title}>
-        {(["all", "hotspot", "food", "restaurant"] as Filter[]).map((key) => (
+        {(["all", "hotspot", "food", "merchant", "restaurant"] as Filter[]).map((key) => (
           <button
             key={key}
             type="button"
@@ -158,7 +163,7 @@ export function AccountSavedItems() {
             onClick={() => setFilter(key)}
             className={`app-filter-chip ${filter === key ? "app-filter-chip-active" : ""}`}
           >
-            <span>{text.filters[key]}</span>
+            <span>{filterLabel(key)}</span>
             <span className="app-filter-count">{counts[key]}</span>
           </button>
         ))}
