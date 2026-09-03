@@ -133,6 +133,9 @@ class SaveTripRequest(BaseModel):
                 raise ValueError("destination_name, start_date and end_date are required")
             if self.end_date < self.start_date:
                 raise ValueError("end_date must not be before start_date")
+            # One day of slack so a client just west of UTC is not rejected.
+            if self.start_date < datetime.now(UTC).date() - timedelta(days=1):
+                raise ValueError("開始日期不可早於今天")
             if (self.end_date - self.start_date).days > 60:
                 raise ValueError("blank trips may be at most 61 days")
         elif self.planning_mode != "ai_draft":
