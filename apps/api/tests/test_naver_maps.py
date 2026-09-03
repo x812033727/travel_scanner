@@ -141,14 +141,14 @@ async def test_naver_place_search_falls_back_to_geocode_and_rejects_http_failure
 @pytest.mark.asyncio
 async def test_naver_directions_parses_drive_path_steps_and_usage() -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
-        assert request.url.params["option"] == "trafast"
+        assert request.url.params["option"] == "traoptimal"
         assert request.url.params["start"] == "126.9770000,37.5796000"
         return httpx.Response(
             200,
             json={
                 "code": 0,
                 "route": {
-                    "trafast": [
+                    "traoptimal": [
                         {
                             "summary": {"duration": 720_000, "distance": 4300},
                             "path": [[126.977, 37.5796], [126.982, 37.582], [126.985, 37.5826]],
@@ -191,6 +191,58 @@ async def test_naver_directions_parses_drive_path_steps_and_usage() -> None:
     await redis.aclose()
 
 
+@pytest.mark.asyncio
+async def test_naver_directions_requests_and_returns_three_drive_options() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        assert request.url.params["option"] == "traoptimal:trafast:tracomfort"
+        return httpx.Response(
+            200,
+            json={
+                "code": 0,
+                "route": {
+                    key: [
+                        {
+                            "summary": {
+                                "duration": (10 + index) * 60_000,
+                                "distance": 3000 + index,
+                            },
+                            "path": [
+                                [126.977, 37.5796],
+                                [126.985 + index / 1000, 37.5826],
+                            ],
+                            "guide": [],
+                        }
+                    ]
+                    for index, key in enumerate(
+                        ("traoptimal", "trafast", "tracomfort"),
+                        start=1,
+                    )
+                },
+            },
+        )
+
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = NaverDirectionsProvider(naver_settings(), client, redis)
+    options = await provider.compute_options(
+        RoutePoint(item_id=uuid4(), name="景福宮", latitude=37.5796, longitude=126.977),
+        RoutePoint(item_id=uuid4(), name="北村韓屋村", latitude=37.5826, longitude=126.985),
+        None,
+        "FASTEST",
+        "drive",
+        max_options=3,
+    )
+    await client.aclose()
+    await redis.aclose()
+
+    assert [option.provider_route_key for option in options] == [
+        "traoptimal",
+        "trafast",
+        "tracomfort",
+    ]
+    assert [option.route_option_rank for option in options] == [1, 2, 3]
+
+
 class RecordingProvider:
     def __init__(self, name: str, result: RouteSegment | None) -> None:
         self.name = name
@@ -210,35 +262,25 @@ class RecordingProvider:
 
 
 @pytest.mark.asyncio
-async def test_korean_route_matrix_uses_naver_only_for_drive_then_google_fallback() -> None:
+async def test_korean_route_matrix_uses_naver_drive_and_external_navigation_for_other_modes(
+) -> None:
     redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
     naver = RecordingProvider("naver", None)
-    google_result = RouteSegment(
-        from_item_id=uuid4(),
-        to_item_id=uuid4(),
-        provider="google",
-        attribution="Google Maps",
-        generated_at=datetime.now(UTC),
-        duration_minutes=20,
-    )
-    google = RecordingProvider("google", google_result)
+    google = RecordingProvider("google", None)
     service = RouteService(redis, Settings(route_cache_ttl_seconds=300), google=google, naver=naver)
     origin = RoutePoint(item_id=uuid4(), name="A", latitude=37.57, longitude=126.97)
     destination = RoutePoint(item_id=uuid4(), name="B", latitude=37.58, longitude=126.98)
 
-    assert (
-        await service.compute(
-            origin, destination, None, "FASTEST", region_code="KR", travel_mode="drive"
-        )
-        is google_result
-    )
+    assert await service.compute(
+        origin, destination, None, "FASTEST", region_code="KR", travel_mode="drive"
+    ) is None
     assert naver.calls == ["drive"]
-    assert google.calls == ["drive"]
+    assert google.calls == []
     await service.compute(
         origin, destination, None, "FASTEST", region_code="KR", travel_mode="transit"
     )
     assert naver.calls == ["drive"]
-    assert google.calls == ["drive", "transit"]
+    assert google.calls == []
     await redis.aclose()
 
 

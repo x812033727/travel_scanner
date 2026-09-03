@@ -1249,6 +1249,8 @@ class TripRouteSegment(Timestamped, Base):
     currency: Mapped[str | None] = mapped_column(String(3), nullable=True)
     encoded_polyline: Mapped[str | None] = mapped_column(Text, nullable=True)
     maps_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+    provider_route_key: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    route_option_rank: Mapped[int | None] = mapped_column(Integer, nullable=True)
     steps: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
     details_available: Mapped[list[str]] = mapped_column(JSON, default=list)
     warnings: Mapped[list[str]] = mapped_column(JSON, default=list)

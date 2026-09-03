@@ -428,15 +428,18 @@ preview-before-apply interactions:
 
 Each day can default to transit, walking, or driving with a 0, 5, 10, 15, or
 30 minute buffer. Individual adjacent segments may override the day default.
-Changing tabs only loads a preview and its downstream schedule impact; the
-trip version and saved times change only after the user applies it. If no
+Changing tabs loads up to three real provider alternatives and their downstream
+schedule impacts; switching cards or map lines remains a preview. The trip
+version and saved times change only after the user applies the selected route. If no
 provider route is available, an explicitly labelled manual duration can be
 saved without inventing distance, fare, or navigation steps. Existing
 `/routes/compute` and `/routes/refresh` callers remain supported.
 
 Google Routes is the global fallback. Set `GOOGLE_MAPS_API_KEY` after enabling
 Places API (New), Routes API, and Weather API for server-side calls, and use an origin-restricted
-`NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY` for the optional embedded planner map.
+`NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY` for the route drawer after enabling Maps
+JavaScript API. Restrict the browser key by HTTP referrer (for example,
+`https://mokaair.com/*`) and keep it separate from the server Routes key.
 Google provider responses are kept in short-lived Redis caches; durable trip
 records retain provider IDs and user-authored fields instead of raw payloads.
 The administrator settings page also shows the current and five previous Google
@@ -448,7 +451,7 @@ SKU. These defaults can be adjusted with `GOOGLE_MAPS_ESSENTIALS_FREE_LIMIT`,
 differs. See the official [pricing categories](https://developers.google.com/maps/billing-and-pricing/pricing-categories)
 and [global SKU price list](https://developers.google.com/maps/billing-and-pricing/pricing).
 Months reset on Pacific Time. The application meter conservatively counts outbound
-requests, including failed requests; browser Embed loads, pre-deployment history, and
+requests, including failed requests; browser Maps JavaScript loads, pre-deployment history, and
 the provider's final billable-event decisions are not included. Google Cloud Console
 remains the billing source of truth. The bundled Redis service enables append-only
 persistence, and new counters are retained for monthly history.

@@ -614,6 +614,7 @@ async def test_public_runtime_capabilities_do_not_claim_unconfigured_navitime(
     assert result.google_routes_enabled is True
     assert result.google_places_enabled is True
     assert result.google_maps_embed_enabled is True
+    assert result.google_maps_javascript_enabled is True
     assert result.navitime_enabled is False
     assert result.naver_maps_enabled is False
     assert result.naver_maps_browser_client_id is None

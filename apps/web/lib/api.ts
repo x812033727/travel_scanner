@@ -5,6 +5,7 @@ export class ApiError extends Error {
     message: string,
     readonly status: number,
     readonly code?: string,
+    readonly requestId?: string,
   ) {
     super(message);
     this.name = "ApiError";
@@ -133,10 +134,14 @@ export async function api<T>(path: string, init?: RequestInit): Promise<T> {
     const code = problem && typeof problem === "object" && typeof (problem as { code?: unknown }).code === "string"
       ? (problem as { code: string }).code
       : undefined;
+    const problemRequestId = problem && typeof problem === "object" && typeof (problem as { request_id?: unknown }).request_id === "string"
+      ? (problem as { request_id: string }).request_id
+      : undefined;
     throw new ApiError(
       apiProblemMessage(problem, response.status),
       response.status,
       code,
+      response.headers?.get?.("x-request-id") || problemRequestId,
     );
   }
   if (response.status === 204) return undefined as T;

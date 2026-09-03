@@ -10,8 +10,11 @@ declare global {
         };
         LatLng: new (latitude: number, longitude: number) => unknown;
         LatLngBounds: new (southWest?: unknown, northEast?: unknown) => unknown;
-        Marker: new (options: Record<string, unknown>) => unknown;
-        Polyline: new (options: Record<string, unknown>) => unknown;
+        Marker: new (options: Record<string, unknown>) => { setMap(map: unknown | null): void };
+        Polyline: new (options: Record<string, unknown>) => { setMap(map: unknown | null): void };
+        Event: {
+          addListener(target: unknown, eventName: string, handler: () => void): void;
+        };
       };
     };
   }

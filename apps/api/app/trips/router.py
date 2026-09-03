@@ -378,6 +378,8 @@ class RoutePreviewRequest(BaseModel):
     travel_mode: TravelMode
     buffer_minutes: int = Field(default=DEFAULT_BUFFER_MINUTES, ge=0, le=180)
     route_preference: str | None = None
+    include_alternatives: bool = False
+    max_options: int = Field(default=3, ge=1, le=3)
 
     @model_validator(mode="after")
     def validate_preference(self) -> "RoutePreviewRequest":
@@ -2997,16 +2999,18 @@ async def preview_trip_route(
     )
     preference = payload.route_preference or setting.route_preference
     settings = await load_runtime_settings(session)
-    segment = await RouteService(get_redis(), settings).compute(
+    region = trip_region_code(trip.timezone, trip.destination_name, trip.data)
+    option_limit = payload.max_options if payload.include_alternatives else 1
+    segments = await RouteService(get_redis(), settings).compute_options(
         origin,
         destination,
         first.end_time or first.start_time,
         preference,
-        region_code=trip_region_code(trip.timezone, trip.destination_name, trip.data),
+        region_code=region,
         travel_mode=payload.travel_mode,
+        max_options=option_limit,
     )
-    if segment is None:
-        region = trip_region_code(trip.timezone, trip.destination_name, trip.data)
+    if not segments:
         if region == "KR":
             reason = (
                 "NAVER 官方 Directions API 不提供可保存的大眾運輸班次；請到 NAVER Maps 查看。"
@@ -3028,6 +3032,9 @@ async def preview_trip_route(
                 "expires_at": None,
                 "segment": None,
                 "schedule_impact": None,
+                "options": [],
+                "origin": origin.model_dump(mode="json"),
+                "destination": destination.model_dump(mode="json"),
                 "external_navigation": external.model_dump(mode="json"),
             }
         if not route_provider_configured(settings, region, payload.travel_mode):
@@ -3055,50 +3062,71 @@ async def preview_trip_route(
             "expires_at": None,
             "segment": None,
             "schedule_impact": None,
+            "options": [],
+            "origin": origin.model_dump(mode="json"),
+            "destination": destination.model_dump(mode="json"),
             "external_navigation": external.model_dump(mode="json"),
         }
     expires_at = datetime.now(UTC) + timedelta(seconds=ROUTE_PREVIEW_TTL_SECONDS)
-    segment = segment.model_copy(
-        update={
-            "buffer_minutes": payload.buffer_minutes,
-            "expires_at": expires_at,
-            "is_override": payload.travel_mode != setting.default_travel_mode,
-        }
-    )
     day_rows = active_route_rows(rows, first.day_date)
     persisted = [
         segment_from_record(record)
         for record in await load_route_segments(session, trip.id, day_date=first.day_date)
         if (record.from_item_id, record.to_item_id) != (first.id, second.id)
     ]
-    projection = project_day_schedule(day_rows, [*persisted, segment])
-    projected = next(
-        item
-        for item in projection.segments
-        if item.from_item_id == first.id and item.to_item_id == second.id
-    )
-    preview_id = uuid4()
-    preview_payload = {
-        "user_id": str(user.id),
-        "trip_id": str(trip.id),
-        "version": trip.version,
-        "day_date": cast(date, first.day_date).isoformat(),
-        "segment": projected.model_dump(mode="json"),
-        "impact": projection.impact.model_dump(mode="json"),
-        "expires_at": expires_at.isoformat(),
-    }
-    await get_redis().set(
-        _preview_key(user.id, trip.id, preview_id),
-        json.dumps(preview_payload, ensure_ascii=False),
-        ex=ROUTE_PREVIEW_TTL_SECONDS,
-    )
+    redis = get_redis()
+    options: list[dict[str, Any]] = []
+    for index, raw_segment in enumerate(segments[:option_limit]):
+        ranked_segment = raw_segment.model_copy(
+            update={
+                "buffer_minutes": payload.buffer_minutes,
+                "expires_at": expires_at,
+                "is_override": payload.travel_mode != setting.default_travel_mode,
+                "route_option_rank": index + 1,
+            }
+        )
+        projection = project_day_schedule(day_rows, [*persisted, ranked_segment])
+        projected = next(
+            item
+            for item in projection.segments
+            if item.from_item_id == first.id and item.to_item_id == second.id
+        )
+        preview_id = uuid4()
+        preview_payload = {
+            "user_id": str(user.id),
+            "trip_id": str(trip.id),
+            "version": trip.version,
+            "day_date": cast(date, first.day_date).isoformat(),
+            "segment": projected.model_dump(mode="json"),
+            "impact": projection.impact.model_dump(mode="json"),
+            "expires_at": expires_at.isoformat(),
+        }
+        await redis.set(
+            _preview_key(user.id, trip.id, preview_id),
+            json.dumps(preview_payload, ensure_ascii=False),
+            ex=ROUTE_PREVIEW_TTL_SECONDS,
+        )
+        options.append(
+            {
+                "preview_id": str(preview_id),
+                "provider_route_key": projected.provider_route_key,
+                "rank": index + 1,
+                "expires_at": expires_at,
+                "segment": projected.model_dump(mode="json"),
+                "schedule_impact": projection.impact.model_dump(mode="json"),
+            }
+        )
+    recommended = options[0]
     await session.rollback()
     return {
         "kind": "provider",
-        "preview_id": str(preview_id),
-        "expires_at": expires_at,
-        "segment": projected.model_dump(mode="json"),
-        "schedule_impact": projection.impact.model_dump(mode="json"),
+        "preview_id": recommended["preview_id"],
+        "expires_at": recommended["expires_at"],
+        "segment": recommended["segment"],
+        "schedule_impact": recommended["schedule_impact"],
+        "options": options,
+        "origin": origin.model_dump(mode="json"),
+        "destination": destination.model_dump(mode="json"),
     }
 
 

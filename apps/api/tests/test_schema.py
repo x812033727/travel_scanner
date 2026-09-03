@@ -2,7 +2,7 @@ from app.schema import expected_schema_revision, schema_is_current
 
 
 def test_expected_schema_revision_is_current_head() -> None:
-    assert expected_schema_revision() == "0033_social_login"
+    assert expected_schema_revision() == "0034_route_alternatives"
     assert len(expected_schema_revision()) <= 32
     assert schema_is_current("0032_remove_plus_codes") is False
     assert schema_is_current("0031_trip_item_coordinates") is False

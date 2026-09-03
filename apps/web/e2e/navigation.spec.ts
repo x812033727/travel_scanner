@@ -294,6 +294,20 @@ test("route drawer previews a car route before applying and keeps it after reloa
     arrival_time: "2026-11-11T01:12:00Z", ready_time: "2026-11-11T01:22:00Z", distance_meters: 6100,
     warnings: ["汽車時間不包含停車或叫車等待時間"],
   };
+  const carOptions = [12, 14, 17].map((duration, index) => ({
+    preview_id: `route-preview-${index + 1}`,
+    provider_route_key: `drive-${index + 1}`,
+    rank: index + 1,
+    expires_at: "2026-09-01T01:15:00Z",
+    segment: {
+      ...carSegment,
+      duration_minutes: duration,
+      route_option_rank: index + 1,
+      provider_route_key: `drive-${index + 1}`,
+      encoded_polyline: `_p~iF~ps|U_ulLnnqC_mqNvxq\`${index}`,
+    },
+    schedule_impact: { affected_items: [{ item_id: "route-stop-2", title: "晴空塔", old_start_time: "2026-11-11T01:34:00Z", new_start_time: `2026-11-11T01:${22 + index * 2}:00Z`, delta_minutes: -12 + index * 2 }], conflicts: [] },
+  }));
   const routeItems = [
     { id: "route-stop-1", item_type: "custom", day_date: "2026-11-11", position: 0, title: "淺草寺", location_name: "淺草", latitude: 35.71, longitude: 139.79, provider_place_id: "asakusa", locked: false, fixed_time: false, is_estimated: false, start_time: "2026-11-11T00:00:00Z", duration_minutes: 60, data: {} },
     { id: "route-stop-2", item_type: "custom", day_date: "2026-11-11", position: 1, title: "晴空塔", location_name: "押上", latitude: 35.71, longitude: 139.81, provider_place_id: "skytree", locked: false, fixed_time: false, is_estimated: false, start_time: "2026-11-11T01:34:00Z", duration_minutes: 60, data: {} },
@@ -313,14 +327,15 @@ test("route drawer previews a car route before applying and keeps it after reloa
     if (url.endsWith("/routes/preview")) {
       previewBody = route.request().postDataJSON();
       await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({
-        preview_id: "route-preview-1", expires_at: "2026-09-01T01:15:00Z", segment: carSegment,
-        schedule_impact: { affected_items: [{ item_id: "route-stop-2", title: "晴空塔", old_start_time: "2026-11-11T01:34:00Z", new_start_time: "2026-11-11T01:22:00Z", delta_minutes: -12 }], conflicts: [] },
+        kind: "provider",
+        ...carOptions[0],
+        options: carOptions,
       }) });
       return;
     }
     if (url.endsWith("/routes/apply")) {
       applyBody = route.request().postDataJSON();
-      currentTrip = { ...currentTrip, version: 3, items: [routeItems[0], { ...routeItems[1], start_time: "2026-11-11T01:22:00Z" }], route_segments: [carSegment] };
+      currentTrip = { ...currentTrip, version: 3, items: [routeItems[0], { ...routeItems[1], start_time: "2026-11-11T01:24:00Z" }], route_segments: [carOptions[1].segment] };
       await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(currentTrip) });
       return;
     }
@@ -332,12 +347,15 @@ test("route drawer previews a car route before applying and keeps it after reloa
   const routeDialog = page.getByRole("dialog", { name: "這段路怎麼走" });
   await expect(routeDialog).toBeVisible();
   await routeDialog.getByRole("tab", { name: "汽車" }).click();
-  await expect(routeDialog.locator(".route-apply-bar strong")).toHaveText("汽車 · 12 分鐘");
-  expect(previewBody).toMatchObject({ version: 2, travel_mode: "drive", buffer_minutes: 10 });
+  await expect(routeDialog.getByRole("option", { name: /方案 3/ })).toBeVisible();
+  await routeDialog.getByRole("option", { name: /方案 2/ }).click();
+  await expect(routeDialog.locator(".route-apply-bar strong")).toHaveText("汽車 · 方案 2 · 14 分鐘");
+  expect(previewBody).toMatchObject({ version: 2, travel_mode: "drive", buffer_minutes: 10, include_alternatives: true, max_options: 3 });
+  expect(currentTrip.version).toBe(2);
   await expect(routeDialog.getByText("晴空塔").first()).toBeVisible();
   await routeDialog.getByRole("button", { name: "套用此路線" }).click();
   await expect(page.getByText("已套用交通方式，後續可調整的開始時間已重新計算。")).toBeVisible();
-  expect(applyBody).toMatchObject({ version: 2, source: "provider", preview_id: "route-preview-1" });
+  expect(applyBody).toMatchObject({ version: 2, source: "provider", preview_id: "route-preview-2" });
   await routeDialog.getByRole("button", { name: "關閉" }).click();
   await expect(page.getByRole("button", { name: "查看前往 晴空塔 的路線" })).toContainText("汽車");
   await page.reload();

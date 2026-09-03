@@ -8,6 +8,7 @@ import {
   safeRedirectLocation,
   validateProxyPath,
 } from "./proxy-security";
+import { preserveRequestId } from "./request-id";
 
 type Context = { params: Promise<{ path: string[] }> };
 const MAX_REQUEST_BYTES = Number(process.env.API_PROXY_MAX_BODY_BYTES || 5 * 1024 * 1024);
@@ -77,6 +78,10 @@ async function proxy(request: NextRequest, context: Context) {
     const value = request.headers.get(name);
     if (value) headers.set(name, value);
   }
+  const requestId = request.headers.get("x-request-id");
+  if (requestId && /^[A-Za-z0-9._:-]{1,128}$/.test(requestId)) {
+    headers.set("X-Request-ID", requestId);
+  }
   const sourceAddress = forwardedClientAddress(request.headers);
   if (sourceAddress) headers.set("X-Travel-Client-IP", sourceAddress);
   const userAgent = request.headers.get("user-agent")?.slice(0, 512);
@@ -124,15 +129,15 @@ async function proxy(request: NextRequest, context: Context) {
     clearTimeout(timeout);
     const location = safeRedirectLocation(redirectLocation, request.nextUrl.origin);
     if (!location) return problem(502, "unsafe_upstream_redirect", "API 回傳了不安全的轉址");
-    return new Response(null, {
+    return preserveRequestId(new Response(null, {
       status: upstream.status,
       headers: { Location: location, "Cache-Control": "no-store" },
-    });
+    }), upstream);
   }
   if (upstream.headers.get("content-type")?.includes("text/event-stream")) {
     // Server-sent events stay open by design, so the upstream deadline only covered the headers.
     clearTimeout(timeout);
-    return new Response(upstream.body, { status: upstream.status, headers: { "Content-Type": "text/event-stream", "Cache-Control": "no-cache", "X-Accel-Buffering": "no" } });
+    return preserveRequestId(new Response(upstream.body, { status: upstream.status, headers: { "Content-Type": "text/event-stream", "Cache-Control": "no-cache", "X-Accel-Buffering": "no" } }), upstream);
   }
   let text: string;
   try {
@@ -162,7 +167,7 @@ async function proxy(request: NextRequest, context: Context) {
     if (typeof preferredLocale === "string" && SUPPORTED_LOCALES.has(preferredLocale)) {
       response.cookies.set("travel_locale", preferredLocale, { sameSite: "lax", path: "/", maxAge: 31_536_000 });
     }
-    return response;
+    return preserveRequestId(response, upstream);
   }
   const response = upstream.status === 204
     ? new NextResponse(null, { status: 204 })
@@ -173,7 +178,7 @@ async function proxy(request: NextRequest, context: Context) {
   if (endpoint === "auth/logout" || (endpoint === "auth/me" && upstream.status === 401)) {
     response.cookies.delete("travel_access");
   }
-  return response;
+  return preserveRequestId(response, upstream);
 }
 
 export const GET = proxy;
