@@ -53,6 +53,19 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 describe("trip editor", () => {
+  it("does not load or show affiliate partner options in the trip planner", async () => {
+    const fetchMock = vi.fn().mockImplementation(() => Promise.resolve(response(trip)));
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<TripEditor tripId={trip.id} />);
+
+    expect((await screen.findAllByText("東京五日")).length).toBeGreaterThan(0);
+    expect(screen.queryByText("這趟旅程的合作平台")).toBeNull();
+    expect(
+      fetchMock.mock.calls.some(([input]) => String(input).includes("/affiliates/options")),
+    ).toBe(false);
+  });
+
   it("surfaces fallback warnings and jumps to a day from an unscheduled slot", async () => {
     const fallbackTrip = {
       ...trip,
