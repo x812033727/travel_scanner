@@ -36,3 +36,29 @@ describe("LINE webhook proxy", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 });
+
+describe("LINE webhook body limit", () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  it("rejects an oversized chunked body before forwarding", async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        for (let index = 0; index < 5; index += 1) {
+          controller.enqueue(new Uint8Array(512 * 1024));
+        }
+        controller.close();
+      },
+    });
+    const request = new NextRequest("https://mokaair.com/api/line/webhook", {
+      method: "POST",
+      headers: { "X-Line-Signature": "signed-value" },
+      body: stream,
+      duplex: "half",
+    } as unknown as ConstructorParameters<typeof NextRequest>[1]);
+    const response = await POST(request);
+    expect(response.status).toBe(413);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+});

@@ -1,14 +1,18 @@
 import argparse
 import asyncio
+import getpass
 import json
 import sys
 from datetime import UTC, datetime, timedelta
 from io import TextIOWrapper
 from uuid import UUID
 
+from pydantic import ValidationError
 from sqlalchemy import select
 
 from app.admin.service import load_runtime_settings
+from app.auth.schemas import RegisterRequest
+from app.auth.service import hash_password
 from app.config import get_settings
 from app.crawlers.airlines import AirlineFareCrawlerService
 from app.crawlers.schemas import AirlineFareSearch
@@ -21,7 +25,7 @@ from app.places.naver import NaverPlaceService
 from app.providers.registry import build_provider, provider_status
 from app.search.schemas import SearchCreate
 from app.trips.routing import NaverDirectionsProvider, RoutePoint
-from app.usage.service import PACKAGE_DEFAULTS, grant_package
+from app.usage.service import PACKAGE_DEFAULTS, create_usage_account, grant_package
 
 
 async def add_usage_package(email: str, package_code: str, reference: str) -> None:
@@ -57,6 +61,52 @@ async def set_admin(email: str, enabled: bool) -> None:
         await session.commit()
         state = "administrator" if enabled else "regular user"
         print(f"Updated {normalized_email} to {state}")
+
+
+def _read_password(from_stdin: bool) -> str:
+    if from_stdin:
+        return sys.stdin.readline().rstrip("\r\n")
+    first = getpass.getpass("Administrator password: ")
+    second = getpass.getpass("Confirm password: ")
+    if first != second:
+        raise SystemExit("Passwords do not match")
+    return first
+
+
+async def create_admin(email: str, password: str) -> None:
+    """Create an administrator without going through public self-registration."""
+    try:
+        payload = RegisterRequest(email=email, password=password)
+    except ValidationError as exc:
+        raise SystemExit(f"Invalid administrator account: {exc.errors()[0]['msg']}") from exc
+    normalized_email = str(payload.email).lower()
+    async with SessionFactory() as session:
+        existing = await session.scalar(select(User).where(User.email == normalized_email))
+        if existing is not None:
+            raise SystemExit("User already exists; use set-admin to grant administrator access")
+        user = User(
+            email=normalized_email,
+            password_hash=hash_password(payload.password),
+            preferred_locale=payload.preferred_locale,
+            is_admin=True,
+        )
+        session.add(user)
+        await session.flush()
+        await create_usage_account(session, user)
+        session.add(
+            AdminAuditLog(
+                actor_user_id=None,
+                action="admin_role.updated",
+                target=f"user:{user.id}",
+                metadata_json={
+                    "email": normalized_email,
+                    "is_admin": True,
+                    "source": "cli-create-admin",
+                },
+            )
+        )
+        await session.commit()
+        print(f"Created administrator {normalized_email}")
 
 
 async def verify_airline_crawlers(origin: str, destination: str) -> bool:
@@ -187,6 +237,13 @@ def main() -> None:
         action="store_true",
         help="Remove database administrator access instead of granting it",
     )
+    create = subparsers.add_parser("create-admin")
+    create.add_argument("--email", required=True)
+    create.add_argument(
+        "--password-stdin",
+        action="store_true",
+        help="Read the password from the first line of standard input instead of prompting",
+    )
     verify = subparsers.add_parser("verify-airline-crawlers")
     verify.add_argument("--origin", default="TPE")
     verify.add_argument("--destination", default="NRT")
@@ -203,6 +260,8 @@ def main() -> None:
         asyncio.run(add_usage_package(args.email, args.package, args.reference))
     elif args.command == "set-admin":
         asyncio.run(set_admin(args.email, not args.revoke))
+    elif args.command == "create-admin":
+        asyncio.run(create_admin(args.email, _read_password(args.password_stdin)))
     elif args.command == "verify-airline-crawlers":
         passed = asyncio.run(verify_airline_crawlers(args.origin, args.destination))
         if args.strict and not passed:

@@ -15,6 +15,7 @@ import {
 import { useTranslations } from "next-intl";
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { api } from "@/lib/api";
+import { safeExternalHref } from "@/lib/navigation";
 
 const locales = ["en", "ja", "ko", "zh-TW", "zh-CN"] as const;
 const providers = ["minimax", "openai", "anthropic"] as const;
@@ -562,7 +563,7 @@ export function AdminHotspotGuidesPanel() {
                 )}
               </div>
               <a
-                href={item.url}
+                href={safeExternalHref(item.url)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="grid h-11 w-11 place-items-center rounded-xl border text-[var(--teal)]"

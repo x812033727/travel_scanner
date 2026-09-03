@@ -4,7 +4,7 @@ import { CheckCircle2, LoaderCircle } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { useState } from "react";
 import { ApiError, api } from "@/lib/api";
-import { loginPath } from "@/lib/navigation";
+import { loginPath, safeExternalHref } from "@/lib/navigation";
 
 export function LineLinkPanel({ linkToken }: { linkToken?: string }) {
   const [loading, setLoading] = useState(false);
@@ -19,7 +19,10 @@ export function LineLinkPanel({ linkToken }: { linkToken?: string }) {
         method: "POST",
         body: JSON.stringify({ link_token: linkToken }),
       });
-      window.location.assign(result.redirect_url);
+      // location.assign() is not protected by React, so the API-supplied URL is scheme-checked.
+      const redirectUrl = safeExternalHref(result.redirect_url);
+      if (!redirectUrl) throw new Error("LINE 連結網址無效");
+      window.location.assign(redirectUrl);
     } catch (reason) {
       if (reason instanceof ApiError && reason.status === 401) return;
       setError((reason as Error).message);

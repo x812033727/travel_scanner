@@ -46,7 +46,6 @@ async def test_deployment_requires_allowlist_reauth_confirmation_and_is_idempote
         settings.deploy_agent_hmac_key,
     )
     settings.deployments_enabled = True
-    settings.deploy_admin_emails = email
     settings.deploy_agent_hmac_key = "x" * 32
     overview_mock = AsyncMock(
         return_value=AgentOverview(
@@ -74,6 +73,9 @@ async def test_deployment_requires_allowlist_reauth_confirmation_and_is_idempote
                 json={"email": email, "password": password},
             )
             assert registration.status_code == 201
+            # Allowlisted addresses can no longer self-register, so the allowlist is applied
+            # only after the account exists (the documented bootstrap order).
+            settings.deploy_admin_emails = email
             user_id = UUID(registration.json()["user"]["id"])
             headers = {"Authorization": f"Bearer {registration.json()['access_token']}"}
             async with SessionFactory() as session:

@@ -1,8 +1,12 @@
 import hashlib
 import hmac
+import io
+import json
 import sqlite3
 import time
+from http import HTTPStatus
 from pathlib import Path
+from typing import cast
 from uuid import uuid4
 
 import pytest
@@ -13,6 +17,7 @@ from app.models import User
 from deployment_agent.config import AgentConfig
 from deployment_agent.executor import CommandError, DeploymentExecutor
 from deployment_agent.security import sanitize, verify_request
+from deployment_agent.server import AgentApplication, make_handler
 from deployment_agent.store import AgentStore
 
 
@@ -244,3 +249,83 @@ def test_compose_environment_does_not_inherit_agent_github_token(
     )._runtime_environment()
     assert environment["DATABASE_URL"].startswith("postgresql+asyncpg://")
     assert "DEPLOY_AGENT_GITHUB_TOKEN" not in environment
+
+
+def test_agent_rejects_malformed_signatures_and_stale_timestamps(tmp_path: Path) -> None:
+    store = AgentStore(tmp_path / "state.sqlite3")
+    key = "hmac-key-with-at-least-thirty-two-characters"
+    body = b"{}"
+
+    def sign(timestamp: str, nonce: str) -> str:
+        digest = hashlib.sha256(body).hexdigest()
+        message = f"{timestamp}\n{nonce}\nGET\n/v1/overview\n{digest}".encode()
+        return hmac.new(key.encode(), message, hashlib.sha256).hexdigest()
+
+    now = str(int(time.time()))
+    # A non-hex (even non-ASCII) signature must be refused instead of raising TypeError.
+    assert not verify_request(store, key, "GET", "/v1/overview", body, now, "a" * 32, "é" * 64)
+    assert not verify_request(store, key, "GET", "/v1/overview", body, now, "a" * 32, "abc")
+    stale = str(int(time.time()) - 120)
+    assert not verify_request(
+        store, key, "GET", "/v1/overview", body, stale, "b" * 32, sign(stale, "b" * 32)
+    )
+    assert not verify_request(
+        store, key, "GET", "/v1/overview", body, "not-a-number", "c" * 32, sign(now, "c" * 32)
+    )
+    assert verify_request(
+        store, key, "GET", "/v1/overview", body, now, "d" * 32, sign(now, "d" * 32)
+    )
+
+
+class RecordingApplication:
+    def __init__(self) -> None:
+        self.calls: list[tuple[str, str, bytes]] = []
+
+    def handle(
+        self, method: str, path: str, body: bytes, headers: object
+    ) -> tuple[int, dict[str, object]]:
+        self.calls.append((method, path, body))
+        return HTTPStatus.OK, {"ok": True}
+
+
+def invoke_agent_handler(
+    application: RecordingApplication, raw_request: bytes
+) -> tuple[int, dict[str, object]]:
+    handler_cls = make_handler(cast(AgentApplication, application))
+    handler = handler_cls.__new__(handler_cls)
+    handler.rfile = io.BytesIO(raw_request)  # type: ignore[assignment]
+    handler.wfile = io.BytesIO()  # type: ignore[assignment]
+    handler.client_address = ("unix", 0)
+    handler.handle_one_request()
+    raw = handler.wfile.getvalue()
+    status_line, _, rest = raw.partition(b"\r\n")
+    payload = json.loads(rest.split(b"\r\n\r\n", 1)[1])
+    return int(status_line.split()[1]), payload
+
+
+def test_agent_handler_bounds_the_request_body_before_authentication() -> None:
+    application = RecordingApplication()
+    negative = invoke_agent_handler(
+        application, b"POST /v1/preflight HTTP/1.1\r\nContent-Length: -1\r\n\r\n"
+    )
+    garbage = invoke_agent_handler(
+        application, b"POST /v1/preflight HTTP/1.1\r\nContent-Length: abc\r\n\r\n"
+    )
+    oversized = invoke_agent_handler(
+        application, b"POST /v1/preflight HTTP/1.1\r\nContent-Length: 70000\r\n\r\n"
+    )
+    assert negative == (
+        400,
+        {"code": "invalid_content_length", "detail": "invalid Content-Length header"},
+    )
+    assert garbage[0] == 400
+    assert oversized[0] == 413
+    assert oversized[1]["code"] == "request_too_large"
+    assert application.calls == []
+
+    accepted = invoke_agent_handler(
+        application, b"POST /v1/preflight HTTP/1.1\r\nContent-Length: 2\r\n\r\n{}"
+    )
+    assert accepted == (200, {"ok": True})
+    assert application.calls == [("POST", "/v1/preflight", b"{}")]
+    assert make_handler(cast(AgentApplication, application)).timeout == 15

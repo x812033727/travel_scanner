@@ -4,8 +4,11 @@ COPY package.json package-lock.json ./
 COPY apps/web/package.json apps/web/package.json
 RUN npm ci
 COPY apps/web apps/web
-ARG NEXT_PUBLIC_SITE_URL=http://localhost:3000
+# The site URL is baked into the bundle and doubles as an allowed mutation origin, so a build must
+# name it explicitly instead of silently inheriting a localhost default.
+ARG NEXT_PUBLIC_SITE_URL
 ARG NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY=
+RUN test -n "$NEXT_PUBLIC_SITE_URL" || (echo "NEXT_PUBLIC_SITE_URL build argument is required" >&2 && exit 1)
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY=$NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY NEXT_TELEMETRY_DISABLED=1
 RUN npm run build:web
 

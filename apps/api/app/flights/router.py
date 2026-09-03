@@ -1,3 +1,4 @@
+import logging
 from datetime import UTC, datetime, timedelta
 from typing import Annotated, Any
 from uuid import UUID, uuid4
@@ -23,6 +24,8 @@ from app.usage.service import (
 
 router = APIRouter(prefix="/flights", tags=["flight-status"])
 Session = Annotated[AsyncSession, Depends(get_session)]
+logger = logging.getLogger(__name__)
+FLIGHTAWARE_UNAVAILABLE_DETAIL = "FlightAware 航班資料目前無法取得，請稍後再試"
 
 
 def _response(row: FlightStatusLookup, reservation: UsageReservation | None) -> dict[str, Any]:
@@ -77,7 +80,8 @@ async def create_status_lookup(
     except ConnectionError as exc:
         await release_reservation(session, reservation, "provider_failure")
         await session.commit()
-        raise AppError(503, "flightaware_unavailable", str(exc)) from exc
+        logger.warning("FlightAware lookup failed: %s", exc)
+        raise AppError(503, "flightaware_unavailable", FLIGHTAWARE_UNAVAILABLE_DETAIL) from exc
     normalized = [{**item, "item_id": str(uuid4())} for item in items]
     row = FlightStatusLookup(
         user_id=user.id,
@@ -146,5 +150,6 @@ async def get_flight_track(
     try:
         track, cache_hit = await FlightAwareProvider(get_redis(), settings).track(str(fa_flight_id))
     except ConnectionError as exc:
-        raise AppError(503, "flightaware_unavailable", str(exc)) from exc
+        logger.warning("FlightAware track lookup failed: %s", exc)
+        raise AppError(503, "flightaware_unavailable", FLIGHTAWARE_UNAVAILABLE_DETAIL) from exc
     return {**track, "cache_hit": cache_hit}

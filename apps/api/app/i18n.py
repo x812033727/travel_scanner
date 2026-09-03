@@ -194,6 +194,14 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "authentication_required": "Sign in to continue",
         "invalid_credentials": "Incorrect email or password",
         "email_exists": "This email is already registered",
+        "admin_email_reserved": (
+            "This email is reserved for an administrator. "
+            "Ask the host administrator to create the account."
+        ),
+        "request_too_large": "The request is too large",
+        "session_check_unavailable": (
+            "The sign-in service is temporarily unavailable. Try again later."
+        ),
         "invalid_token": "Your session expired. Sign in again.",
         "inactive_user": "This account is currently unavailable",
         "rate_limited": "Too many attempts. Try again later.",
@@ -252,6 +260,14 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "authentication_required": "続行するにはログインしてください",
         "invalid_credentials": "メールアドレスまたはパスワードが正しくありません",
         "email_exists": "このメールアドレスは登録済みです",
+        "admin_email_reserved": (
+            "このメールアドレスは管理者用に予約されています。"
+            "ホスト管理者にアカウント作成を依頼してください"
+        ),
+        "request_too_large": "リクエストが大きすぎます",
+        "session_check_unavailable": (
+            "ログインサービスが一時的に利用できません。しばらくしてからお試しください"
+        ),
         "invalid_token": "ログインの有効期限が切れました。再度ログインしてください",
         "inactive_user": "このアカウントは現在利用できません",
         "rate_limited": "操作が多すぎます。しばらくしてからお試しください",
@@ -304,6 +320,14 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "authentication_required": "계속하려면 로그인하세요",
         "invalid_credentials": "이메일 또는 비밀번호가 올바르지 않습니다",
         "email_exists": "이미 등록된 이메일입니다",
+        "admin_email_reserved": (
+            "이 이메일은 관리자용으로 예약되어 있습니다. "
+            "호스트 관리자에게 계정 생성을 요청하세요"
+        ),
+        "request_too_large": "요청 내용이 너무 큽니다",
+        "session_check_unavailable": (
+            "로그인 서비스를 일시적으로 사용할 수 없습니다. 잠시 후 다시 시도해 주세요"
+        ),
         "invalid_token": "로그인이 만료되었습니다. 다시 로그인하세요",
         "inactive_user": "현재 사용할 수 없는 계정입니다",
         "rate_limited": "요청이 너무 많습니다. 잠시 후 다시 시도하세요",
@@ -394,6 +418,9 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "authentication_required": "请先登录后再继续",
         "invalid_credentials": "Email 或密码不正确",
         "email_exists": "这个 Email 已经注册",
+        "admin_email_reserved": "这个 Email 已保留给系统管理员，请由主机管理员建立账号",
+        "request_too_large": "请求内容超过允许大小",
+        "session_check_unavailable": "登录状态服务暂时无法使用，请稍后再试",
         "invalid_token": "登录状态已失效，请重新登录",
         "inactive_user": "这个账号目前无法使用",
         "rate_limited": "操作太频繁，请稍后再试",

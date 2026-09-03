@@ -20,6 +20,7 @@ import { BackToBackFareSearch } from "@/components/back-to-back-fare-search";
 import { LiveBackToBackSearch } from "@/components/live-back-to-back-search";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, isUsageInsufficient, twd } from "@/lib/api";
+import { safeExternalHref } from "@/lib/navigation";
 
 type AirlineCode = "CI" | "BR" | "JX";
 type SourceState = "ready" | "success" | "disabled" | "blocked" | "failed";
@@ -290,7 +291,7 @@ export function AirlineFareLab() {
                   <div className="text-right"><p className="text-2xl font-bold">{quote.currency === "TWD" ? twd.format(Number(quote.total_price)) : `${quote.currency} ${quote.total_price}`}</p><p className="text-xs text-[var(--muted)]">每位旅客 · 公開快取</p></div>
                 </div>
                 <div className="mt-4 grid gap-2 rounded-xl bg-[#f7f9f5] p-3 text-sm sm:grid-cols-2"><p><span className="text-[var(--muted)]">去程</span><strong className="ml-2">{formatDate(quote.departure_date)}</strong></p><p><span className="text-[var(--muted)]">回程</span><strong className="ml-2">{formatDate(quote.return_date)}</strong></p></div>
-                <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-[var(--muted)]"><span className="flex items-center gap-1.5"><CheckCircle2 size={15} className="text-[var(--teal)]" />非即時 · 不可直接訂位{quote.price_last_seen ? ` · ${quote.price_last_seen}` : ""}</span><a href={quote.source_url} target="_blank" rel="noreferrer" className="flex items-center gap-1 font-semibold text-[var(--teal)]">查看官方來源<ExternalLink size={14} /></a></div>
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-[var(--muted)]"><span className="flex items-center gap-1.5"><CheckCircle2 size={15} className="text-[var(--teal)]" />非即時 · 不可直接訂位{quote.price_last_seen ? ` · ${quote.price_last_seen}` : ""}</span><a href={safeExternalHref(quote.source_url)} target="_blank" rel="noreferrer" className="flex items-center gap-1 font-semibold text-[var(--teal)]">查看官方來源<ExternalLink size={14} /></a></div>
               </article>
             ))}
           </div>}

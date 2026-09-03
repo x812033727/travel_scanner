@@ -1,0 +1,18 @@
+# Build context for apps/api/Dockerfile (COPY . .): exclude local secrets, caches, tests, and the
+# host-only deployment agent, which must never run inside the API container.
+.env
+.env.*
+.venv
+__pycache__
+**/__pycache__
+*.py[cod]
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.coverage
+htmlcov
+tests
+deployment_agent
+tools
+*.sqlite3
+*.log

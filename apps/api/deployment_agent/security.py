@@ -32,7 +32,13 @@ def verify_request(
     nonce: str | None,
     signature: str | None,
 ) -> bool:
-    if not timestamp or not nonce or not signature or not re.fullmatch(r"[0-9a-f]{32}", nonce):
+    if (
+        not timestamp
+        or not nonce
+        or not signature
+        or not re.fullmatch(r"[0-9a-f]{32}", nonce)
+        or not re.fullmatch(r"[0-9a-f]{64}", signature)
+    ):
         return False
     try:
         instant = int(timestamp)

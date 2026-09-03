@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+import { RequestBodyError, limitedRequestBody } from "@/lib/request-body";
 import {
   forwardedClientAddress,
   isAllowedMutationOrigin,
@@ -91,12 +92,14 @@ async function proxy(request: NextRequest, context: Context) {
   }
   let body: ArrayBuffer | undefined;
   if (request.method !== "GET" && request.method !== "HEAD") {
-    const declared = Number(request.headers.get("content-length") || 0);
-    if (Number.isFinite(declared) && declared > MAX_REQUEST_BYTES) {
-      return problem(413, "request_too_large", "請求內容超過允許大小");
-    }
-    body = await request.arrayBuffer();
-    if (body.byteLength > MAX_REQUEST_BYTES) {
+    try {
+      // Counts the stream as it arrives, so a chunked or mislabelled upload cannot be buffered in
+      // full before the limit applies.
+      body = await limitedRequestBody(request, MAX_REQUEST_BYTES);
+    } catch (error) {
+      if (error instanceof RequestBodyError && error.reason === "invalid_length") {
+        return problem(400, "invalid_content_length", "Content-Length 標頭無效");
+      }
       return problem(413, "request_too_large", "請求內容超過允許大小");
     }
   }
@@ -113,12 +116,12 @@ async function proxy(request: NextRequest, context: Context) {
       signal: controller.signal,
     });
   } catch {
-    return problem(502, "upstream_unavailable", "API 服務目前無法回應");
-  } finally {
     clearTimeout(timeout);
+    return problem(502, "upstream_unavailable", "API 服務目前無法回應");
   }
   const redirectLocation = upstream.headers.get("location");
   if (upstream.status >= 300 && upstream.status < 400 && redirectLocation) {
+    clearTimeout(timeout);
     const location = safeRedirectLocation(redirectLocation, request.nextUrl.origin);
     if (!location) return problem(502, "unsafe_upstream_redirect", "API 回傳了不安全的轉址");
     return new Response(null, {
@@ -127,13 +130,19 @@ async function proxy(request: NextRequest, context: Context) {
     });
   }
   if (upstream.headers.get("content-type")?.includes("text/event-stream")) {
+    // Server-sent events stay open by design, so the upstream deadline only covered the headers.
+    clearTimeout(timeout);
     return new Response(upstream.body, { status: upstream.status, headers: { "Content-Type": "text/event-stream", "Cache-Control": "no-cache", "X-Accel-Buffering": "no" } });
   }
   let text: string;
   try {
+    // The same deadline now also bounds reading the response body, not just the headers.
     text = await limitedResponseText(upstream);
   } catch {
+    if (controller.signal.aborted) return problem(504, "upstream_timeout", "API 服務回應逾時");
     return problem(502, "upstream_response_too_large", "API 回應超過允許大小");
+  } finally {
+    clearTimeout(timeout);
   }
   let payload: unknown = text;
   try { payload = text ? JSON.parse(text) : null; } catch { /* preserve text */ }

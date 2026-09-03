@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { limitedRequestBody } from "@/lib/request-body";
 
 const MAX_BODY_BYTES = Number(process.env.LINE_WEBHOOK_MAX_BODY_BYTES || 1024 * 1024);
 const TIMEOUT_MS = Number(process.env.API_PROXY_TIMEOUT_MS || 15_000);
@@ -13,12 +14,12 @@ function problem(status: number, code: string, detail: string) {
 export async function POST(request: NextRequest) {
   const signature = request.headers.get("x-line-signature");
   if (!signature) return problem(401, "line_signature_missing", "缺少 LINE webhook 簽章");
-  const declared = Number(request.headers.get("content-length") || 0);
-  if (Number.isFinite(declared) && declared > MAX_BODY_BYTES) {
-    return problem(413, "line_webhook_too_large", "LINE webhook 內容過大");
-  }
-  const body = await request.arrayBuffer();
-  if (body.byteLength > MAX_BODY_BYTES) {
+  let body: ArrayBuffer;
+  try {
+    // This endpoint is unauthenticated and internet-facing: the body is counted as it streams so
+    // the limit applies before anything is buffered in full.
+    body = (await limitedRequestBody(request, MAX_BODY_BYTES)) ?? new ArrayBuffer(0);
+  } catch {
     return problem(413, "line_webhook_too_large", "LINE webhook 內容過大");
   }
   const controller = new AbortController();

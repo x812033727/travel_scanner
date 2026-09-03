@@ -161,7 +161,10 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
     return () => { window.clearInterval(timer); window.removeEventListener("pagehide", pageHide); };
   }, [flush]);
 
-  const measurementId = config?.ga4_enabled ? config.ga4_measurement_id : null;
+  // The ID is admin-controlled: only a well-formed GA4 measurement ID may reach the script URL.
+  const measurementId = config?.ga4_enabled && /^G-[A-Z0-9]{4,20}$/.test(config.ga4_measurement_id || "")
+    ? config.ga4_measurement_id
+    : null;
   return <>
     {measurementId && !privacyOptOut() && <Script src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} strategy="afterInteractive" />}
     {children}

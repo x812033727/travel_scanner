@@ -1,4 +1,5 @@
 import asyncio
+import logging
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime
 from typing import Annotated, Any, cast
@@ -49,6 +50,7 @@ from app.usage.service import (
 
 router = APIRouter(tags=["search"])
 Session = Annotated[AsyncSession, Depends(get_session)]
+logger = logging.getLogger(__name__)
 
 
 @router.post("/searches", status_code=202)
@@ -200,7 +202,10 @@ async def refresh_offer(offer_id: UUID, user: CurrentUser, session: Session) -> 
             original_query = None
         result = await provider.refresh_offer(offer, original_query)
     except ConnectionError as exc:
-        raise AppError(503, "provider_unavailable", str(exc)) from exc
+        logger.warning("Offer refresh failed for provider %s: %s", record.provider, exc)
+        raise AppError(
+            503, "provider_unavailable", "原始航班供應商目前無法回應，請稍後再試"
+        ) from exc
     if result.offer is not None:
         updated = result.offer.model_copy(update={"id": offer.id})
         record.data = updated.model_dump(mode="json")

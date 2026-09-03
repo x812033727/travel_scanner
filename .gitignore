@@ -1,4 +1,8 @@
 .env
+.env.*
+!.env.example
+*.env
+!*.env.example
 .env.bak.*
 .venv/
 __pycache__/
@@ -8,10 +12,16 @@ __pycache__/
 .ruff_cache/
 apps/api/app/hotspots/.deep_bootstrap_cache.json
 .coverage
+coverage/
+coverage.xml
 htmlcov/
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
 .next/
 node_modules/
 playwright-report/
+playwright/.auth/
 test-results/
 .DS_Store
 *.log

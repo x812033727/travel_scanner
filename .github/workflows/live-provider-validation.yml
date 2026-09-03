@@ -44,9 +44,14 @@ jobs:
       - run: uv sync --frozen
         working-directory: apps/api
       - name: Verify all travel modules
+        # Inputs are passed through the environment so that a crafted value cannot inject shell
+        # into a job that holds provider secrets.
+        env:
+          ROUTE_ORIGIN: ${{ inputs.origin }}
+          ROUTE_DESTINATION: ${{ inputs.destination }}
         run: >-
           uv run python -m app.cli verify-live-provider
-          --origin "${{ inputs.origin }}"
-          --destination "${{ inputs.destination }}"
+          --origin "$ROUTE_ORIGIN"
+          --destination "$ROUTE_DESTINATION"
           --strict
         working-directory: apps/api

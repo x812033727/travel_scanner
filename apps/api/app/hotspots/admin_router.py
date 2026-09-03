@@ -16,7 +16,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.admin.service import load_runtime_settings
 from app.auth.service import AdminUser
 from app.config import get_settings
-from app.db import get_session
+from app.db import escape_like, get_session
 from app.destinations.catalog import DESTINATIONS, destination_for_id
 from app.hotspots.ai_search import (
     AIProviderName,
@@ -1098,8 +1098,13 @@ async def list_place_profiles(
         TravelHotspot.review_status.in_(("approved", "auto_approved")),
     ]
     if q:
-        term = f"%{q.strip()}%"
-        filters.append(or_(TravelHotspot.name.ilike(term), TravelHotspot.search_text.ilike(term)))
+        term = f"%{escape_like(q.strip())}%"
+        filters.append(
+            or_(
+                TravelHotspot.name.ilike(term, escape="\\"),
+                TravelHotspot.search_text.ilike(term, escape="\\"),
+            )
+        )
     if country_code:
         filters.append(TravelHotspot.country_code == country_code.upper())
     if status == "missing":

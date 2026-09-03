@@ -90,7 +90,10 @@ agent has passed preflight. Installation and host directory details are in
 [`ops/deployer/README.md`](ops/deployer/README.md).
 
 The API container receives only the agent Unix socket directory as a read-only
-mount; it never receives a Git checkout or the Docker socket. Requests are
+mount; it never receives a Git checkout or the Docker socket. The host agent
+account itself belongs to the `docker` group and is therefore root-equivalent on
+the host; the trust boundary is documented in
+[`ops/deployer/README.md`](ops/deployer/README.md). Requests are
 timestamped, single-use, and HMAC authenticated. The host agent pins the
 repository, branch, workflow, Compose project name, release directories, and
 health endpoints. It builds SHA-tagged images while the prior services run,
@@ -130,11 +133,18 @@ also see `http://localhost:3000/admin/deployments`:
 ```bash
 cd apps/api
 uv run python -m app.cli set-admin --email you@example.com
+# or create the first administrator without the public registration form
+uv run python -m app.cli create-admin --email you@example.com
 ```
 
 Use `--revoke` to remove the database role. `ADMIN_EMAILS` is also accepted as a
-comma-separated bootstrap or recovery allowlist; remove the address from that
-environment value before revoking its access. The desktop and mobile headers
+comma-separated bootstrap or recovery allowlist for accounts that already exist;
+remove the address from that environment value before revoking its access.
+Addresses listed in `ADMIN_EMAILS` or `DEPLOY_ADMIN_EMAILS` cannot self-register
+through the public form (`admin_email_reserved`): create those accounts with
+`create-admin`, or register them before adding them to the allowlist, so that an
+attacker cannot claim an administrator address first. Signing out revokes the
+presented access token immediately. The desktop and mobile headers
 use the same `/auth/me` result and expose the administration link only to
 accounts with an effective database or `ADMIN_EMAILS` role. Every administration
 API still enforces the role server-side.

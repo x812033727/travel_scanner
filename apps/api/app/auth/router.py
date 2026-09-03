@@ -1,7 +1,7 @@
 from typing import Annotated
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Request, Response
+from fastapi import APIRouter, Cookie, Depends, Header, Request, Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import effective_registration_enabled, load_runtime_settings
@@ -36,9 +36,12 @@ from app.auth.service import (
     OptionalCurrentUser,
     can_deploy_user,
     create_access_token,
+    decode_access_token_claims,
     find_user_by_email,
     hash_password,
     is_admin_user,
+    is_reserved_admin_email,
+    revoke_access_token,
     verify_password,
 )
 from app.config import get_settings
@@ -109,6 +112,12 @@ async def register(
     )
     if not await effective_registration_enabled(session):
         raise AppError(403, "registration_closed", "目前暫停開放新帳號註冊")
+    if is_reserved_admin_email(str(payload.email)):
+        raise AppError(
+            403,
+            "admin_email_reserved",
+            "這個 Email 已保留給系統管理員，請由主機管理員以 CLI 建立帳號",
+        )
     if await find_user_by_email(session, str(payload.email)):
         raise AppError(409, "email_exists", "這個 Email 已經註冊")
     user = User(
@@ -169,7 +178,21 @@ async def login(
 
 
 @router.post("/logout", status_code=204)
-async def logout(response: Response) -> None:
+async def logout(
+    response: Response,
+    authorization: Annotated[str | None, Header()] = None,
+    travel_access: Annotated[str | None, Cookie()] = None,
+) -> None:
+    token = travel_access
+    if authorization and authorization.lower().startswith("bearer "):
+        token = authorization[7:]
+    if token:
+        try:
+            claims = decode_access_token_claims(token)
+        except AppError:
+            claims = None
+        if claims is not None:
+            await revoke_access_token(claims)
     response.delete_cookie("travel_access", path="/")
 
 
