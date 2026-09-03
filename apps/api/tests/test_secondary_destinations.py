@@ -25,15 +25,19 @@ SECONDARY_IDS = {
     "gyeongju",
     "jeonju",
     "hue",
+    "yokohama",
+    "kamakura",
 }
 
 
 def test_secondary_destination_and_offline_catalog_contract() -> None:
     profiles = [item for item in DESTINATIONS if item.id in SECONDARY_IDS]
-    assert len(profiles) == 12
-    assert Counter(item.role for item in profiles) == {"secondary": 8, "extension": 4}
+    assert len(profiles) == 14
+    assert Counter(item.role for item in profiles) == {"secondary": 8, "extension": 6}
     assert len(SEARCHABLE_DESTINATIONS) == 27
     assert destination_for_id("tainan").parent_destination_id == "kaohsiung"  # type: ignore[union-attr]
+    assert destination_for_id("yokohama").parent_destination_id == "tokyo"  # type: ignore[union-attr]
+    assert destination_for_id("kamakura").parent_destination_id == "tokyo"  # type: ignore[union-attr]
 
     food_area_supplements = {"sendai-asaichi-market", "chiang-rai-night-bazaar"}
     rows = [
@@ -41,7 +45,7 @@ def test_secondary_destination_and_offline_catalog_contract() -> None:
         for item in HOTSPOT_SEEDS
         if item.destination_id in SECONDARY_IDS and item.slug not in food_area_supplements
     ]
-    assert len(rows) == 180
+    assert len(rows) == 210
     by_destination = defaultdict(list)
     for item in rows:
         by_destination[item.destination_id].append(item)
@@ -78,6 +82,16 @@ async def test_destination_catalog_filters_roles_and_parents() -> None:
         assert response.status_code == 200
         assert [item["id"] for item in response.json()["items"]] == ["gyeongju"]
         assert response.json()["items"][0]["searchable"] is False
+
+        response = await client.get(
+            "/api/v1/destinations", params={"role": "extension", "parent_id": "tokyo"}
+        )
+        assert response.status_code == 200
+        assert [item["id"] for item in response.json()["items"]] == ["yokohama", "kamakura"]
+
+        response = await client.get("/api/v1/destinations", params={"country_code": "JP"})
+        tokyo = next(item for item in response.json()["items"] if item["id"] == "tokyo")
+        assert tokyo["extension_ids"] == ["kamakura", "yokohama"]
 
 
 def test_cross_city_duration_limits_are_validated() -> None:

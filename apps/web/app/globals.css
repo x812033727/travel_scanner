@@ -676,6 +676,22 @@ body {
   min-width: 0;
   padding: 1rem 0.25rem 4rem;
 }
+.admin-group-row th {
+  padding: 0.55rem 0.75rem;
+  border-top: 1px solid var(--line);
+  background: var(--surface-tint);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: left;
+}
+.admin-group-row th > input[type="checkbox"] {
+  margin-right: 0.6rem;
+  vertical-align: middle;
+}
+.admin-group-row-country th {
+  background: var(--paper);
+  font-size: 0.85rem;
+}
 @media (max-width: 767px) {
   .admin-responsive-table {
     display: block;
@@ -721,6 +737,32 @@ body {
   }
   .admin-responsive-table td > button {
     justify-self: end;
+  }
+  /* Group header rows render as flat heading bars, not cards. */
+  .admin-responsive-table tr.admin-group-row {
+    display: block;
+    border: 0 !important;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+  .admin-responsive-table .admin-group-row th {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.25rem;
+    border-top: 0;
+    background: transparent;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+  .admin-responsive-table .admin-group-row th > input[type="checkbox"] {
+    margin-right: 0;
+  }
+  .admin-responsive-table .admin-group-row-country th {
+    padding-top: 0.75rem;
+    font-size: 0.85rem;
   }
   .admin-users-table td:nth-child(1)::before {
     content: "會員";

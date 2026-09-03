@@ -4,12 +4,15 @@ import {
   Bot,
   CheckCircle2,
   ChevronDown,
+  CircleAlert,
   ExternalLink,
   Languages,
   LoaderCircle,
   RefreshCw,
+  RotateCw,
   Search,
   Sparkles,
+  TriangleAlert,
   X,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -83,9 +86,12 @@ type SearchRun = {
   result: {
     created?: number;
     evaluated?: number;
-    errors?: Array<{ locale: string; code: string }>;
+    errors?: RunError[];
+    notices?: RunError[];
   };
   error_code: string | null;
+  error_message?: string | null;
+  retryable?: boolean;
 };
 type SearchDraft = {
   hotspotId: string;
@@ -102,6 +108,94 @@ const depthQueries: Record<Depth, number> = {
   balanced: 3,
   deep: 5,
 };
+
+type RunError = {
+  locale: string | null;
+  code: string;
+  message?: string | null;
+  detail?: string | null;
+};
+type ManualGuideResponse = {
+  created: number;
+  guide_id: string;
+  review_status: "approved" | "pending";
+  locale?: string;
+};
+type DiscoverReport = {
+  hotspot_id: string;
+  created: number;
+  providers: Partial<
+    Record<"youtube" | "brave", "ready" | "not_configured" | "quota_exhausted">
+  >;
+  errors: Array<{ provider: string; locale: string; error: string }>;
+};
+type Translator = ReturnType<typeof useTranslations>;
+type NoticeTone = "info" | "success" | "warning" | "error";
+type Notice = { text: string; tone: NoticeTone; details?: string[] };
+
+const runErrorCodes = new Set([
+  "ai_quota_exhausted",
+  "brave_not_configured",
+  "brave_quota_exhausted",
+  "brave_search_failed",
+  "youtube_not_configured",
+  "youtube_quota_exhausted",
+  "youtube_search_failed",
+  "ai_search_failed",
+  "queue_unavailable",
+  "provider_unavailable",
+  "hotspot_guide_ai_provider_not_configured",
+  "hotspot_not_found",
+  "no_new_candidates",
+  "scope_covered",
+]);
+const providerLabels: Record<string, string> = { youtube: "YouTube", brave: "Brave" };
+const noticeClasses: Record<NoticeTone, string> = {
+  info: "bg-[var(--paper)] text-[var(--muted)]",
+  success: "bg-emerald-50 text-emerald-800",
+  warning: "bg-amber-50 text-amber-900",
+  error: "bg-red-50 text-red-800",
+};
+
+function isRunActive(run: SearchRun | null): boolean {
+  return Boolean(run && (run.status === "queued" || run.status === "running"));
+}
+
+function runErrorLabel(t: Translator, code: string | null | undefined): string {
+  if (!code) return t("runFailedUnknown");
+  return runErrorCodes.has(code) ? t(`runError.${code}`) : code;
+}
+
+function runIssueText(t: Translator, issue: RunError): string {
+  const prefix = issue.locale ? `${issue.locale}：` : "";
+  const detail = issue.detail ? ` — ${issue.detail}` : "";
+  return `${prefix}${runErrorLabel(t, issue.code)}${detail}`;
+}
+
+function NoticeBox({
+  notice,
+  className = "",
+}: {
+  notice: Notice | null;
+  className?: string;
+}) {
+  if (!notice) return null;
+  return (
+    <div
+      role={notice.tone === "error" ? "alert" : "status"}
+      className={`rounded-xl px-4 py-3 text-sm ${noticeClasses[notice.tone]} ${className}`}
+    >
+      <p>{notice.text}</p>
+      {notice.details?.length ? (
+        <ul className="mt-1 list-disc pl-5">
+          {notice.details.map((detail, index) => (
+            <li key={`${index}-${detail}`}>{detail}</li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  );
+}
 
 export function AdminHotspotGuidesPanel() {
   const t = useTranslations("hotspotAdmin");
@@ -123,7 +217,17 @@ export function AdminHotspotGuidesPanel() {
     url: "",
     title: "",
     creator_name: "",
+    summary: "",
+    approve: true,
   });
+  const [hotspotFilter, setHotspotFilter] = useState("");
+  const [manualNotice, setManualNotice] = useState<Notice | null>(null);
+  const [sheetError, setSheetError] = useState("");
+  const [discoverNotice, setDiscoverNotice] = useState<
+    (Notice & { hotspotId: string }) | null
+  >(null);
+  const [showAllCoverage, setShowAllCoverage] = useState(false);
+  const runActive = isRunActive(run);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -158,13 +262,13 @@ export function AdminHotspotGuidesPanel() {
     return () => window.clearTimeout(timer);
   }, [load]);
   useEffect(() => {
-    if (!run || !["queued", "running"].includes(run.status)) return;
+    if (!run || !isRunActive(run)) return;
     const timer = window.setInterval(
       () =>
         void api<SearchRun>(`/admin/hotspots/guides/ai-search/${run.run_id}`)
           .then((next) => {
             setRun(next);
-            if (!["queued", "running"].includes(next.status)) void load();
+            if (!isRunActive(next)) void load();
           })
           .catch((error: Error) => setMessage(error.message)),
       1500,
@@ -174,7 +278,7 @@ export function AdminHotspotGuidesPanel() {
   useEffect(() => {
     if (!draft) return;
     const handleKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && !run) setDraft(null);
+      if (event.key === "Escape" && !runActive) setDraft(null);
       if (event.key !== "Tab") return;
       const dialog = document.querySelector<HTMLElement>("[role='dialog']");
       const focusable = dialog?.querySelectorAll<HTMLElement>(
@@ -197,7 +301,7 @@ export function AdminHotspotGuidesPanel() {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKey);
     };
-  }, [draft, run]);
+  }, [draft, runActive]);
 
   const estimate = useMemo(() => {
     if (!draft) return { ai: 0, brave: 0, youtube: 0 };
@@ -214,6 +318,40 @@ export function AdminHotspotGuidesPanel() {
   );
   const allVisibleSelected =
     visibleIds.length > 0 && visibleIds.every((id) => selected.has(id));
+  const sortedCoverage = useMemo(
+    () =>
+      [...(coverage?.items ?? [])].sort(
+        (a, b) =>
+          Number(a.complete) - Number(b.complete) || a.name.localeCompare(b.name),
+      ),
+    [coverage],
+  );
+  const visibleCoverage = showAllCoverage
+    ? sortedCoverage
+    : sortedCoverage.slice(0, 12);
+  const hotspotOptions = useMemo(() => {
+    const needle = hotspotFilter.trim().toLocaleLowerCase();
+    const filtered = [...(coverage?.items ?? [])]
+      .filter(
+        (item) => !needle || item.name.toLocaleLowerCase().includes(needle),
+      )
+      .sort((a, b) => a.name.localeCompare(b.name));
+    const current = coverage?.items.find((item) => item.id === manual.hotspot_id);
+    if (current && !filtered.some((item) => item.id === current.id))
+      return [current, ...filtered];
+    return filtered;
+  }, [coverage, hotspotFilter, manual.hotspot_id]);
+
+  function changeHotspotFilter(value: string) {
+    setHotspotFilter(value);
+    const needle = value.trim().toLocaleLowerCase();
+    if (!needle) return;
+    const matches = (coverage?.items ?? [])
+      .filter((item) => item.name.toLocaleLowerCase().includes(needle))
+      .sort((a, b) => a.name.localeCompare(b.name));
+    if (matches.length && !matches.some((item) => item.id === manual.hotspot_id))
+      setManual((current) => ({ ...current, hotspot_id: matches[0].id }));
+  }
 
   function openSearch(item: CoverageItem) {
     const missingLocales = locales.filter(
@@ -224,6 +362,7 @@ export function AdminHotspotGuidesPanel() {
       (kind) => missingLocales.some((value) => item.coverage[value][kind] < 1),
     );
     setRun(null);
+    setSheetError("");
     setDraft({
       hotspotId: item.id,
       hotspotName: item.name,
@@ -238,7 +377,7 @@ export function AdminHotspotGuidesPanel() {
   async function startSearch() {
     if (!draft || !draft.locales.length || !draft.contentTypes.length) return;
     setLoading(true);
-    setMessage("");
+    setSheetError("");
     try {
       setRun(
         await api<SearchRun>("/admin/hotspots/guides/ai-search", {
@@ -256,7 +395,7 @@ export function AdminHotspotGuidesPanel() {
         }),
       );
     } catch (error) {
-      setMessage((error as Error).message);
+      setSheetError((error as Error).message);
     } finally {
       setLoading(false);
     }
@@ -282,35 +421,95 @@ export function AdminHotspotGuidesPanel() {
   }
   async function discover(hotspotId: string) {
     setLoading(true);
+    setDiscoverNotice(null);
     try {
-      await api("/admin/hotspots/guides/discover", {
-        method: "POST",
-        body: JSON.stringify({ hotspot_ids: [hotspotId], locales }),
+      const { reports } = await api<{ reports: DiscoverReport[] }>(
+        "/admin/hotspots/guides/discover",
+        {
+          method: "POST",
+          body: JSON.stringify({ hotspot_ids: [hotspotId], locales }),
+        },
+      );
+      const report =
+        reports.find((item) => item.hotspot_id === hotspotId) ?? reports[0];
+      const created = report?.created ?? 0;
+      const details = [
+        ...Object.entries(report?.providers ?? {})
+          .filter(([, state]) => state && state !== "ready")
+          .map(([provider, state]) =>
+            t(`discoverProvider.${state}`, {
+              provider: providerLabels[provider] ?? provider,
+            }),
+          ),
+        ...(report?.errors ?? []).map((item) =>
+          t("discoverError", {
+            provider: providerLabels[item.provider] ?? item.provider,
+            locale: item.locale,
+            error: item.error,
+          }),
+        ),
+      ];
+      const summary = t("discoverCompleted", { created });
+      setDiscoverNotice({
+        hotspotId,
+        text: details.length ? `${summary}｜${t("discoverIssues")}` : summary,
+        tone: details.length ? "warning" : created ? "success" : "info",
+        details,
       });
-      setMessage(t("discoverStarted"));
       await load();
     } catch (error) {
-      setMessage((error as Error).message);
+      setDiscoverNotice({
+        hotspotId,
+        text: (error as Error).message,
+        tone: "error",
+      });
       setLoading(false);
     }
   }
   async function submitManual(event: FormEvent) {
     event.preventDefault();
     setLoading(true);
+    setManualNotice(null);
+    const isArticle = manual.content_type === "article";
     try {
-      await api("/admin/hotspots/guides/manual", {
-        method: "POST",
-        body: JSON.stringify(manual),
+      const result = await api<ManualGuideResponse>(
+        "/admin/hotspots/guides/manual",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            hotspot_id: manual.hotspot_id,
+            locale: manual.locale,
+            content_type: manual.content_type,
+            url: manual.url,
+            title: isArticle ? manual.title : null,
+            creator_name: isArticle ? manual.creator_name : null,
+            summary: isArticle ? manual.summary.trim() || null : null,
+            approve: manual.approve,
+          }),
+        },
+      );
+      const approved = result.review_status === "approved";
+      const key = result.created
+        ? approved
+          ? "manualSavedApproved"
+          : "manualSavedPending"
+        : approved
+          ? "manualUpdatedApproved"
+          : "manualUpdatedPending";
+      setManualNotice({
+        text: t(key, { locale: result.locale ?? manual.locale }),
+        tone: "success",
       });
       setManual((current) => ({
         ...current,
         url: "",
         title: "",
         creator_name: "",
+        summary: "",
       }));
       await load();
     } catch (error) {
-      setMessage((error as Error).message);
+      setManualNotice({ text: (error as Error).message, tone: "error" });
       setLoading(false);
     }
   }
@@ -373,8 +572,25 @@ export function AdminHotspotGuidesPanel() {
           <RefreshCw size={17} className={loading ? "animate-spin" : ""} />
         </button>
       </div>
-      <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-        {coverage?.items.slice(0, 12).map((item) => (
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--muted)]">
+        <p>
+          {t("coverageLegend")} · {t("coverageApprovedOnly")}
+        </p>
+        {sortedCoverage.length > 12 && (
+          <button
+            type="button"
+            aria-pressed={showAllCoverage}
+            onClick={() => setShowAllCoverage((current) => !current)}
+            className="min-h-9 rounded-lg border border-[var(--line)] bg-white px-3 font-semibold text-[var(--ink)]"
+          >
+            {showAllCoverage
+              ? t("showFewer")
+              : t("showAll", { count: sortedCoverage.length })}
+          </button>
+        )}
+      </div>
+      <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+        {visibleCoverage.map((item) => (
           <article
             key={item.id}
             className="rounded-3xl border border-[var(--line)] bg-white p-4 shadow-sm"
@@ -401,7 +617,7 @@ export function AdminHotspotGuidesPanel() {
               <button
                 type="button"
                 onClick={() => openSearch(item)}
-                disabled={!coverage.ai_search.enabled}
+                disabled={!coverage?.ai_search.enabled}
                 className="flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[var(--ink)] px-3 py-2 text-xs font-semibold text-white disabled:opacity-40"
               >
                 <Sparkles size={15} />
@@ -415,6 +631,9 @@ export function AdminHotspotGuidesPanel() {
                 {t("normalDiscover")}
               </button>
             </div>
+            {discoverNotice?.hotspotId === item.id && (
+              <NoticeBox notice={discoverNotice} className="mt-3" />
+            )}
           </article>
         ))}
       </div>
@@ -499,8 +718,8 @@ export function AdminHotspotGuidesPanel() {
       </div>
       {message && (
         <p
-          role="status"
-          className="mt-3 rounded-xl bg-[var(--paper)] px-4 py-3 text-sm text-[var(--muted)]"
+          role="alert"
+          className="mt-3 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800"
         >
           {message}
         </p>
@@ -583,19 +802,30 @@ export function AdminHotspotGuidesPanel() {
         className="mt-7 grid gap-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 md:grid-cols-3"
       >
         <h3 className="font-bold md:col-span-3">{t("manual")}</h3>
+        <div className="grid gap-2">
+          <input
+            value={hotspotFilter}
+            onChange={(e) => changeHotspotFilter(e.target.value)}
+            aria-label={t("hotspotFilter")}
+            placeholder={t("hotspotFilter")}
+            className="h-11 rounded-xl border px-3"
+          />
+          <select
+            required
+            aria-label={t("hotspot")}
+            value={manual.hotspot_id}
+            onChange={(e) => setManual({ ...manual, hotspot_id: e.target.value })}
+            className="h-11 rounded-xl border px-3"
+          >
+            {hotspotOptions.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+        </div>
         <select
-          required
-          value={manual.hotspot_id}
-          onChange={(e) => setManual({ ...manual, hotspot_id: e.target.value })}
-          className="h-11 rounded-xl border px-3"
-        >
-          {coverage?.items.map((item) => (
-            <option key={item.id} value={item.id}>
-              {item.name}
-            </option>
-          ))}
-        </select>
-        <select
+          aria-label={t("locale")}
           value={manual.locale}
           onChange={(e) => setManual({ ...manual, locale: e.target.value })}
           className="h-11 rounded-xl border px-3"
@@ -605,9 +835,16 @@ export function AdminHotspotGuidesPanel() {
           ))}
         </select>
         <select
+          aria-label={t("contentTypes")}
           value={manual.content_type}
           onChange={(e) =>
-            setManual({ ...manual, content_type: e.target.value })
+            setManual({
+              ...manual,
+              content_type: e.target.value,
+              ...(e.target.value === "video"
+                ? { title: "", creator_name: "", summary: "" }
+                : {}),
+            })
           }
           className="h-11 rounded-xl border px-3"
         >
@@ -640,14 +877,43 @@ export function AdminHotspotGuidesPanel() {
               placeholder={t("creator")}
               className="h-11 rounded-xl border px-3"
             />
+            <label className="block text-sm md:col-span-3">
+              <textarea
+                maxLength={500}
+                value={manual.summary}
+                onChange={(e) => setManual({ ...manual, summary: e.target.value })}
+                aria-label={t("summary")}
+                placeholder={t("summary")}
+                className="min-h-20 w-full resize-y rounded-xl border p-3"
+              />
+              <span className="mt-1 block text-right text-xs text-[var(--muted)]">
+                {manual.summary.length}/500
+              </span>
+            </label>
           </>
         )}
-        <button
-          disabled={loading}
-          className="h-11 rounded-xl bg-[var(--teal)] px-4 font-semibold text-white disabled:opacity-40"
-        >
-          {t("save")}
-        </button>
+        <div className="flex flex-wrap items-center gap-3 md:col-span-3">
+          <label className="flex min-h-11 items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={manual.approve}
+              onChange={(e) => setManual({ ...manual, approve: e.target.checked })}
+            />
+            <span>
+              <strong>{t("approveNow")}</strong>
+              <small className="block text-[var(--muted)]">
+                {t("approveNowHelp")}
+              </small>
+            </span>
+          </label>
+          <button
+            disabled={loading}
+            className="ml-auto h-11 rounded-xl bg-[var(--teal)] px-4 font-semibold text-white disabled:opacity-40"
+          >
+            {manual.approve ? t("saveApproved") : t("save")}
+          </button>
+        </div>
+        <NoticeBox notice={manualNotice} className="md:col-span-3" />
       </form>
       {draft && (
         <AISearchSheet
@@ -657,6 +923,7 @@ export function AdminHotspotGuidesPanel() {
           coverage={coverage}
           estimate={estimate}
           loading={loading}
+          sheetError={sheetError}
           startSearch={startSearch}
           toggleLocale={toggleLocale}
           toggleType={toggleType}
@@ -674,6 +941,7 @@ type SheetProps = {
   coverage: CoverageResponse | null;
   estimate: { ai: number; brave: number; youtube: number };
   loading: boolean;
+  sheetError: string;
   startSearch: () => Promise<void>;
   toggleLocale: (locale: Locale) => void;
   toggleType: (type: ContentType) => void;
@@ -687,12 +955,15 @@ function AISearchSheet({
   coverage,
   estimate,
   loading,
+  sheetError,
   startSearch,
   toggleLocale,
   toggleType,
   t,
 }: SheetProps) {
-  const active = run && ["queued", "running"].includes(run.status);
+  const active = isRunActive(run);
+  const failed = run?.status === "failed";
+  const partial = run?.status === "partial";
   const [touchStart, setTouchStart] = useState<number | null>(null);
   return (
     <div
@@ -748,6 +1019,14 @@ function AISearchSheet({
             <X size={19} />
           </button>
         </div>
+        {sheetError && (
+          <p
+            role="alert"
+            className="mt-4 rounded-xl bg-red-50 p-3 text-sm text-red-800"
+          >
+            {sheetError}
+          </p>
+        )}
         {run ? (
           <div className="mt-7">
             <div className="flex items-center justify-between text-sm">
@@ -760,7 +1039,15 @@ function AISearchSheet({
                 style={{ width: `${run.progress}%` }}
               />
             </div>
-            <div className="mt-5 rounded-2xl bg-[var(--paper)] p-4">
+            <div
+              className={`mt-5 rounded-2xl p-4 ${
+                failed
+                  ? "border border-red-200 bg-red-50"
+                  : partial
+                    ? "border border-amber-200 bg-amber-50"
+                    : "bg-[var(--paper)]"
+              }`}
+            >
               {active ? (
                 <p className="flex items-center gap-2">
                   <LoaderCircle
@@ -772,14 +1059,35 @@ function AISearchSheet({
                     ? t(`runStage.${run.current.stage}`)
                     : t("preparing")}
                 </p>
+              ) : failed ? (
+                <>
+                  <p className="flex items-center gap-2 font-bold text-red-800">
+                    <CircleAlert size={18} />
+                    {t("runFailed")}
+                  </p>
+                  <p className="mt-2 text-sm text-red-900">
+                    {run.error_message || runErrorLabel(t, run.error_code)}
+                  </p>
+                </>
               ) : (
-                <p className="flex items-center gap-2">
-                  <CheckCircle2 className="text-emerald-600" size={18} />
-                  {t("runResult", {
-                    created: run.result.created || 0,
-                    evaluated: run.result.evaluated || 0,
-                  })}
-                </p>
+                <>
+                  <p className="flex items-center gap-2">
+                    {partial ? (
+                      <TriangleAlert className="text-amber-600" size={18} />
+                    ) : (
+                      <CheckCircle2 className="text-emerald-600" size={18} />
+                    )}
+                    {t("runResult", {
+                      created: run.result.created || 0,
+                      evaluated: run.result.evaluated || 0,
+                    })}
+                  </p>
+                  {partial && (
+                    <p className="mt-2 text-sm text-amber-900">
+                      {run.error_message || t("runPartialNote")}
+                    </p>
+                  )}
+                </>
               )}
               <p className="mt-2 text-xs text-[var(--muted)]">
                 AI {run.usage.ai_calls || 0} · Brave{" "}
@@ -789,21 +1097,51 @@ function AISearchSheet({
             </div>
             {run.result.errors?.length ? (
               <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">
-                {run.result.errors.map((error) => (
-                  <p key={`${error.locale}-${error.code}`}>
-                    {error.locale}: {error.code}
-                  </p>
-                ))}
+                <p className="font-bold">{t("runErrors")}</p>
+                <ul className="mt-1 list-disc pl-5">
+                  {run.result.errors.map((issue, index) => (
+                    <li key={`${issue.locale}-${issue.code}-${index}`}>
+                      {runIssueText(t, issue)}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ) : null}
-            <button
-              type="button"
-              onClick={() => setDraft(null)}
-              disabled={Boolean(active)}
-              className="mt-6 min-h-12 w-full rounded-2xl bg-[var(--ink)] font-semibold text-white disabled:opacity-40"
+            {run.result.notices?.length ? (
+              <div className="mt-4 rounded-2xl bg-[var(--paper)] p-4 text-sm">
+                <p className="font-bold">{t("runNotices")}</p>
+                <ul className="mt-1 list-disc pl-5">
+                  {run.result.notices.map((issue, index) => (
+                    <li key={`${issue.locale}-${issue.code}-${index}`}>
+                      {runIssueText(t, issue)}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            <div
+              className={`mt-6 grid gap-2 ${failed && run.retryable ? "grid-cols-2" : ""}`}
             >
-              {t("done")}
-            </button>
+              {failed && run.retryable && (
+                <button
+                  type="button"
+                  onClick={() => void startSearch()}
+                  disabled={loading}
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-violet-700 font-semibold text-white disabled:opacity-40"
+                >
+                  <RotateCw size={17} />
+                  {t("retryRun")}
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => setDraft(null)}
+                disabled={Boolean(active)}
+                className="min-h-12 w-full rounded-2xl bg-[var(--ink)] font-semibold text-white disabled:opacity-40"
+              >
+                {t("done")}
+              </button>
+            </div>
           </div>
         ) : (
           <>

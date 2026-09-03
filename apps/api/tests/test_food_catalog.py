@@ -45,8 +45,8 @@ def test_food_catalog_has_exactly_ten_complete_items_per_country() -> None:
 def test_every_destination_has_an_approved_coordinate_complete_food_area() -> None:
     food_areas = [item for item in HOTSPOT_SEEDS if item.category == "food"]
     by_destination = {item.destination_id for item in food_areas}
-    assert len(by_destination) == 31
-    assert len(food_areas) == 37
+    assert len(by_destination) == 33
+    assert len(food_areas) == 45
     for item in food_areas:
         assert item.latitude is not None
         assert item.longitude is not None
