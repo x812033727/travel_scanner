@@ -24,3 +24,24 @@ describe("API error messages", () => {
     expect(message).not.toContain("[object Object]");
   });
 });
+
+describe("API error messages in other locales", () => {
+  afterEach(() => {
+    document.documentElement.lang = "";
+  });
+
+  it("keeps the server's localized detail instead of the Chinese catalog", () => {
+    document.documentElement.lang = "en";
+    expect(apiProblemMessage({ code: "trip_not_found", detail: "Trip not found" }, 404)).toBe("Trip not found");
+  });
+
+  it("falls back to a localized generic failure", () => {
+    document.documentElement.lang = "en";
+    expect(apiProblemMessage({ detail: { unexpected: true } }, 500)).toBe("Something went wrong. Please try again. (HTTP 500)");
+  });
+
+  it("still prefers the Chinese catalog for zh-TW", () => {
+    document.documentElement.lang = "zh-TW";
+    expect(apiProblemMessage({ code: "trip_not_found", detail: "Trip not found" }, 404)).toBe("找不到這個旅程");
+  });
+});
