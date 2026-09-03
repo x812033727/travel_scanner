@@ -49,6 +49,20 @@ PUBLIC_REVIEW_STATUSES = ("approved", "auto_approved")
 # the scan for cities whose imports have not been map-verified yet.
 PLANNER_RANKING_PAGE_SIZE = 50
 PLANNER_RANKING_MAX_PAGES = 6
+# Trip interests map onto hotspot categories almost 1:1; "deep_travel" is a
+# style rather than a category and "spa" has no hotspot category yet.
+PLANNER_INTEREST_CATEGORIES: dict[str, tuple[str, ...]] = {
+    "food": ("food",),
+    "shopping": ("shopping",),
+    "culture": ("culture",),
+    "nature": ("nature",),
+    "family": ("family",),
+    "nightlife": ("nightlife",),
+    "beach": ("beach",),
+}
+# Interest-matched candidates may take at most this share of the planner pool;
+# the rest is reserved for the city's top-ranked landmarks.
+PLANNER_INTEREST_SHARE = 2 / 3
 
 
 async def refresh_due_map_place_ids(
@@ -981,6 +995,47 @@ async def hotspot_facets(session: AsyncSession, locale: Locale = "zh-TW") -> dic
     }
 
 
+async def _collect_ranked(
+    session: AsyncSession,
+    *,
+    city_code: str | None,
+    destination_id: str | None,
+    style: str,
+    wanted: int,
+    category: str | None = None,
+) -> list[dict[str, Any]]:
+    """Page through one ranking until `wanted` planner-eligible rows are seen."""
+    collected: list[dict[str, Any]] = []
+    eligible_seen = 0
+    after_rank: int | None = None
+    # Freshly imported hotspots sit high in the ranking but stay unverified until
+    # the map pass runs, so a single top-N page can hold almost no planner-eligible
+    # rows. Page through the ranking until enough eligible rows are collected.
+    for _ in range(PLANNER_RANKING_MAX_PAGES):
+        page = await list_rankings(
+            session,
+            city_code=city_code,
+            destination_id=destination_id,
+            category=category,
+            style=style,
+            limit=PLANNER_RANKING_PAGE_SIZE,
+            after_rank=after_rank,
+        )
+        items = page["items"]
+        if not items:
+            break
+        collected.extend(items)
+        eligible_seen += sum(1 for item in items if _planner_eligible(item))
+        last_rank = items[-1]["rank"]
+        has_more = page.get("has_more", len(items) >= PLANNER_RANKING_PAGE_SIZE)
+        if eligible_seen >= wanted or not has_more:
+            break
+        if after_rank is not None and last_rank <= after_rank:
+            break
+        after_rank = last_rank
+    return collected
+
+
 def _planner_eligible(item: dict[str, Any]) -> bool:
     """Only verified, durably located hotspots may be placed on an itinerary."""
     source = item.get("coordinate_source") or {}
@@ -1008,33 +1063,46 @@ async def load_planner_hotspots(
 ) -> list[ItineraryHotspot]:
     """Load only approved, exact-map hotspots for itinerary generation."""
     wanted = max(1, limit)
+    requested = {interest for interest in (interests or []) if interest != "deep_travel"}
+    wanted_categories = [
+        category
+        for interest in sorted(requested)
+        for category in PLANNER_INTEREST_CATEGORIES.get(interest, ())
+    ]
+    interest_quota = max(1, int(wanted * PLANNER_INTEREST_SHARE)) if wanted_categories else 0
     ranked_items: list[dict[str, Any]] = []
-    eligible_seen = 0
-    after_rank: int | None = None
-    # Freshly imported hotspots sit high in the ranking but stay unverified until
-    # the map pass runs, so a single top-N page can hold almost no planner-eligible
-    # rows. Page through the ranking until enough eligible rows are collected.
-    for _ in range(PLANNER_RANKING_MAX_PAGES):
-        page = await list_rankings(
+    seen_ids: set[Any] = set()
+
+    def absorb(items: list[dict[str, Any]]) -> None:
+        for item in items:
+            if item["id"] in seen_ids:
+                continue
+            seen_ids.add(item["id"])
+            ranked_items.append(item)
+
+    # Interest categories first, so a shopping-minded trip still sees shops even
+    # when every shop ranks below the city's landmarks; the general ranking then
+    # fills the remaining seats.
+    for category in wanted_categories:
+        absorb(
+            await _collect_ranked(
+                session,
+                city_code=city_code,
+                destination_id=destination_id,
+                style=style,
+                wanted=interest_quota,
+                category=category,
+            )
+        )
+    absorb(
+        await _collect_ranked(
             session,
             city_code=city_code,
             destination_id=destination_id,
             style=style,
-            limit=PLANNER_RANKING_PAGE_SIZE,
-            after_rank=after_rank,
+            wanted=wanted,
         )
-        items = page["items"]
-        if not items:
-            break
-        ranked_items.extend(items)
-        eligible_seen += sum(1 for item in items if _planner_eligible(item))
-        last_rank = items[-1]["rank"]
-        has_more = page.get("has_more", len(items) >= PLANNER_RANKING_PAGE_SIZE)
-        if eligible_seen >= wanted or not has_more:
-            break
-        if after_rank is not None and last_rank <= after_rank:
-            break
-        after_rank = last_rank
+    )
     primary_id = destination_id
     if primary_id is None and city_code:
         resolved = destination_for_code(city_code)
@@ -1048,18 +1116,23 @@ async def load_planner_hotspots(
             session, destination_id=extension.id, style="deep", limit=1
         )
         ranked_items.extend(extension_result["items"])
-    requested = {interest for interest in (interests or []) if interest != "deep_travel"}
-    if requested:
+    category_set = set(wanted_categories)
+    if category_set:
         ranked_items = sorted(
             ranked_items,
-            key=lambda item: (item["category"] not in requested, item["rank"]),
+            key=lambda item: (item["category"] not in category_set, item["rank"]),
         )
     rows: list[ItineraryHotspot] = []
+    interest_rows = 0
     for item in ranked_items:
         if len(rows) >= wanted:
             break
         if not _planner_eligible(item):
             continue
+        if item["category"] in category_set:
+            if interest_rows >= interest_quota:
+                continue
+            interest_rows += 1
         rows.append(
             ItineraryHotspot(
                 hotspot_id=item["id"],
