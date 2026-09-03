@@ -659,6 +659,10 @@ class FoodMerchant(Timestamped, Base):
             "(latitude IS NULL) = (longitude IS NULL)",
             name="ck_food_merchant_coordinate_pair",
         ),
+        CheckConstraint(
+            "area_source IS NULL OR area_source IN ('seed', 'admin')",
+            name="ck_food_merchant_area_source",
+        ),
     )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     slug: Mapped[str] = mapped_column(String(128), unique=True, index=True)
@@ -690,6 +694,13 @@ class FoodMerchant(Timestamped, Base):
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
     )
     display_order: Mapped[int] = mapped_column(Integer, default=100)
+    # Browsing taxonomy: the sub-city area this merchant sits in, and who set it.
+    # ``area_source`` becomes ``admin`` as soon as an administrator touches the area
+    # (including clearing it) so the seeder never overrides a deliberate choice.
+    area_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("food_areas.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    area_source: Mapped[str | None] = mapped_column(String(16), nullable=True)
 
 
 class FoodMerchantFood(Base):
@@ -741,6 +752,75 @@ class FoodMerchantSource(Timestamped, Base):
     distinction: Mapped[str | None] = mapped_column(String(24), nullable=True)
     is_current: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
     last_verified_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class FoodCategory(Timestamped, Base):
+    """Site-wide cuisine category with one label per site locale in ``names_json``."""
+
+    __tablename__ = "food_categories"
+    __table_args__ = (
+        CheckConstraint("source IN ('seed', 'admin')", name="ck_food_category_source"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    slug: Mapped[str] = mapped_column(String(128), unique=True, index=True)
+    names_json: Mapped[dict[str, str]] = mapped_column(JSON, default=dict)
+    display_order: Mapped[int] = mapped_column(Integer, default=100)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+    source: Mapped[str] = mapped_column(String(16), default="admin")
+
+
+class FoodArea(Timestamped, Base):
+    """Sub-city area (商圈) used to browse merchants; distinct from food-district hotspots."""
+
+    __tablename__ = "food_areas"
+    __table_args__ = (
+        CheckConstraint(
+            "(latitude IS NULL) = (longitude IS NULL)",
+            name="ck_food_area_coordinate_pair",
+        ),
+        CheckConstraint("source IN ('seed', 'admin')", name="ck_food_area_source"),
+        Index("ix_food_areas_destination_active", "destination_id", "is_active"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    slug: Mapped[str] = mapped_column(String(128), unique=True, index=True)
+    destination_id: Mapped[str] = mapped_column(String(64), index=True)
+    country_code: Mapped[str] = mapped_column(String(2), index=True)
+    names_json: Mapped[dict[str, str]] = mapped_column(JSON, default=dict)
+    match_terms_json: Mapped[list[str]] = mapped_column(JSON, default=list)
+    latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    display_order: Mapped[int] = mapped_column(Integer, default=100)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+    source: Mapped[str] = mapped_column(String(16), default="admin")
+
+
+class FoodMerchantCategory(Base):
+    __tablename__ = "food_merchant_categories"
+    __table_args__ = (
+        UniqueConstraint("merchant_id", "category_id", name="uq_food_merchant_category"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    merchant_id: Mapped[UUID] = mapped_column(
+        ForeignKey("food_merchants.id", ondelete="CASCADE"), index=True
+    )
+    category_id: Mapped[UUID] = mapped_column(
+        ForeignKey("food_categories.id", ondelete="CASCADE"), index=True
+    )
+    is_primary: Mapped[bool] = mapped_column(Boolean, default=False)
+    display_order: Mapped[int] = mapped_column(Integer, default=100)
+    source: Mapped[str] = mapped_column(String(16), default="admin")
+
+
+class FoodMerchantFavorite(Timestamped, Base):
+    __tablename__ = "food_merchant_favorites"
+    __table_args__ = (
+        UniqueConstraint("user_id", "merchant_id", name="uq_food_merchant_favorite"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    merchant_id: Mapped[UUID] = mapped_column(
+        ForeignKey("food_merchants.id", ondelete="CASCADE"), index=True
+    )
 
 
 class RestaurantPlace(Timestamped, Base):

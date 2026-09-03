@@ -9,11 +9,19 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import CurrentUser
 from app.db import get_session
+from app.destinations.catalog import destination_for_id
+from app.foods.publication import publishable_merchant_filters
+from app.foods.service import localized_name
 from app.hotspots.maps import build_map_links
 from app.i18n import Locale, current_locale
 from app.models import (
+    FoodArea,
+    FoodCategory,
     FoodFavorite,
     FoodLocalization,
+    FoodMerchant,
+    FoodMerchantCategory,
+    FoodMerchantFavorite,
     HotspotFavorite,
     RestaurantFavorite,
     RestaurantPlace,
@@ -25,7 +33,7 @@ from app.problems import AppError
 router = APIRouter(prefix="/saved-items", tags=["saved items"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 RequestLocale = Annotated[Locale, Depends(current_locale)]
-SavedType = Literal["hotspot", "food", "restaurant"]
+SavedType = Literal["hotspot", "food", "restaurant", "merchant"]
 
 
 async def _hotspot(session: AsyncSession, item_id: str) -> TravelHotspot:
@@ -62,6 +70,19 @@ async def _food(session: AsyncSession, item_id: str) -> TravelFood:
     return item
 
 
+async def _merchant(session: AsyncSession, item_id: str) -> FoodMerchant:
+    try:
+        parsed = UUID(item_id)
+    except ValueError as exc:
+        raise AppError(404, "saved_item_not_found", "找不到這家店家") from exc
+    item = await session.scalar(
+        select(FoodMerchant).where(FoodMerchant.id == parsed, *publishable_merchant_filters())
+    )
+    if item is None:
+        raise AppError(404, "saved_item_not_found", "找不到這家店家")
+    return item
+
+
 async def _restaurant(session: AsyncSession, item_id: str) -> RestaurantPlace:
     item = await session.scalar(
         select(RestaurantPlace).where(
@@ -80,7 +101,7 @@ async def list_saved_items(
     user: CurrentUser,
     session: Session,
     locale: RequestLocale,
-    type: Annotated[Literal["all", "hotspot", "food", "restaurant"], Query()] = "all",
+    type: Annotated[Literal["all", "hotspot", "food", "restaurant", "merchant"], Query()] = "all",
     limit: Annotated[int, Query(ge=1, le=100)] = 50,
 ) -> dict[str, Any]:
     items: list[dict[str, Any]] = []
@@ -145,6 +166,66 @@ async def list_saved_items(
                     "saved_at": favorite.created_at,
                 }
             )
+    if type in {"all", "merchant"}:
+        merchant_rows = (
+            await session.execute(
+                select(FoodMerchantFavorite, FoodMerchant, FoodArea)
+                .join(FoodMerchant, FoodMerchant.id == FoodMerchantFavorite.merchant_id)
+                .outerjoin(
+                    FoodArea,
+                    (FoodArea.id == FoodMerchant.area_id) & FoodArea.is_active.is_(True),
+                )
+                .where(FoodMerchantFavorite.user_id == user.id, *publishable_merchant_filters())
+            )
+        ).all()
+        primary_categories: dict[UUID, str] = {}
+        for link, category in (
+            await session.execute(
+                select(FoodMerchantCategory, FoodCategory)
+                .join(FoodCategory, FoodCategory.id == FoodMerchantCategory.category_id)
+                .where(
+                    FoodMerchantCategory.merchant_id.in_(
+                        [merchant.id for _, merchant, _ in merchant_rows]
+                    ),
+                    FoodCategory.is_active.is_(True),
+                )
+                .order_by(
+                    FoodMerchantCategory.is_primary.desc(),
+                    FoodMerchantCategory.display_order,
+                )
+            )
+        ).all():
+            primary_categories.setdefault(
+                link.merchant_id, localized_name(category.names_json, locale)
+            )
+        for favorite, merchant, area in merchant_rows:
+            profile = destination_for_id(merchant.destination_id)
+            city_name = profile.city if profile else merchant.destination_id
+            detail = (
+                localized_name(area.names_json, locale)
+                if area is not None
+                else primary_categories.get(merchant.id)
+            )
+            items.append(
+                {
+                    "type": "merchant",
+                    "id": str(merchant.id),
+                    "title": merchant.name,
+                    "subtitle": f"{city_name} · {detail}" if detail else city_name,
+                    "map_links": build_map_links(
+                        name=merchant.name,
+                        local_name=merchant.local_name,
+                        city_name=city_name,
+                        country_code=merchant.country_code,
+                        latitude=merchant.latitude,
+                        longitude=merchant.longitude,
+                        google_place_id=merchant.google_place_id,
+                        naver_map_url=merchant.naver_map_url,
+                        map_match_status=merchant.map_match_status,
+                    ),
+                    "saved_at": favorite.created_at,
+                }
+            )
     if type in {"all", "restaurant"}:
         restaurant_rows = (
             await session.execute(
@@ -206,6 +287,16 @@ async def save_item(
         )
         if existing_food is None:
             session.add(FoodFavorite(user_id=user.id, food_id=food.id))
+    elif item_type == "merchant":
+        merchant = await _merchant(session, item_id)
+        existing_merchant = await session.scalar(
+            select(FoodMerchantFavorite).where(
+                FoodMerchantFavorite.user_id == user.id,
+                FoodMerchantFavorite.merchant_id == merchant.id,
+            )
+        )
+        if existing_merchant is None:
+            session.add(FoodMerchantFavorite(user_id=user.id, merchant_id=merchant.id))
     else:
         restaurant = await _restaurant(session, item_id)
         existing_restaurant = await session.scalar(
@@ -243,6 +334,14 @@ async def delete_item(
             delete(FoodFavorite).where(
                 FoodFavorite.user_id == user.id,
                 FoodFavorite.food_id == food.id,
+            )
+        )
+    elif item_type == "merchant":
+        merchant = await _merchant(session, item_id)
+        await session.execute(
+            delete(FoodMerchantFavorite).where(
+                FoodMerchantFavorite.user_id == user.id,
+                FoodMerchantFavorite.merchant_id == merchant.id,
             )
         )
     else:

@@ -68,6 +68,15 @@ cd apps/api
 uv run python -m app.cli collect-hotspots
 ```
 
+The same job also seeds the food catalog (dishes, merchants, areas and
+categories). To seed only the food data — for example right after a deploy on a
+host that does not run the collector — use:
+
+```bash
+cd apps/api
+uv run python -m app.cli seed-foods
+```
+
 Relevant settings:
 
 - `HOTSPOT_COLLECTION_ENABLED`

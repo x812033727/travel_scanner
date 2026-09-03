@@ -3,15 +3,15 @@ from __future__ import annotations
 from decimal import Decimal
 from urllib.parse import urlencode
 
+# Naver URLs that identify exactly one place; shared with the SQL publication filter.
+EXACT_NAVER_PLACE_PREFIXES: tuple[str, ...] = (
+    "https://map.naver.com/p/entry/place/",
+    "https://map.naver.com/v5/entry/place/",
+)
+
 
 def is_exact_naver_map_url(url: str | None) -> bool:
-    return bool(
-        url
-        and (
-            url.startswith("https://map.naver.com/p/entry/place/")
-            or url.startswith("https://map.naver.com/v5/entry/place/")
-        )
-    )
+    return bool(url and url.startswith(EXACT_NAVER_PLACE_PREFIXES))
 
 
 def has_exact_map_identity(

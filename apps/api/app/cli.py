@@ -8,7 +8,7 @@ from io import TextIOWrapper
 from uuid import UUID
 
 from pydantic import ValidationError
-from sqlalchemy import select
+from sqlalchemy import func, select
 
 from app.admin.service import load_runtime_settings
 from app.auth.schemas import RegisterRequest
@@ -18,6 +18,7 @@ from app.crawlers.airlines import AirlineFareCrawlerService
 from app.crawlers.schemas import AirlineFareSearch
 from app.crawlers.verification import build_verification_report
 from app.db import SessionFactory
+from app.foods.service import seed_food_catalog
 from app.hotspots.jobs import collect_once
 from app.hotspots.place_matching import (
     MatchReport,
@@ -26,7 +27,15 @@ from app.hotspots.place_matching import (
     missing_place_targets,
 )
 from app.infra import get_redis
-from app.models import AdminAuditLog, TravelHotspot, User
+from app.models import (
+    AdminAuditLog,
+    FoodArea,
+    FoodCategory,
+    FoodMerchant,
+    FoodMerchantCategory,
+    TravelHotspot,
+    User,
+)
 from app.places.naver import NaverPlaceService
 from app.providers.registry import build_provider, provider_status
 from app.search.schemas import SearchCreate
@@ -223,6 +232,31 @@ async def verify_naver_maps() -> bool:
     return bool(settings.naver_maps_configured and palace and village and route)
 
 
+async def seed_foods() -> dict[str, int]:
+    """Seed dishes, merchants and the browsing taxonomy without running hotspot collection."""
+
+    async with SessionFactory() as session:
+        foods = await seed_food_catalog(session)
+        await session.commit()
+        counts = {"foods": foods}
+        for key, model in (
+            ("areas", FoodArea),
+            ("categories", FoodCategory),
+            ("merchants", FoodMerchant),
+            ("merchant_category_links", FoodMerchantCategory),
+        ):
+            counts[key] = int(
+                await session.scalar(select(func.count()).select_from(model)) or 0
+            )
+        counts["merchants_with_area"] = int(
+            await session.scalar(
+                select(func.count()).select_from(FoodMerchant).where(FoodMerchant.area_id.is_not(None))
+            )
+            or 0
+        )
+    return counts
+
+
 def _format_match(report: MatchReport) -> str:
     line = f"{report.outcome:16} {report.slug:44} {report.name}"
     if report.candidate:
@@ -320,6 +354,10 @@ def main() -> None:
     naver = subparsers.add_parser("verify-naver-maps")
     naver.add_argument("--strict", action="store_true")
     subparsers.add_parser("collect-hotspots")
+    subparsers.add_parser(
+        "seed-foods",
+        help="Upsert the food catalog, merchants, areas and categories, then print the counts",
+    )
     places = subparsers.add_parser(
         "match-hotspot-places",
         help="Fill Google Place IDs for public hotspots that have none (uses the live key)",
@@ -364,6 +402,8 @@ def main() -> None:
             raise SystemExit(1)
     elif args.command == "collect-hotspots":
         print(asyncio.run(collect_once()))
+    elif args.command == "seed-foods":
+        print(json.dumps(asyncio.run(seed_foods()), ensure_ascii=False))
     elif args.command == "match-hotspot-places":
         asyncio.run(
             match_hotspot_places(
