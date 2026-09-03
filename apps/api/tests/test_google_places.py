@@ -75,6 +75,42 @@ async def test_autocomplete_biases_google_results_and_returns_distance() -> None
 
 
 @pytest.mark.asyncio
+async def test_autocomplete_can_be_limited_to_cities() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        body = json.loads(request.read())
+        assert body["includedPrimaryTypes"] == ["(cities)"]
+        assert body["includedRegionCodes"] == ["jp"]
+        return httpx.Response(
+            200,
+            json={
+                "suggestions": [
+                    {
+                        "placePrediction": {
+                            "placeId": "ChIJ-tokyo",
+                            "text": {"text": "東京都, 日本"},
+                            "structuredFormat": {
+                                "mainText": {"text": "東京都"},
+                                "secondaryText": {"text": "日本"},
+                            },
+                        }
+                    }
+                ]
+            },
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    service = GoogleTravelService(
+        fakeredis.aioredis.FakeRedis(decode_responses=True),
+        Settings(google_maps_api_key="key"),
+        client,
+        locale="zh-TW",
+    )
+    results = await service.autocomplete("東京", None, ["jp"], kinds="cities")
+    await client.aclose()
+    assert [row["name"] for row in results] == ["東京都"]
+
+
+@pytest.mark.asyncio
 async def test_place_details_finishes_the_google_autocomplete_session() -> None:
     masks: list[str] = []
 
