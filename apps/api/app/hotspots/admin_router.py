@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import dataclasses
 from datetime import UTC, datetime
 from decimal import Decimal
 from typing import Annotated, Any, Literal, cast
@@ -9,7 +10,7 @@ from fastapi import APIRouter, Depends, Header, Query
 from pydantic import BaseModel, Field, model_validator
 from redis import Redis as SyncRedis
 from redis.asyncio import Redis
-from rq import Queue, Retry
+from rq import Queue
 from sqlalchemy import func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -35,7 +36,9 @@ from app.hotspots.guides import (
     discover_guides,
     guide_coverage,
     guide_quota_status,
-    save_candidates,
+    manual_guide_filter,
+    not_manual_guide_filter,
+    upsert_guide,
 )
 from app.hotspots.maps import has_exact_map_identity
 from app.hotspots.place_tasks import enqueue_place_enrichment_run
@@ -183,6 +186,7 @@ class ManualGuideRequest(BaseModel):
     title: str | None = Field(default=None, max_length=500)
     creator_name: str | None = Field(default=None, max_length=255)
     summary: str | None = Field(default=None, max_length=500)
+    approve: bool = True
 
 
 class GuideAISearchRequest(BaseModel):
@@ -255,6 +259,7 @@ def _ai_search_payload(run: HotspotGuideAISearchRun) -> dict[str, object]:
         "usage": run.usage_json,
         "result": run.result_json,
         "error_code": run.error_code,
+        "error_message": run.error_message,
         "retryable": run.error_code
         in {"ai_search_failed", "queue_unavailable", "provider_unavailable"},
         "created_at": run.created_at,
@@ -649,8 +654,9 @@ async def list_guide_candidates(
                 HotspotGuide.metadata_json["discovery_method"].as_string() != "ai_research",
             )
         )
+        filters.append(not_manual_guide_filter())
     elif discovery_method == "manual":
-        filters.append(HotspotGuide.provider == "manual")
+        filters.append(manual_guide_filter())
     if ai_provider:
         filters.append(HotspotGuide.metadata_json["ai_provider"].as_string() == ai_provider)
     if run_id:
@@ -685,7 +691,8 @@ async def list_guide_candidates(
                 "reason": guide.review_reason,
                 "last_verified_at": guide.last_verified_at,
                 "metadata_expires_at": guide.metadata_expires_at,
-                "discovery_method": guide.metadata_json.get("discovery_method", "standard"),
+                "discovery_method": guide.metadata_json.get("discovery_method")
+                or ("manual" if guide.provider == "manual" else "standard"),
                 "ai_search_run_id": guide.metadata_json.get("ai_search_run_id"),
                 "ai_provider": guide.metadata_json.get("ai_provider"),
                 "ai_model": guide.metadata_json.get("ai_model"),
@@ -870,8 +877,7 @@ async def create_guide_ai_search(
         queued = Queue("hotspot-guides", connection=connection).enqueue(
             "app.hotspots.ai_tasks.run_hotspot_guide_ai_search",
             str(run.id),
-            job_timeout=900,
-            retry=Retry(max=2, interval=[30, 120]),
+            job_timeout=1800,
         )
         run.queue_job_id = queued.id
         await session.commit()
@@ -922,9 +928,21 @@ async def add_manual_guide(
             )
         provider = YouTubeGuideProvider(settings.hotspot_guide_youtube_api_key, redis=redis)
         try:
-            candidate = await provider.import_video(payload.url, payload.locale)
+            imported = await provider.import_video(payload.url, payload.locale)
         finally:
             await provider.close()
+        # Keep provider="youtube" so the public card still renders as a YouTube
+        # video, but honour the admin's locale and tag the row as a manual pick.
+        candidate = dataclasses.replace(
+            imported,
+            locale=payload.locale,
+            language_confidence=Decimal("1.000"),
+            metadata={
+                "discovery_method": "manual",
+                "requested_locale": payload.locale,
+                "detected_locale": imported.locale,
+            },
+        )
     else:
         url = canonical_external_url(payload.url)
         if not payload.title or not payload.creator_name:
@@ -938,10 +956,37 @@ async def add_manual_guide(
             canonical_url=url,
             summary=payload.summary,
             language_confidence=Decimal("1.000"),
+            metadata={"discovery_method": "manual", "requested_locale": payload.locale},
         )
-    created = await save_candidates(session, hotspot.id, [candidate])
+    guide, created = await upsert_guide(session, hotspot.id, candidate)
+    guide.locale = payload.locale
+    if payload.approve:
+        guide.review_status = "approved"
+        guide.review_reason = None
+        guide.reviewed_at = datetime.now(UTC)
+        guide.reviewed_by_user_id = user.id
+    await session.flush()
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="hotspot_guide_manual_added",
+            target=f"hotspot-guide:{guide.id}",
+            metadata_json={
+                "hotspot_id": str(hotspot.id),
+                "created": created,
+                "approve": payload.approve,
+                "locale": payload.locale,
+                "content_type": payload.content_type,
+            },
+        )
+    )
     await session.commit()
-    return {"created": created}
+    return {
+        "created": int(created),
+        "guide_id": str(guide.id),
+        "review_status": guide.review_status,
+        "locale": guide.locale,
+    }
 
 
 @router.get("/guides/coverage")
