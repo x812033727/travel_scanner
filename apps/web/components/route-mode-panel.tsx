@@ -88,15 +88,55 @@ function requestError(reason: unknown, fallback: string) {
 
 function routeOptionDetails(segment: RouteSegment) {
   const transitSteps = segment.steps.filter((step) => step.travel_mode === "TRANSIT");
-  const walkingMinutes = segment.steps
-    .filter((step) => step.travel_mode === "WALK")
-    .reduce((sum, step) => sum + (step.duration_minutes || 0), 0);
+  const walkingMinutes = segment.travel_mode === "walk"
+    ? segment.duration_minutes
+    : segment.steps
+      .filter((step) => step.travel_mode === "WALK")
+      .reduce((sum, step) => sum + (step.duration_minutes || 0), 0);
   const lines = [...new Set(transitSteps.map((step) => step.line_short_name || step.line_name).filter(Boolean))];
   return {
     transfers: Math.max(0, transitSteps.length - 1),
     walkingMinutes,
     lines: lines.join(" · "),
   };
+}
+
+function formatRouteDistance(distanceMeters?: number | null) {
+  if (distanceMeters == null) return undefined;
+  if (distanceMeters < 1000) return `${distanceMeters} 公尺`;
+  return `${(distanceMeters / 1000).toFixed(distanceMeters >= 10_000 ? 0 : 1)} 公里`;
+}
+
+function googleDirectionsUrl(fromItem: TripItem, toItem: TripItem, mode: TravelMode) {
+  const endpoint = (item: TripItem) => {
+    const googlePlaceId = item.provider_place_id
+      && (!item.location_provider || item.location_provider === "google_places")
+      ? item.provider_place_id
+      : undefined;
+    if (googlePlaceId) {
+      return { query: item.title || item.location_name || "地點", placeId: googlePlaceId };
+    }
+    if (item.latitude == null || item.longitude == null) return undefined;
+    return { query: `${item.latitude.toFixed(7)},${item.longitude.toFixed(7)}` };
+  };
+  const origin = endpoint(fromItem);
+  const destination = endpoint(toItem);
+  if (!origin || !destination) return undefined;
+  const params = new URLSearchParams({
+    api: "1",
+    origin: origin.query,
+    destination: destination.query,
+    travelmode: mode === "walk" ? "walking" : mode === "drive" ? "driving" : "transit",
+  });
+  if (origin.placeId) params.set("origin_place_id", origin.placeId);
+  if (destination.placeId) params.set("destination_place_id", destination.placeId);
+  return `https://www.google.com/maps/dir/?${params.toString()}`;
+}
+
+function scheduleDeltaLabel(deltaMinutes: number) {
+  if (deltaMinutes < 0) return `可提前 ${Math.abs(deltaMinutes)} 分鐘`;
+  if (deltaMinutes > 0) return `延後 ${deltaMinutes} 分鐘`;
+  return "時間不變";
 }
 
 function formatRouteTime(value: string | null | undefined, timezone?: string) {
@@ -315,7 +355,7 @@ export function RouteModePanel({
   }
 
   const directionsUrl = trip.destination_country_code !== "KR" && fromItem && toItem
-    ? `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(fromItem.location_name || fromItem.title)}&destination=${encodeURIComponent(toItem.location_name || toItem.title)}&travelmode=${mode === "walk" ? "walking" : mode === "drive" ? "driving" : "transit"}`
+    ? googleDirectionsUrl(fromItem, toItem, mode)
     : undefined;
 
   const navigationUrl = externalNavigation?.web_url || activeSegment?.maps_url || directionsUrl;
@@ -350,12 +390,12 @@ export function RouteModePanel({
 
     <section className="route-panel-modes" aria-label="路線起訖與交通方式">
       <div className="route-endpoints">
-        <div className="route-endpoint"><span aria-hidden="true">1</span><p><small>從</small><strong>{fromItem?.location_name || fromItem?.title || "起點待確認"}</strong></p></div>
-        <div className="route-endpoint"><span aria-hidden="true">2</span><p><small>到</small><strong>{toItem?.location_name || toItem?.title || "終點待確認"}</strong></p></div>
+        <div className="route-endpoint"><span aria-hidden="true">1</span><p><small>從</small><strong>{fromItem?.title || fromItem?.location_name || "起點待確認"}</strong></p></div>
+        <div className="route-endpoint"><span aria-hidden="true">2</span><p><small>到</small><strong>{toItem?.title || toItem?.location_name || "終點待確認"}</strong></p></div>
       </div>
       <div className="route-mode-toolbar">
         <div className="route-mode-tabs" role="tablist" aria-label="選擇交通工具">{modes.map(({ value, label, icon: Icon }) => <button key={value} type="button" role="tab" aria-selected={mode === value} onClick={() => { if (previews[value] || initialSegment?.travel_mode === value) setMode(value); else void previewMode(value); }} className={`route-mode-tab ${mode === value ? "route-mode-tab-active" : ""}`}><Icon size={18} />{label}{loadingMode === value && <Loader2 size={14} className="animate-spin" />}</button>)}</div>
-        {navigationUrl && <a href={safeExternalHref(navigationUrl)} target="_blank" rel="noreferrer" className="route-navigation-link" aria-label={`導航：${fromItem?.title || "起點"}到${toItem?.title || "終點"}`}><Navigation size={16} />導航</a>}
+        {navigationUrl && <a href={safeExternalHref(navigationUrl)} target="_blank" rel="noreferrer" className="route-navigation-link" aria-label={`導航：${fromItem?.title || "起點"}到${toItem?.title || "終點"}`}><Navigation size={16} /><span>導航</span></a>}
       </div>
       <div className="route-selection-summary"><strong>{routeSummary}</strong><span>{activeSegment?.schedule_mode === "preview" ? "自訂時間預覽" : activeSegment?.schedule_mode === "live" ? "目前路線" : "依行程時間規劃"}</span></div>
     </section>
@@ -390,7 +430,7 @@ export function RouteModePanel({
             >
               <span className="flex items-center justify-between gap-3"><strong>方案 {index + 1}</strong>{index === 0 && <span className="route-option-recommended">推薦</span>}</span>
               <span className="mt-3 flex items-end justify-between gap-3"><strong className="text-xl text-[var(--teal-dark)]">{option.segment.duration_minutes} 分</strong>{departure && arrival && <span className="text-xs font-semibold text-[var(--muted)]">{departure} → {arrival}</span>}</span>
-              <span className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs text-[var(--muted)]"><span>轉乘 {details.transfers} 次</span><span>步行 {details.walkingMinutes} 分</span>{fare && <span>{fare}</span>}</span>
+              <span className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs text-[var(--muted)]">{option.segment.travel_mode === "transit" ? <><span>轉乘 {details.transfers} 次</span><span>步行 {details.walkingMinutes} 分</span></> : <span>{formatRouteDistance(option.segment.distance_meters) || "距離未提供"}</span>}{fare && <span>{fare}</span>}</span>
               {details.lines && <span className="mt-2 block truncate text-left text-xs font-semibold text-[var(--teal-dark)]">{details.lines}</span>}
             </button>;
           })}
@@ -399,13 +439,13 @@ export function RouteModePanel({
 
       {externalNavigation && <section className={`rounded-2xl border p-4 text-sm ${externalIsNaver ? "border-[#b8e7ca] bg-[#eefaf2] text-[#075c31]" : "border-sky-200 bg-sky-50 text-sky-950"}`} aria-label={`${externalNavigation.label} 外部導航`}><p className="flex items-center gap-2 font-bold"><ExternalLink size={18} />改用 {externalNavigation.label} 規劃</p><p className="mt-2 leading-6">{externalNavigation.reason}</p><p className={`mt-2 text-xs leading-5 ${externalIsNaver ? "text-[#397354]" : "text-sky-800"}`}>離開本站後才能查看即時班次；外部結果不會自動套用到行程時間。</p><div className="mt-3 flex flex-wrap gap-2"><a href={safeExternalHref(externalNavigation.web_url)} target="_blank" rel="noreferrer" className={`flex min-h-11 items-center gap-2 rounded-xl px-4 font-bold text-white ${externalIsNaver ? "bg-[#03c75a]" : "bg-sky-700"}`}>用 {externalNavigation.label} 規劃<ExternalLink size={15} /></a>{externalIsNaver && externalNavigation.app_url !== externalNavigation.web_url && <a href={safeExternalHref(externalNavigation.app_url, ["nmap:", "https:"])} className="flex min-h-11 items-center gap-2 rounded-xl border border-[#7fd5a3] bg-white px-4 font-bold">開啟 NAVER App</a>}<button type="button" onClick={() => setManualOpen(true)} className="min-h-11 rounded-xl px-3 font-bold">手動輸入時間</button></div></section>}
 
-      {activeImpact && (activeImpact.affected_items.length > 0 || activeImpact.conflicts.length > 0) && <section className="route-impact-card"><div className="flex items-center gap-2"><Clock3 size={18} /><h3 className="font-bold">套用後的時間影響</h3></div>{activeImpact.affected_items.slice(0, 4).map((item) => <p key={item.item_id} className="mt-2 flex justify-between gap-3 text-sm"><span className="truncate">{item.title}</span><strong className="shrink-0">{item.delta_minutes > 0 ? "+" : ""}{item.delta_minutes} 分</strong></p>)}{activeImpact.conflicts.map((conflict) => <div key={conflict.item_id} className="mt-3 rounded-xl bg-red-50 p-3 text-sm text-red-900"><strong>可能遲到 {conflict.late_minutes} 分鐘</strong><p className="mt-1">{conflict.title} 保留原訂時間，不會被自動延後。</p><p className="mt-1 text-xs">建議：{conflict.suggestions.join("、")}</p></div>)}</section>}
+      {activeImpact && (activeImpact.affected_items.length > 0 || activeImpact.conflicts.length > 0) && <section className="route-impact-card"><div className="flex items-center gap-2"><Clock3 size={18} /><h3 className="font-bold">套用後的時間影響</h3></div>{activeImpact.affected_items.slice(0, 4).map((item) => <p key={item.item_id} className="mt-2 flex justify-between gap-3 text-sm"><span className="truncate">{item.title}</span><strong className={`route-impact-value shrink-0 ${item.delta_minutes < 0 ? "route-impact-earlier" : item.delta_minutes > 0 ? "route-impact-later" : ""}`}>{scheduleDeltaLabel(item.delta_minutes)}</strong></p>)}{activeImpact.conflicts.map((conflict) => <div key={conflict.item_id} className="mt-3 rounded-xl bg-red-50 p-3 text-sm text-red-900"><strong>可能遲到 {conflict.late_minutes} 分鐘</strong><p className="mt-1">{conflict.title} 保留原訂時間，不會被自動延後。</p><p className="mt-1 text-xs">建議：{conflict.suggestions.join("、")}</p></div>)}</section>}
 
       {manualOpen && <section className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4"><h3 className="font-bold">手動輸入移動時間</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">查不到路線時可使用；畫面會明確標示未經地圖服務驗證。</p><label className="mt-3 block text-sm font-semibold">移動分鐘<input type="number" min="1" max="1440" value={manualMinutes} onChange={(event) => setManualMinutes(event.target.value)} className="mt-2 min-h-11 w-full rounded-xl border border-[var(--line)] bg-white px-3" /></label><button type="button" onClick={() => void applyManual()} disabled={applying} className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] font-bold text-white disabled:opacity-45">{applying ? <Loader2 size={17} className="animate-spin" /> : <Check size={17} />}套用手動時間</button></section>}
     </div>
 
     <div className="route-panel-detail min-w-0">{activeSegment && <RouteSegmentCard segment={activeSegment} selected defaultExpanded timezone={trip.timezone} />}</div>
 
-    <div className="route-apply-bar"><div className="min-w-0"><span className="block text-xs text-[var(--muted)]">目前選擇</span><strong className="block truncate">{modes.find((item) => item.value === mode)?.label}{activeSegment ? `${options.length ? ` · 方案 ${selectedOptionIndex + 1}` : ""} · ${activeSegment.duration_minutes} 分鐘` : externalNavigation ? " · 外部導航" : " · 尚未取得"}</strong></div><button type="button" onClick={() => selectedOption ? void applyPreview() : void previewMode(mode)} disabled={applying || Boolean(loadingMode) || resolvingLocations || unresolvedItems.length > 0 || isApplied || Boolean(externalNavigation)} className="flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 font-bold text-white disabled:opacity-45">{applying ? <Loader2 size={17} className="animate-spin" /> : isApplied ? <Check size={17} /> : null}{isApplied ? "目前已套用" : selectedOption ? "套用此路線" : externalNavigation ? "外部導航，無法套用" : loadingMode ? "取得中…" : "取得路線"}</button></div>
+    <div className="route-apply-bar"><div className="route-apply-selection min-w-0"><span className="block text-xs text-[var(--muted)]">目前選擇</span><strong className="block">{modes.find((item) => item.value === mode)?.label}{activeSegment ? `${options.length ? ` · 方案 ${selectedOptionIndex + 1}` : ""} · ${activeSegment.duration_minutes} 分鐘` : externalNavigation ? " · 外部導航" : " · 尚未取得"}</strong></div><button type="button" aria-label={selectedOption ? "套用此路線" : undefined} onClick={() => selectedOption ? void applyPreview() : void previewMode(mode)} disabled={applying || Boolean(loadingMode) || resolvingLocations || unresolvedItems.length > 0 || isApplied || Boolean(externalNavigation)} className="route-apply-button flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 font-bold text-white disabled:opacity-45">{applying ? <Loader2 size={17} className="animate-spin" /> : isApplied ? <Check size={17} /> : null}{isApplied ? "目前已套用" : selectedOption ? <><span className="route-apply-label-long">套用此路線</span><span className="route-apply-label-short">套用</span></> : externalNavigation ? "外部導航，無法套用" : loadingMode ? "取得中…" : "取得路線"}</button></div>
   </div>;
 }

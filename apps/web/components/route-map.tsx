@@ -16,6 +16,7 @@ type PublicMapConfig = {
 };
 type Coordinate = { latitude: number; longitude: number };
 type MapOverlay = { setMap(map: unknown | null): void };
+type MapFailureReason = "load" | "authorization";
 
 function decodePolyline(value?: string | null): Coordinate[] {
   if (!value) return [];
@@ -77,7 +78,11 @@ export function RouteMap({
   const overlays = useRef<MapOverlay[]>([]);
   const [config, setConfig] = useState<PublicMapConfig>({});
   const [sdkReady, setSdkReady] = useState(false);
-  const [mapFailed, setMapFailed] = useState(false);
+  const [mapFailure, setMapFailure] = useState<MapFailureReason | undefined>(
+    () => typeof window !== "undefined" && window.mokaairGoogleMapsAuthFailed
+      ? "authorization"
+      : undefined,
+  );
 
   useEffect(() => {
     let active = true;
@@ -114,6 +119,7 @@ export function RouteMap({
   const useGoogle = !isKorea
     && javascriptAllowed
     && Boolean(config.google_maps_browser_key);
+  const mapFailed = Boolean(mapFailure);
   const optionCoordinates = useMemo(
     () => routeOptions.map((option) => decodePolyline(option.encoded_polyline)),
     [routeOptions],
@@ -128,8 +134,24 @@ export function RouteMap({
     destroyMap.current = null;
   }, []);
 
+  useEffect(() => {
+    if (!useGoogle) return;
+    const previousHandler = window.gm_authFailure;
+    const handleAuthorizationFailure = () => {
+      window.mokaairGoogleMapsAuthFailed = true;
+      setSdkReady(false);
+      setMapFailure("authorization");
+    };
+    window.gm_authFailure = handleAuthorizationFailure;
+    return () => {
+      if (window.gm_authFailure === handleAuthorizationFailure) {
+        window.gm_authFailure = previousHandler;
+      }
+    };
+  }, [useGoogle]);
+
   const renderNaverMap = useCallback(() => {
-    if (!useNaver || !hasCoordinates || !mapElement.current || !window.naver?.maps || !origin || !destination) return;
+    if (mapFailed || !useNaver || !hasCoordinates || !mapElement.current || !window.naver?.maps || !origin || !destination) return;
     clearMap();
     const maps = window.naver.maps;
     const originPoint = new maps.LatLng(origin.latitude as number, origin.longitude as number);
@@ -177,10 +199,10 @@ export function RouteMap({
       new maps.LatLng(Math.max(...latitudes), Math.max(...longitudes)),
     );
     map.fitBounds(bounds, { top: 42, right: 42, bottom: 42, left: 42 });
-  }, [clearMap, destination, hasCoordinates, onSelectSegment, optionCoordinates, origin, selectedIndex, showSchematic, useNaver]);
+  }, [clearMap, destination, hasCoordinates, mapFailed, onSelectSegment, optionCoordinates, origin, selectedIndex, showSchematic, useNaver]);
 
   const renderGoogleMap = useCallback(() => {
-    if (!useGoogle || !hasCoordinates || !mapElement.current || !window.google?.maps || !origin || !destination) return;
+    if (mapFailed || !useGoogle || !hasCoordinates || !mapElement.current || !window.google?.maps || !origin || !destination) return;
     clearMap();
     const maps = window.google.maps;
     const originPoint = { lat: origin.latitude as number, lng: origin.longitude as number };
@@ -220,14 +242,18 @@ export function RouteMap({
       }));
     }
     map.fitBounds(bounds, 44);
-  }, [clearMap, destination, hasCoordinates, onSelectSegment, optionCoordinates, origin, selectedIndex, showSchematic, useGoogle]);
+  }, [clearMap, destination, hasCoordinates, mapFailed, onSelectSegment, optionCoordinates, origin, selectedIndex, showSchematic, useGoogle]);
 
   useEffect(() => {
+    if (mapFailed) {
+      clearMap();
+      return;
+    }
     if (!sdkReady) return;
     if (useNaver) renderNaverMap();
     if (useGoogle) renderGoogleMap();
     return clearMap;
-  }, [clearMap, renderGoogleMap, renderNaverMap, sdkReady, useGoogle, useNaver]);
+  }, [clearMap, mapFailed, renderGoogleMap, renderNaverMap, sdkReady, useGoogle, useNaver]);
 
   const mapSource = useNaver ? "NAVER Maps" : useGoogle ? "Google Maps" : undefined;
   const emptyTitle = !hasCoordinates
@@ -235,13 +261,13 @@ export function RouteMap({
     : mapFailed ? "地圖載入失敗" : "瀏覽器地圖服務尚未啟用";
 
   return <section className={`route-map-card route-map-${variant}`}>
-    {useNaver && <Script id="naver-maps-js" src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(config.naver_maps_browser_client_id || "")}`} strategy="afterInteractive" onReady={() => setSdkReady(true)} onError={() => setMapFailed(true)} />}
-    {useGoogle && <Script id="google-route-maps-js" src={`https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(config.google_maps_browser_key || "")}&v=weekly&language=${encodeURIComponent(locale)}`} strategy="afterInteractive" onReady={() => setSdkReady(true)} onError={() => setMapFailed(true)} />}
+    {useNaver && <Script id="naver-maps-js" src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(config.naver_maps_browser_client_id || "")}`} strategy="afterInteractive" onReady={() => setSdkReady(true)} onError={() => setMapFailure("load")} />}
+    {useGoogle && <Script id="google-route-maps-js" src={`https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(config.google_maps_browser_key || "")}&v=weekly&loading=async&language=${encodeURIComponent(locale)}`} strategy="afterInteractive" onReady={() => setSdkReady(true)} onError={() => setMapFailure("load")} />}
     <div className="flex items-center justify-between border-b border-[var(--line)] px-5 py-3.5"><div className="min-w-0"><p className="text-xs font-semibold tracking-[.14em] text-[var(--teal)]">ROUTE MAP{mapSource ? ` · ${mapSource}` : ""}</p><h2 className="mt-1 truncate font-bold">{selectedSegment ? `方案 ${selectedIndex + 1} · 約 ${selectedSegment.duration_minutes} 分鐘` : `${origin?.title || "起點"} → ${destination?.title || "終點"}`}</h2></div><Map size={20} className="shrink-0 text-[var(--teal)]" /></div>
     <div className="route-map-frame overflow-hidden">
       {mapSource && hasCoordinates && !mapFailed
         ? <div ref={mapElement} role="img" aria-label={`${origin?.title || "起點"}到${destination?.title || "終點"}的${mapSource}路線地圖`} className="absolute inset-0 h-full w-full" />
-        : <div className="absolute inset-0 grid place-items-center bg-[linear-gradient(135deg,#edf5f1,#f8f5ee)] p-6 text-center"><div>{mapFailed ? <TriangleAlert size={28} className="mx-auto text-amber-700" /> : <MapPin size={28} className="mx-auto text-[var(--teal)]" />}<p className="mt-3 font-semibold">{emptyTitle}</p><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-[var(--muted)]">{!hasCoordinates ? "請先替起點與終點選擇正式地點。" : isKorea ? "請在管理設定啟用 NAVER Dynamic Map。" : "請在管理設定填入已啟用 Maps JavaScript API 的瀏覽器地圖 Key。"}</p></div></div>}
+        : <div className="route-map-empty absolute inset-0 grid place-items-center p-6 text-center"><div>{mapFailed ? <TriangleAlert size={28} className="mx-auto text-amber-700" /> : <MapPin size={28} className="mx-auto text-[var(--teal)]" />}<p className="mt-3 font-semibold">{emptyTitle}</p><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-[var(--muted)]">{!hasCoordinates ? "請先替起點與終點選擇正式地點。" : mapFailure === "authorization" ? "Google Maps 尚未允許目前網站網域，請先使用下方精準導航連結。" : mapFailure === "load" ? "地圖服務暫時載入失敗，請先使用下方精準導航連結。" : isKorea ? "請在管理設定啟用 NAVER Dynamic Map。" : "請在管理設定填入已啟用 Maps JavaScript API 的瀏覽器地圖 Key。"}</p></div></div>}
       {mapSource && hasCoordinates && showSchematic && !mapFailed && <div className="route-map-schematic-notice" role="status">示意連線，非實際路線</div>}
     </div>
     <div className="border-t border-[var(--line)] px-5 py-3 text-xs text-[var(--muted)]">{selectedSegment ? `${selectedSegment.schedule_mode === "preview" ? "預覽班次" : selectedSegment.schedule_mode === "live" ? "目前路線" : "指定日期班次"} · ${selectedSegment.attribution}` : `${mapSource || "地圖"}只顯示起終點；取得 Provider 路線後才可套用時間`}</div>

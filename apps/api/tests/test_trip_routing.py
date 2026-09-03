@@ -153,6 +153,10 @@ async def test_google_route_returns_up_to_three_unique_alternatives() -> None:
     assert [option.duration_minutes for option in options] == [10, 12, 13]
     assert [option.route_option_rank for option in options] == [1, 2, 3]
     assert options[0].provider_route_key == "DEFAULT_ROUTE"
+    assert "origin=35.7000000%2C139.7000000" in str(options[0].maps_url)
+    assert "destination=35.7100000%2C139.8000000" in str(options[0].maps_url)
+    assert "travelmode=walking" in str(options[0].maps_url)
+    assert "%E4%B8%8A%E9%87%8E" not in str(options[0].maps_url)
 
 
 @pytest.mark.asyncio
@@ -351,6 +355,31 @@ class MalformedProvider:
         raise TypeError("unexpected provider payload")
 
 
+class UnsortedOptionsProvider:
+    name = "unsorted"
+
+    async def compute_options(
+        self,
+        origin: RoutePoint,
+        destination: RoutePoint,
+        *_args: object,
+        **_kwargs: object,
+    ) -> list[RouteSegment]:
+        return [
+            RouteSegment(
+                from_item_id=origin.item_id,
+                to_item_id=destination.item_id,
+                provider=self.name,
+                attribution="test",
+                generated_at=datetime.now(UTC),
+                travel_mode="walk",
+                duration_minutes=duration,
+                distance_meters=distance,
+            )
+            for duration, distance in ((11, 780), (10, 805), (12, 700))
+        ]
+
+
 class CountingProvider:
     name = "counting"
 
@@ -465,6 +494,27 @@ async def test_route_service_converts_provider_exceptions_to_unavailable_options
         max_options=3,
     )
     assert options == []
+
+
+@pytest.mark.asyncio
+async def test_route_service_recommends_the_fastest_non_transit_option() -> None:
+    service = RouteService(
+        fakeredis.aioredis.FakeRedis(decode_responses=True),
+        Settings(route_cache_ttl_seconds=300),
+        google=UnsortedOptionsProvider(),
+    )
+
+    options = await service.compute_options(
+        point("A", 35.1, 139.1),
+        point("B", 35.2, 139.2),
+        None,
+        "FEWER_TRANSFERS",
+        travel_mode="walk",
+        max_options=3,
+    )
+
+    assert [option.duration_minutes for option in options] == [10, 11, 12]
+    assert [option.route_option_rank for option in options] == [1, 2, 3]
 
 
 def test_transit_time_window_marks_far_future_as_preview() -> None:
@@ -590,4 +640,19 @@ def test_google_external_navigation_preserves_exact_place_ids() -> None:
     assert navigation.label == "Google Maps"
     assert "origin_place_id=google-origin" in navigation.web_url
     assert "destination_place_id=google-destination" in navigation.web_url
+    assert "travelmode=transit" in navigation.web_url
     assert navigation.app_url == navigation.web_url
+
+
+def test_google_external_navigation_uses_confirmed_coordinates_without_place_ids() -> None:
+    navigation = google_external_navigation(
+        point("谷中靈園", 35.7272, 139.7710),
+        point("淺草寺", 35.7148, 139.7967),
+        "walk",
+        reason="站內路線暫時無法取得",
+    )
+
+    assert "origin=35.7272000%2C139.7710000" in navigation.web_url
+    assert "destination=35.7148000%2C139.7967000" in navigation.web_url
+    assert "travelmode=walking" in navigation.web_url
+    assert "%E8%B0%B7%E4%B8%AD%E9%9D%88%E5%9C%92" not in navigation.web_url

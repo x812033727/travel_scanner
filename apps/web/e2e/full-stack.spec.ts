@@ -75,12 +75,12 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
 
   const systemCards = page.locator(".planner-system-card");
   const flightCards = page.locator(".planner-flight-card");
-  await expect(systemCards).toHaveCount(4);
+  await expect(systemCards).toHaveCount(3);
   await expect(flightCards).toHaveCount(2);
   await expect(flightCards.first()).toContainText("去程航班尚未設定");
   await expect(flightCards.last()).toContainText("回程航班尚未設定");
-  await expect(systemCards.first()).toContainText("住宿據點 · 出發");
-  await expect(systemCards.last()).toContainText("住宿據點 · 返回");
+  await expect(systemCards.first()).toContainText("尚未設定主要飯店");
+  await expect(page.getByText("住宿據點 · 返回", { exact: true })).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "午餐尚未安排", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: "晚餐尚未安排", exact: true })).toBeVisible();
 
@@ -121,8 +121,9 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await page.getByLabel("飯店地點").fill("東京都千代田區丸之內");
   await page.getByRole("button", { name: "同步所有日期" }).click();
   await expect(page.getByRole("dialog", { name: "設定主要飯店" })).toBeHidden();
+  await expect(systemCards).toHaveCount(3);
   await expect(systemCards.first()).toContainText("丸之內測試飯店");
-  await expect(systemCards.last()).toContainText("丸之內測試飯店");
+  await expect(page.getByText("住宿據點 · 返回", { exact: true })).toHaveCount(0);
 
   await page.getByRole("button", { name: "跳過" }).first().click();
   await expect(page.getByText("已跳過，不計停留時間與路線")).toBeVisible();

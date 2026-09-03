@@ -438,8 +438,10 @@ saved without inventing distance, fare, or navigation steps. Existing
 Google Routes is the global fallback. Set `GOOGLE_MAPS_API_KEY` after enabling
 Places API (New), Routes API, and Weather API for server-side calls, and use an origin-restricted
 `NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY` for the route drawer after enabling Maps
-JavaScript API. Restrict the browser key by HTTP referrer (for example,
-`https://mokaair.com/*`) and keep it separate from the server Routes key.
+JavaScript API. Restrict the browser key by HTTP referrer to
+`https://mokaair.com/*` and `https://www.mokaair.com/*`, and keep it separate
+from the server Routes key. A missing production referrer is surfaced inside
+the route drawer instead of leaving an unexplained blank map.
 Google provider responses are kept in short-lived Redis caches; durable trip
 records retain provider IDs and user-authored fields instead of raw payloads.
 The administrator settings page also shows the current and five previous Google

@@ -1573,6 +1573,7 @@ a {
   font-size: 0.78rem;
   font-weight: 750;
   color: var(--muted);
+  white-space: nowrap;
   transition:
     background 0.18s ease,
     color 0.18s ease,
@@ -1639,8 +1640,8 @@ a {
   grid-template-areas:
     "map"
     "modes"
-    "detail"
     "controls"
+    "detail"
     "apply";
 }
 
@@ -1658,6 +1659,7 @@ a {
 .route-panel-modes {
   grid-area: modes;
   overflow: hidden;
+  container-type: inline-size;
   border: 1px solid var(--line);
   border-radius: 1.3rem;
   background: var(--surface);
@@ -1793,6 +1795,14 @@ a {
   contain: layout paint;
 }
 
+.route-map-empty {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--teal-soft) 34%, var(--surface)),
+    color-mix(in srgb, var(--paper) 72%, var(--surface))
+  );
+}
+
 .route-map-schematic-notice {
   position: absolute;
   right: 0.75rem;
@@ -1869,6 +1879,18 @@ a {
   padding: 1rem;
 }
 
+.route-impact-value {
+  color: var(--muted);
+}
+
+.route-impact-earlier {
+  color: #167249;
+}
+
+.route-impact-later {
+  color: #9a5411;
+}
+
 .route-apply-bar {
   grid-area: apply;
   position: sticky;
@@ -1884,6 +1906,33 @@ a {
   padding: 0.7rem;
   box-shadow: 0 -10px 30px rgba(16, 42, 43, 0.08);
   backdrop-filter: blur(16px);
+}
+
+.route-apply-selection strong {
+  line-height: 1.25rem;
+}
+
+.route-apply-label-short {
+  display: none;
+}
+
+@container (max-width: 23rem) {
+  .route-mode-tab {
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding-inline: 0.2rem;
+    font-size: 0.7rem;
+  }
+
+  .route-navigation-link {
+    min-width: 2.85rem;
+    padding-inline: 0.7rem;
+  }
+
+  .route-navigation-link span {
+    display: none;
+  }
 }
 
 .route-day-settings {
@@ -1996,6 +2045,26 @@ a {
 }
 
 @media (max-width: 520px) {
+  .route-panel-layout {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+  }
+
+  .route-apply-bar {
+    gap: 0.65rem;
+  }
+
+  .route-apply-button {
+    padding-inline: 1rem;
+  }
+
+  .route-apply-label-long {
+    display: none;
+  }
+
+  .route-apply-label-short {
+    display: inline;
+  }
+
   .route-day-settings {
     align-items: stretch;
     flex-direction: column;
@@ -2091,10 +2160,9 @@ a {
 
   .route-panel-map,
   .route-panel-detail {
-    max-height: calc(100dvh - 10rem);
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    padding-right: 0.2rem;
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
   }
 
   .route-map-drawer .route-map-frame {
@@ -2418,6 +2486,14 @@ a {
 
 :root[data-theme="dark"] .route-detail-card {
   background: linear-gradient(145deg, var(--surface-raised), var(--surface-tint));
+}
+
+:root[data-theme="dark"] .route-impact-earlier {
+  color: #83e2b3;
+}
+
+:root[data-theme="dark"] .route-impact-later {
+  color: #f3bd72;
 }
 
 :root[data-theme="dark"] .planner-save-status-error,

@@ -79,6 +79,25 @@ describe("route mode panel", () => {
     expect(map && details && Boolean(map.compareDocumentPosition(details) & Node.DOCUMENT_POSITION_FOLLOWING)).toBe(true);
   });
 
+  it("uses POI titles in the drawer and confirmed coordinates in its fallback navigation", () => {
+    vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_browser_key: null, google_maps_embed_enabled: false })));
+    const addressItems = [
+      { ...items[0], location_name: "日本東京都台東區上野公園完整地址" },
+      { ...items[1], location_name: "日本東京都台東區淺草完整地址" },
+    ];
+
+    render(<RouteModePanel trip={trip} items={addressItems} fromItemId="from" toItemId="to" initialSegment={{ ...initialSegment, maps_url: undefined }} onApplied={() => undefined} onError={() => undefined} />);
+
+    const endpoints = screen.getByRole("region", { name: "路線起訖與交通方式" });
+    expect(endpoints.textContent).toContain("上野");
+    expect(endpoints.textContent).toContain("淺草");
+    expect(endpoints.textContent).not.toContain("完整地址");
+    const navigation = screen.getByRole("link", { name: "導航：上野到淺草" });
+    expect(navigation.getAttribute("href")).toContain("origin=35.7000000%2C139.7000000");
+    expect(navigation.getAttribute("href")).toContain("destination=35.7100000%2C139.8000000");
+    expect(navigation.getAttribute("href")).toContain("travelmode=transit");
+  });
+
   it("auto-previews the default mode when no route has been applied", async () => {
     const noRouteTrip = {
       ...trip,
@@ -267,10 +286,16 @@ describe("route mode panel", () => {
         ...initialSegment,
         travel_mode: "walk" as const,
         duration_minutes: duration,
+        distance_meters: 1200 + index * 100,
         route_option_rank: index + 1,
         encoded_polyline: `_p~iF~ps|U_ulLnnqC_mqNvxq\`${index}`,
       },
-      schedule_impact: { affected_items: [], conflicts: [] },
+      schedule_impact: {
+        affected_items: index === 1
+          ? [{ item_id: "to", title: "淺草", delta_minutes: -65, fixed_time: false }]
+          : [],
+        conflicts: [],
+      },
     }));
     vi.stubGlobal("fetch", vi.fn(async (url: string, init?: RequestInit) => {
       if (url.endsWith("/runtime/public-config")) {
@@ -294,6 +319,9 @@ describe("route mode panel", () => {
     fireEvent.click(secondOption);
     expect(secondOption.getAttribute("aria-selected")).toBe("true");
     expect(screen.getByText(/步行 · 方案 2 · 21 分鐘/)).toBeTruthy();
+    expect(screen.getAllByText("1.3 公里").length).toBeGreaterThan(0);
+    expect(screen.queryByText("步行 0 分")).toBeNull();
+    expect(screen.getByText("可提前 65 分鐘")).toBeTruthy();
     expect(previewCalls).toBe(1);
 
     fireEvent.click(screen.getByRole("button", { name: "套用此路線" }));
