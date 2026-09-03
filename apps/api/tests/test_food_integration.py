@@ -276,8 +276,10 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         by_city = {
             city["id"]: city for country in cities["countries"] for city in country["cities"]
         }
-        assert len(by_city) == 31
+        assert len(by_city) == 33
         assert by_city["seoul"]["merchant_count"] == 1 and by_city["seoul"]["area_count"] == 4
+        assert by_city["yokohama"]["area_count"] == 4
+        assert by_city["kamakura"]["area_count"] == 4
         assert by_city["okinawa"]["merchant_count"] == 0
         assert by_city["tainan"]["parent_destination_id"] == "kaohsiung"
         assert cities["countries"][0]["code"] == "KR"
