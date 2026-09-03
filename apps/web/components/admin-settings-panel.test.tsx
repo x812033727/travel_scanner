@@ -169,9 +169,22 @@ const bookingProvider = {
   secrets: {},
 };
 
+const braveProvider = {
+  provider: "brave_guides",
+  label: "Brave 多語文章搜尋",
+  description: "多語文章搜尋",
+  enabled: false,
+  configured: false,
+  status: "disabled",
+  status_message: "已停用",
+  config: {},
+  config_sources: {},
+  secrets: {},
+};
+
 const providerTabsSnapshot = {
   ...snapshot,
-  providers: [...snapshot.providers, bookingProvider],
+  providers: [...snapshot.providers, bookingProvider, braveProvider],
   audit: [{
     id: "audit-provider",
     action: "provider_settings_updated",
@@ -215,39 +228,85 @@ const layoutSnapshot = {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("AdminSettingsPanel", () => {
-  it("renders one provider tab at a time and preserves unsaved drafts", async () => {
+  it("groups providers by category and preserves unsaved drafts across tabs", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
       new Response(JSON.stringify(providerTabsSnapshot), { status: 200 }),
     ));
     render(<AdminSettingsPanel scope="providers" />);
 
     const googleHeading = await screen.findByRole("heading", { name: "Google Maps" });
+    const categoryTabs = screen.getByRole("tablist", { name: "API 供應商分類" });
+    expect(within(categoryTabs).getAllByRole("tab").map((tab) => tab.textContent)).toEqual([
+      "地圖與路線1/1",
+      "景點內容1/2",
+      "航班與住宿資料1/1",
+      "最近管理紀錄",
+    ]);
+    expect(within(categoryTabs).getByRole("tab", { name: /地圖與路線/ }).getAttribute("aria-selected")).toBe("true");
+    const providerTabs = screen.getByRole("tablist", { name: "API 供應商設定分頁" });
+    expect(within(providerTabs).getAllByRole("tab").map((tab) => tab.textContent)).toEqual(["Google Maps"]);
+    expect(screen.queryByRole("tab", { name: "Booking.com Demand API" })).toBeNull();
+
     fireEvent.change(within(googleHeading.closest("section")!).getByLabelText(/^路線快取秒數/), {
       target: { value: "1200" },
     });
-    fireEvent.click(screen.getByRole("tab", { name: "Booking.com Demand API" }));
+    fireEvent.click(within(categoryTabs).getByRole("tab", { name: /航班與住宿資料/ }));
     expect(screen.queryByRole("heading", { name: "Google Maps" })).toBeNull();
     expect(screen.getByRole("heading", { name: "Booking.com Demand API" })).toBeTruthy();
+    expect(screen.getByRole("tab", { name: "Booking.com Demand API" }).getAttribute("aria-selected")).toBe("true");
 
-    fireEvent.click(screen.getByRole("tab", { name: "Google Maps" }));
+    fireEvent.click(within(categoryTabs).getByRole("tab", { name: /景點內容/ }));
+    expect(screen.getByRole("heading", { name: "YouTube 景點介紹" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("tab", { name: "Brave 多語文章搜尋" }));
+    expect(screen.queryByRole("heading", { name: "YouTube 景點介紹" })).toBeNull();
+    expect(screen.getByRole("heading", { name: "Brave 多語文章搜尋" })).toBeTruthy();
+
+    fireEvent.click(within(categoryTabs).getByRole("tab", { name: /地圖與路線/ }));
     expect((screen.getByLabelText(/^路線快取秒數/) as HTMLInputElement).value).toBe("1200");
-    fireEvent.click(screen.getByRole("tab", { name: "最近管理紀錄" }));
+    fireEvent.click(within(categoryTabs).getByRole("tab", { name: "最近管理紀錄" }));
     expect(screen.queryByRole("heading", { name: "Google Maps" })).toBeNull();
+    expect(screen.queryByRole("tablist", { name: "API 供應商設定分頁" })).toBeNull();
     expect(screen.getByRole("heading", { name: "最近管理紀錄" })).toBeTruthy();
   });
 
-  it("switches the single visible provider with the mobile selector", async () => {
+  it("moves between categories and providers with the keyboard", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
       new Response(JSON.stringify(providerTabsSnapshot), { status: 200 }),
     ));
     render(<AdminSettingsPanel scope="providers" />);
     await screen.findByRole("heading", { name: "Google Maps" });
 
-    fireEvent.change(screen.getByLabelText("選擇 API 供應商"), {
-      target: { value: "booking_demand" },
-    });
+    fireEvent.keyDown(screen.getByRole("tab", { name: /地圖與路線/ }), { key: "ArrowRight" });
+    expect(screen.getByRole("heading", { name: "YouTube 景點介紹" })).toBeTruthy();
+    fireEvent.keyDown(screen.getByRole("tab", { name: "YouTube 景點介紹" }), { key: "ArrowRight" });
+    expect(screen.getByRole("heading", { name: "Brave 多語文章搜尋" })).toBeTruthy();
+    fireEvent.keyDown(screen.getByRole("tab", { name: /景點內容/ }), { key: "End" });
+    expect(screen.getByRole("heading", { name: "最近管理紀錄" })).toBeTruthy();
+  });
+
+  it("switches category and provider with the mobile selectors", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
+      new Response(JSON.stringify(providerTabsSnapshot), { status: 200 }),
+    ));
+    render(<AdminSettingsPanel scope="providers" />);
+    await screen.findByRole("heading", { name: "Google Maps" });
+
+    const categorySelect = screen.getByLabelText("選擇設定分類") as HTMLSelectElement;
+    expect(categorySelect.value).toBe("maps");
+    expect(Array.from((screen.getByLabelText("選擇 API 供應商") as HTMLSelectElement).options).map((option) => option.textContent)).toEqual(["Google Maps"]);
+
+    fireEvent.change(categorySelect, { target: { value: "travelData" } });
     expect(screen.queryByRole("heading", { name: "Google Maps" })).toBeNull();
     expect(screen.getByRole("heading", { name: "Booking.com Demand API" })).toBeTruthy();
+
+    fireEvent.change(categorySelect, { target: { value: "content" } });
+    expect(screen.getByRole("heading", { name: "YouTube 景點介紹" })).toBeTruthy();
+    fireEvent.change(screen.getByLabelText("選擇 API 供應商"), { target: { value: "brave_guides" } });
+    expect(screen.getByRole("heading", { name: "Brave 多語文章搜尋" })).toBeTruthy();
+
+    fireEvent.change(categorySelect, { target: { value: "__audit" } });
+    expect(screen.queryByLabelText("選擇 API 供應商")).toBeNull();
+    expect(screen.getByRole("heading", { name: "最近管理紀錄" })).toBeTruthy();
   });
 
   it("loads and saves all layout switches without provider-only controls", async () => {
@@ -405,7 +464,7 @@ describe("AdminSettingsPanel", () => {
     render(<AdminSettingsPanel />);
 
     await screen.findByRole("heading", { name: "Google Maps" });
-    fireEvent.click(screen.getByRole("tab", { name: "YouTube 景點介紹" }));
+    fireEvent.click(screen.getByRole("tab", { name: /景點內容/ }));
     const usage = await screen.findByLabelText("YouTube Data API 今日用量");
     const searchUsed = within(usage).getByText("今日搜尋使用量").parentElement;
     const searchRemaining = within(usage).getByText("搜尋額度剩餘").parentElement;
