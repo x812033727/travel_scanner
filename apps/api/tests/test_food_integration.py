@@ -9,21 +9,39 @@ from sqlalchemy import delete, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import SessionFactory, engine
-from app.foods.admin_router import FoodBatchPayload, batch_foods
-from app.foods.service import food_facets, list_foods, seed_food_catalog
+from app.foods.admin_router import (
+    FoodAreaWritePayload,
+    FoodBatchPayload,
+    FoodMerchantUpdatePayload,
+    batch_foods,
+    create_food_area,
+    update_food_merchant,
+)
+from app.foods.service import (
+    food_facets,
+    list_foods,
+    list_merchants,
+    merchant_categories,
+    merchant_cities,
+    seed_food_catalog,
+)
 from app.hotspots.service import seed_catalog
 from app.models import (
     AdminAuditLog,
+    FoodArea,
+    FoodCategory,
     FoodDestination,
     FoodHotspot,
     FoodLocalization,
     FoodMerchant,
+    FoodMerchantCategory,
     FoodMerchantFood,
     FoodMerchantSource,
     TravelFood,
     TravelHotspot,
     User,
 )
+from app.problems import AppError
 from app.restaurants.admin_sources_router import restaurant_editorial_coverage
 
 pytestmark = pytest.mark.skipif(
@@ -42,7 +60,10 @@ async def dispose_engine_after_module() -> AsyncIterator[None]:
 async def _clear(session: AsyncSession) -> None:
     await session.execute(delete(FoodMerchantSource))
     await session.execute(delete(FoodMerchantFood))
+    await session.execute(delete(FoodMerchantCategory))
     await session.execute(delete(FoodMerchant))
+    await session.execute(delete(FoodArea))
+    await session.execute(delete(FoodCategory))
     await session.execute(delete(FoodHotspot))
     await session.execute(delete(FoodDestination))
     await session.execute(delete(FoodLocalization))
@@ -67,6 +88,27 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         assert int(await session.scalar(select(func.count(FoodMerchant.id))) or 0) == 155
         assert int(await session.scalar(select(func.count(FoodMerchantFood.id))) or 0) == 173
         assert int(await session.scalar(select(func.count(FoodMerchantSource.id))) or 0) == 202
+        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == 124
+        assert int(await session.scalar(select(func.count(FoodCategory.id))) or 0) == 18
+        assert int(await session.scalar(select(func.count(FoodMerchantCategory.id))) or 0) == 242
+        assert (
+            int(
+                await session.scalar(
+                    select(func.count(FoodMerchant.id)).where(FoodMerchant.area_id.is_not(None))
+                )
+                or 0
+            )
+            == 71
+        )
+        assert (
+            int(
+                await session.scalar(
+                    select(func.count(FoodMerchant.id)).where(FoodMerchant.area_source == "seed")
+                )
+                or 0
+            )
+            == 71
+        )
         assert (
             int(
                 await session.scalar(
@@ -128,8 +170,26 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             is_active=True,
             verified_at=datetime.now(UTC),
         )
+        myeongdong = await session.scalar(
+            select(FoodArea).where(FoodArea.slug == "seoul-myeongdong")
+        )
+        home_style = await session.scalar(
+            select(FoodCategory).where(FoodCategory.slug == "home-style")
+        )
+        assert myeongdong is not None and home_style is not None
+        merchant.area_id = myeongdong.id
+        merchant.area_source = "admin"
         session.add(merchant)
         await session.flush()
+        session.add(
+            FoodMerchantCategory(
+                merchant_id=merchant.id,
+                category_id=home_style.id,
+                is_primary=True,
+                display_order=1,
+                source="admin",
+            )
+        )
         session.add(
             FoodMerchantFood(
                 merchant_id=merchant.id,
@@ -165,12 +225,115 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         facets = await food_facets(session)
         assert facets["total"] == 70
         assert len(facets["countries"]) == 7
+        assert published_merchants[0]["area"]["slug"] == "seoul-myeongdong"
+        assert published_merchants[0]["categories"][0]["slug"] == "home-style"
+
+        directory = await list_merchants(session, locale="ko", destination_id="seoul")
+        assert directory["total"] == 1 and directory["has_more"] is False
+        card = directory["items"][0]
+        assert card["area"]["slug"] == "seoul-myeongdong"
+        assert card["area"]["name"] == "명동"
+        assert card["categories"] == [
+            {"slug": "home-style", "name": "정식·백반", "is_primary": True}
+        ]
+        assert card["signature_dishes"] and card["signature_dishes"][0]["food_id"] == str(
+            korean_food.id
+        )
+        assert card["map_links"][0]["provider"] == "naver"
+        assert card["destination_name"] == "首爾"
+        facet_areas = {
+            area["slug"]: area["merchant_count"] for area in directory["facets"]["areas"]
+        }
+        assert facet_areas["seoul-myeongdong"] == 1 and facet_areas["seoul-hongdae"] == 0
+        assert directory["facets"]["unassigned_area_count"] == 0
+        facet_categories = {
+            item["slug"]: item["merchant_count"] for item in directory["facets"]["categories"]
+        }
+        assert facet_categories["home-style"] == 1 and facet_categories["ramen"] == 0
+        assert (
+            await list_merchants(
+                session, locale="zh-TW", destination_id="seoul", area_slug="seoul-myeongdong"
+            )
+        )["total"] == 1
+        assert (
+            await list_merchants(session, locale="zh-TW", destination_id="seoul", area_slug="other")
+        )["total"] == 0
+        assert (
+            await list_merchants(
+                session, locale="zh-TW", destination_id="seoul", category_slug="street-food"
+            )
+        )["total"] == 0
+        assert (await list_merchants(session, locale="zh-TW", q="검증"))["total"] == 1
+        assert (await list_merchants(session, locale="zh-TW", destination_id="tokyo"))["total"] == 0
+        with pytest.raises(AppError) as unknown_area:
+            await list_merchants(session, locale="zh-TW", area_slug="seoul-nowhere")
+        assert unknown_area.value.code == "food_area_not_found"
+        cities = await merchant_cities(session, locale="zh-TW")
+        assert cities["total_merchants"] == 1
+        by_city = {
+            city["id"]: city for country in cities["countries"] for city in country["cities"]
+        }
+        assert len(by_city) == 31
+        assert by_city["seoul"]["merchant_count"] == 1 and by_city["seoul"]["area_count"] == 4
+        assert by_city["okinawa"]["merchant_count"] == 0
+        assert by_city["tainan"]["parent_destination_id"] == "kaohsiung"
+        assert cities["countries"][0]["code"] == "KR"
+        seoul_categories = await merchant_categories(session, locale="en", destination_id="seoul")
+        assert {item["slug"]: item["merchant_count"] for item in seoul_categories["items"]}[
+            "home-style"
+        ] == 1
 
         seeded_merchant = await session.scalar(
             select(FoodMerchant).where(FoodMerchant.slug == "taipei-din-tai-fung")
         )
         assert seeded_merchant is not None
         seeded_merchant.official_website_url = "https://example.test/admin-verified"
+        ximending = await session.scalar(
+            select(FoodArea).where(FoodArea.slug == "taipei-ximending")
+        )
+        assert ximending is not None
+        seeded_merchant.area_id = ximending.id
+        seeded_merchant.area_source = "admin"
+        await session.execute(
+            delete(FoodMerchantCategory).where(
+                FoodMerchantCategory.merchant_id == seeded_merchant.id
+            )
+        )
+        session.add(
+            FoodMerchantCategory(
+                merchant_id=seeded_merchant.id,
+                category_id=home_style.id,
+                is_primary=True,
+                display_order=1,
+                source="admin",
+            )
+        )
+        cleared_merchant = await session.scalar(
+            select(FoodMerchant).where(FoodMerchant.slug == "seoul-lees-gimbap")
+        )
+        assert cleared_merchant is not None and cleared_merchant.area_id is not None
+        cleared_merchant.area_id = None
+        cleared_merchant.area_source = "admin"
+        backfilled_merchant = await session.scalar(
+            select(FoodMerchant).where(FoodMerchant.slug == "tokyo-ichiran-shibuya")
+        )
+        assert backfilled_merchant is not None
+        await session.execute(
+            delete(FoodMerchantCategory).where(
+                FoodMerchantCategory.merchant_id == backfilled_merchant.id
+            )
+        )
+        disabled_area = await session.scalar(select(FoodArea).where(FoodArea.slug == "tokyo-umeda"))
+        renamed_category = await session.scalar(
+            select(FoodCategory).where(FoodCategory.slug == "ramen")
+        )
+        assert disabled_area is None  # umeda belongs to osaka-kyoto
+        disabled_area = await session.scalar(
+            select(FoodArea).where(FoodArea.slug == "osaka-kyoto-umeda")
+        )
+        assert disabled_area is not None and renamed_category is not None
+        disabled_area.is_active = False
+        renamed_category.names_json = {**renamed_category.names_json, "zh-TW": "拉麵專門店"}
 
         disabled = await session.scalar(select(TravelFood).order_by(TravelFood.slug).limit(1))
         assert disabled is not None
@@ -191,6 +354,50 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         )
         assert seeded_merchant is not None
         assert seeded_merchant.official_website_url == "https://example.test/admin-verified"
+        ximending = await session.scalar(
+            select(FoodArea).where(FoodArea.slug == "taipei-ximending")
+        )
+        assert ximending is not None and seeded_merchant.area_id == ximending.id
+        seeded_links = list(
+            (
+                await session.scalars(
+                    select(FoodMerchantCategory).where(
+                        FoodMerchantCategory.merchant_id == seeded_merchant.id
+                    )
+                )
+            ).all()
+        )
+        assert [link.source for link in seeded_links] == ["admin"]
+        cleared_merchant = await session.scalar(
+            select(FoodMerchant).where(FoodMerchant.slug == "seoul-lees-gimbap")
+        )
+        assert cleared_merchant is not None and cleared_merchant.area_id is None
+        backfilled_merchant = await session.scalar(
+            select(FoodMerchant).where(FoodMerchant.slug == "tokyo-ichiran-shibuya")
+        )
+        assert backfilled_merchant is not None
+        assert (
+            int(
+                await session.scalar(
+                    select(func.count(FoodMerchantCategory.id)).where(
+                        FoodMerchantCategory.merchant_id == backfilled_merchant.id
+                    )
+                )
+                or 0
+            )
+            == 1
+        )
+        assert int(await session.scalar(select(func.count(FoodMerchantCategory.id))) or 0) == 242
+        disabled_area = await session.scalar(
+            select(FoodArea).where(FoodArea.slug == "osaka-kyoto-umeda")
+        )
+        assert disabled_area is not None and disabled_area.is_active is False
+        renamed_category = await session.scalar(
+            select(FoodCategory).where(FoodCategory.slug == "ramen")
+        )
+        assert renamed_category is not None and renamed_category.names_json["zh-TW"] == "拉麵專門店"
+        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == 124
+        assert int(await session.scalar(select(func.count(FoodCategory.id))) or 0) == 18
 
         admin = User(
             email="food-admin-integration@example.test",
@@ -199,6 +406,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         )
         session.add(admin)
         await session.flush()
+        admin_id = admin.id
         candidate = await session.scalar(
             select(TravelFood).where(TravelFood.review_status == "approved").limit(1)
         )
@@ -217,7 +425,86 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             )
         )
         assert audit is not None
-        await session.delete(audit)
+
+        created_area = await create_food_area(
+            FoodAreaWritePayload(
+                slug="seoul-euljiro",
+                destination_id="seoul",
+                names={
+                    "zh-TW": "乙支路",
+                    "zh-CN": "乙支路",
+                    "en": "Euljiro",
+                    "ja": "乙支路",
+                    "ko": "을지로",
+                },
+                latitude=37.566,
+                longitude=126.991,
+            ),
+            admin,
+            session,
+        )
+        assert created_area["country_code"] == "KR" and created_area["source"] == "admin"
+        verified = await session.scalar(
+            select(FoodMerchant).where(
+                FoodMerchant.slug == "integration-verified-korean-merchant"
+            )
+        )
+        assert verified is not None
+        with pytest.raises(AppError) as mismatch:
+            await update_food_merchant(
+                verified.id,
+                FoodMerchantUpdatePayload(area_slug="taipei-ximending"),
+                admin,
+                session,
+            )
+        assert mismatch.value.code == "merchant_area_destination_mismatch"
+        await session.rollback()
+        admin = await session.get(User, admin_id)
+        assert admin is not None
+        verified = await session.scalar(
+            select(FoodMerchant).where(
+                FoodMerchant.slug == "integration-verified-korean-merchant"
+            )
+        )
+        assert verified is not None
+        linked_food_ids = list(
+            (
+                await session.scalars(
+                    select(FoodMerchantFood.food_id).where(
+                        FoodMerchantFood.merchant_id == verified.id
+                    )
+                )
+            ).all()
+        )
+        updated = await update_food_merchant(
+            verified.id,
+            FoodMerchantUpdatePayload(
+                area_slug="seoul-euljiro",
+                category_slugs=["home-style", "rice-dishes"],
+                food_ids=linked_food_ids,
+            ),
+            admin,
+            session,
+        )
+        assert updated["area"]["slug"] == "seoul-euljiro"
+        assert updated["area_source"] == "admin"
+        assert [item["slug"] for item in updated["categories"]] == ["home-style", "rice-dishes"]
+        assert [item["is_primary"] for item in updated["categories"]] == [True, False]
+        with pytest.raises(AppError) as no_category:
+            await update_food_merchant(
+                verified.id,
+                FoodMerchantUpdatePayload(category_slugs=[]),
+                admin,
+                session,
+            )
+        assert no_category.value.code == "merchant_category_required"
+        await session.rollback()
+        admin = await session.get(User, admin_id)
+        assert admin is not None
+
+        await session.execute(delete(AdminAuditLog).where(AdminAuditLog.actor_user_id == admin.id))
+        admin = await session.get(User, admin_id)
+        assert admin is not None
         await session.delete(admin)
         await session.commit()
         await _clear(session)

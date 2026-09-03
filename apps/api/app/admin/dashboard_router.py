@@ -6,7 +6,15 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import AdminUser, can_deploy_user
 from app.db import get_session
-from app.models import FoodMerchant, HotspotGuide, TravelFood, TravelHotspot, User
+from app.foods.publication import publishable_merchant_filters
+from app.models import (
+    FoodMerchant,
+    FoodMerchantCategory,
+    HotspotGuide,
+    TravelFood,
+    TravelHotspot,
+    User,
+)
 
 router = APIRouter(prefix="/admin/dashboard", tags=["admin dashboard"])
 Session = Annotated[AsyncSession, Depends(get_session)]
@@ -40,6 +48,18 @@ async def dashboard(user: AdminUser, session: Session) -> dict[str, Any]:
             "merchants_pending": await _count(
                 session, FoodMerchant, FoodMerchant.review_status == "pending"
             ),
+            "merchants_missing_area": await _count(
+                session,
+                FoodMerchant,
+                *publishable_merchant_filters(),
+                FoodMerchant.area_id.is_(None),
+            ),
+            "merchants_missing_category": await _count(
+                session,
+                FoodMerchant,
+                *publishable_merchant_filters(),
+                FoodMerchant.id.not_in(select(FoodMerchantCategory.merchant_id)),
+            ),
             "guides_pending": await _count(
                 session, HotspotGuide, HotspotGuide.review_status == "pending"
             ),
@@ -47,6 +67,11 @@ async def dashboard(user: AdminUser, session: Session) -> dict[str, Any]:
         "quick_actions": [
             {"id": "review_hotspots", "href": "/admin/hotspots", "count_key": "hotspots_pending"},
             {"id": "review_merchants", "href": "/admin/foods", "count_key": "merchants_pending"},
+            {
+                "id": "categorise_merchants",
+                "href": "/admin/foods?taxonomy=missing_area",
+                "count_key": "merchants_missing_area",
+            },
             {"id": "manage_users", "href": "/admin/users", "count_key": "users"},
         ],
         "can_deploy": can_deploy_user(user),

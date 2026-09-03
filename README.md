@@ -209,6 +209,16 @@ checks hide controlled entries and show an unavailable state. Layout changes
 use the `layout_settings_updated` audit action with the operator, fields that
 actually changed, and resulting visibility values.
 
+Food merchants are browsed by city, sub-city area (商圈) and site-wide cuisine
+category. Areas (`food_areas`, seeded 1:1 from each destination profile's
+`areas`) and categories (`food_categories`, 18 seeded) are managed under
+`/admin/foods`; merchants carry an optional area plus one or more categories, and
+publishing a merchant requires at least one category. Seeds only fill gaps:
+anything an administrator sets or clears stays that way. After deploying a
+release that adds taxonomy data, run `python -m app.cli seed-foods` inside the
+API container so the tables are populated without waiting for the hotspot
+collector, which only runs under the `hotspots` compose profile.
+
 The API and keys page separately manages encrypted credentials for Google Maps,
 NAVER Maps, Amadeus, Skyscanner, Duffel, FlightAware, Google Travel Impact, NAVITIME and
 affiliate providers. Desktop uses keyboard-accessible, horizontally scrollable

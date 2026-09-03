@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from datetime import UTC, datetime
 from decimal import Decimal
 from typing import Annotated, Literal
@@ -13,6 +14,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.auth.service import AdminUser
 from app.db import escape_like, get_session
 from app.destinations.catalog import destination_for_id
+from app.foods.category_catalog import categories_for_dishes
+from app.foods.service import destination_country_code, localized_name
 from app.hotspots.maps import has_exact_map_identity
 from app.i18n import LOCALES, Locale
 from app.infra import get_redis
@@ -24,10 +27,13 @@ from app.locations.coordinates import (
 from app.locations.google_match import preview_google_place_match
 from app.models import (
     AdminAuditLog,
+    FoodArea,
+    FoodCategory,
     FoodDestination,
     FoodHotspot,
     FoodLocalization,
     FoodMerchant,
+    FoodMerchantCategory,
     FoodMerchantFood,
     FoodMerchantSource,
     TravelFood,
@@ -155,11 +161,14 @@ class FoodMerchantWritePayload(BaseModel):
     review_status: ReviewStatus = "pending"
     is_active: bool = True
     display_order: int = Field(default=100, ge=0, le=10_000)
-    food_ids: list[UUID] = Field(min_length=1, max_length=70)
+    food_ids: list[UUID] = Field(default_factory=list, max_length=70)
     sources: list[FoodMerchantSourcePayload] = Field(min_length=1, max_length=20)
+    area_slug: str | None = Field(default=None, min_length=2, max_length=128)
+    category_slugs: list[str] = Field(default_factory=list, max_length=6)
 
     @model_validator(mode="after")
     def validate_location_fields(self) -> FoodMerchantWritePayload:
+        _validate_category_slugs(self.category_slugs)
         if (self.latitude is None) != (self.longitude is None):
             raise ValueError("緯度與經度必須同時提供")
         if self.coordinate_source_url and not self.coordinate_source_url.startswith("https://"):
@@ -196,13 +205,17 @@ class FoodMerchantUpdatePayload(BaseModel):
     review_status: ReviewStatus | None = None
     is_active: bool | None = None
     display_order: int | None = Field(default=None, ge=0, le=10_000)
-    food_ids: list[UUID] | None = Field(default=None, min_length=1, max_length=70)
+    food_ids: list[UUID] | None = Field(default=None, max_length=70)
     sources: list[FoodMerchantSourcePayload] | None = Field(
         default=None, min_length=1, max_length=20
     )
+    area_slug: str | None = Field(default=None, min_length=2, max_length=128)
+    category_slugs: list[str] | None = Field(default=None, max_length=6)
 
     @model_validator(mode="after")
     def validate_source_url(self) -> FoodMerchantUpdatePayload:
+        if self.category_slugs is not None:
+            _validate_category_slugs(self.category_slugs)
         if self.coordinate_source_url and not self.coordinate_source_url.startswith("https://"):
             raise ValueError("座標來源必須是 HTTPS 網址")
         if self.official_website_url:
@@ -240,6 +253,244 @@ class GoogleMapCandidateRequest(BaseModel):
         if (self.latitude is None) != (self.longitude is None):
             raise ValueError("緯度與經度必須同時提供")
         return self
+
+
+SLUG_FIELD_PATTERN = r"^[a-z0-9]+(?:-[a-z0-9]+)*$"
+TaxonomyStatus = Literal["active", "disabled"]
+MerchantTaxonomyFilter = Literal["missing_area", "missing_category"]
+
+
+def _validate_names(names: dict[str, str]) -> dict[str, str]:
+    cleaned = {locale: value.strip() for locale, value in names.items()}
+    if set(cleaned) != set(LOCALES):
+        raise ValueError("名稱必須包含且僅包含五種網站語系")
+    if any(not value or len(value) > 255 for value in cleaned.values()):
+        raise ValueError("每個語系的名稱都必須填寫且不超過 255 字")
+    return cleaned
+
+
+def _validate_category_slugs(slugs: list[str]) -> None:
+    if len(set(slugs)) != len(slugs):
+        raise ValueError("美食分類不可重複")
+    if any(not re.match(SLUG_FIELD_PATTERN, slug) for slug in slugs):
+        raise ValueError("美食分類 slug 格式不正確")
+
+
+class FoodAreaWritePayload(BaseModel):
+    slug: str = Field(pattern=SLUG_FIELD_PATTERN, max_length=128)
+    destination_id: str = Field(min_length=2, max_length=64)
+    names: dict[str, str]
+    match_terms: list[str] = Field(default_factory=list, max_length=20)
+    latitude: float | None = Field(default=None, ge=-90, le=90)
+    longitude: float | None = Field(default=None, ge=-180, le=180)
+    is_active: bool = True
+    display_order: int = Field(default=100, ge=0, le=10_000)
+
+    @model_validator(mode="after")
+    def validate_fields(self) -> FoodAreaWritePayload:
+        self.names = _validate_names(self.names)
+        if (self.latitude is None) != (self.longitude is None):
+            raise ValueError("緯度與經度必須同時提供")
+        return self
+
+
+class FoodAreaUpdatePayload(BaseModel):
+    destination_id: str | None = Field(default=None, min_length=2, max_length=64)
+    names: dict[str, str] | None = None
+    match_terms: list[str] | None = Field(default=None, max_length=20)
+    latitude: float | None = Field(default=None, ge=-90, le=90)
+    longitude: float | None = Field(default=None, ge=-180, le=180)
+    is_active: bool | None = None
+    display_order: int | None = Field(default=None, ge=0, le=10_000)
+
+    @model_validator(mode="after")
+    def validate_fields(self) -> FoodAreaUpdatePayload:
+        if self.names is not None:
+            self.names = _validate_names(self.names)
+        return self
+
+
+class FoodCategoryWritePayload(BaseModel):
+    slug: str = Field(pattern=SLUG_FIELD_PATTERN, max_length=128)
+    names: dict[str, str]
+    is_active: bool = True
+    display_order: int = Field(default=100, ge=0, le=10_000)
+
+    @model_validator(mode="after")
+    def validate_fields(self) -> FoodCategoryWritePayload:
+        self.names = _validate_names(self.names)
+        return self
+
+
+class FoodCategoryUpdatePayload(BaseModel):
+    names: dict[str, str] | None = None
+    is_active: bool | None = None
+    display_order: int | None = Field(default=None, ge=0, le=10_000)
+
+    @model_validator(mode="after")
+    def validate_fields(self) -> FoodCategoryUpdatePayload:
+        if self.names is not None:
+            self.names = _validate_names(self.names)
+        return self
+
+
+class TaxonomyBatchPayload(BaseModel):
+    ids: list[UUID] = Field(min_length=1, max_length=100)
+    action: Literal["activate", "deactivate"]
+    reason: str | None = Field(default=None, max_length=500)
+
+
+def build_food_search_text(
+    slug: str,
+    country_code: str,
+    local_name: str,
+    romanized_name: str,
+    localized_names: list[str],
+    ingredient_tags: list[str],
+) -> str:
+    """Mirror ``FoodSeed.search_text`` so admin edits stay searchable in every locale."""
+
+    parts = [slug, country_code, local_name, romanized_name, *localized_names, *ingredient_tags]
+    return " ".join(part for part in parts if part).casefold()
+
+
+async def _derived_category_slugs(session: AsyncSession, food_ids: list[UUID]) -> list[str]:
+    if not food_ids:
+        return []
+    slugs = tuple(
+        (await session.scalars(select(TravelFood.slug).where(TravelFood.id.in_(food_ids)))).all()
+    )
+    return list(categories_for_dishes(slugs))
+
+
+async def _validate_merchant_taxonomy(
+    session: AsyncSession,
+    *,
+    destination_id: str,
+    area_slug: str | None,
+    category_slugs: list[str],
+) -> tuple[FoodArea | None, list[FoodCategory]]:
+    area: FoodArea | None = None
+    if area_slug:
+        area = await session.scalar(select(FoodArea).where(FoodArea.slug == area_slug))
+        if area is None:
+            raise AppError(404, "food_area_not_found", "找不到這個區域")
+        if not area.is_active:
+            raise AppError(422, "food_area_inactive", "這個區域已停用")
+        if area.destination_id != destination_id.casefold():
+            raise AppError(
+                422, "merchant_area_destination_mismatch", "區域必須屬於店家所在的目的地"
+            )
+    categories: list[FoodCategory] = []
+    if category_slugs:
+        rows = {
+            row.slug: row
+            for row in (
+                await session.scalars(
+                    select(FoodCategory).where(FoodCategory.slug.in_(category_slugs))
+                )
+            ).all()
+        }
+        if any(slug not in rows for slug in category_slugs):
+            raise AppError(404, "food_category_not_found", "部分美食分類不存在")
+        if any(not rows[slug].is_active for slug in category_slugs):
+            raise AppError(422, "food_category_inactive", "部分美食分類已停用")
+        categories = [rows[slug] for slug in category_slugs]
+    return area, categories
+
+
+def _require_merchant_categories(count: int) -> None:
+    if count <= 0:
+        raise AppError(422, "merchant_category_required", "發布前必須至少指定一個美食分類")
+
+
+async def _replace_merchant_categories(
+    session: AsyncSession,
+    merchant: FoodMerchant,
+    categories: list[FoodCategory],
+    *,
+    source: str,
+) -> None:
+    rows = list(
+        (
+            await session.scalars(
+                select(FoodMerchantCategory).where(FoodMerchantCategory.merchant_id == merchant.id)
+            )
+        ).all()
+    )
+    for row in rows:
+        await session.delete(row)
+    await session.flush()
+    for order, category in enumerate(categories, start=1):
+        session.add(
+            FoodMerchantCategory(
+                merchant_id=merchant.id,
+                category_id=category.id,
+                is_primary=order == 1,
+                display_order=order,
+                source=source,
+            )
+        )
+
+
+async def _ensure_merchant_categories(
+    session: AsyncSession, merchant: FoodMerchant, category_counts: dict[UUID, int]
+) -> None:
+    """Publishing requires a category; derive one from the linked dishes when none is set."""
+
+    if category_counts.get(merchant.id, 0) > 0:
+        return
+    food_ids = list(
+        (
+            await session.scalars(
+                select(FoodMerchantFood.food_id).where(FoodMerchantFood.merchant_id == merchant.id)
+            )
+        ).all()
+    )
+    _, categories = await _validate_merchant_taxonomy(
+        session,
+        destination_id=merchant.destination_id,
+        area_slug=None,
+        category_slugs=await _derived_category_slugs(session, food_ids),
+    )
+    _require_merchant_categories(len(categories))
+    await _replace_merchant_categories(session, merchant, categories, source="seed")
+    category_counts[merchant.id] = len(categories)
+
+
+def _area_admin_item(area: FoodArea, merchant_count: int = 0) -> dict[str, object]:
+    profile = destination_for_id(area.destination_id)
+    return {
+        "id": str(area.id),
+        "slug": area.slug,
+        "destination_id": area.destination_id,
+        "destination_name": profile.city if profile else area.destination_id,
+        "country_code": area.country_code,
+        "name": localized_name(area.names_json, "zh-TW"),
+        "names": area.names_json,
+        "match_terms": area.match_terms_json,
+        "latitude": float(area.latitude) if area.latitude is not None else None,
+        "longitude": float(area.longitude) if area.longitude is not None else None,
+        "is_active": area.is_active,
+        "display_order": area.display_order,
+        "source": area.source,
+        "merchant_count": merchant_count,
+        "updated_at": area.updated_at,
+    }
+
+
+def _category_admin_item(category: FoodCategory, merchant_count: int = 0) -> dict[str, object]:
+    return {
+        "id": str(category.id),
+        "slug": category.slug,
+        "name": localized_name(category.names_json, "zh-TW"),
+        "names": category.names_json,
+        "is_active": category.is_active,
+        "display_order": category.display_order,
+        "source": category.source,
+        "merchant_count": merchant_count,
+        "updated_at": category.updated_at,
+    }
 
 
 async def _validate_relations(
@@ -281,6 +532,7 @@ async def _replace_relations(
         )
         for destination_relation in destination_relations:
             await session.delete(destination_relation)
+        await session.flush()
         for order, destination_id in enumerate(destination_ids, start=1):
             session.add(
                 FoodDestination(
@@ -295,6 +547,7 @@ async def _replace_relations(
         )
         for hotspot_relation in hotspot_relations:
             await session.delete(hotspot_relation)
+        await session.flush()
         for order, hotspot_id in enumerate(hotspot_ids, start=1):
             session.add(FoodHotspot(food_id=food.id, hotspot_id=hotspot_id, display_order=order))
 
@@ -433,9 +686,13 @@ async def create_food(
         meal_types=payload.meal_types,
         ingredient_tags=payload.ingredient_tags,
         dietary_notes=payload.dietary_notes,
-        search_text=" ".join(
-            [payload.slug, payload.local_name, payload.romanized_name]
-            + [item.name for item in payload.localizations]
+        search_text=build_food_search_text(
+            payload.slug,
+            payload.country_code.upper(),
+            payload.local_name,
+            payload.romanized_name,
+            [item.name for item in payload.localizations],
+            payload.ingredient_tags,
         ),
         source_urls=payload.source_urls,
         review_status=payload.review_status,
@@ -494,7 +751,22 @@ async def update_food(
             setattr(food, field, value.upper() if field == "country_code" else value)
     await _upsert_localizations(session, food, payload.localizations)
     await _replace_relations(session, food, payload.destination_ids, payload.hotspot_ids)
-    food.search_text = f"{food.slug} {food.local_name} {food.romanized_name}"
+    localized_names = [
+        row.name
+        for row in (
+            await session.scalars(
+                select(FoodLocalization).where(FoodLocalization.food_id == food.id)
+            )
+        ).all()
+    ]
+    food.search_text = build_food_search_text(
+        food.slug,
+        food.country_code,
+        food.local_name,
+        food.romanized_name,
+        localized_names,
+        food.ingredient_tags,
+    )
     session.add(
         AdminAuditLog(
             actor_user_id=user.id,
@@ -607,6 +879,7 @@ async def _replace_merchant_relations(
         )
         for row in rows:
             await session.delete(row)
+        await session.flush()
         for order, food_id in enumerate(food_ids, start=1):
             session.add(
                 FoodMerchantFood(
@@ -626,6 +899,7 @@ async def _replace_merchant_relations(
         )
         for source_row in source_rows:
             await session.delete(source_row)
+        await session.flush()
         for source in sources:
             session.add(
                 FoodMerchantSource(
@@ -661,6 +935,15 @@ async def _merchant_admin_item(session: AsyncSession, merchant: FoodMerchant) ->
             )
         ).all()
     )
+    area = await session.get(FoodArea, merchant.area_id) if merchant.area_id else None
+    category_rows = (
+        await session.execute(
+            select(FoodMerchantCategory, FoodCategory)
+            .join(FoodCategory, FoodCategory.id == FoodMerchantCategory.category_id)
+            .where(FoodMerchantCategory.merchant_id == merchant.id)
+            .order_by(FoodMerchantCategory.is_primary.desc(), FoodMerchantCategory.display_order)
+        )
+    ).all()
     return {
         "id": str(merchant.id),
         "slug": merchant.slug,
@@ -683,6 +966,27 @@ async def _merchant_admin_item(session: AsyncSession, merchant: FoodMerchant) ->
         "is_active": merchant.is_active,
         "verified_at": merchant.verified_at,
         "display_order": merchant.display_order,
+        "area": (
+            {
+                "id": str(area.id),
+                "slug": area.slug,
+                "name": localized_name(area.names_json, "zh-TW"),
+                "destination_id": area.destination_id,
+            }
+            if area
+            else None
+        ),
+        "area_source": merchant.area_source,
+        "categories": [
+            {
+                "id": str(category.id),
+                "slug": category.slug,
+                "name": localized_name(category.names_json, "zh-TW"),
+                "is_primary": link.is_primary,
+                "source": link.source,
+            }
+            for link, category in category_rows
+        ],
         "foods": [
             {"id": str(food_id), "slug": slug, "name": name} for food_id, slug, name in foods
         ],
@@ -712,6 +1016,9 @@ async def list_food_merchants(
     status: ReviewStatus | None = None,
     map_status: MapMatchStatus | None = None,
     official_data: Literal["filled", "missing"] | None = None,
+    area_slug: Annotated[str | None, Query(min_length=2, max_length=128)] = None,
+    category: Annotated[str | None, Query(min_length=2, max_length=128)] = None,
+    taxonomy: MerchantTaxonomyFilter | None = None,
     q: Annotated[str | None, Query(max_length=100)] = None,
     page: Annotated[int, Query(ge=1)] = 1,
     limit: Annotated[int, Query(ge=1, le=100)] = 30,
@@ -724,6 +1031,22 @@ async def list_food_merchants(
         filters.append(FoodMerchant.review_status == status)
     if map_status:
         filters.append(FoodMerchant.map_match_status == map_status)
+    if area_slug:
+        filters.append(
+            FoodMerchant.area_id.in_(select(FoodArea.id).where(FoodArea.slug == area_slug))
+        )
+    if category:
+        filters.append(
+            FoodMerchant.id.in_(
+                select(FoodMerchantCategory.merchant_id)
+                .join(FoodCategory, FoodCategory.id == FoodMerchantCategory.category_id)
+                .where(FoodCategory.slug == category)
+            )
+        )
+    if taxonomy == "missing_area":
+        filters.append(FoodMerchant.area_id.is_(None))
+    elif taxonomy == "missing_category":
+        filters.append(FoodMerchant.id.not_in(select(FoodMerchantCategory.merchant_id)))
     if official_data == "filled":
         filters.append(FoodMerchant.official_website_url.is_not(None))
     elif official_data == "missing":
@@ -787,6 +1110,17 @@ async def create_food_merchant(
         google_place_id=payload.google_place_id,
         naver_map_url=payload.naver_map_url,
     )
+    category_slugs = payload.category_slugs or await _derived_category_slugs(
+        session, payload.food_ids
+    )
+    area, categories = await _validate_merchant_taxonomy(
+        session,
+        destination_id=payload.destination_id,
+        area_slug=payload.area_slug,
+        category_slugs=category_slugs,
+    )
+    if payload.review_status == "approved" and payload.is_active:
+        _require_merchant_categories(len(categories))
     if (
         payload.review_status == "approved"
         and payload.is_active
@@ -837,10 +1171,15 @@ async def create_food_merchant(
         verified_at=now if payload.map_match_status == "verified" else None,
         verified_by_user_id=user.id if payload.map_match_status == "verified" else None,
         display_order=payload.display_order,
+        area_id=area.id if area else None,
+        area_source="admin" if area else None,
     )
     session.add(merchant)
     await session.flush()
     await _replace_merchant_relations(session, merchant, payload.food_ids, payload.sources)
+    await _replace_merchant_categories(
+        session, merchant, categories, source="admin" if payload.category_slugs else "seed"
+    )
     session.add(
         AdminAuditLog(
             actor_user_id=user.id,
@@ -863,13 +1202,14 @@ async def update_food_merchant(
     merchant = await session.get(FoodMerchant, merchant_id)
     if merchant is None:
         raise AppError(404, "food_merchant_not_found", "找不到這筆店家資料")
-    food_ids = payload.food_ids or list(
+    existing_food_ids = list(
         (
             await session.scalars(
                 select(FoodMerchantFood.food_id).where(FoodMerchantFood.merchant_id == merchant.id)
             )
         ).all()
     )
+    food_ids = payload.food_ids if payload.food_ids is not None else existing_food_ids
     destination_id = payload.destination_id or merchant.destination_id
     google_place_id = (
         payload.google_place_id
@@ -954,6 +1294,42 @@ async def update_food_merchant(
         naver_map_url=naver_map_url,
         current_id=merchant.id,
     )
+    current_area = await session.get(FoodArea, merchant.area_id) if merchant.area_id else None
+    area_slug = (
+        payload.area_slug
+        if "area_slug" in payload.model_fields_set
+        else (current_area.slug if current_area else None)
+    )
+    area, categories = await _validate_merchant_taxonomy(
+        session,
+        destination_id=destination_id,
+        area_slug=area_slug,
+        category_slugs=payload.category_slugs or [],
+    )
+    existing_category_count = int(
+        await session.scalar(
+            select(func.count(FoodMerchantCategory.id)).where(
+                FoodMerchantCategory.merchant_id == merchant.id
+            )
+        )
+        or 0
+    )
+    new_categories: list[FoodCategory] | None = None
+    new_category_source = "admin"
+    if payload.category_slugs is not None:
+        new_categories = categories
+    elif existing_category_count == 0 and food_ids:
+        _, new_categories = await _validate_merchant_taxonomy(
+            session,
+            destination_id=destination_id,
+            area_slug=None,
+            category_slugs=await _derived_category_slugs(session, food_ids),
+        )
+        new_category_source = "seed"
+    if review_status == "approved" and is_active:
+        _require_merchant_categories(
+            len(new_categories) if new_categories is not None else existing_category_count
+        )
     scalar_fields = (
         "destination_id",
         "country_code",
@@ -1006,6 +1382,13 @@ async def update_food_merchant(
         merchant.verified_at = None
         merchant.verified_by_user_id = None
     await _replace_merchant_relations(session, merchant, payload.food_ids, payload.sources)
+    if "area_slug" in payload.model_fields_set:
+        merchant.area_id = area.id if area else None
+        merchant.area_source = "admin"
+    if new_categories is not None:
+        await _replace_merchant_categories(
+            session, merchant, new_categories, source=new_category_source
+        )
     session.add(
         AdminAuditLog(
             actor_user_id=user.id,
@@ -1028,6 +1411,16 @@ async def batch_food_merchants(
     if len(merchants) != len(set(payload.ids)):
         raise AppError(404, "food_merchant_not_found", "部分店家資料不存在")
     now = datetime.now(UTC)
+    category_counts = {
+        merchant_id: int(count)
+        for merchant_id, count in (
+            await session.execute(
+                select(FoodMerchantCategory.merchant_id, func.count(FoodMerchantCategory.id))
+                .where(FoodMerchantCategory.merchant_id.in_([item.id for item in merchants]))
+                .group_by(FoodMerchantCategory.merchant_id)
+            )
+        ).all()
+    }
     for merchant in merchants:
         if payload.action in {"approve", "activate"}:
             if merchant.map_match_status != "verified":
@@ -1041,6 +1434,7 @@ async def batch_food_merchants(
                 google_place_id=merchant.google_place_id,
                 naver_map_url=merchant.naver_map_url,
             )
+            await _ensure_merchant_categories(session, merchant, category_counts)
             merchant.review_status = "approved"
             merchant.is_active = True
         elif payload.action == "reject":
@@ -1063,6 +1457,7 @@ async def batch_food_merchants(
             merchant.verified_at = now
             merchant.verified_by_user_id = user.id
             if payload.action == "verify_activate":
+                await _ensure_merchant_categories(session, merchant, category_counts)
                 merchant.review_status = "approved"
                 merchant.is_active = True
         elif payload.action == "ambiguous":
@@ -1083,3 +1478,294 @@ async def batch_food_merchants(
     )
     await session.commit()
     return {"updated": len(merchants), "status": payload.action}
+
+
+async def _area_merchant_counts(session: AsyncSession, area_ids: list[UUID]) -> dict[UUID, int]:
+    if not area_ids:
+        return {}
+    rows = (
+        await session.execute(
+            select(FoodMerchant.area_id, func.count(FoodMerchant.id))
+            .where(FoodMerchant.area_id.in_(area_ids))
+            .group_by(FoodMerchant.area_id)
+        )
+    ).all()
+    return {area_id: int(count) for area_id, count in rows if area_id is not None}
+
+
+@router.get("/areas")
+async def list_food_areas(
+    user: AdminUser,
+    session: Session,
+    destination_id: Annotated[str | None, Query(min_length=2, max_length=64)] = None,
+    status: TaxonomyStatus | None = None,
+    q: Annotated[str | None, Query(max_length=100)] = None,
+    page: Annotated[int, Query(ge=1)] = 1,
+    limit: Annotated[int, Query(ge=1, le=200)] = 50,
+) -> dict[str, object]:
+    _ = user
+    filters = []
+    if destination_id:
+        filters.append(FoodArea.destination_id == destination_id.casefold())
+    if status:
+        filters.append(FoodArea.is_active.is_(status == "active"))
+    if q:
+        term = f"%{escape_like(q.strip())}%"
+        filters.append(
+            FoodArea.slug.ilike(term, escape="\\")
+            | FoodArea.names_json["zh-TW"].as_string().ilike(term, escape="\\")
+            | FoodArea.names_json["en"].as_string().ilike(term, escape="\\")
+        )
+    total = int(await session.scalar(select(func.count(FoodArea.id)).where(*filters)) or 0)
+    areas = list(
+        (
+            await session.scalars(
+                select(FoodArea)
+                .where(*filters)
+                .order_by(FoodArea.destination_id, FoodArea.display_order, FoodArea.slug)
+                .offset((page - 1) * limit)
+                .limit(limit)
+            )
+        ).all()
+    )
+    counts = await _area_merchant_counts(session, [area.id for area in areas])
+    return {
+        "items": [_area_admin_item(area, counts.get(area.id, 0)) for area in areas],
+        "total": total,
+        "page": page,
+        "pages": (total + limit - 1) // limit,
+    }
+
+
+@router.post("/areas", status_code=201)
+async def create_food_area(
+    payload: FoodAreaWritePayload, user: AdminUser, session: Session
+) -> dict[str, object]:
+    if await session.scalar(select(FoodArea.id).where(FoodArea.slug == payload.slug)):
+        raise AppError(409, "food_area_slug_exists", "區域 slug 已存在")
+    destination_id = payload.destination_id.casefold()
+    country_code = destination_country_code(destination_id)
+    if country_code is None:
+        raise AppError(422, "unsupported_destination", "目前不支援這個目的地")
+    area = FoodArea(
+        slug=payload.slug,
+        destination_id=destination_id,
+        country_code=country_code,
+        names_json=payload.names,
+        match_terms_json=payload.match_terms,
+        latitude=payload.latitude,
+        longitude=payload.longitude,
+        display_order=payload.display_order,
+        is_active=payload.is_active,
+        source="admin",
+    )
+    session.add(area)
+    await session.flush()
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="food_area_created",
+            target=f"food_area:{area.id}",
+            metadata_json={"slug": area.slug, "destination_id": area.destination_id},
+        )
+    )
+    await session.commit()
+    return _area_admin_item(area)
+
+
+@router.patch("/areas/{area_id}")
+async def update_food_area(
+    area_id: UUID, payload: FoodAreaUpdatePayload, user: AdminUser, session: Session
+) -> dict[str, object]:
+    area = await session.get(FoodArea, area_id)
+    if area is None:
+        raise AppError(404, "food_area_not_found", "找不到這個區域")
+    if payload.destination_id and payload.destination_id.casefold() != area.destination_id:
+        destination_id = payload.destination_id.casefold()
+        country_code = destination_country_code(destination_id)
+        if country_code is None:
+            raise AppError(422, "unsupported_destination", "目前不支援這個目的地")
+        attached = await session.scalar(
+            select(func.count(FoodMerchant.id)).where(FoodMerchant.area_id == area.id)
+        )
+        if attached:
+            raise AppError(422, "food_area_has_merchants", "已有店家使用這個區域，無法更換城市")
+        area.destination_id = destination_id
+        area.country_code = country_code
+    latitude = payload.latitude if "latitude" in payload.model_fields_set else area.latitude
+    longitude = payload.longitude if "longitude" in payload.model_fields_set else area.longitude
+    if (latitude is None) != (longitude is None):
+        raise AppError(422, "coordinate_pair_required", "緯度與經度必須同時提供")
+    if "latitude" in payload.model_fields_set or "longitude" in payload.model_fields_set:
+        area.latitude = Decimal(str(latitude)) if latitude is not None else None
+        area.longitude = Decimal(str(longitude)) if longitude is not None else None
+    if payload.names is not None:
+        area.names_json = payload.names
+    if payload.match_terms is not None:
+        area.match_terms_json = payload.match_terms
+    if payload.is_active is not None:
+        area.is_active = payload.is_active
+    if payload.display_order is not None:
+        area.display_order = payload.display_order
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="food_area_updated",
+            target=f"food_area:{area.id}",
+            metadata_json={"fields": sorted(payload.model_fields_set)},
+        )
+    )
+    await session.commit()
+    counts = await _area_merchant_counts(session, [area.id])
+    return _area_admin_item(area, counts.get(area.id, 0))
+
+
+@router.post("/areas/batch")
+async def batch_food_areas(
+    payload: TaxonomyBatchPayload, user: AdminUser, session: Session
+) -> dict[str, int | str]:
+    areas = list(
+        (await session.scalars(select(FoodArea).where(FoodArea.id.in_(payload.ids)))).all()
+    )
+    if len(areas) != len(set(payload.ids)):
+        raise AppError(404, "food_area_not_found", "部分區域不存在")
+    for area in areas:
+        area.is_active = payload.action == "activate"
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="food_areas_batch_updated",
+            target=f"food_areas:{len(areas)}",
+            metadata_json={
+                "action": payload.action,
+                "ids": [str(area.id) for area in areas],
+                "reason": payload.reason,
+            },
+        )
+    )
+    await session.commit()
+    return {"updated": len(areas), "status": payload.action}
+
+
+@router.get("/categories")
+async def list_food_categories(
+    user: AdminUser,
+    session: Session,
+    status: TaxonomyStatus | None = None,
+) -> dict[str, object]:
+    _ = user
+    filters = []
+    if status:
+        filters.append(FoodCategory.is_active.is_(status == "active"))
+    categories = list(
+        (
+            await session.scalars(
+                select(FoodCategory)
+                .where(*filters)
+                .order_by(FoodCategory.display_order, FoodCategory.slug)
+            )
+        ).all()
+    )
+    counts = {
+        category_id: int(count)
+        for category_id, count in (
+            await session.execute(
+                select(FoodMerchantCategory.category_id, func.count(FoodMerchantCategory.id))
+                .where(FoodMerchantCategory.category_id.in_([item.id for item in categories]))
+                .group_by(FoodMerchantCategory.category_id)
+            )
+        ).all()
+    }
+    return {
+        "items": [_category_admin_item(item, counts.get(item.id, 0)) for item in categories],
+        "total": len(categories),
+        "page": 1,
+        "pages": 1,
+    }
+
+
+@router.post("/categories", status_code=201)
+async def create_food_category(
+    payload: FoodCategoryWritePayload, user: AdminUser, session: Session
+) -> dict[str, object]:
+    if await session.scalar(select(FoodCategory.id).where(FoodCategory.slug == payload.slug)):
+        raise AppError(409, "food_category_slug_exists", "分類 slug 已存在")
+    category = FoodCategory(
+        slug=payload.slug,
+        names_json=payload.names,
+        display_order=payload.display_order,
+        is_active=payload.is_active,
+        source="admin",
+    )
+    session.add(category)
+    await session.flush()
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="food_category_created",
+            target=f"food_category:{category.id}",
+            metadata_json={"slug": category.slug},
+        )
+    )
+    await session.commit()
+    return _category_admin_item(category)
+
+
+@router.patch("/categories/{category_id}")
+async def update_food_category(
+    category_id: UUID, payload: FoodCategoryUpdatePayload, user: AdminUser, session: Session
+) -> dict[str, object]:
+    category = await session.get(FoodCategory, category_id)
+    if category is None:
+        raise AppError(404, "food_category_not_found", "找不到這個美食分類")
+    if payload.names is not None:
+        category.names_json = payload.names
+    if payload.is_active is not None:
+        category.is_active = payload.is_active
+    if payload.display_order is not None:
+        category.display_order = payload.display_order
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="food_category_updated",
+            target=f"food_category:{category.id}",
+            metadata_json={"fields": sorted(payload.model_fields_set)},
+        )
+    )
+    await session.commit()
+    count = int(
+        await session.scalar(
+            select(func.count(FoodMerchantCategory.id)).where(
+                FoodMerchantCategory.category_id == category.id
+            )
+        )
+        or 0
+    )
+    return _category_admin_item(category, count)
+
+
+@router.post("/categories/batch")
+async def batch_food_categories(
+    payload: TaxonomyBatchPayload, user: AdminUser, session: Session
+) -> dict[str, int | str]:
+    categories = list(
+        (await session.scalars(select(FoodCategory).where(FoodCategory.id.in_(payload.ids)))).all()
+    )
+    if len(categories) != len(set(payload.ids)):
+        raise AppError(404, "food_category_not_found", "部分美食分類不存在")
+    for category in categories:
+        category.is_active = payload.action == "activate"
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="food_categories_batch_updated",
+            target=f"food_categories:{len(categories)}",
+            metadata_json={
+                "action": payload.action,
+                "ids": [str(category.id) for category in categories],
+                "reason": payload.reason,
+            },
+        )
+    )
+    await session.commit()
+    return {"updated": len(categories), "status": payload.action}

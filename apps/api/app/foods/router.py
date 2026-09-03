@@ -10,18 +10,27 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.auth.service import CurrentUser
 from app.db import get_session
 from app.destinations.catalog import destination_for_id
-from app.foods.service import food_facets, foods_for_planner, list_foods
-from app.hotspots.maps import build_map_links, has_exact_map_identity
+from app.foods.publication import publishable_merchant_filters
+from app.foods.schemas import (
+    FoodCategoriesResponse,
+    FoodCitiesResponse,
+    MerchantListResponse,
+    MerchantTripSelectionRequest,
+)
+from app.foods.selection import apply_merchant_meal_selection
+from app.foods.service import (
+    food_facets,
+    foods_for_planner,
+    list_foods,
+    list_merchants,
+    merchant_categories,
+    merchant_cities,
+)
+from app.hotspots.maps import has_exact_map_identity
 from app.i18n import Locale, current_locale
 from app.locations.coordinates import has_durable_coordinates
 from app.models import FoodMerchant, FoodMerchantFood, TravelFood
 from app.problems import AppError
-from app.trips.router import (
-    hydrate_legacy_items,
-    load_items,
-    owned_trip,
-    persist_system_schedule_change,
-)
 
 router = APIRouter(prefix="/foods", tags=["foods"])
 Session = Annotated[AsyncSession, Depends(get_session)]
@@ -89,6 +98,92 @@ async def planner_foods(
     )
 
 
+@router.get("/cities", response_model=FoodCitiesResponse)
+async def food_cities(session: Session, locale: RequestLocale) -> dict[str, Any]:
+    return await merchant_cities(session, locale=locale)
+
+
+@router.get("/categories", response_model=FoodCategoriesResponse)
+async def food_categories(
+    session: Session,
+    locale: RequestLocale,
+    destination_id: Annotated[str | None, Query(min_length=2, max_length=64)] = None,
+    area: Annotated[str | None, Query(min_length=2, max_length=128)] = None,
+) -> dict[str, Any]:
+    if destination_id and destination_for_id(destination_id) is None:
+        raise AppError(422, "unsupported_destination", "目前不支援這個目的地")
+    return await merchant_categories(
+        session,
+        locale=locale,
+        destination_id=destination_id.casefold() if destination_id else None,
+        area_slug=area,
+    )
+
+
+@router.get("/merchants", response_model=MerchantListResponse)
+async def food_merchants(
+    session: Session,
+    locale: RequestLocale,
+    destination_id: Annotated[str | None, Query(min_length=2, max_length=64)] = None,
+    area: Annotated[str | None, Query(min_length=2, max_length=128)] = None,
+    category: Annotated[str | None, Query(min_length=2, max_length=128)] = None,
+    q: Annotated[str | None, Query(min_length=1, max_length=100)] = None,
+    cursor: Annotated[str | None, Query(max_length=100)] = None,
+    limit: Annotated[int, Query(ge=1, le=50)] = 20,
+) -> dict[str, Any]:
+    if destination_id and destination_for_id(destination_id) is None:
+        raise AppError(422, "unsupported_destination", "目前不支援這個目的地")
+    return await list_merchants(
+        session,
+        locale=locale,
+        destination_id=destination_id.casefold() if destination_id else None,
+        area_slug=area,
+        category_slug=category,
+        q=q,
+        cursor=cursor,
+        limit=limit,
+    )
+
+
+@router.post("/merchants/{merchant_id}/trip-selections")
+async def select_merchant_for_trip(
+    merchant_id: UUID,
+    payload: MerchantTripSelectionRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    merchant = await session.scalar(
+        select(FoodMerchant).where(FoodMerchant.id == merchant_id, *publishable_merchant_filters())
+    )
+    if merchant is None:
+        raise AppError(404, "food_merchant_not_found", "找不到可加入行程的店家")
+    dish_query = (
+        select(TravelFood)
+        .join(FoodMerchantFood, FoodMerchantFood.food_id == TravelFood.id)
+        .where(
+            FoodMerchantFood.merchant_id == merchant.id,
+            TravelFood.review_status == "approved",
+            TravelFood.is_active.is_(True),
+        )
+        .order_by(FoodMerchantFood.is_primary.desc(), FoodMerchantFood.display_order)
+    )
+    if payload.food_id is not None:
+        dish_query = dish_query.where(TravelFood.id == payload.food_id)
+    food = await session.scalar(dish_query.limit(1))
+    if payload.food_id is not None and food is None:
+        raise AppError(404, "food_merchant_not_found", "這家店沒有這道料理")
+    return await apply_merchant_meal_selection(
+        session,
+        user.id,
+        merchant=merchant,
+        food=food,
+        trip_id=payload.trip_id,
+        version=payload.version,
+        day_date=payload.day_date,
+        meal_role=payload.meal_role,
+    )
+
+
 @router.post("/{food_id}/trip-selections")
 async def select_food_for_trip(
     food_id: UUID,
@@ -124,61 +219,13 @@ async def select_food_for_trip(
         merchant.coordinate_source_url,
     ):
         raise AppError(422, "food_merchant_location_unverified", "店家地點尚未完成驗證")
-    trip = await owned_trip(session, user.id, payload.trip_id)
-    if (
-        trip.start_date is None
-        or trip.end_date is None
-        or not trip.start_date <= payload.day_date <= trip.end_date
-    ):
-        raise AppError(422, "itinerary_date_out_of_range", "用餐日期超出旅程範圍")
-    rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
-    meal = next(
-        (
-            item
-            for item in rows
-            if item.day_date == payload.day_date and item.system_role == payload.meal_role
-        ),
-        None,
-    )
-    if meal is None:
-        raise AppError(422, "trip_meal_slot_unavailable", "這一天沒有可設定的餐食卡")
-    city = destination_for_id(merchant.destination_id)
-    map_links = build_map_links(
-        name=merchant.name,
-        local_name=merchant.local_name,
-        city_name=city.city if city else merchant.destination_id,
-        country_code=merchant.country_code,
-        latitude=merchant.latitude,
-        longitude=merchant.longitude,
-        google_place_id=merchant.google_place_id,
-        naver_map_url=merchant.naver_map_url,
-        map_match_status=merchant.map_match_status,
-    )
-    meal.title = f"{food.local_name} · {merchant.name}"
-    meal.location_name = merchant.address or merchant.name
-    meal.provider_place_id = merchant.google_place_id
-    meal.latitude = merchant.latitude
-    meal.longitude = merchant.longitude
-    meal.coordinate_source_type = merchant.coordinate_source_type
-    meal.coordinate_source_url = merchant.coordinate_source_url
-    meal.coordinate_verified_at = merchant.coordinate_verified_at
-    meal.location_source = merchant.coordinate_source_type
-    meal.is_estimated = False
-    meal.is_skipped = False
-    meal.data = {
-        **meal.data,
-        "meal_selection_source": "food_card",
-        "food_id": str(food.id),
-        "merchant_id": str(merchant.id),
-        "merchant_map_links": map_links,
-    }
-    result = await persist_system_schedule_change(
+    return await apply_merchant_meal_selection(
         session,
-        trip,
         user.id,
-        payload.version,
-        rows,
-        warning="料理與店家已更新，請重新計算這一天的路線。",
-        target_day=payload.day_date,
+        merchant=merchant,
+        food=food,
+        trip_id=payload.trip_id,
+        version=payload.version,
+        day_date=payload.day_date,
+        meal_role=payload.meal_role,
     )
-    return result

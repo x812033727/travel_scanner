@@ -3,7 +3,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Literal
 
+from app.foods.area_catalog import AREA_SEEDS_BY_SLUG
 from app.foods.catalog import FOOD_SEEDS
+from app.foods.category_catalog import CATEGORY_SEEDS_BY_SLUG, categories_for_dishes
 
 OFFICIAL_DESTINATION_FOOD_SOURCES = {
     "tokyo": "https://www.gotokyo.org/en/see-and-do/drinking-and-dining/index.html",
@@ -48,6 +50,18 @@ class MerchantSeed:
     local_name: str
     food_slugs: tuple[str, ...]
     display_order: int
+    area_key: str | None = None
+    extra_category_slugs: tuple[str, ...] = ()
+
+    @property
+    def area_slug(self) -> str | None:
+        return f"{self.destination_id}-{self.area_key}" if self.area_key else None
+
+    @property
+    def category_slugs(self) -> tuple[str, ...]:
+        """Dish-derived categories first (the first one is primary), curated extras last."""
+
+        return categories_for_dishes(self.food_slugs, self.extra_category_slugs)
 
     @property
     def source_title(self) -> str:
@@ -67,15 +81,106 @@ def _m(
     foods: tuple[str, ...],
     order: int,
 ) -> MerchantSeed:
+    full_slug = f"{destination_id}-{slug}"
     return MerchantSeed(
-        slug=f"{destination_id}-{slug}",
+        slug=full_slug,
         destination_id=destination_id,
         country_code=country_code,
         name=name,
         local_name=local_name,
         food_slugs=foods,
         display_order=order,
+        area_key=MERCHANT_AREA_KEYS.get(full_slug),
+        extra_category_slugs=MERCHANT_EXTRA_CATEGORIES.get(full_slug, ()),
     )
+
+
+# Areas are assigned only where the branch name or the merchant's documented location
+# makes the 商圈 unambiguous; everything else stays unassigned until an administrator
+# confirms it. Keys are the ``AreaSeed.key`` values of the merchant's own destination.
+MERCHANT_AREA_KEYS: dict[str, str] = {
+    "tokyo-ichiran-shibuya": "shibuya",
+    "tokyo-tsunahachi": "shinjuku",
+    "osaka-kyoto-kinryu-ramen": "namba-shinsaibashi",
+    "osaka-kyoto-mizuno": "namba-shinsaibashi",
+    "osaka-kyoto-aizuya": "namba-shinsaibashi",
+    "osaka-kyoto-tempura-makino": "shijo-kawaramachi",
+    "fukuoka-shin-shin": "tenjin",
+    "fukuoka-hachibei": "hakata-station",
+    "sapporo-hanamaru": "sapporo-station",
+    "kanazawa-mori-mori-sushi": "omicho",
+    "nagoya-yabaton": "sakae",
+    "nagoya-yamamotoya": "sakae",
+    "seoul-namdaemun-hotteok": "myeongdong",
+    "seoul-lees-gimbap": "gangnam",
+    "busan-dari-jip": "nampo-dong",
+    "busan-biff-ssiat-hotteok": "nampo-dong",
+    "jeju-donsadon": "jeju-city",
+    "jeju-kim-man-bok": "jeju-city",
+    "daegu-jungang-tteokbokki": "dongseongno",
+    "daegu-yakjeon-samgyetang": "banwoldang",
+    "gyeongju-yosokkoong": "hwangnidan-gil",
+    "gyeongju-gyodong-gimbap": "hwangnidan-gil",
+    "jeonju-hankook-jib": "hanok-village",
+    "jeonju-gyodong-hotteok": "hanok-village",
+    "bangkok-som-tam-nua": "siam",
+    "chiang-mai-huen-muan-jai": "nimman",
+    "chiang-mai-som-tam-udon": "nimman",
+    "chiang-mai-kiat-ocha": "old-city",
+    "chiang-mai-mango-tango": "nimman",
+    "chiang-mai-khao-soi-khun-yai": "old-city",
+    "chiang-rai-clock-tower-pad-thai": "clock-tower",
+    "chiang-rai-jetyod-chicken-rice": "night-bazaar",
+    "chiang-rai-khao-soi-phor-jai": "night-bazaar",
+    "phuket-one-chun": "old-town",
+    "phuket-mae-somchit": "old-town",
+    "krabi-kodam-kitchen": "krabi-town",
+    "krabi-ruen-mai": "krabi-town",
+    "krabi-family-thaifood": "ao-nang",
+    "taipei-lin-dong-fang": "zhongshan",
+    "taipei-din-tai-fung": "xinyi",
+    "taipei-chun-shui-tang": "xinyi",
+    "taichung-qin-yuan-chun": "central-district",
+    "taichung-fu-din-wang": "central-district",
+    "taichung-chun-shui-siwei": "west-district",
+    "kaohsiung-gang-yuan": "yancheng",
+    "tainan-lao-tang-beef-noodle": "west-central",
+    "tainan-fu-sheng-hao": "west-central",
+    "tainan-shi-jing-jiu": "west-central",
+    "tainan-xiluo-dian": "west-central",
+    "tainan-hanlin": "west-central",
+    "tainan-a-song-gua-bao": "west-central",
+    "tainan-du-xiao-yue": "west-central",
+    "singapore-tian-tian": "chinatown",
+    "singapore-song-fa": "chinatown",
+    "singapore-ya-kun": "chinatown",
+    "hong-kong-yat-lok": "central-sheung-wan",
+    "hong-kong-maks-noodle": "central-sheung-wan",
+    "hong-kong-tai-cheong": "central-sheung-wan",
+    "hong-kong-kam-wah": "mong-kok",
+    "hanoi-pho-bat-dan": "old-quarter",
+    "hanoi-banh-mi-25": "old-quarter",
+    "hanoi-cuon-n-roll": "old-quarter",
+    "hanoi-cafe-giang": "old-quarter",
+    "hanoi-che-ba-thin": "old-quarter",
+    "ho-chi-minh-city-pho-hoa": "district-3",
+    "ho-chi-minh-city-banh-mi-huynh-hoa": "district-1",
+    "ho-chi-minh-city-wrap-roll": "district-1",
+    "ho-chi-minh-city-banh-xeo-46a": "district-1",
+    "da-nang-madame-lan": "han-river",
+    "hue-banh-khoai-hong-mai": "imperial-city",
+    "hue-che-hem": "perfume-river-south",
+}
+
+# Categories beyond what the linked dishes imply (market stalls, tasting-menu houses).
+MERCHANT_EXTRA_CATEGORIES: dict[str, tuple[str, ...]] = {
+    "tokyo-torishiki": ("fine-dining",),
+    "osaka-kyoto-endo-sushi": ("hawker-market",),
+    "fukuoka-sushi-sakai": ("fine-dining",),
+    "kanazawa-mori-mori-sushi": ("hawker-market",),
+    "seoul-korea-house": ("fine-dining",),
+    "gyeongju-yosokkoong": ("fine-dining",),
+}
 
 
 MERCHANT_SEEDS: tuple[MerchantSeed, ...] = (
@@ -1315,4 +1420,32 @@ def validate_merchant_catalog() -> None:
         raise RuntimeError("merchant direct sources must be scoped, claimed, and HTTPS")
 
 
+def validate_merchant_taxonomy() -> None:
+    merchant_slugs = {item.slug for item in MERCHANT_SEEDS}
+    for mapping_name, mapping in (
+        ("MERCHANT_AREA_KEYS", MERCHANT_AREA_KEYS),
+        ("MERCHANT_EXTRA_CATEGORIES", MERCHANT_EXTRA_CATEGORIES),
+    ):
+        unknown = sorted(set(mapping) - merchant_slugs)
+        if unknown:
+            raise RuntimeError(f"{mapping_name} references unknown merchants {unknown}")
+    with_area = 0
+    for item in MERCHANT_SEEDS:
+        categories = item.category_slugs
+        if not categories or len(categories) > 6:
+            raise RuntimeError(f"merchant {item.slug} must have between one and six categories")
+        unknown_categories = [slug for slug in categories if slug not in CATEGORY_SEEDS_BY_SLUG]
+        if unknown_categories:
+            raise RuntimeError(f"merchant {item.slug} references unknown categories")
+        if item.area_slug is None:
+            continue
+        area = AREA_SEEDS_BY_SLUG.get(item.area_slug)
+        if area is None or area.destination_id != item.destination_id:
+            raise RuntimeError(f"merchant {item.slug} points at an area outside its destination")
+        with_area += 1
+    if with_area < 50:
+        raise RuntimeError(f"expected at least 50 merchants with a curated area, found {with_area}")
+
+
 validate_merchant_catalog()
+validate_merchant_taxonomy()

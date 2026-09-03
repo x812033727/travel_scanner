@@ -8,7 +8,7 @@ from io import TextIOWrapper
 from uuid import UUID
 
 from pydantic import ValidationError
-from sqlalchemy import select
+from sqlalchemy import func, select
 
 from app.admin.service import load_runtime_settings
 from app.auth.schemas import RegisterRequest
@@ -18,9 +18,17 @@ from app.crawlers.airlines import AirlineFareCrawlerService
 from app.crawlers.schemas import AirlineFareSearch
 from app.crawlers.verification import build_verification_report
 from app.db import SessionFactory
+from app.foods.service import seed_food_catalog
 from app.hotspots.jobs import collect_once
 from app.infra import get_redis
-from app.models import AdminAuditLog, User
+from app.models import (
+    AdminAuditLog,
+    FoodArea,
+    FoodCategory,
+    FoodMerchant,
+    FoodMerchantCategory,
+    User,
+)
 from app.places.naver import NaverPlaceService
 from app.providers.registry import build_provider, provider_status
 from app.search.schemas import SearchCreate
@@ -217,6 +225,31 @@ async def verify_naver_maps() -> bool:
     return bool(settings.naver_maps_configured and palace and village and route)
 
 
+async def seed_foods() -> dict[str, int]:
+    """Seed dishes, merchants and the browsing taxonomy without running hotspot collection."""
+
+    async with SessionFactory() as session:
+        foods = await seed_food_catalog(session)
+        await session.commit()
+        counts = {"foods": foods}
+        for key, model in (
+            ("areas", FoodArea),
+            ("categories", FoodCategory),
+            ("merchants", FoodMerchant),
+            ("merchant_category_links", FoodMerchantCategory),
+        ):
+            counts[key] = int(
+                await session.scalar(select(func.count()).select_from(model)) or 0
+            )
+        counts["merchants_with_area"] = int(
+            await session.scalar(
+                select(func.count()).select_from(FoodMerchant).where(FoodMerchant.area_id.is_not(None))
+            )
+            or 0
+        )
+    return counts
+
+
 def main() -> None:
     if isinstance(sys.stdout, TextIOWrapper):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -255,6 +288,10 @@ def main() -> None:
     naver = subparsers.add_parser("verify-naver-maps")
     naver.add_argument("--strict", action="store_true")
     subparsers.add_parser("collect-hotspots")
+    subparsers.add_parser(
+        "seed-foods",
+        help="Upsert the food catalog, merchants, areas and categories, then print the counts",
+    )
     args = parser.parse_args()
     if args.command == "add-usage-package":
         asyncio.run(add_usage_package(args.email, args.package, args.reference))
@@ -276,6 +313,8 @@ def main() -> None:
             raise SystemExit(1)
     elif args.command == "collect-hotspots":
         print(asyncio.run(collect_once()))
+    elif args.command == "seed-foods":
+        print(json.dumps(asyncio.run(seed_foods()), ensure_ascii=False))
 
 
 if __name__ == "__main__":
