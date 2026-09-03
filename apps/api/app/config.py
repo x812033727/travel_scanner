@@ -225,6 +225,7 @@ class Settings(BaseSettings):
     skyscanner_affiliate_allowed_hosts: str = "skyscanner.net,www.skyscanner.net"
     google_maps_api_key: str | None = None
     next_public_google_maps_browser_key: str | None = None
+    google_maps_javascript_enabled: bool = False
     google_maps_monthly_request_limit: int = Field(default=10_000, ge=1, le=10_000_000)
     google_maps_essentials_free_limit: int = Field(default=10_000, ge=1, le=10_000_000)
     google_maps_pro_free_limit: int = Field(default=5_000, ge=1, le=10_000_000)

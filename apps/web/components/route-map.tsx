@@ -94,8 +94,7 @@ export function RouteMap({
       .catch(() => {
         if (active) {
           setConfig({
-            google_maps_browser_key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY,
-            google_maps_javascript_enabled: true,
+            google_maps_javascript_enabled: false,
           });
         }
       });
@@ -115,9 +114,7 @@ export function RouteMap({
   const useNaver = isKorea
     && config.naver_dynamic_map_enabled
     && Boolean(config.naver_maps_browser_client_id);
-  const javascriptAllowed = config.google_maps_javascript_enabled
-    ?? config.google_maps_embed_enabled
-    ?? true;
+  const javascriptAllowed = config.google_maps_javascript_enabled === true;
   const useGoogle = !isKorea
     && javascriptAllowed
     && Boolean(config.google_maps_browser_key);
@@ -260,7 +257,11 @@ export function RouteMap({
   const mapSource = useNaver ? "NAVER Maps" : useGoogle ? "Google Maps" : undefined;
   const emptyTitle = !hasCoordinates
     ? "補齊兩端地點後顯示地圖"
-    : mapFailed ? "地圖載入失敗" : "瀏覽器地圖服務尚未啟用";
+    : mapFailed
+      ? "地圖載入失敗"
+      : !isKorea && Boolean(config.google_maps_browser_key) && !javascriptAllowed
+        ? "瀏覽器地圖已安全停用"
+        : "瀏覽器地圖服務尚未啟用";
 
   return <section className={`route-map-card route-map-${variant}`}>
     {useNaver && <Script id="naver-maps-js" src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(config.naver_maps_browser_client_id || "")}`} strategy="afterInteractive" onReady={() => setSdkReady(true)} onError={() => setMapFailure("load")} />}
@@ -269,7 +270,7 @@ export function RouteMap({
     <div className="route-map-frame overflow-hidden">
       {mapSource && hasCoordinates && !mapFailed
         ? <div ref={mapElement} role="img" aria-label={`${origin?.title || "起點"}到${destination?.title || "終點"}的${mapSource}路線地圖`} className="absolute inset-0 h-full w-full" />
-        : <div className="route-map-empty absolute inset-0 grid place-items-center p-6 text-center"><div>{mapFailed ? <TriangleAlert size={28} className="mx-auto text-amber-700" /> : <MapPin size={28} className="mx-auto text-[var(--teal)]" />}<p className="mt-3 font-semibold">{emptyTitle}</p><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-[var(--muted)]">{!hasCoordinates ? "請先替起點與終點選擇正式地點。" : mapFailure === "authorization" ? "Google Maps 尚未允許目前網站網域，請先使用下方精準導航連結。" : mapFailure === "load" ? "地圖服務暫時載入失敗，請先使用下方精準導航連結。" : isKorea ? "請在管理設定啟用 NAVER Dynamic Map。" : "請在管理設定填入已啟用 Maps JavaScript API 的瀏覽器地圖 Key。"}</p></div></div>}
+        : <div className="route-map-empty absolute inset-0 grid place-items-center p-6 text-center"><div>{mapFailed ? <TriangleAlert size={28} className="mx-auto text-amber-700" /> : <MapPin size={28} className="mx-auto text-[var(--teal)]" />}<p className="mt-3 font-semibold">{emptyTitle}</p><p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-[var(--muted)]">{!hasCoordinates ? "請先替起點與終點選擇正式地點。" : mapFailure === "authorization" ? "Google Maps 尚未允許目前網站網域，請先使用下方精準導航連結。" : mapFailure === "load" ? "地圖服務暫時載入失敗，請先使用下方精準導航連結。" : isKorea ? "請在管理設定啟用 NAVER Dynamic Map。" : Boolean(config.google_maps_browser_key) ? "請由管理員確認 Maps JavaScript API 與正式網域限制後，再開啟安全閘門；仍可使用下方精準導航。" : "請先在管理設定填入瀏覽器地圖 Key，並完成 Maps JavaScript API 與正式網域限制。"}</p></div></div>}
       {mapSource && hasCoordinates && showSchematic && !mapFailed && <div className="route-map-schematic-notice" role="status">示意連線，非實際路線</div>}
     </div>
     <div className="border-t border-[var(--line)] px-5 py-3 text-xs text-[var(--muted)]">{selectedSegment ? `${selectedSegment.schedule_mode === "preview" ? "預覽班次" : selectedSegment.schedule_mode === "live" ? "目前路線" : "指定日期班次"} · ${selectedSegment.attribution}` : `${mapSource || "地圖"}只顯示起終點；取得 Provider 路線後才可套用時間`}</div>

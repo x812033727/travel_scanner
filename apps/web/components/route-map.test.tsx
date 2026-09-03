@@ -65,6 +65,7 @@ function ok(payload: unknown) {
 
 afterEach(() => {
   vi.unstubAllGlobals();
+  vi.unstubAllEnvs();
   window.gm_authFailure = undefined;
   window.mokaairGoogleMapsAuthFailed = undefined;
   window.google = undefined;
@@ -95,7 +96,7 @@ describe("RouteMap", () => {
   it("does not load Google Maps for a Korean trip when NAVER Dynamic Map is unavailable", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => ok({
       google_maps_browser_key: "google-browser-key",
-      google_maps_embed_enabled: true,
+      google_maps_javascript_enabled: true,
       naver_dynamic_map_enabled: false,
     })));
     const { container } = render(<RouteMap items={items} segment={segment} fromItemId="from" toItemId="to" countryCode="KR" />);
@@ -109,7 +110,7 @@ describe("RouteMap", () => {
   it("loads a Google JavaScript basemap with endpoints before a provider route exists", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => ok({
       google_maps_browser_key: "google-browser-key",
-      google_maps_embed_enabled: true,
+      google_maps_javascript_enabled: true,
       naver_dynamic_map_enabled: false,
     })));
     const { container } = render(
@@ -123,6 +124,27 @@ describe("RouteMap", () => {
     expect(screen.getByRole("img", { name: /景福宮到北村韓屋村的Google Maps路線地圖/ })).toBeTruthy();
     expect(screen.getByText("示意連線，非實際路線")).toBeTruthy();
     expect(container.querySelector("iframe")).toBeNull();
+  });
+
+  it("does not load Google Maps when a browser key exists without the explicit safety gate", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => ok({
+      google_maps_browser_key: "google-browser-key",
+      google_maps_embed_enabled: true,
+    })));
+    render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="JP" />);
+
+    expect(await screen.findByText("瀏覽器地圖已安全停用")).toBeTruthy();
+    expect(screen.getByText(/再開啟安全閘門/)).toBeTruthy();
+    expect(screen.queryByTestId("next-script")).toBeNull();
+  });
+
+  it("fails closed when public runtime config cannot be loaded", async () => {
+    vi.stubEnv("NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY", "baked-browser-key");
+    vi.stubGlobal("fetch", vi.fn(async () => { throw new Error("runtime unavailable"); }));
+    render(<RouteMap items={items} fromItemId="from" toItemId="to" countryCode="JP" />);
+
+    expect(await screen.findByText("瀏覽器地圖服務尚未啟用")).toBeTruthy();
+    expect(screen.queryByTestId("next-script")).toBeNull();
   });
 
   it("shows an actionable state when Google rejects the current referrer", async () => {
