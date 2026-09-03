@@ -199,6 +199,27 @@ def _money(payload: object) -> tuple[Decimal | None, str | None]:
     return units + nanos, cast(str | None, payload.get("currencyCode"))
 
 
+def _next_matching_transit_time(
+    value: datetime,
+    *,
+    now: datetime | None = None,
+) -> datetime:
+    current = now or datetime.now(UTC)
+    local_zone = value.tzinfo or UTC
+    requested_local = value.replace(tzinfo=local_zone) if value.tzinfo is None else value
+    local_now = current.astimezone(local_zone)
+    days_until_weekday = (requested_local.weekday() - local_now.weekday()) % 7
+    preview_day = (local_now + timedelta(days=days_until_weekday)).date()
+    preview = datetime.combine(
+        preview_day,
+        requested_local.timetz().replace(tzinfo=None),
+        tzinfo=local_zone,
+    )
+    if preview <= local_now + timedelta(minutes=5):
+        preview += timedelta(days=7)
+    return preview.astimezone(UTC)
+
+
 def supported_transit_time(value: datetime | None) -> tuple[datetime | None, str, list[str]]:
     if value is None:
         return None, "live", []
@@ -209,16 +230,7 @@ def supported_transit_time(value: datetime | None) -> tuple[datetime | None, str
     if now - timedelta(days=7) <= requested_utc <= now + timedelta(days=100):
         return requested_utc, "scheduled", []
     if requested_utc > now + timedelta(days=100):
-        local_now = now.astimezone(local_zone)
-        days_until_weekday = (requested_local.weekday() - local_now.weekday()) % 7
-        if days_until_weekday == 0:
-            days_until_weekday = 7
-        preview_day = (local_now + timedelta(days=days_until_weekday)).date()
-        preview = datetime.combine(
-            preview_day,
-            requested_local.timetz().replace(tzinfo=None),
-            tzinfo=local_zone,
-        ).astimezone(UTC)
+        preview = _next_matching_transit_time(requested_local, now=now)
         return preview, "preview", ["旅程超過可查班次範圍，這是相同星期與時段的預覽路線。"]
     return now, "preview", ["日期已超過可查班次範圍，顯示目前可用的參考路線。"]
 
@@ -475,6 +487,7 @@ class GoogleRouteProvider:
         used_preference_fallback = False
         used_live_preview_fallback = False
         used_coordinate_fallback = False
+        used_near_term_schedule_fallback = False
         attempts: list[tuple[dict[str, Any], str]] = [(body, "requested")]
         if transit_preference:
             attempts.append(
@@ -514,6 +527,22 @@ class GoogleRouteProvider:
                 }
             }
             attempts.append((coordinate_body, "coordinates"))
+        if (
+            travel_mode == "transit"
+            and schedule_mode == "scheduled"
+            and departure_time is not None
+            and effective_time is not None
+            and effective_time > datetime.now(UTC) + timedelta(days=14)
+        ):
+            near_term_body = {
+                key: value for key, value in body.items() if key != "transitPreferences"
+            }
+            near_term_body["departureTime"] = (
+                _next_matching_transit_time(departure_time)
+                .isoformat()
+                .replace("+00:00", "Z")
+            )
+            attempts.append((near_term_body, "near_term_schedule"))
         for attempt_index, (attempt_body, attempt_kind) in enumerate(attempts):
             try:
                 response = await self._post(attempt_body, fields)
@@ -570,6 +599,7 @@ class GoogleRouteProvider:
                     "coordinates",
                 } and (travel_mode == "transit" and schedule_mode == "preview")
                 used_coordinate_fallback = attempt_kind == "coordinates"
+                used_near_term_schedule_fallback = attempt_kind == "near_term_schedule"
                 break
             logger.info(
                 "google_routes_empty",
@@ -588,6 +618,12 @@ class GoogleRouteProvider:
         if used_live_preview_fallback:
             warnings.append(
                 "相同星期與時段沒有結果，已改用目前可取得的參考路線；出發前請重新確認。"
+            )
+        if used_near_term_schedule_fallback:
+            schedule_mode = "preview"
+            warnings.append(
+                "指定日期的班次尚未開放，已改用近期相同星期與時段的參考路線；"
+                "可以先套用移動時間，出發前請重新確認。"
             )
         if used_coordinate_fallback:
             warnings.append("精準地點識別無法建立路線，已用相同地點的座標重試。")

@@ -79,6 +79,27 @@ describe("route mode panel", () => {
     expect(map && details && Boolean(map.compareDocumentPosition(details) & Node.DOCUMENT_POSITION_FOLLOWING)).toBe(true);
   });
 
+  it("labels provider-backed fallback schedules as near-term reference transit", () => {
+    vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_browser_key: null, google_maps_embed_enabled: false })));
+
+    render(<RouteModePanel
+      trip={trip}
+      items={items}
+      fromItemId="from"
+      toItemId="to"
+      initialSegment={{
+        ...initialSegment,
+        schedule_mode: "preview",
+        warnings: ["指定日期的班次尚未開放，已改用近期相同星期與時段的參考路線。"],
+      }}
+      onApplied={() => undefined}
+      onError={() => undefined}
+    />);
+
+    expect(screen.getByText("近期參考班次")).toBeTruthy();
+    expect(screen.getByText(/指定日期的班次尚未開放/)).toBeTruthy();
+  });
+
   it("uses POI titles in the drawer and confirmed coordinates in its fallback navigation", () => {
     vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_browser_key: null, google_maps_embed_enabled: false })));
     const addressItems = [
