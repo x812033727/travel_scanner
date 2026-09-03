@@ -34,7 +34,7 @@ def _center(latitude: float, longitude: float, radius_km: int) -> DiscoveryCente
 
 HOTSPOT_CITIES: tuple[HotspotCity, ...] = (
     HotspotCity(
-        "NRT", "東京", "JP", "日本", "ja.wikipedia.org", 21, (_center(35.6762, 139.6503, 30),)
+        "NRT", "東京", "JP", "日本", "ja.wikipedia.org", 105, (_center(35.6762, 139.6503, 30),)
     ),
     HotspotCity(
         "KIX",
@@ -232,6 +232,30 @@ HOTSPOT_CITIES: tuple[HotspotCity, ...] = (
         "extension",
         "da-nang",
     ),
+    HotspotCity(
+        "YOK",
+        "橫濱",
+        "JP",
+        "日本",
+        "ja.wikipedia.org",
+        18,
+        (_center(35.4437, 139.6380, 12),),
+        "yokohama",
+        "extension",
+        "tokyo",
+    ),
+    HotspotCity(
+        "KMK",
+        "鎌倉",
+        "JP",
+        "日本",
+        "ja.wikipedia.org",
+        18,
+        (_center(35.3192, 139.5467, 8),),
+        "kamakura",
+        "extension",
+        "tokyo",
+    ),
 )
 
 # Reviewed near-suburban centers, all intended to remain within about 90 minutes
@@ -269,6 +293,8 @@ DAY_TRIP_CENTERS = {
     "GYE": (_center(35.7900, 129.3320, 16),),
     "JEO": (_center(35.9740, 127.2130, 16),),
     "HUI": (_center(16.1040, 107.9550, 18),),
+    "YOK": (_center(35.3370, 139.6440, 10),),
+    "KMK": (_center(35.2990, 139.4800, 8),),
 }
 HOTSPOT_CITIES = tuple(
     replace(city, centers=city.centers + DAY_TRIP_CENTERS[city.code]) for city in HOTSPOT_CITIES

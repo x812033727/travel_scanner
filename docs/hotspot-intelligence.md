@@ -41,11 +41,14 @@ responses expose the component scores, sources, signal date and whether the resu
 `HOTSPOT_COLLECTION_INTERVAL_SECONDS` (six hours by default). Daily Wikimedia observations are
 idempotent, so multiple runs refresh the same dated signal and ranking snapshot.
 
-The checked-in cold-start catalog contains 450 reviewed attractions across 31 destinations. The
-12 secondary destinations contribute exactly 180 entries (10 general and five deep-travel places
-each). Weekly Wikipedia/Wikidata discovery can fill each new destination to 18 public places, for
-a complete target of 529. Discovered candidates never receive a deep-travel designation without
-an administrator review.
+The checked-in cold-start catalog contains 563 reviewed attractions across 33 destinations. The
+14 secondary destinations contribute exactly 210 entries (10 general and five deep-travel places
+each). `kanto_expansion_bootstrap.json` adds 83 Tokyo places proposed by Gemini and reviewed by
+hand, plus the Yokohama and Kamakura extensions; every row carries a `provenance` (`gemini` or
+`editorial`) that is stored in `metadata_json` and shown only to administrators. Weekly
+Wikipedia/Wikidata discovery can fill each destination up to its `target_count`, for a complete
+target of 649. Discovered candidates never receive a deep-travel designation without an
+administrator review.
 
 In `docker-compose.prod.yml` the collector sits behind the `hotspots` compose profile, so it is
 opt-in — it reaches out to the Wikimedia API on a schedule, which not every deployment wants. Start
@@ -87,6 +90,22 @@ legacy locked identities and seed reconciliation never clears them.
 
 Exact alias/country matches within 5 km and fuzzy matches of at least 0.90 with matching city/country
 within 1.5 km may be approved automatically. Everything else remains pending for an administrator.
+A candidate whose Place ID already belongs to another hotspot also stays pending (the evidence records
+the owning row) instead of tripping the unique index.
+
+Operators can run the same matcher synchronously for a bounded set of hotspots, for example right
+after seeding a new destination:
+
+```bash
+uv run python -m app.cli match-hotspot-places --destination tokyo --dry-run
+uv run python -m app.cli match-hotspot-places --destination tokyo --destination yokohama
+uv run python -m app.cli match-hotspot-places --approve nrt-nakamise-dori
+```
+
+The first form lists public hotspots without a Place ID, the second matches them (stopping at the
+90% free-tier guard) and prints the candidate for every pending row, and `--approve` promotes a
+pending candidate to the hotspot's Place ID, marks the map identity verified and fetches its
+details. Approvals are written to the admin audit log with `source: cli`.
 Google website candidates are only published automatically when they are public HTTPS URLs and are not
 social, booking, ticketing, or review-aggregation sites. A manually approved official URL always wins.
 
@@ -115,10 +134,11 @@ scraping fallback in production.
   days and explicitly selected extension destinations.
 
 Eight secondary destinations are searchable for flights and lodging: Taichung, Kaohsiung,
-Sendai, Kanazawa, Hiroshima, Daegu, Chiang Rai and Da Lat. Tainan, Gyeongju, Jeonju and Hue are
-extension destinations only; they keep independent attraction rankings but are added through
-Kaohsiung, Busan, Seoul and Da Nang respectively. Trips of 1–3 days do not include extension
-cities, 4–6 day trips allow one, and trips of at least seven days allow two.
+Sendai, Kanazawa, Hiroshima, Daegu, Chiang Rai and Da Lat. Tainan, Gyeongju, Jeonju, Hue,
+Yokohama and Kamakura are extension destinations only; they keep independent attraction rankings
+but are added through Kaohsiung, Busan, Seoul, Da Nang and Tokyo (the last two) respectively.
+Trips of 1–3 days do not include extension cities, 4–6 day trips allow one, and trips of at least
+seven days allow two.
 
 The ranking response includes a lightweight `place_summary`; full place data stays on the detail endpoint.
 The planner endpoint supplies candidates only. Opening hours, route feasibility, trip dates,

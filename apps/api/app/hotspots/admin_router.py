@@ -337,6 +337,7 @@ async def list_hotspot_candidates(
                 "area_name": area_name(area, "zh-TW")
                 if (area := area_by_code(hotspot.city_code, hotspot.area_code))
                 else None,
+                "provenance": hotspot.metadata_json.get("provenance"),
                 "origin": hotspot.origin,
                 "status": hotspot.review_status,
                 "reason": hotspot.review_reason,

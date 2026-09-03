@@ -85,6 +85,16 @@ def test_seed_spot_checks() -> None:
         "wikidata-q7698673": "mong-kok",  # 廟街夜市
         "khh-q701113": "qianjin",  # 六合夜市
         "hij-q231140": "peace-park",  # 原爆ドーム
+        "nrt-otome-road": "ikebukuro",
+        "nrt-teamlab-borderless": "roppongi",  # Azabudai Hills, not the old Odaiba venue
+        "nrt-toyosu-market": "toyosu",
+        "nrt-ghibli-museum": "kichijoji",
+        "nrt-sanrio-puroland": "tama",
+        "yok-minato-mirai-21": "minato-mirai",
+        "yok-yokohama-red-brick-warehouse": "shinko",
+        "yok-yokohama-chinatown": "chinatown",
+        "kmk-kotoku-in": "hase",
+        "kmk-enoshima": "enoshima",
     }
     for slug, code in expected.items():
         seed = by_slug[slug]
