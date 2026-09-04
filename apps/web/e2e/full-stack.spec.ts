@@ -117,6 +117,8 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await expect(generalCard).toContainText("固定時間 · 15:00");
 
   await page.getByRole("button", { name: "設定主要飯店" }).first().click();
+  // The hotel card now opens the stay-area flow first; the manual editor is one click away.
+  await page.getByRole("dialog", { name: "住宿熱區" }).getByRole("button", { name: "手動輸入飯店" }).click();
   await page.getByLabel("飯店名稱").fill("丸之內測試飯店");
   await page.getByLabel("飯店地點").fill("東京都千代田區丸之內");
   await page.getByRole("button", { name: "同步所有日期" }).click();

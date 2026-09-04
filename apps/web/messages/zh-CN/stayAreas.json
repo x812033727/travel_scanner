@@ -1,0 +1,104 @@
+{
+  "title": "住宿热区",
+  "description": "依这趟行程的景点分布推荐住宿区域，选定后实时比价；通过合作平台前往不扣使用次数。",
+  "noCharge": "推荐与比价都不扣使用次数",
+  "manualLodging": "手动输入酒店",
+  "back": "返回热区",
+  "retry": "重试",
+  "refresh": "刷新报价",
+  "loadingAreas": "正在分析行程地点…",
+  "area": {
+    "items": "{count} 个安排",
+    "dwell": "停留约 {hours} 小时",
+    "days": "{count} 天到访",
+    "dayTrip": "一日游区",
+    "current": "当前酒店所在",
+    "pick": "看这区的酒店",
+    "reason": {
+      "most_items": "景点最多",
+      "most_days": "最多天造访",
+      "central": "位置居中",
+      "day_trip_zone": "多为一日游景点，通常从市区出发",
+      "destination_default": "热门住宿区",
+      "current_lodging": "当前酒店所在"
+    }
+  },
+  "notice": {
+    "lowEvidence": "行程地点还不多，先依当前安排与热门区域建议。",
+    "noEvidence": "行程还没有可定位的地点，先列出热门住宿区。",
+    "unsupported": "这个目的地还没有住宿热区数据，可以手动输入酒店。",
+    "secondStay": "有不少安排在延伸城市，也许需要第二个住宿点。",
+    "pricingUnavailable": "目前没有可用的酒店报价供应商，仍可通过合作平台查看。",
+    "chosen": "已将 {hotel} 设为主要酒店，正在重新计算每日路线。",
+    "offerExpired": "报价已更新，请再确认一次。",
+    "selectFailed": "无法设置主要酒店",
+    "versionConflict": "这趟旅程已在其他标签页或设备更新，请重新加载后再操作。"
+  },
+  "compare": {
+    "title": "{area} 的酒店比价",
+    "summary": "{nights} 晚 · {adults} 位成人 · {rooms} 间房",
+    "loading": "正在向供应商获取实时房价（最多约 10 秒）…",
+    "errorLoad": "无法获取酒店报价",
+    "sortLabel": "排序",
+    "sort": { "price": "价格", "rating": "评分", "distance": "距离" },
+    "onlyFullMatch": "只看完全符合",
+    "relaxed": "找不到完全符合条件的酒店，已放宽：{labels}",
+    "hardFiltered": "另有 {count} 间因房型或人数不符未列出",
+    "nearbyTitle": "此区域实时房价不足，显示最近的几间",
+    "validUntil": "报价有效至 {time}",
+    "expired": "报价已过期，请刷新后再选择",
+    "empty": "供应商目前没有这个区域的房价，可通过合作平台查看。",
+    "partners": "到合作平台看更多"
+  },
+  "status": {
+    "live": "实时报价",
+    "test": "供应商测试数据",
+    "mock": "模拟数据",
+    "not_configured": "尚未设置酒店报价供应商",
+    "unavailable": "供应商暂时无法响应",
+    "timeout": "供应商响应超时",
+    "dates_missing": "请先设置旅程日期才能查价",
+    "dates_past": "旅程日期已过，无法查价",
+    "empty": "供应商没有返回房价"
+  },
+  "dateNote": {
+    "checkin_moved_to_today": "入住日已改为今天",
+    "assumed_one_night": "按 1 晚计算",
+    "stay_truncated": "按前 14 晚报价"
+  },
+  "warning": {
+    "children_ages_missing": "儿童年龄未设置，报价按成人计算"
+  },
+  "relaxed": {
+    "breakfast": "含早餐",
+    "refundable": "可免费取消",
+    "station_walk": "车站步行距离",
+    "review_count": "最低评论数",
+    "review_score": "最低住客评分",
+    "star_rating": "最低星级",
+    "preferred_areas": "住宿区域",
+    "nightly_min": "每晚最低价格",
+    "nightly_max": "每晚最高价格"
+  },
+  "hotel": {
+    "perNight": "每晚",
+    "estimateUnavailable": "无法换算为新台币",
+    "converted": "由 {currency} 换算",
+    "distance": "距{area}中心 {km} 公里",
+    "choose": "设为主要酒店",
+    "current": "当前主要酒店",
+    "breakfast": "含早餐",
+    "refundable": "可免费取消",
+    "refundUnknown": "取消条件未确认",
+    "moreRooms": "另有 {count} 个房型",
+    "gaps": "未符合：{labels}",
+    "stars": "{stars} 星",
+    "reviews": "旅客 {score}",
+    "reviewCount": "{count} 条"
+  },
+  "partner": {
+    "deep_link": "到 {partner} 预订",
+    "hotel_search": "在 {partner} 搜索此酒店",
+    "area_search": "到 {partner} 查看{area}住宿"
+  }
+}

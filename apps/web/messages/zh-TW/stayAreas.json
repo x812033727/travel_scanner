@@ -1,0 +1,104 @@
+{
+  "title": "住宿熱區",
+  "description": "依這趟行程的景點分布推薦住宿區域，選定後即時比價；透過合作平台前往不扣使用次數。",
+  "noCharge": "推薦與比價都不扣使用次數",
+  "manualLodging": "手動輸入飯店",
+  "back": "返回熱區",
+  "retry": "重試",
+  "refresh": "重新整理報價",
+  "loadingAreas": "正在分析行程地點…",
+  "area": {
+    "items": "{count} 個安排",
+    "dwell": "停留約 {hours} 小時",
+    "days": "{count} 天到訪",
+    "dayTrip": "一日遊區",
+    "current": "目前飯店所在",
+    "pick": "看這區的飯店",
+    "reason": {
+      "most_items": "景點最多",
+      "most_days": "最多天造訪",
+      "central": "位置居中",
+      "day_trip_zone": "多為一日遊景點，通常從市區出發",
+      "destination_default": "熱門住宿區",
+      "current_lodging": "目前飯店所在"
+    }
+  },
+  "notice": {
+    "lowEvidence": "行程地點還不多，先依目前安排與熱門區域建議。",
+    "noEvidence": "行程還沒有可定位的地點，先列出熱門住宿區。",
+    "unsupported": "這個目的地還沒有住宿熱區資料，可以手動輸入飯店。",
+    "secondStay": "有不少安排在延伸城市，也許需要第二個住宿點。",
+    "pricingUnavailable": "目前沒有可用的飯店報價供應商，仍可透過合作平台查看。",
+    "chosen": "已將 {hotel} 設為主要飯店，正在重新計算每日路線。",
+    "offerExpired": "報價已更新，請再確認一次。",
+    "selectFailed": "無法設定主要飯店",
+    "versionConflict": "這趟旅程已在其他分頁或裝置更新，請重新載入後再操作。"
+  },
+  "compare": {
+    "title": "{area} 的飯店比價",
+    "summary": "{nights} 晚 · {adults} 位成人 · {rooms} 間房",
+    "loading": "正在向供應商取得即時房價（最多約 10 秒）…",
+    "errorLoad": "無法取得飯店報價",
+    "sortLabel": "排序",
+    "sort": { "price": "價格", "rating": "評分", "distance": "距離" },
+    "onlyFullMatch": "只看完全符合",
+    "relaxed": "找不到完全符合條件的飯店，已放寬：{labels}",
+    "hardFiltered": "另有 {count} 間因房型或人數不符未列出",
+    "nearbyTitle": "此區域即時房價不足，顯示最近的幾間",
+    "validUntil": "報價有效至 {time}",
+    "expired": "報價已過期，請重新整理後再選擇",
+    "empty": "供應商目前沒有這個區域的房價，可透過合作平台查看。",
+    "partners": "到合作平台看更多"
+  },
+  "status": {
+    "live": "即時報價",
+    "test": "供應商測試資料",
+    "mock": "模擬資料",
+    "not_configured": "尚未設定飯店報價供應商",
+    "unavailable": "供應商暫時無法回應",
+    "timeout": "供應商回應逾時",
+    "dates_missing": "請先設定旅程日期才能查價",
+    "dates_past": "旅程日期已過，無法查價",
+    "empty": "供應商沒有回傳房價"
+  },
+  "dateNote": {
+    "checkin_moved_to_today": "入住日已改為今天",
+    "assumed_one_night": "以 1 晚計算",
+    "stay_truncated": "以前 14 晚報價"
+  },
+  "warning": {
+    "children_ages_missing": "兒童年齡未設定，報價以成人計算"
+  },
+  "relaxed": {
+    "breakfast": "含早餐",
+    "refundable": "可免費取消",
+    "station_walk": "車站步行距離",
+    "review_count": "最低評論筆數",
+    "review_score": "最低住客評分",
+    "star_rating": "最低星級",
+    "preferred_areas": "住宿區域",
+    "nightly_min": "每晚最低價格",
+    "nightly_max": "每晚最高價格"
+  },
+  "hotel": {
+    "perNight": "每晚",
+    "estimateUnavailable": "無法換算為新台幣",
+    "converted": "由 {currency} 換算",
+    "distance": "距{area}中心 {km} 公里",
+    "choose": "設為主要飯店",
+    "current": "目前主要飯店",
+    "breakfast": "含早餐",
+    "refundable": "可免費取消",
+    "refundUnknown": "取消條件未確認",
+    "moreRooms": "另有 {count} 個房型",
+    "gaps": "未符合：{labels}",
+    "stars": "{stars} 星",
+    "reviews": "旅客 {score}",
+    "reviewCount": "{count} 則"
+  },
+  "partner": {
+    "deep_link": "到 {partner} 預訂",
+    "hotel_search": "在 {partner} 搜尋此飯店",
+    "area_search": "到 {partner} 查看{area}住宿"
+  }
+}

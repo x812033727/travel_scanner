@@ -1,0 +1,104 @@
+{
+  "title": "宿泊エリア",
+  "description": "この旅程の訪問先の分布からおすすめの宿泊エリアを提案し、選ぶと実勢価格を比較します。提携サイトへの移動は利用回数を消費しません。",
+  "noCharge": "提案と価格比較は利用回数を消費しません",
+  "manualLodging": "ホテルを手動で入力",
+  "back": "エリアに戻る",
+  "retry": "再試行",
+  "refresh": "価格を更新",
+  "loadingAreas": "旅程の訪問先を分析しています…",
+  "area": {
+    "items": "{count} 件の予定",
+    "dwell": "滞在約 {hours} 時間",
+    "days": "{count} 日訪問",
+    "dayTrip": "日帰りエリア",
+    "current": "現在のホテル",
+    "pick": "このエリアのホテルを見る",
+    "reason": {
+      "most_items": "予定が最も多い",
+      "most_days": "訪問日数が最多",
+      "central": "全体の中心",
+      "day_trip_zone": "日帰り観光地が中心で、通常は市街地から出発します",
+      "destination_default": "人気の宿泊エリア",
+      "current_lodging": "現在のホテルの所在地"
+    }
+  },
+  "notice": {
+    "lowEvidence": "旅程の訪問先がまだ少ないため、現在の予定と人気エリアを合わせて提案します。",
+    "noEvidence": "位置が確定した訪問先がまだないため、人気の宿泊エリアを表示します。",
+    "unsupported": "この目的地にはまだ宿泊エリアのデータがありません。ホテルを手動で入力できます。",
+    "secondStay": "延長都市の予定が多いため、2 か所目の拠点を検討してもよいかもしれません。",
+    "pricingUnavailable": "現在利用できるホテル価格プロバイダーがありません。提携サイトから確認できます。",
+    "chosen": "{hotel} をメインホテルに設定しました。毎日のルートを再計算しています。",
+    "offerExpired": "価格が更新されました。もう一度確認してください。",
+    "selectFailed": "メインホテルを設定できませんでした",
+    "versionConflict": "この旅程は別のタブまたは端末で更新されました。再読み込みしてから操作してください。"
+  },
+  "compare": {
+    "title": "{area} のホテル比較",
+    "summary": "{nights} 泊 · 大人 {adults} 名 · {rooms} 室",
+    "loading": "プロバイダーから実勢価格を取得しています（最大約 10 秒）…",
+    "errorLoad": "ホテル価格を取得できませんでした",
+    "sortLabel": "並び替え",
+    "sort": { "price": "価格", "rating": "評価", "distance": "距離" },
+    "onlyFullMatch": "条件を全て満たすもののみ",
+    "relaxed": "全ての条件に合うホテルがないため、次を緩和しました：{labels}",
+    "hardFiltered": "客室タイプまたは人数が合わないため、他に {count} 件を非表示にしました",
+    "nearbyTitle": "このエリア内の実勢価格が少ないため、最寄りのホテルを表示します",
+    "validUntil": "価格の有効期限 {time}",
+    "expired": "価格の有効期限が切れました。更新してから選択してください",
+    "empty": "プロバイダーには現在このエリアの価格がありません。提携サイトから確認できます。",
+    "partners": "提携サイトでさらに見る"
+  },
+  "status": {
+    "live": "実勢価格",
+    "test": "プロバイダーのテストデータ",
+    "mock": "サンプルデータ",
+    "not_configured": "ホテル価格プロバイダーが設定されていません",
+    "unavailable": "プロバイダーが現在応答していません",
+    "timeout": "プロバイダーの応答がタイムアウトしました",
+    "dates_missing": "価格を見るには旅程の日付を設定してください",
+    "dates_past": "旅程の日付が過ぎているため価格を取得できません",
+    "empty": "プロバイダーから価格が返されませんでした"
+  },
+  "dateNote": {
+    "checkin_moved_to_today": "チェックイン日を今日に変更しました",
+    "assumed_one_night": "1 泊で計算",
+    "stay_truncated": "最初の 14 泊で計算"
+  },
+  "warning": {
+    "children_ages_missing": "子どもの年齢が未設定のため、大人料金で計算しています"
+  },
+  "relaxed": {
+    "breakfast": "朝食付き",
+    "refundable": "無料キャンセル",
+    "station_walk": "駅までの徒歩時間",
+    "review_count": "最低レビュー数",
+    "review_score": "最低宿泊者評価",
+    "star_rating": "最低星評価",
+    "preferred_areas": "宿泊エリア",
+    "nightly_min": "1 泊の最低価格",
+    "nightly_max": "1 泊の最高価格"
+  },
+  "hotel": {
+    "perNight": "1 泊",
+    "estimateUnavailable": "TWD に換算できません",
+    "converted": "{currency} から換算",
+    "distance": "{area} 中心から {km} km",
+    "choose": "メインホテルに設定",
+    "current": "現在のメインホテル",
+    "breakfast": "朝食付き",
+    "refundable": "無料キャンセル",
+    "refundUnknown": "キャンセル条件未確認",
+    "moreRooms": "他に {count} 種類の客室",
+    "gaps": "未達の条件：{labels}",
+    "stars": "{stars} つ星",
+    "reviews": "宿泊者評価 {score}",
+    "reviewCount": "{count} 件"
+  },
+  "partner": {
+    "deep_link": "{partner} で予約",
+    "hotel_search": "{partner} でこのホテルを探す",
+    "area_search": "{partner} で{area}の宿を見る"
+  }
+}

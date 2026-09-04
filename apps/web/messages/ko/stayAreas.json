@@ -1,0 +1,104 @@
+{
+  "title": "숙소 추천 지역",
+  "description": "이 여정의 방문지 분포를 바탕으로 숙소 지역을 추천하고, 선택하면 실시간 가격을 비교합니다. 제휴 사이트 이동은 이용 횟수를 차감하지 않습니다.",
+  "noCharge": "추천과 가격 비교는 이용 횟수를 차감하지 않습니다",
+  "manualLodging": "호텔 직접 입력",
+  "back": "지역 목록으로",
+  "retry": "다시 시도",
+  "refresh": "가격 새로고침",
+  "loadingAreas": "여정의 방문지를 분석하는 중…",
+  "area": {
+    "items": "일정 {count}개",
+    "dwell": "약 {hours}시간 체류",
+    "days": "{count}일 방문",
+    "dayTrip": "당일치기 지역",
+    "current": "현재 호텔 위치",
+    "pick": "이 지역 호텔 보기",
+    "reason": {
+      "most_items": "일정이 가장 많음",
+      "most_days": "방문 일수 최다",
+      "central": "전체 일정의 중심",
+      "day_trip_zone": "대부분 당일치기 명소로, 보통 시내에서 출발합니다",
+      "destination_default": "인기 숙소 지역",
+      "current_lodging": "현재 호텔이 있는 곳"
+    }
+  },
+  "notice": {
+    "lowEvidence": "여정의 방문지가 아직 적어 현재 일정과 인기 지역을 함께 제안합니다.",
+    "noEvidence": "위치가 확인된 방문지가 아직 없어 인기 숙소 지역을 보여 드립니다.",
+    "unsupported": "이 목적지에는 아직 숙소 지역 데이터가 없습니다. 호텔을 직접 입력할 수 있습니다.",
+    "secondStay": "연장 도시 일정이 많아 두 번째 숙소를 고려해 볼 만합니다.",
+    "pricingUnavailable": "현재 사용할 수 있는 호텔 가격 공급자가 없습니다. 제휴 사이트에서 확인할 수 있습니다.",
+    "chosen": "{hotel}을(를) 메인 호텔로 설정했습니다. 일별 경로를 다시 계산하는 중입니다.",
+    "offerExpired": "가격이 갱신되었습니다. 다시 확인해 주세요.",
+    "selectFailed": "메인 호텔을 설정할 수 없습니다",
+    "versionConflict": "이 여정이 다른 탭이나 기기에서 수정되었습니다. 새로고침 후 다시 시도해 주세요."
+  },
+  "compare": {
+    "title": "{area} 호텔 비교",
+    "summary": "{nights}박 · 성인 {adults}명 · 객실 {rooms}개",
+    "loading": "공급자에서 실시간 가격을 가져오는 중 (최대 약 10초)…",
+    "errorLoad": "호텔 가격을 불러올 수 없습니다",
+    "sortLabel": "정렬",
+    "sort": { "price": "가격", "rating": "평점", "distance": "거리" },
+    "onlyFullMatch": "조건을 모두 충족하는 호텔만",
+    "relaxed": "모든 조건에 맞는 호텔이 없어 다음 조건을 완화했습니다: {labels}",
+    "hardFiltered": "객실 유형 또는 인원이 맞지 않아 {count}개를 더 숨겼습니다",
+    "nearbyTitle": "이 지역의 실시간 가격이 적어 가장 가까운 호텔을 보여 드립니다",
+    "validUntil": "가격 유효 시간 {time}",
+    "expired": "가격이 만료되었습니다. 새로고침 후 선택해 주세요",
+    "empty": "공급자에 현재 이 지역의 가격이 없습니다. 제휴 사이트에서 확인할 수 있습니다.",
+    "partners": "제휴 사이트에서 더 보기"
+  },
+  "status": {
+    "live": "실시간 가격",
+    "test": "공급자 테스트 데이터",
+    "mock": "샘플 데이터",
+    "not_configured": "호텔 가격 공급자가 설정되지 않았습니다",
+    "unavailable": "공급자가 현재 응답하지 않습니다",
+    "timeout": "공급자 응답 시간이 초과되었습니다",
+    "dates_missing": "가격을 보려면 여정 날짜를 설정해 주세요",
+    "dates_past": "여정 날짜가 지나 가격을 조회할 수 없습니다",
+    "empty": "공급자가 가격을 반환하지 않았습니다"
+  },
+  "dateNote": {
+    "checkin_moved_to_today": "체크인 날짜를 오늘로 변경했습니다",
+    "assumed_one_night": "1박 기준으로 계산",
+    "stay_truncated": "처음 14박 기준으로 계산"
+  },
+  "warning": {
+    "children_ages_missing": "어린이 나이가 설정되지 않아 성인 요금으로 계산합니다"
+  },
+  "relaxed": {
+    "breakfast": "조식 포함",
+    "refundable": "무료 취소",
+    "station_walk": "역까지 도보 시간",
+    "review_count": "최소 리뷰 수",
+    "review_score": "최소 투숙객 평점",
+    "star_rating": "최소 성급",
+    "preferred_areas": "숙소 지역",
+    "nightly_min": "1박 최저 가격",
+    "nightly_max": "1박 최고 가격"
+  },
+  "hotel": {
+    "perNight": "1박",
+    "estimateUnavailable": "TWD로 환산할 수 없습니다",
+    "converted": "{currency}에서 환산",
+    "distance": "{area} 중심에서 {km} km",
+    "choose": "메인 호텔로 설정",
+    "current": "현재 메인 호텔",
+    "breakfast": "조식 포함",
+    "refundable": "무료 취소",
+    "refundUnknown": "취소 조건 미확인",
+    "moreRooms": "객실 유형 {count}개 더 있음",
+    "gaps": "미충족: {labels}",
+    "stars": "{stars}성급",
+    "reviews": "투숙객 평점 {score}",
+    "reviewCount": "리뷰 {count}개"
+  },
+  "partner": {
+    "deep_link": "{partner}에서 예약",
+    "hotel_search": "{partner}에서 이 호텔 찾기",
+    "area_search": "{partner}에서 {area} 숙소 보기"
+  }
+}

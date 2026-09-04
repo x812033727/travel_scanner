@@ -53,7 +53,7 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 describe("trip editor", () => {
-  it("does not load or show affiliate partner options in the trip planner", async () => {
+  it("does not load affiliate options or stay areas until the member opens the stay flow", async () => {
     const fetchMock = vi.fn().mockImplementation(() => Promise.resolve(response(trip)));
     vi.stubGlobal("fetch", fetchMock);
 
@@ -64,6 +64,74 @@ describe("trip editor", () => {
     expect(
       fetchMock.mock.calls.some(([input]) => String(input).includes("/affiliates/options")),
     ).toBe(false);
+    expect(fetchMock.mock.calls.some(([input]) => String(input).includes("/stay-areas"))).toBe(false);
+  });
+
+  it("opens the stay-area flow from the hotel card and sets the chosen hotel as primary lodging", async () => {
+    const hotelStart = {
+      ...trip.items[0],
+      id: "00000000-0000-4000-8000-000000000010",
+      position: -1,
+      item_type: "hotel_anchor",
+      title: "從 尚未設定飯店 出發",
+      location_name: null,
+      system_role: "hotel_start" as const,
+      fixed_time: true,
+      data: { needs_place_confirmation: true },
+    };
+    const stayTrip = {
+      ...trip,
+      start_date: "2026-11-11",
+      end_date: "2026-11-12",
+      primary_lodging: null,
+      items: [{ ...trip.items[0], latitude: 35.7148, longitude: 139.7967, location_source: "hotspot_catalog" }, hotelStart],
+    };
+    const chosenTrip = {
+      ...stayTrip,
+      version: 2,
+      primary_lodging: { name: "淺草河畔飯店", location_name: "台東區淺草 1-1", latitude: 35.71, longitude: 139.79, location_source: "provider", selection_source: "user", hotel_id: "100", provider: "booking" },
+      items: [stayTrip.items[0], { ...hotelStart, title: "從 淺草河畔飯店 出發", location_name: "台東區淺草 1-1", latitude: 35.71, longitude: 139.79, location_source: "provider", data: { needs_place_confirmation: false } }],
+      routing: { status: "complete", total: 1, completed: 1, day_settings: [] },
+    };
+    const future = new Date(Date.now() + 10 * 60_000).toISOString();
+    const areasPayload = {
+      trip_id: trip.id, version: 1, status: "recommended", city_code: "NRT", pricing: { available: true, provider: "booking", mode: "live" }, current_lodging_area_code: null,
+      located_item_count: 1, unassigned_item_count: 0, excluded_extension: {}, warnings: [],
+      areas: [{ code: "asakusa", name: "淺草", latitude: 35.71, longitude: 139.79, radius_km: 2, is_day_trip: false, score: 0.9, item_count: 1, dwell_minutes: 60, day_count: 1, sample_titles: ["淺草散步"], reasons: ["most_items"] }],
+    };
+    const hotelsPayload = {
+      trip_id: trip.id, version: 1, area: { code: "asakusa", name: "淺草", latitude: 35.71, longitude: 139.79, radius_km: 2 }, check_in: "2026-11-11", check_out: "2026-11-12", nights: 1, date_notes: [],
+      travelers: { adults: 1, children: 0, rooms: 1 }, warnings: [], pricing: { status: "live", provider: "booking", expires_at: future }, filters: { applied: {}, relaxed: [], excluded_by_hard_filter: 0 },
+      hotels: [{ id: "offer-1", hotel_id: "100", hotel_name: "淺草河畔飯店", provider: "booking", latitude: 35.71, longitude: 139.79, currency: "TWD", nights: 1, nightly_price: 3200, total_price: 3200, rating: 4, review_score: 8.6, review_count: 1200, breakfast_included: true, refundable: true, distance_km: 0.4, in_area: true, is_current_lodging: false, preference_gaps: [], partners: [{ partner: "agoda", display_name: "Agoda", kind: "hotel_search" }], expires_at: future }],
+      nearby: [], area_partners: [], disclosure: "",
+    };
+    const fetchMock = vi.fn().mockImplementation((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (url.includes("/stay-areas/asakusa/select")) return Promise.resolve(response(chosenTrip));
+      if (url.includes("/stay-areas/asakusa/hotels")) return Promise.resolve(response(hotelsPayload));
+      if (url.includes("/stay-areas")) return Promise.resolve(response(areasPayload));
+      if (url.includes("/routes/status")) return Promise.resolve(response({ version: 2, status: "complete" }));
+      return Promise.resolve(response(init?.method === "PUT" ? stayTrip : stayTrip));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<TripEditor tripId={trip.id} />);
+
+    fireEvent.click((await screen.findAllByRole("button", { name: "設定主要飯店" }))[0]);
+    const dialog = await screen.findByRole("dialog", { name: "住宿熱區" });
+    expect(fetchMock.mock.calls.some(([input]) => String(input).includes(`/trips/${trip.id}/stay-areas`))).toBe(true);
+    fireEvent.click(await within(dialog).findByRole("button", { name: /看這區的飯店/ }));
+    fireEvent.click(await within(dialog).findByRole("button", { name: "設為主要飯店" }));
+
+    await waitFor(() => {
+      const selectCall = fetchMock.mock.calls.find(([input]) => String(input).includes("/stay-areas/asakusa/select"));
+      expect(selectCall).toBeTruthy();
+      expect(selectCall?.[1]?.method).toBe("POST");
+      expect(JSON.parse(String(selectCall?.[1]?.body))).toEqual({ version: 1, provider: "booking", hotel_id: "100" });
+    });
+    expect(await screen.findByText("已將 淺草河畔飯店 設為主要飯店，正在重新計算每日路線。")).toBeTruthy();
+    expect(screen.queryByRole("dialog", { name: "住宿熱區" })).toBeNull();
+    expect(fetchMock.mock.calls.some(([input]) => String(input).includes("/affiliates/options"))).toBe(false);
   });
 
   it("shows Ekispert and ODsay as the regional transit providers without exposing keys", async () => {
