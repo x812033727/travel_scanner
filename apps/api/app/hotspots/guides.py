@@ -27,7 +27,7 @@ from app.models import (
     TravelHotspot,
 )
 from app.problems import AppError
-from app.providers.usage_meter import record_youtube_request
+from app.providers.usage_meter import google_billing_date, record_youtube_request
 
 PUBLIC_HOTSPOT_STATUSES = ("approved", "auto_approved")
 SEARCH_SUFFIXES: dict[Locale, str] = {
@@ -590,7 +590,11 @@ async def discover_guides(
                     report["providers"][provider_name] = "ready"
                 except (httpx.HTTPError, KeyError, TypeError, ValueError, AppError) as exc:
                     report["errors"].append(
-                        {"provider": provider_name, "locale": locale, "error": type(exc).__name__}
+                        {
+                            "provider": provider_name,
+                            "locale": locale,
+                            **describe_provider_error(exc),
+                        }
                     )
         await session.commit()
     finally:
@@ -601,8 +605,44 @@ async def discover_guides(
     return report
 
 
+def describe_provider_error(exc: Exception) -> dict[str, Any]:
+    """Summarise a provider failure so the cause survives into the report.
+
+    Recording only the exception class made a 429 that clears overnight look exactly
+    like a 403 from a broken key. Never fall back to str(exc): httpx puts the request
+    URL in its message and the API key rides in that URL's query string.
+    """
+
+    detail: dict[str, Any] = {"error": type(exc).__name__}
+    response = getattr(exc, "response", None)
+    if response is None:
+        return detail
+    detail["status"] = response.status_code
+    try:
+        payload = response.json()
+    except ValueError:
+        return detail
+    error = payload.get("error") if isinstance(payload, dict) else None
+    if isinstance(error, str):
+        detail["message"] = error[:200]
+        return detail
+    if not isinstance(error, dict):
+        return detail
+    if message := error.get("message"):
+        detail["message"] = str(message)[:200]
+    reasons = [
+        item["reason"]
+        for item in error.get("errors", [])
+        if isinstance(item, dict) and item.get("reason")
+    ]
+    if reasons:
+        detail["reason"] = str(reasons[0])
+    return detail
+
+
 async def consume_search_budget(redis: Redis, provider: str, limit: int) -> bool:
-    key = f"hotspot-guide-quota:{provider}:{date.today().isoformat()}"
+    # Keyed on Google's billing day, not the local one: see google_billing_date.
+    key = f"hotspot-guide-quota:{provider}:{google_billing_date().isoformat()}"
     script = (
         "local current=tonumber(redis.call('GET',KEYS[1]) or '0'); "
         "if current>=tonumber(ARGV[1]) then return -1 end; "
@@ -617,7 +657,7 @@ async def consume_search_budget(redis: Redis, provider: str, limit: int) -> bool
 
 
 async def guide_quota_status(redis: Redis, settings: Settings) -> dict[str, Any]:
-    day = date.today().isoformat()
+    day = google_billing_date().isoformat()
     providers = ("youtube", "brave", "gemini")
     keys = [f"hotspot-guide-quota:{provider}:{day}" for provider in providers]
     try:

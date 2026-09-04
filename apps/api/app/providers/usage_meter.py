@@ -170,6 +170,17 @@ def _billing_now(now: datetime) -> datetime:
     return now.astimezone(GOOGLE_BILLING_TIMEZONE)
 
 
+def google_billing_date(now: datetime | None = None) -> date:
+    """The day Google is currently counting against, for anything that mirrors its quota.
+
+    Google resets daily quotas at midnight Pacific. A counter keyed on the local date
+    hands out a second full allowance seven to eight hours before Google's day ends,
+    so two of its windows land inside one of Google's.
+    """
+
+    return _billing_now(now or datetime.now(UTC)).date()
+
+
 def _month_window(now: datetime) -> tuple[date, date]:
     start = date(now.year, now.month, 1)
     end = date(now.year, now.month, monthrange(now.year, now.month)[1])
