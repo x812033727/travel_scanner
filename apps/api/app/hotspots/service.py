@@ -438,7 +438,7 @@ async def discover_hotspots(
         client,
     )
     now = datetime.now(UTC)
-    added = auto_approved = pending = 0
+    added = auto_approved = pending = denied = 0
     errors: list[dict[str, str]] = []
     try:
         for city in HOTSPOT_CITIES:
@@ -481,6 +481,8 @@ async def discover_hotspots(
                     if status == "auto_approved":
                         public_count += 1
                         auto_approved += 1
+                    elif status == "rejected":
+                        denied += 1
                     else:
                         pending += 1
                     hotspot.name = candidate.name
@@ -525,6 +527,7 @@ async def discover_hotspots(
         "added": added,
         "auto_approved": auto_approved,
         "pending": pending,
+        "denied": denied,
         "errors": errors,
     }
 

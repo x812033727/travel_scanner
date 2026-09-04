@@ -38,15 +38,73 @@ ALLOWED_TYPES = {
     "Q11315": "shopping",  # shopping mall
     "Q330284": "food",  # market
 }
+# A denied type is never a place a traveller visits, so a candidate carrying one is
+# rejected outright instead of queued for a human. Everything here was observed in the
+# 2026-09 discovery queue and checked against the attractions we kept, so nothing in the
+# list can also describe a real destination. Deliberately absent: street, thoroughfare
+# and arterial road (彌敦道, 通菜街, 拉差丹儂大道 are all streets), secondary school
+# (培材學堂), planning area (武吉知馬), building and hall — those stay "unknown" so a
+# human still decides.
 DENIED_TYPES = {
     "Q5",  # human
     "Q43229",  # organization
-    "Q55488",  # railway station
     "Q728937",  # railway line
-    "Q1248784",  # airport
     "Q783794",  # company
-    "Q515",  # city
     "Q56061",  # administrative territorial entity
+    # Rail. Wikidata models a station a dozen ways, and a commuter stop matched by
+    # only one of them still floods the queue.
+    "Q55488",  # railway station
+    "Q22808403",  # underground station
+    "Q928830",  # metro station
+    "Q4312270",  # railway station above ground
+    "Q1147171",  # interchange station
+    "Q124416148",  # underground metro station
+    "Q2142091",  # over-track railway station
+    "Q11670533",  # elevated station
+    "Q55491",  # underground railway station
+    "Q55485",  # dead-end railway station
+    "Q11606300",  # last station
+    "Q332496",  # overtaking station
+    "Q20202072",  # terminus
+    "Q85907346",  # rail company (Japan)
+    "Q10438042",  # bus company
+    # Air
+    "Q1248784",  # airport
+    "Q644371",  # international airport
+    "Q94993988",  # commercial traffic aerodrome
+    # Education
+    "Q3914",  # school
+    "Q9826",  # high school
+    "Q3918",  # university
+    "Q6313528",  # junior college
+    "Q12592372",  # high school in South Korea
+    "Q1080794",  # public school
+    "Q3660535",  # women's college
+    # Businesses and media
+    "Q4830453",  # business
+    "Q891723",  # public company
+    "Q1480166",  # kabushiki gaisha
+    "Q14350",  # radio station
+    "Q1616075",  # television station
+    "Q15265344",  # broadcaster
+    "Q11032",  # newspaper
+    "Q11691",  # stock exchange
+    # Places too large to be an attraction, and states that no longer exist
+    "Q515",  # city
+    "Q1549591",  # big city
+    "Q174844",  # megacity
+    "Q494721",  # city of Japan
+    "Q1749269",  # city designated by government ordinance
+    "Q65589340",  # prefectural capital of Japan
+    "Q2264924",  # port city
+    "Q11422368",  # city for international conferences and tourism
+    "Q6644510",  # urban district of Vietnam
+    "Q13025342",  # thesaban mueang
+    "Q7635776",  # Sukhaphiban
+    "Q50198",  # province of Thailand
+    "Q3624078",  # sovereign state
+    "Q6256",  # country
+    "Q3024240",  # historical country
 }
 
 
@@ -79,7 +137,10 @@ def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
 
 def classify_types(type_ids: set[str]) -> tuple[str, str, str | None]:
     if type_ids & DENIED_TYPES:
-        return "culture", "pending", "denylisted_type"
+        # Rejected, not queued: a denied type is a decision the collector can make on
+        # its own, and sending it for review buried the real candidates. In 2026-09 the
+        # queue held 172 rows and 141 of them were this.
+        return "culture", "rejected", "denylisted_type"
     categories = [category for qid, category in ALLOWED_TYPES.items() if qid in type_ids]
     if not categories:
         return "culture", "pending", "unknown_type"
