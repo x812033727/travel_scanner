@@ -39,6 +39,25 @@ def test_commuter_infrastructure_is_rejected_rather_than_queued() -> None:
         assert classify_types({noise_type})[1] == "rejected", noise_type
 
 
+def test_museum_and_temple_subtypes_auto_approve_into_the_right_category() -> None:
+    # Wikidata often types an entry with only the subtype, never Q33506/Q44539 itself,
+    # so 清水寺-sized places were landing in the review queue as unknown_type.
+    for museum_subtype in ("Q17431399", "Q16735822", "Q1865249"):
+        assert classify_types({museum_subtype}) == ("culture", "auto_approved", None)
+    for temple_tradition in ("Q7245816", "Q618618", "Q842400"):
+        assert classify_types({temple_tradition}) == ("culture", "auto_approved", None)
+    for market_type in ("Q132510", "Q1962840"):
+        assert classify_types({market_type}) == ("food", "auto_approved", None)
+
+
+def test_chinese_temple_stays_with_a_human() -> None:
+    # Q2680845 was measured before the temple traditions above were admitted:
+    # allowing it would auto-publish 94 rows in Taipei and 79 in Tainan alone,
+    # mostly neighbourhood shrines. It must stay pending, and never be denied
+    # outright either — some of those rows are real destinations.
+    assert classify_types({"Q2680845"}) == ("culture", "pending", "unknown_type")
+
+
 def test_streets_and_districts_still_reach_a_human() -> None:
     # 彌敦道, 通菜街 and 旺角 are streets and neighbourhoods that are also real
     # destinations, so their types must never be denied outright.

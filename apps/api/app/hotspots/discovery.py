@@ -12,8 +12,20 @@ from app.hotspots.cities import HotspotCity
 
 ALLOWED_TYPES = {
     "Q33506": "culture",  # museum
+    # Museum subtypes that Wikidata often uses INSTEAD of Q33506, not alongside it.
+    # Each was flood-measured across all 33 cities before being admitted (2026-09):
+    # the whole batch adds tens of rows, not hundreds.
+    "Q17431399": "culture",  # national museum
+    "Q16735822": "culture",  # history museum
+    "Q1865249": "culture",  # literary museum
     "Q16970": "culture",  # church
     "Q44539": "culture",  # temple
+    # Named temple traditions modelled without Q44539. Q2680845 (Chinese temple) is
+    # deliberately absent: measured at 94 auto-publishes in Taipei and 79 in Tainan,
+    # mostly neighbourhood shrines, so it stays with human review.
+    "Q7245816": "culture",  # temple of Mazu
+    "Q618618": "culture",  # temple of Confucius
+    "Q842400": "culture",  # Guandi temple
     "Q23413": "culture",  # castle
     "Q16560": "culture",  # palace
     "Q839954": "culture",  # archaeological site
@@ -36,7 +48,9 @@ ALLOWED_TYPES = {
     "Q2281788": "family",  # aquarium
     "Q2416723": "family",  # theme park
     "Q11315": "shopping",  # shopping mall
-    "Q330284": "food",  # market
+    "Q330284": "food",  # marketplace
+    "Q132510": "food",  # market
+    "Q1962840": "food",  # night market
 }
 # A denied type is never a place a traveller visits, so a candidate carrying one is
 # rejected outright instead of queued for a human. Everything here was observed in the
