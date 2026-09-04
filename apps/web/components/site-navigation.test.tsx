@@ -23,7 +23,11 @@ describe("SiteNavigation", () => {
       </StrictMode>,
     );
 
-    expect((await screen.findByRole("link", { name: "管理後台" })).getAttribute("href")).toBe("/admin");
+    // Both bars carry the link and CSS shows exactly one of them per viewport, so an
+    // administrator reaches the control centre on a phone as well as on a desktop.
+    const adminLinks = await screen.findAllByRole("link", { name: "管理後台" });
+    expect(adminLinks).toHaveLength(2);
+    expect(adminLinks.every((link) => link.getAttribute("href") === "/admin")).toBe(true);
     expect(screen.getByRole("link", { name: "Account" }).getAttribute("href")).toBe("/account");
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
