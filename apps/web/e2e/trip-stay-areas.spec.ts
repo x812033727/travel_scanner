@@ -124,7 +124,7 @@ test("recommends stay areas, compares prices and sets the chosen hotel as primar
 
   const dialog = page.getByRole("dialog", { name: "住宿熱區" });
   await expect(dialog).toBeVisible();
-  await expect(dialog.getByText("淺草")).toBeVisible();
+  await expect(dialog.getByText("淺草", { exact: true })).toBeVisible();
   await expect(dialog.getByText("景點最多")).toBeVisible();
   await dialog.getByRole("button", { name: /看這區的飯店/ }).first().click();
 
