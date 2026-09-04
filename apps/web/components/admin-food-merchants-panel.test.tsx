@@ -265,6 +265,76 @@ describe("AdminFoodMerchantsPanel", () => {
     ).toBeTruthy();
   });
 
+  it("reports what applying an editor candidate did, and that it is not saved yet", async () => {
+    const candidateResponse = (placeId: string) =>
+      new Response(
+        JSON.stringify({
+          configured: true,
+          reason: "ok",
+          candidates: [
+            {
+              place_id: placeId,
+              name: "一樂燒鵝",
+              address: "Hong Kong",
+              google_maps_url: "https://maps.example/",
+              temporary_match_coordinates: {
+                latitude: 22.2821,
+                longitude: 114.1556,
+                expires_in_days: 30,
+                usage: "comparison_only",
+              },
+            },
+          ],
+        }),
+      );
+    let placeId = "ChIJ-relocated";
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      const stub = taxonomyResponse(url);
+      if (stub) return stub;
+      if (url.includes("map-candidates")) return candidateResponse(placeId);
+      if (init?.method === "PATCH") throw new Error("applying must not save on its own");
+      return new Response(JSON.stringify({ items: [merchant], total: 1, page: 1, pages: 1 }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<AdminFoodMerchantsPanel />);
+    expect(await screen.findByText("Yat Lok Restaurant")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "編輯地點與來源" }));
+    const editor = screen.getByRole("dialog");
+    const placeIdInput = within(editor).getByLabelText(
+      "Google Place ID",
+    ) as HTMLInputElement;
+    expect(placeIdInput.value).toBe("ChIJ-yat-lok");
+
+    fireEvent.click(within(editor).getByRole("button", { name: "搜尋 Google 候選" }));
+    fireEvent.click(
+      await within(editor).findByRole("button", {
+        name: "套用 Place ID，保留人工審核",
+      }),
+    );
+    expect(placeIdInput.value).toBe("ChIJ-relocated");
+    expect(
+      await within(editor).findByText(/已填入 Place ID.*未驗證.*儲存按鈕才會寫入/),
+    ).toBeTruthy();
+    expect(
+      (within(editor).getByLabelText("地圖比對狀態") as HTMLSelectElement).value,
+    ).toBe("unverified");
+
+    // Re-applying the same Place ID changes nothing, and must say so rather than
+    // looking like a dead button.
+    placeId = "ChIJ-relocated";
+    fireEvent.click(within(editor).getByRole("button", { name: "搜尋 Google 候選" }));
+    fireEvent.click(
+      await within(editor).findByRole("button", {
+        name: "套用 Place ID，保留人工審核",
+      }),
+    );
+    expect(
+      await within(editor).findByText("欄位已經是這個 Place ID，沒有變更。"),
+    ).toBeTruthy();
+  });
+
   it("creates a merchant with destination, area, cuisine and signature dish", async () => {
     const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input);

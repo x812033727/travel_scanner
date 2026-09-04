@@ -190,6 +190,9 @@ export function AdminFoodMerchantsPanel({
   >([]);
   const [editing, setEditing] = useState<Merchant | null>(null);
   const [candidate, setCandidate] = useState<MapCandidateResponse | null>(null);
+  // The page-level message banner sits behind the editor overlay, so the editor
+  // reports the result of applying a candidate in its own notice instead.
+  const [applyNotice, setApplyNotice] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -409,8 +412,23 @@ export function AdminFoodMerchantsPanel({
     }
   }
 
+  function applyCandidateToEditor(placeId: string) {
+    if (!editing) return;
+    if (editing.google_place_id === placeId) {
+      setApplyNotice(t("merchants.applyUnchanged"));
+      return;
+    }
+    setEditing({
+      ...editing,
+      google_place_id: placeId,
+      map_match_status: "unverified",
+    });
+    setApplyNotice(t("merchants.applyFilled"));
+  }
+
   async function searchGoogleCandidate() {
     if (!editing || editing.country_code === "KR") return;
+    setApplyNotice("");
     setLoading(true);
     try {
       const result = await api<MapCandidateResponse>(
@@ -483,6 +501,7 @@ export function AdminFoodMerchantsPanel({
       setMessage(editing.id ? "已儲存店家地點與來源資料。" : t("merchants.created"));
       setEditing(null);
       setCandidate(null);
+      setApplyNotice("");
       await load();
     } catch (reason) {
       setMessage((reason as Error).message);
@@ -651,6 +670,7 @@ export function AdminFoodMerchantsPanel({
           onClick={() => {
             setEditing(blankMerchant());
             setCandidate(null);
+            setApplyNotice("");
           }}
           className="h-11 rounded-xl bg-[var(--teal)] px-4 font-semibold text-white"
         >
@@ -840,6 +860,7 @@ export function AdminFoodMerchantsPanel({
                           })),
                         });
                         setCandidate(null);
+                        setApplyNotice("");
                       }}
                       className="min-h-11 rounded-xl border border-[var(--teal)] px-3 font-semibold text-[var(--teal)]"
                     >
@@ -1104,15 +1125,17 @@ export function AdminFoodMerchantsPanel({
                 <button
                   type="button"
                   onClick={() =>
-                    setEditing({
-                      ...editing,
-                      google_place_id: candidate.candidates[0].place_id,
-                    })
+                    applyCandidateToEditor(candidate.candidates[0].place_id)
                   }
                   className="mt-3 min-h-11 rounded-xl bg-amber-800 px-4 font-semibold text-white"
                 >
                   套用 Place ID，保留人工審核
                 </button>
+                {applyNotice && (
+                  <p role="status" className="mt-3 text-sm font-semibold text-amber-900">
+                    {applyNotice}
+                  </p>
+                )}
               </div>
             )}
             <fieldset className="mt-5 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4">
@@ -1349,6 +1372,7 @@ export function AdminFoodMerchantsPanel({
             </section>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <select
+                aria-label={t("merchants.mapMatchStatus")}
                 value={editing.map_match_status}
                 onChange={(event) =>
                   setEditing({
@@ -1365,6 +1389,7 @@ export function AdminFoodMerchantsPanel({
                 <option value="disabled">地圖停用</option>
               </select>
               <select
+                aria-label={t("merchants.reviewStatus")}
                 value={editing.review_status}
                 onChange={(event) =>
                   setEditing({
