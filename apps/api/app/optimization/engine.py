@@ -6,6 +6,7 @@ from uuid import NAMESPACE_URL, UUID, uuid5
 from ortools.sat.python import cp_model
 from pydantic import BaseModel, Field
 
+from app.optimization.hotel_filters import filter_hotels_with_relaxation
 from app.pricing.engine import TotalCost, TotalCostEngine
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, TransportOffer
 from app.search.schemas import SearchCreate
@@ -139,96 +140,11 @@ class TripOptimizer:
         self.relaxed_hotel_preferences: list[str] = []
 
     def _filter_hotels(self, query: SearchCreate, hotels: list[HotelOffer]) -> list[HotelOffer]:
-        preferences = query.preferences
-        guests = query.travelers.adults + query.travelers.children
-        hard_matches = [
-            hotel
-            for hotel in hotels
-            if (
-                not preferences.accepted_property_types
-                or hotel.property_type in preferences.accepted_property_types
-            )
-            and (hotel.max_guests is None or hotel.max_guests >= guests)
-        ]
-        constraints: list[tuple[str, Any]] = []
-        if preferences.breakfast_required:
-            constraints.append(("含早餐", lambda item: item.breakfast_included))
-        if preferences.refundable_required:
-            constraints.append(("可免費取消", lambda item: item.refundable))
-        if preferences.max_station_walk_minutes is not None:
-            constraints.append(
-                (
-                    "車站步行距離",
-                    lambda item: item.station_walk_minutes <= preferences.max_station_walk_minutes,
-                )
-            )
-        if preferences.hotel_min_review_count is not None:
-            constraints.append(
-                (
-                    "最低評論筆數",
-                    lambda item: (
-                        item.review_count is not None
-                        and item.review_count >= preferences.hotel_min_review_count
-                    ),
-                )
-            )
-        if preferences.hotel_min_review_score is not None:
-            constraints.append(
-                (
-                    "最低住客評分",
-                    lambda item: (
-                        item.review_score is not None
-                        and item.review_score >= preferences.hotel_min_review_score
-                    ),
-                )
-            )
-        if preferences.hotel_min_rating is not None:
-            constraints.append(
-                ("最低星級", lambda item: item.rating >= preferences.hotel_min_rating)
-            )
-        areas = preferences.preferred_areas
-        if areas:
-            constraints.append(
-                (
-                    "住宿區域",
-                    lambda item: any(
-                        area.casefold() in f"{item.address or ''} {item.hotel_name}".casefold()
-                        for area in areas
-                    ),
-                )
-            )
-        if preferences.hotel_min_nightly_twd is not None:
-            constraints.append(
-                (
-                    "住宿每晚最低價格",
-                    lambda item: (
-                        (item.nightly_price or item.total_price / max(1, item.nights))
-                        >= preferences.hotel_min_nightly_twd
-                    ),
-                )
-            )
-        if preferences.hotel_max_nightly_twd is not None:
-            constraints.append(
-                (
-                    "住宿每晚最高價格",
-                    lambda item: (
-                        (item.nightly_price or item.total_price / max(1, item.nights))
-                        <= preferences.hotel_max_nightly_twd
-                    ),
-                )
-            )
-
-        active = list(constraints)
-        relaxed: list[str] = []
-        while True:
-            matches = [
-                hotel for hotel in hard_matches if all(predicate(hotel) for _, predicate in active)
-            ]
-            if matches or not active:
-                self.relaxed_hotel_preferences = relaxed
-                return matches
-            label, _ = active.pop(0)
-            relaxed.append(label)
+        result = filter_hotels_with_relaxation(
+            query.preferences, query.travelers.adults + query.travelers.children, hotels
+        )
+        self.relaxed_hotel_preferences = [constraint.label for constraint in result.relaxed]
+        return result.matches
 
     def _candidates(
         self,

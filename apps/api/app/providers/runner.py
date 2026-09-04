@@ -18,7 +18,14 @@ class ProviderRunner:
         self.redis = redis
         self.settings = settings or get_settings()
 
-    async def run(self, provider: str, module: str, call: Callable[[], Awaitable[T]]) -> T:
+    async def run(
+        self,
+        provider: str,
+        module: str,
+        call: Callable[[], Awaitable[T]],
+        *,
+        timeout_seconds: float | None = None,
+    ) -> T:
         circuit_key = f"provider:circuit:{provider}:{module}"
         if await self.redis.exists(circuit_key):
             raise ProviderUnavailableError(f"{provider}/{module} circuit is open")
@@ -26,7 +33,7 @@ class ProviderRunner:
         for attempt in range(2):
             try:
                 result = await asyncio.wait_for(
-                    call(), timeout=self.settings.provider_timeout_seconds
+                    call(), timeout=timeout_seconds or self.settings.provider_timeout_seconds
                 )
                 await self.redis.delete(f"provider:failures:{provider}:{module}")
                 return result

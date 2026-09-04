@@ -108,6 +108,9 @@ class Settings(BaseSettings):
     provider_timeout_seconds: float = 3.0
     provider_failure_threshold: int = 3
     provider_circuit_seconds: int = 60
+    # A stay-area hotel search is up to three sequential Booking round trips, so it
+    # gets its own budget instead of the per-module search timeout.
+    hotel_area_search_timeout_seconds: float = Field(default=8.0, gt=0, le=30)
     rate_limit_per_minute: int = Field(default=120, ge=1)
     api_max_request_bytes: int = Field(default=5_242_880, ge=65_536, le=52_428_800)
     analytics_enabled: bool = False

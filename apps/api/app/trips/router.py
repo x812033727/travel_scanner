@@ -79,6 +79,7 @@ from app.trips.schedule import (
     apply_schedule_defaults,
     canonicalize_positions,
     ensure_system_slots,
+    merge_reoptimized_lodging,
     primary_lodging,
     route_pair_count,
     schedule_defaults,
@@ -2032,6 +2033,8 @@ async def update_primary_lodging(
         "latitude": payload.latitude,
         "longitude": payload.longitude,
         "location_source": payload.location_source,
+        "selection_source": "user",
+        "selected_at": datetime.now(UTC).isoformat(),
     }
     sync_primary_lodging(trip, rows, lodging)
     return await persist_system_schedule_change(
@@ -3677,17 +3680,12 @@ async def reoptimize_trip(
             row.data = {**row.data, "reoptimized_at": checked_at}
             session.add(row)
     plan_data = plan.model_dump(mode="json")
-    next_lodging = primary_lodging(trip, existing_items)
-    if plan.hotel is not None:
-        next_lodging = {
-            "name": plan.hotel.hotel_name,
-            "location_name": plan.hotel.address or plan.hotel.hotel_name,
-            "provider_place_id": None,
-            "latitude": plan.hotel.latitude,
-            "longitude": plan.hotel.longitude,
-            "location_source": "provider",
-            "offer_id": str(plan.hotel.id),
-        }
+    next_lodging, lodging_warning = merge_reoptimized_lodging(
+        primary_lodging(trip, existing_items), plan.hotel
+    )
+    if lodging_warning:
+        warnings = [*warnings, lodging_warning]
+    if plan.hotel is not None and next_lodging is not None:
         sync_primary_lodging(trip, existing_items, next_lodging)
     canonicalize_positions(existing_items)
     trip.mode = plan.mode

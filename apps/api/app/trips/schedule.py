@@ -9,6 +9,7 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import TripPlan, TripPlanItem
+from app.providers.schemas import HotelOffer
 
 SystemRole = Literal[
     "outbound_flight",
@@ -75,6 +76,32 @@ def primary_lodging(trip: TripPlan, rows: list[TripPlanItem]) -> dict[str, Any] 
         "location_source": hotel.location_source,
         "offer_id": str(hotel.offer_id) if hotel.offer_id else None,
     }
+
+
+USER_LODGING_KEPT_WARNING = "已保留你選擇的主要飯店，本次重新查價未更換住宿。"
+
+
+def merge_reoptimized_lodging(
+    current: dict[str, Any] | None, hotel: HotelOffer | None
+) -> tuple[dict[str, Any] | None, str | None]:
+    """Keep a lodging the member chose themselves; otherwise adopt the repriced hotel."""
+    if hotel is None:
+        return current, None
+    if current and current.get("selection_source") == "user":
+        return current, USER_LODGING_KEPT_WARNING
+    return (
+        {
+            "name": hotel.hotel_name,
+            "location_name": hotel.address or hotel.hotel_name,
+            "provider_place_id": None,
+            "latitude": hotel.latitude,
+            "longitude": hotel.longitude,
+            "location_source": "provider",
+            "offer_id": str(hotel.id),
+            "selection_source": "reoptimize",
+        },
+        None,
+    )
 
 
 def is_logistics_item(item: TripPlanItem) -> bool:

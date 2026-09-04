@@ -141,6 +141,12 @@ class HotelOffer(NormalizedOffer):
     distance_to_center_km: float | None = None
     property_type: PropertyType = PropertyType.HOTEL
     max_guests: int | None = None
+    original_currency: str | None = None
+    original_total_price: Decimal | None = None
+    exchange_rate: Decimal | None = None
+    exchange_rate_retrieved_at: datetime | None = None
+    price_estimate_unavailable: bool = False
+    offer_count: int = 1
 
 
 class ActivityOffer(NormalizedOffer):
