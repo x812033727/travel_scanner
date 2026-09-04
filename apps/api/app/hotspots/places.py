@@ -25,6 +25,10 @@ from app.problems import AppError
 from app.providers.usage_meter import google_maps_usage_snapshot
 
 PUBLIC_HOTSPOT_STATUSES = ("approved", "auto_approved")
+# How far the stored point may sit from Google's before the match stops counting as
+# proof of the same place. Routing uses the stored point, so a loose bound here would
+# put itineraries in the wrong town.
+PLACE_VERIFY_MAX_DRIFT_KM = 1.0
 BLOCKED_WEBSITE_HOSTS = {
     "airbnb.com",
     "agoda.com",
@@ -85,6 +89,36 @@ def _haversine_km(
         delta_longitude / 2
     ) ** 2
     return round(6371.0088 * 2 * asin(sqrt(value)), 3)
+
+
+def _verify_from_profile(
+    hotspot: TravelHotspot, profile: HotspotPlaceProfile, observed_at: datetime
+) -> None:
+    """Mark a hotspot verified once its approved profile agrees with the stored point.
+
+    The automatic matcher already does this for place IDs it assigns itself, but a place
+    ID that arrived by import or by hand never went through that branch, so those rows
+    stayed ``unverified`` — and therefore invisible to the planner — no matter how many
+    times the profile was refreshed. Korea is excluded here for the same reason it is
+    excluded there: an exact Korean identity needs a NAVER place, not a Google one.
+    """
+    if (
+        hotspot.map_match_status == "verified"
+        or hotspot.country_code.upper() == "KR"
+        or not hotspot.google_place_id
+        or profile.match_status not in {"approved", "auto_approved"}
+    ):
+        return
+    drift_km = _haversine_km(
+        float(hotspot.latitude) if hotspot.latitude is not None else None,
+        float(hotspot.longitude) if hotspot.longitude is not None else None,
+        float(profile.google_latitude) if profile.google_latitude is not None else None,
+        float(profile.google_longitude) if profile.google_longitude is not None else None,
+    )
+    if drift_km is None or drift_km > PLACE_VERIFY_MAX_DRIFT_KM:
+        return
+    hotspot.map_match_status = "verified"
+    hotspot.map_verified_at = observed_at
 
 
 def choose_place_candidate(
@@ -339,6 +373,7 @@ async def enrich_hotspot_place(
     profile.formatted_address = cast(str | None, details.get("address"))
     profile.google_latitude = _decimal(details.get("latitude"))
     profile.google_longitude = _decimal(details.get("longitude"))
+    _verify_from_profile(hotspot, profile, observed_at)
     profile.opening_hours_json = cast(
         dict[str, Any], details.get("opening_hours_structured") or {}
     )

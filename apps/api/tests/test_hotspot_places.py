@@ -255,6 +255,62 @@ async def test_failed_refresh_preserves_still_valid_cache(
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("country_code", "google_latitude", "expected_status"),
+    (
+        # An imported place ID that agrees with Google becomes usable by the planner.
+        ("JP", 34.395483, "verified"),
+        # Google points a kilometre away: the stored point is what routing uses, so it stays out.
+        ("JP", 34.5, "unverified"),
+        # Korea needs a NAVER identity; a Google match must never verify it.
+        ("KR", 34.395483, "unverified"),
+    ),
+)
+async def test_refresh_verifies_a_hand_assigned_place_id_when_the_point_agrees(
+    monkeypatch: pytest.MonkeyPatch,
+    country_code: str,
+    google_latitude: float,
+    expected_status: str,
+) -> None:
+    session = AsyncMock(spec=AsyncSession)
+    session.scalar.return_value = None
+    session.add = MagicMock()
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    hotspot = _hotspot()
+    hotspot.country_code = country_code
+    # The place ID arrived by import, so the automatic matcher never ran for this row.
+    hotspot.google_place_id = "ChIJ-dome"
+    # The column default only lands on INSERT, so spell out the pre-refresh state here.
+    hotspot.map_match_status = "unverified"
+
+    monkeypatch.setattr(
+        GoogleTravelService,
+        "place_details",
+        AsyncMock(
+            return_value={
+                "place_id": "ChIJ-dome",
+                "name": "原爆ドーム",
+                "address": "日本廣島縣廣島市",
+                "latitude": google_latitude,
+                "longitude": 132.453592,
+                "google_maps_url": "https://www.google.com/maps/place/example",
+                "opening_hours_structured": {},
+                "website_url": "https://www.city.hiroshima.lg.jp/atomicbomb-peace/",
+                "attributions": [],
+                "data_locale": "zh-TW",
+            }
+        ),
+    )
+    now = datetime(2026, 9, 1, tzinfo=UTC)
+    await enrich_hotspot_place(
+        session, redis, Settings(google_maps_api_key="key"), hotspot, now=now
+    )
+
+    assert hotspot.map_match_status == expected_status
+    assert hotspot.map_verified_at == (now if expected_status == "verified" else None)
+
+
+@pytest.mark.asyncio
 async def test_google_refresh_does_not_override_rejected_website(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
