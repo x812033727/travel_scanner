@@ -51,6 +51,7 @@ def create_access_token(
     auth_version: int = 1,
     *,
     session_started_at: datetime | None = None,
+    token_id: str | None = None,
 ) -> str:
     settings = get_settings()
     now = datetime.now(UTC)
@@ -59,7 +60,11 @@ def create_access_token(
         "ver": auth_version,
         "iss": ISSUER,
         "aud": AUDIENCE,
-        "jti": str(uuid4()),
+        # A renewal passes the presented token's id back in, so jti identifies the whole
+        # sign-in rather than one token in it. Minting a fresh id on every renewal let a
+        # copied cookie renew into a chain of its own that signing out could not reach:
+        # logout denylists only the id it was handed, and does not raise auth_version.
+        "jti": token_id or str(uuid4()),
         "iat": now,
         "nbf": now,
         "exp": now + timedelta(minutes=settings.access_token_expire_minutes),
@@ -67,6 +72,17 @@ def create_access_token(
         "sid_iat": int((session_started_at or now).timestamp()),
     }
     return jwt.encode(payload, settings.app_secret_key, algorithm=ALGORITHM)
+
+
+def session_past_absolute_cap(claims: AccessTokenClaims, now: datetime | None = None) -> bool:
+    """Whether this sign-in is older than the absolute cap, regardless of renewals.
+
+    Checked when a token is presented, not only when one is renewed: a token minted just
+    before the cap was reached would otherwise stay valid for its full lifetime past it.
+    """
+    moment = now or datetime.now(UTC)
+    limit = timedelta(days=get_settings().session_absolute_max_days)
+    return moment - claims.session_started_at >= limit
 
 
 def should_renew_session(claims: AccessTokenClaims, now: datetime | None = None) -> bool:
@@ -160,6 +176,8 @@ async def _authenticate(session: AsyncSession, token: str) -> tuple[User, Access
     user = await session.get(User, claims.user_id)
     if user is None or not user.is_active or user.auth_version != claims.auth_version:
         raise AppError(401, "invalid_user", "這個帳號目前無法使用")
+    if session_past_absolute_cap(claims):
+        raise AppError(401, "session_expired", "登入已逾期,請重新登入")
     await ensure_token_not_revoked(claims)
     return user, claims
 
@@ -173,7 +191,11 @@ def _renew_cookie_session(
     set_auth_cookie(
         response,
         create_access_token(
-            user.id, user.auth_version, session_started_at=claims.session_started_at
+            user.id,
+            user.auth_version,
+            session_started_at=claims.session_started_at,
+            # Carry the id forward so the sign-in keeps one revocation handle.
+            token_id=claims.token_id,
         ),
     )
 
