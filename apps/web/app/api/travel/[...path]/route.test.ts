@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { preserveRequestId } from "./request-id";
+import { renewedSession } from "./route";
 
 describe("travel BFF request tracing", () => {
   it("preserves the API request ID on the browser response", () => {
@@ -9,5 +10,41 @@ describe("travel BFF request tracing", () => {
     const response = preserveRequestId(new Response("{}"), upstream);
 
     expect(response.headers.get("x-request-id")).toBe("route-preview-7f98");
+  });
+});
+
+describe("travel BFF session renewal", () => {
+  function upstreamWith(...cookies: string[]) {
+    const headers = new Headers();
+    for (const cookie of cookies) headers.append("Set-Cookie", cookie);
+    return new Response("{}", { headers });
+  }
+
+  it("carries a slid-forward session and its lifetime back to the browser", () => {
+    const upstream = upstreamWith(
+      "travel_access=renewed.jwt.value; HttpOnly; Path=/; SameSite=Lax; Max-Age=3600",
+    );
+
+    expect(renewedSession(upstream)).toEqual({ token: "renewed.jwt.value", maxAge: 3600 });
+  });
+
+  it("falls back to an hour when the API states no lifetime", () => {
+    expect(renewedSession(upstreamWith("travel_access=renewed; Path=/"))?.maxAge).toBe(3600);
+  });
+
+  it("caps an implausibly long lifetime rather than trusting it", () => {
+    const upstream = upstreamWith("travel_access=renewed; Max-Age=99999999");
+
+    expect(renewedSession(upstream)?.maxAge).toBe(60 * 60 * 24);
+  });
+
+  it("ignores other cookies the API happens to set", () => {
+    const upstream = upstreamWith("travel_locale=ja; Path=/", "other=1; Path=/");
+
+    expect(renewedSession(upstream)).toBeNull();
+  });
+
+  it("reports nothing when the session was not renewed", () => {
+    expect(renewedSession(new Response("{}"))).toBeNull();
   });
 });
