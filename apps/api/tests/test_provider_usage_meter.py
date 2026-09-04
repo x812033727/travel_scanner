@@ -271,3 +271,14 @@ async def test_navitime_budget_reserves_requests_per_japan_month() -> None:
     assert snapshot.billing_timezone == "Asia/Tokyo" and snapshot.pricing_region == "jp"
     september = await navitime_usage_snapshot(redis, 2, now=datetime(2026, 9, 15, tzinfo=UTC))
     assert september.period == "2026-09" and september.used == 0
+
+
+def test_google_billing_date_follows_pacific_not_utc() -> None:
+    from datetime import UTC, datetime
+
+    from app.providers.usage_meter import google_billing_date
+
+    # 06:49 UTC on the 4th is still 23:49 on the 3rd in Los Angeles, so anything that
+    # mirrors a Google daily quota has to be counting against the 3rd.
+    assert google_billing_date(datetime(2026, 9, 4, 6, 49, tzinfo=UTC)).isoformat() == "2026-09-03"
+    assert google_billing_date(datetime(2026, 9, 4, 8, 1, tzinfo=UTC)).isoformat() == "2026-09-04"
