@@ -1,23 +1,28 @@
 from datetime import UTC, datetime
 from decimal import Decimal
+from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4
 
 import fakeredis.aioredis
 import httpx
 import pytest
 from sqlalchemy.dialects import postgresql
+from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.config import Settings
 from app.hotspots.guides import (
     BraveGuideProvider,
     GuideCandidate,
     YouTubeGuideProvider,
+    backfill_guides_once,
     canonical_external_url,
     classify_content_locale,
+    guideless_hotspots_statement,
     stale_youtube_guides_delete,
     upsert_guide,
     youtube_video_id,
 )
-from app.models import HotspotGuide
+from app.models import HotspotGuide, TravelHotspot
 from app.problems import AppError
 from app.providers.usage_meter import youtube_usage_snapshot
 
@@ -267,3 +272,104 @@ def test_stale_youtube_purge_spares_manual_picks() -> None:
     assert "discovery_method" in compiled.params.values()
     assert "manual" in compiled.params.values()
     assert "youtube" in compiled.params.values()
+
+
+def _backfill_settings(**overrides: object) -> Settings:
+    return Settings(
+        hotspot_guides_enabled=True,
+        hotspot_guide_backfill_enabled=True,
+        hotspot_guide_backfill_batch_size=5,
+        **overrides,  # type: ignore[arg-type]
+    )
+
+
+def _session_returning(hotspots: list[TravelHotspot]) -> AsyncMock:
+    session = AsyncMock(spec=AsyncSession)
+    scalars = MagicMock()
+    scalars.all.return_value = hotspots
+    session.scalars.return_value = scalars
+    return session
+
+
+def _hotspot(name: str) -> TravelHotspot:
+    return TravelHotspot(
+        id=uuid4(),
+        slug=name,
+        name=name,
+        city_code="NRT",
+        destination_id="tokyo",
+        city_name="東京",
+        country_code="JP",
+        country_name="日本",
+        category="culture",
+        search_text=name,
+    )
+
+
+@pytest.mark.asyncio
+async def test_guide_backfill_is_off_until_it_is_switched_on() -> None:
+    session = _session_returning([_hotspot("a")])
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+
+    report = await backfill_guides_once(
+        session, Settings(hotspot_guide_backfill_enabled=False), redis
+    )
+
+    assert report == {"skipped": True, "reason": "disabled"}
+    session.scalars.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_guide_backfill_stops_as_soon_as_the_daily_budget_is_gone(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    session = _session_returning([_hotspot("a"), _hotspot("b"), _hotspot("c")])
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    calls: list[str] = []
+
+    async def fake_discover(_session, _settings, hotspot, locales, **_kwargs):
+        calls.append(hotspot.name)
+        assert locales == ["zh-TW"]
+        # The second hotspot exhausts both providers for the day.
+        state = "quota_exhausted" if len(calls) > 1 else "ready"
+        return {"created": 2, "providers": {"youtube": state, "brave": state}, "errors": []}
+
+    monkeypatch.setattr("app.hotspots.guides.discover_guides", fake_discover)
+    report = await backfill_guides_once(session, _backfill_settings(), redis)
+
+    # Stops after the exhausted hotspot instead of burning the rest of the batch.
+    assert calls == ["a", "b"]
+    assert report == {"skipped": False, "attempted": 2, "created": 4, "exhausted": True}
+
+
+@pytest.mark.asyncio
+async def test_guide_backfill_keeps_going_while_one_provider_still_answers(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    session = _session_returning([_hotspot("a"), _hotspot("b")])
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+
+    async def fake_discover(*_args, **_kwargs):
+        # Brave is the scarce budget; YouTube alone is still worth the walk.
+        return {
+            "created": 1,
+            "providers": {"youtube": "ready", "brave": "quota_exhausted"},
+            "errors": [],
+        }
+
+    monkeypatch.setattr("app.hotspots.guides.discover_guides", fake_discover)
+    report = await backfill_guides_once(session, _backfill_settings(), redis)
+
+    assert report == {"skipped": False, "attempted": 2, "created": 2, "exhausted": False}
+
+
+def test_guideless_hotspots_excludes_covered_rows_and_ranks_verified_first() -> None:
+    sql = str(
+        guideless_hotspots_statement(10).compile(
+            dialect=postgresql.dialect(), compile_kwargs={"literal_binds": True}
+        )
+    )
+    assert "NOT (EXISTS" in sql
+    assert "hotspot_guides" in sql
+    assert "ORDER BY CASE WHEN (travel_hotspots.map_match_status = 'verified') THEN 0" in sql
+    assert "LIMIT 10" in sql
