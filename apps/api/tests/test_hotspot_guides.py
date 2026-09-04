@@ -1,5 +1,6 @@
 from datetime import UTC, datetime
 from decimal import Decimal
+from typing import Any, cast
 from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4
 
@@ -17,6 +18,8 @@ from app.hotspots.guides import (
     backfill_guides_once,
     canonical_external_url,
     classify_content_locale,
+    consume_search_budget,
+    describe_provider_error,
     guideless_hotspots_statement,
     stale_youtube_guides_delete,
     upsert_guide,
@@ -24,7 +27,7 @@ from app.hotspots.guides import (
 )
 from app.models import HotspotGuide, TravelHotspot
 from app.problems import AppError
-from app.providers.usage_meter import youtube_usage_snapshot
+from app.providers.usage_meter import google_billing_date, youtube_usage_snapshot
 
 
 def test_external_urls_are_canonical_and_block_private_targets() -> None:
@@ -373,3 +376,69 @@ def test_guideless_hotspots_excludes_covered_rows_and_ranks_verified_first() -> 
     assert "hotspot_guides" in sql
     assert "ORDER BY CASE WHEN (travel_hotspots.map_match_status = 'verified') THEN 0" in sql
     assert "LIMIT 10" in sql
+
+
+def _quota_response() -> httpx.Response:
+    request = httpx.Request(
+        "GET", "https://www.googleapis.com/youtube/v3/search?key=SUPER-SECRET-KEY&q=test"
+    )
+    return httpx.Response(
+        429,
+        request=request,
+        json={
+            "error": {
+                "code": 429,
+                "message": (
+                    "Quota exceeded for quota metric 'Search Queries' and limit "
+                    "'Search Queries per day' of service 'youtube.googleapis.com'."
+                ),
+                "errors": [{"message": "Quota exceeded", "reason": "rateLimitExceeded"}],
+            }
+        },
+    )
+
+
+def test_provider_error_keeps_the_status_and_reason() -> None:
+    response = _quota_response()
+    detail = describe_provider_error(
+        httpx.HTTPStatusError("boom", request=response.request, response=response)
+    )
+    assert detail["error"] == "HTTPStatusError"
+    assert detail["status"] == 429
+    assert detail["reason"] == "rateLimitExceeded"
+    assert "Search Queries per day" in detail["message"]
+
+
+def test_provider_error_never_echoes_the_request_url() -> None:
+    # httpx puts the request URL in its message and the API key rides in that query
+    # string, so the report must not fall back to str(exc).
+    response = _quota_response()
+    detail = describe_provider_error(
+        httpx.HTTPStatusError("boom", request=response.request, response=response)
+    )
+    assert "SUPER-SECRET-KEY" not in repr(detail)
+
+
+def test_provider_error_survives_a_non_http_failure() -> None:
+    assert describe_provider_error(ValueError("bad payload")) == {"error": "ValueError"}
+
+
+class _EvalRecorder:
+    """fakeredis has no EVAL, so record the key the Lua gate is pointed at."""
+
+    def __init__(self) -> None:
+        self.keys: list[str] = []
+
+    async def eval(self, script: str, numkeys: int, *args: str) -> int:
+        self.keys.append(args[0])
+        return 1
+
+
+@pytest.mark.asyncio
+async def test_search_budget_is_keyed_on_googles_billing_day() -> None:
+    # Google resets daily quotas at midnight Pacific. Keying the gate on the local date
+    # handed out a second full allowance inside one of Google's days, which is how the
+    # collector spent 117 search calls against a 100/day ceiling.
+    redis = _EvalRecorder()
+    assert await consume_search_budget(cast(Any, redis), "youtube", 80)
+    assert redis.keys == [f"hotspot-guide-quota:youtube:{google_billing_date().isoformat()}"]
