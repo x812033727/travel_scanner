@@ -14,14 +14,24 @@ from app.hotspots.cities import CITY_BY_CODE
 # Seeds whose stored coordinates do not match the place they name, so no honest area
 # contains them. They are tracked here instead of widening a circle to swallow them;
 # fixing the coordinates is a separate data change that should shrink this set.
-AREA_UNASSIGNED_SEEDS = {
+AREA_MISPLACED_SEEDS = {
     "wikidata-q4745722",  # OKA 美國村: Q4745722 is Osaka's Amerikamura, not Chatan
     "deep-icn-q13902883",  # ICN 世宗村: coordinates sit in Mapo, 4 km from Seochon
     "deep-pus-q135683915",  # PUS 흰여울문化마을: coordinates near Seomyeon, not Yeongdo
-    "deep-kbv-q38684",  # KBV 孟加拉灣: Q38684 is the Bay of Bengal, 1,300 km away
-    "cei-kok-river",  # CEI 郭河: coordinates point at the river's source in Myanmar
     "gye-q491088",  # GYE 雞林: coordinates sit 4 km north of the Gyerim forest
 }
+
+# Seeds outside every circle because they genuinely are: temples, parks and villages
+# reached as a day trip. Their coordinates are right, so this set is not a defect list
+# and widening a city circle to swallow them would misplace them instead.
+AREA_OUT_OF_TOWN_SEEDS = {
+    "cei-wat-huai-pla-kang",  # CEI: 5 km north of the Chiang Rai city circles
+    "cei-wat-phra-that-doi-tung",  # CEI: mountain ridge 60 km from Chiang Rai
+    "deep-kbv-q13024195",  # KBV: national park 45 km north of Krabi town
+    "hui-cau-ngoi-thanh-toan",  # HUI: rural covered bridge 8 km east of Huế
+}
+
+AREA_UNASSIGNED_SEEDS = AREA_MISPLACED_SEEDS | AREA_OUT_OF_TOWN_SEEDS
 
 
 def test_every_city_has_a_reviewed_area_catalog() -> None:
