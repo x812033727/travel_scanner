@@ -17,12 +17,13 @@ from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
-from app.affiliates.registry import PARTNERS_BY_CODE, partner_configured, partner_enabled
+from app.affiliates.registry import PARTNERS_BY_CODE
 from app.affiliates.router import DISCLOSURE
 from app.affiliates.service import (
     AffiliateContext,
     _with_query,
     allowed_hosts,
+    partner_supports_module,
     resolve_partner_target,
     validate_target_url,
 )
@@ -602,9 +603,7 @@ async def stay_area_clickout(
                 {"booking.com"} | allowed_hosts(settings, definition),
             )
         else:
-            if not (
-                partner_enabled(definition, settings) and partner_configured(definition, settings)
-            ):
+            if not partner_supports_module(definition, "hotel", settings):
                 raise AppError(404, "affiliate_partner_not_found", "找不到合作平台")
             target = await resolve_partner_target(definition, affiliate_context, settings, redis)
     except (ConnectionError, ValueError) as exc:

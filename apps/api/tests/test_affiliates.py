@@ -12,6 +12,7 @@ from app.affiliates.service import (
     AffiliateContext,
     TravelpayoutsLinkClient,
     allowed_hosts,
+    partner_supports_module,
     resolve_partner_target,
     validate_target_url,
 )
@@ -67,6 +68,42 @@ def test_partner_requires_allowlist_and_platform_identifier_when_applicable() ->
             booking_affiliate_id="affiliate-1",
             booking_affiliate_url_template="https://www.booking.com/search?ss={destination}",
         ),
+    )
+
+
+def test_partner_supports_module_needs_a_target_for_that_module() -> None:
+    travelpayouts = PARTNERS_BY_CODE["travelpayouts"]
+    flight_only = Settings(
+        travelpayouts_enabled=True,
+        travelpayouts_api_token="token",
+        travelpayouts_marker="123",
+        travelpayouts_project_id="456",
+        travelpayouts_flight_target_url="https://tp.st/flights",
+    )
+    # partner_configured is module-blind, so it alone would offer hotels a dead link.
+    assert partner_configured(travelpayouts, flight_only)
+    assert partner_supports_module(travelpayouts, "flight", flight_only)
+    assert not partner_supports_module(travelpayouts, "hotel", flight_only)
+
+    with_hotel = flight_only.model_copy(
+        update={"travelpayouts_hotel_target_url": "https://tp.st/hotels"}
+    )
+    assert partner_supports_module(travelpayouts, "hotel", with_hotel)
+    static_template = flight_only.model_copy(
+        update={"travelpayouts_static_url_template": "https://tp.st/go?sub_id={sub_id}"}
+    )
+    assert partner_supports_module(travelpayouts, "hotel", static_template)
+
+    booking = PARTNERS_BY_CODE["booking"]
+    configured_booking = Settings(
+        booking_enabled=True,
+        booking_affiliate_id="affiliate-1",
+        booking_affiliate_url_template="https://www.booking.com/search?ss={destination}",
+    )
+    assert partner_supports_module(booking, "hotel", configured_booking)
+    assert not partner_supports_module(booking, "flight", configured_booking)
+    assert not partner_supports_module(
+        booking, "hotel", configured_booking.model_copy(update={"booking_enabled": False})
     )
 
 

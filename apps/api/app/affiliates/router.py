@@ -25,6 +25,7 @@ from app.affiliates.schemas import (
 from app.affiliates.service import (
     AffiliateContext,
     allowed_hosts,
+    partner_supports_module,
     resolve_partner_target,
     token_payload,
     validate_target_url,
@@ -121,7 +122,7 @@ async def affiliate_options(
     source = source_search_id or source_trip_id or "unknown"
     options: list[AffiliateOption] = []
     for partner in partners_for_module(module):
-        if not partner_enabled(partner, settings) or not partner_configured(partner, settings):
+        if not partner_supports_module(partner, module, settings):
             continue
         sub_id = uuid5(
             NAMESPACE_URL,

@@ -9,7 +9,7 @@ from urllib.parse import parse_qsl, quote, urlencode, urlparse, urlunparse
 import httpx
 from redis.asyncio import Redis
 
-from app.affiliates.registry import AffiliatePartner
+from app.affiliates.registry import AffiliatePartner, partner_configured, partner_enabled
 from app.affiliates.schemas import AffiliateModule
 from app.config import Settings
 
@@ -82,6 +82,26 @@ def _travelpayouts_target(settings: Settings, module: AffiliateModule) -> str | 
     if not target and module == "connectivity":
         target = settings.travelpayouts_activities_target_url
     return target
+
+
+def partner_supports_module(
+    partner: AffiliatePartner, module: AffiliateModule, settings: Settings
+) -> bool:
+    """Whether this partner can render a link for this module with today's settings.
+
+    ``partner_configured`` is module-blind: Travelpayouts counts as configured once any
+    single module target is set, so a hotel button could render and then fail at click
+    time with nothing to link to. This narrows the check to the module being asked for.
+    """
+    if module not in partner.modules:
+        return False
+    if not (partner_enabled(partner, settings) and partner_configured(partner, settings)):
+        return False
+    if partner.code == "travelpayouts":
+        # A static template serves every module; otherwise the module needs its own target.
+        template = cast(str | None, getattr(settings, partner.template_field, None))
+        return bool(template or _travelpayouts_target(settings, module))
+    return True
 
 
 class TravelpayoutsLinkClient:
