@@ -1,3 +1,4 @@
+import json
 from typing import Any
 from uuid import uuid4
 
@@ -49,7 +50,10 @@ def test_registry_defaults_disabled_and_orders_each_module() -> None:
         "trip_com",
         "travelpayouts",
     ]
-    assert [item.code for item in partners_for_module("connectivity")] == ["airalo"]
+    assert [item.code for item in partners_for_module("connectivity")] == [
+        "airalo",
+        "travelpayouts",
+    ]
 
 
 def test_partner_requires_allowlist_and_platform_identifier_when_applicable() -> None:
@@ -181,6 +185,57 @@ async def test_travelpayouts_timeout_without_fallback_hides_option() -> None:
                 redis,
                 TravelpayoutsLinkClient(redis, settings, http),
             )
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("connectivity_url", "expected_source"),
+    (
+        ("https://esim.example/plans", "https://esim.example/plans"),
+        (None, "https://tours.example/search"),
+    ),
+)
+async def test_travelpayouts_connectivity_prefers_esim_target_then_activities(
+    connectivity_url: str | None, expected_source: str
+) -> None:
+    requested: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        payload = json.loads(request.read().decode())
+        requested.append(payload["links"][0]["url"])
+        return httpx.Response(
+            200,
+            json={"result": {"links": [{"partner_url": "https://brand.tp.st/esim"}]}},
+        )
+
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    settings = Settings(
+        travelpayouts_api_token="secret-token",
+        travelpayouts_project_id="123",
+        travelpayouts_marker="456",
+        travelpayouts_activities_target_url="https://tours.example/search",
+        travelpayouts_connectivity_target_url=connectivity_url,
+    )
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        target = await resolve_partner_target(
+            PARTNERS_BY_CODE["travelpayouts"],
+            AffiliateContext("connectivity", "東京", None, None, "sub-esim"),
+            settings,
+            redis,
+            TravelpayoutsLinkClient(redis, settings, http),
+        )
+    assert target == "https://brand.tp.st/esim"
+    assert requested == [expected_source]
+
+
+def test_travelpayouts_is_configured_with_only_an_esim_target() -> None:
+    settings = Settings(
+        travelpayouts_api_token="secret-token",
+        travelpayouts_project_id="123",
+        travelpayouts_marker="456",
+        travelpayouts_connectivity_target_url="https://esim.example/plans",
+    )
+    assert partner_configured(PARTNERS_BY_CODE["travelpayouts"], settings)
 
 
 def test_status_serialization_cannot_contain_credentials() -> None:

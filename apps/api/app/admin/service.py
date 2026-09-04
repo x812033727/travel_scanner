@@ -278,7 +278,7 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     ),
     "travelpayouts": ProviderDefinition(
         "Travelpayouts Affiliate",
-        "航班、住宿、活動與交通合作連結；可透過 Partner Links API 產生追蹤網址。",
+        "航班、住宿、活動、交通與 eSIM 合作連結；可透過 Partner Links API 產生追蹤網址。",
         (
             "travelpayouts_api_base_url",
             "travelpayouts_marker",
@@ -288,6 +288,7 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "travelpayouts_hotel_target_url",
             "travelpayouts_activities_target_url",
             "travelpayouts_transport_target_url",
+            "travelpayouts_connectivity_target_url",
             "travelpayouts_allowed_hosts",
         ),
         ("travelpayouts_api_token",),

@@ -204,6 +204,7 @@ const fieldMeta: Record<string, FieldMeta> = {
   travelpayouts_hotel_target_url: { label: "住宿原始目標網址", type: "url" },
   travelpayouts_activities_target_url: { label: "活動原始目標網址", type: "url" },
   travelpayouts_transport_target_url: { label: "交通原始目標網址", type: "url" },
+  travelpayouts_connectivity_target_url: { label: "eSIM 原始目標網址", type: "url", help: "留空時沿用「活動原始目標網址」。" },
   travelpayouts_allowed_hosts: { label: "允許跳轉網域", help: "以逗號分隔；只允許 HTTPS 且符合清單的網址。" },
   kkday_cid: { label: "KKpartners CID" },
   kkday_affiliate_url_template: { label: "合作連結範本", type: "url" },

@@ -200,7 +200,8 @@ class Settings(BaseSettings):
     travelpayouts_hotel_target_url: str | None = None
     travelpayouts_activities_target_url: str | None = None
     travelpayouts_transport_target_url: str | None = None
-    travelpayouts_allowed_hosts: str = "tp.st,travelpayouts.com"
+    travelpayouts_connectivity_target_url: str | None = None
+    travelpayouts_allowed_hosts: str = "tp.st,travelpayouts.com,tp.media"
     kkday_enabled: bool = False
     kkday_cid: str | None = None
     kkday_affiliate_url_template: str | None = None
