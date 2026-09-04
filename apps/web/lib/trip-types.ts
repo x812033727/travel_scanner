@@ -230,3 +230,61 @@ export function isActiveRouteItem(item: TripItem) {
     && !isLogisticsItem(item)
     && (!["hotel_start", "hotel_end", "lunch", "dinner"].includes(item.system_role || "") || systemLocationReady);
 }
+
+export type ChainedStart = { start: string; estimated: boolean };
+
+const wallClockPattern = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::\d{2}(?:\.\d+)?)?$/;
+
+function readMoment(value?: string | null) {
+  if (!value) return undefined;
+  const parsed = Date.parse(value);
+  if (Number.isNaN(parsed)) return undefined;
+  return { ms: parsed, wallClock: wallClockPattern.test(value) };
+}
+
+function writeMoment(ms: number, wallClock: boolean) {
+  if (!wallClock) return new Date(ms).toISOString();
+  const local = new Date(ms);
+  const pad = (part: number) => String(part).padStart(2, "0");
+  return `${local.getFullYear()}-${pad(local.getMonth() + 1)}-${pad(local.getDate())}T${pad(local.getHours())}:${pad(local.getMinutes())}`;
+}
+
+/**
+ * Walk a day in display order and work out when each chained item can start.
+ *
+ * A routed segment gives the real `ready_time`; without one we still show the member
+ * a running total — previous item's end plus the day's transfer buffer — flagged as an
+ * estimate so it reads differently from a computed route.
+ */
+export function projectChainedStarts(
+  rows: TripItem[],
+  segments: RouteSegment[],
+  bufferMinutes: number,
+): Map<string, ChainedStart> {
+  const arrivals = new Map(segments.map((segment) => [segment.to_item_id, segment]));
+  const projected = new Map<string, ChainedStart>();
+  let cursor: { ms: number; wallClock: boolean } | undefined;
+
+  for (const row of rows) {
+    if (row.is_skipped) continue;
+    const anchored = row.fixed_time ? readMoment(row.start_time) : undefined;
+    const arrival = anchored ? undefined : readMoment(arrivals.get(row.id)?.ready_time);
+    const chained = anchored
+      || arrival
+      || (cursor
+        ? { ms: cursor.ms + bufferMinutes * 60_000, wallClock: cursor.wallClock }
+        : readMoment(row.start_time));
+    if (!chained) {
+      cursor = undefined;
+      continue;
+    }
+    if (!row.fixed_time) {
+      projected.set(row.id, {
+        start: writeMoment(chained.ms, chained.wallClock),
+        estimated: !arrival,
+      });
+    }
+    cursor = { ms: chained.ms + (row.duration_minutes || 0) * 60_000, wallClock: chained.wallClock };
+  }
+  return projected;
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import { BusFront, CarFront, ChevronRight, Clock3, Footprints, Loader2, Route, TriangleAlert } from "lucide-react";
+import { BusFront, CarFront, ChevronRight, Clock3, Footprints, Loader2, MapPinOff, Route, TriangleAlert } from "lucide-react";
 import { formatTime, type RouteSegment, type TravelMode } from "@/lib/trip-types";
 
 const modeIcon: Record<TravelMode, typeof BusFront> = {
@@ -21,6 +21,7 @@ export function RouteTimelineLink({
   loading,
   stale,
   timezone,
+  needsSetup,
   onClick,
 }: {
   segment?: RouteSegment;
@@ -28,8 +29,10 @@ export function RouteTimelineLink({
   loading?: boolean;
   stale?: boolean;
   timezone?: string;
+  needsSetup?: "lodging" | "location";
   onClick: () => void;
 }) {
+  if (needsSetup) return <button type="button" onClick={onClick} className="route-timeline-empty route-timeline-blocked"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white text-amber-800"><MapPinOff size={16} /></span><span className="min-w-0 flex-1"><strong className="block">{needsSetup === "lodging" ? "先設定飯店地點" : "先選擇正式地點"}</strong><span className="mt-0.5 block truncate text-xs text-[var(--muted)]">設定後才能算出前往 {nextTitle} 的移動時間</span></span><ChevronRight size={17} /></button>;
   if (loading) return <div className="route-timeline-loading" aria-live="polite"><Loader2 size={16} className="animate-spin" /><span>正在計算前往 {nextTitle} 的移動時間…</span></div>;
   if (!segment || stale) return <button type="button" onClick={onClick} className="route-timeline-empty"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white text-[var(--teal)]"><Route size={16} /></span><span className="min-w-0 flex-1"><strong className="block">{stale ? "移動時間需要更新" : "選擇這段交通方式"}</strong><span className="mt-0.5 block truncate text-xs text-[var(--muted)]">前往 {nextTitle} · 大眾運輸／步行／汽車</span></span><ChevronRight size={17} /></button>;
 

@@ -228,6 +228,7 @@ class PrimaryLodgingUpdateRequest(BaseModel):
 
 class ScheduleDefaultsUpdateRequest(BaseModel):
     version: int = Field(ge=1)
+    day_start_time: str | None = Field(default=None, pattern=r"^(?:[01]\d|2[0-3]):[0-5]\d$")
     lunch_time: str = Field(pattern=r"^(?:[01]\d|2[0-3]):[0-5]\d$")
     lunch_duration_minutes: int = Field(ge=30, le=180)
     dinner_time: str = Field(pattern=r"^(?:[01]\d|2[0-3]):[0-5]\d$")
@@ -237,6 +238,8 @@ class ScheduleDefaultsUpdateRequest(BaseModel):
     def validate_order(self) -> "ScheduleDefaultsUpdateRequest":
         if self.lunch_time >= self.dinner_time:
             raise ValueError("lunch_time must be before dinner_time")
+        if self.day_start_time is not None and self.day_start_time >= self.lunch_time:
+            raise ValueError("day_start_time must be before lunch_time")
         return self
 
 
@@ -2051,7 +2054,7 @@ async def update_schedule_defaults(
         **trip.data,
         "schedule_defaults": {
             **schedule_defaults(trip),
-            **payload.model_dump(exclude={"version"}),
+            **payload.model_dump(exclude={"version"}, exclude_none=True),
         },
     }
     apply_schedule_defaults(trip, rows)
@@ -2061,7 +2064,7 @@ async def update_schedule_defaults(
         user.id,
         payload.version,
         rows,
-        warning="餐食時間已更新，請重新計算受影響的移動時間。",
+        warning="每日時間已更新，請重新計算受影響的移動時間。",
     )
 
 

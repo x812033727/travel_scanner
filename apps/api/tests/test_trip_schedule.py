@@ -3,11 +3,15 @@ from decimal import Decimal
 from uuid import uuid4
 from zoneinfo import ZoneInfo
 
+import pytest
+from pydantic import ValidationError
+
 from app.models import TripPlan, TripPlanItem
 from app.trips.itinerary import ItineraryItem
 from app.trips.router import (
     FlightAnchorDetails,
     ItineraryUpdateRequest,
+    ScheduleDefaultsUpdateRequest,
     _planner_availability,
     _sync_ai_meal_slots,
     apply_flight_anchor_details,
@@ -412,7 +416,7 @@ def test_lodging_and_meal_defaults_sync_across_every_day() -> None:
     target.data = {
         **target.data,
         "schedule_defaults": {
-            "day_start_time": "09:00",
+            "day_start_time": "08:15",
             "lunch_time": "11:45",
             "lunch_duration_minutes": 45,
             "dinner_time": "19:15",
@@ -422,10 +426,37 @@ def test_lodging_and_meal_defaults_sync_across_every_day() -> None:
     apply_schedule_defaults(target, rows)
     lunches = [row for row in rows if row.system_role == "lunch"]
     dinners = [row for row in rows if row.system_role == "dinner"]
+    departures = [row for row in rows if row.system_role == "hotel_start"]
     assert all(row.start_time and row.start_time.strftime("%H:%M") == "11:45" for row in lunches)
     assert all(row.duration_minutes == 45 for row in lunches)
     assert all(row.start_time and row.start_time.strftime("%H:%M") == "19:15" for row in dinners)
     assert all(row.duration_minutes == 120 for row in dinners)
+    assert departures
+    assert all(row.start_time and row.start_time.strftime("%H:%M") == "08:15" for row in departures)
+    assert all(row.end_time == row.start_time for row in departures)
+
+
+def test_schedule_defaults_request_keeps_the_day_start_optional_and_ordered() -> None:
+    base = {
+        "version": 1,
+        "lunch_time": "12:00",
+        "lunch_duration_minutes": 60,
+        "dinner_time": "18:30",
+        "dinner_duration_minutes": 90,
+    }
+
+    # Older clients that never send a departure time must not blank the stored one.
+    omitted = ScheduleDefaultsUpdateRequest.model_validate(base)
+    assert omitted.day_start_time is None
+    assert "day_start_time" not in omitted.model_dump(exclude={"version"}, exclude_none=True)
+
+    accepted = ScheduleDefaultsUpdateRequest.model_validate({**base, "day_start_time": "08:15"})
+    assert accepted.day_start_time == "08:15"
+
+    with pytest.raises(ValidationError):
+        ScheduleDefaultsUpdateRequest.model_validate({**base, "day_start_time": "13:00"})
+    with pytest.raises(ValidationError):
+        ScheduleDefaultsUpdateRequest.model_validate({**base, "day_start_time": "8:15"})
 
 
 def test_itinerary_update_accepts_zero_duration_hotel_anchors() -> None:
