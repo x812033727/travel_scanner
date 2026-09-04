@@ -534,6 +534,16 @@ def _providers(settings: Settings) -> list[AIPlannerProvider]:
     return [providers[name] for name in order if name in providers]
 
 
+def planner_providers(settings: Settings) -> list[AIPlannerProvider]:
+    """Public view of the roster so other AI features reuse the same gating.
+
+    ``app.ai.trip_parser`` builds its own provider objects from these, which
+    keeps ai_planner_enabled / ai_planner_mode / ai_planner_priority and the
+    admin-stored API keys as the single source of truth.
+    """
+    return _providers(settings)
+
+
 def _safe_slots(
     request: AIItineraryRequest, day_index: int, day_count: int, count: int
 ) -> list[time]:

@@ -12,7 +12,7 @@ from redis.exceptions import RedisError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
-from app.ai.parser import MockAITripParser
+from app.ai.trip_parser import parser_for_request
 from app.auth.service import CurrentUser
 from app.db import get_session
 from app.destinations.catalog import DESTINATIONS, SEARCHABLE_DESTINATIONS
@@ -376,9 +376,16 @@ def _estimate(
 
 
 @router.post("/discover")
-async def discover(payload: DiscoveryRequest) -> dict[str, Any]:
+async def discover(
+    request: Request, payload: DiscoveryRequest, session: Session
+) -> dict[str, Any]:
+    # Which engine read the free-text notes, so the caller can tell an AI parse
+    # from the regex fallback; None when there were no notes to parse.
+    notes_parser: str | None = None
     if payload.notes:
-        parsed = await MockAITripParser().parse(payload.notes)
+        parser = await parser_for_request(session, client_ip(request))
+        parsed = await parser.parse(payload.notes)
+        notes_parser = parsed.parser
         lodging = payload.lodging_preferences
         lodging = lodging.model_copy(
             update={
@@ -492,6 +499,7 @@ async def discover(payload: DiscoveryRequest) -> dict[str, Any]:
         return {
             "origin": payload.origin.upper(),
             "source": "curated_estimate",
+            "notes_parser": notes_parser,
             "recommendations": recommendations[: payload.top_n],
             "assumptions": [
                 "推薦階段使用估算資料，不是即時最低價",
@@ -520,6 +528,7 @@ async def discover(payload: DiscoveryRequest) -> dict[str, Any]:
         "origin": payload.origin.upper(),
         "region": region,
         "source": "curated_estimate",
+        "notes_parser": notes_parser,
         "candidates": candidates[: payload.top_n],
         "next_step": "選定城市後再執行即時機票、住宿、活動與接送搜尋",
     }
