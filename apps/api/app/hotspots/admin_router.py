@@ -144,6 +144,28 @@ class HotspotReviewRequest(BaseModel):
         return self
 
 
+def _sync_map_match_status(hotspot: TravelHotspot, *, actor_id: UUID) -> None:
+    """Keep map_match_status in step with the hotspot's exact map identity.
+
+    The automatic matcher and the CLI both verify a hotspot the moment they give it an
+    exact identity (app/hotspots/places.py, app/hotspots/place_matching.py). The admin
+    route used to skip that, so an ID entered by hand left the hotspot with no map links
+    and out of the trip planner until someone also called /review by hand.
+    """
+
+    verified = has_exact_map_identity(
+        hotspot.country_code, hotspot.google_place_id, hotspot.naver_map_url
+    )
+    if verified and hotspot.map_match_status != "verified":
+        hotspot.map_match_status = "verified"
+        hotspot.map_verified_at = datetime.now(UTC)
+        hotspot.map_verified_by_user_id = actor_id
+    elif not verified and hotspot.map_match_status == "verified":
+        hotspot.map_match_status = "unverified"
+        hotspot.map_verified_at = None
+        hotspot.map_verified_by_user_id = None
+
+
 def _validate_hotspot_location(
     *,
     country_code: str,
@@ -1351,6 +1373,8 @@ async def update_place_profile(
                 if payload.official_website_source_url
                 else None
             )
+    if payload.action in {"approve", "save"}:
+        _sync_map_match_status(hotspot, actor_id=user.id)
     if payload.action in {"approve", "reject"}:
         profile.candidate_place_id = None
         profile.candidate_name = None
