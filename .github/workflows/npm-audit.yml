@@ -1,0 +1,22 @@
+name: npm audit
+
+# The enforcing half of the dependency check. It lives outside CI because the advisory
+# lookup depends on registry.npmjs.org being up at that moment: as a pull request gate a
+# registry outage blocks unrelated work, but as a daily job it is simply retried.
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      - run: npm audit --audit-level=high
