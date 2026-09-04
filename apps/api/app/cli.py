@@ -21,6 +21,7 @@ from app.crawlers.verification import build_verification_report
 from app.db import SessionFactory
 from app.foods.service import seed_food_catalog
 from app.hotspots.candidate_cli import import_candidates
+from app.hotspots.candidate_generation import generate_candidates
 from app.hotspots.jobs import collect_once
 from app.hotspots.place_matching import (
     MatchReport,
@@ -365,6 +366,28 @@ def main() -> None:
     candidates.add_argument(
         "--apply", action="store_true", help="Write the rows instead of only reporting them"
     )
+    generator = subparsers.add_parser(
+        "generate-hotspot-candidates",
+        help=(
+            "Ask Gemini for a city's attraction names and write the candidate JSON. "
+            "Generation is one API call; the later import costs one billable Google "
+            "lookup per name, so start around 40-50 and top up with --avoid."
+        ),
+    )
+    generator.add_argument("--city", required=True, help="City code, e.g. TNN")
+    generator.add_argument("--count", type=int, help="How many names to ask for")
+    generator.add_argument("--out", help="Output path (default candidates/<CODE>.json)")
+    generator.add_argument("--model", help="Override the configured Gemini model")
+    generator.add_argument(
+        "--avoid",
+        action="append",
+        default=[],
+        help="Existing candidate JSON whose names must not be repeated (repeatable)",
+    )
+    generator.add_argument(
+        "--dry-run", action="store_true", help="Print the document without writing it"
+    )
+    generator.add_argument("--force", action="store_true", help="Overwrite an existing file")
     subparsers.add_parser(
         "seed-foods",
         help="Upsert the food catalog, merchants, areas and categories, then print the counts",
@@ -414,6 +437,19 @@ def main() -> None:
     elif args.command == "import-hotspot-candidates":
         report = asyncio.run(
             import_candidates(Path(args.file), apply=args.apply, limit=args.limit)
+        )
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+    elif args.command == "generate-hotspot-candidates":
+        report = asyncio.run(
+            generate_candidates(
+                city_code=args.city,
+                count=args.count,
+                out=Path(args.out) if args.out else None,
+                model=args.model,
+                dry_run=args.dry_run,
+                force=args.force,
+                avoid_files=[Path(item) for item in args.avoid],
+            )
         )
         print(json.dumps(report, ensure_ascii=False, indent=2))
     elif args.command == "collect-hotspots":

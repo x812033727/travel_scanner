@@ -101,3 +101,32 @@ def schema_instructions(schema: type[BaseModel]) -> str:
         "Do not wrap it in Markdown code fences and do not add commentary or reasoning text.\n"
         + json.dumps(schema.model_json_schema(), ensure_ascii=False)
     )
+
+
+def gemini_output_text(body: dict[str, Any]) -> str:
+    """Join the text parts of a generateContent body, refusing blocked or truncated answers.
+
+    A truncated answer is the failure mode that matters most here: MAX_TOKENS on a
+    thinking model yields valid-looking JSON that stops mid-array, which would import as
+    a short list rather than an error.
+    """
+    feedback = body.get("promptFeedback")
+    if isinstance(feedback, dict) and feedback.get("blockReason"):
+        raise ValueError(f"AI 拒絕回應（{feedback['blockReason']}）")
+    entries = body.get("candidates")
+    first = entries[0] if isinstance(entries, list) and entries else None
+    if not isinstance(first, dict):
+        raise ValueError("AI 沒有回傳內容")
+    reason = first.get("finishReason")
+    if reason not in (None, "STOP"):
+        raise ValueError(f"AI 回應未完成（{reason}）")
+    content = first.get("content")
+    parts = content.get("parts") if isinstance(content, dict) else None
+    text = "".join(
+        str(part.get("text") or "")
+        for part in (parts if isinstance(parts, list) else [])
+        if isinstance(part, dict)
+    ).strip()
+    if not text:
+        raise ValueError("AI 沒有回傳內容")
+    return text

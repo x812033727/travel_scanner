@@ -273,6 +273,9 @@ const secretLabels: Record<string, { label: string; help?: string }> = {
   klook_api_key: { label: "核准後 API Key" },
   agoda_api_key: { label: "核准後 API Key" },
   booking_demand_api_token: { label: "Demand API Bearer Token" },
+  hotspot_guide_youtube_api_key: { label: "YouTube Data API Key", help: "只用於影片搜尋；每日配額由上方上限控管。" },
+  hotspot_guide_brave_api_key: { label: "Brave Search API Key", help: "只在伺服器端加密保存。" },
+  hotspot_guide_gemini_api_key: { label: "Gemini API Key", help: "用於多語文章搜尋與景點候選名單產生；只在伺服器端加密保存。" },
 };
 
 const sourceLabel: Record<string, string> = { database: "後台加密設定", environment: "主機環境", none: "未設定", disabled: "已停用" };
