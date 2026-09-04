@@ -336,6 +336,11 @@ AI_ITINERARY_PREVIEW_TTL_SECONDS = 15 * 60
 TRIP_CREATE_REPLAY_TTL_SECONDS = 24 * 60 * 60
 
 
+class OptimizationApplyRequest(BaseModel):
+    version: int = Field(ge=1)
+    preview_id: UUID
+
+
 class RouteComputeRequest(BaseModel):
     version: int = Field(ge=1)
     day_date: date | None = None
@@ -3485,6 +3490,270 @@ async def refresh_trip_routes(
     )
 
 
+OPTIMIZATION_PREVIEW_TTL_SECONDS = 15 * 60
+OPTIMIZATION_MOVABLE_LIMIT = 12
+
+
+def _optimization_preview_key(user_id: UUID, trip_id: UUID, preview_id: UUID) -> str:
+    return f"itinerary:optimize-preview:{user_id}:{trip_id}:{preview_id}"
+
+
+def _optimization_request_key(user_id: UUID, trip_id: UUID, idempotency_key: str) -> str:
+    digest = hashlib.sha256(idempotency_key.encode()).hexdigest()
+    return f"itinerary:optimize-request:{user_id}:{trip_id}:{digest}"
+
+
+def _chain_minutes(rows: list[TripPlanItem], costs: dict[tuple[UUID, UUID], int]) -> int:
+    return sum(
+        costs.get((first.id, second.id), 0) for first, second in zip(rows, rows[1:], strict=False)
+    )
+
+
+def _nearest_neighbour(
+    movable: list[TripPlanItem], costs: dict[tuple[UUID, UUID], int]
+) -> list[TripPlanItem]:
+    remaining = movable.copy()
+    ordered = [remaining.pop(0)]
+    while remaining:
+        previous = ordered[-1]
+        following = min(remaining, key=lambda row: costs.get((previous.id, row.id), 10**9))
+        ordered.append(following)
+        remaining.remove(following)
+    return ordered
+
+
+def _preview_item(item: TripPlanItem, position: int) -> dict[str, Any]:
+    return {
+        "id": str(item.id),
+        "title": item.title or "",
+        "position": position,
+        "start_time": item.start_time.isoformat() if item.start_time else None,
+        "locked": bool(item.locked),
+        "fixed_time": bool(item.fixed_time),
+    }
+
+
+async def plan_itinerary_optimization(
+    trip: TripPlan,
+    all_rows: list[TripPlanItem],
+    target_days: list[date],
+    preference: str,
+    settings: Settings,
+) -> dict[str, Any]:
+    """Work out a better order for each day without touching a single row.
+
+    Preview and apply both go through here so they can never disagree about what
+    "optimised" means. Rows are only ever read; the reordering is expressed as a list
+    of item ids per day, which apply replays.
+    """
+
+    days: list[dict[str, Any]] = []
+    warnings: list[str] = []
+    segments: list[RouteSegment] = []
+    changed = False
+    for target_day in target_days:
+        day_rows = active_route_rows(all_rows, target_day)
+        movable_slots = [
+            index
+            for index, row in enumerate(day_rows)
+            if not row.locked and not row.fixed_time and route_point(row) is not None
+        ]
+        if len(movable_slots) < 2:
+            continue
+        if len(movable_slots) > OPTIMIZATION_MOVABLE_LIMIT:
+            raise AppError(
+                422,
+                "itinerary_optimization_limit",
+                f"每天最多最佳化 {OPTIMIZATION_MOVABLE_LIMIT} 個可移動地點，請先鎖定部分項目",
+            )
+        movable = [day_rows[index] for index in movable_slots]
+        point_by_id = {row.id: point for row in movable if (point := route_point(row)) is not None}
+        pairs = [
+            (point_by_id[first.id], point_by_id[second.id], first.end_time or first.start_time)
+            for first in movable
+            for second in movable
+            if first.id != second.id
+        ]
+        results = await RouteService(get_redis(), settings).compute_many(
+            pairs,
+            preference,
+            region_code=trip_region_code(trip.timezone, trip.destination_name, trip.data),
+        )
+        costs = {
+            (segment.from_item_id, segment.to_item_id): segment.duration_minutes
+            for segment in results
+            if segment is not None
+        }
+        if not costs:
+            warnings.append(f"{target_day.isoformat()} 沒有取得可比較的移動時間，這天維持原樣。")
+            continue
+        ordered = _nearest_neighbour(movable, costs)
+        day_changed = [row.id for row in ordered] != [row.id for row in movable]
+        changed = changed or day_changed
+        reordered = list(day_rows)
+        for slot, row in zip(movable_slots, ordered, strict=True):
+            reordered[slot] = row
+        day_segments, _ = await compute_routes_for_rows(trip, reordered, preference, settings)
+        segments.extend(day_segments)
+        before_minutes = _chain_minutes(movable, costs)
+        after_minutes = _chain_minutes(ordered, costs)
+        days.append(
+            {
+                "date": target_day.isoformat(),
+                "order": [str(row.id) for row in reordered],
+                "before": [_preview_item(row, index) for index, row in enumerate(day_rows)],
+                "after": [_preview_item(row, index) for index, row in enumerate(reordered)],
+                "duration_before_minutes": before_minutes,
+                "duration_after_minutes": after_minutes,
+                "saved_minutes": max(0, before_minutes - after_minutes),
+            }
+        )
+    return {
+        "changed": changed,
+        "warnings": warnings,
+        "days": days,
+        "segments": segments,
+        "route_preference": preference,
+        "total_duration_before_minutes": sum(day["duration_before_minutes"] for day in days),
+        "total_duration_after_minutes": sum(day["duration_after_minutes"] for day in days),
+    }
+
+
+@router.post("/{trip_id}/itinerary/optimize/preview")
+async def preview_trip_itinerary_optimization(
+    trip_id: UUID,
+    payload: RouteComputeRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    """Show the reordering before anything is charged or written."""
+
+    trip = await owned_trip(session, user.id, trip_id)
+    if trip.version != payload.version:
+        raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再最佳化")
+    all_rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    target_days = (
+        [payload.day_date]
+        if payload.day_date
+        else sorted({row.day_date for row in all_rows if row.day_date is not None})
+    )
+    settings = await load_runtime_settings(session)
+    plan = await plan_itinerary_optimization(
+        trip,
+        all_rows,
+        target_days,
+        payload.route_preference or trip.route_preference,
+        settings,
+    )
+    if not plan["days"]:
+        raise AppError(
+            503,
+            "itinerary_optimization_unavailable",
+            "沒有取得可比較的動線結果",
+        )
+    preview_id = uuid4()
+    expires_at = datetime.now(UTC) + timedelta(seconds=OPTIMIZATION_PREVIEW_TTL_SECONDS)
+    result = {
+        "preview_id": str(preview_id),
+        "expires_at": expires_at.isoformat(),
+        "base_version": trip.version,
+        "charge_on_apply": 1,
+        **plan,
+        "segments": [segment.model_dump(mode="json") for segment in plan["segments"]],
+    }
+    await get_redis().set(
+        _optimization_preview_key(user.id, trip.id, preview_id),
+        json.dumps(result, ensure_ascii=False),
+        ex=OPTIMIZATION_PREVIEW_TTL_SECONDS,
+    )
+    # The preview only read rows; make sure nothing it touched can be flushed later.
+    await session.rollback()
+    return result
+
+
+@router.post("/{trip_id}/itinerary/optimize/apply")
+async def apply_trip_itinerary_optimization(
+    trip_id: UUID,
+    payload: OptimizationApplyRequest,
+    user: CurrentUser,
+    session: Session,
+    idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
+) -> dict[str, Any]:
+    """Replay a preview. The routes were already computed, so this costs no provider calls."""
+
+    redis = get_redis()
+    replay_key = _route_idempotency_key(user.id, trip_id, "optimize-apply", idempotency_key)
+    replay_usage = await redis.get(replay_key)
+    if replay_usage:
+        replay_trip = await serialize_trip(session, await owned_trip(session, user.id, trip_id))
+        replay_trip["usage"] = json.loads(str(replay_usage))
+        return replay_trip
+    preview_key = _optimization_preview_key(user.id, trip_id, payload.preview_id)
+    raw_preview = await redis.get(preview_key)
+    if not raw_preview:
+        raise AppError(409, "itinerary_preview_expired", "最佳化預覽已過期，請重新預覽")
+    preview = cast(dict[str, Any], json.loads(str(raw_preview)))
+    trip = await owned_trip(session, user.id, trip_id)
+    if trip.version != payload.version or int(preview.get("base_version") or 0) != trip.version:
+        raise AppError(409, "trip_version_conflict", "旅程已更新，請重新預覽後再套用")
+    if not preview.get("changed"):
+        raise AppError(422, "itinerary_optimization_unchanged", "目前已是建議安排，不需要套用")
+    reservation, created = await reserve_use(
+        session,
+        user.id,
+        idempotency_key,
+        "itinerary_optimization",
+        f"行程動線最佳化：{trip.name}",
+    )
+    if not created and reservation.resource_id == trip.id:
+        replay = await serialize_trip(session, trip)
+        replay["usage"] = usage_status(reservation).model_dump()
+        return replay
+    reservation.resource_id = trip.id
+    try:
+        all_rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+        by_id = {row.id: row for row in all_rows}
+        segments = [RouteSegment.model_validate(item) for item in preview.get("segments") or []]
+        by_pair = {(segment.from_item_id, segment.to_item_id): segment for segment in segments}
+        for day in preview.get("days") or []:
+            ordered_ids = [UUID(value) for value in day.get("order") or []]
+            if any(item_id not in by_id for item_id in ordered_ids):
+                raise AppError(409, "itinerary_preview_stale", "行程項目已變更，請重新預覽")
+            day_rows = [by_id[item_id] for item_id in ordered_ids]
+            for position, row in enumerate(day_rows):
+                row.position = position
+            for previous, following in zip(day_rows, day_rows[1:], strict=False):
+                segment = by_pair.get((previous.id, following.id))
+                if segment is None or previous.end_time is None or following.fixed_time:
+                    continue
+                following.start_time = previous.end_time + timedelta(
+                    minutes=segment.duration_minutes + segment.buffer_minutes
+                )
+                following.end_time = following.start_time + timedelta(
+                    minutes=following.duration_minutes or 60
+                )
+        trip.route_preference = str(preview.get("route_preference") or trip.route_preference)
+        trip.data = {**trip.data, "route_optimized": True, "route_order_changed": True}
+        trip.version += 1
+        await commit_reservation(session, reservation, trip.id)
+        await session.commit()
+        await cache_trip_routes(trip.id, segments)
+        await session.refresh(trip)
+        result = await serialize_trip(session, trip)
+        result["usage"] = usage_status(reservation).model_dump()
+        await redis.set(
+            replay_key,
+            json.dumps(result["usage"], ensure_ascii=False),
+            ex=OPTIMIZATION_PREVIEW_TTL_SECONDS,
+        )
+        await redis.delete(preview_key)
+        return result
+    except Exception:
+        await release_reservation(session, reservation, "itinerary_optimization_failed")
+        await session.commit()
+        raise
+
+
 @router.post("/{trip_id}/itinerary/optimize")
 async def optimize_trip_itinerary(
     trip_id: UUID,
@@ -3493,6 +3762,13 @@ async def optimize_trip_itinerary(
     session: Session,
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
 ) -> dict[str, Any]:
+    """Optimise and apply in one call.
+
+    Kept for clients that cannot show a preview first; the planner UI uses the
+    preview/apply pair instead so the credit is only spent once the user has seen
+    what changes.
+    """
+
     trip = await owned_trip(session, user.id, trip_id)
     reservation, created = await reserve_use(
         session,
@@ -3515,67 +3791,27 @@ async def optimize_trip_itinerary(
             if payload.day_date
             else sorted({row.day_date for row in all_rows if row.day_date is not None})
         )
-        changed = False
-        any_route = False
         preference = payload.route_preference or trip.route_preference
-        settings = await load_runtime_settings(session)
-        final_segments: list[RouteSegment] = []
-        for target_day in target_days:
-            day_rows = active_route_rows(all_rows, target_day)
-            movable_slots = [
-                index
-                for index, row in enumerate(day_rows)
-                if not row.locked and not row.fixed_time and route_point(row) is not None
-            ]
-            if len(movable_slots) < 2:
-                continue
-            if len(movable_slots) > 12:
-                raise AppError(
-                    422,
-                    "itinerary_optimization_limit",
-                    "每天最多最佳化 12 個可移動地點，請先鎖定部分項目",
-                )
-            movable = [day_rows[index] for index in movable_slots]
-            point_by_id = {
-                row.id: point for row in movable if (point := route_point(row)) is not None
-            }
-            pairs = [
-                (point_by_id[first.id], point_by_id[second.id], first.end_time or first.start_time)
-                for first in movable
-                for second in movable
-                if first.id != second.id
-            ]
-            results = await RouteService(get_redis(), settings).compute_many(
-                pairs,
-                preference,
-                region_code=trip_region_code(trip.timezone, trip.destination_name, trip.data),
+        plan = await plan_itinerary_optimization(
+            trip,
+            all_rows,
+            target_days,
+            preference,
+            await load_runtime_settings(session),
+        )
+        segments = cast(list[RouteSegment], plan["segments"])
+        if not plan["days"] or not segments:
+            raise AppError(
+                503,
+                "itinerary_optimization_unavailable",
+                "沒有取得可套用的完整動線結果",
             )
-            costs = {
-                (segment.from_item_id, segment.to_item_id): segment.duration_minutes
-                for segment in results
-                if segment is not None
-            }
-            if not costs:
-                continue
-            any_route = True
-            remaining = movable.copy()
-            ordered = [remaining.pop(0)]
-            while remaining:
-                previous = ordered[-1]
-                next_row = min(
-                    remaining,
-                    key=lambda row: costs.get((previous.id, row.id), 10**9),
-                )
-                ordered.append(next_row)
-                remaining.remove(next_row)
-            if [row.id for row in ordered] != [row.id for row in movable]:
-                changed = True
-            for slot, row in zip(movable_slots, ordered, strict=True):
-                day_rows[slot] = row
+        by_id = {row.id: row for row in all_rows}
+        by_pair = {(segment.from_item_id, segment.to_item_id): segment for segment in segments}
+        for day in plan["days"]:
+            day_rows = [by_id[UUID(value)] for value in day["order"]]
             for position, row in enumerate(day_rows):
                 row.position = position
-            segments, _ = await compute_routes_for_rows(trip, day_rows, preference, settings)
-            by_pair = {(segment.from_item_id, segment.to_item_id): segment for segment in segments}
             for previous, following in zip(day_rows, day_rows[1:], strict=False):
                 segment = by_pair.get((previous.id, following.id))
                 if segment is None or previous.end_time is None or following.fixed_time:
@@ -3586,19 +3822,16 @@ async def optimize_trip_itinerary(
                 following.end_time = following.start_time + timedelta(
                     minutes=following.duration_minutes or 60
                 )
-            final_segments.extend(segments)
-        if not any_route or not final_segments:
-            raise AppError(
-                503,
-                "itinerary_optimization_unavailable",
-                "沒有取得可套用的完整動線結果",
-            )
         trip.route_preference = preference
-        trip.data = {**trip.data, "route_optimized": True, "route_order_changed": changed}
+        trip.data = {
+            **trip.data,
+            "route_optimized": True,
+            "route_order_changed": bool(plan["changed"]),
+        }
         trip.version += 1
         await commit_reservation(session, reservation, trip.id)
         await session.commit()
-        await cache_trip_routes(trip.id, final_segments)
+        await cache_trip_routes(trip.id, segments)
         await session.refresh(trip)
         result = await serialize_trip(session, trip)
         result["usage"] = usage_status(reservation).model_dump()
