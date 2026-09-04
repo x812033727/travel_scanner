@@ -23,11 +23,13 @@ def test_estimate_calls_obeys_depth_and_selected_sources() -> None:
     assert estimate_calls(5, ["article", "video"], "deep") == {
         "ai": 10,
         "brave": 25,
+        "gemini": 25,
         "youtube": 25,
     }
     assert estimate_calls(2, ["article"], "economy") == {
         "ai": 4,
         "brave": 2,
+        "gemini": 2,
         "youtube": 0,
     }
 

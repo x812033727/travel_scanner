@@ -230,6 +230,18 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         ("hotspot_guide_brave_api_key",),
         "hotspot_guide_brave_enabled",
     ),
+    "gemini_guides": ProviderDefinition(
+        "Gemini 多語文章搜尋",
+        "以 Google 搜尋接地尋找各語系旅遊文章；連結只取自來源標註，不採用模型寫出的網址。",
+        (
+            "hotspot_guide_gemini_base_url",
+            "hotspot_guide_gemini_model",
+            "hotspot_guide_gemini_timeout_seconds",
+            "hotspot_guide_gemini_daily_search_budget",
+        ),
+        ("hotspot_guide_gemini_api_key",),
+        "hotspot_guide_gemini_enabled",
+    ),
     "amadeus": ProviderDefinition(
         "Amadeus",
         "航班、飯店、活動與機場接送；可切換 Self-Service test 或 production。",
@@ -618,6 +630,13 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             configured,
             "ready" if configured else "not_configured",
             "Brave Search API 已設定" if configured else "缺少 Brave Search API key",
+        )
+    if provider == "gemini_guides":
+        configured = bool(settings.hotspot_guide_gemini_api_key)
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            "Gemini API 已設定" if configured else "缺少 Gemini API key",
         )
     if provider == "amadeus":
         return (
@@ -1333,6 +1352,22 @@ async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str
         finally:
             await brave_client.close()
         return "Brave 多語文章搜尋成功"
+    if provider == "gemini_guides":
+        from app.hotspots.guides import GeminiGuideProvider
+
+        if not settings.hotspot_guide_gemini_api_key:
+            raise ConnectionError("缺少 Gemini API key")
+        gemini_client = GeminiGuideProvider(
+            settings.hotspot_guide_gemini_api_key,
+            settings.hotspot_guide_gemini_base_url,
+            settings.hotspot_guide_gemini_model,
+            settings.hotspot_guide_gemini_timeout_seconds,
+        )
+        try:
+            await gemini_client.search("Tokyo Senso-ji travel blog", "en", 1)
+        finally:
+            await gemini_client.close()
+        return f"Gemini 多語文章搜尋成功（{settings.hotspot_guide_gemini_model}）"
     if provider == "amadeus":
         await AmadeusProvider(redis, settings)._token()
         return f"Amadeus {settings.amadeus_env} OAuth 驗證成功"
