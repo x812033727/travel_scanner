@@ -23,6 +23,23 @@ function problem(status: number, code: string, detail: string) {
   );
 }
 
+const RENEWAL_FALLBACK_MAX_AGE = 60 * 60;
+const RENEWAL_CAP_MAX_AGE = 60 * 60 * 24;
+
+/** The token from an upstream `Set-Cookie`, when the API slid the session forward. */
+export function renewedSession(upstream: Response): { token: string; maxAge: number } | null {
+  for (const cookie of upstream.headers.getSetCookie()) {
+    const token = /^travel_access=([^;]+)/.exec(cookie)?.[1];
+    if (!token) continue;
+    const declared = Number(/;\s*max-age=(\d+)/i.exec(cookie)?.[1]);
+    const maxAge = Number.isFinite(declared) && declared > 0
+      ? Math.min(declared, RENEWAL_CAP_MAX_AGE)
+      : RENEWAL_FALLBACK_MAX_AGE;
+    return { token: decodeURIComponent(token), maxAge };
+  }
+  return null;
+}
+
 async function limitedResponseText(response: Response): Promise<string> {
   const declared = Number(response.headers.get("content-length") || 0);
   if (Number.isFinite(declared) && declared > MAX_RESPONSE_BYTES) {
@@ -72,7 +89,11 @@ async function proxy(request: NextRequest, context: Context) {
   const headers = new Headers();
   const contentType = request.headers.get("content-type");
   if (contentType) headers.set("Content-Type", contentType);
-  if (token) headers.set("Authorization", `Bearer ${token}`);
+  // Sent as a cookie rather than a bearer header on purpose. The API only slides a
+  // session forward for cookie callers — bearer clients are expected to manage their own
+  // tokens — so forwarding it as Authorization meant the renewal never ran and every
+  // session died exactly one token lifetime after sign-in.
+  if (token) headers.set("Cookie", `travel_access=${token}`);
   headers.set("X-Travel-Locale", SUPPORTED_LOCALES.has(localeCookie || "") ? localeCookie! : "zh-TW");
   for (const name of ["idempotency-key", "last-event-id"]) {
     const value = request.headers.get(name);
@@ -177,6 +198,19 @@ async function proxy(request: NextRequest, context: Context) {
   response.headers.set("Cache-Control", "no-store");
   if (endpoint === "auth/logout" || (endpoint === "auth/me" && upstream.status === 401)) {
     response.cookies.delete("travel_access");
+  } else {
+    // This proxy owns the browser cookie, so a session the API just slid forward only
+    // reaches the browser if the new token is re-issued here.
+    const renewed = renewedSession(upstream);
+    if (renewed) {
+      response.cookies.set("travel_access", renewed.token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        path: "/",
+        maxAge: renewed.maxAge,
+      });
+    }
   }
   return preserveRequestId(response, upstream);
 }
