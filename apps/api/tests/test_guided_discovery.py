@@ -1,7 +1,28 @@
+from typing import Any, cast
+
 import pytest
+from fastapi import Request
 from pydantic import ValidationError
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.places.router import DiscoveryRequest, LodgingPreferences, discover
+
+
+def _http_request() -> Request:
+    return Request(
+        {
+            "type": "http",
+            "method": "POST",
+            "path": "/",
+            "headers": [],
+            "client": ("198.51.100.7", 1),
+        }
+    )
+
+
+def _no_session() -> AsyncSession:
+    """This payload carries no notes, so discover never touches the session."""
+    return cast(AsyncSession, cast(Any, None))
 
 
 @pytest.mark.asyncio
@@ -24,8 +45,8 @@ async def test_guided_discovery_returns_three_deterministic_candidates() -> None
             "top_n": 3,
         }
     )
-    first = await discover(request)
-    second = await discover(request)
+    first = await discover(_http_request(), request, _no_session())
+    second = await discover(_http_request(), request, _no_session())
     assert first == second
     assert len(first["recommendations"]) == 3
     assert len({item["airport"] for item in first["recommendations"]}) == 3

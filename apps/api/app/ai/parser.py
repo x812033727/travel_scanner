@@ -16,6 +16,22 @@ class ParseTripRequest(BaseModel):
     text: str = Field(min_length=3, max_length=2000)
 
 
+# The interest vocabulary is shared with the LLM parser in app.ai.trip_parser,
+# which offers these codes to the model and drops anything outside the list.
+INTEREST_KEYWORDS: tuple[tuple[tuple[str, ...], str], ...] = (
+    (("美食", "吃"), "food"),
+    (("購物", "逛街"), "shopping"),
+    (("文化", "博物館"), "culture"),
+    (("自然", "登山"), "nature"),
+    (("親子", "家庭", "樂園"), "family"),
+    (("夜生活", "酒吧", "夜店"), "nightlife"),
+    (("按摩", "溫泉", "水療", "SPA", "spa"), "spa"),
+    (("海灘", "沙灘", "跳島"), "beach"),
+    (("深度旅遊", "在地", "小眾", "巷弄", "冷門", "近郊"), "deep_travel"),
+)
+INTEREST_CODES: tuple[str, ...] = tuple(code for _, code in INTEREST_KEYWORDS)
+
+
 class ParsedTravelers(BaseModel):
     adults: int = 1
     children: int = 0
@@ -105,19 +121,7 @@ class MockAITripParser:
         elif iso_dates:
             departure_month = iso_dates[0][:7] + "-01"
         interests = [
-            code
-            for words, code in (
-                (["美食", "吃"], "food"),
-                (["購物", "逛街"], "shopping"),
-                (["文化", "博物館"], "culture"),
-                (["自然", "登山"], "nature"),
-                (["親子", "家庭", "樂園"], "family"),
-                (["夜生活", "酒吧", "夜店"], "nightlife"),
-                (["按摩", "溫泉", "水療", "SPA", "spa"], "spa"),
-                (["海灘", "沙灘", "跳島"], "beach"),
-                (["深度旅遊", "在地", "小眾", "巷弄", "冷門", "近郊"], "deep_travel"),
-            )
-            if any(word in text for word in words)
+            code for words, code in INTEREST_KEYWORDS if any(word in text for word in words)
         ]
         rating_match = re.search(r"(?:至少|最低)?\s*([1-5])\s*星", text)
         chinese_rating = next(
@@ -147,7 +151,9 @@ class MockAITripParser:
             missing.append("destination")
         if departure_month is None:
             missing.append("departure_date")
-        confidence = max(0.45, 1 - len(missing) * 0.15)
+        # A regex parse is never certain either, so it stays under the same
+        # 0.95 ceiling the LLM parser uses; the two are compared on one field.
+        confidence = max(0.45, min(0.9, 1 - len(missing) * 0.15))
         return ParsedTripRequest(
             origin=origin,
             destination=destination,
