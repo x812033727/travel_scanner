@@ -5,6 +5,7 @@ import json
 import sys
 from datetime import UTC, datetime, timedelta
 from io import TextIOWrapper
+from pathlib import Path
 from uuid import UUID
 
 from pydantic import ValidationError
@@ -19,6 +20,7 @@ from app.crawlers.schemas import AirlineFareSearch
 from app.crawlers.verification import build_verification_report
 from app.db import SessionFactory
 from app.foods.service import seed_food_catalog
+from app.hotspots.candidate_cli import import_candidates
 from app.hotspots.jobs import collect_once
 from app.hotspots.place_matching import (
     MatchReport,
@@ -354,6 +356,15 @@ def main() -> None:
     naver = subparsers.add_parser("verify-naver-maps")
     naver.add_argument("--strict", action="store_true")
     subparsers.add_parser("collect-hotspots")
+    candidates = subparsers.add_parser(
+        "import-hotspot-candidates",
+        help="Cross-check a JSON list of place names and report or write what survives",
+    )
+    candidates.add_argument("--file", required=True, help="JSON file with city_code and candidates")
+    candidates.add_argument("--limit", type=int, help="Stop after this many candidates")
+    candidates.add_argument(
+        "--apply", action="store_true", help="Write the rows instead of only reporting them"
+    )
     subparsers.add_parser(
         "seed-foods",
         help="Upsert the food catalog, merchants, areas and categories, then print the counts",
@@ -400,6 +411,11 @@ def main() -> None:
         passed = asyncio.run(verify_naver_maps())
         if args.strict and not passed:
             raise SystemExit(1)
+    elif args.command == "import-hotspot-candidates":
+        report = asyncio.run(
+            import_candidates(Path(args.file), apply=args.apply, limit=args.limit)
+        )
+        print(json.dumps(report, ensure_ascii=False, indent=2))
     elif args.command == "collect-hotspots":
         print(asyncio.run(collect_once()))
     elif args.command == "seed-foods":
