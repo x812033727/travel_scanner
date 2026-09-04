@@ -86,12 +86,16 @@ def session_past_absolute_cap(claims: AccessTokenClaims, now: datetime | None = 
 
 
 def should_renew_session(claims: AccessTokenClaims, now: datetime | None = None) -> bool:
-    settings = get_settings()
     moment = now or datetime.now(UTC)
-    lifetime = timedelta(minutes=settings.access_token_expire_minutes)
+    # Measured against the lifetime this token was actually minted with, not the one
+    # currently configured. Reading the config here meant raising the lifetime moved the
+    # renewal point beyond the expiry of every token already issued, so a change that was
+    # supposed to keep people signed in for longer signed all of them out instead.
+    lifetime = claims.expires_at - claims.issued_at
     if moment - claims.issued_at < lifetime * SESSION_RENEWAL_FRACTION:
         return False
-    return moment - claims.session_started_at < timedelta(days=settings.session_absolute_max_days)
+    limit = timedelta(days=get_settings().session_absolute_max_days)
+    return moment - claims.session_started_at < limit
 
 
 def set_auth_cookie(response: Response, token: str) -> None:

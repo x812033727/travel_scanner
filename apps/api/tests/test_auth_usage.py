@@ -72,6 +72,30 @@ def test_tokens_carry_the_session_start_and_renew_only_inside_the_window() -> No
     )
 
 
+def test_raising_the_configured_lifetime_does_not_strand_tokens_already_issued() -> None:
+    """Lengthening the lifetime must keep people signed in, not sign every one of them out."""
+    from datetime import UTC, datetime, timedelta
+
+    from app.auth.service import AccessTokenClaims, should_renew_session
+
+    now = datetime.now(UTC)
+    short = timedelta(minutes=60)
+    issued_ago = short * 0.7
+
+    # Minted under a 60 minute lifetime and already past its own half-life. It renews on
+    # its own terms; were the window read from a freshly raised config it could never
+    # reach the new half-life before its own expiry, and the session would simply end.
+    in_flight = AccessTokenClaims(
+        uuid4(), 1, "jti", now - issued_ago + short, now - issued_ago, now - issued_ago
+    )
+    assert should_renew_session(in_flight, now)
+
+    fresh = AccessTokenClaims(
+        uuid4(), 1, "jti", now - short * 0.1 + short, now - short * 0.1, now - short * 0.1
+    )
+    assert not should_renew_session(fresh, now)
+
+
 def test_search_operations_all_use_one_accounting_unit() -> None:
     assert search_operation({"trip_type": "multi_city", "modules": ["flight"]}) == (
         "multi_city_search"
