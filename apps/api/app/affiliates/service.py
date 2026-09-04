@@ -21,6 +21,8 @@ class AffiliateContext:
     departure_date: str | None
     return_date: str | None
     sub_id: str
+    area: str | None = None
+    hotel_name: str | None = None
 
 
 def allowed_hosts(settings: Settings, partner: AffiliatePartner) -> set[str]:
@@ -38,12 +40,20 @@ def validate_target_url(target: str, hosts: set[str]) -> str:
 
 
 def _render(template: str, context: AffiliateContext) -> str:
+    # {query} is the free-text search a partner landing page accepts: the hotel when
+    # one is known, otherwise the destination narrowed by the stay area.
+    query = " ".join(
+        part for part in (context.hotel_name, context.destination, context.area) if part
+    )
     values = {
         "destination": context.destination,
         "departure_date": context.departure_date or "",
         "return_date": context.return_date or "",
         "sub_id": context.sub_id,
         "module": context.module,
+        "area": context.area or "",
+        "hotel_name": context.hotel_name or "",
+        "query": query,
     }
     rendered = template
     for name, value in values.items():

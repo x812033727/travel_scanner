@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 import re
 from datetime import UTC, date, datetime, time, timedelta
 from decimal import Decimal, InvalidOperation
@@ -18,6 +19,7 @@ from app.providers.schemas import ActionKind, HotelOffer, SourceMode
 from app.search.schemas import PropertyType, SearchCreate, SearchModule
 
 BOOKING_API_HOSTS = {"demandapi.booking.com", "demandapi-sandbox.booking.com"}
+NEARBY_ROWS = 50
 
 
 def stable_booking_offer_id(provider_id: str) -> UUID:
@@ -266,10 +268,30 @@ class BookingHotelProvider:
         return check_in, check_out
 
     async def search_hotels(self, query: SearchCreate) -> list[HotelOffer]:
-        language = self._language(query)
         city_id = await self._city_id(query)
         if city_id is None:
             return []
+        return await self._search(query, {"city": city_id})
+
+    async def search_hotels_near(
+        self, query: SearchCreate, *, latitude: float, longitude: float, radius_km: float
+    ) -> list[HotelOffer]:
+        # The Demand API takes a coordinates filter (radius in whole km) instead of a
+        # city id, so a stay-area search never depends on the city lookup cache.
+        location = {
+            "coordinates": {
+                "latitude": round(latitude, 6),
+                "longitude": round(longitude, 6),
+                "radius": max(1, math.ceil(radius_km)),
+            },
+            "rows": NEARBY_ROWS,
+        }
+        return await self._search(query, location, limit=NEARBY_ROWS)
+
+    async def _search(
+        self, query: SearchCreate, location: dict[str, Any], *, limit: int = 30
+    ) -> list[HotelOffer]:
+        language = self._language(query)
         check_in, check_out = self._dates(query)
         guests: dict[str, Any] = {
             "number_of_adults": query.travelers.adults,
@@ -286,13 +308,13 @@ class BookingHotelProvider:
                 },
                 "checkin": check_in.isoformat(),
                 "checkout": check_out.isoformat(),
-                "city": city_id,
+                **location,
                 "currency": query.currency,
                 "extras": ["extra_charges", "products"],
                 "guests": guests,
             },
         )
-        rows = cast(list[dict[str, Any]], search.get("data", []))[:30]
+        rows = cast(list[dict[str, Any]], search.get("data", []))[:limit]
         accommodation_ids = [row.get("id") for row in rows if row.get("id") is not None]
         if not accommodation_ids:
             return []

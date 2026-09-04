@@ -154,9 +154,42 @@ class MockProvider:
 
     async def search_hotels(self, query: SearchCreate) -> list[HotelOffer]:
         await self._wait("hotel")
-        rng = random.Random(query_seed(query, "hotel"))
         _, destination, check_in, check_out = route(query)
         city, latitude, longitude = CITY_DATA.get(destination, (destination, 35.0, 139.0))
+        return self._hotel_offers(query, city, latitude, longitude, check_in, check_out)
+
+    async def search_hotels_near(
+        self, query: SearchCreate, *, latitude: float, longitude: float, radius_km: float
+    ) -> list[HotelOffer]:
+        await self._wait("hotel")
+        _, destination, check_in, check_out = route(query)
+        city = CITY_DATA.get(destination, (destination, 0.0, 0.0))[0]
+        return self._hotel_offers(
+            query,
+            city,
+            latitude,
+            longitude,
+            check_in,
+            check_out,
+            seed=f"near:{latitude:.3f}:{longitude:.3f}:{radius_km:.1f}",
+            spread_deg=min(0.004, radius_km / 4 / 111),
+        )
+
+    def _hotel_offers(
+        self,
+        query: SearchCreate,
+        city: str,
+        latitude: float,
+        longitude: float,
+        check_in: datetime,
+        check_out: datetime,
+        *,
+        seed: str = "",
+        spread_deg: float = 0.004,
+    ) -> list[HotelOffer]:
+        query_hash = query_seed(query, "hotel")
+        rng = random.Random(query_seed(query, f"hotel:{seed}") if seed else query_hash)
+        seed_tag = hashlib.sha256(seed.encode()).hexdigest()[:6] if seed else ""
         now, nights = datetime.now(UTC), max(1, (check_out.date() - check_in.date()).days)
         names = [
             f"{city}中央旅店",
@@ -171,7 +204,9 @@ class MockProvider:
                 (base * Decimal("0.1")).quantize(Decimal("1")),
                 Decimal(0 if index < 2 else 500),
             )
-            offer_id = stable_id(f"hotel:{query_seed(query, 'hotel')}:{index}")
+            offer_id = stable_id(
+                f"hotel:{query_hash}:{seed}:{index}" if seed else f"hotel:{query_hash}:{index}"
+            )
             offer = HotelOffer(
                 id=offer_id,
                 provider=self.name,
@@ -179,10 +214,10 @@ class MockProvider:
                 booking_url="https://example.invalid/mock-booking",
                 retrieved_at=now,
                 expires_at=now + timedelta(minutes=5),
-                hotel_id=f"mock-hotel-{index}",
-                hotel_name=name,
-                latitude=latitude + index * 0.004,
-                longitude=longitude - index * 0.003,
+                hotel_id=f"mock-hotel-{seed_tag}-{index}" if seed else f"mock-hotel-{index}",
+                hotel_name=f"{name} {seed_tag}".strip(),
+                latitude=latitude + index * spread_deg,
+                longitude=longitude - index * spread_deg * 0.75,
                 rating=[3, 4, 4, 5][index],
                 room_type="標準雙人房" if index < 2 else "豪華雙人房",
                 check_in=check_in.replace(hour=15),

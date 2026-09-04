@@ -56,6 +56,9 @@ class HotelProvider(Protocol):
     name: str
 
     async def search_hotels(self, query: SearchCreate) -> list[HotelOffer]: ...
+    async def search_hotels_near(
+        self, query: SearchCreate, *, latitude: float, longitude: float, radius_km: float
+    ) -> list[HotelOffer]: ...
     async def get_hotel_details(self, hotel_id: str) -> dict[str, str]: ...
 
 

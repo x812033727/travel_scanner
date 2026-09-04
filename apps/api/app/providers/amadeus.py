@@ -359,9 +359,40 @@ class AmadeusProvider:
         )
         return cast(list[dict[str, Any]], payload.get("data", []))[:20]
 
+    async def _hotel_catalog_near(
+        self, latitude: float, longitude: float, radius_km: float
+    ) -> list[dict[str, Any]]:
+        payload = await self._request(
+            "GET",
+            "/v1/reference-data/locations/hotels/by-geocode",
+            params={
+                "latitude": round(latitude, 6),
+                "longitude": round(longitude, 6),
+                "radius": max(1, math.ceil(radius_km)),
+                "radiusUnit": "KM",
+            },
+        )
+        return cast(list[dict[str, Any]], payload.get("data", []))[:20]
+
     async def search_hotels(self, query: SearchCreate) -> list[HotelOffer]:
         _, destination, check_in, check_out = self._route(query)
         catalog = await self._hotel_catalog(destination)
+        return await self._hotel_offers(query, catalog, check_in, check_out)
+
+    async def search_hotels_near(
+        self, query: SearchCreate, *, latitude: float, longitude: float, radius_km: float
+    ) -> list[HotelOffer]:
+        _, _, check_in, check_out = self._route(query)
+        catalog = await self._hotel_catalog_near(latitude, longitude, radius_km)
+        return await self._hotel_offers(query, catalog, check_in, check_out)
+
+    async def _hotel_offers(
+        self,
+        query: SearchCreate,
+        catalog: list[dict[str, Any]],
+        check_in: date,
+        check_out: date,
+    ) -> list[HotelOffer]:
         hotel_ids = [str(item.get("hotelId")) for item in catalog if item.get("hotelId")]
         if not hotel_ids:
             return []
