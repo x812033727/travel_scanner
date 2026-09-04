@@ -213,7 +213,10 @@ async def test_cookie_session_slides_forward_after_half_its_lifetime(
     old_claims = decode_access_token_claims(stale)
     assert new_claims.expires_at > old_claims.expires_at
     assert new_claims.session_started_at == old_claims.session_started_at
-    assert new_claims.token_id != old_claims.token_id
+    # One id for the whole sign-in. A fresh id per renewal let a copied cookie renew into
+    # a chain of its own, and signing out - which denylists only the id it was handed -
+    # could not reach it.
+    assert new_claims.token_id == old_claims.token_id
 
     bearer = Response()
     await current_user(session, bearer, authorization=f"Bearer {stale}", travel_access=None)
@@ -224,9 +227,38 @@ async def test_cookie_session_slides_forward_after_half_its_lifetime(
         issued_ago=lifetime * 0.7,
         session_age=timedelta(days=get_settings().session_absolute_max_days + 1),
     )
-    capped = Response()
-    await current_user(session, capped, authorization=None, travel_access=expired_session)
-    assert "set-cookie" not in capped.headers
+    # Past the absolute cap the token is refused outright, not merely left unrenewed:
+    # one minted just before the cap would otherwise stay usable for its whole lifetime.
+    with pytest.raises(AppError) as expired:
+        await current_user(session, Response(), authorization=None, travel_access=expired_session)
+    assert expired.value.status == 401
+    await redis.aclose()
+
+
+@pytest.mark.asyncio
+async def test_signing_out_ends_a_session_that_has_already_been_renewed(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The property the shared id exists for: renewal must not outlive a sign-out."""
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    monkeypatch.setattr(auth_service, "get_redis", lambda: redis)
+    user = make_user()
+    session = AsyncMock()
+    session.get.return_value = user
+    lifetime = timedelta(minutes=get_settings().access_token_expire_minutes)
+
+    original = aged_token(user, issued_ago=lifetime * 0.7, session_age=lifetime * 0.7)
+    response = Response()
+    await current_user(session, response, authorization=None, travel_access=original)
+    renewed = response.headers["set-cookie"].split("travel_access=", 1)[1].split(";", 1)[0]
+
+    # Signing out with either copy has to invalidate both, because they are one session.
+    await auth_service.revoke_access_token(decode_access_token_claims(original))
+
+    for token in (original, renewed):
+        with pytest.raises(AppError) as refused:
+            await current_user(session, Response(), authorization=None, travel_access=token)
+        assert refused.value.status == 401
     await redis.aclose()
 
 
