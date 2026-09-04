@@ -63,4 +63,44 @@ describe("currency switcher", () => {
     await waitFor(() => expect(container.querySelector("section")).toBeNull());
     expect(screen.queryByLabelText("幣別")).toBeNull();
   });
+
+  it("still offers the control when the profile request fails for any other reason", async () => {
+    // Only 401 means "nowhere to store this". A 500 must not delete the whole
+    // section from a signed-in member's account page.
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => ({ ok: false, status: 503, json: async () => ({ detail: "維護中" }) })),
+    );
+    render(<CurrencySwitcher />);
+
+    const select = (await screen.findByLabelText("幣別")) as HTMLSelectElement;
+    expect(select.value).toBe("TWD");
+  });
+
+  it("does not let a late failure undo a newer choice that saved", async () => {
+    const pendingPatches: Array<(value: unknown) => void> = [];
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (_url: string, init?: RequestInit) => {
+        if (init?.method !== "PATCH") return ok({ id: "u1", preferred_currency: "TWD" });
+        if (pendingPatches.length === 0) {
+          // Hold the first save open so the second one can overtake it.
+          return new Promise((_resolve, reject) => pendingPatches.push(reject));
+        }
+        return ok({});
+      }),
+    );
+    render(<CurrencySwitcher />);
+
+    const select = (await screen.findByLabelText("幣別")) as HTMLSelectElement;
+    fireEvent.change(select, { target: { value: "JPY" } });
+    await waitFor(() => expect(select.value).toBe("JPY"));
+    fireEvent.change(select, { target: { value: "KRW" } });
+    await waitFor(() => expect(select.value).toBe("KRW"));
+
+    pendingPatches[0]?.(new Error("the first save finally gave up"));
+
+    await waitFor(() => expect(select.value).toBe("KRW"));
+    expect(screen.queryByRole("status")).toBeNull();
+  });
 });
