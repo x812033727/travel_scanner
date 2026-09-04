@@ -425,6 +425,33 @@ def test_stay_partner_options_follow_owner_order_and_link_kinds() -> None:
     ]
 
 
+def test_stay_partner_options_hide_a_partner_without_a_hotel_target() -> None:
+    # Travelpayouts counts as configured once any one module target is set, so a hotel
+    # button must not render off a flight-only setup: clicking it would have no link.
+    base = {
+        "travelpayouts_enabled": True,
+        "travelpayouts_api_token": "token",
+        "travelpayouts_marker": "123",
+        "travelpayouts_project_id": "456",
+        "travelpayouts_flight_target_url": "https://tp.st/flights",
+    }
+    flight_only = Settings.model_validate(base)
+    with_hotel = Settings.model_validate(
+        {**base, "travelpayouts_hotel_target_url": "https://tp.st/hotels"}
+    )
+    static_template = Settings.model_validate(
+        {**base, "travelpayouts_static_url_template": "https://tp.st/go?sub_id={sub_id}"}
+    )
+
+    assert stay_partner_options(flight_only, "淺草", None) == []
+    assert [item["partner"] for item in stay_partner_options(with_hotel, "淺草", None)] == [
+        "travelpayouts"
+    ]
+    assert [item["partner"] for item in stay_partner_options(static_template, "淺草", None)] == [
+        "travelpayouts"
+    ]
+
+
 @pytest.mark.asyncio
 async def test_mock_provider_searches_near_a_point_deterministically() -> None:
     query = SearchCreate(

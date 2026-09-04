@@ -167,6 +167,12 @@ def partner_settings(**overrides: Any) -> Settings:
         "booking_affiliate_id": "aff-booking",
         "booking_affiliate_url_template": "https://www.booking.com/searchresults.html?ss={query}",
         "booking_demand_affiliate_id": "demand-aid",
+        # Configured for flights only: the stay flow must not offer it for hotels.
+        "travelpayouts_enabled": True,
+        "travelpayouts_api_token": "tp-token",
+        "travelpayouts_marker": "123",
+        "travelpayouts_project_id": "456",
+        "travelpayouts_flight_target_url": "https://tp.st/flights",
     }
     values.update(overrides)
     return Settings.model_validate(values)
@@ -463,6 +469,12 @@ async def test_clickout_renders_partner_link_at_click_time_and_records_click(
             trip.id, area.code, "trip_com", harness["user"], session, "zh-TW"
         )
     assert disabled.value.code == "affiliate_partner_not_found"
+    # Enabled and configured, but for flights only: refuse instead of redirecting nowhere.
+    with pytest.raises(AppError) as wrong_module:
+        await stay_router.stay_area_clickout(
+            trip.id, area.code, "travelpayouts", harness["user"], session, "zh-TW"
+        )
+    assert wrong_module.value.code == "affiliate_partner_not_found"
 
 
 @pytest.mark.asyncio

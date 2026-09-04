@@ -19,7 +19,8 @@ from decimal import Decimal
 from typing import Any, Literal, cast
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-from app.affiliates.registry import PARTNERS_BY_CODE, partner_configured, partner_enabled
+from app.affiliates.registry import PARTNERS_BY_CODE
+from app.affiliates.service import partner_supports_module
 from app.config import Settings
 from app.crawlers.fx import FxRateError, FxRateProvider
 from app.destinations.catalog import DestinationProfile, destination_for_code, match_destination
@@ -644,9 +645,7 @@ def stay_partner_options(
         # A Booking Demand deep link is already the affiliate contract, so it does not
         # need the separate Booking affiliate template to be configured.
         deep_link = code == "booking" and booking_deep_link(hotel) is not None
-        if not deep_link and not (
-            partner_enabled(partner, settings) and partner_configured(partner, settings)
-        ):
+        if not deep_link and not partner_supports_module(partner, "hotel", settings):
             continue
         kind: PartnerLinkKind = (
             "deep_link" if deep_link else "hotel_search" if hotel is not None else "area_search"
