@@ -1,11 +1,25 @@
 from datetime import datetime
-from typing import Literal
+from typing import Literal, cast
 from uuid import UUID
 
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, model_validator
 
 Locale = Literal["en", "ja", "ko", "zh-TW", "zh-CN"]
+# The seven currencies apps/web/lib/destinations.ts assigns to the published
+# destinations, plus USD as the neutral fallback for anywhere else. Note that
+# app/destinations/catalog.py quotes only five of them: it has no price row
+# for Singapore or Hong Kong, which are still bookable destinations.
+Currency = Literal["TWD", "JPY", "KRW", "THB", "SGD", "HKD", "VND", "USD"]
 OAuthProvider = Literal["google", "line", "apple"]
+CURRENCIES: tuple[Currency, ...] = ("TWD", "JPY", "KRW", "THB", "SGD", "HKD", "VND", "USD")
+DEFAULT_CURRENCY: Currency = "TWD"
+
+
+def normalize_currency(value: str | None) -> Currency:
+    """Fall back rather than 500 on a row written before this list existed."""
+    if value in CURRENCIES:
+        return cast(Currency, value)
+    return DEFAULT_CURRENCY
 
 
 class RegisterRequest(BaseModel):
@@ -30,13 +44,23 @@ class UserResponse(BaseModel):
     is_admin: bool = False
     can_deploy: bool = False
     preferred_locale: Locale = "zh-TW"
+    preferred_currency: Currency = "TWD"
     has_password: bool = True
     auth_methods: list[str] = Field(default_factory=lambda: ["password"])
     identity_count: int = 0
 
 
 class UserPreferencesUpdate(BaseModel):
-    preferred_locale: Locale
+    # Both optional so a switcher can send just the preference it owns; the
+    # locale switcher must never overwrite the currency and vice versa.
+    preferred_locale: Locale | None = None
+    preferred_currency: Currency | None = None
+
+    @model_validator(mode="after")
+    def require_one_preference(self) -> "UserPreferencesUpdate":
+        if self.preferred_locale is None and self.preferred_currency is None:
+            raise ValueError("至少要指定一項偏好設定")
+        return self
 
 
 class TokenResponse(BaseModel):

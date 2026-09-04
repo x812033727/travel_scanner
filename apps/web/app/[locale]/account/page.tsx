@@ -1,5 +1,6 @@
 import { AccountPanel } from "@/components/account-panel";
 import { AccountSavedItems } from "@/components/account-saved-items";
+import { CurrencySwitcher } from "@/components/currency-switcher";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { SiteHeader } from "@/components/site-header";
 import { getTranslations } from "next-intl/server";
@@ -17,6 +18,7 @@ export default async function AccountPage() {
           <h2 className="mb-4 text-xl font-bold">{t("languageTitle")}</h2>
           <LanguageSwitcher showHelp />
         </section>
+        <CurrencySwitcher />
         <AccountPanel />
       </main>
     </>
