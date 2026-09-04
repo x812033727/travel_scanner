@@ -55,7 +55,7 @@ export function RouteSegmentCard({
   const lines = transitSteps.map((step) => step.line_short_name || step.line_name).filter(Boolean).join(" → ");
   const hasConflict = segment.status === "conflict";
   const expired = Boolean(segment.expires_at && new Date(segment.expires_at) < new Date());
-  const mapsLabel = segment.provider === "naver_maps" || /NAVER/i.test(segment.attribution)
+  const mapsLabel = segment.provider === "naver_maps" || segment.provider === "odsay" || /NAVER|ODsay/i.test(segment.attribution)
     ? "用 NAVER Maps 開啟"
     : "用 Google Maps 開啟";
 

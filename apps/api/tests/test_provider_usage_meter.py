@@ -1,3 +1,4 @@
+import asyncio
 from datetime import UTC, datetime
 from uuid import uuid4
 
@@ -8,11 +9,15 @@ import pytest
 from app.config import Settings
 from app.places.google import GoogleTravelService
 from app.providers.usage_meter import (
+    ekispert_usage_snapshot,
     google_maps_usage_snapshot,
     navitime_usage_snapshot,
+    odsay_usage_snapshot,
     record_google_maps_request,
     record_youtube_request,
+    reserve_ekispert_request,
     reserve_navitime_request,
+    reserve_odsay_request,
     youtube_usage_snapshot,
 )
 from app.trips.routing import GoogleRouteProvider, RoutePoint
@@ -53,6 +58,43 @@ async def test_google_maps_usage_counts_requests_by_month_and_operation() -> Non
     assert snapshot.monthly_history[1].period == "2026-07"
     assert snapshot.tracking_started_at == observed_at
     assert await redis.ttl("provider-usage:google_maps:2026-08") > 0
+    await redis.aclose()
+
+
+@pytest.mark.asyncio
+async def test_ekispert_monthly_budget_is_atomic_and_resets_in_japan_time() -> None:
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    august = datetime(2026, 8, 31, 14, 59, tzinfo=UTC)
+    september = datetime(2026, 8, 31, 15, 0, tzinfo=UTC)
+
+    reservations = await asyncio.gather(
+        *(reserve_ekispert_request(redis, 2, now=august) for _ in range(5))
+    )
+    august_snapshot = await ekispert_usage_snapshot(redis, 2, now=august)
+    assert reservations.count(True) == 2
+    assert august_snapshot.period == "2026-08"
+    assert august_snapshot.used == 2
+    assert not await reserve_ekispert_request(redis, 2, now=august)
+    assert await reserve_ekispert_request(redis, 2, now=september)
+    assert (await ekispert_usage_snapshot(redis, 2, now=september)).used == 1
+    await redis.aclose()
+
+
+@pytest.mark.asyncio
+async def test_odsay_daily_budget_counts_once_and_resets_in_korea_time() -> None:
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    before_midnight = datetime(2026, 9, 1, 14, 59, tzinfo=UTC)
+    after_midnight = datetime(2026, 9, 1, 15, 0, tzinfo=UTC)
+
+    assert await reserve_odsay_request(redis, 1, now=before_midnight)
+    assert not await reserve_odsay_request(redis, 1, now=before_midnight)
+    snapshot = await odsay_usage_snapshot(redis, 1, now=before_midnight)
+    assert snapshot.period_kind == "day"
+    assert snapshot.period == "2026-09-01"
+    assert snapshot.used == 1 and snapshot.remaining == 0
+    assert snapshot.breakdown == {"search_pub_trans_path": 1}
+    assert await reserve_odsay_request(redis, 1, now=after_midnight)
+    assert (await odsay_usage_snapshot(redis, 1, now=after_midnight)).period == "2026-09-02"
     await redis.aclose()
 
 

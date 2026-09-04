@@ -71,6 +71,8 @@ OFFICIAL_PROVIDER_HOSTS: dict[str, frozenset[str]] = {
     "navitime_api_base_url": frozenset(
         {"navitime-route-totalnavi.p.rapidapi.com", ".navitime.co.jp", ".navitime.biz"}
     ),
+    "ekispert_api_base_url": frozenset({"api.ekispert.jp"}),
+    "odsay_api_base_url": frozenset({"api.odsay.com"}),
 }
 
 
@@ -271,6 +273,18 @@ class Settings(BaseSettings):
     navitime_api_key: str | None = None
     # Calendar-month cap on outbound NAVITIME requests; 0 counts without blocking.
     navitime_monthly_request_limit: int = Field(default=450, ge=0, le=10_000_000)
+    ekispert_api_base_url: str = "https://api.ekispert.jp"
+    ekispert_api_key: str | None = None
+    # ``plain`` uses average waiting times and is available on the lower-cost plan.
+    # ``departure`` requires an Ekispert contract with timetable search enabled.
+    ekispert_search_type: Literal["plain", "departure"] = "plain"
+    ekispert_monthly_request_limit: int = Field(default=450, ge=0, le=10_000_000)
+    odsay_api_base_url: str = "https://api.odsay.com/v1/api"
+    odsay_api_key: str | None = None
+    # Standard contracts may only include Korean; multilingual output depends on the plan.
+    odsay_language: Literal["0", "1", "2", "3", "4"] = "0"
+    # The free Basic tier allows 30 calls/day; keep five calls for connection checks.
+    odsay_daily_request_limit: int = Field(default=25, ge=0, le=10_000_000)
     next_public_site_url: str = "http://localhost:3000"
     airline_crawler_user_agent: str = (
         "TravelScannerBot/0.1 (+https://github.com/x812033727/travel_scanner)"
@@ -341,9 +355,7 @@ class Settings(BaseSettings):
     @property
     def deploy_admin_email_set(self) -> set[str]:
         return {
-            email.strip().lower()
-            for email in self.deploy_admin_emails.split(",")
-            if email.strip()
+            email.strip().lower() for email in self.deploy_admin_emails.split(",") if email.strip()
         }
 
     @property
@@ -415,6 +427,14 @@ class Settings(BaseSettings):
         return self.navitime_rapidapi or bool(self.navitime_client_id)
 
     @property
+    def ekispert_configured(self) -> bool:
+        return bool(self.ekispert_api_key and self.ekispert_api_base_url)
+
+    @property
+    def odsay_configured(self) -> bool:
+        return bool(self.odsay_api_key and self.odsay_api_base_url)
+
+    @property
     def naver_maps_configured(self) -> bool:
         return bool(self.naver_maps_client_id and self.naver_maps_client_secret)
 
@@ -479,6 +499,8 @@ class Settings(BaseSettings):
                 "google_travel_impact_base_url",
             ),
             "NAVITIME_API_BASE_URL": (self.navitime_api_key, "navitime_api_base_url"),
+            "EKISPERT_API_BASE_URL": (self.ekispert_api_key, "ekispert_api_base_url"),
+            "ODSAY_API_BASE_URL": (self.odsay_api_key, "odsay_api_base_url"),
             "TRAVELPAYOUTS_API_BASE_URL": (
                 self.travelpayouts_api_token if self.travelpayouts_enabled else None,
                 "travelpayouts_api_base_url",
