@@ -14,7 +14,7 @@ from uuid import UUID
 import httpx
 from redis.asyncio import Redis
 from redis.exceptions import RedisError
-from sqlalchemy import ColumnElement, Delete, and_, case, delete, func, or_, select
+from sqlalchemy import ColumnElement, Delete, Select, and_, case, delete, func, or_, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -501,6 +501,71 @@ async def guide_quota_status(redis: Redis, settings: Settings) -> dict[str, Any]
             "limit": settings.hotspot_guide_brave_daily_search_budget,
         },
     }
+
+
+def guideless_hotspots_statement(limit: int) -> Select[tuple[TravelHotspot]]:
+    """Hotspots that still have nothing for a visitor to watch or read.
+
+    Verified rows come first because those are the only ones the planner can place on an
+    itinerary, so a guide found for them is a guide someone will actually see.
+    """
+    has_guide = select(HotspotGuide.id).where(HotspotGuide.hotspot_id == TravelHotspot.id)
+    return (
+        select(TravelHotspot)
+        .where(
+            TravelHotspot.is_active.is_(True),
+            TravelHotspot.review_status == "approved",
+            ~has_guide.exists(),
+        )
+        .order_by(
+            case((TravelHotspot.map_match_status == "verified", 0), else_=1),
+            TravelHotspot.created_at,
+        )
+        .limit(limit)
+    )
+
+
+async def guideless_hotspots(session: AsyncSession, limit: int) -> list[TravelHotspot]:
+    return list((await session.scalars(guideless_hotspots_statement(limit))).all())
+
+
+async def backfill_guides_once(
+    session: AsyncSession,
+    settings: Settings,
+    redis: Redis,
+    *,
+    client: httpx.AsyncClient | None = None,
+) -> dict[str, Any]:
+    """Work through the guide backlog a few hotspots at a time, inside the daily budget.
+
+    Only the default locale is searched. Every extra locale costs another Brave call,
+    and Brave's daily budget is the scarce one — spending it on breadth would leave most
+    hotspots with nothing at all rather than giving each one a starting set.
+    """
+    if not settings.hotspot_guide_backfill_enabled or not settings.hotspot_guides_enabled:
+        return {"skipped": True, "reason": "disabled"}
+    hotspots = await guideless_hotspots(session, settings.hotspot_guide_backfill_batch_size)
+    if not hotspots:
+        return {"skipped": True, "reason": "nothing_pending"}
+    report: dict[str, Any] = {"skipped": False, "attempted": 0, "created": 0, "exhausted": False}
+    for hotspot in hotspots:
+        outcome = await discover_guides(
+            session,
+            settings,
+            hotspot,
+            [cast(Locale, settings.hotspot_guide_backfill_locale)],
+            client=client,
+            redis=redis,
+            automatic=True,
+        )
+        report["attempted"] += 1
+        report["created"] += int(outcome["created"])
+        providers = cast(dict[str, Any], outcome["providers"])
+        configured = [name for name, state in providers.items() if state != "not_configured"]
+        if configured and all(providers[name] == "quota_exhausted" for name in configured):
+            report["exhausted"] = True
+            break
+    return report
 
 
 def _guide_payload(guide: HotspotGuide, opens: int) -> dict[str, Any]:

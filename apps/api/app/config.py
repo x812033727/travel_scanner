@@ -298,6 +298,9 @@ class Settings(BaseSettings):
     airline_crawler_cache_backend_timeout_seconds: float = Field(default=0.5, gt=0, le=5)
     hotspot_collection_enabled: bool = True
     hotspot_collection_interval_seconds: int = Field(default=21_600, ge=300, le=604_800)
+    hotspot_guide_backfill_enabled: bool = False
+    hotspot_guide_backfill_batch_size: int = Field(default=10, ge=1, le=100)
+    hotspot_guide_backfill_locale: str = "zh-TW"
     hotspot_wikimedia_enabled: bool = True
     hotspot_wikimedia_user_agent: str = (
         "TravelScannerBot/0.1 (+https://github.com/x812033727/travel_scanner)"

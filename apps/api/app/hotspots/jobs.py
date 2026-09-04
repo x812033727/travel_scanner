@@ -4,6 +4,7 @@ from typing import Any
 
 from app.admin.service import load_runtime_settings
 from app.db import SessionFactory
+from app.hotspots.guides import backfill_guides_once
 from app.hotspots.place_tasks import enqueue_place_enrichment_run
 from app.hotspots.places import (
     automatic_refresh_allowed,
@@ -43,4 +44,5 @@ async def collect_once() -> dict[str, Any]:
         report["place_cache_purged"] = purged
         report["restaurant_scan"] = await enqueue_next_automatic_scan(session, settings)
         report["restaurant_place_identity"] = await refresh_next_stale_identity(session, settings)
+        report["guide_backfill"] = await backfill_guides_once(session, settings, get_redis())
         return report
