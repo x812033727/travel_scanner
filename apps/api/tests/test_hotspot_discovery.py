@@ -2,7 +2,13 @@ import httpx
 import pytest
 
 from app.hotspots.cities import TARGET_PUBLIC_HOTSPOTS, DiscoveryCenter, HotspotCity
-from app.hotspots.discovery import WikimediaDiscoveryClient, classify_types, haversine_km
+from app.hotspots.discovery import (
+    ALLOWED_TYPES,
+    DENIED_TYPES,
+    WikimediaDiscoveryClient,
+    classify_types,
+    haversine_km,
+)
 
 
 def test_hotspot_city_targets_total_529() -> None:
@@ -18,10 +24,34 @@ def test_type_allowlist_and_denylist_are_conservative() -> None:
     assert classify_types({"Q33506"}) == ("culture", "auto_approved", None)
     assert classify_types({"Q5", "Q33506"}) == (
         "culture",
-        "pending",
+        "rejected",
         "denylisted_type",
     )
     assert classify_types({"Q999999"}) == ("culture", "pending", "unknown_type")
+
+
+def test_commuter_infrastructure_is_rejected_rather_than_queued() -> None:
+    # Wikidata models a station several ways and only one of them used to be denied,
+    # so a single line's stops filled the review queue.
+    for station_type in ("Q55488", "Q928830", "Q22808403", "Q124416148"):
+        assert classify_types({station_type})[1] == "rejected", station_type
+    for noise_type in ("Q3918", "Q14350", "Q11032", "Q644371", "Q1549591", "Q3024240"):
+        assert classify_types({noise_type})[1] == "rejected", noise_type
+
+
+def test_streets_and_districts_still_reach_a_human() -> None:
+    # 彌敦道, 通菜街 and 旺角 are streets and neighbourhoods that are also real
+    # destinations, so their types must never be denied outright.
+    for ambiguous_type in ("Q79007", "Q83620", "Q1304276", "Q123705", "Q159334"):
+        assert classify_types({ambiguous_type}) == (
+            "culture",
+            "pending",
+            "unknown_type",
+        ), ambiguous_type
+
+
+def test_denylist_never_shadows_an_allowed_type() -> None:
+    assert not (set(ALLOWED_TYPES) & DENIED_TYPES)
 
 
 @pytest.mark.asyncio
