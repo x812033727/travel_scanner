@@ -76,9 +76,12 @@ def _travelpayouts_target(settings: Settings, module: AffiliateModule) -> str | 
         "hotel": "travelpayouts_hotel_target_url",
         "activities": "travelpayouts_activities_target_url",
         "transport": "travelpayouts_transport_target_url",
-        "connectivity": "travelpayouts_activities_target_url",
+        "connectivity": "travelpayouts_connectivity_target_url",
     }[module]
-    return cast(str | None, getattr(settings, field))
+    target = cast(str | None, getattr(settings, field))
+    if not target and module == "connectivity":
+        target = settings.travelpayouts_activities_target_url
+    return target
 
 
 class TravelpayoutsLinkClient:

@@ -83,7 +83,7 @@ AFFILIATE_PARTNERS: tuple[AffiliatePartner, ...] = (
     AffiliatePartner(
         "travelpayouts",
         "Travelpayouts",
-        ("flight", "hotel", "activities", "transport"),
+        ("flight", "hotel", "activities", "transport", "connectivity"),
         "travelpayouts_enabled",
         "travelpayouts_static_url_template",
         "travelpayouts_allowed_hosts",
@@ -122,6 +122,7 @@ def partner_configured(partner: AffiliatePartner, settings: Settings) -> bool:
                     settings.travelpayouts_hotel_target_url,
                     settings.travelpayouts_activities_target_url,
                     settings.travelpayouts_transport_target_url,
+                    settings.travelpayouts_connectivity_target_url,
                 )
             )
         )
