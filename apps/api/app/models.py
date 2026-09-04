@@ -45,6 +45,7 @@ class User(Timestamped, Base):
     is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
     auth_version: Mapped[int] = mapped_column(Integer, default=1)
     preferred_locale: Mapped[str] = mapped_column(String(16), default="zh-TW")
+    preferred_currency: Mapped[str] = mapped_column(String(3), default="TWD", server_default="TWD")
 
 
 class UserAuthIdentity(Timestamped, Base):

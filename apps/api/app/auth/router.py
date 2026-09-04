@@ -29,6 +29,7 @@ from app.auth.schemas import (
     TokenResponse,
     UserPreferencesUpdate,
     UserResponse,
+    normalize_currency,
 )
 from app.auth.service import (
     DUMMY_PASSWORD_HASH,
@@ -70,6 +71,7 @@ async def user_response(session: AsyncSession, user: User) -> UserResponse:
         is_admin=is_admin_user(user),
         can_deploy=can_deploy_user(user),
         preferred_locale=normalize_locale(user.preferred_locale),
+        preferred_currency=normalize_currency(user.preferred_currency),
         has_password=bool(user.password_hash),
         auth_methods=methods,
         identity_count=len(identities),
@@ -195,7 +197,12 @@ async def update_me(
     user: CurrentUser,
     session: Session,
 ) -> UserResponse:
-    user.preferred_locale = payload.preferred_locale
+    # Partial by design: the language switcher and the currency switcher each
+    # send only their own field, so applying an absent one would reset it.
+    if payload.preferred_locale is not None:
+        user.preferred_locale = payload.preferred_locale
+    if payload.preferred_currency is not None:
+        user.preferred_currency = payload.preferred_currency
     await session.commit()
     return await user_response(session, user)
 
