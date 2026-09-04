@@ -333,9 +333,10 @@ class Settings(BaseSettings):
     hotspot_guide_gemini_enabled: bool = False
     hotspot_guide_gemini_api_key: str | None = None
     hotspot_guide_gemini_base_url: str = "https://generativelanguage.googleapis.com"
-    # Flash-tier models refuse "list these sources" prompts outright; a Pro-tier model is
-    # what actually returns grounded results. Admin-changeable if that shifts.
-    hotspot_guide_gemini_model: str = "gemini-2.5-pro"
+    # Flash-tier models refuse "list these sources" prompts on the grounded path, but
+    # handle the schema-bound candidate list fine, and gemini-2.5-pro is closed to new
+    # keys. Admin-changeable per install.
+    hotspot_guide_gemini_model: str = "gemini-3.5-flash"
     hotspot_guide_gemini_timeout_seconds: float = Field(default=45.0, gt=0, le=120)
     hotspot_guide_gemini_daily_search_budget: int = Field(default=30, ge=1, le=1000)
     hotspot_guide_refresh_days: int = Field(default=7, ge=1, le=30)
@@ -520,6 +521,10 @@ class Settings(BaseSettings):
             "TRAVELPAYOUTS_API_BASE_URL": (
                 self.travelpayouts_api_token if self.travelpayouts_enabled else None,
                 "travelpayouts_api_base_url",
+            ),
+            "HOTSPOT_GUIDE_GEMINI_BASE_URL": (
+                self.hotspot_guide_gemini_api_key,
+                "hotspot_guide_gemini_base_url",
             ),
         }
         for env_name, (credential, field) in pinned_endpoints.items():
