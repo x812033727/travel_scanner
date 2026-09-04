@@ -6,7 +6,7 @@ import {
   SkipForward,
   Utensils,
 } from "lucide-react";
-import { formatTime, type TripItem } from "@/lib/trip-types";
+import { formatTime, type ChainedStart, type TripItem } from "@/lib/trip-types";
 
 export function SystemItineraryCard({
   item,
@@ -14,6 +14,7 @@ export function SystemItineraryCard({
   timezone,
   busy,
   routeStale = false,
+  chainedStart,
   onEdit,
   onSkip,
 }: {
@@ -22,6 +23,7 @@ export function SystemItineraryCard({
   timezone?: string;
   busy: boolean;
   routeStale?: boolean;
+  chainedStart?: ChainedStart;
   onEdit: () => void;
   onSkip?: () => void;
 }) {
@@ -41,9 +43,11 @@ export function SystemItineraryCard({
   const unsetHotel = hotel && unresolved;
   const timeMode = item.fixed_time
     ? `固定時間 · ${formatTime(item.start_time, locale, timezone)}`
-    : routeStale || !item.start_time
-      ? "接續前站 · 待路線更新"
-      : `接續前站 · 預計 ${formatTime(item.start_time, locale, timezone)}`;
+    : chainedStart
+      ? `接續前站 · ${chainedStart.estimated ? "約" : "預計"} ${formatTime(chainedStart.start, locale, timezone)}`
+      : routeStale || !item.start_time
+        ? "接續前站 · 待路線更新"
+        : `接續前站 · 預計 ${formatTime(item.start_time, locale, timezone)}`;
   return <article className={`planner-system-card ${meal ? "planner-meal-card" : "planner-hotel-card"} ${meal && item.is_skipped ? "planner-system-card-skipped" : ""}`}>
     <div className="flex items-start gap-3">
       <span className="planner-system-icon">{meal ? <Utensils size={18} /> : <BedDouble size={18} />}</span>

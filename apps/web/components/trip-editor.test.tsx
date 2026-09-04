@@ -770,4 +770,74 @@ describe("trip editor", () => {
 
     expect(await screen.findByText(/預定 .*／預計 .*，可能遲到 18 分鐘/)).toBeTruthy();
   });
+
+  const hotelStart = {
+    id: "00000000-0000-4000-8000-000000000010",
+    item_type: "hotel_anchor",
+    system_role: "hotel_start",
+    day_date: "2026-11-11",
+    position: 0,
+    title: "從 尚未設定飯店 出發",
+    location_name: null,
+    fixed_time: true,
+    start_time: "2026-11-11T09:00:00",
+    duration_minutes: 0,
+    locked: true,
+    is_estimated: true,
+    data: { needs_place_confirmation: true },
+  };
+
+  it("still offers the leg out of the hotel when the lodging has no confirmed place yet", async () => {
+    const stop = { ...trip.items[0], position: 1, duration_minutes: 60 };
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(
+      response({ ...trip, items: [hotelStart, stop] }),
+    )));
+    render(<TripEditor tripId={trip.id} />);
+
+    expect(await screen.findByText("先設定飯店地點")).toBeTruthy();
+    expect(screen.getByText("設定後才能算出前往 淺草散步 的移動時間")).toBeTruthy();
+  });
+
+  it("shows a running estimate for chained stops before any route has been computed", async () => {
+    const stop = { ...trip.items[0], position: 1, duration_minutes: 60 };
+    const later = { ...trip.items[0], id: "00000000-0000-4000-8000-000000000011", position: 2, title: "晴空塔", duration_minutes: 60 };
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(
+      response({ ...trip, items: [hotelStart, stop, later] }),
+    )));
+    render(<TripEditor tripId={trip.id} />);
+
+    // 飯店 09:00 出發，預設緩衝 10 分：第一站約 09:10，停留 60 分後第二站約 10:20。
+    expect(await screen.findByText("接續前站 · 約 09:10")).toBeTruthy();
+    expect(screen.getByText("接續前站 · 約 10:20")).toBeTruthy();
+  });
+
+  it("saves a new daily departure time from the trip tools panel", async () => {
+    const fetchMock = vi.fn().mockImplementation(() => Promise.resolve(
+      response({ ...trip, items: [hotelStart, { ...trip.items[0], position: 1 }] }),
+    ));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "開啟旅程工具" }));
+    const departure = screen.getByLabelText("每日從飯店出發時間") as HTMLInputElement;
+    expect(departure.value).toBe("09:00");
+
+    fireEvent.change(departure, { target: { value: "08:15" } });
+    fireEvent.click(screen.getByRole("button", { name: /套用到所有日期/ }));
+
+    await waitFor(() => expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/schedule-defaults"))).toBe(true));
+    const [, request] = fetchMock.mock.calls.find(([url]) => String(url).includes("/schedule-defaults")) as [string, RequestInit];
+    expect(JSON.parse(String(request.body)).day_start_time).toBe("08:15");
+  });
+
+  it("blocks a departure time that would land after lunch", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(trip))));
+    render(<TripEditor tripId={trip.id} />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "開啟旅程工具" }));
+    fireEvent.change(screen.getByLabelText("每日從飯店出發時間"), { target: { value: "13:00" } });
+
+    expect(screen.getByText("出發時間必須早於午餐時間。")).toBeTruthy();
+    expect(screen.getByRole("button", { name: /套用到所有日期/ }).hasAttribute("disabled")).toBe(true);
+  });
 });
