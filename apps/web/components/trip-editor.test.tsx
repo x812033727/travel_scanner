@@ -830,6 +830,37 @@ describe("trip editor", () => {
     expect(JSON.parse(String(request.body)).day_start_time).toBe("08:15");
   });
 
+  it("changes the daily departure time straight from the hotel card", async () => {
+    const fetchMock = vi.fn().mockImplementation(() => Promise.resolve(
+      response({ ...trip, items: [hotelStart, { ...trip.items[0], position: 1 }] }),
+    ));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    const departure = await screen.findByLabelText("每天從飯店出發的時間") as HTMLInputElement;
+    expect(departure.value).toBe("09:00");
+    expect(screen.getByText("套用到每一天")).toBeTruthy();
+
+    fireEvent.change(departure, { target: { value: "08:15" } });
+
+    await waitFor(() => expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/schedule-defaults"))).toBe(true));
+    const [, request] = fetchMock.mock.calls.find(([url]) => String(url).includes("/schedule-defaults")) as [string, RequestInit];
+    expect(JSON.parse(String(request.body)).day_start_time).toBe("08:15");
+  });
+
+  it("refuses a hotel departure time that would land after lunch without calling the API", async () => {
+    const fetchMock = vi.fn().mockImplementation(() => Promise.resolve(
+      response({ ...trip, items: [hotelStart, { ...trip.items[0], position: 1 }] }),
+    ));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    fireEvent.change(await screen.findByLabelText("每天從飯店出發的時間"), { target: { value: "13:00" } });
+
+    expect(await screen.findByText("出發時間必須早於午餐時間（12:00）。")).toBeTruthy();
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/schedule-defaults"))).toBe(false);
+  });
+
   it("blocks a departure time that would land after lunch", async () => {
     vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(trip))));
     render(<TripEditor tripId={trip.id} />);
