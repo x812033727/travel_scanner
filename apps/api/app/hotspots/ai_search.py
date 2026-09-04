@@ -23,6 +23,7 @@ from app.ai.structured_output import (
 from app.config import Settings
 from app.hotspots.guides import (
     BraveGuideProvider,
+    GeminiGuideProvider,
     GuideCandidate,
     YouTubeGuideProvider,
     consume_search_budget,
@@ -323,9 +324,11 @@ def estimate_calls(
     locale_count: int, content_types: list[ContentType], depth: SearchDepth
 ) -> dict[str, int]:
     query_count, _ = DEPTH_LIMITS[depth]
+    articles = locale_count * query_count if "article" in content_types else 0
     return {
         "ai": locale_count * 2,
-        "brave": locale_count * query_count if "article" in content_types else 0,
+        "brave": articles,
+        "gemini": articles,
         "youtube": locale_count * query_count if "video" in content_types else 0,
     }
 
@@ -336,6 +339,8 @@ ISSUE_MESSAGES: dict[str, str] = {
     "brave_not_configured": "Brave 文章搜尋尚未設定",
     "brave_quota_exhausted": "Brave 搜尋額度已用完",
     "brave_search_failed": "Brave 搜尋失敗",
+    "gemini_quota_exhausted": "Gemini 搜尋額度已用完",
+    "gemini_search_failed": "Gemini 搜尋失敗",
     "youtube_not_configured": "YouTube 影片搜尋尚未設定",
     "youtube_quota_exhausted": "YouTube 搜尋額度已用完",
     "youtube_search_failed": "YouTube 搜尋失敗",
@@ -524,6 +529,17 @@ async def execute_ai_search(
         if settings.hotspot_guide_brave_enabled and settings.hotspot_guide_brave_api_key
         else None
     )
+    gemini = (
+        GeminiGuideProvider(
+            settings.hotspot_guide_gemini_api_key,
+            settings.hotspot_guide_gemini_base_url,
+            settings.hotspot_guide_gemini_model,
+            settings.hotspot_guide_gemini_timeout_seconds,
+            client,
+        )
+        if settings.hotspot_guide_gemini_enabled and settings.hotspot_guide_gemini_api_key
+        else None
+    )
     usage: dict[str, int] = {"ai_calls": 0, "input_tokens": 0, "output_tokens": 0}
     result: dict[str, Any] = {
         "created": 0,
@@ -578,7 +594,9 @@ async def execute_ai_search(
             await session.commit()
             candidates_by_url: dict[str, GuideCandidate] = {}
             candidate_query: dict[str, str] = {}
-            if article_queries and brave is None:
+            # Brave and Gemini both return articles, so only complain when neither is set
+            # up; a Gemini-only install must not be reported as a partial run.
+            if article_queries and brave is None and gemini is None:
                 result["errors"].append(_issue(locale, "brave_not_configured"))
             for query in article_queries if brave else []:
                 if not await consume_search_budget(
@@ -593,6 +611,24 @@ async def execute_ai_search(
                 except SEARCH_ERRORS as exc:
                     result["errors"].append(
                         _issue(locale, "brave_search_failed", summarize_provider_error(exc))
+                    )
+                    break
+                for candidate in found:
+                    candidates_by_url.setdefault(candidate.canonical_url, candidate)
+                    candidate_query.setdefault(candidate.canonical_url, query)
+            for query in article_queries if gemini else []:
+                if not await consume_search_budget(
+                    redis, "gemini", settings.hotspot_guide_gemini_daily_search_budget
+                ):
+                    result["errors"].append(_issue(locale, "gemini_quota_exhausted"))
+                    break
+                usage["gemini_calls"] = usage.get("gemini_calls", 0) + 1
+                assert gemini is not None
+                try:
+                    found = await gemini.search(query, locale, 10)
+                except SEARCH_ERRORS as exc:
+                    result["errors"].append(
+                        _issue(locale, "gemini_search_failed", summarize_provider_error(exc))
                     )
                     break
                 for candidate in found:
@@ -765,6 +801,8 @@ async def execute_ai_search(
             await youtube.close()
         if brave:
             await brave.close()
+        if gemini:
+            await gemini.close()
 
 
 async def test_research_provider(settings: Settings) -> tuple[str, str]:

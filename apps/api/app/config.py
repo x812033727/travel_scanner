@@ -65,6 +65,7 @@ OFFICIAL_PROVIDER_HOSTS: dict[str, frozenset[str]] = {
     "duffel_base_url": frozenset({"api.duffel.com"}),
     "google_travel_impact_base_url": frozenset({"travelimpactmodel.googleapis.com"}),
     "travelpayouts_api_base_url": frozenset({"api.travelpayouts.com"}),
+    "hotspot_guide_gemini_base_url": frozenset({"generativelanguage.googleapis.com"}),
     "line_api_base_url": frozenset({"api.line.me"}),
     # NAVITIME serves the same API 2.0 contract through its RapidAPI listing and, for
     # direct contracts, gateway hosts under its own domains.
@@ -326,6 +327,17 @@ class Settings(BaseSettings):
     hotspot_guide_youtube_search_daily_free_limit: int = Field(default=100, ge=1, le=1_000_000)
     hotspot_guide_youtube_core_daily_free_limit: int = Field(default=10_000, ge=1, le=10_000_000)
     hotspot_guide_brave_daily_search_budget: int = Field(default=30, ge=1, le=1000)
+    # Gemini finds articles through Google Search grounding. Grounding cannot be combined
+    # with a response schema, so this provider takes URLs from grounding metadata only and
+    # never from model text; scoring stays with the existing structured assessment step.
+    hotspot_guide_gemini_enabled: bool = False
+    hotspot_guide_gemini_api_key: str | None = None
+    hotspot_guide_gemini_base_url: str = "https://generativelanguage.googleapis.com"
+    # Flash-tier models refuse "list these sources" prompts outright; a Pro-tier model is
+    # what actually returns grounded results. Admin-changeable if that shifts.
+    hotspot_guide_gemini_model: str = "gemini-2.5-pro"
+    hotspot_guide_gemini_timeout_seconds: float = Field(default=45.0, gt=0, le=120)
+    hotspot_guide_gemini_daily_search_budget: int = Field(default=30, ge=1, le=1000)
     hotspot_guide_refresh_days: int = Field(default=7, ge=1, le=30)
     hotspot_guide_ai_search_enabled: bool = True
     hotspot_guide_ai_default_provider: Literal["minimax", "openai", "anthropic"] = "minimax"
