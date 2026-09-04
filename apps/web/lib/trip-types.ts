@@ -32,6 +32,20 @@ export type PrimaryLodging = {
   latitude?: number | null;
   longitude?: number | null;
   location_source: string;
+  offer_id?: string | null;
+  provider?: string | null;
+  hotel_id?: string | null;
+  area_code?: string | null;
+  selection_source?: "user" | "reoptimize" | null;
+  selected_at?: string | null;
+  price_snapshot?: {
+    nightly_price?: number | string | null;
+    total_price?: number | string | null;
+    currency?: string | null;
+    nights?: number | null;
+    retrieved_at?: string | null;
+    expires_at?: string | null;
+  } | null;
 };
 
 export type ScheduleDefaults = {

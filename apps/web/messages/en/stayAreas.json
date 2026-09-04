@@ -1,0 +1,104 @@
+{
+  "title": "Stay areas",
+  "description": "Areas recommended from where this trip's places are, with live hotel prices once you pick one. Visiting a partner never uses your quota.",
+  "noCharge": "Recommendations and price comparison do not use your quota",
+  "manualLodging": "Enter a hotel manually",
+  "back": "Back to areas",
+  "retry": "Retry",
+  "refresh": "Refresh prices",
+  "loadingAreas": "Looking at where your itinerary goes…",
+  "area": {
+    "items": "{count} stops",
+    "dwell": "about {hours} h there",
+    "days": "{count} days visited",
+    "dayTrip": "Day-trip zone",
+    "current": "Current hotel",
+    "pick": "See hotels here",
+    "reason": {
+      "most_items": "Most stops",
+      "most_days": "Visited most days",
+      "central": "Central to everything",
+      "day_trip_zone": "Mostly day-trip sights, usually reached from the city",
+      "destination_default": "Popular stay area",
+      "current_lodging": "Where your hotel is now"
+    }
+  },
+  "notice": {
+    "lowEvidence": "Your itinerary has only a few places so far; suggestions mix them with popular areas.",
+    "noEvidence": "No located places yet, so these are the popular stay areas.",
+    "unsupported": "No stay-area data for this destination yet; you can enter a hotel manually.",
+    "secondStay": "Many stops are in an extension city; a second base may be worth it.",
+    "pricingUnavailable": "No hotel price provider is available right now; partner sites are still linked.",
+    "chosen": "{hotel} is now your main hotel; daily routes are being recalculated.",
+    "offerExpired": "Prices were refreshed, please confirm again.",
+    "selectFailed": "Could not set the main hotel",
+    "versionConflict": "This trip was updated in another tab or device; reload before continuing."
+  },
+  "compare": {
+    "title": "Hotels in {area}",
+    "summary": "{nights} nights · {adults} adults · {rooms} rooms",
+    "loading": "Fetching live prices from the provider (up to about 10 seconds)…",
+    "errorLoad": "Could not load hotel prices",
+    "sortLabel": "Sort",
+    "sort": { "price": "Price", "rating": "Rating", "distance": "Distance" },
+    "onlyFullMatch": "Only full matches",
+    "relaxed": "No hotel matched every preference, so these were relaxed: {labels}",
+    "hardFiltered": "{count} more hidden because the room type or guest count did not fit",
+    "nearbyTitle": "Few live prices inside this area, so the nearest hotels are shown",
+    "validUntil": "Prices valid until {time}",
+    "expired": "Prices expired, refresh before choosing",
+    "empty": "The provider has no prices for this area right now; partner sites are still linked.",
+    "partners": "See more on partner sites"
+  },
+  "status": {
+    "live": "Live prices",
+    "test": "Provider test data",
+    "mock": "Sample data",
+    "not_configured": "No hotel price provider is configured",
+    "unavailable": "The provider is not responding right now",
+    "timeout": "The provider timed out",
+    "dates_missing": "Set the trip dates to see prices",
+    "dates_past": "The trip dates have passed, so prices are unavailable",
+    "empty": "The provider returned no prices"
+  },
+  "dateNote": {
+    "checkin_moved_to_today": "Check-in moved to today",
+    "assumed_one_night": "Priced for 1 night",
+    "stay_truncated": "Priced for the first 14 nights"
+  },
+  "warning": {
+    "children_ages_missing": "Children's ages are not set, so prices assume adults"
+  },
+  "relaxed": {
+    "breakfast": "breakfast included",
+    "refundable": "free cancellation",
+    "station_walk": "walk to station",
+    "review_count": "minimum review count",
+    "review_score": "minimum guest score",
+    "star_rating": "minimum stars",
+    "preferred_areas": "stay area",
+    "nightly_min": "minimum nightly price",
+    "nightly_max": "maximum nightly price"
+  },
+  "hotel": {
+    "perNight": "per night",
+    "estimateUnavailable": "Could not convert to TWD",
+    "converted": "converted from {currency}",
+    "distance": "{km} km from the {area} centre",
+    "choose": "Set as main hotel",
+    "current": "Current main hotel",
+    "breakfast": "Breakfast included",
+    "refundable": "Free cancellation",
+    "refundUnknown": "Cancellation terms unconfirmed",
+    "moreRooms": "{count} more room types",
+    "gaps": "Not matched: {labels}",
+    "stars": "{stars} stars",
+    "reviews": "Guests {score}",
+    "reviewCount": "{count} reviews"
+  },
+  "partner": {
+    "deep_link": "Book on {partner}",
+    "hotel_search": "Find this hotel on {partner}",
+    "area_search": "See {area} stays on {partner}"
+  }
+}
