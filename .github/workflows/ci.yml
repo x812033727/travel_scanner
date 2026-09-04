@@ -39,7 +39,13 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 24, cache: npm }
       - run: npm ci
-      - run: npm audit --audit-level=high
+      # Advisory lookups hit registry.npmjs.org at request time, so an outage there used
+      # to fail this step and skip lint, typecheck, tests, build and Playwright with it -
+      # three pull requests in one day went red without a line of their code being run.
+      # The blocking check lives in npm-audit.yml, which runs daily and can be retried.
+      - name: Audit dependencies (advisory only; enforced by npm-audit.yml)
+        run: npm audit --audit-level=high
+        continue-on-error: true
       - run: npm run lint:web
       - run: npm run check:i18n
       - run: npm run typecheck:web
