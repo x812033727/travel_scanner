@@ -167,23 +167,34 @@ def test_the_two_repaired_official_sources_stay_repaired() -> None:
         assert OFFICIAL_DESTINATION_FOOD_SOURCES[destination] == OFFICIAL_FOOD_SOURCES["TW"]
 
 
-def test_non_japan_direct_sources_are_verified_and_country_balanced() -> None:
+def test_direct_sources_are_verified_and_country_balanced() -> None:
     merchant_country = {merchant.slug: merchant.country_code for merchant in MERCHANT_SEEDS}
-    assert len(MERCHANT_DIRECT_SOURCE_SEEDS) == 47
-    assert len({seed.merchant_slug for seed in MERCHANT_DIRECT_SOURCE_SEEDS}) == 47
+    assert len(MERCHANT_DIRECT_SOURCE_SEEDS) == 63
+    assert len({seed.merchant_slug for seed in MERCHANT_DIRECT_SOURCE_SEEDS}) == 63
+    # Japan appears here for the first time. Every JP entry belongs to Okinawa, Yokohama or
+    # Kamakura; the older Japanese merchants still have only their destination guide, which
+    # is why they stay pending.
     assert Counter(
         merchant_country[seed.merchant_slug] for seed in MERCHANT_DIRECT_SOURCE_SEEDS
     ) == {
         "HK": 7,
+        "JP": 16,
         "KR": 6,
         "SG": 7,
         "TH": 6,
         "TW": 14,
         "VN": 7,
     }
-    assert sum(seed.official_website_url is not None for seed in MERCHANT_DIRECT_SOURCE_SEEDS) == 21
+    assert sum(seed.official_website_url is not None for seed in MERCHANT_DIRECT_SOURCE_SEEDS) == 28
+    japanese = {
+        seed.merchant_slug
+        for seed in MERCHANT_DIRECT_SOURCE_SEEDS
+        if merchant_country[seed.merchant_slug] == "JP"
+    }
+    assert all(
+        slug.startswith(("okinawa-", "yokohama-", "kamakura-")) for slug in japanese
+    )
     for seed in MERCHANT_DIRECT_SOURCE_SEEDS:
-        assert merchant_country[seed.merchant_slug] != "JP"
         assert seed.source_url.startswith("https://")
         assert seed.claims
         assert not any(
