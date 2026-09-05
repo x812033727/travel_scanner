@@ -15,7 +15,7 @@ from app.auth.service import can_deploy_user
 from app.config import Settings, get_settings
 from app.models import User
 from deployment_agent.config import AgentConfig
-from deployment_agent.executor import CommandError, DeploymentExecutor
+from deployment_agent.executor import APPLICATION_SERVICES, CommandError, DeploymentExecutor
 from deployment_agent.security import sanitize, verify_request
 from deployment_agent.server import AgentApplication, make_handler
 from deployment_agent.store import AgentStore
@@ -329,3 +329,37 @@ def test_agent_handler_bounds_the_request_body_before_authentication() -> None:
     assert accepted == (200, {"ok": True})
     assert application.calls == [("POST", "/v1/preflight", b"{}")]
     assert make_handler(cast(AgentApplication, application)).timeout == 15
+
+
+def test_activation_and_rollback_cover_every_application_service(tmp_path: Path) -> None:
+    """Forward `up -d` must start every long-running service (leaving one out means an
+    agent-managed host silently never runs it), and rollback must not re-run the previous
+    release's `migrate` against the newer schema."""
+    agent_config = config(tmp_path)
+    store = AgentStore(agent_config.state_path)
+    job_id = new_job(store)
+
+    class RecordingExecutor(FakeExecutor):
+        compose_calls: list[tuple[str, ...]] = []
+
+        def _compose(self, release: Path, sha: str, *args: str, timeout: int = 900) -> str:
+            self.compose_calls.append(args)
+            return super()._compose(release, sha, *args, timeout=timeout)
+
+    executor = RecordingExecutor(agent_config, store)
+    executor.health_results = [False, True]  # new release unhealthy -> rollback succeeds
+    executor._deploy_locked(job_id, "b" * 40)
+    assert store.get_job(job_id)["status"] == "rolled_back"
+
+    up_calls = [args for args in executor.compose_calls if args[:2] == ("up", "-d")]
+    assert len(up_calls) == 2
+    forward, rollback = up_calls
+    for call in (forward, rollback):
+        for service in APPLICATION_SERVICES:
+            assert service in call
+        assert "migrate" not in call
+    assert "--no-deps" not in forward
+    assert "--no-deps" in rollback
+    assert ("run", "--rm", "migrate") in {
+        args[:3] for args in executor.compose_calls if args and args[0] == "run"
+    }

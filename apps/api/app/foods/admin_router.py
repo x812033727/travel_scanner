@@ -94,6 +94,14 @@ class FoodWritePayload(BaseModel):
             raise ValueError("美食內容必須包含且僅包含五種網站語系")
         return self
 
+    @model_validator(mode="after")
+    def validate_source_urls(self) -> FoodWritePayload:
+        # Rendered as public links on the dish cards; hold them to the same
+        # public-HTTPS bar as the restaurant editorial sources.
+        for url in self.source_urls:
+            validate_editorial_url(url)
+        return self
+
 
 class FoodUpdatePayload(BaseModel):
     country_code: str | None = Field(default=None, min_length=2, max_length=2)
@@ -110,6 +118,12 @@ class FoodUpdatePayload(BaseModel):
     localizations: list[FoodLocalizationPayload] | None = Field(default=None, max_length=5)
     destination_ids: list[str] | None = Field(default=None, min_length=1, max_length=31)
     hotspot_ids: list[UUID] | None = Field(default=None, max_length=50)
+
+    @model_validator(mode="after")
+    def validate_source_urls(self) -> FoodUpdatePayload:
+        for url in self.source_urls or []:
+            validate_editorial_url(url)
+        return self
 
 
 class FoodBatchPayload(BaseModel):

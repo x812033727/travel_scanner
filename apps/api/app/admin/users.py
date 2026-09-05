@@ -194,7 +194,15 @@ async def update_admin_user(
         raise AppError(409, "admin_self_deactivation", "不可停用目前登入的管理員帳號")
     if user.id == actor.id and payload.is_admin is False:
         raise AppError(409, "admin_self_demotion", "不可移除目前登入帳號的管理員權限")
-    if payload.is_admin is False and user.email.lower() in get_settings().admin_email_set:
+    settings = get_settings()
+    environment_designated = (
+        user.email.lower() in settings.admin_email_set
+        or user.email.lower() in settings.deploy_admin_email_set
+    )
+    # Suspension would bump auth_version and sign the account out, so it locks out an
+    # environment-designated administrator just as effectively as demotion does; both
+    # must go through the host environment first.
+    if environment_designated and (payload.is_admin is False or payload.is_active is False):
         raise AppError(
             409,
             "admin_environment_override",

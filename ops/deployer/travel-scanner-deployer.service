@@ -14,7 +14,10 @@ EnvironmentFile=/etc/travel-scanner/deployer.env
 # /run is tmpfs: recreate the socket directory with the group the API container joins.
 ExecStartPre=+/bin/sh -c 'install -d /run/travel-scanner-deployer && chown travel-deployer:travel-api /run/travel-scanner-deployer && chmod 0750 /run/travel-scanner-deployer'
 ExecStart=/usr/bin/python3 -m deployment_agent
-ExecStartPost=/usr/bin/chgrp travel-api /run/travel-scanner-deployer/deployer.sock
+# The agent binds the socket during startup, after ExecStart returns; wait for it
+# instead of racing it. Runs as travel-deployer, whose supplementary travel-api group
+# makes the chgrp legal without root.
+ExecStartPost=/bin/sh -c 'for i in $(seq 1 100); do [ -S /run/travel-scanner-deployer/deployer.sock ] && exec chgrp travel-api /run/travel-scanner-deployer/deployer.sock; sleep 0.1; done; echo "deployer.sock never appeared" >&2; exit 1'
 Restart=on-failure
 RestartSec=5
 UMask=0007

@@ -157,7 +157,11 @@ async def test_logout_revokes_the_presented_token(monkeypatch: pytest.MonkeyPatc
     with pytest.raises(AppError):
         await current_user(session, Response(), authorization=None, travel_access=token)
     claims = decode_access_token_claims(token)
-    assert 0 < await redis.ttl(f"auth:revoked:{claims.token_id}") <= 3600
+    # The deny entry covers the whole sign-in (until the absolute cap), not just the
+    # presented copy: renewals share this jti but keep minting later expiries.
+    ttl = await redis.ttl(f"auth:revoked:{claims.token_id}")
+    cap_seconds = get_settings().session_absolute_max_days * 86_400
+    assert get_settings().access_token_expire_minutes * 60 < ttl <= cap_seconds + 1
     await redis.aclose()
 
 
@@ -256,6 +260,52 @@ async def test_signing_out_ends_a_session_that_has_already_been_renewed(
     await auth_service.revoke_access_token(decode_access_token_claims(original))
 
     for token in (original, renewed):
+        with pytest.raises(AppError) as refused:
+            await current_user(session, Response(), authorization=None, travel_access=token)
+        assert refused.value.status == 401
+    await redis.aclose()
+
+
+@pytest.mark.asyncio
+async def test_logout_denylist_outlives_every_renewed_sibling(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Revoking with an early copy must still cover siblings renewed after it.
+
+    Renewal keeps one jti but mints later expiries. Keying the deny TTL to the
+    presented copy's exp let a sibling renewed later come back to life once the
+    entry aged out — and renew itself for the rest of the absolute cap, while every
+    later logout denylists a different, fresh jti.
+    """
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    monkeypatch.setattr(auth_service, "get_redis", lambda: redis)
+    user = make_user()
+    session = AsyncMock()
+    session.get.return_value = user
+    settings = get_settings()
+    lifetime = timedelta(minutes=settings.access_token_expire_minutes)
+
+    original = aged_token(user, issued_ago=lifetime * 0.7, session_age=timedelta(days=2))
+    response = Response()
+    await current_user(session, response, authorization=None, travel_access=original)
+    sibling = response.headers["set-cookie"].split("travel_access=", 1)[1].split(";", 1)[0]
+    original_claims = decode_access_token_claims(original)
+    sibling_claims = decode_access_token_claims(sibling)
+    assert sibling_claims.expires_at > original_claims.expires_at
+
+    await auth_service.revoke_access_token(original_claims)
+
+    ttl = await redis.ttl(f"auth:revoked:{original_claims.token_id}")
+    now = datetime.now(UTC)
+    sibling_remaining = (sibling_claims.expires_at - now).total_seconds()
+    cap_remaining = (
+        original_claims.session_started_at
+        + timedelta(days=settings.session_absolute_max_days)
+        - now
+    ).total_seconds()
+    assert ttl > sibling_remaining
+    assert ttl >= cap_remaining - 5
+    for token in (original, sibling):
         with pytest.raises(AppError) as refused:
             await current_user(session, Response(), authorization=None, travel_access=token)
         assert refused.value.status == 401

@@ -26,6 +26,7 @@ const knownErrors = new Set([
   "oauth_provider_unavailable",
   "oauth_link_session_invalid",
   "registration_closed",
+  "admin_email_reserved",
 ]);
 
 export function SocialLoginButtons({
