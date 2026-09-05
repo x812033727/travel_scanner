@@ -58,6 +58,12 @@ class AIItineraryRequest(BaseModel):
     travelers: Travelers
     preferences: SearchPreferences
     notes: str | None = None
+    # start_date/end_date are the span being planned, which is a single day
+    # when one day is re-planned. These carry the whole trip so the first/last
+    # day rules stay pinned to the real trip edges instead of collapsing a
+    # mid-trip day into a one-activity arrival day.
+    trip_start_date: date | None = None
+    trip_end_date: date | None = None
     preserved_items: list[dict[str, Any]] = Field(default_factory=list)
     candidates: list[AIPlannerCandidate] = Field(default_factory=list, max_length=80)
     first_day_available_from: str = Field(
@@ -166,6 +172,9 @@ SYSTEM_PROMPT = "\n".join(
         "不要虛構航班、飯店入住時間、價格、庫存、訂位狀態或即時營業時間。"
         "reason 只說明推薦原因，不得宣稱已即時查證。",
         "preserved_items 是不可移動或不可重複的既有安排；請在其他時段補充行程。",
+        "dates 是這次要安排的日期範圍，trip_span 是整趟旅程；"
+        "首日與末日規則只套用在等於 trip_span 起訖日的那兩天，"
+        "重排單日時其餘日期一律視為行程中段。",
     )
 )
 
@@ -177,6 +186,10 @@ def _request_payload(request: AIItineraryRequest) -> dict[str, Any]:
             "start": request.start_date.isoformat(),
             "end": request.end_date.isoformat(),
             "timezone": request.timezone,
+        },
+        "trip_span": {
+            "start": _trip_edges(request)[0].isoformat(),
+            "end": _trip_edges(request)[1].isoformat(),
         },
         "travelers": request.travelers.model_dump(mode="json"),
         "preferences": request.preferences.model_dump(mode="json"),
@@ -305,9 +318,30 @@ def _date_range(start: date, end: date) -> list[date]:
     return [start + timedelta(days=offset) for offset in range((end - start).days + 1)]
 
 
-def _target_count(day_index: int, day_count: int, pace: TripPace) -> int:
-    if day_count == 1 or day_index in {0, day_count - 1}:
+def _trip_edges(request: AIItineraryRequest) -> tuple[date, date]:
+    return (
+        request.trip_start_date or request.start_date,
+        request.trip_end_date or request.end_date,
+    )
+
+
+def _edge_flags(request: AIItineraryRequest, day_index: int) -> tuple[bool, bool]:
+    """Is this planned day the trip's arrival day / departure day?
+
+    For a whole-trip request this reduces to ``day_index in {0, last}``, the
+    rule this replaced. For a single-day re-plan it keeps a mid-trip Tuesday
+    a mid-trip Tuesday instead of treating it as both arrival and departure.
+    """
+    day_value = request.start_date + timedelta(days=day_index)
+    trip_start, trip_end = _trip_edges(request)
+    return day_value == trip_start, day_value == trip_end
+
+
+def _target_count(request: AIItineraryRequest, day_index: int) -> int:
+    is_first, is_last = _edge_flags(request, day_index)
+    if is_first or is_last:
         return 1
+    pace = request.preferences.pace
     return {TripPace.RELAXED: 1, TripPace.BALANCED: 2, TripPace.PACKED: 3}[pace]
 
 
@@ -422,7 +456,7 @@ def fallback_draft(request: AIItineraryRequest) -> AIItineraryDraft:
     draft_days: list[AIDraftDay] = []
     for day_index, day_value in enumerate(days):
         excursion = excursion_by_day.get(day_index)
-        count = 1 if excursion else _target_count(day_index, len(days), request.preferences.pace)
+        count = 1 if excursion else _target_count(request, day_index)
         activity_slots = _safe_slots(request, day_index, len(days), count)
         items: list[AIDraftItem] = []
         if excursion and activity_slots:
@@ -605,9 +639,7 @@ def normalize_draft(
     used: set[str] = set()
     dates = _date_range(request.start_date, request.end_date)
     for day_index, day_value in enumerate(dates):
-        requested_count = _target_count(
-            day_index, len(dates), request.preferences.pace
-        )
+        requested_count = _target_count(request, day_index)
         count = len(_safe_slots(request, day_index, len(dates), requested_count))
         raw_provider_items = list(provider_by_date.get(day_value, AIDraftDay(date=day_value)).items)
         provider_items: list[AIDraftItem] = []
@@ -616,10 +648,7 @@ def normalize_draft(
             compatible = bool(
                 candidate
                 and item.candidate_key not in used
-                and not (
-                    _is_excursion(candidate)
-                    and day_index in {0, len(dates) - 1}
-                )
+                and not (_is_excursion(candidate) and any(_edge_flags(request, day_index)))
                 and (
                     (item.slot_type == "activity" and candidate.kind == "hotspot")
                     or (
@@ -652,7 +681,7 @@ def normalize_draft(
         ]
         has_excursion = bool(excursion_items)
         if has_excursion:
-            if day_index in {0, len(dates) - 1}:
+            if any(_edge_flags(request, day_index)):
                 partial = True
                 provider_activities = fallback_activities
                 has_excursion = any(
@@ -741,9 +770,7 @@ def normalize_draft(
     activity_index = 0
     regrouped_days: list[AIDraftDay] = []
     for day_index, day in enumerate(normalized_days):
-        requested_target = _target_count(
-            day_index, len(normalized_days), request.preferences.pace
-        )
+        requested_target = _target_count(request, day_index)
         target = len(
             _safe_slots(request, day_index, len(normalized_days), requested_target)
         )
@@ -871,7 +898,7 @@ def _unscheduled_slots(
             for item in items
         )
         requested_target = (
-            1 if has_excursion else _target_count(index, len(days), request.preferences.pace)
+            1 if has_excursion else _target_count(request, index)
         )
         target = len(_safe_slots(request, index, len(days), requested_target))
         for _ in range(max(0, target - activity_count)):
