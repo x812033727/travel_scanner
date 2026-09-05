@@ -5,9 +5,10 @@ import { useTranslations } from "next-intl";
 import { AdminFoodMerchantsPanel, type MerchantTaxonomyFilter } from "./admin-food-merchants-panel";
 import { AdminFoodsPanel } from "./admin-foods-panel";
 import { AdminFoodAreasPanel, AdminFoodCategoriesPanel } from "./admin-food-taxonomy-panel";
+import { AdminMerchantCoordinateQueue } from "./admin-merchant-coordinate-queue";
 import { AdminTabPanel, AdminTabs, useHashTab } from "./admin-tabs";
 
-const tabKeys = ["merchants", "taxonomy", "dishes"] as const;
+const tabKeys = ["merchants", "coordinates", "taxonomy", "dishes"] as const;
 const taxonomyFilters: MerchantTaxonomyFilter[] = ["missing_area", "missing_category"];
 
 const subscribeToNothing = () => () => {};
@@ -49,6 +50,11 @@ export function AdminFoodsWorkspace() {
       />
       <AdminTabPanel idPrefix="foods" tabKey="merchants" active={active}>
         {taxonomy !== null && <AdminFoodMerchantsPanel initialTaxonomy={taxonomy} />}
+      </AdminTabPanel>
+      <AdminTabPanel idPrefix="foods" tabKey="coordinates" active={active}>
+        {/* Mount only while the tab is showing: each queue page costs real Google Pro
+            searches, and AdminTabPanel keeps hidden children mounted. */}
+        {active === "coordinates" && <AdminMerchantCoordinateQueue />}
       </AdminTabPanel>
       <AdminTabPanel idPrefix="foods" tabKey="taxonomy" active={active}>
         <AdminFoodAreasPanel />

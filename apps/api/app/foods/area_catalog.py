@@ -1300,9 +1300,7 @@ def validate_area_catalog() -> None:
             if not (-90 <= latitude <= 90 and -180 <= longitude <= 180):
                 raise RuntimeError(f"area {seed.slug} has an out-of-range center")
     seeded_pairs = {(seed.destination_id, seed.source_name) for seed in AREA_SEEDS}
-    profile_pairs = {
-        (profile.id, area) for profile in DESTINATIONS for area in profile.areas
-    }
+    profile_pairs = {(profile.id, area) for profile in DESTINATIONS for area in profile.areas}
     if seeded_pairs != profile_pairs:
         missing = sorted(profile_pairs - seeded_pairs)
         extra = sorted(seeded_pairs - profile_pairs)
@@ -1310,15 +1308,9 @@ def validate_area_catalog() -> None:
             f"area catalog drifted from DestinationProfile.areas: missing={missing} extra={extra}"
         )
     for profile in DESTINATIONS:
-        orders = [
-            seed.display_order
-            for seed in AREA_SEEDS
-            if seed.destination_id == profile.id
-        ]
+        orders = [seed.display_order for seed in AREA_SEEDS if seed.destination_id == profile.id]
         if len(set(orders)) != len(orders):
-            raise RuntimeError(
-                f"area display orders must be unique within {profile.id}"
-            )
+            raise RuntimeError(f"area display orders must be unique within {profile.id}")
 
 
 validate_area_catalog()

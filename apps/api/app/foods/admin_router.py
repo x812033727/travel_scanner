@@ -9,6 +9,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, Query
 from pydantic import BaseModel, Field, model_validator
 from sqlalchemy import func, select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.listing import (
@@ -18,10 +19,17 @@ from app.admin.listing import (
     country_rank,
     ranked,
 )
+from app.admin.service import load_runtime_settings
 from app.auth.service import AdminUser
 from app.db import escape_like, get_session
 from app.destinations.catalog import destination_for_id
 from app.foods.category_catalog import categories_for_dishes
+from app.foods.coordinate_queue import (
+    apply_approval,
+    coordinate_queue_statement,
+    queue_total,
+    resolve_queue_page,
+)
 from app.foods.service import destination_country_code, localized_name
 from app.hotspots.maps import has_exact_map_identity
 from app.i18n import DEFAULT_LOCALE, LOCALES, Locale, current_locale
@@ -46,6 +54,7 @@ from app.models import (
     TravelFood,
     TravelHotspot,
 )
+from app.places.google import GoogleTravelService
 from app.problems import AppError
 from app.restaurants.editorial import validate_editorial_url
 
@@ -1146,6 +1155,103 @@ async def list_food_merchants(
         "page": page,
         "pages": (total + limit - 1) // limit,
     }
+
+
+class CoordinateQueueApprovalItem(BaseModel):
+    merchant_id: UUID
+    place_id: str = Field(min_length=10, max_length=255)
+
+
+class CoordinateQueueApprovePayload(BaseModel):
+    items: list[CoordinateQueueApprovalItem] = Field(min_length=1, max_length=50)
+
+    @model_validator(mode="after")
+    def unique_merchants(self) -> CoordinateQueueApprovePayload:
+        ids = [item.merchant_id for item in self.items]
+        if len(set(ids)) != len(ids):
+            raise ValueError("同一店家在批次中重複出現")
+        return self
+
+
+async def _queue_google(session: AsyncSession) -> GoogleTravelService:
+    settings = await load_runtime_settings(session)
+    return GoogleTravelService(get_redis(), settings, locale="zh-TW")
+
+
+@router.get("/merchants/coordinate-queue")
+async def merchant_coordinate_queue(
+    user: AdminUser,
+    session: Session,
+    page: Annotated[int, Query(ge=1)] = 1,
+    limit: Annotated[int, Query(ge=1, le=20)] = 10,
+) -> dict[str, object]:
+    """A page of merchants without durable coordinates, each beside Google's best match.
+
+    Resolution happens per page rather than for the whole backlog so one screen costs at
+    most ``limit`` Pro-tier searches, and the Redis provider cache makes revisits and the
+    subsequent approval free.
+    """
+    _ = user
+    google = await _queue_google(session)
+    total = await queue_total(session)
+    if not google.configured:
+        return {"configured": False, "items": [], "total": total, "page": page, "limit": limit}
+    merchants = list(
+        (
+            await session.scalars(
+                coordinate_queue_statement().offset((page - 1) * limit).limit(limit)
+            )
+        ).all()
+    )
+    items = await resolve_queue_page(session, google, merchants)
+    return {"configured": True, "items": items, "total": total, "page": page, "limit": limit}
+
+
+@router.post("/merchants/coordinate-queue/approve")
+async def approve_merchant_coordinates(
+    payload: CoordinateQueueApprovePayload, user: AdminUser, session: Session
+) -> dict[str, object]:
+    google = await _queue_google(session)
+    if not google.configured:
+        raise AppError(503, "google_places_not_configured", "Google Places 金鑰未設定")
+    outcomes: list[dict[str, str]] = []
+    written = 0
+    # The whole batch is one transaction, so the IntegrityError from a concurrent admin
+    # claiming the same Place ID can surface either at commit or mid-loop, when a later
+    # item's SELECT autoflushes the conflicting UPDATE. Both paths land here.
+    try:
+        for item in payload.items:
+            merchant = await session.get(FoodMerchant, item.merchant_id)
+            if merchant is None:
+                outcomes.append({"merchant_id": str(item.merchant_id), "outcome": "not_found"})
+                continue
+            outcome = await apply_approval(
+                session,
+                google,
+                merchant,
+                expected_place_id=item.place_id,
+                actor_id=user.id,
+            )
+            if outcome in ("verified", "coordinates_saved"):
+                written += 1
+            outcomes.append({"merchant_id": str(item.merchant_id), "outcome": outcome})
+        if written:
+            session.add(
+                AdminAuditLog(
+                    actor_user_id=user.id,
+                    action="food_merchant_coordinates_approved",
+                    target=f"food_merchants:{written}",
+                    metadata_json={"outcomes": outcomes},
+                )
+            )
+        await session.commit()
+    except IntegrityError as exc:
+        # The batch rolls back whole rather than half-landing.
+        await session.rollback()
+        raise AppError(
+            409, "place_id_conflict", "有 Place ID 剛被其他管理員寫入，請重新整理佇列後再試"
+        ) from exc
+    return {"written": written, "outcomes": outcomes}
 
 
 @router.post("/merchants/map-candidates")
