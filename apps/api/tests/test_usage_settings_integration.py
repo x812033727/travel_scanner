@@ -11,7 +11,7 @@ from app.db import SessionFactory, engine
 from app.infra import get_redis
 from app.main import app
 from app.models import AdminAuditLog, UsageAccount, UsageLedger, UsageReservation, User
-from app.usage.service import commit_reservation, reserve_use
+from app.usage.service import USAGE_OPERATIONS, commit_reservation, reserve_use
 
 pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
@@ -79,7 +79,7 @@ async def test_admin_usage_settings_apply_without_rewriting_existing_usage() -> 
 
         initial = await client.get("/api/v1/admin/usage-settings", headers=admin_headers)
         assert initial.status_code == 200
-        assert len(initial.json()["operation_costs"]) == 12
+        assert len(initial.json()["operation_costs"]) == len(USAGE_OPERATIONS)
 
         trial = await client.put(
             "/api/v1/admin/usage-settings/trial",
