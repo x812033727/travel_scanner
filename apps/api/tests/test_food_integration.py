@@ -10,6 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.listing import COUNTRY_RANK
 from app.db import SessionFactory, engine
+from app.destinations.catalog import DESTINATIONS
 from app.foods.admin_router import (
     FoodAreaWritePayload,
     FoodBatchPayload,
@@ -89,7 +90,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         assert int(await session.scalar(select(func.count(FoodDestination.id))) or 0) >= 70
         assert int(await session.scalar(select(func.count(FoodHotspot.id))) or 0) >= 70
         assert int(await session.scalar(select(func.count(FoodMerchant.id))) or 0) == 173
-        assert int(await session.scalar(select(func.count(FoodMerchantFood.id))) or 0) == 185
+        assert int(await session.scalar(select(func.count(FoodMerchantFood.id))) or 0) == 192
         assert int(await session.scalar(select(func.count(FoodMerchantSource.id))) or 0) == 236
         assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == 132
         assert int(await session.scalar(select(func.count(FoodCategory.id))) or 0) == 18
@@ -559,9 +560,16 @@ async def test_reseeding_extends_an_existing_dish_to_a_newly_listed_city(
         await seed_food_catalog(session)
         await session.commit()
 
+    # Derive the new city instead of naming one. This test hardcoded "yokohama"
+    # and broke the day the seed grew to include it, which says nothing about
+    # the behaviour under test.
     original = next(item for item in FOOD_SEEDS if item.slug == "jp-ramen")
-    assert "yokohama" not in original.destination_ids
-    extended = replace(original, destination_ids=(*original.destination_ids, "yokohama"))
+    new_city = next(
+        profile.id
+        for profile in DESTINATIONS
+        if profile.country == "Japan" and profile.id not in original.destination_ids
+    )
+    extended = replace(original, destination_ids=(*original.destination_ids, new_city))
     patched = tuple(extended if item.slug == "jp-ramen" else item for item in FOOD_SEEDS)
 
     async with SessionFactory() as session:
@@ -575,7 +583,7 @@ async def test_reseeding_extends_an_existing_dish_to_a_newly_listed_city(
                 )
             ).all()
         )
-        assert "yokohama" not in before
+        assert new_city not in before
 
         monkeypatch.setattr(food_service, "FOOD_SEEDS", patched)
         await seed_food_catalog(session)
@@ -592,7 +600,7 @@ async def test_reseeding_extends_an_existing_dish_to_a_newly_listed_city(
                 )
             ).all()
         )
-        assert "yokohama" in after
+        assert new_city in after
         # The cities it already served are untouched, and none is duplicated.
         assert before <= set(after)
         assert len(after) == len(set(after)) == len(before) + 1
