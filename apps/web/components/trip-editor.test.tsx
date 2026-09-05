@@ -282,7 +282,86 @@ describe("trip editor", () => {
     expect(window.localStorage.getItem("travel-planner-theme")).toBe("ocean");
   }, 10_000);
 
-  it("hides the mobile quick toolbar while reordering to prevent covered controls", async () => {
+  it("inserts a new stop at the chosen position, not at the end", async () => {
+    const twoStopTrip = {
+      ...trip,
+      items: [
+        trip.items[0],
+        {
+          ...trip.items[0],
+          id: "00000000-0000-4000-8000-000000000003",
+          position: 1,
+          title: "晴空塔",
+          location_name: "押上",
+        },
+      ],
+    };
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(twoStopTrip))));
+    render(<TripEditor tripId={trip.id} />);
+
+    expect(await screen.findByRole("heading", { name: "晴空塔" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "在 晴空塔 前插入新安排" }));
+    fireEvent.change(screen.getByLabelText("安排名稱"), { target: { value: "雷門" } });
+    fireEvent.click(screen.getByRole("button", { name: "加入行程" }));
+
+    const headings = screen.getAllByRole("heading", { level: 3 }).map((node) => node.textContent);
+    expect(headings.indexOf("雷門")).toBeGreaterThan(headings.indexOf("淺草散步"));
+    expect(headings.indexOf("雷門")).toBeLessThan(headings.indexOf("晴空塔"));
+  });
+
+  it("does nothing at all when moving the first item up", async () => {
+    const twoStopTrip = {
+      ...trip,
+      items: [
+        trip.items[0],
+        {
+          ...trip.items[0],
+          id: "00000000-0000-4000-8000-000000000003",
+          position: 1,
+          title: "晴空塔",
+          location_name: "押上",
+        },
+      ],
+    };
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(twoStopTrip))));
+    render(<TripEditor tripId={trip.id} />);
+
+    await screen.findByRole("heading", { name: "晴空塔" });
+    // The arrows at the edges are disabled — a no-op tap used to wipe the
+    // day's computed routes and mark the trip dirty.
+    expect((screen.getByRole("button", { name: "上移 淺草散步" }) as HTMLButtonElement).disabled).toBe(true);
+    expect((screen.getByRole("button", { name: "下移 晴空塔" }) as HTMLButtonElement).disabled).toBe(true);
+    expect((screen.getByRole("button", { name: "下移 淺草散步" }) as HTMLButtonElement).disabled).toBe(false);
+  });
+
+  it("lets the reader dismiss an error toast", async () => {
+    const fetchMock = vi.fn().mockImplementation((input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "DELETE") {
+        return Promise.resolve({ ok: false, status: 500, json: async () => ({ detail: "撤銷失敗" }) });
+      }
+      return Promise.resolve(response({ ...trip, share_enabled: true }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "撤銷" }));
+    fireEvent.click(await screen.findByRole("button", { name: "撤銷連結" }));
+
+    expect(await screen.findByRole("alert")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "關閉錯誤訊息" }));
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+
+  it("offers the trip tools from the desktop hero as well", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(trip))));
+    render(<TripEditor tripId={trip.id} />);
+
+    await screen.findAllByText("東京五日");
+    // One trigger in the mobile app bar, one in the desktop hero row.
+    expect(screen.getAllByRole("button", { name: /旅程工具|開啟旅程工具/ }).length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("keeps the toolbar during reordering, swapping it for a done button", async () => {
     const twoStopTrip = {
       ...trip,
       items: [
@@ -302,10 +381,14 @@ describe("trip editor", () => {
     expect(await screen.findByRole("toolbar", { name: "行程快速操作" })).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "排序行程" }));
 
-    expect(screen.queryByRole("toolbar", { name: "行程快速操作" })).toBeNull();
+    // The dock stays: reordering must not hide the save indicator, and the way
+    // out is an explicit 完成排序 in the same thumb-reach spot.
+    const toolbar = screen.getByRole("toolbar", { name: "行程快速操作" });
+    expect(within(toolbar).getByRole("button", { name: "完成排序" })).toBeTruthy();
+    expect(within(toolbar).queryByRole("button", { name: "新增安排" })).toBeNull();
     expect(screen.getByRole("button", { name: "上移 晴空塔" })).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: "完成排序" }));
-    expect(screen.getByRole("toolbar", { name: "行程快速操作" })).toBeTruthy();
+    fireEvent.click(within(toolbar).getByRole("button", { name: "完成排序" }));
+    expect(within(toolbar).getByRole("button", { name: "新增安排" })).toBeTruthy();
   });
 
   it("lets the user ask MiniMax to arrange only the selected day", async () => {
@@ -842,6 +925,9 @@ describe("trip editor", () => {
     expect(screen.getByText("套用到每一天")).toBeTruthy();
 
     fireEvent.change(departure, { target: { value: "08:15" } });
+    // Typing alone must not save — half-typed times used to fire real requests.
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/schedule-defaults"))).toBe(false);
+    fireEvent.blur(departure);
 
     await waitFor(() => expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/schedule-defaults"))).toBe(true));
     const [, request] = fetchMock.mock.calls.find(([url]) => String(url).includes("/schedule-defaults")) as [string, RequestInit];
@@ -855,7 +941,9 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
 
-    fireEvent.change(await screen.findByLabelText("每天從飯店出發的時間"), { target: { value: "13:00" } });
+    const lateDeparture = await screen.findByLabelText("每天從飯店出發的時間");
+    fireEvent.change(lateDeparture, { target: { value: "13:00" } });
+    fireEvent.blur(lateDeparture);
 
     expect(await screen.findByText("出發時間必須早於午餐時間（12:00）。")).toBeTruthy();
     expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/schedule-defaults"))).toBe(false);

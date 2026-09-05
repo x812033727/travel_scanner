@@ -72,7 +72,7 @@ export function SystemItineraryCard({
     </div>
     {item.system_role === "hotel_start" && departureTime && onDepartureTimeChange && <label className="planner-departure-field mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-black/5 pt-3 text-xs font-semibold">
       <span className="flex items-center gap-1.5"><Clock3 size={14} />出發時間</span>
-      <input type="time" aria-label="每天從飯店出發的時間" value={departureTime} disabled={departureBusy} onChange={(event) => onDepartureTimeChange(event.target.value)} className="min-h-10 rounded-xl border border-[var(--line)] bg-white px-2.5 font-bold disabled:opacity-45" />
+      <input type="time" aria-label="每天從飯店出發的時間" defaultValue={departureTime} key={departureTime} disabled={departureBusy} onBlur={(event) => { if (event.target.value && event.target.value !== departureTime) onDepartureTimeChange(event.target.value); }} onKeyDown={(event) => { if (event.key === "Enter") (event.target as HTMLInputElement).blur(); }} className="min-h-10 rounded-xl border border-[var(--line)] bg-white px-2.5 font-bold disabled:opacity-45" />
       <span className="font-normal text-[var(--muted)]">{departureBusy ? "儲存中…" : "套用到每一天"}</span>
     </label>}
     <div className="mt-3 flex gap-2 border-t border-black/5 pt-3">
