@@ -350,7 +350,9 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         _area("horie", "南堀江", "Minami-Horie", 34.6727, 135.4929, 0.8, ja="南堀江"),
         _area("nakatsu", "中津", "Nakatsu", 34.7097, 135.493, 0.6, ja="中津"),
         _area("nishijin", "西陣", "Nishijin", 35.0297, 135.7519, 1.4, ja="西陣"),
-        _area("gojo", "河原町五條", "Kawaramachi-Gojo", 34.9952, 135.7597, 0.7, ja="五条楽園"),
+        # 五条楽園 sits between Kawaramachi-dori and the Kamo river; the subway
+        # station coordinate first used here is Karasuma-Gojo, 800 m west of it.
+        _area("gojo", "河原町五條", "Kawaramachi-Gojo", 34.9943, 135.7656, 0.7, ja="五条楽園"),
         _area("ichijoji", "一乘寺", "Ichijoji", 35.0443, 135.7875, 1.0, ja="一乗寺"),
     ),
     "FUK": (
@@ -543,8 +545,9 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
             "minatogawa",
             "港川外人住宅",
             "Minatogawa Stateside Town",
-            26.2312,
-            127.74,
+            # 港川2丁目 in Urasoe; the first cut sat 4 km southeast in the Shuri hills.
+            26.2627,
+            127.7152,
             0.6,
             ja="港川ステイツサイドタウン",
         ),
