@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { closedSiteVisibility } from "@/lib/site-features";
+import { closedSiteVisibility, openSiteVisibility } from "@/lib/site-features";
 import { ExploreSwitch } from "./explore-switch";
 import { SiteVisibilityProvider } from "./site-visibility-provider";
 
@@ -19,12 +19,21 @@ describe("ExploreSwitch", () => {
     expect(links[0].getAttribute("aria-current")).toBeNull();
   });
 
-  it("renders nothing when hotspots are paused, leaving foods on its own", () => {
+  it("renders nothing when hotspots are turned off, leaving foods on its own", () => {
     render(
-      <SiteVisibilityProvider state={{ status: "ready", features: closedSiteVisibility }}>
+      <SiteVisibilityProvider state={{ status: "ready", features: { ...openSiteVisibility, hotspots_enabled: false } }}>
         <ExploreSwitch />
       </SiteVisibilityProvider>,
     );
     expect(screen.queryByRole("link")).toBeNull();
+  });
+
+  it("keeps both tabs when the switches could not be read", () => {
+    render(
+      <SiteVisibilityProvider state={{ status: "unavailable", features: closedSiteVisibility }}>
+        <ExploreSwitch />
+      </SiteVisibilityProvider>,
+    );
+    expect(screen.getAllByRole("link")).toHaveLength(2);
   });
 });

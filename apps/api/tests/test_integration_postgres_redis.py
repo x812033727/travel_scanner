@@ -733,7 +733,9 @@ async def test_search_trip_keeps_quotes_and_the_keys_a_blank_trip_has() -> None:
         )
         assert manual.status_code == 200, manual.text
         updated = manual.json()
-        outbound = next(item for item in updated["items"] if item["system_role"] == "outbound_flight")
+        outbound = next(
+            item for item in updated["items"] if item["system_role"] == "outbound_flight"
+        )
         assert "price_snapshot" not in outbound["data"]
         assert outbound["offer_id"] is None
         # The return leg still carries the round-trip quote, so it is now the one counted.

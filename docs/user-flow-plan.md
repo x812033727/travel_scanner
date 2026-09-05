@@ -304,8 +304,8 @@
 驗證：`tests/test_trip_pricing.py`（快照欄位、來回票只計一次、外幣不換算、手打無快照）；整合測試 `test_search_trip_keeps_quotes_and_the_keys_a_blank_trip_has`（本機 Postgres／Redis 跑過）；`flight-anchor-card.test.tsx`。
 留到後面：`apply_flight_anchor_details` 的 offer 分支與 `from-offer` 端點（PR D），旅程頁 hero 的「已報價／估算」兩欄（等 #150）。
 
-**PR C — `PATCH /trips/{id}`**
-= planning-flow-spec PR 1，加 `origin_airport`。它的「兩階段日期位移」與 `uq_trip_plan_item_system_role` 地雷照規格處理。C 與 B 無依賴，可並行。
+**PR C — `PATCH /trips/{id}` — 已由 main 的 #155 完成**
+`main` 在本分支進行中合併了 `feat(trips): let a trip change its name, status and dates after creation`（`app/trips/reschedule.py`，含日期位移與受影響項目的摘要）。剩下的差異只有 `origin_airport` 還不能事後修改；PR D 的「查機票」入口若發現旅程沒有出發地，先在該處詢問並存回，等於補上這一格。
 
 **PR D — 從旅程出發比價（後端＋前端，等 #150）**
 範圍：`POST /searches` 的 `trip_id`；`trip_search_criteria`；`from-offer`；`/search` 的 `trip_id` 模式；旅程頁「查機票」入口；聯盟區塊回旅程頁。依賴 B（錨點要能收 offer）與 C（`origin_airport` 可改）。
