@@ -1219,6 +1219,11 @@ class TripPlan(Timestamped, Base):
     timezone: Mapped[str] = mapped_column(String(64), default="UTC")
     route_preference: Mapped[str] = mapped_column(String(32), default="FEWER_TRANSFERS")
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # The ledger's own budget and currency. total_price stays what it always
+    # was: the snapshot of a price search, recomputed by re-pricing and never
+    # by hand — mixing the two would make both unexplainable.
+    budget_amount: Mapped[Decimal | None] = mapped_column(Numeric(14, 2), nullable=True)
+    cost_currency: Mapped[str] = mapped_column(String(3), default="TWD", server_default="TWD")
 
 
 class TripPlanItem(Base):
@@ -1271,6 +1276,41 @@ class TripPlanItem(Base):
     fixed_time: Mapped[bool] = mapped_column(Boolean, default=False)
     system_role: Mapped[str | None] = mapped_column(String(24), nullable=True)
     is_skipped: Mapped[bool] = mapped_column(Boolean, default=False)
+
+
+class TripExpense(Timestamped, Base):
+    """One line of a trip's day-by-day ledger.
+
+    Deliberately carries no currency of its own: per-row currencies would make
+    the daily and trip totals meaningless without live conversion, and the only
+    FX helper here converts *to* TWD only. The whole ledger is denominated in
+    TripPlan.cost_currency.
+    """
+
+    __tablename__ = "trip_expenses"
+    __table_args__ = (
+        # Postgres treats NULLs as distinct, so hand-typed rows (source_key
+        # NULL) are unconstrained while each seeded source lands exactly once.
+        UniqueConstraint("trip_plan_id", "source_key", name="uq_trip_expense_source"),
+        CheckConstraint(
+            "category IN ('flight', 'lodging', 'transport', 'food', "
+            "'activity', 'shopping', 'other')",
+            name="ck_trip_expense_category",
+        ),
+        CheckConstraint("source IN ('manual', 'seeded')", name="ck_trip_expense_source"),
+        CheckConstraint("amount >= 0", name="ck_trip_expense_amount"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    trip_plan_id: Mapped[UUID] = mapped_column(
+        ForeignKey("trip_plans.id", ondelete="CASCADE"), index=True
+    )
+    day_date: Mapped[date] = mapped_column(Date, index=True)
+    label: Mapped[str] = mapped_column(String(120))
+    amount: Mapped[Decimal] = mapped_column(Numeric(14, 2))
+    category: Mapped[str] = mapped_column(String(24), default="other")
+    source: Mapped[str] = mapped_column(String(16), default="manual")
+    source_key: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    position: Mapped[int] = mapped_column(Integer, default=0)
 
 
 class TripDayNote(Timestamped, Base):

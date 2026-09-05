@@ -9,7 +9,7 @@ from uuid import UUID, uuid4, uuid5
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import httpx
-from fastapi import APIRouter, Depends, Header
+from fastapi import APIRouter, Depends, Header, Query
 from pydantic import BaseModel, Field, model_validator
 from sqlalchemy import delete, func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -21,6 +21,7 @@ from app.ai.itinerary import (
     AIPlannerCandidate,
     AIPlanningResult,
 )
+from app.auth.schemas import Currency
 from app.auth.service import CurrentUser
 from app.config import Settings, get_settings
 from app.db import get_session
@@ -38,6 +39,7 @@ from app.localized_names import (
 from app.models import (
     SearchRequest,
     TripDayNote,
+    TripExpense,
     TripPlan,
     TripPlanItem,
     TripRouteSegment,
@@ -56,6 +58,12 @@ from app.providers.registry import (
 from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, Offer, TransportOffer
 from app.search.schemas import SearchCreate, SearchPreferences, Travelers
+from app.trips.expenses import (
+    EXPENSE_CATEGORIES,
+    MAX_EXPENSES,
+    cost_summary,
+    seed_rows,
+)
 from app.trips.itinerary import ItineraryItem
 from app.trips.reschedule import (
     MAX_SHIFT_DAYS,
@@ -184,6 +192,8 @@ class TripMetadataPatchRequest(BaseModel):
     status: Literal["planning", "ready", "travelling", "closed"] | None = None
     cover_image_url: str | None = Field(default=None, max_length=1024)
     notes: str | None = Field(default=None, max_length=4000)
+    budget_amount: Decimal | None = Field(default=None, ge=0, le=Decimal("99999999999"))
+    cost_currency: Currency | None = None
     start_date: date | None = None
     end_date: date | None = None
     shift_days: int | None = Field(default=None, ge=-MAX_SHIFT_DAYS, le=MAX_SHIFT_DAYS)
@@ -680,6 +690,18 @@ async def load_day_notes(session: AsyncSession, trip_id: UUID) -> list[TripDayNo
     )
 
 
+async def load_expenses(session: AsyncSession, trip_id: UUID) -> list[TripExpense]:
+    return list(
+        (
+            await session.scalars(
+                select(TripExpense)
+                .where(TripExpense.trip_plan_id == trip_id)
+                .order_by(TripExpense.day_date, TripExpense.position)
+            )
+        ).all()
+    )
+
+
 async def serialize_trip(
     session: AsyncSession, trip: TripPlan, *, include_items: bool = True
 ) -> dict[str, Any]:
@@ -693,11 +715,15 @@ async def serialize_trip(
     route_records = []
     day_route_settings = []
     day_notes: dict[str, str] = {}
+    cost: dict[str, Any] | None = None
+    # Gated with the items: list_trips() serialises every trip a member owns,
+    # and an ungated ledger query there would be a 2xN fan-out.
     if include_items:
         day_notes = {
             row.day_date.isoformat(): row.notes
             for row in await load_day_notes(session, trip.id)
         }
+        cost = cost_summary(trip, await load_expenses(session, trip.id))
         route_records = await load_route_segments(session, trip.id)
         day_route_settings = await load_day_settings(session, trip.id)
         route_segments = [
@@ -741,6 +767,7 @@ async def serialize_trip(
         "route_preference": trip.route_preference,
         "notes": trip.notes,
         "day_notes": day_notes,
+        "cost": cost,
         "items": [serialize_item(item) for item in items],
         "route_segments": route_segments,
         "routing": routing_summary(trip, day_route_settings, route_records),
@@ -1853,6 +1880,205 @@ async def get_trip(trip_id: UUID, user: CurrentUser, session: Session) -> dict[s
     return await serialize_trip(session, trip)
 
 
+class TripExpenseRequest(BaseModel):
+    """One ledger line. Currency lives on the trip, never on the row."""
+
+    version: int = Field(ge=1)
+    day_date: date
+    label: str = Field(min_length=1, max_length=120)
+    amount: Decimal = Field(ge=0, le=Decimal("99999999999"))
+    category: Literal[EXPENSE_CATEGORIES] = "other"  # type: ignore[valid-type]
+
+    @model_validator(mode="after")
+    def clean(self) -> "TripExpenseRequest":
+        self.label = self.label.strip()
+        if not self.label:
+            raise ValueError("label must not be blank")
+        return self
+
+
+class TripExpensePatchRequest(BaseModel):
+    version: int = Field(ge=1)
+    day_date: date | None = None
+    label: str | None = Field(default=None, min_length=1, max_length=120)
+    amount: Decimal | None = Field(default=None, ge=0, le=Decimal("99999999999"))
+    category: Literal[EXPENSE_CATEGORIES] | None = None  # type: ignore[valid-type]
+
+    @model_validator(mode="after")
+    def clean(self) -> "TripExpensePatchRequest":
+        if self.label is not None:
+            self.label = self.label.strip()
+            if not self.label:
+                raise ValueError("label must not be blank")
+        if not self.model_fields_set - {"version"}:
+            raise ValueError("nothing to update")
+        return self
+
+
+class TripExpenseSeedRequest(BaseModel):
+    version: int = Field(ge=1)
+
+
+async def _bump_trip_version(
+    session: AsyncSession, trip: TripPlan, user_id: UUID, expected: int
+) -> None:
+    """Win the trip's compare-and-swap, or refuse to touch the ledger."""
+    next_version = await session.scalar(
+        update(TripPlan)
+        .where(
+            TripPlan.id == trip.id,
+            TripPlan.user_id == user_id,
+            TripPlan.version == expected,
+        )
+        .values(version=TripPlan.version + 1)
+        .returning(TripPlan.version)
+    )
+    if next_version is None:
+        await session.rollback()
+        raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再操作")
+
+
+def _check_expense_day(trip: TripPlan, day_date: date) -> None:
+    if trip.start_date and trip.end_date and not (trip.start_date <= day_date <= trip.end_date):
+        raise AppError(422, "day_outside_trip", "這一天不在旅程日期範圍內")
+
+
+@router.post("/{trip_id}/expenses", status_code=201)
+async def create_trip_expense(
+    trip_id: UUID,
+    payload: TripExpenseRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    trip = await owned_trip(session, user.id, trip_id)
+    _check_expense_day(trip, payload.day_date)
+    existing = await load_expenses(session, trip.id)
+    if len(existing) >= MAX_EXPENSES:
+        raise AppError(422, "trip_ledger_full", f"每趟旅程最多 {MAX_EXPENSES} 筆帳目")
+    await _bump_trip_version(session, trip, user.id, payload.version)
+    position = max(
+        (row.position for row in existing if row.day_date == payload.day_date),
+        default=-1,
+    )
+    session.add(
+        TripExpense(
+            trip_plan_id=trip.id,
+            day_date=payload.day_date,
+            label=payload.label,
+            amount=payload.amount,
+            category=payload.category,
+            source="manual",
+            position=position + 1,
+        )
+    )
+    await session.commit()
+    await session.refresh(trip)
+    return await serialize_trip(session, trip)
+
+
+@router.patch("/{trip_id}/expenses/{expense_id}")
+async def update_trip_expense(
+    trip_id: UUID,
+    expense_id: UUID,
+    payload: TripExpensePatchRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    trip = await owned_trip(session, user.id, trip_id)
+    row = await session.scalar(
+        select(TripExpense).where(
+            TripExpense.id == expense_id, TripExpense.trip_plan_id == trip.id
+        )
+    )
+    if row is None:
+        raise AppError(404, "expense_not_found", "找不到這筆帳目")
+    if payload.day_date is not None:
+        _check_expense_day(trip, payload.day_date)
+    await _bump_trip_version(session, trip, user.id, payload.version)
+    if payload.day_date is not None:
+        row.day_date = payload.day_date
+    if payload.label is not None:
+        row.label = payload.label
+    if payload.amount is not None:
+        row.amount = payload.amount
+    if payload.category is not None:
+        row.category = payload.category
+    await session.commit()
+    await session.refresh(trip)
+    return await serialize_trip(session, trip)
+
+
+@router.delete("/{trip_id}/expenses/{expense_id}")
+async def delete_trip_expense(
+    trip_id: UUID,
+    expense_id: UUID,
+    user: CurrentUser,
+    session: Session,
+    # DELETE bodies are not universally supported, so the version rides the
+    # query string while still being mandatory.
+    version: Annotated[int, Query(ge=1)],
+) -> dict[str, Any]:
+    trip = await owned_trip(session, user.id, trip_id)
+    row = await session.scalar(
+        select(TripExpense).where(
+            TripExpense.id == expense_id, TripExpense.trip_plan_id == trip.id
+        )
+    )
+    if row is None:
+        raise AppError(404, "expense_not_found", "找不到這筆帳目")
+    await _bump_trip_version(session, trip, user.id, version)
+    await session.delete(row)
+    await session.commit()
+    await session.refresh(trip)
+    return await serialize_trip(session, trip)
+
+
+@router.post("/{trip_id}/expenses/seed")
+async def seed_trip_expenses(
+    trip_id: UUID,
+    payload: TripExpenseSeedRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    """Fill the ledger from prices this trip already knows.
+
+    Idempotent by construction: every seeded row carries a `source_key`, and a
+    key already present is skipped, so pressing the button twice adds nothing.
+    """
+    trip = await owned_trip(session, user.id, trip_id)
+    existing = await load_expenses(session, trip.id)
+    seeds = seed_rows(
+        trip,
+        existing_keys={row.source_key for row in existing if row.source_key},
+        day=trip.start_date or date.today(),
+    )
+    if len(existing) + len(seeds) > MAX_EXPENSES:
+        raise AppError(422, "trip_ledger_full", f"每趟旅程最多 {MAX_EXPENSES} 筆帳目")
+    await _bump_trip_version(session, trip, user.id, payload.version)
+    day_positions: dict[date, int] = {}
+    for row in existing:
+        day_positions[row.day_date] = max(day_positions.get(row.day_date, -1), row.position)
+    for seed in seeds:
+        day = cast(date, seed["day_date"])
+        position = day_positions.get(day, -1) + 1
+        day_positions[day] = position
+        session.add(
+            TripExpense(
+                trip_plan_id=trip.id,
+                day_date=day,
+                label=cast(str, seed["label"]),
+                amount=cast(Decimal, seed["amount"]),
+                category=cast(str, seed["category"]),
+                source="seeded",
+                source_key=cast(str, seed["source_key"]),
+                position=position,
+            )
+        )
+    await session.commit()
+    await session.refresh(trip)
+    return await serialize_trip(session, trip)
+
+
 class TripDayNoteRequest(BaseModel):
     """`PUT /trips/{id}/days/{day}/notes` — the note for one day.
 
@@ -1944,6 +2170,24 @@ async def update_trip_metadata(
         scalar_values["cover_image_url"] = payload.cover_image_url
     if "notes" in payload.model_fields_set:
         scalar_values["notes"] = payload.notes
+    if "budget_amount" in payload.model_fields_set:
+        scalar_values["budget_amount"] = payload.budget_amount
+    if payload.cost_currency is not None and payload.cost_currency != trip.cost_currency:
+        # Every row is denominated in this currency and there is no converter
+        # that could restate them, so the switch is only offered while the
+        # ledger is empty. Refusing beats silently relabelling real numbers.
+        booked = await session.scalar(
+            select(func.count())
+            .select_from(TripExpense)
+            .where(TripExpense.trip_plan_id == trip.id)
+        )
+        if booked:
+            raise AppError(
+                422,
+                "trip_ledger_not_empty",
+                "帳目已有紀錄，無法更改幣別。請先清空帳目再切換。",
+            )
+        scalar_values["cost_currency"] = payload.cost_currency
 
     if target is None and not scalar_values:
         # The requested dates are the ones the trip already has. Report the
