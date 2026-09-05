@@ -1,6 +1,6 @@
 """Give trip items saved before ``names_json`` existed their per-locale labels.
 
-Migration ``0039_localized_names`` added the column empty, so every stop that
+Migration ``0040_localized_names`` added the column empty, so every stop that
 was already in a plan keeps showing the single language it was saved in. The
 rows still reference the catalog (``data.hotspot_id``, ``data.merchant_id``,
 ``data.food_id``) and their titles were built from catalog text by the same

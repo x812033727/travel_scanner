@@ -167,6 +167,18 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         ("openai_api_key", "anthropic_api_key", "minimax_api_key"),
         "ai_planner_enabled",
     ),
+    "hotspot_guides": ProviderDefinition(
+        "景點介紹自動補齊",
+        "背景逐批為還沒有任何介紹的景點尋找影片與文章；實際速度由下面三個搜尋供應商各自的每日"
+        "額度決定，這裡只決定每輪處理幾個景點。",
+        (
+            "hotspot_guide_backfill_enabled",
+            "hotspot_guide_backfill_batch_size",
+            "hotspot_guide_backfill_locale",
+        ),
+        (),
+        "hotspot_guides_enabled",
+    ),
     "ai_guide_search": ProviderDefinition(
         "AI 景點介紹搜尋",
         "由 MiniMax、OpenAI 或 Claude 規劃與評選多語搜尋；網址只接受 Brave 與 YouTube。",

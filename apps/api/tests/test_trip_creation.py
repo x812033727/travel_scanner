@@ -1,6 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
+from app.destinations.catalog import SEARCHABLE_DESTINATIONS, match_destination
 from app.trips.router import SaveTripRequest, destination_timezone
 
 
@@ -33,6 +34,46 @@ def test_blank_trip_preferences_are_normalized_for_persistence() -> None:
     assert request.planning_mode == "ai_draft"
     assert request.notes == "不要一直換飯店"
     assert destination_timezone(request.destination_name or "") == "Asia/Seoul"
+
+
+@pytest.mark.parametrize(
+    ("destination", "code", "timezone"),
+    [
+        ("도쿄도", "NRT", "Asia/Tokyo"),
+        ("오사카시", "KIX", "Asia/Tokyo"),
+        ("冲绳", "OKA", "Asia/Tokyo"),
+        ("ソウル特別市", "ICN", "Asia/Seoul"),
+        ("부산광역시", "PUS", "Asia/Seoul"),
+        ("バンコク", "BKK", "Asia/Bangkok"),
+        ("치앙마이", "CNX", "Asia/Bangkok"),
+        ("プーケット", "HKT", "Asia/Bangkok"),
+        ("타이베이", "TPE", "Asia/Taipei"),
+        ("ホーチミン", "SGN", "Asia/Ho_Chi_Minh"),
+    ],
+)
+def test_localized_city_names_match_the_catalog(destination: str, code: str, timezone: str) -> None:
+    # Google Places returns city names in the UI locale, so a ko or ja user who
+    # picks 도쿄 or バンコク must land on the same catalog entry as 東京 or 曼谷.
+    matched = match_destination(destination)
+    assert matched is not None and matched.code == code
+    assert destination_timezone(destination) == timezone
+
+
+def test_non_ascii_aliases_never_point_at_two_destinations() -> None:
+    # match_destination is a substring test, so a localized alias contained in
+    # another destination's alias would silently hijack that destination.
+    for first in SEARCHABLE_DESTINATIONS:
+        for second in SEARCHABLE_DESTINATIONS:
+            if first is second:
+                continue
+            for alias in first.aliases:
+                if alias.isascii():
+                    continue
+                assert not any(alias.casefold() in other.casefold() for other in second.aliases), (
+                    first.code,
+                    alias,
+                    second.code,
+                )
 
 
 def test_destination_timezone_prefers_the_catalog_over_keyword_rules() -> None:
