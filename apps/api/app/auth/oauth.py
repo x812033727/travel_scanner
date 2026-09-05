@@ -22,7 +22,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import effective_registration_enabled, load_runtime_settings
 from app.auth.schemas import OAuthProvider, OAuthStartRequest, OAuthStartResponse
-from app.auth.service import find_user_by_email
+from app.auth.service import find_user_by_email, is_reserved_admin_email
 from app.config import Settings
 from app.i18n import normalize_locale
 from app.infra import get_redis
@@ -444,6 +444,14 @@ async def exchange_oauth(
             )
         if not await effective_registration_enabled(session):
             raise AppError(403, "registration_closed", "目前暫停開放新帳號註冊")
+        # Same rule as password registration: a reserved administrator address must be
+        # created through the CLI, never claimed by whoever controls it at a provider.
+        if is_reserved_admin_email(profile.email):
+            raise AppError(
+                403,
+                "admin_email_reserved",
+                "這個 Email 已保留給系統管理員，請由主機管理員以 CLI 建立帳號",
+            )
         user = User(
             email=profile.email,
             password_hash=None,

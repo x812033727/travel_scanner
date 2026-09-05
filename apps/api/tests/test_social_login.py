@@ -15,7 +15,7 @@ from app.auth.oauth import (
     start_oauth,
 )
 from app.auth.schemas import OAuthStartRequest
-from app.config import Settings
+from app.config import Settings, get_settings
 from app.models import User, UserAuthIdentity
 from app.problems import AppError
 
@@ -171,4 +171,65 @@ async def test_social_only_user_cannot_disconnect_last_identity() -> None:
     with pytest.raises(AppError) as raised:
         await revoke_identity(session, user, identity.id)
     assert raised.value.code == "oauth_last_method"
+    session.commit.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_reserved_admin_email_cannot_be_claimed_through_oauth(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Same rule as password registration: a reserved administrator address must never
+    be creatable by whoever controls it at a provider (API-01 covered only /register)."""
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    binding = "binding_abcdefghijklmnopqrstuvwxyz123456"
+    flow_id = "flow_id_abcdefghijklmnopqrstuvwxyz123456"
+    state = "state_abcdefghijklmnopqrstuvwxyz123456"
+    await redis.set(
+        f"oauth-flow:{flow_id}",
+        json.dumps(
+            {
+                "provider": "google",
+                "intent": "login",
+                "state": state,
+                "binding": hashlib.sha256(binding.encode()).hexdigest(),
+                "nonce": "nonce",
+                "verifier": "verifier",
+                "locale": "en",
+                "next": "/account",
+            }
+        ),
+    )
+
+    async def runtime_settings(_session: object) -> Settings:
+        return oauth_settings()
+
+    async def profile(*_args: object, **_kwargs: object) -> OAuthProfile:
+        return OAuthProfile("google-subject", "owner@example.com", True)
+
+    async def nobody(_session: object, _email: str) -> None:
+        return None
+
+    async def registration_open(_session: object) -> bool:
+        return True
+
+    monkeypatch.setattr(get_settings(), "admin_emails", "Owner@Example.com")
+    session = AsyncMock()
+    session.scalar.return_value = None
+    monkeypatch.setattr("app.auth.oauth.get_redis", lambda: redis)
+    monkeypatch.setattr("app.auth.oauth.load_runtime_settings", runtime_settings)
+    monkeypatch.setattr("app.auth.oauth.exchange_profile", profile)
+    monkeypatch.setattr("app.auth.oauth.find_user_by_email", nobody)
+    monkeypatch.setattr("app.auth.oauth.effective_registration_enabled", registration_open)
+
+    with pytest.raises(AppError) as raised:
+        await exchange_oauth(
+            session,
+            "google",
+            flow_id=flow_id,
+            state=state,
+            code="code",
+            browser_binding=binding,
+            current_user=None,
+        )
+    assert raised.value.code == "admin_email_reserved"
     session.commit.assert_not_awaited()

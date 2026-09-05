@@ -150,8 +150,18 @@ def _revocation_key(token_id: str) -> str:
 
 
 async def revoke_access_token(claims: AccessTokenClaims) -> None:
-    """Deny-list one token id until the moment it would have expired anyway."""
-    remaining = int((claims.expires_at - datetime.now(UTC)).total_seconds()) + 1
+    """Deny-list the sign-in's token id until no token of that sign-in can still be valid.
+
+    Renewal keeps one ``jti`` for the whole sign-in but keeps minting later expiries, so
+    the entry has to outlive the latest possible sibling, not just the copy presented at
+    logout. Every token of the sign-in is refused once past the absolute cap, so that
+    moment bounds them all; keying the TTL to the presented ``exp`` alone let a sibling
+    renewed after it outlive the deny entry and slide itself forward for the rest of the
+    cap, unreachable by any later logout because those mint a fresh ``jti``.
+    """
+    now = datetime.now(UTC)
+    cap = claims.session_started_at + timedelta(days=get_settings().session_absolute_max_days)
+    remaining = int((max(claims.expires_at, cap) - now).total_seconds()) + 1
     if remaining <= 0:
         return
     try:
