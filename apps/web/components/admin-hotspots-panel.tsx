@@ -124,6 +124,7 @@ type MapCandidate = {
 
 export function AdminHotspotsPanel() {
   const t = useTranslations("hotspots");
+  const tHotspotAdmin = useTranslations("hotspotAdmin");
   const [data, setData] = useState<Response | null>(null);
   const [status, setStatus] = useState("pending");
   const [city, setCity] = useState("");
@@ -525,7 +526,7 @@ export function AdminHotspotsPanel() {
         />
         {Object.entries(scores).map(([key, value]) => (
           <label key={key} className="text-xs font-semibold">
-            {key}
+            {tHotspotAdmin(`depthScores.${key}`)}
             <input
               type="number"
               min={0}

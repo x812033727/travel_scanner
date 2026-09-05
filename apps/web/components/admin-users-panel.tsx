@@ -10,6 +10,7 @@ import {
   WalletCards,
   X,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { FormEvent, useEffect, useState } from "react";
 import { api } from "@/lib/api";
 
@@ -92,6 +93,7 @@ function roleText(user: UserSummary) {
 
 export function AdminUsersPanel() {
   const [data, setData] = useState<UserList>();
+  const tAdmin = useTranslations("admin");
   const [query, setQuery] = useState("");
   const [submittedQuery, setSubmittedQuery] = useState("");
   const [page, setPage] = useState(1);
@@ -99,6 +101,10 @@ export function AdminUsersPanel() {
   const [loading, setLoading] = useState(true);
   const [detailLoading, setDetailLoading] = useState(false);
   const [busy, setBusy] = useState(false);
+  // Disabling an account or stripping admin rights is one tap in a table an
+  // owner works through on a phone; arm the button first so a stray thumb
+  // cannot do it by accident.
+  const [armedAction, setArmedAction] = useState<"disable" | "admin" | null>(null);
   const [error, setError] = useState<string>();
   const [notice, setNotice] = useState<string>();
   const [usageChange, setUsageChange] = useState("");
@@ -166,6 +172,12 @@ export function AdminUsersPanel() {
       setDetailLoading(false);
     }
   }
+
+  useEffect(() => {
+    if (!armedAction) return;
+    const timer = window.setTimeout(() => setArmedAction(null), 5_000);
+    return () => window.clearTimeout(timer);
+  }, [armedAction]);
 
   async function updateAccount(
     patch: { is_active?: boolean; is_admin?: boolean },
@@ -452,17 +464,22 @@ export function AdminUsersPanel() {
               <button
                 type="button"
                 disabled={busy || selected.is_self}
-                onClick={() =>
-                  updateAccount(
+                onClick={() => {
+                  if (selected.is_active && armedAction !== "disable") {
+                    setArmedAction("disable");
+                    return;
+                  }
+                  setArmedAction(null);
+                  void updateAccount(
                     { is_active: !selected.is_active },
                     selected.is_active
                       ? "會員帳號已停用。"
                       : "會員帳號已重新啟用。",
-                  )
-                }
-                className="mt-4 w-full rounded-xl border border-[var(--line)] px-3 py-2 text-sm font-semibold disabled:opacity-40"
+                  );
+                }}
+                className={`mt-4 w-full rounded-xl border px-3 py-2 text-sm font-semibold disabled:opacity-40 ${armedAction === "disable" ? "border-red-300 bg-red-50 text-red-800" : "border-[var(--line)]"}`}
               >
-                {selected.is_active ? "停用帳號" : "重新啟用"}
+                {armedAction === "disable" ? tAdmin("usersPanel.confirmDisable") : selected.is_active ? "停用帳號" : "重新啟用"}
               </button>
               {selected.is_self && (
                 <p className="mt-2 text-xs text-[var(--muted)]">
@@ -481,17 +498,22 @@ export function AdminUsersPanel() {
                   selected.is_self ||
                   selected.admin_source === "environment"
                 }
-                onClick={() =>
-                  updateAccount(
+                onClick={() => {
+                  if (selected.is_admin && armedAction !== "admin") {
+                    setArmedAction("admin");
+                    return;
+                  }
+                  setArmedAction(null);
+                  void updateAccount(
                     { is_admin: !selected.is_admin },
                     selected.is_admin
                       ? "管理員權限已移除。"
                       : "管理員權限已授予。",
-                  )
-                }
-                className="mt-4 w-full rounded-xl border border-[var(--line)] px-3 py-2 text-sm font-semibold disabled:opacity-40"
+                  );
+                }}
+                className={`mt-4 w-full rounded-xl border px-3 py-2 text-sm font-semibold disabled:opacity-40 ${armedAction === "admin" ? "border-red-300 bg-red-50 text-red-800" : "border-[var(--line)]"}`}
               >
-                {selected.is_admin ? "移除管理員" : "設為管理員"}
+                {armedAction === "admin" ? tAdmin("usersPanel.confirmRemoveAdmin") : selected.is_admin ? "移除管理員" : "設為管理員"}
               </button>
               {selected.admin_source === "environment" && (
                 <p className="mt-2 text-xs text-[var(--muted)]">
