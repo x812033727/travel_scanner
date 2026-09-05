@@ -36,8 +36,8 @@
 | 首頁的自由文字會送給 AI 解析 | **`POST /ai/parse-trip` 在 UI 打不到。** `search-experience.tsx:425-434` 只在 `structuredParsed` 為 null 時呼叫；而 `/search` 唯一的來源 `search-workbench.tsx:115-120` 永遠帶 `origin`、`destination`、`departure_date`，所以 `structuredParsed`（`:293-296`）永遠非 null。`694e0f8` 換成真模型的解析器，目前只有手打 `/search?q=…` 才會用到 | `search-experience.tsx:293-296, 425-434`；`search-workbench.tsx:113-121` |
 | 登入後會接著搜尋 | 登入後回到 `/search`，條件都在，但**要再按一次「確認條件並開始搜尋」**。`auth-form.tsx:36` 只做 `router.push(next)`，沒有人呼叫 `begin()` | `search-experience.tsx:918-945`；`e2e/full-stack.spec.ts:23-24` 明確按了第二次 |
 | `/trips/new` 的登入會回來 | **不會。** 閘門連到裸的 `/login`，沒有 `next`；登入後落在首頁 | `new-trip-auth-gate.tsx:35`（其他九個登入入口都用 `loginPath()`） |
-| 從搜尋存下來的旅程和 `/trips/new` 建的一樣 | **不一樣。** 搜尋路徑把最佳化方案原樣寫進 `data`，不跑 AI、不建系統卡（系統卡要到第一次 `GET` 才由 `hydrate_legacy_items` 補）；空白路徑跑 AI 草稿（免費）、有系統卡但**沒有任何報價** | `trips/router.py:1582-1647`（搜尋）、`:1461-1484`（AI 免費）、`:542-561`（延遲補卡） |
-| 搜到的機票可以放進旅程 | **不能。** 航班錨點只有手打一種：`apply_flight_anchor_details` 把 `offer_id` 清成 `None`、`flight_selection_source` 寫死 `manual`。住宿是唯一例外（住宿熱區 `select` 會保留 `offer_id` 與價格快照） | `trips/router.py:741-784`（`:751`、`:778`）；`stay_router.py:494-548` |
+| 從搜尋存下來的旅程和 `/trips/new` 建的一樣 | **不一樣，但差異比第一眼小。** 搜尋路徑把最佳化方案原樣寫進 `data`、不跑 AI；系統卡與帶 `offer_id` 的去回程錨點其實已由 `build_itinerary` 產生（`trips/itinerary.py:232-254, 551-573`），`serialize_trip` 在建立回應時就會補齊其餘系統卡。真正缺的是：`data` 沒有 `travelers`／`preferences`／`origin_airport` 這些空白旅程才有的鍵，錨點與主要飯店**沒有價格快照**，序列化也沒有「已報價／估算」的分列。空白路徑則跑 AI 草稿（免費）、有系統卡但**沒有任何報價** | `trips/router.py:1582-1647`（搜尋）、`:1461-1484`（AI 免費）、`:542-561`（`hydrate_legacy_items`） |
+| 搜到的機票可以放進**既有**旅程 | **不能。** 航班錨點只有手打一種：`apply_flight_anchor_details` 把 `offer_id` 清成 `None`、`flight_selection_source` 寫死 `manual`。住宿是唯一例外（住宿熱區 `select` 會保留 `offer_id` 與價格快照） | `trips/router.py:741-784`（`:751`、`:778`）；`stay_router.py:494-548` |
 | 可以從旅程發起搜尋 | **只有住宿可以。** `SearchCreate` 沒有 `trip_id`，`POST /searches` 從不讀旅程；`stay_search_query` 已經會從旅程推導住宿查詢，這個模式存在但沒有推廣到機票 | `search/schemas.py:105-120`；`stay_areas.py:419`；`stay_router.py:131-134` |
 | 旅程可以設價格通知 | 可以建，但**永遠是 `manual_only`**：`automatic_monitoring_supported` 對 `trip` 一律回 `False`，快照只讀 `trip.total_price`（空白旅程是 0）。提醒卡也**不連回旅程** | `alerts/router.py:97-113`；`alerts/monitoring.py:10-15`；`account-list.tsx:220-281` |
 | 上限會提前告知 | **20 筆旅程、20 筆提醒、12 個可移動景點都是撞到才知道。** `GET /trips/options` 沒有數量與上限，`GET /usage` 有 `limits` 沒有已用數，`OPTIMIZATION_MOVABLE_LIMIT` 在 `optimize/preview` 裡面才丟 422 | `trips/router.py:1664-1689, 1449-1453, 3566-3571`；`usage/router.py:127-135`；`usage/service.py:108` |
@@ -265,7 +265,7 @@
 
 | 方法 | 路徑 | 新／改 | 重點 | 扣次 | PR |
 |---|---|---|---|---|---|
-| POST | `/trips` | 改 | `source=search` 立即建系統卡、錨點與主要飯店帶 `offer_id`；共用 `data` 鍵；`origin_airport` | 無 | B |
+| POST | `/trips` | 改 | `source=search` 寫入共用 `data` 鍵、主要飯店與錨點帶價格快照；`origin_airport` | 無 | B |
 | PATCH | `/trips/{id}` | 新 | 名稱、日期、`origin_airport`、`status`、封面（= planning-flow-spec PR 1；含兩階段日期位移） | 無 | C |
 | GET | `/trips/options` | 改 | `limit`、`count`、`can_create`、`needs_dates` | — | E |
 | GET | `/usage` | 改 | `counts` | — | E |
@@ -299,10 +299,10 @@
 留到後面：`?day=` 深連結（動 `trip-editor.tsx`，等 #150）、提醒卡對機票／住宿的回連（要後端 `links`，PR F）。
 風險：`resume` 只在 `authState`、供應商狀態與扣次資訊三者都就緒時觸發一次，之後立刻 `router.replace` 清掉標記；重新整理或分享連結不會自己扣次。
 
-**PR B — 旅程是容器（後端為主）**
-範圍：`POST /trips` 搜尋路徑補齊；`apply_flight_anchor_details` offer 分支；序列化 `pricing.quoted/estimated`；旅程頁錨點卡顯示快照（等 #150）。
-驗證：`test_trips_*` 新增「從搜尋儲存 → 立即有系統卡（去回程航班、飯店、每日午晚餐）、兩個錨點帶 `offer_id`、主要飯店帶快照」；舊旅程（`data` 無共用鍵）經 `hydrate_legacy_items` 讀取不變。
-風險：`data=plan` 的鍵與空白旅程的鍵並存，`serialize_trip` 要能兩種都讀；只加鍵不改既有鍵。
+**PR B — 旅程是容器（後端為主）— 已在本分支實作**
+範圍：新模組 `apps/api/app/trips/pricing.py`（`offer_price_snapshot`、`lodging_from_offer`、`trip_pricing`）；`POST /trips` 搜尋路徑在 `data` 加上 `source`、`origin_airport`、`destination_code`、`travelers`、`preferences`、`search_criteria`，主要飯店用住宿熱區同一種結構寫入（含價格快照），去回程錨點帶 `price_snapshot`；空白旅程接受 `origin_airport`；序列化新增 `pricing`（`quoted_total`、`estimated_total`、逐項 `counted`，來回票同一個 `offer_id` 只計一次，外幣列出但不換算）；手打航班會移除快照；重新查價時錨點與主要飯店的快照跟著更新；`flight-anchor-card.tsx` 顯示「報價 NT$… · 來源 …」。
+驗證：`tests/test_trip_pricing.py`（快照欄位、來回票只計一次、外幣不換算、手打無快照）；整合測試 `test_search_trip_keeps_quotes_and_the_keys_a_blank_trip_has`（本機 Postgres／Redis 跑過）；`flight-anchor-card.test.tsx`。
+留到後面：`apply_flight_anchor_details` 的 offer 分支與 `from-offer` 端點（PR D），旅程頁 hero 的「已報價／估算」兩欄（等 #150）。
 
 **PR C — `PATCH /trips/{id}`**
 = planning-flow-spec PR 1，加 `origin_airport`。它的「兩階段日期位移」與 `uq_trip_plan_item_system_role` 地雷照規格處理。C 與 B 無依賴，可並行。
@@ -312,8 +312,10 @@
 驗證：新的 e2e 主旅程（見下）；`test_search_from_trip`（條件推導、他人旅程 404、沒有 `origin_airport` 時 422 並帶可用出發地）。
 風險：`destination_name` 不在目錄（搜尋來的旅程存的是 `destination_city`，可能是機場代碼），推導失敗要回 422 `trip_destination_unsupported`，UI 讓使用者選機場，不猜。
 
-**PR E — 扣次與上限看得見（前後端，小）**
-範圍：§4.2 整表。可與 A 並行；旅程頁的 `movable_count` 顯示等 #150。
+**PR E — 扣次與上限看得見（前後端，小）— 已在本分支實作**
+範圍：`GET /usage` 回傳 `counts`（旅程數、追蹤中的提醒數，與建立端點同一套判斷）；`GET /trips/options` 回傳 `count`、`limit`、`can_create`、`undated_count`；旅程序列化新增 `optimization`（每日 `movable_count` 與 `movable_limit`，與最佳化預覽共用同一個 `movable_slots`）；`restaurant-searches` 真的重放 `Idempotency-Key`（Redis 十分鐘）；`/itinerary/generate` 標記 deprecated；前端 `usage-insufficient-notice.tsx` 取代導到 `/pricing`（搜尋頁與票價實驗室），旅程與通知清單顯示「已建立 N／20」並在達上限時說明。
+驗證：`test_restaurant_search_replay.py`、`test_trip_optimization_preview.py` 新增 `optimization_summary` 案例、整合測試的 `/usage` 與 `/trips/options` 斷言；前端 `usage-insufficient-notice.test.tsx`、`account-list.test.tsx`、`airline-fare-lab.test.tsx`。
+留到後面：旅程頁最佳化按鈕上的「鎖定 N 個再最佳化」（等 #150）；`travel-card-actions` 對 `undated_count` 的提示（要先有 PATCH 才能設定日期，PR C 之後）。
 
 **PR F — 出發前閉環（等 #150）**
 範圍：提醒 `links` 與文案、錨點建提醒、旅程型提醒改義、航班動態預填與寫回、LINE 兩個訊息、新增一餐。依賴 B。

@@ -94,8 +94,11 @@ function LoadError({
   );
 }
 
+type Capacity = { count: number; limit: number };
+
 export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
   const common = useTranslations("common");
+  const t = useTranslations(kind);
   const [items, setItems] = useState<Array<TripItem | AlertItem>>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<LoadFailure>();
@@ -103,12 +106,33 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
   const [rowError, setRowError] = useState<Record<string, string>>({});
   const [editing, setEditing] = useState<string>();
   const [draftPrice, setDraftPrice] = useState("");
+  const [capacity, setCapacity] = useState<Capacity | null>(null);
+
+  // The 20-trip and 20-alert caps used to surface only as a 403 on create. The
+  // counts come from the server, which applies the same predicates the caps do.
+  const loadCapacity = useCallback(async () => {
+    try {
+      const summary = await api<{
+        limits?: Record<string, number>;
+        counts?: Record<string, number>;
+      }>("/usage");
+      const key = kind === "trips" ? "saved_trips" : "price_alerts";
+      const limit = summary.limits?.[key];
+      const count = summary.counts?.[key];
+      setCapacity(
+        typeof limit === "number" && typeof count === "number" ? { count, limit } : null,
+      );
+    } catch {
+      setCapacity(null);
+    }
+  }, [kind]);
 
   const load = useCallback(async () => {
     setLoading(true);
     setError(undefined);
     try {
       setItems(await api<Array<TripItem | AlertItem>>(`/${kind}`));
+      void loadCapacity();
     } catch (reason) {
       setError({
         message: (reason as Error).message,
@@ -120,7 +144,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
     } finally {
       setLoading(false);
     }
-  }, [kind]);
+  }, [kind, loadCapacity]);
   useEffect(() => {
     void load();
   }, [load]);
@@ -131,6 +155,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
       await api(`/${kind}/${id}`, { method: "DELETE" });
       setItems((current) => current.filter((item) => item.id !== id));
       setPendingDelete(undefined);
+      void loadCapacity();
     } catch (reason) {
       setRowError((current) => ({
         ...current,
@@ -153,6 +178,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
         current.map((row) => (row.id === item.id ? updated : row)),
       );
       setEditing(undefined);
+      if (patch.active !== undefined) void loadCapacity();
     } catch (reason) {
       setRowError((current) => ({
         ...current,
@@ -202,6 +228,14 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
 
   return (
     <div className="space-y-3">
+      {capacity && (
+        <p
+          className={`text-sm ${capacity.count >= capacity.limit ? "font-semibold text-amber-800" : "text-[var(--muted)]"}`}
+        >
+          {t("capacity", { count: capacity.count, limit: capacity.limit })}
+          {capacity.count >= capacity.limit && ` ${t("capacityFull")}`}
+        </p>
+      )}
       {items.map((row) => {
         const isAlert = kind === "alerts";
         const alert = row as AlertItem;

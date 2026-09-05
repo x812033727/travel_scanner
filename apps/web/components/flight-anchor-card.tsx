@@ -1,5 +1,7 @@
-import { ArrowRight, Clock3, Pencil, Plane, RouteOff } from "lucide-react";
-import type { TripItem } from "@/lib/trip-types";
+import { ArrowRight, Clock3, Pencil, Plane, RouteOff, Tag } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { formatCurrency } from "@/lib/locale-format";
+import { priceSnapshot, type TripItem } from "@/lib/trip-types";
 
 export type FlightAnchorInfo = {
   airline?: string;
@@ -34,6 +36,7 @@ export function FlightAnchorCard({
   busy?: boolean;
   onEdit?: () => void;
 }) {
+  const t = useTranslations("trips");
   const info = flightAnchorInfo(item);
   const outbound = item.system_role === "outbound_flight";
   const label = outbound ? "去程航班" : "回程航班";
@@ -41,6 +44,9 @@ export function FlightAnchorCard({
   const configured = Boolean(configuredInfo);
   const departureTimezone = info?.departure_timezone || "時區待確認";
   const arrivalTimezone = info?.arrival_timezone || "時區待確認";
+  // The quote the anchor was created from. A hand-typed flight never carries one,
+  // so the line only appears on anchors that came out of a real search.
+  const quote = configuredInfo ? priceSnapshot(item) : null;
 
   return <article className="planner-flight-card">
     <div className="flex items-start gap-3">
@@ -67,6 +73,11 @@ export function FlightAnchorCard({
             </div>
           </div>
           {typeof configuredInfo.stops === "number" && <p className="mt-2 text-xs text-slate-600">{configuredInfo.stops === 0 ? "直飛" : `${configuredInfo.stops} 次轉機`}</p>}
+          {quote && <p className="mt-2 flex flex-wrap items-center gap-1.5 text-xs font-semibold text-sky-900">
+            <Tag size={13} aria-hidden />
+            {t("quotedPrice", { amount: formatCurrency(Number(quote.total_price), quote.currency) })}
+            {quote.provider && <span className="font-normal text-slate-600">· {t("quotedBy", { provider: quote.provider })}</span>}
+          </p>}
         </> : <>
           <h3 className="mt-2 font-bold text-slate-900">{label}尚未設定</h3>
           <p className="mt-1 text-sm leading-6 text-slate-600">補上航空公司、班號、機場與當地起降時間，同行者就能在行程首尾清楚確認。</p>

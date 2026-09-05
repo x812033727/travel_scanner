@@ -15,12 +15,13 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { BackToBackFareSearch } from "@/components/back-to-back-fare-search";
 import { LiveBackToBackSearch } from "@/components/live-back-to-back-search";
 import { useSavedItems } from "@/components/saved-items-provider";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
+import { UsageInsufficientNotice } from "@/components/usage-insufficient-notice";
 import { api, isUsageInsufficient, twd } from "@/lib/api";
 import { loginPath, safeExternalHref } from "@/lib/navigation";
 
@@ -111,7 +112,7 @@ function sourceFor(code: AirlineCode, sources: CrawlerSource[]) {
 
 export function AirlineFareLab() {
   const charge = useOperationCharge("public_airline_fare_search");
-  const router = useRouter();
+  const [insufficient, setInsufficient] = useState(false);
   // All three modes charge a use; a signed-out visitor gets one sign-in card instead of
   // three live charge buttons that can only fail with 401.
   const session = useSavedItems();
@@ -158,6 +159,7 @@ export function AirlineFareLab() {
       return;
     }
     setBusy(true);
+    setInsufficient(false);
     try {
       const response = await api<FareSearchResponse>("/crawlers/airlines/fares", {
         method: "POST",
@@ -176,7 +178,7 @@ export function AirlineFareLab() {
       setResult(response);
     } catch (reason) {
       if (isUsageInsufficient(reason)) {
-        router.push("/pricing");
+        setInsufficient(true);
         return;
       }
       setError((reason as Error).message);
@@ -287,6 +289,7 @@ export function AirlineFareLab() {
             {result && <span className="rounded-full bg-[#edf5f1] px-3 py-1.5 text-sm font-semibold text-[var(--teal-dark)]">{result.quotes.length} 筆近期票價</span>}
           </div>
 
+          {insufficient && <div className="mt-5"><UsageInsufficientNotice chargeLabel={charge.label} /></div>}
           {error && <div role="alert" className="mt-5 flex items-start gap-3 rounded-2xl bg-red-50 p-4 text-sm leading-6 text-red-800"><AlertCircle className="mt-0.5 shrink-0" size={19} /><div><strong className="block">目前無法完成查詢</strong>{error}{needsLogin && <Link href={loginPath(pathname)} className="ml-1 font-semibold underline">前往登入</Link>}</div></div>}
 
           {!result && !busy && !error && <div className="grid min-h-[25rem] place-items-center text-center"><div className="max-w-sm"><span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-[#edf5f1] text-[var(--teal)]"><CircleDot size={28} /></span><h3 className="mt-5 text-xl font-bold">先設定想看的航線</h3><p className="mt-2 leading-7 text-[var(--muted)]">結果會保留航空公司、日期、公開價格、來源更新時間與原始頁面，不補造班號或即時庫存。</p></div></div>}

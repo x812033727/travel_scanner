@@ -101,19 +101,23 @@ describe("airline fare lab", () => {
     expect((await screen.findByRole("alert")).textContent).toContain("回程日期不能早於出發日期");
   });
 
-  it("routes to usage packages when no uses remain", async () => {
+  it("explains the balance in place when no uses remain instead of leaving the page", async () => {
     const fetchMock = vi.fn()
       .mockResolvedValueOnce(ok(status))
       .mockResolvedValueOnce({
         ok: false,
         status: 402,
         json: async () => ({ code: "insufficient_uses", detail: "可用次數不足" }),
-      });
+      })
+      .mockResolvedValueOnce(ok({ remaining_uses: 0, reserved_uses: 0, available_uses: 0, limits: {}, counts: {} }));
     vi.stubGlobal("fetch", fetchMock);
     render(<AirlineFareLab />);
     await screen.findByText("政策停用");
     fireEvent.click(screen.getByRole("button", { name: /^搜尋公開票價/ }));
-    await waitFor(() => expect(routerPush).toHaveBeenCalledWith("/pricing"));
+    expect(await screen.findByText("可用次數不足")).toBeTruthy();
+    expect(await screen.findByText(/目前可用 0 次/)).toBeTruthy();
+    expect(routerPush).not.toHaveBeenCalled();
+    expect(screen.getByRole("button", { name: /^搜尋公開票價/ })).toBeTruthy();
   });
 
   it("searches and renders a complete back-to-back comparison", async () => {

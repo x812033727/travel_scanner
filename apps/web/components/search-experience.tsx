@@ -41,6 +41,7 @@ import {
 import { FlightOfferCard } from "@/components/flight-offer-card";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
+import { UsageInsufficientNotice } from "@/components/usage-insufficient-notice";
 import {
   FlightDateOptions,
   type FlightDateOption,
@@ -396,6 +397,7 @@ export function SearchExperience() {
   >("recommended");
   const started = useRef(false);
   const resumed = useRef(false);
+  const [insufficient, setInsufficient] = useState(false);
   // One key per plan so a retried save replays the trip instead of creating a twin
   // that also consumes a slot of the 20-trip cap.
   const saveKeys = useRef(new Map<string, string>());
@@ -519,6 +521,7 @@ export function SearchExperience() {
     if (!parsed || providerStatus?.status !== "ready") return;
     setBusy(true);
     setError(undefined);
+    setInsufficient(false);
     setProgress(2);
     try {
       const accepted = await api<{ search_id: string; usage: UsageStatus }>(
@@ -647,7 +650,10 @@ export function SearchExperience() {
         return;
       }
       if (isUsageInsufficient(reason)) {
-        router.push("/pricing");
+        // /pricing cannot sell anything yet; explain the balance here instead.
+        setInsufficient(true);
+        setProgress(0);
+        setBusy(false);
         return;
       }
       setError((reason as Error).message);
@@ -993,6 +999,11 @@ export function SearchExperience() {
                 <AirbnbSearchPanel criteria={airbnbCriteria} compact />
               )}
             </div>
+            {insufficient && (
+              <div className="mt-4">
+                <UsageInsufficientNotice chargeLabel={charge.label} />
+              </div>
+            )}
             {authState === "error" && (
               <p role="alert" className="mt-2 text-sm text-red-700">
                 登入服務暫時無法確認，請稍後再試。
