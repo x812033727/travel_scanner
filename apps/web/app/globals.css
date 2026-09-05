@@ -89,6 +89,7 @@
   box-sizing: border-box;
 }
 html {
+  scroll-padding-top: 5.5rem;
   background: var(--paper);
 }
 body {
@@ -397,12 +398,12 @@ body {
 }
 .destination-city-chip {
   display: inline-flex;
-  min-height: 2rem;
+  min-height: 2.75rem;
   align-items: center;
   border-radius: 999px;
   background: var(--paper);
-  padding: 0.3rem 0.65rem;
-  font-size: 0.72rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8rem;
   transition:
     background-color 0.18s,
     color 0.18s,
@@ -449,9 +450,10 @@ body {
   backdrop-filter: blur(22px) saturate(1.35);
 }
 /* This file sits outside Tailwind's cascade layers, so the component's layered
-   md:hidden utility can never win over the display: grid above; mirror the md
-   breakpoint here to keep the bar mobile-only. */
-@media (min-width: 48rem) {
+   lg:hidden utility can never win over the display: grid above; mirror the lg
+   breakpoint here. Tablets share the phone shell now that the header links
+   only appear from lg up. */
+@media (min-width: 64rem) {
   .app-bottom-nav {
     display: none;
   }

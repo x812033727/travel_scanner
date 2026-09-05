@@ -110,7 +110,7 @@ export default async function Home() {
             </div>
             <a
               href="#trip-search"
-              className="rounded-full border border-[var(--teal)] px-4 py-2 text-sm font-semibold text-[var(--teal)]"
+              className="inline-flex min-h-11 items-center rounded-full border border-[var(--teal)] px-4 text-sm font-semibold text-[var(--teal)]"
             >
               {t("backToSearch")}
             </a>
