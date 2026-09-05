@@ -671,6 +671,9 @@ class FoodMerchant(Timestamped, Base):
     country_code: Mapped[str] = mapped_column(String(2), index=True)
     name: Mapped[str] = mapped_column(String(255), index=True)
     local_name: Mapped[str] = mapped_column(String(255))
+    # One label per site locale plus the original script (app.localized_names);
+    # ``name`` stays the canonical fallback and ``local_name`` the original text.
+    names_json: Mapped[dict[str, str]] = mapped_column(JSON, default=dict)
     address: Mapped[str | None] = mapped_column(Text, nullable=True)
     latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
     longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
@@ -1243,6 +1246,11 @@ class TripPlanItem(Base):
     position: Mapped[int] = mapped_column(Integer, default=0)
     title: Mapped[str | None] = mapped_column(String(255), nullable=True)
     location_name: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    # {"title": {...}, "location_name": {...}}: five site locales plus the
+    # original script for stops copied from the attraction and food catalogs,
+    # so the plan re-labels itself when the traveller switches language.
+    # Empty for free-text rows; a manual rename drops the map for that field.
+    names_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     start_time: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     end_time: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)

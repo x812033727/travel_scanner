@@ -9,7 +9,9 @@ from uuid import UUID
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.destinations.catalog import destination_for_id
+from app.foods.service import load_food_names, merchant_names
 from app.hotspots.maps import build_map_links
+from app.localized_names import item_names, join_localized_names
 from app.models import FoodMerchant, TravelFood
 from app.problems import AppError
 from app.trips.router import (
@@ -34,7 +36,9 @@ async def apply_merchant_meal_selection(
     """Point a trip meal card at ``merchant`` (optionally naming the dish) and re-plan the day.
 
     The selection is recorded as a user choice so AI re-planning keeps it, the same
-    way restaurant picks are protected.
+    way restaurant picks are protected. The card stores the dish and merchant in
+    every site locale plus their original script, so the label follows the
+    traveller's language afterwards.
     """
 
     trip = await owned_trip(session, user_id, trip_id)
@@ -63,8 +67,16 @@ async def apply_merchant_meal_selection(
         naver_map_url=merchant.naver_map_url,
         map_match_status=merchant.map_match_status,
     )
+    merchant_labels = merchant_names(merchant)
+    dish_labels = (await load_food_names(session, [food]))[food.id] if food else None
     meal.title = f"{food.local_name} · {merchant.name}" if food else merchant.name
     meal.location_name = merchant.address or merchant.name
+    meal.names_json = item_names(
+        title=join_localized_names(dish_labels, merchant_labels) if food else merchant_labels,
+        # An address is written once, in the local script; only a bare merchant
+        # name follows the locale.
+        location_name=None if merchant.address else merchant_labels,
+    )
     meal.provider_place_id = merchant.google_place_id
     meal.latitude = merchant.latitude
     meal.longitude = merchant.longitude

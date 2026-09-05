@@ -503,9 +503,9 @@ def test_apply_charges_the_operation_the_envelope_names_and_falls_back_safely() 
 
 
 def test_refine_seed_migration_chains_from_the_previous_head() -> None:
-    module = _load_migration("0040_ai_itinerary_refine_cost")
-    assert module.revision == "0040_ai_itinerary_refine"
-    assert module.down_revision == "0039_repair_dead_food_sources"
+    module = _load_migration("0041_ai_itinerary_refine_cost")
+    assert module.revision == "0041_ai_itinerary_refine"
+    assert module.down_revision == "0040_localized_names"
     assert module.OPERATION == REFINE_OPERATION
     source = Path(module.__file__ or "").read_text(encoding="utf-8")
     # A plain seed row on a String(64) primary key; no CHECK constraint to alter.

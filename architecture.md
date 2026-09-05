@@ -64,6 +64,11 @@ and stores the result in a short-lived Redis cache. Weather never becomes
 durable trip state, and dates beyond the provider forecast window are reported
 as unavailable rather than estimated.
 
+Attractions, dishes and merchants are stored with a label per site locale plus
+their original-script name (`app/localized_names.py`). A stop copied into a
+trip keeps that map, and trip responses resolve titles for the request locale,
+so switching language re-labels a saved plan without touching the catalog.
+
 Initial planning is free and persisted with the trip in one transaction. AI
 regeneration uses the usage reservation ledger and optimistic trip version.
 Only unlocked `generated_by=ai_planner` rows are replaceable; manual, provider,

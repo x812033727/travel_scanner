@@ -18,6 +18,7 @@ from app.ai.structured_output import (
     responses_output_text,
 )
 from app.config import Settings
+from app.localized_names import item_names, join_localized_names
 from app.search.schemas import SearchPreferences, Travelers, TripPace
 from app.trips.itinerary import ItineraryDay, ItineraryItem
 
@@ -34,6 +35,11 @@ class AIPlannerCandidate(BaseModel):
     kind: Literal["hotspot", "merchant"]
     name: str = Field(min_length=1, max_length=160)
     local_name: str | None = Field(default=None, max_length=160)
+    # Five site locales plus the original script for the place (and, for a
+    # merchant, its signature dish). Copied onto the saved stop, never sent to
+    # the model: the prompt keeps the single ``name`` it already reasons about.
+    names: dict[str, str] = Field(default_factory=dict)
+    dish_names: dict[str, str] = Field(default_factory=dict)
     category: str = Field(min_length=1, max_length=40)
     latitude: float = Field(ge=-90, le=90)
     longitude: float = Field(ge=-180, le=180)
@@ -47,6 +53,10 @@ class AIPlannerCandidate(BaseModel):
     access_minutes: int = Field(default=0, ge=0, le=180)
     is_cross_city: bool = False
     rank: int = Field(default=999, ge=1)
+
+
+# Per-locale labels are storage for the saved stop, not planning input.
+PROMPT_EXCLUDED_CANDIDATE_FIELDS: frozenset[str] = frozenset({"names", "dish_names"})
 
 
 class AIItineraryRequest(BaseModel):
@@ -196,7 +206,10 @@ def _request_payload(request: AIItineraryRequest) -> dict[str, Any]:
         "route_preference": request.route_preference,
         "notes": request.notes,
         "preserved_items": request.preserved_items,
-        "candidates": [candidate.model_dump(mode="json") for candidate in request.candidates],
+        "candidates": [
+            candidate.model_dump(mode="json", exclude=set(PROMPT_EXCLUDED_CANDIDATE_FIELDS))
+            for candidate in request.candidates
+        ],
         "availability": {
             "first_day_from": request.first_day_available_from,
             "last_day_until": request.last_day_available_until,
@@ -816,6 +829,14 @@ def draft_to_itinerary(
                 if system_role and candidate.local_name and candidate.local_name != candidate.name
                 else candidate.name
             )
+            names = item_names(
+                title=(
+                    join_localized_names(candidate.dish_names, candidate.names)
+                    if system_role and candidate.dish_names
+                    else candidate.names
+                ),
+                location_name=candidate.names,
+            )
             duration_minutes = (
                 60
                 if system_role == "lunch"
@@ -834,6 +855,7 @@ def draft_to_itinerary(
                     position=position,
                     title=title,
                     location_name=candidate.name,
+                    names=names,
                     start_time=starts,
                     end_time=starts + timedelta(minutes=duration_minutes),
                     latitude=candidate.latitude,

@@ -45,6 +45,46 @@ describe("system itinerary card", () => {
     expect(skip).toHaveBeenCalledOnce();
   });
 
+  it("shows the original-script name under a catalog meal", () => {
+    render(
+      <SystemItineraryCard
+        item={{
+          ...lunch,
+          title: "拉麵 · 一蘭 澀谷店",
+          names: {
+            title: {
+              "zh-TW": "拉麵 · 一蘭 澀谷店",
+              en: "Ramen · Ichiran Shibuya",
+              original: "ラーメン · 一蘭 渋谷店",
+              original_locale: "ja",
+            },
+          },
+        }}
+        locale="zh-TW"
+        timezone="Asia/Tokyo"
+        busy={false}
+        onEdit={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByText("拉麵 · 一蘭 澀谷店")).toBeTruthy();
+    expect(screen.getByText("ラーメン · 一蘭 渋谷店").getAttribute("lang")).toBe("ja");
+  });
+
+  it("hides the original line when it is the label already on show", () => {
+    render(
+      <SystemItineraryCard
+        item={{ ...lunch, title: "浅草寺", names: { title: { ja: "浅草寺", original: "浅草寺" } } }}
+        locale="ja"
+        timezone="Asia/Tokyo"
+        busy={false}
+        onEdit={vi.fn()}
+      />,
+    );
+
+    expect(screen.getAllByText("浅草寺")).toHaveLength(1);
+  });
+
   it("keeps skipped meal details visible in a muted card with restore as the only action", () => {
     const restore = vi.fn();
     render(

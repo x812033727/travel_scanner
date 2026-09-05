@@ -259,6 +259,15 @@ uv sync
 uv run alembic upgrade head
 ```
 
+Migration `0039_localized_names` adds the per-locale label columns empty. Run the backfill
+once afterwards so stops that were already planned re-label themselves when the traveller
+switches language (rows the traveller renamed are left alone):
+
+```bash
+uv run python -m app.cli backfill-trip-item-names --dry-run
+uv run python -m app.cli backfill-trip-item-names
+```
+
 ## Quality checks
 
 ```bash
@@ -419,6 +428,21 @@ The planner also supports structured Places selections, per-day ordering,
 fixed appointments, duration and notes, detailed transit steps, and read-only
 shared views.
 
+Attractions and food copied into a plan keep their name in all five site
+locales plus the original script (`trip_plan_items.names_json`, one map for
+`title` and one for `location_name`). Every catalog path writes it: hotspot and
+merchant trip selections, the AI planner's candidates, the deterministic search
+builder and the AI meal placeholders. Trip responses resolve `title` and
+`location_name` for the `X-Travel-Locale` of the request (the header the BFF
+derives from the `travel_locale` cookie) and return the full map as `names`, so
+switching language re-labels a saved plan and the UI can show the original text
+under the title. Saving the itinerary with the label the client was shown
+keeps the map; a real rename drops it for that field only, and Google Places
+resolution drops the `location_name` map because the provider label replaces
+the catalog one. Free-text stops never carry a map. Stops saved before the
+column existed get theirs from `python -m app.cli backfill-trip-item-names`
+(see [Database migration](#database-migration)).
+
 Saved trips automatically enqueue a `trip-routes` RQ job after AI place
 resolution. Routes are calculated in itinerary order, one day at a time, so
 each next start is based on the previous stop's end, the provider duration, and
@@ -553,6 +577,18 @@ values remain visibly marked as estimates rather than live popularity.
 The collector is opt-in in production: it sits behind the `hotspots` compose profile, so start it
 with `docker compose -f docker-compose.prod.yml --profile hotspots up -d`. See
 `docs/hotspot-intelligence.md`.
+
+Every attraction, dish and merchant is stored with a label per site locale (`en`, `ja`, `ko`,
+`zh-TW`, `zh-CN`) plus the text in the country's own script. Hotspots keep them in
+`hotspot_localizations` with the original in `metadata_json.local_name`; dishes in
+`food_localizations` with `local_name`; merchants derive English from `name`, the original from
+`local_name` (Japanese merchants also show that kanji name to Chinese readers by default), and
+administrators may override any locale in `food_merchants.names_json`. The shared rules live in
+`app/localized_names.py`: a locale that is the original language reads the original, and any
+other gap falls back through a fixed chain so a label always exists. Public responses return the
+resolved `name` for the request locale and the full map as `names`. `python -m app.cli
+fill-hotspot-labels` backfills the hotspot bootstrap files from Wikidata where network access
+allows; see `docs/hotspot-intelligence.md`.
 
 The canonical `/api/v1/destinations` catalog separates searchable destinations from cross-city
 extensions. The API also exposes `/api/v1/hotspots/rankings`, `/api/v1/hotspots/facets`,

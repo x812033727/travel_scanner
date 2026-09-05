@@ -349,6 +349,7 @@ describe("AdminFoodMerchantsPanel", () => {
         expect(body.category_slugs).toEqual(["bbq-grill"]);
         expect(body.food_ids).toEqual(["food-1"]);
         expect(body.sources[0].source_url).toBe("https://tourism.example/hong-kong/dining");
+        expect(body.names).toEqual({ "zh-TW": "", "zh-CN": "", en: "", ja: "テストショップ", ko: "" });
         return new Response(JSON.stringify({ ...merchant, id: "new-id", slug: body.slug }), { status: 201 });
       }
       return new Response(JSON.stringify({ items: [merchant], total: 1, page: 1, pages: 1 }));
@@ -369,6 +370,7 @@ describe("AdminFoodMerchantsPanel", () => {
       target: { value: "Test Shop" },
     });
     fireEvent.change(within(dialog).getByLabelText("當地店名"), { target: { value: "測試店" } });
+    fireEvent.change(within(dialog).getByLabelText("ja 名稱"), { target: { value: "テストショップ" } });
     const areaSelect = within(dialog).getByLabelText("區域");
     await waitFor(() => expect(areaSelect.querySelectorAll("option").length).toBe(2));
     fireEvent.change(areaSelect, { target: { value: "hong-kong-central-sheung-wan" } });

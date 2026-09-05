@@ -27,7 +27,14 @@ from app.db import get_session
 from app.destinations.catalog import destination_for_code, match_destination
 from app.foods.service import load_planner_foods
 from app.hotspots.service import load_planner_hotspots
+from app.i18n import active_locale
 from app.infra import enforce_named_rate_limit, get_redis
+from app.localized_names import (
+    ITEM_LOCATION_KEY,
+    ITEM_TITLE_KEY,
+    item_names,
+    resolve_item_field,
+)
 from app.models import (
     SearchRequest,
     TripPlan,
@@ -84,6 +91,7 @@ from app.trips.routing import (
     trip_region_code,
 )
 from app.trips.schedule import (
+    MEAL_PLACEHOLDER_LABELS,
     active_route_rows,
     apply_schedule_defaults,
     canonicalize_positions,
@@ -506,6 +514,8 @@ def item_record(
         position=item.position,
         title=item.title,
         location_name=item.location_name,
+        # Only planner output carries per-locale labels; client rows are free text.
+        names_json=dict(getattr(item, "names", None) or {}),
         start_time=item.start_time,
         end_time=item.end_time,
         latitude=Decimal(str(item.latitude)) if item.latitude is not None else None,
@@ -523,13 +533,40 @@ def item_record(
     )
 
 
-def apply_item_request(record: TripPlanItem, item: ItineraryItemRequest) -> None:
+def apply_item_request(
+    record: TripPlanItem, item: ItineraryItemRequest, *, locale: str | None = None
+) -> None:
+    # The client echoes the label it was shown (the stored text or its
+    # translation for the request locale); the stored text then stays as it
+    # is, so a catalog stop keeps one canonical title however often it is
+    # saved from other languages. Anything else is a rename by the traveller,
+    # and the catalog's per-locale labels no longer describe the row.
+    shown_in = locale or active_locale()
+    names = dict(record.names_json or {})
+    title: str | None = item.title
+    location_name = item.location_name
+    for field, incoming in (
+        (ITEM_TITLE_KEY, item.title),
+        (ITEM_LOCATION_KEY, item.location_name),
+    ):
+        if field not in names:
+            continue
+        stored = cast(str | None, getattr(record, field))
+        localized = resolve_item_field(names, field, shown_in, fallback=stored)
+        if (incoming or "") in {stored or "", localized or ""}:
+            if field == ITEM_TITLE_KEY:
+                title = stored
+            else:
+                location_name = stored
+        else:
+            names.pop(field)
+    record.names_json = names
     record.item_type = item.item_type
     record.offer_id = item.offer_id
     record.day_date = item.day_date
     record.position = item.position
-    record.title = item.title
-    record.location_name = item.location_name
+    record.title = title
+    record.location_name = location_name
     record.start_time = item.start_time
     record.end_time = item.end_time
     record.latitude = Decimal(str(item.latitude)) if item.latitude is not None else None
@@ -546,15 +583,34 @@ def apply_item_request(record: TripPlanItem, item: ItineraryItemRequest) -> None
     record.is_skipped = item.is_skipped
 
 
-def serialize_item(item: TripPlanItem) -> dict[str, Any]:
+def serialize_item(
+    item: TripPlanItem, *, locale: str | None = None, localized: bool = True
+) -> dict[str, Any]:
+    """Serialize one row, labelling catalog-backed stops in the request locale.
+
+    ``names`` always carries every stored label (five site locales plus the
+    original script) so a client can show the original text next to the title.
+    ``localized=False`` returns the stored text, for server-side round trips.
+    """
+
+    names = item.names_json or {}
+    title = item.title
+    location_name = item.location_name
+    if localized:
+        shown_in = locale or active_locale()
+        title = resolve_item_field(names, ITEM_TITLE_KEY, shown_in, fallback=item.title)
+        location_name = resolve_item_field(
+            names, ITEM_LOCATION_KEY, shown_in, fallback=item.location_name
+        )
     return {
         "id": str(item.id),
         "item_type": item.item_type,
         "offer_id": str(item.offer_id) if item.offer_id else None,
         "day_date": item.day_date,
         "position": item.position,
-        "title": item.title or item.item_type,
-        "location_name": item.location_name,
+        "title": title or item.item_type,
+        "location_name": location_name,
+        "names": names,
         "start_time": item.start_time,
         "end_time": item.end_time,
         "latitude": float(item.latitude) if item.latitude is not None else None,
@@ -971,6 +1027,7 @@ async def _load_ai_planner_candidates(
             key=f"hotspot:{hotspot.hotspot_id}",
             kind="hotspot",
             name=hotspot.name,
+            names=hotspot.names,
             category=hotspot.category,
             latitude=hotspot.latitude,
             longitude=hotspot.longitude,
@@ -1006,6 +1063,8 @@ async def _load_ai_planner_candidates(
                 kind="merchant",
                 name=food.merchant_name,
                 local_name=food.local_name or food.name,
+                names=food.merchant_names,
+                dish_names=food.names,
                 category="food",
                 latitude=food.latitude,
                 longitude=food.longitude,
@@ -1073,6 +1132,8 @@ async def _enrich_ai_places(
             return False
         provider = str(place.get("provider") or "google_places")
         item.location_name = str(place.get("name") or place.get("address") or item.location_name)
+        # The provider label replaces the catalog one, in the provider's language.
+        item.names = {key: value for key, value in item.names.items() if key != ITEM_LOCATION_KEY}
         item.latitude = float(latitude)
         item.longitude = float(longitude)
         item.provider_place_id = str(place.get("place_id") or "") or None
@@ -1232,6 +1293,9 @@ async def _resolve_trip_locations(
             continue
         provider = str(place.get("provider") or "google_places")
         item.location_name = str(place.get("name") or place.get("address") or label)
+        item.names_json = {
+            key: value for key, value in (item.names_json or {}).items() if key != ITEM_LOCATION_KEY
+        }
         item.latitude = Decimal(str(place_latitude))
         item.longitude = Decimal(str(place_longitude))
         item.provider_place_id = str(place.get("place_id") or "") or None
@@ -1973,7 +2037,7 @@ async def update_itinerary(
     ]
     incoming_ids = {item.id for item in incoming_items if item.id is not None}
     incoming_items.extend(
-        ItineraryItemRequest.model_validate(serialize_item(row))
+        ItineraryItemRequest.model_validate(serialize_item(row, localized=False))
         for row in existing_rows
         if row.system_role is not None and row.id not in incoming_ids
     )
@@ -2382,8 +2446,13 @@ _MEAL_LOCATION_DATA_KEYS = {
 
 
 def unset_meal_title(system_role: str | None) -> str:
-    """Title a meal row falls back to when no merchant was selected for it."""
-    return f"{'午餐' if system_role == 'lunch' else '晚餐'}尚未安排"
+    """Title a meal row falls back to when no merchant was selected for it.
+
+    Reads the shared label table so this string and the row's five-locale
+    ``names_json`` can never drift apart.
+    """
+    role = system_role if system_role in MEAL_PLACEHOLDER_LABELS else "dinner"
+    return MEAL_PLACEHOLDER_LABELS[role]["zh-TW"]
 
 
 def _sync_ai_meal_slots(
@@ -2409,6 +2478,7 @@ def _sync_ai_meal_slots(
         if meal is not None:
             current_meal.title = meal.title
             current_meal.location_name = meal.location_name
+            current_meal.names_json = dict(meal.names)
             current_meal.latitude = (
                 Decimal(str(meal.latitude)) if meal.latitude is not None else None
             )
@@ -2432,6 +2502,7 @@ def _sync_ai_meal_slots(
 
         current_meal.title = unset_meal_title(role)
         current_meal.location_name = None
+        current_meal.names_json = item_names(title=MEAL_PLACEHOLDER_LABELS[role])
         current_meal.latitude = None
         current_meal.longitude = None
         current_meal.provider_place_id = None
