@@ -2,11 +2,12 @@ from __future__ import annotations
 
 import json
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import quote
 
 from app.hotspots.cities import CITY_BY_CODE
+from app.i18n import LOCALES
 from app.localized_names import build_localized_names, is_latin_script, original_locale_for
 
 # Wikipedia disambiguation suffixes ("Hongdae (area)") are not display names.
@@ -43,6 +44,9 @@ class HotspotSeed:
     # Who proposed the place ("gemini" for the AI-curated Kanto list, "editorial" for
     # rows added by hand to complete a destination); surfaced to admins only.
     provenance: str | None = None
+    # Labels fetched from Wikidata by `python -m app.cli fill-hotspot-labels`, keyed by
+    # site locale; they fill the locales the seed cannot derive from its curated text.
+    names: dict[str, str] = field(default_factory=dict)
 
     @property
     def wikipedia_url(self) -> str | None:
@@ -79,7 +83,7 @@ class HotspotSeed:
             and self.wikipedia_project.split(".", 1)[0] == language
         ):
             return self.wikipedia_title
-        return None
+        return self.names.get(language) if language else None
 
     @property
     def english_name(self) -> str | None:
@@ -98,13 +102,22 @@ class HotspotSeed:
 
         The catalog name is Traditional Chinese; English comes from the seed's
         Latin-script alias or English Wikipedia title; the country's own
-        language takes the original. Locales the seed cannot fill fall back
-        through :data:`app.localized_names.FALLBACK_LOCALES` so every hotspot
-        always has a label in every language.
+        language takes the original. Wikidata labels stored in ``names`` fill
+        the other locales, and whatever is still missing falls back through
+        :data:`app.localized_names.FALLBACK_LOCALES` so every hotspot always
+        has a label in every language.
         """
 
+        labels: dict[str, str] = {
+            locale: value
+            for locale, value in self.names.items()
+            if locale in LOCALES and locale != "zh-TW" and value
+        }
+        if self.english_name:
+            # A reviewed alias or title beats a fetched label.
+            labels["en"] = self.english_name
         return build_localized_names(
-            names={"zh-TW": self.name, "en": self.english_name},
+            names={"zh-TW": self.name, **labels},
             original=self.original_name,
             country_code=self.country_code,
             fallback=self.name,
@@ -288,6 +301,7 @@ def _load_seeds() -> tuple[HotspotSeed, ...]:
                 source_urls=tuple(row.get("source_urls", ())),
                 coordinate_source=row.get("coordinate_source"),
                 provenance=row.get("provenance"),
+                names=dict(row.get("names") or {}),
             )
         )
     if (

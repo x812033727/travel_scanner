@@ -47,6 +47,23 @@ locale. Curated labels are refreshed on each seeding run, like the rest of the c
 Rankings return the label for the request locale as `name` and the whole map as `names`; trip
 selections copy the map onto the saved stop so a plan follows the traveller's language.
 
+Wikidata (CC0) carries the same places with labels in every site language. From a machine with
+network access, backfill the bootstrap files and review the diff before committing:
+
+```bash
+cd apps/api
+uv run python -m app.cli fill-hotspot-labels --dry-run
+uv run python -m app.cli fill-hotspot-labels
+```
+
+The command asks `wbgetentities` for up to 50 items per request with the project User-Agent and
+edits only two things per row: `local_name` where a row has no original-script name and Wikidata
+has the label in the country's own language (Thai and Vietnamese rows today), and `names`, the
+English, Japanese, Korean and Simplified Chinese labels the seed cannot derive itself. The curated
+`name` and any reviewed `local_name` are left alone (`--overwrite-original` replaces the latter),
+a reviewed Latin-script alias still beats the fetched English label, and each file keeps its
+current JSON layout so the diff shows only the new labels.
+
 ## Collection and operations
 
 `hotspot-collector` runs once on startup and then at

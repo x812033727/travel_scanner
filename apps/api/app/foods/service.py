@@ -21,6 +21,7 @@ from app.foods.publication import merchant_is_publishable, publishable_merchant_
 from app.hotspots.maps import build_map_links, has_exact_map_identity
 from app.localized_names import (
     build_localized_names,
+    original_locale_for,
     resolve_localized_name,
     sanitize_localized_names,
 )
@@ -122,10 +123,17 @@ def merchant_names(merchant: FoodMerchant) -> dict[str, str]:
     ``name`` is the catalog's English label and ``local_name`` the original
     script, so the country's own language reads the original and English reads
     ``name`` unless an administrator stored an explicit label in ``names_json``.
+    Japanese shop names are written in kanji and kana that Chinese readers
+    recognise from signboards and guidebooks, so Chinese locales default to
+    the original for Japan; Korean, Thai and Vietnamese originals stay behind
+    the English name.
     """
 
+    defaults = {"en": merchant.name}
+    if original_locale_for(merchant.country_code) == "ja":
+        defaults["zh-TW"] = merchant.local_name
     return build_localized_names(
-        names={"en": merchant.name, **sanitize_localized_names(merchant.names_json)},
+        names={**defaults, **sanitize_localized_names(merchant.names_json)},
         original=merchant.local_name,
         country_code=merchant.country_code,
         fallback=merchant.name,

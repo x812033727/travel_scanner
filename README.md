@@ -571,10 +571,13 @@ Every attraction, dish and merchant is stored with a label per site locale (`en`
 `zh-TW`, `zh-CN`) plus the text in the country's own script. Hotspots keep them in
 `hotspot_localizations` with the original in `metadata_json.local_name`; dishes in
 `food_localizations` with `local_name`; merchants derive English from `name`, the original from
-`local_name`, and administrators may override any locale in `food_merchants.names_json`. The
-shared rules live in `app/localized_names.py`: a locale that is the original language reads the
-original, and any other gap falls back through a fixed chain so a label always exists. Public
-responses return the resolved `name` for the request locale and the full map as `names`.
+`local_name` (Japanese merchants also show that kanji name to Chinese readers by default), and
+administrators may override any locale in `food_merchants.names_json`. The shared rules live in
+`app/localized_names.py`: a locale that is the original language reads the original, and any
+other gap falls back through a fixed chain so a label always exists. Public responses return the
+resolved `name` for the request locale and the full map as `names`. `python -m app.cli
+fill-hotspot-labels` backfills the hotspot bootstrap files from Wikidata where network access
+allows; see `docs/hotspot-intelligence.md`.
 
 The canonical `/api/v1/destinations` catalog separates searchable destinations from cross-city
 extensions. The API also exposes `/api/v1/hotspots/rankings`, `/api/v1/hotspots/facets`,

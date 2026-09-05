@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
 from datetime import UTC, date, datetime
 from decimal import Decimal
 from uuid import uuid4
@@ -94,6 +95,28 @@ def test_hotspot_seed_names_follow_the_country_script() -> None:
     assert taichung["original_locale"] == "zh-TW"
 
 
+def test_fetched_wikidata_labels_fill_what_the_seed_cannot_derive() -> None:
+    base = _seed(slug="sensoji")
+    fetched = replace(
+        base,
+        names={"ko": "센소지", "zh-CN": "浅草寺", "en": "Senso-ji Temple", "zh-TW": "淺草観音"},
+    )
+    names = fetched.localized_names
+    assert names["ko"] == "센소지"
+    assert names["zh-CN"] == "浅草寺"
+    assert names["en"] == "Sensō-ji"  # the reviewed alias still wins over the fetched label
+    assert names["zh-TW"] == "淺草寺"  # the curated name is never replaced
+    assert names["original"] == "浅草寺"
+
+    thai = replace(_seed(name="倫披尼公園"), names={"ko": "룸피니 공원", "ja": "ルンピニー公園"})
+    assert thai.localized_names["ja"] == "ルンピニー公園"
+    assert (
+        "original" not in thai.localized_names
+    )  # Thai is not a site locale; local_name carries it
+    korean = replace(_seed(slug="gyeongbokgung"), local_name=None, names={"ko": "경복궁"})
+    assert korean.original_name == "경복궁"  # a fetched label can stand in for the original
+
+
 def test_hotspot_names_merge_stored_localizations_with_the_original() -> None:
     hotspot = TravelHotspot(
         name="淺草寺", country_code="JP", metadata_json={"local_name": "浅草寺"}
@@ -122,6 +145,14 @@ def test_merchant_and_dish_names_come_from_their_columns_and_overrides() -> None
     taipei = FoodMerchant(name="Lan Jia Gua Bao", local_name="藍家割包", country_code="TW")
     assert merchant_names(taipei)["zh-TW"] == "藍家割包"
     assert merchant_names(taipei)["en"] == "Lan Jia Gua Bao"
+
+    # Japanese shop names read as kanji for Chinese travellers; Korean ones do not.
+    kanda = FoodMerchant(name="Kanda Matsuya", local_name="神田まつや", country_code="JP")
+    assert merchant_names(kanda)["zh-TW"] == merchant_names(kanda)["zh-CN"] == "神田まつや"
+    assert merchant_names(kanda)["ko"] == "Kanda Matsuya"
+    seoul = FoodMerchant(name="Korea House", local_name="한국의집", country_code="KR")
+    assert merchant_names(seoul)["zh-TW"] == "Korea House"
+    assert merchant_names(seoul)["ko"] == "한국의집"
 
     ramen = TravelFood(local_name="ラーメン", romanized_name="Ramen", country_code="JP")
     names = food_names(ramen, {"zh-TW": "拉麵", "en": "Ramen"})
