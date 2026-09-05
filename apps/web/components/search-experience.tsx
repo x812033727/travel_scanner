@@ -21,7 +21,7 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ApiError, api, isUsageInsufficient, twd } from "@/lib/api";
 import { trackAnalytics } from "@/lib/analytics";
-import { loginPath } from "@/lib/navigation";
+import { loginPath, safeExternalHref } from "@/lib/navigation";
 import {
   destinationByAirport,
   interestLabel,
@@ -1500,7 +1500,7 @@ export function SearchExperience() {
                                   {index > 0 ? "、" : ""}
                                   <a
                                     className="underline"
-                                    href={offer.attribution_urls[index]}
+                                    href={safeExternalHref(offer.attribution_urls[index])}
                                     target="_blank"
                                     rel="noreferrer"
                                   >
@@ -1517,7 +1517,7 @@ export function SearchExperience() {
                           </p>
                         ) : null}
                         <a
-                          href={recheckUrl(activeTab, offer, parsed, dates, locale)}
+                          href={safeExternalHref(recheckUrl(activeTab, offer, parsed, dates, locale))}
                           target="_blank"
                           rel="noreferrer"
                           className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-[var(--teal)] px-4 py-3 text-sm font-semibold text-[var(--teal)]"

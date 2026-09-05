@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { TravelCardActions } from "@/components/travel-card-actions";
 import { primaryMapLink, type FoodItem } from "@/lib/foods";
+import { safeExternalHref } from "@/lib/navigation";
 
 export function FoodDishCard({ food }: { food: FoodItem }) {
   const t = useTranslations("foods");
@@ -33,7 +34,7 @@ export function FoodDishCard({ food }: { food: FoodItem }) {
           {food.recommended_merchants.slice(0, 3).map((merchant) => {
             const map = primaryMapLink(merchant.map_links);
             return map ? (
-              <a key={merchant.merchant_id} href={map.url} target="_blank" rel="noopener noreferrer" aria-label={`${map.label}: ${merchant.name}`} className="flex min-h-11 items-center gap-2 rounded-2xl bg-[var(--paper)] px-3 py-2 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline">
+              <a key={merchant.merchant_id} href={safeExternalHref(map.url)} target="_blank" rel="noopener noreferrer" aria-label={`${map.label}: ${merchant.name}`} className="flex min-h-11 items-center gap-2 rounded-2xl bg-[var(--paper)] px-3 py-2 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline">
                 <MapPin size={15} />
                 <span className="mr-auto text-[var(--ink)]">{merchant.name}{merchant.local_name !== merchant.name && <span className="ml-1 text-xs font-normal text-[var(--muted)]">· {merchant.local_name}</span>}</span>
                 <ExternalLink size={13} />
@@ -51,7 +52,7 @@ export function FoodDishCard({ food }: { food: FoodItem }) {
       )}
       <div className="mt-auto flex flex-wrap items-center gap-2 pt-5">
         {food.destinations[0] && <Link href={`/hotspots?category=food&destination_id=${encodeURIComponent(food.destinations[0].id)}`} className="inline-flex min-h-11 items-center rounded-xl bg-[var(--teal)] px-4 text-sm font-semibold text-white">{t("viewFoodAreas")}</Link>}
-        {food.source_urls[0] && <a href={food.source_urls[0]} target="_blank" rel="noopener noreferrer" className="ml-auto inline-flex min-h-11 items-center gap-1 px-2 text-xs font-semibold text-[var(--muted)]">{t("source")}<ExternalLink size={13} /></a>}
+        {food.source_urls[0] && <a href={safeExternalHref(food.source_urls[0])} target="_blank" rel="noopener noreferrer" className="ml-auto inline-flex min-h-11 items-center gap-1 px-2 text-xs font-semibold text-[var(--muted)]">{t("source")}<ExternalLink size={13} /></a>}
       </div>
       <TravelCardActions type="food" id={food.id} title={food.name} selectionPath={`/foods/${food.id}/trip-selections`} merchantId={food.recommended_merchants[0]?.merchant_id} />
     </article>

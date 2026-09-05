@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { locales, normalizeLocale, type Locale } from "@/i18n/routing";
 import { safeNextPath } from "@/lib/navigation";
+import { limitedRequestBody, RequestBodyError } from "@/lib/request-body";
 import { forwardedClientAddress } from "@/app/api/travel/[...path]/proxy-security";
+
+// An OAuth form_post callback carries a code, a state and possibly an error string —
+// a few hundred bytes. The route is unauthenticated, so it must never buffer an
+// arbitrarily large body the way `request.formData()` does.
+const MAX_CALLBACK_BODY_BYTES = 16 * 1024;
 
 export const oauthProviders = ["google", "line", "apple"] as const;
 export type OAuthProvider = (typeof oauthProviders)[number];
@@ -70,6 +76,7 @@ const safeErrorCodes = new Set([
   "oauth_provider_unavailable",
   "oauth_link_session_invalid",
   "registration_closed",
+  "admin_email_reserved",
 ]);
 
 export function errorRedirect(
@@ -95,10 +102,20 @@ export async function callback(request: NextRequest, providerValue: string) {
   let state: string | null;
   let providerError: string | null;
   if (request.method === "POST") {
-    const form = await request.formData();
-    code = typeof form.get("code") === "string" ? String(form.get("code")) : null;
-    state = typeof form.get("state") === "string" ? String(form.get("state")) : null;
-    providerError = typeof form.get("error") === "string" ? String(form.get("error")) : null;
+    let body: ArrayBuffer | undefined;
+    try {
+      body = await limitedRequestBody(request, MAX_CALLBACK_BODY_BYTES);
+    } catch (error) {
+      if (error instanceof RequestBodyError) {
+        return errorRedirect(request, flow, "oauth_token_invalid");
+      }
+      throw error;
+    }
+    // form_post responses are application/x-www-form-urlencoded per the OAuth spec.
+    const form = new URLSearchParams(new TextDecoder().decode(body ?? new ArrayBuffer(0)));
+    code = form.get("code");
+    state = form.get("state");
+    providerError = form.get("error");
   } else {
     code = request.nextUrl.searchParams.get("code");
     state = request.nextUrl.searchParams.get("state");
