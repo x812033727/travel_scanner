@@ -417,8 +417,8 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             )
             == 1
         )
-        # 242 seeded links plus the one on the verified fixture merchant.
-        assert int(await session.scalar(select(func.count(FoodMerchantCategory.id))) or 0) == 243
+        # 271 seeded links plus the one on the verified fixture merchant.
+        assert int(await session.scalar(select(func.count(FoodMerchantCategory.id))) or 0) == 272
         disabled_area = await session.scalar(
             select(FoodArea).where(FoodArea.slug == "osaka-kyoto-umeda")
         )
