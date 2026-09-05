@@ -242,6 +242,24 @@ describe("FoodBrowser", () => {
     expect(screen.getByRole("heading", { name: "Ichiran Shibuya" })).toBeTruthy();
   });
 
+  it("keeps the typed search when a chip is tapped before submitting", async () => {
+    const { calls } = renderBrowser("/foods?destination_id=tokyo");
+
+    expect(await screen.findByRole("heading", { name: "Ichiran Shibuya" })).toBeTruthy();
+    fireEvent.change(screen.getByRole("textbox", { name: "搜尋店名、料理或地址" }), { target: { value: "拉麵" } });
+    fireEvent.click(screen.getByRole("button", { name: /壽司/, pressed: false }));
+
+    await waitFor(() => {
+      const last = calls.filter((url) => url.includes("/foods/merchants?")).at(-1);
+      expect(last).toContain("category=sushi");
+      // The chip must carry the words already in the box, not silently drop them.
+      expect(last).toContain(encodeURIComponent("拉麵"));
+    });
+    expect(
+      (screen.getByRole("textbox", { name: "搜尋店名、料理或地址" }) as HTMLInputElement).value,
+    ).toBe("拉麵");
+  });
+
   it("shows an alert and retries after a failed request", async () => {
     renderBrowser("/foods?destination_id=tokyo", { failFirstMerchants: true });
 

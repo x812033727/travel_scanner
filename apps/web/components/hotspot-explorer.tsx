@@ -1,24 +1,6 @@
 "use client";
 
-import {
-  ArrowDownRight,
-  ArrowUpRight,
-  BarChart3,
-  BookOpenText,
-  Building2,
-  ExternalLink,
-  FileText,
-  LockKeyhole,
-  LogIn,
-  MapPin,
-  Minus,
-  Play,
-  Search,
-  Sparkles,
-  SlidersHorizontal,
-  UtensilsCrossed,
-  X,
-} from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, BarChart3, BookOpenText, Building2, ExternalLink, FileText, LoaderCircle, LockKeyhole, LogIn, MapPin, Minus, Play, Search, SlidersHorizontal, Sparkles, UtensilsCrossed, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { FormEvent, KeyboardEvent, TouchEvent, useEffect, useRef, useState } from "react";
 import { api } from "@/lib/api";
@@ -27,6 +9,7 @@ import { useSavedItems } from "@/components/saved-items-provider";
 import { TravelCardActions } from "@/components/travel-card-actions";
 import { Link, usePathname } from "@/i18n/navigation";
 import { loginPath, safeExternalHref } from "@/lib/navigation";
+import { useSharedAnchor } from "@/lib/use-shared-anchor";
 
 type MapLink = { provider: "google" | "naver"; label: string; url: string; primary: boolean };
 type PlaceSummary = {
@@ -244,6 +227,29 @@ export function HotspotExplorer() {
   const authNoticeCloseRef = useRef<HTMLButtonElement>(null);
   const number = new Intl.NumberFormat(locale);
 
+  // Keep the filters in the address bar so a reload, a shared link, or the round
+  // trip through the login page all come back to the same list.
+  function syncUrl() {
+    const visible = new URLSearchParams();
+    if (query.trim()) visible.set("q", query.trim());
+    if (country) visible.set("country_code", country);
+    if (city) visible.set("destination_id", city);
+    if (city && area) visible.set("area", area);
+    if (category) visible.set("category", category);
+    const search = visible.toString();
+    window.history.replaceState(null, "", search ? `?${search}` : window.location.pathname);
+  }
+
+  function clearFilters() {
+    setQuery(""); setCountry(""); setCity(""); setArea(""); setCategory("");
+    setFiltersOpen(false);
+    setLoading(true); setError("");
+    api<RankingResponse>("/hotspots/rankings?limit=30")
+      .then((result) => { setRanking(result); window.history.replaceState(null, "", window.location.pathname); })
+      .catch((reason: Error) => setError(reason.message))
+      .finally(() => setLoading(false));
+  }
+
   async function load(append = false) {
     setLoading(true); setError("");
     const params = new URLSearchParams({ limit: "30" });
@@ -256,6 +262,7 @@ export function HotspotExplorer() {
     try {
       const result = await api<RankingResponse>(`/hotspots/rankings?${params}`);
       setRanking(append && ranking ? { ...result, items: [...ranking.items, ...result.items] } : result);
+      if (!append) syncUrl();
     } catch (reason) { setError((reason as Error).message); }
     finally { setLoading(false); }
   }
@@ -284,6 +291,8 @@ export function HotspotExplorer() {
       setArea(initialArea);
     }).catch((reason: Error) => setError(reason.message)).finally(() => setLoading(false));
   }, []);
+
+  useSharedAnchor(Boolean(ranking?.items.length));
 
   useEffect(() => {
     const closeOnBack = () => { setSelected(null); setSelectedRestaurants(null); };
@@ -395,10 +404,10 @@ export function HotspotExplorer() {
     </form>
     <div className="mt-7 grid gap-7">
       <section aria-live="polite" aria-busy={loading}><div className="mb-4 flex items-center justify-between gap-4"><h2 className="flex items-center gap-2 text-xl font-bold"><BarChart3 size={20} className="text-[var(--coral)]" />{t("ranking")}</h2><p className="text-sm text-[var(--muted)]">{t("loaded", { shown: ranking?.items.length ?? 0, total: ranking?.total ?? 0 })}</p></div>
-        {loading && <div className="rounded-3xl border border-[var(--line)] bg-white p-8 text-[var(--muted)]">{t("loading")}</div>}
-        {!loading && error && <div role="alert" className="rounded-3xl bg-[var(--coral-soft)] p-6">{error}</div>}
-        {!loading && !error && ranking?.items.length === 0 && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white/70 p-8 text-center"><h3 className="font-bold">{t("emptyTitle")}</h3><p className="mt-2 text-sm text-[var(--muted)]">{t("emptyBody")}</p></div>}
-        {!loading && !error && ranking && <ol className="grid gap-4 md:grid-cols-2">{ranking.items.map((item) => <li key={item.id} className={`travel-result-card travel-result-card-${item.category} relative overflow-hidden rounded-3xl border border-[var(--line)] bg-white p-5`}>
+        {loading && !ranking && <div className="rounded-3xl border border-[var(--line)] bg-white p-8 text-[var(--muted)]">{t("loading")}</div>}
+        {error && <div role="alert" className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-3xl bg-[var(--coral-soft)] p-6"><span>{error}</span><button type="button" onClick={() => void load()} className="min-h-11 rounded-xl border border-[var(--line)] bg-white px-4 font-semibold">{t("retry")}</button></div>}
+        {!loading && !error && ranking?.items.length === 0 && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white/70 p-8 text-center"><h3 className="font-bold">{t("emptyTitle")}</h3><p className="mt-2 text-sm text-[var(--muted)]">{t("emptyBody")}</p><button type="button" onClick={clearFilters} className="mt-4 min-h-11 rounded-xl border border-[var(--line)] bg-white px-5 font-semibold text-[var(--teal)]">{t("clearFilters")}</button></div>}
+        {ranking && ranking.items.length > 0 && <ol className="grid gap-4 md:grid-cols-2">{ranking.items.map((item) => <li key={item.id} id={`hotspot-${item.id}`} className={`travel-result-card travel-result-card-${item.category} relative overflow-hidden rounded-3xl border border-[var(--line)] bg-white p-5`}>
           <div className="flex items-start justify-between gap-4"><div className="flex gap-3"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{item.rank}</span><div><h3 className="text-lg font-bold">{item.name}</h3>{item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}{item.map_links?.[0] ? <a href={safeExternalHref(item.map_links[0].url)} target="_blank" rel="noopener noreferrer" aria-label={`${item.map_links[0].label}: ${item.name}`} className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"><MapPin size={14} />{[item.city_name, item.area?.name, t(`categories.${item.category}`)].filter(Boolean).join(" · ")}<ExternalLink size={13} /></a> : <p className="mt-1 flex min-h-11 items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{[item.city_name, item.area?.name, t(`categories.${item.category}`)].filter(Boolean).join(" · ")}</p>}</div></div><div className="text-right"><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><p className="text-xs text-[var(--muted)]">{t("score")}</p></div></div>
           <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl bg-[var(--paper)] p-4 text-sm"><div><p className="text-[var(--muted)]">{t("views30")}</p><p className="mt-1 font-semibold">{item.pageviews_30d === null ? t("pending") : number.format(item.pageviews_30d)}</p></div><div><p className="text-[var(--muted)]">{t("previous")}</p><p className="mt-1 flex items-center gap-1 font-semibold">{trendIcon(item)}{percent(item.growth_rate)}</p></div></div>
           <button type="button" disabled={auth.status === "loading"} onClick={() => openDetails(item)} className="mt-4 flex min-h-12 w-full items-center gap-3 rounded-2xl bg-[var(--teal)] px-4 py-3 text-left text-white shadow-sm transition hover:bg-[var(--teal-dark)] disabled:cursor-wait disabled:opacity-60"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/15">{auth.status === "authenticated" ? <BookOpenText size={17} /> : <LockKeyhole size={17} />}</span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("placeDetails")}</strong><span className="block text-xs text-white/75">{auth.status === "authenticated" ? t("guideCount", { articles: item.guide_counts?.article || 0, videos: item.guide_counts?.video || 0 }) : t("protectedFeatureLocked")}</span></span>{auth.status === "authenticated" ? <ExternalLink size={16} /> : <LockKeyhole size={16} />}</button>
@@ -406,7 +415,7 @@ export function HotspotExplorer() {
           <TravelCardActions type="hotspot" id={item.id} title={item.name} selectionPath={`/hotspots/${item.id}/trip-selections`} shareRequiresAuth />
           <div className="mt-4 flex flex-wrap items-center gap-2">{item.has_source && (auth.status === "authenticated" ? <a href={`/${locale}/out/hotspots/${item.id}/source`} target="_blank" rel="noopener noreferrer" className="ml-auto inline-flex min-h-11 items-center text-xs font-semibold text-[var(--teal)]">{t("source")}</a> : <button type="button" disabled={auth.status === "loading"} onClick={() => requireContentAuth(() => undefined)} className="ml-auto inline-flex min-h-11 items-center gap-1 text-xs font-semibold text-[var(--teal)] disabled:opacity-60"><LockKeyhole size={13} />{t("source")}</button>)}</div>
         </li>)}</ol>}
-        {!loading && !error && ranking?.has_more && <div className="mt-6 text-center"><button type="button" onClick={() => void load(true)} className="rounded-xl border border-[var(--teal)] bg-white px-6 py-3 font-semibold text-[var(--teal)]">{t("loadMore")}</button></div>}
+        {!error && ranking?.has_more && <div className="mt-6 text-center"><button type="button" disabled={loading} aria-busy={loading} onClick={() => void load(true)} className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-[var(--teal)] bg-white px-6 font-semibold text-[var(--teal)] disabled:opacity-60">{loading && <LoaderCircle className="animate-spin" size={17} />}{loading ? t("loadingMore") : t("loadMore")}</button></div>}
       </section>
     </div>
     {auth.status === "authenticated" && selected && <PlaceDetailsPanel hotspot={selected} onClose={closeDetails} />}

@@ -2719,3 +2719,11 @@ a {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* A card reached through a shared link, briefly ringed so the reader can see
+   which one the link meant. */
+.shared-anchor-target {
+  outline: 3px solid var(--teal);
+  outline-offset: 4px;
+  transition: outline-color 0.4s;
+}
