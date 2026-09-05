@@ -209,6 +209,9 @@ export type Trip = {
   end_date?: string | null;
   timezone?: string;
   route_preference?: "FEWER_TRANSFERS" | "LESS_WALKING" | "FASTEST";
+  notes?: string | null;
+  /** Keyed by ISO day; days with nothing written have no entry. */
+  day_notes?: Record<string, string>;
   items: TripItem[];
   route_segments?: RouteSegment[];
   routing?: TripRouting;

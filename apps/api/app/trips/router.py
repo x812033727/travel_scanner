@@ -37,6 +37,7 @@ from app.localized_names import (
 )
 from app.models import (
     SearchRequest,
+    TripDayNote,
     TripPlan,
     TripPlanItem,
     TripRouteSegment,
@@ -182,6 +183,7 @@ class TripMetadataPatchRequest(BaseModel):
     name: str | None = Field(default=None, max_length=255)
     status: Literal["planning", "ready", "travelling", "closed"] | None = None
     cover_image_url: str | None = Field(default=None, max_length=1024)
+    notes: str | None = Field(default=None, max_length=4000)
     start_date: date | None = None
     end_date: date | None = None
     shift_days: int | None = Field(default=None, ge=-MAX_SHIFT_DAYS, le=MAX_SHIFT_DAYS)
@@ -195,6 +197,9 @@ class TripMetadataPatchRequest(BaseModel):
                 raise ValueError("name must not be blank")
         if self.cover_image_url is not None:
             self.cover_image_url = self.cover_image_url.strip() or None
+        if self.notes is not None:
+            # An emptied box clears the note rather than storing whitespace.
+            self.notes = self.notes.strip() or None
         if self.cover_image_url is not None and not self.cover_image_url.startswith("https://"):
             raise ValueError("cover_image_url must be an https URL")
         if not self.model_fields_set - {"version", "confirm_removed_days"}:
@@ -663,6 +668,18 @@ async def hydrate_legacy_items(
     return items
 
 
+async def load_day_notes(session: AsyncSession, trip_id: UUID) -> list[TripDayNote]:
+    return list(
+        (
+            await session.scalars(
+                select(TripDayNote)
+                .where(TripDayNote.trip_plan_id == trip_id)
+                .order_by(TripDayNote.day_date)
+            )
+        ).all()
+    )
+
+
 async def serialize_trip(
     session: AsyncSession, trip: TripPlan, *, include_items: bool = True
 ) -> dict[str, Any]:
@@ -675,7 +692,12 @@ async def serialize_trip(
     route_segments: list[dict[str, Any]] = []
     route_records = []
     day_route_settings = []
+    day_notes: dict[str, str] = {}
     if include_items:
+        day_notes = {
+            row.day_date.isoformat(): row.notes
+            for row in await load_day_notes(session, trip.id)
+        }
         route_records = await load_route_segments(session, trip.id)
         day_route_settings = await load_day_settings(session, trip.id)
         route_segments = [
@@ -717,6 +739,8 @@ async def serialize_trip(
             trip.timezone, trip.destination_name, trip.data
         ),
         "route_preference": trip.route_preference,
+        "notes": trip.notes,
+        "day_notes": day_notes,
         "items": [serialize_item(item) for item in items],
         "route_segments": route_segments,
         "routing": routing_summary(trip, day_route_settings, route_records),
@@ -1829,6 +1853,61 @@ async def get_trip(trip_id: UUID, user: CurrentUser, session: Session) -> dict[s
     return await serialize_trip(session, trip)
 
 
+class TripDayNoteRequest(BaseModel):
+    """`PUT /trips/{id}/days/{day}/notes` — the note for one day.
+
+    An empty body deletes the row: a day with nothing written on it should not
+    keep an empty string around to serialise back.
+    """
+
+    version: int = Field(ge=1)
+    notes: str | None = Field(default=None, max_length=4000)
+
+
+@router.put("/{trip_id}/days/{day_date}/notes")
+async def set_trip_day_note(
+    trip_id: UUID,
+    day_date: date,
+    payload: TripDayNoteRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    trip = await owned_trip(session, user.id, trip_id)
+    if trip.start_date and trip.end_date and not (trip.start_date <= day_date <= trip.end_date):
+        raise AppError(422, "day_outside_trip", "這一天不在旅程日期範圍內")
+    text = (payload.notes or "").strip()
+    # Win the compare-and-swap before writing, exactly like every other
+    # mutating trip endpoint, so two tabs cannot both think they saved.
+    next_version = await session.scalar(
+        update(TripPlan)
+        .where(
+            TripPlan.id == trip.id,
+            TripPlan.user_id == user.id,
+            TripPlan.version == payload.version,
+        )
+        .values(version=TripPlan.version + 1)
+        .returning(TripPlan.version)
+    )
+    if next_version is None:
+        await session.rollback()
+        raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再操作")
+    existing = await session.scalar(
+        select(TripDayNote).where(
+            TripDayNote.trip_plan_id == trip.id, TripDayNote.day_date == day_date
+        )
+    )
+    if not text:
+        if existing is not None:
+            await session.delete(existing)
+    elif existing is None:
+        session.add(TripDayNote(trip_plan_id=trip.id, day_date=day_date, notes=text))
+    else:
+        existing.notes = text
+    await session.commit()
+    await session.refresh(trip)
+    return await serialize_trip(session, trip)
+
+
 @router.patch("/{trip_id}")
 async def update_trip_metadata(
     trip_id: UUID,
@@ -1863,6 +1942,8 @@ async def update_trip_metadata(
         scalar_values["status"] = payload.status
     if "cover_image_url" in payload.model_fields_set:
         scalar_values["cover_image_url"] = payload.cover_image_url
+    if "notes" in payload.model_fields_set:
+        scalar_values["notes"] = payload.notes
 
     if target is None and not scalar_values:
         # The requested dates are the ones the trip already has. Report the
@@ -2581,7 +2662,7 @@ async def _build_ai_planning(
             travelers=travelers,
             preferences=preferences,
             notes=_compose_planner_notes(
-                cast(str | None, trip.data.get("notes")), extra_notes
+                trip.notes or cast(str | None, trip.data.get("notes")), extra_notes
             ),
             preserved_items=planning_preserved,
             candidates=candidates,
@@ -2819,7 +2900,7 @@ async def generate_trip_itinerary(
                 route_preference=trip.route_preference,
                 travelers=travelers,
                 preferences=preferences,
-                notes=cast(str | None, trip.data.get("notes")),
+                notes=trip.notes or cast(str | None, trip.data.get("notes")),
                 preserved_items=planning_preserved,
                 candidates=candidates,
                 first_day_available_from=cast(str, availability["first_day_available_from"]),

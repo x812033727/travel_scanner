@@ -1206,3 +1206,99 @@ async def test_ai_regeneration_preserves_items_charges_once_and_replays(
         assert live_calls == 2
         usage_after_day = await client.get("/api/v1/usage", headers=headers)
         assert usage_after_day.json()["remaining_uses"] == 1
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_trip_and_day_notes_persist_and_stay_out_of_the_share(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Notes are the one thing a traveller writes for themselves.
+
+    They must survive on their own column (trip.data is rebuilt wholesale by
+    reoptimize), obey the same version compare-and-swap as every other trip
+    write, and never appear in the read-only share payload.
+    """
+
+    def unexpected_enqueue(*_args: object, **_kwargs: object) -> None:
+        raise AssertionError("manual blank creation must not enqueue routing")
+
+    monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", unexpected_enqueue)
+
+    email = f"trip-notes-{uuid4()}@example.com"
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        registered = await client.post(
+            "/api/v1/auth/register",
+            json={"email": email, "password": "integration-password-123"},
+        )
+        headers = {"Authorization": f"Bearer {registered.json()['access_token']}"}
+        created = await client.post(
+            "/api/v1/trips",
+            headers=headers,
+            json={
+                "source": "blank",
+                "planning_mode": "manual_blank",
+                "name": "東京備註測試",
+                "destination_name": "日本東京",
+                "start_date": "2026-11-10",
+                "end_date": "2026-11-12",
+                "routing": {
+                    "auto_compute": False,
+                    "default_travel_mode": "transit",
+                    "default_buffer_minutes": 10,
+                },
+            },
+        )
+        assert created.status_code == 201
+        trip = created.json()
+        trip_id = trip["id"]
+        assert trip["notes"] is None
+        assert trip["day_notes"] == {}
+
+        saved = await client.patch(
+            f"/api/v1/trips/{trip_id}",
+            headers=headers,
+            json={"version": trip["version"], "notes": "  護照到期日要確認  "},
+        )
+        assert saved.status_code == 200
+        assert saved.json()["notes"] == "護照到期日要確認"
+
+        stale = await client.patch(
+            f"/api/v1/trips/{trip_id}",
+            headers=headers,
+            json={"version": trip["version"], "notes": "第二個分頁"},
+        )
+        assert stale.status_code == 409
+
+        version = saved.json()["version"]
+        day = await client.put(
+            f"/api/v1/trips/{trip_id}/days/2026-11-11/notes",
+            headers=headers,
+            json={"version": version, "notes": "這天要先訂位"},
+        )
+        assert day.status_code == 200
+        assert day.json()["day_notes"] == {"2026-11-11": "這天要先訂位"}
+
+        outside = await client.put(
+            f"/api/v1/trips/{trip_id}/days/2026-12-25/notes",
+            headers=headers,
+            json={"version": day.json()["version"], "notes": "不在範圍內"},
+        )
+        assert outside.status_code == 422
+
+        share = await client.post(f"/api/v1/trips/{trip_id}/share", headers=headers)
+        assert share.status_code in {200, 201}
+        token = share.json()["token"]
+        shared = await client.get(f"/api/v1/shared-trips/{token}")
+        assert shared.status_code == 200
+        # A share link is read-only sightseeing, not the owner's private notes.
+        assert "notes" not in shared.json()
+        assert "day_notes" not in shared.json()
+
+        cleared = await client.put(
+            f"/api/v1/trips/{trip_id}/days/2026-11-11/notes",
+            headers=headers,
+            json={"version": day.json()["version"], "notes": "   "},
+        )
+        assert cleared.status_code == 200
+        assert cleared.json()["day_notes"] == {}
