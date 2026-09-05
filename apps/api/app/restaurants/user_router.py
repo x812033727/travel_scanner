@@ -25,6 +25,14 @@ from app.trips.router import (
 
 router = APIRouter(prefix="/restaurants", tags=["restaurants"])
 Session = Annotated[AsyncSession, Depends(get_session)]
+# Title of a meal card that points at a Google place without editorial data.
+SAVED_RESTAURANT_LABELS: dict[str, str] = {
+    "en": "Saved restaurant",
+    "ja": "保存したレストラン",
+    "ko": "저장한 음식점",
+    "zh-CN": "已保存餐厅",
+    "zh-TW": "已儲存餐廳",
+}
 
 
 class RestaurantTripSelectionRequest(BaseModel):
@@ -183,13 +191,7 @@ async def select_restaurant_for_trip(
         place.google_place_id
     )
     locale = user.preferred_locale
-    fallback_names = {
-        "en": "Saved restaurant",
-        "ja": "保存したレストラン",
-        "ko": "저장한 음식점",
-        "zh-CN": "已保存餐厅",
-        "zh-TW": "已儲存餐廳",
-    }
+    fallback_names = SAVED_RESTAURANT_LABELS
     title = str(editorial["name"]) if editorial else fallback_names.get(locale, "已儲存餐廳")
     ride_location = cast(
         dict[str, float] | None,

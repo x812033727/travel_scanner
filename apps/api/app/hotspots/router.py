@@ -267,6 +267,7 @@ async def hotspots_for_planner(
         {
             "hotspot_id": item["id"],
             "name": item["name"],
+            "names": item["names"],
             "category": item["category"],
             "latitude": item["latitude"],
             "longitude": item["longitude"],

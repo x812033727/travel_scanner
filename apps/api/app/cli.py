@@ -47,6 +47,7 @@ from app.models import (
 from app.places.naver import NaverPlaceService
 from app.providers.registry import build_provider, provider_status
 from app.search.schemas import SearchCreate
+from app.trips.name_backfill import backfill_trip_item_names
 from app.trips.routing import NaverDirectionsProvider, RoutePoint
 from app.usage.service import PACKAGE_DEFAULTS, create_usage_account, grant_package
 
@@ -263,6 +264,11 @@ async def seed_foods() -> dict[str, int]:
             or 0
         )
     return counts
+
+
+async def backfill_trip_items(dry_run: bool) -> dict[str, int]:
+    async with SessionFactory() as session:
+        return await backfill_trip_item_names(session, dry_run=dry_run)
 
 
 def fill_hotspot_labels(files: list[str], dry_run: bool, overwrite_original: bool) -> None:
@@ -495,6 +501,16 @@ def main() -> None:
     labels.add_argument(
         "--dry-run", action="store_true", help="Report what would change without writing"
     )
+    backfill = subparsers.add_parser(
+        "backfill-trip-item-names",
+        help=(
+            "Give trip items saved before migration 0039 their five-locale labels from the "
+            "catalog; rows the traveller renamed are left alone"
+        ),
+    )
+    backfill.add_argument(
+        "--dry-run", action="store_true", help="Count what would change without writing"
+    )
     args = parser.parse_args()
     if args.command == "add-usage-package":
         asyncio.run(add_usage_package(args.email, args.package, args.reference))
@@ -548,6 +564,8 @@ def main() -> None:
                 args.destination, args.slug_prefix, args.limit, args.dry_run, args.approve
             )
         )
+    elif args.command == "backfill-trip-item-names":
+        print(json.dumps(asyncio.run(backfill_trip_items(args.dry_run)), ensure_ascii=False))
     elif args.command == "fill-hotspot-labels":
         fill_hotspot_labels(
             args.file or list(BOOTSTRAP_FILES), args.dry_run, args.overwrite_original

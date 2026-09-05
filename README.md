@@ -259,6 +259,15 @@ uv sync
 uv run alembic upgrade head
 ```
 
+Migration `0039_localized_names` adds the per-locale label columns empty. Run the backfill
+once afterwards so stops that were already planned re-label themselves when the traveller
+switches language (rows the traveller renamed are left alone):
+
+```bash
+uv run python -m app.cli backfill-trip-item-names --dry-run
+uv run python -m app.cli backfill-trip-item-names
+```
+
 ## Quality checks
 
 ```bash
@@ -430,7 +439,9 @@ switching language re-labels a saved plan and the UI can show the original text
 under the title. Saving the itinerary with the label the client was shown
 keeps the map; a real rename drops it for that field only, and Google Places
 resolution drops the `location_name` map because the provider label replaces
-the catalog one. Free-text stops never carry a map.
+the catalog one. Free-text stops never carry a map. Stops saved before the
+column existed get theirs from `python -m app.cli backfill-trip-item-names`
+(see [Database migration](#database-migration)).
 
 Saved trips automatically enqueue a `trip-routes` RQ job after AI place
 resolution. Routes are calculated in itinerary order, one day at a time, so
