@@ -442,3 +442,47 @@ async def test_search_budget_is_keyed_on_googles_billing_day() -> None:
     redis = _EvalRecorder()
     assert await consume_search_budget(cast(Any, redis), "youtube", 80)
     assert redis.keys == [f"hotspot-guide-quota:youtube:{google_billing_date().isoformat()}"]
+
+
+def test_the_guide_backlog_worker_is_configurable_from_the_admin_page() -> None:
+    """Its size decided how long the backlog takes and lived only in .env.
+
+    610 of 651 public hotspots have no guide at all. At the default ten per collector run
+    that is a fortnight of waiting, and raising it meant editing .env on the host and
+    redeploying, which is not something an operator should have to do to turn a dial.
+    """
+
+    from app.admin.service import PROVIDER_DEFINITIONS, apply_runtime_overrides
+    from app.models import ProviderConfig
+
+    definition = PROVIDER_DEFINITIONS["hotspot_guides"]
+
+    assert definition.enabled_field == "hotspot_guides_enabled"
+    assert definition.secret_fields == ()
+    assert definition.config_fields == (
+        "hotspot_guide_backfill_enabled",
+        "hotspot_guide_backfill_batch_size",
+        "hotspot_guide_backfill_locale",
+    )
+
+    row = ProviderConfig(
+        provider="hotspot_guides",
+        enabled=True,
+        config={
+            "hotspot_guide_backfill_enabled": True,
+            "hotspot_guide_backfill_batch_size": 100,
+            "hotspot_guide_backfill_locale": "ja",
+        },
+    )
+    settings = apply_runtime_overrides(Settings(), [row])
+
+    assert settings.hotspot_guides_enabled is True
+    assert settings.hotspot_guide_backfill_enabled is True
+    assert settings.hotspot_guide_backfill_batch_size == 100
+    assert settings.hotspot_guide_backfill_locale == "ja"
+
+    # Turning the group off stops the backlog worker through hotspot_guides_enabled, which
+    # backfill_guides_once checks before it reads anything else.
+    off = apply_runtime_overrides(Settings(), [ProviderConfig(provider="hotspot_guides",
+                                                             enabled=False, config={})])
+    assert off.hotspot_guides_enabled is False
