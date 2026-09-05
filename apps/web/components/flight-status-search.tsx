@@ -1,8 +1,12 @@
 "use client";
 
-import { Clock3, LoaderCircle, Map, Plane, Search } from "lucide-react";
+import { Clock3, LoaderCircle, LogIn, Map, Plane, Search } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { Link, usePathname } from "@/i18n/navigation";
 import { api } from "@/lib/api";
+import { loginPath } from "@/lib/navigation";
+import { useSavedItems } from "@/components/saved-items-provider";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
 
 type StatusItem = {
@@ -82,6 +86,11 @@ function TrackPreview({ track }: { track: Track }) {
 
 export function FlightStatusSearch() {
   const charge = useOperationCharge("flight_status_lookup");
+  // The lookup charges a use, so a visitor must not see a live charge button:
+  // the layout-level session is the one auth probe every public page already pays for.
+  const session = useSavedItems();
+  const pathname = usePathname();
+  const usage = useTranslations("usage");
   const [mode, setMode] = useState<"ident" | "route">("ident");
   const [ident, setIdent] = useState("");
   const [origin, setOrigin] = useState("TPE");
@@ -123,7 +132,9 @@ export function FlightStatusSearch() {
       <div className="grid gap-4 md:grid-cols-[1fr_1fr_auto]">
         {mode === "ident" ? <label className="grid gap-1 text-sm font-semibold">班號<input required value={ident} onChange={(event) => setIdent(event.target.value.toUpperCase())} placeholder="例如 BR198" className="rounded-xl border border-[var(--line)] px-4 py-3 font-normal uppercase" /></label> : <div className="grid grid-cols-2 gap-3"><label className="grid gap-1 text-sm font-semibold">出發機場<input required value={origin} onChange={(event) => setOrigin(event.target.value.toUpperCase())} maxLength={4} className="rounded-xl border border-[var(--line)] px-4 py-3 font-normal uppercase" /></label><label className="grid gap-1 text-sm font-semibold">抵達機場<input required value={destination} onChange={(event) => setDestination(event.target.value.toUpperCase())} maxLength={4} className="rounded-xl border border-[var(--line)] px-4 py-3 font-normal uppercase" /></label></div>}
         <label className="grid gap-1 text-sm font-semibold">出發日期<input required type="date" value={departureDate} onChange={(event) => setDepartureDate(event.target.value)} className="rounded-xl border border-[var(--line)] px-4 py-3 font-normal" /></label>
-        <button disabled={busy || charge.status !== "ready"} className="mt-auto flex items-center justify-center gap-2 rounded-xl bg-[var(--coral)] px-6 py-3 font-semibold text-white disabled:opacity-60">{busy ? <LoaderCircle size={18} className="animate-spin" /> : <Search size={18} />}查詢 · {charge.label}</button>
+        {session.status === "signed_out"
+          ? <Link href={loginPath(pathname)} className="mt-auto flex items-center justify-center gap-2 rounded-xl bg-[var(--coral)] px-6 py-3 font-semibold text-white"><LogIn size={18} />{usage("signInToUse")} · {charge.label}</Link>
+          : <button disabled={busy || charge.status !== "ready" || session.status === "loading"} className="mt-auto flex items-center justify-center gap-2 rounded-xl bg-[var(--coral)] px-6 py-3 font-semibold text-white disabled:opacity-60">{busy ? <LoaderCircle size={18} className="animate-spin" /> : <Search size={18} />}查詢 · {charge.label}</button>}
       </div>
       <p className="mt-3 text-xs text-[var(--muted)]">{charge.status === "ready" ? `快取命中、空結果或供應商失敗不扣次；成功取得新的外部資料才${charge.label}。` : charge.unavailableHelp}</p>
       {error && <p role="alert" className="mt-4 rounded-xl bg-red-50 p-3 text-sm text-red-800">{error}</p>}

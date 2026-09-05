@@ -10,7 +10,8 @@ describe("NewTripAuthGate", () => {
   it("asks signed-out visitors to log in before showing the long form", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({ detail: "未登入" }), { status: 401 })));
     render(<NewTripAuthGate />);
-    expect(await screen.findByRole("link", { name: "前往登入" })).toBeTruthy();
+    const link = await screen.findByRole("link", { name: "前往登入" });
+    expect(link.getAttribute("href")).toBe("/login?next=%2Ftrips%2Fnew");
     expect(screen.queryByText("已驗證的新行程表單")).toBeNull();
   });
 

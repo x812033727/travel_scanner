@@ -9,9 +9,12 @@ from app.config import Settings
 from app.main import app
 from app.models import TripPlan, TripPlanItem
 from app.trips.router import (
+    OPTIMIZATION_MOVABLE_LIMIT,
     _chain_minutes,
     _nearest_neighbour,
     _preview_item,
+    movable_slots,
+    optimization_summary,
     plan_itinerary_optimization,
 )
 from app.trips.routing import RoutePoint, RouteSegment
@@ -185,3 +188,23 @@ async def test_plan_skips_a_day_with_nothing_to_reorder(monkeypatch: Any) -> Non
 
     assert plan["days"] == []
     assert plan["changed"] is False
+
+
+def test_optimization_summary_counts_only_rows_the_optimiser_may_move() -> None:
+    free_one, free_two = _row("A", 9), _row("B", 11)
+    locked = _row("C", 13, locked=True)
+    fixed = _row("D", 15, fixed=True)
+    unlocated = _row("E", 17)
+    unlocated.latitude = None
+    unlocated.longitude = None
+    other_day = _row("F", 9)
+    other_day.day_date = date(2026, 11, 11)
+
+    summary = optimization_summary([free_one, free_two, locked, fixed, unlocated, other_day])
+
+    assert summary["movable_limit"] == OPTIMIZATION_MOVABLE_LIMIT
+    assert summary["days"] == [
+        {"date": "2026-11-10", "movable_count": 2},
+        {"date": "2026-11-11", "movable_count": 1},
+    ]
+    assert movable_slots([locked, free_one, fixed, free_two]) == [1, 3]

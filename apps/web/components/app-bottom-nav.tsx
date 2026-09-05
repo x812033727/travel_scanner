@@ -12,6 +12,8 @@ const items: ReadonlyArray<{
   icon: typeof Compass;
   matches: readonly string[];
   feature?: SiteFeature;
+  /** Shown instead of `href` when `feature` is turned off; foods has no switch of its own. */
+  fallbackHref?: string;
 }> = [
   {
     key: "bottomExplore",
@@ -19,6 +21,7 @@ const items: ReadonlyArray<{
     icon: Compass,
     matches: ["/hotspots", "/foods"],
     feature: "hotspots",
+    fallbackHref: "/foods",
   },
   {
     key: "bottomPlan",
@@ -41,10 +44,12 @@ export function AppBottomNav() {
   const t = useTranslations("navigation");
   const visibility = useSiteVisibility();
   // The desktop header already honours the admin feature switches; the phone
-  // tab bar must not keep advertising a page the site has turned off.
-  const visibleItems = items.filter(
-    (item) => !item.feature || featureVisible(visibility, item.feature),
-  );
+  // tab bar must not keep advertising a page the site has turned off. Explore
+  // survives a paused hotspots page by pointing at foods instead of vanishing.
+  const visibleItems = items.flatMap((item) => {
+    if (!item.feature || featureVisible(visibility, item.feature)) return [item];
+    return item.fallbackHref ? [{ ...item, href: item.fallbackHref }] : [];
+  });
   const normalizedPath =
     pathname.replace(/^\/(?:en|ja|ko|zh-TW|zh-CN)(?=\/|$)/, "") || "/";
   if (

@@ -2,6 +2,7 @@ import React from "react";
 import { vi } from "vitest";
 import account from "./messages/zh-TW/account.json";
 import admin from "./messages/zh-TW/admin.json";
+import alerts from "./messages/zh-TW/alerts.json";
 import auth from "./messages/zh-TW/auth.json";
 import availability from "./messages/zh-TW/availability.json";
 import common from "./messages/zh-TW/common.json";
@@ -18,7 +19,7 @@ import foodAdmin from "./messages/zh-TW/foodAdmin.json";
 import newTrip from "./messages/zh-TW/newTrip.json";
 import stayAreas from "./messages/zh-TW/stayAreas.json";
 
-const catalogs: Record<string, unknown> = { account, admin, auth, availability, common, navigation, pricing, search, trips, usage, hotspots, hotspotAdmin, restaurants, foods, foodAdmin, newTrip, stayAreas };
+const catalogs: Record<string, unknown> = { account, admin, alerts, auth, availability, common, navigation, pricing, search, trips, usage, hotspots, hotspotAdmin, restaurants, foods, foodAdmin, newTrip, stayAreas };
 
 function message(namespace: string, key: string): string | undefined {
   let current: unknown = catalogs;

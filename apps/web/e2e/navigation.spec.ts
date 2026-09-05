@@ -99,7 +99,7 @@ test("new trip asks visitors to sign in before showing the long form", async ({ 
   }));
   await page.goto("/zh-TW/trips/new");
   await expect(page.getByRole("heading", { name: "先登入，再建立你的行程" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "前往登入" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "前往登入" })).toHaveAttribute("href", "/zh-TW/login?next=%2Ftrips%2Fnew");
   await expect(page.getByLabel("旅程名稱")).toHaveCount(0);
 });
 
@@ -550,8 +550,62 @@ test("guest keeps search criteria and is sent back after login", async ({ page }
   await page.goto("/zh-TW/search?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=2&include_airbnb=true");
   const login = page.getByRole("link", { name: "登入後開始搜尋" });
   await expect(login).toBeVisible();
-  await expect(login).toHaveAttribute("href", /\/zh-TW\/login\?next=%2Fsearch%3Forigin%3DTPE/);
+  await expect(login).toHaveAttribute("href", /\/zh-TW\/login\?next=%2Fsearch%3Forigin%3DTPE.*resume%3Dsearch/);
   await expect(page.getByRole("link", { name: /Airbnb 官方外站搜尋/ })).toBeVisible();
+});
+
+test("a member returning from login starts the search without a second press", async ({ page }) => {
+  let searchRequests = 0;
+  await page.route("**/api/travel/providers/status", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({ provider: "mock", mode: "mock", status: "ready", modules: ["flight", "hotel"], message: "模擬資料已啟用" }),
+  }));
+  await page.route("**/api/travel/searches", (route) => {
+    searchRequests += 1;
+    expect(route.request().headers()["idempotency-key"]).toBeTruthy();
+    return route.fulfill({
+      status: 202,
+      contentType: "application/json",
+      body: JSON.stringify({ search_id: "search-1", usage: { status: "reserved", uses: 1, reference: "usage-1" } }),
+    });
+  });
+  await page.route("**/api/travel/searches/search-1/events", (route) => route.fulfill({
+    status: 200,
+    contentType: "text/event-stream",
+    body: "event: search.completed\ndata: {\"usage\":{\"status\":\"charged\",\"uses\":1,\"reference\":\"usage-1\"}}\n\n",
+  }));
+  await page.route("**/api/travel/searches/search-1", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({ status: "completed", result: { modules: {}, plans: [] }, warnings: [] }),
+  }));
+  await page.goto("/zh-TW/search?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=2&resume=search");
+  await expect(page.getByText("分析完成")).toBeVisible();
+  await expect(page).toHaveURL(/\/zh-TW\/search\?origin=TPE&destination=NRT&departure_date=2026-11-10&return_date=2026-11-15&adults=2$/);
+  await page.reload();
+  await expect(page.getByRole("button", { name: /^確認條件並開始搜尋 · / })).toBeVisible();
+  expect(searchRequests).toBe(1);
+});
+
+test("airline fare lab asks a visitor to sign in before showing charge buttons", async ({ page }) => {
+  await page.route("**/api/travel/saved-items?*", (route) => route.fulfill({
+    status: 401,
+    contentType: "application/problem+json",
+    body: JSON.stringify({ status: 401, code: "authentication_required", detail: "請先登入再繼續" }),
+  }));
+  await page.goto("/zh-TW/labs/airlines");
+  await expect(page.getByRole("heading", { name: "登入後查詢 · 消耗 1 次" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "登入" })).toHaveAttribute("href", "/zh-TW/login?next=%2Flabs%2Fairlines");
+  await expect(page.getByRole("button", { name: /搜尋公開票價/ })).toHaveCount(0);
+});
+
+test("explore surfaces show each other as sibling tabs", async ({ page }) => {
+  await page.route("**/api/travel/foods/**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ items: [], next_cursor: null }) }));
+  await page.goto("/zh-TW/foods");
+  const explore = page.getByRole("navigation", { name: "探索" });
+  await expect(explore.getByRole("link", { name: "熱門景點" })).toHaveAttribute("href", "/zh-TW/hotspots");
+  await expect(explore.getByRole("link", { name: "城市美食" })).toHaveAttribute("aria-current", "page");
 });
 
 test("empty search explains missing fields and links home", async ({ page }) => {

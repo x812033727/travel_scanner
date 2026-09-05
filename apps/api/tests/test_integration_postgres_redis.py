@@ -115,6 +115,7 @@ async def test_registration_and_concurrent_idempotent_reservation() -> None:
             "reserved_uses": 1,
             "available_uses": 2,
             "limits": {"saved_trips": 20, "price_alerts": 20},
+            "counts": {"saved_trips": 0, "price_alerts": 0},
         }
         plans = await client.get("/api/v1/plans")
         assert [
@@ -508,6 +509,241 @@ async def test_trip_edit_share_and_revoke_flow() -> None:
         revoked = await client.delete(f"/api/v1/trips/{trip['id']}/share", headers=headers)
         assert revoked.status_code == 204
         assert (await client.get(f"/api/v1/shared-trips/{token_value}")).status_code == 404
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_search_trip_keeps_quotes_and_the_keys_a_blank_trip_has() -> None:
+    """A trip saved from a search must look like a blank trip plus real quotes.
+
+    Otherwise nothing downstream (search-from-trip, alerts on anchors, the
+    quoted/estimated split) can treat the two kinds of trip the same way.
+    """
+    email = f"quoted-trip-{uuid4()}@example.com"
+    plan_id, flight_id, hotel_id = uuid4(), uuid4(), uuid4()
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        registered = await client.post(
+            "/api/v1/auth/register",
+            json={"email": email, "password": "integration-password-123"},
+        )
+        headers = {"Authorization": f"Bearer {registered.json()['access_token']}"}
+        async with SessionFactory() as session:
+            user = await session.scalar(select(User).where(User.email == email))
+            assert user is not None
+            flight_info = {
+                "airline": "長榮航空",
+                "flight_number": "BR 198",
+                "origin": "TPE",
+                "destination": "NRT",
+                "departure_local": "2026-11-10T08:50",
+                "arrival_local": "2026-11-10T13:10",
+            }
+            anchor_data = {
+                "source_mode": "test",
+                "timeline_section": "flight_anchor",
+                "flight_selection_source": "provider",
+                "destination_city": "東京",
+                "destination_country": "日本",
+                "destination_timezone": "Asia/Tokyo",
+            }
+            search = SearchRequest(
+                user_id=user.id,
+                status="completed",
+                progress=100,
+                operation="full_trip_search",
+                request_json={
+                    "trip_type": "round_trip",
+                    "origin": "TPE",
+                    "destination": "NRT",
+                    "departure_date": "2026-11-10",
+                    "return_date": "2026-11-12",
+                    "travelers": {"adults": 2, "children": 0, "children_ages": [], "rooms": 1},
+                    "modules": ["flight", "hotel"],
+                    "preferences": {"pace": "balanced", "interests": ["food"]},
+                    "cabin_class": "economy",
+                    "flexible_dates": False,
+                    "flex_days": 0,
+                },
+                result_json={
+                    "plans": [
+                        {
+                            "id": str(plan_id),
+                            "mode": "balanced",
+                            "title": "整體最佳",
+                            "total_cost": {
+                                "confirmed_cost": "30000",
+                                "estimated_cost": "2400",
+                                "total_cost": "32400",
+                            },
+                            "flight": {
+                                "id": str(flight_id),
+                                "provider": "amadeus",
+                                "source_mode": "test",
+                                "total_price": "11500",
+                                "currency": "TWD",
+                                "retrieved_at": "2026-09-01T00:00:00Z",
+                                "expires_at": "2026-09-01T06:00:00Z",
+                            },
+                            "hotel": {
+                                "id": str(hotel_id),
+                                "provider": "booking",
+                                "hotel_id": "h-1",
+                                "hotel_name": "丸之內測試飯店",
+                                "address": "東京都千代田區丸之內",
+                                "latitude": 35.68,
+                                "longitude": 139.76,
+                                "total_price": "18500",
+                                "nightly_price": "9250",
+                                "nights": 2,
+                                "currency": "TWD",
+                            },
+                            "itinerary": [
+                                {
+                                    "date": "2026-11-10",
+                                    "label": "抵達",
+                                    "items": [
+                                        {
+                                            "id": str(uuid4()),
+                                            "item_type": "flight",
+                                            "offer_id": str(flight_id),
+                                            "day_date": "2026-11-10",
+                                            "position": 0,
+                                            "title": "長榮航空 BR 198 抵達旅程",
+                                            "locked": True,
+                                            "fixed_time": True,
+                                            "is_estimated": False,
+                                            "system_role": "outbound_flight",
+                                            "data": {**anchor_data, "flight_info": flight_info},
+                                        },
+                                        {
+                                            "id": str(uuid4()),
+                                            "item_type": "hotel",
+                                            "offer_id": str(hotel_id),
+                                            "day_date": "2026-11-10",
+                                            "position": 1,
+                                            "title": "入住 丸之內測試飯店",
+                                            "location_name": "東京都千代田區丸之內",
+                                            "latitude": 35.68,
+                                            "longitude": 139.76,
+                                            "locked": True,
+                                            "is_estimated": False,
+                                            "data": {"timeline_section": "logistics"},
+                                        },
+                                    ],
+                                },
+                                {
+                                    "date": "2026-11-12",
+                                    "label": "回程",
+                                    "items": [
+                                        {
+                                            "id": str(uuid4()),
+                                            "item_type": "flight",
+                                            "offer_id": str(flight_id),
+                                            "day_date": "2026-11-12",
+                                            "position": 0,
+                                            "title": "長榮航空 BR 197 返回",
+                                            "locked": True,
+                                            "fixed_time": True,
+                                            "is_estimated": False,
+                                            "system_role": "return_flight",
+                                            "data": {**anchor_data, "flight_info": flight_info},
+                                        }
+                                    ],
+                                },
+                            ],
+                        }
+                    ]
+                },
+            )
+            session.add(search)
+            await session.commit()
+            await session.refresh(search)
+
+        saved = await client.post(
+            "/api/v1/trips",
+            headers={**headers, "Idempotency-Key": f"quoted-{uuid4()}"},
+            json={"search_id": str(search.id), "plan_id": str(plan_id), "name": "東京報價旅程"},
+        )
+        assert saved.status_code == 201, saved.text
+        trip = saved.json()
+        assert trip["data"]["source"] == "search"
+        assert trip["data"]["origin_airport"] == "TPE"
+        assert trip["data"]["destination_code"] == "NRT"
+        assert trip["data"]["travelers"]["adults"] == 2
+        assert trip["data"]["search_criteria"]["departure_date"] == "2026-11-10"
+        assert trip["start_date"] == "2026-11-10" and trip["end_date"] == "2026-11-12"
+
+        anchors = {
+            item["system_role"]: item
+            for item in trip["items"]
+            if item["system_role"] in {"outbound_flight", "return_flight"}
+        }
+        assert set(anchors) == {"outbound_flight", "return_flight"}
+        for anchor in anchors.values():
+            assert anchor["offer_id"] == str(flight_id)
+            assert anchor["data"]["price_snapshot"]["total_price"] == "11500"
+            assert anchor["data"]["price_snapshot"]["provider"] == "amadeus"
+        assert trip["primary_lodging"]["name"] == "丸之內測試飯店"
+        assert trip["primary_lodging"]["selection_source"] == "search"
+        assert trip["primary_lodging"]["price_snapshot"]["total_price"] == "18500"
+        hotel_start = next(item for item in trip["items"] if item["system_role"] == "hotel_start")
+        assert hotel_start["title"] == "從 丸之內測試飯店 出發"
+
+        pricing = trip["pricing"]
+        assert pricing["currency"] == "TWD"
+        assert pricing["quoted_total"] == "30000"
+        assert pricing["estimated_total"] == "2400"
+        assert [(item["kind"], item["counted"]) for item in pricing["items"]] == [
+            ("flight", True),
+            ("flight", False),
+            ("hotel", True),
+        ]
+        assert trip["optimization"]["movable_limit"] == 12
+        assert [day["date"] for day in trip["optimization"]["days"]] == [
+            "2026-11-10",
+            "2026-11-11",
+            "2026-11-12",
+        ]
+
+        options = await client.get("/api/v1/trips/options", headers=headers)
+        assert options.status_code == 200
+        assert options.json()["count"] == 1
+        assert options.json()["limit"] == 20
+        assert options.json()["can_create"] is True
+        assert options.json()["undated_count"] == 0
+        assert [item["trip_id"] for item in options.json()["items"]] == [trip["id"]]
+        usage = await client.get("/api/v1/usage", headers=headers)
+        assert usage.json()["counts"] == {"saved_trips": 1, "price_alerts": 0}
+
+        # Typing a different flight over the anchor means the quote no longer applies.
+        manual = await client.put(
+            f"/api/v1/trips/{trip['id']}/flight-anchors/outbound",
+            headers=headers,
+            json={
+                "version": trip["version"],
+                "flight": {
+                    "airline": "星宇航空",
+                    "flight_number": "JX 800",
+                    "origin": "TPE",
+                    "destination": "NRT",
+                    "departure_local": "2026-11-10T09:30",
+                    "arrival_local": "2026-11-10T13:40",
+                },
+            },
+        )
+        assert manual.status_code == 200, manual.text
+        updated = manual.json()
+        outbound = next(
+            item for item in updated["items"] if item["system_role"] == "outbound_flight"
+        )
+        assert "price_snapshot" not in outbound["data"]
+        assert outbound["offer_id"] is None
+        # The return leg still carries the round-trip quote, so it is now the one counted.
+        assert updated["pricing"]["quoted_total"] == "30000"
+        assert [(item["role"], item["counted"]) for item in updated["pricing"]["items"]] == [
+            ("return_flight", True),
+            ("primary_lodging", True),
+        ]
 
 
 @pytest.mark.asyncio(loop_scope="module")
