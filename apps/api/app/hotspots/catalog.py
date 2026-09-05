@@ -1,11 +1,16 @@
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import quote
 
 from app.hotspots.cities import CITY_BY_CODE
+from app.localized_names import build_localized_names, is_latin_script, original_locale_for
+
+# Wikipedia disambiguation suffixes ("Hongdae (area)") are not display names.
+_DISAMBIGUATION = re.compile(r"\s*\([^)]*\)\s*$")
 
 
 @dataclass(frozen=True)
@@ -53,11 +58,65 @@ class HotspotSeed:
         return f"https://www.wikidata.org/wiki/{self.wikidata_item_id}"
 
     @property
+    def original_name(self) -> str | None:
+        """The name in the script of the destination country (原文), when the seed knows it.
+
+        Reviewed rows carry ``local_name``. Otherwise the Traditional Chinese
+        catalog name already is the original for Taiwan and Hong Kong, and a
+        Wikipedia title on the country's own wiki (``ja.wikipedia.org`` for
+        Japan) is the original elsewhere. English-wiki titles are not.
+        """
+
+        if self.local_name:
+            return self.local_name
+        language = original_locale_for(self.country_code)
+        if language == "zh-TW":
+            return self.name
+        if (
+            language
+            and self.wikipedia_project
+            and self.wikipedia_title
+            and self.wikipedia_project.split(".", 1)[0] == language
+        ):
+            return self.wikipedia_title
+        return None
+
+    @property
+    def english_name(self) -> str | None:
+        """A romanized label: the first Latin-script alias or an English Wikipedia title."""
+
+        for alias in self.aliases:
+            if is_latin_script(alias):
+                return _DISAMBIGUATION.sub("", alias).strip() or None
+        if self.wikipedia_project == "en.wikipedia.org" and self.wikipedia_title:
+            return _DISAMBIGUATION.sub("", self.wikipedia_title).strip() or None
+        return None
+
+    @property
+    def localized_names(self) -> dict[str, str]:
+        """Five site locales plus the original text, derived from the reviewed seed.
+
+        The catalog name is Traditional Chinese; English comes from the seed's
+        Latin-script alias or English Wikipedia title; the country's own
+        language takes the original. Locales the seed cannot fill fall back
+        through :data:`app.localized_names.FALLBACK_LOCALES` so every hotspot
+        always has a label in every language.
+        """
+
+        return build_localized_names(
+            names={"zh-TW": self.name, "en": self.english_name},
+            original=self.original_name,
+            country_code=self.country_code,
+            fallback=self.name,
+        )
+
+    @property
     def search_text(self) -> str:
         return " ".join(
             (
                 self.name,
                 *self.aliases,
+                *self.localized_names.values(),
                 self.destination_id,
                 self.city_code,
                 self.city_name,

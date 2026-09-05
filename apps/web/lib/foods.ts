@@ -1,4 +1,9 @@
 export type MapLink = { provider: string; label: string; url: string; primary: boolean };
+/** Five site locales plus the original-script text; `name` is already the one for the UI locale. */
+export type LocalizedNameMap = Partial<Record<"en" | "ja" | "ko" | "zh-TW" | "zh-CN", string>> & {
+  original?: string;
+  original_locale?: string;
+};
 
 export type FoodCity = {
   id: string;
@@ -23,6 +28,7 @@ export type SignatureDish = {
   slug: string;
   name: string;
   local_name: string;
+  names?: LocalizedNameMap;
   food_kind: string;
   meal_types: string[];
 };
@@ -41,6 +47,7 @@ export type FoodMerchant = {
   slug: string;
   name: string;
   local_name: string;
+  names?: LocalizedNameMap;
   destination_id: string;
   destination_name: string;
   country_code: string;
@@ -94,6 +101,7 @@ export type RecommendedMerchant = {
   slug: string;
   name: string;
   local_name: string;
+  names?: LocalizedNameMap;
   destination_id: string;
   address: string | null;
   latitude: number | null;
@@ -110,6 +118,7 @@ export type FoodItem = {
   country_name: string;
   name: string;
   local_name: string;
+  names?: LocalizedNameMap;
   romanized_name: string;
   summary: string;
   food_kind: "main" | "noodle_soup" | "street_food" | "dessert" | "drink";

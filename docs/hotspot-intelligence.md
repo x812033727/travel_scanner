@@ -35,6 +35,18 @@ The 0-100 score uses:
 Items without a collected trend remain visible but are returned with `is_estimate=true`. API
 responses expose the component scores, sources, signal date and whether the result is estimated.
 
+## Names in five locales plus the original script
+
+Each hotspot carries one label per site locale in `hotspot_localizations` and its original-script
+name (原文) in `metadata_json.local_name`. The seed derives them from reviewed data only: the
+catalog name is Traditional Chinese, English comes from the seed's Latin-script alias or English
+Wikipedia title, and the country's own language reads the original (`local_name`, or the title
+on the country's own wiki, or the Chinese name itself for Taiwan and Hong Kong). Locales the seed
+cannot fill fall back through the chain in `app/localized_names.py`, so every row has every
+locale. Curated labels are refreshed on each seeding run, like the rest of the curated row.
+Rankings return the label for the request locale as `name` and the whole map as `names`; trip
+selections copy the map onto the saved stop so a plan follows the traveller's language.
+
 ## Collection and operations
 
 `hotspot-collector` runs once on startup and then at

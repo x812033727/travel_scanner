@@ -30,10 +30,11 @@ from app.foods.coordinate_queue import (
     queue_total,
     resolve_queue_page,
 )
-from app.foods.service import destination_country_code, localized_name
+from app.foods.service import destination_country_code, localized_name, merchant_names
 from app.hotspots.maps import has_exact_map_identity
 from app.i18n import DEFAULT_LOCALE, LOCALES, Locale, current_locale
 from app.infra import get_redis
+from app.localized_names import sanitize_localized_names
 from app.locations.coordinates import (
     has_durable_coordinates,
     is_durable_coordinate_source,
@@ -175,6 +176,7 @@ class FoodMerchantWritePayload(BaseModel):
     country_code: str = Field(min_length=2, max_length=2)
     name: str = Field(min_length=1, max_length=255)
     local_name: str = Field(min_length=1, max_length=255)
+    names: dict[str, str] = Field(default_factory=dict)
     address: str | None = Field(default=None, max_length=1000)
     latitude: float | None = Field(default=None, ge=-90, le=90)
     longitude: float | None = Field(default=None, ge=-180, le=180)
@@ -200,6 +202,7 @@ class FoodMerchantWritePayload(BaseModel):
     @model_validator(mode="after")
     def validate_location_fields(self) -> FoodMerchantWritePayload:
         _validate_category_slugs(self.category_slugs)
+        self.names = _validate_name_overrides(self.names)
         if (self.latitude is None) != (self.longitude is None):
             raise ValueError("緯度與經度必須同時提供")
         if self.coordinate_source_url and not self.coordinate_source_url.startswith("https://"):
@@ -219,6 +222,7 @@ class FoodMerchantUpdatePayload(BaseModel):
     country_code: str | None = Field(default=None, min_length=2, max_length=2)
     name: str | None = Field(default=None, min_length=1, max_length=255)
     local_name: str | None = Field(default=None, min_length=1, max_length=255)
+    names: dict[str, str] | None = None
     address: str | None = Field(default=None, max_length=1000)
     latitude: float | None = Field(default=None, ge=-90, le=90)
     longitude: float | None = Field(default=None, ge=-180, le=180)
@@ -247,6 +251,8 @@ class FoodMerchantUpdatePayload(BaseModel):
     def validate_source_url(self) -> FoodMerchantUpdatePayload:
         if self.category_slugs is not None:
             _validate_category_slugs(self.category_slugs)
+        if self.names is not None:
+            self.names = _validate_name_overrides(self.names)
         if self.coordinate_source_url and not self.coordinate_source_url.startswith("https://"):
             raise ValueError("座標來源必須是 HTTPS 網址")
         if self.official_website_url:
@@ -298,6 +304,22 @@ def _validate_names(names: dict[str, str]) -> dict[str, str]:
     if any(not value or len(value) > 255 for value in cleaned.values()):
         raise ValueError("每個語系的名稱都必須填寫且不超過 255 字")
     return cleaned
+
+
+def _validate_name_overrides(names: dict[str, str]) -> dict[str, str]:
+    """Per-locale merchant labels: any subset of the site locales, blanks dropped.
+
+    Unlike areas and categories a merchant already has an English ``name`` and
+    an original ``local_name``, so administrators only override the locales
+    that need a better label; the rest resolve from those two columns.
+    """
+
+    cleaned = {locale: value.strip() for locale, value in names.items()}
+    if set(cleaned) - set(LOCALES):
+        raise ValueError("店名語系只能是五種網站語系")
+    if any(len(value) > 255 for value in cleaned.values()):
+        raise ValueError("每個語系的店名不可超過 255 字")
+    return {locale: value for locale, value in cleaned.items() if value}
 
 
 def _validate_category_slugs(slugs: list[str]) -> None:
@@ -1028,6 +1050,10 @@ async def _merchant_admin_item(session: AsyncSession, merchant: FoodMerchant) ->
         "country_code": merchant.country_code,
         "name": merchant.name,
         "local_name": merchant.local_name,
+        # ``names`` are the administrator's explicit per-locale labels;
+        # ``resolved_names`` is what travellers see once name and local_name fill the gaps.
+        "names": sanitize_localized_names(merchant.names_json),
+        "resolved_names": merchant_names(merchant),
         "address": merchant.address,
         "latitude": float(merchant.latitude) if merchant.latitude is not None else None,
         "longitude": float(merchant.longitude) if merchant.longitude is not None else None,
@@ -1320,6 +1346,7 @@ async def create_food_merchant(
         country_code=payload.country_code.upper(),
         name=payload.name,
         local_name=payload.local_name,
+        names_json=payload.names,
         address=payload.address,
         latitude=payload.latitude,
         longitude=payload.longitude,
@@ -1531,6 +1558,8 @@ async def update_food_merchant(
         if field == "destination_id" and value:
             value = value.casefold()
         setattr(merchant, field, value)
+    if payload.names is not None:
+        merchant.names_json = payload.names
     if "official_website_url" in payload.model_fields_set:
         merchant.official_website_verified_at = (
             datetime.now(UTC) if payload.official_website_url else None

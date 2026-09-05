@@ -12,6 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import CurrentUser
 from app.db import get_session
+from app.localized_names import item_names
 from app.models import RestaurantFavorite, RestaurantPlace, TripPlan
 from app.problems import AppError
 from app.restaurants.editorial import editorial_by_google_place_id
@@ -196,6 +197,11 @@ async def select_restaurant_for_trip(
     )
     meal.title = title
     meal.location_name = str(editorial.get("address") or editorial["name"]) if editorial else title
+    # Editorial names are single-language source text; the placeholder label
+    # exists in every site locale, so store it and let the card follow the UI.
+    meal.names_json = (
+        {} if editorial else item_names(title=fallback_names, location_name=fallback_names)
+    )
     meal.provider_place_id = place.google_place_id
     meal.latitude = Decimal(str(ride_location["latitude"])) if ride_location is not None else None
     meal.longitude = Decimal(str(ride_location["longitude"])) if ride_location is not None else None
