@@ -66,14 +66,19 @@ export function AdminDeploymentsPanel() {
     if (!overview?.active_run || terminal.has(overview.active_run.status)) return;
     let cancelled = false;
     let delay = 2_000;
-    const deadline = Date.now() + 5 * 60_000;
+    // No deadline: a real deploy (image build + backup + migration + health
+    // checks) routinely outlives the old 5-minute cap, after which the panel
+    // silently froze mid-stage and the spinner span forever. Poll until the
+    // run reaches a terminal state, easing off after the first five minutes.
+    const startedAt = Date.now();
     let timer: ReturnType<typeof setTimeout>;
     const poll = async () => {
-      if (cancelled || Date.now() >= deadline) return;
+      if (cancelled) return;
       try {
         const next = await api<Overview>("/admin/deployments/overview");
         if (cancelled) return;
-        setOverview(next); setReconnecting(false); delay = 2_000;
+        setOverview(next); setReconnecting(false);
+        delay = Date.now() - startedAt > 5 * 60_000 ? 10_000 : 2_000;
         if (!next.active_run || terminal.has(next.active_run.status)) {
           const runs = await api<RunList>("/admin/deployments?limit=20");
           if (!cancelled) setHistory(runs.items);

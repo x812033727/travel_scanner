@@ -60,6 +60,10 @@ type Merchant = {
 export type MerchantTaxonomyFilter = "missing_area" | "missing_category";
 type DishOption = { id: string; slug: string; local_name: string; country_code: string };
 type MerchantResponse = { items: Merchant[]; total: number };
+
+// The API caps limit at 100 and pages from 1; the panel used to hard-code
+// limit=100 with no pager, so merchant 101 onward simply did not exist here.
+const PAGE_SIZE = 50;
 type MapCandidateResponse = {
   configured: boolean;
   reason: string;
@@ -184,6 +188,15 @@ export function AdminFoodMerchantsPanel({
   const [mapStatus, setMapStatus] = useState("");
   const [officialData, setOfficialData] = useState("");
   const [query, setQuery] = useState("");
+  const filterSignature = [destination, filterArea, filterCategory, mapStatus, officialData, query, taxonomy].join("|");
+  // The page number is only meaningful for the filters it was chosen under:
+  // narrowing the list while on page 3 must not fetch page 3 of the new,
+  // shorter result, so a changed filter silently reads as page 1.
+  const [pageState, setPageState] = useState({ signature: filterSignature, page: 1 });
+  const page = pageState.signature === filterSignature ? pageState.page : 1;
+  const setPage = (update: (current: number) => number) =>
+    setPageState({ signature: filterSignature, page: update(page) });
+
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [batchCandidates, setBatchCandidates] = useState<
     BatchCandidateResult[]
@@ -193,11 +206,15 @@ export function AdminFoodMerchantsPanel({
   // The page-level message banner sits behind the editor overlay, so the editor
   // reports the result of applying a candidate in its own notice instead.
   const [applyNotice, setApplyNotice] = useState("");
+  // Same reason as applyNotice: a failed save reported into the page banner is
+  // invisible behind the z-[90] editor overlay — the owner just sees the
+  // button flicker and assumes the save worked.
+  const [saveError, setSaveError] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   const load = useCallback(async () => {
-    const params = new URLSearchParams({ limit: "100" });
+    const params = new URLSearchParams({ limit: String(PAGE_SIZE), page: String(page) });
     if (destination.trim()) params.set("destination_id", destination.trim());
     if (mapStatus) params.set("map_status", mapStatus);
     if (officialData) params.set("official_data", officialData);
@@ -212,10 +229,10 @@ export function AdminFoodMerchantsPanel({
     } catch (reason) {
       setMessage((reason as Error).message);
     }
-  }, [destination, filterArea, filterCategory, mapStatus, officialData, query, taxonomy]);
+  }, [destination, filterArea, filterCategory, mapStatus, officialData, query, taxonomy, page]);
 
   useEffect(() => {
-    const params = new URLSearchParams({ limit: "100" });
+    const params = new URLSearchParams({ limit: String(PAGE_SIZE), page: String(page) });
     if (destination.trim()) params.set("destination_id", destination.trim());
     if (mapStatus) params.set("map_status", mapStatus);
     if (officialData) params.set("official_data", officialData);
@@ -230,7 +247,7 @@ export function AdminFoodMerchantsPanel({
         setBatchCandidates([]);
       })
       .catch((reason: Error) => setMessage(reason.message));
-  }, [destination, filterArea, filterCategory, mapStatus, officialData, query, taxonomy]);
+  }, [destination, filterArea, filterCategory, mapStatus, officialData, query, taxonomy, page]);
 
   useEffect(() => {
     loadCities()
@@ -460,6 +477,7 @@ export function AdminFoodMerchantsPanel({
   async function save() {
     if (!editing) return;
     setLoading(true);
+    setSaveError("");
     try {
       await api(editing.id ? `/admin/foods/merchants/${editing.id}` : "/admin/foods/merchants", {
         method: editing.id ? "PATCH" : "POST",
@@ -504,7 +522,7 @@ export function AdminFoodMerchantsPanel({
       setApplyNotice("");
       await load();
     } catch (reason) {
-      setMessage((reason as Error).message);
+      setSaveError((reason as Error).message);
     } finally {
       setLoading(false);
     }
@@ -671,6 +689,7 @@ export function AdminFoodMerchantsPanel({
             setEditing(blankMerchant());
             setCandidate(null);
             setApplyNotice("");
+            setSaveError("");
           }}
           className="h-11 rounded-xl bg-[var(--teal)] px-4 font-semibold text-white"
         >
@@ -852,6 +871,7 @@ export function AdminFoodMerchantsPanel({
                     <button
                       type="button"
                       onClick={() => {
+                        setSaveError("");
                         setEditing({
                           ...merchant,
                           sources: merchant.sources.map((source) => ({
@@ -873,6 +893,14 @@ export function AdminFoodMerchantsPanel({
           </tbody>
         </table>
       </div>
+
+      {data && data.total > PAGE_SIZE && (
+        <nav aria-label={t("pagination.label")} className="mt-4 flex items-center justify-end gap-3">
+          <button type="button" disabled={page <= 1} onClick={() => setPage((current) => Math.max(1, current - 1))} className="min-h-11 rounded-xl border px-4 text-sm font-semibold disabled:opacity-40">{t("pagination.previous")}</button>
+          <span className="text-sm text-[var(--muted)]">{t("pagination.pageOf", { page, pages: Math.max(1, Math.ceil(data.total / PAGE_SIZE)) })} · {t("pagination.merchantTotal", { total: data.total })}</span>
+          <button type="button" disabled={page >= Math.ceil(data.total / PAGE_SIZE)} onClick={() => setPage((current) => current + 1)} className="min-h-11 rounded-xl border px-4 text-sm font-semibold disabled:opacity-40">{t("pagination.next")}</button>
+        </nav>
+      )}
 
       {editing && (
         <div className="fixed inset-0 z-[90] overflow-y-auto bg-slate-950/50 p-4 md:p-8">
@@ -1424,6 +1452,11 @@ export function AdminFoodMerchantsPanel({
                 儲存店家地點
               </button>
             </div>
+            {saveError && (
+              <p role="alert" className="mt-3 rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-800">
+                {saveError}
+              </p>
+            )}
           </div>
         </div>
       )}

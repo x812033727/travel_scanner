@@ -77,7 +77,9 @@ describe("AdminUsersPanel", () => {
     render(<AdminUsersPanel />);
 
     fireEvent.click(await screen.findByRole("button", { name: "管理" }));
+    // Disabling is now a two-tap action: the first tap arms the button.
     fireEvent.click(await screen.findByRole("button", { name: "停用帳號" }));
+    fireEvent.click(await screen.findByRole("button", { name: "再按一次確認停用" }));
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(4));
     const request = fetchMock.mock.calls[2][1] as RequestInit;
