@@ -8,11 +8,23 @@ vi.mock("./place-picker", () => ({
   PlacePicker: ({ value, onTextChange }: { value: string; onTextChange: (value: string) => void }) => <input aria-label="目的地" value={value} onChange={(event) => onTextChange(event.target.value)} />,
 }));
 
+function dayButton(iso: string) {
+  return document.querySelector<HTMLButtonElement>(`[data-date="${iso}"]`);
+}
+
+// Walks the calendar forward until the day is on screen, then taps it.
+function pickDay(iso: string) {
+  for (let attempt = 0; attempt < 24 && !dayButton(iso); attempt += 1) fireEvent.click(screen.getByRole("button", { name: "下個月" }));
+  const button = dayButton(iso);
+  if (!button) throw new Error(`day ${iso} is not reachable`);
+  fireEvent.click(button);
+}
+
 function fillRequiredFields() {
   fireEvent.change(screen.getByLabelText("旅程名稱"), { target: { value: " 東京五日賞楓 " } });
   fireEvent.change(screen.getByLabelText("目的地"), { target: { value: " 東京 " } });
-  fireEvent.change(screen.getByLabelText("開始日期"), { target: { value: "2026-11-10" } });
-  fireEvent.change(screen.getByLabelText("結束日期"), { target: { value: "2026-11-15" } });
+  pickDay("2026-11-10");
+  pickDay("2026-11-15");
 }
 
 function next() {
@@ -24,20 +36,64 @@ function reachReview() {
 }
 
 describe("NewTripForm", () => {
-  beforeEach(() => push.mockReset());
+  beforeEach(() => {
+    push.mockReset();
+    // The calendar only offers days from today on; pin the clock so the
+    // November 2026 fixtures stay reachable and the assertions stay exact.
+    vi.setSystemTime(new Date("2026-09-05T12:00:00"));
+  });
   afterEach(() => {
+    vi.useRealTimers();
     vi.unstubAllGlobals();
     window.sessionStorage.clear();
   });
 
-  it("rejects a start date in the past", () => {
+  it("selects the trip dates as a continuous range on one calendar", () => {
     render(<NewTripForm />);
-    fireEvent.change(screen.getByLabelText("旅程名稱"), { target: { value: "回到過去" } });
+    expect(screen.queryByLabelText("開始日期")).toBeNull();
+    const dates = within(screen.getByRole("group", { name: "旅行日期" }));
+    expect(dates.getByRole("status").textContent).toBe("請先點選開始日期。");
+    pickDay("2026-11-10");
+    expect(dates.getByRole("status").textContent).toContain("再點選結束日期");
+    pickDay("2026-11-15");
+    expect(dates.getByRole("status").textContent).toMatch(/2026年11月10日.*→.*2026年11月15日.*共 6 天/);
+    expect(dayButton("2026-11-12")?.getAttribute("aria-pressed")).toBe("true");
+    expect(screen.getByText("6 天")).toBeTruthy();
+    fireEvent.change(screen.getByLabelText("旅程名稱"), { target: { value: "東京賞楓" } });
     fireEvent.change(screen.getByLabelText("目的地"), { target: { value: "東京" } });
-    fireEvent.change(screen.getByLabelText("開始日期"), { target: { value: "2020-01-01" } });
-    fireEvent.change(screen.getByLabelText("結束日期"), { target: { value: "2020-01-06" } });
     next();
-    expect(screen.getByRole("alert").textContent).toContain("開始日期不可早於今天");
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+
+  it("drops a stale draft's past dates, ignores unknown values and returns to the first step", async () => {
+    window.sessionStorage.setItem("mokaair-new-trip-draft", JSON.stringify({
+      step: 3, lodgingMode: "hotel", planningMode: "manual_blank", selectedInterests: ["food", "bogus"],
+      form: { name: "回到過去", destination_name: "東京", start_date: "2020-01-01", end_date: "2020-01-06", pace: "turbo", route_preference: "TELEPORT" },
+    }));
+    render(<NewTripForm />);
+    await waitFor(() => expect((screen.getByLabelText("旅程名稱") as HTMLInputElement).value).toBe("回到過去"));
+    expect(document.querySelector('[data-date][aria-pressed="true"]')).toBeNull();
+    expect(within(screen.getByRole("group", { name: "旅行日期" })).getByRole("status").textContent).toBe("請先點選開始日期。");
+    const steps = within(screen.getByRole("list", { name: "建立步驟" })).getAllByRole("listitem");
+    expect(steps[0].getAttribute("aria-current")).toBe("step");
+    expect(steps[3].getAttribute("aria-current")).toBeNull();
+    expect(screen.getByRole("button", { name: "適中" }).getAttribute("aria-pressed")).toBe("true");
+    expect((screen.getByLabelText("大眾運輸偏好") as HTMLSelectElement).value).toBe("FEWER_TRANSFERS");
+    expect(screen.getByRole("button", { name: "只住飯店" }).getAttribute("aria-pressed")).toBe("true");
+    expect(screen.getByRole("button", { name: "美食" }).getAttribute("aria-pressed")).toBe("true");
+    next();
+    expect(screen.getByRole("alert").textContent).toContain("請選擇開始與結束日期");
+  });
+
+  it("re-focuses the alert when the same error repeats", () => {
+    render(<NewTripForm />);
+    next();
+    const alert = screen.getByRole("alert");
+    expect(document.activeElement).toBe(alert);
+    alert.blur();
+    expect(document.activeElement).not.toBe(alert);
+    next();
+    expect(document.activeElement).toBe(screen.getByRole("alert"));
   });
 
   it("clears the validation error as soon as the user edits a field", () => {
@@ -68,7 +124,7 @@ describe("NewTripForm", () => {
     next();
     fireEvent.change(screen.getByLabelText("成人"), { target: { value: "3" } });
     fireEvent.change(screen.getByLabelText("兒童"), { target: { value: "1" } });
-    fireEvent.change(screen.getByLabelText("整趟總預算 TWD"), { target: { value: "90000" } });
+    fireEvent.change(screen.getByLabelText("整趟總預算 TWD"), { target: { value: "90000.4" } });
     fireEvent.click(screen.getByRole("button", { name: "悠閒" }));
     fireEvent.click(screen.getByRole("button", { name: "美食" }));
     next();
@@ -76,14 +132,17 @@ describe("NewTripForm", () => {
     fireEvent.change(screen.getByLabelText("每晚最低 TWD"), { target: { value: "3000" } });
     fireEvent.change(screen.getByLabelText("每晚最高 TWD"), { target: { value: "7000" } });
     fireEvent.change(screen.getByLabelText("最低星級"), { target: { value: "4" } });
+    fireEvent.change(screen.getByLabelText("最低住客評分"), { target: { value: "8" } });
     fireEvent.change(screen.getByLabelText("最低評論數"), { target: { value: "100" } });
     next();
     fireEvent.change(screen.getByLabelText("大眾運輸偏好"), { target: { value: "LESS_WALKING" } });
     fireEvent.change(screen.getByLabelText("其他補充"), { target: { value: " 不要一直換飯店 " } });
     const review = within(screen.getByRole("region", { name: "完整行程條件" }));
+    expect(review.getByText(/2026年11月10日.*→.*2026年11月15日/)).toBeTruthy();
     expect(review.getByText("每晚住宿預算")).toBeTruthy();
     expect(review.getByText("NT$3,000～NT$7,000")).toBeTruthy();
     expect(review.getByText("4 星以上")).toBeTruthy();
+    expect(review.getByText("8.0+")).toBeTruthy();
     expect(review.getByText("100 則以上")).toBeTruthy();
     expect(review.getByText("少走路")).toBeTruthy();
     expect(screen.getByText(/不會傳送 Email、姓名或帳號識別資料/)).toBeTruthy();
@@ -102,7 +161,7 @@ describe("NewTripForm", () => {
       preferences: {
         budget_twd: 90000, pace: "relaxed", accepted_property_types: ["hotel", "vacation_rental"],
         hotel_min_nightly_twd: 3000, hotel_max_nightly_twd: 7000, hotel_min_rating: 4,
-        hotel_min_review_count: 100, interests: ["food"],
+        hotel_min_review_score: 8, hotel_min_review_count: 100, interests: ["food"],
       },
       notes: "不要一直換飯店",
     });
