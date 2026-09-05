@@ -53,7 +53,8 @@ test("guest recommendation through alert management uses the real first-party st
   await page.getByRole("link", { name: "前往管理" }).click();
 
   await expect(page.getByRole("heading", { name: "價格通知" })).toBeVisible();
-  await expect(page.getByText("追蹤中")).toBeVisible();
+  // The capacity line above the list also says 追蹤中 (追蹤中 1／20 筆價格通知); match the status pill exactly.
+  await expect(page.getByText("追蹤中", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: /編輯/ }).first().click();
   await page.getByLabel(/編輯.*目標價格/).fill("30000");
   await page.getByRole("button", { name: "儲存價格" }).click();
