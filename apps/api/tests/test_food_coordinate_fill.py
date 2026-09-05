@@ -6,16 +6,24 @@ import pytest
 
 from app.foods.coordinate_fill import (
     CoordinateFillReport,
+    FetchResult,
     GeoCandidate,
     MerchantPage,
     fill_merchant_coordinates,
     in_country,
+    merchant_page_sources,
+    merchants_without_coordinates,
     page_candidates,
     select_candidate,
     summarize,
 )
-from app.foods.coordinate_fill_cli import MAX_BYTES, build_fetcher, is_public_https_url
-from app.models import FoodMerchant
+from app.foods.coordinate_fill_cli import (
+    MAX_BYTES,
+    build_fetcher,
+    is_public_https_url,
+    same_site,
+)
+from app.models import FoodMerchant, FoodMerchantSource
 
 JSON_LD_PAGE = """
 <html><head>
@@ -121,14 +129,16 @@ def pages(*bodies: str | None) -> Any:
     queue = list(bodies)
     seen: list[str] = []
 
-    async def fetch(url: str) -> str | None:
+    async def fetch(url: str) -> FetchResult:
         seen.append(url)
         if not queue:
             raise AssertionError(f"unexpected extra fetch of {url}")
         body = queue.pop(0)
         if body == "boom":
             raise TimeoutError("slow")
-        return body
+        if body is None:
+            return FetchResult(None, "http_404")
+        return FetchResult(body, "ok")
 
     fetch.seen = seen  # type: ignore[attr-defined]
     return fetch
@@ -518,23 +528,29 @@ def test_only_public_https_hosts_are_fetchable() -> None:
 
 @pytest.mark.asyncio
 async def test_a_redirect_into_the_private_network_is_refused() -> None:
-    resolve = resolver({"public.example": ["93.184.216.34"], "postgres": ["172.18.0.2"]})
+    # Same site, so the provenance rule lets it through and the address check is what has to
+    # stop it: a name on the cited domain can still point inside the compose network.
+    resolve = resolver(
+        {"public.example": ["93.184.216.34"], "internal.public.example": ["172.18.0.2"]}
+    )
     transport = httpx.MockTransport(
-        lambda request: httpx.Response(302, headers={"location": "https://postgres:5432/"})
+        lambda request: httpx.Response(
+            302, headers={"location": "https://internal.public.example/"}
+        )
     )
     async with httpx.AsyncClient(transport=transport, follow_redirects=False) as client:
         fetch = build_fetcher(client, resolve)
 
-        assert await fetch("https://public.example/start") is None
+        assert await fetch("https://public.example/start") == FetchResult(None, "blocked_url")
 
 
 @pytest.mark.asyncio
 async def test_a_public_redirect_is_followed_and_the_body_is_capped() -> None:
-    resolve = resolver({"a.example": ["93.184.216.34"], "b.example": ["93.184.216.35"]})
+    resolve = resolver({"a.example": ["93.184.216.34"], "www.a.example": ["93.184.216.35"]})
 
     def handler(request: httpx.Request) -> httpx.Response:
         if request.url.host == "a.example":
-            return httpx.Response(301, headers={"location": "https://b.example/final"})
+            return httpx.Response(301, headers={"location": "https://www.a.example/final"})
         return httpx.Response(
             200,
             headers={"content-type": "text/html; charset=utf-8"},
@@ -542,10 +558,10 @@ async def test_a_public_redirect_is_followed_and_the_body_is_capped() -> None:
         )
 
     async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
-        body = await build_fetcher(client, resolve)("https://a.example/start")
+        result = await build_fetcher(client, resolve)("https://a.example/start")
 
-    assert body is not None
-    assert len(body) <= MAX_BYTES
+    assert result.reason == "ok"
+    assert result.body is not None and len(result.body) <= MAX_BYTES
 
 
 @pytest.mark.asyncio
@@ -560,5 +576,155 @@ async def test_a_redirect_loop_and_a_non_html_body_both_give_up() -> None:
     async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
         fetch = build_fetcher(client, resolve)
 
-        assert await fetch("https://loop.example/start") is None
-        assert await fetch("https://pdf.example/menu") is None
+        assert (await fetch("https://loop.example/start")).reason == "too_many_redirects"
+        assert (await fetch("https://pdf.example/menu")).reason == "not_html"
+
+
+DELIVERY_RADIUS_PAGE = """
+<script type="application/ld+json">
+{"@type":"Restaurant","name":"Jumbo Seafood Riverside Point",
+ "geo":{"@type":"GeoCoordinates","latitude":1.2884,"longitude":103.8461},
+ "deliveryRadius":{"@type":"GeoCircle",
+   "geoMidpoint":{"@type":"GeoCoordinates","latitude":1.3521,"longitude":103.8198},
+   "geoRadius":"5000"}}
+</script>
+"""
+
+LOOSE_COORDINATE_PAGE = """
+<script type="application/ld+json">
+{"@type":"WebPage","name":"Jumbo Seafood Riverside Point",
+ "someVendorField":{"latitude":1.3521,"longitude":103.8198}}
+</script>
+"""
+
+
+def test_a_delivery_radius_midpoint_is_not_the_restaurant() -> None:
+    found = page_candidates(DELIVERY_RADIUS_PAGE)
+
+    assert [c.key for c in found] == [(1.2884, 103.8461)]
+
+
+def test_a_coordinate_the_page_does_not_present_as_a_place_is_ignored() -> None:
+    # Not under geo/location and not typed GeoCoordinates, so the page never said this is
+    # where the business stands.
+    assert page_candidates(LOOSE_COORDINATE_PAGE) == []
+
+
+def test_a_page_that_cannot_be_read_reports_why() -> None:
+    assert FetchResult(None, "http_404").body is None
+
+
+@pytest.mark.asyncio
+async def test_the_failure_reason_becomes_the_outcome() -> None:
+    session = FillSession()
+    row = merchant()
+
+    reports = await fill_merchant_coordinates(
+        session,  # type: ignore[arg-type]
+        [row],
+        sources(row, website("https://own.example/gone")),
+        pages(None),
+        apply=True,
+    )
+
+    assert [r.outcome for r in reports] == ["http_404"]
+
+
+def test_same_site_allows_a_www_hop_and_nothing_further() -> None:
+    assert same_site("https://hato.co.jp/a", "https://www.hato.co.jp/b") is True
+    assert same_site("https://www.hato.co.jp/a", "https://hato.co.jp/b") is True
+    assert same_site("https://hato.co.jp/a", "https://hato.co.jp/b") is True
+    # Two unrelated businesses that merely share a public suffix must not pass.
+    assert same_site("https://hato.co.jp/a", "https://evil.co.jp/b") is False
+    assert same_site("https://visitkanagawa.jp/a", "https://example.com/b") is False
+
+
+@pytest.mark.asyncio
+async def test_a_redirect_off_the_cited_site_is_refused() -> None:
+    # The cited URL is what gets stored as provenance, so a hop to another site would make
+    # that citation describe a page the coordinate did not come from.
+    resolve = resolver({"cited.example": ["93.184.216.34"], "elsewhere.example": ["93.184.216.35"]})
+    transport = httpx.MockTransport(
+        lambda request: httpx.Response(302, headers={"location": "https://elsewhere.example/x"})
+    )
+    async with httpx.AsyncClient(transport=transport, follow_redirects=False) as client:
+        result = await build_fetcher(client, resolve)("https://cited.example/page")
+
+    assert result == FetchResult(None, "redirect_offsite")
+
+
+@pytest.mark.asyncio
+async def test_the_candidate_query_selects_only_rows_a_coordinate_would_help() -> None:
+    captured: dict[str, Any] = {}
+
+    class QuerySession:
+        async def scalars(self, statement: object) -> Any:
+            captured["sql"] = str(statement)
+
+            class Result:
+                def all(self) -> list[FoodMerchant]:
+                    return []
+
+            return Result()
+
+    await merchants_without_coordinates(
+        QuerySession(),  # type: ignore[arg-type]
+        destination_ids=("Okinawa",),
+        limit=5,
+    )
+
+    sql = captured["sql"]
+    assert "latitude IS NULL" in sql
+    assert "review_status !=" in sql
+    assert "destination_id IN" in sql
+    assert "LIMIT" in sql
+
+
+@pytest.mark.asyncio
+async def test_only_current_first_party_pages_with_a_durable_type_are_offered() -> None:
+    row = merchant(official_website_url="https://own.example/branch")
+    kept = FoodMerchantSource(
+        merchant_id=row.id,
+        source_type="official_tourism",
+        source_scope="merchant_listing",
+        source_title="listing",
+        source_url="https://tourism.example/listing",
+    )
+    not_durable = FoodMerchantSource(
+        merchant_id=row.id,
+        source_type="michelin_licensed",
+        source_scope="merchant_listing",
+        source_title="guide",
+        source_url="https://guide.example/star",
+    )
+    insecure = FoodMerchantSource(
+        merchant_id=row.id,
+        source_type="merchant_official",
+        source_scope="merchant_website",
+        source_title="site",
+        source_url="http://insecure.example/",
+    )
+
+    class SourceSession:
+        def __init__(self) -> None:
+            self.sql = ""
+
+        async def scalars(self, statement: object) -> Any:
+            self.sql = str(statement)
+
+            class Result:
+                def all(self) -> list[FoodMerchantSource]:
+                    return [kept, not_durable, insecure]
+
+            return Result()
+
+    session = SourceSession()
+    grouped = await merchant_page_sources(session, [row])  # type: ignore[arg-type]
+
+    assert "is_current" in session.sql
+    assert "source_scope IN" in session.sql
+    assert [(page.source_type, page.url) for page in grouped[row.id]] == [
+        ("official_tourism", "https://tourism.example/listing"),
+        # the merchant's own field is admitted even with no source row behind it
+        ("merchant_official", "https://own.example/branch"),
+    ]

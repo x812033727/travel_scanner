@@ -99,10 +99,24 @@ _META_POSITION = re.compile(
     re.IGNORECASE,
 )
 _PUNCTUATION = re.compile(r"[\s　·・,，.。()（）\[\]【】\-‐‑–—_/&'\"!！?？:：;；]+")
-# schema.org keys that lead towards a place rather than sideways into an unrelated entity.
-_GEO_KEYS = ("geo", "location", "address", "@graph", "mainEntity", "itemListElement")
+# schema.org properties that carry a geometry which is not where the business stands.
+_SKIP_KEYS = frozenset(
+    {"deliveryRadius", "areaServed", "serviceArea", "geoMidpoint", "geoRadius", "containsPlace"}
+)
 
-Fetcher = Callable[[str], Awaitable[str | None]]
+Fetcher = Callable[[str], Awaitable["FetchResult"]]
+
+
+@dataclass(frozen=True)
+class FetchResult:
+    """What a page gave back, and when it gave nothing, which of the ways it failed.
+
+    An operator triaging 47 pages needs to tell a 404 from a PDF from a blocked host; one
+    ``fetch_failed`` for all of them says only "something went wrong somewhere".
+    """
+
+    body: str | None
+    reason: str
 
 
 @dataclass(frozen=True)
@@ -160,14 +174,35 @@ def _normalize(name: str) -> str:
     return _PUNCTUATION.sub("", unicodedata.normalize("NFKC", name)).casefold()
 
 
-def _collect_geo(node: Any, owner: str | None, found: list[GeoCandidate], depth: int = 0) -> None:
+def _is_geo_point(node: dict[str, Any], via: str | None) -> bool:
+    """Whether this node is the place's own point rather than some other geometry.
+
+    schema.org hangs plenty of coordinates off a business that are not where it stands: the
+    midpoint of a ``deliveryRadius``, an ``areaServed`` polygon, a ``GeoCircle``. Accepting
+    any dict with a latitude turns a delivery radius into the restaurant.
+    """
+
+    if via in ("geo", "location"):
+        return True
+    types = node.get("@type")
+    names = types if isinstance(types, list) else [types]
+    return any(isinstance(name, str) and name == "GeoCoordinates" for name in names)
+
+
+def _collect_geo(
+    node: Any,
+    owner: str | None,
+    found: list[GeoCandidate],
+    depth: int = 0,
+    via: str | None = None,
+) -> None:
     """Walk a JSON-LD document recording every coordinate with the entity that owns it."""
 
     if depth > 8:
         return
     if isinstance(node, list):
         for item in node:
-            _collect_geo(item, owner, found, depth + 1)
+            _collect_geo(item, owner, found, depth + 1, via)
         return
     if not isinstance(node, dict):
         return
@@ -176,14 +211,13 @@ def _collect_geo(node: Any, owner: str | None, found: list[GeoCandidate], depth:
     latitude = _number(node.get("latitude"))
     longitude = _number(node.get("longitude"))
     if latitude is not None and longitude is not None:
-        found.append(GeoCandidate(latitude, longitude, here, "json_ld"))
+        if _is_geo_point(node, via):
+            found.append(GeoCandidate(latitude, longitude, here, "json_ld"))
         return
-    for key in _GEO_KEYS:
-        if key in node:
-            _collect_geo(node[key], here, found, depth + 1)
     for key, value in node.items():
-        if key not in _GEO_KEYS and isinstance(value, dict | list):
-            _collect_geo(value, here, found, depth + 1)
+        if key in _SKIP_KEYS or not isinstance(value, dict | list):
+            continue
+        _collect_geo(value, here, found, depth + 1, key)
 
 
 def _jsonld_candidates(html: str) -> list[GeoCandidate]:
@@ -383,19 +417,21 @@ async def fill_merchant_coordinates(
                 await pause(host_delay_seconds)
             last_host = host
             try:
-                html = await fetch(page.url)
+                result = await fetch(page.url)
             except Exception as exc:  # a dead link must not stop the batch
                 if outcome == "no_coordinates":
                     outcome = "fetch_failed"
                 if progress:
                     progress(f"{slug}: {page.url} failed ({type(exc).__name__})")
                 continue
-            if not html:
+            if not result.body:
                 if outcome == "no_coordinates":
-                    outcome = "unreadable"
+                    outcome = result.reason
+                if progress:
+                    progress(f"{slug}: {page.url} {result.reason}")
                 continue
             candidate, reason = select_candidate(
-                page_candidates(html), (merchant.name, merchant.local_name)
+                page_candidates(result.body), (merchant.name, merchant.local_name)
             )
             if candidate is None:
                 if outcome == "no_coordinates" and reason != "no_coordinates":

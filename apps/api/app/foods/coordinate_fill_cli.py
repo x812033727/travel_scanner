@@ -28,6 +28,7 @@ import httpx
 
 from app.db import SessionFactory
 from app.foods.coordinate_fill import (
+    FetchResult,
     fill_merchant_coordinates,
     merchant_page_sources,
     merchants_without_coordinates,
@@ -72,6 +73,16 @@ def is_public_https_url(url: str, resolve: Resolver = system_resolver) -> bool:
     return True
 
 
+def same_site(first: str, second: str) -> bool:
+    """Whether two URLs sit on the same site, allowing only a www/apex style hop."""
+
+    a = (urlsplit(first).hostname or "").lower()
+    b = (urlsplit(second).hostname or "").lower()
+    if not a or not b:
+        return False
+    return a == b or a.endswith(f".{b}") or b.endswith(f".{a}")
+
+
 async def read_capped(response: httpx.Response) -> str:
     chunks: list[bytes] = []
     total = 0
@@ -86,7 +97,7 @@ async def read_capped(response: httpx.Response) -> str:
 
 def build_fetcher(
     client: httpx.AsyncClient, resolve: Resolver = system_resolver
-) -> Callable[[str], Awaitable[str | None]]:
+) -> Callable[[str], Awaitable[FetchResult]]:
     """A fetcher that re-checks every hop, so a redirect cannot walk into the private network.
 
     httpx has no whole-request deadline — its read timeout restarts on every socket read, so a
@@ -94,31 +105,37 @@ def build_fetcher(
     deadline that actually bounds a run.
     """
 
-    async def walk(url: str) -> str | None:
+    async def walk(url: str) -> FetchResult:
+        start = url
         for _ in range(MAX_REDIRECTS + 1):
             if not is_public_https_url(url, resolve):
-                return None
+                return FetchResult(None, "blocked_url")
             async with client.stream("GET", url) as response:
                 if response.is_redirect:
                     location = response.headers.get("location")
                     if not location:
-                        return None
+                        return FetchResult(None, "redirect_without_target")
                     url = urljoin(url, location)
+                    # The cited URL is what gets stored as provenance, so a hop off the
+                    # cited site would make that citation describe a page it did not come
+                    # from. Refuse rather than quietly re-attribute the coordinate.
+                    if not same_site(start, url):
+                        return FetchResult(None, "redirect_offsite")
                     continue
                 if response.status_code != 200:
-                    return None
+                    return FetchResult(None, f"http_{response.status_code}")
                 content_type = response.headers.get("content-type", "")
                 if "html" not in content_type and "xml" not in content_type:
-                    return None
-                return await read_capped(response)
-        return None
+                    return FetchResult(None, "not_html")
+                return FetchResult(await read_capped(response), "ok")
+        return FetchResult(None, "too_many_redirects")
 
-    async def fetch(url: str) -> str | None:
+    async def fetch(url: str) -> FetchResult:
         try:
             async with asyncio.timeout(TOTAL_SECONDS):
                 return await walk(url)
         except TimeoutError:
-            return None
+            return FetchResult(None, "timeout")
 
     return fetch
 
