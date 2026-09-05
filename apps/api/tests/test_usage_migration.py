@@ -133,8 +133,15 @@ async def test_legacy_balance_migrates_one_to_one_and_ledger_is_immutable() -> N
             operation_costs = await migrated.fetch(
                 "SELECT operation, uses FROM usage_operation_costs ORDER BY operation"
             )
-            assert len(operation_costs) == 12
-            assert {row["uses"] for row in operation_costs} == {1}
+            costs_by_operation = {row["operation"]: row["uses"] for row in operation_costs}
+            assert len(costs_by_operation) == 13
+            # 0039 seeds refinement free; every other operation keeps the 1-use default.
+            assert costs_by_operation["ai_itinerary_refine"] == 0
+            assert {
+                uses
+                for operation, uses in costs_by_operation.items()
+                if operation != "ai_itinerary_refine"
+            } == {1}
             fallback_package = await migrated.fetchrow(
                 "SELECT localized_names, display_order, is_featured "
                 "FROM usage_packages WHERE code = 'FREE'"

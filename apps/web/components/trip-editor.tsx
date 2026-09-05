@@ -49,6 +49,7 @@ import { RouteSegmentCard } from "@/components/route-segment-card";
 import { RouteTimelineLink } from "@/components/route-timeline-link";
 import { StayAreaFlow, type StayArea, type StayHotel, type StaySelectResult } from "@/components/stay-area-flow";
 import { SystemItineraryCard } from "@/components/system-itinerary-card";
+import { ItineraryDiff } from "@/components/itinerary-diff";
 import { TripMetaEditor } from "@/components/trip-meta-editor";
 import { TripWeatherPanel } from "@/components/trip-weather-panel";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
@@ -262,6 +263,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const repriceCharge = useOperationCharge("price_reoptimization");
   const locale = useLocale();
   const tStay = useTranslations("stayAreas");
+  const tTrips = useTranslations("trips");
   const router = useRouter();
   const [trip, setTrip] = useState<Trip>();
   const [items, setItems] = useState<TripItem[]>([]);
@@ -1429,6 +1431,8 @@ export function TripEditor({ tripId }: { tripId: string }) {
       </section>
       {desktopMapVisible && selectedRoute && <aside className="min-w-0 space-y-4 lg:sticky lg:top-24 lg:self-start"><RouteSegmentCard segment={selectedRoute} selected defaultExpanded timezone={trip.timezone} /></aside>}
     </div>
+
+    <ItineraryDiff trip={trip} activeDay={activeDay} disabled={saveState === "conflict" || Boolean(action)} prepare={() => flushChanges(false)} onError={setError} onApplied={(updated, scope, dayDate) => { replaceTrip(updated); setRoutes([]); setSelectedRoute(undefined); closeRouteDrawer(); setStaleDays(new Set(scope === "day" && dayDate ? [dayDate] : days)); revisionRef.current = 0; persistedRevisionRef.current = 0; setRevision(0); updateSaveState("saved"); try { window.localStorage.removeItem(draftKey); } catch { /* storage can be blocked */ } setNotice(tTrips("intent.applied")); }} />
 
     {!reorderMode && <div role="toolbar" aria-label="行程快速操作" className="planner-mobile-bar fixed inset-x-0 bottom-0 z-40 px-3 pt-3 lg:hidden"><div className="planner-mobile-dock mx-auto grid max-w-lg grid-cols-[auto_1fr_1.2fr] items-center gap-2"><button type="button" aria-live="polite" aria-label={saveState === "offline" ? "儲存失敗，點擊重試" : saveLabel} onClick={() => { if (saveState === "offline") void flushChanges(true); }} disabled={saveState !== "offline"} className={`planner-save-status ${saveState === "offline" ? "planner-save-status-error" : ""}`}>{saveIcon}<span className="sr-only">{saveLabel}</span></button><button type="button" aria-label="新增安排" onClick={() => add(activeDay)} disabled={!activeDay} className="planner-dock-button planner-dock-button-secondary"><Plus size={18} /><span className="planner-add-label-long">新增安排</span><span className="planner-add-label-short">新增</span></button><button type="button" aria-label={`AI 幫我安排 · ${aiCharge.label}`} onClick={() => openAIPlanner(activeDay ? "day" : "trip")} disabled={Boolean(action) || aiCharge.status !== "ready"} className="planner-dock-button planner-dock-button-primary"><Sparkles size={18} />AI 安排 · {aiCharge.label}</button></div></div>}
 

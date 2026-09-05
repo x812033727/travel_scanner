@@ -51,7 +51,7 @@ describe("AdminUsageSettingsPanel", () => {
     expect(await screen.findByText("註冊體驗次數已更新。")).toBeTruthy();
 
     fireEvent.click(screen.getByRole("tab", { name: "功能扣次" }));
-    expect(screen.getAllByRole("spinbutton")).toHaveLength(12);
+    expect(screen.getAllByRole("spinbutton")).toHaveLength(usageOperations.length);
     fireEvent.change(screen.getByLabelText("航班動態查詢"), { target: { value: "0" } });
     fireEvent.click(screen.getByRole("button", { name: "儲存全部扣次" }));
     expect(await screen.findByText("功能扣次設定已更新。")).toBeTruthy();

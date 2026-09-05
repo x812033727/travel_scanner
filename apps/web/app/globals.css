@@ -1232,6 +1232,17 @@ a {
   bottom: calc(6.75rem + env(safe-area-inset-bottom));
 }
 
+/* Clears the fixed mobile dock; on desktop there is no dock to clear. */
+.planner-intent-bar {
+  bottom: calc(6.75rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 1024px) {
+  .planner-intent-bar {
+    bottom: 1rem;
+  }
+}
+
 .planner-mobile-dock {
   padding: 0.55rem;
   border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
