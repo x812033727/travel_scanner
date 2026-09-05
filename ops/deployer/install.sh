@@ -16,7 +16,9 @@ id travel-deployer >/dev/null 2>&1 || useradd --system --create-home --home-dir 
 usermod -aG docker travel-deployer
 
 install -d -m 0750 /opt/travel-scanner-deployer /etc/travel-scanner
-install -d -m 0750 /srv/travel-scanner/releases /var/backups/travel-scanner
+# List /srv/travel-scanner itself: `install -d -m` applies the mode only to the leaf
+# directories named, so creating releases/ alone left the parent world-traversable.
+install -d -m 0750 /srv/travel-scanner /srv/travel-scanner/releases /var/backups/travel-scanner
 install -d -m 0750 /var/lib/travel-scanner-deployer /run/travel-scanner-deployer
 
 rm -rf -- "${AGENT_TARGET}"
@@ -30,6 +32,7 @@ chown root:travel-deployer /etc/travel-scanner
 chmod 0750 /etc/travel-scanner
 chown travel-deployer:travel-api /run/travel-scanner-deployer
 chmod 0750 /run/travel-scanner-deployer
+chmod 0750 /srv/travel-scanner /var/backups/travel-scanner
 
 install -m 0644 "${SOURCE_ROOT}/ops/deployer/travel-scanner-deployer.service" /etc/systemd/system/
 if [[ ! -f /etc/travel-scanner/deployer.env ]]; then

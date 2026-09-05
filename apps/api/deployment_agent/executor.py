@@ -17,6 +17,23 @@ from deployment_agent.store import AgentStore, now_iso
 
 SHA = re.compile(r"^[0-9a-f]{40}$")
 
+# Every long-running service the production compose file defines. The one-shot `migrate`
+# service is deliberately absent: the forward path runs it separately with `run --rm`,
+# and a rollback must never re-run the previous release's migrations. Leaving a service
+# out of this tuple means an agent-managed host never starts it — that is how the
+# analytics retention purge and the hotspot collector silently stayed off.
+APPLICATION_SERVICES = (
+    "postgres",
+    "redis",
+    "api",
+    "worker",
+    "alert-worker",
+    "alert-scheduler",
+    "hotspot-collector",
+    "analytics-scheduler",
+    "web",
+)
+
 
 class CommandError(RuntimeError):
     pass
@@ -523,13 +540,7 @@ class DeploymentExecutor:
                 "up",
                 "-d",
                 "--remove-orphans",
-                "postgres",
-                "redis",
-                "api",
-                "worker",
-                "alert-worker",
-                "alert-scheduler",
-                "web",
+                *APPLICATION_SERVICES,
                 timeout=900,
             )
             failure_code = "deployment_health_failed"
@@ -548,8 +559,19 @@ class DeploymentExecutor:
                 )
                 try:
                     previous_release = self.config.releases_path / previous
+                    # `--no-deps` keeps the previous release's `migrate` service out of the
+                    # rollback: the database already carries the newer revision, which the
+                    # old migration folder cannot even locate, so re-running it would fail
+                    # the whole rollback. Rollback changes application images only.
                     self._compose(
-                        previous_release, previous, "up", "-d", "--remove-orphans", timeout=900
+                        previous_release,
+                        previous,
+                        "up",
+                        "-d",
+                        "--remove-orphans",
+                        "--no-deps",
+                        *APPLICATION_SERVICES,
+                        timeout=900,
                     )
                     if not self._verify_three_times():
                         raise CommandError("previous application did not recover")
