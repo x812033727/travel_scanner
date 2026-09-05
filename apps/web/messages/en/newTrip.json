@@ -9,11 +9,16 @@
     "destination": "Destination",
     "destinationPlaceholder": "Search a city, e.g. Tokyo, Seoul, Bangkok",
     "destinationHelp": "Cities in Japan, Korea and Thailand via Google Maps; you can still type freely if the service is off.",
-    "startDate": "Start date",
-    "endDate": "End date",
-    "dayCountBefore": "Total ",
-    "dayCount": "{days, plural, one {# day} other {# days}}",
-    "dayCountAfter": " — each day gets its own itinerary section once the trip is created."
+    "datesLegend": "Trip dates",
+    "datesHelp": "Tap the start date, then the end date. A single day works too; trips can run up to {maxDays, plural, one {# day} other {# days}}, and each day gets its own itinerary section once the trip is created."
+  },
+  "calendar": {
+    "previousMonth": "Previous month",
+    "nextMonth": "Next month",
+    "clear": "Clear dates",
+    "pickStart": "Pick the start date first.",
+    "pickEnd": "Now pick the end date (no later than {date}).",
+    "selected": "{start} → {end} · {days, plural, one {# day} other {# days}}"
   },
   "travelers": {
     "title": "Who is coming along?",
@@ -57,6 +62,7 @@
     "minReviewScore": "Minimum guest score",
     "minReviewCount": "Minimum reviews",
     "reviewsPlus": "{count}+ reviews",
+    "scorePlus": "{score}+",
     "preferredArea": "Preferred area",
     "preferredAreaPlaceholder": "No preference, e.g. Shinjuku, near a metro station",
     "breakfast": "Breakfast included",
@@ -99,7 +105,7 @@
       "start": "Starting point"
     },
     "values": {
-      "travelers": "{count} travelers · {rooms} rooms",
+      "travelers": "{count, plural, one {# traveler} other {# travelers}} · {rooms, plural, one {# room} other {# rooms}}",
       "unlimited": "No limit",
       "noPreference": "No preference",
       "listSeparator": ", ",
@@ -117,7 +123,7 @@
     "eyebrow": "Trip summary",
     "noDestination": "Destination not set yet",
     "days": "{days, plural, one {# day} other {# days}}",
-    "travelers": "{count} travelers · {rooms} rooms",
+    "travelers": "{count, plural, one {# traveler} other {# travelers}} · {rooms, plural, one {# room} other {# rooms}}",
     "budget": "Budget {amount}",
     "budgetUnlimited": "No budget limit",
     "hotelOnly": "Hotels only",

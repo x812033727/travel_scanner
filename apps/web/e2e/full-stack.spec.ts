@@ -1,4 +1,13 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+
+// The trip calendar only renders one month; walk forward until the day exists.
+async function pickTripDay(page: Page, iso: string) {
+  const day = page.locator(`[data-date="${iso}"]`);
+  for (let attempt = 0; attempt < 24 && (await day.count()) === 0; attempt += 1) {
+    await page.getByRole("button", { name: "下個月" }).click();
+  }
+  await day.click();
+}
 
 test("guest recommendation through alert management uses the real first-party stack", async ({ page }) => {
   test.setTimeout(120_000);
@@ -65,8 +74,9 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
 
   await page.getByLabel("旅程名稱").fill("東京固定餐食行程");
   await page.getByLabel("目的地").fill("日本東京");
-  await page.getByLabel("開始日期").fill("2026-11-10");
-  await page.getByLabel("結束日期").fill("2026-11-10");
+  await pickTripDay(page, "2026-11-10");
+  await pickTripDay(page, "2026-11-10");
+  await expect(page.getByText(/共 1 天/)).toBeVisible();
   await page.getByRole("button", { name: /下一步/ }).click();
   await page.getByRole("button", { name: /下一步/ }).click();
   await page.getByRole("button", { name: /下一步/ }).click();
