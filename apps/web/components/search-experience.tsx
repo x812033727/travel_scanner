@@ -599,6 +599,15 @@ export function SearchExperience() {
         await loadFinal(accepted.search_id).catch(() => undefined);
       });
       stream.onerror = () => {
+        // A CLOSED stream never fires search.completed, so without this the
+        // spinner span forever after a tab switch or a dropped connection.
+        // The browser reconnects CONNECTING streams on its own; only a closed
+        // one needs us to go fetch whatever the server finished with.
+        if (stream.readyState === EventSource.CLOSED) {
+          setBusy(false);
+          void loadFinal(accepted.search_id).catch(() => undefined);
+          return;
+        }
         const warning = "即時連線曾短暫中斷；完成後會從伺服器重新載入結果。";
         setWarnings((current) =>
           current.includes(warning) ? current : [...current, warning],
@@ -902,7 +911,9 @@ export function SearchExperience() {
             onApply={applyCriteria}
           />
         )}
-        {!parsed && !text && (
+        {/* Also shown when parsing failed: the reader used to be left with one
+            red sentence and no way anywhere. */}
+        {!parsed && (!text || error) && (
           <div className="mt-6 rounded-2xl bg-amber-50 p-5 text-amber-950">
             <p className="font-semibold">
               缺少出發地、目的地或出發日期，還不能建立搜尋。
