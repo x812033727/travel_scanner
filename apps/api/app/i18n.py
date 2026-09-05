@@ -254,6 +254,25 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "restaurant_source_evidence_missing": "Some fields do not have official source evidence",
         "restaurant_editorial_name_required": "Enter a source-backed restaurant name",
         "trip_meal_slot_unavailable": "This day does not have an available meal slot",
+        "trip_version_conflict": "This trip was updated elsewhere. Reload it and try again.",
+        "trip_date_change_ambiguous": (
+            "Choose either shifting the whole trip or setting explicit dates, not both"
+        ),
+        "trip_dates_unset": "This trip has no dates yet. Set a start and end date first.",
+        "trip_dates_required": "Provide both a start date and an end date",
+        "trip_date_out_of_bounds": "These dates are outside the supported range",
+        "trip_date_range_invalid": "The end date cannot be before the start date",
+        "trip_date_range_too_long": "A trip can be at most 61 days long",
+        "trip_item_day_missing": (
+            "Some items have no assigned day yet. Schedule them before changing the trip dates."
+        ),
+        "trip_shrink_confirmation_required": (
+            "Shortening the trip deletes the plans on the removed days. Confirm to continue."
+        ),
+        "trip_search_dates_diverged": (
+            "The trip dates no longer match the original search, so it cannot be repriced. "
+            "Run a new search and save it as a trip."
+        ),
     },
     "ja": {
         **OAUTH_ERROR_DETAILS["ja"],
@@ -314,6 +333,28 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "restaurant_source_evidence_missing": "一部項目に公式情報源の根拠がありません",
         "restaurant_editorial_name_required": "情報源で確認できる店名を入力してください",
         "trip_meal_slot_unavailable": "この日には利用可能な食事枠がありません",
+        "trip_version_conflict": (
+            "旅行が別の場所で更新されました。再読み込みしてやり直してください。"
+        ),
+        "trip_date_change_ambiguous": (
+            "全体の平行移動か日付の直接指定か、どちらか一方を選んでください"
+        ),
+        "trip_dates_unset": (
+            "この旅行にはまだ日付がありません。開始日と終了日を先に設定してください。"
+        ),
+        "trip_dates_required": "開始日と終了日の両方を指定してください",
+        "trip_date_out_of_bounds": "対応できる範囲外の日付です",
+        "trip_date_range_invalid": "終了日は開始日より前にできません",
+        "trip_date_range_too_long": "旅行は最長 61 日までです",
+        "trip_item_day_missing": (
+            "日付未設定の項目があります。先に予定へ組み込んでから日程を変更してください。"
+        ),
+        "trip_shrink_confirmation_required": (
+            "旅行を短縮すると削除される日の予定が消えます。確認のうえ実行してください。"
+        ),
+        "trip_search_dates_diverged": (
+            "旅行の日程が元の検索と一致しないため、再見積もりできません。新しく検索して保存してください。"
+        ),
     },
     "ko": {
         **OAUTH_ERROR_DETAILS["ko"],
@@ -372,6 +413,24 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "restaurant_source_evidence_missing": "일부 항목에 공식 출처 근거가 없습니다",
         "restaurant_editorial_name_required": "출처로 확인된 상호명을 입력하세요",
         "trip_meal_slot_unavailable": "이 날짜에는 사용할 수 있는 식사 슬롯이 없습니다",
+        "trip_version_conflict": (
+            "여행이 다른 곳에서 업데이트되었습니다. 다시 불러온 뒤 시도하세요."
+        ),
+        "trip_date_change_ambiguous": "전체 이동과 날짜 직접 지정 중 하나만 선택하세요",
+        "trip_dates_unset": "이 여행에는 아직 날짜가 없습니다. 시작일과 종료일을 먼저 설정하세요.",
+        "trip_dates_required": "시작일과 종료일을 모두 입력하세요",
+        "trip_date_out_of_bounds": "지원 범위를 벗어난 날짜입니다",
+        "trip_date_range_invalid": "종료일은 시작일보다 빠를 수 없습니다",
+        "trip_date_range_too_long": "여행은 최대 61일까지 가능합니다",
+        "trip_item_day_missing": (
+            "날짜가 지정되지 않은 항목이 있습니다. 먼저 일정에 배치한 뒤 날짜를 변경하세요."
+        ),
+        "trip_shrink_confirmation_required": (
+            "여행을 줄이면 제외되는 날의 일정이 삭제됩니다. 확인 후 진행하세요."
+        ),
+        "trip_search_dates_diverged": (
+            "여행 날짜가 원래 검색과 달라 다시 견적을 낼 수 없습니다. 새로 검색한 뒤 저장하세요."
+        ),
     },
     "zh-TW": {
         **OAUTH_ERROR_DETAILS["zh-TW"],
@@ -465,6 +524,18 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "restaurant_source_evidence_missing": "部分字段缺少官方来源佐证",
         "restaurant_editorial_name_required": "请输入可由来源佐证的店名",
         "trip_meal_slot_unavailable": "这一天没有可设置的餐食卡",
+        "trip_version_conflict": "旅程已在其他地方更新，请重新载入后再操作",
+        "trip_date_change_ambiguous": "请选择整趟平移，或直接指定开始与结束日期，不能同时使用",
+        "trip_dates_unset": "这趟旅程还没有日期，请先指定开始与结束日期",
+        "trip_dates_required": "请同时提供开始日期与结束日期",
+        "trip_date_out_of_bounds": "旅程日期超出可支持的范围",
+        "trip_date_range_invalid": "结束日期不可早于开始日期",
+        "trip_date_range_too_long": "旅程最长 61 天",
+        "trip_item_day_missing": "旅程中有尚未指定日期的项目，请先安排它们再调整旅程日期",
+        "trip_shrink_confirmation_required": "缩短旅程会删除被移除日期上的安排，请确认后再执行",
+        "trip_search_dates_diverged": (
+            "旅程日期已与原始搜索不同，无法用旧搜索重新询价；请重新搜索后另存旅程"
+        ),
     },
 }
 
