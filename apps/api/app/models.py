@@ -1198,6 +1198,12 @@ class TripPlan(Timestamped, Base):
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
     search_id: Mapped[UUID | None] = mapped_column(ForeignKey("search_requests.id"), nullable=True)
     name: Mapped[str] = mapped_column(String(255))
+    # Lifecycle values {planning, ready, travelling, closed} are enforced in
+    # Pydantic, not a CHECK, so adding one later is not a migration.
+    status: Mapped[str] = mapped_column(
+        String(16), default="planning", server_default="planning", index=True
+    )
+    cover_image_url: Mapped[str | None] = mapped_column(String(1024), nullable=True)
     mode: Mapped[str] = mapped_column(String(32))
     total_price: Mapped[Decimal] = mapped_column(Numeric(14, 2))
     currency: Mapped[str] = mapped_column(String(3), default="TWD")

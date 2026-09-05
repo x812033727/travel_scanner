@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import UTC, date, datetime, time, timedelta
 from decimal import Decimal
 from typing import Any, Literal, cast
-from uuid import NAMESPACE_URL, UUID, uuid5
+from uuid import uuid4
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -165,10 +165,44 @@ def _days(trip: TripPlan, rows: list[TripPlanItem]) -> list[date]:
     return sorted({item.day_date for item in rows if item.day_date is not None})
 
 
-def _role_id(trip_id: UUID, day_value: date, role: SystemRole) -> UUID:
-    return uuid5(NAMESPACE_URL, f"travel-scanner:system-slot:{trip_id}:{day_value}:{role}")
+def clear_flight_anchor(item: TripPlanItem, role: FlightSystemRole) -> None:
+    """Reset a flight anchor to the unset state, keeping the row and its slot.
+
+    Used both by the flight-anchor endpoint and by a date change: a booked
+    flight number carries its own calendar date, so re-dating it would assert a
+    booking that does not exist.
+    """
+    label = "去程" if role == "outbound_flight" else "回程"
+    item.item_type = "flight"
+    item.locked = True
+    item.fixed_time = True
+    item.is_skipped = False
+    item.offer_id = None
+    item.start_time = None
+    item.end_time = None
+    item.duration_minutes = None
+    item.latitude = None
+    item.longitude = None
+    item.provider_place_id = None
+    item.location_source = None
+    item.is_estimated = True
+    item.title = f"{label}航班尚未設定"
+    item.location_name = None
+    item.data = {
+        **item.data,
+        "source_mode": "system",
+        "timeline_section": "flight_anchor",
+        "flight_selection_source": "unset",
+        "flight_info": None,
+    }
 
 
+# Slot ids are random, never uuid5(trip, day, role). A day-derived id survives a
+# date shift naming the day it used to sit on, so pulling the range back over
+# that day made this function mint a row whose primary key another row already
+# held - an IntegrityError raised from ensure_system_slots, which runs on every
+# read through hydrate_legacy_items, i.e. a permanent 500 on GET /trips/{id}.
+# uq_trip_plan_item_system_role already guarantees one row per (trip, day, role).
 def _new_slot(
     trip: TripPlan,
     day_value: date,
@@ -190,7 +224,7 @@ def _new_slot(
             else None
         )
         return TripPlanItem(
-            id=_role_id(trip.id, day_value, role),
+            id=uuid4(),
             trip_plan_id=trip.id,
             item_type="hotel_anchor",
             day_date=day_value,
@@ -229,7 +263,7 @@ def _new_slot(
     duration = int(defaults[duration_key])
     label = "午餐" if is_lunch else "晚餐"
     return TripPlanItem(
-        id=_role_id(trip.id, day_value, role),
+        id=uuid4(),
         trip_plan_id=trip.id,
         item_type="meal",
         day_date=day_value,
@@ -258,7 +292,7 @@ def _new_flight_slot(
 ) -> TripPlanItem:
     label = "去程" if role == "outbound_flight" else "回程"
     return TripPlanItem(
-        id=_role_id(trip.id, day_value, role),
+        id=uuid4(),
         trip_plan_id=trip.id,
         item_type="flight",
         day_date=day_value,

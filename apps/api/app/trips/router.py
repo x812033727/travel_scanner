@@ -49,6 +49,15 @@ from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, Offer, TransportOffer
 from app.search.schemas import SearchCreate, SearchPreferences, Travelers
 from app.trips.itinerary import ItineraryItem
+from app.trips.reschedule import (
+    MAX_SHIFT_DAYS,
+    apply_reschedule,
+    ensure_shrink_confirmed,
+    plan_reschedule,
+    reschedule_summary,
+    reschedule_trip_data,
+    resolve_target_range,
+)
 from app.trips.route_planner import (
     DEFAULT_BUFFER_MINUTES,
     ROUTE_PREVIEW_TTL_SECONDS,
@@ -78,6 +87,7 @@ from app.trips.schedule import (
     active_route_rows,
     apply_schedule_defaults,
     canonicalize_positions,
+    clear_flight_anchor,
     ensure_system_slots,
     merge_reoptimized_lodging,
     primary_lodging,
@@ -145,6 +155,41 @@ class SaveTripRequest(BaseModel):
             raise ValueError("unsupported route preference")
         if self.notes is not None:
             self.notes = self.notes.strip() or None
+        return self
+
+
+class TripMetadataPatchRequest(BaseModel):
+    """`PATCH /trips/{id}` — rename a trip, or move its day grid.
+
+    `shift_days` moves the whole trip and keeps its length; `start_date` /
+    `end_date` set an absolute range (missing side keeps its current value)
+    and leave surviving rows on the calendar days they already occupy. The
+    two forms are mutually exclusive. `route_preference` is deliberately NOT
+    here: `PUT /trips/{id}/itinerary` already writes it together with the
+    all-pairs route invalidation that must accompany it.
+    """
+
+    version: int = Field(ge=1)
+    name: str | None = Field(default=None, max_length=255)
+    status: Literal["planning", "ready", "travelling", "closed"] | None = None
+    cover_image_url: str | None = Field(default=None, max_length=1024)
+    start_date: date | None = None
+    end_date: date | None = None
+    shift_days: int | None = Field(default=None, ge=-MAX_SHIFT_DAYS, le=MAX_SHIFT_DAYS)
+    confirm_removed_days: bool = False
+
+    @model_validator(mode="after")
+    def validate_patch(self) -> "TripMetadataPatchRequest":
+        if self.name is not None:
+            self.name = self.name.strip()
+            if not self.name:
+                raise ValueError("name must not be blank")
+        if self.cover_image_url is not None:
+            self.cover_image_url = self.cover_image_url.strip() or None
+        if self.cover_image_url is not None and not self.cover_image_url.startswith("https://"):
+            raise ValueError("cover_image_url must be an https URL")
+        if not self.model_fields_set - {"version", "confirm_removed_days"}:
+            raise ValueError("nothing to update")
         return self
 
 
@@ -594,6 +639,8 @@ async def serialize_trip(
     return {
         "id": str(trip.id),
         "name": trip.name,
+        "status": trip.status,
+        "cover_image_url": trip.cover_image_url,
         "mode": trip.mode,
         "total_price": trip.total_price,
         "currency": trip.currency,
@@ -743,7 +790,9 @@ def apply_flight_anchor_details(
     role: Literal["outbound_flight", "return_flight"],
     flight: FlightAnchorDetails | None,
 ) -> None:
-    label = "去程" if role == "outbound_flight" else "回程"
+    if flight is None:
+        clear_flight_anchor(item, role)
+        return
     item.item_type = "flight"
     item.locked = True
     item.fixed_time = True
@@ -756,18 +805,7 @@ def apply_flight_anchor_details(
     item.longitude = None
     item.provider_place_id = None
     item.location_source = None
-    item.is_estimated = flight is None
-    if flight is None:
-        item.title = f"{label}航班尚未設定"
-        item.location_name = None
-        item.data = {
-            **item.data,
-            "source_mode": "system",
-            "timeline_section": "flight_anchor",
-            "flight_selection_source": "unset",
-            "flight_info": None,
-        }
-        return
+    item.is_estimated = False
     details = flight.model_dump()
     item.title = f"{flight.airline.strip()} {flight.flight_number.strip()}"
     item.location_name = f"{flight.origin.strip()} → {flight.destination.strip()}"
@@ -1328,11 +1366,38 @@ async def run_provider_module(
     return []
 
 
+def search_dates_diverged(
+    trip_start: date | None,
+    trip_end: date | None,
+    departure_date: date | None,
+    return_date: date | None,
+) -> bool:
+    """True when a trip's dates no longer match the search it was built from.
+
+    A reprice rebuilds the whole itinerary from the ORIGINAL SearchRequest
+    dates, so running it after `PATCH /trips/{id}` moved the trip would
+    re-insert every row at the old dates — outside the new range, which
+    permanently 422s the itinerary save. The SearchRequest may be shared by
+    several trips, so it cannot simply be rewritten to match.
+    """
+    return (
+        trip_start is not None and departure_date is not None and trip_start != departure_date
+    ) or (trip_end is not None and return_date is not None and trip_end != return_date)
+
+
 async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPlanResult, list[str]]:
     search = await session.get(SearchRequest, trip.search_id)
     if search is None:
         raise AppError(409, "trip_search_missing", "原始搜尋已無法使用")
     query = SearchCreate.model_validate(search.request_json)
+    if search_dates_diverged(
+        trip.start_date, trip.end_date, query.departure_date, query.return_date
+    ):
+        raise AppError(
+            409,
+            "trip_search_dates_diverged",
+            "旅程日期已與原始搜尋不同，無法用舊搜尋重新查價；請重新搜尋後另存旅程",
+        )
     redis = get_redis()
     settings = await load_runtime_settings(session)
     providers = build_module_provider_candidates(redis, settings)
@@ -1693,6 +1758,114 @@ async def trip_options(user: CurrentUser, session: Session) -> dict[str, object]
 async def get_trip(trip_id: UUID, user: CurrentUser, session: Session) -> dict[str, Any]:
     trip = await owned_trip(session, user.id, trip_id)
     return await serialize_trip(session, trip)
+
+
+@router.patch("/{trip_id}")
+async def update_trip_metadata(
+    trip_id: UUID,
+    payload: TripMetadataPatchRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    """Rename a trip, change its lifecycle status, or move its day grid.
+
+    A metadata-only change touches nothing but the trip row. A date change
+    runs as one transaction that wins the version compare-and-swap first,
+    then moves every day-keyed row two-phase (items and per-day route
+    settings), re-homes the two flight anchors, clears bookings whose
+    calendar day changed, deletes everything a shrink drops (after
+    `confirm_removed_days`), drops every route segment plus the Redis route
+    cache, and rebuilds the date-stamped blobs in `trip.data`. The version
+    bump is also what makes any in-flight routing job or planning preview
+    discard itself instead of writing rows against the old dates.
+    """
+    trip = await owned_trip(session, user.id, trip_id)
+    target = resolve_target_range(
+        old_start=trip.start_date,
+        old_end=trip.end_date,
+        shift_days=payload.shift_days,
+        start_date=payload.start_date,
+        end_date=payload.end_date,
+    )
+    scalar_values: dict[str, Any] = {}
+    if payload.name is not None:
+        scalar_values["name"] = payload.name
+    if payload.status is not None:
+        scalar_values["status"] = payload.status
+    if "cover_image_url" in payload.model_fields_set:
+        scalar_values["cover_image_url"] = payload.cover_image_url
+
+    if target is None and not scalar_values:
+        # The requested dates are the ones the trip already has. Report the
+        # current state instead of bumping the version, which would only 409
+        # other tabs — but still refuse to answer against a stale version.
+        if trip.version != payload.version:
+            raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再操作")
+        return await serialize_trip(session, trip)
+
+    if target is None:
+        next_version = await session.scalar(
+            update(TripPlan)
+            .where(
+                TripPlan.id == trip.id,
+                TripPlan.user_id == user.id,
+                TripPlan.version == payload.version,
+            )
+            .values(version=TripPlan.version + 1, **scalar_values)
+            .returning(TripPlan.version)
+        )
+        if next_version is None:
+            await session.rollback()
+            raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再操作")
+        await session.commit()
+        await session.refresh(trip)
+        return await serialize_trip(session, trip)
+
+    items = await load_items(session, trip.id)
+    day_settings = await load_day_settings(session, trip.id)
+    segments = await load_route_segments(session, trip.id)
+    plan = plan_reschedule(
+        old_start=trip.start_date,
+        old_end=trip.end_date,
+        target=target,
+        items=items,
+        day_settings=day_settings,
+    )
+    ensure_shrink_confirmed(plan, confirmed=payload.confirm_removed_days)
+    # The CAS runs before any ORM attribute is written, so a lost race leaves
+    # nothing to roll back beyond the statement itself.
+    next_version = await session.scalar(
+        update(TripPlan)
+        .where(
+            TripPlan.id == trip.id,
+            TripPlan.user_id == user.id,
+            TripPlan.version == payload.version,
+        )
+        .values(version=TripPlan.version + 1, **scalar_values)
+        .returning(TripPlan.version)
+    )
+    if next_version is None:
+        await session.rollback()
+        raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再操作")
+    segments_cleared = len(segments)
+    rows = await apply_reschedule(
+        session,
+        trip,
+        items=items,
+        day_settings=day_settings,
+        segments=segments,
+        plan=plan,
+    )
+    trip.data = reschedule_trip_data(trip.data, rows)
+    await session.commit()
+    # After the deletes above, an empty segment table is exactly the state in
+    # which serialize_trip falls back to this cache — clear it or the API
+    # serves the pre-move routes back as if nothing changed.
+    await get_redis().delete(f"routes:trip:{trip.id}")
+    await session.refresh(trip)
+    response = await serialize_trip(session, trip)
+    response["reschedule"] = reschedule_summary(plan, segments_cleared=segments_cleared)
+    return response
 
 
 @router.get("/{trip_id}/weather", response_model=TripWeather)

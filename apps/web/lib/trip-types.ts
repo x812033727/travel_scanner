@@ -149,9 +149,21 @@ export type TripRouting = {
   day_settings: TripRouteDaySetting[];
 };
 
+export type TripStatus = "planning" | "ready" | "travelling" | "closed";
+
+export type TripRescheduleSummary = {
+  removed_days: string[];
+  removed_item_count: number;
+  removed_protected: Array<{ kind: "activity" | "chosen_meal" | "booked_flight"; title: string; day_date: string }>;
+  invalidated_flight_anchors: number;
+  route_segments_cleared: number;
+};
+
 export type Trip = {
   id: string;
   name: string;
+  status?: TripStatus;
+  cover_image_url?: string | null;
   mode: string;
   total_price: number;
   currency: string;
@@ -186,6 +198,8 @@ export type Trip = {
   created_at?: string;
   updated_at?: string;
   usage?: { status: "reserved" | "charged" | "released"; uses: number; reference: string };
+  /** Present only on the response of a date-changing PATCH /trips/{id}. */
+  reschedule?: TripRescheduleSummary;
 };
 
 export function formatTime(value?: string | null, locale?: string, timeZone?: string) {

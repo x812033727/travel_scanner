@@ -49,6 +49,7 @@ import { RouteSegmentCard } from "@/components/route-segment-card";
 import { RouteTimelineLink } from "@/components/route-timeline-link";
 import { StayAreaFlow, type StayArea, type StayHotel, type StaySelectResult } from "@/components/stay-area-flow";
 import { SystemItineraryCard } from "@/components/system-itinerary-card";
+import { TripMetaEditor } from "@/components/trip-meta-editor";
 import { TripWeatherPanel } from "@/components/trip-weather-panel";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, ApiError, isUsageInsufficient, twd } from "@/lib/api";
@@ -1271,6 +1272,24 @@ export function TripEditor({ tripId }: { tripId: string }) {
     } finally { setAction(undefined); }
   }
 
+  const applyMetaUpdate = useCallback((updated: Trip) => {
+    // A date change rebuilt the day grid server-side: route segments are gone,
+    // system slots moved, and the version advanced. Resync the editor the way
+    // loadCloudVersion does so the next autosave sends the new version.
+    replaceTrip(updated);
+    setRoutes(updated.route_segments || []);
+    setSelectedRoute(undefined);
+    revisionRef.current = 0;
+    persistedRevisionRef.current = 0;
+    setRevision(0);
+    updateSaveState("saved");
+    try { window.localStorage.removeItem(draftKey); } catch { /* storage can be blocked */ }
+    setStaleDays(new Set());
+    setError(undefined);
+    const nextDays = daysBetween(updated.start_date, updated.end_date);
+    setActiveDay((current) => (nextDays.includes(current) ? current : nextDays[0] || updated.items[0]?.day_date || ""));
+  }, [draftKey, replaceTrip, updateSaveState]);
+
   async function runConfirmedAction() {
     const selected = confirmAction;
     setConfirmAction(undefined);
@@ -1348,7 +1367,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       <div className="relative flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
         <div>
           <div className="flex flex-wrap items-center gap-2 text-xs font-semibold"><span className="rounded-full bg-white/75 px-3 py-1.5 text-[var(--teal)]">行程規劃器 · 版本 {trip.version}</span><span aria-live="polite" className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 ${saveState === "saved" ? "bg-emerald-50 text-emerald-800" : saveState === "dirty" || saveState === "saving" ? "bg-amber-50 text-amber-900" : "bg-red-50 text-red-800"}`}>{saveIcon}{saveLabel}</span></div>
-          <h1 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{trip.name}</h1>
+          <div className="mt-3 flex items-center gap-3"><h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{trip.name}</h1><TripMetaEditor trip={trip} variant="hero" disabled={saveState === "conflict" || Boolean(action)} prepare={() => flushChanges()} onUpdated={applyMetaUpdate} /></div>
           <p className="mt-2 text-sm leading-6 text-[var(--muted)] sm:text-base">{trip.destination_name || "旅程"}{trip.start_date ? ` · ${trip.start_date} 至 ${trip.end_date}` : ""}{Number(trip.total_price) > 0 ? ` · ${twd.format(Number(trip.total_price))}` : ""}</p>
           <p className="mt-2 text-xs text-[var(--muted)]">{aiCharge.status === "ready" ? `AI 可安排單日或全行程；真實 AI 成功套用才${aiCharge.label}，內建備援不扣次。` : aiCharge.unavailableHelp}</p>
           {desktopMapVisible && <div className="mt-3 max-w-xs"><PriceAlertButton resourceType="trip" resourceId={trip.id} currentPrice={Number(trip.total_price)} currency={trip.currency} returnPath={`/trips/${trip.id}`} /></div>}
@@ -1429,6 +1448,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
 
     <PlannerOverlay open={toolsOpen} onClose={() => setToolsOpen(false)} title="旅程工具" description="不常用的設定集中在這裡，規劃時間軸時保持畫面清爽。">
       <div className="space-y-4">
+        <TripMetaEditor trip={trip} variant="tools" disabled={saveState === "conflict" || Boolean(action)} prepare={() => flushChanges()} onUpdated={(updated) => { applyMetaUpdate(updated); setToolsOpen(false); }} />
         <section className="planner-tool-card">
           <div className="mb-3"><h3 className="font-bold">行程色系</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">選擇喜歡的氣氛，之後開啟會沿用。</p></div>
           <div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label="行程色系">

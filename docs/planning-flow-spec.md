@@ -202,9 +202,9 @@ Render `<AffiliatePartnerOptions tripId={trip.id} .../>` on the trip page. The c
 
 ## 3. DATA MODEL CHANGES
 
-Head is **`0036_food_taxonomy`** (`apps/api/migrations/versions/0036_food_taxonomy.py`).
+Head was **`0036_food_taxonomy`** when this spec was written; `0037_user_preferred_currency` landed since, and PR 1 shipped trip metadata as **`0038_trip_metadata`**. The migration ids below shift by one accordingly (re-verify the head before each PR — it is the only revision never used as a `down_revision`).
 
-### `0037_trip_metadata` (down_revision `0036_food_taxonomy`)
+### `0038_trip_metadata` (down_revision `0037_user_preferred_currency`) — **shipped in PR 1**
 ```
 ALTER TABLE trip_plans ADD COLUMN cover_image_url VARCHAR(1024) NULL;
 ALTER TABLE trip_plans ADD COLUMN status VARCHAR(16) NOT NULL DEFAULT 'planning';
@@ -213,7 +213,7 @@ CREATE INDEX ix_trip_plans_status ON trip_plans (status);
 `status ∈ {planning, ready, travelling, closed}`. Enforce in Pydantic, **not** a DB CHECK — a CHECK on an enumerated string is what makes `ANALYTICS_EVENT_NAMES` painful to extend (`models.py:256-261`); do not repeat it.
 `brief_text` and `must_include` go in the existing `trip_plans.data` JSON — neither is queried.
 
-### `0038_trip_place_candidates` (down_revision `0037_trip_metadata`)
+### `0039_trip_place_candidates` (down_revision `0038_trip_metadata`)
 ```
 CREATE TABLE trip_place_candidates (
   id UUID PRIMARY KEY,
@@ -246,7 +246,7 @@ CREATE UNIQUE INDEX uq_trip_place_candidate_place
 ```
 Deterministic ordering by `(position, id)` is what lets apply-time candidate re-derivation produce byte-identical `_candidate_signatures`.
 
-### `0039_trip_item_hours_cache` (down_revision `0038_trip_place_candidates`)
+### `0040_trip_item_hours_cache` (down_revision `0039_trip_place_candidates`)
 ```
 ALTER TABLE trip_plan_items ADD COLUMN opening_hours_json JSONB NULL;
 ALTER TABLE trip_plan_items ADD COLUMN hours_checked_at TIMESTAMPTZ NULL;
@@ -310,7 +310,7 @@ All authed unless marked. All mutating trip endpoints take `version` and 409 `tr
 
 Each increment ships independently and leaves the product working. None is blocked on an external key; Ekispert, Google and an LLM key are already configured.
 
-**PR 1 — Trip metadata (`0037`).** `PATCH /trips/{id}`, `trip-meta-editor.tsx`. Two-phase date shift against `uq_trip_plan_item_system_role`; drop affected `trip_route_segments`; invalidate flight anchors. *Ship first: it is a prerequisite for everything, it is the flat gap the brief names correctly, and it is testable in isolation.* **Highest corruption risk in the whole plan** — write the migration test against a trip with an outbound flight, two hotel anchors and six meal cards before writing the handler.
+**PR 1 — Trip metadata (shipped as `0038_trip_metadata`).** `PATCH /trips/{id}`, `trip-meta-editor.tsx`. Two-phase date shift against `uq_trip_plan_item_system_role`; drop affected `trip_route_segments`; invalidate flight anchors. *Ship first: it is a prerequisite for everything, it is the flat gap the brief names correctly, and it is testable in isolation.* **Highest corruption risk in the whole plan** — write the migration test against a trip with an outbound flight, two hotel anchors and six meal cards before writing the handler.
 
 **PR 2 — Locked padlock + preserved-set plumbing.** Surface `TripPlanItem.locked` in `trip-editor.tsx`; feed it into `_planning_preserved_items` (`router.py:2174`). No migration. Makes PR 4 safe.
 
