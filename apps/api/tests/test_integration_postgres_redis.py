@@ -15,6 +15,7 @@ from app.ai.itinerary import (
     AIPlannerCandidate,
     AIPlanningResult,
 )
+from app.auth.service import create_access_token, hash_password
 from app.db import SessionFactory, engine
 from app.infra import get_redis
 from app.main import app
@@ -41,6 +42,25 @@ pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
     reason="requires PostgreSQL and Redis services",
 )
+
+
+async def _signed_in_headers(label: str) -> dict[str, str]:
+    """A user and a token without going through POST /auth/register.
+
+    The register endpoint is rate limited to 30 per IP per hour and this suite
+    already spends most of that budget; a test that only needs *an* account
+    should not also be spending a registration.
+    """
+    async with SessionFactory() as session:
+        user = User(
+            email=f"{label}-{uuid4()}@example.com",
+            password_hash=hash_password("integration-password-123"),
+            is_active=True,
+        )
+        session.add(user)
+        await session.commit()
+        await session.refresh(user)
+        return {"Authorization": f"Bearer {create_access_token(user.id, user.auth_version)}"}
 
 
 @pytest.mark.asyncio(loop_scope="module")
@@ -1224,14 +1244,9 @@ async def test_trip_and_day_notes_persist_and_stay_out_of_the_share(
 
     monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", unexpected_enqueue)
 
-    email = f"trip-notes-{uuid4()}@example.com"
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as client:
-        registered = await client.post(
-            "/api/v1/auth/register",
-            json={"email": email, "password": "integration-password-123"},
-        )
-        headers = {"Authorization": f"Bearer {registered.json()['access_token']}"}
+        headers = await _signed_in_headers("trip-notes")
         created = await client.post(
             "/api/v1/trips",
             headers=headers,

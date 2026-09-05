@@ -1,7 +1,7 @@
 """Give a trip a real notes column and per-day notes.
 
 Revision ID: 0042_trip_notes
-Revises: 0041_ai_itinerary_refine_cost
+Revises: 0041_ai_itinerary_refine
 """
 
 from collections.abc import Sequence
@@ -11,7 +11,7 @@ from alembic import op
 from sqlalchemy.dialects import postgresql
 
 revision: str = "0042_trip_notes"
-down_revision: str | None = "0041_ai_itinerary_refine_cost"
+down_revision: str | None = "0041_ai_itinerary_refine"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
