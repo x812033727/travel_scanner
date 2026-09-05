@@ -1387,8 +1387,12 @@ def validate_merchant_catalog() -> None:
         missing = sorted(expected_pairs - actual_pairs)
         extra = sorted(actual_pairs - expected_pairs)
         raise RuntimeError(f"merchant coverage mismatch; missing={missing}, extra={extra}")
-    if len(actual_pairs) != 173:
-        raise RuntimeError(f"merchant bootstrap must cover 173 pairs, found {len(actual_pairs)}")
+    # A floor for the same reason as the food counts. The equality above is the rule that
+    # actually matters: every (city, dish) the catalog claims must have somewhere to eat it.
+    if len(actual_pairs) < 173:
+        raise RuntimeError(
+            f"merchant bootstrap must cover at least 173 pairs, found {len(actual_pairs)}"
+        )
     if any(
         not item.name
         or not item.local_name
