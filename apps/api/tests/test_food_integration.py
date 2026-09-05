@@ -124,7 +124,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
                 )
                 or 0
             )
-            == 47
+            == 63
         )
         assert (
             int(
@@ -135,7 +135,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
                 )
                 or 0
             )
-            == 21
+            == 28
         )
         coverage = await restaurant_editorial_coverage(
             User(email="coverage@example.test", password_hash="not-used", is_admin=True),
@@ -143,12 +143,12 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             limit=200,
         )
         food_merchant_coverage = coverage["food_merchants"]
-        assert food_merchant_coverage["direct_merchant_evidence"] == 47
-        assert food_merchant_coverage["official_website"] == 21
+        assert food_merchant_coverage["direct_merchant_evidence"] == 63
+        assert food_merchant_coverage["official_website"] == 28
         by_country = {
             country["country_code"]: country for country in food_merchant_coverage["by_country"]
         }
-        assert by_country["JP"]["direct_merchant_evidence"] == 0
+        assert by_country["JP"]["direct_merchant_evidence"] == 16
         assert by_country["TW"]["direct_merchant_evidence"] == 14
         assert by_country["SG"]["official_website"] == 6
 
