@@ -412,6 +412,13 @@ class GeminiGuideProvider:
             raw_uri = str(entry.get("uri") or "").strip()
             if not raw_uri:
                 continue
+            # The grounding URI comes straight out of the model response; refuse
+            # non-HTTPS, credentialed, and internal-network targets before issuing
+            # any request for it, not only after the redirect resolves.
+            try:
+                canonical_external_url(raw_uri)
+            except AppError:
+                continue
             resolved = await self._resolve(raw_uri)
             if not resolved:
                 continue

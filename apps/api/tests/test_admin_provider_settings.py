@@ -666,6 +666,8 @@ async def test_public_runtime_keeps_browser_map_disabled_until_explicitly_enable
     assert result.google_places_enabled is True
     assert result.google_maps_embed_enabled is False
     assert result.google_maps_javascript_enabled is False
+    # With the safety gate off, the browser key stays home too: nothing may load a map.
+    assert result.google_maps_browser_key is None
     assert result.navitime_enabled is False
     assert result.ekispert_enabled is False
     assert result.odsay_enabled is False
@@ -687,6 +689,7 @@ async def test_public_runtime_enables_browser_map_only_with_key_and_safety_gate(
     result = await public_runtime_config(object())  # type: ignore[arg-type]
     assert result.google_maps_embed_enabled is True
     assert result.google_maps_javascript_enabled is True
+    assert result.google_maps_browser_key == "browser-key"
 
 
 @pytest.mark.asyncio

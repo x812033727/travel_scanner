@@ -208,7 +208,11 @@ async def ingest_events(
                 "utm_source": _utm(item.utm_source),
                 "utm_medium": _utm(item.utm_medium),
                 "utm_campaign": _utm(item.utm_campaign),
-                "is_authenticated": bool(request.headers.get("Authorization")),
+                # The BFF forwards the session as a cookie (not a bearer header) so the
+                # sliding renewal runs; count either presentation as signed in.
+                "is_authenticated": bool(
+                    request.headers.get("Authorization") or request.cookies.get("travel_access")
+                ),
                 "is_bot": is_bot,
                 "environment": _environment(settings),
                 "properties_json": {},

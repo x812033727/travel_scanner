@@ -1801,7 +1801,10 @@ async def update_itinerary(
     )
     for item in incoming_items:
         existing = existing_by_id.get(item.id) if item.id is not None else None
-        if existing is None and item.system_role is not None:
+        if item.system_role is not None and (existing is None or existing.system_role is None):
+            # Neither a new row nor a promoted ordinary row: a client-minted system slot
+            # would dodge the immutability rules below and collide with the per-day
+            # unique constraint on system roles.
             raise AppError(
                 422,
                 "system_itinerary_item_immutable",

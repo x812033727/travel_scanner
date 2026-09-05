@@ -10,8 +10,10 @@ from app.foods.admin_router import (
     FoodMerchantSourcePayload,
     FoodMerchantUpdatePayload,
     FoodMerchantWritePayload,
+    FoodUpdatePayload,
     TaxonomyBatchPayload,
 )
+from app.problems import AppError
 
 NAMES = {"zh-TW": "新宿", "zh-CN": "新宿", "en": "Shinjuku", "ja": "新宿", "ko": "신주쿠"}
 
@@ -93,3 +95,15 @@ def test_taxonomy_batch_payload_actions() -> None:
     assert TaxonomyBatchPayload(ids=[uuid4()], action="deactivate").action == "deactivate"
     with pytest.raises(ValidationError):
         TaxonomyBatchPayload(ids=[uuid4()], action="delete")  # type: ignore[arg-type]
+
+
+def test_food_source_urls_must_be_public_https() -> None:
+    """They are rendered as public links on the dish cards, so they get the same
+    public-HTTPS validation as the restaurant editorial sources."""
+    with pytest.raises(AppError):
+        FoodUpdatePayload(source_urls=["http://example.com/article"])
+    with pytest.raises(AppError):
+        FoodUpdatePayload(source_urls=["https://127.0.0.1/internal"])
+    payload = FoodUpdatePayload(source_urls=["https://en.wikipedia.org/wiki/Sushi"])
+    assert payload.source_urls == ["https://en.wikipedia.org/wiki/Sushi"]
+

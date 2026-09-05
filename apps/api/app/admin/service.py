@@ -1553,7 +1553,11 @@ async def public_runtime_config(session: AsyncSession) -> PublicRuntimeConfig:
         settings.next_public_google_maps_browser_key and settings.google_maps_javascript_enabled
     )
     return PublicRuntimeConfig(
-        google_maps_browser_key=settings.next_public_google_maps_browser_key,
+        # The browser key is public by design, but the kill switch should still stop
+        # handing it out: with the JavaScript/embed surfaces off nothing needs it.
+        google_maps_browser_key=(
+            settings.next_public_google_maps_browser_key if google_browser_map_enabled else None
+        ),
         google_maps_enabled=bool(settings.google_maps_api_key),
         google_routes_enabled=bool(settings.google_maps_api_key),
         google_places_enabled=bool(settings.google_maps_api_key),

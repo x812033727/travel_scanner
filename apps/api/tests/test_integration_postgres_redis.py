@@ -668,6 +668,18 @@ async def test_blank_trip_creation_and_structured_itinerary_fields(
         assert saved_item["duration_minutes"] == 90
         assert saved_item["fixed_time"] is True
 
+        # An ordinary saved row must not be promotable into a protected system slot:
+        # a client-minted system card would dodge the immutability rules and collide
+        # with the per-day unique constraint on system roles.
+        promoted = {**saved_item, "system_role": "dinner"}
+        promotion = await client.put(
+            f"/api/v1/trips/{trip['id']}/itinerary",
+            headers=headers,
+            json={"version": updated.json()["version"], "items": [promoted]},
+        )
+        assert promotion.status_code == 422
+        assert promotion.json()["code"] == "system_itinerary_item_immutable"
+
         async def routes(
             _: RouteService,
             pairs: list[tuple[object, object, object]],

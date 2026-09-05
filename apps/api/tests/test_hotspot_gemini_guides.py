@@ -178,3 +178,27 @@ def test_gemini_base_url_is_pinned_to_the_official_host() -> None:
     field = "hotspot_guide_gemini_base_url"
     assert official_provider_url_ok(field, "https://generativelanguage.googleapis.com")
     assert not official_provider_url_ok(field, "https://evil.example.com")
+
+
+@pytest.mark.asyncio
+async def test_search_never_fetches_internal_or_non_https_grounding_uris() -> None:
+    """The grounding URI comes straight out of the model response; it must be validated
+    before any request is issued for it, not only after the redirect resolves."""
+    calls: list[httpx.Request] = []
+    body = grounded_body(
+        [
+            {"web": {"uri": "http://127.0.0.1:8000/internal", "title": "Loopback"}},
+            {"web": {"uri": "https://169.254.169.254/latest/meta-data/", "title": "Metadata"}},
+            {"web": {"uri": "https://user:pass@example.com/", "title": "Credentialed"}},
+            {"web": {"uri": f"{REDIRECT_HOST}/a", "title": "Blog"}},
+        ],
+        [],
+    )
+    client = provider(body, calls)
+
+    found = await client.search("sensoji", "en", 10)
+    await client.close()
+
+    assert [item.canonical_url for item in found] == ["https://bobbytravel.tw/sensoji-temple/"]
+    fetched = {str(request.url) for request in calls if request.method == "GET"}
+    assert fetched == {f"{REDIRECT_HOST}/a"}

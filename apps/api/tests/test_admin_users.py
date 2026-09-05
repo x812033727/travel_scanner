@@ -125,3 +125,46 @@ async def test_admin_user_api_rejects_regular_user() -> None:
         app.dependency_overrides.clear()
     assert response.status_code == 403
     assert response.json()["code"] == "admin_required"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("setting", ["admin_emails", "deploy_admin_emails"])
+@pytest.mark.parametrize(
+    "payload",
+    [AdminUserUpdate(is_active=False), AdminUserUpdate(is_admin=False)],
+    ids=["suspend", "demote"],
+)
+async def test_environment_designated_admin_cannot_be_suspended_or_demoted(
+    monkeypatch: pytest.MonkeyPatch, setting: str, payload: AdminUserUpdate
+) -> None:
+    """Suspension bumps auth_version and signs the account out, so it locks out an
+    ADMIN_EMAILS / DEPLOY_ADMIN_EMAILS administrator as effectively as demotion."""
+    monkeypatch.setattr(get_settings(), setting, "Owner@Example.com")
+    target = User(
+        id=uuid4(),
+        email="owner@example.com",
+        password_hash="unused",
+        is_active=True,
+        is_admin=True,
+        auth_version=3,
+    )
+    actor = User(
+        id=uuid4(),
+        email="other-admin@example.com",
+        password_hash="unused",
+        is_active=True,
+        is_admin=True,
+    )
+    session = AsyncMock(spec=AsyncSession)
+    monkeypatch.setattr(
+        admin_users, "_user_and_account", AsyncMock(return_value=(target, None))
+    )
+
+    with pytest.raises(AppError) as caught:
+        await admin_users.update_admin_user(session, target.id, payload, actor)
+
+    assert caught.value.code == "admin_environment_override"
+    assert target.is_active is True
+    assert target.is_admin is True
+    assert target.auth_version == 3
+    session.commit.assert_not_awaited()
