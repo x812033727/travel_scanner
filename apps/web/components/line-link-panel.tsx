@@ -1,12 +1,13 @@
 "use client";
 
 import { CheckCircle2, LoaderCircle } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { useState } from "react";
 import { ApiError, api } from "@/lib/api";
 import { loginPath, safeExternalHref } from "@/lib/navigation";
 
 export function LineLinkPanel({ linkToken }: { linkToken?: string }) {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>();
 
@@ -24,7 +25,12 @@ export function LineLinkPanel({ linkToken }: { linkToken?: string }) {
       if (!redirectUrl) throw new Error("LINE 連結網址無效");
       window.location.assign(redirectUrl);
     } catch (reason) {
-      if (reason instanceof ApiError && reason.status === 401) return;
+      if (reason instanceof ApiError && reason.status === 401) {
+        // Most people arrive from the LINE app without a site session. The old
+        // silent return left `loading` true forever — a spinner with no exit.
+        router.push(loginPath(`/line/link?linkToken=${encodeURIComponent(linkToken)}`));
+        return;
+      }
       setError((reason as Error).message);
       setLoading(false);
     }
