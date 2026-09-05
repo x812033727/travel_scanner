@@ -52,7 +52,7 @@ test("mobile app shell shows five primary destinations and compact account state
   const navigation = page.getByRole("navigation", { name: "手機主要導覽" });
   await expect(navigation.getByRole("link")).toHaveCount(5);
   await expect(navigation.getByRole("link", { name: "探索" })).toHaveAttribute("href", "/zh-TW/hotspots");
-  await expect(page.getByRole("link", { name: "Account" })).toHaveAttribute("href", "/zh-TW/account");
+  await expect(page.getByRole("link", { name: "會員帳號" })).toHaveAttribute("href", "/zh-TW/account");
   expect(authRequests).toBe(1);
 });
 

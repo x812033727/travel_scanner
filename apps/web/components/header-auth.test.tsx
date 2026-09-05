@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { HeaderAuth } from "./header-auth";
 import { HeaderSessionProvider } from "./header-session";
 
-vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn(), refresh: vi.fn() }) }));
+vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn(), refresh: vi.fn() }), useSearchParams: () => new URLSearchParams() }));
 
 function ok(payload: unknown) {
   return { ok: true, status: 200, json: async () => payload };

@@ -43,6 +43,30 @@ export function AdminNav({ current }: { current?: string } = {}) {
   const [open, setOpen] = useState(false);
   const [canDeploy, setCanDeploy] = useState(false);
   const [query, setQuery] = useState("");
+  const [desktopNav, setDesktopNav] = useState(false);
+
+  useEffect(() => {
+    if (typeof window.matchMedia !== "function") return;
+    const wide = window.matchMedia("(min-width: 1024px)");
+    const update = () => setDesktopNav(wide.matches);
+    update();
+    wide.addEventListener?.("change", update);
+    return () => wide.removeEventListener?.("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
   useEffect(() => {
     api<{ can_deploy?: boolean }>("/auth/me")
       .then((user) => setCanDeploy(Boolean(user.can_deploy)))
@@ -81,7 +105,7 @@ export function AdminNav({ current }: { current?: string } = {}) {
         </div>
         <button
           type="button"
-          aria-label="Close admin menu"
+          aria-label={t("closeMenu")}
           onClick={() => setOpen(false)}
           className="grid h-11 w-11 place-items-center rounded-xl border border-[var(--line)] lg:hidden"
         >
@@ -116,19 +140,26 @@ export function AdminNav({ current }: { current?: string } = {}) {
         type="button"
         onClick={() => setOpen(true)}
         className="fixed bottom-[calc(5.6rem+env(safe-area-inset-bottom))] right-4 z-50 grid h-12 w-12 place-items-center rounded-2xl bg-[var(--ink)] text-white shadow-lg lg:hidden"
-        aria-label="Open admin menu"
+        aria-label={t("openMenu")}
+        aria-expanded={open}
       >
         <Menu />
       </button>
       {open && (
         <button
           type="button"
-          aria-label="Close admin menu"
+          aria-label={t("closeMenu")}
           onClick={() => setOpen(false)}
           className="fixed inset-0 z-[70] bg-slate-950/45 lg:hidden"
         />
       )}
-      <aside className={`admin-sidebar ${open ? "admin-sidebar-open" : ""}`}>
+      <aside
+        // The closed drawer is only translated off-canvas; without inert its
+        // search box and ten links still sit in the Tab order, swallowing
+        // keyboard focus into an invisible menu.
+        inert={desktopNav || open ? undefined : true}
+        className={`admin-sidebar ${open ? "admin-sidebar-open" : ""}`}
+      >
         {content}
       </aside>
     </>

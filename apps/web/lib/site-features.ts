@@ -35,3 +35,13 @@ export const closedSiteVisibility: SiteVisibility = {
 export function featureEnabled(state: SiteVisibilityState, feature: SiteFeature) {
   return state.status === "ready" && state.features[`${feature}_enabled`];
 }
+
+// For navigation surfaces only. "unavailable" means the switches could not be
+// read, not that the owner closed everything: keep the doors on the map and
+// let PublicFeatureGate decide what happens behind each one. Before this, one
+// failed settings fetch silently emptied the desktop header and, on a phone,
+// the bottom tab bar.
+export function featureVisible(state: SiteVisibilityState, feature: SiteFeature) {
+  if (state.status !== "ready") return true;
+  return state.features[`${feature}_enabled`];
+}

@@ -9,21 +9,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { Link } from "@/i18n/navigation";
-import { featureEnabled, type SiteFeature } from "@/lib/site-features";
-
-const desktopLinks: Array<{
-  key: "hotspots" | "foods" | "trips" | "alerts" | "flightStatus" | "airlines" | "pricing";
-  href: string;
-  feature?: SiteFeature;
-}> = [
-  { key: "hotspots", href: "/hotspots", feature: "hotspots" },
-  { key: "foods", href: "/foods" },
-  { key: "trips", href: "/trips", feature: "trips" },
-  { key: "alerts", href: "/alerts", feature: "alerts" },
-  { key: "flightStatus", href: "/flights/status", feature: "flight_status" },
-  { key: "airlines", href: "/labs/airlines", feature: "airline_fares" },
-  { key: "pricing", href: "/pricing", feature: "pricing" },
-];
+import { primaryNavLinks } from "@/lib/nav-links";
+import { featureVisible } from "@/lib/site-features";
 
 export function SiteNavigation() {
   const t = useTranslations("navigation");
@@ -32,8 +19,8 @@ export function SiteNavigation() {
     <ThemeProvider>
       <HeaderSessionProvider>
         <MobileNav />
-        <nav aria-label={t("primaryLabel")} className="hidden items-center justify-between gap-5 text-sm text-[var(--muted)] md:flex">
-          {desktopLinks.filter((item) => !item.feature || featureEnabled(visibility, item.feature)).map((item) => (
+        <nav aria-label={t("primaryLabel")} className="hidden items-center justify-between gap-5 text-sm text-[var(--muted)] lg:flex">
+          {primaryNavLinks.filter((item) => !item.feature || featureVisible(visibility, item.feature)).map((item) => (
             <Link key={item.href} href={item.href}>{t(item.key)}</Link>
           ))}
           <ThemeSwitcher />
