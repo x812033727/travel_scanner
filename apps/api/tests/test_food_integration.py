@@ -89,7 +89,9 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         assert int(await session.scalar(select(func.count(FoodDestination.id))) or 0) >= 70
         assert int(await session.scalar(select(func.count(FoodHotspot.id))) or 0) >= 70
         assert int(await session.scalar(select(func.count(FoodMerchant.id))) or 0) == 173
-        assert int(await session.scalar(select(func.count(FoodMerchantFood.id))) or 0) == 185
+        # One row per merchant-dish. Higher than the 185 distinct (city, dish) pairs the
+        # catalog validator counts, because a city can have several places for one dish.
+        assert int(await session.scalar(select(func.count(FoodMerchantFood.id))) or 0) == 192
         assert int(await session.scalar(select(func.count(FoodMerchantSource.id))) or 0) == 236
         assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == 132
         assert int(await session.scalar(select(func.count(FoodCategory.id))) or 0) == 18
@@ -101,7 +103,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
                 )
                 or 0
             )
-            == 71
+            == 80
         )
         assert (
             int(
@@ -110,7 +112,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
                 )
                 or 0
             )
-            == 71
+            == 80
         )
         assert (
             int(
@@ -123,7 +125,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
                 )
                 or 0
             )
-            == 47
+            == 63
         )
         assert (
             int(
@@ -134,7 +136,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
                 )
                 or 0
             )
-            == 21
+            == 28
         )
         coverage = await restaurant_editorial_coverage(
             User(email="coverage@example.test", password_hash="not-used", is_admin=True),
@@ -142,12 +144,13 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             limit=200,
         )
         food_merchant_coverage = coverage["food_merchants"]
-        assert food_merchant_coverage["direct_merchant_evidence"] == 47
-        assert food_merchant_coverage["official_website"] == 21
+        assert food_merchant_coverage["direct_merchant_evidence"] == 63
+        assert food_merchant_coverage["official_website"] == 28
         by_country = {
             country["country_code"]: country for country in food_merchant_coverage["by_country"]
         }
-        assert by_country["JP"]["direct_merchant_evidence"] == 0
+        # Japan was zero until Okinawa, Yokohama and Kamakura brought first-party pages.
+        assert by_country["JP"]["direct_merchant_evidence"] == 16
         assert by_country["TW"]["direct_merchant_evidence"] == 14
         assert by_country["SG"]["official_website"] == 6
 
@@ -559,13 +562,15 @@ async def test_reseeding_extends_an_existing_dish_to_a_newly_listed_city(
         await seed_food_catalog(session)
         await session.commit()
 
-    original = next(item for item in FOOD_SEEDS if item.slug == "jp-ramen")
-    assert "yokohama" not in original.destination_ids
-    extended = replace(original, destination_ids=(*original.destination_ids, "yokohama"))
-    patched = tuple(extended if item.slug == "jp-ramen" else item for item in FOOD_SEEDS)
+    # A pair the seeds do not carry, checked rather than assumed: this test broke once
+    # already when a later change gave jp-ramen the city it was using.
+    original = next(item for item in FOOD_SEEDS if item.slug == "jp-sushi")
+    assert "kamakura" not in original.destination_ids
+    extended = replace(original, destination_ids=(*original.destination_ids, "kamakura"))
+    patched = tuple(extended if item.slug == "jp-sushi" else item for item in FOOD_SEEDS)
 
     async with SessionFactory() as session:
-        food_id = await session.scalar(select(TravelFood.id).where(TravelFood.slug == "jp-ramen"))
+        food_id = await session.scalar(select(TravelFood.id).where(TravelFood.slug == "jp-sushi"))
         before = set(
             (
                 await session.scalars(
@@ -575,7 +580,7 @@ async def test_reseeding_extends_an_existing_dish_to_a_newly_listed_city(
                 )
             ).all()
         )
-        assert "yokohama" not in before
+        assert "kamakura" not in before
 
         monkeypatch.setattr(food_service, "FOOD_SEEDS", patched)
         await seed_food_catalog(session)
@@ -592,7 +597,7 @@ async def test_reseeding_extends_an_existing_dish_to_a_newly_listed_city(
                 )
             ).all()
         )
-        assert "yokohama" in after
+        assert "kamakura" in after
         # The cities it already served are untouched, and none is duplicated.
         assert before <= set(after)
         assert len(after) == len(set(after)) == len(before) + 1
