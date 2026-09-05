@@ -23,10 +23,10 @@ COUNTRY_NAMES = {
 }
 
 OFFICIAL_FOOD_SOURCES = {
-    "JP": "https://www.japan.travel/en/uk/inspiration/food-and-drink/",
+    "JP": "https://www.japan.travel/en/things-to-do/eat-and-drink/",
     "KR": "https://www.korea.net/AboutKorea/Korean-Life/Food",
     "TH": "https://www.tourismthailand.org/Articles/10-thai-dishes-you-must-try",
-    "TW": "https://eng.taiwan.net.tw/m1.aspx?sNo=0002091",
+    "TW": "https://eng.taiwan.net.tw/m1.aspx?sNo=0002026",
     "SG": "https://www.visitsingapore.com/dining-drinks-singapore/local-dishes/",
     "HK": "https://www.discoverhongkong.com/eng/explore/dining.html",
     "VN": "https://vietnam.travel/things-to-do/vietnam-food-20-must-try-dishes",
@@ -1267,14 +1267,18 @@ FOOD_SEEDS: tuple[FoodSeed, ...] = (
 
 
 def validate_catalog() -> None:
-    if len(FOOD_SEEDS) != 70:
-        raise RuntimeError(f"food bootstrap must contain exactly 70 rows, found {len(FOOD_SEEDS)}")
+    # Floors, not equalities. The counts started as a curation target and hardened into a
+    # rule that made the catalog impossible to grow: a city with no dish of its own could
+    # not be given one without tripping them. They still guard the thing worth guarding,
+    # which is a seed file that silently loses rows.
+    if len(FOOD_SEEDS) < 70:
+        raise RuntimeError(f"food bootstrap must contain at least 70 rows, found {len(FOOD_SEEDS)}")
     if len({item.slug for item in FOOD_SEEDS}) != len(FOOD_SEEDS):
         raise RuntimeError("food bootstrap slugs must be unique")
     supported = set(COUNTRY_NAMES)
     counts = {code: sum(item.country_code == code for item in FOOD_SEEDS) for code in supported}
-    if any(value != 10 for value in counts.values()):
-        raise RuntimeError(f"food bootstrap must contain ten foods per country: {counts}")
+    if any(value < 10 for value in counts.values()):
+        raise RuntimeError(f"food bootstrap must contain at least ten foods per country: {counts}")
     destination_ids = {
         item
         for food in FOOD_SEEDS

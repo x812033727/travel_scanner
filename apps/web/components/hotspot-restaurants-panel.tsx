@@ -143,7 +143,7 @@ export function HotspotRestaurantsPanel({
   const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState("");
   const [authRequired, setAuthRequired] = useState(false);
-  const [actionMessage, setActionMessage] = useState("");
+  const [actionMessage, setActionMessage] = useState<{ text: string; tone: "success" | "error" } | null>(null);
   const [tripRestaurant, setTripRestaurant] = useState<Restaurant | null>(null);
   const [tripOptions, setTripOptions] = useState<TripOption[]>([]);
   const [tripId, setTripId] = useState("");
@@ -232,7 +232,7 @@ export function HotspotRestaurantsPanel({
       .then((result) => setFavorites(new Set(result.place_ids)))
       .catch((reason) => {
         if (!(reason instanceof ApiError) || reason.status !== 401) {
-          setActionMessage((reason as Error).message);
+          setActionMessage({ text: (reason as Error).message, tone: "error" });
         }
       });
   }, []);
@@ -285,7 +285,7 @@ export function HotspotRestaurantsPanel({
 
   async function toggleFavorite(restaurant: Restaurant) {
     const wasFavorite = favorites.has(restaurant.place_id);
-    setActionMessage("");
+    setActionMessage(null);
     setFavorites((current) => {
       const next = new Set(current);
       if (wasFavorite) next.delete(restaurant.place_id);
@@ -296,7 +296,7 @@ export function HotspotRestaurantsPanel({
       await api(`/restaurants/favorites/${restaurant.place_id}`, {
         method: wasFavorite ? "DELETE" : "PUT",
       });
-      setActionMessage(t(wasFavorite ? "favoriteRemoved" : "favoriteSaved"));
+      setActionMessage({ text: t(wasFavorite ? "favoriteRemoved" : "favoriteSaved"), tone: "success" });
     } catch (reason) {
       setFavorites((current) => {
         const next = new Set(current);
@@ -304,12 +304,12 @@ export function HotspotRestaurantsPanel({
         else next.delete(restaurant.place_id);
         return next;
       });
-      setActionMessage((reason as Error).message);
+      setActionMessage({ text: (reason as Error).message, tone: "error" });
     }
   }
 
   async function openTripPicker(restaurant: Restaurant) {
-    setActionMessage("");
+    setActionMessage(null);
     try {
       const result = await api<{ items: TripOption[] }>("/restaurants/trip-options");
       setTripOptions(result.items);
@@ -318,7 +318,7 @@ export function HotspotRestaurantsPanel({
       setTripId(first?.trip_id || "");
       setTripDate(first?.start_date || "");
     } catch (reason) {
-      setActionMessage((reason as Error).message);
+      setActionMessage({ text: (reason as Error).message, tone: "error" });
     }
   }
 
@@ -336,10 +336,10 @@ export function HotspotRestaurantsPanel({
           meal_role: mealRole,
         }),
       });
-      setActionMessage(t("tripSaved", { trip: option.name }));
+      setActionMessage({ text: t("tripSaved", { trip: option.name }), tone: "success" });
       setTripRestaurant(null);
     } catch (reason) {
-      setActionMessage((reason as Error).message);
+      setActionMessage({ text: (reason as Error).message, tone: "error" });
     } finally {
       setTripSaving(false);
     }
@@ -360,7 +360,6 @@ export function HotspotRestaurantsPanel({
           <p className="mt-2 text-[11px] leading-5 text-[var(--muted)]">{t("preferenceSaved")}</p>
         </header>
         <div className="overflow-y-auto overscroll-contain px-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-5 md:px-7">
-          {actionMessage && <p role="status" className="mb-3 rounded-xl bg-[var(--teal-soft)] px-4 py-3 text-sm text-[var(--teal-dark)]">{actionMessage}</p>}
           {data && <section className="mb-4 rounded-2xl border border-[var(--line)] bg-white p-4 text-xs"><div className="flex items-center justify-between gap-3"><strong>{t("coverage.title")}</strong><span className="rounded-full bg-[var(--teal-soft)] px-2 py-1 font-semibold text-[var(--teal-dark)]">{t(`coverage.${data.coverage.status}`)}</span></div><div className="mt-3 h-1.5 overflow-hidden rounded-full bg-slate-100"><div className="h-full rounded-full bg-[var(--teal)]" style={{ width: `${coveragePercent}%` }} /></div><p className="mt-2 text-[var(--muted)]">{t("coverage.detail", { candidates: data.coverage.candidate_count, completed: data.coverage.cells_completed, total: data.coverage.cells_total })}</p></section>}
           {loading && <div className="rounded-2xl bg-white p-7 text-sm text-[var(--muted)]">{t("loading")}</div>}
           {!loading && authRequired && <div role="alert" className="rounded-2xl bg-[var(--coral-soft)] p-5 text-sm"><p className="font-bold">{t("loginRequiredTitle")}</p><p className="mt-2 leading-6">{t("loginRequiredBody")}</p><Link href={loginHref || "/login"} className="mt-3 inline-flex min-h-11 items-center rounded-xl bg-white px-4 font-semibold">{t("loginAction")}</Link></div>}
@@ -379,6 +378,7 @@ export function HotspotRestaurantsPanel({
               <p className="mt-3 text-[10px] text-[var(--muted)]">{t("liveObserved", { time: date.format(new Date(restaurant.observed_at)) })}</p>
             </li>;
           })}</ol>}
+          {actionMessage && <p role={actionMessage.tone === "error" ? "alert" : "status"} className={`sticky bottom-2 z-10 mt-3 rounded-xl px-4 py-3 text-sm shadow-lg ${actionMessage.tone === "error" ? "bg-red-50 text-red-800" : "bg-[var(--teal-soft)] text-[var(--teal-dark)]"}`}>{actionMessage.text}</p>}
           {!loading && !error && data?.next_cursor !== null && data?.next_cursor !== undefined && <button type="button" disabled={loadingMore} onClick={() => void search(data.next_cursor ?? undefined)} className="mt-4 flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl border border-[var(--teal)] bg-white font-semibold text-[var(--teal)] disabled:opacity-50">{loadingMore && <RefreshCw size={16} className="animate-spin" />}{t("loadMore")}</button>}
           {data && <p className="mt-5 text-center text-xs leading-5 text-[var(--muted)]">{t("attributionPrefix")} <span translate="no" className="whitespace-nowrap font-normal">{data.attribution}</span><br />{t("storageNotice")}</p>}
         </div>

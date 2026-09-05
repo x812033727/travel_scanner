@@ -19,6 +19,7 @@ from app.crawlers.airlines import AirlineFareCrawlerService
 from app.crawlers.schemas import AirlineFareSearch
 from app.crawlers.verification import build_verification_report
 from app.db import SessionFactory
+from app.foods.coordinate_fill_cli import fill_food_merchant_coordinates
 from app.foods.place_matching_cli import match_food_merchant_places
 from app.foods.service import seed_food_catalog
 from app.hotspots.candidate_cli import import_candidates
@@ -404,6 +405,22 @@ def main() -> None:
     merchants.add_argument(
         "--apply", action="store_true", help="Write the Place IDs instead of only reporting them"
     )
+
+    coordinates = subparsers.add_parser(
+        "fill-food-merchant-coordinates",
+        help=(
+            "Read each merchant's own cited pages and store the coordinate they publish. "
+            "Uses only merchant_website and merchant_listing sources; a city food guide "
+            "says nothing about where one restaurant stands."
+        ),
+    )
+    coordinates.add_argument(
+        "--destination", action="append", default=[], help="Limit to a destination (repeatable)"
+    )
+    coordinates.add_argument("--limit", type=int, help="Stop after this many merchants")
+    coordinates.add_argument(
+        "--apply", action="store_true", help="Write the coordinates instead of only reporting them"
+    )
     subparsers.add_parser(
         "seed-foods",
         help="Upsert the food catalog, merchants, areas and categories, then print the counts",
@@ -469,8 +486,11 @@ def main() -> None:
         )
         print(json.dumps(report, ensure_ascii=False, indent=2))
     elif args.command == "match-food-merchant-places":
+        report = asyncio.run(match_food_merchant_places(args.destination, args.limit, args.apply))
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+    elif args.command == "fill-food-merchant-coordinates":
         report = asyncio.run(
-            match_food_merchant_places(args.destination, args.limit, args.apply)
+            fill_food_merchant_coordinates(args.destination, args.limit, args.apply)
         )
         print(json.dumps(report, ensure_ascii=False, indent=2))
     elif args.command == "collect-hotspots":

@@ -28,20 +28,31 @@ describe("SiteNavigation", () => {
     const adminLinks = await screen.findAllByRole("link", { name: "管理後台" });
     expect(adminLinks).toHaveLength(2);
     expect(adminLinks.every((link) => link.getAttribute("href") === "/admin")).toBe(true);
-    expect(screen.getByRole("link", { name: "Account" }).getAttribute("href")).toBe("/account");
+    expect(screen.getByRole("link", { name: "會員帳號" }).getAttribute("href")).toBe("/account");
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
-  it("hides every controlled route when visibility is unavailable", () => {
+  it("keeps the nav when visibility could not be read, hides it when closed", () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
       new Response(JSON.stringify({ detail: "signed out" }), { status: 401 }),
     ));
-    render(
+    const unavailable = render(
       <SiteVisibilityProvider state={{ status: "unavailable", features: closedSiteVisibility }}>
         <SiteNavigation />
       </SiteVisibilityProvider>,
     );
 
+    // A failed settings fetch is not the owner closing the site: the links stay
+    // and PublicFeatureGate still guards each page behind them.
+    expect(screen.getByRole("link", { name: "熱門景點" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "航班動態" })).toBeTruthy();
+    unavailable.unmount();
+
+    render(
+      <SiteVisibilityProvider state={{ status: "ready", features: closedSiteVisibility }}>
+        <SiteNavigation />
+      </SiteVisibilityProvider>,
+    );
     expect(screen.queryByRole("link", { name: "熱門景點" })).toBeNull();
     expect(screen.queryByRole("link", { name: "航班動態" })).toBeNull();
     expect(screen.queryByRole("link", { name: "方案與次數包" })).toBeNull();

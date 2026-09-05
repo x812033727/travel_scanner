@@ -89,6 +89,7 @@
   box-sizing: border-box;
 }
 html {
+  scroll-padding-top: 5.5rem;
   background: var(--paper);
 }
 body {
@@ -397,12 +398,12 @@ body {
 }
 .destination-city-chip {
   display: inline-flex;
-  min-height: 2rem;
+  min-height: 2.75rem;
   align-items: center;
   border-radius: 999px;
   background: var(--paper);
-  padding: 0.3rem 0.65rem;
-  font-size: 0.72rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8rem;
   transition:
     background-color 0.18s,
     color 0.18s,
@@ -449,9 +450,10 @@ body {
   backdrop-filter: blur(22px) saturate(1.35);
 }
 /* This file sits outside Tailwind's cascade layers, so the component's layered
-   md:hidden utility can never win over the display: grid above; mirror the md
-   breakpoint here to keep the bar mobile-only. */
-@media (min-width: 48rem) {
+   lg:hidden utility can never win over the display: grid above; mirror the lg
+   breakpoint here. Tablets share the phone shell now that the header links
+   only appear from lg up. */
+@media (min-width: 64rem) {
   .app-bottom-nav {
     display: none;
   }
@@ -2737,4 +2739,59 @@ a {
   outline: 3px solid var(--teal);
   outline-offset: 4px;
   transition: outline-color 0.4s;
+}
+
+/* Insertion point between itinerary cards: quiet until touched, but a full
+   44px target so a thumb can actually hit it. */
+.planner-insert-point {
+  display: flex;
+  min-height: 2.75rem;
+  width: 100%;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.15rem;
+  opacity: 0.45;
+  transition: opacity 0.15s;
+}
+.planner-insert-point:hover,
+.planner-insert-point:focus-visible {
+  opacity: 1;
+}
+.planner-insert-line {
+  height: 1px;
+  flex: 1;
+  background: var(--line);
+}
+.planner-insert-point:hover .planner-insert-line,
+.planner-insert-point:focus-visible .planner-insert-line {
+  background: var(--teal);
+}
+.planner-insert-plus {
+  display: grid;
+  height: 1.6rem;
+  width: 1.6rem;
+  flex: none;
+  place-items: center;
+  border: 1px dashed var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  background: var(--surface);
+}
+.planner-insert-point:hover .planner-insert-plus,
+.planner-insert-point:focus-visible .planner-insert-plus {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+/* The mobile save chip: amber while edits are still on their way to the
+   server, so "not saved yet" never wears the same green check as "saved". */
+.planner-save-status-pending {
+  border-color: #f5d9a8;
+  background: #fdf4e3;
+  color: #8a5710;
+}
+:root[data-theme="dark"] .planner-save-status-pending {
+  border-color: #7c5a1d;
+  background: #3a2c12;
+  color: #f2c063;
 }

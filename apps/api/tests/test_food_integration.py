@@ -536,3 +536,67 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         await session.delete(admin)
         await session.commit()
         await _clear(session)
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_reseeding_extends_an_existing_dish_to_a_newly_listed_city(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The only way a city joins the catalog is by appearing in a dish's destination_ids.
+
+    The seeder used to write destination links only for a dish that had none, so adding a
+    city to an existing dish and re-running seed-foods reported success and changed nothing.
+    """
+
+    from dataclasses import replace
+
+    from app.foods import service as food_service
+    from app.foods.catalog import FOOD_SEEDS
+
+    async with SessionFactory() as session:
+        await _clear(session)
+        await seed_catalog(session, date(2026, 9, 1))
+        await seed_food_catalog(session)
+        await session.commit()
+
+    original = next(item for item in FOOD_SEEDS if item.slug == "jp-ramen")
+    assert "yokohama" not in original.destination_ids
+    extended = replace(original, destination_ids=(*original.destination_ids, "yokohama"))
+    patched = tuple(extended if item.slug == "jp-ramen" else item for item in FOOD_SEEDS)
+
+    async with SessionFactory() as session:
+        food_id = await session.scalar(select(TravelFood.id).where(TravelFood.slug == "jp-ramen"))
+        before = set(
+            (
+                await session.scalars(
+                    select(FoodDestination.destination_id).where(
+                        FoodDestination.food_id == food_id
+                    )
+                )
+            ).all()
+        )
+        assert "yokohama" not in before
+
+        monkeypatch.setattr(food_service, "FOOD_SEEDS", patched)
+        await seed_food_catalog(session)
+        await session.commit()
+        monkeypatch.undo()
+
+    async with SessionFactory() as session:
+        after = list(
+            (
+                await session.scalars(
+                    select(FoodDestination.destination_id).where(
+                        FoodDestination.food_id == food_id
+                    )
+                )
+            ).all()
+        )
+        assert "yokohama" in after
+        # The cities it already served are untouched, and none is duplicated.
+        assert before <= set(after)
+        assert len(after) == len(set(after)) == len(before) + 1
+
+    async with SessionFactory() as session:
+        await _clear(session)
+        await session.commit()

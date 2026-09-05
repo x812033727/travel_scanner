@@ -52,7 +52,7 @@ test("mobile app shell shows five primary destinations and compact account state
   const navigation = page.getByRole("navigation", { name: "手機主要導覽" });
   await expect(navigation.getByRole("link")).toHaveCount(5);
   await expect(navigation.getByRole("link", { name: "探索" })).toHaveAttribute("href", "/zh-TW/hotspots");
-  await expect(page.getByRole("link", { name: "Account" })).toHaveAttribute("href", "/zh-TW/account");
+  await expect(page.getByRole("link", { name: "會員帳號" })).toHaveAttribute("href", "/zh-TW/account");
   expect(authRequests).toBe(1);
 });
 
@@ -220,7 +220,10 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
     await page.evaluate(() => document.documentElement.clientWidth),
   );
   await page.getByRole("button", { name: "排序行程" }).click();
-  await expect(page.getByRole("button", { name: "完成排序" })).toBeVisible();
+  // Reordering now keeps the dock on screen with an explicit exit; the day
+  // header keeps its own toggle, so scope to the dock.
+  const dockDone = page.locator(".planner-mobile-dock").getByRole("button", { name: "完成排序" });
+  await expect(dockDone).toBeVisible();
   const moveUp = await page.getByRole("button", { name: "上移 晴空塔" }).boundingBox();
   const moveDown = await page.getByRole("button", { name: "下移 晴空塔" }).boundingBox();
   expect(Math.abs((moveUp?.x || 0) - (moveDown?.x || 0))).toBeLessThan(2);
@@ -228,7 +231,7 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   // 43.99993896484375 on some runners, which is a float artefact and not a
   // control that misses the 44px touch target.
   expect(Math.round(moveUp?.height || 0)).toBeGreaterThanOrEqual(44);
-  await page.getByRole("button", { name: "完成排序" }).click();
+  await dockDone.click();
   const addButton = page.getByRole("button", { name: "新增安排" });
   await addButton.click();
   await expect(page.getByRole("dialog", { name: "新增安排" })).toBeVisible();

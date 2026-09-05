@@ -108,6 +108,9 @@ export function AdminFoodsPanel() {
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [editing, setEditing] = useState<AdminFood | null>(null);
   const [message, setMessage] = useState("");
+  // The page banner sits behind the z-[80] editor overlay, so a failed save
+  // reported there looked like a save that silently did nothing.
+  const [saveError, setSaveError] = useState("");
   const [loading, setLoading] = useState(true);
 
   const load = useCallback(async () => {
@@ -188,6 +191,7 @@ export function AdminFoodsPanel() {
       hotspot_ids: editing.hotspots.map((item) => item.id).filter(Boolean),
     };
     setLoading(true);
+    setSaveError("");
     try {
       await api(editing.id ? `/admin/foods/${editing.id}` : "/admin/foods", {
         method: editing.id ? "PATCH" : "POST",
@@ -197,7 +201,7 @@ export function AdminFoodsPanel() {
       setEditing(null);
       await load();
     } catch (reason) {
-      setMessage((reason as Error).message);
+      setSaveError((reason as Error).message);
       setLoading(false);
     }
   }
@@ -279,7 +283,7 @@ export function AdminFoodsPanel() {
           </select>
           <button
             type="button"
-            onClick={() => setEditing(blankFood())}
+            onClick={() => { setSaveError(""); setEditing(blankFood()); }}
             className="h-11 rounded-xl bg-[var(--teal)] px-4 font-semibold text-white"
           >
             {t("add")}
@@ -405,7 +409,7 @@ export function AdminFoodsPanel() {
                         <td className="p-3">
                           <button
                             type="button"
-                            onClick={() => setEditing(completeLocalizations(food))}
+                            onClick={() => { setSaveError(""); setEditing(completeLocalizations(food)); }}
                             className="min-h-10 rounded-xl border border-[var(--teal)] px-3 font-semibold text-[var(--teal)]"
                           >
                             {t("edit")}
@@ -732,6 +736,11 @@ export function AdminFoodsPanel() {
                   {t("save")}
                 </button>
               </div>
+              {saveError && (
+                <p role="alert" className="mt-3 rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-800">
+                  {saveError}
+                </p>
+              )}
             </div>
           </div>
         )}

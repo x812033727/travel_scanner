@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { useLocale } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { isLocale } from "@/i18n/routing";
 import { ApiError, api } from "@/lib/api";
@@ -28,6 +29,7 @@ const HeaderSessionContext = createContext<HeaderSessionValue>({
 export function HeaderSessionProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const locale = useLocale();
   const loadedLocale = useRef<string | undefined>(undefined);
   const requestId = useRef(0);
@@ -44,12 +46,26 @@ export function HeaderSessionProvider({ children }: { children: ReactNode }) {
         if (requestId.current !== currentRequest) return;
         setUser(currentUser);
         setStatus("authenticated");
+        let pickedLocale = false;
+        try {
+          pickedLocale = window.sessionStorage.getItem("travel-locale-picked") === "1";
+        } catch { /* storage can be blocked */ }
         if (
           isLocale(currentUser.preferred_locale) &&
-          currentUser.preferred_locale !== locale
+          currentUser.preferred_locale !== locale &&
+          // A locale the visitor picked this session wins over the stored
+          // preference: the PATCH may still be in flight, and snapping back
+          // to the old language right after they switched reads as a bug.
+          !pickedLocale
         ) {
           document.cookie = `travel_locale=${currentUser.preferred_locale}; path=/; max-age=31536000; samesite=lax`;
-          router.replace(pathname, { locale: currentUser.preferred_locale });
+          // usePathname carries no query or fragment; dropping them here used
+          // to strip ?destination_id=... from deep links during the redirect.
+          const query = searchParams?.toString() || "";
+          router.replace(
+            `${pathname}${query ? `?${query}` : ""}${window.location.hash}`,
+            { locale: currentUser.preferred_locale },
+          );
         }
       })
       .catch((reason) => {
@@ -57,7 +73,7 @@ export function HeaderSessionProvider({ children }: { children: ReactNode }) {
         setUser(null);
         setStatus(reason instanceof ApiError && reason.status === 401 ? "signed_out" : "unavailable");
       });
-  }, [locale, pathname, router]);
+  }, [locale, pathname, router, searchParams]);
 
   async function logout() {
     requestId.current += 1;
