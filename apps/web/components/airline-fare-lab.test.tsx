@@ -2,10 +2,17 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AirlineFareLab } from "./airline-fare-lab";
 
-const { routerPush } = vi.hoisted(() => ({ routerPush: vi.fn() }));
+const { routerPush, session } = vi.hoisted(() => ({
+  routerPush: vi.fn(),
+  session: { status: "authenticated" as "loading" | "authenticated" | "signed_out" | "unavailable" },
+}));
 vi.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ push: routerPush }),
+  usePathname: () => "/labs/airlines",
   Link: ({ href, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) => <a href={href} {...props}>{children}</a>,
+}));
+vi.mock("@/components/saved-items-provider", () => ({
+  useSavedItems: () => ({ status: session.status, isSaved: () => false, setSaved: async () => undefined, toggle: async () => false }),
 }));
 
 const status = {
@@ -24,9 +31,20 @@ function ok(payload: unknown) {
 afterEach(() => {
   vi.unstubAllGlobals();
   routerPush.mockReset();
+  session.status = "authenticated";
 });
 
 describe("airline fare lab", () => {
+  it("asks a visitor to sign in instead of showing live charge buttons", async () => {
+    session.status = "signed_out";
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(ok(status)));
+    render(<AirlineFareLab />);
+    expect(await screen.findByText("政策停用")).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "登入後查詢 · 消耗 1 次" })).toBeTruthy();
+    expect(screen.getByRole("link", { name: "登入" }).getAttribute("href")).toBe("/login?next=%2Flabs%2Fairlines");
+    expect(screen.queryByRole("button", { name: /^搜尋公開票價/ })).toBeNull();
+  });
+
   it("shows crawler source readiness", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(ok(status)));
     render(<AirlineFareLab />);

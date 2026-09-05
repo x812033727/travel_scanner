@@ -85,7 +85,7 @@
 - **D. 探索面是死路。** `travel-card-actions.tsx:178-203` 加入成功只有 toast；`:36` 沒有旅程時只有一句話；餐廳只能覆蓋當天午/晚餐（`restaurants/user_router.py:171-180`、`foods/selection.py:48-53`），沒有第三餐、咖啡、點心；卡片上沒有「從這裡開始規劃」。附近餐廳還有一套平行的收藏與加入實作（`hotspot-restaurants-panel.tsx:231, 311, 330`），`/account` 只看得到 `/saved-items` 那一套。
 - **E. 出發前工具不連旅程。** 提醒卡沒有連結（`account-list.tsx:220-281`）；`manual_only` 的提示叫使用者「在搜尋頁手動查看」但 `/search` 全站沒有任何 `<Link>` 指向它（只有 `search-workbench.tsx:120` 的 `router.push`）；航班動態的結果進不了旅程，頁面用文字叫使用者「票價請回旅遊搜尋比較」也沒有連結（`flight-status-search.tsx:119`）。
 - **F. 訪客看得到可按的扣次按鈕。** `/flights/status` 與 `/labs/airlines` 沒有登入檢查，按鈕顯示「· 消耗 1 次」（`flight-status-search.tsx:126`、`airline-fare-lab.tsx:267-269`）；只有 `/search` 有正確的閘門（`search-experience.tsx:929-935`）。「比較更多來源」是搜尋頁唯一沒有標價的動作（`:1204-1221`）。
-- **G. 導覽不一致。** 底欄不讀 site-visibility（`app-bottom-nav.tsx:7-28`），旗標關掉時桌機導覽會藏、手機底欄還是把人送進「已暫停」頁；`/foods` 沒有 layout 旗標也沒有底欄入口，手機只能從首頁快捷卡進去；旅程頁在 `md`–`lg` 之間沒有 header、沒有返回、沒有底欄（`trips/[id]/page.tsx:19`、`trip-editor.tsx:1333`）。
+- **G. 導覽不一致。** 底欄不讀 site-visibility（`app-bottom-nav.tsx:7-28`），旗標關掉時桌機導覽會藏、手機底欄還是把人送進「已暫停」頁；`/foods` 沒有 layout 旗標也沒有底欄入口，手機只能從首頁快捷卡進去。（旅程頁的返回鍵是 `flex lg:hidden`，`md`–`lg` 之間仍有出口，這點核對後不算斷點。）
 - **H. 分享頁是死路，而且給太多。** `shared-trip-view.tsx:17` 沒有 CTA，底欄在 `/share/` 被隱藏；`GET /shared-trips/{token}` 回傳整包 `data`（`trips/router.py:4000`），空白旅程的 `notes`、`preferences`、主要飯店的價格快照都在裡面。
 - **I. 點數與上限看不見。** 見 §1 第 8–9 列。加上兩條獨立的 AI 扣次路徑（`/itinerary/generate` 與 `preview`+`apply`，`trips/router.py:2459, 2702`），以及 `restaurant-searches` 宣告了 `Idempotency-Key` 卻沒有重放（`restaurants/router.py:45-79`），重試會重複花 Google 配額。
 
@@ -157,7 +157,7 @@
 
 沿用 `docs/planning-flow-spec.md`：鎖定已上線（`models.py:1249`、`trip-editor.tsx:1481`），想改什麼、貼上、Day Health、列印、複製都在那份規格的 PR 序列裡。本文只加兩條介面規則：
 
-- **加入行程要落地，不能只有 toast。** `travel-card-actions.tsx:195-197` 成功後顯示「已加入第 N 天 · 查看」連到 `/trips/{id}?day=YYYY-MM-DD`；沒有旅程時顯示「建立旅程」連到草案（帶 `destination_id`）。
+- **加入行程要落地，不能只有 toast。** `travel-card-actions.tsx:195-197` 成功後顯示「已加入行程 · 查看旅程」連到 `/trips/{id}`（跳到指定日期的 `?day=` 深連結要動 `trip-editor.tsx`，等 PR #150 合併後再加）；沒有旅程時顯示「建立旅程」連到 `/trips/new`（PR H 之後帶 `destination_id` 進草案）。
 - **餐廳與美食可以「新增一餐」。** 現在只能覆蓋午／晚餐槽（`restaurants/user_router.py:171-180`）。`trip-selections` 加 `mode: "replace_meal" | "append"`，`append` 建一般 `activity` 項目（`item_type="meal"`，不佔 `system_role`），走 `persist_system_schedule_change` 同一條寫入路徑。
 
 ### 3.4 在旅程裡比價與預訂（扣次牆在這）
@@ -215,9 +215,8 @@
 ### 4.3 導覽
 
 - 底欄讀 `useSiteVisibility`，關掉的旗標不顯示（對齊 `site-navigation.tsx:36`）。
-- 「探索」是一個 hub：`/hotspots` 與 `/foods` 頂端共用一條分段控制「熱門景點｜城市美食」，底欄的探索同時涵蓋兩者（`app-bottom-nav.tsx:12` 的 `matches` 已含 `/foods`，缺的是入口）。`/foods` 併入 `hotspots` 旗標（不新增第七個布林；如果需要獨立開關，再加 `FOODS_ENABLED`，列在 §8）。
+- 「探索」是一個 hub：`/hotspots` 與 `/foods` 頂端共用一條分段控制「熱門景點｜城市美食」，底欄的探索同時涵蓋兩者（`app-bottom-nav.tsx:12` 的 `matches` 已含 `/foods`，缺的是入口）。`/foods` 維持不加旗標：景點暫停時，底欄的探索改指向 `/foods`，分段控制只剩美食時不顯示。不改後台「熱門景點」開關的語意；要不要獨立的美食開關列在 §8。
 - `/search` 不再是無入口頁：主要入口變成旅程頁的「查機票／查住宿」（§3.4），首頁「直接比價」是次要入口。
-- 旅程頁在所有寬度都有出口：`trips/[id]/page.tsx:19` 的 header 改為 `hidden md:block`，或返回鍵改為 `lg:hidden` → `xl:hidden`；擇一，跟著 PR #150 的 hero 改動一起處理。
 
 ### 4.4 手機優先與五語系
 
@@ -255,7 +254,7 @@
 | `/trips/new` | 4 步、閘門無 `next` | 閘門 `loginPath`；讀 `TripBrief`；新增 `origin_airport` | A（閘門）、H（其餘） |
 | `/search` | 登入回來要再按；儲存無冪等；「比較更多來源」無標價；402 導到 `/pricing` | `resume=search`；`Idempotency-Key`；標價；402 頁內 sheet；`trip_id` 模式的「帶入旅程」 | A、E、D |
 | 旅程頁 `trip-editor.tsx` | 錨點手打；無查機票入口；總價單一數字；`md`–`lg` 無出口 | 錨點卡：報價快照、查機票、建立提醒、查航班動態；已報價／估算兩欄；聯盟區塊；出口 | B、D、F（等 #150 合併後） |
-| `/hotspots`、`/foods`、附近餐廳 | toast 死路；無「從這裡開始」；餐廳只能覆蓋 | 成功連回旅程；沒有旅程 → 建立；「從這裡開始規劃」；新增一餐；探索分段；`/foods` 旗標 | A（連結）、H（從這裡開始）、F（新增一餐） |
+| `/hotspots`、`/foods`、附近餐廳 | toast 死路；無「從這裡開始」；餐廳只能覆蓋 | 成功連回旅程；沒有旅程 → 建立；「從這裡開始規劃」；新增一餐；探索分段（不動旗標） | A（連結、分段）、H（從這裡開始）、F（新增一餐） |
 | `/alerts` | 不連回來源；`manual_only` 提示無連結 | `links`；文案與連結 | F |
 | `/flights/status`、`/labs/airlines` | 訪客可按扣次按鈕 | 登入後查詢連結；接受 query 預填；「寫回旅程」 | A（閘門）、F（預填與寫回） |
 | `/share/[token]` | 無 CTA | 複製到我的旅程、用 Mokaair 規劃 | G |
@@ -294,10 +293,11 @@
 
 每個 PR 獨立可上線；標「等 #150」的表示會動到 `trip-editor.tsx`，排在 PR #150 合併之後以免衝突。
 
-**PR A — 主線不斷線（前端，無 migration，不碰 `trip-editor.tsx`）**
-範圍：§2 的 A、D（連結部分）、F、G。含 `new-trip-auth-gate.tsx:35`、`search-experience.tsx` 的 `resume=search` 與 `Idempotency-Key`、加入行程回應帶 `trip_id/day_date` 並連回、底欄旗標、探索分段、訪客扣次按鈕改連結、「比較更多來源」標價、提醒卡連回旅程、README「規則解析器」那句改掉（`README.md` Guided AI search 段落已過時，`694e0f8` 之後是真模型）。
-驗證：`full-stack.spec.ts` 主旅程改為「註冊回來自動開始搜尋」；`navigation.spec.ts` 加四條（`/trips/new` 登入回來、底欄旗標、訪客航班動態連結、加入行程連回）；`search-experience` 第一批 vitest。
-風險：`resume` 若在 `authState` 抖動時觸發兩次會扣兩次，靠現有 `Idempotency-Key`（`search-experience.tsx:501`）擋。
+**PR A — 主線不斷線（前端，無 migration，不碰 `trip-editor.tsx`）— 已在本分支實作**
+範圍：§2 的 A、D（連結部分）、F、G。含 `new-trip-auth-gate.tsx` 登入帶 `next`、`search-experience.tsx` 的 `resume=search` 與儲存方案的 `Idempotency-Key`、加入行程成功後「查看旅程」連結與沒有旅程時的「建立旅程」連結、底欄讀旗標與探索分段（`explore-switch.tsx`）、航班動態與票價實驗室對訪客改成登入連結、「比較更多來源 · 不扣次」、旅程型提醒卡「查看旅程」連結、分享頁「用 Mokaair 規劃你的旅行」出口、README「規則解析器」那句改掉。
+驗證：vitest 新增 `search-experience.test.tsx`（登入連結帶標記、回來只跑一次並清掉標記、沒有標記不自動跑、儲存重試沿用同一把 key、比較更多來源標價）、`flight-status-search.test.tsx`、`explore-switch.test.tsx`、`shared-trip-view.test.tsx`，並補 `app-bottom-nav`、`travel-card-actions`、`account-list`、`airline-fare-lab`、`new-trip-auth-gate` 的案例；e2e：`full-stack.spec.ts` 主旅程改為「註冊回來自動開始搜尋」，`navigation.spec.ts` 加三條（登入回來自動續跑、票價實驗室訪客閘門、探索分段），`flight-status.spec.ts` 加訪客閘門。
+留到後面：`?day=` 深連結（動 `trip-editor.tsx`，等 #150）、提醒卡對機票／住宿的回連（要後端 `links`，PR F）。
+風險：`resume` 只在 `authState`、供應商狀態與扣次資訊三者都就緒時觸發一次，之後立刻 `router.replace` 清掉標記；重新整理或分享連結不會自己扣次。
 
 **PR B — 旅程是容器（後端為主）**
 範圍：`POST /trips` 搜尋路徑補齊；`apply_flight_anchor_details` offer 分支；序列化 `pricing.quoted/estimated`；旅程頁錨點卡顯示快照（等 #150）。
@@ -370,7 +370,7 @@
 
 **Q3 — 活動與接送要不要「帶入旅程」？** 這兩類結果是 offer 不是景點，帶入需要新的項目寫入路徑（不能走 `trip-selections`）。本文先不做；等 ④ 的機票／住宿數據出來再決定。
 
-**Q4 — `/foods` 要不要獨立旗標？** 本文併入 `hotspots`。如果營運上需要單獨關掉美食，要加第七個布林到 `site-visibility`（`lib/site-features.ts`）與後台版面設定，成本不高但要一起改五語系文案。
+**Q4 — `/foods` 要不要獨立旗標？** 本文維持不加旗標（PR A 只讓探索入口在景點暫停時改指向美食）。如果營運上需要單獨關掉美食，要加第七個布林到 `site-visibility`（`lib/site-features.ts`）與後台版面設定，成本不高但要一起改五語系文案。
 
 **Q5 — 餘額不足的真正出路。** 購買未開放前，402 的 sheet 只能說「即將開放」。要不要在後台加「申請試用加點」的自助流程（寫入 `usage_ledger` 的 adjustment，需管理員核准）？這是產品決定，不是工程問題。
 

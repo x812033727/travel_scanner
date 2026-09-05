@@ -14,6 +14,7 @@ import {
   Trash2,
   X,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { ApiError, api, twd } from "@/lib/api";
@@ -94,6 +95,7 @@ function LoadError({
 }
 
 export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
+  const common = useTranslations("common");
   const [items, setItems] = useState<Array<TripItem | AlertItem>>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<LoadFailure>();
@@ -237,6 +239,15 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                     <p className="mt-1 text-sm text-[var(--muted)]">
                       {alert.subtitle || "價格項目"}
                     </p>
+                    {alert.resource_type === "trip" && (
+                      <Link
+                        href={`/trips/${alert.resource_id}`}
+                        className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-[var(--teal)]"
+                      >
+                        {common("openTrip")}
+                        <ChevronRight size={15} />
+                      </Link>
+                    )}
                     <p className="mt-2 text-sm">
                       {alert.target_price
                         ? `目標低於 ${money(Number(alert.target_price), alert.currency)}`

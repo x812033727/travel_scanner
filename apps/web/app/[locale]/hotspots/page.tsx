@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
+import { ExploreSwitch } from "@/components/explore-switch";
 import { HotspotExplorer } from "@/components/hotspot-explorer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -11,5 +12,5 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
 }
 
 export default function HotspotsPage() {
-  return <><SiteHeader /><HotspotExplorer /></>;
+  return <><SiteHeader /><ExploreSwitch /><HotspotExplorer /></>;
 }

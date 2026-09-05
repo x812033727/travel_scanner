@@ -15,7 +15,7 @@ import {
   TrainFront,
 } from "lucide-react";
 import Image from "next/image";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { Link, useRouter } from "@/i18n/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -287,6 +287,7 @@ export function SearchExperience() {
   const visibility = useSiteVisibility();
   const tripsEnabled = featureEnabled(visibility, "trips");
   const locale = useLocale();
+  const usageText = useTranslations("usage");
   const params = useSearchParams();
   const router = useRouter();
   const text = params.get("q") || "";
@@ -394,6 +395,10 @@ export function SearchExperience() {
     "recommended" | "price" | "rating" | "distance"
   >("recommended");
   const started = useRef(false);
+  const resumed = useRef(false);
+  // One key per plan so a retried save replays the trip instead of creating a twin
+  // that also consumes a slot of the 20-trip cap.
+  const saveKeys = useRef(new Map<string, string>());
 
   const resolveAuth = useCallback(() => {
     return api<{ id: string }>("/auth/me")
@@ -432,6 +437,28 @@ export function SearchExperience() {
       .then(setParsedResult)
       .catch((reason: Error) => setError(reason.message));
   }, [structuredParsed, text]);
+
+  // A visitor who signed in from this page comes back with `resume=search`. The
+  // criteria survived the round trip already; this saves the second press of the
+  // start button. Same gate as the button, fired once, then the marker is dropped
+  // from the URL so a reload or a shared link never starts a paid search by itself.
+  useEffect(() => {
+    if (params.get("resume") !== "search" || resumed.current) return;
+    if (!parsed || searchId || busy) return;
+    if (
+      authState !== "signed_in" ||
+      providerStatus?.status !== "ready" ||
+      charge.status !== "ready"
+    )
+      return;
+    resumed.current = true;
+    const next = new URLSearchParams(params.toString());
+    next.delete("resume");
+    router.replace(`/search${next.toString() ? `?${next.toString()}` : ""}`);
+    void begin();
+    // `begin` reads the same state this effect depends on and is not memoised.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params, parsed, searchId, busy, authState, providerStatus, charge.status, router]);
 
   const dates = useMemo(() => {
     if (parsed?.departure_date) {
@@ -631,8 +658,11 @@ export function SearchExperience() {
   async function save(plan: Plan) {
     if (!searchId) return;
     try {
+      const saveKey = saveKeys.current.get(plan.id) ?? crypto.randomUUID();
+      saveKeys.current.set(plan.id, saveKey);
       const trip = await api<{ id: string }>("/trips", {
         method: "POST",
+        headers: { "Idempotency-Key": saveKey },
         body: JSON.stringify({
           search_id: searchId,
           plan_id: plan.id,
@@ -829,6 +859,11 @@ export function SearchExperience() {
     ...(includeAirbnb ? [{ key: "airbnb", label: "Airbnb" }] : []),
   ];
   const searchReturnPath = `/search${params.toString() ? `?${params.toString()}` : ""}`;
+  const resumeReturnPath = (() => {
+    const next = new URLSearchParams(params.toString());
+    next.set("resume", "search");
+    return `/search?${next.toString()}`;
+  })();
 
   const providerTone =
     providerStatus?.status === "ready"
@@ -931,7 +966,7 @@ export function SearchExperience() {
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               {authState === "signed_out" ? (
                 <Link
-                  href={loginPath(searchReturnPath)}
+                  href={loginPath(resumeReturnPath)}
                   className="rounded-2xl bg-[var(--teal)] px-6 py-3.5 text-center font-semibold text-white"
                 >
                   登入後開始搜尋
@@ -1226,7 +1261,7 @@ export function SearchExperience() {
                     onClick={expandFlightSources}
                     className="rounded-xl border border-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-[var(--teal)] disabled:opacity-50"
                   >
-                    {expandingSources ? "比較中…" : "比較更多來源"}
+                    {expandingSources ? "比較中…" : `比較更多來源 · ${usageText("noCharge")}`}
                   </button>
                 </div>
               )}

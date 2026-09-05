@@ -712,9 +712,11 @@ and comfortable results use documented, adjustable scoring weights.
 
 ## Guided AI search
 
-`POST /api/v1/ai/parse-trip` uses a deterministic rules-based parser for the
-MVP. It extracts constraints and reports confidence/missing fields; it never
-creates prices. The home page also provides a five-step option flow for a
+`POST /api/v1/ai/parse-trip` sends the brief to the configured AI planner
+provider and falls back to a deterministic rules-based parser when no provider
+is configured or the per-IP limit is reached; the `parser` field reports which
+engine answered. It extracts constraints and reports confidence/missing fields;
+it never creates prices. The home page also provides a five-step option flow for a
 travel window, trip-length range, multiple countries, travelers, lodging, and
 interests. Every optional preference has an explicit no-preference state;
 structured choices override supplementary free text.

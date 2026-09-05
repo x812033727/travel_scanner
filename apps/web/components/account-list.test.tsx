@@ -28,6 +28,21 @@ describe("AccountList", () => {
     await screen.findByText("已暫停");
   });
 
+  it("links a saved-trip alert back to the trip it watches", async () => {
+    apiMock.mockResolvedValueOnce([{
+      ...alert,
+      id: "alert-2",
+      resource_type: "trip",
+      resource_id: "trip-9",
+      title: "京都五天",
+      subtitle: "京都",
+      monitoring_mode: "manual_only",
+    }]);
+    render(<AccountList kind="alerts" />);
+    await screen.findByText("京都五天");
+    expect(screen.getByRole("link", { name: "查看旅程" }).getAttribute("href")).toBe("/trips/trip-9");
+  });
+
   it("does not remove an item when confirmed deletion fails", async () => {
     apiMock.mockResolvedValueOnce([alert]);
     apiMock.mockRejectedValueOnce(new ApiError("服務暫時無法使用", 503));
