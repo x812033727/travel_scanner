@@ -600,3 +600,67 @@ async def test_reseeding_extends_an_existing_dish_to_a_newly_listed_city(
     async with SessionFactory() as session:
         await _clear(session)
         await session.commit()
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_filling_coordinates_survives_a_real_session_across_many_rows() -> None:
+    """The session handling here only breaks against a real session.
+
+    Releasing the read transaction with rollback() expires every loaded merchant whatever
+    expire_on_commit says, so the next plain ``merchant.slug`` needed a refresh SELECT from
+    sync attribute access and the command died with MissingGreenlet on the first row. The
+    unit tests could not see it: they drive the loop with hand-built objects.
+    """
+
+    from app.foods.coordinate_fill import FetchResult
+    from app.foods.coordinate_fill_cli import fill_food_merchant_coordinates
+
+    page = (
+        '<script type="application/ld+json">'
+        '{"@type":"Restaurant","geo":{"latitude":35.3192,"longitude":139.5467}}</script>'
+    )
+
+    async def fetch(_url: str) -> FetchResult:
+        return FetchResult(page, "ok")
+
+    async with SessionFactory() as session:
+        await _clear(session)
+        await seed_catalog(session, date(2026, 9, 1))
+        await seed_food_catalog(session)
+        await session.commit()
+
+    # Kamakura, because its merchants are the ones that carry first-party pages; the
+    # older Japanese cities still have only their destination guide.
+    report = await fill_food_merchant_coordinates(["kamakura"], None, True, fetch)
+
+    assert report["applied"] is True
+    assert report["processed"] >= 2, report
+    # One page serves every row here, so the first row is filled and the rest report
+    # duplicate. Anything else means the loop died partway.
+    assert set(report["outcomes"]) <= {"filled", "duplicate"}
+    assert report["outcomes"].get("filled") == 1
+
+    async with SessionFactory() as session:
+        written = list(
+            (
+                await session.scalars(
+                    select(FoodMerchant).where(
+                        FoodMerchant.destination_id == "kamakura",
+                        FoodMerchant.latitude.is_not(None),
+                    )
+                )
+            ).all()
+        )
+        assert written, report
+        first = written[0]
+        assert first.coordinate_source_type in {"merchant_official", "official_tourism"}
+        assert first.coordinate_verified_at is not None
+        # Still nobody's review state moved.
+        assert first.review_status == "pending"
+        assert first.map_match_status == "unverified"
+        assert first.is_active is False
+
+    async with SessionFactory() as session:
+        await _clear(session)
+        await session.commit()
+
