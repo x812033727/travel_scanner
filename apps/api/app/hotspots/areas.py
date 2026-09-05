@@ -260,6 +260,18 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
             ja="高尾・八王子",
         ),
         _area("kawagoe", "川越", "Kawagoe", 35.9175, 139.4891, 8.0, ja="川越"),
+        _area("kuramae", "藏前", "Kuramae", 35.7032, 139.7909, 0.8, ja="蔵前"),
+        _area("okushibu", "奧澀谷", "Oku-Shibuya", 35.667, 139.689, 0.8, ja="奥渋谷"),
+        _area(
+            "urahara",
+            "裏原宿／貓街",
+            "Ura-Harajuku & Cat Street",
+            35.67,
+            139.705,
+            0.7,
+            ja="裏原宿・キャットストリート",
+        ),
+        _area("koenji", "高圓寺", "Koenji", 35.7037, 139.6528, 1.0, ja="高円寺"),
     ),
     "KIX": (
         _area(
@@ -334,6 +346,12 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         _area("kurama", "鞍馬／貴船", "Kurama & Kibune", 35.1181, 135.7707, 5.0, ja="鞍馬・貴船"),
         _area("uji", "宇治", "Uji", 34.8900, 135.8080, 4.0, ja="宇治"),
         _area("nara", "奈良", "Nara", 34.6850, 135.8300, 5.0, ja="奈良"),
+        _area("nakazakicho", "中崎町", "Nakazakicho", 34.7069, 135.5052, 0.6, ja="中崎町"),
+        _area("horie", "南堀江", "Minami-Horie", 34.6727, 135.4929, 0.8, ja="南堀江"),
+        _area("nakatsu", "中津", "Nakatsu", 34.7097, 135.493, 0.6, ja="中津"),
+        _area("nishijin", "西陣", "Nishijin", 35.0297, 135.7519, 1.4, ja="西陣"),
+        _area("gojo", "河原町五條", "Kawaramachi-Gojo", 34.9952, 135.7597, 0.7, ja="五条楽園"),
+        _area("ichijoji", "一乘寺", "Ichijoji", 35.0443, 135.7875, 1.0, ja="一乗寺"),
     ),
     "FUK": (
         _area("hakata", "博多站", "Hakata Station", 33.5900, 130.4200, 1.2, ja="博多駅"),
@@ -372,6 +390,8 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         _area("dazaifu", "太宰府", "Dazaifu", 33.5214, 130.5350, 4.0, ja="太宰府"),
         _area("itoshima", "糸島", "Itoshima", 33.6000, 130.2000, 12.0, ja="糸島"),
         _area("yanagawa", "柳川", "Yanagawa", 33.1631, 130.4058, 8.0, ja="柳川"),
+        _area("daimyo", "大名／今泉", "Daimyo & Imaizumi", 33.5875, 130.398, 0.6, ja="大名・今泉"),
+        _area("shirogane", "白金／高砂", "Shirogane", 33.5788, 130.4085, 0.7, ja="白金・高砂"),
     ),
     "CTS": (
         _area(
@@ -448,6 +468,10 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         ),
         _area("jozankei", "定山溪", "Jozankei", 42.9653, 141.1625, 6.0, ja="定山渓"),
         _area("otaru", "小樽", "Otaru", 43.1950, 141.0000, 6.0, ja="小樽"),
+        _area(
+            "soseigawa", "創成川東", "Soseigawa East", 43.0613, 141.3605, 0.7, ja="創成川イースト"
+        ),
+        _area("tanukikoji", "狸小路", "Tanukikoji", 43.0583, 141.3546, 0.5, ja="狸小路"),
     ),
     "OKA": (
         _area(
@@ -515,6 +539,16 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
             10.0,
             ja="本部・美ら海水族館",
         ),
+        _area(
+            "minatogawa",
+            "港川外人住宅",
+            "Minatogawa Stateside Town",
+            26.2312,
+            127.74,
+            0.6,
+            ja="港川ステイツサイドタウン",
+        ),
+        _area("ukishima", "浮島通", "Ukishima Street", 26.2158, 127.6854, 0.4, ja="浮島通り"),
     ),
     "NGO": (
         _area(
@@ -550,6 +584,7 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         ),
         _area("tokoname", "常滑", "Tokoname", 35.0015, 137.0866, 6.0, ja="常滑"),
         _area("inuyama", "犬山", "Inuyama", 35.3879, 136.9423, 6.0, ja="犬山"),
+        _area("kakuozan", "覺王山", "Kakuozan", 35.1665, 136.9531, 0.8, ja="覚王山"),
     ),
     "ICN": (
         _area(
@@ -609,6 +644,12 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
             "namhansanseong", "南漢山城", "Namhansanseong", 37.4780, 127.1842, 5.0, ko="남한산성"
         ),
         _area("suwon", "水原華城", "Suwon Hwaseong", 37.2807, 127.0102, 6.0, ko="수원 화성"),
+        _area("seongsu", "聖水洞", "Seongsu-dong", 37.543, 127.048, 1.3, ko="성수동"),
+        _area("hannam", "漢南洞", "Hannam-dong", 37.535, 127.001, 0.8, ko="한남동"),
+        _area("euljiro", "乙支路", "Euljiro", 37.5664, 126.991, 0.7, ko="을지로"),
+        _area("yeonnam", "延南洞", "Yeonnam-dong", 37.5625, 126.9255, 0.6, ko="연남동"),
+        _area("yongnidan", "龍理團街", "Yongnidan-gil", 37.532, 126.972, 0.6, ko="용리단길"),
+        _area("sindang", "新堂洞", "Sindang-dong", 37.566, 127.02, 0.7, ko="신당동"),
     ),
     "PUS": (
         _area(
@@ -677,6 +718,11 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
             6.0,
             ko="양산·통도사",
         ),
+        _area(
+            "jeonpo", "田浦咖啡街", "Jeonpo Cafe Street", 35.155, 129.063, 0.5, ko="전포카페거리"
+        ),
+        _area("bongnae", "影島蓬萊洞", "Bongnae-dong", 35.0913, 129.0357, 0.7, ko="봉래동"),
+        _area("haeridan", "海理團街", "Haeridan-gil", 35.166, 129.159, 0.5, ko="해리단길"),
     ),
     "CJU": (
         _area(
@@ -728,6 +774,7 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
             6.0,
             ko="성읍민속마을·표선",
         ),
+        _area("sehwa", "細花里", "Sehwa", 33.5254, 126.8603, 1.2, ko="세화리"),
     ),
     "BKK": (
         _area("rattanakosin", "大皇宮／考山路", "Grand Palace & Khao San", 13.7530, 100.4950, 1.6),
@@ -748,6 +795,12 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
             6.0,
         ),
         _area("ko-kret", "閣格雷島／暖武里", "Ko Kret & Nonthaburi", 13.9069, 100.4733, 5.0),
+        _area("song-wat", "嵩越路", "Song Wat", 13.7393, 100.5038, 0.5),
+        _area("talat-noi", "噠叻仔", "Talat Noi", 13.7348, 100.5131, 0.5),
+        _area(
+            "charoenkrung", "石龍軍創意區", "Charoenkrung Creative District", 13.724, 100.515, 1.0
+        ),
+        _area("ekkamai", "伊卡邁", "Ekkamai", 13.73, 100.587, 1.0),
     ),
     "CNX": (
         _area("old-city", "古城", "Old City", 18.7880, 98.9870, 1.1),
@@ -763,6 +816,8 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         _area("mae-kampong", "湄甘蓬", "Mae Kampong", 18.8655, 99.3510, 8.0),
         _area("doi-inthanon", "茵他儂山", "Doi Inthanon", 18.5922, 98.4867, 15.0),
         _area("lamphun", "南奔", "Lamphun", 18.5774, 99.0082, 8.0),
+        _area("chang-moi", "昌莫路", "Chang Moi", 18.7906, 99.0003, 0.5),
+        _area("san-pa-khoi", "山巴闊", "San Pa Khoi", 18.786, 99.012, 0.6),
     ),
     "HKT": (
         _area("old-town", "普吉老城", "Phuket Old Town", 7.8850, 98.3880, 2.0),
@@ -818,6 +873,16 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         _area("muzha", "木柵／動物園", "Muzha & Taipei Zoo", 24.9950, 121.5842, 2.5),
         _area("sanxia", "三峽／鶯歌", "Sanxia & Yingge", 24.9330, 121.3694, 6.0),
         _area("pinglin", "坪林", "Pinglin", 24.9344, 121.7130, 6.0),
+        _area("chifeng", "赤峰街", "Chifeng Street", 25.053, 121.5205, 0.4),
+        _area(
+            "minsheng",
+            "富錦街／民生社區",
+            "Fujin Street & Minsheng Community",
+            25.0603,
+            121.5541,
+            0.9,
+        ),
+        _area("dongqu", "東區巷弄", "Taipei East Village", 25.0417, 121.5514, 0.7),
     ),
     "SIN": (
         _area("marina-bay", "濱海灣", "Marina Bay", 1.2850, 103.8600, 1.2),
@@ -849,6 +914,8 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         _area("mandai", "萬禮／動物園", "Mandai & Singapore Zoo", 1.4038, 103.7941, 3.0),
         _area("kranji", "克蘭芝", "Kranji", 1.4167, 103.7286, 4.0),
         _area("ubin", "烏敏島／樟宜", "Pulau Ubin & Changi", 1.4000, 103.9600, 5.0),
+        _area("jalan-besar", "惹蘭勿剎", "Jalan Besar", 1.3086, 103.8577, 0.7),
+        _area("keong-saik", "恭錫路", "Keong Saik", 1.2802, 103.8416, 0.4),
     ),
     "HKG": (
         _area("central", "中環／上環", "Central & Sheung Wan", 22.2830, 114.1560, 1.1),
@@ -884,6 +951,13 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
             114.2590,
             8.0,
         ),
+        _area(
+            "sham-shui-po", "大南街／深水埗", "Tai Nam Street, Sham Shui Po", 22.3271, 114.1634, 0.7
+        ),
+        _area("wong-chuk-hang", "黃竹坑", "Wong Chuk Hang", 22.2479, 114.1676, 0.7),
+        _area("poho", "太平山街 PoHo", "PoHo, Tai Ping Shan Street", 22.2837, 114.1477, 0.4),
+        _area("tai-hang", "大坑", "Tai Hang", 22.2779, 114.1919, 0.5),
+        _area("star-street", "星街小區", "Star Street Precinct", 22.2748, 114.1693, 0.4),
     ),
     "HAN": (
         _area(
@@ -906,6 +980,7 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         ),
         _area("bat-trang", "鉢場陶瓷村", "Bat Trang Pottery Village", 20.9833, 105.9167, 4.0),
         _area("duong-lam", "唐林古村／山西", "Duong Lam & Son Tay", 21.1544, 105.4739, 8.0),
+        _area("quang-an", "廣安街", "Quang An", 21.0637, 105.8265, 1.0),
     ),
     "SGN": (
         _area(
@@ -923,6 +998,7 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         _area("thao-dien", "草田／第二郡", "Thao Dien (District 2)", 10.8050, 106.7330, 2.5),
         _area("cu-chi", "古芝地道", "Cu Chi Tunnels", 11.0610, 106.5260, 10.0),
         _area("can-gio", "芹椰紅樹林", "Can Gio Mangroves", 10.3100, 106.7400, 20.0),
+        _area("nguyen-thai-binh", "阮太平街區", "Nguyen Thai Binh", 10.7688, 106.6998, 0.4),
     ),
     "DAD": (
         _area("han-river", "漢江／市中心", "Han River & City Centre", 16.0680, 108.2200, 1.6),
@@ -941,6 +1017,7 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         _area("hoi-an", "會安古城", "Hoi An Ancient Town", 15.8780, 108.3240, 5.0),
         _area("my-son", "美山聖地", "My Son Sanctuary", 15.7667, 108.1167, 8.0),
         _area("dong-duong", "東陽佛院／升平", "Dong Duong & Thang Binh", 15.7070, 108.2249, 6.0),
+        _area("an-thuong", "安上街區", "An Thuong", 16.0499, 108.2453, 0.6),
     ),
     "RMQ": (
         _area("central", "中區／舊城", "Central District & Old Town", 24.1400, 120.6780, 1.0),
@@ -960,6 +1037,7 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         ),
         _area("wufeng", "霧峰", "Wufeng", 24.0642, 120.7010, 5.0),
         _area("gaomei", "高美濕地／清水", "Gaomei Wetlands & Qingshui", 24.3121, 120.5500, 6.0),
+        _area("shenji", "審計新村", "Shenji New Village", 24.1379, 120.6633, 0.3),
     ),
     "KHH": (
         _area("yancheng", "鹽埕／駁二", "Yancheng & Pier-2", 22.6220, 120.2850, 1.0),
@@ -983,6 +1061,7 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         _area("weiwuying", "衛武營／鳳山", "Weiwuying & Fengshan", 22.6211, 120.3394, 2.0),
         _area("chengqing", "澄清湖", "Chengqing Lake", 22.6606, 120.3510, 3.0),
         _area("foguangshan", "佛光山／大樹", "Fo Guang Shan & Dashu", 22.7474, 120.4462, 6.0),
+        _area("huangpu", "黃埔新村", "Huangpu New Village", 22.6247, 120.358, 0.5),
     ),
     "SDJ": (
         _area(
@@ -1092,6 +1171,15 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
             8.0,
             ja="那谷寺・小松",
         ),
+        _area(
+            "tatemachi",
+            "竪町／新竪町",
+            "Tatemachi & Shin-Tatemachi",
+            36.557,
+            136.659,
+            0.5,
+            ja="竪町・新竪町",
+        ),
     ),
     "HIJ": (
         _area(
@@ -1200,6 +1288,9 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
             6.0,
             ko="팔공산·동화사",
         ),
+        _area("dongin", "東仁洞", "Dongin-dong", 35.871, 128.606, 0.4, ko="동인동"),
+        _area("samdeok", "三德洞", "Samdeok-dong", 35.8672, 128.6053, 0.4, ko="삼덕동"),
+        _area("bukseongro", "北城路", "Bukseong-ro", 35.8734, 128.5926, 0.4, ko="북성로"),
     ),
     "CEI": (
         _area(
@@ -1293,6 +1384,7 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
             8.0,
         ),
         _area("guanziling", "關子嶺溫泉", "Guanziling Hot Springs", 23.3333, 120.5000, 8.0),
+        _area("zhengxing", "正興街／國華街", "Zhengxing & Guohua Street", 22.9963, 120.1985, 0.4),
     ),
     "GYE": (
         _area(
@@ -1402,6 +1494,24 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
             5.0,
             ko="모악산·금산사",
         ),
+        _area(
+            "seohak",
+            "棲鶴洞藝術村",
+            "Seohak-dong Art Village",
+            35.8078,
+            127.15,
+            0.6,
+            ko="서학동예술마을",
+        ),
+        _area(
+            "sinsigaji",
+            "全州新市街",
+            "Jeonju Sinsigaji",
+            35.8158,
+            127.1078,
+            1.0,
+            ko="전주 신시가지",
+        ),
     ),
     "HUI": (
         _area("citadel", "皇城／京城", "Imperial City & Citadel", 16.4700, 107.5790, 0.9),
@@ -1433,6 +1543,7 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         ),
         _area("tam-giang", "潭江潟湖", "Tam Giang Lagoon", 16.6319, 107.4719, 10.0),
         _area("bach-ma", "白馬國家公園", "Bach Ma National Park", 16.2000, 107.8667, 12.0),
+        _area("pham-ngu-lao", "范五老步行街", "Pham Ngu Lao Walking Street", 16.47, 107.5946, 0.4),
     ),
     "YOK": (
         _area("minato-mirai", "港未來", "Minato Mirai", 35.4565, 139.6325, 1.0, ja="みなとみらい"),
@@ -1495,6 +1606,15 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
             ja="八景島・金沢文庫",
         ),
         _area("tsurumi", "鶴見", "Tsurumi", 35.5090, 139.6780, 2.0, ja="鶴見"),
+        _area(
+            "koganecho",
+            "黃金町／日之出町",
+            "Koganecho",
+            35.4398,
+            139.6227,
+            0.5,
+            ja="黄金町・日ノ出町",
+        ),
     ),
     "KMK": (
         _area(
