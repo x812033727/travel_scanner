@@ -211,6 +211,29 @@ describe("trip editor", () => {
     expect(screen.queryByText("尚未設定")).toBeNull();
   });
 
+  it("shows a catalog stop's original-script name under the localized title", async () => {
+    const localizedTrip = {
+      ...trip,
+      items: [{
+        ...trip.items[0],
+        title: "淺草寺",
+        location_name: "淺草寺",
+        names: {
+          title: { "zh-TW": "淺草寺", en: "Sensō-ji", ja: "浅草寺", original: "浅草寺", original_locale: "ja" },
+          location_name: { "zh-TW": "淺草寺", en: "Sensō-ji", ja: "浅草寺", original: "浅草寺", original_locale: "ja" },
+        },
+        data: { hotspot_id: "hotspot-1" },
+      }],
+    };
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(localizedTrip))));
+
+    render(<TripEditor tripId={trip.id} />);
+
+    expect(await screen.findByText("浅草寺")).toBeTruthy();
+    expect(screen.getByText("浅草寺").getAttribute("lang")).toBe("ja");
+    expect(screen.getByRole("heading", { name: "淺草寺" })).toBeTruthy();
+  });
+
   it("uses one honest count and one compact lodging prompt before a hotel is set", async () => {
     const unsetLodgingTrip = {
       ...trip,

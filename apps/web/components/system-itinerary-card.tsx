@@ -6,7 +6,7 @@ import {
   SkipForward,
   Utensils,
 } from "lucide-react";
-import { formatTime, type ChainedStart, type TripItem } from "@/lib/trip-types";
+import { formatTime, originalItemName, type ChainedStart, type TripItem } from "@/lib/trip-types";
 
 export function SystemItineraryCard({
   item,
@@ -64,6 +64,7 @@ export function SystemItineraryCard({
           {meal && item.is_skipped && <span className="rounded-full bg-slate-200 px-2 py-1 text-[.68rem] font-extrabold text-slate-700">已跳過</span>}
         </div>
         <h3 className="mt-1.5 line-clamp-2 font-bold">{unsetHotel && item.title.includes("尚未設定飯店") ? "尚未設定主要飯店" : item.title}</h3>
+        {originalItemName(item) && <p className="mt-0.5 truncate text-sm text-[var(--muted)]" lang={item.names?.title?.original_locale}>{originalItemName(item)}</p>}
         {!unsetHotel && <p className="mt-1 flex items-start gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} className="mt-0.5 shrink-0" />{item.location_name || (hotel ? "尚未設定主要飯店" : "尚未選擇餐廳")}</p>}
         {meal && item.is_skipped
           ? <p className="mt-2 text-xs font-semibold text-slate-600">已跳過，不計停留時間與路線</p>

@@ -2,9 +2,11 @@ from __future__ import annotations
 
 import asyncio
 from collections import defaultdict
+from collections.abc import Iterable, Mapping
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from typing import Any
+from uuid import UUID
 
 import httpx
 from sqlalchemy import delete, func, or_, select
@@ -31,6 +33,11 @@ from app.hotspots.ranking import RankingInput, score_deep_hotspots, score_hotspo
 from app.hotspots.wikimedia import WikimediaPageviewClient
 from app.i18n import LOCALES, Locale
 from app.infra import get_redis
+from app.localized_names import (
+    build_localized_names,
+    original_locale_for,
+    resolve_localized_name,
+)
 from app.locations.coordinates import has_durable_coordinates
 from app.models import (
     FoodMerchant,
@@ -63,6 +70,46 @@ PLANNER_INTEREST_CATEGORIES: dict[str, tuple[str, ...]] = {
 # Interest-matched candidates may take at most this share of the planner pool;
 # the rest is reserved for the city's top-ranked landmarks.
 PLANNER_INTEREST_SHARE = 2 / 3
+
+
+def hotspot_names(hotspot: TravelHotspot, localizations: Mapping[str, str]) -> dict[str, str]:
+    """Five site locales plus the original text for one hotspot.
+
+    ``localizations`` maps locale to the stored ``hotspot_localizations`` name;
+    the catalog ``name`` is the Traditional Chinese label. The original is the
+    reviewed ``local_name``; for Taiwan and Hong Kong the catalog name already
+    is the original.
+    """
+
+    original = hotspot.metadata_json.get("local_name")
+    if not original and original_locale_for(hotspot.country_code) == "zh-TW":
+        original = hotspot.name
+    return build_localized_names(
+        names={"zh-TW": hotspot.name, **localizations},
+        original=str(original) if original else None,
+        country_code=hotspot.country_code,
+        fallback=hotspot.name,
+    )
+
+
+async def load_hotspot_names(
+    session: AsyncSession, hotspots: Iterable[TravelHotspot]
+) -> dict[UUID, dict[str, str]]:
+    """Complete name maps for ``hotspots`` from their stored localizations."""
+
+    rows = list(hotspots)
+    if not rows:
+        return {}
+    localizations: dict[UUID, dict[str, str]] = defaultdict(dict)
+    for localization in (
+        await session.scalars(
+            select(HotspotLocalization).where(
+                HotspotLocalization.hotspot_id.in_([hotspot.id for hotspot in rows])
+            )
+        )
+    ).all():
+        localizations[localization.hotspot_id][localization.locale] = localization.name
+    return {hotspot.id: hotspot_names(hotspot, localizations[hotspot.id]) for hotspot in rows}
 
 
 async def refresh_due_map_place_ids(
@@ -246,7 +293,7 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
                 if seed.wikipedia_project and seed.wikipedia_title
                 else []
             ),
-            "local_name": seed.local_name,
+            "local_name": seed.original_name,
             "depth_reason": seed.depth_reason,
             "access_minutes": seed.access_minutes,
             "recommended_duration_minutes": seed.recommended_duration_minutes,
@@ -267,6 +314,7 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
         hotspot.reviewed_at = hotspot.reviewed_at or datetime.now(UTC)
         session.add(hotspot)
         await session.flush()
+        seed_names = seed.localized_names
         for locale in LOCALES:
             localization = localizations.get((hotspot.id, locale))
             if localization is None:
@@ -279,6 +327,11 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
                 )
                 localizations[(hotspot.id, locale)] = localization
                 session.add(localization)
+            # Curated names are refreshed on every run, like the row itself: nothing
+            # else writes these labels, and a translation added to the seed must reach
+            # rows that were created before the seed knew it.
+            localization.name = seed_names.get(locale, seed.name)
+            localization.aliases = list(seed.aliases)
         await _upsert_signal(
             session,
             hotspot.id,
@@ -674,9 +727,7 @@ async def collect_hotspots(
                     automatic=True,
                 ),
             }
-        await session.execute(
-            stale_youtube_guides_delete(datetime.now(UTC) - timedelta(days=30))
-        )
+        await session.execute(stale_youtube_guides_delete(datetime.now(UTC) - timedelta(days=30)))
         await session.commit()
     return {
         "observed_on": target_date.isoformat(),
@@ -792,17 +843,7 @@ async def list_rankings(
     has_more = len(rows) > limit
     rows = rows[:limit]
     hotspot_ids = [hotspot.id for _, hotspot in rows]
-    localized_names = {
-        row.hotspot_id: row.name
-        for row in (
-            await session.scalars(
-                select(HotspotLocalization).where(
-                    HotspotLocalization.hotspot_id.in_(hotspot_ids),
-                    HotspotLocalization.locale == locale,
-                )
-            )
-        ).all()
-    }
+    names_by_hotspot = await load_hotspot_names(session, (hotspot for _, hotspot in rows))
     guide_counts = {
         (hotspot_id, kind): int(count)
         for hotspot_id, kind, count in (
@@ -825,16 +866,17 @@ async def list_rankings(
         profile.hotspot_id: profile
         for profile in (
             await session.scalars(
-                select(HotspotPlaceProfile).where(
-                    HotspotPlaceProfile.hotspot_id.in_(hotspot_ids)
-                )
+                select(HotspotPlaceProfile).where(HotspotPlaceProfile.hotspot_id.in_(hotspot_ids))
             )
         ).all()
     }
     items: list[dict[str, Any]] = []
     for ranking, hotspot in rows:
         growth_rate = ranking.explanation.get("growth_rate")
-        localized_name = localized_names.get(hotspot.id, hotspot.name)
+        names = names_by_hotspot.get(hotspot.id, {})
+        localized_name = (
+            resolve_localized_name(names, locale, fallback=hotspot.name) or hotspot.name
+        )
         local_name = hotspot.metadata_json.get("local_name")
         items.append(
             {
@@ -842,6 +884,7 @@ async def list_rankings(
                 "slug": hotspot.slug,
                 "rank": ranking.rank,
                 "name": localized_name,
+                "names": names,
                 "destination_id": hotspot.destination_id,
                 "city_code": hotspot.city_code,
                 "city_name": hotspot.city_name,
@@ -1140,6 +1183,7 @@ async def load_planner_hotspots(
             ItineraryHotspot(
                 hotspot_id=item["id"],
                 name=item["name"],
+                names=item.get("names") or {},
                 category=item["category"],
                 latitude=item["latitude"],
                 longitude=item["longitude"],

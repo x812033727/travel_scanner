@@ -4,10 +4,13 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
 import {
+  LocalizedNameFields,
+  completeNames,
   loadCities,
   type AdminArea,
   type AdminCategory,
   type FoodCity,
+  type LocalizedNames,
 } from "./admin-food-taxonomy-panel";
 
 type MerchantClaim =
@@ -36,6 +39,10 @@ type Merchant = {
   country_code: string;
   name: string;
   local_name: string;
+  /** Explicit per-locale labels; blanks fall back to `name` / `local_name`. */
+  names: LocalizedNames;
+  /** What travellers see per locale once the fallbacks are applied. */
+  resolved_names?: Partial<LocalizedNames>;
   address: string | null;
   latitude: number | null;
   longitude: number | null;
@@ -108,6 +115,7 @@ function emptyDirectSource(): MerchantSource {
 function withTaxonomyDefaults(merchant: Merchant): Merchant {
   return {
     ...merchant,
+    names: completeNames(merchant.names),
     display_order: merchant.display_order ?? 100,
     area: merchant.area ?? null,
     area_source: merchant.area_source ?? null,
@@ -128,6 +136,7 @@ function blankMerchant(): Merchant {
     country_code: "",
     name: "",
     local_name: "",
+    names: completeNames(undefined),
     address: null,
     latitude: null,
     longitude: null,
@@ -491,6 +500,7 @@ export function AdminFoodMerchantsPanel({
           country_code: editing.country_code,
           name: editing.name,
           local_name: editing.local_name,
+          names: editing.names,
           address: editing.address,
           latitude: editing.latitude,
           longitude: editing.longitude,
@@ -948,6 +958,16 @@ export function AdminFoodMerchantsPanel({
                   className="mt-1 h-11 w-full rounded-xl border px-3"
                 />
               </label>
+              <fieldset className="md:col-span-2">
+                <legend className="text-sm font-semibold">{t("merchants.names")}</legend>
+                <p className="mb-2 mt-1 text-xs text-[var(--muted)]">{t("merchants.namesHelp")}</p>
+                <LocalizedNameFields
+                  names={editing.names}
+                  onChange={(names) => setEditing({ ...editing, names })}
+                  label={(locale) => t("localizedName", { locale })}
+                  placeholders={editing.resolved_names}
+                />
+              </fieldset>
               {!editing.id && (
                 <label className="text-sm font-semibold">
                   {t("merchants.slug")}

@@ -13,7 +13,9 @@ from app.destinations.catalog import destination_for_id
 from app.foods.publication import publishable_merchant_filters
 from app.foods.service import localized_name
 from app.hotspots.maps import build_map_links
+from app.hotspots.service import load_hotspot_names
 from app.i18n import Locale, current_locale
+from app.localized_names import resolve_localized_name
 from app.models import (
     FoodArea,
     FoodCategory,
@@ -117,12 +119,15 @@ async def list_saved_items(
                 )
             )
         ).all()
+        hotspot_names = await load_hotspot_names(session, (hotspot for _, hotspot in hotspot_rows))
         for favorite, hotspot in hotspot_rows:
             items.append(
                 {
                     "type": "hotspot",
                     "id": str(hotspot.id),
-                    "title": hotspot.name,
+                    "title": resolve_localized_name(
+                        hotspot_names.get(hotspot.id), locale, fallback=hotspot.name
+                    ),
                     "subtitle": f"{hotspot.city_name} · {hotspot.category}",
                     "map_links": build_map_links(
                         name=hotspot.name,
@@ -210,7 +215,9 @@ async def list_saved_items(
                 {
                     "type": "merchant",
                     "id": str(merchant.id),
-                    "title": merchant.name,
+                    "title": resolve_localized_name(
+                        merchant.names_json, locale, fallback=merchant.name
+                    ),
                     "subtitle": f"{city_name} · {detail}" if detail else city_name,
                     "map_links": build_map_links(
                         name=merchant.name,
@@ -306,9 +313,7 @@ async def save_item(
             )
         )
         if existing_restaurant is None:
-            session.add(
-                RestaurantFavorite(user_id=user.id, restaurant_place_id=restaurant.id)
-            )
+            session.add(RestaurantFavorite(user_id=user.id, restaurant_place_id=restaurant.id))
     await session.commit()
     return {"type": item_type, "id": item_id, "saved": True}
 

@@ -1,3 +1,4 @@
+from contextvars import ContextVar, Token
 from typing import Annotated, Literal, cast
 
 from fastapi import Header
@@ -5,6 +6,11 @@ from fastapi import Header
 Locale = Literal["en", "ja", "ko", "zh-TW", "zh-CN"]
 LOCALES: tuple[Locale, ...] = ("en", "ja", "ko", "zh-TW", "zh-CN")
 DEFAULT_LOCALE: Locale = "zh-TW"
+
+# The locale of the request being served, bound by RequestContextMiddleware so
+# deep serializers (trip items, for one) can localize without every caller
+# threading the header through. Outside a request it is the site default.
+_request_locale: ContextVar[Locale] = ContextVar("request_locale", default=DEFAULT_LOCALE)
 
 PROVIDER_LOCALES: dict[str, dict[Locale, str]] = {
     "google": {locale: locale for locale in LOCALES},
@@ -364,8 +370,7 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "invalid_credentials": "이메일 또는 비밀번호가 올바르지 않습니다",
         "email_exists": "이미 등록된 이메일입니다",
         "admin_email_reserved": (
-            "이 이메일은 관리자용으로 예약되어 있습니다. "
-            "호스트 관리자에게 계정 생성을 요청하세요"
+            "이 이메일은 관리자용으로 예약되어 있습니다. 호스트 관리자에게 계정 생성을 요청하세요"
         ),
         "request_too_large": "요청 내용이 너무 큽니다",
         "session_check_unavailable": (
@@ -547,6 +552,22 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
 def request_locale(headers: object) -> Locale:
     getter = getattr(headers, "get", None)
     return normalize_locale(getter("x-travel-locale") if callable(getter) else None)
+
+
+def bind_request_locale(locale: str | None) -> Token[Locale]:
+    """Make ``locale`` the active request locale; reset with :func:`reset_request_locale`."""
+
+    return _request_locale.set(normalize_locale(locale))
+
+
+def reset_request_locale(token: Token[Locale]) -> None:
+    _request_locale.reset(token)
+
+
+def active_locale() -> Locale:
+    """The locale of the request being served, or the site default outside a request."""
+
+    return _request_locale.get()
 
 
 def normalize_locale(value: str | None) -> Locale:

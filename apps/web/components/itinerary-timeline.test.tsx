@@ -39,7 +39,11 @@ describe("readonly itinerary timeline", () => {
     const items = [
       item("flight-out", "長榮航空 BR 198", 0, { item_type: "flight", system_role: "outbound_flight", fixed_time: true, locked: true, data: { flight_info: { airline: "長榮航空", flight_number: "BR 198", origin: "TPE", destination: "NRT", departure_local: "2026-11-10T08:50", arrival_local: "2026-11-10T13:10" } } }),
       item("hotel-start", "從丸之內飯店出發", 0, { item_type: "hotel_anchor", system_role: "hotel_start", locked: true }),
-      item("activity", "淺草寺", 1, { latitude: 35.7148, longitude: 139.7967 }),
+      item("activity", "淺草寺", 1, {
+        latitude: 35.7148,
+        longitude: 139.7967,
+        names: { title: { "zh-TW": "淺草寺", en: "Sensō-ji", original: "浅草寺", original_locale: "ja" } },
+      }),
       item("lunch", "已跳過午餐", 2, { item_type: "meal", system_role: "lunch", is_skipped: true, locked: true }),
       item("dinner", "銀座晚餐", 3, { item_type: "meal", system_role: "dinner", locked: true, latitude: 35.6717, longitude: 139.765 }),
       item("hotel-end", "返回丸之內飯店", 4, { item_type: "hotel_anchor", system_role: "hotel_end", locked: true }),
@@ -50,6 +54,8 @@ describe("readonly itinerary timeline", () => {
     render(<ItineraryTimeline items={items} routes={[directRoute]} />);
 
     expect(screen.queryByText("已跳過午餐")).toBeNull();
+    expect(screen.getByText("淺草寺")).toBeTruthy();
+    expect(screen.getByText("浅草寺").getAttribute("lang")).toBe("ja");
     expect(screen.getByText("從丸之內飯店出發")).toBeTruthy();
     expect(screen.getByText("返回丸之內飯店")).toBeTruthy();
     expect(screen.getByText("交通與住宿資訊")).toBeTruthy();
