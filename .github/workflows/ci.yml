@@ -48,6 +48,7 @@ jobs:
         continue-on-error: true
       - run: npm run lint:web
       - run: npm run check:i18n
+      - run: npm run check:tasks
       - run: npm run typecheck:web
       - run: npm run test:web
       - run: npm run test:tools

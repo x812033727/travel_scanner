@@ -12,6 +12,9 @@
     "test:web": "npm run test --workspace @travel-scanner/web",
     "test:tools": "node --test tools/*.test.mjs",
     "check:i18n": "node tools/check-i18n.mjs",
+    "check:tasks": "node tools/tasks.mjs check",
+    "tasks": "node tools/tasks.mjs",
+    "tasks:board": "node tools/tasks.mjs board",
     "crawl:airlines:chrome": "node tools/airline-chrome-crawler.mjs"
   },
   "engines": {
