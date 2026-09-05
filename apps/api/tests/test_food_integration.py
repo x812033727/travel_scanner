@@ -124,7 +124,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
                 )
                 or 0
             )
-            == 47
+            == 63
         )
         assert (
             int(
