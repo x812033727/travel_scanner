@@ -17,6 +17,7 @@ import {
   isActiveRouteItem,
   isFlightAnchor,
   isLogisticsItem,
+  originalItemName,
   type RouteSegment,
   type TripItem,
 } from "@/lib/trip-types";
@@ -132,6 +133,11 @@ export function ItineraryTimeline({
                               {item.fixed_time && item.end_time ? `–${formatTime(item.end_time, undefined, timezone)}` : ""}
                             </p>
                             <h3 className="mt-1 font-semibold">{item.title}</h3>
+                            {originalItemName(item) && (
+                              <p className="mt-0.5 text-sm text-[var(--muted)]" lang={item.names?.title?.original_locale}>
+                                {originalItemName(item)}
+                              </p>
+                            )}
                           </div>
                           <div className="flex gap-2">
                             {item.locked && !item.system_role && (

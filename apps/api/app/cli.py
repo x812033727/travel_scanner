@@ -11,6 +11,7 @@ from uuid import UUID
 from pydantic import ValidationError
 from sqlalchemy import func, select
 
+from app import hotspots as hotspots_package
 from app.admin.service import load_runtime_settings
 from app.auth.schemas import RegisterRequest
 from app.auth.service import hash_password
@@ -24,6 +25,7 @@ from app.foods.place_matching_cli import match_food_merchant_places
 from app.foods.service import seed_food_catalog
 from app.hotspots.candidate_cli import import_candidates
 from app.hotspots.candidate_generation import generate_candidates
+from app.hotspots.cities import CITY_BY_CODE
 from app.hotspots.jobs import collect_once
 from app.hotspots.place_matching import (
     MatchReport,
@@ -31,6 +33,7 @@ from app.hotspots.place_matching import (
     match_missing_places,
     missing_place_targets,
 )
+from app.hotspots.wikidata_labels import BOOTSTRAP_FILES, fill_bootstrap_files
 from app.infra import get_redis
 from app.models import (
     AdminAuditLog,
@@ -44,6 +47,7 @@ from app.models import (
 from app.places.naver import NaverPlaceService
 from app.providers.registry import build_provider, provider_status
 from app.search.schemas import SearchCreate
+from app.trips.name_backfill import backfill_trip_item_names
 from app.trips.routing import NaverDirectionsProvider, RoutePoint
 from app.usage.service import PACKAGE_DEFAULTS, create_usage_account, grant_package
 
@@ -250,16 +254,43 @@ async def seed_foods() -> dict[str, int]:
             ("merchants", FoodMerchant),
             ("merchant_category_links", FoodMerchantCategory),
         ):
-            counts[key] = int(
-                await session.scalar(select(func.count()).select_from(model)) or 0
-            )
+            counts[key] = int(await session.scalar(select(func.count()).select_from(model)) or 0)
         counts["merchants_with_area"] = int(
             await session.scalar(
-                select(func.count()).select_from(FoodMerchant).where(FoodMerchant.area_id.is_not(None))
+                select(func.count())
+                .select_from(FoodMerchant)
+                .where(FoodMerchant.area_id.is_not(None))
             )
             or 0
         )
     return counts
+
+
+async def backfill_trip_items(dry_run: bool) -> dict[str, int]:
+    async with SessionFactory() as session:
+        return await backfill_trip_item_names(session, dry_run=dry_run)
+
+
+def fill_hotspot_labels(files: list[str], dry_run: bool, overwrite_original: bool) -> None:
+    """Write Wikidata labels into the bootstrap files and print a per-file summary."""
+
+    report = fill_bootstrap_files(
+        Path(hotspots_package.__file__).parent,
+        files=files,
+        dry_run=dry_run,
+        overwrite_original=overwrite_original,
+        country_for_city=lambda code: CITY_BY_CODE[code].country_code,
+    )
+    for filename, counts in report.files.items():
+        print(f"{filename:32} {counts['changed']:4} of {counts['rows']:4} rows changed")
+    for line in report.changed_rows:
+        print(f"  {line}")
+    if report.missing_qids:
+        print(f"no Wikidata entity for: {', '.join(report.missing_qids)}")
+    if dry_run:
+        print(f"dry run: {report.total_changed} rows would change")
+    else:
+        print(f"{report.total_changed} rows updated; review the diff before committing")
 
 
 def _format_match(report: MatchReport) -> str:
@@ -448,6 +479,38 @@ def main() -> None:
         metavar="SLUG",
         help="Promote the stored pending candidate of this hotspot slug; repeatable",
     )
+    labels = subparsers.add_parser(
+        "fill-hotspot-labels",
+        help=(
+            "Backfill original-script names and per-locale labels in the hotspot bootstrap "
+            "files from Wikidata (network access required); review the diff afterwards"
+        ),
+    )
+    labels.add_argument(
+        "--file",
+        action="append",
+        default=[],
+        choices=list(BOOTSTRAP_FILES),
+        help="Limit to one bootstrap file; repeatable (default: all)",
+    )
+    labels.add_argument(
+        "--overwrite-original",
+        action="store_true",
+        help="Replace reviewed local_name values with the Wikidata label as well",
+    )
+    labels.add_argument(
+        "--dry-run", action="store_true", help="Report what would change without writing"
+    )
+    backfill = subparsers.add_parser(
+        "backfill-trip-item-names",
+        help=(
+            "Give trip items saved before migration 0039 their five-locale labels from the "
+            "catalog; rows the traveller renamed are left alone"
+        ),
+    )
+    backfill.add_argument(
+        "--dry-run", action="store_true", help="Count what would change without writing"
+    )
     args = parser.parse_args()
     if args.command == "add-usage-package":
         asyncio.run(add_usage_package(args.email, args.package, args.reference))
@@ -468,9 +531,7 @@ def main() -> None:
         if args.strict and not passed:
             raise SystemExit(1)
     elif args.command == "import-hotspot-candidates":
-        report = asyncio.run(
-            import_candidates(Path(args.file), apply=args.apply, limit=args.limit)
-        )
+        report = asyncio.run(import_candidates(Path(args.file), apply=args.apply, limit=args.limit))
         print(json.dumps(report, ensure_ascii=False, indent=2))
     elif args.command == "generate-hotspot-candidates":
         report = asyncio.run(
@@ -502,6 +563,12 @@ def main() -> None:
             match_hotspot_places(
                 args.destination, args.slug_prefix, args.limit, args.dry_run, args.approve
             )
+        )
+    elif args.command == "backfill-trip-item-names":
+        print(json.dumps(asyncio.run(backfill_trip_items(args.dry_run)), ensure_ascii=False))
+    elif args.command == "fill-hotspot-labels":
+        fill_hotspot_labels(
+            args.file or list(BOOTSTRAP_FILES), args.dry_run, args.overwrite_original
         )
 
 

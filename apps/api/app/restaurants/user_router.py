@@ -12,6 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import CurrentUser
 from app.db import get_session
+from app.localized_names import item_names
 from app.models import RestaurantFavorite, RestaurantPlace, TripPlan
 from app.problems import AppError
 from app.restaurants.editorial import editorial_by_google_place_id
@@ -24,6 +25,14 @@ from app.trips.router import (
 
 router = APIRouter(prefix="/restaurants", tags=["restaurants"])
 Session = Annotated[AsyncSession, Depends(get_session)]
+# Title of a meal card that points at a Google place without editorial data.
+SAVED_RESTAURANT_LABELS: dict[str, str] = {
+    "en": "Saved restaurant",
+    "ja": "保存したレストラン",
+    "ko": "저장한 음식점",
+    "zh-CN": "已保存餐厅",
+    "zh-TW": "已儲存餐廳",
+}
 
 
 class RestaurantTripSelectionRequest(BaseModel):
@@ -182,13 +191,7 @@ async def select_restaurant_for_trip(
         place.google_place_id
     )
     locale = user.preferred_locale
-    fallback_names = {
-        "en": "Saved restaurant",
-        "ja": "保存したレストラン",
-        "ko": "저장한 음식점",
-        "zh-CN": "已保存餐厅",
-        "zh-TW": "已儲存餐廳",
-    }
+    fallback_names = SAVED_RESTAURANT_LABELS
     title = str(editorial["name"]) if editorial else fallback_names.get(locale, "已儲存餐廳")
     ride_location = cast(
         dict[str, float] | None,
@@ -196,6 +199,11 @@ async def select_restaurant_for_trip(
     )
     meal.title = title
     meal.location_name = str(editorial.get("address") or editorial["name"]) if editorial else title
+    # Editorial names are single-language source text; the placeholder label
+    # exists in every site locale, so store it and let the card follow the UI.
+    meal.names_json = (
+        {} if editorial else item_names(title=fallback_names, location_name=fallback_names)
+    )
     meal.provider_place_id = place.google_place_id
     meal.latitude = Decimal(str(ride_location["latitude"])) if ride_location is not None else None
     meal.longitude = Decimal(str(ride_location["longitude"])) if ride_location is not None else None

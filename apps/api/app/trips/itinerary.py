@@ -6,8 +6,26 @@ from zoneinfo import ZoneInfo
 from pydantic import BaseModel, Field
 
 from app.destinations.catalog import DestinationProfile, destination_for_code
+from app.localized_names import item_names, join_localized_names
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, TransportOffer
 from app.search.schemas import SearchCreate, TripPace
+
+# Suffix of the deterministic builder's cross-city day title, per site locale.
+CROSS_CITY_TITLE_SUFFIX: dict[str, str] = {
+    "zh-TW": "跨城深度行程",
+    "zh-CN": "跨城深度行程",
+    "en": "cross-city deep-travel day",
+    "ja": "都市をまたぐ深旅の一日",
+    "ko": "도시 간 심층 여행 일정",
+}
+# Location label when a catalog dish has no verified merchant yet.
+MERCHANT_PENDING_LABELS: dict[str, str] = {
+    "zh-TW": "店家待確認",
+    "zh-CN": "店家待确认",
+    "en": "Restaurant to be confirmed",
+    "ja": "店舗は確認待ち",
+    "ko": "음식점 확인 필요",
+}
 
 
 class ItineraryItem(BaseModel):
@@ -18,6 +36,9 @@ class ItineraryItem(BaseModel):
     position: int
     title: str
     location_name: str | None = None
+    # {"title": {...}, "location_name": {...}} per app.localized_names.item_names:
+    # five site locales plus the original script for catalog-backed stops.
+    names: dict[str, dict[str, str]] = Field(default_factory=dict)
     start_time: datetime | None = None
     end_time: datetime | None = None
     latitude: float | None = None
@@ -43,6 +64,8 @@ class ItineraryDay(BaseModel):
 class ItineraryHotspot(BaseModel):
     hotspot_id: UUID
     name: str
+    # Five site locales plus the original text (app.localized_names).
+    names: dict[str, str] = Field(default_factory=dict)
     category: str
     latitude: float
     longitude: float
@@ -62,6 +85,9 @@ class ItineraryFood(BaseModel):
     food_id: UUID
     name: str
     local_name: str
+    # Dish and merchant labels in five site locales plus the original text.
+    names: dict[str, str] = Field(default_factory=dict)
+    merchant_names: dict[str, str] = Field(default_factory=dict)
     food_kind: str
     meal_types: list[str]
     merchant_id: UUID | None = None
@@ -326,8 +352,14 @@ def build_itinerary(
             add(
                 day,
                 item_type="hotspot",
-                title=f"{hotspot.name}跨城深度行程",
+                title=f"{hotspot.name}{CROSS_CITY_TITLE_SUFFIX['zh-TW']}",
                 location_name=hotspot.name,
+                names=item_names(
+                    title=join_localized_names(
+                        hotspot.names, CROSS_CITY_TITLE_SUFFIX, separator=" "
+                    ),
+                    location_name=hotspot.names,
+                ),
                 start_time=start,
                 end_time=start
                 + timedelta(
@@ -361,6 +393,7 @@ def build_itinerary(
                 item_type="hotspot",
                 title=hotspot.name,
                 location_name=hotspot.name,
+                names=item_names(title=hotspot.names, location_name=hotspot.names),
                 start_time=start,
                 end_time=start
                 + timedelta(
@@ -396,6 +429,7 @@ def build_itinerary(
                     item_type="hotspot",
                     title=hotspot.name,
                     location_name=hotspot.name,
+                    names=item_names(title=hotspot.names, location_name=hotspot.names),
                     start_time=start,
                     end_time=start + timedelta(minutes=hotspot.recommended_duration_minutes),
                     latitude=hotspot.latitude,
@@ -499,7 +533,13 @@ def build_itinerary(
             day,
             item_type="food",
             title=food.name,
-            location_name=food.merchant_name or "店家待確認",
+            location_name=food.merchant_name or MERCHANT_PENDING_LABELS["zh-TW"],
+            names=item_names(
+                title=food.names,
+                location_name=(
+                    food.merchant_names if food.merchant_name else MERCHANT_PENDING_LABELS
+                ),
+            ),
             start_time=_at(day, start_hour, timezone=destination_timezone),
             end_time=_at(day, start_hour + 1, 30, timezone=destination_timezone),
             latitude=food.latitude,

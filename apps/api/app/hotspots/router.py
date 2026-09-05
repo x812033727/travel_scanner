@@ -17,9 +17,10 @@ from app.hotspots.cities import CITY_BY_DESTINATION_ID
 from app.hotspots.guides import canonical_external_url, list_guides, resolve_guide_open
 from app.hotspots.maps import build_map_links
 from app.hotspots.places import place_detail_payload
-from app.hotspots.service import hotspot_facets, list_rankings
+from app.hotspots.service import hotspot_facets, list_rankings, load_hotspot_names
 from app.i18n import Locale, current_locale
 from app.infra import enforce_named_rate_limit, get_redis
+from app.localized_names import item_names
 from app.locations.coordinates import has_durable_coordinates
 from app.models import HotspotPlaceProfile, TravelHotspot, TripPlanItem
 from app.problems import AppError
@@ -266,6 +267,7 @@ async def hotspots_for_planner(
         {
             "hotspot_id": item["id"],
             "name": item["name"],
+            "names": item["names"],
             "category": item["category"],
             "latitude": item["latitude"],
             "longitude": item["longitude"],
@@ -331,10 +333,13 @@ async def select_hotspot_for_trip(
     ):
         raise AppError(422, "itinerary_date_out_of_range", "景點日期超出旅程範圍")
     rows = await load_items(session, trip.id)
-    position = max(
-        (item.position for item in rows if item.day_date == payload.day_date),
-        default=-1,
-    ) + 1
+    position = (
+        max(
+            (item.position for item in rows if item.day_date == payload.day_date),
+            default=-1,
+        )
+        + 1
+    )
     map_links = build_map_links(
         name=hotspot.name,
         local_name=hotspot.metadata_json.get("local_name"),
@@ -346,6 +351,9 @@ async def select_hotspot_for_trip(
         naver_map_url=hotspot.naver_map_url,
         map_match_status=hotspot.map_match_status,
     )
+    # The stop keeps every site locale plus the original script, so the plan
+    # follows the traveller's language instead of the one used when adding it.
+    names = (await load_hotspot_names(session, [hotspot]))[hotspot.id]
     item = TripPlanItem(
         trip_plan_id=trip.id,
         item_type="activity",
@@ -353,6 +361,7 @@ async def select_hotspot_for_trip(
         position=position,
         title=hotspot.name,
         location_name=hotspot.name,
+        names_json=item_names(title=names, location_name=names),
         latitude=hotspot.latitude,
         longitude=hotspot.longitude,
         coordinate_source_type=hotspot.coordinate_source_type,
@@ -402,9 +411,7 @@ async def hotspot_place(
     return place_detail_payload(
         hotspot,
         profile,
-        configured=bool(
-            runtime.google_maps_api_key and runtime.hotspot_place_enrichment_enabled
-        ),
+        configured=bool(runtime.google_maps_api_key and runtime.hotspot_place_enrichment_enabled),
     )
 
 

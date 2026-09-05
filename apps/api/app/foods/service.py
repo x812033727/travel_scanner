@@ -3,7 +3,7 @@ from __future__ import annotations
 import base64
 import binascii
 from collections import Counter, defaultdict
-from collections.abc import Mapping
+from collections.abc import Iterable, Mapping
 from datetime import UTC, datetime
 from typing import Any
 from uuid import UUID
@@ -19,6 +19,12 @@ from app.foods.category_catalog import CATEGORY_SEEDS
 from app.foods.merchant_catalog import MERCHANT_DIRECT_SOURCE_SEEDS, MERCHANT_SEEDS
 from app.foods.publication import merchant_is_publishable, publishable_merchant_filters
 from app.hotspots.maps import build_map_links, has_exact_map_identity
+from app.localized_names import (
+    build_localized_names,
+    original_locale_for,
+    resolve_localized_name,
+    sanitize_localized_names,
+)
 from app.locations.coordinates import has_durable_coordinates
 from app.models import (
     FoodArea,
@@ -109,6 +115,63 @@ def localized_name(names: Mapping[str, Any], locale: str) -> str:
         if value:
             return str(value)
     return next((str(value) for value in names.values() if value), "")
+
+
+def merchant_names(merchant: FoodMerchant) -> dict[str, str]:
+    """Five site locales plus the original text for a merchant.
+
+    ``name`` is the catalog's English label and ``local_name`` the original
+    script, so the country's own language reads the original and English reads
+    ``name`` unless an administrator stored an explicit label in ``names_json``.
+    Japanese shop names are written in kanji and kana that Chinese readers
+    recognise from signboards and guidebooks, so Chinese locales default to
+    the original for Japan; Korean, Thai and Vietnamese originals stay behind
+    the English name.
+    """
+
+    defaults = {"en": merchant.name}
+    if original_locale_for(merchant.country_code) == "ja":
+        defaults["zh-TW"] = merchant.local_name
+    return build_localized_names(
+        names={**defaults, **sanitize_localized_names(merchant.names_json)},
+        original=merchant.local_name,
+        country_code=merchant.country_code,
+        fallback=merchant.name,
+    )
+
+
+def food_names(food: TravelFood, localizations: Mapping[str, str]) -> dict[str, str]:
+    """Five site locales plus the original text for a dish.
+
+    ``localizations`` maps locale to the stored ``food_localizations`` name,
+    ``local_name`` is the original and the romanized name is the English label
+    unless a localization says otherwise.
+    """
+
+    return build_localized_names(
+        names={"en": food.romanized_name, **localizations},
+        original=food.local_name,
+        country_code=food.country_code,
+        fallback=food.romanized_name,
+    )
+
+
+async def load_food_names(
+    session: AsyncSession, foods: Iterable[TravelFood]
+) -> dict[UUID, dict[str, str]]:
+    """Complete name maps for ``foods`` from their stored localizations."""
+
+    rows = list(foods)
+    if not rows:
+        return {}
+    localizations: dict[UUID, dict[str, str]] = defaultdict(dict)
+    for localization in (
+        await session.scalars(
+            select(FoodLocalization).where(FoodLocalization.food_id.in_([food.id for food in rows]))
+        )
+    ).all():
+        localizations[localization.food_id][localization.locale] = localization.name
+    return {food.id: food_names(food, localizations[food.id]) for food in rows}
 
 
 def _area_ref(area: FoodArea, locale: str) -> dict[str, Any]:
@@ -456,14 +519,14 @@ async def _serialize_foods(
     localization_rows = list(
         (
             await session.scalars(
-                select(FoodLocalization).where(
-                    FoodLocalization.food_id.in_(food_ids),
-                    FoodLocalization.locale == locale,
-                )
+                select(FoodLocalization).where(FoodLocalization.food_id.in_(food_ids))
             )
         ).all()
     )
-    localization_by_food = {row.food_id: row for row in localization_rows}
+    localization_by_food = {row.food_id: row for row in localization_rows if row.locale == locale}
+    names_by_food: dict[UUID, dict[str, str]] = defaultdict(dict)
+    for localization in localization_rows:
+        names_by_food[localization.food_id][localization.locale] = localization.name
     destination_rows = list(
         (
             await session.scalars(
@@ -607,12 +670,14 @@ async def _serialize_foods(
         destinations_seen[relation.food_id].add(merchant.destination_id)
         profile = destination_for_id(merchant.destination_id)
         city_name = profile.city if profile else merchant.destination_id
+        names = merchant_names(merchant)
         merchants_by_food[relation.food_id].append(
             {
                 "merchant_id": str(merchant.id),
                 "slug": merchant.slug,
-                "name": merchant.name,
+                "name": resolve_localized_name(names, locale, fallback=merchant.name),
                 "local_name": merchant.local_name,
+                "names": names,
                 "destination_id": merchant.destination_id,
                 "address": merchant.address,
                 "latitude": float(merchant.latitude) if merchant.latitude is not None else None,
@@ -658,6 +723,7 @@ async def _serialize_foods(
                 else food.romanized_name
             ),
             "local_name": food.local_name,
+            "names": food_names(food, names_by_food[food.id]),
             "romanized_name": food.romanized_name,
             "summary": (
                 localization_by_food[food.id].summary if food.id in localization_by_food else ""
@@ -835,6 +901,8 @@ async def foods_for_planner(
                 "food_id": item["id"],
                 "name": item["name"],
                 "local_name": item["local_name"],
+                "names": item["names"],
+                "merchant_names": merchant["names"] if merchant else {},
                 "food_kind": item["food_kind"],
                 "meal_types": item["meal_types"],
                 "merchant_id": merchant["merchant_id"] if merchant else None,
@@ -923,25 +991,17 @@ async def _serialize_merchant_cards(
             )
         )
     ).all()
-    dish_names = {
-        row.food_id: row.name
-        for row in (
-            await session.scalars(
-                select(FoodLocalization).where(
-                    FoodLocalization.food_id.in_({food.id for _, food in dish_rows}),
-                    FoodLocalization.locale == locale,
-                )
-            )
-        ).all()
-    }
+    dish_names = await load_food_names(session, {food.id: food for _, food in dish_rows}.values())
     dishes_by_merchant: dict[UUID, list[dict[str, Any]]] = defaultdict(list)
     for link, food in dish_rows:
+        names = dish_names.get(food.id, {})
         dishes_by_merchant[link.merchant_id].append(
             {
                 "food_id": str(food.id),
                 "slug": food.slug,
-                "name": dish_names.get(food.id, food.romanized_name),
+                "name": resolve_localized_name(names, locale, fallback=food.romanized_name),
                 "local_name": food.local_name,
+                "names": names,
                 "food_kind": food.food_kind,
                 "meal_types": food.meal_types,
             }
@@ -953,12 +1013,14 @@ async def _serialize_merchant_cards(
             continue
         profile = destination_for_id(merchant.destination_id)
         city_name = profile.city if profile else merchant.destination_id
+        names = merchant_names(merchant)
         cards.append(
             {
                 "id": str(merchant.id),
                 "slug": merchant.slug,
-                "name": merchant.name,
+                "name": resolve_localized_name(names, locale, fallback=merchant.name),
                 "local_name": merchant.local_name,
+                "names": names,
                 "destination_id": merchant.destination_id,
                 "destination_name": city_name,
                 "country_code": merchant.country_code,
