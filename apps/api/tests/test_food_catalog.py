@@ -1,7 +1,7 @@
 from collections import Counter
 from urllib.parse import parse_qs, urlparse
 
-from app.foods.catalog import FOOD_SEEDS
+from app.foods.catalog import FOOD_SEEDS, OFFICIAL_FOOD_SOURCES
 from app.foods.merchant_catalog import (
     MERCHANT_DIRECT_SOURCE_SEEDS,
     MERCHANT_SEEDS,
@@ -152,6 +152,21 @@ def test_merchant_candidates_cover_all_relations_but_are_not_fake_map_matches() 
             "vietnam-food-20-must-try-dishes",
         )
     )
+
+
+def test_the_two_repaired_official_sources_stay_repaired() -> None:
+    """Pins the addresses fixed in 0039; both predecessors had rotted in different ways.
+
+    The JP page answered 404 outright, and it is the first source of all ten Japanese
+    dishes. The TW address still answered 200 but had become a New Taipei City page, which
+    is the worse failure of the two because nothing about it looks broken.
+    """
+
+    assert OFFICIAL_FOOD_SOURCES["JP"] == "https://www.japan.travel/en/things-to-do/eat-and-drink/"
+    assert OFFICIAL_FOOD_SOURCES["TW"] == "https://eng.taiwan.net.tw/m1.aspx?sNo=0002026"
+    taiwan = {"taipei", "taichung", "kaohsiung", "tainan"}
+    for destination in taiwan:
+        assert OFFICIAL_DESTINATION_FOOD_SOURCES[destination] == OFFICIAL_FOOD_SOURCES["TW"]
 
 
 def test_non_japan_direct_sources_are_verified_and_country_balanced() -> None:

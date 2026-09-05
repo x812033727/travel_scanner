@@ -23,10 +23,10 @@ COUNTRY_NAMES = {
 }
 
 OFFICIAL_FOOD_SOURCES = {
-    "JP": "https://www.japan.travel/en/uk/inspiration/food-and-drink/",
+    "JP": "https://www.japan.travel/en/things-to-do/eat-and-drink/",
     "KR": "https://www.korea.net/AboutKorea/Korean-Life/Food",
     "TH": "https://www.tourismthailand.org/Articles/10-thai-dishes-you-must-try",
-    "TW": "https://eng.taiwan.net.tw/m1.aspx?sNo=0002091",
+    "TW": "https://eng.taiwan.net.tw/m1.aspx?sNo=0002026",
     "SG": "https://www.visitsingapore.com/dining-drinks-singapore/local-dishes/",
     "HK": "https://www.discoverhongkong.com/eng/explore/dining.html",
     "VN": "https://vietnam.travel/things-to-do/vietnam-food-20-must-try-dishes",
