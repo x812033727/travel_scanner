@@ -2,7 +2,7 @@
 
 import { Search, SlidersHorizontal, Sparkles, Store, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { api } from "@/lib/api";
 import { FoodCityGrid, FoodCitySelect } from "@/components/food-city-picker";
 import { FoodDishesSection } from "@/components/food-dishes-section";
@@ -23,6 +23,7 @@ import {
   type FoodMerchantsResponse,
 } from "@/lib/foods";
 import { useClientSearch } from "@/lib/use-client-search";
+import { useSharedAnchor } from "@/lib/use-shared-anchor";
 
 type ActiveChip = { key: string; label: string; clear: () => void };
 
@@ -39,17 +40,27 @@ export function FoodBrowser() {
   const [result, setResult] = useState<FoodMerchantsResponse | null>(null);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
+  // Kept apart from `error`: losing the city list must not blank the merchants.
+  const [citiesError, setCitiesError] = useState("");
+  const [appending, setAppending] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const hydrated = useRef(false);
 
-  useEffect(() => {
+  const loadCities = useCallback(() => {
     api<FoodCitiesResponse>("/foods/cities")
-      .then((response) => setCountries(response.countries ?? []))
-      .catch((reason: Error) => setError(reason.message));
+      .then((response) => {
+        setCountries(response.countries ?? []);
+        setCitiesError("");
+      })
+      .catch((reason: Error) => setCitiesError(reason.message));
+  }, []);
+
+  useEffect(() => {
+    loadCities();
     api<FoodCategoriesResponse>("/foods/categories")
       .then((response) => setSiteCategories(response.items ?? []))
       .catch(() => undefined);
-  }, []);
+  }, [loadCities]);
 
   useEffect(() => {
     // Later replaceState calls change the snapshot; only the first client value seeds the list.
@@ -60,12 +71,15 @@ export function FoodBrowser() {
       .catch((reason: Error) => setError(reason.message));
   }, [initialFilters, search]);
 
+  useSharedAnchor(Boolean(result?.items.length));
+
   function apply(next: FoodBrowserFilters, options: { append?: boolean } = {}) {
     setFilterState(next);
     setQueryInput(null);
     setError("");
     setFiltersOpen(false);
     setPending(true);
+    setAppending(Boolean(options.append));
     const cursor = options.append ? result?.next_cursor : undefined;
     api<FoodMerchantsResponse>(`/foods/merchants?${merchantsQuery(next, cursor)}`)
       .then((response) => {
@@ -87,9 +101,11 @@ export function FoodBrowser() {
     }
   }
 
-  const selectCity = (destinationId: string) => apply({ ...filters, destinationId, area: "" });
-  const toggleArea = (area: string) => apply({ ...filters, area });
-  const toggleCategory = (category: string) => apply({ ...filters, category });
+  const withTypedQuery = (next: Partial<FoodBrowserFilters>) =>
+    apply({ ...filters, query: queryValue.trim(), ...next });
+  const selectCity = (destinationId: string) => withTypedQuery({ destinationId, area: "" });
+  const toggleArea = (area: string) => withTypedQuery({ area });
+  const toggleCategory = (category: string) => withTypedQuery({ category });
   const clearFilters = () =>
     apply({ destinationId: filters.destinationId, area: "", category: "", query: "" });
   const submit = (event: FormEvent<HTMLFormElement>) => {
@@ -267,6 +283,15 @@ export function FoodBrowser() {
         </div>
       )}
 
+      {!filters.destinationId && citiesError && (
+        <div role="alert" className="mt-7 flex flex-wrap items-center justify-between gap-3 rounded-3xl bg-[var(--coral-soft)] p-6">
+          <span>{citiesError}</span>
+          <button type="button" onClick={loadCities} className="min-h-11 rounded-xl border border-[var(--line)] bg-white px-4 font-semibold">
+            {t("retry")}
+          </button>
+        </div>
+      )}
+
       {!filters.destinationId && countries.length > 0 && (
         <section className="mt-7" aria-labelledby="food-cities-title">
           <h2 id="food-cities-title" className="text-xl font-bold">
@@ -299,12 +324,12 @@ export function FoodBrowser() {
           </div>
         )}
         {error && (
-          <div role="alert" className="rounded-3xl bg-[var(--coral-soft)] p-6">
+          <div role="alert" className="mb-4 rounded-3xl bg-[var(--coral-soft)] p-6">
             {error}
             <button
               type="button"
-              onClick={() => apply(filters)}
-              className="ml-3 font-semibold underline underline-offset-4"
+              onClick={() => apply(filters, { append: appending })}
+              className="ml-3 min-h-11 font-semibold underline underline-offset-4"
             >
               {t("retry")}
             </button>
@@ -329,7 +354,7 @@ export function FoodBrowser() {
             <p className="mt-2 text-sm text-[var(--muted)]">{t("emptyCityBody")}</p>
           </div>
         )}
-        {!error && result && result.items.length > 0 && (
+        {result && result.items.length > 0 && (
           <div className="grid gap-5 md:grid-cols-2">
             {result.items.map((merchant) => (
               <FoodMerchantCard
@@ -345,7 +370,7 @@ export function FoodBrowser() {
             ))}
           </div>
         )}
-        {!error && result?.has_more && (
+        {result?.has_more && (
           <div className="mt-7 text-center">
             <button
               type="button"

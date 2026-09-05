@@ -39,7 +39,7 @@ export function FoodMerchantCard({
     : null;
 
   return (
-    <article className="travel-result-card travel-result-card-food flex flex-col rounded-3xl border border-[var(--line)] bg-white p-5">
+    <article id={`merchant-${merchant.id}`} className="travel-result-card travel-result-card-food flex flex-col rounded-3xl border border-[var(--line)] bg-white p-5">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
           <h3 className="text-2xl font-bold">{merchant.name}</h3>

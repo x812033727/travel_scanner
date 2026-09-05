@@ -9,7 +9,7 @@ import { primaryMapLink, type FoodItem } from "@/lib/foods";
 export function FoodDishCard({ food }: { food: FoodItem }) {
   const t = useTranslations("foods");
   return (
-    <article className="travel-result-card travel-result-card-food flex flex-col rounded-3xl border border-[var(--line)] bg-white p-5">
+    <article id={`food-${food.id}`} className="travel-result-card travel-result-card-food flex flex-col rounded-3xl border border-[var(--line)] bg-white p-5">
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-xs font-bold uppercase tracking-[.14em] text-[var(--coral)]">{food.country_name}</p>

@@ -174,6 +174,49 @@ describe("HotspotExplorer", () => {
     })).toBe(true));
   });
 
+  it("keeps the loaded list on screen when loading more fails", async () => {
+    let rankingCalls = 0;
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/saved-items")) return new Response(JSON.stringify({ items: [] }));
+      if (url.includes("/hotspots/facets")) {
+        return new Response(JSON.stringify({ total: 1, countries: [], cities: [], categories: [], areas: [] }));
+      }
+      rankingCalls += 1;
+      if (rankingCalls > 1) {
+        return new Response(JSON.stringify({ code: "internal_error", detail: "連線中斷" }), { status: 500 });
+      }
+      return new Response(JSON.stringify({
+        scope: "global", scope_key: "global", observed_on: "2026-08-31", window_days: 30,
+        total: 170, has_more: true, next_cursor: 1,
+        items: [{
+          id: "hotspot-1", slug: "sensoji", rank: 1, name: "淺草寺", destination_id: "tokyo",
+          destination_role: "primary", parent_destination_id: null, is_cross_city: false,
+          city_code: "NRT", city_name: "東京", country_code: "JP", country_name: "日本",
+          category: "culture", area: null, score: 88,
+          components: { interest: 90, growth: 80, quality: 92, confidence: 80 },
+          pageviews_30d: 12345, growth_rate: 0.2, trend_label: "近期升溫",
+          sources: ["curated_catalog"], has_source: false, signal_date: "2026-08-30",
+          is_estimate: false, is_deep_travel: false, depth_kind: null, depth_score: null,
+          depth_reason: null, local_name: null, access_minutes: null,
+          recommended_duration_minutes: null, guide_counts: { article: 0, video: 0 },
+          map_links: [], place_summary: null,
+        }],
+      }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<SavedItemsProvider><HotspotExplorer /></SavedItemsProvider>);
+
+    expect(await screen.findByRole("heading", { name: "淺草寺" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "載入更多" }));
+
+    expect(await screen.findByRole("alert")).toBeTruthy();
+    // The page the reader already scrolled through must survive the failure.
+    expect(screen.getByRole("heading", { name: "淺草寺" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "重新載入" })).toBeTruthy();
+  });
+
   it("requires sign-in for details, sources, and sharing without loading protected content", async () => {
     const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
       const url = String(input);

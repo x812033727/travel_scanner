@@ -32,6 +32,7 @@ const labels = {
     dinner: "晚餐",
     confirm: "加入",
     done: "已加入行程",
+    copied: "已複製連結",
     empty: "尚未有可用旅程，請先建立旅程。",
   },
   "zh-CN": {
@@ -49,6 +50,7 @@ const labels = {
     dinner: "晚餐",
     confirm: "加入",
     done: "已加入行程",
+    copied: "已复制链接",
     empty: "尚无可用旅程，请先创建旅程。",
   },
   en: {
@@ -66,6 +68,7 @@ const labels = {
     dinner: "Dinner",
     confirm: "Add",
     done: "Added to trip",
+    copied: "Link copied",
     empty: "Create a trip first.",
   },
   ja: {
@@ -83,6 +86,7 @@ const labels = {
     dinner: "夕食",
     confirm: "追加",
     done: "旅程に追加しました",
+    copied: "リンクをコピーしました",
     empty: "先に旅行を作成してください。",
   },
   ko: {
@@ -100,6 +104,7 @@ const labels = {
     dinner: "저녁",
     confirm: "추가",
     done: "여행에 추가됨",
+    copied: "링크를 복사했습니다",
     empty: "먼저 여행을 만들어 주세요.",
   },
 } as const;
@@ -141,6 +146,10 @@ export function TravelCardActions({
   }
 
   function requireAuth(action: () => void) {
+    // "loading" is not "signed out". Acting on it threw an already-signed-in
+    // reader into the login sheet whenever they tapped before /saved-items
+    // came back, which on a phone is most of the time.
+    if (savedItems.status === "loading") return;
     if (savedItems.status !== "authenticated") {
       setLoginHref(loginPath(`${pathname}${window.location.search}`));
       setSheet("login");
@@ -195,12 +204,20 @@ export function TravelCardActions({
   async function share() {
     clearFeedback();
     try {
-      const url = window.location.href;
+      // window.location.href is the list, which is the same URL for every card
+      // on the page. The anchor matches the id each card renders, so the link
+      // lands on this one with the reader's filters still applied.
+      const { origin, pathname: path, search } = window.location;
+      const url = `${origin}${path}${search}#${type}-${id}`;
       if (navigator.share) await navigator.share({ title, url });
-      else {
+      else if (navigator.clipboard) {
         await navigator.clipboard.writeText(url);
-        setNotice(text.share);
+        setNotice(text.copied);
         window.setTimeout(() => setNotice(""), 1600);
+      } else {
+        // No clipboard on http:// or in an old browser; show the link instead
+        // of throwing an error the reader cannot act on.
+        setError(url);
       }
     } catch (reason) {
       if ((reason as DOMException).name !== "AbortError") setError((reason as Error).message);
