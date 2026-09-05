@@ -246,15 +246,23 @@ async def seed_food_catalog(session: AsyncSession) -> int:
                 localization.name = name
                 localization.summary = seed.localized_summaries[locale]
                 session.add(localization)
-        if not existing_destinations.get(food.id):
-            for order, destination_id in enumerate(seed.destination_ids, start=1):
-                session.add(
-                    FoodDestination(
-                        food_id=food.id,
-                        destination_id=destination_id,
-                        display_order=order,
-                    )
-                )
+        # Add the links the seed lists that are missing, rather than only filling in a dish
+        # that has none. Extending an existing dish to another city is how a city joins the
+        # catalog, and the previous "all or nothing" test made that a silent no-op. Links
+        # the seed no longer lists are left alone: an administrator may have added them.
+        linked = {row.destination_id for row in existing_destinations.get(food.id, [])}
+        next_order = max((row.display_order for row in existing_destinations[food.id]), default=0)
+        for destination_id in seed.destination_ids:
+            if destination_id in linked:
+                continue
+            next_order += 1
+            relation = FoodDestination(
+                food_id=food.id,
+                destination_id=destination_id,
+                display_order=next_order,
+            )
+            session.add(relation)
+            existing_destinations[food.id].append(relation)
         seeded.append((food, seed))
     await session.flush()
 
