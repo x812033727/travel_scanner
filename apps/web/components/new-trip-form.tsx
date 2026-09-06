@@ -10,7 +10,8 @@ import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, twd } from "@/lib/api";
 import { dayCount, formatTripDay } from "@/lib/calendar";
 import { trackAnalytics } from "@/lib/analytics";
-import { interestCodes } from "@/lib/destinations";
+import { interestCodes, localizeDestinations } from "@/lib/destinations";
+import { holidayCountriesFor } from "@/lib/holidays";
 
 type CreatedTrip = { id: string };
 const lodgingModes = ["hotel", "vacation_rental", "both", "any"] as const;
@@ -98,6 +99,14 @@ export function NewTripForm() {
   // followed by a second click replays the same trip instead of duplicating it.
   const submitKey = useRef<string | undefined>(undefined);
   const locale = useLocale();
+  const catalog = useTranslations("search.catalog");
+  // The calendar marks public holidays, and which ones matter depends on where this
+  // trip goes. The form only has the typed destination, so it is matched against the
+  // offline city catalogue; anything it does not recognise keeps all three markets.
+  const holidayMarkets = useMemo(
+    () => holidayCountriesFor(form.destination_name, locale, localizeDestinations(catalog)),
+    [catalog, form.destination_name, locale],
+  );
   const today = useMemo(() => new Date().toLocaleDateString("sv"), []);
   const days = dayCount(form.start_date, form.end_date);
   const travelerCount = Number(form.adults) + Number(form.children);
@@ -304,7 +313,7 @@ export function NewTripForm() {
       <div className={step === 0 ? "grid gap-5" : "hidden"}>
         <label className="text-sm font-semibold">{t("basics.name")}<input required maxLength={255} value={form.name} onChange={(event) => update("name", event.target.value)} placeholder={t("basics.namePlaceholder")} className={fieldClass} /></label>
         <div><label htmlFor="trip-destination" className="text-sm font-semibold">{t("basics.destination")}</label><div className="mt-2"><PlacePicker inputId="trip-destination" label={t("basics.destination")} descriptionId="trip-destination-help" value={form.destination_name} confirmed={Boolean(form.destination_place_id)} countryCodes={["jp", "kr", "th"]} kinds="cities" placeholder={t("basics.destinationPlaceholder")} onTextChange={(value) => setForm((current) => ({ ...current, destination_name: value, destination_place_id: "" }))} onSelect={(place) => setForm((current) => ({ ...current, destination_name: place.name, destination_place_id: place.place_id }))} /></div><p id="trip-destination-help" className="mt-1 text-xs font-normal text-[var(--muted)]">{t("basics.destinationHelp")}</p></div>
-        <fieldset><legend className="text-sm font-semibold">{t("basics.datesLegend")}</legend><div className="mt-2 grid gap-3"><p className="text-xs font-normal leading-5 text-[var(--muted)]">{t("basics.datesHelp", { maxDays: MAX_TRIP_DAYS })}</p><DateRangePicker start={form.start_date} end={form.end_date} today={today} maxDays={MAX_TRIP_DAYS} onChange={chooseDates} /></div></fieldset>
+        <fieldset><legend className="text-sm font-semibold">{t("basics.datesLegend")}</legend><div className="mt-2 grid gap-3"><p className="text-xs font-normal leading-5 text-[var(--muted)]">{t("basics.datesHelp", { maxDays: MAX_TRIP_DAYS })}</p><DateRangePicker start={form.start_date} end={form.end_date} today={today} maxDays={MAX_TRIP_DAYS} countries={holidayMarkets} onChange={chooseDates} /></div></fieldset>
       </div>
 
       <div className={step === 1 ? "grid gap-5" : "hidden"}>
