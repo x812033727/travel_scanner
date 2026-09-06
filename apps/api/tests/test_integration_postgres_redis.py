@@ -1,7 +1,7 @@
 import asyncio
 import os
 from datetime import UTC, datetime
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 import pytest
 from httpx import ASGITransport, AsyncClient
@@ -23,7 +23,6 @@ from app.models import (
     AffiliateClick,
     SearchJob,
     SearchRequest,
-    TripPlan,
     UsageAccount,
     UsageLedger,
     UsageReservation,
@@ -34,6 +33,7 @@ from app.search.tasks import run_search_job
 from app.trips.routing import RouteSegment, RouteService
 from app.usage.service import (
     commit_reservation,
+    create_usage_account,
     grant_package,
     release_reservation,
     reserve_use,
@@ -62,6 +62,29 @@ async def _signed_in_headers(label: str) -> dict[str, str]:
         await session.commit()
         await session.refresh(user)
         return {"Authorization": f"Bearer {create_access_token(user.id, user.auth_version)}"}
+
+
+async def _signed_in_member(label: str) -> tuple[dict[str, str], UUID]:
+    """_signed_in_headers plus the usage account registration would have opened.
+
+    Anything that reserves a use (reoptimize, the planner) needs the account row;
+    a bare user answers ``usage_account_missing`` before it gets to the point.
+    """
+    async with SessionFactory() as session:
+        user = User(
+            email=f"{label}-{uuid4()}@example.com",
+            password_hash=hash_password("integration-password-123"),
+            is_active=True,
+        )
+        session.add(user)
+        await session.flush()
+        await create_usage_account(session, user)
+        await session.commit()
+        await session.refresh(user)
+        headers = {
+            "Authorization": f"Bearer {create_access_token(user.id, user.auth_version)}"
+        }
+        return headers, user.id
 
 
 @pytest.mark.asyncio(loop_scope="module")
@@ -1820,7 +1843,7 @@ async def test_reoptimize_is_a_versioned_write_and_never_replays_a_failed_attemp
 
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as client:
-        headers = await _signed_in_headers("reoptimize-version")
+        headers, owner_id = await _signed_in_member("reoptimize-version")
         created = await client.post(
             "/api/v1/trips",
             headers=headers,
@@ -1881,7 +1904,6 @@ async def test_reoptimize_is_a_versioned_write_and_never_replays_a_failed_attemp
         assert retried.status_code == 409, retried.text
         assert retried.json()["code"] == "idempotency_result_unavailable"
         async with SessionFactory() as session:
-            owner_id = await session.scalar(select(TripPlan.user_id).where(TripPlan.id == trip_id))
             account = await session.scalar(
                 select(UsageAccount).where(UsageAccount.user_id == owner_id)
             )
