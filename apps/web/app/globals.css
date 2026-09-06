@@ -2807,3 +2807,37 @@ a {
   border-style: solid;
   background: var(--surface);
 }
+
+/* The printable itinerary (/trips/<id>/print): one A5 page per day. Everything else on
+   the page is screen furniture, so print sees only the sheet. */
+@media print {
+  @page {
+    size: A5;
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  body > *:not(.trip-print) {
+    display: none !important;
+  }
+
+  .trip-print-page {
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .trip-print-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  .trip-print-stop {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

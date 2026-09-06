@@ -20,6 +20,7 @@ import {
   MapPin,
   NotebookPen,
   Plus,
+  Printer,
   RefreshCw,
   Route as RouteIcon,
   Save,
@@ -33,7 +34,7 @@ import {
   WifiOff,
   X,
 } from "lucide-react";
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import {
@@ -44,6 +45,7 @@ import {
   useState,
   type CSSProperties,
 } from "react";
+import { AffiliatePartnerOptions } from "@/components/affiliate-partner-options";
 import { FlightAnchorCard, flightAnchorInfo } from "@/components/flight-anchor-card";
 import { PlacePicker } from "@/components/place-picker";
 import { TripCostPanel } from "@/components/trip-cost-panel";
@@ -1625,6 +1627,11 @@ export function TripEditor({ tripId }: { tripId: string }) {
           <div className="mb-3"><h3 className="font-bold">{te("calendarTitle")}</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">{te("calendarHint")}</p></div>
           <a href={`/api/travel/trips/${trip.id}/export.ics`} download className="flex min-h-11 w-fit items-center gap-2 rounded-xl border border-[var(--line)] bg-white px-4 text-sm font-semibold"><CalendarPlus size={16} />{te("calendarDownload")}</a>
         </section>
+        <section className="planner-tool-card">
+          <div className="mb-3"><h3 className="font-bold">{te("printTitle")}</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">{te("printHint")}</p></div>
+          <Link href={`/trips/${trip.id}/print`} className="flex min-h-11 w-fit items-center gap-2 rounded-xl border border-[var(--line)] bg-white px-4 text-sm font-semibold"><Printer size={16} />{te("printOpen")}</Link>
+        </section>
+        <AffiliatePartnerOptions tripId={trip.id} modules={["hotel", "activities", "transport", "connectivity"]} title={te("affiliateTitle")} />
         <section className="planner-tool-card">
           <div className="mb-3"><h3 className="font-bold">{t("notesTitle")}</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">{t("notesHint")}</p></div>
           <TripNoteField label={t("notesTitle")} placeholder={t("notesPlaceholder")} rows={4} value={trip.notes || ""} onSave={saveTripNotes} />
