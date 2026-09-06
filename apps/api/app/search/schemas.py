@@ -1,3 +1,4 @@
+import re
 from datetime import date
 from enum import StrEnum
 from typing import Literal
@@ -70,6 +71,9 @@ class TripLeg(BaseModel):
     departure_date: date
 
 
+_THEME_SLUG = re.compile(r"^[a-z0-9][a-z0-9-]{0,39}$")
+
+
 class SearchPreferences(BaseModel):
     budget_twd: int | None = Field(default=None, ge=1)
     avoid_red_eye: bool = False
@@ -87,6 +91,11 @@ class SearchPreferences(BaseModel):
     pace: TripPace = TripPace.BALANCED
     optimization_mode: OptimizationMode | None = None
     interests: list[str] = Field(default_factory=list, max_length=10)
+    # Shop-type theme slugs the planner should favour (hotspot_themes, kind shop).
+    # Only meaningful alongside the "shopping" interest, which the validator adds
+    # when it is missing so the two cannot disagree. Seasons are not in here: they
+    # come from the trip's dates, not from something the traveller ticks.
+    shop_themes: list[str] = Field(default_factory=list, max_length=8)
     extension_destination_ids: list[str] = Field(default_factory=list, max_length=2)
 
     @model_validator(mode="after")
@@ -99,6 +108,14 @@ class SearchPreferences(BaseModel):
             raise ValueError("hotel minimum nightly price cannot exceed maximum")
         if self.preferred_area and not self.preferred_areas:
             self.preferred_areas = [self.preferred_area]
+        cleaned: list[str] = []
+        for theme in self.shop_themes:
+            slug = theme.strip().casefold()
+            if slug and _THEME_SLUG.fullmatch(slug) and slug not in cleaned:
+                cleaned.append(slug)
+        self.shop_themes = cleaned
+        if cleaned and "shopping" not in self.interests:
+            self.interests = [*self.interests, "shopping"][:10]
         return self
 
 

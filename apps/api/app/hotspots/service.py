@@ -54,6 +54,7 @@ from app.models import (
     HotspotPlaceProfile,
     HotspotRanking,
     HotspotSignal,
+    HotspotTheme,
     TravelHotspot,
 )
 from app.places.google import GoogleTravelService
@@ -79,6 +80,62 @@ PLANNER_INTEREST_CATEGORIES: dict[str, tuple[str, ...]] = {
 # Interest-matched candidates may take at most this share of the planner pool;
 # the rest is reserved for the city's top-ranked landmarks.
 PLANNER_INTEREST_SHARE = 2 / 3
+# A spot whose season falls in the trip is pulled into the pool even when it ranks
+# below the cut, but only up to this share: an April trip to Kyoto should surface
+# the blossoms, not become ten cherry trees in a row.
+PLANNER_SEASONAL_SHARE = 1 / 8
+# A shop visit is shorter than a landmark; used when the seed gives no duration.
+SHOP_DEFAULT_DURATION_MINUTES = 75
+
+
+def months_in_span(start: date, end: date) -> list[int]:
+    """Calendar months a trip touches, in order, wrapping December into January."""
+
+    if end < start:
+        start, end = end, start
+    months: list[int] = []
+    cursor = date(start.year, start.month, 1)
+    while cursor <= end and len(months) < 12:
+        months.append(cursor.month)
+        cursor = date(cursor.year + (cursor.month == 12), cursor.month % 12 + 1, 1)
+    return months
+
+
+def item_theme_slugs(item: Mapping[str, Any]) -> list[str]:
+    return [str(theme["slug"]) for theme in item.get("themes") or [] if theme.get("slug")]
+
+
+def in_season(
+    item: Mapping[str, Any], travel_months: Iterable[int], primary_destination_id: str | None
+) -> bool:
+    """A season theme whose months meet the trip, on a spot in the trip's own city.
+
+    An extension city's blossoms are not a reason to reshape the main itinerary.
+    """
+
+    wanted = set(travel_months)
+    if not wanted or item.get("destination_id") != primary_destination_id:
+        return False
+    return any(
+        theme.get("kind") == "season" and wanted & {int(m) for m in theme.get("months") or []}
+        for theme in item.get("themes") or []
+    )
+
+
+async def season_slugs_for(session: AsyncSession, travel_months: list[int]) -> list[str]:
+    """Active season themes touching these months, in catalog order."""
+
+    if not travel_months:
+        return []
+    rows = (
+        await session.scalars(
+            select(HotspotTheme)
+            .where(HotspotTheme.kind == "season", HotspotTheme.is_active.is_(True))
+            .order_by(HotspotTheme.display_order)
+        )
+    ).all()
+    wanted = set(travel_months)
+    return [row.slug for row in rows if wanted & {int(m) for m in row.months_json or []}]
 
 
 def hotspot_names(hotspot: TravelHotspot, localizations: Mapping[str, str]) -> dict[str, str]:
@@ -1137,10 +1194,16 @@ async def load_planner_hotspots(
     extension_destination_ids: list[str] | None = None,
     days: int | None = None,
     style: str = "deep",
+    shop_themes: list[str] | None = None,
+    travel_months: list[int] | None = None,
 ) -> list[ItineraryHotspot]:
     """Load only approved, exact-map hotspots for itinerary generation."""
     wanted = max(1, limit)
     requested = {interest for interest in (interests or []) if interest != "deep_travel"}
+    theme_slugs = list(dict.fromkeys(slug for slug in (shop_themes or []) if slug))
+    if theme_slugs:
+        # The form and the parser both imply it, but a direct API caller may not.
+        requested.add("shopping")
     wanted_categories = [
         category
         for interest in sorted(requested)
@@ -1157,7 +1220,23 @@ async def load_planner_hotspots(
             seen_ids.add(item["id"])
             ranked_items.append(item)
 
-    # Interest categories first, so a shopping-minded trip still sees shops even
+    seasonal_quota = max(1, int(wanted * PLANNER_SEASONAL_SHARE)) if travel_months else 0
+    # Named shop types first. A traveller who said 藥妝 means that shop, and it sits
+    # far below the city's shopping streets in a popularity ranking.
+    per_theme = max(1, -(-(interest_quota or wanted) // len(theme_slugs))) if theme_slugs else 0
+    for slug in theme_slugs:
+        absorb(
+            await _collect_ranked(
+                session,
+                city_code=city_code,
+                destination_id=destination_id,
+                style=style,
+                wanted=per_theme,
+                category="shopping",
+                theme=slug,
+            )
+        )
+    # Interest categories next, so a shopping-minded trip still sees shops even
     # when every shop ranks below the city's landmarks; the general ranking then
     # fills the remaining seats.
     for category in wanted_categories:
@@ -1169,6 +1248,17 @@ async def load_planner_hotspots(
                 style=style,
                 wanted=interest_quota,
                 category=category,
+            )
+        )
+    for slug in await season_slugs_for(session, travel_months or []):
+        absorb(
+            await _collect_ranked(
+                session,
+                city_code=city_code,
+                destination_id=destination_id,
+                style=style,
+                wanted=seasonal_quota,
+                theme=slug,
             )
         )
     absorb(
@@ -1194,22 +1284,41 @@ async def load_planner_hotspots(
         )
         ranked_items.extend(extension_result["items"])
     category_set = set(wanted_categories)
-    if category_set:
+    theme_set = set(theme_slugs)
+    months = travel_months or []
+
+    def seasonal(item: dict[str, Any]) -> bool:
+        return in_season(item, months, primary_id)
+
+    if category_set or theme_set or months:
         ranked_items = sorted(
             ranked_items,
-            key=lambda item: (item["category"] not in category_set, item["rank"]),
+            key=lambda item: (
+                not (theme_set & set(item_theme_slugs(item))),
+                item["category"] not in category_set,
+                not seasonal(item),
+                item["rank"],
+            ),
         )
     rows: list[ItineraryHotspot] = []
     interest_rows = 0
+    seasonal_rows = 0
     for item in ranked_items:
         if len(rows) >= wanted:
             break
         if not _planner_eligible(item):
             continue
+        is_seasonal = seasonal(item)
         if item["category"] in category_set:
             if interest_rows >= interest_quota:
                 continue
             interest_rows += 1
+        elif is_seasonal:
+            # Past its share a seasonal spot has to earn its place on rank alone,
+            # so an April trip to Kyoto is not ten cherry trees in a row.
+            if seasonal_rows >= seasonal_quota:
+                continue
+            seasonal_rows += 1
         rows.append(
             ItineraryHotspot(
                 hotspot_id=item["id"],
@@ -1223,13 +1332,15 @@ async def load_planner_hotspots(
                 depth_score=item["depth_score"] or 0,
                 depth_reason=item["depth_reason"] or "",
                 access_minutes=item["access_minutes"] or 0,
-                recommended_duration_minutes=item["recommended_duration_minutes"] or 120,
+                recommended_duration_minutes=item["recommended_duration_minutes"]
+                or (SHOP_DEFAULT_DURATION_MINUTES if item["category"] == "shopping" else 120),
                 destination_id=item["destination_id"],
                 destination_role=item["destination_role"],
                 parent_destination_id=item["parent_destination_id"],
                 is_cross_city=item["is_cross_city"],
                 opening_hours=item.get("opening_hours") or {},
-                themes=[str(theme["slug"]) for theme in item.get("themes") or []],
+                themes=item_theme_slugs(item),
+                in_season=is_seasonal,
             )
         )
     return rows

@@ -71,6 +71,21 @@ export const interestCodes = [
 
 export type InterestCode = (typeof interestCodes)[number];
 
+// Shop types the planner can favour. They only mean anything alongside the
+// "shopping" interest, which is why the form hides them until it is chosen.
+export const shopThemeCodes = [
+  "drugstore",
+  "electronics",
+  "department-store",
+  "outlet",
+  "souvenir",
+  "vintage",
+  "anime-hobby",
+  "market-street",
+] as const;
+
+export type ShopThemeCode = (typeof shopThemeCodes)[number];
+
 export function localizeDestination(seed: DestinationSeed, t: CatalogTranslator): DestinationCity {
   return { ...seed, name: t(`cities.${seed.id}.name`), summary: t(`cities.${seed.id}.summary`) };
 }
@@ -92,4 +107,10 @@ export function destinationByAirport(airport: string | null | undefined, t: Cata
 export function interestLabel(code: string, t: CatalogTranslator): string {
   if (!(interestCodes as readonly string[]).includes(code)) return code;
   return t(`interests.${code}`);
+}
+
+/** The shop type's label; an unknown code is shown as is. */
+export function shopThemeLabel(code: string, t: CatalogTranslator): string {
+  if (!(shopThemeCodes as readonly string[]).includes(code)) return code;
+  return t(`shopThemes.${code}`);
 }

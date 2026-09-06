@@ -31,6 +31,20 @@ INTEREST_KEYWORDS: tuple[tuple[tuple[str, ...], str], ...] = (
 )
 INTEREST_CODES: tuple[str, ...] = tuple(code for _, code in INTEREST_KEYWORDS)
 
+# Shop types ride on the shopping interest: naming one implies wanting to shop.
+# Only generic nouns belong here — a brand is the name of a place, not a preference.
+SHOP_THEME_KEYWORDS: tuple[tuple[tuple[str, ...], str], ...] = (
+    (("藥妝", "藥粧", "藥局", "药妆"), "drugstore"),
+    (("電器", "家電", "3C", "電子產品", "相機"), "electronics"),
+    (("百貨", "商場", "購物中心"), "department-store"),
+    (("outlet", "OUTLET", "Outlet", "暢貨", "折扣村"), "outlet"),
+    (("伴手禮", "土產", "名產", "紀念品", "特產"), "souvenir"),
+    (("古著", "二手", "vintage", "Vintage"), "vintage"),
+    (("動漫", "模型", "扭蛋", "公仔", "手辦", "同人"), "anime-hobby"),
+    (("商店街", "市場", "市集", "夜市"), "market-street"),
+)
+SHOP_THEME_CODES: tuple[str, ...] = tuple(code for _, code in SHOP_THEME_KEYWORDS)
+
 
 class ParsedTravelers(BaseModel):
     adults: int = 1
@@ -50,6 +64,7 @@ class ParsedTripRequest(BaseModel):
     trip_length_days: int | None = None
     budget_twd: int | None = None
     interests: list[str] = Field(default_factory=list)
+    shop_themes: list[str] = Field(default_factory=list)
     avoid_red_eye: bool = False
     hotel_min_rating: int | None = None
     hotel_max_nightly_twd: int | None = None
@@ -123,6 +138,12 @@ class MockAITripParser:
         interests = [
             code for words, code in INTEREST_KEYWORDS if any(word in text for word in words)
         ]
+        shop_themes = [
+            code for words, code in SHOP_THEME_KEYWORDS if any(word in text for word in words)
+        ]
+        # Naming a shop type is asking to shop, whether or not the word appears.
+        if shop_themes and "shopping" not in interests:
+            interests = [*interests, "shopping"]
         rating_match = re.search(r"(?:至少|最低)?\s*([1-5])\s*星", text)
         chinese_rating = next(
             (value for label, value in {"三星": 3, "四星": 4, "五星": 5}.items() if label in text),
@@ -170,6 +191,7 @@ class MockAITripParser:
             trip_length_days=int(days_match.group(1)) if days_match else None,
             budget_twd=budget,
             interests=interests,
+            shop_themes=shop_themes,
             avoid_red_eye=any(word in text for word in ("不要紅眼", "避免紅眼", "非紅眼")),
             hotel_min_rating=int(rating_match.group(1)) if rating_match else chinese_rating,
             hotel_max_nightly_twd=int(nightly_match.group(1)) if nightly_match else None,
