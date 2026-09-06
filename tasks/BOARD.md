@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**13 open · 1 in progress · 2 blocked · 1 in review · 145 done**
+**13 open · 1 in progress · 2 blocked · 2 in review · 145 done**
 
 ## Ready to claim
 
@@ -35,6 +35,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Branch |
 | --- | --- | --- |
 | [Gemini catalog review and 100-item expansion](open/2026-09-07-gemini-catalog-review.md) | codex-gemini-catalog | `codex/catalog-review-missing-assessments` |
+| [從旅程出發查機票：條件由旅程推導，報價帶回錨點](open/2026-09-06-search-from-a-saved-trip.md) | claude-opus-5 | `claude/better-workflow-planning-324ki8` |
 
 ## Waiting
 
