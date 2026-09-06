@@ -26,6 +26,8 @@ from app.foods.place_matching_cli import match_food_merchant_places
 from app.foods.service import seed_food_catalog
 from app.foods.trend_import import DEFAULT_FILE as TREND_MERCHANTS_FILE
 from app.foods.trend_import import import_trend_merchants
+from app.holidays.refresh import HolidaySourceError
+from app.holidays.refresh import refresh as refresh_holidays
 from app.hotspots.candidate_cli import import_candidates
 from app.hotspots.candidate_generation import generate_candidates
 from app.hotspots.cities import CITY_BY_CODE
@@ -681,6 +683,25 @@ def main() -> None:
     labels.add_argument(
         "--dry-run", action="store_true", help="Report what would change without writing"
     )
+    holidays = subparsers.add_parser(
+        "refresh-holidays",
+        help=(
+            "Re-read a government calendar and report how it differs from the vendored "
+            "JSON; writes nothing without --apply and never overwrites a written name"
+        ),
+    )
+    holidays.add_argument("--country", choices=["tw", "jp"], required=True)
+    holidays.add_argument("--year", type=int, required=True)
+    holidays.add_argument(
+        "--file",
+        help=(
+            "Parse a copy downloaded by hand instead of fetching; required for tw, whose "
+            "certificate chain OpenSSL refuses (see docs/public-holidays.md)"
+        ),
+    )
+    holidays.add_argument(
+        "--apply", action="store_true", help="Write the fetched dates back into the data file"
+    )
     backfill = subparsers.add_parser(
         "backfill-trip-item-names",
         help=(
@@ -836,6 +857,18 @@ def main() -> None:
         print(json.dumps(simplified_summary, ensure_ascii=False, indent=2))
         if simplified_summary.get("refused"):
             raise SystemExit(1)
+    elif args.command == "refresh-holidays":
+        try:
+            holiday_summary = refresh_holidays(
+                args.country,
+                args.year,
+                write=args.apply,
+                file=Path(args.file) if args.file else None,
+            )
+        except HolidaySourceError as exc:
+            print(json.dumps({"error": str(exc)}, ensure_ascii=False, indent=2))
+            raise SystemExit(1) from exc
+        print(json.dumps(holiday_summary, ensure_ascii=False, indent=2))
     elif args.command == "fill-hotspot-labels":
         fill_hotspot_labels(
             args.file or list(BOOTSTRAP_FILES), args.dry_run, args.overwrite_original
