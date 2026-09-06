@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-readability-guard-widen
 title: e2e 只守住預設字級的六個頁面，守不住大字模式與 320px
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T19:35:05Z
 created_at: 2026-09-06T19:35:04Z
-completed_at:
+completed_at: 2026-09-06T20:11:50Z
 branch: claude/ux-guards
 depends_on: []
 scope:
