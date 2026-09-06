@@ -1,7 +1,7 @@
 import asyncio
 import os
 from datetime import UTC, datetime
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 import pytest
 from httpx import ASGITransport, AsyncClient
@@ -33,6 +33,7 @@ from app.search.tasks import run_search_job
 from app.trips.routing import RouteSegment, RouteService
 from app.usage.service import (
     commit_reservation,
+    create_usage_account,
     grant_package,
     release_reservation,
     reserve_use,
@@ -61,6 +62,29 @@ async def _signed_in_headers(label: str) -> dict[str, str]:
         await session.commit()
         await session.refresh(user)
         return {"Authorization": f"Bearer {create_access_token(user.id, user.auth_version)}"}
+
+
+async def _signed_in_member(label: str) -> tuple[dict[str, str], UUID]:
+    """_signed_in_headers plus the usage account registration would have opened.
+
+    Anything that reserves a use (reoptimize, the planner) needs the account row;
+    a bare user answers ``usage_account_missing`` before it gets to the point.
+    """
+    async with SessionFactory() as session:
+        user = User(
+            email=f"{label}-{uuid4()}@example.com",
+            password_hash=hash_password("integration-password-123"),
+            is_active=True,
+        )
+        session.add(user)
+        await session.flush()
+        await create_usage_account(session, user)
+        await session.commit()
+        await session.refresh(user)
+        headers = {
+            "Authorization": f"Bearer {create_access_token(user.id, user.auth_version)}"
+        }
+        return headers, user.id
 
 
 @pytest.mark.asyncio(loop_scope="module")
@@ -1794,3 +1818,111 @@ async def test_share_link_carries_no_item_notes_and_no_trip_data(
         assert "私人理由" not in shared.text
         assert "price_snapshot" not in shared.text
 
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_reoptimize_is_a_versioned_write_and_never_replays_a_failed_attempt(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """POST /trips/{id}/reoptimize carries the version the client last saw.
+
+    A mismatch is refused before any provider is called and the usage
+    reservation goes back; a plan that would land rows outside the trip is
+    refused the same way; and retrying a failed attempt with the same
+    Idempotency-Key is not dressed up as a completed reprice.
+    """
+    from datetime import date
+    from types import SimpleNamespace
+
+    monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", lambda *_a, **_k: None)
+
+    async def unexpected_replan(*_args: object, **_kwargs: object) -> None:
+        raise AssertionError("a stale version must be refused before the providers run")
+
+    monkeypatch.setattr(trips_router_module, "refreshed_plan", unexpected_replan)
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        headers, owner_id = await _signed_in_member("reoptimize-version")
+        created = await client.post(
+            "/api/v1/trips",
+            headers=headers,
+            json={
+                "source": "blank",
+                "planning_mode": "manual_blank",
+                "name": "重新查價版本測試",
+                "destination_name": "日本東京",
+                "start_date": "2026-11-10",
+                "end_date": "2026-11-12",
+                "routing": {
+                    "auto_compute": False,
+                    "default_travel_mode": "transit",
+                    "default_buffer_minutes": 10,
+                },
+            },
+        )
+        assert created.status_code == 201, created.text
+        trip = created.json()
+        assert trip["price_status"] == "none"
+        trip_id = trip["id"]
+        url = f"/api/v1/trips/{trip_id}/reoptimize"
+        no_version = await client.post(
+            url, headers={**headers, "Idempotency-Key": f"reopt-{uuid4()}"}
+        )
+        assert no_version.status_code == 422
+
+        key = f"reopt-{uuid4()}"
+        stale = await client.post(
+            url,
+            headers={**headers, "Idempotency-Key": key},
+            json={"version": trip["version"] + 1},
+        )
+        assert stale.status_code == 409, stale.text
+        assert stale.json()["code"] == "trip_version_conflict"
+
+        async def replan_outside_the_trip(
+            *_args: object, **_kwargs: object
+        ) -> tuple[object, list[str]]:
+            return SimpleNamespace(itinerary=[SimpleNamespace(date=date(2026, 11, 20))]), []
+
+        monkeypatch.setattr(trips_router_module, "refreshed_plan", replan_outside_the_trip)
+        outside = await client.post(
+            url,
+            headers={**headers, "Idempotency-Key": f"reopt-{uuid4()}"},
+            json={"version": trip["version"]},
+        )
+        assert outside.status_code == 409, outside.text
+        assert outside.json()["code"] == "trip_search_dates_diverged"
+
+        # Neither failure is replayable as a completed reprice, and neither charged:
+        # both reservations went back and the account still holds its trial uses.
+        retried = await client.post(
+            url,
+            headers={**headers, "Idempotency-Key": key},
+            json={"version": trip["version"]},
+        )
+        assert retried.status_code == 409, retried.text
+        assert retried.json()["code"] == "idempotency_result_unavailable"
+        async with SessionFactory() as session:
+            account = await session.scalar(
+                select(UsageAccount).where(UsageAccount.user_id == owner_id)
+            )
+            reservations = list(
+                (
+                    await session.scalars(
+                        select(UsageReservation).where(UsageReservation.user_id == owner_id)
+                    )
+                ).all()
+            )
+        assert account is not None and account.reserved_uses == 0
+        assert account.remaining_uses == 3  # the registration trial, untouched
+        assert len(reservations) == 2
+        assert {row.status for row in reservations} == {"released"}
+        assert all(row.resource_id is None for row in reservations)
+
+        reloaded = await client.get(f"/api/v1/trips/{trip_id}", headers=headers)
+        assert reloaded.status_code == 200
+        assert reloaded.json()["version"] == trip["version"]
+        assert [item["id"] for item in reloaded.json()["items"]] == [
+            item["id"] for item in trip["items"]
+        ]

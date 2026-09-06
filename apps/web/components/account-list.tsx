@@ -27,6 +27,7 @@ type TripItem = {
   id: string;
   name: string;
   total_price?: number;
+  price_status?: "current" | "stale" | "none";
   currency?: string;
   destination_name?: string;
   start_date?: string;
@@ -414,7 +415,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                 </button>
               </div>
             </div>
-            {!isAlert && Number(trip.total_price) > 0 && (
+            {!isAlert && Number(trip.total_price) > 0 && trip.price_status !== "stale" && (
               <div className="max-w-sm">
                 <PriceAlertButton
                   resourceType="trip"

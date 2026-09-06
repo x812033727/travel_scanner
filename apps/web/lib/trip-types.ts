@@ -267,6 +267,8 @@ export type Trip = {
   mode: string;
   total_price: number;
   currency: string;
+  /** Whether total_price is a quote for the trip as it stands; absent on older payloads. */
+  price_status?: "current" | "stale" | "none";
   data: Record<string, unknown>;
   primary_lodging?: PrimaryLodging | null;
   pricing?: TripPricing | null;

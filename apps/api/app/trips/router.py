@@ -58,7 +58,7 @@ from app.providers.registry import (
 )
 from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, Offer, TransportOffer
-from app.search.schemas import SearchCreate, SearchPreferences, Travelers
+from app.search.schemas import SearchCreate, SearchPreferences, Travelers, TripType
 from app.trips.expenses import (
     EXPENSE_CATEGORIES,
     MAX_EXPENSES,
@@ -788,6 +788,22 @@ async def load_expenses(session: AsyncSession, trip_id: UUID) -> list[TripExpens
     )
 
 
+def price_status(trip: TripPlan) -> str:
+    """Whether total_price is a quote for the trip as it stands.
+
+    ``stale`` after a date change (the quote was for other dates and nothing has
+    repriced it since), ``none`` when there is no quote at all, ``current``
+    otherwise. The web hides the price alert button unless it is current: an
+    alert on a stale number would watch a fare for dates the trip no longer has.
+    """
+    data = trip.data if isinstance(trip.data, dict) else {}
+    if data.get("prices_stale"):
+        return "stale"
+    if trip.total_price is None or Decimal(str(trip.total_price)) <= 0:
+        return "none"
+    return "current"
+
+
 async def serialize_trip(
     session: AsyncSession, trip: TripPlan, *, include_items: bool = True
 ) -> dict[str, Any]:
@@ -835,6 +851,7 @@ async def serialize_trip(
         "mode": trip.mode,
         "total_price": trip.total_price,
         "currency": trip.currency,
+        "price_status": price_status(trip),
         "data": trip.data,
         "primary_lodging": (
             primary_lodging(trip, items) if include_items else trip.data.get("primary_lodging")
@@ -1629,38 +1646,62 @@ async def run_provider_module(
     return []
 
 
-def search_dates_diverged(
-    trip_start: date | None,
-    trip_end: date | None,
-    departure_date: date | None,
-    return_date: date | None,
-) -> bool:
-    """True when a trip's dates no longer match the search it was built from.
+DATES_DIVERGED = AppError(
+    409,
+    "trip_search_dates_diverged",
+    "旅程日期已與原始搜尋不同，無法用舊搜尋重新查價；請重新搜尋後另存旅程",
+)
 
-    A reprice rebuilds the whole itinerary from the ORIGINAL SearchRequest
-    dates, so running it after `PATCH /trips/{id}` moved the trip would
-    re-insert every row at the old dates — outside the new range, which
-    permanently 422s the itinerary save. The SearchRequest may be shared by
-    several trips, so it cannot simply be rewritten to match.
+
+def search_query_for_trip(request_json: Mapping[str, Any], trip: TripPlan) -> SearchCreate:
+    """The original search, re-dated to the trip as it stands today.
+
+    A reprice rebuilds the itinerary from the search, so after ``PATCH /trips/{id}``
+    moved the trip the search has to move with it or every row lands outside the
+    new range and the itinerary save 422s forever. The SearchRequest row itself may
+    be shared by several trips and is never rewritten; the copy handed to the
+    providers is. A round trip re-dates cleanly. A multi-city search carries its
+    dates per leg and cannot be shifted from two endpoints, so a date change there
+    is still refused rather than guessed at.
     """
-    return (
-        trip_start is not None and departure_date is not None and trip_start != departure_date
-    ) or (trip_end is not None and return_date is not None and trip_end != return_date)
+    query = SearchCreate.model_validate(request_json)
+    if trip.start_date is None:
+        return query
+    moved = query.departure_date != trip.start_date or (
+        query.return_date is not None and query.return_date != trip.end_date
+    )
+    if not moved:
+        return query
+    if query.trip_type == TripType.MULTI_CITY:
+        raise DATES_DIVERGED
+    update: dict[str, Any] = {
+        "departure_date": trip.start_date.isoformat(),
+        "return_date": trip.end_date.isoformat()
+        if query.return_date is not None and trip.end_date is not None
+        else request_json.get("return_date"),
+    }
+    try:
+        return SearchCreate.model_validate({**request_json, **update})
+    except ValueError as exc:
+        raise DATES_DIVERGED from exc
+
+
+def ensure_plan_within_trip(plan: TripPlanResult, trip: TripPlan) -> None:
+    """Refuse a re-plan whose days fall outside the trip: that is the corruption the
+    old guard existed to prevent, checked on the result instead of on the search's
+    optional fields (a one-way search has no return_date to compare)."""
+    if trip.start_date is None or trip.end_date is None:
+        return
+    for day in plan.itinerary:
+        if day.date < trip.start_date or day.date > trip.end_date:
+            raise DATES_DIVERGED
 
 
 async def refreshed_plan(session: AsyncSession, trip: TripPlan) -> tuple[TripPlanResult, list[str]]:
     search = await session.get(SearchRequest, trip.search_id)
     if search is None:
         raise AppError(409, "trip_search_missing", "原始搜尋已無法使用")
-    query = SearchCreate.model_validate(search.request_json)
-    if search_dates_diverged(
-        trip.start_date, trip.end_date, query.departure_date, query.return_date
-    ):
-        raise AppError(
-            409,
-            "trip_search_dates_diverged",
-            "旅程日期已與原始搜尋不同，無法用舊搜尋重新查價；請重新搜尋後另存旅程",
-        )
+    query = search_query_for_trip(search.request_json, trip)
     redis = get_redis()
     settings = await load_runtime_settings(session)
     providers = build_module_provider_candidates(redis, settings)
@@ -4595,9 +4636,14 @@ async def delete_trip(trip_id: UUID, user: CurrentUser, session: Session) -> Non
     await session.commit()
 
 
+class ReoptimizeRequest(BaseModel):
+    version: int = Field(ge=1)
+
+
 @router.post("/{trip_id}/reoptimize")
 async def reoptimize_trip(
     trip_id: UUID,
+    payload: ReoptimizeRequest,
     user: CurrentUser,
     session: Session,
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
@@ -4611,18 +4657,46 @@ async def reoptimize_trip(
         f"重新最佳化：{trip.name}",
     )
     if not created and reservation.resource_id == trip.id:
+        # reserve_use only hands back a reservation that carries a result; the id is
+        # written below once the reprice has been committed, so this is a genuine
+        # replay of a completed reprice, never a failed one dressed up as done.
         replay = await serialize_trip(session, trip)
         replay["usage"] = usage_status(reservation).model_dump()
         return replay
-    reservation.resource_id = trip.id
+    if payload.version != trip.version:
+        # Cheap first check so a stale client does not spend provider calls; the
+        # authoritative compare-and-swap runs again right before the write.
+        await release_reservation(session, reservation, "reoptimization_failed")
+        await session.commit()
+        raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再最佳化")
     existing_items = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
     try:
         plan, warnings = await refreshed_plan(session, trip)
+        ensure_plan_within_trip(plan, trip)
     except Exception:
         await release_reservation(session, reservation, "reoptimization_failed")
         await session.commit()
         raise
 
+    # The provider round trip above took seconds; another request may have written the
+    # trip meanwhile. Win the compare-and-swap before deleting a single row, or hand the
+    # reservation back and refuse, exactly like every other trip write.
+    next_version = await session.scalar(
+        update(TripPlan)
+        .where(
+            TripPlan.id == trip.id,
+            TripPlan.user_id == user.id,
+            TripPlan.version == payload.version,
+        )
+        .values(version=TripPlan.version + 1)
+        .returning(TripPlan.version)
+    )
+    if next_version is None:
+        await session.rollback()
+        await release_reservation(session, reservation, "reoptimization_failed")
+        await session.commit()
+        raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再最佳化")
+    reservation.resource_id = trip.id
     await commit_reservation(session, reservation, trip.id)
     checked_at = datetime.now(UTC).isoformat()
     await session.execute(
@@ -4699,7 +4773,8 @@ async def reoptimize_trip(
         "provider_warnings": warnings,
         "locked_items_preserved": sum(1 for item in existing_items if item.locked),
     }
-    trip.version += 1
+    # The version was bumped by the compare-and-swap above; the ORM copy is refreshed
+    # after the commit rather than incremented a second time here.
     await session.commit()
     await session.refresh(trip)
     result = await serialize_trip(session, trip)

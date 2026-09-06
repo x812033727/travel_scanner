@@ -1053,15 +1053,99 @@ def test_patch_request_bounds_shift_days_and_omits_route_preference() -> None:
     assert "route_preference" not in TripMetadataPatchRequest.model_fields
 
 
-def test_reprice_is_refused_once_the_trip_dates_left_the_original_search() -> None:
-    """A reprice rebuilds the itinerary from the SearchRequest's dates, so a
-    moved trip must not be able to re-import rows at its old dates."""
-    from app.trips.router import search_dates_diverged
+def _search_json(**overrides: object) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "trip_type": "round_trip",
+        "origin": "TPE",
+        "destination": "NRT",
+        "departure_date": DAY_ONE.isoformat(),
+        "return_date": (DAY_ONE + timedelta(days=2)).isoformat(),
+        "modules": ["flight", "hotel"],
+    }
+    payload.update(overrides)
+    return payload
 
-    start, end = DAY_ONE, DAY_ONE + timedelta(days=2)
-    assert search_dates_diverged(start, end, start, end) is False
-    assert search_dates_diverged(start + timedelta(days=1), end, start, end) is True
-    assert search_dates_diverged(start, end + timedelta(days=1), start, end) is True
-    # A one-way search has no return_date; only the start can diverge.
-    assert search_dates_diverged(start, end, start, None) is False
-    assert search_dates_diverged(start, None, start, end) is False
+
+def test_a_reprice_follows_the_trip_to_its_new_dates() -> None:
+    """A reprice rebuilds the itinerary from the search, so once PATCH moved the trip
+    the search copy handed to the providers moves with it; the stored SearchRequest
+    (shared by several trips) is never rewritten."""
+    from app.trips.router import search_query_for_trip
+
+    trip = build_trip()
+    same = search_query_for_trip(_search_json(), trip)
+    assert (same.departure_date, same.return_date) == (DAY_ONE, DAY_ONE + timedelta(days=2))
+
+    trip.start_date, trip.end_date = DAY_ONE + timedelta(days=7), DAY_ONE + timedelta(days=10)
+    moved = search_query_for_trip(_search_json(), trip)
+    assert (moved.departure_date, moved.return_date) == (trip.start_date, trip.end_date)
+    assert moved.origin == "TPE" and moved.trip_type == "round_trip"
+
+    # A one-way search has no return date to move; only the departure follows.
+    one_way = search_query_for_trip(_search_json(trip_type="one_way", return_date=None), trip)
+    assert one_way.departure_date == trip.start_date and one_way.return_date is None
+
+
+def test_a_multi_city_search_cannot_be_re_dated_and_is_refused() -> None:
+    from app.trips.router import search_query_for_trip
+
+    trip = build_trip()
+    trip.start_date = DAY_ONE + timedelta(days=1)
+    legs = [
+        {"origin": "TPE", "destination": "NRT", "departure_date": DAY_ONE.isoformat()},
+        {
+            "origin": "NRT",
+            "destination": "KIX",
+            "departure_date": (DAY_ONE + timedelta(days=2)).isoformat(),
+        },
+    ]
+    with pytest.raises(AppError) as raised:
+        search_query_for_trip(
+            _search_json(trip_type="multi_city", legs=legs, departure_date=None, return_date=None),
+            trip,
+        )
+    assert raised.value.status == 409
+    assert raised.value.code == "trip_search_dates_diverged"
+
+
+def test_a_replan_that_falls_outside_the_trip_is_refused_before_any_row_is_written() -> None:
+    """The corruption the old date guard existed for — rows re-inserted at dates the
+    trip no longer has, after which every itinerary save 422s — is caught on the
+    result, whatever the search's optional fields say."""
+    from types import SimpleNamespace
+
+    from app.trips.router import ensure_plan_within_trip
+
+    trip = build_trip()
+    inside = SimpleNamespace(
+        itinerary=[SimpleNamespace(date=DAY_ONE + timedelta(days=index)) for index in range(3)]
+    )
+    ensure_plan_within_trip(inside, trip)  # type: ignore[arg-type]
+    outside = SimpleNamespace(itinerary=[SimpleNamespace(date=DAY_ONE + timedelta(days=4))])
+    with pytest.raises(AppError) as raised:
+        ensure_plan_within_trip(outside, trip)  # type: ignore[arg-type]
+    assert raised.value.code == "trip_search_dates_diverged"
+    trip.end_date = None
+    ensure_plan_within_trip(outside, trip)  # type: ignore[arg-type]
+
+
+def test_a_date_change_marks_the_quote_stale_until_the_next_reprice() -> None:
+    from app.trips.router import price_status
+
+    trip = build_trip()
+    trip.total_price = Decimal("42000")
+    trip.data = {**trip.data, "prices_checked": True, "reoptimized_at": "2026-09-01T00:00:00Z"}
+    assert price_status(trip) == "current"
+
+    items, _settings, _segments = build_world(trip)
+    trip.data = reschedule_trip_data(trip.data, items)
+    assert trip.data["prices_stale"] is True
+    assert trip.data["prices_checked"] is False
+    assert "reoptimized_at" not in trip.data
+    assert price_status(trip) == "stale"
+
+    # What a successful reoptimize writes: a fresh blob without the flag.
+    trip.data = {"prices_checked": True, "reoptimized_at": "2026-09-06T00:00:00Z"}
+    assert price_status(trip) == "current"
+    trip.total_price = Decimal("0")
+    assert price_status(trip) == "none"
