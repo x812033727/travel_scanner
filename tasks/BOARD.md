@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**6 open · 1 in progress · 2 blocked · 5 in review · 88 done**
+**7 open · 1 in progress · 2 blocked · 5 in review · 89 done**
 
 ## Ready to claim
 
@@ -13,6 +13,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
+| P2 | [後台主題管理畫面：taxonomy 表格與逐景點指派](open/2026-09-06-hotspot-themes-admin-web.md) | web | `apps/web/components/admin-hotspot-themes-panel.tsx`<br>`apps/web/components/admin-hotspot-theme-editor.tsx`<br>`apps/web/components/admin-hotspots-workspace.tsx`<br>`apps/web/components/admin-hotspots-panel.tsx`<br>`apps/web/i18n/request.ts`<br>`apps/web/vitest.setup.tsx`<br>`apps/web/messages/en/hotspotThemes.json`<br>`apps/web/messages/ja/hotspotThemes.json`<br>`apps/web/messages/ko/hotspotThemes.json`<br>`apps/web/messages/zh-TW/hotspotThemes.json`<br>`apps/web/messages/zh-CN/hotspotThemes.json` |
 | P3 | [四個景點的分類被標成 shopping，其實是公園、城跡與神社](open/2026-09-06-seed-category-shopping-mistakes.md) | api | `apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_hotspot_seed_categories.py` |
 
 ## In progress
@@ -46,6 +47,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 ## Recently finished
 
 - 2026-09-06 [五個語系的 trips.json 都有重複的 transfersCount 鍵](done/2026-09-06-duplicate-transfers-count-key.md)
+- 2026-09-06 [後台可以維護景點主題並逐景點指派](done/2026-09-06-hotspot-themes-admin-api.md)
 - 2026-09-06 [選 Gemini 做景點介紹搜尋會 500：run 表的 provider 檢查沒有 gemini](done/2026-09-06-gemini-guide-run-check.md)
 - 2026-09-06 [熱門景點頁的主題篩選與季節徽章](done/2026-09-06-hotspot-themes-web.md)
 - 2026-09-06 [熱門景點季節與購物主題：資料模型、種子與公開 API](done/2026-09-06-hotspot-themes-api.md)
@@ -54,4 +56,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-06 [供應商就緒狀態只看金鑰有無，卡片會綠燈但功能不通](done/2026-09-06-configured-readiness-beyond-key-presence.md)
 - 2026-09-06 [Booking Demand 連線測試停在城市 ID，從不解析旅館報價](done/2026-09-06-booking-demand-test-parses-an-offer.md)
 - 2026-09-06 [地點建議清單會在 Escape 之後自己打開](done/2026-09-06-place-picker-reopens-after-escape.md)
-- 2026-09-06 [航班來源擴充讀舊資料沒有防護：型別不符的 search id 會直接 500](done/2026-09-06-expand-flight-sources-guard.md)

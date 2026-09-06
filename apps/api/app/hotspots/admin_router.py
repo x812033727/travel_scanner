@@ -61,6 +61,8 @@ from app.hotspots.places import (
     run_payload,
 )
 from app.hotspots.ranking import calculate_depth_value
+from app.hotspots.theme_catalog import ThemeKind, validate_months
+from app.hotspots.themes import THEME_ORDER, load_hotspot_themes, theme_ref
 from app.i18n import LOCALES, Locale, current_locale
 from app.infra import get_redis
 from app.locations.coordinates import (
@@ -76,6 +78,8 @@ from app.models import (
     HotspotPlaceEnrichmentRun,
     HotspotPlaceProfile,
     HotspotSignal,
+    HotspotTheme,
+    HotspotThemeLink,
     TravelHotspot,
 )
 from app.problems import AppError
@@ -84,6 +88,74 @@ router = APIRouter(prefix="/admin/hotspots", tags=["admin hotspots"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 RedisDep = Annotated[Redis, Depends(get_redis)]
 RequestLocale = Annotated[Locale, Depends(current_locale)]
+
+
+class ThemeWritePayload(BaseModel):
+    """A new theme. ``slug`` and ``kind`` are immutable once created: the seed file
+    and every saved filter link refer to the slug."""
+
+    slug: str = Field(pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$", max_length=64)
+    kind: ThemeKind
+    names: dict[str, str]
+    months: list[int] = Field(default_factory=list, max_length=12)
+    display_order: int = Field(default=100, ge=0, le=10_000)
+    is_active: bool = True
+
+    @model_validator(mode="after")
+    def validate_theme(self) -> ThemeWritePayload:
+        _validate_theme_names(self.names)
+        _validate_theme_months(self.kind, self.months)
+        return self
+
+
+class ThemeUpdatePayload(BaseModel):
+    names: dict[str, str] | None = None
+    months: list[int] | None = Field(default=None, max_length=12)
+    display_order: int | None = Field(default=None, ge=0, le=10_000)
+    is_active: bool | None = None
+
+    @model_validator(mode="after")
+    def validate_fields(self) -> ThemeUpdatePayload:
+        if self.names is not None:
+            _validate_theme_names(self.names)
+        return self
+
+
+class HotspotThemeAssignment(BaseModel):
+    slug: str = Field(pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$", max_length=64)
+    # None keeps the theme's own months; a list overrides them for this hotspot.
+    months: list[int] | None = Field(default=None, max_length=12)
+    note: str | None = Field(default=None, max_length=500)
+
+
+class HotspotThemesPutPayload(BaseModel):
+    themes: list[HotspotThemeAssignment] = Field(default_factory=list, max_length=20)
+    reason: str | None = Field(default=None, max_length=500)
+
+    @model_validator(mode="after")
+    def unique_slugs(self) -> HotspotThemesPutPayload:
+        slugs = [item.slug for item in self.themes]
+        if len(set(slugs)) != len(slugs):
+            raise ValueError("a theme may only be listed once")
+        return self
+
+
+def _validate_theme_names(names: dict[str, str]) -> None:
+    if set(names) != set(LOCALES):
+        raise ValueError(f"names must cover exactly the site locales: {sorted(LOCALES)}")
+    if any(not value.strip() or len(value) > 255 for value in names.values()):
+        raise ValueError("every name must be non-empty and at most 255 characters")
+
+
+def _validate_theme_months(kind: str, months: list[int]) -> None:
+    try:
+        validate_months(months)
+    except RuntimeError as exc:
+        raise ValueError(str(exc)) from exc
+    if kind == "shop" and months:
+        raise ValueError("a shop theme does not carry months")
+    if kind == "season" and not months:
+        raise ValueError("a season theme needs at least one month")
 
 
 class HotspotReviewRequest(BaseModel):
@@ -395,6 +467,7 @@ async def list_hotspot_candidates(
             for row in ranked(category_rows, "category", HOTSPOT_CATEGORY_ORDER)
         ],
     }
+    themes_by_hotspot = await load_hotspot_themes(session, [item.id for item in rows], "zh-TW")
     items = []
     for hotspot in rows:
         pageviews = await session.scalar(
@@ -417,6 +490,7 @@ async def list_hotspot_candidates(
                 "country_code": hotspot.country_code,
                 "country_name": hotspot.country_name,
                 "category": hotspot.category,
+                "themes": themes_by_hotspot.get(hotspot.id, []),
                 "area_code": hotspot.area_code,
                 "area_name": area_name(area, "zh-TW")
                 if (area := area_by_code(hotspot.city_code, hotspot.area_code))
@@ -1453,3 +1527,251 @@ async def review_place_profiles(
             targets=refresh,
         )
     return {"updated": len(rows), "run": run_payload(run) if run else None}
+
+
+async def _theme_by_slug(session: AsyncSession, slug: str) -> HotspotTheme:
+    """The active theme an administrator is assigning, or 422."""
+
+    theme = await session.scalar(
+        select(HotspotTheme).where(HotspotTheme.slug == slug, HotspotTheme.is_active.is_(True))
+    )
+    if theme is None:
+        raise AppError(422, "unsupported_theme", "目前沒有這個主題")
+    return theme
+
+
+def _admin_theme_payload(theme: HotspotTheme, hotspot_count: int) -> dict[str, Any]:
+    return {
+        "id": str(theme.id),
+        "slug": theme.slug,
+        "kind": theme.kind,
+        "names": dict(theme.names_json),
+        "months": list(theme.months_json or []),
+        "display_order": theme.display_order,
+        "is_active": theme.is_active,
+        "source": theme.source,
+        "hotspot_count": hotspot_count,
+        "created_at": theme.created_at.isoformat(),
+        "updated_at": theme.updated_at.isoformat(),
+    }
+
+
+@router.get("/themes")
+async def list_hotspot_themes(
+    user: AdminUser,
+    session: Session,
+    kind: Annotated[ThemeKind | None, Query()] = None,
+    status: Annotated[Literal["active", "inactive"] | None, Query()] = None,
+) -> dict[str, Any]:
+    query = select(HotspotTheme).order_by(*THEME_ORDER)
+    if kind:
+        query = query.where(HotspotTheme.kind == kind)
+    if status:
+        query = query.where(HotspotTheme.is_active.is_(status == "active"))
+    themes = list((await session.scalars(query)).all())
+    counts = {
+        theme_id: int(count)
+        for theme_id, count in (
+            await session.execute(
+                select(HotspotThemeLink.theme_id, func.count(HotspotThemeLink.id))
+                .where(HotspotThemeLink.is_active.is_(True))
+                .group_by(HotspotThemeLink.theme_id)
+            )
+        ).all()
+    }
+    return {
+        "items": [_admin_theme_payload(theme, counts.get(theme.id, 0)) for theme in themes],
+        "total": len(themes),
+    }
+
+
+@router.post("/themes", status_code=201)
+async def create_hotspot_theme(
+    payload: ThemeWritePayload,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, Any]:
+    existing = await session.scalar(select(HotspotTheme).where(HotspotTheme.slug == payload.slug))
+    if existing is not None:
+        raise AppError(409, "hotspot_theme_slug_exists", "已經有同名的主題代碼")
+    theme = HotspotTheme(
+        slug=payload.slug,
+        kind=payload.kind,
+        names_json=dict(payload.names),
+        months_json=list(payload.months),
+        display_order=payload.display_order,
+        is_active=payload.is_active,
+        source="admin",
+    )
+    session.add(theme)
+    await session.flush()
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="hotspot_theme_created",
+            target=f"hotspot-theme:{theme.id}",
+            metadata_json={"slug": theme.slug, "kind": theme.kind},
+        )
+    )
+    await session.commit()
+    return _admin_theme_payload(theme, 0)
+
+
+@router.patch("/themes/{theme_id}")
+async def update_hotspot_theme(
+    theme_id: UUID,
+    payload: ThemeUpdatePayload,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, Any]:
+    theme = await session.get(HotspotTheme, theme_id)
+    if theme is None:
+        raise AppError(404, "hotspot_theme_not_found", "找不到這個主題")
+    if payload.months is not None:
+        try:
+            _validate_theme_months(theme.kind, payload.months)
+        except ValueError as exc:
+            raise AppError(422, "theme_months_not_applicable", str(exc)) from exc
+        theme.months_json = list(payload.months)
+    if payload.names is not None:
+        theme.names_json = dict(payload.names)
+    if payload.display_order is not None:
+        theme.display_order = payload.display_order
+    if payload.is_active is not None:
+        theme.is_active = payload.is_active
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="hotspot_theme_updated",
+            target=f"hotspot-theme:{theme.id}",
+            metadata_json={"slug": theme.slug, "fields": sorted(payload.model_fields_set)},
+        )
+    )
+    await session.commit()
+    return _admin_theme_payload(theme, 0)
+
+
+@router.get("/{hotspot_id}/themes")
+async def list_hotspot_theme_links(
+    hotspot_id: UUID,
+    user: AdminUser,
+    session: Session,
+    locale: RequestLocale,
+) -> dict[str, Any]:
+    """Every link of one hotspot, tombstones included, so the editor can show what an
+    administrator removed rather than silently offering to add it back."""
+
+    hotspot = await session.get(TravelHotspot, hotspot_id)
+    if hotspot is None:
+        raise AppError(404, "hotspot_not_found", "找不到這個景點")
+    rows = (
+        await session.execute(
+            select(HotspotThemeLink, HotspotTheme)
+            .join(HotspotTheme, HotspotTheme.id == HotspotThemeLink.theme_id)
+            .where(HotspotThemeLink.hotspot_id == hotspot_id)
+            .order_by(*THEME_ORDER)
+        )
+    ).all()
+    return {
+        "hotspot_id": str(hotspot_id),
+        "category": hotspot.category,
+        "themes": [
+            {
+                **theme_ref(theme, locale, link.months_json),
+                "months_overridden": link.months_json is not None,
+                "source": link.source,
+                "note": link.note,
+                "is_active": link.is_active,
+            }
+            for link, theme in rows
+        ],
+    }
+
+
+@router.put("/{hotspot_id}/themes")
+async def assign_hotspot_themes(
+    hotspot_id: UUID,
+    payload: HotspotThemesPutPayload,
+    user: AdminUser,
+    session: Session,
+    locale: RequestLocale,
+) -> dict[str, Any]:
+    """Replace one hotspot's themes.
+
+    A seed link the administrator drops stays behind as a tombstone
+    (``is_active`` false, ``source`` admin) so the next collect run does not
+    resurrect it; an admin or AI link is simply deleted.
+    """
+
+    hotspot = await session.get(TravelHotspot, hotspot_id)
+    if hotspot is None:
+        raise AppError(404, "hotspot_not_found", "找不到這個景點")
+    wanted: dict[UUID, HotspotThemeAssignment] = {}
+    for assignment in payload.themes:
+        theme = await _theme_by_slug(session, assignment.slug)
+        if assignment.months is not None:
+            try:
+                _validate_theme_months(theme.kind, assignment.months)
+            except ValueError as exc:
+                raise AppError(422, "theme_months_not_applicable", str(exc)) from exc
+        wanted[theme.id] = assignment
+    links = {
+        link.theme_id: link
+        for link in (
+            await session.scalars(
+                select(HotspotThemeLink).where(HotspotThemeLink.hotspot_id == hotspot_id)
+            )
+        ).all()
+    }
+    tombstoned: list[str] = []
+    removed: list[str] = []
+    for theme_id, assignment in wanted.items():
+        months = list(assignment.months) if assignment.months is not None else None
+        link = links.get(theme_id)
+        if link is None:
+            session.add(
+                HotspotThemeLink(
+                    hotspot_id=hotspot_id,
+                    theme_id=theme_id,
+                    months_json=months,
+                    source="admin",
+                    note=assignment.note,
+                    is_active=True,
+                )
+            )
+        else:
+            link.months_json = months
+            link.note = assignment.note
+            link.source = "admin"
+            link.is_active = True
+    for theme_id, link in links.items():
+        if theme_id in wanted:
+            continue
+        if link.source == "seed":
+            link.is_active = False
+            link.source = "admin"
+            tombstoned.append(str(theme_id))
+        else:
+            await session.delete(link)
+            removed.append(str(theme_id))
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="hotspot_themes_assigned",
+            target=f"hotspot:{hotspot_id}",
+            metadata_json={
+                "slugs": [item.slug for item in payload.themes],
+                "tombstoned": tombstoned,
+                "removed": removed,
+                "reason": payload.reason,
+            },
+        )
+    )
+    await session.commit()
+    assigned = await load_hotspot_themes(session, [hotspot_id], locale)
+    return {
+        "hotspot_id": str(hotspot_id),
+        "themes": assigned.get(hotspot_id, []),
+        "tombstoned": len(tombstoned),
+        "removed": len(removed),
+    }
