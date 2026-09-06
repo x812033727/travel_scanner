@@ -20,6 +20,7 @@ export function MobileNav() {
   const visibility = useSiteVisibility();
   const [open, setOpen] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   // The bottom tab bar carries only five destinations; flight status, airfares
   // and plans used to be unreachable on a phone without typing the URL.
@@ -34,11 +35,16 @@ export function MobileNav() {
     };
     document.addEventListener("keydown", onKeyDown);
     const previousOverflow = document.body.style.overflow;
+    const trigger = triggerRef.current;
     document.body.style.overflow = "hidden";
     closeRef.current?.focus();
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = previousOverflow;
+      // Escape used to leave focus on <body>: a keyboard or screen-reader reader
+      // was returned to the top of the document, three tabs away from the button
+      // they had just pressed.
+      trigger?.focus();
     };
   }, [open]);
 
@@ -56,7 +62,7 @@ export function MobileNav() {
     <Link href={status === "authenticated" ? "/account" : "/login"} aria-label={status === "authenticated" ? nav("account") : nav("login")} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
       {status === "authenticated" ? <CircleUserRound size={21} /> : <LogIn size={21} />}
     </Link>
-    <button type="button" aria-label={nav("openMenu")} aria-expanded={open} onClick={() => setOpen(true)} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
+    <button ref={triggerRef} type="button" aria-label={nav("openMenu")} aria-expanded={open} onClick={() => setOpen(true)} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
       <Menu size={21} />
     </button>
     {/* The site header paints itself with backdrop-filter, which makes it the

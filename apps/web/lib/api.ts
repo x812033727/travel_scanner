@@ -133,7 +133,9 @@ export function apiProblemMessage(problem: unknown, status: number): string {
     const detail = (problem as { detail?: unknown }).detail;
     if (typeof detail === "string" && detail.trim()) return detail;
     if (Array.isArray(detail) && detail.length > 0 && chineseCatalog) {
-      return detail.map(validationMessage).join("；");
+      // Each line usually ends in its own full stop, and gluing them straight
+      // together read as "供應商。；目前沒有" on the search page.
+      return detail.map(validationMessage).map((line) => line.replace(/[。．.]\s*$/, "")).join("；");
     }
     if (detail && typeof detail === "object" && !Array.isArray(detail)) {
       const message = (detail as { message?: unknown }).message;

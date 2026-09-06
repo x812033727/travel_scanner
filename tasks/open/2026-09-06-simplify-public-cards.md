@@ -1,20 +1,21 @@
 ---
 id: 2026-09-06-simplify-public-cards
 title: 公開頁精簡：景點卡動作分層、首頁膠囊溢出、排行榜第一屏
-status: open
+status: in-progress
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T16:34:13Z
 created_at: 2026-09-06T13:02:09Z
 completed_at:
-branch:
+branch: claude/ux-simplify-public-2
 depends_on: []
 scope:
   - apps/web/components/hotspot-explorer.tsx
   - apps/web/components/hotspot-explorer.test.tsx
-  - apps/web/components/search-workbench.tsx
+  - apps/web/app/[locale]/page.tsx
   - apps/web/app/[locale]/hotspots/page.tsx
+  - apps/web/lib/hotspots.server.ts
   - apps/web/messages/en/hotspots.json
   - apps/web/messages/ja/hotspots.json
   - apps/web/messages/ko/hotspots.json

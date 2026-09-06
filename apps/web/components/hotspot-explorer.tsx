@@ -49,6 +49,39 @@ type Guide = {
   published_at: string | null; duration_seconds: number | null; view_count: number | null;
   opens_30d: number; updated_at: string;
 };
+/**
+ * The server hands these over as `unknown`. Check the fields the list actually
+ * renders — a payload that does not carry them falls back to the client fetch
+ * instead of rendering half a card and throwing inside the error boundary.
+ */
+function isRankingResponse(value: unknown): value is RankingResponse {
+  if (typeof value !== "object" || value === null) return false;
+  const candidate = value as Partial<RankingResponse>;
+  if (!Array.isArray(candidate.items) || typeof candidate.total !== "number") return false;
+  return candidate.items.every((item) => {
+    if (typeof item !== "object" || item === null) return false;
+    const entry = item as Partial<RankedHotspot>;
+    return (
+      typeof entry.id === "string" &&
+      typeof entry.name === "string" &&
+      typeof entry.rank === "number" &&
+      typeof entry.score === "number" &&
+      typeof entry.category === "string"
+    );
+  });
+}
+
+function isFacetsResponse(value: unknown): value is FacetsResponse {
+  if (typeof value !== "object" || value === null) return false;
+  const candidate = value as Partial<FacetsResponse>;
+  return (
+    Array.isArray(candidate.countries) &&
+    Array.isArray(candidate.cities) &&
+    Array.isArray(candidate.categories) &&
+    Array.isArray(candidate.areas)
+  );
+}
+
 type GuidesResponse = {
   hotspot_id: string; hotspot_name: string; locale: string; videos: Guide[]; articles: Guide[];
   other_languages_available: boolean; updated_at: string | null;
@@ -201,20 +234,35 @@ function PlaceDetailsPanel({ hotspot, onClose }: { hotspot: RankedHotspot; onClo
   </div>;
 }
 
-export function HotspotExplorer() {
+/**
+ * `initialRanking` / `initialFacets` are the server's copy of the first page. They
+ * arrive as `unknown` because the page component has no business owning these
+ * shapes; anything that does not look like a ranking falls back to the fetch this
+ * component has always done on mount.
+ */
+export function HotspotExplorer({ initialRanking, initialFacets, initialFilters }: {
+  initialRanking?: unknown;
+  initialFacets?: unknown;
+  initialFilters?: { category?: string; destinationId?: string; area?: string; theme?: string };
+} = {}) {
+  const seededRanking = isRankingResponse(initialRanking) ? initialRanking : null;
+  const seededFacets = isFacetsResponse(initialFacets) ? initialFacets : null;
+  // Seeded from the server's own copy of the query string, so the selects agree
+  // with the list on the first paint and hydration has nothing to correct.
+  const seededFilters = seededRanking ? initialFilters : undefined;
   const t = useTranslations("hotspots");
   const locale = useLocale();
   const pathname = usePathname();
   const auth = useSavedItems();
   const [query, setQuery] = useState("");
   const [country, setCountry] = useState("");
-  const [city, setCity] = useState("");
-  const [area, setArea] = useState("");
-  const [category, setCategory] = useState("");
-  const [theme, setTheme] = useState("");
-  const [ranking, setRanking] = useState<RankingResponse | null>(null);
-  const [facets, setFacets] = useState<FacetsResponse | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [city, setCity] = useState(seededFilters?.destinationId ?? "");
+  const [area, setArea] = useState(seededFilters?.destinationId ? seededFilters.area ?? "" : "");
+  const [category, setCategory] = useState(seededFilters?.category ?? "");
+  const [theme, setTheme] = useState(seededFilters?.theme ?? "");
+  const [ranking, setRanking] = useState<RankingResponse | null>(seededRanking);
+  const [facets, setFacets] = useState<FacetsResponse | null>(seededFacets);
+  const [loading, setLoading] = useState(!seededRanking);
   const [error, setError] = useState("");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [selected, setSelected] = useState<RankedHotspot | null>(null);
@@ -288,6 +336,13 @@ export function HotspotExplorer() {
     const initialDestination = initial.get("destination_id") ?? "";
     // An area only means something inside its destination, so ignore it on its own.
     const initialArea = initialDestination ? initial.get("area") ?? "" : "";
+    // The server already fetched this exact query and rendered it into the HTML,
+    // filters included; repeating it on mount would replace the list with an
+    // identical one.
+    if (seededRanking) {
+      if (!seededFacets) api<FacetsResponse>("/hotspots/facets").then(setFacets).catch(() => undefined);
+      return;
+    }
     const rankingParams = new URLSearchParams({ limit: "30" });
     if (initialCategory) {
       rankingParams.set("category", initialCategory);
@@ -309,7 +364,9 @@ export function HotspotExplorer() {
       setArea(initialArea);
       setTheme(initialTheme);
     }).catch((reason: Error) => setError(reason.message)).finally(() => setLoading(false));
-  }, []);
+    // Both come from props that never change for a mounted explorer, so this stays
+    // a mount-only effect; they are listed to satisfy the exhaustive-deps rule.
+  }, [seededRanking, seededFacets]);
 
   useSharedAnchor(Boolean(ranking?.items.length));
 
@@ -420,7 +477,7 @@ export function HotspotExplorer() {
   return <main className="mx-auto min-h-screen max-w-6xl px-5 pb-20 md:px-8">
     <section className="pb-7 pt-5 md:pb-9 md:pt-9">
       <p className="flex items-center gap-2 text-sm font-semibold text-[var(--teal)]"><Sparkles size={16} />{t("eyebrow")}</p>
-      <div className="mt-3 flex flex-wrap items-end justify-between gap-4"><div><h1 className="text-3xl font-bold tracking-[-.035em] md:text-5xl">{t("title")}</h1><p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{t("description")}</p></div><div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--muted)]"><span className="font-semibold text-[var(--ink)]">{t("updated")}</span> {ranking?.observed_on || t("waiting")}</div></div>
+      <div className="mt-3 flex flex-wrap items-end justify-between gap-4"><div><h1 className="text-3xl font-bold tracking-[-.035em] md:text-5xl">{t("title")}</h1><p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{t("description")}</p></div><div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--muted)]"><span className="font-semibold text-[var(--ink)]">{t("updated")}</span> {ranking?.observed_on || (error ? "—" : t("waiting"))}</div></div>
     </section>
     <button type="button" onClick={() => setFiltersOpen(true)} className="mb-3 flex min-h-12 w-full items-center justify-between rounded-2xl border border-[var(--line)] bg-white px-4 font-semibold shadow-[var(--shadow-sm)] md:hidden"><span className="flex items-center gap-2"><SlidersHorizontal size={18} />{t("searchLabel")}</span><span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-1 text-xs text-[var(--teal-dark)]">{[country, city, area, category, theme].filter(Boolean).length}</span></button>
     {filtersOpen && <button type="button" aria-label={t("close")} onClick={() => setFiltersOpen(false)} className="fixed inset-0 z-[70] bg-slate-950/40 md:hidden" />}
@@ -455,8 +512,13 @@ export function HotspotExplorer() {
             inSeasonLabel={t("inSeason")}
           />
           <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl bg-[var(--paper)] p-4 text-sm"><div><p className="text-[var(--muted)]">{t("views30")}</p><p className="mt-1 font-semibold">{item.pageviews_30d === null ? t("pending") : number.format(item.pageviews_30d)}</p></div><div><p className="text-[var(--muted)]">{t("previous")}</p><p className="mt-1 flex items-center gap-1 font-semibold">{trendIcon(item)}{percent(item.growth_rate)}</p></div></div>
-          <button type="button" disabled={auth.status === "loading"} onClick={() => openDetails(item)} className="mt-4 flex min-h-12 w-full items-center gap-3 rounded-2xl bg-[var(--teal)] px-4 py-3 text-left text-white shadow-sm transition hover:bg-[var(--teal-dark)] disabled:cursor-wait disabled:opacity-60"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/15">{auth.status === "authenticated" ? <BookOpenText size={17} /> : <LockKeyhole size={17} />}</span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("placeDetails")}</strong><span className="block text-xs text-white/75">{auth.status === "authenticated" ? t("guideCount", { articles: item.guide_counts?.article || 0, videos: item.guide_counts?.video || 0 }) : t("protectedFeatureLocked")}</span></span>{auth.status === "authenticated" ? <ExternalLink size={16} /> : <LockKeyhole size={16} />}</button>
-          <button type="button" disabled={auth.status === "loading"} aria-busy={auth.status === "loading"} onClick={() => openRestaurants(item)} className="mt-2 flex min-h-12 w-full items-center gap-3 rounded-2xl border border-[var(--coral)] bg-[var(--coral-soft)] px-4 py-3 text-left text-[var(--ink)] transition hover:-translate-y-0.5 hover:shadow-sm disabled:cursor-wait disabled:opacity-60"><span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[var(--coral)]">{auth.status === "authenticated" ? <UtensilsCrossed size={17} /> : <LockKeyhole size={17} />}</span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("nearbyRestaurants")}</strong><span className="block text-xs text-[var(--muted)]">{t(auth.status === "loading" ? "nearbyRestaurantsChecking" : auth.status === "authenticated" ? "nearbyRestaurantsDetail" : "nearbyRestaurantsLocked")}</span></span><span className="text-xs font-bold text-[var(--coral)]">{auth.status === "authenticated" ? "5–10 km" : <LockKeyhole size={15} />}</span></button>
+          {/* Signed out, both of these were locked doors saying "sign in" twice, and
+              together they filled half the card. One door, one sentence about what is
+              behind it. */}
+          {auth.status === "authenticated" ? <>
+          <button type="button" onClick={() => openDetails(item)} className="mt-4 flex min-h-12 w-full items-center gap-3 rounded-2xl bg-[var(--teal)] px-4 py-3 text-left text-white shadow-sm transition hover:bg-[var(--teal-dark)]"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/15"><BookOpenText size={17} /></span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("placeDetails")}</strong><span className="block text-xs text-white/75">{t("guideCount", { articles: item.guide_counts?.article || 0, videos: item.guide_counts?.video || 0 })}</span></span><ExternalLink size={16} /></button>
+          <button type="button" onClick={() => openRestaurants(item)} className="mt-2 flex min-h-12 w-full items-center gap-3 rounded-2xl border border-[var(--coral)] bg-[var(--coral-soft)] px-4 py-3 text-left text-[var(--ink)] transition hover:-translate-y-0.5 hover:shadow-sm"><span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[var(--coral)]"><UtensilsCrossed size={17} /></span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("nearbyRestaurants")}</strong><span className="block text-xs text-[var(--muted)]">{t("nearbyRestaurantsDetail")}</span></span><span className="text-xs font-bold text-[var(--coral)]">5–10 km</span></button>
+          </> : <button type="button" disabled={auth.status === "loading"} aria-busy={auth.status === "loading"} onClick={() => openDetails(item)} className="mt-4 flex min-h-14 w-full items-center gap-3 rounded-2xl bg-[var(--teal)] px-4 py-3 text-left text-white shadow-sm transition hover:bg-[var(--teal-dark)] disabled:cursor-wait disabled:opacity-60"><span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/15"><LockKeyhole size={17} /></span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("lockedBoth")}</strong><span className="block text-xs leading-5 text-white/80">{t(auth.status === "loading" ? "nearbyRestaurantsChecking" : "lockedBothHint")}</span></span></button>}
           <TravelCardActions type="hotspot" id={item.id} title={item.name} selectionPath={`/hotspots/${item.id}/trip-selections`} shareRequiresAuth />
           <div className="mt-4 flex flex-wrap items-center gap-2">{item.has_source && (auth.status === "authenticated" ? <a href={`/${locale}/out/hotspots/${item.id}/source`} target="_blank" rel="noopener noreferrer" className="ml-auto inline-flex min-h-11 items-center text-xs font-semibold text-[var(--teal)]">{t("source")}</a> : <button type="button" disabled={auth.status === "loading"} onClick={() => requireContentAuth(() => undefined)} className="ml-auto inline-flex min-h-11 items-center gap-1 text-xs font-semibold text-[var(--teal)] disabled:opacity-60"><LockKeyhole size={13} />{t("source")}</button>)}</div>
         </li>)}</ol>}

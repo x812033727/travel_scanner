@@ -5,7 +5,8 @@ import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
-import { api } from "@/lib/api";
+import { api, ApiError } from "@/lib/api";
+import { loginPath } from "@/lib/navigation";
 import { activeLocale } from "@/lib/locale-format";
 import { featureEnabled } from "@/lib/site-features";
 
@@ -92,7 +93,7 @@ export function AccountPanel() {
   const [historyKind, setHistoryKind] = useState<HistoryKind>("all");
   const [historyBusy, setHistoryBusy] = useState(true);
   const [historyError, setHistoryError] = useState<string>();
-  const [loadError, setLoadError] = useState<string>();
+  const [loadError, setLoadError] = useState<{ message: string; status?: number }>();
   const [formError, setFormError] = useState<string>();
   const [done, setDone] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -103,7 +104,7 @@ export function AccountPanel() {
   useEffect(() => {
     api<Me>("/auth/me")
       .then(setMe)
-      .catch((reason: Error) => setLoadError(reason.message));
+      .catch((reason: Error) => setLoadError({ message: reason.message, status: reason instanceof ApiError ? reason.status : undefined }));
     api<Usage>("/usage")
       .then(setUsage)
       .catch(() => undefined);
@@ -187,16 +188,23 @@ export function AccountPanel() {
     }
   }
 
-  if (loadError)
+  // A signed-out reader used to get the API's own sentence with a second one
+  // glued to it — "請先登入後再繼續，請先登入。" — so say it once, the way the
+  // trips and alerts pages already do.
+  if (loadError?.status === 401)
     return (
-      <p className="rounded-xl bg-red-50 p-4 text-red-700">
-        {loadError}，請先
-        <Link className="underline" href="/login">
-          登入
+      <div className="rounded-2xl border border-[var(--line)] bg-white p-7 text-center">
+        <p className="font-semibold">登入後才能查看這裡的內容</p>
+        <Link
+          href={loginPath("/account")}
+          className="mt-4 inline-flex rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white"
+        >
+          前往登入
         </Link>
-        。
-      </p>
+      </div>
     );
+  if (loadError)
+    return <p role="alert" className="rounded-xl bg-red-50 p-4 text-red-700">{loadError.message}</p>;
   if (!me) return <p className="text-[var(--muted)]">正在載入帳號資料…</p>;
   const hasPassword = me.has_password !== false;
   const oauthLinkError = typeof window !== "undefined"

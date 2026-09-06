@@ -209,6 +209,56 @@ describe("HotspotExplorer", () => {
     })).toBe(true));
   });
 
+  it("renders the ranking the server already fetched without asking for it again", async () => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/saved-items")) return new Response(JSON.stringify({ items: [] }));
+      return new Response(JSON.stringify({ detail: "the component should not have asked" }), { status: 500 });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const ranking = {
+      scope: "global", scope_key: "global", observed_on: "2026-09-06", window_days: 30,
+      total: 1, has_more: false, next_cursor: null,
+      items: [{
+        id: "seeded-1", slug: "seeded", rank: 1, name: "銀座", city_code: "TYO", city_name: "東京",
+        destination_id: "tokyo", country_code: "JP", country_name: "日本", category: "shopping",
+        area: null, score: 91, components: { interest: 90, growth: 80, quality: 92, confidence: 80 },
+        pageviews_30d: 4242, growth_rate: 0.1, trend_label: "", sources: [], has_source: false,
+        signal_date: null, is_estimate: false, local_name: null,
+        guide_counts: { article: 0, video: 0 }, map_links: [],
+        place_summary: { status: "unavailable", google_maps_url: null, map_links: [], official_website_url: null, official_website_verified: false, has_details: false, updated_at: null },
+      }],
+    };
+
+    render(<SavedItemsProvider><HotspotExplorer initialRanking={ranking} initialFacets={{ total: 1, countries: [], cities: [], categories: [], areas: [] }} /></SavedItemsProvider>);
+
+    // Painted from the HTML, not after a round trip: the list is there on the first
+    // assertion and the loading sentence never appears.
+    expect(screen.getByRole("heading", { name: "銀座" })).toBeTruthy();
+    expect(screen.getByText("4,242")).toBeTruthy();
+    await waitFor(() => expect(fetchMock.mock.calls.length).toBeGreaterThan(0));
+    expect(fetchMock.mock.calls.map((call) => String(call[0])).filter((url) => url.includes("/hotspots/"))).toEqual([]);
+  });
+
+  it("falls back to fetching when the server payload is not a ranking", async () => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/saved-items")) return new Response(JSON.stringify({ items: [] }));
+      if (url.includes("/hotspots/facets")) return new Response(JSON.stringify({ total: 0, countries: [], cities: [], categories: [], areas: [] }));
+      return new Response(JSON.stringify({
+        scope: "global", scope_key: "global", observed_on: "2026-09-06", window_days: 30,
+        total: 0, has_more: false, next_cursor: null, items: [],
+      }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<SavedItemsProvider><HotspotExplorer initialRanking={{ detail: "Not Found" }} /></SavedItemsProvider>);
+
+    await waitFor(() =>
+      expect(fetchMock.mock.calls.map((call) => String(call[0])).some((url) => url.includes("/hotspots/rankings"))).toBe(true),
+    );
+  });
+
   it("keeps the loaded list on screen when loading more fails", async () => {
     let rankingCalls = 0;
     const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
@@ -286,7 +336,9 @@ describe("HotspotExplorer", () => {
     expect(await screen.findByRole("heading", { name: "淺草寺" })).toBeTruthy();
     expect(screen.queryByText("資料來源狀態")).toBeNull();
 
-    const details = screen.getByRole("button", { name: /景點詳情/ });
+    // Signed out there is one locked door, not two saying "sign in" twice.
+    expect(screen.queryByRole("button", { name: /附近用餐/ })).toBeNull();
+    const details = screen.getByRole("button", { name: /登入看景點詳情與附近美食/ });
     details.focus();
     fireEvent.click(details);
     expect(await screen.findByRole("heading", { name: "登入後繼續使用景點功能" })).toBeTruthy();
