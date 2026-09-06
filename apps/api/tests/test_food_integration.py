@@ -285,12 +285,13 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         }
         assert len(by_city) == 33
         # Four profile areas per city plus that city's trend districts (Seoul has
-        # Seongsu and friends; Yokohama and Kamakura have none yet).
+        # Seongsu and friends, Yokohama has one, Kamakura none yet).
         areas_per_city = Counter(seed.destination_id for seed in ALL_AREA_SEEDS)
+        assert min(areas_per_city.values()) == 4
         assert by_city["seoul"]["merchant_count"] == 1
-        assert by_city["seoul"]["area_count"] == areas_per_city["seoul"] > 4
-        assert by_city["yokohama"]["area_count"] == areas_per_city["yokohama"] == 4
-        assert by_city["kamakura"]["area_count"] == areas_per_city["kamakura"] == 4
+        for city_id in ("seoul", "yokohama", "kamakura"):
+            assert by_city[city_id]["area_count"] == areas_per_city[city_id], city_id
+        assert by_city["seoul"]["area_count"] > 4
         assert by_city["okinawa"]["merchant_count"] == 0
         assert by_city["tainan"]["parent_destination_id"] == "kaohsiung"
         assert cities["countries"][0]["code"] == "KR"
@@ -486,9 +487,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         )
         assert created_area["country_code"] == "KR" and created_area["source"] == "admin"
         verified = await session.scalar(
-            select(FoodMerchant).where(
-                FoodMerchant.slug == "integration-verified-korean-merchant"
-            )
+            select(FoodMerchant).where(FoodMerchant.slug == "integration-verified-korean-merchant")
         )
         assert verified is not None
         with pytest.raises(AppError) as mismatch:
@@ -503,9 +502,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         admin = await session.get(User, admin_id)
         assert admin is not None
         verified = await session.scalar(
-            select(FoodMerchant).where(
-                FoodMerchant.slug == "integration-verified-korean-merchant"
-            )
+            select(FoodMerchant).where(FoodMerchant.slug == "integration-verified-korean-merchant")
         )
         assert verified is not None
         linked_food_ids = list(
@@ -584,9 +581,7 @@ async def test_reseeding_extends_an_existing_dish_to_a_newly_listed_city(
         before = set(
             (
                 await session.scalars(
-                    select(FoodDestination.destination_id).where(
-                        FoodDestination.food_id == food_id
-                    )
+                    select(FoodDestination.destination_id).where(FoodDestination.food_id == food_id)
                 )
             ).all()
         )
@@ -601,9 +596,7 @@ async def test_reseeding_extends_an_existing_dish_to_a_newly_listed_city(
         after = list(
             (
                 await session.scalars(
-                    select(FoodDestination.destination_id).where(
-                        FoodDestination.food_id == food_id
-                    )
+                    select(FoodDestination.destination_id).where(FoodDestination.food_id == food_id)
                 )
             ).all()
         )
@@ -678,4 +671,3 @@ async def test_filling_coordinates_survives_a_real_session_across_many_rows() ->
     async with SessionFactory() as session:
         await _clear(session)
         await session.commit()
-

@@ -273,9 +273,11 @@ async def test_the_rollback_left_the_shared_schema_intact() -> None:
             lambda sync: {c["name"] for c in sa.inspect(sync).get_columns("trip_plans")}
         )
         tables = await connection.run_sync(lambda sync: set(sa.inspect(sync).get_table_names()))
+        checks = await connection.run_sync(
+            lambda sync: {
+                c["name"] for c in sa.inspect(sync).get_check_constraints("travel_hotspots")
+            }
+        )
     assert {"notes", "budget_amount", "cost_currency"} <= columns
     assert {"trip_day_notes", "trip_expenses"} <= tables
-    checks = await connection.run_sync(
-        lambda sync: {c["name"] for c in sa.inspect(sync).get_check_constraints("travel_hotspots")}
-    )
     assert "ck_travel_hotspot_review_status" in checks

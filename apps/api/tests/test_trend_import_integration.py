@@ -61,7 +61,11 @@ async def _clear(session: AsyncSession) -> None:
 
 
 async def _count(session: AsyncSession, model: type[FoodMerchant] | type[AdminAuditLog]) -> int:
-    return int(await session.scalar(select(func.count()).select_from(model)) or 0)
+    query = select(func.count()).select_from(model)
+    if model is AdminAuditLog:
+        # Other integration modules leave audit rows of their own actions behind.
+        query = query.where(AdminAuditLog.action == AUDIT_ACTION)
+    return int(await session.scalar(query) or 0)
 
 
 @pytest.mark.asyncio(loop_scope="module")
