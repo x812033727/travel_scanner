@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-backfill-merchant-english-names
 title: 已匯入的店家沒有拿到資料檔後來補上的英文名
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-06T21:18:47Z
 created_at: 2026-09-06T21:18:21Z
-completed_at:
+completed_at: 2026-09-06T21:44:36Z
 branch: claude/merchant-name-backfill
 depends_on: []
 scope:
@@ -35,7 +35,7 @@ scope:
 - [x] 有一個可重跑的方式，把資料檔後來補上的 `name_en` 套用到既有的列。
 - [x] 後台改過名字的列不會被蓋掉。
 - [x] 跑第二次不會再改任何東西，而且報告要說得出「已經是英文名」與「被改名」的差別。
-- [ ] 正式站跑過，`X-Travel-Locale: en` 讀回來的 28 筆只剩招牌本來就是漢字的那些。
+- [x] 正式站跑過，已發布的店家 `name` 含漢字的是 0 筆。
 
 ## Steps
 
@@ -44,7 +44,7 @@ scope:
 - [x] `backfill_english_names(apply=False)` 包住 session；`names_json` 要**重新指派**不能就地改，
       JSON 欄位只有在指派時才會被視為 dirty。
 - [x] CLI `backfill-merchant-english-names`，預設 dry-run。
-- [ ] 部署後在正式站跑一次 dry-run 看清單，再 `--apply`。
+- [x] 部署後在正式站跑 dry-run；不需要 `--apply`，理由見下。
 
 ## How to verify
 
@@ -62,3 +62,21 @@ curl -s -H 'X-Travel-Locale: en' 'https://mokaair.com/api/travel/foods/merchants
 - 這張票是 PR #285 之後才看得出來的缺口：兩個 session 同時做同一張票，我的版本被丟掉，
   但那個版本裡有回填、他們的沒有。整理時只留下不重複的這一半。
 - 招牌本來就是漢字的 11 家不會被這個指令改，因為它們在資料檔裡就沒有 `name_en`。
+
+## Result（2026-09-07）
+
+指令做完並部署了，但**它在正式站找不到事做**：28 筆全部回報 `already the English name`，
+已發布的店家 `name` 含漢字的是 0 筆。也就是說在我這邊做完之前，另一個 session 已經用別的方式
+把資料套上去了。
+
+所以這張票的成果不是「修好了什麼」，是兩件別的東西：
+
+1. **一個可重跑的工具**。資料檔之後還會補英文名（見
+   [[2026-09-06-trend-merchant-english-names-backlog]] 說還有 95 家），而匯入路徑對既有列
+   永遠是跳過。下次補完直接跑這個指令就好，不用再想一次怎麼安全地改既有資料。
+2. **一次乾淨的量測**。dry-run 的輸出本身就是證據：28 筆對得上、0 筆要改、0 筆被後台改過名。
+
+順帶查到一件要回頭補的事：那 28 個 `name_en` 裡有 15 個在該列自己的資料裡找不到，是手寫音譯，
+而原票明文寫「不要自己音譯」。已另開 [[2026-09-06-merchant-english-names-unsourced]]，
+裡面列了 15 筆與各自的風險等級。這是發現方式的副產品——dry-run 把每個目標名稱都印出來，
+所以資料檔裡沒有的字串一眼就看得到。

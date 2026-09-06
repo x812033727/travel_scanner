@@ -250,7 +250,7 @@ function PlaceDetailsPanel({ hotspot, onClose }: { hotspot: RankedHotspot; onClo
 export function HotspotExplorer({ initialRanking, initialFacets, initialFilters }: {
   initialRanking?: unknown;
   initialFacets?: unknown;
-  initialFilters?: { category?: string; destinationId?: string; area?: string; theme?: string };
+  initialFilters?: { category?: string; destinationId?: string; area?: string; theme?: string; query?: string };
 } = {}) {
   const seededRanking = isRankingResponse(initialRanking) ? initialRanking : null;
   const seededFacets = isFacetsResponse(initialFacets) ? initialFacets : null;
@@ -261,7 +261,7 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
   const locale = useLocale();
   const pathname = usePathname();
   const auth = useSavedItems();
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(seededFilters?.query ?? "");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState(seededFilters?.destinationId ?? "");
   const [area, setArea] = useState(seededFilters?.destinationId ? seededFilters.area ?? "" : "");
@@ -289,16 +289,32 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
 
   // Keep the filters in the address bar so a reload, a shared link, or the round
   // trip through the login page all come back to the same list.
-  function syncUrl(override: { theme?: string } = {}) {
-    const activeTheme = override.theme ?? theme;
+  type FilterOverride = { query?: string; country?: string; city?: string; area?: string; category?: string; theme?: string };
+  function activeFilters(override: FilterOverride = {}) {
+    const nextCity = override.city ?? city;
+    return {
+      query: (override.query ?? query).trim(),
+      country: override.country ?? country,
+      city: nextCity,
+      // An area only means something inside its destination.
+      area: nextCity ? override.area ?? area : "",
+      category: override.category ?? category,
+      theme: override.theme ?? theme,
+    };
+  }
+  function searchParamsFor(override: FilterOverride = {}) {
+    const active = activeFilters(override);
     const visible = new URLSearchParams();
-    if (query.trim()) visible.set("q", query.trim());
-    if (country) visible.set("country_code", country);
-    if (city) visible.set("destination_id", city);
-    if (city && area) visible.set("area", area);
-    if (category) visible.set("category", category);
-    if (activeTheme) visible.set("theme", activeTheme);
-    const search = visible.toString();
+    if (active.query) visible.set("q", active.query);
+    if (active.country) visible.set("country_code", active.country);
+    if (active.city) visible.set("destination_id", active.city);
+    if (active.city && active.area) visible.set("area", active.area);
+    if (active.category) visible.set("category", active.category);
+    if (active.theme) visible.set("theme", active.theme);
+    return visible;
+  }
+  function syncUrl(override: FilterOverride = {}) {
+    const search = searchParamsFor(override).toString();
     window.history.replaceState(null, "", search ? `?${search}` : window.location.pathname);
   }
 
@@ -312,23 +328,24 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
       .finally(() => setLoading(false));
   }
 
-  async function load(append = false, override: { theme?: string } = {}) {
-    const activeTheme = override.theme ?? theme;
+  async function load(append = false, override: FilterOverride = {}) {
     setLoading(true); setError("");
-    const params = new URLSearchParams({ limit: "30" });
-    if (query.trim()) params.set("q", query.trim());
-    if (country) params.set("country_code", country);
-    if (city) params.set("destination_id", city);
-    if (city && area) params.set("area", area);
-    if (category) params.set("category", category);
-    if (activeTheme) params.set("theme", activeTheme);
+    const params = searchParamsFor(override);
+    // The API names the country filter differently from the address bar.
+    const country_code = params.get("country_code");
+    if (country_code) { params.delete("country_code"); params.set("country_code", country_code); }
+    params.set("limit", "30");
     if (append && ranking?.next_cursor) params.set("after_rank", String(ranking.next_cursor));
     try {
       const result = await api<RankingResponse>(`/hotspots/rankings?${params}`);
       setRanking(append && ranking ? { ...result, items: [...ranking.items, ...result.items] } : result);
-      if (!append) syncUrl({ theme: activeTheme });
+      if (!append) syncUrl(override);
     } catch (reason) { setError((reason as Error).message); }
     finally { setLoading(false); }
+  }
+  /** Remove one chip: change the state and fetch that list in the same tick. */
+  function loadWith(override: FilterOverride) {
+    void load(false, override);
   }
 
   function selectTheme(next: string) {
@@ -343,6 +360,7 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
     const initialDestination = initial.get("destination_id") ?? "";
     // An area only means something inside its destination, so ignore it on its own.
     const initialArea = initialDestination ? initial.get("area") ?? "" : "";
+    const initialQuery = initial.get("q") ?? "";
     // The server already fetched this exact query and rendered it into the HTML,
     // filters included; repeating it on mount would replace the list with an
     // identical one.
@@ -363,6 +381,9 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
     if (initialTheme) {
       rankingParams.set("theme", initialTheme);
     }
+    if (initialQuery.trim()) {
+      rankingParams.set("q", initialQuery.trim());
+    }
     api<FacetsResponse>("/hotspots/facets").then(setFacets).catch(() => undefined);
     api<RankingResponse>(`/hotspots/rankings?${rankingParams}`).then((result) => {
       setRanking(result);
@@ -370,6 +391,7 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
       setCity(initialDestination);
       setArea(initialArea);
       setTheme(initialTheme);
+      setQuery(initialQuery);
     }).catch((reason: Error) => setError(reason.message)).finally(() => setLoading(false));
     // Both come from props that never change for a mounted explorer, so this stays
     // a mount-only effect; they are listed to satisfy the exhaustive-deps rule.
@@ -469,6 +491,14 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
   }
   function percent(value: number | null) { return value === null ? t("noComparison") : `${value >= 0 ? "+" : ""}${Math.round(value * 100)}%`; }
 
+  const appliedFilters: { key: string; label: string; clear: () => void }[] = [];
+  if (query.trim()) appliedFilters.push({ key: "q", label: t("searchChip", { query: query.trim() }), clear: () => { setQuery(""); void loadWith({ query: "" }); } });
+  if (country) appliedFilters.push({ key: "country", label: facets?.countries.find((item) => item.code === country)?.name ?? country, clear: () => { setCountry(""); setCity(""); setArea(""); void loadWith({ country: "", city: "", area: "" }); } });
+  if (city) appliedFilters.push({ key: "city", label: facets?.cities.find((item) => item.destination_id === city)?.name ?? city, clear: () => { setCity(""); setArea(""); void loadWith({ city: "", area: "" }); } });
+  if (city && area) appliedFilters.push({ key: "area", label: facets?.areas.find((item) => item.code === area && item.destination_id === city)?.name ?? area, clear: () => { setArea(""); void loadWith({ area: "" }); } });
+  if (category) appliedFilters.push({ key: "category", label: t(`categories.${category}`), clear: () => { setCategory(""); void loadWith({ category: "" }); } });
+  if (theme) appliedFilters.push({ key: "theme", label: (facets?.themes ?? []).find((item) => item.slug === theme)?.name ?? theme, clear: () => { setTheme(""); void loadWith({ theme: "" }); } });
+
   const currentMonth = new Date().getMonth() + 1;
   const themeGroups = (["season", "shop"] as const).map((kind) => ({
     key: kind,
@@ -486,8 +516,20 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
       <p className="flex items-center gap-2 text-sm font-semibold text-[var(--teal)]"><Sparkles size={16} />{t("eyebrow")}</p>
       <div className="mt-3 flex flex-wrap items-end justify-between gap-4"><div><h1 className="text-3xl font-bold tracking-[-.035em] md:text-5xl">{t("title")}</h1><p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{t("description")}</p></div><div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--muted)]"><span className="font-semibold text-[var(--ink)]">{t("updated")}</span> {ranking?.observed_on || (error ? "—" : t("waiting"))}</div></div>
     </section>
+<<<<<<< HEAD
     <button type="button" onClick={() => setFiltersOpen(true)} className="mb-3 flex min-h-12 w-full items-center justify-between rounded-2xl border border-[var(--line)] bg-white px-4 font-semibold shadow-[var(--shadow-sm)] md:hidden"><span className="flex items-center gap-2"><SlidersHorizontal size={18} />{t("searchLabel")}</span><span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-1 text-xs text-[var(--teal-dark)]">{[country, city, area, category, theme].filter(Boolean).length}</span></button>
     {filtersOpen && <button type="button" aria-label={t("closeFilters")} onClick={() => setFiltersOpen(false)} className="fixed inset-0 z-[70] bg-slate-950/40 md:hidden" />}
+=======
+    <button type="button" onClick={() => setFiltersOpen(true)} className="mb-3 flex min-h-12 w-full items-center justify-between rounded-2xl border border-[var(--line)] bg-white px-4 font-semibold shadow-[var(--shadow-sm)] md:hidden"><span className="flex items-center gap-2"><SlidersHorizontal size={18} />{t("searchLabel")}</span><span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-1 text-xs text-[var(--teal-dark)]">{appliedFilters.length}</span></button>
+    {/* The count told the reader that something had been applied but never what, and
+        the only way back to everything was an empty result. Name each filter, and
+        give each one its own way out. */}
+    {appliedFilters.length > 0 && <div className="mb-3 flex flex-wrap items-center gap-2" aria-label={t("activeFilters")}>
+      {appliedFilters.map((filter) => <button key={filter.key} type="button" onClick={filter.clear} aria-label={t("removeFilter", { label: filter.label })} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--teal)] bg-[var(--teal-soft)] px-3.5 text-sm font-semibold text-[var(--teal-dark)]">{filter.label}<X size={15} aria-hidden /></button>)}
+      <button type="button" onClick={clearFilters} className="inline-flex min-h-11 items-center rounded-full px-3 text-sm font-semibold text-[var(--teal)] underline underline-offset-4">{t("clearFilters")}</button>
+    </div>}
+    {filtersOpen && <button type="button" aria-label={t("close")} onClick={() => setFiltersOpen(false)} className="fixed inset-0 z-[70] bg-slate-950/40 md:hidden" />}
+>>>>>>> origin/main
     <form onSubmit={(event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setFiltersOpen(false); void load(); }} aria-label={t("searchLabel")} className={`${filtersOpen ? "mobile-filter-sheet-open" : ""} mobile-filter-sheet grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-2 md:p-5 lg:grid-cols-[1fr_repeat(4,minmax(0,9rem))_auto]`}>
       <div className="mb-1 flex items-center justify-between md:hidden"><strong>{t("searchLabel")}</strong><button type="button" onClick={() => setFiltersOpen(false)} aria-label={t("closeFilters")} className="grid h-11 w-11 place-items-center rounded-full border border-[var(--line)]"><X size={19} /></button></div>
       <label className="relative md:col-span-2 lg:col-span-1"><span className="sr-only">{t("searchPlaceholder")}</span><Search className="pointer-events-none absolute left-4 top-3.5 text-[var(--muted)]" size={19} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t("searchPlaceholder")} className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] pl-11 pr-4 outline-none focus:border-[var(--teal)]" /></label>
@@ -508,7 +550,7 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
       <section aria-live="polite" aria-busy={loading}><div className="mb-4 flex items-center justify-between gap-4"><h2 className="flex items-center gap-2 text-xl font-bold"><BarChart3 size={20} className="text-[var(--coral)]" />{t("ranking")}</h2><p className="text-sm text-[var(--muted)]">{t("loaded", { shown: ranking?.items.length ?? 0, total: ranking?.total ?? 0 })}</p></div>
         {loading && !ranking && <div className="rounded-3xl border border-[var(--line)] bg-white p-8 text-[var(--muted)]">{t("loading")}</div>}
         {error && <div role="alert" className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-3xl bg-[var(--coral-soft)] p-6"><span>{error}</span><button type="button" onClick={() => void load()} className="min-h-11 rounded-xl border border-[var(--line)] bg-white px-4 font-semibold">{t("retry")}</button></div>}
-        {!loading && !error && ranking?.items.length === 0 && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white/70 p-8 text-center"><h3 className="font-bold">{t("emptyTitle")}</h3><p className="mt-2 text-sm text-[var(--muted)]">{t(theme ? "emptyThemeBody" : "emptyBody")}</p><button type="button" onClick={clearFilters} className="mt-4 min-h-11 rounded-xl border border-[var(--line)] bg-white px-5 font-semibold text-[var(--teal)]">{t("clearFilters")}</button></div>}
+        {!loading && !error && ranking?.items.length === 0 && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white/70 p-8 text-center"><h3 className="font-bold">{t("emptyTitle")}</h3><p className="mt-2 text-sm text-[var(--muted)]">{t(theme ? "emptyThemeBody" : "emptyBody")}</p>{appliedFilters.length === 0 && <button type="button" onClick={clearFilters} className="mt-4 min-h-11 rounded-xl border border-[var(--line)] bg-white px-5 font-semibold text-[var(--teal)]">{t("clearFilters")}</button>}</div>}
         {ranking && ranking.items.length > 0 && <ol className="grid gap-4 md:grid-cols-2">{ranking.items.map((item) => <li key={item.id} id={`hotspot-${item.id}`} className={`travel-result-card travel-result-card-${item.category} relative overflow-hidden rounded-3xl border border-[var(--line)] bg-white p-5`}>
           <div className="flex items-start justify-between gap-4"><div className="flex gap-3"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{item.rank}</span><div><h3 className="text-lg font-bold">{item.name}</h3>{item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}{item.map_links?.[0] ? <a href={safeExternalHref(item.map_links[0].url)} target="_blank" rel="noopener noreferrer" aria-label={`${item.map_links[0].label}: ${item.name}`} className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"><MapPin size={14} />{[item.city_name, item.area?.name, t(`categories.${item.category}`)].filter(Boolean).join(" · ")}<ExternalLink size={13} /></a> : <p className="mt-1 flex min-h-11 items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{[item.city_name, item.area?.name, t(`categories.${item.category}`)].filter(Boolean).join(" · ")}</p>}</div></div><div className="text-right"><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><p className="text-xs text-[var(--muted)]">{t("score")}</p></div></div>
           <HotspotIntro text={item.intro?.body} className="mt-3" />
