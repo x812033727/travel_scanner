@@ -182,3 +182,42 @@ def test_a_label_this_command_does_not_own_survives_a_rerun() -> None:
 
     assert row["names"]["zh-CN"] == "伦披尼公园"
     assert row["names"]["ja"] == "ルンピニー公園"
+
+
+def test_clean_label_strips_what_the_source_added_and_nothing_else() -> None:
+    """These are the seven artefacts that reached production display names."""
+    from app.hotspots.wikidata_labels import clean_label
+
+    assert clean_label("Category:Huinnyeoul Culture Village") == "Huinnyeoul Culture Village"
+    assert clean_label("Hongdae (area)") == "Hongdae"
+    assert clean_label("チャイナタウン (シンガポール)") == "チャイナタウン"
+    assert clean_label("八公山 (慶尚北道・大邱広域市)") == "八公山"
+    assert (
+        clean_label("Hall of Supreme Harmony (Imperial City of Huế)")
+        == "Hall of Supreme Harmony"
+    )
+
+    # A name with nothing appended survives untouched.
+    assert clean_label("Sensō-ji") == "Sensō-ji"
+    assert clean_label("東京タワー") == "東京タワー"
+    assert clean_label("teamLab Borderless") == "teamLab Borderless"
+    # Only the outermost trailing qualifier goes; a bracket mid-name is part of the name.
+    assert clean_label("Foo (bar) Baz") == "Foo (bar) Baz"
+    # A label that is only a qualifier would become empty, so it is kept as it was.
+    assert clean_label("(area)") == "(area)"
+    # A time is not a namespace, and neither is a two-letter word.
+    assert clean_label("Open 09:00") == "Open 09:00"
+
+
+def test_no_stored_seed_label_still_carries_a_source_artefact() -> None:
+    """The cleaner runs on fetch; this proves the files it already wrote are clean too."""
+    import json
+    from pathlib import Path
+
+    from app.hotspots.wikidata_labels import BOOTSTRAP_FILES, clean_label
+
+    directory = Path(__file__).resolve().parents[1] / "app" / "hotspots"
+    for name in BOOTSTRAP_FILES:
+        for row in json.loads((directory / name).read_text(encoding="utf-8")):
+            for locale, value in (row.get("names") or {}).items():
+                assert clean_label(value) == value, f"{name} {row.get('name')} {locale}: {value}"

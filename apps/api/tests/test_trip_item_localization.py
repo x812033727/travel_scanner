@@ -26,7 +26,7 @@ from app.foods.service import food_names, merchant_names
 from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.service import hotspot_names
 from app.i18n import LOCALES, active_locale, bind_request_locale, reset_request_locale
-from app.localized_names import item_names
+from app.localized_names import has_han_script, item_names
 from app.middleware import RequestContextMiddleware
 from app.models import FoodMerchant, TravelFood, TravelHotspot, TripPlanItem
 from app.trips.itinerary import ItineraryFood, ItineraryHotspot, ItineraryItem, build_itinerary
@@ -64,7 +64,12 @@ def test_every_hotspot_seed_has_a_label_in_every_site_locale() -> None:
     for seed in HOTSPOT_SEEDS:
         names = seed.localized_names
         assert set(LOCALES) <= set(names), seed.slug
-        assert names["zh-TW"] == seed.name
+        # The curated name is the zh-TW label only when it is written in Chinese; a seed
+        # curated under its Hangul or Thai name shows a readable stand-in instead.
+        if has_han_script(seed.name):
+            assert names["zh-TW"] == seed.name, seed.slug
+        else:
+            assert names["zh-TW"], seed.slug
 
 
 def test_hotspot_seed_names_follow_the_country_script() -> None:
@@ -446,3 +451,30 @@ def test_trip_plan_item_names_default_to_an_empty_map() -> None:
         start_time=datetime(2026, 11, 11, 9, tzinfo=UTC),
     )
     assert serialize_item(row)["names"] == {}
+
+
+def test_a_seed_curated_under_a_non_chinese_name_does_not_publish_it_as_chinese() -> None:
+    """22 seeds are curated under their Hangul or Thai name; those are not zh-TW labels."""
+    from app.localized_names import has_han_script
+
+    thai = _seed(name="เกาะเกร็ด").localized_names
+    assert thai["zh-TW"] == thai["zh-CN"] == "Ko Kret"  # readable, not Thai script
+    assert thai["original"] == "เกาะเกร็ด"
+
+    korean = _seed(name="흰여울문화마을").localized_names
+    assert korean["zh-TW"] == "Huinnyeoul Culture Village"
+    assert korean["ko"] == "흰여울문화마을"
+
+    # A seed with no Latin name anywhere keeps its own script: there is nothing better.
+    only_hangul = _seed(name="사려니숲길").localized_names
+    assert only_hangul["zh-TW"] == "사려니숲길"
+
+    # No display name is ever empty, whatever script the seed was curated under.
+    for seed in HOTSPOT_SEEDS:
+        names = seed.localized_names
+        for locale in LOCALES:
+            assert names.get(locale), f"{seed.slug} {locale}"
+
+    # A genuinely Chinese seed still uses its curated name verbatim.
+    assert _seed(slug="sensoji").localized_names["zh-TW"] == "淺草寺"
+    assert has_han_script("淺草寺") and not has_han_script("Ko Kret")

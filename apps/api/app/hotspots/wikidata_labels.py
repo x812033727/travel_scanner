@@ -66,6 +66,29 @@ Labels = Mapping[str, str]
 LabelFetcher = Callable[[Sequence[str]], dict[str, dict[str, str]]]
 
 
+# A MediaWiki namespace on the front of a label ("Category:Foo") means the entity is a
+# page about a category, not a place. The name is what follows it.
+_NAMESPACE_PREFIX = re.compile(r"^[A-Za-z][A-Za-z ]{2,20}:\s*")
+# Wikipedia disambiguates same-named articles with a trailing qualifier — "Hongdae (area)",
+# "八公山 (慶尚北道・大邱広域市)". Nobody writes that on a sign, so it is not the name.
+_TRAILING_QUALIFIER = re.compile(r"\s*[(（][^()（）]*[)）]\s*$")
+
+
+def clean_label(value: str) -> str:
+    """Strip the artefacts of the source from a Wikidata label.
+
+    Only the two shapes that are provably not part of a name are removed, and only from
+    the outside in: a leading MediaWiki namespace, and one trailing parenthetical. A
+    parenthetical anywhere else is left alone, because it can be part of the real name —
+    "teamLab Borderless (麻布台)" style qualifiers are rare, but "(旧)" mid-name is not.
+    Stripping everything back to the first bracket would eat those.
+    """
+    cleaned = _NAMESPACE_PREFIX.sub("", value.strip(), count=1)
+    stripped = _TRAILING_QUALIFIER.sub("", cleaned, count=1).strip()
+    # Never return nothing: a label that is only a qualifier keeps its original text.
+    return stripped or cleaned.strip()
+
+
 def site_labels(entity_labels: Labels) -> dict[str, str]:
     """Map raw Wikidata labels (``{"zh-hant": ...}``) onto site locales plus th/vi."""
 
@@ -73,7 +96,7 @@ def site_labels(entity_labels: Labels) -> dict[str, str]:
     for locale, codes in LABEL_LANGUAGES.items():
         value = next((entity_labels[code].strip() for code in codes if entity_labels.get(code)), "")
         if value:
-            result[locale] = value
+            result[locale] = clean_label(value)
     return result
 
 
