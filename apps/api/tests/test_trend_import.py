@@ -237,6 +237,37 @@ def test_the_backfill_reaches_rows_the_importer_will_not_touch() -> None:
     assert left == []
 
 
+def test_a_withdrawn_english_name_strands_the_row_until_asked_to_reset() -> None:
+    """Removing a name_en does nothing on its own: the importer never revisits a slug.
+
+    Seven merchants were left holding a romanisation no source backed, because the data file
+    stopped proposing it and nothing went back for the rows.
+    """
+    withdrawn = parse_merchant(_row(), row=1)  # the file no longer carries name_en
+    stranded = _imported(withdrawn, name="Dandelion Chocolate")
+    merchants = {withdrawn.slug: withdrawn}
+
+    changed, left = plan_english_name_backfill([stranded], merchants)
+    assert changed == []
+    assert left == [
+        {
+            "slug": withdrawn.slug,
+            "name": "Dandelion Chocolate",
+            "reason": "renamed since import",
+        }
+    ]
+
+    changed, left = plan_english_name_backfill([stranded], merchants, reset_drifted=True)
+    assert changed == [
+        {
+            "slug": withdrawn.slug,
+            "from": "Dandelion Chocolate",
+            "to": "Dandelion Chocolate 藏前工廠咖啡館",
+        }
+    ]
+    assert left == []
+
+
 def test_the_backfill_leaves_a_row_an_administrator_renamed() -> None:
     merchant = parse_merchant(_row(name_en="Dandelion Chocolate"), row=1)
     merchants = {merchant.slug: merchant}
@@ -263,7 +294,7 @@ def test_running_the_backfill_twice_changes_nothing_the_second_time() -> None:
         {
             "slug": merchant.slug,
             "name": "Dandelion Chocolate",
-            "reason": "already the English name",
+            "reason": "already matches the file",
         }
     ]
 
@@ -272,7 +303,16 @@ def test_a_row_with_no_english_name_in_the_file_is_never_touched() -> None:
     merchant = parse_merchant(_row(), row=1)
     changed, left = plan_english_name_backfill([_imported(merchant)], {merchant.slug: merchant})
     assert changed == []
-    assert left == []
+    # Reported as matching rather than skipped silently: with the reset mode in the same
+    # command, "nothing to say about this row" and "this row is already right" are different
+    # answers, and only one of them means the operator can stop looking.
+    assert left == [
+        {
+            "slug": merchant.slug,
+            "name": "Dandelion Chocolate 藏前工廠咖啡館",
+            "reason": "already matches the file",
+        }
+    ]
 
 
 # An English name that is not already somewhere in its own row came from outside the file, so
