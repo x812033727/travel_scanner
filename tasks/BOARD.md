@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**36 open · 1 in progress · 0 blocked · 2 in review · 17 done**
+**36 open · 0 in progress · 0 blocked · 2 in review · 18 done**
 
 ## Ready to claim
 
@@ -47,9 +47,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [Default the Gemini guide model to gemini-3.8-flash](open/2026-09-06-gemini-3-8-flash-default.md) | claude-fable-5-1 | 2026-09-06T03:41:42Z | `claude/gemini-3-8-flash` |
+_Nothing here._
 
 ## In review
 
@@ -70,6 +68,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-06 [Default the Gemini guide model to gemini-3.8-flash](done/2026-09-06-gemini-3-8-flash-default.md)
 - 2026-09-06 [搜尋結果頁整頁文案寫死繁中](done/2026-09-06-search-results-i18n.md)
 - 2026-09-06 [行程編輯器 294 句硬編碼繁中未五語系化](done/2026-09-06-trip-editor-i18n.md)
 - 2026-09-06 [catalog fallback 被當成 AI 精修呈現給使用者](done/2026-09-06-intent-fallback-honesty.md)
@@ -79,4 +78,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-06 [Three hotspots hold a quoted review_status that no filter matches](done/2026-09-06-quoted-review-status-rows.md)
 - 2026-09-06 [57 個潮流商圈只存在正式機資料庫](done/2026-09-06-trend-food-areas-not-seeded.md)
 - 2026-09-06 [把潮流街區的匯入腳本收進 repo](done/2026-09-06-trend-import-scripts.md)
-- 2026-09-06 [延長行程會摧毀已填的航班訂位且不提示](done/2026-09-06-reschedule-flight-anchor-loss.md)

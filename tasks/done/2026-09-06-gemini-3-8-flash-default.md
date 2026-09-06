@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-gemini-3-8-flash-default
 title: Default the Gemini guide model to gemini-3.8-flash
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T03:41:42Z
 created_at: 2026-09-06T03:41:40Z
-completed_at:
+completed_at: 2026-09-06T04:52:22Z
 branch: claude/gemini-3-8-flash
 depends_on: []
 scope:
