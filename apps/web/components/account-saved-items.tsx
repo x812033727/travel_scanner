@@ -11,7 +11,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { useSavedItems } from "@/components/saved-items-provider";
 import { ApiError, api } from "@/lib/api";
-import { safeExternalHref } from "@/lib/navigation";
+import { Link } from "@/i18n/navigation";
+import { loginPath, safeExternalHref } from "@/lib/navigation";
 
 type SavedType = "hotspot" | "food" | "restaurant" | "merchant";
 type CopyFilter = "all" | "hotspot" | "food" | "restaurant";
@@ -103,20 +104,19 @@ export function AccountSavedItems() {
   const [filter, setFilter] = useState<Filter>("all");
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState("");
+  const [signedOut, setSignedOut] = useState(false);
   const [busy, setBusy] = useState("");
 
   useEffect(() => {
     api<{ items: SavedItem[] }>("/saved-items?limit=100")
       .then((result) => setItems(result.items))
-      .catch((reason: unknown) =>
-        setError(
-          reason instanceof ApiError && reason.status === 401
-            ? text.signIn
-            : reason instanceof Error
-              ? reason.message
-              : text.error,
-        ),
-      )
+      .catch((reason: unknown) => {
+        if (reason instanceof ApiError && reason.status === 401) {
+          setSignedOut(true);
+          return;
+        }
+        setError(reason instanceof Error ? reason.message : text.error);
+      })
       .finally(() => setLoaded(true));
   }, [text.error, text.signIn]);
 
@@ -154,6 +154,23 @@ export function AccountSavedItems() {
       setBusy("");
     }
   }
+
+  // Signed out, this card used to say three things at once: five counters reading
+  // zero, an alert that looked like a fault, and a third line asking for a login.
+  // One sentence and one button, the way /trips and /alerts already do it.
+  if (signedOut)
+    return (
+      <section className="app-surface mb-6 p-7 text-center md:p-8">
+        <p className="font-semibold">{tAccount("signedOutTitle")}</p>
+        <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-[var(--muted)]">{text.signIn}</p>
+        <Link
+          href={loginPath("/account")}
+          className="mt-5 inline-flex min-h-12 items-center rounded-xl bg-[var(--teal)] px-5 font-semibold text-white"
+        >
+          {tAccount("signInCta")}
+        </Link>
+      </section>
+    );
 
   return (
     <section className="app-surface mb-6 p-5 md:p-8">

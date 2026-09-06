@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { ApiError } from "@/lib/api";
 import { SavedItemsProvider } from "./saved-items-provider";
 import { AccountSavedItems } from "./account-saved-items";
 
@@ -86,5 +87,18 @@ describe("AccountSavedItems", () => {
     expect(screen.getByText("Hankook Jib")).toBeTruthy();
     expect(screen.queryByText("港式奶茶")).toBeNull();
     expect(screen.queryByText("香港海洋公園")).toBeNull();
+  });
+
+  it("shows one sign-in prompt instead of three states when signed out", async () => {
+    apiMock.mockImplementation(() => Promise.reject(new ApiError("請先登入後再繼續", 401)));
+
+    render(<SavedItemsProvider><AccountSavedItems /></SavedItemsProvider>);
+
+    const link = await screen.findByRole("link", { name: "前往登入" });
+    expect(link.getAttribute("href")).toContain("/login?next=");
+    // Five counters reading zero and a red "cannot load" alert next to a login
+    // prompt read as three different problems.
+    expect(screen.queryByRole("alert")).toBeNull();
+    expect(screen.queryByRole("tab", { name: /全部/ })).toBeNull();
   });
 });

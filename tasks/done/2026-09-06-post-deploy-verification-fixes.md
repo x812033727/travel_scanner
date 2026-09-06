@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-post-deploy-verification-fixes
 title: 上線後查核抓到的六個問題（大字閃爍、焦點掉回 body、標點與複數）
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-07T01:20:00Z
 created_at: 2026-09-07T01:20:00Z
-completed_at:
+completed_at: 2026-09-06T17:56:37Z
 branch: claude/ux-simplify-public-2
 depends_on: []
 scope:

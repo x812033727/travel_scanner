@@ -5,6 +5,15 @@ import { LanguageSwitcher } from "@/components/language-switcher";
 import { SiteHeader } from "@/components/site-header";
 import { getTranslations } from "next-intl/server";
 import { UserRound } from "lucide-react";
+import type { Metadata } from "next";
+import type { Locale } from "@/i18n/routing";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  return { title: t("accountTitle"), description: t("accountDescription") };
+}
+
 
 export default async function AccountPage() {
   const t = await getTranslations("account");

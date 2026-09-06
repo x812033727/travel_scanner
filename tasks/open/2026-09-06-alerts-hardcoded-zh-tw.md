@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-alerts-hardcoded-zh-tw
 title: 價格通知頁的副標與 LINE 卡片在四個語系都是繁中
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T17:56:37Z
 created_at: 2026-09-06T17:32:56Z
 completed_at:
-branch:
+branch: claude/ux-batch-3
 depends_on: []
 scope:
   - apps/web/components/line-connection-panel.tsx
@@ -35,5 +35,12 @@ scope:
 
 ## Definition of done
 
-- [ ] `/alerts` 在五個語系底下沒有任何一句寫死的繁中。
-- [ ] `check:i18n` 通過，且 CI 的 Han guard 不會擋（新字串放 `messages/*/alerts.json`）。
+- [x] `/alerts` 在五個語系底下沒有任何一句寫死的繁中。
+- [x] `check:i18n` 通過，且 CI 的 Han guard 不會擋（新字串放 `messages/*/alerts.json`）。
+
+## Notes
+
+2026-09-07：頁面標題、副標與整張 LINE 卡（14 句，含錯誤與狀態訊息）都搬進
+`messages/*/alerts.json` 的 `title`／`subtitle`／`line.*`。原本只有 h1 會被
+`LegacyUiLocalizer` 在瀏覽器端換掉——那支元件是用 `legacy.json` 做 DOM 級替換的
+權宜之計，只收了 54 句，所以同一張卡有的翻有的沒翻。新字串一律走正規 catalog。

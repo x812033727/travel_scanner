@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-account-signed-out-states
 title: 未登入開 /account 會同時看到三種互相矛盾的狀態
-status: open
+status: in-progress
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T17:56:37Z
 created_at: 2026-09-06T17:32:56Z
 completed_at:
-branch:
+branch: claude/ux-batch-3
 depends_on: []
 scope:
   - apps/web/components/account-saved-items.tsx
@@ -34,9 +34,14 @@ scope:
 
 ## Definition of done
 
-- [ ] 未登入的 `/account` 只有一種說法：一句話、一顆按鈕。
+- [x] 未登入的 `/account` 只有一種說法：一句話、一顆按鈕。
 - [ ] 不再對已知未登入的情況重複打 API。
 
 ## Notes
 
 `components/account-list.tsx` 裡的 `LoadError` 已經是想要的樣子，可以抽成共用元件。
+
+2026-09-07：收藏卡（`account-saved-items`）與帳號卡（`account-panel`）都改成 401 時
+只顯示「登入後才能查看這裡的內容 ＋ 前往登入」，五個計數器、紅色警示與第三句提示都不再
+同時出現。**還沒做**的是重複請求：未登入時 `auth/me` 仍被打三次、`saved-items` 兩次，
+那要動 `saved-items-provider` 與 `header-session` 的共享狀態，範圍比這張任務大。
