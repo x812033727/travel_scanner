@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**49 open · 1 in progress · 0 blocked · 2 in review · 3 done**
+**49 open · 0 in progress · 0 blocked · 3 in review · 3 done**
 
 ## Ready to claim
 
@@ -54,9 +54,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [行程編輯後不清整天路段、缺的段用距離估計、按鈕不再預設 refresh](open/2026-09-06-route-editor-partial-invalidation.md) | claude-fable-5.1 | 2026-09-06T03:00:03Z | `claude/route-editor-partial-invalidation` |
+_Nothing here._
 
 ## In review
 
@@ -64,6 +62,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- |
 | [路線快取 key 依 provider 的時間粒度；DB 路段過期與 Redis TTL 分開](open/2026-09-06-route-cache-time-key.md) | claude-fable-5.1 | `claude/route-cache-time-key` |
 | [整天重算只打真的缺的路段；編輯後不再自動整趟重算](open/2026-09-06-route-recompute-reuses-saved-segments.md) | claude-fable-5.1 | `claude/route-recompute-reuses-saved-segments` |
+| [行程編輯後不清整天路段、缺的段用距離估計、按鈕不再預設 refresh](open/2026-09-06-route-editor-partial-invalidation.md) | claude-fable-5.1 | `claude/route-editor-partial-invalidation` |
 
 ## Waiting
 

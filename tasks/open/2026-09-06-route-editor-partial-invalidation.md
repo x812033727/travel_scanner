@@ -1,7 +1,7 @@
 ---
 id: 2026-09-06-route-editor-partial-invalidation
 title: 行程編輯後不清整天路段、缺的段用距離估計、按鈕不再預設 refresh
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: claude-fable-5.1
