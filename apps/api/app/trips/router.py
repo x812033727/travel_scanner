@@ -25,6 +25,7 @@ from app.ai.itinerary import (
 from app.auth.schemas import Currency
 from app.auth.service import CurrentUser
 from app.config import Settings, get_settings
+from app.crawlers.fx import FxRateProvider
 from app.db import get_session
 from app.destinations.catalog import destination_for_code, match_destination
 from app.foods.service import load_planner_foods
@@ -66,7 +67,11 @@ from app.trips.expenses import (
     seed_rows,
 )
 from app.trips.itinerary import ItineraryItem
-from app.trips.pricing import lodging_from_offer, offer_price_snapshot, trip_pricing
+from app.trips.pricing import (
+    lodging_from_offer,
+    offer_price_snapshot,
+    trip_pricing_with_rates,
+)
 from app.trips.replan import (
     ReplanWrite,
     apply_carried_values,
@@ -843,6 +848,11 @@ async def serialize_trip(
                     route_segments = cast(list[dict[str, Any]], json.loads(raw))
                 except json.JSONDecodeError:
                     route_segments = []
+    pricing = (
+        await trip_pricing_with_rates(trip, items, FxRateProvider(get_settings(), get_redis()))
+        if include_items
+        else None
+    )
     return {
         "id": str(trip.id),
         "name": trip.name,
@@ -856,7 +866,7 @@ async def serialize_trip(
         "primary_lodging": (
             primary_lodging(trip, items) if include_items else trip.data.get("primary_lodging")
         ),
-        "pricing": trip_pricing(trip, items) if include_items else None,
+        "pricing": pricing,
         "optimization": optimization_summary(items) if include_items else None,
         "schedule_defaults": schedule_defaults(trip),
         "planning": trip.data.get("planning"),

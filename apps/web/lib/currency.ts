@@ -15,6 +15,22 @@ export function normalizeCurrency(value: string | null | undefined): Currency {
   return isCurrency(value) ? value : defaultCurrency;
 }
 
+// The currency a traveller spends in each destination country the planner publishes.
+const countryCurrencies: Record<string, Currency> = {
+  TW: "TWD",
+  JP: "JPY",
+  KR: "KRW",
+  TH: "THB",
+  SG: "SGD",
+  HK: "HKD",
+  VN: "VND",
+  US: "USD",
+};
+
+export function countryCurrency(countryCode: string | null | undefined): Currency | undefined {
+  return countryCode ? countryCurrencies[countryCode.toUpperCase()] : undefined;
+}
+
 // Intl already knows every one of these in all five UI languages, so the names
 // stay out of the message catalogs and never drift from the codes.
 export function currencyName(currency: Currency) {

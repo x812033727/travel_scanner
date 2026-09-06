@@ -691,20 +691,12 @@ async def test_reverse_page_failure_keeps_conventional_partial_results() -> None
 async def test_fx_provider_caches_fresh_rate_and_falls_back_to_stale() -> None:
     requests = 0
 
-    def success(_request: httpx.Request) -> httpx.Response:
+    def success(request: httpx.Request) -> httpx.Response:
         nonlocal requests
         requests += 1
-        return httpx.Response(
-            200,
-            json=[
-                {
-                    "date": "2026-08-30",
-                    "base": "JPY",
-                    "quote": "TWD",
-                    "rate": 0.2,
-                }
-            ],
-        )
+        assert request.url.host == "cdn.jsdelivr.net"
+        assert request.url.path.endswith("/v1/currencies/jpy.min.json")
+        return httpx.Response(200, json={"date": "2026-08-30", "jpy": {"twd": 0.2, "usd": 0.0064}})
 
     redis = FakeRedis(decode_responses=True)
     provider = FxRateProvider(
@@ -715,14 +707,66 @@ async def test_fx_provider_caches_fresh_rate_and_falls_back_to_stale() -> None:
     first = await provider.rate_to_twd("JPY")
     second = await provider.rate_to_twd("JPY")
     assert first.rate == second.rate == Decimal("0.2")
+    assert first.quote_currency == "TWD"
+    assert first.as_of == date(2026, 8, 30)
     assert requests == 1
 
-    await redis.delete("fx:frankfurter:JPY:TWD:fresh")
+    await redis.delete("fx:rates:JPY:TWD:fresh")
     provider.transport = httpx.MockTransport(lambda _request: httpx.Response(503))
     stale = await provider.rate_to_twd("JPY")
     await redis.aclose()
     assert stale.is_stale is True
     assert stale.rate == Decimal("0.2")
+
+
+@pytest.mark.asyncio
+async def test_fx_provider_falls_back_from_currency_api_to_frankfurter() -> None:
+    hosts: list[str] = []
+
+    def chain(request: httpx.Request) -> httpx.Response:
+        hosts.append(request.url.host)
+        if request.url.host == "api.frankfurter.dev":
+            assert request.url.params["base"] == "KRW"
+            assert request.url.params["quotes"] == "TWD"
+            return httpx.Response(
+                200,
+                json=[{"date": "2026-09-04", "base": "KRW", "quote": "TWD", "rate": 0.0235}],
+            )
+        return httpx.Response(503)
+
+    redis = FakeRedis(decode_responses=True)
+    provider = FxRateProvider(
+        Settings(),
+        redis,  # type: ignore[arg-type]
+        transport=httpx.MockTransport(chain),
+    )
+    snapshot = await provider.rate("krw", "twd")
+    await redis.aclose()
+
+    assert hosts == ["cdn.jsdelivr.net", "latest.currency-api.pages.dev", "api.frankfurter.dev"]
+    assert snapshot.rate == Decimal("0.0235")
+    assert snapshot.base_currency == "KRW"
+    assert "frankfurter" in snapshot.source_url
+
+
+@pytest.mark.asyncio
+async def test_fx_provider_serves_any_pair_and_the_identity_rate_without_a_request() -> None:
+    def success(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, json={"date": "2026-09-05", "twd": {"jpy": 4.93, "krw": 42.5}})
+
+    redis = FakeRedis(decode_responses=True)
+    provider = FxRateProvider(
+        Settings(),
+        redis,  # type: ignore[arg-type]
+        transport=httpx.MockTransport(success),
+    )
+    to_yen = await provider.rate("TWD", "JPY")
+    to_won = await provider.rate("TWD", "KRW")
+    same = await provider.rate("TWD", "TWD")
+    await redis.aclose()
+
+    assert (to_yen.rate, to_won.rate) == (Decimal("4.93"), Decimal("42.5"))
+    assert same.rate == Decimal("1") and same.source_url == "internal://identity-rate"
 
 
 @pytest.mark.asyncio

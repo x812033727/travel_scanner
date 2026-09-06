@@ -45,6 +45,35 @@ function panel(value: Trip, overrides: Partial<Parameters<typeof TripCostPanel>[
 }
 
 describe("trip cost panel", () => {
+  it("shows today's rate when the ledger is not kept in the destination's currency", async () => {
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ({ base_currency: "JPY", quote_currency: "TWD", rate: "0.20281268", as_of: "2026-09-05", is_stale: false }),
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    try {
+      render(panel({ ...trip({ currency: "TWD" }), destination_country_code: "JP" }));
+
+      expect(await screen.findByText(/1 JPY ≈ 0.2028 TWD/)).toBeTruthy();
+      expect(String(fetchMock.mock.calls[0][0])).toContain("/fx/rate?base=JPY&quote=TWD");
+    } finally {
+      vi.unstubAllGlobals();
+    }
+  });
+
+  it("asks for no rate when the ledger already uses the destination's currency", () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    try {
+      render(panel({ ...trip(), destination_country_code: "JP" }));
+      expect(fetchMock).not.toHaveBeenCalled();
+      expect(screen.queryByText(/今日匯率/)).toBeNull();
+    } finally {
+      vi.unstubAllGlobals();
+    }
+  });
+
   it("shows the total in the ledger's own currency, not TWD", () => {
     render(panel(trip({ total: "1780", by_category: { food: "980", transport: "800" } })));
 
