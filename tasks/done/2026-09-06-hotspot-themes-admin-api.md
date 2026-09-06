@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-hotspot-themes-admin-api
 title: 後台可以維護景點主題並逐景點指派
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-06T17:03:53Z
 created_at: 2026-09-06T17:03:42Z
-completed_at:
+completed_at: 2026-09-06T17:17:54Z
 branch: claude/hotspot-themes-admin-api
 depends_on: []
 scope:
@@ -15,6 +15,7 @@ scope:
   - apps/api/app/i18n.py
   - apps/api/tests/test_hotspot_admin_themes.py
 ---
+
 # 後台可以維護景點主題並逐景點指派
 
 ## Why
