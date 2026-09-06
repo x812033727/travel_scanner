@@ -19,6 +19,7 @@ JSONB_ONLY_OPERATORS = ("?", "?|", "?&", "@>", "<@")
 JSON_COLUMNS = {
     "trip_plans": ("data",),
     "trip_plan_items": ("data",),
+    "provider_configs": ("config",),
 }
 
 

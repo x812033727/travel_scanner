@@ -26,6 +26,7 @@ const coverage = {
     enabled: true,
     default_provider: "minimax",
     providers: { minimax: true, openai: false, anthropic: true },
+    models: { minimax: "minimax-model-a", openai: "openai-model-a", anthropic: "claude-model-a" },
     sources: { brave: true, youtube: true },
     quota: { runs_used: 1, runs_limit: 10, calls_used: 4, calls_limit: 60 },
   },
@@ -163,7 +164,8 @@ describe("AdminHotspotGuidesPanel AI research", () => {
     );
     render(<AdminHotspotGuidesPanel />);
     fireEvent.click(await screen.findByRole("button", { name: "AI 搜尋" }));
-    const openAI = screen.getByRole("option", { name: /OpenAI.*未設定/ });
+    expect(screen.getByRole("option", { name: "MiniMax · minimax-model-a" })).toBeTruthy();
+    const openAI = screen.getByRole("option", { name: "OpenAI · openai-model-a · 未設定" });
     expect((openAI as HTMLOptionElement).disabled).toBe(true);
     expect(
       (screen.getByLabelText("AI 供應商") as HTMLSelectElement).value,

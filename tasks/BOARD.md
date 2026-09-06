@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**27 open · 4 in progress · 0 blocked · 0 in review · 28 done**
+**26 open · 7 in progress · 0 blocked · 0 in review · 28 done**
 
 ## Ready to claim
 
@@ -18,14 +18,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [Nine merchant citations are dead, unreachable or not HTML](open/2026-09-06-broken-merchant-citations.md) | api | `apps/api/app/foods/merchant_catalog.py` |
 | P2 | [21 個潮流街區還沒有任何店家](open/2026-09-06-empty-trend-districts.md) | api | `apps/api/app/foods/data/trend_merchants.json` |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | ops | `apps/api/app/places/naver.py` |
-| P2 | [482 個景點卡在人工審核佇列](open/2026-09-06-hotspot-review-backlog.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/app/hotspots/admin_router.py` |
 | P2 | [營業時間感知排程：AI 排程不把景點排在打烊時段](open/2026-09-06-opening-hours-aware-scheduling.md) | api | `apps/api/app/trips/hours.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/web/components/day-health-strip.tsx` |
-| P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | api | `apps/api/app/trips/routing.py`<br>`apps/api/tests/test_trip_routing.py` |
-| P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/route_planner.py`<br>`apps/api/tests/test_trip_route_planner.py` |
-| P3 | [註冊關閉頁的小標與 H1 是同一句話](open/2026-09-06-auth-duplicate-heading.md) | web | `apps/web/messages/en/auth.json`<br>`apps/web/messages/ja/auth.json`<br>`apps/web/messages/ko/auth.json`<br>`apps/web/messages/zh-CN/auth.json`<br>`apps/web/messages/zh-TW/auth.json` |
 | P3 | [桌機主導覽文字連結只有 20px 高](open/2026-09-06-desktop-nav-touch-targets.md) | web | `apps/web/components/site-navigation.tsx` |
 | P3 | [首頁精靈步驟標籤在英文 390px 會截字](open/2026-09-06-wizard-step-label-truncation.md) | web | `apps/web/components/search-workbench.tsx` |
-| P3 | [後台的登入時效設定要能真的生效](open/2026-09-06-admin-session-settings.md) | api | `apps/api/app/auth/service.py`<br>`apps/api/app/admin/service.py` |
 | P3 | [52 個景點的地圖比對對不上，需要人工判斷](open/2026-09-06-hotspot-map-match-holdouts.md) | api | `apps/api/app/hotspots/places.py` |
 | P3 | [6 個關東景點需要人工挑 Google Place ID](open/2026-09-06-kanto-place-ids.md) | api | `apps/api/app/hotspots/catalog.py` |
 | P3 | [ICS 行事曆匯出](open/2026-09-06-ics-calendar-export.md) | api | `apps/api/app/trips/ics.py`<br>`apps/api/app/trips/export_router.py`<br>`apps/web/components/trip-tools-panel.tsx` |
@@ -40,9 +35,12 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
+| [Consolidate AI vendor keys, model catalog and per-feature models (API)](open/2026-09-06-ai-settings-api.md) | claude-fable-5-1 | 2026-09-06T06:23:36Z | `claude/ai-settings-consolidation` |
+| [AI settings in the admin panel: vendor card, model dropdowns, per-feature models (web)](open/2026-09-06-ai-settings-web.md) | claude-fable-5-1 | 2026-09-06T06:23:38Z | `claude/ai-settings-consolidation` |
 | [Guide backfill searches one locale, so four locales stay empty](open/2026-09-06-multi-locale-guide-backfill.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
 | [Re-seeding never corrects an existing dish name or summary](open/2026-09-06-seed-localization-reconcile.md) | claude-fable-5-1 | 2026-09-06T04:27:50Z | `claude/api-p2-data` |
 | [usage catalog validation rejects everything when web ships ahead of api](open/2026-09-06-usage-catalog-validation-rejects-everything-when.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
+| [Admin help text tells operators to avoid the model now shipped](open/2026-09-06-stale-gemini-model-help.md) | claude-fable-5-1 | 2026-09-06T06:23:09Z | `claude/ai-settings-consolidation` |
 | [food seed counts are hardcoded twelve times and only CI can see them](open/2026-09-06-food-seed-counts-are-hardcoded-twelve.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
 
 ## In review
@@ -53,10 +51,14 @@ _Nothing here._
 
 | Priority | Task | Waiting on |
 | --- | --- | --- |
+| P2 | [482 個景點卡在人工審核佇列](open/2026-09-06-hotspot-review-backlog.md) | active work in the same scope |
 | P2 | [529 個公開景點還沒有任何導覽內容](open/2026-09-06-hotspot-guide-coverage.md) | active work in the same scope |
 | P2 | [貼 Google Maps 連結加景點（待安排 inbox）](open/2026-09-06-paste-maps-links-ingest.md) | active work in the same scope |
-| P3 | [Admin help text tells operators to avoid the model now shipped](open/2026-09-06-stale-gemini-model-help.md) | active work in the same scope |
+| P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | active work in the same scope |
+| P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | active work in the same scope |
 | P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | depends on 2026-09-06-stale-gemini-model-help |
+| P3 | [註冊關閉頁的小標與 H1 是同一句話](open/2026-09-06-auth-duplicate-heading.md) | active work in the same scope |
+| P3 | [後台的登入時效設定要能真的生效](open/2026-09-06-admin-session-settings.md) | active work in the same scope |
 | P3 | [行程狀態標籤與封面圖](open/2026-09-06-trip-status-and-cover.md) | active work in the same scope |
 
 ## Recently finished

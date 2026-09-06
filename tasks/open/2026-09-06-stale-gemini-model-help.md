@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-stale-gemini-model-help
 title: Admin help text tells operators to avoid the model now shipped
-status: open
+status: in-progress
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T06:23:09Z
 created_at: 2026-09-06T00:52:20Z
 completed_at:
-branch:
+branch: claude/ai-settings-consolidation
 depends_on: []
 scope:
   - apps/web/components/admin-settings-panel.tsx
@@ -33,27 +33,27 @@ that as unconditional advice.
 
 ## Definition of done
 
-- [ ] The help text describes what the operator should actually do with the field it sits on.
-- [ ] It does not contradict the shipped default.
+- [x] The help text describes what the operator should actually do with the field it sits on.
+- [x] It does not contradict the shipped default.
 
 ## Steps
 
-- [ ] Rewrite `fieldMeta.hotspot_guide_gemini_model.help` in
-      `apps/web/components/admin-settings-panel.tsx`. It should say which task each tier
-      suits, rather than issuing a blanket instruction — Flash is fine for the schema-bound
-      path, weaker on the grounded source-listing path, and Pro is closed to new keys.
-- [ ] Check the comment above `hotspot_guide_gemini_model` in `apps/api/app/config.py` says
-      the same thing; it was updated when the default changed and is the accurate version.
+- [x] Rewrite the help. Done as part of `2026-09-06-ai-settings-web`: the field is now a
+      catalog dropdown, its help lives at `providerFields.hotspot_guide_gemini_model.help`
+      in `apps/web/messages/*/admin.json` (Flash builds candidate lists, is weaker at
+      listing grounded sources; Pro may be closed to new keys; trust the connection test),
+      and every Gemini entry in `apps/api/app/ai/catalog.py` carries its own tier note that
+      shows under the dropdown.
+- [x] The comment above `hotspot_guide_gemini_model` in `apps/api/app/config.py` says the
+      same thing and was left as is.
 
 ## How to verify
 
-Open `/admin/settings`, find the Gemini 多語文章搜尋 card, and read the model field's help
-against the value in the field next to it. They should agree.
+Open `/admin/settings`, AI 服務 → Gemini 多語文章搜尋, and read the model dropdown's help
+and the selected option's note against the value in the dropdown. They should agree.
 
 ## Notes
 
 Han text in `apps/web/**/*.tsx` is checked by `tools/check-i18n.mjs`, which rejects *new*
-Han runs in those files — but this string already exists, so editing it in place is fine.
-That check only runs with `CI=1` (or something staged): a plain local `npm run check:i18n`
-prints "Validated 5 locales" and tells you nothing. Verify with `CI=1 npm run check:i18n`
-after committing.
+Han runs in those files; the old sentence was removed from the tsx rather than edited, and
+the replacement went through the message catalogs.

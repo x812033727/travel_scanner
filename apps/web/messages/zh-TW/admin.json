@@ -27,6 +27,19 @@
       "other": "其他"
     }
   },
+  "providerFields": {
+    "custom": "自訂…",
+    "customPlaceholder": "輸入模型 ID",
+    "customInputLabel": "自訂模型 ID：{field}",
+    "inheritPlanner": "沿用行程規劃的模型",
+    "openai_model": { "label": "OpenAI 模型", "help": "行程規劃呼叫 OpenAI 時使用的模型；清單以外的模型請選「自訂…」後輸入 ID。" },
+    "anthropic_model": { "label": "Claude 模型", "help": "行程規劃呼叫 Claude 時使用的模型；清單以外的模型請選「自訂…」後輸入 ID。" },
+    "minimax_model": { "label": "MiniMax 模型", "help": "行程規劃呼叫 MiniMax 時使用的模型；清單以外的模型請選「自訂…」後輸入 ID。" },
+    "hotspot_guide_ai_openai_model": { "label": "OpenAI 模型", "help": "只影響景點介紹搜尋；留空即沿用行程規劃的 OpenAI 模型。" },
+    "hotspot_guide_ai_anthropic_model": { "label": "Claude 模型", "help": "只影響景點介紹搜尋；留空即沿用行程規劃的 Claude 模型。" },
+    "hotspot_guide_ai_minimax_model": { "label": "MiniMax 模型", "help": "只影響景點介紹搜尋；留空即沿用行程規劃的 MiniMax 模型。" },
+    "hotspot_guide_gemini_model": { "label": "Gemini 模型", "help": "Flash 級能產生景點候選名單，但接地列出文章來源時較弱；Pro 級對新申請的金鑰可能不可用，請以連線測試結果為準。" }
+  },
   "hotspotTabs": {
     "label": "景點候選審核工作區",
     "mobileLabel": "選擇工作區",

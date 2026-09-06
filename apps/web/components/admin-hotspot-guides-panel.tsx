@@ -68,6 +68,7 @@ type CoverageResponse = {
     enabled: boolean;
     default_provider: Provider;
     providers: Record<Provider, boolean>;
+    models?: Partial<Record<Provider, string>>;
     sources: { brave: boolean; youtube: boolean };
     quota: {
       runs_used: number;
@@ -1187,20 +1188,22 @@ function AISearchSheet({
                 }
                 className="mt-2 h-12 w-full rounded-xl border px-3"
               >
-                {providers.map((value) => (
-                  <option
-                    key={value}
-                    value={value}
-                    disabled={!coverage?.ai_search.providers[value]}
-                  >
-                    {t(`providers.${value}`)}
-                    {!coverage?.ai_search.providers[value]
-                      ? ` · ${t("notConfigured")}`
-                      : ""}
-                  </option>
-                ))}
+                {providers.map((value) => {
+                  const configured = Boolean(coverage?.ai_search.providers[value]);
+                  const model = coverage?.ai_search.models?.[value];
+                  const name = model
+                    ? t("aiProviderModel", { provider: t(`providers.${value}`), model })
+                    : t(`providers.${value}`);
+                  return (
+                    <option key={value} value={value} disabled={!configured}>
+                      {name}
+                      {configured ? "" : ` · ${t("notConfigured")}`}
+                    </option>
+                  );
+                })}
               </select>
             </label>
+            <p className="mt-1 text-xs text-[var(--muted)]">{t("aiProviderHelp")}</p>
             <label className="mt-5 block text-sm font-bold">
               {t("searchDepth")}
               <select

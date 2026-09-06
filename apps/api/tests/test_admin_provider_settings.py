@@ -1,3 +1,4 @@
+import logging
 from datetime import datetime
 from typing import Any
 
@@ -593,35 +594,81 @@ async def test_production_booking_is_not_marked_available_until_connection_test_
 
 
 @pytest.mark.asyncio
-async def test_ai_planner_secrets_are_masked_and_reported_as_configured() -> None:
+async def test_ai_vendor_secrets_are_masked_and_shared_by_the_ai_features() -> None:
     base = Settings()
     secrets = {
         "openai_api_key": "openai-secret-ending-1234",
         "anthropic_api_key": "anthropic-secret-ending-5678",
     }
-    row = ProviderConfig(
-        provider="ai_planner",
+    vendors_row = ProviderConfig(
+        provider="ai_vendors",
         enabled=True,
-        config={"ai_planner_mode": "auto"},
+        config={},
         secret_config_encrypted=encrypt_secrets(secrets, base),
     )
-    snapshot = await settings_snapshot(SnapshotSession([row]))  # type: ignore[arg-type]
+    planner_row = ProviderConfig(
+        provider="ai_planner", enabled=True, config={"ai_planner_mode": "auto"}
+    )
+    session = SnapshotSession([vendors_row, planner_row])
+    snapshot = await settings_snapshot(session)  # type: ignore[arg-type]
     payload = snapshot.model_dump_json()
     assert all(secret not in payload for secret in secrets.values())
+    vendors = next(item for item in snapshot.providers if item.provider == "ai_vendors")
+    assert vendors.configured is True
+    assert vendors.secrets["openai_api_key"].masked == "••••••••1234"
+    assert vendors.secrets["anthropic_api_key"].source == "database"
+    assert "MiniMax" in vendors.status_message and "Gemini" in vendors.status_message
     planner = next(item for item in snapshot.providers if item.provider == "ai_planner")
     assert planner.configured is True
-    assert planner.secrets["openai_api_key"].masked == "••••••••1234"
-    assert planner.secrets["anthropic_api_key"].source == "database"
+    assert planner.secrets == {}
+    assert "openai_api_base_url" not in planner.config
+    search = next(item for item in snapshot.providers if item.provider == "ai_guide_search")
+    assert search.secrets == {}
 
 
-def test_ai_planner_rejects_non_official_base_url_and_invalid_priority() -> None:
+@pytest.mark.asyncio
+async def test_snapshot_exposes_model_catalog_options() -> None:
+    snapshot = await settings_snapshot(SnapshotSession([]))  # type: ignore[arg-type]
+    by_provider = {item.provider: item for item in snapshot.providers}
+    planner = by_provider["ai_planner"]
+    assert set(planner.field_options) == {"openai_model", "anthropic_model", "minimax_model"}
+    assert Settings().openai_model in [
+        option.value for option in planner.field_options["openai_model"]
+    ]
+    assert set(by_provider["ai_guide_search"].field_options) == {
+        "hotspot_guide_ai_openai_model",
+        "hotspot_guide_ai_anthropic_model",
+        "hotspot_guide_ai_minimax_model",
+    }
+    gemini = by_provider["gemini_guides"].field_options["hotspot_guide_gemini_model"]
+    assert "gemini-3.8-flash" in [option.value for option in gemini]
+    assert all(option.label for option in gemini)
+    assert by_provider["ai_vendors"].field_options == {}
+    assert by_provider["google_maps"].field_options == {}
+
+
+def test_ai_vendors_rejects_non_official_base_url_and_planner_rejects_moved_fields() -> None:
     with pytest.raises(AppError) as host_error:
         _validate_provider_values(
-            "ai_planner",
+            "ai_vendors",
             {},
             ProviderSettingsUpdate(config={"openai_api_base_url": "https://attacker.example/v1"}),
         )
     assert getattr(host_error.value, "code", None) == "provider_setting_invalid"
+
+    with pytest.raises(AppError) as moved_config:
+        _validate_provider_values(
+            "ai_planner",
+            {},
+            ProviderSettingsUpdate(config={"openai_api_base_url": "https://api.openai.com/v1"}),
+        )
+    assert getattr(moved_config.value, "code", None) == "provider_setting_unknown"
+
+    with pytest.raises(AppError) as moved_secret:
+        _validate_provider_values(
+            "ai_planner", {}, ProviderSettingsUpdate(secrets={"openai_api_key": "sk-new"})
+        )
+    assert getattr(moved_secret.value, "code", None) == "provider_setting_unknown"
 
     with pytest.raises(AppError) as priority_error:
         _validate_provider_values(
@@ -630,6 +677,214 @@ def test_ai_planner_rejects_non_official_base_url_and_invalid_priority() -> None
             ProviderSettingsUpdate(config={"ai_planner_priority": "openai,openai"}),
         )
     assert getattr(priority_error.value, "code", None) == "provider_setting_invalid"
+
+
+def test_model_fields_accept_catalog_or_custom_ids_and_reject_path_characters() -> None:
+    validated = _validate_provider_values(
+        "ai_planner",
+        {},
+        ProviderSettingsUpdate(
+            config={
+                "openai_model": " gpt-5.6-terra ",
+                "anthropic_model": "ft:claude-sonnet-5:org:x",
+            }
+        ),
+    )
+    assert validated["openai_model"] == "gpt-5.6-terra"
+    assert validated["anthropic_model"] == "ft:claude-sonnet-5:org:x"
+
+    for bad in ("gpt/../admin", "a" * 129, "model name", ""):
+        with pytest.raises(AppError) as error:
+            _validate_provider_values(
+                "ai_planner", {}, ProviderSettingsUpdate(config={"openai_model": bad})
+            )
+        assert getattr(error.value, "code", None) == "provider_setting_invalid", bad
+
+    current = {"hotspot_guide_ai_openai_model": "gpt-5.6-terra"}
+    cleared = _validate_provider_values(
+        "ai_guide_search",
+        current,
+        ProviderSettingsUpdate(config={"hotspot_guide_ai_openai_model": "  "}),
+    )
+    assert "hotspot_guide_ai_openai_model" not in cleared
+    removed = _validate_provider_values(
+        "ai_guide_search",
+        current,
+        ProviderSettingsUpdate(config={"hotspot_guide_ai_openai_model": None}),
+    )
+    assert "hotspot_guide_ai_openai_model" not in removed
+
+
+def test_ai_vendors_row_never_disables_its_secrets() -> None:
+    base = Settings()
+    row = ProviderConfig(
+        provider="ai_vendors",
+        enabled=False,
+        config={},
+        secret_config_encrypted=encrypt_secrets({"minimax_api_key": "mm-key"}, base),
+    )
+    assert apply_runtime_overrides(base, [row]).minimax_api_key == "mm-key"
+
+
+@pytest.mark.asyncio
+async def test_updating_ai_vendors_keeps_the_row_enabled(monkeypatch: pytest.MonkeyPatch) -> None:
+    expected_snapshot = object()
+
+    async def fake_snapshot(*_args: object) -> object:
+        return expected_snapshot
+
+    monkeypatch.setattr(admin_service, "settings_snapshot", fake_snapshot)
+    session = UpdateSession()
+    actor = User(
+        id=admin_service.uuid4(),
+        email="admin@example.com",
+        password_hash="unused",
+        is_admin=True,
+    )
+
+    result = await update_provider_settings(
+        session,  # type: ignore[arg-type]
+        "ai_vendors",
+        ProviderSettingsUpdate(enabled=False, secrets={"openai_api_key": "sk-new"}),
+        actor,
+        object(),  # type: ignore[arg-type]
+    )
+
+    assert result is expected_snapshot
+    row = next(item for item in session.added if isinstance(item, ProviderConfig))
+    audit = next(item for item in session.added if isinstance(item, AdminAuditLog))
+    assert row.enabled is True
+    assert "sk-new" not in (row.secret_config_encrypted or "")
+    assert decrypt_secrets(row.secret_config_encrypted) == {"openai_api_key": "sk-new"}
+    assert audit.action == "provider_settings_updated"
+    assert audit.target == "ai_vendors"
+    assert audit.metadata_json["secret_fields"] == ["openai_api_key"]
+
+
+def test_disabling_the_planner_keeps_the_guide_search_keys() -> None:
+    from app.hotspots.ai_search import configured_research_providers
+
+    base = Settings()
+    vendors = ProviderConfig(
+        provider="ai_vendors",
+        enabled=True,
+        config={},
+        secret_config_encrypted=encrypt_secrets({"openai_api_key": "sk-shared"}, base),
+    )
+    planner = ProviderConfig(provider="ai_planner", enabled=False, config={})
+    effective = apply_runtime_overrides(base, [vendors, planner])
+    assert effective.openai_api_key == "sk-shared"
+    assert effective.ai_planner_enabled is False
+    assert configured_research_providers(effective)["openai"] is True
+
+
+@pytest.mark.asyncio
+async def test_legacy_planner_row_is_flagged_until_migrated(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    base = Settings()
+    row = ProviderConfig(
+        provider="ai_planner",
+        enabled=True,
+        config={"openai_api_base_url": "https://api.openai.com/v1"},
+        secret_config_encrypted=encrypt_secrets({"openai_api_key": "sk-legacy"}, base),
+    )
+    with caplog.at_level(logging.WARNING):
+        snapshot = await settings_snapshot(SnapshotSession([row]))  # type: ignore[arg-type]
+    planner = next(item for item in snapshot.providers if item.provider == "ai_planner")
+    assert "migration 0047" in planner.status_message
+    assert "openai_api_base_url" in planner.status_message
+    assert "openai_api_key" in planner.status_message
+    assert "sk-legacy" not in snapshot.model_dump_json()
+    assert any("moved AI vendor fields" in record.getMessage() for record in caplog.records)
+
+
+def test_feature_test_messages_redact_vendor_secrets() -> None:
+    settings = Settings(
+        openai_api_key="secret-openai-key", hotspot_guide_gemini_api_key="secret-gemini-key"
+    )
+    for provider in ("ai_planner", "ai_guide_search", "gemini_guides", "ai_vendors"):
+        message = _safe_test_message(
+            provider, "secret-openai-key and secret-gemini-key leaked", settings
+        )
+        assert "secret-openai-key" not in message, provider
+        assert "secret-gemini-key" not in message, provider
+
+
+@pytest.mark.asyncio
+async def test_ai_vendors_connection_test_probes_each_configured_vendor() -> None:
+    import httpx
+
+    seen: list[tuple[str, str, dict[str, str]]] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen.append((request.url.host, request.url.path, dict(request.headers)))
+        if request.url.host == "api.openai.com":
+            return httpx.Response(200, json={"data": [{"id": "gpt-5.6-terra"}]})
+        if request.url.host == "api.anthropic.com":
+            return httpx.Response(200, json={"data": [{"id": "claude-opus-5"}]})
+        if request.url.host == "api.minimaxi.com":
+            return httpx.Response(404, json={"error": "not found"})
+        return httpx.Response(200, json={"models": [{"name": "models/gemini-3.8-flash"}]})
+
+    settings = Settings(
+        openai_api_key="sk-openai",
+        anthropic_api_key="sk-anthropic",
+        minimax_api_key="sk-minimax",
+        hotspot_guide_gemini_api_key="g-key",
+    )
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        message = await admin_service._test_ai_vendors(settings, client)
+    assert "OpenAI ✓（gpt-5.6-terra）" in message
+    assert "金鑰有效，模型清單未列出 claude-sonnet-5" in message
+    assert "MiniMax 已設定" in message
+    assert "Gemini ✓（gemini-3.8-flash）" in message
+    assert "sk-openai" not in message
+    assert {(host, path) for host, path, _ in seen} == {
+        ("api.openai.com", "/v1/models"),
+        ("api.anthropic.com", "/v1/models"),
+        ("api.minimaxi.com", "/v1/models"),
+        ("generativelanguage.googleapis.com", "/v1beta/models"),
+    }
+    anthropic_headers = next(headers for host, _, headers in seen if host == "api.anthropic.com")
+    assert anthropic_headers["anthropic-version"] == "2023-06-01"
+    assert anthropic_headers["x-api-key"] == "sk-anthropic"
+
+    def unauthorized(_request: httpx.Request) -> httpx.Response:
+        return httpx.Response(401, json={"error": "bad key"})
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(unauthorized)) as client:
+        with pytest.raises(ConnectionError) as error:
+            await admin_service._test_ai_vendors(Settings(openai_api_key="sk-openai"), client)
+    assert "OpenAI 驗證失敗（HTTP 401）" in str(error.value)
+
+    nothing = Settings(
+        openai_api_key=None,
+        anthropic_api_key=None,
+        minimax_api_key=None,
+        hotspot_guide_gemini_api_key=None,
+    )
+    with pytest.raises(ConnectionError):
+        await admin_service._test_ai_vendors(nothing, None)
+
+
+def test_hotspot_guides_status_reports_its_own_sources() -> None:
+    from app.admin.service import _configured
+
+    nothing = Settings(
+        hotspot_guide_youtube_api_key=None,
+        hotspot_guide_brave_api_key=None,
+        hotspot_guide_gemini_api_key=None,
+    )
+    configured, status, message = _configured("hotspot_guides", nothing)
+    assert configured is False and status == "not_configured"
+    assert "NAVITIME" not in message
+    ready, status, message = _configured(
+        "hotspot_guides",
+        Settings(hotspot_guide_youtube_enabled=True, hotspot_guide_youtube_api_key="yt-key"),
+    )
+    assert ready is True and status == "ready"
+    assert "YouTube" in message
 
 
 @pytest.mark.asyncio
