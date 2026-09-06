@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**21 open · 5 in progress · 1 blocked · 0 in review · 38 done**
+**18 open · 5 in progress · 1 blocked · 0 in review · 41 done**
 
 ## Ready to claim
 
@@ -13,9 +13,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P1 | [Most merchants have no first-party page, so nothing can locate them](open/2026-09-06-missing-merchant-sources.md) | api | `apps/api/app/foods/merchant_catalog.py` |
-| P2 | [Nine merchant citations are dead, unreachable or not HTML](open/2026-09-06-broken-merchant-citations.md) | api | `apps/api/app/foods/merchant_catalog.py` |
-| P2 | [21 個潮流街區還沒有任何店家](open/2026-09-06-empty-trend-districts.md) | api | `apps/api/app/foods/data/trend_merchants.json` |
 | P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | api | `apps/api/app/trips/routing.py`<br>`apps/api/tests/test_trip_routing.py` |
 | P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/route_planner.py`<br>`apps/api/tests/test_trip_route_planner.py` |
 | P3 | [註冊關閉頁的小標與 H1 是同一句話](open/2026-09-06-auth-duplicate-heading.md) | web | `apps/web/messages/en/auth.json`<br>`apps/web/messages/ja/auth.json`<br>`apps/web/messages/ko/auth.json`<br>`apps/web/messages/zh-CN/auth.json`<br>`apps/web/messages/zh-TW/auth.json` |
@@ -57,6 +54,9 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [21 個潮流街區還沒有任何店家](done/2026-09-06-empty-trend-districts.md)
+- 2026-09-06 [Nine merchant citations are dead, unreachable or not HTML](done/2026-09-06-broken-merchant-citations.md)
+- 2026-09-06 [Most merchants have no first-party page, so nothing can locate them](done/2026-09-06-missing-merchant-sources.md)
 - 2026-09-06 [匯率改由 Currency-api 供應，Frankfurter 退為備援；行程報價與記帳顯示換算](done/2026-09-06-fx-currency-api.md)
 - 2026-09-06 [旅程天氣改由 MET Norway 供應，Google Weather 退為備援](done/2026-09-06-weather-met-norway.md)
 - 2026-09-06 [Admin help text tells operators to avoid the model now shipped](done/2026-09-06-stale-gemini-model-help.md)
@@ -64,6 +64,3 @@ _Nothing here._
 - 2026-09-06 [Consolidate AI vendor keys, model catalog and per-feature models (API)](done/2026-09-06-ai-settings-api.md)
 - 2026-09-06 [529 個公開景點還沒有任何導覽內容](done/2026-09-06-hotspot-guide-coverage.md)
 - 2026-09-06 [52 個景點的地圖比對對不上，需要人工判斷](done/2026-09-06-hotspot-map-match-holdouts.md)
-- 2026-09-06 [482 個景點卡在人工審核佇列](done/2026-09-06-hotspot-review-backlog.md)
-- 2026-09-06 [6 個關東景點需要人工挑 Google Place ID](done/2026-09-06-kanto-place-ids.md)
-- 2026-09-06 [272 家店家裡只有 2 家有耐久座標，美食目錄幾乎發不出東西](done/2026-09-06-merchant-coordinate-backlog.md)

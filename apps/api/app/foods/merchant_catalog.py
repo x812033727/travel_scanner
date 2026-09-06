@@ -1211,10 +1211,51 @@ def _official_listing(
 # Merchant-level evidence verified against first-party merchant sites or government /
 # official-tourism listings. Missing merchants intentionally remain pending instead of
 # inheriting the destination-level context source as proof that the merchant is listed.
+# Merchants checked on 2026-09-06 and deliberately left without a first-party page. The
+# reason is what a later search would have to overturn; "seed needs a human check" means the
+# catalog entry itself does not name a shop that could be found.
+#   tokyo-sushi-dai: no site; the Toyosu Market page for it never rendered and the market
+#     gourmet association is http only.
+#   fukuoka-udon-taira, busan-anga, jeonju-gyodong-hotteok, hanoi-bun-cha-huong-lien,
+#     hanoi-che-ba-thin, ho-chi-minh-city-pho-hoa, ho-chi-minh-city-banh-xeo-46a,
+#     ho-chi-minh-city-com-tam-ba-ghien, ho-chi-minh-city-bun-bo-hue-dong-ba,
+#     ho-chi-minh-city-che-mam-khanh-vy, hue-pho-sai-gon, hue-bun-bo-my-tam, hue-che-hem,
+#     singapore-haron-satay, singapore-toa-payoh-rojak, singapore-jin-jin-dessert:
+#     Facebook or aggregator pages only; the city tourism sites carry nothing about them.
+#   bangkok-pe-aor, bangkok-som-tam-nua, bangkok-toy-kuay-teow-ruea, bangkok-hea-owan,
+#     chiang-mai-pad-thai-mustache, chiang-mai-mango-tango, chiang-mai-khao-soi-khun-yai,
+#     chiang-rai-clock-tower-pad-thai, chiang-rai-barrab, chiang-rai-khao-soi-phor-jai,
+#     phuket-mae-somchit: no site and no TAT restaurant page.
+#   krabi-family-thaifood: only a Facebook page and an auto-generated .shop site that does
+#     not list the mapped dish.
+#   taipei-lin-dong-fang, taipei-jin-feng, taipei-yuanhuan-oyster, taipei-dai-stinky-tofu,
+#     taipei-tian-jin-pancake, taichung-lao-xiang, tainan-lao-tang-beef-noodle: no site;
+#     travel.taipei, travel.taichung.gov.tw and twtainan.net have no page about them.
+#   kanazawa-tonkatsu-an-zukiyo, daegu-gogung, daegu-palgong-samgyeopsal,
+#     chiang-mai-moo-ping-hea-owan, chiang-rai-jetyod-chicken-rice,
+#     taichung-wang-gong-oyster, taichung-yizhong-stinky-tofu, taichung-wang-ji-gua-bao,
+#     taichung-tian-jin-pancake, kaohsiung-old-zhou-oyster, kaohsiung-old-jiang-pancake:
+#     seed needs a human check (the あんず tonkatsu brand is Fukuoka/Tokyo; Gogung is a
+#     Jeonju house; Hea Owan is one Silom stall with no branches; 王功 is in Changhua;
+#     一中街 has two stinky-tofu stalls; the rest do not exist under that name).
+#   sendai-aburiya-jujiro: 二日町本店 closed 2023-03-31; the S-PAL branch has only
+#     Gurunavi / HotPepper pages. Seed needs a human check.
+#   tainan-xiluo-dian: twtainan.net/zh-tw/shop/consume/6479/ is the beef-soup shop, which
+#     the seed maps to stinky tofu. Remap the dish before citing it.
+#   ho-chi-minh-city-wrap-roll: the 62 Hai Ba Trung flagship is no longer on
+#     wrap-roll.com's restaurant list. Seed needs a human check.
+#   yokohama-yoshimuraya (ieke1.com), hanoi-cuon-n-roll (cuonnroll.com),
+#     da-lat-pho-hieu and da-lat-banh-mi-hoang-dieu (dalat.vn): the only first-party page
+#     serves an expired or foreign certificate.
+#   kaohsiung-formosa-chang: fmsc.com.tw serves an incomplete certificate chain and its
+#     store list is JavaScript-only. kaohsiung-jiang-hao-ji: jhotofu.com.tw is a
+#     JavaScript-only builder page whose TLS handshake fails outside a browser.
+#   ho-chi-minh-city-banh-mi-huynh-hoa: banhmihuynhhoa.vn sits behind a bot challenge.
+#   hanoi-pho-bat-dan: phobatdan.vn belongs to a franchise-marketing company, not the
+#     49 Bat Dan shop. da-nang-pho-bac-hai: phobachai.com.vn no longer resolves.
 MERCHANT_DIRECT_SOURCE_SEEDS: tuple[MerchantDirectSourceSeed, ...] = (
-    # Japan. The first Japanese entries: until Okinawa, Yokohama and Kamakura joined the
-    # catalog no Japanese merchant had a page of its own cited here, which is why the
-    # country balance below reads the way it does.
+    # Japan. Okinawa, Yokohama and Kamakura came first (#169); the rest of the country
+    # follows at the end of this block.
     _official_listing(
         "okinawa-inaka-kosetsu-ichiba",
         "Okinawa Convention & Visitors Bureau restaurant listing",
@@ -1300,6 +1341,170 @@ MERCHANT_DIRECT_SOURCE_SEEDS: tuple[MerchantDirectSourceSeed, ...] = (
         "Kamakura City Tourist Association restaurant listing",
         "https://www.trip-kamakura.com/stay-gurume/detail.php?id=30",
     ),
+    # The rest of Japan, checked 2026-09-06: the shop's own store page where one exists,
+    # else the market / shopping-street association or city tourism page about that one
+    # shop. The merchants still missing are listed above the tuple.
+    _merchant_website(
+        "tokyo-ichiran-shibuya",
+        "ICHIRAN official Shibuya store page",
+        "https://ichiran.com/shop/tokyo/shibuya/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "tokyo-tsunahachi",
+        "Tsunahachi official store page (総本店別館, open while the main store is rebuilt)",
+        "https://www.tunahachi.co.jp/store/53.html",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "tokyo-maisen-aoyama",
+        "Maisen official Aoyama main restaurant page",
+        "https://mai-sen.com/restaurant/aoyama/",
+        includes_address=True,
+    ),
+    _official_listing(
+        "tokyo-kanda-matsuya",
+        "Chiyoda City Tourism Association listing for Kanda Matsuya",
+        "https://visit-chiyoda.tokyo/app/spot/detail/359",
+    ),
+    _merchant_website(
+        "tokyo-torishiki",
+        "Torishiki ICHIMON official brand page (flagship 鳥しき, Meguro)",
+        "https://torishiki-ichimon.jp/brand/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "tokyo-toraya-akasaka",
+        "Toraya official Akasaka store page",
+        "https://www.toraya-group.co.jp/shops/shop-5",
+    ),
+    _official_listing(
+        "osaka-kyoto-endo-sushi",
+        "Osaka Central Wholesale Market association listing for Endo Sushi",
+        "https://honjo-osaka.or.jp/kankei/kanren/endou/",
+    ),
+    _official_listing(
+        "osaka-kyoto-kinryu-ramen",
+        "Sennichimae shopping street listing for Kinryu Ramen Dotonbori",
+        "https://sennichimae.com/streetmap/shop01/",
+    ),
+    _merchant_website(
+        "osaka-kyoto-tempura-makino",
+        "Toridoll official store page for 天丼まきの 京都寺町",
+        "https://stores.toridoll.com/110977",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "osaka-kyoto-mizuno",
+        "Mizuno official website",
+        "https://www.mizuno-osaka.com/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "osaka-kyoto-aizuya",
+        "Aizuya official branch list (ナンバ店)",
+        "https://www.aiduya.com/shop/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "osaka-kyoto-omen",
+        "Omen official store page (銀閣寺本店)",
+        "https://omen.co.jp/pages/shops/",
+        includes_address=True,
+    ),
+    _official_listing(
+        "osaka-kyoto-toraya-kyoto",
+        "Kyoto Prefecture Tourism Federation listing for Toraya Karyo Kyoto Ichijo",
+        "https://www.kyoto-kankou.or.jp/info_search/6077",
+    ),
+    _merchant_website(
+        "fukuoka-sushi-sakai",
+        "Sushi Sakai official website",
+        "https://sakai-sushi.jp/sakai.php",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "fukuoka-shin-shin",
+        "Hakata ShinShin official Tenjin main store page",
+        "https://www.hakata-shinshin.com/tenpo_tenjin",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "fukuoka-hachibei",
+        "Yakitori Hachibei official Hakata store page",
+        "https://hachibei.com/?page_id=10034",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "sapporo-hanamaru",
+        "Nemuro Hanamaru official store page (JRタワーステラプレイス店)",
+        "https://www.sushi-hanamaru.com/store/details/s03.html",
+        includes_address=True,
+    ),
+    _official_listing(
+        "sapporo-sumire",
+        "Sapporo Tourist Association listing for Sumire main store",
+        "https://www.sapporo.travel/gourmet/shop/shop_806/",
+    ),
+    _official_listing(
+        "kanazawa-mori-mori-sushi",
+        "Omicho Market official shop listing for Mori Mori Sushi",
+        "https://ohmicho-ichiba.com/gourmet/shop73401/",
+        includes_address=False,
+    ),
+    _merchant_website(
+        "kanazawa-tempura-koizumi",
+        "Tempura Koizumi official website",
+        "https://tempura-koizumi.jp/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "kanazawa-morihachi",
+        "Morihachi official main store page",
+        "https://www.morihachi.co.jp/shop_honten",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "nagoya-yabaton",
+        "Yabaton official store page (矢場町本店)",
+        "https://www.yabaton.com/modules/shop/index.php?content_id=2",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "nagoya-yamamotoya",
+        "Yamamotoya Honten official store guide (栄本町通店)",
+        "https://yamamotoyahonten.co.jp/storeguidance/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "nagoya-ebisuya",
+        "Sohonke Ebisuya official website",
+        "https://ebisuya-honten.com/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "sendai-ramen-kaichi",
+        "Menya Togashi official page for Ramen Kaiji Izumi, the original Kaiji",
+        "https://menyatogashi.co.jp/%E3%82%89%E3%83%BC%E3%82%81%E3%82%93%E3%81%8B%E3%81%84%E3%81%98%E6%B3%89%E5%BA%97/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "sendai-sobadokoro-kanda",
+        "Kanda Shoji official store guide (そばの神田 東一屋 本店)",
+        "https://sobanokanda.com/%E5%BA%97%E8%88%97%E3%81%AE%E3%81%94%E6%A1%88%E5%86%85/",
+        includes_address=True,
+    ),
+    _official_listing(
+        "hiroshima-hassei",
+        "Hiroshima Prefecture local-produce supporter registry listing for Hassei",
+        "https://www.hiroshima-ouen.com/2288",
+    ),
+    _merchant_website(
+        "okinawa-tunda-dining",
+        "Shuri Tunda Dining official page (Gurunavi-hosted)",
+        "https://fb33500.gorp.jp/",
+        includes_address=True,
+    ),
     # South Korea
     _merchant_website(
         "seoul-korea-house",
@@ -1331,6 +1536,75 @@ MERCHANT_DIRECT_SOURCE_SEEDS: tuple[MerchantDirectSourceSeed, ...] = (
         "seoul-tosokchon",
         "Visit Seoul listing for Tosokchon Samgyetang",
         "https://english.visitseoul.net/PalaceArea/TosokchonSamgyetang/ENPywjsmm",
+    ),
+    # Checked 2026-09-06: KTO, city tourism boards and the market / district catalogs.
+    _official_listing(
+        "seoul-namdaemun-hotteok",
+        "Namdaemun Market Tourist Special Zone listing for the vegetable hotteok stall",
+        "https://www.namdaemunmarket.co.kr/03_eat/view.php?sid=7",
+    ),
+    _official_listing(
+        "seoul-lees-gimbap",
+        "Korea Tourism Organization listing for Lee's Gimbap",
+        "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=58c4d9a8-fd43-4312-afb0-02b3a81c8b3a",
+        includes_address=False,
+    ),
+    _official_listing(
+        "busan-dari-jip",
+        "Visit Busan listing for Dari Jip main store",
+        "https://visitbusan.net/index.do?lang_cd=ko&menuCd=DOM_000000201002001000&uc_seq=942",
+    ),
+    _official_listing(
+        "busan-gaya-milmyeon",
+        "Visit Busan listing for Halmae Gaya Milmyeon",
+        "https://www.visitbusan.net/index.do?menuCd=DOM_000000201002001000&uc_seq=102&lang_cd=ko",
+    ),
+    _official_listing(
+        "busan-biff-ssiat-hotteok",
+        "Visit Busan feature naming the BIFF Square seed-hotteok stalls",
+        "https://visitbusan.net/index.do?lang_cd=ko&menuCd=DOM_000000201001001000&uc_seq=1005",
+        includes_address=False,
+    ),
+    _official_listing(
+        "jeju-donsadon",
+        "Visit Jeju listing for Donsadon main branch",
+        "https://www.visitjeju.net/en/detail/view?contentsid=CNTS_000000000020104",
+    ),
+    _official_listing(
+        "jeju-kim-man-bok",
+        "Visit Jeju listing for Jeju Kim Man-bok main branch",
+        "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020072",
+    ),
+    _official_listing(
+        "daegu-yakjeon-samgyetang",
+        "Daegu Jung-gu restaurant catalog listing for Yakjeon Hanbang Samgyetang",
+        "https://junggufood.com/taste/info_detail.asp?idx=79",
+    ),
+    _official_listing(
+        "daegu-jungang-tteokbokki",
+        "Daegu Jung-gu restaurant catalog listing for Jungang Tteokbokki",
+        "https://junggufood.com/taste/info_detail.asp?idx=41",
+    ),
+    _official_listing(
+        "daegu-busan-anmyeonok",
+        "Daegu Jung-gu restaurant catalog listing for Busan Anmyeonok",
+        "https://junggufood.com/taste/info_detail.asp?idx=64",
+    ),
+    _official_listing(
+        "gyeongju-yosokkoong",
+        "Gyeongju city tourism listing for Yosokkoong 1779",
+        "https://www.gyeongju.go.kr/tour/page.do?mnu_uid=2501&con_uid=7510&cmd=2",
+    ),
+    _official_listing(
+        "gyeongju-gyodong-gimbap",
+        "Gyeongju city tourism listing for Gyori Gimbap Gyodong main store",
+        "https://www.gyeongju.go.kr/tour/page.do?mnu_uid=2501&con_uid=1717&cmd=2",
+    ),
+    _official_listing(
+        "jeonju-hankook-jib",
+        "Korea Tourism Organization listing for Hankook Jib",
+        "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=e7f92b20-2ad4-4d69-ac03-d8ddc1bd6f7d",
+        includes_address=False,
     ),
     # Taiwan
     _merchant_website(
@@ -1390,10 +1664,10 @@ MERCHANT_DIRECT_SOURCE_SEEDS: tuple[MerchantDirectSourceSeed, ...] = (
         "Tainan City listing for Shi Jing Jiu Oyster Omelet",
         "https://www.twtainan.net/zh-tw/shop/consume/2075/",
     ),
-    _merchant_website(
+    _official_listing(
         "tainan-hanlin",
-        "Hanlin Tea Room official website",
-        "https://www.hanlin-tea.com.tw/",
+        "Tainan City tourism listing for Hanlin Tea Room (赤崁店)",
+        "https://www.twtainan.net/zh-tw/shop/consume/2236/",
     ),
     _official_listing(
         "tainan-a-song-gua-bao",
@@ -1405,6 +1679,17 @@ MERCHANT_DIRECT_SOURCE_SEEDS: tuple[MerchantDirectSourceSeed, ...] = (
         "Du Hsiao Yueh Tainan original store",
         "https://noodle1895.com/en/branch-2/tainan-original-store/",
         includes_address=True,
+    ),
+    # Checked 2026-09-06.
+    _official_listing(
+        "taichung-fu-din-wang",
+        "Taichung Tourism listing for Fu Din Wang",
+        "https://travel.taichung.gov.tw/zh-tw/shop/consume/1402",
+    ),
+    _merchant_website(
+        "taichung-sunnyhills",
+        "SunnyHills official store list (Taichung: 清水服務區)",
+        "https://www.sunnyhills.com.tw/store/zh-tw/",
     ),
     # Singapore
     _merchant_website(
@@ -1423,11 +1708,6 @@ MERCHANT_DIRECT_SOURCE_SEEDS: tuple[MerchantDirectSourceSeed, ...] = (
         "JUMBO Seafood Riverside Point",
         "https://www.jumboseafood.com.sg/en/riverside-point",
         includes_address=True,
-    ),
-    _official_listing(
-        "singapore-hill-street-kway-teow",
-        "Singapore Tourism Board food guide listing",
-        "https://www.visitsingapore.com/content/dam/desktop/global/deals/hk/Singapore_Food_Guide_PDF.pdf",
     ),
     _merchant_website(
         "singapore-song-fa",
@@ -1459,10 +1739,10 @@ MERCHANT_DIRECT_SOURCE_SEEDS: tuple[MerchantDirectSourceSeed, ...] = (
         "Hong Kong Tourism Board listing for Yat Lok Restaurant",
         "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-yat-lok-restaurant.html",
     ),
-    _merchant_website(
+    _official_listing(
         "hong-kong-tai-cheong",
-        "Tai Cheong Bakery official website",
-        "https://www.taicheongbakery.com.hk/en/brands/tai_cheong/index.html",
+        "Hong Kong Tourism Board listing for Tai Cheong Bakery",
+        "https://www.discoverhongkong.com/eng/place-to-go/travel.guide-tai-cheong-bakery.html",
     ),
     _official_listing(
         "hong-kong-kam-wah",
@@ -1484,6 +1764,12 @@ MERCHANT_DIRECT_SOURCE_SEEDS: tuple[MerchantDirectSourceSeed, ...] = (
         "Hong Kong Tourism Board listing for Trusty Congee King",
         "https://www.discoverhongkong.com/eng/travel-guide/qts/restaurants-results/restaurants-details.id18984.congee-king.html",
     ),
+    _merchant_website(
+        "hong-kong-maks-noodle",
+        "Mak's Noodle official branch information (77 Wellington Street)",
+        "https://www.maksnoodle.com/en/%E5%88%86%E5%BA%97%E8%B3%87%E6%96%99",
+        includes_address=True,
+    ),
     # Thailand
     _merchant_website(
         "bangkok-thipsamai",
@@ -1491,11 +1777,10 @@ MERCHANT_DIRECT_SOURCE_SEEDS: tuple[MerchantDirectSourceSeed, ...] = (
         "https://thipsamai.com/contact-us/",
         includes_address=True,
     ),
-    _merchant_website(
+    _official_listing(
         "bangkok-krua-apsorn",
-        "Krua Apsorn official website",
-        "https://www.krua-apsorn.com/",
-        includes_address=True,
+        "Tourism Authority of Thailand listing for Krua Apsorn",
+        "https://www.tourismthailand.org/Restaurant/krua-apsorn",
     ),
     _official_listing(
         "bangkok-go-ang",
@@ -1514,8 +1799,38 @@ MERCHANT_DIRECT_SOURCE_SEEDS: tuple[MerchantDirectSourceSeed, ...] = (
     ),
     _official_listing(
         "krabi-ruen-mai",
-        "Tourism Authority of Thailand Krabi restaurant guide",
-        "https://www.thailandtravel.or.jp/common/pdf/Krabi_trang2019.pdf",
+        "Tourism Authority of Thailand listing for Ruean Mai",
+        "https://www.tourismthailand.org/Restaurant/ruean-mai",
+    ),
+    # Checked 2026-09-06 against the TAT restaurant directory (its site search was used
+    # for every merchant still missing below).
+    _official_listing(
+        "bangkok-muslim-restaurant",
+        "Tourism Authority of Thailand listing for Muslim Restaurant",
+        "https://www.tourismthailand.org/Restaurant/muslim-restaurant",
+        includes_address=False,
+    ),
+    _official_listing(
+        "chiang-mai-som-tam-udon",
+        "Tourism Authority of Thailand listing for Som Tam Udon (Soi Tantawan branch)",
+        "https://thai.tourismthailand.org/Restaurant/%E0%B8%AA%E0%B9%89%E0%B8%A1%E0%B8%95%E0%B8%B3%E0%B8%AD%E0%B8%B8%E0%B8%94%E0%B8%A3-%E0%B8%AA%E0%B8%B2%E0%B8%82%E0%B8%B2%E0%B8%8B%E0%B8%AD%E0%B8%A2%E0%B8%97%E0%B8%B2%E0%B8%99%E0%B8%95%E0%B8%B0%E0%B8%A7%E0%B8%B1%E0%B8%99",
+    ),
+    _official_listing(
+        "chiang-mai-kiat-ocha",
+        "Tourism Authority of Thailand listing for Kiat Ocha",
+        "https://thai.tourismthailand.org/Restaurant/%E0%B9%80%E0%B8%81%E0%B8%B5%E0%B8%A2%E0%B8%A3%E0%B8%95%E0%B8%B4%E0%B9%82%E0%B8%AD%E0%B8%8A%E0%B8%B2",
+        includes_address=False,
+    ),
+    _official_listing(
+        "phuket-one-chun",
+        "Tourism Authority of Thailand listing for One Chun",
+        "https://www.tourismthailand.org/Restaurant/one-chun",
+    ),
+    _merchant_website(
+        "krabi-kodam-kitchen",
+        "Kodam Kitchen official website",
+        "https://kodamkitchen.com/",
+        includes_address=True,
     ),
     # Vietnam
     _merchant_website(
@@ -1555,6 +1870,19 @@ MERCHANT_DIRECT_SOURCE_SEEDS: tuple[MerchantDirectSourceSeed, ...] = (
         "da-nang-che-lien",
         "Da Nang official food portal listing for Che Lien",
         "https://www.foodtourdanang.vn/en/che-lien-da-nang-dien-bien-phu-2?food=106",
+    ),
+    # Checked 2026-09-06.
+    _merchant_website(
+        "hue-banh-khoai-hong-mai",
+        "Banh Khoai Hong Mai official website",
+        "https://banhkhoaihongmai.com/",
+        includes_address=True,
+    ),
+    _official_listing(
+        "da-nang-banh-mi-ba-lan",
+        "Da Nang Tourism Promotion Center banh mi guide naming Banh Mi Ba Lan",
+        "https://danangfantasticity.com/en/banh-mi-da-nang",
+        includes_address=False,
     ),
 )
 
