@@ -543,3 +543,70 @@ async def test_recompute_refresh_stale_or_mismatched_rows_query_the_provider_aga
         monkeypatch, trip, rows, other_preference, day_value=day_value
     )
     assert [(call["from"], call["to"]) for call in calls] == [(rows[0].id, rows[1].id)]
+
+
+@pytest.mark.asyncio
+async def test_recompute_keeps_walk_legs_when_only_the_preference_differs(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    trip, _ = trip_with_items()
+    day_value = date(2026, 11, 10)
+    rows = make_items(trip.id, day_value, 3)
+    # Walking answers never depend on the transit preference, so a day whose preference
+    # changed still keeps them.
+    records = [
+        saved_record(
+            trip.id,
+            day_value,
+            rows[0],
+            rows[1],
+            duration=20,
+            travel_mode="walk",
+            preference="FASTEST",
+        ),
+        saved_record(
+            trip.id,
+            day_value,
+            rows[1],
+            rows[2],
+            duration=15,
+            travel_mode="walk",
+            preference="FASTEST",
+        ),
+    ]
+
+    _, _, calls = await run_day(
+        monkeypatch,
+        trip,
+        rows,
+        records,
+        day_value=day_value,
+        mode="walk",
+        preference="FEWER_TRANSFERS",
+    )
+
+    assert calls == []
+
+
+def test_stale_route_pairs_only_drops_legs_the_change_touched() -> None:
+    trip, _ = trip_with_items()
+    day_value = date(2026, 11, 10)
+    rows = make_items(trip.id, day_value, 4)
+    first, second, third, fourth = rows
+    existing = {(first.id, second.id), (second.id, third.id), (third.id, fourth.id)}
+
+    # A new hotel moves the third stop's coordinates: both legs around it go, the rest stay.
+    assert trips_router.stale_route_pairs(existing, rows, {third.id}) == {
+        (second.id, third.id),
+        (third.id, fourth.id),
+    }
+    # Clock times moved but nobody changed place: nothing to throw away.
+    assert trips_router.stale_route_pairs(existing, rows, set()) == set()
+
+    # Skipping the third stop makes second→fourth the new leg; the two legs around the
+    # skipped stop are no longer adjacent and go, whatever the changed set says.
+    third.is_skipped = True
+    assert trips_router.stale_route_pairs(existing, rows, set()) == {
+        (second.id, third.id),
+        (third.id, fourth.id),
+    }

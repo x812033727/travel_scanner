@@ -42,6 +42,7 @@ from app.models import (
     TripExpense,
     TripPlan,
     TripPlanItem,
+    TripRouteDaySetting,
     TripRouteSegment,
     TripShare,
     UsageReservation,
@@ -102,6 +103,7 @@ from app.trips.routing import (
     RouteSegment,
     RouteService,
     TravelMode,
+    estimate_leg_minutes,
     google_external_navigation,
     infer_place_provider,
     naver_external_navigation,
@@ -872,6 +874,37 @@ async def owned_trip(session: AsyncSession, user_id: UUID, trip_id: UUID) -> Tri
     return trip
 
 
+def _adjacent_pairs(values: list[TripPlanItem]) -> set[tuple[UUID, UUID]]:
+    """Every routable adjacent pair, per day, in itinerary order."""
+    pairs: set[tuple[UUID, UUID]] = set()
+    for day_value in {row.day_date for row in values}:
+        day_rows = active_route_rows(values, day_value)
+        pairs.update(
+            (first.id, second.id) for first, second in zip(day_rows, day_rows[1:], strict=False)
+        )
+    return pairs
+
+
+def stale_route_pairs(
+    existing_pairs: set[tuple[UUID, UUID]],
+    rows: list[TripPlanItem],
+    changed_item_ids: set[UUID],
+) -> set[tuple[UUID, UUID]]:
+    """Saved legs that no longer answer the itinerary.
+
+    A leg goes stale when its stops are no longer adjacent (a meal was skipped, a stop
+    moved) or when one of its endpoints changed place (a new hotel). Legs whose stops
+    merely shifted in time keep their saved travel time; the routing job re-times them
+    without spending a provider request.
+    """
+    current = _adjacent_pairs(rows)
+    return {
+        pair
+        for pair in existing_pairs
+        if pair not in current or bool(set(pair) & changed_item_ids)
+    }
+
+
 async def persist_system_schedule_change(
     session: AsyncSession,
     trip: TripPlan,
@@ -881,6 +914,7 @@ async def persist_system_schedule_change(
     *,
     warning: str,
     target_day: date | None = None,
+    changed_item_ids: set[UUID] | None = None,
 ) -> dict[str, Any]:
     with session.no_autoflush:
         runtime = await load_runtime_settings(session)
@@ -922,10 +956,28 @@ async def persist_system_schedule_change(
     if next_version is None:
         await session.rollback()
         raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再操作")
-    route_delete = delete(TripRouteSegment).where(TripRouteSegment.trip_plan_id == trip.id)
-    if target_day is not None:
-        route_delete = route_delete.where(TripRouteSegment.day_date == target_day)
-    await session.execute(route_delete)
+    if changed_item_ids is None:
+        route_delete = delete(TripRouteSegment).where(TripRouteSegment.trip_plan_id == trip.id)
+        if target_day is not None:
+            route_delete = route_delete.where(TripRouteSegment.day_date == target_day)
+        await session.execute(route_delete)
+    else:
+        # Keep every saved leg the change did not touch: the routing job reuses them
+        # (route_tasks._reusable_segment) and only asks providers for the rest.
+        existing = await load_route_segments(session, trip.id, day_date=target_day)
+        stale = stale_route_pairs(
+            {(record.from_item_id, record.to_item_id) for record in existing},
+            rows,
+            changed_item_ids,
+        )
+        for from_id, to_id in stale:
+            await session.execute(
+                delete(TripRouteSegment).where(
+                    TripRouteSegment.trip_plan_id == trip.id,
+                    TripRouteSegment.from_item_id == from_id,
+                    TripRouteSegment.to_item_id == to_id,
+                )
+            )
     await session.commit()
     await get_redis().delete(f"routes:trip:{trip.id}")
     await session.refresh(trip)
@@ -1497,8 +1549,11 @@ async def compute_routes_for_rows(
     travel_mode: TravelMode = "transit",
     buffer_minutes: int = DEFAULT_BUFFER_MINUTES,
     refresh: bool = False,
+    ordered: bool = False,
 ) -> tuple[list[RouteSegment], list[tuple[UUID, UUID]]]:
-    rows = active_route_rows(rows)
+    # ``active_route_rows`` sorts by the stored position. A proposed reordering has
+    # not been written yet, so the optimiser passes its rows already in order.
+    rows = rows if ordered else active_route_rows(rows)
     pairs: list[tuple[RoutePoint, RoutePoint, datetime | None]] = []
     pair_ids: list[tuple[UUID, UUID]] = []
     for first, second in zip(rows, rows[1:], strict=False):
@@ -2557,16 +2612,7 @@ async def update_itinerary(
         await session.rollback()
         raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再儲存")
 
-    def adjacent_pairs(values: list[TripPlanItem]) -> set[tuple[UUID, UUID]]:
-        pairs: set[tuple[UUID, UUID]] = set()
-        for day_value in {row.day_date for row in values}:
-            day_rows = active_route_rows(values, day_value)
-            pairs.update(
-                (first.id, second.id) for first, second in zip(day_rows, day_rows[1:], strict=False)
-            )
-        return pairs
-
-    old_pairs = adjacent_pairs(existing_rows)
+    old_pairs = _adjacent_pairs(existing_rows)
     incoming_ids = {item.id for item in incoming_items if item.id is not None}
     removed_ids = {
         item_id
@@ -2661,7 +2707,7 @@ async def update_itinerary(
     if new_route_rows:
         await session.flush()
         route_impact_ids.update(row.id for row in new_route_rows)
-    new_pairs = adjacent_pairs(next_rows)
+    new_pairs = _adjacent_pairs(next_rows)
     invalid_pairs = (old_pairs - new_pairs) | {
         pair for pair in old_pairs | new_pairs if set(pair) & route_impact_ids
     }
@@ -2722,7 +2768,7 @@ async def update_primary_lodging(
         "selection_source": "user",
         "selected_at": datetime.now(UTC).isoformat(),
     }
-    sync_primary_lodging(trip, rows, lodging)
+    changed_rows = sync_primary_lodging(trip, rows, lodging)
     return await persist_system_schedule_change(
         session,
         trip,
@@ -2730,6 +2776,7 @@ async def update_primary_lodging(
         payload.version,
         rows,
         warning="主要飯店已更新，請重新計算每日來回路線。",
+        changed_item_ids=changed_rows,
     )
 
 
@@ -2750,6 +2797,8 @@ async def update_schedule_defaults(
         },
     }
     apply_schedule_defaults(trip, rows)
+    # Only clock times moved: every leg keeps its endpoints, so no saved route is
+    # discarded and the routing job merely re-times the day.
     return await persist_system_schedule_change(
         session,
         trip,
@@ -2757,6 +2806,7 @@ async def update_schedule_defaults(
         payload.version,
         rows,
         warning="每日時間已更新，請重新計算受影響的移動時間。",
+        changed_item_ids=set(),
     )
 
 
@@ -2809,6 +2859,7 @@ async def update_meal_skip(
         rows,
         warning="餐食狀態已更新，請重新計算這一天的路線。",
         target_day=item.day_date,
+        changed_item_ids={item.id},
     )
 
 
@@ -4215,14 +4266,23 @@ async def plan_itinerary_optimization(
     target_days: list[date],
     preference: str,
     settings: Settings,
+    *,
+    day_settings: list[TripRouteDaySetting] | None = None,
 ) -> dict[str, Any]:
     """Work out a better order for each day without touching a single row.
 
     Preview and apply both go through here so they can never disagree about what
     "optimised" means. Rows are only ever read; the reordering is expressed as a list
     of item ids per day, which apply replays.
+
+    The pairwise travel-time matrix is estimated from straight-line distance: N
+    movable stops would otherwise cost N×(N−1) provider requests per click, which in
+    Japan comes straight out of the Ekispert monthly budget. Only the chain this
+    proposes is routed for real, in the day's default travel mode.
     """
 
+    routing_defaults = RoutingOptions.model_validate(trip.data.get("routing_defaults") or {})
+    setting_by_day = {setting.day_date: setting for setting in day_settings or []}
     days: list[dict[str, Any]] = []
     warnings: list[str] = []
     segments: list[RouteSegment] = []
@@ -4238,23 +4298,27 @@ async def plan_itinerary_optimization(
                 "itinerary_optimization_limit",
                 f"每天最多最佳化 {OPTIMIZATION_MOVABLE_LIMIT} 個可移動地點，請先鎖定部分項目",
             )
+        day_setting = setting_by_day.get(target_day)
+        travel_mode = cast(
+            TravelMode,
+            day_setting.default_travel_mode
+            if day_setting is not None
+            else routing_defaults.default_travel_mode,
+        )
+        buffer_minutes = (
+            day_setting.default_buffer_minutes
+            if day_setting is not None
+            else routing_defaults.default_buffer_minutes
+        )
         movable = [day_rows[index] for index in movable_indexes]
         point_by_id = {row.id: point for row in movable if (point := route_point(row)) is not None}
-        pairs = [
-            (point_by_id[first.id], point_by_id[second.id], first.end_time or first.start_time)
+        costs = {
+            (first.id, second.id): estimate_leg_minutes(
+                point_by_id[first.id], point_by_id[second.id], travel_mode
+            )
             for first in movable
             for second in movable
-            if first.id != second.id
-        ]
-        results = await RouteService(get_redis(), settings).compute_many(
-            pairs,
-            preference,
-            region_code=trip_region_code(trip.timezone, trip.destination_name, trip.data),
-        )
-        costs = {
-            (segment.from_item_id, segment.to_item_id): segment.duration_minutes
-            for segment in results
-            if segment is not None
+            if first.id != second.id and first.id in point_by_id and second.id in point_by_id
         }
         if not costs:
             warnings.append(f"{target_day.isoformat()} 沒有取得可比較的移動時間，這天維持原樣。")
@@ -4265,7 +4329,15 @@ async def plan_itinerary_optimization(
         reordered = list(day_rows)
         for slot, row in zip(movable_indexes, ordered, strict=True):
             reordered[slot] = row
-        day_segments, _ = await compute_routes_for_rows(trip, reordered, preference, settings)
+        day_segments, _ = await compute_routes_for_rows(
+            trip,
+            reordered,
+            preference,
+            settings,
+            travel_mode=travel_mode,
+            buffer_minutes=buffer_minutes,
+            ordered=True,
+        )
         segments.extend(day_segments)
         before_minutes = _chain_minutes(movable, costs)
         after_minutes = _chain_minutes(ordered, costs)
@@ -4316,6 +4388,7 @@ async def preview_trip_itinerary_optimization(
         target_days,
         payload.route_preference or trip.route_preference,
         settings,
+        day_settings=await load_day_settings(session, trip.id),
     )
     if not plan["days"]:
         raise AppError(
@@ -4470,6 +4543,7 @@ async def optimize_trip_itinerary(
             target_days,
             preference,
             await load_runtime_settings(session),
+            day_settings=await load_day_settings(session, trip.id),
         )
         segments = cast(list[RouteSegment], plan["segments"])
         if not plan["days"] or not segments:

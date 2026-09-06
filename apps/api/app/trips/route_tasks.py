@@ -99,7 +99,9 @@ def _reusable_segment(saved: TripRouteSegment, travel_mode: TravelMode, preferen
         return False
     if saved.travel_mode != travel_mode:
         return False
-    return bool(saved.is_override) or saved.preference == preference
+    # The preference only shapes transit answers (fewer transfers, less walking);
+    # walking and driving requests never carry it, so it cannot make them stale.
+    return bool(saved.is_override) or travel_mode != "transit" or saved.preference == preference
 
 
 async def compute_and_apply_routes(

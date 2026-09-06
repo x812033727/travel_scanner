@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**35 open · 0 in progress · 0 blocked · 3 in review · 18 done**
+**36 open · 0 in progress · 0 blocked · 4 in review · 18 done**
 
 ## Ready to claim
 
@@ -53,6 +53,7 @@ _Nothing here._
 | [路線快取 key 依 provider 的時間粒度；DB 路段過期與 Redis TTL 分開](open/2026-09-06-route-cache-time-key.md) | claude-fable-5.1 | `claude/route-cache-time-key` |
 | [整天重算只打真的缺的路段；編輯後不再自動整趟重算](open/2026-09-06-route-recompute-reuses-saved-segments.md) | claude-fable-5.1 | `claude/route-recompute-reuses-saved-segments` |
 | [行程編輯後不清整天路段、缺的段用距離估計、按鈕不再預設 refresh](open/2026-09-06-route-editor-partial-invalidation.md) | claude-fable-5.1 | `claude/route-editor-partial-invalidation` |
+| [最佳化用距離估計排順序、系統卡變更只作廢碰到的路段、步行汽車不看偏好](open/2026-09-06-route-optimizer-estimates.md) | claude-fable-5.1 | `claude/route-optimizer-estimates` |
 
 ## Waiting
 
@@ -61,6 +62,7 @@ _Nothing here._
 | P2 | [日期變更後行程價格停在舊報價且無法重新查價](open/2026-09-06-trip-stale-price-after-reschedule.md) | active work in the same scope |
 | P2 | [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](open/2026-09-06-reoptimize-no-version-check.md) | active work in the same scope |
 | P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | active work in the same scope |
+| P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | depends on 2026-09-06-route-recompute-reuses-saved-segments |
 | P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | depends on 2026-09-06-stale-gemini-model-help |
 | P3 | [誠實路段守衛：拒絕 0 分鐘路段與漏掉步行段的轉乘方案](open/2026-09-06-honest-leg-guard.md) | active work in the same scope |
 | P3 | [最佳化上限的 UX：超過 12 個可移動景點時先提示而不是 422](open/2026-09-06-optimizer-limit-ux.md) | active work in the same scope |

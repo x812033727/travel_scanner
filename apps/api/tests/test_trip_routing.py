@@ -23,6 +23,7 @@ from app.trips.routing import (
     RoutePoint,
     RouteSegment,
     RouteService,
+    estimate_leg_minutes,
     google_external_navigation,
     route_provider_configured,
     supported_transit_time,
@@ -1215,6 +1216,18 @@ async def test_route_cache_buckets_google_transit_and_driving_departures() -> No
         travel_mode="drive",
     )
     assert provider.calls == 4
+
+
+def test_estimate_leg_minutes_matches_the_web_planner() -> None:
+    station = point("東京車站", 35.6812, 139.7671)
+    temple = point("淺草寺", 35.7148, 139.7967)
+
+    # About 4.6 km apart: 61 minutes on foot, 24 by transit, 14 by car, each rounded up
+    # to five minutes; the same figures ``estimateLegMinutes`` returns in the web app.
+    assert estimate_leg_minutes(station, temple, "walk") == 65
+    assert estimate_leg_minutes(station, temple, "transit") == 25
+    assert estimate_leg_minutes(station, temple, "drive") == 15
+    assert estimate_leg_minutes(station, point("隔壁", 35.6815, 139.7675), "walk") == 5
 
 
 @pytest.mark.asyncio

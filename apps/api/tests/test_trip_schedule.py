@@ -407,11 +407,14 @@ def test_lodging_and_meal_defaults_sync_across_every_day() -> None:
         "longitude": 139.7671,
         "location_source": "google_places",
     }
-    sync_primary_lodging(target, rows, lodging)
+    changed = sync_primary_lodging(target, rows, lodging)
     hotels = [row for row in rows if row.system_role in {"hotel_start", "hotel_end"}]
     assert len(hotels) == 4
     assert all(row.provider_place_id == "place-hotel" for row in hotels)
     assert all(row.data["needs_place_confirmation"] is False for row in hotels)
+    # Only the hotel anchors moved, so only their legs need new routes.
+    assert changed == {row.id for row in hotels}
+    assert sync_primary_lodging(target, rows, lodging) == set()
 
     target.data = {
         **target.data,
