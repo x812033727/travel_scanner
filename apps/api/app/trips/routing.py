@@ -4,6 +4,7 @@ import asyncio
 import hashlib
 import json
 import logging
+import math
 from dataclasses import dataclass
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
@@ -50,6 +51,35 @@ class RoutePoint(BaseModel):
     longitude: float
     provider_place_id: str | None = None
     place_provider: str | None = None
+
+
+EARTH_RADIUS_KM = 6371.0
+
+
+def estimate_leg_minutes(
+    origin: RoutePoint, destination: RoutePoint, travel_mode: TravelMode
+) -> int:
+    """A rough travel time that costs no provider request.
+
+    Straight-line distance at a modest speed plus a fixed overhead for transit and
+    driving, rounded up to five minutes and never below five. The web planner uses the
+    same figures (``estimateLegMinutes`` in ``lib/trip-types.ts``) so an estimate reads
+    the same wherever it shows up.
+    """
+    lat1, lon1 = math.radians(origin.latitude), math.radians(origin.longitude)
+    lat2, lon2 = math.radians(destination.latitude), math.radians(destination.longitude)
+    half_chord = (
+        math.sin((lat2 - lat1) / 2) ** 2
+        + math.cos(lat1) * math.cos(lat2) * math.sin((lon2 - lon1) / 2) ** 2
+    )
+    km = 2 * EARTH_RADIUS_KM * math.asin(math.sqrt(half_chord))
+    if travel_mode == "walk":
+        minutes = km / 4.5 * 60
+    elif travel_mode == "drive":
+        minutes = 5 + km / 30 * 60
+    else:
+        minutes = 10 + km / 20 * 60
+    return max(5, math.ceil(minutes / 5) * 5)
 
 
 class RouteStep(BaseModel):
