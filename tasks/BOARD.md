@@ -25,9 +25,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [Re-seeding never corrects an existing dish name or summary](open/2026-09-06-seed-localization-reconcile.md) | api | `apps/api/app/foods/service.py` |
 | P2 | [首頁手機首屏被三張說明列佔滿](open/2026-09-06-home-mobile-first-screen.md) | web | `apps/web/app/[locale]/page.tsx` |
 | P2 | [目的地目錄的國家與興趣標籤未五語系化](open/2026-09-06-destination-catalog-labels-i18n.md) | web | `apps/web/lib/destinations.ts` |
-| P2 | [npm audit 排在 CI 前段，網路不穩就擋掉整輪](open/2026-09-06-npm-audit-ci-position.md) | ops | `.github/workflows/ci.yml` |
 | P3 | [Admin help text tells operators to avoid the model now shipped](open/2026-09-06-stale-gemini-model-help.md) | web | `apps/web/components/admin-settings-panel.tsx` |
-| P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | web | `apps/web/components/admin-settings-panel.tsx`<br>`apps/web/components/admin-hotspots-panel.tsx`<br>`apps/web/components/admin-food-merchants-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/messages/zh-TW/admin.json` |
 | P3 | [註冊關閉頁的小標與 H1 是同一句話](open/2026-09-06-auth-duplicate-heading.md) | web | `apps/web/messages/en/auth.json`<br>`apps/web/messages/ja/auth.json`<br>`apps/web/messages/ko/auth.json`<br>`apps/web/messages/zh-CN/auth.json`<br>`apps/web/messages/zh-TW/auth.json` |
 | P3 | [桌機主導覽文字連結只有 20px 高](open/2026-09-06-desktop-nav-touch-targets.md) | web | `apps/web/components/site-navigation.tsx` |
 | P3 | [首頁精靈步驟標籤在英文 390px 會截字](open/2026-09-06-wizard-step-label-truncation.md) | web | `apps/web/components/search-workbench.tsx` |
@@ -42,7 +40,10 @@ _Nothing here._
 
 ## Waiting
 
-_Nothing here._
+| Priority | Task | Waiting on |
+| --- | --- | --- |
+| P2 | [npm audit 排在 CI 前段，網路不穩就擋掉整輪](open/2026-09-06-npm-audit-ci-position.md) | depends on 2026-09-06-required-checks-block-merge |
+| P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | depends on 2026-09-06-stale-gemini-model-help |
 
 ## Recently finished
 

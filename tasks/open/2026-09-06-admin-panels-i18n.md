@@ -9,7 +9,8 @@ claimed_at:
 created_at: 2026-09-06T00:53:41Z
 completed_at:
 branch:
-depends_on: []
+depends_on:
+  - 2026-09-06-stale-gemini-model-help
 scope:
   - apps/web/components/admin-settings-panel.tsx
   - apps/web/components/admin-hotspots-panel.tsx
@@ -73,3 +74,5 @@ cd ../.. && npm run lint:web && npm run typecheck:web && CI=1 node tools/check-i
 
 **JSON 編輯注意**：`messages/*/admin.json` 不要 JSON round-trip 回寫（會重排整份檔案、
 默默吃掉重複鍵）。用純文字插入。
+
+**Scope 重疊**：`admin-settings-panel.tsx` 也在 `2026-09-06-stale-gemini-model-help` 的 scope 裡（那張只改一段說明文字）。先讓它落地，這張再把那段文字一起搬進 catalog，免得兩邊改同一行。

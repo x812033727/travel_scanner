@@ -9,7 +9,8 @@ claimed_at:
 created_at: 2026-09-06T00:53:24Z
 completed_at:
 branch:
-depends_on: []
+depends_on:
+  - 2026-09-06-required-checks-block-merge
 scope:
   - .github/workflows/ci.yml
 ---
@@ -60,3 +61,5 @@ scope:
 
 同一個 job 裡 `npm run test:web` 是最慢的一步（約 4–5 分鐘），
 所以把 audit 移到後面不會拖慢回饋，反而讓失敗更早出現在真正相關的步驟上。
+
+**Scope 重疊**：`.github/workflows/ci.yml` 也在 `2026-09-06-required-checks-block-merge` 的 scope （`.github`）底下，而且那張是 P1。先讓它改完必要檢查的設定，這張再調步驟順序。
