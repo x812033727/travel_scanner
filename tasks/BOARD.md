@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**7 open · 1 in progress · 2 blocked · 5 in review · 86 done**
+**7 open · 1 in progress · 2 blocked · 5 in review · 87 done**
 
 ## Ready to claim
 
@@ -13,8 +13,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P2 | [AI 備援警告把 provider 名稱與 Python 例外類別秀給旅客看](open/2026-09-06-ai-warning-copy.md) | api | `apps/api/app/ai/itinerary.py`<br>`apps/api/tests/test_ai_itinerary.py` |
 | P3 | [四個景點的分類被標成 shopping，其實是公園、城跡與神社](open/2026-09-06-seed-category-shopping-mistakes.md) | api | `apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_hotspot_seed_categories.py` |
+| P3 | [五個語系的 trips.json 都有重複的 transfersCount 鍵](open/2026-09-06-duplicate-transfers-count-key.md) | web | `apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/zh-TW/trips.json` |
 
 ## In progress
 
@@ -49,10 +49,10 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-06 [選 Gemini 做景點介紹搜尋會 500：run 表的 provider 檢查沒有 gemini](done/2026-09-06-gemini-guide-run-check.md)
 - 2026-09-06 [熱門景點頁的主題篩選與季節徽章](done/2026-09-06-hotspot-themes-web.md)
 - 2026-09-06 [熱門景點季節與購物主題：資料模型、種子與公開 API](done/2026-09-06-hotspot-themes-api.md)
+- 2026-09-06 [AI 備援警告把 provider 名稱與 Python 例外類別秀給旅客看](done/2026-09-06-ai-warning-copy.md)
 - 2026-09-06 [日曆的假日圓點應該跟著目的地國家](done/2026-09-06-holiday-dots-follow-destination.md)
 - 2026-09-06 [供應商就緒狀態只看金鑰有無，卡片會綠燈但功能不通](done/2026-09-06-configured-readiness-beyond-key-presence.md)
 - 2026-09-06 [Booking Demand 連線測試停在城市 ID，從不解析旅館報價](done/2026-09-06-booking-demand-test-parses-an-offer.md)
 - 2026-09-06 [地點建議清單會在 Escape 之後自己打開](done/2026-09-06-place-picker-reopens-after-escape.md)
 - 2026-09-06 [航班來源擴充讀舊資料沒有防護：型別不符的 search id 會直接 500](done/2026-09-06-expand-flight-sources-guard.md)
 - 2026-09-06 [後台其餘三個面板文案硬編碼繁中](done/2026-09-06-admin-panels-i18n-remaining.md)
-- 2026-09-06 [後台 AI 規劃連線測試送空候選，看不見真正會壞的那一步](done/2026-09-06-admin-planner-test-real-candidates.md)
