@@ -23,6 +23,8 @@ from app.db import SessionFactory
 from app.foods.coordinate_fill_cli import fill_food_merchant_coordinates
 from app.foods.place_matching_cli import match_food_merchant_places
 from app.foods.service import seed_food_catalog
+from app.foods.trend_import import DEFAULT_FILE as TREND_MERCHANTS_FILE
+from app.foods.trend_import import import_trend_merchants
 from app.hotspots.candidate_cli import import_candidates
 from app.hotspots.candidate_generation import generate_candidates
 from app.hotspots.cities import CITY_BY_CODE
@@ -456,6 +458,22 @@ def main() -> None:
         "seed-foods",
         help="Upsert the food catalog, merchants, areas and categories, then print the counts",
     )
+    trend = subparsers.add_parser(
+        "import-trend-merchants",
+        help=(
+            "Import a JSON batch of 潮流街區 merchants as pending, inactive rows; "
+            "reports only unless --apply. Re-running skips what already exists."
+        ),
+    )
+    trend.add_argument(
+        "--file",
+        default=str(TREND_MERCHANTS_FILE),
+        help="JSON list of merchants (default: the batch committed in app/foods/data)",
+    )
+    trend.add_argument("--limit", type=int, help="Stop after this many merchants")
+    trend.add_argument(
+        "--apply", action="store_true", help="Write the rows instead of only reporting them"
+    )
     places = subparsers.add_parser(
         "match-hotspot-places",
         help="Fill Google Place IDs for public hotspots that have none (uses the live key)",
@@ -552,6 +570,11 @@ def main() -> None:
     elif args.command == "fill-food-merchant-coordinates":
         report = asyncio.run(
             fill_food_merchant_coordinates(args.destination, args.limit, args.apply)
+        )
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+    elif args.command == "import-trend-merchants":
+        report = asyncio.run(
+            import_trend_merchants(Path(args.file), apply=args.apply, limit=args.limit)
         )
         print(json.dumps(report, ensure_ascii=False, indent=2))
     elif args.command == "collect-hotspots":

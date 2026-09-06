@@ -19,6 +19,7 @@ from app.foods.admin_router import (
     list_admin_foods,
     update_food_merchant,
 )
+from app.foods.area_catalog import ALL_AREA_SEEDS
 from app.foods.catalog import COUNTRY_NAMES
 from app.foods.service import (
     food_facets,
@@ -93,7 +94,9 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         # catalog validator counts, because a city can have several places for one dish.
         assert int(await session.scalar(select(func.count(FoodMerchantFood.id))) or 0) == 192
         assert int(await session.scalar(select(func.count(FoodMerchantSource.id))) or 0) == 236
-        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == 132
+        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == len(
+            ALL_AREA_SEEDS
+        )
         assert int(await session.scalar(select(func.count(FoodCategory.id))) or 0) == 18
         assert int(await session.scalar(select(func.count(FoodMerchantCategory.id))) or 0) == 271
         assert (
@@ -427,7 +430,9 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             select(FoodCategory).where(FoodCategory.slug == "ramen")
         )
         assert renamed_category is not None and renamed_category.names_json["zh-TW"] == "拉麵專門店"
-        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == 132
+        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == len(
+            ALL_AREA_SEEDS
+        )
         assert int(await session.scalar(select(func.count(FoodCategory.id))) or 0) == 18
 
         admin = User(

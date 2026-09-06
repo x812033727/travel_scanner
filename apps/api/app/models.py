@@ -396,6 +396,13 @@ class TransportOfferRecord(Timestamped, Base):
 class TravelHotspot(Timestamped, Base):
     __tablename__ = "travel_hotspots"
     __table_args__ = (
+        # Three rows once held the literal string 'approved', quotes included, written
+        # by a script that did not validate; 0044 repaired them and added this so the
+        # column can only hold the vocabulary every filter compares against.
+        CheckConstraint(
+            "review_status IN ('pending', 'approved', 'rejected', 'disabled')",
+            name="ck_travel_hotspot_review_status",
+        ),
         CheckConstraint(
             "map_match_status IN ('unverified', 'verified', 'ambiguous', 'disabled')",
             name="ck_travel_hotspot_map_match_status",
