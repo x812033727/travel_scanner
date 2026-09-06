@@ -21,6 +21,9 @@ def upgrade() -> None:
     columns = {str(column["name"]) for column in inspector.get_columns("trip_plans")}
     if "notes" not in columns:
         op.add_column("trip_plans", sa.Column("notes", sa.Text(), nullable=True))
+        # trip_plans.data is `json`, not `jsonb`, so the `?` key-existence
+        # operator does not exist for it and the statement aborts the whole
+        # migration. `->>` returning NULL is the test that works on both.
         # The brief typed at creation has been living in trip.data["notes"],
         # where reoptimize_trip's wholesale rebuild of that blob silently drops
         # it. Move what is still there into the column that will keep it.
@@ -29,7 +32,6 @@ def upgrade() -> None:
             UPDATE trip_plans
             SET notes = data ->> 'notes'
             WHERE notes IS NULL
-              AND data ? 'notes'
               AND nullif(trim(data ->> 'notes'), '') IS NOT NULL
             """
         )
