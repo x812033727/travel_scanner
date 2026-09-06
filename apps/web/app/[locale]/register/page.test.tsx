@@ -40,7 +40,7 @@ describe("registration page", () => {
   it("fails closed when registration status cannot be confirmed", async () => {
     registrationState.value = "unavailable";
     await renderPage();
-    expect(screen.getByRole("heading", { name: "暫時無法確認註冊狀態" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "請稍後再回來試一次" })).toBeTruthy();
     expect(screen.queryByTestId("register-form")).toBeNull();
   });
 });
