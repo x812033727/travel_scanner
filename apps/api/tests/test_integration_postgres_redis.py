@@ -23,6 +23,7 @@ from app.models import (
     AffiliateClick,
     SearchJob,
     SearchRequest,
+    TripPlaceCandidate,
     UsageAccount,
     UsageLedger,
     UsageReservation,
@@ -2035,3 +2036,90 @@ async def test_a_shared_trip_can_be_copied_into_the_readers_own_account(
         assert (
             await client.post(f"/api/v1/shared-trips/{token}/fork", headers=reader)
         ).status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_a_pasted_place_can_be_offered_by_the_planner_and_applied_without_a_conflict(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The candidate signature is the thing this must not break.
+
+    Preview records a hash of every candidate it offered; apply reloads the candidates and
+    compares. If the two paths built different lists — say one of them forgot the waiting
+    list — every apply would answer 409, which is exactly what the task warned about.
+    """
+    monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", lambda *_a, **_k: None)
+    await engine.dispose()
+    get_redis.cache_clear()
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        # The planner reserves a use, so this member needs the account registration opens.
+        headers, _ = await _signed_in_member("inbox-candidates")
+        created = await client.post(
+            "/api/v1/trips",
+            headers=headers,
+            json={
+                "source": "blank",
+                "planning_mode": "manual_blank",
+                "name": "東京待安排測試",
+                "destination_name": "日本東京",
+                "start_date": "2026-11-10",
+                "end_date": "2026-11-11",
+                "routing": {
+                    "auto_compute": False,
+                    "default_travel_mode": "transit",
+                    "default_buffer_minutes": 10,
+                },
+            },
+        )
+        assert created.status_code == 201
+        trip = created.json()
+
+        pasted = await client.post(
+            f"/api/v1/trips/{trip['id']}/places/ingest",
+            headers=headers,
+            json={
+                "text": "https://www.google.com/maps/place/x/@35.7147651,139.7966553,17z",
+            },
+        )
+        assert pasted.status_code == 201, pasted.text
+        candidate_id = pasted.json()["created"][0]["id"]
+
+        async with SessionFactory() as session:
+            rows = list(
+                (
+                    await session.scalars(
+                        select(TripPlaceCandidate).where(
+                            TripPlaceCandidate.trip_plan_id == UUID(trip["id"])
+                        )
+                    )
+                ).all()
+            )
+        assert len(rows) == 1 and rows[0].latitude is not None
+
+        # Preview and apply have to agree about the candidate set. Whatever the planner
+        # decides to do with it, the signature check must not be the thing that fails.
+        preview = await client.post(
+            f"/api/v1/trips/{trip['id']}/itinerary/preview",
+            headers={**headers, "Idempotency-Key": str(uuid4())},
+            json={"version": trip["version"], "scope": "day", "day_date": "2026-11-10"},
+        )
+        assert preview.status_code in {200, 402, 503}, preview.text
+        if preview.status_code != 200:
+            return
+        body = preview.json()
+        applied = await client.post(
+            f"/api/v1/trips/{trip['id']}/itinerary/apply",
+            headers={**headers, "Idempotency-Key": str(uuid4())},
+            json={"version": trip["version"], "preview_id": body["preview_id"]},
+        )
+        assert applied.status_code != 409, applied.text
+
+        # A pasted place the planner used is no longer waiting for a day.
+        if applied.status_code == 200:
+            titles = [item["title"] for item in applied.json()["items"]]
+            async with SessionFactory() as session:
+                row = await session.get(TripPlaceCandidate, UUID(candidate_id))
+            assert row is not None
+            assert row.status == ("used" if any("35.71" in title for title in titles) else "inbox")

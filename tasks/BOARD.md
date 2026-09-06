@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**13 open · 0 in progress · 1 blocked · 5 in review · 65 done**
+**12 open · 1 in progress · 1 blocked · 5 in review · 73 done**
 
 ## Ready to claim
 
@@ -13,15 +13,18 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P2 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | api | `apps/api/app/destinations/localized.py` |
+| P2 | [seed 的韓文假名泰文名稱被當成中文標籤輸出](open/2026-09-06-non-chinese-seed-names-as-chinese-labels.md) | api | `apps/api/app/hotspots/catalog.py`<br>`apps/api/app/localized_names.py` |
+| P2 | [Wikidata 標籤原封不動存入，消歧義括號會顯示給使用者](open/2026-09-06-wikidata-labels-stored-verbatim.md) | api | `apps/api/app/hotspots/wikidata_labels.py` |
+| P2 | [國定假日資料：台日韓 2026-2027 進版控，日曆看得見連假與補班](open/2026-09-06-public-holidays-tw-jp-kr.md) | api | `apps/api/app/holidays`<br>`apps/api/app/main.py`<br>`apps/api/app/cli.py`<br>`apps/api/tests/test_public_holidays.py`<br>`apps/web/lib/holidays.ts`<br>`apps/web/components/date-range-picker.tsx`<br>`docs/public-holidays.md` |
+| P2 | [航班來源擴充讀舊資料沒有防護：型別不符的 search id 會直接 500](open/2026-09-06-expand-flight-sources-guard.md) | api | `apps/api/app/search/router.py`<br>`apps/api/tests/test_search_flight_sources.py` |
 | P2 | [AI 備援警告把 provider 名稱與 Python 例外類別秀給旅客看](open/2026-09-06-ai-warning-copy.md) | api | `apps/api/app/ai/itinerary.py`<br>`apps/api/tests/test_ai_itinerary.py` |
-| P3 | [PWA、Android share target 與今日檢視](open/2026-09-06-pwa-share-target-today-view.md) | web | `apps/web/app/manifest.ts`<br>`apps/web/public`<br>`apps/web/components/today-view.tsx` |
-| P3 | [Measure the flood before widening ALLOWED_TYPES with temple, shrine and museum types](open/2026-09-06-measure-the-flood-before-widening-allowed.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/tests/test_hotspot_discovery.py` |
-| P3 | [美食與景點頁的國家／城市名稱在 en／ja／ko 仍是繁中](open/2026-09-06-food-hotspot-place-names-i18n.md) | api | `apps/api/app/foods/router.py`<br>`apps/api/app/foods/service.py`<br>`apps/api/app/foods/area_catalog.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/api/app/localized_names.py`<br>`apps/api/app/destinations/localized.py` |
+| P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | ops | `docs/korea-tourism-tourapi.md`<br>`docs/hotspot-intelligence.md`<br>`tools/probe_tourapi.py` |
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | claude-opus-5 | 2026-09-06T13:20:48Z | `claude/place-names-i18n` |
 
 ## In review
 
@@ -39,23 +42,21 @@ _Nothing here._
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P1 | [公開頁精簡：景點卡動作分層、首頁膠囊溢出、排行榜第一屏](open/2026-09-06-simplify-public-cards.md) | active work in the same scope |
-| P2 | [待安排地點進入 AI 候選集（PR 8）](open/2026-09-06-paste-inbox-into-candidates.md) | active work in the same scope |
 | P2 | [手機版行程頁的浮動元件佔掉三分之一畫面](open/2026-09-06-planner-mobile-chrome.md) | active work in the same scope |
 | P2 | [行程天氣面板在日期超出預報範圍時仍列出 10 天無關天氣](open/2026-09-06-trip-weather-out-of-range.md) | active work in the same scope |
 | P2 | [後台審核頁在看到第一筆待審之前先給 30 個控制項](open/2026-09-06-admin-review-density.md) | active work in the same scope |
 | P3 | [後台其餘三個面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n-remaining.md) | active work in the same scope |
-| P3 | [路線卡與路線面板的文案硬編碼繁中](open/2026-09-06-route-copy-i18n.md) | active work in the same scope |
 | P3 | [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](open/2026-09-06-admin-load-error-copy.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-06 [後台 AI 規劃連線測試送空候選，看不見真正會壞的那一步](done/2026-09-06-admin-planner-test-real-candidates.md)
+- 2026-09-06 [zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位](done/2026-09-06-zh-cn-area-labels-traditional.md)
+- 2026-09-06 [東京 AI 行程一律 500：一筆種子的 20 分鐘低於 planner 下限](done/2026-09-06-tokyo-planner-duration-500.md)
+- 2026-09-06 [路線卡與路線面板的文案硬編碼繁中](done/2026-09-06-route-copy-i18n.md)
+- 2026-09-06 [美食與景點頁的國家／城市名稱在 en／ja／ko 仍是繁中](done/2026-09-06-food-hotspot-place-names-i18n.md)
+- 2026-09-06 [待安排地點進入 AI 候選集（PR 8）](done/2026-09-06-paste-inbox-into-candidates.md)
+- 2026-09-06 [PWA、Android share target 與今日檢視](done/2026-09-06-pwa-share-target-today-view.md)
+- 2026-09-06 [Measure the flood before widening ALLOWED_TYPES with temple, shrine and museum types](done/2026-09-06-measure-the-flood-before-widening-allowed.md)
 - 2026-09-06 [營業時間感知排程：AI 排程不把景點排在打烊時段](done/2026-09-06-opening-hours-aware-scheduling.md)
 - 2026-09-06 [貼 Google Maps 連結加景點（待安排 inbox）](done/2026-09-06-paste-maps-links-ingest.md)
-- 2026-09-06 [已存行程頁掛上分潤選項](done/2026-09-06-trip-affiliate-options.md)
-- 2026-09-06 [列印版行程表（一天一頁的 A5 列印樣式）](done/2026-09-06-printable-itinerary.md)
-- 2026-09-06 [行程狀態標籤與封面圖](done/2026-09-06-trip-status-and-cover.md)
-- 2026-09-06 [分享頁「存成我的行程」與 QR code](done/2026-09-06-share-fork-and-qr.md)
-- 2026-09-06 [ICS 行事曆匯出](done/2026-09-06-ics-calendar-export.md)
-- 2026-09-06 [編輯後不打 provider 也要把 DB 的行程時間重新推算](done/2026-09-06-route-projection-only-pass.md)
-- 2026-09-06 [ko 與 ja 的景點名稱多半退回英文](done/2026-09-06-ko-ja-names-fall-back-to-english.md)
-- 2026-09-06 [zh-CN 的景點名稱 568 筆全部是繁體](done/2026-09-06-zh-cn-names-are-traditional.md)

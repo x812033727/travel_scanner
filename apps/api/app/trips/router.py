@@ -22,6 +22,8 @@ from app.ai.itinerary import (
     AIItineraryRequest,
     AIPlannerCandidate,
     AIPlanningResult,
+    clamp_candidate_access,
+    clamp_candidate_duration,
 )
 from app.auth.schemas import Currency
 from app.auth.service import CurrentUser
@@ -42,6 +44,7 @@ from app.models import (
     SearchRequest,
     TripDayNote,
     TripExpense,
+    TripPlaceCandidate,
     TripPlan,
     TripPlanItem,
     TripRouteDaySetting,
@@ -1233,6 +1236,112 @@ def _planner_availability(
     }
 
 
+# A pasted place is offered after the catalogue's own interest matches but before its
+# leftovers: the traveller asked for this one by hand, and it is still only an offer.
+INBOX_CANDIDATE_CATEGORY = "custom"
+INBOX_CANDIDATE_DURATION_MINUTES = 60
+
+
+async def _retire_used_inbox_rows(
+    session: AsyncSession,
+    trip_id: UUID,
+    written: list[TripPlanItem],
+) -> None:
+    """A pasted place the planner has just used is no longer waiting for a day."""
+    used = {
+        str(item.data.get("candidate_key"))
+        for item in written
+        if str(item.data.get("candidate_key") or "").startswith("inbox:")
+    }
+    identifiers = [key.removeprefix("inbox:") for key in used]
+    if not identifiers:
+        return
+    await session.execute(
+        update(TripPlaceCandidate)
+        .where(
+            TripPlaceCandidate.trip_plan_id == trip_id,
+            TripPlaceCandidate.id.in_([UUID(value) for value in identifiers]),
+        )
+        .values(status="used")
+    )
+
+
+async def _inbox_candidates(session: AsyncSession, trip_id: UUID) -> list[AIPlannerCandidate]:
+    """The trip's waiting list, as candidates the planner may choose.
+
+    Only rows we can place: the planner clusters by distance and every stop it writes has
+    to be routable, so a paste we could not locate stays in the list for the traveller to
+    position by hand. The order is fixed — arrival, then id — so preview and apply build
+    the same list and the signature check keeps meaning what it says.
+    """
+    rows = list(
+        (
+            await session.scalars(
+                select(TripPlaceCandidate)
+                .where(
+                    TripPlaceCandidate.trip_plan_id == trip_id,
+                    TripPlaceCandidate.status == "inbox",
+                )
+                .order_by(TripPlaceCandidate.created_at, TripPlaceCandidate.id)
+            )
+        ).all()
+    )
+    candidates: list[AIPlannerCandidate] = []
+    for rank, row in enumerate(rows):
+        if row.latitude is None or row.longitude is None:
+            continue
+        names = (row.names_json or {}).get("title") or {}
+        candidates.append(
+            AIPlannerCandidate(
+                key=f"inbox:{row.id}",
+                kind="inbox",
+                name=row.title,
+                names={
+                    locale: value
+                    for locale, value in names.items()
+                    if isinstance(value, str) and value
+                },
+                category=INBOX_CANDIDATE_CATEGORY,
+                latitude=float(row.latitude),
+                longitude=float(row.longitude),
+                duration_minutes=INBOX_CANDIDATE_DURATION_MINUTES,
+                map_links=(
+                    [{"provider": "google", "url": row.maps_url}] if row.maps_url else []
+                ),
+                hotspot_id=row.hotspot_id,
+                # rank starts at 1: the catalogue ranks from there too.
+                rank=rank + 1,
+            )
+        )
+    return candidates
+
+
+async def _load_trip_candidates(
+    session: AsyncSession,
+    trip: TripPlan,
+    preferences: SearchPreferences,
+    *,
+    start_date: date,
+    end_date: date,
+    locale: str = "zh-TW",
+) -> list[AIPlannerCandidate]:
+    """Everything the planner may pick from for this trip: the catalogue and the paste box.
+
+    Every path that plans a trip goes through here. They have to: preview records a
+    signature of what it offered and apply re-derives it, so a path that loaded a
+    different set would turn every apply into a conflict.
+    """
+    catalogue = await _load_ai_planner_candidates(
+        session,
+        trip.destination_name or "",
+        preferences,
+        start_date=start_date,
+        end_date=end_date,
+        locale=locale,
+    )
+    return [*catalogue, *await _inbox_candidates(session, trip.id)]
+
+
 async def _load_ai_planner_candidates(
     session: AsyncSession,
     destination_name: str,
@@ -1281,11 +1390,11 @@ async def _load_ai_planner_candidates(
             category=hotspot.category,
             latitude=hotspot.latitude,
             longitude=hotspot.longitude,
-            duration_minutes=hotspot.recommended_duration_minutes,
+            duration_minutes=clamp_candidate_duration(hotspot.recommended_duration_minutes),
             map_links=hotspot.map_links,
             hotspot_id=hotspot.hotspot_id,
             depth_kind=("day_trip" if hotspot.depth_kind == "day_trip" else "urban_local"),
-            access_minutes=hotspot.access_minutes,
+            access_minutes=clamp_candidate_access(hotspot.access_minutes),
             opening_hours=hotspot.opening_hours,
             is_cross_city=hotspot.is_cross_city,
             rank=rank,
@@ -3114,9 +3223,9 @@ async def _build_ai_planning(
     )
     travelers = Travelers.model_validate(trip.data.get("travelers", {}))
     preferences = SearchPreferences.model_validate(trip.data.get("preferences", {}))
-    candidates = await _load_ai_planner_candidates(
+    candidates = await _load_trip_candidates(
         session,
-        trip.destination_name or "",
+        trip,
         preferences,
         start_date=target_date or trip.start_date,
         end_date=target_date or trip.end_date,
@@ -3336,9 +3445,9 @@ async def generate_trip_itinerary(
         travelers = Travelers.model_validate(trip.data.get("travelers", {}))
         preferences = SearchPreferences.model_validate(trip.data.get("preferences", {}))
         settings = await load_runtime_settings(session)
-        candidates = await _load_ai_planner_candidates(
+        candidates = await _load_trip_candidates(
             session,
-            trip.destination_name or "",
+            trip,
             preferences,
             start_date=target_date or trip.start_date,
             end_date=target_date or trip.end_date,
@@ -3527,9 +3636,9 @@ async def apply_trip_itinerary_preview(
         day_date=target_date,
     )
     preferences = SearchPreferences.model_validate(trip.data.get("preferences", {}))
-    candidates = await _load_ai_planner_candidates(
+    candidates = await _load_trip_candidates(
         session,
-        trip.destination_name or "",
+        trip,
         preferences,
         start_date=target_date or cast(date, trip.start_date),
         end_date=target_date or cast(date, trip.end_date),
@@ -3585,6 +3694,7 @@ async def apply_trip_itinerary_preview(
             )
         generated_records = _replan_records(trip.id, plan)
         session.add_all(generated_records)
+        await _retire_used_inbox_rows(session, trip.id, generated_records)
         all_rows = [*plan.preserved, *kept_rows, *generated_records]
         canonicalize_positions(all_rows)
         settings = await load_runtime_settings(session)

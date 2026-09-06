@@ -115,7 +115,8 @@ def test_area_names_fall_back_per_locale() -> None:
     area = area_by_code("NRT", "shibuya")
     assert area is not None
     assert area_name(area, "zh-TW") == "澀谷／原宿"
-    assert area_name(area, "zh-CN") == "澀谷／原宿"
+    # zh-CN used to fall straight back to Traditional; the table now answers first.
+    assert area_name(area, "zh-CN") == "涩谷／原宿"
     assert area_name(area, "ja") == "渋谷・原宿"
     assert area_name(area, "en") == "Shibuya & Harajuku"
     assert area_name(area, "ko") == "Shibuya & Harajuku"
@@ -124,3 +125,25 @@ def test_area_names_fall_back_per_locale() -> None:
     seoul = area_by_code("ICN", "hongdae")
     assert seoul is not None
     assert area_name(seoul, "ko") == "홍대·합정"
+
+
+def test_simplified_readers_get_simplified_area_names_where_the_scripts_differ() -> None:
+    """Every area served Traditional characters to zh-CN before the table existed."""
+    from app.hotspots.areas import SIMPLIFIED_AREA_NAMES, HotspotArea, area_name
+
+    area = HotspotArea("shibuya", {"zh-TW": "澀谷／原宿", "en": "Shibuya"}, 0.0, 0.0, 1.0)
+    if "澀谷／原宿" in SIMPLIFIED_AREA_NAMES:
+        assert area_name(area, "zh-CN") == SIMPLIFIED_AREA_NAMES["澀谷／原宿"]
+    # A name written the same way in both scripts has no entry and falls back.
+    same = HotspotArea("takao", {"zh-TW": "高尾山", "en": "Mount Takao"}, 0.0, 0.0, 1.0)
+    assert area_name(same, "zh-CN") == "高尾山"
+
+
+def test_the_simplified_table_only_holds_names_the_catalog_actually_uses() -> None:
+    """A stale key is a silent no-op, so the table must not drift from the catalog."""
+    from app.hotspots.areas import HOTSPOT_AREAS, SIMPLIFIED_AREA_NAMES
+
+    catalog = {area.names["zh-TW"] for areas in HOTSPOT_AREAS.values() for area in areas}
+    assert set(SIMPLIFIED_AREA_NAMES) <= catalog
+    # An entry equal to its key would be a conversion that changed nothing.
+    assert all(key != value for key, value in SIMPLIFIED_AREA_NAMES.items())

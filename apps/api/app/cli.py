@@ -43,8 +43,8 @@ from app.hotspots.simplified_names import (
     acceptable,
     apply_conversions,
     convert_names,
-    drop_unusable_labels,
     seed_rows,
+    stored_label_count,
     write_rows,
 )
 from app.hotspots.wikidata_labels import BOOTSTRAP_FILES, fill_bootstrap_files
@@ -436,6 +436,7 @@ async def fill_simplified_names(
     apply: bool,
     max_output_tokens: int | None,
     mapping_file: Path | None,
+    source: str = "seeds",
 ) -> dict[str, Any]:
     """Convert, or apply a mapping produced by an earlier run.
 
@@ -443,10 +444,19 @@ async def fill_simplified_names(
     database is; the bootstrap files it edits are checked into the repository. So
     the two halves are separable: emit the mapping on the server, apply it here.
     """
-    paths = [BOOTSTRAP_DIR / name for name in BOOTSTRAP_FILES]
-    loaded = seed_rows(paths)
-    dropped = sum(drop_unusable_labels(rows) for _path, rows in loaded)
-    names = [str(row["name"]) for _path, rows in loaded for row in rows if row.get("name")]
+    if source == "areas":
+        # The area catalog is Python, not JSON, so this half only ever emits a mapping;
+        # the table it feeds is written by hand into areas.py and reviewed in the diff.
+        from app.hotspots.areas import HOTSPOT_AREAS
+
+        loaded = []
+        before = 0
+        names = sorted({area.names["zh-TW"] for areas in HOTSPOT_AREAS.values() for area in areas})
+    else:
+        paths = [BOOTSTRAP_DIR / name for name in BOOTSTRAP_FILES]
+        loaded = seed_rows(paths)
+        before = sum(stored_label_count(rows) for _path, rows in loaded)
+        names = [str(row["name"]) for _path, rows in loaded for row in rows if row.get("name")]
     if mapping_file:
         raw = cast(dict[str, Any], json.loads(_read_text(mapping_file)))
         pairs = cast(dict[str, str], raw.get("conversions", raw))
@@ -468,7 +478,10 @@ async def fill_simplified_names(
             )
         report = await convert_names(names, settings, provider_name=cast(Any, provider))
     written = 0
-    if apply:
+    # Writing a run that converted nothing would strip every existing label, which is
+    # how a failed vendor call once looked identical to a successful no-op.
+    refused = apply and (source == "areas" or bool(report.errors) or not report.converted)
+    if apply and not refused:
         for path, rows in loaded:
             written += apply_conversions(rows, report.converted)
             write_rows(path, rows)
@@ -482,10 +495,17 @@ async def fill_simplified_names(
         print(f"  check  {traditional} -> {simplified}")
     for traditional, simplified in report.rejected[:12]:
         print(f"  reject {traditional} -> {simplified}")
+    if refused:
+        print(
+            "refusing to write: "
+            + (f"{len(report.errors)} batch error(s)" if report.errors else "no conversions")
+            + f"; {before} existing zh-CN label(s) left untouched"
+        )
     return {
-        "applied": apply,
+        "applied": apply and not refused,
+        "refused": refused,
         "conversions": report.converted if not apply else {},
-        "dropped_non_simplified_labels": dropped,
+        "labels_before": before,
         "converted": len(report.converted),
         "unchanged": len(report.unchanged),
         "rejected": len(report.rejected),
@@ -713,6 +733,12 @@ def main() -> None:
         ),
     )
     simplified.add_argument("--provider", help="AI vendor (default: the configured one)")
+    simplified.add_argument(
+        "--source",
+        choices=("seeds", "areas"),
+        default="seeds",
+        help="What to convert: the hotspot seed files, or the area catalog (emit only)",
+    )
     simplified.add_argument("--max-output-tokens", type=int)
     simplified.add_argument(
         "--from-mapping",
@@ -798,20 +824,18 @@ def main() -> None:
         )
         print(json.dumps(summary, ensure_ascii=False, indent=2))
     elif args.command == "fill-simplified-names":
-        print(
-            json.dumps(
-                asyncio.run(
-                    fill_simplified_names(
-                        provider=args.provider,
-                        apply=args.apply,
-                        max_output_tokens=args.max_output_tokens,
-                        mapping_file=Path(args.from_mapping) if args.from_mapping else None,
-                    )
-                ),
-                ensure_ascii=False,
-                indent=2,
+        simplified_summary = asyncio.run(
+            fill_simplified_names(
+                provider=args.provider,
+                apply=args.apply,
+                max_output_tokens=args.max_output_tokens,
+                mapping_file=Path(args.from_mapping) if args.from_mapping else None,
+                source=args.source,
             )
         )
+        print(json.dumps(simplified_summary, ensure_ascii=False, indent=2))
+        if simplified_summary.get("refused"):
+            raise SystemExit(1)
     elif args.command == "fill-hotspot-labels":
         fill_hotspot_labels(
             args.file or list(BOOTSTRAP_FILES), args.dry_run, args.overwrite_original

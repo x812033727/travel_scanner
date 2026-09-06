@@ -18,6 +18,20 @@ from typing import Final
 from app.destinations.catalog import DESTINATIONS, DestinationProfile
 from app.i18n import LOCALES, Locale
 
+DESTINATIONS_BY_ID: Final[Mapping[str, DestinationProfile]] = {
+    profile.id: profile for profile in DESTINATIONS
+}
+# The rows outside the catalog carry an ISO code rather than the catalog's country name.
+COUNTRY_BY_CODE: Final[Mapping[str, str]] = {
+    "JP": "Japan",
+    "KR": "South Korea",
+    "TH": "Thailand",
+    "TW": "Taiwan",
+    "SG": "Singapore",
+    "HK": "Hong Kong",
+    "VN": "Vietnam",
+}
+
 TranslatedLocale = Locale  # every locale but zh-TW appears in the tables below
 TRANSLATED: Final[tuple[Locale, ...]] = ("en", "ja", "ko", "zh-CN")
 
@@ -284,6 +298,43 @@ def city_name(profile: DestinationProfile, locale: Locale) -> str:
     if locale == "zh-TW":
         return profile.city
     return CITY_NAMES.get(profile.id, {}).get(locale) or profile.english_name or profile.city
+
+
+def city_name_for(destination_id: str | None, locale: Locale, fallback: str) -> str:
+    """The city as the reader would write it, addressed by destination id.
+
+    The rows that carry place names outside the catalog — hotspots, merchants — know
+    their ``destination_id`` but not the profile, and they store the catalog's own
+    Traditional Chinese in ``city_name``. Passing that as ``fallback`` keeps a city the
+    catalog has never heard of readable instead of turning it into an id.
+    """
+    if locale == "zh-TW" or not destination_id:
+        return fallback
+    profile = DESTINATIONS_BY_ID.get(destination_id)
+    if profile is None:
+        return CITY_NAMES.get(destination_id, {}).get(locale) or fallback
+    return city_name(profile, locale)
+
+
+def english_name(profile: DestinationProfile) -> str:
+    """The destination's English name, for the field that claims to hold one.
+
+    19 of the 33 catalog rows leave ``english_name`` unset, and every reader fell back
+    to ``profile.city`` — the Traditional Chinese name — so a field called english_name
+    returned Chinese. ``CITY_NAMES`` already carries a checked English name for all 33,
+    so the fallback goes there first and only then to the catalog text.
+    """
+    return profile.english_name or CITY_NAMES.get(profile.id, {}).get("en") or profile.city
+
+
+def country_label_for(country_code: str | None, locale: Locale, fallback: str) -> str:
+    """The country as the reader would write it, addressed by ISO code."""
+    if locale == "zh-TW" or not country_code:
+        return fallback
+    country = COUNTRY_BY_CODE.get(country_code.upper())
+    if country is None:
+        return fallback
+    return COUNTRY_LABELS.get(country, {}).get(locale) or fallback
 
 
 def country_label(profile: DestinationProfile, locale: Locale) -> str:

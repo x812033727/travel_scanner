@@ -1,10 +1,11 @@
 import logging
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any
 
 import fakeredis.aioredis
 import pytest
 from httpx import ASGITransport, AsyncClient
+from pydantic import ValidationError as PydanticValidationError
 
 import app.admin.service as admin_service
 from app.admin.schemas import ProviderSettingsUpdate
@@ -1196,3 +1197,100 @@ async def test_navitime_connection_succeeds_through_rapidapi(
     assert admin_service._configured("navitime", Settings())[2] == (
         "缺少 API Base URL 或 API key；直接契約另需 Client ID"
     )
+
+
+@pytest.mark.asyncio
+async def test_ai_planner_connection_test_plans_with_real_candidates(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The test must load the candidates a real trip would get, not an empty list.
+
+    Sending ``candidates=[]`` is why this button stayed green while every Tokyo AI plan
+    returned a 500: building AIPlannerCandidate from stored metadata_json was the step
+    that raised, and the health check never reached it.
+    """
+    import app.trips.router as trip_router
+    from app.ai.itinerary import AIPlannerCandidate, AIPlanningResult, PlanningMetadata
+
+    loaded = [
+        AIPlannerCandidate(
+            key="hotspot:seed",
+            kind="hotspot",
+            name="淺草寺",
+            category="temple",
+            latitude=35.714,
+            longitude=139.796,
+            duration_minutes=90,
+        )
+    ]
+    seen: dict[str, object] = {}
+
+    async def fake_candidates(session: object, name: str, preferences: object, **kwargs: object):
+        seen["destination"] = name
+        seen["session"] = session
+        return loaded
+
+    async def fake_generate(self: object, request: object) -> AIPlanningResult:
+        seen["candidates"] = list(getattr(request, "candidates", []))
+        return AIPlanningResult(
+            itinerary=[],
+            planning=PlanningMetadata(
+                status="live",
+                provider="minimax",
+                model="MiniMax-M3",
+                generated_at=datetime.now(UTC),
+            ),
+        )
+
+    monkeypatch.setattr(trip_router, "_load_ai_planner_candidates", fake_candidates)
+    monkeypatch.setattr(admin_service.AIItineraryPlanner, "generate", fake_generate)
+
+    session = object()
+    message = await admin_service._test_provider(
+        "ai_planner",
+        Settings(),
+        object(),  # type: ignore[arg-type]
+        session,  # type: ignore[arg-type]
+    )
+
+    assert seen["session"] is session
+    assert seen["destination"] == admin_service.TEST_DESTINATION_NAME
+    assert seen["candidates"] == loaded
+    assert "minimax / MiniMax-M3" in message
+    assert "1 個候選地點" in message
+
+
+@pytest.mark.asyncio
+async def test_ai_planner_connection_test_fails_when_a_candidate_cannot_be_built(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A stored value the planner model rejects must fail the test, not pass it.
+
+    This is the regression the whole change exists for: with candidates=[] the same
+    situation reported success while the feature was down for a whole city.
+    """
+    import app.trips.router as trip_router
+    from app.ai.itinerary import AIPlannerCandidate
+
+    async def exploding_candidates(*_args: object, **_kwargs: object) -> list[object]:
+        # Exactly what a seed row below the planner's minimum slot used to raise.
+        AIPlannerCandidate(
+            key="hotspot:too-short",
+            kind="hotspot",
+            name="忠犬八公像",
+            category="landmark",
+            latitude=35.659,
+            longitude=139.700,
+            duration_minutes=20,
+        )
+        raise AssertionError("unreachable: the candidate above must not validate")
+
+    monkeypatch.setattr(trip_router, "_load_ai_planner_candidates", exploding_candidates)
+
+    with pytest.raises(PydanticValidationError):
+        await admin_service._test_provider(
+            "ai_planner",
+            Settings(),
+            object(),  # type: ignore[arg-type]
+            object(),  # type: ignore[arg-type]
+        )
