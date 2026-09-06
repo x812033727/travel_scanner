@@ -27,6 +27,18 @@ const RENEWAL_FALLBACK_MAX_AGE = 60 * 60;
 const RENEWAL_CAP_MAX_AGE = 60 * 60 * 24;
 
 /** The token from an upstream `Set-Cookie`, when the API slid the session forward. */
+/**
+ * The locale the API should answer in. The page the browser is showing wins (the client
+ * sends it as X-Travel-Locale on every call), then the preference remembered at sign-in,
+ * then the catalog's own language. Without the header an anonymous reader of /en or /ja
+ * got Chinese city names in every select, because the cookie only exists after sign-in.
+ */
+export function upstreamLocale(requested: string | null | undefined, remembered: string | null | undefined): string {
+  if (requested && SUPPORTED_LOCALES.has(requested)) return requested;
+  if (remembered && SUPPORTED_LOCALES.has(remembered)) return remembered;
+  return "zh-TW";
+}
+
 export function renewedSession(upstream: Response): { token: string; maxAge: number } | null {
   for (const cookie of upstream.headers.getSetCookie()) {
     const token = /^travel_access=([^;]+)/.exec(cookie)?.[1];
@@ -94,7 +106,7 @@ async function proxy(request: NextRequest, context: Context) {
   // tokens — so forwarding it as Authorization meant the renewal never ran and every
   // session died exactly one token lifetime after sign-in.
   if (token) headers.set("Cookie", `travel_access=${token}`);
-  headers.set("X-Travel-Locale", SUPPORTED_LOCALES.has(localeCookie || "") ? localeCookie! : "zh-TW");
+  headers.set("X-Travel-Locale", upstreamLocale(request.headers.get("x-travel-locale"), localeCookie));
   for (const name of ["idempotency-key", "last-event-id"]) {
     const value = request.headers.get(name);
     if (value) headers.set(name, value);

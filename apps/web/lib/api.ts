@@ -147,7 +147,7 @@ export function apiProblemMessage(problem: unknown, status: number): string {
 export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`/api/travel${path}`, {
     ...init,
-    headers: { "Content-Type": "application/json", ...(init?.headers || {}) },
+    headers: { "Content-Type": "application/json", "X-Travel-Locale": activeLocale(), ...(init?.headers || {}) },
     cache: "no-store",
   });
   if (!response.ok) {
