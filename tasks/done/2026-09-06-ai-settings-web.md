@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-ai-settings-web
 title: AI settings in the admin panel: vendor card, model dropdowns, per-feature models (web)
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T06:23:38Z
 created_at: 2026-09-06T06:23:05Z
-completed_at:
+completed_at: 2026-09-06T06:56:48Z
 branch: claude/ai-settings-consolidation
 depends_on: []
 scope:

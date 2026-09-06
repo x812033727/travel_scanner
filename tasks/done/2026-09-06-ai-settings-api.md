@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-ai-settings-api
 title: Consolidate AI vendor keys, model catalog and per-feature models (API)
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T06:23:36Z
 created_at: 2026-09-06T06:23:04Z
-completed_at:
+completed_at: 2026-09-06T06:56:44Z
 branch: claude/ai-settings-consolidation
 depends_on: []
 scope:

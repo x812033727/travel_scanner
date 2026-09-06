@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-stale-gemini-model-help
 title: Admin help text tells operators to avoid the model now shipped
-status: in-progress
+status: done
 priority: P3
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T06:23:09Z
 created_at: 2026-09-06T00:52:20Z
-completed_at:
+completed_at: 2026-09-06T06:56:51Z
 branch: claude/ai-settings-consolidation
 depends_on: []
 scope:
