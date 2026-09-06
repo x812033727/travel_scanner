@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-ko-ja-names-fall-back-to-english
 title: ko 與 ja 的景點名稱多半退回英文
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-06T10:10:29Z
 created_at: 2026-09-06T09:56:52Z
-completed_at:
+completed_at: 2026-09-06T10:32:41Z
 branch: claude/wikidata-locale-labels
 depends_on: []
 scope:
@@ -36,13 +36,13 @@ scope:
 
 ## Definition of done
 
-- [ ] 有一份清單分出「應該有在地名稱但目前是英文」與「本來就用英文」。
-- [ ] 前者補上 ja／ko 名稱，覆蓋率有可量測的提升。
+- [x] 有一份清單分出「應該有在地名稱但目前是英文」與「本來就用英文」。
+- [x] 前者補上 ja／ko 名稱，覆蓋率有可量測的提升。
 
 ## Steps
 
-- [ ] 用 Wikidata 標籤（`app/hotspots/wikidata_labels.py` 已有這條路）先補能自動對上的。
-- [ ] 剩下的列出來，決定是人工補還是接受英文。
+- [x] 用 Wikidata 標籤（`app/hotspots/wikidata_labels.py` 已有這條路）先補能自動對上的。
+- [x] 剩下的列出來，決定是人工補還是接受英文。
 
 ## How to verify
 
@@ -53,3 +53,15 @@ SELECT l.locale, count(*) FILTER (WHERE l.name = e.name) FROM hotspot_localizati
 ## Notes
 
 zh-CN 是不同的問題（整批複製繁體），見 [[2026-09-06-zh-cn-names-are-traditional]]。
+
+## Result
+
+跑了從來沒跑過的 `fill-hotspot-labels`（Wikidata，CC0）。560 個 seed 有 wikidata id，
+541 筆補上標籤：en 511、ja 339、ko 339，另外 546 筆原文名稱（local_name）。
+
+剩下沒有 ja／ko 標籤的 154 筆多半是泰國、越南景點，Wikidata 本來就只有英文，
+退回英文是對的，不是缺漏。這條線到此為止；要再提升覆蓋率得換來源或人工補。
+
+順帶修正：Wikidata 的 zh-cn 標籤不可靠（239 筆裡 26 筆仍是繁體、數筆指向別的地方），
+所以 zh-CN 從 `STORED_LOCALES` 移除，改由 [[2026-09-06-zh-cn-names-are-traditional]] 的
+轉換器獨佔。
