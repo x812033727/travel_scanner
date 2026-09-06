@@ -11,11 +11,20 @@ from app.hotspots import service
 RankingsFake = Callable[..., Awaitable[dict[str, Any]]]
 
 
-def ranked(rank: int, *, verified: bool, category: str = "culture") -> dict[str, Any]:
+def ranked(
+    rank: int,
+    *,
+    verified: bool,
+    category: str = "culture",
+    themes: tuple[str, ...] = (),
+) -> dict[str, Any]:
     return {
         "id": UUID(int=rank),
         "name": f"景點 {rank}",
         "category": category,
+        "themes": [
+            {"slug": slug, "kind": "season", "name": slug, "months": []} for slug in themes
+        ],
         "latitude": 35.6 + rank * 0.001,
         "longitude": 139.7 + rank * 0.001,
         "map_links": [{"provider": "google", "url": "https://maps.example/x"}] if verified else [],
@@ -34,21 +43,29 @@ def ranked(rank: int, *, verified: bool, category: str = "culture") -> dict[str,
     }
 
 
-def paging_fake(ranking: list[dict[str, Any]], calls: list[int | None]) -> RankingsFake:
+def paging_fake(
+    ranking: list[dict[str, Any]],
+    calls: list[int | None],
+    themes_seen: list[str | None] | None = None,
+) -> RankingsFake:
     async def fake_list_rankings(
         session: object,
         *,
         after_rank: int | None = None,
         limit: int = 20,
         category: str | None = None,
+        theme: str | None = None,
         **_: object,
     ) -> dict[str, Any]:
         calls.append(after_rank)
+        if themes_seen is not None:
+            themes_seen.append(theme)
         rows = [
             item
             for item in ranking
             if (after_rank is None or item["rank"] > after_rank)
             and (category is None or item["category"] == category)
+            and (theme is None or theme in {entry["slug"] for entry in item.get("themes", [])})
         ]
         page = rows[:limit]
         has_more = len(rows) > limit
@@ -147,3 +164,45 @@ async def test_planner_gives_up_after_the_page_cap(monkeypatch: pytest.MonkeyPat
 
     assert rows == []
     assert len(calls) == service.PLANNER_RANKING_MAX_PAGES
+
+
+@pytest.mark.asyncio
+async def test_collect_ranked_pages_one_theme(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A theme filter reaches list_rankings unchanged, so the planner can pull
+    every 賞櫻 spot of a city before it fills the pool from the general ranking."""
+    ranking = [
+        ranked(rank, verified=True, themes=("sakura",) if rank % 3 == 0 else ())
+        for rank in range(1, 31)
+    ]
+    calls: list[int | None] = []
+    themes_seen: list[str | None] = []
+    monkeypatch.setattr(service, "list_rankings", paging_fake(ranking, calls, themes_seen))
+
+    rows = await service._collect_ranked(
+        None,  # type: ignore[arg-type]
+        city_code=None,
+        destination_id="tokyo",
+        style="all",
+        wanted=3,
+        theme="sakura",
+    )
+
+    assert themes_seen == ["sakura"]
+    assert [row["rank"] for row in rows] == [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
+    assert all("sakura" in {entry["slug"] for entry in row["themes"]} for row in rows)
+
+
+@pytest.mark.asyncio
+async def test_planner_rows_carry_theme_slugs(monkeypatch: pytest.MonkeyPatch) -> None:
+    ranking = [
+        ranked(rank, verified=True, themes=("sakura", "market-street") if rank == 1 else ())
+        for rank in range(1, 15)
+    ]
+    monkeypatch.setattr(service, "list_rankings", paging_fake(ranking, []))
+
+    rows = await service.load_planner_hotspots(
+        None, destination_id="tokyo", limit=12, days=6, style="all"  # type: ignore[arg-type]
+    )
+
+    assert rows[0].themes == ["sakura", "market-street"]
+    assert rows[1].themes == []

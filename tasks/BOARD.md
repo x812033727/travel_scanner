@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**6 open · 1 in progress · 2 blocked · 5 in review · 83 done**
+**8 open · 2 in progress · 2 blocked · 5 in review · 83 done**
 
 ## Ready to claim
 
@@ -14,12 +14,14 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P2 | [AI 備援警告把 provider 名稱與 Python 例外類別秀給旅客看](open/2026-09-06-ai-warning-copy.md) | api | `apps/api/app/ai/itinerary.py`<br>`apps/api/tests/test_ai_itinerary.py` |
+| P3 | [四個景點的分類被標成 shopping，其實是公園、城跡與神社](open/2026-09-06-seed-category-shopping-mistakes.md) | api | `apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_hotspot_seed_categories.py` |
 
 ## In progress
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | claude-opus-5 | 2026-09-06T13:20:48Z | `claude/place-names-i18n` |
+| [熱門景點季節與購物主題：資料模型、種子與公開 API](open/2026-09-06-hotspot-themes-api.md) | claude-opus-5 | 2026-09-06T14:48:16Z | `claude/attractions-seasonal-categories-4817d7` |
 
 ## In review
 
@@ -41,6 +43,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [手機版行程頁的浮動元件佔掉三分之一畫面](open/2026-09-06-planner-mobile-chrome.md) | active work in the same scope |
 | P2 | [行程天氣面板在日期超出預報範圍時仍列出 10 天無關天氣](open/2026-09-06-trip-weather-out-of-range.md) | active work in the same scope |
 | P2 | [後台審核頁在看到第一筆待審之前先給 30 個控制項](open/2026-09-06-admin-review-density.md) | active work in the same scope |
+| P2 | [選 Gemini 做景點介紹搜尋會 500：run 表的 provider 檢查沒有 gemini](open/2026-09-06-gemini-guide-run-check.md) | active work in the same scope |
 | P3 | [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](open/2026-09-06-admin-load-error-copy.md) | active work in the same scope |
 
 ## Recently finished

@@ -81,6 +81,8 @@ class ItineraryHotspot(BaseModel):
     is_cross_city: bool = False
     # Google's cached periods, empty when the cache has expired or never existed.
     opening_hours: dict[str, Any] = Field(default_factory=dict)
+    # Theme slugs (seasons and shop types) from hotspot_theme_links, in catalog order.
+    themes: list[str] = Field(default_factory=list)
 
 
 class ItineraryFood(BaseModel):
