@@ -1,7 +1,7 @@
 from collections import Counter
 from urllib.parse import parse_qs, urlparse
 
-from app.foods.catalog import FOOD_SEEDS
+from app.foods.catalog import FOOD_SEEDS, OFFICIAL_FOOD_SOURCES
 from app.foods.merchant_catalog import (
     MERCHANT_DIRECT_SOURCE_SEEDS,
     MERCHANT_SEEDS,
@@ -12,18 +12,14 @@ from app.hotspots.maps import build_map_links
 from app.i18n import LOCALES
 
 
-def test_food_catalog_has_exactly_ten_complete_items_per_country() -> None:
-    assert len(FOOD_SEEDS) == 70
-    assert Counter(item.country_code for item in FOOD_SEEDS) == {
-        "HK": 10,
-        "JP": 10,
-        "KR": 10,
-        "SG": 10,
-        "TH": 10,
-        "TW": 10,
-        "VN": 10,
-    }
-    assert len({item.slug for item in FOOD_SEEDS}) == 70
+def test_food_catalog_has_at_least_ten_complete_items_per_country() -> None:
+    # Floors, matching validate_catalog. Asserting equality here would put back the ceiling
+    # that made a city with no dish of its own impossible to serve.
+    assert len(FOOD_SEEDS) >= 70
+    counts = Counter(item.country_code for item in FOOD_SEEDS)
+    assert set(counts) == {"HK", "JP", "KR", "SG", "TH", "TW", "VN"}
+    assert all(count >= 10 for count in counts.values())
+    assert len({item.slug for item in FOOD_SEEDS}) == len(FOOD_SEEDS)
     for item in FOOD_SEEDS:
         assert set(item.localized_names) == set(LOCALES)
         assert set(item.localized_summaries) == set(LOCALES)
@@ -126,22 +122,24 @@ def test_unverified_or_search_only_map_identity_is_not_published() -> None:
 
 
 def test_merchant_candidates_cover_all_relations_but_are_not_fake_map_matches() -> None:
-    assert len(MERCHANT_SEEDS) == 155
+    assert len(MERCHANT_SEEDS) >= 155
     actual_pairs = {
         (merchant.destination_id, food_slug)
         for merchant in MERCHANT_SEEDS
         for food_slug in merchant.food_slugs
     }
-    assert len(actual_pairs) == 173
+    assert len(actual_pairs) >= 173
     assert all(merchant.source_url.startswith("https://") for merchant in MERCHANT_SEEDS)
     assert all(
         merchant.source_title == "Official destination food guide (regional context only)"
         for merchant in MERCHANT_SEEDS
     )
-    assert len(OFFICIAL_DESTINATION_FOOD_SOURCES) == 30
-    assert set(OFFICIAL_DESTINATION_FOOD_SOURCES) == {
-        merchant.destination_id for merchant in MERCHANT_SEEDS
-    }
+    assert len(OFFICIAL_DESTINATION_FOOD_SOURCES) >= 30
+    # Every merchant's destination must have an official guide; the reverse is allowed so a
+    # city's guide can be added in the same change that gives the city its first restaurant.
+    assert {merchant.destination_id for merchant in MERCHANT_SEEDS} <= set(
+        OFFICIAL_DESTINATION_FOOD_SOURCES
+    )
     assert not any(
         stale in url
         for url in OFFICIAL_DESTINATION_FOOD_SOURCES.values()
@@ -154,23 +152,49 @@ def test_merchant_candidates_cover_all_relations_but_are_not_fake_map_matches() 
     )
 
 
-def test_non_japan_direct_sources_are_verified_and_country_balanced() -> None:
+def test_the_two_repaired_official_sources_stay_repaired() -> None:
+    """Pins the addresses fixed in 0039; both predecessors had rotted in different ways.
+
+    The JP page answered 404 outright, and it is the first source of all ten Japanese
+    dishes. The TW address still answered 200 but had become a New Taipei City page, which
+    is the worse failure of the two because nothing about it looks broken.
+    """
+
+    assert OFFICIAL_FOOD_SOURCES["JP"] == "https://www.japan.travel/en/things-to-do/eat-and-drink/"
+    assert OFFICIAL_FOOD_SOURCES["TW"] == "https://eng.taiwan.net.tw/m1.aspx?sNo=0002026"
+    taiwan = {"taipei", "taichung", "kaohsiung", "tainan"}
+    for destination in taiwan:
+        assert OFFICIAL_DESTINATION_FOOD_SOURCES[destination] == OFFICIAL_FOOD_SOURCES["TW"]
+
+
+def test_direct_sources_are_verified_and_country_balanced() -> None:
     merchant_country = {merchant.slug: merchant.country_code for merchant in MERCHANT_SEEDS}
-    assert len(MERCHANT_DIRECT_SOURCE_SEEDS) == 47
-    assert len({seed.merchant_slug for seed in MERCHANT_DIRECT_SOURCE_SEEDS}) == 47
+    assert len(MERCHANT_DIRECT_SOURCE_SEEDS) == 63
+    assert len({seed.merchant_slug for seed in MERCHANT_DIRECT_SOURCE_SEEDS}) == 63
+    # Japan appears here for the first time. Every JP entry belongs to Okinawa, Yokohama or
+    # Kamakura; the older Japanese merchants still have only their destination guide, which
+    # is why they stay pending.
     assert Counter(
         merchant_country[seed.merchant_slug] for seed in MERCHANT_DIRECT_SOURCE_SEEDS
     ) == {
         "HK": 7,
+        "JP": 16,
         "KR": 6,
         "SG": 7,
         "TH": 6,
         "TW": 14,
         "VN": 7,
     }
-    assert sum(seed.official_website_url is not None for seed in MERCHANT_DIRECT_SOURCE_SEEDS) == 21
+    assert sum(seed.official_website_url is not None for seed in MERCHANT_DIRECT_SOURCE_SEEDS) == 28
+    japanese = {
+        seed.merchant_slug
+        for seed in MERCHANT_DIRECT_SOURCE_SEEDS
+        if merchant_country[seed.merchant_slug] == "JP"
+    }
+    assert all(
+        slug.startswith(("okinawa-", "yokohama-", "kamakura-")) for slug in japanese
+    )
     for seed in MERCHANT_DIRECT_SOURCE_SEEDS:
-        assert merchant_country[seed.merchant_slug] != "JP"
         assert seed.source_url.startswith("https://")
         assert seed.claims
         assert not any(

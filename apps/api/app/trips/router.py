@@ -27,7 +27,14 @@ from app.db import get_session
 from app.destinations.catalog import destination_for_code, match_destination
 from app.foods.service import load_planner_foods
 from app.hotspots.service import load_planner_hotspots
+from app.i18n import active_locale
 from app.infra import enforce_named_rate_limit, get_redis
+from app.localized_names import (
+    ITEM_LOCATION_KEY,
+    ITEM_TITLE_KEY,
+    item_names,
+    resolve_item_field,
+)
 from app.models import (
     SearchRequest,
     TripPlan,
@@ -86,6 +93,7 @@ from app.trips.routing import (
 )
 from app.trips.schedule import (
     FLIGHT_SYSTEM_ROLES,
+    MEAL_PLACEHOLDER_LABELS,
     active_route_rows,
     apply_schedule_defaults,
     canonicalize_positions,
@@ -99,6 +107,7 @@ from app.trips.schedule import (
 )
 from app.usage.service import (
     COMMON_LIMITS,
+    USAGE_OPERATIONS,
     commit_reservation,
     release_reservation,
     reserve_use,
@@ -513,6 +522,8 @@ def item_record(
         position=item.position,
         title=item.title,
         location_name=item.location_name,
+        # Only planner output carries per-locale labels; client rows are free text.
+        names_json=dict(getattr(item, "names", None) or {}),
         start_time=item.start_time,
         end_time=item.end_time,
         latitude=Decimal(str(item.latitude)) if item.latitude is not None else None,
@@ -530,13 +541,40 @@ def item_record(
     )
 
 
-def apply_item_request(record: TripPlanItem, item: ItineraryItemRequest) -> None:
+def apply_item_request(
+    record: TripPlanItem, item: ItineraryItemRequest, *, locale: str | None = None
+) -> None:
+    # The client echoes the label it was shown (the stored text or its
+    # translation for the request locale); the stored text then stays as it
+    # is, so a catalog stop keeps one canonical title however often it is
+    # saved from other languages. Anything else is a rename by the traveller,
+    # and the catalog's per-locale labels no longer describe the row.
+    shown_in = locale or active_locale()
+    names = dict(record.names_json or {})
+    title: str | None = item.title
+    location_name = item.location_name
+    for field, incoming in (
+        (ITEM_TITLE_KEY, item.title),
+        (ITEM_LOCATION_KEY, item.location_name),
+    ):
+        if field not in names:
+            continue
+        stored = cast(str | None, getattr(record, field))
+        localized = resolve_item_field(names, field, shown_in, fallback=stored)
+        if (incoming or "") in {stored or "", localized or ""}:
+            if field == ITEM_TITLE_KEY:
+                title = stored
+            else:
+                location_name = stored
+        else:
+            names.pop(field)
+    record.names_json = names
     record.item_type = item.item_type
     record.offer_id = item.offer_id
     record.day_date = item.day_date
     record.position = item.position
-    record.title = item.title
-    record.location_name = item.location_name
+    record.title = title
+    record.location_name = location_name
     record.start_time = item.start_time
     record.end_time = item.end_time
     record.latitude = Decimal(str(item.latitude)) if item.latitude is not None else None
@@ -553,15 +591,34 @@ def apply_item_request(record: TripPlanItem, item: ItineraryItemRequest) -> None
     record.is_skipped = item.is_skipped
 
 
-def serialize_item(item: TripPlanItem) -> dict[str, Any]:
+def serialize_item(
+    item: TripPlanItem, *, locale: str | None = None, localized: bool = True
+) -> dict[str, Any]:
+    """Serialize one row, labelling catalog-backed stops in the request locale.
+
+    ``names`` always carries every stored label (five site locales plus the
+    original script) so a client can show the original text next to the title.
+    ``localized=False`` returns the stored text, for server-side round trips.
+    """
+
+    names = item.names_json or {}
+    title = item.title
+    location_name = item.location_name
+    if localized:
+        shown_in = locale or active_locale()
+        title = resolve_item_field(names, ITEM_TITLE_KEY, shown_in, fallback=item.title)
+        location_name = resolve_item_field(
+            names, ITEM_LOCATION_KEY, shown_in, fallback=item.location_name
+        )
     return {
         "id": str(item.id),
         "item_type": item.item_type,
         "offer_id": str(item.offer_id) if item.offer_id else None,
         "day_date": item.day_date,
         "position": item.position,
-        "title": item.title or item.item_type,
-        "location_name": item.location_name,
+        "title": title or item.item_type,
+        "location_name": location_name,
+        "names": names,
         "start_time": item.start_time,
         "end_time": item.end_time,
         "latitude": float(item.latitude) if item.latitude is not None else None,
@@ -848,11 +905,15 @@ def _planning_request(
     candidates: list[AIPlannerCandidate] | None = None,
     first_day_available_from: str = "14:00",
     last_day_available_until: str = "16:00",
+    trip_start_date: date | None = None,
+    trip_end_date: date | None = None,
 ) -> AIItineraryRequest:
     return AIItineraryRequest(
         destination_name=destination_name,
         start_date=start_date,
         end_date=end_date,
+        trip_start_date=trip_start_date or start_date,
+        trip_end_date=trip_end_date or end_date,
         timezone=timezone,
         route_preference=route_preference,
         travelers=travelers,
@@ -978,6 +1039,7 @@ async def _load_ai_planner_candidates(
             key=f"hotspot:{hotspot.hotspot_id}",
             kind="hotspot",
             name=hotspot.name,
+            names=hotspot.names,
             category=hotspot.category,
             latitude=hotspot.latitude,
             longitude=hotspot.longitude,
@@ -1013,6 +1075,8 @@ async def _load_ai_planner_candidates(
                 kind="merchant",
                 name=food.merchant_name,
                 local_name=food.local_name or food.name,
+                names=food.merchant_names,
+                dish_names=food.names,
                 category="food",
                 latitude=food.latitude,
                 longitude=food.longitude,
@@ -1080,6 +1144,8 @@ async def _enrich_ai_places(
             return False
         provider = str(place.get("provider") or "google_places")
         item.location_name = str(place.get("name") or place.get("address") or item.location_name)
+        # The provider label replaces the catalog one, in the provider's language.
+        item.names = {key: value for key, value in item.names.items() if key != ITEM_LOCATION_KEY}
         item.latitude = float(latitude)
         item.longitude = float(longitude)
         item.provider_place_id = str(place.get("place_id") or "") or None
@@ -1239,6 +1305,9 @@ async def _resolve_trip_locations(
             continue
         provider = str(place.get("provider") or "google_places")
         item.location_name = str(place.get("name") or place.get("address") or label)
+        item.names_json = {
+            key: value for key, value in (item.names_json or {}).items() if key != ITEM_LOCATION_KEY
+        }
         item.latitude = Decimal(str(place_latitude))
         item.longitude = Decimal(str(place_longitude))
         item.provider_place_id = str(place.get("place_id") or "") or None
@@ -2032,7 +2101,7 @@ async def update_itinerary(
     ]
     incoming_ids = {item.id for item in incoming_items if item.id is not None}
     incoming_items.extend(
-        ItineraryItemRequest.model_validate(serialize_item(row))
+        ItineraryItemRequest.model_validate(serialize_item(row, localized=False))
         for row in existing_rows
         if row.system_role is not None and row.id not in incoming_ids
     )
@@ -2440,6 +2509,16 @@ _MEAL_LOCATION_DATA_KEYS = {
 }
 
 
+def unset_meal_title(system_role: str | None) -> str:
+    """Title a meal row falls back to when no merchant was selected for it.
+
+    Reads the shared label table so this string and the row's five-locale
+    ``names_json`` can never drift apart.
+    """
+    role = system_role if system_role in MEAL_PLACEHOLDER_LABELS else "dinner"
+    return MEAL_PLACEHOLDER_LABELS[role]["zh-TW"]
+
+
 def _sync_ai_meal_slots(
     preserved: list[TripPlanItem],
     generated_meals: list[ItineraryItem],
@@ -2463,6 +2542,7 @@ def _sync_ai_meal_slots(
         if meal is not None:
             current_meal.title = meal.title
             current_meal.location_name = meal.location_name
+            current_meal.names_json = dict(meal.names)
             current_meal.latitude = (
                 Decimal(str(meal.latitude)) if meal.latitude is not None else None
             )
@@ -2484,9 +2564,9 @@ def _sync_ai_meal_slots(
             }
             continue
 
-        label = "午餐" if role == "lunch" else "晚餐"
-        current_meal.title = f"{label}尚未安排"
+        current_meal.title = unset_meal_title(role)
         current_meal.location_name = None
+        current_meal.names_json = item_names(title=MEAL_PLACEHOLDER_LABELS[role])
         current_meal.latitude = None
         current_meal.longitude = None
         current_meal.provider_place_id = None
@@ -2509,11 +2589,25 @@ def _sync_ai_meal_slots(
         }
 
 
+def _compose_planner_notes(trip_notes: str | None, extra_notes: str | None) -> str | None:
+    parts = [part.strip() for part in (trip_notes, extra_notes) if part and part.strip()]
+    return "\n".join(parts) or None
+
+
 async def _build_ai_planning(
     session: AsyncSession,
     trip: TripPlan,
     payload: ItineraryGenerateRequest,
+    *,
+    extra_notes: str | None = None,
 ) -> tuple[AIPlanningResult, list[TripPlanItem], list[TripPlanItem], list[AIPlannerCandidate]]:
+    """Load candidates and run the planner for a trip or a single day.
+
+    ``extra_notes`` is appended to the trip's own note as additional traveller
+    preference text. It reaches the provider only through the user-content
+    payload's ``notes`` field, never the system prompt, and is never written
+    back to ``trip.data``.
+    """
     if not trip.destination_name or not trip.start_date or not trip.end_date:
         raise AppError(422, "trip_planning_fields_missing", "旅程缺少目的地或日期，無法重新排行程")
     target_date = payload.day_date if payload.scope == "day" else None
@@ -2550,11 +2644,15 @@ async def _build_ai_planning(
             route_preference=trip.route_preference,
             travelers=travelers,
             preferences=preferences,
-            notes=cast(str | None, trip.data.get("notes")),
+            notes=_compose_planner_notes(
+                cast(str | None, trip.data.get("notes")), extra_notes
+            ),
             preserved_items=planning_preserved,
             candidates=candidates,
             first_day_available_from=cast(str, availability["first_day_available_from"]),
             last_day_available_until=cast(str, availability["last_day_available_until"]),
+            trip_start_date=trip.start_date,
+            trip_end_date=trip.end_date,
         )
     )
     return planning, preserved, planning_preserved, candidates
@@ -2585,6 +2683,45 @@ async def preview_trip_itinerary(
     planning, preserved, planning_preserved, candidates = await _build_ai_planning(
         session, trip, payload
     )
+    result, cached_payload = await build_itinerary_preview_envelope(
+        session,
+        trip,
+        payload,
+        planning=planning,
+        preserved=preserved,
+        planning_preserved=planning_preserved,
+        candidates=candidates,
+    )
+    await redis.set(
+        _itinerary_preview_key(user.id, trip.id, UUID(str(result["preview_id"]))),
+        json.dumps(cached_payload, ensure_ascii=False),
+        ex=AI_ITINERARY_PREVIEW_TTL_SECONDS,
+    )
+    await redis.set(
+        request_key,
+        str(result["preview_id"]),
+        ex=AI_ITINERARY_PREVIEW_TTL_SECONDS,
+    )
+    return result
+
+
+async def build_itinerary_preview_envelope(
+    session: AsyncSession,
+    trip: TripPlan,
+    payload: ItineraryGenerateRequest,
+    *,
+    planning: AIPlanningResult,
+    preserved: list[TripPlanItem],
+    planning_preserved: list[TripPlanItem],
+    candidates: list[AIPlannerCandidate],
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Build the (client result, Redis payload) pair that ``/itinerary/apply`` consumes.
+
+    Every producer of a plan writes this exact envelope so there is a single
+    apply path. The returned Redis payload adds ``candidate_keys`` and
+    ``candidate_signatures``, which apply re-derives from the database and
+    compares before it writes anything.
+    """
     preview_id = uuid4()
     expires_at = datetime.now(UTC) + timedelta(seconds=AI_ITINERARY_PREVIEW_TTL_SECONDS)
     has_lodging = primary_lodging(trip, await load_items(session, trip.id)) is not None
@@ -2665,17 +2802,7 @@ async def preview_trip_itinerary(
         "candidate_keys": sorted(selected_keys),
         "candidate_signatures": _candidate_signatures(candidates, selected_keys),
     }
-    await redis.set(
-        _itinerary_preview_key(user.id, trip.id, preview_id),
-        json.dumps(cached_payload, ensure_ascii=False),
-        ex=AI_ITINERARY_PREVIEW_TTL_SECONDS,
-    )
-    await redis.set(
-        request_key,
-        str(preview_id),
-        ex=AI_ITINERARY_PREVIEW_TTL_SECONDS,
-    )
-    return result
+    return result, cached_payload
 
 
 @router.post("/{trip_id}/itinerary/generate", deprecated=True)
@@ -2761,6 +2888,8 @@ async def generate_trip_itinerary(
                 candidates=candidates,
                 first_day_available_from=cast(str, availability["first_day_available_from"]),
                 last_day_available_until=cast(str, availability["last_day_available_until"]),
+                trip_start_date=trip.start_date,
+                trip_end_date=trip.end_date,
             )
         )
         if planning.planning.readiness == "needs_setup":
@@ -2878,6 +3007,18 @@ async def generate_trip_itinerary(
         raise
 
 
+def apply_usage_operation(preview: dict[str, Any]) -> str:
+    """Which metered operation an envelope represents.
+
+    A producer names its own operation so a refinement can price separately
+    from a first generation. Anything unrecognised — including every envelope
+    written before this key existed — charges the original operation, which is
+    what keeps apply's behaviour unchanged by default.
+    """
+    operation = str(preview.get("usage_operation") or "ai_itinerary_generation")
+    return operation if operation in USAGE_OPERATIONS else "ai_itinerary_generation"
+
+
 @router.post("/{trip_id}/itinerary/apply")
 async def apply_trip_itinerary_preview(
     trip_id: UUID,
@@ -2940,7 +3081,7 @@ async def apply_trip_itinerary_preview(
         session,
         user.id,
         idempotency_key,
-        "ai_itinerary_generation",
+        apply_usage_operation(preview),
         f"AI 重新排行程：{trip.name}（{scope_label}）",
     )
     if not created and reservation.resource_id == trip.id:

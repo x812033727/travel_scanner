@@ -71,14 +71,17 @@ function nullableNumber(value: string): number | null {
   return value.trim() ? Number(value) : null;
 }
 
-function LocalizedNameFields({
+export function LocalizedNameFields({
   names,
   onChange,
   label,
+  placeholders,
 }: {
   names: LocalizedNames;
   onChange: (next: LocalizedNames) => void;
   label: (locale: string) => string;
+  /** What each locale falls back to when its input is left empty. */
+  placeholders?: Partial<LocalizedNames>;
 }) {
   return (
     <div className="grid gap-3 md:grid-cols-2">
@@ -87,6 +90,7 @@ function LocalizedNameFields({
           {label(locale)}
           <input
             value={names[locale]}
+            placeholder={placeholders?.[locale]}
             onChange={(event) => onChange({ ...names, [locale]: event.target.value })}
             className="mt-1 h-11 w-full rounded-xl border px-3"
           />

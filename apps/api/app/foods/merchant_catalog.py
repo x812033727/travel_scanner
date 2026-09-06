@@ -15,6 +15,9 @@ OFFICIAL_DESTINATION_FOOD_SOURCES = {
     "kanazawa": "https://visitkanazawa.jp/en/restaurants/",
     "nagoya": "https://www.nagoya-info.jp/en/gourmet/",
     "sendai": "https://www.sentabi.jp/guidebook/attractions/",
+    "okinawa": "https://visitokinawajapan.com/discover/food-and-longevity/",
+    "yokohama": "https://www.yokohamajapan.com/things-to-do/T04.php",
+    "kamakura": "https://www.trip-kamakura.com/stay-gurume/index.php?business_type=gourmet",
     "hiroshima": "https://dive-hiroshima.com/en/feature/ichioshi/",
     "seoul": "https://english.visitseoul.net/restaurants",
     "busan": "https://www.visitbusan.net/en/index.do?menuCd=DOM_000000302002001000",
@@ -27,10 +30,10 @@ OFFICIAL_DESTINATION_FOOD_SOURCES = {
     "chiang-rai": "https://www.tourismthailand.org/Destinations/Provinces/Chiang-Rai/102",
     "phuket": "https://www.tourismthailand.org/Destinations/Provinces/Phuket/350",
     "krabi": "https://www.tourismthailand.org/Destinations/Provinces/Krabi/344",
-    "taipei": "https://eng.taiwan.net.tw/m1.aspx?sNo=0002091",
-    "taichung": "https://eng.taiwan.net.tw/m1.aspx?sNo=0002091",
-    "kaohsiung": "https://eng.taiwan.net.tw/m1.aspx?sNo=0002091",
-    "tainan": "https://eng.taiwan.net.tw/m1.aspx?sNo=0002091",
+    "taipei": "https://eng.taiwan.net.tw/m1.aspx?sNo=0002026",
+    "taichung": "https://eng.taiwan.net.tw/m1.aspx?sNo=0002026",
+    "kaohsiung": "https://eng.taiwan.net.tw/m1.aspx?sNo=0002026",
+    "tainan": "https://eng.taiwan.net.tw/m1.aspx?sNo=0002026",
     "singapore": "https://www.visitsingapore.com/dining-drinks-singapore/local-dishes/",
     "hong-kong": "https://www.discoverhongkong.com/eng/explore/dining.html",
     "hanoi": "https://www.vietnam.travel/things-to-do/food",
@@ -110,6 +113,15 @@ MERCHANT_AREA_KEYS: dict[str, str] = {
     "sapporo-hanamaru": "sapporo-station",
     "kanazawa-mori-mori-sushi": "omicho",
     "nagoya-yabaton": "sakae",
+    "okinawa-inaka-kosetsu-ichiba": "kokusai-dori",
+    "okinawa-kijimuna-onna": "onna",
+    "okinawa-kijimuna-depot-island": "chatan",
+    "yokohama-manchinro-honten": "chinatown-motomachi",
+    "yokohama-kiyoken-honten": "yokohama-station",
+    "kamakura-chikaramochiya": "hase",
+    "kamakura-toshimaya-karyo-hatokoji": "kamakura-station-komachi",
+    "kamakura-akimoto": "kamakura-station-komachi",
+    "kamakura-tenshin-an": "kita-kamakura",
     "nagoya-yamamotoya": "sakae",
     "seoul-namdaemun-hotteok": "myeongdong",
     "seoul-lees-gimbap": "gangnam",
@@ -299,6 +311,96 @@ MERCHANT_SEEDS: tuple[MerchantSeed, ...] = (
     _m(
         "hiroshima", "JP", "hassei", "Okonomiyaki Hassei", "お好み焼き 八誠", ("jp-okonomiyaki",), 1
     ),
+    _m(
+        "okinawa",
+        "JP",
+        "inaka-kosetsu-ichiba",
+        "Inaka Kosetsu Ichiba-mae Minami",
+        "ソーキそば専門店 田舎 公設市場前南店",
+        ("jp-okinawa-soba",),
+        1,
+    ),
+    _m(
+        "okinawa",
+        "JP",
+        "shimujo",
+        "Shimujo",
+        "沖縄そばの店 しむじょう",
+        ("jp-okinawa-soba",),
+        2,
+    ),
+    _m(
+        "okinawa",
+        "JP",
+        "tunda-dining",
+        "Shuri Tunda Dining",
+        "首里 東道Dining",
+        ("jp-goya-champuru",),
+        3,
+    ),
+    _m("okinawa", "JP", "akatafu", "Ryukyu Ryori Akatafu", "琉球料理 赤田風", ("jp-rafute",), 4),
+    _m("okinawa", "JP", "ryukyu-ryori-mie", "Ryukyu Ryori Mie", "琉球料理 美榮", ("jp-rafute",), 5),
+    _m(
+        "okinawa",
+        "JP",
+        "kijimuna-onna",
+        "Taco Rice Cafe Kijimuna Onna",
+        "タコライスcafe きじむなぁ 恩納村店",
+        ("jp-taco-rice",),
+        6,
+    ),
+    _m(
+        "okinawa",
+        "JP",
+        "kijimuna-depot-island",
+        "Taco Rice Cafe Kijimuna Depot Island",
+        "タコライスcafe きじむなぁ デポアイランド店",
+        ("jp-taco-rice",),
+        7,
+    ),
+    _m(
+        "okinawa",
+        "JP",
+        "ryugu",
+        "Ryukyu Kashidokoro Ryugu",
+        "琉球菓子処 琉宮",
+        ("jp-sata-andagi",),
+        8,
+    ),
+    _m("okinawa", "JP", "nakazatoya", "Nakazatoya", "仲里屋", ("jp-sata-andagi",), 9),
+    _m("yokohama", "JP", "yoshimuraya", "Yoshimuraya", "吉村家", ("jp-ramen",), 1),
+    _m(
+        "yokohama",
+        "JP",
+        "hotel-new-grand",
+        "Hotel New Grand The Cafe",
+        "ホテルニューグランド コーヒーハウス ザ・カフェ",
+        ("jp-naporitan", "jp-doria"),
+        2,
+    ),
+    _m("yokohama", "JP", "kiyoken-honten", "Kiyoken Honten", "崎陽軒本店", ("jp-shumai",), 3),
+    _m("yokohama", "JP", "manchinro-honten", "Manchinro Honten", "萬珍樓本店", ("jp-shumai",), 4),
+    _m("kamakura", "JP", "chikaramochiya", "Chikaramochiya", "力餅家", ("jp-wagashi",), 1),
+    _m(
+        "kamakura",
+        "JP",
+        "toshimaya-karyo-hatokoji",
+        "Toshimaya Karyo Hatokoji",
+        "豊島屋菓寮 八十小路",
+        ("jp-wagashi",),
+        2,
+    ),
+    _m("kamakura", "JP", "akimoto", "Kamakura Akimoto", "鎌倉 秋本", ("jp-shirasu-don",), 3),
+    _m(
+        "kamakura",
+        "JP",
+        "shirasuya-koshigoe",
+        "Shirasuya Koshigoe",
+        "しらすや 腰越漁港前店",
+        ("jp-shirasu-don",),
+        4,
+    ),
+    _m("kamakura", "JP", "tenshin-an", "Tenshin-an", "点心庵", ("jp-kenchin-jiru",), 5),
     # South Korea.
     _m("seoul", "KR", "korea-house", "Korea House", "한국의집", ("kr-kimchi", "kr-japchae"), 1),
     _m("seoul", "KR", "mokmyeoksanbang", "Mokmyeoksanbang", "목멱산방", ("kr-bibimbap",), 2),
@@ -1110,6 +1212,94 @@ def _official_listing(
 # official-tourism listings. Missing merchants intentionally remain pending instead of
 # inheriting the destination-level context source as proof that the merchant is listed.
 MERCHANT_DIRECT_SOURCE_SEEDS: tuple[MerchantDirectSourceSeed, ...] = (
+    # Japan. The first Japanese entries: until Okinawa, Yokohama and Kamakura joined the
+    # catalog no Japanese merchant had a page of its own cited here, which is why the
+    # country balance below reads the way it does.
+    _official_listing(
+        "okinawa-inaka-kosetsu-ichiba",
+        "Okinawa Convention & Visitors Bureau restaurant listing",
+        "https://www.okinawastory.jp/gourmet/600011544",
+    ),
+    _official_listing(
+        "okinawa-shimujo",
+        "Okinawa Convention & Visitors Bureau restaurant listing",
+        "https://www.okinawastory.jp/gourmet/600011799",
+    ),
+    _official_listing(
+        "okinawa-akatafu",
+        "Okinawa Convention & Visitors Bureau restaurant listing",
+        "https://www.okinawastory.jp/gourmet/600004368",
+    ),
+    _official_listing(
+        "okinawa-ryukyu-ryori-mie",
+        "Okinawa Convention & Visitors Bureau restaurant listing",
+        "https://www.okinawastory.jp/gourmet/600004012",
+    ),
+    _official_listing(
+        "okinawa-kijimuna-onna",
+        "Okinawa Convention & Visitors Bureau restaurant listing",
+        "https://www.okinawastory.jp/gourmet/1170",
+    ),
+    _official_listing(
+        "okinawa-kijimuna-depot-island",
+        "Okinawa Convention & Visitors Bureau restaurant listing",
+        "https://www.okinawastory.jp/gourmet/1406",
+    ),
+    _merchant_website(
+        "okinawa-ryugu",
+        "Ryukyu Kashidokoro Ryugu official website",
+        "https://ryugu.co.jp/shop/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "okinawa-nakazatoya",
+        "Nakazatoya official website",
+        "https://nakazatoya.com/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "yokohama-hotel-new-grand",
+        "Hotel New Grand The Cafe official menu page",
+        "https://www.hotel-newgrand.co.jp/menu/the_cafe_specialty/",
+    ),
+    _merchant_website(
+        "yokohama-kiyoken-honten",
+        "Kiyoken restaurants official website",
+        "https://kiyoken-restaurant.com/",
+    ),
+    _merchant_website(
+        "yokohama-manchinro-honten",
+        "Manchinro Honten official website",
+        "https://www.manchinro.com/honten/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "kamakura-chikaramochiya",
+        "Chikaramochiya official website",
+        "https://www.chikaramochiya.com/",
+        includes_address=True,
+    ),
+    _merchant_website(
+        "kamakura-toshimaya-karyo-hatokoji",
+        "Toshimaya official shop page",
+        "https://www.hato.co.jp/shop/hatokoji",
+        includes_address=True,
+    ),
+    _official_listing(
+        "kamakura-akimoto",
+        "Kamakura City Tourist Association restaurant listing",
+        "https://www.trip-kamakura.com/stay-gurume/detail.php?id=31&business_type=gourmet",
+    ),
+    _official_listing(
+        "kamakura-shirasuya-koshigoe",
+        "Kanagawa Prefecture Tourism Association spot listing",
+        "https://www.kanagawa-kankou.or.jp/spot/6471",
+    ),
+    _official_listing(
+        "kamakura-tenshin-an",
+        "Kamakura City Tourist Association restaurant listing",
+        "https://www.trip-kamakura.com/stay-gurume/detail.php?id=30",
+    ),
     # South Korea
     _merchant_website(
         "seoul-korea-house",
@@ -1387,8 +1577,12 @@ def validate_merchant_catalog() -> None:
         missing = sorted(expected_pairs - actual_pairs)
         extra = sorted(actual_pairs - expected_pairs)
         raise RuntimeError(f"merchant coverage mismatch; missing={missing}, extra={extra}")
-    if len(actual_pairs) != 173:
-        raise RuntimeError(f"merchant bootstrap must cover 173 pairs, found {len(actual_pairs)}")
+    # A floor for the same reason as the food counts. The equality above is the rule that
+    # actually matters: every (city, dish) the catalog claims must have somewhere to eat it.
+    if len(actual_pairs) < 173:
+        raise RuntimeError(
+            f"merchant bootstrap must cover at least 173 pairs, found {len(actual_pairs)}"
+        )
     if any(
         not item.name
         or not item.local_name

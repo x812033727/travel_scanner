@@ -144,7 +144,14 @@ async def fill_food_merchant_coordinates(
     destination_ids: list[str],
     limit: int | None,
     apply: bool,
+    fetch: Callable[[str], Awaitable[FetchResult]] | None = None,
 ) -> dict[str, Any]:
+    """Fill coordinates for the merchants that have none.
+
+    ``fetch`` exists so a test can drive the real database path without the network; the
+    session handling here is the part that only breaks against a real session.
+    """
+
     async with SessionFactory() as session:
         merchants = await merchants_without_coordinates(
             session,
@@ -154,7 +161,12 @@ async def fill_food_merchant_coordinates(
         sources = await merchant_page_sources(session, merchants)
         # Reading opened a transaction; end it before the slow part so a dry run, which never
         # commits, does not hold one open across every fetch. Writes autobegin a new one.
-        await session.rollback()
+        #
+        # commit(), not rollback(). SessionFactory sets expire_on_commit=False, so committing
+        # releases the transaction and leaves the loaded merchants usable; rollback() expires
+        # every instance whatever that flag says, and the next plain `merchant.slug` would
+        # then need a refresh SELECT from sync attribute access — MissingGreenlet, on row one.
+        await session.commit()
         timeout = httpx.Timeout(20.0, connect=10.0)
         async with httpx.AsyncClient(
             headers={"User-Agent": USER_AGENT, "Accept-Language": "en;q=0.8"},
@@ -165,7 +177,7 @@ async def fill_food_merchant_coordinates(
                 session,
                 merchants,
                 sources,
-                build_fetcher(client),
+                fetch or build_fetcher(client),
                 apply=apply,
                 progress=lambda line: print(line, file=sys.stderr, flush=True),
                 pause=asyncio.sleep,

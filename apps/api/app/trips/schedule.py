@@ -8,8 +8,27 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.localized_names import item_names
 from app.models import TripPlan, TripPlanItem
 from app.providers.schemas import HotelOffer
+
+# Titles of a meal card that has no restaurant yet, per site locale.
+MEAL_PLACEHOLDER_LABELS: dict[str, dict[str, str]] = {
+    "lunch": {
+        "zh-TW": "午餐尚未安排",
+        "zh-CN": "午餐尚未安排",
+        "en": "Lunch not planned yet",
+        "ja": "昼食は未定",
+        "ko": "점심 식사 미정",
+    },
+    "dinner": {
+        "zh-TW": "晚餐尚未安排",
+        "zh-CN": "晚餐尚未安排",
+        "en": "Dinner not planned yet",
+        "ja": "夕食は未定",
+        "ko": "저녁 식사 미정",
+    },
+}
 
 SystemRole = Literal[
     "outbound_flight",
@@ -262,15 +281,15 @@ def _new_slot(
     duration_key = "lunch_duration_minutes" if is_lunch else "dinner_duration_minutes"
     starts = _local_at(day_value, str(defaults[start_key]), timezone)
     duration = int(defaults[duration_key])
-    label = "午餐" if is_lunch else "晚餐"
     return TripPlanItem(
         id=uuid4(),
         trip_plan_id=trip.id,
         item_type="meal",
         day_date=day_value,
         position=0,
-        title=f"{label}尚未安排",
+        title=MEAL_PLACEHOLDER_LABELS[role]["zh-TW"],
         location_name=None,
+        names_json=item_names(title=MEAL_PLACEHOLDER_LABELS[role]),
         start_time=starts,
         end_time=starts + timedelta(minutes=duration),
         locked=True,

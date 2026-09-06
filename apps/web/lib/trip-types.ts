@@ -1,5 +1,21 @@
 import { activeLocale } from "@/lib/locale-format";
 
+/**
+ * One label per site locale plus the text in the place's own script
+ * (`original`, tagged with `original_locale`). The API resolves `title` and
+ * `location_name` for the request locale; this map lets the UI show the
+ * original next to it.
+ */
+export type LocalizedNames = Partial<Record<"en" | "ja" | "ko" | "zh-TW" | "zh-CN", string>> & {
+  original?: string;
+  original_locale?: string;
+};
+
+export type TripItemNames = {
+  title?: LocalizedNames;
+  location_name?: LocalizedNames;
+};
+
 export type TripItem = {
   id: string;
   item_type: string;
@@ -8,6 +24,8 @@ export type TripItem = {
   position: number;
   title: string;
   location_name?: string | null;
+  /** Catalog-backed stops only; empty for free-text rows and after a manual rename. */
+  names?: TripItemNames;
   start_time?: string | null;
   end_time?: string | null;
   latitude?: number | null;
@@ -258,6 +276,12 @@ export function formatTime(value?: string | null, locale?: string, timeZone?: st
     hour12: false,
     timeZone,
   }).format(new Date(value));
+}
+
+/** The stop's name in its own script when it differs from the label on show. */
+export function originalItemName(item: Pick<TripItem, "title" | "names">) {
+  const original = item.names?.title?.original?.trim();
+  return original && original !== item.title.trim() ? original : null;
 }
 
 export function groupTripItems(items: TripItem[]) {

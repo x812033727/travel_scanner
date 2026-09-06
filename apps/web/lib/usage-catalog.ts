@@ -9,6 +9,7 @@ export const usageOperations = [
   "live_back_to_back_fare_search",
   "flight_status_lookup",
   "ai_itinerary_generation",
+  "ai_itinerary_refine",
   "itinerary_optimization",
   "price_reoptimization",
 ] as const;
