@@ -214,7 +214,10 @@ class GoogleWeatherService:
         longitude: float,
         location_name: str,
         language_code: str = "zh-TW",
+        timezone: str | None = None,
     ) -> TripWeather:
+        # Google resolves the timezone itself, so the parameter only keeps the provider
+        # signature identical to MET Norway's; it is overwritten from the response.
         if not self.configured:
             raise AppError(
                 503,
@@ -271,7 +274,7 @@ class GoogleWeatherService:
         warnings: list[str] = []
         current: CurrentWeather | None = None
         days: list[DailyWeather] = []
-        timezone: str | None = None
+        timezone = None
         if isinstance(current_result, dict):
             try:
                 current_payload = cast(dict[str, Any], current_result)
