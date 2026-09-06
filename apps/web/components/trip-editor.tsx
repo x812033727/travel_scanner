@@ -47,6 +47,7 @@ import {
 } from "react";
 import { AffiliatePartnerOptions } from "@/components/affiliate-partner-options";
 import { FlightAnchorCard, flightAnchorInfo } from "@/components/flight-anchor-card";
+import { TripInboxPanel, type PlaceCandidate } from "@/components/trip-inbox-panel";
 import { PlacePicker } from "@/components/place-picker";
 import { TripCostPanel } from "@/components/trip-cost-panel";
 import { TripNoteField } from "@/components/trip-note-field";
@@ -746,6 +747,35 @@ export function TripEditor({ tripId }: { tripId: string }) {
     };
     setActiveDay(day);
     setDraftItem(item);
+  }
+
+  /** Drop a pasted place into the day on screen, as a stop that is ready to route. */
+  function addFromInbox(candidate: PlaceCandidate): boolean {
+    if (!activeDay) return false;
+    const names = candidate.names && Object.keys(candidate.names).length ? candidate.names : undefined;
+    const item: TripItem = {
+      id: crypto.randomUUID(),
+      item_type: "custom",
+      day_date: activeDay,
+      position: itemsRef.current.filter((row) => row.day_date === activeDay).length,
+      title: candidate.title,
+      location_name: candidate.location_name || candidate.title,
+      locked: false,
+      fixed_time: false,
+      is_estimated: true,
+      duration_minutes: 60,
+      latitude: candidate.latitude ?? undefined,
+      longitude: candidate.longitude ?? undefined,
+      provider_place_id: candidate.google_place_id ?? undefined,
+      // A Place ID the traveller pasted is as good as one they picked out of search.
+      location_source: candidate.google_place_id ? "confirmed" : undefined,
+      names: names as TripItem["names"],
+      data: { source_mode: "manual", pasted_from: candidate.source },
+    };
+    updateItems((current) => [...current, item], activeDay);
+    setRecentItemId(item.id);
+    setNotice(te("added"));
+    return true;
   }
 
   function closeEditor() {
@@ -1623,6 +1653,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
     <PlannerOverlay open={toolsOpen} onClose={() => setToolsOpen(false)} title={te("toolsTitle")} description={te("toolsDescription")}>
       <div className="space-y-4">
         <TripMetaEditor trip={trip} variant="tools" disabled={saveState === "conflict" || Boolean(action)} prepare={() => flushChanges()} onUpdated={(updated) => { applyMetaUpdate(updated); setToolsOpen(false); }} />
+        <TripInboxPanel tripId={trip.id} disabled={saveState === "conflict" || Boolean(action)} onAdd={addFromInbox} />
         <section className="planner-tool-card">
           <div className="mb-3"><h3 className="font-bold">{te("calendarTitle")}</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">{te("calendarHint")}</p></div>
           <a href={`/api/travel/trips/${trip.id}/export.ics`} download className="flex min-h-11 w-fit items-center gap-2 rounded-xl border border-[var(--line)] bg-white px-4 text-sm font-semibold"><CalendarPlus size={16} />{te("calendarDownload")}</a>

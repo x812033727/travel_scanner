@@ -1376,6 +1376,42 @@ class TripDayNote(Timestamped, Base):
     notes: Mapped[str] = mapped_column(Text)
 
 
+class TripPlaceCandidate(Timestamped, Base):
+    """A place the traveller pasted in, waiting to be dropped into a day.
+
+    Pasting is not planning: a link lands here until someone decides which day it belongs
+    to. When the resolved Place ID matches a hotspot in the catalogue, ``hotspot_id``
+    points at it and the row carries the catalogue's names instead of the pasted text.
+    """
+
+    __tablename__ = "trip_place_candidates"
+    __table_args__ = (
+        CheckConstraint(
+            "status in ('inbox', 'used', 'dismissed')",
+            name="ck_trip_place_candidate_status",
+        ),
+        Index("ix_trip_place_candidates_trip_status", "trip_plan_id", "status"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    trip_plan_id: Mapped[UUID] = mapped_column(
+        ForeignKey("trip_plans.id", ondelete="CASCADE"), index=True
+    )
+    hotspot_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="SET NULL"), nullable=True
+    )
+    raw_input: Mapped[str] = mapped_column(Text)
+    source: Mapped[str] = mapped_column(String(16), default="text")
+    status: Mapped[str] = mapped_column(String(16), default="inbox")
+    title: Mapped[str] = mapped_column(String(255))
+    location_name: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    google_place_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    maps_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    latitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    longitude: Mapped[Decimal | None] = mapped_column(Numeric(9, 6), nullable=True)
+    names_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    data: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+
+
 class TripRouteDaySetting(Timestamped, Base):
     __tablename__ = "trip_route_day_settings"
     __table_args__ = (
