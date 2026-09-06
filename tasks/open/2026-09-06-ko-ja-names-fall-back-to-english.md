@@ -12,6 +12,8 @@ branch: claude/wikidata-locale-labels
 depends_on: []
 scope:
   - apps/api/app/hotspots/wikidata_labels.py
+  - apps/api/tests/test_wikidata_labels.py
+  - apps/api/tests/test_trip_item_localization.py
 ---
 
 # ko 與 ja 的景點名稱多半退回英文

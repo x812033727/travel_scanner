@@ -120,17 +120,18 @@ async def test_one_failed_batch_does_not_end_the_run(monkeypatch: pytest.MonkeyP
     assert len(report.errors) == 1
 
 
-def test_a_label_that_only_repeats_the_traditional_name_is_dropped() -> None:
+def test_every_stored_simplified_label_is_cleared_before_converting() -> None:
+    """Whatever is there came from Wikidata, which this module does not trust."""
     rows: list[dict[str, Any]] = [
         {"name": "曼谷大皇宮", "names": {"zh-CN": "曼谷大皇宫", "ja": "王宮"}},
         {"name": "暹羅海洋世界", "names": {"zh-CN": "暹羅海洋世界"}},
         {"name": "高尾山"},
     ]
 
-    assert drop_unusable_labels(rows) == 1
-    assert rows[0]["names"]["zh-CN"] == "曼谷大皇宫"
+    assert drop_unusable_labels(rows) == 2
+    assert "zh-CN" not in rows[0]["names"]
     assert "zh-CN" not in rows[1]["names"]
-    assert rows[0]["names"]["ja"] == "王宮"
+    assert rows[0]["names"]["ja"] == "王宮"  # other locales are untouched
 
 
 def test_conversions_are_written_onto_the_matching_seed_only() -> None:

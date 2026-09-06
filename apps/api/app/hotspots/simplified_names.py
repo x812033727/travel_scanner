@@ -141,19 +141,18 @@ def seed_rows(paths: list[Path]) -> list[tuple[Path, list[dict[str, Any]]]]:
 
 
 def drop_unusable_labels(rows: list[dict[str, Any]]) -> int:
-    """Drop a zh-CN label that is just the Traditional name repeated.
+    """Clear every stored zh-CN label so the conversion below is the only source.
 
-    That is the exact shape of the production defect — all 568 stored zh-CN rows
-    were byte-identical to zh-TW — and it needs no character table to detect. A
-    label equal to the Traditional name carries no information, so removing it
-    lets the conversion below fill the slot instead.
+    Whatever is in there came from Wikidata, which this file does not trust for
+    Simplified: of the 239 labels it had, 26 were still written in Traditional
+    characters and several named a different place. Regenerating all of them from
+    the curated Traditional name is safer than keeping a mix, and a row the model
+    skips falls back to Traditional, which is where it started.
     """
     dropped = 0
     for row in rows:
         names = row.get("names")
-        if not isinstance(names, dict):
-            continue
-        if isinstance(names.get("zh-CN"), str) and names["zh-CN"] == row.get("name"):
+        if isinstance(names, dict) and isinstance(names.get("zh-CN"), str):
             names.pop("zh-CN")
             dropped += 1
     return dropped

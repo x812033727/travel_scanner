@@ -53,7 +53,11 @@ LABEL_LANGUAGES: dict[str, tuple[str, ...]] = {
     "vi": ("vi",),
 }
 # The locales the seed derives from curated data on its own; only the rest are stored.
-STORED_LOCALES: tuple[str, ...] = ("en", "ja", "ko", "zh-CN")
+# zh-CN is deliberately absent: Wikidata's zh-cn label is unreliable for these places
+# — 26 of the 239 it offered were still written in Traditional characters and several
+# named a different place — so ``app.hotspots.simplified_names`` derives it from the
+# curated Traditional name instead.
+STORED_LOCALES: tuple[str, ...] = ("en", "ja", "ko")
 REQUESTED_LANGUAGES: tuple[str, ...] = tuple(
     dict.fromkeys(code for codes in LABEL_LANGUAGES.values() for code in codes)
 )

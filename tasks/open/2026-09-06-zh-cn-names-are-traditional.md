@@ -13,6 +13,14 @@ depends_on: []
 scope:
   - apps/api/app/localized_names.py
   - apps/api/app/hotspots/localization.py
+  - apps/api/app/hotspots/simplified_names.py
+  - apps/api/app/cli.py
+  - apps/api/tests/test_simplified_names.py
+  - apps/api/app/hotspots/bootstrap.json
+  - apps/api/app/hotspots/deep_bootstrap.json
+  - apps/api/app/hotspots/secondary_bootstrap.json
+  - apps/api/app/hotspots/food_area_bootstrap.json
+  - apps/api/app/hotspots/kanto_expansion_bootstrap.json
 ---
 
 # zh-CN 的景點名稱 568 筆全部是繁體
