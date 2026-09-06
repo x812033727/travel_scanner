@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-fx-currency-api
 title: 匯率改由 Currency-api 供應，Frankfurter 退為備援；行程報價與記帳顯示換算
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-fable-5.1
 claimed_at: 2026-09-06T06:43:11Z
 created_at: 2026-09-06T06:28:55Z
-completed_at:
+completed_at: 2026-09-06T07:07:27Z
 branch: claude/fx-currency-api
 depends_on: []
 scope:
