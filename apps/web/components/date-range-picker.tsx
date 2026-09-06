@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { addDays, addMonths, clampToMonth, dayCount, monthGrid, monthOf, monthTitle, parseDay, tripDayFormatter, weekStartFor, weekdayLabels } from "@/lib/calendar";
+import { HolidayCalendar, holidayCalendars, holidayCountries, holidayLabel, holidaysByDate } from "@/lib/holidays";
 
 export type DateRange = { start: string; end: string };
 
@@ -12,11 +13,16 @@ const keyDeltas = new Map<string, number>([["ArrowLeft", -1], ["ArrowRight", 1],
 // Selected days use --teal-fill rather than --teal: the dark-theme remap in
 // globals.css only matches the bare `bg-[var(--teal)]` token, and --teal is a
 // light colour in dark mode where white text would vanish.
+// The holiday dot sits under the number, and turns white on a selected day where the teal
+// one would vanish into the fill.
+const holidayDot = "relative after:absolute after:bottom-1 after:hidden after:h-1 after:w-1 after:rounded-full after:bg-[var(--teal)] after:content-[''] data-[holiday=true]:after:block data-[range=edge]:after:bg-white";
 const cellClass = "grid h-11 w-full place-items-center rounded-xl text-sm font-medium tabular-nums outline-none transition hover:bg-[var(--paper)] focus-visible:ring-4 focus-visible:ring-[var(--teal-soft)] aria-disabled:cursor-not-allowed aria-disabled:opacity-40 aria-disabled:hover:bg-transparent aria-[current=date]:font-bold aria-[current=date]:text-[var(--teal-dark)] data-[range=edge]:bg-[var(--teal-fill)] data-[range=edge]:font-semibold data-[range=edge]:text-white data-[range=inside]:bg-[var(--teal-soft)] data-[range=inside]:text-[var(--teal-dark)] data-[range=preview]:bg-[var(--teal-soft)]";
 
-export function DateRangePicker({ start, end, today, maxDays, onChange }: DateRange & {
+export function DateRangePicker({ start, end, today, maxDays, countries = holidayCountries, onChange }: DateRange & {
   today: string;
   maxDays: number;
+  /** Whose public holidays to mark. Defaults to every market the API has a calendar for. */
+  countries?: readonly string[];
   onChange: (range: DateRange) => void;
 }) {
   const locale = useLocale();
@@ -31,6 +37,7 @@ export function DateRangePicker({ start, end, today, maxDays, onChange }: DateRa
   const [focusDay, setFocusDay] = useState<string>();
   const [hoverDay, setHoverDay] = useState<string>();
   const [gridFocused, setGridFocused] = useState(false);
+  const [calendars, setCalendars] = useState<HolidayCalendar[]>([]);
 
   const todayMonth = monthOf(today);
   // Explicit navigation wins; otherwise follow the start date (a restored
@@ -52,6 +59,21 @@ export function DateRangePicker({ start, end, today, maxDays, onChange }: DateRa
   const candidate = hoverDay ?? (gridFocused ? focusDay : undefined);
   const previewEnd = latestEnd && candidate && candidate >= start && isAvailable(candidate) ? candidate : undefined;
   const tabStop = [focusDay, start, today].find((day) => day && monthOf(day) === visibleMonth) ?? days.find(isAvailable) ?? days[0];
+
+  // One request per country, once, covering every month the picker can reach. A national
+  // calendar is a few dozen rows a year, and re-fetching while someone pages through months
+  // would rewrite the grid under their pointer for no gain.
+  const countryList = countries.join(",");
+  useEffect(() => {
+    if (!countryList) return;
+    let current = true;
+    void holidayCalendars(countryList.split(","), today, addDays(today, 730)).then((loaded) => {
+      if (current) setCalendars(loaded);
+    });
+    return () => {
+      current = false;
+    };
+  }, [countryList, today]);
 
   useEffect(() => {
     if (!focusPending.current || !focusDay) return;
@@ -96,6 +118,8 @@ export function DateRangePicker({ start, end, today, maxDays, onChange }: DateRa
     setFocusDay(target);
   }
 
+  const holidays = useMemo(() => holidaysByDate(calendars), [calendars]);
+  const attributions = calendars.filter((calendar) => calendar.holidays.length > 0).map((calendar) => calendar.attribution);
   const status = latestEnd
     ? t("pickEnd", { date: formatter.format(parseDay(latestEnd)) })
     : start && end
@@ -116,8 +140,10 @@ export function DateRangePicker({ start, end, today, maxDays, onChange }: DateRa
         const inside = Boolean(start && end && day > start && day < end);
         const preview = Boolean(previewEnd && day > start && day <= previewEnd);
         const available = isAvailable(day);
+        const named = holidayLabel(holidays.get(day));
+        const dayLabel = formatter.format(parseDay(day));
         return <td key={day} className="p-0.5">
-          <button type="button" data-date={day} data-range={edge ? "edge" : inside ? "inside" : preview ? "preview" : undefined} tabIndex={day === tabStop ? 0 : -1} aria-label={formatter.format(parseDay(day))} aria-pressed={edge || inside} aria-current={day === today ? "date" : undefined} aria-disabled={available ? undefined : true} onClick={() => pick(day)} onFocus={() => setFocusDay(day)} onMouseEnter={() => { if (latestEnd) setHoverDay(day); }} onKeyDown={(event) => moveFocus(event, day)} className={cellClass}>{Number(day.slice(8, 10))}</button>
+          <button type="button" data-date={day} data-holiday={named ? "true" : undefined} data-range={edge ? "edge" : inside ? "inside" : preview ? "preview" : undefined} tabIndex={day === tabStop ? 0 : -1} aria-label={named ? `${dayLabel} ${named}` : dayLabel} aria-pressed={edge || inside} aria-current={day === today ? "date" : undefined} aria-disabled={available ? undefined : true} onClick={() => pick(day)} onFocus={() => setFocusDay(day)} onMouseEnter={() => { if (latestEnd) setHoverDay(day); }} onKeyDown={(event) => moveFocus(event, day)} className={`${cellClass} ${holidayDot}`}>{Number(day.slice(8, 10))}</button>
         </td>;
       })}</tr>)}</tbody>
     </table>
@@ -125,5 +151,6 @@ export function DateRangePicker({ start, end, today, maxDays, onChange }: DateRa
       <p id={statusId} role="status" className="text-sm text-[var(--muted)]">{status}</p>
       <button type="button" onClick={clear} disabled={!start && !end} className="shrink-0 text-sm font-semibold text-[var(--teal)] disabled:opacity-40">{t("clear")}</button>
     </div>
+    {attributions.length > 0 && <p className="mt-2 break-all text-[11px] leading-4 text-[var(--muted)]">{attributions.join(" ")}</p>}
   </div>;
 }

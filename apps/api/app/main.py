@@ -21,6 +21,7 @@ from app.flights.router import router as flight_status_router
 from app.foods.admin_router import router as admin_foods_router
 from app.foods.router import router as foods_router
 from app.fx.router import router as fx_router
+from app.holidays.router import router as holidays_router
 from app.hotspots.admin_router import router as admin_hotspots_router
 from app.hotspots.router import router as hotspots_router
 from app.infra import get_redis
@@ -92,6 +93,7 @@ app.include_router(admin_analytics_router, prefix="/api/v1")
 app.include_router(ai_router, prefix="/api/v1")
 app.include_router(places_router, prefix="/api/v1")
 app.include_router(fx_router, prefix="/api/v1")
+app.include_router(holidays_router, prefix="/api/v1")
 app.include_router(public_places_router, prefix="/api/v1")
 app.include_router(providers_router, prefix="/api/v1")
 app.include_router(flight_router, prefix="/api/v1")
