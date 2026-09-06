@@ -24,6 +24,7 @@ from app.localized_names import item_names
 from app.locations.coordinates import has_durable_coordinates
 from app.models import HotspotPlaceProfile, TravelHotspot, TripPlanItem
 from app.problems import AppError
+from app.trips.hours import fresh_hours
 from app.trips.router import load_items, owned_trip, persist_system_schedule_change
 
 router = APIRouter(prefix="/hotspots", tags=["hotspots"])
@@ -354,6 +355,9 @@ async def select_hotspot_for_trip(
     # The stop keeps every site locale plus the original script, so the plan
     # follows the traveller's language instead of the one used when adding it.
     names = (await load_hotspot_names(session, [hotspot]))[hotspot.id]
+    place_profile = await session.scalar(
+        select(HotspotPlaceProfile).where(HotspotPlaceProfile.hotspot_id == hotspot.id)
+    )
     item = TripPlanItem(
         trip_plan_id=trip.id,
         item_type="activity",
@@ -375,6 +379,13 @@ async def select_hotspot_for_trip(
             "hotspot_slug": hotspot.slug,
             "map_links": map_links,
             "selection_source": "hotspot_card",
+            # A copy of what Google told us, so the day view can say "closed when
+            # you arrive" without asking Places again. Empty when the cache has
+            # expired, and read as "we do not know" everywhere.
+            "opening_hours": fresh_hours(
+                place_profile.opening_hours_json if place_profile else None,
+                place_profile.provider_expires_at if place_profile else None,
+            ),
         },
     )
     session.add(item)

@@ -49,6 +49,7 @@ from app.models import (
     TravelHotspot,
 )
 from app.places.google import GoogleTravelService
+from app.trips.hours import fresh_hours
 from app.trips.itinerary import ItineraryHotspot
 
 PUBLIC_REVIEW_STATUSES = ("approved", "auto_approved")
@@ -872,6 +873,7 @@ async def list_rankings(
     }
     items: list[dict[str, Any]] = []
     for ranking, hotspot in rows:
+        place_profile = place_profiles.get(hotspot.id)
         growth_rate = ranking.explanation.get("growth_rate")
         names = names_by_hotspot.get(hotspot.id, {})
         localized_name = (
@@ -944,6 +946,10 @@ async def list_rankings(
                     google_place_id=hotspot.google_place_id,
                     naver_map_url=hotspot.naver_map_url,
                     map_match_status=hotspot.map_match_status,
+                ),
+                "opening_hours": fresh_hours(
+                    place_profile.opening_hours_json if place_profile else None,
+                    place_profile.provider_expires_at if place_profile else None,
                 ),
                 "place_summary": place_summary_payload(
                     hotspot,
@@ -1197,6 +1203,7 @@ async def load_planner_hotspots(
                 destination_role=item["destination_role"],
                 parent_destination_id=item["parent_destination_id"],
                 is_cross_city=item["is_cross_city"],
+                opening_hours=item.get("opening_hours") or {},
             )
         )
     return rows
