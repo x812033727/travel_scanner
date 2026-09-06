@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-share-payload-leaks-notes
 title: 分享連結會外洩項目備註與整包 data
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T02:42:57Z
 created_at: 2026-09-06T00:53:04Z
 completed_at:
-branch:
+branch: claude/trip-api-p1
 depends_on: []
 scope:
   - apps/api/app/trips/router.py

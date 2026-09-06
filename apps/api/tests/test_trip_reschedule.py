@@ -26,6 +26,7 @@ from app.trips.reschedule import (
     day_shift_phases,
     ensure_shrink_confirmed,
     plan_reschedule,
+    reschedule_summary,
     reschedule_trip_data,
     resolve_target_range,
 )
@@ -638,11 +639,13 @@ async def test_shrinking_reports_the_content_it_would_destroy_before_deleting_it
         day_settings=settings,
     )
     assert plan.removed_days == (last_day,)
-    # The booked return flight relocates rather than being destroyed; the
-    # traveller's own activity is what a shrink would actually lose.
+    # The traveller's own activity is deleted outright. The booked return flight
+    # relocates to the new last day, but a flight number is tied to its calendar
+    # date, so apply clears the booking — and that loss is reported as well.
     kinds = {row.kind for row in plan.protected_rows}
-    assert kinds == {"activity"}
-    assert [row.title for row in plan.protected_rows] == ["台場"]
+    assert kinds == {"activity", "booked_flight"}
+    assert [row.title for row in plan.protected_rows] == ["台場", "JAL JL802"]
+    assert [flight.flight_number for flight in plan.invalidated_flights] == ["JL802"]
     assert plan.removed_day_setting_ids == (
         next(row.id for row in settings if row.day_date == last_day),
     )
@@ -848,7 +851,7 @@ def test_shrinks_that_drop_days_require_an_explicit_confirmation() -> None:
         ensure_shrink_confirmed(plan, confirmed=False)
     assert raised.value.status == 422
     assert raised.value.code == "trip_shrink_confirmation_required"
-    # Confirmed shrinks and non-destructive moves pass through untouched.
+    # Confirmed shrinks pass through untouched.
     ensure_shrink_confirmed(plan, confirmed=True)
     shift = resolve_target_range(
         old_start=trip.start_date,
@@ -858,14 +861,90 @@ def test_shrinks_that_drop_days_require_an_explicit_confirmation() -> None:
         end_date=None,
     )
     assert shift is not None
-    harmless = plan_reschedule(
+    # A shift drops no day, but build_world's anchors carry real bookings and a
+    # booking is tied to its calendar date: the same gate has to catch that.
+    booked_shift = plan_reschedule(
         old_start=trip.start_date,
         old_end=trip.end_date,
         target=shift,
         items=items,
         day_settings=settings,
     )
+    assert booked_shift.removed_days == ()
+    with pytest.raises(AppError) as flights_raised:
+        ensure_shrink_confirmed(booked_shift, confirmed=False)
+    assert flights_raised.value.code == "trip_shrink_confirmation_required"
+    assert "JL802" in flights_raised.value.detail
+    # With nothing booked, the same shift destroys nothing and needs no consent.
+    unbooked = [
+        row for row in items if row.system_role not in {"outbound_flight", "return_flight"}
+    ] + [
+        flight_row(trip, DAY_ONE, "outbound_flight", booked=False),
+        flight_row(trip, DAY_ONE + timedelta(days=2), "return_flight", booked=False),
+    ]
+    harmless = plan_reschedule(
+        old_start=trip.start_date,
+        old_end=trip.end_date,
+        target=shift,
+        items=unbooked,
+        day_settings=settings,
+    )
+    assert harmless.invalidated_flights == ()
     ensure_shrink_confirmed(harmless, confirmed=False)
+
+
+def test_a_pure_extension_that_clears_a_booked_flight_needs_the_same_consent() -> None:
+    """Adding days drops nothing, so the old gate waved it through — and apply then
+    wiped the hand-typed return flight without a word. The plan now names the
+    flight, the gate refuses without confirmation, and the summary says which
+    booking moved from which day."""
+    trip = build_trip()
+    items, settings, _segments = build_world(trip)
+    return_flight = next(row for row in items if row.system_role == "return_flight")
+    booked_day = DAY_ONE + timedelta(days=2)
+    target = resolve_target_range(
+        old_start=trip.start_date,
+        old_end=trip.end_date,
+        shift_days=None,
+        start_date=None,
+        end_date=DAY_ONE + timedelta(days=4),
+    )
+    assert target is not None
+    plan = plan_reschedule(
+        old_start=trip.start_date,
+        old_end=trip.end_date,
+        target=target,
+        items=items,
+        day_settings=settings,
+    )
+    assert plan.removed_days == ()
+    assert plan.removed_item_ids == ()
+    assert plan.invalidated_flight_item_ids == (return_flight.id,)
+    assert [row.kind for row in plan.protected_rows] == ["booked_flight"]
+    assert plan.protected_rows[0].title == "JAL JL802"
+    assert plan.protected_rows[0].day_date == booked_day
+
+    with pytest.raises(AppError) as raised:
+        ensure_shrink_confirmed(plan, confirmed=False)
+    assert raised.value.status == 422
+    assert raised.value.code == "trip_shrink_confirmation_required"
+    assert "JL802" in raised.value.detail
+    ensure_shrink_confirmed(plan, confirmed=True)
+
+    summary = reschedule_summary(plan, segments_cleared=0)
+    assert summary["invalidated_flight_anchors"] == 1
+    assert summary["invalidated_flights"] == [
+        {
+            "role": "return_flight",
+            "title": "JAL JL802",
+            "flight_number": "JL802",
+            "from_day": booked_day.isoformat(),
+            "to_day": (DAY_ONE + timedelta(days=4)).isoformat(),
+        }
+    ]
+    assert summary["removed_protected"] == [
+        {"kind": "booked_flight", "title": "JAL JL802", "day_date": booked_day.isoformat()}
+    ]
 
 
 def test_reschedule_trip_data_rebuilds_every_date_stamped_blob() -> None:

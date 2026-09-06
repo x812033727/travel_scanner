@@ -65,12 +65,27 @@ class TargetRange:
 
 @dataclass(frozen=True)
 class ProtectedRow:
-    """A row a shrink would destroy that the traveller, not the system, created."""
+    """Traveller-made content the move would destroy: a row a shrink deletes, or a
+    booked flight whose anchor is re-dated and therefore cleared."""
 
     item_id: UUID
     day_date: date
     kind: ProtectedKind
     title: str
+
+
+@dataclass(frozen=True)
+class InvalidatedFlight:
+    """A booked anchor the move re-dates. The booking is tied to its calendar day, so
+    apply clears it; the plan records which flight and which day so the traveller is
+    told before it happens, not counted afterwards."""
+
+    item_id: UUID
+    role: FlightRole
+    title: str
+    flight_number: str | None
+    old_day: date
+    new_day: date
 
 
 @dataclass(frozen=True)
@@ -86,6 +101,7 @@ class ReschedulePlan:
     protected_rows: tuple[ProtectedRow, ...]
     flight_relocations: tuple[tuple[UUID, date], ...]
     invalidated_flight_item_ids: tuple[UUID, ...]
+    invalidated_flights: tuple[InvalidatedFlight, ...] = ()
 
 
 def resolve_target_range(
@@ -223,6 +239,7 @@ def plan_reschedule(
     }
     relocations: list[tuple[UUID, date]] = []
     invalidated: list[UUID] = []
+    invalidated_flights: list[InvalidatedFlight] = []
     keepers: set[UUID] = set()
     surplus: set[UUID] = set()
     for role, day_target in flight_targets.items():
@@ -238,6 +255,18 @@ def plan_reschedule(
             # A booked flight number carries its own calendar date. Re-dating it
             # would assert a booking that does not exist, so it is cleared.
             invalidated.append(keeper.id)
+            info = keeper.data.get("flight_info") or {}
+            number = str(info.get("flight_number") or "").strip() or None
+            invalidated_flights.append(
+                InvalidatedFlight(
+                    item_id=keeper.id,
+                    role=cast(FlightRole, role),
+                    title=keeper.title or "",
+                    flight_number=number,
+                    old_day=keeper.day_date or day_target,
+                    new_day=day_target,
+                )
+            )
 
     removed_items: list[TripPlanItem] = []
     for item in items:
@@ -263,6 +292,19 @@ def plan_reschedule(
         for item in removed_items
         if (kind := _protected_kind(item)) is not None
     )
+    # The kept anchor is never in removed_items, so its cleared booking would
+    # otherwise be invisible to the protected list and to the confirmation gate:
+    # a pure extension that re-dates the return flight destroys a hand-typed
+    # booking without dropping a single day.
+    protected += tuple(
+        ProtectedRow(
+            item_id=flight.item_id,
+            day_date=flight.old_day,
+            kind="booked_flight",
+            title=flight.title,
+        )
+        for flight in invalidated_flights
+    )
     removed_settings = tuple(
         setting.id for setting in day_settings if landing(setting.day_date) not in grid
     )
@@ -284,6 +326,7 @@ def plan_reschedule(
         protected_rows=protected,
         flight_relocations=tuple(relocations),
         invalidated_flight_item_ids=tuple(invalidated),
+        invalidated_flights=tuple(invalidated_flights),
     )
 
 
@@ -381,22 +424,34 @@ async def apply_reschedule(
 
 
 def ensure_shrink_confirmed(plan: ReschedulePlan, *, confirmed: bool) -> None:
-    """Refuse a day-count decrease the caller has not explicitly signed off on.
+    """Refuse a destructive date change the caller has not explicitly signed off on.
 
     Dropping a day always destroys rows — at minimum that day's system slots,
-    at worst hand-picked restaurants and locked activities — with no undo. The
-    request must carry ``confirm_removed_days: true`` to proceed; the client
-    can show exactly what is at stake because it already holds the items.
+    at worst hand-picked restaurants and locked activities — with no undo. So
+    does re-dating a booked flight anchor: the flight number is tied to its
+    calendar day and apply clears it, which a pure extension or shift can do
+    without dropping any day at all. Both need ``confirm_removed_days: true``;
+    the client can show exactly what is at stake because it already holds the
+    items. The error code keeps its original name for the clients that match it.
     """
-    if not plan.removed_days or confirmed:
+    if confirmed or not (plan.removed_days or plan.invalidated_flights):
         return
-    protected = len(plan.protected_rows)
+    if plan.removed_days:
+        protected = len(plan.protected_rows)
+        raise AppError(
+            422,
+            "trip_shrink_confirmation_required",
+            f"縮短旅程會刪除 {len(plan.removed_days)} 天的安排"
+            + (f"（含 {protected} 筆自訂內容）" if protected else "")
+            + "，請確認後再執行",
+        )
+    flights = "、".join(
+        flight.flight_number or flight.title for flight in plan.invalidated_flights
+    )
     raise AppError(
         422,
         "trip_shrink_confirmation_required",
-        f"縮短旅程會刪除 {len(plan.removed_days)} 天的安排"
-        + (f"（含 {protected} 筆自訂內容）" if protected else "")
-        + "，請確認後再執行",
+        f"調整日期會清掉已填的航班訂位（{flights}），請確認後再執行",
     )
 
 
@@ -448,5 +503,15 @@ def reschedule_summary(plan: ReschedulePlan, *, segments_cleared: int) -> dict[s
             for row in plan.protected_rows
         ],
         "invalidated_flight_anchors": len(plan.invalidated_flight_item_ids),
+        "invalidated_flights": [
+            {
+                "role": flight.role,
+                "title": flight.title,
+                "flight_number": flight.flight_number,
+                "from_day": flight.old_day.isoformat(),
+                "to_day": flight.new_day.isoformat(),
+            }
+            for flight in plan.invalidated_flights
+        ],
         "route_segments_cleared": segments_cleared,
     }
