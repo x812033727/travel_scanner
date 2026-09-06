@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-intent-diff-mismatch
 title: 意圖列的 diff 與 apply 實際行為不一致
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T03:09:37Z
 created_at: 2026-09-06T00:55:05Z
 completed_at:
-branch:
+branch: claude/intent-bar-fixes
 depends_on: []
 scope:
   - apps/api/app/trips/intents.py

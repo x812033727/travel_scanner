@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-intent-route-segment-cascade
 title: 意圖精修刪除列時連帶清掉使用者輸入的交通時間
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T03:09:38Z
 created_at: 2026-09-06T00:55:20Z
 completed_at:
-branch:
+branch: claude/intent-bar-fixes
 depends_on:
   - 2026-09-06-intent-diff-mismatch
 scope:
