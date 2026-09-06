@@ -45,7 +45,9 @@ def test_apply_labels_fills_the_original_and_stored_locales_only() -> None:
     assert list(row) == ["city_code", "name", "local_name", "names", "category", "wikidata_item_id"]
     assert row["local_name"] == "สวนลุมพินี"
     # Traditional Chinese stays the curated name; a label equal to it is not stored twice.
-    assert row["names"] == {"en": "Lumphini Park", "zh-CN": "伦披尼公园"}
+    # Simplified is not stored either — Wikidata's zh-cn label proved unreliable for these
+    # places, so app.hotspots.simplified_names derives it from the Traditional name.
+    assert row["names"] == {"en": "Lumphini Park"}
     # Running again is a no-op.
     assert apply_labels(row, labels, country_code="TH") == []
 

@@ -72,7 +72,12 @@ def test_hotspot_seed_names_follow_the_country_script() -> None:
     assert sensoji["en"] == "Sensō-ji"
     assert sensoji["zh-TW"] == "淺草寺"
     assert sensoji["ja"] == sensoji["original"] == "浅草寺"
-    assert sensoji["ko"] == "Sensō-ji"  # no Korean text is known, so nothing is invented
+    assert sensoji["ko"] == "센소지"  # the Korean label now comes from Wikidata
+
+    # Nothing is invented where no label exists: this Bangkok seed has no Korean, so
+    # Korean readers get the English name rather than a transliteration made up here.
+    sea_life = _seed(name="曼谷暹羅海洋世界").localized_names
+    assert sea_life["ko"] == sea_life["en"] == "Sea Life Bangkok Ocean World"
 
     gyeongbokgung = _seed(slug="gyeongbokgung").localized_names
     assert gyeongbokgung["ko"] == gyeongbokgung["original"] == "경복궁"
@@ -80,7 +85,11 @@ def test_hotspot_seed_names_follow_the_country_script() -> None:
 
     lumphini = _seed(name="倫披尼公園").localized_names
     assert lumphini["en"] == "Lumphini Park"
-    assert "original" not in lumphini  # the seed holds no Thai text
+    # Thai is not a site locale, so it never becomes one of the five labels, but the
+    # seed does carry the original-script name and it is exposed under "original".
+    assert lumphini["original"] == "สวนลุมพินี"
+    assert lumphini["original_locale"] == "th"
+    assert set(LOCALES) & {"th"} == set()
 
     nakamise = _seed(name="仲見世商店街").localized_names
     assert nakamise["en"] == "Nakamise-dori"
@@ -108,11 +117,15 @@ def test_fetched_wikidata_labels_fill_what_the_seed_cannot_derive() -> None:
     assert names["zh-TW"] == "淺草寺"  # the curated name is never replaced
     assert names["original"] == "浅草寺"
 
-    thai = replace(_seed(name="倫披尼公園"), names={"ko": "룸피니 공원", "ja": "ルンピニー公園"})
+    thai = replace(
+        _seed(name="倫披尼公園"),
+        local_name=None,
+        names={"ko": "룸피니 공원", "ja": "ルンピニー公園"},
+    )
     assert thai.localized_names["ja"] == "ルンピニー公園"
     assert (
         "original" not in thai.localized_names
-    )  # Thai is not a site locale; local_name carries it
+    )  # without a local_name there is no original-script text to expose
     korean = replace(_seed(slug="gyeongbokgung"), local_name=None, names={"ko": "경복궁"})
     assert korean.original_name == "경복궁"  # a fetched label can stand in for the original
 
