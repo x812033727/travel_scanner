@@ -7,6 +7,7 @@ import { LegacyUiLocalizer } from "@/components/legacy-ui-localizer";
 import { AppBottomNav } from "@/components/app-bottom-nav";
 import { HeaderSessionProvider } from "@/components/header-session";
 import { SavedItemsProvider } from "@/components/saved-items-provider";
+import { SiteFooter } from "@/components/site-footer";
 import { SiteVisibilityProvider } from "@/components/site-visibility-provider";
 import { UsageCatalogProvider } from "@/components/usage-catalog-provider";
 import { AnalyticsProvider } from "@/components/analytics-provider";
@@ -87,7 +88,12 @@ export default async function LocaleLayout({ children, params }: Props) {
                     signed-out reader got three 401s for one fact. */}
                 <HeaderSessionProvider>
                   <SavedItemsProvider>
-                    <div className="public-app-shell">{children}</div>
+                    <div className="public-app-shell">
+                      {children}
+                      {/* Inside the shell, so the 5rem the shell already reserves for the
+                          fixed bottom navigation sits below the footer rather than over it. */}
+                      <SiteFooter year={new Date().getFullYear()} />
+                    </div>
                     <AppBottomNav />
                   </SavedItemsProvider>
                 </HeaderSessionProvider>
