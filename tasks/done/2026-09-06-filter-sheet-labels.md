@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-filter-sheet-labels
 title: 篩選面板的關閉鍵報讀成「關閉介紹」，美食那邊則跟開啟鍵同名
-status: in-progress
+status: done
 priority: P3
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T21:22:56Z
 created_at: 2026-09-06T21:22:56Z
-completed_at:
+completed_at: 2026-09-06T22:41:01Z
 branch: claude/ux-sheet-labels
 depends_on: []
 scope:

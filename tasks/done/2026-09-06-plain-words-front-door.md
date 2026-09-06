@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-plain-words-front-door
 title: 首頁與規劃表單的字換成長輩看得懂的說法
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T22:18:32Z
 created_at: 2026-09-06T22:18:32Z
-completed_at:
+completed_at: 2026-09-06T22:41:01Z
 branch: claude/ux-plain-words
 depends_on: []
 scope:
