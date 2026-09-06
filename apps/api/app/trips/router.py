@@ -2607,46 +2607,23 @@ async def update_itinerary(
     await get_redis().delete(f"routes:trip:{trip.id}")
     await session.refresh(trip)
     if invalid_pairs:
-        routing_defaults = RoutingOptions.model_validate(trip.data.get("routing_defaults") or {})
-        runtime = await load_runtime_settings(session)
-        routing_available = route_provider_configured(
-            runtime,
-            trip_region_code(trip.timezone, trip.destination_name, trip.data),
-            routing_defaults.default_travel_mode,
-        )
-        if routing_defaults.auto_compute and routing_available:
-            trip.data = {
-                **trip.data,
-                "routing": {
-                    "status": "queued",
-                    "total": max(
-                        0,
-                        route_pair_count(next_rows),
-                    ),
-                    "completed": 0,
-                    "warnings": [],
-                    "updated_at": datetime.now(UTC).isoformat(),
-                },
-            }
-            await session.commit()
-            try:
-                await asyncio.to_thread(enqueue_trip_routing, trip.id, int(next_version))
-            except Exception:
-                trip.data = {
-                    **trip.data,
-                    "routing": {
-                        "status": "stale",
-                        "total": max(
-                            0,
-                            route_pair_count(next_rows),
-                        ),
-                        "completed": 0,
-                        "warnings": ["行程已變更，請在行程頁重新計算移動時間。"],
-                        "updated_at": datetime.now(UTC).isoformat(),
-                    },
-                }
-                await session.commit()
-            await session.refresh(trip)
+        # Edits no longer re-route the whole trip in the background (decided
+        # 2026-09-06): the pairs this save touched were deleted above, the editor shows
+        # a distance estimate for them until the traveller asks for routes, and that
+        # compute only spends provider requests on the missing pairs because
+        # route_tasks reuses the surviving rows.
+        trip.data = {
+            **trip.data,
+            "routing": {
+                "status": "stale",
+                "total": max(0, route_pair_count(next_rows)),
+                "completed": len(new_pairs - invalid_pairs),
+                "warnings": ["行程已變更，受影響的移動時間需要重新計算。"],
+                "updated_at": datetime.now(UTC).isoformat(),
+            },
+        }
+        await session.commit()
+        await session.refresh(trip)
     return await serialize_trip(session, trip)
 
 

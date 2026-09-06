@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**51 open · 0 in progress · 0 blocked · 1 in review · 3 done**
+**50 open · 1 in progress · 0 blocked · 1 in review · 3 done**
 
 ## Ready to claim
 
@@ -58,7 +58,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [整天重算只打真的缺的路段；編輯後不再自動整趟重算](open/2026-09-06-route-recompute-reuses-saved-segments.md) | claude-fable-5.1 | 2026-09-06T02:54:59Z | `claude/route-recompute-reuses-saved-segments` |
 
 ## In review
 
@@ -72,7 +74,6 @@ _Nothing here._
 | --- | --- | --- |
 | P1 | [分享連結會外洩項目備註與整包 data](open/2026-09-06-share-payload-leaks-notes.md) | active work in the same scope |
 | P1 | [意圖精修刪除列時連帶清掉使用者輸入的交通時間](open/2026-09-06-intent-route-segment-cascade.md) | depends on 2026-09-06-intent-diff-mismatch |
-| P1 | [整天重算只打真的缺的路段；編輯後不再自動整趟重算](open/2026-09-06-route-recompute-reuses-saved-segments.md) | depends on 2026-09-06-route-cache-time-key |
 | P2 | [21 個潮流街區還沒有任何店家](open/2026-09-06-empty-trend-districts.md) | depends on 2026-09-06-trend-import-scripts |
 | P2 | [日期變更後行程價格停在舊報價且無法重新查價](open/2026-09-06-trip-stale-price-after-reschedule.md) | active work in the same scope |
 | P2 | [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](open/2026-09-06-reoptimize-no-version-check.md) | active work in the same scope |
