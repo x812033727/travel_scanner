@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-admin-panels-i18n
 title: 後台面板文案硬編碼繁中
-status: open
+status: done
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T07:55:01Z
 created_at: 2026-09-06T00:53:41Z
-completed_at:
-branch:
+completed_at: 2026-09-06T09:04:15Z
+branch: claude/p3-polish
 depends_on:
   - 2026-09-06-stale-gemini-model-help
 scope:
@@ -20,6 +20,7 @@ scope:
   - apps/web/messages/ko/admin.json
   - apps/web/messages/zh-CN/admin.json
   - apps/web/messages/zh-TW/admin.json
+  - apps/web/vitest.setup.tsx
 ---
 
 # 後台面板文案硬編碼繁中
@@ -39,17 +40,17 @@ scope 只寫了最大的三個面板 —— 一次做完六個檔案太大，而
 
 ## Definition of done
 
-- [ ] scope 內三個面板在 `/en/admin` 沒有繁體中文（資料本身除外）。
-- [ ] 新字串進 `messages/*/admin.json`，五語系鍵一致。
-- [ ] 三個面板各自的 `.test.tsx` 通過（它們大量用中文 accessible name 查詢）。
-- [ ] `CI=1 npm run check:i18n`、`lint:web`、`typecheck:web`。
+- [x] scope 內三個面板在 `/en/admin` 沒有繁體中文（資料本身除外）。
+- [x] 新字串進 `messages/*/admin.json`，五語系鍵一致。
+- [x] 三個面板各自的 `.test.tsx` 通過（它們大量用中文 accessible name 查詢）。
+- [x] `CI=1 npm run check:i18n`、`lint:web`、`typecheck:web`。
 
 ## Steps
 
-- [ ] 一個檔案一個 commit，不要一次三個。
-- [ ] `admin.json` 已經有 `navigation`／`providerTabs`／`hotspotTabs`／`usage`／
+- [x] 一個檔案一個 commit，不要一次三個。
+- [x] `admin.json` 已經有 `navigation`／`providerTabs`／`hotspotTabs`／`usage`／
       `analytics`／`layout` 幾個物件，新字串照面板分組加，別全塞在頂層。
-- [ ] 同步改測試裡的中文查詢字串。
+- [x] 同步改測試裡的中文查詢字串。（不需要：zh-TW 的值不變）
 
 ## How to verify
 
@@ -76,3 +77,10 @@ cd ../.. && npm run lint:web && npm run typecheck:web && CI=1 node tools/check-i
 默默吃掉重複鍵）。用純文字插入。
 
 **Scope 重疊**：`admin-settings-panel.tsx` 也在 `2026-09-06-stale-gemini-model-help` 的 scope 裡（那張只改一段說明文字）。先讓它落地，這張再把那段文字一起搬進 catalog，免得兩邊改同一行。
+
+2026-09-06 claude-fable-5-1：三個面板三個 commit。`admin.json` 新增 `hotspotsPanel`、`foodMerchantsPanel`、`providerSecrets`、
+`settingsPanel`（含 sources／auditActions／usageOperations 子物件），`providerFields` 補齊 108 個欄位的 label／help／options。
+設定面板改用 `t.has()` 讀可有可無的 help，所以 `vitest.setup.tsx` 的 next-intl mock 補了 `has`（scope 補上）；日期與數字改用
+`useLocale()` 格式化，不再寫死 zh-TW。測試裡的中文查詢字串不用改，因為 zh-TW 的值逐字不變。
+`admin-hotspot-places-panel`／`admin-deployments-panel`／`admin-users-panel` 不在 scope，照原計畫另開一張
+（`2026-09-06-admin-panels-i18n-remaining`）。

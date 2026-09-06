@@ -33,18 +33,19 @@ function message(namespace: string, key: string): string | undefined {
 // One function per namespace, cached: next-intl's own hook is referentially stable for a
 // given namespace, and components list it in effect dependencies. A fresh closure on
 // every render would re-run those effects (and re-fetch) in tests only.
-const translators = new Map<string, (key: string, values?: Record<string, string | number>) => string>();
+type Translate = ((key: string, values?: Record<string, string | number>) => string) & { has: (key: string) => boolean };
+const translators = new Map<string, Translate>();
 
 function translator(namespace: string) {
   const cached = translators.get(namespace);
   if (cached) return cached;
-  const translate = (key: string, values?: Record<string, string | number>) => {
+  const translate: Translate = Object.assign((key: string, values?: Record<string, string | number>) => {
     let value = message(namespace, key) || key;
     for (const [name, replacement] of Object.entries(values || {})) {
       value = value.replaceAll(`{${name}}`, String(replacement));
     }
     return value;
-  };
+  }, { has: (key: string) => message(namespace, key) !== undefined });
   translators.set(namespace, translate);
   return translate;
 }

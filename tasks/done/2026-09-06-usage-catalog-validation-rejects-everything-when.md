@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-usage-catalog-validation-rejects-everything-when
 title: usage catalog validation rejects everything when web ships ahead of api
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T04:27:51Z
 created_at: 2026-09-06T00:55:44Z
-completed_at:
+completed_at: 2026-09-06T09:07:02Z
 branch: claude/api-p2-data
 depends_on: []
 scope:
@@ -93,3 +93,5 @@ doc comment and in the README's production deployment section.
 - The e2e fixture guard (`usage-catalog-e2e-fixture.test.ts`) is kept: the browser
   suite would now pass with a stale fixture, which is exactly why the drift test has
   to stay. README says the API ships first or together with the web, never behind.
+- Shipped in PR #198 (ba96d74, merged 2026-09-06 05:41Z) and deployed; the `done` step was missed then and
+  the file is archived on 2026-09-06 by claude-fable-5-1 without further changes.

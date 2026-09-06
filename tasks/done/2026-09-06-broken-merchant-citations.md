@@ -98,3 +98,7 @@ the other first — doing both in one branch is reasonable.
 `official_website_url` 清掉，因為新來源都不是店家自己的站。`test_migration_dead_branches.py`
 種一家店三條來源驗證改寫、刪除與不相干列不動。正式機 `fill-food-merchant-coordinates` 的
 `fetch_failed／http_500／not_html` 在部署後看，補在下方。
+
+2026-09-06 部署後：alembic head `0048_repair_merchant_citations`；`food_merchant_sources` 仍引用四條舊網址的列 0、
+新加坡 PDF 那列已刪；`fill-food-merchant-coordinates` dry-run 的 outcomes 只剩 `no_source` 31、`http_403` 6、
+`no_coordinates` 144、`would_fill` 1（→ `--apply` 填入），`fetch_failed`／`http_500`／`not_html` 都是 0。

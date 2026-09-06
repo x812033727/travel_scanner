@@ -96,6 +96,21 @@ def test_new_affiliate_provider_rows_default_to_disabled() -> None:
     assert _default_provider_enabled("google_maps")
 
 
+def test_the_runtime_row_carries_the_session_lifetimes() -> None:
+    """Both fields are administrator-editable; the auth routes read them through
+    load_runtime_settings, so a stored value must survive the override step."""
+    base = Settings(app_secret_key="test-app-secret-at-least-thirty-two-characters")
+    row = ProviderConfig(
+        provider="runtime",
+        enabled=True,
+        config={"access_token_expire_minutes": 720, "session_absolute_max_days": 7},
+        secret_config_encrypted=None,
+    )
+    effective = apply_runtime_overrides(base, [row])
+    assert effective.access_token_expire_minutes == 720
+    assert effective.session_absolute_max_days == 7
+
+
 def test_database_provider_settings_override_environment_and_can_disable_provider() -> None:
     base = Settings(
         app_secret_key="test-app-secret-at-least-thirty-two-characters",

@@ -32,7 +32,7 @@ describe("registration page", () => {
   it("shows a closed notice and login link without a form", async () => {
     registrationState.value = "closed";
     await renderPage();
-    expect(screen.getByRole("heading", { name: "目前暫停開放註冊" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "現在還不能建立新帳號" })).toBeTruthy();
     expect(screen.queryByTestId("register-form")).toBeNull();
     expect(screen.getByRole("link", { name: "前往登入" }).getAttribute("href")).toBe("/login?next=%2Ftrips");
   });
@@ -40,7 +40,7 @@ describe("registration page", () => {
   it("fails closed when registration status cannot be confirmed", async () => {
     registrationState.value = "unavailable";
     await renderPage();
-    expect(screen.getByRole("heading", { name: "暫時無法確認註冊狀態" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "請稍後再回來試一次" })).toBeTruthy();
     expect(screen.queryByTestId("register-form")).toBeNull();
   });
 });

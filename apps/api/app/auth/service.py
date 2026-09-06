@@ -11,7 +11,7 @@ from redis.exceptions import RedisError
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.config import get_settings
+from app.config import Settings, get_settings
 from app.db import get_session
 from app.infra import get_redis
 from app.models import User
@@ -46,14 +46,27 @@ def verify_password(password: str, hashed: str) -> bool:
     return password_hash.verify(password, hashed)
 
 
+async def runtime_auth_settings(session: AsyncSession) -> Settings:
+    """Settings with the administrator's overrides applied.
+
+    The auth paths mint and judge tokens with these, so a lifetime changed on
+    /admin/settings takes effect on the next sign-in or renewal without a redeploy.
+    Imported lazily because ``app.admin.service`` imports this module.
+    """
+    from app.admin.service import load_runtime_settings
+
+    return await load_runtime_settings(session)
+
+
 def create_access_token(
     user_id: UUID,
     auth_version: int = 1,
     *,
     session_started_at: datetime | None = None,
     token_id: str | None = None,
+    settings: Settings | None = None,
 ) -> str:
-    settings = get_settings()
+    settings = settings or get_settings()
     now = datetime.now(UTC)
     payload = {
         "sub": str(user_id),
@@ -74,18 +87,22 @@ def create_access_token(
     return jwt.encode(payload, settings.app_secret_key, algorithm=ALGORITHM)
 
 
-def session_past_absolute_cap(claims: AccessTokenClaims, now: datetime | None = None) -> bool:
+def session_past_absolute_cap(
+    claims: AccessTokenClaims, now: datetime | None = None, *, settings: Settings | None = None
+) -> bool:
     """Whether this sign-in is older than the absolute cap, regardless of renewals.
 
     Checked when a token is presented, not only when one is renewed: a token minted just
     before the cap was reached would otherwise stay valid for its full lifetime past it.
     """
     moment = now or datetime.now(UTC)
-    limit = timedelta(days=get_settings().session_absolute_max_days)
+    limit = timedelta(days=(settings or get_settings()).session_absolute_max_days)
     return moment - claims.session_started_at >= limit
 
 
-def should_renew_session(claims: AccessTokenClaims, now: datetime | None = None) -> bool:
+def should_renew_session(
+    claims: AccessTokenClaims, now: datetime | None = None, *, settings: Settings | None = None
+) -> bool:
     moment = now or datetime.now(UTC)
     # Measured against the lifetime this token was actually minted with, not the one
     # currently configured. Reading the config here meant raising the lifetime moved the
@@ -94,12 +111,12 @@ def should_renew_session(claims: AccessTokenClaims, now: datetime | None = None)
     lifetime = claims.expires_at - claims.issued_at
     if moment - claims.issued_at < lifetime * SESSION_RENEWAL_FRACTION:
         return False
-    limit = timedelta(days=get_settings().session_absolute_max_days)
+    limit = timedelta(days=(settings or get_settings()).session_absolute_max_days)
     return moment - claims.session_started_at < limit
 
 
-def set_auth_cookie(response: Response, token: str) -> None:
-    settings = get_settings()
+def set_auth_cookie(response: Response, token: str, *, settings: Settings | None = None) -> None:
+    settings = settings or get_settings()
     response.set_cookie(
         "travel_access",
         token,
@@ -185,22 +202,30 @@ def _presented_token(authorization: str | None, travel_access: str | None) -> st
     return travel_access
 
 
-async def _authenticate(session: AsyncSession, token: str) -> tuple[User, AccessTokenClaims]:
+async def _authenticate(
+    session: AsyncSession, token: str
+) -> tuple[User, AccessTokenClaims, Settings]:
     claims = decode_access_token_claims(token)
     user = await session.get(User, claims.user_id)
     if user is None or not user.is_active or user.auth_version != claims.auth_version:
         raise AppError(401, "invalid_user", "這個帳號目前無法使用")
-    if session_past_absolute_cap(claims):
+    settings = await runtime_auth_settings(session)
+    if session_past_absolute_cap(claims, settings=settings):
         raise AppError(401, "session_expired", "登入已逾期,請重新登入")
     await ensure_token_not_revoked(claims)
-    return user, claims
+    return user, claims, settings
 
 
 def _renew_cookie_session(
-    response: Response, user: User, claims: AccessTokenClaims, *, from_cookie: bool
+    response: Response,
+    user: User,
+    claims: AccessTokenClaims,
+    *,
+    from_cookie: bool,
+    settings: Settings,
 ) -> None:
     """Slide a cookie session forward; bearer clients manage their own tokens."""
-    if not from_cookie or not should_renew_session(claims):
+    if not from_cookie or not should_renew_session(claims, settings=settings):
         return
     set_auth_cookie(
         response,
@@ -210,7 +235,9 @@ def _renew_cookie_session(
             session_started_at=claims.session_started_at,
             # Carry the id forward so the sign-in keeps one revocation handle.
             token_id=claims.token_id,
+            settings=settings,
         ),
+        settings=settings,
     )
 
 
@@ -223,8 +250,8 @@ async def current_user(
     token = _presented_token(authorization, travel_access)
     if not token:
         raise AppError(401, "authentication_required", "請先登入再繼續")
-    user, claims = await _authenticate(session, token)
-    _renew_cookie_session(response, user, claims, from_cookie=not authorization)
+    user, claims, settings = await _authenticate(session, token)
+    _renew_cookie_session(response, user, claims, from_cookie=not authorization, settings=settings)
     return user
 
 
@@ -240,8 +267,8 @@ async def optional_current_user(
     token = _presented_token(authorization, travel_access)
     if not token:
         return None
-    user, claims = await _authenticate(session, token)
-    _renew_cookie_session(response, user, claims, from_cookie=not authorization)
+    user, claims, settings = await _authenticate(session, token)
+    _renew_cookie_session(response, user, claims, from_cookie=not authorization, settings=settings)
     return user
 
 

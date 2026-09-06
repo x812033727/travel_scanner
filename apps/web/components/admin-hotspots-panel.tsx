@@ -69,10 +69,11 @@ type CountryGroup = {
 };
 
 const PAGE_SIZE = 50;
+type Translator = ReturnType<typeof useTranslations>;
 
-function roleLabel(role: Candidate["destination_role"], parentId: string | null) {
-  if (role === "extension") return `跨城（${parentId}）`;
-  return role === "secondary" ? "二線城市" : "主要城市";
+function roleLabel(ta: Translator, role: Candidate["destination_role"], parentId: string | null) {
+  if (role === "extension") return ta("hotspotsPanel.roleExtension", { parentId: parentId ?? "" });
+  return role === "secondary" ? ta("hotspotsPanel.roleSecondary") : ta("hotspotsPanel.rolePrimary");
 }
 
 // The API already orders rows by country, then destination, so grouping only
@@ -125,6 +126,7 @@ type MapCandidate = {
 export function AdminHotspotsPanel() {
   const t = useTranslations("hotspots");
   const tHotspotAdmin = useTranslations("hotspotAdmin");
+  const ta = useTranslations("admin");
   const [data, setData] = useState<Response | null>(null);
   const [status, setStatus] = useState("pending");
   const [city, setCity] = useState("");
@@ -210,7 +212,7 @@ export function AdminHotspotsPanel() {
         method: "POST",
         body: JSON.stringify({ ids: [...selected], action }),
       });
-      setMessage(`已更新 ${selected.size} 筆景點候選`);
+      setMessage(ta("hotspotsPanel.reviewed", { count: selected.size }));
       setSelected(new Set());
       await load();
     } catch (error) {
@@ -245,8 +247,8 @@ export function AdminHotspotsPanel() {
       });
       setMessage(
         isDeep
-          ? `已設定 ${selected.size} 筆深度景點`
-          : `已移除 ${selected.size} 筆深度標記`,
+          ? ta("hotspotsPanel.depthSet", { count: selected.size })
+          : ta("hotspotsPanel.depthCleared", { count: selected.size }),
       );
       setSelected(new Set());
       await load();
@@ -269,7 +271,7 @@ export function AdminHotspotsPanel() {
         }),
       });
       setMessage(
-        `已移動 ${selected.size} 筆景點至 ${moveDestinationId.trim()}`,
+        ta("hotspotsPanel.moved", { count: selected.size, destination: moveDestinationId.trim() }),
       );
       setSelected(new Set());
       await load();
@@ -300,8 +302,8 @@ export function AdminHotspotsPanel() {
       setMessage(
         result.message ??
           (result.candidates.length
-            ? "找到候選，請人工比對名稱與地址。"
-            : "找不到唯一候選。"),
+            ? ta("hotspotsPanel.candidateFound")
+            : ta("hotspotsPanel.candidateNone")),
       );
     } catch (error) {
       setMessage((error as Error).message);
@@ -334,7 +336,7 @@ export function AdminHotspotsPanel() {
           map_match_status: locationDraft.map_match_status,
         }),
       });
-      setMessage("已儲存精準地點。");
+      setMessage(ta("hotspotsPanel.locationSaved"));
       setLocationDraft(null);
       setMapCandidate(null);
       await load();
@@ -371,7 +373,7 @@ export function AdminHotspotsPanel() {
     <section className="mt-8">
       <div className="grid gap-2">
         <FilterPills
-          label="國家／地區"
+          label={ta("hotspotsPanel.filterCountry")}
           allLabel={t("allCountries")}
           allCount={facets ? sumCounts(facets.countries) : undefined}
           options={countryOptions}
@@ -379,7 +381,7 @@ export function AdminHotspotsPanel() {
           onChange={(code) => updateFilter(setCountry, code)}
         />
         <FilterPills
-          label="景點分類"
+          label={ta("hotspotsPanel.filterCategory")}
           allLabel={t("allCategories")}
           allCount={facets ? sumCounts(facets.categories) : undefined}
           options={categoryOptions}
@@ -389,94 +391,94 @@ export function AdminHotspotsPanel() {
       </div>
       <div className="mt-3 grid gap-3 rounded-2xl border border-[var(--line)] bg-white p-4 md:grid-cols-3 lg:grid-cols-6">
         <select
-          aria-label="審核狀態"
+          aria-label={ta("hotspotsPanel.statusFilter")}
           value={status}
           onChange={(e) => updateFilter(setStatus, e.target.value)}
           className="h-11 rounded-xl border border-[var(--line)] px-3"
         >
-          <option value="pending">待審</option>
-          <option value="approved">人工核准</option>
-          <option value="auto_approved">自動核准</option>
-          <option value="rejected">已拒絕</option>
-          <option value="disabled">已停用</option>
-          <option value="">全部狀態</option>
+          <option value="pending">{ta("hotspotsPanel.statusPending")}</option>
+          <option value="approved">{ta("hotspotsPanel.statusApproved")}</option>
+          <option value="auto_approved">{ta("hotspotsPanel.statusAutoApproved")}</option>
+          <option value="rejected">{ta("hotspotsPanel.statusRejected")}</option>
+          <option value="disabled">{ta("hotspotsPanel.statusDisabled")}</option>
+          <option value="">{ta("hotspotsPanel.statusAll")}</option>
         </select>
         <input
-          aria-label="城市代碼"
+          aria-label={ta("hotspotsPanel.cityCode")}
           value={city}
           onChange={(e) => updateFilter(setCity, e.target.value.toUpperCase())}
           maxLength={3}
-          placeholder="城市代碼，例如 TPE"
+          placeholder={ta("hotspotsPanel.cityCodePlaceholder")}
           className="h-11 rounded-xl border border-[var(--line)] px-3"
         />
         <input
-          aria-label="目的地 ID"
+          aria-label={ta("hotspotsPanel.destinationId")}
           value={destinationId}
           onChange={(e) => updateFilter(setDestinationId, e.target.value)}
-          placeholder="目的地 ID"
+          placeholder={ta("hotspotsPanel.destinationId")}
           className="h-11 rounded-xl border border-[var(--line)] px-3"
         />
         <select
-          aria-label="城市層級"
+          aria-label={ta("hotspotsPanel.roleFilter")}
           value={role}
           onChange={(e) => updateFilter(setRole, e.target.value)}
           className="h-11 rounded-xl border border-[var(--line)] px-3"
         >
-          <option value="">全部層級</option>
-          <option value="primary">主要城市</option>
-          <option value="secondary">二線城市</option>
-          <option value="extension">跨城延伸</option>
+          <option value="">{ta("hotspotsPanel.roleAll")}</option>
+          <option value="primary">{ta("hotspotsPanel.rolePrimary")}</option>
+          <option value="secondary">{ta("hotspotsPanel.roleSecondary")}</option>
+          <option value="extension">{ta("hotspotsPanel.roleExtensionOption")}</option>
         </select>
         <input
-          aria-label="母目的地 ID"
+          aria-label={ta("hotspotsPanel.parentId")}
           value={parentId}
           onChange={(e) => updateFilter(setParentId, e.target.value)}
-          placeholder="母目的地 ID"
+          placeholder={ta("hotspotsPanel.parentId")}
           className="h-11 rounded-xl border border-[var(--line)] px-3"
         />
         <select
-          aria-label="資料來源"
+          aria-label={ta("hotspotsPanel.originFilter")}
           value={origin}
           onChange={(e) => updateFilter(setOrigin, e.target.value)}
           className="h-11 rounded-xl border border-[var(--line)] px-3"
         >
-          <option value="">全部來源</option>
-          <option value="curated">人工啟動資料</option>
-          <option value="wikimedia_discovery">Wikimedia 探索</option>
+          <option value="">{ta("hotspotsPanel.originAll")}</option>
+          <option value="curated">{ta("hotspotsPanel.originCurated")}</option>
+          <option value="wikimedia_discovery">{ta("hotspotsPanel.originWikimedia")}</option>
         </select>
       </div>
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <span className="mr-auto text-sm text-[var(--muted)]">
-          共 {data?.total ?? 0} 筆，已選 {selected.size} 筆
+          {ta("hotspotsPanel.totals", { total: data?.total ?? 0, selected: selected.size })}
         </span>
         <button
           disabled={!selected.size || loading}
           onClick={() => void review("approve")}
           className="rounded-xl bg-[var(--teal)] px-4 py-2 text-sm font-semibold text-white disabled:opacity-40"
         >
-          核准
+          {ta("hotspotsPanel.approve")}
         </button>
         <button
           disabled={!selected.size || loading}
           onClick={() => void review("reject")}
           className="rounded-xl border border-[var(--coral)] px-4 py-2 text-sm font-semibold text-[var(--coral)] disabled:opacity-40"
         >
-          拒絕
+          {ta("hotspotsPanel.reject")}
         </button>
         <button
           disabled={!selected.size || loading}
           onClick={() => void review("disable")}
           className="rounded-xl border border-[var(--line)] px-4 py-2 text-sm font-semibold disabled:opacity-40"
         >
-          停用
+          {ta("hotspotsPanel.disable")}
         </button>
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
         <input
-          aria-label="移動至目的地"
+          aria-label={ta("hotspotsPanel.moveTo")}
           value={moveDestinationId}
           onChange={(e) => setMoveDestinationId(e.target.value)}
-          placeholder="移動至目的地 ID"
+          placeholder={ta("hotspotsPanel.moveToPlaceholder")}
           className="h-10 rounded-xl border border-[var(--line)] px-3"
         />
         <button
@@ -484,23 +486,23 @@ export function AdminHotspotsPanel() {
           onClick={() => void moveDestination()}
           className="rounded-xl border border-[var(--teal)] px-4 py-2 text-sm font-semibold text-[var(--teal)] disabled:opacity-40"
         >
-          移動目的地
+          {ta("hotspotsPanel.moveButton")}
         </button>
       </div>
       <div className="mt-4 grid gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-4 md:grid-cols-4">
         <select
-          aria-label="深度類型"
+          aria-label={ta("hotspotsPanel.depthKind")}
           value={depthKind}
           onChange={(e) =>
             setDepthKind(e.target.value as "urban_local" | "day_trip")
           }
           className="h-10 rounded-xl border px-3"
         >
-          <option value="urban_local">市區巷弄</option>
-          <option value="day_trip">近郊</option>
+          <option value="urban_local">{ta("hotspotsPanel.depthUrbanLocal")}</option>
+          <option value="day_trip">{ta("hotspotsPanel.depthDayTrip")}</option>
         </select>
         <input
-          aria-label="交通分鐘"
+          aria-label={ta("hotspotsPanel.accessMinutes")}
           type="number"
           min={1}
           max={depthKind === "urban_local" ? 45 : 90}
@@ -509,7 +511,7 @@ export function AdminHotspotsPanel() {
           className="h-10 rounded-xl border px-3"
         />
         <input
-          aria-label="停留分鐘"
+          aria-label={ta("hotspotsPanel.durationMinutes")}
           type="number"
           min={30}
           max={480}
@@ -518,10 +520,10 @@ export function AdminHotspotsPanel() {
           className="h-10 rounded-xl border px-3"
         />
         <input
-          aria-label="深度理由"
+          aria-label={ta("hotspotsPanel.depthReason")}
           value={depthReason}
           onChange={(e) => setDepthReason(e.target.value)}
-          placeholder="深度旅遊理由"
+          placeholder={ta("hotspotsPanel.depthReasonPlaceholder")}
           className="h-10 rounded-xl border px-3"
         />
         {Object.entries(scores).map(([key, value]) => (
@@ -547,23 +549,23 @@ export function AdminHotspotsPanel() {
           onClick={() => void updateDepth(true)}
           className="rounded-xl bg-amber-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-40"
         >
-          設定深度景點
+          {ta("hotspotsPanel.setDepth")}
         </button>
         <button
           disabled={!selected.size || loading}
           onClick={() => void updateDepth(false)}
           className="rounded-xl border border-amber-700 px-4 py-2 text-sm font-semibold text-amber-900 disabled:opacity-40"
         >
-          移除深度標記
+          {ta("hotspotsPanel.clearDepth")}
         </button>
       </div>
       {locationDraft && (
         <div className="mt-4 rounded-2xl border border-sky-200 bg-sky-50 p-4">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h3 className="font-bold">精準地點：{locationDraft.name}</h3>
+              <h3 className="font-bold">{ta("hotspotsPanel.locationTitle", { name: locationDraft.name })}</h3>
               <p className="text-xs text-[var(--muted)]">
-                Places 候選座標只供比對；永久座標必須附獨立來源。
+                {ta("hotspotsPanel.locationHint")}
               </p>
             </div>
             <button
@@ -571,12 +573,12 @@ export function AdminHotspotsPanel() {
               onClick={() => setLocationDraft(null)}
               className="min-h-11 rounded-xl border px-3"
             >
-              關閉
+              {ta("hotspotsPanel.close")}
             </button>
           </div>
           <div className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
             <label className="text-xs font-semibold">
-              緯度
+              {ta("hotspotsPanel.latitude")}
               <input
                 type="number"
                 step="any"
@@ -591,7 +593,7 @@ export function AdminHotspotsPanel() {
               />
             </label>
             <label className="text-xs font-semibold">
-              經度
+              {ta("hotspotsPanel.longitude")}
               <input
                 type="number"
                 step="any"
@@ -606,7 +608,7 @@ export function AdminHotspotsPanel() {
               />
             </label>
             <label className="text-xs font-semibold">
-              座標來源類型
+              {ta("hotspotsPanel.coordinateSourceType")}
               <select
                 value={locationDraft.coordinate_source_type ?? ""}
                 onChange={(e) =>
@@ -617,15 +619,15 @@ export function AdminHotspotsPanel() {
                 }
                 className="mt-1 h-10 w-full rounded-xl border px-3"
               >
-                <option value="">待補</option>
+                <option value="">{ta("hotspotsPanel.coordinateSourcePending")}</option>
                 <option value="wikidata">Wikidata</option>
-                <option value="official_tourism">官方觀光</option>
-                <option value="admin_verified">人工查核</option>
-                <option value="curated">人工主檔</option>
+                <option value="official_tourism">{ta("hotspotsPanel.coordinateSourceOfficialTourism")}</option>
+                <option value="admin_verified">{ta("hotspotsPanel.coordinateSourceAdminVerified")}</option>
+                <option value="curated">{ta("hotspotsPanel.coordinateSourceCurated")}</option>
               </select>
             </label>
             <label className="text-xs font-semibold">
-              座標來源網址
+              {ta("hotspotsPanel.coordinateSourceUrl")}
               <input
                 value={locationDraft.coordinate_source_url ?? ""}
                 onChange={(e) =>
@@ -640,7 +642,7 @@ export function AdminHotspotsPanel() {
             </label>
             {locationDraft.country_code === "KR" ? (
               <label className="text-xs font-semibold lg:col-span-2">
-                Naver 精準地點頁
+                {ta("hotspotsPanel.naverUrl")}
                 <input
                   value={locationDraft.naver_map_url ?? ""}
                   onChange={(e) =>
@@ -669,7 +671,7 @@ export function AdminHotspotsPanel() {
               </label>
             )}
             <label className="text-xs font-semibold">
-              比對狀態
+              {ta("hotspotsPanel.matchStatus")}
               <select
                 value={locationDraft.map_match_status}
                 onChange={(e) =>
@@ -681,10 +683,10 @@ export function AdminHotspotsPanel() {
                 }
                 className="mt-1 h-10 w-full rounded-xl border px-3"
               >
-                <option value="unverified">待驗證</option>
-                <option value="verified">已驗證</option>
-                <option value="ambiguous">模糊</option>
-                <option value="disabled">停用</option>
+                <option value="unverified">{ta("hotspotsPanel.matchUnverified")}</option>
+                <option value="verified">{ta("hotspotsPanel.matchVerified")}</option>
+                <option value="ambiguous">{ta("hotspotsPanel.matchAmbiguous")}</option>
+                <option value="disabled">{ta("hotspotsPanel.matchDisabled")}</option>
               </select>
             </label>
           </div>
@@ -695,7 +697,7 @@ export function AdminHotspotsPanel() {
               onClick={() => void searchMapCandidate()}
               className="min-h-11 rounded-xl border border-sky-700 px-4 font-semibold text-sky-900 disabled:opacity-40"
             >
-              搜尋 Google 候選
+              {ta("hotspotsPanel.searchGoogle")}
             </button>
             <button
               type="button"
@@ -703,7 +705,7 @@ export function AdminHotspotsPanel() {
               onClick={() => void saveLocation()}
               className="ml-auto min-h-11 rounded-xl bg-sky-800 px-5 font-semibold text-white disabled:opacity-40"
             >
-              儲存地點
+              {ta("hotspotsPanel.saveLocation")}
             </button>
           </div>
           {mapCandidate && (
@@ -711,7 +713,7 @@ export function AdminHotspotsPanel() {
               <strong>{mapCandidate.name}</strong>
               <p className="text-[var(--muted)]">{mapCandidate.address}</p>
               <p className="mt-1 text-xs">
-                暫存比對座標：
+                {ta("hotspotsPanel.temporaryCoordinates")}
                 {mapCandidate.temporary_match_coordinates.latitude},{" "}
                 {mapCandidate.temporary_match_coordinates.longitude}
               </p>
@@ -725,7 +727,7 @@ export function AdminHotspotsPanel() {
                 }
                 className="mt-2 min-h-11 rounded-xl bg-sky-700 px-4 font-semibold text-white"
               >
-                套用 Place ID，仍需人工確認
+                {ta("hotspotsPanel.applyPlaceId")}
               </button>
             </div>
           )}
@@ -740,15 +742,15 @@ export function AdminHotspotsPanel() {
       <table className="admin-responsive-table admin-hotspots-table w-full min-w-[1100px] text-left text-sm">
           <thead className="bg-[var(--paper)]">
             <tr>
-              <th className="p-3">選取</th>
-              <th className="p-3">景點</th>
-              <th className="p-3">分類／城市</th>
-              <th className="p-3">深度設定</th>
-              <th className="p-3">距離</th>
-              <th className="p-3">30 天瀏覽</th>
-              <th className="p-3">狀態／原因</th>
-              <th className="p-3">地圖</th>
-              <th className="p-3">來源</th>
+              <th className="p-3">{ta("hotspotsPanel.thSelect")}</th>
+              <th className="p-3">{ta("hotspotsPanel.thHotspot")}</th>
+              <th className="p-3">{ta("hotspotsPanel.thCategoryCity")}</th>
+              <th className="p-3">{ta("hotspotsPanel.thDepth")}</th>
+              <th className="p-3">{ta("hotspotsPanel.thDistance")}</th>
+              <th className="p-3">{ta("hotspotsPanel.thViews")}</th>
+              <th className="p-3">{ta("hotspotsPanel.thStatus")}</th>
+              <th className="p-3">{ta("hotspotsPanel.thMap")}</th>
+              <th className="p-3">{ta("hotspotsPanel.thSources")}</th>
             </tr>
           </thead>
           <tbody>
@@ -762,12 +764,11 @@ export function AdminHotspotsPanel() {
                     <th colSpan={9} scope="colgroup">
                       <input
                         type="checkbox"
-                        aria-label={`全選 ${countryGroup.countryName}（${countryGroup.countryCode}）`}
+                        aria-label={ta("hotspotsPanel.selectAllGroup", { name: countryGroup.countryName, code: countryGroup.countryCode })}
                         checked={countryIds.every((id) => selected.has(id))}
                         onChange={(e) => toggleMany(countryIds, e.target.checked)}
                       />
-                      {countryGroup.countryName} ({countryGroup.countryCode}) · 本頁{" "}
-                      {countryGroup.count} 筆
+                      {countryGroup.countryName} ({countryGroup.countryCode}) · {ta("hotspotsPanel.pageCount", { count: countryGroup.count })}
                     </th>
                   </tr>
                   {countryGroup.destinations.map((group) => {
@@ -778,12 +779,12 @@ export function AdminHotspotsPanel() {
                           <th colSpan={9} scope="colgroup">
                             <input
                               type="checkbox"
-                              aria-label={`全選 ${group.cityName}（${group.cityCode}）`}
+                              aria-label={ta("hotspotsPanel.selectAllGroup", { name: group.cityName, code: group.cityCode })}
                               checked={ids.every((id) => selected.has(id))}
                               onChange={(e) => toggleMany(ids, e.target.checked)}
                             />
                             {group.cityName} ({group.cityCode}) · {group.destinationId} ·{" "}
-                            {roleLabel(group.role, group.parentId)} · 本頁 {ids.length} 筆
+                            {roleLabel(ta, group.role, group.parentId)} · {ta("hotspotsPanel.pageCount", { count: ids.length })}
                           </th>
                         </tr>
                         {group.items.map((item) => (
@@ -792,7 +793,7 @@ export function AdminHotspotsPanel() {
                               <input
                                 type="checkbox"
                                 checked={selected.has(item.id)}
-                                aria-label={`選取 ${item.name}`}
+                                aria-label={ta("hotspotsPanel.selectItem", { name: item.name })}
                                 onChange={(e) =>
                                   setSelected((current) => {
                                     const next = new Set(current);
@@ -806,7 +807,7 @@ export function AdminHotspotsPanel() {
                             <td className="p-3 font-semibold">
                               {item.name}
                               <span className="block text-xs font-normal text-[var(--muted)]">
-                                {item.qid || "無 QID"}
+                                {item.qid || ta("hotspotsPanel.noQid")}
                               </span>
                             </td>
                             <td className="p-3">
@@ -816,11 +817,11 @@ export function AdminHotspotsPanel() {
                               </span>
                               <span className="block text-xs text-[var(--muted)]">
                                 {item.destination_id} ·{" "}
-                                {roleLabel(item.destination_role, item.parent_destination_id)}
+                                {roleLabel(ta, item.destination_role, item.parent_destination_id)}
                               </span>
                               {item.area_name && (
                                 <span className="block text-xs text-[var(--muted)]">
-                                  區域：{item.area_name}
+                                  {ta("hotspotsPanel.area", { name: item.area_name })}
                                 </span>
                               )}
                             </td>
@@ -828,12 +829,11 @@ export function AdminHotspotsPanel() {
                               {item.is_deep_travel ? (
                                 <>
                                   <span className="rounded-full bg-amber-100 px-2 py-1 text-xs">
-                                    {item.depth_kind === "day_trip" ? "近郊" : "市區巷弄"} ·{" "}
+                                    {item.depth_kind === "day_trip" ? ta("hotspotsPanel.depthDayTrip") : ta("hotspotsPanel.depthUrbanLocal")} ·{" "}
                                     {Math.round(item.depth_score || 0)}
                                   </span>
                                   <span className="mt-1 block text-xs text-[var(--muted)]">
-                                    交通 {item.access_minutes}／停留{" "}
-                                    {item.recommended_duration_minutes} 分
+                                    {ta("hotspotsPanel.depthLine", { access: item.access_minutes ?? 0, duration: item.recommended_duration_minutes ?? 0 })}
                                   </span>
                                 </>
                               ) : (
@@ -855,7 +855,7 @@ export function AdminHotspotsPanel() {
                             <td className="p-3">
                               {item.map_match_status}
                               <span className="block text-xs text-[var(--muted)]">
-                                {item.coordinate_source_type || "待補座標來源"}
+                                {item.coordinate_source_type || ta("hotspotsPanel.coordinateSourceMissing")}
                               </span>
                               <button
                                 type="button"
@@ -865,7 +865,7 @@ export function AdminHotspotsPanel() {
                                 }}
                                 className="mt-2 min-h-10 rounded-xl border border-sky-700 px-3 font-semibold text-sky-900"
                               >
-                                編輯地點
+                                {ta("hotspotsPanel.editLocation")}
                               </button>
                             </td>
                             <td className="p-3">
@@ -877,7 +877,7 @@ export function AdminHotspotsPanel() {
                                   rel="noreferrer"
                                   className="mr-2 font-semibold text-[var(--teal)]"
                                 >
-                                  來源 {index + 1}
+                                  {ta("hotspotsPanel.sourceN", { index: index + 1 })}
                                 </a>
                               ))}
                             </td>
@@ -893,22 +893,22 @@ export function AdminHotspotsPanel() {
         </table>
         {!loading && data?.items?.length === 0 && (
           <p className="p-8 text-center text-[var(--muted)]">
-            沒有符合條件的候選景點
+            {ta("hotspotsPanel.empty")}
           </p>
         )}
       </div>
       {data && data.pages > 1 && (
-        <nav aria-label="景點候選換頁" className="mt-4 flex items-center justify-end gap-3">
+        <nav aria-label={ta("hotspotsPanel.paginationLabel")} className="mt-4 flex items-center justify-end gap-3">
           <button
             type="button"
             disabled={page <= 1 || loading}
             onClick={() => setPage((current) => Math.max(1, current - 1))}
             className="min-h-11 rounded-xl border px-4 text-sm font-semibold disabled:opacity-40"
           >
-            上一頁
+            {ta("hotspotsPanel.previous")}
           </button>
           <span className="text-sm text-[var(--muted)]">
-            第 {page}／{data.pages} 頁
+            {ta("hotspotsPanel.pageOf", { page, pages: data.pages })}
           </span>
           <button
             type="button"
@@ -916,7 +916,7 @@ export function AdminHotspotsPanel() {
             onClick={() => setPage((current) => Math.min(data.pages, current + 1))}
             className="min-h-11 rounded-xl border px-4 text-sm font-semibold disabled:opacity-40"
           >
-            下一頁
+            {ta("hotspotsPanel.next")}
           </button>
         </nav>
       )}

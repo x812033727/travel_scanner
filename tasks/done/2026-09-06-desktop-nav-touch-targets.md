@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-desktop-nav-touch-targets
 title: 桌機主導覽文字連結只有 20px 高
-status: open
+status: done
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T07:55:00Z
 created_at: 2026-09-06T00:54:01Z
-completed_at:
-branch:
+completed_at: 2026-09-06T09:04:10Z
+branch: claude/p3-polish
 depends_on: []
 scope:
   - apps/web/components/site-navigation.tsx
@@ -32,14 +32,14 @@ scope:
 
 ## Definition of done
 
-- [ ] 1440×900 量測每個主導覽連結的 `boundingBox().height` ≥ 44。
-- [ ] header 高度不因此暴增（連結變高但整列還是一行）。
-- [ ] hover／focus 狀態仍清楚可見。
+- [x] 1440×900 量測每個主導覽連結的 `boundingBox().height` ≥ 44。
+- [x] header 高度不因此暴增（連結變高但整列還是一行）。
+- [x] hover／focus 狀態仍清楚可見。
 
 ## Steps
 
-- [ ] 給連結加 `inline-flex min-h-11 items-center px-2`（或改用既有 primitive）。
-- [ ] 確認 lg（1024px）到 1280px 之間七個連結加上帳號區還是一行，
+- [x] 給連結加 `inline-flex min-h-11 items-center px-2`（或改用既有 primitive）。
+- [x] 確認 lg（1024px）到 1280px 之間七個連結加上帳號區還是一行，
       不會因為多出的 padding 而換行 —— 2026-09-06 才把斷點從 md 提到 lg 就是為了這個。
 
 ## How to verify
@@ -68,3 +68,8 @@ runner 會回報 43.99993896484375，不 round 會偽紅。）
 同一輪已經修好、不要重做的觸控目標：首頁城市晶片 32→44px、
 「回到搜尋條件」36→`min-h-11`、精靈步驟藥丸→真按鈕且 `min-h-11`、
 精靈核取方塊→44px 列 + 20px 方塊。
+
+2026-09-06 claude-fable-5-1：`<Link>` 加 `-mx-2 inline-flex min-h-11 items-center rounded-lg px-2`，hover 變字色、
+focus-visible 有 teal outline。負邊距抵銷左右 padding，整列的佔位寬度跟原本一樣——沒有它，1024–1100px 會把七個連結
+擠到第二列（header 從 77 變 137px）。Playwright 量測（本機 next dev，`/en`）：1024／1100／1200／1280／1440 每個連結
+高 44、七個連結同一列、header 維持 77px。
