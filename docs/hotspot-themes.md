@@ -104,19 +104,55 @@ traveller-facing preference (`shop_themes` on `SearchPreferences`, the store-typ
 the trip form, and the seasonal boost from the trip's months) is a separate task built on
 this seam.
 
-## First-party introductions (contract)
+## First-party introductions
 
-The persistence, the review endpoints and the AI drafting job are separate tasks; the
-tables exist so the migration ships once. The contract they build on:
+A hotspot's "introduction" used to mean a link out to somebody else's article or video
+(`hotspot_guides`). This is the other kind: a paragraph Mokaair wrote itself, saying what
+the place is and when to go — which is what a shopping row or a seasonal spot actually
+needs.
 
-- One row per (hotspot, locale); `review_status` is the row's state. A draft arrives as
-  `pending`; only `approved` bodies reach the public payload, in the request locale with
-  zh-CN ⇄ zh-TW as the only fallback (an English reader never gets Japanese prose).
-- The generator writes through `app.hotspots.intros.upsert_hotspot_intro_draft(...)`,
-  which never silently replaces an `approved` body (it keeps the previous text in
-  `metadata_json["previous_body"]` when explicitly told to replace).
-- `hotspot_intro_runs` records each job with the admin's idempotency key, the vendor and
-  model used, and a `result_json` of what landed, what was kept and what was rejected.
+One row per hotspot per locale, and `review_status` is the row's whole state. Everything
+lives in `app/hotspots/intros.py`.
+
+### The rule the code is shaped around
+
+**A draft never silently replaces an approved paragraph.** Someone read that text and
+said yes to it; a later generation run that overwrote it would undo a review nobody asked
+to redo. `upsert_hotspot_intro_draft(...)` therefore:
+
+- inserts as `pending` when nothing is stored;
+- replaces a `pending`, `rejected` or `disabled` row and puts it back to `pending`,
+  because a fresh draft deserves a fresh look;
+- leaves an `approved` row alone and returns `written=False` — unless the caller passes
+  `replace_approved=True`, and even then the approved text is kept in
+  `metadata_json["previous_body"]` and the row returns to `pending`.
+
+### What a reader sees
+
+Only `approved` rows, in their own language. zh-CN and zh-TW stand in for each other and
+nothing else does: an English reader is never shown Japanese prose. The payload carries
+the `locale` it actually resolved to, so a page can say which language it is showing.
+
+`intro` rides along on every ranking item (batched, one query per page) and
+`GET /hotspots/{hotspot_id}/intro` serves one on its own.
+
+### Endpoints
+
+| Route | Purpose |
+| --- | --- |
+| `GET /admin/hotspots/intros` | the review queue: filter by status, locale, hotspot, source; carries `status_counts` |
+| `POST /admin/hotspots/intros/review` | approve, reject or disable a batch |
+| `PATCH /admin/hotspots/intros/{id}` | edit the text or move the status; an edit records who wrote it |
+| `GET /admin/hotspots/{hotspot_id}/intros` | five rows, one per locale, so a missing language reads as a gap |
+| `POST /admin/hotspots/{hotspot_id}/intros` | type one by hand; approved on arrival, because the author just reviewed it |
+
+### For the AI drafting job
+
+It is not written yet. When it is: ask `intro_targets(...)` which hotspots still need
+which locales — it excludes anything already `pending` or `approved`, so an interrupted
+run does not redraft what landed — and write through `upsert_hotspot_intro_draft(...)`.
+`hotspot_intro_runs` is there to record each job with the admin's idempotency key, the
+vendor and model used, and what landed, what was kept and what was rejected.
 
 ## Follow-ups filed from this work
 

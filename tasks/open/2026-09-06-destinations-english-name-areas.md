@@ -1,7 +1,7 @@
 ---
 id: 2026-09-06-destinations-english-name-areas
 title: destinations 的 english_name 存繁中、areas 不隨語系
-status: in-progress
+status: blocked
 priority: P2
 area: api
 owner: claude-opus-5
@@ -101,3 +101,14 @@ en 與 ko 用 ` & ` 或 `, `。第一次量測拿整串字比對，又只切了 
 
 重量的方式（任何人都能重跑）：以 `DESTINATIONS_BY_ID[*].code` 當城市鍵去查 `HOTSPOT_AREAS`，
 兩側都用 `re.split(r"\s*(?:[／/・&,、]|\band\b)\s*")` 切段後比對。
+
+## 為什麼轉成 blocked（2026-09-07）
+
+`english_name` 那一半已經上線，`areas` 那一半等的是一個產品決定，不是等人有空。上面三個選項
+每一個都會改到 zh-TW 讀者看到的文案，所以不該由做的人自己拍板：
+
+- 選項 1 會把「澀谷」變成「澀谷／原宿」。
+- 選項 2 會讓台南、全州、清萊、仙台這四個城市的清單中英夾雜。
+- 選項 3 要有人願意花一次人工核對 15 個地名。
+
+擁有者選好之後這張票就能直接做，量測與缺漏清單都已經寫在上面了。我的建議是選項 3。

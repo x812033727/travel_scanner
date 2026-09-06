@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**7 open · 4 in progress · 2 blocked · 0 in review · 98 done**
+**6 open · 3 in progress · 3 blocked · 0 in review · 100 done**
 
 ## Ready to claim
 
@@ -17,7 +17,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [手機版行程頁的浮動元件佔掉三分之一畫面](open/2026-09-06-planner-mobile-chrome.md) | web | `apps/web/components/itinerary-diff.tsx`<br>`apps/web/components/itinerary-diff.test.tsx`<br>`apps/web/app/globals.css` |
 | P2 | [後台審核頁在看到第一筆待審之前先給 30 個控制項](open/2026-09-06-admin-review-density.md) | web | `apps/web/components/admin-hotspots-panel.tsx`<br>`apps/web/components/admin-hotspots-workspace.tsx`<br>`apps/web/components/admin-filter-pills.tsx` |
 | P2 | [後台主題管理畫面：taxonomy 表格與逐景點指派](open/2026-09-06-hotspot-themes-admin-web.md) | web | `apps/web/components/admin-hotspot-themes-panel.tsx`<br>`apps/web/components/admin-hotspot-theme-editor.tsx`<br>`apps/web/components/admin-hotspots-workspace.tsx`<br>`apps/web/components/admin-hotspots-panel.tsx`<br>`apps/web/i18n/request.ts`<br>`apps/web/vitest.setup.tsx`<br>`apps/web/messages/en/hotspotThemes.json`<br>`apps/web/messages/ja/hotspotThemes.json`<br>`apps/web/messages/ko/hotspotThemes.json`<br>`apps/web/messages/zh-TW/hotspotThemes.json`<br>`apps/web/messages/zh-CN/hotspotThemes.json` |
-| P2 | [種子分類是按配額輪流發的，不只 shopping 一類錯](open/2026-09-06-seed-categories-assigned-by-quota.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/deep_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_hotspot_seed_categories.py` |
 | P2 | [美食頁在預設字級下 CLS 0.29，第四秒還在跳版](open/2026-09-06-foods-late-layout-shift.md) | web | `apps/web/components/food-browser.tsx`<br>`apps/web/components/food-city-picker.tsx` |
 | P3 | [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](open/2026-09-06-admin-load-error-copy.md) | web | `apps/web/components/admin-settings-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/messages/zh-TW/admin.json` |
 
@@ -26,7 +25,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [未登入開 /account 會同時看到三種互相矛盾的狀態](open/2026-09-06-account-signed-out-states.md) | claude-opus-5 | 2026-09-06T17:56:37Z | `claude/ux-batch-3` |
-| [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | claude-opus-5 | 2026-09-06T13:20:48Z | `claude/place-names-i18n` |
 | [價格通知頁的副標與 LINE 卡片在四個語系都是繁中](open/2026-09-06-alerts-hardcoded-zh-tw.md) | claude-opus-5 | 2026-09-06T17:56:37Z | `claude/ux-batch-3` |
 | [十三個公開頁裡有九個共用同一組 title 與 description](open/2026-09-06-duplicate-page-metadata.md) | claude-opus-5 | 2026-09-06T17:56:45Z | `claude/ux-batch-3` |
 
@@ -39,6 +37,7 @@ _Nothing here._
 | Priority | Task | Waiting on |
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
+| P2 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
 
 ## Recently finished
@@ -46,10 +45,10 @@ _Nothing here._
 - 2026-09-06 [上線後查核抓到的六個問題（大字閃爍、焦點掉回 body、標點與複數）](done/2026-09-06-post-deploy-verification-fixes.md)
 - 2026-09-06 [公開頁精簡：景點卡動作分層、首頁膠囊溢出、排行榜第一屏](done/2026-09-06-simplify-public-cards.md)
 - 2026-09-06 [行程天氣面板在日期超出預報範圍時仍列出 10 天無關天氣](done/2026-09-06-trip-weather-out-of-range.md)
+- 2026-09-06 [種子分類是按配額輪流發的，不只 shopping 一類錯](done/2026-09-06-seed-categories-assigned-by-quota.md)
+- 2026-09-06 [景點的第一手介紹：儲存、審核與呈現](done/2026-09-06-hotspot-intros.md)
 - 2026-09-06 [五個語系的 trips.json 都有重複的 transfersCount 鍵](done/2026-09-06-duplicate-transfers-count-key.md)
 - 2026-09-06 [四個景點的分類被標成 shopping，其實是公園、城跡與神社](done/2026-09-06-seed-category-shopping-mistakes.md)
 - 2026-09-06 [後台可以維護景點主題並逐景點指派](done/2026-09-06-hotspot-themes-admin-api.md)
 - 2026-09-06 [選 Gemini 做景點介紹搜尋會 500：run 表的 provider 檢查沒有 gemini](done/2026-09-06-gemini-guide-run-check.md)
 - 2026-09-06 [熱門景點頁的主題篩選與季節徽章](done/2026-09-06-hotspot-themes-web.md)
-- 2026-09-06 [熱門景點季節與購物主題：資料模型、種子與公開 API](done/2026-09-06-hotspot-themes-api.md)
-- 2026-09-06 [AI 備援警告把 provider 名稱與 Python 例外類別秀給旅客看](done/2026-09-06-ai-warning-copy.md)

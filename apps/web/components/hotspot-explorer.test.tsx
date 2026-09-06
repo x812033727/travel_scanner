@@ -455,4 +455,63 @@ describe("HotspotExplorer", () => {
     // No facets, so the filter row is absent rather than empty.
     expect(screen.queryByRole("group", { name: "主題篩選" })).toBeNull();
   });
+
+  it("clamps a long introduction on the card and opens it on request", async () => {
+    // Long enough to actually overflow three lines at the card's width; a shorter
+    // paragraph is meant to render without a toggle, which the next case covers.
+    const long = "淺草寺是東京最古老的寺院，推古天皇三十六年創建，雷門的大紅燈籠是這一帶的門面。穿過兩百公尺長的仲見世商店街就是本堂，沿路是人形燒、雷おこし與各種小物；早晨七點前人最少，傍晚點燈之後又是另一番樣子。旁邊的淺草神社與五重塔一併看完，大約要留一個半小時，春天境內的櫻花也值得繞一圈。";
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/saved-items")) return new Response(JSON.stringify({ items: [] }));
+      if (url.includes("/hotspots/facets")) return new Response(facetsBody([]));
+      return new Response(rankingBody([rankingItem({
+        intro: { body: long, locale: "zh-TW", source: "ai" },
+      })]));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<SavedItemsProvider><HotspotExplorer /></SavedItemsProvider>);
+    expect(await screen.findByRole("heading", { name: "淺草寺" })).toBeTruthy();
+
+    expect(screen.getByText("專門介紹")).toBeTruthy();
+    const toggle = screen.getByRole("button", { name: "展開全文" });
+    expect(toggle.getAttribute("aria-expanded")).toBe("false");
+    fireEvent.click(toggle);
+    expect(screen.getByRole("button", { name: "收合" }).getAttribute("aria-expanded")).toBe("true");
+  });
+
+  it("says nothing when a hotspot has no approved introduction", async () => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/saved-items")) return new Response(JSON.stringify({ items: [] }));
+      if (url.includes("/hotspots/facets")) return new Response(facetsBody([]));
+      return new Response(rankingBody([rankingItem({ intro: null })]));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<SavedItemsProvider><HotspotExplorer /></SavedItemsProvider>);
+    expect(await screen.findByRole("heading", { name: "淺草寺" })).toBeTruthy();
+
+    // No empty heading, no stray toggle.
+    expect(screen.queryByText("專門介紹")).toBeNull();
+    expect(screen.queryByRole("button", { name: "展開全文" })).toBeNull();
+  });
+
+  it("shows a short introduction without a toggle", async () => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/saved-items")) return new Response(JSON.stringify({ items: [] }));
+      if (url.includes("/hotspots/facets")) return new Response(facetsBody([]));
+      return new Response(rankingBody([rankingItem({
+        intro: { body: "東京最古老的寺院。", locale: "zh-TW", source: "manual" },
+      })]));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<SavedItemsProvider><HotspotExplorer /></SavedItemsProvider>);
+    expect(await screen.findByRole("heading", { name: "淺草寺" })).toBeTruthy();
+
+    expect(screen.getByText("東京最古老的寺院。")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "展開全文" })).toBeNull();
+  });
 });

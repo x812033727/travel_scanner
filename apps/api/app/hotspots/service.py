@@ -28,6 +28,7 @@ from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.cities import HOTSPOT_CITIES
 from app.hotspots.discovery import WikimediaDiscoveryClient
 from app.hotspots.guides import discover_guides, stale_youtube_guides_delete
+from app.hotspots.intros import load_public_intros
 from app.hotspots.maps import build_map_links
 from app.hotspots.places import place_summary_payload
 from app.hotspots.ranking import RankingInput, score_deep_hotspots, score_hotspots
@@ -883,6 +884,7 @@ async def list_rankings(
         ).all()
     }
     themes_by_hotspot = await load_hotspot_themes(session, hotspot_ids, locale)
+    intros_by_hotspot = await load_public_intros(session, hotspot_ids, locale)
     items: list[dict[str, Any]] = []
     for ranking, hotspot in rows:
         place_profile = place_profiles.get(hotspot.id)
@@ -909,6 +911,7 @@ async def list_rankings(
                 "category": hotspot.category,
                 "area": area_payload(area_by_code(hotspot.city_code, hotspot.area_code), locale),
                 "themes": themes_by_hotspot.get(hotspot.id, []),
+                "intro": intros_by_hotspot.get(hotspot.id),
                 "latitude": float(hotspot.latitude) if hotspot.latitude is not None else None,
                 "longitude": float(hotspot.longitude) if hotspot.longitude is not None else None,
                 "coordinate_source": {
