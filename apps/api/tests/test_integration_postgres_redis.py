@@ -23,6 +23,7 @@ from app.models import (
     AffiliateClick,
     SearchJob,
     SearchRequest,
+    TripPlan,
     UsageAccount,
     UsageLedger,
     UsageReservation,
@@ -1842,9 +1843,6 @@ async def test_reoptimize_is_a_versioned_write_and_never_replays_a_failed_attemp
         assert trip["price_status"] == "none"
         trip_id = trip["id"]
         url = f"/api/v1/trips/{trip_id}/reoptimize"
-        usage_before = await client.get("/api/v1/usage", headers=headers)
-        remaining_before = usage_before.json()["remaining_uses"]
-
         no_version = await client.post(
             url, headers={**headers, "Idempotency-Key": f"reopt-{uuid4()}"}
         )
@@ -1873,7 +1871,8 @@ async def test_reoptimize_is_a_versioned_write_and_never_replays_a_failed_attemp
         assert outside.status_code == 409, outside.text
         assert outside.json()["code"] == "trip_search_dates_diverged"
 
-        # Neither failure is replayable as a completed reprice, and neither charged.
+        # Neither failure is replayable as a completed reprice, and neither charged:
+        # both reservations went back and the account still holds its trial uses.
         retried = await client.post(
             url,
             headers={**headers, "Idempotency-Key": key},
@@ -1881,8 +1880,23 @@ async def test_reoptimize_is_a_versioned_write_and_never_replays_a_failed_attemp
         )
         assert retried.status_code == 409, retried.text
         assert retried.json()["code"] == "idempotency_result_unavailable"
-        usage_after = await client.get("/api/v1/usage", headers=headers)
-        assert usage_after.json()["remaining_uses"] == remaining_before
+        async with SessionFactory() as session:
+            owner_id = await session.scalar(select(TripPlan.user_id).where(TripPlan.id == trip_id))
+            account = await session.scalar(
+                select(UsageAccount).where(UsageAccount.user_id == owner_id)
+            )
+            reservations = list(
+                (
+                    await session.scalars(
+                        select(UsageReservation).where(UsageReservation.user_id == owner_id)
+                    )
+                ).all()
+            )
+        assert account is not None and account.reserved_uses == 0
+        assert account.remaining_uses == 3  # the registration trial, untouched
+        assert len(reservations) == 2
+        assert {row.status for row in reservations} == {"released"}
+        assert all(row.resource_id is None for row in reservations)
 
         reloaded = await client.get(f"/api/v1/trips/{trip_id}", headers=headers)
         assert reloaded.status_code == 200
