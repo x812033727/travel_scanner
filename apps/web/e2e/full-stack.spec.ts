@@ -10,6 +10,20 @@ async function pickTripDay(page: Page, iso: string) {
   await page.waitForLoadState("networkidle").catch(() => {});
   for (let attempt = 0; attempt < 24 && (await day.count()) === 0; attempt += 1) {
     await nextMonth.evaluate((element) => element.scrollIntoView({ block: "center" }));
+    const box = await nextMonth.boundingBox();
+    if (box) {
+      const covering = await page.evaluate(({ x, y }) => {
+        const found = document.elementFromPoint(x, y) as HTMLElement | null;
+        return {
+          tag: found?.tagName,
+          className: found?.className,
+          html: found?.outerHTML.slice(0, 240),
+          scrollY: window.scrollY,
+          viewport: `${window.innerWidth}x${window.innerHeight}`,
+        };
+      }, { x: box.x + box.width / 2, y: box.y + box.height / 2 });
+      console.log("DIAGNOSTIC point", JSON.stringify(box), JSON.stringify(covering));
+    }
     await nextMonth.click();
   }
   await day.evaluate((element) => element.scrollIntoView({ block: "center" }));
