@@ -1,4 +1,5 @@
 import os
+from collections import Counter
 from collections.abc import AsyncIterator
 from datetime import UTC, date, datetime
 from decimal import Decimal
@@ -283,9 +284,13 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             city["id"]: city for country in cities["countries"] for city in country["cities"]
         }
         assert len(by_city) == 33
-        assert by_city["seoul"]["merchant_count"] == 1 and by_city["seoul"]["area_count"] == 4
-        assert by_city["yokohama"]["area_count"] == 4
-        assert by_city["kamakura"]["area_count"] == 4
+        # Four profile areas per city plus that city's trend districts (Seoul has
+        # Seongsu and friends; Yokohama and Kamakura have none yet).
+        areas_per_city = Counter(seed.destination_id for seed in ALL_AREA_SEEDS)
+        assert by_city["seoul"]["merchant_count"] == 1
+        assert by_city["seoul"]["area_count"] == areas_per_city["seoul"] > 4
+        assert by_city["yokohama"]["area_count"] == areas_per_city["yokohama"] == 4
+        assert by_city["kamakura"]["area_count"] == areas_per_city["kamakura"] == 4
         assert by_city["okinawa"]["merchant_count"] == 0
         assert by_city["tainan"]["parent_destination_id"] == "kaohsiung"
         assert cities["countries"][0]["code"] == "KR"

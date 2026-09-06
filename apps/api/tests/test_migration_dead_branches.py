@@ -36,8 +36,11 @@ import sqlalchemy as sa
 from alembic.migration import MigrationContext
 from alembic.operations import Operations
 from sqlalchemy.engine import Connection
+from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.orm import Session
+from sqlalchemy.pool import NullPool
 
+from app.config import get_settings
 from app.db import engine
 from app.models import TravelHotspot, TripPlan, User
 
@@ -249,10 +252,17 @@ async def test_0044_strips_the_quotes_and_adds_the_check() -> None:
 
 @pytest.mark.asyncio(loop_scope="module")
 async def test_0044_refuses_a_status_outside_the_vocabulary() -> None:
-    async with engine.connect() as connection:
-        await connection.run_sync(
-            in_a_rolled_back_transaction(_exercise_0044_refuses_a_value_it_cannot_read)
-        )
+    # The failed CREATE CONSTRAINT leaves the DBAPI connection in a state the shared
+    # pool would hand to the next test as closed; use a one-connection engine and
+    # throw it away.
+    isolated = create_async_engine(get_settings().database_url, poolclass=NullPool)
+    try:
+        async with isolated.connect() as connection:
+            await connection.run_sync(
+                in_a_rolled_back_transaction(_exercise_0044_refuses_a_value_it_cannot_read)
+            )
+    finally:
+        await isolated.dispose()
 
 
 @pytest.mark.asyncio(loop_scope="module")

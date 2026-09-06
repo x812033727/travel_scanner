@@ -69,6 +69,7 @@ async def test_the_batch_is_reported_dry_applied_once_and_skipped_after() -> Non
     async with SessionFactory() as session:
         await _clear(session)
         await seed_food_catalog(session)
+        await session.commit()
         assert await _count(session, FoodMerchant) == len(MERCHANT_SEEDS)
         assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == len(
             ALL_AREA_SEEDS
