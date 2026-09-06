@@ -29,6 +29,7 @@ export default async function HotspotsPage({
     destinationId: first(query.destination_id),
     area: first(query.area),
     theme: first(query.theme).trim(),
+    query: first(query.q).trim(),
   };
   const initial = await getInitialHotspots(locale, filters);
   return (
