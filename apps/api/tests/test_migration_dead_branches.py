@@ -358,7 +358,7 @@ def _plant_merchant_source(
     return source.id
 
 
-def _exercise_0047(connection: Connection) -> None:
+def _exercise_0048(connection: Connection) -> None:
     session = Session(bind=connection)
     merchant = FoodMerchant(
         slug=f"dead-branch-{uuid4()}",
@@ -380,7 +380,7 @@ def _exercise_0047(connection: Connection) -> None:
     kept = _plant_merchant_source(session, merchant, "https://example.com/still-alive")
     session.flush()
 
-    run_upgrade(connection, "0047_repair_merchant_citations")
+    run_upgrade(connection, "0048_repair_merchant_citations")
 
     rows = {
         row.id: row
@@ -408,9 +408,9 @@ def _exercise_0047(connection: Connection) -> None:
 
 
 @pytest.mark.asyncio(loop_scope="module")
-async def test_0047_rewrites_the_dead_citations_and_drops_the_pdf() -> None:
+async def test_0048_rewrites_the_dead_citations_and_drops_the_pdf() -> None:
     async with engine.connect() as connection:
-        await connection.run_sync(in_a_rolled_back_transaction(_exercise_0047))
+        await connection.run_sync(in_a_rolled_back_transaction(_exercise_0048))
 
 
 @pytest.mark.asyncio(loop_scope="module")

@@ -93,7 +93,7 @@ the other first — doing both in one branch is reasonable.
 | krabi-ruen-mai | 2019 年的 PDF | TAT 頁 |
 | singapore-hill-street-kway-teow | STB 的 PDF，且沒提到這攤 | 移除 |
 
-遷移 `0047_repair_merchant_citations` 把既有列的 `source_url`／type／scope／title／claims 一起改寫
+遷移 `0048_repair_merchant_citations` 把既有列的 `source_url`／type／scope／title／claims 一起改寫
 （seeder 是用 URL 找既有列，只改常數會多出一列）；三家原本從 seed 複製來的
 `official_website_url` 清掉，因為新來源都不是店家自己的站。`test_migration_dead_branches.py`
 種一家店三條來源驗證改寫、刪除與不相干列不動。正式機 `fill-food-merchant-coordinates` 的

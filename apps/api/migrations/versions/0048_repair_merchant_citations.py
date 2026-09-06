@@ -1,7 +1,7 @@
 """Repair the five first-party merchant citations that no longer open.
 
-Revision ID: 0047_repair_merchant_citations
-Revises: 0046_guide_backfill_attempts
+Revision ID: 0048_repair_merchant_citations
+Revises: 0047_ai_vendor_settings
 
 ``MERCHANT_DIRECT_SOURCE_SEEDS`` is copied onto ``food_merchant_sources`` when a merchant
 is seeded, and the seeder finds an existing source by its URL, so correcting the constant
@@ -28,8 +28,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0047_repair_merchant_citations"
-down_revision: str | None = "0046_guide_backfill_attempts"
+revision: str = "0048_repair_merchant_citations"
+down_revision: str | None = "0047_ai_vendor_settings"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
