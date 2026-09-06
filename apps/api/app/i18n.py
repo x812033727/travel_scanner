@@ -916,6 +916,21 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         ),
         "trip_dates_unset": "This trip has no dates yet. Set a start and end date first.",
         "trip_dates_required": "Provide both a start date and an end date",
+        "trip_origin_required": "This trip has no departure airport yet. Choose one first.",
+        "trip_destination_unsupported": (
+            "Flight search does not cover this trip's destination yet. "
+            "Choose the arrival airport yourself."
+        ),
+        "trip_dates_past": "This trip's departure date has passed. Adjust the trip dates first.",
+        "trip_dates_too_short": (
+            "A round trip needs at least two trip days. Adjust the trip dates first."
+        ),
+        "flight_anchor_unavailable": "The trip has no dates yet, so a flight cannot be set",
+        "offer_not_found": "This offer could not be found",
+        "offer_return_leg_missing": "This offer has no return leg to bring into the trip",
+        "offer_dates_mismatch": (
+            "This offer departs on a different day than the trip. Adjust the trip dates first."
+        ),
         "trip_date_out_of_bounds": "These dates are outside the supported range",
         "trip_date_range_invalid": "The end date cannot be before the start date",
         "trip_date_range_too_long": "A trip can be at most 61 days long",
@@ -1006,6 +1021,20 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
             "この旅行にはまだ日付がありません。開始日と終了日を先に設定してください。"
         ),
         "trip_dates_required": "開始日と終了日の両方を指定してください",
+        "trip_origin_required": "この旅行には出発空港がまだありません。先に選んでください。",
+        "trip_destination_unsupported": (
+            "この旅行の目的地はまだ航空券検索の対象外です。到着空港を自分で選んでください。"
+        ),
+        "trip_dates_past": "この旅行の出発日は過ぎています。先に旅行の日付を調整してください。",
+        "trip_dates_too_short": (
+            "往復航空券には 2 日以上の旅行日程が必要です。先に旅行の日付を調整してください。"
+        ),
+        "flight_anchor_unavailable": "この旅行にはまだ日付がないため、フライトを設定できません",
+        "offer_not_found": "この料金が見つかりません",
+        "offer_return_leg_missing": "この料金には旅行に取り込める復路がありません",
+        "offer_dates_mismatch": (
+            "この料金の出発日は旅行の日付と異なります。先に旅行の日付を調整してください。"
+        ),
         "trip_date_out_of_bounds": "対応できる範囲外の日付です",
         "trip_date_range_invalid": "終了日は開始日より前にできません",
         "trip_date_range_too_long": "旅行は最長 61 日までです",
@@ -1088,6 +1117,20 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "trip_date_change_ambiguous": "전체 이동과 날짜 직접 지정 중 하나만 선택하세요",
         "trip_dates_unset": "이 여행에는 아직 날짜가 없습니다. 시작일과 종료일을 먼저 설정하세요.",
         "trip_dates_required": "시작일과 종료일을 모두 입력하세요",
+        "trip_origin_required": "이 여행에는 아직 출발 공항이 없습니다. 먼저 선택하세요.",
+        "trip_destination_unsupported": (
+            "이 여행의 목적지는 아직 항공권 검색 범위에 없습니다. 도착 공항을 직접 선택하세요."
+        ),
+        "trip_dates_past": "이 여행의 출발일이 지났습니다. 먼저 여행 날짜를 조정하세요.",
+        "trip_dates_too_short": (
+            "왕복 항공권에는 최소 2일의 여행 일정이 필요합니다. 먼저 여행 날짜를 조정하세요."
+        ),
+        "flight_anchor_unavailable": "이 여행에는 아직 날짜가 없어 항공편을 설정할 수 없습니다",
+        "offer_not_found": "이 요금을 찾을 수 없습니다",
+        "offer_return_leg_missing": "이 요금에는 여행에 가져올 귀국편이 없습니다",
+        "offer_dates_mismatch": (
+            "이 요금의 출발일이 여행 날짜와 다릅니다. 먼저 여행 날짜를 조정하세요."
+        ),
         "trip_date_out_of_bounds": "지원 범위를 벗어난 날짜입니다",
         "trip_date_range_invalid": "종료일은 시작일보다 빠를 수 없습니다",
         "trip_date_range_too_long": "여행은 최대 61일까지 가능합니다",
@@ -1210,6 +1253,16 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "trip_date_change_ambiguous": "请选择整趟平移，或直接指定开始与结束日期，不能同时使用",
         "trip_dates_unset": "这趟旅程还没有日期，请先指定开始与结束日期",
         "trip_dates_required": "请同时提供开始日期与结束日期",
+        "trip_origin_required": "这趟旅程还没有出发机场，请先选择出发地",
+        "trip_destination_unsupported": (
+            "这趟旅程的目的地不在目前的机票搜索范围，请自行选择抵达机场"
+        ),
+        "trip_dates_past": "旅程的出发日已经过了，请先调整旅程日期",
+        "trip_dates_too_short": "往返机票需要至少两天的旅程日期，请先调整旅程日期",
+        "flight_anchor_unavailable": "旅程日期不完整，无法设置航班",
+        "offer_not_found": "找不到这笔报价",
+        "offer_return_leg_missing": "这笔报价没有回程航段，无法带入回程",
+        "offer_dates_mismatch": "这笔报价的出发日与旅程日期不同，请先调整旅程日期",
         "trip_date_out_of_bounds": "旅程日期超出可支持的范围",
         "trip_date_range_invalid": "结束日期不可早于开始日期",
         "trip_date_range_too_long": "旅程最长 61 天",

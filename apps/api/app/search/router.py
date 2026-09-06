@@ -41,6 +41,12 @@ from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import FlightOffer
 from app.search.events import stream_key
 from app.search.schemas import SearchCreate
+from app.trips.search_criteria import (
+    TRIP_SEARCH_OVERRIDES,
+    load_owned_trip,
+    load_trip_search_json,
+    trip_search_criteria,
+)
 from app.usage.service import (
     release_reservation,
     reserve_use,
@@ -61,6 +67,19 @@ async def create_search(
     session: Session,
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
 ) -> dict[str, Any]:
+    if payload.trip_id is not None:
+        # A search from a saved trip: the trip supplies the route, dates,
+        # travelers and preferences, and any field the client pinned still wins.
+        trip = await load_owned_trip(session, user.id, payload.trip_id)
+        payload = trip_search_criteria(
+            trip,
+            await load_trip_search_json(session, trip),
+            modules=payload.modules,
+            locale=payload.locale,
+            overrides=payload.model_dump(
+                mode="json", include=set(payload.model_fields_set) & TRIP_SEARCH_OVERRIDES
+            ),
+        )
     settings = await load_runtime_settings(session)
     status = provider_status_for_modules([str(module) for module in payload.modules], settings)
     if status.status != "ready":

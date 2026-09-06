@@ -209,6 +209,35 @@ export function priceSnapshot(item: TripItem): PriceSnapshot | null {
     : null;
 }
 
+/** `GET /trips/{id}/search-criteria`: what a flight search for this trip would ask. */
+export type TripSearchIssue = {
+  code: "trip_origin_required" | "trip_destination_unsupported" | "trip_dates_required" | "trip_dates_past" | "trip_dates_too_short" | (string & {});
+  detail: string;
+};
+
+export type TripSearchCriteria = {
+  trip: {
+    id: string;
+    name: string;
+    version: number;
+    destination_name?: string | null;
+    start_date?: string | null;
+    end_date?: string | null;
+  };
+  criteria: {
+    origin?: string | null;
+    destination?: string | null;
+    departure_date?: string | null;
+    return_date?: string | null;
+    travelers: { adults: number; children?: number; children_ages?: number[]; rooms?: number };
+    preferences: Record<string, unknown>;
+    modules: string[];
+    trip_id: string;
+  };
+  issues: TripSearchIssue[];
+  origin_options: string[];
+};
+
 export type TripStatus = "planning" | "ready" | "travelling" | "closed";
 
 export type TripRescheduleSummary = {

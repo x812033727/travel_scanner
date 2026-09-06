@@ -2,6 +2,7 @@
 
 import {
   AlertCircle,
+  ArrowLeft,
   BadgeCheck,
   Check,
   Clock3,
@@ -25,8 +26,10 @@ import { loginPath, safeExternalHref } from "@/lib/navigation";
 import {
   destinationByAirport,
   interestLabel,
+  localizeDestinations,
   interestCodes,
 } from "@/lib/destinations";
+import type { Trip, TripSearchCriteria } from "@/lib/trip-types";
 import {
   BudgetBreakdown,
   type BudgetCost,
@@ -38,7 +41,11 @@ import {
   hotelRating,
   hotelStarRating,
 } from "@/components/hotel-offer-card";
-import { FlightOfferCard } from "@/components/flight-offer-card";
+import {
+  FlightOfferCard,
+  type FlightLegDirection,
+  type FlightOfferTripActions,
+} from "@/components/flight-offer-card";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { UsageInsufficientNotice } from "@/components/usage-insufficient-notice";
@@ -293,15 +300,23 @@ function parseInterests(raw: string): string[] {
   return Array.from(new Set([...codes, ...labels]));
 }
 
+const TRIP_DATE_ISSUES = ["trip_dates_required", "trip_dates_past", "trip_dates_too_short"];
+
 export function SearchExperience() {
-  const charge = useOperationCharge("full_trip_search");
+  const params = useSearchParams();
+  // `/search?trip_id=…`: a flight search for a saved trip. The trip supplies
+  // the criteria and each result can be written back into its flight anchors.
+  const tripId = params.get("trip_id") || undefined;
+  const charge = useOperationCharge(tripId ? "travel_search" : "full_trip_search");
   const visibility = useSiteVisibility();
   const tripsEnabled = featureEnabled(visibility, "trips");
   const locale = useLocale();
   const usageText = useTranslations("usage");
   const t = useTranslations("search.results");
   const tc = useTranslations("search.catalog");
-  const params = useSearchParams();
+  const tripText = useTranslations("search.fromTrip");
+  const workbenchText = useTranslations("search.workbench");
+  const commonText = useTranslations("common");
   const router = useRouter();
   const text = params.get("q") || "";
   const structuredParsed = useMemo<Parsed | null>(() => {
@@ -362,7 +377,75 @@ export function SearchExperience() {
     };
   }, [params]);
   const [parsedResult, setParsedResult] = useState<Parsed | null>(null);
-  const parsed = structuredParsed || parsedResult;
+  const [tripContext, setTripContext] = useState<TripSearchCriteria>();
+  const [tripState, setTripState] = useState<
+    "idle" | "loading" | "ready" | "signed_out" | "not_found" | "error"
+  >(tripId ? "loading" : "idle");
+  const [tripOriginChoice, setTripOriginChoice] = useState("TPE");
+  const [savingOrigin, setSavingOrigin] = useState(false);
+  const [tripDestinationChoice, setTripDestinationChoice] = useState("");
+  const [attachState, setAttachState] = useState<{
+    busy?: { direction: FlightLegDirection; offerId: string };
+    done: Partial<Record<FlightLegDirection, string>>;
+  }>({ done: {} });
+  const tripParsed = useMemo<Parsed | null>(() => {
+    if (!tripContext) return null;
+    const { criteria } = tripContext;
+    const preferences = criteria.preferences;
+    const list = (value: unknown) => (Array.isArray(value) ? value.map(String) : []);
+    const positive = (value: unknown) =>
+      typeof value === "number" && value > 0 ? value : undefined;
+    const pace = String(preferences.pace || "balanced");
+    return {
+      origin: criteria.origin || undefined,
+      destination: tripDestinationChoice || criteria.destination || undefined,
+      departure_date: criteria.departure_date || undefined,
+      return_date: criteria.return_date || undefined,
+      flex_days: 0,
+      travelers: {
+        adults: criteria.travelers.adults,
+        children: criteria.travelers.children || 0,
+        children_ages: criteria.travelers.children_ages || [],
+        rooms: criteria.travelers.rooms || 1,
+      },
+      budget_twd: positive(preferences.budget_twd),
+      interests: list(preferences.interests),
+      extension_destination_ids: [],
+      avoid_red_eye: Boolean(preferences.avoid_red_eye),
+      hotel_min_rating: positive(preferences.hotel_min_rating),
+      hotel_min_nightly_twd: positive(preferences.hotel_min_nightly_twd),
+      hotel_max_nightly_twd: positive(preferences.hotel_max_nightly_twd),
+      accepted_property_types: list(preferences.accepted_property_types),
+      hotel_min_review_score: positive(preferences.hotel_min_review_score),
+      hotel_min_review_count: positive(preferences.hotel_min_review_count),
+      breakfast_required: Boolean(preferences.breakfast_required),
+      refundable_required: Boolean(preferences.refundable_required),
+      include_airbnb: false,
+      max_station_walk_minutes: positive(preferences.max_station_walk_minutes),
+      preferred_area:
+        typeof preferences.preferred_area === "string" ? preferences.preferred_area : undefined,
+      preferred_areas: list(preferences.preferred_areas),
+      pace: (["relaxed", "balanced", "packed"].includes(pace) ? pace : "balanced") as Parsed["pace"],
+      confidence: 1,
+      missing_fields: [],
+    };
+  }, [tripContext, tripDestinationChoice]);
+  const parsed = structuredParsed || tripParsed || parsedResult;
+  // What the trip could not answer. An airport chosen here, or criteria edited
+  // into the URL, settles the matching gap without a round trip to the server.
+  const tripIssues = useMemo(() => {
+    const codes = tripContext?.issues.map((issue) => issue.code) || [];
+    return {
+      origin: codes.includes("trip_origin_required") && !parsed?.origin,
+      destination: codes.includes("trip_destination_unsupported"),
+      destinationUnresolved:
+        codes.includes("trip_destination_unsupported") && !parsed?.destination,
+      dates: codes.some((code) => TRIP_DATE_ISSUES.includes(code)),
+    };
+  }, [tripContext, parsed]);
+  const tripBlocked =
+    Boolean(tripId) &&
+    (!tripContext || tripIssues.origin || tripIssues.destinationUnresolved || tripIssues.dates);
   const [providerStatus, setProviderStatus] = useState<ProviderStatus | null>(
     null,
   );
@@ -384,7 +467,7 @@ export function SearchExperience() {
   >([]);
   const [selectedDateOption, setSelectedDateOption] =
     useState<FlightDateOption>();
-  const [activeTab, setActiveTab] = useState("plans");
+  const [activeTab, setActiveTab] = useState(tripId ? "flight" : "plans");
   const [breakfastOnly, setBreakfastOnly] = useState(
     params.get("breakfast_required") === "true",
   );
@@ -435,6 +518,30 @@ export function SearchExperience() {
     void resolveAuth();
   }, [resolveAuth]);
 
+  // Same shape as resolveAuth: state moves only once the request answers, so
+  // the effect below stays a plain subscription to the trip id.
+  const loadTripCriteria = useCallback(() => {
+    if (!tripId) return Promise.resolve();
+    return api<TripSearchCriteria>(`/trips/${tripId}/search-criteria?modules=flight`)
+      .then((context) => {
+        setTripContext(context);
+        setTripState("ready");
+      })
+      .catch((reason) =>
+        setTripState(
+          reason instanceof ApiError && reason.status === 401
+            ? "signed_out"
+            : reason instanceof ApiError && reason.status === 404
+              ? "not_found"
+              : "error",
+        ),
+      );
+  }, [tripId]);
+
+  useEffect(() => {
+    void loadTripCriteria();
+  }, [loadTripCriteria]);
+
   useEffect(() => {
     api<ProviderStatus>("/providers/status")
       .then(setProviderStatus)
@@ -458,7 +565,7 @@ export function SearchExperience() {
   // from the URL so a reload or a shared link never starts a paid search by itself.
   useEffect(() => {
     if (params.get("resume") !== "search" || resumed.current) return;
-    if (!parsed || searchId || busy) return;
+    if (!parsed || searchId || busy || tripBlocked) return;
     if (
       authState !== "signed_in" ||
       providerStatus?.status !== "ready" ||
@@ -472,7 +579,7 @@ export function SearchExperience() {
     void begin();
     // `begin` reads the same state this effect depends on and is not memoised.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params, parsed, searchId, busy, authState, providerStatus, charge.status, router]);
+  }, [params, parsed, searchId, busy, authState, providerStatus, charge.status, router, tripBlocked]);
 
   const dates = useMemo(() => {
     if (parsed?.departure_date) {
@@ -530,7 +637,7 @@ export function SearchExperience() {
     requestedDates: string[] = dates,
     requestedFlexDays: 0 | 3 | 7 = parsed?.flex_days || 0,
   ) {
-    if (!parsed || providerStatus?.status !== "ready") return;
+    if (!parsed || providerStatus?.status !== "ready" || tripBlocked) return;
     setBusy(true);
     setError(undefined);
     setInsufficient(false);
@@ -542,6 +649,7 @@ export function SearchExperience() {
           method: "POST",
           headers: { "Idempotency-Key": crypto.randomUUID() },
           body: JSON.stringify({
+            ...(tripId ? { trip_id: tripId } : {}),
             trip_type: "round_trip",
             origin: parsed.origin || "TPE",
             destination: parsed.destination || "NRT",
@@ -555,7 +663,7 @@ export function SearchExperience() {
               children_ages: parsed.travelers.children_ages || [],
               rooms: parsed.travelers.rooms || 1,
             },
-            modules: ["flight", "hotel", "activities", "transport"],
+            modules: tripId ? ["flight"] : ["flight", "hotel", "activities", "transport"],
             preferences: {
               budget_twd: parsed.budget_twd,
               avoid_red_eye: parsed.avoid_red_eye,
@@ -697,6 +805,87 @@ export function SearchExperience() {
     }
   }
 
+  async function saveTripOrigin() {
+    if (!tripContext) return;
+    setSavingOrigin(true);
+    setError(undefined);
+    try {
+      await api<Trip>(`/trips/${tripContext.trip.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          version: tripContext.trip.version,
+          origin_airport: tripOriginChoice,
+        }),
+      });
+      await loadTripCriteria();
+    } catch (reason) {
+      setError((reason as Error).message);
+    } finally {
+      setSavingOrigin(false);
+    }
+  }
+
+  async function attachOffer(direction: FlightLegDirection, offerId: string) {
+    if (!tripId || !tripContext) return;
+    setAttachState((state) => ({ ...state, busy: { direction, offerId } }));
+    setError(undefined);
+    const attempt = (version: number) =>
+      api<Trip>(`/trips/${tripId}/flight-anchors/${direction}/from-offer`, {
+        method: "POST",
+        body: JSON.stringify({ version, offer_id: offerId }),
+      });
+    try {
+      let updated: Trip;
+      try {
+        updated = await attempt(tripContext.trip.version);
+      } catch (reason) {
+        // Another tab moved the trip on; take its version once and try again.
+        if (!(reason instanceof ApiError && reason.code === "trip_version_conflict")) throw reason;
+        const fresh = await api<{ version: number }>(`/trips/${tripId}`);
+        updated = await attempt(fresh.version);
+      }
+      setTripContext((context) =>
+        context ? { ...context, trip: { ...context.trip, version: updated.version } } : context,
+      );
+      setAttachState((state) => ({ done: { ...state.done, [direction]: offerId } }));
+    } catch (reason) {
+      const message =
+        reason instanceof ApiError && reason.code === "trip_version_conflict"
+          ? tripText("attachConflict")
+          : (reason as Error).message;
+      setError(tripText("attachFailed", { message }));
+      setAttachState((state) => ({ done: state.done }));
+    }
+  }
+
+  function tripActionsFor(offer: Offer): FlightOfferTripActions | undefined {
+    if (!tripId || !tripContext) return undefined;
+    const state: FlightOfferTripActions["state"] = {};
+    for (const direction of ["outbound", "return"] as const) {
+      if (attachState.busy?.direction === direction && attachState.busy.offerId === offer.id) {
+        state[direction] = "busy";
+      } else if (attachState.done[direction] === offer.id) {
+        state[direction] = "done";
+      }
+    }
+    return {
+      labels: {
+        outbound: tripText("attachOutbound"),
+        return: tripText("attachReturn"),
+        busy: tripText("attaching"),
+        doneOutbound: tripText("attachedOutbound"),
+        doneReturn: tripText("attachedReturn"),
+      },
+      state,
+      onAttach: (direction) => void attachOffer(direction, offer.id),
+    };
+  }
+
+  function originLabel(code: string) {
+    const key = `origin${code[0]}${code.slice(1).toLowerCase()}`;
+    return ["TPE", "TSA", "KHH"].includes(code) ? workbenchText(key) : code;
+  }
+
   function applyCriteria(update: CriteriaUpdate) {
     const next = new URLSearchParams(params.toString());
     const setOptional = (key: string, value: string | number | undefined) => {
@@ -741,7 +930,7 @@ export function SearchExperience() {
     setError(undefined);
     setDone([]);
     setProgress(0);
-    setActiveTab("plans");
+    setActiveTab(tripId ? "flight" : "plans");
     setBreakfastOnly(update.breakfastRequired);
     setRefundableOnly(update.refundableRequired);
     setHotelNightlyMax(update.nightlyBudget || 0);
@@ -768,7 +957,7 @@ export function SearchExperience() {
     setSelectedDateOption(undefined);
     setDone([]);
     setProgress(0);
-    setActiveTab("plans");
+    setActiveTab(tripId ? "flight" : "plans");
     void begin([option.departure_date, option.return_date], 0);
   }
 
@@ -866,12 +1055,22 @@ export function SearchExperience() {
         children: parsed.travelers.children || 0,
       }
     : null;
-  const resultTabs = [
-    { key: "plans", label: t("tabPlans") },
-    ...stages.map(({ key }) => ({ key, label: t(`stages.${key}`) })),
-    { key: "connectivity", label: "eSIM" },
-    ...(includeAirbnb ? [{ key: "airbnb", label: "Airbnb" }] : []),
-  ];
+  const activeStages = tripId ? stages.filter((stage) => stage.key === "flight") : stages;
+  const resultTabs = tripId
+    ? activeStages.map(({ key }) => ({ key, label: t(`stages.${key}`) }))
+    : [
+        { key: "plans", label: t("tabPlans") },
+        ...stages.map(({ key }) => ({ key, label: t(`stages.${key}`) })),
+        { key: "connectivity", label: "eSIM" },
+        ...(includeAirbnb ? [{ key: "airbnb", label: "Airbnb" }] : []),
+      ];
+  const attachedLegs = attachState.done.outbound && attachState.done.return
+    ? tripText("legBoth")
+    : attachState.done.outbound
+      ? tripText("legOutbound")
+      : attachState.done.return
+        ? tripText("legReturn")
+        : null;
   const searchReturnPath = `/search${params.toString() ? `?${params.toString()}` : ""}`;
   const resumeReturnPath = (() => {
     const next = new URLSearchParams(params.toString());
@@ -914,14 +1113,24 @@ export function SearchExperience() {
               {t("yourRequest")}
             </p>
             <h1 className="max-w-4xl text-2xl font-bold md:text-3xl">
-              {destination
-                ? t("fullTripTitle", {
-                    country: t(`country.${destination.country}`),
-                    city: destination.name,
-                  })
-                : text || t("fullTripSearch")}
+              {tripContext
+                ? tripText("title", { name: tripContext.trip.name })
+                : destination
+                  ? t("fullTripTitle", {
+                      country: t(`country.${destination.country}`),
+                      city: destination.name,
+                    })
+                  : text || t("fullTripSearch")}
             </h1>
-            {destination && (
+            {tripContext ? (
+              <p className="mt-2 text-sm text-[var(--muted)]">
+                {tripText("summary", {
+                  destination: tripContext.trip.destination_name || "",
+                  from: tripContext.trip.start_date || "",
+                  to: tripContext.trip.end_date || "",
+                })}
+              </p>
+            ) : destination && (
               <p className="mt-2 text-sm text-[var(--muted)]">
                 {t("destinationMeta", {
                   summary: destination.summary,
@@ -932,6 +1141,15 @@ export function SearchExperience() {
                   }),
                 })}
               </p>
+            )}
+            {tripId && (
+              <Link
+                href={`/trips/${tripId}`}
+                className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--teal)]"
+              >
+                <ArrowLeft size={15} />
+                {tripText("backToTrip")}
+              </Link>
             )}
           </div>
           {providerBadges.length > 0 && (
@@ -992,9 +1210,105 @@ export function SearchExperience() {
             onApply={applyCriteria}
           />
         )}
+        {tripId && tripState === "loading" && (
+          <p role="status" className="mt-6 text-sm text-[var(--muted)]">
+            {tripText("loading")}
+          </p>
+        )}
+        {tripId && tripState === "signed_out" && (
+          <div className="mt-6 rounded-2xl bg-amber-50 p-5 text-amber-950">
+            <Link
+              href={loginPath(searchReturnPath)}
+              className="inline-flex rounded-xl bg-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-white"
+            >
+              {tripText("signIn")}
+            </Link>
+          </div>
+        )}
+        {tripId && tripState === "not_found" && (
+          <div role="alert" className="mt-6 rounded-2xl bg-red-50 p-5 text-sm text-red-900">
+            {tripText("notFound")}
+          </div>
+        )}
+        {tripId && tripState === "error" && (
+          <div role="alert" className="mt-6 rounded-2xl bg-red-50 p-5 text-sm text-red-900">
+            {tripText("unavailable")}
+            <button
+              type="button"
+              onClick={() => {
+                setTripState("loading");
+                void loadTripCriteria();
+              }}
+              className="ml-2 font-semibold underline"
+            >
+              {commonText("retry")}
+            </button>
+          </div>
+        )}
+        {tripContext && tripIssues.origin && (
+          <section className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-amber-950">
+            <p className="font-semibold">{tripText("originTitle")}</p>
+            <p className="mt-1 text-sm leading-6">{tripText("originBody")}</p>
+            <div role="radiogroup" aria-label={tripText("originTitle")} className="mt-3 flex flex-wrap gap-2">
+              {tripContext.origin_options.map((code) => (
+                <button
+                  key={code}
+                  type="button"
+                  role="radio"
+                  aria-checked={tripOriginChoice === code}
+                  onClick={() => setTripOriginChoice(code)}
+                  className={`rounded-full border px-4 py-2 text-sm font-semibold ${tripOriginChoice === code ? "border-[var(--teal)] bg-[var(--teal)] text-white" : "border-[var(--line)] bg-white text-[var(--ink)]"}`}
+                >
+                  {originLabel(code)}
+                </button>
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={() => void saveTripOrigin()}
+              disabled={savingOrigin}
+              className="mt-4 rounded-xl bg-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-white disabled:opacity-50"
+            >
+              {savingOrigin ? tripText("originSaving") : tripText("originSave")}
+            </button>
+          </section>
+        )}
+        {tripContext && tripIssues.destination && (
+          <section className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-amber-950">
+            <p className="font-semibold">{tripText("destinationTitle")}</p>
+            <p className="mt-1 text-sm leading-6">{tripText("destinationBody")}</p>
+            <label className="mt-3 block text-sm font-semibold">
+              {tripText("destinationSelect")}
+              <select
+                value={tripDestinationChoice}
+                onChange={(event) => setTripDestinationChoice(event.target.value)}
+                className="mt-1.5 block w-full max-w-sm rounded-xl border border-[var(--line)] bg-white px-3 py-2.5 font-normal text-[var(--ink)]"
+              >
+                <option value="">{tripText("destinationPlaceholder")}</option>
+                {localizeDestinations(tc).map((city) => (
+                  <option key={city.id} value={city.airport}>
+                    {city.name} · {city.airport}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </section>
+        )}
+        {tripContext && tripIssues.dates && (
+          <section className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-amber-950">
+            <p className="font-semibold">{tripText("datesTitle")}</p>
+            <p className="mt-1 text-sm leading-6">{tripText("datesBody")}</p>
+            <Link
+              href={`/trips/${tripId}`}
+              className="mt-3 inline-flex rounded-xl bg-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-white"
+            >
+              {tripText("fixDates")}
+            </Link>
+          </section>
+        )}
         {/* Also shown when parsing failed: the reader used to be left with one
             red sentence and no way anywhere. */}
-        {!parsed && (!text || error) && (
+        {!tripId && !parsed && (!text || error) && (
           <div className="mt-6 rounded-2xl bg-amber-50 p-5 text-amber-950">
             <p className="font-semibold">
               {t("missingCriteria")}
@@ -1023,7 +1337,8 @@ export function SearchExperience() {
                     busy ||
                     providerStatus?.status !== "ready" ||
                     authState !== "signed_in" ||
-                    charge.status !== "ready"
+                    charge.status !== "ready" ||
+                    tripBlocked
                   }
                   onClick={() => begin()}
                   className="rounded-2xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50"
@@ -1113,7 +1428,7 @@ export function SearchExperience() {
             </p>
           )}
           <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">
-            {stages.map(({ key, icon: Icon }) => (
+            {activeStages.map(({ key, icon: Icon }) => (
               <div
                 key={key}
                 className={`flex items-center gap-2 rounded-xl p-2 text-sm ${done.includes(key) ? "text-[var(--teal)]" : "text-[var(--muted)]"}`}
@@ -1138,6 +1453,18 @@ export function SearchExperience() {
         Object.keys(offers).length > 0 ||
         flightDateOptions.length > 0) && (
         <section>
+          {tripId && attachedLegs && (
+            <p
+              role="status"
+              className="mb-4 flex flex-wrap items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800"
+            >
+              <Check size={16} />
+              {tripText("attachedNotice", { legs: attachedLegs })}
+              <Link href={`/trips/${tripId}`} className="underline">
+                {tripText("backToTrip")}
+              </Link>
+            </p>
+          )}
           <div
             className="mb-5 flex gap-2 overflow-x-auto pb-1"
             role="tablist"
@@ -1517,6 +1844,7 @@ export function SearchExperience() {
                           t,
                         )}
                         alertReturnPath={searchReturnPath}
+                        tripActions={tripActionsFor(offer)}
                       />
                     ))}
                   </div>
