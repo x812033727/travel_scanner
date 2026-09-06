@@ -4,7 +4,10 @@ import type { Trip } from "@/lib/trip-types";
 import { ItineraryDiff, type IntentPreview } from "./itinerary-diff";
 
 vi.mock("@/components/usage-catalog-provider", () => ({
-  useOperationCharge: () => ({ status: "ready", uses: 0, label: "免費", unavailableHelp: "" }),
+  useOperationCharge: (operation: string) =>
+    operation === "ai_itinerary_refine"
+      ? { status: "ready", uses: 0, label: "免費", unavailableHelp: "" }
+      : { status: "ready", uses: 1, label: "1 次", unavailableHelp: "" },
 }));
 
 const trip: Trip = {
@@ -37,7 +40,9 @@ function preview(overrides: Partial<IntentPreview> = {}): IntentPreview {
       warnings: [],
     },
     intent: { text: "這天下雨，改室內" },
+    usage_operation: "ai_itinerary_refine",
     diff: {
+      changed: [],
       removed: [
         {
           candidate_key: "hotspot:0",
@@ -82,6 +87,9 @@ function preview(overrides: Partial<IntentPreview> = {}): IntentPreview {
       exhausted: false,
       reason: null,
       alternative_candidate_count: 5,
+      alternative_merchant_count: 3,
+      pool_spent: false,
+      meal_pool_spent: false,
       activity_delta: 0,
       fewer_stops_without_alternatives: false,
       ...(overrides.exhaustion || {}),
@@ -316,5 +324,126 @@ describe("intent bar", () => {
 
     await waitFor(() => expect(prepare).toHaveBeenCalled());
     expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("reuses the key when the same failed ask is retried, so it replays instead of re-billing", async () => {
+    let attempt = 0;
+    const fetchMock = vi.fn(async () => {
+      attempt += 1;
+      if (attempt === 1) return { ok: false, status: 504, json: async () => ({ code: "upstream_timeout", detail: "逾時" }) };
+      return ok(preview());
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<ItineraryDiff trip={trip} activeDay="2026-11-12" onApplied={vi.fn()} onError={vi.fn()} />);
+
+    await submit("這天下雨，改室內");
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    fireEvent.click(screen.getByRole("button", { name: /看看會怎麼改/ }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+
+    const keys = calls(fetchMock).map(([, init]) => (init.headers as Record<string, string>)["Idempotency-Key"]);
+    expect(keys[0]).toBe(keys[1]);
+  });
+
+  it("says plainly when the plan came from the catalog, and refuses to apply it", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () =>
+      ok(
+        preview({
+          planning: {
+            status: "fallback",
+            readiness: "fallback",
+            provider: "catalog",
+            generated_at: "2026-11-01T00:00:00Z",
+            warnings: [],
+          },
+        }),
+      ),
+    ));
+    render(<ItineraryDiff trip={trip} activeDay="2026-11-12" onApplied={vi.fn()} />);
+
+    await submit("這天下雨，改室內");
+
+    await waitFor(() => expect(screen.getByText(/AI 規劃器暫時無法使用/)).toBeTruthy());
+    expect(sheetFooter().queryByRole("button", { name: /^套用/ })).toBeNull();
+  });
+
+  it("names the fields a re-plan would overwrite instead of calling the row unchanged", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () =>
+      ok(
+        preview({
+          diff: {
+            removed: [],
+            added: [],
+            moved: [],
+            changed: [
+              {
+                candidate_key: "hotspot:0",
+                title: "淺草寺",
+                day_date: "2026-11-12",
+                start_time: "10:00",
+                fields: ["place", "notes"],
+              },
+            ],
+            meals: [],
+            unchanged_count: 0,
+            has_changes: true,
+          },
+        }),
+      ),
+    ));
+    render(<ItineraryDiff trip={trip} activeDay="2026-11-12" onApplied={vi.fn()} />);
+
+    await submit("這天下雨，改室內");
+
+    await waitFor(() => expect(screen.getByText("同時更新（1）")).toBeTruthy());
+    expect(screen.getByText("會被覆蓋：地點、你的備註")).toBeTruthy();
+  });
+
+  it("reports a spent pool even when the re-plan only reordered the same stops", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () =>
+      ok(
+        preview({
+          exhaustion: {
+            exhausted: false,
+            reason: null,
+            alternative_candidate_count: 0,
+            alternative_merchant_count: 0,
+            pool_spent: true,
+            meal_pool_spent: true,
+            activity_delta: 0,
+            fewer_stops_without_alternatives: false,
+          },
+        }),
+      ),
+    ));
+    render(<ItineraryDiff trip={trip} activeDay="2026-11-12" onApplied={vi.fn()} />);
+
+    await submit("換別的地方");
+
+    await waitFor(() => expect(screen.getByText(/這一帶已驗證的地點都已經在你的行程裡了/)).toBeTruthy());
+    expect(screen.getByText(/沒有其他已驗證的餐廳/)).toBeTruthy();
+  });
+
+  it("prices a whole-trip intent as a generation rather than a free refinement", async () => {
+    const fetchMock = vi.fn(async () =>
+      ok(preview({ scope: "trip", day_date: null, usage_operation: "ai_itinerary_generation" })),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+    render(<ItineraryDiff trip={trip} onApplied={vi.fn()} />);
+
+    await submit("走路少一點");
+
+    await waitFor(() => expect(applyButton()).toBeTruthy());
+    expect(applyButton().textContent).toContain("1 次");
+  });
+
+  it("keeps a day-scoped refinement free", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => ok(preview())));
+    render(<ItineraryDiff trip={trip} activeDay="2026-11-12" onApplied={vi.fn()} />);
+
+    await submit("這天下雨，改室內");
+
+    await waitFor(() => expect(applyButton()).toBeTruthy());
+    expect(applyButton().textContent).toContain("免費");
   });
 });

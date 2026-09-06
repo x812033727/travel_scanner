@@ -73,11 +73,20 @@
     "exampleWalk": "少走点路",
     "exampleShopping": "多留时间逛街，少一个景点",
     "sheetTitle": "确认这次调整",
-    "sheetDescription": "按下应用前不会改动原行程。已锁定、固定时间、自己加入与自己挑的餐厅都会保留。",
+    "sheetDescription": "按下应用前不会改动原行程。已锁定、固定时间、自己加入与自己挑的餐厅都会保留；新安排若留下同一个地点，你写的备注、停留时间与自己挑的地点也会一并保留。",
     "quoted": "你的要求：{text}",
     "removedTitle": "移除（{count}）",
     "addedTitle": "新增（{count}）",
     "movedTitle": "移动（{count}）",
+    "changedTitle": "同时更新（{count}）",
+    "changedFields": "会被覆盖：{fields}",
+    "fieldSeparator": "、",
+    "field": {
+      "title": "名称",
+      "place": "地点",
+      "duration": "停留时间",
+      "notes": "你的备注"
+    },
     "mealsTitle": "餐食（{count}）",
     "movedFromTo": "{from} → {to}",
     "unchanged": "有 {count} 个安排保持不变。",
@@ -89,11 +98,14 @@
     "exhaustedNoChange": "目前的安排已经是这样了，没有可以调整的地方。可以指名某个景点，或换一天试试。",
     "fewerStops": "这天会少 {count} 个安排，而这一带已经没有其他已验证的地点可以补上。",
     "alternativesLeft": "这一带还有 {count} 个已验证的地点没有用到。",
+    "poolSpent": "这一带已验证的地点都已经在你的行程里了。",
+    "mealPoolSpent": "这一带没有其他已验证的餐厅可以换。",
     "apply": "应用 · {charge}",
     "applying": "应用中",
     "cancel": "先不应用",
     "close": "关闭",
     "applied": "已应用调整，受影响日期的移动时间需要重新计算。",
-    "partialNote": "这份安排有一部分来自内置数据，而非 AI 规划器。"
+    "partialNote": "这份安排有一部分来自内置数据，而非 AI 规划器。",
+    "fallbackNote": "AI 规划器暂时无法使用，这份安排是用内置数据排的，并没有读到你的描述，因此无法应用。请稍后再试。"
   }
 }
