@@ -111,7 +111,8 @@ def test_in_file_duplicates_are_refused_on_slug_and_on_identity() -> None:
 
 def test_the_committed_batch_is_valid_and_points_at_seeded_areas_and_categories() -> None:
     merchants = load_trend_merchants(DEFAULT_FILE)
-    assert len(merchants) == 101
+    # 101 from the 2026-09-06 sweep plus the 45 second-sweep shops for the empty districts.
+    assert len(merchants) == 146
     assert all(m.area_slug in TREND_AREA_SEEDS_BY_SLUG for m in merchants), [
         m.area_slug for m in merchants if m.area_slug not in TREND_AREA_SEEDS_BY_SLUG
     ]
