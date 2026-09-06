@@ -29,6 +29,8 @@ class DailyWeather(BaseModel):
     max_temperature_c: float
     relative_humidity_percent: int | None = Field(default=None, ge=0, le=100)
     precipitation_probability_percent: int | None = Field(default=None, ge=0, le=100)
+    # Forecast rainfall for the day; MET Norway reports amounts rather than a probability.
+    precipitation_mm: float | None = Field(default=None, ge=0)
     wind_speed_kph: float | None = Field(default=None, ge=0)
     uv_index: int | None = Field(default=None, ge=0)
     sunrise_at: datetime | None = None

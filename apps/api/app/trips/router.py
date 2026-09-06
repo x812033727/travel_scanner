@@ -29,7 +29,7 @@ from app.db import get_session
 from app.destinations.catalog import destination_for_code, match_destination
 from app.foods.service import load_planner_foods
 from app.hotspots.service import load_planner_hotspots
-from app.i18n import active_locale
+from app.i18n import Locale, active_locale, current_locale
 from app.infra import enforce_named_rate_limit, get_redis
 from app.localized_names import (
     ITEM_LOCATION_KEY,
@@ -131,8 +131,8 @@ from app.usage.service import (
     reserve_use,
     usage_status,
 )
-from app.weather.google import GoogleWeatherService
 from app.weather.schemas import TripWeather
+from app.weather.service import TripWeatherService
 
 router = APIRouter(prefix="/trips", tags=["trips"])
 public_router = APIRouter(prefix="/shared-trips", tags=["shared trips"])
@@ -2503,15 +2503,13 @@ async def get_trip_weather(
     trip_id: UUID,
     user: CurrentUser,
     session: Session,
+    locale: Annotated[Locale, Depends(current_locale)],
 ) -> TripWeather:
     trip = await owned_trip(session, user.id, trip_id)
     settings = await load_runtime_settings(session)
-    if not settings.google_maps_api_key:
-        raise AppError(
-            503,
-            "weather_not_configured",
-            "Google Weather 尚未設定，請先在管理後台設定伺服器 API 金鑰",
-        )
+    weather_service = TripWeatherService(get_redis(), settings)
+    if not weather_service.configured:
+        raise AppError(503, "weather_not_configured", "天氣服務尚未設定")
     await enforce_named_rate_limit(
         "trip-weather-user",
         str(user.id),
@@ -2552,10 +2550,12 @@ async def get_trip_weather(
             "旅程尚無可用座標，請先確認至少一個行程地點",
         )
 
-    weather = await GoogleWeatherService(get_redis(), settings).lookup(
+    weather = await weather_service.lookup(
         latitude=latitude,
         longitude=longitude,
         location_name=location_name,
+        language_code=locale,
+        timezone=trip.timezone,
     )
     warnings = list(weather.warnings)
     if (
@@ -2565,7 +2565,7 @@ async def get_trip_weather(
         and trip.end_date
     ):
         if trip.end_date < weather.available_start_date:
-            warnings.append("旅程日期已過，Google Weather 不提供這段期間的歷史預報")
+            warnings.append("旅程日期已過，天氣服務不提供這段期間的歷史預報")
         elif trip.start_date > weather.available_end_date:
             warnings.append("旅程日期超出目前 10 日預報範圍")
         elif (

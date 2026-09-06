@@ -66,6 +66,7 @@ from app.trips.routing import (
     RoutePoint,
 )
 from app.weather.google import GoogleWeatherService
+from app.weather.met_norway import MetNorwayWeatherService
 
 logger = logging.getLogger(__name__)
 
@@ -212,6 +213,13 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "restaurant_location_cache_days",
         ),
         ("google_maps_api_key", "next_public_google_maps_browser_key"),
+    ),
+    "met_norway": ProviderDefinition(
+        "MET Norway 天氣",
+        "挪威氣象局的免費全球預報（CC BY 4.0，允許商業使用）。預設供應旅程天氣，"
+        "Google Weather 退為備援；只需要一個能識別本站的 User-Agent。",
+        ("weather_provider", "met_norway_user_agent"),
+        (),
     ),
     "naver_maps": ProviderDefinition(
         "NAVER Maps",
@@ -620,6 +628,16 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             else "缺少伺服器 Google Maps API key"
         )
         return configured, "ready" if configured else "not_configured", message
+    if provider == "met_norway":
+        configured = bool(settings.met_norway_user_agent.strip())
+        primary = "MET Norway" if settings.weather_provider == "met_norway" else "Google Weather"
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            f"User-Agent 已設定；旅程天氣優先使用 {primary}"
+            if configured
+            else "缺少 User-Agent，MET Norway 會拒絕沒有識別的請求",
+        )
     if provider == "naver_maps":
         configured = settings.naver_maps_configured
         return (
@@ -1428,6 +1446,16 @@ async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str
     if provider == "booking_demand":
         await BookingHotelProvider(redis, settings).probe()
         return f"Booking.com Demand API {settings.booking_demand_env} 驗證成功"
+    if provider == "met_norway":
+        met_weather = await MetNorwayWeatherService(redis, settings).lookup(
+            latitude=35.6812,
+            longitude=139.7671,
+            location_name="東京車站",
+            timezone="Asia/Tokyo",
+        )
+        if not met_weather.days:
+            raise ConnectionError("MET Norway 可連線，但未回傳東京的每日預報")
+        return f"MET Norway 連線成功，取得 {len(met_weather.days)} 天預報"
     if provider == "ekispert":
         ekispert_probe = await EkispertRouteProvider(settings, None, redis).probe(
             RoutePoint(item_id=uuid4(), name="東京", latitude=35.6812, longitude=139.7671),

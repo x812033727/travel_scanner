@@ -276,6 +276,11 @@ class Settings(BaseSettings):
     # the affected pairs directly, so this only guards against very old timetables.
     route_segment_ttl_seconds: int = Field(default=30 * 86_400, ge=3_600, le=180 * 86_400)
     weather_cache_ttl_seconds: int = Field(default=900, ge=300, le=3_600)
+    # Trip weather: MET Norway is free for commercial use (CC BY 4.0) and only asks for
+    # an identifying User-Agent; Google Weather stays available as the fallback.
+    weather_provider: Literal["met_norway", "google"] = "met_norway"
+    met_norway_base_url: str = "https://api.met.no"
+    met_norway_user_agent: str = "Mokaair/1.0 (+https://mokaair.com)"
     navitime_api_base_url: str | None = None
     navitime_client_id: str | None = None
     navitime_api_key: str | None = None

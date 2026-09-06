@@ -54,7 +54,22 @@ describe("trip weather panel", () => {
 
     render(<TripWeatherPanel tripId="trip-1" activeDay="2026-12-20" />);
 
-    expect(await screen.findByText(/尚未進入 Google Weather 的 10 日預報範圍/)).toBeTruthy();
+    expect(await screen.findByText(/尚未進入 10 日預報範圍/)).toBeTruthy();
+  });
+
+  it("names the provider that answered and shows rainfall when no probability is given", async () => {
+    const met = {
+      ...weather,
+      attribution: "MET Norway",
+      days: [{ ...weather.days[0], precipitation_probability_percent: null, precipitation_mm: 4.6 }],
+    };
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(response(met)));
+
+    render(<TripWeatherPanel tripId="trip-1" activeDay="2026-09-01" />);
+
+    expect(await screen.findByText("MET NORWAY")).toBeTruthy();
+    expect(screen.getByLabelText("2026-09-01 天氣摘要").textContent).toContain("降雨 4.6 mm");
+    expect(screen.getByText(/MET Norway · 剛剛更新/)).toBeTruthy();
   });
 
   it("shows setup guidance without retrying a disabled API", async () => {
