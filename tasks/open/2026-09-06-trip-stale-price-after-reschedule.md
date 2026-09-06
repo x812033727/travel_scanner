@@ -13,6 +13,16 @@ depends_on: []
 scope:
   - apps/api/app/trips/reschedule.py
   - apps/api/app/trips/router.py
+  - apps/api/tests/test_trip_reschedule.py
+  - apps/api/tests/test_integration_postgres_redis.py
+  - apps/web/lib/trip-types.ts
+  - apps/web/components/trip-editor.tsx
+  - apps/web/components/account-list.tsx
+  - apps/web/messages/en/trips.json
+  - apps/web/messages/ja/trips.json
+  - apps/web/messages/ko/trips.json
+  - apps/web/messages/zh-CN/trips.json
+  - apps/web/messages/zh-TW/trips.json
 ---
 
 # 日期變更後行程價格停在舊報價且無法重新查價
@@ -35,17 +45,17 @@ scope:
 
 ## Definition of done
 
-- [ ] 日期變更後，行程不會繼續宣稱一個為舊日期報的價格。
-- [ ] 使用者在產品內有辦法取得新日期的價格，或者清楚看到目前沒有報價。
+- [x] 日期變更後，行程不會繼續宣稱一個為舊日期報的價格。
+- [x] 使用者在產品內有辦法取得新日期的價格，或者清楚看到目前沒有報價。
 
 ## Steps
 
-- [ ] 在 `reschedule_trip_data` 裡比照 routing 的作法讓價格失效：
+- [x] 在 `reschedule_trip_data` 裡比照 routing 的作法讓價格失效：
       清掉 `prices_checked` / `reoptimized_at`，或標記 `prices_stale`。
-- [ ] `serialize_trip`、網頁標頭與 `PriceAlertButton` 在價格失效時要隱藏或標註，而不是照常顯示。
-- [ ] 或者（審查者提的另一條路）讓 `refreshed_plan` 用行程自己當下的 start_date/end_date 重建
+- [x] `serialize_trip`、網頁標頭與 `PriceAlertButton` 在價格失效時要隱藏或標註，而不是照常顯示。
+- [x] 或者（審查者提的另一條路）讓 `refreshed_plan` 用行程自己當下的 start_date/end_date 重建
       （`model_copy` 那個 `SearchCreate`），而不是硬性拒絕 —— 這樣就沒有死路了。
-- [ ] 兩條路選一條並說明理由。
+- [x] 兩條路選一條並說明理由。
 
 ## How to verify
 
@@ -64,3 +74,18 @@ cd apps/api
 `2026-09-06-reoptimize-no-version-check`）：`search_dates_diverged` 在 `return_date` 為 NULL 時
 第二個條件整個失效，所以單程搜尋建立的行程會繞過這個守衛，然後被永久 422 鎖住 ——
 正是這個守衛當初要防的那件事。
+
+2026-09-06 claude-fable-5-1：兩條路都做了，因為它們補的是不同的洞。
+
+- `reschedule_trip_data` 現在會清掉 `prices_checked`、拿掉 `reoptimized_at` 並標 `prices_stale=True`；
+  `serialize_trip` 多一個頂層 `price_status`（`current` / `stale` / `none`）。網頁標頭在 stale 時改印
+  「舊日期的報價，重新查價後更新」，三處 `PriceAlertButton`（編輯器桌機側欄、工具面板、我的行程列表）
+  在 stale 時不顯示——一個盯著舊日期票價的追蹤沒有意義。
+- 死路解掉：`refreshed_plan` 改用 `search_query_for_trip()` 把原始搜尋平移到行程當下的 start/end
+  （來回與單程都能平移；SearchRequest 那列不改寫，因為多個行程可能共用同一筆搜尋），只有多城市搜尋
+  （日期在各段裡，無法從兩端平移）或平移後驗證不過才回 409 `trip_search_dates_diverged`。
+  成功的 reoptimize 會整份重寫 `trip.data`，旗標自然消失。
+- 沒動 `trip_plans.total_price` 本身：標頭仍印那個數字，只是標成舊日期的報價；清成 0 會讓
+  帳號列表把行程當成「尚未安排」，比留著更誤導。
+- 單元案例在 `test_trip_reschedule.py`（平移、多城市拒絕、越界拒絕、旗標生命週期）；
+  版本與 idempotency 的整合案例見 `2026-09-06-reoptimize-no-version-check`。

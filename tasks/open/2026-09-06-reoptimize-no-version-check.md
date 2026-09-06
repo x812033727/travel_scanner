@@ -12,6 +12,9 @@ branch: claude/trip-api-p2
 depends_on: []
 scope:
   - apps/api/app/trips/router.py
+  - apps/api/tests/test_trip_reschedule.py
+  - apps/api/tests/test_integration_postgres_redis.py
+  - apps/web/components/trip-editor.tsx
 ---
 
 # reoptimize 沒有版本檢查，日期守衛是 TOCTOU
@@ -35,16 +38,16 @@ scope:
 
 ## Definition of done
 
-- [ ] reoptimize 像其他行程寫入一樣接受並比對 version，寫入時仍持有該版本。
-- [ ] 日期分歧的判斷不依賴搜尋自己的可選欄位，單程與多城市行程也擋得住。
+- [x] reoptimize 像其他行程寫入一樣接受並比對 version，寫入時仍持有該版本。
+- [x] 日期分歧的判斷不依賴搜尋自己的可選欄位，單程與多城市行程也擋得住。
 
 ## Steps
 
-- [ ] 讓 reoptimize 走與其他寫入相同的 compare-and-swap 模式。
-- [ ] 改成比對行程當下的 start_date/end_date 與已存方案首末日的實際日期，
+- [x] 讓 reoptimize 走與其他寫入相同的 compare-and-swap 模式。
+- [x] 改成比對行程當下的 start_date/end_date 與已存方案首末日的實際日期，
       而不是比對 SearchRequest 的 departure_date/return_date；
       或在 return_date 為 None 時退回 `departure_date + (天數 - 1)`。
-- [ ] 加測試涵蓋單程搜尋建立的行程縮短結束日之後的路徑。
+- [x] 加測試涵蓋單程搜尋建立的行程縮短結束日之後的路徑。
 
 ## How to verify
 
@@ -62,3 +65,18 @@ NULL return_date 的洞由 `reschedule-corruption` 審查者提出（medium）�
 同一個審查者還提到一個低嚴重度的相關問題：在新的 409 之後用同一個 Idempotency-Key 重試 reoptimize，
 會得到 HTTP 200 加上未變動的行程，呈現得像一次完成的重新查價。這個路徑早於 #155，
 修上面兩點的時候可以順手看一下。
+
+2026-09-06 claude-fable-5-1：
+
+- `POST /trips/{id}/reoptimize` 現在要 body `{version}`（缺就 422）。先便宜比一次版本
+  （不符就釋放保留次數、409 `trip_version_conflict`，供應商一通都不打），供應商回來後再以
+  `UPDATE ... WHERE version = :version RETURNING` 做 compare-and-swap，輸了就 rollback、釋放保留、409；
+  贏了才刪列重建。前端 `reoptimizePrices()` 送 `currentTrip.version`。
+- 日期守衛改成兩段：`search_query_for_trip()` 把搜尋平移到行程當下日期（不再比對 SearchRequest 的
+  可選欄位），`ensure_plan_within_trip()` 在寫入前檢查方案每一天都落在 `trip.start_date..end_date` 內。
+  單程／多城市原本繞得過的那個洞，現在是對結果檢查，跟搜尋有沒有 `return_date` 無關。
+- 順手修了 Notes 提到的低嚴重度問題：保留次數只有在 CAS 成功後才寫 `resource_id`，所以用同一個
+  Idempotency-Key 重試一次失敗的 reoptimize 會得到 409 `idempotency_result_unavailable`，
+  不會再拿到 200 加原封不動的行程。
+- 測試：`test_trip_reschedule.py` 四個單元案例；`test_integration_postgres_redis.py`
+  一個整合案例（版本不符 409 且不打供應商、越界方案 409、失敗重試不重放、次數不扣、列 id 不變）。

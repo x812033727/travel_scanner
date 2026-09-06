@@ -1794,3 +1794,99 @@ async def test_share_link_carries_no_item_notes_and_no_trip_data(
         assert "私人理由" not in shared.text
         assert "price_snapshot" not in shared.text
 
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_reoptimize_is_a_versioned_write_and_never_replays_a_failed_attempt(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """POST /trips/{id}/reoptimize carries the version the client last saw.
+
+    A mismatch is refused before any provider is called and the usage
+    reservation goes back; a plan that would land rows outside the trip is
+    refused the same way; and retrying a failed attempt with the same
+    Idempotency-Key is not dressed up as a completed reprice.
+    """
+    from datetime import date
+    from types import SimpleNamespace
+
+    monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", lambda *_a, **_k: None)
+
+    async def unexpected_replan(*_args: object, **_kwargs: object) -> None:
+        raise AssertionError("a stale version must be refused before the providers run")
+
+    monkeypatch.setattr(trips_router_module, "refreshed_plan", unexpected_replan)
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        headers = await _signed_in_headers("reoptimize-version")
+        created = await client.post(
+            "/api/v1/trips",
+            headers=headers,
+            json={
+                "source": "blank",
+                "planning_mode": "manual_blank",
+                "name": "重新查價版本測試",
+                "destination_name": "日本東京",
+                "start_date": "2026-11-10",
+                "end_date": "2026-11-12",
+                "routing": {
+                    "auto_compute": False,
+                    "default_travel_mode": "transit",
+                    "default_buffer_minutes": 10,
+                },
+            },
+        )
+        assert created.status_code == 201, created.text
+        trip = created.json()
+        assert trip["price_status"] == "none"
+        trip_id = trip["id"]
+        url = f"/api/v1/trips/{trip_id}/reoptimize"
+        usage_before = await client.get("/api/v1/usage", headers=headers)
+        remaining_before = usage_before.json()["remaining_uses"]
+
+        no_version = await client.post(
+            url, headers={**headers, "Idempotency-Key": f"reopt-{uuid4()}"}
+        )
+        assert no_version.status_code == 422
+
+        key = f"reopt-{uuid4()}"
+        stale = await client.post(
+            url,
+            headers={**headers, "Idempotency-Key": key},
+            json={"version": trip["version"] + 1},
+        )
+        assert stale.status_code == 409, stale.text
+        assert stale.json()["code"] == "trip_version_conflict"
+
+        async def replan_outside_the_trip(
+            *_args: object, **_kwargs: object
+        ) -> tuple[object, list[str]]:
+            return SimpleNamespace(itinerary=[SimpleNamespace(date=date(2026, 11, 20))]), []
+
+        monkeypatch.setattr(trips_router_module, "refreshed_plan", replan_outside_the_trip)
+        outside = await client.post(
+            url,
+            headers={**headers, "Idempotency-Key": f"reopt-{uuid4()}"},
+            json={"version": trip["version"]},
+        )
+        assert outside.status_code == 409, outside.text
+        assert outside.json()["code"] == "trip_search_dates_diverged"
+
+        # Neither failure is replayable as a completed reprice, and neither charged.
+        retried = await client.post(
+            url,
+            headers={**headers, "Idempotency-Key": key},
+            json={"version": trip["version"]},
+        )
+        assert retried.status_code == 409, retried.text
+        assert retried.json()["code"] == "idempotency_result_unavailable"
+        usage_after = await client.get("/api/v1/usage", headers=headers)
+        assert usage_after.json()["remaining_uses"] == remaining_before
+
+        reloaded = await client.get(f"/api/v1/trips/{trip_id}", headers=headers)
+        assert reloaded.status_code == 200
+        assert reloaded.json()["version"] == trip["version"]
+        assert [item["id"] for item in reloaded.json()["items"]] == [
+            item["id"] for item in trip["items"]
+        ]

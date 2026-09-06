@@ -1117,7 +1117,10 @@ export function TripEditor({ tripId }: { tripId: string }) {
     setError(undefined);
     try {
       const updated = await api<Trip>(`/trips/${currentTrip.id}/reoptimize`, {
-        method: "POST", headers: { "Idempotency-Key": requestIdentity.key },
+        method: "POST",
+        headers: { "Idempotency-Key": requestIdentity.key },
+        // The server compares this before touching a row, like every other trip write.
+        body: JSON.stringify({ version: currentTrip.version }),
       });
       replaceTrip(updated);
       setRoutes(updated.route_segments || []);
@@ -1489,9 +1492,9 @@ export function TripEditor({ tripId }: { tripId: string }) {
         <div>
           <div className="flex flex-wrap items-center gap-2 text-xs font-semibold"><span className="rounded-full bg-white/75 px-3 py-1.5 text-[var(--teal)]">{te("plannerVersion", { version: trip.version })}</span><span aria-live="polite" className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 ${saveState === "saved" ? "bg-emerald-50 text-emerald-800" : saveState === "dirty" || saveState === "saving" ? "bg-amber-50 text-amber-900" : "bg-red-50 text-red-800"}`}>{saveIcon}{saveLabel}</span></div>
           <div className="mt-3 flex items-center gap-3"><h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{trip.name}</h1><TripMetaEditor trip={trip} variant="hero" disabled={saveState === "conflict" || Boolean(action)} prepare={() => flushChanges()} onUpdated={applyMetaUpdate} /></div>
-          <p className="mt-2 text-sm leading-6 text-[var(--muted)] sm:text-base">{trip.destination_name || te("tripFallback")}{trip.start_date ? te("dateRange", { start: trip.start_date, end: trip.end_date ?? "" }) : ""}{Number(trip.total_price) > 0 ? ` · ${twd.format(Number(trip.total_price))}` : ""}</p>
+          <p className="mt-2 text-sm leading-6 text-[var(--muted)] sm:text-base">{trip.destination_name || te("tripFallback")}{trip.start_date ? te("dateRange", { start: trip.start_date, end: trip.end_date ?? "" }) : ""}{Number(trip.total_price) > 0 ? (trip.price_status === "stale" ? te("stalePrice", { amount: twd.format(Number(trip.total_price)) }) : ` · ${twd.format(Number(trip.total_price))}`) : ""}</p>
           <p className="mt-2 text-xs text-[var(--muted)]">{aiCharge.status === "ready" ? te("aiChargeHelp", { charge: aiCharge.label }) : aiCharge.unavailableHelp}</p>
-          {desktopMapVisible && <div className="mt-3 max-w-xs"><PriceAlertButton resourceType="trip" resourceId={trip.id} currentPrice={Number(trip.total_price)} currency={trip.currency} returnPath={`/trips/${trip.id}`} /></div>}
+          {desktopMapVisible && trip.price_status !== "stale" && <div className="mt-3 max-w-xs"><PriceAlertButton resourceType="trip" resourceId={trip.id} currentPrice={Number(trip.total_price)} currency={trip.currency} returnPath={`/trips/${trip.id}`} /></div>}
         </div>
         <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap"><button type="button" onClick={() => setConfirmAction("reprice")} disabled={busy("reprice") || trip.mode === "manual" || repriceCharge.status !== "ready"} className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[var(--line)] bg-white/75 px-4 py-3 text-sm font-semibold disabled:opacity-40"><RefreshCw size={16} />{te("repriceButton", { charge: repriceCharge.label })}</button><button type="button" onClick={() => openAIPlanner("trip")} disabled={busy("ai") || aiCharge.status !== "ready"} className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-violet-300 bg-violet-50/90 px-4 py-3 text-sm font-semibold text-violet-900 disabled:opacity-40"><Sparkles size={16} />{te("aiPlanButton", { charge: aiCharge.label })}</button><button type="button" onClick={() => previewOptimization()} disabled={busy("preview", "apply")} className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[var(--teal)] bg-white/75 px-4 py-3 text-sm font-semibold text-[var(--teal)] disabled:opacity-40">{action === "preview-all" ? <Loader2 size={16} className="animate-spin" /> : <RouteIcon size={16} />}{te("optimizeButton", { charge: optimizationCharge.label })}</button><button type="button" onClick={() => void flushChanges(true)} disabled={saveState === "saving"} className="flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white disabled:opacity-60"><Save size={16} />{te("saveChanges")}</button><button type="button" aria-expanded={toolsOpen} onClick={openTools} className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[var(--line)] bg-white/75 px-4 py-3 text-sm font-semibold"><Settings2 size={16} />{t("tools")}</button></div>
       </div>
@@ -1617,7 +1620,9 @@ export function TripEditor({ tripId }: { tripId: string }) {
           {trip.share_enabled && <button type="button" onClick={() => { setToolsOpen(false); setConfirmAction("revoke-share"); }} className="planner-tool-row text-red-700"><span className="planner-tool-icon bg-red-50"><Link2 size={18} /></span><span className="flex-1 text-left font-semibold">{te("revokeCurrentShare")}</span></button>}
           {shareUrl && <label className="flex min-w-0 items-center gap-2 rounded-xl bg-[var(--paper)] px-3 py-2 text-sm"><input aria-label={te("share.linkLabel")} readOnly value={shareUrl} className="min-w-0 flex-1 bg-transparent outline-none" /><button type="button" aria-label={te("share.copy")} onClick={() => void navigator.clipboard?.writeText(shareUrl)} className="grid min-h-11 min-w-11 place-items-center"><Copy size={16} /></button></label>}
         </section>
-        <section className="planner-tool-card"><PriceAlertButton resourceType="trip" resourceId={trip.id} currentPrice={Number(trip.total_price)} currency={trip.currency} returnPath={`/trips/${trip.id}`} /></section>
+        {trip.price_status === "stale"
+          ? <section className="planner-tool-card text-sm text-amber-900">{te("stalePriceHint")}</section>
+          : <section className="planner-tool-card"><PriceAlertButton resourceType="trip" resourceId={trip.id} currentPrice={Number(trip.total_price)} currency={trip.currency} returnPath={`/trips/${trip.id}`} /></section>}
       </div>
     </PlannerOverlay>
 
