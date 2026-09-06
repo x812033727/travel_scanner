@@ -167,3 +167,18 @@ def test_fetch_labels_batches_requests_and_retries_rate_limits() -> None:
     assert [len(call["ids"].split("|")) for call in calls] == [50, 50, 11]
     assert calls[0]["languages"] == "|".join(REQUESTED_LANGUAGES)
     assert naps[0] == 3  # the 429 backed off before the retry
+
+
+def test_a_label_this_command_does_not_own_survives_a_rerun() -> None:
+    """zh-CN comes from the converter; rewriting the whole map would revert it."""
+    row: dict[str, Any] = {
+        "city_code": "BKK",
+        "name": "倫披尼公園",
+        "names": {"en": "Lumphini Park", "zh-CN": "伦披尼公园"},
+        "wikidata_item_id": "Q977437",
+    }
+
+    apply_labels(row, {"en": "Lumphini Park", "ja": "ルンピニー公園"}, country_code="TH")
+
+    assert row["names"]["zh-CN"] == "伦披尼公园"
+    assert row["names"]["ja"] == "ルンピニー公園"
