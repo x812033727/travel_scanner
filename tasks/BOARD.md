@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**8 open · 2 in progress · 2 blocked · 5 in review · 84 done**
+**8 open · 1 in progress · 2 blocked · 5 in review · 85 done**
 
 ## Ready to claim
 
@@ -22,7 +22,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | claude-opus-5 | 2026-09-06T13:20:48Z | `claude/place-names-i18n` |
-| [熱門景點頁的主題篩選與季節徽章](open/2026-09-06-hotspot-themes-web.md) | claude-opus-5 | 2026-09-06T15:12:19Z | `claude/hotspot-themes-web` |
 
 ## In review
 
@@ -48,6 +47,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-06 [熱門景點頁的主題篩選與季節徽章](done/2026-09-06-hotspot-themes-web.md)
 - 2026-09-06 [熱門景點季節與購物主題：資料模型、種子與公開 API](done/2026-09-06-hotspot-themes-api.md)
 - 2026-09-06 [日曆的假日圓點應該跟著目的地國家](done/2026-09-06-holiday-dots-follow-destination.md)
 - 2026-09-06 [供應商就緒狀態只看金鑰有無，卡片會綠燈但功能不通](done/2026-09-06-configured-readiness-beyond-key-presence.md)
@@ -57,4 +57,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-06 [後台其餘三個面板文案硬編碼繁中](done/2026-09-06-admin-panels-i18n-remaining.md)
 - 2026-09-06 [後台 AI 規劃連線測試送空候選，看不見真正會壞的那一步](done/2026-09-06-admin-planner-test-real-candidates.md)
 - 2026-09-06 [Wikidata 標籤原封不動存入，消歧義括號會顯示給使用者](done/2026-09-06-wikidata-labels-stored-verbatim.md)
-- 2026-09-06 [seed 的韓文假名泰文名稱被當成中文標籤輸出](done/2026-09-06-non-chinese-seed-names-as-chinese-labels.md)

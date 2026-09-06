@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-hotspot-themes-web
 title: 熱門景點頁的主題篩選與季節徽章
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T15:12:19Z
 created_at: 2026-09-06T15:12:18Z
-completed_at:
+completed_at: 2026-09-06T16:49:46Z
 branch: claude/hotspot-themes-web
 depends_on: []
 scope:
@@ -22,6 +22,7 @@ scope:
   - apps/web/messages/zh-TW/hotspots.json
   - apps/web/messages/zh-CN/hotspots.json
 ---
+
 # 熱門景點頁的主題篩選與季節徽章
 
 ## Why
