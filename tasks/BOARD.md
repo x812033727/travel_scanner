@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**1 open · 0 in progress · 2 blocked · 0 in review · 113 done**
+**2 open · 0 in progress · 2 blocked · 0 in review · 114 done**
 
 ## Ready to claim
 
@@ -14,6 +14,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
+| P3 | [後台可以挑選景點介紹的 AI 供應商與模型](open/2026-09-06-intro-ai-vendor-settings.md) | web | `apps/api/app/admin/service.py`<br>`apps/api/app/ai/catalog.py`<br>`apps/web/components/admin-settings-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/messages/zh-CN/admin.json` |
 
 ## In progress
 
@@ -32,6 +33,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [AI 起草景點介紹：產生工作、防護與後台觸發](done/2026-09-06-intro-generation.md)
 - 2026-09-06 [後台以外的公開頁沒有頁尾，也沒有隱私權、條款、關於或聯絡的連結](done/2026-09-06-no-footer-legal-links.md)
 - 2026-09-06 [destinations 的 english_name 存繁中、areas 不隨語系](done/2026-09-06-destinations-english-name-areas.md)
 - 2026-09-06 [未登入的 /account 仍打七次注定 401 的請求](done/2026-09-06-signed-out-account-requests.md)
@@ -41,4 +43,3 @@ _Nothing here._
 - 2026-09-06 [後台審核頁在看到第一筆待審之前先給 30 個控制項](done/2026-09-06-admin-review-density.md)
 - 2026-09-06 [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](done/2026-09-06-admin-load-error-copy.md)
 - 2026-09-06 [LINE 綁定關鍵字只認繁體中文，日英韓讀者照著做也綁不上](done/2026-09-06-line-link-keyword-chinese-only.md)
-- 2026-09-06 [美食頁在預設字級下 CLS 0.29，第四秒還在跳版](done/2026-09-06-foods-late-layout-shift.md)

@@ -9,6 +9,7 @@ QUEUE_NAMES = (
     "search",
     "trip-routes",
     "hotspot-guides",
+    "hotspot-intros",
     "hotspot-places",
     "restaurant-scans",
     "analytics",

@@ -314,15 +314,34 @@ def research_provider(
     settings: Settings,
     name: AIProviderName,
     client: httpx.AsyncClient | None = None,
+    *,
+    model: str | None = None,
+    timeout_seconds: float | None = None,
+    max_output_tokens: int | None = None,
 ) -> ResearchProvider:
+    """The configured adapter for one vendor.
+
+    The keyword overrides let a second feature — the introduction writer — reuse
+    these adapters with its own model and limits instead of copying them.
+    """
+
+    def settings_for(vendor: AIProviderName) -> tuple[str, float, int]:
+        return (
+            model or research_model(settings, vendor),
+            timeout_seconds
+            if timeout_seconds is not None
+            else settings.hotspot_guide_ai_timeout_seconds,
+            max_output_tokens
+            if max_output_tokens is not None
+            else settings.hotspot_guide_ai_max_output_tokens,
+        )
+
     if name == "openai" and settings.openai_api_key:
         return ResponsesResearchProvider(
             "openai",
             settings.openai_api_base_url,
             settings.openai_api_key,
-            research_model(settings, "openai"),
-            settings.hotspot_guide_ai_timeout_seconds,
-            settings.hotspot_guide_ai_max_output_tokens,
+            *settings_for("openai"),
             client,
         )
     if name == "minimax" and settings.minimax_api_key:
@@ -330,27 +349,21 @@ def research_provider(
             "minimax",
             settings.minimax_api_base_url,
             settings.minimax_api_key,
-            research_model(settings, "minimax"),
-            settings.hotspot_guide_ai_timeout_seconds,
-            settings.hotspot_guide_ai_max_output_tokens,
+            *settings_for("minimax"),
             client,
         )
     if name == "anthropic" and settings.anthropic_api_key:
         return AnthropicResearchProvider(
             settings.anthropic_api_base_url,
             settings.anthropic_api_key,
-            research_model(settings, "anthropic"),
-            settings.hotspot_guide_ai_timeout_seconds,
-            settings.hotspot_guide_ai_max_output_tokens,
+            *settings_for("anthropic"),
             client,
         )
     if name == "gemini" and settings.hotspot_guide_gemini_api_key:
         return GeminiResearchProvider(
             settings.hotspot_guide_gemini_base_url,
             settings.hotspot_guide_gemini_api_key,
-            research_model(settings, "gemini"),
-            settings.hotspot_guide_ai_timeout_seconds,
-            settings.hotspot_guide_ai_max_output_tokens,
+            *settings_for("gemini"),
             client,
         )
     raise AppError(503, "hotspot_guide_ai_provider_not_configured", "所選 AI 供應商尚未設定")
