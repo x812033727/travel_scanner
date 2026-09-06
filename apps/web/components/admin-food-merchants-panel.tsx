@@ -184,6 +184,7 @@ export function AdminFoodMerchantsPanel({
   initialTaxonomy?: MerchantTaxonomyFilter | "";
 } = {}) {
   const t = useTranslations("foodAdmin");
+  const ta = useTranslations("admin");
   const [cities, setCities] = useState<FoodCity[]>([]);
   const [categories, setCategories] = useState<AdminCategory[]>([]);
   const [filterArea, setFilterArea] = useState("");
@@ -334,8 +335,8 @@ export function AdminFoodMerchantsPanel({
       });
       setMessage(
         action === "verify_activate"
-          ? `已將 ${selected.size} 間店家設為已驗證、核准並啟用。`
-          : `已停用 ${selected.size} 間店家。`,
+          ? ta("foodMerchantsPanel.verifiedActivated", { count: selected.size })
+          : ta("foodMerchantsPanel.disabledCount", { count: selected.size }),
       );
       await load();
     } catch (reason) {
@@ -350,7 +351,7 @@ export function AdminFoodMerchantsPanel({
       (merchant) => selected.has(merchant.id) && merchant.country_code !== "KR",
     );
     if (!merchants.length) {
-      setMessage("所選項目沒有可使用 Google 候選搜尋的非韓國店家。");
+      setMessage(ta("foodMerchantsPanel.noNonKorean"));
       return;
     }
     setLoading(true);
@@ -394,7 +395,7 @@ export function AdminFoodMerchantsPanel({
       ).length;
       const skipped = selected.size - merchants.length;
       setMessage(
-        `已完成 ${merchants.length} 間 Google 候選搜尋，${found} 間有候選${skipped ? `；略過 ${skipped} 間韓國店家` : ""}。請逐筆比對後套用。`,
+        ta("foodMerchantsPanel.batchDone", { total: merchants.length, found, skipped: skipped ? ta("foodMerchantsPanel.skippedKorean", { count: skipped }) : "" }),
       );
     } finally {
       setLoading(false);
@@ -430,7 +431,7 @@ export function AdminFoodMerchantsPanel({
             }
           : current,
       );
-      setMessage(`${merchant.name} 已套用 Place ID，仍保留人工審核。`);
+      setMessage(ta("foodMerchantsPanel.placeApplied", { name: merchant.name }));
     } catch (reason) {
       setMessage((reason as Error).message);
     } finally {
@@ -473,8 +474,8 @@ export function AdminFoodMerchantsPanel({
       setMessage(
         result.message ??
           (result.candidates.length
-            ? "找到候選；請比對名稱與地址後再套用 Place ID。"
-            : "找不到唯一候選。"),
+            ? ta("foodMerchantsPanel.candidateFound")
+            : ta("foodMerchantsPanel.candidateNone")),
       );
     } catch (reason) {
       setMessage((reason as Error).message);
@@ -526,7 +527,7 @@ export function AdminFoodMerchantsPanel({
           })),
         }),
       });
-      setMessage(editing.id ? "已儲存店家地點與來源資料。" : t("merchants.created"));
+      setMessage(editing.id ? ta("foodMerchantsPanel.locationSaved") : t("merchants.created"));
       setEditing(null);
       setCandidate(null);
       setApplyNotice("");
@@ -603,19 +604,18 @@ export function AdminFoodMerchantsPanel({
       <div className="flex flex-wrap items-end gap-3">
         <div className="mr-auto">
           <p className="text-sm font-semibold tracking-[.12em] text-[var(--teal)]">
-            精準店家地點
+            {ta("foodMerchantsPanel.eyebrow")}
           </p>
-          <h2 className="mt-1 text-2xl font-bold">店家、地圖識別與永久座標</h2>
+          <h2 className="mt-1 text-2xl font-bold">{ta("foodMerchantsPanel.title")}</h2>
           <p className="mt-2 max-w-3xl text-sm text-[var(--muted)]">
-            未驗證的啟動候選不會公開。Google Places
-            座標僅用來比對，永久座標必須另附官方或人工查核來源。
+            {ta("foodMerchantsPanel.description")}
           </p>
         </div>
         <input
-          aria-label="店家搜尋"
+          aria-label={ta("foodMerchantsPanel.searchLabel")}
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="店名或 slug"
+          placeholder={ta("foodMerchantsPanel.searchPlaceholder")}
           className="h-11 rounded-xl border px-3"
         />
         <select
@@ -672,26 +672,26 @@ export function AdminFoodMerchantsPanel({
           <option value="missing_category">{t("merchants.missingCategory")}</option>
         </select>
         <select
-          aria-label="地圖比對狀態"
+          aria-label={ta("foodMerchantsPanel.matchFilter")}
           value={mapStatus}
           onChange={(event) => setMapStatus(event.target.value)}
           className="h-11 rounded-xl border px-3"
         >
-          <option value="">全部比對狀態</option>
-          <option value="unverified">待驗證</option>
-          <option value="verified">已驗證</option>
-          <option value="ambiguous">模糊</option>
-          <option value="disabled">已停用</option>
+          <option value="">{ta("foodMerchantsPanel.matchAll")}</option>
+          <option value="unverified">{ta("foodMerchantsPanel.matchUnverified")}</option>
+          <option value="verified">{ta("foodMerchantsPanel.matchVerified")}</option>
+          <option value="ambiguous">{ta("foodMerchantsPanel.matchAmbiguous")}</option>
+          <option value="disabled">{ta("foodMerchantsPanel.matchDisabled")}</option>
         </select>
         <select
-          aria-label="官方資料狀態"
+          aria-label={ta("foodMerchantsPanel.officialFilter")}
           value={officialData}
           onChange={(event) => setOfficialData(event.target.value)}
           className="h-11 rounded-xl border px-3"
         >
-          <option value="">全部官方資料</option>
-          <option value="filled">官方資料已填</option>
-          <option value="missing">官方資料未填</option>
+          <option value="">{ta("foodMerchantsPanel.officialAll")}</option>
+          <option value="filled">{ta("foodMerchantsPanel.officialFilled")}</option>
+          <option value="missing">{ta("foodMerchantsPanel.officialMissing")}</option>
         </select>
         <button
           type="button"
@@ -721,10 +721,10 @@ export function AdminFoodMerchantsPanel({
           disabled={!visibleIds.length}
           className="min-h-11 rounded-xl border bg-white px-4 font-semibold disabled:opacity-40"
         >
-          {allVisibleSelected ? "取消全選" : "全選目前項目"}
+          {allVisibleSelected ? ta("foodMerchantsPanel.deselectAll") : ta("foodMerchantsPanel.selectVisible")}
         </button>
         <span className="text-sm text-[var(--muted)]">
-          已選 {selected.size} 間
+          {ta("foodMerchantsPanel.selectedCount", { count: selected.size })}
         </span>
         <button
           type="button"
@@ -732,7 +732,7 @@ export function AdminFoodMerchantsPanel({
           disabled={!selected.size || loading}
           className="min-h-11 rounded-xl border border-[var(--teal)] bg-white px-4 font-semibold text-[var(--teal)] disabled:opacity-40"
         >
-          批次搜尋 Google 候選
+          {ta("foodMerchantsPanel.batchSearch")}
         </button>
         <button
           type="button"
@@ -740,7 +740,7 @@ export function AdminFoodMerchantsPanel({
           disabled={!selected.size || loading}
           className="min-h-11 rounded-xl bg-[var(--teal)] px-4 font-semibold text-white disabled:opacity-40"
         >
-          批次設為已驗證並啟用
+          {ta("foodMerchantsPanel.batchVerify")}
         </button>
         <button
           type="button"
@@ -748,15 +748,14 @@ export function AdminFoodMerchantsPanel({
           disabled={!selected.size || loading}
           className="min-h-11 rounded-xl border border-red-300 bg-white px-4 font-semibold text-red-700 disabled:opacity-40"
         >
-          批次停用
+          {ta("foodMerchantsPanel.batchDisable")}
         </button>
       </div>
       {batchCandidates.length > 0 && (
         <section className="mt-4 rounded-2xl border border-amber-300 bg-amber-50 p-4">
-          <h3 className="font-bold">Google 候選人工比對</h3>
+          <h3 className="font-bold">{ta("foodMerchantsPanel.candidatesTitle")}</h3>
           <p className="mt-1 text-sm text-[var(--muted)]">
-            候選座標只供比較，不會寫入永久座標。請確認店名與地址後逐筆套用 Place
-            ID。
+            {ta("foodMerchantsPanel.candidatesHint")}
           </p>
           <div className="mt-3 grid gap-3">
             {batchCandidates.map(({ merchant, response, error }) => (
@@ -770,7 +769,7 @@ export function AdminFoodMerchantsPanel({
                 {error && <p className="mt-1 text-sm text-red-700">{error}</p>}
                 {!error && !response?.configured && (
                   <p className="mt-1 text-sm text-amber-800">
-                    {response?.message ?? "Google Places 自動比對未設定。"}
+                    {response?.message ?? ta("foodMerchantsPanel.notConfigured")}
                   </p>
                 )}
                 {response?.candidates.slice(0, 3).map((item) => (
@@ -792,12 +791,12 @@ export function AdminFoodMerchantsPanel({
                       }
                       className="min-h-11 rounded-xl bg-amber-800 px-4 font-semibold text-white disabled:opacity-40"
                     >
-                      套用 Place ID，保留人工審核
+                      {ta("foodMerchantsPanel.applyPlaceId")}
                     </button>
                   </div>
                 ))}
                 {response?.configured && response.candidates.length === 0 && (
-                  <p className="mt-2 text-sm text-[var(--muted)]">沒有候選。</p>
+                  <p className="mt-2 text-sm text-[var(--muted)]">{ta("foodMerchantsPanel.noCandidates")}</p>
                 )}
               </article>
             ))}
@@ -808,14 +807,14 @@ export function AdminFoodMerchantsPanel({
         <table className="admin-responsive-table admin-merchants-table w-full min-w-[1120px] text-left text-sm">
           <thead className="bg-[var(--paper)]">
             <tr>
-              <th className="p-3">選取</th>
-              <th className="p-3">店家</th>
-              <th className="p-3">目的地／料理</th>
-              <th className="p-3">地圖識別</th>
-              <th className="p-3">永久座標</th>
-              <th className="p-3">官方資料</th>
-              <th className="p-3">發布</th>
-              <th className="p-3">操作</th>
+              <th className="p-3">{ta("foodMerchantsPanel.thSelect")}</th>
+              <th className="p-3">{ta("foodMerchantsPanel.thMerchant")}</th>
+              <th className="p-3">{ta("foodMerchantsPanel.thDestinationCuisine")}</th>
+              <th className="p-3">{ta("foodMerchantsPanel.thMapIdentity")}</th>
+              <th className="p-3">{ta("foodMerchantsPanel.thCoordinates")}</th>
+              <th className="p-3">{ta("foodMerchantsPanel.thOfficial")}</th>
+              <th className="p-3">{ta("foodMerchantsPanel.thPublish")}</th>
+              <th className="p-3">{ta("foodMerchantsPanel.thActions")}</th>
             </tr>
           </thead>
           <tbody>
@@ -828,7 +827,7 @@ export function AdminFoodMerchantsPanel({
                   <td className="p-3">
                     <input
                       type="checkbox"
-                      aria-label={`選取 ${merchant.name}`}
+                      aria-label={ta("foodMerchantsPanel.selectItem", { name: merchant.name })}
                       checked={selected.has(merchant.id)}
                       onChange={() => toggleSelection(merchant.id)}
                       className="h-5 w-5 accent-[var(--teal)]"
@@ -855,26 +854,25 @@ export function AdminFoodMerchantsPanel({
                     <span className="block max-w-[260px] truncate text-xs text-[var(--muted)]">
                       {merchant.country_code === "KR"
                         ? merchant.naver_map_url
-                        : merchant.google_place_id || "無精準識別"}
+                        : merchant.google_place_id || ta("foodMerchantsPanel.noPlaceId")}
                     </span>
                   </td>
                   <td className="p-3">
                     {merchant.latitude ?? "—"}, {merchant.longitude ?? "—"}
                     <span className="block text-xs text-[var(--muted)]">
-                      {merchant.coordinate_source_type || "座標來源待補"}
+                      {merchant.coordinate_source_type || ta("foodMerchantsPanel.coordinateSourceMissing")}
                     </span>
                   </td>
                   <td className="p-3">
-                    {merchant.official_website_url ? "官網已填" : "官網待補"}
+                    {merchant.official_website_url ? ta("foodMerchantsPanel.websiteFilled") : ta("foodMerchantsPanel.websiteMissing")}
                     <span className="block text-xs text-[var(--muted)]">
-                      直接佐證 {directSources} · 背景{" "}
-                      {merchant.sources.length - directSources}
+                      {ta("foodMerchantsPanel.sourcesLine", { direct: directSources, context: merchant.sources.length - directSources })}
                     </span>
                   </td>
                   <td className="p-3">
                     {merchant.review_status}
                     <span className="block text-xs text-[var(--muted)]">
-                      {merchant.is_active ? "啟用" : "停用"}
+                      {merchant.is_active ? ta("foodMerchantsPanel.active") : ta("foodMerchantsPanel.inactive")}
                     </span>
                   </td>
                   <td className="p-3">
@@ -894,7 +892,7 @@ export function AdminFoodMerchantsPanel({
                       }}
                       className="min-h-11 rounded-xl border border-[var(--teal)] px-3 font-semibold text-[var(--teal)]"
                     >
-                      編輯地點與來源
+                      {ta("foodMerchantsPanel.editButton")}
                     </button>
                   </td>
                 </tr>
@@ -934,12 +932,12 @@ export function AdminFoodMerchantsPanel({
                 onClick={() => setEditing(null)}
                 className="min-h-11 rounded-xl border px-4"
               >
-                關閉
+                {ta("foodMerchantsPanel.close")}
               </button>
             </div>
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               <label className="text-sm font-semibold">
-                店名
+                {ta("foodMerchantsPanel.name")}
                 <input
                   value={editing.name}
                   onChange={(event) =>
@@ -949,7 +947,7 @@ export function AdminFoodMerchantsPanel({
                 />
               </label>
               <label className="text-sm font-semibold">
-                當地店名
+                {ta("foodMerchantsPanel.localName")}
                 <input
                   value={editing.local_name}
                   onChange={(event) =>
@@ -1052,7 +1050,7 @@ export function AdminFoodMerchantsPanel({
                 />
               </label>
               <label className="text-sm font-semibold">
-                緯度
+                {ta("foodMerchantsPanel.latitude")}
                 <input
                   type="number"
                   step="any"
@@ -1067,7 +1065,7 @@ export function AdminFoodMerchantsPanel({
                 />
               </label>
               <label className="text-sm font-semibold">
-                經度
+                {ta("foodMerchantsPanel.longitude")}
                 <input
                   type="number"
                   step="any"
@@ -1082,7 +1080,7 @@ export function AdminFoodMerchantsPanel({
                 />
               </label>
               <label className="text-sm font-semibold">
-                座標來源類型
+                {ta("foodMerchantsPanel.coordinateSourceType")}
                 <select
                   value={editing.coordinate_source_type ?? ""}
                   onChange={(event) =>
@@ -1093,15 +1091,15 @@ export function AdminFoodMerchantsPanel({
                   }
                   className="mt-1 h-11 w-full rounded-xl border px-3"
                 >
-                  <option value="">待補</option>
-                  <option value="official_tourism">官方觀光</option>
-                  <option value="merchant_official">店家官方</option>
+                  <option value="">{ta("foodMerchantsPanel.coordinateSourcePending")}</option>
+                  <option value="official_tourism">{ta("foodMerchantsPanel.coordinateSourceOfficialTourism")}</option>
+                  <option value="merchant_official">{ta("foodMerchantsPanel.coordinateSourceMerchantOfficial")}</option>
                   <option value="wikidata">Wikidata</option>
-                  <option value="admin_verified">人工查核</option>
+                  <option value="admin_verified">{ta("foodMerchantsPanel.coordinateSourceAdminVerified")}</option>
                 </select>
               </label>
               <label className="text-sm font-semibold">
-                座標來源網址
+                {ta("foodMerchantsPanel.coordinateSourceUrl")}
                 <input
                   value={editing.coordinate_source_url ?? ""}
                   onChange={(event) =>
@@ -1116,7 +1114,7 @@ export function AdminFoodMerchantsPanel({
               </label>
               {editing.country_code === "KR" ? (
                 <label className="text-sm font-semibold md:col-span-2">
-                  Naver 精準地點頁
+                  {ta("foodMerchantsPanel.naverUrl")}
                   <input
                     value={editing.naver_map_url ?? ""}
                     onChange={(event) =>
@@ -1152,7 +1150,7 @@ export function AdminFoodMerchantsPanel({
                 onClick={() => void searchGoogleCandidate()}
                 className="min-h-11 rounded-xl border border-[var(--teal)] px-4 font-semibold text-[var(--teal)] disabled:opacity-40"
               >
-                搜尋 Google 候選
+                {ta("foodMerchantsPanel.searchGoogle")}
               </button>
             </div>
             {candidate?.candidates[0] && (
@@ -1162,7 +1160,7 @@ export function AdminFoodMerchantsPanel({
                   {candidate.candidates[0].address}
                 </p>
                 <p className="mt-2 text-xs">
-                  暫存比對座標（不得作為永久來源）：
+                  {ta("foodMerchantsPanel.temporaryCoordinates")}
                   {candidate.candidates[0].temporary_match_coordinates.latitude}
                   ,{" "}
                   {
@@ -1177,7 +1175,7 @@ export function AdminFoodMerchantsPanel({
                   }
                   className="mt-3 min-h-11 rounded-xl bg-amber-800 px-4 font-semibold text-white"
                 >
-                  套用 Place ID，保留人工審核
+                  {ta("foodMerchantsPanel.applyPlaceId")}
                 </button>
                 {applyNotice && (
                   <p role="status" className="mt-3 text-sm font-semibold text-amber-900">
@@ -1248,9 +1246,9 @@ export function AdminFoodMerchantsPanel({
             <section className="mt-5 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <h4 className="font-bold">店家官網與官方佐證</h4>
+                  <h4 className="font-bold">{ta("foodMerchantsPanel.sourcesTitle")}</h4>
                   <p className="mt-1 text-xs leading-5 text-[var(--muted)]">
-                    區域政府觀光頁只屬於目的地背景；只有直接列出店家或店家自己的官網，才能佐證店名、地址、官網與叫車座標。
+                    {ta("foodMerchantsPanel.sourcesHint")}
                   </p>
                 </div>
                 <button
@@ -1263,11 +1261,11 @@ export function AdminFoodMerchantsPanel({
                   }
                   className="min-h-10 rounded-xl border bg-white px-3 text-sm font-semibold"
                 >
-                  新增直接來源
+                  {ta("foodMerchantsPanel.addSource")}
                 </button>
               </div>
               <label className="mt-4 block text-sm font-semibold">
-                店家官方網站
+                {ta("foodMerchantsPanel.officialWebsite")}
                 <input
                   value={editing.official_website_url ?? ""}
                   onChange={(event) =>
@@ -1288,7 +1286,7 @@ export function AdminFoodMerchantsPanel({
                   >
                     <div className="flex items-center justify-between gap-3">
                       <legend className="font-semibold">
-                        來源 {index + 1}
+                        {ta("foodMerchantsPanel.sourceN", { index: index + 1 })}
                       </legend>
                       {editing.sources.length > 1 && (
                         <button
@@ -1303,13 +1301,13 @@ export function AdminFoodMerchantsPanel({
                           }
                           className="min-h-9 rounded-lg border px-3 text-xs"
                         >
-                          移除
+                          {ta("foodMerchantsPanel.remove")}
                         </button>
                       )}
                     </div>
                     <div className="mt-3 grid gap-3 md:grid-cols-2">
                       <label className="text-xs font-semibold">
-                        來源類型
+                        {ta("foodMerchantsPanel.sourceType")}
                         <select
                           value={source.source_type}
                           onChange={(event) =>
@@ -1320,19 +1318,19 @@ export function AdminFoodMerchantsPanel({
                           }
                           className="mt-1 h-11 w-full rounded-xl border px-3"
                         >
-                          <option value="merchant_official">店家官方</option>
+                          <option value="merchant_official">{ta("foodMerchantsPanel.sourceTypeMerchantOfficial")}</option>
                           <option value="official_tourism">
-                            政府／官方觀光
+                            {ta("foodMerchantsPanel.sourceTypeOfficialTourism")}
                           </option>
                           {source.source_type === "michelin_licensed" && (
                             <option value="michelin_licensed">
-                              授權米其林
+                              {ta("foodMerchantsPanel.sourceTypeMichelin")}
                             </option>
                           )}
                         </select>
                       </label>
                       <label className="text-xs font-semibold">
-                        佐證範圍
+                        {ta("foodMerchantsPanel.sourceScope")}
                         <select
                           value={source.source_scope}
                           onChange={(event) => {
@@ -1349,15 +1347,15 @@ export function AdminFoodMerchantsPanel({
                           className="mt-1 h-11 w-full rounded-xl border px-3"
                         >
                           <option value="destination_context">
-                            目的地背景（不佐證店家）
+                            {ta("foodMerchantsPanel.scopeDestinationContext")}
                           </option>
-                          <option value="merchant_listing">官方店家名錄</option>
-                          <option value="merchant_website">店家官網</option>
-                          <option value="coordinates">永久座標來源</option>
+                          <option value="merchant_listing">{ta("foodMerchantsPanel.scopeMerchantListing")}</option>
+                          <option value="merchant_website">{ta("foodMerchantsPanel.scopeMerchantWebsite")}</option>
+                          <option value="coordinates">{ta("foodMerchantsPanel.scopeCoordinates")}</option>
                         </select>
                       </label>
                       <label className="text-xs font-semibold">
-                        來源標題
+                        {ta("foodMerchantsPanel.sourceTitle")}
                         <input
                           value={source.source_title}
                           onChange={(event) =>
@@ -1369,7 +1367,7 @@ export function AdminFoodMerchantsPanel({
                         />
                       </label>
                       <label className="text-xs font-semibold">
-                        HTTPS 來源網址
+                        {ta("foodMerchantsPanel.sourceUrl")}
                         <input
                           value={source.source_url}
                           onChange={(event) =>
@@ -1405,10 +1403,10 @@ export function AdminFoodMerchantsPanel({
                           />
                           {
                             {
-                              display_name: "店名",
-                              address: "地址",
-                              official_website: "官網",
-                              coordinates: "座標",
+                              display_name: ta("foodMerchantsPanel.claimDisplayName"),
+                              address: ta("foodMerchantsPanel.claimAddress"),
+                              official_website: ta("foodMerchantsPanel.claimOfficialWebsite"),
+                              coordinates: ta("foodMerchantsPanel.claimCoordinates"),
                             }[claim]
                           }
                         </label>
@@ -1431,10 +1429,10 @@ export function AdminFoodMerchantsPanel({
                 }
                 className="h-11 rounded-xl border px-3"
               >
-                <option value="unverified">待驗證</option>
-                <option value="verified">已驗證</option>
-                <option value="ambiguous">模糊</option>
-                <option value="disabled">地圖停用</option>
+                <option value="unverified">{ta("foodMerchantsPanel.matchUnverified")}</option>
+                <option value="verified">{ta("foodMerchantsPanel.matchVerified")}</option>
+                <option value="ambiguous">{ta("foodMerchantsPanel.matchAmbiguous")}</option>
+                <option value="disabled">{ta("foodMerchantsPanel.matchMapDisabled")}</option>
               </select>
               <select
                 aria-label={t("merchants.reviewStatus")}
@@ -1448,10 +1446,10 @@ export function AdminFoodMerchantsPanel({
                 }
                 className="h-11 rounded-xl border px-3"
               >
-                <option value="pending">待審</option>
-                <option value="approved">核准</option>
-                <option value="rejected">拒絕</option>
-                <option value="disabled">停用</option>
+                <option value="pending">{ta("foodMerchantsPanel.reviewPending")}</option>
+                <option value="approved">{ta("foodMerchantsPanel.reviewApproved")}</option>
+                <option value="rejected">{ta("foodMerchantsPanel.reviewRejected")}</option>
+                <option value="disabled">{ta("foodMerchantsPanel.reviewDisabled")}</option>
               </select>
               <label className="flex items-center gap-2">
                 <input
@@ -1461,7 +1459,7 @@ export function AdminFoodMerchantsPanel({
                     setEditing({ ...editing, is_active: event.target.checked })
                   }
                 />
-                啟用
+                {ta("foodMerchantsPanel.activeLabel")}
               </label>
               <button
                 type="button"
@@ -1469,7 +1467,7 @@ export function AdminFoodMerchantsPanel({
                 onClick={() => void save()}
                 className="ml-auto min-h-12 rounded-xl bg-[var(--teal)] px-6 font-semibold text-white disabled:opacity-40"
               >
-                儲存店家地點
+                {ta("foodMerchantsPanel.saveMerchant")}
               </button>
             </div>
             {saveError && (
