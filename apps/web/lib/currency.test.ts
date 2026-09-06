@@ -1,12 +1,12 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { currencies, currencyName, isCurrency, normalizeCurrency } from "./currency";
-import { destinations } from "./destinations";
+import { destinationSeeds } from "./destinations";
 
 describe("currency list", () => {
   it("covers every currency a published destination is priced in", () => {
     // If a destination lands with a currency the member cannot select, its trip
     // ledger has no honest default. The API rejects anything outside this list.
-    for (const destination of destinations) {
+    for (const destination of destinationSeeds) {
       expect(currencies).toContain(destination.currency);
     }
   });

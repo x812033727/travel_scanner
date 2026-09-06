@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**31 open · 4 in progress · 0 blocked · 0 in review · 24 done**
+**28 open · 4 in progress · 0 blocked · 0 in review · 27 done**
 
 ## Ready to claim
 
@@ -17,9 +17,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Most merchants have no first-party page, so nothing can locate them](open/2026-09-06-missing-merchant-sources.md) | api | `apps/api/app/foods/merchant_catalog.py` |
 | P2 | [Nine merchant citations are dead, unreachable or not HTML](open/2026-09-06-broken-merchant-citations.md) | api | `apps/api/app/foods/merchant_catalog.py` |
 | P2 | [21 個潮流街區還沒有任何店家](open/2026-09-06-empty-trend-districts.md) | api | `apps/api/app/foods/data/trend_merchants.json` |
-| P2 | [首頁手機首屏被三張說明列佔滿](open/2026-09-06-home-mobile-first-screen.md) | web | `apps/web/app/[locale]/page.tsx` |
-| P2 | [目的地目錄的國家與興趣標籤未五語系化](open/2026-09-06-destination-catalog-labels-i18n.md) | web | `apps/web/lib/destinations.ts` |
-| P2 | [navigation.spec.ts 兩個案例在 CI 間歇逾時](open/2026-09-06-flaky-navigation-e2e.md) | web | `apps/web/e2e/navigation.spec.ts` |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | ops | `apps/api/app/places/naver.py` |
 | P2 | [482 個景點卡在人工審核佇列](open/2026-09-06-hotspot-review-backlog.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/app/hotspots/admin_router.py` |
 | P2 | [營業時間感知排程：AI 排程不把景點排在打烊時段](open/2026-09-06-opening-hours-aware-scheduling.md) | api | `apps/api/app/trips/hours.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/web/components/day-health-strip.tsx` |
@@ -65,6 +62,9 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [目的地目錄的國家與興趣標籤未五語系化](done/2026-09-06-destination-catalog-labels-i18n.md)
+- 2026-09-06 [navigation.spec.ts 兩個案例在 CI 間歇逾時](done/2026-09-06-flaky-navigation-e2e.md)
+- 2026-09-06 [首頁手機首屏被三張說明列佔滿](done/2026-09-06-home-mobile-first-screen.md)
 - 2026-09-06 [最佳化用距離估計排順序、系統卡變更只作廢碰到的路段、步行汽車不看偏好](done/2026-09-06-route-optimizer-estimates.md)
 - 2026-09-06 [行程編輯後不清整天路段、缺的段用距離估計、按鈕不再預設 refresh](done/2026-09-06-route-editor-partial-invalidation.md)
 - 2026-09-06 [整天重算只打真的缺的路段；編輯後不再自動整趟重算](done/2026-09-06-route-recompute-reuses-saved-segments.md)
@@ -72,6 +72,3 @@ _Nothing here._
 - 2026-09-06 [Default the Gemini guide model to gemini-3.8-flash](done/2026-09-06-gemini-3-8-flash-default.md)
 - 2026-09-06 [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](done/2026-09-06-reoptimize-no-version-check.md)
 - 2026-09-06 [日期變更後行程價格停在舊報價且無法重新查價](done/2026-09-06-trip-stale-price-after-reschedule.md)
-- 2026-09-06 [搜尋結果頁整頁文案寫死繁中](done/2026-09-06-search-results-i18n.md)
-- 2026-09-06 [行程編輯器 294 句硬編碼繁中未五語系化](done/2026-09-06-trip-editor-i18n.md)
-- 2026-09-06 [catalog fallback 被當成 AI 精修呈現給使用者](done/2026-09-06-intent-fallback-honesty.md)

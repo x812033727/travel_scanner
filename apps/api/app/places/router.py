@@ -15,6 +15,7 @@ from app.admin.service import load_runtime_settings
 from app.ai.trip_parser import parser_for_request
 from app.auth.service import CurrentUser
 from app.db import get_session
+from app.destinations import localized
 from app.destinations.catalog import DESTINATIONS, SEARCHABLE_DESTINATIONS
 from app.i18n import Locale, current_locale
 from app.infra import client_ip, enforce_named_rate_limit, get_redis
@@ -283,6 +284,7 @@ _RECOMMENDED_DAYS = {
 
 @router.get("")
 async def destination_catalog(
+    locale: CurrentLocale,
     country_code: str | None = Query(default=None, min_length=2, max_length=2),
     role: str | None = Query(default=None, pattern="^(primary|secondary|extension)$"),
     parent_id: str | None = Query(default=None, min_length=2, max_length=64),
@@ -305,10 +307,10 @@ async def destination_catalog(
             {
                 "id": item.id,
                 "code": item.code,
-                "city": item.city,
+                "city": localized.city_name(item, locale),
                 "local_name": item.local_name or item.city,
                 "english_name": item.english_name or item.city,
-                "country": item.country_label,
+                "country": localized.country_label(item, locale),
                 "country_code": reverse_countries[item.country],
                 "role": item.role,
                 "parent_destination_id": item.parent_destination_id,
@@ -327,7 +329,7 @@ async def destination_catalog(
                     if item.center
                     else None
                 ),
-                "reason": item.reason,
+                "reason": localized.reason(item, locale),
                 "searchable": item.is_searchable,
             }
             for item in rows
@@ -377,7 +379,7 @@ def _estimate(
 
 @router.post("/discover")
 async def discover(
-    request: Request, payload: DiscoveryRequest, session: Session
+    request: Request, payload: DiscoveryRequest, session: Session, locale: CurrentLocale
 ) -> dict[str, Any]:
     # Which engine read the free-text notes, so the caller can tell an AI parse
     # from the regex fallback; None when there were no notes to parse.
@@ -479,16 +481,16 @@ async def discover(
                     "candidate_id": (
                         f"{profile.code}:{best['departure_date']}:{best['trip_length_days']}"
                     ),
-                    "city": profile.city,
+                    "city": localized.city_name(profile, locale),
                     "airport": profile.code,
-                    "country": profile.country_label,
+                    "country": localized.country_label(profile, locale),
                     "country_code": next(
                         code for code, name in _COUNTRIES.items() if name == profile.country
                     ),
                     "timezone": profile.timezone,
                     "local_currency": profile.currency,
                     "areas": list(profile.areas),
-                    "reason": profile.reason,
+                    "reason": localized.reason(profile, locale),
                     "source": "curated_estimate",
                     **best,
                 }
@@ -510,9 +512,9 @@ async def discover(
     region = next(iter(selected_countries))
     candidates = [
         {
-            "city": item.city,
+            "city": localized.city_name(item, locale),
             "airport": item.code,
-            "country": item.country_label,
+            "country": localized.country_label(item, locale),
             "timezone": item.timezone,
             "local_currency": item.currency,
             "areas": item.areas,
@@ -520,7 +522,7 @@ async def discover(
             "within_budget_estimate": (
                 payload.budget_twd is None or item.estimated_flight_twd <= payload.budget_twd * 0.45
             ),
-            "reason": item.reason,
+            "reason": localized.reason(item, locale),
         }
         for item in sorted(profiles, key=lambda item: item.estimated_flight_twd)
     ]

@@ -3,6 +3,12 @@ import { defineConfig, devices } from "@playwright/test";
 const port = process.env.PLAYWRIGHT_PORT || "3000";
 const baseURL = `http://127.0.0.1:${port}`;
 const reuseExistingServer = process.env.PLAYWRIGHT_REUSE_EXISTING === "true";
+// CI builds the app right before this suite runs. Serving that build (`next start`)
+// instead of compiling every page on its first visit, under a 30-second test timeout
+// and next to a second server, is what keeps the navigation cases from timing out
+// at random. Locally the dev server stays the default so an edit shows up without a
+// rebuild; set PLAYWRIGHT_SERVE_BUILD=true after `npm run build` to run it the CI way.
+const serveBuild = process.env.PLAYWRIGHT_SERVE_BUILD === "true";
 
 export default defineConfig({
   testDir: "./e2e",
@@ -15,7 +21,7 @@ export default defineConfig({
       timeout: 30_000,
     }] : []),
     {
-      command: `npm run dev -- --port ${port}`,
+      command: serveBuild ? `npm run start -- --port ${port}` : `npm run dev -- --port ${port}`,
       url: baseURL,
       reuseExistingServer,
       timeout: 120_000,

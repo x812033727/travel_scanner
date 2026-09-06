@@ -18,7 +18,7 @@ describe("SearchCriteriaEditor", () => {
         pace: "balanced",
         include_airbnb: true,
       }}
-      destination={destinationByAirport("HKT")}
+      destination={destinationByAirport("HKT", (key) => key)}
       dates={["2026-11-10", "2026-11-15"]}
       onApply={onApply}
     />);

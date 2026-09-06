@@ -45,8 +45,8 @@ async def test_guided_discovery_returns_three_deterministic_candidates() -> None
             "top_n": 3,
         }
     )
-    first = await discover(_http_request(), request, _no_session())
-    second = await discover(_http_request(), request, _no_session())
+    first = await discover(_http_request(), request, _no_session(), "zh-TW")
+    second = await discover(_http_request(), request, _no_session(), "zh-TW")
     assert first == second
     assert len(first["recommendations"]) == 3
     assert len({item["airport"] for item in first["recommendations"]}) == 3

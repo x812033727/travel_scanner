@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-home-mobile-first-screen
 title: 首頁手機首屏被三張說明列佔滿
-status: open
+status: done
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T05:16:57Z
 created_at: 2026-09-06T00:53:20Z
-completed_at:
-branch:
+completed_at: 2026-09-06T05:51:32Z
+branch: claude/web-p2-ux
 depends_on: []
 scope:
   - apps/web/app/[locale]/page.tsx
@@ -29,16 +29,16 @@ AI 規劃卡的標題到 y≈610，第一個可操作元件（核取方塊）在
 
 ## Definition of done
 
-- [ ] 390×844 首屏（不捲動）內看得到 AI 規劃卡的第一個輸入欄位。
-- [ ] 桌機版面不退步（三張說明列在桌機是有效的信任訊號，不要一起砍掉）。
-- [ ] `npm run lint:web`、`typecheck:web` 通過；`e2e/navigation.spec.ts` 的
+- [x] 390×844 首屏（不捲動）內看得到 AI 規劃卡的第一個輸入欄位。
+- [x] 桌機版面不退步（三張說明列在桌機是有效的信任訊號，不要一起砍掉）。
+- [x] `npm run lint:web`、`typecheck:web` 通過；`e2e/navigation.spec.ts` 的
       `primary travel flow is visible` 仍過。
 
 ## Steps
 
-- [ ] 手機把三張 benefit 列改成一行可橫捲的小 chip，或整組移到 AI 卡片下方。
-- [ ] hero 的上下 padding 在手機收緊。
-- [ ] 量一次：Playwright 390×844，取第一個 `input`／`select` 的 `boundingBox().y`，
+- [x] 手機把三張 benefit 列改成一行可橫捲的小 chip，或整組移到 AI 卡片下方。
+- [x] hero 的上下 padding 在手機收緊。
+- [x] 量一次：Playwright 390×844，取第一個 `input`／`select` 的 `boundingBox().y`，
       應 < 844。
 
 ## How to verify
@@ -63,3 +63,20 @@ cd apps/web && npx playwright test e2e/navigation.spec.ts --project=mobile-chrom
 **已經修掉、不要重做的**：`#trip-search` 錨點跳轉被 sticky header 蓋住（已加
 `html { scroll-padding-top: 5.5rem }`）、城市晶片 32px → 44px、
 「回到搜尋條件」按鈕 36px → `min-h-11`。
+
+2026-09-06 claude-fable-5-1：手機（`<lg`）把三張說明列改成 `<SearchWorkbench />` 下方一行可橫捲的
+小 chip（`.app-chip-row`，`-mx-5 px-5` 讓它貼齊螢幕邊），桌機維持原本左欄三張卡片；hero 手機收成
+`pt-5 pb-6`、標題 `text-3xl`、說明 `mt-4`，`md:`／`lg:` 以上與原本一致。
+
+量測（production build，Playwright，第一個可操作元件為 AI 規劃卡的核取方塊）：
+
+| 版面 | 第一個元件 y | 說明 |
+| --- | --- | --- |
+| /zh-TW 390×844 | 561 | 改前約 710 |
+| /en 390×844 | 655 | 英文標題較長 |
+| /en 1440×900 | 410 | 桌機不變 |
+
+順手記：chip 列的 `lg:hidden` 一開始沒生效，因為 `.app-chip-row` 自己宣告 `display: flex`，
+未分層的自訂 CSS 會壓過 Tailwind utility；斷點放在外層 `<div className="lg:hidden">` 才對。
+`e2e/navigation.spec.ts` 的 `primary travel flow is visible` 未動。Notes 裡提到的目的地卡片標題、
+桌機格線與頁尾空白沒有一起做，仍是獨立問題。

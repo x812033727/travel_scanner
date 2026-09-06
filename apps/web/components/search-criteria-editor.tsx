@@ -2,7 +2,8 @@
 
 import { PencilLine, RotateCcw, X } from "lucide-react";
 import { type FormEvent, useState } from "react";
-import { interests as destinationInterests, type DestinationCity } from "@/lib/destinations";
+import { useTranslations } from "next-intl";
+import { interestCodes, type DestinationCity } from "@/lib/destinations";
 
 export type EditableSearchCriteria = {
   origin?: string;
@@ -65,6 +66,7 @@ export function SearchCriteriaEditor({
   disabled?: boolean;
   onApply: (update: CriteriaUpdate) => void;
 }) {
+  const tc = useTranslations("search.catalog");
   const [open, setOpen] = useState(false);
   const [selectedInterests, setSelectedInterests] = useState(criteria.interests);
   const [validationError, setValidationError] = useState<string>();
@@ -217,8 +219,8 @@ export function SearchCriteriaEditor({
           <fieldset className="mt-4">
             <legend className="text-sm font-semibold">行程興趣</legend>
             <div className="mt-2 flex flex-wrap gap-2">
-              {destinationInterests.map((interest) => (
-                <button key={interest.code} type="button" aria-pressed={selectedInterests.includes(interest.code)} onClick={() => toggleInterest(interest.code)} className={`rounded-full border px-3 py-2 text-sm ${selectedInterests.includes(interest.code) ? "border-[var(--teal)] bg-[var(--teal-soft)] text-[var(--teal-dark)]" : "border-[var(--line)] bg-white"}`}>{interest.label}</button>
+              {interestCodes.map((code) => (
+                <button key={code} type="button" aria-pressed={selectedInterests.includes(code)} onClick={() => toggleInterest(code)} className={`rounded-full border px-3 py-2 text-sm ${selectedInterests.includes(code) ? "border-[var(--teal)] bg-[var(--teal-soft)] text-[var(--teal-dark)]" : "border-[var(--line)] bg-white"}`}>{tc(`interests.${code}`)}</button>
               ))}
             </div>
           </fieldset>
