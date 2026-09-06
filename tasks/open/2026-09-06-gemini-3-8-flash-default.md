@@ -22,7 +22,7 @@ scope:
 The Gemini provider (guide article search through Google Search grounding, and the
 hotspot candidate generator) shipped with `gemini-3.5-flash` as its default, while
 `.env.example` still pointed at `gemini-2.5-pro` and told operators that Flash-tier
-models are unusable. Production moved to `gemini-3.8-flash` on 2026-09-06 through the
+models are unusable. Production is moving to `gemini-3.8-flash` on 2026-09-06 through the
 admin provider settings, so the shipped default and the env example should say the
 same thing as the running site.
 
@@ -53,3 +53,6 @@ On production, open `/admin/settings`, pick 景點內容 then Gemini 多語文�
 - Google lists `gemini-3.8-flash` as a stable model (ai.google.dev/gemini-api/docs/models,
   read 2026-09-06). `gemini-2.5-pro` returns 404 for new keys.
 - The admin help text for this field is its own task: 2026-09-06-stale-gemini-model-help.
+- As of this commit the production row still holds gemini-3.5-flash: the automated psql
+  update was not permitted in this session, so the operator sets the value in /admin/settings
+  (景點內容 → Gemini 多語文章搜尋 → Gemini 模型) and then runs 測試連線.
