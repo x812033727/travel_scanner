@@ -34,7 +34,7 @@ from app.crawlers.fx import FxRateProvider
 from app.db import get_session
 from app.destinations.catalog import destination_for_code, match_destination
 from app.foods.service import load_planner_foods
-from app.hotspots.service import load_planner_hotspots
+from app.hotspots.service import load_planner_hotspots, months_in_span
 from app.i18n import Locale, active_locale, current_locale
 from app.infra import enforce_named_rate_limit, get_redis
 from app.localized_names import (
@@ -264,9 +264,7 @@ class TripMetadataPatchRequest(BaseModel):
         if self.notes is not None:
             # An emptied box clears the note rather than storing whitespace.
             self.notes = self.notes.strip() or None
-        if self.cover_image_url is not None and not cover_image_host_allowed(
-            self.cover_image_url
-        ):
+        if self.cover_image_url is not None and not cover_image_host_allowed(self.cover_image_url):
             raise ValueError(
                 "cover_image_url must be an https image from "
                 + ", ".join(sorted(COVER_IMAGE_HOSTS))
@@ -864,8 +862,7 @@ async def serialize_trip(
     # and an ungated ledger query there would be a 2xN fan-out.
     if include_items:
         day_notes = {
-            row.day_date.isoformat(): row.notes
-            for row in await load_day_notes(session, trip.id)
+            row.day_date.isoformat(): row.notes for row in await load_day_notes(session, trip.id)
         }
         cost = cost_summary(trip, await load_expenses(session, trip.id))
         route_records = await load_route_segments(session, trip.id)
@@ -963,9 +960,7 @@ def stale_route_pairs(
     """
     current = _adjacent_pairs(rows)
     return {
-        pair
-        for pair in existing_pairs
-        if pair not in current or bool(set(pair) & changed_item_ids)
+        pair for pair in existing_pairs if pair not in current or bool(set(pair) & changed_item_ids)
     }
 
 
@@ -1307,9 +1302,7 @@ async def _inbox_candidates(session: AsyncSession, trip_id: UUID) -> list[AIPlan
                 latitude=float(row.latitude),
                 longitude=float(row.longitude),
                 duration_minutes=INBOX_CANDIDATE_DURATION_MINUTES,
-                map_links=(
-                    [{"provider": "google", "url": row.maps_url}] if row.maps_url else []
-                ),
+                map_links=([{"provider": "google", "url": row.maps_url}] if row.maps_url else []),
                 hotspot_id=row.hotspot_id,
                 # rank starts at 1: the catalogue ranks from there too.
                 rank=rank + 1,
@@ -1340,6 +1333,8 @@ async def _load_trip_candidates(
         start_date=start_date,
         end_date=end_date,
         locale=locale,
+        trip_start_date=trip.start_date,
+        trip_end_date=trip.end_date,
     )
     return [*catalogue, *await _inbox_candidates(session, trip.id)]
 
@@ -1352,11 +1347,16 @@ async def _load_ai_planner_candidates(
     start_date: date,
     end_date: date,
     locale: str = "zh-TW",
+    trip_start_date: date | None = None,
+    trip_end_date: date | None = None,
 ) -> list[AIPlannerCandidate]:
     destination = match_destination(destination_name)
     if destination is None:
         return []
     day_count = max(1, (end_date - start_date).days + 1)
+    # Seasons come from the whole journey, not the slice being replanned: a single
+    # day re-plan in the middle of an April trip is still an April trip.
+    travel_months = months_in_span(trip_start_date or start_date, trip_end_date or end_date)
     hotspots, foods = await asyncio.gather(
         load_planner_hotspots(
             session,
@@ -1366,6 +1366,8 @@ async def _load_ai_planner_candidates(
             extension_destination_ids=preferences.extension_destination_ids,
             days=day_count,
             style="all",
+            shop_themes=preferences.shop_themes,
+            travel_months=travel_months,
         ),
         load_planner_foods(
             session,
@@ -1398,6 +1400,8 @@ async def _load_ai_planner_candidates(
             depth_kind=("day_trip" if hotspot.depth_kind == "day_trip" else "urban_local"),
             access_minutes=clamp_candidate_access(hotspot.access_minutes),
             opening_hours=hotspot.opening_hours,
+            themes=hotspot.themes,
+            in_season=hotspot.in_season,
             is_cross_city=hotspot.is_cross_city,
             rank=rank,
         )
@@ -1560,9 +1564,7 @@ async def reproject_saved_times(
             segment_from_record(record)
             for record in await load_route_segments(session, trip.id, day_date=day_value)
         ]
-        points = {
-            row.id: point for row in day_rows if (point := route_point(row)) is not None
-        }
+        points = {row.id: point for row in day_rows if (point := route_point(row)) is not None}
         setting = settings_by_day.get(day_value)
         projection = project_day_with_estimates(
             day_rows,
@@ -2194,9 +2196,7 @@ async def save_trip(
     flight_offer = plan.get("flight") if isinstance(plan.get("flight"), dict) else None
     hotel_offer = plan.get("hotel") if isinstance(plan.get("hotel"), dict) else None
     flight_snapshot = offer_price_snapshot(flight_offer)
-    lodging = (
-        lodging_from_offer(hotel_offer, selection_source="search") if hotel_offer else None
-    )
+    lodging = lodging_from_offer(hotel_offer, selection_source="search") if hotel_offer else None
     shared_keys: dict[str, Any] = {
         "source": "search",
         "origin_airport": request_json.get("origin"),
@@ -2433,9 +2433,7 @@ async def update_trip_expense(
 ) -> dict[str, Any]:
     trip = await owned_trip(session, user.id, trip_id)
     row = await session.scalar(
-        select(TripExpense).where(
-            TripExpense.id == expense_id, TripExpense.trip_plan_id == trip.id
-        )
+        select(TripExpense).where(TripExpense.id == expense_id, TripExpense.trip_plan_id == trip.id)
     )
     if row is None:
         raise AppError(404, "expense_not_found", "找不到這筆帳目")
@@ -2467,9 +2465,7 @@ async def delete_trip_expense(
 ) -> dict[str, Any]:
     trip = await owned_trip(session, user.id, trip_id)
     row = await session.scalar(
-        select(TripExpense).where(
-            TripExpense.id == expense_id, TripExpense.trip_plan_id == trip.id
-        )
+        select(TripExpense).where(TripExpense.id == expense_id, TripExpense.trip_plan_id == trip.id)
     )
     if row is None:
         raise AppError(404, "expense_not_found", "找不到這筆帳目")
@@ -2624,9 +2620,7 @@ async def update_trip_metadata(
         # that could restate them, so the switch is only offered while the
         # ledger is empty. Refusing beats silently relabelling real numbers.
         booked = await session.scalar(
-            select(func.count())
-            .select_from(TripExpense)
-            .where(TripExpense.trip_plan_id == trip.id)
+            select(func.count()).select_from(TripExpense).where(TripExpense.trip_plan_id == trip.id)
         )
         if booked:
             raise AppError(
@@ -3479,9 +3473,7 @@ async def generate_trip_itinerary(
                 "itinerary_exact_locations_required",
                 "正式景點或店家不足，原行程保持不變",
             )
-        plan = build_replan_write(
-            existing, planning.itinerary, target_date, timezone=trip.timezone
-        )
+        plan = build_replan_write(existing, planning.itinerary, target_date, timezone=trip.timezone)
         apply_meal_writes(plan.meals)
         # Only the rows that really change are rebuilt; the rest keep their ids
         # so the route segments hanging off them survive — see replan.reuse_rows.

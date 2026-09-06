@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**8 open · 1 in progress · 3 blocked · 0 in review · 102 done**
+**8 open · 1 in progress · 3 blocked · 0 in review · 103 done**
 
 ## Ready to claim
 
@@ -43,6 +43,7 @@ _Nothing here._
 ## Recently finished
 
 - 2026-09-06 [未登入開 /account 會同時看到三種互相矛盾的狀態](done/2026-09-06-account-signed-out-states.md)
+- 2026-09-06 [購物行程：規劃器聽得懂店家類型，也知道什麼當季](done/2026-09-06-planner-shop-themes.md)
 - 2026-09-06 [價格通知頁的副標與 LINE 卡片在四個語系都是繁中](done/2026-09-06-alerts-hardcoded-zh-tw.md)
 - 2026-09-06 [上線後查核抓到的六個問題（大字閃爍、焦點掉回 body、標點與複數）](done/2026-09-06-post-deploy-verification-fixes.md)
 - 2026-09-06 [公開頁精簡：景點卡動作分層、首頁膠囊溢出、排行榜第一屏](done/2026-09-06-simplify-public-cards.md)
@@ -51,4 +52,3 @@ _Nothing here._
 - 2026-09-06 [景點的第一手介紹：儲存、審核與呈現](done/2026-09-06-hotspot-intros.md)
 - 2026-09-06 [五個語系的 trips.json 都有重複的 transfersCount 鍵](done/2026-09-06-duplicate-transfers-count-key.md)
 - 2026-09-06 [四個景點的分類被標成 shopping，其實是公園、城跡與神社](done/2026-09-06-seed-category-shopping-mistakes.md)
-- 2026-09-06 [後台可以維護景點主題並逐景點指派](done/2026-09-06-hotspot-themes-admin-api.md)

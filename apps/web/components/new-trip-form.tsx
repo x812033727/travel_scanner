@@ -10,7 +10,7 @@ import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, twd } from "@/lib/api";
 import { dayCount, formatTripDay } from "@/lib/calendar";
 import { trackAnalytics } from "@/lib/analytics";
-import { interestCodes, localizeDestinations } from "@/lib/destinations";
+import { interestCodes, localizeDestinations, shopThemeCodes } from "@/lib/destinations";
 import { holidayCountriesFor } from "@/lib/holidays";
 
 type CreatedTrip = { id: string };
@@ -50,6 +50,7 @@ type DraftSnapshot = {
   lodgingMode: LodgingMode;
   planningMode: PlanningMode;
   selectedInterests: string[];
+  selectedShopThemes: string[];
   form: Record<string, string | boolean>;
 };
 
@@ -87,6 +88,7 @@ export function NewTripForm() {
   const [lodgingMode, setLodgingMode] = useState<LodgingMode>("any");
   const [planningMode, setPlanningMode] = useState<PlanningMode>("ai_draft");
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+  const [selectedShopThemes, setSelectedShopThemes] = useState<string[]>([]);
   const [form, setForm] = useState({
     name: "", destination_name: "", destination_place_id: "", start_date: "", end_date: "",
     adults: "2", children: "0", rooms: "1", budget_twd: "", pace: "balanced" as Pace,
@@ -120,6 +122,7 @@ export function NewTripForm() {
         if (oneOf(lodgingModes, draft.lodgingMode)) setLodgingMode(draft.lodgingMode);
         if (oneOf(planningModes, draft.planningMode)) setPlanningMode(draft.planningMode);
         if (Array.isArray(draft.selectedInterests)) setSelectedInterests(draft.selectedInterests.filter((code) => (interestCodes as readonly string[]).includes(code)));
+        if (Array.isArray(draft.selectedShopThemes)) setSelectedShopThemes(draft.selectedShopThemes.filter((code) => (shopThemeCodes as readonly string[]).includes(code)));
         const savedForm: Record<string, string | boolean> = draft.form && typeof draft.form === "object" ? draft.form : {};
         const start = typeof savedForm.start_date === "string" ? savedForm.start_date : "";
         const end = typeof savedForm.end_date === "string" ? savedForm.end_date : "";
@@ -151,11 +154,11 @@ export function NewTripForm() {
   useEffect(() => {
     if (!draftReady) return;
     try {
-      window.sessionStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify({ step, lodgingMode, planningMode, selectedInterests, form } satisfies DraftSnapshot));
+      window.sessionStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify({ step, lodgingMode, planningMode, selectedInterests, selectedShopThemes, form } satisfies DraftSnapshot));
     } catch {
       // storage may be unavailable; autosave is best-effort
     }
-  }, [draftReady, form, step, lodgingMode, planningMode, selectedInterests]);
+  }, [draftReady, form, step, lodgingMode, planningMode, selectedInterests, selectedShopThemes]);
 
   useEffect(() => {
     if (error) errorRef.current?.focus();
@@ -163,13 +166,15 @@ export function NewTripForm() {
   const propertyTypes = lodgingMode === "hotel" ? ["hotel"] : lodgingMode === "vacation_rental" ? ["vacation_rental"] : lodgingMode === "both" ? ["hotel", "vacation_rental"] : [];
   const lodgingSummary = lodgingMode === "hotel" ? t("summary.hotelOnly") : lodgingMode === "vacation_rental" ? t("summary.vacationRental") : lodgingMode === "both" ? t("summary.both") : t("summary.any");
   const interestLabels = useMemo(() => selectedInterests.map((code) => t(`interests.${code}`)), [selectedInterests, t]);
+  const shopThemeLabels = useMemo(() => selectedShopThemes.map((code) => t(`shopThemes.${code}`)), [selectedShopThemes, t]);
   const summary = useMemo(() => [
     days ? t("summary.days", { days }) : null,
     t("summary.travelers", { count: travelerCount, rooms: Number(form.rooms) }),
     form.budget_twd ? t("summary.budget", { amount: twd.format(Number(form.budget_twd)) }) : t("summary.budgetUnlimited"),
     lodgingSummary,
     ...interestLabels,
-  ].filter(Boolean) as string[], [days, form.budget_twd, form.rooms, interestLabels, lodgingSummary, t, travelerCount]);
+    ...shopThemeLabels,
+  ].filter(Boolean) as string[], [days, form.budget_twd, form.rooms, interestLabels, shopThemeLabels, lodgingSummary, t, travelerCount]);
   const nightlyMin = optionalNumber(form.nightly_min);
   const nightlyMax = optionalNumber(form.nightly_max);
   const nightlyLabel = nightlyMin != null && nightlyMax != null
@@ -253,6 +258,14 @@ export function NewTripForm() {
   function toggleInterest(code: string) {
     setError(undefined);
     setSelectedInterests((current) => current.includes(code) ? current.filter((item) => item !== code) : [...current, code]);
+    // Shop types are meaningless without the interest that reveals them, and a
+    // hidden chip that is still selected would quietly steer the itinerary.
+    if (code === "shopping" && selectedInterests.includes(code)) setSelectedShopThemes([]);
+  }
+
+  function toggleShopTheme(code: string) {
+    setError(undefined);
+    setSelectedShopThemes((current) => current.includes(code) ? current.filter((item) => item !== code) : [...current, code]);
   }
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
@@ -289,6 +302,7 @@ export function NewTripForm() {
             hotel_min_review_count: optionalNumber(form.min_review_count), breakfast_required: form.breakfast_required,
             refundable_required: form.refundable_required, max_station_walk_minutes: optionalNumber(form.max_station_walk_minutes),
             preferred_area: form.preferred_area.trim() || null, pace: form.pace, interests: selectedInterests,
+            shop_themes: selectedInterests.includes("shopping") ? selectedShopThemes : [],
           },
           notes: form.notes.trim() || null,
         }),
@@ -321,7 +335,7 @@ export function NewTripForm() {
         <div className="grid grid-cols-3 gap-3"><label className="text-sm font-semibold">{t("travelers.adults")}<select aria-label={t("travelers.adults")} value={form.adults} onChange={(event) => update("adults", event.target.value)} className={fieldClass}>{[1,2,3,4,5,6,7,8,9].map((value) => <option key={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">{t("travelers.children")}<select aria-label={t("travelers.children")} value={form.children} onChange={(event) => update("children", event.target.value)} className={fieldClass}>{[0,1,2,3,4,5].map((value) => <option key={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">{t("travelers.rooms")}<select aria-label={t("travelers.rooms")} value={form.rooms} onChange={(event) => update("rooms", event.target.value)} className={fieldClass}>{[1,2,3,4].map((value) => <option key={value}>{value}</option>)}</select></label></div>
         <label className="text-sm font-semibold">{t("travelers.budget")}<input type="number" inputMode="numeric" min="1" value={form.budget_twd} onChange={(event) => update("budget_twd", event.target.value)} placeholder={t("travelers.budgetPlaceholder")} className={fieldClass} /></label>
         <div><p className="text-sm font-semibold">{t("travelers.pace")}</p><div className="mt-2 grid grid-cols-3 gap-2">{([["relaxed", t("travelers.paceRelaxed")], ["balanced", t("travelers.paceBalanced")], ["packed", t("travelers.pacePacked")]] as const).map(([value, label]) => <button key={value} type="button" aria-pressed={form.pace === value} onClick={() => update("pace", value)} className={optionClass(form.pace === value)}>{label}</button>)}</div></div>
-        <div><p className="text-sm font-semibold">{t("travelers.interests")}</p><div className="mt-2 flex flex-wrap gap-2">{interestCodes.map((code) => <button key={code} type="button" aria-pressed={selectedInterests.includes(code)} onClick={() => toggleInterest(code)} className={optionClass(selectedInterests.includes(code))}>{t(`interests.${code}`)}</button>)}</div></div>
+        <div><p className="text-sm font-semibold">{t("travelers.interests")}</p><div className="mt-2 flex flex-wrap gap-2">{interestCodes.map((code) => <button key={code} type="button" aria-pressed={selectedInterests.includes(code)} onClick={() => toggleInterest(code)} className={optionClass(selectedInterests.includes(code))}>{t(`interests.${code}`)}</button>)}</div>{selectedInterests.includes("shopping") && <div className="mt-3" role="group" aria-label={t("travelers.shopThemes")}><p className="text-xs font-semibold text-[var(--muted)]">{t("travelers.shopThemes")}</p><div className="mt-2 flex flex-wrap gap-2">{shopThemeCodes.map((code) => <button key={code} type="button" aria-pressed={selectedShopThemes.includes(code)} onClick={() => toggleShopTheme(code)} className={optionClass(selectedShopThemes.includes(code))}>{t(`shopThemes.${code}`)}</button>)}</div></div>}</div>
       </div>
 
       <div className={step === 2 ? "grid gap-5" : "hidden"}>
