@@ -361,3 +361,36 @@ def test_the_checked_list_has_no_entries_the_file_dropped() -> None:
 
     slugs = {m.slug for m in load_trend_merchants(DEFAULT_FILE) if m.english_name}
     assert set(SOURCED_ENGLISH_NAMES) <= slugs
+
+
+def test_the_reset_refuses_a_slug_the_curated_catalog_owns() -> None:
+    """The two files disagree about which shop this slug names.
+
+    tainan-fu-sheng-hao is 福生小食店 in merchant_catalog.py and 富盛號 in the trend file.
+    The importer kept the curated shop, so resetting that row toward the trend file would
+    rename a restaurant into a different one. A production dry run reported it alongside the
+    seven rows that really were stranded, which is what the printed list is for.
+    """
+    curated = next(m for m in load_trend_merchants(DEFAULT_FILE) if m.slug == "tainan-fu-sheng-hao")
+    assert curated.slug in {seed.slug for seed in MERCHANT_SEEDS}
+
+    row = FoodMerchant(
+        slug=curated.slug,
+        destination_id=curated.destination_id,
+        country_code=destination_country_code(curated.destination_id) or "",
+        # What production holds: the curated shop, under its own English name.
+        name="Fu Sheng Hao",
+        local_name="福生小食店",
+        names_json={},
+    )
+    changed, left = plan_english_name_backfill(
+        [row], {curated.slug: curated}, reset_drifted=True
+    )
+    assert changed == []
+    assert left == [
+        {
+            "slug": curated.slug,
+            "name": "Fu Sheng Hao",
+            "reason": "the curated catalog owns this slug",
+        }
+    ]
