@@ -115,7 +115,8 @@ def test_area_names_fall_back_per_locale() -> None:
     area = area_by_code("NRT", "shibuya")
     assert area is not None
     assert area_name(area, "zh-TW") == "澀谷／原宿"
-    assert area_name(area, "zh-CN") == "澀谷／原宿"
+    # zh-CN used to fall straight back to Traditional; the table now answers first.
+    assert area_name(area, "zh-CN") == "涩谷／原宿"
     assert area_name(area, "ja") == "渋谷・原宿"
     assert area_name(area, "en") == "Shibuya & Harajuku"
     assert area_name(area, "ko") == "Shibuya & Harajuku"

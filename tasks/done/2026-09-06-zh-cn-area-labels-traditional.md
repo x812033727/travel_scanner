@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-zh-cn-area-labels-traditional
 title: zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
-claimed_at: 2026-09-06T13:27:16Z
+claimed_at: 2026-09-06T13:53:23Z
 created_at: 2026-09-06T13:14:53Z
-completed_at:
-branch: claude/zh-cn-area-labels
+completed_at: 2026-09-06T13:53:29Z
+branch: claude/zh-cn-area-table-fill
 depends_on: []
 scope:
   - apps/api/app/hotspots/areas.py
@@ -35,8 +35,8 @@ areas 當成「已經正確」的對照組，DoD 只涵蓋國家與城市；
 
 ## Definition of done
 
-- [ ] zh-CN 的區域名稱是簡體字，且與 zh-TW 不再逐字相同。
-- [ ] `/destinations` 若要對齊 `/hotspots/facets`，對齊的是修好之後的版本。
+- [x] zh-CN 的區域名稱是簡體字，且與 zh-TW 不再逐字相同。
+- [x] `/destinations` 若要對齊 `/hotspots/facets`，對齊的是修好之後的版本（現在有簡體了）。
 
 ## How to verify
 
@@ -49,3 +49,16 @@ curl -s -H 'X-Travel-Locale: zh-CN' http://127.0.0.1:8090/api/v1/hotspots/facets
 景點名稱是用 `app/hotspots/simplified_names.py` 從繁體轉換的（見
 [[2026-09-06-zh-cn-names-are-traditional]]），同一條路可以沿用；區域名稱在程式碼裡而不是
 seed JSON，所以是改 `areas.py` 的資料結構而非跑轉換 CLI。
+
+## Result
+
+390 個區域名稱：278 筆轉換、112 筆兩體通用維持原樣、0 筆被驗證退回，10 次 Gemini 呼叫。
+
+做法是一張以繁體名稱為鍵的對照表，而不是在 393 個 `_area(...)` 呼叫上加欄位。多數名稱在
+兩種字體寫法相同，而且要人工覆核轉換時，一張清單比散落 393 處好讀。
+
+人工覆核與輸入共用字最少的 14 筆，全部正確：宮島→宫岛、鶴見→鹤见、北鎌倉→北镰仓、
+廣島站→广岛站、新橫濱→新横滨、烏節路→乌节路、濱海灣→滨海湾。
+
+一個既有測試把「zh-CN 退回繁體」寫死成預期行為，那正是這張票要改的，已更新。
+另有兩項新測試守住對照表：不得含目錄裡沒有的鍵（無聲失效），也不得含鍵值相同的項目。
