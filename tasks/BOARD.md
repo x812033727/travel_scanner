@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**7 open · 1 in progress · 2 blocked · 5 in review · 88 done**
+**8 open · 1 in progress · 2 blocked · 5 in review · 88 done**
 
 ## Ready to claim
 
@@ -13,6 +13,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
+| P2 | [後台主題管理畫面：taxonomy 表格與逐景點指派](open/2026-09-06-hotspot-themes-admin-web.md) | web | `apps/web/components/admin-hotspot-themes-panel.tsx`<br>`apps/web/components/admin-hotspot-theme-editor.tsx`<br>`apps/web/components/admin-hotspots-workspace.tsx`<br>`apps/web/components/admin-hotspots-panel.tsx`<br>`apps/web/i18n/request.ts`<br>`apps/web/vitest.setup.tsx`<br>`apps/web/messages/en/hotspotThemes.json`<br>`apps/web/messages/ja/hotspotThemes.json`<br>`apps/web/messages/ko/hotspotThemes.json`<br>`apps/web/messages/zh-TW/hotspotThemes.json`<br>`apps/web/messages/zh-CN/hotspotThemes.json` |
 | P3 | [四個景點的分類被標成 shopping，其實是公園、城跡與神社](open/2026-09-06-seed-category-shopping-mistakes.md) | api | `apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_hotspot_seed_categories.py` |
 | P3 | [五個語系的 trips.json 都有重複的 transfersCount 鍵](open/2026-09-06-duplicate-transfers-count-key.md) | web | `apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/zh-TW/trips.json` |
 

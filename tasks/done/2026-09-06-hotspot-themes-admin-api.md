@@ -36,7 +36,6 @@ scope:
 - [x] 候選清單加 `themes`（用 `load_hotspot_themes` 一次批次查，不要在既有的 per-row 迴圈裡再加一次查詢）。
 - [x] `i18n.py`：三個新錯誤碼 ×5 語系。
 - [x] `tests/test_hotspot_admin_themes.py`：15 個案例。
-- [ ] 後台畫面（`admin-hotspot-themes-panel.tsx`、逐景點編輯器、workspace 分頁）——**另開任務**，見 Notes。
 
 ## How to verify
 
