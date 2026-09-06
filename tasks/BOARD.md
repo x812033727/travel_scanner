@@ -5,13 +5,26 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**0 open · 0 in progress · 0 blocked · 0 in review · 0 done**
+**13 open · 0 in progress · 0 blocked · 0 in review · 0 done**
 
 ## Ready to claim
 
 Nothing here is owned, blocked by a dependency, or overlapping active work. Take the top one.
 
-_Nothing here._
+| Priority | Task | Area | Scope |
+| --- | --- | --- | --- |
+| P1 | [把潮流街區的匯入腳本收進 repo](open/2026-09-06-trend-import-scripts.md) | api | `apps/api/app/foods/trend_import.py`<br>`apps/api/app/cli.py`<br>`apps/api/tests/test_trend_import.py` |
+| P1 | [57 個潮流商圈只存在正式機資料庫](open/2026-09-06-trend-food-areas-not-seeded.md) | api | `apps/api/app/foods/area_catalog.py`<br>`apps/api/tests/test_food_taxonomy_catalog.py` |
+| P1 | [271 家店家沒有永久座標，全部無法發布](open/2026-09-06-merchant-coordinate-backlog.md) | ops | `apps/api/app/foods/coordinate_queue.py`<br>`apps/web/components/admin-merchant-coordinate-queue.tsx` |
+| P1 | [遷移裡的補資料分支在 CI 是死碼](open/2026-09-06-migration-backfill-untested.md) | tools | `.github/workflows/ci.yml`<br>`apps/api/tests/test_migration_dead_branches.py` |
+| P2 | [repo 沒有 .gitattributes，CRLF 混入造成整檔衝突](open/2026-09-06-gitattributes-line-endings.md) | meta | `.gitattributes` |
+| P2 | [navigation.spec.ts 兩個案例在 CI 間歇逾時](open/2026-09-06-flaky-navigation-e2e.md) | web | `apps/web/e2e/navigation.spec.ts` |
+| P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | ops | `apps/api/app/places/naver.py` |
+| P2 | [482 個景點卡在人工審核佇列](open/2026-09-06-hotspot-review-backlog.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/app/hotspots/admin_router.py` |
+| P2 | [529 個公開景點還沒有任何導覽內容](open/2026-09-06-hotspot-guide-coverage.md) | ops | `apps/api/app/hotspots/guides.py` |
+| P3 | [後台的登入時效設定要能真的生效](open/2026-09-06-admin-session-settings.md) | api | `apps/api/app/auth/service.py`<br>`apps/api/app/admin/service.py` |
+| P3 | [52 個景點的地圖比對對不上，需要人工判斷](open/2026-09-06-hotspot-map-match-holdouts.md) | api | `apps/api/app/hotspots/places.py` |
+| P3 | [6 個關東景點需要人工挑 Google Place ID](open/2026-09-06-kanto-place-ids.md) | api | `apps/api/app/hotspots/catalog.py` |
 
 ## In progress
 
@@ -23,7 +36,9 @@ _Nothing here._
 
 ## Waiting
 
-_Nothing here._
+| Priority | Task | Waiting on |
+| --- | --- | --- |
+| P2 | [21 個潮流街區還沒有任何店家](open/2026-09-06-empty-trend-districts.md) | depends on 2026-09-06-trend-import-scripts |
 
 ## Recently finished
 
