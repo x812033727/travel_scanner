@@ -24,8 +24,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [看得見：連結顏色被吃掉、對比不足與字級下限](open/2026-09-06-readable-foundation.md) | claude-opus-5 | 2026-09-06T13:02:56Z | `claude/ui-ux-simplification-72afb9` |
 | [手機主選單被標題列的 backdrop-filter 關在 68px 裡](open/2026-09-06-mobile-menu-containing-block.md) | claude-opus-5 | 2026-09-06T14:10:00Z | `claude/ui-ux-simplification-72afb9` |
+| [大字模式：讓長輩自己把整站字放大](open/2026-09-06-large-text-mode.md) | claude-opus-5 | 2026-09-06T13:36:47Z | `claude/ui-ux-simplification-72afb9` |
 | [後台外殼：錯誤頁在地化、面板不要整頁炸掉、手機選單擋內容](open/2026-09-06-admin-shell-resilience.md) | claude-opus-5 | 2026-09-06T13:29:26Z | `claude/ui-ux-simplification-72afb9` |
-| [大字模式：讓長輩自己把整站字放大](open/2026-09-06-large-text-mode.md) | claude-opus-5 | 2026-09-06T13:37:03Z | `claude/ui-ux-simplification-72afb9` |
 | [美食頁在 merchants 回應少了 facets 時整頁炸掉](open/2026-09-06-foods-facets-crash.md) | claude-opus-5 | 2026-09-06T14:35:00Z | `claude/ui-ux-simplification-72afb9` |
 
 ## In review
