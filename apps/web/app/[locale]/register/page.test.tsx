@@ -32,7 +32,7 @@ describe("registration page", () => {
   it("shows a closed notice and login link without a form", async () => {
     registrationState.value = "closed";
     await renderPage();
-    expect(screen.getByRole("heading", { name: "目前暫停開放註冊" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "現在還不能建立新帳號" })).toBeTruthy();
     expect(screen.queryByTestId("register-form")).toBeNull();
     expect(screen.getByRole("link", { name: "前往登入" }).getAttribute("href")).toBe("/login?next=%2Ftrips");
   });

@@ -1,6 +1,6 @@
 from collections.abc import AsyncIterator, Iterator
 from datetime import UTC, datetime, timedelta
-from unittest.mock import AsyncMock
+from unittest.mock import AsyncMock, Mock
 from uuid import uuid4
 
 import fakeredis.aioredis
@@ -26,7 +26,7 @@ from app.config import get_settings
 from app.db import escape_like, get_session
 from app.main import app
 from app.middleware import RequestBodyLimitMiddleware
-from app.models import User
+from app.models import ProviderConfig, User
 from app.problems import AppError, app_error_handler
 
 
@@ -133,12 +133,11 @@ async def test_logout_revokes_the_presented_token(monkeypatch: pytest.MonkeyPatc
     monkeypatch.setattr(auth_service, "get_redis", lambda: redis)
     user = make_user()
     session = AsyncMock()
+    session.scalars.return_value.all = Mock(return_value=[])
     session.get.return_value = user
     token = create_access_token(user.id, user.auth_version)
     assert (
-        await current_user(
-            session, Response(), authorization=f"Bearer {token}", travel_access=None
-        )
+        await current_user(session, Response(), authorization=f"Bearer {token}", travel_access=None)
         is user
     )
 
@@ -150,9 +149,7 @@ async def test_logout_revokes_the_presented_token(monkeypatch: pytest.MonkeyPatc
     assert 'travel_access=""' in response.headers["set-cookie"]
 
     with pytest.raises(AppError) as caught:
-        await current_user(
-            session, Response(), authorization=f"Bearer {token}", travel_access=None
-        )
+        await current_user(session, Response(), authorization=f"Bearer {token}", travel_access=None)
     assert caught.value.code == "invalid_token"
     with pytest.raises(AppError):
         await current_user(session, Response(), authorization=None, travel_access=token)
@@ -195,6 +192,7 @@ async def test_cookie_session_slides_forward_after_half_its_lifetime(
     monkeypatch.setattr(auth_service, "get_redis", lambda: redis)
     user = make_user()
     session = AsyncMock()
+    session.scalars.return_value.all = Mock(return_value=[])
     session.get.return_value = user
     lifetime = timedelta(minutes=get_settings().access_token_expire_minutes)
 
@@ -248,6 +246,7 @@ async def test_signing_out_ends_a_session_that_has_already_been_renewed(
     monkeypatch.setattr(auth_service, "get_redis", lambda: redis)
     user = make_user()
     session = AsyncMock()
+    session.scalars.return_value.all = Mock(return_value=[])
     session.get.return_value = user
     lifetime = timedelta(minutes=get_settings().access_token_expire_minutes)
 
@@ -281,6 +280,7 @@ async def test_logout_denylist_outlives_every_renewed_sibling(
     monkeypatch.setattr(auth_service, "get_redis", lambda: redis)
     user = make_user()
     session = AsyncMock()
+    session.scalars.return_value.all = Mock(return_value=[])
     session.get.return_value = user
     settings = get_settings()
     lifetime = timedelta(minutes=settings.access_token_expire_minutes)
@@ -340,14 +340,72 @@ async def test_revocation_check_fails_closed_when_redis_is_unavailable(
     monkeypatch.setattr(auth_service, "get_redis", lambda: BrokenRedis())
     user = make_user()
     session = AsyncMock()
+    session.scalars.return_value.all = Mock(return_value=[])
     session.get.return_value = user
     token = create_access_token(user.id, user.auth_version)
     with pytest.raises(AppError) as caught:
-        await current_user(
-            session, Response(), authorization=f"Bearer {token}", travel_access=None
-        )
+        await current_user(session, Response(), authorization=f"Bearer {token}", travel_access=None)
     assert caught.value.status == 503
     assert caught.value.code == "session_check_unavailable"
+
+
+def test_runtime_settings_change_the_lifetime_of_new_tokens() -> None:
+    """The lifetime comes from the settings handed in, which the routes load from the
+    administrator's runtime overrides; the environment value is only the fallback."""
+    base = get_settings()
+    shorter = base.model_copy(update={"access_token_expire_minutes": 15})
+    claims = decode_access_token_claims(create_access_token(uuid4(), settings=shorter))
+    assert claims.expires_at - claims.issued_at == timedelta(minutes=15)
+    default = decode_access_token_claims(create_access_token(uuid4()))
+    assert default.expires_at - default.issued_at == timedelta(
+        minutes=base.access_token_expire_minutes
+    )
+
+
+@pytest.mark.asyncio
+async def test_a_renewal_mints_with_the_lifetime_the_administrator_set(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The end-to-end check the first attempt at this setting never had: a stored runtime
+    override, a cookie due for renewal, and the renewed token carrying the new lifetime."""
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    monkeypatch.setattr(auth_service, "get_redis", lambda: redis)
+    user = make_user()
+    session = AsyncMock()
+    session.get.return_value = user
+    row = ProviderConfig(
+        provider="runtime",
+        enabled=True,
+        config={"access_token_expire_minutes": 15, "session_absolute_max_days": 3},
+        secret_config_encrypted=None,
+    )
+    session.scalars.return_value.all = Mock(return_value=[row])
+    lifetime = timedelta(minutes=get_settings().access_token_expire_minutes)
+
+    renewed = Response()
+    await current_user(
+        session,
+        renewed,
+        authorization=None,
+        travel_access=aged_token(user, issued_ago=lifetime * 0.7, session_age=timedelta(days=1)),
+    )
+    new_token = renewed.headers["set-cookie"].split("travel_access=", 1)[1].split(";", 1)[0]
+    new_claims = decode_access_token_claims(new_token)
+    assert new_claims.expires_at - new_claims.issued_at == timedelta(minutes=15)
+    assert "Max-Age=900" in renewed.headers["set-cookie"]
+
+    # The absolute cap is the administrator's too: three days, not the environment's.
+    with pytest.raises(AppError) as expired:
+        await current_user(
+            session,
+            Response(),
+            authorization=None,
+            travel_access=aged_token(
+                user, issued_ago=lifetime * 0.2, session_age=timedelta(days=4)
+            ),
+        )
+    assert expired.value.code == "session_expired"
+    await redis.aclose()
 
 
 def test_escape_like_neutralizes_pattern_metacharacters() -> None:

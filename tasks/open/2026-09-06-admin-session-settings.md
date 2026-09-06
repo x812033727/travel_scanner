@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-admin-session-settings
 title: 後台的登入時效設定要能真的生效
-status: open
+status: in-progress
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T07:55:01Z
 created_at: 2026-09-06T00:54:26Z
 completed_at:
-branch:
+branch: claude/p3-polish
 depends_on: []
 scope:
   - apps/api/app/auth/service.py

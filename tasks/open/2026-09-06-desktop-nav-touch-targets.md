@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-desktop-nav-touch-targets
 title: 桌機主導覽文字連結只有 20px 高
-status: open
+status: in-progress
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T07:55:00Z
 created_at: 2026-09-06T00:54:01Z
 completed_at:
-branch:
+branch: claude/p3-polish
 depends_on: []
 scope:
   - apps/web/components/site-navigation.tsx

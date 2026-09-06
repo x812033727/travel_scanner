@@ -43,10 +43,11 @@ from app.auth.service import (
     is_admin_user,
     is_reserved_admin_email,
     revoke_access_token,
+    runtime_auth_settings,
     set_auth_cookie,
     verify_password,
 )
-from app.config import get_settings
+from app.config import Settings, get_settings
 from app.db import get_session
 from app.i18n import normalize_locale
 from app.infra import (
@@ -78,10 +79,12 @@ async def user_response(session: AsyncSession, user: User) -> UserResponse:
     )
 
 
-def token_response(token: str, response_user: UserResponse) -> TokenResponse:
+def token_response(
+    token: str, response_user: UserResponse, settings: Settings | None = None
+) -> TokenResponse:
     return TokenResponse(
         access_token=token,
-        expires_in=get_settings().access_token_expire_minutes * 60,
+        expires_in=(settings or get_settings()).access_token_expire_minutes * 60,
         user=response_user,
     )
 
@@ -119,17 +122,16 @@ async def register(
     await session.flush()
     await create_usage_account(session, user)
     await session.commit()
-    token = create_access_token(user.id, user.auth_version)
-    set_auth_cookie(response, token)
-    return token_response(token, await user_response(session, user))
+    settings = await runtime_auth_settings(session)
+    token = create_access_token(user.id, user.auth_version, settings=settings)
+    set_auth_cookie(response, token, settings=settings)
+    return token_response(token, await user_response(session, user), settings)
 
 
 @router.get("/registration-status", response_model=RegistrationStatus)
 async def registration_status(response: Response, session: Session) -> RegistrationStatus:
     response.headers["Cache-Control"] = "no-store"
-    return RegistrationStatus(
-        registration_enabled=await effective_registration_enabled(session)
-    )
+    return RegistrationStatus(registration_enabled=await effective_registration_enabled(session))
 
 
 @router.post("/login", response_model=TokenResponse)
@@ -162,9 +164,10 @@ async def login(
     if user is None or not password_valid:
         raise AppError(401, "invalid_credentials", "Email 或密碼不正確")
     await clear_named_rate_limit("auth-login-account", email)
-    token = create_access_token(user.id, user.auth_version)
-    set_auth_cookie(response, token)
-    return token_response(token, await user_response(session, user))
+    settings = await runtime_auth_settings(session)
+    token = create_access_token(user.id, user.auth_version, settings=settings)
+    set_auth_cookie(response, token, settings=settings)
+    return token_response(token, await user_response(session, user), settings)
 
 
 @router.post("/logout", status_code=204)
@@ -227,9 +230,10 @@ async def change_password(
     user.password_hash = hash_password(payload.new_password)
     user.auth_version = (user.auth_version or 1) + 1
     await session.commit()
-    token = create_access_token(user.id, user.auth_version)
-    set_auth_cookie(response, token)
-    return token_response(token, await user_response(session, user))
+    settings = await runtime_auth_settings(session)
+    token = create_access_token(user.id, user.auth_version, settings=settings)
+    set_auth_cookie(response, token, settings=settings)
+    return token_response(token, await user_response(session, user), settings)
 
 
 @router.get("/oauth/providers", response_model=OAuthProvidersResponse)
@@ -271,8 +275,9 @@ async def oauth_exchange(
         browser_binding=payload.browser_binding,
         current_user=user,
     )
-    token = create_access_token(result.user.id, result.user.auth_version)
-    response = token_response(token, await user_response(session, result.user))
+    settings = await runtime_auth_settings(session)
+    token = create_access_token(result.user.id, result.user.auth_version, settings=settings)
+    response = token_response(token, await user_response(session, result.user), settings)
     return OAuthExchangeResponse(**response.model_dump(), new_account=result.created)
 
 
@@ -299,5 +304,6 @@ async def unlink_identity(
     identity = await revoke_identity(session, user, identity_id)
     if not await attempt_provider_revocation(session, identity):
         enqueue_provider_revocation(identity.id)
-    token = create_access_token(user.id, user.auth_version)
-    return token_response(token, await user_response(session, user))
+    settings = await runtime_auth_settings(session)
+    token = create_access_token(user.id, user.auth_version, settings=settings)
+    return token_response(token, await user_response(session, user), settings)

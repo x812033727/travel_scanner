@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-admin-panels-i18n
 title: 後台面板文案硬編碼繁中
-status: open
+status: in-progress
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T07:55:01Z
 created_at: 2026-09-06T00:53:41Z
 completed_at:
-branch:
+branch: claude/p3-polish
 depends_on:
   - 2026-09-06-stale-gemini-model-help
 scope:

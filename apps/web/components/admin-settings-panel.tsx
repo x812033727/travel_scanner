@@ -135,6 +135,8 @@ const fieldMeta: Record<string, FieldMeta> = {
   analytics_retention_days: { label: "原始事件保存天數", type: "number", help: "預設 90 天；到期後由維護工作刪除。" },
   analytics_rollup_retention_months: { label: "每日彙總保存月數", type: "number", help: "預設 25 個月。" },
   registration_enabled: { label: "開放公開註冊", type: "boolean", help: "關閉後所有新帳號（包含環境管理員 Email）都無法自行註冊；既有會員仍可正常登入。" },
+  access_token_expire_minutes: { label: "登入時效（分鐘）", type: "number", help: "新發的登入憑證有效多久（5–1440）。儲存後下一次登入與續期立刻採用，不用重新部署；既有憑證照它自己的時效走到續期點。" },
+  session_absolute_max_days: { label: "單次登入絕對上限（天）", type: "number", help: "同一次登入不論續期幾次最多維持幾天（1–365），到期後必須重新登入。" },
   google_maps_javascript_enabled: { label: "啟用瀏覽器路線地圖", type: "boolean", help: "安全閘門。只有確認 Maps JavaScript API 已啟用，且瀏覽器 Key 已限制並放行 mokaair.com 與 www.mokaair.com 後才開啟；關閉時仍可使用交通方案與精準外部導航。" },
   hotspots_enabled: { label: "", type: "boolean" },
   trips_enabled: { label: "", type: "boolean" },

@@ -141,6 +141,8 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         "控制公開註冊、即時／測試供應商選擇、逾時與重試斷路器。",
         (
             "registration_enabled",
+            "access_token_expire_minutes",
+            "session_absolute_max_days",
             "travel_provider_mode",
             "flight_provider_mode",
             "flight_search_strategy",

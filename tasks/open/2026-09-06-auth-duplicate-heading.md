@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-auth-duplicate-heading
 title: 註冊關閉頁的小標與 H1 是同一句話
-status: open
+status: in-progress
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T07:55:00Z
 created_at: 2026-09-06T00:53:43Z
 completed_at:
-branch:
+branch: claude/p3-polish
 depends_on: []
 scope:
   - apps/web/messages/en/auth.json
