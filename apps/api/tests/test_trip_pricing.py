@@ -2,8 +2,17 @@ from datetime import date
 from decimal import Decimal
 from uuid import uuid4
 
+import pytest
+
+from app.crawlers.fx import FxRateError
+from app.crawlers.schemas import FxRateSnapshot
 from app.models import TripPlan, TripPlanItem
-from app.trips.pricing import lodging_from_offer, offer_price_snapshot, trip_pricing
+from app.trips.pricing import (
+    lodging_from_offer,
+    offer_price_snapshot,
+    trip_pricing,
+    trip_pricing_with_rates,
+)
 
 DAY = date(2026, 11, 10)
 
@@ -152,3 +161,85 @@ def test_manual_anchor_without_snapshot_contributes_nothing() -> None:
 
     assert pricing["items"] == []
     assert pricing["quoted_total"] == "0"
+
+
+def test_foreign_currency_quotes_convert_when_a_rate_is_available() -> None:
+    trip = _trip()
+    offer_id = uuid4()
+    rows = [
+        _anchor(
+            trip,
+            "outbound_flight",
+            offer_id,
+            {"total_price": "52000", "currency": "JPY", "provider": "skyscanner"},
+        ),
+        _anchor(
+            trip,
+            "return_flight",
+            offer_id,
+            {"total_price": "52000", "currency": "JPY", "provider": "skyscanner"},
+        ),
+    ]
+    rate = FxRateSnapshot(
+        base_currency="JPY",
+        rate=Decimal("0.2"),
+        as_of=date(2026, 9, 5),
+        source_url="https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/jpy.min.json",
+    )
+
+    pricing = trip_pricing(trip, rows, rates={"JPY": rate})
+
+    # The round trip is converted once (same offer on both anchors); the converted sum is
+    # a separate number so `quoted_total` keeps meaning "quoted in the trip's currency".
+    assert pricing["quoted_total"] == "0"
+    assert pricing["converted_total"] == "10400.00"
+    assert pricing["unsummed_currencies"] == []
+    assert pricing["items"][0]["converted_amount"] == "10400.00"
+    assert pricing["items"][0]["counted"] is False
+    assert pricing["items"][1]["converted_amount"] is None
+    assert pricing["conversions"] == [
+        {
+            "currency": "JPY",
+            "rate": "0.2",
+            "as_of": "2026-09-05",
+            "is_stale": False,
+            "source_url": rate.source_url,
+        }
+    ]
+
+
+@pytest.mark.asyncio
+async def test_trip_pricing_with_rates_only_asks_for_the_currencies_it_needs() -> None:
+    trip = _trip()
+    rows = [
+        _anchor(
+            trip,
+            "outbound_flight",
+            uuid4(),
+            {"total_price": "52000", "currency": "JPY", "provider": "skyscanner"},
+        )
+    ]
+    asked: list[tuple[str, str]] = []
+
+    class Provider:
+        async def rate(self, base: str, quote: str) -> FxRateSnapshot:
+            asked.append((base, quote))
+            if base == "KRW":
+                raise FxRateError("nope")
+            return FxRateSnapshot(
+                base_currency=base,
+                quote_currency=quote,
+                rate=Decimal("0.2"),
+                as_of=date(2026, 9, 5),
+                source_url="test",
+            )
+
+    pricing = await trip_pricing_with_rates(trip, rows, Provider())  # type: ignore[arg-type]
+    assert asked == [("JPY", "TWD")]
+    assert pricing["converted_total"] == "10400.00"
+
+    # A currency the provider cannot serve stays listed instead of breaking the trip page.
+    rows[0].data = {"price_snapshot": {"total_price": "500000", "currency": "KRW"}}
+    pricing = await trip_pricing_with_rates(trip, rows, Provider())  # type: ignore[arg-type]
+    assert pricing["converted_total"] is None
+    assert pricing["unsummed_currencies"] == ["KRW"]
