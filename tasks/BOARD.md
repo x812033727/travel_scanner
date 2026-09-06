@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**8 open · 1 in progress · 2 blocked · 5 in review · 84 done**
+**8 open · 2 in progress · 2 blocked · 5 in review · 84 done**
 
 ## Ready to claim
 
@@ -22,6 +22,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | claude-opus-5 | 2026-09-06T13:20:48Z | `claude/place-names-i18n` |
+| [熱門景點頁的主題篩選與季節徽章](open/2026-09-06-hotspot-themes-web.md) | claude-opus-5 | 2026-09-06T15:12:19Z | `claude/hotspot-themes-web` |
 
 ## In review
 
