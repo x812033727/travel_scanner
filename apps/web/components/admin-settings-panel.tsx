@@ -188,7 +188,7 @@ const fieldMeta: Record<string, FieldMeta> = {
   hotspot_guide_gemini_daily_search_budget: { label: "每日搜尋上限", type: "number" },
   hotspot_guide_backfill_enabled: { label: "自動補齊沒有介紹的景點", type: "boolean", help: "背景每輪挑出還沒有任何影片或文章的景點去搜尋，優先處理已通過地圖驗證的。關閉後只剩管理員手動搜尋。" },
   hotspot_guide_backfill_batch_size: { label: "每輪處理景點數", type: "number", help: "一輪最多處理幾個景點。實際跑幾個仍受各搜尋供應商的每日額度限制，額度用完就停在那一輪。" },
-  hotspot_guide_backfill_locale: { label: "自動補齊語系", type: "text", help: "只搜尋這一個語系。每多一個語系就多花一次各供應商的額度，寧可先讓每個景點都有東西可看。" },
+  hotspot_guide_backfill_locale: { label: "自動補齊語系", type: "text", help: "以逗號分隔、依序處理的語系清單，例如 zh-TW,ja,ko,en,zh-CN。先讓每個景點在第一個語系有東西可看，才輪到第二個；每個景點每輪只搜一個語系，額度不會因為列了五個語系而變成五倍。搜過但找不到的景點，30 天內不會再搜同一個語系。" },
   amadeus_env: { label: "Amadeus 環境", options: [{ value: "test", label: "Test" }, { value: "production", label: "Production" }] },
   skyscanner_base_url: { label: "API Base URL", type: "url" },
   skyscanner_market: { label: "市場代碼" },

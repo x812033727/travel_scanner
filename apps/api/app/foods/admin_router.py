@@ -30,7 +30,12 @@ from app.foods.coordinate_queue import (
     queue_total,
     resolve_queue_page,
 )
-from app.foods.service import destination_country_code, localized_name, merchant_names
+from app.foods.service import (
+    SEED_OWNED_FOOD_FIELDS,
+    destination_country_code,
+    localized_name,
+    merchant_names,
+)
 from app.hotspots.maps import has_exact_map_identity
 from app.i18n import DEFAULT_LOCALE, LOCALES, Locale, current_locale
 from app.infra import get_redis
@@ -609,9 +614,11 @@ async def _upsert_localizations(
     session: AsyncSession,
     food: TravelFood,
     values: list[FoodLocalizationPayload] | None,
-) -> None:
+) -> bool:
+    """Write the admin's localizations; True when any text actually changed."""
     if values is None:
-        return
+        return False
+    changed = False
     existing = {
         row.locale: row
         for row in (
@@ -623,10 +630,16 @@ async def _upsert_localizations(
     for value in values:
         row = existing.get(value.locale)
         if row is None:
-            row = FoodLocalization(food_id=food.id, locale=value.locale)
+            row = FoodLocalization(food_id=food.id, locale=value.locale, source="admin")
+            changed = True
+        elif (row.name, row.summary) != (value.name, value.summary):
+            # From here on seed-foods leaves this row alone: the text is the admin's.
+            row.source = "admin"
+            changed = True
         row.name = value.name
         row.summary = value.summary
         session.add(row)
+    return changed
 
 
 async def _admin_item(
@@ -778,6 +791,7 @@ async def create_food(
     await _validate_relations(session, payload.destination_ids, payload.hotspot_ids)
     food = TravelFood(
         slug=payload.slug,
+        source="admin",
         country_code=payload.country_code.upper(),
         local_name=payload.local_name,
         romanized_name=payload.romanized_name,
@@ -846,9 +860,19 @@ async def update_food(
     )
     for field in scalar_fields:
         value = getattr(payload, field)
-        if value is not None:
-            setattr(food, field, value.upper() if field == "country_code" else value)
-    await _upsert_localizations(session, food, payload.localizations)
+        if value is None:
+            continue
+        if field == "country_code":
+            value = value.upper()
+        if field in SEED_OWNED_FOOD_FIELDS and getattr(food, field) != value:
+            # A review decision leaves ownership alone; a change to what the dish *is*
+            # makes the row the admin's, and seed-foods stops rewriting it.
+            food.source = "admin"
+        setattr(food, field, value)
+    if await _upsert_localizations(session, food, payload.localizations):
+        # search_text is rebuilt below from the admin's names; a re-seed must not
+        # put the catalog's version back over it.
+        food.source = "admin"
     await _replace_relations(session, food, payload.destination_ids, payload.hotspot_ids)
     localized_names = [
         row.name

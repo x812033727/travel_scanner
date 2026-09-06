@@ -581,6 +581,7 @@ class TravelFood(Timestamped, Base):
             "review_status IN ('pending', 'approved', 'rejected', 'disabled')",
             name="ck_travel_food_review_status",
         ),
+        CheckConstraint("source IN ('seed', 'admin')", name="ck_travel_food_source"),
     )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     slug: Mapped[str] = mapped_column(String(128), unique=True, index=True)
@@ -596,6 +597,9 @@ class TravelFood(Timestamped, Base):
     review_status: Mapped[str] = mapped_column(String(24), default="approved", index=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
     display_order: Mapped[int] = mapped_column(Integer, default=100)
+    # Who owns the descriptive fields: ``seed`` rows are kept in step with the catalog by
+    # seed-foods, ``admin`` rows belong to whoever edited them and are never rewritten.
+    source: Mapped[str] = mapped_column(String(16), default="seed", server_default="seed")
 
 
 class FoodFavorite(Timestamped, Base):
@@ -618,6 +622,7 @@ class FoodLocalization(Timestamped, Base):
             "locale IN ('en', 'ja', 'ko', 'zh-TW', 'zh-CN')",
             name="ck_food_localization_locale",
         ),
+        CheckConstraint("source IN ('seed', 'admin')", name="ck_food_localization_source"),
     )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     food_id: Mapped[UUID] = mapped_column(
@@ -626,6 +631,9 @@ class FoodLocalization(Timestamped, Base):
     locale: Mapped[str] = mapped_column(String(16), index=True)
     name: Mapped[str] = mapped_column(String(255))
     summary: Mapped[str] = mapped_column(Text)
+    # Same ownership rule as the dish row, per (dish, locale): a name an administrator
+    # corrected stays corrected, a name the seed wrote follows the seed.
+    source: Mapped[str] = mapped_column(String(16), default="seed", server_default="seed")
 
 
 class FoodDestination(Base):
@@ -1097,6 +1105,35 @@ class HotspotGuideClickDaily(Base):
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), default=utcnow, onupdate=utcnow
     )
+
+
+class HotspotGuideBackfillAttempt(Base):
+    """One row per (hotspot, locale) the automatic guide backfill has searched.
+
+    ``hotspot_guides`` records what was found; this records what was looked for, so a
+    place with genuinely no coverage in a language is not searched again every run.
+    """
+
+    __tablename__ = "hotspot_guide_backfill_attempts"
+    __table_args__ = (
+        UniqueConstraint("hotspot_id", "locale", name="uq_hotspot_guide_backfill_attempt"),
+        CheckConstraint(
+            "locale IN ('en', 'ja', 'ko', 'zh-TW', 'zh-CN')",
+            name="ck_hotspot_guide_backfill_attempt_locale",
+        ),
+        CheckConstraint(
+            "outcome IN ('found', 'nothing')",
+            name="ck_hotspot_guide_backfill_attempt_outcome",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    hotspot_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="CASCADE"), index=True
+    )
+    locale: Mapped[str] = mapped_column(String(16), index=True)
+    outcome: Mapped[str] = mapped_column(String(16))
+    created_count: Mapped[int] = mapped_column(Integer, default=0)
+    attempted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
 class HotspotGuideAISearchRun(Timestamped, Base):

@@ -16,6 +16,7 @@ from app.hotspots.guides import (
     GuideCandidate,
     YouTubeGuideProvider,
     backfill_guides_once,
+    backfill_locales,
     canonical_external_url,
     classify_content_locale,
     consume_search_budget,
@@ -342,7 +343,13 @@ async def test_guide_backfill_stops_as_soon_as_the_daily_budget_is_gone(
 
     # Stops after the exhausted hotspot instead of burning the rest of the batch.
     assert calls == ["a", "b"]
-    assert report == {"skipped": False, "attempted": 2, "created": 4, "exhausted": True}
+    assert report == {
+        "skipped": False,
+        "locale": "zh-TW",
+        "attempted": 2,
+        "created": 4,
+        "exhausted": True,
+    }
 
 
 @pytest.mark.asyncio
@@ -363,7 +370,13 @@ async def test_guide_backfill_keeps_going_while_one_provider_still_answers(
     monkeypatch.setattr("app.hotspots.guides.discover_guides", fake_discover)
     report = await backfill_guides_once(session, _backfill_settings(), redis)
 
-    assert report == {"skipped": False, "attempted": 2, "created": 2, "exhausted": False}
+    assert report == {
+        "skipped": False,
+        "locale": "zh-TW",
+        "attempted": 2,
+        "created": 2,
+        "exhausted": False,
+    }
 
 
 def test_guideless_hotspots_excludes_covered_rows_and_ranks_verified_first() -> None:
@@ -376,6 +389,93 @@ def test_guideless_hotspots_excludes_covered_rows_and_ranks_verified_first() -> 
     assert "hotspot_guides" in sql
     assert "ORDER BY CASE WHEN (travel_hotspots.map_match_status = 'verified') THEN 0" in sql
     assert "LIMIT 10" in sql
+
+
+def test_backfill_locales_is_a_comma_list_in_pass_order() -> None:
+    assert backfill_locales(_backfill_settings()) == ["zh-TW"]
+    assert backfill_locales(
+        _backfill_settings(hotspot_guide_backfill_locale=" ja, ko ,ja, en-GB, ,zh-TW")
+    ) == ["ja", "ko", "zh-TW"]
+    assert backfill_locales(_backfill_settings(hotspot_guide_backfill_locale="")) == ["zh-TW"]
+
+
+def test_guideless_hotspots_for_a_locale_skip_pairs_tried_this_month() -> None:
+    sql = str(
+        guideless_hotspots_statement(
+            10, "ja", retry_after=datetime(2026, 8, 7, tzinfo=UTC)
+        ).compile(dialect=postgresql.dialect(), compile_kwargs={"literal_binds": True})
+    )
+    assert "hotspot_guides.locale = 'ja'" in sql
+    assert "hotspot_guide_backfill_attempts.locale = 'ja'" in sql
+    assert sql.count("NOT (EXISTS") == 2
+    # Without a locale the older question is asked: no guide in any language at all.
+    plain = str(guideless_hotspots_statement(10).compile(dialect=postgresql.dialect()))
+    assert "locale" not in plain and "backfill_attempts" not in plain
+
+
+@pytest.mark.asyncio
+async def test_guide_backfill_finishes_one_locale_before_starting_the_next(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A run takes its batch from the first locale that still has an uncovered hotspot."""
+    session = AsyncMock(spec=AsyncSession)
+    covered, pending = MagicMock(), MagicMock()
+    covered.all.return_value = []
+    pending.all.return_value = [_hotspot("a")]
+    session.scalars.side_effect = [covered, pending]
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    searched: list[list[str]] = []
+
+    async def fake_discover(_session, _settings, _hotspot, locales, **_kwargs):
+        searched.append(list(locales))
+        return {
+            "created": 0,
+            "providers": {"youtube": "ready", "brave": "not_configured"},
+            "errors": [],
+        }
+
+    monkeypatch.setattr("app.hotspots.guides.discover_guides", fake_discover)
+    report = await backfill_guides_once(
+        session, _backfill_settings(hotspot_guide_backfill_locale="zh-TW,ja"), redis
+    )
+
+    assert searched == [["ja"]]
+    assert report == {
+        "skipped": False,
+        "locale": "ja",
+        "attempted": 1,
+        "created": 0,
+        "exhausted": False,
+    }
+    # A search that ran and found nothing is written down, so the pair waits its turn
+    # instead of being searched again on the next run.
+    session.execute.assert_awaited_once()
+
+
+@pytest.mark.asyncio
+async def test_guide_backfill_only_records_searches_that_actually_ran(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    session = _session_returning([_hotspot("a"), _hotspot("b"), _hotspot("c")])
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    states = iter(
+        [
+            {"youtube": "ready", "brave": "ready"},
+            {"youtube": "quota_exhausted", "brave": "ready"},
+            {"youtube": "quota_exhausted", "brave": "quota_exhausted"},
+        ]
+    )
+
+    async def fake_discover(*_args, **_kwargs):
+        return {"created": 0, "providers": next(states), "errors": []}
+
+    monkeypatch.setattr("app.hotspots.guides.discover_guides", fake_discover)
+    report = await backfill_guides_once(session, _backfill_settings(), redis)
+
+    assert report["attempted"] == 3 and report["exhausted"] is True
+    # Two hotspots were searched by at least one provider. The third was refused by
+    # both, so nothing was learned about it and it stays in the queue.
+    assert session.execute.await_count == 2
 
 
 def _quota_response() -> httpx.Response:

@@ -265,6 +265,83 @@ async def test_0044_refuses_a_status_outside_the_vocabulary() -> None:
         await isolated.dispose()
 
 
+def _exercise_0045(connection: Connection) -> None:
+    for table, constraint in (
+        ("travel_foods", "ck_travel_food_source"),
+        ("food_localizations", "ck_food_localization_source"),
+    ):
+        connection.execute(sa.text(f"ALTER TABLE {table} DROP CONSTRAINT {constraint}"))
+        connection.execute(sa.text(f"ALTER TABLE {table} DROP COLUMN source"))
+    food_id = uuid4()
+    connection.execute(
+        sa.text(
+            "INSERT INTO travel_foods (id, slug, country_code, local_name, romanized_name, "
+            "food_kind, meal_types, ingredient_tags, dietary_notes, search_text, source_urls, "
+            "review_status, is_active, display_order, created_at, updated_at) VALUES "
+            "(:id, :slug, 'JP', '寿司', 'sushi', 'main', '[]', '[]', '[]', 'sushi', '[]', "
+            "'approved', true, 1, now(), now())"
+        ),
+        {"id": food_id, "slug": f"dead-branch-{food_id.hex[:8]}"},
+    )
+    connection.execute(
+        sa.text(
+            "INSERT INTO food_localizations (id, food_id, locale, name, summary, created_at, "
+            "updated_at) VALUES (:id, :food_id, 'en', 'Sushi', 'Sushi.', now(), now())"
+        ),
+        {"id": uuid4(), "food_id": food_id},
+    )
+
+    run_upgrade(connection, "0045_food_seed_ownership")
+
+    # Every row that existed before the column is the seed's: see the migration docstring
+    # for why that is a measurement, not an assumption.
+    dish_source = sa.text("SELECT source FROM travel_foods WHERE id = :id")
+    assert connection.scalar(dish_source, {"id": food_id}) == "seed"
+    assert (
+        connection.scalar(
+            sa.text("SELECT source FROM food_localizations WHERE food_id = :id"), {"id": food_id}
+        )
+        == "seed"
+    )
+    inspector = sa.inspect(connection)
+    assert "ck_travel_food_source" in {
+        c["name"] for c in inspector.get_check_constraints("travel_foods")
+    }
+    assert "ck_food_localization_source" in {
+        c["name"] for c in inspector.get_check_constraints("food_localizations")
+    }
+
+
+def _exercise_0046(connection: Connection) -> None:
+    connection.execute(sa.text("DROP TABLE hotspot_guide_backfill_attempts"))
+    run_upgrade(connection, "0046_guide_backfill_attempts")
+    inspector = sa.inspect(connection)
+    assert "hotspot_guide_backfill_attempts" in set(inspector.get_table_names())
+    assert {c["name"] for c in inspector.get_columns("hotspot_guide_backfill_attempts")} == {
+        "id",
+        "hotspot_id",
+        "locale",
+        "outcome",
+        "created_count",
+        "attempted_at",
+    }
+    assert "uq_hotspot_guide_backfill_attempt" in {
+        c["name"] for c in inspector.get_unique_constraints("hotspot_guide_backfill_attempts")
+    }
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_0045_marks_every_existing_dish_and_localization_as_the_seeds() -> None:
+    async with engine.connect() as connection:
+        await connection.run_sync(in_a_rolled_back_transaction(_exercise_0045))
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_0046_creates_the_backfill_attempt_ledger() -> None:
+    async with engine.connect() as connection:
+        await connection.run_sync(in_a_rolled_back_transaction(_exercise_0046))
+
+
 @pytest.mark.asyncio(loop_scope="module")
 async def test_the_rollback_left_the_shared_schema_intact() -> None:
     """The other integration modules run against the same database afterwards."""
@@ -273,11 +350,15 @@ async def test_the_rollback_left_the_shared_schema_intact() -> None:
             lambda sync: {c["name"] for c in sa.inspect(sync).get_columns("trip_plans")}
         )
         tables = await connection.run_sync(lambda sync: set(sa.inspect(sync).get_table_names()))
+        food_columns = await connection.run_sync(
+            lambda sync: {c["name"] for c in sa.inspect(sync).get_columns("food_localizations")}
+        )
         checks = await connection.run_sync(
             lambda sync: {
                 c["name"] for c in sa.inspect(sync).get_check_constraints("travel_hotspots")
             }
         )
     assert {"notes", "budget_amount", "cost_currency"} <= columns
-    assert {"trip_day_notes", "trip_expenses"} <= tables
+    assert {"trip_day_notes", "trip_expenses", "hotspot_guide_backfill_attempts"} <= tables
     assert "ck_travel_hotspot_review_status" in checks
+    assert "source" in food_columns

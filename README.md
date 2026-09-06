@@ -97,6 +97,13 @@ client IP header itself.
 docker compose -f docker-compose.prod.yml up --build -d
 ```
 
+That command builds and starts the web and API images together, and the web build
+assumes it. The usage catalog is where the two can visibly drift: `apps/web/lib/usage-catalog.ts`
+lists every metered operation, and a web build that knows an operation the running API does not
+price yet charges that one operation the default cost of one use and logs the missing key when the
+page loads, instead of switching every metered surface to its unavailable state. Deploy the API
+first or both together; never the web alone ahead of an API change that adds an operation.
+
 The production Compose file runs API processes as non-root users, drops Linux
 capabilities, and rejects startup when required secrets are missing or unsafe.
 

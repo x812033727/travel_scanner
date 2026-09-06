@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-food-seed-counts-are-hardcoded-twelve
 title: food seed counts are hardcoded twelve times and only CI can see them
-status: open
+status: in-progress
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T04:27:51Z
 created_at: 2026-09-06T00:55:47Z
 completed_at:
-branch:
+branch: claude/api-p2-data
 depends_on: []
 scope:
   - apps/api/tests/test_food_integration.py
@@ -33,19 +33,19 @@ intended". But twelve of them, updated by hand, is a lot of friction for that si
 
 ## Definition of done
 
-- [ ] Growing the seed catalog does not require editing a list of unrelated numbers.
-- [ ] A seed change that is genuinely unintended still fails something.
+- [x] Growing the seed catalog does not require editing a list of unrelated numbers.
+- [x] A seed change that is genuinely unintended still fails something.
 
 ## Steps
 
-- [ ] Split the assertions into two kinds: a few canaries that stay hardcoded (dish count,
+- [x] Split the assertions into two kinds: a few canaries that stay hardcoded (dish count,
       merchant count) and the derived totals (link counts, source counts, filtered subsets)
       that are pure functions of the seed modules.
-- [ ] Compute the derived ones from `MERCHANT_SEEDS` / `FOOD_SEEDS` /
+- [x] Compute the derived ones from `MERCHANT_SEEDS` / `FOOD_SEEDS` /
       `MERCHANT_DIRECT_SOURCE_SEEDS` rather than restating them. That is not tautological
       for these: the test is checking that the seeder *wrote what the catalog describes*,
       which is a real property.
-- [ ] Leave a comment saying which numbers are canaries and why, so the next person does not
+- [x] Leave a comment saying which numbers are canaries and why, so the next person does not
       re-hardcode the derived ones.
 
 ## How to verify
@@ -75,3 +75,15 @@ merchants whose official_website_url is filled 28   (JP 16, TW 14, SG 6 by count
 
 Related: `2026-09-06-ci-should-fail-a-branch-that` covers the other half of the same
 structural problem, which is that a red `api` on main does not stop the next merge.
+
+2026-09-06 claude-fable-5-1: two canaries stay hardcoded (`DISH_COUNT` = 80,
+`MERCHANT_COUNT` = 173, each also asserted equal to the seed module's length so the
+canary and the module cannot drift silently). Everything else is derived at module
+level from `FOOD_SEEDS`, `MERCHANT_SEEDS`, `MERCHANT_DIRECT_SOURCE_SEEDS`,
+`CATEGORY_SEEDS`, `ALL_AREA_SEEDS` and `DESTINATIONS`: localizations, merchant-dish
+links, sources (one destination-context source per merchant plus every first-party
+source), category links, merchants with a seed area, direct-evidence and
+official-website merchants overall and per country, Seoul's Korean dishes, the
+country and city facets. The comment above the constants says which are canaries and
+why the rest must not be re-hardcoded. The area count had already been derived when
+the trend districts landed (#190).

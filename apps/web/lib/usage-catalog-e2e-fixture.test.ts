@@ -4,7 +4,8 @@ import { describe, expect, it } from "vitest";
 import { isUsageCatalog, usageOperations } from "./usage-catalog";
 
 // tools/e2e-runtime-api.mjs hardcodes its own copy of the operation list. When
-// the two drift, isUsageCatalog() rejects the whole catalog for a single
+// the two drift, the browser suite prices the missing operation at the default
+// cost and logs it (see normalizeUsageCatalog), which hides a fixture that is
 // missing key, every metered surface renders its "unavailable" branch, and the
 // browser suite fails on pages that have nothing to do with the change — a
 // cascade that reads as flakiness. Fail here instead, with the name in hand.

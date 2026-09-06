@@ -277,8 +277,37 @@ async def seed_food_taxonomy(
     return categories, areas
 
 
+# The dish columns the seed catalog owns. Review status, activation and the relations
+# are not among them: an administrator's review decision survives every re-seed, and
+# links only ever grow (see the destination comment further down).
+SEED_OWNED_FOOD_FIELDS: tuple[str, ...] = (
+    "country_code",
+    "local_name",
+    "romanized_name",
+    "food_kind",
+    "meal_types",
+    "ingredient_tags",
+    "dietary_notes",
+    "search_text",
+    "source_urls",
+    "display_order",
+)
+
+
+def apply_seed_fields(food: TravelFood, seed: Any) -> None:
+    for field in SEED_OWNED_FOOD_FIELDS:
+        value = getattr(seed, field)
+        setattr(food, field, list(value) if isinstance(value, tuple) else value)
+
+
 async def seed_food_catalog(session: AsyncSession) -> int:
-    """Upsert the reviewed catalog and its approved public food-area links."""
+    """Upsert the reviewed catalog and its approved public food-area links.
+
+    Rows the seed wrote (``source = 'seed'``) are reconciled with the catalog, so a
+    corrected name or summary lands on the next run. Rows an administrator edited
+    (``source = 'admin'``, set by the admin router the moment a value changes) are
+    never rewritten, whatever the seed says.
+    """
 
     existing_foods = {row.slug: row for row in (await session.scalars(select(TravelFood))).all()}
     localization_rows = (await session.scalars(select(FoodLocalization))).all()
@@ -293,28 +322,23 @@ async def seed_food_catalog(session: AsyncSession) -> int:
     for seed in FOOD_SEEDS:
         food = existing_foods.get(seed.slug)
         if food is None:
-            food = TravelFood(slug=seed.slug)
-            food.country_code = seed.country_code
-            food.local_name = seed.local_name
-            food.romanized_name = seed.romanized_name
-            food.food_kind = seed.food_kind
-            food.meal_types = list(seed.meal_types)
-            food.ingredient_tags = list(seed.ingredient_tags)
-            food.dietary_notes = list(seed.dietary_notes)
-            food.search_text = seed.search_text
-            food.source_urls = list(seed.source_urls)
+            food = TravelFood(slug=seed.slug, source="seed")
             food.review_status = PUBLIC_FOOD_STATUS
             food.is_active = True
-            food.display_order = seed.display_order
+            apply_seed_fields(food, seed)
             session.add(food)
             await session.flush()
+        elif food.source == "seed":
+            apply_seed_fields(food, seed)
         for locale, name in seed.localized_names.items():
             localization = localizations.get((food.id, locale))
             if localization is None:
-                localization = FoodLocalization(food_id=food.id, locale=locale)
-                localization.name = name
-                localization.summary = seed.localized_summaries[locale]
+                localization = FoodLocalization(food_id=food.id, locale=locale, source="seed")
                 session.add(localization)
+            elif localization.source != "seed":
+                continue
+            localization.name = name
+            localization.summary = seed.localized_summaries[locale]
         # Add the links the seed lists that are missing, rather than only filling in a dish
         # that has none. Extending an existing dish to another city is how a city joins the
         # catalog, and the previous "all or nothing" test made that a silent no-op. Links
