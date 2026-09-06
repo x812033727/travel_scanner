@@ -3,9 +3,16 @@ import { expect, test, type Page } from "@playwright/test";
 // The trip calendar only renders one month; walk forward until the day exists.
 async function pickTripDay(page: Page, iso: string) {
   const day = page.locator(`[data-date="${iso}"]`);
+  const nextMonth = page.getByRole("button", { name: "下個月" });
+  // The calendar fills its public holidays in after it mounts, and the phone layout keeps
+  // fixed furniture at both edges of the viewport, so let the page settle and put the
+  // button in the middle of the screen before aiming at it.
+  await page.waitForLoadState("networkidle").catch(() => {});
   for (let attempt = 0; attempt < 24 && (await day.count()) === 0; attempt += 1) {
-    await page.getByRole("button", { name: "下個月" }).click();
+    await nextMonth.evaluate((element) => element.scrollIntoView({ block: "center" }));
+    await nextMonth.click();
   }
+  await day.evaluate((element) => element.scrollIntoView({ block: "center" }));
   await day.click();
 }
 
@@ -76,9 +83,12 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await expect(page).toHaveURL(/\/trips\/new$/, { timeout: 15_000 });
 
   await page.getByLabel("旅程名稱").fill("東京固定餐食行程");
+  // Dates first: the place suggestions open over the calendar below them and only close
+  // on Escape or on choosing one, and a click Playwright refuses to dispatch is not an
+  // outside click — so filling the destination first can wedge the month buttons shut.
+  await pickTripDay(page, "2026-11-10");
+  await pickTripDay(page, "2026-11-10");
   await page.getByLabel("目的地").fill("日本東京");
-  await pickTripDay(page, "2026-11-10");
-  await pickTripDay(page, "2026-11-10");
   await expect(page.getByText(/共 1 天/)).toBeVisible();
   await page.getByRole("button", { name: /下一步/ }).click();
   await page.getByRole("button", { name: /下一步/ }).click();

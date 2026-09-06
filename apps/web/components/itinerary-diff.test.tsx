@@ -124,6 +124,22 @@ async function submit(intent: string) {
 }
 
 describe("intent bar", () => {
+  it("stays folded away on a phone until the reader opens it", () => {
+    render(<ItineraryDiff trip={trip} activeDay="2026-11-12" onApplied={vi.fn()} />);
+
+    // Open, this bar is four rows of controls floating over the itinerary on a
+    // phone; the desktop layout keeps it open through `lg:grid`.
+    const toggle = screen.getByRole("button", { name: /想改什麼？/ });
+    expect(toggle.getAttribute("aria-expanded")).toBe("false");
+    const form = screen.getByLabelText("想改什麼？").closest("form");
+    expect(form?.className).toContain("hidden lg:grid");
+
+    fireEvent.click(toggle);
+
+    expect(toggle.getAttribute("aria-expanded")).toBe("true");
+    expect(form?.className).not.toContain("hidden");
+  });
+
   it("sends the sentence, the day and the current version, then shows the diff without writing", async () => {
     const fetchMock = vi.fn(async () => ok(preview()));
     vi.stubGlobal("fetch", fetchMock);

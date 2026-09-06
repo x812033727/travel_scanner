@@ -8,6 +8,7 @@ from uuid import UUID, uuid4
 
 from fastapi import APIRouter, Depends, Header
 from fastapi.responses import RedirectResponse, StreamingResponse
+from pydantic import ValidationError
 from redis import Redis as SyncRedis
 from rq import Queue
 from sqlalchemy import select
@@ -194,7 +195,7 @@ async def refresh_offer(offer_id: UUID, user: CurrentUser, session: Session) -> 
     )
     if provider is None:
         raise AppError(503, "provider_unavailable", "原始航班供應商目前無法使用")
-    offer = FlightOffer.model_validate(record.data)
+    offer = _stored_offer(record)
     try:
         try:
             original_query = SearchCreate.model_validate(search.request_json)
@@ -231,6 +232,44 @@ async def _owned_search(search_id: UUID, user: CurrentUser, session: AsyncSessio
     return search
 
 
+def _stored_query(search: SearchRequest) -> SearchCreate:
+    """The query a search was run with, or 409 if this row was never that kind of search.
+
+    Two routers write ``SearchRequest.request_json`` and they write different shapes: this
+    one stores a ``SearchCreate``, while the live back-to-back fare endpoint stores its own
+    payload, which has no modules and no dates and so can never validate here. Ownership is
+    the only thing ``_owned_search`` checks, so without this the mismatch reached a bare
+    ``model_validate`` and left as a 500.
+    """
+    try:
+        return SearchCreate.model_validate(search.request_json)
+    except ValidationError as exc:
+        raise AppError(
+            409, "search_not_expandable", "這次搜尋不是可以再擴充航班來源的類型"
+        ) from exc
+
+
+def _stored_offers(search: SearchRequest) -> list[FlightOffer]:
+    """The flight offers saved with a search, as a readable conflict when they no longer parse."""
+    try:
+        return [
+            ensure_itinerary_key(FlightOffer.model_validate(item))
+            for item in search.result_json.get("modules", {}).get("flight", [])
+        ]
+    except ValidationError as exc:
+        raise AppError(
+            409, "search_offers_unreadable", "這次搜尋存下來的航班報價已無法讀取"
+        ) from exc
+
+
+def _stored_offer(record: FlightOfferRecord) -> FlightOffer:
+    """One saved offer. A row this service wrote itself, so failing to read it is a conflict."""
+    try:
+        return FlightOffer.model_validate(record.data)
+    except ValidationError as exc:
+        raise AppError(409, "offer_unreadable", "這筆報價已無法讀取") from exc
+
+
 @router.post("/searches/{search_id}/flight-sources/expand")
 async def expand_flight_sources(
     search_id: UUID,
@@ -239,6 +278,7 @@ async def expand_flight_sources(
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
 ) -> dict[str, Any]:
     search = await _owned_search(search_id, user, session)
+    query = _stored_query(search)
     redis = get_redis()
     replay_key = f"search:{search_id}:flight-expand:{idempotency_key}"
     if await redis.exists(replay_key):
@@ -261,11 +301,7 @@ async def expand_flight_sources(
         ).all()
     )
     tried = {name for row in tried_rows for name in row.provider.split(",") if name}
-    query = SearchCreate.model_validate(search.request_json)
-    existing = [
-        ensure_itinerary_key(FlightOffer.model_validate(item))
-        for item in search.result_json.get("modules", {}).get("flight", [])
-    ]
+    existing = _stored_offers(search)
     by_source = {(item.provider, item.provider_offer_id): item for item in existing}
     attempts: list[dict[str, Any]] = list(
         search.result_json.get("provider_statuses", {}).get("flight", [])
@@ -354,10 +390,7 @@ async def enrich_search_flight_statuses(
     settings = await load_runtime_settings(session)
     if not settings.flightaware_configured:
         raise AppError(503, "flightaware_not_configured", "FlightAware 航班動態尚未啟用")
-    offers = [
-        ensure_itinerary_key(FlightOffer.model_validate(item))
-        for item in search.result_json.get("modules", {}).get("flight", [])
-    ]
+    offers = _stored_offers(search)
     groups: dict[str, FlightOffer] = {}
     for offer in sorted(offers, key=lambda value: value.total_price):
         groups.setdefault(offer.itinerary_key or str(offer.id), offer)
@@ -406,7 +439,7 @@ async def clickout_offer(offer_id: UUID, user: CurrentUser, session: Session) ->
     record = next((item for item in records if item.data.get("id") == str(offer_id)), None)
     if record is None:
         raise AppError(404, "offer_not_found", "找不到這筆報價")
-    offer = FlightOffer.model_validate(record.data)
+    offer = _stored_offer(record)
     if not offer.clickout_available or offer.expires_at <= datetime.now(UTC):
         raise AppError(409, "offer_expired", "報價已過期，前往訂票前請先重新驗價")
     provider = build_flight_provider(

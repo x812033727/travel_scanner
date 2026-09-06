@@ -178,7 +178,7 @@ export function TripWeatherPanel({
                 <WeatherIcon type={day.condition.type} className="my-2 text-sky-700" />
                 <p className="truncate text-xs text-[var(--muted)]" title={day.condition.description}>{day.condition.description}</p>
                 <p className="mt-1 text-sm font-bold tabular-nums">{Math.round(day.min_temperature_c)}°–{Math.round(day.max_temperature_c)}°</p>
-                <p className="mt-1 flex items-center gap-1 text-[.68rem] text-sky-800"><Umbrella size={12} />{rainValue(day)}</p>
+                <p className="mt-1 flex items-center gap-1 text-xs text-sky-800"><Umbrella size={12} />{rainValue(day)}</p>
               </article>
             );
           })}
@@ -186,7 +186,7 @@ export function TripWeatherPanel({
       )}
 
       {weather.warnings.map((warning) => <p key={warning} className="mt-3 text-xs text-amber-900">{warning}</p>)}
-      <p className="mt-3 text-[.68rem] text-[var(--muted)]">{t("sourceLine", { attribution: weather.attribution, freshness: weather.cache_status === "hit" ? t("cached") : t("fresh") })}</p>
+      <p className="mt-3 text-xs text-[var(--muted)]">{t("sourceLine", { attribution: weather.attribution, freshness: weather.cache_status === "hit" ? t("cached") : t("fresh") })}</p>
     </section>
   );
 }

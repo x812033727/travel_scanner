@@ -604,7 +604,7 @@ export function AdminHotspotGuidesPanel() {
                 {item.complete ? t("complete") : t("missingContent")}
               </span>
             </div>
-            <div className="mt-3 grid grid-cols-5 gap-1 text-center text-[10px]">
+            <div className="mt-3 grid grid-cols-5 gap-1 text-center text-xs">
               {locales.map((value) => (
                 <div key={value} className="rounded-lg bg-[var(--paper)] p-1.5">
                   <strong>{value}</strong>
@@ -748,12 +748,12 @@ export function AdminHotspotGuidesPanel() {
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
                   {item.discovery_method === "ai_research" && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-1 text-[11px] font-bold text-violet-800">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-1 text-xs font-bold text-violet-800">
                       <Bot size={12} />
                       AI · {item.ai_provider}
                     </span>
                   )}
-                  <span className="rounded-full bg-[var(--paper)] px-2 py-1 text-[11px]">
+                  <span className="rounded-full bg-[var(--paper)] px-2 py-1 text-xs">
                     {item.locale} · {t(item.type)}
                   </span>
                 </div>
@@ -775,7 +775,7 @@ export function AdminHotspotGuidesPanel() {
                       {item.recommendation_reason}
                     </p>
                     {item.search_query && (
-                      <p className="mt-1 text-[11px] text-[var(--muted)]">
+                      <p className="mt-1 text-xs text-[var(--muted)]">
                         {t("searchQuery")}: {item.search_query}
                       </p>
                     )}

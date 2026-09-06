@@ -52,7 +52,7 @@ export function FlightDateOptions({
             <span className="block text-xs font-semibold text-[var(--teal-dark)]">{option.is_current ? "目前日期" : option.shift_days > 0 ? `晚 ${option.shift_days} 日` : `早 ${Math.abs(option.shift_days)} 日`}</span>
             <span className="mt-1 block text-sm font-bold">{compactDate(option.departure_date)}{option.return_date ? ` → ${compactDate(option.return_date)}` : ""}</span>
             <span className="mt-1 block text-sm">{twd.format(Number(option.lowest_price))}</span>
-            <span className="mt-1 block text-[11px] text-[var(--muted)]">{option.is_current ? "即時結果" : "估計最低價"}</span>
+            <span className="mt-1 block text-xs text-[var(--muted)]">{option.is_current ? "即時結果" : "估計最低價"}</span>
           </button>;
         })}
       </div>
