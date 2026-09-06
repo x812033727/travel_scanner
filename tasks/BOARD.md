@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**50 open · 0 in progress · 0 blocked · 2 in review · 3 done**
+**51 open · 1 in progress · 0 blocked · 2 in review · 3 done**
 
 ## Ready to claim
 
@@ -58,7 +58,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [最佳化用距離估計排順序、系統卡變更只作廢碰到的路段、步行汽車不看偏好](open/2026-09-06-route-optimizer-estimates.md) | claude-fable-5.1 | 2026-09-06T03:35:09Z | `claude/route-optimizer-estimates` |
 
 ## In review
 
@@ -77,6 +79,7 @@ _Nothing here._
 | P2 | [日期變更後行程價格停在舊報價且無法重新查價](open/2026-09-06-trip-stale-price-after-reschedule.md) | active work in the same scope |
 | P2 | [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](open/2026-09-06-reoptimize-no-version-check.md) | active work in the same scope |
 | P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | active work in the same scope |
+| P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | depends on 2026-09-06-route-recompute-reuses-saved-segments |
 | P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | depends on 2026-09-06-stale-gemini-model-help |
 | P3 | [誠實路段守衛：拒絕 0 分鐘路段與漏掉步行段的轉乘方案](open/2026-09-06-honest-leg-guard.md) | active work in the same scope |
 

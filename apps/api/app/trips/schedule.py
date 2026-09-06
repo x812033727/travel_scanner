@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import UTC, date, datetime, time, timedelta
 from decimal import Decimal
 from typing import Any, Literal, cast
-from uuid import uuid4
+from uuid import UUID, uuid4
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -542,7 +542,7 @@ def apply_schedule_defaults(trip: TripPlan, rows: list[TripPlanItem]) -> None:
 
 def sync_primary_lodging(
     trip: TripPlan, rows: list[TripPlanItem], lodging: dict[str, Any]
-) -> None:
+) -> set[UUID]:
+    """Apply the lodging to every hotel anchor; return the ids of the rows that changed."""
     trip.data = {**trip.data, "primary_lodging": lodging}
-    for item in rows:
-        _sync_lodging(item, lodging)
+    return {item.id for item in rows if _sync_lodging(item, lodging)}

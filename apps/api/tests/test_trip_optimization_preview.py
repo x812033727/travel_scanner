@@ -1,4 +1,5 @@
 from datetime import UTC, date, datetime
+from types import SimpleNamespace
 from typing import Any
 from uuid import UUID, uuid4
 
@@ -22,7 +23,14 @@ from app.trips.routing import RoutePoint, RouteSegment
 DAY = date(2026, 11, 10)
 
 
-def _row(title: str, hour: int, *, locked: bool = False, fixed: bool = False) -> TripPlanItem:
+def _row(
+    title: str,
+    hour: int,
+    *,
+    locked: bool = False,
+    fixed: bool = False,
+    latitude: float = 35.0,
+) -> TripPlanItem:
     start = datetime(2026, 11, 10, hour, tzinfo=UTC)
     return TripPlanItem(
         id=uuid4(),
@@ -31,7 +39,7 @@ def _row(title: str, hour: int, *, locked: bool = False, fixed: bool = False) ->
         day_date=DAY,
         position=0,
         title=title,
-        latitude=35.0,
+        latitude=latitude,
         longitude=139.0,
         start_time=start,
         end_time=start.replace(hour=hour + 1),
@@ -101,9 +109,10 @@ def test_preview_item_matches_the_shape_the_planner_renders() -> None:
 
 
 class _StubRouteService:
-    """Return a fixed travel-time matrix instead of calling a provider."""
+    """Answer the proposed chain from a fixed matrix instead of calling a provider."""
 
     matrix: dict[tuple[UUID, UUID], int] = {}
+    calls: list[dict[str, Any]] = []
 
     def __init__(self, *_: object, **__: object) -> None:
         pass
@@ -112,8 +121,16 @@ class _StubRouteService:
         self,
         pairs: list[tuple[RoutePoint, RoutePoint, Any]],
         _preference: str,
-        **_kwargs: object,
+        **kwargs: object,
     ) -> list[RouteSegment | None]:
+        type(self).calls.append(
+            {
+                "pairs": [
+                    (origin.item_id, destination.item_id) for origin, destination, _ in pairs
+                ],
+                "travel_mode": kwargs.get("travel_mode"),
+            }
+        )
         return [
             RouteSegment(
                 from_item_id=origin.item_id,
@@ -130,17 +147,15 @@ class _StubRouteService:
 
 @pytest.mark.asyncio
 async def test_plan_reports_the_saving_without_touching_any_row(monkeypatch: Any) -> None:
-    first, second, third = _row("A", 9), _row("B", 11), _row("C", 13)
+    # B sits 4.4 km north of A, C only 0.6 km: by straight-line transit estimate
+    # A→B and B→C are 25 minutes each, A→C is 15.
+    first = _row("A", 9)
+    second = _row("B", 11, latitude=35.04)
+    third = _row("C", 13, latitude=35.005)
     for position, row in enumerate([first, second, third]):
         row.position = position
-    _StubRouteService.matrix = {
-        (first.id, second.id): 60,
-        (first.id, third.id): 10,
-        (third.id, second.id): 15,
-        (second.id, third.id): 15,
-        (second.id, first.id): 60,
-        (third.id, first.id): 10,
-    }
+    _StubRouteService.matrix = {}
+    _StubRouteService.calls = []
     monkeypatch.setattr("app.trips.router.RouteService", _StubRouteService)
     monkeypatch.setattr("app.trips.router.get_redis", fakeredis.aioredis.FakeRedis)
 
@@ -149,21 +164,51 @@ async def test_plan_reports_the_saving_without_touching_any_row(monkeypatch: Any
     )
 
     assert plan["changed"] is True
-    assert plan["total_duration_before_minutes"] == 75
-    assert plan["total_duration_after_minutes"] == 25
+    assert plan["total_duration_before_minutes"] == 50
+    assert plan["total_duration_after_minutes"] == 40
     day = plan["days"][0]
-    assert day["saved_minutes"] == 50
+    assert day["saved_minutes"] == 10
     assert [item["title"] for item in day["before"]] == ["A", "B", "C"]
     assert [item["title"] for item in day["after"]] == ["A", "C", "B"]
     assert day["order"] == [str(first.id), str(third.id), str(second.id)]
     # Planning must not renumber anything: apply replays the order, preview does not write.
     assert [row.position for row in (first, second, third)] == [0, 1, 2]
+    # The matrix is estimated; only the proposed chain (two legs) reaches a provider.
+    assert _StubRouteService.calls == [
+        {"pairs": [(first.id, third.id), (third.id, second.id)], "travel_mode": "transit"}
+    ]
+
+
+@pytest.mark.asyncio
+async def test_plan_routes_the_proposed_chain_in_the_day_travel_mode(monkeypatch: Any) -> None:
+    first, second = _row("A", 9), _row("B", 11, latitude=35.01)
+    _StubRouteService.calls = []
+    monkeypatch.setattr("app.trips.router.RouteService", _StubRouteService)
+    monkeypatch.setattr("app.trips.router.get_redis", fakeredis.aioredis.FakeRedis)
+    walking_day = SimpleNamespace(
+        day_date=DAY, default_travel_mode="walk", default_buffer_minutes=15
+    )
+
+    plan = await plan_itinerary_optimization(
+        _trip(),
+        [first, second],
+        [DAY],
+        "FEWER_TRANSFERS",
+        Settings(),
+        day_settings=[walking_day],  # type: ignore[list-item]
+    )
+
+    assert _StubRouteService.calls[0]["travel_mode"] == "walk"
+    assert all(segment.buffer_minutes == 15 for segment in plan["segments"])
+    # 1.1 km on foot at 4.5 km/h, rounded up to five minutes.
+    assert plan["total_duration_before_minutes"] == 15
 
 
 @pytest.mark.asyncio
 async def test_plan_leaves_locked_and_fixed_items_where_they_are(monkeypatch: Any) -> None:
-    first, pinned, third = _row("A", 9), _row("B", 11, fixed=True), _row("C", 13)
-    _StubRouteService.matrix = {(first.id, third.id): 5, (third.id, first.id): 5}
+    first = _row("A", 9)
+    pinned = _row("B", 11, fixed=True, latitude=35.02)
+    third = _row("C", 13, latitude=35.005)
     monkeypatch.setattr("app.trips.router.RouteService", _StubRouteService)
     monkeypatch.setattr("app.trips.router.get_redis", fakeredis.aioredis.FakeRedis)
 

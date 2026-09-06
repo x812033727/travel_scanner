@@ -540,7 +540,7 @@ async def select_stay_hotel(
             "expires_at": offer.expires_at.isoformat(),
         },
     }
-    sync_primary_lodging(trip, context.rows, lodging)
+    changed_rows = sync_primary_lodging(trip, context.rows, lodging)
     return await persist_system_schedule_change(
         session,
         trip,
@@ -548,6 +548,7 @@ async def select_stay_hotel(
         payload.version,
         context.rows,
         warning=LODGING_WARNING,
+        changed_item_ids=changed_rows,
     )
 
 

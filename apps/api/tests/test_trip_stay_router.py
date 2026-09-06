@@ -213,8 +213,9 @@ def harness(monkeypatch: pytest.MonkeyPatch) -> dict[str, Any]:
         *,
         warning: str,
         target_day: date | None = None,
+        changed_item_ids: set[Any] | None = None,
     ) -> dict[str, Any]:
-        persisted.append((expected_version, warning))
+        persisted.append((expected_version, warning, changed_item_ids))
         return {"id": str(target.id), "version": expected_version + 1}
 
     async def no_rate_limit(*_args: Any, **_kwargs: Any) -> None:
@@ -391,7 +392,11 @@ async def test_select_writes_provider_lodging_and_persists_with_version(
     )
 
     assert result["version"] == 4
-    assert harness["persisted"] == [(3, stay_router.LODGING_WARNING)]
+    hotel_rows = {
+        row.id for row in harness["rows"] if row.system_role in {"hotel_start", "hotel_end"}
+    }
+    # Only the hotel anchors changed place, so only their legs are handed back for routing.
+    assert harness["persisted"] == [(3, stay_router.LODGING_WARNING, hotel_rows)]
     lodging = trip.data["primary_lodging"]
     assert lodging["name"] == chosen["hotel_name"]
     assert lodging["selection_source"] == "user"
