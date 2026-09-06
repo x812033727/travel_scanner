@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**22 open · 4 in progress · 1 blocked · 0 in review · 35 done**
+**21 open · 4 in progress · 1 blocked · 0 in review · 38 done**
 
 ## Ready to claim
 
@@ -51,19 +51,18 @@ _Nothing here._
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P2 | [貼 Google Maps 連結加景點（待安排 inbox）](open/2026-09-06-paste-maps-links-ingest.md) | active work in the same scope |
-| P3 | [Admin help text tells operators to avoid the model now shipped](open/2026-09-06-stale-gemini-model-help.md) | active work in the same scope |
-| P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | depends on 2026-09-06-stale-gemini-model-help |
+| P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | active work in the same scope |
 | P3 | [行程狀態標籤與封面圖](open/2026-09-06-trip-status-and-cover.md) | active work in the same scope |
 
 ## Recently finished
 
 - 2026-09-06 [匯率改由 Currency-api 供應，Frankfurter 退為備援；行程報價與記帳顯示換算](done/2026-09-06-fx-currency-api.md)
 - 2026-09-06 [旅程天氣改由 MET Norway 供應，Google Weather 退為備援](done/2026-09-06-weather-met-norway.md)
+- 2026-09-06 [Admin help text tells operators to avoid the model now shipped](done/2026-09-06-stale-gemini-model-help.md)
+- 2026-09-06 [AI settings in the admin panel: vendor card, model dropdowns, per-feature models (web)](done/2026-09-06-ai-settings-web.md)
+- 2026-09-06 [Consolidate AI vendor keys, model catalog and per-feature models (API)](done/2026-09-06-ai-settings-api.md)
 - 2026-09-06 [529 個公開景點還沒有任何導覽內容](done/2026-09-06-hotspot-guide-coverage.md)
 - 2026-09-06 [52 個景點的地圖比對對不上，需要人工判斷](done/2026-09-06-hotspot-map-match-holdouts.md)
 - 2026-09-06 [482 個景點卡在人工審核佇列](done/2026-09-06-hotspot-review-backlog.md)
 - 2026-09-06 [6 個關東景點需要人工挑 Google Place ID](done/2026-09-06-kanto-place-ids.md)
 - 2026-09-06 [272 家店家裡只有 2 家有耐久座標，美食目錄幾乎發不出東西](done/2026-09-06-merchant-coordinate-backlog.md)
-- 2026-09-06 [Leftover Chinese copy on the search and trip pages outside the two components already converted](done/2026-09-06-leftover-chinese-copy-on-the-search.md)
-- 2026-09-06 [目的地目錄的國家與興趣標籤未五語系化](done/2026-09-06-destination-catalog-labels-i18n.md)
-- 2026-09-06 [navigation.spec.ts 兩個案例在 CI 間歇逾時](done/2026-09-06-flaky-navigation-e2e.md)

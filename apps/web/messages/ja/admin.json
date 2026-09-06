@@ -27,6 +27,19 @@
       "other": "その他"
     }
   },
+  "providerFields": {
+    "custom": "カスタム…",
+    "customPlaceholder": "モデル ID を入力",
+    "customInputLabel": "カスタムモデル ID：{field}",
+    "inheritPlanner": "旅程プランナーのモデルを使用",
+    "openai_model": { "label": "OpenAI モデル", "help": "旅程プランナーが OpenAI を呼び出すときのモデル。一覧にない ID は「カスタム…」を選んで入力してください。" },
+    "anthropic_model": { "label": "Claude モデル", "help": "旅程プランナーが Claude を呼び出すときのモデル。一覧にない ID は「カスタム…」を選んで入力してください。" },
+    "minimax_model": { "label": "MiniMax モデル", "help": "旅程プランナーが MiniMax を呼び出すときのモデル。一覧にない ID は「カスタム…」を選んで入力してください。" },
+    "hotspot_guide_ai_openai_model": { "label": "OpenAI モデル", "help": "スポット紹介検索のみに影響します。空欄なら旅程プランナーの OpenAI モデルを使います。" },
+    "hotspot_guide_ai_anthropic_model": { "label": "Claude モデル", "help": "スポット紹介検索のみに影響します。空欄なら旅程プランナーの Claude モデルを使います。" },
+    "hotspot_guide_ai_minimax_model": { "label": "MiniMax モデル", "help": "スポット紹介検索のみに影響します。空欄なら旅程プランナーの MiniMax モデルを使います。" },
+    "hotspot_guide_gemini_model": { "label": "Gemini モデル", "help": "Flash 系はスポット候補の生成に向きますが、根拠付きの記事ソース列挙は苦手です。Pro 系は新しい API キーでは使えないことがあるため、接続テストの結果を基準にしてください。" }
+  },
   "hotspotTabs": {
     "label": "スポット候補審査の作業エリア",
     "mobileLabel": "作業エリアを選択",

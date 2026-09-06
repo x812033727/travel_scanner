@@ -225,6 +225,139 @@ const layoutSnapshot = {
   audit: [],
 };
 
+const modelOptions = {
+  openai_model: [{ value: "openai-model-a", label: "OpenAI Model A" }, { value: "openai-model-b", label: "OpenAI Model B" }],
+  anthropic_model: [{ value: "claude-model-a", label: "Claude Model A" }],
+  minimax_model: [{ value: "minimax-model-a", label: "MiniMax Model A" }],
+};
+
+const aiVendorsProvider = {
+  provider: "ai_vendors",
+  label: "AI 供應商與金鑰",
+  description: "AI 金鑰集中管理",
+  enabled: true,
+  configured: true,
+  status: "ready",
+  status_message: "已設定：OpenAI",
+  config: {
+    openai_api_base_url: "https://api.openai.com/v1",
+    anthropic_api_base_url: "https://api.anthropic.com/v1",
+    minimax_api_base_url: "https://api.minimaxi.com/v1",
+    hotspot_guide_gemini_base_url: "https://generativelanguage.googleapis.com",
+  },
+  config_sources: {
+    openai_api_base_url: "environment",
+    anthropic_api_base_url: "environment",
+    minimax_api_base_url: "environment",
+    hotspot_guide_gemini_base_url: "environment",
+  },
+  secrets: {
+    openai_api_key: { configured: true, masked: "••••••••1234", source: "database" },
+    anthropic_api_key: { configured: false, source: "none" },
+    minimax_api_key: { configured: false, source: "none" },
+    hotspot_guide_gemini_api_key: { configured: false, source: "none" },
+  },
+};
+
+const aiPlannerProvider = {
+  provider: "ai_planner",
+  label: "AI 行程規劃",
+  description: "行程規劃",
+  enabled: true,
+  configured: true,
+  status: "ready",
+  status_message: "自動備援",
+  config: {
+    ai_planner_mode: "auto",
+    ai_planner_priority: "minimax,openai,anthropic",
+    openai_model: "openai-model-a",
+    anthropic_model: "claude-model-a",
+    minimax_model: "minimax-model-a",
+    ai_planner_timeout_seconds: 15,
+  },
+  config_sources: {
+    ai_planner_mode: "environment",
+    ai_planner_priority: "environment",
+    openai_model: "environment",
+    anthropic_model: "environment",
+    minimax_model: "environment",
+    ai_planner_timeout_seconds: "environment",
+  },
+  secrets: {},
+  field_options: modelOptions,
+};
+
+const aiGuideSearchProvider = {
+  provider: "ai_guide_search",
+  label: "AI 景點介紹搜尋",
+  description: "景點介紹搜尋",
+  enabled: true,
+  configured: true,
+  status: "ready",
+  status_message: "預設 minimax",
+  config: {
+    hotspot_guide_ai_default_provider: "minimax",
+    hotspot_guide_ai_openai_model: null,
+    hotspot_guide_ai_anthropic_model: null,
+    hotspot_guide_ai_minimax_model: null,
+    hotspot_guide_ai_timeout_seconds: 90,
+  },
+  config_sources: {
+    hotspot_guide_ai_default_provider: "environment",
+    hotspot_guide_ai_openai_model: "environment",
+    hotspot_guide_ai_anthropic_model: "environment",
+    hotspot_guide_ai_minimax_model: "environment",
+    hotspot_guide_ai_timeout_seconds: "environment",
+  },
+  secrets: {},
+  field_options: {
+    hotspot_guide_ai_openai_model: modelOptions.openai_model,
+    hotspot_guide_ai_anthropic_model: modelOptions.anthropic_model,
+    hotspot_guide_ai_minimax_model: modelOptions.minimax_model,
+  },
+};
+
+const geminiProvider = {
+  provider: "gemini_guides",
+  label: "Gemini 多語文章搜尋",
+  description: "Gemini 文章搜尋",
+  enabled: true,
+  configured: true,
+  status: "ready",
+  status_message: "Gemini API 已設定",
+  config: { hotspot_guide_gemini_model: "gemini-model-a", hotspot_guide_gemini_timeout_seconds: 45 },
+  config_sources: { hotspot_guide_gemini_model: "environment", hotspot_guide_gemini_timeout_seconds: "environment" },
+  secrets: {},
+  field_options: {
+    hotspot_guide_gemini_model: [
+      { value: "gemini-model-a", label: "Gemini Model A", description: "目前預設" },
+      { value: "gemini-model-b", label: "Gemini Model B" },
+    ],
+  },
+};
+
+const aiSnapshot = {
+  ...snapshot,
+  providers: [aiVendorsProvider, aiPlannerProvider, aiGuideSearchProvider, geminiProvider, ...snapshot.providers],
+};
+
+function stubAiFetch(value: unknown) {
+  const fetchMock = vi.fn(() => Promise.resolve(new Response(JSON.stringify(value), { status: 200 })));
+  vi.stubGlobal("fetch", fetchMock);
+  return fetchMock;
+}
+
+async function openAiCard(name: string) {
+  await screen.findByRole("heading", { name: "AI 供應商與金鑰" });
+  fireEvent.click(screen.getByRole("tab", { name }));
+  return screen.getByRole("heading", { name }).closest("section")!;
+}
+
+function savedBody(fetchMock: ReturnType<typeof vi.fn>) {
+  const request = fetchMock.mock.calls[1][1] as RequestInit;
+  return JSON.parse(String(request.body));
+}
+
 afterEach(() => vi.unstubAllGlobals());
 
 describe("AdminSettingsPanel", () => {
@@ -725,5 +858,164 @@ describe("AdminSettingsPanel", () => {
     expect(body.config.booking_demand_env).toBe("production");
     expect(body.config.booking_demand_affiliate_id).toBe("affiliate-456");
     expect(body.secrets.booking_demand_api_token).toBe("new-booking-token");
+  });
+
+  it("groups the four AI cards under AI services and hides the enable switch on the vendor card", async () => {
+    stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel scope="providers" />);
+
+    const heading = await screen.findByRole("heading", { name: "AI 供應商與金鑰" });
+    const categoryTabs = screen.getByRole("tablist", { name: "API 供應商分類" });
+    expect(within(categoryTabs).getAllByRole("tab").map((tab) => tab.textContent)).toEqual([
+      "AI 服務4/4",
+      "地圖與路線1/1",
+      "景點內容1/1",
+      "最近管理紀錄",
+    ]);
+    const providerTabs = screen.getByRole("tablist", { name: "API 供應商設定分頁" });
+    expect(within(providerTabs).getAllByRole("tab").map((tab) => tab.textContent)).toEqual([
+      "AI 供應商與金鑰",
+      "AI 行程規劃",
+      "AI 景點介紹搜尋",
+      "Gemini 多語文章搜尋",
+    ]);
+    const section = heading.closest("section")!;
+    expect(within(section).queryByLabelText("啟用")).toBeNull();
+    expect((within(section).getByRole("button", { name: "測試連線" }) as HTMLButtonElement).disabled).toBe(false);
+    expect(within(section).getByLabelText("OpenAI API Key")).toBeTruthy();
+    expect(within(section).getByLabelText("Gemini API Key")).toBeTruthy();
+    expect(within(section).getByLabelText(/^Gemini API Base URL/)).toBeTruthy();
+
+    fireEvent.click(within(providerTabs).getByRole("tab", { name: "Gemini 多語文章搜尋" }));
+    const gemini = screen.getByRole("heading", { name: "Gemini 多語文章搜尋" }).closest("section")!;
+    expect(within(gemini).queryByLabelText("Gemini API Key")).toBeNull();
+    expect(within(gemini).queryByLabelText(/^Gemini API Base URL/)).toBeNull();
+    expect(within(gemini).getByLabelText("啟用")).toBeTruthy();
+  });
+
+  it("saves vendor keys and only the changed base URL from the shared card", async () => {
+    const fetchMock = stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel />);
+
+    const section = (await screen.findByRole("heading", { name: "AI 供應商與金鑰" })).closest("section")!;
+    fireEvent.change(within(section).getByLabelText("Anthropic API Key"), { target: { value: "sk-ant-new" } });
+    fireEvent.change(within(section).getByLabelText(/^OpenAI API Base URL/), { target: { value: "https://api.openai.com/v2" } });
+    fireEvent.click(within(section).getByRole("button", { name: "儲存設定" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    const body = savedBody(fetchMock);
+    expect(body.enabled).toBe(true);
+    expect(body.config).toEqual({ openai_api_base_url: "https://api.openai.com/v2" });
+    expect(body.secrets).toEqual({ anthropic_api_key: "sk-ant-new" });
+    expect((await screen.findByRole("status")).textContent).toContain("AI 供應商與金鑰 設定已加密儲存並立即套用。");
+  });
+
+  it("orders planner model dropdowns by the automatic priority and hides them for single vendors", async () => {
+    stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel />);
+
+    const section = await openAiCard("AI 行程規劃");
+    const modelLabels = () => within(section).getAllByLabelText(/^(OpenAI|Claude|MiniMax) 模型/).map((element) => element.closest("label")!.textContent!.split(" ")[0]);
+    expect(modelLabels()).toEqual(["MiniMax", "OpenAI", "Claude"]);
+    const openaiSelect = within(section).getByLabelText(/^OpenAI 模型/) as HTMLSelectElement;
+    expect(openaiSelect.tagName).toBe("SELECT");
+    expect(Array.from(openaiSelect.options).map((option) => option.textContent)).toEqual(["OpenAI Model A", "OpenAI Model B", "自訂…"]);
+
+    fireEvent.change(within(section).getByLabelText(/^自動備援順序/), { target: { value: "openai,anthropic,minimax" } });
+    expect(modelLabels()).toEqual(["OpenAI", "Claude", "MiniMax"]);
+    fireEvent.change(within(section).getByLabelText(/^AI 行程來源/), { target: { value: "anthropic" } });
+    expect(modelLabels()).toEqual(["Claude"]);
+    fireEvent.change(within(section).getByLabelText(/^AI 行程來源/), { target: { value: "fallback" } });
+    expect(within(section).queryAllByLabelText(/^(OpenAI|Claude|MiniMax) 模型/)).toHaveLength(0);
+  });
+
+  it("sends the chosen catalog model and keeps hidden vendor models in the payload", async () => {
+    const fetchMock = stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel />);
+
+    const section = await openAiCard("AI 行程規劃");
+    fireEvent.change(within(section).getByLabelText(/^AI 行程來源/), { target: { value: "openai" } });
+    fireEvent.change(within(section).getByLabelText(/^OpenAI 模型/), { target: { value: "openai-model-b" } });
+    fireEvent.click(within(section).getByRole("button", { name: "儲存設定" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    const body = savedBody(fetchMock);
+    expect(body.config.ai_planner_mode).toBe("openai");
+    expect(body.config.openai_model).toBe("openai-model-b");
+    expect(body.config.anthropic_model).toBe("claude-model-a");
+    expect(body.config.minimax_model).toBe("minimax-model-a");
+  });
+
+  it("reveals a text input for a custom model id and sends the typed value", async () => {
+    const fetchMock = stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel />);
+
+    const section = await openAiCard("AI 行程規劃");
+    fireEvent.change(within(section).getByLabelText(/^AI 行程來源/), { target: { value: "openai" } });
+    fireEvent.change(within(section).getByLabelText(/^OpenAI 模型/), { target: { value: "__custom__" } });
+    const custom = within(section).getByLabelText("自訂模型 ID：OpenAI 模型") as HTMLInputElement;
+    expect(custom.value).toBe("");
+    expect(custom.placeholder).toBe("輸入模型 ID");
+    fireEvent.change(custom, { target: { value: "openai-model-preview" } });
+    expect((within(section).getByLabelText(/^OpenAI 模型/) as HTMLSelectElement).value).toBe("__custom__");
+
+    fireEvent.change(within(section).getByLabelText(/^OpenAI 模型/), { target: { value: "openai-model-a" } });
+    expect(within(section).queryByLabelText("自訂模型 ID：OpenAI 模型")).toBeNull();
+
+    fireEvent.change(within(section).getByLabelText(/^OpenAI 模型/), { target: { value: "__custom__" } });
+    fireEvent.change(within(section).getByLabelText("自訂模型 ID：OpenAI 模型"), { target: { value: "openai-model-preview" } });
+    fireEvent.click(within(section).getByRole("button", { name: "儲存設定" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(savedBody(fetchMock).config.openai_model).toBe("openai-model-preview");
+  });
+
+  it("shows a stored model id outside the catalog as a custom entry instead of snapping to the first option", async () => {
+    const legacyPlanner = { ...aiPlannerProvider, config: { ...aiPlannerProvider.config, ai_planner_mode: "openai", openai_model: "openai-model-legacy" } };
+    const fetchMock = stubAiFetch({ ...aiSnapshot, providers: [aiVendorsProvider, legacyPlanner, aiGuideSearchProvider, geminiProvider] });
+    render(<AdminSettingsPanel />);
+
+    const section = await openAiCard("AI 行程規劃");
+    expect((within(section).getByLabelText(/^OpenAI 模型/) as HTMLSelectElement).value).toBe("__custom__");
+    expect((within(section).getByLabelText("自訂模型 ID：OpenAI 模型") as HTMLInputElement).value).toBe("openai-model-legacy");
+    fireEvent.click(within(section).getByRole("button", { name: "儲存設定" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(savedBody(fetchMock).config.openai_model).toBe("openai-model-legacy");
+  });
+
+  it("lets guide search inherit or override the planner model per vendor", async () => {
+    const fetchMock = stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel />);
+
+    const section = await openAiCard("AI 景點介紹搜尋");
+    const minimax = within(section).getByLabelText(/^MiniMax 模型/) as HTMLSelectElement;
+    expect(Array.from(minimax.options).map((option) => option.textContent)).toEqual(["沿用行程規劃的模型", "MiniMax Model A", "自訂…"]);
+    expect(minimax.value).toBe("");
+    expect(within(section).queryByLabelText(/^OpenAI 模型/)).toBeNull();
+
+    fireEvent.change(within(section).getByLabelText(/^景點 AI 搜尋預設供應商/), { target: { value: "openai" } });
+    expect(within(section).queryByLabelText(/^MiniMax 模型/)).toBeNull();
+    fireEvent.change(within(section).getByLabelText(/^OpenAI 模型/), { target: { value: "openai-model-b" } });
+    fireEvent.click(within(section).getByRole("button", { name: "儲存設定" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    const body = savedBody(fetchMock);
+    expect(body.config.hotspot_guide_ai_default_provider).toBe("openai");
+    expect(body.config.hotspot_guide_ai_openai_model).toBe("openai-model-b");
+    expect(body.config.hotspot_guide_ai_minimax_model).toBeNull();
+    expect(body.config.hotspot_guide_ai_anthropic_model).toBeNull();
+  });
+
+  it("renders the Gemini model as a catalog dropdown with the option note", async () => {
+    stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel />);
+
+    const section = await openAiCard("Gemini 多語文章搜尋");
+    const gemini = within(section).getByLabelText(/^Gemini 模型/) as HTMLSelectElement;
+    expect(gemini.tagName).toBe("SELECT");
+    expect(Array.from(gemini.options).map((option) => option.textContent)).toEqual(["Gemini Model A", "Gemini Model B", "自訂…"]);
+    expect(within(section).getByText("目前預設")).toBeTruthy();
+    expect(within(section).getByLabelText(/^單次搜尋逾時/)).toBeTruthy();
   });
 });

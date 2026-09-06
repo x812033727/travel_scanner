@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import base64
 import hashlib
 import json
@@ -22,6 +23,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.schemas import (
     AdminAuditView,
+    FieldOption,
     ProviderSettingsSnapshot,
     ProviderSettingsUpdate,
     ProviderSettingsView,
@@ -31,6 +33,7 @@ from app.admin.schemas import (
     SecretState,
     SiteVisibility,
 )
+from app.ai import catalog
 from app.ai.itinerary import AIItineraryPlanner, AIItineraryRequest
 from app.config import (
     OFFICIAL_PROVIDER_HOSTS,
@@ -88,6 +91,12 @@ SITE_VISIBILITY_FIELDS = (
     "airline_fares_enabled",
     "pricing_enabled",
 )
+
+# Rows that are never disabled: a disabled row nulls its secrets, and these hold
+# settings every feature shares rather than one provider that can be switched off.
+ALWAYS_ENABLED_PROVIDERS = frozenset({"runtime", "layout", "ai_vendors"})
+# Features whose connection tests run on the keys stored under ai_vendors.
+AI_FEATURE_PROVIDERS = frozenset({"ai_planner", "ai_guide_search", "gemini_guides"})
 
 
 PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
@@ -149,23 +158,38 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         SITE_VISIBILITY_FIELDS,
         (),
     ),
+    "ai_vendors": ProviderDefinition(
+        "AI 供應商與金鑰",
+        "OpenAI、Claude、MiniMax 與 Gemini 的 API 金鑰與官方 Base URL 集中在這裡，由行程規劃、"
+        "行程文字解析、景點介紹搜尋與 Gemini 文章搜尋共用；各功能只選供應商與模型。",
+        (
+            "openai_api_base_url",
+            "anthropic_api_base_url",
+            "minimax_api_base_url",
+            "hotspot_guide_gemini_base_url",
+        ),
+        (
+            "openai_api_key",
+            "anthropic_api_key",
+            "minimax_api_key",
+            "hotspot_guide_gemini_api_key",
+        ),
+    ),
     "ai_planner": ProviderDefinition(
         "AI 行程規劃",
-        "由後台選擇 OpenAI／ChatGPT、Claude、MiniMax 或內建備援，金鑰只在伺服器端加密保存。",
+        "由後台選擇 OpenAI／ChatGPT、Claude、MiniMax 或內建備援，並指定各家使用的模型；"
+        "金鑰與 Base URL 在「AI 供應商與金鑰」設定。",
         (
             "ai_planner_mode",
             "ai_planner_priority",
+            "openai_model",
+            "anthropic_model",
+            "minimax_model",
             "ai_planner_timeout_seconds",
             "ai_planner_total_timeout_seconds",
             "ai_planner_max_output_tokens",
-            "openai_api_base_url",
-            "openai_model",
-            "anthropic_api_base_url",
-            "anthropic_model",
-            "minimax_api_base_url",
-            "minimax_model",
         ),
-        ("openai_api_key", "anthropic_api_key", "minimax_api_key"),
+        (),
         "ai_planner_enabled",
     ),
     "hotspot_guides": ProviderDefinition(
@@ -182,9 +206,13 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     ),
     "ai_guide_search": ProviderDefinition(
         "AI 景點介紹搜尋",
-        "由 MiniMax、OpenAI 或 Claude 規劃與評選多語搜尋；網址只接受 Brave 與 YouTube。",
+        "由 MiniMax、OpenAI 或 Claude 規劃與評選多語搜尋；模型留空時沿用行程規劃的模型。"
+        "網址只接受 Brave 與 YouTube。",
         (
             "hotspot_guide_ai_default_provider",
+            "hotspot_guide_ai_openai_model",
+            "hotspot_guide_ai_anthropic_model",
+            "hotspot_guide_ai_minimax_model",
             "hotspot_guide_ai_timeout_seconds",
             "hotspot_guide_ai_max_output_tokens",
             "hotspot_guide_ai_daily_run_limit",
@@ -252,14 +280,14 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     ),
     "gemini_guides": ProviderDefinition(
         "Gemini 多語文章搜尋",
-        "以 Google 搜尋接地尋找各語系旅遊文章；連結只取自來源標註，不採用模型寫出的網址。",
+        "以 Google 搜尋接地尋找各語系旅遊文章；連結只取自來源標註，不採用模型寫出的網址。"
+        "金鑰與 Base URL 在「AI 供應商與金鑰」設定。",
         (
-            "hotspot_guide_gemini_base_url",
             "hotspot_guide_gemini_model",
             "hotspot_guide_gemini_timeout_seconds",
             "hotspot_guide_gemini_daily_search_budget",
         ),
-        ("hotspot_guide_gemini_api_key",),
+        (),
         "hotspot_guide_gemini_enabled",
     ),
     "amadeus": ProviderDefinition(
@@ -478,7 +506,7 @@ def apply_runtime_overrides(base: Settings, rows: list[ProviderConfig]) -> Setti
                 updates[field] = row.config[field]
         if definition.enabled_field:
             updates[definition.enabled_field] = row.enabled
-        if not row.enabled and row.provider != "runtime":
+        if not row.enabled and row.provider not in ALWAYS_ENABLED_PROVIDERS:
             updates.update({field: None for field in definition.secret_fields})
             continue
         stored_secrets = decrypt_secrets(row.secret_config_encrypted, base)
@@ -573,28 +601,60 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
         visible = sum(bool(getattr(settings, field)) for field in SITE_VISIBILITY_FIELDS)
         message = f"目前開放 {visible}／{len(SITE_VISIBILITY_FIELDS)} 個前台模組"
         return True, "ready", message
-    if provider == "ai_planner":
-        configured_names = [
-            label
+    if provider == "ai_vendors":
+        vendors = [
+            (label, bool(value))
             for value, label in (
                 (settings.openai_api_key, "OpenAI"),
                 (settings.anthropic_api_key, "Claude"),
                 (settings.minimax_api_key, "MiniMax"),
+                (settings.hotspot_guide_gemini_api_key, "Gemini"),
             )
-            if value
         ]
+        configured_names = [label for label, present in vendors if present]
+        missing_names = [label for label, present in vendors if not present]
+        configured = bool(configured_names)
+        message = f"已設定：{'、'.join(configured_names)}" if configured else "尚未設定任何 AI 金鑰"
+        if configured and missing_names:
+            message += f"；未設定：{'、'.join(missing_names)}"
+        return configured, "ready" if configured else "not_configured", message
+    if provider == "ai_planner":
+        vendor_models = {
+            "openai": ("OpenAI", settings.openai_model, settings.openai_api_key),
+            "anthropic": ("Claude", settings.anthropic_model, settings.anthropic_api_key),
+            "minimax": ("MiniMax", settings.minimax_model, settings.minimax_api_key),
+        }
         if settings.ai_planner_mode in {"fallback", "disabled"}:
             return True, "ready", "目前使用內建備援草稿"
+        if settings.ai_planner_mode in vendor_models:
+            label, model, key = vendor_models[settings.ai_planner_mode]
+            configured = bool(key)
+            return (
+                configured,
+                "ready" if configured else "not_configured",
+                f"指定 {label}（{model}）"
+                if configured
+                else f"指定 {label}，但尚未設定它的金鑰，建立行程時會使用內建備援",
+            )
+        order = [item.strip().lower() for item in settings.ai_planner_priority.split(",")]
+        configured_names = [
+            f"{vendor_models[name][0]}（{vendor_models[name][1]}）"
+            for name in order
+            if name in vendor_models and vendor_models[name][2]
+        ]
         configured = bool(configured_names)
         return (
             configured,
             "ready" if configured else "not_configured",
-            f"已設定：{'、'.join(configured_names)}"
+            f"自動備援：{' → '.join(configured_names)}"
             if configured
-            else "尚未設定真實 AI 金鑰，建立行程時會使用內建備援",
+            else "尚未在「AI 供應商與金鑰」設定真實 AI 金鑰，建立行程時會使用內建備援",
         )
     if provider == "ai_guide_search":
+        from app.hotspots.ai_search import research_model
+
         selected = settings.hotspot_guide_ai_default_provider
+        model = research_model(settings, selected)
         key = {
             "openai": settings.openai_api_key,
             "anthropic": settings.anthropic_api_key,
@@ -610,9 +670,9 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
         return (
             configured,
             "ready" if configured else "not_configured",
-            f"預設 {selected}；Brave／YouTube 受控搜尋已可用"
+            f"預設 {selected}（{model}）；Brave／YouTube 受控搜尋已可用"
             if configured
-            else f"預設 {selected}；請設定對應 AI 金鑰與至少一個搜尋來源",
+            else f"預設 {selected}（{model}）；請設定它的金鑰並啟用至少一個搜尋來源",
         )
     if provider == "google_maps":
         configured = bool(settings.google_maps_api_key)
@@ -666,7 +726,9 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
         return (
             configured,
             "ready" if configured else "not_configured",
-            "Gemini API 已設定" if configured else "缺少 Gemini API key",
+            f"Gemini API 已設定（{settings.hotspot_guide_gemini_model}）"
+            if configured
+            else "缺少 Gemini API key，請在「AI 供應商與金鑰」設定",
         )
     if provider == "amadeus":
         return (
@@ -737,6 +799,37 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
                 else "請啟用並設定 Demand Affiliate ID 與 Bearer Token"
             ),
         )
+    if provider == "hotspot_guides":
+        source_labels = [
+            label
+            for enabled, key, label in (
+                (
+                    settings.hotspot_guide_youtube_enabled,
+                    settings.hotspot_guide_youtube_api_key,
+                    "YouTube",
+                ),
+                (
+                    settings.hotspot_guide_brave_enabled,
+                    settings.hotspot_guide_brave_api_key,
+                    "Brave",
+                ),
+                (
+                    settings.hotspot_guide_gemini_enabled,
+                    settings.hotspot_guide_gemini_api_key,
+                    "Gemini",
+                ),
+            )
+            if enabled and key
+        ]
+        configured = bool(source_labels)
+        backfill = "自動補齊已開啟" if settings.hotspot_guide_backfill_enabled else "自動補齊已關閉"
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            f"{backfill}；可用來源：{'、'.join(source_labels)}"
+            if configured
+            else f"{backfill}；沒有可用的搜尋來源，請先設定 YouTube、Brave 或 Gemini",
+        )
     affiliate_codes = {
         "travelpayouts": "travelpayouts",
         "kkday": "kkday",
@@ -784,12 +877,21 @@ def _field_sources(
         environment_value = cast(str | None, getattr(base, field))
         effective = database_value or environment_value
         source = "database" if database_value else "environment" if environment_value else "none"
-        if row is not None and not row.enabled:
+        if row is not None and not row.enabled and row.provider not in ALWAYS_ENABLED_PROVIDERS:
             effective, source = None, "disabled"
         secret_states[field] = SecretState(
             configured=bool(effective), masked=masked_secret(effective), source=source
         )
     return config_sources, secret_states
+
+
+def _legacy_vendor_fields(row: ProviderConfig, base: Settings) -> list[str]:
+    """Fields migration 0047 moves to ``ai_vendors`` that still sit on this row."""
+    vendors = PROVIDER_DEFINITIONS["ai_vendors"]
+    leftover = {field for field in vendors.config_fields if field in row.config}
+    stored = decrypt_secrets(row.secret_config_encrypted, base)
+    leftover.update(field for field in vendors.secret_fields if field in stored)
+    return sorted(leftover)
 
 
 def _production_test_required(provider: str, settings: Settings) -> bool:
@@ -887,7 +989,7 @@ async def settings_snapshot(
             else True
         )
         configured, status, message = _configured(provider, effective)
-        if not enabled and provider != "runtime":
+        if not enabled and provider not in ALWAYS_ENABLED_PROVIDERS:
             configured, status, message = False, "disabled", "已由管理後台停用"
         elif configured and row is not None and row.last_test_status == "failed":
             configured, status = False, "error"
@@ -900,6 +1002,30 @@ async def settings_snapshot(
             configured, status = False, "test_required"
             message = "Production 憑證已設定，必須通過連線測試後才標示為可用"
         config_sources, secret_states = _field_sources(definition, row, base)
+        field_options = {
+            field: [
+                FieldOption(
+                    value=entry.id,
+                    label=entry.label,
+                    description=entry.note,
+                    status=entry.status,
+                )
+                for entry in entries
+            ]
+            for field, entries in catalog.field_options(definition.config_fields).items()
+        }
+        if provider in {"ai_planner", "gemini_guides"} and row is not None:
+            leftover = _legacy_vendor_fields(row, base)
+            if leftover:
+                logger.warning(
+                    "provider_configs row %s still carries moved AI vendor fields: %s",
+                    provider,
+                    ", ".join(leftover),
+                )
+                message += (
+                    f"；此列仍殘留已搬移的欄位（{', '.join(leftover)}），"
+                    "請執行資料庫 migration 0047"
+                )
         providers.append(
             ProviderSettingsView(
                 provider=provider,
@@ -915,6 +1041,7 @@ async def settings_snapshot(
                 },
                 config_sources=config_sources,
                 secrets=secret_states,
+                field_options=field_options,
                 last_tested_at=row.last_tested_at if row else None,
                 last_test_status=row.last_test_status if row else None,
                 last_test_message=row.last_test_message if row else None,
@@ -1052,6 +1179,22 @@ def _validate_provider_values(
     for field, allowed in modes.items():
         if field in merged and str(merged[field]).lower() not in allowed:
             raise AppError(422, "provider_setting_invalid", f"{field} 的選項不正確")
+    for field in catalog.MODEL_FIELDS:
+        if field not in merged:
+            continue
+        model_id = str(merged[field]).strip()
+        if not model_id:
+            if field in catalog.OPTIONAL_MODEL_FIELDS:
+                merged.pop(field)
+                continue
+            raise AppError(422, "provider_setting_invalid", f"{field} 不可留空")
+        if not catalog.valid_model_id(model_id):
+            raise AppError(
+                422,
+                "provider_setting_invalid",
+                f"{field} 只能包含英數字與 . _ : -，長度 1 到 128",
+            )
+        merged[field] = model_id
     url_fields = {
         field for field in merged if field.endswith("_url") or field.endswith("_url_template")
     }
@@ -1163,7 +1306,7 @@ async def update_provider_settings(
     row.config = _validate_provider_values(provider, previous_config, payload)
     stored = _merge_secret_values(decrypt_secrets(row.secret_config_encrypted), payload.secrets)
     row.secret_config_encrypted = encrypt_secrets(stored)
-    if provider in {"runtime", "layout"}:
+    if provider in ALWAYS_ENABLED_PROVIDERS:
         row.enabled = True
     elif payload.enabled is not None:
         row.enabled = payload.enabled
@@ -1320,6 +1463,119 @@ async def _test_naver(settings: Settings, redis: Redis) -> str:
     return "NAVER 韓國地點搜尋與汽車路線驗證成功；Dynamic Map 仍需由已授權網站來源載入確認"
 
 
+def _listed_model_ids(response: httpx.Response) -> set[str] | None:
+    """Model ids in a vendor list response (``data[].id`` or ``models[].name``)."""
+    try:
+        body = response.json()
+    except ValueError:
+        return None
+    if not isinstance(body, dict):
+        return None
+    entries = body.get("data")
+    if not isinstance(entries, list):
+        entries = body.get("models")
+    if not isinstance(entries, list):
+        return None
+    ids: set[str] = set()
+    for entry in entries:
+        if isinstance(entry, dict):
+            raw = entry.get("id") or entry.get("name")
+            if isinstance(raw, str):
+                ids.add(raw.removeprefix("models/"))
+    return ids
+
+
+async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None = None) -> str:
+    """Probe every configured AI vendor with its cheapest authenticated call.
+
+    Listing models proves the key without spending tokens. MiniMax has not documented a
+    models endpoint, so a 404/405 from it counts as configured-but-unverified; only an
+    auth or transport failure fails the test.
+    """
+    probes: list[tuple[str, str, dict[str, str], dict[str, str] | None, str, bool]] = []
+    if settings.openai_api_key:
+        probes.append(
+            (
+                "OpenAI",
+                f"{settings.openai_api_base_url.rstrip('/')}/models",
+                {"Authorization": f"Bearer {settings.openai_api_key}"},
+                None,
+                settings.openai_model,
+                False,
+            )
+        )
+    if settings.anthropic_api_key:
+        probes.append(
+            (
+                "Claude",
+                f"{settings.anthropic_api_base_url.rstrip('/')}/models",
+                {"x-api-key": settings.anthropic_api_key, "anthropic-version": "2023-06-01"},
+                None,
+                settings.anthropic_model,
+                False,
+            )
+        )
+    if settings.minimax_api_key:
+        probes.append(
+            (
+                "MiniMax",
+                f"{settings.minimax_api_base_url.rstrip('/')}/models",
+                {"Authorization": f"Bearer {settings.minimax_api_key}"},
+                None,
+                settings.minimax_model,
+                True,
+            )
+        )
+    if settings.hotspot_guide_gemini_api_key:
+        probes.append(
+            (
+                "Gemini",
+                f"{settings.hotspot_guide_gemini_base_url.rstrip('/')}/v1beta/models",
+                {"x-goog-api-key": settings.hotspot_guide_gemini_api_key},
+                {"pageSize": "200"},
+                settings.hotspot_guide_gemini_model,
+                False,
+            )
+        )
+    if not probes:
+        raise ConnectionError("尚未設定任何 AI 金鑰")
+    owns_client = client is None
+    http = client or httpx.AsyncClient(timeout=10.0)
+    try:
+        responses = await asyncio.gather(
+            *(
+                http.get(url, headers=headers, params=params)
+                for _label, url, headers, params, _model, _tolerant in probes
+            ),
+            return_exceptions=True,
+        )
+    finally:
+        if owns_client:
+            await http.aclose()
+    verified: list[str] = []
+    failures: list[str] = []
+    for (label, _url, _headers, _params, model, tolerant), response in zip(
+        probes, responses, strict=True
+    ):
+        if isinstance(response, BaseException):
+            failures.append(f"{label} 連線失敗（{type(response).__name__}）")
+            continue
+        if tolerant and response.status_code in {404, 405}:
+            verified.append(f"{label} 已設定（{model}；未提供模型清單端點，未即時驗證）")
+            continue
+        if response.status_code >= 400:
+            failures.append(f"{label} 驗證失敗（HTTP {response.status_code}）")
+            continue
+        listed = _listed_model_ids(response)
+        if listed is None or model in listed:
+            verified.append(f"{label} ✓（{model}）")
+        else:
+            verified.append(f"{label} ✓（金鑰有效，模型清單未列出 {model}）")
+    if failures:
+        raise ConnectionError("；".join(failures + verified))
+    return "；".join(verified)
+
+
 async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str:
     if provider in {"google_login", "line_login", "apple_login"}:
         from app.auth.oauth import APPLE_JWKS, GOOGLE_JWKS, apple_client_secret
@@ -1336,6 +1592,8 @@ async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str
             response.raise_for_status()
             _ = response.json()
         return "官方 OpenID metadata 可連線；完整憑證會在實際互動登入時驗證"
+    if provider == "ai_vendors":
+        return await _test_ai_vendors(settings)
     if provider == "ai_planner":
         request = AIItineraryRequest(
             destination_name="東京",
@@ -1530,8 +1788,11 @@ async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str
 
 def _safe_test_message(provider: str, message: str, settings: Settings) -> str:
     definition = PROVIDER_DEFINITIONS[provider]
+    secret_fields = set(definition.secret_fields)
+    if provider in AI_FEATURE_PROVIDERS:
+        secret_fields.update(PROVIDER_DEFINITIONS["ai_vendors"].secret_fields)
     sanitized = message
-    for field in definition.secret_fields:
+    for field in sorted(secret_fields):
         value = cast(str | None, getattr(settings, field))
         if value:
             sanitized = sanitized.replace(value, "***")

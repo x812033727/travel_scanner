@@ -262,3 +262,56 @@ def test_summarize_provider_error_is_short_and_never_leaks_the_query_string() ->
     assert "[redacted]" in summarize_provider_error(
         ValueError("see https://example.com/?key=abc for details")
     )
+
+
+def test_research_model_prefers_the_feature_override_then_the_planner_model() -> None:
+    from app.hotspots.ai_search import research_model
+
+    settings = get_settings().model_copy(
+        update={
+            "openai_api_key": "sk-test",
+            "openai_model": "gpt-planner",
+            "hotspot_guide_ai_openai_model": None,
+        }
+    )
+    assert research_model(settings, "openai") == "gpt-planner"
+    assert research_provider(settings, "openai").model == "gpt-planner"
+
+    override = settings.model_copy(update={"hotspot_guide_ai_openai_model": "gpt-search"})
+    assert research_model(override, "openai") == "gpt-search"
+    assert research_provider(override, "openai").model == "gpt-search"
+
+    blank = settings.model_copy(update={"hotspot_guide_ai_openai_model": "   "})
+    assert research_model(blank, "openai") == "gpt-planner"
+
+
+def test_ai_search_overview_lists_the_model_each_vendor_would_use() -> None:
+    from app.hotspots.ai_search import ai_search_overview
+
+    settings = get_settings().model_copy(
+        update={
+            "minimax_api_key": "mm-test",
+            "openai_api_key": None,
+            "anthropic_api_key": None,
+            "minimax_model": "MiniMax-M3",
+            "hotspot_guide_ai_minimax_model": "MiniMax-M2.7",
+            "hotspot_guide_ai_default_provider": "minimax",
+        }
+    )
+    overview = ai_search_overview(settings)
+    assert overview["default_provider"] == "minimax"
+    assert overview["providers"] == {"minimax": True, "openai": False, "anthropic": False}
+    assert overview["models"] == {
+        "minimax": "MiniMax-M2.7",
+        "openai": settings.openai_model,
+        "anthropic": settings.anthropic_model,
+    }
+
+
+def test_guide_ai_search_request_defaults_the_provider_to_the_admin_setting() -> None:
+    from uuid import uuid4
+
+    from app.hotspots.admin_router import GuideAISearchRequest
+
+    assert GuideAISearchRequest(hotspot_id=uuid4()).provider is None
+    assert GuideAISearchRequest(hotspot_id=uuid4(), provider="openai").provider == "openai"

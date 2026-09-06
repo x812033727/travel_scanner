@@ -40,6 +40,7 @@ from app.models import (
 from app.problems import AppError
 
 AIProviderName = Literal["minimax", "openai", "anthropic"]
+AI_PROVIDER_NAMES: tuple[AIProviderName, ...] = ("minimax", "openai", "anthropic")
 SearchDepth = Literal["economy", "balanced", "deep"]
 ContentType = Literal["article", "video"]
 
@@ -277,7 +278,7 @@ def research_provider(
             "openai",
             settings.openai_api_base_url,
             settings.openai_api_key,
-            settings.openai_model,
+            research_model(settings, "openai"),
             settings.hotspot_guide_ai_timeout_seconds,
             settings.hotspot_guide_ai_max_output_tokens,
             client,
@@ -287,7 +288,7 @@ def research_provider(
             "minimax",
             settings.minimax_api_base_url,
             settings.minimax_api_key,
-            settings.minimax_model,
+            research_model(settings, "minimax"),
             settings.hotspot_guide_ai_timeout_seconds,
             settings.hotspot_guide_ai_max_output_tokens,
             client,
@@ -296,7 +297,7 @@ def research_provider(
         return AnthropicResearchProvider(
             settings.anthropic_api_base_url,
             settings.anthropic_api_key,
-            settings.anthropic_model,
+            research_model(settings, "anthropic"),
             settings.hotspot_guide_ai_timeout_seconds,
             settings.hotspot_guide_ai_max_output_tokens,
             client,
@@ -313,11 +314,36 @@ def configured_research_providers(settings: Settings) -> dict[str, bool]:
 
 
 def research_model(settings: Settings, name: AIProviderName) -> str:
-    return {
+    """The guide search's own model for this vendor, else the planner's."""
+    override = {
+        "minimax": settings.hotspot_guide_ai_minimax_model,
+        "openai": settings.hotspot_guide_ai_openai_model,
+        "anthropic": settings.hotspot_guide_ai_anthropic_model,
+    }[name]
+    planner = {
         "minimax": settings.minimax_model,
         "openai": settings.openai_model,
         "anthropic": settings.anthropic_model,
     }[name]
+    return (override or "").strip() or planner
+
+
+def ai_search_overview(settings: Settings) -> dict[str, object]:
+    """What the admin dialog needs to pick a vendor: availability, models, sources."""
+    return {
+        "enabled": settings.hotspot_guide_ai_search_enabled,
+        "default_provider": settings.hotspot_guide_ai_default_provider,
+        "providers": configured_research_providers(settings),
+        "models": {name: research_model(settings, name) for name in AI_PROVIDER_NAMES},
+        "sources": {
+            "brave": bool(
+                settings.hotspot_guide_brave_enabled and settings.hotspot_guide_brave_api_key
+            ),
+            "youtube": bool(
+                settings.hotspot_guide_youtube_enabled and settings.hotspot_guide_youtube_api_key
+            ),
+        },
+    }
 
 
 def estimate_calls(

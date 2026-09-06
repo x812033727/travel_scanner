@@ -70,6 +70,13 @@ class ProviderUsageView(BaseModel):
     pricing_region: str = "global"
 
 
+class FieldOption(BaseModel):
+    value: str
+    label: str
+    description: str | None = None
+    status: Literal["stable", "preview", "retired"] = "stable"
+
+
 class ProviderSettingsView(BaseModel):
     provider: str
     label: str
@@ -81,6 +88,7 @@ class ProviderSettingsView(BaseModel):
     config: dict[str, JsonScalar | None]
     config_sources: dict[str, str]
     secrets: dict[str, SecretState]
+    field_options: dict[str, list[FieldOption]] = Field(default_factory=dict)
     last_tested_at: datetime | None = None
     last_test_status: str | None = None
     last_test_message: str | None = None

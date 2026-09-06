@@ -164,10 +164,14 @@ def test_estimate_calls_counts_gemini_with_the_other_article_source() -> None:
 
 def test_admin_exposes_gemini_guides_as_its_own_provider() -> None:
     definition = PROVIDER_DEFINITIONS["gemini_guides"]
+    vendors = PROVIDER_DEFINITIONS["ai_vendors"]
 
     assert definition.enabled_field == "hotspot_guide_gemini_enabled"
-    assert definition.secret_fields == ("hotspot_guide_gemini_api_key",)
+    assert definition.secret_fields == ()
     assert "hotspot_guide_gemini_model" in definition.config_fields
+    assert "hotspot_guide_gemini_base_url" not in definition.config_fields
+    assert "hotspot_guide_gemini_api_key" in vendors.secret_fields
+    assert "hotspot_guide_gemini_base_url" in vendors.config_fields
     assert _configured("gemini_guides", Settings())[0] is False
     assert _configured("gemini_guides", Settings(hotspot_guide_gemini_api_key="k"))[0] is True
 

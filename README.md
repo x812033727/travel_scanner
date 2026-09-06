@@ -432,8 +432,11 @@ errors move to the next configured provider. If none succeeds, the server fills
 every day from the built-in destination catalog and labels the result as a
 fallback instead of returning an empty itinerary.
 
-AI keys, models, priority, official Base URLs, and timeouts can be managed from
-the encrypted admin provider-settings page. Only destination, dates, travelers,
+AI keys and official Base URLs for OpenAI, Claude, MiniMax and Gemini live on one
+encrypted admin card (「AI 供應商與金鑰」). The trip planner and the hotspot guide
+search each pick a vendor and a model from a server-curated catalog (with a
+custom-id option), and guide search may override the planner's model per vendor;
+priority and timeouts stay on the feature cards. Only destination, dates, travelers,
 preferences, routing preference, notes, and preserved itinerary summaries are
 sent to a selected AI provider; account identity and email are excluded. Google
 Places optionally resolves up to 24 suggested locations after generation.

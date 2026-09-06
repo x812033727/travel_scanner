@@ -56,6 +56,7 @@ type ProviderUsage = {
   billing_timezone: string;
   pricing_region: string;
 };
+type FieldOption = { value: string; label: string; description?: string | null; status?: string };
 type ProviderView = {
   provider: string;
   label: string;
@@ -67,6 +68,7 @@ type ProviderView = {
   config: Record<string, Scalar | null>;
   config_sources: Record<string, string>;
   secrets: Record<string, SecretState>;
+  field_options?: Record<string, FieldOption[]>;
   last_tested_at?: string | null;
   last_test_status?: string | null;
   last_test_message?: string | null;
@@ -78,8 +80,8 @@ type ProviderView = {
 };
 type Audit = { id: string; action: string; target: string; metadata: Record<string, unknown>; created_at: string };
 type Snapshot = { providers: ProviderView[]; audit: Audit[]; encryption_source: string };
-type Draft = { enabled: boolean; config: Record<string, string>; secrets: Record<string, string>; clearSecrets: string[] };
-type FieldMeta = { label: string; type?: "text" | "number" | "url" | "boolean"; options?: Array<{ value: string; label: string }>; help?: string };
+type Draft = { enabled: boolean; config: Record<string, string>; secrets: Record<string, string>; clearSecrets: string[]; customFields: string[] };
+type FieldMeta = { label?: string; type?: "text" | "number" | "url" | "boolean"; options?: FieldOption[]; help?: string; localized?: boolean; allowCustom?: boolean; emptyOption?: "inheritPlanner" };
 type AdminSettingsScope = "providers" | "system" | "layout";
 type ProviderCategory = "auth" | "ai" | "maps" | "content" | "travelData" | "affiliate" | "other";
 
@@ -89,6 +91,7 @@ const providerCategoryOf: Record<string, ProviderCategory> = {
   line_login: "auth",
   apple_login: "auth",
   analytics: "auth",
+  ai_vendors: "ai",
   ai_planner: "ai",
   ai_guide_search: "ai",
   google_maps: "maps",
@@ -99,7 +102,7 @@ const providerCategoryOf: Record<string, ProviderCategory> = {
   hotspot_guides: "content",
   youtube_guides: "content",
   brave_guides: "content",
-  gemini_guides: "content",
+  gemini_guides: "ai",
   amadeus: "travelData",
   skyscanner: "travelData",
   duffel: "travelData",
@@ -149,12 +152,15 @@ const fieldMeta: Record<string, FieldMeta> = {
   hotspot_guide_ai_max_output_tokens: { label: "景點 AI 最大輸出 Tokens", type: "number" },
   hotspot_guide_ai_daily_run_limit: { label: "每日 AI 搜尋執行上限", type: "number" },
   hotspot_guide_ai_daily_call_budget: { label: "每日 AI 模型呼叫上限", type: "number", help: "管理員搜尋不扣會員次數，但會記錄於後台配額與稽核紀錄。" },
+  hotspot_guide_ai_openai_model: { localized: true, allowCustom: true, emptyOption: "inheritPlanner" },
+  hotspot_guide_ai_anthropic_model: { localized: true, allowCustom: true, emptyOption: "inheritPlanner" },
+  hotspot_guide_ai_minimax_model: { localized: true, allowCustom: true, emptyOption: "inheritPlanner" },
   openai_api_base_url: { label: "OpenAI API Base URL", type: "url" },
-  openai_model: { label: "OpenAI 模型" },
+  openai_model: { localized: true, allowCustom: true },
   anthropic_api_base_url: { label: "Claude API Base URL", type: "url" },
-  anthropic_model: { label: "Claude 模型" },
+  anthropic_model: { localized: true, allowCustom: true },
   minimax_api_base_url: { label: "MiniMax API Base URL", type: "url" },
-  minimax_model: { label: "MiniMax 模型" },
+  minimax_model: { localized: true, allowCustom: true },
   travel_provider_mode: { label: "旅遊資料供應商", options: [{ value: "amadeus", label: "Amadeus" }, { value: "mock", label: "Mock（僅開發）" }, { value: "disabled", label: "停用" }] },
   flight_provider_mode: { label: "航空查詢來源", options: [{ value: "auto", label: "自動：Skyscanner → Duffel → Amadeus" }, { value: "skyscanner", label: "Skyscanner" }, { value: "duffel", label: "Duffel" }, { value: "amadeus", label: "Amadeus" }, { value: "mock", label: "Mock（僅開發）" }, { value: "disabled", label: "停用" }], help: "混合模式會依序補查，直到行程組數達到門檻；追加來源不另扣搜尋次數。" },
   flight_search_strategy: { label: "航空搜尋策略", options: [{ value: "hybrid", label: "混合節流" }, { value: "single", label: "只查首選來源" }] },
@@ -183,7 +189,7 @@ const fieldMeta: Record<string, FieldMeta> = {
   hotspot_guide_youtube_core_daily_free_limit: { label: "Core API 每日額度", type: "number", help: "YouTube 預設每日 10,000 單位；目前 videos.list 每次請求計 1 單位。" },
   hotspot_guide_refresh_days: { label: "Metadata 更新週期（天）", type: "number" },
   hotspot_guide_gemini_base_url: { label: "Gemini API Base URL", type: "url", help: "僅允許 Google 官方 generativelanguage 網域。" },
-  hotspot_guide_gemini_model: { label: "Gemini 模型", help: "Flash 級模型會拒絕列出來源，請改用 Pro 級模型。" },
+  hotspot_guide_gemini_model: { localized: true, allowCustom: true },
   hotspot_guide_gemini_timeout_seconds: { label: "單次搜尋逾時（秒）", type: "number" },
   hotspot_guide_gemini_daily_search_budget: { label: "每日搜尋上限", type: "number" },
   hotspot_guide_backfill_enabled: { label: "自動補齊沒有介紹的景點", type: "boolean", help: "背景每輪挑出還沒有任何影片或文章的景點去搜尋，優先處理已通過地圖驗證的。關閉後只剩管理員手動搜尋。" },
@@ -329,6 +335,7 @@ function makeDrafts(snapshot: Snapshot): Record<string, Draft> {
     config: Object.fromEntries(Object.entries(provider.config).map(([key, value]) => [key, value == null ? "" : String(value)])),
     secrets: Object.fromEntries(Object.keys(provider.secrets).map((key) => [key, ""])),
     clearSecrets: [],
+    customFields: [],
   }]));
 }
 
@@ -336,6 +343,37 @@ function valueForApi(key: string, value: string): Scalar {
   if (fieldMeta[key]?.type === "number") return Number(value);
   if (fieldMeta[key]?.type === "boolean") return value === "true";
   return value;
+}
+
+const customOption = "__custom__";
+type AiVendor = "openai" | "anthropic" | "minimax";
+const aiVendors: AiVendor[] = ["openai", "anthropic", "minimax"];
+const aiFeatureCards: Record<string, { selector: string; anchor: string; models: Record<AiVendor, string> }> = {
+  ai_planner: { selector: "ai_planner_mode", anchor: "ai_planner_priority", models: { openai: "openai_model", anthropic: "anthropic_model", minimax: "minimax_model" } },
+  ai_guide_search: { selector: "hotspot_guide_ai_default_provider", anchor: "hotspot_guide_ai_default_provider", models: { openai: "hotspot_guide_ai_openai_model", anthropic: "hotspot_guide_ai_anthropic_model", minimax: "hotspot_guide_ai_minimax_model" } },
+};
+const isAiVendor = (value: string): value is AiVendor => (aiVendors as string[]).includes(value);
+
+function selectedAiVendors(card: (typeof aiFeatureCards)[string], draft: Draft): AiVendor[] {
+  const mode = draft.config[card.selector];
+  if (isAiVendor(mode)) return [mode];
+  if (mode !== "auto") return [];
+  const priority = (draft.config.ai_planner_priority || "").split(",").map((item) => item.trim().toLowerCase()).filter(isAiVendor);
+  return [...new Set([...priority, ...aiVendors])];
+}
+
+function visibleConfigFields(provider: ProviderView, draft: Draft): string[] {
+  const card = aiFeatureCards[provider.provider];
+  if (!card) return Object.keys(provider.config);
+  const modelFields = new Set(Object.values(card.models));
+  const fields = Object.keys(provider.config).filter((field) => !modelFields.has(field));
+  const models = selectedAiVendors(card, draft).map((vendor) => card.models[vendor]).filter((field) => field in provider.config);
+  const anchor = fields.indexOf(card.anchor) + 1;
+  return [...fields.slice(0, anchor), ...models, ...fields.slice(anchor)];
+}
+
+function hasEnableToggle(provider: string): boolean {
+  return !["runtime", "layout", "ai_vendors"].includes(provider);
 }
 
 function statusClass(status: string) {
@@ -547,6 +585,15 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
     patchDraft(provider, { config: { ...draft.config, [field]: value } });
   }
 
+  function selectOption(provider: string, field: string, chosen: string) {
+    const draft = drafts[provider];
+    const custom = chosen === customOption;
+    patchDraft(provider, {
+      config: { ...draft.config, [field]: custom ? "" : chosen },
+      customFields: custom ? [...new Set([...draft.customFields, field])] : draft.customFields.filter((item) => item !== field),
+    });
+  }
+
   function patchSecret(provider: string, field: string, value: string) {
     const draft = drafts[provider];
     patchDraft(provider, {
@@ -579,14 +626,14 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
     for (const key of draft.clearSecrets) secrets[key] = null;
     try {
       const config = Object.fromEntries(Object.entries(draft.config).map(([key, value]) => [key, value.trim() === "" ? null : valueForApi(key, value)]));
-      const isInternalSettings = provider.provider === "runtime" || provider.provider === "layout";
-      const submittedConfig = isInternalSettings
+      const partialConfig = !hasEnableToggle(provider.provider);
+      const submittedConfig = partialConfig
         ? Object.fromEntries(Object.entries(config).filter(([key, value]) => value !== provider.config[key]))
         : config;
       const result = await api<Snapshot>(`/admin/provider-settings/${provider.provider}`, {
         method: "PUT",
         body: JSON.stringify({
-          enabled: isInternalSettings ? true : draft.enabled,
+          enabled: partialConfig ? true : draft.enabled,
           config: submittedConfig,
           secrets,
         }),
@@ -700,8 +747,9 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
       const busy = busyProvider === provider.provider;
       const usage = provider.usage;
       const internal = provider.provider === "runtime" || provider.provider === "layout";
+      const configFields = visibleConfigFields(provider, draft);
       return <section key={provider.provider} id={scope === "providers" ? `provider-panel-${provider.provider}` : undefined} role={scope === "providers" ? "tabpanel" : undefined} aria-labelledby={scope === "providers" ? `provider-tab-${provider.provider}` : undefined} className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm md:p-7">
-        <div className="flex flex-wrap items-start justify-between gap-4"><div className="max-w-2xl"><div className="flex flex-wrap items-center gap-2"><h2 className="text-xl font-bold">{provider.label}</h2><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(provider.status)}`}>{provider.status === "ready" ? "已設定" : provider.status === "disabled" ? "已停用" : provider.status === "test_required" ? "待測試" : provider.status === "error" ? "連線失敗" : "待設定"}</span></div><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{provider.description}</p><p className="mt-1 text-xs font-semibold text-[var(--teal)]">{provider.status_message}</p>{!internal && <p className="mt-2 text-xs text-[var(--muted)]">近 24 小時：{provider.requests_24h || 0} 次呼叫 · {provider.errors_24h || 0} 次失敗{provider.last_error_at ? ` · 最近失敗 ${dateTime.format(new Date(provider.last_error_at))}` : ""}</p>}</div>{!internal && <label className="flex items-center gap-2 rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-semibold"><input type="checkbox" checked={draft.enabled} onChange={(event) => patchDraft(provider.provider, { enabled: event.target.checked })} />啟用</label>}</div>
+        <div className="flex flex-wrap items-start justify-between gap-4"><div className="max-w-2xl"><div className="flex flex-wrap items-center gap-2"><h2 className="text-xl font-bold">{provider.label}</h2><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(provider.status)}`}>{provider.status === "ready" ? "已設定" : provider.status === "disabled" ? "已停用" : provider.status === "test_required" ? "待測試" : provider.status === "error" ? "連線失敗" : "待設定"}</span></div><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{provider.description}</p><p className="mt-1 text-xs font-semibold text-[var(--teal)]">{provider.status_message}</p>{!internal && <p className="mt-2 text-xs text-[var(--muted)]">近 24 小時：{provider.requests_24h || 0} 次呼叫 · {provider.errors_24h || 0} 次失敗{provider.last_error_at ? ` · 最近失敗 ${dateTime.format(new Date(provider.last_error_at))}` : ""}</p>}</div>{hasEnableToggle(provider.provider) && <label className="flex items-center gap-2 rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-semibold"><input type="checkbox" checked={draft.enabled} onChange={(event) => patchDraft(provider.provider, { enabled: event.target.checked })} />啟用</label>}</div>
 
         {provider.provider === "google_maps" && usage && <GoogleUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "naver_maps" && usage && <NaverUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
@@ -710,17 +758,23 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
         {provider.provider === "odsay" && usage && <OdsayUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "youtube_guides" && usage && <YouTubeUsagePanel usage={usage} automaticSearchBudget={Number(provider.config.hotspot_guide_youtube_daily_search_budget || 80)} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
 
-        {Object.keys(provider.config).length > 0 && <div className="mt-6 grid gap-4 md:grid-cols-2">{Object.entries(provider.config).map(([field]) => {
-          const meta = fieldMeta[field] || { label: field };
-          const label = provider.provider === "layout" ? t(`layout.fields.${field}.label`) : meta.label;
-          const help = provider.provider === "layout" ? t(`layout.fields.${field}.help`) : meta.help;
-          if (meta.type === "boolean") return <label key={field} className="flex items-start gap-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 md:col-span-2"><input type="checkbox" role="switch" checked={draft.config[field] === "true"} onChange={(event) => patchConfig(provider.provider, field, String(event.target.checked))} className="mt-1" /><span><span className="font-semibold">{label}</span><span className="ml-2 text-[.65rem] font-normal text-[var(--muted)]">{provider.config_sources[field] === "database" ? "後台值" : "環境預設"}</span>{help && <span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted)]">{help}</span>}</span></label>;
-          return <label key={field} className="text-sm font-semibold">{meta.label}<span className="ml-2 text-[.65rem] font-normal text-[var(--muted)]">{provider.config_sources[field] === "database" ? "後台值" : "環境預設"}</span>{meta.options ? <select value={draft.config[field]} onChange={(event) => patchConfig(provider.provider, field, event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-normal">{meta.options.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}</select> : <input type={meta.type || "text"} step={meta.type === "number" ? "any" : undefined} value={draft.config[field]} onChange={(event) => patchConfig(provider.provider, field, event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] px-3 py-3 font-normal" />}{meta.help && <span className="mt-1 block text-xs font-normal text-[var(--muted)]">{meta.help}</span>}</label>;
+        {configFields.length > 0 && <div className="mt-6 grid gap-4 md:grid-cols-2">{configFields.map((field) => {
+          const meta: FieldMeta = fieldMeta[field] || {};
+          const label = provider.provider === "layout" ? t(`layout.fields.${field}.label`) : meta.localized ? t(`providerFields.${field}.label`) : meta.label || field;
+          const help = provider.provider === "layout" ? t(`layout.fields.${field}.help`) : meta.localized ? t(`providerFields.${field}.help`) : meta.help;
+          const sourceBadge = provider.config_sources[field] === "database" ? "後台值" : "環境預設";
+          if (meta.type === "boolean") return <label key={field} className="flex items-start gap-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 md:col-span-2"><input type="checkbox" role="switch" checked={draft.config[field] === "true"} onChange={(event) => patchConfig(provider.provider, field, String(event.target.checked))} className="mt-1" /><span><span className="font-semibold">{label}</span><span className="ml-2 text-[.65rem] font-normal text-[var(--muted)]">{sourceBadge}</span>{help && <span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted)]">{help}</span>}</span></label>;
+          const value = draft.config[field];
+          const serverOptions = provider.field_options?.[field];
+          const options = serverOptions?.length ? [...(meta.emptyOption ? [{ value: "", label: t(`providerFields.${meta.emptyOption}`) }] : []), ...serverOptions] : meta.options;
+          const custom = Boolean(options && meta.allowCustom && (draft.customFields.includes(field) || !options.some((option) => option.value === value)));
+          const selected = options?.find((option) => option.value === value);
+          return <div key={field} className="text-sm font-semibold"><label className="block">{label}<span className="ml-2 text-[.65rem] font-normal text-[var(--muted)]">{sourceBadge}</span>{options ? <select value={custom ? customOption : value} onChange={(event) => selectOption(provider.provider, field, event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-normal">{options.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}{meta.allowCustom && <option value={customOption}>{t("providerFields.custom")}</option>}</select> : <input type={meta.type || "text"} step={meta.type === "number" ? "any" : undefined} value={value} onChange={(event) => patchConfig(provider.provider, field, event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] px-3 py-3 font-normal" />}</label>{custom && <input type="text" value={value} onChange={(event) => patchConfig(provider.provider, field, event.target.value)} aria-label={t("providerFields.customInputLabel", { field: label })} placeholder={t("providerFields.customPlaceholder")} className="mt-2 w-full rounded-xl border border-[var(--line)] px-3 py-3 font-mono text-sm font-normal" />}{help && <span className="mt-1 block text-xs font-normal text-[var(--muted)]">{help}</span>}{selected?.description && <span className="mt-1 block text-xs font-normal text-[var(--muted)]">{selected.description}</span>}</div>;
         })}</div>}
 
         {Object.keys(provider.secrets).length > 0 && <div className="mt-6"><h3 className="flex items-center gap-2 text-sm font-bold"><KeyRound size={16} className="text-[var(--teal)]" />API 金鑰與憑證</h3><div className="mt-3 grid gap-4 md:grid-cols-2">{Object.entries(provider.secrets).map(([field, secret]) => { const meta = secretLabels[field] || { label: field }; const clearing = draft.clearSecrets.includes(field); return <div key={field} className="rounded-2xl bg-[var(--paper)] p-4"><label className="text-sm font-semibold">{meta.label}<input type="password" autoComplete="off" value={draft.secrets[field]} onChange={(event) => patchSecret(provider.provider, field, event.target.value)} placeholder={secret.masked || "貼上新金鑰"} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-mono text-sm font-normal" /></label><div className="mt-2 flex items-center justify-between gap-3 text-xs text-[var(--muted)]"><span className="flex items-center gap-1"><EyeOff size={13} />{clearing ? "儲存後清除後台值" : sourceLabel[secret.source] || secret.source}</span>{secret.source === "database" && !clearing && <button type="button" onClick={() => clearSecret(provider.provider, field)} className="flex items-center gap-1 font-semibold text-red-700"><Trash2 size={13} />清除</button>}</div>{meta.help && <p className="mt-2 text-xs leading-5 text-[var(--muted)]">{meta.help}</p>}</div>; })}</div></div>}
 
-        <div className="mt-6 flex flex-wrap items-center gap-3"><button type="button" onClick={() => save(provider)} disabled={Boolean(busyProvider)} className="flex items-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3 text-sm font-semibold text-white disabled:opacity-50">{busy ? <LoaderCircle size={16} className="animate-spin" /> : <Save size={16} />}儲存設定</button>{!internal && <button type="button" onClick={() => testConnection(provider)} disabled={Boolean(busyProvider) || !draft.enabled} className="flex items-center gap-2 rounded-xl border border-[var(--line)] px-5 py-3 text-sm font-semibold disabled:opacity-40"><PlugZap size={16} />測試連線</button>}{!internal && <span className="text-xs text-[var(--muted)]">空白金鑰不會覆蓋現有值；清除後會改用主機環境設定。</span>}</div>
+        <div className="mt-6 flex flex-wrap items-center gap-3"><button type="button" onClick={() => save(provider)} disabled={Boolean(busyProvider)} className="flex items-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3 text-sm font-semibold text-white disabled:opacity-50">{busy ? <LoaderCircle size={16} className="animate-spin" /> : <Save size={16} />}儲存設定</button>{!internal && <button type="button" onClick={() => testConnection(provider)} disabled={Boolean(busyProvider) || (hasEnableToggle(provider.provider) && !draft.enabled)} className="flex items-center gap-2 rounded-xl border border-[var(--line)] px-5 py-3 text-sm font-semibold disabled:opacity-40"><PlugZap size={16} />測試連線</button>}{!internal && <span className="text-xs text-[var(--muted)]">空白金鑰不會覆蓋現有值；清除後會改用主機環境設定。</span>}</div>
         {provider.last_tested_at && <p className={`mt-4 rounded-xl px-4 py-3 text-sm ${statusClass(provider.last_test_status || "")}`}>上次測試：{dateTime.format(new Date(provider.last_tested_at))} · {provider.last_test_message}</p>}
       </section>;
     })}</div>

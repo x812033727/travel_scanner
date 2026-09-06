@@ -32,6 +32,7 @@ from app.hotspots.ai_search import (
     ContentType,
     SearchDepth,
     ai_quota_status,
+    ai_search_overview,
     configured_research_providers,
     consume_ai_run,
     estimate_calls,
@@ -229,7 +230,7 @@ class GuideAISearchRequest(BaseModel):
         min_length=1,
         max_length=2,
     )
-    provider: AIProviderName = "minimax"
+    provider: AIProviderName | None = None
     depth: SearchDepth = "deep"
     only_missing: bool = True
     custom_instructions: str | None = Field(default=None, max_length=500)
@@ -907,8 +908,9 @@ async def create_guide_ai_search(
     settings = await load_runtime_settings(session)
     if not settings.hotspot_guide_ai_search_enabled:
         raise AppError(503, "hotspot_guide_ai_search_disabled", "AI 景點搜尋目前未啟用")
+    provider: AIProviderName = payload.provider or settings.hotspot_guide_ai_default_provider
     providers = configured_research_providers(settings)
-    if not providers[payload.provider]:
+    if not providers[provider]:
         raise AppError(503, "hotspot_guide_ai_provider_not_configured", "所選 AI 供應商尚未設定")
     required_types = set(payload.content_types)
     if payload.only_missing:
@@ -948,8 +950,8 @@ async def create_guide_ai_search(
         idempotency_key=idempotency_key,
         requested_locales=list(payload.locales),
         content_types=list(payload.content_types),
-        provider=payload.provider,
-        model=research_model(settings, payload.provider),
+        provider=provider,
+        model=research_model(settings, provider),
         depth=payload.depth,
         only_missing=payload.only_missing,
         custom_instructions=payload.custom_instructions,
@@ -964,7 +966,7 @@ async def create_guide_ai_search(
             target=f"hotspot-guide-ai-search:{run.id}",
             metadata_json={
                 "hotspot_id": str(payload.hotspot_id),
-                "provider": payload.provider,
+                "provider": provider,
                 "depth": payload.depth,
                 "locales": payload.locales,
                 "content_types": payload.content_types,
@@ -1096,17 +1098,7 @@ async def hotspot_guide_coverage(user: AdminUser, session: Session) -> dict[str,
     settings = await load_runtime_settings(session)
     result["quotas"] = await guide_quota_status(get_redis(), settings)
     result["ai_search"] = {
-        "enabled": settings.hotspot_guide_ai_search_enabled,
-        "default_provider": settings.hotspot_guide_ai_default_provider,
-        "providers": configured_research_providers(settings),
-        "sources": {
-            "brave": bool(
-                settings.hotspot_guide_brave_enabled and settings.hotspot_guide_brave_api_key
-            ),
-            "youtube": bool(
-                settings.hotspot_guide_youtube_enabled and settings.hotspot_guide_youtube_api_key
-            ),
-        },
+        **ai_search_overview(settings),
         "quota": await ai_quota_status(get_redis(), settings),
     }
     return result
