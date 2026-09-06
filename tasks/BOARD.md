@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**5 open · 1 in progress · 2 blocked · 0 in review · 76 done**
+**4 open · 1 in progress · 2 blocked · 0 in review · 77 done**
 
 ## Ready to claim
 
@@ -17,7 +17,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [航班來源擴充讀舊資料沒有防護：型別不符的 search id 會直接 500](open/2026-09-06-expand-flight-sources-guard.md) | api | `apps/api/app/search/router.py`<br>`apps/api/tests/test_search_flight_sources.py` |
 | P2 | [地點建議清單會在 Escape 之後自己打開](open/2026-09-06-place-picker-reopens-after-escape.md) | web | `apps/web/components/place-picker.tsx`<br>`apps/web/components/place-picker.test.tsx` |
 | P2 | [供應商就緒狀態只看金鑰有無，卡片會綠燈但功能不通](open/2026-09-06-configured-readiness-beyond-key-presence.md) | api | `apps/api/app/admin/service.py`<br>`apps/api/tests/test_admin_readiness.py` |
-| P3 | [Booking Demand 連線測試停在城市 ID，從不解析旅館報價](open/2026-09-06-booking-demand-test-parses-an-offer.md) | api | `apps/api/app/providers/booking.py`<br>`apps/api/tests/test_booking_demand_probe.py` |
 
 ## In progress
 
@@ -38,6 +37,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [Booking Demand 連線測試停在城市 ID，從不解析旅館報價](done/2026-09-06-booking-demand-test-parses-an-offer.md)
 - 2026-09-06 [後台其餘三個面板文案硬編碼繁中](done/2026-09-06-admin-panels-i18n-remaining.md)
 - 2026-09-06 [後台 AI 規劃連線測試送空候選，看不見真正會壞的那一步](done/2026-09-06-admin-planner-test-real-candidates.md)
 - 2026-09-06 [Wikidata 標籤原封不動存入，消歧義括號會顯示給使用者](done/2026-09-06-wikidata-labels-stored-verbatim.md)
@@ -47,4 +47,3 @@ _Nothing here._
 - 2026-09-06 [路線卡與路線面板的文案硬編碼繁中](done/2026-09-06-route-copy-i18n.md)
 - 2026-09-06 [美食與景點頁的國家／城市名稱在 en／ja／ko 仍是繁中](done/2026-09-06-food-hotspot-place-names-i18n.md)
 - 2026-09-06 [待安排地點進入 AI 候選集（PR 8）](done/2026-09-06-paste-inbox-into-candidates.md)
-- 2026-09-06 [PWA、Android share target 與今日檢視](done/2026-09-06-pwa-share-target-today-view.md)

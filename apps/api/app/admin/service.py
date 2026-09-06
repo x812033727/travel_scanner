@@ -1739,8 +1739,11 @@ async def _test_provider(
         )
         return "Google Travel Impact Model 驗證成功"
     if provider == "booking_demand":
-        await BookingHotelProvider(redis, settings).probe()
-        return f"Booking.com Demand API {settings.booking_demand_env} 驗證成功"
+        booking_offers = await BookingHotelProvider(redis, settings).probe()
+        return (
+            f"Booking.com Demand API {settings.booking_demand_env} 驗證成功，"
+            f"取得 {booking_offers} 筆旅館報價"
+        )
     if provider == "met_norway":
         met_weather = await MetNorwayWeatherService(redis, settings).lookup(
             latitude=35.6812,

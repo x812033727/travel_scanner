@@ -16,10 +16,15 @@ from app.config import Settings, get_settings
 from app.destinations.catalog import DestinationProfile, destination_for_code
 from app.i18n import normalize_locale, provider_locale
 from app.providers.schemas import ActionKind, HotelOffer, SourceMode
-from app.search.schemas import PropertyType, SearchCreate, SearchModule
+from app.search.schemas import PropertyType, SearchCreate, SearchModule, Travelers
 
 BOOKING_API_HOSTS = {"demandapi.booking.com", "demandapi-sandbox.booking.com"}
 NEARBY_ROWS = 50
+
+# The connection test asks for the smallest search the Demand API will answer, because it
+# spends the same quota as a real one. Three rows is enough to tell a working search from a
+# broken one and cheap enough to run on every settings save.
+PROBE_ROWS = 3
 
 
 def stable_booking_offer_id(provider_id: str) -> UUID:
@@ -291,6 +296,19 @@ class BookingHotelProvider:
     async def _search(
         self, query: SearchCreate, location: dict[str, Any], *, limit: int = 30
     ) -> list[HotelOffer]:
+        offers, _ = await self._search_with_row_count(query, location, limit=limit)
+        return offers
+
+    async def _search_with_row_count(
+        self, query: SearchCreate, location: dict[str, Any], *, limit: int = 30
+    ) -> tuple[list[HotelOffer], int]:
+        """Search, and also report how many accommodations the API returned.
+
+        The row count only matters to ``probe()``, which needs to tell "the search
+        endpoint returned nothing" apart from "it returned accommodations and not one
+        of them parsed into an offer". Those two failures have different causes and a
+        connection test that blurs them sends the operator to the wrong place.
+        """
         language = self._language(query)
         check_in, check_out = self._dates(query)
         guests: dict[str, Any] = {
@@ -317,7 +335,7 @@ class BookingHotelProvider:
         rows = cast(list[dict[str, Any]], search.get("data", []))[:limit]
         accommodation_ids = [row.get("id") for row in rows if row.get("id") is not None]
         if not accommodation_ids:
-            return []
+            return [], len(rows)
         details_payload = await self._request(
             "/accommodations/details",
             {
@@ -433,18 +451,50 @@ class BookingHotelProvider:
                     max_guests=_int(product.get("number_of_adults")) or None,
                 )
             )
-        return offers
+        return offers, len(rows)
 
-    async def probe(self) -> None:
+    async def probe(self) -> int:
+        """Run a real hotel search end to end and return how many offers parsed.
+
+        This used to stop at the city lookup, so it reported success as long as
+        ``/common/locations/cities`` answered. That endpoint is not the one users depend
+        on: a probe could pass while ``/accommodations/search`` was unauthorised, had
+        changed shape, or returned rows that no longer parse into an offer. Production
+        additionally refuses to mark this provider usable until the probe passes, so a
+        probe that stops early is a green light for a path nobody has walked.
+
+        Everything below goes through the same search and parse the product uses. There
+        is deliberately no relaxed parser for the test: a shape the real path rejects has
+        to fail here too, or the test is measuring something else.
+        """
+        check_in = date.today() + timedelta(days=45)
         query = SearchCreate(
             origin="TPE",
             destination="NRT",
-            departure_date=date.today() + timedelta(days=45),
-            return_date=date.today() + timedelta(days=47),
+            departure_date=check_in,
+            # One night, one adult, one room: the probe spends real Demand API quota, so
+            # it asks for the smallest stay that still exercises the whole path.
+            return_date=check_in + timedelta(days=1),
+            travelers=Travelers(adults=1, rooms=1),
             modules=[SearchModule.HOTEL],
         )
-        if await self._city_id(query) is None:
+        city_id = await self._city_id(query)
+        if city_id is None:
             raise ConnectionError("Booking Demand API 已回應，但無法對應東京城市資料")
+        offers, rows = await self._search_with_row_count(
+            query, {"city": city_id, "rows": PROBE_ROWS}, limit=PROBE_ROWS
+        )
+        if not offers:
+            raise ConnectionError(
+                "Booking Demand API 的城市查詢正常，但住宿查詢沒有回傳任何可用的旅館報價"
+                f"（收到 {rows} 筆住宿）。"
+                + (
+                    "住宿查詢回了空清單，請確認帳號有 /accommodations/search 權限。"
+                    if rows == 0
+                    else "住宿有回來但報價解析不出來，回應格式可能已經改變。"
+                )
+            )
+        return len(offers)
 
     async def get_hotel_details(self, hotel_id: str) -> dict[str, str]:
         payload = await self._request(
