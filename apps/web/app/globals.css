@@ -2217,11 +2217,12 @@ body {
 @media (max-width: 1023px) {
   .planner-app-shell {
     background: var(--paper);
-    /* The dock and the intent bar above it are fixed to the bottom, so the day
-       needs at least their height of slack underneath or the last cards can
-       never be scrolled clear of them - the edit button on a one-day trip ended
-       up permanently under the intent bar. */
-    padding-bottom: calc(var(--planner-dock-clearance) + 6rem);
+    /* Slack under the day so the last cards clear the fixed dock. The six extra
+       rem here were sized for an intent bar that was four rows tall and always
+       open; on a phone it is now one button until the reader opens it, and the
+       bar itself is in flow, so the rest was empty screen at the end of every
+       scroll. */
+    padding-bottom: calc(var(--planner-dock-clearance) + 2.5rem);
   }
   .planner-day-panel {
     border-color: color-mix(in srgb, var(--line) 85%, transparent);
