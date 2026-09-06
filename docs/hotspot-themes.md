@@ -146,13 +146,34 @@ the `locale` it actually resolved to, so a page can say which language it is sho
 | `GET /admin/hotspots/{hotspot_id}/intros` | five rows, one per locale, so a missing language reads as a gap |
 | `POST /admin/hotspots/{hotspot_id}/intros` | type one by hand; approved on arrival, because the author just reviewed it |
 
-### For the AI drafting job
+### The AI drafting job
 
-It is not written yet. When it is: ask `intro_targets(...)` which hotspots still need
-which locales — it excludes anything already `pending` or `approved`, so an interrupted
-run does not redraft what landed — and write through `upsert_hotspot_intro_draft(...)`.
-`hotspot_intro_runs` is there to record each job with the admin's idempotency key, the
-vendor and model used, and what landed, what was kept and what was rejected.
+`POST /admin/hotspots/{hotspot_id}/intros/generate` (202, `Idempotency-Key` required)
+records a `hotspot_intro_runs` row and queues one job on the `hotspot-intros` queue;
+`GET /admin/hotspots/intros/runs/{run_id}` reads it back. One model call drafts every
+requested locale at once, so the facts stay consistent between languages.
+
+It publishes nothing. Everything it writes goes through `upsert_hotspot_intro_draft`
+as `pending`, and by default an approved paragraph is left alone.
+
+Two rules the code enforces rather than merely asks for:
+
+- **The place's own text is never an instruction.** `INTRO_PROMPT` is a constant and
+  the attraction travels as JSON values under `payload["attraction"]`. Hotspot names
+  come from Wikidata discovery, so they are attacker-shaped input.
+- **A prompt is a request; a regex is a rule.** The prompt forbids prices, discounts,
+  clock times, opening hours, phone numbers and URLs — and `forbidden_claims()` checks
+  the output for them anyway. A rejected draft is reported in the run's `result_json`,
+  not stored. `length_ok()` likewise bounds each locale by its own script.
+
+Vendor, model, timeout and budgets come from the `hotspot_intro_ai_*` settings, which
+default to the guide search's model for the chosen vendor. Both the run count and the
+per-call count are rate-limited through the same daily budget helper the guide search
+uses.
+
+`intro_targets(...)` answers which hotspots still need which locales — skipping anything
+already `pending` or `approved` — so a bulk pass that is interrupted does not redraft
+what already landed.
 
 ## Follow-ups filed from this work
 

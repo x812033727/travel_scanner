@@ -43,6 +43,7 @@ from app.hotspots.guides import (
     GuideCandidate,
     YouTubeGuideProvider,
     canonical_external_url,
+    consume_search_budget,
     discover_guides,
     guide_coverage,
     guide_quota_status,
@@ -50,6 +51,7 @@ from app.hotspots.guides import (
     not_manual_guide_filter,
     upsert_guide,
 )
+from app.hotspots.intro_generation import intro_model
 from app.hotspots.intros import (
     INTRO_BODY_MAX_CHARS,
     clean_intro_body,
@@ -83,6 +85,7 @@ from app.models import (
     HotspotGuide,
     HotspotGuideAISearchRun,
     HotspotIntro,
+    HotspotIntroRun,
     HotspotPlaceEnrichmentRun,
     HotspotPlaceProfile,
     HotspotSignal,
@@ -96,6 +99,14 @@ router = APIRouter(prefix="/admin/hotspots", tags=["admin hotspots"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 RedisDep = Annotated[Redis, Depends(get_redis)]
 RequestLocale = Annotated[Locale, Depends(current_locale)]
+
+
+class IntroGenerateRequest(BaseModel):
+    locales: list[Locale] = Field(default_factory=lambda: list(LOCALES), min_length=1, max_length=5)
+    provider: AIProviderName | None = None
+    # Replace paragraphs that were already approved. Off by default, because a
+    # generated redraft is not a reason to discard a human decision.
+    force: bool = False
 
 
 class IntroReviewRequest(BaseModel):
@@ -1995,3 +2006,109 @@ async def add_hotspot_intro(
     )
     await session.commit()
     return _admin_intro_payload(row, hotspot.name)
+
+
+def _intro_run_payload(run: HotspotIntroRun) -> dict[str, Any]:
+    return {
+        "run_id": str(run.id),
+        "hotspot_id": str(run.hotspot_id),
+        "status": run.status,
+        "provider": run.provider,
+        "model": run.model,
+        "requested_locales": list(run.requested_locales),
+        "progress": run.progress,
+        "result": run.result_json,
+        "usage": run.usage_json,
+        "error_code": run.error_code,
+        "error_message": run.error_message,
+        "started_at": run.started_at.isoformat() if run.started_at else None,
+        "completed_at": run.completed_at.isoformat() if run.completed_at else None,
+    }
+
+
+@router.post("/{hotspot_id}/intros/generate", status_code=202)
+async def generate_hotspot_intros(
+    hotspot_id: UUID,
+    payload: IntroGenerateRequest,
+    user: AdminUser,
+    session: Session,
+    idempotency_key: Annotated[str, Header(alias="Idempotency-Key")],
+) -> dict[str, Any]:
+    """Queue a drafting run. Everything it writes still has to be reviewed."""
+
+    settings = await load_runtime_settings(session)
+    if not settings.hotspot_intro_ai_enabled:
+        raise AppError(503, "hotspot_intro_ai_disabled", "景點介紹產生目前已停用")
+    hotspot = await session.get(TravelHotspot, hotspot_id)
+    if hotspot is None:
+        raise AppError(404, "hotspot_not_found", "找不到這個景點")
+    existing = await session.scalar(
+        select(HotspotIntroRun).where(
+            HotspotIntroRun.actor_user_id == user.id,
+            HotspotIntroRun.idempotency_key == idempotency_key,
+        )
+    )
+    if existing is not None:
+        return _intro_run_payload(existing)
+    if not await consume_search_budget(
+        get_redis(), "intro-run", settings.hotspot_intro_ai_daily_run_limit
+    ):
+        raise AppError(429, "hotspot_intro_ai_quota_exhausted", "今日介紹產生額度已用完")
+    provider: AIProviderName = payload.provider or settings.hotspot_intro_ai_default_provider
+    run = HotspotIntroRun(
+        id=uuid4(),
+        actor_user_id=user.id,
+        hotspot_id=hotspot_id,
+        idempotency_key=idempotency_key,
+        requested_locales=list(payload.locales),
+        provider=provider,
+        model=intro_model(settings, provider),
+        force=payload.force,
+        status="queued",
+    )
+    session.add(run)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="hotspot_intro_generation_started",
+            target=f"hotspot-intro-run:{run.id}",
+            metadata_json={
+                "hotspot_id": str(hotspot_id),
+                "locales": list(payload.locales),
+                "provider": provider,
+                "force": payload.force,
+            },
+        )
+    )
+    await session.commit()
+    try:
+        connection = SyncRedis.from_url(get_settings().redis_url)
+        queued = Queue("hotspot-intros", connection=connection).enqueue(
+            "app.hotspots.intro_tasks.run_hotspot_intro_generation",
+            str(run.id),
+            job_timeout=600,
+        )
+        run.queue_job_id = queued.id
+        await session.commit()
+    except Exception as exc:
+        # A run that never reached the queue must not sit there looking queued.
+        run.status = "failed"
+        run.progress = 100
+        run.error_code = "queue_unavailable"
+        run.error_message = "景點介紹產生佇列暫時無法使用"
+        run.completed_at = datetime.now(UTC)
+        await session.commit()
+        raise AppError(503, "queue_unavailable", "景點介紹產生佇列暫時無法使用") from exc
+    return _intro_run_payload(run)
+
+
+@router.get("/intros/runs/{run_id}")
+async def hotspot_intro_run(
+    run_id: UUID,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, Any]:
+    run = await session.get(HotspotIntroRun, run_id)
+    if run is None:
+        raise AppError(404, "hotspot_intro_run_not_found", "找不到這次產生工作")
+    return _intro_run_payload(run)
