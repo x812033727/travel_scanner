@@ -1,0 +1,90 @@
+{
+  "tabs": {
+    "themes": "主題分類",
+    "intros": "專門介紹"
+  },
+  "kinds": {
+    "season": "季節",
+    "shop": "購物類型"
+  },
+  "active": "啟用",
+  "inactive": "停用",
+  "edit": "編輯",
+  "cancel": "取消",
+  "close": "關閉",
+  "refresh": "重新整理",
+  "loading": "載入中…",
+  "saving": "儲存中…",
+  "loadFailed": "載入失敗，請重新整理",
+  "localizedName": "{locale} 名稱",
+  "months": {
+    "label": "適用月份",
+    "allYear": "全年",
+    "none": "未設定",
+    "help": "只有季節主題需要月份；點選切換，可跨年（例如 11–1 月）。"
+  },
+  "themes": {
+    "title": "主題分類",
+    "description": "維護季節主題與購物類型：五語名稱、適用月份、排序與啟用狀態。名稱會直接顯示在熱門景點頁的主題篩選，不經過語言檔。",
+    "add": "新增主題",
+    "createTitle": "新增主題",
+    "editTitle": "編輯 {name}",
+    "slug": "代碼",
+    "slugHelp": "小寫英數與連字號；建立後不可更改。",
+    "kind": "類型",
+    "kindFilter": "主題類型",
+    "allKinds": "全部類型",
+    "displayOrder": "排序",
+    "save": "儲存主題",
+    "created": "主題已新增",
+    "updated": "主題已更新",
+    "empty": "目前沒有主題",
+    "hotspotCount": "{count} 個景點",
+    "nameRequired": "五種語言的名稱都要填",
+    "monthsRequired": "季節主題至少要選一個月份"
+  },
+  "intros": {
+    "title": "專門介紹",
+    "description": "AI 起草、人工審核的景點介紹。核准後才會顯示給讀者，每個景點每個語系一段。",
+    "statusFilter": "狀態",
+    "allStatuses": "全部狀態",
+    "status": {
+      "pending": "待審",
+      "approved": "已核准",
+      "rejected": "已拒絕",
+      "disabled": "已停用"
+    },
+    "localeFilter": "語系",
+    "allLocales": "全部語言",
+    "hotspotFilter": "景點名稱",
+    "selectAll": "全選目前項目",
+    "clearSelection": "取消全選",
+    "selected": "已選 {count} 筆",
+    "selectItem": "選取 {name}（{locale}）",
+    "approve": "核准",
+    "reject": "拒絕",
+    "reviewed": "已處理 {count} 筆介紹",
+    "sourceAi": "AI 草稿",
+    "sourceManual": "手動",
+    "edit": "編輯內容",
+    "body": "介紹內容",
+    "bodyCount": "{count}／1500",
+    "save": "儲存內容",
+    "saved": "介紹內容已更新",
+    "empty": "沒有符合的介紹",
+    "updatedAt": "更新於 {time}",
+    "counts": "待審 {pending}・已核准 {approved}"
+  },
+  "editor": {
+    "open": "主題",
+    "title": "{name} 的主題",
+    "description": "勾選適用的主題；季節主題可為這個景點另外設定月份。",
+    "shopOnly": "購物類型只適用於「購物」分類的景點。",
+    "defaultMonths": "使用預設月份（{months}）",
+    "save": "儲存主題",
+    "saved": "已更新 {name} 的主題",
+    "none": "尚未指定主題",
+    "noThemes": "目前沒有啟用中的主題，請先到「主題分類」新增。",
+    "removed": "已移除（不會被種子檔加回來）"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "tabs": {
+    "themes": "テーマ分類",
+    "intros": "専門紹介"
+  },
+  "kinds": {
+    "season": "季節",
+    "shop": "ショップの種類"
+  },
+  "active": "有効",
+  "inactive": "無効",
+  "edit": "編集",
+  "cancel": "キャンセル",
+  "close": "閉じる",
+  "refresh": "更新",
+  "loading": "読み込み中…",
+  "saving": "保存中…",
+  "loadFailed": "読み込めませんでした。更新してください",
+  "localizedName": "{locale} の名称",
+  "months": {
+    "label": "対象の月",
+    "allYear": "通年",
+    "none": "未設定",
+    "help": "月が必要なのは季節テーマのみです。タップで切り替え、年をまたぐ範囲（11〜1月など）も設定できます。"
+  },
+  "themes": {
+    "title": "テーマ分類",
+    "description": "季節テーマとショップの種類を管理します：5言語の名称、対象の月、並び順、有効状態。名称はそのまま人気スポットのテーマ絞り込みに表示されます。",
+    "add": "テーマを追加",
+    "createTitle": "新しいテーマ",
+    "editTitle": "{name} を編集",
+    "slug": "コード",
+    "slugHelp": "英小文字・数字・ハイフン。作成後は変更できません。",
+    "kind": "種類",
+    "kindFilter": "テーマの種類",
+    "allKinds": "すべての種類",
+    "displayOrder": "並び順",
+    "save": "テーマを保存",
+    "created": "テーマを追加しました",
+    "updated": "テーマを更新しました",
+    "empty": "テーマはまだありません",
+    "hotspotCount": "{count} 件のスポット",
+    "nameRequired": "5言語すべての名称が必要です",
+    "monthsRequired": "季節テーマには月が必要です"
+  },
+  "intros": {
+    "title": "専門紹介",
+    "description": "AIが下書きし管理者が審査する紹介文です。承認後にのみ読者へ表示され、スポットごと・言語ごとに1段落です。",
+    "statusFilter": "状態",
+    "allStatuses": "すべての状態",
+    "status": {
+      "pending": "審査待ち",
+      "approved": "承認済み",
+      "rejected": "却下",
+      "disabled": "無効"
+    },
+    "localeFilter": "言語",
+    "allLocales": "すべての言語",
+    "hotspotFilter": "スポット名",
+    "selectAll": "表示中をすべて選択",
+    "clearSelection": "選択を解除",
+    "selected": "{count} 件選択中",
+    "selectItem": "{name}（{locale}）を選択",
+    "approve": "承認",
+    "reject": "却下",
+    "reviewed": "{count} 件の紹介を処理しました",
+    "sourceAi": "AI 下書き",
+    "sourceManual": "手動",
+    "edit": "本文を編集",
+    "body": "紹介文",
+    "bodyCount": "{count}／1500",
+    "save": "本文を保存",
+    "saved": "紹介文を更新しました",
+    "empty": "該当する紹介はありません",
+    "updatedAt": "更新 {time}",
+    "counts": "審査待ち {pending}・承認済み {approved}"
+  },
+  "editor": {
+    "open": "テーマ",
+    "title": "{name} のテーマ",
+    "description": "該当するテーマにチェックを入れます。季節テーマはこのスポット専用の月を設定できます。",
+    "shopOnly": "ショップの種類は「買い物」カテゴリのスポットにのみ適用されます。",
+    "defaultMonths": "既定の月を使う（{months}）",
+    "save": "テーマを保存",
+    "saved": "{name} のテーマを更新しました",
+    "none": "テーマ未設定",
+    "noThemes": "有効なテーマがありません。先に「テーマ分類」で追加してください。",
+    "removed": "削除済み（シードでは戻りません）"
+  }
+}
