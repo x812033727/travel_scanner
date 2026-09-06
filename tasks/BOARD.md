@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**4 open · 1 in progress · 1 blocked · 0 in review · 75 done**
+**6 open · 1 in progress · 1 blocked · 0 in review · 75 done**
 
 ## Ready to claim
 
@@ -15,8 +15,10 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | P2 | [國定假日資料：台日韓 2026-2027 進版控，日曆看得見連假與補班](open/2026-09-06-public-holidays-tw-jp-kr.md) | api | `apps/api/app/holidays`<br>`apps/api/app/main.py`<br>`apps/api/app/cli.py`<br>`apps/api/tests/test_public_holidays.py`<br>`apps/web/lib/holidays.ts`<br>`apps/web/components/date-range-picker.tsx`<br>`docs/public-holidays.md` |
 | P2 | [航班來源擴充讀舊資料沒有防護：型別不符的 search id 會直接 500](open/2026-09-06-expand-flight-sources-guard.md) | api | `apps/api/app/search/router.py`<br>`apps/api/tests/test_search_flight_sources.py` |
+| P2 | [供應商就緒狀態只看金鑰有無，卡片會綠燈但功能不通](open/2026-09-06-configured-readiness-beyond-key-presence.md) | api | `apps/api/app/admin/service.py`<br>`apps/api/tests/test_admin_readiness.py` |
 | P3 | [後台其餘三個面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n-remaining.md) | web | `apps/web/components/admin-hotspot-places-panel.tsx`<br>`apps/web/components/admin-deployments-panel.tsx`<br>`apps/web/components/admin-users-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/app/[locale]/admin/page.tsx`<br>`apps/web/app/[locale]/admin/settings/page.tsx`<br>`apps/web/app/[locale]/admin/system-settings/page.tsx`<br>`apps/web/app/[locale]/admin/hotspots/page.tsx`<br>`apps/web/app/[locale]/admin/foods/page.tsx`<br>`apps/web/app/[locale]/admin/users/page.tsx`<br>`apps/web/app/[locale]/admin/deployments/page.tsx`<br>`apps/web/app/[locale]/admin/analytics/page.tsx`<br>`apps/web/app/[locale]/admin/usage-settings/page.tsx`<br>`apps/web/app/[locale]/admin/layout-settings/page.tsx` |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | ops | `docs/korea-tourism-tourapi.md`<br>`docs/hotspot-intelligence.md`<br>`tools/probe_tourapi.py` |
+| P3 | [Booking Demand 連線測試停在城市 ID，從不解析旅館報價](open/2026-09-06-booking-demand-test-parses-an-offer.md) | api | `apps/api/app/providers/booking.py`<br>`apps/api/tests/test_booking_demand_probe.py` |
 
 ## In progress
 
