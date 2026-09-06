@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**3 open · 1 in progress · 3 blocked · 0 in review · 108 done**
+**3 open · 0 in progress · 3 blocked · 0 in review · 109 done**
 
 ## Ready to claim
 
@@ -19,9 +19,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [十三個公開頁裡有九個共用同一組 title 與 description](open/2026-09-06-duplicate-page-metadata.md) | claude-opus-5 | 2026-09-06T17:56:45Z | `claude/ux-batch-3` |
+_Nothing here._
 
 ## In review
 
@@ -38,6 +36,7 @@ _Nothing here._
 ## Recently finished
 
 - 2026-09-06 [手機版行程頁的浮動元件佔掉三分之一畫面](done/2026-09-06-planner-mobile-chrome.md)
+- 2026-09-06 [十三個公開頁裡有九個共用同一組 title 與 description](done/2026-09-06-duplicate-page-metadata.md)
 - 2026-09-06 [後台審核頁在看到第一筆待審之前先給 30 個控制項](done/2026-09-06-admin-review-density.md)
 - 2026-09-06 [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](done/2026-09-06-admin-load-error-copy.md)
 - 2026-09-06 [LINE 綁定關鍵字只認繁體中文，日英韓讀者照著做也綁不上](done/2026-09-06-line-link-keyword-chinese-only.md)
@@ -46,4 +45,3 @@ _Nothing here._
 - 2026-09-06 [購物行程：規劃器聽得懂店家類型，也知道什麼當季](done/2026-09-06-planner-shop-themes.md)
 - 2026-09-06 [價格通知頁的副標與 LINE 卡片在四個語系都是繁中](done/2026-09-06-alerts-hardcoded-zh-tw.md)
 - 2026-09-06 [上線後查核抓到的六個問題（大字閃爍、焦點掉回 body、標點與複數）](done/2026-09-06-post-deploy-verification-fixes.md)
-- 2026-09-06 [公開頁精簡：景點卡動作分層、首頁膠囊溢出、排行榜第一屏](done/2026-09-06-simplify-public-cards.md)
