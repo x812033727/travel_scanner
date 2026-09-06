@@ -83,6 +83,8 @@ class ItineraryHotspot(BaseModel):
     opening_hours: dict[str, Any] = Field(default_factory=dict)
     # Theme slugs (seasons and shop types) from hotspot_theme_links, in catalog order.
     themes: list[str] = Field(default_factory=list)
+    # One of those seasons falls inside the trip's months.
+    in_season: bool = False
 
 
 class ItineraryFood(BaseModel):

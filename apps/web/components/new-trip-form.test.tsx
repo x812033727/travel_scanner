@@ -272,4 +272,53 @@ describe("NewTripForm", () => {
     const asked = holidayUrls.map((url) => new URL(url, "https://travel.test").searchParams.get("country"));
     expect(asked.sort()).toEqual(["JP", "TW"]);
   });
+
+  it("asks which shops only after 購物 is chosen, and sends them", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "trip-2" }), { status: 201, headers: { "Content-Type": "application/json" } }));
+    stubFetch(fetchMock);
+    render(<NewTripForm />);
+    fillRequiredFields();
+    next();
+
+    // The shop types mean nothing on their own, so they stay out of the way.
+    expect(screen.queryByRole("group", { name: "想逛哪些店？（可複選）" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "購物" }));
+    const shops = screen.getByRole("group", { name: "想逛哪些店？（可複選）" });
+    fireEvent.click(within(shops).getByRole("button", { name: "藥妝" }));
+    fireEvent.click(within(shops).getByRole("button", { name: "電器／3C" }));
+    expect(within(shops).getByRole("button", { name: "藥妝" }).getAttribute("aria-pressed")).toBe("true");
+
+    next();
+    next();
+    fireEvent.click(screen.getByRole("button", { name: /交給 AI 排好行程/ }));
+
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/trip-2"));
+    const request = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body));
+    expect(request.preferences.interests).toContain("shopping");
+    expect(request.preferences.shop_themes).toEqual(["drugstore", "electronics"]);
+  });
+
+  it("forgets the shop types when 購物 is switched off", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "trip-3" }), { status: 201, headers: { "Content-Type": "application/json" } }));
+    stubFetch(fetchMock);
+    render(<NewTripForm />);
+    fillRequiredFields();
+    next();
+
+    fireEvent.click(screen.getByRole("button", { name: "購物" }));
+    fireEvent.click(within(screen.getByRole("group", { name: "想逛哪些店？（可複選）" })).getByRole("button", { name: "藥妝" }));
+    // Turning the interest off hides the chips; a hidden chip that stayed selected
+    // would quietly steer the itinerary.
+    fireEvent.click(screen.getByRole("button", { name: "購物" }));
+    expect(screen.queryByRole("group", { name: "想逛哪些店？（可複選）" })).toBeNull();
+
+    next();
+    next();
+    fireEvent.click(screen.getByRole("button", { name: /交給 AI 排好行程/ }));
+
+    await waitFor(() => expect(push).toHaveBeenCalledWith("/trips/trip-3"));
+    const request = JSON.parse(String((fetchMock.mock.calls[0][1] as RequestInit).body));
+    expect(request.preferences.interests).not.toContain("shopping");
+    expect(request.preferences.shop_themes).toEqual([]);
+  });
 });
