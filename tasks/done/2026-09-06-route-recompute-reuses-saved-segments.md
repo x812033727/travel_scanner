@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-route-recompute-reuses-saved-segments
 title: 整天重算只打真的缺的路段；編輯後不再自動整趟重算
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-fable-5.1
 claimed_at: 2026-09-06T02:54:59Z
 created_at: 2026-09-06T02:45:23Z
-completed_at:
+completed_at: 2026-09-06T05:05:06Z
 branch: claude/route-recompute-reuses-saved-segments
 depends_on:
   - 2026-09-06-route-cache-time-key
