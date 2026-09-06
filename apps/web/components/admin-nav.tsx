@@ -112,8 +112,8 @@ export function AdminNav({ current }: { current?: string } = {}) {
           <X size={19} />
         </button>
       </div>
-      <label className="relative mb-4 block"><Search aria-hidden className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]" size={16} /><span className="sr-only">搜尋後台功能</span><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜尋後台功能" className="h-11 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] pl-9 pr-3 text-sm outline-none transition focus:border-[var(--teal)]" /></label>
-      <nav aria-label="管理後台功能" className="grid gap-1.5">
+      <label className="relative mb-4 block"><Search aria-hidden className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]" size={16} /><span className="sr-only">{t("searchPlaceholder")}</span><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t("searchPlaceholder")} className="h-11 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] pl-9 pr-3 text-sm outline-none transition focus:border-[var(--teal)]" /></label>
+      <nav aria-label={t("menuLabel")} className="grid gap-1.5">
         {visibleLinks.map((item) => {
           const Icon = item.icon;
           const active = activeFor(item.href);
@@ -130,7 +130,7 @@ export function AdminNav({ current }: { current?: string } = {}) {
             </Link>
           );
         })}
-        {!visibleLinks.length && <p className="rounded-xl bg-[var(--paper)] p-3 text-center text-xs text-[var(--muted)]">沒有符合的後台功能</p>}
+        {!visibleLinks.length && <p className="rounded-xl bg-[var(--paper)] p-3 text-center text-xs text-[var(--muted)]">{t("noMatches")}</p>}
       </nav>
     </>
   );
@@ -139,11 +139,15 @@ export function AdminNav({ current }: { current?: string } = {}) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="fixed bottom-[calc(5.6rem+env(safe-area-inset-bottom))] right-4 z-50 grid h-12 w-12 place-items-center rounded-2xl bg-[var(--ink)] text-white shadow-lg lg:hidden"
-        aria-label={t("openMenu")}
+        // The phone tab bar is hidden inside /admin, so the 5.6rem it used to
+        // clear left this floating over the middle of the page with nothing
+        // under it. It also carries its label now: a bare hamburger is the only
+        // way into ten admin sections.
+        className="fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom))] right-4 z-50 inline-flex min-h-12 items-center gap-2 rounded-2xl bg-[var(--ink)] px-4 font-semibold text-white shadow-lg lg:hidden"
         aria-expanded={open}
       >
-        <Menu />
+        <Menu aria-hidden size={20} />
+        {t("openMenu")}
       </button>
       {open && (
         <button

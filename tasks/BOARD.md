@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**10 open · 1 in progress · 1 blocked · 0 in review · 65 done**
+**10 open · 2 in progress · 1 blocked · 0 in review · 65 done**
 
 ## Ready to claim
 
@@ -13,7 +13,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P1 | [後台外殼：錯誤頁在地化、面板不要整頁炸掉、手機選單擋內容](open/2026-09-06-admin-shell-resilience.md) | web | `apps/web/app/[locale]/error.tsx`<br>`apps/web/app/[locale]/admin/error.tsx`<br>`apps/web/components/admin-nav.tsx`<br>`apps/web/components/admin-dashboard.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/messages/zh-TW/admin.json` |
 | P1 | [大字模式：讓長輩自己把整站字放大](open/2026-09-06-large-text-mode.md) | web | `apps/web/components/text-size-switcher.tsx`<br>`apps/web/components/text-size-switcher.test.tsx`<br>`apps/web/lib/text-size.ts`<br>`apps/web/components/mobile-nav.tsx`<br>`apps/web/components/site-navigation.tsx`<br>`apps/web/components/account-panel.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
 | P1 | [公開頁精簡：景點卡動作分層、首頁膠囊溢出、排行榜第一屏](open/2026-09-06-simplify-public-cards.md) | web | `apps/web/components/hotspot-explorer.tsx`<br>`apps/web/components/search-workbench.tsx`<br>`apps/web/app/[locale]/hotspots/page.tsx` |
 | P2 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | api | `apps/api/app/destinations/localized.py` |
@@ -28,6 +27,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [看得見：連結顏色被吃掉、對比不足與字級下限](open/2026-09-06-readable-foundation.md) | claude-opus-5 | 2026-09-06T13:02:56Z | `claude/ui-ux-simplification-72afb9` |
+| [後台外殼：錯誤頁在地化、面板不要整頁炸掉、手機選單擋內容](open/2026-09-06-admin-shell-resilience.md) | claude-opus-5 | 2026-09-06T13:29:26Z | `claude/ui-ux-simplification-72afb9` |
 
 ## In review
 
@@ -39,6 +39,7 @@ _Nothing here._
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [後台其餘三個面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n-remaining.md) | active work in the same scope |
+| P3 | [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](open/2026-09-06-admin-load-error-copy.md) | active work in the same scope |
 
 ## Recently finished
 
