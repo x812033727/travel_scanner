@@ -1,5 +1,8 @@
 "use client";
 
+import { ChevronDown } from "lucide-react";
+import { useSyncExternalStore, type ReactNode } from "react";
+
 export type FilterPillOption = { code: string; label: string; count?: number };
 
 type FilterPillsProps = {
@@ -55,6 +58,86 @@ export function FilterPills({
           </button>
         );
       })}
+    </div>
+  );
+}
+
+
+/**
+ * Filters folded away behind one line saying what they are currently set to.
+ *
+ * The hotspot review page put about thirty controls above the first candidate: two rows of
+ * pills, six fields, and three batch buttons that do nothing until something is selected.
+ * Someone clearing hundreds of rows a day rarely changes the filters and always needs the
+ * first decision, so the filters start closed and the choice is remembered per browser.
+ */const listeners = new Set<() => void>();
+
+function subscribe(listener: () => void) {
+  listeners.add(listener);
+  return () => {
+    listeners.delete(listener);
+  };
+}
+
+function isOpen(storageKey: string) {
+  try {
+    return window.localStorage.getItem(storageKey) === "open";
+  } catch {
+    // A browser that refuses storage still gets a working panel, just always closed.
+    return false;
+  }
+}
+
+export function FilterDisclosure({
+  label,
+  summary,
+  showLabel,
+  hideLabel,
+  storageKey,
+  children,
+}: {
+  label: string;
+  summary: string;
+  showLabel: string;
+  hideLabel: string;
+  storageKey: string;
+  children: ReactNode;
+}) {
+  // The server has no localStorage, so it renders closed and the browser corrects it on
+  // hydration; useSyncExternalStore is how React wants that read done.
+  const open = useSyncExternalStore(
+    subscribe,
+    () => isOpen(storageKey),
+    () => false,
+  );
+
+  function toggle() {
+    try {
+      window.localStorage.setItem(storageKey, open ? "closed" : "open");
+    } catch {
+      // Not remembering the choice is better than not being able to make it.
+    }
+    for (const listener of listeners) listener();
+  }
+
+  return (
+    <div className="rounded-2xl border border-[var(--line)] bg-white">
+      <button
+        type="button"
+        onClick={toggle}
+        aria-expanded={open}
+        aria-label={open ? hideLabel : showLabel}
+        className="flex min-h-12 w-full items-center gap-3 px-4 text-left"
+      >
+        <span className="font-semibold">{label}</span>
+        <span className="min-w-0 flex-1 truncate text-sm text-[var(--muted)]">{summary}</span>
+        <ChevronDown
+          size={18}
+          className={`shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
+          aria-hidden="true"
+        />
+      </button>
+      {open && <div className="border-t border-[var(--line)] p-4">{children}</div>}
     </div>
   );
 }
