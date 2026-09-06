@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**10 open · 0 in progress · 1 blocked · 0 in review · 67 done**
+**10 open · 0 in progress · 1 blocked · 0 in review · 68 done**
 
 ## Ready to claim
 
@@ -40,6 +40,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [東京 AI 行程一律 500：一筆種子的 20 分鐘低於 planner 下限](done/2026-09-06-tokyo-planner-duration-500.md)
 - 2026-09-06 [PWA、Android share target 與今日檢視](done/2026-09-06-pwa-share-target-today-view.md)
 - 2026-09-06 [Measure the flood before widening ALLOWED_TYPES with temple, shrine and museum types](done/2026-09-06-measure-the-flood-before-widening-allowed.md)
 - 2026-09-06 [營業時間感知排程：AI 排程不把景點排在打烊時段](done/2026-09-06-opening-hours-aware-scheduling.md)
@@ -49,4 +50,3 @@ _Nothing here._
 - 2026-09-06 [行程狀態標籤與封面圖](done/2026-09-06-trip-status-and-cover.md)
 - 2026-09-06 [分享頁「存成我的行程」與 QR code](done/2026-09-06-share-fork-and-qr.md)
 - 2026-09-06 [ICS 行事曆匯出](done/2026-09-06-ics-calendar-export.md)
-- 2026-09-06 [編輯後不打 provider 也要把 DB 的行程時間重新推算](done/2026-09-06-route-projection-only-pass.md)

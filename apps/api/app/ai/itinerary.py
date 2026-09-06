@@ -30,6 +30,38 @@ SlotType = Literal["activity", "lunch", "dinner"]
 
 logger = logging.getLogger(__name__)
 
+# The planner places a candidate in a slot, so it cannot schedule one shorter than its
+# smallest slot or longer than a day, and it will not walk further than half a day to
+# reach one. The catalog is allowed to hold the truthful figure — 忠犬八公像 really is a
+# 20-minute photo stop, and that is what the hotspot page should say — so these bounds are
+# enforced on the planner's own model and the values that reach it are clamped at the
+# construction site. Rewriting the catalog to fit the planner would be lying about the place.
+MIN_CANDIDATE_DURATION_MINUTES = 30
+MAX_CANDIDATE_DURATION_MINUTES = 480
+DEFAULT_CANDIDATE_DURATION_MINUTES = 120
+MAX_CANDIDATE_ACCESS_MINUTES = 180
+
+
+def clamp_candidate_duration(minutes: int | None) -> int:
+    """Fit a stored duration into the planner's slot bounds.
+
+    ``recommended_duration_minutes`` comes from ``metadata_json``, free-form JSON written by
+    seed files and import scripts and validated by none of them. One row outside the bounds
+    used to raise a pydantic ``ValidationError`` inside the request handler, and since only
+    ``AppError`` and ``RequestValidationError`` have handlers, that surfaced as a 500 for
+    every AI planning request in that city rather than as one skipped candidate.
+    """
+    if minutes is None:
+        return DEFAULT_CANDIDATE_DURATION_MINUTES
+    return max(MIN_CANDIDATE_DURATION_MINUTES, min(MAX_CANDIDATE_DURATION_MINUTES, minutes))
+
+
+def clamp_candidate_access(minutes: int | None) -> int:
+    """Fit a stored access time into the planner's bounds; same reasoning as the duration."""
+    if minutes is None:
+        return 0
+    return max(0, min(MAX_CANDIDATE_ACCESS_MINUTES, minutes))
+
 
 class AIPlannerCandidate(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -46,14 +78,16 @@ class AIPlannerCandidate(BaseModel):
     category: str = Field(min_length=1, max_length=40)
     latitude: float = Field(ge=-90, le=90)
     longitude: float = Field(ge=-180, le=180)
-    duration_minutes: int = Field(ge=30, le=480)
+    duration_minutes: int = Field(
+        ge=MIN_CANDIDATE_DURATION_MINUTES, le=MAX_CANDIDATE_DURATION_MINUTES
+    )
     map_links: list[dict[str, str | bool]] = Field(default_factory=list)
     hotspot_id: UUID | None = None
     food_id: UUID | None = None
     merchant_id: UUID | None = None
     meal_types: list[str] = Field(default_factory=list)
     depth_kind: Literal["urban_local", "day_trip"] | None = None
-    access_minutes: int = Field(default=0, ge=0, le=180)
+    access_minutes: int = Field(default=0, ge=0, le=MAX_CANDIDATE_ACCESS_MINUTES)
     # Google's cached periods for this place, when the cache is still fresh. Never sent to
     # the model: the planner reads them itself so an unparseable payload cannot become a
     # sentence in a prompt.

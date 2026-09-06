@@ -22,6 +22,8 @@ from app.ai.itinerary import (
     AIItineraryRequest,
     AIPlannerCandidate,
     AIPlanningResult,
+    clamp_candidate_access,
+    clamp_candidate_duration,
 )
 from app.auth.schemas import Currency
 from app.auth.service import CurrentUser
@@ -1281,11 +1283,11 @@ async def _load_ai_planner_candidates(
             category=hotspot.category,
             latitude=hotspot.latitude,
             longitude=hotspot.longitude,
-            duration_minutes=hotspot.recommended_duration_minutes,
+            duration_minutes=clamp_candidate_duration(hotspot.recommended_duration_minutes),
             map_links=hotspot.map_links,
             hotspot_id=hotspot.hotspot_id,
             depth_kind=("day_trip" if hotspot.depth_kind == "day_trip" else "urban_local"),
-            access_minutes=hotspot.access_minutes,
+            access_minutes=clamp_candidate_access(hotspot.access_minutes),
             opening_hours=hotspot.opening_hours,
             is_cross_city=hotspot.is_cross_city,
             rank=rank,
