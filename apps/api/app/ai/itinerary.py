@@ -22,6 +22,7 @@ from app.ai.structured_output import (
 from app.config import Settings
 from app.localized_names import item_names, join_localized_names
 from app.search.schemas import SearchPreferences, Travelers, TripPace
+from app.trips.hours import open_slot
 from app.trips.itinerary import ItineraryDay, ItineraryItem
 
 AIProviderName = Literal["openai", "anthropic", "minimax", "gemini", "catalog"]
@@ -53,6 +54,10 @@ class AIPlannerCandidate(BaseModel):
     meal_types: list[str] = Field(default_factory=list)
     depth_kind: Literal["urban_local", "day_trip"] | None = None
     access_minutes: int = Field(default=0, ge=0, le=180)
+    # Google's cached periods for this place, when the cache is still fresh. Never sent to
+    # the model: the planner reads them itself so an unparseable payload cannot become a
+    # sentence in a prompt.
+    opening_hours: dict[str, Any] = Field(default_factory=dict)
     is_cross_city: bool = False
     rank: int = Field(default=999, ge=1)
 
@@ -508,8 +513,10 @@ def fallback_draft(request: AIItineraryRequest) -> AIItineraryDraft:
         key=lambda candidate: candidate.rank,
     )
     candidate_by_key = {candidate.key: candidate for candidate in request.candidates}
+    trip_zone = ZoneInfo(request.timezone) if request.timezone else UTC
     used: set[str] = set()
-    hotspot_index = 0
+    # Stops passed over because they are shut at the hour that was free; reported once.
+    closed_keys: set[str] = set()
     draft_days: list[AIDraftDay] = []
     for day_index, day_value in enumerate(days):
         excursion = excursion_by_day.get(day_index)
@@ -526,13 +533,32 @@ def fallback_draft(request: AIItineraryRequest) -> AIItineraryDraft:
                     slot_type="activity",
                 )
             )
+        day_start = datetime.combine(day_value, time(0, 0), tzinfo=trip_zone)
         for slot in ([] if excursion else activity_slots):
-            while hotspot_index < len(hotspots) and hotspots[hotspot_index].key in used:
-                hotspot_index += 1
-            if hotspot_index >= len(hotspots):
+            # Walk forward until a stop is open at this hour. A place with no usable
+            # hours matches immediately, so a trip with no cached hours plans exactly as
+            # it did before; a museum that shuts on Mondays is simply passed over.
+            candidate = None
+            for option in hotspots:
+                if option.key in used:
+                    continue
+                if (
+                    open_slot(
+                        option.opening_hours,
+                        day_start,
+                        [slot],
+                        stay_minutes=option.duration_minutes,
+                    )
+                    is None
+                ):
+                    # Shut at this hour today. It stays in the running for the other
+                    # days, so a Monday-closed museum simply lands on the Tuesday.
+                    closed_keys.add(option.key)
+                    continue
+                candidate = option
                 break
-            candidate = hotspots[hotspot_index]
-            hotspot_index += 1
+            if candidate is None:
+                break
             used.add(candidate.key)
             items.append(
                 AIDraftItem(

@@ -67,6 +67,7 @@ from app.trips.expenses import (
     cost_summary,
     seed_rows,
 )
+from app.trips.hours import is_open_at, opens_within_day
 from app.trips.itinerary import ItineraryItem
 from app.trips.pricing import (
     lodging_from_offer,
@@ -1285,6 +1286,7 @@ async def _load_ai_planner_candidates(
             hotspot_id=hotspot.hotspot_id,
             depth_kind=("day_trip" if hotspot.depth_kind == "day_trip" else "urban_local"),
             access_minutes=hotspot.access_minutes,
+            opening_hours=hotspot.opening_hours,
             is_cross_city=hotspot.is_cross_city,
             rank=rank,
         )
@@ -4880,6 +4882,71 @@ async def reoptimize_trip(
     result = await serialize_trip(session, trip)
     result["usage"] = usage_status(reservation).model_dump()
     return result
+
+
+@router.get("/{trip_id}/health")
+async def trip_day_health(
+    trip_id: UUID,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    """What is worth knowing about each day, without asking any provider anything.
+
+    Three things a traveller cannot see by reading their own plan: a booking they will
+    arrive late for, a stop that is shut at the hour it sits in, and legs nobody has
+    routed. Everything comes from what is already stored, so opening this costs nothing
+    and says nothing it cannot support: a stop with no cached hours is simply absent
+    from ``closed``.
+    """
+    trip = await owned_trip(session, user.id, trip_id)
+    rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    records = await load_route_segments(session, trip.id)
+    saved = [segment_from_record(record) for record in records]
+    try:
+        trip_zone = ZoneInfo(trip.timezone) if trip.timezone else UTC
+    except ZoneInfoNotFoundError:
+        trip_zone = UTC
+    days: list[dict[str, Any]] = []
+    for day_value in sorted({row.day_date for row in rows if row.day_date is not None}):
+        day_rows = active_route_rows(rows, day_value)
+        by_pair = {(item.from_item_id, item.to_item_id) for item in saved}
+        projection = project_day_schedule(
+            day_rows,
+            [item for item in saved if item.to_item_id in {row.id for row in day_rows}],
+        )
+        closed: list[dict[str, Any]] = []
+        for row in day_rows:
+            start = row.start_time
+            hours = (row.data or {}).get("opening_hours")
+            if start is None or not isinstance(hours, dict):
+                continue
+            local_start = start.astimezone(trip_zone)
+            if is_open_at(hours, local_start) is False:
+                opens = opens_within_day(hours, local_start)
+                closed.append(
+                    {
+                        "item_id": str(row.id),
+                        "title": row.title or row.item_type,
+                        "start_time": start.isoformat(),
+                        "opens_at": opens.strftime("%H:%M") if opens else None,
+                    }
+                )
+        unrouted = sum(
+            1
+            for previous, following in zip(day_rows, day_rows[1:], strict=False)
+            if (previous.id, following.id) not in by_pair
+        )
+        days.append(
+            {
+                "date": day_value.isoformat(),
+                "late": [
+                    conflict.model_dump(mode="json") for conflict in projection.impact.conflicts
+                ],
+                "closed": closed,
+                "unrouted": unrouted,
+            }
+        )
+    return {"days": days}
 
 
 @router.post("/{trip_id}/share")

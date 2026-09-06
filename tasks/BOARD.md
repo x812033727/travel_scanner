@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**8 open · 0 in progress · 1 blocked · 0 in review · 64 done**
+**7 open · 0 in progress · 1 blocked · 0 in review · 65 done**
 
 ## Ready to claim
 
@@ -13,7 +13,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P2 | [營業時間感知排程：AI 排程不把景點排在打烊時段](open/2026-09-06-opening-hours-aware-scheduling.md) | api | `apps/api/app/trips/hours.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/web/components/day-health-strip.tsx` |
 | P2 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | api | `apps/api/app/destinations/localized.py` |
 | P2 | [待安排地點進入 AI 候選集（PR 8）](open/2026-09-06-paste-inbox-into-candidates.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/intents.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/trips/ingest.py`<br>`apps/web/components/trip-inbox-panel.tsx`<br>`apps/web/components/trip-editor.tsx` |
 | P3 | [PWA、Android share target 與今日檢視](open/2026-09-06-pwa-share-target-today-view.md) | web | `apps/web/app/manifest.ts`<br>`apps/web/public`<br>`apps/web/components/today-view.tsx` |
@@ -38,6 +37,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [營業時間感知排程：AI 排程不把景點排在打烊時段](done/2026-09-06-opening-hours-aware-scheduling.md)
 - 2026-09-06 [貼 Google Maps 連結加景點（待安排 inbox）](done/2026-09-06-paste-maps-links-ingest.md)
 - 2026-09-06 [已存行程頁掛上分潤選項](done/2026-09-06-trip-affiliate-options.md)
 - 2026-09-06 [列印版行程表（一天一頁的 A5 列印樣式）](done/2026-09-06-printable-itinerary.md)
@@ -47,4 +47,3 @@ _Nothing here._
 - 2026-09-06 [編輯後不打 provider 也要把 DB 的行程時間重新推算](done/2026-09-06-route-projection-only-pass.md)
 - 2026-09-06 [ko 與 ja 的景點名稱多半退回英文](done/2026-09-06-ko-ja-names-fall-back-to-english.md)
 - 2026-09-06 [zh-CN 的景點名稱 568 筆全部是繁體](done/2026-09-06-zh-cn-names-are-traditional.md)
-- 2026-09-06 [最佳化上限的 UX：超過 12 個可移動景點時先提示而不是 422](done/2026-09-06-optimizer-limit-ux.md)

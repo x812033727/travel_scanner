@@ -79,6 +79,8 @@ class ItineraryHotspot(BaseModel):
     destination_role: str = "primary"
     parent_destination_id: str | None = None
     is_cross_city: bool = False
+    # Google's cached periods, empty when the cache has expired or never existed.
+    opening_hours: dict[str, Any] = Field(default_factory=dict)
 
 
 class ItineraryFood(BaseModel):
