@@ -58,6 +58,23 @@ async def enforce_named_rate_limit(
         raise AppError(429, "rate_limit_exceeded", "請求過於頻繁，請稍後再試")
 
 
+async def refund_named_rate_limit(namespace: str, identifier: str) -> None:
+    """Give back the one slot a call counted but could not use.
+
+    For a request the server itself could not serve — every planner provider
+    down, say — so an outage does not also cost the caller an hour of the
+    budget that other features draw on. Never goes below zero.
+    """
+    script = (
+        "local n=redis.call('GET',KEYS[1]); "
+        "if n and tonumber(n)>0 then return redis.call('DECR',KEYS[1]) end; return 0"
+    )
+    try:
+        await cast(Awaitable[Any], get_redis().eval(script, 1, _rate_key(namespace, identifier)))
+    except RedisError:
+        return
+
+
 async def clear_named_rate_limit(namespace: str, identifier: str) -> None:
     try:
         await get_redis().delete(_rate_key(namespace, identifier))

@@ -1699,3 +1699,98 @@ async def test_trip_expense_ledger_totals_seeds_once_and_guards_its_currency(
         shared = await client.get(f"/api/v1/shared-trips/{share.json()['token']}")
         # What a trip cost is nobody else's business.
         assert "cost" not in shared.json()
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_share_link_carries_no_item_notes_and_no_trip_data(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The share payload is an allowlist.
+
+    The owner's per-item notes and the whole ``trip.data`` blob (search
+    preferences with the budget, the cost breakdown, the planner provider and
+    its warnings) never leave the account; a recipient gets the timeline and
+    nothing that explains how it was made or what it cost.
+    """
+
+    monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", lambda *_a, **_k: None)
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        headers = await _signed_in_headers("share-allowlist")
+        created = await client.post(
+            "/api/v1/trips",
+            headers=headers,
+            json={
+                "source": "blank",
+                "planning_mode": "manual_blank",
+                "name": "分享白名單測試",
+                "destination_name": "日本東京",
+                "start_date": "2026-11-10",
+                "end_date": "2026-11-12",
+                "routing": {
+                    "auto_compute": False,
+                    "default_travel_mode": "transit",
+                    "default_buffer_minutes": 10,
+                },
+            },
+        )
+        assert created.status_code == 201
+        trip = created.json()
+        items = trip["items"] + [
+            {
+                "item_type": "activity",
+                "day_date": "2026-11-11",
+                "position": 50,
+                "title": "淺草寺",
+                "notes": "御守要買給媽媽",
+                "data": {
+                    "timeline_section": "activity",
+                    "reason": "私人理由",
+                    "price_snapshot": {"total_price": "1200", "currency": "TWD"},
+                },
+            }
+        ]
+        saved = await client.put(
+            f"/api/v1/trips/{trip['id']}/itinerary",
+            headers=headers,
+            json={"version": trip["version"], "items": items},
+        )
+        assert saved.status_code == 200, saved.text
+        owner_view = saved.json()
+        stop = next(item for item in owner_view["items"] if item["title"] == "淺草寺")
+        # The owner keeps everything: notes and the full data blob are how the
+        # editor round-trips a row.
+        assert stop["notes"] == "御守要買給媽媽"
+        assert stop["data"]["reason"] == "私人理由"
+        assert "data" in owner_view
+
+        share = await client.post(f"/api/v1/trips/{trip['id']}/share", headers=headers)
+        assert share.status_code in {200, 201}
+        token = share.json()["token"]
+        shared = await client.get(f"/api/v1/shared-trips/{token}")
+        assert shared.status_code == 200
+        payload = shared.json()
+        assert set(payload) == {
+            "id",
+            "name",
+            "destination_name",
+            "start_date",
+            "end_date",
+            "timezone",
+            "route_segments",
+            "updated_at",
+            "items",
+        }
+        assert payload["name"] == "分享白名單測試"
+        shared_stop = next(item for item in payload["items"] if item["title"] == "淺草寺")
+        assert "notes" not in shared_stop
+        assert shared_stop["data"] == {"timeline_section": "activity"}
+        assert all("notes" not in item for item in payload["items"])
+        assert all(
+            set(item["data"]) <= {"timeline_section", "flight_info"} for item in payload["items"]
+        )
+        assert "御守" not in shared.text
+        assert "私人理由" not in shared.text
+        assert "price_snapshot" not in shared.text
+
