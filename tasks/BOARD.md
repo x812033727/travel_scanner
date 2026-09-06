@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**28 open · 4 in progress · 0 blocked · 0 in review · 27 done**
+**27 open · 4 in progress · 0 blocked · 0 in review · 28 done**
 
 ## Ready to claim
 
@@ -22,7 +22,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [營業時間感知排程：AI 排程不把景點排在打烊時段](open/2026-09-06-opening-hours-aware-scheduling.md) | api | `apps/api/app/trips/hours.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/web/components/day-health-strip.tsx` |
 | P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | api | `apps/api/app/trips/routing.py`<br>`apps/api/tests/test_trip_routing.py` |
 | P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/route_planner.py`<br>`apps/api/tests/test_trip_route_planner.py` |
-| P2 | [Leftover Chinese copy on the search and trip pages outside the two components already converted](open/2026-09-06-leftover-chinese-copy-on-the-search.md) | web | `apps/web/components/search-criteria-editor.tsx`<br>`apps/web/components/airbnb-search-panel.tsx`<br>`apps/web/components/trip-weather-panel.tsx`<br>`apps/web/components/route-timeline-link.tsx`<br>`apps/web/components/price-alert-button.tsx`<br>`apps/web/components/saved-items-provider.tsx`<br>`apps/web/lib/api.ts`<br>`apps/web/messages/en/search.json`<br>`apps/web/messages/ja/search.json`<br>`apps/web/messages/ko/search.json`<br>`apps/web/messages/zh-CN/search.json`<br>`apps/web/messages/zh-TW/search.json`<br>`apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/zh-TW/trips.json` |
 | P3 | [註冊關閉頁的小標與 H1 是同一句話](open/2026-09-06-auth-duplicate-heading.md) | web | `apps/web/messages/en/auth.json`<br>`apps/web/messages/ja/auth.json`<br>`apps/web/messages/ko/auth.json`<br>`apps/web/messages/zh-CN/auth.json`<br>`apps/web/messages/zh-TW/auth.json` |
 | P3 | [桌機主導覽文字連結只有 20px 高](open/2026-09-06-desktop-nav-touch-targets.md) | web | `apps/web/components/site-navigation.tsx` |
 | P3 | [首頁精靈步驟標籤在英文 390px 會截字](open/2026-09-06-wizard-step-label-truncation.md) | web | `apps/web/components/search-workbench.tsx` |
@@ -62,6 +61,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [Leftover Chinese copy on the search and trip pages outside the two components already converted](done/2026-09-06-leftover-chinese-copy-on-the-search.md)
 - 2026-09-06 [目的地目錄的國家與興趣標籤未五語系化](done/2026-09-06-destination-catalog-labels-i18n.md)
 - 2026-09-06 [navigation.spec.ts 兩個案例在 CI 間歇逾時](done/2026-09-06-flaky-navigation-e2e.md)
 - 2026-09-06 [首頁手機首屏被三張說明列佔滿](done/2026-09-06-home-mobile-first-screen.md)
@@ -71,4 +71,3 @@ _Nothing here._
 - 2026-09-06 [路線快取 key 依 provider 的時間粒度；DB 路段過期與 Redis TTL 分開](done/2026-09-06-route-cache-time-key.md)
 - 2026-09-06 [Default the Gemini guide model to gemini-3.8-flash](done/2026-09-06-gemini-3-8-flash-default.md)
 - 2026-09-06 [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](done/2026-09-06-reoptimize-no-version-check.md)
-- 2026-09-06 [日期變更後行程價格停在舊報價且無法重新查價](done/2026-09-06-trip-stale-price-after-reschedule.md)

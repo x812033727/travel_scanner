@@ -555,5 +555,45 @@
     "clearFlight": "Clear and reset to unset",
     "stalePrice": " · {amount} quoted for the previous dates; reprice to refresh",
     "stalePriceHint": "The quote on this trip was for its previous dates. Reprice it before setting a price alert."
+  },
+  "weather": {
+    "title": "Trip weather",
+    "malformed": "The weather data was incomplete",
+    "unavailable": "Weather is unavailable right now",
+    "notConfigured": "Weather service is not enabled",
+    "loadFailed": "Trip weather is temporarily unavailable",
+    "retry": "Retry",
+    "locationTitle": "{location} weather",
+    "subtitle": "Current conditions and the 10-day forecast; weather can change at any time",
+    "feelsLike": "Feels like {value}°",
+    "summaryLabel": "Weather summary for {day}",
+    "rain": "Rain",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "outOfRange": "{day} is not yet within Google Weather's 10-day forecast.",
+    "pickDay": "Pick a trip day first.",
+    "forecastLabel": "10-day forecast",
+    "sourceLine": "Source: {attribution} · {freshness}",
+    "cached": "cached",
+    "fresh": "just updated"
+  },
+  "route": {
+    "mode": {
+      "transit": "Transit",
+      "walk": "Walk",
+      "drive": "Drive"
+    },
+    "setupLodging": "Set the hotel location first",
+    "setupLocation": "Pick an exact place first",
+    "setupHint": "Needed to work out the travel time to {title}",
+    "computing": "Working out the travel time to {title}…",
+    "stale": "Travel time needs a refresh",
+    "choose": "Choose how to travel this leg",
+    "chooseHint": "To {title} · transit / walk / drive",
+    "viewRoute": "View the route to {title}",
+    "minutes": "{minutes} min",
+    "buffer": "+ {minutes} min buffer",
+    "override": "This leg only",
+    "readyAt": "Next stop can start at {time}"
   }
 }

@@ -555,5 +555,45 @@
     "clearFlight": "清除並恢復為尚未設定",
     "stalePrice": " · {amount}（舊日期的報價，重新查價後更新）",
     "stalePriceHint": "這趟旅程的報價是舊日期的。請先重新查價再設定價格提醒。"
+  },
+  "weather": {
+    "title": "旅程天氣",
+    "malformed": "天氣資料格式不完整",
+    "unavailable": "目前無法取得天氣",
+    "notConfigured": "天氣服務尚未啟用",
+    "loadFailed": "暫時無法取得旅程天氣",
+    "retry": "重試",
+    "locationTitle": "{location}天氣",
+    "subtitle": "目前狀況與未來 10 日預報；天氣可能隨時變動",
+    "feelsLike": "體感 {value}°",
+    "summaryLabel": "{day} 天氣摘要",
+    "rain": "降雨",
+    "humidity": "濕度",
+    "wind": "風速",
+    "outOfRange": "{day} 尚未進入 Google Weather 的 10 日預報範圍。",
+    "pickDay": "請先選擇行程日期。",
+    "forecastLabel": "10 日天氣預報",
+    "sourceLine": "資料來源：{attribution} · {freshness}",
+    "cached": "快取資料",
+    "fresh": "剛剛更新"
+  },
+  "route": {
+    "mode": {
+      "transit": "大眾運輸",
+      "walk": "步行",
+      "drive": "汽車"
+    },
+    "setupLodging": "先設定飯店地點",
+    "setupLocation": "先選擇正式地點",
+    "setupHint": "設定後才能算出前往 {title} 的移動時間",
+    "computing": "正在計算前往 {title} 的移動時間…",
+    "stale": "移動時間需要更新",
+    "choose": "選擇這段交通方式",
+    "chooseHint": "前往 {title} · 大眾運輸／步行／汽車",
+    "viewRoute": "查看前往 {title} 的路線",
+    "minutes": "{minutes} 分",
+    "buffer": "＋緩衝 {minutes} 分",
+    "override": "單段",
+    "readyAt": "{time} 可開始下一站"
   }
 }

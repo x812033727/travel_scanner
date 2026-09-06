@@ -555,5 +555,45 @@
     "clearFlight": "消去して未設定に戻す",
     "stalePrice": " · {amount}（変更前の日付の見積もり。再検索で更新）",
     "stalePriceHint": "この旅程の見積もりは変更前の日付のものです。価格アラートを設定する前に再検索してください。"
+  },
+  "weather": {
+    "title": "旅の天気",
+    "malformed": "天気データが不完全です",
+    "unavailable": "現在天気を取得できません",
+    "notConfigured": "天気サービスは未設定です",
+    "loadFailed": "旅の天気を一時的に取得できません",
+    "retry": "再試行",
+    "locationTitle": "{location}の天気",
+    "subtitle": "現在の状況と10日間予報。天気は変わることがあります",
+    "feelsLike": "体感 {value}°",
+    "summaryLabel": "{day} の天気概要",
+    "rain": "降水",
+    "humidity": "湿度",
+    "wind": "風速",
+    "outOfRange": "{day} はまだ Google Weather の10日間予報の範囲外です。",
+    "pickDay": "先に旅程の日付を選んでください。",
+    "forecastLabel": "10日間予報",
+    "sourceLine": "出典：{attribution} · {freshness}",
+    "cached": "キャッシュ",
+    "fresh": "更新したばかり"
+  },
+  "route": {
+    "mode": {
+      "transit": "公共交通",
+      "walk": "徒歩",
+      "drive": "車"
+    },
+    "setupLodging": "先にホテルの場所を設定",
+    "setupLocation": "先に正式な場所を選択",
+    "setupHint": "設定すると {title} までの移動時間を計算できます",
+    "computing": "{title} までの移動時間を計算中…",
+    "stale": "移動時間の更新が必要です",
+    "choose": "この区間の移動手段を選択",
+    "chooseHint": "{title} へ · 公共交通／徒歩／車",
+    "viewRoute": "{title} への経路を見る",
+    "minutes": "{minutes} 分",
+    "buffer": "＋余裕 {minutes} 分",
+    "override": "この区間のみ",
+    "readyAt": "{time} から次の地点へ"
   }
 }
