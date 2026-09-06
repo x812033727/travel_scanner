@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**11 open · 4 in progress · 2 blocked · 0 in review · 94 done**
+**10 open · 4 in progress · 2 blocked · 0 in review · 95 done**
 
 ## Ready to claim
 
@@ -21,7 +21,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [價格通知頁的副標與 LINE 卡片在四個語系都是繁中](open/2026-09-06-alerts-hardcoded-zh-tw.md) | web | `apps/web/components/line-connection-panel.tsx`<br>`apps/web/app/[locale]/alerts/page.tsx`<br>`apps/web/messages/en/alerts.json`<br>`apps/web/messages/ja/alerts.json`<br>`apps/web/messages/ko/alerts.json`<br>`apps/web/messages/zh-CN/alerts.json`<br>`apps/web/messages/zh-TW/alerts.json` |
 | P2 | [美食頁在預設字級下 CLS 0.29，第四秒還在跳版](open/2026-09-06-foods-late-layout-shift.md) | web | `apps/web/components/food-browser.tsx`<br>`apps/web/components/food-city-picker.tsx` |
 | P3 | [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](open/2026-09-06-admin-load-error-copy.md) | web | `apps/web/components/admin-settings-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/messages/zh-TW/admin.json` |
-| P3 | [五個語系的 trips.json 都有重複的 transfersCount 鍵](open/2026-09-06-duplicate-transfers-count-key.md) | web | `apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/zh-TW/trips.json` |
 | P3 | [十三個公開頁裡有九個共用同一組 title 與 description](open/2026-09-06-duplicate-page-metadata.md) | web | `apps/web/app/[locale]/search/page.tsx`<br>`apps/web/app/[locale]/alerts/page.tsx`<br>`apps/web/app/[locale]/login/page.tsx`<br>`apps/web/app/[locale]/register/page.tsx`<br>`apps/web/app/[locale]/trips/page.tsx`<br>`apps/web/app/[locale]/account/page.tsx`<br>`apps/web/messages/en/metadata.json`<br>`apps/web/messages/ja/metadata.json`<br>`apps/web/messages/ko/metadata.json`<br>`apps/web/messages/zh-CN/metadata.json`<br>`apps/web/messages/zh-TW/metadata.json` |
 
 ## In progress
@@ -47,6 +46,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [五個語系的 trips.json 都有重複的 transfersCount 鍵](done/2026-09-06-duplicate-transfers-count-key.md)
 - 2026-09-06 [四個景點的分類被標成 shopping，其實是公園、城跡與神社](done/2026-09-06-seed-category-shopping-mistakes.md)
 - 2026-09-06 [後台可以維護景點主題並逐景點指派](done/2026-09-06-hotspot-themes-admin-api.md)
 - 2026-09-06 [選 Gemini 做景點介紹搜尋會 500：run 表的 provider 檢查沒有 gemini](done/2026-09-06-gemini-guide-run-check.md)
@@ -56,4 +56,3 @@ _Nothing here._
 - 2026-09-06 [日曆的假日圓點應該跟著目的地國家](done/2026-09-06-holiday-dots-follow-destination.md)
 - 2026-09-06 [供應商就緒狀態只看金鑰有無，卡片會綠燈但功能不通](done/2026-09-06-configured-readiness-beyond-key-presence.md)
 - 2026-09-06 [美食頁在 merchants 回應少了 facets 時整頁炸掉](done/2026-09-06-foods-facets-crash.md)
-- 2026-09-06 [後台外殼：錯誤頁在地化、面板不要整頁炸掉、手機選單擋內容](done/2026-09-06-admin-shell-resilience.md)
