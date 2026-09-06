@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-hotspot-themes-admin-web
 title: 後台主題管理畫面：taxonomy 表格與逐景點指派
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T18:58:31Z
 created_at: 2026-09-06T17:18:35Z
-completed_at:
+completed_at: 2026-09-06T18:58:45Z
 branch: claude/hotspot-admin-web
 depends_on: []
 scope:
