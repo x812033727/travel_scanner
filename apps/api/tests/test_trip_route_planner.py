@@ -7,8 +7,19 @@ import pytest
 
 from app.config import Settings
 from app.models import TripPlanItem, TripRouteSegment
-from app.trips.route_planner import project_day_schedule, segment_from_record
-from app.trips.routing import GoogleRouteProvider, RoutePoint, RouteSegment, RouteService
+from app.trips.route_planner import (
+    ESTIMATED_SEGMENT_PROVIDER,
+    project_day_schedule,
+    project_day_with_estimates,
+    segment_from_record,
+)
+from app.trips.routing import (
+    GoogleRouteProvider,
+    RoutePoint,
+    RouteSegment,
+    RouteService,
+    estimate_leg_minutes,
+)
 
 
 def row(
@@ -185,3 +196,60 @@ def test_persisted_provider_route_becomes_stale_but_manual_route_does_not() -> N
 
     assert segment_from_record(provider).status == "stale"
     assert segment_from_record(manual).status == "manual"
+
+
+def point_for(item: TripPlanItem, latitude: float, longitude: float) -> RoutePoint:
+    return RoutePoint(
+        item_id=item.id,
+        name=item.title or "",
+        latitude=latitude,
+        longitude=longitude,
+    )
+
+
+def test_a_saved_leg_keeps_its_duration_while_a_missing_one_is_estimated() -> None:
+    """After an edit the deleted legs have no segment; the day still has to add up."""
+    first = row("淺草寺", 9)
+    second = row("晴空塔", 11)
+    third = row("上野公園", 13)
+    points = {
+        first.id: point_for(first, 35.7148, 139.7967),
+        second.id: point_for(second, 35.7101, 139.8107),
+        third.id: point_for(third, 35.7148, 139.7737),
+    }
+
+    result = project_day_with_estimates(
+        [first, second, third],
+        [segment(first, second, 25)],
+        points,
+        "transit",
+        buffer_minutes=10,
+    )
+
+    saved_leg, estimated_leg = result.segments
+    assert saved_leg.provider == "fixture" and saved_leg.duration_minutes == 25
+    assert estimated_leg.provider == ESTIMATED_SEGMENT_PROVIDER
+    assert estimated_leg.status == "estimated"
+    assert estimated_leg.duration_minutes == estimate_leg_minutes(
+        points[second.id], points[third.id], "transit"
+    )
+    # 09:00 + 60 min stay + 25 min + 10 min buffer, then the same chain through the estimate.
+    assert result.item_times[second.id][0] == datetime(2026, 11, 10, 10, 35, tzinfo=UTC)
+    third_start = result.item_times[third.id][0]
+    assert third_start is not None
+    assert third_start > result.item_times[second.id][0]
+
+
+def test_a_leg_without_coordinates_is_left_alone_rather_than_guessed() -> None:
+    first = row("淺草寺", 9)
+    second = row("待確認地點", 11)
+
+    result = project_day_with_estimates(
+        [first, second],
+        [],
+        {first.id: point_for(first, 35.7148, 139.7967)},
+        "transit",
+    )
+
+    assert result.segments == []
+    assert result.item_times[second.id] == (second.start_time, second.end_time)

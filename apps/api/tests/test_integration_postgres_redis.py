@@ -1926,3 +1926,112 @@ async def test_reoptimize_is_a_versioned_write_and_never_replays_a_failed_attemp
         assert [item["id"] for item in reloaded.json()["items"]] == [
             item["id"] for item in trip["items"]
         ]
+
+
+@pytest.mark.asyncio
+async def test_a_shared_trip_can_be_copied_into_the_readers_own_account(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The reader gets their own trip; the author keeps theirs, notes included."""
+
+    # Saving an itinerary queues routing for the day; the worker is not part of this test.
+    monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", lambda *_a, **_k: None)
+    # An earlier test in this file hands its connections to a worker thread with its own
+    # loop, and both asyncpg and redis refuse a connection borrowed from a loop that has
+    # gone. Start this test on connections of its own.
+    await engine.dispose()
+    # Only drop the cached client: closing it would touch the loop it was made on, which
+    # is the loop that has already gone.
+    get_redis.cache_clear()
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        author = await _signed_in_headers("share-author")
+        created = await client.post(
+            "/api/v1/trips",
+            headers=author,
+            json={
+                "source": "blank",
+                "planning_mode": "manual_blank",
+                "name": "東京分享測試",
+                "destination_name": "日本東京",
+                "start_date": "2026-11-10",
+                "end_date": "2026-11-11",
+                "routing": {
+                    "auto_compute": False,
+                    "default_travel_mode": "transit",
+                    "default_buffer_minutes": 10,
+                },
+            },
+        )
+        assert created.status_code == 201
+        trip = created.json()
+        saved = await client.put(
+            f"/api/v1/trips/{trip['id']}/itinerary",
+            headers=author,
+            json={
+                "version": trip["version"],
+                "items": [
+                    {
+                        "item_type": "activity",
+                        "day_date": "2026-11-10",
+                        "position": 0,
+                        "title": "淺草寺",
+                        "location_name": "淺草",
+                        "start_time": "2026-11-10T09:00:00+09:00",
+                        "end_time": "2026-11-10T10:00:00+09:00",
+                        "duration_minutes": 60,
+                        "latitude": 35.7148,
+                        "longitude": 139.7967,
+                        "notes": "作者的私人備註",
+                    }
+                ],
+            },
+        )
+        assert saved.status_code == 200
+
+        share = await client.post(f"/api/v1/trips/{trip['id']}/share", headers=author)
+        assert share.status_code in {200, 201}
+        token = share.json()["token"]
+
+        reader = await _signed_in_headers("share-reader")
+        forked = await client.post(f"/api/v1/shared-trips/{token}/fork", headers=reader)
+        assert forked.status_code == 201
+        copy = forked.json()
+        assert copy["id"] != trip["id"]
+        assert copy["name"] == "東京分享測試"
+        # The blank trip carries system rows (flight and hotel anchors) besides the stop.
+        copied_titles = [item["title"] for item in copy["items"]]
+        assert "淺草寺" in copied_titles
+        assert len(copied_titles) == len(saved.json()["items"])
+        assert all(not item.get("notes") for item in copy["items"])
+        assert copy["routing"]["status"] == "stale"
+
+        # The reader owns the copy and the author still owns the original.
+        assert (await client.get(f"/api/v1/trips/{copy['id']}", headers=reader)).status_code == 200
+        assert (await client.get(f"/api/v1/trips/{copy['id']}", headers=author)).status_code == 404
+        original = await client.get(f"/api/v1/trips/{trip['id']}", headers=author)
+        assert original.status_code == 200
+        author_stop = next(
+            item for item in original.json()["items"] if item["title"] == "淺草寺"
+        )
+        assert author_stop["notes"] == "作者的私人備註"
+
+        # Editing the copy leaves the original alone.
+        renamed = await client.patch(
+            f"/api/v1/trips/{copy['id']}",
+            headers=reader,
+            json={"version": copy["version"], "name": "我的東京"},
+        )
+        assert renamed.status_code == 200
+        assert (
+            await client.get(f"/api/v1/trips/{trip['id']}", headers=author)
+        ).json()["name"] == "東京分享測試"
+
+        # A revoked link cannot be copied any more.
+        assert (
+            await client.delete(f"/api/v1/trips/{trip['id']}/share", headers=author)
+        ).status_code == 204
+        assert (
+            await client.post(f"/api/v1/shared-trips/{token}/fork", headers=reader)
+        ).status_code == 404
