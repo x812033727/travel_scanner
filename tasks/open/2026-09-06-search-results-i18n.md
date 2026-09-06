@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-search-results-i18n
 title: 搜尋結果頁整頁文案寫死繁中
-status: open
+status: in-progress
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T03:32:52Z
 created_at: 2026-09-06T00:53:02Z
 completed_at:
-branch:
+branch: claude/web-i18n-p1
 depends_on: []
 scope:
   - apps/web/components/search-experience.tsx

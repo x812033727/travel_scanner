@@ -173,74 +173,74 @@ type SearchResult = {
   usage?: UsageStatus;
 };
 
+// Labels live in search.results.stages.* and are resolved at render.
 const stages = [
-  { key: "flight", label: "機票", icon: Plane },
-  { key: "hotel", label: "住宿", icon: Hotel },
-  { key: "activities", label: "活動", icon: MapPinned },
-  { key: "transport", label: "接送", icon: TrainFront },
+  { key: "flight", icon: Plane },
+  { key: "hotel", icon: Hotel },
+  { key: "activities", icon: MapPinned },
+  { key: "transport", icon: TrainFront },
 ];
 
-const sourceLabels = {
-  live: "正式即時資料",
-  test: "供應商測試資料",
-  mock: "模擬資料",
-  estimate: "估算資料",
-};
+/** The `search.results` message function, handed to the module-level formatters. */
+type Translate = (key: string, values?: Record<string, string | number>) => string;
 
 function amount(offer: Offer): number {
   return Number(offer.total_price ?? offer.price ?? 0);
 }
 
-function flightTimeSummary(offer: Offer) {
+function flightTimeSummary(offer: Offer, t: Translate) {
+  const unknown = t("timeUnknown");
   const time = (value: unknown) =>
     typeof value === "string" ? value.match(/T(\d{2}:\d{2})/)?.[1] : undefined;
-  const outbound = `${time(offer.departure_time) || "時間待確認"}–${time(offer.arrival_time) || "時間待確認"}`;
+  const outbound = `${time(offer.departure_time) || unknown}–${time(offer.arrival_time) || unknown}`;
   const returning = offer.return_departure_time
-    ? ` · 回程 ${time(offer.return_departure_time) || "時間待確認"}–${time(offer.return_arrival_time) || "時間待確認"}`
+    ? t("flightReturn", {
+        times: `${time(offer.return_departure_time) || unknown}–${time(offer.return_arrival_time) || unknown}`,
+      })
     : "";
-  return `去程 ${outbound}${returning}`;
+  return t("flightOutbound", { outbound, returning });
 }
 
-function titleFor(module: string, offer: Offer): string {
+function titleFor(module: string, offer: Offer, t: Translate): string {
   if (module === "flight")
-    return String(offer.airline ?? offer.flight_number ?? "航班");
-  if (module === "hotel") return String(offer.hotel_name ?? "住宿方案");
-  if (module === "activities") return String(offer.title ?? "在地活動");
-  return String(offer.transport_type ?? "交通接送");
+    return String(offer.airline ?? offer.flight_number ?? t("fallbackFlight"));
+  if (module === "hotel") return String(offer.hotel_name ?? t("fallbackHotel"));
+  if (module === "activities") return String(offer.title ?? t("fallbackActivity"));
+  return String(offer.transport_type ?? t("fallbackTransport"));
 }
 
-function detailsFor(module: string, offer: Offer): string {
+function detailsFor(module: string, offer: Offer, t: Translate): string {
   if (module === "flight") {
     const stops = Number(offer.stops ?? 0);
-    return `${offer.origin ?? ""} → ${offer.destination ?? ""} · ${stops ? `${stops} 次轉機` : "直飛"}`;
+    return `${offer.origin ?? ""} → ${offer.destination ?? ""} · ${stops ? t("stops", { count: stops }) : t("direct")}`;
   }
   if (module === "hotel") {
     const rating = Number(offer.review_score ?? offer.rating ?? 0);
     const property =
       offer.property_type === "vacation_rental"
-        ? "整套公寓／民宿"
+        ? t("propertyRental")
         : offer.property_type === "serviced_apartment"
-          ? "服務式公寓"
-          : "飯店";
+          ? t("propertyServiced")
+          : t("propertyHotel");
     const reviews = offer.review_count
-      ? `${offer.review_count} 則評論`
-      : "評論數未知";
+      ? t("reviews", { count: String(offer.review_count) })
+      : t("reviewsUnknown");
     const extras = [
       property,
       reviews,
-      offer.breakfast_included ? "含早餐" : null,
-      offer.refundable ? "可退款" : null,
+      offer.breakfast_included ? t("breakfast") : null,
+      offer.refundable ? t("refundable") : null,
       offer.station_walk_minutes
-        ? `步行 ${offer.station_walk_minutes} 分鐘到車站`
+        ? t("stationWalk", { minutes: String(offer.station_walk_minutes) })
         : null,
     ]
       .filter(Boolean)
       .join(" · ");
-    return `${rating ? `${rating.toFixed(1)} 分` : "尚無評分"} · ${offer.nights ?? "-"} 晚 · ${offer.room_type ?? "客房"}${extras ? ` · ${extras}` : ""}`;
+    return `${rating ? t("score", { score: rating.toFixed(1) }) : t("noScore")} · ${t("nights", { nights: String(offer.nights ?? "-") })} · ${offer.room_type ?? t("room")}${extras ? ` · ${extras}` : ""}`;
   }
   if (module === "activities")
-    return `${interestLabel(String(offer.category || ""))} · ${offer.duration_minutes ?? "-"} 分鐘 · ${offer.address ?? offer.city ?? ""}`;
-  return `${offer.duration_minutes ?? "-"} 分鐘 · ${offer.origin ?? ""} → ${offer.destination ?? ""}`;
+    return `${interestLabel(String(offer.category || ""))} · ${t("minutes", { minutes: String(offer.duration_minutes ?? "-") })} · ${offer.address ?? offer.city ?? ""}`;
+  return `${t("minutes", { minutes: String(offer.duration_minutes ?? "-") })} · ${offer.origin ?? ""} → ${offer.destination ?? ""}`;
 }
 
 function recheckUrl(
@@ -249,13 +249,14 @@ function recheckUrl(
   parsed: Parsed | null,
   dates: string[],
   locale: string,
+  t: Translate,
 ) {
   if (offer.action_kind === "deep_link" && offer.booking_url)
     return offer.booking_url;
   const query =
     module === "hotel"
-      ? `${titleFor(module, offer)} ${parsed?.destination ?? ""} ${dates[0]} ${dates[1]}`
-      : `${titleFor(module, offer)} ${parsed?.origin ?? ""} ${parsed?.destination ?? ""} ${dates[0]}`;
+      ? `${titleFor(module, offer, t)} ${parsed?.destination ?? ""} ${dates[0]} ${dates[1]}`
+      : `${titleFor(module, offer, t)} ${parsed?.origin ?? ""} ${parsed?.destination ?? ""} ${dates[0]}`;
   return `https://www.google.com/travel/search?q=${encodeURIComponent(query)}&hl=${encodeURIComponent(locale)}`;
 }
 
@@ -289,6 +290,7 @@ export function SearchExperience() {
   const tripsEnabled = featureEnabled(visibility, "trips");
   const locale = useLocale();
   const usageText = useTranslations("usage");
+  const t = useTranslations("search.results");
   const params = useSearchParams();
   const router = useRouter();
   const text = params.get("q") || "";
@@ -426,8 +428,8 @@ export function SearchExperience() {
   useEffect(() => {
     api<ProviderStatus>("/providers/status")
       .then(setProviderStatus)
-      .catch(() => setError("目前無法確認即時資料服務狀態，請稍後再試。"));
-  }, []);
+      .catch(() => setError(t("statusUnavailable")));
+  }, [t]);
 
   useEffect(() => {
     if (structuredParsed || started.current || !text) return;
@@ -504,7 +506,7 @@ export function SearchExperience() {
       setOffers((current) => ({ ...current, flight: result.offers }));
       const failed = result.provider_statuses
         .filter((item) => item.status === "failed")
-        .map((item) => `${item.provider} 暫時無法取得`);
+        .map((item) => t("providerUnavailable", { provider: item.provider }));
       if (failed.length)
         setWarnings((current) => Array.from(new Set([...current, ...failed])));
     } catch (reason) {
@@ -623,7 +625,7 @@ export function SearchExperience() {
       stream.addEventListener("search.failed", async (message) => {
         const data = JSON.parse((message as MessageEvent).data);
         if (data.usage) setUsageState(data.usage);
-        setError("搜尋未能取得任何結果，請查看資料來源狀態後再試。");
+        setError(t("searchFailed"));
         setBusy(false);
         stream.close();
         await loadFinal(accepted.search_id).catch(() => undefined);
@@ -638,7 +640,7 @@ export function SearchExperience() {
           void loadFinal(accepted.search_id).catch(() => undefined);
           return;
         }
-        const warning = "即時連線曾短暫中斷；完成後會從伺服器重新載入結果。";
+        const warning = t("streamInterrupted");
         setWarnings((current) =>
           current.includes(warning) ? current : [...current, warning],
         );
@@ -672,7 +674,10 @@ export function SearchExperience() {
         body: JSON.stringify({
           search_id: searchId,
           plan_id: plan.id,
-          name: `${parsed?.destination || "目的地"}・${plan.title}旅程`,
+          name: t("tripName", {
+            destination: parsed?.destination || t("destinationFallback"),
+            title: plan.title,
+          }),
         }),
       });
       trackAnalytics("trip_created");
@@ -835,14 +840,7 @@ export function SearchExperience() {
   const destination = destinationByAirport(parsed?.destination);
   const includeAirbnb =
     parsed?.include_airbnb ?? params.get("include_airbnb") !== "false";
-  const countryName =
-    destination?.country === "JP"
-      ? "日本"
-      : destination?.country === "KR"
-        ? "韓國"
-        : destination?.country === "TH"
-          ? "泰國"
-          : "";
+  const countryName = destination ? t(`country.${destination.country}`) : "";
   const airbnbCriteria = parsed
     ? {
         location: [
@@ -859,8 +857,8 @@ export function SearchExperience() {
       }
     : null;
   const resultTabs = [
-    { key: "plans", label: "推薦組合" },
-    ...stages,
+    { key: "plans", label: t("tabPlans") },
+    ...stages.map(({ key }) => ({ key, label: t(`stages.${key}`) })),
     { key: "connectivity", label: "eSIM" },
     ...(includeAirbnb ? [{ key: "airbnb", label: "Airbnb" }] : []),
   ];
@@ -885,17 +883,23 @@ export function SearchExperience() {
           <div>
             <p className="mb-2 flex items-center gap-2 text-sm font-semibold text-[var(--teal)]">
               <Sparkles size={16} />
-              你的旅行需求
+              {t("yourRequest")}
             </p>
             <h1 className="max-w-4xl text-2xl font-bold md:text-3xl">
               {destination
-                ? `${destination.country === "JP" ? "日本" : destination.country === "KR" ? "韓國" : "泰國"}・${destination.name}完整旅程`
-                : text || "完整旅程搜尋"}
+                ? t("fullTripTitle", {
+                    country: t(`country.${destination.country}`),
+                    city: destination.name,
+                  })
+                : text || t("fullTripSearch")}
             </h1>
             {destination && (
               <p className="mt-2 text-sm text-[var(--muted)]">
-                {destination.summary} · 當地時區 {destination.timezone} ·
-                建議停留 {destination.recommendedStay}
+                {t("destinationMeta", {
+                  summary: destination.summary,
+                  timezone: destination.timezone,
+                  stay: destination.recommendedStay,
+                })}
               </p>
             )}
           </div>
@@ -910,22 +914,22 @@ export function SearchExperience() {
         {parsed && (
           <div className="mt-5 flex flex-wrap gap-2 text-sm">
             {[
-              `${parsed.travelers.adults + (parsed.travelers.children || 0)} 位旅客`,
-              `${parsed.travelers.rooms || 1} 間房`,
+              t("travelers", { count: parsed.travelers.adults + (parsed.travelers.children || 0) }),
+              t("rooms", { count: parsed.travelers.rooms || 1 }),
               `${dates[0]} → ${dates[1]}`,
               parsed.flex_days
-                ? `日期前後可移動 ${parsed.flex_days} 日`
-                : "指定日期",
-              parsed.preferred_area ? `住在 ${parsed.preferred_area}` : null,
+                ? t("flexDays", { days: parsed.flex_days })
+                : t("fixedDates"),
+              parsed.preferred_area ? t("stayIn", { area: parsed.preferred_area }) : null,
               parsed.budget_twd
-                ? `預算 ${twd.format(parsed.budget_twd)}`
+                ? t("budget", { amount: twd.format(parsed.budget_twd) })
                 : null,
               parsed.hotel_max_nightly_twd
-                ? `每晚 ≤ ${twd.format(parsed.hotel_max_nightly_twd)}`
+                ? t("nightlyMax", { amount: twd.format(parsed.hotel_max_nightly_twd) })
                 : null,
-              parsed.avoid_red_eye ? "避開紅眼" : null,
-              parsed.breakfast_required ? "含早餐" : null,
-              parsed.refundable_required ? "可退款" : null,
+              parsed.avoid_red_eye ? t("avoidRedEye") : null,
+              parsed.breakfast_required ? t("breakfast") : null,
+              parsed.refundable_required ? t("refundable") : null,
               ...parsed.interests.map(interestLabel),
             ]
               .filter(Boolean)
@@ -957,13 +961,13 @@ export function SearchExperience() {
         {!parsed && (!text || error) && (
           <div className="mt-6 rounded-2xl bg-amber-50 p-5 text-amber-950">
             <p className="font-semibold">
-              缺少出發地、目的地或出發日期，還不能建立搜尋。
+              {t("missingCriteria")}
             </p>
             <Link
               href="/"
               className="mt-3 inline-flex rounded-xl bg-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-white"
             >
-              回首頁設定條件
+              {t("backHome")}
             </Link>
           </div>
         )}
@@ -975,7 +979,7 @@ export function SearchExperience() {
                   href={loginPath(resumeReturnPath)}
                   className="rounded-2xl bg-[var(--teal)] px-6 py-3.5 text-center font-semibold text-white"
                 >
-                  登入後開始搜尋
+                  {t("signInToSearch")}
                 </Link>
               ) : (
                 <button
@@ -989,10 +993,10 @@ export function SearchExperience() {
                   className="rounded-2xl bg-[var(--teal)] px-6 py-3.5 font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {authState === "checking"
-                    ? "確認登入狀態…"
+                    ? t("authChecking")
                     : authState === "error"
-                      ? "暫時無法確認登入狀態"
-                      : `確認條件並開始搜尋 · ${charge.label}`}
+                      ? t("authError")
+                      : t("startSearch", { charge: charge.label })}
                 </button>
               )}
               {includeAirbnb && airbnbCriteria && (
@@ -1006,18 +1010,18 @@ export function SearchExperience() {
             )}
             {authState === "error" && (
               <p role="alert" className="mt-2 text-sm text-red-700">
-                登入服務暫時無法確認，請稍後再試。
+                {t("authErrorHelp")}
                 <button
                   type="button"
                   onClick={checkAuth}
                   className="ml-1 font-semibold underline"
                 >
-                  重新確認
+                  {t("recheck")}
                 </button>
               </p>
             )}
             <p className="mt-2 text-xs text-[var(--muted)]">
-              {charge.status === "ready" ? `站內比較成功取得至少一筆可用結果才${charge.label}；Airbnb 官方外站搜尋不扣次。` : charge.unavailableHelp}
+              {charge.status === "ready" ? t("chargeHelp", { charge: charge.label }) : charge.unavailableHelp}
             </p>
           </>
         )}
@@ -1042,12 +1046,12 @@ export function SearchExperience() {
 
       {searchId && (
         <section
-          aria-label="搜尋進度"
+          aria-label={t("progressLabel")}
           className="mb-7 rounded-3xl border border-[var(--line)] bg-white p-6"
         >
           <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
             <strong>
-              {progress === 100 ? "分析完成" : "正在組合你的旅程"}
+              {progress === 100 ? t("analysisDone") : t("assembling")}
             </strong>
             <span className="font-mono text-sm text-[var(--muted)]">
               {progress}%
@@ -1064,16 +1068,16 @@ export function SearchExperience() {
               className={`mt-3 text-sm font-semibold ${usageState.status === "charged" ? "text-[#9d4e3f]" : usageState.status === "released" ? "text-emerald-700" : "text-[var(--teal)]"}`}
             >
               {usageState.status === "charged"
-                ? `已成功扣除 ${usageState.uses} 次`
+                ? t("charged", { uses: usageState.uses })
                 : usageState.status === "released"
-                  ? "本次未扣次（保留次數已退回）"
+                  ? t("released")
                   : charge.uses === 0
-                    ? "本次為免費操作，完成後仍會留下使用紀錄"
-                    : `已暫時保留 ${charge.uses ?? usageState.uses} 次，完成後才會正式扣除`}
+                    ? t("freeOperation")
+                    : t("reserved", { uses: charge.uses ?? usageState.uses })}
             </p>
           )}
           <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">
-            {stages.map(({ key, label, icon: Icon }) => (
+            {stages.map(({ key, icon: Icon }) => (
               <div
                 key={key}
                 className={`flex items-center gap-2 rounded-xl p-2 text-sm ${done.includes(key) ? "text-[var(--teal)]" : "text-[var(--muted)]"}`}
@@ -1087,7 +1091,7 @@ export function SearchExperience() {
                   />
                 )}
                 <Icon size={17} />
-                {label}
+                {t(`stages.${key}`)}
               </div>
             ))}
           </div>
@@ -1101,7 +1105,7 @@ export function SearchExperience() {
           <div
             className="mb-5 flex gap-2 overflow-x-auto pb-1"
             role="tablist"
-            aria-label="搜尋結果分類"
+            aria-label={t("tabsLabel")}
           >
             {resultTabs.map((tab) => (
               <button
@@ -1137,12 +1141,12 @@ export function SearchExperience() {
                         {twd.format(Number(plan.total_cost.total_cost))}
                       </h2>
                       <p className="mt-1 text-xs text-[var(--muted)]">
-                        整趟旅程預估總額
+                        {t("estimatedTotal")}
                       </p>
                     </div>
                     {tripsEnabled && <button
                       onClick={() => save(plan)}
-                      aria-label={`儲存${plan.title}`}
+                      aria-label={t("savePlan", { title: plan.title })}
                       className="rounded-xl border border-[var(--line)] p-2 text-[var(--teal)]"
                     >
                       <Save size={18} />
@@ -1160,7 +1164,7 @@ export function SearchExperience() {
                           <span>
                             {String(plan.flight.airline)}
                             <small className="mt-1 block text-[var(--muted)]">
-                              {flightTimeSummary(plan.flight)}
+                              {flightTimeSummary(plan.flight, t)}
                             </small>
                           </span>
                         </span>
@@ -1198,7 +1202,7 @@ export function SearchExperience() {
                   {plan.itinerary?.length ? (
                     <p className="mb-4 flex items-center gap-2 rounded-xl bg-[var(--teal-soft)] p-3 text-sm text-[var(--teal-dark)]">
                       <BadgeCheck size={16} />
-                      已安排 {plan.itinerary.length} 天可編輯行程
+                      {t("editableDays", { count: plan.itinerary.length })}
                     </p>
                   ) : null}
                   <ul className="space-y-2 text-sm">
@@ -1222,7 +1226,7 @@ export function SearchExperience() {
                     onClick={() => save(plan)}
                     className="mt-5 w-full rounded-xl bg-[var(--teal)] px-4 py-3 font-semibold text-white"
                   >
-                    儲存並編輯行程
+                    {t("saveAndEdit")}
                   </button>}
                 </article>
               ))}
@@ -1240,7 +1244,7 @@ export function SearchExperience() {
                   "transport",
                   "connectivity",
                 ]}
-                title="整趟旅程合作平台"
+                title={t("partnersTrip")}
               />
             </div>
           )}
@@ -1261,9 +1265,9 @@ export function SearchExperience() {
               {searchId && (
                 <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[var(--line)] bg-white p-4">
                   <div>
-                    <strong>多來源售票比較</strong>
+                    <strong>{t("multiSourceTitle")}</strong>
                     <p className="text-xs text-[var(--muted)]">
-                      同一班次依艙等分組，保留各售票來源的稅費、行李與退改條件。
+                      {t("multiSourceHelp")}
                     </p>
                   </div>
                   <button
@@ -1272,7 +1276,7 @@ export function SearchExperience() {
                     onClick={expandFlightSources}
                     className="rounded-xl border border-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-[var(--teal)] disabled:opacity-50"
                   >
-                    {expandingSources ? "比較中…" : `比較更多來源 · ${usageText("noCharge")}`}
+                    {expandingSources ? t("comparing") : t("compareMore", { noCharge: usageText("noCharge") })}
                   </button>
                 </div>
               )}
@@ -1284,7 +1288,7 @@ export function SearchExperience() {
               searchId={searchId}
               modules={[activeTab as AffiliateModule]}
               title={
-                activeTab === "connectivity" ? "旅途中保持連線" : "更多合作平台"
+                activeTab === "connectivity" ? t("partnersConnectivity") : t("partnersMore")
               }
             />
           )}
@@ -1293,7 +1297,7 @@ export function SearchExperience() {
             activeTab !== "airbnb" &&
             activeTab !== "connectivity" && (
               <div className="mb-4 flex flex-wrap items-center gap-4 rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm">
-                <strong className="text-[var(--teal-dark)]">快速篩選</strong>
+                <strong className="text-[var(--teal-dark)]">{t("quickFilters")}</strong>
                 {activeTab !== "hotel" && (
                   <label className="flex items-center gap-2">
                     <input
@@ -1301,7 +1305,7 @@ export function SearchExperience() {
                       checked={sortByPrice}
                       onChange={(event) => setSortByPrice(event.target.checked)}
                     />
-                    價格由低到高
+                    {t("sortPriceAsc")}
                   </label>
                 )}
                 {activeTab === "flight" && (
@@ -1314,7 +1318,7 @@ export function SearchExperience() {
                           setDirectOnly(event.target.checked)
                         }
                       />
-                      只看直飛
+                      {t("directOnly")}
                     </label>
                     <label className="flex items-center gap-2">
                       <input
@@ -1324,7 +1328,7 @@ export function SearchExperience() {
                           setRefundableFlightOnly(event.target.checked)
                         }
                       />
-                      可退款
+                      {t("refundable")}
                     </label>
                   </>
                 )}
@@ -1338,7 +1342,7 @@ export function SearchExperience() {
                           setBreakfastOnly(event.target.checked)
                         }
                       />
-                      含早餐
+                      {t("breakfast")}
                     </label>
                     <label className="flex items-center gap-2">
                       <input
@@ -1348,77 +1352,77 @@ export function SearchExperience() {
                           setRefundableOnly(event.target.checked)
                         }
                       />
-                      可退款
+                      {t("refundable")}
                     </label>
                     <label className="flex items-center gap-2">
-                      最低星等
+                      {t("minStars")}
                       <select
-                        aria-label="飯店最低星等"
+                        aria-label={t("minStarsLabel")}
                         className="rounded-lg border border-[var(--line)] px-2 py-1.5"
                         value={hotelMinRating}
                         onChange={(event) =>
                           setHotelMinRating(Number(event.target.value))
                         }
                       >
-                        <option value="0">不限</option>
-                        <option value="3">3 星以上</option>
-                        <option value="4">4 星以上</option>
-                        <option value="5">5 星</option>
+                        <option value="0">{t("anyOption")}</option>
+                        <option value="3">{t("starsUp", { stars: 3 })}</option>
+                        <option value="4">{t("starsUp", { stars: 4 })}</option>
+                        <option value="5">{t("starsExact", { stars: 5 })}</option>
                       </select>
                     </label>
                     <label className="flex items-center gap-2">
-                      每晚上限
+                      {t("nightlyCap")}
                       <input
-                        aria-label="飯店每晚上限"
+                        aria-label={t("nightlyCapLabel")}
                         className="w-24 rounded-lg border border-[var(--line)] px-2 py-1.5"
                         inputMode="numeric"
                         min="0"
                         type="number"
                         value={hotelNightlyMax || ""}
-                        placeholder="不限"
+                        placeholder={t("anyOption")}
                         onChange={(event) =>
                           setHotelNightlyMax(Number(event.target.value))
                         }
                       />
                     </label>
                     <label className="flex items-center gap-2">
-                      車站步行
+                      {t("stationWalkFilter")}
                       <select
-                        aria-label="飯店車站步行上限"
+                        aria-label={t("stationWalkLabel")}
                         className="rounded-lg border border-[var(--line)] px-2 py-1.5"
                         value={hotelMaxWalk}
                         onChange={(event) =>
                           setHotelMaxWalk(Number(event.target.value))
                         }
                       >
-                        <option value="0">不限</option>
-                        <option value="5">5 分內</option>
-                        <option value="10">10 分內</option>
-                        <option value="15">15 分內</option>
-                        <option value="20">20 分內</option>
+                        <option value="0">{t("anyOption")}</option>
+                        <option value="5">{t("withinMinutes", { minutes: 5 })}</option>
+                        <option value="10">{t("withinMinutes", { minutes: 10 })}</option>
+                        <option value="15">{t("withinMinutes", { minutes: 15 })}</option>
+                        <option value="20">{t("withinMinutes", { minutes: 20 })}</option>
                       </select>
                     </label>
                     <label className="flex items-center gap-2">
-                      排序
+                      {t("sort")}
                       <select
-                        aria-label="飯店排序"
+                        aria-label={t("sortLabel")}
                         className="rounded-lg border border-[var(--line)] px-2 py-1.5"
                         value={hotelSort}
                         onChange={(event) =>
                           setHotelSort(event.target.value as typeof hotelSort)
                         }
                       >
-                        <option value="recommended">推薦順序</option>
-                        <option value="price">每晚價格</option>
-                        <option value="rating">旅客評分最高</option>
-                        <option value="distance">距市中心最近</option>
+                        <option value="recommended">{t("sortRecommended")}</option>
+                        <option value="price">{t("sortPrice")}</option>
+                        <option value="rating">{t("sortRating")}</option>
+                        <option value="distance">{t("sortDistance")}</option>
                       </select>
                     </label>
                   </>
                 )}
                 {activeTab === "activities" && (
                   <label className="flex items-center gap-2">
-                    興趣
+                    {t("interest")}
                     <select
                       className="rounded-lg border border-[var(--line)] px-2 py-1.5"
                       value={activityInterest}
@@ -1426,7 +1430,7 @@ export function SearchExperience() {
                         setActivityInterest(event.target.value)
                       }
                     >
-                      <option value="all">全部</option>
+                      <option value="all">{t("allOption")}</option>
                       {destinationInterests.map((interest) => (
                         <option key={interest.code} value={interest.code}>
                           {interest.label}
@@ -1448,7 +1452,7 @@ export function SearchExperience() {
                   <div className="mb-3 flex flex-wrap items-center justify-between gap-2 px-2">
                     <div>
                       <p className="text-xs font-bold uppercase tracking-wide text-[var(--teal)]">
-                        行程組 {groupIndex + 1}
+                        {t("flightGroup", { index: groupIndex + 1 })}
                       </p>
                       <h2 className="font-bold">
                         {String(group[0].origin || "—")} →{" "}
@@ -1457,8 +1461,10 @@ export function SearchExperience() {
                       </h2>
                     </div>
                     <p className="text-sm text-[var(--muted)]">
-                      {new Set(group.map((offer) => offer.provider)).size}{" "}
-                      個售票來源 · 最低 {twd.format(amount(group[0]))}
+                      {t("sellersFrom", {
+                        count: new Set(group.map((offer) => offer.provider)).size,
+                        amount: twd.format(amount(group[0])),
+                      })}
                     </p>
                   </div>
                   <div className="space-y-3">
@@ -1472,6 +1478,7 @@ export function SearchExperience() {
                           parsed,
                           dates,
                           locale,
+                          t,
                         )}
                         alertReturnPath={searchReturnPath}
                       />
@@ -1493,7 +1500,7 @@ export function SearchExperience() {
                       <HotelOfferCard
                         key={offer.id}
                         offer={offer}
-                        actionUrl={recheckUrl(activeTab, offer, parsed, dates, locale)}
+                        actionUrl={recheckUrl(activeTab, offer, parsed, dates, locale, t)}
                         alertReturnPath={searchReturnPath}
                       />
                     );
@@ -1508,7 +1515,7 @@ export function SearchExperience() {
                       {image ? (
                         <Image
                           src={image}
-                          alt={titleFor(activeTab, offer)}
+                          alt={titleFor(activeTab, offer, t)}
                           width={720}
                           height={400}
                           unoptimized
@@ -1531,26 +1538,26 @@ export function SearchExperience() {
                         <div className="flex items-start justify-between gap-3">
                           <div>
                             <p className="text-xs font-semibold uppercase tracking-wide text-[var(--teal)]">
-                              {sourceLabels[mode]}
+                              {t(`source.${mode}`)}
                             </p>
                             <h2 className="mt-1 text-xl font-bold">
-                              {titleFor(activeTab, offer)}
+                              {titleFor(activeTab, offer, t)}
                             </h2>
                           </div>
                           <strong>{twd.format(amount(offer))}</strong>
                         </div>
                         <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                          {detailsFor(activeTab, offer)}
+                          {detailsFor(activeTab, offer, t)}
                         </p>
                         <p className="mt-2 text-xs text-[var(--muted)]">
-                          來源：{offer.provider || "未標示"}
+                          {t("sourceLine", { provider: offer.provider || t("unlabelled") })}
                           {offer.retrieved_at
                             ? ` · ${new Date(offer.retrieved_at).toLocaleString(locale)}`
                             : ""}
                         </p>
                         {offer.attributions?.length ? (
                           <p className="mt-1 text-xs text-[var(--muted)]">
-                            圖片：
+                            {t("imageCredit")}
                             {offer.attributions.map((label, index) =>
                               offer.attribution_urls?.[index] ? (
                                 <span key={label}>
@@ -1574,14 +1581,14 @@ export function SearchExperience() {
                           </p>
                         ) : null}
                         <a
-                          href={safeExternalHref(recheckUrl(activeTab, offer, parsed, dates, locale))}
+                          href={safeExternalHref(recheckUrl(activeTab, offer, parsed, dates, locale, t))}
                           target="_blank"
                           rel="noreferrer"
                           className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-[var(--teal)] px-4 py-3 text-sm font-semibold text-[var(--teal)]"
                         >
                           {offer.action_kind === "deep_link"
-                            ? "前往供應商"
-                            : "外站重新確認"}
+                            ? t("goToProvider")
+                            : t("recheckExternal")}
                           <ExternalLink size={16} />
                         </a>
                       </div>
@@ -1595,7 +1602,7 @@ export function SearchExperience() {
             activeTab !== "connectivity" &&
             !visibleOffers.length && (
               <p className="rounded-2xl border border-dashed border-[var(--line)] bg-white p-10 text-center text-[var(--muted)]">
-                這個分類目前沒有符合條件的結果。
+                {t("emptyCategory")}
               </p>
             )}
         </section>
