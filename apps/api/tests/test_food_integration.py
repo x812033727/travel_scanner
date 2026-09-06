@@ -788,16 +788,11 @@ async def test_reseeding_corrects_seed_owned_text_and_leaves_admin_edits_alone(
         )
         await update_food(ramen_id, FoodUpdatePayload(review_status="approved"), admin, session)
 
-    corrected_sushi = replace(
-        sushi,
-        romanized_name="Sushi (seed)",
-        localized_names={**sushi.localized_names, "ko": "스시 (seed)", "en": "Sushi (seed)"},
-    )
+    # FoodSeed derives the localized text: en (and, for a Japanese dish, ko) from
+    # romanized_name, zh-TW from name, the zh-TW summary from description.
+    corrected_sushi = replace(sushi, romanized_name="Sushi (seed)")
     corrected_ramen = replace(
-        ramen,
-        romanized_name="Ramen (seed)",
-        localized_names={**ramen.localized_names, "en": "Ramen (seed)"},
-        localized_summaries={**ramen.localized_summaries, "en": "Ramen summary (seed)"},
+        ramen, romanized_name="Ramen (seed)", description="Ramen summary (seed)"
     )
     corrected = {"jp-sushi": corrected_sushi, "jp-ramen": corrected_ramen}
     patched = tuple(corrected.get(item.slug, item) for item in FOOD_SEEDS)
@@ -822,10 +817,8 @@ async def test_reseeding_corrects_seed_owned_text_and_leaves_admin_edits_alone(
     # ...the seed still corrects what it owns, including other locales of the same dish...
     assert (sushi_text["en"].source, sushi_text["en"].name) == ("seed", "Sushi (seed)")
     assert (ramen_row.source, ramen_row.romanized_name) == ("seed", "Ramen (seed)")
-    assert (ramen_text["en"].name, ramen_text["en"].summary) == (
-        "Ramen (seed)",
-        "Ramen summary (seed)",
-    )
+    assert ramen_text["en"].name == "Ramen (seed)"
+    assert ramen_text["zh-TW"].summary == "Ramen summary (seed)"
     # ...and locales the correction did not touch keep their seed text.
     assert ramen_text["ja"].name == ramen.localized_names["ja"]
 
