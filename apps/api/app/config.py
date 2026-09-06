@@ -367,6 +367,12 @@ class Settings(BaseSettings):
     price_alert_check_interval_seconds: int = Field(default=21_600, ge=3_600, le=86_400)
     price_alert_scheduler_poll_seconds: int = Field(default=60, ge=15, le=300)
     price_alert_delivery_max_attempts: int = Field(default=5, ge=1, le=10)
+    # Currency-api (github.com/fawazahmed0/currency-api) publishes daily rates for 300+
+    # currencies as static JSON on two CDNs; Frankfurter (ECB) is the last resort.
+    fx_currency_api_base_url: str = (
+        "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1"
+    )
+    fx_currency_api_fallback_url: str = "https://latest.currency-api.pages.dev/v1"
     fx_rate_base_url: str = "https://api.frankfurter.dev/v2"
     fx_rate_timeout_seconds: float = Field(default=3.0, gt=0, le=10)
     fx_rate_cache_ttl_seconds: int = Field(default=86_400, ge=300, le=86_400)

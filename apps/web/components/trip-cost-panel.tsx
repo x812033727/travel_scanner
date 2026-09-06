@@ -2,10 +2,19 @@
 
 import { AlertTriangle, CircleDollarSign, Loader2, Plus, Sparkles, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
-import { currencies, currencyName, type Currency } from "@/lib/currency";
-import { formatMoney } from "@/lib/locale-format";
+import { useEffect, useState } from "react";
+import { api } from "@/lib/api";
+import { countryCurrency, currencies, currencyName, type Currency } from "@/lib/currency";
+import { activeLocale, formatMoney } from "@/lib/locale-format";
 import type { Trip, TripCost, TripExpenseCategory } from "@/lib/trip-types";
+
+type FxRate = {
+  base_currency: string;
+  quote_currency: string;
+  rate: string;
+  as_of: string;
+  is_stale: boolean;
+};
 
 const categories: TripExpenseCategory[] = [
   "food",
@@ -58,6 +67,25 @@ export function TripCostPanel({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(false);
   const [seeded, setSeeded] = useState<number>();
+  const [rate, setRate] = useState<{ pair: string; value: FxRate }>();
+
+  // A ledger kept in a currency other than the one spent at the destination gets
+  // today's rate as a reading aid; the amounts themselves are never restated.
+  const destinationCurrency = countryCurrency(trip.destination_country_code);
+  const pair = destinationCurrency && destinationCurrency !== currency
+    ? `${destinationCurrency}:${currency}`
+    : undefined;
+  useEffect(() => {
+    if (!pair) return;
+    let active = true;
+    api<FxRate>(`/fx/rate?base=${destinationCurrency}&quote=${currency}`)
+      .then((value) => { if (active) setRate({ pair, value }); })
+      .catch(() => undefined);
+    return () => {
+      active = false;
+    };
+  }, [pair, destinationCurrency, currency]);
+  const currentRate = rate && pair && rate.pair === pair ? rate.value : undefined;
 
   // Once a real number is in the ledger the currency is frozen: nothing here
   // can restate 980 JPY as TWD, so relabelling it would be a lie.
@@ -112,6 +140,16 @@ export function TripCostPanel({
             ))}
           </select>
           {locked && <span className="mt-1 block text-xs font-normal text-[var(--muted)]">{t("currencyLocked")}</span>}
+          {currentRate && (
+            <span className="mt-1 block text-xs font-normal text-[var(--muted)]">
+              {t("costRate", {
+                base: currentRate.base_currency,
+                quote: currentRate.quote_currency,
+                rate: new Intl.NumberFormat(activeLocale(), { maximumSignificantDigits: 4 }).format(Number(currentRate.rate)),
+                date: currentRate.as_of,
+              })}
+            </span>
+          )}
         </label>
       </div>
 

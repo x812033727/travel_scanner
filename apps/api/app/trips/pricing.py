@@ -8,10 +8,13 @@ trip page can say "已報價" and "估算" as two different numbers.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from datetime import UTC, datetime
 from decimal import Decimal, InvalidOperation
 from typing import Any, cast
 
+from app.crawlers.fx import FxRateError, FxRateProvider
+from app.crawlers.schemas import FxRateSnapshot
 from app.models import TripPlan, TripPlanItem
 from app.trips.schedule import FLIGHT_SYSTEM_ROLES, primary_lodging
 
@@ -68,13 +71,19 @@ def _amount(value: Any) -> Decimal | None:
         return None
 
 
-def trip_pricing(trip: TripPlan, rows: list[TripPlanItem]) -> dict[str, Any]:
+def trip_pricing(
+    trip: TripPlan,
+    rows: list[TripPlanItem],
+    rates: Mapping[str, FxRateSnapshot] | None = None,
+) -> dict[str, Any]:
     """Sum what was actually quoted for this trip, keeping estimates separate.
 
     Flight anchors carry the snapshot of the offer they were created from; the
     primary lodging carries its own. A round-trip offer appears on both flight
     anchors with the same `offer_id`, so it is counted once. Amounts in another
-    currency than the trip's are listed but never silently converted.
+    currency than the trip's are never silently folded into `quoted_total`: with a
+    rate in `rates` they are shown converted under `converted_total`, and without
+    one they are only listed in `unsummed_currencies`.
     """
     currency = trip.currency or "TWD"
     entries: list[dict[str, Any]] = []
@@ -108,6 +117,8 @@ def trip_pricing(trip: TripPlan, rows: list[TripPlanItem]) -> dict[str, Any]:
             }
         )
     quoted_total = Decimal(0)
+    converted_total = Decimal(0)
+    conversions: list[dict[str, Any]] = []
     unsummed: list[str] = []
     seen_offers: set[str] = set()
     for entry in entries:
@@ -117,9 +128,25 @@ def trip_pricing(trip: TripPlan, rows: list[TripPlanItem]) -> dict[str, Any]:
         if offer_id is not None:
             seen_offers.add(offer_id)
         entry_currency = str(entry.get("currency") or currency)
+        entry["converted_amount"] = None
         if counted and entry_currency != currency:
             counted = False
-            if entry_currency not in unsummed:
+            snapshot = (rates or {}).get(entry_currency)
+            if snapshot is not None and amount is not None:
+                converted = (amount * snapshot.rate).quantize(Decimal("0.01"))
+                entry["converted_amount"] = str(converted)
+                converted_total += converted
+                if all(item["currency"] != entry_currency for item in conversions):
+                    conversions.append(
+                        {
+                            "currency": entry_currency,
+                            "rate": str(snapshot.rate),
+                            "as_of": snapshot.as_of.isoformat(),
+                            "is_stale": snapshot.is_stale,
+                            "source_url": snapshot.source_url,
+                        }
+                    )
+            elif entry_currency not in unsummed:
                 unsummed.append(entry_currency)
         entry["counted"] = counted
         if counted and amount is not None:
@@ -131,7 +158,26 @@ def trip_pricing(trip: TripPlan, rows: list[TripPlanItem]) -> dict[str, Any]:
     return {
         "currency": currency,
         "quoted_total": str(quoted_total),
+        # Quotes plus the converted foreign ones; only present when something was converted.
+        "converted_total": str(quoted_total + converted_total) if conversions else None,
+        "conversions": conversions,
         "estimated_total": str(estimated) if estimated is not None else None,
         "items": entries,
         "unsummed_currencies": unsummed,
     }
+
+
+async def trip_pricing_with_rates(
+    trip: TripPlan, rows: list[TripPlanItem], provider: FxRateProvider
+) -> dict[str, Any]:
+    """`trip_pricing`, converting foreign quotes with the day's rates when they can be had."""
+    pricing = trip_pricing(trip, rows)
+    if not pricing["unsummed_currencies"]:
+        return pricing
+    rates: dict[str, FxRateSnapshot] = {}
+    for code in cast(list[str], pricing["unsummed_currencies"]):
+        try:
+            rates[code] = await provider.rate(code, str(pricing["currency"]))
+        except FxRateError:
+            continue
+    return trip_pricing(trip, rows, rates=rates) if rates else pricing
