@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**5 open · 2 in progress · 2 blocked · 0 in review · 120 done**
+**6 open · 1 in progress · 2 blocked · 0 in review · 121 done**
 
 ## Ready to claim
 
@@ -14,6 +14,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
+| P2 | [15 個店家英文名是手寫音譯，查不到出處](open/2026-09-06-merchant-english-names-unsourced.md) | api | `apps/api/app/foods/data/trend_merchants.json`<br>`apps/api/tests/test_trend_import.py` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
@@ -24,7 +25,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [沒有帳號的人走到底是死路：註冊已關閉，但每道牆只寫「前往登入」](open/2026-09-06-auth-dead-end.md) | claude-opus-5 | 2026-09-06T21:06:28Z | `claude/ux-auth-walls` |
-| [已匯入的店家沒有拿到資料檔後來補上的英文名](open/2026-09-06-backfill-merchant-english-names.md) | claude-opus-5 | 2026-09-06T21:18:47Z | `claude/merchant-name-backfill` |
 
 ## In review
 
@@ -39,6 +39,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [已匯入的店家沒有拿到資料檔後來補上的英文名](done/2026-09-06-backfill-merchant-english-names.md)
 - 2026-09-06 [後台可以挑選景點介紹的 AI 供應商與模型](done/2026-09-06-intro-ai-vendor-settings.md)
 - 2026-09-06 [專門的購物店家：新增經過座標核實的購物景點種子](done/2026-09-06-shopping-store-seeds.md)
 - 2026-09-06 [110 家店裡有 28 家在英日韓語系顯示中文譯名](done/2026-09-06-merchant-names-chinese-in-other-locales.md)
@@ -48,4 +49,3 @@ _Nothing here._
 - 2026-09-06 [AI 起草景點介紹：產生工作、防護與後台觸發](done/2026-09-06-intro-generation.md)
 - 2026-09-06 [後台以外的公開頁沒有頁尾，也沒有隱私權、條款、關於或聯絡的連結](done/2026-09-06-no-footer-legal-links.md)
 - 2026-09-06 [destinations 的 english_name 存繁中、areas 不隨語系](done/2026-09-06-destinations-english-name-areas.md)
-- 2026-09-06 [未登入的 /account 仍打七次注定 401 的請求](done/2026-09-06-signed-out-account-requests.md)
