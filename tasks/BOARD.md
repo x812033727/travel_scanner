@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 2 in progress · 1 blocked · 0 in review · 52 done**
+**16 open · 0 in progress · 1 blocked · 0 in review · 54 done**
 
 ## Ready to claim
 
@@ -28,13 +28,11 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [行程狀態標籤與封面圖](open/2026-09-06-trip-status-and-cover.md) | api | `apps/api/app/trips/metadata.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-meta-editor.tsx` |
 | P3 | [Measure the flood before widening ALLOWED_TYPES with temple, shrine and museum types](open/2026-09-06-measure-the-flood-before-widening-allowed.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/tests/test_hotspot_discovery.py` |
 | P3 | [後台其餘三個面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n-remaining.md) | web | `apps/web/components/admin-hotspot-places-panel.tsx`<br>`apps/web/components/admin-deployments-panel.tsx`<br>`apps/web/components/admin-users-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/app/[locale]/admin/page.tsx`<br>`apps/web/app/[locale]/admin/settings/page.tsx`<br>`apps/web/app/[locale]/admin/system-settings/page.tsx`<br>`apps/web/app/[locale]/admin/hotspots/page.tsx`<br>`apps/web/app/[locale]/admin/foods/page.tsx`<br>`apps/web/app/[locale]/admin/users/page.tsx`<br>`apps/web/app/[locale]/admin/deployments/page.tsx`<br>`apps/web/app/[locale]/admin/analytics/page.tsx`<br>`apps/web/app/[locale]/admin/usage-settings/page.tsx`<br>`apps/web/app/[locale]/admin/layout-settings/page.tsx` |
+| P3 | [美食與景點頁的國家／城市名稱在 en／ja／ko 仍是繁中](open/2026-09-06-food-hotspot-place-names-i18n.md) | api | `apps/api/app/foods/router.py`<br>`apps/api/app/foods/service.py`<br>`apps/api/app/foods/area_catalog.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/api/app/localized_names.py`<br>`apps/api/app/destinations/localized.py` |
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [zh-CN 的景點名稱 568 筆全部是繁體](open/2026-09-06-zh-cn-names-are-traditional.md) | claude-opus-5 | 2026-09-06T10:10:27Z | `claude/wikidata-locale-labels` |
-| [ko 與 ja 的景點名稱多半退回英文](open/2026-09-06-ko-ja-names-fall-back-to-english.md) | claude-opus-5 | 2026-09-06T10:10:29Z | `claude/wikidata-locale-labels` |
+_Nothing here._
 
 ## In review
 
@@ -45,10 +43,11 @@ _Nothing here._
 | Priority | Task | Waiting on |
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
-| P3 | [美食與景點頁的國家／城市名稱在 en／ja／ko 仍是繁中](open/2026-09-06-food-hotspot-place-names-i18n.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-06 [ko 與 ja 的景點名稱多半退回英文](done/2026-09-06-ko-ja-names-fall-back-to-english.md)
+- 2026-09-06 [zh-CN 的景點名稱 568 筆全部是繁體](done/2026-09-06-zh-cn-names-are-traditional.md)
 - 2026-09-06 [用 AI 審核 1,270 筆待審介紹候選](done/2026-09-06-ai-review-guide-backlog.md)
 - 2026-09-06 [usage catalog validation rejects everything when web ships ahead of api](done/2026-09-06-usage-catalog-validation-rejects-everything-when.md)
 - 2026-09-06 [food seed counts are hardcoded twelve times and only CI can see them](done/2026-09-06-food-seed-counts-are-hardcoded-twelve.md)
@@ -57,5 +56,3 @@ _Nothing here._
 - 2026-09-06 [後台面板文案硬編碼繁中](done/2026-09-06-admin-panels-i18n.md)
 - 2026-09-06 [後台的登入時效設定要能真的生效](done/2026-09-06-admin-session-settings.md)
 - 2026-09-06 [首頁精靈步驟標籤在英文 390px 會截字](done/2026-09-06-wizard-step-label-truncation.md)
-- 2026-09-06 [桌機主導覽文字連結只有 20px 高](done/2026-09-06-desktop-nav-touch-targets.md)
-- 2026-09-06 [註冊關閉頁的小標與 H1 是同一句話](done/2026-09-06-auth-duplicate-heading.md)
