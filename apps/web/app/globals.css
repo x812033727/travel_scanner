@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Nothing readable is allowed below 13px. Tailwind's own `text-xs` is 12px and it
+   is used ~540 times here, so the floor is set on the scale itself rather than on
+   every call site; `text-sm` and up already clear it. */
+@theme {
+  --text-xs: 0.8125rem;
+}
+
 .analytics-dashboard {
   width: 100%;
   min-width: 0;
@@ -34,9 +41,16 @@
 
 :root {
   color-scheme: light;
+  /* The two steps below the body size. Everything that used to be written as a
+     0.62–0.79rem literal picks one of them, so there is one place to raise the
+     floor again. --text-meta is 13px, --text-label 14px. */
+  --text-meta: 0.8125rem;
+  --text-label: 0.875rem;
   --ink: #102a2b;
   --ink-fill: #102a2b;
-  --muted: #607676;
+  /* 4.48 against --paper and 4.32 against --surface-tint was under the 4.5 that
+     body text needs; this is 5.15–5.74 against every surface we paint it on. */
+  --muted: #556a6a;
   --paper: #f5f7f2;
   --surface: #ffffff;
   --brand-mocha: #6b4a3a;
@@ -46,7 +60,13 @@
   --teal-fill-hover: #074f4d;
   --teal-dark: #074f4d;
   --teal-soft: #dcefeb;
-  --coral: #ed735d;
+  /* The old coral was 2.7 against paper — an accent nobody with tired eyes could
+     read. --coral is now the one that carries text and icons, --coral-fill sits
+     under white text in both themes, and --coral-bright stays for decoration that
+     never has text on it (card stripes, glows, progress bars). */
+  --coral: #b8442d;
+  --coral-fill: #b8442d;
+  --coral-bright: #ed735d;
   --coral-soft: #fff0eb;
   --line: #dce4dc;
   --surface-raised: #fffefa;
@@ -74,6 +94,8 @@
   --teal-dark: #a1e2dd;
   --teal-soft: #183b39;
   --coral: #ff987f;
+  --coral-fill: #b8442d;
+  --coral-bright: #ff987f;
   --coral-soft: #40251f;
   --line: #344542;
   --surface-raised: #1d2928;
@@ -212,7 +234,7 @@ body {
   background: var(--surface);
   padding: 0.45rem 0.75rem;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: var(--text-label);
   font-weight: 750;
   transition:
     transform 0.18s var(--ease-app),
@@ -237,7 +259,7 @@ body {
   border-radius: 999px;
   background: color-mix(in srgb, currentColor 10%, transparent);
   padding-inline: 0.3rem;
-  font-size: 0.67rem;
+  font-size: var(--text-meta);
 }
 .app-icon-button {
   display: grid;
@@ -369,7 +391,7 @@ body {
 .app-quick-card small {
   margin-top: 0.15rem;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: var(--text-label);
   line-height: 1.2rem;
 }
 .destination-card-rail {
@@ -403,7 +425,7 @@ body {
   border-radius: 999px;
   background: var(--paper);
   padding: 0.5rem 0.9rem;
-  font-size: 0.8rem;
+  font-size: var(--text-meta);
   transition:
     background-color 0.18s,
     color 0.18s,
@@ -468,7 +490,7 @@ body {
   gap: 0.18rem;
   border-radius: 1rem;
   color: var(--muted);
-  font-size: 0.65rem;
+  font-size: var(--text-meta);
   font-weight: 700;
   transition:
     color 0.18s,
@@ -515,7 +537,7 @@ body {
   box-shadow: var(--shadow-md);
 }
 .travel-result-card-food::before {
-  background: var(--coral);
+  background: var(--coral-bright);
 }
 .travel-result-card-nature::before,
 .travel-result-card-beach::before {
@@ -536,7 +558,7 @@ body {
   gap: 0.35rem;
   border-radius: 0.9rem;
   color: var(--muted);
-  font-size: 0.76rem;
+  font-size: var(--text-label);
   font-weight: 750;
   transition:
     transform 0.18s var(--ease-app),
@@ -682,7 +704,7 @@ body {
   padding: 0.55rem 0.75rem;
   border-top: 1px solid var(--line);
   background: var(--surface-tint);
-  font-size: 0.8rem;
+  font-size: var(--text-meta);
   font-weight: 700;
   text-align: left;
 }
@@ -731,7 +753,7 @@ body {
   .admin-responsive-table td::before {
     color: var(--muted);
     content: "";
-    font-size: 0.68rem;
+    font-size: var(--text-meta);
     font-weight: 750;
     letter-spacing: 0.045em;
     text-align: left;
@@ -876,18 +898,24 @@ body {
     padding-top: 1rem;
   }
 }
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-button {
-  cursor: pointer;
-}
-a {
-  color: inherit;
-  text-decoration: none;
+/* These are element defaults, so they belong in Tailwind's `base` layer. Written
+   outside a layer they would beat every utility class — an unlayered `a { color:
+   inherit }` silently swallowed `text-white` on every link, which is how a white
+   label on a teal button ended up rendering as dark ink on dark teal. */
+@layer base {
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+  button {
+    cursor: pointer;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 .planner-app-shell {
@@ -996,7 +1024,7 @@ a {
   justify-content: center;
   gap: 0.35rem;
   padding: 0 0.75rem;
-  font-size: 0.8rem;
+  font-size: var(--text-meta);
   font-weight: 700;
 }
 
@@ -1140,7 +1168,7 @@ a {
   background: rgba(255, 255, 255, 0.76);
   padding: 0.3rem 0.55rem;
   color: #526b7b;
-  font-size: 0.67rem;
+  font-size: var(--text-meta);
   font-weight: 750;
 }
 .planner-flight-action {
@@ -1155,7 +1183,7 @@ a {
   border-radius: 0.85rem;
   background: rgba(255, 255, 255, 0.82);
   color: #275d7d;
-  font-size: 0.8rem;
+  font-size: var(--text-meta);
   font-weight: 800;
 }
 .planner-flight-action:disabled {
@@ -1179,7 +1207,7 @@ a {
   gap: 0.35rem;
   border-radius: 0.85rem;
   padding: 0.55rem 0.8rem;
-  font-size: 0.78rem;
+  font-size: var(--text-label);
   font-weight: 800;
 }
 .planner-system-primary {
@@ -1209,7 +1237,7 @@ a {
   background: var(--teal-soft);
   padding: 0.25rem 0.6rem;
   color: var(--teal-dark);
-  font-size: 0.72rem;
+  font-size: var(--text-label);
   font-weight: 800;
   letter-spacing: 0.025em;
 }
@@ -1425,7 +1453,7 @@ a {
   background: var(--teal-fill);
   color: white;
   box-shadow: 0 4px 12px color-mix(in srgb, var(--teal) 26%, transparent);
-  font-size: 0.62rem;
+  font-size: var(--text-meta);
   font-weight: 850;
   line-height: 1;
 }
@@ -1531,7 +1559,7 @@ a {
 .route-stale-badge {
   border-radius: 999px;
   padding: 0.22rem 0.52rem;
-  font-size: 0.68rem;
+  font-size: var(--text-meta);
   font-weight: 750;
 }
 
@@ -1559,7 +1587,7 @@ a {
 }
 .route-time-grid span {
   display: block;
-  font-size: 0.68rem;
+  font-size: var(--text-meta);
   color: var(--muted);
 }
 .route-time-grid strong {
@@ -1593,14 +1621,14 @@ a {
   border-radius: 0.9rem;
   background: var(--paper);
   padding: 0.7rem;
-  font-size: 0.7rem;
+  font-size: var(--text-meta);
   color: var(--muted);
 }
 
 .route-metric strong {
   grid-column: 1 / 3;
   color: var(--ink);
-  font-size: 0.78rem;
+  font-size: var(--text-label);
 }
 .route-step-list {
   position: relative;
@@ -1648,7 +1676,7 @@ a {
   gap: 0.35rem;
   border-radius: 0.8rem;
   padding-inline: 0.45rem;
-  font-size: 0.78rem;
+  font-size: var(--text-label);
   font-weight: 750;
   color: var(--muted);
   white-space: nowrap;
@@ -1707,7 +1735,7 @@ a {
 .route-empty-state p {
   margin-top: 0.2rem;
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: var(--text-label);
   line-height: 1.35rem;
 }
 
@@ -1788,7 +1816,7 @@ a {
   border-radius: 999px;
   background: var(--surface);
   color: var(--coral);
-  font-size: 0.75rem;
+  font-size: var(--text-label);
   font-weight: 850;
 }
 
@@ -1799,7 +1827,7 @@ a {
 .route-endpoint small {
   display: block;
   color: var(--muted);
-  font-size: 0.68rem;
+  font-size: var(--text-meta);
   font-weight: 700;
 }
 
@@ -1835,7 +1863,7 @@ a {
   background: var(--teal-fill);
   padding-inline: 0.8rem;
   color: white;
-  font-size: 0.78rem;
+  font-size: var(--text-label);
   font-weight: 800;
 }
 
@@ -1847,12 +1875,12 @@ a {
   gap: 1rem;
   border-top: 1px solid var(--line);
   padding: 0.65rem 1rem;
-  font-size: 0.78rem;
+  font-size: var(--text-label);
 }
 
 .route-selection-summary span {
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: var(--text-meta);
 }
 
 .route-map-card {
@@ -1891,7 +1919,7 @@ a {
   background: rgba(16, 42, 43, 0.82);
   padding: 0.4rem 0.7rem;
   color: white;
-  font-size: 0.68rem;
+  font-size: var(--text-meta);
   font-weight: 800;
   box-shadow: 0 5px 18px rgba(16, 42, 43, 0.18);
   backdrop-filter: blur(10px);
@@ -1942,7 +1970,7 @@ a {
   background: var(--teal-fill);
   padding: 0.25rem 0.5rem;
   color: white;
-  font-size: 0.65rem;
+  font-size: var(--text-meta);
   font-weight: 850;
 }
 
@@ -2000,7 +2028,7 @@ a {
     flex-direction: column;
     gap: 0.15rem;
     padding-inline: 0.2rem;
-    font-size: 0.7rem;
+    font-size: var(--text-meta);
   }
 
   .route-navigation-link {
@@ -2034,7 +2062,7 @@ a {
   border-radius: 0.85rem;
   background: var(--surface);
   padding: 0.5rem 0.65rem;
-  font-size: 0.75rem;
+  font-size: var(--text-label);
   font-weight: 750;
   color: var(--muted);
 }
@@ -2094,7 +2122,7 @@ a {
   border: 1px dashed #bae6fd;
   background: #f0f9ff;
   color: #075985;
-  font-size: 0.78rem;
+  font-size: var(--text-label);
   font-weight: 700;
 }
 
@@ -2121,10 +2149,10 @@ a {
   border-radius: 999px;
   background: var(--surface);
   padding: 0.2rem 0.48rem;
-  font-size: 0.7rem;
+  font-size: var(--text-meta);
 }
 .route-timeline-buffer {
-  font-size: 0.7rem;
+  font-size: var(--text-meta);
   color: var(--muted);
 }
 
@@ -2198,7 +2226,7 @@ a {
   }
   .planner-dock-button {
     padding-inline: 0.5rem;
-    font-size: 0.8rem;
+    font-size: var(--text-meta);
   }
 }
 
