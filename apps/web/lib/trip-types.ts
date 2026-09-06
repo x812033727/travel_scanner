@@ -463,13 +463,21 @@ export function projectChainedStarts(
   for (const row of rows) {
     if (row.is_skipped) continue;
     const anchored = row.fixed_time ? readMoment(row.start_time) : undefined;
-    const arrival = anchored ? undefined : readMoment(arrivals.get(row.id)?.ready_time);
-    const travelMinutes = cursor ? estimateLegMinutes(cursor.from, row, travelMode) || 0 : 0;
-    const chained = anchored
-      || arrival
-      || (cursor
-        ? { ms: cursor.ms + (travelMinutes + bufferMinutes) * 60_000, wallClock: cursor.wallClock }
-        : readMoment(row.start_time));
+    const segment = anchored ? undefined : arrivals.get(row.id);
+    let chained: { ms: number; wallClock: boolean } | undefined;
+    if (anchored) {
+      chained = anchored;
+    } else if (cursor) {
+      // Chain by duration from the projected end of the previous stop, the way the
+      // server projects a day. A segment that survived an edit upstream still has the
+      // absolute times it was computed with, so those cannot anchor the chain.
+      const travelMinutes = segment
+        ? segment.duration_minutes + (segment.buffer_minutes ?? bufferMinutes)
+        : (estimateLegMinutes(cursor.from, row, travelMode) || 0) + bufferMinutes;
+      chained = { ms: cursor.ms + travelMinutes * 60_000, wallClock: cursor.wallClock };
+    } else {
+      chained = readMoment(segment?.ready_time) || readMoment(row.start_time);
+    }
     if (!chained) {
       cursor = undefined;
       continue;
@@ -477,7 +485,7 @@ export function projectChainedStarts(
     if (!row.fixed_time) {
       projected.set(row.id, {
         start: writeMoment(chained.ms, chained.wallClock),
-        estimated: !arrival,
+        estimated: !segment,
       });
     }
     cursor = {

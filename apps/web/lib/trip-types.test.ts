@@ -68,15 +68,34 @@ describe("projectChainedStarts", () => {
     expect(projected.get("market")?.estimated).toBe(true);
   });
 
-  it("prefers a computed segment's ready time and marks it as no longer an estimate", () => {
+  it("chains a computed segment by its duration and marks it as no longer an estimate", () => {
     const rows = [hotel, item({ id: "museum" }), item({ id: "market" })];
     const projected = projectChainedStarts(rows, [segment("hotel", "museum", "2026-11-10T09:35:00+09:00")], 10);
 
-    expect(formatTime(projected.get("museum")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:35");
+    // 09:00 出發 + 路線 20 分 + 當日緩衝 10 分（segment 沒帶 buffer）→ 09:30；
+    // 存在 segment 上的 ready_time 只是算出當時的絕對時間，不拿來定錨
+    expect(formatTime(projected.get("museum")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:30");
     expect(projected.get("museum")?.estimated).toBe(false);
-    // 後續沒有路線的站別仍然接著累加：09:35 + 60 分停留 + 10 分緩衝
-    expect(formatTime(projected.get("market")?.start, "zh-TW", "Asia/Tokyo")).toBe("10:45");
+    // 後續沒有路線的站別仍然接著累加：09:30 + 60 分停留 + 10 分緩衝
+    expect(formatTime(projected.get("market")?.start, "zh-TW", "Asia/Tokyo")).toBe("10:40");
     expect(projected.get("market")?.estimated).toBe(true);
+  });
+
+  it("re-anchors a surviving downstream segment after the leg before it changed", () => {
+    const rows = [
+      item({ id: "hotel", system_role: "hotel_start", fixed_time: true, start_time: "2026-11-10T09:00:00+09:00", duration_minutes: 0, latitude: 35.6812, longitude: 139.7671 }),
+      item({ id: "temple", latitude: 35.7148, longitude: 139.7967 }),
+      item({ id: "tower", latitude: 35.7101, longitude: 139.8107 }),
+    ];
+    // temple→tower survived an edit; its stored ready time predates the new estimate above it.
+    const stale = { ...segment("temple", "tower", "2026-11-10T09:50:00+09:00"), duration_minutes: 15, buffer_minutes: 5 };
+    const projected = projectChainedStarts(rows, [stale], 10, "transit");
+
+    // hotel→temple 缺路線：09:00 + 約 25 分 + 10 → 09:35；temple→tower 用它的 15 + 5 接著算
+    expect(formatTime(projected.get("temple")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:35");
+    expect(projected.get("temple")?.estimated).toBe(true);
+    expect(formatTime(projected.get("tower")?.start, "zh-TW", "Asia/Tokyo")).toBe("10:55");
+    expect(projected.get("tower")?.estimated).toBe(false);
   });
 
   it("restarts the chain from a fixed-time stop and leaves it out of the result", () => {
@@ -157,10 +176,11 @@ describe("projectChainedStarts with located stops", () => {
     ];
     const projected = projectChainedStarts(rows, [segment("hotel", "temple", "2026-11-10T09:28:00+09:00")], 10, "walk");
 
-    expect(formatTime(projected.get("temple")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:28");
+    // 09:00 + 路線 20 分 + 10 緩衝 → 09:30
+    expect(formatTime(projected.get("temple")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:30");
     expect(projected.get("temple")?.estimated).toBe(false);
-    // 淺草寺 → 晴空塔 約 1.4 公里步行 ≈ 20 分：10:28 + 20 + 10 緩衝
-    expect(formatTime(projected.get("tower")?.start, "zh-TW", "Asia/Tokyo")).toBe("10:58");
+    // 淺草寺 → 晴空塔 約 1.4 公里步行 ≈ 20 分：10:30 + 20 + 10 緩衝
+    expect(formatTime(projected.get("tower")?.start, "zh-TW", "Asia/Tokyo")).toBe("11:00");
     expect(projected.get("tower")?.estimated).toBe(true);
   });
 });
