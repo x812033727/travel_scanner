@@ -1,6 +1,6 @@
 import asyncio
 import os
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime, timedelta
 from uuid import UUID, uuid4
 
 import pytest
@@ -29,6 +29,7 @@ from app.models import (
     UsageReservation,
     User,
 )
+from app.providers.live_back_to_back import LiveBackToBackSearch, LiveTripDates
 from app.search.orchestrator import orchestrate_search
 from app.search.tasks import run_search_job
 from app.trips.routing import RouteSegment, RouteService
@@ -2123,3 +2124,48 @@ async def test_a_pasted_place_can_be_offered_by_the_planner_and_applied_without_
                 row = await session.get(TripPlaceCandidate, UUID(candidate_id))
             assert row is not None
             assert row.status == ("used" if any("35.71" in title for title in titles) else "inbox")
+
+
+@pytest.mark.asyncio
+async def test_expanding_a_back_to_back_search_answers_409_rather_than_500() -> None:
+    """The two writers of request_json store different shapes, and only one is expandable.
+
+    Ownership was the only check before this, so a live back-to-back row reached a bare
+    model_validate and its ValidationError — neither AppError nor RequestValidationError —
+    escaped the handlers registered in main.py as a 500.
+    """
+    await engine.dispose()
+    get_redis.cache_clear()
+
+    first = date.today() + timedelta(days=45)
+    payload = LiveBackToBackSearch(
+        origin="TPE",
+        first_destination="NRT",
+        second_destination="ICN",
+        first_trip=LiveTripDates(departure_date=first, return_date=first + timedelta(days=4)),
+        second_trip=LiveTripDates(
+            departure_date=first + timedelta(days=20), return_date=first + timedelta(days=24)
+        ),
+    ).model_dump(mode="json")
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        headers, user_id = await _signed_in_member("back-to-back-expand")
+        async with SessionFactory() as session:
+            search = SearchRequest(
+                user_id=user_id,
+                operation="live_back_to_back_fare_search",
+                request_json=payload,
+                result_json={"pairs": []},
+            )
+            session.add(search)
+            await session.commit()
+            await session.refresh(search)
+            search_id = search.id
+
+        answer = await client.post(
+            f"/api/v1/searches/{search_id}/flight-sources/expand",
+            headers={**headers, "Idempotency-Key": str(uuid4())},
+        )
+        assert answer.status_code == 409, answer.text
+        assert answer.json()["code"] == "search_not_expandable"
