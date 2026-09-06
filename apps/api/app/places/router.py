@@ -317,7 +317,7 @@ async def destination_catalog(
                 "extension_ids": sorted(children.get(item.id, [])),
                 "gateway_codes": list(item.gateway_codes or (item.code,)),
                 "primary_gateway": item.primary_gateway,
-                "areas": list(item.areas),
+                "areas": localized.area_labels(item, locale),
                 "recommended_days": {
                     "min": item.recommended_days[0],
                     "max": item.recommended_days[1],
@@ -489,7 +489,7 @@ async def discover(
                     ),
                     "timezone": profile.timezone,
                     "local_currency": profile.currency,
-                    "areas": list(profile.areas),
+                    "areas": localized.area_labels(profile, locale),
                     "reason": localized.reason(profile, locale),
                     "source": "curated_estimate",
                     **best,
@@ -517,7 +517,7 @@ async def discover(
             "country": localized.country_label(item, locale),
             "timezone": item.timezone,
             "local_currency": item.currency,
-            "areas": item.areas,
+            "areas": localized.area_labels(item, locale),
             "estimated_flight_twd": item.estimated_flight_twd,
             "within_budget_estimate": (
                 payload.budget_twd is None or item.estimated_flight_twd <= payload.budget_twd * 0.45
