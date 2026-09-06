@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useHeaderSession } from "@/components/header-session";
+import { TextSizeSwitcher } from "@/components/text-size-switcher";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { Link } from "@/i18n/navigation";
@@ -67,6 +68,9 @@ export function MobileNav() {
             {nav(item.key)}
           </Link>)}
         </nav>
+        <div className="mt-5 border-t border-[var(--line)] pt-5">
+          <TextSizeSwitcher variant="expanded" />
+        </div>
       </div>
     </div>}
   </div>;

@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-large-text-mode
 title: 大字模式：讓長輩自己把整站字放大
-status: open
+status: in-progress
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T13:37:03Z
 created_at: 2026-09-06T13:02:12Z
 completed_at:
-branch:
+branch: claude/ui-ux-simplification-72afb9
 depends_on: []
 scope:
   - apps/web/components/text-size-switcher.tsx

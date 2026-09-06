@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**10 open · 2 in progress · 1 blocked · 0 in review · 65 done**
+**9 open · 3 in progress · 1 blocked · 0 in review · 65 done**
 
 ## Ready to claim
 
@@ -13,7 +13,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P1 | [大字模式：讓長輩自己把整站字放大](open/2026-09-06-large-text-mode.md) | web | `apps/web/components/text-size-switcher.tsx`<br>`apps/web/components/text-size-switcher.test.tsx`<br>`apps/web/lib/text-size.ts`<br>`apps/web/components/mobile-nav.tsx`<br>`apps/web/components/site-navigation.tsx`<br>`apps/web/components/account-panel.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
 | P1 | [公開頁精簡：景點卡動作分層、首頁膠囊溢出、排行榜第一屏](open/2026-09-06-simplify-public-cards.md) | web | `apps/web/components/hotspot-explorer.tsx`<br>`apps/web/components/search-workbench.tsx`<br>`apps/web/app/[locale]/hotspots/page.tsx` |
 | P2 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | api | `apps/api/app/destinations/localized.py` |
 | P2 | [待安排地點進入 AI 候選集（PR 8）](open/2026-09-06-paste-inbox-into-candidates.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/intents.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/trips/ingest.py`<br>`apps/web/components/trip-inbox-panel.tsx`<br>`apps/web/components/trip-editor.tsx` |
@@ -28,6 +27,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [看得見：連結顏色被吃掉、對比不足與字級下限](open/2026-09-06-readable-foundation.md) | claude-opus-5 | 2026-09-06T13:02:56Z | `claude/ui-ux-simplification-72afb9` |
 | [後台外殼：錯誤頁在地化、面板不要整頁炸掉、手機選單擋內容](open/2026-09-06-admin-shell-resilience.md) | claude-opus-5 | 2026-09-06T13:29:26Z | `claude/ui-ux-simplification-72afb9` |
+| [大字模式：讓長輩自己把整站字放大](open/2026-09-06-large-text-mode.md) | claude-opus-5 | 2026-09-06T13:37:03Z | `claude/ui-ux-simplification-72afb9` |
 
 ## In review
 

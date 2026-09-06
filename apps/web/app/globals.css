@@ -77,6 +77,8 @@
   --page-glow: rgba(237, 115, 93, 0.12);
   --page-gradient-start: #eff5ef;
   --ease-app: cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* How far the planner's floating chrome reaches up from the bottom edge. */
+  --planner-dock-clearance: calc(6.75rem + env(safe-area-inset-bottom));
 }
 
 :root[data-theme="dark"] {
@@ -113,6 +115,16 @@
 html {
   scroll-padding-top: 5.5rem;
   background: var(--paper);
+}
+/* Reader-chosen text size. Every length in this app is a rem, so stepping the
+   root size takes the spacing and the controls with it instead of cramming
+   bigger words into the same boxes. Breakpoints are px, so a phone stays on the
+   phone layout at every step. */
+html[data-text-size="large"] {
+  font-size: 112.5%;
+}
+html[data-text-size="largest"] {
+  font-size: 125%;
 }
 body {
   margin: 0;
@@ -1259,12 +1271,12 @@ body {
 }
 
 .planner-toast-stack {
-  bottom: calc(6.75rem + env(safe-area-inset-bottom));
+  bottom: var(--planner-dock-clearance);
 }
 
 /* Clears the fixed mobile dock; on desktop there is no dock to clear. */
 .planner-intent-bar {
-  bottom: calc(6.75rem + env(safe-area-inset-bottom));
+  bottom: var(--planner-dock-clearance);
 }
 
 @media (min-width: 1024px) {
@@ -2205,7 +2217,11 @@ body {
 @media (max-width: 1023px) {
   .planner-app-shell {
     background: var(--paper);
-    padding-bottom: calc(10rem + env(safe-area-inset-bottom));
+    /* The dock and the intent bar above it are fixed to the bottom, so the day
+       needs at least their height of slack underneath or the last cards can
+       never be scrolled clear of them - the edit button on a one-day trip ended
+       up permanently under the intent bar. */
+    padding-bottom: calc(var(--planner-dock-clearance) + 6rem);
   }
   .planner-day-panel {
     border-color: color-mix(in srgb, var(--line) 85%, transparent);
