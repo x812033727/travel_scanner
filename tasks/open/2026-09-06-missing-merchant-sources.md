@@ -27,7 +27,7 @@ On 2026-09-05, 63 of 172 merchants had one. The coordinate fill reported `no_sou
 other **109**, meaning it had nothing to even open. More merchants have been added since, so
 the gap is now larger.
 
-This is the upstream cause of `2026-09-06-merchant-coordinate-backlog-270-of-272`: a merchant
+This is the upstream cause of `2026-09-06-merchant-coordinate-backlog`: a merchant
 with no page of its own has no route to a durable coordinate except a human typing one.
 
 ## Definition of done
@@ -71,7 +71,7 @@ Adding a page does not by itself produce a coordinate: of the 63 merchants that 
 one, 62 published nothing machine-readable, so expect the direct yield to be near zero. The
 value is that a reviewer can open one page per merchant instead of searching, and that the
 merchant becomes eligible for the coordinate review queue. Read the Notes of
-`2026-09-06-merchant-coordinate-backlog-270-of-272` before assuming otherwise.
+`2026-09-06-merchant-coordinate-backlog` before assuming otherwise.
 
 Japan had no entries in `MERCHANT_DIRECT_SOURCE_SEEDS` at all until #169 — a test asserted
 that (`merchant_country[...] != "JP"`). That assertion is gone; the 16 Japanese entries added
