@@ -273,3 +273,51 @@ def test_a_row_with_no_english_name_in_the_file_is_never_touched() -> None:
     changed, left = plan_english_name_backfill([_imported(merchant)], {merchant.slug: merchant})
     assert changed == []
     assert left == []
+
+
+# An English name that is not already somewhere in its own row came from outside the file, so
+# it needs a source a reader can check. These were each confirmed on the page the row itself
+# cites, on 2026-09-07. Seven others were removed in the same pass because their cited source
+# carried no Latin script at all — 金得春捲's official Tainan page, 東區粉圓's own site and
+# 蠔爽's Kaohsiung village page name the shop only in Chinese, so the romanisation had no
+# origin anyone could confirm.
+SOURCED_ENGLISH_NAMES = {
+    # "Copyright © SHIROGANE SABO All Rights Reserved." on s-sabo.com
+    "fukuoka-bai-jin-cha-fang": "Shirogane Sabo",
+    # "川本屋" romanised as Kawamotoya on kawamotoya.com, which is also the domain
+    "yokohama-chuan-ben-wu-cha-pu": "Kawamotoya",
+    # "Tsuruya Yoshinobu CO., LTD." in the footer of tsuruyayoshinobu.jp
+    "osaka-kyoto-he-wu-ji-xin-ben-dian": "Tsuruya Yoshinobu Main Store",
+    # The brand is in the row already; only the branch is romanised, and it is a place name.
+    "tokyo-hattifnatt": "HATTIFNATT Koenji",
+    "fukuoka-manu-coffee": "manu coffee Daimyo",
+    "okinawa-ohacort": "oHacorté Minatogawa",
+    "okinawa-houkiboshi": "Houkiboshi Minatogawa",
+    # faidama.com writes the shop as "faidama"; shokudou_faidama is its own Instagram handle.
+    "okinawa-faidama": "Shokudo faidama",
+}
+
+
+def test_an_english_name_not_in_its_row_has_a_recorded_source() -> None:
+    """A romanisation nobody can trace is what this rule exists to keep out.
+
+    An English reader who cannot find the shop by the name we show them is worse off than
+    one who was given the Chinese name and could at least paste it into a map.
+    """
+    for merchant in load_trend_merchants(DEFAULT_FILE):
+        if not merchant.english_name:
+            continue
+        haystack = f"{merchant.name} {merchant.local_name}".casefold()
+        if merchant.english_name.casefold() in haystack:
+            continue
+        assert SOURCED_ENGLISH_NAMES.get(merchant.slug) == merchant.english_name, (
+            f"{merchant.slug}: {merchant.english_name!r} is not in the row and is not on the "
+            "checked list; add it with the source it came from, or drop it"
+        )
+
+
+def test_the_checked_list_has_no_entries_the_file_dropped() -> None:
+    """A stale allowlist quietly stops guarding anything."""
+
+    slugs = {m.slug for m in load_trend_merchants(DEFAULT_FILE) if m.english_name}
+    assert set(SOURCED_ENGLISH_NAMES) <= slugs
