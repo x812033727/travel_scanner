@@ -141,13 +141,13 @@ describe("NewTripForm", () => {
     next();
     fireEvent.change(screen.getByLabelText("成人"), { target: { value: "3" } });
     fireEvent.change(screen.getByLabelText("兒童"), { target: { value: "1" } });
-    fireEvent.change(screen.getByLabelText("整趟總預算 TWD"), { target: { value: "90000.4" } });
+    fireEvent.change(screen.getByLabelText("整趟總預算（台幣）"), { target: { value: "90000.4" } });
     fireEvent.click(screen.getByRole("button", { name: "悠閒" }));
     fireEvent.click(screen.getByRole("button", { name: "美食" }));
     next();
     fireEvent.click(screen.getByRole("button", { name: "兩種都接受" }));
-    fireEvent.change(screen.getByLabelText("每晚最低 TWD"), { target: { value: "3000" } });
-    fireEvent.change(screen.getByLabelText("每晚最高 TWD"), { target: { value: "7000" } });
+    fireEvent.change(screen.getByLabelText("每晚最低（台幣）"), { target: { value: "3000" } });
+    fireEvent.change(screen.getByLabelText("每晚最高（台幣）"), { target: { value: "7000" } });
     fireEvent.change(screen.getByLabelText("最低星級"), { target: { value: "4" } });
     fireEvent.change(screen.getByLabelText("最低住客評分"), { target: { value: "8" } });
     fireEvent.change(screen.getByLabelText("最低評論數"), { target: { value: "100" } });
@@ -244,8 +244,8 @@ describe("NewTripForm", () => {
     render(<NewTripForm />);
     fillRequiredFields();
     next(); next();
-    fireEvent.change(screen.getByLabelText("每晚最低 TWD"), { target: { value: "8000" } });
-    fireEvent.change(screen.getByLabelText("每晚最高 TWD"), { target: { value: "3000" } });
+    fireEvent.change(screen.getByLabelText("每晚最低（台幣）"), { target: { value: "8000" } });
+    fireEvent.change(screen.getByLabelText("每晚最高（台幣）"), { target: { value: "3000" } });
     next();
     expect(screen.getByRole("alert").textContent).toContain("最低價格不可高於最高價格");
   });
