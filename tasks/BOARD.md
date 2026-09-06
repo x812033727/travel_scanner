@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**15 open · 0 in progress · 1 blocked · 0 in review · 52 done**
+**18 open · 0 in progress · 1 blocked · 0 in review · 52 done**
 
 ## Ready to claim
 
@@ -17,6 +17,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [貼 Google Maps 連結加景點（待安排 inbox）](open/2026-09-06-paste-maps-links-ingest.md) | api | `apps/api/app/trips/ingest.py`<br>`apps/api/app/trips/ingest_router.py`<br>`apps/api/app/restaurants/imports.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-inbox-panel.tsx` |
 | P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | api | `apps/api/app/trips/routing.py`<br>`apps/api/tests/test_trip_routing.py` |
 | P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/route_planner.py`<br>`apps/api/tests/test_trip_route_planner.py` |
+| P2 | [zh-CN 的景點名稱 568 筆全部是繁體](open/2026-09-06-zh-cn-names-are-traditional.md) | api | `apps/api/app/localized_names.py`<br>`apps/api/app/hotspots/localization.py` |
+| P2 | [ko 與 ja 的景點名稱多半退回英文](open/2026-09-06-ko-ja-names-fall-back-to-english.md) | api | `apps/api/app/hotspots/wikidata_labels.py` |
+| P2 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | api | `apps/api/app/destinations/localized.py` |
 | P3 | [ICS 行事曆匯出](open/2026-09-06-ics-calendar-export.md) | api | `apps/api/app/trips/ics.py`<br>`apps/api/app/trips/export_router.py`<br>`apps/web/components/trip-tools-panel.tsx` |
 | P3 | [列印版行程表（一天一頁的 A5 列印樣式）](open/2026-09-06-printable-itinerary.md) | web | `apps/web/app/[locale]/trips/[id]/print`<br>`apps/web/app/globals.css` |
 | P3 | [誠實路段守衛：拒絕 0 分鐘路段與漏掉步行段的轉乘方案](open/2026-09-06-honest-leg-guard.md) | api | `apps/api/app/trips/routing.py`<br>`apps/web/components/route-mode-panel.tsx` |
