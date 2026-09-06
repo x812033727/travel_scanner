@@ -1064,6 +1064,160 @@ async def test_route_cache_separates_different_google_place_ids_at_same_coordina
 
 
 @pytest.mark.asyncio
+async def test_route_cache_keys_ekispert_plain_search_by_date_only() -> None:
+    provider = CountingProvider()
+    service = RouteService(
+        fakeredis.aioredis.FakeRedis(decode_responses=True),
+        Settings(ekispert_api_key="key", ekispert_search_type="plain"),
+        google=UnexpectedProvider(),
+        navitime=UnexpectedProvider(),
+        ekispert=provider,
+    )
+    morning = datetime(2026, 11, 10, 9, 0, tzinfo=ZoneInfo("Asia/Tokyo"))
+
+    # ``plain`` only sends the date, so every departure on the same day is one request.
+    for departure in (morning, morning + timedelta(minutes=47), morning + timedelta(hours=6)):
+        await service.compute(
+            point("A", 35.1, 139.1),
+            point("B", 35.2, 139.2),
+            departure,
+            "FEWER_TRANSFERS",
+            region_code="JP",
+            travel_mode="transit",
+        )
+    assert provider.calls == 1
+
+    await service.compute(
+        point("A", 35.1, 139.1),
+        point("B", 35.2, 139.2),
+        morning + timedelta(days=1),
+        "FEWER_TRANSFERS",
+        region_code="JP",
+        travel_mode="transit",
+    )
+    assert provider.calls == 2
+
+
+@pytest.mark.asyncio
+async def test_route_cache_buckets_ekispert_departure_search_by_ten_minutes() -> None:
+    provider = CountingProvider()
+    service = RouteService(
+        fakeredis.aioredis.FakeRedis(decode_responses=True),
+        Settings(ekispert_api_key="key", ekispert_search_type="departure"),
+        google=UnexpectedProvider(),
+        navitime=UnexpectedProvider(),
+        ekispert=provider,
+    )
+    morning = datetime(2026, 11, 10, 9, 0, tzinfo=ZoneInfo("Asia/Tokyo"))
+
+    for minutes, expected_calls in ((0, 1), (5, 1), (12, 2)):
+        await service.compute(
+            point("A", 35.1, 139.1),
+            point("B", 35.2, 139.2),
+            morning + timedelta(minutes=minutes),
+            "FEWER_TRANSFERS",
+            region_code="JP",
+            travel_mode="transit",
+        )
+        assert provider.calls == expected_calls
+
+
+@pytest.mark.asyncio
+async def test_route_cache_ignores_departure_time_for_odsay_and_walking() -> None:
+    odsay = CountingProvider()
+    korea = RouteService(
+        fakeredis.aioredis.FakeRedis(decode_responses=True),
+        Settings(odsay_api_key="server-key"),
+        google=UnexpectedProvider(),
+        naver=UnexpectedProvider(),
+        odsay=odsay,
+    )
+    seoul_morning = datetime(2026, 11, 10, 9, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+    for departure in (None, seoul_morning, seoul_morning + timedelta(days=3)):
+        await korea.compute(
+            point("A", 37.55, 126.97),
+            point("B", 37.58, 126.98),
+            departure,
+            "FEWER_TRANSFERS",
+            region_code="KR",
+            travel_mode="transit",
+        )
+    assert odsay.calls == 1
+
+    google = CountingProvider()
+    walking = RouteService(
+        fakeredis.aioredis.FakeRedis(decode_responses=True),
+        Settings(),
+        google=google,
+    )
+    tokyo_morning = datetime(2026, 11, 10, 9, 0, tzinfo=ZoneInfo("Asia/Tokyo"))
+    for departure in (None, tokyo_morning, tokyo_morning + timedelta(hours=5)):
+        await walking.compute(
+            point("A", 35.1, 139.1),
+            point("B", 35.2, 139.2),
+            departure,
+            "FEWER_TRANSFERS",
+            japan=False,
+            travel_mode="walk",
+        )
+    assert google.calls == 1
+
+
+@pytest.mark.asyncio
+async def test_route_cache_buckets_google_transit_and_driving_departures() -> None:
+    provider = CountingProvider()
+    service = RouteService(
+        fakeredis.aioredis.FakeRedis(decode_responses=True),
+        Settings(),
+        google=provider,
+    )
+    origin, destination = point("A", 35.1, 139.1), point("B", 35.2, 139.2)
+    nine = datetime(2026, 11, 10, 9, 0, tzinfo=ZoneInfo("Asia/Tokyo"))
+
+    await service.compute(origin, destination, nine, "FASTEST", japan=False, travel_mode="transit")
+    await service.compute(
+        origin,
+        destination,
+        nine + timedelta(minutes=9),
+        "FASTEST",
+        japan=False,
+        travel_mode="transit",
+    )
+    assert provider.calls == 1
+    await service.compute(
+        origin,
+        destination,
+        nine + timedelta(minutes=10),
+        "FASTEST",
+        japan=False,
+        travel_mode="transit",
+    )
+    assert provider.calls == 2
+
+    # A different mode at the same time is a different request.
+    await service.compute(origin, destination, nine, "FASTEST", japan=False, travel_mode="drive")
+    assert provider.calls == 3
+    await service.compute(
+        origin,
+        destination,
+        nine + timedelta(minutes=14),
+        "FASTEST",
+        japan=False,
+        travel_mode="drive",
+    )
+    assert provider.calls == 3
+    await service.compute(
+        origin,
+        destination,
+        nine + timedelta(minutes=15),
+        "FASTEST",
+        japan=False,
+        travel_mode="drive",
+    )
+    assert provider.calls == 4
+
+
+@pytest.mark.asyncio
 async def test_route_service_converts_provider_exceptions_to_unavailable_options() -> None:
     service = RouteService(
         fakeredis.aioredis.FakeRedis(decode_responses=True),

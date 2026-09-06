@@ -1,4 +1,4 @@
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from types import SimpleNamespace
 from uuid import uuid4
@@ -108,17 +108,20 @@ async def test_background_route_success_persists_and_propagates_time(
     async def fake_records(*_args: object, **_kwargs: object) -> list[object]:
         return []
 
+    persist_kwargs: dict[str, object] = {}
+
     async def fake_persist(
         _session: object,
         _trip_id: object,
         _day_value: object,
         segments: list[RouteSegment],
-        **_kwargs: object,
+        **kwargs: object,
     ) -> None:
         persisted.extend(segments)
+        persist_kwargs.update(kwargs)
 
     async def fake_runtime(_session: object) -> object:
-        return Settings(route_cache_ttl_seconds=300)
+        return Settings(route_cache_ttl_seconds=300, route_segment_ttl_seconds=30 * 86_400)
 
     monkeypatch.setattr(route_tasks, "_items", fake_items)
     monkeypatch.setattr(route_tasks, "get_or_create_day_setting", fake_setting)
@@ -138,7 +141,11 @@ async def test_background_route_success_persists_and_propagates_time(
     assert status["status"] == "complete"
     assert len(persisted) == 1
     assert persisted[0].provider == "google_routes"
+    # Applied segments outlive the short provider-result cache: they are only
+    # invalidated by itinerary edits or the separate segment TTL.
     assert persisted[0].expires_at is not None
+    assert persisted[0].expires_at > datetime.now(UTC) + timedelta(days=29)
+    assert persist_kwargs["ttl_seconds"] == 30 * 86_400
     assert rows[1].start_time == datetime(2026, 11, 10, 1, 22, tzinfo=UTC)
 
 
