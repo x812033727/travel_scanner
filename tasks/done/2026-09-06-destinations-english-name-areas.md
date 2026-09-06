@@ -1,17 +1,19 @@
 ---
 id: 2026-09-06-destinations-english-name-areas
 title: destinations 的 english_name 存繁中、areas 不隨語系
-status: blocked
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-06T13:20:48Z
 created_at: 2026-09-06T09:56:54Z
-completed_at:
+completed_at: 2026-09-06T19:46:01Z
 branch: claude/place-names-i18n
 depends_on: []
 scope:
   - apps/api/app/destinations/localized.py
+  - apps/api/app/places/router.py
+  - apps/api/tests/test_destinations_localized.py
 ---
 
 # destinations 的 english_name 存繁中、areas 不隨語系
@@ -33,7 +35,7 @@ scope:
 ## Definition of done
 
 - [x] `english_name` 是英文：33 筆全部，退回順序改成 CITY_NAMES 的英文名再退回目錄文字。
-- [ ] `/destinations` 的 `areas[]` 依 `X-Travel-Locale` 回該語系，與 `/hotspots/facets` 一致。
+- [x] `/destinations` 的 `areas[]` 依 `X-Travel-Locale` 回該語系，與 `/hotspots/facets` 一致。
 
 ## How to verify
 
@@ -112,3 +114,64 @@ en 與 ko 用 ` & ` 或 `, `。第一次量測拿整串字比對，又只切了 
 - 選項 3 要有人願意花一次人工核對 15 個地名。
 
 擁有者選好之後這張票就能直接做，量測與缺漏清單都已經寫在上面了。我的建議是選項 3。
+
+
+## Result 2（areas 完成，2026-09-07）
+
+做了，而且**沒有動到 zh-TW 的任何一個字**——上面三個選項裡讓我停下來的就是那一點。
+
+### 上面那份量測還是有一個錯
+
+「101 筆五個語系都能逐段對齊」不對：`HOTSPOT_AREAS` 的 `_area()` 根本沒有 zh-CN 參數，
+132 筆裡 zh-CN 一筆都沒有。但這不重要，因為**我原本要比的東西就比錯了**——`area.names`
+不是那份目錄回答問題的方式，`area_name(area, locale)` 才是，而它早就有完整的退回規則：
+
+```
+該語系的名稱 → （zh-CN）SIMPLIFIED_AREA_NAMES 或繁中 → 英文 → 繁中
+```
+
+`/hotspots/facets` 用的就是這支。而這張票的 DoD 寫的是「與 `/hotspots/facets` 一致」，
+不是「五個語系都要有原生名稱」。ja／ko 缺名稱時退回英文，是這個站已經成立的行為，
+不是這張票要修的東西。所以整件事不是翻譯專案，是「改用同一支解析器」。
+
+### 做法
+
+`localized.area_labels(profile, locale)`：把住宿區域字串依 `／ / ・ · & , 、 and` 切段，
+每一段去同城市的座標核可目錄查，取 `area_name()` 的結果；該語系的名稱如果切出同樣的段數，
+就取對應那一段（「澀谷」→ `Shibuya`，不是 `Shibuya & Harajuku`），切法不同就用整個名稱
+（韓文常把兩個區寫成一個詞）。括號裡有連接符的名稱（`Osaka Bay (Tempozan & USJ)`）一律不切。
+
+zh-TW 直接回目錄原文，一個字都不動，所以主要語系的文案零變更。
+
+### 15 筆目錄沒有的，補在 `AREA_NAMES`
+
+`en` 是必填，ja／ko 缺就退回英文（跟 `area_name` 一樣），zh-CN 只列與繁體不同的那些
+（照 `SIMPLIFIED_AREA_NAMES` 的體例：一份差異清單比 60 句重複好審）。逐筆查過來源：
+
+| 地名 | 來源 |
+| --- | --- |
+| 濟州市 → Jeju City／済州市／제주시／济州市 | en.wikipedia `Jeju City` 的跨語言連結 |
+| Silom → 是隆／シーロム | en.wikipedia `Si Lom Road`：zh 是隆路、ja シーロム通り |
+| 中西區 → West Central District／中西区 | en.wikipedia `West Central District`（台南）|
+| 韓屋村 → 한옥마을 | en.wikipedia `Jeonju Hanok Village` → ko 전주한옥마을 |
+| 完山公園 → 완산공원 | ko.wikipedia 완산동條目列出完山公園 |
+| 青葉通 → 青葉通り | ja.wikipedia 仙台市都心部 |
+| 其餘 9 筆 | 已經是拉丁字或已經是日文的標準寫法：Nimman、Klong Muang、Night Bazaar、Riverside、Old Town、Kokubuncho（国分町）、Kamiyacho（紙屋町）、West District、Hai'an Road |
+
+`validate_localized_catalog()` 多一項守門：**每一個住宿區域都必須要嘛對得上核可目錄、
+要嘛在 `AREA_NAMES` 裡有名字**，兩者皆非就讓測試紅掉。以後往目的地目錄加一個新區域，
+不會再默默地在四個語系留下一行繁中。
+
+### 結果
+
+| 語系 | 132 個標籤裡還是繁中的 |
+| --- | --- |
+| en | 0（`Silom` 本來就是拉丁字，不算）|
+| ja | 0——46 個是漢字，那是日文的寫法（新宿、渋谷），不是沒翻 |
+| ko | 0 |
+| zh-CN | 132 個都是漢字（本來就該是），其中 55 個簡繁同形 |
+
+`/destinations`、以及同一支 router 裡兩個推薦端點的 `areas` 都改用它，本來
+`city` 已經本地化而 `areas` 沒有的不一致也一起沒了。
+
+`uv run ruff check .`、`mypy app`、`pytest`（1,153 passed）全綠。

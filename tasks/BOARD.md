@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**1 open · 0 in progress · 3 blocked · 0 in review · 111 done**
+**1 open · 0 in progress · 2 blocked · 0 in review · 112 done**
 
 ## Ready to claim
 
@@ -28,11 +28,11 @@ _Nothing here._
 | Priority | Task | Waiting on |
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
-| P2 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
 
 ## Recently finished
 
+- 2026-09-06 [destinations 的 english_name 存繁中、areas 不隨語系](done/2026-09-06-destinations-english-name-areas.md)
 - 2026-09-06 [未登入的 /account 仍打七次注定 401 的請求](done/2026-09-06-signed-out-account-requests.md)
 - 2026-09-06 [手機版行程頁的浮動元件佔掉三分之一畫面](done/2026-09-06-planner-mobile-chrome.md)
 - 2026-09-06 [後台主題管理畫面：taxonomy 表格與逐景點指派](done/2026-09-06-hotspot-themes-admin-web.md)
@@ -42,4 +42,3 @@ _Nothing here._
 - 2026-09-06 [LINE 綁定關鍵字只認繁體中文，日英韓讀者照著做也綁不上](done/2026-09-06-line-link-keyword-chinese-only.md)
 - 2026-09-06 [美食頁在預設字級下 CLS 0.29，第四秒還在跳版](done/2026-09-06-foods-late-layout-shift.md)
 - 2026-09-06 [未登入開 /account 會同時看到三種互相矛盾的狀態](done/2026-09-06-account-signed-out-states.md)
-- 2026-09-06 [購物行程：規劃器聽得懂店家類型，也知道什麼當季](done/2026-09-06-planner-shop-themes.md)
