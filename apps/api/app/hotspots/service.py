@@ -15,6 +15,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config import Settings
 from app.db import escape_like
 from app.destinations.catalog import DESTINATIONS, destination_for_code, destination_for_id
+from app.destinations.localized import city_name_for, country_label_for
 from app.foods.service import seed_food_catalog
 from app.hotspots.areas import (
     HOTSPOT_AREAS,
@@ -889,9 +890,11 @@ async def list_rankings(
                 "names": names,
                 "destination_id": hotspot.destination_id,
                 "city_code": hotspot.city_code,
-                "city_name": hotspot.city_name,
+                "city_name": city_name_for(hotspot.destination_id, locale, hotspot.city_name),
                 "country_code": hotspot.country_code,
-                "country_name": hotspot.country_name,
+                "country_name": country_label_for(
+                    hotspot.country_code, locale, hotspot.country_name
+                ),
                 "category": hotspot.category,
                 "area": area_payload(area_by_code(hotspot.city_code, hotspot.area_code), locale),
                 "latitude": float(hotspot.latitude) if hotspot.latitude is not None else None,
@@ -1028,14 +1031,18 @@ async def hotspot_facets(session: AsyncSession, locale: Locale = "zh-TW") -> dic
     return {
         "total": sum(int(row.count) for row in countries),
         "countries": [
-            {"code": row.country_code, "name": row.country_name, "count": row.count}
+            {
+                "code": row.country_code,
+                "name": country_label_for(row.country_code, locale, row.country_name),
+                "count": row.count,
+            }
             for row in countries
         ],
         "cities": [
             {
                 "code": row.city_code,
                 "destination_id": row.destination_id,
-                "name": row.city_name,
+                "name": city_name_for(row.destination_id, locale, row.city_name),
                 "country_code": row.country_code,
                 "count": row.count,
                 **_destination_fields(row.destination_id),

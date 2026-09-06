@@ -5,7 +5,7 @@ import binascii
 from collections import Counter, defaultdict
 from collections.abc import Iterable, Mapping
 from datetime import UTC, datetime
-from typing import Any
+from typing import Any, cast
 from uuid import UUID
 
 from sqlalchemy import func, or_, select
@@ -13,12 +13,15 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import escape_like
 from app.destinations.catalog import DESTINATIONS, destination_for_id
+from app.destinations.localized import city_name as localized_city_name
+from app.destinations.localized import english_name
 from app.foods.area_catalog import ALL_AREA_SEEDS
 from app.foods.catalog import COUNTRY_NAMES, FOOD_SEEDS
 from app.foods.category_catalog import CATEGORY_SEEDS
 from app.foods.merchant_catalog import MERCHANT_DIRECT_SOURCE_SEEDS, MERCHANT_SEEDS
 from app.foods.publication import merchant_is_publishable, publishable_merchant_filters
 from app.hotspots.maps import build_map_links, has_exact_map_identity
+from app.i18n import Locale
 from app.localized_names import (
     build_localized_names,
     original_locale_for,
@@ -64,7 +67,7 @@ def _decode_cursor(cursor: str | None) -> int:
     return offset
 
 
-def _destination_item(destination_id: str) -> dict[str, Any]:
+def _destination_item(destination_id: str, locale: Locale = "zh-TW") -> dict[str, Any]:
     profile = destination_for_id(destination_id)
     if profile is None:
         return {"id": destination_id, "name": destination_id, "country_code": None}
@@ -79,9 +82,10 @@ def _destination_item(destination_id: str) -> dict[str, Any]:
     }
     return {
         "id": profile.id,
-        "name": profile.city,
+        # The country label beside this list has always been localized; the city was not.
+        "name": localized_city_name(profile, locale),
         "local_name": profile.local_name,
-        "english_name": profile.english_name,
+        "english_name": english_name(profile),
         "country_code": country_codes[profile.country],
         "role": profile.role,
         "parent_destination_id": profile.parent_destination_id,
@@ -890,7 +894,7 @@ async def food_facets(session: AsyncSession, locale: str = "zh-TW") -> dict[str,
             for code, count in sorted(country_counts.items())
         ],
         "destinations": [
-            {**_destination_item(destination_id), "count": count}
+            {**_destination_item(destination_id, cast(Locale, locale)), "count": count}
             for destination_id, count in sorted(destination_counts.items())
         ],
         "food_kinds": [
@@ -1301,7 +1305,7 @@ async def merchant_cities(session: AsyncSession, *, locale: str) -> dict[str, An
     }
     countries: dict[str, dict[str, Any]] = {}
     for profile in DESTINATIONS:
-        item = _destination_item(profile.id)
+        item = _destination_item(profile.id, cast(Locale, locale))
         code = str(item["country_code"])
         country = countries.setdefault(
             code,

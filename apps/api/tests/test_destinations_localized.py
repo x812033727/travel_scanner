@@ -46,3 +46,39 @@ async def test_catalog_endpoint_uses_the_request_locale() -> None:
     zh = {item["id"]: item for item in default.json()["items"]}
     assert (zh["tokyo"]["city"], zh["tokyo"]["country"]) == ("東京", "日本")
     assert len(by_id) == len(zh) == len(DESTINATIONS)
+
+
+def test_english_name_is_english_for_every_destination() -> None:
+    """The field claimed to hold an English name returned Chinese for 19 of 33 rows."""
+    from app.destinations.localized import english_name
+
+    for profile in DESTINATIONS:
+        assert english_name(profile) != profile.city or profile.city.isascii(), profile.id
+    tokyo = destination_for_id("tokyo")
+    assert tokyo is not None and english_name(tokyo) == "Tokyo"
+    osaka = destination_for_id("osaka-kyoto")
+    assert osaka is not None and english_name(osaka) == "Osaka & Kyoto"
+
+
+def test_place_names_localize_by_id_and_by_country_code() -> None:
+    """Hotspot and merchant rows know an id and an ISO code, never the profile."""
+    from app.destinations.localized import city_name_for, country_label_for
+
+    assert city_name_for("tokyo", "en", "東京") == "Tokyo"
+    assert city_name_for("tokyo", "ko", "東京") == "도쿄"
+    assert city_name_for("tokyo", "zh-CN", "東京") == "东京"
+    assert country_label_for("JP", "en", "日本") == "Japan"
+    assert country_label_for("KR", "zh-CN", "韓國") == "韩国"
+
+    # zh-TW is the catalog's own text, so the stored value is returned untouched.
+    assert city_name_for("tokyo", "zh-TW", "東京") == "東京"
+    assert country_label_for("JP", "zh-TW", "日本") == "日本"
+
+
+def test_an_unknown_place_keeps_its_stored_name_rather_than_becoming_an_id() -> None:
+    from app.destinations.localized import city_name_for, country_label_for
+
+    assert city_name_for("atlantis", "en", "亞特蘭提斯") == "亞特蘭提斯"
+    assert country_label_for("ZZ", "en", "未知國") == "未知國"
+    assert city_name_for(None, "en", "東京") == "東京"
+    assert country_label_for(None, "en", "日本") == "日本"
