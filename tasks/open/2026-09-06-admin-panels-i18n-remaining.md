@@ -19,6 +19,16 @@ scope:
   - apps/web/messages/ko/admin.json
   - apps/web/messages/zh-CN/admin.json
   - apps/web/messages/zh-TW/admin.json
+  - apps/web/app/[locale]/admin/page.tsx
+  - apps/web/app/[locale]/admin/settings/page.tsx
+  - apps/web/app/[locale]/admin/system-settings/page.tsx
+  - apps/web/app/[locale]/admin/hotspots/page.tsx
+  - apps/web/app/[locale]/admin/foods/page.tsx
+  - apps/web/app/[locale]/admin/users/page.tsx
+  - apps/web/app/[locale]/admin/deployments/page.tsx
+  - apps/web/app/[locale]/admin/analytics/page.tsx
+  - apps/web/app/[locale]/admin/usage-settings/page.tsx
+  - apps/web/app/[locale]/admin/layout-settings/page.tsx
 ---
 
 # 後台其餘三個面板文案硬編碼繁中
@@ -46,6 +56,8 @@ scope:
       別用 plural／select）。
 - [ ] `admin.json` 用純文字插入，不要 JSON round-trip（會重排整份檔案、默默吃掉重複鍵）。
 - [ ] 可有可無的說明文字用 `t.has()`（`vitest.setup.tsx` 的 mock 已支援）。
+- [ ] 各後台頁 `page.tsx` 的標題與說明（「系統設定」「API 與供應商設定」「集中管理即時航班…」等）也還是寫死繁中，
+      2026-09-06 部署後在 `/en/admin/*` 看得到；一起搬進 `admin.json`（例如 `pages.<route>.title/description`）。
 - [ ] `usersPanel` 已經有一個物件（帳號面板的部分字串），新鍵併進去，不要另開同名的第二個。
 
 ## How to verify
@@ -61,3 +73,6 @@ cd ../.. && npm run lint:web && npm run typecheck:web && CI=1 node tools/check-i
 包含 `t.has()`、`useLocale()` 格式化日期數字、`FieldOption.label` 可省略改查 catalog 的寫法）與
 `admin-hotspots-panel.tsx`（`hotspotsPanel.*`，`Translator` 型別給 helper 用）。
 所有 `admin-*.tsx` 都在 2026-09-06 補過 optional chaining（`data?.items?.map`），翻譯時不要把那些 `?.` 拿掉。
+
+2026-09-06 補充：值裡要顯示字面大括號時（例如 Travelpayouts 範本說明的 `{destination}`），ICU 要寫成 `'{destination}'`，
+否則 next-intl 會把它當成缺值的參數、整句改顯示鍵名（#210 之後用 use-intl 的 `createTranslator` 掃過 5,265 句才抓到這一句）。
