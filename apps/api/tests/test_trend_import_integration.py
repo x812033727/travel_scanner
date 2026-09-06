@@ -70,7 +70,9 @@ async def test_the_batch_is_reported_dry_applied_once_and_skipped_after() -> Non
         await _clear(session)
         await seed_food_catalog(session)
         assert await _count(session, FoodMerchant) == len(MERCHANT_SEEDS)
-        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == len(ALL_AREA_SEEDS)
+        assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == len(
+            ALL_AREA_SEEDS
+        )
 
     merchants = load_trend_merchants(DEFAULT_FILE)
     expected_new = len(merchants) - 2  # the two Tainan shops the curated catalog already has
@@ -126,9 +128,7 @@ async def test_the_batch_is_reported_dry_applied_once_and_skipped_after() -> Non
                 .order_by(FoodMerchantCategory.display_order)
             )
         ).all()
-        categories = {
-            c.id: c.slug for c in (await session.scalars(select(FoodCategory))).all()
-        }
+        categories = {c.id: c.slug for c in (await session.scalars(select(FoodCategory))).all()}
         assert [(categories[link.category_id], link.is_primary, link.source) for link in links] == [
             ("desserts-sweets", True, "admin"),
             ("cafe-tea", False, "admin"),
@@ -136,9 +136,9 @@ async def test_the_batch_is_reported_dry_applied_once_and_skipped_after() -> Non
         audits = (
             await session.scalars(select(AdminAuditLog).where(AdminAuditLog.action == AUDIT_ACTION))
         ).all()
-        assert [(a.target, a.metadata_json["count"], a.metadata_json["source"]) for a in audits] == [
-            (f"food_merchants:{expected_new}", expected_new, "trend-merchant-sweep")
-        ]
+        assert [
+            (a.target, a.metadata_json["count"], a.metadata_json["source"]) for a in audits
+        ] == [(f"food_merchants:{expected_new}", expected_new, "trend-merchant-sweep")]
 
     # Running the same file again writes nothing and says so per row.
     async with SessionFactory() as session:

@@ -47,7 +47,10 @@ def test_a_valid_row_parses_into_the_shape_production_holds() -> None:
     assert merchant.area_slug == "tokyo-kuramae"
     assert merchant.source_scope == "merchant_website"
     assert merchant.category_slugs == ("desserts-sweets", "cafe-tea")
-    assert merchant.identity == ("tokyo", "ダンデライオン・チョコレート ファクトリー＆カフェ蔵前".casefold())
+    assert merchant.identity == (
+        "tokyo",
+        "ダンデライオン・チョコレート ファクトリー＆カフェ蔵前".casefold(),
+    )
     listing = parse_merchant(_row(source_kind="official_tourism"), row=1)
     assert listing.source_scope == "merchant_listing"
     assert SOURCE_SCOPES == {
@@ -96,7 +99,14 @@ def test_in_file_duplicates_are_refused_on_slug_and_on_identity() -> None:
     with pytest.raises(TrendImportError, match="same destination and local_name"):
         parse_merchants([_row(), _row(slug="tokyo-dandelion-two")])
     # Two different shops in two different cities never collide.
-    assert len(parse_merchants([_row(), _row(destination="seoul", district_key="seongsu", slug="seoul-x")])) == 2
+    assert (
+        len(
+            parse_merchants(
+                [_row(), _row(destination="seoul", district_key="seongsu", slug="seoul-x")]
+            )
+        )
+        == 2
+    )
 
 
 def test_the_committed_batch_is_valid_and_points_at_seeded_areas_and_categories() -> None:
@@ -118,7 +128,9 @@ def test_the_committed_batch_overlaps_the_curated_catalog_by_exactly_two_tainan_
     """Why the importer dedupes on two keys: this is the overlap it met in production."""
     merchants = load_trend_merchants(DEFAULT_FILE)
     catalog_slugs = {seed.slug for seed in MERCHANT_SEEDS}
-    catalog_identity = {(seed.destination_id, seed.local_name.casefold()) for seed in MERCHANT_SEEDS}
+    catalog_identity = {
+        (seed.destination_id, seed.local_name.casefold()) for seed in MERCHANT_SEEDS
+    }
     by_slug = sorted(m.slug for m in merchants if m.slug in catalog_slugs)
     by_name = sorted(
         m.slug for m in merchants if m.slug not in catalog_slugs and m.identity in catalog_identity

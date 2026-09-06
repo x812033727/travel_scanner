@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-trend-import-scripts
 title: 把潮流街區的匯入腳本收進 repo
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T02:57:11Z
 created_at: 2026-09-06T00:52:35Z
-completed_at:
+completed_at: 2026-09-06T03:09:01Z
 branch: claude/foods-data-p1
 depends_on: []
 scope:
@@ -30,20 +30,20 @@ scope:
 
 ## Definition of done
 
-- [ ] 倉庫裡有一個可重跑的匯入路徑，任何人 `python -m app.cli <指令> --file <json> --apply`
+- [x] 倉庫裡有一個可重跑的匯入路徑，任何人 `python -m app.cli <指令> --file <json> --apply`
       就能把同樣格式的店家資料寫進資料庫，且重跑不會產生重複列。
-- [ ] 匯入的資料檔（店家清單）也在倉庫裡，不是散在某台機器上。
-- [ ] 有測試涵蓋去重與拒絕規則，不需要資料庫就能跑。
+- [x] 匯入的資料檔（店家清單）也在倉庫裡，不是散在某台機器上。
+- [x] 有測試涵蓋去重與拒絕規則，不需要資料庫就能跑。
 
 ## Steps
 
-- [ ] 把 scratchpad 的 `import_trend_merchants.py` 整理成 `apps/api/app/foods/trend_import.py`：
+- [x] 把 scratchpad 的 `import_trend_merchants.py` 整理成 `apps/api/app/foods/trend_import.py`：
       解析 → 驗證 → 建立 `FoodMerchant` + `FoodMerchantSource` + `FoodMerchantCategory`。
-- [ ] 在 `apps/api/app/cli.py` 加一個子指令（比照既有的 `import-hotspot-candidates`：
+- [x] 在 `apps/api/app/cli.py` 加一個子指令（比照既有的 `import-hotspot-candidates`：
       `--file` / `--limit` / `--apply`，預設 dry-run）。
-- [ ] 資料檔放進倉庫（建議 `apps/api/app/foods/data/trend_merchants.json`，第 3 張任務會往
+- [x] 資料檔放進倉庫（建議 `apps/api/app/foods/data/trend_merchants.json`，第 3 張任務會往
       這個路徑加新的一批）。
-- [ ] 測試：slug 格式、五語系名稱、https 來源網址、分類 slug 必須存在、
+- [x] 測試：slug 格式、五語系名稱、https 來源網址、分類 slug 必須存在、
       同 slug 與同 `(destination_id, local_name)` 兩種去重、`source_kind` 對應的
       `source_scope`。
 
@@ -61,6 +61,21 @@ docker compose -f docker-compose.prod.yml exec -T api \
 ```
 
 ## Notes
+
+**2026-09-06 完成。** scratchpad 的腳本已經消失，模組是照正式機實際寫入的形狀重建的（查了
+`tokyo-dandelion-chocolate` 這一列與它的來源、分類、稽核列）：`apps/api/app/foods/trend_import.py`
+（`parse_merchant` 驗證 → `parse_merchants` 檔內兩層去重 → `persist_trend_merchants` 對資料庫再做一次兩層去重、
+缺商圈／缺分類會回報而不是崩、`--apply` 才寫入並記一列 `AdminAuditLog`）、`cli.py` 的
+`import-trend-merchants --file --limit --apply`（`--file` 預設就是倉庫裡的資料檔）、
+`apps/api/app/foods/data/trend_merchants.json`（正式機 `/root/trend-merchants.json` 的 101 列，含 slug）、
+`unidecode` 進 `pyproject.toml`（`slug_for()` 只在資料檔沒給 slug 時才用）。
+測試：`tests/test_trend_import.py`（無 DB：13 種壞列各自的拒絕理由、檔內兩種重複、slug 推導、整批 101 列都指向
+`TREND_AREA_SEEDS` 與既有分類、與精選目錄剛好重疊兩家台南店家）；`tests/test_trend_import_integration.py`
+（CI 的 Postgres：seed 後 dry-run 回報 99 would_create + 2 skipped 且零寫入、apply 建 99 列並逐欄比對形狀、
+再 apply 一次全部 skipped 且稽核仍只有一列）。
+
+**已知限制**：正式機那批店家的 `name` 直接是中文名（`name_zh`），沒有英文名，`names_json` 為空，所以英文語系看到的是中文店名；
+模組沿用這個形狀以保持與正式機一致，補英文名是資料工作，不在這張範圍。
 
 **寫進正式機的規則（已驗證可用，照抄即可）**
 

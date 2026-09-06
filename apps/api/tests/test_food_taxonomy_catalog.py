@@ -2,8 +2,7 @@ from collections import Counter
 
 import pytest
 
-from app.destinations.catalog import DESTINATIONS
-from app.destinations.catalog import destination_for_id
+from app.destinations.catalog import DESTINATIONS, destination_for_id
 from app.foods.area_catalog import (
     ALL_AREA_SEEDS,
     AREA_SEEDS,

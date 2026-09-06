@@ -140,9 +140,7 @@ def parse_merchant(raw: Mapping[str, Any], *, row: int) -> TrendMerchant:
         )
     name = _text(raw, "name_zh", row=row) or ""
     local_name = _text(raw, "local_name", row=row) or ""
-    slug = _text(raw, "slug", row=row, required=False) or slug_for(
-        destination_id, name, local_name
-    )
+    slug = _text(raw, "slug", row=row, required=False) or slug_for(destination_id, name, local_name)
     if not SLUG_PATTERN.match(slug) or not slug.startswith(f"{destination_id}-"):
         raise TrendImportError(
             f"row {row}: slug {slug!r} must be lowercase kebab-case and start with "
@@ -271,7 +269,9 @@ async def persist_trend_merchants(
     area_slugs = {merchant.area_slug for merchant in merchants}
     areas = {
         row.slug: row
-        for row in (await session.scalars(select(FoodArea).where(FoodArea.slug.in_(area_slugs)))).all()
+        for row in (
+            await session.scalars(select(FoodArea).where(FoodArea.slug.in_(area_slugs)))
+        ).all()
     }
     categories = {row.slug: row for row in (await session.scalars(select(FoodCategory))).all()}
     existing = (
