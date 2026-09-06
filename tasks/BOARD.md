@@ -5,13 +5,22 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**0 open · 0 in progress · 0 blocked · 0 in review · 0 done**
+**8 open · 0 in progress · 0 blocked · 0 in review · 0 done**
 
 ## Ready to claim
 
 Nothing here is owned, blocked by a dependency, or overlapping active work. Take the top one.
 
-_Nothing here._
+| Priority | Task | Area | Scope |
+| --- | --- | --- | --- |
+| P1 | [Merchant coordinate backlog: 270 of 272 merchants cannot be published](open/2026-09-06-merchant-coordinate-backlog-270-of-272.md) | ops | `apps/api/app/foods/place_matching.py`<br>`apps/api/app/foods/coordinate_queue.py` |
+| P1 | [Most merchants have no first-party page, so nothing can locate them](open/2026-09-06-missing-merchant-sources.md) | api | `apps/api/app/foods/merchant_catalog.py` |
+| P1 | [A failing required check did not stop a merge, and main stayed red](open/2026-09-06-required-checks-block-merge.md) | meta | `.github` |
+| P2 | [Three hotspots hold a quoted review_status that no filter matches](open/2026-09-06-quoted-review-status-rows.md) | api | `apps/api/migrations/versions` |
+| P2 | [Nine merchant citations are dead, unreachable or not HTML](open/2026-09-06-broken-merchant-citations.md) | api | `apps/api/app/foods/merchant_catalog.py` |
+| P2 | [Guide backfill searches one locale, so four locales stay empty](open/2026-09-06-multi-locale-guide-backfill.md) | api | `apps/api/app/hotspots/guides.py` |
+| P2 | [Re-seeding never corrects an existing dish name or summary](open/2026-09-06-seed-localization-reconcile.md) | api | `apps/api/app/foods/service.py` |
+| P3 | [Admin help text tells operators to avoid the model now shipped](open/2026-09-06-stale-gemini-model-help.md) | web | `apps/web/components/admin-settings-panel.tsx` |
 
 ## In progress
 
