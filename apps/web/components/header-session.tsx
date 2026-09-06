@@ -7,22 +7,33 @@ import { usePathname, useRouter } from "@/i18n/navigation";
 import { isLocale } from "@/i18n/routing";
 import { ApiError, api } from "@/lib/api";
 
+/**
+ * What `/auth/me` answers. Every field the page needs lives here rather than in each
+ * component's own copy, because the point of the provider is that one request answers the
+ * question for all of them: a signed-out /account used to send three.
+ */
 export type HeaderUser = {
   id: string;
   email: string;
   is_admin?: boolean;
   preferred_locale?: string;
+  preferred_currency?: string;
+  has_password?: boolean;
+  auth_methods?: string[];
+  identity_count?: number;
 };
 
 type HeaderSessionValue = {
   status: "loading" | "authenticated" | "signed_out" | "unavailable";
   user: HeaderUser | null;
+  setUser: (user: HeaderUser) => void;
   logout: () => Promise<void>;
 };
 
 const HeaderSessionContext = createContext<HeaderSessionValue>({
   status: "loading",
   user: null,
+  setUser: () => undefined,
   logout: async () => undefined,
 });
 
@@ -88,7 +99,7 @@ export function HeaderSessionProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <HeaderSessionContext.Provider value={{ status, user, logout }}>
+    <HeaderSessionContext.Provider value={{ status, user, setUser, logout }}>
       {children}
     </HeaderSessionContext.Provider>
   );

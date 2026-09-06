@@ -4,14 +4,14 @@ import { Check, Copy, History, Link2, LoaderCircle, Unlink } from "lucide-react"
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { useHeaderSession, type HeaderUser } from "@/components/header-session";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
-import { api, ApiError } from "@/lib/api";
+import { api } from "@/lib/api";
 import { loginPath } from "@/lib/navigation";
 import { activeLocale } from "@/lib/locale-format";
 import { featureEnabled } from "@/lib/site-features";
 
 type Provider = "google" | "line" | "apple";
-type Me = { id: string; email: string; has_password?: boolean; auth_methods?: string[]; identity_count?: number };
 type Identity = { id: string; provider: Provider; email?: string | null; linked_at: string; last_login_at?: string | null };
 type ProviderStatus = { providers: Record<Provider, boolean> };
 type Usage = {
@@ -86,14 +86,13 @@ export function AccountPanel() {
   const accountT = useTranslations("account");
   const visibility = useSiteVisibility();
   const dateFormat = new Intl.DateTimeFormat(activeLocale(), { dateStyle: "medium", timeStyle: "short" });
-  const [me, setMe] = useState<Me>();
+  const { status, user: me, setUser: setMe } = useHeaderSession();
   const [usage, setUsage] = useState<Usage>();
   const [history, setHistory] = useState<UsageHistoryItem[]>([]);
   const [nextCursor, setNextCursor] = useState<string>();
   const [historyKind, setHistoryKind] = useState<HistoryKind>("all");
   const [historyBusy, setHistoryBusy] = useState(true);
   const [historyError, setHistoryError] = useState<string>();
-  const [loadError, setLoadError] = useState<{ message: string; status?: number }>();
   const [formError, setFormError] = useState<string>();
   const [done, setDone] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -101,21 +100,26 @@ export function AccountPanel() {
   const [oauthProviders, setOauthProviders] = useState<ProviderStatus>();
   const [identityError, setIdentityError] = useState<string>();
 
+  // Both of these are a signed-in member's own data, so there is nothing to ask
+  // for until the provider says there is a member. Sending them anyway is how a
+  // signed-out /account came to make eight requests that could only ever 401.
   useEffect(() => {
-    api<Me>("/auth/me")
-      .then(setMe)
-      .catch((reason: Error) => setLoadError({ message: reason.message, status: reason instanceof ApiError ? reason.status : undefined }));
+    if (status !== "authenticated") return;
     api<Usage>("/usage")
       .then(setUsage)
       .catch(() => undefined);
     api<Identity[]>("/auth/identities").then(setIdentities).catch(() => undefined);
+  }, [status]);
+
+  // Which providers exist is public, and the answer is the same signed in or out.
+  useEffect(() => {
     api<ProviderStatus>("/auth/oauth/providers").then(setOauthProviders).catch(() => undefined);
   }, []);
 
   async function unlinkIdentity(identity: Identity) {
     setIdentityError(undefined);
     try {
-      const result = await api<{ user: Me }>(`/auth/identities/${identity.id}`, { method: "DELETE" });
+      const result = await api<{ user: HeaderUser }>(`/auth/identities/${identity.id}`, { method: "DELETE" });
       setMe(result.user);
       setIdentities((current) => current.filter((item) => item.id !== identity.id));
     } catch (reason) {
@@ -124,6 +128,7 @@ export function AccountPanel() {
   }
 
   useEffect(() => {
+    if (status !== "authenticated") return;
     api<UsageHistory>(`/usage/history?kind=${historyKind}`)
       .then((result) => {
         setHistory(result.items);
@@ -136,7 +141,7 @@ export function AccountPanel() {
         setHistoryError("目前無法載入使用紀錄，請稍後再試。");
       })
       .finally(() => setHistoryBusy(false));
-  }, [historyKind]);
+  }, [historyKind, status]);
 
   function selectHistoryKind(kind: HistoryKind) {
     if (kind === historyKind) return;
@@ -191,7 +196,7 @@ export function AccountPanel() {
   // A signed-out reader used to get the API's own sentence with a second one
   // glued to it — "請先登入後再繼續，請先登入。" — so say it once, the way the
   // trips and alerts pages already do.
-  if (loadError?.status === 401)
+  if (status === "signed_out")
     return (
       <div className="rounded-2xl border border-[var(--line)] bg-white p-7 text-center">
         <p className="font-semibold">登入後才能查看這裡的內容</p>
@@ -203,9 +208,9 @@ export function AccountPanel() {
         </Link>
       </div>
     );
-  if (loadError)
-    return <p role="alert" className="rounded-xl bg-red-50 p-4 text-red-700">{loadError.message}</p>;
-  if (!me) return <p className="text-[var(--muted)]">正在載入帳號資料…</p>;
+  if (status === "loading") return <p className="text-[var(--muted)]">正在載入帳號資料…</p>;
+  if (!me)
+    return <p role="alert" className="rounded-xl bg-red-50 p-4 text-red-700">目前無法載入帳號資料，請稍後再試。</p>;
   const hasPassword = me.has_password !== false;
   const oauthLinkError = typeof window !== "undefined"
     && new URLSearchParams(window.location.search).has("oauth_error")

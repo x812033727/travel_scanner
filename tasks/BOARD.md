@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**2 open · 0 in progress · 3 blocked · 0 in review · 110 done**
+**1 open · 0 in progress · 3 blocked · 0 in review · 111 done**
 
 ## Ready to claim
 
@@ -14,7 +14,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [後台以外的公開頁沒有頁尾，也沒有隱私權、條款、關於或聯絡的連結](open/2026-09-06-no-footer-legal-links.md) | web | `apps/web/components/site-footer.tsx`<br>`apps/web/components/site-footer.test.tsx`<br>`apps/web/app/[locale]/layout.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
-| P2 | [未登入的 /account 仍打七次注定 401 的請求](open/2026-09-06-signed-out-account-requests.md) | web | `apps/web/components/account-panel.tsx`<br>`apps/web/components/site-header.tsx`<br>`apps/web/components/usage-summary.tsx` |
 
 ## In progress
 
@@ -34,6 +33,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [未登入的 /account 仍打七次注定 401 的請求](done/2026-09-06-signed-out-account-requests.md)
 - 2026-09-06 [手機版行程頁的浮動元件佔掉三分之一畫面](done/2026-09-06-planner-mobile-chrome.md)
 - 2026-09-06 [後台主題管理畫面：taxonomy 表格與逐景點指派](done/2026-09-06-hotspot-themes-admin-web.md)
 - 2026-09-06 [十三個公開頁裡有九個共用同一組 title 與 description](done/2026-09-06-duplicate-page-metadata.md)
@@ -43,4 +43,3 @@ _Nothing here._
 - 2026-09-06 [美食頁在預設字級下 CLS 0.29，第四秒還在跳版](done/2026-09-06-foods-late-layout-shift.md)
 - 2026-09-06 [未登入開 /account 會同時看到三種互相矛盾的狀態](done/2026-09-06-account-signed-out-states.md)
 - 2026-09-06 [購物行程：規劃器聽得懂店家類型，也知道什麼當季](done/2026-09-06-planner-shop-themes.md)
-- 2026-09-06 [價格通知頁的副標與 LINE 卡片在四個語系都是繁中](done/2026-09-06-alerts-hardcoded-zh-tw.md)
