@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-route-cache-time-key
 title: 路線快取 key 依 provider 的時間粒度；DB 路段過期與 Redis TTL 分開
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-fable-5.1
 claimed_at: 2026-09-06T02:45:39Z
 created_at: 2026-09-06T02:45:21Z
-completed_at:
+completed_at: 2026-09-06T05:05:03Z
 branch: claude/route-cache-time-key
 depends_on: []
 scope:
