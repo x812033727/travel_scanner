@@ -1,6 +1,7 @@
 import asyncio
 import os
 from datetime import UTC, date, datetime, timedelta
+from decimal import Decimal
 from uuid import UUID, uuid4
 
 import pytest
@@ -15,12 +16,13 @@ from app.ai.itinerary import (
     AIPlannerCandidate,
     AIPlanningResult,
 )
-from app.auth.service import create_access_token, hash_password
+from app.auth.service import create_access_token, decode_access_token, hash_password
 from app.db import SessionFactory, engine
 from app.infra import get_redis
 from app.main import app
 from app.models import (
     AffiliateClick,
+    FlightOfferRecord,
     SearchJob,
     SearchRequest,
     TripPlaceCandidate,
@@ -30,6 +32,7 @@ from app.models import (
     User,
 )
 from app.providers.live_back_to_back import LiveBackToBackSearch, LiveTripDates
+from app.providers.schemas import FlightOffer, FlightSegment
 from app.search.orchestrator import orchestrate_search
 from app.search.tasks import run_search_job
 from app.trips.routing import RouteSegment, RouteService
@@ -52,7 +55,8 @@ async def _signed_in_headers(label: str) -> dict[str, str]:
 
     The register endpoint is rate limited to 30 per IP per hour and this suite
     already spends most of that budget; a test that only needs *an* account
-    should not also be spending a registration.
+    should not also be spending a registration. The usage account comes with
+    it, as it does on registration, so paid endpoints behave as for a member.
     """
     async with SessionFactory() as session:
         user = User(
@@ -61,6 +65,8 @@ async def _signed_in_headers(label: str) -> dict[str, str]:
             is_active=True,
         )
         session.add(user)
+        await session.flush()
+        await create_usage_account(session, user)
         await session.commit()
         await session.refresh(user)
         return {"Authorization": f"Bearer {create_access_token(user.id, user.auth_version)}"}
@@ -2169,3 +2175,344 @@ async def test_expanding_a_back_to_back_search_answers_409_rather_than_500() -> 
         )
         assert answer.status_code == 409, answer.text
         assert answer.json()["code"] == "search_not_expandable"
+
+
+async def _start_on_fresh_connections() -> None:
+    """Give this test connections made on its own event loop.
+
+    An earlier test in this file hands its connections to a worker thread with its own
+    loop, and every test after that one runs on a loop of its own. A pooled asyncpg
+    connection from a loop that has gone fails its pre-ping with a RuntimeError rather
+    than a disconnect error, so the pool re-raises it instead of replacing the connection.
+    Dropping the pool, and the cached Redis client with it, avoids inheriting either.
+    """
+    await engine.dispose()
+    # Only drop the cached client: closing it would touch the loop it was made on.
+    get_redis.cache_clear()
+
+
+async def _blank_trip(
+    client: AsyncClient, headers: dict[str, str], **overrides: object
+) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "source": "blank",
+        "planning_mode": "manual_blank",
+        "name": "東京自己排",
+        "destination_name": "日本東京",
+        "start_date": "2026-11-10",
+        "end_date": "2026-11-14",
+        "origin_airport": "TPE",
+    }
+    payload.update(overrides)
+    created = await client.post("/api/v1/trips", headers=headers, json=payload)
+    assert created.status_code == 201, created.text
+    return created.json()
+
+
+@pytest.mark.asyncio
+async def test_search_from_trip(monkeypatch: pytest.MonkeyPatch) -> None:
+    """`POST /searches` with a `trip_id` searches what the trip says, for its owner only."""
+    monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", lambda *a, **k: None)
+    await _start_on_fresh_connections()
+    owner = await _signed_in_headers("search-from-trip-owner")
+    other = await _signed_in_headers("search-from-trip-other")
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        trip = await _blank_trip(client, owner, origin_airport="TSA")
+        trip_id = trip["id"]
+
+        criteria = await client.get(f"/api/v1/trips/{trip_id}/search-criteria", headers=owner)
+        assert criteria.status_code == 200
+        body = criteria.json()
+        assert body["issues"] == []
+        assert body["trip"]["name"] == "東京自己排" and body["trip"]["version"] == 1
+        assert body["criteria"]["origin"] == "TSA"
+        assert body["criteria"]["destination"] == "NRT"
+        assert body["criteria"]["departure_date"] == "2026-11-10"
+        assert body["criteria"]["return_date"] == "2026-11-14"
+        assert body["criteria"]["modules"] == ["flight"]
+        assert body["criteria"]["trip_id"] == trip_id
+        assert body["origin_options"] == ["TPE", "TSA", "KHH"]
+
+        accepted = await client.post(
+            "/api/v1/searches",
+            headers={**owner, "Idempotency-Key": f"trip-search-{uuid4()}"},
+            json={"trip_id": trip_id, "modules": ["flight"]},
+        )
+        assert accepted.status_code == 202, accepted.text
+        stored = await client.get(f"/api/v1/searches/{accepted.json()['search_id']}", headers=owner)
+        request = stored.json()["request"]
+        assert request["trip_id"] == trip_id
+        assert (request["origin"], request["destination"]) == ("TSA", "NRT")
+        assert (request["departure_date"], request["return_date"]) == ("2026-11-10", "2026-11-14")
+        assert request["travelers"]["adults"] == 1
+        # A flight-only search from a trip is charged as an ordinary search.
+        assert accepted.json()["usage"]["uses"] == 1
+
+        foreign = await client.post(
+            "/api/v1/searches",
+            headers={**other, "Idempotency-Key": f"trip-search-{uuid4()}"},
+            json={"trip_id": trip_id, "modules": ["flight"]},
+        )
+        assert foreign.status_code == 404 and foreign.json()["code"] == "trip_not_found"
+        assert (
+            await client.get(f"/api/v1/trips/{trip_id}/search-criteria", headers=other)
+        ).status_code == 404
+
+        # A trip created without a home airport: the gap is named, not guessed.
+        airportless = await _blank_trip(client, other, origin_airport=None, name="沒有出發地")
+        gaps = await client.get(f"/api/v1/trips/{airportless['id']}/search-criteria", headers=other)
+        assert [issue["code"] for issue in gaps.json()["issues"]] == ["trip_origin_required"]
+        assert gaps.json()["criteria"]["origin"] is None
+        assert gaps.json()["criteria"]["destination"] == "NRT"
+        refused = await client.post(
+            "/api/v1/searches",
+            headers={**other, "Idempotency-Key": f"trip-search-{uuid4()}"},
+            json={"trip_id": airportless["id"], "modules": ["flight"]},
+        )
+        assert refused.status_code == 422 and refused.json()["code"] == "trip_origin_required"
+        usage = await client.get("/api/v1/usage", headers=other)
+        assert usage.json()["reserved_uses"] == 0
+
+        # The search page writes the answer back through PATCH and the trip is searchable.
+        patched = await client.patch(
+            f"/api/v1/trips/{airportless['id']}",
+            headers=other,
+            json={"version": airportless["version"], "origin_airport": "khh"},
+        )
+        assert patched.status_code == 200, patched.text
+        assert patched.json()["data"]["origin_airport"] == "KHH"
+        assert patched.json()["version"] == airportless["version"] + 1
+        ready = await client.get(
+            f"/api/v1/trips/{airportless['id']}/search-criteria", headers=other
+        )
+        assert ready.json()["issues"] == [] and ready.json()["criteria"]["origin"] == "KHH"
+        # An explicit field on the request still wins over the trip.
+        pinned = await client.post(
+            "/api/v1/searches",
+            headers={**other, "Idempotency-Key": f"trip-search-{uuid4()}"},
+            json={"trip_id": airportless["id"], "modules": ["flight"], "origin": "TPE"},
+        )
+        assert pinned.status_code == 202, pinned.text
+        pinned_request = (
+            await client.get(f"/api/v1/searches/{pinned.json()['search_id']}", headers=other)
+        ).json()["request"]
+        assert pinned_request["origin"] == "TPE" and pinned_request["trip_id"] == airportless["id"]
+
+
+def _quoted_flight(
+    offer_id: UUID,
+    *,
+    departure: str = "2026-11-10T08:50:00+08:00",
+    return_departure: str | None = "2026-11-14T14:20:00+09:00",
+) -> FlightOffer:
+    now = datetime.now(UTC)
+    depart_at = datetime.fromisoformat(departure)
+    segments = [
+        FlightSegment(
+            origin="TPE",
+            destination="NRT",
+            departure_time=depart_at,
+            arrival_time=depart_at + timedelta(hours=3, minutes=20),
+            airline="長榮航空",
+            flight_number="BR198",
+            leg_index=0,
+            departure_timezone="Asia/Taipei",
+            arrival_timezone="Asia/Tokyo",
+        )
+    ]
+    return_at = datetime.fromisoformat(return_departure) if return_departure else None
+    if return_at is not None:
+        segments.append(
+            FlightSegment(
+                origin="NRT",
+                destination="TPE",
+                departure_time=return_at,
+                arrival_time=return_at + timedelta(hours=3, minutes=50),
+                airline="長榮航空",
+                flight_number="BR197",
+                leg_index=1,
+                departure_timezone="Asia/Tokyo",
+                arrival_timezone="Asia/Taipei",
+            )
+        )
+    return FlightOffer(
+        id=offer_id,
+        provider="amadeus",
+        provider_offer_id=f"AMA-{offer_id.hex[:8]}",
+        retrieved_at=now,
+        expires_at=now + timedelta(hours=6),
+        source_mode="test",
+        is_mock=False,
+        is_bookable=True,
+        origin="TPE",
+        destination="NRT",
+        departure_time=segments[0].departure_time,
+        arrival_time=segments[0].arrival_time,
+        duration_minutes=200,
+        segments=segments,
+        airline="長榮航空",
+        flight_number="BR198",
+        base_price=Decimal("9000"),
+        taxes=Decimal("2000"),
+        fees=Decimal("500"),
+        baggage_price=Decimal(0),
+        total_price=Decimal("11500"),
+        carry_on=True,
+        checked_baggage_kg=23,
+        refundable=False,
+        changeable=True,
+        return_departure_time=return_at,
+        return_arrival_time=segments[1].arrival_time if return_at is not None else None,
+    )
+
+
+async def _store_offer(email_label: str, headers: dict[str, str], offer: FlightOffer) -> None:
+    """Persist an offer the way the orchestrator does, under a search of this member."""
+    async with SessionFactory() as session:
+        token = headers["Authorization"].removeprefix("Bearer ")
+        user_id = decode_access_token(token)
+        search = SearchRequest(
+            user_id=user_id,
+            status="completed",
+            progress=100,
+            operation="travel_search",
+            request_json={
+                "trip_type": "round_trip",
+                "origin": "TPE",
+                "destination": "NRT",
+                "departure_date": "2026-11-10",
+                "return_date": "2026-11-14",
+                "modules": ["flight"],
+            },
+            result_json={"plans": [], "modules": {"flight": [offer.model_dump(mode="json")]}},
+        )
+        session.add(search)
+        await session.flush()
+        session.add(
+            FlightOfferRecord(
+                search_id=search.id,
+                provider=offer.provider,
+                provider_offer_id=offer.provider_offer_id,
+                public_offer_id=offer.id,
+                data=offer.model_dump(mode="json"),
+                total_price=offer.total_price,
+                currency=offer.currency,
+                expires_at=offer.expires_at,
+            )
+        )
+        await session.commit()
+
+
+@pytest.mark.asyncio
+async def test_flight_anchor_from_offer(monkeypatch: pytest.MonkeyPatch) -> None:
+    """An anchor filled from an offer keeps the quote; a foreign or mismatched offer is refused."""
+    monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", lambda *a, **k: None)
+    await _start_on_fresh_connections()
+    owner = await _signed_in_headers("from-offer-owner")
+    other = await _signed_in_headers("from-offer-other")
+    round_trip, one_way, wrong_day = uuid4(), uuid4(), uuid4()
+    await _store_offer("from-offer-owner", owner, _quoted_flight(round_trip))
+    await _store_offer("from-offer-owner", owner, _quoted_flight(one_way, return_departure=None))
+    await _store_offer(
+        "from-offer-owner",
+        owner,
+        _quoted_flight(wrong_day, departure="2026-11-11T08:50:00+08:00"),
+    )
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        trip = await _blank_trip(client, owner)
+        trip_id, version = trip["id"], trip["version"]
+
+        def anchor(body: dict[str, object], role: str) -> dict[str, object]:
+            items = body["items"]
+            assert isinstance(items, list)
+            return next(item for item in items if item["system_role"] == role)
+
+        outbound = await client.post(
+            f"/api/v1/trips/{trip_id}/flight-anchors/outbound/from-offer",
+            headers=owner,
+            json={"version": version, "offer_id": str(round_trip)},
+        )
+        assert outbound.status_code == 200, outbound.text
+        body = outbound.json()
+        item = anchor(body, "outbound_flight")
+        assert item["offer_id"] == str(round_trip)
+        assert item["title"] == "長榮航空 BR198"
+        assert item["data"]["flight_selection_source"] == "offer"
+        assert item["data"]["flight_info"]["departure_local"] == "2026-11-10T08:50"
+        assert item["data"]["price_snapshot"]["total_price"] == "11500"
+        assert item["data"]["price_snapshot"]["provider"] == "amadeus"
+        assert body["pricing"]["quoted_total"] == "11500"
+        assert body["version"] == version + 1
+
+        # The stale version is refused; nothing was written.
+        stale = await client.post(
+            f"/api/v1/trips/{trip_id}/flight-anchors/return/from-offer",
+            headers=owner,
+            json={"version": version, "offer_id": str(round_trip)},
+        )
+        assert stale.status_code == 409 and stale.json()["code"] == "trip_version_conflict"
+
+        returning = await client.post(
+            f"/api/v1/trips/{trip_id}/flight-anchors/return/from-offer",
+            headers=owner,
+            json={"version": body["version"], "offer_id": str(round_trip)},
+        )
+        assert returning.status_code == 200, returning.text
+        body = returning.json()
+        back = anchor(body, "return_flight")
+        assert back["offer_id"] == str(round_trip)
+        assert back["title"] == "長榮航空 BR197"
+        assert back["data"]["flight_info"]["departure_local"] == "2026-11-14T14:20"
+        # One round-trip offer on two anchors is one quote, not two.
+        assert body["pricing"]["quoted_total"] == "11500"
+        assert [entry["counted"] for entry in body["pricing"]["items"]] == [True, False]
+
+        no_return = await client.post(
+            f"/api/v1/trips/{trip_id}/flight-anchors/return/from-offer",
+            headers=owner,
+            json={"version": body["version"], "offer_id": str(one_way)},
+        )
+        assert no_return.status_code == 422
+        assert no_return.json()["code"] == "offer_return_leg_missing"
+
+        mismatched = await client.post(
+            f"/api/v1/trips/{trip_id}/flight-anchors/outbound/from-offer",
+            headers=owner,
+            json={"version": body["version"], "offer_id": str(wrong_day)},
+        )
+        assert mismatched.status_code == 422
+        assert mismatched.json()["code"] == "offer_dates_mismatch"
+
+        # Another member cannot pull this offer into their own trip.
+        theirs = await _blank_trip(client, other, name="別人的旅程")
+        foreign = await client.post(
+            f"/api/v1/trips/{theirs['id']}/flight-anchors/outbound/from-offer",
+            headers=other,
+            json={"version": theirs["version"], "offer_id": str(round_trip)},
+        )
+        assert foreign.status_code == 404 and foreign.json()["code"] == "offer_not_found"
+
+        # Typing a flight by hand over the quoted one drops the quote with it.
+        typed = await client.put(
+            f"/api/v1/trips/{trip_id}/flight-anchors/outbound",
+            headers=owner,
+            json={
+                "version": body["version"],
+                "flight": {
+                    "airline": "星宇航空",
+                    "flight_number": "JX800",
+                    "origin": "TPE",
+                    "destination": "NRT",
+                    "departure_local": "2026-11-10T09:30",
+                    "arrival_local": "2026-11-10T13:40",
+                },
+            },
+        )
+        assert typed.status_code == 200, typed.text
+        retyped = anchor(typed.json(), "outbound_flight")
+        assert retyped["offer_id"] is None
+        assert "price_snapshot" not in retyped["data"]
+        # The return anchor still carries the offer, so the quote stays on the trip once.
+        assert typed.json()["pricing"]["quoted_total"] == "11500"
