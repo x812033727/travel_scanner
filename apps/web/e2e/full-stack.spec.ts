@@ -8,6 +8,19 @@ async function pickTripDay(page: Page, iso: string) {
   // fixed furniture at both edges of the viewport, so let the page settle and put the
   // button in the middle of the screen before aiming at it.
   await page.waitForLoadState("networkidle").catch(() => {});
+  console.log("DIAGNOSTIC", JSON.stringify(await page.evaluate(() => {
+    const docWidth = document.documentElement.clientWidth;
+    const wide = [...document.querySelectorAll("*")]
+      .map((element) => ({
+        right: Math.round(element.getBoundingClientRect().right),
+        tag: element.tagName,
+        cls: String((element as HTMLElement).className || "").slice(0, 70),
+      }))
+      .filter((entry) => entry.right > docWidth + 1)
+      .sort((a, b) => b.right - a.right)
+      .slice(0, 4);
+    return { docWidth, innerWidth: window.innerWidth, scrollWidth: document.body.scrollWidth, wide };
+  })));
   for (let attempt = 0; attempt < 24 && (await day.count()) === 0; attempt += 1) {
     await nextMonth.evaluate((element) => element.scrollIntoView({ block: "center" }));
     await nextMonth.click();

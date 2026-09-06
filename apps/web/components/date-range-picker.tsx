@@ -151,6 +151,6 @@ export function DateRangePicker({ start, end, today, maxDays, countries = holida
       <p id={statusId} role="status" className="text-sm text-[var(--muted)]">{status}</p>
       <button type="button" onClick={clear} disabled={!start && !end} className="shrink-0 text-sm font-semibold text-[var(--teal)] disabled:opacity-40">{t("clear")}</button>
     </div>
-    {attributions.length > 0 && <p className="mt-2 break-words text-[11px] leading-4 text-[var(--muted)]">{attributions.join(" ")}</p>}
+    {attributions.length > 0 && <p className="mt-2 break-all text-[11px] leading-4 text-[var(--muted)]">{attributions.join(" ")}</p>}
   </div>;
 }
