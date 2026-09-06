@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { preserveRequestId } from "./request-id";
-import { renewedSession } from "./route";
+import { renewedSession, upstreamLocale } from "./route";
 
 describe("travel BFF request tracing", () => {
   it("preserves the API request ID on the browser response", () => {
@@ -46,5 +46,22 @@ describe("travel BFF session renewal", () => {
 
   it("reports nothing when the session was not renewed", () => {
     expect(renewedSession(new Response("{}"))).toBeNull();
+  });
+});
+
+describe("travel BFF upstream locale", () => {
+  it("answers in the locale of the page the browser is showing", () => {
+    expect(upstreamLocale("en", "zh-TW")).toBe("en");
+    expect(upstreamLocale("ja", undefined)).toBe("ja");
+  });
+
+  it("falls back to the preference remembered at sign-in, then to the catalog language", () => {
+    expect(upstreamLocale(null, "ko")).toBe("ko");
+    expect(upstreamLocale(undefined, undefined)).toBe("zh-TW");
+  });
+
+  it("ignores values that are not site locales", () => {
+    expect(upstreamLocale("fr", "ja")).toBe("ja");
+    expect(upstreamLocale("../etc", "zh-CN; drop")).toBe("zh-TW");
   });
 });

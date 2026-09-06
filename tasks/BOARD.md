@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**14 open · 0 in progress · 1 blocked · 0 in review · 52 done**
+**15 open · 0 in progress · 1 blocked · 0 in review · 52 done**
 
 ## Ready to claim
 
@@ -27,6 +27,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [行程狀態標籤與封面圖](open/2026-09-06-trip-status-and-cover.md) | api | `apps/api/app/trips/metadata.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-meta-editor.tsx` |
 | P3 | [Measure the flood before widening ALLOWED_TYPES with temple, shrine and museum types](open/2026-09-06-measure-the-flood-before-widening-allowed.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/tests/test_hotspot_discovery.py` |
 | P3 | [後台其餘三個面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n-remaining.md) | web | `apps/web/components/admin-hotspot-places-panel.tsx`<br>`apps/web/components/admin-deployments-panel.tsx`<br>`apps/web/components/admin-users-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/app/[locale]/admin/page.tsx`<br>`apps/web/app/[locale]/admin/settings/page.tsx`<br>`apps/web/app/[locale]/admin/system-settings/page.tsx`<br>`apps/web/app/[locale]/admin/hotspots/page.tsx`<br>`apps/web/app/[locale]/admin/foods/page.tsx`<br>`apps/web/app/[locale]/admin/users/page.tsx`<br>`apps/web/app/[locale]/admin/deployments/page.tsx`<br>`apps/web/app/[locale]/admin/analytics/page.tsx`<br>`apps/web/app/[locale]/admin/usage-settings/page.tsx`<br>`apps/web/app/[locale]/admin/layout-settings/page.tsx` |
+| P3 | [美食與景點頁的國家／城市名稱在 en／ja／ko 仍是繁中](open/2026-09-06-food-hotspot-place-names-i18n.md) | api | `apps/api/app/foods/router.py`<br>`apps/api/app/foods/service.py`<br>`apps/api/app/foods/area_catalog.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/api/app/localized_names.py`<br>`apps/api/app/destinations/localized.py` |
 
 ## In progress
 
