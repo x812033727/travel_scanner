@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**45 open · 3 in progress · 0 blocked · 0 in review · 3 done**
+**45 open · 0 in progress · 0 blocked · 0 in review · 6 done**
 
 ## Ready to claim
 
@@ -58,11 +58,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [A failing required check did not stop a merge, and main stayed red](open/2026-09-06-required-checks-block-merge.md) | claude-fable-5-1 | 2026-09-06T02:29:37Z | `claude/ci-guards` |
-| [遷移裡的補資料分支在 CI 是死碼](open/2026-09-06-migration-backfill-untested.md) | claude-fable-5-1 | 2026-09-06T02:29:37Z | `claude/ci-guards` |
-| [CI should fail a branch that adds a second alembic head](open/2026-09-06-ci-should-fail-a-branch-that.md) | claude-fable-5-1 | 2026-09-06T02:29:36Z | `claude/ci-guards` |
+_Nothing here._
 
 ## In review
 
@@ -78,6 +74,9 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [CI should fail a branch that adds a second alembic head](done/2026-09-06-ci-should-fail-a-branch-that.md)
+- 2026-09-06 [遷移裡的補資料分支在 CI 是死碼](done/2026-09-06-migration-backfill-untested.md)
+- 2026-09-06 [A failing required check did not stop a merge, and main stayed red](done/2026-09-06-required-checks-block-merge.md)
 - 2026-09-06 [repo 沒有 .gitattributes，CRLF 混入造成整檔衝突](done/2026-09-06-gitattributes-line-endings.md)
 - 2026-09-06 [npm audit 排在 CI 前段，網路不穩就擋掉整輪](done/2026-09-06-npm-audit-ci-position.md)
 - 2026-09-06 [剩下的規劃流程增量：營業時間感知、匯入、匯出、分享](done/2026-09-06-planning-flow-remaining-increments.md)
