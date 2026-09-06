@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**6 open · 4 in progress · 2 blocked · 0 in review · 123 done**
+**5 open · 4 in progress · 2 blocked · 0 in review · 124 done**
 
 ## Ready to claim
 
@@ -14,7 +14,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
-| P2 | [台南兩家不同的店共用 tainan-fu-sheng-hao 這個 slug，富盛號永遠匯不進來](open/2026-09-06-tainan-slug-collision.md) | api | `apps/api/app/foods/data/trend_merchants.json`<br>`apps/api/app/foods/merchant_catalog.py`<br>`apps/api/tests/test_trend_import.py` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
@@ -42,6 +41,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [台南兩家不同的店共用 tainan-fu-sheng-hao 這個 slug，富盛號永遠匯不進來](done/2026-09-06-tainan-slug-collision.md)
 - 2026-09-06 [撤回 name_en 之後，既有的列還留著沒有出處的音譯](done/2026-09-06-reset-drifted-merchant-names.md)
 - 2026-09-06 [15 個店家英文名是手寫音譯，查不到出處](done/2026-09-06-merchant-english-names-unsourced.md)
 - 2026-09-06 [已匯入的店家沒有拿到資料檔後來補上的英文名](done/2026-09-06-backfill-merchant-english-names.md)
@@ -51,4 +51,3 @@ _Nothing here._
 - 2026-09-06 [出錯時，非繁中讀者拿到的是同一句通用訊息](done/2026-09-06-api-error-details-untranslated.md)
 - 2026-09-06 [搜尋頁的供應商徽章在五個語系都印出 API 的繁中句子](done/2026-09-06-search-provider-badge-chinese.md)
 - 2026-09-06 [e2e 只守住預設字級的六個頁面，守不住大字模式與 320px](done/2026-09-06-readability-guard-widen.md)
-- 2026-09-06 [AI 起草景點介紹：產生工作、防護與後台觸發](done/2026-09-06-intro-generation.md)
