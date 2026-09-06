@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**10 open · 4 in progress · 2 blocked · 0 in review · 95 done**
+**10 open · 3 in progress · 3 blocked · 0 in review · 95 done**
 
 ## Ready to claim
 
@@ -29,7 +29,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [公開頁精簡：景點卡動作分層、首頁膠囊溢出、排行榜第一屏](open/2026-09-06-simplify-public-cards.md) | claude-opus-5 | 2026-09-06T16:34:13Z | `claude/ux-simplify-public-2` |
 | [上線後查核抓到的六個問題（大字閃爍、焦點掉回 body、標點與複數）](open/2026-09-06-post-deploy-verification-fixes.md) | claude-opus-5 | 2026-09-07T01:20:00Z | `claude/ux-simplify-public-2` |
-| [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | claude-opus-5 | 2026-09-06T13:20:48Z | `claude/place-names-i18n` |
 | [行程天氣面板在日期超出預報範圍時仍列出 10 天無關天氣](open/2026-09-06-trip-weather-out-of-range.md) | claude-opus-5 | 2026-09-06T16:34:15Z | `claude/ux-simplify-public-2` |
 
 ## In review
@@ -41,6 +40,7 @@ _Nothing here._
 | Priority | Task | Waiting on |
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
+| P2 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
 | P1 | [後台以外的公開頁沒有頁尾，也沒有隱私權、條款、關於或聯絡的連結](open/2026-09-06-no-footer-legal-links.md) | active work in the same scope |
 
