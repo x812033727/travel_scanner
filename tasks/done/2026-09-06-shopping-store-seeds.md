@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-shopping-store-seeds
 title: 專門的購物店家：新增經過座標核實的購物景點種子
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-06T20:01:33Z
 created_at: 2026-09-06T20:01:22Z
-completed_at:
+completed_at: 2026-09-06T21:26:27Z
 branch: claude/shopping-store-seeds
 depends_on: []
 scope:
@@ -52,7 +52,9 @@ scope:
       `test_hotspot_themes_integration.py` 的「沒人掛的主題」改用 ski（Tokyo 沒有雪山），
       並加一條「每個主題的 facet count 都 > 0」。
 - [x] `docs/hotspot-themes.md` 記下這個檔與它的座標規矩。
-- [ ] 剩下 15 個候選——**另開任務** `2026-09-06-shopping-seeds-second-batch`。
+
+剩下的 15 個候選不在這張任務裡：它們查不到會說出店名的公開座標來源，留在
+`2026-09-06-shopping-seeds-second-batch`，連每一個查法為什麼失敗都記著。
 
 ## How to verify
 
@@ -88,4 +90,3 @@ cd apps/api && uv run python -c "from app.hotspots.themes import SEED_LINK_PAIRS
   於是那兩個測試紅了。改用 ski（Tokyo 沒有雪山）當空集合的例子，並順手把「每個主題都至少有一筆」
   寫成 facets 的斷言：chip 點下去是空白頁，本來就該被測試擋下來。**只有 CI 跑得到這兩個測試**
   （`RUN_INTEGRATION_TESTS=1` + Postgres），本機不會紅。
-
