@@ -18,6 +18,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
 from app.ai.itinerary import (
+    PLANNER_WARNING_PLACES_NEED_REVIEW,
+    PLANNER_WARNING_PLACES_UNCONFIRMED,
     AIItineraryPlanner,
     AIItineraryRequest,
     AIPlannerCandidate,
@@ -1515,11 +1517,11 @@ async def _enrich_ai_places(
             outcomes = await asyncio.gather(*(resolve(item) for item in suggestions))
     except (TimeoutError, httpx.HTTPError):
         planning.planning.status = "partial"
-        planning.planning.warnings.append("部分 AI 地點未能在等待時間內完成確認")
+        planning.planning.warnings.append(PLANNER_WARNING_PLACES_UNCONFIRMED)
         return
     if outcomes and not all(outcomes):
         planning.planning.status = "partial"
-        planning.planning.warnings.append("部分 AI 地點仍需由使用者確認")
+        planning.planning.warnings.append(PLANNER_WARNING_PLACES_NEED_REVIEW)
 
 
 async def reproject_saved_times(

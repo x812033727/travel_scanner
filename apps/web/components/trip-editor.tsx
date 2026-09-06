@@ -157,6 +157,32 @@ function durationSummary(minutes: number, te: Te) {
     : te("durationHours", { hours });
 }
 
+// The API sends planner warnings as stable codes, not sentences, because they are stored
+// with the trip and read back whenever it is opened — a sentence written at planning time
+// would keep showing in the language of whoever planned it. Codes are translated here, in
+// the reader's language, however long after the fact.
+//
+// "planner_blank_slots:3" carries its count after a colon. Anything not on this list falls
+// back to a generic line, which is what keeps the old Traditional Chinese sentences already
+// stored on existing trips (and any code a newer API adds) from reaching a reader raw.
+const PLANNER_WARNING_CODES = new Set([
+  "planner_partial_days",
+  "planner_provider_failed",
+  "planner_timed_out",
+  "planner_fallback_used",
+  "planner_blank_slots",
+  "planner_places_unconfirmed",
+  "planner_places_need_review",
+]);
+
+function plannerWarningText(warning: string, te: Te) {
+  const separator = warning.indexOf(":");
+  const code = separator === -1 ? warning : warning.slice(0, separator);
+  if (!PLANNER_WARNING_CODES.has(code)) return te("plannerWarning.unknown");
+  const count = separator === -1 ? 0 : Number.parseInt(warning.slice(separator + 1), 10);
+  return te(`plannerWarning.${code}`, { count: Number.isFinite(count) ? count : 0 });
+}
+
 function aiProviderLabel(provider: "openai" | "anthropic" | "minimax" | "catalog" | undefined, te: Te) {
   if (provider === "minimax") return "MiniMax";
   if (provider === "openai") return "OpenAI";
@@ -1577,7 +1603,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       </div>
     </section>
     {saveState === "conflict" && <div role="alert" className="mb-4 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><p className="font-semibold">{te("conflictTitle")}</p><p className="mt-1 leading-6">{te("conflictBody")}</p><div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={() => void loadCloudVersion()} disabled={busy("conflict")} className="flex min-h-11 items-center gap-2 rounded-xl border border-amber-300 bg-white px-4 font-semibold disabled:opacity-50">{busy("conflict") && <Loader2 size={15} className="animate-spin" />}{te("loadCloud")}</button><button type="button" onClick={() => setConfirmAction("overwrite-conflict")} disabled={busy("conflict")} className="min-h-11 rounded-xl bg-amber-900 px-4 font-semibold text-white disabled:opacity-50">{te("keepLocal")}</button></div></div>}
-    {trip.planning && <section aria-label={te("aiStatusLabel")} className={`mb-4 flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm ${trip.planning.readiness === "partial" || trip.planning.readiness === "needs_setup" || trip.planning.status === "fallback" ? "border-amber-200 bg-amber-50 text-amber-950" : "border-violet-200 bg-violet-50 text-violet-950"}`}><span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/80"><Sparkles size={16} /></span><div className="min-w-0 flex-1"><p className="font-semibold">{trip.planning.readiness === "needs_setup" ? te("aiNeedsSetup") : trip.planning.status === "fallback" ? te("aiFallbackApplied") : trip.planning.readiness === "partial" ? te("aiPartialApplied") : te("aiApplied", { provider: aiProviderLabel(trip.planning.provider, te) })}</p><p className="mt-0.5 text-xs leading-5 opacity-75">{te("lastPlannedNote", { scope: trip.planning.scope === "day" && trip.planning.day_date ? te("lastPlannedDay", { day: trip.planning.day_date }) : te("lastPlannedTrip") })}</p>{trip.planning.warnings.length > 0 && <ul aria-label={te("aiWarningsLabel")} className="mt-2 grid gap-1 text-xs leading-5">{trip.planning.warnings.map((warning, index) => <li key={`${index}-${warning}`} className="flex gap-1.5"><TriangleAlert size={13} className="mt-0.5 shrink-0" aria-hidden />{warning}</li>)}</ul>}{(trip.planning.unscheduled_slots || []).length > 0 && <div className="mt-2.5"><p className="text-xs font-semibold">{te("unscheduledSlots")}</p><div className="mt-1.5 flex flex-wrap gap-1.5">{(trip.planning.unscheduled_slots || []).map((slot, index) => <button key={`${slot.date}-${slot.slot}-${index}`} type="button" onClick={() => setActiveDay(slot.date)} className="min-h-8 rounded-full border border-amber-300 bg-white/75 px-2.5 py-1 text-xs font-semibold">{slot.date.slice(5).replace("-", "/")} {te(`slot.${slot.slot}`)}</button>)}</div></div>}</div><button type="button" onClick={() => openAIPlanner(activeDay ? "day" : "trip")} className="min-h-10 shrink-0 rounded-xl bg-white/80 px-3 text-xs font-bold">{te("replan")}</button></section>}
+    {trip.planning && <section aria-label={te("aiStatusLabel")} className={`mb-4 flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm ${trip.planning.readiness === "partial" || trip.planning.readiness === "needs_setup" || trip.planning.status === "fallback" ? "border-amber-200 bg-amber-50 text-amber-950" : "border-violet-200 bg-violet-50 text-violet-950"}`}><span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/80"><Sparkles size={16} /></span><div className="min-w-0 flex-1"><p className="font-semibold">{trip.planning.readiness === "needs_setup" ? te("aiNeedsSetup") : trip.planning.status === "fallback" ? te("aiFallbackApplied") : trip.planning.readiness === "partial" ? te("aiPartialApplied") : te("aiApplied", { provider: aiProviderLabel(trip.planning.provider, te) })}</p><p className="mt-0.5 text-xs leading-5 opacity-75">{te("lastPlannedNote", { scope: trip.planning.scope === "day" && trip.planning.day_date ? te("lastPlannedDay", { day: trip.planning.day_date }) : te("lastPlannedTrip") })}</p>{trip.planning.warnings.length > 0 && <ul aria-label={te("aiWarningsLabel")} className="mt-2 grid gap-1 text-xs leading-5">{trip.planning.warnings.map((warning, index) => <li key={`${index}-${warning}`} className="flex gap-1.5"><TriangleAlert size={13} className="mt-0.5 shrink-0" aria-hidden />{plannerWarningText(warning, te)}</li>)}</ul>}{(trip.planning.unscheduled_slots || []).length > 0 && <div className="mt-2.5"><p className="text-xs font-semibold">{te("unscheduledSlots")}</p><div className="mt-1.5 flex flex-wrap gap-1.5">{(trip.planning.unscheduled_slots || []).map((slot, index) => <button key={`${slot.date}-${slot.slot}-${index}`} type="button" onClick={() => setActiveDay(slot.date)} className="min-h-8 rounded-full border border-amber-300 bg-white/75 px-2.5 py-1 text-xs font-semibold">{slot.date.slice(5).replace("-", "/")} {te(`slot.${slot.slot}`)}</button>)}</div></div>}</div><button type="button" onClick={() => openAIPlanner(activeDay ? "day" : "trip")} className="min-h-10 shrink-0 rounded-xl bg-white/80 px-3 text-xs font-bold">{te("replan")}</button></section>}
 
     {trip.routing && ["queued", "processing"].includes(trip.routing.status) && <section aria-live="polite" className="mb-4 flex items-center gap-3 rounded-2xl border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-950"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white"><Loader2 size={18} className="animate-spin text-sky-700" /></span><div className="min-w-0 flex-1"><p className="font-semibold">{te("routingTitle")}</p><p className="mt-0.5 text-xs opacity-75">{te("routingProgress", { completed: trip.routing.completed, total: trip.routing.total })}</p></div></section>}
     {allLogistics.length > 0 && <details className="planner-logistics-panel mb-4 px-4 py-3"><summary className="min-h-11 cursor-pointer py-2 text-sm font-bold">{te("logisticsSummary", { count: allLogistics.length })}</summary><p className="mb-3 text-xs leading-5 text-[var(--muted)]">{te("logisticsHint")}</p><div className="grid gap-2 pb-1 sm:grid-cols-2">{allLogistics.map((item) => <div key={item.id} className="rounded-xl bg-white px-3 py-2.5"><p className="text-xs font-semibold text-[var(--muted)]">{item.day_date} · {formatTime(item.start_time, locale, trip.timezone)}</p><p className="mt-1 text-sm font-bold">{item.title}</p>{item.location_name && <p className="mt-1 text-xs text-[var(--muted)]">{item.location_name}</p>}</div>)}</div></details>}

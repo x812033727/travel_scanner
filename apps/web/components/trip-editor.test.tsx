@@ -170,7 +170,9 @@ describe("trip editor", () => {
         model: null,
         generated_at: "2026-11-01T10:00:00Z",
         scope: "trip" as const,
-        warnings: ["minimax 暫時無法產生有效行程（HTTPStatusError）", "已改用核准地點目錄產生備援草稿"],
+        // Codes now, plus one sentence in the shape trips planned before this change
+        // still carry in storage.
+        warnings: ["planner_provider_failed", "planner_fallback_used", "minimax 暫時無法產生有效行程（HTTPStatusError）"],
         unscheduled_slots: [{ date: "2026-11-12", slot: "lunch" as const }],
       },
     };
@@ -180,8 +182,13 @@ describe("trip editor", () => {
 
     expect(await screen.findByText("AI 暫時無法使用，已套用核准目錄備援行程")).toBeTruthy();
     const reminders = screen.getByRole("list", { name: "AI 安排提醒" });
-    expect(within(reminders).getByText(/minimax 暫時無法產生有效行程/)).toBeTruthy();
-    expect(within(reminders).getByText(/已改用核准地點目錄產生備援草稿/)).toBeTruthy();
+    expect(within(reminders).getByText("AI 這次沒排出行程")).toBeTruthy();
+    expect(within(reminders).getByText("已改用審核過的景點目錄先排一版，你可以直接調整")).toBeTruthy();
+    // A traveller never sees our provider code or an httpx exception class, including on
+    // trips planned before the API started sending codes.
+    expect(within(reminders).queryByText(/minimax/)).toBeNull();
+    expect(within(reminders).queryByText(/HTTPStatusError/)).toBeNull();
+    expect(within(reminders).getByText("這次安排有一項提醒，重新產生行程通常就會消失")).toBeTruthy();
 
     fireEvent.click(screen.getByRole("button", { name: "11/12 午餐" }));
     await waitFor(() => {

@@ -341,6 +341,16 @@
     "lastPlannedTrip": "Last planned: whole trip",
     "lastPlannedNote": "{scope}. Locked, fixed-time and manual stops are never replaced.",
     "aiWarningsLabel": "AI planning notes",
+    "plannerWarning": {
+      "planner_provider_failed": "The AI could not put a plan together this time",
+      "planner_timed_out": "The AI took too long, so here is a draft you can edit right away",
+      "planner_fallback_used": "A first version was built from the approved place catalog, ready for you to adjust",
+      "planner_partial_days": "The AI did not cover every day; the rest came from the approved catalog",
+      "planner_blank_slots": "{count} time slots were left blank because there were not enough places",
+      "planner_places_unconfirmed": "Some places were not confirmed in time and were kept as they are",
+      "planner_places_need_review": "A few places need you to confirm they are the right ones",
+      "unknown": "There is a note on this plan; replanning usually clears it"
+    },
     "unscheduledSlots": "Unplanned slots — tap one to jump to that day:",
     "slot": {
       "activity": "Activity",

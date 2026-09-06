@@ -25,6 +25,28 @@ from app.search.schemas import SearchPreferences, Travelers, TripPace
 from app.trips.hours import open_slot
 from app.trips.itinerary import ItineraryDay, ItineraryItem
 
+# Planner warnings are rendered to the traveller at the top of their plan, so they are
+# stable codes rather than sentences. Two reasons, and the second is the one that decides
+# it. First, "minimax 暫時無法產生有效行程（HTTPStatusError）" named our provider code and
+# an httpx exception class — nothing a traveller can read or act on, while the detail an
+# operator needs is already in the logger.warning on the same branch, with status, url and
+# a body excerpt. Second, these warnings are persisted in ``trip.data["planning"]`` and read
+# back whenever the trip is opened, so a sentence written at planning time would keep
+# showing in the language of whoever planned it. A code is translated at render time, in
+# the reader's language, however long after the fact.
+#
+# The web app maps these in ``apps/web/messages/*/trips.json`` under ``plannerWarning`` and
+# falls back to a generic line for anything it does not recognise, which is what keeps the
+# Chinese sentences already stored on existing trips from reaching a reader untranslated.
+PLANNER_WARNING_PARTIAL_DAYS = "planner_partial_days"
+PLANNER_WARNING_PROVIDER_FAILED = "planner_provider_failed"
+PLANNER_WARNING_TIMED_OUT = "planner_timed_out"
+PLANNER_WARNING_FALLBACK_USED = "planner_fallback_used"
+PLANNER_WARNING_BLANK_SLOTS = "planner_blank_slots"
+PLANNER_WARNING_PLACES_UNCONFIRMED = "planner_places_unconfirmed"
+PLANNER_WARNING_PLACES_NEED_REVIEW = "planner_places_need_review"
+
+
 AIProviderName = Literal["openai", "anthropic", "minimax", "gemini", "catalog"]
 SlotType = Literal["activity", "lunch", "dinner"]
 
@@ -1061,7 +1083,7 @@ class AIItineraryPlanner:
                         draft = await provider.generate(request)
                         normalized, partial = normalize_draft(request, draft)
                         if partial:
-                            warnings.append("AI 未完整涵蓋所有日期，已用內建資料補齊")
+                            warnings.append(PLANNER_WARNING_PARTIAL_DAYS)
                         return AIPlanningResult(
                             itinerary=(itinerary := draft_to_itinerary(
                                 request, normalized, provider.name, provider.model
@@ -1097,17 +1119,19 @@ class AIItineraryPlanner:
                             type(exc).__name__,
                             detail,
                         )
-                        warnings.append(
-                            f"{provider.name} 暫時無法產生有效行程（{type(exc).__name__}）"
-                        )
+                        if PLANNER_WARNING_PROVIDER_FAILED not in warnings:
+                            # Once, not once per provider: which of our providers failed is
+                            # not something a traveller can act on, and a second identical
+                            # line only makes the banner longer.
+                            warnings.append(PLANNER_WARNING_PROVIDER_FAILED)
         except TimeoutError:
-            warnings.append("AI 行程規劃超過整體等待時間")
+            warnings.append(PLANNER_WARNING_TIMED_OUT)
         fallback = fallback_draft(request)
-        warnings.append("已改用核准地點目錄產生備援草稿")
+        warnings.append(PLANNER_WARNING_FALLBACK_USED)
         itinerary = draft_to_itinerary(request, fallback, "catalog", None)
         missing = _unscheduled_slots(request, itinerary)
         if missing:
-            warnings.append(f"有 {len(missing)} 個時段因正式地點不足而保留空白")
+            warnings.append(f"{PLANNER_WARNING_BLANK_SLOTS}:{len(missing)}")
         return AIPlanningResult(
             itinerary=itinerary,
             planning=PlanningMetadata(

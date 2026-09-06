@@ -768,7 +768,52 @@ async def test_auto_mode_fails_over_to_next_provider(monkeypatch: pytest.MonkeyP
     assert result.planning.provider == "anthropic"
     assert result.planning.model == "claude-test"
     assert result.planning.status == "live"
-    assert result.planning.warnings == ["openai 暫時無法產生有效行程（ReadTimeout）"]
+    # Was "openai 暫時無法產生有效行程（ReadTimeout）". A traveller can act on neither our
+    # provider code nor an httpx exception class, and the sentence reached English,
+    # Japanese and Korean readers in Traditional Chinese because it was persisted with
+    # the trip. The code is translated at render time instead.
+    assert result.planning.warnings == [itinerary_module.PLANNER_WARNING_PROVIDER_FAILED]
+
+
+@pytest.mark.asyncio
+async def test_planner_warnings_never_leak_provider_names_or_exception_classes(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Every provider fails, so the traveller sees the whole warning banner at once."""
+
+    class FailingProvider:
+        def __init__(self, name: str, model: str, error: Exception) -> None:
+            self.name = name
+            self.model = model
+            self.error = error
+
+        async def generate(self, _request: AIItineraryRequest) -> AIItineraryDraft:
+            raise self.error
+
+    response = httpx.Response(
+        429,
+        request=httpx.Request("POST", "https://api.minimax.example/v1/chat"),
+        text='{"error": "rate limited"}',
+    )
+    providers = [
+        FailingProvider(
+            "minimax",
+            "abab-test",
+            httpx.HTTPStatusError("429", request=response.request, response=response),
+        ),
+        FailingProvider("openai", "gpt-test", httpx.ReadTimeout("timed out")),
+    ]
+    monkeypatch.setattr(itinerary_module, "_providers", lambda _settings: providers)
+    result = await AIItineraryPlanner(Settings()).generate(request_for())
+
+    assert result.planning.status == "fallback"
+    joined = " ".join(result.planning.warnings)
+    for leak in ("minimax", "openai", "HTTPStatusError", "ReadTimeout", "429"):
+        assert leak not in joined
+    # One line for the failure however many providers fell over, then the line that says
+    # what the traveller actually got.
+    assert result.planning.warnings.count(itinerary_module.PLANNER_WARNING_PROVIDER_FAILED) == 1
+    assert itinerary_module.PLANNER_WARNING_FALLBACK_USED in result.planning.warnings
 
 
 def test_itinerary_generation_scope_is_backward_compatible_and_validated() -> None:
