@@ -284,6 +284,45 @@ async def generate_intro_drafts(
     return {"created": created, "kept_approved": kept, "rejected": rejected, "usage": usage}
 
 
+async def test_intro_provider(settings: Settings) -> tuple[str, str]:
+    """Ask the configured vendor for one throwaway paragraph, and check it.
+
+    The settings page's test button is worth more than a reachability ping: it runs the
+    same schema, the same prompt constant and the same output guard the real job does, so
+    a vendor that answers but cannot hold the schema — or that ignores the ban on opening
+    hours — fails here rather than on the first real attraction.
+    """
+
+    provider = build_intro_provider(settings)
+    try:
+        batch, _ = await provider.structured(
+            IntroBatch,
+            "hotspot_intro_drafts_test",
+            INTRO_PROMPT,
+            {
+                "attraction": {
+                    "names": {"en": "Tokyo Station"},
+                    "category": "culture",
+                    "city": "Tokyo",
+                    "country_code": "JP",
+                    "themes": [],
+                    "guides": [],
+                    "tax_free_hint": False,
+                },
+                "locales": ["en"],
+            },
+        )
+        draft = next((item for item in batch.items if item.locale == "en"), None)
+        if draft is None:
+            raise ValueError("AI did not return the requested locale")
+        claims = forbidden_claims(draft.body)
+        if claims:
+            raise ValueError(f"AI stated {', '.join(claims)} in a test paragraph")
+        return provider.name, provider.model
+    finally:
+        await provider.close()
+
+
 def build_intro_provider(
     settings: Settings,
     name: AIProviderName | None = None,

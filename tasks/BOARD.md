@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**6 open · 2 in progress · 2 blocked · 0 in review · 118 done**
+**5 open · 4 in progress · 2 blocked · 0 in review · 118 done**
 
 ## Ready to claim
 
@@ -14,7 +14,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
-| P3 | [後台可以挑選景點介紹的 AI 供應商與模型](open/2026-09-06-intro-ai-vendor-settings.md) | web | `apps/api/app/admin/service.py`<br>`apps/api/app/ai/catalog.py`<br>`apps/web/components/admin-settings-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/messages/zh-CN/admin.json` |
 | P3 | [商圈名單還有 95 家沒有英文店名，發布前要逐家查](open/2026-09-06-trend-merchant-english-names-backlog.md) | api | `apps/api/app/foods/data/trend_merchants.json` |
 
 ## In progress
@@ -24,6 +23,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [沒有帳號的人走到底是死路：註冊已關閉，但每道牆只寫「前往登入」](open/2026-09-06-auth-dead-end.md) | claude-opus-5 | 2026-09-06T21:06:28Z | `claude/ux-auth-walls` |
 | [專門的購物店家：新增經過座標核實的購物景點種子](open/2026-09-06-shopping-store-seeds.md) | claude-opus-5 | 2026-09-06T20:01:33Z | `claude/shopping-store-seeds` |
 | [已匯入的店家沒有拿到資料檔後來補上的英文名](open/2026-09-06-backfill-merchant-english-names.md) | claude-opus-5 | 2026-09-06T21:18:47Z | `claude/merchant-name-backfill` |
+| [後台可以挑選景點介紹的 AI 供應商與模型](open/2026-09-06-intro-ai-vendor-settings.md) | claude-opus-5 | 2026-09-06T20:35:59Z | `claude/intro-vendor-settings` |
 
 ## In review
 

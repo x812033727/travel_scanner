@@ -665,6 +665,12 @@ async def test_snapshot_exposes_model_catalog_options() -> None:
         "hotspot_guide_ai_minimax_model",
         "hotspot_guide_ai_gemini_model",
     }
+    assert set(by_provider["hotspot_intros"].field_options) == {
+        "hotspot_intro_ai_openai_model",
+        "hotspot_intro_ai_anthropic_model",
+        "hotspot_intro_ai_minimax_model",
+        "hotspot_intro_ai_gemini_model",
+    }
     gemini = by_provider["gemini_guides"].field_options["hotspot_guide_gemini_model"]
     assert "gemini-3.8-flash" in [option.value for option in gemini]
     assert all(option.label for option in gemini)
@@ -730,6 +736,26 @@ def test_gemini_is_a_valid_planner_and_guide_search_choice() -> None:
     )
     assert search["hotspot_guide_ai_default_provider"] == "gemini"
     assert "hotspot_guide_ai_gemini_model" not in search
+    intros = _validate_provider_values(
+        "hotspot_intros",
+        {},
+        ProviderSettingsUpdate(
+            config={
+                "hotspot_intro_ai_default_provider": "anthropic",
+                "hotspot_intro_ai_anthropic_model": "  ",
+            }
+        ),
+    )
+    # An empty model means "use the guide search's", so it is removed rather than stored.
+    assert intros["hotspot_intro_ai_default_provider"] == "anthropic"
+    assert "hotspot_intro_ai_anthropic_model" not in intros
+    with pytest.raises(AppError) as bad_vendor:
+        _validate_provider_values(
+            "hotspot_intros",
+            {},
+            ProviderSettingsUpdate(config={"hotspot_intro_ai_default_provider": "mistral"}),
+        )
+    assert bad_vendor.value.status == 422
 
 
 def test_ai_card_status_reports_gemini_through_the_shared_guide_key() -> None:
@@ -761,6 +787,35 @@ def test_ai_card_status_reports_gemini_through_the_shared_guide_key() -> None:
     assert (search_ok, search_status) == (True, "ready")
     assert search_message.startswith("預設 gemini（gemini-3.8-flash）")
     assert _configured("ai_guide_search", unkeyed)[:2] == (False, "not_configured")
+
+
+def test_intro_writer_falls_back_to_the_guide_search_model_and_shares_its_key() -> None:
+    """Leaving the introduction model blank is the sane default, not a broken card.
+
+    The card exists so an administrator can point introductions at a cheaper model
+    without redeploying. Until they do, the writer runs on the guide search's model,
+    and the card has to say so rather than reporting itself unconfigured.
+    """
+
+    from app.admin.service import _configured
+
+    settings = Settings(
+        anthropic_api_key="sk-ant-test",
+        hotspot_guide_ai_default_provider="anthropic",
+        hotspot_guide_ai_anthropic_model="claude-sonnet-5",
+        hotspot_intro_ai_default_provider="anthropic",
+        hotspot_intro_ai_anthropic_model=None,
+    )
+    configured, status, message = _configured("hotspot_intros", settings)
+    assert (configured, status) == (True, "ready")
+    assert message.startswith("預設 anthropic（claude-sonnet-5）")
+
+    own = settings.model_copy(update={"hotspot_intro_ai_anthropic_model": "claude-haiku-4-5"})
+    assert _configured("hotspot_intros", own)[2].startswith("預設 anthropic（claude-haiku-4-5）")
+
+    # The keys live on the shared vendor card, so removing one there disarms this one.
+    unkeyed = settings.model_copy(update={"anthropic_api_key": None})
+    assert _configured("hotspot_intros", unkeyed)[:2] == (False, "not_configured")
 
 
 def test_model_fields_accept_catalog_or_custom_ids_and_reject_path_characters() -> None:

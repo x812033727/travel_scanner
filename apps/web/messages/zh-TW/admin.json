@@ -2,7 +2,9 @@
   "navigation": {
     "searchPlaceholder": "搜尋後台功能",
     "menuLabel": "管理後台功能",
-    "noMatches": "沒有符合的後台功能", "openMenu": "開啟後台選單", "closeMenu": "關閉後台選單",
+    "noMatches": "沒有符合的後台功能",
+    "openMenu": "開啟後台選單",
+    "closeMenu": "關閉後台選單",
     "dashboard": "營運總覽",
     "users": "會員與次數",
     "usage": "方案與扣次",
@@ -35,123 +37,490 @@
     "customPlaceholder": "輸入模型 ID",
     "customInputLabel": "自訂模型 ID：{field}",
     "inheritPlanner": "沿用行程規劃的模型",
-    "auth_google_client_id": { "label": "Google OAuth Client ID", "help": "Google Cloud OAuth 2.0 Web Client ID。" },
-    "auth_line_channel_id": { "label": "LINE Login Channel ID", "help": "需在 LINE Developers 申請 OpenID Connect Email 權限。" },
-    "auth_oauth_flow_ttl_seconds": { "label": "登入流程有效秒數", "help": "一次性 state、nonce 與 PKCE 預設保留 10 分鐘。" },
-    "auth_oauth_ip_limit": { "label": "每 IP 每小時啟動上限" },
-    "ga4_enabled": { "label": "同步送出 GA4 cookieless 事件", "help": "只在 Consent Mode 全部 denied 下送出清洗後事件，不在站內保存 GA Cookie。" },
-    "ga4_measurement_id": { "label": "GA4 Measurement ID", "help": "格式為 G-...；這是公開識別碼，不是 Data API 金鑰。" },
-    "analytics_trust_country_header": { "label": "信任代理伺服器國碼", "help": "只讀取 BFF 從設定好的可信代理標頭轉送的兩碼國碼；未設定時一律為未知。" },
-    "analytics_event_ip_limit": { "label": "每 IP 每分鐘事件上限" },
-    "analytics_event_session_limit": { "label": "每工作階段每分鐘事件上限" },
-    "analytics_retention_days": { "label": "原始事件保存天數", "help": "預設 90 天；到期後由維護工作刪除。" },
-    "analytics_rollup_retention_months": { "label": "每日彙總保存月數", "help": "預設 25 個月。" },
-    "registration_enabled": { "label": "開放公開註冊", "help": "關閉後所有新帳號（包含環境管理員 Email）都無法自行註冊；既有會員仍可正常登入。" },
-    "access_token_expire_minutes": { "label": "登入時效（分鐘）", "help": "新發的登入憑證有效多久（5–1440）。儲存後下一次登入與續期立刻採用，不用重新部署；既有憑證照它自己的時效走到續期點。" },
-    "session_absolute_max_days": { "label": "單次登入絕對上限（天）", "help": "同一次登入不論續期幾次最多維持幾天（1–365），到期後必須重新登入。" },
-    "google_maps_javascript_enabled": { "label": "啟用瀏覽器路線地圖", "help": "安全閘門。只有確認 Maps JavaScript API 已啟用，且瀏覽器 Key 已限制並放行 mokaair.com 與 www.mokaair.com 後才開啟；關閉時仍可使用交通方案與精準外部導航。" },
-    "ai_planner_mode": { "label": "AI 行程來源", "options": { "auto": "自動備援", "openai": "OpenAI／ChatGPT", "fallback": "只用內建備援", "disabled": "停用真實 AI" } },
-    "ai_planner_priority": { "label": "自動備援順序", "help": "用逗號分隔，例如 openai,anthropic,minimax,gemini。" },
-    "ai_planner_timeout_seconds": { "label": "每家 AI 逾時（秒）" },
-    "ai_planner_total_timeout_seconds": { "label": "整體 AI 逾時（秒）" },
-    "ai_planner_max_output_tokens": { "label": "最大輸出 Tokens" },
-    "hotspot_guide_ai_default_provider": { "label": "景點 AI 搜尋預設供應商" },
-    "hotspot_guide_ai_timeout_seconds": { "label": "景點 AI 搜尋逾時（秒）" },
-    "hotspot_guide_ai_max_output_tokens": { "label": "景點 AI 最大輸出 Tokens" },
-    "hotspot_guide_ai_daily_run_limit": { "label": "每日 AI 搜尋執行上限" },
-    "hotspot_guide_ai_daily_call_budget": { "label": "每日 AI 模型呼叫上限", "help": "管理員搜尋不扣會員次數，但會記錄於後台配額與稽核紀錄。" },
-    "travel_provider_mode": { "label": "旅遊資料供應商", "options": { "mock": "Mock（僅開發）", "disabled": "停用" } },
-    "flight_provider_mode": { "label": "航空查詢來源", "help": "混合模式會依序補查，直到行程組數達到門檻；追加來源不另扣搜尋次數。", "options": { "auto": "自動：Skyscanner → Duffel → Amadeus", "mock": "Mock（僅開發）", "disabled": "停用" } },
-    "flight_search_strategy": { "label": "航空搜尋策略", "options": { "hybrid": "混合節流", "single": "只查首選來源" } },
-    "flight_min_result_count": { "label": "自動補查門檻", "help": "去重後少於此行程組數時查詢下一家。" },
-    "hotel_provider_mode": { "label": "飯店查詢來源", "help": "自動模式會在 Booking.com Demand API 尚未核准時先使用 Amadeus。", "options": { "auto": "自動：Booking.com → Amadeus", "mock": "Mock（僅開發）", "disabled": "停用" } },
-    "provider_timeout_seconds": { "label": "供應商逾時（秒）", "help": "單次外部請求等待上限。" },
-    "provider_failure_threshold": { "label": "斷路器失敗門檻" },
-    "provider_circuit_seconds": { "label": "斷路器暫停秒數" },
-    "route_cache_ttl_seconds": { "label": "路線快取秒數" },
-    "naver_place_cache_ttl_seconds": { "label": "NAVER 地點快取秒數", "help": "地點詳情以不透明 ID 暫存在 Redis；預設 15 分鐘。" },
-    "naver_maps_monthly_request_limit": { "label": "站內每月提醒額度", "help": "選填的內部提醒門檻，不代表 NAVER 免費額度或帳單上限；0 表示不設定。" },
-    "weather_cache_ttl_seconds": { "label": "天氣快取秒數", "help": "Google Weather 預設快取 15 分鐘，降低重複查詢。" },
-    "google_maps_essentials_free_limit": { "label": "Essentials 每 SKU 免費額度", "help": "全球公開定價預設每個 SKU 每月 10,000 次；若合約不同可在此調整。" },
-    "google_maps_pro_free_limit": { "label": "Pro 每 SKU 免費額度", "help": "全球公開定價預設每個 SKU 每月 5,000 次。" },
-    "google_maps_enterprise_free_limit": { "label": "Enterprise 每 SKU 免費額度", "help": "全球公開定價預設每個 SKU 每月 1,000 次。" },
-    "restaurant_scan_enabled": { "label": "啟用景點周邊餐廳掃描", "help": "關閉後不再發送 Nearby、Aggregate 或餐廳 Details 請求。" },
-    "restaurant_aggregate_monthly_budget": { "label": "餐廳 Aggregate 每月安全上限", "help": "預設 4,000 次，保留 Places Aggregate 公開免費額度的 20%。" },
-    "restaurant_nearby_monthly_budget": { "label": "餐廳 Nearby 每月安全上限", "help": "預設 800 次，用於前台即時熱門餐廳。" },
-    "restaurant_details_monthly_budget": { "label": "餐廳 Details 每月安全上限", "help": "預設 800 次；與其他 Place Details 共用計算，接近免費額度前就停止。" },
-    "restaurant_scan_refresh_days": { "label": "餐廳覆蓋重掃週期（天）" },
-    "restaurant_scan_max_depth": { "label": "餐廳網格最大細分層數" },
-    "restaurant_scan_batch_call_limit": { "label": "每批餐廳掃描呼叫上限", "help": "預設每六小時最多 50 次，保留進度後輪替景點續掃。" },
-    "restaurant_location_cache_days": { "label": "餐廳經緯度 Redis TTL（天）", "help": "只暫存經緯度，預設與上限皆為 30 天；Redis 到期後自動失效。" },
-    "hotspot_guide_youtube_daily_search_budget": { "label": "每日自動搜尋上限", "help": "預設 80 次，自每日 Search Queries 額度中保留 20 次供管理員操作。" },
-    "hotspot_guide_youtube_search_daily_free_limit": { "label": "Search Queries 每日額度", "help": "YouTube 預設每日 100 次 search.list 查詢；若 Cloud 專案核准額度不同可在此調整。" },
-    "hotspot_guide_youtube_core_daily_free_limit": { "label": "Core API 每日額度", "help": "YouTube 預設每日 10,000 單位；目前 videos.list 每次請求計 1 單位。" },
-    "hotspot_guide_refresh_days": { "label": "Metadata 更新週期（天）" },
-    "hotspot_guide_gemini_base_url": { "label": "Gemini API Base URL", "help": "僅允許 Google 官方 generativelanguage 網域。" },
-    "hotspot_guide_gemini_timeout_seconds": { "label": "單次搜尋逾時（秒）" },
-    "hotspot_guide_gemini_daily_search_budget": { "label": "每日搜尋上限" },
-    "hotspot_guide_backfill_enabled": { "label": "自動補齊沒有介紹的景點", "help": "背景每輪挑出還沒有任何影片或文章的景點去搜尋，優先處理已通過地圖驗證的。關閉後只剩管理員手動搜尋。" },
-    "hotspot_guide_backfill_batch_size": { "label": "每輪處理景點數", "help": "一輪最多處理幾個景點。實際跑幾個仍受各搜尋供應商的每日額度限制，額度用完就停在那一輪。" },
-    "hotspot_guide_backfill_locale": { "label": "自動補齊語系", "help": "以逗號分隔、依序處理的語系清單，例如 zh-TW,ja,ko,en,zh-CN。先讓每個景點在第一個語系有東西可看，才輪到第二個；每個景點每輪只搜一個語系，額度不會因為列了五個語系而變成五倍。搜過但找不到的景點，30 天內不會再搜同一個語系。" },
-    "amadeus_env": { "label": "Amadeus 環境" },
-    "skyscanner_market": { "label": "市場代碼" },
-    "skyscanner_locale": { "label": "語系" },
-    "skyscanner_currency": { "label": "顯示幣別" },
-    "skyscanner_poll_attempts": { "label": "輪詢次數" },
-    "skyscanner_poll_interval_seconds": { "label": "輪詢間隔（秒）" },
-    "duffel_env": { "label": "Duffel 環境" },
-    "duffel_supplier_timeout_ms": { "label": "供應商等待上限（毫秒）" },
-    "flightaware_enrich_offer_limit": { "label": "自動補充最便宜行程組" },
-    "flightaware_cache_ttl_seconds": { "label": "航班動態快取秒數" },
-    "flightaware_track_cache_ttl_seconds": { "label": "航跡快取秒數" },
-    "travel_impact_cache_ttl_seconds": { "label": "碳排快取秒數" },
-    "navitime_api_base_url": { "label": "API Base URL", "help": "RapidAPI 填 https://navitime-route-totalnavi.p.rapidapi.com；直接契約填 NAVITIME 提供的 gateway 主機（navitime.co.jp／navitime.biz）。" },
-    "navitime_monthly_request_limit": { "label": "站內每月請求上限", "help": "以日本時間按月計算站內送出的 NAVITIME 請求；達到上限後停止呼叫、改顯示 Google Maps 連結。預設 450，替 RapidAPI Basic 的 500 次留下後台測試空間；0 表示只計數不限制。" },
-    "ekispert_api_base_url": { "label": "API Base URL", "help": "固定使用 Ekispert 官方 https://api.ekispert.jp；系統不接受第三方轉送主機。" },
-    "ekispert_search_type": { "label": "路線資料模式", "help": "plain 不代表指定日期班次；只有確認合約含時刻表搜尋後才選 departure。", "options": { "plain": "平均等待時間（低成本方案）", "departure": "指定時刻表（需合約開通）" } },
-    "ekispert_monthly_request_limit": { "label": "站內每月請求上限", "help": "達到上限後停止外部呼叫並提供 Google Maps 精準導航；預設 450，0 表示只計數不限制。" },
-    "odsay_api_base_url": { "label": "API Base URL", "help": "固定使用 ODsay 官方 https://api.odsay.com/v1/api。" },
-    "odsay_language": { "label": "路線資料語言", "help": "ODsay Standard 方案只提供韓文；請僅在合約含多語服務時選擇其他語言。", "options": { "0": "韓文（Standard 相容）", "1": "英文", "2": "日文", "3": "簡體中文", "4": "繁體中文" } },
-    "odsay_daily_request_limit": { "label": "站內每日請求上限", "help": "Basic 方案每日 30 次；預設站內只用 25 次並保留 5 次測試空間。正式商用方案可依合約調整；0 表示只計數不限制。" },
-    "travelpayouts_static_url_template": { "label": "安全備援合作連結", "help": "Partner Links API 失敗時才使用；可包含 '{destination}'、'{departure_date}'、'{return_date}'、'{sub_id}'。" },
-    "travelpayouts_flight_target_url": { "label": "航班原始目標網址" },
-    "travelpayouts_hotel_target_url": { "label": "住宿原始目標網址" },
-    "travelpayouts_activities_target_url": { "label": "活動原始目標網址" },
-    "travelpayouts_transport_target_url": { "label": "交通原始目標網址" },
-    "travelpayouts_connectivity_target_url": { "label": "eSIM 原始目標網址", "help": "留空時沿用「活動原始目標網址」。" },
-    "travelpayouts_allowed_hosts": { "label": "允許跳轉網域", "help": "以逗號分隔；只允許 HTTPS 且符合清單的網址。" },
-    "kkday_affiliate_url_template": { "label": "合作連結範本" },
-    "kkday_allowed_hosts": { "label": "允許跳轉網域" },
-    "kkday_api_base_url": { "label": "核准後 API Base URL" },
-    "klook_affiliate_url_template": { "label": "合作連結範本" },
-    "klook_allowed_hosts": { "label": "允許跳轉網域" },
-    "klook_api_base_url": { "label": "核准後 API Base URL" },
-    "airalo_affiliate_url_template": { "label": "Impact／Affiliate 合作連結" },
-    "airalo_allowed_hosts": { "label": "允許跳轉網域" },
-    "trip_com_affiliate_url_template": { "label": "後台產生的完整合作連結", "help": "系統不會覆寫既有 Trip.com 追蹤參數。" },
-    "trip_com_allowed_hosts": { "label": "允許跳轉網域" },
-    "agoda_affiliate_url_template": { "label": "合作連結範本" },
-    "agoda_allowed_hosts": { "label": "允許跳轉網域" },
-    "agoda_api_base_url": { "label": "核准後 API Base URL" },
-    "booking_affiliate_url_template": { "label": "合作連結範本" },
-    "booking_allowed_hosts": { "label": "允許跳轉網域" },
-    "booking_demand_env": { "label": "Demand API 環境", "help": "切換 production 後請儲存並重新執行連線測試。" },
-    "booking_demand_api_base_url": { "label": "Demand API v3.1 Base URL", "help": "僅允許 Booking.com 官方 sandbox 或 production 網域。" },
-    "booking_demand_affiliate_id": { "label": "Demand API Affiliate ID", "help": "與分潤導流 ID 分開保存；留空時才沿用 Affiliate 區塊的 ID。" },
-    "booking_booker_country": { "label": "Booker 國家代碼", "help": "兩碼小寫國家代碼；台灣使用 tw。" },
-    "booking_language": { "label": "Booking 回傳語系", "help": "例如 zh-tw 或 en-gb。" },
-    "booking_location_cache_ttl_seconds": { "label": "目的地 ID 快取秒數" },
-    "skyscanner_affiliate_url_template": { "label": "Impact Affiliate 合作連結" },
-    "skyscanner_affiliate_allowed_hosts": { "label": "允許跳轉網域" },
-    "openai_model": { "label": "OpenAI 模型", "help": "行程規劃呼叫 OpenAI 時使用的模型；清單以外的模型請選「自訂…」後輸入 ID。" },
-    "anthropic_model": { "label": "Claude 模型", "help": "行程規劃呼叫 Claude 時使用的模型；清單以外的模型請選「自訂…」後輸入 ID。" },
-    "minimax_model": { "label": "MiniMax 模型", "help": "行程規劃呼叫 MiniMax 時使用的模型；清單以外的模型請選「自訂…」後輸入 ID。" },
-    "gemini_model": { "label": "Gemini 模型", "help": "行程規劃與行程文字解析呼叫 Gemini 時使用的模型；清單以外的模型請選「自訂…」後輸入 ID。" },
-    "hotspot_guide_ai_openai_model": { "label": "OpenAI 模型", "help": "只影響景點介紹搜尋；留空即沿用行程規劃的 OpenAI 模型。" },
-    "hotspot_guide_ai_anthropic_model": { "label": "Claude 模型", "help": "只影響景點介紹搜尋；留空即沿用行程規劃的 Claude 模型。" },
-    "hotspot_guide_ai_minimax_model": { "label": "MiniMax 模型", "help": "只影響景點介紹搜尋；留空即沿用行程規劃的 MiniMax 模型。" },
-    "hotspot_guide_ai_gemini_model": { "label": "Gemini 模型", "help": "只影響景點介紹搜尋；留空即沿用行程規劃的 Gemini 模型。" },
-    "hotspot_guide_gemini_model": { "label": "Gemini 模型", "help": "Flash 級能產生景點候選名單，但接地列出文章來源時較弱；Pro 級對新申請的金鑰可能不可用，請以連線測試結果為準。" }
+    "inheritGuideSearch": "沿用景點 AI 搜尋的模型",
+    "auth_google_client_id": {
+      "label": "Google OAuth Client ID",
+      "help": "Google Cloud OAuth 2.0 Web Client ID。"
+    },
+    "auth_line_channel_id": {
+      "label": "LINE Login Channel ID",
+      "help": "需在 LINE Developers 申請 OpenID Connect Email 權限。"
+    },
+    "auth_oauth_flow_ttl_seconds": {
+      "label": "登入流程有效秒數",
+      "help": "一次性 state、nonce 與 PKCE 預設保留 10 分鐘。"
+    },
+    "auth_oauth_ip_limit": {
+      "label": "每 IP 每小時啟動上限"
+    },
+    "ga4_enabled": {
+      "label": "同步送出 GA4 cookieless 事件",
+      "help": "只在 Consent Mode 全部 denied 下送出清洗後事件，不在站內保存 GA Cookie。"
+    },
+    "ga4_measurement_id": {
+      "label": "GA4 Measurement ID",
+      "help": "格式為 G-...；這是公開識別碼，不是 Data API 金鑰。"
+    },
+    "analytics_trust_country_header": {
+      "label": "信任代理伺服器國碼",
+      "help": "只讀取 BFF 從設定好的可信代理標頭轉送的兩碼國碼；未設定時一律為未知。"
+    },
+    "analytics_event_ip_limit": {
+      "label": "每 IP 每分鐘事件上限"
+    },
+    "analytics_event_session_limit": {
+      "label": "每工作階段每分鐘事件上限"
+    },
+    "analytics_retention_days": {
+      "label": "原始事件保存天數",
+      "help": "預設 90 天；到期後由維護工作刪除。"
+    },
+    "analytics_rollup_retention_months": {
+      "label": "每日彙總保存月數",
+      "help": "預設 25 個月。"
+    },
+    "registration_enabled": {
+      "label": "開放公開註冊",
+      "help": "關閉後所有新帳號（包含環境管理員 Email）都無法自行註冊；既有會員仍可正常登入。"
+    },
+    "access_token_expire_minutes": {
+      "label": "登入時效（分鐘）",
+      "help": "新發的登入憑證有效多久（5–1440）。儲存後下一次登入與續期立刻採用，不用重新部署；既有憑證照它自己的時效走到續期點。"
+    },
+    "session_absolute_max_days": {
+      "label": "單次登入絕對上限（天）",
+      "help": "同一次登入不論續期幾次最多維持幾天（1–365），到期後必須重新登入。"
+    },
+    "google_maps_javascript_enabled": {
+      "label": "啟用瀏覽器路線地圖",
+      "help": "安全閘門。只有確認 Maps JavaScript API 已啟用，且瀏覽器 Key 已限制並放行 mokaair.com 與 www.mokaair.com 後才開啟；關閉時仍可使用交通方案與精準外部導航。"
+    },
+    "ai_planner_mode": {
+      "label": "AI 行程來源",
+      "options": {
+        "auto": "自動備援",
+        "openai": "OpenAI／ChatGPT",
+        "fallback": "只用內建備援",
+        "disabled": "停用真實 AI"
+      }
+    },
+    "ai_planner_priority": {
+      "label": "自動備援順序",
+      "help": "用逗號分隔，例如 openai,anthropic,minimax,gemini。"
+    },
+    "ai_planner_timeout_seconds": {
+      "label": "每家 AI 逾時（秒）"
+    },
+    "ai_planner_total_timeout_seconds": {
+      "label": "整體 AI 逾時（秒）"
+    },
+    "ai_planner_max_output_tokens": {
+      "label": "最大輸出 Tokens"
+    },
+    "hotspot_guide_ai_default_provider": {
+      "label": "景點 AI 搜尋預設供應商"
+    },
+    "hotspot_guide_ai_timeout_seconds": {
+      "label": "景點 AI 搜尋逾時（秒）"
+    },
+    "hotspot_guide_ai_max_output_tokens": {
+      "label": "景點 AI 最大輸出 Tokens"
+    },
+    "hotspot_guide_ai_daily_run_limit": {
+      "label": "每日 AI 搜尋執行上限"
+    },
+    "hotspot_guide_ai_daily_call_budget": {
+      "label": "每日 AI 模型呼叫上限",
+      "help": "管理員搜尋不扣會員次數，但會記錄於後台配額與稽核紀錄。"
+    },
+    "travel_provider_mode": {
+      "label": "旅遊資料供應商",
+      "options": {
+        "mock": "Mock（僅開發）",
+        "disabled": "停用"
+      }
+    },
+    "flight_provider_mode": {
+      "label": "航空查詢來源",
+      "help": "混合模式會依序補查，直到行程組數達到門檻；追加來源不另扣搜尋次數。",
+      "options": {
+        "auto": "自動：Skyscanner → Duffel → Amadeus",
+        "mock": "Mock（僅開發）",
+        "disabled": "停用"
+      }
+    },
+    "flight_search_strategy": {
+      "label": "航空搜尋策略",
+      "options": {
+        "hybrid": "混合節流",
+        "single": "只查首選來源"
+      }
+    },
+    "flight_min_result_count": {
+      "label": "自動補查門檻",
+      "help": "去重後少於此行程組數時查詢下一家。"
+    },
+    "hotel_provider_mode": {
+      "label": "飯店查詢來源",
+      "help": "自動模式會在 Booking.com Demand API 尚未核准時先使用 Amadeus。",
+      "options": {
+        "auto": "自動：Booking.com → Amadeus",
+        "mock": "Mock（僅開發）",
+        "disabled": "停用"
+      }
+    },
+    "provider_timeout_seconds": {
+      "label": "供應商逾時（秒）",
+      "help": "單次外部請求等待上限。"
+    },
+    "provider_failure_threshold": {
+      "label": "斷路器失敗門檻"
+    },
+    "provider_circuit_seconds": {
+      "label": "斷路器暫停秒數"
+    },
+    "route_cache_ttl_seconds": {
+      "label": "路線快取秒數"
+    },
+    "naver_place_cache_ttl_seconds": {
+      "label": "NAVER 地點快取秒數",
+      "help": "地點詳情以不透明 ID 暫存在 Redis；預設 15 分鐘。"
+    },
+    "naver_maps_monthly_request_limit": {
+      "label": "站內每月提醒額度",
+      "help": "選填的內部提醒門檻，不代表 NAVER 免費額度或帳單上限；0 表示不設定。"
+    },
+    "weather_cache_ttl_seconds": {
+      "label": "天氣快取秒數",
+      "help": "Google Weather 預設快取 15 分鐘，降低重複查詢。"
+    },
+    "google_maps_essentials_free_limit": {
+      "label": "Essentials 每 SKU 免費額度",
+      "help": "全球公開定價預設每個 SKU 每月 10,000 次；若合約不同可在此調整。"
+    },
+    "google_maps_pro_free_limit": {
+      "label": "Pro 每 SKU 免費額度",
+      "help": "全球公開定價預設每個 SKU 每月 5,000 次。"
+    },
+    "google_maps_enterprise_free_limit": {
+      "label": "Enterprise 每 SKU 免費額度",
+      "help": "全球公開定價預設每個 SKU 每月 1,000 次。"
+    },
+    "restaurant_scan_enabled": {
+      "label": "啟用景點周邊餐廳掃描",
+      "help": "關閉後不再發送 Nearby、Aggregate 或餐廳 Details 請求。"
+    },
+    "restaurant_aggregate_monthly_budget": {
+      "label": "餐廳 Aggregate 每月安全上限",
+      "help": "預設 4,000 次，保留 Places Aggregate 公開免費額度的 20%。"
+    },
+    "restaurant_nearby_monthly_budget": {
+      "label": "餐廳 Nearby 每月安全上限",
+      "help": "預設 800 次，用於前台即時熱門餐廳。"
+    },
+    "restaurant_details_monthly_budget": {
+      "label": "餐廳 Details 每月安全上限",
+      "help": "預設 800 次；與其他 Place Details 共用計算，接近免費額度前就停止。"
+    },
+    "restaurant_scan_refresh_days": {
+      "label": "餐廳覆蓋重掃週期（天）"
+    },
+    "restaurant_scan_max_depth": {
+      "label": "餐廳網格最大細分層數"
+    },
+    "restaurant_scan_batch_call_limit": {
+      "label": "每批餐廳掃描呼叫上限",
+      "help": "預設每六小時最多 50 次，保留進度後輪替景點續掃。"
+    },
+    "restaurant_location_cache_days": {
+      "label": "餐廳經緯度 Redis TTL（天）",
+      "help": "只暫存經緯度，預設與上限皆為 30 天；Redis 到期後自動失效。"
+    },
+    "hotspot_guide_youtube_daily_search_budget": {
+      "label": "每日自動搜尋上限",
+      "help": "預設 80 次，自每日 Search Queries 額度中保留 20 次供管理員操作。"
+    },
+    "hotspot_guide_youtube_search_daily_free_limit": {
+      "label": "Search Queries 每日額度",
+      "help": "YouTube 預設每日 100 次 search.list 查詢；若 Cloud 專案核准額度不同可在此調整。"
+    },
+    "hotspot_guide_youtube_core_daily_free_limit": {
+      "label": "Core API 每日額度",
+      "help": "YouTube 預設每日 10,000 單位；目前 videos.list 每次請求計 1 單位。"
+    },
+    "hotspot_guide_refresh_days": {
+      "label": "Metadata 更新週期（天）"
+    },
+    "hotspot_guide_gemini_base_url": {
+      "label": "Gemini API Base URL",
+      "help": "僅允許 Google 官方 generativelanguage 網域。"
+    },
+    "hotspot_guide_gemini_timeout_seconds": {
+      "label": "單次搜尋逾時（秒）"
+    },
+    "hotspot_guide_gemini_daily_search_budget": {
+      "label": "每日搜尋上限"
+    },
+    "hotspot_guide_backfill_enabled": {
+      "label": "自動補齊沒有介紹的景點",
+      "help": "背景每輪挑出還沒有任何影片或文章的景點去搜尋，優先處理已通過地圖驗證的。關閉後只剩管理員手動搜尋。"
+    },
+    "hotspot_guide_backfill_batch_size": {
+      "label": "每輪處理景點數",
+      "help": "一輪最多處理幾個景點。實際跑幾個仍受各搜尋供應商的每日額度限制，額度用完就停在那一輪。"
+    },
+    "hotspot_guide_backfill_locale": {
+      "label": "自動補齊語系",
+      "help": "以逗號分隔、依序處理的語系清單，例如 zh-TW,ja,ko,en,zh-CN。先讓每個景點在第一個語系有東西可看，才輪到第二個；每個景點每輪只搜一個語系，額度不會因為列了五個語系而變成五倍。搜過但找不到的景點，30 天內不會再搜同一個語系。"
+    },
+    "amadeus_env": {
+      "label": "Amadeus 環境"
+    },
+    "skyscanner_market": {
+      "label": "市場代碼"
+    },
+    "skyscanner_locale": {
+      "label": "語系"
+    },
+    "skyscanner_currency": {
+      "label": "顯示幣別"
+    },
+    "skyscanner_poll_attempts": {
+      "label": "輪詢次數"
+    },
+    "skyscanner_poll_interval_seconds": {
+      "label": "輪詢間隔（秒）"
+    },
+    "duffel_env": {
+      "label": "Duffel 環境"
+    },
+    "duffel_supplier_timeout_ms": {
+      "label": "供應商等待上限（毫秒）"
+    },
+    "flightaware_enrich_offer_limit": {
+      "label": "自動補充最便宜行程組"
+    },
+    "flightaware_cache_ttl_seconds": {
+      "label": "航班動態快取秒數"
+    },
+    "flightaware_track_cache_ttl_seconds": {
+      "label": "航跡快取秒數"
+    },
+    "travel_impact_cache_ttl_seconds": {
+      "label": "碳排快取秒數"
+    },
+    "navitime_api_base_url": {
+      "label": "API Base URL",
+      "help": "RapidAPI 填 https://navitime-route-totalnavi.p.rapidapi.com；直接契約填 NAVITIME 提供的 gateway 主機（navitime.co.jp／navitime.biz）。"
+    },
+    "navitime_monthly_request_limit": {
+      "label": "站內每月請求上限",
+      "help": "以日本時間按月計算站內送出的 NAVITIME 請求；達到上限後停止呼叫、改顯示 Google Maps 連結。預設 450，替 RapidAPI Basic 的 500 次留下後台測試空間；0 表示只計數不限制。"
+    },
+    "ekispert_api_base_url": {
+      "label": "API Base URL",
+      "help": "固定使用 Ekispert 官方 https://api.ekispert.jp；系統不接受第三方轉送主機。"
+    },
+    "ekispert_search_type": {
+      "label": "路線資料模式",
+      "help": "plain 不代表指定日期班次；只有確認合約含時刻表搜尋後才選 departure。",
+      "options": {
+        "plain": "平均等待時間（低成本方案）",
+        "departure": "指定時刻表（需合約開通）"
+      }
+    },
+    "ekispert_monthly_request_limit": {
+      "label": "站內每月請求上限",
+      "help": "達到上限後停止外部呼叫並提供 Google Maps 精準導航；預設 450，0 表示只計數不限制。"
+    },
+    "odsay_api_base_url": {
+      "label": "API Base URL",
+      "help": "固定使用 ODsay 官方 https://api.odsay.com/v1/api。"
+    },
+    "odsay_language": {
+      "label": "路線資料語言",
+      "help": "ODsay Standard 方案只提供韓文；請僅在合約含多語服務時選擇其他語言。",
+      "options": {
+        "0": "韓文（Standard 相容）",
+        "1": "英文",
+        "2": "日文",
+        "3": "簡體中文",
+        "4": "繁體中文"
+      }
+    },
+    "odsay_daily_request_limit": {
+      "label": "站內每日請求上限",
+      "help": "Basic 方案每日 30 次；預設站內只用 25 次並保留 5 次測試空間。正式商用方案可依合約調整；0 表示只計數不限制。"
+    },
+    "travelpayouts_static_url_template": {
+      "label": "安全備援合作連結",
+      "help": "Partner Links API 失敗時才使用；可包含 '{destination}'、'{departure_date}'、'{return_date}'、'{sub_id}'。"
+    },
+    "travelpayouts_flight_target_url": {
+      "label": "航班原始目標網址"
+    },
+    "travelpayouts_hotel_target_url": {
+      "label": "住宿原始目標網址"
+    },
+    "travelpayouts_activities_target_url": {
+      "label": "活動原始目標網址"
+    },
+    "travelpayouts_transport_target_url": {
+      "label": "交通原始目標網址"
+    },
+    "travelpayouts_connectivity_target_url": {
+      "label": "eSIM 原始目標網址",
+      "help": "留空時沿用「活動原始目標網址」。"
+    },
+    "travelpayouts_allowed_hosts": {
+      "label": "允許跳轉網域",
+      "help": "以逗號分隔；只允許 HTTPS 且符合清單的網址。"
+    },
+    "kkday_affiliate_url_template": {
+      "label": "合作連結範本"
+    },
+    "kkday_allowed_hosts": {
+      "label": "允許跳轉網域"
+    },
+    "kkday_api_base_url": {
+      "label": "核准後 API Base URL"
+    },
+    "klook_affiliate_url_template": {
+      "label": "合作連結範本"
+    },
+    "klook_allowed_hosts": {
+      "label": "允許跳轉網域"
+    },
+    "klook_api_base_url": {
+      "label": "核准後 API Base URL"
+    },
+    "airalo_affiliate_url_template": {
+      "label": "Impact／Affiliate 合作連結"
+    },
+    "airalo_allowed_hosts": {
+      "label": "允許跳轉網域"
+    },
+    "trip_com_affiliate_url_template": {
+      "label": "後台產生的完整合作連結",
+      "help": "系統不會覆寫既有 Trip.com 追蹤參數。"
+    },
+    "trip_com_allowed_hosts": {
+      "label": "允許跳轉網域"
+    },
+    "agoda_affiliate_url_template": {
+      "label": "合作連結範本"
+    },
+    "agoda_allowed_hosts": {
+      "label": "允許跳轉網域"
+    },
+    "agoda_api_base_url": {
+      "label": "核准後 API Base URL"
+    },
+    "booking_affiliate_url_template": {
+      "label": "合作連結範本"
+    },
+    "booking_allowed_hosts": {
+      "label": "允許跳轉網域"
+    },
+    "booking_demand_env": {
+      "label": "Demand API 環境",
+      "help": "切換 production 後請儲存並重新執行連線測試。"
+    },
+    "booking_demand_api_base_url": {
+      "label": "Demand API v3.1 Base URL",
+      "help": "僅允許 Booking.com 官方 sandbox 或 production 網域。"
+    },
+    "booking_demand_affiliate_id": {
+      "label": "Demand API Affiliate ID",
+      "help": "與分潤導流 ID 分開保存；留空時才沿用 Affiliate 區塊的 ID。"
+    },
+    "booking_booker_country": {
+      "label": "Booker 國家代碼",
+      "help": "兩碼小寫國家代碼；台灣使用 tw。"
+    },
+    "booking_language": {
+      "label": "Booking 回傳語系",
+      "help": "例如 zh-tw 或 en-gb。"
+    },
+    "booking_location_cache_ttl_seconds": {
+      "label": "目的地 ID 快取秒數"
+    },
+    "skyscanner_affiliate_url_template": {
+      "label": "Impact Affiliate 合作連結"
+    },
+    "skyscanner_affiliate_allowed_hosts": {
+      "label": "允許跳轉網域"
+    },
+    "openai_model": {
+      "label": "OpenAI 模型",
+      "help": "行程規劃呼叫 OpenAI 時使用的模型；清單以外的模型請選「自訂…」後輸入 ID。"
+    },
+    "anthropic_model": {
+      "label": "Claude 模型",
+      "help": "行程規劃呼叫 Claude 時使用的模型；清單以外的模型請選「自訂…」後輸入 ID。"
+    },
+    "minimax_model": {
+      "label": "MiniMax 模型",
+      "help": "行程規劃呼叫 MiniMax 時使用的模型；清單以外的模型請選「自訂…」後輸入 ID。"
+    },
+    "gemini_model": {
+      "label": "Gemini 模型",
+      "help": "行程規劃與行程文字解析呼叫 Gemini 時使用的模型；清單以外的模型請選「自訂…」後輸入 ID。"
+    },
+    "hotspot_guide_ai_openai_model": {
+      "label": "OpenAI 模型",
+      "help": "只影響景點介紹搜尋；留空即沿用行程規劃的 OpenAI 模型。"
+    },
+    "hotspot_guide_ai_anthropic_model": {
+      "label": "Claude 模型",
+      "help": "只影響景點介紹搜尋；留空即沿用行程規劃的 Claude 模型。"
+    },
+    "hotspot_guide_ai_minimax_model": {
+      "label": "MiniMax 模型",
+      "help": "只影響景點介紹搜尋；留空即沿用行程規劃的 MiniMax 模型。"
+    },
+    "hotspot_guide_ai_gemini_model": {
+      "label": "Gemini 模型",
+      "help": "只影響景點介紹搜尋；留空即沿用行程規劃的 Gemini 模型。"
+    },
+    "hotspot_intro_ai_default_provider": {
+      "label": "介紹撰寫預設供應商",
+      "help": "金鑰沿用「AI 供應商與金鑰」那張卡；草稿一律以待審落地。"
+    },
+    "hotspot_intro_ai_timeout_seconds": {
+      "label": "介紹撰寫逾時（秒）"
+    },
+    "hotspot_intro_ai_max_output_tokens": {
+      "label": "介紹撰寫最大輸出 Tokens"
+    },
+    "hotspot_intro_ai_daily_run_limit": {
+      "label": "每日介紹產生執行上限",
+      "help": "一次執行以一次呼叫寫完一個景點的所有要求語系。"
+    },
+    "hotspot_intro_ai_daily_call_budget": {
+      "label": "每日介紹模型呼叫上限",
+      "help": "呼叫在送出請求之前就先計入：中途失敗一樣付了供應商的錢。"
+    },
+    "hotspot_intro_ai_openai_model": {
+      "label": "OpenAI 模型",
+      "help": "只影響介紹撰寫；留空即沿用景點 AI 搜尋的 OpenAI 模型。"
+    },
+    "hotspot_intro_ai_anthropic_model": {
+      "label": "Claude 模型",
+      "help": "只影響介紹撰寫；留空即沿用景點 AI 搜尋的 Claude 模型。"
+    },
+    "hotspot_intro_ai_minimax_model": {
+      "label": "MiniMax 模型",
+      "help": "只影響介紹撰寫；留空即沿用景點 AI 搜尋的 MiniMax 模型。"
+    },
+    "hotspot_intro_ai_gemini_model": {
+      "label": "Gemini 模型",
+      "help": "只影響介紹撰寫；留空即沿用景點 AI 搜尋的 Gemini 模型。"
+    },
+    "hotspot_guide_gemini_model": {
+      "label": "Gemini 模型",
+      "help": "Flash 級能產生景點候選名單，但接地列出文章來源時較弱；Pro 級對新申請的金鑰可能不可用，請以連線測試結果為準。"
+    }
   },
   "hotspotTabs": {
     "label": "景點候選審核工作區",
@@ -169,36 +538,202 @@
     "loading": "正在載入方案與扣次設定…",
     "save": "儲存設定",
     "cancel": "取消",
-    "tabs": { "label": "方案與扣次設定分頁", "mobileLabel": "選擇設定分類", "trial": "註冊體驗", "packages": "公開方案", "costs": "功能扣次", "audit": "管理紀錄" },
-    "trial": { "title": "註冊體驗次數", "help": "只影響儲存後新建立的帳號；既有會員餘額不會改變。", "uses": "新會員贈送次數", "saved": "註冊體驗次數已更新。" },
-    "packages": { "title": "公開次數包", "help": "啟用的方案會依排序顯示在方案頁；本功能不包含付款。", "add": "新增方案", "createTitle": "建立新方案", "editTitle": "編輯方案", "saved": "方案設定已儲存。", "archived": "方案已封存。", "restored": "方案已重新啟用。", "archiveConfirm": "確定封存「{name}」？歷史帳本不受影響。", "name": "方案名稱", "uses": "包含次數", "price": "價格（TWD）", "order": "顯示順序", "active": "公開啟用", "featured": "推薦方案", "status": "狀態", "actions": "操作", "enabled": "已啟用", "archivedStatus": "已封存", "editNamed": "編輯 {name}", "archiveNamed": "封存 {name}", "restoreNamed": "重新啟用 {name}" },
-    "costs": { "title": "各功能消耗次數", "help": "0 代表免費；新設定不會改變已開始或已完成的操作。", "unit": "次", "save": "儲存全部扣次", "saved": "功能扣次設定已更新。" },
-    "locales": { "zh-TW": "繁體中文名稱", "zh-CN": "簡體中文名稱", "en": "英文名稱", "ja": "日文名稱", "ko": "韓文名稱" },
-    "operations": {
-      "travel_search": { "label": "一般旅程搜尋", "help": "一般機票、住宿或活動搜尋。" },
-      "flexible_flight_search": { "label": "彈性日期航班搜尋", "help": "啟用彈性日期的機票搜尋。" },
-      "flight_hotel_search": { "label": "機票加住宿搜尋", "help": "同時搜尋機票與住宿。" },
-      "full_trip_search": { "label": "完整旅程搜尋", "help": "跨三種以上模組的旅程最佳化搜尋。" },
-      "multi_city_search": { "label": "多城市搜尋", "help": "包含多個航段的城市旅程搜尋。" },
-      "public_airline_fare_search": { "label": "航空公開票價", "help": "查詢航空公司公開票價。" },
-      "back_to_back_fare_search": { "label": "公開倒買比較", "help": "使用公開票價進行兩趟倒買比較。" },
-      "live_back_to_back_fare_search": { "label": "即時倒買比較", "help": "使用即時供應商進行倒買比較。" },
-      "flight_status_lookup": { "label": "航班動態查詢", "help": "依班號或航線查詢即時航班狀態。" },
-      "ai_itinerary_generation": { "label": "AI 行程安排", "help": "AI 產生單日或完整行程。" },
-      "ai_itinerary_refine": { "label": "AI 行程微調", "help": "依旅客輸入的需求重排單日或整趟行程。" },
-      "itinerary_optimization": { "label": "行程動線最佳化", "help": "套用現有行程的動線最佳化。" },
-      "price_reoptimization": { "label": "旅程重新查價", "help": "重新查價並最佳化既有旅程。" }
+    "tabs": {
+      "label": "方案與扣次設定分頁",
+      "mobileLabel": "選擇設定分類",
+      "trial": "註冊體驗",
+      "packages": "公開方案",
+      "costs": "功能扣次",
+      "audit": "管理紀錄"
     },
-    "audit": { "title": "最近管理紀錄", "help": "保留操作者、目標與異動前後值。", "empty": "目前沒有方案或扣次異動紀錄。" },
-    "auditActions": { "usage_operation_costs_updated": "更新功能扣次", "usage_package_created": "建立方案", "usage_package_updated": "更新方案", "usage_package_archived": "封存方案", "registration_trial_updated": "更新註冊體驗" }
+    "trial": {
+      "title": "註冊體驗次數",
+      "help": "只影響儲存後新建立的帳號；既有會員餘額不會改變。",
+      "uses": "新會員贈送次數",
+      "saved": "註冊體驗次數已更新。"
+    },
+    "packages": {
+      "title": "公開次數包",
+      "help": "啟用的方案會依排序顯示在方案頁；本功能不包含付款。",
+      "add": "新增方案",
+      "createTitle": "建立新方案",
+      "editTitle": "編輯方案",
+      "saved": "方案設定已儲存。",
+      "archived": "方案已封存。",
+      "restored": "方案已重新啟用。",
+      "archiveConfirm": "確定封存「{name}」？歷史帳本不受影響。",
+      "name": "方案名稱",
+      "uses": "包含次數",
+      "price": "價格（TWD）",
+      "order": "顯示順序",
+      "active": "公開啟用",
+      "featured": "推薦方案",
+      "status": "狀態",
+      "actions": "操作",
+      "enabled": "已啟用",
+      "archivedStatus": "已封存",
+      "editNamed": "編輯 {name}",
+      "archiveNamed": "封存 {name}",
+      "restoreNamed": "重新啟用 {name}"
+    },
+    "costs": {
+      "title": "各功能消耗次數",
+      "help": "0 代表免費；新設定不會改變已開始或已完成的操作。",
+      "unit": "次",
+      "save": "儲存全部扣次",
+      "saved": "功能扣次設定已更新。"
+    },
+    "locales": {
+      "zh-TW": "繁體中文名稱",
+      "zh-CN": "簡體中文名稱",
+      "en": "英文名稱",
+      "ja": "日文名稱",
+      "ko": "韓文名稱"
+    },
+    "operations": {
+      "travel_search": {
+        "label": "一般旅程搜尋",
+        "help": "一般機票、住宿或活動搜尋。"
+      },
+      "flexible_flight_search": {
+        "label": "彈性日期航班搜尋",
+        "help": "啟用彈性日期的機票搜尋。"
+      },
+      "flight_hotel_search": {
+        "label": "機票加住宿搜尋",
+        "help": "同時搜尋機票與住宿。"
+      },
+      "full_trip_search": {
+        "label": "完整旅程搜尋",
+        "help": "跨三種以上模組的旅程最佳化搜尋。"
+      },
+      "multi_city_search": {
+        "label": "多城市搜尋",
+        "help": "包含多個航段的城市旅程搜尋。"
+      },
+      "public_airline_fare_search": {
+        "label": "航空公開票價",
+        "help": "查詢航空公司公開票價。"
+      },
+      "back_to_back_fare_search": {
+        "label": "公開倒買比較",
+        "help": "使用公開票價進行兩趟倒買比較。"
+      },
+      "live_back_to_back_fare_search": {
+        "label": "即時倒買比較",
+        "help": "使用即時供應商進行倒買比較。"
+      },
+      "flight_status_lookup": {
+        "label": "航班動態查詢",
+        "help": "依班號或航線查詢即時航班狀態。"
+      },
+      "ai_itinerary_generation": {
+        "label": "AI 行程安排",
+        "help": "AI 產生單日或完整行程。"
+      },
+      "ai_itinerary_refine": {
+        "label": "AI 行程微調",
+        "help": "依旅客輸入的需求重排單日或整趟行程。"
+      },
+      "itinerary_optimization": {
+        "label": "行程動線最佳化",
+        "help": "套用現有行程的動線最佳化。"
+      },
+      "price_reoptimization": {
+        "label": "旅程重新查價",
+        "help": "重新查價並最佳化既有旅程。"
+      }
+    },
+    "audit": {
+      "title": "最近管理紀錄",
+      "help": "保留操作者、目標與異動前後值。",
+      "empty": "目前沒有方案或扣次異動紀錄。"
+    },
+    "auditActions": {
+      "usage_operation_costs_updated": "更新功能扣次",
+      "usage_package_created": "建立方案",
+      "usage_package_updated": "更新方案",
+      "usage_package_archived": "封存方案",
+      "registration_trial_updated": "更新註冊體驗"
+    }
   },
   "analytics": {
-    "eyebrow": "PRODUCT ANALYTICS", "title": "流量與產品分析", "description": "以站內第一方資料觀察流量、來源與核心產品漏斗；不顯示個別會員行為。", "loadError": "無法載入分析資料。", "retry": "重試", "rangeLabel": "分析期間", "ranges": { "24h": "24 小時", "7d": "7 天", "30d": "30 天", "90d": "90 天", "12m": "12 個月" }, "includeBots": "包含機器流量", "refresh": "重新整理", "noComparison": "前期無資料", "trend": "流量趨勢", "timezone": "時區：{timezone}", "period": "期間", "funnel": "核心產品漏斗", "funnelRaw": "依不重複工作階段計算。", "funnelRollup": "超過原始資料保存期時採每日彙總口徑。", "authoritative": "權威營運總量", "authoritativeHelp": "直接由會員、搜尋、行程與外連資料表計算，與瀏覽器事件口徑分開。", "heatmap": "星期與小時熱區", "heatmapHelp": "以台北時區的公開頁面瀏覽量顯示。", "heatmapUnavailable": "此期間沒有可用的小時資料。", "weekday": "星期", "quality": "資料品質", "enabled": "已啟用", "disabled": "未啟用或未設定", "excluded": "已排除", "included": "已包含", "days": "天", "months": "個月",
-    "metrics": { "live_sessions_30m": "最近 30 分鐘工作階段", "page_views": "瀏覽量", "avg_daily_visitors": "平均每日不重複訪客", "sessions": "工作階段", "pages_per_session": "每次瀏覽頁數", "registration_completed": "完成註冊", "search_completed": "完成搜尋", "trip_created": "建立行程", "outbound_click": "外部連結" },
-    "funnelSteps": { "sessions": "工作階段", "search_completed": "完成搜尋", "trip_created": "建立行程", "outbound_click": "外部連結" },
-    "authoritativeMetrics": { "registrations": "會員註冊", "completed_searches": "完成搜尋", "trips_created": "建立行程", "affiliate_clicks": "聯盟外連" },
-    "rankings": { "pages": "熱門頁面", "sources": "來源", "devices": "裝置", "locales": "語言", "countries": "國家", "utm": "UTM 來源" },
-    "qualityFields": { "ga4": "GA4 cookieless 狀態", "started": "追蹤起始時間", "lastEvent": "最後事件", "lastRollup": "最後彙總日期", "country": "國碼覆蓋率", "bots": "機器流量", "rawRetention": "原始事件保存", "rollupRetention": "彙總保存" }
+    "eyebrow": "PRODUCT ANALYTICS",
+    "title": "流量與產品分析",
+    "description": "以站內第一方資料觀察流量、來源與核心產品漏斗；不顯示個別會員行為。",
+    "loadError": "無法載入分析資料。",
+    "retry": "重試",
+    "rangeLabel": "分析期間",
+    "ranges": {
+      "24h": "24 小時",
+      "7d": "7 天",
+      "30d": "30 天",
+      "90d": "90 天",
+      "12m": "12 個月"
+    },
+    "includeBots": "包含機器流量",
+    "refresh": "重新整理",
+    "noComparison": "前期無資料",
+    "trend": "流量趨勢",
+    "timezone": "時區：{timezone}",
+    "period": "期間",
+    "funnel": "核心產品漏斗",
+    "funnelRaw": "依不重複工作階段計算。",
+    "funnelRollup": "超過原始資料保存期時採每日彙總口徑。",
+    "authoritative": "權威營運總量",
+    "authoritativeHelp": "直接由會員、搜尋、行程與外連資料表計算，與瀏覽器事件口徑分開。",
+    "heatmap": "星期與小時熱區",
+    "heatmapHelp": "以台北時區的公開頁面瀏覽量顯示。",
+    "heatmapUnavailable": "此期間沒有可用的小時資料。",
+    "weekday": "星期",
+    "quality": "資料品質",
+    "enabled": "已啟用",
+    "disabled": "未啟用或未設定",
+    "excluded": "已排除",
+    "included": "已包含",
+    "days": "天",
+    "months": "個月",
+    "metrics": {
+      "live_sessions_30m": "最近 30 分鐘工作階段",
+      "page_views": "瀏覽量",
+      "avg_daily_visitors": "平均每日不重複訪客",
+      "sessions": "工作階段",
+      "pages_per_session": "每次瀏覽頁數",
+      "registration_completed": "完成註冊",
+      "search_completed": "完成搜尋",
+      "trip_created": "建立行程",
+      "outbound_click": "外部連結"
+    },
+    "funnelSteps": {
+      "sessions": "工作階段",
+      "search_completed": "完成搜尋",
+      "trip_created": "建立行程",
+      "outbound_click": "外部連結"
+    },
+    "authoritativeMetrics": {
+      "registrations": "會員註冊",
+      "completed_searches": "完成搜尋",
+      "trips_created": "建立行程",
+      "affiliate_clicks": "聯盟外連"
+    },
+    "rankings": {
+      "pages": "熱門頁面",
+      "sources": "來源",
+      "devices": "裝置",
+      "locales": "語言",
+      "countries": "國家",
+      "utm": "UTM 來源"
+    },
+    "qualityFields": {
+      "ga4": "GA4 cookieless 狀態",
+      "started": "追蹤起始時間",
+      "lastEvent": "最後事件",
+      "lastRollup": "最後彙總日期",
+      "country": "國碼覆蓋率",
+      "bots": "機器流量",
+      "rawRetention": "原始事件保存",
+      "rollupRetention": "彙總保存"
+    }
   },
   "layout": {
     "eyebrow": "SYSTEM ADMIN",
@@ -208,12 +743,30 @@
     "auditDescription": "只記錄操作者、實際異動欄位與更新後結果。",
     "auditAction": "更新版面設定",
     "fields": {
-      "hotspots_enabled": { "label": "熱門景點", "help": "控制熱門景點導覽與 /hotspots 頁面。" },
-      "trips_enabled": { "label": "我的旅行", "help": "控制旅程導覽、儲存旅程操作與 /trips 下的頁面。唯讀分享連結不受影響。" },
-      "alerts_enabled": { "label": "價格通知", "help": "控制價格通知導覽、建立通知操作與 /alerts 頁面。" },
-      "flight_status_enabled": { "label": "航班動態", "help": "控制航班動態導覽與 /flights/status 頁面。" },
-      "airline_fares_enabled": { "label": "航空票價實驗室", "help": "控制航空票價入口與 /labs/airlines 頁面。" },
-      "pricing_enabled": { "label": "方案與次數包", "help": "控制方案導覽、查看次數包操作與 /pricing 頁面。" }
+      "hotspots_enabled": {
+        "label": "熱門景點",
+        "help": "控制熱門景點導覽與 /hotspots 頁面。"
+      },
+      "trips_enabled": {
+        "label": "我的旅行",
+        "help": "控制旅程導覽、儲存旅程操作與 /trips 下的頁面。唯讀分享連結不受影響。"
+      },
+      "alerts_enabled": {
+        "label": "價格通知",
+        "help": "控制價格通知導覽、建立通知操作與 /alerts 頁面。"
+      },
+      "flight_status_enabled": {
+        "label": "航班動態",
+        "help": "控制航班動態導覽與 /flights/status 頁面。"
+      },
+      "airline_fares_enabled": {
+        "label": "航空票價實驗室",
+        "help": "控制航空票價入口與 /labs/airlines 頁面。"
+      },
+      "pricing_enabled": {
+        "label": "方案與次數包",
+        "help": "控制方案導覽、查看次數包操作與 /pricing 頁面。"
+      }
     }
   },
   "hotspotPlacesPanel": {
@@ -371,7 +924,7 @@
       "description": "只部署已通過 CI 的最新 main；由受限主機代理執行備份、migration、健康檢查與應用程式回退。"
     }
   },
- "usersPanel": {
+  "usersPanel": {
     "reservedOfTotal": "／ {count}",
     "entry": {
       "grant": "註冊贈送",
@@ -447,221 +1000,282 @@
     "entrySummary": "{summary} · 餘額 {balance}",
     "usageEmpty": "尚無使用紀錄。",
     "adminHistory": "最近管理紀錄",
-    "adminEmpty": "尚無管理紀錄。","confirmDisable":"再按一次確認停用","confirmRemoveAdmin":"再按一次確認移除","confirmCancel":"取消"},
- "hotspotsPanel": {
-   "roleExtension": "跨城（{parentId}）",
-   "roleSecondary": "二線城市",
-   "rolePrimary": "主要城市",
-   "reviewed": "已更新 {count} 筆景點候選",
-   "depthSet": "已設定 {count} 筆深度景點",
-   "depthCleared": "已移除 {count} 筆深度標記",
-   "moved": "已移動 {count} 筆景點至 {destination}",
-   "candidateFound": "找到候選，請人工比對名稱與地址。",
-   "candidateNone": "找不到唯一候選。",
-   "locationSaved": "已儲存精準地點。",
-   "filtersLabel": "篩選條件",
-   "filtersShow": "展開篩選條件",
-   "filtersHide": "收合篩選條件",
-   "filterCountry": "國家／地區",
-   "filterCategory": "景點分類",
-   "statusFilter": "審核狀態",
-   "statusPending": "待審",
-   "statusApproved": "人工核准",
-   "statusAutoApproved": "自動核准",
-   "statusRejected": "已拒絕",
-   "statusDisabled": "已停用",
-   "statusAll": "全部狀態",
-   "cityCode": "城市代碼",
-   "cityCodePlaceholder": "城市代碼，例如 TPE",
-   "destinationId": "目的地 ID",
-   "roleFilter": "城市層級",
-   "roleAll": "全部層級",
-   "roleExtensionOption": "跨城延伸",
-   "parentId": "母目的地 ID",
-   "originFilter": "資料來源",
-   "originAll": "全部來源",
-   "originCurated": "人工啟動資料",
-   "originWikimedia": "Wikimedia 探索",
-   "totals": "共 {total} 筆，已選 {selected} 筆",
-   "approve": "核准",
-   "reject": "拒絕",
-   "disable": "停用",
-   "moveTo": "移動至目的地",
-   "moveToPlaceholder": "移動至目的地 ID",
-   "moveButton": "移動目的地",
-   "depthKind": "深度類型",
-   "depthUrbanLocal": "市區巷弄",
-   "depthDayTrip": "近郊",
-   "accessMinutes": "交通分鐘",
-   "durationMinutes": "停留分鐘",
-   "depthReason": "深度理由",
-   "depthReasonPlaceholder": "深度旅遊理由",
-   "setDepth": "設定深度景點",
-   "clearDepth": "移除深度標記",
-   "locationTitle": "精準地點：{name}",
-   "locationHint": "Places 候選座標只供比對；永久座標必須附獨立來源。",
-   "close": "關閉",
-   "latitude": "緯度",
-   "longitude": "經度",
-   "coordinateSourceType": "座標來源類型",
-   "coordinateSourcePending": "待補",
-   "coordinateSourceOfficialTourism": "官方觀光",
-   "coordinateSourceAdminVerified": "人工查核",
-   "coordinateSourceCurated": "人工主檔",
-   "coordinateSourceUrl": "座標來源網址",
-   "naverUrl": "Naver 精準地點頁",
-   "matchStatus": "比對狀態",
-   "matchUnverified": "待驗證",
-   "matchVerified": "已驗證",
-   "matchAmbiguous": "模糊",
-   "matchDisabled": "停用",
-   "searchGoogle": "搜尋 Google 候選",
-   "saveLocation": "儲存地點",
-   "temporaryCoordinates": "暫存比對座標：",
-   "applyPlaceId": "套用 Place ID，仍需人工確認",
-   "thSelect": "選取",
-   "thHotspot": "景點",
-   "thCategoryCity": "分類／城市",
-   "thDepth": "深度設定",
-   "thDistance": "距離",
-   "thViews": "30 天瀏覽",
-   "thStatus": "狀態／原因",
-   "thMap": "地圖",
-   "thSources": "來源",
-   "selectAllGroup": "全選 {name}（{code}）",
-   "selectItem": "選取 {name}",
-   "pageCount": "本頁 {count} 筆",
-   "noQid": "無 QID",
-   "area": "區域：{name}",
-   "depthLine": "交通 {access}／停留 {duration} 分",
-   "coordinateSourceMissing": "待補座標來源",
-   "editLocation": "編輯地點",
-   "sourceN": "來源 {index}",
-   "empty": "沒有符合條件的候選景點",
-   "paginationLabel": "景點候選換頁",
-   "previous": "上一頁",
-   "pageOf": "第 {page}／{pages} 頁",
-   "next": "下一頁"
- },
- "foodMerchantsPanel": {
-   "verifiedActivated": "已將 {count} 間店家設為已驗證、核准並啟用。",
-   "disabledCount": "已停用 {count} 間店家。",
-   "noNonKorean": "所選項目沒有可使用 Google 候選搜尋的非韓國店家。",
-   "batchDone": "已完成 {total} 間 Google 候選搜尋，{found} 間有候選{skipped}。請逐筆比對後套用。",
-   "skippedKorean": "；略過 {count} 間韓國店家",
-   "placeApplied": "{name} 已套用 Place ID，仍保留人工審核。",
-   "candidateFound": "找到候選；請比對名稱與地址後再套用 Place ID。",
-   "candidateNone": "找不到唯一候選。",
-   "locationSaved": "已儲存店家地點與來源資料。",
-   "eyebrow": "精準店家地點",
-   "title": "店家、地圖識別與永久座標",
-   "description": "未驗證的啟動候選不會公開。Google Places 座標僅用來比對，永久座標必須另附官方或人工查核來源。",
-   "searchLabel": "店家搜尋",
-   "searchPlaceholder": "店名或 slug",
-   "matchFilter": "地圖比對狀態",
-   "matchAll": "全部比對狀態",
-   "matchUnverified": "待驗證",
-   "matchVerified": "已驗證",
-   "matchAmbiguous": "模糊",
-   "matchDisabled": "已停用",
-   "matchMapDisabled": "地圖停用",
-   "officialFilter": "官方資料狀態",
-   "officialAll": "全部官方資料",
-   "officialFilled": "官方資料已填",
-   "officialMissing": "官方資料未填",
-   "deselectAll": "取消全選",
-   "selectVisible": "全選目前項目",
-   "selectedCount": "已選 {count} 間",
-   "batchSearch": "批次搜尋 Google 候選",
-   "batchVerify": "批次設為已驗證並啟用",
-   "batchDisable": "批次停用",
-   "candidatesTitle": "Google 候選人工比對",
-   "candidatesHint": "候選座標只供比較，不會寫入永久座標。請確認店名與地址後逐筆套用 Place ID。",
-   "notConfigured": "Google Places 自動比對未設定。",
-   "applyPlaceId": "套用 Place ID，保留人工審核",
-   "noCandidates": "沒有候選。",
-   "thSelect": "選取",
-   "thMerchant": "店家",
-   "thDestinationCuisine": "目的地／料理",
-   "thMapIdentity": "地圖識別",
-   "thCoordinates": "永久座標",
-   "thOfficial": "官方資料",
-   "thPublish": "發布",
-   "thActions": "操作",
-   "selectItem": "選取 {name}",
-   "noPlaceId": "無精準識別",
-   "coordinateSourceMissing": "座標來源待補",
-   "websiteFilled": "官網已填",
-   "websiteMissing": "官網待補",
-   "sourcesLine": "直接佐證 {direct} · 背景 {context}",
-   "active": "啟用",
-   "inactive": "停用",
-   "editButton": "編輯地點與來源",
-   "close": "關閉",
-   "name": "店名",
-   "localName": "當地店名",
-   "latitude": "緯度",
-   "longitude": "經度",
-   "coordinateSourceType": "座標來源類型",
-   "coordinateSourcePending": "待補",
-   "coordinateSourceOfficialTourism": "官方觀光",
-   "coordinateSourceMerchantOfficial": "店家官方",
-   "coordinateSourceAdminVerified": "人工查核",
-   "coordinateSourceUrl": "座標來源網址",
-   "naverUrl": "Naver 精準地點頁",
-   "searchGoogle": "搜尋 Google 候選",
-   "temporaryCoordinates": "暫存比對座標（不得作為永久來源）：",
-   "sourcesTitle": "店家官網與官方佐證",
-   "sourcesHint": "區域政府觀光頁只屬於目的地背景；只有直接列出店家或店家自己的官網，才能佐證店名、地址、官網與叫車座標。",
-   "addSource": "新增直接來源",
-   "officialWebsite": "店家官方網站",
-   "sourceN": "來源 {index}",
-   "remove": "移除",
-   "sourceType": "來源類型",
-   "sourceTypeMerchantOfficial": "店家官方",
-   "sourceTypeOfficialTourism": "政府／官方觀光",
-   "sourceTypeMichelin": "授權米其林",
-   "sourceScope": "佐證範圍",
-   "scopeDestinationContext": "目的地背景（不佐證店家）",
-   "scopeMerchantListing": "官方店家名錄",
-   "scopeMerchantWebsite": "店家官網",
-   "scopeCoordinates": "永久座標來源",
-   "sourceTitle": "來源標題",
-   "sourceUrl": "HTTPS 來源網址",
-   "claimDisplayName": "店名",
-   "claimAddress": "地址",
-   "claimOfficialWebsite": "官網",
-   "claimCoordinates": "座標",
-   "reviewPending": "待審",
-   "reviewApproved": "核准",
-   "reviewRejected": "拒絕",
-   "reviewDisabled": "停用",
-   "activeLabel": "啟用",
-   "saveMerchant": "儲存店家地點"
- },
-  "providerSecrets": {
-    "auth_google_client_secret": { "label": "Google OAuth Client Secret", "help": "只在伺服器端加密保存。" },
-    "auth_line_channel_secret": { "label": "LINE Channel Secret", "help": "只用於 LINE Login token exchange。" },
-    "auth_apple_private_key": { "label": "Apple .p8 Private Key", "help": "可貼上 PEM 或將換行寫成 \\n；只在伺服器端加密保存。" },
-    "openai_api_key": { "label": "OpenAI API Key", "help": "只在伺服器端加密保存，不會傳到瀏覽器。" },
-    "anthropic_api_key": { "label": "Anthropic API Key", "help": "用於 Claude Messages API。" },
-    "minimax_api_key": { "label": "MiniMax API Key", "help": "用於 MiniMax Responses API。" },
-    "google_maps_api_key": { "label": "伺服器 API Key", "help": "啟用 Places API (New)、Routes API 與 Weather API；建議限制主機出口 IP。" },
-    "next_public_google_maps_browser_key": { "label": "瀏覽器地圖 Key", "help": "填入 Key 不會自動載入地圖；請先啟用 Maps JavaScript API、放行 https://mokaair.com/* 與 https://www.mokaair.com/*，驗證完成後再開啟上方安全閘門。" },
-    "naver_maps_client_id": { "label": "NAVER Cloud Client ID", "help": "伺服器 API 與瀏覽器 Dynamic Map 使用；瀏覽器公開值必須限制正式網站來源。" },
-    "naver_maps_client_secret": { "label": "NAVER Cloud Client Secret", "help": "只在伺服器端加密保存，絕不回傳瀏覽器。" },
-    "navitime_client_id": { "label": "Client ID", "help": "只有直接契約需要，會放在請求路徑；使用 RapidAPI 金鑰時可留空。" },
-    "navitime_api_key": { "label": "API Key", "help": "RapidAPI 的 X-RapidAPI-Key（Basic 方案每月 500 次），或直接契約金鑰。" },
-    "ekispert_api_key": { "label": "Ekispert Access Key", "help": "只在伺服器端加密保存；路線請求會使用官方 key 參數。" },
-    "odsay_api_key": { "label": "ODsay Server Key", "help": "請使用已綁定正式伺服器固定出口 IP 的 Server Key，不要填入瀏覽器 Web Key。" },
-    "kkday_api_key": { "label": "核准後 API Key" },
-    "klook_api_key": { "label": "核准後 API Key" },
-    "agoda_api_key": { "label": "核准後 API Key" },
-    "hotspot_guide_youtube_api_key": { "label": "YouTube Data API Key", "help": "只用於影片搜尋；每日配額由上方上限控管。" },
-    "hotspot_guide_brave_api_key": { "label": "Brave Search API Key", "help": "只在伺服器端加密保存。" },
-    "hotspot_guide_gemini_api_key": { "label": "Gemini API Key", "help": "用於多語文章搜尋與景點候選名單產生；只在伺服器端加密保存。" }
+    "adminEmpty": "尚無管理紀錄。",
+    "confirmDisable": "再按一次確認停用",
+    "confirmRemoveAdmin": "再按一次確認移除",
+    "confirmCancel": "取消"
   },
-  "settingsPanel":   {
+  "hotspotsPanel": {
+    "roleExtension": "跨城（{parentId}）",
+    "roleSecondary": "二線城市",
+    "rolePrimary": "主要城市",
+    "reviewed": "已更新 {count} 筆景點候選",
+    "depthSet": "已設定 {count} 筆深度景點",
+    "depthCleared": "已移除 {count} 筆深度標記",
+    "moved": "已移動 {count} 筆景點至 {destination}",
+    "candidateFound": "找到候選，請人工比對名稱與地址。",
+    "candidateNone": "找不到唯一候選。",
+    "locationSaved": "已儲存精準地點。",
+    "filtersLabel": "篩選條件",
+    "filtersShow": "展開篩選條件",
+    "filtersHide": "收合篩選條件",
+    "filterCountry": "國家／地區",
+    "filterCategory": "景點分類",
+    "statusFilter": "審核狀態",
+    "statusPending": "待審",
+    "statusApproved": "人工核准",
+    "statusAutoApproved": "自動核准",
+    "statusRejected": "已拒絕",
+    "statusDisabled": "已停用",
+    "statusAll": "全部狀態",
+    "cityCode": "城市代碼",
+    "cityCodePlaceholder": "城市代碼，例如 TPE",
+    "destinationId": "目的地 ID",
+    "roleFilter": "城市層級",
+    "roleAll": "全部層級",
+    "roleExtensionOption": "跨城延伸",
+    "parentId": "母目的地 ID",
+    "originFilter": "資料來源",
+    "originAll": "全部來源",
+    "originCurated": "人工啟動資料",
+    "originWikimedia": "Wikimedia 探索",
+    "totals": "共 {total} 筆，已選 {selected} 筆",
+    "approve": "核准",
+    "reject": "拒絕",
+    "disable": "停用",
+    "moveTo": "移動至目的地",
+    "moveToPlaceholder": "移動至目的地 ID",
+    "moveButton": "移動目的地",
+    "depthKind": "深度類型",
+    "depthUrbanLocal": "市區巷弄",
+    "depthDayTrip": "近郊",
+    "accessMinutes": "交通分鐘",
+    "durationMinutes": "停留分鐘",
+    "depthReason": "深度理由",
+    "depthReasonPlaceholder": "深度旅遊理由",
+    "setDepth": "設定深度景點",
+    "clearDepth": "移除深度標記",
+    "locationTitle": "精準地點：{name}",
+    "locationHint": "Places 候選座標只供比對；永久座標必須附獨立來源。",
+    "close": "關閉",
+    "latitude": "緯度",
+    "longitude": "經度",
+    "coordinateSourceType": "座標來源類型",
+    "coordinateSourcePending": "待補",
+    "coordinateSourceOfficialTourism": "官方觀光",
+    "coordinateSourceAdminVerified": "人工查核",
+    "coordinateSourceCurated": "人工主檔",
+    "coordinateSourceUrl": "座標來源網址",
+    "naverUrl": "Naver 精準地點頁",
+    "matchStatus": "比對狀態",
+    "matchUnverified": "待驗證",
+    "matchVerified": "已驗證",
+    "matchAmbiguous": "模糊",
+    "matchDisabled": "停用",
+    "searchGoogle": "搜尋 Google 候選",
+    "saveLocation": "儲存地點",
+    "temporaryCoordinates": "暫存比對座標：",
+    "applyPlaceId": "套用 Place ID，仍需人工確認",
+    "thSelect": "選取",
+    "thHotspot": "景點",
+    "thCategoryCity": "分類／城市",
+    "thDepth": "深度設定",
+    "thDistance": "距離",
+    "thViews": "30 天瀏覽",
+    "thStatus": "狀態／原因",
+    "thMap": "地圖",
+    "thSources": "來源",
+    "selectAllGroup": "全選 {name}（{code}）",
+    "selectItem": "選取 {name}",
+    "pageCount": "本頁 {count} 筆",
+    "noQid": "無 QID",
+    "area": "區域：{name}",
+    "depthLine": "交通 {access}／停留 {duration} 分",
+    "coordinateSourceMissing": "待補座標來源",
+    "editLocation": "編輯地點",
+    "sourceN": "來源 {index}",
+    "empty": "沒有符合條件的候選景點",
+    "paginationLabel": "景點候選換頁",
+    "previous": "上一頁",
+    "pageOf": "第 {page}／{pages} 頁",
+    "next": "下一頁"
+  },
+  "foodMerchantsPanel": {
+    "verifiedActivated": "已將 {count} 間店家設為已驗證、核准並啟用。",
+    "disabledCount": "已停用 {count} 間店家。",
+    "noNonKorean": "所選項目沒有可使用 Google 候選搜尋的非韓國店家。",
+    "batchDone": "已完成 {total} 間 Google 候選搜尋，{found} 間有候選{skipped}。請逐筆比對後套用。",
+    "skippedKorean": "；略過 {count} 間韓國店家",
+    "placeApplied": "{name} 已套用 Place ID，仍保留人工審核。",
+    "candidateFound": "找到候選；請比對名稱與地址後再套用 Place ID。",
+    "candidateNone": "找不到唯一候選。",
+    "locationSaved": "已儲存店家地點與來源資料。",
+    "eyebrow": "精準店家地點",
+    "title": "店家、地圖識別與永久座標",
+    "description": "未驗證的啟動候選不會公開。Google Places 座標僅用來比對，永久座標必須另附官方或人工查核來源。",
+    "searchLabel": "店家搜尋",
+    "searchPlaceholder": "店名或 slug",
+    "matchFilter": "地圖比對狀態",
+    "matchAll": "全部比對狀態",
+    "matchUnverified": "待驗證",
+    "matchVerified": "已驗證",
+    "matchAmbiguous": "模糊",
+    "matchDisabled": "已停用",
+    "matchMapDisabled": "地圖停用",
+    "officialFilter": "官方資料狀態",
+    "officialAll": "全部官方資料",
+    "officialFilled": "官方資料已填",
+    "officialMissing": "官方資料未填",
+    "deselectAll": "取消全選",
+    "selectVisible": "全選目前項目",
+    "selectedCount": "已選 {count} 間",
+    "batchSearch": "批次搜尋 Google 候選",
+    "batchVerify": "批次設為已驗證並啟用",
+    "batchDisable": "批次停用",
+    "candidatesTitle": "Google 候選人工比對",
+    "candidatesHint": "候選座標只供比較，不會寫入永久座標。請確認店名與地址後逐筆套用 Place ID。",
+    "notConfigured": "Google Places 自動比對未設定。",
+    "applyPlaceId": "套用 Place ID，保留人工審核",
+    "noCandidates": "沒有候選。",
+    "thSelect": "選取",
+    "thMerchant": "店家",
+    "thDestinationCuisine": "目的地／料理",
+    "thMapIdentity": "地圖識別",
+    "thCoordinates": "永久座標",
+    "thOfficial": "官方資料",
+    "thPublish": "發布",
+    "thActions": "操作",
+    "selectItem": "選取 {name}",
+    "noPlaceId": "無精準識別",
+    "coordinateSourceMissing": "座標來源待補",
+    "websiteFilled": "官網已填",
+    "websiteMissing": "官網待補",
+    "sourcesLine": "直接佐證 {direct} · 背景 {context}",
+    "active": "啟用",
+    "inactive": "停用",
+    "editButton": "編輯地點與來源",
+    "close": "關閉",
+    "name": "店名",
+    "localName": "當地店名",
+    "latitude": "緯度",
+    "longitude": "經度",
+    "coordinateSourceType": "座標來源類型",
+    "coordinateSourcePending": "待補",
+    "coordinateSourceOfficialTourism": "官方觀光",
+    "coordinateSourceMerchantOfficial": "店家官方",
+    "coordinateSourceAdminVerified": "人工查核",
+    "coordinateSourceUrl": "座標來源網址",
+    "naverUrl": "Naver 精準地點頁",
+    "searchGoogle": "搜尋 Google 候選",
+    "temporaryCoordinates": "暫存比對座標（不得作為永久來源）：",
+    "sourcesTitle": "店家官網與官方佐證",
+    "sourcesHint": "區域政府觀光頁只屬於目的地背景；只有直接列出店家或店家自己的官網，才能佐證店名、地址、官網與叫車座標。",
+    "addSource": "新增直接來源",
+    "officialWebsite": "店家官方網站",
+    "sourceN": "來源 {index}",
+    "remove": "移除",
+    "sourceType": "來源類型",
+    "sourceTypeMerchantOfficial": "店家官方",
+    "sourceTypeOfficialTourism": "政府／官方觀光",
+    "sourceTypeMichelin": "授權米其林",
+    "sourceScope": "佐證範圍",
+    "scopeDestinationContext": "目的地背景（不佐證店家）",
+    "scopeMerchantListing": "官方店家名錄",
+    "scopeMerchantWebsite": "店家官網",
+    "scopeCoordinates": "永久座標來源",
+    "sourceTitle": "來源標題",
+    "sourceUrl": "HTTPS 來源網址",
+    "claimDisplayName": "店名",
+    "claimAddress": "地址",
+    "claimOfficialWebsite": "官網",
+    "claimCoordinates": "座標",
+    "reviewPending": "待審",
+    "reviewApproved": "核准",
+    "reviewRejected": "拒絕",
+    "reviewDisabled": "停用",
+    "activeLabel": "啟用",
+    "saveMerchant": "儲存店家地點"
+  },
+  "providerSecrets": {
+    "auth_google_client_secret": {
+      "label": "Google OAuth Client Secret",
+      "help": "只在伺服器端加密保存。"
+    },
+    "auth_line_channel_secret": {
+      "label": "LINE Channel Secret",
+      "help": "只用於 LINE Login token exchange。"
+    },
+    "auth_apple_private_key": {
+      "label": "Apple .p8 Private Key",
+      "help": "可貼上 PEM 或將換行寫成 \\n；只在伺服器端加密保存。"
+    },
+    "openai_api_key": {
+      "label": "OpenAI API Key",
+      "help": "只在伺服器端加密保存，不會傳到瀏覽器。"
+    },
+    "anthropic_api_key": {
+      "label": "Anthropic API Key",
+      "help": "用於 Claude Messages API。"
+    },
+    "minimax_api_key": {
+      "label": "MiniMax API Key",
+      "help": "用於 MiniMax Responses API。"
+    },
+    "google_maps_api_key": {
+      "label": "伺服器 API Key",
+      "help": "啟用 Places API (New)、Routes API 與 Weather API；建議限制主機出口 IP。"
+    },
+    "next_public_google_maps_browser_key": {
+      "label": "瀏覽器地圖 Key",
+      "help": "填入 Key 不會自動載入地圖；請先啟用 Maps JavaScript API、放行 https://mokaair.com/* 與 https://www.mokaair.com/*，驗證完成後再開啟上方安全閘門。"
+    },
+    "naver_maps_client_id": {
+      "label": "NAVER Cloud Client ID",
+      "help": "伺服器 API 與瀏覽器 Dynamic Map 使用；瀏覽器公開值必須限制正式網站來源。"
+    },
+    "naver_maps_client_secret": {
+      "label": "NAVER Cloud Client Secret",
+      "help": "只在伺服器端加密保存，絕不回傳瀏覽器。"
+    },
+    "navitime_client_id": {
+      "label": "Client ID",
+      "help": "只有直接契約需要，會放在請求路徑；使用 RapidAPI 金鑰時可留空。"
+    },
+    "navitime_api_key": {
+      "label": "API Key",
+      "help": "RapidAPI 的 X-RapidAPI-Key（Basic 方案每月 500 次），或直接契約金鑰。"
+    },
+    "ekispert_api_key": {
+      "label": "Ekispert Access Key",
+      "help": "只在伺服器端加密保存；路線請求會使用官方 key 參數。"
+    },
+    "odsay_api_key": {
+      "label": "ODsay Server Key",
+      "help": "請使用已綁定正式伺服器固定出口 IP 的 Server Key，不要填入瀏覽器 Web Key。"
+    },
+    "kkday_api_key": {
+      "label": "核准後 API Key"
+    },
+    "klook_api_key": {
+      "label": "核准後 API Key"
+    },
+    "agoda_api_key": {
+      "label": "核准後 API Key"
+    },
+    "hotspot_guide_youtube_api_key": {
+      "label": "YouTube Data API Key",
+      "help": "只用於影片搜尋；每日配額由上方上限控管。"
+    },
+    "hotspot_guide_brave_api_key": {
+      "label": "Brave Search API Key",
+      "help": "只在伺服器端加密保存。"
+    },
+    "hotspot_guide_gemini_api_key": {
+      "label": "Gemini API Key",
+      "help": "用於多語文章搜尋與景點候選名單產生；只在伺服器端加密保存。"
+    }
+  },
+  "settingsPanel": {
     "sources": {
       "database": "後台加密設定",
       "environment": "主機環境",
