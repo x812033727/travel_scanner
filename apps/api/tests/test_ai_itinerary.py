@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from datetime import date
+from pathlib import Path
 from typing import Any
 
 import httpx
@@ -11,6 +12,9 @@ from pydantic import ValidationError
 import app.ai.itinerary as itinerary_module
 import app.trips.router as trip_router
 from app.ai.itinerary import (
+    MAX_CANDIDATE_ACCESS_MINUTES,
+    MAX_CANDIDATE_DURATION_MINUTES,
+    MIN_CANDIDATE_DURATION_MINUTES,
     AIDraftDay,
     AIDraftItem,
     AIItineraryDraft,
@@ -20,6 +24,8 @@ from app.ai.itinerary import (
     AnthropicPlannerProvider,
     GeminiPlannerProvider,
     ResponsesPlannerProvider,
+    clamp_candidate_access,
+    clamp_candidate_duration,
     fallback_draft,
     normalize_draft,
 )
@@ -786,3 +792,83 @@ def test_itinerary_generation_scope_is_backward_compatible_and_validated() -> No
             scope="trip",
             day_date=date(2026, 11, 11),
         )
+
+
+def test_candidate_minutes_are_clamped_into_the_planner_bounds() -> None:
+    assert clamp_candidate_duration(20) == MIN_CANDIDATE_DURATION_MINUTES
+    assert clamp_candidate_duration(120) == 120
+    assert clamp_candidate_duration(9_000) == MAX_CANDIDATE_DURATION_MINUTES
+    assert clamp_candidate_duration(None) == 120
+
+    assert clamp_candidate_access(-5) == 0
+    assert clamp_candidate_access(45) == 45
+    assert clamp_candidate_access(600) == MAX_CANDIDATE_ACCESS_MINUTES
+    assert clamp_candidate_access(None) == 0
+
+
+def test_a_seeded_place_shorter_than_a_slot_becomes_a_candidate_instead_of_a_500() -> None:
+    """忠犬八公像 is seeded at 20 minutes, which is true and below the planner's minimum slot.
+
+    Before the clamp this raised a pydantic ValidationError inside the request handler. Only
+    AppError and RequestValidationError have handlers, so it escaped as a 500 and every AI
+    planning request for Tokyo failed - the place is ranked fifth there, well inside the
+    candidate window.
+    """
+    candidate = AIPlannerCandidate(
+        key="hotspot:nrt-hachiko-statue",
+        kind="hotspot",
+        name="忠犬八公像",
+        category="landmark",
+        latitude=35.659,
+        longitude=139.700,
+        duration_minutes=clamp_candidate_duration(20),
+        access_minutes=clamp_candidate_access(None),
+    )
+    assert candidate.duration_minutes == MIN_CANDIDATE_DURATION_MINUTES
+
+    with pytest.raises(ValidationError):
+        AIPlannerCandidate(
+            key="hotspot:unclamped",
+            kind="hotspot",
+            name="忠犬八公像",
+            category="landmark",
+            latitude=35.659,
+            longitude=139.700,
+            duration_minutes=20,
+        )
+
+
+def test_every_shipped_seed_value_survives_the_clamp() -> None:
+    """The bound is only as good as the data that reaches it, and the seeds are unvalidated.
+
+    ``recommended_duration_minutes`` lands in ``metadata_json``, a free-form JSON column the
+    seed importer does not check even though ``hotspots/admin_router.py`` checks the same
+    field for admin edits. This walks the real seed files so the next out-of-range value
+    fails here rather than in production.
+    """
+    seeds = sorted((Path(itinerary_module.__file__).parents[1] / "hotspots").glob("*.json"))
+    assert seeds, "expected the hotspot seed files to be importable"
+
+    checked = 0
+    for path in seeds:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        rows = payload if isinstance(payload, list) else payload.get("hotspots") or []
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            duration = row.get("recommended_duration_minutes")
+            access = row.get("access_minutes")
+            if duration is None and access is None:
+                continue
+            checked += 1
+            AIPlannerCandidate(
+                key=f"hotspot:{row.get('slug', 'seed')}",
+                kind="hotspot",
+                name=row.get("name") or "seed",
+                category=row.get("category") or "landmark",
+                latitude=0.0,
+                longitude=0.0,
+                duration_minutes=clamp_candidate_duration(duration),
+                access_minutes=clamp_candidate_access(access),
+            )
+    assert checked > 100, f"only {checked} seed rows carried the fields under test"
