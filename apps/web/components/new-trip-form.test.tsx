@@ -13,14 +13,14 @@ vi.mock("./place-picker", () => ({
  * hand those requests the response meant for the trip submission. This answers them
  * separately and leaves `mock` seeing only the calls the test is about.
  */
-function stubFetch(mock: ReturnType<typeof vi.fn>) {
+function stubFetch(mock: unknown) {
+  const submit = mock as (input: unknown, init?: RequestInit) => unknown;
   const empty = { country: "TW", country_name: "臺灣", locale: "zh-TW", coverage_start: null, coverage_end: null, attribution: "", holidays: [] };
   vi.stubGlobal("fetch", vi.fn((input: unknown, init?: RequestInit) => (
     String(input).includes("/holidays")
       ? Promise.resolve(new Response(JSON.stringify(empty), { status: 200, headers: { "Content-Type": "application/json" } }))
-      : mock(input, init)
+      : submit(input, init)
   )));
-  return mock;
 }
 
 function dayButton(iso: string) {
