@@ -98,6 +98,7 @@ from app.trips.route_planner import (
     load_route_segments,
     persist_projected_segments,
     project_day_schedule,
+    project_day_with_estimates,
     routing_summary,
     segment_from_record,
 )
@@ -1378,6 +1379,63 @@ async def _enrich_ai_places(
     if outcomes and not all(outcomes):
         planning.planning.status = "partial"
         planning.planning.warnings.append("部分 AI 地點仍需由使用者確認")
+
+
+async def reproject_saved_times(
+    session: AsyncSession,
+    trip: TripPlan,
+    rows: list[TripPlanItem],
+    touched_pairs: set[tuple[UUID, UUID]],
+) -> list[dict[str, Any]]:
+    """Re-chain the days a save disturbed, spending nothing.
+
+    The editor chains the times on screen itself, but the rows in the database keep the
+    old ones until someone asks for routes, and the share page, the offline cache and
+    the conflict list all read the database. This walks the affected days with the
+    segments that survived plus a distance estimate for the rest, writes the times back
+    and returns the conflicts it found. No provider is called and no estimate is stored.
+    """
+    touched_ids = {item_id for pair in touched_pairs for item_id in pair}
+    days = sorted(
+        {
+            row.day_date
+            for row in rows
+            if row.day_date is not None and (row.id in touched_ids or not touched_pairs)
+        }
+    )
+    if not days:
+        return []
+    settings_by_day = {
+        setting.day_date: setting for setting in await load_day_settings(session, trip.id)
+    }
+    conflicts: list[dict[str, Any]] = []
+    for day_value in days:
+        day_rows = active_route_rows(rows, day_value)
+        if len(day_rows) < 2:
+            continue
+        saved = [
+            segment_from_record(record)
+            for record in await load_route_segments(session, trip.id, day_date=day_value)
+        ]
+        points = {
+            row.id: point for row in day_rows if (point := route_point(row)) is not None
+        }
+        setting = settings_by_day.get(day_value)
+        projection = project_day_with_estimates(
+            day_rows,
+            saved,
+            points,
+            cast(TravelMode, setting.default_travel_mode if setting else "transit"),
+            buffer_minutes=setting.default_buffer_minutes if setting else 0,
+        )
+        for row in day_rows:
+            if row.fixed_time or row.id not in projection.item_times:
+                continue
+            row.start_time, row.end_time = projection.item_times[row.id]
+        conflicts.extend(
+            conflict.model_dump(mode="json") for conflict in projection.impact.conflicts
+        )
+    return conflicts
 
 
 def route_point(item: TripPlanItem) -> RoutePoint | None:
@@ -2785,6 +2843,7 @@ async def update_itinerary(
         # a distance estimate for them until the traveller asks for routes, and that
         # compute only spends provider requests on the missing pairs because
         # route_tasks reuses the surviving rows.
+        conflicts = await reproject_saved_times(session, trip, next_rows, invalid_pairs)
         trip.data = {
             **trip.data,
             "routing": {
@@ -2792,6 +2851,7 @@ async def update_itinerary(
                 "total": max(0, route_pair_count(next_rows)),
                 "completed": len(new_pairs - invalid_pairs),
                 "warnings": ["行程已變更，受影響的移動時間需要重新計算。"],
+                "conflicts": conflicts,
                 "updated_at": datetime.now(UTC).isoformat(),
             },
         }

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections.abc import Mapping
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from typing import Any, cast
@@ -10,7 +11,13 @@ from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import TripPlan, TripPlanItem, TripRouteDaySetting, TripRouteSegment
-from app.trips.routing import RouteSegment, RouteStep, TravelMode
+from app.trips.routing import (
+    RoutePoint,
+    RouteSegment,
+    RouteStep,
+    TravelMode,
+    estimate_leg_minutes,
+)
 
 DEFAULT_TRAVEL_MODE: TravelMode = "transit"
 DEFAULT_BUFFER_MINUTES = 10
@@ -143,6 +150,61 @@ def project_day_schedule(
         item_times=item_times,
         segments=projected_segments,
     )
+
+
+ESTIMATED_SEGMENT_PROVIDER = "estimate"
+
+
+def estimated_segment(
+    origin: RoutePoint,
+    destination: RoutePoint,
+    travel_mode: TravelMode,
+    *,
+    buffer_minutes: int = 0,
+) -> RouteSegment:
+    """A leg nobody has routed yet, timed the way the planner already shows it."""
+    return RouteSegment(
+        from_item_id=origin.item_id,
+        to_item_id=destination.item_id,
+        status="estimated",
+        travel_mode=travel_mode,
+        provider=ESTIMATED_SEGMENT_PROVIDER,
+        attribution="距離估算",
+        generated_at=datetime.now(UTC),
+        schedule_mode="estimate",
+        duration_minutes=estimate_leg_minutes(origin, destination, travel_mode),
+        buffer_minutes=buffer_minutes,
+    )
+
+
+def project_day_with_estimates(
+    rows: list[TripPlanItem],
+    saved: list[RouteSegment],
+    points: Mapping[UUID, RoutePoint],
+    travel_mode: TravelMode,
+    *,
+    buffer_minutes: int = 0,
+) -> ProjectedSchedule:
+    """Chain a day's times with what is saved plus an estimate for every gap.
+
+    A save deletes the legs it touched, and until the traveller asks for routes there is
+    nothing to chain the rest of the day to. The estimate is the same figure the planner
+    shows for an unrouted leg, so the stored times match the screen. The estimated
+    segments come back in the result but must never be persisted: ``_reusable_segment``
+    would hand a guess back as a real route.
+    """
+    known = {(segment.from_item_id, segment.to_item_id) for segment in saved}
+    filled = list(saved)
+    for previous, following in zip(rows, rows[1:], strict=False):
+        if (previous.id, following.id) in known:
+            continue
+        origin, destination = points.get(previous.id), points.get(following.id)
+        if origin is None or destination is None:
+            continue
+        filled.append(
+            estimated_segment(origin, destination, travel_mode, buffer_minutes=buffer_minutes)
+        )
+    return project_day_schedule(rows, filled)
 
 
 def segment_from_record(record: TripRouteSegment) -> RouteSegment:
