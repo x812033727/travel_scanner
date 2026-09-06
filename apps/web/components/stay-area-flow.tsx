@@ -168,8 +168,8 @@ function StayHotelCard({ hotel, areaName, areaCode, tripId, busy, expired, onSel
       <div className="shrink-0 text-right">
         <strong className="block text-lg">{formatCurrency(nightly, currency)}</strong>
         <span className="text-xs text-[var(--muted)]">{t("hotel.perNight")}</span>
-        {hotel.price_estimate_unavailable && <span className="mt-1 block rounded-full bg-[var(--coral-soft)] px-2 py-0.5 text-[.68rem] font-semibold text-[var(--coral)]">{t("hotel.estimateUnavailable")}</span>}
-        {hotel.original_currency && !hotel.price_estimate_unavailable && <span className="mt-1 block text-[.68rem] text-[var(--muted)]">{t("hotel.converted", { currency: hotel.original_currency })}</span>}
+        {hotel.price_estimate_unavailable && <span className="mt-1 block rounded-full bg-[var(--coral-soft)] px-2 py-0.5 text-xs font-semibold text-[var(--coral)]">{t("hotel.estimateUnavailable")}</span>}
+        {hotel.original_currency && !hotel.price_estimate_unavailable && <span className="mt-1 block text-xs text-[var(--muted)]">{t("hotel.converted", { currency: hotel.original_currency })}</span>}
       </div>
     </div>
     <div className="mt-3 flex flex-wrap gap-2">
@@ -304,7 +304,7 @@ export function StayAreaFlow({ tripId, busy, onSelectHotel, onManualLodging }: {
                 </span>
                 {stats.length > 0 && <span className="mt-1 block text-xs text-[var(--muted)]">{stats.join(" · ")}</span>}
                 {area.sample_titles.length > 0 && <span className="mt-1 block truncate text-xs text-[var(--muted)]">{area.sample_titles.join(" · ")}</span>}
-                {reasons.length > 0 && <span className="mt-2 flex flex-wrap gap-1.5">{reasons.map((label) => <span key={label} className="rounded-full bg-[var(--paper)] px-2 py-1 text-[.68rem] font-semibold">{label}</span>)}</span>}
+                {reasons.length > 0 && <span className="mt-2 flex flex-wrap gap-1.5">{reasons.map((label) => <span key={label} className="rounded-full bg-[var(--paper)] px-2 py-1 text-xs font-semibold">{label}</span>)}</span>}
                 <span className="mt-3 flex items-center gap-1 text-sm font-semibold text-[var(--teal)]">{t("area.pick")}<ArrowRight size={15} /></span>
               </button>
             </li>;

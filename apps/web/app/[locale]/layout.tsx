@@ -12,6 +12,7 @@ import { UsageCatalogProvider } from "@/components/usage-catalog-provider";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { routing } from "@/i18n/routing";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
+import { TEXT_SIZE_BOOTSTRAP_SCRIPT } from "@/lib/text-size";
 import { THEME_BOOTSTRAP_SCRIPT } from "@/lib/theme";
 import { getUsageCatalog } from "@/lib/usage-catalog.server";
 import "../globals.css";
@@ -72,7 +73,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           id="mokaair-theme-bootstrap"
           strategy="beforeInteractive"
           nonce={nonce}
-          dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP_SCRIPT }}
+          dangerouslySetInnerHTML={{ __html: `${THEME_BOOTSTRAP_SCRIPT};${TEXT_SIZE_BOOTSTRAP_SCRIPT}` }}
         />
         <NextIntlClientProvider messages={messages}>
           <SiteVisibilityProvider state={siteVisibility}>

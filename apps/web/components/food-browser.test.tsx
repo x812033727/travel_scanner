@@ -260,6 +260,20 @@ describe("FoodBrowser", () => {
     ).toBe("拉麵");
   });
 
+  it("survives a merchant payload that carries no facets", async () => {
+    // `result?.facets.areas` only guarded the response, not the field: a payload
+    // without facets threw during render and took the whole page with it.
+    window.history.replaceState({}, "", "/foods?destination_id=tokyo");
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/foods/cities")) return new Response(JSON.stringify(cities));
+      return new Response(JSON.stringify({ total: 0, has_more: false, next_cursor: null, items: [] }));
+    }));
+    render(<SavedItemsProvider><FoodBrowser /></SavedItemsProvider>);
+
+    expect(await screen.findByRole("combobox", { name: "城市" })).toBeTruthy();
+  });
+
   it("shows an alert and retries after a failed request", async () => {
     renderBrowser("/foods?destination_id=tokyo", { failFirstMerchants: true });
 

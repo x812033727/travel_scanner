@@ -368,7 +368,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                         <strong className="block truncate text-lg">
                           {trip.name}
                         </strong>
-                        <span className="shrink-0 rounded-full bg-[var(--paper)] px-2 py-0.5 text-[.68rem] font-semibold text-[var(--muted)]">
+                        <span className="shrink-0 rounded-full bg-[var(--paper)] px-2 py-0.5 text-xs font-semibold text-[var(--muted)]">
                           {tripsCatalog(`meta.status.${displayTripStatus(trip)}`)}
                         </span>
                       </span>

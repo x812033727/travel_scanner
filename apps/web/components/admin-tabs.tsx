@@ -131,7 +131,7 @@ export function AdminTabs({
               {tab.label}
               {tab.count != null && (
                 <span
-                  className={`rounded-full px-2 py-0.5 text-[.65rem] tabular-nums ${
+                  className={`rounded-full px-2 py-0.5 text-xs tabular-nums ${
                     selected ? "bg-white/20" : "bg-[var(--paper)] text-[var(--muted)]"
                   }`}
                 >
