@@ -42,7 +42,7 @@ from sqlalchemy.pool import NullPool
 
 from app.config import get_settings
 from app.db import engine
-from app.models import TravelHotspot, TripPlan, User
+from app.models import FoodMerchant, FoodMerchantSource, TravelHotspot, TripPlan, User
 
 pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
@@ -340,6 +340,77 @@ async def test_0045_marks_every_existing_dish_and_localization_as_the_seeds() ->
 async def test_0046_creates_the_backfill_attempt_ledger() -> None:
     async with engine.connect() as connection:
         await connection.run_sync(in_a_rolled_back_transaction(_exercise_0046))
+
+
+def _plant_merchant_source(
+    session: Session, merchant: FoodMerchant, url: str, *, scope: str = "merchant_website"
+) -> UUID:
+    source = FoodMerchantSource(
+        merchant_id=merchant.id,
+        source_type="merchant_official" if scope == "merchant_website" else "official_tourism",
+        source_scope=scope,
+        source_title="planted",
+        source_url=url,
+        claims_json=["display_name"],
+    )
+    session.add(source)
+    session.flush()
+    return source.id
+
+
+def _exercise_0047(connection: Connection) -> None:
+    session = Session(bind=connection)
+    merchant = FoodMerchant(
+        slug=f"dead-branch-{uuid4()}",
+        destination_id="tainan",
+        country_code="TW",
+        name="Hanlin Tea Room",
+        local_name="翰林茶館",
+        official_website_url="https://www.hanlin-tea.com.tw/",
+    )
+    session.add(merchant)
+    session.flush()
+    dead = _plant_merchant_source(session, merchant, "https://www.hanlin-tea.com.tw/")
+    pdf = _plant_merchant_source(
+        session,
+        merchant,
+        "https://www.visitsingapore.com/content/dam/desktop/global/deals/hk/Singapore_Food_Guide_PDF.pdf",
+        scope="merchant_listing",
+    )
+    kept = _plant_merchant_source(session, merchant, "https://example.com/still-alive")
+    session.flush()
+
+    run_upgrade(connection, "0047_repair_merchant_citations")
+
+    rows = {
+        row.id: row
+        for row in connection.execute(
+            sa.text(
+                "SELECT id, source_url, source_type, source_scope, claims_json::text AS claims"
+                " FROM food_merchant_sources WHERE merchant_id = :merchant"
+            ),
+            {"merchant": merchant.id},
+        ).all()
+    }
+    assert pdf not in rows
+    assert rows[dead].source_url == "https://www.twtainan.net/zh-tw/shop/consume/2236/"
+    assert rows[dead].source_type == "official_tourism"
+    assert rows[dead].source_scope == "merchant_listing"
+    assert '"address"' in rows[dead].claims
+    assert rows[kept].source_url == "https://example.com/still-alive"
+    assert (
+        connection.scalar(
+            sa.text("SELECT official_website_url FROM food_merchants WHERE id = :id"),
+            {"id": merchant.id},
+        )
+        is None
+    )
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_0047_rewrites_the_dead_citations_and_drops_the_pdf() -> None:
+    async with engine.connect() as connection:
+        await connection.run_sync(in_a_rolled_back_transaction(_exercise_0047))
 
 
 @pytest.mark.asyncio(loop_scope="module")
