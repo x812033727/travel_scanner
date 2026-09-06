@@ -81,7 +81,7 @@ type ProviderView = {
 type Audit = { id: string; action: string; target: string; metadata: Record<string, unknown>; created_at: string };
 type Snapshot = { providers: ProviderView[]; audit: Audit[]; encryption_source: string };
 type Draft = { enabled: boolean; config: Record<string, string>; secrets: Record<string, string>; clearSecrets: string[]; customFields: string[] };
-type FieldMeta = { label?: string; type?: "text" | "number" | "url" | "boolean"; options?: FieldOption[]; help?: string; localized?: boolean; allowCustom?: boolean; emptyOption?: "inheritPlanner" };
+type FieldMeta = { label?: string; type?: "text" | "number" | "url" | "boolean"; options?: FieldOption[]; help?: string; localized?: boolean; allowCustom?: boolean; emptyOption?: "inheritPlanner" | "inheritGuideSearch" };
 type AdminSettingsScope = "providers" | "system" | "layout";
 type ProviderCategory = "auth" | "ai" | "maps" | "content" | "travelData" | "affiliate" | "other";
 
@@ -94,6 +94,7 @@ const providerCategoryOf: Record<string, ProviderCategory> = {
   ai_vendors: "ai",
   ai_planner: "ai",
   ai_guide_search: "ai",
+  hotspot_intros: "ai",
   google_maps: "maps",
   naver_maps: "maps",
   navitime: "maps",
@@ -158,6 +159,15 @@ const fieldMeta: Record<string, FieldMeta> = {
   hotspot_guide_ai_anthropic_model: { localized: true, allowCustom: true, emptyOption: "inheritPlanner" },
   hotspot_guide_ai_minimax_model: { localized: true, allowCustom: true, emptyOption: "inheritPlanner" },
   hotspot_guide_ai_gemini_model: { localized: true, allowCustom: true, emptyOption: "inheritPlanner" },
+  hotspot_intro_ai_default_provider: { localized: true, options: [{ value: "minimax", label: "MiniMax" }, { value: "openai", label: "OpenAI" }, { value: "anthropic", label: "Claude" }, { value: "gemini", label: "Gemini" }] },
+  hotspot_intro_ai_timeout_seconds: { localized: true, type: "number" },
+  hotspot_intro_ai_max_output_tokens: { localized: true, type: "number" },
+  hotspot_intro_ai_daily_run_limit: { localized: true, type: "number" },
+  hotspot_intro_ai_daily_call_budget: { localized: true, type: "number" },
+  hotspot_intro_ai_openai_model: { localized: true, allowCustom: true, emptyOption: "inheritGuideSearch" },
+  hotspot_intro_ai_anthropic_model: { localized: true, allowCustom: true, emptyOption: "inheritGuideSearch" },
+  hotspot_intro_ai_minimax_model: { localized: true, allowCustom: true, emptyOption: "inheritGuideSearch" },
+  hotspot_intro_ai_gemini_model: { localized: true, allowCustom: true, emptyOption: "inheritGuideSearch" },
   openai_api_base_url: { label: "OpenAI API Base URL", type: "url" },
   openai_model: { localized: true, allowCustom: true },
   anthropic_api_base_url: { label: "Claude API Base URL", type: "url" },
@@ -365,6 +375,7 @@ const aiVendors: AiVendor[] = ["openai", "anthropic", "minimax", "gemini"];
 const aiFeatureCards: Record<string, { selector: string; anchor: string; models: Record<AiVendor, string> }> = {
   ai_planner: { selector: "ai_planner_mode", anchor: "ai_planner_priority", models: { openai: "openai_model", anthropic: "anthropic_model", minimax: "minimax_model", gemini: "gemini_model" } },
   ai_guide_search: { selector: "hotspot_guide_ai_default_provider", anchor: "hotspot_guide_ai_default_provider", models: { openai: "hotspot_guide_ai_openai_model", anthropic: "hotspot_guide_ai_anthropic_model", minimax: "hotspot_guide_ai_minimax_model", gemini: "hotspot_guide_ai_gemini_model" } },
+  hotspot_intros: { selector: "hotspot_intro_ai_default_provider", anchor: "hotspot_intro_ai_default_provider", models: { openai: "hotspot_intro_ai_openai_model", anthropic: "hotspot_intro_ai_anthropic_model", minimax: "hotspot_intro_ai_minimax_model", gemini: "hotspot_intro_ai_gemini_model" } },
 };
 const isAiVendor = (value: string): value is AiVendor => (aiVendors as string[]).includes(value);
 
