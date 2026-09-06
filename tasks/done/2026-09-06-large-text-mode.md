@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-large-text-mode
 title: 大字模式：讓長輩自己把整站字放大
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T13:36:47Z
 created_at: 2026-09-06T13:02:05Z
-completed_at:
+completed_at: 2026-09-06T15:54:08Z
 branch: claude/ui-ux-simplification-72afb9
 depends_on: []
 scope:

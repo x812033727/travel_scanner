@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
@@ -68,13 +67,15 @@ export default async function LocaleLayout({ children, params }: Props) {
   const nonce = requestHeaders.get("x-nonce") ?? undefined;
   return (
     <html lang={locale} data-theme-preference="system" suppressHydrationWarning>
+      <head>
+        {/* A plain script in <head>, not next/script: `beforeInteractive` queues this
+            into `self.__next_s` after </head>, which is late enough that a reader on
+            the largest text size watched the page paint at 16px and then jump to 20px
+            (measured: the hero moved 30px down on a throttled phone). Parser-blocking
+            in the head is the whole point of a bootstrap. */}
+        <script nonce={nonce} dangerouslySetInnerHTML={{ __html: `${THEME_BOOTSTRAP_SCRIPT};${TEXT_SIZE_BOOTSTRAP_SCRIPT}` }} />
+      </head>
       <body>
-        <Script
-          id="mokaair-theme-bootstrap"
-          strategy="beforeInteractive"
-          nonce={nonce}
-          dangerouslySetInnerHTML={{ __html: `${THEME_BOOTSTRAP_SCRIPT};${TEXT_SIZE_BOOTSTRAP_SCRIPT}` }}
-        />
         <NextIntlClientProvider messages={messages}>
           <SiteVisibilityProvider state={siteVisibility}>
             <UsageCatalogProvider state={usageCatalog}>

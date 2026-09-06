@@ -74,7 +74,7 @@ export function TextSizeSwitcher({ variant = "compact" }: { variant?: "compact" 
     return (
       <div>
         <p className="mb-2 text-sm font-bold text-[var(--muted)]">{t("textSizeLabel")}</p>
-        <div role="radiogroup" aria-label={t("textSizeLabel")} className="grid grid-cols-3 gap-2">
+        <div role="radiogroup" aria-label={t("textSizeLabel")} className="grid gap-2 [grid-template-columns:repeat(auto-fit,minmax(6rem,1fr))]">
           {textSizes.map((value) => (
             <button
               key={value}
@@ -83,7 +83,7 @@ export function TextSizeSwitcher({ variant = "compact" }: { variant?: "compact" 
               aria-checked={size === value}
               disabled={!ready}
               onClick={() => apply(value)}
-              className={`min-h-12 rounded-xl border font-semibold transition ${
+              className={`min-h-12 rounded-xl border px-2 font-semibold transition ${
                 size === value
                   ? "border-[var(--teal)] bg-[var(--teal-fill)] text-white"
                   : "border-[var(--line)] bg-[var(--surface)] text-[var(--ink)]"

@@ -57,6 +57,36 @@ describe("trip weather panel", () => {
     expect(await screen.findByText(/尚未進入 10 日預報範圍/)).toBeTruthy();
   });
 
+  it("shows nothing but the explanation when the whole trip is beyond the forecast", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(response(weather)));
+
+    render(<TripWeatherPanel tripId="trip-1" activeDay="2026-12-20" startDate="2026-12-20" endDate="2026-12-25" />);
+
+    expect(await screen.findByText(/尚未進入 10 日預報範圍/)).toBeTruthy();
+    // Ten cards and a big "28°C" for days nobody is travelling read as this
+    // trip's weather; only the sentence saying it is too early belongs here.
+    expect(screen.queryByLabelText("10 日天氣預報")).toBeNull();
+    expect(screen.queryByText("28°C")).toBeNull();
+  });
+
+  it("keeps only the days that fall inside the trip", async () => {
+    const spread = {
+      ...weather,
+      days: [
+        { ...weather.days[0], date: "2026-08-30" },
+        { ...weather.days[0], date: "2026-09-01" },
+        { ...weather.days[0], date: "2026-09-02" },
+        { ...weather.days[0], date: "2026-09-09" },
+      ],
+    };
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(response(spread)));
+
+    render(<TripWeatherPanel tripId="trip-1" activeDay="2026-09-01" startDate="2026-09-01" endDate="2026-09-02" />);
+
+    const rail = await screen.findByLabelText("10 日天氣預報");
+    expect(rail.querySelectorAll("article").length).toBe(2);
+  });
+
   it("names the provider that answered and shows rainfall when no probability is given", async () => {
     const met = {
       ...weather,
