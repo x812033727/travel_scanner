@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**6 open · 1 in progress · 2 blocked · 0 in review · 127 done**
+**6 open · 2 in progress · 2 blocked · 0 in review · 127 done**
 
 ## Ready to claim
 
@@ -25,6 +25,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [美食卡上的灰色膠囊看起來像標籤，按下去卻整頁重新篩選](open/2026-09-06-merchant-card-filter-pills.md) | claude-opus-5 | 2026-09-06T22:41:02Z | `claude/ux-merchant-pills` |
+| [選中的國家只靠底色表示，選單裡的外觀與語言看不出目前設定](open/2026-09-06-chosen-state-and-menu-values.md) | claude-opus-5 | 2026-09-06T23:39:29Z | `claude/ux-chips-and-menu` |
 
 ## In review
 
