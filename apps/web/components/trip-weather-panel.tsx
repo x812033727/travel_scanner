@@ -77,9 +77,13 @@ function rainValue(day: DailyWeather) {
 export function TripWeatherPanel({
   tripId,
   activeDay,
+  startDate,
+  endDate,
 }: {
   tripId: string;
   activeDay: string;
+  startDate?: string | null;
+  endDate?: string | null;
 }) {
   const [weather, setWeather] = useState<TripWeather>();
   const [error, setError] = useState<{ message: string; code?: string }>();
@@ -135,6 +139,14 @@ export function TripWeatherPanel({
 
   if (!weather) return null;
   const activeForecast = weather.days.find((day) => day.date === activeDay);
+  // The source forecasts ten days from today. On a trip that starts later than that,
+  // every card and the big current temperature belong to days the reader is not
+  // travelling - and saying so in two lines of small print under ten wrong numbers
+  // asks them to work it out. Show only the days that are actually theirs.
+  const tripDays = weather.days.filter(
+    (day) => (!startDate || day.date >= startDate) && (!endDate || day.date <= endDate),
+  );
+  const withinRange = tripDays.length > 0;
 
   return (
     <section aria-label={t("title")} className="mb-5 overflow-hidden rounded-2xl border border-sky-100 bg-[linear-gradient(135deg,#f8fcff,#eef8f8)] p-4 shadow-sm sm:p-5">
@@ -144,7 +156,7 @@ export function TripWeatherPanel({
           <h2 className="mt-1 text-lg font-bold">{t("locationTitle", { location: weather.location_name })}</h2>
           <p className="mt-1 text-xs text-[var(--muted)]">{t("subtitle")}</p>
         </div>
-        {weather.current && (
+        {weather.current && withinRange && (
           <div className="flex items-center gap-3 rounded-2xl bg-white/80 px-4 py-3">
             <WeatherIcon type={weather.current.condition.type} size={28} className="text-sky-700" />
             <div>
@@ -168,9 +180,9 @@ export function TripWeatherPanel({
         </p>
       )}
 
-      {weather.days.length > 0 && (
+      {withinRange && (
         <div className="mt-4 flex gap-2 overflow-x-auto pb-1" aria-label={t("forecastLabel")}>
-          {weather.days.map((day) => {
+          {tripDays.map((day) => {
             const selected = day.date === activeDay;
             return (
               <article key={day.date} aria-current={selected ? "date" : undefined} className={`min-w-[7.4rem] rounded-2xl border px-3 py-3 ${selected ? "border-sky-500 bg-white shadow-sm" : "border-white/70 bg-white/60"}`}>

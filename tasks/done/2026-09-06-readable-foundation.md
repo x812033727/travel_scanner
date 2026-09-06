@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-readable-foundation
 title: 看得見：連結顏色被吃掉、對比不足與字級下限
-status: review
+status: done
 priority: P0
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T13:02:56Z
 created_at: 2026-09-06T13:01:59Z
-completed_at:
+completed_at: 2026-09-06T15:54:03Z
 branch: claude/ui-ux-simplification-72afb9
 depends_on: []
 scope:

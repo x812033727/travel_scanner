@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-admin-shell-resilience
 title: 後台外殼：錯誤頁在地化、面板不要整頁炸掉、手機選單擋內容
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T13:29:26Z
 created_at: 2026-09-06T13:02:12Z
-completed_at:
+completed_at: 2026-09-06T15:54:15Z
 branch: claude/ui-ux-simplification-72afb9
 depends_on: []
 scope:

@@ -56,9 +56,15 @@ describe("account panel", () => {
   });
 
   it("asks the visitor to sign in when unauthenticated", async () => {
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, status: 401, json: async () => ({ detail: "請先登入" }) }));
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, status: 401, json: async () => ({ detail: "請先登入後再繼續" }) }));
     render(<AccountPanel />);
-    expect(await screen.findByRole("link", { name: "登入" })).toBeTruthy();
+
+    // One sentence, one button. Pasting the API's own "請先登入後再繼續" in front of a
+    // hand-written "請先登入。" produced "請先登入後再繼續，請先登入。" on the live site.
+    const link = await screen.findByRole("link", { name: "前往登入" });
+    expect(link.getAttribute("href")).toContain("/login?next=");
+    expect(screen.getByText("登入後才能查看這裡的內容")).toBeTruthy();
+    expect(document.body.textContent).not.toContain("請先登入後再繼續");
   });
 
   it("shows a history error instead of treating a failed request as empty", async () => {

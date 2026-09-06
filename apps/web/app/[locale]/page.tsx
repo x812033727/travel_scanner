@@ -56,17 +56,18 @@ export default async function Home() {
             </div>
           </div>
           <SearchWorkbench />
-          {/* The wrapper carries the breakpoint: `.app-chip-row` sets display itself and
-              would otherwise outrank the utility. min-w-0 keeps this grid item from
-              growing to the row's scroll width and widening the page. */}
+          {/* These used to be one scrolling row, which cut the third line off
+              mid-word at 390px with nothing to say it could be scrolled. Three short
+              lines stacked instead: they sit below the workbench on a phone, so the
+              height costs nothing on the first screen. */}
           <div className="min-w-0 lg:hidden">
-            <ul className="app-chip-row -mx-5 px-5">
+            <ul className="grid gap-2">
               {benefits.map(({ key, icon: Icon, text }) => (
                 <li
                   key={key}
-                  className="flex flex-none items-center gap-2 whitespace-nowrap rounded-full border border-[var(--line)] bg-white/70 px-3 py-2 text-xs font-medium"
+                  className="flex items-center gap-2.5 rounded-2xl border border-[var(--line)] bg-white/70 px-3.5 py-2.5 text-sm font-medium leading-6"
                 >
-                  <Icon size={15} className="text-[var(--teal)]" />
+                  <Icon size={17} className="shrink-0 text-[var(--teal)]" />
                   {text}
                 </li>
               ))}

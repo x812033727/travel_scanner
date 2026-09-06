@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-mobile-menu-containing-block
 title: 手機主選單被標題列的 backdrop-filter 關在 68px 裡
-status: review
+status: done
 priority: P0
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T14:10:00Z
 created_at: 2026-09-06T14:09:00Z
-completed_at:
+completed_at: 2026-09-06T15:54:06Z
 branch: claude/ui-ux-simplification-72afb9
 depends_on: []
 scope:
