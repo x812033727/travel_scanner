@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**6 open · 1 in progress · 1 blocked · 0 in review · 76 done**
+**11 open · 1 in progress · 2 blocked · 5 in review · 76 done**
 
 ## Ready to claim
 
@@ -15,9 +15,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | P2 | [國定假日資料：台日韓 2026-2027 進版控，日曆看得見連假與補班](open/2026-09-06-public-holidays-tw-jp-kr.md) | api | `apps/api/app/holidays`<br>`apps/api/app/main.py`<br>`apps/api/app/cli.py`<br>`apps/api/tests/test_public_holidays.py`<br>`apps/web/lib/holidays.ts`<br>`apps/web/components/date-range-picker.tsx`<br>`docs/public-holidays.md` |
 | P2 | [航班來源擴充讀舊資料沒有防護：型別不符的 search id 會直接 500](open/2026-09-06-expand-flight-sources-guard.md) | api | `apps/api/app/search/router.py`<br>`apps/api/tests/test_search_flight_sources.py` |
-| P2 | [地點建議清單會在 Escape 之後自己打開](open/2026-09-06-place-picker-reopens-after-escape.md) | web | `apps/web/components/place-picker.tsx`<br>`apps/web/components/place-picker.test.tsx` |
+| P2 | [AI 備援警告把 provider 名稱與 Python 例外類別秀給旅客看](open/2026-09-06-ai-warning-copy.md) | api | `apps/api/app/ai/itinerary.py`<br>`apps/api/tests/test_ai_itinerary.py` |
 | P2 | [供應商就緒狀態只看金鑰有無，卡片會綠燈但功能不通](open/2026-09-06-configured-readiness-beyond-key-presence.md) | api | `apps/api/app/admin/service.py`<br>`apps/api/tests/test_admin_readiness.py` |
-| P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | ops | `docs/korea-tourism-tourapi.md`<br>`docs/hotspot-intelligence.md`<br>`tools/probe_tourapi.py` |
 | P3 | [Booking Demand 連線測試停在城市 ID，從不解析旅館報價](open/2026-09-06-booking-demand-test-parses-an-offer.md) | api | `apps/api/app/providers/booking.py`<br>`apps/api/tests/test_booking_demand_probe.py` |
 
 ## In progress
@@ -28,13 +27,26 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In review
 
-_Nothing here._
+| Task | Owner | Branch |
+| --- | --- | --- |
+| [看得見：連結顏色被吃掉、對比不足與字級下限](open/2026-09-06-readable-foundation.md) | claude-opus-5 | `claude/ui-ux-simplification-72afb9` |
+| [手機主選單被標題列的 backdrop-filter 關在 68px 裡](open/2026-09-06-mobile-menu-containing-block.md) | claude-opus-5 | `claude/ui-ux-simplification-72afb9` |
+| [大字模式：讓長輩自己把整站字放大](open/2026-09-06-large-text-mode.md) | claude-opus-5 | `claude/ui-ux-simplification-72afb9` |
+| [後台外殼：錯誤頁在地化、面板不要整頁炸掉、手機選單擋內容](open/2026-09-06-admin-shell-resilience.md) | claude-opus-5 | `claude/ui-ux-simplification-72afb9` |
+| [美食頁在 merchants 回應少了 facets 時整頁炸掉](open/2026-09-06-foods-facets-crash.md) | claude-opus-5 | `claude/ui-ux-simplification-72afb9` |
 
 ## Waiting
 
 | Priority | Task | Waiting on |
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
+| P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
+| P1 | [公開頁精簡：景點卡動作分層、首頁膠囊溢出、排行榜第一屏](open/2026-09-06-simplify-public-cards.md) | active work in the same scope |
+| P2 | [手機版行程頁的浮動元件佔掉三分之一畫面](open/2026-09-06-planner-mobile-chrome.md) | active work in the same scope |
+| P2 | [行程天氣面板在日期超出預報範圍時仍列出 10 天無關天氣](open/2026-09-06-trip-weather-out-of-range.md) | active work in the same scope |
+| P2 | [後台審核頁在看到第一筆待審之前先給 30 個控制項](open/2026-09-06-admin-review-density.md) | active work in the same scope |
+| P2 | [地點建議清單會在 Escape 之後自己打開](open/2026-09-06-place-picker-reopens-after-escape.md) | active work in the same scope |
+| P3 | [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](open/2026-09-06-admin-load-error-copy.md) | active work in the same scope |
 
 ## Recently finished
 

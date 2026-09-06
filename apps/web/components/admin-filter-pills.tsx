@@ -45,7 +45,7 @@ export function FilterPills({
             {option.label}
             {option.count != null && (
               <span
-                className={`rounded-full px-1.5 text-[.65rem] tabular-nums ${
+                className={`rounded-full px-1.5 text-xs tabular-nums ${
                   active ? "bg-white/20" : "bg-[var(--paper)] text-[var(--muted)]"
                 }`}
               >

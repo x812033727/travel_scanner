@@ -146,7 +146,7 @@ export function ItineraryTimeline({
                               </span>
                             )}
                             {item.is_estimated && !item.system_role && (
-                              <span className="rounded-full bg-amber-100 px-2 py-1 text-[.68rem] font-semibold text-amber-900">估算</span>
+                              <span className="rounded-full bg-amber-100 px-2 py-1 text-xs font-semibold text-amber-900">估算</span>
                             )}
                           </div>
                         </div>

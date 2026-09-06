@@ -61,7 +61,7 @@ export function SystemItineraryCard({
         <div className="flex flex-wrap items-center gap-2">
           <p className="text-xs font-bold tracking-[.08em]">{label}</p>
           <span className="flex items-center gap-1 text-xs text-[var(--muted)]"><Clock3 size={13} />{timeMode}{meal ? ` · ${item.duration_minutes} 分` : ""}</span>
-          {meal && item.is_skipped && <span className="rounded-full bg-slate-200 px-2 py-1 text-[.68rem] font-extrabold text-slate-700">已跳過</span>}
+          {meal && item.is_skipped && <span className="rounded-full bg-slate-200 px-2 py-1 text-xs font-extrabold text-slate-700">已跳過</span>}
         </div>
         <h3 className="mt-1.5 line-clamp-2 font-bold">{unsetHotel && item.title.includes("尚未設定飯店") ? "尚未設定主要飯店" : item.title}</h3>
         {originalItemName(item) && <p className="mt-0.5 truncate text-sm text-[var(--muted)]" lang={item.names?.title?.original_locale}>{originalItemName(item)}</p>}
