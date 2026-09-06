@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**2 open · 1 in progress · 2 blocked · 0 in review · 113 done**
+**2 open · 0 in progress · 2 blocked · 0 in review · 114 done**
 
 ## Ready to claim
 
@@ -18,9 +18,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [e2e 只守住預設字級的六個頁面，守不住大字模式與 320px](open/2026-09-06-readability-guard-widen.md) | claude-opus-5 | 2026-09-06T19:35:05Z | `claude/ux-guards` |
+_Nothing here._
 
 ## In review
 
@@ -35,6 +33,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [e2e 只守住預設字級的六個頁面，守不住大字模式與 320px](done/2026-09-06-readability-guard-widen.md)
 - 2026-09-06 [AI 起草景點介紹：產生工作、防護與後台觸發](done/2026-09-06-intro-generation.md)
 - 2026-09-06 [destinations 的 english_name 存繁中、areas 不隨語系](done/2026-09-06-destinations-english-name-areas.md)
 - 2026-09-06 [未登入的 /account 仍打七次注定 401 的請求](done/2026-09-06-signed-out-account-requests.md)
@@ -44,4 +43,3 @@ _Nothing here._
 - 2026-09-06 [後台審核頁在看到第一筆待審之前先給 30 個控制項](done/2026-09-06-admin-review-density.md)
 - 2026-09-06 [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](done/2026-09-06-admin-load-error-copy.md)
 - 2026-09-06 [LINE 綁定關鍵字只認繁體中文，日英韓讀者照著做也綁不上](done/2026-09-06-line-link-keyword-chinese-only.md)
-- 2026-09-06 [美食頁在預設字級下 CLS 0.29，第四秒還在跳版](done/2026-09-06-foods-late-layout-shift.md)
