@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-naver-maps-key
 title: 沒有 NAVER 金鑰，韓國景點與店家無法發布
-status: open
+status: blocked
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T06:07:28Z
 created_at: 2026-09-06T00:54:38Z
 completed_at:
-branch:
+branch: claude/ops-p1-p2
 depends_on: []
 scope:
   - apps/api/app/places/naver.py
@@ -70,3 +70,8 @@ WHERE city_code IN ('ICN','PUS','CJU','TAE','GYE','JEO') AND map_match_status <>
 座標佇列的 UI 已經會標示「韓國店家：座標可先寫入，發布仍需 Naver 精準地點頁」，
 判斷用的是 `is_exact_naver_map_url()` 而不是「有沒有 naver 網址」，所以貼錯格式的
 網址不會被誤判為完成。
+
+2026-09-06 claude-fable-5-1：狀態改 `blocked`，等使用者申請金鑰；金鑰到手後上面 Steps 照順序做。
+現在卡在這裡的東西比立案時多：176 個韓國景點未 verified（不變）、**65 個 KR 景點 pending**
+（review 守門要 NAVER 精準頁）、**24 家 KR 店家已有 admin_verified 座標但停在
+coordinates_saved**（座標佇列這輪寫入的），另外 43 家 KR 店家連座標都還沒有。

@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-kanto-place-ids
 title: 6 個關東景點需要人工挑 Google Place ID
-status: open
+status: done
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T06:07:27Z
 created_at: 2026-09-06T00:55:26Z
-completed_at:
-branch:
+completed_at: 2026-09-06T06:32:49Z
+branch: claude/ops-p1-p2
 depends_on: []
 scope:
   - apps/api/app/hotspots/catalog.py
@@ -26,14 +26,14 @@ scope:
 
 ## Definition of done
 
-- [ ] 6 個都有正確的 Place ID，或被判定為不該收錄而拒絕。
+- [x] 6 個都有正確的 Place ID，或被判定為不該收錄而拒絕。
 
 ## Steps
 
-- [ ] 撈出關東（NRT/YOK/KMK）沒有 `google_place_id` 的已核准景點。
-- [ ] 用後台的 `/admin/hotspots/map-candidates` 逐筆看候選，或
+- [x] 撈出關東（NRT/YOK/KMK）沒有 `google_place_id` 的已核准景點。
+- [x] 用後台的 `/admin/hotspots/map-candidates` 逐筆看候選，或
       `python -m app.cli match-hotspot-places --destination tokyo --approve <slug>`。
-- [ ] 填完之後跑一次驗證讓 `map_match_status` 翻成 `verified`。
+- [x] 填完之後跑一次驗證讓 `map_match_status` 翻成 `verified`。
 
 ## How to verify
 
@@ -56,3 +56,9 @@ WHERE city_code IN ('NRT','YOK','KMK') AND review_status = 'approved'
 **額度警告**：`place_details` 走的是 Enterprise 級距，2026-09 時本月免費額度只剩
 一百多次。只有 6 筆所以無所謂，但不要順手拿這條路徑去跑大批次 ——
 Text Search Pro（`detailed=False`）才是批次該用的。
+
+2026-09-06 claude-fable-5-1：撈 `city_code in ('NRT','YOK','KMK') and google_place_id is null`
+只剩 **1 筆**，其餘 5 筆在這張任務立案後已被 `match-hotspot-places` 的例行批次補上。
+剩下的 `nrt-otome-road`（池袋乙女路）：前一位審核者已把 place profile 標 rejected，理由是
+Google 沒有這條街本身的 POI、不該錨到某一家店；本次沒有再打 Google，沿用該結論。決定：不錨、不拒絕
+（它是真的景點區），留在 approved / unverified，等 Google 有對應 POI 再補。
