@@ -94,6 +94,103 @@ for (const route of routes) {
   });
 }
 
+/**
+ * The largest text step multiplies every rem in the app, so it is the setting that
+ * finds a layout with a fixed width hiding in it. 320px is the narrowest phone the
+ * site claims to support.
+ */
+for (const route of ["/zh-TW", "/zh-TW/hotspots", "/zh-TW/foods", "/zh-TW/alerts", "/zh-TW/login"]) {
+  test(`${route} survives the largest text size at 320px`, async ({ page }) => {
+    await page.addInitScript(() => {
+      try {
+        localStorage.setItem("mokaair-text-size", "largest");
+      } catch {
+        // A blocked storage just means the page renders at the standard size.
+      }
+    });
+    await page.setViewportSize({ width: 320, height: 740 });
+    await page.goto(route);
+    await page.waitForTimeout(1200);
+
+    const state = await page.evaluate(() => {
+      const root = document.documentElement;
+      const spilling = Array.from(document.querySelectorAll("body *"))
+        .filter((element) => {
+          const box = element.getBoundingClientRect();
+          if (box.width < 2 || box.height < 2) return false;
+          const style = getComputedStyle(element);
+          if (style.position === "fixed") return false;
+          // A scroll rail is allowed to be wider than the screen; its children are not
+          // "spilling", they are scrollable.
+          let node: Element | null = element;
+          while (node) {
+            const nodeStyle = getComputedStyle(node);
+            if (nodeStyle.overflowX === "auto" || nodeStyle.overflowX === "scroll") return false;
+            node = node.parentElement;
+          }
+          return box.right > window.innerWidth + 4;
+        })
+        .slice(0, 5)
+        .map((element) => element.tagName.toLowerCase() + "." + String(element.className || "").split(/\s+/).slice(0, 2).join("."));
+      return {
+        textSize: root.dataset.textSize,
+        rootFontSize: getComputedStyle(root).fontSize,
+        documentOverflowPx: root.scrollWidth - root.clientWidth,
+        spilling,
+      };
+    });
+
+    // The bootstrap runs in <head>, so the choice is on the element before the first
+    // paint rather than after hydration.
+    expect(state.textSize).toBe("largest");
+    expect(state.rootFontSize).toBe("20px");
+    expect(state.documentOverflowPx, `document scrolls sideways; ${state.spilling.join(", ")}`).toBeLessThanOrEqual(0);
+    expect(state.spilling).toEqual([]);
+  });
+}
+
+test("the phone menu opens over the whole screen", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/zh-TW");
+  await page.getByRole("button", { name: "開啟導覽選單" }).click();
+
+  const geometry = await page.evaluate(() => {
+    const dialog = document.querySelector('[role="dialog"]');
+    const overlay = dialog?.parentElement;
+    const box = (element: Element | null | undefined) => {
+      if (!element) return null;
+      const rect = element.getBoundingClientRect();
+      return { top: Math.round(rect.top), bottom: Math.round(rect.bottom) };
+    };
+    return { viewport: window.innerHeight, overlay: box(overlay), dialog: box(dialog), onBody: overlay?.parentElement === document.body };
+  });
+
+  // The header paints with backdrop-filter, which makes it the containing block for
+  // fixed descendants: rendered inside it, this sheet was laid out in a 68px strip
+  // and only its last row was on screen.
+  expect(geometry.onBody).toBe(true);
+  expect(geometry.overlay?.top).toBe(0);
+  expect(geometry.overlay?.bottom).toBe(geometry.viewport);
+  expect(geometry.dialog?.bottom).toBe(geometry.viewport);
+  expect(geometry.dialog?.top).toBeGreaterThan(0);
+
+  await expect(page.getByRole("radiogroup", { name: "文字大小" })).toBeVisible();
+});
+
+test("the phone menu gives focus back to the button that opened it", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/zh-TW");
+  const trigger = page.getByRole("button", { name: "開啟導覽選單" });
+  await trigger.click();
+  await expect(page.getByRole("dialog")).toBeVisible();
+
+  await page.keyboard.press("Escape");
+
+  // Dropping focus on <body> sends a keyboard reader back to the top of the document,
+  // three tab stops from where they were.
+  await expect(trigger).toBeFocused();
+});
+
 test("the admin sidebar shows which page you are on", async ({ page }) => {
   await page.route("**/api/travel/auth/me", (route) =>
     route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ id: "admin", email: "admin@example.com", is_admin: true }) }),

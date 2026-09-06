@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**2 open · 0 in progress · 2 blocked · 0 in review · 113 done**
+**2 open · 1 in progress · 2 blocked · 0 in review · 113 done**
 
 ## Ready to claim
 
@@ -18,7 +18,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [e2e 只守住預設字級的六個頁面，守不住大字模式與 320px](open/2026-09-06-readability-guard-widen.md) | claude-opus-5 | 2026-09-06T19:35:05Z | `claude/ux-guards` |
 
 ## In review
 
