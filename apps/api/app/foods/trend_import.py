@@ -238,6 +238,74 @@ def load_trend_merchants(path: Path) -> list[TrendMerchant]:
     return parse_merchants(rows)
 
 
+def plan_english_name_backfill(
+    rows: Sequence[FoodMerchant], merchants: Mapping[str, TrendMerchant]
+) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+    """What a backfill would change, and what it would leave alone.
+
+    Separated from the session work so the rule can be tested without a database: only a
+    ``name`` still equal to the file's Chinese ``name_zh`` is replaced, so an administrator's
+    rename survives and a second run is a no-op.
+    """
+    changed: list[dict[str, str]] = []
+    left: list[dict[str, str]] = []
+    for row in rows:
+        merchant = merchants.get(row.slug)
+        if merchant is None or not merchant.english_name:
+            continue
+        if row.name == merchant.display_name:
+            # A second run. Saying "renamed" here would send an operator looking for an edit
+            # that never happened.
+            left.append({"slug": row.slug, "name": row.name, "reason": "already the English name"})
+            continue
+        if row.name != merchant.name:
+            left.append({"slug": row.slug, "name": row.name, "reason": "renamed since import"})
+            continue
+        changed.append({"slug": row.slug, "from": row.name, "to": merchant.display_name})
+    return changed, left
+
+
+async def backfill_english_names(*, apply: bool = False) -> dict[str, Any]:
+    """Give merchants already imported the English label their data file now carries.
+
+    The importer skips a slug it has seen before and never merges into it, which is the right
+    rule for a source that can be re-swept — but it means adding ``name_en`` to the file does
+    nothing for the rows already in the database, and those are the rows a reader is looking
+    at. This walks them once.
+    """
+    merchants = {m.slug: m for m in load_trend_merchants(DEFAULT_FILE) if m.english_name}
+    async with SessionFactory() as session:
+        rows = list(
+            (
+                await session.execute(
+                    select(FoodMerchant).where(FoodMerchant.slug.in_(sorted(merchants)))
+                )
+            )
+            .scalars()
+            .all()
+        )
+        changed, left = plan_english_name_backfill(rows, merchants)
+        if apply:
+            by_slug = {row.slug: row for row in rows}
+            for entry in changed:
+                row = by_slug[entry["slug"]]
+                merchant = merchants[row.slug]
+                row.name = merchant.display_name
+                stored = merchant.stored_names(row.country_code)
+                if stored:
+                    # Reassigned rather than mutated: a JSON column only turns dirty on
+                    # assignment, so an in-place update would be committed as nothing.
+                    row.names_json = {**(row.names_json or {}), **stored}
+            await session.commit()
+    return {
+        "applied": apply,
+        "rows_with_an_english_name": len(merchants),
+        "found_in_database": len(rows),
+        "changed": changed,
+        "left_alone": left,
+    }
+
+
 async def _create(
     session: AsyncSession,
     merchant: TrendMerchant,
