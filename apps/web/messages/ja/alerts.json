@@ -1,4 +1,23 @@
-{"capacity":"有効な通知 {count}／{limit} 件","capacityFull":"通知の上限に達しました。一時停止または削除すると追加できます。",
+{
+  "eyebrow": "価格ウォッチ",
+  "title": "価格通知",
+  "description": "追跡中の価格、目標価格の変更、LINE 通知の状態をまとめて確認できます。",
+  "line": {
+    "title": "LINE 価格通知",
+    "description": "公式アカウントを友だち追加してこのサイトのアカウントと連携すると、価格条件を満たした時点で通知します。",
+    "notConfigured": "LINE 公式アカウントはまだ管理者が有効にしていません。",
+    "addFriend": "LINE で友だち追加",
+    "accountPending": "設定中",
+    "keywordHint": "公式アカウント {account}。友だち追加のうえ、「{keyword}」と送信してください。",
+    "linked": "{name}（{id}）と連携済み",
+    "sendTest": "テスト送信",
+    "unlink": "LINE 連携を解除",
+    "blocked": "LINE 公式アカウントがブロックまたは削除されています。もう一度友だち追加して「{keyword}」と送信してください。",
+    "retry": "再試行",
+    "testSent": "テストメッセージを LINE に送信しました。",
+    "unlinkDone": "LINE 連携を解除しました。"
+  },
+  "capacity":"有効な通知 {count}／{limit} 件","capacityFull":"通知の上限に達しました。一時停止または削除すると追加できます。",
   "emptyHint": "価格通知は旅程や検索結果から作成します。まず旅程を開いて価格の追跡を始めましょう。",
   "emptyAction": "マイトリップへ",
   "button": {
@@ -13,23 +32,5 @@
     "cancel": "キャンセル",
     "loginRequired": "アラートの作成にはログインが必要です。",
     "loginReturn": "ログインしてこのページに戻る"
-  },
-  "title": "価格通知",
-  "subtitle": "追跡中の価格、目標価格の変更、LINE 通知の連携状況をまとめて確認できます。",
-  "line": {
-    "title": "LINE 価格通知",
-    "description": "公式アカウントを友だち追加してアカウントを連携すると、条件を満たした時点で通知します。",
-    "notEnabled": "公式アカウントはまだ管理者に有効化されていません。",
-    "connected": "連携済み",
-    "addFriend": "LINE で友だち追加",
-    "addFriendHint": "追加後にトークで「綁定」と送信してください。",
-    "officialAccount": "公式アカウント",
-    "blocked": "公式アカウントがブロックまたは削除されています。もう一度友だち追加して「綁定」と送信してください。",
-    "sendTest": "テスト送信",
-    "testSent": "テストメッセージを LINE に送信しました。",
-    "unlink": "LINE 連携を解除",
-    "unlinked": "連携を解除しました。",
-    "working": "設定中",
-    "retry": "再試行"
   }
 }
