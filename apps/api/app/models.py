@@ -1276,7 +1276,7 @@ class HotspotGuideAISearchRun(Timestamped, Base):
             "actor_user_id", "idempotency_key", name="uq_hotspot_guide_ai_search_idempotency"
         ),
         CheckConstraint(
-            "provider IN ('minimax', 'openai', 'anthropic')",
+            "provider IN ('minimax', 'openai', 'anthropic', 'gemini')",
             name="ck_hotspot_guide_ai_search_provider",
         ),
         CheckConstraint(

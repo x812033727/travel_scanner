@@ -211,3 +211,41 @@ async def test_manual_article_requires_title_and_creator(monkeypatch, stack) -> 
     with pytest.raises(admin_router.AppError) as error:
         await add_manual_guide(payload, stack.user, stack.session, object())
     assert error.value.code == "hotspot_guide_metadata_required"
+
+
+def _provider_check(table: object) -> str:
+    """The SQL text of a table's provider CHECK, as the model declares it."""
+    from sqlalchemy import CheckConstraint
+
+    for constraint in table.constraints:  # type: ignore[attr-defined]
+        if isinstance(constraint, CheckConstraint) and "provider" in constraint.name:
+            return str(constraint.sqltext)
+    raise AssertionError("no provider check constraint")
+
+
+def test_every_provider_the_router_accepts_passes_the_run_check() -> None:
+    """The setting, the payload and AIProviderName all grew a fourth provider in #204.
+
+    The table did not, so choosing Gemini answered 500 from the INSERT. Checking the whole
+    Literal rather than gemini alone is what stops the next provider slipping through.
+    """
+    from app.hotspots.ai_search import AI_PROVIDER_NAMES
+    from app.models import HotspotGuideAISearchRun, HotspotIntroRun
+
+    for table in (HotspotGuideAISearchRun.__table__, HotspotIntroRun.__table__):
+        check = _provider_check(table)
+        for provider in AI_PROVIDER_NAMES:
+            assert f"'{provider}'" in check, f"{table.name} rejects {provider}"
+
+
+def test_the_guide_run_check_matches_the_migration_that_widened_it() -> None:
+    """models.py and the migration have to agree, or new and upgraded databases differ."""
+    from pathlib import Path
+
+    from app.models import HotspotGuideAISearchRun
+
+    widened = "provider IN ('minimax', 'openai', 'anthropic', 'gemini')"
+    versions = Path(__file__).resolve().parents[1] / "migrations/versions"
+    migration = versions / "0051_guide_run_gemini.py"
+    assert widened in migration.read_text("utf-8")
+    assert _provider_check(HotspotGuideAISearchRun.__table__) == widened

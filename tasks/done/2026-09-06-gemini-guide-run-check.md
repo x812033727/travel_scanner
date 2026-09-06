@@ -1,20 +1,21 @@
 ---
 id: 2026-09-06-gemini-guide-run-check
 title: 選 Gemini 做景點介紹搜尋會 500：run 表的 provider 檢查沒有 gemini
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T17:05:31Z
 created_at: 2026-09-06T15:32:48Z
-completed_at:
-branch:
+completed_at: 2026-09-06T17:10:21Z
+branch: claude/gemini-run-check
 depends_on: []
 scope:
   - apps/api/app/models.py
   - apps/api/migrations
   - apps/api/tests/test_hotspot_admin_guides.py
 ---
+
 # 選 Gemini 做景點介紹搜尋會 500：run 表的 provider 檢查沒有 gemini
 
 ## Why
@@ -30,14 +31,14 @@ scope:
 
 ## Definition of done
 
-- [ ] 把 `ai_guide_search` 選成 Gemini 後能成功建立一次 AI 介紹搜尋，不再 500。
-- [ ] 資料庫的檢查條件與 `AIProviderName` 一致，不是只有應用層擋。
+- [x] 把 `ai_guide_search` 選成 Gemini 後能成功建立一次 AI 介紹搜尋，不再 500。
+- [x] 資料庫的檢查條件與 `AIProviderName` 一致，不是只有應用層擋。
 
 ## Steps
 
-- [ ] 新 migration：`ALTER TABLE hotspot_guide_ai_search_runs DROP CONSTRAINT ck_hotspot_guide_ai_search_provider` 後重建成含 `'gemini'` 的版本（照 0036 的 inspect-first 寫法，`downgrade` 要能回去）。
-- [ ] `apps/api/app/models.py:1145-1148` 的 `CheckConstraint` 同步加上 gemini，否則新舊資料庫又不一致。
-- [ ] 測試：`tests/test_hotspot_admin_guides.py` 加一個以 gemini 建立 run 的案例；順手檢查 `AIProviderName` 的每個值都通過 CHECK（避免下次再漏）。
+- [x] 新 migration：`ALTER TABLE hotspot_guide_ai_search_runs DROP CONSTRAINT ck_hotspot_guide_ai_search_provider` 後重建成含 `'gemini'` 的版本（照 0036 的 inspect-first 寫法，`downgrade` 要能回去）。
+- [x] `apps/api/app/models.py:1145-1148` 的 `CheckConstraint` 同步加上 gemini，否則新舊資料庫又不一致。
+- [x] 測試：`tests/test_hotspot_admin_guides.py` 加一個以 gemini 建立 run 的案例；順手檢查 `AIProviderName` 的每個值都通過 CHECK（避免下次再漏）。
 
 ## How to verify
 
@@ -50,5 +51,21 @@ cd apps/api && RUN_INTEGRATION_TESTS=1 uv run pytest tests/test_hotspot_admin_in
 
 ## Notes
 
+
 - 同一族的 `hotspot_intro_runs`（migration 0050）已經是四家都允許，可以照抄它的 CHECK 寫法。
 - 只改 CHECK 就好，`provider` 欄位長度 `String(16)` 放得下 `gemini`。
+
+### 做完之後（2026-09-07，claude-opus-5）
+
+`0051_guide_run_gemini` 照 0050 的形狀寫：先 `sa.inspect(...).get_check_constraints(TABLE)`
+找同名 CHECK，已經含 gemini 就什麼都不做（0001 的 `create_all` 已經給了新資料庫寬版），
+offline SQL 不做檢查直接輸出。`downgrade` 反過來，同樣先看現況。
+
+測試沒有走資料庫，改成釘住兩件更耐用的事：
+
+- `AI_PROVIDER_NAMES` 的每一個值都出現在 `HotspotGuideAISearchRun` 與 `HotspotIntroRun`
+  兩張表的 CHECK 裡。這正是 #204 漏掉的那一步——當時只加了 Literal，沒有回頭看表。
+  下次再多一家供應商，這條會先紅。
+- migration 的字串與 `models.py` 的字串逐字相同，否則新舊資料庫又會不一致（這張任務就是那樣來的）。
+
+沒有動 `provider` 欄位長度（`String(16)` 放得下），也沒有碰 `hotspot_intro_runs`（0050 一開始就是四家）。
