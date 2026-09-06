@@ -27,6 +27,12 @@ SHOPPING_EXCEPTIONS = {
     "宮下公園": "RAYARD MIYASHITA PARK: shops and a hotel built over the park",
     "代官山蔦屋書店": "Daikanyama T-Site: 代官山 is the district, the place is a bookshop",
     "東京中城": "Tokyo Midtown: 城 belongs to the Japanese rendering of Midtown",
+    "東薈城名店倉": "Citygate Outlets: 城 is part of the mall's Chinese name",
+    "臨空城 Premium Outlets": "Rinku Premium Outlets: 臨空城 is the Rinku Town district",
+    "日本橋電電城": "Den Den Town: 電電城 is how the electronics quarter is written",
+    "仁寺洞 Ssamziegil": "Ssamziegil: 仁寺洞 is the district, the place is a craft mall",
+    "龍山電子商街": "Yongsan Electronics Market: 龍山 is the district, not a mountain",
+    "三井 Outlet Park 多摩南大澤": "Mitsui Outlet Park: Park is the mall brand's own word",
 }
 
 

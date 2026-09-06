@@ -29,9 +29,22 @@ AREA_OUT_OF_TOWN_SEEDS = {
     "cei-wat-phra-that-doi-tung",  # CEI: mountain ridge 60 km from Chiang Rai
     "deep-kbv-q13024195",  # KBV: national park 45 km north of Krabi town
     "hui-cau-ngoi-thanh-toan",  # HUI: rural covered bridge 8 km east of Huế
+    "kix-rinku-premium-outlets",  # KIX: Izumisano, 25 km past the outermost Osaka circle
+    "nrt-mitsui-outlet-tama-minami-osawa",  # NRT: Hachioji, 8 km west of the 多摩 circle
 }
 
-AREA_UNASSIGNED_SEEDS = AREA_MISPLACED_SEEDS | AREA_OUT_OF_TOWN_SEEDS
+# In the city, but in a district the area catalog has never had to name: both are
+# electronics quarters, and both sit a few hundred metres outside the nearest circle.
+# Drawing circles for them moves neighbouring seeds between areas, which is a change to
+# the area catalog rather than to these seeds — filed as a separate task.
+AREA_NO_CIRCLE_YET_SEEDS = {
+    "icn-yongsan-electronics-market",  # 800 m past 龍理團街's 600 m circle
+    "tpe-syntrend-creative-park",  # 160 m past 台北車站's 1.2 km circle
+}
+
+AREA_UNASSIGNED_SEEDS = (
+    AREA_MISPLACED_SEEDS | AREA_OUT_OF_TOWN_SEEDS | AREA_NO_CIRCLE_YET_SEEDS
+)
 
 
 def test_every_city_has_a_reviewed_area_catalog() -> None:
