@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**10 open · 1 in progress · 1 blocked · 5 in review · 75 done**
+**10 open · 1 in progress · 1 blocked · 5 in review · 76 done**
 
 ## Ready to claim
 
@@ -43,11 +43,12 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [手機版行程頁的浮動元件佔掉三分之一畫面](open/2026-09-06-planner-mobile-chrome.md) | active work in the same scope |
 | P2 | [行程天氣面板在日期超出預報範圍時仍列出 10 天無關天氣](open/2026-09-06-trip-weather-out-of-range.md) | active work in the same scope |
 | P2 | [後台審核頁在看到第一筆待審之前先給 30 個控制項](open/2026-09-06-admin-review-density.md) | active work in the same scope |
-| P3 | [後台其餘三個面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n-remaining.md) | active work in the same scope |
+| P2 | [地點建議清單會在 Escape 之後自己打開](open/2026-09-06-place-picker-reopens-after-escape.md) | active work in the same scope |
 | P3 | [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](open/2026-09-06-admin-load-error-copy.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-06 [後台其餘三個面板文案硬編碼繁中](done/2026-09-06-admin-panels-i18n-remaining.md)
 - 2026-09-06 [後台 AI 規劃連線測試送空候選，看不見真正會壞的那一步](done/2026-09-06-admin-planner-test-real-candidates.md)
 - 2026-09-06 [Wikidata 標籤原封不動存入，消歧義括號會顯示給使用者](done/2026-09-06-wikidata-labels-stored-verbatim.md)
 - 2026-09-06 [seed 的韓文假名泰文名稱被當成中文標籤輸出](done/2026-09-06-non-chinese-seed-names-as-chinese-labels.md)
@@ -57,4 +58,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-06 [美食與景點頁的國家／城市名稱在 en／ja／ko 仍是繁中](done/2026-09-06-food-hotspot-place-names-i18n.md)
 - 2026-09-06 [待安排地點進入 AI 候選集（PR 8）](done/2026-09-06-paste-inbox-into-candidates.md)
 - 2026-09-06 [PWA、Android share target 與今日檢視](done/2026-09-06-pwa-share-target-today-view.md)
-- 2026-09-06 [Measure the flood before widening ALLOWED_TYPES with temple, shrine and museum types](done/2026-09-06-measure-the-flood-before-widening-allowed.md)
