@@ -81,6 +81,36 @@ describe("trip meta editor", () => {
     expect(onUpdated.mock.calls[0][0].version).toBe(5);
   });
 
+  it("saves a cover image and clears it when the field is emptied", async () => {
+    const cover = "https://upload.wikimedia.org/wikipedia/commons/a/ab/Sensoji.jpg";
+    const fetchMock = vi.fn(async () => ok({ ...baseTrip, cover_image_url: cover, version: 5 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripMetaEditor trip={baseTrip} variant="hero" onUpdated={vi.fn()} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "編輯旅程資訊" }));
+    fireEvent.change(screen.getByLabelText(/封面圖網址/), { target: { value: ` ${cover} ` } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存變更" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    expect(lastRequestBody(fetchMock)).toEqual({ version: 4, cover_image_url: cover });
+
+  });
+
+  it("clears the cover when the field is emptied", async () => {
+    const cover = "https://upload.wikimedia.org/wikipedia/commons/a/ab/Sensoji.jpg";
+    const withCover = { ...baseTrip, cover_image_url: cover };
+    const clearMock = vi.fn(async () => ok({ ...withCover, cover_image_url: null, version: 6 }));
+    vi.stubGlobal("fetch", clearMock);
+    render(<TripMetaEditor trip={withCover} variant="hero" onUpdated={vi.fn()} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "編輯旅程資訊" }));
+    fireEvent.change(screen.getByLabelText(/封面圖網址/), { target: { value: "" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存變更" }));
+
+    await waitFor(() => expect(clearMock).toHaveBeenCalled());
+    expect(lastRequestBody(clearMock)).toEqual({ version: 4, cover_image_url: null });
+  });
+
   it("blocks a shrink behind an explicit confirmation and reports what it deletes", async () => {
     const fetchMock = vi.fn(async () => ok({ ...baseTrip, end_date: "2026-11-11", version: 5 }));
     vi.stubGlobal("fetch", fetchMock);
