@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**34 open · 2 in progress · 0 blocked · 0 in review · 15 done**
+**34 open · 0 in progress · 0 blocked · 0 in review · 17 done**
 
 ## Ready to claim
 
@@ -41,16 +41,15 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [ICS 行事曆匯出](open/2026-09-06-ics-calendar-export.md) | api | `apps/api/app/trips/ics.py`<br>`apps/api/app/trips/export_router.py`<br>`apps/web/components/trip-tools-panel.tsx` |
 | P3 | [列印版行程表（一天一頁的 A5 列印樣式）](open/2026-09-06-printable-itinerary.md) | web | `apps/web/app/[locale]/trips/[id]/print`<br>`apps/web/app/globals.css` |
 | P3 | [誠實路段守衛：拒絕 0 分鐘路段與漏掉步行段的轉乘方案](open/2026-09-06-honest-leg-guard.md) | api | `apps/api/app/trips/routing.py`<br>`apps/web/components/route-mode-panel.tsx` |
+| P3 | [最佳化上限的 UX：超過 12 個可移動景點時先提示而不是 422](open/2026-09-06-optimizer-limit-ux.md) | web | `apps/web/components/route-mode-panel.tsx`<br>`apps/web/components/trip-editor.tsx` |
 | P3 | [PWA、Android share target 與今日檢視](open/2026-09-06-pwa-share-target-today-view.md) | web | `apps/web/app/manifest.ts`<br>`apps/web/public`<br>`apps/web/components/today-view.tsx` |
 | P3 | [分享頁「存成我的行程」與 QR code](open/2026-09-06-share-fork-and-qr.md) | api | `apps/api/app/trips/share_router.py`<br>`apps/web/components/shared-trip-view.tsx` |
+| P3 | [已存行程頁掛上分潤選項](open/2026-09-06-trip-affiliate-options.md) | web | `apps/web/components/trip-editor.tsx`<br>`apps/web/components/affiliate-partner-options.tsx` |
 | P3 | [行程狀態標籤與封面圖](open/2026-09-06-trip-status-and-cover.md) | api | `apps/api/app/trips/metadata.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-meta-editor.tsx` |
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [行程編輯器 294 句硬編碼繁中未五語系化](open/2026-09-06-trip-editor-i18n.md) | claude-fable-5-1 | 2026-09-06T03:32:53Z | `claude/web-i18n-p1` |
-| [搜尋結果頁整頁文案寫死繁中](open/2026-09-06-search-results-i18n.md) | claude-fable-5-1 | 2026-09-06T03:32:52Z | `claude/web-i18n-p1` |
+_Nothing here._
 
 ## In review
 
@@ -61,11 +60,11 @@ _Nothing here._
 | Priority | Task | Waiting on |
 | --- | --- | --- |
 | P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | depends on 2026-09-06-stale-gemini-model-help |
-| P3 | [最佳化上限的 UX：超過 12 個可移動景點時先提示而不是 422](open/2026-09-06-optimizer-limit-ux.md) | active work in the same scope |
-| P3 | [已存行程頁掛上分潤選項](open/2026-09-06-trip-affiliate-options.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-06 [搜尋結果頁整頁文案寫死繁中](done/2026-09-06-search-results-i18n.md)
+- 2026-09-06 [行程編輯器 294 句硬編碼繁中未五語系化](done/2026-09-06-trip-editor-i18n.md)
 - 2026-09-06 [catalog fallback 被當成 AI 精修呈現給使用者](done/2026-09-06-intent-fallback-honesty.md)
 - 2026-09-06 [意圖列的 diff 與 apply 實際行為不一致](done/2026-09-06-intent-diff-mismatch.md)
 - 2026-09-06 [意圖精修刪除列時連帶清掉使用者輸入的交通時間](done/2026-09-06-intent-route-segment-cascade.md)
@@ -74,5 +73,3 @@ _Nothing here._
 - 2026-09-06 [57 個潮流商圈只存在正式機資料庫](done/2026-09-06-trend-food-areas-not-seeded.md)
 - 2026-09-06 [把潮流街區的匯入腳本收進 repo](done/2026-09-06-trend-import-scripts.md)
 - 2026-09-06 [延長行程會摧毀已填的航班訂位且不提示](done/2026-09-06-reschedule-flight-anchor-loss.md)
-- 2026-09-06 [分享連結會外洩項目備註與整包 data](done/2026-09-06-share-payload-leaks-notes.md)
-- 2026-09-06 [CI should fail a branch that adds a second alembic head](done/2026-09-06-ci-should-fail-a-branch-that.md)

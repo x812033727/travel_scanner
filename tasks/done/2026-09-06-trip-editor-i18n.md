@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-trip-editor-i18n
 title: 行程編輯器 294 句硬編碼繁中未五語系化
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T03:32:53Z
 created_at: 2026-09-06T00:52:44Z
-completed_at:
+completed_at: 2026-09-06T04:03:30Z
 branch: claude/web-i18n-p1
 depends_on: []
 scope:
@@ -33,23 +33,23 @@ scope:
 
 ## Definition of done
 
-- [ ] 以 `/en` 開啟一個有安排的行程，畫面上找不到任何繁體中文（`FoodMerchant` 之類的
+- [x] 以 `/en` 開啟一個有安排的行程，畫面上找不到任何繁體中文（`FoodMerchant` 之類的
       資料本身除外）。日、韓、簡中同樣。
-- [ ] 所有新增字串都在 `messages/*/trips.json`，五個語系鍵完全一致。
-- [ ] `CI=1 npm run check:i18n`、`npm run lint:web`、`npm run typecheck:web` 通過。
-- [ ] `apps/web/components/trip-editor.test.tsx` 全數通過（它用中文 accessible name 查詢，
+- [x] 所有新增字串都在 `messages/*/trips.json`，五個語系鍵完全一致。
+- [x] `CI=1 npm run check:i18n`、`npm run lint:web`、`npm run typecheck:web` 通過。
+- [x] `apps/web/components/trip-editor.test.tsx` 全數通過（它用中文 accessible name 查詢，
       改字串會連帶要改測試）。
 
 ## Steps
 
-- [ ] 用 `scratchpad` 的方法把待翻字串列出來：對 `trip-editor.tsx` 抓 `"…"`／`'…'`／`>…<`
+- [x] 用 `scratchpad` 的方法把待翻字串列出來：對 `trip-editor.tsx` 抓 `"…"`／`'…'`／`>…<`
       裡含 Han 的片段，扣掉 `messages/en/legacy.json` 已有的鍵。
-- [ ] 分批進行，一批一個區塊（工具面板 / 日面板 / 項目卡 / AI 浮層 / 航班浮層 / toast），
+- [x] 分批進行，一批一個區塊（工具面板 / 日面板 / 項目卡 / AI 浮層 / 航班浮層 / toast），
       每批都跑一次測試，不要一次改完 294 句。
-- [ ] 帶參數的句子改成 ICU（例如 `{count} 個已安排 · 停留約 {duration}`），
+- [x] 帶參數的句子改成 ICU（例如 `{count} 個已安排 · 停留約 {duration}`），
       `check:i18n` 會驗五語系的 ICU 參數一致。
-- [ ] 同步更新 `trip-editor.test.tsx` 裡以中文查詢的斷言。
-- [ ] `activityDurationOptions`（`20 分鐘`／`1 小時`…）與 `plannerThemes`（森旅／海岸…）
+- [x] 同步更新 `trip-editor.test.tsx` 裡以中文查詢的斷言。
+- [x] `activityDurationOptions`（`20 分鐘`／`1 小時`…）與 `plannerThemes`（森旅／海岸…）
       是模組層級常數，要改成在元件內用 `t()` 產生。
 
 ## How to verify
@@ -63,6 +63,19 @@ cd ../.. && npm run lint:web && npm run typecheck:web && CI=1 node tools/check-i
 應為空。2026-09-05 驗首頁精靈就是這樣做的（見 Notes）。
 
 ## Notes
+
+**2026-09-06 完成。** 346 個字面（實際比 294 多，因為模板字串與超長 JSX 行裡的字串當初沒算到）搬進
+`messages/*/trips.json` 的新物件 `editor`（五語系 236 鍵），元件加 `const te = useTranslations("trips.editor")`。
+模組層級常數照 `stepKeys` 模式：`activityDurationOptions` 只留分鐘數、渲染處 `te(\`duration.m${minutes}\`)`；
+`plannerThemes` 只留 id 與色票、名稱與描述用 `te(\`theme.${id}.name\`)`。`mobileDayHeading`／`durationSummary`／
+`aiProviderLabel` 多一個 `te` 參數。`saveLabel` 改成 `te(\`saveState.${saveState}\`)`。
+四個在 effect／callback 裡用到 `te` 的地方把它加進依賴陣列（eslint `exhaustive-deps`），
+因此 `vitest.setup.tsx` 的 next-intl mock 改成每個 namespace 快取同一個函式——正式的 `useTranslations` 本來就是穩定的，
+mock 每次 render 回新閉包會讓 effect 無限重跑，這是全站測試都受惠的修正。
+刻意留下的繁中：`countryCodesForTrip` 用目的地名稱判國家的正則、`routeWarnings.some(w => w.includes("缺少已確認地點"))`
+比對伺服器警告文字——兩者都是解析，不是顯示。
+測試：`trip-editor.test.tsx` 33 則全過（zh-TW 值不變）；lint／tsc／`CI=1 check:i18n` 過；
+Han 掃描只剩上述解析行。瀏覽器驗證見 PR。
 
 **量測方法**：把下面存成一個 mjs 跑（2026-09-05 用過，可靠）：對 `components/`、`app/`、
 `lib/` 掃 `.tsx`，用 `/"([^"\n]{1,90})"/g`、`/'([^'\n]{1,90})'/g`、`/>([^<>{}\n]{1,90})</g`
