@@ -45,6 +45,8 @@ from app.db import SessionFactory
 from app.destinations.catalog import destination_for_id
 from app.foods.category_catalog import CATEGORY_SEEDS_BY_SLUG, SLUG_PATTERN
 from app.foods.service import destination_country_code
+from app.i18n import LOCALES
+from app.localized_names import is_latin_script, original_locale_for
 from app.models import (
     AdminAuditLog,
     FoodArea,
@@ -78,6 +80,7 @@ class TrendMerchant:
     destination_id: str
     district_key: str
     name: str
+    english_name: str | None
     local_name: str
     address: str | None
     category_slugs: tuple[str, ...]
@@ -99,6 +102,33 @@ class TrendMerchant:
     def identity(self) -> tuple[str, str]:
         """The second dedupe key: the same shop under another slug."""
         return (self.destination_id, self.local_name.casefold())
+
+    @property
+    def display_name(self) -> str:
+        """What ``FoodMerchant.name`` is for: the shop's English label.
+
+        The sweep collected ``name_zh``, which is how Chinese travel writing refers to the
+        shop, and that used to go straight into ``name`` — so an English reader met
+        「咖哩碗泰菜館」 where the Thai signboard says Charmgang. A row with no checked
+        English name keeps the Chinese one, because a machine transliteration of a shop
+        name is worse than the name a reader can at least paste into a map.
+        """
+        return self.english_name or self.name
+
+    def stored_names(self, country_code: str) -> dict[str, str] | None:
+        """The Chinese label, kept only where nothing else would carry it.
+
+        ``merchant_names`` gives a Chinese reader the original script when the country
+        writes in one this site publishes — Japanese, Korean, Chinese — so Japan and
+        Taiwan need nothing here. Thailand and Vietnam have no such fallback: their
+        readers were reading ``name``, and moving the English label into it would take
+        the Chinese name away.
+        """
+        if not self.english_name or self.english_name == self.name:
+            return None
+        if original_locale_for(country_code) in LOCALES:
+            return None
+        return {"zh-TW": self.name}
 
 
 def slug_for(destination_id: str, name: str, local_name: str) -> str:
@@ -139,6 +169,10 @@ def parse_merchant(raw: Mapping[str, Any], *, row: int) -> TrendMerchant:
             f"row {row}: district_key {district_key!r} must be lowercase kebab-case"
         )
     name = _text(raw, "name_zh", row=row) or ""
+    english_name = _text(raw, "name_en", row=row, required=False)
+    # Latin script, not ASCII: oHacorté and Café are the shops' own spellings.
+    if english_name and not is_latin_script(english_name):
+        raise TrendImportError(f"row {row}: name_en {english_name!r} is not a Latin label")
     local_name = _text(raw, "local_name", row=row) or ""
     slug = _text(raw, "slug", row=row, required=False) or slug_for(destination_id, name, local_name)
     if not SLUG_PATTERN.match(slug) or not slug.startswith(f"{destination_id}-"):
@@ -169,6 +203,7 @@ def parse_merchant(raw: Mapping[str, Any], *, row: int) -> TrendMerchant:
         destination_id=destination_id,
         district_key=district_key,
         name=name,
+        english_name=english_name,
         local_name=local_name,
         address=_text(raw, "address_local", row=row, required=False),
         category_slugs=tuple(str(slug) for slug in categories),
@@ -209,11 +244,13 @@ async def _create(
     area: FoodArea,
     categories: Mapping[str, FoodCategory],
 ) -> FoodMerchant:
+    country_code = destination_country_code(merchant.destination_id) or area.country_code
     row = FoodMerchant(
         slug=merchant.slug,
         destination_id=merchant.destination_id,
-        country_code=destination_country_code(merchant.destination_id) or area.country_code,
-        name=merchant.name,
+        country_code=country_code,
+        name=merchant.display_name,
+        names_json=merchant.stored_names(country_code),
         local_name=merchant.local_name,
         address=merchant.address,
         google_place_id=None,

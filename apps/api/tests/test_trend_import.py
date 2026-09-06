@@ -154,3 +154,54 @@ def test_an_imported_merchant_reads_in_every_site_locale() -> None:
     assert set(LOCALES) <= set(names)
     assert all(names[locale].strip() for locale in LOCALES)
     assert names["original"] == merchant.local_name
+
+
+def test_the_english_label_is_the_shops_own_not_the_chinese_rendering() -> None:
+    """`FoodMerchant.name` is the English label, and the sweep only collected Chinese."""
+    chinese_only = parse_merchant(_row(), row=1)
+    assert chinese_only.english_name is None
+    # No checked English name means the Chinese one stays: a machine transliteration of a
+    # shop name is worse than something a reader can paste into a map.
+    assert chinese_only.display_name == chinese_only.name
+
+    thai = parse_merchant(
+        _row(
+            destination="bangkok",
+            district_key="talat-noi",
+            slug="bangkok-charmgang",
+            name_zh="咖哩碗泰菜館",
+            name_en="Charmgang",
+            local_name="ชามแกง Charmgang",
+            address_local="14 ซอยเจริญกรุง 35",
+            source_url="https://www.instagram.com/charmgangcurryshop/",
+            source_title="charmgangcurryshop | Instagram",
+            category_slugs=["curry"],
+        ),
+        row=2,
+    )
+    assert thai.display_name == "Charmgang"
+    # Thai has no site locale of its own, so the Chinese name would be lost without this.
+    assert thai.stored_names("TH") == {"zh-TW": "咖哩碗泰菜館"}
+    # Japan and Taiwan write in a script the site publishes, so merchant_names already
+    # gives a Chinese reader the original and nothing needs storing.
+    assert thai.stored_names("JP") is None
+    assert thai.stored_names("TW") is None
+
+
+def test_a_name_that_is_not_a_latin_label_is_refused() -> None:
+    with pytest.raises(TrendImportError) as excinfo:
+        parse_merchant(_row(name_en="咖哩碗泰菜館"), row=7)
+    assert "row 7" in str(excinfo.value) and "name_en" in str(excinfo.value)
+    # An accent is not a reason to refuse: oHacorté is the shop's own spelling.
+    assert parse_merchant(_row(name_en="oHacorté Minatogawa"), row=8).english_name
+
+
+def test_every_english_label_in_the_committed_batch_is_latin_and_not_the_chinese_one() -> None:
+    rows = json.loads(DEFAULT_FILE.read_text(encoding="utf-8"))
+    labelled = [row for row in rows if row.get("name_en")]
+    assert labelled, "the batch has no English labels at all"
+    for row in labelled:
+        assert row["name_en"] != row["name_zh"], row["slug"]
+    merchants = {merchant.slug: merchant for merchant in parse_merchants(rows)}
+    assert merchants["bangkok-charmgang"].display_name == "Charmgang"
+    assert merchants["tokyo-fuglen-tokyo"].display_name == "FUGLEN TOKYO"
