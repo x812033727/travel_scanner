@@ -94,11 +94,21 @@ def apply_labels(
         if row.get("local_name") != original:
             _insert_after(row, "name", "local_name", original)
             changed.append("local_name")
-    names = {
+    fetched = {
         locale: labels[locale]
         for locale in STORED_LOCALES
         if labels.get(locale) and labels[locale] != row.get("name")
     }
+    # Only the locales this function owns may be rewritten. zh-CN is written by
+    # ``app.hotspots.simplified_names`` and is absent from STORED_LOCALES, so
+    # replacing the whole map would silently revert every Simplified label the
+    # converter produced the next time this command runs.
+    names = {
+        locale: value
+        for locale, value in (row.get("names") or {}).items()
+        if locale not in STORED_LOCALES
+    }
+    names.update(fetched)
     if names != (row.get("names") or {}):
         if names:
             _insert_after(row, row.get("local_name") and "local_name" or "name", "names", names)

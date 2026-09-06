@@ -55,13 +55,19 @@ BOOTSTRAP_DIR = Path(__file__).resolve().parent
 
 
 def acceptable(traditional: str, simplified: str) -> bool:
-    """True when ``simplified`` looks like a conversion of ``traditional``.
+    """True when ``simplified`` has the shape of a conversion of ``traditional``.
+
+    Shape only, and that limit is real: this cannot tell a conversion from a
+    same-length rename into different Han characters, because doing so needs the
+    very conversion table this check does without. 鄭王廟 → 黎明寺 passes here;
+    what actually catches it is the prompt forbidding renames, and a person
+    reading the diff — the run prints the conversions sharing the fewest
+    characters with their input for exactly that reason.
 
     Deliberately list-free. An earlier attempt screened the result against a
     hand-written set of Traditional-only characters and kept mis-classifying
-    characters that are written the same in both scripts (高, 首, 秘), which
-    rejected correct conversions. Shape is what can be checked without a table:
-    a per-character substitution keeps the length, and touches only Han.
+    characters written the same in both scripts (高, 首, 秘), rejecting correct
+    conversions.
     """
     if len(simplified) != len(traditional):
         return False
@@ -140,34 +146,36 @@ def seed_rows(paths: list[Path]) -> list[tuple[Path, list[dict[str, Any]]]]:
     return loaded
 
 
-def drop_unusable_labels(rows: list[dict[str, Any]]) -> int:
-    """Clear every stored zh-CN label so the conversion below is the only source.
-
-    Whatever is in there came from Wikidata, which this file does not trust for
-    Simplified: of the 239 labels it had, 26 were still written in Traditional
-    characters and several named a different place. Regenerating all of them from
-    the curated Traditional name is safer than keeping a mix, and a row the model
-    skips falls back to Traditional, which is where it started.
-    """
-    dropped = 0
-    for row in rows:
-        names = row.get("names")
-        if isinstance(names, dict) and isinstance(names.get("zh-CN"), str):
-            names.pop("zh-CN")
-            dropped += 1
-    return dropped
+def stored_label_count(rows: list[dict[str, Any]]) -> int:
+    """How many rows currently carry a zh-CN label, for the run to report."""
+    return sum(
+        1
+        for row in rows
+        if isinstance(row.get("names"), dict) and isinstance(row["names"].get("zh-CN"), str)
+    )
 
 
 def apply_conversions(rows: list[dict[str, Any]], converted: dict[str, str]) -> int:
+    """Write each conversion onto its row, and clear a label with no conversion.
+
+    Clearing happens here, per row, rather than in a separate pass beforehand.
+    That earlier shape was the bug: it emptied every zh-CN label first, so a run
+    whose conversions all failed still wrote the stripped rows out and reported
+    success. A row now only loses its label in the same step that could replace it.
+    """
     written = 0
     for row in rows:
-        traditional = row.get("name")
-        simplified = converted.get(str(traditional))
-        if not simplified:
+        names = row.get("names")
+        if not isinstance(names, dict):
             continue
-        names = row.setdefault("names", {})
-        if isinstance(names, dict) and names.get("zh-CN") != simplified:
-            names["zh-CN"] = simplified
+        simplified = converted.get(str(row.get("name")))
+        current = names.get("zh-CN")
+        if simplified:
+            if current != simplified:
+                names["zh-CN"] = simplified
+                written += 1
+        elif isinstance(current, str):
+            names.pop("zh-CN")
             written += 1
     return written
 
