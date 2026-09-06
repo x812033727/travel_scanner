@@ -1936,9 +1936,12 @@ async def test_a_shared_trip_can_be_copied_into_the_readers_own_account(
 
     # Saving an itinerary queues routing for the day; the worker is not part of this test.
     monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", lambda *_a, **_k: None)
-    # An earlier test in this file hands connections to a worker thread with its own loop,
-    # and asyncpg refuses a connection borrowed from a loop that has gone. Start clean.
+    # An earlier test in this file hands its connections to a worker thread with its own
+    # loop, and both asyncpg and redis refuse a connection borrowed from a loop that has
+    # gone. Start this test on connections of its own.
     await engine.dispose()
+    await get_redis().aclose()
+    get_redis.cache_clear()
 
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as client:
