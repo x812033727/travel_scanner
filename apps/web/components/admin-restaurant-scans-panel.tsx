@@ -57,14 +57,14 @@ export function AdminRestaurantScansPanel() {
     return () => window.clearTimeout(timer);
   }, [load]);
 
-  const active = data?.items.some((item) => item.status === "queued" || item.status === "running");
+  const active = data?.items?.some((item) => item.status === "queued" || item.status === "running");
   useEffect(() => {
     if (!active) return;
     const timer = window.setInterval(() => void load(true), 3_000);
     return () => window.clearInterval(timer);
   }, [active, load]);
 
-  const filtered = useMemo(() => data?.items.filter((item) => {
+  const filtered = useMemo(() => data?.items?.filter((item) => {
     const matchesQuery = !query.trim() || `${item.name} ${item.city_name}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase());
     return matchesQuery && (!status || item.status === status);
   }) ?? [], [data, query, status]);

@@ -302,7 +302,7 @@ export function AdminFoodMerchantsPanel({
     (area) => area.destination_id === editingDestination,
   );
   const scopedDishOptions = dishOptions.filter((dish) => dish.country_code === editingCountry);
-  const visibleIds = data?.items.map((merchant) => merchant.id) ?? [];
+  const visibleIds = data?.items?.map((merchant) => merchant.id) ?? [];
   const allVisibleSelected =
     visibleIds.length > 0 && visibleIds.every((id) => selected.has(id));
 
@@ -819,7 +819,7 @@ export function AdminFoodMerchantsPanel({
             </tr>
           </thead>
           <tbody>
-            {data?.items.map((merchant) => {
+            {data?.items?.map((merchant) => {
               const directSources = merchant.sources.filter(
                 (source) => source.source_scope !== "destination_context",
               ).length;

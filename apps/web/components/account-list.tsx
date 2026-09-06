@@ -11,6 +11,7 @@ import {
   Play,
   Plus,
   RotateCw,
+  Route,
   Trash2,
   X,
 } from "lucide-react";
@@ -212,14 +213,27 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
           <Bell className="mx-auto mb-3" />
         )}
         目前還沒有{kind === "trips" ? "已儲存旅程" : "價格通知"}。
-        {kind === "trips" && (
+        {kind === "trips" ? (
           <div>
             <Link
               href="/trips/new"
-              className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white"
+              className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white"
             >
               <Plus size={16} />
               建立第一個行程
+            </Link>
+          </div>
+        ) : (
+          // Alerts are only ever created from a trip or a search result, so an
+          // empty list used to be a sentence and nowhere to go.
+          <div>
+            <p className="mt-1 text-sm leading-6">{t("emptyHint")}</p>
+            <Link
+              href="/trips"
+              className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white"
+            >
+              <Route size={16} />
+              {t("emptyAction")}
             </Link>
           </div>
         )}
