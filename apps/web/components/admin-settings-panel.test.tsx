@@ -783,6 +783,37 @@ describe("AdminSettingsPanel", () => {
     render(<AdminSettingsPanel />);
     expect(await screen.findByText("無法開啟管理後台")).toBeTruthy();
     expect(screen.getByText("此功能僅限系統管理員使用")).toBeTruthy();
+    // 403 is the one case the ADMIN_EMAILS hint is actually about.
+    expect(screen.getByText(/ADMIN_EMAILS/)).toBeTruthy();
+    // Nothing to retry: a reload will be refused the same way.
+    expect(screen.queryByRole("button", { name: "重新載入" })).toBeNull();
+  });
+
+  it("does not send an offline administrator to edit an environment variable", async () => {
+    // fetch itself rejects, so nothing reached the server. The panel used to print this
+    // browser string verbatim — untranslated in every locale — and follow it with the
+    // ADMIN_EMAILS hint, which has nothing to do with a dropped connection.
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new TypeError("Failed to fetch")));
+    render(<AdminSettingsPanel />);
+    expect(await screen.findByText("無法開啟管理後台")).toBeTruthy();
+    expect(screen.getByText("連不到伺服器。請確認網路連線，或稍後再試。")).toBeTruthy();
+    expect(screen.queryByText(/Failed to fetch/)).toBeNull();
+    expect(screen.queryByText(/ADMIN_EMAILS/)).toBeNull();
+  });
+
+  it("offers to load again after a server error, and succeeds on the retry", async () => {
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify({ detail: "伺服器發生錯誤" }), { status: 500 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(snapshot), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminSettingsPanel />);
+    expect(await screen.findByText("伺服器發生錯誤")).toBeTruthy();
+    // A 500 says nothing about who is signed in.
+    expect(screen.queryByText(/ADMIN_EMAILS/)).toBeNull();
+
+    fireEvent.click(screen.getByRole("button", { name: "重新載入" }));
+    expect(await screen.findByRole("heading", { name: "Google Maps" })).toBeTruthy();
+    expect(screen.queryByText("無法開啟管理後台")).toBeNull();
   });
 
   it("shows a failed connection check as an error", async () => {
