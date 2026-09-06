@@ -2,7 +2,9 @@
   "navigation": {
     "searchPlaceholder": "管理機能を検索",
     "menuLabel": "管理機能",
-    "noMatches": "該当する管理機能はありません", "openMenu": "管理メニューを開く", "closeMenu": "管理メニューを閉じる",
+    "noMatches": "該当する管理機能はありません",
+    "openMenu": "管理メニューを開く",
+    "closeMenu": "管理メニューを閉じる",
     "dashboard": "運営概要",
     "users": "会員と利用回数",
     "usage": "プランと消費回数",
@@ -35,123 +37,490 @@
     "customPlaceholder": "モデル ID を入力",
     "customInputLabel": "カスタムモデル ID：{field}",
     "inheritPlanner": "旅程プランナーのモデルを使用",
-    "auth_google_client_id": { "label": "Google OAuth Client ID", "help": "Google Cloud OAuth 2.0 Web Client ID。" },
-    "auth_line_channel_id": { "label": "LINE Login Channel ID", "help": "LINE Developers で OpenID Connect の Email 権限を申請してください。" },
-    "auth_oauth_flow_ttl_seconds": { "label": "ログインフローの有効秒数", "help": "使い捨ての state・nonce・PKCE は既定で 10 分保持します。" },
-    "auth_oauth_ip_limit": { "label": "IP ごとの 1 時間あたり開始上限" },
-    "ga4_enabled": { "label": "GA4 cookieless イベントも送信", "help": "Consent Mode がすべて denied のときだけ、洗浄済みイベントを送信します。サイト内に GA Cookie は保存しません。" },
-    "ga4_measurement_id": { "label": "GA4 Measurement ID", "help": "形式は G-...。公開識別子であり、Data API のキーではありません。" },
-    "analytics_trust_country_header": { "label": "プロキシの国コードヘッダーを信頼", "help": "BFF が設定済みの信頼できるプロキシヘッダーから転送する 2 文字コードだけを読みます。未設定なら常に不明です。" },
-    "analytics_event_ip_limit": { "label": "IP ごとの 1 分あたりイベント上限" },
-    "analytics_event_session_limit": { "label": "セッションごとの 1 分あたりイベント上限" },
-    "analytics_retention_days": { "label": "生イベントの保存日数", "help": "既定は 90 日。期限後はメンテナンスジョブが削除します。" },
-    "analytics_rollup_retention_months": { "label": "日次集計の保存月数", "help": "既定は 25 か月。" },
-    "registration_enabled": { "label": "公開登録を受け付ける", "help": "オフにすると、環境管理者のメールを含め新規アカウントは自己登録できません。既存会員は引き続きログインできます。" },
-    "access_token_expire_minutes": { "label": "ログイン有効時間（分）", "help": "新しく発行するログイントークンの有効時間（5〜1440）。保存後の次回ログインと更新から適用され、再デプロイは不要です。既存トークンは更新時点まで自身の有効時間で動きます。" },
-    "session_absolute_max_days": { "label": "1 回のログインの絶対上限（日）", "help": "更新を何度重ねても、1 回のログインは最大この日数（1〜365）までで、その後は再ログインが必要です。" },
-    "google_maps_javascript_enabled": { "label": "ブラウザ経路地図を有効化", "help": "安全ゲートです。Maps JavaScript API が有効で、ブラウザキーが mokaair.com と www.mokaair.com に制限されていることを確認してからオンにしてください。オフでも交通プランと正確な外部ナビは使えます。" },
-    "ai_planner_mode": { "label": "AI 旅程のソース", "options": { "auto": "自動フォールバック", "openai": "OpenAI／ChatGPT", "fallback": "内蔵フォールバックのみ", "disabled": "実際の AI を停止" } },
-    "ai_planner_priority": { "label": "フォールバック順序", "help": "カンマ区切り。例：openai,anthropic,minimax,gemini" },
-    "ai_planner_timeout_seconds": { "label": "AI 1 社あたりのタイムアウト（秒）" },
-    "ai_planner_total_timeout_seconds": { "label": "AI 全体のタイムアウト（秒）" },
-    "ai_planner_max_output_tokens": { "label": "最大出力トークン" },
-    "hotspot_guide_ai_default_provider": { "label": "スポット AI 検索の既定ベンダー" },
-    "hotspot_guide_ai_timeout_seconds": { "label": "スポット AI 検索のタイムアウト（秒）" },
-    "hotspot_guide_ai_max_output_tokens": { "label": "スポット AI の最大出力トークン" },
-    "hotspot_guide_ai_daily_run_limit": { "label": "1 日の AI 検索実行上限" },
-    "hotspot_guide_ai_daily_call_budget": { "label": "1 日の AI モデル呼び出し上限", "help": "管理者の検索は会員の回数を消費しませんが、この枠と監査ログには記録されます。" },
-    "travel_provider_mode": { "label": "旅行データプロバイダー", "options": { "mock": "Mock（開発のみ）", "disabled": "停止" } },
-    "flight_provider_mode": { "label": "航空券検索のソース", "help": "ハイブリッドモードは旅程数がしきい値に達するまで順に次のソースを照会します。追加ソースは検索回数を消費しません。", "options": { "auto": "自動：Skyscanner → Duffel → Amadeus", "mock": "Mock（開発のみ）", "disabled": "停止" } },
-    "flight_search_strategy": { "label": "航空券検索の戦略", "options": { "hybrid": "ハイブリッド（絞り込み）", "single": "優先ソースのみ" } },
-    "flight_min_result_count": { "label": "自動補完のしきい値", "help": "重複除去後の旅程数がこの値未満なら次のプロバイダーを照会します。" },
-    "hotel_provider_mode": { "label": "ホテル検索のソース", "help": "自動モードは Booking.com Demand API が承認されるまで Amadeus を使います。", "options": { "auto": "自動：Booking.com → Amadeus", "mock": "Mock（開発のみ）", "disabled": "停止" } },
-    "provider_timeout_seconds": { "label": "プロバイダーのタイムアウト（秒）", "help": "外部リクエスト 1 回の最大待機時間。" },
-    "provider_failure_threshold": { "label": "サーキットブレーカーの失敗しきい値" },
-    "provider_circuit_seconds": { "label": "サーキットブレーカーの停止秒数" },
-    "route_cache_ttl_seconds": { "label": "経路キャッシュ秒数" },
-    "naver_place_cache_ttl_seconds": { "label": "NAVER 地点キャッシュ秒数", "help": "地点詳細は不透明な ID で Redis に一時保存します。既定は 15 分。" },
-    "naver_maps_monthly_request_limit": { "label": "サイト内の月次注意枠", "help": "任意の内部注意しきい値で、NAVER の無料枠や請求上限ではありません。0 で未設定。" },
-    "weather_cache_ttl_seconds": { "label": "天気キャッシュ秒数", "help": "Google Weather は既定で 15 分キャッシュし、重複照会を減らします。" },
-    "google_maps_essentials_free_limit": { "label": "Essentials の SKU ごとの無料枠", "help": "公開価格の既定は SKU ごとに月 10,000 回。契約が異なる場合はここで調整します。" },
-    "google_maps_pro_free_limit": { "label": "Pro の SKU ごとの無料枠", "help": "公開価格の既定は SKU ごとに月 5,000 回。" },
-    "google_maps_enterprise_free_limit": { "label": "Enterprise の SKU ごとの無料枠", "help": "公開価格の既定は SKU ごとに月 1,000 回。" },
-    "restaurant_scan_enabled": { "label": "スポット周辺のレストラン走査を有効化", "help": "オフにすると Nearby・Aggregate・レストラン Details のリクエストを送りません。" },
-    "restaurant_aggregate_monthly_budget": { "label": "レストラン Aggregate の月次安全上限", "help": "既定 4,000 回。Places Aggregate の公開無料枠の 20% を残します。" },
-    "restaurant_nearby_monthly_budget": { "label": "レストラン Nearby の月次安全上限", "help": "既定 800 回。フロントのリアルタイム人気レストランに使います。" },
-    "restaurant_details_monthly_budget": { "label": "レストラン Details の月次安全上限", "help": "既定 800 回。他の Place Details と合算し、無料枠に近づく前に停止します。" },
-    "restaurant_scan_refresh_days": { "label": "レストラン再走査の周期（日）" },
-    "restaurant_scan_max_depth": { "label": "レストラングリッドの最大細分レベル" },
-    "restaurant_scan_batch_call_limit": { "label": "レストラン走査 1 バッチあたりの呼び出し上限", "help": "既定は 6 時間ごとに最大 50 回。進捗を保持してスポットを順に回します。" },
-    "restaurant_location_cache_days": { "label": "レストラン座標の Redis TTL（日）", "help": "座標だけを一時保存します。既定も上限も 30 日で、期限後は Redis が自動で破棄します。" },
-    "hotspot_guide_youtube_daily_search_budget": { "label": "1 日の自動検索上限", "help": "既定 80 回。1 日の Search Queries 枠から 20 回を管理者用に残します。" },
-    "hotspot_guide_youtube_search_daily_free_limit": { "label": "Search Queries の 1 日枠", "help": "YouTube の既定は 1 日 100 回の search.list。Cloud プロジェクトの枠が異なる場合は調整します。" },
-    "hotspot_guide_youtube_core_daily_free_limit": { "label": "Core API の 1 日枠", "help": "YouTube の既定は 1 日 10,000 ユニット。videos.list は現在 1 リクエスト 1 ユニットです。" },
-    "hotspot_guide_refresh_days": { "label": "メタデータ更新周期（日）" },
-    "hotspot_guide_gemini_base_url": { "label": "Gemini API Base URL", "help": "Google 公式の generativelanguage ドメインのみ許可します。" },
-    "hotspot_guide_gemini_timeout_seconds": { "label": "検索 1 回のタイムアウト（秒）" },
-    "hotspot_guide_gemini_daily_search_budget": { "label": "1 日の検索上限" },
-    "hotspot_guide_backfill_enabled": { "label": "紹介のないスポットを自動補完", "help": "バックグラウンドの各ラウンドで、動画も記事もないスポットを選んで検索します。地図検証済みを優先します。オフにすると管理者の手動検索だけになります。" },
-    "hotspot_guide_backfill_batch_size": { "label": "1 ラウンドあたりのスポット数", "help": "1 ラウンドで扱うスポットの最大数。実際の件数は各検索プロバイダーの 1 日枠にも縛られ、枠が尽きればそのラウンドで止まります。" },
-    "hotspot_guide_backfill_locale": { "label": "自動補完の言語", "help": "カンマ区切りで順に処理する言語の一覧。例：zh-TW,ja,ko,en,zh-CN。最初の言語で全スポットに何かが揃ってから次の言語に進みます。各スポットはラウンドごとに 1 言語だけ検索するので、5 言語を並べても枠は 5 倍になりません。検索して見つからなかったスポットは、同じ言語では 30 日間再検索しません。" },
-    "amadeus_env": { "label": "Amadeus 環境" },
-    "skyscanner_market": { "label": "マーケットコード" },
-    "skyscanner_locale": { "label": "ロケール" },
-    "skyscanner_currency": { "label": "表示通貨" },
-    "skyscanner_poll_attempts": { "label": "ポーリング回数" },
-    "skyscanner_poll_interval_seconds": { "label": "ポーリング間隔（秒）" },
-    "duffel_env": { "label": "Duffel 環境" },
-    "duffel_supplier_timeout_ms": { "label": "サプライヤー待機上限（ミリ秒）" },
-    "flightaware_enrich_offer_limit": { "label": "自動補強する最安旅程数" },
-    "flightaware_cache_ttl_seconds": { "label": "フライト状況キャッシュ秒数" },
-    "flightaware_track_cache_ttl_seconds": { "label": "航跡キャッシュ秒数" },
-    "travel_impact_cache_ttl_seconds": { "label": "排出量キャッシュ秒数" },
-    "navitime_api_base_url": { "label": "API Base URL", "help": "RapidAPI なら https://navitime-route-totalnavi.p.rapidapi.com、直接契約なら NAVITIME が提供する gateway ホスト（navitime.co.jp／navitime.biz）。" },
-    "navitime_monthly_request_limit": { "label": "サイト内の月次リクエスト上限", "help": "日本時間で月ごとにサイトから送った NAVITIME リクエストを数えます。上限に達すると呼び出しを止めて Google Maps リンクを表示します。既定 450 で、RapidAPI Basic の 500 回に管理画面テストの余地を残します。0 は計数のみで制限なし。" },
-    "ekispert_api_base_url": { "label": "API Base URL", "help": "Ekispert 公式の https://api.ekispert.jp に固定。第三者の中継ホストは受け付けません。" },
-    "ekispert_search_type": { "label": "経路データのモード", "help": "plain は日付指定の便ではありません。契約に時刻表検索が含まれると確認できた場合のみ departure を選びます。", "options": { "plain": "平均待ち時間（低コストプラン）", "departure": "時刻表指定（契約が必要）" } },
-    "ekispert_monthly_request_limit": { "label": "サイト内の月次リクエスト上限", "help": "上限に達すると外部呼び出しを止め、Google Maps の正確なナビを案内します。既定 450、0 は計数のみ。" },
-    "odsay_api_base_url": { "label": "API Base URL", "help": "ODsay 公式の https://api.odsay.com/v1/api に固定。" },
-    "odsay_language": { "label": "経路データの言語", "help": "ODsay Standard プランは韓国語のみ。契約に多言語サービスが含まれる場合だけ他の言語を選びます。", "options": { "0": "韓国語（Standard 互換）", "1": "英語", "2": "日本語", "3": "簡体字中国語", "4": "繁体字中国語" } },
-    "odsay_daily_request_limit": { "label": "サイト内の日次リクエスト上限", "help": "Basic プランは 1 日 30 回。サイトは既定で 25 回だけ使い、5 回をテスト用に残します。商用契約に合わせて調整でき、0 は計数のみ。" },
-    "travelpayouts_static_url_template": { "label": "安全なフォールバック提携リンク", "help": "Partner Links API が失敗したときだけ使います。'{destination}'、'{departure_date}'、'{return_date}'、'{sub_id}' を含められます。" },
-    "travelpayouts_flight_target_url": { "label": "航空券の元ターゲット URL" },
-    "travelpayouts_hotel_target_url": { "label": "宿泊の元ターゲット URL" },
-    "travelpayouts_activities_target_url": { "label": "アクティビティの元ターゲット URL" },
-    "travelpayouts_transport_target_url": { "label": "交通の元ターゲット URL" },
-    "travelpayouts_connectivity_target_url": { "label": "eSIM の元ターゲット URL", "help": "空欄なら「アクティビティの元ターゲット URL」を使います。" },
-    "travelpayouts_allowed_hosts": { "label": "許可するリダイレクト先ドメイン", "help": "カンマ区切り。一覧に合う HTTPS の URL のみ許可します。" },
-    "kkday_affiliate_url_template": { "label": "提携リンクのテンプレート" },
-    "kkday_allowed_hosts": { "label": "許可するリダイレクト先ドメイン" },
-    "kkday_api_base_url": { "label": "承認後の API Base URL" },
-    "klook_affiliate_url_template": { "label": "提携リンクのテンプレート" },
-    "klook_allowed_hosts": { "label": "許可するリダイレクト先ドメイン" },
-    "klook_api_base_url": { "label": "承認後の API Base URL" },
-    "airalo_affiliate_url_template": { "label": "Impact／アフィリエイト提携リンク" },
-    "airalo_allowed_hosts": { "label": "許可するリダイレクト先ドメイン" },
-    "trip_com_affiliate_url_template": { "label": "管理画面で生成した完全な提携リンク", "help": "既存の Trip.com トラッキングパラメータは上書きしません。" },
-    "trip_com_allowed_hosts": { "label": "許可するリダイレクト先ドメイン" },
-    "agoda_affiliate_url_template": { "label": "提携リンクのテンプレート" },
-    "agoda_allowed_hosts": { "label": "許可するリダイレクト先ドメイン" },
-    "agoda_api_base_url": { "label": "承認後の API Base URL" },
-    "booking_affiliate_url_template": { "label": "提携リンクのテンプレート" },
-    "booking_allowed_hosts": { "label": "許可するリダイレクト先ドメイン" },
-    "booking_demand_env": { "label": "Demand API の環境", "help": "production に切り替えたら保存して接続テストをやり直してください。" },
-    "booking_demand_api_base_url": { "label": "Demand API v3.1 Base URL", "help": "Booking.com 公式の sandbox または production ドメインのみ許可します。" },
-    "booking_demand_affiliate_id": { "label": "Demand API Affiliate ID", "help": "アフィリエイト誘導 ID とは別に保存します。空欄のときだけ Affiliate 区画の ID を使います。" },
-    "booking_booker_country": { "label": "Booker 国コード", "help": "小文字 2 文字の国コード。台湾は tw。" },
-    "booking_language": { "label": "Booking の返却言語", "help": "例：zh-tw または en-gb" },
-    "booking_location_cache_ttl_seconds": { "label": "目的地 ID キャッシュ秒数" },
-    "skyscanner_affiliate_url_template": { "label": "Impact アフィリエイト提携リンク" },
-    "skyscanner_affiliate_allowed_hosts": { "label": "許可するリダイレクト先ドメイン" },
-    "openai_model": { "label": "OpenAI モデル", "help": "旅程プランナーが OpenAI を呼び出すときのモデル。一覧にない ID は「カスタム…」を選んで入力してください。" },
-    "anthropic_model": { "label": "Claude モデル", "help": "旅程プランナーが Claude を呼び出すときのモデル。一覧にない ID は「カスタム…」を選んで入力してください。" },
-    "minimax_model": { "label": "MiniMax モデル", "help": "旅程プランナーが MiniMax を呼び出すときのモデル。一覧にない ID は「カスタム…」を選んで入力してください。" },
-    "gemini_model": { "label": "Gemini モデル", "help": "旅程プランナーと旅程テキスト解析が Gemini を呼び出すときのモデル。一覧にない ID は「カスタム…」を選んで入力してください。" },
-    "hotspot_guide_ai_openai_model": { "label": "OpenAI モデル", "help": "スポット紹介検索のみに影響します。空欄なら旅程プランナーの OpenAI モデルを使います。" },
-    "hotspot_guide_ai_anthropic_model": { "label": "Claude モデル", "help": "スポット紹介検索のみに影響します。空欄なら旅程プランナーの Claude モデルを使います。" },
-    "hotspot_guide_ai_minimax_model": { "label": "MiniMax モデル", "help": "スポット紹介検索のみに影響します。空欄なら旅程プランナーの MiniMax モデルを使います。" },
-    "hotspot_guide_ai_gemini_model": { "label": "Gemini モデル", "help": "スポット紹介検索のみに影響します。空欄なら旅程プランナーの Gemini モデルを使います。" },
-    "hotspot_guide_gemini_model": { "label": "Gemini モデル", "help": "Flash 系はスポット候補の生成に向きますが、根拠付きの記事ソース列挙は苦手です。Pro 系は新しい API キーでは使えないことがあるため、接続テストの結果を基準にしてください。" }
+    "inheritGuideSearch": "スポット AI 検索のモデルを使用",
+    "auth_google_client_id": {
+      "label": "Google OAuth Client ID",
+      "help": "Google Cloud OAuth 2.0 Web Client ID。"
+    },
+    "auth_line_channel_id": {
+      "label": "LINE Login Channel ID",
+      "help": "LINE Developers で OpenID Connect の Email 権限を申請してください。"
+    },
+    "auth_oauth_flow_ttl_seconds": {
+      "label": "ログインフローの有効秒数",
+      "help": "使い捨ての state・nonce・PKCE は既定で 10 分保持します。"
+    },
+    "auth_oauth_ip_limit": {
+      "label": "IP ごとの 1 時間あたり開始上限"
+    },
+    "ga4_enabled": {
+      "label": "GA4 cookieless イベントも送信",
+      "help": "Consent Mode がすべて denied のときだけ、洗浄済みイベントを送信します。サイト内に GA Cookie は保存しません。"
+    },
+    "ga4_measurement_id": {
+      "label": "GA4 Measurement ID",
+      "help": "形式は G-...。公開識別子であり、Data API のキーではありません。"
+    },
+    "analytics_trust_country_header": {
+      "label": "プロキシの国コードヘッダーを信頼",
+      "help": "BFF が設定済みの信頼できるプロキシヘッダーから転送する 2 文字コードだけを読みます。未設定なら常に不明です。"
+    },
+    "analytics_event_ip_limit": {
+      "label": "IP ごとの 1 分あたりイベント上限"
+    },
+    "analytics_event_session_limit": {
+      "label": "セッションごとの 1 分あたりイベント上限"
+    },
+    "analytics_retention_days": {
+      "label": "生イベントの保存日数",
+      "help": "既定は 90 日。期限後はメンテナンスジョブが削除します。"
+    },
+    "analytics_rollup_retention_months": {
+      "label": "日次集計の保存月数",
+      "help": "既定は 25 か月。"
+    },
+    "registration_enabled": {
+      "label": "公開登録を受け付ける",
+      "help": "オフにすると、環境管理者のメールを含め新規アカウントは自己登録できません。既存会員は引き続きログインできます。"
+    },
+    "access_token_expire_minutes": {
+      "label": "ログイン有効時間（分）",
+      "help": "新しく発行するログイントークンの有効時間（5〜1440）。保存後の次回ログインと更新から適用され、再デプロイは不要です。既存トークンは更新時点まで自身の有効時間で動きます。"
+    },
+    "session_absolute_max_days": {
+      "label": "1 回のログインの絶対上限（日）",
+      "help": "更新を何度重ねても、1 回のログインは最大この日数（1〜365）までで、その後は再ログインが必要です。"
+    },
+    "google_maps_javascript_enabled": {
+      "label": "ブラウザ経路地図を有効化",
+      "help": "安全ゲートです。Maps JavaScript API が有効で、ブラウザキーが mokaair.com と www.mokaair.com に制限されていることを確認してからオンにしてください。オフでも交通プランと正確な外部ナビは使えます。"
+    },
+    "ai_planner_mode": {
+      "label": "AI 旅程のソース",
+      "options": {
+        "auto": "自動フォールバック",
+        "openai": "OpenAI／ChatGPT",
+        "fallback": "内蔵フォールバックのみ",
+        "disabled": "実際の AI を停止"
+      }
+    },
+    "ai_planner_priority": {
+      "label": "フォールバック順序",
+      "help": "カンマ区切り。例：openai,anthropic,minimax,gemini"
+    },
+    "ai_planner_timeout_seconds": {
+      "label": "AI 1 社あたりのタイムアウト（秒）"
+    },
+    "ai_planner_total_timeout_seconds": {
+      "label": "AI 全体のタイムアウト（秒）"
+    },
+    "ai_planner_max_output_tokens": {
+      "label": "最大出力トークン"
+    },
+    "hotspot_guide_ai_default_provider": {
+      "label": "スポット AI 検索の既定ベンダー"
+    },
+    "hotspot_guide_ai_timeout_seconds": {
+      "label": "スポット AI 検索のタイムアウト（秒）"
+    },
+    "hotspot_guide_ai_max_output_tokens": {
+      "label": "スポット AI の最大出力トークン"
+    },
+    "hotspot_guide_ai_daily_run_limit": {
+      "label": "1 日の AI 検索実行上限"
+    },
+    "hotspot_guide_ai_daily_call_budget": {
+      "label": "1 日の AI モデル呼び出し上限",
+      "help": "管理者の検索は会員の回数を消費しませんが、この枠と監査ログには記録されます。"
+    },
+    "travel_provider_mode": {
+      "label": "旅行データプロバイダー",
+      "options": {
+        "mock": "Mock（開発のみ）",
+        "disabled": "停止"
+      }
+    },
+    "flight_provider_mode": {
+      "label": "航空券検索のソース",
+      "help": "ハイブリッドモードは旅程数がしきい値に達するまで順に次のソースを照会します。追加ソースは検索回数を消費しません。",
+      "options": {
+        "auto": "自動：Skyscanner → Duffel → Amadeus",
+        "mock": "Mock（開発のみ）",
+        "disabled": "停止"
+      }
+    },
+    "flight_search_strategy": {
+      "label": "航空券検索の戦略",
+      "options": {
+        "hybrid": "ハイブリッド（絞り込み）",
+        "single": "優先ソースのみ"
+      }
+    },
+    "flight_min_result_count": {
+      "label": "自動補完のしきい値",
+      "help": "重複除去後の旅程数がこの値未満なら次のプロバイダーを照会します。"
+    },
+    "hotel_provider_mode": {
+      "label": "ホテル検索のソース",
+      "help": "自動モードは Booking.com Demand API が承認されるまで Amadeus を使います。",
+      "options": {
+        "auto": "自動：Booking.com → Amadeus",
+        "mock": "Mock（開発のみ）",
+        "disabled": "停止"
+      }
+    },
+    "provider_timeout_seconds": {
+      "label": "プロバイダーのタイムアウト（秒）",
+      "help": "外部リクエスト 1 回の最大待機時間。"
+    },
+    "provider_failure_threshold": {
+      "label": "サーキットブレーカーの失敗しきい値"
+    },
+    "provider_circuit_seconds": {
+      "label": "サーキットブレーカーの停止秒数"
+    },
+    "route_cache_ttl_seconds": {
+      "label": "経路キャッシュ秒数"
+    },
+    "naver_place_cache_ttl_seconds": {
+      "label": "NAVER 地点キャッシュ秒数",
+      "help": "地点詳細は不透明な ID で Redis に一時保存します。既定は 15 分。"
+    },
+    "naver_maps_monthly_request_limit": {
+      "label": "サイト内の月次注意枠",
+      "help": "任意の内部注意しきい値で、NAVER の無料枠や請求上限ではありません。0 で未設定。"
+    },
+    "weather_cache_ttl_seconds": {
+      "label": "天気キャッシュ秒数",
+      "help": "Google Weather は既定で 15 分キャッシュし、重複照会を減らします。"
+    },
+    "google_maps_essentials_free_limit": {
+      "label": "Essentials の SKU ごとの無料枠",
+      "help": "公開価格の既定は SKU ごとに月 10,000 回。契約が異なる場合はここで調整します。"
+    },
+    "google_maps_pro_free_limit": {
+      "label": "Pro の SKU ごとの無料枠",
+      "help": "公開価格の既定は SKU ごとに月 5,000 回。"
+    },
+    "google_maps_enterprise_free_limit": {
+      "label": "Enterprise の SKU ごとの無料枠",
+      "help": "公開価格の既定は SKU ごとに月 1,000 回。"
+    },
+    "restaurant_scan_enabled": {
+      "label": "スポット周辺のレストラン走査を有効化",
+      "help": "オフにすると Nearby・Aggregate・レストラン Details のリクエストを送りません。"
+    },
+    "restaurant_aggregate_monthly_budget": {
+      "label": "レストラン Aggregate の月次安全上限",
+      "help": "既定 4,000 回。Places Aggregate の公開無料枠の 20% を残します。"
+    },
+    "restaurant_nearby_monthly_budget": {
+      "label": "レストラン Nearby の月次安全上限",
+      "help": "既定 800 回。フロントのリアルタイム人気レストランに使います。"
+    },
+    "restaurant_details_monthly_budget": {
+      "label": "レストラン Details の月次安全上限",
+      "help": "既定 800 回。他の Place Details と合算し、無料枠に近づく前に停止します。"
+    },
+    "restaurant_scan_refresh_days": {
+      "label": "レストラン再走査の周期（日）"
+    },
+    "restaurant_scan_max_depth": {
+      "label": "レストラングリッドの最大細分レベル"
+    },
+    "restaurant_scan_batch_call_limit": {
+      "label": "レストラン走査 1 バッチあたりの呼び出し上限",
+      "help": "既定は 6 時間ごとに最大 50 回。進捗を保持してスポットを順に回します。"
+    },
+    "restaurant_location_cache_days": {
+      "label": "レストラン座標の Redis TTL（日）",
+      "help": "座標だけを一時保存します。既定も上限も 30 日で、期限後は Redis が自動で破棄します。"
+    },
+    "hotspot_guide_youtube_daily_search_budget": {
+      "label": "1 日の自動検索上限",
+      "help": "既定 80 回。1 日の Search Queries 枠から 20 回を管理者用に残します。"
+    },
+    "hotspot_guide_youtube_search_daily_free_limit": {
+      "label": "Search Queries の 1 日枠",
+      "help": "YouTube の既定は 1 日 100 回の search.list。Cloud プロジェクトの枠が異なる場合は調整します。"
+    },
+    "hotspot_guide_youtube_core_daily_free_limit": {
+      "label": "Core API の 1 日枠",
+      "help": "YouTube の既定は 1 日 10,000 ユニット。videos.list は現在 1 リクエスト 1 ユニットです。"
+    },
+    "hotspot_guide_refresh_days": {
+      "label": "メタデータ更新周期（日）"
+    },
+    "hotspot_guide_gemini_base_url": {
+      "label": "Gemini API Base URL",
+      "help": "Google 公式の generativelanguage ドメインのみ許可します。"
+    },
+    "hotspot_guide_gemini_timeout_seconds": {
+      "label": "検索 1 回のタイムアウト（秒）"
+    },
+    "hotspot_guide_gemini_daily_search_budget": {
+      "label": "1 日の検索上限"
+    },
+    "hotspot_guide_backfill_enabled": {
+      "label": "紹介のないスポットを自動補完",
+      "help": "バックグラウンドの各ラウンドで、動画も記事もないスポットを選んで検索します。地図検証済みを優先します。オフにすると管理者の手動検索だけになります。"
+    },
+    "hotspot_guide_backfill_batch_size": {
+      "label": "1 ラウンドあたりのスポット数",
+      "help": "1 ラウンドで扱うスポットの最大数。実際の件数は各検索プロバイダーの 1 日枠にも縛られ、枠が尽きればそのラウンドで止まります。"
+    },
+    "hotspot_guide_backfill_locale": {
+      "label": "自動補完の言語",
+      "help": "カンマ区切りで順に処理する言語の一覧。例：zh-TW,ja,ko,en,zh-CN。最初の言語で全スポットに何かが揃ってから次の言語に進みます。各スポットはラウンドごとに 1 言語だけ検索するので、5 言語を並べても枠は 5 倍になりません。検索して見つからなかったスポットは、同じ言語では 30 日間再検索しません。"
+    },
+    "amadeus_env": {
+      "label": "Amadeus 環境"
+    },
+    "skyscanner_market": {
+      "label": "マーケットコード"
+    },
+    "skyscanner_locale": {
+      "label": "ロケール"
+    },
+    "skyscanner_currency": {
+      "label": "表示通貨"
+    },
+    "skyscanner_poll_attempts": {
+      "label": "ポーリング回数"
+    },
+    "skyscanner_poll_interval_seconds": {
+      "label": "ポーリング間隔（秒）"
+    },
+    "duffel_env": {
+      "label": "Duffel 環境"
+    },
+    "duffel_supplier_timeout_ms": {
+      "label": "サプライヤー待機上限（ミリ秒）"
+    },
+    "flightaware_enrich_offer_limit": {
+      "label": "自動補強する最安旅程数"
+    },
+    "flightaware_cache_ttl_seconds": {
+      "label": "フライト状況キャッシュ秒数"
+    },
+    "flightaware_track_cache_ttl_seconds": {
+      "label": "航跡キャッシュ秒数"
+    },
+    "travel_impact_cache_ttl_seconds": {
+      "label": "排出量キャッシュ秒数"
+    },
+    "navitime_api_base_url": {
+      "label": "API Base URL",
+      "help": "RapidAPI なら https://navitime-route-totalnavi.p.rapidapi.com、直接契約なら NAVITIME が提供する gateway ホスト（navitime.co.jp／navitime.biz）。"
+    },
+    "navitime_monthly_request_limit": {
+      "label": "サイト内の月次リクエスト上限",
+      "help": "日本時間で月ごとにサイトから送った NAVITIME リクエストを数えます。上限に達すると呼び出しを止めて Google Maps リンクを表示します。既定 450 で、RapidAPI Basic の 500 回に管理画面テストの余地を残します。0 は計数のみで制限なし。"
+    },
+    "ekispert_api_base_url": {
+      "label": "API Base URL",
+      "help": "Ekispert 公式の https://api.ekispert.jp に固定。第三者の中継ホストは受け付けません。"
+    },
+    "ekispert_search_type": {
+      "label": "経路データのモード",
+      "help": "plain は日付指定の便ではありません。契約に時刻表検索が含まれると確認できた場合のみ departure を選びます。",
+      "options": {
+        "plain": "平均待ち時間（低コストプラン）",
+        "departure": "時刻表指定（契約が必要）"
+      }
+    },
+    "ekispert_monthly_request_limit": {
+      "label": "サイト内の月次リクエスト上限",
+      "help": "上限に達すると外部呼び出しを止め、Google Maps の正確なナビを案内します。既定 450、0 は計数のみ。"
+    },
+    "odsay_api_base_url": {
+      "label": "API Base URL",
+      "help": "ODsay 公式の https://api.odsay.com/v1/api に固定。"
+    },
+    "odsay_language": {
+      "label": "経路データの言語",
+      "help": "ODsay Standard プランは韓国語のみ。契約に多言語サービスが含まれる場合だけ他の言語を選びます。",
+      "options": {
+        "0": "韓国語（Standard 互換）",
+        "1": "英語",
+        "2": "日本語",
+        "3": "簡体字中国語",
+        "4": "繁体字中国語"
+      }
+    },
+    "odsay_daily_request_limit": {
+      "label": "サイト内の日次リクエスト上限",
+      "help": "Basic プランは 1 日 30 回。サイトは既定で 25 回だけ使い、5 回をテスト用に残します。商用契約に合わせて調整でき、0 は計数のみ。"
+    },
+    "travelpayouts_static_url_template": {
+      "label": "安全なフォールバック提携リンク",
+      "help": "Partner Links API が失敗したときだけ使います。'{destination}'、'{departure_date}'、'{return_date}'、'{sub_id}' を含められます。"
+    },
+    "travelpayouts_flight_target_url": {
+      "label": "航空券の元ターゲット URL"
+    },
+    "travelpayouts_hotel_target_url": {
+      "label": "宿泊の元ターゲット URL"
+    },
+    "travelpayouts_activities_target_url": {
+      "label": "アクティビティの元ターゲット URL"
+    },
+    "travelpayouts_transport_target_url": {
+      "label": "交通の元ターゲット URL"
+    },
+    "travelpayouts_connectivity_target_url": {
+      "label": "eSIM の元ターゲット URL",
+      "help": "空欄なら「アクティビティの元ターゲット URL」を使います。"
+    },
+    "travelpayouts_allowed_hosts": {
+      "label": "許可するリダイレクト先ドメイン",
+      "help": "カンマ区切り。一覧に合う HTTPS の URL のみ許可します。"
+    },
+    "kkday_affiliate_url_template": {
+      "label": "提携リンクのテンプレート"
+    },
+    "kkday_allowed_hosts": {
+      "label": "許可するリダイレクト先ドメイン"
+    },
+    "kkday_api_base_url": {
+      "label": "承認後の API Base URL"
+    },
+    "klook_affiliate_url_template": {
+      "label": "提携リンクのテンプレート"
+    },
+    "klook_allowed_hosts": {
+      "label": "許可するリダイレクト先ドメイン"
+    },
+    "klook_api_base_url": {
+      "label": "承認後の API Base URL"
+    },
+    "airalo_affiliate_url_template": {
+      "label": "Impact／アフィリエイト提携リンク"
+    },
+    "airalo_allowed_hosts": {
+      "label": "許可するリダイレクト先ドメイン"
+    },
+    "trip_com_affiliate_url_template": {
+      "label": "管理画面で生成した完全な提携リンク",
+      "help": "既存の Trip.com トラッキングパラメータは上書きしません。"
+    },
+    "trip_com_allowed_hosts": {
+      "label": "許可するリダイレクト先ドメイン"
+    },
+    "agoda_affiliate_url_template": {
+      "label": "提携リンクのテンプレート"
+    },
+    "agoda_allowed_hosts": {
+      "label": "許可するリダイレクト先ドメイン"
+    },
+    "agoda_api_base_url": {
+      "label": "承認後の API Base URL"
+    },
+    "booking_affiliate_url_template": {
+      "label": "提携リンクのテンプレート"
+    },
+    "booking_allowed_hosts": {
+      "label": "許可するリダイレクト先ドメイン"
+    },
+    "booking_demand_env": {
+      "label": "Demand API の環境",
+      "help": "production に切り替えたら保存して接続テストをやり直してください。"
+    },
+    "booking_demand_api_base_url": {
+      "label": "Demand API v3.1 Base URL",
+      "help": "Booking.com 公式の sandbox または production ドメインのみ許可します。"
+    },
+    "booking_demand_affiliate_id": {
+      "label": "Demand API Affiliate ID",
+      "help": "アフィリエイト誘導 ID とは別に保存します。空欄のときだけ Affiliate 区画の ID を使います。"
+    },
+    "booking_booker_country": {
+      "label": "Booker 国コード",
+      "help": "小文字 2 文字の国コード。台湾は tw。"
+    },
+    "booking_language": {
+      "label": "Booking の返却言語",
+      "help": "例：zh-tw または en-gb"
+    },
+    "booking_location_cache_ttl_seconds": {
+      "label": "目的地 ID キャッシュ秒数"
+    },
+    "skyscanner_affiliate_url_template": {
+      "label": "Impact アフィリエイト提携リンク"
+    },
+    "skyscanner_affiliate_allowed_hosts": {
+      "label": "許可するリダイレクト先ドメイン"
+    },
+    "openai_model": {
+      "label": "OpenAI モデル",
+      "help": "旅程プランナーが OpenAI を呼び出すときのモデル。一覧にない ID は「カスタム…」を選んで入力してください。"
+    },
+    "anthropic_model": {
+      "label": "Claude モデル",
+      "help": "旅程プランナーが Claude を呼び出すときのモデル。一覧にない ID は「カスタム…」を選んで入力してください。"
+    },
+    "minimax_model": {
+      "label": "MiniMax モデル",
+      "help": "旅程プランナーが MiniMax を呼び出すときのモデル。一覧にない ID は「カスタム…」を選んで入力してください。"
+    },
+    "gemini_model": {
+      "label": "Gemini モデル",
+      "help": "旅程プランナーと旅程テキスト解析が Gemini を呼び出すときのモデル。一覧にない ID は「カスタム…」を選んで入力してください。"
+    },
+    "hotspot_guide_ai_openai_model": {
+      "label": "OpenAI モデル",
+      "help": "スポット紹介検索のみに影響します。空欄なら旅程プランナーの OpenAI モデルを使います。"
+    },
+    "hotspot_guide_ai_anthropic_model": {
+      "label": "Claude モデル",
+      "help": "スポット紹介検索のみに影響します。空欄なら旅程プランナーの Claude モデルを使います。"
+    },
+    "hotspot_guide_ai_minimax_model": {
+      "label": "MiniMax モデル",
+      "help": "スポット紹介検索のみに影響します。空欄なら旅程プランナーの MiniMax モデルを使います。"
+    },
+    "hotspot_guide_ai_gemini_model": {
+      "label": "Gemini モデル",
+      "help": "スポット紹介検索のみに影響します。空欄なら旅程プランナーの Gemini モデルを使います。"
+    },
+    "hotspot_intro_ai_default_provider": {
+      "label": "紹介文作成の既定ベンダー",
+      "help": "鍵は「AI ベンダーと鍵」カードのものを使い、下書きは必ず審査待ちで保存されます。"
+    },
+    "hotspot_intro_ai_timeout_seconds": {
+      "label": "紹介文作成のタイムアウト（秒）"
+    },
+    "hotspot_intro_ai_max_output_tokens": {
+      "label": "紹介文作成の最大出力トークン"
+    },
+    "hotspot_intro_ai_daily_run_limit": {
+      "label": "1 日の紹介文生成の実行上限",
+      "help": "1 回の実行で 1 スポットの全要求言語を 1 度の呼び出しで書きます。"
+    },
+    "hotspot_intro_ai_daily_call_budget": {
+      "label": "1 日の紹介文モデル呼び出し上限",
+      "help": "呼び出しは送信前に計上します。途中で失敗してもベンダーへの費用は発生するためです。"
+    },
+    "hotspot_intro_ai_openai_model": {
+      "label": "OpenAI モデル",
+      "help": "紹介文作成のみに影響します。空欄ならスポット AI 検索の OpenAI モデルを使います。"
+    },
+    "hotspot_intro_ai_anthropic_model": {
+      "label": "Claude モデル",
+      "help": "紹介文作成のみに影響します。空欄ならスポット AI 検索の Claude モデルを使います。"
+    },
+    "hotspot_intro_ai_minimax_model": {
+      "label": "MiniMax モデル",
+      "help": "紹介文作成のみに影響します。空欄ならスポット AI 検索の MiniMax モデルを使います。"
+    },
+    "hotspot_intro_ai_gemini_model": {
+      "label": "Gemini モデル",
+      "help": "紹介文作成のみに影響します。空欄ならスポット AI 検索の Gemini モデルを使います。"
+    },
+    "hotspot_guide_gemini_model": {
+      "label": "Gemini モデル",
+      "help": "Flash 系はスポット候補の生成に向きますが、根拠付きの記事ソース列挙は苦手です。Pro 系は新しい API キーでは使えないことがあるため、接続テストの結果を基準にしてください。"
+    }
   },
   "hotspotTabs": {
     "label": "スポット候補審査の作業エリア",
@@ -163,37 +532,208 @@
     "sources": "レストラン情報源"
   },
   "usage": {
-    "eyebrow": "SYSTEM ADMIN", "title": "プランと消費回数", "description": "登録特典、公開利用パック、各機能の消費回数を管理します。変更は今後の新しい操作にのみ適用されます。", "loading": "プランと消費回数の設定を読み込み中…", "save": "設定を保存", "cancel": "キャンセル",
-    "tabs": { "label": "プランと消費回数の設定タブ", "mobileLabel": "設定カテゴリを選択", "trial": "登録トライアル", "packages": "公開プラン", "costs": "機能別消費", "audit": "管理履歴" },
-    "trial": { "title": "登録トライアル回数", "help": "保存後に作成されたアカウントだけに適用され、既存会員の残高は変わりません。", "uses": "新規会員への付与回数", "saved": "登録トライアル回数を更新しました。" },
-    "packages": { "title": "公開利用パック", "help": "有効なプランは表示順に料金ページへ掲載されます。決済機能は含みません。", "add": "プランを追加", "createTitle": "新規プランを作成", "editTitle": "プランを編集", "saved": "プラン設定を保存しました。", "archived": "プランをアーカイブしました。", "restored": "プランを再有効化しました。", "archiveConfirm": "「{name}」をアーカイブしますか？過去の台帳は変更されません。", "name": "プラン名", "uses": "利用回数", "price": "価格（TWD）", "order": "表示順", "active": "公開中", "featured": "おすすめ", "status": "状態", "actions": "操作", "enabled": "有効", "archivedStatus": "アーカイブ済み", "editNamed": "{name} を編集", "archiveNamed": "{name} をアーカイブ", "restoreNamed": "{name} を再有効化" },
-    "costs": { "title": "機能別の消費回数", "help": "0 は無料を意味します。開始済みまたは完了済みの操作には影響しません。", "unit": "回", "save": "すべての消費回数を保存", "saved": "機能別の消費回数を更新しました。" },
-    "locales": { "zh-TW": "繁体字中国語名", "zh-CN": "簡体字中国語名", "en": "英語名", "ja": "日本語名", "ko": "韓国語名" },
-    "operations": {
-      "travel_search": { "label": "通常の旅行検索", "help": "通常の航空券、宿泊、アクティビティ検索。" },
-      "flexible_flight_search": { "label": "日付変更可能な航空券検索", "help": "日付の幅を指定した航空券検索。" },
-      "flight_hotel_search": { "label": "航空券＋宿泊検索", "help": "航空券と宿泊を同時に検索します。" },
-      "full_trip_search": { "label": "旅行全体検索", "help": "3 つ以上のモジュールを横断して最適化します。" },
-      "multi_city_search": { "label": "複数都市検索", "help": "複数区間を含む旅行検索。" },
-      "public_airline_fare_search": { "label": "航空会社公開運賃", "help": "航空会社の公開運賃を検索します。" },
-      "back_to_back_fare_search": { "label": "公開運賃の二重発券比較", "help": "公開運賃で 2 旅行を比較します。" },
-      "live_back_to_back_fare_search": { "label": "リアルタイム二重発券比較", "help": "ライブプロバイダーで運賃を比較します。" },
-      "flight_status_lookup": { "label": "運航状況検索", "help": "便名または路線から運航状況を確認します。" },
-      "ai_itinerary_generation": { "label": "AI 旅程作成", "help": "AI が 1 日または旅行全体を作成します。" },
-      "ai_itinerary_refine": { "label": "AI 旅程調整", "help": "旅行者が入力した要望で 1 日または旅程全体を組み直します。" },
-      "itinerary_optimization": { "label": "旅程動線最適化", "help": "既存旅程へ最適な動線を適用します。" },
-      "price_reoptimization": { "label": "旅行の再検索", "help": "既存旅行を再検索して最適化します。" }
+    "eyebrow": "SYSTEM ADMIN",
+    "title": "プランと消費回数",
+    "description": "登録特典、公開利用パック、各機能の消費回数を管理します。変更は今後の新しい操作にのみ適用されます。",
+    "loading": "プランと消費回数の設定を読み込み中…",
+    "save": "設定を保存",
+    "cancel": "キャンセル",
+    "tabs": {
+      "label": "プランと消費回数の設定タブ",
+      "mobileLabel": "設定カテゴリを選択",
+      "trial": "登録トライアル",
+      "packages": "公開プラン",
+      "costs": "機能別消費",
+      "audit": "管理履歴"
     },
-    "audit": { "title": "最近の管理履歴", "help": "操作者、対象、変更前後の値を保存します。", "empty": "プランまたは消費回数の変更履歴はまだありません。" },
-    "auditActions": { "usage_operation_costs_updated": "機能別消費を更新", "usage_package_created": "プランを作成", "usage_package_updated": "プランを更新", "usage_package_archived": "プランをアーカイブ", "registration_trial_updated": "登録トライアルを更新" }
+    "trial": {
+      "title": "登録トライアル回数",
+      "help": "保存後に作成されたアカウントだけに適用され、既存会員の残高は変わりません。",
+      "uses": "新規会員への付与回数",
+      "saved": "登録トライアル回数を更新しました。"
+    },
+    "packages": {
+      "title": "公開利用パック",
+      "help": "有効なプランは表示順に料金ページへ掲載されます。決済機能は含みません。",
+      "add": "プランを追加",
+      "createTitle": "新規プランを作成",
+      "editTitle": "プランを編集",
+      "saved": "プラン設定を保存しました。",
+      "archived": "プランをアーカイブしました。",
+      "restored": "プランを再有効化しました。",
+      "archiveConfirm": "「{name}」をアーカイブしますか？過去の台帳は変更されません。",
+      "name": "プラン名",
+      "uses": "利用回数",
+      "price": "価格（TWD）",
+      "order": "表示順",
+      "active": "公開中",
+      "featured": "おすすめ",
+      "status": "状態",
+      "actions": "操作",
+      "enabled": "有効",
+      "archivedStatus": "アーカイブ済み",
+      "editNamed": "{name} を編集",
+      "archiveNamed": "{name} をアーカイブ",
+      "restoreNamed": "{name} を再有効化"
+    },
+    "costs": {
+      "title": "機能別の消費回数",
+      "help": "0 は無料を意味します。開始済みまたは完了済みの操作には影響しません。",
+      "unit": "回",
+      "save": "すべての消費回数を保存",
+      "saved": "機能別の消費回数を更新しました。"
+    },
+    "locales": {
+      "zh-TW": "繁体字中国語名",
+      "zh-CN": "簡体字中国語名",
+      "en": "英語名",
+      "ja": "日本語名",
+      "ko": "韓国語名"
+    },
+    "operations": {
+      "travel_search": {
+        "label": "通常の旅行検索",
+        "help": "通常の航空券、宿泊、アクティビティ検索。"
+      },
+      "flexible_flight_search": {
+        "label": "日付変更可能な航空券検索",
+        "help": "日付の幅を指定した航空券検索。"
+      },
+      "flight_hotel_search": {
+        "label": "航空券＋宿泊検索",
+        "help": "航空券と宿泊を同時に検索します。"
+      },
+      "full_trip_search": {
+        "label": "旅行全体検索",
+        "help": "3 つ以上のモジュールを横断して最適化します。"
+      },
+      "multi_city_search": {
+        "label": "複数都市検索",
+        "help": "複数区間を含む旅行検索。"
+      },
+      "public_airline_fare_search": {
+        "label": "航空会社公開運賃",
+        "help": "航空会社の公開運賃を検索します。"
+      },
+      "back_to_back_fare_search": {
+        "label": "公開運賃の二重発券比較",
+        "help": "公開運賃で 2 旅行を比較します。"
+      },
+      "live_back_to_back_fare_search": {
+        "label": "リアルタイム二重発券比較",
+        "help": "ライブプロバイダーで運賃を比較します。"
+      },
+      "flight_status_lookup": {
+        "label": "運航状況検索",
+        "help": "便名または路線から運航状況を確認します。"
+      },
+      "ai_itinerary_generation": {
+        "label": "AI 旅程作成",
+        "help": "AI が 1 日または旅行全体を作成します。"
+      },
+      "ai_itinerary_refine": {
+        "label": "AI 旅程調整",
+        "help": "旅行者が入力した要望で 1 日または旅程全体を組み直します。"
+      },
+      "itinerary_optimization": {
+        "label": "旅程動線最適化",
+        "help": "既存旅程へ最適な動線を適用します。"
+      },
+      "price_reoptimization": {
+        "label": "旅行の再検索",
+        "help": "既存旅行を再検索して最適化します。"
+      }
+    },
+    "audit": {
+      "title": "最近の管理履歴",
+      "help": "操作者、対象、変更前後の値を保存します。",
+      "empty": "プランまたは消費回数の変更履歴はまだありません。"
+    },
+    "auditActions": {
+      "usage_operation_costs_updated": "機能別消費を更新",
+      "usage_package_created": "プランを作成",
+      "usage_package_updated": "プランを更新",
+      "usage_package_archived": "プランをアーカイブ",
+      "registration_trial_updated": "登録トライアルを更新"
+    }
   },
   "analytics": {
-    "eyebrow": "PRODUCT ANALYTICS", "title": "トラフィック・プロダクト分析", "description": "個別会員の行動を表示せず、ファーストパーティデータで流入と主要ファネルを確認します。", "loadError": "分析データを読み込めませんでした。", "retry": "再試行", "rangeLabel": "分析期間", "ranges": { "24h": "24時間", "7d": "7日", "30d": "30日", "90d": "90日", "12m": "12か月" }, "includeBots": "Botを含める", "refresh": "更新", "noComparison": "前期間データなし", "trend": "トラフィック推移", "timezone": "タイムゾーン：{timezone}", "period": "期間", "funnel": "主要プロダクトファネル", "funnelRaw": "重複しないセッションで計算します。", "funnelRollup": "生イベント保持期間を超える場合は日次集計を使用します。", "authoritative": "運用上の確定値", "authoritativeHelp": "会員・検索・旅程・外部リンクの各テーブルから直接算出し、ブラウザイベントとは分けて表示します。", "heatmap": "曜日・時間帯ヒートマップ", "heatmapHelp": "公開ページビューを台北時間で表示します。", "heatmapUnavailable": "この期間の時間別データはありません。", "weekday": "曜日", "quality": "データ品質", "enabled": "有効", "disabled": "無効または未設定", "excluded": "除外済み", "included": "含む", "days": "日", "months": "か月",
-    "metrics": { "live_sessions_30m": "直近30分のセッション", "page_views": "ページビュー", "avg_daily_visitors": "1日平均ユニーク訪問者", "sessions": "セッション", "pages_per_session": "ページ／セッション", "registration_completed": "登録完了", "search_completed": "検索完了", "trip_created": "旅程作成", "outbound_click": "外部リンク" },
-    "funnelSteps": { "sessions": "セッション", "search_completed": "検索完了", "trip_created": "旅程作成", "outbound_click": "外部リンク" },
-    "authoritativeMetrics": { "registrations": "会員登録", "completed_searches": "検索完了", "trips_created": "旅程作成", "affiliate_clicks": "アフィリエイト遷移" },
-    "rankings": { "pages": "人気ページ", "sources": "流入元", "devices": "デバイス", "locales": "言語", "countries": "国", "utm": "UTM流入元" },
-    "qualityFields": { "ga4": "GA4 cookieless 状態", "started": "計測開始", "lastEvent": "最終イベント", "lastRollup": "最終集計日", "country": "国コード網羅率", "bots": "Botトラフィック", "rawRetention": "生イベント保持", "rollupRetention": "集計保持" }
+    "eyebrow": "PRODUCT ANALYTICS",
+    "title": "トラフィック・プロダクト分析",
+    "description": "個別会員の行動を表示せず、ファーストパーティデータで流入と主要ファネルを確認します。",
+    "loadError": "分析データを読み込めませんでした。",
+    "retry": "再試行",
+    "rangeLabel": "分析期間",
+    "ranges": {
+      "24h": "24時間",
+      "7d": "7日",
+      "30d": "30日",
+      "90d": "90日",
+      "12m": "12か月"
+    },
+    "includeBots": "Botを含める",
+    "refresh": "更新",
+    "noComparison": "前期間データなし",
+    "trend": "トラフィック推移",
+    "timezone": "タイムゾーン：{timezone}",
+    "period": "期間",
+    "funnel": "主要プロダクトファネル",
+    "funnelRaw": "重複しないセッションで計算します。",
+    "funnelRollup": "生イベント保持期間を超える場合は日次集計を使用します。",
+    "authoritative": "運用上の確定値",
+    "authoritativeHelp": "会員・検索・旅程・外部リンクの各テーブルから直接算出し、ブラウザイベントとは分けて表示します。",
+    "heatmap": "曜日・時間帯ヒートマップ",
+    "heatmapHelp": "公開ページビューを台北時間で表示します。",
+    "heatmapUnavailable": "この期間の時間別データはありません。",
+    "weekday": "曜日",
+    "quality": "データ品質",
+    "enabled": "有効",
+    "disabled": "無効または未設定",
+    "excluded": "除外済み",
+    "included": "含む",
+    "days": "日",
+    "months": "か月",
+    "metrics": {
+      "live_sessions_30m": "直近30分のセッション",
+      "page_views": "ページビュー",
+      "avg_daily_visitors": "1日平均ユニーク訪問者",
+      "sessions": "セッション",
+      "pages_per_session": "ページ／セッション",
+      "registration_completed": "登録完了",
+      "search_completed": "検索完了",
+      "trip_created": "旅程作成",
+      "outbound_click": "外部リンク"
+    },
+    "funnelSteps": {
+      "sessions": "セッション",
+      "search_completed": "検索完了",
+      "trip_created": "旅程作成",
+      "outbound_click": "外部リンク"
+    },
+    "authoritativeMetrics": {
+      "registrations": "会員登録",
+      "completed_searches": "検索完了",
+      "trips_created": "旅程作成",
+      "affiliate_clicks": "アフィリエイト遷移"
+    },
+    "rankings": {
+      "pages": "人気ページ",
+      "sources": "流入元",
+      "devices": "デバイス",
+      "locales": "言語",
+      "countries": "国",
+      "utm": "UTM流入元"
+    },
+    "qualityFields": {
+      "ga4": "GA4 cookieless 状態",
+      "started": "計測開始",
+      "lastEvent": "最終イベント",
+      "lastRollup": "最終集計日",
+      "country": "国コード網羅率",
+      "bots": "Botトラフィック",
+      "rawRetention": "生イベント保持",
+      "rollupRetention": "集計保持"
+    }
   },
   "layout": {
     "eyebrow": "SYSTEM ADMIN",
@@ -203,12 +743,30 @@
     "auditDescription": "操作者、実際に変更された項目、変更後の値のみを記録します。",
     "auditAction": "画面設定を更新",
     "fields": {
-      "hotspots_enabled": { "label": "人気スポット", "help": "人気スポットのナビゲーションと /hotspots ページを制御します。" },
-      "trips_enabled": { "label": "マイトリップ", "help": "旅行ナビゲーション、旅行保存操作、/trips 配下のページを制御します。閲覧専用の共有リンクは維持されます。" },
-      "alerts_enabled": { "label": "価格アラート", "help": "価格アラートのナビゲーション、作成操作、/alerts ページを制御します。" },
-      "flight_status_enabled": { "label": "運航状況", "help": "運航状況のナビゲーションと /flights/status ページを制御します。" },
-      "airline_fares_enabled": { "label": "航空運賃ラボ", "help": "航空運賃の入口と /labs/airlines ページを制御します。" },
-      "pricing_enabled": { "label": "プランと利用パック", "help": "料金ナビゲーション、利用パック操作、/pricing ページを制御します。" }
+      "hotspots_enabled": {
+        "label": "人気スポット",
+        "help": "人気スポットのナビゲーションと /hotspots ページを制御します。"
+      },
+      "trips_enabled": {
+        "label": "マイトリップ",
+        "help": "旅行ナビゲーション、旅行保存操作、/trips 配下のページを制御します。閲覧専用の共有リンクは維持されます。"
+      },
+      "alerts_enabled": {
+        "label": "価格アラート",
+        "help": "価格アラートのナビゲーション、作成操作、/alerts ページを制御します。"
+      },
+      "flight_status_enabled": {
+        "label": "運航状況",
+        "help": "運航状況のナビゲーションと /flights/status ページを制御します。"
+      },
+      "airline_fares_enabled": {
+        "label": "航空運賃ラボ",
+        "help": "航空運賃の入口と /labs/airlines ページを制御します。"
+      },
+      "pricing_enabled": {
+        "label": "プランと利用パック",
+        "help": "料金ナビゲーション、利用パック操作、/pricing ページを制御します。"
+      }
     }
   },
   "hotspotPlacesPanel": {
@@ -366,7 +924,7 @@
       "description": "CI を通過した最新の main のみをデプロイします。制限されたホストエージェントがバックアップ、マイグレーション、ヘルスチェック、アプリのロールバックを実行します。"
     }
   },
- "usersPanel": {
+  "usersPanel": {
     "reservedOfTotal": "／ {count}",
     "entry": {
       "grant": "登録時の付与",
@@ -442,221 +1000,282 @@
     "entrySummary": "{summary}・残高 {balance}",
     "usageEmpty": "利用履歴はまだありません。",
     "adminHistory": "最近の管理操作",
-    "adminEmpty": "管理操作はまだありません。","confirmDisable":"もう一度押して停止","confirmRemoveAdmin":"もう一度押して解除","confirmCancel":"キャンセル"},
- "hotspotsPanel": {
-   "roleExtension": "都市間延長（{parentId}）",
-   "roleSecondary": "サブ都市",
-   "rolePrimary": "主要都市",
-   "reviewed": "スポット候補 {count} 件を更新しました",
-   "depthSet": "{count} 件をディープ観光スポットに設定しました",
-   "depthCleared": "{count} 件のディープ観光マークを外しました",
-   "moved": "{count} 件を {destination} へ移動しました",
-   "candidateFound": "候補が見つかりました。名称と住所を人が照合してください。",
-   "candidateNone": "一意の候補が見つかりません。",
-   "locationSaved": "正確な位置を保存しました。",
-   "filtersLabel": "絞り込み",
-   "filtersShow": "絞り込みを開く",
-   "filtersHide": "絞り込みを閉じる",
-   "filterCountry": "国・地域",
-   "filterCategory": "スポット分類",
-   "statusFilter": "審査状態",
-   "statusPending": "審査待ち",
-   "statusApproved": "人による承認",
-   "statusAutoApproved": "自動承認",
-   "statusRejected": "却下",
-   "statusDisabled": "停止中",
-   "statusAll": "すべての状態",
-   "cityCode": "都市コード",
-   "cityCodePlaceholder": "都市コード（例：TPE）",
-   "destinationId": "目的地 ID",
-   "roleFilter": "都市の階層",
-   "roleAll": "すべての階層",
-   "roleExtensionOption": "都市間延長",
-   "parentId": "親目的地 ID",
-   "originFilter": "データ元",
-   "originAll": "すべてのデータ元",
-   "originCurated": "人手による初期データ",
-   "originWikimedia": "Wikimedia 探索",
-   "totals": "全 {total} 件、選択 {selected} 件",
-   "approve": "承認",
-   "reject": "却下",
-   "disable": "停止",
-   "moveTo": "目的地へ移動",
-   "moveToPlaceholder": "移動先の目的地 ID",
-   "moveButton": "目的地を移動",
-   "depthKind": "ディープ観光の種類",
-   "depthUrbanLocal": "市街の路地",
-   "depthDayTrip": "近郊",
-   "accessMinutes": "移動時間（分）",
-   "durationMinutes": "滞在時間（分）",
-   "depthReason": "ディープ観光の理由",
-   "depthReasonPlaceholder": "ディープ観光として薦める理由",
-   "setDepth": "ディープ観光に設定",
-   "clearDepth": "ディープ観光マークを外す",
-   "locationTitle": "正確な位置：{name}",
-   "locationHint": "Places の候補座標は照合用です。恒久座標には独立した情報源が必要です。",
-   "close": "閉じる",
-   "latitude": "緯度",
-   "longitude": "経度",
-   "coordinateSourceType": "座標の情報源の種類",
-   "coordinateSourcePending": "未設定",
-   "coordinateSourceOfficialTourism": "公式観光",
-   "coordinateSourceAdminVerified": "管理者が確認",
-   "coordinateSourceCurated": "人手のマスターデータ",
-   "coordinateSourceUrl": "座標の情報源 URL",
-   "naverUrl": "NAVER の正確な地点ページ",
-   "matchStatus": "照合状態",
-   "matchUnverified": "未検証",
-   "matchVerified": "検証済み",
-   "matchAmbiguous": "あいまい",
-   "matchDisabled": "停止",
-   "searchGoogle": "Google の候補を検索",
-   "saveLocation": "位置を保存",
-   "temporaryCoordinates": "一時的な照合座標：",
-   "applyPlaceId": "Place ID を適用（人の確認が必要）",
-   "thSelect": "選択",
-   "thHotspot": "スポット",
-   "thCategoryCity": "分類／都市",
-   "thDepth": "ディープ観光設定",
-   "thDistance": "距離",
-   "thViews": "30 日間の閲覧",
-   "thStatus": "状態／理由",
-   "thMap": "地図",
-   "thSources": "情報源",
-   "selectAllGroup": "{name}（{code}）をすべて選択",
-   "selectItem": "{name} を選択",
-   "pageCount": "このページ {count} 件",
-   "noQid": "QID なし",
-   "area": "エリア：{name}",
-   "depthLine": "移動 {access}／滞在 {duration} 分",
-   "coordinateSourceMissing": "座標の情報源が未設定",
-   "editLocation": "位置を編集",
-   "sourceN": "情報源 {index}",
-   "empty": "条件に合う候補スポットはありません",
-   "paginationLabel": "スポット候補のページ切替",
-   "previous": "前へ",
-   "pageOf": "{page}／{pages} ページ",
-   "next": "次へ"
- },
- "foodMerchantsPanel": {
-   "verifiedActivated": "{count} 店を検証済み・承認・有効にしました。",
-   "disabledCount": "{count} 店を停止しました。",
-   "noNonKorean": "選択した中に Google 候補検索を使える韓国以外の店舗がありません。",
-   "batchDone": "{total} 店の Google 候補検索が完了し、{found} 店に候補があります{skipped}。1 件ずつ照合してから適用してください。",
-   "skippedKorean": "（韓国の {count} 店はスキップ）",
-   "placeApplied": "{name} に Place ID を適用しました。人の審査は残ります。",
-   "candidateFound": "候補が見つかりました。名称と住所を照合してから Place ID を適用してください。",
-   "candidateNone": "一意の候補が見つかりません。",
-   "locationSaved": "店舗の位置と情報源を保存しました。",
-   "eyebrow": "正確な店舗位置",
-   "title": "店舗・地図の同定・恒久座標",
-   "description": "未検証の初期候補は公開されません。Google Places の座標は照合用で、恒久座標には公式または管理者確認の情報源が別途必要です。",
-   "searchLabel": "店舗検索",
-   "searchPlaceholder": "店名または slug",
-   "matchFilter": "地図照合状態",
-   "matchAll": "すべての照合状態",
-   "matchUnverified": "未検証",
-   "matchVerified": "検証済み",
-   "matchAmbiguous": "あいまい",
-   "matchDisabled": "停止中",
-   "matchMapDisabled": "地図停止",
-   "officialFilter": "公式データの状態",
-   "officialAll": "すべての公式データ",
-   "officialFilled": "公式データあり",
-   "officialMissing": "公式データなし",
-   "deselectAll": "選択を解除",
-   "selectVisible": "表示中をすべて選択",
-   "selectedCount": "{count} 店を選択",
-   "batchSearch": "Google 候補を一括検索",
-   "batchVerify": "一括で検証済み・有効にする",
-   "batchDisable": "一括停止",
-   "candidatesTitle": "Google 候補の手動照合",
-   "candidatesHint": "候補座標は比較用で、恒久座標には書き込まれません。店名と住所を確認してから Place ID を 1 件ずつ適用してください。",
-   "notConfigured": "Google Places の自動照合が設定されていません。",
-   "applyPlaceId": "Place ID を適用（人の審査は残す）",
-   "noCandidates": "候補はありません。",
-   "thSelect": "選択",
-   "thMerchant": "店舗",
-   "thDestinationCuisine": "目的地／料理",
-   "thMapIdentity": "地図の同定",
-   "thCoordinates": "恒久座標",
-   "thOfficial": "公式データ",
-   "thPublish": "公開",
-   "thActions": "操作",
-   "selectItem": "{name} を選択",
-   "noPlaceId": "正確な同定なし",
-   "coordinateSourceMissing": "座標の情報源が未設定",
-   "websiteFilled": "公式サイトあり",
-   "websiteMissing": "公式サイト未設定",
-   "sourcesLine": "直接の根拠 {direct} · 背景 {context}",
-   "active": "有効",
-   "inactive": "停止",
-   "editButton": "位置と情報源を編集",
-   "close": "閉じる",
-   "name": "店名",
-   "localName": "現地の店名",
-   "latitude": "緯度",
-   "longitude": "経度",
-   "coordinateSourceType": "座標の情報源の種類",
-   "coordinateSourcePending": "未設定",
-   "coordinateSourceOfficialTourism": "公式観光",
-   "coordinateSourceMerchantOfficial": "店舗公式",
-   "coordinateSourceAdminVerified": "管理者が確認",
-   "coordinateSourceUrl": "座標の情報源 URL",
-   "naverUrl": "NAVER の正確な地点ページ",
-   "searchGoogle": "Google の候補を検索",
-   "temporaryCoordinates": "一時的な照合座標（恒久の情報源にはできません）：",
-   "sourcesTitle": "店舗公式サイトと公式の根拠",
-   "sourcesHint": "地域の観光ページは目的地の背景にすぎません。店舗を直接掲載したページか店舗自身の公式サイトだけが、店名・住所・公式サイト・配車座標の根拠になります。",
-   "addSource": "直接の情報源を追加",
-   "officialWebsite": "店舗の公式サイト",
-   "sourceN": "情報源 {index}",
-   "remove": "削除",
-   "sourceType": "情報源の種類",
-   "sourceTypeMerchantOfficial": "店舗公式",
-   "sourceTypeOfficialTourism": "行政／公式観光",
-   "sourceTypeMichelin": "ライセンス付きミシュラン",
-   "sourceScope": "根拠の範囲",
-   "scopeDestinationContext": "目的地の背景（店舗の根拠にならない）",
-   "scopeMerchantListing": "公式の店舗リスト",
-   "scopeMerchantWebsite": "店舗公式サイト",
-   "scopeCoordinates": "恒久座標の情報源",
-   "sourceTitle": "情報源のタイトル",
-   "sourceUrl": "HTTPS の情報源 URL",
-   "claimDisplayName": "店名",
-   "claimAddress": "住所",
-   "claimOfficialWebsite": "公式サイト",
-   "claimCoordinates": "座標",
-   "reviewPending": "審査待ち",
-   "reviewApproved": "承認",
-   "reviewRejected": "却下",
-   "reviewDisabled": "停止",
-   "activeLabel": "有効",
-   "saveMerchant": "店舗の位置を保存"
- },
-  "providerSecrets": {
-    "auth_google_client_secret": { "label": "Google OAuth Client Secret", "help": "サーバー側で暗号化して保存します。" },
-    "auth_line_channel_secret": { "label": "LINE Channel Secret", "help": "LINE Login のトークン交換にのみ使います。" },
-    "auth_apple_private_key": { "label": "Apple .p8 Private Key", "help": "PEM を貼り付けるか改行を \\n で書きます。サーバー側で暗号化して保存します。" },
-    "openai_api_key": { "label": "OpenAI API Key", "help": "サーバー側で暗号化し、ブラウザには送りません。" },
-    "anthropic_api_key": { "label": "Anthropic API Key", "help": "Claude Messages API に使います。" },
-    "minimax_api_key": { "label": "MiniMax API Key", "help": "MiniMax Responses API に使います。" },
-    "google_maps_api_key": { "label": "サーバー API キー", "help": "Places API (New)・Routes API・Weather API を有効にし、ホストの送信元 IP に制限することを推奨します。" },
-    "next_public_google_maps_browser_key": { "label": "ブラウザ地図キー", "help": "キーを入れただけでは地図は読み込まれません。Maps JavaScript API を有効にし、https://mokaair.com/* と https://www.mokaair.com/* を許可して、確認後に上の安全ゲートを開いてください。" },
-    "naver_maps_client_id": { "label": "NAVER Cloud Client ID", "help": "サーバー API とブラウザの Dynamic Map で使います。ブラウザ公開値は本番サイトのオリジンに制限してください。" },
-    "naver_maps_client_secret": { "label": "NAVER Cloud Client Secret", "help": "サーバー側で暗号化し、ブラウザには決して返しません。" },
-    "navitime_client_id": { "label": "Client ID", "help": "直接契約でのみ必要で、リクエストパスに入ります。RapidAPI キーを使う場合は空欄で構いません。" },
-    "navitime_api_key": { "label": "API Key", "help": "RapidAPI の X-RapidAPI-Key（Basic プランは月 500 回）または直接契約のキー。" },
-    "ekispert_api_key": { "label": "Ekispert Access Key", "help": "サーバー側で暗号化して保存し、経路リクエストは公式の key パラメータで送ります。" },
-    "odsay_api_key": { "label": "ODsay Server Key", "help": "本番サーバーの固定送信元 IP に紐づけた Server Key を使い、ブラウザ用 Web Key は入れないでください。" },
-    "kkday_api_key": { "label": "承認後の API キー" },
-    "klook_api_key": { "label": "承認後の API キー" },
-    "agoda_api_key": { "label": "承認後の API キー" },
-    "hotspot_guide_youtube_api_key": { "label": "YouTube Data API Key", "help": "動画検索にのみ使い、1 日の枠は上の上限で管理します。" },
-    "hotspot_guide_brave_api_key": { "label": "Brave Search API Key", "help": "サーバー側で暗号化して保存します。" },
-    "hotspot_guide_gemini_api_key": { "label": "Gemini API Key", "help": "多言語の記事検索とスポット候補生成に使い、サーバー側で暗号化して保存します。" }
+    "adminEmpty": "管理操作はまだありません。",
+    "confirmDisable": "もう一度押して停止",
+    "confirmRemoveAdmin": "もう一度押して解除",
+    "confirmCancel": "キャンセル"
   },
-  "settingsPanel":   {
+  "hotspotsPanel": {
+    "roleExtension": "都市間延長（{parentId}）",
+    "roleSecondary": "サブ都市",
+    "rolePrimary": "主要都市",
+    "reviewed": "スポット候補 {count} 件を更新しました",
+    "depthSet": "{count} 件をディープ観光スポットに設定しました",
+    "depthCleared": "{count} 件のディープ観光マークを外しました",
+    "moved": "{count} 件を {destination} へ移動しました",
+    "candidateFound": "候補が見つかりました。名称と住所を人が照合してください。",
+    "candidateNone": "一意の候補が見つかりません。",
+    "locationSaved": "正確な位置を保存しました。",
+    "filtersLabel": "絞り込み",
+    "filtersShow": "絞り込みを開く",
+    "filtersHide": "絞り込みを閉じる",
+    "filterCountry": "国・地域",
+    "filterCategory": "スポット分類",
+    "statusFilter": "審査状態",
+    "statusPending": "審査待ち",
+    "statusApproved": "人による承認",
+    "statusAutoApproved": "自動承認",
+    "statusRejected": "却下",
+    "statusDisabled": "停止中",
+    "statusAll": "すべての状態",
+    "cityCode": "都市コード",
+    "cityCodePlaceholder": "都市コード（例：TPE）",
+    "destinationId": "目的地 ID",
+    "roleFilter": "都市の階層",
+    "roleAll": "すべての階層",
+    "roleExtensionOption": "都市間延長",
+    "parentId": "親目的地 ID",
+    "originFilter": "データ元",
+    "originAll": "すべてのデータ元",
+    "originCurated": "人手による初期データ",
+    "originWikimedia": "Wikimedia 探索",
+    "totals": "全 {total} 件、選択 {selected} 件",
+    "approve": "承認",
+    "reject": "却下",
+    "disable": "停止",
+    "moveTo": "目的地へ移動",
+    "moveToPlaceholder": "移動先の目的地 ID",
+    "moveButton": "目的地を移動",
+    "depthKind": "ディープ観光の種類",
+    "depthUrbanLocal": "市街の路地",
+    "depthDayTrip": "近郊",
+    "accessMinutes": "移動時間（分）",
+    "durationMinutes": "滞在時間（分）",
+    "depthReason": "ディープ観光の理由",
+    "depthReasonPlaceholder": "ディープ観光として薦める理由",
+    "setDepth": "ディープ観光に設定",
+    "clearDepth": "ディープ観光マークを外す",
+    "locationTitle": "正確な位置：{name}",
+    "locationHint": "Places の候補座標は照合用です。恒久座標には独立した情報源が必要です。",
+    "close": "閉じる",
+    "latitude": "緯度",
+    "longitude": "経度",
+    "coordinateSourceType": "座標の情報源の種類",
+    "coordinateSourcePending": "未設定",
+    "coordinateSourceOfficialTourism": "公式観光",
+    "coordinateSourceAdminVerified": "管理者が確認",
+    "coordinateSourceCurated": "人手のマスターデータ",
+    "coordinateSourceUrl": "座標の情報源 URL",
+    "naverUrl": "NAVER の正確な地点ページ",
+    "matchStatus": "照合状態",
+    "matchUnverified": "未検証",
+    "matchVerified": "検証済み",
+    "matchAmbiguous": "あいまい",
+    "matchDisabled": "停止",
+    "searchGoogle": "Google の候補を検索",
+    "saveLocation": "位置を保存",
+    "temporaryCoordinates": "一時的な照合座標：",
+    "applyPlaceId": "Place ID を適用（人の確認が必要）",
+    "thSelect": "選択",
+    "thHotspot": "スポット",
+    "thCategoryCity": "分類／都市",
+    "thDepth": "ディープ観光設定",
+    "thDistance": "距離",
+    "thViews": "30 日間の閲覧",
+    "thStatus": "状態／理由",
+    "thMap": "地図",
+    "thSources": "情報源",
+    "selectAllGroup": "{name}（{code}）をすべて選択",
+    "selectItem": "{name} を選択",
+    "pageCount": "このページ {count} 件",
+    "noQid": "QID なし",
+    "area": "エリア：{name}",
+    "depthLine": "移動 {access}／滞在 {duration} 分",
+    "coordinateSourceMissing": "座標の情報源が未設定",
+    "editLocation": "位置を編集",
+    "sourceN": "情報源 {index}",
+    "empty": "条件に合う候補スポットはありません",
+    "paginationLabel": "スポット候補のページ切替",
+    "previous": "前へ",
+    "pageOf": "{page}／{pages} ページ",
+    "next": "次へ"
+  },
+  "foodMerchantsPanel": {
+    "verifiedActivated": "{count} 店を検証済み・承認・有効にしました。",
+    "disabledCount": "{count} 店を停止しました。",
+    "noNonKorean": "選択した中に Google 候補検索を使える韓国以外の店舗がありません。",
+    "batchDone": "{total} 店の Google 候補検索が完了し、{found} 店に候補があります{skipped}。1 件ずつ照合してから適用してください。",
+    "skippedKorean": "（韓国の {count} 店はスキップ）",
+    "placeApplied": "{name} に Place ID を適用しました。人の審査は残ります。",
+    "candidateFound": "候補が見つかりました。名称と住所を照合してから Place ID を適用してください。",
+    "candidateNone": "一意の候補が見つかりません。",
+    "locationSaved": "店舗の位置と情報源を保存しました。",
+    "eyebrow": "正確な店舗位置",
+    "title": "店舗・地図の同定・恒久座標",
+    "description": "未検証の初期候補は公開されません。Google Places の座標は照合用で、恒久座標には公式または管理者確認の情報源が別途必要です。",
+    "searchLabel": "店舗検索",
+    "searchPlaceholder": "店名または slug",
+    "matchFilter": "地図照合状態",
+    "matchAll": "すべての照合状態",
+    "matchUnverified": "未検証",
+    "matchVerified": "検証済み",
+    "matchAmbiguous": "あいまい",
+    "matchDisabled": "停止中",
+    "matchMapDisabled": "地図停止",
+    "officialFilter": "公式データの状態",
+    "officialAll": "すべての公式データ",
+    "officialFilled": "公式データあり",
+    "officialMissing": "公式データなし",
+    "deselectAll": "選択を解除",
+    "selectVisible": "表示中をすべて選択",
+    "selectedCount": "{count} 店を選択",
+    "batchSearch": "Google 候補を一括検索",
+    "batchVerify": "一括で検証済み・有効にする",
+    "batchDisable": "一括停止",
+    "candidatesTitle": "Google 候補の手動照合",
+    "candidatesHint": "候補座標は比較用で、恒久座標には書き込まれません。店名と住所を確認してから Place ID を 1 件ずつ適用してください。",
+    "notConfigured": "Google Places の自動照合が設定されていません。",
+    "applyPlaceId": "Place ID を適用（人の審査は残す）",
+    "noCandidates": "候補はありません。",
+    "thSelect": "選択",
+    "thMerchant": "店舗",
+    "thDestinationCuisine": "目的地／料理",
+    "thMapIdentity": "地図の同定",
+    "thCoordinates": "恒久座標",
+    "thOfficial": "公式データ",
+    "thPublish": "公開",
+    "thActions": "操作",
+    "selectItem": "{name} を選択",
+    "noPlaceId": "正確な同定なし",
+    "coordinateSourceMissing": "座標の情報源が未設定",
+    "websiteFilled": "公式サイトあり",
+    "websiteMissing": "公式サイト未設定",
+    "sourcesLine": "直接の根拠 {direct} · 背景 {context}",
+    "active": "有効",
+    "inactive": "停止",
+    "editButton": "位置と情報源を編集",
+    "close": "閉じる",
+    "name": "店名",
+    "localName": "現地の店名",
+    "latitude": "緯度",
+    "longitude": "経度",
+    "coordinateSourceType": "座標の情報源の種類",
+    "coordinateSourcePending": "未設定",
+    "coordinateSourceOfficialTourism": "公式観光",
+    "coordinateSourceMerchantOfficial": "店舗公式",
+    "coordinateSourceAdminVerified": "管理者が確認",
+    "coordinateSourceUrl": "座標の情報源 URL",
+    "naverUrl": "NAVER の正確な地点ページ",
+    "searchGoogle": "Google の候補を検索",
+    "temporaryCoordinates": "一時的な照合座標（恒久の情報源にはできません）：",
+    "sourcesTitle": "店舗公式サイトと公式の根拠",
+    "sourcesHint": "地域の観光ページは目的地の背景にすぎません。店舗を直接掲載したページか店舗自身の公式サイトだけが、店名・住所・公式サイト・配車座標の根拠になります。",
+    "addSource": "直接の情報源を追加",
+    "officialWebsite": "店舗の公式サイト",
+    "sourceN": "情報源 {index}",
+    "remove": "削除",
+    "sourceType": "情報源の種類",
+    "sourceTypeMerchantOfficial": "店舗公式",
+    "sourceTypeOfficialTourism": "行政／公式観光",
+    "sourceTypeMichelin": "ライセンス付きミシュラン",
+    "sourceScope": "根拠の範囲",
+    "scopeDestinationContext": "目的地の背景（店舗の根拠にならない）",
+    "scopeMerchantListing": "公式の店舗リスト",
+    "scopeMerchantWebsite": "店舗公式サイト",
+    "scopeCoordinates": "恒久座標の情報源",
+    "sourceTitle": "情報源のタイトル",
+    "sourceUrl": "HTTPS の情報源 URL",
+    "claimDisplayName": "店名",
+    "claimAddress": "住所",
+    "claimOfficialWebsite": "公式サイト",
+    "claimCoordinates": "座標",
+    "reviewPending": "審査待ち",
+    "reviewApproved": "承認",
+    "reviewRejected": "却下",
+    "reviewDisabled": "停止",
+    "activeLabel": "有効",
+    "saveMerchant": "店舗の位置を保存"
+  },
+  "providerSecrets": {
+    "auth_google_client_secret": {
+      "label": "Google OAuth Client Secret",
+      "help": "サーバー側で暗号化して保存します。"
+    },
+    "auth_line_channel_secret": {
+      "label": "LINE Channel Secret",
+      "help": "LINE Login のトークン交換にのみ使います。"
+    },
+    "auth_apple_private_key": {
+      "label": "Apple .p8 Private Key",
+      "help": "PEM を貼り付けるか改行を \\n で書きます。サーバー側で暗号化して保存します。"
+    },
+    "openai_api_key": {
+      "label": "OpenAI API Key",
+      "help": "サーバー側で暗号化し、ブラウザには送りません。"
+    },
+    "anthropic_api_key": {
+      "label": "Anthropic API Key",
+      "help": "Claude Messages API に使います。"
+    },
+    "minimax_api_key": {
+      "label": "MiniMax API Key",
+      "help": "MiniMax Responses API に使います。"
+    },
+    "google_maps_api_key": {
+      "label": "サーバー API キー",
+      "help": "Places API (New)・Routes API・Weather API を有効にし、ホストの送信元 IP に制限することを推奨します。"
+    },
+    "next_public_google_maps_browser_key": {
+      "label": "ブラウザ地図キー",
+      "help": "キーを入れただけでは地図は読み込まれません。Maps JavaScript API を有効にし、https://mokaair.com/* と https://www.mokaair.com/* を許可して、確認後に上の安全ゲートを開いてください。"
+    },
+    "naver_maps_client_id": {
+      "label": "NAVER Cloud Client ID",
+      "help": "サーバー API とブラウザの Dynamic Map で使います。ブラウザ公開値は本番サイトのオリジンに制限してください。"
+    },
+    "naver_maps_client_secret": {
+      "label": "NAVER Cloud Client Secret",
+      "help": "サーバー側で暗号化し、ブラウザには決して返しません。"
+    },
+    "navitime_client_id": {
+      "label": "Client ID",
+      "help": "直接契約でのみ必要で、リクエストパスに入ります。RapidAPI キーを使う場合は空欄で構いません。"
+    },
+    "navitime_api_key": {
+      "label": "API Key",
+      "help": "RapidAPI の X-RapidAPI-Key（Basic プランは月 500 回）または直接契約のキー。"
+    },
+    "ekispert_api_key": {
+      "label": "Ekispert Access Key",
+      "help": "サーバー側で暗号化して保存し、経路リクエストは公式の key パラメータで送ります。"
+    },
+    "odsay_api_key": {
+      "label": "ODsay Server Key",
+      "help": "本番サーバーの固定送信元 IP に紐づけた Server Key を使い、ブラウザ用 Web Key は入れないでください。"
+    },
+    "kkday_api_key": {
+      "label": "承認後の API キー"
+    },
+    "klook_api_key": {
+      "label": "承認後の API キー"
+    },
+    "agoda_api_key": {
+      "label": "承認後の API キー"
+    },
+    "hotspot_guide_youtube_api_key": {
+      "label": "YouTube Data API Key",
+      "help": "動画検索にのみ使い、1 日の枠は上の上限で管理します。"
+    },
+    "hotspot_guide_brave_api_key": {
+      "label": "Brave Search API Key",
+      "help": "サーバー側で暗号化して保存します。"
+    },
+    "hotspot_guide_gemini_api_key": {
+      "label": "Gemini API Key",
+      "help": "多言語の記事検索とスポット候補生成に使い、サーバー側で暗号化して保存します。"
+    }
+  },
+  "settingsPanel": {
     "sources": {
       "database": "管理画面の暗号化設定",
       "environment": "ホスト環境",

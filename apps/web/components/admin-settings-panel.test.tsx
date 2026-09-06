@@ -323,6 +323,39 @@ const aiGuideSearchProvider = {
   },
 };
 
+const introWriterProvider = {
+  provider: "hotspot_intros",
+  label: "AI 景點介紹撰寫",
+  description: "景點介紹撰寫",
+  enabled: true,
+  configured: true,
+  status: "ready",
+  status_message: "預設 minimax",
+  config: {
+    hotspot_intro_ai_default_provider: "minimax",
+    hotspot_intro_ai_openai_model: null,
+    hotspot_intro_ai_anthropic_model: null,
+    hotspot_intro_ai_minimax_model: null,
+    hotspot_intro_ai_gemini_model: null,
+    hotspot_intro_ai_daily_call_budget: 200,
+  },
+  config_sources: {
+    hotspot_intro_ai_default_provider: "environment",
+    hotspot_intro_ai_openai_model: "environment",
+    hotspot_intro_ai_anthropic_model: "environment",
+    hotspot_intro_ai_minimax_model: "environment",
+    hotspot_intro_ai_gemini_model: "environment",
+    hotspot_intro_ai_daily_call_budget: "environment",
+  },
+  secrets: {},
+  field_options: {
+    hotspot_intro_ai_openai_model: modelOptions.openai_model,
+    hotspot_intro_ai_anthropic_model: modelOptions.anthropic_model,
+    hotspot_intro_ai_minimax_model: modelOptions.minimax_model,
+    hotspot_intro_ai_gemini_model: modelOptions.gemini_model,
+  },
+};
+
 const geminiProvider = {
   provider: "gemini_guides",
   label: "Gemini 多語文章搜尋",
@@ -344,7 +377,7 @@ const geminiProvider = {
 
 const aiSnapshot = {
   ...snapshot,
-  providers: [aiVendorsProvider, aiPlannerProvider, aiGuideSearchProvider, geminiProvider, ...snapshot.providers],
+  providers: [aiVendorsProvider, aiPlannerProvider, aiGuideSearchProvider, introWriterProvider, geminiProvider, ...snapshot.providers],
 };
 
 function stubAiFetch(value: unknown) {
@@ -904,7 +937,7 @@ describe("AdminSettingsPanel", () => {
     const heading = await screen.findByRole("heading", { name: "AI 供應商與金鑰" });
     const categoryTabs = screen.getByRole("tablist", { name: "API 供應商分類" });
     expect(within(categoryTabs).getAllByRole("tab").map((tab) => tab.textContent)).toEqual([
-      "AI 服務4/4",
+      "AI 服務5/5",
       "地圖與路線1/1",
       "景點內容1/1",
       "最近管理紀錄",
@@ -914,6 +947,7 @@ describe("AdminSettingsPanel", () => {
       "AI 供應商與金鑰",
       "AI 行程規劃",
       "AI 景點介紹搜尋",
+      "AI 景點介紹撰寫",
       "Gemini 多語文章搜尋",
     ]);
     const section = heading.closest("section")!;
@@ -1042,6 +1076,30 @@ describe("AdminSettingsPanel", () => {
     expect(body.config.hotspot_guide_ai_openai_model).toBe("openai-model-b");
     expect(body.config.hotspot_guide_ai_minimax_model).toBeNull();
     expect(body.config.hotspot_guide_ai_anthropic_model).toBeNull();
+  });
+
+  it("lets the introduction writer inherit the guide search model or take its own", async () => {
+    const fetchMock = stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel />);
+
+    const section = await openAiCard("AI 景點介紹撰寫");
+    const minimax = within(section).getByLabelText(/^MiniMax 模型/) as HTMLSelectElement;
+    // Blank means the guide search's model, not the planner's: introductions run through
+    // the guide search adapters, and the empty option has to say which one it inherits.
+    expect(Array.from(minimax.options).map((option) => option.textContent)).toEqual(["沿用景點 AI 搜尋的模型", "MiniMax Model A", "自訂…"]);
+    expect(minimax.value).toBe("");
+    expect(within(section).queryByLabelText(/^Gemini 模型/)).toBeNull();
+
+    fireEvent.change(within(section).getByLabelText(/^介紹撰寫預設供應商/), { target: { value: "gemini" } });
+    expect(within(section).queryByLabelText(/^MiniMax 模型/)).toBeNull();
+    fireEvent.change(within(section).getByLabelText(/^Gemini 模型/), { target: { value: "gemini-model-a" } });
+    fireEvent.click(within(section).getByRole("button", { name: "儲存設定" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    const body = savedBody(fetchMock);
+    expect(body.config.hotspot_intro_ai_default_provider).toBe("gemini");
+    expect(body.config.hotspot_intro_ai_gemini_model).toBe("gemini-model-a");
+    expect(body.config.hotspot_intro_ai_minimax_model).toBeNull();
   });
 
   it("lets the planner pin Gemini and sends its model through the shared vendor key", async () => {
