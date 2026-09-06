@@ -43,7 +43,9 @@ export function SiteFooter({ year }: { year: number }) {
       {/* The bottom navigation is fixed, and .public-app-shell already reserves 5rem plus the
           safe area below its content for it. Sitting inside that shell is what keeps this
           clear of the bar on a phone; it needs no spacing of its own. */}
-      <p className="border-t border-[var(--line)] px-5 py-5 text-center text-xs text-[var(--muted)]">
+      {/* text-sm, not text-xs: Tailwind's xs is 12px and readability.spec.ts holds the site
+          to a 13px floor, which every route it scans now includes this footer. */}
+      <p className="border-t border-[var(--line)] px-5 py-5 text-center text-sm text-[var(--muted)]">
         {t("footerCopyright", { year })}
       </p>
     </footer>

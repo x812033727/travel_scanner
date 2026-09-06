@@ -71,7 +71,9 @@ for (const width of [320, 390]) {
     await page.goto("/en?campaign=mobile");
     await openDisplayPreferences(page);
     await expect(page.getByRole("combobox", { name: "Appearance" })).toBeEnabled({ timeout: 15_000 });
-    await page.getByRole("combobox", { name: "Language" }).selectOption("ja");
+    // Scoped to the menu it opened. The footer now offers the same choice, so an
+    // unscoped locator matches two comboboxes and Playwright refuses to guess.
+    await page.getByRole("dialog").getByRole("combobox", { name: "Language" }).selectOption("ja");
     await expect(page).toHaveURL(/\/ja\/?\?campaign=mobile$/);
     await expect(page.locator("html")).toHaveAttribute("lang", "ja");
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
