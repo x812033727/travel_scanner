@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-ai-review-guide-backlog
 title: 用 AI 審核 1,270 筆待審介紹候選
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-06T09:05:00Z
 created_at: 2026-09-06T09:04:00Z
-completed_at:
+completed_at: 2026-09-06T09:10:18Z
 branch: claude/ai-review-guide-backlog
 depends_on: []
 scope:
@@ -55,6 +55,23 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest tests/tes
 ```bash
 docker compose -f docker-compose.prod.yml exec -T api python -m app.cli review-pending-guides --provider gemini --limit 40
 ```
+
+## Result（2026-09-06 正式站）
+
+四批跑完，待審 1,270 → 0：
+
+| 結果 | 筆數 |
+|---|---|
+| 核准 | 848 |
+| 改語系後核准 | 85 |
+| 退回 | 337 |
+
+核准總數 773 → 1,706，有介紹的景點 128 個。共 208 次 Gemini 呼叫
+（gemini-3.8-flash），輸入 316,923 tokens、輸出 116,604 tokens，零錯誤批次。
+
+抽查：圓覺寺是最難的同名案例（鎌倉圓覺寺 vs 台北內湖圓覺寺步道、千葉同名寺、
+姬路書寫山圓教寺、京都圓光寺／成相寺），全部正確分流。門檻邊緣的核准（相關性 60）
+都是切題的區域導覽；邊緣退回（45-59）都是「涵蓋該區但非專門介紹」的泛用攻略。
 
 ## Notes
 

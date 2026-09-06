@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**18 open · 5 in progress · 1 blocked · 0 in review · 42 done**
+**18 open · 4 in progress · 1 blocked · 0 in review · 43 done**
 
 ## Ready to claim
 
@@ -36,7 +36,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Guide backfill searches one locale, so four locales stay empty](open/2026-09-06-multi-locale-guide-backfill.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
 | [Re-seeding never corrects an existing dish name or summary](open/2026-09-06-seed-localization-reconcile.md) | claude-fable-5-1 | 2026-09-06T04:27:50Z | `claude/api-p2-data` |
 | [usage catalog validation rejects everything when web ships ahead of api](open/2026-09-06-usage-catalog-validation-rejects-everything-when.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
-| [用 AI 審核 1,270 筆待審介紹候選](open/2026-09-06-ai-review-guide-backlog.md) | claude-opus-5 | 2026-09-06T09:05:00Z | `claude/ai-review-guide-backlog` |
 | [food seed counts are hardcoded twelve times and only CI can see them](open/2026-09-06-food-seed-counts-are-hardcoded-twelve.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
 
 ## In review
@@ -54,6 +53,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [用 AI 審核 1,270 筆待審介紹候選](done/2026-09-06-ai-review-guide-backlog.md)
 - 2026-09-06 [AI 行程規劃、行程文字解析與景點 AI 搜尋也能選 Gemini](done/2026-09-06-ai-gemini-everywhere.md)
 - 2026-09-06 [21 個潮流街區還沒有任何店家](done/2026-09-06-empty-trend-districts.md)
 - 2026-09-06 [Nine merchant citations are dead, unreachable or not HTML](done/2026-09-06-broken-merchant-citations.md)
@@ -63,4 +63,3 @@ _Nothing here._
 - 2026-09-06 [Admin help text tells operators to avoid the model now shipped](done/2026-09-06-stale-gemini-model-help.md)
 - 2026-09-06 [AI settings in the admin panel: vendor card, model dropdowns, per-feature models (web)](done/2026-09-06-ai-settings-web.md)
 - 2026-09-06 [Consolidate AI vendor keys, model catalog and per-feature models (API)](done/2026-09-06-ai-settings-api.md)
-- 2026-09-06 [529 個公開景點還沒有任何導覽內容](done/2026-09-06-hotspot-guide-coverage.md)
