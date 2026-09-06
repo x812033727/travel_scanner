@@ -13,14 +13,16 @@ vi.mock("./place-picker", () => ({
  * hand those requests the response meant for the trip submission. This answers them
  * separately and leaves `mock` seeing only the calls the test is about.
  */
-function stubFetch(mock: unknown) {
+function stubFetch(mock: unknown, holidayUrls: string[] = []) {
   const submit = mock as (input: unknown, init?: RequestInit) => unknown;
   const empty = { country: "TW", country_name: "臺灣", locale: "zh-TW", coverage_start: null, coverage_end: null, attribution: "", holidays: [] };
-  vi.stubGlobal("fetch", vi.fn((input: unknown, init?: RequestInit) => (
-    String(input).includes("/holidays")
-      ? Promise.resolve(new Response(JSON.stringify(empty), { status: 200, headers: { "Content-Type": "application/json" } }))
-      : submit(input, init)
-  )));
+  vi.stubGlobal("fetch", vi.fn((input: unknown, init?: RequestInit) => {
+    if (String(input).includes("/holidays")) {
+      holidayUrls.push(String(input));
+      return Promise.resolve(new Response(JSON.stringify(empty), { status: 200, headers: { "Content-Type": "application/json" } }));
+    }
+    return submit(input, init);
+  }));
 }
 
 function dayButton(iso: string) {
@@ -257,5 +259,17 @@ describe("NewTripForm", () => {
     const alert = await screen.findByRole("alert");
     expect(alert.textContent).toContain("行程方案：必填");
     expect(alert.textContent).not.toContain("[object Object]");
+  });
+  it("marks the destination's holidays and the traveller's own, not every market", async () => {
+    const holidayUrls: string[] = [];
+    stubFetch(vi.fn(), holidayUrls);
+    render(<NewTripForm />);
+    await waitFor(() => expect(holidayUrls.length).toBe(3));
+
+    holidayUrls.length = 0;
+    fireEvent.change(screen.getByLabelText("目的地"), { target: { value: "日本東京" } });
+    await waitFor(() => expect(holidayUrls.length).toBe(2));
+    const asked = holidayUrls.map((url) => new URL(url, "https://travel.test").searchParams.get("country"));
+    expect(asked.sort()).toEqual(["JP", "TW"]);
   });
 });

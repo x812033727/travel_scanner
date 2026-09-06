@@ -63,3 +63,29 @@ export function holidayLabel(holidays: Holiday[] | undefined): string | undefine
   if (!holidays?.length) return undefined;
   return holidays.map((holiday) => `${holiday.country_name} ${holiday.name}`).join(", ");
 }
+
+/** Locale to the market a reader most likely takes leave in. English and Simplified have none. */
+const HOME_MARKETS: Record<string, string> = { "zh-TW": "TW", ja: "JP", ko: "KR" };
+
+/**
+ * Whose holidays a trip cares about: the country being travelled to, and the reader's own
+ * market. A destination the catalogue does not recognise leaves every market marked, which
+ * is the honest answer while the form only knows what the traveller typed.
+ */
+export function holidayCountriesFor(
+  destinationName: string,
+  locale: string,
+  cities: readonly { id: string; country: string; name: string }[],
+): readonly string[] {
+  const typed = destinationName.trim().toLowerCase();
+  const supported: readonly string[] = holidayCountries;
+  const match = typed.length >= 2
+    ? cities.find((city) => {
+      const name = city.name.trim().toLowerCase();
+      return typed.includes(city.id) || (name.length >= 2 && (typed.includes(name) || name.includes(typed)));
+    })
+    : undefined;
+  if (!match || !supported.includes(match.country)) return holidayCountries;
+  const home = HOME_MARKETS[locale];
+  return home && home !== match.country ? [match.country, home] : [match.country];
+}
