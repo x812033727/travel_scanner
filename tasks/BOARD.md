@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**6 open · 1 in progress · 1 blocked · 0 in review · 72 done**
+**6 open · 1 in progress · 1 blocked · 0 in review · 73 done**
 
 ## Ready to claim
 
@@ -38,6 +38,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [後台 AI 規劃連線測試送空候選，看不見真正會壞的那一步](done/2026-09-06-admin-planner-test-real-candidates.md)
 - 2026-09-06 [zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位](done/2026-09-06-zh-cn-area-labels-traditional.md)
 - 2026-09-06 [東京 AI 行程一律 500：一筆種子的 20 分鐘低於 planner 下限](done/2026-09-06-tokyo-planner-duration-500.md)
 - 2026-09-06 [路線卡與路線面板的文案硬編碼繁中](done/2026-09-06-route-copy-i18n.md)
@@ -47,4 +48,3 @@ _Nothing here._
 - 2026-09-06 [Measure the flood before widening ALLOWED_TYPES with temple, shrine and museum types](done/2026-09-06-measure-the-flood-before-widening-allowed.md)
 - 2026-09-06 [營業時間感知排程：AI 排程不把景點排在打烊時段](done/2026-09-06-opening-hours-aware-scheduling.md)
 - 2026-09-06 [貼 Google Maps 連結加景點（待安排 inbox）](done/2026-09-06-paste-maps-links-ingest.md)
-- 2026-09-06 [已存行程頁掛上分潤選項](done/2026-09-06-trip-affiliate-options.md)
