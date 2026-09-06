@@ -4010,7 +4010,7 @@ async def apply_trip_route(
             projection.segments,
             override_pairs=override_pairs,
             manual_notes={pair: manual_note},
-            ttl_seconds=get_settings().route_cache_ttl_seconds,
+            ttl_seconds=get_settings().route_segment_ttl_seconds,
         )
         await session.commit()
         await redis.set(idem_key, "complete", ex=86_400)

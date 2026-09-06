@@ -212,7 +212,7 @@ async def compute_and_apply_routes(
                         None
                         if computed_segment.provider == "manual"
                         else datetime.now(UTC)
-                        + timedelta(seconds=runtime.route_cache_ttl_seconds)
+                        + timedelta(seconds=runtime.route_segment_ttl_seconds)
                     ),
                 }
             )
@@ -280,7 +280,7 @@ async def compute_and_apply_routes(
             day_value,
             segments,
             override_pairs=override_by_day[day_value],
-            ttl_seconds=runtime.route_cache_ttl_seconds,
+            ttl_seconds=runtime.route_segment_ttl_seconds,
         )
     await session.commit()
     return cast(dict[str, Any], next_data["routing"])
