@@ -470,7 +470,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
 
         created_area = await create_food_area(
             FoodAreaWritePayload(
-                slug="seoul-euljiro",
+                slug="seoul-admin-test-area",
                 destination_id="seoul",
                 names={
                     "zh-TW": "乙支路",
@@ -517,14 +517,14 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         updated = await update_food_merchant(
             verified.id,
             FoodMerchantUpdatePayload(
-                area_slug="seoul-euljiro",
+                area_slug="seoul-admin-test-area",
                 category_slugs=["home-style", "rice-dishes"],
                 food_ids=linked_food_ids,
             ),
             admin,
             session,
         )
-        assert updated["area"]["slug"] == "seoul-euljiro"
+        assert updated["area"]["slug"] == "seoul-admin-test-area"
         assert updated["area_source"] == "admin"
         assert [item["slug"] for item in updated["categories"]] == ["home-style", "rice-dishes"]
         assert [item["is_primary"] for item in updated["categories"]] == [True, False]
