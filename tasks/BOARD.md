@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**43 open · 2 in progress · 0 blocked · 0 in review · 6 done**
+**43 open · 0 in progress · 0 blocked · 0 in review · 8 done**
 
 ## Ready to claim
 
@@ -31,7 +31,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | ops | `apps/api/app/places/naver.py` |
 | P2 | [482 個景點卡在人工審核佇列](open/2026-09-06-hotspot-review-backlog.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/app/hotspots/admin_router.py` |
 | P2 | [529 個公開景點還沒有任何導覽內容](open/2026-09-06-hotspot-guide-coverage.md) | ops | `apps/api/app/hotspots/guides.py` |
+| P2 | [日期變更後行程價格停在舊報價且無法重新查價](open/2026-09-06-trip-stale-price-after-reschedule.md) | api | `apps/api/app/trips/reschedule.py`<br>`apps/api/app/trips/router.py` |
 | P2 | [catalog fallback 被當成 AI 精修呈現給使用者](open/2026-09-06-intent-fallback-honesty.md) | api | `apps/api/app/trips/intents.py`<br>`apps/web/components/itinerary-diff.tsx` |
+| P2 | [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](open/2026-09-06-reoptimize-no-version-check.md) | api | `apps/api/app/trips/router.py` |
 | P2 | [usage catalog validation rejects everything when web ships ahead of api](open/2026-09-06-usage-catalog-validation-rejects-everything-when.md) | web | `apps/web/lib/usage-catalog.ts` |
 | P2 | [營業時間感知排程：AI 排程不把景點排在打烊時段](open/2026-09-06-opening-hours-aware-scheduling.md) | api | `apps/api/app/trips/hours.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/web/components/day-health-strip.tsx` |
 | P2 | [貼 Google Maps 連結加景點（待安排 inbox）](open/2026-09-06-paste-maps-links-ingest.md) | api | `apps/api/app/trips/ingest.py`<br>`apps/api/app/trips/ingest_router.py`<br>`apps/api/app/restaurants/imports.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-inbox-panel.tsx` |
@@ -54,10 +56,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [分享連結會外洩項目備註與整包 data](open/2026-09-06-share-payload-leaks-notes.md) | claude-fable-5-1 | 2026-09-06T02:42:57Z | `claude/trip-api-p1` |
-| [延長行程會摧毀已填的航班訂位且不提示](open/2026-09-06-reschedule-flight-anchor-loss.md) | claude-fable-5-1 | 2026-09-06T02:42:57Z | `claude/trip-api-p1` |
+_Nothing here._
 
 ## In review
 
@@ -69,12 +68,12 @@ _Nothing here._
 | --- | --- | --- |
 | P1 | [意圖精修刪除列時連帶清掉使用者輸入的交通時間](open/2026-09-06-intent-route-segment-cascade.md) | depends on 2026-09-06-intent-diff-mismatch |
 | P2 | [21 個潮流街區還沒有任何店家](open/2026-09-06-empty-trend-districts.md) | depends on 2026-09-06-trend-import-scripts |
-| P2 | [日期變更後行程價格停在舊報價且無法重新查價](open/2026-09-06-trip-stale-price-after-reschedule.md) | active work in the same scope |
-| P2 | [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](open/2026-09-06-reoptimize-no-version-check.md) | active work in the same scope |
 | P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | depends on 2026-09-06-stale-gemini-model-help |
 
 ## Recently finished
 
+- 2026-09-06 [延長行程會摧毀已填的航班訂位且不提示](done/2026-09-06-reschedule-flight-anchor-loss.md)
+- 2026-09-06 [分享連結會外洩項目備註與整包 data](done/2026-09-06-share-payload-leaks-notes.md)
 - 2026-09-06 [CI should fail a branch that adds a second alembic head](done/2026-09-06-ci-should-fail-a-branch-that.md)
 - 2026-09-06 [遷移裡的補資料分支在 CI 是死碼](done/2026-09-06-migration-backfill-untested.md)
 - 2026-09-06 [A failing required check did not stop a merge, and main stayed red](done/2026-09-06-required-checks-block-merge.md)

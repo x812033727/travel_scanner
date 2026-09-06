@@ -445,9 +445,7 @@ def ensure_shrink_confirmed(plan: ReschedulePlan, *, confirmed: bool) -> None:
             + (f"（含 {protected} 筆自訂內容）" if protected else "")
             + "，請確認後再執行",
         )
-    flights = "、".join(
-        flight.flight_number or flight.title for flight in plan.invalidated_flights
-    )
+    flights = "、".join(flight.flight_number or flight.title for flight in plan.invalidated_flights)
     raise AppError(
         422,
         "trip_shrink_confirmation_required",

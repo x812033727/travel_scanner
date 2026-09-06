@@ -410,7 +410,10 @@ async def test_shifting_a_fully_populated_trip_keeps_every_day_keyed_invariant()
         day_settings=settings,
     )
     assert plan.removed_item_ids == ()
-    assert plan.protected_rows == ()
+    # A shift deletes no row, but it re-dates both booked anchors and apply clears
+    # their bookings; the plan says so up front instead of counting it afterwards.
+    assert [row.kind for row in plan.protected_rows] == ["booked_flight", "booked_flight"]
+    assert [row.day_date for row in plan.protected_rows] == [DAY_ONE, DAY_ONE + timedelta(days=2)]
 
     # 1. The item shift is genuinely two-phase and each phase is order-safe.
     item_days = {row.id: row.day_date for row in items if row.day_date is not None}
