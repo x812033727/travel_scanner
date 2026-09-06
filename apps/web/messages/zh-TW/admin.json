@@ -110,7 +110,7 @@
     "odsay_api_base_url": { "label": "API Base URL", "help": "固定使用 ODsay 官方 https://api.odsay.com/v1/api。" },
     "odsay_language": { "label": "路線資料語言", "help": "ODsay Standard 方案只提供韓文；請僅在合約含多語服務時選擇其他語言。", "options": { "0": "韓文（Standard 相容）", "1": "英文", "2": "日文", "3": "簡體中文", "4": "繁體中文" } },
     "odsay_daily_request_limit": { "label": "站內每日請求上限", "help": "Basic 方案每日 30 次；預設站內只用 25 次並保留 5 次測試空間。正式商用方案可依合約調整；0 表示只計數不限制。" },
-    "travelpayouts_static_url_template": { "label": "安全備援合作連結", "help": "Partner Links API 失敗時才使用；可包含 {destination}、{departure_date}、{return_date}、{sub_id}。" },
+    "travelpayouts_static_url_template": { "label": "安全備援合作連結", "help": "Partner Links API 失敗時才使用；可包含 '{destination}'、'{departure_date}'、'{return_date}'、'{sub_id}'。" },
     "travelpayouts_flight_target_url": { "label": "航班原始目標網址" },
     "travelpayouts_hotel_target_url": { "label": "住宿原始目標網址" },
     "travelpayouts_activities_target_url": { "label": "活動原始目標網址" },
