@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**8 open · 1 in progress · 1 blocked · 0 in review · 68 done**
+**7 open · 2 in progress · 1 blocked · 0 in review · 68 done**
 
 ## Ready to claim
 
@@ -14,7 +14,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P2 | [待安排地點進入 AI 候選集（PR 8）](open/2026-09-06-paste-inbox-into-candidates.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/intents.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/trips/ingest.py`<br>`apps/web/components/trip-inbox-panel.tsx`<br>`apps/web/components/trip-editor.tsx` |
-| P2 | [zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位](open/2026-09-06-zh-cn-area-labels-traditional.md) | api | `apps/api/app/hotspots/areas.py` |
 | P2 | [seed 的韓文假名泰文名稱被當成中文標籤輸出](open/2026-09-06-non-chinese-seed-names-as-chinese-labels.md) | api | `apps/api/app/hotspots/catalog.py`<br>`apps/api/app/localized_names.py` |
 | P2 | [Wikidata 標籤原封不動存入，消歧義括號會顯示給使用者](open/2026-09-06-wikidata-labels-stored-verbatim.md) | api | `apps/api/app/hotspots/wikidata_labels.py` |
 | P2 | [國定假日資料：台日韓 2026-2027 進版控，日曆看得見連假與補班](open/2026-09-06-public-holidays-tw-jp-kr.md) | api | `apps/api/app/holidays`<br>`apps/api/app/main.py`<br>`apps/api/app/cli.py`<br>`apps/api/tests/test_public_holidays.py`<br>`apps/web/lib/holidays.ts`<br>`apps/web/components/date-range-picker.tsx`<br>`docs/public-holidays.md` |
@@ -27,6 +26,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | claude-opus-5 | 2026-09-06T13:20:48Z | `claude/place-names-i18n` |
+| [zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位](open/2026-09-06-zh-cn-area-labels-traditional.md) | claude-opus-5 | 2026-09-06T13:27:16Z | `claude/zh-cn-area-labels` |
 
 ## In review
 
