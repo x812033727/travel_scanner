@@ -19,6 +19,7 @@ export type HotspotFilters = {
   destinationId?: string;
   area?: string;
   theme?: string;
+  query?: string;
 };
 
 const EMPTY: InitialHotspots = { ranking: null, facets: null };
@@ -49,6 +50,7 @@ export async function loadInitialHotspots(
   // An area only means something inside its destination, exactly as on the client.
   if (filters.destinationId && filters.area) params.set("area", filters.area);
   if (filters.theme) params.set("theme", filters.theme);
+  if (filters.query) params.set("q", filters.query);
   const [ranking, facets] = await Promise.all([
     fetchJson(`${apiBase}/api/v1/hotspots/rankings?${params}`, locale),
     fetchJson(`${apiBase}/api/v1/hotspots/facets`, locale),

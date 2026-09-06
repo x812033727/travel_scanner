@@ -259,6 +259,42 @@ describe("HotspotExplorer", () => {
     );
   });
 
+  it("keeps a typed search across a reload and names what is filtered", async () => {
+    window.history.replaceState({}, "", "/hotspots?q=%E6%B7%BA%E8%8D%89&destination_id=tokyo");
+    const calls: string[] = [];
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      calls.push(url);
+      if (url.includes("/saved-items")) return new Response(JSON.stringify({ items: [] }));
+      if (url.includes("/hotspots/facets")) {
+        return new Response(JSON.stringify({
+          total: 1,
+          countries: [{ code: "JP", name: "日本", count: 1 }],
+          cities: [{ code: "NRT", destination_id: "tokyo", name: "東京", country_code: "JP", count: 1 }],
+          categories: [{ code: "culture", count: 1 }],
+          areas: [],
+          themes: [],
+        }));
+      }
+      return new Response(JSON.stringify({
+        scope: "global", scope_key: "global", observed_on: "2026-09-06", window_days: 30,
+        total: 0, has_more: false, next_cursor: null, items: [],
+      }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<SavedItemsProvider><HotspotExplorer /></SavedItemsProvider>);
+
+    // The search text was written to the address bar but never read back, so a reload
+    // quietly returned the global ranking.
+    await waitFor(() => expect(calls.some((url) => url.includes("/hotspots/rankings") && url.includes("q=")))
+      .toBe(true));
+    expect(await screen.findByRole("button", { name: /移除 搜尋/ })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /移除 東京/ })).toBeTruthy();
+    // ...and a way back to everything that does not require filtering down to zero.
+    expect(screen.getAllByRole("button", { name: "清除條件" }).length).toBeGreaterThan(0);
+  });
+
   it("keeps the loaded list on screen when loading more fails", async () => {
     let rankingCalls = 0;
     const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
