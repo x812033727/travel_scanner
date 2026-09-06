@@ -35,8 +35,27 @@ public-fare research surface.
 
 - `apps/web`: Next.js App Router frontend and same-origin BFF
 - `apps/api`: FastAPI modular monolith, RQ worker, models, migrations, tests
+- `tasks/`: the shared backlog of unfinished work
 - `architecture.md`: boundaries and data flow
 - `docker-compose.yml`: API, worker, PostgreSQL, and Redis
+
+## Task board
+
+Work that is known but not yet done lives in [`tasks/`](tasks/README.md), one file
+per task, with [`tasks/BOARD.md`](tasks/BOARD.md) as the generated overview. It is a
+shared queue: a person and several AI agents can each take a batch from it at the
+same time, because a task is claimed by name before it is started and declares every
+path it may change, so the tool refuses to hand two agents work in the same files.
+
+```bash
+npm run tasks -- list                                   # everything unfinished
+npm run tasks -- next                                   # a task nobody else is on
+npm run tasks -- claim <id> --owner <your-name>         # take it
+npm run tasks -- new --title "..." --area web --scope apps/web/components/alerts
+```
+
+[`tasks/README.md`](tasks/README.md) documents the fields, the statuses and the
+handover rules; `npm run check:tasks` enforces them in CI.
 
 ## Local development
 
