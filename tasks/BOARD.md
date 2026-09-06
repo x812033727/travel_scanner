@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**27 open · 5 in progress · 0 blocked · 0 in review · 27 done**
+**27 open · 4 in progress · 0 blocked · 0 in review · 28 done**
 
 ## Ready to claim
 
@@ -43,7 +43,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Guide backfill searches one locale, so four locales stay empty](open/2026-09-06-multi-locale-guide-backfill.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
 | [Re-seeding never corrects an existing dish name or summary](open/2026-09-06-seed-localization-reconcile.md) | claude-fable-5-1 | 2026-09-06T04:27:50Z | `claude/api-p2-data` |
 | [usage catalog validation rejects everything when web ships ahead of api](open/2026-09-06-usage-catalog-validation-rejects-everything-when.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
-| [Leftover Chinese copy on the search and trip pages outside the two components already converted](open/2026-09-06-leftover-chinese-copy-on-the-search.md) | claude-fable-5-1 | 2026-09-06T05:52:14Z | `claude/web-leftover-copy` |
 | [food seed counts are hardcoded twelve times and only CI can see them](open/2026-09-06-food-seed-counts-are-hardcoded-twelve.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
 
 ## In review
@@ -62,6 +61,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [Leftover Chinese copy on the search and trip pages outside the two components already converted](done/2026-09-06-leftover-chinese-copy-on-the-search.md)
 - 2026-09-06 [目的地目錄的國家與興趣標籤未五語系化](done/2026-09-06-destination-catalog-labels-i18n.md)
 - 2026-09-06 [navigation.spec.ts 兩個案例在 CI 間歇逾時](done/2026-09-06-flaky-navigation-e2e.md)
 - 2026-09-06 [首頁手機首屏被三張說明列佔滿](done/2026-09-06-home-mobile-first-screen.md)
@@ -71,4 +71,3 @@ _Nothing here._
 - 2026-09-06 [路線快取 key 依 provider 的時間粒度；DB 路段過期與 Redis TTL 分開](done/2026-09-06-route-cache-time-key.md)
 - 2026-09-06 [Default the Gemini guide model to gemini-3.8-flash](done/2026-09-06-gemini-3-8-flash-default.md)
 - 2026-09-06 [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](done/2026-09-06-reoptimize-no-version-check.md)
-- 2026-09-06 [日期變更後行程價格停在舊報價且無法重新查價](done/2026-09-06-trip-stale-price-after-reschedule.md)

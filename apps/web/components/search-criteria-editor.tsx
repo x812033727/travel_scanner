@@ -67,6 +67,7 @@ export function SearchCriteriaEditor({
   onApply: (update: CriteriaUpdate) => void;
 }) {
   const tc = useTranslations("search.catalog");
+  const tcr = useTranslations("search.criteria");
   const [open, setOpen] = useState(false);
   const [selectedInterests, setSelectedInterests] = useState(criteria.interests);
   const [validationError, setValidationError] = useState<string>();
@@ -91,7 +92,7 @@ export function SearchCriteriaEditor({
     const departureDate = String(form.get("departure_date") || "");
     const returnDate = String(form.get("return_date") || "");
     if (!departureDate || !returnDate || returnDate <= departureDate) {
-      setValidationError("回程日期必須晚於出發日期。");
+      setValidationError(tcr("returnAfterDeparture"));
       return;
     }
     const numberOrUndefined = (name: string) => {
@@ -136,22 +137,22 @@ export function SearchCriteriaEditor({
           className="flex items-center gap-2 rounded-xl border border-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-[var(--teal)] disabled:opacity-50"
         >
           {open ? <X size={16} /> : <PencilLine size={16} />}
-          {open ? "取消修改" : "修改搜尋條件"}
+          {open ? tcr("cancel") : tcr("edit")}
         </button>
-        <span className="text-xs text-[var(--muted)]">套用後會清除舊結果，再由你確認是否重新搜尋。</span>
+        <span className="text-xs text-[var(--muted)]">{tcr("hint")}</span>
       </div>
 
       {open && (
-        <form aria-label="修改搜尋條件" onSubmit={submit} className="mt-4 rounded-2xl bg-[var(--paper)] p-4">
+        <form aria-label={tcr("edit")} onSubmit={submit} className="mt-4 rounded-2xl bg-[var(--paper)] p-4">
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            <label className="text-sm font-semibold">出發機場
+            <label className="text-sm font-semibold">{tcr("origin")}
               <select name="origin" defaultValue={criteria.origin || "TPE"} className={fieldClass}>
-                <option value="TPE">桃園 TPE</option>
-                <option value="TSA">松山 TSA</option>
-                <option value="KHH">高雄 KHH</option>
+                <option value="TPE">{tcr("originTPE")}</option>
+                <option value="TSA">{tcr("originTSA")}</option>
+                <option value="KHH">{tcr("originKHH")}</option>
               </select>
             </label>
-            <label className="text-sm font-semibold">住宿區域
+            <label className="text-sm font-semibold">{tcr("area")}
               {destination ? (
                 <select name="preferred_area" defaultValue={criteria.preferred_area || destination.areas[0]} className={fieldClass}>
                   {destination.areas.map((area) => <option key={area}>{area}</option>)}
@@ -160,64 +161,64 @@ export function SearchCriteriaEditor({
                 <input name="preferred_area" defaultValue={criteria.preferred_area} className={fieldClass} />
               )}
             </label>
-            <label className="text-sm font-semibold">出發日期
+            <label className="text-sm font-semibold">{tcr("departure")}
               <input required type="date" name="departure_date" defaultValue={dates[0]} className={fieldClass} />
             </label>
-            <label className="text-sm font-semibold">回程日期
+            <label className="text-sm font-semibold">{tcr("return")}
               <input required type="date" name="return_date" defaultValue={dates[1]} className={fieldClass} />
             </label>
-            <label className="text-sm font-semibold">日期彈性
+            <label className="text-sm font-semibold">{tcr("flex")}
               <select name="flex_days" defaultValue={criteria.flex_days || 0} className={fieldClass}>
-                <option value="0">指定日期</option><option value="3">彈性 ±3 日</option><option value="7">彈性 ±7 日</option>
+                <option value="0">{tcr("flexFixed")}</option><option value="3">{tcr("flex3")}</option><option value="7">{tcr("flex7")}</option>
               </select>
             </label>
           </div>
 
           <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-            <label className="text-sm font-semibold">成人
+            <label className="text-sm font-semibold">{tcr("adults")}
               <select name="adults" defaultValue={criteria.travelers.adults} className={fieldClass}>{[1, 2, 3, 4, 5, 6].map((value) => <option key={value}>{value}</option>)}</select>
             </label>
-            <label className="text-sm font-semibold">兒童
+            <label className="text-sm font-semibold">{tcr("children")}
               <select name="children" defaultValue={criteria.travelers.children || 0} className={fieldClass}>{[0, 1, 2, 3, 4].map((value) => <option key={value}>{value}</option>)}</select>
             </label>
-            <label className="text-sm font-semibold">房間
+            <label className="text-sm font-semibold">{tcr("rooms")}
               <select name="rooms" defaultValue={criteria.travelers.rooms || 1} className={fieldClass}>{[1, 2, 3, 4].map((value) => <option key={value}>{value}</option>)}</select>
             </label>
-            <label className="text-sm font-semibold">總預算 TWD
+            <label className="text-sm font-semibold">{tcr("budget")}
               <input type="number" min="1" name="budget_twd" defaultValue={criteria.budget_twd} className={fieldClass} />
             </label>
-            <label className="text-sm font-semibold">住宿每晚上限
+            <label className="text-sm font-semibold">{tcr("nightlyMax")}
               <input type="number" min="1" name="hotel_max_nightly_twd" defaultValue={criteria.hotel_max_nightly_twd} className={fieldClass} />
             </label>
-            <label className="text-sm font-semibold">每日步調
+            <label className="text-sm font-semibold">{tcr("pace")}
               <select name="pace" defaultValue={criteria.pace || "balanced"} className={fieldClass}>
-                <option value="relaxed">悠閒</option><option value="balanced">適中</option><option value="packed">充實</option>
+                <option value="relaxed">{tcr("paceRelaxed")}</option><option value="balanced">{tcr("paceBalanced")}</option><option value="packed">{tcr("pacePacked")}</option>
               </select>
             </label>
           </div>
 
           <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-            <label className="text-sm font-semibold">住宿每晚最低
+            <label className="text-sm font-semibold">{tcr("nightlyMin")}
               <input type="number" min="0" name="hotel_min_nightly_twd" defaultValue={criteria.hotel_min_nightly_twd} className={fieldClass} />
             </label>
-            <label className="text-sm font-semibold">住宿類型
+            <label className="text-sm font-semibold">{tcr("propertyType")}
               <select name="accepted_property_types" defaultValue={(criteria.accepted_property_types || []).join(",")} className={fieldClass}>
-                <option value="">我不介意</option><option value="hotel">只住飯店</option><option value="vacation_rental">整套公寓／民宿</option><option value="hotel,vacation_rental">兩種都接受</option>
+                <option value="">{tcr("any")}</option><option value="hotel">{tcr("hotelOnly")}</option><option value="vacation_rental">{tcr("rentalOnly")}</option><option value="hotel,vacation_rental">{tcr("both")}</option>
               </select>
             </label>
-            <label className="text-sm font-semibold">最低星級
-              <select name="hotel_min_rating" defaultValue={criteria.hotel_min_rating || ""} className={fieldClass}><option value="">我不介意</option>{[3,4,5].map((value) => <option key={value}>{value}</option>)}</select>
+            <label className="text-sm font-semibold">{tcr("minRating")}
+              <select name="hotel_min_rating" defaultValue={criteria.hotel_min_rating || ""} className={fieldClass}><option value="">{tcr("any")}</option>{[3,4,5].map((value) => <option key={value}>{value}</option>)}</select>
             </label>
-            <label className="text-sm font-semibold">最低住客評分
-              <select name="hotel_min_review_score" defaultValue={criteria.hotel_min_review_score || ""} className={fieldClass}><option value="">我不介意</option><option value="7">7.0+</option><option value="8">8.0+</option><option value="9">9.0+</option></select>
+            <label className="text-sm font-semibold">{tcr("minReviewScore")}
+              <select name="hotel_min_review_score" defaultValue={criteria.hotel_min_review_score || ""} className={fieldClass}><option value="">{tcr("any")}</option><option value="7">7.0+</option><option value="8">8.0+</option><option value="9">9.0+</option></select>
             </label>
-            <label className="text-sm font-semibold">最低評論數
-              <select name="hotel_min_review_count" defaultValue={criteria.hotel_min_review_count || ""} className={fieldClass}><option value="">我不介意</option>{[20,50,100,300].map((value) => <option key={value}>{value}+</option>)}</select>
+            <label className="text-sm font-semibold">{tcr("minReviewCount")}
+              <select name="hotel_min_review_count" defaultValue={criteria.hotel_min_review_count || ""} className={fieldClass}><option value="">{tcr("any")}</option>{[20,50,100,300].map((value) => <option key={value}>{value}+</option>)}</select>
             </label>
           </div>
 
           <fieldset className="mt-4">
-            <legend className="text-sm font-semibold">行程興趣</legend>
+            <legend className="text-sm font-semibold">{tcr("interests")}</legend>
             <div className="mt-2 flex flex-wrap gap-2">
               {interestCodes.map((code) => (
                 <button key={code} type="button" aria-pressed={selectedInterests.includes(code)} onClick={() => toggleInterest(code)} className={`rounded-full border px-3 py-2 text-sm ${selectedInterests.includes(code) ? "border-[var(--teal)] bg-[var(--teal-soft)] text-[var(--teal-dark)]" : "border-[var(--line)] bg-white"}`}>{tc(`interests.${code}`)}</button>
@@ -226,14 +227,14 @@ export function SearchCriteriaEditor({
           </fieldset>
 
           <div className="mt-4 grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-4">
-            <label className="flex items-center gap-2"><input type="checkbox" name="avoid_red_eye" defaultChecked={criteria.avoid_red_eye} />避開紅眼航班</label>
-            <label className="flex items-center gap-2"><input type="checkbox" name="breakfast_required" defaultChecked={criteria.breakfast_required} />住宿含早餐</label>
-            <label className="flex items-center gap-2"><input type="checkbox" name="refundable_required" defaultChecked={criteria.refundable_required} />住宿可退款</label>
-            <label className="flex items-center gap-2"><input type="checkbox" name="include_airbnb" defaultChecked={criteria.include_airbnb ?? true} />準備 Airbnb 外站搜尋</label>
+            <label className="flex items-center gap-2"><input type="checkbox" name="avoid_red_eye" defaultChecked={criteria.avoid_red_eye} />{tcr("avoidRedEye")}</label>
+            <label className="flex items-center gap-2"><input type="checkbox" name="breakfast_required" defaultChecked={criteria.breakfast_required} />{tcr("breakfast")}</label>
+            <label className="flex items-center gap-2"><input type="checkbox" name="refundable_required" defaultChecked={criteria.refundable_required} />{tcr("refundable")}</label>
+            <label className="flex items-center gap-2"><input type="checkbox" name="include_airbnb" defaultChecked={criteria.include_airbnb ?? true} />{tcr("includeAirbnb")}</label>
           </div>
 
           {validationError && <p role="alert" className="mt-3 text-sm font-medium text-red-700">{validationError}</p>}
-          <button className="mt-4 flex items-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3 text-sm font-semibold text-white"><RotateCcw size={16} />套用並重新規劃</button>
+          <button className="mt-4 flex items-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3 text-sm font-semibold text-white"><RotateCcw size={16} />{tcr("apply")}</button>
         </form>
       )}
     </div>

@@ -10,7 +10,7 @@ import {
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { useSavedItems } from "@/components/saved-items-provider";
-import { api } from "@/lib/api";
+import { ApiError, api } from "@/lib/api";
 import { safeExternalHref } from "@/lib/navigation";
 
 type SavedType = "hotspot" | "food" | "restaurant" | "merchant";
@@ -33,6 +33,7 @@ const copy = {
     remove: "移除收藏",
     map: "開啟精準地圖",
     error: "收藏暫時無法載入",
+    signIn: "請先登入，收藏才會跟著你的帳號。",
     filters: { all: "全部", hotspot: "景點", food: "美食", restaurant: "餐廳" },
   },
   "zh-CN": {
@@ -43,6 +44,7 @@ const copy = {
     remove: "移除收藏",
     map: "打开精确地图",
     error: "收藏暂时无法加载",
+    signIn: "请先登录，收藏才会跟着你的账号。",
     filters: { all: "全部", hotspot: "景点", food: "美食", restaurant: "餐厅" },
   },
   en: {
@@ -53,6 +55,7 @@ const copy = {
     remove: "Remove saved item",
     map: "Open exact map location",
     error: "Saved items are unavailable",
+    signIn: "Sign in to see the items saved to your account.",
     filters: {
       all: "All",
       hotspot: "Places",
@@ -68,6 +71,7 @@ const copy = {
     remove: "保存から削除",
     map: "正確な地図を開く",
     error: "保存済みを読み込めません",
+    signIn: "ログインすると、アカウントに保存した項目が表示されます。",
     filters: {
       all: "すべて",
       hotspot: "スポット",
@@ -83,6 +87,7 @@ const copy = {
     remove: "저장 해제",
     map: "정확한 지도 열기",
     error: "저장 목록을 불러올 수 없습니다",
+    signIn: "로그인하면 계정에 저장한 항목을 볼 수 있습니다.",
     filters: { all: "전체", hotspot: "명소", food: "음식", restaurant: "식당" },
   },
 } as const;
@@ -103,9 +108,17 @@ export function AccountSavedItems() {
   useEffect(() => {
     api<{ items: SavedItem[] }>("/saved-items?limit=100")
       .then((result) => setItems(result.items))
-      .catch((reason: Error) => setError(reason.message))
+      .catch((reason: unknown) =>
+        setError(
+          reason instanceof ApiError && reason.status === 401
+            ? text.signIn
+            : reason instanceof Error
+              ? reason.message
+              : text.error,
+        ),
+      )
       .finally(() => setLoaded(true));
-  }, []);
+  }, [text.error, text.signIn]);
 
   const visible = useMemo(
     () =>
@@ -173,7 +186,7 @@ export function AccountSavedItems() {
           role="alert"
           className="mt-4 rounded-2xl bg-red-50 p-4 text-sm text-red-800"
         >
-          {text.error}：{error}
+          {text.error}{locale.startsWith("zh") ? "：" : ": "}{error}
         </p>
       )}
       {!loaded ? (

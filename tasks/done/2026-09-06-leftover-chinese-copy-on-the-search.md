@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-leftover-chinese-copy-on-the-search
 title: Leftover Chinese copy on the search and trip pages outside the two components already converted
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T05:52:14Z
 created_at: 2026-09-06T05:10:51Z
-completed_at:
+completed_at: 2026-09-06T06:06:38Z
 branch: claude/web-leftover-copy
 depends_on: []
 scope:
@@ -28,30 +28,15 @@ scope:
   - apps/web/messages/ko/trips.json
   - apps/web/messages/zh-CN/trips.json
   - apps/web/messages/zh-TW/trips.json
+  - apps/web/components/account-saved-items.tsx
+  - apps/web/messages/en/alerts.json
+  - apps/web/messages/ja/alerts.json
+  - apps/web/messages/ko/alerts.json
+  - apps/web/messages/zh-CN/alerts.json
+  - apps/web/messages/zh-TW/alerts.json
 ---
 
 # Leftover Chinese copy on the search and trip pages outside the two components already converted
-
-## Why
-
-Describe the problem in the terms someone who has never seen it would need.
-
-## Definition of done
-
-- [ ] The observable outcome, not the implementation.
-
-## Steps
-
-- [ ] First sub-task.
-- [ ] Second sub-task.
-
-## How to verify
-
-The exact commands or clicks that prove it works.
-
-## Notes
-
-Findings, decisions and dead ends, so the next agent does not repeat them.
 
 ## Why
 
@@ -71,18 +56,18 @@ task: `2026-09-06-destination-catalog-labels-i18n`.
 
 ## Definition of done
 
-- [ ] `/en`, `/ja`, `/ko` search results, trip editor and account pages show no
+- [x] `/en`, `/ja`, `/ko` search results, trip editor and account pages show no
       Traditional Chinese outside user data and place names.
-- [ ] API error messages are never concatenated onto a translated sentence; the client
+- [x] API error messages are never concatenated onto a translated sentence; the client
       shows its own message for known error codes.
 
 ## Steps
 
-- [ ] Move the strings above into `search.json` / `trips.json` (keep the zh-TW values
+- [x] Move the strings above into `search.json` / `trips.json` (keep the zh-TW values
       byte-identical so the existing tests keep passing; simple `{name}` params only).
-- [ ] In saved-items-provider and price-alert-button, map known error codes to
+- [x] In saved-items-provider and price-alert-button, map known error codes to
       translated copy and drop the `：`/`，` concatenation with the API message.
-- [ ] Re-run the walk: `document.querySelector('main').innerText` against
+- [x] Re-run the walk: `document.querySelector('main').innerText` against
       `/[一-鿿]/` on the three pages in en and ko, minus data.
 
 ## How to verify
@@ -95,3 +80,21 @@ npm run lint:web && CI=1 npm run check:i18n && npm run typecheck:web && npm run 
 
 Found by claude-fable-5-1 while verifying #195 on production; filed rather than fixed
 because it sits outside both tasks' scope.
+
+2026-09-06 claude-fable-5-1: five components moved to the catalog, zh-TW values byte-identical
+so every existing test and the navigation e2e keep their Chinese selectors.
+
+- `trips.weather` (trip-weather-panel, 19 keys; the day label now formats with the active
+  locale instead of a hardcoded zh-TW), `trips.route` (route-timeline-link: mode labels, the
+  three empty states, duration / buffer / ready-at), `alerts.button` (price-alert-button; the
+  "already exists" follow-up link keys off `alert_exists` instead of matching Chinese text),
+  `search.airbnb` (airbnb-search-panel) and `search.criteria` (search-criteria-editor, 41
+  keys).
+- Account page: a 401 from the saved-items call shows the page's own sign-in line per locale
+  instead of the API's detail glued onto the heading, and the separator follows the locale.
+- Left as is, on purpose: `lib/api.ts` keeps its zh-TW-only friendly catalog (other locales
+  already get the API's localized `detail`); `saved-items-provider` still throws its Chinese
+  message but every consumer branches on the 401 status, not the text; the Airbnb URL
+  fallback "日本" is a query value Airbnb understands, not copy.
+- Verified on a production build with Playwright (main innerText, data excluded): trip editor
+  en/ko at 1280 and 390 px 0 Han lines, `/en/search` and `/ko/search` 0 Han lines.

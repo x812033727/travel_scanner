@@ -555,5 +555,45 @@
     "clearFlight": "지우고 미설정으로 되돌리기",
     "stalePrice": " · {amount}(이전 날짜 기준 견적, 가격 재조회로 갱신)",
     "stalePriceHint": "이 여행의 견적은 이전 날짜 기준입니다. 가격 알림을 설정하기 전에 가격을 다시 조회하세요."
+  },
+  "weather": {
+    "title": "여행 날씨",
+    "malformed": "날씨 데이터가 불완전합니다",
+    "unavailable": "지금은 날씨를 가져올 수 없습니다",
+    "notConfigured": "날씨 서비스가 아직 켜져 있지 않습니다",
+    "loadFailed": "여행 날씨를 잠시 가져올 수 없습니다",
+    "retry": "다시 시도",
+    "locationTitle": "{location} 날씨",
+    "subtitle": "현재 상황과 10일 예보. 날씨는 언제든 바뀔 수 있습니다",
+    "feelsLike": "체감 {value}°",
+    "summaryLabel": "{day} 날씨 요약",
+    "rain": "강수",
+    "humidity": "습도",
+    "wind": "풍속",
+    "outOfRange": "{day}은(는) 아직 Google Weather 10일 예보 범위에 들어오지 않았습니다.",
+    "pickDay": "먼저 여행 날짜를 선택하세요.",
+    "forecastLabel": "10일 예보",
+    "sourceLine": "출처: {attribution} · {freshness}",
+    "cached": "캐시된 데이터",
+    "fresh": "방금 업데이트"
+  },
+  "route": {
+    "mode": {
+      "transit": "대중교통",
+      "walk": "도보",
+      "drive": "자동차"
+    },
+    "setupLodging": "먼저 호텔 위치를 설정하세요",
+    "setupLocation": "먼저 정확한 장소를 선택하세요",
+    "setupHint": "설정해야 {title}까지의 이동 시간을 계산할 수 있습니다",
+    "computing": "{title}까지의 이동 시간을 계산 중…",
+    "stale": "이동 시간을 업데이트해야 합니다",
+    "choose": "이 구간의 이동 수단 선택",
+    "chooseHint": "{title}까지 · 대중교통／도보／자동차",
+    "viewRoute": "{title}까지의 경로 보기",
+    "minutes": "{minutes}분",
+    "buffer": "+ 여유 {minutes}분",
+    "override": "이 구간만",
+    "readyAt": "{time}에 다음 장소 시작 가능"
   }
 }
