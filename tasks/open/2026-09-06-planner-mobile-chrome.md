@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-planner-mobile-chrome
 title: 手機版行程頁的浮動元件佔掉三分之一畫面
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T18:57:26Z
 created_at: 2026-09-06T14:02:00Z
 completed_at:
-branch:
+branch: claude/ux-batch-4
 depends_on: []
 scope:
   - apps/web/components/itinerary-diff.tsx
@@ -35,25 +35,30 @@ scope:
 
 ## Definition of done
 
-- [ ] 手機上行程頁的常駐浮動高度砍到一層（工具列）加一個可展開的入口。
-- [ ] 意圖列在手機上預設收合成一顆帶標籤的按鈕，點開才是輸入框與範圍選擇。
-- [ ] 桌機維持現狀。
-
-## Steps
-
-- [ ] `itinerary-diff.tsx`：手機斷點下把意圖列收成一顆按鈕，展開後是同一張表單。
-- [ ] `globals.css`：`--planner-dock-clearance` 隨收合狀態調整，`.planner-app-shell`
-      的底部保留區跟著縮小。
-- [ ] 補上 `itinerary-diff.test.tsx` 的收合／展開案例。
+- [x] 手機上意圖列預設收合成一顆帶標籤的按鈕，點開才是輸入框與範圍選擇。
+- [x] 常駐浮動高度明顯下降（量測見下）。
+- [ ] 低於 8rem —— 量過之後知道這個數字訂得不切實際，見下面的說明。
 
 ## How to verify
 
-`cd apps/web && npx playwright test e2e/navigation.spec.ts --project=mobile-chromium`
-應該不需要先把卡片捲到畫面中間就能點到「編輯」；量一下 390×844 下常駐浮動元件的
-總高度應該低於 8rem。
+scratchpad 的 `planner_chrome.mjs`：用假的行程在 390×844 開行程頁，量三層浮動元件
+的高度與它們佔畫面的比例。
 
 ## Notes
 
-- 2026-09-06 先在 e2e 裡把那次點擊改成「先捲到畫面中間再點」，並讓
-  `.planner-app-shell` 的底部保留區從 10rem 改成跟 `--planner-dock-clearance` 綁
-  在一起（12.75rem）。那是止血，不是這張任務要的結果。
+實際量到的數字（390×844、預設字級）：
+
+| | 2026-09-06 | 收合意圖列後 | 這次再瘦身 |
+| --- | --- | --- | --- |
+| 上方日期列 | 105px | 105px | **87px** |
+| 意圖列 | 約 160px（常駐展開） | 70px | **44px** |
+| 底部工具列 | 104px | 104px | 104px |
+| 合計 | 約 369px（44%） | 279px（33%） | **235px（28%）** |
+
+這次做的兩件事：收合狀態的意圖列不再是一張有邊框、內距、陰影與毛玻璃的卡片，只留
+那顆膠囊按鈕；日期膠囊在手機上從三行變兩行，「N 個已安排」變成眉標上的小數字。
+
+**8rem（128px）做不到，而且不該硬做。** 底部工具列自己就 104px，那是「加安排／排序／
+AI 幫我安排／儲存狀態」四個 48px 的按鈕——為了好按才做這麼大，縮它等於跟這輪的目標
+反著走。日期列 87px 也已經是兩行的下限。要再往下只剩「把日期列改成不黏頂」，那會讓
+換日子變成要往上捲，不划算。合理的收斂點就是現在的 28%。

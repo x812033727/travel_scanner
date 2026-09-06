@@ -1081,6 +1081,30 @@ body {
     color 0.2s;
 }
 
+/* On a phone the day chip drops its third line; the count rides on the eyebrow so
+   the sticky strip is a date picker, not a paragraph. */
+.planner-day-chip-count {
+  display: inline-grid;
+  min-width: 1.15rem;
+  place-items: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, currentColor 14%, transparent);
+  padding-inline: 0.3rem;
+  font-size: var(--text-meta);
+  font-weight: 700;
+  line-height: 1.25;
+}
+@media (min-width: 1024px) {
+  .planner-day-chip-count {
+    display: none;
+  }
+}
+@media (max-width: 1023px) {
+  .planner-day-chip {
+    min-height: 3.4rem;
+  }
+}
+
 .planner-day-chip-active {
   border-color: var(--teal);
   background: var(--teal-fill);

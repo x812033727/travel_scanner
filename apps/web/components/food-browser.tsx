@@ -27,7 +27,36 @@ import { useSharedAnchor } from "@/lib/use-shared-anchor";
 
 type ActiveChip = { key: string; label: string; clear: () => void };
 
-export function FoodBrowser() {
+/**
+ * The server hands these over as `unknown`; check the fields the page reads before
+ * trusting them, so a bad payload falls back to fetching rather than rendering half
+ * a list and throwing inside the error boundary.
+ */
+function isCitiesResponse(value: unknown): value is FoodCitiesResponse {
+  if (typeof value !== "object" || value === null) return false;
+  const candidate = value as Partial<FoodCitiesResponse>;
+  if (!Array.isArray(candidate.countries)) return false;
+  return candidate.countries.every((country) => {
+    if (typeof country !== "object" || country === null) return false;
+    const entry = country as Partial<FoodCountry>;
+    return typeof entry.code === "string" && typeof entry.name === "string" && Array.isArray(entry.cities);
+  });
+}
+
+function isCategoriesResponse(value: unknown): value is FoodCategoriesResponse {
+  if (typeof value !== "object" || value === null) return false;
+  const candidate = value as Partial<FoodCategoriesResponse>;
+  return Array.isArray(candidate.items);
+}
+
+/**
+ * `initialCities` / `initialCategories` are the server's copy of the two lists this
+ * page opens with. They arrive as `unknown` because the page has no business owning
+ * these shapes; anything that does not look right falls back to the fetch on mount.
+ */
+export function FoodBrowser({ initialCities, initialCategories }: { initialCities?: unknown; initialCategories?: unknown } = {}) {
+  const seededCountries = isCitiesResponse(initialCities) ? initialCities.countries : null;
+  const seededCategories = isCategoriesResponse(initialCategories) ? initialCategories.items : null;
   const t = useTranslations("foods");
   const search = useClientSearch();
   const initialFilters = useMemo(() => readFoodBrowserFilters(search ?? ""), [search]);
@@ -35,8 +64,8 @@ export function FoodBrowser() {
   const filters = filterState ?? initialFilters;
   const [queryInput, setQueryInput] = useState<string | null>(null);
   const queryValue = queryInput ?? filters.query;
-  const [countries, setCountries] = useState<FoodCountry[]>([]);
-  const [siteCategories, setSiteCategories] = useState<FacetCategory[]>([]);
+  const [countries, setCountries] = useState<FoodCountry[]>(seededCountries ?? []);
+  const [siteCategories, setSiteCategories] = useState<FacetCategory[]>(seededCategories ?? []);
   const [result, setResult] = useState<FoodMerchantsResponse | null>(null);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
@@ -56,11 +85,16 @@ export function FoodBrowser() {
   }, []);
 
   useEffect(() => {
-    loadCities();
-    api<FoodCategoriesResponse>("/foods/categories")
-      .then((response) => setSiteCategories(response.items ?? []))
-      .catch(() => undefined);
-  }, [loadCities]);
+    // The server already rendered both lists into the HTML; asking again on mount
+    // would only replace them with the same thing a second later, which is what
+    // pushed the merchant list down the page.
+    if (!seededCountries) loadCities();
+    if (!seededCategories) {
+      api<FoodCategoriesResponse>("/foods/categories")
+        .then((response) => setSiteCategories(response.items ?? []))
+        .catch(() => undefined);
+    }
+  }, [loadCities, seededCountries, seededCategories]);
 
   useEffect(() => {
     // Later replaceState calls change the snapshot; only the first client value seeds the list.

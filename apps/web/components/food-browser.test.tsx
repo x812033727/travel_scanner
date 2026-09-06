@@ -260,6 +260,30 @@ describe("FoodBrowser", () => {
     ).toBe("拉麵");
   });
 
+  it("uses the city list the server rendered instead of asking for it again", async () => {
+    window.history.replaceState({}, "", "/foods");
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/foods/cities") || url.includes("/foods/categories")) {
+        throw new Error("the component should not have asked for this");
+      }
+      return new Response(JSON.stringify({ total: 0, has_more: false, next_cursor: null, items: [], facets: { areas: [], unassigned_area_count: 0, categories: [] } }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(
+      <SavedItemsProvider>
+        <FoodBrowser initialCities={cities} initialCategories={{ items: [] }} />
+      </SavedItemsProvider>,
+    );
+
+    // Painted from the HTML: inserting this list a second later is what pushed the
+    // merchant section down the page.
+    expect(screen.getByRole("button", { name: /東京/ })).toBeTruthy();
+    await waitFor(() => expect(fetchMock.mock.calls.length).toBeGreaterThan(0));
+    expect(fetchMock.mock.calls.map((call) => String(call[0])).filter((url) => url.includes("/foods/cities"))).toEqual([]);
+  });
+
   it("survives a merchant payload that carries no facets", async () => {
     // `result?.facets.areas` only guarded the response, not the field: a payload
     // without facets threw during render and took the whole page with it.

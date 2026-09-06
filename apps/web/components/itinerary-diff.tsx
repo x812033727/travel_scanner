@@ -183,7 +183,12 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
 
   return (
     <>
-      <section aria-label={t("intent.barLabel")} className="planner-intent-bar sticky z-30 mt-5 rounded-2xl border border-violet-200 bg-white/95 p-3 shadow-[var(--shadow-lg)] backdrop-blur lg:p-4">
+      <section
+        aria-label={t("intent.barLabel")}
+        className={`planner-intent-bar sticky z-30 mt-5 rounded-2xl lg:border lg:border-violet-200 lg:bg-white/95 lg:p-4 lg:shadow-[var(--shadow-lg)] lg:backdrop-blur ${
+          intentOpen ? "border border-violet-200 bg-white/95 p-3 shadow-[var(--shadow-lg)] backdrop-blur" : ""
+        }`}
+      >
         {/* On a phone this bar floats above the dock, and open it is four rows
             tall - a third of the screen permanently over the itinerary, deep
             enough to cover the card the reader is reaching for. It opens on
@@ -192,11 +197,13 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
           type="button"
           aria-expanded={intentOpen}
           onClick={() => setIntentOpen((open) => !open)}
-          className="flex min-h-11 w-full items-center gap-2 text-sm font-bold text-violet-900 lg:hidden"
+          className={`flex min-h-11 items-center gap-2 text-sm font-bold text-violet-900 lg:hidden ${
+            intentOpen ? "w-full" : "ml-auto rounded-full border border-violet-200 bg-white/95 px-4 shadow-[var(--shadow-sm)] backdrop-blur"
+          }`}
         >
           <Wand2 size={16} />
           {t("intent.eyebrow")}
-          <ChevronDown size={16} className={`ml-auto transition ${intentOpen ? "rotate-180" : ""}`} />
+          <ChevronDown size={16} className={`transition ${intentOpen ? "ml-auto rotate-180" : ""}`} />
         </button>
         <form onSubmit={submitIntent} className={`${intentOpen ? "grid" : "hidden lg:grid"} gap-3`}>
           <div className="flex flex-wrap items-center justify-between gap-2">
