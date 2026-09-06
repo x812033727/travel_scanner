@@ -76,12 +76,12 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await expect(page).toHaveURL(/\/trips\/new$/, { timeout: 15_000 });
 
   await page.getByLabel("旅程名稱").fill("東京固定餐食行程");
+  // Dates first: the place suggestions open over the calendar below them and only close
+  // on Escape or on choosing one, and a click Playwright refuses to dispatch is not an
+  // outside click — so filling the destination first can wedge the month buttons shut.
+  await pickTripDay(page, "2026-11-10");
+  await pickTripDay(page, "2026-11-10");
   await page.getByLabel("目的地").fill("日本東京");
-  // The place suggestions open over the calendar below them, and a click Playwright
-  // refuses to dispatch is not an outside click, so the list would never close again.
-  await page.getByLabel("目的地").press("Escape");
-  await pickTripDay(page, "2026-11-10");
-  await pickTripDay(page, "2026-11-10");
   await expect(page.getByText(/共 1 天/)).toBeVisible();
   await page.getByRole("button", { name: /下一步/ }).click();
   await page.getByRole("button", { name: /下一步/ }).click();
