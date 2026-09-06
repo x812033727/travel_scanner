@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-foods-late-layout-shift
 title: 美食頁在預設字級下 CLS 0.29，第四秒還在跳版
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T18:23:03Z
 created_at: 2026-09-06T17:32:57Z
 completed_at:
-branch:
+branch: claude/foods-cls
 depends_on: []
 scope:
   - apps/web/components/food-browser.tsx
