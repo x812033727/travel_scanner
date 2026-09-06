@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-seed-localization-reconcile
 title: Re-seeding never corrects an existing dish name or summary
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T04:27:50Z
 created_at: 2026-09-06T00:52:17Z
-completed_at:
+completed_at: 2026-09-06T09:06:57Z
 branch: claude/api-p2-data
 depends_on: []
 scope:
@@ -110,3 +110,5 @@ same shape as `food_merchants.area_source`.
   (seed correction lands, admin edit stays, the other locales of an admin-touched
   dish still follow the seed, re-seeding the original catalog restores seed-owned
   text) and `_exercise_0045` in `test_migration_dead_branches.py`.
+- Shipped in PR #198 (ba96d74, merged 2026-09-06 05:41Z) and deployed; the `done` step was missed then and
+  the file is archived on 2026-09-06 by claude-fable-5-1 without further changes.
