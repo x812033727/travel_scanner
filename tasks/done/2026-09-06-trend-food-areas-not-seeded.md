@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-trend-food-areas-not-seeded
 title: 57 個潮流商圈只存在正式機資料庫
-status: open
+status: done
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T02:57:00Z
 created_at: 2026-09-06T00:53:02Z
-completed_at:
-branch:
+completed_at: 2026-09-06T03:09:01Z
+branch: claude/foods-data-p1
 depends_on: []
 scope:
   - apps/api/app/foods/area_catalog.py
@@ -31,19 +31,19 @@ scope:
 
 ## Definition of done
 
-- [ ] 全新資料庫跑完 seed 之後，這 57 個商圈存在且欄位（五語系名稱、搜尋詞條、中心
+- [x] 全新資料庫跑完 seed 之後，這 57 個商圈存在且欄位（五語系名稱、搜尋詞條、中心
       座標、display_order）與正式機一致。
-- [ ] 種子驗證仍然守得住原本 132 個「和 DestinationProfile 綁定」的商圈，不會被潮流
+- [x] 種子驗證仍然守得住原本 132 個「和 DestinationProfile 綁定」的商圈，不會被潮流
       商圈污染。
-- [ ] 重跑 seed 不會覆蓋管理員在後台改過的商圈。
+- [x] 重跑 seed 不會覆蓋管理員在後台改過的商圈。
 
 ## Steps
 
-- [ ] 決定形狀：建議在 `area_catalog.py` 另開一個 `TREND_AREA_SEEDS`，與 `AREA_SEEDS`
+- [x] 決定形狀：建議在 `area_catalog.py` 另開一個 `TREND_AREA_SEEDS`，與 `AREA_SEEDS`
       分開驗證（前者不綁 `DestinationProfile.areas`，後者維持一對一與 132 的釘數）。
-- [ ] 把 57 列資料搬進來（來源見 Notes）。
-- [ ] `seed_food_taxonomy` 一併寫入，且沿用既有的「不覆蓋 admin」語意。
-- [ ] 測試：兩份種子的 slug 不重疊、五語系名稱齊全、`display_order` 在同目的地內唯一、
+- [x] 把 57 列資料搬進來（來源見 Notes）。
+- [x] `seed_food_taxonomy` 一併寫入，且沿用既有的「不覆蓋 admin」語意。
+- [x] 測試：兩份種子的 slug 不重疊、五語系名稱齊全、`display_order` 在同目的地內唯一、
       潮流商圈不出現在 `DestinationProfile.areas` 的比對裡。
 
 ## How to verify
@@ -59,6 +59,16 @@ SELECT source, count(*) FROM food_areas GROUP BY 1;
 ```
 
 ## Notes
+
+**2026-09-06 完成。** `area_catalog.py` 末尾新增 `TREND_AREA_SEEDS`（57 列，由正式機
+`/root/trend-food-areas.json` 逐字轉成 `_a(...)`，譯名與座標照抄）、`TREND_AREA_SEEDS_BY_SLUG`、
+`ALL_AREA_SEEDS = AREA_SEEDS + TREND_AREA_SEEDS` 與 `validate_trend_area_catalog()`：釘 57、slug 不與
+`AREA_SEEDS` 重疊、五語系齊全、必須有中心座標、display_order > 200、同目的地（兩份合併）display_order 唯一，
+**不**比對 `DestinationProfile.areas`，所以 `validate_area_catalog()` 的 132 與一對一檢查原封不動。
+`seed_food_taxonomy` 改迭代 `ALL_AREA_SEEDS`，語意仍是「slug 已存在就不碰」——正式機那 57 列是 `source='admin'`，
+重跑 seed 會直接跳過它們（不會被改成 seed，也不會被覆蓋）。`test_food_integration.py` 的兩個 `FoodArea == 132`
+改成 `len(ALL_AREA_SEEDS)`（189）。`test_food_taxonomy_catalog.py` 新增一則測試，釘住審核過的四個譯名
+（심계신촌、ジャラン・ベサール、北城路（プクソンノ）、港川與河原町五條的校正座標），重譯會紅。
 
 **資料在哪**：正式機 `/root/trend-food-areas.json`（57 列，欄位
 `destination/key/zh_tw/zh_cn/en/ja/ko/terms/lat/lng`），以及當次 session 的 scratchpad

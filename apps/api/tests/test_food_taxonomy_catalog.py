@@ -2,8 +2,16 @@ from collections import Counter
 
 import pytest
 
-from app.destinations.catalog import DESTINATIONS
-from app.foods.area_catalog import AREA_SEEDS, AREA_SEEDS_BY_SLUG, AreaSeed, area_seed_for
+from app.destinations.catalog import DESTINATIONS, destination_for_id
+from app.foods.area_catalog import (
+    ALL_AREA_SEEDS,
+    AREA_SEEDS,
+    AREA_SEEDS_BY_SLUG,
+    TREND_AREA_SEEDS,
+    TREND_AREA_SEEDS_BY_SLUG,
+    AreaSeed,
+    area_seed_for,
+)
 from app.foods.catalog import FOOD_SEEDS
 from app.foods.category_catalog import (
     CATEGORY_SEEDS,
@@ -64,6 +72,28 @@ def test_areas_mirror_destination_profiles_with_five_locales() -> None:
     assert AREA_SEEDS_BY_SLUG["osaka-kyoto-namba-shinsaibashi"].names["ja"] == "難波・心斎橋"
     assert AREA_SEEDS_BY_SLUG["tokyo-shibuya"].names["zh-CN"] == "涩谷"
     assert all(seed.center is None for seed in AREA_SEEDS)
+
+
+def test_trend_districts_are_a_separate_list_with_centres_and_reviewed_names() -> None:
+    assert len(TREND_AREA_SEEDS) == 57
+    assert len(ALL_AREA_SEEDS) == 132 + 57
+    assert not set(TREND_AREA_SEEDS_BY_SLUG) & set(AREA_SEEDS_BY_SLUG)
+    for seed in TREND_AREA_SEEDS:
+        assert set(seed.names) == set(LOCALES)
+        assert all(seed.names[locale].strip() for locale in LOCALES)
+        assert seed.center is not None
+        assert seed.display_order > 200
+        assert seed.match_terms
+        assert destination_for_id(seed.destination_id) is not None
+    for destination_id in {seed.destination_id for seed in ALL_AREA_SEEDS}:
+        orders = [s.display_order for s in ALL_AREA_SEEDS if s.destination_id == destination_id]
+        assert len(set(orders)) == len(orders), destination_id
+    # Reviewer-verified spellings; a well-meaning re-translation must fail here.
+    assert TREND_AREA_SEEDS_BY_SLUG["taichung-shenji"].names["ko"] == "심계신촌"
+    assert TREND_AREA_SEEDS_BY_SLUG["singapore-jalan-besar"].names["ja"] == "ジャラン・ベサール"
+    assert TREND_AREA_SEEDS_BY_SLUG["daegu-bukseongro"].names["ja"] == "北城路（プクソンノ）"
+    assert TREND_AREA_SEEDS_BY_SLUG["okinawa-minatogawa"].center == (26.2627, 127.7152)
+    assert TREND_AREA_SEEDS_BY_SLUG["osaka-kyoto-kawaramachi-gojo"].center == (34.9943, 135.7656)
 
 
 def test_area_seed_slug_and_source_name_are_derived() -> None:
