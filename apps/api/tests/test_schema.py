@@ -2,9 +2,11 @@ from app.schema import expected_schema_revision, schema_is_current
 
 
 def test_expected_schema_revision_is_current_head() -> None:
-    assert expected_schema_revision() == "0042_trip_notes"
+    assert expected_schema_revision() == "0043_trip_expenses"
     assert len(expected_schema_revision()) <= 32
+    assert schema_is_current("0042_trip_notes") is False
     assert schema_is_current("0041_ai_itinerary_refine") is False
+    assert schema_is_current("0040_localized_names") is False
     assert schema_is_current("0040_localized_names") is False
     assert schema_is_current("0039_repair_dead_food_sources") is False
     assert schema_is_current("0038_trip_metadata") is False
