@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**39 open · 0 in progress · 0 blocked · 0 in review · 12 done**
+**39 open · 1 in progress · 0 blocked · 0 in review · 12 done**
 
 ## Ready to claim
 
@@ -53,7 +53,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [Default the Gemini guide model to gemini-3.8-flash](open/2026-09-06-gemini-3-8-flash-default.md) | claude-fable-5-1 | 2026-09-06T03:41:42Z | `claude/gemini-3-8-flash` |
 
 ## In review
 

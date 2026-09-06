@@ -336,7 +336,7 @@ class Settings(BaseSettings):
     # Flash-tier models refuse "list these sources" prompts on the grounded path, but
     # handle the schema-bound candidate list fine, and gemini-2.5-pro is closed to new
     # keys. Admin-changeable per install.
-    hotspot_guide_gemini_model: str = "gemini-3.5-flash"
+    hotspot_guide_gemini_model: str = "gemini-3.8-flash"
     hotspot_guide_gemini_timeout_seconds: float = Field(default=45.0, gt=0, le=120)
     hotspot_guide_gemini_daily_search_budget: int = Field(default=30, ge=1, le=1000)
     hotspot_guide_refresh_days: int = Field(default=7, ge=1, le=30)
