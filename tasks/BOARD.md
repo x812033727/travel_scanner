@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**7 open · 1 in progress · 2 blocked · 0 in review · 132 done**
+**7 open · 1 in progress · 2 blocked · 1 in review · 132 done**
 
 ## Ready to claim
 
@@ -29,7 +29,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In review
 
-_Nothing here._
+| Task | Owner | Branch |
+| --- | --- | --- |
+| [從旅程出發查機票：條件由旅程推導，報價帶回錨點](open/2026-09-06-search-from-a-saved-trip.md) | claude-opus-5 | `claude/better-workflow-planning-324ki8` |
 
 ## Waiting
 
