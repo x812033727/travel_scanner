@@ -10,7 +10,7 @@ import httpx
 import pytest
 
 from app.config import Settings, official_provider_url_ok
-from app.providers.usage_meter import navitime_usage_snapshot
+from app.providers.usage_meter import google_maps_usage_snapshot, navitime_usage_snapshot
 from app.trips.routing import (
     EkispertProbeResult,
     EkispertRouteProvider,
@@ -1323,7 +1323,8 @@ async def test_google_transit_retries_once_without_empty_preference() -> None:
 
 
 @pytest.mark.asyncio
-async def test_scheduled_transit_without_published_timetable_uses_near_term_preview() -> None:
+async def test_transit_beyond_published_timetables_asks_the_near_term_reference_first() -> None:
+    """A departure Google has no timetable for costs one request, not three empty ones."""
     tokyo = ZoneInfo("Asia/Tokyo")
     requested = (datetime.now(tokyo) + timedelta(days=45)).replace(
         hour=11,
@@ -1336,8 +1337,6 @@ async def test_scheduled_transit_without_published_timetable_uses_near_term_prev
     async def handler(request: httpx.Request) -> httpx.Response:
         body = cast(dict[str, object], json.loads(request.read()))
         bodies.append(body)
-        if len(bodies) < 3:
-            return httpx.Response(200, json={"routes": []})
         return httpx.Response(
             200,
             json={"routes": [{"duration": "1320s", "legs": []}]},
@@ -1356,9 +1355,10 @@ async def test_scheduled_transit_without_published_timetable_uses_near_term_prev
     assert segment is not None and segment.duration_minutes == 22
     assert segment.schedule_mode == "preview"
     assert segment.requested_departure_time == requested
-    assert len(bodies) == 3
+    assert len(bodies) == 1
+    assert "transitPreferences" not in bodies[0]
     requested_utc = requested.astimezone(UTC)
-    fallback_utc = datetime.fromisoformat(str(bodies[-1]["departureTime"]).replace("Z", "+00:00"))
+    fallback_utc = datetime.fromisoformat(str(bodies[0]["departureTime"]).replace("Z", "+00:00"))
     fallback_local = fallback_utc.astimezone(tokyo)
     assert fallback_utc != requested_utc
     assert datetime.now(UTC) < fallback_utc <= datetime.now(UTC) + timedelta(days=8)
@@ -1497,3 +1497,141 @@ def test_google_external_navigation_uses_confirmed_coordinates_without_place_ids
     assert "destination=35.7148000%2C139.7967000" in navigation.web_url
     assert "travelmode=walking" in navigation.web_url
     assert "%E8%B0%B7%E4%B8%AD%E9%9D%88%E5%9C%92" not in navigation.web_url
+
+
+def _transit_step(
+    *,
+    departure_stop: str,
+    arrival_stop: str,
+    duration: str = "600s",
+) -> dict[str, object]:
+    return {
+        "travelMode": "TRANSIT",
+        "staticDuration": duration,
+        "transitDetails": {
+            "stopDetails": {
+                "departureStop": {"name": departure_stop},
+                "arrivalStop": {"name": arrival_stop},
+            },
+            "transitLine": {"name": "銀座線", "nameShort": "G"},
+            "stopCount": 4,
+        },
+    }
+
+
+async def _google_segment(steps: list[dict[str, object]]) -> RouteSegment | None:
+    async def handler(_: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            json={"routes": [{"duration": "1800s", "legs": [{"steps": steps}]}]},
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = GoogleRouteProvider(Settings(google_maps_api_key="key"), client)
+    segment = await provider.compute(
+        point("東京", 35.681, 139.767),
+        point("淺草", 35.714, 139.796),
+        None,
+        "FEWER_TRANSFERS",
+    )
+    await client.aclose()
+    return segment
+
+
+@pytest.mark.asyncio
+async def test_transit_plan_that_hides_a_transfer_walk_is_refused() -> None:
+    """Two rides that meet at different stations without a walk cannot be travelled."""
+    segment = await _google_segment(
+        [
+            _transit_step(departure_stop="新宿", arrival_stop="東京"),
+            _transit_step(departure_stop="大手町", arrival_stop="淺草"),
+        ]
+    )
+    assert segment is None
+
+
+@pytest.mark.asyncio
+async def test_transfer_inside_one_station_is_kept_however_the_provider_spells_it() -> None:
+    segment = await _google_segment(
+        [
+            _transit_step(departure_stop="新宿", arrival_stop="東京"),
+            _transit_step(departure_stop="東京駅", arrival_stop="淺草"),
+        ]
+    )
+    assert segment is not None and len(segment.steps) == 2
+
+
+@pytest.mark.asyncio
+async def test_a_walking_step_between_two_rides_makes_the_transfer_honest() -> None:
+    segment = await _google_segment(
+        [
+            _transit_step(departure_stop="新宿", arrival_stop="東京"),
+            {
+                "travelMode": "WALK",
+                "staticDuration": "420s",
+                "distanceMeters": 480,
+                "navigationInstruction": {"instructions": "步行前往大手町站"},
+            },
+            _transit_step(departure_stop="大手町", arrival_stop="淺草"),
+        ]
+    )
+    assert segment is not None and len(segment.steps) == 3
+
+
+@pytest.mark.asyncio
+async def test_a_sub_minute_step_is_shown_as_one_minute() -> None:
+    segment = await _google_segment(
+        [
+            {
+                "travelMode": "WALK",
+                "staticDuration": "20s",
+                "distanceMeters": 30,
+                "navigationInstruction": {"instructions": "步行至月台"},
+            },
+            _transit_step(departure_stop="新宿", arrival_stop="淺草"),
+        ]
+    )
+    assert segment is not None
+    assert segment.steps[0].duration_minutes == 1
+
+
+def test_a_leg_never_reports_zero_minutes() -> None:
+    segment = RouteSegment(
+        from_item_id=uuid4(),
+        to_item_id=uuid4(),
+        provider="google_routes",
+        attribution="Google Maps",
+        generated_at=datetime.now(UTC),
+        duration_minutes=0,
+    )
+    assert segment.duration_minutes == 1
+
+
+@pytest.mark.asyncio
+async def test_google_routes_stop_at_the_free_tier_and_report_it_to_the_admin() -> None:
+    """Google was the one route provider that counted its spending only after the fact."""
+    calls = 0
+
+    async def handler(_: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        return httpx.Response(200, json={"routes": [{"duration": "900s", "legs": []}]})
+
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = GoogleRouteProvider(
+        Settings(google_maps_api_key="key", google_maps_essentials_free_limit=1),
+        client,
+        redis,
+    )
+    origin, destination = point("東京", 35.681, 139.767), point("淺草", 35.714, 139.796)
+    first = await provider.compute_options(origin, destination, None, "FEWER_TRANSFERS")
+    second = await provider.compute_options(origin, destination, None, "FEWER_TRANSFERS")
+    probe = await provider.probe(origin, destination)
+    await client.aclose()
+
+    assert len(first) == 1 and second == []
+    assert probe == GoogleRoutesProbeResult(False, False, error_code="MONTHLY_BUDGET_EXHAUSTED")
+    assert calls == 1
+    usage = await google_maps_usage_snapshot(redis)
+    assert usage.breakdown.get("routes") == 1

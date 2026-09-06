@@ -730,6 +730,36 @@ describe("trip editor", () => {
     expect(putBodies[1].items[0].title).toBe("最後一次修改");
   });
 
+  it("offers to lock the extra stops instead of letting the optimiser refuse the day", async () => {
+    const crowdedDay = {
+      ...trip,
+      items: [
+        trip.items[0],
+        ...Array.from({ length: 12 }, (_, index) => ({
+          ...trip.items[0],
+          id: `00000000-0000-4000-8000-0000000001${String(index).padStart(2, "0")}`,
+          position: index + 1,
+          title: `停留點 ${index + 1}`,
+          latitude: 35.7 + index / 1000,
+          longitude: 139.8 + index / 1000,
+        })),
+      ],
+      optimization: { movable_limit: 12, days: [{ date: "2026-11-11", movable_count: 13 }] },
+    };
+    const fetchMock = vi.fn(async (url: string) => (url ? response(crowdedDay) : response(crowdedDay)));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    fireEvent.click(await screen.findByRole("button", { name: /^最佳化動線/ }));
+
+    expect(await screen.findByText(/一次最多排 12 個/)).toBeTruthy();
+    expect(screen.getByText(/鎖定 1 個之後就能最佳化/)).toBeTruthy();
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/optimize/preview"))).toBe(false);
+
+    fireEvent.click(screen.getByRole("button", { name: "鎖定當天最後 1 個" }));
+    expect(await screen.findByText("已鎖定 1 個停留點，可以再按一次最佳化。")).toBeTruthy();
+  });
+
   it("previews an optimization before applying and charging it", async () => {
     const twoStopTrip = {
       ...trip,
