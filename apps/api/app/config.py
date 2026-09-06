@@ -367,6 +367,20 @@ class Settings(BaseSettings):
     hotspot_guide_ai_max_output_tokens: int = Field(default=16_000, ge=1_000, le=32_000)
     hotspot_guide_ai_daily_run_limit: int = Field(default=10, ge=1, le=100)
     hotspot_guide_ai_daily_call_budget: int = Field(default=60, ge=1, le=500)
+    # Writing a first-party introduction is a different job from searching for
+    # somebody else's article, so it gets its own vendor, model and budget.
+    hotspot_intro_ai_enabled: bool = True
+    hotspot_intro_ai_default_provider: Literal[
+        "minimax", "openai", "anthropic", "gemini"
+    ] = "minimax"
+    hotspot_intro_ai_openai_model: str | None = None
+    hotspot_intro_ai_anthropic_model: str | None = None
+    hotspot_intro_ai_minimax_model: str | None = None
+    hotspot_intro_ai_gemini_model: str | None = None
+    hotspot_intro_ai_timeout_seconds: float = Field(default=90.0, gt=0, le=120)
+    hotspot_intro_ai_max_output_tokens: int = Field(default=8_000, ge=1_000, le=32_000)
+    hotspot_intro_ai_daily_run_limit: int = Field(default=20, ge=1, le=200)
+    hotspot_intro_ai_daily_call_budget: int = Field(default=200, ge=1, le=2_000)
     line_messaging_enabled: bool = False
     line_channel_secret: str | None = None
     line_channel_access_token: str | None = None
