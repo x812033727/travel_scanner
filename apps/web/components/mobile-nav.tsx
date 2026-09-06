@@ -3,6 +3,7 @@
 import { CircleUserRound, LogIn, Menu, ShieldCheck, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useHeaderSession } from "@/components/header-session";
 import { TextSizeSwitcher } from "@/components/text-size-switcher";
@@ -15,6 +16,7 @@ import { featureVisible } from "@/lib/site-features";
 export function MobileNav() {
   const { status, user } = useHeaderSession();
   const nav = useTranslations("navigation");
+  const common = useTranslations("common");
   const visibility = useSiteVisibility();
   const [open, setOpen] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -40,9 +42,11 @@ export function MobileNav() {
     };
   }, [open]);
 
+  // Four unlabelled icons in a row asked the reader to know what a monitor with a
+  // gear and a 文A glyph do. Appearance, language and text size are all display
+  // preferences, so they moved into the menu where each one has a word next to it,
+  // and the bar keeps the two things people reach for: their account and the menu.
   return <div className="flex items-center gap-1 lg:hidden">
-    <ThemeSwitcher />
-    <LanguageSwitcher compact />
     {/* The desktop nav that carries the admin link is hidden below lg, and neither the
         bottom bar nor the account page offers one, so without this an administrator on a
         phone can only reach the control centre by typing the URL. */}
@@ -55,7 +59,11 @@ export function MobileNav() {
     <button type="button" aria-label={nav("openMenu")} aria-expanded={open} onClick={() => setOpen(true)} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
       <Menu size={21} />
     </button>
-    {open && <div role="presentation" className="fixed inset-0 z-[90] bg-slate-950/45 backdrop-blur-sm" onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}>
+    {/* The site header paints itself with backdrop-filter, which makes it the
+        containing block for every fixed descendant: this sheet was being laid out
+        inside a 68px strip, so tapping the menu on a phone showed one row of it
+        pinned to the top of the screen and nothing else. It belongs on the body. */}
+    {open && createPortal(<div role="presentation" className="fixed inset-0 z-[90] bg-slate-950/45 backdrop-blur-sm" onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}>
       <div role="dialog" aria-modal="true" aria-label={nav("primaryLabel")} className="absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-[2rem] bg-[var(--surface)] p-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-2xl">
         <div className="mb-3 flex items-center justify-between">
           <p className="text-sm font-bold text-[var(--muted)]">{nav("primaryLabel")}</p>
@@ -68,10 +76,18 @@ export function MobileNav() {
             {nav(item.key)}
           </Link>)}
         </nav>
-        <div className="mt-5 border-t border-[var(--line)] pt-5">
+        <div className="mt-5 grid gap-4 border-t border-[var(--line)] pt-5">
           <TextSizeSwitcher variant="expanded" />
+          <div className="flex min-h-12 items-center justify-between gap-3">
+            <span className="text-sm font-bold text-[var(--muted)]">{nav("themeLabel")}</span>
+            <ThemeSwitcher />
+          </div>
+          <div className="flex min-h-12 items-center justify-between gap-3">
+            <span className="text-sm font-bold text-[var(--muted)]">{common("language")}</span>
+            <LanguageSwitcher compact />
+          </div>
         </div>
       </div>
-    </div>}
+    </div>, document.body)}
   </div>;
 }

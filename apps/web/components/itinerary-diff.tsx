@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, CircleAlert, Loader2, MinusCircle, MoveRight, PencilLine, PlusCircle, Sparkles, UtensilsCrossed, Wand2 } from "lucide-react";
+import { ArrowRight, ChevronDown, CircleAlert, Loader2, MinusCircle, MoveRight, PencilLine, PlusCircle, Sparkles, UtensilsCrossed, Wand2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useId, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { PlannerOverlay } from "@/components/planner-overlay";
@@ -96,6 +96,7 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
   const [scope, setScope] = useState<IntentScope>("day");
   const [preview, setPreview] = useState<IntentPreview>();
   const [busy, setBusy] = useState<"submit" | "apply">();
+  const [intentOpen, setIntentOpen] = useState(false);
   // Held across a failed attempt so an identical retry replays server-side
   // instead of spending another rate-limit slot and another provider call.
   const intentKeyRef = useRef<{ signature: string; key: string } | undefined>(undefined);
@@ -183,11 +184,26 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
   return (
     <>
       <section aria-label={t("intent.barLabel")} className="planner-intent-bar sticky z-30 mt-5 rounded-2xl border border-violet-200 bg-white/95 p-3 shadow-[var(--shadow-lg)] backdrop-blur lg:p-4">
-        <form onSubmit={submitIntent} className="grid gap-3">
+        {/* On a phone this bar floats above the dock, and open it is four rows
+            tall - a third of the screen permanently over the itinerary, deep
+            enough to cover the card the reader is reaching for. It opens on
+            demand there and stays open on a desktop, where there is room. */}
+        <button
+          type="button"
+          aria-expanded={intentOpen}
+          onClick={() => setIntentOpen((open) => !open)}
+          className="flex min-h-11 w-full items-center gap-2 text-sm font-bold text-violet-900 lg:hidden"
+        >
+          <Wand2 size={16} />
+          {t("intent.eyebrow")}
+          <ChevronDown size={16} className={`ml-auto transition ${intentOpen ? "rotate-180" : ""}`} />
+        </button>
+        <form onSubmit={submitIntent} className={`${intentOpen ? "grid" : "hidden lg:grid"} gap-3`}>
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <label htmlFor={inputId} className="flex items-center gap-2 text-sm font-bold text-violet-900">
+            <label htmlFor={inputId} className="hidden items-center gap-2 text-sm font-bold text-violet-900 lg:flex">
               <Wand2 size={16} />{t("intent.eyebrow")}
             </label>
+            <label htmlFor={inputId} className="sr-only lg:hidden">{t("intent.eyebrow")}</label>
             <div role="radiogroup" aria-label={t("intent.scopeLegend")} className="flex gap-1 rounded-xl bg-[var(--paper)] p-1">
               {(["day", "trip"] as const).map((value) => (
                 <button

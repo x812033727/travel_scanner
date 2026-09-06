@@ -1,4 +1,13 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+
+/**
+ * Appearance, language and text size live in the phone menu, where each one has a
+ * word next to it; on a wide screen they are in the header itself.
+ */
+async function openDisplayPreferences(page: Page) {
+  const menu = page.getByRole("button", { name: "Open navigation menu" });
+  if (await menu.isVisible()) await menu.click();
+}
 
 test.beforeEach(async ({ page }) => {
   await page.route("**/api/travel/auth/me", (route) => route.fulfill({
@@ -60,6 +69,7 @@ for (const width of [320, 390]) {
   test(`mobile language switch keeps the current page at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 760 });
     await page.goto("/en?campaign=mobile");
+    await openDisplayPreferences(page);
     await expect(page.getByRole("combobox", { name: "Appearance" })).toBeEnabled({ timeout: 15_000 });
     await page.getByRole("combobox", { name: "Language" }).selectOption("ja");
     await expect(page).toHaveURL(/\/ja\/?\?campaign=mobile$/);
@@ -72,6 +82,7 @@ for (const width of [320, 390]) {
 
 test("appearance selection persists after reload", async ({ page }) => {
   await page.goto("/en");
+  await openDisplayPreferences(page);
   const appearance = page.getByRole("combobox", { name: "Appearance" });
   await expect(appearance).toBeEnabled({ timeout: 15_000 });
   await appearance.selectOption("dark");
@@ -80,6 +91,7 @@ test("appearance selection persists after reload", async ({ page }) => {
 
   await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await openDisplayPreferences(page);
   await expect(page.getByRole("combobox", { name: "Appearance" })).toHaveValue("dark");
 });
 
