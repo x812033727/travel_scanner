@@ -19,6 +19,7 @@ def test_shipped_defaults_are_in_the_catalog() -> None:
         ("anthropic_model", settings.anthropic_model),
         ("minimax_model", settings.minimax_model),
         ("hotspot_guide_gemini_model", settings.hotspot_guide_gemini_model),
+        ("gemini_model", settings.gemini_model),
     ):
         assert value in [entry.id for entry in catalog.model_options(field)], field
 
@@ -38,6 +39,11 @@ def test_field_options_only_offer_models_the_code_path_can_drive() -> None:
         "gemini_grounded" in entry.capabilities
         for entry in catalog.model_options("hotspot_guide_gemini_model")
     )
+    for field in ("gemini_model", "hotspot_guide_ai_gemini_model"):
+        assert all(
+            "gemini_structured" in entry.capabilities for entry in catalog.model_options(field)
+        )
+    assert "hotspot_guide_ai_gemini_model" in catalog.OPTIONAL_MODEL_FIELDS
     assert catalog.field_options(("ai_planner_mode", "openai_model")).keys() == {"openai_model"}
     assert catalog.field_options(("route_cache_ttl_seconds",)) == {}
 

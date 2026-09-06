@@ -130,3 +130,57 @@ def gemini_output_text(body: dict[str, Any]) -> str:
     if not text:
         raise ValueError("AI 沒有回傳內容")
     return text
+
+
+# Keys Gemini's OpenAPI-subset ``responseSchema`` understands. Everything else from a
+# pydantic JSON Schema (``$defs``, ``additionalProperties``, ``title``, ``default``,
+# ``pattern``, ``maxItems``, ``format``…) either is rejected with a bare
+# INVALID_ARGUMENT or is silently ignored, so it is dropped and left to pydantic,
+# which still validates the reply afterwards.
+_GEMINI_SCALAR_KEYS = ("type", "description", "enum", "nullable")
+
+
+def gemini_response_schema(model_type: type[BaseModel]) -> dict[str, Any]:
+    """Reduce a pydantic model's JSON Schema to the subset Gemini accepts as a schema."""
+    schema = model_type.model_json_schema()
+    definitions = schema.get("$defs") or {}
+
+    def convert(node: dict[str, Any]) -> dict[str, Any]:
+        converted: dict[str, Any]
+        if "$ref" in node:
+            resolved = dict(definitions[str(node["$ref"]).rsplit("/", 1)[-1]])
+            if "description" in node:
+                resolved["description"] = node["description"]
+            return convert(resolved)
+        if "allOf" in node and len(node["allOf"]) == 1:
+            merged = {key: value for key, value in node.items() if key != "allOf"}
+            return convert({**node["allOf"][0], **merged})
+        if "anyOf" in node:
+            options = [item for item in node["anyOf"] if item.get("type") != "null"]
+            converted = convert(options[0]) if options else {"type": "string"}
+            if len(options) != len(node["anyOf"]):
+                converted["nullable"] = True
+            if "description" in node:
+                converted["description"] = node["description"]
+            return converted
+        converted = {key: node[key] for key in _GEMINI_SCALAR_KEYS if key in node}
+        if "const" in node:
+            converted["type"] = "string"
+            converted["enum"] = [str(node["const"])]
+        elif "enum" in converted:
+            converted["enum"] = [str(value) for value in converted["enum"]]
+            converted.setdefault("type", "string")
+        if node.get("type") == "object" or "properties" in node:
+            properties = {
+                key: convert(value) for key, value in (node.get("properties") or {}).items()
+            }
+            converted["type"] = "object"
+            converted["properties"] = properties
+            if node.get("required"):
+                converted["required"] = [key for key in node["required"] if key in properties]
+            converted["propertyOrdering"] = list(properties)
+        elif node.get("type") == "array":
+            converted["items"] = convert(node.get("items") or {"type": "string"})
+        return converted
+
+    return convert(schema)

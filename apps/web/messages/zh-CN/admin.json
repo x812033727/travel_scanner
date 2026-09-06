@@ -35,9 +35,11 @@
     "openai_model": { "label": "OpenAI 模型", "help": "行程规划调用 OpenAI 时使用的模型；列表以外的模型请选「自定义…」后输入 ID。" },
     "anthropic_model": { "label": "Claude 模型", "help": "行程规划调用 Claude 时使用的模型；列表以外的模型请选「自定义…」后输入 ID。" },
     "minimax_model": { "label": "MiniMax 模型", "help": "行程规划调用 MiniMax 时使用的模型；列表以外的模型请选「自定义…」后输入 ID。" },
+    "gemini_model": { "label": "Gemini 模型", "help": "行程规划与行程文字解析调用 Gemini 时使用的模型；列表以外的模型请选「自定义…」后输入 ID。" },
     "hotspot_guide_ai_openai_model": { "label": "OpenAI 模型", "help": "只影响景点介绍搜索；留空即沿用行程规划的 OpenAI 模型。" },
     "hotspot_guide_ai_anthropic_model": { "label": "Claude 模型", "help": "只影响景点介绍搜索；留空即沿用行程规划的 Claude 模型。" },
     "hotspot_guide_ai_minimax_model": { "label": "MiniMax 模型", "help": "只影响景点介绍搜索；留空即沿用行程规划的 MiniMax 模型。" },
+    "hotspot_guide_ai_gemini_model": { "label": "Gemini 模型", "help": "只影响景点介绍搜索；留空即沿用行程规划的 Gemini 模型。" },
     "hotspot_guide_gemini_model": { "label": "Gemini 模型", "help": "Flash 级能生成景点候选名单，但接地列出文章来源时较弱；Pro 级对新申请的密钥可能不可用，请以连接测试结果为准。" }
   },
   "hotspotTabs": {

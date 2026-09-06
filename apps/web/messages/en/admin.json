@@ -35,9 +35,11 @@
     "openai_model": { "label": "OpenAI model", "help": "Model used when trip planning calls OpenAI. Pick “Custom…” to enter an unlisted ID." },
     "anthropic_model": { "label": "Claude model", "help": "Model used when trip planning calls Claude. Pick “Custom…” to enter an unlisted ID." },
     "minimax_model": { "label": "MiniMax model", "help": "Model used when trip planning calls MiniMax. Pick “Custom…” to enter an unlisted ID." },
+    "gemini_model": { "label": "Gemini model", "help": "Model used when trip planning or trip text parsing calls Gemini. Pick “Custom…” to enter an unlisted ID." },
     "hotspot_guide_ai_openai_model": { "label": "OpenAI model", "help": "Only affects hotspot guide search. Leave empty to reuse the trip planner OpenAI model." },
     "hotspot_guide_ai_anthropic_model": { "label": "Claude model", "help": "Only affects hotspot guide search. Leave empty to reuse the trip planner Claude model." },
     "hotspot_guide_ai_minimax_model": { "label": "MiniMax model", "help": "Only affects hotspot guide search. Leave empty to reuse the trip planner MiniMax model." },
+    "hotspot_guide_ai_gemini_model": { "label": "Gemini model", "help": "Only affects hotspot guide search. Leave empty to reuse the trip planner Gemini model." },
     "hotspot_guide_gemini_model": { "label": "Gemini model", "help": "Flash-tier models build hotspot candidate lists well but are weaker at listing grounded article sources; Pro-tier models may be unavailable to new API keys, so rely on the connection test." }
   },
   "hotspotTabs": {

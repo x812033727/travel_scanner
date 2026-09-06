@@ -13,6 +13,7 @@ from app.ai import trip_parser as trip_parser_module
 from app.ai.parser import MockAITripParser, ParsedTripRequest
 from app.ai.trip_parser import (
     AnthropicTripParserProvider,
+    GeminiTripParserProvider,
     LLMTripParser,
     ResponsesTripParserProvider,
     TripParseDraft,
@@ -419,6 +420,43 @@ async def test_anthropic_provider_reads_message_content_blocks() -> None:
     assert result.destination == "NRT"
 
 
+@pytest.mark.asyncio
+async def test_gemini_provider_parses_a_generate_content_reply() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        body = json.loads(request.content)
+        assert request.url.path == "/v1beta/models/gemini-3.8-flash:generateContent"
+        assert request.headers["x-goog-api-key"] == "g-key"
+        assert body["contents"][0]["parts"][0]["text"] == json.dumps(
+            {"trip_text": TRIP_TEXT}, ensure_ascii=False
+        )
+        schema = body["generationConfig"]["responseSchema"]
+        assert "$ref" not in json.dumps(schema)
+        assert schema["properties"]["adults"]["type"] == "integer"
+        return httpx.Response(
+            200,
+            json={
+                "candidates": [
+                    {"content": {"parts": [{"text": draft_body()}]}, "finishReason": "STOP"}
+                ]
+            },
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    async with client:
+        provider = GeminiTripParserProvider(
+            "https://generativelanguage.googleapis.com",
+            "g-key",
+            "gemini-3.8-flash",
+            5,
+            2000,
+            client,
+        )
+        result = await LLMTripParser([provider], total_timeout_seconds=10).parse(TRIP_TEXT)
+
+    assert result.parser == "ai-gemini/gemini-3.8-flash"
+    assert result.destination == "NRT"
+
+
 def test_reversed_dates_drop_the_return_leg() -> None:
     parsed = to_parsed_request(
         TripParseDraft(
@@ -696,6 +734,7 @@ def test_factory_returns_the_rules_parser_without_configured_providers() -> None
         openai_api_key=None,
         anthropic_api_key=None,
         minimax_api_key=None,
+        hotspot_guide_gemini_api_key=None,
     )
     assert trip_parser_providers(settings) == []
     assert isinstance(build_trip_parser(settings), MockAITripParser)
@@ -723,21 +762,36 @@ def test_every_planner_provider_type_has_a_parser_adapter() -> None:
             openai_api_key=None,
             minimax_api_key=None,
             anthropic_api_key="sk-ant",
+            hotspot_guide_gemini_api_key=None,
         )
     )
     assert [type(provider) for provider in anthropic_only] == [AnthropicTripParserProvider]
     assert anthropic_only[0].name == "anthropic"
 
+    gemini_only = trip_parser_providers(
+        Settings(
+            ai_planner_mode="gemini",
+            openai_api_key=None,
+            minimax_api_key=None,
+            anthropic_api_key=None,
+            hotspot_guide_gemini_api_key="g-key",
+            gemini_model="gemini-3.5-flash",
+        )
+    )
+    assert [type(provider) for provider in gemini_only] == [GeminiTripParserProvider]
+    assert (gemini_only[0].name, gemini_only[0].model) == ("gemini", "gemini-3.5-flash")
+
     full = trip_parser_providers(
         Settings(
             ai_planner_mode="auto",
-            ai_planner_priority="anthropic,minimax,openai",
+            ai_planner_priority="anthropic,minimax,openai,gemini",
             openai_api_key="sk-test",
             anthropic_api_key="sk-ant",
             minimax_api_key="mm-test",
+            hotspot_guide_gemini_api_key="g-key",
         )
     )
-    assert [provider.name for provider in full] == ["anthropic", "minimax", "openai"]
+    assert [provider.name for provider in full] == ["anthropic", "minimax", "openai", "gemini"]
 
 
 def test_the_parse_budget_stays_short_even_when_the_planner_budget_is_long() -> None:

@@ -21,7 +21,7 @@ import { api } from "@/lib/api";
 import { safeExternalHref } from "@/lib/navigation";
 
 const locales = ["en", "ja", "ko", "zh-TW", "zh-CN"] as const;
-const providers = ["minimax", "openai", "anthropic"] as const;
+const providers = ["minimax", "openai", "anthropic", "gemini"] as const;
 type Locale = (typeof locales)[number];
 type Provider = (typeof providers)[number];
 type ContentType = "article" | "video";

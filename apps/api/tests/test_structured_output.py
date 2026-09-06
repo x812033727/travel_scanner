@@ -1,12 +1,14 @@
 import json
+from typing import Literal
 
 import pytest
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from app.ai.structured_output import (
     anthropic_output_text,
     ensure_response_completed,
     extract_json_document,
+    gemini_response_schema,
     responses_output_text,
     schema_instructions,
 )
@@ -75,3 +77,57 @@ def test_schema_instructions_embed_the_schema_and_forbid_fences() -> None:
     text = schema_instructions(Plan)
     assert "article_queries" in text
     assert "code fences" in text
+
+
+def test_gemini_response_schema_inlines_refs_and_drops_unsupported_keywords() -> None:
+    class Leg(BaseModel):
+        mode: Literal["walk", "transit"] = "walk"
+        note: str | None = Field(default=None, max_length=40, pattern=r"^[^\n]*$")
+
+    class Plan(BaseModel):
+        headline: str = Field(description="Short headline")
+        legs: list[Leg] = Field(default_factory=list, max_length=5)
+        budget: int | None = Field(default=None, ge=0)
+        cities: list[str]
+
+    schema = gemini_response_schema(Plan)
+    serialized = json.dumps(schema)
+    for banned in (
+        "$ref",
+        "$defs",
+        "title",
+        "default",
+        "pattern",
+        "maxItems",
+        "maxLength",
+        "minimum",
+        "additionalProperties",
+        "anyOf",
+    ):
+        assert banned not in serialized, banned
+    assert schema["type"] == "object"
+    assert schema["propertyOrdering"] == ["headline", "legs", "budget", "cities"]
+    assert schema["required"] == ["headline", "cities"]
+    assert schema["properties"]["headline"] == {
+        "type": "string",
+        "description": "Short headline",
+    }
+    leg = schema["properties"]["legs"]["items"]
+    assert leg["type"] == "object"
+    assert leg["properties"]["mode"] == {"type": "string", "enum": ["walk", "transit"]}
+    assert leg["properties"]["note"] == {"type": "string", "nullable": True}
+    assert schema["properties"]["budget"] == {"type": "integer", "nullable": True}
+    assert schema["properties"]["cities"] == {"type": "array", "items": {"type": "string"}}
+
+
+def test_gemini_response_schema_covers_the_models_the_features_send() -> None:
+    """Every schema-bound Gemini call in the product must survive the conversion."""
+    from app.ai.itinerary import AIItineraryDraft
+    from app.ai.trip_parser import TripParseDraft
+    from app.hotspots.ai_search import AssessmentBatch, QueryPlan
+
+    for model in (AIItineraryDraft, TripParseDraft, QueryPlan, AssessmentBatch):
+        schema = gemini_response_schema(model)
+        serialized = json.dumps(schema)
+        assert schema["type"] == "object" and schema["properties"], model.__name__
+        assert "$ref" not in serialized and "pattern" not in serialized, model.__name__
