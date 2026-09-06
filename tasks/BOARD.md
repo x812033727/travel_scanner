@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**27 open · 4 in progress · 0 blocked · 0 in review · 28 done**
+**22 open · 4 in progress · 1 blocked · 0 in review · 33 done**
 
 ## Ready to claim
 
@@ -13,12 +13,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P1 | [272 家店家裡只有 2 家有耐久座標，美食目錄幾乎發不出東西](open/2026-09-06-merchant-coordinate-backlog.md) | ops | `apps/api/app/foods/place_matching.py`<br>`apps/api/app/foods/coordinate_queue.py`<br>`apps/web/components/admin-merchant-coordinate-queue.tsx` |
 | P1 | [Most merchants have no first-party page, so nothing can locate them](open/2026-09-06-missing-merchant-sources.md) | api | `apps/api/app/foods/merchant_catalog.py` |
 | P2 | [Nine merchant citations are dead, unreachable or not HTML](open/2026-09-06-broken-merchant-citations.md) | api | `apps/api/app/foods/merchant_catalog.py` |
 | P2 | [21 個潮流街區還沒有任何店家](open/2026-09-06-empty-trend-districts.md) | api | `apps/api/app/foods/data/trend_merchants.json` |
-| P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | ops | `apps/api/app/places/naver.py` |
-| P2 | [482 個景點卡在人工審核佇列](open/2026-09-06-hotspot-review-backlog.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/app/hotspots/admin_router.py` |
 | P2 | [營業時間感知排程：AI 排程不把景點排在打烊時段](open/2026-09-06-opening-hours-aware-scheduling.md) | api | `apps/api/app/trips/hours.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/web/components/day-health-strip.tsx` |
 | P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | api | `apps/api/app/trips/routing.py`<br>`apps/api/tests/test_trip_routing.py` |
 | P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/route_planner.py`<br>`apps/api/tests/test_trip_route_planner.py` |
@@ -26,8 +23,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [桌機主導覽文字連結只有 20px 高](open/2026-09-06-desktop-nav-touch-targets.md) | web | `apps/web/components/site-navigation.tsx` |
 | P3 | [首頁精靈步驟標籤在英文 390px 會截字](open/2026-09-06-wizard-step-label-truncation.md) | web | `apps/web/components/search-workbench.tsx` |
 | P3 | [後台的登入時效設定要能真的生效](open/2026-09-06-admin-session-settings.md) | api | `apps/api/app/auth/service.py`<br>`apps/api/app/admin/service.py` |
-| P3 | [52 個景點的地圖比對對不上，需要人工判斷](open/2026-09-06-hotspot-map-match-holdouts.md) | api | `apps/api/app/hotspots/places.py` |
-| P3 | [6 個關東景點需要人工挑 Google Place ID](open/2026-09-06-kanto-place-ids.md) | api | `apps/api/app/hotspots/catalog.py` |
 | P3 | [ICS 行事曆匯出](open/2026-09-06-ics-calendar-export.md) | api | `apps/api/app/trips/ics.py`<br>`apps/api/app/trips/export_router.py`<br>`apps/web/components/trip-tools-panel.tsx` |
 | P3 | [列印版行程表（一天一頁的 A5 列印樣式）](open/2026-09-06-printable-itinerary.md) | web | `apps/web/app/[locale]/trips/[id]/print`<br>`apps/web/app/globals.css` |
 | P3 | [誠實路段守衛：拒絕 0 分鐘路段與漏掉步行段的轉乘方案](open/2026-09-06-honest-leg-guard.md) | api | `apps/api/app/trips/routing.py`<br>`apps/web/components/route-mode-panel.tsx` |
@@ -35,6 +30,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [PWA、Android share target 與今日檢視](open/2026-09-06-pwa-share-target-today-view.md) | web | `apps/web/app/manifest.ts`<br>`apps/web/public`<br>`apps/web/components/today-view.tsx` |
 | P3 | [分享頁「存成我的行程」與 QR code](open/2026-09-06-share-fork-and-qr.md) | api | `apps/api/app/trips/share_router.py`<br>`apps/web/components/shared-trip-view.tsx` |
 | P3 | [已存行程頁掛上分潤選項](open/2026-09-06-trip-affiliate-options.md) | web | `apps/web/components/trip-editor.tsx`<br>`apps/web/components/affiliate-partner-options.tsx` |
+| P3 | [Measure the flood before widening ALLOWED_TYPES with temple, shrine and museum types](open/2026-09-06-measure-the-flood-before-widening-allowed.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/tests/test_hotspot_discovery.py` |
 
 ## In progress
 
@@ -53,7 +49,7 @@ _Nothing here._
 
 | Priority | Task | Waiting on |
 | --- | --- | --- |
-| P2 | [529 個公開景點還沒有任何導覽內容](open/2026-09-06-hotspot-guide-coverage.md) | active work in the same scope |
+| P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P2 | [貼 Google Maps 連結加景點（待安排 inbox）](open/2026-09-06-paste-maps-links-ingest.md) | active work in the same scope |
 | P3 | [Admin help text tells operators to avoid the model now shipped](open/2026-09-06-stale-gemini-model-help.md) | active work in the same scope |
 | P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | depends on 2026-09-06-stale-gemini-model-help |
@@ -61,13 +57,13 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [529 個公開景點還沒有任何導覽內容](done/2026-09-06-hotspot-guide-coverage.md)
+- 2026-09-06 [52 個景點的地圖比對對不上，需要人工判斷](done/2026-09-06-hotspot-map-match-holdouts.md)
+- 2026-09-06 [482 個景點卡在人工審核佇列](done/2026-09-06-hotspot-review-backlog.md)
+- 2026-09-06 [6 個關東景點需要人工挑 Google Place ID](done/2026-09-06-kanto-place-ids.md)
+- 2026-09-06 [272 家店家裡只有 2 家有耐久座標，美食目錄幾乎發不出東西](done/2026-09-06-merchant-coordinate-backlog.md)
 - 2026-09-06 [Leftover Chinese copy on the search and trip pages outside the two components already converted](done/2026-09-06-leftover-chinese-copy-on-the-search.md)
 - 2026-09-06 [目的地目錄的國家與興趣標籤未五語系化](done/2026-09-06-destination-catalog-labels-i18n.md)
 - 2026-09-06 [navigation.spec.ts 兩個案例在 CI 間歇逾時](done/2026-09-06-flaky-navigation-e2e.md)
 - 2026-09-06 [首頁手機首屏被三張說明列佔滿](done/2026-09-06-home-mobile-first-screen.md)
 - 2026-09-06 [最佳化用距離估計排順序、系統卡變更只作廢碰到的路段、步行汽車不看偏好](done/2026-09-06-route-optimizer-estimates.md)
-- 2026-09-06 [行程編輯後不清整天路段、缺的段用距離估計、按鈕不再預設 refresh](done/2026-09-06-route-editor-partial-invalidation.md)
-- 2026-09-06 [整天重算只打真的缺的路段；編輯後不再自動整趟重算](done/2026-09-06-route-recompute-reuses-saved-segments.md)
-- 2026-09-06 [路線快取 key 依 provider 的時間粒度；DB 路段過期與 Redis TTL 分開](done/2026-09-06-route-cache-time-key.md)
-- 2026-09-06 [Default the Gemini guide model to gemini-3.8-flash](done/2026-09-06-gemini-3-8-flash-default.md)
-- 2026-09-06 [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](done/2026-09-06-reoptimize-no-version-check.md)
