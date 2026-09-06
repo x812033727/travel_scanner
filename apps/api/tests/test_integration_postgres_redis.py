@@ -2012,7 +2012,10 @@ async def test_a_shared_trip_can_be_copied_into_the_readers_own_account(
         assert (await client.get(f"/api/v1/trips/{copy['id']}", headers=author)).status_code == 404
         original = await client.get(f"/api/v1/trips/{trip['id']}", headers=author)
         assert original.status_code == 200
-        assert original.json()["items"][0]["notes"] == "作者的私人備註"
+        author_stop = next(
+            item for item in original.json()["items"] if item["title"] == "淺草寺"
+        )
+        assert author_stop["notes"] == "作者的私人備註"
 
         # Editing the copy leaves the original alone.
         renamed = await client.patch(
