@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**5 open · 4 in progress · 2 blocked · 0 in review · 124 done**
+**5 open · 1 in progress · 2 blocked · 0 in review · 128 done**
 
 ## Ready to claim
 
@@ -23,10 +23,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
-| [沒有帳號的人走到底是死路：註冊已關閉，但每道牆只寫「前往登入」](open/2026-09-06-auth-dead-end.md) | claude-opus-5 | 2026-09-06T21:06:28Z | `claude/ux-auth-walls` |
-| [熱門景點：重新整理丟掉搜尋、看不出套用了什麼、清除條件只在零結果時出現](open/2026-09-06-hotspot-filter-visibility.md) | claude-opus-5 | 2026-09-06T21:45:06Z | `claude/ux-hotspot-filters` |
-| [首頁與規劃表單的字換成長輩看得懂的說法](open/2026-09-06-plain-words-front-door.md) | claude-opus-5 | 2026-09-06T22:18:32Z | `claude/ux-plain-words` |
-| [篩選面板的關閉鍵報讀成「關閉介紹」，美食那邊則跟開啟鍵同名](open/2026-09-06-filter-sheet-labels.md) | claude-opus-5 | 2026-09-06T21:22:56Z | `claude/ux-sheet-labels` |
+| [美食卡上的灰色膠囊看起來像標籤，按下去卻整頁重新篩選](open/2026-09-06-merchant-card-filter-pills.md) | claude-opus-5 | 2026-09-06T22:41:02Z | `claude/ux-merchant-pills` |
 
 ## In review
 
@@ -42,12 +39,12 @@ _Nothing here._
 ## Recently finished
 
 - 2026-09-06 [台南兩家不同的店共用 tainan-fu-sheng-hao 這個 slug，富盛號永遠匯不進來](done/2026-09-06-tainan-slug-collision.md)
+- 2026-09-06 [沒有帳號的人走到底是死路：註冊已關閉，但每道牆只寫「前往登入」](done/2026-09-06-auth-dead-end.md)
+- 2026-09-06 [篩選面板的關閉鍵報讀成「關閉介紹」，美食那邊則跟開啟鍵同名](done/2026-09-06-filter-sheet-labels.md)
+- 2026-09-06 [熱門景點：重新整理丟掉搜尋、看不出套用了什麼、清除條件只在零結果時出現](done/2026-09-06-hotspot-filter-visibility.md)
+- 2026-09-06 [首頁與規劃表單的字換成長輩看得懂的說法](done/2026-09-06-plain-words-front-door.md)
 - 2026-09-06 [撤回 name_en 之後，既有的列還留著沒有出處的音譯](done/2026-09-06-reset-drifted-merchant-names.md)
 - 2026-09-06 [15 個店家英文名是手寫音譯，查不到出處](done/2026-09-06-merchant-english-names-unsourced.md)
 - 2026-09-06 [已匯入的店家沒有拿到資料檔後來補上的英文名](done/2026-09-06-backfill-merchant-english-names.md)
 - 2026-09-06 [後台可以挑選景點介紹的 AI 供應商與模型](done/2026-09-06-intro-ai-vendor-settings.md)
 - 2026-09-06 [專門的購物店家：新增經過座標核實的購物景點種子](done/2026-09-06-shopping-store-seeds.md)
-- 2026-09-06 [110 家店裡有 28 家在英日韓語系顯示中文譯名](done/2026-09-06-merchant-names-chinese-in-other-locales.md)
-- 2026-09-06 [出錯時，非繁中讀者拿到的是同一句通用訊息](done/2026-09-06-api-error-details-untranslated.md)
-- 2026-09-06 [搜尋頁的供應商徽章在五個語系都印出 API 的繁中句子](done/2026-09-06-search-provider-badge-chinese.md)
-- 2026-09-06 [e2e 只守住預設字級的六個頁面，守不住大字模式與 320px](done/2026-09-06-readability-guard-widen.md)

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-auth-dead-end
 title: 沒有帳號的人走到底是死路：註冊已關閉，但每道牆只寫「前往登入」
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T21:06:28Z
 created_at: 2026-09-06T21:06:27Z
-completed_at:
+completed_at: 2026-09-06T22:41:01Z
 branch: claude/ux-auth-walls
 depends_on: []
 scope:
