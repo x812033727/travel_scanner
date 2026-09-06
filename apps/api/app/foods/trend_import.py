@@ -239,33 +239,49 @@ def load_trend_merchants(path: Path) -> list[TrendMerchant]:
 
 
 def plan_english_name_backfill(
-    rows: Sequence[FoodMerchant], merchants: Mapping[str, TrendMerchant]
+    rows: Sequence[FoodMerchant],
+    merchants: Mapping[str, TrendMerchant],
+    *,
+    reset_drifted: bool = False,
 ) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
     """What a backfill would change, and what it would leave alone.
 
-    Separated from the session work so the rule can be tested without a database: only a
-    ``name`` still equal to the file's Chinese ``name_zh`` is replaced, so an administrator's
-    rename survives and a second run is a no-op.
+    Separated from the session work so the rule can be tested without a database.
+
+    By default only a ``name`` still equal to the file's Chinese ``name_zh`` is replaced, so
+    an administrator's rename survives and a second run is a no-op.
+
+    ``reset_drifted`` also pulls back a row whose name matches neither what the file says now
+    nor what it said before. That happens when a ``name_en`` is withdrawn: the file stops
+    proposing the English name, but the row keeps it, because the importer never revisits a
+    slug it has seen. Seven merchants were left holding a romanisation no source backed that
+    way. It cannot tell such a row from one an administrator renamed, which is exactly why it
+    is off unless asked for and why every change is printed before anything is written.
     """
     changed: list[dict[str, str]] = []
     left: list[dict[str, str]] = []
     for row in rows:
         merchant = merchants.get(row.slug)
-        if merchant is None or not merchant.english_name:
+        if merchant is None:
             continue
         if row.name == merchant.display_name:
-            # A second run. Saying "renamed" here would send an operator looking for an edit
-            # that never happened.
-            left.append({"slug": row.slug, "name": row.name, "reason": "already the English name"})
+            # A second run, or a row the file never proposed a name for. Calling this a
+            # rename would send an operator looking for an edit nobody made.
+            left.append({"slug": row.slug, "name": row.name, "reason": "already matches the file"})
             continue
-        if row.name != merchant.name:
-            left.append({"slug": row.slug, "name": row.name, "reason": "renamed since import"})
+        if row.name == merchant.name:
+            changed.append({"slug": row.slug, "from": row.name, "to": merchant.display_name})
             continue
-        changed.append({"slug": row.slug, "from": row.name, "to": merchant.display_name})
+        if reset_drifted:
+            changed.append({"slug": row.slug, "from": row.name, "to": merchant.display_name})
+            continue
+        left.append({"slug": row.slug, "name": row.name, "reason": "renamed since import"})
     return changed, left
 
 
-async def backfill_english_names(*, apply: bool = False) -> dict[str, Any]:
+async def backfill_english_names(
+    *, apply: bool = False, reset_drifted: bool = False
+) -> dict[str, Any]:
     """Give merchants already imported the English label their data file now carries.
 
     The importer skips a slug it has seen before and never merges into it, which is the right
@@ -273,7 +289,7 @@ async def backfill_english_names(*, apply: bool = False) -> dict[str, Any]:
     nothing for the rows already in the database, and those are the rows a reader is looking
     at. This walks them once.
     """
-    merchants = {m.slug: m for m in load_trend_merchants(DEFAULT_FILE) if m.english_name}
+    merchants = {m.slug: m for m in load_trend_merchants(DEFAULT_FILE)}
     async with SessionFactory() as session:
         rows = list(
             (
@@ -284,7 +300,7 @@ async def backfill_english_names(*, apply: bool = False) -> dict[str, Any]:
             .scalars()
             .all()
         )
-        changed, left = plan_english_name_backfill(rows, merchants)
+        changed, left = plan_english_name_backfill(rows, merchants, reset_drifted=reset_drifted)
         if apply:
             by_slug = {row.slug: row for row in rows}
             for entry in changed:
@@ -299,7 +315,8 @@ async def backfill_english_names(*, apply: bool = False) -> dict[str, Any]:
             await session.commit()
     return {
         "applied": apply,
-        "rows_with_an_english_name": len(merchants),
+        "reset_drifted": reset_drifted,
+        "rows_in_file": len(merchants),
         "found_in_database": len(rows),
         "changed": changed,
         "left_alone": left,
