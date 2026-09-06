@@ -683,6 +683,28 @@ describe("trip editor", () => {
     expect(await screen.findByText("長榮航空 BR 198")).toBeTruthy();
   });
 
+  it("offers the printable itinerary and the partner platforms from the tools drawer", async () => {
+    const fetchMock = vi.fn(async (url: string) => {
+      if (String(url).includes("/affiliates/options")) {
+        return response({
+          module: "hotel",
+          disclosure: "本站可能因此獲得分潤。",
+          options: [{ partner: "travelpayouts", display_name: "Travelpayouts", module: "hotel", cta: "查看住宿", clickout_url: "/api/travel/affiliates/click" }],
+        });
+      }
+      return response(trip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    fireEvent.click(await screen.findAllByRole("button", { name: /旅程工具/ }).then((buttons) => buttons[0]));
+
+    const print = await screen.findByRole("link", { name: "開啟列印版" });
+    expect(print.getAttribute("href")).toBe(`/trips/${trip.id}/print`);
+    await waitFor(() => expect(screen.getAllByRole("button", { name: /查看住宿/ }).length).toBeGreaterThan(0));
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes(`trip_id=${trip.id}`))).toBe(true);
+  });
+
   it("flushes the newest revision before requesting an optimization", async () => {
     let resolveFirstSave: ((value: ReturnType<typeof response>) => void) | undefined;
     const firstSave = new Promise<ReturnType<typeof response>>((resolve) => {
