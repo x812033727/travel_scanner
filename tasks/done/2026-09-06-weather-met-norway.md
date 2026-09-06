@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-weather-met-norway
 title: 旅程天氣改由 MET Norway 供應，Google Weather 退為備援
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-fable-5.1
 claimed_at: 2026-09-06T06:30:56Z
 created_at: 2026-09-06T06:28:54Z
-completed_at:
+completed_at: 2026-09-06T07:07:25Z
 branch: claude/weather-met-norway
 depends_on: []
 scope:
