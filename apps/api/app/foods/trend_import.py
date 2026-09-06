@@ -44,6 +44,7 @@ from unidecode import unidecode
 from app.db import SessionFactory
 from app.destinations.catalog import destination_for_id
 from app.foods.category_catalog import CATEGORY_SEEDS_BY_SLUG, SLUG_PATTERN
+from app.foods.merchant_catalog import MERCHANT_SEEDS
 from app.foods.service import destination_country_code
 from app.i18n import LOCALES
 from app.localized_names import is_latin_script, original_locale_for
@@ -57,6 +58,11 @@ from app.models import (
 )
 
 DEFAULT_FILE = Path(__file__).resolve().parent / "data" / "trend_merchants.json"
+
+#: Slugs the hand-curated catalog owns. The importer already refuses to merge into
+#: one, and anything that edits an imported row has to refuse just as hard: the two
+#: files disagree about which shop a shared slug names.
+CURATED_MERCHANT_SLUGS = frozenset(seed.slug for seed in MERCHANT_SEEDS)
 SOURCE_SCOPES: dict[str, str] = {
     "merchant_official": "merchant_website",
     "official_tourism": "merchant_listing",
@@ -263,6 +269,15 @@ def plan_english_name_backfill(
     for row in rows:
         merchant = merchants.get(row.slug)
         if merchant is None:
+            continue
+        if row.slug in CURATED_MERCHANT_SLUGS:
+            # Two different shops share this slug. tainan-fu-sheng-hao is 福生小食店 in the
+            # curated catalog and 富盛號 in the trend file, and the importer kept the curated
+            # one — so the file's name here describes a different restaurant, and writing it
+            # would rename a shop into its neighbour. The dry run caught this before it ran.
+            left.append(
+                {"slug": row.slug, "name": row.name, "reason": "the curated catalog owns this slug"}
+            )
             continue
         if row.name == merchant.display_name:
             # A second run, or a row the file never proposed a name for. Calling this a
