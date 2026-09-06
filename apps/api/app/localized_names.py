@@ -60,6 +60,22 @@ FALLBACK_LOCALES: Mapping[str, tuple[Locale, ...]] = {
 _NON_LATIN_SCRIPT = re.compile(r"[฀-๿ᄀ-ᇿ぀-ヿ㐀-鿿가-힯]")
 
 
+# Escapes rather than literal characters: written literally, the compatibility-block
+# bound resolved to its unified codepoint (U+8C48, not U+F900) and the range silently
+# swallowed every Hangul syllable, so Korean names counted as Chinese.
+_HAN_SCRIPT = re.compile("[㐀-䶿一-鿿豈-﫿]")
+
+
+def has_han_script(value: str | None) -> bool:
+    """True when the text contains a Chinese character a Chinese reader can read.
+
+    Used to tell a curated Chinese name from one that is only nominally Chinese —
+    a seed whose name is Hangul or Thai is not a zh-TW label, and treating it as
+    one shows Korean script to Chinese readers.
+    """
+    return bool(value and _HAN_SCRIPT.search(value))
+
+
 def original_locale_for(country_code: str | None) -> str | None:
     """Language tag of the original script for a country, or ``None`` when unknown."""
 

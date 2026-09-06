@@ -8,7 +8,12 @@ from urllib.parse import quote
 
 from app.hotspots.cities import CITY_BY_CODE
 from app.i18n import LOCALES
-from app.localized_names import build_localized_names, is_latin_script, original_locale_for
+from app.localized_names import (
+    build_localized_names,
+    has_han_script,
+    is_latin_script,
+    original_locale_for,
+)
 
 # Wikipedia disambiguation suffixes ("Hongdae (area)") are not display names.
 _DISAMBIGUATION = re.compile(r"\s*\([^)]*\)\s*$")
@@ -116,8 +121,14 @@ class HotspotSeed:
         if self.english_name:
             # A reviewed alias or title beats a fetched label.
             labels["en"] = self.english_name
+        # The catalog name is the zh-TW label only when it is actually written in
+        # Chinese. 22 seeds are curated under their Hangul or Thai name, and claiming
+        # those as Traditional Chinese showed Korean script to Chinese readers; leaving
+        # the slot empty lets the fallback chain reach the English label instead, and
+        # ``fallback`` still catches the rows where nothing better exists.
+        chinese = {"zh-TW": self.name} if has_han_script(self.name) else {}
         return build_localized_names(
-            names={"zh-TW": self.name, **labels},
+            names={**chinese, **labels},
             original=self.original_name,
             country_code=self.country_code,
             fallback=self.name,
