@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**14 open · 1 in progress · 1 blocked · 0 in review · 51 done**
+**14 open · 0 in progress · 1 blocked · 0 in review · 52 done**
 
 ## Ready to claim
 
@@ -30,9 +30,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [用 AI 審核 1,270 筆待審介紹候選](open/2026-09-06-ai-review-guide-backlog.md) | claude-opus-5 | 2026-09-06T09:05:00Z | `claude/ai-review-guide-backlog` |
+_Nothing here._
 
 ## In review
 
@@ -46,6 +44,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [用 AI 審核 1,270 筆待審介紹候選](done/2026-09-06-ai-review-guide-backlog.md)
 - 2026-09-06 [usage catalog validation rejects everything when web ships ahead of api](done/2026-09-06-usage-catalog-validation-rejects-everything-when.md)
 - 2026-09-06 [food seed counts are hardcoded twelve times and only CI can see them](done/2026-09-06-food-seed-counts-are-hardcoded-twelve.md)
 - 2026-09-06 [Guide backfill searches one locale, so four locales stay empty](done/2026-09-06-multi-locale-guide-backfill.md)
@@ -55,4 +54,3 @@ _Nothing here._
 - 2026-09-06 [首頁精靈步驟標籤在英文 390px 會截字](done/2026-09-06-wizard-step-label-truncation.md)
 - 2026-09-06 [桌機主導覽文字連結只有 20px 高](done/2026-09-06-desktop-nav-touch-targets.md)
 - 2026-09-06 [註冊關閉頁的小標與 H1 是同一句話](done/2026-09-06-auth-duplicate-heading.md)
-- 2026-09-06 [AI 行程規劃、行程文字解析與景點 AI 搜尋也能選 Gemini](done/2026-09-06-ai-gemini-everywhere.md)
