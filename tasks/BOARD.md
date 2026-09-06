@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**7 open · 2 in progress · 1 blocked · 0 in review · 68 done**
+**7 open · 1 in progress · 1 blocked · 0 in review · 69 done**
 
 ## Ready to claim
 
@@ -26,7 +26,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | claude-opus-5 | 2026-09-06T13:20:48Z | `claude/place-names-i18n` |
-| [zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位](open/2026-09-06-zh-cn-area-labels-traditional.md) | claude-opus-5 | 2026-09-06T13:27:16Z | `claude/zh-cn-area-labels` |
 
 ## In review
 
@@ -40,6 +39,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位](done/2026-09-06-zh-cn-area-labels-traditional.md)
 - 2026-09-06 [美食與景點頁的國家／城市名稱在 en／ja／ko 仍是繁中](done/2026-09-06-food-hotspot-place-names-i18n.md)
 - 2026-09-06 [PWA、Android share target 與今日檢視](done/2026-09-06-pwa-share-target-today-view.md)
 - 2026-09-06 [Measure the flood before widening ALLOWED_TYPES with temple, shrine and museum types](done/2026-09-06-measure-the-flood-before-widening-allowed.md)
@@ -49,4 +49,3 @@ _Nothing here._
 - 2026-09-06 [列印版行程表（一天一頁的 A5 列印樣式）](done/2026-09-06-printable-itinerary.md)
 - 2026-09-06 [行程狀態標籤與封面圖](done/2026-09-06-trip-status-and-cover.md)
 - 2026-09-06 [分享頁「存成我的行程」與 QR code](done/2026-09-06-share-fork-and-qr.md)
-- 2026-09-06 [ICS 行事曆匯出](done/2026-09-06-ics-calendar-export.md)
