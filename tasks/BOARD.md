@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**3 open · 0 in progress · 2 blocked · 0 in review · 114 done**
+**4 open · 0 in progress · 2 blocked · 0 in review · 115 done**
 
 ## Ready to claim
 
@@ -15,6 +15,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | P1 | [後台以外的公開頁沒有頁尾，也沒有隱私權、條款、關於或聯絡的連結](open/2026-09-06-no-footer-legal-links.md) | web | `apps/web/components/site-footer.tsx`<br>`apps/web/components/site-footer.test.tsx`<br>`apps/web/app/[locale]/layout.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
 | P2 | [110 家店裡有 28 家在英日韓語系顯示中文譯名](open/2026-09-06-merchant-names-chinese-in-other-locales.md) | api | `apps/api/app/foods/merchant_catalog.py` |
+| P2 | [263 個錯誤碼裡只有 15 個有翻譯，其餘語系一律拿到同一句通用訊息](open/2026-09-06-api-error-details-untranslated.md) | api | `apps/api/app/i18n.py`<br>`apps/api/tests/test_error_localization.py` |
 | P3 | [後台可以挑選景點介紹的 AI 供應商與模型](open/2026-09-06-intro-ai-vendor-settings.md) | web | `apps/api/app/admin/service.py`<br>`apps/api/app/ai/catalog.py`<br>`apps/web/components/admin-settings-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/messages/zh-CN/admin.json` |
 
 ## In progress
@@ -34,6 +35,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [搜尋頁的供應商徽章在五個語系都印出 API 的繁中句子](done/2026-09-06-search-provider-badge-chinese.md)
 - 2026-09-06 [e2e 只守住預設字級的六個頁面，守不住大字模式與 320px](done/2026-09-06-readability-guard-widen.md)
 - 2026-09-06 [AI 起草景點介紹：產生工作、防護與後台觸發](done/2026-09-06-intro-generation.md)
 - 2026-09-06 [destinations 的 english_name 存繁中、areas 不隨語系](done/2026-09-06-destinations-english-name-areas.md)
@@ -43,4 +45,3 @@ _Nothing here._
 - 2026-09-06 [十三個公開頁裡有九個共用同一組 title 與 description](done/2026-09-06-duplicate-page-metadata.md)
 - 2026-09-06 [後台審核頁在看到第一筆待審之前先給 30 個控制項](done/2026-09-06-admin-review-density.md)
 - 2026-09-06 [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](done/2026-09-06-admin-load-error-copy.md)
-- 2026-09-06 [LINE 綁定關鍵字只認繁體中文，日英韓讀者照著做也綁不上](done/2026-09-06-line-link-keyword-chinese-only.md)
