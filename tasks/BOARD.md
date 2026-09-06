@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**5 open · 2 in progress · 1 blocked · 0 in review · 70 done**
+**5 open · 1 in progress · 1 blocked · 0 in review · 71 done**
 
 ## Ready to claim
 
@@ -24,7 +24,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | claude-opus-5 | 2026-09-06T13:20:48Z | `claude/place-names-i18n` |
-| [zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位](open/2026-09-06-zh-cn-area-labels-traditional.md) | claude-opus-5 | 2026-09-06T13:27:16Z | `claude/zh-cn-area-labels` |
 
 ## In review
 
@@ -38,6 +37,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位](done/2026-09-06-zh-cn-area-labels-traditional.md)
 - 2026-09-06 [路線卡與路線面板的文案硬編碼繁中](done/2026-09-06-route-copy-i18n.md)
 - 2026-09-06 [美食與景點頁的國家／城市名稱在 en／ja／ko 仍是繁中](done/2026-09-06-food-hotspot-place-names-i18n.md)
 - 2026-09-06 [待安排地點進入 AI 候選集（PR 8）](done/2026-09-06-paste-inbox-into-candidates.md)
@@ -47,4 +47,3 @@ _Nothing here._
 - 2026-09-06 [貼 Google Maps 連結加景點（待安排 inbox）](done/2026-09-06-paste-maps-links-ingest.md)
 - 2026-09-06 [已存行程頁掛上分潤選項](done/2026-09-06-trip-affiliate-options.md)
 - 2026-09-06 [列印版行程表（一天一頁的 A5 列印樣式）](done/2026-09-06-printable-itinerary.md)
-- 2026-09-06 [行程狀態標籤與封面圖](done/2026-09-06-trip-status-and-cover.md)
