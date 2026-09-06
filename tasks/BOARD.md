@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**9 open · 4 in progress · 3 blocked · 0 in review · 99 done**
+**9 open · 3 in progress · 3 blocked · 0 in review · 100 done**
 
 ## Ready to claim
 
@@ -28,7 +28,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [公開頁精簡：景點卡動作分層、首頁膠囊溢出、排行榜第一屏](open/2026-09-06-simplify-public-cards.md) | claude-opus-5 | 2026-09-06T16:34:13Z | `claude/ux-simplify-public-2` |
 | [上線後查核抓到的六個問題（大字閃爍、焦點掉回 body、標點與複數）](open/2026-09-06-post-deploy-verification-fixes.md) | claude-opus-5 | 2026-09-07T01:20:00Z | `claude/ux-simplify-public-2` |
 | [行程天氣面板在日期超出預報範圍時仍列出 10 天無關天氣](open/2026-09-06-trip-weather-out-of-range.md) | claude-opus-5 | 2026-09-06T16:34:15Z | `claude/ux-simplify-public-2` |
-| [購物行程：規劃器聽得懂店家類型，也知道什麼當季](open/2026-09-06-planner-shop-themes.md) | claude-opus-5 | 2026-09-06T18:20:46Z | `claude/planner-shop-themes` |
 
 ## In review
 
@@ -47,6 +46,7 @@ _Nothing here._
 ## Recently finished
 
 - 2026-09-06 [未登入開 /account 會同時看到三種互相矛盾的狀態](done/2026-09-06-account-signed-out-states.md)
+- 2026-09-06 [購物行程：規劃器聽得懂店家類型，也知道什麼當季](done/2026-09-06-planner-shop-themes.md)
 - 2026-09-06 [價格通知頁的副標與 LINE 卡片在四個語系都是繁中](done/2026-09-06-alerts-hardcoded-zh-tw.md)
 - 2026-09-06 [種子分類是按配額輪流發的，不只 shopping 一類錯](done/2026-09-06-seed-categories-assigned-by-quota.md)
 - 2026-09-06 [景點的第一手介紹：儲存、審核與呈現](done/2026-09-06-hotspot-intros.md)
@@ -55,4 +55,3 @@ _Nothing here._
 - 2026-09-06 [後台可以維護景點主題並逐景點指派](done/2026-09-06-hotspot-themes-admin-api.md)
 - 2026-09-06 [選 Gemini 做景點介紹搜尋會 500：run 表的 provider 檢查沒有 gemini](done/2026-09-06-gemini-guide-run-check.md)
 - 2026-09-06 [熱門景點頁的主題篩選與季節徽章](done/2026-09-06-hotspot-themes-web.md)
-- 2026-09-06 [熱門景點季節與購物主題：資料模型、種子與公開 API](done/2026-09-06-hotspot-themes-api.md)

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-planner-shop-themes
 title: 購物行程：規劃器聽得懂店家類型，也知道什麼當季
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-06T18:20:46Z
 created_at: 2026-09-06T18:20:09Z
-completed_at:
+completed_at: 2026-09-06T18:21:27Z
 branch: claude/planner-shop-themes
 depends_on: []
 scope:
@@ -27,6 +27,7 @@ scope:
   - apps/web/messages/zh-TW/newTrip.json
   - apps/web/messages/zh-CN/newTrip.json
 ---
+
 # 購物行程：規劃器聽得懂店家類型，也知道什麼當季
 
 ## Why
