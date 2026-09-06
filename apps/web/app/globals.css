@@ -2795,3 +2795,15 @@ a {
   background: #3a2c12;
   color: #f2c063;
 }
+
+/* The day's own note: present but quiet until the traveller has written one. */
+.planner-day-note {
+  border: 1px dashed var(--line);
+  border-radius: 1rem;
+  padding: 0.35rem 0.85rem 0.6rem;
+  background: color-mix(in srgb, var(--paper) 60%, transparent);
+}
+.planner-day-note[open] {
+  border-style: solid;
+  background: var(--surface);
+}

@@ -1218,6 +1218,7 @@ class TripPlan(Timestamped, Base):
     end_date: Mapped[date | None] = mapped_column(Date, nullable=True)
     timezone: Mapped[str] = mapped_column(String(64), default="UTC")
     route_preference: Mapped[str] = mapped_column(String(32), default="FEWER_TRANSFERS")
+    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
 
 
 class TripPlanItem(Base):
@@ -1270,6 +1271,25 @@ class TripPlanItem(Base):
     fixed_time: Mapped[bool] = mapped_column(Boolean, default=False)
     system_role: Mapped[str | None] = mapped_column(String(24), nullable=True)
     is_skipped: Mapped[bool] = mapped_column(Boolean, default=False)
+
+
+class TripDayNote(Timestamped, Base):
+    """One free-text note per (trip, day).
+
+    Shaped after TripRouteDaySetting: the day grid is the natural key, and a
+    day that has never been annotated simply has no row.
+    """
+
+    __tablename__ = "trip_day_notes"
+    __table_args__ = (
+        UniqueConstraint("trip_plan_id", "day_date", name="uq_trip_day_note"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    trip_plan_id: Mapped[UUID] = mapped_column(
+        ForeignKey("trip_plans.id", ondelete="CASCADE"), index=True
+    )
+    day_date: Mapped[date] = mapped_column(Date, index=True)
+    notes: Mapped[str] = mapped_column(Text)
 
 
 class TripRouteDaySetting(Timestamped, Base):
