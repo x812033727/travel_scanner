@@ -225,8 +225,27 @@ def trip_search_criteria(
         settled.add("trip_origin_required")
     if explicit.get("destination"):
         settled.add("trip_destination_unsupported")
-    if explicit.get("departure_date") and explicit.get("return_date"):
-        settled.update({"trip_dates_required", "trip_dates_past", "trip_dates_too_short"})
+    pinned_dates = (explicit.get("departure_date"), explicit.get("return_date"))
+    if trip.start_date is None or trip.end_date is None:
+        if all(pinned_dates):
+            settled.update({"trip_dates_required", "trip_dates_past", "trip_dates_too_short"})
+    else:
+        trip_dates = (trip.start_date.isoformat(), trip.end_date.isoformat())
+        # A page that read the trip minutes ago can pin dates the trip no longer has.
+        # Searching them would spend a use on flights for the wrong week, and every
+        # result would then be refused by the anchors' own date check. Each pinned date
+        # is compared on its own: half a stale pair is still the wrong week.
+        if any(
+            pinned is not None and str(pinned) != current
+            for pinned, current in zip(pinned_dates, trip_dates, strict=True)
+        ):
+            raise AppError(
+                422,
+                "trip_dates_mismatch",
+                f"這次搜尋的日期 {pinned_dates[0] or trip_dates[0]} 至 "
+                f"{pinned_dates[1] or trip_dates[1]} 與旅程目前的 "
+                f"{trip_dates[0]} 至 {trip_dates[1]} 不同，請重新載入旅程條件",
+            )
     remaining = [issue for issue in derivation.issues if issue.code not in settled]
     if remaining:
         raise AppError(422, remaining[0].code, remaining[0].detail)
