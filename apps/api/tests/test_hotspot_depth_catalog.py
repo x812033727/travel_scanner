@@ -7,12 +7,12 @@ from tests.test_hotspot_seed_categories import KNOWN_CATEGORIES
 
 def test_deep_bootstrap_contract() -> None:
     deep = [item for item in HOTSPOT_SEEDS if item.is_deep_travel]
-    assert len(HOTSPOT_SEEDS) == 563
+    assert len(HOTSPOT_SEEDS) == 593
     assert len(deep) == 165
     assert TARGET_PUBLIC_HOTSPOTS == 649
-    assert len({item.slug for item in HOTSPOT_SEEDS}) == 563
+    assert len({item.slug for item in HOTSPOT_SEEDS}) == 593
     qids = [item.wikidata_item_id for item in HOTSPOT_SEEDS if item.wikidata_item_id]
-    assert len(qids) == 560
+    assert len(qids) == 580
     assert len(set(qids)) == len(qids)
 
     by_city = defaultdict(list)

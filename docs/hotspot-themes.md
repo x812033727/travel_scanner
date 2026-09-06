@@ -66,10 +66,19 @@ undo the other two:
   and food seeds, so every collect run keeps links in step with the file. For a one-off
   back-fill without a collect run: `cd apps/api && uv run python -m app.hotspots.themes`.
 
-Seed coverage in the first version is uneven by design: sakura and autumn leaves cover
-Japan and Korea well; skiing has only the two Sapporo-area mountains the catalog holds;
-outlet malls, drugstore chains and electronics stores arrive with the dedicated-store seed
-batch (a separate task, gated on coordinate verification).
+- `apps/api/app/hotspots/shopping_bootstrap.json` holds the 30 dedicated stores the shop
+  types needed. Every row's coordinate comes from a public source that names the shop
+  itself — a Wikidata item's P625, or an OpenStreetMap object whose name and address are
+  the shop's — so the file carries no `curated_coordinate` at all. That rule is not
+  ceremony: matching on "nearest coordinate to a remembered guess" first returned
+  南大沢駅 for an outlet mall, 三越劇場 for a department store, a tram stop for 狸小路 and
+  a temple for 光華商場. Fifteen candidates found no such source and were left out rather
+  than placed from memory; they are listed in the follow-up task.
+
+Seed coverage is uneven by design: sakura and autumn leaves cover Japan and Korea well,
+and skiing has only the two Sapporo-area mountains the catalog holds. Every shop type now
+has at least two stores, outlet malls included — before the dedicated-store batch that
+chip existed but returned an empty page.
 
 ## Public API
 
@@ -177,7 +186,11 @@ what already landed.
 
 ## Follow-ups filed from this work
 
-- Four seeds carry the wrong category `shopping` (榴岡公園, 廣島城, 嚴島神社, 八公山); their
-  season links are in place, the category fix belongs to the catalog task.
+- 大阪アメリカ村's `Q4745722` is held by the Okinawa 美國村 seed, whose coordinates point
+  at Osaka. `kix-amerikamura` therefore cites the item for its coordinate but leaves
+  `wikidata_item_id` null; fixing the Okinawa row frees the id.
+- 龍山電子商街 and 三創生活園區 sit a few hundred metres outside every circle in the area
+  catalog, so they carry no area. Drawing circles for them moves neighbouring seeds
+  between areas, which belongs to the area catalog rather than to a seed batch.
 - `hotspot_guide_ai_search_runs.provider` has a CHECK without `gemini`, so selecting Gemini
   for guide search fails on insert; `hotspot_intro_runs` allows it from the start.

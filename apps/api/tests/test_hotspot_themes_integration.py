@@ -114,8 +114,15 @@ async def test_sync_seeds_every_theme_and_rankings_filter_by_theme() -> None:
         assert [theme["kind"] for theme in naka_dori["themes"]] == ["season", "shop"]
         assert [theme["name"] for theme in naka_dori["themes"]] == ["燈飾", "商店街／市場"]
 
-        # A theme nobody carries filters everything out rather than erroring.
-        assert (await _rankings(session, destination_id="tokyo", theme="outlet"))["total"] == 0
+        # A theme this destination does not carry filters everything out rather than
+        # erroring: skiing is a Hokkaido theme, and Tokyo has no mountain in the catalog.
+        assert not _seeded_slugs("ski", "tokyo")
+        assert (await _rankings(session, destination_id="tokyo", theme="ski"))["total"] == 0
+        # The dedicated-store batch gave the shop types real rows: the outlet filter used
+        # to return nothing anywhere, and now answers with the mall out at 南大沢.
+        outlets = await _rankings(session, destination_id="tokyo", theme="outlet")
+        assert {item["slug"] for item in outlets["items"]} == _seeded_slugs("outlet", "tokyo")
+        assert outlets["total"] == 1
         with pytest.raises(AppError) as unknown:
             await resolve_theme(session, "bogus")
         assert unknown.value.status == 422
@@ -135,14 +142,19 @@ async def test_facets_list_every_active_theme_in_catalog_order() -> None:
     assert by_slug["sakura"]["count"] == len(_seeded_slugs("sakura"))
     assert by_slug["sakura"]["name"] == "赏樱"
     assert by_slug["sakura"]["months"] == [3, 4]
-    # No outlet mall is seeded yet; the theme still shows so the taxonomy is complete.
+    # A shop theme has no months, and its count is the whole catalog's, not one city's.
     assert by_slug["outlet"] == {
         "slug": "outlet",
         "kind": "shop",
         "name": "奥特莱斯",
         "months": [],
-        "count": 0,
+        "count": len(_seeded_slugs("outlet")),
     }
+    # Every theme in the taxonomy leads somewhere; a chip that returns nothing anywhere
+    # is a dead control, and outlet was one until the dedicated stores arrived.
+    assert all(theme["count"] > 0 for theme in themes), [
+        theme["slug"] for theme in themes if not theme["count"]
+    ]
     assert sum(theme["count"] for theme in themes) == len(SEED_LINK_PAIRS)
 
 
