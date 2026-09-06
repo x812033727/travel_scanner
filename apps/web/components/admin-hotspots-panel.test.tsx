@@ -85,6 +85,11 @@ describe("AdminHotspotsPanel", () => {
     expect(firstUrl).toContain("limit=50");
     expect(firstUrl).toContain("page=1");
 
+    // The filters start folded away: a reviewer clearing hundreds of rows needs the first
+    // candidate on screen, not thirty controls above it.
+    expect(screen.queryByRole("group", { name: "景點分類" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "展開篩選條件" }));
+
     const categories = screen.getByRole("group", { name: "景點分類" });
     const family = within(categories).getByRole("button", { name: /親子/ });
     expect(family.getAttribute("aria-pressed")).toBe("false");
@@ -103,5 +108,19 @@ describe("AdminHotspotsPanel", () => {
     expect(screen.getByText("共 1 筆，已選 1 筆")).toBeTruthy();
     fireEvent.click(screen.getByRole("checkbox", { name: "全選 香港（HK）" }));
     expect((screen.getByRole("checkbox", { name: "選取 香港海洋公園" }) as HTMLInputElement).checked).toBe(false);
+  });
+  it("keeps the first candidate above the batch controls until something is selected", async () => {
+    const fetchMock = vi.fn<(input: RequestInfo | URL, init?: RequestInit) => Promise<Response>>(
+      async () => new Response(JSON.stringify(listing)),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<AdminHotspotsPanel />);
+    expect(await screen.findByText("香港海洋公園")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "核准" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "標記深度旅遊" })).toBeNull();
+
+    fireEvent.click(screen.getByRole("checkbox", { name: "選取 香港海洋公園" }));
+    expect(screen.getByRole("button", { name: "核准" })).toBeTruthy();
   });
 });

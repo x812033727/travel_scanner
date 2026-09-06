@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
 import { HOTSPOT_CATEGORY_CODES, isHotspotCategoryCode } from "@/lib/hotspot-categories";
 import { safeExternalHref } from "@/lib/navigation";
-import { FilterPills } from "./admin-filter-pills";
+import { FilterDisclosure, FilterPills } from "./admin-filter-pills";
 
 type Candidate = {
   id: string;
@@ -369,8 +369,26 @@ export function AdminHotspotsPanel() {
   }));
   const groups = groupCandidates(data?.items ?? []);
 
+  const statusSummary = status
+    ? ta(`hotspotsPanel.status${status.replace(/(^|_)([a-z])/g, (_all, _lead, letter: string) => letter.toUpperCase())}`)
+    : ta("hotspotsPanel.statusAll");
+  const filterSummary = [
+    statusSummary,
+    country
+      ? (countryOptions.find((item) => item.code === country)?.label ?? country)
+      : t("allCountries"),
+    category ? categoryLabel(category) : t("allCategories"),
+  ].join(" · ");
+
   return (
     <section className="mt-8">
+      <FilterDisclosure
+        label={ta("hotspotsPanel.filtersLabel")}
+        summary={filterSummary}
+        showLabel={ta("hotspotsPanel.filtersShow")}
+        hideLabel={ta("hotspotsPanel.filtersHide")}
+        storageKey="mokaair-admin-hotspot-filters"
+      >
       <div className="grid gap-2">
         <FilterPills
           label={ta("hotspotsPanel.filterCountry")}
@@ -447,10 +465,12 @@ export function AdminHotspotsPanel() {
           <option value="wikimedia_discovery">{ta("hotspotsPanel.originWikimedia")}</option>
         </select>
       </div>
+      </FilterDisclosure>
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <span className="mr-auto text-sm text-[var(--muted)]">
           {ta("hotspotsPanel.totals", { total: data?.total ?? 0, selected: selected.size })}
         </span>
+        {selected.size > 0 && <>
         <button
           disabled={!selected.size || loading}
           onClick={() => void review("approve")}
@@ -472,7 +492,11 @@ export function AdminHotspotsPanel() {
         >
           {ta("hotspotsPanel.disable")}
         </button>
+        </>}
       </div>
+      {/* Nothing here can act on an empty selection, and all of it used to sit between the
+          reviewer and the first candidate. */}
+      {selected.size > 0 && <>
       <div className="mt-3 flex flex-wrap gap-2">
         <input
           aria-label={ta("hotspotsPanel.moveTo")}
@@ -559,6 +583,7 @@ export function AdminHotspotsPanel() {
           {ta("hotspotsPanel.clearDepth")}
         </button>
       </div>
+      </>}
       {locationDraft && (
         <div className="mt-4 rounded-2xl border border-sky-200 bg-sky-50 p-4">
           <div className="flex items-start justify-between gap-4">
