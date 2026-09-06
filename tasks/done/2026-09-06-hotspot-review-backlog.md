@@ -83,4 +83,4 @@ SELECT review_status, count(*) FROM travel_hotspots GROUP BY 1;
 - 白名單沒動。理由：`collect_hotspots` 現在把 auto_approved 一律改成 `pending /
   map_identity_required`，白名單已不再自動發布；它只影響 `import-hotspot-candidates` 的
   confirmed 通道，那條路收佛寺／神社這種型別要先量 33 個城市的氾濫面（Q2680845 的教訓），
-  另立 `2026-09-06-measure-type-flood-before-widening-allowed-types`。
+  另立 `2026-09-06-measure-the-flood-before-widening-allowed`。
