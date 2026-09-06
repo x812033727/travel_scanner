@@ -73,7 +73,12 @@ from app.trips.expenses import (
     cost_summary,
     seed_rows,
 )
-from app.trips.flight_anchor import apply_flight_offer, offer_has_leg, offer_leg_date
+from app.trips.flight_anchor import (
+    apply_flight_offer,
+    member_chose_flight,
+    offer_has_leg,
+    offer_leg_date,
+)
 from app.trips.hours import is_open_at, opens_within_day
 from app.trips.itinerary import ItineraryItem
 from app.trips.pricing import (
@@ -3190,8 +3195,17 @@ async def attach_flight_offer(
     if not offer_has_leg(offer, role):
         raise AppError(422, "offer_return_leg_missing", "這筆報價沒有回程航段，無法帶入回程")
     leg_date = offer_leg_date(offer, role)
-    if leg_date is not None and item.day_date is not None and leg_date != item.day_date:
+    if item.day_date is not None and leg_date != item.day_date:
         label = "出發" if direction == "outbound" else "回程"
+        if leg_date is None:
+            # Unreachable while offer_has_leg requires a return departure time, and kept
+            # so that widening that test can never silently drop the day check again:
+            # an anchor whose leg has no departure time is a booking nobody can hold.
+            raise AppError(
+                422,
+                "offer_dates_mismatch",
+                f"這筆報價沒有{label}的起飛時間，無法對上旅程的{label}日",
+            )
         raise AppError(
             422,
             "offer_dates_mismatch",
@@ -5047,7 +5061,7 @@ async def reoptimize_trip(
         for item in day.items:
             if item.system_role in {"outbound_flight", "return_flight"}:
                 current = flight_anchors.get(item.system_role)
-                if current is not None and current.data.get("flight_selection_source") != "manual":
+                if current is not None and not member_chose_flight(current):
                     current.item_type = item.item_type
                     current.offer_id = item.offer_id
                     current.title = item.title

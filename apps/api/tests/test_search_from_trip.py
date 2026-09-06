@@ -11,7 +11,12 @@ from app.models import TripPlan, TripPlanItem
 from app.problems import AppError
 from app.providers.schemas import FlightOffer, FlightSegment
 from app.search.schemas import SearchCreate, SearchModule
-from app.trips.flight_anchor import apply_flight_offer, offer_has_leg, offer_leg_date
+from app.trips.flight_anchor import (
+    apply_flight_offer,
+    member_chose_flight,
+    offer_has_leg,
+    offer_leg_date,
+)
 from app.trips.search_criteria import (
     ORIGIN_OPTIONS,
     TRIP_SEARCH_OVERRIDES,
@@ -77,7 +82,10 @@ def test_blank_trip_yields_a_round_trip_from_its_own_keys() -> None:
 
 
 def test_search_sourced_trip_keeps_the_airport_and_party_it_was_searched_with() -> None:
-    trip = _trip(data={"source": "search", "origin_airport": "KHH"})
+    # No origin_airport in `data`: rows saved before that key was written must still
+    # answer with the airport their search used, which is the only thing that keeps
+    # the member from being asked to re-pick one the search already knew.
+    trip = _trip(data={"source": "search"})
     query = trip_search_criteria(
         trip, SEARCH_JSON, modules=[SearchModule.FLIGHT], locale="zh-TW", today=TODAY
     )
@@ -155,10 +163,74 @@ def test_an_explicit_field_settles_the_issue_the_trip_could_not() -> None:
     assert query.destination == "NRT"
 
 
-def test_explicit_dates_are_still_validated_as_a_round_trip() -> None:
-    with pytest.raises(Exception) as raised:
+def test_a_chosen_arrival_airport_settles_a_destination_the_catalog_cannot_place() -> None:
+    # This is the whole point of the arrival-airport picker: the trip names a place
+    # the catalog does not know, and the member's choice is what gets searched.
+    trip = _trip(destination_name="月球")
+    with pytest.raises(AppError) as refused:
+        trip_search_criteria(trip, None, modules=[SearchModule.FLIGHT], locale="zh-TW", today=TODAY)
+    assert refused.value.code == "trip_destination_unsupported"
+
+    query = trip_search_criteria(
+        trip,
+        None,
+        modules=[SearchModule.FLIGHT],
+        locale="zh-TW",
+        overrides={"destination": "KIX"},
+        today=TODAY,
+    )
+    assert query.destination == "KIX" and query.origin == "TPE"
+
+
+def test_explicit_dates_settle_a_trip_that_has_none_but_never_contradict_one_that_does() -> None:
+    undated = _trip(start_date=None, end_date=None)
+    with pytest.raises(AppError) as refused:
+        trip_search_criteria(
+            undated, None, modules=[SearchModule.FLIGHT], locale="zh-TW", today=TODAY
+        )
+    assert refused.value.code == "trip_dates_required"
+
+    query = trip_search_criteria(
+        undated,
+        None,
+        modules=[SearchModule.FLIGHT],
+        locale="zh-TW",
+        overrides={"departure_date": "2026-11-10", "return_date": "2026-11-14"},
+        today=TODAY,
+    )
+    assert (query.departure_date, query.return_date) == (START, END)
+
+    # A page that read the trip before another tab moved it would otherwise spend a
+    # use searching the old week, and every result would be refused by the anchors.
+    with pytest.raises(AppError) as stale:
         trip_search_criteria(
             _trip(),
+            None,
+            modules=[SearchModule.FLIGHT],
+            locale="zh-TW",
+            overrides={"departure_date": "2026-11-03", "return_date": "2026-11-07"},
+            today=TODAY,
+        )
+    assert stale.value.status == 422 and stale.value.code == "trip_dates_mismatch"
+    assert "2026-11-10" in stale.value.detail and "2026-11-03" in stale.value.detail
+
+    # Re-sending the trip's own dates is what the criteria page does; it is not a clash.
+    same = trip_search_criteria(
+        _trip(),
+        None,
+        modules=[SearchModule.FLIGHT],
+        locale="zh-TW",
+        overrides={"departure_date": "2026-11-10", "return_date": "2026-11-14"},
+        today=TODAY,
+    )
+    assert (same.departure_date, same.return_date) == (START, END)
+
+
+def test_explicit_dates_are_still_validated_as_a_round_trip() -> None:
+    # An undated trip takes the pinned pair, so the pair itself is what is validated.
+    with pytest.raises(Exception) as raised:
+        trip_search_criteria(
+            _trip(start_date=None, end_date=None),
             None,
             modules=[SearchModule.FLIGHT],
             locale="zh-TW",
@@ -185,6 +257,12 @@ def test_search_create_accepts_a_bare_trip_id_and_rejects_multi_city_with_one() 
         SearchCreate.model_validate(
             {"trip_id": str(uuid4()), "modules": ["flight"], "trip_type": "multi_city"}
         )
+
+
+def _anchor_with_source(source: str | None) -> TripPlanItem:
+    item = _anchor("outbound_flight", START)
+    item.data = {**item.data, "flight_selection_source": source}
+    return item
 
 
 def _offer(*, return_leg: bool = True) -> FlightOffer:
@@ -304,3 +382,24 @@ def test_a_one_way_offer_has_no_return_leg_to_attach() -> None:
     assert offer_has_leg(_offer(return_leg=False), "outbound_flight")
     assert not offer_has_leg(_offer(return_leg=False), "return_flight")
     assert offer_has_leg(_offer(), "return_flight")
+
+
+def test_a_multi_city_offer_is_not_a_return_leg_just_because_it_has_two_legs() -> None:
+    # Amadeus fills return_departure_time for round trips only, but numbers every
+    # itinerary's segments, so a multi-city offer carries leg_index 1 with no return
+    # time. Attaching one wrote an anchor with a flight number and no times at all.
+    multi_city = _offer().model_copy(
+        update={"return_departure_time": None, "return_arrival_time": None}
+    )
+    assert any(segment.leg_index == 1 for segment in multi_city.segments)
+    assert not offer_has_leg(multi_city, "return_flight")
+    assert offer_leg_date(multi_city, "return_flight") is None
+
+
+def test_reoptimize_keeps_every_flight_the_member_chose_themselves() -> None:
+    # Re-pricing rebuilds the plan's own anchors. Before this, only "manual" was
+    # spared, so a flight brought back from a search was silently replaced.
+    for source in ("manual", "offer"):
+        assert member_chose_flight(_anchor_with_source(source)), source
+    for source in ("provider", "unset", "", None):
+        assert not member_chose_flight(_anchor_with_source(source)), source
