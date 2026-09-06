@@ -341,6 +341,16 @@
     "lastPlannedTrip": "前回の計画：旅程全体",
     "lastPlannedNote": "{scope}。ロック済み・時刻固定・手動の項目は置き換えられません。",
     "aiWarningsLabel": "AI プランの注意",
+    "plannerWarning": {
+      "planner_provider_failed": "AI が今回は行程を作れませんでした",
+      "planner_timed_out": "AI の作成に時間がかかりすぎたため、すぐ編集できる下書きを用意しました",
+      "planner_fallback_used": "承認済みの観光地カタログで一版を作成しました。そのまま編集できます",
+      "planner_partial_days": "AI が全日程を埋めなかったため、残りは承認済みの地点で補いました",
+      "planner_blank_slots": "利用できる地点が足りず、{count} 件の時間帯を空けています",
+      "planner_places_unconfirmed": "一部の地点は確認が間に合わなかったため、そのまま行程に入れています",
+      "planner_places_need_review": "いくつかの地点は、意図した場所か確認をお願いします",
+      "unknown": "この行程に注意が 1 件あります。作り直すとたいてい解消します"
+    },
     "unscheduledSlots": "未計画の時間帯。タップするとその日に移動できます：",
     "slot": {
       "activity": "観光",

@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-booking-demand-test-parses-an-offer
 title: Booking Demand 連線測試停在城市 ID，從不解析旅館報價
-status: open
+status: done
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T15:42:17Z
 created_at: 2026-09-06T15:15:30Z
-completed_at:
-branch:
+completed_at: 2026-09-06T15:49:46Z
+branch: claude/booking-demand-probe
 depends_on: []
 scope:
   - apps/api/app/providers/booking.py
@@ -49,17 +49,17 @@ production 環境**必須**通過這個測試才會標示為可用，所以測�
 
 ## Definition of done
 
-- [ ] 測試會實際取得並解析至少一筆旅館報價，解析失敗時測試失敗。
-- [ ] 成功訊息帶出可辨識的證據（例如取得幾筆報價），讓操作者看得出它真的走完了。
-- [ ] sandbox 與 production 兩種環境都適用，不需要為測試特別放寬驗證。
+- [x] 測試會實際取得並解析至少一筆旅館報價，解析失敗時測試失敗。
+- [x] 成功訊息帶出可辨識的證據（例如取得幾筆報價），讓操作者看得出它真的走完了。
+- [x] sandbox 與 production 兩種環境都適用，不需要為測試特別放寬驗證。
 
 ## Steps
 
-- [ ] 擴充 `BookingHotelProvider.probe()`：在 `_city_id` 之後實際跑一次最小的住宿查詢並解析回應，
+- [x] 擴充 `BookingHotelProvider.probe()`：在 `_city_id` 之後實際跑一次最小的住宿查詢並解析回應，
       沿用正式查詢路徑的解析函式，不要另寫一份寬鬆的解析。
-- [ ] 日期選未來且短天數，把查詢量壓到最低；Demand API 有額度。
-- [ ] 訊息加上報價筆數，比照 `admin/service.py` 裡 MET Norway 測試回報預報天數的寫法。
-- [ ] 新增 `apps/api/tests/test_booking_demand_probe.py`，用 `httpx.MockTransport` 覆蓋
+- [x] 日期選未來且短天數，把查詢量壓到最低；Demand API 有額度。
+- [x] 訊息加上報價筆數，比照 `admin/service.py` 裡 MET Norway 測試回報預報天數的寫法。
+- [x] 新增 `apps/api/tests/test_booking_demand_probe.py`，用 `httpx.MockTransport` 覆蓋
       「城市查得到但報價解析失敗」這個情境，斷言測試會失敗。
 
 ## How to verify
@@ -78,3 +78,29 @@ cd apps/api && uv run pytest tests/test_booking_demand_probe.py -q
 來源與 `2026-09-06-configured-readiness-beyond-key-presence` 相同：2026-09-06 那輪缺陷類別搜尋的
 副產物，事實成立但不屬於當時搜尋的類別。該輪把這一項標為 speculative，我在 origin/main 上逐行
 確認過 `probe()` 的內容，確實只到城市 ID 為止。
+
+## Result（2026-09-06 完成）
+
+`probe()` 現在走完整條使用者會走的路：城市查詢 → `/accommodations/search` → 用**正式路徑的
+解析函式**產生報價，一筆都解析不出來就失敗。測試沒有另外寫一份寬鬆的解析，因為那樣量到的
+就不是使用者會遇到的東西了。回傳值從 `None` 改成報價筆數，後台訊息因此變成
+「Booking.com Demand API sandbox 驗證成功，取得 N 筆旅館報價」，操作者看得出它真的走完了。
+
+**錯誤訊息分得出兩種不同的故障**，因為它們要去修的地方不一樣：
+
+- 住宿查詢回空清單 → 「收到 0 筆住宿……請確認帳號有 /accommodations/search 權限」
+- 住宿有回來但報價解析不出來 → 「收到 1 筆住宿……回應格式可能已經改變」
+
+為此把 `_search` 拆成 `_search_with_row_count`，多回一個原始筆數；`_search` 只是它的薄包裝，
+兩個既有呼叫點（`search_hotels`、`search_hotels_near`）行為不變。
+
+**額度**：探測會花掉和真實查詢一樣的額度，所以查詢壓到最小——1 晚、1 位大人、1 間房、
+`rows: 3`（新常數 `PROBE_ROWS`）。原本是 2 晚且沒限制筆數。
+
+sandbox 與 production 走的是同一段程式，沒有為測試放寬任何驗證，所以兩個環境都適用。
+
+測試在 `apps/api/tests/test_booking_demand_probe.py`，六個案例：正常解析並回報筆數、
+城市查得到但報價解析不出來（這張票的迴歸案例）、查詢回空清單、查詢 HTTP 403、
+城市查不到時不浪費一次查詢額度、以及查詢真的只要了 1 晚與 3 筆。
+
+檢查：`ruff`、`mypy`、`pytest`（1,040 passed、33 skipped）全綠。

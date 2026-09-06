@@ -475,6 +475,139 @@ class HotspotFavorite(Timestamped, Base):
     )
 
 
+class HotspotTheme(Timestamped, Base):
+    """Orthogonal tag on a hotspot: a season (賞櫻, 賞楓 …) or a shop type (藥妝, 電器 …).
+
+    ``names_json`` holds one label per site locale. ``months_json`` is the default
+    month list of a season theme (empty for a shop type); a link may override it.
+    """
+
+    __tablename__ = "hotspot_themes"
+    __table_args__ = (
+        CheckConstraint("kind IN ('season', 'shop')", name="ck_hotspot_theme_kind"),
+        CheckConstraint("source IN ('seed', 'admin')", name="ck_hotspot_theme_source"),
+        Index("ix_hotspot_themes_kind_active", "kind", "is_active"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    slug: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    kind: Mapped[str] = mapped_column(String(16))
+    names_json: Mapped[dict[str, str]] = mapped_column(JSON, default=dict)
+    months_json: Mapped[list[int]] = mapped_column(JSON, default=list)
+    display_order: Mapped[int] = mapped_column(Integer, default=100)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+    source: Mapped[str] = mapped_column(String(16), default="admin")
+
+
+class HotspotThemeLink(Timestamped, Base):
+    """One theme on one hotspot. ``source`` says who put it there; see app.hotspots.themes."""
+
+    __tablename__ = "hotspot_theme_links"
+    __table_args__ = (
+        UniqueConstraint("hotspot_id", "theme_id", name="uq_hotspot_theme_link"),
+        CheckConstraint(
+            "source IN ('seed', 'admin', 'ai')", name="ck_hotspot_theme_link_source"
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    hotspot_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="CASCADE"), index=True
+    )
+    theme_id: Mapped[UUID] = mapped_column(
+        ForeignKey("hotspot_themes.id", ondelete="CASCADE"), index=True
+    )
+    # Per-hotspot month override (Sapporo's sakura is May, not March); NULL = theme default.
+    months_json: Mapped[list[int] | None] = mapped_column(JSON, nullable=True)
+    source: Mapped[str] = mapped_column(String(16), default="admin")
+    note: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    # False is an administrator's tombstone: the seed sync sees the pair exists and
+    # leaves it, so a removed seed assignment does not come back on the next run.
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+
+
+class HotspotIntro(Timestamped, Base):
+    """First-party introduction paragraph, one per hotspot per locale.
+
+    Readers only ever see ``approved`` rows, in their own locale (zh-CN and zh-TW
+    cover each other). The table ships with the themes migration so both features
+    take one migration number; the drafting, review and rendering code follows in
+    its own change (see docs/hotspot-themes.md).
+    """
+
+    __tablename__ = "hotspot_intros"
+    __table_args__ = (
+        UniqueConstraint("hotspot_id", "locale", name="uq_hotspot_intro_locale"),
+        CheckConstraint(
+            "locale IN ('en', 'ja', 'ko', 'zh-TW', 'zh-CN')", name="ck_hotspot_intro_locale"
+        ),
+        CheckConstraint(
+            "review_status IN ('pending', 'approved', 'rejected', 'disabled')",
+            name="ck_hotspot_intro_review_status",
+        ),
+        CheckConstraint("source IN ('ai', 'manual')", name="ck_hotspot_intro_source"),
+        Index("ix_hotspot_intros_status_locale", "review_status", "locale"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    hotspot_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="CASCADE"), index=True
+    )
+    locale: Mapped[str] = mapped_column(String(16), index=True)
+    body: Mapped[str] = mapped_column(Text)
+    review_status: Mapped[str] = mapped_column(String(24), default="pending", index=True)
+    review_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
+    source: Mapped[str] = mapped_column(String(16), default="manual", index=True)
+    ai_provider: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    ai_model: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    generated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    reviewed_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    metadata_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+
+
+class HotspotIntroRun(Timestamped, Base):
+    """One AI drafting job for a hotspot's intros; the shape of HotspotGuideAISearchRun
+    without the search-only columns, and with Gemini allowed."""
+
+    __tablename__ = "hotspot_intro_runs"
+    __table_args__ = (
+        UniqueConstraint(
+            "actor_user_id", "idempotency_key", name="uq_hotspot_intro_run_idempotency"
+        ),
+        CheckConstraint(
+            "provider IN ('minimax', 'openai', 'anthropic', 'gemini')",
+            name="ck_hotspot_intro_run_provider",
+        ),
+        CheckConstraint(
+            "status IN ('queued', 'running', 'partial', 'completed', 'failed')",
+            name="ck_hotspot_intro_run_status",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    actor_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    hotspot_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_hotspots.id", ondelete="CASCADE"), index=True
+    )
+    idempotency_key: Mapped[str] = mapped_column(String(255))
+    requested_locales: Mapped[list[str]] = mapped_column(JSON, default=list)
+    provider: Mapped[str] = mapped_column(String(16), index=True)
+    model: Mapped[str] = mapped_column(String(128))
+    # Replace approved intros too; by default an approved paragraph is left alone.
+    force: Mapped[bool] = mapped_column(Boolean, default=False)
+    status: Mapped[str] = mapped_column(String(16), default="queued", index=True)
+    progress: Mapped[int] = mapped_column(Integer, default=0)
+    progress_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    usage_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    result_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
+    queue_job_id: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
 class HotspotPlaceProfile(Timestamped, Base):
     __tablename__ = "hotspot_place_profiles"
     __table_args__ = (
@@ -1143,7 +1276,7 @@ class HotspotGuideAISearchRun(Timestamped, Base):
             "actor_user_id", "idempotency_key", name="uq_hotspot_guide_ai_search_idempotency"
         ),
         CheckConstraint(
-            "provider IN ('minimax', 'openai', 'anthropic')",
+            "provider IN ('minimax', 'openai', 'anthropic', 'gemini')",
             name="ck_hotspot_guide_ai_search_provider",
         ),
         CheckConstraint(

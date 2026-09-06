@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-public-holidays-tw-jp-kr
 title: 國定假日資料：台日韓 2026-2027 進版控，日曆看得見連假與補班
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T13:47:22Z
 created_at: 2026-09-06T13:17:37Z
-completed_at:
-branch:
+completed_at: 2026-09-06T14:20:35Z
+branch: claude/public-holidays
 depends_on: []
 scope:
   - apps/api/app/holidays
@@ -65,26 +65,26 @@ scope:
 
 ## Definition of done
 
-- [ ] `GET /api/v1/holidays?country=TW&from=2026-09-01&to=2027-12-31&locale=zh-TW` 回傳台日韓各自 2026 與 2027 的完整假日列，每列帶 `date`、`kind`、`name`（依 locale）、`is_working_day`；不需登入、不打任何外部網路。
-- [ ] 台灣 2026 回傳的 22 列具名假日與 DGPA 官方逐字相同（含 02-15 小年夜、09-28 教師節、10-25 光復節、12-25 行憲紀念日與 6 個補假）；日本 2026 回傳 18 列，含 2026-05-06 與 2026-09-22；韓國 2026 回傳 22 個放假日，且 2026-09-28 **不是**假日。
-- [ ] 五個語系（zh-TW / zh-CN / en / ja / ko）都拿得到該假日的名稱，沒有任何一列 fallback 成空字串或英文代碼。
-- [ ] 補班日是可前瞻的一級資料：`is_working_day=false` 的週六不會被當成假日，而 `kind=makeup_workday` 的週六即使 2026/2027 目前為零筆，schema 與查詢仍支援未來出現的補班日。
-- [ ] `/trips/new` 月曆的每一格：落在假日的日子有可辨識的標記，且該格 `aria-label` 讀得到假日名稱；沒有假日資料的日子外觀與行為完全不變。
-- [ ] `refresh-holidays` CLI 預設只印 diff 不寫檔；加 `--apply` 才更新 `apps/api/app/holidays/data/*.json`，重跑同一年不產生 diff。CLI 只會更新日期與旗標，**不會覆寫人工翻譯的 `names`**，遇到沒有翻譯的新 key 會列出來要人補。
-- [ ] `docs/public-holidays.md` 存在，內含每個來源的 API contract、授權條款與逐字顯名字串、更新節奏與前瞻上限，並寫明哪些來源因授權被排除。
-- [ ] 三段顯名字串出現在產品可見處（沿用既有 attribution 慣例，如 `apps/web/components/hotel-offer-card.tsx:117`）。
+- [x] `GET /api/v1/holidays?country=TW&from=2026-09-01&to=2027-12-31&locale=zh-TW` 回傳台日韓各自 2026 與 2027 的完整假日列，每列帶 `date`、`kind`、`name`（依 locale）、`is_working_day`；不需登入、不打任何外部網路。
+- [x] 台灣 2026 回傳的 22 列具名假日與 DGPA 官方逐字相同（含 02-15 小年夜、09-28 教師節、10-25 光復節、12-25 行憲紀念日與 6 個補假）；日本 2026 回傳 18 列，含 2026-05-06 與 2026-09-22；韓國 2026 回傳 22 個放假日，且 2026-09-28 **不是**假日。
+- [x] 五個語系（zh-TW / zh-CN / en / ja / ko）都拿得到該假日的名稱，沒有任何一列 fallback 成空字串或英文代碼。
+- [x] 補班日是可前瞻的一級資料：`is_working_day=false` 的週六不會被當成假日，而 `kind=makeup_workday` 的週六即使 2026/2027 目前為零筆，schema 與查詢仍支援未來出現的補班日。
+- [x] `/trips/new` 月曆的每一格：落在假日的日子有可辨識的標記，且該格 `aria-label` 讀得到假日名稱；沒有假日資料的日子外觀與行為完全不變。
+- [x] `refresh-holidays` CLI 預設只印 diff 不寫檔；加 `--apply` 才更新 `apps/api/app/holidays/data/*.json`，重跑同一年不產生 diff。CLI 只會更新日期與旗標，**不會覆寫人工翻譯的 `names`**，遇到沒有翻譯的新 key 會列出來要人補。
+- [x] `docs/public-holidays.md` 存在，內含每個來源的 API contract、授權條款與逐字顯名字串、更新節奏與前瞻上限，並寫明哪些來源因授權被排除。
+- [x] 三段顯名字串出現在產品可見處（沿用既有 attribution 慣例，如 `apps/web/components/hotel-offer-card.tsx:117`）。
 
 ## Steps
 
-- [ ] 新增 `apps/api/app/holidays/__init__.py` 與 `apps/api/app/holidays/data/{tw,jp,kr}_{2026,2027}.json`。每列 `{"date": "2026-05-06", "key": "jp_kenpo_kinenbi_substitute", "kind": "substitute", "is_working_day": false, "names": {"zh-TW": ..., "zh-CN": ..., "en": ..., "ja": ..., "ko": ...}, "source": "cao_go_jp"}`。`kind` 取值：`public_holiday` / `substitute` / `makeup_workday` / `bridge_holiday`。`names` 全部人工撰寫，比照 `apps/api/app/weather/met_norway.py:30` 的 `_FAMILIES`。
-- [ ] 新增 `apps/api/app/holidays/service.py`：純記憶體查詢，開機時載入 JSON。提供 `holidays_between(country, start, end, locale)` 與 `is_working_day(country, date)`。日期一律 ISO `YYYY-MM-DD` 字串比較，不建 `date` 物件、不碰時區（比照 `apps/web/lib/calendar.ts` 的既有作法）。國碼沿用 `apps/api/app/foods/service.py:91` 的 `destination_country_code()`，不要再造第二套國別對應。
-- [ ] 新增 `apps/api/app/holidays/router.py`：`GET /holidays`，公開、不需 `CurrentUser`（與 `apps/api/app/fx/router.py:25` 不同，因為這是靜態資料），回應加長效 `Cache-Control`。在 `apps/api/app/main.py:90` 附近 `app.include_router(holidays_router, prefix="/api/v1")`。
-- [ ] 新增 `apps/api/app/holidays/refresh.py`：TW 先 `GET https://data.gov.tw/api/v2/rest/dataset/14718`，從 `result.distribution[]` 依 `resourceDescription` 找當年檔、取 `resourceDownloadUrl`，依 `utf-8-sig → utf-8 → cp950` 順序嗅探解碼，`是否放假==2` 為放假、`備註` 非空為具名假日、`備註=='補假'` → `substitute`、`備註=='補行上班'` 且 `是否放假==0` → `makeup_workday`。JP 抓 `https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv`（Shift_JIS、CRLF、日期不補零），名稱為 `休日` 的列依前後文標成 `substitute` 或 `bridge_holiday`。KR 不抓網路，由人工依 관공서의 공휴일에 관한 규정 제2조/제3조 撰寫並在每列 `note` 註明依據款次。
-- [ ] 在 `apps/api/app/cli.py` 新增 `refresh-holidays` subparser（比照 `:642` 的 `fill-hotspot-labels`，含 `--country`、`--year`、`--apply`）與 `:815` 附近的 dispatch。預設 dry-run 印出「新增 / 消失 / 放假旗標翻轉 / 缺翻譯」四類 diff。
-- [ ] 新增 `apps/api/tests/test_public_holidays.py`：以 `httpx.MockTransport` 餵 DGPA 與内閣府的真實片段（含 cp950 與 Shift_JIS bytes、含 `20250208,六,0,補行上班`），斷言解析結果；以 `ASGITransport(app=app)` 打 `/api/v1/holidays` 斷言上面 Definition of done 列出的三國實際日期；另加一條斷言 `2026-09-28` 不在 KR 結果中。
-- [ ] 新增 `apps/web/lib/holidays.ts`：呼叫既有 catch-all proxy `apps/web/app/api/travel/[...path]/route.ts`（不需新增 BFF route），回傳 `Record<string, {kind, name}>`。
-- [ ] 改 `apps/web/components/date-range-picker.tsx`：以可見月份區間查一次，於 `:120` 的 button 加上 `data-holiday` 與併入假日名稱的 `aria-label`，並在 `cellClass`（`:15`）加對應的圓點樣式。**不得新增任何中文字面量**——`tools/check-i18n.mjs` 會擋掉 `apps/web/{app,components,lib}/**/*.tsx` 新增的漢字串；名稱一律是 API 回傳的變數。
-- [ ] 寫 `docs/public-holidays.md`：比照 `docs/hotspot-intelligence.md:7-13` 的來源政策表格，一列一個來源（含被排除的 Nager / Calendarific / caldays / Festivo 與排除理由），並逐字寫下三段顯名字串與各來源的前瞻上限。
+- [x] 新增 `apps/api/app/holidays/__init__.py` 與 `apps/api/app/holidays/data/{tw,jp,kr}_{2026,2027}.json`。每列 `{"date": "2026-05-06", "key": "jp_kenpo_kinenbi_substitute", "kind": "substitute", "is_working_day": false, "names": {"zh-TW": ..., "zh-CN": ..., "en": ..., "ja": ..., "ko": ...}, "source": "cao_go_jp"}`。`kind` 取值：`public_holiday` / `substitute` / `makeup_workday` / `bridge_holiday`。`names` 全部人工撰寫，比照 `apps/api/app/weather/met_norway.py:30` 的 `_FAMILIES`。
+- [x] 新增 `apps/api/app/holidays/service.py`：純記憶體查詢，開機時載入 JSON。提供 `holidays_between(country, start, end, locale)` 與 `is_working_day(country, date)`。日期一律 ISO `YYYY-MM-DD` 字串比較，不建 `date` 物件、不碰時區（比照 `apps/web/lib/calendar.ts` 的既有作法）。國碼沿用 `apps/api/app/foods/service.py:91` 的 `destination_country_code()`，不要再造第二套國別對應。
+- [x] 新增 `apps/api/app/holidays/router.py`：`GET /holidays`，公開、不需 `CurrentUser`（與 `apps/api/app/fx/router.py:25` 不同，因為這是靜態資料），回應加長效 `Cache-Control`。在 `apps/api/app/main.py:90` 附近 `app.include_router(holidays_router, prefix="/api/v1")`。
+- [x] 新增 `apps/api/app/holidays/refresh.py`：TW 先 `GET https://data.gov.tw/api/v2/rest/dataset/14718`，從 `result.distribution[]` 依 `resourceDescription` 找當年檔、取 `resourceDownloadUrl`，依 `utf-8-sig → utf-8 → cp950` 順序嗅探解碼，`是否放假==2` 為放假、`備註` 非空為具名假日、`備註=='補假'` → `substitute`、`備註=='補行上班'` 且 `是否放假==0` → `makeup_workday`。JP 抓 `https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv`（Shift_JIS、CRLF、日期不補零），名稱為 `休日` 的列依前後文標成 `substitute` 或 `bridge_holiday`。KR 不抓網路，由人工依 관공서의 공휴일에 관한 규정 제2조/제3조 撰寫並在每列 `note` 註明依據款次。
+- [x] 在 `apps/api/app/cli.py` 新增 `refresh-holidays` subparser（比照 `:642` 的 `fill-hotspot-labels`，含 `--country`、`--year`、`--apply`）與 `:815` 附近的 dispatch。預設 dry-run 印出「新增 / 消失 / 放假旗標翻轉 / 缺翻譯」四類 diff。
+- [x] 新增 `apps/api/tests/test_public_holidays.py`：以 `httpx.MockTransport` 餵 DGPA 與内閣府的真實片段（含 cp950 與 Shift_JIS bytes、含 `20250208,六,0,補行上班`），斷言解析結果；以 `ASGITransport(app=app)` 打 `/api/v1/holidays` 斷言上面 Definition of done 列出的三國實際日期；另加一條斷言 `2026-09-28` 不在 KR 結果中。
+- [x] 新增 `apps/web/lib/holidays.ts`：呼叫既有 catch-all proxy `apps/web/app/api/travel/[...path]/route.ts`（不需新增 BFF route），回傳 `Record<string, {kind, name}>`。
+- [x] 改 `apps/web/components/date-range-picker.tsx`：以可見月份區間查一次，於 `:120` 的 button 加上 `data-holiday` 與併入假日名稱的 `aria-label`，並在 `cellClass`（`:15`）加對應的圓點樣式。**不得新增任何中文字面量**——`tools/check-i18n.mjs` 會擋掉 `apps/web/{app,components,lib}/**/*.tsx` 新增的漢字串；名稱一律是 API 回傳的變數。
+- [x] 寫 `docs/public-holidays.md`：比照 `docs/hotspot-intelligence.md:7-13` 的來源政策表格，一列一個來源（含被排除的 Nager / Calendarific / caldays / Festivo 與排除理由），並逐字寫下三段顯名字串與各來源的前瞻上限。
 
 ## How to verify
 
@@ -117,6 +117,35 @@ curl -s 'http://localhost:8000/api/v1/holidays?country=TW&from=2026-02-01&to=202
 手動：開 `/zh-TW/trips/new`，把月曆翻到 2026-02 與 2026-05，確認春節與黃金週整段被標記；翻到 2026-09，確認 09-22 在日本被標記、09-28 在韓國**沒有**被標記。
 
 ## Notes
+
+### 做完之後（2026-09-06，claude-opus-5）
+
+六個資料檔（tw/jp/kr × 2026/2027）共 127 列，端點 `GET /api/v1/holidays`，CLI `refresh-holidays`，
+`docs/public-holidays.md`，日曆每格一顆圓點與帶假日名稱的 `aria-label`。DoD 的數字全部對上：
+台灣 2026 二十二列具名假日（含六個補假）、日本 2026 十八列（含 05-06 振替與 09-22 国民の休日）、
+韓國 2026 二十二個放假日且 09-28 不在其中。
+
+四件研究沒寫、但做下去才會踩到的事：
+
+- **韓國 2026 是 22 天，因為 6/3 是選舉日。** 依 제2조제10호，임기만료 선거일本身就是公휴일；
+  只照「국경일＋설·추석＋어린이날…」列會得到 21 天，跟任務裡的數字差一天，很容易以為自己漏了補假。
+  用 72 天（52 個星期日 ∪ 24 個 2027 假日 − 4 個重疊）反推 2027，也是同一個交叉檢查法。
+- **韓國 2027 的설날是 2/7，台灣的春節是 2/6。** 兩邊農曆用不同子午線，2027 剛好差一天；
+  不要拿 DGPA 的 20270206 去「修正」韓國那列。추석 兩邊同一天（09-15），只有年初這次分岔。
+- **DGPA 的 CSV 在容器裡也抓不到。** 中繼憑證缺 Subject Key Identifier，OpenSSL 拒絕、curl 接受；
+  Windows 開發機與正式機 api 容器都是同一個錯（已實測）。沒有放寬驗證，改成 `--file` 吃手動下載的檔案，
+  日本那邊照樣走網路。兩邊都跑過一次，都回報 `unchanged: true`。
+- **日曆一年只查一次，不是一個月一次。** 一國一年才二十幾列，但翻月份是使用者最常做的動作；
+  以可見年份當 effect key，翻十二個月只有三個請求。
+
+超出 scope 的兩處（都只有測試）：`new-trip-form.test.tsx` 的五個測試用 `vi.stubGlobal("fetch")`
+餵單一回應，日曆掛載時的假日請求會把那個回應吃掉，所以加了一個 `stubFetch()` 把 `/holidays`
+分開回答；`date-range-picker.test.tsx` 加一個案例釘住圓點、`aria-label` 與顯名字串。
+
+沒做也不該偷渡進來的：`/trips/new` 的日曆目前標三國假日，因為表單只有目的地文字、拿不到國碼，
+而 `new-trip-form.tsx` 不在 scope。`DateRangePicker` 已經留好 `countries` prop，接目的地國碼是一行的事，
+另立一張任務。瀏覽器實測留到部署後（本機沒有 Postgres，`/trips/new` 過不了登入狀態檢查），
+端點與 BFF proxy 已用 curl 走過一遍。
 
 ### 授權立場（已定，不要重新討論）
 

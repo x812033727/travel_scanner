@@ -31,6 +31,12 @@ from app.hotspots.guides import discover_guides, stale_youtube_guides_delete
 from app.hotspots.maps import build_map_links
 from app.hotspots.places import place_summary_payload
 from app.hotspots.ranking import RankingInput, score_deep_hotspots, score_hotspots
+from app.hotspots.themes import (
+    load_hotspot_themes,
+    sync_hotspot_themes,
+    theme_facets,
+    theme_filter,
+)
 from app.hotspots.wikimedia import WikimediaPageviewClient
 from app.i18n import LOCALES, Locale
 from app.infra import get_redis
@@ -597,6 +603,7 @@ async def collect_hotspots(
     target_date = observed_on or date.today()
     hotspots = await seed_catalog(session, target_date)
     await seed_food_catalog(session)
+    await sync_hotspot_themes(session)
     await session.commit()
     discovery_report: dict[str, Any] = {"skipped": True, "errors": []}
     latest_discovery = await session.scalar(
@@ -778,6 +785,7 @@ async def list_rankings(
     category: str | None = None,
     role: str | None = None,
     area: str | None = None,
+    theme: str | None = None,
     after_rank: int | None = None,
     limit: int = 20,
     style: str = "all",
@@ -838,6 +846,8 @@ async def list_rankings(
         query = query.where(TravelHotspot.destination_id.in_(role_ids))
     if area:
         query = query.where(TravelHotspot.area_code == area)
+    if theme:
+        query = query.where(theme_filter(theme))
     total = int(await session.scalar(select(func.count()).select_from(query.subquery())) or 0)
     if after_rank is not None:
         query = query.where(HotspotRanking.rank > after_rank)
@@ -872,6 +882,7 @@ async def list_rankings(
             )
         ).all()
     }
+    themes_by_hotspot = await load_hotspot_themes(session, hotspot_ids, locale)
     items: list[dict[str, Any]] = []
     for ranking, hotspot in rows:
         place_profile = place_profiles.get(hotspot.id)
@@ -897,6 +908,7 @@ async def list_rankings(
                 ),
                 "category": hotspot.category,
                 "area": area_payload(area_by_code(hotspot.city_code, hotspot.area_code), locale),
+                "themes": themes_by_hotspot.get(hotspot.id, []),
                 "latitude": float(hotspot.latitude) if hotspot.latitude is not None else None,
                 "longitude": float(hotspot.longitude) if hotspot.longitude is not None else None,
                 "coordinate_source": {
@@ -1051,6 +1063,7 @@ async def hotspot_facets(session: AsyncSession, locale: Locale = "zh-TW") -> dic
         ],
         "categories": [{"code": row.category, "count": row.count} for row in categories],
         "areas": areas,
+        "themes": await theme_facets(session, locale, *conditions),
     }
 
 
@@ -1062,6 +1075,7 @@ async def _collect_ranked(
     style: str,
     wanted: int,
     category: str | None = None,
+    theme: str | None = None,
 ) -> list[dict[str, Any]]:
     """Page through one ranking until `wanted` planner-eligible rows are seen."""
     collected: list[dict[str, Any]] = []
@@ -1076,6 +1090,7 @@ async def _collect_ranked(
             city_code=city_code,
             destination_id=destination_id,
             category=category,
+            theme=theme,
             style=style,
             limit=PLANNER_RANKING_PAGE_SIZE,
             after_rank=after_rank,
@@ -1211,6 +1226,7 @@ async def load_planner_hotspots(
                 parent_destination_id=item["parent_destination_id"],
                 is_cross_city=item["is_cross_city"],
                 opening_hours=item.get("opening_hours") or {},
+                themes=[str(theme["slug"]) for theme in item.get("themes") or []],
             )
         )
     return rows

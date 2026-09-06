@@ -29,8 +29,12 @@ def test_deep_bootstrap_contract() -> None:
         assert len(rows) == 5
         assert Counter(item.depth_kind for item in rows) == {"urban_local": 3, "day_trip": 2}
         categories = Counter(item.category for item in rows)
-        assert len(categories) >= 3
-        assert max(categories.values()) <= 2
+        # Two is the floor now: Chiang Rai's five deep places are three hills and two
+        # temples, and there is no third kind of thing to name without inventing one.
+        assert len(categories) >= 2
+        # No cap on how many share a category. Kanazawa's five deep places really are
+        # three temples and a shrine; the old cap of two is why one of them was filed
+        # as nature, and a wrong category reaches the planner as a wrong suggestion.
 
 
 def test_legacy_slugs_all_resolve() -> None:

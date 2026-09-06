@@ -1,9 +1,44 @@
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { SavedItemsProvider } from "./saved-items-provider";
 import { HotspotExplorer } from "./hotspot-explorer";
 
+
+function rankingItem(overrides: Record<string, unknown> = {}) {
+  return {
+    id: "hotspot-1", slug: "sensoji", rank: 1, name: "淺草寺", destination_id: "tokyo",
+    destination_role: "primary", parent_destination_id: null, is_cross_city: false,
+    city_code: "NRT", city_name: "東京", country_code: "JP", country_name: "日本",
+    category: "culture", area: null, score: 88,
+    components: { interest: 90, growth: 80, quality: 92, confidence: 80 },
+    pageviews_30d: 12345, growth_rate: 0.2, trend_label: "近期升溫",
+    sources: ["curated_catalog"], has_source: false, signal_date: "2026-08-30",
+    is_estimate: false, is_deep_travel: false, depth_kind: null, depth_score: null,
+    depth_reason: null, local_name: null, access_minutes: null,
+    recommended_duration_minutes: null, guide_counts: { article: 0, video: 0 },
+    map_links: [], place_summary: null, ...overrides,
+  };
+}
+
+function rankingBody(items: unknown[]) {
+  return JSON.stringify({
+    scope: "global", scope_key: "global", observed_on: "2026-08-31", window_days: 30,
+    total: items.length, has_more: false, next_cursor: null, items,
+  });
+}
+
+function facetsBody(themes: unknown[]) {
+  return JSON.stringify({ total: 1, countries: [], cities: [], categories: [], areas: [], themes });
+}
+
 describe("HotspotExplorer", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    // Filters live in the address bar, so a test that set one would otherwise
+    // decide what the next test's first request asks for.
+    window.history.replaceState(null, "", "/");
+  });
+
   it("shows ranked hotspots with provenance and freshness", async () => {
     const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
       const url = String(input);
@@ -320,5 +355,104 @@ describe("HotspotExplorer", () => {
     expect(await screen.findByRole("heading", { name: "登入後繼續使用此功能" })).toBeTruthy();
     expect(share).not.toHaveBeenCalled();
     expect(fetchMock.mock.calls.some(([input]) => String(input).includes("/hotspots/sources"))).toBe(false);
+  });
+  it("filters by a theme chip and keeps it in the address bar", async () => {
+    // The chips mark what is in season now, so the fixture is written against the
+    // month the test runs in rather than a frozen clock.
+    const thisMonth = new Date().getMonth() + 1;
+    const otherMonth = (thisMonth % 12) + 1;
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/saved-items")) return new Response(JSON.stringify({ items: [] }));
+      if (url.includes("/hotspots/facets")) {
+        return new Response(facetsBody([
+          { slug: "sakura", kind: "season", name: "賞櫻", months: [thisMonth], count: 3 },
+          { slug: "ski", kind: "season", name: "滑雪", months: [otherMonth], count: 0 },
+          { slug: "drugstore", kind: "shop", name: "藥妝", months: [], count: 2 },
+        ]));
+      }
+      return new Response(rankingBody([rankingItem()]));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<SavedItemsProvider><HotspotExplorer /></SavedItemsProvider>);
+    expect(await screen.findByRole("heading", { name: "淺草寺" })).toBeTruthy();
+
+    const chips = await screen.findByRole("group", { name: "主題篩選" });
+    const sakura = within(chips).getByRole("button", { name: /賞櫻/ });
+    expect(sakura.textContent).toContain("當季");
+    expect(within(chips).getByRole("button", { name: /藥妝/ }).textContent).not.toContain("當季");
+    // A theme with nothing behind it stays out of the way until it is the selection.
+    expect(within(chips).queryByRole("button", { name: /滑雪/ })).toBeNull();
+    expect(screen.getByRole("combobox", { name: "所有類型" }).querySelectorAll("option")).toHaveLength(9);
+
+    fireEvent.click(sakura);
+    await waitFor(() => expect(fetchMock.mock.calls.some(([input]) => {
+      const url = String(input);
+      return url.includes("/hotspots/rankings?") && url.includes("theme=sakura");
+    })).toBe(true));
+    expect(window.location.search).toContain("theme=sakura");
+    expect(sakura.getAttribute("aria-pressed")).toBe("true");
+    expect(screen.getByRole("button", { name: /熱門景點搜尋/ }).textContent).toContain("1");
+
+    fireEvent.click(sakura);
+    await waitFor(() => expect(window.location.search).not.toContain("theme="));
+    expect(sakura.getAttribute("aria-pressed")).toBe("false");
+  });
+
+  it("opens a shared theme link and offers a way out when it is empty", async () => {
+    window.history.replaceState(null, "", "/zh-TW/hotspots?theme=sakura");
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/saved-items")) return new Response(JSON.stringify({ items: [] }));
+      if (url.includes("/hotspots/facets")) {
+        return new Response(facetsBody([
+          { slug: "sakura", kind: "season", name: "賞櫻", months: [3, 4], count: 0 },
+        ]));
+      }
+      if (url.includes("theme=sakura")) return new Response(rankingBody([]));
+      return new Response(rankingBody([rankingItem()]));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<SavedItemsProvider><HotspotExplorer /></SavedItemsProvider>);
+
+    expect(await screen.findByText(/這個主題在目前條件下還沒有景點/)).toBeTruthy();
+    expect(String(fetchMock.mock.calls.find(([input]) => String(input).includes("/hotspots/rankings"))?.[0]))
+      .toContain("theme=sakura");
+    const chips = await screen.findByRole("group", { name: "主題篩選" });
+    // Zero results, but the chip stays because it is what the reader is looking at.
+    expect(within(chips).getByRole("button", { name: /賞櫻/ }).getAttribute("aria-pressed")).toBe("true");
+
+    fireEvent.click(screen.getByRole("button", { name: "清除條件" }));
+    expect(await screen.findByRole("heading", { name: "淺草寺" })).toBeTruthy();
+    expect(window.location.search).toBe("");
+  });
+
+  it("shows the months a season badge applies to", async () => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/saved-items")) return new Response(JSON.stringify({ items: [] }));
+      if (url.includes("/hotspots/facets")) return new Response(facetsBody([]));
+      return new Response(rankingBody([rankingItem({
+        themes: [
+          { slug: "sakura", kind: "season", name: "賞櫻", months: [3, 4] },
+          { slug: "illumination", kind: "season", name: "燈飾", months: [11, 12, 1] },
+          { slug: "drugstore", kind: "shop", name: "藥妝", months: [] },
+        ],
+      })]));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<SavedItemsProvider><HotspotExplorer /></SavedItemsProvider>);
+    expect(await screen.findByRole("heading", { name: "淺草寺" })).toBeTruthy();
+
+    const badges = screen.getByRole("list", { name: "景點主題" });
+    expect(within(badges).getByText("賞櫻").closest("li")?.textContent).toContain("3月–4月");
+    // A winter season that crosses new year reads as one span, not two.
+    expect(within(badges).getByText("燈飾").closest("li")?.textContent).toContain("11月–1月");
+    expect(within(badges).getByText("藥妝").closest("li")?.textContent).not.toMatch(/月/);
+    // No facets, so the filter row is absent rather than empty.
+    expect(screen.queryByRole("group", { name: "主題篩選" })).toBeNull();
   });
 });

@@ -62,10 +62,14 @@ def test_secondary_destination_and_offline_catalog_contract() -> None:
         audited_items = [
             item for item in HOTSPOT_SEEDS if item.destination_id == destination_id
         ]
-        assert len({item.category for item in audited_items}) >= 5
+        # Three, not five. Demanding one of every category is what filled the quota with
+        # a shrine under shopping and a Noh museum under nature: Sendai simply has no
+        # shopping hotspot in its fifteen, and saying so is better than inventing one.
+        assert len({item.category for item in audited_items}) >= 3
         # The food-area audit corrects generated museum/temple/park labels instead
         # of preserving the old cyclic category quota at the expense of accuracy.
-        assert max(Counter(item.category for item in items).values()) <= 6
+        # Eight since the shopping audit: Gyeongju's fifteen really are mostly cultural.
+        assert max(Counter(item.category for item in items).values()) <= 8
 
 
 @pytest.mark.asyncio

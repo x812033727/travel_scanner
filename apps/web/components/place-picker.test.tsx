@@ -155,4 +155,37 @@ describe("PlacePicker", () => {
     });
     expect(screen.getByRole("alert").textContent).toContain("Google Maps 地點搜尋尚未啟用");
   });
+  it("stays closed when the search finishes after the reader dismissed it", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify([
+      { provider: "google_places", place_id: "one", name: "東京站" },
+    ]), { status: 200 })));
+    render(<PlacePicker value="東京" confirmed={false} onTextChange={() => undefined} onSelect={() => undefined} />);
+
+    fireEvent.keyDown(screen.getByRole("combobox", { name: "目的地" }), { key: "Escape" });
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(320);
+      await Promise.resolve();
+    });
+
+    expect(screen.queryByRole("option")).toBeNull();
+    expect(screen.getByRole("combobox", { name: "目的地" }).getAttribute("aria-expanded")).toBe("false");
+  });
+
+  it("closes when the reader presses somewhere else on the page", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify([
+      { provider: "google_places", place_id: "one", name: "東京站" },
+    ]), { status: 200 })));
+    render(<PlacePicker value="東京" confirmed={false} onTextChange={() => undefined} onSelect={() => undefined} />);
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(320);
+      await Promise.resolve();
+    });
+    expect(screen.getByRole("option", { name: /東京站/ })).toBeTruthy();
+
+    await act(async () => {
+      fireEvent.pointerDown(document.body);
+      await Promise.resolve();
+    });
+    expect(screen.queryByRole("option")).toBeNull();
+  });
 });

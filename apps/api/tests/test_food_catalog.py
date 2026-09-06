@@ -42,7 +42,8 @@ def test_every_destination_has_an_approved_coordinate_complete_food_area() -> No
     food_areas = [item for item in HOTSPOT_SEEDS if item.category == "food"]
     by_destination = {item.destination_id for item in food_areas}
     assert len(by_destination) == 33
-    assert len(food_areas) == 45
+    # 46 since 六合夜市 moved out of shopping: a night market is where people eat.
+    assert len(food_areas) == 46
     for item in food_areas:
         assert item.latitude is not None
         assert item.longitude is not None
