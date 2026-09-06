@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**28 open · 5 in progress · 0 blocked · 0 in review · 28 done**
+**28 open · 4 in progress · 0 blocked · 1 in review · 28 done**
 
 ## Ready to claim
 
@@ -41,12 +41,13 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Guide backfill searches one locale, so four locales stay empty](open/2026-09-06-multi-locale-guide-backfill.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
 | [Re-seeding never corrects an existing dish name or summary](open/2026-09-06-seed-localization-reconcile.md) | claude-fable-5-1 | 2026-09-06T04:27:50Z | `claude/api-p2-data` |
 | [usage catalog validation rejects everything when web ships ahead of api](open/2026-09-06-usage-catalog-validation-rejects-everything-when.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
-| [旅程天氣改由 MET Norway 供應，Google Weather 退為備援](open/2026-09-06-weather-met-norway.md) | claude-fable-5.1 | 2026-09-06T06:30:56Z | `claude/weather-met-norway` |
 | [food seed counts are hardcoded twelve times and only CI can see them](open/2026-09-06-food-seed-counts-are-hardcoded-twelve.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
 
 ## In review
 
-_Nothing here._
+| Task | Owner | Branch |
+| --- | --- | --- |
+| [旅程天氣改由 MET Norway 供應，Google Weather 退為備援](open/2026-09-06-weather-met-norway.md) | claude-fable-5.1 | `claude/weather-met-norway` |
 
 ## Waiting
 
