@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-leftover-chinese-copy-on-the-search
 title: Leftover Chinese copy on the search and trip pages outside the two components already converted
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T05:52:14Z
 created_at: 2026-09-06T05:10:51Z
 completed_at:
-branch:
+branch: claude/web-leftover-copy
 depends_on: []
 scope:
   - apps/web/components/search-criteria-editor.tsx

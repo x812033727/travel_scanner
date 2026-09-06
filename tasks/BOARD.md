@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**28 open · 4 in progress · 0 blocked · 0 in review · 27 done**
+**27 open · 5 in progress · 0 blocked · 0 in review · 27 done**
 
 ## Ready to claim
 
@@ -22,7 +22,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [營業時間感知排程：AI 排程不把景點排在打烊時段](open/2026-09-06-opening-hours-aware-scheduling.md) | api | `apps/api/app/trips/hours.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/web/components/day-health-strip.tsx` |
 | P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | api | `apps/api/app/trips/routing.py`<br>`apps/api/tests/test_trip_routing.py` |
 | P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/route_planner.py`<br>`apps/api/tests/test_trip_route_planner.py` |
-| P2 | [Leftover Chinese copy on the search and trip pages outside the two components already converted](open/2026-09-06-leftover-chinese-copy-on-the-search.md) | web | `apps/web/components/search-criteria-editor.tsx`<br>`apps/web/components/airbnb-search-panel.tsx`<br>`apps/web/components/trip-weather-panel.tsx`<br>`apps/web/components/route-timeline-link.tsx`<br>`apps/web/components/price-alert-button.tsx`<br>`apps/web/components/saved-items-provider.tsx`<br>`apps/web/lib/api.ts`<br>`apps/web/messages/en/search.json`<br>`apps/web/messages/ja/search.json`<br>`apps/web/messages/ko/search.json`<br>`apps/web/messages/zh-CN/search.json`<br>`apps/web/messages/zh-TW/search.json`<br>`apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/zh-TW/trips.json` |
 | P3 | [註冊關閉頁的小標與 H1 是同一句話](open/2026-09-06-auth-duplicate-heading.md) | web | `apps/web/messages/en/auth.json`<br>`apps/web/messages/ja/auth.json`<br>`apps/web/messages/ko/auth.json`<br>`apps/web/messages/zh-CN/auth.json`<br>`apps/web/messages/zh-TW/auth.json` |
 | P3 | [桌機主導覽文字連結只有 20px 高](open/2026-09-06-desktop-nav-touch-targets.md) | web | `apps/web/components/site-navigation.tsx` |
 | P3 | [首頁精靈步驟標籤在英文 390px 會截字](open/2026-09-06-wizard-step-label-truncation.md) | web | `apps/web/components/search-workbench.tsx` |
@@ -44,6 +43,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Guide backfill searches one locale, so four locales stay empty](open/2026-09-06-multi-locale-guide-backfill.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
 | [Re-seeding never corrects an existing dish name or summary](open/2026-09-06-seed-localization-reconcile.md) | claude-fable-5-1 | 2026-09-06T04:27:50Z | `claude/api-p2-data` |
 | [usage catalog validation rejects everything when web ships ahead of api](open/2026-09-06-usage-catalog-validation-rejects-everything-when.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
+| [Leftover Chinese copy on the search and trip pages outside the two components already converted](open/2026-09-06-leftover-chinese-copy-on-the-search.md) | claude-fable-5-1 | 2026-09-06T05:52:14Z | `claude/web-leftover-copy` |
 | [food seed counts are hardcoded twelve times and only CI can see them](open/2026-09-06-food-seed-counts-are-hardcoded-twelve.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
 
 ## In review
