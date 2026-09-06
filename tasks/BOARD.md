@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**10 open · 0 in progress · 0 blocked · 0 in review · 0 done**
+**18 open · 0 in progress · 0 blocked · 0 in review · 0 done**
 
 ## Ready to claim
 
@@ -13,12 +13,20 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
+| P1 | [Merchant coordinate backlog: 270 of 272 merchants cannot be published](open/2026-09-06-merchant-coordinate-backlog-270-of-272.md) | ops | `apps/api/app/foods/place_matching.py`<br>`apps/api/app/foods/coordinate_queue.py` |
+| P1 | [Most merchants have no first-party page, so nothing can locate them](open/2026-09-06-missing-merchant-sources.md) | api | `apps/api/app/foods/merchant_catalog.py` |
+| P1 | [A failing required check did not stop a merge, and main stayed red](open/2026-09-06-required-checks-block-merge.md) | meta | `.github` |
 | P1 | [行程編輯器 294 句硬編碼繁中未五語系化](open/2026-09-06-trip-editor-i18n.md) | web | `apps/web/components/trip-editor.tsx`<br>`apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/zh-TW/trips.json` |
 | P1 | [搜尋結果頁整頁文案寫死繁中](open/2026-09-06-search-results-i18n.md) | web | `apps/web/components/search-experience.tsx`<br>`apps/web/messages/en/search.json`<br>`apps/web/messages/ja/search.json`<br>`apps/web/messages/ko/search.json`<br>`apps/web/messages/zh-CN/search.json`<br>`apps/web/messages/zh-TW/search.json` |
 | P1 | [分享連結會外洩項目備註與整包 data](open/2026-09-06-share-payload-leaks-notes.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/tests/test_integration_postgres_redis.py` |
+| P2 | [Three hotspots hold a quoted review_status that no filter matches](open/2026-09-06-quoted-review-status-rows.md) | api | `apps/api/migrations/versions` |
+| P2 | [Nine merchant citations are dead, unreachable or not HTML](open/2026-09-06-broken-merchant-citations.md) | api | `apps/api/app/foods/merchant_catalog.py` |
+| P2 | [Guide backfill searches one locale, so four locales stay empty](open/2026-09-06-multi-locale-guide-backfill.md) | api | `apps/api/app/hotspots/guides.py` |
+| P2 | [Re-seeding never corrects an existing dish name or summary](open/2026-09-06-seed-localization-reconcile.md) | api | `apps/api/app/foods/service.py` |
 | P2 | [首頁手機首屏被三張說明列佔滿](open/2026-09-06-home-mobile-first-screen.md) | web | `apps/web/app/[locale]/page.tsx` |
 | P2 | [目的地目錄的國家與興趣標籤未五語系化](open/2026-09-06-destination-catalog-labels-i18n.md) | web | `apps/web/lib/destinations.ts` |
 | P2 | [npm audit 排在 CI 前段，網路不穩就擋掉整輪](open/2026-09-06-npm-audit-ci-position.md) | ops | `.github/workflows/ci.yml` |
+| P3 | [Admin help text tells operators to avoid the model now shipped](open/2026-09-06-stale-gemini-model-help.md) | web | `apps/web/components/admin-settings-panel.tsx` |
 | P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | web | `apps/web/components/admin-settings-panel.tsx`<br>`apps/web/components/admin-hotspots-panel.tsx`<br>`apps/web/components/admin-food-merchants-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/messages/zh-TW/admin.json` |
 | P3 | [註冊關閉頁的小標與 H1 是同一句話](open/2026-09-06-auth-duplicate-heading.md) | web | `apps/web/messages/en/auth.json`<br>`apps/web/messages/ja/auth.json`<br>`apps/web/messages/ko/auth.json`<br>`apps/web/messages/zh-CN/auth.json`<br>`apps/web/messages/zh-TW/auth.json` |
 | P3 | [桌機主導覽文字連結只有 20px 高](open/2026-09-06-desktop-nav-touch-targets.md) | web | `apps/web/components/site-navigation.tsx` |
