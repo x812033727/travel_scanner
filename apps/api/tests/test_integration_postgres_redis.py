@@ -1940,7 +1940,8 @@ async def test_a_shared_trip_can_be_copied_into_the_readers_own_account(
     # loop, and both asyncpg and redis refuse a connection borrowed from a loop that has
     # gone. Start this test on connections of its own.
     await engine.dispose()
-    await get_redis().aclose()
+    # Only drop the cached client: closing it would touch the loop it was made on, which
+    # is the loop that has already gone.
     get_redis.cache_clear()
 
     transport = ASGITransport(app=app)
