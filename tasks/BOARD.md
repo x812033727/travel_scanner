@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**36 open · 0 in progress · 0 blocked · 0 in review · 15 done**
+**34 open · 0 in progress · 0 blocked · 0 in review · 17 done**
 
 ## Ready to claim
 
@@ -15,8 +15,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | P1 | [272 家店家裡只有 2 家有耐久座標，美食目錄幾乎發不出東西](open/2026-09-06-merchant-coordinate-backlog.md) | ops | `apps/api/app/foods/place_matching.py`<br>`apps/api/app/foods/coordinate_queue.py`<br>`apps/web/components/admin-merchant-coordinate-queue.tsx` |
 | P1 | [Most merchants have no first-party page, so nothing can locate them](open/2026-09-06-missing-merchant-sources.md) | api | `apps/api/app/foods/merchant_catalog.py` |
-| P1 | [行程編輯器 294 句硬編碼繁中未五語系化](open/2026-09-06-trip-editor-i18n.md) | web | `apps/web/components/trip-editor.tsx`<br>`apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/zh-TW/trips.json` |
-| P1 | [搜尋結果頁整頁文案寫死繁中](open/2026-09-06-search-results-i18n.md) | web | `apps/web/components/search-experience.tsx`<br>`apps/web/messages/en/search.json`<br>`apps/web/messages/ja/search.json`<br>`apps/web/messages/ko/search.json`<br>`apps/web/messages/zh-CN/search.json`<br>`apps/web/messages/zh-TW/search.json` |
 | P2 | [Nine merchant citations are dead, unreachable or not HTML](open/2026-09-06-broken-merchant-citations.md) | api | `apps/api/app/foods/merchant_catalog.py` |
 | P2 | [Guide backfill searches one locale, so four locales stay empty](open/2026-09-06-multi-locale-guide-backfill.md) | api | `apps/api/app/hotspots/guides.py` |
 | P2 | [Re-seeding never corrects an existing dish name or summary](open/2026-09-06-seed-localization-reconcile.md) | api | `apps/api/app/foods/service.py` |
@@ -65,6 +63,8 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [搜尋結果頁整頁文案寫死繁中](done/2026-09-06-search-results-i18n.md)
+- 2026-09-06 [行程編輯器 294 句硬編碼繁中未五語系化](done/2026-09-06-trip-editor-i18n.md)
 - 2026-09-06 [catalog fallback 被當成 AI 精修呈現給使用者](done/2026-09-06-intent-fallback-honesty.md)
 - 2026-09-06 [意圖列的 diff 與 apply 實際行為不一致](done/2026-09-06-intent-diff-mismatch.md)
 - 2026-09-06 [意圖精修刪除列時連帶清掉使用者輸入的交通時間](done/2026-09-06-intent-route-segment-cascade.md)
@@ -73,5 +73,3 @@ _Nothing here._
 - 2026-09-06 [57 個潮流商圈只存在正式機資料庫](done/2026-09-06-trend-food-areas-not-seeded.md)
 - 2026-09-06 [把潮流街區的匯入腳本收進 repo](done/2026-09-06-trend-import-scripts.md)
 - 2026-09-06 [延長行程會摧毀已填的航班訂位且不提示](done/2026-09-06-reschedule-flight-anchor-loss.md)
-- 2026-09-06 [分享連結會外洩項目備註與整包 data](done/2026-09-06-share-payload-leaks-notes.md)
-- 2026-09-06 [CI should fail a branch that adds a second alembic head](done/2026-09-06-ci-should-fail-a-branch-that.md)
