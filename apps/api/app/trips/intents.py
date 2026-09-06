@@ -33,10 +33,11 @@ from fastapi import APIRouter, Depends, Header
 from pydantic import BaseModel, Field, field_validator, model_validator
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.ai.itinerary import AIPlannerCandidate
+from app.admin.service import load_runtime_settings
+from app.ai.itinerary import AIPlannerCandidate, planner_providers
 from app.auth.service import CurrentUser
 from app.db import get_session
-from app.infra import enforce_named_rate_limit, get_redis
+from app.infra import enforce_named_rate_limit, get_redis, refund_named_rate_limit
 from app.models import TripPlanItem
 from app.problems import AppError
 from app.trips.itinerary import ItineraryItem
@@ -58,6 +59,7 @@ router = APIRouter(prefix="/trips", tags=["trips"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 
 INTENT_MAX_LENGTH = 400
+UNAVAILABLE_DETAIL = "AI 規劃暫時無法使用，這次沒有讀到你的描述，請稍後再試"
 # Shared with /itinerary/preview: an intent preview costs the same provider call
 # as a planner preview, so the two draw on one hourly budget.
 INTENT_PREVIEW_LIMIT = 12
@@ -264,9 +266,7 @@ def build_intent_diff(
     # counted separately: "try a different day" is false advice when it is the
     # merchant pool that ran out.
     on_trip = {
-        str(item.data.get("candidate_key"))
-        for item in existing
-        if item.data.get("candidate_key")
+        str(item.data.get("candidate_key")) for item in existing if item.data.get("candidate_key")
     }
     used = {
         str(item.data.get("candidate_key"))
@@ -369,6 +369,12 @@ async def create_trip_intent(
     # run must not spend a slot of the hourly budget /itinerary/preview draws
     # on for the user's other trips.
     trip = await owned_trip(session, user.id, trip_id)
+    # A planner that is switched off, or pinned to the catalog fallback, cannot
+    # read the sentence at all. Refuse before either limiter counts this call, so
+    # an administrator flipping ai_planner_mode does not also lock the traveller
+    # out of /itinerary/preview for an hour.
+    if not planner_providers(await load_runtime_settings(session)):
+        raise AppError(503, "ai_planner_unavailable", UNAVAILABLE_DETAIL)
     await enforce_named_rate_limit(
         "ai-itinerary-intent-trip",
         f"{user.id}:{trip_id}",
@@ -393,12 +399,12 @@ async def create_trip_intent(
         # The catalog fallback re-sorts approved places by coordinate and pace;
         # it never reads `notes`, so the sentence had no effect at all.
         # Shipping that as "your refinement" is the dishonesty this feature
-        # exists to avoid, and it is not appliable either.
-        raise AppError(
-            503,
-            "ai_planner_unavailable",
-            "AI 規劃暫時無法使用，這次沒有讀到你的描述，請稍後再試",
-        )
+        # exists to avoid, and it is not appliable either. Every provider on the
+        # roster failed after both limiters had counted this call; the traveller
+        # got nothing, so the slots go back.
+        await refund_named_rate_limit("ai-itinerary-intent-trip", f"{user.id}:{trip_id}")
+        await refund_named_rate_limit("ai-itinerary-preview-user", str(user.id))
+        raise AppError(503, "ai_planner_unavailable", UNAVAILABLE_DETAIL)
     result, cached_payload = await build_itinerary_preview_envelope(
         session,
         trip,
@@ -422,8 +428,9 @@ async def create_trip_intent(
         "diff": diff,
         "exhaustion": exhaustion,
         # Apply reads this to charge the refinement operation instead of a
-        # first generation; anything it does not recognise falls back.
-        "usage_operation": intent_usage_operation(payload.scope),
+        # first generation, and re-derives it from the write it performs;
+        # anything it does not recognise falls back to the paid operation.
+        "usage_operation": intent_usage_operation(payload.scope, refinable=bool(plan.replaceable)),
     }
     result = {**result, **extras}
     await redis.set(

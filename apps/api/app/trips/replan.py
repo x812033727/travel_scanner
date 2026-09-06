@@ -248,11 +248,7 @@ def carried_values(stored: TripPlanItem | None, planned: ItineraryItem) -> dict[
                 "coordinate_verified_at": stored.coordinate_verified_at,
                 "data": {
                     **planned.data,
-                    **{
-                        key: value
-                        for key, value in stored.data.items()
-                        if key in PLACE_DATA_KEYS
-                    },
+                    **{key: value for key, value in stored.data.items() if key in PLACE_DATA_KEYS},
                 },
             }
         )
@@ -380,9 +376,7 @@ def project_meal_writes(
     return writes
 
 
-def projected_titles(
-    preserved: list[TripPlanItem], meals: list[MealWrite]
-) -> dict[UUID, str]:
+def projected_titles(preserved: list[TripPlanItem], meals: list[MealWrite]) -> dict[UUID, str]:
     """Titles the preserved rows carry once the meal slots have been rewritten.
 
     Apply builds its duplicate-title guard from the *post-sync* titles, so the
@@ -407,9 +401,7 @@ def apply_meal_writes(writes: list[MealWrite]) -> None:
     """Rewrite the projected meal slots in place, exactly as projected."""
     for write in writes:
         row, meal = write.row, write.meal
-        kept = {
-            key: value for key, value in row.data.items() if key not in MEAL_LOCATION_DATA_KEYS
-        }
+        kept = {key: value for key, value in row.data.items() if key not in MEAL_LOCATION_DATA_KEYS}
         row.title = write.title
         row.notes = write.notes
         if meal is not None:
@@ -423,9 +415,7 @@ def apply_meal_writes(writes: list[MealWrite]) -> None:
             row.data = {**kept, **meal.data, "meal_selection_source": "ai"}
             continue
         row.location_name = None
-        row.names_json = item_names(
-            title=MEAL_PLACEHOLDER_LABELS[row.system_role or "dinner"]
-        )
+        row.names_json = item_names(title=MEAL_PLACEHOLDER_LABELS[row.system_role or "dinner"])
         row.latitude = None
         row.longitude = None
         row.provider_place_id = None
@@ -499,9 +489,7 @@ def _pair_rows(
                 planned=planned,
                 carried=carried,
                 changed=changed,
-                reused=(
-                    stored is not None and not changed and same_slot(stored, planned, zone)
-                ),
+                reused=(stored is not None and not changed and same_slot(stored, planned, zone)),
             )
         )
     pairs.extend(RowPair(stored=row, planned=None) for row in replaceable if row.id not in matched)
@@ -554,15 +542,12 @@ def build_replan_write(
     ]
     meals = project_meal_writes(preserved, generated_meals, target_date)
     titles = projected_titles(preserved, meals)
-    preserved_keys = {
-        (row.day_date, (titles.get(row.id) or "").casefold()) for row in preserved
-    }
+    preserved_keys = {(row.day_date, (titles.get(row.id) or "").casefold()) for row in preserved}
     generated = [
         item
         for day in itinerary
         for item in day.items
-        if item.system_role is None
-        and (item.day_date, item.title.casefold()) not in preserved_keys
+        if item.system_role is None and (item.day_date, item.title.casefold()) not in preserved_keys
     ]
     return ReplanWrite(
         replaceable=replaceable,

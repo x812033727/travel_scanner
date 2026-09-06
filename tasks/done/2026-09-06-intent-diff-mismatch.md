@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-intent-diff-mismatch
 title: 意圖列的 diff 與 apply 實際行為不一致
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T03:09:37Z
 created_at: 2026-09-06T00:55:05Z
-completed_at:
+completed_at: 2026-09-06T03:25:12Z
 branch: claude/intent-bar-fixes
 depends_on: []
 scope:
@@ -35,17 +35,17 @@ scope:
 
 ## Definition of done
 
-- [ ] 對任何一次精修，diff 報告的內容與 apply 實際執行的刪除／新增／覆寫完全一致。
-- [ ] 被標為「維持不變」的項目，套用後使用者輸入的每一個值都還在（或該列根本沒被重寫）。
-- [ ] 有測試會在 diff 與 apply 不一致時失敗 —— 不是分別測兩邊，是交叉比對同一個輸入。
+- [x] 對任何一次精修，diff 報告的內容與 apply 實際執行的刪除／新增／覆寫完全一致。
+- [x] 被標為「維持不變」的項目，套用後使用者輸入的每一個值都還在（或該列根本沒被重寫）。
+- [x] 有測試會在 diff 與 apply 不一致時失敗 —— 不是分別測兩邊，是交叉比對同一個輸入。
 
 ## Steps
 
-- [ ] 讀 `wip/intent-bar-blocker-fixes` 分支，round 1 已經做過一次完整的修法（見 Notes），先判斷要沿用還是重做。
-- [ ] 讓 diff 與 apply 共用同一份「這次會寫入什麼」的描述，而不是各自算一遍。
-- [ ] 決定並實作：被重新提出的項目，使用者的編輯是帶過去（carry forward）還是誠實回報為變更。
-- [ ] 餐廳列的比對要涵蓋 location_name、provider_place_id、座標，不只標題。
-- [ ] 加交叉比對測試：同一輸入下建 diff、再跑 apply 的列級路徑，兩者不一致就失敗。
+- [x] 讀 `wip/intent-bar-blocker-fixes` 分支，round 1 已經做過一次完整的修法（見 Notes），先判斷要沿用還是重做。
+- [x] 讓 diff 與 apply 共用同一份「這次會寫入什麼」的描述，而不是各自算一遍。
+- [x] 決定並實作：被重新提出的項目，使用者的編輯是帶過去（carry forward）還是誠實回報為變更。
+- [x] 餐廳列的比對要涵蓋 location_name、provider_place_id、座標，不只標題。
+- [x] 加交叉比對測試：同一輸入下建 diff、再跑 apply 的列級路徑，兩者不一致就失敗。
 
 ## How to verify
 
@@ -58,6 +58,18 @@ cd apps/api
 用意圖列精修同一天，確認 diff 若說該項目不變，套用後備註和停留時間都還在。
 
 ## Notes
+
+**2026-09-06 完成（與其他三張意圖列任務同一個 PR）。** 以 `wip/intent-bar-blocker-fixes`（75d6103）
+cherry-pick 到當前 main 為底：`apps/api/app/trips/replan.py` 的 `build_replan_write()` 是 diff 與 apply 唯一的
+「這次會寫入什麼」描述，`build_intent_diff`、`_replan_records`、`apply_meal_writes`、`reuse_rows` 都讀它。
+使用者的編輯（備註、停留時間＋重算 end_time、標題、確認過的地點、is_skipped）帶到重新提出的列上；
+帶不過去的欄位進 `changed` 群組並列出欄位名，`unchanged_count` 只算真的不變的列。
+測試 `apply_and_check()` 先建 diff、再跑 apply 自己的列級路徑（含 `reuse_rows`），不一致就失敗。
+
+接 main 時補了 wip 沒有的兩件事：(1) main 在 #168 之後把餐食列的五語系 `names_json` 加進
+`_sync_ai_meal_slots`／`unset_meal_title`，這兩個函式已搬進 replan.py，所以 `apply_meal_writes`、
+`apply_carried_values`、`reuse_rows` 現在都維護 `names_json`（改名／自選地點時比照 `apply_item_request` 丟掉對應的目錄標籤）；
+(2) round 2 留下的 `_hhmm`／`_zone` 是 `replan.wall_clock`／`trip_zone`。
 
 **半成品分支：`wip/intent-bar-blocker-fixes`（commit `75d6103`，不可合併，不會 build）。**
 

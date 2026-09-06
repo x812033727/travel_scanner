@@ -44,6 +44,7 @@ from app.trips.replan import (
     build_replan_write,
     projected_meal_titles,
     replaceable_ai_items,
+    reuse_rows,
     traveller_notes,
     trip_zone,
     unset_meal_title,
@@ -65,6 +66,7 @@ def _load_migration(name: str):
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
 
 TOKYO = ZoneInfo("Asia/Tokyo")
 TRIP_START = date(2026, 11, 10)
@@ -270,21 +272,29 @@ def apply_and_check(
     )
     before = {item.id: _snapshot(item) for item in existing}
     apply_meal_writes(plan.meals)
+    kept = reuse_rows(plan.pairs)
     records = _replan_records(TRIP_ID, plan)
 
-    assert (
-        len(diff["removed"])
-        + len(diff["moved"])
-        + len(diff["changed"])
-        + diff["unchanged_count"]
-        == len(plan.replaceable)
-    ), "every replaceable row must land in exactly one group"
+    assert len(diff["removed"]) + len(diff["moved"]) + len(diff["changed"]) + diff[
+        "unchanged_count"
+    ] == len(plan.replaceable), "every replaceable row must land in exactly one group"
 
     zone = trip_zone("Asia/Tokyo")
     written = [pair for pair in plan.pairs if pair.planned is not None]
-    assert len(written) == len(records)
+    assert len(written) == len(records) + len(kept)
+    rebuilt = iter(records)
     unchanged = 0
-    for pair, record in zip(written, records, strict=True):
+    for pair in written:
+        if pair.reused:
+            # Kept in place: the very same row, the very same id, nothing the
+            # traveller sees rewritten. This is what keeps its route segments.
+            assert pair.stored is not None and pair.stored in kept
+            assert _snapshot(pair.stored) == before[pair.stored.id], (
+                f"{pair.stored.title} is kept in place, but apply rewrites it"
+            )
+            unchanged += 1
+            continue
+        record = next(rebuilt)
         if pair.stored is None:
             continue
         same_slot = pair.stored.day_date == pair.planned.day_date and wall_clock(
@@ -298,9 +308,7 @@ def apply_and_check(
         )
     assert unchanged == diff["unchanged_count"]
 
-    reported = {
-        (entry["day_date"], entry["system_role"]): entry for entry in diff["meals"]
-    }
+    reported = {(entry["day_date"], entry["system_role"]): entry for entry in diff["meals"]}
     for write in plan.meals:
         day = write.row.day_date.isoformat() if write.row.day_date else None
         entry = reported.get((day, write.row.system_role))
@@ -329,9 +337,7 @@ def test_intent_request_caps_length_collapses_whitespace_and_scopes_the_day() ->
     with pytest.raises(ValidationError):
         TripIntentRequest(version=1, text="走路少一點", scope="day")
 
-    trip_scope = TripIntentRequest(
-        version=1, text="走路少一點", scope="trip", day_date=MID_DAY
-    )
+    trip_scope = TripIntentRequest(version=1, text="走路少一點", scope="trip", day_date=MID_DAY)
     assert trip_scope.day_date is None
 
     # The target day is optional; omitting it re-plans the whole trip.
@@ -373,9 +379,7 @@ def test_compose_planner_notes_drops_blanks() -> None:
 def test_the_replay_key_covers_the_day_the_scope_and_the_version() -> None:
     """A client reusing one key for two days must not be served the first day's plan."""
     base = TripIntentRequest(version=3, text="走路少一點", scope="day", day_date=MID_DAY)
-    other_day = TripIntentRequest(
-        version=3, text="走路少一點", scope="day", day_date=EARLY_DAY
-    )
+    other_day = TripIntentRequest(version=3, text="走路少一點", scope="day", day_date=EARLY_DAY)
     whole_trip = TripIntentRequest(version=3, text="走路少一點", scope="trip")
     newer = TripIntentRequest(version=4, text="走路少一點", scope="day", day_date=MID_DAY)
     keys = {
@@ -449,8 +453,7 @@ def test_whole_trip_planning_is_unchanged_without_an_explicit_span() -> None:
         request, AIItineraryDraft(summary="空草稿", days=[AIDraftDay(date=TRIP_START, items=[])])
     )
     counts = [
-        len([item for item in day.items if item.slot_type == "activity"])
-        for day in normalized.days
+        len([item for item in day.items if item.slot_type == "activity"]) for day in normalized.days
     ]
     assert counts == [1, 2, 2, 2, 1]
 
@@ -463,9 +466,7 @@ def test_diff_reports_removed_added_and_moved_against_apply_rules() -> None:
         row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00"),
         row(title="東京景點 1", candidate_key="hotspot:1", start_time="13:30", position=1),
     ]
-    planning = planning_from(
-        [(MID_DAY, "hotspot:1", "10:00"), (MID_DAY, "hotspot:4", "13:30")]
-    )
+    planning = planning_from([(MID_DAY, "hotspot:1", "10:00"), (MID_DAY, "hotspot:4", "13:30")])
     diff, exhaustion, _ = apply_and_check(existing, planning)
 
     assert [entry["candidate_key"] for entry in diff["removed"]] == ["hotspot:0"]
@@ -515,9 +516,7 @@ def test_diff_never_offers_a_row_apply_would_drop_as_a_duplicate_title() -> None
         row(title="東京景點 3", candidate_key="hotspot:3", locked=True),
         row(title="東京景點 0", candidate_key="hotspot:0", position=1),
     ]
-    planning = planning_from(
-        [(MID_DAY, "hotspot:0", "10:00"), (MID_DAY, "hotspot:3", "13:30")]
-    )
+    planning = planning_from([(MID_DAY, "hotspot:0", "10:00"), (MID_DAY, "hotspot:3", "13:30")])
     diff, _, _ = apply_and_check(existing, planning)
 
     assert [entry["candidate_key"] for entry in diff["added"]] == []
@@ -560,7 +559,9 @@ def test_a_stop_the_planner_keeps_does_not_quietly_lose_the_travellers_own_edits
 
     assert diff["unchanged_count"] == 1
     assert diff["changed"] == []
-    [record] = records
+    # Nothing is rebuilt: the row is refreshed in place and keeps its id.
+    assert records == []
+    record = stored
     assert record.duration_minutes == 180
     assert record.notes == "帶傘、先去雷門那側入口"
     assert record.location_name == "淺草寺 雷門（南側入口）"
@@ -576,9 +577,7 @@ def test_a_moved_stop_carries_the_travellers_edits_to_its_new_slot() -> None:
     stored = traveller_edited(
         row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00")
     )
-    planning = planning_from(
-        [(MID_DAY, "hotspot:1", "10:00"), (MID_DAY, "hotspot:0", "13:30")]
-    )
+    planning = planning_from([(MID_DAY, "hotspot:1", "10:00"), (MID_DAY, "hotspot:0", "13:30")])
     diff, _, records = apply_and_check([stored], planning)
 
     assert [entry["candidate_key"] for entry in diff["moved"]] == ["hotspot:0"]
@@ -637,9 +636,7 @@ def test_meals_are_reported_as_changed_never_as_added_or_removed() -> None:
             position=1,
         ),
     ]
-    planning = planning_from(
-        [(MID_DAY, "merchant:0", "12:00"), (MID_DAY, "merchant:1", "18:30")]
-    )
+    planning = planning_from([(MID_DAY, "merchant:0", "12:00"), (MID_DAY, "merchant:1", "18:30")])
     diff, _, _ = apply_and_check(existing, planning)
 
     assert diff["added"] == []
@@ -737,9 +734,7 @@ def test_exhaustion_distinguishes_an_unchanged_plan_from_a_spent_pool() -> None:
         row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00"),
         row(title="東京景點 1", candidate_key="hotspot:1", start_time="13:30", position=1),
     ]
-    planning = planning_from(
-        [(MID_DAY, "hotspot:0", "10:00"), (MID_DAY, "hotspot:1", "13:30")]
-    )
+    planning = planning_from([(MID_DAY, "hotspot:0", "10:00"), (MID_DAY, "hotspot:1", "13:30")])
     diff, exhaustion, _ = apply_and_check(existing, planning)
 
     assert diff["has_changes"] is False
@@ -767,7 +762,7 @@ def test_a_spent_pool_is_reported_even_when_the_replan_merely_reorders() -> None
 
 
 def test_an_empty_merchant_pool_is_reported_separately_from_the_hotspot_pool() -> None:
-    """"Try a different day" is false advice when it is the restaurants that ran out."""
+    """ "Try a different day" is false advice when it is the restaurants that ran out."""
     pool = [*[candidate(index) for index in range(4)], candidate(0, kind="merchant")]
     existing = [
         row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00"),
@@ -815,20 +810,41 @@ def test_refine_is_a_known_operation_so_its_price_is_an_admin_dial() -> None:
     assert REFINE_OPERATION in USAGE_OPERATIONS
 
 
-def test_only_a_day_scoped_intent_is_priced_as_a_refinement() -> None:
-    """A whole-trip intent is a full re-plan; it charges what the paid path charges."""
-    assert intent_usage_operation("day") == REFINE_OPERATION
-    assert intent_usage_operation("trip") == GENERATE_OPERATION == "ai_itinerary_generation"
+def test_only_a_day_scoped_nudge_of_an_existing_plan_is_priced_as_a_refinement() -> None:
+    """Two conditions make a sentence a nudge: one day, and an AI plan already on it.
+
+    A whole-trip intent is a full re-plan and charges what the paid path charges;
+    a day with nothing AI-made on it is being planned for the first time, which is
+    the paid single-day generation whatever sentence comes with it — otherwise a
+    spent account could assemble a trip one free word per day."""
+    assert intent_usage_operation("day", refinable=True) == REFINE_OPERATION
+    assert intent_usage_operation("day", refinable=False) == GENERATE_OPERATION
+    assert intent_usage_operation("trip", refinable=True) == GENERATE_OPERATION
+    assert GENERATE_OPERATION == "ai_itinerary_generation"
 
 
-def test_apply_charges_the_operation_the_envelope_names_and_falls_back_safely() -> None:
-    assert apply_usage_operation({"usage_operation": "ai_itinerary_refine"}) == (
-        "ai_itinerary_refine"
+def test_apply_re_derives_the_price_from_the_write_and_never_trusts_the_envelope() -> None:
+    refine = {"usage_operation": "ai_itinerary_refine", "scope": "day"}
+    assert apply_usage_operation(refine, refinable=True) == "ai_itinerary_refine"
+    # The envelope may say refine; a day with no AI plan to nudge, or a whole-trip
+    # scope, is a generation by another name.
+    assert apply_usage_operation(refine, refinable=False) == "ai_itinerary_generation"
+    assert (
+        apply_usage_operation({**refine, "scope": "trip"}, refinable=True)
+        == "ai_itinerary_generation"
     )
-    # Envelopes written before this key existed, and anything unrecognised.
-    assert apply_usage_operation({}) == "ai_itinerary_generation"
-    assert apply_usage_operation({"usage_operation": None}) == "ai_itinerary_generation"
-    assert apply_usage_operation({"usage_operation": "free_lunch"}) == "ai_itinerary_generation"
+    # Envelopes written before either key existed, and anything unrecognised.
+    assert apply_usage_operation({}, refinable=True) == "ai_itinerary_generation"
+    assert apply_usage_operation({"usage_operation": None}, refinable=True) == (
+        "ai_itinerary_generation"
+    )
+    assert apply_usage_operation({"usage_operation": "free_lunch"}, refinable=True) == (
+        "ai_itinerary_generation"
+    )
+    assert (
+        apply_usage_operation({"usage_operation": "ai_itinerary_refine"}, refinable=True)
+        == "ai_itinerary_generation"
+    ), "an envelope without a scope is not a day nudge"
 
 
 def test_refine_seed_migration_chains_from_the_previous_head() -> None:
@@ -901,10 +917,19 @@ def _stub_endpoint(
     planning: AIPlanningResult,
     existing: list[TripPlanItem],
     order: list[str] | None = None,
+    providers: list[object] | None = None,
 ) -> fakeredis.aioredis.FakeRedis:
     redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
     trip = _trip()
     calls = order if order is not None else []
+    roster = [object()] if providers is None else providers
+
+    async def fake_settings(_session: object) -> object:
+        calls.append("runtime_settings")
+        return object()
+
+    async def fake_refund(namespace: str, _identifier: str) -> None:
+        calls.append(f"refund:{namespace}")
 
     async def fake_owned_trip(_session: object, _user_id: UUID, _trip_id: UUID) -> TripPlan:
         calls.append("owned_trip")
@@ -931,6 +956,9 @@ def _stub_endpoint(
     monkeypatch.setattr(intents_module, "get_redis", lambda: redis)
     monkeypatch.setattr(intents_module, "owned_trip", fake_owned_trip)
     monkeypatch.setattr(intents_module, "enforce_named_rate_limit", fake_limit)
+    monkeypatch.setattr(intents_module, "refund_named_rate_limit", fake_refund)
+    monkeypatch.setattr(intents_module, "load_runtime_settings", fake_settings)
+    monkeypatch.setattr(intents_module, "planner_providers", lambda _settings: roster)
     monkeypatch.setattr(intents_module, "_build_ai_planning", fake_planning)
     monkeypatch.setattr(intents_module, "build_itinerary_preview_envelope", fake_envelope)
     monkeypatch.setattr(intents_module, "load_items", fake_load_items)
@@ -965,6 +993,19 @@ async def test_a_day_intent_is_free_and_a_whole_trip_intent_is_not(
         TripIntentRequest(version=3, text="走路少一點", scope="trip"), key="idempotency-key-2"
     )
     assert whole["usage_operation"] == GENERATE_OPERATION
+
+    # A day that holds no AI plan yet is planned for the first time: paid, whatever
+    # the sentence says.
+    _stub_endpoint(
+        monkeypatch,
+        planning=planning_from([(EARLY_DAY, "hotspot:4", "10:00")]),
+        existing=existing,
+    )
+    first_time = await _post(
+        TripIntentRequest(version=3, text="走路少一點", day_date=EARLY_DAY),
+        key="idempotency-key-3",
+    )
+    assert first_time["usage_operation"] == GENERATE_OPERATION
 
 
 @pytest.mark.asyncio
@@ -1016,7 +1057,52 @@ async def test_a_request_that_never_runs_does_not_spend_the_shared_hourly_budget
     )
     await _post(TripIntentRequest(version=3, text="走路少一點", day_date=MID_DAY))
 
-    assert order == ["owned_trip", "ai-itinerary-intent-trip", "ai-itinerary-preview-user"]
+    assert order == [
+        "owned_trip",
+        "runtime_settings",
+        "ai-itinerary-intent-trip",
+        "ai-itinerary-preview-user",
+    ]
+
+
+@pytest.mark.asyncio
+async def test_a_switched_off_planner_is_refused_before_any_limiter_counts_the_call(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """ai_planner_mode=fallback or disabled: nothing could read the sentence, and the
+    refusal must not cost an hour of the budget /itinerary/preview shares."""
+    order: list[str] = []
+    _stub_endpoint(
+        monkeypatch,
+        planning=planning_from([(MID_DAY, "hotspot:4", "10:00")]),
+        existing=[],
+        order=order,
+        providers=[],
+    )
+    with pytest.raises(AppError) as raised:
+        await _post(TripIntentRequest(version=3, text="走路少一點", day_date=MID_DAY))
+    assert raised.value.status == 503
+    assert raised.value.code == "ai_planner_unavailable"
+    assert order == ["owned_trip", "runtime_settings"]
+
+
+@pytest.mark.asyncio
+async def test_a_provider_outage_after_the_limiters_gives_both_slots_back(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    order: list[str] = []
+    _stub_endpoint(
+        monkeypatch,
+        planning=planning_from(
+            [(MID_DAY, "hotspot:4", "10:00")], status="fallback", provider="catalog"
+        ),
+        existing=[row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00")],
+        order=order,
+    )
+    with pytest.raises(AppError) as raised:
+        await _post(TripIntentRequest(version=3, text="這天下雨，改室內", day_date=MID_DAY))
+    assert raised.value.status == 503
+    assert order[-2:] == ["refund:ai-itinerary-intent-trip", "refund:ai-itinerary-preview-user"]
 
 
 @pytest.mark.asyncio
@@ -1035,6 +1121,27 @@ async def test_reusing_one_idempotency_key_for_another_day_is_not_a_replay(
 
     assert replay["preview_id"] == first["preview_id"]
     assert other_day["preview_id"] != first["preview_id"]
+
+
+def test_an_unchanged_stop_keeps_its_row_so_its_route_segments_survive() -> None:
+    """trip_route_segments.from_item_id / to_item_id cascade on delete. A stop the
+    diff calls unchanged must therefore keep its primary key — refreshed in place,
+    never deleted and re-inserted — or a hand-typed travel time between two
+    untouched stops vanishes under a line promising nothing changed."""
+    stored = [
+        row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00"),
+        row(title="東京景點 1", candidate_key="hotspot:1", start_time="14:00"),
+    ]
+    ids = [item.id for item in stored]
+    planning = planning_from([(MID_DAY, "hotspot:0", "10:00"), (MID_DAY, "hotspot:1", "14:00")])
+    diff, _, records = apply_and_check(stored, planning)
+    assert diff["unchanged_count"] == 2
+    assert records == [], "nothing is rebuilt when nothing changed"
+    plan = build_replan_write(stored, planning.itinerary, MID_DAY)
+    assert [pair.reused for pair in plan.pairs] == [True, True]
+    kept = reuse_rows(plan.pairs)
+    assert [item.id for item in kept] == ids
+    assert all(item is original for item, original in zip(kept, stored, strict=True))
 
 
 def test_replaceable_split_is_the_set_apply_deletes() -> None:
