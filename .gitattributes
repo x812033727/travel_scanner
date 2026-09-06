@@ -1,0 +1,25 @@
+# Every text file is stored with LF, and checked out with LF on every platform.
+#
+# The development machines are Windows. Without this file an editor that saves CRLF
+# turns a three-line change into a whole-file rewrite, and the next merge reports a
+# 3,000-line conflict that is really whitespace (trip-editor.tsx, PR #168). Pinning
+# eol=lf keeps the working tree identical to the repository on Windows too, so the
+# same file cannot flip its line endings on the way in.
+* text=auto eol=lf
+
+# Binary formats the repository holds now or is likely to gain. Marking them keeps
+# git from ever trying to normalise or diff them as text.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.dump binary

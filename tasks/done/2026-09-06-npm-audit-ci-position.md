@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-npm-audit-ci-position
 title: npm audit 排在 CI 前段，網路不穩就擋掉整輪
-status: open
+status: done
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T02:23:45Z
 created_at: 2026-09-06T00:53:24Z
-completed_at:
-branch:
+completed_at: 2026-09-06T02:28:31Z
+branch: claude/board-warmup
 depends_on:
   - 2026-09-06-required-checks-block-merge
 scope:
@@ -36,18 +36,18 @@ scope:
 
 ## Definition of done
 
-- [ ] registry 暫時不可用時，lint 與測試仍會跑完並回報真實結果。
-- [ ] 稽核失敗仍然看得見（不是靜靜吞掉）。
-- [ ] 一次真實 CI 跑過確認順序生效。
+- [x] registry 暫時不可用時，lint 與測試仍會跑完並回報真實結果。
+- [x] 稽核失敗仍然看得見（不是靜靜吞掉）。
+- [x] 一次真實 CI 跑過確認順序生效。
 
 ## Steps
 
-- [ ] 三選一（建議由上到下）：
-  - [ ] 把 `npm audit` 移到 lint／test **之後**；
-  - [ ] 或拆成獨立 job，與 web job 平行，失敗不擋合併（`continue-on-error: true` + 
+- [x] 三選一（建議由上到下）：
+  - [ ] 把 `npm audit` 移到 lint／test **之後**；（未採用）
+  - [x] 或拆成獨立 job，與 web job 平行，失敗不擋合併（`continue-on-error: true` + 
         用 job summary 呈現）；
-  - [ ] 或加 `--registry` 重試包裝，只在連續失敗才紅。
-- [ ] 若採 `continue-on-error`，要確認結果在 PR 上仍看得到，不要變成沒人看的綠。
+  - [ ] 或加 `--registry` 重試包裝，只在連續失敗才紅。（未採用）
+- [x] 若採 `continue-on-error`，要確認結果在 PR 上仍看得到，不要變成沒人看的綠。
 
 ## How to verify
 
@@ -55,6 +55,13 @@ scope:
 （`npm audit --registry=https://127.0.0.1:1`）確認 lint／test 還是跑完。
 
 ## Notes
+
+**2026-09-06 結案：這張立案時已經做完了。** commit 53df465（2026-09-04，「ci: 別讓 npm registry 的抖動
+擋住整條前端管線」）就是第二個選項：`ci.yml` 的 `npm audit` 步驟標成 `continue-on-error: true`
+（advisory，步驟名稱寫明「enforced by npm-audit.yml」），真正擋人的稽核搬到獨立的 `.github/workflows/npm-audit.yml`，
+每天 03:17 UTC 跑一次、可 `workflow_dispatch` 重試。之後 #170 到 #183 的 web job 都是這個順序在跑，
+所以「一次真實 CI 跑過」也已成立。任務內文引用的行號（47 行 `npm audit` 在 lint 之前）是 53df465 之前的檔案。
+相依的 `2026-09-06-required-checks-block-merge` 仍未完成，這張用 `--force` 認領，因為它不需要那張的任何產出。
 
 這是 2026-09-04～09-06 一連串 UX PR（#148、#150、#156、#158、#160、#161、#173、#174、#175、#177）
 期間反覆遇到的摩擦，不是新發現的問題，只是一直沒有人動它。

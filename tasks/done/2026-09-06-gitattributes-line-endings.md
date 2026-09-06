@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-gitattributes-line-endings
 title: repo 沒有 .gitattributes，CRLF 混入造成整檔衝突
-status: open
+status: done
 priority: P2
 area: meta
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T02:23:45Z
 created_at: 2026-09-06T00:54:02Z
-completed_at:
-branch:
+completed_at: 2026-09-06T02:28:31Z
+branch: claude/board-warmup
 depends_on: []
 scope:
   - .gitattributes
@@ -28,15 +28,15 @@ scope:
 
 ## Definition of done
 
-- [ ] 倉庫根目錄有 `.gitattributes`，文字檔在倉庫內一律以 LF 存放。
-- [ ] 之後在 Windows 上編輯並提交，不會再把整個檔案的換行符翻掉。
+- [x] 倉庫根目錄有 `.gitattributes`，文字檔在倉庫內一律以 LF 存放。
+- [x] 之後在 Windows 上編輯並提交，不會再把整個檔案的換行符翻掉。
 
 ## Steps
 
-- [ ] 新增 `.gitattributes`，至少涵蓋 `* text=auto eol=lf`，並對真正的二進位副檔名
+- [x] 新增 `.gitattributes`，至少涵蓋 `* text=auto eol=lf`，並對真正的二進位副檔名
       標 `binary`（圖片、字型、`.ico`、`.png`、`.woff2` 之類）。
-- [ ] 確認需要 CRLF 的檔案（如果有 `.bat`／`.cmd`）另外標 `eol=crlf`。
-- [ ] 檢查倉庫裡現有的檔案有沒有已經是 CRLF 的（見下方指令），有的話一次正規化。
+- [x] 確認需要 CRLF 的檔案（如果有 `.bat`／`.cmd`）另外標 `eol=crlf`。
+- [x] 檢查倉庫裡現有的檔案有沒有已經是 CRLF 的（見下方指令），有的話一次正規化。
 
 ## How to verify
 
@@ -48,6 +48,13 @@ git add --renormalize . && git status --short     # 正規化後應該沒有意�
 之後在 Windows 上改一個 `.tsx` 存檔提交，`git show --stat` 只應該顯示實際改動的行數。
 
 ## Notes
+
+**2026-09-06 完成。** `.gitattributes` 是 `* text=auto eol=lf` 加上倉庫實際有的二進位副檔名
+（png、ico，以及未來可能出現的 jpg/webp/woff/woff2/ttf/pdf）。倉庫裡沒有 `.bat`／`.cmd`／`.ps1`，
+所以沒有 CRLF 例外。`git ls-files --eol` 在改之前只有 4 個文字檔是 `i/crlf`：
+`apps/api/app/hotspots/kanto_expansion_bootstrap.json`、`apps/web/components/admin-foods-panel.test.tsx`、
+`docs/planning-flow-spec.md`、`tools/e2e-runtime-api.mjs`，`git add --renormalize .` 一次改成 LF，
+diff 只有換行符（`git diff --stat` 會顯示整檔，但 `git diff --ignore-cr-at-eol` 是空的）。
 
 當時的判斷方式，留給下次遇到「整檔衝突」時比對：
 
