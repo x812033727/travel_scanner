@@ -5,9 +5,12 @@ import { useLocale, useTranslations } from "next-intl";
 import { FormEvent, KeyboardEvent, TouchEvent, useEffect, useRef, useState } from "react";
 import { api } from "@/lib/api";
 import { HotspotRestaurantsPanel } from "@/components/hotspot-restaurants-panel";
+import { HotspotThemeBadges, HotspotThemeChips } from "@/components/hotspot-theme-chips";
 import { useSavedItems } from "@/components/saved-items-provider";
 import { TravelCardActions } from "@/components/travel-card-actions";
 import { Link, usePathname } from "@/i18n/navigation";
+import { HOTSPOT_CATEGORY_CODES } from "@/lib/hotspot-categories";
+import { type HotspotTheme, type ThemeFacet, isInSeason } from "@/lib/hotspot-themes";
 import { loginPath, safeExternalHref } from "@/lib/navigation";
 import { useSharedAnchor } from "@/lib/use-shared-anchor";
 
@@ -22,6 +25,7 @@ type RankedHotspot = {
   id: string; slug: string; rank: number; name: string; city_code: string; city_name: string;
   destination_id: string;
   country_code: string; country_name: string; category: string; area: HotspotArea | null; score: number;
+  themes?: HotspotTheme[];
   components: { interest: number; growth: number; quality: number; confidence: number };
   pageviews_30d: number | null; growth_rate: number | null; trend_label: string;
   sources: string[]; has_source: boolean; signal_date: string | null; is_estimate: boolean;
@@ -37,6 +41,7 @@ type FacetsResponse = {
   cities: { code: string; destination_id: string; name: string; country_code: string; count: number }[];
   categories: { code: string; count: number }[];
   areas: { destination_id: string; city_code: string; code: string; name: string; count: number }[];
+  themes?: ThemeFacet[];
 };
 type Guide = {
   id: string; type: "article" | "video"; provider: string; locale: string; title: string;
@@ -54,7 +59,6 @@ type PlaceDetail = PlaceSummary & {
   attribution: { provider: string | null; provider_url: string | null; third_party: Array<{ provider?: string; providerUri?: string }> };
 };
 
-const categoryCodes = ["", "culture", "food", "nature", "beach", "family", "viewpoint", "shopping", "nightlife"] as const;
 const localeLabels: Record<string, string> = { en: "EN", ja: "日本語", ko: "한국어", "zh-TW": "繁中", "zh-CN": "简中" };
 
 function trendIcon(item: RankedHotspot) {
@@ -207,6 +211,7 @@ export function HotspotExplorer() {
   const [city, setCity] = useState("");
   const [area, setArea] = useState("");
   const [category, setCategory] = useState("");
+  const [theme, setTheme] = useState("");
   const [ranking, setRanking] = useState<RankingResponse | null>(null);
   const [facets, setFacets] = useState<FacetsResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -229,19 +234,21 @@ export function HotspotExplorer() {
 
   // Keep the filters in the address bar so a reload, a shared link, or the round
   // trip through the login page all come back to the same list.
-  function syncUrl() {
+  function syncUrl(override: { theme?: string } = {}) {
+    const activeTheme = override.theme ?? theme;
     const visible = new URLSearchParams();
     if (query.trim()) visible.set("q", query.trim());
     if (country) visible.set("country_code", country);
     if (city) visible.set("destination_id", city);
     if (city && area) visible.set("area", area);
     if (category) visible.set("category", category);
+    if (activeTheme) visible.set("theme", activeTheme);
     const search = visible.toString();
     window.history.replaceState(null, "", search ? `?${search}` : window.location.pathname);
   }
 
   function clearFilters() {
-    setQuery(""); setCountry(""); setCity(""); setArea(""); setCategory("");
+    setQuery(""); setCountry(""); setCity(""); setArea(""); setCategory(""); setTheme("");
     setFiltersOpen(false);
     setLoading(true); setError("");
     api<RankingResponse>("/hotspots/rankings?limit=30")
@@ -250,7 +257,8 @@ export function HotspotExplorer() {
       .finally(() => setLoading(false));
   }
 
-  async function load(append = false) {
+  async function load(append = false, override: { theme?: string } = {}) {
+    const activeTheme = override.theme ?? theme;
     setLoading(true); setError("");
     const params = new URLSearchParams({ limit: "30" });
     if (query.trim()) params.set("q", query.trim());
@@ -258,18 +266,25 @@ export function HotspotExplorer() {
     if (city) params.set("destination_id", city);
     if (city && area) params.set("area", area);
     if (category) params.set("category", category);
+    if (activeTheme) params.set("theme", activeTheme);
     if (append && ranking?.next_cursor) params.set("after_rank", String(ranking.next_cursor));
     try {
       const result = await api<RankingResponse>(`/hotspots/rankings?${params}`);
       setRanking(append && ranking ? { ...result, items: [...ranking.items, ...result.items] } : result);
-      if (!append) syncUrl();
+      if (!append) syncUrl({ theme: activeTheme });
     } catch (reason) { setError((reason as Error).message); }
     finally { setLoading(false); }
+  }
+
+  function selectTheme(next: string) {
+    setTheme(next);
+    void load(false, { theme: next });
   }
 
   useEffect(() => {
     const initial = new URLSearchParams(window.location.search);
     const initialCategory = initial.get("category") ?? "";
+    const initialTheme = initial.get("theme")?.trim() ?? "";
     const initialDestination = initial.get("destination_id") ?? "";
     // An area only means something inside its destination, so ignore it on its own.
     const initialArea = initialDestination ? initial.get("area") ?? "" : "";
@@ -283,12 +298,16 @@ export function HotspotExplorer() {
     if (initialArea) {
       rankingParams.set("area", initialArea);
     }
+    if (initialTheme) {
+      rankingParams.set("theme", initialTheme);
+    }
     api<FacetsResponse>("/hotspots/facets").then(setFacets).catch(() => undefined);
     api<RankingResponse>(`/hotspots/rankings?${rankingParams}`).then((result) => {
       setRanking(result);
       setCategory(initialCategory);
       setCity(initialDestination);
       setArea(initialArea);
+      setTheme(initialTheme);
     }).catch((reason: Error) => setError(reason.message)).finally(() => setLoading(false));
   }, []);
 
@@ -386,12 +405,24 @@ export function HotspotExplorer() {
   }
   function percent(value: number | null) { return value === null ? t("noComparison") : `${value >= 0 ? "+" : ""}${Math.round(value * 100)}%`; }
 
+  const currentMonth = new Date().getMonth() + 1;
+  const themeGroups = (["season", "shop"] as const).map((kind) => ({
+    key: kind,
+    label: t(`themeGroups.${kind}`),
+    items: (facets?.themes ?? []).filter((item) => item.kind === kind).map((item) => ({
+      key: item.slug,
+      label: item.name,
+      count: item.count,
+      marker: isInSeason(item, currentMonth) ? t("inSeason") : undefined,
+    })),
+  }));
+
   return <main className="mx-auto min-h-screen max-w-6xl px-5 pb-20 md:px-8">
     <section className="pb-7 pt-5 md:pb-9 md:pt-9">
       <p className="flex items-center gap-2 text-sm font-semibold text-[var(--teal)]"><Sparkles size={16} />{t("eyebrow")}</p>
       <div className="mt-3 flex flex-wrap items-end justify-between gap-4"><div><h1 className="text-3xl font-bold tracking-[-.035em] md:text-5xl">{t("title")}</h1><p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{t("description")}</p></div><div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--muted)]"><span className="font-semibold text-[var(--ink)]">{t("updated")}</span> {ranking?.observed_on || t("waiting")}</div></div>
     </section>
-    <button type="button" onClick={() => setFiltersOpen(true)} className="mb-3 flex min-h-12 w-full items-center justify-between rounded-2xl border border-[var(--line)] bg-white px-4 font-semibold shadow-[var(--shadow-sm)] md:hidden"><span className="flex items-center gap-2"><SlidersHorizontal size={18} />{t("searchLabel")}</span><span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-1 text-xs text-[var(--teal-dark)]">{[country, city, area, category].filter(Boolean).length}</span></button>
+    <button type="button" onClick={() => setFiltersOpen(true)} className="mb-3 flex min-h-12 w-full items-center justify-between rounded-2xl border border-[var(--line)] bg-white px-4 font-semibold shadow-[var(--shadow-sm)] md:hidden"><span className="flex items-center gap-2"><SlidersHorizontal size={18} />{t("searchLabel")}</span><span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-1 text-xs text-[var(--teal-dark)]">{[country, city, area, category, theme].filter(Boolean).length}</span></button>
     {filtersOpen && <button type="button" aria-label={t("close")} onClick={() => setFiltersOpen(false)} className="fixed inset-0 z-[70] bg-slate-950/40 md:hidden" />}
     <form onSubmit={(event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setFiltersOpen(false); void load(); }} aria-label={t("searchLabel")} className={`${filtersOpen ? "mobile-filter-sheet-open" : ""} mobile-filter-sheet grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-2 md:p-5 lg:grid-cols-[1fr_repeat(4,minmax(0,9rem))_auto]`}>
       <div className="mb-1 flex items-center justify-between md:hidden"><strong>{t("searchLabel")}</strong><button type="button" onClick={() => setFiltersOpen(false)} aria-label={t("close")} className="grid h-11 w-11 place-items-center rounded-full border border-[var(--line)]"><X size={19} /></button></div>
@@ -399,16 +430,30 @@ export function HotspotExplorer() {
       <select aria-label={t("allCountries")} value={country} onChange={(event) => { setCountry(event.target.value); setCity(""); setArea(""); }} className="h-12 min-w-0 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allCountries")}</option>{facets?.countries.map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}</select>
       <select aria-label={t("allCities")} value={city} onChange={(event) => { setCity(event.target.value); setArea(""); }} className="h-12 min-w-0 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allCities")}</option>{facets?.cities.filter((item) => !country || item.country_code === country).map((item) => <option key={item.destination_id} value={item.destination_id}>{item.name} ({item.count})</option>)}</select>
       <select aria-label={t("allAreas")} value={area} disabled={!city} onChange={(event) => setArea(event.target.value)} className="h-12 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3 disabled:cursor-not-allowed disabled:opacity-60"><option value="">{t("allAreas")}</option>{facets?.areas.filter((item) => item.destination_id === city).map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}</select>
-      <select aria-label={t("allCategories")} value={category} onChange={(event) => setCategory(event.target.value)} className="h-12 min-w-0 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3">{categoryCodes.map((code) => <option key={code} value={code}>{code ? t(`categories.${code}`) : t("allCategories")}</option>)}</select>
+      <select aria-label={t("allCategories")} value={category} onChange={(event) => setCategory(event.target.value)} className="h-12 min-w-0 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allCategories")}</option>{HOTSPOT_CATEGORY_CODES.map((code) => <option key={code} value={code}>{t(`categories.${code}`)}</option>)}</select>
       <button type="submit" className="h-12 rounded-xl bg-[var(--teal)] px-6 font-semibold text-white md:col-span-2 lg:col-span-1">{t("submit")}</button>
     </form>
+    <HotspotThemeChips
+      label={t("themeFilters")}
+      allLabel={t("allThemes")}
+      groups={themeGroups}
+      value={theme}
+      onChange={selectTheme}
+    />
     <div className="mt-7 grid gap-7">
       <section aria-live="polite" aria-busy={loading}><div className="mb-4 flex items-center justify-between gap-4"><h2 className="flex items-center gap-2 text-xl font-bold"><BarChart3 size={20} className="text-[var(--coral)]" />{t("ranking")}</h2><p className="text-sm text-[var(--muted)]">{t("loaded", { shown: ranking?.items.length ?? 0, total: ranking?.total ?? 0 })}</p></div>
         {loading && !ranking && <div className="rounded-3xl border border-[var(--line)] bg-white p-8 text-[var(--muted)]">{t("loading")}</div>}
         {error && <div role="alert" className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-3xl bg-[var(--coral-soft)] p-6"><span>{error}</span><button type="button" onClick={() => void load()} className="min-h-11 rounded-xl border border-[var(--line)] bg-white px-4 font-semibold">{t("retry")}</button></div>}
-        {!loading && !error && ranking?.items.length === 0 && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white/70 p-8 text-center"><h3 className="font-bold">{t("emptyTitle")}</h3><p className="mt-2 text-sm text-[var(--muted)]">{t("emptyBody")}</p><button type="button" onClick={clearFilters} className="mt-4 min-h-11 rounded-xl border border-[var(--line)] bg-white px-5 font-semibold text-[var(--teal)]">{t("clearFilters")}</button></div>}
+        {!loading && !error && ranking?.items.length === 0 && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white/70 p-8 text-center"><h3 className="font-bold">{t("emptyTitle")}</h3><p className="mt-2 text-sm text-[var(--muted)]">{t(theme ? "emptyThemeBody" : "emptyBody")}</p><button type="button" onClick={clearFilters} className="mt-4 min-h-11 rounded-xl border border-[var(--line)] bg-white px-5 font-semibold text-[var(--teal)]">{t("clearFilters")}</button></div>}
         {ranking && ranking.items.length > 0 && <ol className="grid gap-4 md:grid-cols-2">{ranking.items.map((item) => <li key={item.id} id={`hotspot-${item.id}`} className={`travel-result-card travel-result-card-${item.category} relative overflow-hidden rounded-3xl border border-[var(--line)] bg-white p-5`}>
           <div className="flex items-start justify-between gap-4"><div className="flex gap-3"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{item.rank}</span><div><h3 className="text-lg font-bold">{item.name}</h3>{item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}{item.map_links?.[0] ? <a href={safeExternalHref(item.map_links[0].url)} target="_blank" rel="noopener noreferrer" aria-label={`${item.map_links[0].label}: ${item.name}`} className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"><MapPin size={14} />{[item.city_name, item.area?.name, t(`categories.${item.category}`)].filter(Boolean).join(" · ")}<ExternalLink size={13} /></a> : <p className="mt-1 flex min-h-11 items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{[item.city_name, item.area?.name, t(`categories.${item.category}`)].filter(Boolean).join(" · ")}</p>}</div></div><div className="text-right"><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><p className="text-xs text-[var(--muted)]">{t("score")}</p></div></div>
+          <HotspotThemeBadges
+            themes={item.themes}
+            locale={locale}
+            currentMonth={currentMonth}
+            label={t("cardThemes")}
+            inSeasonLabel={t("inSeason")}
+          />
           <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl bg-[var(--paper)] p-4 text-sm"><div><p className="text-[var(--muted)]">{t("views30")}</p><p className="mt-1 font-semibold">{item.pageviews_30d === null ? t("pending") : number.format(item.pageviews_30d)}</p></div><div><p className="text-[var(--muted)]">{t("previous")}</p><p className="mt-1 flex items-center gap-1 font-semibold">{trendIcon(item)}{percent(item.growth_rate)}</p></div></div>
           <button type="button" disabled={auth.status === "loading"} onClick={() => openDetails(item)} className="mt-4 flex min-h-12 w-full items-center gap-3 rounded-2xl bg-[var(--teal)] px-4 py-3 text-left text-white shadow-sm transition hover:bg-[var(--teal-dark)] disabled:cursor-wait disabled:opacity-60"><span className="grid h-8 w-8 place-items-center rounded-full bg-white/15">{auth.status === "authenticated" ? <BookOpenText size={17} /> : <LockKeyhole size={17} />}</span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("placeDetails")}</strong><span className="block text-xs text-white/75">{auth.status === "authenticated" ? t("guideCount", { articles: item.guide_counts?.article || 0, videos: item.guide_counts?.video || 0 }) : t("protectedFeatureLocked")}</span></span>{auth.status === "authenticated" ? <ExternalLink size={16} /> : <LockKeyhole size={16} />}</button>
           <button type="button" disabled={auth.status === "loading"} aria-busy={auth.status === "loading"} onClick={() => openRestaurants(item)} className="mt-2 flex min-h-12 w-full items-center gap-3 rounded-2xl border border-[var(--coral)] bg-[var(--coral-soft)] px-4 py-3 text-left text-[var(--ink)] transition hover:-translate-y-0.5 hover:shadow-sm disabled:cursor-wait disabled:opacity-60"><span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[var(--coral)]">{auth.status === "authenticated" ? <UtensilsCrossed size={17} /> : <LockKeyhole size={17} />}</span><span className="min-w-0 flex-1"><strong className="block text-sm">{t("nearbyRestaurants")}</strong><span className="block text-xs text-[var(--muted)]">{t(auth.status === "loading" ? "nearbyRestaurantsChecking" : auth.status === "authenticated" ? "nearbyRestaurantsDetail" : "nearbyRestaurantsLocked")}</span></span><span className="text-xs font-bold text-[var(--coral)]">{auth.status === "authenticated" ? "5–10 km" : <LockKeyhole size={15} />}</span></button>
