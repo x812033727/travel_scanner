@@ -27,16 +27,43 @@ import { useSharedAnchor } from "@/lib/use-shared-anchor";
 
 type ActiveChip = { key: string; label: string; clear: () => void };
 
-export function FoodBrowser() {
+function isCitiesResponse(value: unknown): value is FoodCitiesResponse {
+  if (typeof value !== "object" || value === null) return false;
+  const candidate = value as Partial<FoodCitiesResponse>;
+  return Array.isArray(candidate.countries);
+}
+
+function isCategoriesResponse(value: unknown): value is FoodCategoriesResponse {
+  if (typeof value !== "object" || value === null) return false;
+  return Array.isArray((value as Partial<FoodCategoriesResponse>).items);
+}
+
+/**
+ * `initialCities` and `initialCategories` are the server's copy of the two lists that do
+ * not depend on any filter. The city chooser is 2,492 pixels tall on a phone, so arriving
+ * after hydration meant shoving the whole page down about four seconds in.
+ */
+export function FoodBrowser({ initialCities, initialCategories }: {
+  initialCities?: unknown;
+  initialCategories?: unknown;
+} = {}) {
   const t = useTranslations("foods");
+  const seededCities = useMemo(
+    () => (isCitiesResponse(initialCities) ? initialCities.countries ?? [] : null),
+    [initialCities],
+  );
+  const seededCategories = useMemo(
+    () => (isCategoriesResponse(initialCategories) ? initialCategories.items ?? [] : null),
+    [initialCategories],
+  );
   const search = useClientSearch();
   const initialFilters = useMemo(() => readFoodBrowserFilters(search ?? ""), [search]);
   const [filterState, setFilterState] = useState<FoodBrowserFilters | null>(null);
   const filters = filterState ?? initialFilters;
   const [queryInput, setQueryInput] = useState<string | null>(null);
   const queryValue = queryInput ?? filters.query;
-  const [countries, setCountries] = useState<FoodCountry[]>([]);
-  const [siteCategories, setSiteCategories] = useState<FacetCategory[]>([]);
+  const [countries, setCountries] = useState<FoodCountry[]>(seededCities ?? []);
+  const [siteCategories, setSiteCategories] = useState<FacetCategory[]>(seededCategories ?? []);
   const [result, setResult] = useState<FoodMerchantsResponse | null>(null);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
@@ -56,11 +83,14 @@ export function FoodBrowser() {
   }, []);
 
   useEffect(() => {
-    loadCities();
+    // Both lists came with the HTML unless the server call failed, and asking again would
+    // only repaint the same rows.
+    if (seededCities === null) loadCities();
+    if (seededCategories !== null) return;
     api<FoodCategoriesResponse>("/foods/categories")
       .then((response) => setSiteCategories(response.items ?? []))
       .catch(() => undefined);
-  }, [loadCities]);
+  }, [loadCities, seededCategories, seededCities]);
 
   useEffect(() => {
     // Later replaceState calls change the snapshot; only the first client value seeds the list.

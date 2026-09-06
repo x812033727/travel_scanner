@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**6 open · 2 in progress · 3 blocked · 0 in review · 104 done**
+**6 open · 1 in progress · 3 blocked · 0 in review · 105 done**
 
 ## Ready to claim
 
@@ -24,7 +24,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
-| [美食頁在預設字級下 CLS 0.29，第四秒還在跳版](open/2026-09-06-foods-late-layout-shift.md) | claude-opus-5 | 2026-09-06T18:23:03Z | `claude/foods-cls` |
 | [十三個公開頁裡有九個共用同一組 title 與 description](open/2026-09-06-duplicate-page-metadata.md) | claude-opus-5 | 2026-09-06T17:56:45Z | `claude/ux-batch-3` |
 
 ## In review
@@ -42,6 +41,7 @@ _Nothing here._
 ## Recently finished
 
 - 2026-09-06 [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](done/2026-09-06-admin-load-error-copy.md)
+- 2026-09-06 [美食頁在預設字級下 CLS 0.29，第四秒還在跳版](done/2026-09-06-foods-late-layout-shift.md)
 - 2026-09-06 [未登入開 /account 會同時看到三種互相矛盾的狀態](done/2026-09-06-account-signed-out-states.md)
 - 2026-09-06 [購物行程：規劃器聽得懂店家類型，也知道什麼當季](done/2026-09-06-planner-shop-themes.md)
 - 2026-09-06 [價格通知頁的副標與 LINE 卡片在四個語系都是繁中](done/2026-09-06-alerts-hardcoded-zh-tw.md)
@@ -50,4 +50,3 @@ _Nothing here._
 - 2026-09-06 [行程天氣面板在日期超出預報範圍時仍列出 10 天無關天氣](done/2026-09-06-trip-weather-out-of-range.md)
 - 2026-09-06 [種子分類是按配額輪流發的，不只 shopping 一類錯](done/2026-09-06-seed-categories-assigned-by-quota.md)
 - 2026-09-06 [景點的第一手介紹：儲存、審核與呈現](done/2026-09-06-hotspot-intros.md)
-- 2026-09-06 [五個語系的 trips.json 都有重複的 transfersCount 鍵](done/2026-09-06-duplicate-transfers-count-key.md)

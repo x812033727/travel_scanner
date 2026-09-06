@@ -282,4 +282,19 @@ describe("FoodBrowser", () => {
     expect(await screen.findByRole("heading", { name: "Ichiran Shibuya" })).toBeTruthy();
     expect(screen.queryByRole("alert")).toBeNull();
   });
+  it("uses the server's city list and does not ask for it again", async () => {
+    // The chooser is 2,492 pixels tall on a phone; fetching it after hydration is what
+    // shoved the page down four seconds in, so a seeded list must render on the first paint.
+    window.history.replaceState({}, "", "/foods");
+    const { calls } = stubFetch();
+    render(
+      <SavedItemsProvider>
+        <FoodBrowser initialCities={cities} initialCategories={{ items: [] }} />
+      </SavedItemsProvider>,
+    );
+    expect(screen.getByRole("button", { name: /東京/ })).toBeTruthy();
+    await waitFor(() => expect(calls.some((url) => url.includes("/foods/merchants?"))).toBe(true));
+    expect(calls.filter((url) => url.includes("/foods/cities"))).toHaveLength(0);
+    expect(calls.filter((url) => url.includes("/foods/categories"))).toHaveLength(0);
+  });
 });
