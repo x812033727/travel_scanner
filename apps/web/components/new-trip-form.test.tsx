@@ -8,6 +8,21 @@ vi.mock("./place-picker", () => ({
   PlacePicker: ({ value, onTextChange }: { value: string; onTextChange: (value: string) => void }) => <input aria-label="目的地" value={value} onChange={(event) => onTextChange(event.target.value)} />,
 }));
 
+/**
+ * The calendar asks the API for public holidays when it mounts, so a bare fetch stub would
+ * hand those requests the response meant for the trip submission. This answers them
+ * separately and leaves `mock` seeing only the calls the test is about.
+ */
+function stubFetch(mock: unknown) {
+  const submit = mock as (input: unknown, init?: RequestInit) => unknown;
+  const empty = { country: "TW", country_name: "臺灣", locale: "zh-TW", coverage_start: null, coverage_end: null, attribution: "", holidays: [] };
+  vi.stubGlobal("fetch", vi.fn((input: unknown, init?: RequestInit) => (
+    String(input).includes("/holidays")
+      ? Promise.resolve(new Response(JSON.stringify(empty), { status: 200, headers: { "Content-Type": "application/json" } }))
+      : submit(input, init)
+  )));
+}
+
 function dayButton(iso: string) {
   return document.querySelector<HTMLButtonElement>(`[data-date="${iso}"]`);
 }
@@ -118,7 +133,7 @@ describe("NewTripForm", () => {
 
   it("submits structured travelers, lodging, interests and routing preferences", async () => {
     const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "trip-1" }), { status: 201, headers: { "Content-Type": "application/json" } }));
-    vi.stubGlobal("fetch", fetchMock);
+    stubFetch(fetchMock);
     render(<NewTripForm />);
     fillRequiredFields();
     next();
@@ -171,7 +186,7 @@ describe("NewTripForm", () => {
     const fetchMock = vi.fn()
       .mockRejectedValueOnce(new Error("API 服務回應逾時"))
       .mockResolvedValueOnce(new Response(JSON.stringify({ id: "trip-2" }), { status: 201, headers: { "Content-Type": "application/json" } }));
-    vi.stubGlobal("fetch", fetchMock);
+    stubFetch(fetchMock);
     render(<NewTripForm />);
     fillRequiredFields();
     reachReview();
@@ -188,7 +203,7 @@ describe("NewTripForm", () => {
 
   it("creates a blank manual timeline without automatic route computation", async () => {
     const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "manual-trip" }), { status: 201, headers: { "Content-Type": "application/json" } }));
-    vi.stubGlobal("fetch", fetchMock);
+    stubFetch(fetchMock);
     render(<NewTripForm />);
     fillRequiredFields();
     reachReview();
@@ -209,7 +224,7 @@ describe("NewTripForm", () => {
 
   it("does not submit while moving from lodging preferences to review", () => {
     const fetchMock = vi.fn();
-    vi.stubGlobal("fetch", fetchMock);
+    stubFetch(fetchMock);
     render(<NewTripForm />);
     fillRequiredFields();
     next();
@@ -234,7 +249,7 @@ describe("NewTripForm", () => {
   });
 
   it("shows a readable API validation message", async () => {
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({ detail: [{ type: "missing", loc: ["body", "plan_id"], msg: "Field required" }] }), { status: 422, headers: { "Content-Type": "application/json" } })));
+    stubFetch(vi.fn().mockResolvedValue(new Response(JSON.stringify({ detail: [{ type: "missing", loc: ["body", "plan_id"], msg: "Field required" }] }), { status: 422, headers: { "Content-Type": "application/json" } })));
     render(<NewTripForm />);
     fillRequiredFields();
     reachReview();

@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**11 open · 1 in progress · 2 blocked · 5 in review · 77 done**
+**8 open · 1 in progress · 2 blocked · 5 in review · 82 done**
 
 ## Ready to claim
 
@@ -13,10 +13,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P2 | [國定假日資料：台日韓 2026-2027 進版控，日曆看得見連假與補班](open/2026-09-06-public-holidays-tw-jp-kr.md) | api | `apps/api/app/holidays`<br>`apps/api/app/main.py`<br>`apps/api/app/cli.py`<br>`apps/api/tests/test_public_holidays.py`<br>`apps/web/lib/holidays.ts`<br>`apps/web/components/date-range-picker.tsx`<br>`docs/public-holidays.md` |
-| P2 | [航班來源擴充讀舊資料沒有防護：型別不符的 search id 會直接 500](open/2026-09-06-expand-flight-sources-guard.md) | api | `apps/api/app/search/router.py`<br>`apps/api/tests/test_search_flight_sources.py` |
 | P2 | [供應商就緒狀態只看金鑰有無，卡片會綠燈但功能不通](open/2026-09-06-configured-readiness-beyond-key-presence.md) | api | `apps/api/app/admin/service.py`<br>`apps/api/tests/test_admin_readiness.py` |
-| P3 | [Booking Demand 連線測試停在城市 ID，從不解析旅館報價](open/2026-09-06-booking-demand-test-parses-an-offer.md) | api | `apps/api/app/providers/booking.py`<br>`apps/api/tests/test_booking_demand_probe.py` |
+| P3 | [日曆的假日圓點應該跟著目的地國家](open/2026-09-06-holiday-dots-follow-destination.md) | web | `apps/web/components/new-trip-form.tsx`<br>`apps/web/components/date-range-picker.tsx`<br>`apps/web/lib/holidays.ts`<br>`apps/web/components/new-trip-form.test.tsx` |
 | P3 | [五個語系的 trips.json 都有重複的 transfersCount 鍵](open/2026-09-06-duplicate-transfers-count-key.md) | web | `apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/zh-TW/trips.json` |
 
 ## In progress
@@ -45,18 +43,17 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [手機版行程頁的浮動元件佔掉三分之一畫面](open/2026-09-06-planner-mobile-chrome.md) | active work in the same scope |
 | P2 | [行程天氣面板在日期超出預報範圍時仍列出 10 天無關天氣](open/2026-09-06-trip-weather-out-of-range.md) | active work in the same scope |
 | P2 | [後台審核頁在看到第一筆待審之前先給 30 個控制項](open/2026-09-06-admin-review-density.md) | active work in the same scope |
-| P2 | [地點建議清單會在 Escape 之後自己打開](open/2026-09-06-place-picker-reopens-after-escape.md) | active work in the same scope |
 | P3 | [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](open/2026-09-06-admin-load-error-copy.md) | active work in the same scope |
 
 ## Recently finished
 
 - 2026-09-06 [AI 備援警告把 provider 名稱與 Python 例外類別秀給旅客看](done/2026-09-06-ai-warning-copy.md)
+- 2026-09-06 [Booking Demand 連線測試停在城市 ID，從不解析旅館報價](done/2026-09-06-booking-demand-test-parses-an-offer.md)
+- 2026-09-06 [地點建議清單會在 Escape 之後自己打開](done/2026-09-06-place-picker-reopens-after-escape.md)
+- 2026-09-06 [航班來源擴充讀舊資料沒有防護：型別不符的 search id 會直接 500](done/2026-09-06-expand-flight-sources-guard.md)
 - 2026-09-06 [後台其餘三個面板文案硬編碼繁中](done/2026-09-06-admin-panels-i18n-remaining.md)
 - 2026-09-06 [後台 AI 規劃連線測試送空候選，看不見真正會壞的那一步](done/2026-09-06-admin-planner-test-real-candidates.md)
 - 2026-09-06 [Wikidata 標籤原封不動存入，消歧義括號會顯示給使用者](done/2026-09-06-wikidata-labels-stored-verbatim.md)
 - 2026-09-06 [seed 的韓文假名泰文名稱被當成中文標籤輸出](done/2026-09-06-non-chinese-seed-names-as-chinese-labels.md)
-- 2026-09-06 [zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位](done/2026-09-06-zh-cn-area-labels-traditional.md)
-- 2026-09-06 [東京 AI 行程一律 500：一筆種子的 20 分鐘低於 planner 下限](done/2026-09-06-tokyo-planner-duration-500.md)
-- 2026-09-06 [路線卡與路線面板的文案硬編碼繁中](done/2026-09-06-route-copy-i18n.md)
-- 2026-09-06 [美食與景點頁的國家／城市名稱在 en／ja／ko 仍是繁中](done/2026-09-06-food-hotspot-place-names-i18n.md)
-- 2026-09-06 [待安排地點進入 AI 候選集（PR 8）](done/2026-09-06-paste-inbox-into-candidates.md)
+- 2026-09-06 [社群登入上線前置：正式主機收斂與 Apple 網域驗證檔](done/2026-09-06-social-login-launch-prep.md)
+- 2026-09-06 [國定假日資料：台日韓 2026-2027 進版控，日曆看得見連假與補班](done/2026-09-06-public-holidays-tw-jp-kr.md)

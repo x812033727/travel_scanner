@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { useState } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { addDays, formatTripDay, monthTitle, weekdayLabels } from "@/lib/calendar";
@@ -40,7 +40,7 @@ const statusText = () => screen.getByRole("status").textContent;
 const gridNamed = (month: string) => screen.getByRole("grid", { name: monthTitle(intl.locale, month) });
 
 describe("DateRangePicker", () => {
-  afterEach(() => { intl.locale = "zh-TW"; });
+  afterEach(() => { intl.locale = "zh-TW"; vi.unstubAllGlobals(); });
 
   it("renders the current month with today marked and past days unavailable", () => {
     render(<Harness />);
@@ -216,5 +216,29 @@ describe("DateRangePicker", () => {
     expect(screen.getByRole("grid", { name: monthTitle("zh-CN", "2026-09") })).toBeTruthy();
     expect(within(screen.getByRole("grid")).getAllByRole("columnheader")[0].textContent).toBe(weekdayLabels("zh-CN", 1)[0].short);
     expect(document.querySelectorAll("[data-date]")).toHaveLength(30);
+  });
+  it("marks a public holiday, names it in the day's label and shows the source", async () => {
+    const calendar = (country: string) => ({
+      country,
+      country_name: country === "JP" ? "日本" : country,
+      locale: "zh-TW",
+      coverage_start: "2026-01-01",
+      coverage_end: "2027-12-31",
+      attribution: country === "JP" ? "出典：内閣府ウェブサイト" : "",
+      holidays: country === "JP"
+        ? [{ date: "2026-09-22", key: "jp_citizens_holiday", kind: "bridge_holiday", is_working_day: false, name: "國民假日", country, country_name: "日本", source: "cao_go_jp" }]
+        : [],
+    });
+    vi.stubGlobal("fetch", vi.fn((input: unknown) => {
+      const country = new URL(String(input), "http://test").searchParams.get("country") || "TW";
+      return Promise.resolve(new Response(JSON.stringify(calendar(country)), { status: 200, headers: { "Content-Type": "application/json" } }));
+    }));
+    render(<Harness />);
+
+    await waitFor(() => expect(day("2026-09-22").getAttribute("data-holiday")).toBe("true"));
+    expect(day("2026-09-22").getAttribute("aria-label")).toBe(`${formatTripDay("zh-TW", "2026-09-22")} 日本 國民假日`);
+    expect(day("2026-09-21").getAttribute("data-holiday")).toBeNull();
+    expect(day("2026-09-21").getAttribute("aria-label")).toBe(formatTripDay("zh-TW", "2026-09-21"));
+    expect(screen.getByText("出典：内閣府ウェブサイト")).toBeTruthy();
   });
 });

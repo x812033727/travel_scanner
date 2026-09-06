@@ -37,6 +37,29 @@ For local Google and LINE testing, add the matching
 Apple for web requires an HTTPS return URL, so use a controlled HTTPS development
 domain when testing Apple.
 
+### The site must answer on exactly one origin
+
+`NEXT_PUBLIC_SITE_URL` is the single source of the `redirect_uri`, while the flow
+cookie written by `/api/auth/oauth/{provider}/start` is host-only: it carries no
+`Domain` attribute. If the site also answers on a second host, a sign-in started
+on the non-canonical host leaves its cookie there, the provider returns the
+browser to the canonical host, and the callback finds no cookie. Every attempt
+then fails with `oauth_state_invalid`, and retrying never helps.
+
+Registering both hosts in the provider console does not fix this, because the API
+only ever generates one `redirect_uri`. Every host that answers must redirect to
+the canonical one. `www.mokaair.com` already does, path-preserving, at the edge
+proxy; keep it that way and re-check after any proxy change.
+
+Check an OAuth path rather than `/`: a redirect that covers only the site root
+would still break sign-in, and testing `/` alone cannot tell the two apart.
+
+```bash
+curl -sSI https://www.mokaair.com/api/auth/oauth/google/start | grep -iE '^HTTP|^location'
+# expect: HTTP/1.1 301 ...
+#         location: https://mokaair.com/api/auth/oauth/google/start
+```
+
 ## Provider console setup
 
 ### Google
@@ -64,6 +87,21 @@ production callback cookie is therefore `SameSite=None; Secure`. Mokaair creates
 a short-lived ES256 client secret, validates Apple's ID token, and uses Apple's
 token revocation endpoint when disconnecting.
 
+Apple verifies the web domain before it accepts the return URL. It issues an
+`apple-developer-domain-association.txt` that must answer at
+`https://mokaair.com/.well-known/apple-developer-domain-association.txt`. Commit
+it to `apps/web/public/.well-known/`; the file is meant to be served publicly and
+is not a secret. The proxy matcher in `apps/web/proxy.ts` excludes paths that
+contain a dot, so the file is served as a static asset without a locale prefix.
+Check that it is actually reachable before returning to Apple to press Verify:
+
+```bash
+curl -s https://mokaair.com/.well-known/apple-developer-domain-association.txt
+```
+
+If a future Next.js version stops serving dot-directories out of `public/`, serve
+that single path from the edge proxy instead.
+
 ## Mokaair configuration
 
 Open `/{locale}/admin/settings`, select each login provider, enter its public
@@ -86,6 +124,16 @@ AUTH_APPLE_PRIVATE_KEY
 AUTH_OAUTH_FLOW_TTL_SECONDS
 AUTH_OAUTH_IP_LIMIT
 ```
+
+Test connection reaches only the provider's public OpenID metadata for Google and
+LINE, so it passes even with a wrong client identifier or secret. For Apple it
+additionally signs a real ES256 client secret, so it does catch a malformed
+`.p8`. A completed interactive sign-in is the only proof that credentials work.
+
+A saved provider row that is switched off nulls its secret fields at runtime,
+including a value set in the environment, so an unused disabled row makes
+environment credentials look broken. The stored ciphertext is kept and returns
+when the row is enabled again.
 
 Keep `SETTINGS_ENCRYPTION_KEY` stable. Rotate a provider secret by saving its new
 value and testing the connection before removing the old credential in the
