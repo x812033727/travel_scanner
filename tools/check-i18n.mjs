@@ -2,6 +2,8 @@ import { execFileSync } from "node:child_process";
 import { readFileSync, readdirSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
+import { duplicateKeys } from "./json-duplicate-keys.mjs";
+
 const root = resolve(import.meta.dirname, "..");
 const messagesRoot = join(root, "apps", "web", "messages");
 const locales = ["en", "ja", "ko", "zh-TW", "zh-CN"];
@@ -36,7 +38,16 @@ for (const locale of locales) {
     continue;
   }
   for (const namespace of referenceNamespaces) {
-    const localized = flatten(JSON.parse(readFileSync(join(messagesRoot, locale, namespace), "utf8")));
+    const source = readFileSync(join(messagesRoot, locale, namespace), "utf8");
+    // Read the text, not the parsed value: JSON.parse keeps the last of two identical keys
+    // and reports nothing, so every check below this line is blind to a duplicate. All five
+    // trips.json files carried two transfersCount entries for months without anything
+    // displaying wrongly — the damage was that any tool round-tripping the file collapsed
+    // the pair, and the collapse reached the diff looking like a copy change nobody made.
+    for (const key of duplicateKeys(source)) {
+      errors.push(`${locale}/${namespace}:${key}: duplicate key, JSON.parse silently keeps the last one`);
+    }
+    const localized = flatten(JSON.parse(source));
     const expected = reference.get(namespace);
     if ([...localized.keys()].sort().join("\n") !== [...expected.keys()].sort().join("\n")) {
       errors.push(`${locale}/${namespace}: translation keys differ from en`);
