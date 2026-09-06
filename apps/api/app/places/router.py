@@ -309,7 +309,7 @@ async def destination_catalog(
                 "code": item.code,
                 "city": localized.city_name(item, locale),
                 "local_name": item.local_name or item.city,
-                "english_name": item.english_name or item.city,
+                "english_name": localized.english_name(item),
                 "country": localized.country_label(item, locale),
                 "country_code": reverse_countries[item.country],
                 "role": item.role,
