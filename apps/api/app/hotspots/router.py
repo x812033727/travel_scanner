@@ -18,6 +18,7 @@ from app.hotspots.guides import canonical_external_url, list_guides, resolve_gui
 from app.hotspots.maps import build_map_links
 from app.hotspots.places import place_detail_payload
 from app.hotspots.service import hotspot_facets, list_rankings, load_hotspot_names
+from app.hotspots.themes import resolve_theme
 from app.i18n import Locale, current_locale
 from app.infra import enforce_named_rate_limit, get_redis
 from app.localized_names import item_names
@@ -147,12 +148,16 @@ async def hotspot_rankings(
     category: Annotated[str | None, Query(min_length=2, max_length=32)] = None,
     role: Annotated[Literal["primary", "secondary", "extension"] | None, Query()] = None,
     area: Annotated[str | None, Query(min_length=2, max_length=32)] = None,
+    theme: Annotated[
+        str | None, Query(min_length=2, max_length=64, pattern=r"^[a-z0-9-]+$")
+    ] = None,
     after_rank: Annotated[int | None, Query(ge=0)] = None,
     limit: Annotated[int, Query(ge=1, le=50)] = 20,
     style: Literal["all", "deep"] = "all",
 ) -> dict[str, Any]:
     resolved_city_code, resolved_destination_id = _resolve_destination(city_code, destination_id)
     resolved_area = _resolve_area(resolved_destination_id, area)
+    resolved_theme = await resolve_theme(session, theme)
     runtime = await load_runtime_settings(session)
     result = await list_rankings(
         session,
@@ -163,6 +168,7 @@ async def hotspot_rankings(
         category=category,
         role=role,
         area=resolved_area,
+        theme=resolved_theme.slug if resolved_theme else None,
         after_rank=after_rank,
         limit=limit,
         style=style,
@@ -270,6 +276,7 @@ async def hotspots_for_planner(
             "name": item["name"],
             "names": item["names"],
             "category": item["category"],
+            "themes": [theme["slug"] for theme in item.get("themes", [])],
             "latitude": item["latitude"],
             "longitude": item["longitude"],
             "coordinate_source": item["coordinate_source"],

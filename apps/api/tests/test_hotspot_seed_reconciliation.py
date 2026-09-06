@@ -127,6 +127,9 @@ async def test_seeding_assigns_areas_and_sync_repairs_them() -> None:
         assert hotspot.area_code == "asakusa"
         facets = await hotspot_facets(session, "en")
         assert "styles" not in facets
+        # Themes are seeded by sync_hotspot_themes, which this test does not run; the
+        # key must still be present so the explorer can rely on it.
+        assert isinstance(facets["themes"], list)
         expected_count = sum(
             1
             for seed in HOTSPOT_SEEDS
