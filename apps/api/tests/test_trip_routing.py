@@ -1336,8 +1336,6 @@ async def test_scheduled_transit_without_published_timetable_uses_near_term_prev
     async def handler(request: httpx.Request) -> httpx.Response:
         body = cast(dict[str, object], json.loads(request.read()))
         bodies.append(body)
-        if len(bodies) < 3:
-            return httpx.Response(200, json={"routes": []})
         return httpx.Response(
             200,
             json={"routes": [{"duration": "1320s", "legs": []}]},
@@ -1356,7 +1354,9 @@ async def test_scheduled_transit_without_published_timetable_uses_near_term_prev
     assert segment is not None and segment.duration_minutes == 22
     assert segment.schedule_mode == "preview"
     assert segment.requested_departure_time == requested
-    assert len(bodies) == 3
+    # A departure 45 days out is past what Google publishes, so the near-term schedule
+    # is asked first and answers; the three requests this used to cost are now one.
+    assert len(bodies) == 1
     requested_utc = requested.astimezone(UTC)
     fallback_utc = datetime.fromisoformat(str(bodies[-1]["departureTime"]).replace("Z", "+00:00"))
     fallback_local = fallback_utc.astimezone(tokyo)
@@ -1497,3 +1497,65 @@ def test_google_external_navigation_uses_confirmed_coordinates_without_place_ids
     assert "destination=35.7148000%2C139.7967000" in navigation.web_url
     assert "travelmode=walking" in navigation.web_url
     assert "%E8%B0%B7%E4%B8%AD%E9%9D%88%E5%9C%92" not in navigation.web_url
+
+
+@pytest.mark.asyncio
+async def test_google_routes_reserve_before_spending_and_stop_at_the_ceiling() -> None:
+    """Routes was the only route provider that could not be stopped by its budget."""
+    calls = 0
+
+    async def handler(_request: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        return httpx.Response(200, json={"routes": [{"duration": "600s", "legs": []}]})
+
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = GoogleRouteProvider(
+        Settings(google_maps_api_key="key", google_routes_monthly_request_limit=2),
+        client,
+        redis=redis,
+    )
+    origin = point("谷中靈園", 35.725278, 139.770556)
+    destination = point("淺草寺", 35.714722, 139.796750)
+
+    first = await provider.compute(origin, destination, None, "FEWER_TRANSFERS", "walk")
+    second = await provider.compute(origin, destination, None, "FEWER_TRANSFERS", "walk")
+    third = await provider.compute(origin, destination, None, "FEWER_TRANSFERS", "walk")
+    await client.aclose()
+
+    assert first is not None and second is not None
+    # The third leg is refused before the request leaves, so the ceiling actually holds.
+    assert third is None
+    assert calls == 2
+
+
+@pytest.mark.asyncio
+async def test_a_far_future_transit_leg_costs_one_request_not_four() -> None:
+    tokyo = ZoneInfo("Asia/Tokyo")
+    requested = (datetime.now(tokyo) + timedelta(days=60)).replace(
+        hour=9, minute=0, second=0, microsecond=0
+    )
+    departures: list[str] = []
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        body = cast(dict[str, object], json.loads(request.read()))
+        departures.append(str(body.get("departureTime")))
+        return httpx.Response(200, json={"routes": [{"duration": "900s", "legs": []}]})
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    provider = GoogleRouteProvider(Settings(google_maps_api_key="key"), client)
+    segment = await provider.compute(
+        point("谷中靈園", 35.725278, 139.770556),
+        point("淺草寺", 35.714722, 139.796750),
+        requested,
+        "FEWER_TRANSFERS",
+    )
+    await client.aclose()
+
+    assert segment is not None and segment.schedule_mode == "preview"
+    assert len(departures) == 1
+    # The one request asked for a near-term departure, not the unpublished one.
+    asked = datetime.fromisoformat(departures[0].replace("Z", "+00:00"))
+    assert asked < requested.astimezone(UTC)
+    assert asked.astimezone(tokyo).weekday() == requested.weekday()

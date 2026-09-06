@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-google-far-future-transit-cascade
 title: Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T10:22:40Z
 created_at: 2026-09-06T02:45:25Z
-completed_at:
-branch:
+completed_at: 2026-09-06T10:26:00Z
+branch: claude/google-routes-budget
 depends_on: []
 scope:
   - apps/api/app/trips/routing.py
@@ -33,19 +33,19 @@ scope:
 
 ## Definition of done
 
-- [ ] 出發時間 > now + 14 天的大眾運輸，第一個送出的請求就是 `near_term_schedule`，
+- [x] 出發時間 > now + 14 天的大眾運輸，第一個送出的請求就是 `near_term_schedule`，
       其餘 fallback 順序不變。
-- [ ] Google 路線請求在送出前先 `reserve_google_maps_request`，額度用完時回 `[]` 並記 log，
+- [x] Google 路線請求在送出前先 `reserve_google_maps_request`，額度用完時回 `[]` 並記 log，
       跟 Ekispert／ODsay 一致。
-- [ ] 現有 `test_scheduled_transit_*` / `test_far_future_transit_*` 測試依新順序調整，
+- [x] 現有 `test_scheduled_transit_*` / `test_far_future_transit_*` 測試依新順序調整，
       並新增「>14 天只打一次」的案例。
 
 ## Steps
 
-- [ ] 讀 `supported_transit_time`（`routing.py:242`）與 `_next_matching_transit_time`
+- [x] 讀 `supported_transit_time`（`routing.py:242`）與 `_next_matching_transit_time`
       確認 14 天門檻的來源。
-- [ ] 調整 `attempts` 的組裝順序。
-- [ ] 接 `reserve_google_maps_request`（看 `restaurants/google.py:162,214` 的用法）。
+- [x] 調整 `attempts` 的組裝順序。
+- [x] 接 `reserve_google_maps_request`（看 `restaurants/google.py:162,214` 的用法）。
 
 ## How to verify
 
@@ -57,3 +57,12 @@ cd apps/api && uv run pytest tests/test_trip_routing.py -k "google"
 
 - 從 2026-09-06 交通成本檢討分出來；主要漏額度的是整趟重算與快取 key，先修那兩張
   （`2026-09-06-route-cache-time-key`、`2026-09-06-route-recompute-reuses-saved-segments`）。
+
+## Result
+
+45 天後的大眾運輸原本要打 3 次才拿到結果，現在 1 次。新增
+`google_routes_monthly_request_limit`（預設 5,000），送出前 `reserve_google_maps_request`，
+額度用完回 `[]` 並記 `google_routes_budget_exhausted`。
+
+保留即計費，所以 `_post` 原本 `finally` 裡的 `record_google_maps_request` 拿掉了，
+否則每個請求會被計兩次。

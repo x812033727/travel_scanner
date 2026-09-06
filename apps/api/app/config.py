@@ -294,6 +294,9 @@ class Settings(BaseSettings):
     # ``plain`` uses average waiting times and is available on the lower-cost plan.
     # ``departure`` requires an Ekispert contract with timetable search enabled.
     ekispert_search_type: Literal["plain", "departure"] = "plain"
+    # Routes is the only paid Google surface the trip planner drives, and it was the
+    # only route provider without a ceiling; Ekispert and ODsay have had one all along.
+    google_routes_monthly_request_limit: int = Field(default=5_000, ge=0, le=10_000_000)
     ekispert_monthly_request_limit: int = Field(default=450, ge=0, le=10_000_000)
     odsay_api_base_url: str = "https://api.odsay.com/v1/api"
     odsay_api_key: str | None = None

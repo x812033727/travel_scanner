@@ -19,9 +19,9 @@ from redis.asyncio import Redis
 
 from app.config import Settings, get_settings
 from app.providers.usage_meter import (
-    record_google_maps_request,
     record_naver_maps_request,
     reserve_ekispert_request,
+    reserve_google_maps_request,
     reserve_navitime_request,
     reserve_odsay_request,
 )
@@ -304,20 +304,31 @@ class GoogleRouteProvider:
             return {"placeId": point.provider_place_id}
         return {"location": {"latLng": {"latitude": point.latitude, "longitude": point.longitude}}}
 
+    async def _reserve(self) -> bool:
+        """Take a request out of the monthly ceiling before it is spent.
+
+        Routes was the only route provider without one: Ekispert and ODsay both
+        reserve, while Google merely counted afterwards, so nothing could stop a
+        far-future transit leg from spending four requests to answer once.
+        ``reserve_google_maps_request`` meters as it reserves, which is why
+        ``_post`` no longer records a second time.
+        """
+        if self.redis is None:
+            return True
+        return await reserve_google_maps_request(
+            self.redis, "routes", self.settings.google_routes_monthly_request_limit
+        )
+
     async def _post(self, body: dict[str, Any], field_mask: str) -> httpx.Response:
         headers = {
             "Content-Type": "application/json",
             "X-Goog-Api-Key": self.settings.google_maps_api_key or "",
             "X-Goog-FieldMask": field_mask,
         }
-        try:
-            if self.client is not None:
-                return await self.client.post(self.url, json=body, headers=headers)
-            async with httpx.AsyncClient(timeout=self.settings.provider_timeout_seconds) as client:
-                return await client.post(self.url, json=body, headers=headers)
-        finally:
-            if self.redis is not None:
-                await record_google_maps_request(self.redis, "routes")
+        if self.client is not None:
+            return await self.client.post(self.url, json=body, headers=headers)
+        async with httpx.AsyncClient(timeout=self.settings.provider_timeout_seconds) as client:
+            return await client.post(self.url, json=body, headers=headers)
 
     async def probe(
         self,
@@ -339,6 +350,10 @@ class GoogleRouteProvider:
         effective_time, _, _ = supported_transit_time(departure_time)
         if effective_time is not None:
             body["departureTime"] = effective_time.isoformat().replace("+00:00", "Z")
+        if not await self._reserve():
+            return GoogleRoutesProbeResult(
+                False, False, error_code="MONTHLY_BUDGET_EXHAUSTED"
+            )
         try:
             response = await self._post(body, "routes.duration")
         except httpx.HTTPError:
@@ -577,13 +592,14 @@ class GoogleRouteProvider:
                 }
             }
             add_attempt(coordinate_body, "coordinates")
-        if (
+        far_future_transit = (
             travel_mode == "transit"
             and schedule_mode == "scheduled"
             and departure_time is not None
             and effective_time is not None
             and effective_time > datetime.now(UTC) + timedelta(days=14)
-        ):
+        )
+        if far_future_transit and departure_time is not None:
             near_term_body = {
                 key: value for key, value in body.items() if key != "transitPreferences"
             }
@@ -606,7 +622,20 @@ class GoogleRouteProvider:
                 if key not in {"departureTime", "transitPreferences"}
             }
             add_attempt(current_route_body, "current_schedule")
+        if far_future_transit:
+            attempts.sort(key=lambda attempt: attempt[1] != "near_term_schedule")
         for attempt_index, (attempt_body, attempt_kind) in enumerate(attempts):
+            if not await self._reserve():
+                logger.warning(
+                    "google_routes_budget_exhausted",
+                    extra={
+                        "provider": self.name,
+                        "reason_code": "monthly_budget_exhausted",
+                        "travel_mode": travel_mode,
+                        "attempt_kind": attempt_kind,
+                    },
+                )
+                return []
             try:
                 response = await self._post(attempt_body, fields)
                 response.raise_for_status()

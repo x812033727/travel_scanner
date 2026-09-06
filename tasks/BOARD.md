@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**18 open · 0 in progress · 1 blocked · 0 in review · 52 done**
+**17 open · 0 in progress · 1 blocked · 0 in review · 53 done**
 
 ## Ready to claim
 
@@ -15,7 +15,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | P2 | [營業時間感知排程：AI 排程不把景點排在打烊時段](open/2026-09-06-opening-hours-aware-scheduling.md) | api | `apps/api/app/trips/hours.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/web/components/day-health-strip.tsx` |
 | P2 | [貼 Google Maps 連結加景點（待安排 inbox）](open/2026-09-06-paste-maps-links-ingest.md) | api | `apps/api/app/trips/ingest.py`<br>`apps/api/app/trips/ingest_router.py`<br>`apps/api/app/restaurants/imports.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-inbox-panel.tsx` |
-| P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | api | `apps/api/app/trips/routing.py`<br>`apps/api/tests/test_trip_routing.py` |
 | P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/route_planner.py`<br>`apps/api/tests/test_trip_route_planner.py` |
 | P2 | [zh-CN 的景點名稱 568 筆全部是繁體](open/2026-09-06-zh-cn-names-are-traditional.md) | api | `apps/api/app/localized_names.py`<br>`apps/api/app/hotspots/localization.py` |
 | P2 | [ko 與 ja 的景點名稱多半退回英文](open/2026-09-06-ko-ja-names-fall-back-to-english.md) | api | `apps/api/app/hotspots/wikidata_labels.py` |
@@ -48,6 +47,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](done/2026-09-06-google-far-future-transit-cascade.md)
 - 2026-09-06 [用 AI 審核 1,270 筆待審介紹候選](done/2026-09-06-ai-review-guide-backlog.md)
 - 2026-09-06 [usage catalog validation rejects everything when web ships ahead of api](done/2026-09-06-usage-catalog-validation-rejects-everything-when.md)
 - 2026-09-06 [food seed counts are hardcoded twelve times and only CI can see them](done/2026-09-06-food-seed-counts-are-hardcoded-twelve.md)
@@ -57,4 +57,3 @@ _Nothing here._
 - 2026-09-06 [後台的登入時效設定要能真的生效](done/2026-09-06-admin-session-settings.md)
 - 2026-09-06 [首頁精靈步驟標籤在英文 390px 會截字](done/2026-09-06-wizard-step-label-truncation.md)
 - 2026-09-06 [桌機主導覽文字連結只有 20px 高](done/2026-09-06-desktop-nav-touch-targets.md)
-- 2026-09-06 [註冊關閉頁的小標與 H1 是同一句話](done/2026-09-06-auth-duplicate-heading.md)
