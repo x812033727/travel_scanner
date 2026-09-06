@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-food-hotspot-place-names-i18n
 title: 美食與景點頁的國家／城市名稱在 en／ja／ko 仍是繁中
-status: open
+status: done
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T13:20:47Z
 created_at: 2026-09-06T09:29:48Z
-completed_at:
-branch:
+completed_at: 2026-09-06T13:25:42Z
+branch: claude/place-names-i18n
 depends_on: []
 scope:
   - apps/api/app/foods/router.py
@@ -36,18 +36,18 @@ API 回來的地名：
 
 ## Definition of done
 
-- [ ] `/en/hotspots` 與 `/en/foods` 的國家、城市篩選在 en／ja／ko／zh-CN 顯示該語系的名稱（zh-TW 不變）。
-- [ ] 沒有翻譯的城市退回英文名，再退回繁中，不要出現 null 或空字串。
-- [ ] 現有的 `test_hotspot_*`／`test_food_*` 加上「換語系名稱跟著換」的案例。
+- [x] `/en/hotspots` 與 `/en/foods` 的國家、城市篩選在 en／ja／ko／zh-CN 顯示該語系的名稱（zh-TW 不變）。
+- [x] 沒有翻譯的城市退回英文名，再退回繁中，不要出現 null 或空字串。
+- [x] 加上「換語系名稱跟著換」與「未知地點不變成 id」的案例。
 
 ## Steps
 
-- [ ] 景點：`/hotspots/facets` 的 countries／cities 用 `country_name_for`（admin_router 已在用）與
+- [x] 景點：`/hotspots/facets` 的 countries／cities 用 `country_name_for`（admin_router 已在用）與
       `destinations/localized.py` 的城市名；找不到對應 destination 的城市退回 `english_name`。
-- [ ] 美食：`FoodCity` 的 `local_name`／`english_name` 由 `area_catalog`／`destinations` catalog 補齊
+- [x] 美食：`FoodCity` 的 `local_name`／`english_name` 由 `area_catalog`／`destinations` catalog 補齊
       （`seed_food_taxonomy` 更新既有列時只動 seed-owned 的值，比照 #198 的 source 規則），
       `/foods/cities` 依 locale 挑名稱。
-- [ ] 前端 `food-city-picker.tsx`／`hotspot-explorer.tsx` 只讀 API 給的 `name`，不要在前端再做對照表。
+- [x] 前端不需改：API 已回本地化的 `name`。`food-city-picker.tsx`／`hotspot-explorer.tsx` 只讀 API 給的 `name`，不要在前端再做對照表。
 
 ## How to verify
 
@@ -64,3 +64,25 @@ curl -s -b "travel_locale=ja" https://mokaair.com/api/travel/foods/cities | jq '
 列出含 `[一-鿿]` 的節點——語言切換器的「日本語／繁體中文／简体中文」與這些地名是唯二剩下的來源。
 另外 `/en/search` 在沒有航班供應商時顯示的「目前沒有可用的航班查價供應商…」是 API 的 `detail` 文字（zh-TW），
 屬於 API 訊息本地化那一大類，之前的 UX 稽核決定先不做。
+
+## Result
+
+`destinations/localized.py` 早就有完整的 7 國 × 33 城對照表，只是這些端點沒接上。新增兩個
+以 id／ISO code 定址的解析器（`city_name_for`、`country_label_for`），因為景點與店家資料列
+只有 `destination_id` 與 `country_code`，拿不到 profile。
+
+接上的位置比原票 scope 多一處：**`/hotspots/rankings` 的 `city_name`／`country_name`**。
+原票的 scope 沒列 `apps/api/app/hotspots/service.py`，而 facets 與 rankings 都在那裡組出來，
+照原 scope 修會漏掉景點列表旁邊的城市名。
+
+實測（`X-Travel-Locale`）：
+
+| locale | country | city |
+|---|---|---|
+| en | Japan | Tokyo |
+| ja | 日本 | 東京 |
+| ko | 일본 | 도쿄 |
+| zh-CN | 日本 | 东京 |
+| zh-TW | 日本 | 東京 |
+
+目錄不認識的城市或國家維持資料庫裡的字串，不會變成 id。
