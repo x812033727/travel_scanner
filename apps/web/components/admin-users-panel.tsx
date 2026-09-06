@@ -10,8 +10,8 @@ import {
   WalletCards,
   X,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { FormEvent, useEffect, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import { api } from "@/lib/api";
 
 type UserSummary = {
@@ -69,31 +69,29 @@ type AdjustmentResult = {
   replayed: boolean;
 };
 
-const dateTime = new Intl.DateTimeFormat("zh-TW", {
-  dateStyle: "medium",
-  timeStyle: "short",
-});
-const integer = new Intl.NumberFormat("zh-TW");
-const entryLabel: Record<string, string> = {
-  grant: "註冊贈送",
-  package_grant: "次數包",
-  use: "使用服務",
-  admin_adjustment: "後台調整",
-};
-const auditLabel: Record<string, string> = {
-  user_account_updated: "帳號設定變更",
-  user_usage_adjusted: "使用次數調整",
-  "admin_role.updated": "管理員權限變更",
+type Translator = ReturnType<typeof useTranslations>;
+
+const entryKeys = new Set(["grant", "package_grant", "use", "admin_adjustment"]);
+// The audit action is a dotted string upstream, which a message key cannot be.
+const auditKeys: Record<string, string> = {
+  user_account_updated: "user_account_updated",
+  user_usage_adjusted: "user_usage_adjusted",
+  "admin_role.updated": "adminRoleUpdated",
 };
 
-function roleText(user: UserSummary) {
-  if (!user.effective_is_admin) return "一般會員";
-  return user.admin_source === "environment" ? "環境管理員" : "管理員";
+function roleText(t: Translator, user: UserSummary) {
+  if (!user.effective_is_admin) return t("usersPanel.roleMember");
+  return t(user.admin_source === "environment" ? "usersPanel.roleEnvAdmin" : "usersPanel.roleAdmin");
 }
 
 export function AdminUsersPanel() {
   const [data, setData] = useState<UserList>();
   const tAdmin = useTranslations("admin");
+  const locale = useLocale();
+  const dateTime = useMemo(() => new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeStyle: "short" }), [locale]);
+  const integer = useMemo(() => new Intl.NumberFormat(locale), [locale]);
+  const entryLabel = (value: string) => entryKeys.has(value) ? tAdmin(`usersPanel.entry.${value}`) : value;
+  const auditText = (value: string) => auditKeys[value] ? tAdmin(`usersPanel.audit.${auditKeys[value]}`) : value;
   const [query, setQuery] = useState("");
   const [submittedQuery, setSubmittedQuery] = useState("");
   const [page, setPage] = useState(1);
@@ -207,7 +205,7 @@ export function AdminUsersPanel() {
     if (!selected) return;
     const change = Number(usageChange);
     if (!Number.isInteger(change) || change === 0) {
-      setError("請輸入非 0 的整數；正數增加、負數扣除。");
+      setError(tAdmin("usersPanel.adjustInvalid"));
       return;
     }
     setBusy(true);
@@ -226,7 +224,10 @@ export function AdminUsersPanel() {
       setUsageChange("");
       setUsageReason("");
       setNotice(
-        `${change > 0 ? "增加" : "扣除"} ${integer.format(Math.abs(change))} 次，餘額為 ${integer.format(result.balance_after)} 次。`,
+        tAdmin(change > 0 ? "usersPanel.adjustAdded" : "usersPanel.adjustDeducted", {
+          count: integer.format(Math.abs(change)),
+          balance: integer.format(result.balance_after),
+        }),
       );
       await loadUsers();
     } catch (reason) {
@@ -257,21 +258,21 @@ export function AdminUsersPanel() {
 
       {data && (
         <section
-          aria-label="會員統計"
+          aria-label={tAdmin("usersPanel.statsSection")}
           className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
         >
           {[
-            ["會員總數", data.stats.total],
-            ["啟用帳號", data.stats.active],
-            ["管理員", data.stats.administrators],
-            ["可用總次數", data.stats.available_uses],
-          ].map(([label, value]) => (
+            ["statTotal", data.stats.total],
+            ["statActive", data.stats.active],
+            ["statAdmins", data.stats.administrators],
+            ["statAvailable", data.stats.available_uses],
+          ].map(([key, value]) => (
             <div
-              key={String(label)}
+              key={String(key)}
               className="rounded-2xl border border-[var(--line)] bg-white p-5"
             >
               <p className="text-xs font-semibold text-[var(--muted)]">
-                {label}
+                {tAdmin(`usersPanel.${String(key)}`)}
               </p>
               <p className="mt-2 text-3xl font-bold">
                 {integer.format(Number(value))}
@@ -284,21 +285,21 @@ export function AdminUsersPanel() {
       <section className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm md:p-7">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <h2 className="text-xl font-bold">會員清單</h2>
+            <h2 className="text-xl font-bold">{tAdmin("usersPanel.listTitle")}</h2>
             <p className="mt-1 text-sm text-[var(--muted)]">
-              Email 搜尋支援部分文字，結果依註冊時間排序。
+              {tAdmin("usersPanel.listHint")}
             </p>
           </div>
           <form onSubmit={submitSearch} className="flex w-full max-w-md gap-2">
             <label className="sr-only" htmlFor="member-query">
-              搜尋 Email
+              {tAdmin("usersPanel.searchLabel")}
             </label>
             <input
               id="member-query"
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="搜尋 Email"
+              placeholder={tAdmin("usersPanel.searchLabel")}
               className="min-w-0 flex-1 rounded-xl border border-[var(--line)] px-4 py-3"
             />
             <button
@@ -306,7 +307,7 @@ export function AdminUsersPanel() {
               className="flex items-center gap-2 rounded-xl bg-[var(--ink)] px-4 py-3 text-sm font-semibold text-white"
             >
               <Search size={16} />
-              搜尋
+              {tAdmin("usersPanel.searchButton")}
             </button>
           </form>
         </div>
@@ -314,19 +315,19 @@ export function AdminUsersPanel() {
         {loading ? (
           <p className="mt-8 flex items-center gap-2 text-sm text-[var(--muted)]">
             <LoaderCircle size={17} className="animate-spin" />
-            正在讀取會員…
+            {tAdmin("usersPanel.loadingUsers")}
           </p>
         ) : data?.items?.length ? (
           <div className="mt-6 overflow-x-auto">
               <table className="admin-responsive-table admin-users-table w-full min-w-[840px] text-left text-sm">
               <thead>
                 <tr className="border-b border-[var(--line)] text-xs text-[var(--muted)]">
-                  <th className="px-3 py-3">會員</th>
-                  <th className="px-3 py-3">狀態</th>
-                  <th className="px-3 py-3">權限</th>
-                  <th className="px-3 py-3">次數</th>
-                  <th className="px-3 py-3">註冊時間</th>
-                  <th className="px-3 py-3 text-right">操作</th>
+                  <th className="px-3 py-3">{tAdmin("usersPanel.columnMember")}</th>
+                  <th className="px-3 py-3">{tAdmin("usersPanel.columnStatus")}</th>
+                  <th className="px-3 py-3">{tAdmin("usersPanel.columnRole")}</th>
+                  <th className="px-3 py-3">{tAdmin("usersPanel.columnUses")}</th>
+                  <th className="px-3 py-3">{tAdmin("usersPanel.columnJoined")}</th>
+                  <th className="px-3 py-3 text-right">{tAdmin("usersPanel.columnActions")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -339,7 +340,7 @@ export function AdminUsersPanel() {
                       <p className="font-semibold">{user.email}</p>
                       {user.is_self && (
                         <span className="text-xs text-[var(--teal)]">
-                          目前帳號
+                          {tAdmin("usersPanel.currentAccount")}
                         </span>
                       )}
                     </td>
@@ -347,16 +348,16 @@ export function AdminUsersPanel() {
                       <span
                         className={`rounded-full px-2.5 py-1 text-xs font-semibold ${user.is_active ? "bg-emerald-50 text-emerald-800" : "bg-slate-100 text-slate-700"}`}
                       >
-                        {user.is_active ? "啟用" : "停用"}
+                        {tAdmin(user.is_active ? "usersPanel.active" : "usersPanel.inactive")}
                       </span>
                     </td>
-                    <td className="px-3 py-4">{roleText(user)}</td>
+                    <td className="px-3 py-4">{roleText(tAdmin, user)}</td>
                     <td className="px-3 py-4">
                       <strong>{integer.format(user.available_uses)}</strong>{" "}
-                      可用
+                      {tAdmin("usersPanel.availableSuffix")}
                       {user.reserved_uses > 0 && (
                         <span className="ml-1 text-xs text-[var(--muted)]">
-                          （保留 {user.reserved_uses}）
+                          {tAdmin("usersPanel.reserved", { count: user.reserved_uses })}
                         </span>
                       )}
                     </td>
@@ -369,7 +370,7 @@ export function AdminUsersPanel() {
                         onClick={() => openUser(user.id)}
                         className="rounded-lg border border-[var(--line)] px-3 py-2 font-semibold hover:bg-[var(--paper)]"
                       >
-                        管理
+                        {tAdmin("usersPanel.manage")}
                       </button>
                     </td>
                   </tr>
@@ -379,19 +380,19 @@ export function AdminUsersPanel() {
           </div>
         ) : (
           <p className="mt-6 rounded-xl bg-[var(--paper)] p-6 text-sm text-[var(--muted)]">
-            沒有符合條件的會員。
+            {tAdmin("usersPanel.listEmpty")}
           </p>
         )}
 
         {data && (
           <div className="mt-5 flex items-center justify-between text-sm">
             <span className="text-[var(--muted)]">
-              第 {data.page} / {data.pages} 頁，共 {data.total} 位
+              {tAdmin("usersPanel.pageSummary", { page: data.page, pages: data.pages, total: data.total })}
             </span>
             <div className="flex gap-2">
               <button
                 type="button"
-                aria-label="上一頁"
+                aria-label={tAdmin("usersPanel.previous")}
                 disabled={page <= 1 || loading}
                 onClick={() => {
                   setLoading(true);
@@ -403,7 +404,7 @@ export function AdminUsersPanel() {
               </button>
               <button
                 type="button"
-                aria-label="下一頁"
+                aria-label={tAdmin("usersPanel.next")}
                 disabled={page >= data.pages || loading}
                 onClick={() => {
                   setLoading(true);
@@ -421,7 +422,7 @@ export function AdminUsersPanel() {
       {detailLoading && (
         <p className="flex items-center gap-2 text-sm text-[var(--muted)]">
           <LoaderCircle size={17} className="animate-spin" />
-          正在讀取會員詳細資料…
+          {tAdmin("usersPanel.loadingDetail")}
         </p>
       )}
       {selected && (
@@ -441,12 +442,12 @@ export function AdminUsersPanel() {
                 {selected.email}
               </h2>
               <p className="mt-1 text-sm text-[var(--muted)]">
-                註冊於 {dateTime.format(new Date(selected.created_at))}
+                {tAdmin("usersPanel.joinedAt", { time: dateTime.format(new Date(selected.created_at)) })}
               </p>
             </div>
             <button
               type="button"
-              aria-label="關閉會員詳細資料"
+              aria-label={tAdmin("usersPanel.closeDetail")}
               onClick={() => setSelected(undefined)}
               className="rounded-lg border border-[var(--line)] p-2"
             >
@@ -457,9 +458,9 @@ export function AdminUsersPanel() {
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             <div className="rounded-2xl bg-[var(--paper)] p-5">
               <UserCog size={20} className="text-[var(--teal)]" />
-              <p className="mt-3 text-xs text-[var(--muted)]">帳號狀態</p>
+              <p className="mt-3 text-xs text-[var(--muted)]">{tAdmin("usersPanel.accountStatus")}</p>
               <p className="mt-1 font-bold">
-                {selected.is_active ? "啟用" : "停用"}
+                {tAdmin(selected.is_active ? "usersPanel.active" : "usersPanel.inactive")}
               </p>
               <button
                 type="button"
@@ -472,25 +473,25 @@ export function AdminUsersPanel() {
                   setArmedAction(null);
                   void updateAccount(
                     { is_active: !selected.is_active },
-                    selected.is_active
-                      ? "會員帳號已停用。"
-                      : "會員帳號已重新啟用。",
+                    tAdmin(selected.is_active
+                      ? "usersPanel.accountDisabled"
+                      : "usersPanel.accountReactivated"),
                   );
                 }}
                 className={`mt-4 w-full rounded-xl border px-3 py-2 text-sm font-semibold disabled:opacity-40 ${armedAction === "disable" ? "border-red-300 bg-red-50 text-red-800" : "border-[var(--line)]"}`}
               >
-                {armedAction === "disable" ? tAdmin("usersPanel.confirmDisable") : selected.is_active ? "停用帳號" : "重新啟用"}
+                {armedAction === "disable" ? tAdmin("usersPanel.confirmDisable") : tAdmin(selected.is_active ? "usersPanel.disableAccount" : "usersPanel.reactivate")}
               </button>
               {selected.is_self && (
                 <p className="mt-2 text-xs text-[var(--muted)]">
-                  不可停用目前帳號。
+                  {tAdmin("usersPanel.cannotDisableSelf")}
                 </p>
               )}
             </div>
             <div className="rounded-2xl bg-[var(--paper)] p-5">
               <ShieldCheck size={20} className="text-[var(--coral)]" />
-              <p className="mt-3 text-xs text-[var(--muted)]">系統權限</p>
-              <p className="mt-1 font-bold">{roleText(selected)}</p>
+              <p className="mt-3 text-xs text-[var(--muted)]">{tAdmin("usersPanel.systemRole")}</p>
+              <p className="mt-1 font-bold">{roleText(tAdmin, selected)}</p>
               <button
                 type="button"
                 disabled={
@@ -506,33 +507,32 @@ export function AdminUsersPanel() {
                   setArmedAction(null);
                   void updateAccount(
                     { is_admin: !selected.is_admin },
-                    selected.is_admin
-                      ? "管理員權限已移除。"
-                      : "管理員權限已授予。",
+                    tAdmin(selected.is_admin
+                      ? "usersPanel.adminRemoved"
+                      : "usersPanel.adminGranted"),
                   );
                 }}
                 className={`mt-4 w-full rounded-xl border px-3 py-2 text-sm font-semibold disabled:opacity-40 ${armedAction === "admin" ? "border-red-300 bg-red-50 text-red-800" : "border-[var(--line)]"}`}
               >
-                {armedAction === "admin" ? tAdmin("usersPanel.confirmRemoveAdmin") : selected.is_admin ? "移除管理員" : "設為管理員"}
+                {armedAction === "admin" ? tAdmin("usersPanel.confirmRemoveAdmin") : tAdmin(selected.is_admin ? "usersPanel.removeAdmin" : "usersPanel.makeAdmin")}
               </button>
               {selected.admin_source === "environment" && (
                 <p className="mt-2 text-xs text-[var(--muted)]">
-                  由 ADMIN_EMAILS 管理。
+                  {tAdmin("usersPanel.managedByEnv")}
                 </p>
               )}
             </div>
             <div className="rounded-2xl bg-[var(--paper)] p-5">
               <WalletCards size={20} className="text-[var(--teal)]" />
-              <p className="mt-3 text-xs text-[var(--muted)]">可用／保留次數</p>
+              <p className="mt-3 text-xs text-[var(--muted)]">{tAdmin("usersPanel.usesTitle")}</p>
               <p className="mt-1 text-2xl font-bold">
                 {integer.format(selected.available_uses)}{" "}
                 <span className="text-sm font-normal text-[var(--muted)]">
-                  ／ {integer.format(selected.reserved_uses)}
+                  {tAdmin("usersPanel.reservedOfTotal", { count: integer.format(selected.reserved_uses) })}
                 </span>
               </p>
               <p className="mt-4 text-xs text-[var(--muted)]">
-                帳面餘額 {integer.format(selected.remaining_uses)}{" "}
-                次；扣除時不得低於保留次數。
+                {tAdmin("usersPanel.ledgerBalance", { count: integer.format(selected.remaining_uses) })}
               </p>
             </div>
           </div>
@@ -541,23 +541,23 @@ export function AdminUsersPanel() {
             onSubmit={adjustUsage}
             className="mt-6 rounded-2xl border border-[var(--line)] p-5"
           >
-            <h3 className="font-bold">人工調整使用次數</h3>
+            <h3 className="font-bold">{tAdmin("usersPanel.adjustTitle")}</h3>
             <p className="mt-1 text-sm text-[var(--muted)]">
-              正數增加、負數扣除；原因及操作人會永久寫入帳本。
+              {tAdmin("usersPanel.adjustHint")}
             </p>
             {selected.is_self &&
               (selected.can_adjust_usage ? (
                 <p className="mt-2 text-xs font-semibold text-[var(--teal)]">
-                  目前帳號由 ADMIN_EMAILS 授權，可調整自己的使用次數。
+                  {tAdmin("usersPanel.selfAllowed")}
                 </p>
               ) : (
                 <p className="mt-2 text-xs font-semibold text-[var(--coral)]">
-                  不可調整目前管理員自己的次數，請由另一位管理員操作。
+                  {tAdmin("usersPanel.selfBlocked")}
                 </p>
               ))}
             <div className="mt-4 grid gap-4 md:grid-cols-[10rem_1fr_auto]">
               <label className="text-sm font-semibold">
-                調整次數
+                {tAdmin("usersPanel.changeLabel")}
                 <input
                   type="number"
                   required
@@ -567,12 +567,12 @@ export function AdminUsersPanel() {
                   disabled={!selected.can_adjust_usage}
                   value={usageChange}
                   onChange={(event) => setUsageChange(event.target.value)}
-                  placeholder="例如 5 或 -2"
+                  placeholder={tAdmin("usersPanel.changePlaceholder")}
                   className="mt-2 w-full rounded-xl border border-[var(--line)] px-3 py-3 font-normal disabled:opacity-50"
                 />
               </label>
               <label className="text-sm font-semibold">
-                調整原因
+                {tAdmin("usersPanel.reasonLabel")}
                 <input
                   type="text"
                   required
@@ -581,7 +581,7 @@ export function AdminUsersPanel() {
                   disabled={!selected.can_adjust_usage}
                   value={usageReason}
                   onChange={(event) => setUsageReason(event.target.value)}
-                  placeholder="例如：客服補償、修正錯誤加值"
+                  placeholder={tAdmin("usersPanel.reasonPlaceholder")}
                   className="mt-2 w-full rounded-xl border border-[var(--line)] px-3 py-3 font-normal disabled:opacity-50"
                 />
               </label>
@@ -590,21 +590,21 @@ export function AdminUsersPanel() {
                 disabled={busy || !selected.can_adjust_usage}
                 className="self-end rounded-xl bg-[var(--teal)] px-5 py-3 text-sm font-semibold text-white disabled:opacity-50"
               >
-                {busy ? "處理中…" : "寫入調整"}
+                {tAdmin(busy ? "usersPanel.submitting" : "usersPanel.submitAdjust")}
               </button>
             </div>
           </form>
 
           <div className="mt-6 grid gap-6 lg:grid-cols-2">
             <section>
-              <h3 className="font-bold">最近使用紀錄</h3>
+              <h3 className="font-bold">{tAdmin("usersPanel.usageHistory")}</h3>
               {selected.usage_history.length ? (
                 <ol className="mt-3 divide-y divide-[var(--line)]">
                   {selected.usage_history.map((item) => (
                     <li key={item.id} className="py-3 text-sm">
                       <div className="flex items-center justify-between gap-4">
                         <span className="font-semibold">
-                          {entryLabel[item.entry_type] || item.entry_type}
+                          {entryLabel(item.entry_type)}
                         </span>
                         <strong
                           className={
@@ -618,7 +618,7 @@ export function AdminUsersPanel() {
                         </strong>
                       </div>
                       <p className="mt-1 text-[var(--muted)]">
-                        {item.summary} · 餘額 {item.balance_after}
+                        {tAdmin("usersPanel.entrySummary", { summary: item.summary, balance: item.balance_after })}
                       </p>
                       <time className="mt-1 block text-xs text-[var(--muted)]">
                         {dateTime.format(new Date(item.occurred_at))}
@@ -628,18 +628,18 @@ export function AdminUsersPanel() {
                 </ol>
               ) : (
                 <p className="mt-3 text-sm text-[var(--muted)]">
-                  尚無使用紀錄。
+                  {tAdmin("usersPanel.usageEmpty")}
                 </p>
               )}
             </section>
             <section>
-              <h3 className="font-bold">最近管理紀錄</h3>
+              <h3 className="font-bold">{tAdmin("usersPanel.adminHistory")}</h3>
               {selected.admin_history.length ? (
                 <ol className="mt-3 divide-y divide-[var(--line)]">
                   {selected.admin_history.map((item) => (
                     <li key={item.id} className="py-3 text-sm">
                       <span className="font-semibold">
-                        {auditLabel[item.action] || item.action}
+                        {auditText(item.action)}
                       </span>
                       <time className="mt-1 block text-xs text-[var(--muted)]">
                         {dateTime.format(new Date(item.created_at))}
@@ -649,7 +649,7 @@ export function AdminUsersPanel() {
                 </ol>
               ) : (
                 <p className="mt-3 text-sm text-[var(--muted)]">
-                  尚無管理紀錄。
+                  {tAdmin("usersPanel.adminEmpty")}
                 </p>
               )}
             </section>
