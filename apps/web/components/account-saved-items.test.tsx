@@ -88,17 +88,19 @@ describe("AccountSavedItems", () => {
     expect(screen.queryByText("港式奶茶")).toBeNull();
     expect(screen.queryByText("香港海洋公園")).toBeNull();
   });
-
-  it("shows one sign-in prompt instead of three states when signed out", async () => {
-    apiMock.mockImplementation(() => Promise.reject(new ApiError("請先登入後再繼續", 401)));
-
-    render(<SavedItemsProvider><AccountSavedItems /></SavedItemsProvider>);
-
-    const link = await screen.findByRole("link", { name: "前往登入" });
-    expect(link.getAttribute("href")).toContain("/login?next=");
-    // Five counters reading zero and a red "cannot load" alert next to a login
-    // prompt read as three different problems.
+  it("says nothing at all when the reader is not signed in", async () => {
+    // The provider's 401 is the whole answer: the account panel below already offers the
+    // one sentence and the one button, so a second card of zero counts is noise.
+    apiMock.mockReset();
+    apiMock.mockRejectedValue(new ApiError("請先登入後再繼續", 401, "authentication_required"));
+    const { container } = render(
+      <SavedItemsProvider>
+        <AccountSavedItems />
+      </SavedItemsProvider>,
+    );
+    await waitFor(() => expect(container.querySelector("section")).toBeNull());
     expect(screen.queryByRole("alert")).toBeNull();
-    expect(screen.queryByRole("tab", { name: /全部/ })).toBeNull();
+    expect(screen.queryByRole("tab")).toBeNull();
+    expect(apiMock).toHaveBeenCalledTimes(1);
   });
 });
