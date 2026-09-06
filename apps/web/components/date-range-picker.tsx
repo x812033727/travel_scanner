@@ -60,21 +60,20 @@ export function DateRangePicker({ start, end, today, maxDays, countries = holida
   const previewEnd = latestEnd && candidate && candidate >= start && isAvailable(candidate) ? candidate : undefined;
   const tabStop = [focusDay, start, today].find((day) => day && monthOf(day) === visibleMonth) ?? days.find(isAvailable) ?? days[0];
 
-  // One request per country per year on screen, not per month: a national calendar is a
-  // few dozen rows, and paging through a trip's months should not be a request each time.
+  // One request per country, once, covering every month the picker can reach. A national
+  // calendar is a few dozen rows a year, and re-fetching while someone pages through months
+  // would rewrite the grid under their pointer for no gain.
   const countryList = countries.join(",");
-  const visibleYear = visibleMonth.slice(0, 4);
   useEffect(() => {
     if (!countryList) return;
     let current = true;
-    const countryNames = countryList.split(",");
-    void holidayCalendars(countryNames, `${visibleYear}-01-01`, `${visibleYear}-12-31`).then((loaded) => {
+    void holidayCalendars(countryList.split(","), today, addDays(today, 730)).then((loaded) => {
       if (current) setCalendars(loaded);
     });
     return () => {
       current = false;
     };
-  }, [countryList, visibleYear]);
+  }, [countryList, today]);
 
   useEffect(() => {
     if (!focusPending.current || !focusDay) return;
