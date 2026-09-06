@@ -175,3 +175,18 @@ zh-TW 直接回目錄原文，一個字都不動，所以主要語系的文案�
 `city` 已經本地化而 `areas` 沒有的不一致也一起沒了。
 
 `uv run ruff check .`、`mypy app`、`pytest`（1,153 passed）全綠。
+
+
+## 正式站驗證（2026-09-07，部署 1eb573f 之後）
+
+`curl -H 'X-Travel-Locale: <locale>' https://mokaair.com/api/travel/destinations`：
+
+| 語系 | tokyo | seoul | tainan | jeonju | bangkok |
+| --- | --- | --- | --- | --- | --- |
+| en | Shinjuku／Ueno & Asakusa | Myeongdong | West Central District | Hanok Village | Siam／Silom |
+| ja | 新宿／上野・浅草／渋谷 | Myeongdong | 中西区 | 韓屋村／完山公園 | シーロム |
+| ko | Shinjuku／Ueno·Asakusa | 명동／홍대 | West Central District | 한옥마을／완산공원 | Asok·Sukhumvit |
+| zh-CN | 东京站／银座／涩谷 | 东大门 | 中西区 | 韩屋村 | 是隆／河滨 |
+| zh-TW | 新宿／上野／淺草／澀谷 | 明洞 | 中西區 | 韓屋村 | 暹羅／Silom |
+
+zh-TW 與部署前逐字相同。
