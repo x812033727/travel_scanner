@@ -1728,12 +1728,21 @@ def resolve_area_code(
     return area.code if area else None
 
 
+# Simplified spellings for the area names written differently in the two scripts.
+# A table rather than a field on all 393 entries: the catalog is curated in
+# Traditional, most names are identical in both, and one list is what a reader
+# checking the conversion actually wants to see. Produced by
+# ``python -m app.cli fill-simplified-names --source areas`` and reviewed by hand.
+SIMPLIFIED_AREA_NAMES: dict[str, str] = {}
+
+
 def area_name(area: HotspotArea, locale: Locale) -> str:
     name = area.names.get(locale)
     if name:
         return name
     if locale == "zh-CN":
-        return area.names["zh-TW"]
+        traditional = area.names["zh-TW"]
+        return SIMPLIFIED_AREA_NAMES.get(traditional) or traditional
     return area.names.get("en") or area.names["zh-TW"]
 
 

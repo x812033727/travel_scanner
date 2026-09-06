@@ -67,7 +67,9 @@ class AIPlannerCandidate(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     key: str = Field(min_length=3, max_length=160)
-    kind: Literal["hotspot", "merchant"]
+    # "inbox" is a place the traveller pasted into this trip. It is planned like a
+    # hotspot; it just did not come from the catalogue.
+    kind: Literal["hotspot", "merchant", "inbox"]
     name: str = Field(min_length=1, max_length=160)
     local_name: str | None = Field(default=None, max_length=160)
     # Five site locales plus the original script for the place (and, for a
@@ -457,7 +459,7 @@ def _ordered_hotspots(request: AIItineraryRequest) -> list[AIPlannerCandidate]:
         (
             candidate
             for candidate in request.candidates
-            if candidate.kind == "hotspot"
+            if candidate.kind in {"hotspot", "inbox"}
             and candidate.depth_kind != "day_trip"
             and not candidate.is_cross_city
         ),
@@ -775,7 +777,7 @@ def normalize_draft(
                 and item.candidate_key not in used
                 and not (_is_excursion(candidate) and any(_edge_flags(request, day_index)))
                 and (
-                    (item.slot_type == "activity" and candidate.kind == "hotspot")
+                    (item.slot_type == "activity" and candidate.kind in {"hotspot", "inbox"})
                     or (
                         item.slot_type in {"lunch", "dinner"}
                         and candidate.kind == "merchant"
