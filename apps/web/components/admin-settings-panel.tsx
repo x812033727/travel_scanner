@@ -2,9 +2,9 @@
 
 import { Check, EyeOff, Gauge, KeyRound, LoaderCircle, PlugZap, RefreshCw, Save, ShieldCheck, Trash2 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "@/i18n/navigation";
-import { api } from "@/lib/api";
+import { ApiError, api } from "@/lib/api";
 
 type Scalar = string | number | boolean;
 type SecretState = { configured: boolean; masked?: string | null; source: string };
@@ -575,31 +575,63 @@ function YouTubeUsagePanel({ usage, automaticSearchBudget, refreshing, onRefresh
   </div>;
 }
 
+// What actually went wrong, rather than whatever string the rejection carried. The panel used
+// to render `reason.message` straight out of the catch and follow it with the ADMIN_EMAILS
+// hint every time. Two things were wrong with that. A rejection that is not an ApiError never
+// reached the server at all, so its message is a browser string like "Failed to fetch" —
+// untranslated in every locale and about the network, not about permissions. And the
+// ADMIN_EMAILS hint is only true for 401 and 403: an administrator whose laptop had dropped
+// its wifi was being told to go and edit an environment variable on the host.
+type LoadFailure =
+  | { kind: "permission"; detail: string; requestId?: string }
+  | { kind: "unreachable" }
+  | { kind: "failed"; detail: string; requestId?: string };
+
+function loadFailure(reason: unknown): LoadFailure {
+  // Anything that is not an ApiError never reached the server, so its message is a browser
+  // string about the network. An ApiError's message did come from the server and api() has
+  // already localised it, so it is shown for both kinds; only the hint and the retry differ.
+  if (!(reason instanceof ApiError)) return { kind: "unreachable" };
+  return {
+    kind: reason.status === 401 || reason.status === 403 ? "permission" : "failed",
+    detail: reason.message,
+    requestId: reason.requestId,
+  };
+}
+
 export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSettingsScope }) {
   const t = useTranslations("admin");
   const { dateTime } = useFormatters();
   const router = useRouter();
   const [snapshot, setSnapshot] = useState<Snapshot>();
   const [drafts, setDrafts] = useState<Record<string, Draft>>({});
-  const [loadError, setLoadError] = useState<string>();
+  const [loadError, setLoadError] = useState<LoadFailure>();
   const [busyProvider, setBusyProvider] = useState<string>();
   const [notice, setNotice] = useState<string>();
   const [actionError, setActionError] = useState<string>();
   const [usageRefreshing, setUsageRefreshing] = useState(false);
   const [activePanel, setActivePanel] = useState<string>();
 
+  const applySnapshot = useCallback((result: Snapshot) => {
+    setSnapshot(result);
+    setDrafts(makeDrafts(result));
+    setActivePanel((current) => current || result.providers.find((provider) => provider.provider !== "runtime" && provider.provider !== "layout")?.provider);
+  }, []);
+
   useEffect(() => {
     let active = true;
     api<Snapshot>("/admin/provider-settings")
-      .then((result) => {
-        if (!active) return;
-        setSnapshot(result);
-        setDrafts(makeDrafts(result));
-        setActivePanel((current) => current || result.providers.find((provider) => provider.provider !== "runtime" && provider.provider !== "layout")?.provider);
-      })
-      .catch((reason: Error) => { if (active) setLoadError(reason.message); });
+      .then((result) => { if (active) applySnapshot(result); })
+      .catch((reason: unknown) => { if (active) setLoadError(loadFailure(reason)); });
     return () => { active = false; };
-  }, []);
+  }, [applySnapshot]);
+
+  function retryLoad() {
+    setLoadError(undefined);
+    api<Snapshot>("/admin/provider-settings")
+      .then(applySnapshot)
+      .catch((reason: unknown) => setLoadError(loadFailure(reason)));
+  }
 
   function patchDraft(provider: string, patch: Partial<Draft>) {
     setDrafts((current) => ({ ...current, [provider]: { ...current[provider], ...patch } }));
@@ -683,7 +715,14 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
     finally { setBusyProvider(undefined); }
   }
 
-  if (loadError) return <div className="mt-8 rounded-2xl bg-red-50 p-5 text-red-800"><strong>{t("settingsPanel.loadErrorTitle")}</strong><p className="mt-1 text-sm">{loadError}</p><p className="mt-2 text-xs">{t("settingsPanel.loadErrorHint")}</p></div>;
+  if (loadError) return <div className="mt-8 rounded-2xl bg-red-50 p-5 text-red-800">
+    <strong>{t("settingsPanel.loadErrorTitle")}</strong>
+    <p className="mt-1 text-sm">{loadError.kind === "unreachable" ? t("settingsPanel.loadErrorUnreachable") : loadError.detail}</p>
+    {/* Only 401 and 403 are actually about who you are signed in as. */}
+    {loadError.kind === "permission" && <p className="mt-2 text-xs">{t("settingsPanel.loadErrorHint")}</p>}
+    {loadError.kind !== "unreachable" && loadError.requestId && <p className="mt-2 text-xs">{t("settingsPanel.loadErrorRequestId", { id: loadError.requestId })}</p>}
+    {loadError.kind !== "permission" && <button type="button" onClick={retryLoad} className="mt-3 inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-white px-3 py-2 text-sm font-semibold"><RefreshCw size={14} />{t("settingsPanel.loadErrorRetry")}</button>}
+  </div>;
   if (!snapshot) return <p className="mt-8 flex items-center gap-2 text-[var(--muted)]"><LoaderCircle className="animate-spin" size={18} />{t("settingsPanel.loading")}</p>;
 
   const visibleProviders = snapshot.providers.filter((provider) => {
