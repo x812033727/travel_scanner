@@ -59,3 +59,20 @@ CLS 0.2882，來自 t=4065ms 的一次遲到的位移，三次量測都一模一
 
 驗證：測試釘住「有 server 給的清單時，畫面第一次繪製就有東西，而且不再打 `/foods/cities`
 與 `/foods/categories`」。CLS 的實測要等部署後在正式站量（本機沒有 API 可以跑起整頁）。
+
+
+## 正式站量測（2026-09-07，部署 1eb573f 之後）
+
+Playwright、乾淨的 context（沒有 localStorage，所以是預設字級），`layout-shift` 觀察器在
+第一次繪製之前就掛好：
+
+| 頁面 | 390×844 | 1280×800 |
+| --- | --- | --- |
+| `/zh-TW/foods` | **CLS 0**（0 次位移） | **CLS 0** |
+| `/zh-TW/hotspots` | CLS 0 | CLS 0 |
+
+原本記的是 0.29、第四秒還在跳版。伺服器端先給城市與分類清單之後，位移一次都沒有。
+
+（順帶一提：**不要用嵌入式瀏覽器量 CLS**。它的 `PerformanceObserver` 對 `layout-shift`
+不會回報——連自己插一個 220px 的 div 強迫位移都收不到事件，`supportedEntryTypes` 卻說支援。
+只有最外層 main frame 才算數。量之前先自己做一次「一定會位移」的對照。）
