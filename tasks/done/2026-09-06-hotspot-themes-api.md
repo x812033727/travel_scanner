@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-hotspot-themes-api
 title: 熱門景點季節與購物主題：資料模型、種子與公開 API
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-06T14:48:16Z
 created_at: 2026-09-06T14:48:15Z
-completed_at:
+completed_at: 2026-09-06T16:49:19Z
 branch: claude/attractions-seasonal-categories-4817d7
 depends_on: []
 scope:

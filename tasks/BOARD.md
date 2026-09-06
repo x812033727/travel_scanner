@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**8 open · 2 in progress · 2 blocked · 5 in review · 83 done**
+**8 open · 1 in progress · 2 blocked · 5 in review · 84 done**
 
 ## Ready to claim
 
@@ -14,6 +14,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P2 | [AI 備援警告把 provider 名稱與 Python 例外類別秀給旅客看](open/2026-09-06-ai-warning-copy.md) | api | `apps/api/app/ai/itinerary.py`<br>`apps/api/tests/test_ai_itinerary.py` |
+| P2 | [選 Gemini 做景點介紹搜尋會 500：run 表的 provider 檢查沒有 gemini](open/2026-09-06-gemini-guide-run-check.md) | api | `apps/api/app/models.py`<br>`apps/api/migrations`<br>`apps/api/tests/test_hotspot_admin_guides.py` |
 | P3 | [四個景點的分類被標成 shopping，其實是公園、城跡與神社](open/2026-09-06-seed-category-shopping-mistakes.md) | api | `apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_hotspot_seed_categories.py` |
 
 ## In progress
@@ -21,7 +22,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | claude-opus-5 | 2026-09-06T13:20:48Z | `claude/place-names-i18n` |
-| [熱門景點季節與購物主題：資料模型、種子與公開 API](open/2026-09-06-hotspot-themes-api.md) | claude-opus-5 | 2026-09-06T14:48:16Z | `claude/attractions-seasonal-categories-4817d7` |
 
 ## In review
 
@@ -43,11 +43,11 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [手機版行程頁的浮動元件佔掉三分之一畫面](open/2026-09-06-planner-mobile-chrome.md) | active work in the same scope |
 | P2 | [行程天氣面板在日期超出預報範圍時仍列出 10 天無關天氣](open/2026-09-06-trip-weather-out-of-range.md) | active work in the same scope |
 | P2 | [後台審核頁在看到第一筆待審之前先給 30 個控制項](open/2026-09-06-admin-review-density.md) | active work in the same scope |
-| P2 | [選 Gemini 做景點介紹搜尋會 500：run 表的 provider 檢查沒有 gemini](open/2026-09-06-gemini-guide-run-check.md) | active work in the same scope |
 | P3 | [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](open/2026-09-06-admin-load-error-copy.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-06 [熱門景點季節與購物主題：資料模型、種子與公開 API](done/2026-09-06-hotspot-themes-api.md)
 - 2026-09-06 [日曆的假日圓點應該跟著目的地國家](done/2026-09-06-holiday-dots-follow-destination.md)
 - 2026-09-06 [供應商就緒狀態只看金鑰有無，卡片會綠燈但功能不通](done/2026-09-06-configured-readiness-beyond-key-presence.md)
 - 2026-09-06 [Booking Demand 連線測試停在城市 ID，從不解析旅館報價](done/2026-09-06-booking-demand-test-parses-an-offer.md)
@@ -57,4 +57,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-06 [後台 AI 規劃連線測試送空候選，看不見真正會壞的那一步](done/2026-09-06-admin-planner-test-real-candidates.md)
 - 2026-09-06 [Wikidata 標籤原封不動存入，消歧義括號會顯示給使用者](done/2026-09-06-wikidata-labels-stored-verbatim.md)
 - 2026-09-06 [seed 的韓文假名泰文名稱被當成中文標籤輸出](done/2026-09-06-non-chinese-seed-names-as-chinese-labels.md)
-- 2026-09-06 [社群登入上線前置：正式主機收斂與 Apple 網域驗證檔](done/2026-09-06-social-login-launch-prep.md)
