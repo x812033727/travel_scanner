@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-hotspot-intros
 title: 景點的第一手介紹：儲存、審核與呈現
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-06T17:48:40Z
 created_at: 2026-09-06T17:48:17Z
-completed_at:
+completed_at: 2026-09-06T17:50:07Z
 branch: claude/hotspot-intros
 depends_on: []
 scope:
@@ -28,6 +28,7 @@ scope:
   - apps/web/messages/zh-CN/hotspots.json
   - docs/hotspot-themes.md
 ---
+
 # 景點的第一手介紹：儲存、審核與呈現
 
 ## Why
