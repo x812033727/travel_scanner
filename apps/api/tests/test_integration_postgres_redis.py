@@ -1934,10 +1934,8 @@ async def test_a_shared_trip_can_be_copied_into_the_readers_own_account(
 ) -> None:
     """The reader gets their own trip; the author keeps theirs, notes included."""
 
-    def unexpected_enqueue(*_args: object, **_kwargs: object) -> None:
-        raise AssertionError("manual blank creation must not enqueue routing")
-
-    monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", unexpected_enqueue)
+    # Saving an itinerary queues routing for the day; the worker is not part of this test.
+    monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", lambda *_a, **_k: None)
 
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as client:
