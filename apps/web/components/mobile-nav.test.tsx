@@ -31,6 +31,12 @@ describe("MobileNav", () => {
     for (const label of ["外觀主題", "語言"]) {
       expect(within(menu).getAllByText(label).some((node) => !node.className.includes("sr-only"))).toBe(true);
     }
+    // Each row also says what it is set to, so the icon confirms rather than carries it.
+    // The select carries the same words as its options, so look for the one that is
+    // rendered as text beside the control.
+    for (const value of ["跟隨系統", "繁體中文"]) {
+      expect(within(menu).getAllByText(value).some((node) => node.tagName === "SPAN")).toBe(true);
+    }
   });
 
   it("links to the account after authentication", async () => {

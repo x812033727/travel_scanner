@@ -1,15 +1,17 @@
 "use client";
 
 import { CircleUserRound, LogIn, Menu, ShieldCheck, X } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { useTheme } from "@/components/theme-provider";
 import { useHeaderSession } from "@/components/header-session";
 import { TextSizeSwitcher } from "@/components/text-size-switcher";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { Link } from "@/i18n/navigation";
+import { localeLabels, type Locale } from "@/i18n/routing";
 import { primaryNavLinks } from "@/lib/nav-links";
 import { featureVisible } from "@/lib/site-features";
 
@@ -17,6 +19,9 @@ export function MobileNav() {
   const { status, user } = useHeaderSession();
   const nav = useTranslations("navigation");
   const common = useTranslations("common");
+  const locale = useLocale() as Locale;
+  const { preference } = useTheme();
+  const themeValue = nav(preference === "system" ? "themeSystem" : preference === "dark" ? "themeDark" : "themeLight");
   const visibility = useSiteVisibility();
   const [open, setOpen] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -77,20 +82,30 @@ export function MobileNav() {
             <X size={18} />
           </button>
         </div>
+        {/* Above the destinations, because someone who cannot read the destinations
+            needs this first; and each row says what it is set to, so the icon is
+            confirmation rather than the only clue. */}
+        <div className="mb-5 grid gap-4 border-b border-[var(--line)] pb-5">
+          <TextSizeSwitcher variant="expanded" />
+          <div className="flex min-h-12 items-center justify-between gap-3">
+            <span className="text-sm font-bold text-[var(--muted)]">{nav("themeLabel")}</span>
+            <span className="flex items-center gap-2.5">
+              <span className="text-sm font-semibold">{themeValue}</span>
+              <ThemeSwitcher />
+            </span>
+          </div>
         <nav aria-label={nav("primaryLabel")} className="grid gap-1">
           {links.map((item) => <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">
             {nav(item.key)}
           </Link>)}
         </nav>
-        <div className="mt-5 grid gap-4 border-t border-[var(--line)] pt-5">
-          <TextSizeSwitcher variant="expanded" />
-          <div className="flex min-h-12 items-center justify-between gap-3">
-            <span className="text-sm font-bold text-[var(--muted)]">{nav("themeLabel")}</span>
-            <ThemeSwitcher />
-          </div>
+
           <div className="flex min-h-12 items-center justify-between gap-3">
             <span className="text-sm font-bold text-[var(--muted)]">{common("language")}</span>
-            <LanguageSwitcher compact />
+            <span className="flex items-center gap-2.5">
+              <span className="text-sm font-semibold">{localeLabels[locale]}</span>
+              <LanguageSwitcher compact />
+            </span>
           </div>
         </div>
       </div>
