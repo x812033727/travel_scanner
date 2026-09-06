@@ -28,6 +28,7 @@ async def test_trip_weather_uses_an_owned_trip_coordinate_and_marks_future_dates
         destination_name="東京",
         start_date=date(2026, 12, 20),
         end_date=date(2026, 12, 24),
+        timezone="Asia/Tokyo",
     )
     item = SimpleNamespace(
         item_type="activity",
@@ -85,6 +86,8 @@ async def test_trip_weather_uses_an_owned_trip_coordinate_and_marks_future_dates
         observed_limits.append((namespace, identifier, limit, window_seconds))
 
     class WeatherStub:
+        configured = True
+
         def __init__(self, *_args: object) -> None:
             pass
 
@@ -92,13 +95,17 @@ async def test_trip_weather_uses_an_owned_trip_coordinate_and_marks_future_dates
             assert kwargs["latitude"] == 35.6812
             assert kwargs["longitude"] == 139.7671
             assert kwargs["location_name"] == "東京"
+            # The trip's own timezone and the request locale reach the provider, so
+            # MET Norway can bucket hours into the traveller's days and label them.
+            assert kwargs["timezone"] == "Asia/Tokyo"
+            assert kwargs["language_code"] == "ja"
             return forecast
 
     monkeypatch.setattr(trips_router, "owned_trip", owned_trip)
     monkeypatch.setattr(trips_router, "load_runtime_settings", load_settings)
     monkeypatch.setattr(trips_router, "load_items", load_items)
     monkeypatch.setattr(trips_router, "hydrate_legacy_items", hydrate)
-    monkeypatch.setattr(trips_router, "GoogleWeatherService", WeatherStub)
+    monkeypatch.setattr(trips_router, "TripWeatherService", WeatherStub)
     monkeypatch.setattr(trips_router, "get_redis", lambda: object())
     monkeypatch.setattr(trips_router, "enforce_named_rate_limit", enforce_limit)
 
@@ -106,6 +113,7 @@ async def test_trip_weather_uses_an_owned_trip_coordinate_and_marks_future_dates
         trip_id,
         SimpleNamespace(id=user_id),  # type: ignore[arg-type]
         object(),  # type: ignore[arg-type]
+        "ja",
     )
 
     assert observed_owner == [(user_id, trip_id)]

@@ -33,6 +33,7 @@ type DailyWeather = {
   max_temperature_c: number;
   relative_humidity_percent?: number | null;
   precipitation_probability_percent?: number | null;
+  precipitation_mm?: number | null;
   wind_speed_kph?: number | null;
   uv_index?: number | null;
 };
@@ -64,6 +65,13 @@ function dayLabel(value: string, locale: string) {
 
 function valueOrDash(value?: number | null, suffix = "") {
   return value == null ? "—" : `${Math.round(value)}${suffix}`;
+}
+
+/** A chance of rain when the source gives one, otherwise the forecast amount. */
+function rainValue(day: DailyWeather) {
+  if (day.precipitation_probability_percent != null) return valueOrDash(day.precipitation_probability_percent, "%");
+  if (day.precipitation_mm != null) return `${day.precipitation_mm} mm`;
+  return "—";
 }
 
 export function TripWeatherPanel({
@@ -132,7 +140,7 @@ export function TripWeatherPanel({
     <section aria-label={t("title")} className="mb-5 overflow-hidden rounded-2xl border border-sky-100 bg-[linear-gradient(135deg,#f8fcff,#eef8f8)] p-4 shadow-sm sm:p-5">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold tracking-[.14em] text-sky-800">GOOGLE WEATHER</p>
+          <p className="text-xs font-semibold tracking-[.14em] text-sky-800">{weather.attribution.toUpperCase()}</p>
           <h2 className="mt-1 text-lg font-bold">{t("locationTitle", { location: weather.location_name })}</h2>
           <p className="mt-1 text-xs text-[var(--muted)]">{t("subtitle")}</p>
         </div>
@@ -149,7 +157,7 @@ export function TripWeatherPanel({
 
       {activeForecast ? (
         <div className="mt-4 grid grid-cols-2 gap-2 rounded-2xl bg-white/75 p-3 sm:grid-cols-4" aria-label={t("summaryLabel", { day: activeDay })}>
-          <div className="flex items-center gap-2"><Umbrella size={16} className="text-sky-700" /><span className="text-xs">{t("rain")} <strong>{valueOrDash(activeForecast.precipitation_probability_percent, "%")}</strong></span></div>
+          <div className="flex items-center gap-2"><Umbrella size={16} className="text-sky-700" /><span className="text-xs">{t("rain")} <strong>{rainValue(activeForecast)}</strong></span></div>
           <div className="flex items-center gap-2"><Droplets size={16} className="text-sky-700" /><span className="text-xs">{t("humidity")} <strong>{valueOrDash(activeForecast.relative_humidity_percent, "%")}</strong></span></div>
           <div className="flex items-center gap-2"><Wind size={16} className="text-sky-700" /><span className="text-xs">{t("wind")} <strong>{valueOrDash(activeForecast.wind_speed_kph, " km/h")}</strong></span></div>
           <div className="flex items-center gap-2"><Sun size={16} className="text-amber-600" /><span className="text-xs">UV <strong>{valueOrDash(activeForecast.uv_index)}</strong></span></div>
@@ -170,7 +178,7 @@ export function TripWeatherPanel({
                 <WeatherIcon type={day.condition.type} className="my-2 text-sky-700" />
                 <p className="truncate text-xs text-[var(--muted)]" title={day.condition.description}>{day.condition.description}</p>
                 <p className="mt-1 text-sm font-bold tabular-nums">{Math.round(day.min_temperature_c)}°–{Math.round(day.max_temperature_c)}°</p>
-                <p className="mt-1 flex items-center gap-1 text-[.68rem] text-sky-800"><Umbrella size={12} />{valueOrDash(day.precipitation_probability_percent, "%")}</p>
+                <p className="mt-1 flex items-center gap-1 text-[.68rem] text-sky-800"><Umbrella size={12} />{rainValue(day)}</p>
               </article>
             );
           })}

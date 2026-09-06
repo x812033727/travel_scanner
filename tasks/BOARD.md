@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**21 open · 4 in progress · 1 blocked · 0 in review · 36 done**
+**22 open · 4 in progress · 1 blocked · 1 in review · 36 done**
 
 ## Ready to claim
 
@@ -18,11 +18,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [21 個潮流街區還沒有任何店家](open/2026-09-06-empty-trend-districts.md) | api | `apps/api/app/foods/data/trend_merchants.json` |
 | P2 | [營業時間感知排程：AI 排程不把景點排在打烊時段](open/2026-09-06-opening-hours-aware-scheduling.md) | api | `apps/api/app/trips/hours.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/web/components/day-health-strip.tsx` |
 | P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | api | `apps/api/app/trips/routing.py`<br>`apps/api/tests/test_trip_routing.py` |
-| P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/route_planner.py`<br>`apps/api/tests/test_trip_route_planner.py` |
 | P3 | [註冊關閉頁的小標與 H1 是同一句話](open/2026-09-06-auth-duplicate-heading.md) | web | `apps/web/messages/en/auth.json`<br>`apps/web/messages/ja/auth.json`<br>`apps/web/messages/ko/auth.json`<br>`apps/web/messages/zh-CN/auth.json`<br>`apps/web/messages/zh-TW/auth.json` |
 | P3 | [桌機主導覽文字連結只有 20px 高](open/2026-09-06-desktop-nav-touch-targets.md) | web | `apps/web/components/site-navigation.tsx` |
 | P3 | [首頁精靈步驟標籤在英文 390px 會截字](open/2026-09-06-wizard-step-label-truncation.md) | web | `apps/web/components/search-workbench.tsx` |
-| P3 | [後台的登入時效設定要能真的生效](open/2026-09-06-admin-session-settings.md) | api | `apps/api/app/auth/service.py`<br>`apps/api/app/admin/service.py` |
 | P3 | [ICS 行事曆匯出](open/2026-09-06-ics-calendar-export.md) | api | `apps/api/app/trips/ics.py`<br>`apps/api/app/trips/export_router.py`<br>`apps/web/components/trip-tools-panel.tsx` |
 | P3 | [列印版行程表（一天一頁的 A5 列印樣式）](open/2026-09-06-printable-itinerary.md) | web | `apps/web/app/[locale]/trips/[id]/print`<br>`apps/web/app/globals.css` |
 | P3 | [誠實路段守衛：拒絕 0 分鐘路段與漏掉步行段的轉乘方案](open/2026-09-06-honest-leg-guard.md) | api | `apps/api/app/trips/routing.py`<br>`apps/web/components/route-mode-panel.tsx` |
@@ -43,7 +41,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In review
 
-_Nothing here._
+| Task | Owner | Branch |
+| --- | --- | --- |
+| [旅程天氣改由 MET Norway 供應，Google Weather 退為備援](open/2026-09-06-weather-met-norway.md) | claude-fable-5.1 | `claude/weather-met-norway` |
 
 ## Waiting
 
@@ -51,7 +51,10 @@ _Nothing here._
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P2 | [貼 Google Maps 連結加景點（待安排 inbox）](open/2026-09-06-paste-maps-links-ingest.md) | active work in the same scope |
+| P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | active work in the same scope |
+| P2 | [匯率改由 Currency-api 供應，Frankfurter 退為備援；行程報價與記帳顯示換算](open/2026-09-06-fx-currency-api.md) | active work in the same scope |
 | P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | active work in the same scope |
+| P3 | [後台的登入時效設定要能真的生效](open/2026-09-06-admin-session-settings.md) | active work in the same scope |
 | P3 | [行程狀態標籤與封面圖](open/2026-09-06-trip-status-and-cover.md) | active work in the same scope |
 
 ## Recently finished
