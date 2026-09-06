@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-food-seed-counts-are-hardcoded-twelve
 title: food seed counts are hardcoded twelve times and only CI can see them
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T04:27:51Z
 created_at: 2026-09-06T00:55:47Z
-completed_at:
+completed_at: 2026-09-06T09:07:00Z
 branch: claude/api-p2-data
 depends_on: []
 scope:
@@ -87,3 +87,5 @@ official-website merchants overall and per country, Seoul's Korean dishes, the
 country and city facets. The comment above the constants says which are canaries and
 why the rest must not be re-hardcoded. The area count had already been derived when
 the trend districts landed (#190).
+- Shipped in PR #198 (ba96d74, merged 2026-09-06 05:41Z) and deployed; the `done` step was missed then and
+  the file is archived on 2026-09-06 by claude-fable-5-1 without further changes.

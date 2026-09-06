@@ -91,3 +91,6 @@ DuckDuckGo。**45 家**寫進 `trend_merchants.json`（101 → 146），全部 p
 - 社群頁當來源的只有 3 家（きゅうり喫茶店、民生咖啡、Gecko），confidence 都標 medium；
   其餘 42 家是店家官網或官方機構頁。
 - 正式機：部署後 `import-trend-merchants` dry-run → `--apply`，數字補在下方。
+- 2026-09-06 部署 66e6bbb 後 `import-trend-merchants --file trend_merchants.json --apply`：新建 45 家（原有 101 列
+  全部 skipped，冪等），都是 pending／inactive／unverified，等後台審。空商圈 21 → 3：
+  `hong-kong-sham-shui-po`、`hong-kong-poho`、`ho-chi-minh-city-nguyen-thai-binh`（理由如上）。

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-multi-locale-guide-backfill
 title: Guide backfill searches one locale, so four locales stay empty
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T04:27:51Z
 created_at: 2026-09-06T00:52:15Z
-completed_at:
+completed_at: 2026-09-06T09:06:59Z
 branch: claude/api-p2-data
 depends_on: []
 scope:
@@ -104,3 +104,5 @@ limit, not a setting. Brave and Gemini daily budgets are admin-adjustable per pr
   can be set to `zh-TW,ja,ko,en,zh-CN` from the admin; the pass order makes that safe
   to do immediately. Left for the ops pass so the change is made from the admin UI
   with the audit log, not by hand.
+- Shipped in PR #198 (ba96d74, merged 2026-09-06 05:41Z) and deployed; the `done` step was missed then and
+  the file is archived on 2026-09-06 by claude-fable-5-1 without further changes.

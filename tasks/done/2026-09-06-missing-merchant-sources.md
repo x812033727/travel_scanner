@@ -96,3 +96,6 @@ TH 5、TW 2、HK 1、VN 2），`MERCHANT_DIRECT_SOURCE_SEEDS` 63 → 113（其�
   （只有 Silom 一攤）、Wrap & Roll 海巴征店（已不在官網名單）、西羅殿（牛肉湯店卻對到臭豆腐）、
   Gogung 大邱、팔공삼겹살、王記割包、老周／老江。
 - 正式機 `fill-food-merchant-coordinates` 在部署後跑，`no_source` 的變化補在下方。
+- 2026-09-06 部署 66e6bbb（#206）後，正式機 `fill-food-merchant-coordinates` dry-run：`no_source` 109 → 31、
+  `http_403` 6（tabelog 代管頁與幾個擋機器人的官網，人工開得到）、`would_fill` 1、`no_coordinates` 144；
+  `--apply` 後 `filled` 1。剩下的 31 家就是上面「查無第一方頁面」與「要人看 seed」的那些。

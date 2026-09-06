@@ -1,4 +1,4 @@
-from unittest.mock import AsyncMock
+from unittest.mock import AsyncMock, Mock
 from uuid import uuid4
 
 import pytest
@@ -35,6 +35,12 @@ def make_user(password: str) -> User:
     )
 
 
+def _mock_session() -> AsyncMock:
+    session = AsyncMock()
+    session.scalars.return_value.all = Mock(return_value=[])
+    return session
+
+
 @pytest.mark.asyncio
 async def test_change_password_requires_authentication() -> None:
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
@@ -50,6 +56,7 @@ async def test_change_password_requires_authentication() -> None:
 async def test_change_password_rejects_wrong_current_password() -> None:
     user = make_user("correct-password-1")
     session = AsyncMock()
+    session.scalars.return_value.all = Mock(return_value=[])
     app.dependency_overrides[current_user] = lambda: user
     app.dependency_overrides[get_session] = lambda: session
     try:
@@ -70,7 +77,7 @@ async def test_change_password_rejects_wrong_current_password() -> None:
 async def test_change_password_rejects_short_new_password() -> None:
     user = make_user("correct-password-1")
     app.dependency_overrides[current_user] = lambda: user
-    app.dependency_overrides[get_session] = lambda: AsyncMock()
+    app.dependency_overrides[get_session] = _mock_session
     try:
         async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
             response = await client.post(
@@ -87,6 +94,7 @@ async def test_change_password_updates_the_stored_hash() -> None:
     user = make_user("correct-password-1")
     old_token = create_access_token(user.id, user.auth_version)
     session = AsyncMock()
+    session.scalars.return_value.all = Mock(return_value=[])
     app.dependency_overrides[current_user] = lambda: user
     app.dependency_overrides[get_session] = lambda: session
     try:
