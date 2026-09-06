@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**5 open · 2 in progress · 2 blocked · 0 in review · 122 done**
+**5 open · 3 in progress · 2 blocked · 0 in review · 122 done**
 
 ## Ready to claim
 
@@ -25,6 +25,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [沒有帳號的人走到底是死路：註冊已關閉，但每道牆只寫「前往登入」](open/2026-09-06-auth-dead-end.md) | claude-opus-5 | 2026-09-06T21:06:28Z | `claude/ux-auth-walls` |
 | [熱門景點：重新整理丟掉搜尋、看不出套用了什麼、清除條件只在零結果時出現](open/2026-09-06-hotspot-filter-visibility.md) | claude-opus-5 | 2026-09-06T21:45:06Z | `claude/ux-hotspot-filters` |
+| [撤回 name_en 之後，既有的列還留著沒有出處的音譯](open/2026-09-06-reset-drifted-merchant-names.md) | claude-opus-5 | 2026-09-06T22:08:47Z | `claude/merchant-name-reconcile` |
 
 ## In review
 

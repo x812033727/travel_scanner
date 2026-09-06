@@ -756,6 +756,15 @@ def main() -> None:
     english_names.add_argument(
         "--apply", action="store_true", help="Write the changes (default: report only)"
     )
+    english_names.add_argument(
+        "--reset-drifted",
+        action="store_true",
+        help=(
+            "Also pull back a row whose name matches neither what the file says now nor what "
+            "it said before — a withdrawn name_en leaves one stranded. Cannot tell that from "
+            "an administrator's rename, so read the dry run first"
+        ),
+    )
     simplified = subparsers.add_parser(
         "fill-simplified-names",
         help=(
@@ -855,7 +864,9 @@ def main() -> None:
         )
         print(json.dumps(summary, ensure_ascii=False, indent=2))
     elif args.command == "backfill-merchant-english-names":
-        english_summary = asyncio.run(backfill_english_names(apply=args.apply))
+        english_summary = asyncio.run(
+            backfill_english_names(apply=args.apply, reset_drifted=args.reset_drifted)
+        )
         print(json.dumps(english_summary, ensure_ascii=False, indent=2))
     elif args.command == "fill-simplified-names":
         simplified_summary = asyncio.run(
