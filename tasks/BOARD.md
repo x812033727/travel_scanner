@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**18 open · 4 in progress · 1 blocked · 0 in review · 42 done**
+**18 open · 5 in progress · 1 blocked · 0 in review · 42 done**
 
 ## Ready to claim
 
@@ -36,6 +36,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Guide backfill searches one locale, so four locales stay empty](open/2026-09-06-multi-locale-guide-backfill.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
 | [Re-seeding never corrects an existing dish name or summary](open/2026-09-06-seed-localization-reconcile.md) | claude-fable-5-1 | 2026-09-06T04:27:50Z | `claude/api-p2-data` |
 | [usage catalog validation rejects everything when web ships ahead of api](open/2026-09-06-usage-catalog-validation-rejects-everything-when.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
+| [用 AI 審核 1,270 筆待審介紹候選](open/2026-09-06-ai-review-guide-backlog.md) | claude-opus-5 | 2026-09-06T09:05:00Z | `claude/ai-review-guide-backlog` |
 | [food seed counts are hardcoded twelve times and only CI can see them](open/2026-09-06-food-seed-counts-are-hardcoded-twelve.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
 
 ## In review
