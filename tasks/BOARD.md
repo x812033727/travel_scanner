@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**37 open · 0 in progress · 0 blocked · 3 in review · 17 done**
+**36 open · 0 in progress · 0 blocked · 4 in review · 17 done**
 
 ## Ready to claim
 
@@ -15,7 +15,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | P1 | [272 家店家裡只有 2 家有耐久座標，美食目錄幾乎發不出東西](open/2026-09-06-merchant-coordinate-backlog.md) | ops | `apps/api/app/foods/place_matching.py`<br>`apps/api/app/foods/coordinate_queue.py`<br>`apps/web/components/admin-merchant-coordinate-queue.tsx` |
 | P1 | [Most merchants have no first-party page, so nothing can locate them](open/2026-09-06-missing-merchant-sources.md) | api | `apps/api/app/foods/merchant_catalog.py` |
-| P1 | [行程編輯後不清整天路段、缺的段用距離估計、按鈕不再預設 refresh](open/2026-09-06-route-editor-partial-invalidation.md) | web | `apps/web/lib/trip-types.ts`<br>`apps/web/lib/trip-types.test.ts`<br>`apps/web/components/trip-editor.tsx`<br>`apps/web/components/trip-editor.test.tsx`<br>`apps/web/components/route-timeline-link.tsx`<br>`apps/web/components/route-timeline-link.test.tsx`<br>`apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/zh-TW/trips.json` |
 | P2 | [Nine merchant citations are dead, unreachable or not HTML](open/2026-09-06-broken-merchant-citations.md) | api | `apps/api/app/foods/merchant_catalog.py` |
 | P2 | [Guide backfill searches one locale, so four locales stay empty](open/2026-09-06-multi-locale-guide-backfill.md) | api | `apps/api/app/hotspots/guides.py` |
 | P2 | [Re-seeding never corrects an existing dish name or summary](open/2026-09-06-seed-localization-reconcile.md) | api | `apps/api/app/foods/service.py` |
@@ -39,10 +38,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [food seed counts are hardcoded twelve times and only CI can see them](open/2026-09-06-food-seed-counts-are-hardcoded-twelve.md) | api | `apps/api/tests/test_food_integration.py` |
 | P3 | [ICS 行事曆匯出](open/2026-09-06-ics-calendar-export.md) | api | `apps/api/app/trips/ics.py`<br>`apps/api/app/trips/export_router.py`<br>`apps/web/components/trip-tools-panel.tsx` |
 | P3 | [列印版行程表（一天一頁的 A5 列印樣式）](open/2026-09-06-printable-itinerary.md) | web | `apps/web/app/[locale]/trips/[id]/print`<br>`apps/web/app/globals.css` |
-| P3 | [最佳化上限的 UX：超過 12 個可移動景點時先提示而不是 422](open/2026-09-06-optimizer-limit-ux.md) | web | `apps/web/components/route-mode-panel.tsx`<br>`apps/web/components/trip-editor.tsx` |
 | P3 | [PWA、Android share target 與今日檢視](open/2026-09-06-pwa-share-target-today-view.md) | web | `apps/web/app/manifest.ts`<br>`apps/web/public`<br>`apps/web/components/today-view.tsx` |
 | P3 | [分享頁「存成我的行程」與 QR code](open/2026-09-06-share-fork-and-qr.md) | api | `apps/api/app/trips/share_router.py`<br>`apps/web/components/shared-trip-view.tsx` |
-| P3 | [已存行程頁掛上分潤選項](open/2026-09-06-trip-affiliate-options.md) | web | `apps/web/components/trip-editor.tsx`<br>`apps/web/components/affiliate-partner-options.tsx` |
 | P3 | [行程狀態標籤與封面圖](open/2026-09-06-trip-status-and-cover.md) | api | `apps/api/app/trips/metadata.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-meta-editor.tsx` |
 
 ## In progress
@@ -55,6 +52,7 @@ _Nothing here._
 | --- | --- | --- |
 | [路線快取 key 依 provider 的時間粒度；DB 路段過期與 Redis TTL 分開](open/2026-09-06-route-cache-time-key.md) | claude-fable-5.1 | `claude/route-cache-time-key` |
 | [整天重算只打真的缺的路段；編輯後不再自動整趟重算](open/2026-09-06-route-recompute-reuses-saved-segments.md) | claude-fable-5.1 | `claude/route-recompute-reuses-saved-segments` |
+| [行程編輯後不清整天路段、缺的段用距離估計、按鈕不再預設 refresh](open/2026-09-06-route-editor-partial-invalidation.md) | claude-fable-5.1 | `claude/route-editor-partial-invalidation` |
 | [最佳化用距離估計排順序、系統卡變更只作廢碰到的路段、步行汽車不看偏好](open/2026-09-06-route-optimizer-estimates.md) | claude-fable-5.1 | `claude/route-optimizer-estimates` |
 
 ## Waiting
@@ -67,6 +65,8 @@ _Nothing here._
 | P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | depends on 2026-09-06-route-recompute-reuses-saved-segments |
 | P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | depends on 2026-09-06-stale-gemini-model-help |
 | P3 | [誠實路段守衛：拒絕 0 分鐘路段與漏掉步行段的轉乘方案](open/2026-09-06-honest-leg-guard.md) | active work in the same scope |
+| P3 | [最佳化上限的 UX：超過 12 個可移動景點時先提示而不是 422](open/2026-09-06-optimizer-limit-ux.md) | active work in the same scope |
+| P3 | [已存行程頁掛上分潤選項](open/2026-09-06-trip-affiliate-options.md) | active work in the same scope |
 
 ## Recently finished
 

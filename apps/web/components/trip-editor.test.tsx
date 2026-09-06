@@ -1009,3 +1009,80 @@ describe("trip editor", () => {
     expect(screen.getByRole("button", { name: /套用到所有日期/ }).hasAttribute("disabled")).toBe(true);
   });
 });
+
+describe("trip editor route requests", () => {
+  const stops = ["淺草寺", "晴空塔", "上野公園", "東京車站"].map((title, index) => ({
+    ...trip.items[0],
+    id: `00000000-0000-4000-8000-00000000002${index}`,
+    position: index,
+    title,
+    location_name: title,
+    latitude: 35.7 + index / 100,
+    longitude: 139.77 + index / 100,
+    duration_minutes: 60,
+  }));
+  const leg = (from: number, to: number, minutes: number) => ({
+    from_item_id: stops[from].id,
+    to_item_id: stops[to].id,
+    status: "resolved",
+    travel_mode: "transit" as const,
+    provider: "google_routes",
+    attribution: "Google Maps",
+    generated_at: "2026-09-01T00:00:00Z",
+    schedule_mode: "scheduled" as const,
+    preference: "FEWER_TRANSFERS",
+    duration_minutes: minutes,
+    buffer_minutes: 10,
+    departure_time: "2026-11-11T09:00:00+09:00",
+    arrival_time: "2026-11-11T09:20:00+09:00",
+    ready_time: "2026-11-11T09:30:00+09:00",
+    steps: [],
+    details_available: [],
+    warnings: [],
+  });
+  const computeCalls = (fetchMock: ReturnType<typeof vi.fn>) =>
+    fetchMock.mock.calls.filter(([input]) => String(input).includes("/routes/compute-day"));
+
+  it("asks for routes without forcing a refresh from the day header and the mode picker", async () => {
+    const routed = { ...trip, items: stops.slice(0, 2), route_segments: [leg(0, 1, 20)] };
+    const fetchMock = vi.fn().mockImplementation((input: RequestInfo | URL) => {
+      if (String(input).includes("/routes/compute-day")) {
+        return Promise.resolve(response({ version: 2, status: "complete", total: 1, completed: 1 }));
+      }
+      return Promise.resolve(response(routed));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "計算當日路線" }));
+    await waitFor(() => expect(computeCalls(fetchMock)).toHaveLength(1));
+    fireEvent.click(screen.getByRole("radio", { name: "步行" }));
+    await waitFor(() => expect(computeCalls(fetchMock)).toHaveLength(2));
+
+    // Neither button bypasses the caches: the backend reuses saved legs and only
+    // asks providers for the pairs that are missing.
+    const bodies = computeCalls(fetchMock).map(([, init]) => JSON.parse(String((init as RequestInit).body)));
+    expect(bodies.map((body) => body.refresh)).toEqual([false, false]);
+    expect(bodies[1].default_travel_mode).toBe("walk");
+  });
+
+  it("keeps the legs a reorder did not touch and counts only the missing ones", async () => {
+    const routed = { ...trip, items: stops, route_segments: [leg(0, 1, 20), leg(1, 2, 25), leg(2, 3, 40)] };
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(routed))));
+    render(<TripEditor tripId={trip.id} />);
+
+    expect(await screen.findByText("20 分")).toBeTruthy();
+    expect(screen.getByText("25 分")).toBeTruthy();
+    expect(screen.getByText("40 分")).toBeTruthy();
+    expect(screen.queryByText(/段移動尚未查路/)).toBeNull();
+
+    // 東京車站 moves above 上野公園: only the two legs around it lose their routes.
+    fireEvent.click(screen.getByRole("button", { name: "上移 東京車站" }));
+
+    expect(screen.getByText("20 分")).toBeTruthy();
+    expect(screen.queryByText("25 分")).toBeNull();
+    expect(screen.queryByText("40 分")).toBeNull();
+    expect(screen.getAllByText("選擇這段交通方式")).toHaveLength(2);
+    expect(screen.getByText("有 2 段移動尚未查路")).toBeTruthy();
+  });
+});
