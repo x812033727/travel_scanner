@@ -226,7 +226,7 @@ export function FoodBrowser({ initialCities, initialCategories }: {
       {filtersOpen && (
         <button
           type="button"
-          aria-label={t("filters")}
+          aria-label={t("closeFilters")}
           onClick={() => setFiltersOpen(false)}
           className="fixed inset-0 z-[70] bg-slate-950/40 md:hidden"
         />
@@ -241,7 +241,7 @@ export function FoodBrowser({ initialCities, initialCategories }: {
           <button
             type="button"
             onClick={() => setFiltersOpen(false)}
-            aria-label={t("filters")}
+            aria-label={t("closeFilters")}
             className="grid h-11 w-11 place-items-center rounded-full border border-[var(--line)]"
           >
             <X size={19} />
