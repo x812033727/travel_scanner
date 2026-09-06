@@ -197,6 +197,7 @@ async def review_pending_guides(
     min_quality: int = 40,
     min_language_confidence: float = 0.7,
     max_calls: int = 200,
+    batch_size: int = BATCH_SIZE,
     apply: bool = False,
     client: httpx.AsyncClient | None = None,
 ) -> ReviewReport:
@@ -213,11 +214,11 @@ async def review_pending_guides(
             session, locales=locales, limit=limit
         ):
             context = await _localized_context(session, hotspot, locale)
-            for start in range(0, len(guides), BATCH_SIZE):
+            for start in range(0, len(guides), batch_size):
                 if report.calls >= max_calls:
                     report.errors.append(f"停在 {max_calls} 次 AI 呼叫上限，其餘維持待審")
                     return report
-                batch = guides[start : start + BATCH_SIZE]
+                batch = guides[start : start + batch_size]
                 by_id = {f"c{index}": guide for index, guide in enumerate(batch)}
                 try:
                     assessment, usage = await provider.structured(

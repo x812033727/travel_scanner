@@ -364,11 +364,20 @@ async def review_guide_backlog(
     min_relevance: int,
     min_quality: int,
     max_calls: int,
+    batch_size: int,
+    max_output_tokens: int | None,
     apply: bool,
     verbose: bool,
 ) -> dict[str, Any]:
     async with SessionFactory() as session:
         settings = await load_runtime_settings(session)
+        if max_output_tokens:
+            # Gemini's thinking tokens count against the same ceiling, and a truncated
+            # reply costs the whole batch, so a long run may need more than the admin
+            # value tuned for interactive searches.
+            settings = settings.model_copy(
+                update={"hotspot_guide_ai_max_output_tokens": max_output_tokens}
+            )
         report = await review_pending_guides(
             session,
             settings,
@@ -378,6 +387,7 @@ async def review_guide_backlog(
             min_relevance=min_relevance,
             min_quality=min_quality,
             max_calls=max_calls,
+            batch_size=batch_size,
             apply=apply,
         )
     shown = report.decisions if verbose else report.decisions[:40]
@@ -601,6 +611,14 @@ def main() -> None:
         "--max-calls", type=int, default=200, help="Hard ceiling on billable AI calls"
     )
     guide_review.add_argument(
+        "--batch-size", type=int, default=20, help="Candidates per AI call (default 20)"
+    )
+    guide_review.add_argument(
+        "--max-output-tokens",
+        type=int,
+        help="Override the guide-search output ceiling for this run",
+    )
+    guide_review.add_argument(
         "--apply", action="store_true", help="Write the decisions instead of only reporting them"
     )
     guide_review.add_argument(
@@ -675,6 +693,8 @@ def main() -> None:
                 min_relevance=args.min_relevance,
                 min_quality=args.min_quality,
                 max_calls=args.max_calls,
+                batch_size=args.batch_size,
+                max_output_tokens=args.max_output_tokens,
                 apply=args.apply,
                 verbose=args.verbose,
             )
