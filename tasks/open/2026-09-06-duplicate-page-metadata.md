@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-duplicate-page-metadata
 title: 十三個公開頁裡有九個共用同一組 title 與 description
-status: open
+status: in-progress
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T17:56:45Z
 created_at: 2026-09-06T17:32:56Z
 completed_at:
-branch:
+branch: claude/ux-batch-3
 depends_on: []
 scope:
   - apps/web/app/[locale]/search/page.tsx
@@ -37,5 +37,11 @@ description：`/`、`/search`、`/alerts`、`/pricing`、`/login`、`/register`�
 
 ## Definition of done
 
-- [ ] 每個公開頁有自己的 title 與 description，五個語系齊全。
-- [ ] `metadata.json` 的鍵名對得起頁面（`searchTitle`／`loginTitle`…）。
+- [x] 每個公開頁有自己的 title 與 description，五個語系齊全。
+- [x] `metadata.json` 的鍵名對得起頁面（`searchTitle`／`loginTitle`…）。
+
+## Notes
+
+2026-09-07：`/search`、`/alerts`、`/pricing`、`/login`、`/register`、`/trips`、
+`/trips/new`、`/account` 八頁補上 `generateMetadata`；首頁維持原本那組。
+`/line/link` 是 OAuth 導轉用的中繼頁，沒有給人看的內容，刻意不補。

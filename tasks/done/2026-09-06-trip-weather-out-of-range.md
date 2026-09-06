@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-trip-weather-out-of-range
 title: 行程天氣面板在日期超出預報範圍時仍列出 10 天無關天氣
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T16:34:15Z
 created_at: 2026-09-06T14:55:00Z
-completed_at:
+completed_at: 2026-09-06T17:56:36Z
 branch: claude/ux-simplify-public-2
 depends_on: []
 scope:

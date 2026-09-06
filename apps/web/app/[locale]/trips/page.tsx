@@ -3,6 +3,15 @@ import { SiteHeader } from "@/components/site-header";
 import { Plus, Route } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
+import type { Locale } from "@/i18n/routing";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  return { title: t("tripsTitle"), description: t("tripsDescription") };
+}
+
 
 export default async function TripsPage() {
   const t = await getTranslations("trips");

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-simplify-public-cards
 title: 公開頁精簡：景點卡動作分層、首頁膠囊溢出、排行榜第一屏
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T16:34:13Z
 created_at: 2026-09-06T13:02:09Z
-completed_at:
+completed_at: 2026-09-06T17:56:36Z
 branch: claude/ux-simplify-public-2
 depends_on: []
 scope:

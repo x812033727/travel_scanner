@@ -6,6 +6,15 @@ import { SiteHeader } from "@/components/site-header";
 import { safeNextPath } from "@/lib/navigation";
 import { getRegistrationAvailability } from "@/lib/registration";
 import { getUsageCatalog } from "@/lib/usage-catalog.server";
+import type { Metadata } from "next";
+import type { Locale } from "@/i18n/routing";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  return { title: t("registerTitle"), description: t("registerDescription") };
+}
+
 
 export default async function RegisterPage({ searchParams, params: routeParams }: { searchParams: Promise<{ next?: string | string[]; oauth_error?: string }>; params: Promise<{ locale: string }> }) {
   const { locale } = await routeParams;

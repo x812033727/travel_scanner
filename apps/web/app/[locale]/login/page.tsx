@@ -5,6 +5,15 @@ import { SiteHeader } from "@/components/site-header";
 
 import { safeNextPath } from "@/lib/navigation";
 import { getRegistrationAvailability } from "@/lib/registration";
+import type { Metadata } from "next";
+import type { Locale } from "@/i18n/routing";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  return { title: t("loginTitle"), description: t("loginDescription") };
+}
+
 
 export default async function LoginPage({ searchParams }: { searchParams: Promise<{ next?: string | string[]; oauth_error?: string }> }) {
   const [params, registration, t] = await Promise.all([searchParams, getRegistrationAvailability(), getTranslations("auth")]);
