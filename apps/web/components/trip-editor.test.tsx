@@ -172,7 +172,14 @@ describe("trip editor", () => {
         scope: "trip" as const,
         // Codes now, plus one sentence in the shape trips planned before this change
         // still carry in storage.
-        warnings: ["planner_provider_failed", "planner_fallback_used", "minimax 暫時無法產生有效行程（HTTPStatusError）"],
+        warnings: [
+          "planner_provider_failed",
+          "planner_fallback_used",
+          // Two sentences in the shape trips planned before this change still carry in
+          // storage. Both collapse onto the generic line, which must appear once.
+          "minimax 暫時無法產生有效行程（HTTPStatusError）",
+          "有 11 個時段因正式地點不足而保留空白",
+        ],
         unscheduled_slots: [{ date: "2026-11-12", slot: "lunch" as const }],
       },
     };
@@ -188,7 +195,7 @@ describe("trip editor", () => {
     // trips planned before the API started sending codes.
     expect(within(reminders).queryByText(/minimax/)).toBeNull();
     expect(within(reminders).queryByText(/HTTPStatusError/)).toBeNull();
-    expect(within(reminders).getByText("這次安排有一項提醒，重新產生行程通常就會消失")).toBeTruthy();
+    expect(within(reminders).getAllByText("這次安排有一項提醒，重新產生行程通常就會消失")).toHaveLength(1);
 
     fireEvent.click(screen.getByRole("button", { name: "11/12 午餐" }));
     await waitFor(() => {

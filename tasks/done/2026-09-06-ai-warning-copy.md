@@ -85,6 +85,11 @@ API 現在送穩定代碼，前端在 `trips.json` 的 `editor.plannerWarning` �
 
 `logger.warning` 一個字都沒動，status、url 與 body 片段仍在 log 裡。
 
+**畫面上會去重。** 正式站現在有四趟行程存著舊句子，其中三趟各存三句；不去重的話它們會退回
+成三行一模一樣的概括文案，看起來像畫面壞掉。去重是對讀到的文案做，所以 API 之後萬一送出
+重複代碼也一樣只顯示一次。「有 11 個時段留白」這種具體資訊並沒有真的消失——同一個提示框
+底下的 `unscheduled_slots` 膠囊本來就把那些時段一個個列出來，還可以點。
+
 **順帶發現但沒有一起改**：五個語系的 `trips.json` 都有重複的 `transfersCount` 鍵。
 JSON.parse 只留最後一個，所以行為沒錯，但檔案是壞的。另開
 [[2026-09-06-duplicate-transfers-count-key]]。這裡刻意用純文字插入而不是重寫 JSON，
