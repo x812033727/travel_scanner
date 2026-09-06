@@ -1307,7 +1307,8 @@ async def _inbox_candidates(session: AsyncSession, trip_id: UUID) -> list[AIPlan
                     [{"provider": "google", "url": row.maps_url}] if row.maps_url else []
                 ),
                 hotspot_id=row.hotspot_id,
-                rank=rank,
+                # rank starts at 1: the catalogue ranks from there too.
+                rank=rank + 1,
             )
         )
     return candidates
