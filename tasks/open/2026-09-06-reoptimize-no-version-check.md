@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-reoptimize-no-version-check
 title: reoptimize 沒有版本檢查，日期守衛是 TOCTOU
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T04:13:16Z
 created_at: 2026-09-06T00:55:36Z
 completed_at:
-branch:
+branch: claude/trip-api-p2
 depends_on: []
 scope:
   - apps/api/app/trips/router.py

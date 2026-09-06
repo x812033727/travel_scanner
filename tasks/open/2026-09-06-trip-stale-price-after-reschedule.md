@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-trip-stale-price-after-reschedule
 title: 日期變更後行程價格停在舊報價且無法重新查價
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T04:13:15Z
 created_at: 2026-09-06T00:55:30Z
 completed_at:
-branch:
+branch: claude/trip-api-p2
 depends_on: []
 scope:
   - apps/api/app/trips/reschedule.py

@@ -478,6 +478,14 @@ def reschedule_trip_data(data: Mapping[str, Any], rows: Sequence[TripPlanItem]) 
         }
     total = route_pair_count(list(rows))
     next_data["edited"] = True
+    # total_price was quoted for the old dates. The column stays (the header can
+    # still say what the last quote was) but nothing may present it as current:
+    # prices_checked flips off, the quote timestamp goes, and prices_stale is the
+    # flag serialize_trip turns into price_status. A successful reoptimize rebuilds
+    # the whole blob without it.
+    next_data["prices_checked"] = False
+    next_data.pop("reoptimized_at", None)
+    next_data["prices_stale"] = True
     next_data["routing"] = {
         # "stale" rather than "queued": recomputing every leg hits the paid
         # transit providers, so a date nudge leaves the user in control of
