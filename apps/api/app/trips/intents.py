@@ -5,12 +5,15 @@ re-runs the planner over the same coordinate-verified candidate set the AI
 planner already uses, with the sentence carried as additional preference text,
 and writes the result into the *existing* itinerary preview envelope.
 
-Two properties are load-bearing:
+Three properties are load-bearing:
 
 * **Nothing is written here.** The endpoint only produces a Redis envelope.
   ``POST /trips/{id}/itinerary/apply`` consumes it unchanged, keeping its
   version check, its candidate-signature staleness guard, its idempotent
   replay and its catalog-fallback charge release. There is one apply path.
+* **The diff is what apply does.** Both are read off one projection —
+  ``app.trips.replan.build_replan_write`` — rather than from two models of the
+  same rules, because a diff that under-reports is worse than no diff at all.
 * **The model cannot invent a place.** It only ever emits
   ``candidate_key + start_time + reason`` from the supplied set, and the
   intent text reaches it as user-content preference data, never as
@@ -21,47 +24,65 @@ from __future__ import annotations
 
 import hashlib
 import json
-from datetime import date, datetime, time
+from datetime import date
 from typing import Annotated, Any, Literal
 from uuid import UUID
-from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+from zoneinfo import ZoneInfo
 
 from fastapi import APIRouter, Depends, Header
 from pydantic import BaseModel, Field, field_validator, model_validator
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.ai.itinerary import AIPlannerCandidate, AIPlanningResult
+from app.admin.service import load_runtime_settings
+from app.ai.itinerary import AIPlannerCandidate, planner_providers
 from app.auth.service import CurrentUser
 from app.db import get_session
-from app.infra import enforce_named_rate_limit, get_redis
+from app.infra import enforce_named_rate_limit, get_redis, refund_named_rate_limit
 from app.models import TripPlanItem
+from app.problems import AppError
 from app.trips.itinerary import ItineraryItem
+from app.trips.replan import ReplanWrite, build_replan_write, trip_zone, wall_clock
 from app.trips.router import (
     AI_ITINERARY_PREVIEW_TTL_SECONDS,
+    GENERATE_OPERATION,
+    REFINE_OPERATION,
     ItineraryGenerateRequest,
     _build_ai_planning,
     _itinerary_preview_key,
-    _replaceable_ai_items,
     build_itinerary_preview_envelope,
+    hydrate_legacy_items,
     load_items,
     owned_trip,
-    unset_meal_title,
 )
 
 router = APIRouter(prefix="/trips", tags=["trips"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 
 INTENT_MAX_LENGTH = 400
+UNAVAILABLE_DETAIL = "AI 規劃暫時無法使用，這次沒有讀到你的描述，請稍後再試"
 # Shared with /itinerary/preview: an intent preview costs the same provider call
 # as a planner preview, so the two draw on one hourly budget.
 INTENT_PREVIEW_LIMIT = 12
 INTENT_PREVIEW_WINDOW_SECONDS = 3_600
-# Applying a refinement is free (ai_itinerary_refine seeds at 0 uses), so the
-# usage ledger cannot bound a refine loop. This per-trip daily ceiling does.
+# Applying a day refinement is free (ai_itinerary_refine seeds at 0 uses), so
+# the usage ledger cannot bound a refine loop. This per-trip daily ceiling does.
 INTENT_TRIP_LIMIT = 40
 INTENT_TRIP_WINDOW_SECONDS = 24 * 60 * 60
-REFINE_OPERATION = "ai_itinerary_refine"
-MEAL_ROLES = frozenset({"lunch", "dinner"})
+# The namespace /itinerary/preview also draws on. Named here because a request
+# this endpoint refuses to serve has to hand its slot back.
+SHARED_PREVIEW_NAMESPACE = "ai-itinerary-preview-user"
+
+# Field names the diff reports, collapsed into the vocabulary the review sheet
+# has copy for. Coordinates and a place id are one idea to a traveller.
+_FIELD_LABELS = {
+    "title": "title",
+    "location_name": "place",
+    "provider_place_id": "place",
+    "latitude": "place",
+    "longitude": "place",
+    "duration_minutes": "duration",
+    "notes": "notes",
+}
 
 
 class TripIntentRequest(BaseModel):
@@ -90,26 +111,36 @@ class TripIntentRequest(BaseModel):
         return self
 
 
-def _zone(timezone_name: str | None) -> ZoneInfo:
-    try:
-        return ZoneInfo(timezone_name or "UTC")
-    except (ZoneInfoNotFoundError, ValueError):
-        return ZoneInfo("UTC")
+def intent_usage_operation(scope: str, *, refinable: bool) -> str:
+    """Which metered operation an intent envelope should charge on apply.
 
+    Refinement ships free because nudging one day is a small ask, not because
+    the intent bar is a free door onto the planner. Two things have to be true
+    for a sentence to be a nudge:
 
-def _hhmm(value: datetime | time | None, zone: ZoneInfo) -> str | None:
-    """Wall-clock HH:MM in the trip's own timezone.
+    * it is scoped to one day. A trip-scoped intent re-plans every day from
+      the same candidate set and costs the same provider call as
+      ``/itinerary/preview``, so it charges what that path charges.
+    * that day already holds an AI plan to nudge (``refinable``). A day with
+      no replaceable ``ai_planner`` rows is not being refined, it is being
+      planned for the first time — which is the paid single-day generation,
+      whatever sentence is attached to it. Without this, a traveller with no
+      uses left could type one word per day and assemble a whole trip for
+      free through the door meant for "還是走太多路了".
 
-    Stored rows come back with whatever offset the driver hands over while the
-    planner's drafts are already in the trip zone; without this normalisation a
-    stop that did not move would read as moved.
+    The price is confirmed again at the charge point against the write itself;
+    see ``trips.router.apply_usage_operation``.
     """
-    if value is None:
-        return None
-    if isinstance(value, datetime):
-        moment = value.astimezone(zone) if value.tzinfo is not None else value
-        return moment.strftime("%H:%M")
-    return value.strftime("%H:%M")
+    return REFINE_OPERATION if scope == "day" and refinable else GENERATE_OPERATION
+
+
+def _labels(fields: list[str]) -> list[str]:
+    seen: list[str] = []
+    for name in fields:
+        label = _FIELD_LABELS.get(name, name)
+        if label not in seen:
+            seen.append(label)
+    return seen
 
 
 def _row_entry(item: TripPlanItem, zone: ZoneInfo) -> dict[str, Any]:
@@ -118,7 +149,7 @@ def _row_entry(item: TripPlanItem, zone: ZoneInfo) -> dict[str, Any]:
         "title": item.title,
         "location_name": item.location_name,
         "day_date": item.day_date.isoformat() if item.day_date else None,
-        "start_time": _hhmm(item.start_time, zone),
+        "start_time": wall_clock(item.start_time, zone),
         "duration_minutes": item.duration_minutes,
         "reason": item.data.get("reason") or item.notes,
     }
@@ -130,156 +161,100 @@ def _planned_entry(item: ItineraryItem, zone: ZoneInfo) -> dict[str, Any]:
         "title": item.title,
         "location_name": item.location_name,
         "day_date": item.day_date.isoformat(),
-        "start_time": _hhmm(item.start_time, zone),
+        "start_time": wall_clock(item.start_time, zone),
         "duration_minutes": item.duration_minutes,
         "reason": item.data.get("reason") or item.notes,
     }
 
 
-def projected_meal_titles(
-    preserved: list[TripPlanItem],
-    generated_meals: list[ItineraryItem],
-    target_date: date | None,
-) -> dict[UUID, str]:
-    """Titles the preserved meal rows will carry once apply has run.
-
-    A pure mirror of ``_sync_ai_meal_slots``'s title branch. Apply mutates meal
-    rows in place rather than deleting and inserting them, and it builds its
-    duplicate-title guard from the *post-sync* titles — so the diff has to know
-    them too, without touching the ORM rows this request loaded.
-    """
-    generated_by_role: dict[tuple[date | None, str | None], ItineraryItem] = {
-        (meal.day_date, meal.system_role): meal
-        for meal in generated_meals
-        if meal.system_role in MEAL_ROLES
-    }
-    titles: dict[UUID, str] = {}
-    for item in preserved:
-        if item.title is not None:
-            titles[item.id] = item.title
-        if target_date is not None and item.day_date != target_date:
-            continue
-        if item.system_role not in MEAL_ROLES:
-            continue
-        if item.data.get("meal_selection_source") == "user":
-            continue
-        meal = generated_by_role.get((item.day_date, item.system_role))
-        titles[item.id] = meal.title if meal is not None else unset_meal_title(item.system_role)
-    return titles
-
-
 def build_intent_diff(
     *,
-    replaceable: list[TripPlanItem],
-    preserved: list[TripPlanItem],
-    planning: AIPlanningResult,
+    plan: ReplanWrite,
     candidates: list[AIPlannerCandidate],
     existing: list[TripPlanItem],
-    target_date: date | None,
     timezone: str | None = None,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     """Describe what applying this envelope would do, and how much room is left.
 
-    Modelled on apply's own write rules rather than on the raw plan:
+    Read entirely off ``plan``, the same projection apply executes:
 
-    * ``replaceable`` is exactly the set apply deletes.
-    * A generated row apply would drop — a meal slot, or an activity whose
+    * every replaceable row lands in exactly one of ``removed``, ``moved``,
+      ``changed`` or ``unchanged_count`` — a stop cannot go missing between
+      the groups;
+    * a generated row apply would drop — a meal slot, or an activity whose
       ``(day, casefolded title)`` collides with a preserved row — is never
       listed as added, because approving a row that then silently vanishes is
-      worse than not offering it.
-    * Meals are reported as changed, never as added or removed, because apply
+      worse than not offering it;
+    * meals are reported as changed, never as added or removed, because apply
       rewrites those rows in place.
     """
-    zone = _zone(timezone)
-    generated_meals = [
-        item
-        for day in planning.itinerary
-        for item in day.items
-        if item.system_role in MEAL_ROLES
-    ]
-    meal_titles = projected_meal_titles(preserved, generated_meals, target_date)
-    preserved_keys = {
-        (item.day_date, (meal_titles.get(item.id) or "").casefold()) for item in preserved
-    }
-    generated = [
-        item
-        for day in planning.itinerary
-        for item in day.items
-        if item.system_role is None
-        and (item.day_date, item.title.casefold()) not in preserved_keys
-    ]
-
-    old_by_key: dict[str, TripPlanItem] = {}
-    unkeyed_removed: list[TripPlanItem] = []
-    for item in replaceable:
-        key = item.data.get("candidate_key")
-        if key:
-            old_by_key[str(key)] = item
-        else:
-            unkeyed_removed.append(item)
-    new_by_key: dict[str, ItineraryItem] = {}
-    unkeyed_added: list[ItineraryItem] = []
-    for planned in generated:
-        planned_key = planned.data.get("candidate_key")
-        if planned_key:
-            new_by_key[str(planned_key)] = planned
-        else:
-            unkeyed_added.append(planned)
-
-    removed = [
-        _row_entry(item, zone) for key, item in old_by_key.items() if key not in new_by_key
-    ]
-    removed.extend(_row_entry(item, zone) for item in unkeyed_removed)
-    added = [
-        _planned_entry(item, zone) for key, item in new_by_key.items() if key not in old_by_key
-    ]
-    added.extend(_planned_entry(item, zone) for item in unkeyed_added)
-
+    zone = trip_zone(timezone)
+    removed: list[dict[str, Any]] = []
+    added: list[dict[str, Any]] = []
     moved: list[dict[str, Any]] = []
+    changed: list[dict[str, Any]] = []
     unchanged = 0
-    for key, new_item in new_by_key.items():
-        old_item = old_by_key.get(key)
-        if old_item is None:
+    for pair in plan.pairs:
+        if pair.planned is None:
+            if pair.stored is not None:
+                removed.append(_row_entry(pair.stored, zone))
+            continue
+        if pair.stored is None:
+            added.append(_planned_entry(pair.planned, zone))
             continue
         before = (
-            old_item.day_date.isoformat() if old_item.day_date else None,
-            _hhmm(old_item.start_time, zone),
+            pair.stored.day_date.isoformat() if pair.stored.day_date else None,
+            wall_clock(pair.stored.start_time, zone),
         )
-        after = (new_item.day_date.isoformat(), _hhmm(new_item.start_time, zone))
-        if before == after:
+        after = (pair.planned.day_date.isoformat(), wall_clock(pair.planned.start_time, zone))
+        if pair.reused:
+            # The write keeps this row untouched, id included. Nothing to say.
             unchanged += 1
             continue
-        moved.append(
-            {
-                "candidate_key": key,
-                "title": new_item.title,
-                "location_name": new_item.location_name,
-                "from": {"day_date": before[0], "start_time": before[1]},
-                "to": {"day_date": after[0], "start_time": after[1]},
-                "reason": new_item.data.get("reason") or new_item.notes,
-            }
-        )
-
-    meals: list[dict[str, Any]] = []
-    for item in preserved:
-        projected = meal_titles.get(item.id)
-        if item.system_role not in MEAL_ROLES or projected is None or projected == item.title:
+        if before != after:
+            moved.append(
+                {
+                    "candidate_key": str(pair.planned.data.get("candidate_key") or ""),
+                    "title": pair.planned.title,
+                    "location_name": pair.planned.location_name,
+                    "from": {"day_date": before[0], "start_time": before[1]},
+                    "to": {"day_date": after[0], "start_time": after[1]},
+                    "fields": _labels(pair.changed),
+                    "reason": pair.planned.data.get("reason") or pair.planned.notes,
+                }
+            )
             continue
-        meals.append(
-            {
-                "system_role": item.system_role,
-                "day_date": item.day_date.isoformat() if item.day_date else None,
-                "before_title": item.title,
-                "after_title": projected,
-                "cleared": projected == unset_meal_title(item.system_role),
-            }
-        )
+        if pair.changed:
+            # Same day, same slot, but apply would still overwrite something
+            # the traveller can see. Never counted as unchanged.
+            changed.append(
+                {
+                    **_planned_entry(pair.planned, zone),
+                    "fields": _labels(pair.changed),
+                }
+            )
+            continue
+        unchanged += 1
 
-    has_changes = bool(removed or added or moved or meals)
+    meals = [
+        {
+            "system_role": write.row.system_role,
+            "day_date": write.row.day_date.isoformat() if write.row.day_date else None,
+            "before_title": write.row.title,
+            "after_title": write.title,
+            "fields": _labels(write.changed),
+            "cleared": write.cleared,
+        }
+        for write in plan.meals
+        if write.changed
+    ]
+
+    has_changes = bool(removed or added or moved or changed or meals)
     diff: dict[str, Any] = {
         "removed": removed,
         "added": added,
         "moved": moved,
+        "changed": changed,
         "meals": meals,
         "unchanged_count": unchanged,
         "has_changes": has_changes,
@@ -287,34 +262,52 @@ def build_intent_diff(
 
     # Every verified place in this area that neither the new plan nor the rest
     # of the trip is already using. Zero means the pool really is spent, which
-    # is the only honest basis for 這區已經沒有其他選擇了.
+    # is the only honest basis for 這區已經沒有其他選擇了. Restaurants are
+    # counted separately: "try a different day" is false advice when it is the
+    # merchant pool that ran out.
     on_trip = {
-        str(item.data.get("candidate_key"))
-        for item in existing
-        if item.data.get("candidate_key")
+        str(item.data.get("candidate_key")) for item in existing if item.data.get("candidate_key")
     }
-    alternatives = [
+    used = {
+        str(item.data.get("candidate_key"))
+        for item in plan.generated
+        if item.data.get("candidate_key")
+    } | {
+        str(write.meal.data.get("candidate_key"))
+        for write in plan.meals
+        if write.meal is not None and write.meal.data.get("candidate_key")
+    }
+    hotspots = [
         candidate.key
         for candidate in candidates
-        if candidate.kind == "hotspot"
-        and candidate.key not in new_by_key
-        and candidate.key not in on_trip
+        if candidate.kind == "hotspot" and candidate.key not in used | on_trip
     ]
-    activity_delta = len(generated) - len(replaceable)
+    merchants = [
+        candidate.key
+        for candidate in candidates
+        if candidate.kind == "merchant" and candidate.key not in used | on_trip
+    ]
+    activity_delta = len(plan.generated) - len(plan.replaceable)
     exhaustion = {
         "exhausted": not has_changes,
         "reason": (
             None
             if has_changes
             else "no_alternatives"
-            if not alternatives
+            if not hotspots and not merchants
             else "no_change"
         ),
-        "alternative_candidate_count": len(alternatives),
+        "alternative_candidate_count": len(hotspots),
+        "alternative_merchant_count": len(merchants),
+        # Reported whether or not the diff changed anything: a re-plan that
+        # merely reorders the same two stops still leaves the pool spent, and
+        # the traveller deserves to know before asking a third time.
+        "pool_spent": not hotspots,
+        "meal_pool_spent": not merchants,
         "activity_delta": activity_delta,
         # A shorter day with nothing left to offer is exhaustion; a shorter day
         # with options left is a real choice the traveller may have asked for.
-        "fewer_stops_without_alternatives": activity_delta < 0 and not alternatives,
+        "fewer_stops_without_alternatives": activity_delta < 0 and not hotspots,
     }
     return diff, exhaustion
 
@@ -327,14 +320,29 @@ def _client_view(envelope: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def _intent_request_key(user_id: UUID, trip_id: UUID, idempotency_key: str, text: str) -> str:
-    """Replay key that also covers the intent text.
+def _intent_request_key(
+    user_id: UUID,
+    trip_id: UUID,
+    idempotency_key: str,
+    payload: TripIntentRequest,
+) -> str:
+    """Replay key that also covers the request body.
 
     The planner's own replay key hashes the Idempotency-Key alone. Here the
-    request body is the whole point, so a client that reuses a key for a
-    different sentence must not be handed the previous sentence's plan.
+    body is the whole point, so a client that reuses a key for a different
+    sentence — or the same sentence on a different day, scope or trip version
+    — must not be handed the previous request's plan.
     """
-    digest = hashlib.sha256(f"{idempotency_key}\n{text}".encode()).hexdigest()
+    parts = "\n".join(
+        [
+            idempotency_key,
+            payload.text,
+            payload.scope,
+            payload.day_date.isoformat() if payload.day_date else "",
+            str(payload.version),
+        ]
+    )
+    digest = hashlib.sha256(parts.encode()).hexdigest()
     return f"itinerary:intent-request:{user_id}:{trip_id}:{digest}"
 
 
@@ -347,7 +355,7 @@ async def create_trip_intent(
     idempotency_key: Annotated[str, Header(alias="Idempotency-Key", min_length=8, max_length=255)],
 ) -> dict[str, Any]:
     redis = get_redis()
-    request_key = _intent_request_key(user.id, trip_id, idempotency_key, payload.text)
+    request_key = _intent_request_key(user.id, trip_id, idempotency_key, payload)
     replay_id = await redis.get(request_key)
     if replay_id:
         cached = await redis.get(_itinerary_preview_key(user.id, trip_id, UUID(str(replay_id))))
@@ -355,19 +363,30 @@ async def create_trip_intent(
             return _client_view(json.loads(str(cached)))
     # Replay is checked before the limits, exactly as /itinerary/preview does,
     # so a client retry does not spend a second slot from the shared budget.
-    await enforce_named_rate_limit(
-        "ai-itinerary-preview-user",
-        str(user.id),
-        limit=INTENT_PREVIEW_LIMIT,
-        window_seconds=INTENT_PREVIEW_WINDOW_SECONDS,
-    )
+    #
+    # Ownership first, then the narrow limit, then the shared one: every gate
+    # here counts the calls it rejects, so a request that was never going to
+    # run must not spend a slot of the hourly budget /itinerary/preview draws
+    # on for the user's other trips.
+    trip = await owned_trip(session, user.id, trip_id)
+    # A planner that is switched off, or pinned to the catalog fallback, cannot
+    # read the sentence at all. Refuse before either limiter counts this call, so
+    # an administrator flipping ai_planner_mode does not also lock the traveller
+    # out of /itinerary/preview for an hour.
+    if not planner_providers(await load_runtime_settings(session)):
+        raise AppError(503, "ai_planner_unavailable", UNAVAILABLE_DETAIL)
     await enforce_named_rate_limit(
         "ai-itinerary-intent-trip",
         f"{user.id}:{trip_id}",
         limit=INTENT_TRIP_LIMIT,
         window_seconds=INTENT_TRIP_WINDOW_SECONDS,
     )
-    trip = await owned_trip(session, user.id, trip_id)
+    await enforce_named_rate_limit(
+        "ai-itinerary-preview-user",
+        str(user.id),
+        limit=INTENT_PREVIEW_LIMIT,
+        window_seconds=INTENT_PREVIEW_WINDOW_SECONDS,
+    )
     generation = ItineraryGenerateRequest(
         version=payload.version,
         scope=payload.scope,
@@ -376,6 +395,16 @@ async def create_trip_intent(
     planning, preserved, planning_preserved, candidates = await _build_ai_planning(
         session, trip, generation, extra_notes=payload.text
     )
+    if planning.planning.status == "fallback":
+        # The catalog fallback re-sorts approved places by coordinate and pace;
+        # it never reads `notes`, so the sentence had no effect at all.
+        # Shipping that as "your refinement" is the dishonesty this feature
+        # exists to avoid, and it is not appliable either. Every provider on the
+        # roster failed after both limiters had counted this call; the traveller
+        # got nothing, so the slots go back.
+        await refund_named_rate_limit("ai-itinerary-intent-trip", f"{user.id}:{trip_id}")
+        await refund_named_rate_limit("ai-itinerary-preview-user", str(user.id))
+        raise AppError(503, "ai_planner_unavailable", UNAVAILABLE_DETAIL)
     result, cached_payload = await build_itinerary_preview_envelope(
         session,
         trip,
@@ -386,15 +415,12 @@ async def create_trip_intent(
         candidates=candidates,
     )
     target_date = payload.day_date if payload.scope == "day" else None
-    existing = await load_items(session, trip.id)
-    replaceable, _ = _replaceable_ai_items(existing, target_date)
+    existing = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    plan = build_replan_write(existing, planning.itinerary, target_date)
     diff, exhaustion = build_intent_diff(
-        replaceable=replaceable,
-        preserved=preserved,
-        planning=planning,
+        plan=plan,
         candidates=candidates,
         existing=existing,
-        target_date=target_date,
         timezone=trip.timezone,
     )
     extras: dict[str, Any] = {
@@ -402,8 +428,9 @@ async def create_trip_intent(
         "diff": diff,
         "exhaustion": exhaustion,
         # Apply reads this to charge the refinement operation instead of a
-        # first generation; anything it does not recognise falls back.
-        "usage_operation": REFINE_OPERATION,
+        # first generation, and re-derives it from the write it performs;
+        # anything it does not recognise falls back to the paid operation.
+        "usage_operation": intent_usage_operation(payload.scope, refinable=bool(plan.replaceable)),
     }
     result = {**result, **extras}
     await redis.set(
@@ -420,8 +447,10 @@ async def create_trip_intent(
 
 
 __all__ = [
+    "GENERATE_OPERATION",
+    "REFINE_OPERATION",
     "TripIntentRequest",
     "build_intent_diff",
-    "projected_meal_titles",
+    "intent_usage_operation",
     "router",
 ]

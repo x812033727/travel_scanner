@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-ci-should-fail-a-branch-that
 title: CI should fail a branch that adds a second alembic head
-status: open
+status: done
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T02:29:36Z
 created_at: 2026-09-06T00:55:40Z
-completed_at:
-branch:
+completed_at: 2026-09-06T02:41:35Z
+branch: claude/ci-guards
 depends_on: []
 scope:
   - .github/workflows/ci.yml
@@ -36,19 +36,19 @@ the next branch merges on top of it.
 
 ## Definition of done
 
-- [ ] A pull request whose branch would introduce a second alembic head fails CI on that
+- [x] A pull request whose branch would introduce a second alembic head fails CI on that
       pull request, naming both colliding revisions.
-- [ ] The check runs against the merge result, not the branch in isolation — a branch is
+- [x] The check runs against the merge result, not the branch in isolation — a branch is
       only in collision relative to the base it is merging into.
 
 ## Steps
 
-- [ ] Add a check that walks `apps/api/migrations/versions/`, builds the revision graph and
+- [x] Add a check that walks `apps/api/migrations/versions/`, builds the revision graph and
       fails when more than one revision is never used as a `down_revision`.
-- [ ] Wire it into the `api` job in `.github/workflows/ci.yml` so it runs on `pull_request`.
-- [ ] Make the failure message name the colliding revisions and their `down_revision`, so
+- [x] Wire it into the `api` job in `.github/workflows/ci.yml` so it runs on `pull_request`.
+- [x] Make the failure message name the colliding revisions and their `down_revision`, so
       the fix is obvious without reading the graph by hand.
-- [ ] Consider whether `test_schema.py`'s hardcoded head assertion should stay. It catches
+- [x] Consider whether `test_schema.py`'s hardcoded head assertion should stay. It catches
       the same class of problem but has to be edited by every migration, which is friction
       that produced at least one of the incidents above.
 
@@ -58,6 +58,23 @@ Create a throwaway branch with a second migration chained off the current head, 
 pull request, and confirm CI fails with a message naming both revisions.
 
 ## Notes
+
+**Done 2026-09-06.** `app/schema.py` gained `migration_heads()`, `migration_revisions()` and
+`describe_heads()`; `expected_schema_revision()` now raises with one line per head
+(`revision (revises down_revision) in file.py`) instead of "found 2", so even the import-time
+failure of every other test module names the two files. `tests/test_schema.py` asserts one head,
+that the head carries the highest four-digit number (a renumber that forgot the `revision`
+string, or a new file numbered below the head, both fail here), and that no other revision
+counts as current — the forty-line hand-maintained list is gone, so a new migration no longer
+edits this test. `ci.yml` runs `pytest tests/test_schema.py` as its own step right after mypy
+and before `alembic upgrade head`, so the failure is the first red line. A pull request's
+checkout is the merge commit, which is what makes this a check on the merge result.
+
+Verified with throwaway pull request #185, which added `0044_second_head` and `0044_other_head`
+both revising `0043_trip_expenses`: the `api` job failed at the new step (run 34007003082, step 9;
+`alembic upgrade head` and the suite were skipped). The same two files produce
+`0044_other_head (revises 0043_trip_expenses) in 0044_other_head.py` and the matching second line
+when the test runs locally.
 
 The pattern is always the same and always found late: two branches are cut on the same day,
 both take the next number, both are green in isolation, and the second one to merge breaks

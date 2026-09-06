@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-migration-backfill-untested
 title: 遷移裡的補資料分支在 CI 是死碼
-status: open
+status: done
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T02:29:37Z
 created_at: 2026-09-06T00:53:38Z
-completed_at:
-branch:
+completed_at: 2026-09-06T02:41:35Z
+branch: claude/ci-guards
 depends_on: []
 scope:
   - .github/workflows/ci.yml
@@ -43,13 +43,13 @@ if "notes" not in columns:
 
 ## Definition of done
 
-- [ ] CI 會在一個「舊的」資料庫上跑一次完整的 upgrade，讓那些 `if 欄位不存在` 的
+- [x] CI 會在一個「舊的」資料庫上跑一次完整的 upgrade，讓那些 `if 欄位不存在` 的
       分支真的被執行過一次。
-- [ ] 拿掉這個保護（例如把 0042 的補資料 SQL 改回會炸的版本）時，CI 會紅。
+- [x] 拿掉這個保護（例如把 0042 的補資料 SQL 改回會炸的版本）時，CI 會紅。
 
 ## Steps
 
-- [ ] 決定怎麼造出「舊資料庫」。幾個方向，擇一：
+- [x] 決定怎麼造出「舊資料庫」。幾個方向，擇一（採第三個）：
       - CI 多跑一個 job：先 `alembic upgrade <某個舊 revision>`，再 `upgrade head`。
         問題是 0001 就已經是 create_all，所以要挑一個真正早於這些欄位的基準點，
         或者改用下面這招。
@@ -57,8 +57,8 @@ if "notes" not in columns:
         之後每個遷移都會在真正的舊 schema 上跑。
       - 折衷：在測試裡用 `op.drop_column` 造出缺欄位的狀態，再單獨執行該遷移的
         `upgrade()`，等於針對每個補資料分支寫一個回歸測試。
-- [ ] 至少讓 `0042_trip_notes` 與 `0043_trip_expenses` 的補資料分支被實際執行到。
-- [ ] 寫下判準，讓下一個人知道新增這種遷移時要補什麼測試。
+- [x] 至少讓 `0042_trip_notes` 與 `0043_trip_expenses` 的補資料分支被實際執行到。
+- [x] 寫下判準，讓下一個人知道新增這種遷移時要補什麼測試。
 
 ## How to verify
 
@@ -66,6 +66,21 @@ if "notes" not in columns:
 full-stack-smoke 必須紅。改回來之後必須綠。
 
 ## Notes
+
+**2026-09-06 完成，採折衷方案。** `tests/test_migration_dead_branches.py`（`RUN_INTEGRATION_TESTS=1`，
+CI 的 `api` job 會跑）對 0042 與 0043 各有一個案例：先用 ORM 種三到四列舊形狀的行程（`data` 裡帶
+`notes`／`preferences.budget_twd`），再 `DROP TABLE`／`DROP COLUMN` 把資料庫退回該遷移之前的 schema，
+然後透過真的 alembic `MigrationContext` + `Operations.context` 呼叫該遷移模組的 `upgrade()`，
+斷言補進來的值（含邊界：空白備註不補、非數字預算留 NULL、小數保留）。整段在一個最後 rollback 的
+交易裡（Postgres 的 DDL 是交易性的），另有一個案例確認 rollback 之後共享的 schema 完好。
+把 0042 的 WHERE 改回 `AND data ? 'notes'` 時，這個案例會以 `operator does not exist: json ? unknown` 紅掉——
+和正式機當時的錯誤一字不差。
+
+**判準**（也寫在測試檔 docstring）：每個會執行 SQL 的 `if 欄位/表 不存在:` 分支都要在這個檔案有一個案例；
+只是新增空欄位／空表的分支不用。造舊 schema 就是一句 `DROP`，讀既有列的分支要種「會變、不該變、邊界」三種列。
+
+沒採用另外兩個方向的原因：`0001_initial` 改成寫死當時的 schema 工程量大且之後每支遷移都得維護；
+CI 多跑一個「先 upgrade 到舊 revision」的 job 因為 0001 本身就是 `create_all`，找不到真正舊的基準點。
 
 正式機的實際錯誤訊息（留著給下一個人比對）：
 

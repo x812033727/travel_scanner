@@ -216,6 +216,14 @@ export type TripRescheduleSummary = {
   removed_item_count: number;
   removed_protected: Array<{ kind: "activity" | "chosen_meal" | "booked_flight"; title: string; day_date: string }>;
   invalidated_flight_anchors: number;
+  /** Which booked flights the move cleared, by name and day, so the client can say so. */
+  invalidated_flights?: Array<{
+    role: "outbound_flight" | "return_flight";
+    title: string;
+    flight_number: string | null;
+    from_day: string;
+    to_day: string;
+  }>;
   route_segments_cleared: number;
 };
 
@@ -300,6 +308,16 @@ export type Trip = {
   /** Present only on the response of a date-changing PATCH /trips/{id}. */
   reschedule?: TripRescheduleSummary;
 };
+
+/**
+ * What GET /shared-trips/{token} returns: the read-only subset a link recipient may
+ * see. No `data` (preferences, budget, cost breakdown), no notes; items carry only
+ * the timeline section and the flight schedule in their `data`.
+ */
+export type SharedTrip = Pick<
+  Trip,
+  "id" | "name" | "destination_name" | "start_date" | "end_date" | "timezone" | "items" | "route_segments" | "updated_at"
+>;
 
 export function formatTime(value?: string | null, locale?: string, timeZone?: string) {
   if (!value) return "彈性時段";
