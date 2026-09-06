@@ -1,12 +1,15 @@
 from __future__ import annotations
 
 import importlib.util
-from datetime import UTC, date, datetime, time
+from datetime import UTC, date, datetime, time, timedelta
+from decimal import Decimal
 from pathlib import Path
-from unittest.mock import AsyncMock
+from typing import Any
+from unittest.mock import AsyncMock, MagicMock
 from uuid import UUID, uuid4
 from zoneinfo import ZoneInfo
 
+import fakeredis.aioredis
 import pytest
 from pydantic import ValidationError
 
@@ -21,24 +24,38 @@ from app.ai.itinerary import (
     draft_to_itinerary,
     normalize_draft,
 )
-from app.models import TripPlanItem, UsageOperationCost
+from app.models import TripPlan, TripPlanItem, UsageAccount, UsageOperationCost
+from app.problems import AppError
 from app.search.schemas import SearchPreferences, Travelers, TripPace
+from app.trips import intents as intents_module
 from app.trips.intents import (
+    GENERATE_OPERATION,
     INTENT_MAX_LENGTH,
     REFINE_OPERATION,
     TripIntentRequest,
+    _intent_request_key,
     build_intent_diff,
-    projected_meal_titles,
+    create_trip_intent,
+    intent_usage_operation,
 )
 from app.trips.itinerary import ItineraryDay
+from app.trips.replan import (
+    apply_meal_writes,
+    build_replan_write,
+    projected_meal_titles,
+    replaceable_ai_items,
+    traveller_notes,
+    trip_zone,
+    unset_meal_title,
+    wall_clock,
+)
 from app.trips.router import (
     _compose_planner_notes,
     _planning_request,
-    _replaceable_ai_items,
+    _replan_records,
     apply_usage_operation,
-    unset_meal_title,
 )
-from app.usage.service import USAGE_OPERATIONS, effective_operation_cost
+from app.usage.service import USAGE_OPERATIONS, effective_operation_cost, reserve_use
 
 
 def _load_migration(name: str):
@@ -52,7 +69,10 @@ def _load_migration(name: str):
 TOKYO = ZoneInfo("Asia/Tokyo")
 TRIP_START = date(2026, 11, 10)
 TRIP_END = date(2026, 11, 14)
+EARLY_DAY = date(2026, 11, 11)
 MID_DAY = date(2026, 11, 12)
+TRIP_ID = UUID("30000000-0000-0000-0000-000000000001")
+USER_ID = UUID("40000000-0000-0000-0000-000000000001")
 
 
 def candidate(index: int, *, kind: str = "hotspot") -> AIPlannerCandidate:
@@ -88,6 +108,11 @@ def candidates(hotspots: int = 8, merchants: int = 4) -> list[AIPlannerCandidate
     ]
 
 
+def candidate_for(key: str) -> AIPlannerCandidate:
+    kind, index = key.split(":")
+    return candidate(int(index), kind=kind)
+
+
 def row(
     *,
     title: str,
@@ -101,12 +126,27 @@ def row(
     meal_source: str | None = None,
     position: int = 0,
 ) -> TripPlanItem:
+    """A stored row shaped the way ``draft_to_itinerary`` writes one.
+
+    Coordinates and ``location_source`` matter: a fixture that leaves them
+    blank looks to the projection like a place the traveller replaced, which
+    is the opposite of what most of these tests are about.
+    """
     data: dict[str, object] = {}
+    latitude: Decimal | None = None
+    longitude: Decimal | None = None
+    location_source: str | None = None
     if generated:
         data["generated_by"] = "ai_planner"
     if candidate_key:
+        source = candidate_for(candidate_key)
         data["candidate_key"] = candidate_key
         data["reason"] = f"{title} 的推薦理由"
+        latitude = Decimal(str(source.latitude))
+        longitude = Decimal(str(source.longitude))
+        location_source = (
+            "food_merchant_catalog" if source.kind == "merchant" else "hotspot_catalog"
+        )
     if meal_source:
         data["meal_selection_source"] = meal_source
     starts = None
@@ -115,13 +155,16 @@ def row(
         starts = datetime.combine(day_date, time(hour, minute), tzinfo=TOKYO)
     return TripPlanItem(
         id=uuid4(),
-        trip_plan_id=uuid4(),
+        trip_plan_id=TRIP_ID,
         item_type="meal" if system_role in {"lunch", "dinner"} else "hotspot",
         day_date=day_date,
         position=position,
         title=title,
         location_name=title,
         start_time=starts,
+        latitude=latitude,
+        longitude=longitude,
+        location_source=location_source,
         locked=locked,
         fixed_time=fixed_time,
         system_role=system_role,
@@ -135,6 +178,8 @@ def planning_from(
     pairs: list[tuple[date, str, str]],
     *,
     pool: list[AIPlannerCandidate] | None = None,
+    status: str = "live",
+    provider: str = "openai",
 ) -> AIPlanningResult:
     """Turn (day, candidate_key, HH:MM) triples into a planner result."""
     pool = pool or candidates()
@@ -163,11 +208,11 @@ def planning_from(
         summary="測試草稿",
         days=[AIDraftDay(date=day, items=items) for day, items in sorted(by_day.items())],
     )
-    days: list[ItineraryDay] = draft_to_itinerary(request, draft, "openai", "gpt-test")
+    days: list[ItineraryDay] = draft_to_itinerary(request, draft, provider, "gpt-test")
     return AIPlanningResult(
         itinerary=[day.model_copy(update={"label": "測試"}) for day in days],
         planning=PlanningMetadata(
-            status="live", readiness="ready", provider="openai", generated_at=datetime.now(UTC)
+            status=status, readiness="ready", provider=provider, generated_at=datetime.now(UTC)
         ),
         unscheduled_slots=[],
     )
@@ -180,16 +225,92 @@ def diff_for(
     pool: list[AIPlannerCandidate] | None = None,
     target_date: date | None = MID_DAY,
 ) -> tuple[dict, dict]:
-    replaceable, preserved = _replaceable_ai_items(existing, target_date)
+    plan = build_replan_write(existing, planning.itinerary, target_date)
     return build_intent_diff(
-        replaceable=replaceable,
-        preserved=preserved,
-        planning=planning,
+        plan=plan,
         candidates=pool or candidates(),
         existing=existing,
-        target_date=target_date,
         timezone="Asia/Tokyo",
     )
+
+
+def _coordinate(value: Decimal | float | None) -> float | None:
+    return None if value is None else round(float(value), 6)
+
+
+def _snapshot(item: TripPlanItem) -> dict[str, Any]:
+    """The fields the diff speaks about, as the traveller would see them."""
+    return {
+        "title": item.title,
+        "location_name": item.location_name,
+        "provider_place_id": item.provider_place_id,
+        "latitude": _coordinate(item.latitude),
+        "longitude": _coordinate(item.longitude),
+        "duration_minutes": item.duration_minutes,
+        "notes": traveller_notes(item),
+    }
+
+
+def apply_and_check(
+    existing: list[TripPlanItem],
+    planning: AIPlanningResult,
+    *,
+    pool: list[AIPlannerCandidate] | None = None,
+    target_date: date | None = MID_DAY,
+) -> tuple[dict, dict, list[TripPlanItem]]:
+    """Build the diff, then run the write, and fail if the two disagree.
+
+    The write side calls the production helpers apply itself calls
+    (``build_replan_write`` → ``apply_meal_writes`` → ``_replan_records``), so
+    this is not a second model of apply: it is apply's own row-level path.
+    """
+    plan = build_replan_write(existing, planning.itinerary, target_date)
+    diff, exhaustion = build_intent_diff(
+        plan=plan, candidates=pool or candidates(), existing=existing, timezone="Asia/Tokyo"
+    )
+    before = {item.id: _snapshot(item) for item in existing}
+    apply_meal_writes(plan.meals)
+    records = _replan_records(TRIP_ID, plan)
+
+    assert (
+        len(diff["removed"])
+        + len(diff["moved"])
+        + len(diff["changed"])
+        + diff["unchanged_count"]
+        == len(plan.replaceable)
+    ), "every replaceable row must land in exactly one group"
+
+    zone = trip_zone("Asia/Tokyo")
+    written = [pair for pair in plan.pairs if pair.planned is not None]
+    assert len(written) == len(records)
+    unchanged = 0
+    for pair, record in zip(written, records, strict=True):
+        if pair.stored is None:
+            continue
+        same_slot = pair.stored.day_date == pair.planned.day_date and wall_clock(
+            pair.stored.start_time, zone
+        ) == wall_clock(pair.planned.start_time, zone)
+        if not same_slot or pair.changed:
+            continue
+        unchanged += 1
+        assert _snapshot(record) == before[pair.stored.id], (
+            f"{record.title} is counted unchanged, but apply rewrites it"
+        )
+    assert unchanged == diff["unchanged_count"]
+
+    reported = {
+        (entry["day_date"], entry["system_role"]): entry for entry in diff["meals"]
+    }
+    for write in plan.meals:
+        day = write.row.day_date.isoformat() if write.row.day_date else None
+        entry = reported.get((day, write.row.system_role))
+        if entry is None:
+            assert _snapshot(write.row) == before[write.row.id], (
+                f"{write.row.title} is rewritten by apply but absent from the diff"
+            )
+        else:
+            assert write.row.title == entry["after_title"]
+    return diff, exhaustion, records
 
 
 # --- request contract -------------------------------------------------------
@@ -247,6 +368,24 @@ def test_compose_planner_notes_drops_blanks() -> None:
     assert _compose_planner_notes(None, None) is None
     assert _compose_planner_notes("   ", "  ") is None
     assert _compose_planner_notes(None, "走路少一點") == "走路少一點"
+
+
+def test_the_replay_key_covers_the_day_the_scope_and_the_version() -> None:
+    """A client reusing one key for two days must not be served the first day's plan."""
+    base = TripIntentRequest(version=3, text="走路少一點", scope="day", day_date=MID_DAY)
+    other_day = TripIntentRequest(
+        version=3, text="走路少一點", scope="day", day_date=EARLY_DAY
+    )
+    whole_trip = TripIntentRequest(version=3, text="走路少一點", scope="trip")
+    newer = TripIntentRequest(version=4, text="走路少一點", scope="day", day_date=MID_DAY)
+    keys = {
+        _intent_request_key(USER_ID, TRIP_ID, "shared-key", payload)
+        for payload in (base, other_day, whole_trip, newer)
+    }
+    assert len(keys) == 4
+    assert _intent_request_key(USER_ID, TRIP_ID, "shared-key", base) == _intent_request_key(
+        USER_ID, TRIP_ID, "shared-key", base
+    )
 
 
 # --- day-scope pace ---------------------------------------------------------
@@ -327,7 +466,7 @@ def test_diff_reports_removed_added_and_moved_against_apply_rules() -> None:
     planning = planning_from(
         [(MID_DAY, "hotspot:1", "10:00"), (MID_DAY, "hotspot:4", "13:30")]
     )
-    diff, exhaustion = diff_for(existing, planning)
+    diff, exhaustion, _ = apply_and_check(existing, planning)
 
     assert [entry["candidate_key"] for entry in diff["removed"]] == ["hotspot:0"]
     assert [entry["candidate_key"] for entry in diff["added"]] == ["hotspot:4"]
@@ -350,11 +489,11 @@ def test_diff_leaves_locked_fixed_and_user_added_rows_untouched() -> None:
         row(title="別天的景點", candidate_key="hotspot:7", day_date=date(2026, 11, 13)),
     ]
     planning = planning_from([(MID_DAY, "hotspot:2", "10:00")])
-    diff, _ = diff_for(existing, planning)
+    diff, _, _ = apply_and_check(existing, planning)
 
     touched = {
         entry["title"]
-        for entry in [*diff["removed"], *diff["added"], *diff["moved"]]
+        for entry in [*diff["removed"], *diff["added"], *diff["moved"], *diff["changed"]]
     }
     assert touched == {"東京景點 0", "東京景點 2"}
 
@@ -364,7 +503,7 @@ def test_start_time_comparison_is_timezone_normalised() -> None:
     stored = row(title="東京景點 0", candidate_key="hotspot:0", start_time=None)
     stored.start_time = datetime(2026, 11, 12, 1, 0, tzinfo=UTC)  # 10:00 Tokyo
     planning = planning_from([(MID_DAY, "hotspot:0", "10:00")])
-    diff, _ = diff_for([stored], planning)
+    diff, _, _ = apply_and_check([stored], planning)
 
     assert diff["moved"] == []
     assert diff["unchanged_count"] == 1
@@ -379,10 +518,103 @@ def test_diff_never_offers_a_row_apply_would_drop_as_a_duplicate_title() -> None
     planning = planning_from(
         [(MID_DAY, "hotspot:0", "10:00"), (MID_DAY, "hotspot:3", "13:30")]
     )
-    diff, _ = diff_for(existing, planning)
+    diff, _, _ = apply_and_check(existing, planning)
 
     assert [entry["candidate_key"] for entry in diff["added"]] == []
     assert diff["removed"] == []
+
+
+# --- the diff tells the truth about what apply writes ------------------------
+
+
+def traveller_edited(item: TripPlanItem) -> TripPlanItem:
+    """The three edits a traveller can make without locking the row."""
+    item.duration_minutes = 180
+    item.notes = "帶傘、先去雷門那側入口"
+    item.location_name = "淺草寺 雷門（南側入口）"
+    item.provider_place_id = "place-picked-by-hand"
+    item.location_source = "confirmed"
+    item.latitude = Decimal("35.711000")
+    item.longitude = Decimal("139.796000")
+    item.data = {
+        **item.data,
+        "place_match_status": "confirmed",
+        "needs_place_confirmation": False,
+    }
+    return item
+
+
+def test_a_stop_the_planner_keeps_does_not_quietly_lose_the_travellers_own_edits() -> None:
+    """The strongest positive claim the sheet makes — "unchanged" — has to be true.
+
+    Apply deletes every replaceable row and re-creates it from the draft, so a
+    stay length, a note and a hand-corrected place used to vanish while the
+    sheet said nothing changed.
+    """
+    stored = traveller_edited(
+        row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00")
+    )
+    planning = planning_from([(MID_DAY, "hotspot:0", "10:00")])
+
+    diff, _, records = apply_and_check([stored], planning)
+
+    assert diff["unchanged_count"] == 1
+    assert diff["changed"] == []
+    [record] = records
+    assert record.duration_minutes == 180
+    assert record.notes == "帶傘、先去雷門那側入口"
+    assert record.location_name == "淺草寺 雷門（南側入口）"
+    assert record.provider_place_id == "place-picked-by-hand"
+    assert record.location_source == "confirmed"
+    assert record.data["place_match_status"] == "confirmed"
+    # The planner's own text is still refreshed; only the traveller's is kept.
+    assert record.data["reason"] == "hotspot:0 理由"
+    assert record.end_time == record.start_time + timedelta(minutes=180)
+
+
+def test_a_moved_stop_carries_the_travellers_edits_to_its_new_slot() -> None:
+    stored = traveller_edited(
+        row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00")
+    )
+    planning = planning_from(
+        [(MID_DAY, "hotspot:1", "10:00"), (MID_DAY, "hotspot:0", "13:30")]
+    )
+    diff, _, records = apply_and_check([stored], planning)
+
+    assert [entry["candidate_key"] for entry in diff["moved"]] == ["hotspot:0"]
+    moved_record = next(
+        record for record in records if record.data.get("candidate_key") == "hotspot:0"
+    )
+    assert moved_record.notes == "帶傘、先去雷門那側入口"
+    assert moved_record.duration_minutes == 180
+    assert moved_record.location_name == "淺草寺 雷門（南側入口）"
+
+
+def test_a_field_apply_would_overwrite_is_named_rather_than_counted_unchanged() -> None:
+    """Anything the carry-forward does not cover is reported, never absorbed."""
+    stored = row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00")
+    stored.location_name = "舊的官方名稱"  # still the planner's own field
+    planning = planning_from([(MID_DAY, "hotspot:0", "10:00")])
+    diff, _, _ = apply_and_check([stored], planning)
+
+    assert diff["unchanged_count"] == 0
+    assert [entry["fields"] for entry in diff["changed"]] == [["place"]]
+    assert diff["changed"][0]["title"] == "東京景點 0"
+    assert diff["has_changes"] is True
+
+
+def test_the_same_place_on_two_days_is_not_collapsed_into_one_diff_row() -> None:
+    """Day-scoped applies do not dedupe across days, so a trip can hold both."""
+    existing = [
+        row(title="東京景點 0", candidate_key="hotspot:0", day_date=EARLY_DAY, start_time="10:00"),
+        row(title="東京景點 0", candidate_key="hotspot:0", day_date=MID_DAY, start_time="10:00"),
+    ]
+    planning = planning_from([(MID_DAY, "hotspot:0", "10:00")])
+    diff, _, _ = apply_and_check(existing, planning, target_date=None)
+
+    assert len(diff["removed"]) == 1
+    assert diff["removed"][0]["day_date"] == EARLY_DAY.isoformat()
+    assert diff["unchanged_count"] == 1
 
 
 def test_meals_are_reported_as_changed_never_as_added_or_removed() -> None:
@@ -408,7 +640,7 @@ def test_meals_are_reported_as_changed_never_as_added_or_removed() -> None:
     planning = planning_from(
         [(MID_DAY, "merchant:0", "12:00"), (MID_DAY, "merchant:1", "18:30")]
     )
-    diff, _ = diff_for(existing, planning)
+    diff, _, _ = apply_and_check(existing, planning)
 
     assert diff["added"] == []
     assert diff["removed"] == []
@@ -417,6 +649,53 @@ def test_meals_are_reported_as_changed_never_as_added_or_removed() -> None:
     assert diff["meals"][0]["before_title"] == "午餐尚未安排"
     assert diff["meals"][0]["after_title"] == "東京店家 0"
     assert diff["meals"][0]["cleared"] is False
+
+
+def test_a_reservation_note_survives_the_planner_re_picking_the_same_restaurant() -> None:
+    """Editing 備註 does not set meal_selection_source=user, so the row is AI-owned.
+
+    Apply used to overwrite the note wholesale while the diff, comparing only
+    titles, printed nothing at all.
+    """
+    lunch = row(
+        title="東京店家 0",
+        candidate_key="merchant:0",
+        system_role="lunch",
+        start_time="12:00",
+        locked=True,
+        fixed_time=True,
+        meal_source="ai",
+    )
+    lunch.notes = "已訂位 19:00，訂位人：王，靠窗"
+    planning = planning_from([(MID_DAY, "merchant:0", "12:00")])
+
+    diff, _, _ = apply_and_check([lunch], planning)
+
+    assert lunch.notes == "已訂位 19:00，訂位人：王，靠窗"
+    assert diff["meals"] == []
+    assert diff["has_changes"] is False
+
+
+def test_swapping_a_restaurant_names_what_changes_and_still_keeps_the_note() -> None:
+    lunch = row(
+        title="東京店家 0",
+        candidate_key="merchant:0",
+        system_role="lunch",
+        start_time="12:00",
+        locked=True,
+        fixed_time=True,
+        meal_source="ai",
+    )
+    lunch.notes = "已訂位 19:00，訂位人：王，靠窗"
+    planning = planning_from([(MID_DAY, "merchant:1", "12:00")])
+
+    diff, _, _ = apply_and_check([lunch], planning)
+
+    assert len(diff["meals"]) == 1
+    assert diff["meals"][0]["before_title"] == "東京店家 0"
+    assert diff["meals"][0]["after_title"] == "東京店家 1"
+    assert diff["meals"][0]["fields"] == ["title", "place"]
+    assert lunch.notes == "已訂位 19:00，訂位人：王，靠窗"
 
 
 def test_meal_projection_matches_the_unset_title_apply_writes() -> None:
@@ -444,7 +723,7 @@ def test_exhaustion_says_no_alternatives_when_the_pool_is_spent() -> None:
     planning = planning_from(
         [(MID_DAY, "hotspot:0", "10:00"), (MID_DAY, "hotspot:1", "13:30")], pool=pool
     )
-    diff, exhaustion = diff_for(existing, planning, pool=pool)
+    diff, exhaustion, _ = apply_and_check(existing, planning, pool=pool)
 
     assert diff["has_changes"] is False
     assert diff["unchanged_count"] == 2
@@ -461,12 +740,56 @@ def test_exhaustion_distinguishes_an_unchanged_plan_from_a_spent_pool() -> None:
     planning = planning_from(
         [(MID_DAY, "hotspot:0", "10:00"), (MID_DAY, "hotspot:1", "13:30")]
     )
-    diff, exhaustion = diff_for(existing, planning)
+    diff, exhaustion, _ = apply_and_check(existing, planning)
 
     assert diff["has_changes"] is False
     assert exhaustion["exhausted"] is True
     assert exhaustion["reason"] == "no_change"
     assert exhaustion["alternative_candidate_count"] == 6
+    assert exhaustion["pool_spent"] is False
+
+
+def test_a_spent_pool_is_reported_even_when_the_replan_merely_reorders() -> None:
+    """`exhausted` is about the diff; `pool_spent` is about the area."""
+    pool = [candidate(0), candidate(1)]
+    existing = [
+        row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00"),
+        row(title="東京景點 1", candidate_key="hotspot:1", start_time="13:30", position=1),
+    ]
+    planning = planning_from(
+        [(MID_DAY, "hotspot:1", "10:00"), (MID_DAY, "hotspot:0", "13:30")], pool=pool
+    )
+    diff, exhaustion, _ = apply_and_check(existing, planning, pool=pool)
+
+    assert len(diff["moved"]) == 2
+    assert exhaustion["exhausted"] is False
+    assert exhaustion["pool_spent"] is True
+
+
+def test_an_empty_merchant_pool_is_reported_separately_from_the_hotspot_pool() -> None:
+    """"Try a different day" is false advice when it is the restaurants that ran out."""
+    pool = [*[candidate(index) for index in range(4)], candidate(0, kind="merchant")]
+    existing = [
+        row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00"),
+        row(
+            title="東京店家 0",
+            candidate_key="merchant:0",
+            system_role="dinner",
+            start_time="18:30",
+            locked=True,
+            fixed_time=True,
+            meal_source="ai",
+            position=1,
+        ),
+    ]
+    planning = planning_from(
+        [(MID_DAY, "hotspot:0", "10:00"), (MID_DAY, "merchant:0", "18:30")], pool=pool
+    )
+    _, exhaustion, _ = apply_and_check(existing, planning, pool=pool)
+
+    assert exhaustion["meal_pool_spent"] is True
+    assert exhaustion["alternative_merchant_count"] == 0
+    assert exhaustion["pool_spent"] is False
 
 
 def test_a_shorter_day_with_nothing_left_is_flagged_rather_than_shipped_quietly() -> None:
@@ -476,7 +799,7 @@ def test_a_shorter_day_with_nothing_left_is_flagged_rather_than_shipped_quietly(
         row(title="東京景點 1", candidate_key="hotspot:1", start_time="13:30", position=1),
     ]
     planning = planning_from([(MID_DAY, "hotspot:0", "10:00")], pool=pool)
-    diff, exhaustion = diff_for(existing, planning, pool=pool)
+    diff, exhaustion, _ = apply_and_check(existing, planning, pool=pool)
 
     assert [entry["candidate_key"] for entry in diff["removed"]] == ["hotspot:1"]
     assert exhaustion["activity_delta"] == -1
@@ -490,6 +813,12 @@ def test_a_shorter_day_with_nothing_left_is_flagged_rather_than_shipped_quietly(
 def test_refine_is_a_known_operation_so_its_price_is_an_admin_dial() -> None:
     assert REFINE_OPERATION == "ai_itinerary_refine"
     assert REFINE_OPERATION in USAGE_OPERATIONS
+
+
+def test_only_a_day_scoped_intent_is_priced_as_a_refinement() -> None:
+    """A whole-trip intent is a full re-plan; it charges what the paid path charges."""
+    assert intent_usage_operation("day") == REFINE_OPERATION
+    assert intent_usage_operation("trip") == GENERATE_OPERATION == "ai_itinerary_generation"
 
 
 def test_apply_charges_the_operation_the_envelope_names_and_falls_back_safely() -> None:
@@ -518,3 +847,201 @@ async def test_a_seeded_zero_cost_makes_refinement_free() -> None:
     session = AsyncMock()
     session.get = AsyncMock(return_value=UsageOperationCost(operation=REFINE_OPERATION, uses=0))
     assert await effective_operation_cost(session, REFINE_OPERATION) == 0
+
+
+def _spent_account_session(cost: UsageOperationCost | None) -> MagicMock:
+    account = UsageAccount(id=uuid4(), user_id=USER_ID, remaining_uses=0, reserved_uses=0)
+    session = MagicMock()
+    session.scalar = AsyncMock(side_effect=[account, None])
+    session.get = AsyncMock(return_value=cost)
+    session.flush = AsyncMock()
+    session.add = MagicMock()
+    return session
+
+
+@pytest.mark.asyncio
+async def test_a_spent_account_may_refine_a_day_but_is_charged_for_a_whole_trip() -> None:
+    """The free door is a day nudge, not a full regeneration by another name."""
+    free = _spent_account_session(UsageOperationCost(operation=REFINE_OPERATION, uses=0))
+    reservation, created = await reserve_use(
+        free, USER_ID, "intent-day", REFINE_OPERATION, "AI 重新排行程"
+    )
+    assert created and reservation.uses == 0
+
+    paid = _spent_account_session(None)
+    with pytest.raises(AppError) as raised:
+        await reserve_use(paid, USER_ID, "intent-trip", GENERATE_OPERATION, "AI 重新排行程")
+    assert raised.value.status == 402
+    assert raised.value.code == "insufficient_uses"
+
+
+# --- the endpoint -----------------------------------------------------------
+
+
+def _trip() -> TripPlan:
+    return TripPlan(
+        id=TRIP_ID,
+        user_id=USER_ID,
+        name="東京五日",
+        mode="manual",
+        total_price=Decimal("0"),
+        currency="TWD",
+        data={},
+        version=3,
+        destination_name="日本東京",
+        start_date=TRIP_START,
+        end_date=TRIP_END,
+        timezone="Asia/Tokyo",
+    )
+
+
+def _stub_endpoint(
+    monkeypatch: pytest.MonkeyPatch,
+    *,
+    planning: AIPlanningResult,
+    existing: list[TripPlanItem],
+    order: list[str] | None = None,
+) -> fakeredis.aioredis.FakeRedis:
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    trip = _trip()
+    calls = order if order is not None else []
+
+    async def fake_owned_trip(_session: object, _user_id: UUID, _trip_id: UUID) -> TripPlan:
+        calls.append("owned_trip")
+        return trip
+
+    async def fake_limit(namespace: str, _identifier: str, **_kwargs: object) -> None:
+        calls.append(namespace)
+
+    async def fake_planning(*_args: object, **_kwargs: object) -> tuple[Any, ...]:
+        return planning, [], [], candidates()
+
+    async def fake_envelope(*_args: object, **_kwargs: object) -> tuple[dict, dict]:
+        envelope = {"preview_id": str(uuid4()), "base_version": trip.version, "days": []}
+        return envelope, {**envelope, "candidate_keys": [], "candidate_signatures": {}}
+
+    async def fake_load_items(*_args: object) -> list[TripPlanItem]:
+        # Legacy trips keep their rows in trip.data until something hydrates
+        # them; the diff must never be built from this raw list.
+        return []
+
+    async def fake_hydrate(*_args: object) -> list[TripPlanItem]:
+        return existing
+
+    monkeypatch.setattr(intents_module, "get_redis", lambda: redis)
+    monkeypatch.setattr(intents_module, "owned_trip", fake_owned_trip)
+    monkeypatch.setattr(intents_module, "enforce_named_rate_limit", fake_limit)
+    monkeypatch.setattr(intents_module, "_build_ai_planning", fake_planning)
+    monkeypatch.setattr(intents_module, "build_itinerary_preview_envelope", fake_envelope)
+    monkeypatch.setattr(intents_module, "load_items", fake_load_items)
+    monkeypatch.setattr(intents_module, "hydrate_legacy_items", fake_hydrate)
+    return redis
+
+
+async def _post(payload: TripIntentRequest, key: str = "idempotency-key-1") -> dict[str, Any]:
+    return await create_trip_intent(
+        TRIP_ID,
+        payload,
+        MagicMock(id=USER_ID),
+        MagicMock(),
+        key,
+    )
+
+
+@pytest.mark.asyncio
+async def test_a_day_intent_is_free_and_a_whole_trip_intent_is_not(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    existing = [row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00")]
+    _stub_endpoint(
+        monkeypatch,
+        planning=planning_from([(MID_DAY, "hotspot:4", "10:00")]),
+        existing=existing,
+    )
+    day = await _post(TripIntentRequest(version=3, text="走路少一點", day_date=MID_DAY))
+    assert day["usage_operation"] == REFINE_OPERATION
+
+    whole = await _post(
+        TripIntentRequest(version=3, text="走路少一點", scope="trip"), key="idempotency-key-2"
+    )
+    assert whole["usage_operation"] == GENERATE_OPERATION
+
+
+@pytest.mark.asyncio
+async def test_the_diff_is_built_from_the_rows_apply_will_see(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A legacy trip's rows only exist once hydrated; the diff has to hydrate too."""
+    existing = [row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00")]
+    _stub_endpoint(
+        monkeypatch,
+        planning=planning_from([(MID_DAY, "hotspot:4", "10:00")]),
+        existing=existing,
+    )
+    result = await _post(TripIntentRequest(version=3, text="走路少一點", day_date=MID_DAY))
+
+    assert [entry["candidate_key"] for entry in result["diff"]["removed"]] == ["hotspot:0"]
+    assert [entry["candidate_key"] for entry in result["diff"]["added"]] == ["hotspot:4"]
+
+
+@pytest.mark.asyncio
+async def test_a_catalog_reshuffle_is_refused_rather_than_dressed_up_as_a_refinement(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """fallback_draft never reads the sentence, so there is no refinement to show."""
+    _stub_endpoint(
+        monkeypatch,
+        planning=planning_from(
+            [(MID_DAY, "hotspot:4", "10:00")], status="fallback", provider="catalog"
+        ),
+        existing=[row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00")],
+    )
+    with pytest.raises(AppError) as raised:
+        await _post(TripIntentRequest(version=3, text="這天下雨，改室內", day_date=MID_DAY))
+    assert raised.value.status == 503
+    assert raised.value.code == "ai_planner_unavailable"
+
+
+@pytest.mark.asyncio
+async def test_a_request_that_never_runs_does_not_spend_the_shared_hourly_budget(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Both limiters count what they reject, so ownership and the narrow cap go first."""
+    order: list[str] = []
+    _stub_endpoint(
+        monkeypatch,
+        planning=planning_from([(MID_DAY, "hotspot:4", "10:00")]),
+        existing=[],
+        order=order,
+    )
+    await _post(TripIntentRequest(version=3, text="走路少一點", day_date=MID_DAY))
+
+    assert order == ["owned_trip", "ai-itinerary-intent-trip", "ai-itinerary-preview-user"]
+
+
+@pytest.mark.asyncio
+async def test_reusing_one_idempotency_key_for_another_day_is_not_a_replay(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    existing = [row(title="東京景點 0", candidate_key="hotspot:0", start_time="10:00")]
+    _stub_endpoint(
+        monkeypatch,
+        planning=planning_from([(MID_DAY, "hotspot:4", "10:00")]),
+        existing=existing,
+    )
+    first = await _post(TripIntentRequest(version=3, text="走路少一點", day_date=MID_DAY))
+    replay = await _post(TripIntentRequest(version=3, text="走路少一點", day_date=MID_DAY))
+    other_day = await _post(TripIntentRequest(version=3, text="走路少一點", day_date=EARLY_DAY))
+
+    assert replay["preview_id"] == first["preview_id"]
+    assert other_day["preview_id"] != first["preview_id"]
+
+
+def test_replaceable_split_is_the_set_apply_deletes() -> None:
+    existing = [
+        row(title="東京景點 0", candidate_key="hotspot:0"),
+        row(title="鎖定的景點", candidate_key="hotspot:5", locked=True, position=1),
+    ]
+    replaceable, preserved = replaceable_ai_items(existing, MID_DAY)
+    assert [item.title for item in replaceable] == ["東京景點 0"]
+    assert [item.title for item in preserved] == ["鎖定的景點"]

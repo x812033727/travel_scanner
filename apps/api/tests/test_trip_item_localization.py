@@ -30,9 +30,9 @@ from app.localized_names import item_names
 from app.middleware import RequestContextMiddleware
 from app.models import FoodMerchant, TravelFood, TravelHotspot, TripPlanItem
 from app.trips.itinerary import ItineraryFood, ItineraryHotspot, ItineraryItem, build_itinerary
+from app.trips.replan import sync_ai_meal_slots
 from app.trips.router import (
     ItineraryItemRequest,
-    _sync_ai_meal_slots,
     apply_item_request,
     item_record,
     serialize_item,
@@ -352,7 +352,7 @@ def test_ai_meal_sync_copies_labels_and_localizes_the_empty_state() -> None:
         names={"title": {"zh-TW": "拉麵 · 一蘭 澀谷店", "en": "Ramen · Ichiran Shibuya"}},
         data={"generated_by": "ai_planner", "meal_selection_source": "ai"},
     )
-    _sync_ai_meal_slots([lunch, dinner], [generated])
+    sync_ai_meal_slots([lunch, dinner], [generated])
     assert lunch.names_json == generated.names
     assert serialize_item(lunch, locale="zh-TW")["title"] == "拉麵 · 一蘭 澀谷店"
     assert dinner.title == MEAL_PLACEHOLDER_LABELS["dinner"]["zh-TW"]
