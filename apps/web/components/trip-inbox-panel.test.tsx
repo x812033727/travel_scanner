@@ -45,7 +45,7 @@ describe("TripInboxPanel", () => {
   });
 
   it("only takes a place off the list once the day has accepted it", async () => {
-    apiMock.mockImplementation(async (path: string, init?: RequestInit) => {
+    apiMock.mockImplementation(async (path: string) => {
       if (String(path).endsWith("/places")) return { items: [pasted] };
       return {};
     });

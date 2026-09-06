@@ -12,12 +12,16 @@ that expired between the two would turn every apply into a conflict.
 catalogue the row also points at that hotspot, so the planner can show the name in the
 reader's language and the depth score the catalogue already has, instead of the raw text
 somebody pasted.
+
+0001 still calls the current ``Base.metadata.create_all``, so a fresh database already
+has this table while one upgrading from 0048 does not. Inspecting keeps both paths safe
+and leaves offline SQL generation unchanged.
 """
 
 from collections.abc import Sequence
 
 import sqlalchemy as sa
-from alembic import op
+from alembic import context, op
 from sqlalchemy.dialects import postgresql
 
 revision: str = "0049_trip_place_candidates"
@@ -25,10 +29,16 @@ down_revision: str | None = "0048_repair_merchant_citations"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
+TABLE = "trip_place_candidates"
+INDEX = "ix_trip_place_candidates_trip_status"
+
 
 def upgrade() -> None:
+    inspector = None if context.is_offline_mode() else sa.inspect(op.get_bind())
+    if inspector is not None and inspector.has_table(TABLE):
+        return
     op.create_table(
-        "trip_place_candidates",
+        TABLE,
         sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True),
         sa.Column(
             "trip_plan_id",
@@ -61,13 +71,12 @@ def upgrade() -> None:
             name="ck_trip_place_candidate_status",
         ),
     )
-    op.create_index(
-        "ix_trip_place_candidates_trip_status",
-        "trip_place_candidates",
-        ["trip_plan_id", "status"],
-    )
+    op.create_index(INDEX, TABLE, ["trip_plan_id", "status"])
 
 
 def downgrade() -> None:
-    op.drop_index("ix_trip_place_candidates_trip_status", table_name="trip_place_candidates")
-    op.drop_table("trip_place_candidates")
+    inspector = None if context.is_offline_mode() else sa.inspect(op.get_bind())
+    if inspector is not None and not inspector.has_table(TABLE):
+        return
+    op.drop_index(INDEX, table_name=TABLE)
+    op.drop_table(TABLE)
