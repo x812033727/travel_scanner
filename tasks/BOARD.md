@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**2 open · 1 in progress · 2 blocked · 0 in review · 114 done**
+**3 open · 1 in progress · 2 blocked · 0 in review · 114 done**
 
 ## Ready to claim
 
@@ -14,6 +14,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
+| P2 | [110 家店裡有 28 家在英日韓語系顯示中文譯名](open/2026-09-06-merchant-names-chinese-in-other-locales.md) | api | `apps/api/app/foods/merchant_catalog.py` |
 | P3 | [後台可以挑選景點介紹的 AI 供應商與模型](open/2026-09-06-intro-ai-vendor-settings.md) | web | `apps/api/app/admin/service.py`<br>`apps/api/app/ai/catalog.py`<br>`apps/web/components/admin-settings-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/messages/zh-CN/admin.json` |
 
 ## In progress

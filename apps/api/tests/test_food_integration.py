@@ -311,7 +311,26 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             korean_food.id
         )
         assert card["map_links"][0]["provider"] == "naver"
-        assert card["destination_name"] == "首爾"
+        # The city sat in Traditional Chinese next to a Korean area name and Korean
+        # category labels in the same card, for every locale.
+        assert card["destination_name"] == "서울"
+        assert (
+            (await list_merchants(session, locale="zh-TW", destination_id="seoul"))["items"][0][
+                "destination_name"
+            ]
+            == "首爾"
+        )
+        assert (
+            (await list_merchants(session, locale="en", destination_id="seoul"))["items"][0][
+                "destination_name"
+            ]
+            == "Seoul"
+        )
+        # The map query keeps the catalog's own spelling whoever is reading: it is paired
+        # with the merchant's local_name, and that pair is what Google resolves.
+        assert "%E9%A6%96%E7%88%BE" in card["map_links"][-1]["url"] or card["map_links"][-1][
+            "provider"
+        ] == "naver"
         facet_areas = {
             area["slug"]: area["merchant_count"] for area in directory["facets"]["areas"]
         }
