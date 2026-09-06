@@ -126,8 +126,15 @@ def test_the_committed_batch_is_valid_and_points_at_seeded_areas_and_categories(
     assert [row["slug"] for row in raw] == [m.slug for m in merchants]
 
 
-def test_the_committed_batch_overlaps_the_curated_catalog_by_exactly_two_tainan_shops() -> None:
-    """Why the importer dedupes on two keys: this is the overlap it met in production."""
+def test_the_committed_batch_overlaps_the_curated_catalog_by_exactly_one_tainan_shop() -> None:
+    """One overlap, not two. The second was a slug collision between different shops.
+
+    This test used to assert two, one matched by slug and one by name, and read them both as
+    "the curated catalog already has this shop". Only the name match was that. The slug match
+    was tainan-fu-sheng-hao, where the curated catalog means 福生小食店 and this file meant
+    富盛號 — so the row was not a duplicate being skipped, it was a real shop that could never
+    be imported. It now has its own slug, and parse_merchants refuses the situation outright.
+    """
     merchants = load_trend_merchants(DEFAULT_FILE)
     catalog_slugs = {seed.slug for seed in MERCHANT_SEEDS}
     catalog_identity = {
@@ -137,8 +144,32 @@ def test_the_committed_batch_overlaps_the_curated_catalog_by_exactly_two_tainan_
     by_name = sorted(
         m.slug for m in merchants if m.slug not in catalog_slugs and m.identity in catalog_identity
     )
-    assert len(by_slug) == 1 and len(by_name) == 1, (by_slug, by_name)
-    assert all(slug.startswith("tainan-") for slug in by_slug + by_name)
+    assert by_slug == [], by_slug
+    assert by_name == ["tainan-a-song-ge-bao"], by_name
+
+
+def test_a_slug_the_curated_catalog_uses_for_another_shop_is_refused() -> None:
+    """Silence was the damage. 富盛號 sat unimportable behind a skipped_existing_slug count."""
+    curated = next(seed for seed in MERCHANT_SEEDS if seed.slug == "tainan-fu-sheng-hao")
+    assert curated.local_name == "福生小食店"
+
+    with pytest.raises(TrendImportError) as error:
+        parse_merchants(
+            [
+                _row(
+                    destination="tainan",
+                    district_key="zhengxing",
+                    slug="tainan-fu-sheng-hao",
+                    name_zh="富盛號",
+                    local_name="富盛號",
+                    category_slugs=["street-food"],
+                    source_url="https://www.twtainan.net/zh-tw/shop/consume/8617/",
+                    source_title="富盛號 - 台南旅遊網",
+                )
+            ]
+        )
+    assert "could never be imported" in str(error.value)
+    assert "tainan-fu-sheng-hao" in str(error.value)
 
 
 def test_an_imported_merchant_reads_in_every_site_locale() -> None:
@@ -371,11 +402,13 @@ def test_the_reset_refuses_a_slug_the_curated_catalog_owns() -> None:
     rename a restaurant into a different one. A production dry run reported it alongside the
     seven rows that really were stranded, which is what the printed list is for.
     """
-    curated = next(m for m in load_trend_merchants(DEFAULT_FILE) if m.slug == "tainan-fu-sheng-hao")
-    assert curated.slug in {seed.slug for seed in MERCHANT_SEEDS}
+    # The file no longer proposes this slug, but a production row still carries it, so the
+    # backfill must keep refusing it whatever the file says today.
+    curated = next(m for m in load_trend_merchants(DEFAULT_FILE) if m.slug.startswith("tainan-fu-"))
+    assert "tainan-fu-sheng-hao" in {seed.slug for seed in MERCHANT_SEEDS}
 
     row = FoodMerchant(
-        slug=curated.slug,
+        slug="tainan-fu-sheng-hao",
         destination_id=curated.destination_id,
         country_code=destination_country_code(curated.destination_id) or "",
         # What production holds: the curated shop, under its own English name.
@@ -384,12 +417,12 @@ def test_the_reset_refuses_a_slug_the_curated_catalog_owns() -> None:
         names_json={},
     )
     changed, left = plan_english_name_backfill(
-        [row], {curated.slug: curated}, reset_drifted=True
+        [row], {"tainan-fu-sheng-hao": curated}, reset_drifted=True
     )
     assert changed == []
     assert left == [
         {
-            "slug": curated.slug,
+            "slug": "tainan-fu-sheng-hao",
             "name": "Fu Sheng Hao",
             "reason": "the curated catalog owns this slug",
         }

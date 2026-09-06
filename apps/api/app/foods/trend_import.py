@@ -62,7 +62,8 @@ DEFAULT_FILE = Path(__file__).resolve().parent / "data" / "trend_merchants.json"
 #: Slugs the hand-curated catalog owns. The importer already refuses to merge into
 #: one, and anything that edits an imported row has to refuse just as hard: the two
 #: files disagree about which shop a shared slug names.
-CURATED_MERCHANT_SLUGS = frozenset(seed.slug for seed in MERCHANT_SEEDS)
+CURATED_MERCHANTS_BY_SLUG = {seed.slug: seed for seed in MERCHANT_SEEDS}
+CURATED_MERCHANT_SLUGS = frozenset(CURATED_MERCHANTS_BY_SLUG)
 SOURCE_SCOPES: dict[str, str] = {
     "merchant_official": "merchant_website",
     "official_tourism": "merchant_listing",
@@ -233,6 +234,22 @@ def parse_merchants(rows: Iterable[Mapping[str, Any]]) -> list[TrendMerchant]:
     )
     if repeated_names:
         raise TrendImportError(f"same destination and local_name twice in file: {repeated_names}")
+    # A slug the curated catalog already uses for a *different* shop is not a duplicate to
+    # skip: it means this row can never be imported, and nothing said so. tainan-fu-sheng-hao
+    # was 福生小食店 in the curated catalog and 富盛號 here, and 富盛號 sat unimportable while
+    # the run reported only "skipped_existing_slug: 1". Two shops whose names romanise the
+    # same is not a typo — slug_for gives both fu-sheng-hao — so this will happen again.
+    stolen = sorted(
+        f"{m.slug} ({m.local_name} here, {CURATED_MERCHANTS_BY_SLUG[m.slug].local_name} curated)"
+        for m in merchants
+        if m.slug in CURATED_MERCHANTS_BY_SLUG
+        and CURATED_MERCHANTS_BY_SLUG[m.slug].local_name.casefold() != m.local_name.casefold()
+    )
+    if stolen:
+        raise TrendImportError(
+            "slug already belongs to a different shop in the curated catalog, so this row "
+            f"could never be imported; give it a distinct slug: {stolen}"
+        )
     return merchants
 
 
