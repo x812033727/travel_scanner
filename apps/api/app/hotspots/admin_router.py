@@ -50,6 +50,13 @@ from app.hotspots.guides import (
     not_manual_guide_filter,
     upsert_guide,
 )
+from app.hotspots.intros import (
+    INTRO_BODY_MAX_CHARS,
+    clean_intro_body,
+    intro_coverage,
+    intro_status_counts,
+    upsert_hotspot_intro_draft,
+)
 from app.hotspots.maps import has_exact_map_identity
 from app.hotspots.place_tasks import enqueue_place_enrichment_run
 from app.hotspots.places import (
@@ -75,6 +82,7 @@ from app.models import (
     AdminAuditLog,
     HotspotGuide,
     HotspotGuideAISearchRun,
+    HotspotIntro,
     HotspotPlaceEnrichmentRun,
     HotspotPlaceProfile,
     HotspotSignal,
@@ -88,6 +96,31 @@ router = APIRouter(prefix="/admin/hotspots", tags=["admin hotspots"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 RedisDep = Annotated[Redis, Depends(get_redis)]
 RequestLocale = Annotated[Locale, Depends(current_locale)]
+
+
+class IntroReviewRequest(BaseModel):
+    ids: list[UUID] = Field(min_length=1, max_length=100)
+    action: Literal["approve", "reject", "disable"]
+    reason: str | None = Field(default=None, max_length=500)
+
+
+class IntroUpdatePayload(BaseModel):
+    body: str | None = Field(default=None, min_length=1, max_length=INTRO_BODY_MAX_CHARS)
+    review_status: Literal["pending", "approved", "rejected", "disabled"] | None = None
+    reason: str | None = Field(default=None, max_length=500)
+
+    @model_validator(mode="after")
+    def something_to_do(self) -> IntroUpdatePayload:
+        if self.body is None and self.review_status is None:
+            raise ValueError("nothing to update")
+        return self
+
+
+class ManualIntroRequest(BaseModel):
+    locale: Locale
+    body: str = Field(min_length=1, max_length=INTRO_BODY_MAX_CHARS)
+    # An administrator typing a paragraph has already reviewed it.
+    approve: bool = True
 
 
 class ThemeWritePayload(BaseModel):
@@ -1775,3 +1808,190 @@ async def assign_hotspot_themes(
         "tombstoned": len(tombstoned),
         "removed": len(removed),
     }
+
+
+def _admin_intro_payload(row: HotspotIntro, hotspot_name: str | None = None) -> dict[str, Any]:
+    return {
+        "id": str(row.id),
+        "hotspot_id": str(row.hotspot_id),
+        "hotspot_name": hotspot_name,
+        "locale": row.locale,
+        "body": row.body,
+        "status": row.review_status,
+        "reason": row.review_reason,
+        "source": row.source,
+        "ai_provider": row.ai_provider,
+        "ai_model": row.ai_model,
+        "generated_at": row.generated_at.isoformat() if row.generated_at else None,
+        "reviewed_at": row.reviewed_at.isoformat() if row.reviewed_at else None,
+        "updated_at": row.updated_at.isoformat() if row.updated_at else None,
+        "metadata": row.metadata_json,
+    }
+
+
+@router.get("/intros")
+async def list_hotspot_intros(
+    user: AdminUser,
+    session: Session,
+    status: Annotated[
+        Literal["pending", "approved", "rejected", "disabled"] | None, Query()
+    ] = "pending",
+    locale: Annotated[Locale | None, Query()] = None,
+    hotspot_id: Annotated[UUID | None, Query()] = None,
+    source: Annotated[Literal["ai", "manual"] | None, Query()] = None,
+    page: Annotated[int, Query(ge=1)] = 1,
+    limit: Annotated[int, Query(ge=1, le=100)] = 50,
+) -> dict[str, Any]:
+    conditions = []
+    if status:
+        conditions.append(HotspotIntro.review_status == status)
+    if locale:
+        conditions.append(HotspotIntro.locale == locale)
+    if hotspot_id:
+        conditions.append(HotspotIntro.hotspot_id == hotspot_id)
+    if source:
+        conditions.append(HotspotIntro.source == source)
+    total = int(await session.scalar(select(func.count(HotspotIntro.id)).where(*conditions)) or 0)
+    rows = (
+        await session.execute(
+            select(HotspotIntro, TravelHotspot.name)
+            .join(TravelHotspot, TravelHotspot.id == HotspotIntro.hotspot_id)
+            .where(*conditions)
+            .order_by(HotspotIntro.updated_at.desc())
+            .offset((page - 1) * limit)
+            .limit(limit)
+        )
+    ).all()
+    return {
+        "items": [_admin_intro_payload(row, name) for row, name in rows],
+        "total": total,
+        "page": page,
+        "pages": max(1, -(-total // limit)),
+        "status_counts": await intro_status_counts(session),
+    }
+
+
+@router.post("/intros/review")
+async def review_hotspot_intros(
+    payload: IntroReviewRequest,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, Any]:
+    rows = list(
+        (await session.scalars(select(HotspotIntro).where(HotspotIntro.id.in_(payload.ids)))).all()
+    )
+    if len(rows) != len(set(payload.ids)):
+        raise AppError(404, "hotspot_intro_not_found", "部分介紹內容不存在")
+    status = {"approve": "approved", "reject": "rejected", "disable": "disabled"}[payload.action]
+    now = datetime.now(UTC)
+    for row in rows:
+        row.review_status = status
+        row.review_reason = payload.reason
+        row.reviewed_at = now
+        row.reviewed_by_user_id = user.id
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="hotspot_intros_reviewed",
+            target=f"hotspot-intros:{len(rows)}",
+            metadata_json={
+                "action": payload.action,
+                "ids": [str(item.id) for item in rows],
+                "reason": payload.reason,
+            },
+        )
+    )
+    await session.commit()
+    return {"updated": len(rows), "status": status}
+
+
+@router.patch("/intros/{intro_id}")
+async def update_hotspot_intro(
+    intro_id: UUID,
+    payload: IntroUpdatePayload,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, Any]:
+    row = await session.get(HotspotIntro, intro_id)
+    if row is None:
+        raise AppError(404, "hotspot_intro_not_found", "找不到這筆介紹內容")
+    now = datetime.now(UTC)
+    if payload.body is not None:
+        row.body = clean_intro_body(payload.body)
+        # An edited paragraph is the editor's, whatever drafted the original.
+        row.metadata_json = {
+            **row.metadata_json,
+            "edited_by_user_id": str(user.id),
+            "edited_at": now.isoformat(),
+        }
+    if payload.review_status is not None:
+        row.review_status = payload.review_status
+        row.reviewed_at = now
+        row.reviewed_by_user_id = user.id
+    if payload.reason is not None:
+        row.review_reason = payload.reason
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="hotspot_intro_updated",
+            target=f"hotspot-intro:{row.id}",
+            metadata_json={
+                "fields": sorted(payload.model_fields_set),
+                "status": row.review_status,
+            },
+        )
+    )
+    await session.commit()
+    return _admin_intro_payload(row)
+
+
+@router.get("/{hotspot_id}/intros")
+async def hotspot_intro_coverage(
+    hotspot_id: UUID,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, Any]:
+    """Five rows, one per locale, so a missing language is visible as a gap."""
+
+    hotspot = await session.get(TravelHotspot, hotspot_id)
+    if hotspot is None:
+        raise AppError(404, "hotspot_not_found", "找不到這個景點")
+    return {
+        "hotspot_id": str(hotspot_id),
+        "hotspot_name": hotspot.name,
+        "locales": await intro_coverage(session, hotspot_id),
+    }
+
+
+@router.post("/{hotspot_id}/intros", status_code=201)
+async def add_hotspot_intro(
+    hotspot_id: UUID,
+    payload: ManualIntroRequest,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, Any]:
+    hotspot = await session.get(TravelHotspot, hotspot_id)
+    if hotspot is None:
+        raise AppError(404, "hotspot_not_found", "找不到這個景點")
+    row, _ = await upsert_hotspot_intro_draft(
+        session,
+        hotspot_id=hotspot_id,
+        locale=payload.locale,
+        body=payload.body,
+        source="manual",
+        replace_approved=True,
+    )
+    if payload.approve:
+        row.review_status = "approved"
+        row.reviewed_at = datetime.now(UTC)
+        row.reviewed_by_user_id = user.id
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="hotspot_intro_manual_added",
+            target=f"hotspot-intro:{row.id}",
+            metadata_json={"locale": payload.locale, "approved": payload.approve},
+        )
+    )
+    await session.commit()
+    return _admin_intro_payload(row, hotspot.name)
