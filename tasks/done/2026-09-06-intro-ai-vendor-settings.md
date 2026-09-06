@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-intro-ai-vendor-settings
 title: 後台可以挑選景點介紹的 AI 供應商與模型
-status: in-progress
+status: done
 priority: P3
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T20:35:59Z
 created_at: 2026-09-06T19:50:08Z
-completed_at:
+completed_at: 2026-09-06T21:26:28Z
 branch: claude/intro-vendor-settings
 depends_on: []
 scope:
