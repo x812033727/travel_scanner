@@ -16,6 +16,7 @@ from app.foods.trend_import import (
     load_trend_merchants,
     parse_merchant,
     parse_merchants,
+    plan_english_name_backfill,
     slug_for,
 )
 from app.i18n import LOCALES
@@ -205,3 +206,70 @@ def test_every_english_label_in_the_committed_batch_is_latin_and_not_the_chinese
     merchants = {merchant.slug: merchant for merchant in parse_merchants(rows)}
     assert merchants["bangkok-charmgang"].display_name == "Charmgang"
     assert merchants["tokyo-fuglen-tokyo"].display_name == "FUGLEN TOKYO"
+
+
+def _imported(merchant: Any, name: str | None = None) -> FoodMerchant:
+    """A row as the importer first wrote it, before name_en existed."""
+
+    return FoodMerchant(
+        slug=merchant.slug,
+        destination_id=merchant.destination_id,
+        country_code=destination_country_code(merchant.destination_id) or "",
+        name=name if name is not None else merchant.name,
+        local_name=merchant.local_name,
+        names_json={},
+    )
+
+
+def test_the_backfill_reaches_rows_the_importer_will_not_touch() -> None:
+    # The importer skips a slug it has seen and never merges into it, so adding name_en to
+    # the file leaves the already-imported rows — the ones a reader sees — untouched.
+    merchant = parse_merchant(_row(name_en="Dandelion Chocolate"), row=1)
+    merchants = {merchant.slug: merchant}
+    changed, left = plan_english_name_backfill([_imported(merchant)], merchants)
+    assert changed == [
+        {
+            "slug": merchant.slug,
+            "from": "Dandelion Chocolate 藏前工廠咖啡館",
+            "to": "Dandelion Chocolate",
+        }
+    ]
+    assert left == []
+
+
+def test_the_backfill_leaves_a_row_an_administrator_renamed() -> None:
+    merchant = parse_merchant(_row(name_en="Dandelion Chocolate"), row=1)
+    merchants = {merchant.slug: merchant}
+    row = _imported(merchant, name="Dandelion Chocolate Kuramae")
+    changed, left = plan_english_name_backfill([row], merchants)
+    assert changed == []
+    assert left == [
+        {
+            "slug": merchant.slug,
+            "name": "Dandelion Chocolate Kuramae",
+            "reason": "renamed since import",
+        }
+    ]
+
+
+def test_running_the_backfill_twice_changes_nothing_the_second_time() -> None:
+    merchant = parse_merchant(_row(name_en="Dandelion Chocolate"), row=1)
+    merchants = {merchant.slug: merchant}
+    already = _imported(merchant, name=merchant.display_name)
+    changed, left = plan_english_name_backfill([already], merchants)
+    assert changed == []
+    # And it says why, rather than calling it a rename an operator would go looking for.
+    assert left == [
+        {
+            "slug": merchant.slug,
+            "name": "Dandelion Chocolate",
+            "reason": "already the English name",
+        }
+    ]
+
+
+def test_a_row_with_no_english_name_in_the_file_is_never_touched() -> None:
+    merchant = parse_merchant(_row(), row=1)
+    changed, left = plan_english_name_backfill([_imported(merchant)], {merchant.slug: merchant})
+    assert changed == []
+    assert left == []

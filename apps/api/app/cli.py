@@ -25,7 +25,7 @@ from app.foods.coordinate_fill_cli import fill_food_merchant_coordinates
 from app.foods.place_matching_cli import match_food_merchant_places
 from app.foods.service import seed_food_catalog
 from app.foods.trend_import import DEFAULT_FILE as TREND_MERCHANTS_FILE
-from app.foods.trend_import import import_trend_merchants
+from app.foods.trend_import import backfill_english_names, import_trend_merchants
 from app.holidays.refresh import HolidaySourceError
 from app.holidays.refresh import refresh as refresh_holidays
 from app.hotspots.candidate_cli import import_candidates
@@ -746,6 +746,16 @@ def main() -> None:
     guide_review.add_argument(
         "--verbose", action="store_true", help="Print every decision, not just the first 40"
     )
+    english_names = subparsers.add_parser(
+        "backfill-merchant-english-names",
+        help=(
+            "Give merchants already imported the English label their data file now carries; "
+            "dry run unless --apply"
+        ),
+    )
+    english_names.add_argument(
+        "--apply", action="store_true", help="Write the changes (default: report only)"
+    )
     simplified = subparsers.add_parser(
         "fill-simplified-names",
         help=(
@@ -844,6 +854,9 @@ def main() -> None:
             )
         )
         print(json.dumps(summary, ensure_ascii=False, indent=2))
+    elif args.command == "backfill-merchant-english-names":
+        english_summary = asyncio.run(backfill_english_names(apply=args.apply))
+        print(json.dumps(english_summary, ensure_ascii=False, indent=2))
     elif args.command == "fill-simplified-names":
         simplified_summary = asyncio.run(
             fill_simplified_names(
