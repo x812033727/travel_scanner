@@ -13,13 +13,14 @@ import trips from "./messages/zh-TW/trips.json";
 import usage from "./messages/zh-TW/usage.json";
 import hotspots from "./messages/zh-TW/hotspots.json";
 import hotspotAdmin from "./messages/zh-TW/hotspotAdmin.json";
+import hotspotThemes from "./messages/zh-TW/hotspotThemes.json";
 import restaurants from "./messages/zh-TW/restaurants.json";
 import foods from "./messages/zh-TW/foods.json";
 import foodAdmin from "./messages/zh-TW/foodAdmin.json";
 import newTrip from "./messages/zh-TW/newTrip.json";
 import stayAreas from "./messages/zh-TW/stayAreas.json";
 
-const catalogs: Record<string, unknown> = { account, admin, alerts, auth, availability, common, navigation, pricing, search, trips, usage, hotspots, hotspotAdmin, restaurants, foods, foodAdmin, newTrip, stayAreas };
+const catalogs: Record<string, unknown> = { account, admin, alerts, auth, availability, common, navigation, pricing, search, trips, usage, hotspots, hotspotAdmin, hotspotThemes, restaurants, foods, foodAdmin, newTrip, stayAreas };
 
 function message(namespace: string, key: string): string | undefined {
   let current: unknown = catalogs;
