@@ -154,3 +154,70 @@ def test_an_imported_merchant_reads_in_every_site_locale() -> None:
     assert set(LOCALES) <= set(names)
     assert all(names[locale].strip() for locale in LOCALES)
     assert names["original"] == merchant.local_name
+
+
+def _localized(merchant: Any) -> dict[str, str]:
+    return merchant_names(
+        FoodMerchant(
+            slug=merchant.slug,
+            destination_id=merchant.destination_id,
+            country_code=destination_country_code(merchant.destination_id) or "",
+            name=merchant.display_name,
+            local_name=merchant.local_name,
+            names_json=merchant.chinese_label,
+        )
+    )
+
+
+def test_english_readers_get_the_latin_sign_when_the_row_carries_one() -> None:
+    # name_zh is what Chinese travel writing calls the place. Serving it as the English name
+    # gave an English reader a string that is neither on the door nor findable in a map.
+    merchant = parse_merchant(_row(name_en="Dandelion Chocolate"), row=1)
+    assert merchant.display_name == "Dandelion Chocolate"
+    assert _localized(merchant)["en"] == "Dandelion Chocolate"
+
+
+def test_a_row_without_an_english_name_is_unchanged() -> None:
+    merchant = parse_merchant(_row(), row=1)
+    assert merchant.display_name == merchant.name
+    assert merchant.chinese_label == {}
+
+
+def test_a_chinese_reader_of_a_japanese_shop_still_sees_the_signboard() -> None:
+    # merchant_names gives Chinese locales the original script for Japan, and a stored label
+    # would override that. Writing one here would swap a Chinese reader from the signboard to
+    # a Chinese rendering of it — a change this was never meant to make.
+    merchant = parse_merchant(_row(name_en="Dandelion Chocolate"), row=1)
+    assert merchant.chinese_label == {}
+    assert _localized(merchant)["zh-TW"] == merchant.local_name
+
+
+def test_a_chinese_reader_of_a_bangkok_shop_keeps_the_chinese_name() -> None:
+    # Thailand has no such default, so without storing it the Chinese name would be lost the
+    # moment `name` becomes Latin.
+    merchant = parse_merchant(
+        _row(
+            destination="bangkok",
+            district_key="talat-noi",
+            slug="bangkok-charmgang",
+            name_zh="咖哩碗泰菜館",
+            name_en="Charmgang",
+            local_name="ชามแกง Charmgang",
+            category_slugs=["curry", "home-style"],
+        ),
+        row=1,
+    )
+    assert merchant.chinese_label == {"zh-TW": "咖哩碗泰菜館"}
+    names = _localized(merchant)
+    assert names["en"] == "Charmgang"
+    assert names["zh-TW"] == "咖哩碗泰菜館"
+
+
+def test_every_english_name_in_the_committed_batch_is_taken_from_the_row_itself() -> None:
+    """No hand-written transliterations: the ticket forbids inventing romanisations."""
+
+    for merchant in load_trend_merchants(DEFAULT_FILE):
+        if not merchant.name_en:
+            continue
+        haystack = f"{merchant.name} {merchant.local_name}".casefold()
+        assert merchant.name_en.casefold() in haystack, merchant.slug

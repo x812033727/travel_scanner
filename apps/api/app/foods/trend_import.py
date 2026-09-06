@@ -45,6 +45,7 @@ from app.db import SessionFactory
 from app.destinations.catalog import destination_for_id
 from app.foods.category_catalog import CATEGORY_SEEDS_BY_SLUG, SLUG_PATTERN
 from app.foods.service import destination_country_code
+from app.localized_names import original_locale_for
 from app.models import (
     AdminAuditLog,
     FoodArea,
@@ -86,6 +87,37 @@ class TrendMerchant:
     source_kind: str
     note: str | None = None
     confidence: str | None = None
+    #: The merchant's own Latin rendering of its sign, when the row has one. ``name`` is
+    #: served to English readers, and ``name_zh`` is a Chinese rendering — for a Bangkok or
+    #: Seoul shop that is the name Chinese travel writing uses, not the one on the door and
+    #: not the one Google will find. Never a transliteration written by hand: it is only set
+    #: where the Latin text already appears in ``name_zh`` or ``local_name``.
+    name_en: str | None = None
+
+    @property
+    def display_name(self) -> str:
+        """What English readers see. Falls back to the Chinese name where nothing else exists."""
+
+        return self.name_en or self.name
+
+    @property
+    def chinese_label(self) -> dict[str, str]:
+        """The Chinese name, stored only where it would otherwise be lost.
+
+        ``merchant_names`` already gives Chinese locales the original script for Japan, and
+        a stored label overrides that default. Writing one for a Japanese merchant would
+        therefore swap a Chinese reader's view from the signboard to a Chinese rendering of
+        it — a change this was never meant to make. Everywhere else the Chinese name has no
+        other home once ``name`` becomes the Latin one, so it goes here.
+        """
+
+        if not self.name_en or original_locale_for(self.country_code) == "ja":
+            return {}
+        return {"zh-TW": self.name}
+
+    @property
+    def country_code(self) -> str | None:
+        return destination_country_code(self.destination_id)
 
     @property
     def area_slug(self) -> str:
@@ -139,6 +171,7 @@ def parse_merchant(raw: Mapping[str, Any], *, row: int) -> TrendMerchant:
             f"row {row}: district_key {district_key!r} must be lowercase kebab-case"
         )
     name = _text(raw, "name_zh", row=row) or ""
+    name_en = _text(raw, "name_en", row=row, required=False)
     local_name = _text(raw, "local_name", row=row) or ""
     slug = _text(raw, "slug", row=row, required=False) or slug_for(destination_id, name, local_name)
     if not SLUG_PATTERN.match(slug) or not slug.startswith(f"{destination_id}-"):
@@ -169,6 +202,7 @@ def parse_merchant(raw: Mapping[str, Any], *, row: int) -> TrendMerchant:
         destination_id=destination_id,
         district_key=district_key,
         name=name,
+        name_en=name_en,
         local_name=local_name,
         address=_text(raw, "address_local", row=row, required=False),
         category_slugs=tuple(str(slug) for slug in categories),
@@ -203,6 +237,52 @@ def load_trend_merchants(path: Path) -> list[TrendMerchant]:
     return parse_merchants(rows)
 
 
+async def backfill_english_names(*, apply: bool = False) -> dict[str, Any]:
+    """Give merchants already in the database the English name their row now carries.
+
+    The importer skips a slug it has seen before and never merges into it, which is the
+    right rule for a source that can change under us — but it means adding ``name_en`` to
+    the data file does nothing for the rows already imported. Those are the ones a reader
+    is looking at, so this walks them once.
+
+    It only ever replaces a ``name`` that still equals the file's Chinese ``name_zh``. A row
+    an administrator has renamed is left alone, and running it twice changes nothing the
+    second time.
+    """
+    merchants = load_trend_merchants(DEFAULT_FILE)
+    wanted = {m.slug: m for m in merchants if m.name_en}
+    changed: list[dict[str, str]] = []
+    skipped: list[dict[str, str]] = []
+    async with SessionFactory() as session:
+        rows = (
+            await session.execute(
+                select(FoodMerchant).where(FoodMerchant.slug.in_(sorted(wanted)))
+            )
+        ).scalars().all()
+        for row in rows:
+            merchant = wanted[row.slug]
+            if row.name != merchant.name:
+                skipped.append({"slug": row.slug, "name": row.name, "reason": "renamed"})
+                continue
+            entry = {"slug": row.slug, "from": row.name, "to": merchant.display_name}
+            changed.append(entry)
+            if apply:
+                row.name = merchant.display_name
+                label = merchant.chinese_label
+                if label:
+                    # Reassigned, not mutated: a JSON column only turns dirty on assignment.
+                    row.names_json = {**(row.names_json or {}), **label}
+        if apply:
+            await session.commit()
+    return {
+        "applied": apply,
+        "in_file_with_english_name": len(wanted),
+        "found_in_database": len(rows),
+        "changed": changed,
+        "skipped": skipped,
+    }
+
+
 async def _create(
     session: AsyncSession,
     merchant: TrendMerchant,
@@ -213,8 +293,9 @@ async def _create(
         slug=merchant.slug,
         destination_id=merchant.destination_id,
         country_code=destination_country_code(merchant.destination_id) or area.country_code,
-        name=merchant.name,
+        name=merchant.display_name,
         local_name=merchant.local_name,
+        names_json=merchant.chinese_label,
         address=merchant.address,
         google_place_id=None,
         naver_map_url=None,

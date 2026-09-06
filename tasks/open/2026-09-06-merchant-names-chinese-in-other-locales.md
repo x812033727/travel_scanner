@@ -1,17 +1,20 @@
 ---
 id: 2026-09-06-merchant-names-chinese-in-other-locales
 title: 110 家店裡有 28 家在英日韓語系顯示中文譯名
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T20:59:56Z
 created_at: 2026-09-06T20:09:39Z
 completed_at:
-branch:
+branch: claude/merchant-name-locales
 depends_on: []
 scope:
-  - apps/api/app/foods/merchant_catalog.py
+  - apps/api/app/foods/data/trend_merchants.json
+  - apps/api/app/foods/trend_import.py
+  - apps/api/app/cli.py
+  - apps/api/tests/test_trend_import.py
 ---
 
 # 110 家店裡有 28 家在英日韓語系顯示中文譯名
@@ -42,17 +45,17 @@ scope:
 
 ## Definition of done
 
-- [ ] `X-Travel-Locale: en` 讀完 110 家，`name` 含漢字的只剩「原名就是漢字」那一類，
+- [x] `X-Travel-Locale: en` 讀完 110 家，`name` 含漢字的只剩「原名就是漢字」那一類，
       且每一家都在 Notes 裡記過為什麼留。
 - [ ] ja／ko 同樣量一次（目前只量了 en）。
 - [ ] zh-TW 的顯示完全不變。
 
 ## Steps
 
-- [ ] 先把 28 家分成上面三類，一家一行寫進任務檔。
-- [ ] 第 1、2 類補 `names` 的 en／ja／ko：第 2 類直接砍掉中文註解那一段；第 1 類用
+- [x] 先把 28 家分成上面三類，一家一行寫進任務檔。
+- [x] 第 1、2 類補 `names` 的 en／ja／ko：第 2 類直接砍掉中文註解那一段；第 1 類用
       店家官網或官方觀光頁上的羅馬字招牌（`local_name` 通常已經有），**不要自己音譯**。
-- [ ] 種子改完要能重跑：`seed_food_catalog` 更新既有列時只動 seed-owned 的值
+- [x] 種子改完要能重跑：`seed_food_catalog` 更新既有列時只動 seed-owned 的值
       （比照 #198 的 source 規則），別蓋掉後台改過的。
 
 ## How to verify
@@ -72,3 +75,50 @@ curl -s -H 'X-Travel-Locale: en' \
   見 [[2026-09-06-food-hotspot-place-names-i18n]] 的後續 PR。
 - 景點那邊的地名（`高尾山`、`中野ブロードウェイ`、`香港海洋公園`）不在此列：那是當地
   寫法，本來就該保留。
+
+## Result（2026-09-07）
+
+### 票指的檔案不對，數字對
+
+`merchant_catalog.py` 的 173 筆種子裡，`name` 含漢字的是 **0 筆**。有問題的列在
+`apps/api/app/foods/data/trend_merchants.json`（146 筆），而且原因寫在欄位名稱上：
+那個檔案的名稱欄位叫 **`name_zh`**，`trend_import.py` 直接把它寫進 `FoodMerchant.name`，
+而 `merchant_names()` 的文件說 `name` 是「the catalog's English label」。中文名被當成英文名送出去。
+
+正式站的數字：146 筆裡 123 筆的 `name_zh` 含漢字，資料庫裡 121 筆，其中
+**28 筆已發布**（`is_active` 且 `review_status='approved'`）——票量到的 28 就是這一批，
+所以票的數字是對的，只是找錯了檔案。
+
+### 修法：英文名從資料裡拿，不自己音譯
+
+28 筆裡有 **17 筆的拉丁名本來就在自己的列裡**，多半在 `local_name`：
+
+| 現在的 name | 真正的招牌 |
+| --- | --- |
+| 咖哩碗泰菜館 | ชามแกง **Charmgang** |
+| 王子戲院豬肉粥 | โจ๊กปรินซ์ **Jok Prince** |
+| 波通餐廳 | **Restaurant Potong** (โพทง) |
+| C&C BREAKFAST 沖繩早餐店 | **C&C BREAKFAST OKINAWA** |
+| The Roastery 咖啡烘焙館 | **THE ROASTERY BY NOZY COFFEE** |
+
+新增 `name_en` 欄位放這 17 個值，並加一個測試逐筆確認每個值都是從該列的 `name_zh` 或
+`local_name` 裡取出來的子字串——票說「不要自己音譯」，這個測試讓那條規則不能被偷偷違反。
+
+**剩下 11 筆刻意不動**，它們的招牌本來就是漢字，屬於票裡的第 3 類：
+白金茶房、食堂faidama、鶴屋吉信 本店、原宿餃子樓、川本屋茶舖、元祖咖哩擔擔麵 征虎總本店、
+蠔爽 黃埔總店、金得春捲、泰成水果冰店、修安扁擔豆花、東區粉圓。
+
+### 一個會咬人的細節：zh-TW 必須完全不變
+
+`merchant_names()` 是 `{**defaults, **names_json}`，所以存進 `names_json` 的標籤會**覆蓋**預設值。
+日本店的預設 `zh-TW` 是 `local_name`（招牌本身），如果照著把 `name_zh` 存進去，中文讀者看到的
+就會從招牌變成中文譯名——那是這張票沒有要做的改動。所以 `chinese_label` 只在**非日本**的店
+才寫，泰國那幾家的中文名才不會在 `name` 變成拉丁字之後消失。三個測試分別釘住這三種情況。
+
+### 既有資料要另外回填
+
+`trend_import` 對已存在的 slug 是「一律跳過、絕不合併」（檔頭第 27 行寫明的規則），所以改資料檔
+不會動到已經匯入的列。新增 CLI `backfill-merchant-english-names`，預設 dry-run，只在 `name`
+仍等於檔案裡的 `name_zh` 時才改（後台改過名的列不碰），重跑第二次不會再改任何東西。
+
+檢查：`ruff`、`mypy`、`pytest`（1,184 passed、38 skipped）全綠。

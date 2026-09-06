@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**6 open · 1 in progress · 2 blocked · 0 in review · 117 done**
+**4 open · 2 in progress · 3 blocked · 0 in review · 117 done**
 
 ## Ready to claim
 
@@ -13,8 +13,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
-| P2 | [110 家店裡有 28 家在英日韓語系顯示中文譯名](open/2026-09-06-merchant-names-chinese-in-other-locales.md) | api | `apps/api/app/foods/merchant_catalog.py` |
 | P3 | [後台可以挑選景點介紹的 AI 供應商與模型](open/2026-09-06-intro-ai-vendor-settings.md) | web | `apps/api/app/admin/service.py`<br>`apps/api/app/ai/catalog.py`<br>`apps/web/components/admin-settings-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/messages/zh-CN/admin.json` |
 
 ## In progress
@@ -22,6 +20,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [專門的購物店家：新增經過座標核實的購物景點種子](open/2026-09-06-shopping-store-seeds.md) | claude-opus-5 | 2026-09-06T20:01:33Z | `claude/shopping-store-seeds` |
+| [110 家店裡有 28 家在英日韓語系顯示中文譯名](open/2026-09-06-merchant-names-chinese-in-other-locales.md) | claude-opus-5 | 2026-09-06T20:59:56Z | `claude/merchant-name-locales` |
 
 ## In review
 
@@ -31,6 +30,7 @@ _Nothing here._
 
 | Priority | Task | Waiting on |
 | --- | --- | --- |
+| P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | see the task notes |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | active work in the same scope |

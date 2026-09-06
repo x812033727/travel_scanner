@@ -1,11 +1,11 @@
 ---
 id: 2026-09-06-legal-content-from-owner
 title: 隱私權政策、服務條款與聯絡方式的內容要由擁有者提供
-status: open
+status: blocked
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T20:59:55Z
 created_at: 2026-09-06T19:44:10Z
 completed_at:
 branch:
