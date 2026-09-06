@@ -2159,6 +2159,38 @@ class RouteService:
             return []
         return [self.google]
 
+    def _cache_time_key(
+        self,
+        providers: list[RouteProvider],
+        departure_time: datetime | None,
+        travel_mode: TravelMode,
+    ) -> str | None:
+        """Reduce the departure time to the resolution the chosen provider can see.
+
+        A day's legs are chained (one leg's arrival is the next leg's departure), so
+        editing one stop shifts every later departure by a few minutes. Keying the
+        cache on the exact minute would then miss for the whole day even though the
+        provider request itself does not change: walking never sends a time, ODsay
+        ignores it, Ekispert ``plain`` only sends the date, and Google's transit or
+        traffic-aware driving answers do not move within a ten-to-fifteen-minute window.
+        """
+        if departure_time is None or travel_mode == "walk":
+            return None
+        if any(provider is self.odsay for provider in providers):
+            return None
+        uses_ekispert = any(provider is self.ekispert for provider in providers)
+        if uses_ekispert and self.settings.ekispert_search_type == "plain":
+            local = (
+                departure_time.replace(tzinfo=NAVITIME_TIMEZONE)
+                if departure_time.tzinfo is None
+                else departure_time.astimezone(NAVITIME_TIMEZONE)
+            )
+            return local.strftime("%Y%m%d")
+        aware = departure_time if departure_time.tzinfo else departure_time.replace(tzinfo=UTC)
+        bucket_seconds = 15 * 60 if travel_mode == "drive" else 10 * 60
+        timestamp = int(aware.timestamp())
+        return str(timestamp - timestamp % bucket_seconds)
+
     async def compute(
         self,
         origin: RoutePoint,
@@ -2208,7 +2240,7 @@ class RouteService:
                 "dpi": destination.provider_place_id,
                 "opp": origin.place_provider,
                 "dpp": destination.place_provider,
-                "t": departure_time.isoformat() if departure_time else None,
+                "t": self._cache_time_key(providers, departure_time, travel_mode),
                 "p": preference,
                 "r": region_code or ("JP" if japan else None),
                 "m": travel_mode,

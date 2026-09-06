@@ -36,10 +36,13 @@ import sqlalchemy as sa
 from alembic.migration import MigrationContext
 from alembic.operations import Operations
 from sqlalchemy.engine import Connection
+from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.orm import Session
+from sqlalchemy.pool import NullPool
 
+from app.config import get_settings
 from app.db import engine
-from app.models import TripPlan, User
+from app.models import TravelHotspot, TripPlan, User
 
 pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
@@ -179,6 +182,89 @@ async def test_0043_seeds_the_budget_from_the_search_preferences() -> None:
         await connection.run_sync(in_a_rolled_back_transaction(_exercise_0043))
 
 
+def _plant_hotspot(session: Session, slug: str, review_status: str) -> None:
+    session.add(
+        TravelHotspot(
+            slug=slug,
+            name=slug,
+            city_code="ICN",
+            city_name="Seoul",
+            country_code="KR",
+            country_name="South Korea",
+            category="culture",
+            search_text=slug,
+            review_status=review_status,
+            is_active=False,
+        )
+    )
+    session.flush()
+
+
+def _drop_review_status_check(connection: Connection) -> None:
+    # The model now declares the constraint, so a fresh database already has it and
+    # a quoted value could not even be planted; a pre-0044 production did not.
+    connection.execute(
+        sa.text("ALTER TABLE travel_hotspots DROP CONSTRAINT ck_travel_hotspot_review_status")
+    )
+
+
+def _exercise_0044(connection: Connection) -> None:
+    _drop_review_status_check(connection)
+    session = Session(bind=connection)
+    _plant_hotspot(session, "dead-branch-quoted", "'approved'")
+    _plant_hotspot(session, "dead-branch-quoted-pending", "'pending'")
+    _plant_hotspot(session, "dead-branch-fine", "rejected")
+
+    run_upgrade(connection, "0044_repair_quoted_review_status")
+
+    statuses = dict(
+        connection.execute(
+            sa.text(
+                "SELECT slug, review_status FROM travel_hotspots WHERE slug LIKE 'dead-branch-%'"
+            )
+        ).all()
+    )
+    assert statuses == {
+        "dead-branch-quoted": "approved",
+        "dead-branch-quoted-pending": "pending",
+        "dead-branch-fine": "rejected",
+    }
+    checks = {c["name"] for c in sa.inspect(connection).get_check_constraints("travel_hotspots")}
+    assert "ck_travel_hotspot_review_status" in checks
+
+
+def _exercise_0044_refuses_a_value_it_cannot_read(connection: Connection) -> None:
+    _drop_review_status_check(connection)
+    session = Session(bind=connection)
+    _plant_hotspot(session, "dead-branch-odd", "'weird'")
+    # The quotes are stripped only into the valid set; anything else stays as it is,
+    # and then the constraint refuses to be created over it. A deploy stops here
+    # instead of carrying an unreadable value forward under a CHECK that lies.
+    with pytest.raises(sa.exc.DBAPIError):
+        run_upgrade(connection, "0044_repair_quoted_review_status")
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_0044_strips_the_quotes_and_adds_the_check() -> None:
+    async with engine.connect() as connection:
+        await connection.run_sync(in_a_rolled_back_transaction(_exercise_0044))
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_0044_refuses_a_status_outside_the_vocabulary() -> None:
+    # The failed CREATE CONSTRAINT leaves the DBAPI connection in a state the shared
+    # pool would hand to the next test as closed; use a one-connection engine and
+    # throw it away.
+    isolated = create_async_engine(get_settings().database_url, poolclass=NullPool)
+    try:
+        async with isolated.connect() as connection:
+            await connection.run_sync(
+                in_a_rolled_back_transaction(_exercise_0044_refuses_a_value_it_cannot_read)
+            )
+    finally:
+        await isolated.dispose()
+
+
 @pytest.mark.asyncio(loop_scope="module")
 async def test_the_rollback_left_the_shared_schema_intact() -> None:
     """The other integration modules run against the same database afterwards."""
@@ -187,5 +273,11 @@ async def test_the_rollback_left_the_shared_schema_intact() -> None:
             lambda sync: {c["name"] for c in sa.inspect(sync).get_columns("trip_plans")}
         )
         tables = await connection.run_sync(lambda sync: set(sa.inspect(sync).get_table_names()))
+        checks = await connection.run_sync(
+            lambda sync: {
+                c["name"] for c in sa.inspect(sync).get_check_constraints("travel_hotspots")
+            }
+        )
     assert {"notes", "budget_amount", "cost_currency"} <= columns
     assert {"trip_day_notes", "trip_expenses"} <= tables
+    assert "ck_travel_hotspot_review_status" in checks

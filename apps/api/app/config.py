@@ -268,7 +268,13 @@ class Settings(BaseSettings):
     place_photo_ip_limit: int = Field(default=120, ge=1, le=10_000)
     place_photo_window_seconds: int = Field(default=60, ge=10, le=3_600)
     place_photo_cache_ttl_seconds: int = Field(default=3_600, ge=60, le=86_400)
-    route_cache_ttl_seconds: int = Field(default=900, ge=60, le=86_400)
+    # Redis cache for provider route results, shared across trips; see
+    # RouteService._cache_time_key for how departure times are bucketed.
+    route_cache_ttl_seconds: int = Field(default=86_400, ge=60, le=86_400)
+    # How long an applied provider route stays valid in trip_route_segments before the
+    # planner shows it as stale. Manual routes never expire, and itinerary edits delete
+    # the affected pairs directly, so this only guards against very old timetables.
+    route_segment_ttl_seconds: int = Field(default=30 * 86_400, ge=3_600, le=180 * 86_400)
     weather_cache_ttl_seconds: int = Field(default=900, ge=300, le=3_600)
     navitime_api_base_url: str | None = None
     navitime_client_id: str | None = None

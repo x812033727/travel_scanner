@@ -14,7 +14,7 @@ from app.admin.service import load_runtime_settings
 from app.config import get_settings
 from app.db import SessionFactory, engine
 from app.infra import get_redis
-from app.models import TripPlan, TripPlanItem
+from app.models import TripPlan, TripPlanItem, TripRouteSegment
 from app.trips.route_planner import (
     get_or_create_day_setting,
     item_end,
@@ -82,6 +82,24 @@ def _advance_projected_time(
         else ready or following.start_time
     )
     return next_start, item_end(following, next_start)
+
+
+def _reusable_segment(saved: TripRouteSegment, travel_mode: TravelMode, preference: str) -> bool:
+    """Tell whether a persisted provider result still answers today's question.
+
+    Itinerary edits delete the pairs they touch (``update_itinerary``), so a surviving
+    row means both endpoints are unchanged and only the mode, the preference or the
+    segment TTL can make it obsolete. Rows kept after a failed refresh (``stale`` or
+    ``failed``) are retried. Override legs carry their own mode and preference, so
+    they are compared against themselves rather than the day default.
+    """
+    if saved.provider == "manual" or saved.status in {"failed", "stale"}:
+        return False
+    if saved.expires_at is not None and saved.expires_at <= datetime.now(UTC):
+        return False
+    if saved.travel_mode != travel_mode:
+        return False
+    return bool(saved.is_override) or saved.preference == preference
 
 
 async def compute_and_apply_routes(
@@ -156,6 +174,25 @@ async def compute_and_apply_routes(
                     segment,
                 )
                 continue
+            if (
+                saved is not None
+                and not refresh
+                and _reusable_segment(saved, travel_mode, setting.route_preference)
+            ):
+                # Only the pairs an edit invalidated are missing here; the rest keep
+                # their provider answer and are merely re-timed with today's buffer.
+                reused = segment_from_record(saved).model_copy(
+                    update={"buffer_minutes": buffer_minutes, "is_override": is_override}
+                )
+                segments.append(reused)
+                if is_override:
+                    override_pairs.add(pair)
+                projected_start, projected_end = _advance_projected_time(
+                    following,
+                    projected_end,
+                    reused,
+                )
+                continue
             origin, destination = _route_point(previous), _route_point(following)
             if origin is None or destination is None:
                 missing_location_pairs += 1
@@ -212,7 +249,7 @@ async def compute_and_apply_routes(
                         None
                         if computed_segment.provider == "manual"
                         else datetime.now(UTC)
-                        + timedelta(seconds=runtime.route_cache_ttl_seconds)
+                        + timedelta(seconds=runtime.route_segment_ttl_seconds)
                     ),
                 }
             )
@@ -280,7 +317,7 @@ async def compute_and_apply_routes(
             day_value,
             segments,
             override_pairs=override_by_day[day_value],
-            ttl_seconds=runtime.route_cache_ttl_seconds,
+            ttl_seconds=runtime.route_segment_ttl_seconds,
         )
     await session.commit()
     return cast(dict[str, Any], next_data["routing"])
