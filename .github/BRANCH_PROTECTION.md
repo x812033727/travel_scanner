@@ -41,6 +41,13 @@ gh api "repos/x812033727/travel_scanner/commits/$SHA/check-runs" \
 Every row should read `completed  success` before merging. Never pipe
 `gh pr checks --watch` into `tail` or `head`.
 
+## Dependency audits are advisory inside CI
+
+`npm audit` and `pip-audit` both need a registry at request time. Either one failing
+on a network hiccup would now block a merge whose code was never run, so inside `ci.yml`
+both are `continue-on-error: true`. The enforcing runs are `npm-audit.yml` and
+`pip-audit.yml`, daily and retryable from the Actions tab.
+
 ## When main itself goes red
 
 Protection stops a red pull request; it cannot stop a job that fails only on `main`

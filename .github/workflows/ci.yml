@@ -26,7 +26,13 @@ jobs:
       - uses: astral-sh/setup-uv@v6
         with: { python-version: "3.13" }
       - run: uv sync --frozen
-      - run: uv run pip-audit --local --skip-editable
+      # Same shape as the npm audit below: the advisory lookup needs PyPI at request time,
+      # and a connection reset there failed the api job on a pull request whose code was
+      # never run (2026-09-06). Now that api is a required check, that would block the
+      # merge. The enforcing run lives in pip-audit.yml, daily and retryable.
+      - name: Audit Python dependencies (advisory only; enforced by pip-audit.yml)
+        run: uv run pip-audit --local --skip-editable
+        continue-on-error: true
       - run: uv run ruff check .
       - run: uv run mypy app
       # One migration head, or a failure that names both files. Two branches that took

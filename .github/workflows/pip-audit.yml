@@ -1,0 +1,23 @@
+name: pip audit
+
+# The enforcing half of the Python dependency check, mirroring npm-audit.yml: as a pull
+# request gate the advisory lookup fails whenever PyPI hiccups, and since api became a
+# required check that would block unrelated work. As a daily job it is simply retried.
+on:
+  schedule:
+    - cron: "23 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: apps/api } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with: { python-version: "3.13" }
+      - run: uv sync --frozen
+      - run: uv run pip-audit --local --skip-editable
