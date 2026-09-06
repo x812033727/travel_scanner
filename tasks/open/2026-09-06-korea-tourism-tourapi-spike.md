@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-korea-tourism-tourapi-spike
 title: TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠
-status: open
+status: blocked
 priority: P3
 area: ops
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T15:10:46Z
 created_at: 2026-09-06T13:17:39Z
 completed_at:
-branch:
+branch: claude/tourapi-spike
 depends_on: []
 scope:
   - docs/korea-tourism-tourapi.md
@@ -92,24 +92,24 @@ EXACT_NAVER_PLACE_PREFIXES: tuple[str, ...] = (
 
 ## Definition of done
 
-- [ ] docs/korea-tourism-tourapi.md 存在，且對下列三個關卡各寫下一個帶日期與出處的明確答案（「問了但沒回」也算答案，要寫是誰在哪天問的）
+- [x] docs/korea-tourism-tourapi.md 存在，且對下列三個關卡各寫下一個帶日期與出處的明確答案（「問了但沒回」也算答案，要寫是誰在哪天問的）
 - [ ] 關卡 A（帳號）：非韓籍申請者能否取得 data.go.kr 金鑰，有書面答覆或明確的替代路徑（韓國在地協作者／韓國法人／KNTO 回信）
-- [ ] 關卡 B（連通性）：從正式機 VPS egress 對 apis.data.go.kr 的實測數字——嘗試次數、成功次數、延遲分佈；失敗時記錄是否已向 data.go.kr 註冊 VPS IP 並重測
+- [x] 關卡 B（連通性）：從正式機 VPS egress 對 apis.data.go.kr 的實測數字——嘗試次數、成功次數、延遲分佈；失敗時記錄是否已向 data.go.kr 註冊 VPS IP 並重測
 - [ ] 關卡 C（資料量）：以 lDongRegnCd=11 與 lDongRegnCd=26 取得 KorService2 與 ChtService2 的首爾／釜山 totalCount，並與同一次未加地區參數的全國 totalCount 對照，證明過濾確實生效
-- [ ] docs/hotspot-intelligence.md 的來源政策表多一列 TourAPI，Status 反映關卡結果（Evaluating／Enabled／Rejected），並寫明可耐久保存的欄位與圖片的 KOGL 限制
-- [ ] tools/probe_tourapi.py 可重跑，任何人不必重讀本任務就能重現關卡 B 與 C 的數字
+- [x] docs/hotspot-intelligence.md 的來源政策表多一列 TourAPI，Status 反映關卡結果（Evaluating／Enabled／Rejected），並寫明可耐久保存的欄位與圖片的 KOGL 限制
+- [x] tools/probe_tourapi.py 可重跑，任何人不必重讀本任務就能重現關卡 B 與 C 的數字
 - [ ] 三個關卡全過時，開一張實作任務（scope 見 Notes）；任一關卡沒過時，本任務以「不可行／暫緩」結案，理由寫在 docs/korea-tourism-tourapi.md 裡
 
 ## Steps
 
 - [ ] 先問使用者兩個問題並把答覆記進 docs/korea-tourism-tourapi.md：(1) NAVER 金鑰申請進度如何——若即將到手，本任務應直接降級或關閉；(2) 是否願意讓 KTO 的 contentid 充當韓國的精準地圖識別，或明確拒絕。第二題若是「否」，本任務只剩座標與繁中文案的價值，請照實記錄。
-- [ ] 建立 docs/korea-tourism-tourapi.md，先把本任務 Why 段的已查證事實搬進去成為基準文件（端點、認證、contentTypeId 對照表、lDongRegnCd、KOGL Type1/Type3、配額矛盾），之後每過一個關卡就補一節。
+- [x] 建立 docs/korea-tourism-tourapi.md，先把本任務 Why 段的已查證事實搬進去成為基準文件（端點、認證、contentTypeId 對照表、lDongRegnCd、KOGL Type1/Type3、配額矛盾），之後每過一個關卡就補一節。
 - [ ] 關卡 A：到 https://auth.data.go.kr/sso/common-signup 實際嘗試註冊，把看到的會員類型與步驟原樣記下。同時寄信給 tourapi@knto.or.kr（電話 070-4287-3219）問兩件事：非韓國居民可否取得 TourAPI 金鑰；15101578 與 15101769 的 운영단계 활용신청 是否開放、1,000 的配額是每個 API 還是每個帳號。副本可寄 opendata_help@nia.or.kr。
 - [ ] 關卡 A 備援：同步申請 Visit Seoul API 金鑰（https://api.visitseoul.net/apiinfo/apiovr/view/3?lang=en），其金鑰頁未載明國籍或韓國法人要求。申請時要注意它要求登記「呼叫端 URL」且只允許該 URL 呼叫，機制未明，BFF 從伺服器端呼叫是否適用要問清楚。
-- [ ] 撰寫 tools/probe_tourapi.py：只依賴 httpx（apps/api 已有此相依），參數為 service key、service 名稱（KorService2/ChtService2）、lDongRegnCd 與重複次數；帶桌面瀏覽器 User-Agent；同時解析 JSON 與 XML 兩種錯誤格式，且不可以 HTTP 200 當成功判準（實測錯誤是 HTTP 403 帶 JSON body）；輸出每次嘗試的延遲與結果碼，最後印出成功率。
-- [ ] 關卡 B：把 tools/probe_tourapi.py 拿到正式機 VPS 上，用 api 容器的 python 執行（見 How to verify），連續打至少 20 次，記錄成功率與延遲。三份獨立查證在本地分別得到 1/15、0/17、0/3 的成功率，而同一時間 www.data.go.kr 與 api.visitkorea.or.kr 都秒回——所以「打得通」目前是未證實的。失敗就用錯誤碼 32 UNREGISTERED_IP_ERROR 的線索去 data.go.kr 登記 VPS 固定 IP，再測一次。
+- [x] 撰寫 tools/probe_tourapi.py：只依賴 httpx（apps/api 已有此相依），參數為 service key、service 名稱（KorService2/ChtService2）、lDongRegnCd 與重複次數；帶桌面瀏覽器 User-Agent；同時解析 JSON 與 XML 兩種錯誤格式，且不可以 HTTP 200 當成功判準（實測錯誤是 HTTP 403 帶 JSON body）；輸出每次嘗試的延遲與結果碼，最後印出成功率。
+- [x] 關卡 B：把 tools/probe_tourapi.py 拿到正式機 VPS 上，用 api 容器的 python 執行（見 How to verify），連續打至少 20 次，記錄成功率與延遲。三份獨立查證在本地分別得到 1/15、0/17、0/3 的成功率，而同一時間 www.data.go.kr 與 api.visitkorea.or.kr 都秒回——所以「打得通」目前是未證實的。失敗就用錯誤碼 32 UNREGISTERED_IP_ERROR 的線索去 data.go.kr 登記 VPS 固定 IP，再測一次。
 - [ ] 關卡 C：用 dev key 各打兩次，KorService2 與 ChtService2 各一組：areaBasedList2?lDongRegnCd=11&numOfRows=1 與 lDongRegnCd=26&numOfRows=1，再打一次完全不帶地區參數的當對照。三個數字都記進文件；若加了 lDongRegnCd 之後 totalCount 沒變小，代表參數沒生效，數字不可信。
-- [ ] 更新 docs/hotspot-intelligence.md 的來源政策表：新增 TourAPI 一列。保留欄位要寫清楚——contentid、mapx/mapy、來源網址、名稱、overview 可耐久保存（這點與 Google Places 那一列相反，別照抄），圖片只能依 cpyrhtDivCd 原樣顯示且 Type3 禁止任何格式變更。
+- [x] 更新 docs/hotspot-intelligence.md 的來源政策表：新增 TourAPI 一列。保留欄位要寫清楚——contentid、mapx/mapy、來源網址、名稱、overview 可耐久保存（這點與 Google Places 那一列相反，別照抄），圖片只能依 cpyrhtDivCd 原樣顯示且 Type3 禁止任何格式變更。
 - [ ] 依三個關卡的結果收尾：全過就用 npm run tasks -- new 開實作任務（scope 見 Notes），把本文件連結寫進去；任一沒過就在 docs/korea-tourism-tourapi.md 寫下結論並把本任務 done 掉，讓下一個人不必重來。
 
 ## How to verify
@@ -193,3 +193,54 @@ apps/web/components/admin-settings-panel.tsx
 實作時的落點都已查過：`PROVIDER_DEFINITIONS` 在 `apps/api/app/admin/service.py:102`（`odsay` 那筆在 `:358-366` 可當範本，label/description 用繁中寫在 Python 裡沒問題，`tools/check-i18n.mjs` 只掃 `apps/web/{app,components,lib}/**/*.tsx`）；`_configured` 在 `:560`；`_production_test_required` 在 `:903`；`test_provider_connection` 在 `:1809`。`OFFICIAL_PROVIDER_HOSTS` 在 `apps/api/app/config.py:59-77`（`odsay_api_base_url` 在 `:76`），要加 `apis.data.go.kr`。`providerCategoryOf` 在 `apps/web/components/admin-settings-panel.tsx:89-120`，漏加會靜靜掉進「其他」，類別選 `content`。**在 `fieldMeta`／`secretLabels` 用字面 `label:`（先例：`amadeus_client_id: { label: "Client ID" }` 在 `:275`、`travelpayouts_marker: { label: "Marker" }` 在 `:227`）而不是 `localized: true`**，就不必動 `apps/web/messages/*/admin.json`，也就不會撞到 `2026-09-06-admin-panels-i18n-remaining`。
 
 資料模型第一階段不需要 migration：`TravelHotspot`（`apps/api/app/models.py:396`）已有 `coordinate_source_type`（`:427`）、`coordinate_source_url`（`:428`）、`origin`（`:446`）、`review_status`（`:447`）、`metadata_json`（`:457`，是 `JSON` 不是 `jsonb`，禁用 `?`、`@>`、`<@`、`||`）；`FoodMerchantSource.source_type`（`:765`）的 CHECK 已含 `official_tourism`。`contentid` 先放 `metadata_json`（無唯一鍵，去重在 Python 做），要專屬欄位再開第二階段的 migration（目前 head 是 `apps/api/migrations/versions/0049_trip_place_candidates.py`，平行 session 會搶編號）。可抄的先例是 `apps/api/app/hotspots/candidate_sources.py`（只做取得、不做決定）、`apps/api/app/hotspots/candidate_import.py:40`（`persist_resolutions(..., apply=False)` 預設 dry-run，`CANDIDATE_ORIGIN` 在 `:28`）與 `apps/api/app/foods/trend_import.py`（開頭的 docstring 就是這類匯入的治理範本：一律 `review_status='pending'`、`is_active=False`、`map_match_status='unverified'`）。匯入務必設上限——上一次審核積壓是 482 筆，清掉它花了一整張 P2 任務和一整個 session。
+
+## Result（2026-09-06，關卡 B 已量測完畢，A 與 C 卡在使用者）
+
+**結論先講：關卡 B 沒過，而且它跟關卡 A 互相獨立——就算金鑰到手，現在這台正式機也打不到 TourAPI。**
+量測寫在 [`docs/korea-tourism-tourapi.md`](../../docs/korea-tourism-tourapi.md)，工具是
+[`tools/probe_tourapi.py`](../../tools/probe_tourapi.py)（不需要金鑰也能重跑：被拒的金鑰同樣證明
+封包過得去，那正是要量的東西）。
+
+### 關卡 B：從兩個不同國家的出口都打不到，而且不是韓國被擋
+
+正式機 egress `187.127.118.6` 對 `apis.data.go.kr`（`27.101.236.63`）：
+
+| 埠 | TCP 握手 | 握手之後 |
+| --- | --- | --- |
+| 443 | 0.13 秒完成 | TLS 握手永遠不完成，10 秒逾時 |
+| 80 | 0.13 秒完成 | 純 `GET /` 收到 0 bytes，10 秒逾時 |
+
+HTTP 嘗試：15 秒預算 5 次全滅，另外 20／25／30 秒各一次也全滅，總計 0 成功。
+開發機（另一個國家、另一條網路）10 次全滅，錯誤訊息一模一樣是 TLS 握手逾時。
+
+**同一秒鐘、同一台機器對同網段其他主機全部正常**：`www.data.go.kr` 200、`auth.data.go.kr` 302、
+`openapi.data.go.kr` 301、`api.visitkorea.or.kr` 200、`knto.or.kr` 302。DNS 1 毫秒解析成功、
+沒有 AAAA 紀錄。`api.data.go.kr` 是同一台主機，行為相同。所以這不是韓國連不上、不是 data.go.kr
+掛了、也不是 DNS。
+
+**「接受 TCP 握手然後完全不回話」不是防火牆擋你的樣子**（被擋的埠會 reset 或丟 SYN），而是
+應用層前面有來源位址過濾的樣子。data.go.kr 定義了錯誤碼 `32 UNREGISTERED_IP_ERROR`，代表平台
+本來就會依呼叫端 IP 設限。**最該先試的假設是：我們的位址沒登記，而登記它就是解法。** 但登記 IP
+要有帳號，也就是關卡 A。這是假設不是結論，因為驗證它需要帳號，文件裡已標明不得當成成因引用。
+
+### 關卡 A：沒有嘗試，因為那是使用者的動作
+
+`https://auth.data.go.kr/sso/common-signup` 只有 일반회원（내국인）、어린이 회원（내국인）、
+기업회원（韓國國稅廳登記的事業者）三種，第 4 步是 본인인증。註冊帳號本來就不該由代理人代做。
+兩個必須由擁有者回答的問題已寫進文件開頭：NAVER 金鑰進度，以及 KTO 的 contentid 算不算韓國的
+精準地圖識別。第二題若是否，這個來源只剩座標與繁中文案的價值。
+
+### 關卡 C：沒有金鑰，量不了
+
+六道指令已經寫進文件，金鑰到手就能直接跑，判準（過濾後必須明顯小於對照組）也寫在旁邊。
+
+### 下一步（依序，不要跳）
+
+1. 擁有者回答 NAVER 金鑰進度與 contentid 那兩題。
+2. 取得 data.go.kr 帳號與金鑰（關卡 A）。
+3. 用帳號把正式機出口 IP 登記進 data.go.kr，再跑一次 `python tools/probe_tourapi.py --repeat 20`。
+   還是 `reached 0/20` 就代表這套基礎設施用不了 TourAPI，剩下的選項只有韓國境內的中繼出口，
+   或者放棄這個來源。**這個決定要在寫任何程式之前做完。**
+
+本任務因此轉為 `blocked`，等的是關卡 A；`docs/korea-tourism-tourapi.md` 已經是完整的基準文件，
+下一個人不必重讀本票也不必重跑任何一項已經量過的東西。

@@ -11,6 +11,7 @@ supported destinations. The ranking is a planning hint, not a live crowd or safe
 | [Wikimedia Analytics API](https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/) | Recent public interest | 30-day aggregate pageviews, previous 30-day aggregate, observation date and source URL | Enabled by default |
 | [Google Places API](https://developers.google.com/maps/documentation/places/web-service) | Place identity, map entry, address, opening hours and official-site candidate | Place ID is retained; normalized Places content is cached for no more than 30 days with attribution | Enabled only when a server-side key is configured |
 | [Reddit Data API](https://redditinc.com/policies/data-api-terms) | Possible future discussion-volume aggregate | Nothing until the intended commercial use has an applicable agreement | Disabled |
+| [TourAPI (Korea Tourism Organization)](korea-tourism-tourapi.md) | Candidate Korean attraction, restaurant and festival source | Would durably retain `contentid`, `mapx`/`mapy` coordinates, source URL, name and `overview` — unlike the Google Places row above, these are not cache-expiring. Images would carry KOGL `cpyrhtDivCd` per image and Type 3 forbids any format change, so image support is out of scope | Evaluating — blocked: `apis.data.go.kr` does not answer from our egress, and no service key exists |
 
 Wikimedia aggregate data is CC0. Requests identify Mokaair through a configurable User-Agent
 and run sequentially. The collector stores no article text or reader identity.
