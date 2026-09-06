@@ -10,7 +10,7 @@ import {
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { useSavedItems } from "@/components/saved-items-provider";
-import { ApiError, api } from "@/lib/api";
+import { api } from "@/lib/api";
 import { safeExternalHref } from "@/lib/navigation";
 
 type SavedType = "hotspot" | "food" | "restaurant" | "merchant";
@@ -33,7 +33,6 @@ const copy = {
     remove: "移除收藏",
     map: "開啟精準地圖",
     error: "收藏暫時無法載入",
-    signIn: "請先登入，收藏才會跟著你的帳號。",
     filters: { all: "全部", hotspot: "景點", food: "美食", restaurant: "餐廳" },
   },
   "zh-CN": {
@@ -44,7 +43,6 @@ const copy = {
     remove: "移除收藏",
     map: "打开精确地图",
     error: "收藏暂时无法加载",
-    signIn: "请先登录，收藏才会跟着你的账号。",
     filters: { all: "全部", hotspot: "景点", food: "美食", restaurant: "餐厅" },
   },
   en: {
@@ -55,7 +53,6 @@ const copy = {
     remove: "Remove saved item",
     map: "Open exact map location",
     error: "Saved items are unavailable",
-    signIn: "Sign in to see the items saved to your account.",
     filters: {
       all: "All",
       hotspot: "Places",
@@ -71,7 +68,6 @@ const copy = {
     remove: "保存から削除",
     map: "正確な地図を開く",
     error: "保存済みを読み込めません",
-    signIn: "ログインすると、アカウントに保存した項目が表示されます。",
     filters: {
       all: "すべて",
       hotspot: "スポット",
@@ -87,7 +83,6 @@ const copy = {
     remove: "저장 해제",
     map: "정확한 지도 열기",
     error: "저장 목록을 불러올 수 없습니다",
-    signIn: "로그인하면 계정에 저장한 항목을 볼 수 있습니다.",
     filters: { all: "전체", hotspot: "명소", food: "음식", restaurant: "식당" },
   },
 } as const;
@@ -105,20 +100,22 @@ export function AccountSavedItems() {
   const [error, setError] = useState("");
   const [busy, setBusy] = useState("");
 
+  // The provider has already asked /saved-items and knows the answer to "is anyone signed
+  // in", so wait for it rather than sending a second request that can only 401. A signed-out
+  // reader used to get this card's zero counts, its own alert, and the account panel's sign-in
+  // notice all at once: three statements about the same fact.
   useEffect(() => {
+    if (saved.status !== "authenticated") return;
     api<{ items: SavedItem[] }>("/saved-items?limit=100")
       .then((result) => setItems(result.items))
       .catch((reason: unknown) =>
-        setError(
-          reason instanceof ApiError && reason.status === 401
-            ? text.signIn
-            : reason instanceof Error
-              ? reason.message
-              : text.error,
-        ),
+        setError(reason instanceof Error ? reason.message : text.error),
       )
       .finally(() => setLoaded(true));
-  }, [text.error, text.signIn]);
+  }, [saved.status, text.error]);
+  // Nothing is on its way when the provider says the reader is not signed in, so the
+  // skeleton should not keep spinning for a list that will never arrive.
+  const ready = loaded || saved.status !== "authenticated";
 
   const visible = useMemo(
     () =>
@@ -135,6 +132,10 @@ export function AccountSavedItems() {
     }),
     [items],
   );
+
+  // The account panel below says it once, with a button. Saying it again here — zero
+  // counts, an alert, and a third sentence — is what made a logged-out page look broken.
+  if (saved.status === "signed_out") return null;
 
   async function remove(item: SavedItem) {
     const key = `${item.type}:${item.id}`;
@@ -189,7 +190,7 @@ export function AccountSavedItems() {
           {text.error}{locale.startsWith("zh") ? "：" : ": "}{error}
         </p>
       )}
-      {!loaded ? (
+      {!ready ? (
         <div role="status" className="mt-5 grid gap-3 sm:grid-cols-2">
           <span className="app-skeleton h-20" />
           <span className="app-skeleton h-20" />
