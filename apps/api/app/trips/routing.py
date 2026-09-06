@@ -14,14 +14,14 @@ from uuid import UUID
 from zoneinfo import ZoneInfo
 
 import httpx
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from redis.asyncio import Redis
 
 from app.config import Settings, get_settings
 from app.providers.usage_meter import (
-    record_google_maps_request,
     record_naver_maps_request,
     reserve_ekispert_request,
+    reserve_google_maps_request,
     reserve_navitime_request,
     reserve_odsay_request,
 )
@@ -82,10 +82,53 @@ def estimate_leg_minutes(
     return max(5, math.ceil(minutes / 5) * 5)
 
 
+_STOP_NAME_SUFFIXES: tuple[str, ...] = ("駅", "station", "站", "역")
+
+
+def _stop_key(name: str | None) -> str:
+    """Compare stop names without the word for "station" one provider adds and another omits."""
+    text = " ".join((name or "").split()).casefold()
+    for suffix in _STOP_NAME_SUFFIXES:
+        if text.endswith(suffix) and len(text) > len(suffix):
+            return text[: -len(suffix)].strip()
+    return text
+
+
+def hides_a_transfer_walk(steps: list[RouteStep]) -> bool:
+    """True when a plan changes station between two rides without saying you walk there.
+
+    Riding on from the stop you arrived at needs no walking. When the names differ the
+    traveller has to cover that ground on foot, and a plan that lists no walking step
+    between the two rides is claiming a transfer that cannot be made. Stop coordinates
+    never reach ``RouteStep``, so the specification's 250 m threshold is read here as
+    "a different station", which is the part of the same claim we can observe.
+    """
+    previous_arrival: str | None = None
+    walked_since_ride = False
+    for step in steps:
+        mode = step.travel_mode.upper()
+        if mode == "TRANSIT":
+            if previous_arrival and not walked_since_ride:
+                boarding = _stop_key(step.departure_stop)
+                if boarding and boarding != previous_arrival:
+                    return True
+            previous_arrival = _stop_key(step.arrival_stop) or None
+            walked_since_ride = False
+        elif mode == "WALK":
+            walked_since_ride = True
+    return False
+
+
 class RouteStep(BaseModel):
     travel_mode: str
     instruction: str
     duration_minutes: int | None = None
+
+    @field_validator("duration_minutes")
+    @classmethod
+    def _no_zero_minute_step(cls, value: int | None) -> int | None:
+        """Round a sub-minute step up rather than telling the traveller it takes no time."""
+        return value if value is None else max(1, value)
     distance_meters: int | None = None
     departure_stop: str | None = None
     arrival_stop: str | None = None
@@ -130,6 +173,12 @@ class RouteSegment(BaseModel):
     details_available: list[str] = Field(default_factory=list)
     warnings: list[str] = Field(default_factory=list)
 
+    @field_validator("duration_minutes")
+    @classmethod
+    def _no_zero_minute_leg(cls, value: int) -> int:
+        """A leg you actually travel takes at least a minute; 0 reads as a broken plan."""
+        return max(1, value)
+
 
 class ExternalNavigation(BaseModel):
     provider: str
@@ -138,6 +187,10 @@ class ExternalNavigation(BaseModel):
     app_url: str
     web_url: str
     reason: str
+
+
+class GoogleRoutesBudgetExceeded(RuntimeError):
+    """The Google Maps free-tier route budget for this billing month is used up."""
 
 
 @dataclass(frozen=True)
@@ -304,20 +357,31 @@ class GoogleRouteProvider:
             return {"placeId": point.provider_place_id}
         return {"location": {"latLng": {"latitude": point.latitude, "longitude": point.longitude}}}
 
+    async def _reserve(self) -> bool:
+        """Take one request from the monthly Essentials allowance; False when it is spent.
+
+        Every other route provider reserves before it spends. Google only counted
+        afterwards, which made it the one provider that could not be stopped: the
+        cascade below can send up to six billable requests for a single leg.
+        """
+        if self.redis is None:
+            return True
+        return await reserve_google_maps_request(
+            self.redis, "routes", self.settings.google_maps_essentials_free_limit
+        )
+
     async def _post(self, body: dict[str, Any], field_mask: str) -> httpx.Response:
         headers = {
             "Content-Type": "application/json",
             "X-Goog-Api-Key": self.settings.google_maps_api_key or "",
             "X-Goog-FieldMask": field_mask,
         }
-        try:
-            if self.client is not None:
-                return await self.client.post(self.url, json=body, headers=headers)
-            async with httpx.AsyncClient(timeout=self.settings.provider_timeout_seconds) as client:
-                return await client.post(self.url, json=body, headers=headers)
-        finally:
-            if self.redis is not None:
-                await record_google_maps_request(self.redis, "routes")
+        if not await self._reserve():
+            raise GoogleRoutesBudgetExceeded(self.name)
+        if self.client is not None:
+            return await self.client.post(self.url, json=body, headers=headers)
+        async with httpx.AsyncClient(timeout=self.settings.provider_timeout_seconds) as client:
+            return await client.post(self.url, json=body, headers=headers)
 
     async def probe(
         self,
@@ -341,6 +405,8 @@ class GoogleRouteProvider:
             body["departureTime"] = effective_time.isoformat().replace("+00:00", "Z")
         try:
             response = await self._post(body, "routes.duration")
+        except GoogleRoutesBudgetExceeded:
+            return GoogleRoutesProbeResult(False, False, error_code="MONTHLY_BUDGET_EXHAUSTED")
         except httpx.HTTPError:
             return GoogleRoutesProbeResult(False, False, error_code="NETWORK_ERROR")
         try:
@@ -421,6 +487,16 @@ class GoogleRouteProvider:
                             stop_count=transit.get("stopCount"),
                         )
                     )
+            if travel_mode == "transit" and hides_a_transfer_walk(steps):
+                logger.info(
+                    "route_candidate_hides_transfer_walk",
+                    extra={
+                        "provider": self.name,
+                        "reason_code": "missing_walk",
+                        "route_rank": rank,
+                    },
+                )
+                return None
             fare, currency = _money(
                 cast(dict[str, Any], route.get("travelAdvisory") or {}).get("transitFare")
             )
@@ -577,13 +653,14 @@ class GoogleRouteProvider:
                 }
             }
             add_attempt(coordinate_body, "coordinates")
-        if (
+        far_future_transit = (
             travel_mode == "transit"
             and schedule_mode == "scheduled"
             and departure_time is not None
             and effective_time is not None
             and effective_time > datetime.now(UTC) + timedelta(days=14)
-        ):
+        )
+        if far_future_transit and departure_time is not None:
             near_term_body = {
                 key: value for key, value in body.items() if key != "transitPreferences"
             }
@@ -606,12 +683,31 @@ class GoogleRouteProvider:
                 if key not in {"departureTime", "transitPreferences"}
             }
             add_attempt(current_route_body, "current_schedule")
+        if far_future_transit:
+            for index, (_, kind) in enumerate(attempts):
+                if kind == "near_term_schedule":
+                    # Google publishes timetables about two weeks out, so for a departure
+                    # beyond that the requested date is an empty answer we pay for. Ask the
+                    # near-term reference first and keep the rest of the cascade in order.
+                    attempts.insert(0, attempts.pop(index))
+                    break
         for attempt_index, (attempt_body, attempt_kind) in enumerate(attempts):
             try:
                 response = await self._post(attempt_body, fields)
                 response.raise_for_status()
                 parsed = response.json()
                 payload = cast(dict[str, Any], parsed) if isinstance(parsed, dict) else {}
+            except GoogleRoutesBudgetExceeded:
+                logger.warning(
+                    "google_routes_request_skipped",
+                    extra={
+                        "provider": self.name,
+                        "reason_code": "monthly_budget_exhausted",
+                        "travel_mode": travel_mode,
+                        "attempt_kind": attempt_kind,
+                    },
+                )
+                return []
             except httpx.HTTPStatusError as exc:
                 logger.warning(
                     "google_routes_http_error",
@@ -1049,6 +1145,16 @@ class NavitimeRouteProvider:
             if total_minutes is None:
                 total_minutes = sum(step.duration_minutes or 0 for step in steps)
             if total_minutes <= 0:
+                return None
+            if hides_a_transfer_walk(steps):
+                logger.info(
+                    "route_candidate_hides_transfer_walk",
+                    extra={
+                        "provider": self.name,
+                        "reason_code": "missing_walk",
+                        "route_rank": rank,
+                    },
+                )
                 return None
             details = ["steps", "stops", "headsign"] if steps else []
             if any(step.platform for step in steps):
@@ -1775,6 +1881,16 @@ class EkispertRouteProvider:
         ]
         if not timetable:
             warnings.insert(0, "此方案使用平均等待時間，不代表指定日期的實際班次。")
+        if hides_a_transfer_walk(steps):
+            logger.info(
+                "route_candidate_hides_transfer_walk",
+                extra={
+                    "provider": self.name,
+                    "reason_code": "missing_walk",
+                    "route_rank": rank,
+                },
+            )
+            return None
         distance = _provider_int(route.get("distance"))
         details = ["steps", "stops"]
         if any(step.headsign for step in steps):
@@ -2062,6 +2178,16 @@ class OdsayRouteProvider:
         navigation = naver_external_navigation(
             origin, destination, "transit", reason="在 NAVER Maps 查看韓國即時導航。"
         )
+        if hides_a_transfer_walk(steps):
+            logger.info(
+                "route_candidate_hides_transfer_walk",
+                extra={
+                    "provider": self.name,
+                    "reason_code": "missing_walk",
+                    "route_rank": rank,
+                },
+            )
+            return None
         fare_amount = _provider_int(info.get("payment"))
         details = ["steps", "stops"]
         if any(step.exit_name for step in steps):

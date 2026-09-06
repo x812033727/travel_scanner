@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 2 in progress · 1 blocked · 0 in review · 52 done**
+**14 open · 2 in progress · 1 blocked · 0 in review · 55 done**
 
 ## Ready to claim
 
@@ -15,19 +15,17 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | P2 | [營業時間感知排程：AI 排程不把景點排在打烊時段](open/2026-09-06-opening-hours-aware-scheduling.md) | api | `apps/api/app/trips/hours.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/web/components/day-health-strip.tsx` |
 | P2 | [貼 Google Maps 連結加景點（待安排 inbox）](open/2026-09-06-paste-maps-links-ingest.md) | api | `apps/api/app/trips/ingest.py`<br>`apps/api/app/trips/ingest_router.py`<br>`apps/api/app/restaurants/imports.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-inbox-panel.tsx` |
-| P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | api | `apps/api/app/trips/routing.py`<br>`apps/api/tests/test_trip_routing.py` |
 | P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/route_planner.py`<br>`apps/api/tests/test_trip_route_planner.py` |
 | P2 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | api | `apps/api/app/destinations/localized.py` |
 | P3 | [ICS 行事曆匯出](open/2026-09-06-ics-calendar-export.md) | api | `apps/api/app/trips/ics.py`<br>`apps/api/app/trips/export_router.py`<br>`apps/web/components/trip-tools-panel.tsx` |
 | P3 | [列印版行程表（一天一頁的 A5 列印樣式）](open/2026-09-06-printable-itinerary.md) | web | `apps/web/app/[locale]/trips/[id]/print`<br>`apps/web/app/globals.css` |
-| P3 | [誠實路段守衛：拒絕 0 分鐘路段與漏掉步行段的轉乘方案](open/2026-09-06-honest-leg-guard.md) | api | `apps/api/app/trips/routing.py`<br>`apps/web/components/route-mode-panel.tsx` |
-| P3 | [最佳化上限的 UX：超過 12 個可移動景點時先提示而不是 422](open/2026-09-06-optimizer-limit-ux.md) | web | `apps/web/components/route-mode-panel.tsx`<br>`apps/web/components/trip-editor.tsx` |
 | P3 | [PWA、Android share target 與今日檢視](open/2026-09-06-pwa-share-target-today-view.md) | web | `apps/web/app/manifest.ts`<br>`apps/web/public`<br>`apps/web/components/today-view.tsx` |
 | P3 | [分享頁「存成我的行程」與 QR code](open/2026-09-06-share-fork-and-qr.md) | api | `apps/api/app/trips/share_router.py`<br>`apps/web/components/shared-trip-view.tsx` |
 | P3 | [已存行程頁掛上分潤選項](open/2026-09-06-trip-affiliate-options.md) | web | `apps/web/components/trip-editor.tsx`<br>`apps/web/components/affiliate-partner-options.tsx` |
 | P3 | [行程狀態標籤與封面圖](open/2026-09-06-trip-status-and-cover.md) | api | `apps/api/app/trips/metadata.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-meta-editor.tsx` |
 | P3 | [Measure the flood before widening ALLOWED_TYPES with temple, shrine and museum types](open/2026-09-06-measure-the-flood-before-widening-allowed.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/tests/test_hotspot_discovery.py` |
 | P3 | [後台其餘三個面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n-remaining.md) | web | `apps/web/components/admin-hotspot-places-panel.tsx`<br>`apps/web/components/admin-deployments-panel.tsx`<br>`apps/web/components/admin-users-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/app/[locale]/admin/page.tsx`<br>`apps/web/app/[locale]/admin/settings/page.tsx`<br>`apps/web/app/[locale]/admin/system-settings/page.tsx`<br>`apps/web/app/[locale]/admin/hotspots/page.tsx`<br>`apps/web/app/[locale]/admin/foods/page.tsx`<br>`apps/web/app/[locale]/admin/users/page.tsx`<br>`apps/web/app/[locale]/admin/deployments/page.tsx`<br>`apps/web/app/[locale]/admin/analytics/page.tsx`<br>`apps/web/app/[locale]/admin/usage-settings/page.tsx`<br>`apps/web/app/[locale]/admin/layout-settings/page.tsx` |
+| P3 | [路線卡與路線面板的文案硬編碼繁中](open/2026-09-06-route-copy-i18n.md) | web | `apps/web/components/route-segment-card.tsx`<br>`apps/web/components/route-mode-panel.tsx`<br>`apps/web/components/route-timeline-link.tsx`<br>`apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/zh-TW/trips.json` |
 
 ## In progress
 
@@ -49,6 +47,9 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [最佳化上限的 UX：超過 12 個可移動景點時先提示而不是 422](done/2026-09-06-optimizer-limit-ux.md)
+- 2026-09-06 [誠實路段守衛：拒絕 0 分鐘路段與漏掉步行段的轉乘方案](done/2026-09-06-honest-leg-guard.md)
+- 2026-09-06 [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](done/2026-09-06-google-far-future-transit-cascade.md)
 - 2026-09-06 [用 AI 審核 1,270 筆待審介紹候選](done/2026-09-06-ai-review-guide-backlog.md)
 - 2026-09-06 [usage catalog validation rejects everything when web ships ahead of api](done/2026-09-06-usage-catalog-validation-rejects-everything-when.md)
 - 2026-09-06 [food seed counts are hardcoded twelve times and only CI can see them](done/2026-09-06-food-seed-counts-are-hardcoded-twelve.md)
@@ -56,6 +57,3 @@ _Nothing here._
 - 2026-09-06 [Re-seeding never corrects an existing dish name or summary](done/2026-09-06-seed-localization-reconcile.md)
 - 2026-09-06 [後台面板文案硬編碼繁中](done/2026-09-06-admin-panels-i18n.md)
 - 2026-09-06 [後台的登入時效設定要能真的生效](done/2026-09-06-admin-session-settings.md)
-- 2026-09-06 [首頁精靈步驟標籤在英文 390px 會截字](done/2026-09-06-wizard-step-label-truncation.md)
-- 2026-09-06 [桌機主導覽文字連結只有 20px 高](done/2026-09-06-desktop-nav-touch-targets.md)
-- 2026-09-06 [註冊關閉頁的小標與 H1 是同一句話](done/2026-09-06-auth-duplicate-heading.md)
