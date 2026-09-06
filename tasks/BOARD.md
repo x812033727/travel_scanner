@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**36 open · 0 in progress · 0 blocked · 4 in review · 18 done**
+**36 open · 0 in progress · 0 blocked · 0 in review · 22 done**
 
 ## Ready to claim
 
@@ -25,9 +25,13 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | ops | `apps/api/app/places/naver.py` |
 | P2 | [482 個景點卡在人工審核佇列](open/2026-09-06-hotspot-review-backlog.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/app/hotspots/admin_router.py` |
 | P2 | [529 個公開景點還沒有任何導覽內容](open/2026-09-06-hotspot-guide-coverage.md) | ops | `apps/api/app/hotspots/guides.py` |
+| P2 | [日期變更後行程價格停在舊報價且無法重新查價](open/2026-09-06-trip-stale-price-after-reschedule.md) | api | `apps/api/app/trips/reschedule.py`<br>`apps/api/app/trips/router.py` |
+| P2 | [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](open/2026-09-06-reoptimize-no-version-check.md) | api | `apps/api/app/trips/router.py` |
 | P2 | [usage catalog validation rejects everything when web ships ahead of api](open/2026-09-06-usage-catalog-validation-rejects-everything-when.md) | web | `apps/web/lib/usage-catalog.ts` |
 | P2 | [營業時間感知排程：AI 排程不把景點排在打烊時段](open/2026-09-06-opening-hours-aware-scheduling.md) | api | `apps/api/app/trips/hours.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/web/components/day-health-strip.tsx` |
 | P2 | [貼 Google Maps 連結加景點（待安排 inbox）](open/2026-09-06-paste-maps-links-ingest.md) | api | `apps/api/app/trips/ingest.py`<br>`apps/api/app/trips/ingest_router.py`<br>`apps/api/app/restaurants/imports.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-inbox-panel.tsx` |
+| P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | api | `apps/api/app/trips/routing.py`<br>`apps/api/tests/test_trip_routing.py` |
+| P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/route_planner.py`<br>`apps/api/tests/test_trip_route_planner.py` |
 | P3 | [Admin help text tells operators to avoid the model now shipped](open/2026-09-06-stale-gemini-model-help.md) | web | `apps/web/components/admin-settings-panel.tsx` |
 | P3 | [註冊關閉頁的小標與 H1 是同一句話](open/2026-09-06-auth-duplicate-heading.md) | web | `apps/web/messages/en/auth.json`<br>`apps/web/messages/ja/auth.json`<br>`apps/web/messages/ko/auth.json`<br>`apps/web/messages/zh-CN/auth.json`<br>`apps/web/messages/zh-TW/auth.json` |
 | P3 | [桌機主導覽文字連結只有 20px 高](open/2026-09-06-desktop-nav-touch-targets.md) | web | `apps/web/components/site-navigation.tsx` |
@@ -38,8 +42,11 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [food seed counts are hardcoded twelve times and only CI can see them](open/2026-09-06-food-seed-counts-are-hardcoded-twelve.md) | api | `apps/api/tests/test_food_integration.py` |
 | P3 | [ICS 行事曆匯出](open/2026-09-06-ics-calendar-export.md) | api | `apps/api/app/trips/ics.py`<br>`apps/api/app/trips/export_router.py`<br>`apps/web/components/trip-tools-panel.tsx` |
 | P3 | [列印版行程表（一天一頁的 A5 列印樣式）](open/2026-09-06-printable-itinerary.md) | web | `apps/web/app/[locale]/trips/[id]/print`<br>`apps/web/app/globals.css` |
+| P3 | [誠實路段守衛：拒絕 0 分鐘路段與漏掉步行段的轉乘方案](open/2026-09-06-honest-leg-guard.md) | api | `apps/api/app/trips/routing.py`<br>`apps/web/components/route-mode-panel.tsx` |
+| P3 | [最佳化上限的 UX：超過 12 個可移動景點時先提示而不是 422](open/2026-09-06-optimizer-limit-ux.md) | web | `apps/web/components/route-mode-panel.tsx`<br>`apps/web/components/trip-editor.tsx` |
 | P3 | [PWA、Android share target 與今日檢視](open/2026-09-06-pwa-share-target-today-view.md) | web | `apps/web/app/manifest.ts`<br>`apps/web/public`<br>`apps/web/components/today-view.tsx` |
 | P3 | [分享頁「存成我的行程」與 QR code](open/2026-09-06-share-fork-and-qr.md) | api | `apps/api/app/trips/share_router.py`<br>`apps/web/components/shared-trip-view.tsx` |
+| P3 | [已存行程頁掛上分潤選項](open/2026-09-06-trip-affiliate-options.md) | web | `apps/web/components/trip-editor.tsx`<br>`apps/web/components/affiliate-partner-options.tsx` |
 | P3 | [行程狀態標籤與封面圖](open/2026-09-06-trip-status-and-cover.md) | api | `apps/api/app/trips/metadata.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-meta-editor.tsx` |
 
 ## In progress
@@ -48,35 +55,23 @@ _Nothing here._
 
 ## In review
 
-| Task | Owner | Branch |
-| --- | --- | --- |
-| [路線快取 key 依 provider 的時間粒度；DB 路段過期與 Redis TTL 分開](open/2026-09-06-route-cache-time-key.md) | claude-fable-5.1 | `claude/route-cache-time-key` |
-| [整天重算只打真的缺的路段；編輯後不再自動整趟重算](open/2026-09-06-route-recompute-reuses-saved-segments.md) | claude-fable-5.1 | `claude/route-recompute-reuses-saved-segments` |
-| [行程編輯後不清整天路段、缺的段用距離估計、按鈕不再預設 refresh](open/2026-09-06-route-editor-partial-invalidation.md) | claude-fable-5.1 | `claude/route-editor-partial-invalidation` |
-| [最佳化用距離估計排順序、系統卡變更只作廢碰到的路段、步行汽車不看偏好](open/2026-09-06-route-optimizer-estimates.md) | claude-fable-5.1 | `claude/route-optimizer-estimates` |
+_Nothing here._
 
 ## Waiting
 
 | Priority | Task | Waiting on |
 | --- | --- | --- |
-| P2 | [日期變更後行程價格停在舊報價且無法重新查價](open/2026-09-06-trip-stale-price-after-reschedule.md) | active work in the same scope |
-| P2 | [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](open/2026-09-06-reoptimize-no-version-check.md) | active work in the same scope |
-| P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | active work in the same scope |
-| P2 | [編輯後不打 provider 也要把 DB 的行程時間重新推算](open/2026-09-06-route-projection-only-pass.md) | depends on 2026-09-06-route-recompute-reuses-saved-segments |
 | P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | depends on 2026-09-06-stale-gemini-model-help |
-| P3 | [誠實路段守衛：拒絕 0 分鐘路段與漏掉步行段的轉乘方案](open/2026-09-06-honest-leg-guard.md) | active work in the same scope |
-| P3 | [最佳化上限的 UX：超過 12 個可移動景點時先提示而不是 422](open/2026-09-06-optimizer-limit-ux.md) | active work in the same scope |
-| P3 | [已存行程頁掛上分潤選項](open/2026-09-06-trip-affiliate-options.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-06 [最佳化用距離估計排順序、系統卡變更只作廢碰到的路段、步行汽車不看偏好](done/2026-09-06-route-optimizer-estimates.md)
+- 2026-09-06 [行程編輯後不清整天路段、缺的段用距離估計、按鈕不再預設 refresh](done/2026-09-06-route-editor-partial-invalidation.md)
+- 2026-09-06 [整天重算只打真的缺的路段；編輯後不再自動整趟重算](done/2026-09-06-route-recompute-reuses-saved-segments.md)
+- 2026-09-06 [路線快取 key 依 provider 的時間粒度；DB 路段過期與 Redis TTL 分開](done/2026-09-06-route-cache-time-key.md)
 - 2026-09-06 [Default the Gemini guide model to gemini-3.8-flash](done/2026-09-06-gemini-3-8-flash-default.md)
 - 2026-09-06 [搜尋結果頁整頁文案寫死繁中](done/2026-09-06-search-results-i18n.md)
 - 2026-09-06 [行程編輯器 294 句硬編碼繁中未五語系化](done/2026-09-06-trip-editor-i18n.md)
 - 2026-09-06 [catalog fallback 被當成 AI 精修呈現給使用者](done/2026-09-06-intent-fallback-honesty.md)
 - 2026-09-06 [意圖列的 diff 與 apply 實際行為不一致](done/2026-09-06-intent-diff-mismatch.md)
 - 2026-09-06 [意圖精修刪除列時連帶清掉使用者輸入的交通時間](done/2026-09-06-intent-route-segment-cascade.md)
-- 2026-09-06 [整趟範圍的意圖精修不計費，等同免費的付費生成](done/2026-09-06-intent-trip-scope-free.md)
-- 2026-09-06 [Three hotspots hold a quoted review_status that no filter matches](done/2026-09-06-quoted-review-status-rows.md)
-- 2026-09-06 [57 個潮流商圈只存在正式機資料庫](done/2026-09-06-trend-food-areas-not-seeded.md)
-- 2026-09-06 [把潮流街區的匯入腳本收進 repo](done/2026-09-06-trend-import-scripts.md)

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-route-optimizer-estimates
 title: 最佳化用距離估計排順序、系統卡變更只作廢碰到的路段、步行汽車不看偏好
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-fable-5.1
 claimed_at: 2026-09-06T03:35:09Z
 created_at: 2026-09-06T03:35:06Z
-completed_at:
+completed_at: 2026-09-06T05:05:12Z
 branch: claude/route-optimizer-estimates
 depends_on:
   - 2026-09-06-route-recompute-reuses-saved-segments
