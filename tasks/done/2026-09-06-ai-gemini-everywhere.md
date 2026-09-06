@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-ai-gemini-everywhere
 title: AI 行程規劃、行程文字解析與景點 AI 搜尋也能選 Gemini
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-fable-5.1
 claimed_at: 2026-09-06T07:54:31Z
 created_at: 2026-09-06T07:54:30Z
-completed_at:
+completed_at: 2026-09-06T08:23:57Z
 branch: claude/ai-gemini-everywhere
 depends_on: []
 scope:
