@@ -80,14 +80,16 @@ async def test_the_batch_is_reported_dry_applied_once_and_skipped_after() -> Non
         )
 
     merchants = load_trend_merchants(DEFAULT_FILE)
-    expected_new = len(merchants) - 2  # the two Tainan shops the curated catalog already has
+    # One Tainan shop, not two. 阿松割包 is genuinely in the curated catalog under a different
+    # slug spelling. The other overlap was tainan-fu-sheng-hao, where the two catalogs meant
+    # different restaurants; 富盛號 now has its own slug and is imported like any other row.
+    expected_new = len(merchants) - 1
 
     async with SessionFactory() as session:
         dry = await persist_trend_merchants(session, merchants, apply=False)
     assert dry["applied"] is False
     assert dry["created"] == expected_new
     assert dry["outcomes"] == {
-        "skipped_existing_slug": 1,
         "skipped_same_name": 1,
         "would_create": expected_new,
     }
@@ -149,8 +151,11 @@ async def test_the_batch_is_reported_dry_applied_once_and_skipped_after() -> Non
     async with SessionFactory() as session:
         again = await persist_trend_merchants(session, merchants, apply=True)
     assert again["created"] == 0
+    # Every row created on the first pass, plus 阿松割包 which never was. The extra +1 here
+    # used to be tainan-fu-sheng-hao, skipped on both passes because the curated catalog held
+    # that slug for a different shop; it is imported now, so it is one of expected_new.
     assert again["outcomes"] == {
-        "skipped_existing_slug": expected_new + 1,
+        "skipped_existing_slug": expected_new,
         "skipped_same_name": 1,
     }
     async with SessionFactory() as session:
