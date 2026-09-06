@@ -997,7 +997,7 @@ def _merchant_source_view(source: FoodMerchantSource) -> dict[str, Any]:
 
 
 async def _serialize_merchant_cards(
-    session: AsyncSession, merchants: list[FoodMerchant], locale: str
+    session: AsyncSession, merchants: list[FoodMerchant], locale: Locale
 ) -> list[dict[str, Any]]:
     if not merchants:
         return []
@@ -1054,7 +1054,13 @@ async def _serialize_merchant_cards(
         if not merchant_is_publishable(merchant, has_current_source=bool(merchant_sources)):
             continue
         profile = destination_for_id(merchant.destination_id)
+        # Two different jobs for one city name. The reader sees `destination_name`, so it
+        # follows their locale; `build_map_links` pairs the city with the merchant's own
+        # local_name to make a query Google can resolve, and that pair is the catalog's
+        # own spelling whoever is reading — an English city with a Thai shop name is a
+        # worse search than the two the catalog was written with.
         city_name = profile.city if profile else merchant.destination_id
+        display_city = localized_city_name(profile, locale) if profile else city_name
         names = merchant_names(merchant)
         cards.append(
             {
@@ -1064,7 +1070,7 @@ async def _serialize_merchant_cards(
                 "local_name": merchant.local_name,
                 "names": names,
                 "destination_id": merchant.destination_id,
-                "destination_name": city_name,
+                "destination_name": display_city,
                 "country_code": merchant.country_code,
                 "area": areas_by_merchant.get(merchant.id),
                 "categories": categories_by_merchant.get(merchant.id, []),
@@ -1202,7 +1208,9 @@ async def _merchant_facets(
 async def list_merchants(
     session: AsyncSession,
     *,
-    locale: str,
+    # A site locale, not any string: the city name next to each merchant is resolved
+    # from the destination catalog, which only knows the five the site publishes.
+    locale: Locale,
     destination_id: str | None = None,
     area_slug: str | None = None,
     category_slug: str | None = None,
