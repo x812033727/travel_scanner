@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**42 open · 0 in progress · 0 blocked · 0 in review · 0 done**
+**41 open · 0 in progress · 0 blocked · 0 in review · 0 done**
 
 ## Ready to claim
 
@@ -13,7 +13,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P1 | [Merchant coordinate backlog: 270 of 272 merchants cannot be published](open/2026-09-06-merchant-coordinate-backlog-270-of-272.md) | ops | `apps/api/app/foods/place_matching.py`<br>`apps/api/app/foods/coordinate_queue.py` |
+| P1 | [272 家店家裡只有 2 家有耐久座標，美食目錄幾乎發不出東西](open/2026-09-06-merchant-coordinate-backlog.md) | ops | `apps/api/app/foods/place_matching.py`<br>`apps/api/app/foods/coordinate_queue.py`<br>`apps/web/components/admin-merchant-coordinate-queue.tsx` |
 | P1 | [Most merchants have no first-party page, so nothing can locate them](open/2026-09-06-missing-merchant-sources.md) | api | `apps/api/app/foods/merchant_catalog.py` |
 | P1 | [A failing required check did not stop a merge, and main stayed red](open/2026-09-06-required-checks-block-merge.md) | meta | `.github` |
 | P1 | [把潮流街區的匯入腳本收進 repo](open/2026-09-06-trend-import-scripts.md) | api | `apps/api/app/foods/trend_import.py`<br>`apps/api/app/cli.py`<br>`apps/api/tests/test_trend_import.py` |
@@ -21,7 +21,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [搜尋結果頁整頁文案寫死繁中](open/2026-09-06-search-results-i18n.md) | web | `apps/web/components/search-experience.tsx`<br>`apps/web/messages/en/search.json`<br>`apps/web/messages/ja/search.json`<br>`apps/web/messages/ko/search.json`<br>`apps/web/messages/zh-CN/search.json`<br>`apps/web/messages/zh-TW/search.json` |
 | P1 | [57 個潮流商圈只存在正式機資料庫](open/2026-09-06-trend-food-areas-not-seeded.md) | api | `apps/api/app/foods/area_catalog.py`<br>`apps/api/tests/test_food_taxonomy_catalog.py` |
 | P1 | [分享連結會外洩項目備註與整包 data](open/2026-09-06-share-payload-leaks-notes.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/tests/test_integration_postgres_redis.py` |
-| P1 | [271 家店家沒有永久座標，全部無法發布](open/2026-09-06-merchant-coordinate-backlog.md) | ops | `apps/api/app/foods/coordinate_queue.py`<br>`apps/web/components/admin-merchant-coordinate-queue.tsx` |
 | P1 | [遷移裡的補資料分支在 CI 是死碼](open/2026-09-06-migration-backfill-untested.md) | tools | `.github/workflows/ci.yml`<br>`apps/api/tests/test_migration_dead_branches.py` |
 | P1 | [意圖列的 diff 與 apply 實際行為不一致](open/2026-09-06-intent-diff-mismatch.md) | api | `apps/api/app/trips/intents.py`<br>`apps/api/tests/test_trip_intents.py` |
 | P1 | [整趟範圍的意圖精修不計費，等同免費的付費生成](open/2026-09-06-intent-trip-scope-free.md) | api | `apps/api/app/trips/intents.py`<br>`apps/api/app/usage/service.py` |
