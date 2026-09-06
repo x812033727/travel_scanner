@@ -108,11 +108,15 @@ export function TripMetaEditor({
       )
   );
   const routesReset = datesChanged && Boolean(trip.route_segments?.length);
+  // The API refuses both a shrink and a flight reset without confirm_removed_days:
+  // a pure extension that re-dates the return flight clears a hand-typed booking
+  // just as irreversibly as a dropped day deletes its plans.
+  const needsConfirmation = droppedDays.length > 0 || flightsReset;
 
   const nameChanged = name.trim().length > 0 && name.trim() !== trip.name;
   const statusChanged = status !== (trip.status || "planning");
   const anythingChanged = nameChanged || statusChanged || datesChanged;
-  const blocked = rangeInvalid || rangeTooLong || (droppedDays.length > 0 && !confirmRemoval);
+  const blocked = rangeInvalid || rangeTooLong || (needsConfirmation && !confirmRemoval);
 
   function openEditor() {
     setName(trip.name);
@@ -149,7 +153,7 @@ export function TripMetaEditor({
         body.start_date = start;
         body.end_date = end;
       }
-      if (droppedDays.length > 0) body.confirm_removed_days = true;
+      if (needsConfirmation) body.confirm_removed_days = true;
       const updated = await api<Trip>(`/trips/${trip.id}`, {
         method: "PATCH",
         body: JSON.stringify(body),
@@ -159,6 +163,10 @@ export function TripMetaEditor({
     } catch (reason) {
       if (reason instanceof ApiError && reason.code === "trip_version_conflict") {
         setError(t("meta.conflictBlocked"));
+      } else if (reason instanceof ApiError && reason.code === "trip_shrink_confirmation_required") {
+        // The local preview and the server disagreed about what the change destroys;
+        // say so in the reader's language instead of echoing the Chinese detail.
+        setError(t("meta.confirmRequired"));
       } else {
         setError(reason instanceof Error ? reason.message : String(reason));
       }
@@ -289,12 +297,18 @@ export function TripMetaEditor({
           {rangeInvalid && <p role="alert" className="mt-3 rounded-xl bg-red-50 px-3 py-2 text-xs font-semibold text-red-800">{t("meta.rangeInvalid")}</p>}
           {rangeTooLong && <p role="alert" className="mt-3 rounded-xl bg-red-50 px-3 py-2 text-xs font-semibold text-red-800">{t("meta.rangeTooLong")}</p>}
         </fieldset>
-        {droppedDays.length > 0 && <section role="alert" className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">
-          <p className="flex items-start gap-2 font-semibold">
+        {needsConfirmation && <section role="alert" className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">
+          {droppedDays.length > 0 && <>
+            <p className="flex items-start gap-2 font-semibold">
+              <CircleAlert size={17} className="mt-0.5 shrink-0" />
+              {t("meta.removedWarning", { days: droppedDays.length, items: droppedArrangements })}
+            </p>
+            <p className="mt-2 text-xs leading-5">{droppedDays.join(" · ")}</p>
+          </>}
+          {flightsReset && <p className={`flex items-start gap-2 font-semibold${droppedDays.length > 0 ? " mt-3" : ""}`}>
             <CircleAlert size={17} className="mt-0.5 shrink-0" />
-            {t("meta.removedWarning", { days: droppedDays.length, items: droppedArrangements })}
-          </p>
-          <p className="mt-2 text-xs leading-5">{droppedDays.join(" · ")}</p>
+            {t("meta.flightNotice")}
+          </p>}
           <label className="mt-3 flex min-h-11 items-center gap-2 text-sm font-semibold">
             <input
               type="checkbox"
@@ -302,10 +316,9 @@ export function TripMetaEditor({
               onChange={(event) => setConfirmRemoval(event.target.checked)}
               className="h-4 w-4"
             />
-            {t("meta.removedConfirm")}
+            {droppedDays.length > 0 ? t("meta.removedConfirm") : t("meta.flightConfirm")}
           </label>
         </section>}
-        {flightsReset && <p className="rounded-xl bg-sky-50 px-3 py-2.5 text-xs leading-5 text-sky-900">{t("meta.flightNotice")}</p>}
         {routesReset && <p className="rounded-xl bg-[var(--paper)] px-3 py-2.5 text-xs leading-5 text-[var(--muted)]">{t("meta.routesNotice")}</p>}
         {error && <p role="alert" className="rounded-xl bg-red-50 px-3 py-2.5 text-sm font-semibold text-red-800">{error}</p>}
       </div>

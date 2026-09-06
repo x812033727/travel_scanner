@@ -1,18 +1,21 @@
 ---
 id: 2026-09-06-share-payload-leaks-notes
 title: 分享連結會外洩項目備註與整包 data
-status: open
+status: done
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T02:42:57Z
 created_at: 2026-09-06T00:53:04Z
-completed_at:
-branch:
+completed_at: 2026-09-06T02:55:51Z
+branch: claude/trip-api-p1
 depends_on: []
 scope:
   - apps/api/app/trips/router.py
   - apps/api/tests/test_integration_postgres_redis.py
+  - apps/api/tests/test_trip_share_payload.py
+  - apps/web/components/shared-trip-view.tsx
+  - apps/web/lib/trip-types.ts
 ---
 
 # 分享連結會外洩項目備註與整包 data
@@ -33,19 +36,19 @@ scope:
 
 ## Definition of done
 
-- [ ] 分享 payload 不含任何一筆 `items[].notes`。
-- [ ] 分享 payload 不含 `data`，或只含明確挑過、確定可公開的子集。
-- [ ] 有整合測試斷言上述兩點（比照 `test_trip_and_day_notes_persist_and_stay_out_of_the_share`
+- [x] 分享 payload 不含任何一筆 `items[].notes`。
+- [x] 分享 payload 不含 `data`，或只含明確挑過、確定可公開的子集。
+- [x] 有整合測試斷言上述兩點（比照 `test_trip_and_day_notes_persist_and_stay_out_of_the_share`
       的寫法）。
-- [ ] 擁有者自己開 `GET /trips/{id}` 仍看得到備註與 `data`（不要為了修分享而弄壞編輯器）。
+- [x] 擁有者自己開 `GET /trips/{id}` 仍看得到備註與 `data`（不要為了修分享而弄壞編輯器）。
 
 ## Steps
 
-- [ ] 讓分享路徑用一個獨立的 item 序列化，而不是共用 `serialize_item()`：
+- [x] 讓分享路徑用一個獨立的 item 序列化，而不是共用 `serialize_item()`：
       只輸出畫面需要的欄位（title、時間、位置、地圖連結、duration…），不含 `notes`／`data`。
-- [ ] 決定 `data` 怎麼辦。`shared-trip-view.tsx` 與 `itinerary-timeline.tsx` 實際上用到
+- [x] 決定 `data` 怎麼辦。`shared-trip-view.tsx` 與 `itinerary-timeline.tsx` 實際上用到
       `data` 的哪些鍵要先查清楚再刪，別直接拿掉導致分享頁壞掉。
-- [ ] 在 `test_integration_postgres_redis.py` 加斷言。
+- [x] 在 `test_integration_postgres_redis.py` 加斷言。
 
 ## How to verify
 
@@ -58,6 +61,21 @@ RUN_INTEGRATION_TESTS=1 ./.venv/Scripts/python.exe -m pytest tests/test_integrat
 `GET /api/v1/shared-trips/<token>` 的回應裡不應該出現那段備註。
 
 ## Notes
+
+**2026-09-06 完成。** 分享端點改成兩層白名單：行程層 `PUBLIC_TRIP_KEYS`（id、name、destination_name、
+start_date、end_date、timezone、route_segments、updated_at；`data`、`total_price`、`currency`、`mode`、`version`、
+`destination_place_id`、`route_preference` 全部拿掉——分享頁一個都沒讀），項目層 `public_item()` 只留
+`PUBLIC_ITEM_KEYS`（時間軸畫得到的欄位）加上 `data` 的兩個鍵：`timeline_section` 與 `flight_info`
+（後者再過一層 `PUBLIC_FLIGHT_INFO_KEYS`，只留班次時刻，不留 `price_snapshot`／訂位代號）。
+`serialize_item()` 本身沒動：`router.py` 約 2429 行用它 round-trip 成 `ItineraryItemRequest`，改它會壞掉編輯器的儲存路徑。
+
+分享頁實際讀的鍵（查過 `shared-trip-view.tsx`、`itinerary-timeline.tsx`、`flight-anchor-card.tsx`、`lib/trip-types.ts`）：
+行程層 `name/destination_name/items/route_segments/timezone/updated_at`；項目層另需 `data.timeline_section`
+（`isLogisticsItem`）與 `data.flight_info`（航班卡）。`priceSnapshot()` 缺資料時本來就回 null，所以航班卡少了報價不會壞。
+前端加了 `SharedTrip` 型別（`Pick<Trip, …>`）讓分享頁不再假裝拿到整個 `Trip`。
+
+測試：`tests/test_trip_share_payload.py`（無 DB，釘白名單與航班子集）；`test_share_link_carries_no_item_notes_and_no_trip_data`
+（整合，用 `_signed_in_headers()`，PUT 一筆帶備註與 `price_snapshot` 的項目後開分享連結，斷言鍵集合、無備註、`data` 只剩區段）。
 
 **白名單本身是加法式的（安全設計）** —— `app/trips/router.py` 約 4741 行附近的
 `for key in ("id", "name", "mode", "total_price", "currency", "data", "version", …,

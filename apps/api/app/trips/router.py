@@ -2,6 +2,7 @@ import asyncio
 import hashlib
 import json
 import secrets
+from collections.abc import Mapping
 from datetime import UTC, date, datetime, time, timedelta
 from decimal import Decimal
 from typing import Annotated, Any, Literal, cast
@@ -650,6 +651,69 @@ def serialize_item(
         "system_role": item.system_role,
         "is_skipped": item.is_skipped,
     }
+
+
+# What GET /shared-trips/{token} hands to whoever holds the link. serialize_item is
+# also the owner's round trip back into the editor (ItineraryItemRequest is built from
+# it), so it has to keep notes and the whole data blob; the share link is read-only
+# sightseeing and gets an allowlist instead. Anything the owner typed for themselves
+# (notes), paid (price_snapshot, offer_id) or that names how the row was produced
+# (reason, provider, source) stays out.
+PUBLIC_TRIP_KEYS = (
+    "id",
+    "name",
+    "destination_name",
+    "start_date",
+    "end_date",
+    "timezone",
+    "route_segments",
+    "updated_at",
+)
+PUBLIC_ITEM_KEYS = (
+    "id",
+    "item_type",
+    "day_date",
+    "position",
+    "title",
+    "location_name",
+    "names",
+    "start_time",
+    "end_time",
+    "latitude",
+    "longitude",
+    "locked",
+    "is_estimated",
+    "duration_minutes",
+    "fixed_time",
+    "system_role",
+    "is_skipped",
+)
+# The two data keys the shared timeline reads: which section a row is drawn in, and
+# the flight card. The flight card itself only gets the schedule, not the quote.
+PUBLIC_FLIGHT_INFO_KEYS = (
+    "airline",
+    "flight_number",
+    "origin",
+    "destination",
+    "departure_local",
+    "arrival_local",
+    "departure_timezone",
+    "arrival_timezone",
+)
+
+
+def public_item(item: Mapping[str, Any]) -> dict[str, Any]:
+    """Trim one serialized row down to what a share-link recipient may see."""
+    data = item.get("data") or {}
+    public_data: dict[str, Any] = {}
+    if "timeline_section" in data:
+        public_data["timeline_section"] = data["timeline_section"]
+    flight_info = data.get("flight_info")
+    if isinstance(flight_info, Mapping):
+        public_data["flight_info"] = {
+            key: flight_info[key] for key in PUBLIC_FLIGHT_INFO_KEYS if key in flight_info
+        }
+    return {**{key: item[key] for key in PUBLIC_ITEM_KEYS}, "data": public_data}
 
 
 async def load_items(session: AsyncSession, trip_id: UUID) -> list[TripPlanItem]:
@@ -4730,24 +4794,10 @@ async def shared_trip(token: str, session: Session) -> dict[str, Any]:
     if trip is None:
         raise AppError(404, "shared_trip_not_found", "找不到這個分享旅程")
     payload = await serialize_trip(session, trip)
+    # Additive allowlist: a new field on the owner's payload never reaches the share
+    # link until it is named here. trip.data (preferences, budget, cost breakdown,
+    # planner provider) and every per-item note stay with the owner.
     return {
-        key: payload[key]
-        for key in (
-            "id",
-            "name",
-            "mode",
-            "total_price",
-            "currency",
-            "data",
-            "version",
-            "destination_name",
-            "destination_place_id",
-            "start_date",
-            "end_date",
-            "timezone",
-            "route_preference",
-            "items",
-            "route_segments",
-            "updated_at",
-        )
+        **{key: payload[key] for key in PUBLIC_TRIP_KEYS},
+        "items": [public_item(item) for item in payload["items"]],
     }
