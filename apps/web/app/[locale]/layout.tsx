@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { LegacyUiLocalizer } from "@/components/legacy-ui-localizer";
 import { AppBottomNav } from "@/components/app-bottom-nav";
+import { HeaderSessionProvider } from "@/components/header-session";
 import { SavedItemsProvider } from "@/components/saved-items-provider";
 import { SiteVisibilityProvider } from "@/components/site-visibility-provider";
 import { UsageCatalogProvider } from "@/components/usage-catalog-provider";
@@ -81,10 +82,15 @@ export default async function LocaleLayout({ children, params }: Props) {
             <UsageCatalogProvider state={usageCatalog}>
               <AnalyticsProvider>
                 <LegacyUiLocalizer />
-                <SavedItemsProvider>
-                  <div className="public-app-shell">{children}</div>
-                  <AppBottomNav />
-                </SavedItemsProvider>
+                {/* One /auth/me for the whole page. It used to be asked three times —
+                    by the header, the currency switcher and the account panel — and a
+                    signed-out reader got three 401s for one fact. */}
+                <HeaderSessionProvider>
+                  <SavedItemsProvider>
+                    <div className="public-app-shell">{children}</div>
+                    <AppBottomNav />
+                  </SavedItemsProvider>
+                </HeaderSessionProvider>
               </AnalyticsProvider>
             </UsageCatalogProvider>
           </SiteVisibilityProvider>
