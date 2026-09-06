@@ -26,9 +26,6 @@ from app.models import HotspotTheme
 from app.problems import AppError
 
 SEEDS_BY_SLUG = {seed.slug: seed for seed in HOTSPOT_SEEDS}
-# Shop types that only dedicated stores carry; the catalog has no outlet mall yet, so
-# the theme exists (administrators can assign it) but the seed file cannot link it.
-SHOP_THEMES_WITHOUT_SEEDS = {"outlet"}
 
 
 def test_catalog_shape() -> None:
@@ -90,11 +87,18 @@ def test_bootstrap_assignments_resolve_to_catalog_seeds() -> None:
 
 
 def test_every_theme_has_seed_coverage() -> None:
+    """Every chip on the page has to lead somewhere.
+
+    Outlet malls were the last shop type with no seed at all: the chip existed, and
+    tapping it returned an empty page. The dedicated-store batch closed that, so this
+    now asserts all eight shop types rather than excusing one.
+    """
+
     counts = Counter(theme_slug for _, theme_slug in SEED_LINK_PAIRS)
     for slug in SEASON_THEME_SLUGS:
         assert counts[slug] >= 2, slug
-    for slug in SHOP_THEME_SLUGS - SHOP_THEMES_WITHOUT_SEEDS:
-        assert counts[slug] >= 1, slug
+    for slug in SHOP_THEME_SLUGS:
+        assert counts[slug] >= 2, slug
     assert counts["sakura"] >= 25
     assert counts["autumn-leaves"] >= 20
 

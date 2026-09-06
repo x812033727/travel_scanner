@@ -239,7 +239,10 @@ def _load_seeds() -> tuple[HotspotSeed, ...]:
     kanto_rows = json.loads(
         Path(__file__).with_name("kanto_expansion_bootstrap.json").read_text(encoding="utf-8")
     )
-    rows = [*base_rows, *deep_rows, *secondary_rows, *food_area_rows, *kanto_rows]
+    shopping_rows = json.loads(
+        Path(__file__).with_name("shopping_bootstrap.json").read_text(encoding="utf-8")
+    )
+    rows = [*base_rows, *deep_rows, *secondary_rows, *food_area_rows, *kanto_rows, *shopping_rows]
     seeds: list[HotspotSeed] = []
     for row in rows:
         city = CITY_BY_CODE[row["city_code"]]
@@ -292,13 +295,14 @@ def _load_seeds() -> tuple[HotspotSeed, ...]:
         or len(secondary_rows) != 180
         or len(food_area_rows) != 5
         or len(kanto_rows) != 113
-        or len(seeds) != 563
+        or len(shopping_rows) != 30
+        or len(seeds) != 593
     ):
         raise RuntimeError(
             "expected 170 standard + 95 deep + 180 secondary + 5 food-area "
-            "+ 113 Kanto-expansion hotspots, "
+            "+ 113 Kanto-expansion + 30 dedicated-shop hotspots, "
             f"found {len(base_rows)} + {len(deep_rows)} + {len(secondary_rows)} + "
-            f"{len(food_area_rows)} + {len(kanto_rows)}"
+            f"{len(food_area_rows)} + {len(kanto_rows)} + {len(shopping_rows)}"
         )
     qids = [seed.wikidata_item_id for seed in seeds if seed.wikidata_item_id]
     if len(set(qids)) != len(qids):

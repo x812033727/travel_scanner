@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**4 open · 0 in progress · 2 blocked · 0 in review · 115 done**
+**7 open · 1 in progress · 2 blocked · 0 in review · 115 done**
 
 ## Ready to claim
 
@@ -20,7 +20,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [專門的購物店家：新增經過座標核實的購物景點種子](open/2026-09-06-shopping-store-seeds.md) | claude-opus-5 | 2026-09-06T20:01:33Z | `claude/shopping-store-seeds` |
 
 ## In review
 
@@ -32,6 +34,9 @@ _Nothing here._
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
+| P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | active work in the same scope |
+| P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | active work in the same scope |
+| P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | active work in the same scope |
 
 ## Recently finished
 
