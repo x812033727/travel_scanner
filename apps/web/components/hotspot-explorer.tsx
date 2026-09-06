@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { FormEvent, KeyboardEvent, TouchEvent, useEffect, useRef, useState } from "react";
 import { api } from "@/lib/api";
 import { HotspotRestaurantsPanel } from "@/components/hotspot-restaurants-panel";
+import { HotspotIntro } from "@/components/hotspot-intro";
 import { HotspotThemeBadges, HotspotThemeChips } from "@/components/hotspot-theme-chips";
 import { useSavedItems } from "@/components/saved-items-provider";
 import { TravelCardActions } from "@/components/travel-card-actions";
@@ -26,6 +27,7 @@ type RankedHotspot = {
   destination_id: string;
   country_code: string; country_name: string; category: string; area: HotspotArea | null; score: number;
   themes?: HotspotTheme[];
+  intro?: { body: string; locale: string; source: string } | null;
   components: { interest: number; growth: number; quality: number; confidence: number };
   pageviews_30d: number | null; growth_rate: number | null; trend_label: string;
   sources: string[]; has_source: boolean; signal_date: string | null; is_estimate: boolean;
@@ -214,6 +216,11 @@ function PlaceDetailsPanel({ hotspot, onClose }: { hotspot: RankedHotspot; onClo
         <button ref={closeRef} type="button" onClick={onClose} aria-label={t("close")} className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[var(--line)] bg-white"><X /></button>
       </header>
       <div className="overflow-y-auto overscroll-contain px-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-5 md:px-7">
+        <HotspotIntro
+          text={hotspot.intro?.body}
+          clamp={false}
+          className="mb-6 rounded-2xl bg-white p-4"
+        />
         {placeLoading && <div className="rounded-2xl bg-white p-6 text-sm text-[var(--muted)]">{t("placeLoading")}</div>}
         {placeError && <div role="alert" className="rounded-2xl bg-[var(--coral-soft)] p-6 text-sm">{t("placeError")}</div>}
         {!placeLoading && !placeError && place && <section className="mb-7 grid gap-4" aria-label={t("placeDetails")}>
@@ -504,6 +511,7 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
         {!loading && !error && ranking?.items.length === 0 && <div className="rounded-3xl border border-dashed border-[var(--line)] bg-white/70 p-8 text-center"><h3 className="font-bold">{t("emptyTitle")}</h3><p className="mt-2 text-sm text-[var(--muted)]">{t(theme ? "emptyThemeBody" : "emptyBody")}</p><button type="button" onClick={clearFilters} className="mt-4 min-h-11 rounded-xl border border-[var(--line)] bg-white px-5 font-semibold text-[var(--teal)]">{t("clearFilters")}</button></div>}
         {ranking && ranking.items.length > 0 && <ol className="grid gap-4 md:grid-cols-2">{ranking.items.map((item) => <li key={item.id} id={`hotspot-${item.id}`} className={`travel-result-card travel-result-card-${item.category} relative overflow-hidden rounded-3xl border border-[var(--line)] bg-white p-5`}>
           <div className="flex items-start justify-between gap-4"><div className="flex gap-3"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-lg font-bold text-[var(--teal-dark)]">{item.rank}</span><div><h3 className="text-lg font-bold">{item.name}</h3>{item.local_name && item.local_name !== item.name && <p className="text-xs text-[var(--muted)]">{item.local_name}</p>}{item.map_links?.[0] ? <a href={safeExternalHref(item.map_links[0].url)} target="_blank" rel="noopener noreferrer" aria-label={`${item.map_links[0].label}: ${item.name}`} className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"><MapPin size={14} />{[item.city_name, item.area?.name, t(`categories.${item.category}`)].filter(Boolean).join(" · ")}<ExternalLink size={13} /></a> : <p className="mt-1 flex min-h-11 items-center gap-1.5 text-sm text-[var(--muted)]"><MapPin size={14} />{[item.city_name, item.area?.name, t(`categories.${item.category}`)].filter(Boolean).join(" · ")}</p>}</div></div><div className="text-right"><strong className="text-2xl text-[var(--teal)]">{Math.round(item.score)}</strong><p className="text-xs text-[var(--muted)]">{t("score")}</p></div></div>
+          <HotspotIntro text={item.intro?.body} className="mt-3" />
           <HotspotThemeBadges
             themes={item.themes}
             locale={locale}

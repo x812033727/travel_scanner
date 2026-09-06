@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**9 open · 3 in progress · 3 blocked · 0 in review · 96 done**
+**9 open · 4 in progress · 3 blocked · 0 in review · 96 done**
 
 ## Ready to claim
 
@@ -29,6 +29,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [公開頁精簡：景點卡動作分層、首頁膠囊溢出、排行榜第一屏](open/2026-09-06-simplify-public-cards.md) | claude-opus-5 | 2026-09-06T16:34:13Z | `claude/ux-simplify-public-2` |
 | [上線後查核抓到的六個問題（大字閃爍、焦點掉回 body、標點與複數）](open/2026-09-06-post-deploy-verification-fixes.md) | claude-opus-5 | 2026-09-07T01:20:00Z | `claude/ux-simplify-public-2` |
 | [行程天氣面板在日期超出預報範圍時仍列出 10 天無關天氣](open/2026-09-06-trip-weather-out-of-range.md) | claude-opus-5 | 2026-09-06T16:34:15Z | `claude/ux-simplify-public-2` |
+| [景點的第一手介紹：儲存、審核與呈現](open/2026-09-06-hotspot-intros.md) | claude-opus-5 | 2026-09-06T17:48:40Z | `claude/hotspot-intros` |
 
 ## In review
 
