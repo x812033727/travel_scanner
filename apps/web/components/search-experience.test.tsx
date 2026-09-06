@@ -138,7 +138,10 @@ describe("SearchExperience from a saved trip", () => {
 
     fireEvent.click(await screen.findByRole("button", { name: /^確認條件並開始搜尋 · / }));
     await waitFor(() => expect(postCalls("/searches")).toHaveLength(1));
-    expect(requestBody(postCalls("/searches")[0])).toMatchObject({ trip_id: "trip-1", modules: ["flight"], origin: "TPE", destination: "KIX", departure_date: "2026-11-10", return_date: "2026-11-14" });
+    // Nothing was edited, so nothing is pinned: the server reads the trip's own dates
+    // and party when it creates the search, and a trip moved in another tab cannot be
+    // searched on the week this page happened to load.
+    expect(requestBody(postCalls("/searches")[0])).toEqual({ trip_id: "trip-1", modules: ["flight"] });
 
     await waitFor(() => expect(FakeEventSource.instances).toHaveLength(1));
     FakeEventSource.instances[0].emit("search.completed", { usage: { status: "charged", uses: 1, reference: "u-1" } });
@@ -177,6 +180,89 @@ describe("SearchExperience from a saved trip", () => {
     await waitFor(() => expect(screen.queryByText("這趟旅程還沒有出發機場")).toBeNull());
     expect((screen.getByRole("button", { name: /^確認條件並開始搜尋 · / }) as HTMLButtonElement).disabled).toBe(false);
     expect(postCalls("/searches")).toHaveLength(0);
+  });
+
+  it("pins criteria only once the member edits them, and then sends what they can see", async () => {
+    // A page that read the trip at load time must not pin its dates; once the member
+    // edits the criteria, the edited values are theirs and are sent as given.
+    location.search = "trip_id=trip-1&origin=TSA&destination=KIX&departure_date=2026-11-17&return_date=2026-11-21&adults=2";
+    vi.stubGlobal("fetch", stubTripApi());
+    render(<SearchExperience />);
+
+    fireEvent.click(await screen.findByRole("button", { name: /^確認條件並開始搜尋 · / }));
+    await waitFor(() => expect(postCalls("/searches")).toHaveLength(1));
+    expect(requestBody(postCalls("/searches")[0])).toMatchObject({
+      trip_id: "trip-1", modules: ["flight"], origin: "TSA", departure_date: "2026-11-17", return_date: "2026-11-21",
+    });
+  });
+
+  it("searches the arrival airport the picker is showing, even after other criteria are pinned", async () => {
+    // The picker stays on screen once the criteria editor has written a destination to
+    // the URL. Whichever airport the member can see is the one that gets searched.
+    location.search = "trip_id=trip-1&origin=TPE&destination=KIX&departure_date=2026-11-10&return_date=2026-11-14";
+    const unplaceable = {
+      ...tripCriteria,
+      criteria: { ...tripCriteria.criteria, destination: null },
+      issues: [{ code: "trip_destination_unsupported", detail: "旅程目的地不在機票搜尋範圍" }],
+    };
+    vi.stubGlobal("fetch", stubTripApi({ criteria: [unplaceable] }));
+    render(<SearchExperience />);
+
+    fireEvent.change(await screen.findByLabelText("抵達機場"), { target: { value: "NRT" } });
+    fireEvent.click(await screen.findByRole("button", { name: /^確認條件並開始搜尋 · / }));
+    await waitFor(() => expect(postCalls("/searches")).toHaveLength(1));
+    expect(requestBody(postCalls("/searches")[0])).toMatchObject({ trip_id: "trip-1", destination: "NRT" });
+  });
+
+  it("keeps one in-flight marker per leg so neither attach can be double-posted", async () => {
+    location.search = "trip_id=trip-1&resume=search";
+    const held: Array<(value: Response) => void> = [];
+    vi.stubGlobal("fetch", stubTripApi({
+      attachResponses: [
+        () => new Promise<Response>((resolve) => held.push(resolve)) as unknown as Response,
+        () => new Promise<Response>((resolve) => held.push(resolve)) as unknown as Response,
+      ],
+    }));
+    render(<SearchExperience />);
+
+    await waitFor(() => expect(FakeEventSource.instances).toHaveLength(1));
+    FakeEventSource.instances[0].emit("search.completed", {});
+    const outbound = await screen.findByRole("button", { name: "帶入去程" });
+    fireEvent.click(outbound);
+    await waitFor(() => expect(postCalls("/from-offer")).toHaveLength(1));
+    // Starting the other leg must not un-busy this one.
+    fireEvent.click(screen.getByRole("button", { name: "帶入回程" }));
+    await waitFor(() => expect(postCalls("/from-offer")).toHaveLength(2));
+    expect(screen.getAllByRole("button", { name: "帶入中…" })).toHaveLength(2);
+    fireEvent.click(screen.getAllByRole("button", { name: "帶入中…" })[0]);
+    expect(postCalls("/from-offer")).toHaveLength(2);
+  });
+
+  it("re-reads the trip when saving the home airport loses a version race", async () => {
+    location.search = "trip_id=trip-1";
+    const airportless = {
+      ...tripCriteria,
+      criteria: { ...tripCriteria.criteria, origin: null },
+      issues: [{ code: "trip_origin_required", detail: "這趟旅程還沒有出發機場" }],
+    };
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (url.endsWith("/auth/me")) return json({ id: "u1" });
+      if (url.endsWith("/providers/status")) return json(providerStatus);
+      if (url.includes("/trips/trip-1/search-criteria")) return json(airportless);
+      if (url.endsWith("/trips/trip-1") && init?.method === "PATCH") {
+        return json({ code: "trip_version_conflict", detail: "旅程已被更新" }, 409);
+      }
+      return json({ items: [] });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<SearchExperience />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "儲存出發地" }));
+    // Without the refetch every retry repeats the same losing compare-and-swap.
+    await waitFor(() => expect(
+      fetchMock.mock.calls.filter(([input]) => String(input).includes("/search-criteria")),
+    ).toHaveLength(2));
   });
 
   it("retries an attach once with the trip's current version after a conflict", async () => {

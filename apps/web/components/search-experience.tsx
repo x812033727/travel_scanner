@@ -48,6 +48,7 @@ import {
 } from "@/components/flight-offer-card";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
+import { searchUsageOperation } from "@/lib/usage-catalog";
 import { UsageInsufficientNotice } from "@/components/usage-insufficient-notice";
 import {
   FlightDateOptions,
@@ -307,7 +308,6 @@ export function SearchExperience() {
   // `/search?trip_id=…`: a flight search for a saved trip. The trip supplies
   // the criteria and each result can be written back into its flight anchors.
   const tripId = params.get("trip_id") || undefined;
-  const charge = useOperationCharge(tripId ? "travel_search" : "full_trip_search");
   const visibility = useSiteVisibility();
   const tripsEnabled = featureEnabled(visibility, "trips");
   const locale = useLocale();
@@ -384,10 +384,12 @@ export function SearchExperience() {
   const [tripOriginChoice, setTripOriginChoice] = useState("TPE");
   const [savingOrigin, setSavingOrigin] = useState(false);
   const [tripDestinationChoice, setTripDestinationChoice] = useState("");
+  // Both maps are keyed by leg: the two legs are attached independently, and a
+  // single shared slot let the second attach un-busy the first one mid-flight.
   const [attachState, setAttachState] = useState<{
-    busy?: { direction: FlightLegDirection; offerId: string };
+    busy: Partial<Record<FlightLegDirection, string | undefined>>;
     done: Partial<Record<FlightLegDirection, string>>;
-  }>({ done: {} });
+  }>({ busy: {}, done: {} });
   const tripParsed = useMemo<Parsed | null>(() => {
     if (!tripContext) return null;
     const { criteria } = tripContext;
@@ -446,6 +448,19 @@ export function SearchExperience() {
   const tripBlocked =
     Boolean(tripId) &&
     (!tripContext || tripIssues.origin || tripIssues.destinationUnresolved || tripIssues.dates);
+  // A trip search nobody edited sends the trip and nothing else, so the server derives
+  // the criteria fresh at request time. Editing them pins them, and pinned flexible
+  // dates are a separately priced operation — so read the price off the payload that
+  // will actually be sent, not off the mode.
+  const tripCriteriaPinned = Boolean(tripId) && Boolean(structuredParsed);
+  const charge = useOperationCharge(
+    tripId
+      ? searchUsageOperation({
+          modules: ["flight"],
+          flexibleDates: tripCriteriaPinned && Boolean(parsed?.flex_days),
+        })
+      : "full_trip_search",
+  );
   const [providerStatus, setProviderStatus] = useState<ProviderStatus | null>(
     null,
   );
@@ -648,11 +663,21 @@ export function SearchExperience() {
         {
           method: "POST",
           headers: { "Idempotency-Key": crypto.randomUUID() },
-          body: JSON.stringify({
+          body: JSON.stringify(tripId && !tripCriteriaPinned ? {
+            // Nothing here was chosen by the member, so send none of it: the trip's
+            // own dates and party are read server-side when the search is created.
+            // Pinning a snapshot taken at page load would spend a use on the trip's
+            // old week whenever another tab has moved it since.
+            trip_id: tripId,
+            modules: ["flight"],
+            ...(tripDestinationChoice ? { destination: tripDestinationChoice } : {}),
+          } : {
             ...(tripId ? { trip_id: tripId } : {}),
             trip_type: "round_trip",
             origin: parsed.origin || "TPE",
-            destination: parsed.destination || "NRT",
+            // The arrival-airport picker stays on screen after the criteria editor has
+            // pinned a destination, so the control the member can see wins.
+            destination: (tripId && tripDestinationChoice) || parsed.destination || "NRT",
             departure_date: requestedDates[0],
             return_date: requestedDates[1],
             flexible_dates: requestedFlexDays > 0,
@@ -819,6 +844,11 @@ export function SearchExperience() {
       });
       await loadTripCriteria();
     } catch (reason) {
+      // The version came from the criteria fetch; another tab may have moved the trip
+      // since. Re-read it, or every retry repeats the same losing compare-and-swap.
+      if (reason instanceof ApiError && reason.code === "trip_version_conflict") {
+        await loadTripCriteria();
+      }
       setError((reason as Error).message);
     } finally {
       setSavingOrigin(false);
@@ -826,8 +856,8 @@ export function SearchExperience() {
   }
 
   async function attachOffer(direction: FlightLegDirection, offerId: string) {
-    if (!tripId || !tripContext) return;
-    setAttachState((state) => ({ ...state, busy: { direction, offerId } }));
+    if (!tripId || !tripContext || attachState.busy[direction]) return;
+    setAttachState((state) => ({ ...state, busy: { ...state.busy, [direction]: offerId } }));
     setError(undefined);
     const attempt = (version: number) =>
       api<Trip>(`/trips/${tripId}/flight-anchors/${direction}/from-offer`, {
@@ -847,14 +877,17 @@ export function SearchExperience() {
       setTripContext((context) =>
         context ? { ...context, trip: { ...context.trip, version: updated.version } } : context,
       );
-      setAttachState((state) => ({ done: { ...state.done, [direction]: offerId } }));
+      setAttachState((state) => ({
+        busy: { ...state.busy, [direction]: undefined },
+        done: { ...state.done, [direction]: offerId },
+      }));
     } catch (reason) {
       const message =
         reason instanceof ApiError && reason.code === "trip_version_conflict"
           ? tripText("attachConflict")
           : (reason as Error).message;
       setError(tripText("attachFailed", { message }));
-      setAttachState((state) => ({ done: state.done }));
+      setAttachState((state) => ({ ...state, busy: { ...state.busy, [direction]: undefined } }));
     }
   }
 
@@ -862,7 +895,7 @@ export function SearchExperience() {
     if (!tripId || !tripContext) return undefined;
     const state: FlightOfferTripActions["state"] = {};
     for (const direction of ["outbound", "return"] as const) {
-      if (attachState.busy?.direction === direction && attachState.busy.offerId === offer.id) {
+      if (attachState.busy[direction] === offer.id) {
         state[direction] = "busy";
       } else if (attachState.done[direction] === offer.id) {
         state[direction] = "done";
@@ -1618,13 +1651,17 @@ export function SearchExperience() {
 
           {activeTab === "flight" && (
             <>
-              <FlightDateOptions
-                options={flightDateOptions}
-                selected={selectedDateOption}
-                busy={busy}
-                onSelect={setSelectedDateOption}
-                onApply={applyDateOption}
-              />
+              {/* Applying one re-searches a different week, which this trip's anchors
+                  would then refuse: the trip's dates are the search's dates. */}
+              {!tripId && (
+                <FlightDateOptions
+                  options={flightDateOptions}
+                  selected={selectedDateOption}
+                  busy={busy}
+                  onSelect={setSelectedDateOption}
+                  onApply={applyDateOption}
+                />
+              )}
               {searchId && (
                 <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[var(--line)] bg-white p-4">
                   <div>

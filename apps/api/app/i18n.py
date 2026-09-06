@@ -925,6 +925,9 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "trip_dates_too_short": (
             "A round trip needs at least two trip days. Adjust the trip dates first."
         ),
+        "trip_dates_mismatch": (
+            "This search's dates no longer match the trip. Reload the trip's criteria."
+        ),
         "flight_anchor_unavailable": "The trip has no dates yet, so a flight cannot be set",
         "offer_not_found": "This offer could not be found",
         "offer_return_leg_missing": "This offer has no return leg to bring into the trip",
@@ -1029,6 +1032,9 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "trip_dates_too_short": (
             "往復航空券には 2 日以上の旅行日程が必要です。先に旅行の日付を調整してください。"
         ),
+        "trip_dates_mismatch": (
+            "この検索の日付は旅行の日付と一致しません。旅行の条件を再読み込みしてください。"
+        ),
         "flight_anchor_unavailable": "この旅行にはまだ日付がないため、フライトを設定できません",
         "offer_not_found": "この料金が見つかりません",
         "offer_return_leg_missing": "この料金には旅行に取り込める復路がありません",
@@ -1124,6 +1130,9 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "trip_dates_past": "이 여행의 출발일이 지났습니다. 먼저 여행 날짜를 조정하세요.",
         "trip_dates_too_short": (
             "왕복 항공권에는 최소 2일의 여행 일정이 필요합니다. 먼저 여행 날짜를 조정하세요."
+        ),
+        "trip_dates_mismatch": (
+            "이 검색의 날짜가 여행의 날짜와 다릅니다. 여행 조건을 다시 불러오세요."
         ),
         "flight_anchor_unavailable": "이 여행에는 아직 날짜가 없어 항공편을 설정할 수 없습니다",
         "offer_not_found": "이 요금을 찾을 수 없습니다",
@@ -1259,6 +1268,7 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         ),
         "trip_dates_past": "旅程的出发日已经过了，请先调整旅程日期",
         "trip_dates_too_short": "往返机票需要至少两天的旅程日期，请先调整旅程日期",
+        "trip_dates_mismatch": "这次搜索的日期与旅程目前的日期不同，请重新载入旅程条件",
         "flight_anchor_unavailable": "旅程日期不完整，无法设置航班",
         "offer_not_found": "找不到这笔报价",
         "offer_return_leg_missing": "这笔报价没有回程航段，无法带入回程",
