@@ -316,7 +316,7 @@ export function AdminUsersPanel() {
             <LoaderCircle size={17} className="animate-spin" />
             正在讀取會員…
           </p>
-        ) : data?.items.length ? (
+        ) : data?.items?.length ? (
           <div className="mt-6 overflow-x-auto">
               <table className="admin-responsive-table admin-users-table w-full min-w-[840px] text-left text-sm">
               <thead>
@@ -330,7 +330,7 @@ export function AdminUsersPanel() {
                 </tr>
               </thead>
               <tbody>
-                {data.items.map((user) => (
+                {data.items?.map((user) => (
                   <tr
                     key={user.id}
                     className="border-b border-[var(--line)] last:border-0"

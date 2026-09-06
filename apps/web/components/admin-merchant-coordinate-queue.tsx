@@ -270,7 +270,7 @@ export function AdminMerchantCoordinateQueue() {
                 </td>
               </tr>
             ))}
-            {data && data.configured && !data.items.length && (
+            {data && data.configured && !data.items?.length && (
               <tr>
                 <td colSpan={4} className="p-6 text-center text-sm text-[var(--muted)]">
                   佇列已清空 — 所有店家都有永久座標了。

@@ -295,7 +295,7 @@ export function AdminFoodAreasPanel() {
             </tr>
           </thead>
           <tbody>
-            {data?.items.map((area) => (
+            {data?.items?.map((area) => (
               <tr key={area.id} className="border-t">
                 <td className="p-3">
                   <input
@@ -334,7 +334,7 @@ export function AdminFoodAreasPanel() {
                 </td>
               </tr>
             ))}
-            {data && data.items.length === 0 && (
+            {data && data.items?.length === 0 && (
               <tr>
                 <td colSpan={7} className="p-6 text-center text-[var(--muted)]">
                   {t("areas.empty")}
@@ -607,7 +607,7 @@ export function AdminFoodCategoriesPanel() {
             </tr>
           </thead>
           <tbody>
-            {data?.items.map((category) => (
+            {data?.items?.map((category) => (
               <tr key={category.id} className="border-t">
                 <td className="p-3">
                   <input
@@ -649,7 +649,7 @@ export function AdminFoodCategoriesPanel() {
                 </td>
               </tr>
             ))}
-            {data && data.items.length === 0 && (
+            {data && data.items?.length === 0 && (
               <tr>
                 <td colSpan={6} className="p-6 text-center text-[var(--muted)]">
                   {t("categories.empty")}

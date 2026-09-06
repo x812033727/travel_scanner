@@ -422,7 +422,7 @@ export function AdminFoodsPanel() {
               })}
             </tbody>
           </table>
-          {!loading && data?.items.length === 0 && (
+          {!loading && data?.items?.length === 0 && (
             <p className="p-8 text-center text-[var(--muted)]">{t("empty")}</p>
           )}
         </div>

@@ -313,7 +313,7 @@ export function AdminHotspotGuidesPanel() {
     };
   }, [draft]);
   const visibleIds = useMemo(
-    () => data?.items.map((item) => item.id) ?? [],
+    () => data?.items?.map((item) => item.id) ?? [],
     [data],
   );
   const allVisibleSelected =
@@ -726,7 +726,7 @@ export function AdminHotspotGuidesPanel() {
       )}
       <div className="mt-3 overflow-hidden rounded-2xl border border-[var(--line)] bg-white">
         <div className="divide-y divide-[var(--line)]">
-          {data?.items.map((item) => (
+          {data?.items?.map((item) => (
             <article
               key={item.id}
               className="grid gap-3 p-4 md:grid-cols-[auto_1fr_auto] md:items-center"
@@ -793,7 +793,7 @@ export function AdminHotspotGuidesPanel() {
             </article>
           ))}
         </div>
-        {!loading && !data?.items.length && (
+        {!loading && !data?.items?.length && (
           <p className="p-7 text-center text-[var(--muted)]">{t("empty")}</p>
         )}
       </div>

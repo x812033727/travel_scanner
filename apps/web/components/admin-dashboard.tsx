@@ -71,12 +71,12 @@ export function AdminDashboard() {
         載入營運摘要…
       </p>
     );
+  const counts = data.counts ?? {};
   const reviewTotal =
-    (data.counts.hotspots_pending ?? 0) +
-    (data.counts.merchants_pending ?? 0) +
-    (data.counts.guides_pending ?? 0);
-  const publishedTotal =
-    (data.counts.hotspots_public ?? 0) + (data.counts.foods_public ?? 0);
+    (counts.hotspots_pending ?? 0) +
+    (counts.merchants_pending ?? 0) +
+    (counts.guides_pending ?? 0);
+  const publishedTotal = (counts.hotspots_public ?? 0) + (counts.foods_public ?? 0);
   const publicationRate =
     publishedTotal + reviewTotal > 0
       ? Math.round((publishedTotal / (publishedTotal + reviewTotal)) * 100)
@@ -100,7 +100,7 @@ export function AdminDashboard() {
               <strong className="mt-1 block text-3xl">
                 {card.key === "review_queue"
                   ? reviewTotal
-                  : (data.counts[card.key] ?? 0)}
+                  : (counts[card.key] ?? 0)}
               </strong>
             </article>
           );
@@ -119,7 +119,7 @@ export function AdminDashboard() {
           </span>
         </div>
         <div className="mt-5 grid gap-2">
-          {data.quick_actions.map((action) => (
+          {data.quick_actions?.map((action) => (
             <Link
               key={action.id}
               href={action.href}
@@ -129,7 +129,7 @@ export function AdminDashboard() {
                 {actionLabels[action.id] ?? action.id}
               </span>
               <span className="mr-3 rounded-full bg-white px-2.5 py-1 text-xs">
-                {data.counts[action.count_key] ?? 0}
+                {counts[action.count_key] ?? 0}
               </span>
               <ArrowRight size={18} />
             </Link>

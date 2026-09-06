@@ -891,7 +891,7 @@ export function AdminHotspotsPanel() {
             })}
           </tbody>
         </table>
-        {!loading && data?.items.length === 0 && (
+        {!loading && data?.items?.length === 0 && (
           <p className="p-8 text-center text-[var(--muted)]">
             沒有符合條件的候選景點
           </p>
