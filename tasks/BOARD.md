@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**7 open · 1 in progress · 3 blocked · 0 in review · 104 done**
+**6 open · 1 in progress · 3 blocked · 0 in review · 105 done**
 
 ## Ready to claim
 
@@ -17,7 +17,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [手機版行程頁的浮動元件佔掉三分之一畫面](open/2026-09-06-planner-mobile-chrome.md) | web | `apps/web/components/itinerary-diff.tsx`<br>`apps/web/components/itinerary-diff.test.tsx`<br>`apps/web/app/globals.css` |
 | P2 | [後台審核頁在看到第一筆待審之前先給 30 個控制項](open/2026-09-06-admin-review-density.md) | web | `apps/web/components/admin-hotspots-panel.tsx`<br>`apps/web/components/admin-hotspots-workspace.tsx`<br>`apps/web/components/admin-filter-pills.tsx` |
 | P2 | [後台主題管理畫面：taxonomy 表格與逐景點指派](open/2026-09-06-hotspot-themes-admin-web.md) | web | `apps/web/components/admin-hotspot-themes-panel.tsx`<br>`apps/web/components/admin-hotspot-theme-editor.tsx`<br>`apps/web/components/admin-hotspots-workspace.tsx`<br>`apps/web/components/admin-hotspots-panel.tsx`<br>`apps/web/i18n/request.ts`<br>`apps/web/vitest.setup.tsx`<br>`apps/web/messages/en/hotspotThemes.json`<br>`apps/web/messages/ja/hotspotThemes.json`<br>`apps/web/messages/ko/hotspotThemes.json`<br>`apps/web/messages/zh-TW/hotspotThemes.json`<br>`apps/web/messages/zh-CN/hotspotThemes.json` |
-| P2 | [美食頁在預設字級下 CLS 0.29，第四秒還在跳版](open/2026-09-06-foods-late-layout-shift.md) | web | `apps/web/components/food-browser.tsx`<br>`apps/web/components/food-city-picker.tsx` |
 | P2 | [LINE 綁定關鍵字只認繁體中文，日英韓讀者照著做也綁不上](open/2026-09-06-line-link-keyword-chinese-only.md) | api | `apps/api/app/line/router.py`<br>`apps/api/tests/test_line_webhook.py` |
 | P2 | [未登入的 /account 仍打七次注定 401 的請求](open/2026-09-06-signed-out-account-requests.md) | web | `apps/web/components/account-panel.tsx`<br>`apps/web/components/site-header.tsx`<br>`apps/web/components/usage-summary.tsx` |
 
@@ -42,6 +41,7 @@ _Nothing here._
 ## Recently finished
 
 - 2026-09-06 [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](done/2026-09-06-admin-load-error-copy.md)
+- 2026-09-06 [美食頁在預設字級下 CLS 0.29，第四秒還在跳版](done/2026-09-06-foods-late-layout-shift.md)
 - 2026-09-06 [未登入開 /account 會同時看到三種互相矛盾的狀態](done/2026-09-06-account-signed-out-states.md)
 - 2026-09-06 [購物行程：規劃器聽得懂店家類型，也知道什麼當季](done/2026-09-06-planner-shop-themes.md)
 - 2026-09-06 [價格通知頁的副標與 LINE 卡片在四個語系都是繁中](done/2026-09-06-alerts-hardcoded-zh-tw.md)
@@ -50,4 +50,3 @@ _Nothing here._
 - 2026-09-06 [行程天氣面板在日期超出預報範圍時仍列出 10 天無關天氣](done/2026-09-06-trip-weather-out-of-range.md)
 - 2026-09-06 [種子分類是按配額輪流發的，不只 shopping 一類錯](done/2026-09-06-seed-categories-assigned-by-quota.md)
 - 2026-09-06 [景點的第一手介紹：儲存、審核與呈現](done/2026-09-06-hotspot-intros.md)
-- 2026-09-06 [五個語系的 trips.json 都有重複的 transfersCount 鍵](done/2026-09-06-duplicate-transfers-count-key.md)

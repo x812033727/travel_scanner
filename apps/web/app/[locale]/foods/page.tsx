@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { ExploreSwitch } from "@/components/explore-switch";
 import { FoodBrowser } from "@/components/food-browser";
 import { SiteHeader } from "@/components/site-header";
+import { getInitialFoods } from "@/lib/foods.server";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
@@ -11,6 +12,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
   return { title: t("foodsTitle"), description: t("foodsDescription") };
 }
 
-export default function FoodsPage() {
-  return <><SiteHeader /><ExploreSwitch /><FoodBrowser /></>;
+export default async function FoodsPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params;
+  const initial = await getInitialFoods(locale);
+  return (
+    <>
+      <SiteHeader />
+      <ExploreSwitch />
+      <FoodBrowser initialCities={initial.cities} initialCategories={initial.categories} />
+    </>
+  );
 }
