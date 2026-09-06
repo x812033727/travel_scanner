@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
+import type { Locale } from "@/i18n/routing";
 import { AccountList } from "@/components/account-list";
 import { LineConnectionPanel } from "@/components/line-connection-panel";
 import { SiteHeader } from "@/components/site-header";
 import { BellRing } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  return { title: t("alertsTitle"), description: t("alertsDescription") };
+}
 
 export default async function AlertsPage() {
   const t = await getTranslations("alerts");
