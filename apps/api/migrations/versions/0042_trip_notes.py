@@ -24,12 +24,14 @@ def upgrade() -> None:
         # The brief typed at creation has been living in trip.data["notes"],
         # where reoptimize_trip's wholesale rebuild of that blob silently drops
         # it. Move what is still there into the column that will keep it.
+        # No bare ``?`` key test: that operator exists only for jsonb and this column
+        # is json, so it fails to resolve at parse time — whatever the row count. The
+        # nullif below already implies the key is there with something in it.
         op.execute(
             """
             UPDATE trip_plans
             SET notes = data ->> 'notes'
             WHERE notes IS NULL
-              AND data ? 'notes'
               AND nullif(trim(data ->> 'notes'), '') IS NOT NULL
             """
         )
