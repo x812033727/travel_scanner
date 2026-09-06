@@ -116,3 +116,33 @@ async def test_a_place_we_do_not_have_is_still_kept_as_what_the_traveller_typed(
     assert candidate.names_json == {}
     assert candidate.data["matched"] == "none"
     assert serialize_candidate(candidate)["title"] == "金峰魯肉飯"
+
+
+def test_a_pasted_link_keeps_the_pin_it_carries() -> None:
+    """Google writes the pin into the URL; reading it costs nothing and locates the place."""
+    from app.trips.ingest import coordinates_from_maps_url
+
+    assert coordinates_from_maps_url(
+        "https://www.google.com/maps/place/%E6%B7%BA%E8%8D%89%E5%AF%BA/@35.7147651,139.7966553,17z"
+    ) == (35.7147651, 139.7966553)
+    # The !3d/!4d pair is the pin itself and wins over the map centre.
+    assert coordinates_from_maps_url(
+        "https://www.google.com/maps/place/x/@35.0,139.0,17z/data=!3m1!4b1!3d35.71!4d139.79"
+    ) == (35.71, 139.79)
+    assert coordinates_from_maps_url("https://maps.app.goo.gl/abc") is None
+    assert coordinates_from_maps_url(None) is None
+    assert coordinates_from_maps_url("https://www.google.com/maps/@999.0,139.0,17z") is None
+
+
+@pytest.mark.asyncio
+async def test_a_place_we_could_not_match_is_still_placed_when_the_link_says_where() -> None:
+    from app.trips.ingest import candidate_from, parse_line
+
+    parsed = await parse_line(
+        "https://www.google.com/maps/place/x/@35.7147651,139.7966553,17z"
+    )
+    candidate = candidate_from(uuid4(), parsed, None)
+
+    assert candidate.hotspot_id is None
+    assert candidate.latitude is not None and float(candidate.latitude) == 35.7147651
+    assert candidate.data["matched"] == "link_coordinates"

@@ -13,7 +13,9 @@ Google to identify the rest would cost a paid lookup per line pasted.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
+from decimal import Decimal
 from uuid import UUID
 
 import httpx
@@ -32,6 +34,27 @@ MAX_LINES_PER_PASTE = 30
 # Per member per day, counted in Redis. Short-URL expansion is cheap but it is still an
 # outbound request per line, and the inbox is a waiting list, not a database.
 DAILY_PLACE_LIMIT = 100
+
+
+# Google writes the map's centre into the path as @lat,lng,zoom and the pin itself into
+# the !3d / !4d pair. Reading them costs nothing, and a place we can locate is a place the
+# planner can offer; a Place Details lookup per pasted line would not be.
+_AT_COORDINATES = re.compile(r"@(-?\d{1,3}\.\d+),(-?\d{1,3}\.\d+)")
+_PIN_COORDINATES = re.compile(r"!3d(-?\d{1,3}\.\d+)!4d(-?\d{1,3}\.\d+)")
+
+
+def coordinates_from_maps_url(url: str | None) -> tuple[float, float] | None:
+    """The pin in a Google Maps URL, when it carries one."""
+    if not url:
+        return None
+    for pattern in (_PIN_COORDINATES, _AT_COORDINATES):
+        match = pattern.search(url)
+        if not match:
+            continue
+        latitude, longitude = float(match.group(1)), float(match.group(2))
+        if -90 <= latitude <= 90 and -180 <= longitude <= 180:
+            return latitude, longitude
+    return None
 
 
 @dataclass(frozen=True)
@@ -132,6 +155,7 @@ def candidate_from(
             },
         )
     title = (parsed.query or parsed.raw).strip()[:255]
+    point = coordinates_from_maps_url(parsed.maps_url) or coordinates_from_maps_url(parsed.raw)
     return TripPlaceCandidate(
         trip_plan_id=trip_id,
         hotspot_id=None,
@@ -141,10 +165,10 @@ def candidate_from(
         location_name=None,
         google_place_id=parsed.place_id,
         maps_url=parsed.maps_url,
-        latitude=None,
-        longitude=None,
+        latitude=Decimal(str(point[0])) if point else None,
+        longitude=Decimal(str(point[1])) if point else None,
         names_json={},
-        data={"matched": "none"},
+        data={"matched": "link_coordinates" if point else "none"},
     )
 
 

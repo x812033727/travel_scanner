@@ -280,7 +280,7 @@ def build_intent_diff(
     hotspots = [
         candidate.key
         for candidate in candidates
-        if candidate.kind == "hotspot" and candidate.key not in used | on_trip
+        if candidate.kind in {"hotspot", "inbox"} and candidate.key not in used | on_trip
     ]
     merchants = [
         candidate.key
