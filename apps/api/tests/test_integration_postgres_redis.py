@@ -15,6 +15,7 @@ from app.ai.itinerary import (
     AIPlannerCandidate,
     AIPlanningResult,
 )
+from app.auth.service import create_access_token, hash_password
 from app.db import SessionFactory, engine
 from app.infra import get_redis
 from app.main import app
@@ -41,6 +42,25 @@ pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
     reason="requires PostgreSQL and Redis services",
 )
+
+
+async def _signed_in_headers(label: str) -> dict[str, str]:
+    """A user and a token without going through POST /auth/register.
+
+    The register endpoint is rate limited to 30 per IP per hour and this suite
+    already spends most of that budget; a test that only needs *an* account
+    should not also be spending a registration.
+    """
+    async with SessionFactory() as session:
+        user = User(
+            email=f"{label}-{uuid4()}@example.com",
+            password_hash=hash_password("integration-password-123"),
+            is_active=True,
+        )
+        session.add(user)
+        await session.commit()
+        await session.refresh(user)
+        return {"Authorization": f"Bearer {create_access_token(user.id, user.auth_version)}"}
 
 
 @pytest.mark.asyncio(loop_scope="module")
@@ -1442,3 +1462,240 @@ async def test_ai_regeneration_preserves_items_charges_once_and_replays(
         assert live_calls == 2
         usage_after_day = await client.get("/api/v1/usage", headers=headers)
         assert usage_after_day.json()["remaining_uses"] == 1
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_trip_and_day_notes_persist_and_stay_out_of_the_share(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Notes are the one thing a traveller writes for themselves.
+
+    They must survive on their own column (trip.data is rebuilt wholesale by
+    reoptimize), obey the same version compare-and-swap as every other trip
+    write, and never appear in the read-only share payload.
+    """
+
+    def unexpected_enqueue(*_args: object, **_kwargs: object) -> None:
+        raise AssertionError("manual blank creation must not enqueue routing")
+
+    monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", unexpected_enqueue)
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        headers = await _signed_in_headers("trip-notes")
+        created = await client.post(
+            "/api/v1/trips",
+            headers=headers,
+            json={
+                "source": "blank",
+                "planning_mode": "manual_blank",
+                "name": "東京備註測試",
+                "destination_name": "日本東京",
+                "start_date": "2026-11-10",
+                "end_date": "2026-11-12",
+                "routing": {
+                    "auto_compute": False,
+                    "default_travel_mode": "transit",
+                    "default_buffer_minutes": 10,
+                },
+            },
+        )
+        assert created.status_code == 201
+        trip = created.json()
+        trip_id = trip["id"]
+        assert trip["notes"] is None
+        assert trip["day_notes"] == {}
+
+        saved = await client.patch(
+            f"/api/v1/trips/{trip_id}",
+            headers=headers,
+            json={"version": trip["version"], "notes": "  護照到期日要確認  "},
+        )
+        assert saved.status_code == 200
+        assert saved.json()["notes"] == "護照到期日要確認"
+
+        stale = await client.patch(
+            f"/api/v1/trips/{trip_id}",
+            headers=headers,
+            json={"version": trip["version"], "notes": "第二個分頁"},
+        )
+        assert stale.status_code == 409
+
+        version = saved.json()["version"]
+        day = await client.put(
+            f"/api/v1/trips/{trip_id}/days/2026-11-11/notes",
+            headers=headers,
+            json={"version": version, "notes": "這天要先訂位"},
+        )
+        assert day.status_code == 200
+        assert day.json()["day_notes"] == {"2026-11-11": "這天要先訂位"}
+
+        outside = await client.put(
+            f"/api/v1/trips/{trip_id}/days/2026-12-25/notes",
+            headers=headers,
+            json={"version": day.json()["version"], "notes": "不在範圍內"},
+        )
+        assert outside.status_code == 422
+
+        share = await client.post(f"/api/v1/trips/{trip_id}/share", headers=headers)
+        assert share.status_code in {200, 201}
+        token = share.json()["token"]
+        shared = await client.get(f"/api/v1/shared-trips/{token}")
+        assert shared.status_code == 200
+        # A share link is read-only sightseeing, not the owner's private notes.
+        assert "notes" not in shared.json()
+        assert "day_notes" not in shared.json()
+
+        cleared = await client.put(
+            f"/api/v1/trips/{trip_id}/days/2026-11-11/notes",
+            headers=headers,
+            json={"version": day.json()["version"], "notes": "   "},
+        )
+        assert cleared.status_code == 200
+        assert cleared.json()["day_notes"] == {}
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_trip_expense_ledger_totals_seeds_once_and_guards_its_currency(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def unexpected_enqueue(*_args: object, **_kwargs: object) -> None:
+        raise AssertionError("manual blank creation must not enqueue routing")
+
+    monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", unexpected_enqueue)
+
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        headers = await _signed_in_headers("trip-expenses")
+        created = await client.post(
+            "/api/v1/trips",
+            headers=headers,
+            json={
+                "source": "blank",
+                "planning_mode": "manual_blank",
+                "name": "東京帳目測試",
+                "destination_name": "日本東京",
+                "start_date": "2026-11-10",
+                "end_date": "2026-11-12",
+                "routing": {
+                    "auto_compute": False,
+                    "default_travel_mode": "transit",
+                    "default_buffer_minutes": 10,
+                },
+            },
+        )
+        assert created.status_code == 201
+        trip = created.json()
+        trip_id = trip["id"]
+        assert trip["cost"]["total"] == "0"
+        assert trip["cost"]["currency"] == "TWD"
+
+        budgeted = await client.patch(
+            f"/api/v1/trips/{trip_id}",
+            headers=headers,
+            json={"version": trip["version"], "budget_amount": "60000", "cost_currency": "JPY"},
+        )
+        assert budgeted.status_code == 200
+        assert budgeted.json()["cost"]["currency"] == "JPY"
+        assert budgeted.json()["cost"]["budget"] == "60000.00"
+
+        first = await client.post(
+            f"/api/v1/trips/{trip_id}/expenses",
+            headers=headers,
+            json={
+                "version": budgeted.json()["version"],
+                "day_date": "2026-11-10",
+                "label": "一蘭拉麵",
+                "amount": "980",
+                "category": "food",
+            },
+        )
+        assert first.status_code == 201
+        second = await client.post(
+            f"/api/v1/trips/{trip_id}/expenses",
+            headers=headers,
+            json={
+                "version": first.json()["version"],
+                "day_date": "2026-11-11",
+                "label": "地鐵一日券",
+                "amount": "800.50",
+                "category": "transport",
+            },
+        )
+        assert second.status_code == 201
+        cost = second.json()["cost"]
+        assert cost["total"] == "1780.50"
+        assert cost["by_day"] == {"2026-11-10": "980.00", "2026-11-11": "800.50"}
+        assert cost["difference"] == "58219.50"
+
+        # Currency is frozen once real numbers exist in it.
+        locked = await client.patch(
+            f"/api/v1/trips/{trip_id}",
+            headers=headers,
+            json={"version": second.json()["version"], "cost_currency": "TWD"},
+        )
+        assert locked.status_code == 422
+        assert locked.json()["code"] == "trip_ledger_not_empty"
+
+        stale = await client.post(
+            f"/api/v1/trips/{trip_id}/expenses",
+            headers=headers,
+            json={
+                "version": trip["version"],
+                "day_date": "2026-11-10",
+                "label": "另一個分頁",
+                "amount": "10",
+                "category": "other",
+            },
+        )
+        assert stale.status_code == 409
+
+        outside = await client.post(
+            f"/api/v1/trips/{trip_id}/expenses",
+            headers=headers,
+            json={
+                "version": second.json()["version"],
+                "day_date": "2026-12-25",
+                "label": "不在範圍",
+                "amount": "10",
+                "category": "other",
+            },
+        )
+        assert outside.status_code == 422
+
+        expense_id = cost["items"][0]["id"]
+        edited = await client.patch(
+            f"/api/v1/trips/{trip_id}/expenses/{expense_id}",
+            headers=headers,
+            json={"version": second.json()["version"], "amount": "1200"},
+        )
+        assert edited.status_code == 200
+        assert edited.json()["cost"]["total"] == "2000.50"
+
+        removed = await client.delete(
+            f"/api/v1/trips/{trip_id}/expenses/{expense_id}",
+            headers=headers,
+            params={"version": edited.json()["version"]},
+        )
+        assert removed.status_code == 200
+        assert removed.json()["cost"]["total"] == "800.50"
+
+        # Seeding is idempotent even when there is nothing to seed.
+        seeded = await client.post(
+            f"/api/v1/trips/{trip_id}/expenses/seed",
+            headers=headers,
+            json={"version": removed.json()["version"]},
+        )
+        assert seeded.status_code == 200
+        again = await client.post(
+            f"/api/v1/trips/{trip_id}/expenses/seed",
+            headers=headers,
+            json={"version": seeded.json()["version"]},
+        )
+        assert again.status_code == 200
+        assert again.json()["cost"]["total"] == seeded.json()["cost"]["total"]
+
+        share = await client.post(f"/api/v1/trips/{trip_id}/share", headers=headers)
+        shared = await client.get(f"/api/v1/shared-trips/{share.json()['token']}")
+        # What a trip cost is nobody else's business.
+        assert "cost" not in shared.json()

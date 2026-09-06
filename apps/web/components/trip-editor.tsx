@@ -17,6 +17,7 @@ import {
   Loader2,
   LockKeyhole,
   MapPin,
+  NotebookPen,
   Plus,
   RefreshCw,
   Route as RouteIcon,
@@ -43,6 +44,8 @@ import {
 } from "react";
 import { FlightAnchorCard, flightAnchorInfo } from "@/components/flight-anchor-card";
 import { PlacePicker } from "@/components/place-picker";
+import { TripCostPanel } from "@/components/trip-cost-panel";
+import { TripNoteField } from "@/components/trip-note-field";
 import { PlannerOverlay } from "@/components/planner-overlay";
 import { PriceAlertButton } from "@/components/price-alert-button";
 import { RouteModePanel } from "@/components/route-mode-panel";
@@ -55,6 +58,7 @@ import { TripMetaEditor } from "@/components/trip-meta-editor";
 import { TripWeatherPanel } from "@/components/trip-weather-panel";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, ApiError, isUsageInsufficient, twd } from "@/lib/api";
+import { formatMoney } from "@/lib/locale-format";
 import { formatTime, groupTripItems, isActiveRouteItem, isFlightAnchor, isLogisticsItem, originalItemName, projectChainedStarts, type RouteSegment, type ScheduleDefaults, type TravelMode, type Trip, type TripItem, type TripRouting } from "@/lib/trip-types";
 
 const activityDurationOptions = [
@@ -1269,6 +1273,97 @@ export function TripEditor({ tripId }: { tripId: string }) {
     finally { setAction(undefined); }
   }
 
+  async function saveTripNotes(next: string) {
+    const current = tripRef.current;
+    if (!current) return;
+    // Notes ride the same optimistic lock as every other trip write, so flush
+    // any pending itinerary edit first — otherwise the version we send is one
+    // the server has already moved past.
+    await flushChanges();
+    const base = tripRef.current;
+    if (!base) return;
+    const updated = await api<Trip>(`/trips/${base.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({ version: base.version, notes: next || null }),
+    });
+    replaceTrip(updated, false);
+  }
+
+  async function saveDayNotes(day: string, next: string) {
+    const current = tripRef.current;
+    if (!current) return;
+    await flushChanges();
+    const base = tripRef.current;
+    if (!base) return;
+    const updated = await api<Trip>(`/trips/${base.id}/days/${day}/notes`, {
+      method: "PUT",
+      body: JSON.stringify({ version: base.version, notes: next || null }),
+    });
+    replaceTrip(updated, false);
+  }
+
+  async function withTripVersion<T>(call: (trip: Trip) => Promise<T>): Promise<T | undefined> {
+    // The ledger shares the trip's optimistic lock, so any queued itinerary
+    // edit has to land first or the version we send is already stale.
+    await flushChanges();
+    const base = tripRef.current;
+    if (!base) return undefined;
+    return call(base);
+  }
+
+  async function saveBudget(amount: string | null) {
+    await withTripVersion(async (base) => {
+      const updated = await api<Trip>(`/trips/${base.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ version: base.version, budget_amount: amount }),
+      });
+      replaceTrip(updated, false);
+    });
+  }
+
+  async function saveCostCurrency(currency: string) {
+    await withTripVersion(async (base) => {
+      const updated = await api<Trip>(`/trips/${base.id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ version: base.version, cost_currency: currency }),
+      });
+      replaceTrip(updated, false);
+    });
+  }
+
+  async function addExpense(entry: { day_date: string; label: string; amount: string; category: string }) {
+    await withTripVersion(async (base) => {
+      const updated = await api<Trip>(`/trips/${base.id}/expenses`, {
+        method: "POST",
+        body: JSON.stringify({ version: base.version, ...entry }),
+      });
+      replaceTrip(updated, false);
+    });
+  }
+
+  async function deleteExpense(expenseId: string) {
+    await withTripVersion(async (base) => {
+      const updated = await api<Trip>(
+        `/trips/${base.id}/expenses/${expenseId}?version=${base.version}`,
+        { method: "DELETE" },
+      );
+      replaceTrip(updated, false);
+    });
+  }
+
+  async function seedExpenses(): Promise<number> {
+    const before = tripRef.current?.cost?.items.length ?? 0;
+    const after = await withTripVersion(async (base) => {
+      const updated = await api<Trip>(`/trips/${base.id}/expenses/seed`, {
+        method: "POST",
+        body: JSON.stringify({ version: base.version }),
+      });
+      replaceTrip(updated, false);
+      return updated.cost?.items.length ?? 0;
+    });
+    return Math.max(0, (after ?? before) - before);
+  }
+
   async function loadCloudVersion() {
     setAction("conflict");
     try {
@@ -1422,10 +1517,11 @@ export function TripEditor({ tripId }: { tripId: string }) {
     <div className={`mt-2 grid items-start gap-6 lg:mt-6 ${desktopMapVisible && selectedRoute ? "lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,.65fr)]" : "lg:grid-cols-1"}`}>
       <section className="planner-day-panel rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-sm sm:p-6">
         <header className="mb-4 flex items-start justify-between gap-3 sm:mb-5">
-          <div className="min-w-0"><p className="text-xs font-semibold tracking-[.16em] text-[var(--teal)]">{days.indexOf(activeDay) >= 0 ? `DAY ${days.indexOf(activeDay) + 1}` : "ITINERARY"}{activeDay === today ? " · 今天" : ""}</p><h2 className="mt-1 text-xl font-bold sm:text-2xl"><span className="lg:hidden">{mobileDayHeading(activeDay, locale)}</span><span className="hidden lg:inline">{activeDay || "尚未設定日期"}</span></h2><p className="planner-day-summary mt-1.5 text-xs font-semibold text-[var(--muted)]">{activeArrangementCount ? `${activeArrangementCount} 個已安排${activeDurationMinutes ? ` · 停留約 ${durationSummary(activeDurationMinutes)}` : ""}` : "尚無已安排項目，從第一站開始"}</p></div>
+          <div className="min-w-0"><p className="text-xs font-semibold tracking-[.16em] text-[var(--teal)]">{days.indexOf(activeDay) >= 0 ? `DAY ${days.indexOf(activeDay) + 1}` : "ITINERARY"}{activeDay === today ? " · 今天" : ""}</p><h2 className="mt-1 text-xl font-bold sm:text-2xl"><span className="lg:hidden">{mobileDayHeading(activeDay, locale)}</span><span className="hidden lg:inline">{activeDay || "尚未設定日期"}</span></h2><p className="planner-day-summary mt-1.5 text-xs font-semibold text-[var(--muted)]">{activeArrangementCount ? `${activeArrangementCount} 個已安排${activeDurationMinutes ? ` · 停留約 ${durationSummary(activeDurationMinutes)}` : ""}` : "尚無已安排項目，從第一站開始"}</p>{trip.cost?.by_day?.[activeDay] && <p className="mt-1 text-xs font-semibold text-[var(--teal)]">{t("costDayTotal", { amount: formatMoney(Number(trip.cost.by_day[activeDay]), trip.cost.currency) })}</p>}</div>
           <div className="flex shrink-0 items-center gap-2"><button type="button" aria-label="計算當日路線" onClick={() => void computeRoutes(activeDay, activeHasRoutes || activeDay === today)} disabled={busy("route", "departure-time") || activeRouteRows.length < 2} className="planner-secondary-button flex">{action === `route-${activeDay}` ? <Loader2 size={17} className="animate-spin" /> : <RouteIcon size={17} />}<span className="hidden sm:inline">查路</span></button><button type="button" aria-label={reorderMode ? "完成排序" : "排序行程"} aria-pressed={reorderMode} onClick={() => setReorderMode((value) => !value)} disabled={activeRows.filter((item) => !item.system_role).length < 2} className="planner-secondary-button flex md:hidden">{reorderMode ? <Check size={17} /> : <GripVertical size={17} />}<span className="planner-sort-label">{reorderMode ? "完成" : "排序"}</span></button>{desktopMapVisible && <><button type="button" onClick={() => void previewOptimization(activeDay)} disabled={busy("preview", "apply") || activeRouteRows.length < 2} className="hidden min-h-11 items-center justify-center gap-1.5 rounded-xl border border-[var(--line)] px-3 text-sm font-semibold disabled:opacity-40 md:flex">{action === `preview-${activeDay}` ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}最佳化</button><button type="button" onClick={() => add(activeDay)} disabled={!activeDay} className="hidden min-h-11 items-center justify-center gap-1.5 rounded-xl bg-[var(--paper)] px-3 text-sm font-semibold disabled:opacity-40 md:flex"><Plus size={16} />新增</button></>}</div>
         </header>
         {activeRouteRows.length > 1 && <section className="route-day-settings mb-4"><div><p className="text-xs font-semibold text-[var(--muted)]">這一天預設怎麼移動</p><div className="mt-2 flex gap-1.5" role="radiogroup" aria-label="當日預設交通工具">{([['transit', '大眾運輸', TrainFront], ['walk', '步行', Footprints], ['drive', '汽車', CarFront]] as const).map(([value, label, Icon]) => <button key={value} type="button" role="radio" aria-checked={activeTravelMode === value} onClick={() => void computeRoutes(activeDay, true, { mode: value })} disabled={busy("route")} className={`route-day-mode ${activeTravelMode === value ? "route-day-mode-active" : ""}`}><Icon size={15} /><span>{label}</span></button>)}</div></div><label className="shrink-0 text-xs font-semibold text-[var(--muted)]">轉場緩衝<select aria-label="當日移動緩衝時間" value={activeTravelBuffer} onChange={(event) => void computeRoutes(activeDay, true, { buffer: Number(event.target.value) })} disabled={busy("route")} className="mt-2 block min-h-11 rounded-xl border border-[var(--line)] bg-white px-3 text-sm font-bold text-[var(--ink)]"><option value="0">0 分</option><option value="5">5 分</option><option value="10">10 分</option><option value="15">15 分</option><option value="30">30 分</option></select></label></section>}
+        {activeDay && <details open={Boolean(trip.day_notes?.[activeDay])} className="planner-day-note mb-4"><summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-semibold"><NotebookPen size={16} className="text-[var(--teal)]" />{trip.day_notes?.[activeDay] ? t("dayNotesLabel") : t("dayNotesAdd")}</summary><div className="mt-2"><TripNoteField label={t("dayNotesLabel")} placeholder={t("dayNotesPlaceholder")} value={trip.day_notes?.[activeDay] || ""} onSave={(next) => saveDayNotes(activeDay, next)} /></div></details>}
         {staleDays.has(activeDay) && activeRouteRows.length > 1 && <button type="button" onClick={() => void computeRoutes(activeDay, true)} className="mb-4 flex min-h-11 w-full items-center justify-between gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-left text-sm text-amber-950"><span className="flex items-center gap-2"><CircleAlert size={17} />行程內容已變更，舊路線不再使用</span><span className="shrink-0 font-semibold">重新計算</span></button>}
         {reorderMode && <div className="mb-3 flex min-h-12 items-center gap-2 rounded-2xl bg-[var(--teal-soft)] px-4 py-3 text-sm font-semibold text-[var(--teal-dark)] md:hidden"><GripVertical size={17} /><span>航班、飯店與餐食錨點不移動；使用箭頭調整其他安排</span></div>}
         {days.length === 0 && <div className="app-empty-state mb-4"><CalendarDays size={22} aria-hidden /><p className="font-semibold">{t("noDatesTitle")}</p><p className="text-xs leading-5">{t("noDatesBody")}</p><button type="button" onClick={() => router.push("/trips")} className="min-h-11 rounded-xl border border-[var(--line)] bg-white px-4 text-sm font-semibold text-[var(--teal)]">{t("backToTrips")}</button></div>}
@@ -1483,6 +1579,23 @@ export function TripEditor({ tripId }: { tripId: string }) {
     <PlannerOverlay open={toolsOpen} onClose={() => setToolsOpen(false)} title="旅程工具" description="不常用的設定集中在這裡，規劃時間軸時保持畫面清爽。">
       <div className="space-y-4">
         <TripMetaEditor trip={trip} variant="tools" disabled={saveState === "conflict" || Boolean(action)} prepare={() => flushChanges()} onUpdated={(updated) => { applyMetaUpdate(updated); setToolsOpen(false); }} />
+        <section className="planner-tool-card">
+          <div className="mb-3"><h3 className="font-bold">{t("notesTitle")}</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">{t("notesHint")}</p></div>
+          <TripNoteField label={t("notesTitle")} placeholder={t("notesPlaceholder")} rows={4} value={trip.notes || ""} onSave={saveTripNotes} />
+        </section>
+        <section className="planner-tool-card">
+          <div className="mb-3"><h3 className="font-bold">{t("costTitle")}</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">{t("costHint")}</p></div>
+          <TripCostPanel
+            trip={trip}
+            days={days}
+            activeDay={activeDay}
+            onSaveBudget={saveBudget}
+            onSaveCurrency={saveCostCurrency}
+            onAdd={addExpense}
+            onDelete={(id) => deleteExpense(id)}
+            onSeed={seedExpenses}
+          />
+        </section>
         <section className="planner-tool-card">
           <div className="mb-3"><h3 className="font-bold">行程色系</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">選擇喜歡的氣氛，之後開啟會沿用。</p></div>
           <div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label="行程色系">

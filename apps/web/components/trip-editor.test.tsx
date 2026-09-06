@@ -384,6 +384,32 @@ describe("trip editor", () => {
     expect(screen.getAllByRole("button", { name: /旅程工具|開啟旅程工具/ }).length).toBeGreaterThanOrEqual(2);
   });
 
+  it("saves a day note against the trip version", async () => {
+    const fetchMock = vi.fn().mockImplementation((input: RequestInfo | URL) => {
+      if (String(input).includes("/days/")) {
+        return Promise.resolve(response({ ...trip, version: 2, day_notes: { "2026-11-11": "這天要先訂位" } }));
+      }
+      return Promise.resolve(response(trip));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    fireEvent.click(await screen.findByText("加上這天的備註"));
+    const box = screen.getByLabelText("這天的備註");
+    fireEvent.change(box, { target: { value: "這天要先訂位" } });
+    fireEvent.blur(box);
+
+    await waitFor(() => {
+      const call = fetchMock.mock.calls.find(([url]) => String(url).includes("/days/2026-11-11/notes"));
+      expect(call).toBeTruthy();
+      expect((call?.[1] as RequestInit).method).toBe("PUT");
+      expect(JSON.parse(String((call?.[1] as RequestInit).body))).toEqual({
+        version: 1,
+        notes: "這天要先訂位",
+      });
+    });
+  });
+
   it("keeps the toolbar during reordering, swapping it for a done button", async () => {
     const twoStopTrip = {
       ...trip,

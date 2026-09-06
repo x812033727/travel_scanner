@@ -219,6 +219,38 @@ export type TripRescheduleSummary = {
   route_segments_cleared: number;
 };
 
+export type TripExpenseCategory =
+  | "flight"
+  | "lodging"
+  | "transport"
+  | "food"
+  | "activity"
+  | "shopping"
+  | "other";
+
+export type TripExpense = {
+  id: string;
+  day_date: string;
+  label: string;
+  /** Decimal string: the ledger must not round-trip through a float. */
+  amount: string;
+  category: TripExpenseCategory;
+  source: "manual" | "seeded";
+  source_key: string | null;
+  position: number;
+};
+
+export type TripCost = {
+  currency: string;
+  budget: string | null;
+  total: string;
+  /** Budget minus spend, so negative means over. Null without a budget. */
+  difference: string | null;
+  by_day: Record<string, string>;
+  by_category: Record<string, string>;
+  items: TripExpense[];
+};
+
 export type Trip = {
   id: string;
   name: string;
@@ -253,6 +285,11 @@ export type Trip = {
   end_date?: string | null;
   timezone?: string;
   route_preference?: "FEWER_TRANSFERS" | "LESS_WALKING" | "FASTEST";
+  notes?: string | null;
+  /** Keyed by ISO day; days with nothing written have no entry. */
+  day_notes?: Record<string, string>;
+  /** Absent on list payloads, which do not carry items either. */
+  cost?: TripCost | null;
   items: TripItem[];
   route_segments?: RouteSegment[];
   routing?: TripRouting;
