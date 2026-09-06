@@ -1,6 +1,6 @@
 "use client";
 
-import { Award, ExternalLink, Globe, MapPin } from "lucide-react";
+import { Award, ExternalLink, Globe, ListFilter, MapPin } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { TravelCardActions } from "@/components/travel-card-actions";
 import { primaryMapLink, type FoodMerchant } from "@/lib/foods";
@@ -60,8 +60,10 @@ export function FoodMerchantCard({
           <button
             type="button"
             onClick={() => onSelectArea?.(merchant.area?.slug ?? "")}
-            className="rounded-full border border-[var(--line)] px-2.5 py-1 text-xs font-semibold text-[var(--ink)]"
+            aria-label={t("onlyShow", { label: merchant.area.name })}
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--teal)] bg-[var(--teal-soft)] px-3 text-xs font-semibold text-[var(--teal-dark)]"
           >
+            <ListFilter size={13} aria-hidden />
             {merchant.area.name}
           </button>
         )}
@@ -79,8 +81,10 @@ export function FoodMerchantCard({
               key={category.slug}
               type="button"
               onClick={() => onSelectCategory?.(category.slug)}
-              className="rounded-full bg-[var(--paper)] px-2.5 py-1 text-xs font-semibold"
+              aria-label={t("onlyShow", { label: category.name })}
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[var(--teal)] bg-[var(--teal-soft)] px-3 text-xs font-semibold text-[var(--teal-dark)]"
             >
+              <ListFilter size={13} aria-hidden />
               {category.name}
             </button>
           ))}

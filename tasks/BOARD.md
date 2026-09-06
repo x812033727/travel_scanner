@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**6 open · 5 in progress · 2 blocked · 0 in review · 122 done**
+**7 open · 5 in progress · 2 blocked · 0 in review · 122 done**
 
 ## Ready to claim
 
@@ -40,6 +40,7 @@ _Nothing here._
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
 | P2 | [台南兩家不同的店共用 tainan-fu-sheng-hao 這個 slug，富盛號永遠匯不進來](open/2026-09-06-tainan-slug-collision.md) | active work in the same scope |
+| P2 | [美食卡上的灰色膠囊看起來像標籤，按下去卻整頁重新篩選](open/2026-09-06-merchant-card-filter-pills.md) | active work in the same scope |
 
 ## Recently finished
 
