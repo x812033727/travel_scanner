@@ -370,6 +370,80 @@ export function isActiveRouteItem(item: TripItem) {
 
 export type ChainedStart = { start: string; estimated: boolean };
 
+const EARTH_RADIUS_KM = 6371;
+
+/** Great-circle distance between two stops, or undefined when either has no coordinates. */
+export function distanceKm(
+  from: Pick<TripItem, "latitude" | "longitude">,
+  to: Pick<TripItem, "latitude" | "longitude">,
+): number | undefined {
+  if (from.latitude == null || from.longitude == null || to.latitude == null || to.longitude == null) {
+    return undefined;
+  }
+  const toRadians = (degrees: number) => (degrees * Math.PI) / 180;
+  const deltaLatitude = toRadians(to.latitude - from.latitude);
+  const deltaLongitude = toRadians(to.longitude - from.longitude);
+  const halfChord = Math.sin(deltaLatitude / 2) ** 2
+    + Math.cos(toRadians(from.latitude)) * Math.cos(toRadians(to.latitude)) * Math.sin(deltaLongitude / 2) ** 2;
+  return 2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(halfChord));
+}
+
+/**
+ * A rough travel time for a leg nobody has queried yet, so the timeline keeps a
+ * believable running total without spending a provider request. Straight-line
+ * distance at a modest speed plus a fixed overhead for transit and driving, rounded
+ * up to five minutes; undefined when a stop has no coordinates.
+ */
+export function estimateLegMinutes(
+  from: Pick<TripItem, "latitude" | "longitude">,
+  to: Pick<TripItem, "latitude" | "longitude">,
+  mode: TravelMode,
+): number | undefined {
+  const km = distanceKm(from, to);
+  if (km === undefined) return undefined;
+  const minutes = mode === "walk"
+    ? (km / 4.5) * 60
+    : mode === "drive"
+      ? 5 + (km / 30) * 60
+      : 10 + (km / 20) * 60;
+  return Math.max(5, Math.ceil(minutes / 5) * 5);
+}
+
+function pairKey(from: string, to: string) {
+  return `${from}->${to}`;
+}
+
+/** Every routable adjacent pair, per day and in display order, as `from->to` keys. */
+export function adjacentPairKeys(rows: TripItem[]): Set<string> {
+  const keys = new Set<string>();
+  for (const [, dayRows] of groupTripItems(rows)) {
+    const routable = dayRows.filter(isActiveRouteItem);
+    for (let index = 0; index + 1 < routable.length; index += 1) {
+      keys.add(pairKey(routable[index].id, routable[index + 1].id));
+    }
+  }
+  return keys;
+}
+
+/**
+ * Keep only the segments whose stops are still adjacent in `rows`. A reorder only
+ * invalidates the legs around the moved stop; the server deletes the same pairs.
+ */
+export function segmentsForRows(segments: RouteSegment[], rows: TripItem[]): RouteSegment[] {
+  const keys = adjacentPairKeys(rows);
+  return segments.filter((segment) => keys.has(pairKey(segment.from_item_id, segment.to_item_id)));
+}
+
+/** How many routable adjacent pairs in `rows` have no segment yet. */
+export function missingSegmentCount(rows: TripItem[], segments: RouteSegment[]): number {
+  const covered = new Set(segments.map((segment) => pairKey(segment.from_item_id, segment.to_item_id)));
+  let missing = 0;
+  for (const key of adjacentPairKeys(rows)) {
+    if (!covered.has(key)) missing += 1;
+  }
+  return missing;
+}
+
 const wallClockPattern = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::\d{2}(?:\.\d+)?)?$/;
 
 function readMoment(value?: string | null) {
@@ -390,27 +464,38 @@ function writeMoment(ms: number, wallClock: boolean) {
  * Walk a day in display order and work out when each chained item can start.
  *
  * A routed segment gives the real `ready_time`; without one we still show the member
- * a running total — previous item's end plus the day's transfer buffer — flagged as an
- * estimate so it reads differently from a computed route.
+ * a running total — previous item's end, a distance-based travel estimate when both
+ * stops have coordinates, plus the day's transfer buffer — flagged as an estimate so
+ * it reads differently from a computed route.
  */
 export function projectChainedStarts(
   rows: TripItem[],
   segments: RouteSegment[],
   bufferMinutes: number,
+  travelMode: TravelMode = "transit",
 ): Map<string, ChainedStart> {
   const arrivals = new Map(segments.map((segment) => [segment.to_item_id, segment]));
   const projected = new Map<string, ChainedStart>();
-  let cursor: { ms: number; wallClock: boolean } | undefined;
+  let cursor: { ms: number; wallClock: boolean; from: TripItem } | undefined;
 
   for (const row of rows) {
     if (row.is_skipped) continue;
     const anchored = row.fixed_time ? readMoment(row.start_time) : undefined;
-    const arrival = anchored ? undefined : readMoment(arrivals.get(row.id)?.ready_time);
-    const chained = anchored
-      || arrival
-      || (cursor
-        ? { ms: cursor.ms + bufferMinutes * 60_000, wallClock: cursor.wallClock }
-        : readMoment(row.start_time));
+    const segment = anchored ? undefined : arrivals.get(row.id);
+    let chained: { ms: number; wallClock: boolean } | undefined;
+    if (anchored) {
+      chained = anchored;
+    } else if (cursor) {
+      // Chain by duration from the projected end of the previous stop, the way the
+      // server projects a day. A segment that survived an edit upstream still has the
+      // absolute times it was computed with, so those cannot anchor the chain.
+      const travelMinutes = segment
+        ? segment.duration_minutes + (segment.buffer_minutes ?? bufferMinutes)
+        : (estimateLegMinutes(cursor.from, row, travelMode) || 0) + bufferMinutes;
+      chained = { ms: cursor.ms + travelMinutes * 60_000, wallClock: cursor.wallClock };
+    } else {
+      chained = readMoment(segment?.ready_time) || readMoment(row.start_time);
+    }
     if (!chained) {
       cursor = undefined;
       continue;
@@ -418,10 +503,14 @@ export function projectChainedStarts(
     if (!row.fixed_time) {
       projected.set(row.id, {
         start: writeMoment(chained.ms, chained.wallClock),
-        estimated: !arrival,
+        estimated: !segment,
       });
     }
-    cursor = { ms: chained.ms + (row.duration_minutes || 0) * 60_000, wallClock: chained.wallClock };
+    cursor = {
+      ms: chained.ms + (row.duration_minutes || 0) * 60_000,
+      wallClock: chained.wallClock,
+      from: row,
+    };
   }
   return projected;
 }
