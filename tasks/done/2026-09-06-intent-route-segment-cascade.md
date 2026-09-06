@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-intent-route-segment-cascade
 title: 意圖精修刪除列時連帶清掉使用者輸入的交通時間
-status: open
+status: done
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T03:09:38Z
 created_at: 2026-09-06T00:55:20Z
-completed_at:
-branch:
+completed_at: 2026-09-06T03:25:12Z
+branch: claude/intent-bar-fixes
 depends_on:
   - 2026-09-06-intent-diff-mismatch
 scope:
@@ -33,18 +33,18 @@ scope:
 
 ## Definition of done
 
-- [ ] 一次精修之後，diff 標為「維持不變」的列保有原本的 id，因此它的 `trip_route_segments` 還在。
-- [ ] 使用者手動覆寫過的交通時間在精修後仍然存在。
-- [ ] 有測試會在「被標為不變的列遭到刪除」時失敗。
+- [x] 一次精修之後，diff 標為「維持不變」的列保有原本的 id，因此它的 `trip_route_segments` 還在。
+- [x] 使用者手動覆寫過的交通時間在精修後仍然存在。
+- [x] 有測試會在「被標為不變的列遭到刪除」時失敗。
 
 ## Steps
 
-- [ ] 確認範圍：除了 `trip_route_segments`，還有哪些東西以 `trip_plan_items.id` 為外鍵，
+- [x] 確認範圍：除了 `trip_route_segments`，還有哪些東西以 `trip_plan_items.id` 為外鍵，
       會跟著 cascade 一起消失。
-- [ ] 讓真正沒有變動的列保留原 id，而不是刪除重建。
-- [ ] 如果有某些情況真的無法保住身分，那 diff 就不能說它「維持不變」，
+- [x] 讓真正沒有變動的列保留原 id，而不是刪除重建。
+- [x] 如果有某些情況真的無法保住身分，那 diff 就不能說它「維持不變」，
       必須明說「已計算的交通時間會遺失」。保住身分是比較好的答案，先試那個。
-- [ ] 加回歸測試。
+- [x] 加回歸測試。
 
 ## How to verify
 
@@ -57,6 +57,14 @@ cd apps/api
 套用後確認那個交通時間還在。
 
 ## Notes
+
+**2026-09-06 完成。** 以 `trip_plan_items.id` 為外鍵的只有 `trip_route_segments.from_item_id`／`to_item_id`
+（兩者 `ON DELETE CASCADE`，`models.py` 約 1384 行）。`replan.reuse_rows()` 對 diff 標為不變的列（同日同時段、
+沒有任何使用者可見欄位會被覆寫）原地更新——只換規劃器自己的 reason 與目錄中繼資料——保留原 id，
+`_replan_records` 不再為這些列建新列；apply 端 `apply_trip_itinerary_preview` 只刪除真的被換掉的列。
+回歸測試 `test_an_unchanged_stop_keeps_its_row_so_its_route_segments_survive` 斷言兩個未變的停留點
+`reuse_rows` 回傳的是原物件、原 id，且 `_replan_records` 為空；`apply_and_check` 也對每個 reused pair 檢查快照不變。
+沒有「保不住身分」的情況需要另外揭露：會動到的列一律進 moved／changed／removed，不會被算成不變。
 
 出處：對 `wip/intent-bar-blocker-fixes` 的 round 1 修法所做的三路複查，
 `no-loss` 這個審查者提出，嚴重度 high。原文（節錄）：

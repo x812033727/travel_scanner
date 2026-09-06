@@ -6,17 +6,17 @@ import { useEffect, useState } from "react";
 import { ItineraryTimeline } from "@/components/itinerary-timeline";
 import { Link } from "@/i18n/navigation";
 import { api } from "@/lib/api";
-import type { Trip } from "@/lib/trip-types";
+import type { SharedTrip } from "@/lib/trip-types";
 
 export function SharedTripView({ token }: { token: string }) {
   // The one page whose whole audience is people the owner sent a link to —
   // it used to greet them in Traditional Chinese regardless of /en, /ja, /ko.
   const t = useTranslations("trips");
   const locale = useLocale();
-  const [trip, setTrip] = useState<Trip>();
+  const [trip, setTrip] = useState<SharedTrip>();
   const [error, setError] = useState<string>();
   useEffect(() => {
-    api<Trip>(`/shared-trips/${token}`).then(setTrip).catch((reason: Error) => setError(reason.message));
+    api<SharedTrip>(`/shared-trips/${token}`).then(setTrip).catch((reason: Error) => setError(reason.message));
   }, [token]);
   if (error) return <main className="mx-auto max-w-4xl px-5 py-16"><p role="alert" className="rounded-2xl bg-red-50 p-5 text-red-800">{t("shareNotFound")}</p></main>;
   if (!trip) return <main className="mx-auto max-w-4xl px-5 py-16 text-[var(--muted)]">{t("shareLoading")}</main>;
