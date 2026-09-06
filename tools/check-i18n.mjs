@@ -1,6 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { readFileSync, readdirSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
+import { duplicateKeys } from "./duplicate-keys.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const messagesRoot = join(root, "apps", "web", "messages");
@@ -36,7 +37,11 @@ for (const locale of locales) {
     continue;
   }
   for (const namespace of referenceNamespaces) {
-    const localized = flatten(JSON.parse(readFileSync(join(messagesRoot, locale, namespace), "utf8")));
+    const raw = readFileSync(join(messagesRoot, locale, namespace), "utf8");
+    for (const key of duplicateKeys(raw)) {
+      errors.push(`${locale}/${namespace}: '${key}' is declared twice; JSON.parse keeps the last one`);
+    }
+    const localized = flatten(JSON.parse(raw));
     const expected = reference.get(namespace);
     if ([...localized.keys()].sort().join("\n") !== [...expected.keys()].sort().join("\n")) {
       errors.push(`${locale}/${namespace}: translation keys differ from en`);
