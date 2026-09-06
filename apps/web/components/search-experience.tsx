@@ -25,7 +25,7 @@ import { loginPath, safeExternalHref } from "@/lib/navigation";
 import {
   destinationByAirport,
   interestLabel,
-  interests as destinationInterests,
+  interestCodes,
 } from "@/lib/destinations";
 import {
   BudgetBreakdown,
@@ -209,7 +209,7 @@ function titleFor(module: string, offer: Offer, t: Translate): string {
   return String(offer.transport_type ?? t("fallbackTransport"));
 }
 
-function detailsFor(module: string, offer: Offer, t: Translate): string {
+function detailsFor(module: string, offer: Offer, t: Translate, tc: Translate): string {
   if (module === "flight") {
     const stops = Number(offer.stops ?? 0);
     return `${offer.origin ?? ""} → ${offer.destination ?? ""} · ${stops ? t("stops", { count: stops }) : t("direct")}`;
@@ -239,7 +239,7 @@ function detailsFor(module: string, offer: Offer, t: Translate): string {
     return `${rating ? t("score", { score: rating.toFixed(1) }) : t("noScore")} · ${t("nights", { nights: String(offer.nights ?? "-") })} · ${offer.room_type ?? t("room")}${extras ? ` · ${extras}` : ""}`;
   }
   if (module === "activities")
-    return `${interestLabel(String(offer.category || ""))} · ${t("minutes", { minutes: String(offer.duration_minutes ?? "-") })} · ${offer.address ?? offer.city ?? ""}`;
+    return `${interestLabel(String(offer.category || ""), tc)} · ${t("minutes", { minutes: String(offer.duration_minutes ?? "-") })} · ${offer.address ?? offer.city ?? ""}`;
   return `${t("minutes", { minutes: String(offer.duration_minutes ?? "-") })} · ${offer.origin ?? ""} → ${offer.destination ?? ""}`;
 }
 
@@ -273,7 +273,7 @@ function parseInterests(raw: string): string[] {
     ["海灘", "beach"],
     ["跳島", "beach"],
   ];
-  const supported = new Set(destinationInterests.map((item) => item.code));
+  const supported = new Set<string>(interestCodes);
   const codes = raw
     .split(",")
     .map((item) => item.trim())
@@ -291,6 +291,7 @@ export function SearchExperience() {
   const locale = useLocale();
   const usageText = useTranslations("usage");
   const t = useTranslations("search.results");
+  const tc = useTranslations("search.catalog");
   const params = useSearchParams();
   const router = useRouter();
   const text = params.get("q") || "";
@@ -837,7 +838,7 @@ export function SearchExperience() {
       .sort((left, right) => amount(left[1][0]) - amount(right[1][0]));
   }, [visibleOffers]);
 
-  const destination = destinationByAirport(parsed?.destination);
+  const destination = destinationByAirport(parsed?.destination, tc);
   const includeAirbnb =
     parsed?.include_airbnb ?? params.get("include_airbnb") !== "false";
   const countryName = destination ? t(`country.${destination.country}`) : "";
@@ -898,7 +899,10 @@ export function SearchExperience() {
                 {t("destinationMeta", {
                   summary: destination.summary,
                   timezone: destination.timezone,
-                  stay: destination.recommendedStay,
+                  stay: tc("recommendedStay", {
+                    min: destination.recommendedDays.min,
+                    max: destination.recommendedDays.max,
+                  }),
                 })}
               </p>
             )}
@@ -930,7 +934,7 @@ export function SearchExperience() {
               parsed.avoid_red_eye ? t("avoidRedEye") : null,
               parsed.breakfast_required ? t("breakfast") : null,
               parsed.refundable_required ? t("refundable") : null,
-              ...parsed.interests.map(interestLabel),
+              ...parsed.interests.map((code) => interestLabel(code, tc)),
             ]
               .filter(Boolean)
               .map((tag) => (
@@ -1431,9 +1435,9 @@ export function SearchExperience() {
                       }
                     >
                       <option value="all">{t("allOption")}</option>
-                      {destinationInterests.map((interest) => (
-                        <option key={interest.code} value={interest.code}>
-                          {interest.label}
+                      {interestCodes.map((code) => (
+                        <option key={code} value={code}>
+                          {interestLabel(code, tc)}
                         </option>
                       ))}
                     </select>
@@ -1547,7 +1551,7 @@ export function SearchExperience() {
                           <strong>{twd.format(amount(offer))}</strong>
                         </div>
                         <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
-                          {detailsFor(activeTab, offer, t)}
+                          {detailsFor(activeTab, offer, t, tc)}
                         </p>
                         <p className="mt-2 text-xs text-[var(--muted)]">
                           {t("sourceLine", { provider: offer.provider || t("unlabelled") })}

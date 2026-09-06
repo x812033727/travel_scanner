@@ -10,7 +10,7 @@ import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, twd } from "@/lib/api";
 import { dayCount, formatTripDay } from "@/lib/calendar";
 import { trackAnalytics } from "@/lib/analytics";
-import { interests } from "@/lib/destinations";
+import { interestCodes } from "@/lib/destinations";
 
 type CreatedTrip = { id: string };
 const lodgingModes = ["hotel", "vacation_rental", "both", "any"] as const;
@@ -110,7 +110,7 @@ export function NewTripForm() {
       if (draft) {
         if (oneOf(lodgingModes, draft.lodgingMode)) setLodgingMode(draft.lodgingMode);
         if (oneOf(planningModes, draft.planningMode)) setPlanningMode(draft.planningMode);
-        if (Array.isArray(draft.selectedInterests)) setSelectedInterests(draft.selectedInterests.filter((code) => interests.some((interest) => interest.code === code)));
+        if (Array.isArray(draft.selectedInterests)) setSelectedInterests(draft.selectedInterests.filter((code) => (interestCodes as readonly string[]).includes(code)));
         const savedForm: Record<string, string | boolean> = draft.form && typeof draft.form === "object" ? draft.form : {};
         const start = typeof savedForm.start_date === "string" ? savedForm.start_date : "";
         const end = typeof savedForm.end_date === "string" ? savedForm.end_date : "";
@@ -312,7 +312,7 @@ export function NewTripForm() {
         <div className="grid grid-cols-3 gap-3"><label className="text-sm font-semibold">{t("travelers.adults")}<select aria-label={t("travelers.adults")} value={form.adults} onChange={(event) => update("adults", event.target.value)} className={fieldClass}>{[1,2,3,4,5,6,7,8,9].map((value) => <option key={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">{t("travelers.children")}<select aria-label={t("travelers.children")} value={form.children} onChange={(event) => update("children", event.target.value)} className={fieldClass}>{[0,1,2,3,4,5].map((value) => <option key={value}>{value}</option>)}</select></label><label className="text-sm font-semibold">{t("travelers.rooms")}<select aria-label={t("travelers.rooms")} value={form.rooms} onChange={(event) => update("rooms", event.target.value)} className={fieldClass}>{[1,2,3,4].map((value) => <option key={value}>{value}</option>)}</select></label></div>
         <label className="text-sm font-semibold">{t("travelers.budget")}<input type="number" inputMode="numeric" min="1" value={form.budget_twd} onChange={(event) => update("budget_twd", event.target.value)} placeholder={t("travelers.budgetPlaceholder")} className={fieldClass} /></label>
         <div><p className="text-sm font-semibold">{t("travelers.pace")}</p><div className="mt-2 grid grid-cols-3 gap-2">{([["relaxed", t("travelers.paceRelaxed")], ["balanced", t("travelers.paceBalanced")], ["packed", t("travelers.pacePacked")]] as const).map(([value, label]) => <button key={value} type="button" aria-pressed={form.pace === value} onClick={() => update("pace", value)} className={optionClass(form.pace === value)}>{label}</button>)}</div></div>
-        <div><p className="text-sm font-semibold">{t("travelers.interests")}</p><div className="mt-2 flex flex-wrap gap-2">{interests.map((interest) => <button key={interest.code} type="button" aria-pressed={selectedInterests.includes(interest.code)} onClick={() => toggleInterest(interest.code)} className={optionClass(selectedInterests.includes(interest.code))}>{t(`interests.${interest.code}`)}</button>)}</div></div>
+        <div><p className="text-sm font-semibold">{t("travelers.interests")}</p><div className="mt-2 flex flex-wrap gap-2">{interestCodes.map((code) => <button key={code} type="button" aria-pressed={selectedInterests.includes(code)} onClick={() => toggleInterest(code)} className={optionClass(selectedInterests.includes(code))}>{t(`interests.${code}`)}</button>)}</div></div>
       </div>
 
       <div className={step === 2 ? "grid gap-5" : "hidden"}>

@@ -1,71 +1,95 @@
 export type CountryKey = "JP" | "KR" | "TH" | "TW" | "SG" | "HK" | "VN";
 
+/**
+ * A destination as the workbench, the search page and the home page show it.
+ *
+ * The API (`GET /destinations`) is the source of truth and answers with the reader's
+ * locale already applied. The list below is the offline copy the same surfaces fall
+ * back to when the API cannot be reached; its display text lives in the
+ * `search.catalog` messages, keyed by destination id, so all five locales sit in one
+ * place. Areas stay in the destination's own script: they are place names.
+ */
 export type DestinationCity = {
   id: string;
   country: CountryKey;
   name: string;
   airport: string;
-  airportName: string;
   summary: string;
-  recommendedStay: string;
+  recommendedDays: { min: number; max: number };
   areas: string[];
+  /** Descriptive codes; `SECONDARY_CITY_TAG` marks a second-tier city in the picker. */
   tags: string[];
   timezone: string;
   currency: string;
 };
 
-export const countries = [
-  { key: "JP" as const, label: "日本", caption: "城市、文化與四季自然" },
-  { key: "KR" as const, label: "韓國", caption: "美食、購物與海岸城市" },
-  { key: "TH" as const, label: "泰國", caption: "度假、夜市與療癒慢旅" },
-  { key: "TW" as const, label: "台灣", caption: "美食、文化與山海近郊" },
-  { key: "SG" as const, label: "新加坡", caption: "親子、多元文化與城市花園" },
-  { key: "HK" as const, label: "香港", caption: "城市夜景、飲茶與離島健行" },
-  { key: "VN" as const, label: "越南", caption: "古城、街頭美食與海岸度假" },
+export type DestinationSeed = Omit<DestinationCity, "name" | "summary">;
+
+/** A `search.catalog` translator: `useTranslations("search.catalog")` or its server twin. */
+export type CatalogTranslator = {
+  (key: string, values?: Record<string, string | number>): string;
+  has?: (key: string) => boolean;
+};
+
+export const SECONDARY_CITY_TAG = "secondary";
+
+export const countryKeys: CountryKey[] = ["JP", "KR", "TH", "TW", "SG", "HK", "VN"];
+
+export const destinationSeeds: DestinationSeed[] = [
+  { id: "tokyo", country: "JP", airport: "NRT", recommendedDays: { min: 4, max: 6 }, areas: ["新宿", "上野／淺草", "東京站／銀座", "澀谷"], tags: ["shopping", "culture", "family"], timezone: "Asia/Tokyo", currency: "JPY" },
+  { id: "osaka-kyoto", country: "JP", airport: "KIX", recommendedDays: { min: 5, max: 7 }, areas: ["難波／心齋橋", "梅田", "京都站", "四條河原町"], tags: ["food", "culture", "shopping"], timezone: "Asia/Tokyo", currency: "JPY" },
+  { id: "fukuoka", country: "JP", airport: "FUK", recommendedDays: { min: 3, max: 5 }, areas: ["博多站", "天神", "中洲", "大濠公園"], tags: ["food", "short_stay", "day_trips"], timezone: "Asia/Tokyo", currency: "JPY" },
+  { id: "sapporo", country: "JP", airport: "CTS", recommendedDays: { min: 5, max: 7 }, areas: ["札幌站", "大通", "薄野", "中島公園"], tags: ["nature", "spa", "food"], timezone: "Asia/Tokyo", currency: "JPY" },
+  { id: "okinawa", country: "JP", airport: "OKA", recommendedDays: { min: 4, max: 6 }, areas: ["國際通", "那霸新都心", "北谷", "恩納"], tags: ["beach", "family", "self_drive"], timezone: "Asia/Tokyo", currency: "JPY" },
+  { id: "nagoya", country: "JP", airport: "NGO", recommendedDays: { min: 4, max: 6 }, areas: ["名古屋站", "榮", "伏見", "金山"], tags: ["family", "food", "day_trips"], timezone: "Asia/Tokyo", currency: "JPY" },
+  { id: "seoul", country: "KR", airport: "ICN", recommendedDays: { min: 4, max: 6 }, areas: ["明洞", "弘大", "東大門", "江南"], tags: ["shopping", "food", "nightlife"], timezone: "Asia/Seoul", currency: "KRW" },
+  { id: "busan", country: "KR", airport: "PUS", recommendedDays: { min: 4, max: 5 }, areas: ["西面", "南浦洞", "海雲台", "廣安里"], tags: ["beach", "food", "night_views"], timezone: "Asia/Seoul", currency: "KRW" },
+  { id: "jeju", country: "KR", airport: "CJU", recommendedDays: { min: 4, max: 6 }, areas: ["濟州市", "涯月", "中文觀光區", "西歸浦"], tags: ["nature", "beach", "self_drive"], timezone: "Asia/Seoul", currency: "KRW" },
+  { id: "bangkok", country: "TH", airport: "BKK", recommendedDays: { min: 4, max: 6 }, areas: ["暹羅", "Asok／素坤逸", "Silom", "河濱"], tags: ["food", "shopping", "spa"], timezone: "Asia/Bangkok", currency: "THB" },
+  { id: "chiang-mai", country: "TH", airport: "CNX", recommendedDays: { min: 4, max: 6 }, areas: ["古城", "尼曼區", "湄平河畔", "夜市周邊"], tags: ["culture", "nature", "slow_travel"], timezone: "Asia/Bangkok", currency: "THB" },
+  { id: "phuket", country: "TH", airport: "HKT", recommendedDays: { min: 5, max: 7 }, areas: ["普吉老城", "芭東", "卡塔", "卡隆"], tags: ["beach", "islands", "nightlife"], timezone: "Asia/Bangkok", currency: "THB" },
+  { id: "krabi", country: "TH", airport: "KBV", recommendedDays: { min: 4, max: 6 }, areas: ["奧南", "喀比鎮", "萊雷", "克隆芒"], tags: ["beach", "nature", "slow_travel"], timezone: "Asia/Bangkok", currency: "THB" },
+  { id: "taipei", country: "TW", airport: "TPE", recommendedDays: { min: 3, max: 5 }, areas: ["台北車站", "西門町", "信義區", "中山"], tags: ["food", "culture", "night_views"], timezone: "Asia/Taipei", currency: "TWD" },
+  { id: "singapore", country: "SG", airport: "SIN", recommendedDays: { min: 4, max: 5 }, areas: ["濱海灣", "烏節路", "牛車水", "武吉士"], tags: ["family", "food", "culture"], timezone: "Asia/Singapore", currency: "SGD" },
+  { id: "hong-kong", country: "HK", airport: "HKG", recommendedDays: { min: 3, max: 5 }, areas: ["中環／上環", "尖沙咀", "銅鑼灣", "旺角"], tags: ["food", "shopping", "night_views"], timezone: "Asia/Hong_Kong", currency: "HKD" },
+  { id: "hanoi", country: "VN", airport: "HAN", recommendedDays: { min: 4, max: 5 }, areas: ["還劍湖", "老城區", "西湖", "巴亭"], tags: ["culture", "food", "slow_travel"], timezone: "Asia/Ho_Chi_Minh", currency: "VND" },
+  { id: "ho-chi-minh-city", country: "VN", airport: "SGN", recommendedDays: { min: 4, max: 5 }, areas: ["第一郡", "第三郡", "濱城市場", "草田"], tags: ["food", "culture", "nightlife"], timezone: "Asia/Ho_Chi_Minh", currency: "VND" },
+  { id: "da-nang", country: "VN", airport: "DAD", recommendedDays: { min: 4, max: 6 }, areas: ["美溪海灘", "漢江", "山茶半島", "會安古城"], tags: ["beach", "nature", "culture"], timezone: "Asia/Ho_Chi_Minh", currency: "VND" },
 ];
 
-export const destinations: DestinationCity[] = [
-  { id: "tokyo", country: "JP", name: "東京", airport: "NRT", airportName: "成田／羽田", summary: "交通選擇最完整，適合第一次自由行", recommendedStay: "4–6 天", areas: ["新宿", "上野／淺草", "東京站／銀座", "澀谷"], tags: ["購物", "文化", "親子"], timezone: "Asia/Tokyo", currency: "JPY" },
-  { id: "osaka-kyoto", country: "JP", name: "大阪／京都", airport: "KIX", airportName: "關西國際機場", summary: "一次搭配大阪美食與京都文化", recommendedStay: "5–7 天", areas: ["難波／心齋橋", "梅田", "京都站", "四條河原町"], tags: ["美食", "文化", "購物"], timezone: "Asia/Tokyo", currency: "JPY" },
-  { id: "fukuoka", country: "JP", name: "福岡", airport: "FUK", airportName: "福岡機場", summary: "機場近市區，三至五日也能從容玩", recommendedStay: "3–5 天", areas: ["博多站", "天神", "中洲", "大濠公園"], tags: ["美食", "短天數", "近郊"], timezone: "Asia/Tokyo", currency: "JPY" },
-  { id: "sapporo", country: "JP", name: "札幌", airport: "CTS", airportName: "新千歲機場", summary: "四季自然、溫泉與北海道美食", recommendedStay: "5–7 天", areas: ["札幌站", "大通", "薄野", "中島公園"], tags: ["自然", "溫泉", "美食"], timezone: "Asia/Tokyo", currency: "JPY" },
-  { id: "okinawa", country: "JP", name: "沖繩", airport: "OKA", airportName: "那霸機場", summary: "海島與親子自駕的放慢旅程", recommendedStay: "4–6 天", areas: ["國際通", "那霸新都心", "北谷", "恩納"], tags: ["海灘", "親子", "自駕"], timezone: "Asia/Tokyo", currency: "JPY" },
-  { id: "nagoya", country: "JP", name: "名古屋", airport: "NGO", airportName: "中部國際機場", summary: "串聯中部城市、主題樂園與美食", recommendedStay: "4–6 天", areas: ["名古屋站", "榮", "伏見", "金山"], tags: ["親子", "美食", "近郊"], timezone: "Asia/Tokyo", currency: "JPY" },
-  { id: "seoul", country: "KR", name: "首爾", airport: "ICN", airportName: "仁川／金浦", summary: "購物、美食與展覽密度高", recommendedStay: "4–6 天", areas: ["明洞", "弘大", "東大門", "江南"], tags: ["購物", "美食", "夜生活"], timezone: "Asia/Seoul", currency: "KRW" },
-  { id: "busan", country: "KR", name: "釜山", airport: "PUS", airportName: "金海國際機場", summary: "海景、市場與城市慢遊", recommendedStay: "4–5 天", areas: ["西面", "南浦洞", "海雲台", "廣安里"], tags: ["海灘", "美食", "夜景"], timezone: "Asia/Seoul", currency: "KRW" },
-  { id: "jeju", country: "KR", name: "濟州", airport: "CJU", airportName: "濟州國際機場", summary: "海岸、咖啡與自然步道", recommendedStay: "4–6 天", areas: ["濟州市", "涯月", "中文觀光區", "西歸浦"], tags: ["自然", "海灘", "自駕"], timezone: "Asia/Seoul", currency: "KRW" },
-  { id: "bangkok", country: "TH", name: "曼谷", airport: "BKK", airportName: "蘇凡納布／廊曼", summary: "美食、購物、寺廟與按摩一次滿足", recommendedStay: "4–6 天", areas: ["暹羅", "Asok／素坤逸", "Silom", "河濱"], tags: ["美食", "購物", "SPA"], timezone: "Asia/Bangkok", currency: "THB" },
-  { id: "chiang-mai", country: "TH", name: "清邁", airport: "CNX", airportName: "清邁國際機場", summary: "古城、咖啡、手作與近郊自然", recommendedStay: "4–6 天", areas: ["古城", "尼曼區", "湄平河畔", "夜市周邊"], tags: ["文化", "自然", "慢旅"], timezone: "Asia/Bangkok", currency: "THB" },
-  { id: "phuket", country: "TH", name: "普吉", airport: "HKT", airportName: "普吉國際機場", summary: "海灘、跳島、度假村與夜生活", recommendedStay: "5–7 天", areas: ["普吉老城", "芭東", "卡塔", "卡隆"], tags: ["海灘", "跳島", "夜生活"], timezone: "Asia/Bangkok", currency: "THB" },
-  { id: "krabi", country: "TH", name: "喀比", airport: "KBV", airportName: "喀比國際機場", summary: "島嶼、石灰岩海岸與悠閒度假", recommendedStay: "4–6 天", areas: ["奧南", "喀比鎮", "萊雷", "克隆芒"], tags: ["海灘", "自然", "慢旅"], timezone: "Asia/Bangkok", currency: "THB" },
-  { id: "taipei", country: "TW", name: "台北", airport: "TPE", airportName: "桃園／松山", summary: "美食、文化與近郊自然都容易抵達", recommendedStay: "3–5 天", areas: ["台北車站", "西門町", "信義區", "中山"], tags: ["美食", "文化", "夜景"], timezone: "Asia/Taipei", currency: "TWD" },
-  { id: "singapore", country: "SG", name: "新加坡", airport: "SIN", airportName: "樟宜機場", summary: "交通簡單，多元文化與親子景點集中", recommendedStay: "4–5 天", areas: ["濱海灣", "烏節路", "牛車水", "武吉士"], tags: ["親子", "美食", "文化"], timezone: "Asia/Singapore", currency: "SGD" },
-  { id: "hong-kong", country: "HK", name: "香港", airport: "HKG", airportName: "香港國際機場", summary: "城市夜景、飲茶購物與離島路線密集", recommendedStay: "3–5 天", areas: ["中環／上環", "尖沙咀", "銅鑼灣", "旺角"], tags: ["美食", "購物", "夜景"], timezone: "Asia/Hong_Kong", currency: "HKD" },
-  { id: "hanoi", country: "VN", name: "河內", airport: "HAN", airportName: "內排國際機場", summary: "老城街區、咖啡與歷史文化適合慢遊", recommendedStay: "4–5 天", areas: ["還劍湖", "老城區", "西湖", "巴亭"], tags: ["文化", "美食", "慢旅"], timezone: "Asia/Ho_Chi_Minh", currency: "VND" },
-  { id: "ho-chi-minh-city", country: "VN", name: "胡志明市", airport: "SGN", airportName: "新山一國際機場", summary: "法式建築、市場、美食與夜生活集中", recommendedStay: "4–5 天", areas: ["第一郡", "第三郡", "濱城市場", "草田"], tags: ["美食", "文化", "夜生活"], timezone: "Asia/Ho_Chi_Minh", currency: "VND" },
-  { id: "da-nang", country: "VN", name: "峴港", airport: "DAD", airportName: "峴港國際機場", summary: "海灘、山景與會安古城可一次安排", recommendedStay: "4–6 天", areas: ["美溪海灘", "漢江", "山茶半島", "會安古城"], tags: ["海灘", "自然", "文化"], timezone: "Asia/Ho_Chi_Minh", currency: "VND" },
-];
+export const interestCodes = [
+  "deep_travel",
+  "food",
+  "shopping",
+  "culture",
+  "nature",
+  "family",
+  "nightlife",
+  "spa",
+  "beach",
+] as const;
 
-export const interests = [
-  { code: "deep_travel", label: "深度旅遊" },
-  { code: "food", label: "美食" },
-  { code: "shopping", label: "購物" },
-  { code: "culture", label: "文化" },
-  { code: "nature", label: "自然" },
-  { code: "family", label: "親子" },
-  { code: "nightlife", label: "夜生活" },
-  { code: "spa", label: "溫泉／SPA" },
-  { code: "beach", label: "海灘／跳島" },
-];
+export type InterestCode = (typeof interestCodes)[number];
 
-export function citiesForCountry(country: CountryKey) {
-  return destinations.filter((destination) => destination.country === country);
+export function localizeDestination(seed: DestinationSeed, t: CatalogTranslator): DestinationCity {
+  return { ...seed, name: t(`cities.${seed.id}.name`), summary: t(`cities.${seed.id}.summary`) };
 }
 
-export function destinationByAirport(airport?: string | null) {
-  return destinations.find((destination) => destination.airport === airport);
+export function localizeDestinations(t: CatalogTranslator): DestinationCity[] {
+  return destinationSeeds.map((seed) => localizeDestination(seed, t));
 }
 
-export function interestLabel(code: string) {
-  return interests.find((interest) => interest.code === code)?.label || code;
+export function citiesForCountry(country: CountryKey, t: CatalogTranslator): DestinationCity[] {
+  return destinationSeeds.filter((seed) => seed.country === country).map((seed) => localizeDestination(seed, t));
+}
+
+export function destinationByAirport(airport: string | null | undefined, t: CatalogTranslator): DestinationCity | undefined {
+  const seed = destinationSeeds.find((candidate) => candidate.airport === airport);
+  return seed ? localizeDestination(seed, t) : undefined;
+}
+
+/** The interest's label in the reader's language; an unknown code is shown as is. */
+export function interestLabel(code: string, t: CatalogTranslator): string {
+  if (!(interestCodes as readonly string[]).includes(code)) return code;
+  return t(`interests.${code}`);
 }

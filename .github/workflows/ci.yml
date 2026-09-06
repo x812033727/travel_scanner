@@ -67,6 +67,9 @@ jobs:
       - name: Run isolated browser UI tests
         run: npx playwright test e2e/navigation.spec.ts
         working-directory: apps/web
+        # Serve the build from the step above instead of a dev server that compiles
+        # each page on first visit; see playwright.config.ts.
+        env: { PLAYWRIGHT_SERVE_BUILD: "true" }
   containers:
     runs-on: ubuntu-latest
     steps:
