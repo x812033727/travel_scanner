@@ -1018,10 +1018,16 @@ def test_patch_request_pins_status_and_cover_image_rules() -> None:
     assert request.status == "travelling"
     with pytest.raises(ValidationError):
         TripMetadataPatchRequest.model_validate({"version": 1, "status": "archived"})
+    # A cover may only come from a host this product already serves images from
+    # (2026-09-06); an arbitrary https URL used to be accepted here.
     covered = TripMetadataPatchRequest.model_validate(
-        {"version": 1, "cover_image_url": " https://cdn.example.com/tokyo.jpg "}
+        {"version": 1, "cover_image_url": " https://i.ytimg.com/vi/abc/hqdefault.jpg "}
     )
-    assert covered.cover_image_url == "https://cdn.example.com/tokyo.jpg"
+    assert covered.cover_image_url == "https://i.ytimg.com/vi/abc/hqdefault.jpg"
+    with pytest.raises(ValidationError):
+        TripMetadataPatchRequest.model_validate(
+            {"version": 1, "cover_image_url": "https://cdn.example.com/tokyo.jpg"}
+        )
     assert "cover_image_url" in covered.model_fields_set
     cleared = TripMetadataPatchRequest.model_validate(
         {"version": 1, "cover_image_url": None, "name": "東京"}

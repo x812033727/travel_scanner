@@ -6,6 +6,7 @@ from collections.abc import Mapping
 from datetime import UTC, date, datetime, time, timedelta
 from decimal import Decimal
 from typing import Annotated, Any, Literal, cast
+from urllib.parse import urlparse
 from uuid import UUID, uuid4, uuid5
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
@@ -199,6 +200,30 @@ class SaveTripRequest(BaseModel):
         return self
 
 
+# A cover is displayed on our own pages, so it may only come from hosts this product
+# already serves images from: the thumbnails a hotspot guide stores, Google Places photos,
+# Wikimedia's free images, and the site itself. An arbitrary https URL would let a saved
+# trip point the browser at anything, and would turn a shared trip into a beacon.
+COVER_IMAGE_HOSTS: frozenset[str] = frozenset(
+    {
+        "i.ytimg.com",
+        "img.youtube.com",
+        "lh3.googleusercontent.com",
+        "lh4.googleusercontent.com",
+        "lh5.googleusercontent.com",
+        "upload.wikimedia.org",
+        "commons.wikimedia.org",
+        "mokaair.com",
+        "www.mokaair.com",
+    }
+)
+
+
+def cover_image_host_allowed(url: str) -> bool:
+    parsed = urlparse(url)
+    return parsed.scheme == "https" and (parsed.hostname or "").lower() in COVER_IMAGE_HOSTS
+
+
 class TripMetadataPatchRequest(BaseModel):
     """`PATCH /trips/{id}` — rename a trip, or move its day grid.
 
@@ -233,8 +258,13 @@ class TripMetadataPatchRequest(BaseModel):
         if self.notes is not None:
             # An emptied box clears the note rather than storing whitespace.
             self.notes = self.notes.strip() or None
-        if self.cover_image_url is not None and not self.cover_image_url.startswith("https://"):
-            raise ValueError("cover_image_url must be an https URL")
+        if self.cover_image_url is not None and not cover_image_host_allowed(
+            self.cover_image_url
+        ):
+            raise ValueError(
+                "cover_image_url must be an https image from "
+                + ", ".join(sorted(COVER_IMAGE_HOSTS))
+            )
         if not self.model_fields_set - {"version", "confirm_removed_days"}:
             raise ValueError("nothing to update")
         return self

@@ -74,6 +74,7 @@ export function TripMetaEditor({
   const [open, setOpen] = useState(false);
   const [name, setName] = useState(trip.name);
   const [status, setStatus] = useState<TripStatus>(trip.status || "planning");
+  const [cover, setCover] = useState(trip.cover_image_url || "");
   const [dateMode, setDateMode] = useState<"range" | "shift">("range");
   const [start, setStart] = useState(trip.start_date || "");
   const [end, setEnd] = useState(trip.end_date || "");
@@ -115,12 +116,14 @@ export function TripMetaEditor({
 
   const nameChanged = name.trim().length > 0 && name.trim() !== trip.name;
   const statusChanged = status !== (trip.status || "planning");
-  const anythingChanged = nameChanged || statusChanged || datesChanged;
+  const coverChanged = cover.trim() !== (trip.cover_image_url || "");
+  const anythingChanged = nameChanged || statusChanged || coverChanged || datesChanged;
   const blocked = rangeInvalid || rangeTooLong || (needsConfirmation && !confirmRemoval);
 
   function openEditor() {
     setName(trip.name);
     setStatus(trip.status || "planning");
+    setCover(trip.cover_image_url || "");
     setDateMode("range");
     setStart(trip.start_date || "");
     setEnd(trip.end_date || "");
@@ -148,6 +151,8 @@ export function TripMetaEditor({
       const body: Record<string, unknown> = { version: base.version };
       if (nameChanged) body.name = name.trim();
       if (statusChanged) body.status = status;
+      // An empty field clears the cover; the API refuses any host it does not serve.
+      if (coverChanged) body.cover_image_url = cover.trim() || null;
       if (datesChanged && dateMode === "shift") body.shift_days = shiftDays;
       if (datesChanged && dateMode === "range") {
         body.start_date = start;
@@ -247,6 +252,18 @@ export function TripMetaEditor({
               <option key={value} value={value}>{t(`meta.status.${value}`)}</option>
             ))}
           </select>
+        </label>
+        <label className="text-sm font-semibold">
+          {t("meta.coverLabel")}
+          <input
+            value={cover}
+            type="url"
+            inputMode="url"
+            maxLength={1024}
+            onChange={(event) => setCover(event.target.value)}
+            className={fieldClass}
+          />
+          <span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted)]">{t("meta.coverHint")}</span>
         </label>
         <fieldset className="rounded-2xl border border-[var(--line)] bg-[var(--paper)]/60 p-4">
           <legend className="flex items-center gap-1.5 px-1 text-sm font-bold">

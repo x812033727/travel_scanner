@@ -17,11 +17,13 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { ApiError, api, twd } from "@/lib/api";
 import { loginPath } from "@/lib/navigation";
 import { PriceAlertButton } from "@/components/price-alert-button";
 import { formatCurrency } from "@/lib/locale-format";
+import { displayTripStatus, type TripStatus } from "@/lib/trip-types";
 
 type TripItem = {
   id: string;
@@ -32,6 +34,8 @@ type TripItem = {
   destination_name?: string;
   start_date?: string;
   end_date?: string;
+  status?: TripStatus;
+  cover_image_url?: string | null;
 };
 type AlertItem = {
   id: string;
@@ -101,6 +105,7 @@ type Capacity = { count: number; limit: number };
 export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
   const common = useTranslations("common");
   const t = useTranslations(kind);
+  const tripsCatalog = useTranslations("trips");
   const [items, setItems] = useState<Array<TripItem | AlertItem>>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<LoadFailure>();
@@ -344,13 +349,29 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                     href={`/trips/${trip.id}`}
                     className="flex min-h-16 items-center gap-3 rounded-2xl p-1 transition hover:bg-[var(--paper)]"
                   >
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-[var(--teal-dark)]">
-                      <MapPinned size={21} />
-                    </span>
+                    {trip.cover_image_url ? (
+                      <Image
+                        src={trip.cover_image_url}
+                        alt={tripsCatalog("meta.coverAlt", { name: trip.name })}
+                        width={48}
+                        height={48}
+                        unoptimized
+                        className="h-12 w-12 shrink-0 rounded-2xl object-cover"
+                      />
+                    ) : (
+                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[var(--teal-soft)] text-[var(--teal-dark)]">
+                        <MapPinned size={21} />
+                      </span>
+                    )}
                     <span className="min-w-0 flex-1">
-                      <strong className="block truncate text-lg">
-                        {trip.name}
-                      </strong>
+                      <span className="flex items-center gap-2">
+                        <strong className="block truncate text-lg">
+                          {trip.name}
+                        </strong>
+                        <span className="shrink-0 rounded-full bg-[var(--paper)] px-2 py-0.5 text-[.68rem] font-semibold text-[var(--muted)]">
+                          {tripsCatalog(`meta.status.${displayTripStatus(trip)}`)}
+                        </span>
+                      </span>
                       <span className="mt-1 flex items-center gap-1.5 text-sm text-[var(--muted)]">
                         <CalendarDays size={14} />
                         {[

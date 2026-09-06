@@ -362,6 +362,23 @@ export function isFlightAnchor(item: TripItem): item is TripItem & {
   return item.system_role === "outbound_flight" || item.system_role === "return_flight";
 }
 
+/**
+ * The status to show, which is not always the status stored.
+ *
+ * A trip nobody has moved off the default is still "planning" in the database, even on
+ * the morning it starts. When today falls inside its dates the list says it is under way;
+ * nothing is written back, so the traveller's own choice always wins.
+ */
+export function displayTripStatus(
+  trip: { status?: TripStatus | null; start_date?: string | null; end_date?: string | null },
+  today = new Date(),
+): TripStatus {
+  const stored = trip.status || "planning";
+  if (stored !== "planning" || !trip.start_date || !trip.end_date) return stored;
+  const day = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+  return trip.start_date <= day && day <= trip.end_date ? "travelling" : stored;
+}
+
 export function isActiveRouteItem(item: TripItem) {
   const systemLocationReady = item.latitude != null && item.longitude != null;
   return !item.is_skipped

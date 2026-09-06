@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**11 open · 0 in progress · 1 blocked · 0 in review · 60 done**
+**10 open · 0 in progress · 1 blocked · 0 in review · 61 done**
 
 ## Ready to claim
 
@@ -19,7 +19,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [列印版行程表（一天一頁的 A5 列印樣式）](open/2026-09-06-printable-itinerary.md) | web | `apps/web/app/[locale]/trips/[id]/print`<br>`apps/web/app/globals.css` |
 | P3 | [PWA、Android share target 與今日檢視](open/2026-09-06-pwa-share-target-today-view.md) | web | `apps/web/app/manifest.ts`<br>`apps/web/public`<br>`apps/web/components/today-view.tsx` |
 | P3 | [已存行程頁掛上分潤選項](open/2026-09-06-trip-affiliate-options.md) | web | `apps/web/components/trip-editor.tsx`<br>`apps/web/components/affiliate-partner-options.tsx` |
-| P3 | [行程狀態標籤與封面圖](open/2026-09-06-trip-status-and-cover.md) | api | `apps/api/app/trips/metadata.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-meta-editor.tsx` |
 | P3 | [Measure the flood before widening ALLOWED_TYPES with temple, shrine and museum types](open/2026-09-06-measure-the-flood-before-widening-allowed.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/tests/test_hotspot_discovery.py` |
 | P3 | [後台其餘三個面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n-remaining.md) | web | `apps/web/components/admin-hotspot-places-panel.tsx`<br>`apps/web/components/admin-deployments-panel.tsx`<br>`apps/web/components/admin-users-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/app/[locale]/admin/page.tsx`<br>`apps/web/app/[locale]/admin/settings/page.tsx`<br>`apps/web/app/[locale]/admin/system-settings/page.tsx`<br>`apps/web/app/[locale]/admin/hotspots/page.tsx`<br>`apps/web/app/[locale]/admin/foods/page.tsx`<br>`apps/web/app/[locale]/admin/users/page.tsx`<br>`apps/web/app/[locale]/admin/deployments/page.tsx`<br>`apps/web/app/[locale]/admin/analytics/page.tsx`<br>`apps/web/app/[locale]/admin/usage-settings/page.tsx`<br>`apps/web/app/[locale]/admin/layout-settings/page.tsx` |
 | P3 | [美食與景點頁的國家／城市名稱在 en／ja／ko 仍是繁中](open/2026-09-06-food-hotspot-place-names-i18n.md) | api | `apps/api/app/foods/router.py`<br>`apps/api/app/foods/service.py`<br>`apps/api/app/foods/area_catalog.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/api/app/localized_names.py`<br>`apps/api/app/destinations/localized.py` |
@@ -41,6 +40,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [行程狀態標籤與封面圖](done/2026-09-06-trip-status-and-cover.md)
 - 2026-09-06 [分享頁「存成我的行程」與 QR code](done/2026-09-06-share-fork-and-qr.md)
 - 2026-09-06 [ICS 行事曆匯出](done/2026-09-06-ics-calendar-export.md)
 - 2026-09-06 [編輯後不打 provider 也要把 DB 的行程時間重新推算](done/2026-09-06-route-projection-only-pass.md)
@@ -50,4 +50,3 @@ _Nothing here._
 - 2026-09-06 [誠實路段守衛：拒絕 0 分鐘路段與漏掉步行段的轉乘方案](done/2026-09-06-honest-leg-guard.md)
 - 2026-09-06 [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](done/2026-09-06-google-far-future-transit-cascade.md)
 - 2026-09-06 [用 AI 審核 1,270 筆待審介紹候選](done/2026-09-06-ai-review-guide-backlog.md)
-- 2026-09-06 [usage catalog validation rejects everything when web ships ahead of api](done/2026-09-06-usage-catalog-validation-rejects-everything-when.md)

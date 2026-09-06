@@ -30,6 +30,45 @@ describe("AccountList", () => {
     apiMock.mockReset();
   });
 
+  it("labels a saved trip with its status and shows the cover it was given", async () => {
+    stub({
+      "GET /trips": () => [{
+        id: "trip-1",
+        name: "京都五天",
+        destination_name: "京都",
+        start_date: "2026-11-10",
+        end_date: "2026-11-14",
+        status: "ready",
+        cover_image_url: "https://upload.wikimedia.org/wikipedia/commons/a/ab/Kyoto.jpg",
+      }],
+      "GET /usage": () => usage,
+    });
+    render(<AccountList kind="trips" />);
+
+    await screen.findByText("京都五天");
+    expect(screen.getByText("整裝待發")).toBeTruthy();
+    expect(screen.getByRole("img", { name: "京都五天 的封面圖" }).getAttribute("src")).toContain("Kyoto.jpg");
+  });
+
+  it("says a trip is under way while its dates are running, without changing what is stored", async () => {
+    vi.setSystemTime(new Date("2026-11-12T02:00:00Z"));
+    stub({
+      "GET /trips": () => [{
+        id: "trip-2",
+        name: "東京五天",
+        start_date: "2026-11-10",
+        end_date: "2026-11-14",
+        status: "planning",
+      }],
+      "GET /usage": () => usage,
+    });
+    render(<AccountList kind="trips" />);
+
+    await screen.findByText("東京五天");
+    expect(screen.getByText("旅行中")).toBeTruthy();
+    vi.useRealTimers();
+  });
+
   it("edits and pauses an alert", async () => {
     stub({
       "GET /alerts": () => [alert],

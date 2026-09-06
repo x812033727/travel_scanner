@@ -35,6 +35,7 @@ import {
 } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 import {
   useCallback,
   useEffect,
@@ -1534,7 +1535,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       <div className="relative flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
         <div>
           <div className="flex flex-wrap items-center gap-2 text-xs font-semibold"><span className="rounded-full bg-white/75 px-3 py-1.5 text-[var(--teal)]">{te("plannerVersion", { version: trip.version })}</span><span aria-live="polite" className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 ${saveState === "saved" ? "bg-emerald-50 text-emerald-800" : saveState === "dirty" || saveState === "saving" ? "bg-amber-50 text-amber-900" : "bg-red-50 text-red-800"}`}>{saveIcon}{saveLabel}</span></div>
-          <div className="mt-3 flex items-center gap-3"><h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{trip.name}</h1><TripMetaEditor trip={trip} variant="hero" disabled={saveState === "conflict" || Boolean(action)} prepare={() => flushChanges()} onUpdated={applyMetaUpdate} /></div>
+          <div className="mt-3 flex items-center gap-3">{trip.cover_image_url && <Image src={trip.cover_image_url} alt={t("meta.coverAlt", { name: trip.name })} width={56} height={56} unoptimized className="h-14 w-14 shrink-0 rounded-2xl object-cover" />}<h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{trip.name}</h1><TripMetaEditor trip={trip} variant="hero" disabled={saveState === "conflict" || Boolean(action)} prepare={() => flushChanges()} onUpdated={applyMetaUpdate} /></div>
           <p className="mt-2 text-sm leading-6 text-[var(--muted)] sm:text-base">{trip.destination_name || te("tripFallback")}{trip.start_date ? te("dateRange", { start: trip.start_date, end: trip.end_date ?? "" }) : ""}{Number(trip.total_price) > 0 ? (trip.price_status === "stale" ? te("stalePrice", { amount: twd.format(Number(trip.total_price)) }) : ` · ${twd.format(Number(trip.total_price))}`) : ""}</p>
           <p className="mt-2 text-xs text-[var(--muted)]">{aiCharge.status === "ready" ? te("aiChargeHelp", { charge: aiCharge.label }) : aiCharge.unavailableHelp}</p>
           {desktopMapVisible && trip.price_status !== "stale" && <div className="mt-3 max-w-xs"><PriceAlertButton resourceType="trip" resourceId={trip.id} currentPrice={Number(trip.total_price)} currency={trip.currency} returnPath={`/trips/${trip.id}`} /></div>}
