@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**36 open · 0 in progress · 0 blocked · 0 in review · 21 done**
+**36 open · 0 in progress · 0 blocked · 0 in review · 22 done**
 
 ## Ready to claim
 
@@ -69,9 +69,9 @@ _Nothing here._
 - 2026-09-06 [行程編輯後不清整天路段、缺的段用距離估計、按鈕不再預設 refresh](done/2026-09-06-route-editor-partial-invalidation.md)
 - 2026-09-06 [整天重算只打真的缺的路段；編輯後不再自動整趟重算](done/2026-09-06-route-recompute-reuses-saved-segments.md)
 - 2026-09-06 [路線快取 key 依 provider 的時間粒度；DB 路段過期與 Redis TTL 分開](done/2026-09-06-route-cache-time-key.md)
+- 2026-09-06 [Default the Gemini guide model to gemini-3.8-flash](done/2026-09-06-gemini-3-8-flash-default.md)
 - 2026-09-06 [搜尋結果頁整頁文案寫死繁中](done/2026-09-06-search-results-i18n.md)
 - 2026-09-06 [行程編輯器 294 句硬編碼繁中未五語系化](done/2026-09-06-trip-editor-i18n.md)
 - 2026-09-06 [catalog fallback 被當成 AI 精修呈現給使用者](done/2026-09-06-intent-fallback-honesty.md)
 - 2026-09-06 [意圖列的 diff 與 apply 實際行為不一致](done/2026-09-06-intent-diff-mismatch.md)
 - 2026-09-06 [意圖精修刪除列時連帶清掉使用者輸入的交通時間](done/2026-09-06-intent-route-segment-cascade.md)
-- 2026-09-06 [整趟範圍的意圖精修不計費，等同免費的付費生成](done/2026-09-06-intent-trip-scope-free.md)
