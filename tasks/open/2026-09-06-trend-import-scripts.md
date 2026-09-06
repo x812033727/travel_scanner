@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-trend-import-scripts
 title: 把潮流街區的匯入腳本收進 repo
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T02:57:11Z
 created_at: 2026-09-06T00:52:35Z
 completed_at:
-branch:
+branch: claude/foods-data-p1
 depends_on: []
 scope:
   - apps/api/app/foods/trend_import.py

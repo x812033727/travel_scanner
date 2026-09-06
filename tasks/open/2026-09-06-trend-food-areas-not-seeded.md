@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-trend-food-areas-not-seeded
 title: 57 個潮流商圈只存在正式機資料庫
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T02:57:00Z
 created_at: 2026-09-06T00:53:02Z
 completed_at:
-branch:
+branch: claude/foods-data-p1
 depends_on: []
 scope:
   - apps/api/app/foods/area_catalog.py
