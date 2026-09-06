@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-route-editor-partial-invalidation
 title: 行程編輯後不清整天路段、缺的段用距離估計、按鈕不再預設 refresh
-status: open
+status: in-progress
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5.1
+claimed_at: 2026-09-06T03:00:03Z
 created_at: 2026-09-06T02:45:24Z
 completed_at:
-branch:
+branch: claude/route-editor-partial-invalidation
 depends_on: []
 scope:
   - apps/web/lib/trip-types.ts
@@ -43,25 +43,25 @@ scope:
 
 ## Definition of done
 
-- [ ] 改一站地點後，只有碰到那一站的兩段變成「約 X 分」，其餘段仍顯示「預計」與原路線。
-- [ ] 「約 X 分」用兩站座標的距離估（步行 4.5 km/h；汽車 5 分 + 30 km/h；大眾運輸 10 分 +
+- [x] 改一站地點後，只有碰到那一站的兩段變成「約 X 分」，其餘段仍顯示「預計」與原路線。
+- [x] 「約 X 分」用兩站座標的距離估（步行 4.5 km/h；汽車 5 分 + 30 km/h；大眾運輸 10 分 +
       20 km/h；取 5 分整），缺座標才退回只加緩衝。
-- [ ] 改順序／拖曳只丟不再相鄰的段。
-- [ ] 查路、改當日交通方式、改緩衝、橫幅都送 `refresh:false`；只有「重新查詢可用路線」（:1556）
+- [x] 改順序／拖曳只丟不再相鄰的段。
+- [x] 查路、改當日交通方式、改緩衝、橫幅都送 `refresh:false`；只有「重新查詢可用路線」（:1556）
       與當天是今天時送 `refresh:true`。
-- [ ] 橫幅改為「有 N 段移動尚未查路」+ 查路；N = 0 不顯示。文案走 `messages/*/trips.json`
+- [x] 橫幅改為「有 N 段移動尚未查路」+ 查路；N = 0 不顯示。文案走 `messages/*/trips.json`
       五語系（`check:i18n` 會擋新的硬編碼中文）。
-- [ ] `npm run lint:web && CI=1 npm run check:i18n && npm run typecheck:web && npm run test:web` 通過。
+- [x] `npm run lint:web && CI=1 npm run check:i18n && npm run typecheck:web && npm run test:web` 通過。
 
 ## Steps
 
-- [ ] `lib/trip-types.ts`：`estimateLegMinutes(from, to, mode)`、`adjacentPairKeys(rows)`；
+- [x] `lib/trip-types.ts`：`estimateLegMinutes(from, to, mode)`、`adjacentPairKeys(rows)`；
       `projectChainedStarts` 多收 `mode`，缺 segment 時用估計值。
-- [ ] `components/trip-editor.tsx`：`computeRoutes` 的 refresh 預設 false 並逐一改呼叫點；
+- [x] `components/trip-editor.tsx`：`computeRoutes` 的 refresh 預設 false 並逐一改呼叫點；
       `projectChainedStarts` 改傳完整 `routes`；`move`/`drop` 只丟不再相鄰的段；橫幅計數與文案。
-- [ ] `components/route-timeline-link.tsx`：`stale` 語意改為「沒有 segment 或
+- [x] `components/route-timeline-link.tsx`：`stale` 語意改為「沒有 segment 或
       segment.status === "stale"」，確認缺段時的樣式。
-- [ ] 測試：`lib/trip-types.test.ts`、`components/trip-editor.test.tsx`、
+- [x] 測試：`lib/trip-types.test.ts`、`components/trip-editor.test.tsx`、
       `components/route-timeline-link.test.tsx`。
 
 ## How to verify
@@ -77,3 +77,8 @@ Network 裡 `compute-day` 的 body 是 `refresh:false`；改緩衝 → 同樣 `r
 
 - `RouteModePanel` 不動：它已經是點哪種交通方式才查哪種。
 - `staleDays` 仍可保留當「有東西改過」的旗標，但不要再拿它把整天路段清掉。
+- `route-timeline-link.tsx` 本身不用改：缺 segment 時本來就顯示「選擇這段交通方式」，
+  只是 editor 不再把整天的 `stale` 旗標傳進去（改成 `segment?.status === "stale"`）。
+- `staleDays` 保留為「這一天改過東西」的旗標，只拿來決定橫幅要不要出現（且缺段 > 0）；
+  它有 14 個寫入點，這次不拆。
+- 測試裡路段分鐘數避開 0/5/10/15/30：緩衝下拉的選項文字也是「30 分」，`getByText` 會撞到。

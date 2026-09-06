@@ -1,5 +1,15 @@
 import { describe, expect, it } from "vitest";
-import { formatTime, projectChainedStarts, type RouteSegment, type TripItem } from "./trip-types";
+import {
+  adjacentPairKeys,
+  distanceKm,
+  estimateLegMinutes,
+  formatTime,
+  missingSegmentCount,
+  projectChainedStarts,
+  segmentsForRows,
+  type RouteSegment,
+  type TripItem,
+} from "./trip-types";
 
 describe("formatTime", () => {
   it("keeps offset-free itinerary values as trip-local wall-clock time", () => {
@@ -105,5 +115,81 @@ describe("projectChainedStarts", () => {
 
     expect(projected.get("museum")?.start).toBe("2026-11-10T09:10");
     expect(formatTime(projected.get("museum")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:10");
+  });
+});
+
+describe("estimateLegMinutes", () => {
+  const station = { latitude: 35.6812, longitude: 139.7671 };
+  const temple = { latitude: 35.7148, longitude: 139.7967 };
+
+  it("scales the straight-line distance by a modest speed per mode, in five-minute steps", () => {
+    // 東京車站 → 淺草寺 直線約 4.6 公里
+    expect(distanceKm(station, temple)).toBeCloseTo(4.59, 1);
+    expect(estimateLegMinutes(station, temple, "walk")).toBe(65);
+    expect(estimateLegMinutes(station, temple, "transit")).toBe(25);
+    expect(estimateLegMinutes(station, temple, "drive")).toBe(15);
+  });
+
+  it("never returns zero for a short hop and gives up without coordinates", () => {
+    expect(estimateLegMinutes(station, { latitude: 35.6815, longitude: 139.7675 }, "walk")).toBe(5);
+    expect(estimateLegMinutes(station, { latitude: null, longitude: null }, "walk")).toBeUndefined();
+  });
+});
+
+describe("projectChainedStarts with located stops", () => {
+  it("adds a distance-based travel estimate between stops that have no route yet", () => {
+    const rows = [
+      item({ id: "hotel", system_role: "hotel_start", fixed_time: true, start_time: "2026-11-10T09:00:00+09:00", duration_minutes: 0, latitude: 35.6812, longitude: 139.7671 }),
+      item({ id: "temple", latitude: 35.7148, longitude: 139.7967 }),
+    ];
+    const projected = projectChainedStarts(rows, [], 10, "transit");
+
+    // 09:00 出發 + 約 25 分大眾運輸 + 10 分緩衝 → 09:35，仍標示為估計
+    expect(formatTime(projected.get("temple")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:35");
+    expect(projected.get("temple")?.estimated).toBe(true);
+  });
+
+  it("uses the computed segment for a routed leg and the estimate only for the missing one", () => {
+    const rows = [
+      item({ id: "hotel", system_role: "hotel_start", fixed_time: true, start_time: "2026-11-10T09:00:00+09:00", duration_minutes: 0, latitude: 35.6812, longitude: 139.7671 }),
+      item({ id: "temple", latitude: 35.7148, longitude: 139.7967 }),
+      item({ id: "tower", latitude: 35.7101, longitude: 139.8107 }),
+    ];
+    const projected = projectChainedStarts(rows, [segment("hotel", "temple", "2026-11-10T09:28:00+09:00")], 10, "walk");
+
+    expect(formatTime(projected.get("temple")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:28");
+    expect(projected.get("temple")?.estimated).toBe(false);
+    // 淺草寺 → 晴空塔 約 1.4 公里步行 ≈ 20 分：10:28 + 20 + 10 緩衝
+    expect(formatTime(projected.get("tower")?.start, "zh-TW", "Asia/Tokyo")).toBe("10:58");
+    expect(projected.get("tower")?.estimated).toBe(true);
+  });
+});
+
+describe("adjacent pair helpers", () => {
+  const rows = ["a", "b", "c", "d"].map((id, position) => item({ id, position }));
+  const segments = [
+    segment("a", "b", "2026-11-10T09:30:00+09:00"),
+    segment("b", "c", "2026-11-10T10:30:00+09:00"),
+    segment("c", "d", "2026-11-10T11:30:00+09:00"),
+  ];
+
+  it("keeps only the segments whose stops are still adjacent after a reorder", () => {
+    const reordered = rows.map((row) => row.id === "d" ? { ...row, position: 2 } : row.id === "c" ? { ...row, position: 3 } : row);
+    const surviving = segmentsForRows(segments, reordered);
+
+    expect(surviving.map((entry) => `${entry.from_item_id}->${entry.to_item_id}`)).toEqual(["a->b"]);
+    expect(missingSegmentCount(reordered, surviving)).toBe(2);
+    expect(missingSegmentCount(rows, segments)).toBe(0);
+  });
+
+  it("ignores skipped stops and pairs each day on its own", () => {
+    const withSkipAndOtherDay = [
+      ...rows.slice(0, 3),
+      { ...rows[3], is_skipped: true },
+      item({ id: "e", position: 0, day_date: "2026-11-11" }),
+      item({ id: "f", position: 1, day_date: "2026-11-11" }),
+    ];
+
+    expect([...adjacentPairKeys(withSkipAndOtherDay)]).toEqual(["a->b", "b->c", "e->f"]);
   });
 });
