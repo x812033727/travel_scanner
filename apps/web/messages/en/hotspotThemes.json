@@ -1,0 +1,90 @@
+{
+  "tabs": {
+    "themes": "Themes",
+    "intros": "Introductions"
+  },
+  "kinds": {
+    "season": "Seasonal",
+    "shop": "Shop type"
+  },
+  "active": "Active",
+  "inactive": "Inactive",
+  "edit": "Edit",
+  "cancel": "Cancel",
+  "close": "Close",
+  "refresh": "Refresh",
+  "loading": "Loading…",
+  "saving": "Saving…",
+  "loadFailed": "Could not load; try refreshing",
+  "localizedName": "{locale} name",
+  "months": {
+    "label": "Applicable months",
+    "allYear": "All year",
+    "none": "Not set",
+    "help": "Only seasonal themes need months; tap to toggle, and a range may wrap the year (November to January, say)."
+  },
+  "themes": {
+    "title": "Theme taxonomy",
+    "description": "Maintain seasonal themes and shop types: five-language names, applicable months, order and status. Names appear as-is in the hotspot theme filters, without going through the message catalogs.",
+    "add": "Add theme",
+    "createTitle": "New theme",
+    "editTitle": "Edit {name}",
+    "slug": "Code",
+    "slugHelp": "Lower-case letters, digits and hyphens; fixed once created.",
+    "kind": "Kind",
+    "kindFilter": "Theme kind",
+    "allKinds": "All kinds",
+    "displayOrder": "Order",
+    "save": "Save theme",
+    "created": "Theme created",
+    "updated": "Theme updated",
+    "empty": "No themes yet",
+    "hotspotCount": "{count} attractions",
+    "nameRequired": "Every language needs a name",
+    "monthsRequired": "A seasonal theme needs at least one month"
+  },
+  "intros": {
+    "title": "Introductions",
+    "description": "AI-drafted, admin-reviewed introductions. Readers only see approved text, one paragraph per attraction per language.",
+    "statusFilter": "Status",
+    "allStatuses": "All statuses",
+    "status": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "disabled": "Disabled"
+    },
+    "localeFilter": "Language",
+    "allLocales": "All languages",
+    "hotspotFilter": "Attraction name",
+    "selectAll": "Select all shown",
+    "clearSelection": "Clear selection",
+    "selected": "{count} selected",
+    "selectItem": "Select {name} ({locale})",
+    "approve": "Approve",
+    "reject": "Reject",
+    "reviewed": "{count} introductions reviewed",
+    "sourceAi": "AI draft",
+    "sourceManual": "Manual",
+    "edit": "Edit text",
+    "body": "Introduction text",
+    "bodyCount": "{count}/1500",
+    "save": "Save text",
+    "saved": "Introduction updated",
+    "empty": "No matching introductions",
+    "updatedAt": "Updated {time}",
+    "counts": "{pending} pending · {approved} approved"
+  },
+  "editor": {
+    "open": "Themes",
+    "title": "Themes for {name}",
+    "description": "Tick the themes that apply; a seasonal theme can carry months just for this attraction.",
+    "shopOnly": "Shop types only apply to attractions in the Shopping category.",
+    "defaultMonths": "Use the default months ({months})",
+    "save": "Save themes",
+    "saved": "Themes for {name} updated",
+    "none": "No themes assigned",
+    "noThemes": "No active themes yet; add one under Themes first.",
+    "removed": "Removed (the seed file will not add it back)"
+  }
+}

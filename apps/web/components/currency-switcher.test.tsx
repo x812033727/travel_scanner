@@ -1,9 +1,20 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { CurrencySwitcher } from "./currency-switcher";
+import { HeaderSessionProvider } from "./header-session";
 
 function ok(payload: unknown) {
   return { ok: true, status: 200, json: async () => payload };
+}
+
+// The layout wraps the whole page in this; the switcher reads the currency from it
+// rather than asking /auth/me for a second copy of the same profile.
+function renderSwitcher() {
+  return render(
+    <HeaderSessionProvider>
+      <CurrencySwitcher />
+    </HeaderSessionProvider>,
+  );
 }
 
 afterEach(() => vi.unstubAllGlobals());
@@ -11,7 +22,7 @@ afterEach(() => vi.unstubAllGlobals());
 describe("currency switcher", () => {
   it("shows the saved currency and a sample formatted with it", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => ok({ id: "u1", preferred_currency: "JPY" })));
-    render(<CurrencySwitcher />);
+    renderSwitcher();
 
     const select = (await screen.findByLabelText("幣別")) as HTMLSelectElement;
     expect(select.value).toBe("JPY");
@@ -25,7 +36,7 @@ describe("currency switcher", () => {
       ok({ id: "u1", preferred_currency: "TWD" }),
     );
     vi.stubGlobal("fetch", fetchMock);
-    render(<CurrencySwitcher />);
+    renderSwitcher();
 
     const select = await screen.findByLabelText("幣別");
     fireEvent.change(select, { target: { value: "KRW" } });
@@ -44,7 +55,7 @@ describe("currency switcher", () => {
         : ok({ id: "u1", preferred_currency: "TWD" }),
     );
     vi.stubGlobal("fetch", fetchMock);
-    render(<CurrencySwitcher />);
+    renderSwitcher();
 
     const select = (await screen.findByLabelText("幣別")) as HTMLSelectElement;
     fireEvent.change(select, { target: { value: "THB" } });
@@ -58,7 +69,7 @@ describe("currency switcher", () => {
       "fetch",
       vi.fn(async () => ({ ok: false, status: 401, json: async () => ({ detail: "請先登入" }) })),
     );
-    const { container } = render(<CurrencySwitcher />);
+    const { container } = renderSwitcher();
 
     await waitFor(() => expect(container.querySelector("section")).toBeNull());
     expect(screen.queryByLabelText("幣別")).toBeNull();
@@ -71,7 +82,7 @@ describe("currency switcher", () => {
       "fetch",
       vi.fn(async () => ({ ok: false, status: 503, json: async () => ({ detail: "維護中" }) })),
     );
-    render(<CurrencySwitcher />);
+    renderSwitcher();
 
     const select = (await screen.findByLabelText("幣別")) as HTMLSelectElement;
     expect(select.value).toBe("TWD");
@@ -90,7 +101,7 @@ describe("currency switcher", () => {
         return ok({});
       }),
     );
-    render(<CurrencySwitcher />);
+    renderSwitcher();
 
     const select = (await screen.findByLabelText("幣別")) as HTMLSelectElement;
     fireEvent.change(select, { target: { value: "JPY" } });
@@ -102,5 +113,16 @@ describe("currency switcher", () => {
 
     await waitFor(() => expect(select.value).toBe("KRW"));
     expect(screen.queryByRole("status")).toBeNull();
+  });
+
+  it("asks /auth/me once, not once per component on the page", async () => {
+    const fetchMock = vi.fn<(url: string) => Promise<unknown>>(async () =>
+      ok({ id: "u1", preferred_currency: "JPY" }),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+    renderSwitcher();
+
+    await screen.findByLabelText("幣別");
+    expect(fetchMock.mock.calls.filter(([url]) => String(url).endsWith("/auth/me"))).toHaveLength(1);
   });
 });

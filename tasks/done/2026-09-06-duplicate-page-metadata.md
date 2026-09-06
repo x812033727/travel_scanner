@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-duplicate-page-metadata
 title: 十三個公開頁裡有九個共用同一組 title 與 description
-status: in-progress
+status: done
 priority: P3
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T17:56:45Z
 created_at: 2026-09-06T17:32:56Z
-completed_at:
+completed_at: 2026-09-06T18:57:20Z
 branch: claude/ux-batch-3
 depends_on: []
 scope:

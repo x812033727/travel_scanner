@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**3 open · 1 in progress · 3 blocked · 0 in review · 109 done**
+**1 open · 0 in progress · 3 blocked · 0 in review · 112 done**
 
 ## Ready to claim
 
@@ -14,14 +14,10 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
-| P2 | [後台主題管理畫面：taxonomy 表格與逐景點指派](open/2026-09-06-hotspot-themes-admin-web.md) | web | `apps/web/components/admin-hotspot-themes-panel.tsx`<br>`apps/web/components/admin-hotspot-theme-editor.tsx`<br>`apps/web/components/admin-hotspots-workspace.tsx`<br>`apps/web/components/admin-hotspots-panel.tsx`<br>`apps/web/i18n/request.ts`<br>`apps/web/vitest.setup.tsx`<br>`apps/web/messages/en/hotspotThemes.json`<br>`apps/web/messages/ja/hotspotThemes.json`<br>`apps/web/messages/ko/hotspotThemes.json`<br>`apps/web/messages/zh-TW/hotspotThemes.json`<br>`apps/web/messages/zh-CN/hotspotThemes.json` |
-| P2 | [未登入的 /account 仍打七次注定 401 的請求](open/2026-09-06-signed-out-account-requests.md) | web | `apps/web/components/account-panel.tsx`<br>`apps/web/components/site-header.tsx`<br>`apps/web/components/usage-summary.tsx` |
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [十三個公開頁裡有九個共用同一組 title 與 description](open/2026-09-06-duplicate-page-metadata.md) | claude-opus-5 | 2026-09-06T17:56:45Z | `claude/ux-batch-3` |
+_Nothing here._
 
 ## In review
 
@@ -38,12 +34,12 @@ _Nothing here._
 ## Recently finished
 
 - 2026-09-06 [後台以外的公開頁沒有頁尾，也沒有隱私權、條款、關於或聯絡的連結](done/2026-09-06-no-footer-legal-links.md)
+- 2026-09-06 [未登入的 /account 仍打七次注定 401 的請求](done/2026-09-06-signed-out-account-requests.md)
 - 2026-09-06 [手機版行程頁的浮動元件佔掉三分之一畫面](done/2026-09-06-planner-mobile-chrome.md)
+- 2026-09-06 [後台主題管理畫面：taxonomy 表格與逐景點指派](done/2026-09-06-hotspot-themes-admin-web.md)
+- 2026-09-06 [十三個公開頁裡有九個共用同一組 title 與 description](done/2026-09-06-duplicate-page-metadata.md)
 - 2026-09-06 [後台審核頁在看到第一筆待審之前先給 30 個控制項](done/2026-09-06-admin-review-density.md)
 - 2026-09-06 [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](done/2026-09-06-admin-load-error-copy.md)
 - 2026-09-06 [LINE 綁定關鍵字只認繁體中文，日英韓讀者照著做也綁不上](done/2026-09-06-line-link-keyword-chinese-only.md)
 - 2026-09-06 [美食頁在預設字級下 CLS 0.29，第四秒還在跳版](done/2026-09-06-foods-late-layout-shift.md)
 - 2026-09-06 [未登入開 /account 會同時看到三種互相矛盾的狀態](done/2026-09-06-account-signed-out-states.md)
-- 2026-09-06 [購物行程：規劃器聽得懂店家類型，也知道什麼當季](done/2026-09-06-planner-shop-themes.md)
-- 2026-09-06 [價格通知頁的副標與 LINE 卡片在四個語系都是繁中](done/2026-09-06-alerts-hardcoded-zh-tw.md)
-- 2026-09-06 [上線後查核抓到的六個問題（大字閃爍、焦點掉回 body、標點與複數）](done/2026-09-06-post-deploy-verification-fixes.md)
