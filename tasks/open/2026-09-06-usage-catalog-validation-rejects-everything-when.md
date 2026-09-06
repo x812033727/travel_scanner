@@ -1,0 +1,73 @@
+---
+id: 2026-09-06-usage-catalog-validation-rejects-everything-when
+title: usage catalog validation rejects everything when web ships ahead of api
+status: open
+priority: P2
+area: web
+owner:
+claimed_at:
+created_at: 2026-09-06T00:55:44Z
+completed_at:
+branch:
+depends_on: []
+scope:
+  - apps/web/lib/usage-catalog.ts
+---
+
+# usage catalog validation rejects everything when web ships ahead of api
+
+## Why
+
+`isUsageCatalog()` requires **every** operation in `usageOperations` to carry a cost, and
+returns false for the whole catalog if one is missing. A false catalog means
+`status: "unavailable"`, and every metered surface renders its unavailable branch.
+
+That is fail-closed by design, and defensible. But the failure is total and silent: adding
+one operation to the list disables pricing copy on the search page, the alerts page, the
+fare lab, back-to-back comparison and the planner previews — none of which have anything to
+do with the new operation.
+
+This already happened once. Adding `ai_itinerary_refine` broke sixteen browser tests on
+unrelated pages because `tools/e2e-runtime-api.mjs` hardcodes its own copy of the operation
+list. The fixture is fixed and guarded by `apps/web/lib/usage-catalog-e2e-fixture.test.ts`,
+so the test-side drift cannot recur.
+
+The production shape of the same hazard is untouched: if a web bundle is deployed ahead of
+an API that does not yet serve the new operation, every metered surface in the product goes
+dark at once, for a reason no error message explains.
+
+## Definition of done
+
+- [ ] A catalog missing one operation degrades that operation, not the entire catalog.
+- [ ] Whatever the product decides here is deliberate and written down, rather than an
+      emergent property of a validator.
+
+## Steps
+
+- [ ] Decide the policy. Options, roughly:
+      (a) keep fail-closed but log/surface which key was missing, so the cause is findable;
+      (b) accept a catalog missing keys and fall back to the default cost for those, so an
+          unknown operation is priced conservatively rather than blanking the product;
+      (c) version the catalog payload so the client knows the API is older and can say so.
+- [ ] Implement the chosen policy and cover the missing-key path with a test.
+- [ ] Note the deploy-ordering assumption somewhere a deployer will read it. Today the web
+      and API images are built and deployed together by
+      `docker compose -f docker-compose.prod.yml --profile hotspots up --build -d`, so the
+      window is small — but nothing enforces that they stay in step.
+
+## How to verify
+
+```bash
+npm run test:web
+```
+
+Plus: serve a catalog with one operation removed and confirm the rest of the product still
+prices correctly.
+
+## Notes
+
+Found while debugging a CI failure that looked like flakiness — sixteen browser tests
+failing on pages unrelated to the change, in a cascade that started a third of the way
+through the run. Diagnosed twice as an environment problem before a clean-main worktree
+proved otherwise. Recorded here because the diagnostic difficulty is part of the cost: the
+symptom points nowhere near the cause.

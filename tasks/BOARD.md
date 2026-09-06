@@ -5,13 +5,24 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**0 open · 0 in progress · 0 blocked · 0 in review · 0 done**
+**11 open · 0 in progress · 0 blocked · 0 in review · 0 done**
 
 ## Ready to claim
 
 Nothing here is owned, blocked by a dependency, or overlapping active work. Take the top one.
 
-_Nothing here._
+| Priority | Task | Area | Scope |
+| --- | --- | --- | --- |
+| P1 | [意圖列的 diff 與 apply 實際行為不一致](open/2026-09-06-intent-diff-mismatch.md) | api | `apps/api/app/trips/intents.py`<br>`apps/api/tests/test_trip_intents.py` |
+| P1 | [整趟範圍的意圖精修不計費，等同免費的付費生成](open/2026-09-06-intent-trip-scope-free.md) | api | `apps/api/app/trips/intents.py`<br>`apps/api/app/usage/service.py` |
+| P1 | [延長行程會摧毀已填的航班訂位且不提示](open/2026-09-06-reschedule-flight-anchor-loss.md) | api | `apps/api/app/trips/reschedule.py` |
+| P1 | [CI should fail a branch that adds a second alembic head](open/2026-09-06-ci-should-fail-a-branch-that.md) | ops | `.github/workflows/ci.yml`<br>`apps/api/tests/test_schema.py` |
+| P2 | [日期變更後行程價格停在舊報價且無法重新查價](open/2026-09-06-trip-stale-price-after-reschedule.md) | api | `apps/api/app/trips/reschedule.py`<br>`apps/api/app/trips/router.py` |
+| P2 | [catalog fallback 被當成 AI 精修呈現給使用者](open/2026-09-06-intent-fallback-honesty.md) | api | `apps/api/app/trips/intents.py`<br>`apps/web/components/itinerary-diff.tsx` |
+| P2 | [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](open/2026-09-06-reoptimize-no-version-check.md) | api | `apps/api/app/trips/router.py` |
+| P2 | [usage catalog validation rejects everything when web ships ahead of api](open/2026-09-06-usage-catalog-validation-rejects-everything-when.md) | web | `apps/web/lib/usage-catalog.ts` |
+| P2 | [剩下的規劃流程增量：營業時間感知、匯入、匯出、分享](open/2026-09-06-planning-flow-remaining-increments.md) | meta | `docs/planning-flow-spec.md` |
+| P3 | [food seed counts are hardcoded twelve times and only CI can see them](open/2026-09-06-food-seed-counts-are-hardcoded-twelve.md) | api | `apps/api/tests/test_food_integration.py` |
 
 ## In progress
 
@@ -23,7 +34,9 @@ _Nothing here._
 
 ## Waiting
 
-_Nothing here._
+| Priority | Task | Waiting on |
+| --- | --- | --- |
+| P1 | [意圖精修刪除列時連帶清掉使用者輸入的交通時間](open/2026-09-06-intent-route-segment-cascade.md) | depends on 2026-09-06-intent-diff-mismatch |
 
 ## Recently finished
 
