@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**7 open · 1 in progress · 2 blocked · 5 in review · 90 done**
+**7 open · 0 in progress · 3 blocked · 5 in review · 90 done**
 
 ## Ready to claim
 
@@ -18,9 +18,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | claude-opus-5 | 2026-09-06T13:20:48Z | `claude/place-names-i18n` |
+_Nothing here._
 
 ## In review
 
@@ -37,6 +35,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Waiting on |
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
+| P2 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
 | P1 | [公開頁精簡：景點卡動作分層、首頁膠囊溢出、排行榜第一屏](open/2026-09-06-simplify-public-cards.md) | active work in the same scope |
 | P2 | [手機版行程頁的浮動元件佔掉三分之一畫面](open/2026-09-06-planner-mobile-chrome.md) | active work in the same scope |
