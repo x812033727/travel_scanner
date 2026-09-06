@@ -904,6 +904,23 @@ def _legacy_vendor_fields(row: ProviderConfig, base: Settings) -> list[str]:
     return sorted(leftover)
 
 
+# Cards whose upstream can actually be called. For these, a stored key that has never
+# passed a connection test is not evidence that anything works: during the Tokyo planner
+# outage every one of them was green while the feature answered 500 on every request.
+CONNECTION_TESTED_PROVIDERS = frozenset({
+    "google_login", "line_login", "apple_login",
+    "ai_vendors", "ai_planner", "ai_guide_search",
+    "google_maps", "naver_maps", "youtube_guides", "brave_guides", "gemini_guides",
+    "amadeus", "skyscanner", "duffel", "flightaware", "google_travel_impact",
+    "booking_demand", "met_norway", "ekispert", "odsay", "navitime",
+    "travelpayouts", "kkday", "klook", "airalo", "trip_com", "agoda", "booking",
+    "skyscanner_affiliate",
+})
+# The rest hold settings with no upstream to call, or read other cards' keys, so testing
+# them proves nothing and their green light already means what it says.
+LOCAL_ONLY_PROVIDERS = frozenset({"analytics", "hotspot_guides", "layout", "runtime"})
+
+
 def _production_test_required(provider: str, settings: Settings) -> bool:
     if provider == "amadeus":
         return settings.amadeus_env.lower() == "production"
@@ -919,6 +936,36 @@ def _production_test_required(provider: str, settings: Settings) -> bool:
         "ekispert",
         "odsay",
     }
+
+
+def card_state(
+    provider: str,
+    settings: Settings,
+    *,
+    enabled: bool,
+    last_test_status: str | None,
+    last_test_message: str | None,
+) -> tuple[bool, str, str]:
+    """What one settings card says: whether it is configured, its status and why.
+
+    ``unverified`` is the state that used to be invisible. A provider with a key nobody has
+    ever tested looked exactly like one that answered a live call a minute ago, which is how
+    an operator can watch a green board while the feature behind it is down.
+    """
+    configured, status, message = _configured(provider, settings)
+    if not enabled and provider not in ALWAYS_ENABLED_PROVIDERS:
+        return False, "disabled", "已由管理後台停用"
+    if configured and last_test_status == "failed":
+        return False, "error", f"最近一次連線測試失敗：{last_test_message or '請重新測試'}"
+    if (
+        configured
+        and _production_test_required(provider, settings)
+        and last_test_status != "success"
+    ):
+        return False, "test_required", "Production 憑證已設定，必須通過連線測試後才標示為可用"
+    if configured and provider in CONNECTION_TESTED_PROVIDERS and last_test_status is None:
+        return configured, "unverified", f"{message}；尚未執行連線測試"
+    return configured, status, message
 
 
 async def settings_snapshot(
@@ -998,19 +1045,13 @@ async def settings_snapshot(
             if definition.enabled_field
             else True
         )
-        configured, status, message = _configured(provider, effective)
-        if not enabled and provider not in ALWAYS_ENABLED_PROVIDERS:
-            configured, status, message = False, "disabled", "已由管理後台停用"
-        elif configured and row is not None and row.last_test_status == "failed":
-            configured, status = False, "error"
-            message = f"最近一次連線測試失敗：{row.last_test_message or '請重新測試'}"
-        elif (
-            configured
-            and _production_test_required(provider, effective)
-            and (row is None or row.last_test_status != "success")
-        ):
-            configured, status = False, "test_required"
-            message = "Production 憑證已設定，必須通過連線測試後才標示為可用"
+        configured, status, message = card_state(
+            provider,
+            effective,
+            enabled=enabled,
+            last_test_status=row.last_test_status if row else None,
+            last_test_message=row.last_test_message if row else None,
+        )
         config_sources, secret_states = _field_sources(definition, row, base)
         field_options = {
             field: [
