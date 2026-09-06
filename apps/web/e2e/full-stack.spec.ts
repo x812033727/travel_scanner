@@ -3,9 +3,16 @@ import { expect, test, type Page } from "@playwright/test";
 // The trip calendar only renders one month; walk forward until the day exists.
 async function pickTripDay(page: Page, iso: string) {
   const day = page.locator(`[data-date="${iso}"]`);
+  const nextMonth = page.getByRole("button", { name: "下個月" });
+  // The calendar fills its public holidays in after it mounts, and the phone layout keeps
+  // fixed furniture at both edges of the viewport, so let the page settle and put the
+  // button in the middle of the screen before aiming at it.
+  await page.waitForLoadState("networkidle").catch(() => {});
   for (let attempt = 0; attempt < 24 && (await day.count()) === 0; attempt += 1) {
-    await page.getByRole("button", { name: "下個月" }).click();
+    await nextMonth.evaluate((element) => element.scrollIntoView({ block: "center" }));
+    await nextMonth.click();
   }
+  await day.evaluate((element) => element.scrollIntoView({ block: "center" }));
   await day.click();
 }
 
