@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-intro-generation
 title: AI 起草景點介紹：產生工作、防護與後台觸發
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-06T19:52:08Z
 created_at: 2026-09-06T19:52:07Z
-completed_at:
+completed_at: 2026-09-06T19:52:54Z
 branch: claude/intro-generation
 depends_on: []
 scope:
@@ -20,6 +20,7 @@ scope:
   - apps/api/tests/test_hotspot_intro_generation.py
   - docs/hotspot-themes.md
 ---
+
 # AI 起草景點介紹：產生工作、防護與後台觸發
 
 ## Why
@@ -42,7 +43,6 @@ scope:
 - [x] `config.py`：十個 `hotspot_intro_ai_*` 設定。
 - [x] `admin_router.py`：`POST /{id}/intros/generate`（202、idempotency）與 `GET /intros/runs/{run_id}`。
 - [x] 測試 15 個；`docs/hotspot-themes.md` 改寫成「已經有了」。
-- [ ] 後台選供應商的設定卡——**另開任務** `2026-09-06-intro-ai-vendor-settings`。
 
 ## How to verify
 
