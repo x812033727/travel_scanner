@@ -1,7 +1,9 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import type { ReactNode } from "react";
 import { closedSiteVisibility } from "@/lib/site-features";
 import { AccountPanel } from "./account-panel";
+import { HeaderSessionProvider } from "./header-session";
 import { SiteVisibilityProvider } from "./site-visibility-provider";
 
 const me = { id: "u1", email: "user@example.com" };
@@ -32,12 +34,22 @@ function stubApi(responses: Record<string, unknown>) {
   });
 }
 
+// The layout wraps the whole page in this, and the panel now reads the answer from it
+// instead of asking /auth/me a second time.
+function renderPanel(children: ReactNode = <AccountPanel />) {
+  return render(<HeaderSessionProvider>{children}</HeaderSessionProvider>);
+}
+
+function urls(mock: { mock: { calls: unknown[][] } }) {
+  return mock.mock.calls.map(([url]) => String(url));
+}
+
 afterEach(() => vi.unstubAllGlobals());
 
 describe("account panel", () => {
   it("shows non-expiring usage balance and auditable history", async () => {
     vi.stubGlobal("fetch", stubApi({ "/auth/me": me, "/usage/history": history, "/usage": usage }));
-    render(<AccountPanel />);
+    renderPanel();
     expect(await screen.findByText("user@example.com")).toBeTruthy();
     expect(await screen.findByText("11 次")).toBeTruthy();
     expect(screen.getByText("失敗未扣次")).toBeTruthy();
@@ -50,14 +62,14 @@ describe("account panel", () => {
     const writeText = vi.fn();
     Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText } });
     vi.stubGlobal("fetch", stubApi({ "/auth/me": me, "/usage/history": history, "/usage": usage }));
-    render(<AccountPanel />);
+    renderPanel();
     fireEvent.click(await screen.findByRole("button", { name: "複製流水號 usage-ref-1" }));
     expect(writeText).toHaveBeenCalledWith("usage-ref-1");
   });
 
   it("asks the visitor to sign in when unauthenticated", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, status: 401, json: async () => ({ detail: "請先登入後再繼續" }) }));
-    render(<AccountPanel />);
+    renderPanel();
 
     // One sentence, one button. Pasting the API's own "請先登入後再繼續" in front of a
     // hand-written "請先登入。" produced "請先登入後再繼續，請先登入。" on the live site.
@@ -67,6 +79,33 @@ describe("account panel", () => {
     expect(document.body.textContent).not.toContain("請先登入後再繼續");
   });
 
+  it("asks for nothing a signed-out visitor cannot have", async () => {
+    const fetchMock = vi.fn(async () => ({ ok: false, status: 401, json: async () => ({ detail: "請先登入" }) }));
+    vi.stubGlobal("fetch", fetchMock);
+    renderPanel();
+    await screen.findByRole("link", { name: "前往登入" });
+
+    // Measured on the live site before this change: eight of the ten requests a
+    // signed-out /account made were 401s, three of them the same /auth/me.
+    const asked = urls(fetchMock);
+    expect(asked.filter((url) => url.endsWith("/auth/me"))).toHaveLength(1);
+    expect(asked.filter((url) => url.includes("/usage"))).toEqual([]);
+    expect(asked.filter((url) => url.includes("/auth/identities"))).toEqual([]);
+  });
+
+  it("asks once for each thing a signed-in member can have", async () => {
+    const fetchMock = stubApi({ "/auth/me": me, "/usage/history": history, "/usage": usage });
+    vi.stubGlobal("fetch", fetchMock);
+    renderPanel();
+    await screen.findByText("11 次");
+
+    const asked = urls(fetchMock);
+    expect(asked.filter((url) => url.endsWith("/auth/me"))).toHaveLength(1);
+    expect(asked.filter((url) => url.endsWith("/usage"))).toHaveLength(1);
+    expect(asked.filter((url) => url.includes("/usage/history"))).toHaveLength(1);
+    expect(asked.filter((url) => url.includes("/auth/identities"))).toHaveLength(1);
+  });
+
   it("shows a history error instead of treating a failed request as empty", async () => {
     const fetchMock = vi.fn(async (url: string) => {
       if (url.endsWith("/auth/me")) return ok(me);
@@ -74,13 +113,13 @@ describe("account panel", () => {
       return { ok: false, status: 503, json: async () => ({ detail: "unavailable" }) };
     });
     vi.stubGlobal("fetch", fetchMock);
-    render(<AccountPanel />);
+    renderPanel();
     expect(await screen.findByText("目前無法載入使用紀錄，請稍後再試。")).toBeTruthy();
   });
 
   it("hides the usage-pack link when pricing is closed", async () => {
     vi.stubGlobal("fetch", stubApi({ "/auth/me": me, "/usage/history": history, "/usage": usage }));
-    render(
+    renderPanel(
       <SiteVisibilityProvider state={{ status: "ready", features: closedSiteVisibility }}>
         <AccountPanel />
       </SiteVisibilityProvider>,
@@ -92,7 +131,7 @@ describe("account panel", () => {
   it("rejects mismatched new passwords without calling the API", async () => {
     const fetchMock = stubApi({ "/auth/me": me, "/usage/history": history, "/usage": usage });
     vi.stubGlobal("fetch", fetchMock);
-    render(<AccountPanel />);
+    renderPanel();
     await screen.findByText("user@example.com");
     fireEvent.change(screen.getByLabelText(/目前密碼/), { target: { value: "old-password-1" } });
     fireEvent.change(screen.getByLabelText(/^新密碼/), { target: { value: "new-password-12" } });
@@ -111,7 +150,7 @@ describe("account panel", () => {
       return { ok: false, status: 404, json: async () => ({ detail: "not found" }) };
     });
     vi.stubGlobal("fetch", fetchMock);
-    render(<AccountPanel />);
+    renderPanel();
     await screen.findByText("user@example.com");
     fireEvent.change(screen.getByLabelText(/目前密碼/), { target: { value: "old-password-1" } });
     fireEvent.change(screen.getByLabelText(/^新密碼/), { target: { value: "new-password-12" } });

@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { StrictMode } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { closedSiteVisibility, openSiteVisibility } from "@/lib/site-features";
+import { HeaderSessionProvider } from "./header-session";
 import { SiteNavigation } from "./site-navigation";
 import { SiteVisibilityProvider } from "./site-visibility-provider";
 
@@ -18,7 +19,9 @@ describe("SiteNavigation", () => {
     render(
       <StrictMode>
         <SiteVisibilityProvider state={{ status: "ready", features: openSiteVisibility }}>
-          <SiteNavigation />
+          <HeaderSessionProvider>
+            <SiteNavigation />
+          </HeaderSessionProvider>
         </SiteVisibilityProvider>
       </StrictMode>,
     );
@@ -38,7 +41,9 @@ describe("SiteNavigation", () => {
     ));
     const unavailable = render(
       <SiteVisibilityProvider state={{ status: "unavailable", features: closedSiteVisibility }}>
-        <SiteNavigation />
+        <HeaderSessionProvider>
+          <SiteNavigation />
+        </HeaderSessionProvider>
       </SiteVisibilityProvider>,
     );
 
@@ -50,7 +55,9 @@ describe("SiteNavigation", () => {
 
     render(
       <SiteVisibilityProvider state={{ status: "ready", features: closedSiteVisibility }}>
-        <SiteNavigation />
+        <HeaderSessionProvider>
+          <SiteNavigation />
+        </HeaderSessionProvider>
       </SiteVisibilityProvider>,
     );
     expect(screen.queryByRole("link", { name: "熱門景點" })).toBeNull();
