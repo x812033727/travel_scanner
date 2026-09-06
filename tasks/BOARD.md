@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**41 open · 0 in progress · 0 blocked · 0 in review · 0 done**
+**48 open · 0 in progress · 0 blocked · 0 in review · 3 done**
 
 ## Ready to claim
 
@@ -32,7 +32,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [Re-seeding never corrects an existing dish name or summary](open/2026-09-06-seed-localization-reconcile.md) | api | `apps/api/app/foods/service.py` |
 | P2 | [首頁手機首屏被三張說明列佔滿](open/2026-09-06-home-mobile-first-screen.md) | web | `apps/web/app/[locale]/page.tsx` |
 | P2 | [目的地目錄的國家與興趣標籤未五語系化](open/2026-09-06-destination-catalog-labels-i18n.md) | web | `apps/web/lib/destinations.ts` |
-| P2 | [repo 沒有 .gitattributes，CRLF 混入造成整檔衝突](open/2026-09-06-gitattributes-line-endings.md) | meta | `.gitattributes` |
 | P2 | [navigation.spec.ts 兩個案例在 CI 間歇逾時](open/2026-09-06-flaky-navigation-e2e.md) | web | `apps/web/e2e/navigation.spec.ts` |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | ops | `apps/api/app/places/naver.py` |
 | P2 | [482 個景點卡在人工審核佇列](open/2026-09-06-hotspot-review-backlog.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/app/hotspots/admin_router.py` |
@@ -41,7 +40,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [catalog fallback 被當成 AI 精修呈現給使用者](open/2026-09-06-intent-fallback-honesty.md) | api | `apps/api/app/trips/intents.py`<br>`apps/web/components/itinerary-diff.tsx` |
 | P2 | [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](open/2026-09-06-reoptimize-no-version-check.md) | api | `apps/api/app/trips/router.py` |
 | P2 | [usage catalog validation rejects everything when web ships ahead of api](open/2026-09-06-usage-catalog-validation-rejects-everything-when.md) | web | `apps/web/lib/usage-catalog.ts` |
-| P2 | [剩下的規劃流程增量：營業時間感知、匯入、匯出、分享](open/2026-09-06-planning-flow-remaining-increments.md) | meta | `docs/planning-flow-spec.md` |
+| P2 | [營業時間感知排程：AI 排程不把景點排在打烊時段](open/2026-09-06-opening-hours-aware-scheduling.md) | api | `apps/api/app/trips/hours.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/web/components/day-health-strip.tsx` |
+| P2 | [貼 Google Maps 連結加景點（待安排 inbox）](open/2026-09-06-paste-maps-links-ingest.md) | api | `apps/api/app/trips/ingest.py`<br>`apps/api/app/trips/ingest_router.py`<br>`apps/api/app/restaurants/imports.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-inbox-panel.tsx` |
 | P3 | [Admin help text tells operators to avoid the model now shipped](open/2026-09-06-stale-gemini-model-help.md) | web | `apps/web/components/admin-settings-panel.tsx` |
 | P3 | [註冊關閉頁的小標與 H1 是同一句話](open/2026-09-06-auth-duplicate-heading.md) | web | `apps/web/messages/en/auth.json`<br>`apps/web/messages/ja/auth.json`<br>`apps/web/messages/ko/auth.json`<br>`apps/web/messages/zh-CN/auth.json`<br>`apps/web/messages/zh-TW/auth.json` |
 | P3 | [桌機主導覽文字連結只有 20px 高](open/2026-09-06-desktop-nav-touch-targets.md) | web | `apps/web/components/site-navigation.tsx` |
@@ -50,6 +50,14 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [52 個景點的地圖比對對不上，需要人工判斷](open/2026-09-06-hotspot-map-match-holdouts.md) | api | `apps/api/app/hotspots/places.py` |
 | P3 | [6 個關東景點需要人工挑 Google Place ID](open/2026-09-06-kanto-place-ids.md) | api | `apps/api/app/hotspots/catalog.py` |
 | P3 | [food seed counts are hardcoded twelve times and only CI can see them](open/2026-09-06-food-seed-counts-are-hardcoded-twelve.md) | api | `apps/api/tests/test_food_integration.py` |
+| P3 | [ICS 行事曆匯出](open/2026-09-06-ics-calendar-export.md) | api | `apps/api/app/trips/ics.py`<br>`apps/api/app/trips/export_router.py`<br>`apps/web/components/trip-tools-panel.tsx` |
+| P3 | [列印版行程表（一天一頁的 A5 列印樣式）](open/2026-09-06-printable-itinerary.md) | web | `apps/web/app/[locale]/trips/[id]/print`<br>`apps/web/app/globals.css` |
+| P3 | [誠實路段守衛：拒絕 0 分鐘路段與漏掉步行段的轉乘方案](open/2026-09-06-honest-leg-guard.md) | api | `apps/api/app/trips/routing.py`<br>`apps/web/components/route-mode-panel.tsx` |
+| P3 | [最佳化上限的 UX：超過 12 個可移動景點時先提示而不是 422](open/2026-09-06-optimizer-limit-ux.md) | web | `apps/web/components/route-mode-panel.tsx`<br>`apps/web/components/trip-editor.tsx` |
+| P3 | [PWA、Android share target 與今日檢視](open/2026-09-06-pwa-share-target-today-view.md) | web | `apps/web/app/manifest.ts`<br>`apps/web/public`<br>`apps/web/components/today-view.tsx` |
+| P3 | [分享頁「存成我的行程」與 QR code](open/2026-09-06-share-fork-and-qr.md) | api | `apps/api/app/trips/share_router.py`<br>`apps/web/components/shared-trip-view.tsx` |
+| P3 | [已存行程頁掛上分潤選項](open/2026-09-06-trip-affiliate-options.md) | web | `apps/web/components/trip-editor.tsx`<br>`apps/web/components/affiliate-partner-options.tsx` |
+| P3 | [行程狀態標籤與封面圖](open/2026-09-06-trip-status-and-cover.md) | api | `apps/api/app/trips/metadata.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-meta-editor.tsx` |
 
 ## In progress
 
@@ -65,9 +73,10 @@ _Nothing here._
 | --- | --- | --- |
 | P1 | [意圖精修刪除列時連帶清掉使用者輸入的交通時間](open/2026-09-06-intent-route-segment-cascade.md) | depends on 2026-09-06-intent-diff-mismatch |
 | P2 | [21 個潮流街區還沒有任何店家](open/2026-09-06-empty-trend-districts.md) | depends on 2026-09-06-trend-import-scripts |
-| P2 | [npm audit 排在 CI 前段，網路不穩就擋掉整輪](open/2026-09-06-npm-audit-ci-position.md) | depends on 2026-09-06-required-checks-block-merge |
 | P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | depends on 2026-09-06-stale-gemini-model-help |
 
 ## Recently finished
 
-_Nothing here._
+- 2026-09-06 [repo 沒有 .gitattributes，CRLF 混入造成整檔衝突](done/2026-09-06-gitattributes-line-endings.md)
+- 2026-09-06 [npm audit 排在 CI 前段，網路不穩就擋掉整輪](done/2026-09-06-npm-audit-ci-position.md)
+- 2026-09-06 [剩下的規劃流程增量：營業時間感知、匯入、匯出、分享](done/2026-09-06-planning-flow-remaining-increments.md)
