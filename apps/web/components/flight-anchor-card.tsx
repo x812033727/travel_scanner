@@ -63,13 +63,13 @@ export function FlightAnchorCard({
             <div>
               <p className="text-lg font-black text-slate-900">{configuredInfo.origin}</p>
               <p className="mt-0.5 text-sm font-semibold text-slate-700">{localDateTime(configuredInfo.departure_local)}</p>
-              <p className={`mt-1 text-[.68rem] ${configuredInfo.departure_timezone ? "text-slate-500" : "font-semibold text-amber-700"}`}>{departureTimezone}</p>
+              <p className={`mt-1 text-xs ${configuredInfo.departure_timezone ? "text-slate-500" : "font-semibold text-amber-700"}`}>{departureTimezone}</p>
             </div>
             <ArrowRight size={18} className="text-sky-600" />
             <div className="text-right">
               <p className="text-lg font-black text-slate-900">{configuredInfo.destination}</p>
               <p className="mt-0.5 text-sm font-semibold text-slate-700">{localDateTime(configuredInfo.arrival_local)}</p>
-              <p className={`mt-1 text-[.68rem] ${configuredInfo.arrival_timezone ? "text-slate-500" : "font-semibold text-amber-700"}`}>{arrivalTimezone}</p>
+              <p className={`mt-1 text-xs ${configuredInfo.arrival_timezone ? "text-slate-500" : "font-semibold text-amber-700"}`}>{arrivalTimezone}</p>
             </div>
           </div>
           {typeof configuredInfo.stops === "number" && <p className="mt-2 text-xs text-slate-600">{configuredInfo.stops === 0 ? "直飛" : `${configuredInfo.stops} 次轉機`}</p>}

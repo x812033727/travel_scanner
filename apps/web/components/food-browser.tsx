@@ -115,16 +115,16 @@ export function FoodBrowser() {
 
   const city = findCity(countries, filters.destinationId);
   const loading = pending || (result === null && !error);
-  const areaItems: FilterChipItem[] = (result?.facets.areas ?? []).map((area) => ({
+  const areaItems: FilterChipItem[] = (result?.facets?.areas ?? []).map((area) => ({
     key: area.slug,
     label: area.name,
     count: area.merchant_count,
   }));
-  const unassigned = result?.facets.unassigned_area_count ?? 0;
+  const unassigned = result?.facets?.unassigned_area_count ?? 0;
   if (unassigned > 0 || filters.area === OTHER_AREA) {
     areaItems.push({ key: OTHER_AREA, label: t("otherArea"), count: unassigned });
   }
-  const categoryItems: FilterChipItem[] = (result?.facets.categories ?? siteCategories).map(
+  const categoryItems: FilterChipItem[] = (result?.facets?.categories ?? siteCategories).map(
     (category) => ({
       key: category.slug,
       label: category.name,

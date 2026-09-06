@@ -144,7 +144,7 @@ function PlaceDetailsPanel({ hotspot, onClose }: { hotspot: RankedHotspot; onClo
         {guide.type === "video" && guide.thumbnail_url && <span className="relative grid h-8 w-8 place-items-center rounded-full bg-black/70 text-white"><Play size={14} fill="currentColor" /></span>}
       </div>
       <div className="min-w-0 self-center">
-        <div className="mb-1 flex flex-wrap items-center gap-1.5 text-[11px] font-semibold">
+        <div className="mb-1 flex flex-wrap items-center gap-1.5 text-xs font-semibold">
           <span className="rounded-full bg-[var(--teal-soft)] px-2 py-0.5 text-[var(--teal-dark)]">{localeLabels[guide.locale] || guide.locale}</span>
           <span className="text-[var(--muted)]">{guide.provider === "youtube" ? "YouTube" : guide.creator_name}</span>
         </div>

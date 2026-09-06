@@ -98,7 +98,7 @@ export function AdminNav({ current }: { current?: string } = {}) {
     <>
       <div className="flex items-center justify-between px-2 pb-4">
         <div>
-          <p className="text-[11px] font-bold uppercase tracking-[.16em] text-[var(--teal)]">
+          <p className="text-xs font-bold uppercase tracking-[.16em] text-[var(--teal)]">
             Control center
           </p>
           <MokaairLogo className="text-xl" />
