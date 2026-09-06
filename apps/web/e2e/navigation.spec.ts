@@ -264,7 +264,12 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await page.getByRole("radio", { name: /暮紫/ }).click();
   await expect(page.locator("[data-planner-theme='lavender']")).toBeVisible();
   await page.getByRole("button", { name: "關閉" }).click();
-  await page.getByRole("button", { name: "編輯 淺草寺" }).click();
+  // The phone planner floats a day strip at the top and the intent bar plus the
+  // dock at the bottom, so a card that is already on screen can still be under
+  // one of them; Playwright only scrolls when an element is off screen.
+  const editFirstStop = page.getByRole("button", { name: "編輯 淺草寺" });
+  await editFirstStop.evaluate((element) => element.scrollIntoView({ block: "center" }));
+  await editFirstStop.click();
   await page.getByLabel("安排名稱").fill("淺草寺與雷門");
   await page.getByRole("button", { name: "關閉" }).click();
   await expect.poll(() => saves).toBe(2);
