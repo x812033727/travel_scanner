@@ -51,12 +51,16 @@ function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
 }
 
-function stubApi(options: { signedIn: boolean; tripResponses?: Array<() => Response> }) {
+function stubApi(options: {
+  signedIn: boolean;
+  tripResponses?: Array<() => Response>;
+  providers?: unknown;
+}) {
   const tripResponses = [...(options.tripResponses || [])];
   return vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
     const url = String(input);
     if (url.endsWith("/auth/me")) return options.signedIn ? json({ id: "u1" }) : json({ detail: "未登入" }, 401);
-    if (url.endsWith("/providers/status")) return json(providerStatus);
+    if (url.endsWith("/providers/status")) return json(options.providers ?? providerStatus);
     if (url.endsWith("/searches") && init?.method === "POST") return json({ search_id: "search-1", usage: { status: "reserved", uses: 1, reference: "u-1" } }, 202);
     if (url.endsWith("/searches/search-1")) return json({ status: "completed", result: { modules: {}, plans: [plan] }, warnings: [] });
     if (url.endsWith("/trips") && init?.method === "POST") return (tripResponses.shift() || (() => json({ id: "trip-1" })))();
@@ -137,6 +141,42 @@ describe("SearchExperience", () => {
     const keys = saves.map(([, init]) => (init?.headers as Record<string, string>)["Idempotency-Key"]);
     expect(keys[0]).toEqual(expect.any(String));
     expect(keys[1]).toBe(keys[0]);
+  });
+
+  it("says which prices are paused in the reader's language, not the API's", async () => {
+    // The badge used to print the API's own `message`, and the live site greeted an
+    // English reader with 「目前沒有可用的航班查價供應商。；目前沒有可用的飯店查價供應商。」
+    location.search = criteria;
+    vi.stubGlobal("fetch", stubApi({
+      signedIn: true,
+      providers: {
+        provider: "none",
+        mode: "disabled",
+        status: "not_configured",
+        modules: ["flight", "hotel"],
+        message: "目前沒有可用的航班查價供應商。；目前沒有可用的飯店查價供應商。",
+        module_statuses: {
+          flight: { selected_provider: "none", status: "not_configured", available: false, configured: false, environment: "production", message: "目前沒有可用的航班查價供應商。" },
+          hotel: { selected_provider: "none", status: "not_configured", available: false, configured: false, environment: "production", message: "目前沒有可用的飯店查價供應商。" },
+        },
+      },
+    }));
+    render(<SearchExperience />);
+
+    expect(await screen.findByText("航班查價暫停")).toBeTruthy();
+    expect(screen.getByText("住宿查價暫停")).toBeTruthy();
+    expect(document.body.textContent).not.toContain("目前沒有可用的航班查價供應商");
+  });
+
+  it("names the provider when live pricing is on", async () => {
+    location.search = criteria;
+    vi.stubGlobal("fetch", stubApi({
+      signedIn: true,
+      providers: { provider: "skyscanner", mode: "live", status: "ready", modules: ["flight"], message: "Skyscanner 即時航班比價已啟用。" },
+    }));
+    render(<SearchExperience />);
+
+    expect(await screen.findByText("即時報價 · skyscanner")).toBeTruthy();
   });
 
   it("labels the multi-source comparison as free like every other action", async () => {

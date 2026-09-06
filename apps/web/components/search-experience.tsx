@@ -156,6 +156,15 @@ type ProviderStatus = {
   >;
 };
 
+// Only the modules the search page prices. A module the API grows later shows up in
+// `providerAllUnavailable` rather than as an untranslated key.
+const providerModuleKeys: Record<string, string> = {
+  flight: "providerModuleFlight",
+  hotel: "providerModuleHotel",
+  activities: "providerModuleActivities",
+  transport: "providerModuleTransport",
+};
+
 type UsageStatus = {
   status: "reserved" | "charged" | "released";
   uses: number;
@@ -877,6 +886,24 @@ export function SearchExperience() {
         : "bg-amber-50 text-amber-900"
       : "bg-red-50 text-red-800";
 
+  // The badge used to print the API's own `message`, which is Traditional Chinese prose
+  // composed on the server — 「目前沒有可用的航班查價供應商。；目前沒有可用的飯店查價供應商。」
+  // greeted every English, Japanese and Korean reader on /search. Everything that
+  // sentence says is already in the structured fields next to it.
+  const providerBadges = (() => {
+    if (!providerStatus) return [];
+    if (providerStatus.status === "ready") {
+      const key = providerStatus.mode === "live" ? "providerReadyLive" : "providerReadyTest";
+      return [t(key, { provider: providerStatus.provider })];
+    }
+    const paused = Object.entries(providerStatus.module_statuses || {})
+      .filter(([name, module]) => !module.available && name in providerModuleKeys)
+      .map(([name]) =>
+        t("providerModuleUnavailable", { module: t(providerModuleKeys[name]) }),
+      );
+    return paused.length ? paused : [t("providerAllUnavailable")];
+  })();
+
   return (
     <main className="mx-auto max-w-6xl px-5 pb-20 md:px-8">
       <section className="mb-6 rounded-[2rem] border border-[var(--line)] bg-white p-6 shadow-[var(--shadow-lg)] md:p-8">
@@ -907,12 +934,17 @@ export function SearchExperience() {
               </p>
             )}
           </div>
-          {providerStatus && (
-            <span
-              className={`rounded-full px-3 py-2 text-xs font-semibold ${providerTone}`}
-            >
-              {providerStatus.message}
-            </span>
+          {providerBadges.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {providerBadges.map((badge) => (
+                <span
+                  key={badge}
+                  className={`rounded-full px-3 py-2 text-xs font-semibold ${providerTone}`}
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
           )}
         </div>
         {parsed && (
