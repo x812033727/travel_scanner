@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-ci-should-fail-a-branch-that
 title: CI should fail a branch that adds a second alembic head
-status: open
+status: in-progress
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T02:29:36Z
 created_at: 2026-09-06T00:55:40Z
 completed_at:
-branch:
+branch: claude/ci-guards
 depends_on: []
 scope:
   - .github/workflows/ci.yml

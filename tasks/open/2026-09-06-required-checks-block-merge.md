@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-required-checks-block-merge
 title: A failing required check did not stop a merge, and main stayed red
-status: open
+status: in-progress
 priority: P1
 area: meta
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T02:29:37Z
 created_at: 2026-09-06T00:52:19Z
 completed_at:
-branch:
+branch: claude/ci-guards
 depends_on: []
 scope:
   - .github

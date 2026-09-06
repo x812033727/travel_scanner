@@ -29,6 +29,10 @@ jobs:
       - run: uv run pip-audit --local --skip-editable
       - run: uv run ruff check .
       - run: uv run mypy app
+      # One migration head, or a failure that names both files. Two branches that took
+      # the same number otherwise surface as "found 2" from every test module, and
+      # alembic upgrade below would only say "Multiple head revisions are present".
+      - run: uv run pytest tests/test_schema.py -q -p no:cacheprovider
       - run: uv run alembic upgrade head
       - run: uv run pytest --cov=app
         env: { RUN_INTEGRATION_TESTS: "1" }

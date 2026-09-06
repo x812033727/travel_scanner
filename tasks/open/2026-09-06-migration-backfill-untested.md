@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-migration-backfill-untested
 title: 遷移裡的補資料分支在 CI 是死碼
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T02:29:37Z
 created_at: 2026-09-06T00:53:38Z
 completed_at:
-branch:
+branch: claude/ci-guards
 depends_on: []
 scope:
   - .github/workflows/ci.yml
