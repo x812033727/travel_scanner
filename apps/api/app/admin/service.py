@@ -100,7 +100,9 @@ ALWAYS_ENABLED_PROVIDERS = frozenset({"runtime", "layout", "ai_vendors"})
 # stop exercising the path it exists to cover.
 TEST_DESTINATION_NAME = "東京"
 # Features whose connection tests run on the keys stored under ai_vendors.
-AI_FEATURE_PROVIDERS = frozenset({"ai_planner", "ai_guide_search", "gemini_guides"})
+AI_FEATURE_PROVIDERS = frozenset(
+    {"ai_planner", "ai_guide_search", "hotspot_intros", "gemini_guides"}
+)
 
 
 PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
@@ -228,6 +230,24 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         ),
         (),
         "hotspot_guide_ai_search_enabled",
+    ),
+    "hotspot_intros": ProviderDefinition(
+        "AI 景點介紹撰寫",
+        "為一個景點一次寫出所有要求語系的第一手介紹；模型留空時沿用景點介紹搜尋的模型。"
+        "草稿一律以待審落地，價格、營業時間與網址會被擋下。",
+        (
+            "hotspot_intro_ai_default_provider",
+            "hotspot_intro_ai_openai_model",
+            "hotspot_intro_ai_anthropic_model",
+            "hotspot_intro_ai_minimax_model",
+            "hotspot_intro_ai_gemini_model",
+            "hotspot_intro_ai_timeout_seconds",
+            "hotspot_intro_ai_max_output_tokens",
+            "hotspot_intro_ai_daily_run_limit",
+            "hotspot_intro_ai_daily_call_budget",
+        ),
+        (),
+        "hotspot_intro_ai_enabled",
     ),
     "google_maps": ProviderDefinition(
         "Google Maps",
@@ -684,6 +704,25 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             if configured
             else f"預設 {selected}（{model}）；請設定它的金鑰並啟用至少一個搜尋來源",
         )
+    if provider == "hotspot_intros":
+        from app.hotspots.intro_generation import intro_model
+
+        selected = settings.hotspot_intro_ai_default_provider
+        model = intro_model(settings, selected)
+        key = {
+            "openai": settings.openai_api_key,
+            "anthropic": settings.anthropic_api_key,
+            "minimax": settings.minimax_api_key,
+            "gemini": settings.hotspot_guide_gemini_api_key,
+        }[selected]
+        configured = bool(key)
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            f"預設 {selected}（{model}）；介紹草稿會進待審佇列"
+            if configured
+            else f"預設 {selected}（{model}）；請在「AI 供應商與金鑰」設定它的金鑰",
+        )
     if provider == "google_maps":
         configured = bool(settings.google_maps_api_key)
         browser = bool(settings.next_public_google_maps_browser_key)
@@ -909,7 +948,7 @@ def _legacy_vendor_fields(row: ProviderConfig, base: Settings) -> list[str]:
 # outage every one of them was green while the feature answered 500 on every request.
 CONNECTION_TESTED_PROVIDERS = frozenset({
     "google_login", "line_login", "apple_login",
-    "ai_vendors", "ai_planner", "ai_guide_search",
+    "ai_vendors", "ai_planner", "ai_guide_search", "hotspot_intros",
     "google_maps", "naver_maps", "youtube_guides", "brave_guides", "gemini_guides",
     "amadeus", "skyscanner", "duffel", "flightaware", "google_travel_impact",
     "booking_demand", "met_norway", "ekispert", "odsay", "navitime",
@@ -1227,6 +1266,7 @@ def _validate_provider_values(
             "disabled",
         },
         "hotspot_guide_ai_default_provider": {"openai", "anthropic", "minimax", "gemini"},
+        "hotspot_intro_ai_default_provider": {"openai", "anthropic", "minimax", "gemini"},
     }
     for field, allowed in modes.items():
         if field in merged and str(merged[field]).lower() not in allowed:
@@ -1692,6 +1732,11 @@ async def _test_provider(
 
         selected, model = await test_research_provider(settings)
         return f"{selected} / {model} AI 景點搜尋結構化輸出驗證成功"
+    if provider == "hotspot_intros":
+        from app.hotspots.intro_generation import test_intro_provider
+
+        selected, model = await test_intro_provider(settings)
+        return f"{selected} / {model} AI 景點介紹結構化輸出驗證成功"
     if provider == "google_maps":
         return await _test_google(settings, redis)
     if provider == "naver_maps":

@@ -157,6 +157,12 @@ MODEL_FIELDS: dict[str, tuple[Vendor, Capability]] = {
     # The planner, the trip parser and the guide search send a Gemini responseSchema.
     "gemini_model": ("gemini", "gemini_structured"),
     "hotspot_guide_ai_gemini_model": ("gemini", "gemini_structured"),
+    # The introduction writer runs through the same adapters as the guide search, so it
+    # needs the same capabilities from each vendor.
+    "hotspot_intro_ai_openai_model": ("openai", "responses_json_schema_strict"),
+    "hotspot_intro_ai_anthropic_model": ("anthropic", "anthropic_structured_output"),
+    "hotspot_intro_ai_minimax_model": ("minimax", "responses_json_schema_strict"),
+    "hotspot_intro_ai_gemini_model": ("gemini", "gemini_structured"),
 }
 
 # Empty means "use the planner's model for that vendor".
@@ -166,6 +172,10 @@ OPTIONAL_MODEL_FIELDS: frozenset[str] = frozenset(
         "hotspot_guide_ai_anthropic_model",
         "hotspot_guide_ai_minimax_model",
         "hotspot_guide_ai_gemini_model",
+        "hotspot_intro_ai_openai_model",
+        "hotspot_intro_ai_anthropic_model",
+        "hotspot_intro_ai_minimax_model",
+        "hotspot_intro_ai_gemini_model",
     }
 )
 
