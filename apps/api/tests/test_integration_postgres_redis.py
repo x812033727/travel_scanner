@@ -2000,8 +2000,11 @@ async def test_a_shared_trip_can_be_copied_into_the_readers_own_account(
         copy = forked.json()
         assert copy["id"] != trip["id"]
         assert copy["name"] == "東京分享測試"
-        assert [item["title"] for item in copy["items"]] == ["淺草寺"]
-        assert copy["items"][0].get("notes") in (None, "")
+        # The blank trip carries system rows (flight and hotel anchors) besides the stop.
+        copied_titles = [item["title"] for item in copy["items"]]
+        assert "淺草寺" in copied_titles
+        assert len(copied_titles) == len(saved.json()["items"])
+        assert all(not item.get("notes") for item in copy["items"])
         assert copy["routing"]["status"] == "stale"
 
         # The reader owns the copy and the author still owns the original.
