@@ -46,6 +46,7 @@ import {
   type CSSProperties,
 } from "react";
 import { AffiliatePartnerOptions } from "@/components/affiliate-partner-options";
+import { DayHealthStrip } from "@/components/day-health-strip";
 import { FlightAnchorCard, flightAnchorInfo } from "@/components/flight-anchor-card";
 import { TripInboxPanel, type PlaceCandidate } from "@/components/trip-inbox-panel";
 import { PlacePicker } from "@/components/place-picker";
@@ -1598,6 +1599,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
         {activeDay && <details open={Boolean(trip.day_notes?.[activeDay])} className="planner-day-note mb-4"><summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-semibold"><NotebookPen size={16} className="text-[var(--teal)]" />{trip.day_notes?.[activeDay] ? t("dayNotesLabel") : t("dayNotesAdd")}</summary><div className="mt-2"><TripNoteField label={t("dayNotesLabel")} placeholder={t("dayNotesPlaceholder")} value={trip.day_notes?.[activeDay] || ""} onSave={(next) => saveDayNotes(activeDay, next)} /></div></details>}
         {staleDays.has(activeDay) && missingLegs > 0 && <button type="button" onClick={() => void computeRoutes(activeDay)} className="mb-4 flex min-h-11 w-full items-center justify-between gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-left text-sm text-amber-950"><span className="flex items-center gap-2"><CircleAlert size={17} />{t("routes.missingLegs", { count: missingLegs })}</span><span className="shrink-0 font-semibold">{t("routes.computeMissing")}</span></button>}
         {reorderMode && <div className="mb-3 flex min-h-12 items-center gap-2 rounded-2xl bg-[var(--teal-soft)] px-4 py-3 text-sm font-semibold text-[var(--teal-dark)] md:hidden"><GripVertical size={17} /><span>{te("reorderHint")}</span></div>}
+        <DayHealthStrip tripId={trip.id} day={activeDay} revision={revision} onSelectItem={(itemId) => setEditingId(itemId)} />
         {days.length === 0 && <div className="app-empty-state mb-4"><CalendarDays size={22} aria-hidden /><p className="font-semibold">{t("noDatesTitle")}</p><p className="text-xs leading-5">{t("noDatesBody")}</p><button type="button" onClick={() => router.push("/trips")} className="min-h-11 rounded-xl border border-[var(--line)] bg-white px-4 text-sm font-semibold text-[var(--teal)]">{t("backToTrips")}</button></div>}
         <ol className="planner-timeline space-y-3">{activeDisplayRows.map((item, index) => {
           const routeIndex = activeRouteRows.findIndex((row) => row.id === item.id);

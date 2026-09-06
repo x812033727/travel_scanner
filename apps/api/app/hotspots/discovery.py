@@ -35,6 +35,11 @@ ALLOWED_TYPES = {
     "Q11303": "viewpoint",  # skyscraper
     "Q174782": "viewpoint",  # square
     "Q570116": "nature",  # tourist garden
+    # Measured 2026-09-06 with wikibase:around over all 68 discovery centres, counting
+    # only items whose direct P31 is the type and is not already allowed — which is how
+    # classify_types matches. Botanical garden adds 103 rows across 23 cities, worst
+    # 19 in Osaka/Kyoto: tens per city, so the confirmed lane can publish it.
+    "Q167346": "nature",  # botanical garden
     "Q22698": "nature",  # park
     "Q23397": "nature",  # lake
     "Q8502": "nature",  # mountain
@@ -147,6 +152,29 @@ def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     dlon = math.radians(lon2 - lon1)
     value = math.sin(dlat / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dlon / 2) ** 2
     return 2 * radius * math.asin(math.sqrt(value))
+
+
+# Measured on 2026-09-06 and deliberately left out of ALLOWED_TYPES. The counts are the
+# rows each type would ADD in one city: items whose direct P31 is that type and is not
+# already an allowed type. import-hotspot-candidates publishes a whitelisted type through
+# its confirmed lane without a human, so a type only goes in when that number is tens.
+#
+#   Q5393308 Buddhist temple  2,660 in Tokyo alone
+#   Q845945  Shinto shrine    1,331 in Tokyo alone
+#   Q427287  wat                824 in Bangkok alone
+#   Q22746   urban park         571 across 19 cities, 202 in Hong Kong
+#   Q207694  art museum         424 across 26 cities, 112 in Osaka/Kyoto
+#
+# They are not denied either: a Kyoto temple is exactly what a traveller comes for, so
+# each still reaches the review queue as pending/unknown_type and a human decides.
+REVIEW_ONLY_TYPES = {
+    "Q5393308",  # Buddhist temple
+    "Q845945",  # Shinto shrine
+    "Q427287",  # wat
+    "Q22746",  # urban park
+    "Q207694",  # art museum
+    "Q2680845",  # Chinese temple, measured in 2026-09 at 94 auto-publishes in Taipei
+}
 
 
 def classify_types(type_ids: set[str]) -> tuple[str, str, str | None]:

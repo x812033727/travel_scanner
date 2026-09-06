@@ -78,6 +78,9 @@ export function HeaderSessionProvider({ children }: { children: ReactNode }) {
   async function logout() {
     requestId.current += 1;
     try { await api("/auth/logout", { method: "POST" }); } catch { /* BFF clears the cookie. */ }
+    // The offline worker holds this member's trip payload — hotel addresses and private
+    // notes. Signing out on a shared phone has to take it with it.
+    navigator.serviceWorker?.controller?.postMessage({ type: "signed-out" });
     setUser(null);
     setStatus("signed_out");
     router.push("/");

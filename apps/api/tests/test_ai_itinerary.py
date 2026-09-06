@@ -394,6 +394,44 @@ def test_fallback_covers_every_day_and_obeys_pace_counts() -> None:
     ]
 
 
+def test_a_stop_that_is_shut_that_day_is_passed_over_rather_than_scheduled() -> None:
+    """2026-11-09 is a Monday; a museum that closes on Mondays must not be planned then."""
+    monday_closed = {
+        "periods": [
+            {
+                "open": {"day": day, "hour": 9, "minute": 30},
+                "close": {"day": day, "hour": 17, "minute": 0},
+            }
+            for day in (0, 2, 3, 4, 5, 6)
+        ]
+    }
+    candidates = planner_candidates()
+    shut = candidates[0].model_copy(update={"opening_hours": monday_closed, "rank": 0})
+    request = request_for(pace=TripPace.PACKED).model_copy(
+        update={
+            "start_date": date(2026, 11, 9),
+            "end_date": date(2026, 11, 10),
+            "trip_start_date": date(2026, 11, 9),
+            "trip_end_date": date(2026, 11, 10),
+            "candidates": [shut, *candidates[1:]],
+        }
+    )
+
+    draft = fallback_draft(request)
+
+    monday = next(day for day in draft.days if day.date == date(2026, 11, 9))
+    tuesday = next(day for day in draft.days if day.date == date(2026, 11, 10))
+    assert shut.key not in [item.candidate_key for item in monday.items]
+    assert shut.key in [item.candidate_key for item in tuesday.items]
+
+
+def test_a_stop_with_no_cached_hours_is_planned_exactly_as_before() -> None:
+    request = request_for(pace=TripPace.PACKED)
+    assert all(candidate.opening_hours == {} for candidate in request.candidates)
+    draft = fallback_draft(request)
+    assert [len(day.items) for day in draft.days] == [2, 5, 5, 2]
+
+
 def test_fallback_leaves_unusable_arrival_and_departure_windows_empty() -> None:
     request = request_for(pace=TripPace.PACKED).model_copy(
         update={
