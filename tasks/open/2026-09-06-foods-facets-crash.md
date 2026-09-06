@@ -1,7 +1,7 @@
 ---
 id: 2026-09-06-foods-facets-crash
 title: 美食頁在 merchants 回應少了 facets 時整頁炸掉
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: claude-opus-5

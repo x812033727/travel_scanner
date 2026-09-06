@@ -1,7 +1,7 @@
 ---
 id: 2026-09-06-large-text-mode
 title: 大字模式：讓長輩自己把整站字放大
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: claude-opus-5

@@ -1,7 +1,7 @@
 ---
 id: 2026-09-06-readable-foundation
 title: 看得見：連結顏色被吃掉、對比不足與字級下限
-status: in-progress
+status: review
 priority: P0
 area: web
 owner: claude-opus-5

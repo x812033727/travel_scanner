@@ -1,7 +1,7 @@
 ---
 id: 2026-09-06-admin-shell-resilience
 title: 後台外殼：錯誤頁在地化、面板不要整頁炸掉、手機選單擋內容
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: claude-opus-5
