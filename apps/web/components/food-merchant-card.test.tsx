@@ -98,9 +98,9 @@ describe("FoodMerchantCard", () => {
     fireEvent.click(screen.getByText("來源：1 筆官方佐證"));
     expect(screen.getByRole("link", { name: "Michelin Guide Seoul" })).toBeTruthy();
     expect(screen.getByText("米其林（授權）")).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: "飯食／粥品" }));
+    fireEvent.click(screen.getByRole("button", { name: "只看飯食／粥品" }));
     expect(onSelectCategory).toHaveBeenCalledWith("rice-dishes");
-    fireEvent.click(screen.getByRole("button", { name: "明洞" }));
+    fireEvent.click(screen.getByRole("button", { name: "只看明洞" }));
     expect(onSelectArea).toHaveBeenCalledWith("seoul-myeongdong");
     const addToTrip = screen.getByRole("button", { name: "加入行程" });
     expect(addToTrip.hasAttribute("disabled")).toBe(false);

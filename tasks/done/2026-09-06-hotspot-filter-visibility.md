@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-hotspot-filter-visibility
 title: 熱門景點：重新整理丟掉搜尋、看不出套用了什麼、清除條件只在零結果時出現
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T21:45:06Z
 created_at: 2026-09-06T21:45:06Z
-completed_at:
+completed_at: 2026-09-06T22:41:01Z
 branch: claude/ux-hotspot-filters
 depends_on: []
 scope:
