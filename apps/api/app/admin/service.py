@@ -95,6 +95,10 @@ SITE_VISIBILITY_FIELDS = (
 # Rows that are never disabled: a disabled row nulls its secrets, and these hold
 # settings every feature shares rather than one provider that can be switched off.
 ALWAYS_ENABLED_PROVIDERS = frozenset({"runtime", "layout", "ai_vendors"})
+# The city the AI planner connection test plans for. It must be a name
+# ``match_destination`` resolves, or the test would load zero candidates and quietly
+# stop exercising the path it exists to cover.
+TEST_DESTINATION_NAME = "東京"
 # Features whose connection tests run on the keys stored under ai_vendors.
 AI_FEATURE_PROVIDERS = frozenset({"ai_planner", "ai_guide_search", "gemini_guides"})
 
@@ -1583,7 +1587,9 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
     return "；".join(verified)
 
 
-async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str:
+async def _test_provider(
+    provider: str, settings: Settings, redis: Redis, session: AsyncSession | None = None
+) -> str:
     if provider in {"google_login", "line_login", "apple_login"}:
         from app.auth.oauth import APPLE_JWKS, GOOGLE_JWKS, apple_client_secret
 
@@ -1602,20 +1608,44 @@ async def _test_provider(provider: str, settings: Settings, redis: Redis) -> str
     if provider == "ai_vendors":
         return await _test_ai_vendors(settings)
     if provider == "ai_planner":
+        # Load the real candidates a trip in this city would get, rather than sending an
+        # empty list. Building AIPlannerCandidate from stored metadata_json is where a
+        # single out-of-range seed value once raised a ValidationError and 500'd every
+        # Tokyo request while this very test stayed green, because it exercised only the
+        # vendor round trip. Any failure here is a failure the operator needs to see.
+        from app.trips.router import _load_ai_planner_candidates
+
+        start = date.today() + timedelta(days=45)
+        preferences = SearchPreferences(interests=["culture"])
+        candidates = (
+            await _load_ai_planner_candidates(
+                session,
+                TEST_DESTINATION_NAME,
+                preferences,
+                start_date=start,
+                end_date=start,
+            )
+            if session is not None
+            else []
+        )
         request = AIItineraryRequest(
-            destination_name="東京",
-            start_date=date.today() + timedelta(days=45),
-            end_date=date.today() + timedelta(days=45),
+            destination_name=TEST_DESTINATION_NAME,
+            start_date=start,
+            end_date=start,
             timezone="Asia/Tokyo",
             route_preference="FEWER_TRANSFERS",
             travelers=Travelers(adults=1),
-            preferences=SearchPreferences(interests=["culture"]),
+            preferences=preferences,
             notes="連線測試",
+            candidates=candidates,
         )
         result = await AIItineraryPlanner(settings).generate(request)
         if result.planning.provider == "catalog":
             raise ConnectionError("沒有任何真實 AI 供應商成功回傳結構化行程")
-        return f"{result.planning.provider} / {result.planning.model} 結構化行程驗證成功"
+        return (
+            f"{result.planning.provider} / {result.planning.model} 結構化行程驗證成功"
+            f"（{TEST_DESTINATION_NAME} {len(candidates)} 個候選地點）"
+        )
     if provider == "ai_guide_search":
         from app.hotspots.ai_search import test_research_provider
 
@@ -1827,7 +1857,7 @@ async def test_provider_connection(
     started = time.perf_counter()
     tested_at = datetime.now(UTC)
     try:
-        message = await _test_provider(provider, settings, redis)
+        message = await _test_provider(provider, settings, redis, session)
         status = "success"
     except Exception as exc:
         status = "failed"
