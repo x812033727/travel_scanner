@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-hotspot-themes-admin-web
 title: 後台主題管理畫面：taxonomy 表格與逐景點指派
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T18:58:31Z
 created_at: 2026-09-06T17:18:35Z
 completed_at:
-branch:
+branch: claude/hotspot-admin-web
 depends_on: []
 scope:
   - apps/web/components/admin-hotspot-themes-panel.tsx
@@ -23,6 +23,7 @@ scope:
   - apps/web/messages/zh-TW/hotspotThemes.json
   - apps/web/messages/zh-CN/hotspotThemes.json
 ---
+
 # 後台主題管理畫面：taxonomy 表格與逐景點指派
 
 ## Why
@@ -33,18 +34,20 @@ scope:
 
 ## Definition of done
 
-- [ ] 「主題分類」分頁：列出主題（類型、五語名稱、月份、排序、景點數、狀態），可新增與編輯。
-- [ ] 景點列每一列可以開一個小編輯器指派主題；季節可勾「使用預設月份」或自訂；店型在非 `shopping` 分類的景點上不可選。
-- [ ] 被管理員移除過的種子指派（墓碑）要看得出來，不要讓人以為可以直接再加回去。
-- [ ] 五語文案齊全，`npm run check:i18n` 過。
+- [x] 「主題分類」分頁：列出主題（類型、五語名稱、月份、排序、景點數、狀態），可新增與編輯。
+- [x] 景點列每一列可以開一個小編輯器指派主題；季節可勾「使用預設月份」或自訂；店型在非 `shopping` 分類的景點上不可選。
+- [x] 被管理員移除過的種子指派（墓碑）要看得出來，不要讓人以為可以直接再加回去。
+- [x] 五語文案齊全，`npm run check:i18n` 過。
 
 ## Steps
 
-- [ ] `apps/web/messages/*/hotspotThemes.json`（新 namespace），**同時登記在 `apps/web/i18n/request.ts` 的 `namespaces` 與 `apps/web/vitest.setup.tsx` 的 `catalogs`**，漏一個 `t()` 會回傳原始 key。
-- [ ] `admin-hotspot-themes-panel.tsx`：照 `admin-food-taxonomy-panel.tsx` 的表格＋對話框，重用它 export 的 `LocalizedNameFields`／`blankNames`／`completeNames`；月份用 12 顆 `aria-pressed` 按鈕。
-- [ ] `admin-hotspot-theme-editor.tsx`：自帶觸發鈕與對話框，`admin-hotspots-panel.tsx` 只加三處（`Candidate.themes?`、import、分類欄一行 JSX）。
-- [ ] `admin-hotspots-workspace.tsx`：加 `themes` 分頁，面板 lazy mount（`active === "themes" && ...`，因為 `AdminTabPanel` 不會卸載隱藏的子元件）。
-- [ ] 測試：兩個面板各一個 test 檔，`admin-hotspots-workspace.test.tsx` mock 掉既有面板。
+- [x] `apps/web/messages/*/hotspotThemes.json`（新 namespace），**同時登記在 `apps/web/i18n/request.ts` 的 `namespaces` 與 `apps/web/vitest.setup.tsx` 的 `catalogs`**，漏一個 `t()` 會回傳原始 key。
+- [x] `admin-hotspot-themes-panel.tsx`：照 `admin-food-taxonomy-panel.tsx` 的表格＋對話框，重用它 export 的 `LocalizedNameFields`／`blankNames`／`completeNames`；月份用 12 顆 `aria-pressed` 按鈕。
+- [x] `admin-hotspot-theme-editor.tsx`：自帶觸發鈕與對話框，`admin-hotspots-panel.tsx` 只加三處（`Candidate.themes?`、import、分類欄一行 JSX）。
+- [x] `admin-hotspots-workspace.tsx`：加 `themes` 分頁，面板 lazy mount（`active === "themes" && ...`，因為 `AdminTabPanel` 不會卸載隱藏的子元件）。
+- [x] 測試：兩個面板各一個 test 檔，`admin-hotspots-workspace.test.tsx` mock 掉既有面板。
+
+- [x] `admin-hotspot-intros-panel.tsx`：介紹待審佇列（狀態／語系／景點篩選、批次核准與拒絕、逐筆改寫）。原本不在這張任務裡，但介紹的 API 也是只有端點沒有畫面，草稿沒人能核准，所以一起做完。
 
 ## How to verify
 
@@ -62,3 +65,6 @@ git add -A && CI=1 node tools/check-i18n.mjs
 - 月份格式化直接用 `apps/web/lib/hotspot-themes.ts` 的 `monthRangeLabel`／`monthRuns`（公開頁那個 PR 已經進 main），不要再寫一份。
 - 主題名稱本身不進語言檔（伺服器依語系回傳）；這個 namespace 只放框架文案。
 - 檔案衝突：開工前確認 `2026-09-06-admin-review-density` 已經合併——它佔著 `admin-hotspots-panel.tsx` 與 `admin-hotspots-workspace.tsx`，這也是當初後端先做、畫面後做的原因。
+- `admin-hotspots-workspace.tsx` 用 `active === "themes" && ...` 延後掛載：`AdminTabPanel` 不會卸載隱藏的子元件，不擋的話一開後台就會同時打兩個面板的請求。
+- 兩個面板的初次載入都包了一層 `setTimeout(..., 0)`，照 `admin-hotspot-guides-panel.tsx` 的既有寫法——loader 會同步 setState，直接在 effect body 呼叫會踩到 `react-hooks/set-state-in-effect`。
+- 測試的 fetch mock 用 `vi.fn<typeof fetch>`：`vi.fn(async () => ...)` 推導出零參數簽章，`mock.calls[0][0]` 會過不了 tsc；補 `_input`／`_init` 又會被 `--max-warnings=0` 擋下。

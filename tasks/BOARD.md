@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**3 open · 0 in progress · 3 blocked · 0 in review · 109 done**
+**2 open · 1 in progress · 3 blocked · 0 in review · 109 done**
 
 ## Ready to claim
 
@@ -14,12 +14,13 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [後台以外的公開頁沒有頁尾，也沒有隱私權、條款、關於或聯絡的連結](open/2026-09-06-no-footer-legal-links.md) | web | `apps/web/components/site-footer.tsx`<br>`apps/web/components/site-footer.test.tsx`<br>`apps/web/app/[locale]/layout.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
-| P2 | [後台主題管理畫面：taxonomy 表格與逐景點指派](open/2026-09-06-hotspot-themes-admin-web.md) | web | `apps/web/components/admin-hotspot-themes-panel.tsx`<br>`apps/web/components/admin-hotspot-theme-editor.tsx`<br>`apps/web/components/admin-hotspots-workspace.tsx`<br>`apps/web/components/admin-hotspots-panel.tsx`<br>`apps/web/i18n/request.ts`<br>`apps/web/vitest.setup.tsx`<br>`apps/web/messages/en/hotspotThemes.json`<br>`apps/web/messages/ja/hotspotThemes.json`<br>`apps/web/messages/ko/hotspotThemes.json`<br>`apps/web/messages/zh-TW/hotspotThemes.json`<br>`apps/web/messages/zh-CN/hotspotThemes.json` |
 | P2 | [未登入的 /account 仍打七次注定 401 的請求](open/2026-09-06-signed-out-account-requests.md) | web | `apps/web/components/account-panel.tsx`<br>`apps/web/components/site-header.tsx`<br>`apps/web/components/usage-summary.tsx` |
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [後台主題管理畫面：taxonomy 表格與逐景點指派](open/2026-09-06-hotspot-themes-admin-web.md) | claude-opus-5 | 2026-09-06T18:58:31Z | `claude/hotspot-admin-web` |
 
 ## In review
 

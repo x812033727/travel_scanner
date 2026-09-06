@@ -6,10 +6,12 @@ import { api } from "@/lib/api";
 import { HOTSPOT_CATEGORY_CODES, isHotspotCategoryCode } from "@/lib/hotspot-categories";
 import { safeExternalHref } from "@/lib/navigation";
 import { FilterDisclosure, FilterPills } from "./admin-filter-pills";
+import { AdminHotspotThemeEditor, type AssignedTheme } from "./admin-hotspot-theme-editor";
 
 type Candidate = {
   id: string;
   name: string;
+  themes?: AssignedTheme[];
   qid: string | null;
   destination_id: string;
   city_code: string;
@@ -849,6 +851,14 @@ export function AdminHotspotsPanel() {
                                   {ta("hotspotsPanel.area", { name: item.area_name })}
                                 </span>
                               )}
+                              <div className="mt-2">
+                                <AdminHotspotThemeEditor
+                                  hotspotId={item.id}
+                                  hotspotName={item.name}
+                                  category={item.category}
+                                  initial={item.themes}
+                                />
+                              </div>
                             </td>
                             <td className="p-3">
                               {item.is_deep_travel ? (

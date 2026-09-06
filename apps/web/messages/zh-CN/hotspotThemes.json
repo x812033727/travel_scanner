@@ -1,0 +1,90 @@
+{
+  "tabs": {
+    "themes": "主题分类",
+    "intros": "专门介绍"
+  },
+  "kinds": {
+    "season": "季节",
+    "shop": "购物类型"
+  },
+  "active": "启用",
+  "inactive": "停用",
+  "edit": "编辑",
+  "cancel": "取消",
+  "close": "关闭",
+  "refresh": "刷新",
+  "loading": "加载中…",
+  "saving": "保存中…",
+  "loadFailed": "加载失败，请刷新",
+  "localizedName": "{locale} 名称",
+  "months": {
+    "label": "适用月份",
+    "allYear": "全年",
+    "none": "未设置",
+    "help": "只有季节主题需要月份；点击切换，可跨年（例如 11–1 月）。"
+  },
+  "themes": {
+    "title": "主题分类",
+    "description": "维护季节主题与购物类型：五语名称、适用月份、排序与启用状态。名称会直接显示在热门景点页的主题筛选，不经过语言文件。",
+    "add": "新增主题",
+    "createTitle": "新增主题",
+    "editTitle": "编辑 {name}",
+    "slug": "代码",
+    "slugHelp": "小写英数与连字符；建立后不可更改。",
+    "kind": "类型",
+    "kindFilter": "主题类型",
+    "allKinds": "全部类型",
+    "displayOrder": "排序",
+    "save": "保存主题",
+    "created": "主题已新增",
+    "updated": "主题已更新",
+    "empty": "目前没有主题",
+    "hotspotCount": "{count} 个景点",
+    "nameRequired": "五种语言的名称都要填",
+    "monthsRequired": "季节主题至少要选一个月份"
+  },
+  "intros": {
+    "title": "专门介绍",
+    "description": "AI 起草、人工审核的景点介绍。审核通过后才会显示给读者，每个景点每个语言一段。",
+    "statusFilter": "状态",
+    "allStatuses": "全部状态",
+    "status": {
+      "pending": "待审",
+      "approved": "已通过",
+      "rejected": "已拒绝",
+      "disabled": "已停用"
+    },
+    "localeFilter": "语言",
+    "allLocales": "全部语言",
+    "hotspotFilter": "景点名称",
+    "selectAll": "全选当前项目",
+    "clearSelection": "取消全选",
+    "selected": "已选 {count} 条",
+    "selectItem": "选取 {name}（{locale}）",
+    "approve": "通过",
+    "reject": "拒绝",
+    "reviewed": "已处理 {count} 条介绍",
+    "sourceAi": "AI 草稿",
+    "sourceManual": "手动",
+    "edit": "编辑内容",
+    "body": "介绍内容",
+    "bodyCount": "{count}／1500",
+    "save": "保存内容",
+    "saved": "介绍内容已更新",
+    "empty": "没有符合的介绍",
+    "updatedAt": "更新于 {time}",
+    "counts": "待审 {pending}・已通过 {approved}"
+  },
+  "editor": {
+    "open": "主题",
+    "title": "{name} 的主题",
+    "description": "勾选适用的主题；季节主题可为这个景点另外设置月份。",
+    "shopOnly": "购物类型只适用于“购物”分类的景点。",
+    "defaultMonths": "使用默认月份（{months}）",
+    "save": "保存主题",
+    "saved": "已更新 {name} 的主题",
+    "none": "尚未指定主题",
+    "noThemes": "目前没有启用中的主题，请先到“主题分类”新增。",
+    "removed": "已移除（不会被种子文件加回来）"
+  }
+}
