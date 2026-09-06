@@ -15,9 +15,15 @@ from app.destinations.catalog import DESTINATIONS, destination_for_code, destina
 from app.hotspots.areas import area_by_code
 from app.hotspots.cities import CITY_BY_DESTINATION_ID
 from app.hotspots.guides import canonical_external_url, list_guides, resolve_guide_open
+from app.hotspots.intros import load_public_intros
 from app.hotspots.maps import build_map_links
 from app.hotspots.places import place_detail_payload
-from app.hotspots.service import hotspot_facets, list_rankings, load_hotspot_names
+from app.hotspots.service import (
+    PUBLIC_REVIEW_STATUSES,
+    hotspot_facets,
+    list_rankings,
+    load_hotspot_names,
+)
 from app.hotspots.themes import resolve_theme
 from app.i18n import Locale, current_locale
 from app.infra import enforce_named_rate_limit, get_redis
@@ -463,6 +469,29 @@ async def hotspot_source(
     ):
         raise AppError(404, "hotspot_source_not_found", "找不到這個景點來源")
     return {"url": canonical_external_url(hotspot.source_urls[0])}
+
+
+@router.get("/{hotspot_id}/intro")
+async def hotspot_intro(
+    hotspot_id: UUID,
+    session: Session,
+    locale: RequestLocale,
+) -> dict[str, Any]:
+    """The approved introduction for this reader's language, or nothing."""
+
+    hotspot = await session.get(TravelHotspot, hotspot_id)
+    if (
+        hotspot is None
+        or not hotspot.is_active
+        or hotspot.review_status not in PUBLIC_REVIEW_STATUSES
+    ):
+        raise AppError(404, "hotspot_not_found", "找不到這個景點")
+    intros = await load_public_intros(session, [hotspot.id], locale)
+    return {
+        "hotspot_id": str(hotspot.id),
+        "locale": locale,
+        "intro": intros.get(hotspot.id),
+    }
 
 
 @router.get("/{hotspot_id}/guides")
