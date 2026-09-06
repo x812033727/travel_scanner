@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-usage-catalog-validation-rejects-everything-when
 title: usage catalog validation rejects everything when web ships ahead of api
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T04:27:51Z
 created_at: 2026-09-06T00:55:44Z
 completed_at:
-branch:
+branch: claude/api-p2-data
 depends_on: []
 scope:
   - apps/web/lib/usage-catalog.ts

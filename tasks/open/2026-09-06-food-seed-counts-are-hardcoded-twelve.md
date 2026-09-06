@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-food-seed-counts-are-hardcoded-twelve
 title: food seed counts are hardcoded twelve times and only CI can see them
-status: open
+status: in-progress
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T04:27:51Z
 created_at: 2026-09-06T00:55:47Z
 completed_at:
-branch:
+branch: claude/api-p2-data
 depends_on: []
 scope:
   - apps/api/tests/test_food_integration.py
