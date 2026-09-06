@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**5 open · 4 in progress · 2 blocked · 0 in review · 118 done**
+**5 open · 2 in progress · 2 blocked · 0 in review · 120 done**
 
 ## Ready to claim
 
@@ -14,6 +14,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
+| P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
+| P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
+| P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
 | P3 | [商圈名單還有 95 家沒有英文店名，發布前要逐家查](open/2026-09-06-trend-merchant-english-names-backlog.md) | api | `apps/api/app/foods/data/trend_merchants.json` |
 
 ## In progress
@@ -21,8 +24,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [沒有帳號的人走到底是死路：註冊已關閉，但每道牆只寫「前往登入」](open/2026-09-06-auth-dead-end.md) | claude-opus-5 | 2026-09-06T21:06:28Z | `claude/ux-auth-walls` |
-| [專門的購物店家：新增經過座標核實的購物景點種子](open/2026-09-06-shopping-store-seeds.md) | claude-opus-5 | 2026-09-06T20:01:33Z | `claude/shopping-store-seeds` |
-| [後台可以挑選景點介紹的 AI 供應商與模型](open/2026-09-06-intro-ai-vendor-settings.md) | claude-opus-5 | 2026-09-06T20:35:59Z | `claude/intro-vendor-settings` |
 | [篩選面板的關閉鍵報讀成「關閉介紹」，美食那邊則跟開啟鍵同名](open/2026-09-06-filter-sheet-labels.md) | claude-opus-5 | 2026-09-06T21:22:56Z | `claude/ux-sheet-labels` |
 
 ## In review
@@ -35,12 +36,11 @@ _Nothing here._
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
-| P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | active work in the same scope |
-| P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | active work in the same scope |
-| P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-06 [後台可以挑選景點介紹的 AI 供應商與模型](done/2026-09-06-intro-ai-vendor-settings.md)
+- 2026-09-06 [專門的購物店家：新增經過座標核實的購物景點種子](done/2026-09-06-shopping-store-seeds.md)
 - 2026-09-06 [110 家店裡有 28 家在英日韓語系顯示中文譯名](done/2026-09-06-merchant-names-chinese-in-other-locales.md)
 - 2026-09-06 [出錯時，非繁中讀者拿到的是同一句通用訊息](done/2026-09-06-api-error-details-untranslated.md)
 - 2026-09-06 [搜尋頁的供應商徽章在五個語系都印出 API 的繁中句子](done/2026-09-06-search-provider-badge-chinese.md)
@@ -49,5 +49,3 @@ _Nothing here._
 - 2026-09-06 [後台以外的公開頁沒有頁尾，也沒有隱私權、條款、關於或聯絡的連結](done/2026-09-06-no-footer-legal-links.md)
 - 2026-09-06 [destinations 的 english_name 存繁中、areas 不隨語系](done/2026-09-06-destinations-english-name-areas.md)
 - 2026-09-06 [未登入的 /account 仍打七次注定 401 的請求](done/2026-09-06-signed-out-account-requests.md)
-- 2026-09-06 [手機版行程頁的浮動元件佔掉三分之一畫面](done/2026-09-06-planner-mobile-chrome.md)
-- 2026-09-06 [後台主題管理畫面：taxonomy 表格與逐景點指派](done/2026-09-06-hotspot-themes-admin-web.md)
