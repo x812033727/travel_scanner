@@ -100,3 +100,21 @@ signed_out／unavailable 四態、一個 `/auth/me`），只是被掛在 `site-n
   也各自打 `/auth/me`，但都不在 `/account` 這一頁上，而且 `admin-nav` 要的 `can_deploy` 不在
   `/auth/me` 給 header 的欄位裡。留給需要時另立任務。
 - `auth/oauth/providers` 照 Notes 第一行，維持每次都送。
+
+
+## 正式站量測（2026-09-07，部署 1eb573f 之後）
+
+未登入、乾淨的 context、390×844，記錄所有 `/api/travel/` 的回應：
+
+| 請求 | 之前 | 現在 |
+| --- | --- | --- |
+| `auth/me` | 3（全 401） | **1**（401） |
+| `usage` | 1（401） | **0** |
+| `usage/history?kind=all` | 1（401） | **0** |
+| `auth/identities` | 1（401） | **0** |
+| `saved-items?limit=100` | 2（401） | 1（401，provider 自己的，該留） |
+| `auth/oauth/providers` | 1（200） | 1（200） |
+| `analytics/config` | 1（200） | 1（200） |
+| **合計** | **10 個請求，8 個 401** | **4 個請求，2 個 401** |
+
+`/en/account` 量到同樣的四個。
