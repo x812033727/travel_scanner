@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**10 open · 1 in progress · 2 blocked · 5 in review · 78 done**
+**9 open · 1 in progress · 2 blocked · 5 in review · 79 done**
 
 ## Ready to claim
 
@@ -44,11 +44,11 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [手機版行程頁的浮動元件佔掉三分之一畫面](open/2026-09-06-planner-mobile-chrome.md) | active work in the same scope |
 | P2 | [行程天氣面板在日期超出預報範圍時仍列出 10 天無關天氣](open/2026-09-06-trip-weather-out-of-range.md) | active work in the same scope |
 | P2 | [後台審核頁在看到第一筆待審之前先給 30 個控制項](open/2026-09-06-admin-review-density.md) | active work in the same scope |
-| P2 | [地點建議清單會在 Escape 之後自己打開](open/2026-09-06-place-picker-reopens-after-escape.md) | active work in the same scope |
 | P3 | [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](open/2026-09-06-admin-load-error-copy.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-06 [地點建議清單會在 Escape 之後自己打開](done/2026-09-06-place-picker-reopens-after-escape.md)
 - 2026-09-06 [航班來源擴充讀舊資料沒有防護：型別不符的 search id 會直接 500](done/2026-09-06-expand-flight-sources-guard.md)
 - 2026-09-06 [後台其餘三個面板文案硬編碼繁中](done/2026-09-06-admin-panels-i18n-remaining.md)
 - 2026-09-06 [後台 AI 規劃連線測試送空候選，看不見真正會壞的那一步](done/2026-09-06-admin-planner-test-real-candidates.md)
@@ -58,4 +58,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-06 [zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位](done/2026-09-06-zh-cn-area-labels-traditional.md)
 - 2026-09-06 [東京 AI 行程一律 500：一筆種子的 20 分鐘低於 planner 下限](done/2026-09-06-tokyo-planner-duration-500.md)
 - 2026-09-06 [路線卡與路線面板的文案硬編碼繁中](done/2026-09-06-route-copy-i18n.md)
-- 2026-09-06 [美食與景點頁的國家／城市名稱在 en／ja／ko 仍是繁中](done/2026-09-06-food-hotspot-place-names-i18n.md)
