@@ -11,17 +11,23 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.listing import COUNTRY_RANK
 from app.db import SessionFactory, engine
+from app.destinations.catalog import DESTINATIONS
 from app.foods.admin_router import (
     FoodAreaWritePayload,
     FoodBatchPayload,
+    FoodLocalizationPayload,
     FoodMerchantUpdatePayload,
+    FoodUpdatePayload,
     batch_foods,
     create_food_area,
     list_admin_foods,
+    update_food,
     update_food_merchant,
 )
 from app.foods.area_catalog import ALL_AREA_SEEDS
-from app.foods.catalog import COUNTRY_NAMES
+from app.foods.catalog import COUNTRY_NAMES, FOOD_SEEDS
+from app.foods.category_catalog import CATEGORY_SEEDS
+from app.foods.merchant_catalog import MERCHANT_DIRECT_SOURCE_SEEDS, MERCHANT_SEEDS
 from app.foods.service import (
     food_facets,
     list_foods,
@@ -77,29 +83,84 @@ async def _clear(session: AsyncSession) -> None:
     await session.commit()
 
 
+# Two canaries stay hardcoded on purpose: they catch a seed module edited by accident (a
+# dish lost in a merge, a merchant list truncated). Every other number below is derived
+# from the seed modules, because the property under test is that the seeder wrote what
+# the catalog describes, not that the catalog happens to have a particular size. Do not
+# re-hardcode the derived ones: each needed a CI round-trip to update, and only CI can
+# see them at all.
+DISH_COUNT = 80
+MERCHANT_COUNT = 173
+
+SEEDED_LOCALIZATIONS = sum(len(seed.localized_names) for seed in FOOD_SEEDS)
+SEEDED_COUNTRIES = {seed.country_code for seed in FOOD_SEEDS}
+SEOUL_KOREAN_DISHES = sum(
+    "seoul" in seed.destination_ids for seed in FOOD_SEEDS if seed.country_code == "KR"
+)
+SEEDED_MERCHANT_DISHES = sum(len(set(seed.food_slugs)) for seed in MERCHANT_SEEDS)
+SEEDED_SOURCES = len(
+    {(seed.slug, seed.source_url) for seed in MERCHANT_SEEDS}
+    | {(seed.merchant_slug, seed.source_url) for seed in MERCHANT_DIRECT_SOURCE_SEEDS}
+)
+SEEDED_CATEGORY_LINKS = sum(len(seed.category_slugs) for seed in MERCHANT_SEEDS)
+SEEDED_AREA_SLUGS = {seed.slug for seed in ALL_AREA_SEEDS}
+MERCHANTS_WITH_SEED_AREA = sum(seed.area_slug in SEEDED_AREA_SLUGS for seed in MERCHANT_SEEDS)
+MERCHANT_COUNTRY = {seed.slug: seed.country_code for seed in MERCHANT_SEEDS}
+DIRECT_EVIDENCE = {
+    seed.merchant_slug
+    for seed in MERCHANT_DIRECT_SOURCE_SEEDS
+    if seed.source_scope in ("merchant_listing", "merchant_website")
+}
+OFFICIAL_WEBSITES = {
+    seed.merchant_slug for seed in MERCHANT_DIRECT_SOURCE_SEEDS if seed.official_website_url
+}
+
+
+def _by_country(slugs: set[str], country: str) -> int:
+    return sum(MERCHANT_COUNTRY[slug] == country for slug in slugs)
+
+
 @pytest.mark.asyncio(loop_scope="module")
 async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() -> None:
     async with SessionFactory() as session:
         await _clear(session)
         await seed_catalog(session, date(2026, 9, 1))
-        assert await seed_food_catalog(session) == 80
+        assert await seed_food_catalog(session) == DISH_COUNT
         await session.commit()
 
     async with SessionFactory() as session:
-        assert int(await session.scalar(select(func.count(TravelFood.id))) or 0) == 80
-        assert int(await session.scalar(select(func.count(FoodLocalization.id))) or 0) == 400
+        assert int(await session.scalar(select(func.count(TravelFood.id))) or 0) == DISH_COUNT
+        assert len(FOOD_SEEDS) == DISH_COUNT and len(MERCHANT_SEEDS) == MERCHANT_COUNT
+        assert (
+            int(await session.scalar(select(func.count(FoodLocalization.id))) or 0)
+            == SEEDED_LOCALIZATIONS
+        )
         assert int(await session.scalar(select(func.count(FoodDestination.id))) or 0) >= 70
         assert int(await session.scalar(select(func.count(FoodHotspot.id))) or 0) >= 70
-        assert int(await session.scalar(select(func.count(FoodMerchant.id))) or 0) == 173
+        assert (
+            int(await session.scalar(select(func.count(FoodMerchant.id))) or 0) == MERCHANT_COUNT
+        )
         # One row per merchant-dish. Higher than the 185 distinct (city, dish) pairs the
         # catalog validator counts, because a city can have several places for one dish.
-        assert int(await session.scalar(select(func.count(FoodMerchantFood.id))) or 0) == 192
-        assert int(await session.scalar(select(func.count(FoodMerchantSource.id))) or 0) == 236
+        assert (
+            int(await session.scalar(select(func.count(FoodMerchantFood.id))) or 0)
+            == SEEDED_MERCHANT_DISHES
+        )
+        # One destination-context source per merchant plus every first-party source.
+        assert (
+            int(await session.scalar(select(func.count(FoodMerchantSource.id))) or 0)
+            == SEEDED_SOURCES
+        )
         assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == len(
             ALL_AREA_SEEDS
         )
-        assert int(await session.scalar(select(func.count(FoodCategory.id))) or 0) == 18
-        assert int(await session.scalar(select(func.count(FoodMerchantCategory.id))) or 0) == 271
+        assert int(await session.scalar(select(func.count(FoodCategory.id))) or 0) == len(
+            CATEGORY_SEEDS
+        )
+        assert (
+            int(await session.scalar(select(func.count(FoodMerchantCategory.id))) or 0)
+            == SEEDED_CATEGORY_LINKS
+        )
         assert (
             int(
                 await session.scalar(
@@ -107,7 +168,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
                 )
                 or 0
             )
-            == 80
+            == MERCHANTS_WITH_SEED_AREA
         )
         assert (
             int(
@@ -116,7 +177,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
                 )
                 or 0
             )
-            == 80
+            == MERCHANTS_WITH_SEED_AREA
         )
         assert (
             int(
@@ -129,7 +190,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
                 )
                 or 0
             )
-            == 63
+            == len(DIRECT_EVIDENCE)
         )
         assert (
             int(
@@ -140,7 +201,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
                 )
                 or 0
             )
-            == 28
+            == len(OFFICIAL_WEBSITES)
         )
         coverage = await restaurant_editorial_coverage(
             User(email="coverage@example.test", password_hash="not-used", is_admin=True),
@@ -148,15 +209,15 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             limit=200,
         )
         food_merchant_coverage = coverage["food_merchants"]
-        assert food_merchant_coverage["direct_merchant_evidence"] == 63
-        assert food_merchant_coverage["official_website"] == 28
+        assert food_merchant_coverage["direct_merchant_evidence"] == len(DIRECT_EVIDENCE)
+        assert food_merchant_coverage["official_website"] == len(OFFICIAL_WEBSITES)
         by_country = {
             country["country_code"]: country for country in food_merchant_coverage["by_country"]
         }
         # Japan was zero until Okinawa, Yokohama and Kamakura brought first-party pages.
-        assert by_country["JP"]["direct_merchant_evidence"] == 16
-        assert by_country["TW"]["direct_merchant_evidence"] == 14
-        assert by_country["SG"]["official_website"] == 6
+        assert by_country["JP"]["direct_merchant_evidence"] == _by_country(DIRECT_EVIDENCE, "JP")
+        assert by_country["TW"]["direct_merchant_evidence"] == _by_country(DIRECT_EVIDENCE, "TW")
+        assert by_country["SG"]["official_website"] == _by_country(OFFICIAL_WEBSITES, "SG")
 
         korean_food = await session.scalar(
             select(TravelFood).where(TravelFood.country_code == "KR").limit(1)
@@ -223,7 +284,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         korean = await list_foods(
             session, locale="ko", country_code="KR", destination_id="seoul", limit=20
         )
-        assert korean["total"] == 10
+        assert korean["total"] == SEOUL_KOREAN_DISHES
         assert all(item["name"] for item in korean["items"])
         assert all(item["food_hotspots"] for item in korean["items"])
         published_merchants = [
@@ -233,8 +294,8 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         assert published_merchants[0]["map_links"][0]["provider"] == "naver"
         assert "plus_code_global" not in published_merchants[0]
         facets = await food_facets(session)
-        assert facets["total"] == 80
-        assert len(facets["countries"]) == 7
+        assert facets["total"] == DISH_COUNT
+        assert len(facets["countries"]) == len(SEEDED_COUNTRIES)
         assert published_merchants[0]["area"]["slug"] == "seoul-myeongdong"
         assert published_merchants[0]["categories"][0]["slug"] == "home-style"
 
@@ -283,7 +344,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         by_city = {
             city["id"]: city for country in cities["countries"] for city in country["cities"]
         }
-        assert len(by_city) == 33
+        assert len(by_city) == len(DESTINATIONS)
         # Four profile areas per city plus that city's trend districts (Seoul has
         # Seongsu and friends, Yokohama has one, Kamakura none yet).
         areas_per_city = Counter(seed.destination_id for seed in ALL_AREA_SEEDS)
@@ -316,7 +377,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         ranks = [COUNTRY_RANK[item["country_code"]] for item in admin_listing["items"]]
         assert ranks == sorted(ranks)
         # The kind facet ignores the kind filter; the country facet honours it.
-        assert sum(kind["count"] for kind in admin_listing["facets"]["food_kinds"]) == 80
+        assert sum(kind["count"] for kind in admin_listing["facets"]["food_kinds"]) == DISH_COUNT
         assert (
             sum(country["count"] for country in admin_listing["facets"]["countries"])
             == admin_listing["total"]
@@ -381,13 +442,13 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         await session.commit()
 
     async with SessionFactory() as session:
-        assert await seed_food_catalog(session) == 80
+        assert await seed_food_catalog(session) == DISH_COUNT
         await session.commit()
         disabled = await session.scalar(select(TravelFood).order_by(TravelFood.slug).limit(1))
         assert disabled is not None
         assert disabled.review_status == "disabled"
         assert disabled.is_active is False
-        assert int(await session.scalar(select(func.count(TravelFood.id))) or 0) == 80
+        assert int(await session.scalar(select(func.count(TravelFood.id))) or 0) == DISH_COUNT
         seeded_merchant = await session.scalar(
             select(FoodMerchant).where(FoodMerchant.slug == "taipei-din-tai-fung")
         )
@@ -426,8 +487,11 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             )
             == 1
         )
-        # 271 seeded links plus the one on the verified fixture merchant.
-        assert int(await session.scalar(select(func.count(FoodMerchantCategory.id))) or 0) == 272
+        # The seeded links plus the one on the verified fixture merchant.
+        assert (
+            int(await session.scalar(select(func.count(FoodMerchantCategory.id))) or 0)
+            == SEEDED_CATEGORY_LINKS + 1
+        )
         disabled_area = await session.scalar(
             select(FoodArea).where(FoodArea.slug == "osaka-kyoto-umeda")
         )
@@ -439,7 +503,9 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         assert int(await session.scalar(select(func.count(FoodArea.id))) or 0) == len(
             ALL_AREA_SEEDS
         )
-        assert int(await session.scalar(select(func.count(FoodCategory.id))) or 0) == 18
+        assert int(await session.scalar(select(func.count(FoodCategory.id))) or 0) == len(
+            CATEGORY_SEEDS
+        )
 
         admin = User(
             email="food-admin-integration@example.test",
@@ -669,5 +735,109 @@ async def test_filling_coordinates_survives_a_real_session_across_many_rows() ->
         assert first.is_active is False
 
     async with SessionFactory() as session:
+        await _clear(session)
+        await session.commit()
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_reseeding_corrects_seed_owned_text_and_leaves_admin_edits_alone(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A corrected seed reaches the rows the seed wrote; an administrator's edit stays put.
+
+    Ownership is per row: the dish and each (dish, locale) localization carry a
+    ``source`` that flips to ``admin`` the moment an administrator changes the text,
+    and seed-foods reconciles only what still says ``seed``.
+    """
+    from dataclasses import replace
+
+    from app.foods import service as food_service
+
+    async with SessionFactory() as session:
+        await _clear(session)
+        await seed_catalog(session, date(2026, 9, 1))
+        await seed_food_catalog(session)
+        await session.commit()
+
+    sushi = next(item for item in FOOD_SEEDS if item.slug == "jp-sushi")
+    ramen = next(item for item in FOOD_SEEDS if item.slug == "jp-ramen")
+
+    async with SessionFactory() as session:
+        admin = User(
+            email="food-owner-integration@example.test", password_hash="not-used", is_admin=True
+        )
+        session.add(admin)
+        await session.flush()
+        sushi_id = await session.scalar(select(TravelFood.id).where(TravelFood.slug == "jp-sushi"))
+        ramen_id = await session.scalar(select(TravelFood.id).where(TravelFood.slug == "jp-ramen"))
+        assert sushi_id is not None and ramen_id is not None
+        # The admin corrects jp-sushi's romanized name and its Korean name: both rows are
+        # theirs from now on. Re-approving jp-ramen is a review decision, not an edit.
+        await update_food(
+            sushi_id,
+            FoodUpdatePayload(
+                romanized_name="Osushi",
+                localizations=[
+                    FoodLocalizationPayload(
+                        locale="ko", name="관리자 스시", summary=sushi.localized_summaries["ko"]
+                    )
+                ],
+            ),
+            admin,
+            session,
+        )
+        await update_food(ramen_id, FoodUpdatePayload(review_status="approved"), admin, session)
+
+    corrected_sushi = replace(
+        sushi,
+        romanized_name="Sushi (seed)",
+        localized_names={**sushi.localized_names, "ko": "스시 (seed)", "en": "Sushi (seed)"},
+    )
+    corrected_ramen = replace(
+        ramen,
+        romanized_name="Ramen (seed)",
+        localized_names={**ramen.localized_names, "en": "Ramen (seed)"},
+        localized_summaries={**ramen.localized_summaries, "en": "Ramen summary (seed)"},
+    )
+    corrected = {"jp-sushi": corrected_sushi, "jp-ramen": corrected_ramen}
+    patched = tuple(corrected.get(item.slug, item) for item in FOOD_SEEDS)
+
+    async with SessionFactory() as session:
+        monkeypatch.setattr(food_service, "FOOD_SEEDS", patched)
+        assert await seed_food_catalog(session) == DISH_COUNT
+        await session.commit()
+        monkeypatch.undo()
+
+    async with SessionFactory() as session:
+        sushi_row = await session.scalar(select(TravelFood).where(TravelFood.slug == "jp-sushi"))
+        ramen_row = await session.scalar(select(TravelFood).where(TravelFood.slug == "jp-ramen"))
+        assert sushi_row is not None and ramen_row is not None
+        rows = (await session.scalars(select(FoodLocalization))).all()
+        sushi_text = {row.locale: row for row in rows if row.food_id == sushi_row.id}
+        ramen_text = {row.locale: row for row in rows if row.food_id == ramen_row.id}
+
+    # The admin's rows are exactly as they left them...
+    assert (sushi_row.source, sushi_row.romanized_name) == ("admin", "Osushi")
+    assert (sushi_text["ko"].source, sushi_text["ko"].name) == ("admin", "관리자 스시")
+    # ...the seed still corrects what it owns, including other locales of the same dish...
+    assert (sushi_text["en"].source, sushi_text["en"].name) == ("seed", "Sushi (seed)")
+    assert (ramen_row.source, ramen_row.romanized_name) == ("seed", "Ramen (seed)")
+    assert (ramen_text["en"].name, ramen_text["en"].summary) == (
+        "Ramen (seed)",
+        "Ramen summary (seed)",
+    )
+    # ...and locales the correction did not touch keep their seed text.
+    assert ramen_text["ja"].name == ramen.localized_names["ja"]
+
+    # Running the original catalog again moves the seed-owned text back, and still not the admin's.
+    async with SessionFactory() as session:
+        assert await seed_food_catalog(session) == DISH_COUNT
+        await session.commit()
+        rows = (await session.scalars(select(FoodLocalization))).all()
+        sushi_text = {row.locale: row for row in rows if row.food_id == sushi_row.id}
+        assert sushi_text["en"].name == sushi.localized_names["en"]
+        assert sushi_text["ko"].name == "관리자 스시"
+        restored = await session.scalar(select(TravelFood).where(TravelFood.slug == "jp-ramen"))
+        assert restored is not None and restored.romanized_name == ramen.romanized_name
         await _clear(session)
         await session.commit()

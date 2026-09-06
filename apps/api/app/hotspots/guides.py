@@ -9,7 +9,7 @@ from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from typing import Any, cast
 from urllib.parse import parse_qs, urlparse, urlunparse
-from uuid import UUID
+from uuid import UUID, uuid4
 
 import httpx
 from redis.asyncio import Redis
@@ -22,6 +22,7 @@ from app.config import Settings
 from app.i18n import LOCALES, Locale
 from app.models import (
     HotspotGuide,
+    HotspotGuideBackfillAttempt,
     HotspotGuideClickDaily,
     HotspotLocalization,
     TravelHotspot,
@@ -688,20 +689,55 @@ async def guide_quota_status(redis: Redis, settings: Settings) -> dict[str, Any]
     }
 
 
-def guideless_hotspots_statement(limit: int) -> Select[tuple[TravelHotspot]]:
+BACKFILL_RETRY_DAYS = 30
+DEFAULT_BACKFILL_LOCALE: Locale = "zh-TW"
+
+
+def backfill_locales(settings: Settings) -> list[Locale]:
+    """The locales the backfill works through, in pass order.
+
+    ``hotspot_guide_backfill_locale`` is a comma-separated list; the single value it
+    used to hold still parses. An entry the site does not serve is dropped rather than
+    searched, and an empty setting falls back to the default locale.
+    """
+    locales: list[Locale] = []
+    for raw in str(settings.hotspot_guide_backfill_locale).split(","):
+        candidate = raw.strip()
+        if candidate in LOCALES and candidate not in locales:
+            locales.append(candidate)
+    return locales or [DEFAULT_BACKFILL_LOCALE]
+
+
+def guideless_hotspots_statement(
+    limit: int, locale: Locale | None = None, *, retry_after: datetime | None = None
+) -> Select[tuple[TravelHotspot]]:
     """Hotspots that still have nothing for a visitor to watch or read.
+
+    With a ``locale`` the question is narrower, nothing in *that* language, and a pair
+    the backfill already searched after ``retry_after`` is skipped, so a place with
+    genuinely no coverage in a language is not searched again on every run.
 
     Verified rows come first because those are the only ones the planner can place on an
     itinerary, so a guide found for them is a guide someone will actually see.
     """
     has_guide = select(HotspotGuide.id).where(HotspotGuide.hotspot_id == TravelHotspot.id)
+    conditions: list[ColumnElement[bool]] = [
+        TravelHotspot.is_active.is_(True),
+        TravelHotspot.review_status == "approved",
+    ]
+    if locale is not None:
+        has_guide = has_guide.where(HotspotGuide.locale == locale)
+        if retry_after is not None:
+            attempted = select(HotspotGuideBackfillAttempt.id).where(
+                HotspotGuideBackfillAttempt.hotspot_id == TravelHotspot.id,
+                HotspotGuideBackfillAttempt.locale == locale,
+                HotspotGuideBackfillAttempt.attempted_at >= retry_after,
+            )
+            conditions.append(~attempted.exists())
+    conditions.append(~has_guide.exists())
     return (
         select(TravelHotspot)
-        .where(
-            TravelHotspot.is_active.is_(True),
-            TravelHotspot.review_status == "approved",
-            ~has_guide.exists(),
-        )
+        .where(*conditions)
         .order_by(
             case((TravelHotspot.map_match_status == "verified", 0), else_=1),
             TravelHotspot.created_at,
@@ -710,8 +746,38 @@ def guideless_hotspots_statement(limit: int) -> Select[tuple[TravelHotspot]]:
     )
 
 
-async def guideless_hotspots(session: AsyncSession, limit: int) -> list[TravelHotspot]:
-    return list((await session.scalars(guideless_hotspots_statement(limit))).all())
+async def guideless_hotspots(
+    session: AsyncSession,
+    limit: int,
+    locale: Locale | None = None,
+    *,
+    retry_after: datetime | None = None,
+) -> list[TravelHotspot]:
+    statement = guideless_hotspots_statement(limit, locale, retry_after=retry_after)
+    return list((await session.scalars(statement)).all())
+
+
+async def record_backfill_attempt(
+    session: AsyncSession, hotspot_id: UUID, locale: Locale, created: int
+) -> None:
+    """Note that the backfill searched this (hotspot, locale), and what it found."""
+    now = datetime.now(UTC)
+    outcome = "found" if created > 0 else "nothing"
+    statement = pg_insert(HotspotGuideBackfillAttempt).values(
+        id=uuid4(),
+        hotspot_id=hotspot_id,
+        locale=locale,
+        outcome=outcome,
+        created_count=created,
+        attempted_at=now,
+    )
+    await session.execute(
+        statement.on_conflict_do_update(
+            constraint="uq_hotspot_guide_backfill_attempt",
+            set_={"outcome": outcome, "created_count": created, "attempted_at": now},
+        )
+    )
+    await session.commit()
 
 
 async def backfill_guides_once(
@@ -723,30 +789,53 @@ async def backfill_guides_once(
 ) -> dict[str, Any]:
     """Work through the guide backlog a few hotspots at a time, inside the daily budget.
 
-    Only the default locale is searched. Every extra locale costs another Brave call,
-    and Brave's daily budget is the scarce one — spending it on breadth would leave most
-    hotspots with nothing at all rather than giving each one a starting set.
+    The configured locales are worked in passes: a run takes its batch from the first
+    locale that still has hotspots without a guide in it, so every hotspot gets one
+    language before any hotspot gets two. Each hotspot in a batch is searched in one
+    locale only, which is what keeps a five-locale list from costing five times the
+    daily provider budget; breadth is paid for with runs, not with quota. A pair that
+    was searched and came up empty waits ``BACKFILL_RETRY_DAYS`` before it is tried
+    again, and a pair a quota refusal or a provider error kept from being searched at
+    all is not counted as tried.
     """
     if not settings.hotspot_guide_backfill_enabled or not settings.hotspot_guides_enabled:
         return {"skipped": True, "reason": "disabled"}
-    hotspots = await guideless_hotspots(session, settings.hotspot_guide_backfill_batch_size)
+    retry_after = datetime.now(UTC) - timedelta(days=BACKFILL_RETRY_DAYS)
+    hotspots: list[TravelHotspot] = []
+    locales = backfill_locales(settings)
+    locale = locales[0]
+    for locale in locales:
+        hotspots = await guideless_hotspots(
+            session, settings.hotspot_guide_backfill_batch_size, locale, retry_after=retry_after
+        )
+        if hotspots:
+            break
     if not hotspots:
         return {"skipped": True, "reason": "nothing_pending"}
-    report: dict[str, Any] = {"skipped": False, "attempted": 0, "created": 0, "exhausted": False}
+    report: dict[str, Any] = {
+        "skipped": False,
+        "locale": locale,
+        "attempted": 0,
+        "created": 0,
+        "exhausted": False,
+    }
     for hotspot in hotspots:
         outcome = await discover_guides(
             session,
             settings,
             hotspot,
-            [cast(Locale, settings.hotspot_guide_backfill_locale)],
+            [locale],
             client=client,
             redis=redis,
             automatic=True,
         )
+        created = int(outcome["created"])
         report["attempted"] += 1
-        report["created"] += int(outcome["created"])
+        report["created"] += created
         providers = cast(dict[str, Any], outcome["providers"])
         configured = [name for name, state in providers.items() if state != "not_configured"]
+        if any(providers[name] == "ready" for name in configured):
+            await record_backfill_attempt(session, hotspot.id, locale, created)
         if configured and all(providers[name] == "quota_exhausted" for name in configured):
             report["exhausted"] = True
             break

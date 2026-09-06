@@ -33,6 +33,11 @@ export type UsageCatalog = {
   operation_costs: Record<UsageOperation, number>;
 };
 
+/** What the API actually sent: an older API may not price every operation this build knows. */
+export type RawUsageCatalog = Omit<UsageCatalog, "operation_costs"> & {
+  operation_costs: Partial<Record<UsageOperation, number>>;
+};
+
 export type UsageCatalogState =
   | { status: "ready"; catalog: UsageCatalog }
   | { status: "unavailable"; catalog: null };
@@ -45,15 +50,42 @@ export const defaultUsageCatalog: UsageCatalog = {
   ) as Record<UsageOperation, number>,
 };
 
-export function isUsageCatalog(value: unknown): value is UsageCatalog {
+/**
+ * Structural validation only. The catalog may omit operations the running API does not
+ * know yet (a web bundle deployed ahead of the API); normalizeUsageCatalog prices those.
+ * A cost that is present but not an integer in 0..100 is still a broken catalog, and the
+ * whole payload is refused: that is corruption, not version skew.
+ */
+export function isUsageCatalog(value: unknown): value is RawUsageCatalog {
   if (typeof value !== "object" || value === null) return false;
-  const candidate = value as Partial<UsageCatalog>;
+  const candidate = value as Partial<RawUsageCatalog>;
   if (!Number.isInteger(candidate.trial_uses) || Number(candidate.trial_uses) < 1) return false;
   if (!Array.isArray(candidate.packages) || typeof candidate.operation_costs !== "object" || candidate.operation_costs === null) return false;
-  return usageOperations.every((operation) => {
-    const uses = (candidate.operation_costs as Record<string, unknown>)[operation];
-    return Number.isInteger(uses) && Number(uses) >= 0 && Number(uses) <= 100;
-  });
+  return Object.values(candidate.operation_costs as Record<string, unknown>).every(
+    (uses) => Number.isInteger(uses) && Number(uses) >= 0 && Number(uses) <= 100,
+  );
+}
+
+/**
+ * Price every operation this build knows. An operation the API left out is charged the
+ * default cost (one use, the conservative guess) and reported in `missing`, so the loader
+ * can log it. This is a deliberate policy, decided in
+ * tasks/done/2026-09-06-usage-catalog-validation-rejects-everything-when.md: one
+ * unknown operation degrades that operation's copy, not every metered surface at once.
+ */
+export function normalizeUsageCatalog(raw: RawUsageCatalog): {
+  catalog: UsageCatalog;
+  missing: UsageOperation[];
+} {
+  const missing = usageOperations.filter((operation) => !(operation in raw.operation_costs));
+  if (missing.length === 0) return { catalog: raw as UsageCatalog, missing };
+  return {
+    catalog: {
+      ...raw,
+      operation_costs: { ...defaultUsageCatalog.operation_costs, ...raw.operation_costs },
+    },
+    missing,
+  };
 }
 
 export function searchUsageOperation(input: {
