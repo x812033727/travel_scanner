@@ -8,12 +8,12 @@ from pydantic import ValidationError
 
 from app.models import TripPlan, TripPlanItem
 from app.trips.itinerary import ItineraryItem
+from app.trips.replan import sync_ai_meal_slots
 from app.trips.router import (
     FlightAnchorDetails,
     ItineraryUpdateRequest,
     ScheduleDefaultsUpdateRequest,
     _planner_availability,
-    _sync_ai_meal_slots,
     apply_flight_anchor_details,
     localize_itinerary_time,
 )
@@ -170,7 +170,7 @@ def test_ai_refresh_clears_catalog_meal_placeholders_without_touching_user_choic
         data={"meal_kind": "dinner", "meal_selection_source": "user"},
     )
 
-    _sync_ai_meal_slots([lunch, dinner], [])
+    sync_ai_meal_slots([lunch, dinner], [])
 
     assert lunch.title == "午餐尚未安排"
     assert lunch.location_name is None
@@ -215,7 +215,7 @@ def test_ai_refresh_assigns_only_exact_merchant_to_open_meal_slot() -> None:
         data={"candidate_key": "merchant:verified", "merchant_id": "verified"},
     )
 
-    _sync_ai_meal_slots([lunch], [exact_meal])
+    sync_ai_meal_slots([lunch], [exact_meal])
 
     assert lunch.title == "核准壽司店"
     assert lunch.provider_place_id == "verified-place"
@@ -239,7 +239,7 @@ def test_ai_single_day_refresh_does_not_change_meals_on_other_dates() -> None:
         data={"meal_kind": "lunch", "meal_selection_source": "ai"},
     )
 
-    _sync_ai_meal_slots([untouched], [], target.start_date)
+    sync_ai_meal_slots([untouched], [], target.start_date)
 
     assert untouched.title == "第二天原有餐廳"
     assert untouched.location_name == "銀座"

@@ -38,9 +38,10 @@ USAGE_OPERATIONS = (
     "live_back_to_back_fare_search",
     "flight_status_lookup",
     "ai_itinerary_generation",
-    # Re-planning an existing trip from the intent bar. Seeded at 0 uses by
-    # migration 0039 so refinement ships free and its price stays an admin
-    # dial rather than a deploy.
+    # Nudging one day of an existing trip from the intent bar. Seeded at 0 uses
+    # by migration 0040 so a day refinement ships free and its price stays an
+    # admin dial rather than a deploy. A whole-trip intent is a full re-plan and
+    # charges ai_itinerary_generation instead — see trips/intents.py.
     "ai_itinerary_refine",
     "itinerary_optimization",
     "price_reoptimization",

@@ -109,6 +109,48 @@ describe("trip meta editor", () => {
     });
   });
 
+  it("asks for the same confirmation when a pure extension would reset a booked flight", async () => {
+    const withBooking: Trip = {
+      ...baseTrip,
+      items: [
+        ...baseTrip.items,
+        item({
+          id: "f2",
+          day_date: "2026-11-12",
+          item_type: "flight",
+          system_role: "return_flight",
+          title: "JAL JL802",
+          locked: true,
+          data: { flight_info: { airline: "JAL", flight_number: "JL802" } },
+        }),
+      ],
+    };
+    const fetchMock = vi.fn(async () => ok({ ...withBooking, end_date: "2026-11-14", version: 5 }));
+    vi.stubGlobal("fetch", fetchMock);
+    const onUpdated = vi.fn();
+    render(<TripMetaEditor trip={withBooking} variant="tools" onUpdated={onUpdated} />);
+
+    fireEvent.click(screen.getByRole("button", { name: /旅程資訊/ }));
+    fireEvent.change(screen.getByLabelText("結束日期"), { target: { value: "2026-11-14" } });
+
+    // Nothing is dropped, so no removed-day copy; the flight reset is what needs consent.
+    expect(screen.queryByText(/移除 .* 天/)).toBeNull();
+    expect(screen.getByText(/航班班號綁定原本的日期/)).toBeTruthy();
+    const save = screen.getByRole("button", { name: "儲存變更" });
+    expect(save).toHaveProperty("disabled", true);
+    fireEvent.click(screen.getByRole("checkbox", { name: /我了解已設定的航班資訊將被重設/ }));
+    expect(save).toHaveProperty("disabled", false);
+    fireEvent.click(save);
+
+    await waitFor(() => expect(onUpdated).toHaveBeenCalled());
+    expect(lastRequestBody(fetchMock)).toEqual({
+      version: 4,
+      start_date: "2026-11-10",
+      end_date: "2026-11-14",
+      confirm_removed_days: true,
+    });
+  });
+
   it("sends a pure shift as shift_days and keeps the trip length visible", async () => {
     const fetchMock = vi.fn(async () => ok({ ...baseTrip, version: 5 }));
     vi.stubGlobal("fetch", fetchMock);

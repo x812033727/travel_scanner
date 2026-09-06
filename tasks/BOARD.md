@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**51 open · 0 in progress · 0 blocked · 3 in review · 3 done**
+**37 open · 0 in progress · 0 blocked · 3 in review · 17 done**
 
 ## Ready to claim
 
@@ -15,28 +15,17 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | P1 | [272 家店家裡只有 2 家有耐久座標，美食目錄幾乎發不出東西](open/2026-09-06-merchant-coordinate-backlog.md) | ops | `apps/api/app/foods/place_matching.py`<br>`apps/api/app/foods/coordinate_queue.py`<br>`apps/web/components/admin-merchant-coordinate-queue.tsx` |
 | P1 | [Most merchants have no first-party page, so nothing can locate them](open/2026-09-06-missing-merchant-sources.md) | api | `apps/api/app/foods/merchant_catalog.py` |
-| P1 | [A failing required check did not stop a merge, and main stayed red](open/2026-09-06-required-checks-block-merge.md) | meta | `.github` |
-| P1 | [把潮流街區的匯入腳本收進 repo](open/2026-09-06-trend-import-scripts.md) | api | `apps/api/app/foods/trend_import.py`<br>`apps/api/app/cli.py`<br>`apps/api/tests/test_trend_import.py` |
-| P1 | [行程編輯器 294 句硬編碼繁中未五語系化](open/2026-09-06-trip-editor-i18n.md) | web | `apps/web/components/trip-editor.tsx`<br>`apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/zh-TW/trips.json` |
-| P1 | [搜尋結果頁整頁文案寫死繁中](open/2026-09-06-search-results-i18n.md) | web | `apps/web/components/search-experience.tsx`<br>`apps/web/messages/en/search.json`<br>`apps/web/messages/ja/search.json`<br>`apps/web/messages/ko/search.json`<br>`apps/web/messages/zh-CN/search.json`<br>`apps/web/messages/zh-TW/search.json` |
-| P1 | [57 個潮流商圈只存在正式機資料庫](open/2026-09-06-trend-food-areas-not-seeded.md) | api | `apps/api/app/foods/area_catalog.py`<br>`apps/api/tests/test_food_taxonomy_catalog.py` |
-| P1 | [遷移裡的補資料分支在 CI 是死碼](open/2026-09-06-migration-backfill-untested.md) | tools | `.github/workflows/ci.yml`<br>`apps/api/tests/test_migration_dead_branches.py` |
-| P1 | [意圖列的 diff 與 apply 實際行為不一致](open/2026-09-06-intent-diff-mismatch.md) | api | `apps/api/app/trips/intents.py`<br>`apps/api/tests/test_trip_intents.py` |
-| P1 | [整趟範圍的意圖精修不計費，等同免費的付費生成](open/2026-09-06-intent-trip-scope-free.md) | api | `apps/api/app/trips/intents.py`<br>`apps/api/app/usage/service.py` |
-| P1 | [延長行程會摧毀已填的航班訂位且不提示](open/2026-09-06-reschedule-flight-anchor-loss.md) | api | `apps/api/app/trips/reschedule.py` |
-| P1 | [CI should fail a branch that adds a second alembic head](open/2026-09-06-ci-should-fail-a-branch-that.md) | ops | `.github/workflows/ci.yml`<br>`apps/api/tests/test_schema.py` |
 | P1 | [行程編輯後不清整天路段、缺的段用距離估計、按鈕不再預設 refresh](open/2026-09-06-route-editor-partial-invalidation.md) | web | `apps/web/lib/trip-types.ts`<br>`apps/web/lib/trip-types.test.ts`<br>`apps/web/components/trip-editor.tsx`<br>`apps/web/components/trip-editor.test.tsx`<br>`apps/web/components/route-timeline-link.tsx`<br>`apps/web/components/route-timeline-link.test.tsx`<br>`apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/zh-TW/trips.json` |
-| P2 | [Three hotspots hold a quoted review_status that no filter matches](open/2026-09-06-quoted-review-status-rows.md) | api | `apps/api/migrations/versions` |
 | P2 | [Nine merchant citations are dead, unreachable or not HTML](open/2026-09-06-broken-merchant-citations.md) | api | `apps/api/app/foods/merchant_catalog.py` |
 | P2 | [Guide backfill searches one locale, so four locales stay empty](open/2026-09-06-multi-locale-guide-backfill.md) | api | `apps/api/app/hotspots/guides.py` |
 | P2 | [Re-seeding never corrects an existing dish name or summary](open/2026-09-06-seed-localization-reconcile.md) | api | `apps/api/app/foods/service.py` |
+| P2 | [21 個潮流街區還沒有任何店家](open/2026-09-06-empty-trend-districts.md) | api | `apps/api/app/foods/data/trend_merchants.json` |
 | P2 | [首頁手機首屏被三張說明列佔滿](open/2026-09-06-home-mobile-first-screen.md) | web | `apps/web/app/[locale]/page.tsx` |
 | P2 | [目的地目錄的國家與興趣標籤未五語系化](open/2026-09-06-destination-catalog-labels-i18n.md) | web | `apps/web/lib/destinations.ts` |
 | P2 | [navigation.spec.ts 兩個案例在 CI 間歇逾時](open/2026-09-06-flaky-navigation-e2e.md) | web | `apps/web/e2e/navigation.spec.ts` |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | ops | `apps/api/app/places/naver.py` |
 | P2 | [482 個景點卡在人工審核佇列](open/2026-09-06-hotspot-review-backlog.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/app/hotspots/admin_router.py` |
 | P2 | [529 個公開景點還沒有任何導覽內容](open/2026-09-06-hotspot-guide-coverage.md) | ops | `apps/api/app/hotspots/guides.py` |
-| P2 | [catalog fallback 被當成 AI 精修呈現給使用者](open/2026-09-06-intent-fallback-honesty.md) | api | `apps/api/app/trips/intents.py`<br>`apps/web/components/itinerary-diff.tsx` |
 | P2 | [usage catalog validation rejects everything when web ships ahead of api](open/2026-09-06-usage-catalog-validation-rejects-everything-when.md) | web | `apps/web/lib/usage-catalog.ts` |
 | P2 | [營業時間感知排程：AI 排程不把景點排在打烊時段](open/2026-09-06-opening-hours-aware-scheduling.md) | api | `apps/api/app/trips/hours.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/web/components/day-health-strip.tsx` |
 | P2 | [貼 Google Maps 連結加景點（待安排 inbox）](open/2026-09-06-paste-maps-links-ingest.md) | api | `apps/api/app/trips/ingest.py`<br>`apps/api/app/trips/ingest_router.py`<br>`apps/api/app/restaurants/imports.py`<br>`apps/api/migrations/versions`<br>`apps/web/components/trip-inbox-panel.tsx` |
@@ -72,9 +61,6 @@ _Nothing here._
 
 | Priority | Task | Waiting on |
 | --- | --- | --- |
-| P1 | [分享連結會外洩項目備註與整包 data](open/2026-09-06-share-payload-leaks-notes.md) | active work in the same scope |
-| P1 | [意圖精修刪除列時連帶清掉使用者輸入的交通時間](open/2026-09-06-intent-route-segment-cascade.md) | depends on 2026-09-06-intent-diff-mismatch |
-| P2 | [21 個潮流街區還沒有任何店家](open/2026-09-06-empty-trend-districts.md) | depends on 2026-09-06-trend-import-scripts |
 | P2 | [日期變更後行程價格停在舊報價且無法重新查價](open/2026-09-06-trip-stale-price-after-reschedule.md) | active work in the same scope |
 | P2 | [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](open/2026-09-06-reoptimize-no-version-check.md) | active work in the same scope |
 | P2 | [Google 遠期大眾運輸一段最多打 6 次，且是唯一沒有預算保留的路線 provider](open/2026-09-06-google-far-future-transit-cascade.md) | active work in the same scope |
@@ -84,6 +70,13 @@ _Nothing here._
 
 ## Recently finished
 
-- 2026-09-06 [repo 沒有 .gitattributes，CRLF 混入造成整檔衝突](done/2026-09-06-gitattributes-line-endings.md)
-- 2026-09-06 [npm audit 排在 CI 前段，網路不穩就擋掉整輪](done/2026-09-06-npm-audit-ci-position.md)
-- 2026-09-06 [剩下的規劃流程增量：營業時間感知、匯入、匯出、分享](done/2026-09-06-planning-flow-remaining-increments.md)
+- 2026-09-06 [搜尋結果頁整頁文案寫死繁中](done/2026-09-06-search-results-i18n.md)
+- 2026-09-06 [行程編輯器 294 句硬編碼繁中未五語系化](done/2026-09-06-trip-editor-i18n.md)
+- 2026-09-06 [catalog fallback 被當成 AI 精修呈現給使用者](done/2026-09-06-intent-fallback-honesty.md)
+- 2026-09-06 [意圖列的 diff 與 apply 實際行為不一致](done/2026-09-06-intent-diff-mismatch.md)
+- 2026-09-06 [意圖精修刪除列時連帶清掉使用者輸入的交通時間](done/2026-09-06-intent-route-segment-cascade.md)
+- 2026-09-06 [整趟範圍的意圖精修不計費，等同免費的付費生成](done/2026-09-06-intent-trip-scope-free.md)
+- 2026-09-06 [Three hotspots hold a quoted review_status that no filter matches](done/2026-09-06-quoted-review-status-rows.md)
+- 2026-09-06 [57 個潮流商圈只存在正式機資料庫](done/2026-09-06-trend-food-areas-not-seeded.md)
+- 2026-09-06 [把潮流街區的匯入腳本收進 repo](done/2026-09-06-trend-import-scripts.md)
+- 2026-09-06 [延長行程會摧毀已填的航班訂位且不提示](done/2026-09-06-reschedule-flight-anchor-loss.md)

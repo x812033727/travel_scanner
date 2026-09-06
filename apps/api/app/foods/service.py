@@ -13,7 +13,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import escape_like
 from app.destinations.catalog import DESTINATIONS, destination_for_id
-from app.foods.area_catalog import AREA_SEEDS
+from app.foods.area_catalog import ALL_AREA_SEEDS
 from app.foods.catalog import COUNTRY_NAMES, FOOD_SEEDS
 from app.foods.category_catalog import CATEGORY_SEEDS
 from app.foods.merchant_catalog import MERCHANT_DIRECT_SOURCE_SEEDS, MERCHANT_SEEDS
@@ -234,7 +234,13 @@ async def _merchant_taxonomy(
 async def seed_food_taxonomy(
     session: AsyncSession,
 ) -> tuple[dict[str, FoodCategory], dict[str, FoodArea]]:
-    """Create missing categories and areas; rows that already exist are never touched."""
+    """Create missing categories and areas; rows that already exist are never touched.
+
+    Areas come from both lists: the 132 profile areas and the 57 trend districts.
+    A row that already exists — including one an administrator created before the
+    district joined the catalog, which is how the trend districts first reached
+    production — is left exactly as it is, whatever its ``source`` says.
+    """
 
     categories = {row.slug: row for row in (await session.scalars(select(FoodCategory))).all()}
     for category_seed in CATEGORY_SEEDS:
@@ -250,7 +256,7 @@ async def seed_food_taxonomy(
         session.add(category)
         categories[category_seed.slug] = category
     areas = {row.slug: row for row in (await session.scalars(select(FoodArea))).all()}
-    for area_seed in AREA_SEEDS:
+    for area_seed in ALL_AREA_SEEDS:
         if area_seed.slug in areas:
             continue
         area = FoodArea(

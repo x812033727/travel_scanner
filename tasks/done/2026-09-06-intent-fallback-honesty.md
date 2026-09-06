@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-intent-fallback-honesty
 title: catalog fallback 被當成 AI 精修呈現給使用者
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-06T03:23:52Z
 created_at: 2026-09-06T00:55:33Z
-completed_at:
-branch:
+completed_at: 2026-09-06T03:25:13Z
+branch: claude/intent-bar-fixes
 depends_on: []
 scope:
   - apps/api/app/trips/intents.py
@@ -34,16 +34,16 @@ scope:
 
 ## Definition of done
 
-- [ ] 完全由 catalog fallback 產生的結果，不會被呈現為使用者那句話的 AI 精修。
-- [ ] 候選池用盡的判斷不依賴「這次有沒有變動」，且涵蓋餐廳候選。
+- [x] 完全由 catalog fallback 產生的結果，不會被呈現為使用者那句話的 AI 精修。
+- [x] 候選池用盡的判斷不依賴「這次有沒有變動」，且涵蓋餐廳候選。
 
 ## Steps
 
-- [ ] 決定 fallback 時的行為：拒絕（例如 503）還是明確標示。拒絕比較誠實 ——
+- [x] 決定 fallback 時的行為：拒絕（例如 503）還是明確標示。拒絕比較誠實 ——
       那條路徑根本沒讀過意圖文字，沒有東西可以審核。
-- [ ] 前端也要處理，因為這個改動之前快取的 envelope 仍會回來。
-- [ ] `pool_spent` 與 `has_changes` 分開回報。
-- [ ] 備選計數加上 `alternative_merchant_count`；`no_alternatives` 要兩個池都空才成立。
+- [x] 前端也要處理，因為這個改動之前快取的 envelope 仍會回來。
+- [x] `pool_spent` 與 `has_changes` 分開回報。
+- [x] 備選計數加上 `alternative_merchant_count`；`no_alternatives` 要兩個池都空才成立。
 
 ## How to verify
 
@@ -54,6 +54,19 @@ cd ../.. && npm run test:web
 ```
 
 ## Notes
+
+**2026-09-06 完成。** `planning.status == "fallback"` 時伺服器回 503 `ai_planner_unavailable`（那條路徑沒讀過意圖文字，
+沒有東西可審），前端 `itinerary-diff.tsx` 顯示 `intent.fallbackNote` 且不給套用鈕（快取的舊 envelope 同樣處理）。
+複查提出的「503 在扣完配額之後才拋、變成一小時鎖定」修法：`create_trip_intent` 在 `owned_trip` 之後、兩個限流之前
+先用 `planner_providers(load_runtime_settings(session))` 查名冊，`ai_planner_mode` 是 fallback／disabled 或未啟用就直接 503，
+不碰任何限流計數；若名冊正常但所有供應商在執行期失敗（跑完才知道是 fallback），用新的
+`infra.refund_named_rate_limit()`（Lua：>0 才 DECR）把兩個名額還回去再 503。
+`exhaustion` 現在分開回報 `pool_spent`／`meal_pool_spent`（與 `has_changes` 無關）與
+`alternative_merchant_count`；`no_alternatives` 要兩個池都空才成立。
+測試：`test_a_catalog_reshuffle_is_refused…`、`test_a_switched_off_planner_is_refused_before_any_limiter_counts_the_call`、
+`test_a_provider_outage_after_the_limiters_gives_both_slots_back`、
+`test_a_spent_pool_is_reported_even_when_the_replan_merely_reorders`、
+`test_an_empty_merchant_pool_is_reported_separately_from_the_hotspot_pool`。
 
 出處：六路對抗式審查，`intent-honesty` 審查者，嚴重度 high ×2 加上兩個 medium。
 
