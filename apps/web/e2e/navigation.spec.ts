@@ -678,7 +678,7 @@ test("search criteria can be revised before running a new comparison", async ({ 
   await page.goto("/zh-TW/search?origin=TPE&destination=HKT&departure_date=2026-11-10&return_date=2026-11-15&adults=2&children=0&rooms=1&budget_twd=60000&interests=food&preferred_area=%E6%99%AE%E5%90%89%E8%80%81%E5%9F%8E&pace=balanced");
   await expect(page.getByRole("heading", { name: "泰國・普吉完整旅程" })).toBeVisible();
   await page.getByRole("button", { name: "修改搜尋條件" }).click();
-  await page.getByLabel("總預算 TWD").fill("85000");
+  await page.getByLabel("總預算（台幣）").fill("85000");
   await page.getByLabel("回程日期").fill("2026-11-16");
   await page.getByRole("button", { name: "海灘／跳島" }).click();
   await page.getByRole("button", { name: "套用並重新規劃" }).click();
