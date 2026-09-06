@@ -5,6 +5,7 @@ from app.hotspots.cities import TARGET_PUBLIC_HOTSPOTS, DiscoveryCenter, Hotspot
 from app.hotspots.discovery import (
     ALLOWED_TYPES,
     DENIED_TYPES,
+    REVIEW_ONLY_TYPES,
     WikimediaDiscoveryClient,
     classify_types,
     haversine_km,
@@ -141,3 +142,18 @@ async def test_geosearch_deduplicates_qids_and_uses_chinese_label() -> None:
     assert candidates[0].name == "測試博物館"
     assert candidates[0].review_status == "auto_approved"
     assert candidates[0].pageview_pages[-1] == ("en.wikipedia.org", "Test Museum")
+
+
+def test_botanical_gardens_publish_and_the_measured_floods_stay_with_a_human() -> None:
+    """Measured 2026-09-06 across all 68 discovery centres; see the comments in discovery.py.
+
+    A whitelisted type is published by the confirmed lane of import-hotspot-candidates
+    without anyone looking, so the whitelist is a claim about volume, not about whether
+    the places are worth visiting. Botanical gardens add tens; the five below add
+    hundreds or thousands in a single city.
+    """
+    assert classify_types({"Q167346"}) == ("nature", "auto_approved", None)
+    for flooding_type in REVIEW_ONLY_TYPES:
+        assert flooding_type not in ALLOWED_TYPES
+        assert flooding_type not in DENIED_TYPES
+        assert classify_types({flooding_type}) == ("culture", "pending", "unknown_type")
