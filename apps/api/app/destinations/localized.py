@@ -5,17 +5,22 @@ the language the catalog was written and reviewed in. The public endpoints rende
 destination in the reader's locale from here: the city name, the country label and the
 one-line reason. ``zh-TW`` is the catalog's own text and is never duplicated below.
 
-Areas, aliases and interest suggestions stay in the catalog's language on purpose: they
-are place names and search terms, and a translation nobody has checked against a map
-is worse than the local script.
+Aliases and interest suggestions stay in the catalog's language on purpose: they are
+search terms, and a translation nobody has checked against a map is worse than the
+local script. Areas follow that rule too — they are just no longer stuck, because
+``app.hotspots.areas`` already carries the same districts with names that were checked
+against a map when their circles were drawn. ``area_labels`` reuses those and falls
+back to the catalog's own text for anything the reviewed catalog has never heard of.
 """
 
 from __future__ import annotations
 
+import re
 from collections.abc import Mapping
 from typing import Final
 
 from app.destinations.catalog import DESTINATIONS, DestinationProfile
+from app.hotspots.areas import HOTSPOT_AREAS, HotspotArea, area_name
 from app.i18n import LOCALES, Locale
 
 DESTINATIONS_BY_ID: Final[Mapping[str, DestinationProfile]] = {
@@ -349,6 +354,127 @@ def reason(profile: DestinationProfile, locale: Locale) -> str:
     return REASONS.get(profile.id, {}).get(locale) or profile.reason
 
 
+# Both catalogs write a two-part district the same way but with their own connector:
+# 「上野／淺草」, 「上野・浅草」, 「명동·남산」, "Ueno & Asakusa". Splitting on all of them lets
+# one side's 「澀谷」 find its half of the other side's 「澀谷／原宿」. A name that explains
+# itself in brackets — "Osaka Bay (Tempozan & USJ)" — is never split: the bracket, not
+# the connector inside it, is what the reader is reading.
+AREA_SEGMENT: Final[re.Pattern[str]] = re.compile(r"\s*(?:[／/・·&,、]|\band\b)\s*")
+AREA_JOIN: Final[Mapping[str, str]] = {"en": " & ", "ja": "・", "ko": "·", "zh-CN": "／"}
+
+# The 15 lodging areas with no entry in the coordinate-reviewed catalog, keyed by the
+# destination and the catalog's own text. Only ``en`` is required: ja and ko fall back
+# to it exactly as ``app.hotspots.areas.area_name`` does, and zh-CN is listed only where
+# the Simplified spelling differs from the Traditional one, so this table stays a list
+# of the differences a reader can check rather than 60 restatements.
+#
+# Checked one by one: Wikipedia's own interlanguage links for 濟州市 (Jeju City / 済州市 /
+# 제주시 / 济州市), Silom (是隆路 / シーロム通り), 中西區 (West Central District / 中西区)
+# and 韓屋村 (전주한옥마을); ko.wikipedia's 완산동 article for 완산공원; ja.wikipedia for
+# 青葉通り. The rest are the standard romanisations of names that are already Latin or
+# already Japanese (Nimman, Klong Muang, Night Bazaar, Riverside, Old Town, 国分町,
+# 紙屋町, West District, Hai'an Road).
+AREA_NAMES: Final[Mapping[tuple[str, str], Mapping[str, str]]] = {
+    ("jeju", "濟州市"): {"en": "Jeju City", "ja": "済州市", "ko": "제주시", "zh-CN": "济州市"},
+    ("bangkok", "Silom"): {"en": "Silom", "ja": "シーロム", "zh-CN": "是隆"},
+    ("chiang-mai", "尼曼區"): {"en": "Nimman", "zh-CN": "尼曼区"},
+    ("chiang-mai", "夜市周邊"): {"en": "Night Bazaar", "zh-CN": "夜市周边"},
+    ("krabi", "克隆芒"): {"en": "Klong Muang"},
+    ("taichung", "西區"): {"en": "West District", "zh-CN": "西区"},
+    ("sendai", "國分町"): {"en": "Kokubuncho", "ja": "国分町", "zh-CN": "国分町"},
+    ("sendai", "青葉通"): {"en": "Aoba-dori", "ja": "青葉通り", "zh-CN": "青叶通"},
+    ("hiroshima", "紙屋町"): {"en": "Kamiyacho", "ja": "紙屋町", "zh-CN": "纸屋町"},
+    ("chiang-rai", "河畔"): {"en": "Riverside"},
+    ("chiang-rai", "舊城"): {"en": "Old Town", "zh-CN": "旧城"},
+    ("tainan", "中西區"): {"en": "West Central District", "ja": "中西区", "zh-CN": "中西区"},
+    ("tainan", "海安路"): {"en": "Hai'an Road"},
+    ("jeonju", "韓屋村"): {
+        "en": "Hanok Village",
+        "ja": "韓屋村",
+        "ko": "한옥마을",
+        "zh-CN": "韩屋村",
+    },
+    ("jeonju", "完山公園"): {
+        "en": "Wansan Park",
+        "ja": "完山公園",
+        "ko": "완산공원",
+        "zh-CN": "完山公园",
+    },
+}
+
+
+def _area_segments(text: str) -> list[str]:
+    return [part for part in AREA_SEGMENT.split(text) if part]
+
+
+def _build_area_index() -> dict[str, dict[str, tuple[HotspotArea, int, int]]]:
+    """Every reviewed area, addressable by any one of its Traditional segments.
+
+    The position and the segment count travel with it so a one-part lodging area can
+    take the matching one part of a two-part district name — 「澀谷」 becomes "Shibuya",
+    not "Shibuya & Harajuku" — and fall back to the whole name when the reader's locale
+    splits it differently (Korean writes several of these as one word).
+    """
+    index: dict[str, dict[str, tuple[HotspotArea, int, int]]] = {}
+    for city_code, areas in HOTSPOT_AREAS.items():
+        table: dict[str, tuple[HotspotArea, int, int]] = {}
+        for area in areas:
+            parts = _area_segments(area.names["zh-TW"])
+            for position, part in enumerate(parts):
+                # First writer wins: catalog order is the reviewed order.
+                table.setdefault(part, (area, position, len(parts)))
+        index[city_code] = table
+    return index
+
+
+AREA_INDEX: Final[Mapping[str, Mapping[str, tuple[HotspotArea, int, int]]]] = _build_area_index()
+
+
+def _listed_area_name(destination_id: str, label: str, locale: Locale) -> str | None:
+    """The hand-checked name for an area the reviewed catalog does not carry."""
+    names = AREA_NAMES.get((destination_id, label))
+    if names is None:
+        return None
+    if locale == "zh-CN":
+        return names.get("zh-CN") or label
+    return names.get(locale) or names.get("en") or label
+
+
+def area_label(profile: DestinationProfile, label: str, locale: Locale) -> str:
+    """One lodging area as the reader would write it; the catalog's own text for zh-TW."""
+    if locale == "zh-TW":
+        return label
+    listed = _listed_area_name(profile.id, label, locale)
+    if listed is not None:
+        return listed
+    table = AREA_INDEX.get((profile.code or "").upper(), {})
+    pieces: list[str] = []
+    for part in _area_segments(label):
+        found = table.get(part)
+        if found is None:
+            # Nothing reviewed covers this one. The local script beats a guess.
+            return label
+        area, position, count = found
+        whole = area_name(area, locale)
+        segments = [] if "(" in whole or ")" in whole else _area_segments(whole)
+        piece = segments[position] if len(segments) == count else whole
+        if piece not in pieces:
+            pieces.append(piece)
+    return AREA_JOIN.get(locale, "／").join(pieces)
+
+
+def area_labels(profile: DestinationProfile, locale: Locale) -> list[str]:
+    """The lodging areas in the reader's locale, in catalog order and without repeats."""
+    if locale == "zh-TW":
+        return list(profile.areas)
+    labels: list[str] = []
+    for label in profile.areas:
+        value = area_label(profile, label, locale)
+        if value not in labels:
+            labels.append(value)
+    return labels
+
+
 def validate_localized_catalog() -> list[str]:
     """Every destination and country has every locale; run by the tests."""
     problems: list[str] = []
@@ -369,4 +495,36 @@ def validate_localized_catalog() -> list[str]:
     problems.extend(f"{extra}: not in the catalog" for extra in sorted(unknown))
     if set(TRANSLATED) | {"zh-TW"} != set(LOCALES):
         problems.append("TRANSLATED does not cover the site locales")
+    problems.extend(_area_problems())
+    return problems
+
+
+def _area_problems() -> list[str]:
+    """Every lodging area resolves, either through the reviewed catalog or by name.
+
+    This is the guard that keeps AREA_NAMES honest: adding an area to the destination
+    catalog that neither matches a reviewed district nor appears below leaves a label
+    that stays Traditional in all four other locales, and the tests say so instead of
+    the reader finding out.
+    """
+    problems: list[str] = []
+    listed = set(AREA_NAMES)
+    for profile in DESTINATIONS:
+        table = AREA_INDEX.get((profile.code or "").upper(), {})
+        for label in profile.areas:
+            listed.discard((profile.id, label))
+            if (profile.id, label) in AREA_NAMES:
+                if not AREA_NAMES[(profile.id, label)].get("en"):
+                    problems.append(f"{profile.id}: area {label!r} has no English name")
+                continue
+            unknown = [part for part in _area_segments(label) if part not in table]
+            if unknown:
+                problems.append(
+                    f"{profile.id}: area {label!r} is not in the reviewed catalog "
+                    f"({', '.join(unknown)}) and has no entry in AREA_NAMES"
+                )
+    problems.extend(
+        f"{destination_id}: AREA_NAMES has {label!r}, which is not one of its areas"
+        for destination_id, label in sorted(listed)
+    )
     return problems
