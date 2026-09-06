@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-zh-cn-names-are-traditional
 title: zh-CN 的景點名稱 568 筆全部是繁體
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T10:10:27Z
 created_at: 2026-09-06T09:56:50Z
 completed_at:
-branch:
+branch: claude/wikidata-locale-labels
 depends_on: []
 scope:
   - apps/api/app/localized_names.py

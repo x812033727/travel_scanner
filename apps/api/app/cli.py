@@ -37,6 +37,16 @@ from app.hotspots.place_matching import (
     match_missing_places,
     missing_place_targets,
 )
+from app.hotspots.simplified_names import (
+    BOOTSTRAP_DIR,
+    ConversionReport,
+    acceptable,
+    apply_conversions,
+    convert_names,
+    drop_unusable_labels,
+    seed_rows,
+    write_rows,
+)
 from app.hotspots.wikidata_labels import BOOTSTRAP_FILES, fill_bootstrap_files
 from app.infra import get_redis
 from app.models import (
@@ -415,6 +425,77 @@ async def review_guide_backlog(
     }
 
 
+def _read_text(path: Path) -> str:
+    """Read a file from an async command; the CLI is single-user and blocking here is fine."""
+    return path.read_text(encoding="utf-8")
+
+
+async def fill_simplified_names(
+    *,
+    provider: str | None,
+    apply: bool,
+    max_output_tokens: int | None,
+    mapping_file: Path | None,
+) -> dict[str, Any]:
+    """Convert, or apply a mapping produced by an earlier run.
+
+    The API key lives in the admin database, so the conversion runs where that
+    database is; the bootstrap files it edits are checked into the repository. So
+    the two halves are separable: emit the mapping on the server, apply it here.
+    """
+    paths = [BOOTSTRAP_DIR / name for name in BOOTSTRAP_FILES]
+    loaded = seed_rows(paths)
+    dropped = sum(drop_unusable_labels(rows) for _path, rows in loaded)
+    names = [str(row["name"]) for _path, rows in loaded for row in rows if row.get("name")]
+    if mapping_file:
+        raw = cast(dict[str, Any], json.loads(_read_text(mapping_file)))
+        pairs = cast(dict[str, str], raw.get("conversions", raw))
+        report = ConversionReport(
+            converted={
+                key: value
+                for key, value in pairs.items()
+                # Re-check every pair here: the mapping is a file that travelled.
+                if acceptable(key, value)
+            }
+        )
+        report.rejected = [(k, v) for k, v in pairs.items() if not acceptable(k, v)]
+    else:
+        async with SessionFactory() as session:
+            settings = await load_runtime_settings(session)
+        if max_output_tokens:
+            settings = settings.model_copy(
+                update={"hotspot_guide_ai_max_output_tokens": max_output_tokens}
+            )
+        report = await convert_names(names, settings, provider_name=cast(Any, provider))
+    written = 0
+    if apply:
+        for path, rows in loaded:
+            written += apply_conversions(rows, report.converted)
+            write_rows(path, rows)
+    # The conversions that share the fewest characters with their input are the ones
+    # a rename would hide in, so they are the ones worth reading.
+    riskiest = sorted(
+        report.converted.items(),
+        key=lambda pair: len(set(pair[0]) & set(pair[1])) / max(len(set(pair[0])), 1),
+    )[:12]
+    for traditional, simplified in riskiest:
+        print(f"  check  {traditional} -> {simplified}")
+    for traditional, simplified in report.rejected[:12]:
+        print(f"  reject {traditional} -> {simplified}")
+    return {
+        "applied": apply,
+        "conversions": report.converted if not apply else {},
+        "dropped_non_simplified_labels": dropped,
+        "converted": len(report.converted),
+        "unchanged": len(report.unchanged),
+        "rejected": len(report.rejected),
+        "missing": len(report.missing),
+        "written": written,
+        "ai_calls": report.calls,
+        "errors": report.errors,
+    }
+
+
 def main() -> None:
     if isinstance(sys.stdout, TextIOWrapper):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -624,6 +705,22 @@ def main() -> None:
     guide_review.add_argument(
         "--verbose", action="store_true", help="Print every decision, not just the first 40"
     )
+    simplified = subparsers.add_parser(
+        "fill-simplified-names",
+        help=(
+            "Derive every seed's zh-CN label from its Traditional name with the configured "
+            "AI vendor, dropping any reply that is not a character-for-character conversion"
+        ),
+    )
+    simplified.add_argument("--provider", help="AI vendor (default: the configured one)")
+    simplified.add_argument("--max-output-tokens", type=int)
+    simplified.add_argument(
+        "--from-mapping",
+        help="Apply a conversions mapping emitted by an earlier run instead of calling the AI",
+    )
+    simplified.add_argument(
+        "--apply", action="store_true", help="Write the bootstrap files instead of reporting"
+    )
     args = parser.parse_args()
     if args.command == "add-usage-package":
         asyncio.run(add_usage_package(args.email, args.package, args.reference))
@@ -700,6 +797,21 @@ def main() -> None:
             )
         )
         print(json.dumps(summary, ensure_ascii=False, indent=2))
+    elif args.command == "fill-simplified-names":
+        print(
+            json.dumps(
+                asyncio.run(
+                    fill_simplified_names(
+                        provider=args.provider,
+                        apply=args.apply,
+                        max_output_tokens=args.max_output_tokens,
+                        mapping_file=Path(args.from_mapping) if args.from_mapping else None,
+                    )
+                ),
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
     elif args.command == "fill-hotspot-labels":
         fill_hotspot_labels(
             args.file or list(BOOTSTRAP_FILES), args.dry_run, args.overwrite_original

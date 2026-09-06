@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-ko-ja-names-fall-back-to-english
 title: ko 與 ja 的景點名稱多半退回英文
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T10:10:29Z
 created_at: 2026-09-06T09:56:52Z
 completed_at:
-branch:
+branch: claude/wikidata-locale-labels
 depends_on: []
 scope:
   - apps/api/app/hotspots/wikidata_labels.py
