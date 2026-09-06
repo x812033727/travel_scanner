@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**8 open · 0 in progress · 1 blocked · 0 in review · 67 done**
+**7 open · 1 in progress · 1 blocked · 0 in review · 67 done**
 
 ## Ready to claim
 
@@ -15,7 +15,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | P2 | [destinations 的 english_name 存繁中、areas 不隨語系](open/2026-09-06-destinations-english-name-areas.md) | api | `apps/api/app/destinations/localized.py` |
 | P2 | [待安排地點進入 AI 候選集（PR 8）](open/2026-09-06-paste-inbox-into-candidates.md) | api | `apps/api/app/trips/router.py`<br>`apps/api/app/trips/intents.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/trips/ingest.py`<br>`apps/web/components/trip-inbox-panel.tsx`<br>`apps/web/components/trip-editor.tsx` |
-| P2 | [zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位](open/2026-09-06-zh-cn-area-labels-traditional.md) | api | `apps/api/app/hotspots/areas.py` |
 | P2 | [seed 的韓文假名泰文名稱被當成中文標籤輸出](open/2026-09-06-non-chinese-seed-names-as-chinese-labels.md) | api | `apps/api/app/hotspots/catalog.py`<br>`apps/api/app/localized_names.py` |
 | P2 | [Wikidata 標籤原封不動存入，消歧義括號會顯示給使用者](open/2026-09-06-wikidata-labels-stored-verbatim.md) | api | `apps/api/app/hotspots/wikidata_labels.py` |
 | P3 | [後台其餘三個面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n-remaining.md) | web | `apps/web/components/admin-hotspot-places-panel.tsx`<br>`apps/web/components/admin-deployments-panel.tsx`<br>`apps/web/components/admin-users-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/app/[locale]/admin/page.tsx`<br>`apps/web/app/[locale]/admin/settings/page.tsx`<br>`apps/web/app/[locale]/admin/system-settings/page.tsx`<br>`apps/web/app/[locale]/admin/hotspots/page.tsx`<br>`apps/web/app/[locale]/admin/foods/page.tsx`<br>`apps/web/app/[locale]/admin/users/page.tsx`<br>`apps/web/app/[locale]/admin/deployments/page.tsx`<br>`apps/web/app/[locale]/admin/analytics/page.tsx`<br>`apps/web/app/[locale]/admin/usage-settings/page.tsx`<br>`apps/web/app/[locale]/admin/layout-settings/page.tsx` |
@@ -24,7 +23,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位](open/2026-09-06-zh-cn-area-labels-traditional.md) | claude-opus-5 | 2026-09-06T13:27:16Z | `claude/zh-cn-area-labels` |
 
 ## In review
 

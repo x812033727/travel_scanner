@@ -1,14 +1,14 @@
 ---
 id: 2026-09-06-zh-cn-area-labels-traditional
 title: zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-06T13:27:16Z
 created_at: 2026-09-06T13:14:53Z
 completed_at:
-branch:
+branch: claude/zh-cn-area-labels
 depends_on: []
 scope:
   - apps/api/app/hotspots/areas.py
