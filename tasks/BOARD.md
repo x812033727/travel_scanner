@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**9 open · 1 in progress · 2 blocked · 5 in review · 80 done**
+**8 open · 1 in progress · 2 blocked · 5 in review · 81 done**
 
 ## Ready to claim
 
@@ -16,7 +16,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [AI 備援警告把 provider 名稱與 Python 例外類別秀給旅客看](open/2026-09-06-ai-warning-copy.md) | api | `apps/api/app/ai/itinerary.py`<br>`apps/api/tests/test_ai_itinerary.py` |
 | P2 | [供應商就緒狀態只看金鑰有無，卡片會綠燈但功能不通](open/2026-09-06-configured-readiness-beyond-key-presence.md) | api | `apps/api/app/admin/service.py`<br>`apps/api/tests/test_admin_readiness.py` |
 | P3 | [日曆的假日圓點應該跟著目的地國家](open/2026-09-06-holiday-dots-follow-destination.md) | web | `apps/web/components/new-trip-form.tsx`<br>`apps/web/components/date-range-picker.tsx`<br>`apps/web/lib/holidays.ts`<br>`apps/web/components/new-trip-form.test.tsx` |
-| P3 | [Booking Demand 連線測試停在城市 ID，從不解析旅館報價](open/2026-09-06-booking-demand-test-parses-an-offer.md) | api | `apps/api/app/providers/booking.py`<br>`apps/api/tests/test_booking_demand_probe.py` |
 
 ## In progress
 
@@ -48,6 +47,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-06 [Booking Demand 連線測試停在城市 ID，從不解析旅館報價](done/2026-09-06-booking-demand-test-parses-an-offer.md)
 - 2026-09-06 [地點建議清單會在 Escape 之後自己打開](done/2026-09-06-place-picker-reopens-after-escape.md)
 - 2026-09-06 [航班來源擴充讀舊資料沒有防護：型別不符的 search id 會直接 500](done/2026-09-06-expand-flight-sources-guard.md)
 - 2026-09-06 [後台其餘三個面板文案硬編碼繁中](done/2026-09-06-admin-panels-i18n-remaining.md)
@@ -57,4 +57,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-06 [社群登入上線前置：正式主機收斂與 Apple 網域驗證檔](done/2026-09-06-social-login-launch-prep.md)
 - 2026-09-06 [國定假日資料：台日韓 2026-2027 進版控，日曆看得見連假與補班](done/2026-09-06-public-holidays-tw-jp-kr.md)
 - 2026-09-06 [zh-CN 的 390 個區域名稱全是繁體，區域目錄沒有簡體欄位](done/2026-09-06-zh-cn-area-labels-traditional.md)
-- 2026-09-06 [東京 AI 行程一律 500：一筆種子的 20 分鐘低於 planner 下限](done/2026-09-06-tokyo-planner-duration-500.md)
