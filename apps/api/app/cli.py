@@ -6,6 +6,7 @@ import sys
 from datetime import UTC, datetime, timedelta
 from io import TextIOWrapper
 from pathlib import Path
+from typing import Any, cast
 from uuid import UUID
 
 from pydantic import ValidationError
@@ -28,6 +29,7 @@ from app.foods.trend_import import import_trend_merchants
 from app.hotspots.candidate_cli import import_candidates
 from app.hotspots.candidate_generation import generate_candidates
 from app.hotspots.cities import CITY_BY_CODE
+from app.hotspots.guide_review import review_pending_guides
 from app.hotspots.jobs import collect_once
 from app.hotspots.place_matching import (
     MatchReport,
@@ -354,6 +356,65 @@ async def match_hotspot_places(
         print(f"summary: {summary} google_calls={sum(report.calls for report in reports)}")
 
 
+async def review_guide_backlog(
+    *,
+    provider: str | None,
+    locales: list[str],
+    limit: int | None,
+    min_relevance: int,
+    min_quality: int,
+    max_calls: int,
+    batch_size: int,
+    max_output_tokens: int | None,
+    apply: bool,
+    verbose: bool,
+) -> dict[str, Any]:
+    async with SessionFactory() as session:
+        settings = await load_runtime_settings(session)
+        if max_output_tokens:
+            # Gemini's thinking tokens count against the same ceiling, and a truncated
+            # reply costs the whole batch, so a long run may need more than the admin
+            # value tuned for interactive searches.
+            settings = settings.model_copy(
+                update={"hotspot_guide_ai_max_output_tokens": max_output_tokens}
+            )
+        report = await review_pending_guides(
+            session,
+            settings,
+            provider_name=cast(Any, provider),
+            locales=locales or None,
+            limit=limit,
+            min_relevance=min_relevance,
+            min_quality=min_quality,
+            max_calls=max_calls,
+            batch_size=batch_size,
+            apply=apply,
+        )
+    shown = report.decisions if verbose else report.decisions[:40]
+    for item in shown:
+        scores = (
+            f"r={item.relevance_score:>3} q={item.quality_score:>3}"
+            if item.relevance_score is not None
+            else "no score  "
+        )
+        print(
+            f"  {item.decision:<9} {item.locale:<5} {item.content_type:<7} {scores} "
+            f"{item.hotspot_name} — {item.title[:60]}"
+        )
+    if not verbose and len(report.decisions) > len(shown):
+        print(f"  ... {len(report.decisions) - len(shown)} more (use --verbose)")
+    return {
+        "applied": report.applied,
+        "provider": report.provider,
+        "model": report.model,
+        "counts": report.counts(),
+        "ai_calls": report.calls,
+        "input_tokens": report.input_tokens,
+        "output_tokens": report.output_tokens,
+        "errors": report.errors,
+    }
+
+
 def main() -> None:
     if isinstance(sys.stdout, TextIOWrapper):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -529,6 +590,40 @@ def main() -> None:
     backfill.add_argument(
         "--dry-run", action="store_true", help="Count what would change without writing"
     )
+    guide_review = subparsers.add_parser(
+        "review-pending-guides",
+        help=(
+            "Score the pending guide backlog with the configured AI vendor and record "
+            "approve/reject on each row. One AI call covers 20 candidates; nothing is "
+            "written without --apply."
+        ),
+    )
+    guide_review.add_argument(
+        "--provider", help="AI vendor to use (default: the configured guide-search vendor)"
+    )
+    guide_review.add_argument(
+        "--locale", action="append", default=[], help="Only this locale (repeatable)"
+    )
+    guide_review.add_argument("--limit", type=int, help="Stop after this many pending rows")
+    guide_review.add_argument("--min-relevance", type=int, default=60)
+    guide_review.add_argument("--min-quality", type=int, default=40)
+    guide_review.add_argument(
+        "--max-calls", type=int, default=200, help="Hard ceiling on billable AI calls"
+    )
+    guide_review.add_argument(
+        "--batch-size", type=int, default=20, help="Candidates per AI call (default 20)"
+    )
+    guide_review.add_argument(
+        "--max-output-tokens",
+        type=int,
+        help="Override the guide-search output ceiling for this run",
+    )
+    guide_review.add_argument(
+        "--apply", action="store_true", help="Write the decisions instead of only reporting them"
+    )
+    guide_review.add_argument(
+        "--verbose", action="store_true", help="Print every decision, not just the first 40"
+    )
     args = parser.parse_args()
     if args.command == "add-usage-package":
         asyncio.run(add_usage_package(args.email, args.package, args.reference))
@@ -589,6 +684,22 @@ def main() -> None:
         )
     elif args.command == "backfill-trip-item-names":
         print(json.dumps(asyncio.run(backfill_trip_items(args.dry_run)), ensure_ascii=False))
+    elif args.command == "review-pending-guides":
+        summary = asyncio.run(
+            review_guide_backlog(
+                provider=args.provider,
+                locales=args.locale,
+                limit=args.limit,
+                min_relevance=args.min_relevance,
+                min_quality=args.min_quality,
+                max_calls=args.max_calls,
+                batch_size=args.batch_size,
+                max_output_tokens=args.max_output_tokens,
+                apply=args.apply,
+                verbose=args.verbose,
+            )
+        )
+        print(json.dumps(summary, ensure_ascii=False, indent=2))
     elif args.command == "fill-hotspot-labels":
         fill_hotspot_labels(
             args.file or list(BOOTSTRAP_FILES), args.dry_run, args.overwrite_original
