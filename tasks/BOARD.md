@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**6 open · 1 in progress · 2 blocked · 0 in review · 118 done**
+**6 open · 2 in progress · 2 blocked · 0 in review · 118 done**
 
 ## Ready to claim
 
@@ -21,6 +21,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
+| [沒有帳號的人走到底是死路：註冊已關閉，但每道牆只寫「前往登入」](open/2026-09-06-auth-dead-end.md) | claude-opus-5 | 2026-09-06T21:06:28Z | `claude/ux-auth-walls` |
 | [專門的購物店家：新增經過座標核實的購物景點種子](open/2026-09-06-shopping-store-seeds.md) | claude-opus-5 | 2026-09-06T20:01:33Z | `claude/shopping-store-seeds` |
 
 ## In review
