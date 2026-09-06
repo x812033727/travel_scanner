@@ -1,13 +1,16 @@
 import { cache } from "react";
 
 /**
- * The city list the food browser used to fetch from the browser after hydration.
- * It renders above the merchant list, so inserting it a second later pushed the
- * merchants down the page — one 0.29 layout shift on every first visit, at the
- * default text size. It is a public GET, so the server can send it with the HTML.
+ * The city chooser the food page used to fetch after hydration.
  *
- * Shapes stay `unknown`: the component owns them, and all this promises is "the
- * API's payload, or null".
+ * On a phone that list is 2,492 pixels tall — seven countries and thirty-three cities —
+ * and it arrived about four seconds in, pushing everything the reader was already looking
+ * at that far down the page. Reserving its space with a skeleton cannot work: the height
+ * depends on the answer. The data is a public GET, so the server hands it over with the
+ * HTML and there is nothing left to shift.
+ *
+ * Both shapes stay `unknown` here on purpose: the component owns the types, and everything
+ * this module promises is "either the API's payload or null".
  */
 export type InitialFoods = {
   cities: unknown | null;
@@ -25,8 +28,8 @@ async function fetchJson(url: string, locale: string): Promise<unknown | null> {
     if (!response.ok) return null;
     return (await response.json()) as unknown;
   } catch {
-    // The client asks for the same two endpoints on mount, so a miss here costs
-    // the reader the old late-arriving city list and nothing else.
+    // The client asks for the same two endpoints on mount, so a server-side miss costs the
+    // reader the old late-arriving list and nothing else.
     return null;
   }
 }

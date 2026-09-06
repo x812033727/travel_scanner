@@ -240,6 +240,36 @@ async def _handle_account_link(
         await client.reply_text(reply_token, f"已連結 Mokaair 帳號（{display_name}）。")
 
 
+# What a reader can send to start linking. The three Traditional Chinese words are the
+# ones already in use and printed on the alerts page, so they stay exactly as they are; the
+# rest let a Japanese, Korean or English reader type something they can actually read and
+# key in. Compared after strip() and casefold(), so "Link" and "LINK" both work.
+LINK_KEYWORDS = frozenset({
+    "綁定", "連結帳號", "綁定帳號",
+    "绑定", "关联账号", "绑定账号",
+    "link", "connect", "link account", "connect account",
+    "連携", "リンク", "アカウント連携", "れんけい",
+    "연결", "계정 연결", "연동", "계정 연동",
+})
+
+# Sent when a message is not one of them. The old behaviour was silence, which a reader
+# cannot tell apart from a broken bot: they wait for a link that is never coming.
+UNKNOWN_MESSAGE_REPLY = "\n".join([
+    "請傳送「綁定」以連結 Mokaair 帳號。",
+    'Send "link" to connect your Mokaair account.',
+    "「連携」と送信すると Mokaair アカウントを連携できます。",
+    "「연결」을 보내면 Mokaair 계정을 연결할 수 있습니다.",
+])
+
+
+def wants_link(event_type: str | None, text: str) -> bool:
+    """Whether this event is a reader asking to connect their account.
+
+    Following the bot is the same request made by adding it, so it counts too.
+    """
+    return event_type == "follow" or text.strip().casefold() in LINK_KEYWORDS
+
+
 async def _handle_event(
     event: dict[str, Any],
     session: AsyncSession,
@@ -272,7 +302,7 @@ async def _handle_event(
                 return
             message = event.get("message") or {}
             text = str(message.get("text") or "").strip()
-            if event_type == "follow" or text in {"綁定", "連結帳號", "綁定帳號"}:
+            if wants_link(event_type, text):
                 existing = await session.scalar(
                     select(LineConnection).where(LineConnection.line_user_id == line_user_id)
                 )
@@ -282,6 +312,9 @@ async def _handle_event(
                     await client.reply_text(reply_token, "這個 LINE 已連結 Mokaair 帳號。")
                 else:
                     await _send_link_prompt(client, settings, line_user_id, reply_token)
+            elif text:
+                # Anything else at least gets an answer naming the word that works.
+                await client.reply_text(reply_token, UNKNOWN_MESSAGE_REPLY)
         if isinstance(event_id, str):
             await redis.set(f"line:webhook:done:{event_id}", "1", ex=604_800)
     finally:

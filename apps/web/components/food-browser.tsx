@@ -27,44 +27,42 @@ import { useSharedAnchor } from "@/lib/use-shared-anchor";
 
 type ActiveChip = { key: string; label: string; clear: () => void };
 
-/**
- * The server hands these over as `unknown`; check the fields the page reads before
- * trusting them, so a bad payload falls back to fetching rather than rendering half
- * a list and throwing inside the error boundary.
- */
 function isCitiesResponse(value: unknown): value is FoodCitiesResponse {
   if (typeof value !== "object" || value === null) return false;
   const candidate = value as Partial<FoodCitiesResponse>;
-  if (!Array.isArray(candidate.countries)) return false;
-  return candidate.countries.every((country) => {
-    if (typeof country !== "object" || country === null) return false;
-    const entry = country as Partial<FoodCountry>;
-    return typeof entry.code === "string" && typeof entry.name === "string" && Array.isArray(entry.cities);
-  });
+  return Array.isArray(candidate.countries);
 }
 
 function isCategoriesResponse(value: unknown): value is FoodCategoriesResponse {
   if (typeof value !== "object" || value === null) return false;
-  const candidate = value as Partial<FoodCategoriesResponse>;
-  return Array.isArray(candidate.items);
+  return Array.isArray((value as Partial<FoodCategoriesResponse>).items);
 }
 
 /**
- * `initialCities` / `initialCategories` are the server's copy of the two lists this
- * page opens with. They arrive as `unknown` because the page has no business owning
- * these shapes; anything that does not look right falls back to the fetch on mount.
+ * `initialCities` and `initialCategories` are the server's copy of the two lists that do
+ * not depend on any filter. The city chooser is 2,492 pixels tall on a phone, so arriving
+ * after hydration meant shoving the whole page down about four seconds in.
  */
-export function FoodBrowser({ initialCities, initialCategories }: { initialCities?: unknown; initialCategories?: unknown } = {}) {
-  const seededCountries = isCitiesResponse(initialCities) ? initialCities.countries : null;
-  const seededCategories = isCategoriesResponse(initialCategories) ? initialCategories.items : null;
+export function FoodBrowser({ initialCities, initialCategories }: {
+  initialCities?: unknown;
+  initialCategories?: unknown;
+} = {}) {
   const t = useTranslations("foods");
+  const seededCities = useMemo(
+    () => (isCitiesResponse(initialCities) ? initialCities.countries ?? [] : null),
+    [initialCities],
+  );
+  const seededCategories = useMemo(
+    () => (isCategoriesResponse(initialCategories) ? initialCategories.items ?? [] : null),
+    [initialCategories],
+  );
   const search = useClientSearch();
   const initialFilters = useMemo(() => readFoodBrowserFilters(search ?? ""), [search]);
   const [filterState, setFilterState] = useState<FoodBrowserFilters | null>(null);
   const filters = filterState ?? initialFilters;
   const [queryInput, setQueryInput] = useState<string | null>(null);
   const queryValue = queryInput ?? filters.query;
-  const [countries, setCountries] = useState<FoodCountry[]>(seededCountries ?? []);
+  const [countries, setCountries] = useState<FoodCountry[]>(seededCities ?? []);
   const [siteCategories, setSiteCategories] = useState<FacetCategory[]>(seededCategories ?? []);
   const [result, setResult] = useState<FoodMerchantsResponse | null>(null);
   const [pending, setPending] = useState(false);
@@ -85,16 +83,14 @@ export function FoodBrowser({ initialCities, initialCategories }: { initialCitie
   }, []);
 
   useEffect(() => {
-    // The server already rendered both lists into the HTML; asking again on mount
-    // would only replace them with the same thing a second later, which is what
-    // pushed the merchant list down the page.
-    if (!seededCountries) loadCities();
-    if (!seededCategories) {
-      api<FoodCategoriesResponse>("/foods/categories")
-        .then((response) => setSiteCategories(response.items ?? []))
-        .catch(() => undefined);
-    }
-  }, [loadCities, seededCountries, seededCategories]);
+    // Both lists came with the HTML unless the server call failed, and asking again would
+    // only repaint the same rows.
+    if (seededCities === null) loadCities();
+    if (seededCategories !== null) return;
+    api<FoodCategoriesResponse>("/foods/categories")
+      .then((response) => setSiteCategories(response.items ?? []))
+      .catch(() => undefined);
+  }, [loadCities, seededCategories, seededCities]);
 
   useEffect(() => {
     // Later replaceState calls change the snapshot; only the first client value seeds the list.

@@ -260,30 +260,6 @@ describe("FoodBrowser", () => {
     ).toBe("拉麵");
   });
 
-  it("uses the city list the server rendered instead of asking for it again", async () => {
-    window.history.replaceState({}, "", "/foods");
-    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
-      const url = String(input);
-      if (url.includes("/foods/cities") || url.includes("/foods/categories")) {
-        throw new Error("the component should not have asked for this");
-      }
-      return new Response(JSON.stringify({ total: 0, has_more: false, next_cursor: null, items: [], facets: { areas: [], unassigned_area_count: 0, categories: [] } }));
-    });
-    vi.stubGlobal("fetch", fetchMock);
-
-    render(
-      <SavedItemsProvider>
-        <FoodBrowser initialCities={cities} initialCategories={{ items: [] }} />
-      </SavedItemsProvider>,
-    );
-
-    // Painted from the HTML: inserting this list a second later is what pushed the
-    // merchant section down the page.
-    expect(screen.getByRole("button", { name: /東京/ })).toBeTruthy();
-    await waitFor(() => expect(fetchMock.mock.calls.length).toBeGreaterThan(0));
-    expect(fetchMock.mock.calls.map((call) => String(call[0])).filter((url) => url.includes("/foods/cities"))).toEqual([]);
-  });
-
   it("survives a merchant payload that carries no facets", async () => {
     // `result?.facets.areas` only guarded the response, not the field: a payload
     // without facets threw during render and took the whole page with it.
@@ -305,5 +281,20 @@ describe("FoodBrowser", () => {
     fireEvent.click(screen.getByRole("button", { name: "重新載入" }));
     expect(await screen.findByRole("heading", { name: "Ichiran Shibuya" })).toBeTruthy();
     expect(screen.queryByRole("alert")).toBeNull();
+  });
+  it("uses the server's city list and does not ask for it again", async () => {
+    // The chooser is 2,492 pixels tall on a phone; fetching it after hydration is what
+    // shoved the page down four seconds in, so a seeded list must render on the first paint.
+    window.history.replaceState({}, "", "/foods");
+    const { calls } = stubFetch();
+    render(
+      <SavedItemsProvider>
+        <FoodBrowser initialCities={cities} initialCategories={{ items: [] }} />
+      </SavedItemsProvider>,
+    );
+    expect(screen.getByRole("button", { name: /東京/ })).toBeTruthy();
+    await waitFor(() => expect(calls.some((url) => url.includes("/foods/merchants?"))).toBe(true));
+    expect(calls.filter((url) => url.includes("/foods/cities"))).toHaveLength(0);
+    expect(calls.filter((url) => url.includes("/foods/categories"))).toHaveLength(0);
   });
 });
