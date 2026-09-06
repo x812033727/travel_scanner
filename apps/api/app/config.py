@@ -153,7 +153,7 @@ class Settings(BaseSettings):
     trust_proxy_client_ip: bool = False
     ai_planner_enabled: bool = True
     ai_planner_mode: str = "auto"
-    ai_planner_priority: str = "openai,anthropic,minimax"
+    ai_planner_priority: str = "openai,anthropic,minimax,gemini"
     ai_planner_timeout_seconds: float = Field(default=15.0, gt=0, le=60)
     ai_planner_total_timeout_seconds: float = Field(default=35.0, gt=0, le=120)
     ai_planner_max_output_tokens: int = Field(default=12_000, ge=1_000, le=32_000)
@@ -165,6 +165,9 @@ class Settings(BaseSettings):
     anthropic_api_key: str | None = None
     minimax_api_base_url: str = "https://api.minimaxi.com/v1"
     minimax_model: str = "MiniMax-M3"
+    # Gemini shares the key and base URL of the article search (hotspot_guide_gemini_*);
+    # this is the model the planner and the trip parser use.
+    gemini_model: str = "gemini-3.8-flash"
     minimax_api_key: str | None = None
     travel_provider_mode: str = "mock"
     flight_provider_mode: str = "auto"
@@ -352,11 +355,14 @@ class Settings(BaseSettings):
     hotspot_guide_gemini_daily_search_budget: int = Field(default=30, ge=1, le=1000)
     hotspot_guide_refresh_days: int = Field(default=7, ge=1, le=30)
     hotspot_guide_ai_search_enabled: bool = True
-    hotspot_guide_ai_default_provider: Literal["minimax", "openai", "anthropic"] = "minimax"
+    hotspot_guide_ai_default_provider: Literal["minimax", "openai", "anthropic", "gemini"] = (
+        "minimax"
+    )
     # Per-vendor model for AI guide search; empty means the planner's <vendor>_model.
     hotspot_guide_ai_openai_model: str | None = None
     hotspot_guide_ai_anthropic_model: str | None = None
     hotspot_guide_ai_minimax_model: str | None = None
+    hotspot_guide_ai_gemini_model: str | None = None
     hotspot_guide_ai_timeout_seconds: float = Field(default=90.0, gt=0, le=120)
     hotspot_guide_ai_max_output_tokens: int = Field(default=16_000, ge=1_000, le=32_000)
     hotspot_guide_ai_daily_run_limit: int = Field(default=10, ge=1, le=100)

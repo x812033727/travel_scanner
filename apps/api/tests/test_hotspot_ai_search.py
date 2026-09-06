@@ -7,6 +7,7 @@ from pydantic import ValidationError
 from app.config import get_settings
 from app.hotspots.ai_search import (
     AnthropicResearchProvider,
+    GeminiResearchProvider,
     QueryPlan,
     ResponsesResearchProvider,
     _candidate_metadata,
@@ -63,12 +64,18 @@ def test_ai_assessment_payload_never_exposes_a_candidate_url() -> None:
 
 def test_unconfigured_provider_is_explicit_and_never_falls_back() -> None:
     settings = get_settings().model_copy(
-        update={"minimax_api_key": None, "openai_api_key": None, "anthropic_api_key": None}
+        update={
+            "minimax_api_key": None,
+            "openai_api_key": None,
+            "anthropic_api_key": None,
+            "hotspot_guide_gemini_api_key": None,
+        }
     )
     assert configured_research_providers(settings) == {
         "minimax": False,
         "openai": False,
         "anthropic": False,
+        "gemini": False,
     }
     with pytest.raises(AppError) as error:
         research_provider(settings, "minimax")
@@ -138,6 +145,78 @@ async def test_anthropic_adapter_uses_structured_output_without_tools_or_urls() 
             QueryPlan, "query_plan", "Return JSON", {"attraction": "浅草"}
         )
     assert result.video_queries == ["浅草 観光"]
+
+
+@pytest.mark.asyncio
+async def test_gemini_adapter_sends_a_response_schema_and_reports_usage() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        body = json.loads(request.content)
+        assert request.url.path == "/v1beta/models/gemini-test:generateContent"
+        assert request.headers["x-goog-api-key"] == "secret"
+        schema = body["generationConfig"]["responseSchema"]
+        assert schema["properties"]["article_queries"]["type"] == "array"
+        assert schema["properties"]["article_queries"]["items"]["type"] == "string"
+        assert "maxItems" not in json.dumps(schema)
+        assert "Asakusa" in body["contents"][0]["parts"][0]["text"]
+        assert "JSON Schema" in body["system_instruction"]["parts"][0]["text"]
+        return httpx.Response(
+            200,
+            json={
+                "candidates": [
+                    {
+                        "content": {
+                            "parts": [
+                                {
+                                    "text": '{"article_queries":["Asakusa travel"],'
+                                    '"video_queries":[]}'
+                                }
+                            ]
+                        },
+                        "finishReason": "STOP",
+                    }
+                ],
+                "usageMetadata": {
+                    "promptTokenCount": 12,
+                    "candidatesTokenCount": 5,
+                    "thoughtsTokenCount": 3,
+                },
+            },
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        provider = GeminiResearchProvider(
+            "https://gemini.example", "secret", "gemini-test", 10, 1000, client
+        )
+        result, usage = await provider.structured(
+            QueryPlan, "query_plan", "Return JSON", {"attraction": "Asakusa"}
+        )
+    assert result.article_queries == ["Asakusa travel"]
+    assert usage == {"input_tokens": 12, "output_tokens": 5}
+
+
+def test_gemini_research_provider_uses_the_shared_key_and_its_own_override() -> None:
+    from app.hotspots.ai_search import research_model
+
+    settings = get_settings().model_copy(
+        update={
+            "hotspot_guide_gemini_api_key": "g-key",
+            "gemini_model": "gemini-planner",
+            "hotspot_guide_ai_gemini_model": None,
+        }
+    )
+    assert configured_research_providers(settings)["gemini"] is True
+    provider = research_provider(settings, "gemini")
+    assert isinstance(provider, GeminiResearchProvider)
+    assert (provider.name, provider.model) == ("gemini", "gemini-planner")
+
+    override = settings.model_copy(update={"hotspot_guide_ai_gemini_model": "gemini-search"})
+    assert research_model(override, "gemini") == "gemini-search"
+    assert research_provider(override, "gemini").model == "gemini-search"
+
+    missing = settings.model_copy(update={"hotspot_guide_gemini_api_key": None})
+    with pytest.raises(AppError) as error:
+        research_provider(missing, "gemini")
+    assert error.value.code == "hotspot_guide_ai_provider_not_configured"
 
 
 @pytest.mark.asyncio
@@ -293,6 +372,7 @@ def test_ai_search_overview_lists_the_model_each_vendor_would_use() -> None:
             "minimax_api_key": "mm-test",
             "openai_api_key": None,
             "anthropic_api_key": None,
+            "hotspot_guide_gemini_api_key": None,
             "minimax_model": "MiniMax-M3",
             "hotspot_guide_ai_minimax_model": "MiniMax-M2.7",
             "hotspot_guide_ai_default_provider": "minimax",
@@ -300,11 +380,17 @@ def test_ai_search_overview_lists_the_model_each_vendor_would_use() -> None:
     )
     overview = ai_search_overview(settings)
     assert overview["default_provider"] == "minimax"
-    assert overview["providers"] == {"minimax": True, "openai": False, "anthropic": False}
+    assert overview["providers"] == {
+        "minimax": True,
+        "openai": False,
+        "anthropic": False,
+        "gemini": False,
+    }
     assert overview["models"] == {
         "minimax": "MiniMax-M2.7",
         "openai": settings.openai_model,
         "anthropic": settings.anthropic_model,
+        "gemini": settings.gemini_model,
     }
 
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from datetime import date
+from typing import Any
 
 import httpx
 import pytest
@@ -17,6 +18,7 @@ from app.ai.itinerary import (
     AIItineraryRequest,
     AIPlannerCandidate,
     AnthropicPlannerProvider,
+    GeminiPlannerProvider,
     ResponsesPlannerProvider,
     fallback_draft,
     normalize_draft,
@@ -279,6 +281,76 @@ def test_json_document_strips_fences_and_keeps_plain_json() -> None:
     assert _json_document(f"```json\n{payload}\n```") == payload
     assert _json_document(f"```\n{payload}\n```") == payload
     assert _json_document(f"  ```json\n{payload}\n```  ") == payload
+
+
+@pytest.mark.asyncio
+async def test_gemini_planner_sends_a_response_schema_the_api_accepts() -> None:
+    captured: dict[str, Any] = {}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        captured["path"] = request.url.path
+        captured["key"] = request.headers.get("x-goog-api-key")
+        captured.update(json.loads(request.content))
+        return httpx.Response(
+            200,
+            json={
+                "candidates": [
+                    {"content": {"parts": [{"text": draft_json()}]}, "finishReason": "STOP"}
+                ],
+                "usageMetadata": {"promptTokenCount": 20, "candidatesTokenCount": 9},
+            },
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        provider = GeminiPlannerProvider(
+            "https://generativelanguage.googleapis.com/",
+            "g-key",
+            "gemini-3.8-flash",
+            1,
+            4000,
+            client,
+        )
+        result = await provider.generate(request_for())
+
+    assert result.days[0].items[0].candidate_key == "hotspot:0"
+    assert captured["path"] == "/v1beta/models/gemini-3.8-flash:generateContent"
+    assert captured["key"] == "g-key"
+    generation = captured["generationConfig"]
+    assert generation["responseMimeType"] == "application/json"
+    serialized_schema = json.dumps(generation["responseSchema"])
+    assert "$ref" not in serialized_schema and "$defs" not in serialized_schema
+    days = generation["responseSchema"]["properties"]["days"]["items"]
+    assert days["properties"]["items"]["items"]["properties"]["candidate_key"]["type"] == "string"
+    assert "不要一直換飯店" in captured["contents"][0]["parts"][0]["text"]
+    assert captured["system_instruction"]["parts"][0]["text"] == itinerary_module.SYSTEM_PROMPT
+
+
+def test_gemini_joins_the_planner_roster_with_the_shared_guide_key() -> None:
+    settings = Settings(
+        ai_planner_mode="auto",
+        ai_planner_priority="gemini,openai",
+        openai_api_key="sk-test",
+        anthropic_api_key=None,
+        minimax_api_key=None,
+        hotspot_guide_gemini_api_key="g-key",
+        gemini_model="gemini-3.5-flash",
+    )
+    providers = itinerary_module._providers(settings)
+    assert [(provider.name, provider.model) for provider in providers] == [
+        ("gemini", "gemini-3.5-flash"),
+        ("openai", settings.openai_model),
+    ]
+    assert isinstance(providers[0], GeminiPlannerProvider)
+    assert providers[0].base_url == settings.hotspot_guide_gemini_base_url.rstrip("/")
+    assert providers[0].api_key == "g-key"
+
+    pinned = itinerary_module._providers(settings.model_copy(update={"ai_planner_mode": "gemini"}))
+    assert [provider.name for provider in pinned] == ["gemini"]
+
+    without_key = itinerary_module._providers(
+        settings.model_copy(update={"hotspot_guide_gemini_api_key": None})
+    )
+    assert [provider.name for provider in without_key] == ["openai"]
 
 
 @pytest.mark.asyncio
@@ -599,6 +671,7 @@ async def test_planner_without_keys_returns_persistable_catalog_fallback() -> No
         openai_api_key=None,
         anthropic_api_key=None,
         minimax_api_key=None,
+        hotspot_guide_gemini_api_key=None,
     )
     result = await AIItineraryPlanner(settings).generate(request_for())
     assert result.planning.status == "fallback"

@@ -631,7 +631,15 @@ async def test_snapshot_exposes_model_catalog_options() -> None:
     snapshot = await settings_snapshot(SnapshotSession([]))  # type: ignore[arg-type]
     by_provider = {item.provider: item for item in snapshot.providers}
     planner = by_provider["ai_planner"]
-    assert set(planner.field_options) == {"openai_model", "anthropic_model", "minimax_model"}
+    assert set(planner.field_options) == {
+        "openai_model",
+        "anthropic_model",
+        "minimax_model",
+        "gemini_model",
+    }
+    assert "gemini-3.8-flash" in [
+        option.value for option in planner.field_options["gemini_model"]
+    ]
     assert Settings().openai_model in [
         option.value for option in planner.field_options["openai_model"]
     ]
@@ -639,6 +647,7 @@ async def test_snapshot_exposes_model_catalog_options() -> None:
         "hotspot_guide_ai_openai_model",
         "hotspot_guide_ai_anthropic_model",
         "hotspot_guide_ai_minimax_model",
+        "hotspot_guide_ai_gemini_model",
     }
     gemini = by_provider["gemini_guides"].field_options["hotspot_guide_gemini_model"]
     assert "gemini-3.8-flash" in [option.value for option in gemini]
@@ -677,6 +686,65 @@ def test_ai_vendors_rejects_non_official_base_url_and_planner_rejects_moved_fiel
             ProviderSettingsUpdate(config={"ai_planner_priority": "openai,openai"}),
         )
     assert getattr(priority_error.value, "code", None) == "provider_setting_invalid"
+
+
+def test_gemini_is_a_valid_planner_and_guide_search_choice() -> None:
+    validated = _validate_provider_values(
+        "ai_planner",
+        {},
+        ProviderSettingsUpdate(
+            config={
+                "ai_planner_mode": "gemini",
+                "ai_planner_priority": "gemini,openai,anthropic,minimax",
+                "gemini_model": " gemini-3.5-flash ",
+            }
+        ),
+    )
+    assert validated["ai_planner_mode"] == "gemini"
+    assert validated["gemini_model"] == "gemini-3.5-flash"
+    search = _validate_provider_values(
+        "ai_guide_search",
+        {},
+        ProviderSettingsUpdate(
+            config={
+                "hotspot_guide_ai_default_provider": "gemini",
+                "hotspot_guide_ai_gemini_model": "",
+            }
+        ),
+    )
+    assert search["hotspot_guide_ai_default_provider"] == "gemini"
+    assert "hotspot_guide_ai_gemini_model" not in search
+
+
+def test_ai_card_status_reports_gemini_through_the_shared_guide_key() -> None:
+    from app.admin.service import _configured
+
+    settings = Settings(
+        ai_planner_mode="auto",
+        ai_planner_priority="gemini,openai",
+        openai_api_key="sk-test",
+        anthropic_api_key=None,
+        minimax_api_key=None,
+        hotspot_guide_gemini_api_key="g-key",
+        gemini_model="gemini-3.8-flash",
+        hotspot_guide_ai_default_provider="gemini",
+        hotspot_guide_ai_gemini_model=None,
+        hotspot_guide_brave_enabled=True,
+        hotspot_guide_brave_api_key="brave-key",
+    )
+    configured, status, message = _configured("ai_planner", settings)
+    assert (configured, status) == (True, "ready")
+    assert message == f"自動備援：Gemini（gemini-3.8-flash） → OpenAI（{settings.openai_model}）"
+
+    pinned = settings.model_copy(update={"ai_planner_mode": "gemini"})
+    assert _configured("ai_planner", pinned) == (True, "ready", "指定 Gemini（gemini-3.8-flash）")
+    unkeyed = pinned.model_copy(update={"hotspot_guide_gemini_api_key": None})
+    assert _configured("ai_planner", unkeyed)[:2] == (False, "not_configured")
+
+    search_ok, search_status, search_message = _configured("ai_guide_search", settings)
+    assert (search_ok, search_status) == (True, "ready")
+    assert search_message.startswith("預設 gemini（gemini-3.8-flash）")
+    assert _configured("ai_guide_search", unkeyed)[:2] == (False, "not_configured")
 
 
 def test_model_fields_accept_catalog_or_custom_ids_and_reject_path_characters() -> None:

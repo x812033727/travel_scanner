@@ -35,8 +35,10 @@ from pydantic import BaseModel, ConfigDict, Field, ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.ai.gemini import GeminiStructuredProvider
 from app.ai.itinerary import (
     AnthropicPlannerProvider,
+    GeminiPlannerProvider,
     ResponsesPlannerProvider,
     planner_providers,
 )
@@ -51,6 +53,7 @@ from app.ai.structured_output import (
     anthropic_output_text,
     ensure_response_completed,
     extract_json_document,
+    gemini_response_schema,
     responses_output_text,
     schema_instructions,
 )
@@ -272,6 +275,48 @@ class AnthropicTripParserProvider:
         finally:
             if owns_client:
                 await client.aclose()
+
+
+class GeminiTripParserProvider:
+    """Gemini generateContent with the parser schema, same roster as the planner."""
+
+    name = "gemini"
+
+    def __init__(
+        self,
+        base_url: str,
+        api_key: str,
+        model: str,
+        timeout_seconds: float,
+        max_output_tokens: int,
+        client: httpx.AsyncClient | None = None,
+    ) -> None:
+        self.base_url = base_url.rstrip("/")
+        self.api_key = api_key
+        self.model = model
+        self.timeout_seconds = timeout_seconds
+        self.max_output_tokens = max_output_tokens
+        self.client = client
+
+    async def draft(self, text: str) -> TripParseDraft:
+        provider = GeminiStructuredProvider(
+            self.api_key,
+            self.base_url,
+            self.model,
+            self.timeout_seconds,
+            self.max_output_tokens,
+            self.client,
+        )
+        try:
+            parsed, _usage = await provider.structured(
+                TripParseDraft,
+                gemini_response_schema(TripParseDraft),
+                _instructions(),
+                {"trip_text": text},
+            )
+            return parsed
+        finally:
+            await provider.close()
 
 
 _REGION_BY_LABEL: dict[str, str] = {}
@@ -514,6 +559,16 @@ def trip_parser_providers(settings: Settings) -> list[TripParserProvider]:
         elif isinstance(planner, AnthropicPlannerProvider):
             providers.append(
                 AnthropicTripParserProvider(
+                    planner.base_url,
+                    planner.api_key,
+                    planner.model,
+                    timeout_seconds,
+                    max_output_tokens,
+                )
+            )
+        elif isinstance(planner, GeminiPlannerProvider):
+            providers.append(
+                GeminiTripParserProvider(
                     planner.base_url,
                     planner.api_key,
                     planner.model,

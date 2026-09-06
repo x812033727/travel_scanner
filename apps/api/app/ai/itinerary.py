@@ -11,10 +11,12 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 import httpx
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 
+from app.ai.gemini import GeminiStructuredProvider
 from app.ai.structured_output import (
     anthropic_output_text,
     ensure_response_completed,
     extract_json_document,
+    gemini_response_schema,
     responses_output_text,
 )
 from app.config import Settings
@@ -22,7 +24,7 @@ from app.localized_names import item_names, join_localized_names
 from app.search.schemas import SearchPreferences, Travelers, TripPace
 from app.trips.itinerary import ItineraryDay, ItineraryItem
 
-AIProviderName = Literal["openai", "anthropic", "minimax", "catalog"]
+AIProviderName = Literal["openai", "anthropic", "minimax", "gemini", "catalog"]
 SlotType = Literal["activity", "lunch", "dinner"]
 
 logger = logging.getLogger(__name__)
@@ -327,6 +329,48 @@ class AnthropicPlannerProvider:
                 await client.aclose()
 
 
+class GeminiPlannerProvider:
+    """Gemini generateContent with a responseSchema, sharing the article search's key."""
+
+    name: AIProviderName = "gemini"
+
+    def __init__(
+        self,
+        base_url: str,
+        api_key: str,
+        model: str,
+        timeout_seconds: float,
+        max_output_tokens: int,
+        client: httpx.AsyncClient | None = None,
+    ) -> None:
+        self.base_url = base_url.rstrip("/")
+        self.api_key = api_key
+        self.model = model
+        self.timeout_seconds = timeout_seconds
+        self.max_output_tokens = max_output_tokens
+        self.client = client
+
+    async def generate(self, request: AIItineraryRequest) -> AIItineraryDraft:
+        provider = GeminiStructuredProvider(
+            self.api_key,
+            self.base_url,
+            self.model,
+            self.timeout_seconds,
+            self.max_output_tokens,
+            self.client,
+        )
+        try:
+            draft, _usage = await provider.structured(
+                AIItineraryDraft,
+                gemini_response_schema(AIItineraryDraft),
+                SYSTEM_PROMPT,
+                _request_payload(request),
+            )
+            return draft
+        finally:
+            await provider.close()
+
+
 def _date_range(start: date, end: date) -> list[date]:
     return [start + timedelta(days=offset) for offset in range((end - start).days + 1)]
 
@@ -568,6 +612,14 @@ def _providers(settings: Settings) -> list[AIPlannerProvider]:
             settings.minimax_api_base_url,
             settings.minimax_api_key,
             settings.minimax_model,
+            settings.ai_planner_timeout_seconds,
+            settings.ai_planner_max_output_tokens,
+        )
+    if settings.hotspot_guide_gemini_api_key:
+        providers["gemini"] = GeminiPlannerProvider(
+            settings.hotspot_guide_gemini_base_url,
+            settings.hotspot_guide_gemini_api_key,
+            settings.gemini_model,
             settings.ai_planner_timeout_seconds,
             settings.ai_planner_max_output_tokens,
         )

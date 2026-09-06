@@ -177,14 +177,15 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     ),
     "ai_planner": ProviderDefinition(
         "AI 行程規劃",
-        "由後台選擇 OpenAI／ChatGPT、Claude、MiniMax 或內建備援，並指定各家使用的模型；"
-        "金鑰與 Base URL 在「AI 供應商與金鑰」設定。",
+        "由後台選擇 OpenAI／ChatGPT、Claude、MiniMax、Gemini 或內建備援，並指定各家使用的模型；"
+        "行程文字解析沿用同一組設定。金鑰與 Base URL 在「AI 供應商與金鑰」設定。",
         (
             "ai_planner_mode",
             "ai_planner_priority",
             "openai_model",
             "anthropic_model",
             "minimax_model",
+            "gemini_model",
             "ai_planner_timeout_seconds",
             "ai_planner_total_timeout_seconds",
             "ai_planner_max_output_tokens",
@@ -206,13 +207,14 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     ),
     "ai_guide_search": ProviderDefinition(
         "AI 景點介紹搜尋",
-        "由 MiniMax、OpenAI 或 Claude 規劃與評選多語搜尋；模型留空時沿用行程規劃的模型。"
+        "由 MiniMax、OpenAI、Claude 或 Gemini 規劃與評選多語搜尋；模型留空時沿用行程規劃的模型。"
         "網址只接受 Brave 與 YouTube。",
         (
             "hotspot_guide_ai_default_provider",
             "hotspot_guide_ai_openai_model",
             "hotspot_guide_ai_anthropic_model",
             "hotspot_guide_ai_minimax_model",
+            "hotspot_guide_ai_gemini_model",
             "hotspot_guide_ai_timeout_seconds",
             "hotspot_guide_ai_max_output_tokens",
             "hotspot_guide_ai_daily_run_limit",
@@ -623,6 +625,7 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             "openai": ("OpenAI", settings.openai_model, settings.openai_api_key),
             "anthropic": ("Claude", settings.anthropic_model, settings.anthropic_api_key),
             "minimax": ("MiniMax", settings.minimax_model, settings.minimax_api_key),
+            "gemini": ("Gemini", settings.gemini_model, settings.hotspot_guide_gemini_api_key),
         }
         if settings.ai_planner_mode in {"fallback", "disabled"}:
             return True, "ready", "目前使用內建備援草稿"
@@ -659,6 +662,7 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             "openai": settings.openai_api_key,
             "anthropic": settings.anthropic_api_key,
             "minimax": settings.minimax_api_key,
+            "gemini": settings.hotspot_guide_gemini_api_key,
         }[selected]
         sources = bool(
             settings.hotspot_guide_brave_enabled
@@ -1171,10 +1175,11 @@ def _validate_provider_values(
             "openai",
             "anthropic",
             "minimax",
+            "gemini",
             "fallback",
             "disabled",
         },
-        "hotspot_guide_ai_default_provider": {"openai", "anthropic", "minimax"},
+        "hotspot_guide_ai_default_provider": {"openai", "anthropic", "minimax", "gemini"},
     }
     for field, allowed in modes.items():
         if field in merged and str(merged[field]).lower() not in allowed:
@@ -1230,12 +1235,12 @@ def _validate_provider_values(
         if (
             not priority
             or len(priority) != len(set(priority))
-            or any(item not in {"openai", "anthropic", "minimax"} for item in priority)
+            or any(item not in {"openai", "anthropic", "minimax", "gemini"} for item in priority)
         ):
             raise AppError(
                 422,
                 "provider_setting_invalid",
-                "AI 備援順序只能使用不重複的 openai、anthropic、minimax",
+                "AI 備援順序只能使用不重複的 openai、anthropic、minimax、gemini",
             )
     if "skyscanner_market" in merged:
         merged["skyscanner_market"] = str(merged["skyscanner_market"]).upper()

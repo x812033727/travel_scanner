@@ -142,12 +142,12 @@ const fieldMeta: Record<string, FieldMeta> = {
   flight_status_enabled: { label: "", type: "boolean" },
   airline_fares_enabled: { label: "", type: "boolean" },
   pricing_enabled: { label: "", type: "boolean" },
-  ai_planner_mode: { label: "AI 行程來源", options: [{ value: "auto", label: "自動備援" }, { value: "openai", label: "OpenAI／ChatGPT" }, { value: "anthropic", label: "Claude" }, { value: "minimax", label: "MiniMax" }, { value: "fallback", label: "只用內建備援" }, { value: "disabled", label: "停用真實 AI" }] },
-  ai_planner_priority: { label: "自動備援順序", help: "用逗號分隔，例如 openai,anthropic,minimax。" },
+  ai_planner_mode: { label: "AI 行程來源", options: [{ value: "auto", label: "自動備援" }, { value: "openai", label: "OpenAI／ChatGPT" }, { value: "anthropic", label: "Claude" }, { value: "minimax", label: "MiniMax" }, { value: "gemini", label: "Gemini" }, { value: "fallback", label: "只用內建備援" }, { value: "disabled", label: "停用真實 AI" }] },
+  ai_planner_priority: { label: "自動備援順序", help: "用逗號分隔，例如 openai,anthropic,minimax,gemini。" },
   ai_planner_timeout_seconds: { label: "每家 AI 逾時（秒）", type: "number" },
   ai_planner_total_timeout_seconds: { label: "整體 AI 逾時（秒）", type: "number" },
   ai_planner_max_output_tokens: { label: "最大輸出 Tokens", type: "number" },
-  hotspot_guide_ai_default_provider: { label: "景點 AI 搜尋預設供應商", options: [{ value: "minimax", label: "MiniMax" }, { value: "openai", label: "OpenAI" }, { value: "anthropic", label: "Claude" }] },
+  hotspot_guide_ai_default_provider: { label: "景點 AI 搜尋預設供應商", options: [{ value: "minimax", label: "MiniMax" }, { value: "openai", label: "OpenAI" }, { value: "anthropic", label: "Claude" }, { value: "gemini", label: "Gemini" }] },
   hotspot_guide_ai_timeout_seconds: { label: "景點 AI 搜尋逾時（秒）", type: "number" },
   hotspot_guide_ai_max_output_tokens: { label: "景點 AI 最大輸出 Tokens", type: "number" },
   hotspot_guide_ai_daily_run_limit: { label: "每日 AI 搜尋執行上限", type: "number" },
@@ -155,12 +155,14 @@ const fieldMeta: Record<string, FieldMeta> = {
   hotspot_guide_ai_openai_model: { localized: true, allowCustom: true, emptyOption: "inheritPlanner" },
   hotspot_guide_ai_anthropic_model: { localized: true, allowCustom: true, emptyOption: "inheritPlanner" },
   hotspot_guide_ai_minimax_model: { localized: true, allowCustom: true, emptyOption: "inheritPlanner" },
+  hotspot_guide_ai_gemini_model: { localized: true, allowCustom: true, emptyOption: "inheritPlanner" },
   openai_api_base_url: { label: "OpenAI API Base URL", type: "url" },
   openai_model: { localized: true, allowCustom: true },
   anthropic_api_base_url: { label: "Claude API Base URL", type: "url" },
   anthropic_model: { localized: true, allowCustom: true },
   minimax_api_base_url: { label: "MiniMax API Base URL", type: "url" },
   minimax_model: { localized: true, allowCustom: true },
+  gemini_model: { localized: true, allowCustom: true },
   travel_provider_mode: { label: "旅遊資料供應商", options: [{ value: "amadeus", label: "Amadeus" }, { value: "mock", label: "Mock（僅開發）" }, { value: "disabled", label: "停用" }] },
   flight_provider_mode: { label: "航空查詢來源", options: [{ value: "auto", label: "自動：Skyscanner → Duffel → Amadeus" }, { value: "skyscanner", label: "Skyscanner" }, { value: "duffel", label: "Duffel" }, { value: "amadeus", label: "Amadeus" }, { value: "mock", label: "Mock（僅開發）" }, { value: "disabled", label: "停用" }], help: "混合模式會依序補查，直到行程組數達到門檻；追加來源不另扣搜尋次數。" },
   flight_search_strategy: { label: "航空搜尋策略", options: [{ value: "hybrid", label: "混合節流" }, { value: "single", label: "只查首選來源" }] },
@@ -346,11 +348,11 @@ function valueForApi(key: string, value: string): Scalar {
 }
 
 const customOption = "__custom__";
-type AiVendor = "openai" | "anthropic" | "minimax";
-const aiVendors: AiVendor[] = ["openai", "anthropic", "minimax"];
+type AiVendor = "openai" | "anthropic" | "minimax" | "gemini";
+const aiVendors: AiVendor[] = ["openai", "anthropic", "minimax", "gemini"];
 const aiFeatureCards: Record<string, { selector: string; anchor: string; models: Record<AiVendor, string> }> = {
-  ai_planner: { selector: "ai_planner_mode", anchor: "ai_planner_priority", models: { openai: "openai_model", anthropic: "anthropic_model", minimax: "minimax_model" } },
-  ai_guide_search: { selector: "hotspot_guide_ai_default_provider", anchor: "hotspot_guide_ai_default_provider", models: { openai: "hotspot_guide_ai_openai_model", anthropic: "hotspot_guide_ai_anthropic_model", minimax: "hotspot_guide_ai_minimax_model" } },
+  ai_planner: { selector: "ai_planner_mode", anchor: "ai_planner_priority", models: { openai: "openai_model", anthropic: "anthropic_model", minimax: "minimax_model", gemini: "gemini_model" } },
+  ai_guide_search: { selector: "hotspot_guide_ai_default_provider", anchor: "hotspot_guide_ai_default_provider", models: { openai: "hotspot_guide_ai_openai_model", anthropic: "hotspot_guide_ai_anthropic_model", minimax: "hotspot_guide_ai_minimax_model", gemini: "hotspot_guide_ai_gemini_model" } },
 };
 const isAiVendor = (value: string): value is AiVendor => (aiVendors as string[]).includes(value);
 

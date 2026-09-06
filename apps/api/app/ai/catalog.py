@@ -154,6 +154,9 @@ MODEL_FIELDS: dict[str, tuple[Vendor, Capability]] = {
     # The same field also drives the schema-bound candidate generator; every Gemini
     # entry carries both capabilities, so the grounded one is the stricter filter.
     "hotspot_guide_gemini_model": ("gemini", "gemini_grounded"),
+    # The planner, the trip parser and the guide search send a Gemini responseSchema.
+    "gemini_model": ("gemini", "gemini_structured"),
+    "hotspot_guide_ai_gemini_model": ("gemini", "gemini_structured"),
 }
 
 # Empty means "use the planner's model for that vendor".
@@ -162,6 +165,7 @@ OPTIONAL_MODEL_FIELDS: frozenset[str] = frozenset(
         "hotspot_guide_ai_openai_model",
         "hotspot_guide_ai_anthropic_model",
         "hotspot_guide_ai_minimax_model",
+        "hotspot_guide_ai_gemini_model",
     }
 )
 

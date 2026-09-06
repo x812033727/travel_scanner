@@ -13,10 +13,12 @@ from redis.exceptions import RedisError
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.ai.gemini import GeminiStructuredProvider
 from app.ai.structured_output import (
     anthropic_output_text,
     ensure_response_completed,
     extract_json_document,
+    gemini_response_schema,
     responses_output_text,
     schema_instructions,
 )
@@ -39,8 +41,8 @@ from app.models import (
 )
 from app.problems import AppError
 
-AIProviderName = Literal["minimax", "openai", "anthropic"]
-AI_PROVIDER_NAMES: tuple[AIProviderName, ...] = ("minimax", "openai", "anthropic")
+AIProviderName = Literal["minimax", "openai", "anthropic", "gemini"]
+AI_PROVIDER_NAMES: tuple[AIProviderName, ...] = ("minimax", "openai", "anthropic", "gemini")
 SearchDepth = Literal["economy", "balanced", "deep"]
 ContentType = Literal["article", "video"]
 
@@ -268,6 +270,46 @@ class AnthropicResearchProvider:
         raise ValueError("AI structured output validation failed")
 
 
+class GeminiResearchProvider:
+    """Gemini generateContent with a responseSchema; the shared structured client does
+    the one repair round trip, so this adapter only shapes the usage numbers."""
+
+    name: AIProviderName = "gemini"
+
+    def __init__(
+        self,
+        base_url: str,
+        api_key: str,
+        model: str,
+        timeout_seconds: float,
+        max_output_tokens: int,
+        client: httpx.AsyncClient | None = None,
+    ) -> None:
+        self.model = model
+        self._provider = GeminiStructuredProvider(
+            api_key, base_url, model, timeout_seconds, max_output_tokens, client
+        )
+
+    async def close(self) -> None:
+        await self._provider.close()
+
+    async def structured(
+        self,
+        schema: type[TModel],
+        schema_name: str,
+        instructions: str,
+        payload: dict[str, Any],
+    ) -> tuple[TModel, dict[str, int]]:
+        del schema_name
+        parsed, usage = await self._provider.structured(
+            schema, gemini_response_schema(schema), _with_schema(instructions, schema), payload
+        )
+        return parsed, {
+            "input_tokens": int(usage.get("input_tokens") or 0),
+            "output_tokens": int(usage.get("output_tokens") or 0),
+        }
+
+
 def research_provider(
     settings: Settings,
     name: AIProviderName,
@@ -302,6 +344,15 @@ def research_provider(
             settings.hotspot_guide_ai_max_output_tokens,
             client,
         )
+    if name == "gemini" and settings.hotspot_guide_gemini_api_key:
+        return GeminiResearchProvider(
+            settings.hotspot_guide_gemini_base_url,
+            settings.hotspot_guide_gemini_api_key,
+            research_model(settings, "gemini"),
+            settings.hotspot_guide_ai_timeout_seconds,
+            settings.hotspot_guide_ai_max_output_tokens,
+            client,
+        )
     raise AppError(503, "hotspot_guide_ai_provider_not_configured", "所選 AI 供應商尚未設定")
 
 
@@ -310,6 +361,7 @@ def configured_research_providers(settings: Settings) -> dict[str, bool]:
         "minimax": bool(settings.minimax_api_key),
         "openai": bool(settings.openai_api_key),
         "anthropic": bool(settings.anthropic_api_key),
+        "gemini": bool(settings.hotspot_guide_gemini_api_key),
     }
 
 
@@ -319,11 +371,13 @@ def research_model(settings: Settings, name: AIProviderName) -> str:
         "minimax": settings.hotspot_guide_ai_minimax_model,
         "openai": settings.hotspot_guide_ai_openai_model,
         "anthropic": settings.hotspot_guide_ai_anthropic_model,
+        "gemini": settings.hotspot_guide_ai_gemini_model,
     }[name]
     planner = {
         "minimax": settings.minimax_model,
         "openai": settings.openai_model,
         "anthropic": settings.anthropic_model,
+        "gemini": settings.gemini_model,
     }[name]
     return (override or "").strip() or planner
 
