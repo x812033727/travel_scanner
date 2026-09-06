@@ -77,6 +77,9 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
 
   await page.getByLabel("旅程名稱").fill("東京固定餐食行程");
   await page.getByLabel("目的地").fill("日本東京");
+  // The place suggestions open over the calendar below them, and a click Playwright
+  // refuses to dispatch is not an outside click, so the list would never close again.
+  await page.getByLabel("目的地").press("Escape");
   await pickTripDay(page, "2026-11-10");
   await pickTripDay(page, "2026-11-10");
   await expect(page.getByText(/共 1 天/)).toBeVisible();
