@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**10 open · 3 in progress · 3 blocked · 0 in review · 95 done**
+**9 open · 3 in progress · 3 blocked · 0 in review · 96 done**
 
 ## Ready to claim
 
@@ -17,7 +17,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [手機版行程頁的浮動元件佔掉三分之一畫面](open/2026-09-06-planner-mobile-chrome.md) | web | `apps/web/components/itinerary-diff.tsx`<br>`apps/web/components/itinerary-diff.test.tsx`<br>`apps/web/app/globals.css` |
 | P2 | [後台審核頁在看到第一筆待審之前先給 30 個控制項](open/2026-09-06-admin-review-density.md) | web | `apps/web/components/admin-hotspots-panel.tsx`<br>`apps/web/components/admin-hotspots-workspace.tsx`<br>`apps/web/components/admin-filter-pills.tsx` |
 | P2 | [後台主題管理畫面：taxonomy 表格與逐景點指派](open/2026-09-06-hotspot-themes-admin-web.md) | web | `apps/web/components/admin-hotspot-themes-panel.tsx`<br>`apps/web/components/admin-hotspot-theme-editor.tsx`<br>`apps/web/components/admin-hotspots-workspace.tsx`<br>`apps/web/components/admin-hotspots-panel.tsx`<br>`apps/web/i18n/request.ts`<br>`apps/web/vitest.setup.tsx`<br>`apps/web/messages/en/hotspotThemes.json`<br>`apps/web/messages/ja/hotspotThemes.json`<br>`apps/web/messages/ko/hotspotThemes.json`<br>`apps/web/messages/zh-TW/hotspotThemes.json`<br>`apps/web/messages/zh-CN/hotspotThemes.json` |
-| P2 | [種子分類是按配額輪流發的，不只 shopping 一類錯](open/2026-09-06-seed-categories-assigned-by-quota.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/deep_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_hotspot_seed_categories.py` |
 | P2 | [價格通知頁的副標與 LINE 卡片在四個語系都是繁中](open/2026-09-06-alerts-hardcoded-zh-tw.md) | web | `apps/web/components/line-connection-panel.tsx`<br>`apps/web/app/[locale]/alerts/page.tsx`<br>`apps/web/messages/en/alerts.json`<br>`apps/web/messages/ja/alerts.json`<br>`apps/web/messages/ko/alerts.json`<br>`apps/web/messages/zh-CN/alerts.json`<br>`apps/web/messages/zh-TW/alerts.json` |
 | P2 | [美食頁在預設字級下 CLS 0.29，第四秒還在跳版](open/2026-09-06-foods-late-layout-shift.md) | web | `apps/web/components/food-browser.tsx`<br>`apps/web/components/food-city-picker.tsx` |
 | P3 | [後台載入失敗時把原始 JS 例外與 ADMIN_EMAILS 提示一起丟給管理者](open/2026-09-06-admin-load-error-copy.md) | web | `apps/web/components/admin-settings-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/messages/zh-TW/admin.json` |
@@ -46,6 +45,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [種子分類是按配額輪流發的，不只 shopping 一類錯](done/2026-09-06-seed-categories-assigned-by-quota.md)
 - 2026-09-06 [五個語系的 trips.json 都有重複的 transfersCount 鍵](done/2026-09-06-duplicate-transfers-count-key.md)
 - 2026-09-06 [四個景點的分類被標成 shopping，其實是公園、城跡與神社](done/2026-09-06-seed-category-shopping-mistakes.md)
 - 2026-09-06 [後台可以維護景點主題並逐景點指派](done/2026-09-06-hotspot-themes-admin-api.md)
@@ -55,4 +55,3 @@ _Nothing here._
 - 2026-09-06 [AI 備援警告把 provider 名稱與 Python 例外類別秀給旅客看](done/2026-09-06-ai-warning-copy.md)
 - 2026-09-06 [日曆的假日圓點應該跟著目的地國家](done/2026-09-06-holiday-dots-follow-destination.md)
 - 2026-09-06 [供應商就緒狀態只看金鑰有無，卡片會綠燈但功能不通](done/2026-09-06-configured-readiness-beyond-key-presence.md)
-- 2026-09-06 [美食頁在 merchants 回應少了 facets 時整頁炸掉](done/2026-09-06-foods-facets-crash.md)
