@@ -9,6 +9,8 @@ Shrine in front of someone who asked for shops.
 
 from __future__ import annotations
 
+from collections import Counter
+
 from app.hotspots.catalog import HOTSPOT_SEEDS
 
 # Words that name a place people visit for what it is, not for what it sells.
@@ -55,3 +57,23 @@ def test_the_four_places_the_audit_named_are_no_longer_shopping() -> None:
     assert by_slug["hij-q41977"].category == "culture", "廣島城 is a castle"
     assert by_slug["hij-q191763"].category == "culture", "嚴島神社 is a shrine"
     assert by_slug["tae-q624313"].category == "nature", "八公山 is a mountain"
+
+
+# The eight values a seed may carry. Nothing outside this set reaches the planner's
+# interest mapping, and a typo would otherwise sit in the data unnoticed.
+KNOWN_CATEGORIES = {
+    "culture", "nature", "viewpoint", "shopping", "food", "family", "beach", "nightlife",
+}
+
+
+def test_the_catalogue_as_a_whole_is_varied_without_a_quota() -> None:
+    """Variety is a property of the catalogue, not something to demand of every city.
+
+    Asserting it per city is what produced the quota: three of each kind in each of them,
+    which put a shrine under shopping and a Noh museum under nature. Gyeongju really is
+    mostly cultural and Chiang Rai's deep list really is hills.
+    """
+    counts = Counter(seed.category for seed in HOTSPOT_SEEDS)
+    assert set(counts) == KNOWN_CATEGORIES
+    assert counts.most_common(1)[0][1] < len(HOTSPOT_SEEDS) * 0.5
+    assert min(counts.values()) >= 5
