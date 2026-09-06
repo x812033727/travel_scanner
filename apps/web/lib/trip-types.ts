@@ -167,6 +167,48 @@ export type TripRouting = {
   day_settings: TripRouteDaySetting[];
 };
 
+export type PriceSnapshot = {
+  total_price: string;
+  currency: string;
+  provider?: string | null;
+  source_mode?: string | null;
+  retrieved_at?: string | null;
+  expires_at?: string | null;
+  nightly_price?: string | null;
+  nights?: number | null;
+};
+
+export type TripPricingItem = PriceSnapshot & {
+  kind: "flight" | "hotel";
+  role: string;
+  item_id: string | null;
+  title?: string | null;
+  offer_id?: string | null;
+  counted: boolean;
+};
+
+export type TripPricing = {
+  currency: string;
+  quoted_total: string;
+  estimated_total: string | null;
+  items: TripPricingItem[];
+  unsummed_currencies: string[];
+};
+
+export type TripOptimizationSummary = {
+  movable_limit: number;
+  days: Array<{ date: string; movable_count: number }>;
+};
+
+export function priceSnapshot(item: TripItem): PriceSnapshot | null {
+  const value = item.data.price_snapshot;
+  if (!value || typeof value !== "object") return null;
+  const snapshot = value as Partial<PriceSnapshot>;
+  return typeof snapshot.total_price === "string" && typeof snapshot.currency === "string"
+    ? (snapshot as PriceSnapshot)
+    : null;
+}
+
 export type TripStatus = "planning" | "ready" | "travelling" | "closed";
 
 export type TripRescheduleSummary = {
@@ -219,6 +261,8 @@ export type Trip = {
   currency: string;
   data: Record<string, unknown>;
   primary_lodging?: PrimaryLodging | null;
+  pricing?: TripPricing | null;
+  optimization?: TripOptimizationSummary | null;
   schedule_defaults?: ScheduleDefaults;
   planning?: {
     status: "live" | "fallback" | "partial";

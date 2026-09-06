@@ -1,7 +1,7 @@
 "use client";
 
 import { AlertCircle, CalendarPlus, Check, Heart, LoaderCircle, LogIn, Share2, X } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { api } from "@/lib/api";
@@ -126,6 +126,7 @@ export function TravelCardActions({
 }) {
   const locale = useLocale() as keyof typeof labels;
   const text = labels[locale] ?? labels.en;
+  const common = useTranslations("common");
   const savedItems = useSavedItems();
   const pathname = usePathname();
   const saved = savedItems.isSaved(type, id);
@@ -137,11 +138,13 @@ export function TravelCardActions({
   const [busy, setBusy] = useState(false);
   const [saving, setSaving] = useState(false);
   const [notice, setNotice] = useState("");
+  const [noticeHref, setNoticeHref] = useState("");
   const [error, setError] = useState("");
   const [loginHref, setLoginHref] = useState(() => loginPath(pathname));
 
   function clearFeedback() {
     setNotice("");
+    setNoticeHref("");
     setError("");
   }
 
@@ -192,9 +195,15 @@ export function TravelCardActions({
             : {}),
         }),
       });
+      // A toast alone was a dead end: the reader had no way to see where the
+      // place landed. Keep the link on screen long enough to be tapped.
       setNotice(text.done);
+      setNoticeHref(`/trips/${trip.trip_id}`);
       setSheet(null);
-      window.setTimeout(() => setNotice(""), 2200);
+      window.setTimeout(() => {
+        setNotice("");
+        setNoticeHref("");
+      }, 8000);
     } catch (reason) {
       setError((reason as Error).message);
     } finally {
@@ -274,6 +283,11 @@ export function TravelCardActions({
         <div role="status" className="app-toast">
           <Check size={17} />
           {notice}
+          {noticeHref && (
+            <Link href={noticeHref} className="ml-1 underline underline-offset-2">
+              {common("openTrip")}
+            </Link>
+          )}
         </div>
       )}
       {error && <div role="alert" className="app-toast app-toast-error"><AlertCircle size={17} />{error}</div>}
@@ -316,9 +330,15 @@ export function TravelCardActions({
                 {busy && trips.length === 0 ? (
                   <p className="mt-5 text-[var(--muted)]">…</p>
                 ) : trips.length === 0 ? (
-                  <p className="mt-5 rounded-2xl bg-[var(--paper)] p-4">
-                    {text.empty}
-                  </p>
+                  <div className="mt-5 rounded-2xl bg-[var(--paper)] p-4">
+                    <p>{text.empty}</p>
+                    <Link
+                      href="/trips/new"
+                      className="mt-4 inline-flex min-h-12 items-center rounded-2xl bg-[var(--teal)] px-6 font-bold text-white"
+                    >
+                      {common("createTrip")}
+                    </Link>
+                  </div>
                 ) : (
                   <div className="mt-5 grid gap-4">
                     <label className="grid gap-2 text-sm font-bold">

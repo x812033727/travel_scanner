@@ -8,19 +8,22 @@ import {
   ExternalLink,
   Info,
   LoaderCircle,
+  LogIn,
   Plane,
   Radar,
   Search,
   ShieldCheck,
 } from "lucide-react";
-import { Link } from "@/i18n/navigation";
-import { useRouter } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { BackToBackFareSearch } from "@/components/back-to-back-fare-search";
 import { LiveBackToBackSearch } from "@/components/live-back-to-back-search";
+import { useSavedItems } from "@/components/saved-items-provider";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
+import { UsageInsufficientNotice } from "@/components/usage-insufficient-notice";
 import { api, isUsageInsufficient, twd } from "@/lib/api";
-import { safeExternalHref } from "@/lib/navigation";
+import { loginPath, safeExternalHref } from "@/lib/navigation";
 
 type AirlineCode = "CI" | "BR" | "JX";
 type SourceState = "ready" | "success" | "disabled" | "blocked" | "failed";
@@ -109,7 +112,13 @@ function sourceFor(code: AirlineCode, sources: CrawlerSource[]) {
 
 export function AirlineFareLab() {
   const charge = useOperationCharge("public_airline_fare_search");
-  const router = useRouter();
+  const [insufficient, setInsufficient] = useState(false);
+  // All three modes charge a use; a signed-out visitor gets one sign-in card instead of
+  // three live charge buttons that can only fail with 401.
+  const session = useSavedItems();
+  const pathname = usePathname();
+  const usage = useTranslations("usage");
+  const auth = useTranslations("auth");
   const [mode, setMode] = useState<"conventional" | "back_to_back" | "live_back_to_back">("conventional");
   const [status, setStatus] = useState<CrawlerStatus>();
   const [result, setResult] = useState<FareSearchResponse>();
@@ -150,6 +159,7 @@ export function AirlineFareLab() {
       return;
     }
     setBusy(true);
+    setInsufficient(false);
     try {
       const response = await api<FareSearchResponse>("/crawlers/airlines/fares", {
         method: "POST",
@@ -168,7 +178,7 @@ export function AirlineFareLab() {
       setResult(response);
     } catch (reason) {
       if (isUsageInsufficient(reason)) {
-        router.push("/pricing");
+        setInsufficient(true);
         return;
       }
       setError((reason as Error).message);
@@ -226,7 +236,11 @@ export function AirlineFareLab() {
         <button role="tab" aria-selected={mode === "live_back_to_back"} onClick={() => setMode("live_back_to_back")} className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${mode === "live_back_to_back" ? "bg-[var(--ink)] text-white" : "text-[var(--muted)]"}`}>即時倒買 API</button>
       </div>
 
-      {mode === "live_back_to_back" ? <LiveBackToBackSearch /> : mode === "back_to_back" ? <BackToBackFareSearch /> : <section className="grid gap-6 lg:grid-cols-[.82fr_1.18fr]">
+      {session.status === "signed_out" ? <section className="rounded-[1.75rem] border border-[var(--line)] bg-white p-8 text-center shadow-[0_22px_70px_rgba(16,42,43,.08)]">
+        <LogIn className="mx-auto text-[var(--teal)]" size={30} />
+        <h2 className="mt-4 text-2xl font-bold">{usage("signInToUse")} · {charge.label}</h2>
+        <Link href={loginPath(pathname)} className="mt-6 inline-flex min-h-12 items-center rounded-2xl bg-[var(--teal)] px-6 font-bold text-white">{auth("signIn")}</Link>
+      </section> : mode === "live_back_to_back" ? <LiveBackToBackSearch /> : mode === "back_to_back" ? <BackToBackFareSearch /> : <section className="grid gap-6 lg:grid-cols-[.82fr_1.18fr]">
         <form onSubmit={searchFares} className="self-start rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-[0_22px_70px_rgba(16,42,43,.08)] md:p-7">
           <div className="mb-6 flex items-center justify-between">
             <div><p className="text-xs font-semibold uppercase tracking-[.18em] text-[var(--teal)]">Search controls</p><h2 className="mt-1 text-2xl font-bold">設定航線</h2></div>
@@ -275,7 +289,8 @@ export function AirlineFareLab() {
             {result && <span className="rounded-full bg-[#edf5f1] px-3 py-1.5 text-sm font-semibold text-[var(--teal-dark)]">{result.quotes.length} 筆近期票價</span>}
           </div>
 
-          {error && <div role="alert" className="mt-5 flex items-start gap-3 rounded-2xl bg-red-50 p-4 text-sm leading-6 text-red-800"><AlertCircle className="mt-0.5 shrink-0" size={19} /><div><strong className="block">目前無法完成查詢</strong>{error}{needsLogin && <Link href="/login" className="ml-1 font-semibold underline">前往登入</Link>}</div></div>}
+          {insufficient && <div className="mt-5"><UsageInsufficientNotice chargeLabel={charge.label} /></div>}
+          {error && <div role="alert" className="mt-5 flex items-start gap-3 rounded-2xl bg-red-50 p-4 text-sm leading-6 text-red-800"><AlertCircle className="mt-0.5 shrink-0" size={19} /><div><strong className="block">目前無法完成查詢</strong>{error}{needsLogin && <Link href={loginPath(pathname)} className="ml-1 font-semibold underline">前往登入</Link>}</div></div>}
 
           {!result && !busy && !error && <div className="grid min-h-[25rem] place-items-center text-center"><div className="max-w-sm"><span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-[#edf5f1] text-[var(--teal)]"><CircleDot size={28} /></span><h3 className="mt-5 text-xl font-bold">先設定想看的航線</h3><p className="mt-2 leading-7 text-[var(--muted)]">結果會保留航空公司、日期、公開價格、來源更新時間與原始頁面，不補造班號或即時庫存。</p></div></div>}
 

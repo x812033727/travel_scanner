@@ -5,12 +5,12 @@ from typing import Annotated, Any, Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query, Response
-from sqlalchemy import and_, or_, select
+from sqlalchemy import and_, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import AdminUser, CurrentUser
 from app.db import get_session
-from app.models import UsageLedger, UsagePackage
+from app.models import PriceAlert, TripPlan, UsageLedger, UsagePackage
 from app.problems import AppError
 from app.usage.schemas import (
     OperationCostsUpdate,
@@ -127,11 +127,25 @@ async def put_usage_package(
 @router.get("/usage")
 async def usage(user: CurrentUser, session: Session) -> dict[str, Any]:
     account = await get_usage_account(session, user.id)
+    # The limits alone never told a member how close they were; the counts use the
+    # same predicates the create endpoints enforce (every trip, active alerts only).
+    trip_count = await session.scalar(
+        select(func.count()).select_from(TripPlan).where(TripPlan.user_id == user.id)
+    )
+    alert_count = await session.scalar(
+        select(func.count())
+        .select_from(PriceAlert)
+        .where(PriceAlert.user_id == user.id, PriceAlert.active.is_(True))
+    )
     return {
         "remaining_uses": account.remaining_uses,
         "reserved_uses": account.reserved_uses,
         "available_uses": account.remaining_uses - account.reserved_uses,
         "limits": COMMON_LIMITS,
+        "counts": {
+            "saved_trips": int(trip_count or 0),
+            "price_alerts": int(alert_count or 0),
+        },
     }
 
 

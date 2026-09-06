@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { ApiError, api } from "@/lib/api";
+import { loginPath } from "@/lib/navigation";
 import { NewTripForm } from "@/components/new-trip-form";
 
 type AuthState = "checking" | "authenticated" | "signed_out" | "unavailable" | "limit_reached";
@@ -51,7 +52,9 @@ export function NewTripAuthGate() {
       <LogIn className="mx-auto text-[var(--teal)]" size={36} />
       <h1 className="mt-4 text-3xl font-bold">{t("signInTitle")}</h1>
       <p className="mt-3 leading-7 text-[var(--muted)]">{t("signInBody")}</p>
-      <Link href="/login" className="mt-6 inline-flex rounded-xl bg-[var(--teal)] px-6 py-3 font-semibold text-white">{t("signIn")}</Link>
+      {/* Every other sign-in entry carries `next`; without it the member lands on the
+          home page after signing in and has to find this page again. */}
+      <Link href={loginPath("/trips/new")} className="mt-6 inline-flex rounded-xl bg-[var(--teal)] px-6 py-3 font-semibold text-white">{t("signIn")}</Link>
     </section>;
   }
   if (state === "unavailable") {

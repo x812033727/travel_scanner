@@ -25,6 +25,17 @@ describe("AppBottomNav", () => {
     expect(labels).toEqual(["探索", "規劃", "旅程", "我的"]);
   });
 
+  it("points explore at foods when hotspots are turned off instead of dropping it", () => {
+    render(
+      <SiteVisibilityProvider state={{ status: "ready", features: { ...openSiteVisibility, hotspots_enabled: false } }}>
+        <AppBottomNav />
+      </SiteVisibilityProvider>,
+    );
+    const explore = screen.getByRole("link", { name: "探索" });
+    expect(explore.getAttribute("href")).toBe("/foods");
+    expect(screen.getAllByRole("link")).toHaveLength(5);
+  });
+
   it("keeps every tab when the switches could not be read", () => {
     // "unavailable" is a failed fetch, not the owner closing the site: the
     // navigation stays and each page still enforces its own gate.
@@ -33,6 +44,8 @@ describe("AppBottomNav", () => {
         <AppBottomNav />
       </SiteVisibilityProvider>,
     );
-    expect(screen.getAllByRole("link")).toHaveLength(5);
+    const links = screen.getAllByRole("link");
+    expect(links).toHaveLength(5);
+    expect(screen.getByRole("link", { name: "探索" }).getAttribute("href")).toBe("/hotspots");
   });
 });

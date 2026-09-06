@@ -1,8 +1,15 @@
 import { expect, test } from "@playwright/test";
 
+test("visitors are asked to sign in before the priced lookup", async ({ page }) => {
+  await page.route("**/api/travel/saved-items?*", (route) => route.fulfill({ status: 401, contentType: "application/problem+json", body: JSON.stringify({ status: 401, code: "authentication_required", detail: "請先登入再繼續" }) }));
+  await page.goto("/zh-TW/flights/status");
+  await expect(page.getByRole("link", { name: "登入後查詢 · 消耗 1 次" })).toHaveAttribute("href", "/zh-TW/login?next=%2Fflights%2Fstatus");
+  await expect(page.getByRole("button", { name: /^查詢 · / })).toHaveCount(0);
+});
+
 test("flight status lookup shows exact match and loads track on demand", async ({ page }) => {
   let trackCalls = 0;
-  await page.route("**/api/travel/auth/me", (route) => route.fulfill({ status: 401, contentType: "application/problem+json", body: JSON.stringify({ detail: "signed out" }) }));
+  await page.route("**/api/travel/saved-items?*", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ items: [] }) }));
   await page.route("**/api/travel/flights/status-lookups", async (route) => {
     const request = route.request();
     expect(request.headers()["idempotency-key"]).toBeTruthy();

@@ -207,8 +207,9 @@ def clear_flight_anchor(item: TripPlanItem, role: FlightSystemRole) -> None:
     item.is_estimated = True
     item.title = f"{label}航班尚未設定"
     item.location_name = None
+    # An unset anchor has no quote either; the snapshot belonged to the offer that is gone.
     item.data = {
-        **item.data,
+        **{key: value for key, value in item.data.items() if key != "price_snapshot"},
         "source_mode": "system",
         "timeline_section": "flight_anchor",
         "flight_selection_source": "unset",

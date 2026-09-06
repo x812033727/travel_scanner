@@ -29,9 +29,11 @@ test("guest recommendation through alert management uses the real first-party st
   await expect(page.getByLabel("密碼")).toHaveValue("full-stack-password-123");
   await page.getByLabel("密碼").press("Enter");
 
+  // Registration returns to the same criteria with a resume marker, so the paid
+  // search starts on its own instead of asking for the start button a second time.
   await expect(page).toHaveURL(/\/search\?/, { timeout: 15_000 });
-  await page.getByRole("button", { name: /^確認條件並開始搜尋 · / }).click();
   await expect(page.getByText("分析完成")).toBeVisible({ timeout: 60_000 });
+  await expect(page).not.toHaveURL(/resume=search/);
   await expect(page.getByText("整趟旅程預估總額").first()).toBeVisible();
   await expect(page.getByRole("button", { name: "儲存並編輯行程" }).first()).toBeVisible();
   await page.getByRole("button", { name: "儲存並編輯行程" }).first().click();
@@ -51,7 +53,8 @@ test("guest recommendation through alert management uses the real first-party st
   await page.getByRole("link", { name: "前往管理" }).click();
 
   await expect(page.getByRole("heading", { name: "價格通知" })).toBeVisible();
-  await expect(page.getByText("追蹤中")).toBeVisible();
+  // The capacity line above the list also says 追蹤中 (追蹤中 1／20 筆價格通知); match the status pill exactly.
+  await expect(page.getByText("追蹤中", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: /編輯/ }).first().click();
   await page.getByLabel(/編輯.*目標價格/).fill("30000");
   await page.getByRole("button", { name: "儲存價格" }).click();

@@ -43,6 +43,22 @@ describe("flight anchor card", () => {
     expect(edit).toHaveBeenCalledOnce();
   });
 
+  it("shows the quote an anchor was created from, and nothing for a hand-typed flight", () => {
+    const { rerender } = render(<FlightAnchorCard item={{
+      ...outbound,
+      data: {
+        ...outbound.data,
+        flight_selection_source: "provider",
+        price_snapshot: { total_price: "11500", currency: "TWD", provider: "amadeus" },
+      },
+    }} />);
+    expect(screen.getByText(/報價 NT\$11,500/)).toBeTruthy();
+    expect(screen.getByText(/來源 amadeus/)).toBeTruthy();
+
+    rerender(<FlightAnchorCard item={outbound} />);
+    expect(screen.queryByText(/報價/)).toBeNull();
+  });
+
   it("shows a clear setup action for an unset return flight", () => {
     render(<FlightAnchorCard item={{ ...outbound, id: "flight-return", system_role: "return_flight", data: { flight_info: null } }} onEdit={vi.fn()} />);
     expect(screen.getByText("回程航班尚未設定")).toBeTruthy();

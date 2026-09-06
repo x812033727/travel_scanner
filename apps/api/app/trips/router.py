@@ -65,6 +65,7 @@ from app.trips.expenses import (
     seed_rows,
 )
 from app.trips.itinerary import ItineraryItem
+from app.trips.pricing import lodging_from_offer, offer_price_snapshot, trip_pricing
 from app.trips.reschedule import (
     MAX_SHIFT_DAYS,
     apply_reschedule,
@@ -100,6 +101,7 @@ from app.trips.routing import (
     trip_region_code,
 )
 from app.trips.schedule import (
+    FLIGHT_SYSTEM_ROLES,
     MEAL_PLACEHOLDER_LABELS,
     active_route_rows,
     apply_schedule_defaults,
@@ -150,11 +152,17 @@ class SaveTripRequest(BaseModel):
     preferences: SearchPreferences = Field(default_factory=SearchPreferences)
     notes: str | None = Field(default=None, max_length=1000)
     routing: RoutingOptions = Field(default_factory=RoutingOptions)
+    # Home airport for a blank trip, so a later flight search can start from the trip.
+    origin_airport: str | None = Field(default=None, min_length=3, max_length=3)
 
     @model_validator(mode="after")
     def validate_source(self) -> "SaveTripRequest":
         if self.source not in {"search", "blank"}:
             raise ValueError("source must be search or blank")
+        if self.origin_airport is not None:
+            self.origin_airport = self.origin_airport.strip().upper()
+            if not self.origin_airport.isalpha():
+                raise ValueError("origin_airport must be an IATA code")
         if self.source == "search" and (self.search_id is None or self.plan_id is None):
             raise ValueError("search_id and plan_id are required for a search trip")
         if self.source == "blank":
@@ -753,6 +761,8 @@ async def serialize_trip(
         "primary_lodging": (
             primary_lodging(trip, items) if include_items else trip.data.get("primary_lodging")
         ),
+        "pricing": trip_pricing(trip, items) if include_items else None,
+        "optimization": optimization_summary(items) if include_items else None,
         "schedule_defaults": schedule_defaults(trip),
         "planning": trip.data.get("planning"),
         "version": trip.version,
@@ -914,6 +924,8 @@ def apply_flight_anchor_details(
     item.provider_place_id = None
     item.location_source = None
     item.is_estimated = False
+    # A hand-typed flight is not the flight that was quoted: the snapshot goes with the offer.
+    item.data = {key: value for key, value in item.data.items() if key != "price_snapshot"}
     details = flight.model_dump()
     item.title = f"{flight.airline.strip()} {flight.flight_number.strip()}"
     item.location_name = f"{flight.origin.strip()} → {flight.destination.strip()}"
@@ -1703,6 +1715,7 @@ async def save_trip(
                 }.get(timezone),
                 "travelers": payload.travelers.model_dump(mode="json"),
                 "preferences": preferences,
+                "origin_airport": payload.origin_airport,
                 "notes": payload.notes,
                 "planning": (
                     {
@@ -1790,13 +1803,47 @@ async def save_trip(
         ),
         {},
     )
+    # A trip saved from a search keeps the plan verbatim, plus the keys a blank trip
+    # has: who travels, what they prefer and where they fly from. That is what lets a
+    # later price search start from the trip instead of the home page. The quotes the
+    # plan was built on survive as snapshots, because the offers themselves expire.
+    request_json: dict[str, Any] = search.request_json or {}
+    flight_offer = plan.get("flight") if isinstance(plan.get("flight"), dict) else None
+    hotel_offer = plan.get("hotel") if isinstance(plan.get("hotel"), dict) else None
+    flight_snapshot = offer_price_snapshot(flight_offer)
+    lodging = (
+        lodging_from_offer(hotel_offer, selection_source="search") if hotel_offer else None
+    )
+    shared_keys: dict[str, Any] = {
+        "source": "search",
+        "origin_airport": request_json.get("origin"),
+        "destination_code": request_json.get("destination"),
+        "destination_country": first_item_data.get("destination_country"),
+        "travelers": request_json.get("travelers") or Travelers().model_dump(mode="json"),
+        "preferences": (
+            request_json.get("preferences") or SearchPreferences().model_dump(mode="json")
+        ),
+        "search_criteria": {
+            key: request_json.get(key)
+            for key in (
+                "trip_type",
+                "departure_date",
+                "return_date",
+                "cabin_class",
+                "flexible_dates",
+                "flex_days",
+            )
+        },
+    }
+    if lodging is not None:
+        shared_keys["primary_lodging"] = lodging
     trip = TripPlan(
         user_id=user.id,
         search_id=search.id,
         name=payload.name,
         mode=plan["mode"],
         total_price=Decimal(str(plan["total_cost"]["total_cost"])),
-        data=plan,
+        data={**plan, **shared_keys},
         version=1,
         destination_name=first_item_data.get("destination_city"),
         start_date=next(
@@ -1816,15 +1863,22 @@ async def save_trip(
     )
     session.add(trip)
     await session.flush()
+    quoted_flight_id = str(flight_offer.get("id")) if flight_offer else None
     for raw_day in itinerary_days:
         for raw_item in raw_day.get("items", []):
-            session.add(
-                item_record(
-                    trip.id,
-                    ItineraryItem.model_validate(raw_item),
-                    preserve_source_id=False,
-                )
+            record = item_record(
+                trip.id,
+                ItineraryItem.model_validate(raw_item),
+                preserve_source_id=False,
             )
+            if (
+                flight_snapshot is not None
+                and record.system_role in FLIGHT_SYSTEM_ROLES
+                and record.offer_id is not None
+                and str(record.offer_id) == quoted_flight_id
+            ):
+                record.data = {**record.data, "price_snapshot": flight_snapshot}
+            session.add(record)
     await session.commit()
     await session.refresh(trip)
     if request_key:
@@ -1848,7 +1902,12 @@ async def list_trips(user: CurrentUser, session: Session) -> list[dict[str, Any]
 
 @router.get("/options")
 async def trip_options(user: CurrentUser, session: Session) -> dict[str, object]:
-    """Compact, shared trip picker used by cards across the public app."""
+    """Compact, shared trip picker used by cards across the public app.
+
+    Carries the saved-trip cap alongside the items so a picker can say "已建立 18／20"
+    before the member runs into the 403, and counts the trips it had to leave out
+    because they have no dates yet.
+    """
     trips = list(
         (
             await session.scalars(
@@ -1858,6 +1917,8 @@ async def trip_options(user: CurrentUser, session: Session) -> dict[str, object]
             )
         ).all()
     )
+    limit = await limit_for(session, user.id, "saved_trips")
+    dated = [trip for trip in trips if trip.start_date is not None and trip.end_date is not None]
     return {
         "items": [
             {
@@ -1868,9 +1929,12 @@ async def trip_options(user: CurrentUser, session: Session) -> dict[str, object]
                 "end_date": trip.end_date,
                 "destination_name": trip.destination_name,
             }
-            for trip in trips
-            if trip.start_date is not None and trip.end_date is not None
-        ]
+            for trip in dated
+        ],
+        "count": len(trips),
+        "limit": limit,
+        "can_create": len(trips) < limit,
+        "undated_count": len(trips) - len(dated),
     }
 
 
@@ -3066,7 +3130,7 @@ async def build_itinerary_preview_envelope(
     return result, cached_payload
 
 
-@router.post("/{trip_id}/itinerary/generate")
+@router.post("/{trip_id}/itinerary/generate", deprecated=True)
 async def generate_trip_itinerary(
     trip_id: UUID,
     payload: ItineraryGenerateRequest,
@@ -4136,6 +4200,30 @@ OPTIMIZATION_PREVIEW_TTL_SECONDS = 15 * 60
 OPTIMIZATION_MOVABLE_LIMIT = 12
 
 
+def movable_slots(day_rows: list[TripPlanItem]) -> list[int]:
+    """Indexes of the rows the optimiser may reorder: unlocked, not fixed, and located."""
+    return [
+        index
+        for index, row in enumerate(day_rows)
+        if not row.locked and not row.fixed_time and route_point(row) is not None
+    ]
+
+
+def optimization_summary(rows: list[TripPlanItem]) -> dict[str, Any]:
+    """Per-day movable counts against the limit, so the planner can warn before a 422."""
+    days = sorted({row.day_date for row in rows if row.day_date is not None})
+    return {
+        "movable_limit": OPTIMIZATION_MOVABLE_LIMIT,
+        "days": [
+            {
+                "date": day_value.isoformat(),
+                "movable_count": len(movable_slots(active_route_rows(rows, day_value))),
+            }
+            for day_value in days
+        ],
+    }
+
+
 def _optimization_preview_key(user_id: UUID, trip_id: UUID, preview_id: UUID) -> str:
     return f"itinerary:optimize-preview:{user_id}:{trip_id}:{preview_id}"
 
@@ -4195,20 +4283,16 @@ async def plan_itinerary_optimization(
     changed = False
     for target_day in target_days:
         day_rows = active_route_rows(all_rows, target_day)
-        movable_slots = [
-            index
-            for index, row in enumerate(day_rows)
-            if not row.locked and not row.fixed_time and route_point(row) is not None
-        ]
-        if len(movable_slots) < 2:
+        movable_indexes = movable_slots(day_rows)
+        if len(movable_indexes) < 2:
             continue
-        if len(movable_slots) > OPTIMIZATION_MOVABLE_LIMIT:
+        if len(movable_indexes) > OPTIMIZATION_MOVABLE_LIMIT:
             raise AppError(
                 422,
                 "itinerary_optimization_limit",
                 f"每天最多最佳化 {OPTIMIZATION_MOVABLE_LIMIT} 個可移動地點，請先鎖定部分項目",
             )
-        movable = [day_rows[index] for index in movable_slots]
+        movable = [day_rows[index] for index in movable_indexes]
         point_by_id = {row.id: point for row in movable if (point := route_point(row)) is not None}
         pairs = [
             (point_by_id[first.id], point_by_id[second.id], first.end_time or first.start_time)
@@ -4233,7 +4317,7 @@ async def plan_itinerary_optimization(
         day_changed = [row.id for row in ordered] != [row.id for row in movable]
         changed = changed or day_changed
         reordered = list(day_rows)
-        for slot, row in zip(movable_slots, ordered, strict=True):
+        for slot, row in zip(movable_indexes, ordered, strict=True):
             reordered[slot] = row
         day_segments, _ = await compute_routes_for_rows(trip, reordered, preference, settings)
         segments.extend(day_segments)
@@ -4548,6 +4632,13 @@ async def reoptimize_trip(
                     current.end_time = item.end_time
                     current.is_estimated = item.is_estimated
                     current.data = item.data
+                    if plan.flight is not None and item.offer_id == plan.flight.id:
+                        current.data = {
+                            **item.data,
+                            "price_snapshot": offer_price_snapshot(
+                                plan.flight.model_dump(mode="json")
+                            ),
+                        }
                 continue
             if item.locked:
                 continue
@@ -4560,6 +4651,17 @@ async def reoptimize_trip(
     next_lodging, lodging_warning = merge_reoptimized_lodging(
         primary_lodging(trip, existing_items), plan.hotel
     )
+    if (
+        next_lodging is not None
+        and plan.hotel is not None
+        and next_lodging.get("selection_source") == "reoptimize"
+    ):
+        next_lodging = {
+            **next_lodging,
+            "provider": plan.hotel.provider,
+            "hotel_id": plan.hotel.hotel_id,
+            "price_snapshot": offer_price_snapshot(plan.hotel.model_dump(mode="json")),
+        }
     if lodging_warning:
         warnings = [*warnings, lodging_warning]
     if plan.hotel is not None and next_lodging is not None:
