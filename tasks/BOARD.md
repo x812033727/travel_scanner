@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**43 open · 0 in progress · 0 blocked · 0 in review · 8 done**
+**39 open · 0 in progress · 0 blocked · 0 in review · 12 done**
 
 ## Ready to claim
 
@@ -19,8 +19,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [行程編輯器 294 句硬編碼繁中未五語系化](open/2026-09-06-trip-editor-i18n.md) | web | `apps/web/components/trip-editor.tsx`<br>`apps/web/messages/en/trips.json`<br>`apps/web/messages/ja/trips.json`<br>`apps/web/messages/ko/trips.json`<br>`apps/web/messages/zh-CN/trips.json`<br>`apps/web/messages/zh-TW/trips.json` |
 | P1 | [搜尋結果頁整頁文案寫死繁中](open/2026-09-06-search-results-i18n.md) | web | `apps/web/components/search-experience.tsx`<br>`apps/web/messages/en/search.json`<br>`apps/web/messages/ja/search.json`<br>`apps/web/messages/ko/search.json`<br>`apps/web/messages/zh-CN/search.json`<br>`apps/web/messages/zh-TW/search.json` |
 | P1 | [57 個潮流商圈只存在正式機資料庫](open/2026-09-06-trend-food-areas-not-seeded.md) | api | `apps/api/app/foods/area_catalog.py`<br>`apps/api/tests/test_food_taxonomy_catalog.py` |
-| P1 | [意圖列的 diff 與 apply 實際行為不一致](open/2026-09-06-intent-diff-mismatch.md) | api | `apps/api/app/trips/intents.py`<br>`apps/api/tests/test_trip_intents.py` |
-| P1 | [整趟範圍的意圖精修不計費，等同免費的付費生成](open/2026-09-06-intent-trip-scope-free.md) | api | `apps/api/app/trips/intents.py`<br>`apps/api/app/usage/service.py` |
 | P2 | [Three hotspots hold a quoted review_status that no filter matches](open/2026-09-06-quoted-review-status-rows.md) | api | `apps/api/migrations/versions` |
 | P2 | [Nine merchant citations are dead, unreachable or not HTML](open/2026-09-06-broken-merchant-citations.md) | api | `apps/api/app/foods/merchant_catalog.py` |
 | P2 | [Guide backfill searches one locale, so four locales stay empty](open/2026-09-06-multi-locale-guide-backfill.md) | api | `apps/api/app/hotspots/guides.py` |
@@ -32,7 +30,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [482 個景點卡在人工審核佇列](open/2026-09-06-hotspot-review-backlog.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/app/hotspots/admin_router.py` |
 | P2 | [529 個公開景點還沒有任何導覽內容](open/2026-09-06-hotspot-guide-coverage.md) | ops | `apps/api/app/hotspots/guides.py` |
 | P2 | [日期變更後行程價格停在舊報價且無法重新查價](open/2026-09-06-trip-stale-price-after-reschedule.md) | api | `apps/api/app/trips/reschedule.py`<br>`apps/api/app/trips/router.py` |
-| P2 | [catalog fallback 被當成 AI 精修呈現給使用者](open/2026-09-06-intent-fallback-honesty.md) | api | `apps/api/app/trips/intents.py`<br>`apps/web/components/itinerary-diff.tsx` |
 | P2 | [reoptimize 沒有版本檢查，日期守衛是 TOCTOU](open/2026-09-06-reoptimize-no-version-check.md) | api | `apps/api/app/trips/router.py` |
 | P2 | [usage catalog validation rejects everything when web ships ahead of api](open/2026-09-06-usage-catalog-validation-rejects-everything-when.md) | web | `apps/web/lib/usage-catalog.ts` |
 | P2 | [營業時間感知排程：AI 排程不把景點排在打烊時段](open/2026-09-06-opening-hours-aware-scheduling.md) | api | `apps/api/app/trips/hours.py`<br>`apps/api/app/ai/itinerary.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/web/components/day-health-strip.tsx` |
@@ -66,17 +63,18 @@ _Nothing here._
 
 | Priority | Task | Waiting on |
 | --- | --- | --- |
-| P1 | [意圖精修刪除列時連帶清掉使用者輸入的交通時間](open/2026-09-06-intent-route-segment-cascade.md) | depends on 2026-09-06-intent-diff-mismatch |
 | P2 | [21 個潮流街區還沒有任何店家](open/2026-09-06-empty-trend-districts.md) | depends on 2026-09-06-trend-import-scripts |
 | P3 | [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | depends on 2026-09-06-stale-gemini-model-help |
 
 ## Recently finished
 
+- 2026-09-06 [catalog fallback 被當成 AI 精修呈現給使用者](done/2026-09-06-intent-fallback-honesty.md)
+- 2026-09-06 [意圖列的 diff 與 apply 實際行為不一致](done/2026-09-06-intent-diff-mismatch.md)
+- 2026-09-06 [意圖精修刪除列時連帶清掉使用者輸入的交通時間](done/2026-09-06-intent-route-segment-cascade.md)
+- 2026-09-06 [整趟範圍的意圖精修不計費，等同免費的付費生成](done/2026-09-06-intent-trip-scope-free.md)
 - 2026-09-06 [延長行程會摧毀已填的航班訂位且不提示](done/2026-09-06-reschedule-flight-anchor-loss.md)
 - 2026-09-06 [分享連結會外洩項目備註與整包 data](done/2026-09-06-share-payload-leaks-notes.md)
 - 2026-09-06 [CI should fail a branch that adds a second alembic head](done/2026-09-06-ci-should-fail-a-branch-that.md)
 - 2026-09-06 [遷移裡的補資料分支在 CI 是死碼](done/2026-09-06-migration-backfill-untested.md)
 - 2026-09-06 [A failing required check did not stop a merge, and main stayed red](done/2026-09-06-required-checks-block-merge.md)
 - 2026-09-06 [repo 沒有 .gitattributes，CRLF 混入造成整檔衝突](done/2026-09-06-gitattributes-line-endings.md)
-- 2026-09-06 [npm audit 排在 CI 前段，網路不穩就擋掉整輪](done/2026-09-06-npm-audit-ci-position.md)
-- 2026-09-06 [剩下的規劃流程增量：營業時間感知、匯入、匯出、分享](done/2026-09-06-planning-flow-remaining-increments.md)

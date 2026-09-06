@@ -34,7 +34,6 @@ from app.infra import enforce_named_rate_limit, get_redis
 from app.localized_names import (
     ITEM_LOCATION_KEY,
     ITEM_TITLE_KEY,
-    item_names,
     resolve_item_field,
 )
 from app.models import (
@@ -67,6 +66,14 @@ from app.trips.expenses import (
 )
 from app.trips.itinerary import ItineraryItem
 from app.trips.pricing import lodging_from_offer, offer_price_snapshot, trip_pricing
+from app.trips.replan import (
+    ReplanWrite,
+    apply_carried_values,
+    apply_meal_writes,
+    build_replan_write,
+    replaceable_ai_items,
+    reuse_rows,
+)
 from app.trips.reschedule import (
     MAX_SHIFT_DAYS,
     apply_reschedule,
@@ -103,7 +110,6 @@ from app.trips.routing import (
 )
 from app.trips.schedule import (
     FLIGHT_SYSTEM_ROLES,
-    MEAL_PLACEHOLDER_LABELS,
     active_route_rows,
     apply_schedule_defaults,
     canonicalize_positions,
@@ -412,6 +418,12 @@ AI_ITINERARY_PREVIEW_TTL_SECONDS = 15 * 60
 # AI-drafted creation can outlive the browser's patience; a retry within a day
 # must return the trip that was already created, not a duplicate.
 TRIP_CREATE_REPLAY_TTL_SECONDS = 24 * 60 * 60
+
+# The two prices an itinerary write can carry. They live here, next to the
+# charge point, so the rule that decides between them cannot drift away from
+# the code that applies it — see ``apply_usage_operation``.
+GENERATE_OPERATION = "ai_itinerary_generation"
+REFINE_OPERATION = "ai_itinerary_refine"
 
 
 class OptimizationApplyRequest(BaseModel):
@@ -2854,21 +2866,6 @@ def _candidate_signatures(
     }
 
 
-def _replaceable_ai_items(
-    existing: list[TripPlanItem], target_date: date | None
-) -> tuple[list[TripPlanItem], list[TripPlanItem]]:
-    replaceable = [
-        item
-        for item in existing
-        if item.data.get("generated_by") == "ai_planner"
-        and not item.locked
-        and not item.fixed_time
-        and (target_date is None or item.day_date == target_date)
-    ]
-    replaceable_ids = {item.id for item in replaceable}
-    return replaceable, [item for item in existing if item.id not in replaceable_ids]
-
-
 def _planning_preserved_items(
     preserved: list[TripPlanItem], target_date: date | None
 ) -> list[TripPlanItem]:
@@ -2884,98 +2881,26 @@ def _planning_preserved_items(
     ]
 
 
-_MEAL_LOCATION_DATA_KEYS = {
-    "attribution",
-    "candidate_key",
-    "food_id",
-    "generated_by",
-    "google_maps_url",
-    "map_links",
-    "merchant_id",
-    "naver_maps_url",
-    "place_match_status",
-    "place_provider",
-}
+def _replan_records(trip_id: UUID, plan: ReplanWrite) -> list[TripPlanItem]:
+    """The rows a re-plan inserts, with the traveller's own edits carried over.
 
+    Apply rebuilds the replaceable rows from the draft. A stop the planner
+    proposes again is the same stop, so a note, a stay length, a rename or a
+    hand-picked place written on it survives the rebuild; the planner's own
+    reason and catalog coordinates are refreshed.
 
-def unset_meal_title(system_role: str | None) -> str:
-    """Title a meal row falls back to when no merchant was selected for it.
-
-    Reads the shared label table so this string and the row's five-locale
-    ``names_json`` can never drift apart.
+    Reused pairs are not here. A row nothing would change keeps its id instead
+    — ``replan.reuse_rows`` refreshes it in place — because a new id cascades
+    the traveller's route segments away.
     """
-    role = system_role if system_role in MEAL_PLACEHOLDER_LABELS else "dinner"
-    return MEAL_PLACEHOLDER_LABELS[role]["zh-TW"]
-
-
-def _sync_ai_meal_slots(
-    preserved: list[TripPlanItem],
-    generated_meals: list[ItineraryItem],
-    target_date: date | None = None,
-) -> None:
-    """Replace non-user meal slots with exact merchants or an explicit empty state."""
-    generated_by_role: dict[tuple[date | None, str], ItineraryItem] = {
-        (meal.day_date, meal.system_role): meal
-        for meal in generated_meals
-        if meal.system_role in {"lunch", "dinner"}
-    }
-    for current_meal in preserved:
-        if target_date is not None and current_meal.day_date != target_date:
+    records: list[TripPlanItem] = []
+    for pair in plan.pairs:
+        if pair.planned is None or pair.reused:
             continue
-        if current_meal.system_role not in {"lunch", "dinner"}:
-            continue
-        if current_meal.data.get("meal_selection_source") == "user":
-            continue
-        role = current_meal.system_role
-        meal = generated_by_role.get((current_meal.day_date, role))
-        if meal is not None:
-            current_meal.title = meal.title
-            current_meal.location_name = meal.location_name
-            current_meal.names_json = dict(meal.names)
-            current_meal.latitude = (
-                Decimal(str(meal.latitude)) if meal.latitude is not None else None
-            )
-            current_meal.longitude = (
-                Decimal(str(meal.longitude)) if meal.longitude is not None else None
-            )
-            current_meal.provider_place_id = meal.provider_place_id
-            current_meal.location_source = meal.location_source
-            current_meal.is_estimated = meal.is_estimated
-            current_meal.notes = meal.notes
-            current_meal.data = {
-                **{
-                    key: value
-                    for key, value in current_meal.data.items()
-                    if key not in _MEAL_LOCATION_DATA_KEYS
-                },
-                **meal.data,
-                "meal_selection_source": "ai",
-            }
-            continue
-
-        current_meal.title = unset_meal_title(role)
-        current_meal.location_name = None
-        current_meal.names_json = item_names(title=MEAL_PLACEHOLDER_LABELS[role])
-        current_meal.latitude = None
-        current_meal.longitude = None
-        current_meal.provider_place_id = None
-        current_meal.location_source = None
-        current_meal.coordinate_source_type = None
-        current_meal.coordinate_source_url = None
-        current_meal.coordinate_verified_at = None
-        current_meal.is_estimated = True
-        current_meal.notes = None
-        current_meal.data = {
-            **{
-                key: value
-                for key, value in current_meal.data.items()
-                if key not in _MEAL_LOCATION_DATA_KEYS
-            },
-            "source_mode": "system",
-            "meal_kind": role,
-            "meal_selection_source": "unset",
-            "needs_place_confirmation": True,
-        }
+        record = item_record(trip_id, pair.planned, preserve_source_id=False)
+        apply_carried_values(record, pair.carried)
+        records.append(record)
+    return records
 
 
 def _compose_planner_notes(trip_notes: str | None, extra_notes: str | None) -> str | None:
@@ -3004,8 +2929,11 @@ async def _build_ai_planning(
         raise AppError(422, "itinerary_date_out_of_range", "AI 單日安排的日期超出旅程範圍")
     if trip.version != payload.version:
         raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再讓 AI 重排")
-    existing = await load_items(session, trip.id)
-    _, preserved = _replaceable_ai_items(existing, target_date)
+    # Hydrated, exactly as apply loads them: a legacy trip whose rows still
+    # live in trip.data, or a day whose meal slots have never been
+    # materialised, would otherwise plan against a set apply does not see.
+    existing = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    _, preserved = replaceable_ai_items(existing, target_date)
     planning_preserved = _planning_preserved_items(preserved, target_date)
     availability = _planner_availability(
         preserved,
@@ -3226,26 +3154,8 @@ async def generate_trip_itinerary(
         if trip.version != payload.version:
             raise AppError(409, "trip_version_conflict", "旅程已被更新，請重新載入後再讓 AI 重排")
         existing = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
-        replaceable = [
-            item
-            for item in existing
-            if item.data.get("generated_by") == "ai_planner"
-            and not item.locked
-            and not item.fixed_time
-            and (target_date is None or item.day_date == target_date)
-        ]
-        replaceable_ids = {item.id for item in replaceable}
-        preserved = [item for item in existing if item.id not in replaceable_ids]
-        planning_preserved = [
-            item
-            for item in preserved
-            if (target_date is None or item.day_date == target_date)
-            and item.system_role not in {"outbound_flight", "return_flight"}
-            and (
-                item.system_role not in {"lunch", "dinner"}
-                or item.data.get("meal_selection_source") == "user"
-            )
-        ]
+        _, preserved = replaceable_ai_items(existing, target_date)
+        planning_preserved = _planning_preserved_items(preserved, target_date)
         availability = _planner_availability(
             preserved,
             trip_start=trip.start_date,
@@ -3287,34 +3197,25 @@ async def generate_trip_itinerary(
                 "itinerary_exact_locations_required",
                 "正式景點或店家不足，原行程保持不變",
             )
-        generated_meals = [
-            item
-            for day in planning.itinerary
-            for item in day.items
-            if item.system_role in {"lunch", "dinner"}
-        ]
-        _sync_ai_meal_slots(preserved, generated_meals, target_date)
-        preserved_keys = {(item.day_date, (item.title or "").casefold()) for item in preserved}
-        generated = [
-            item
-            for day in planning.itinerary
-            for item in day.items
-            if item.system_role is None
-            if (item.day_date, item.title.casefold()) not in preserved_keys
-        ]
-        if replaceable_ids:
+        plan = build_replan_write(
+            existing, planning.itinerary, target_date, timezone=trip.timezone
+        )
+        apply_meal_writes(plan.meals)
+        # Only the rows that really change are rebuilt; the rest keep their ids
+        # so the route segments hanging off them survive — see replan.reuse_rows.
+        kept_rows = reuse_rows(plan.pairs)
+        deleted_ids = {item.id for item in plan.deleted}
+        if deleted_ids:
             await session.execute(
                 delete(TripPlanItem).where(
                     TripPlanItem.trip_plan_id == trip.id,
-                    TripPlanItem.id.in_(replaceable_ids),
+                    TripPlanItem.id.in_(deleted_ids),
                 )
             )
-        generated_records = [
-            item_record(trip.id, item, preserve_source_id=False) for item in generated
-        ]
+        generated_records = _replan_records(trip.id, plan)
         for record in generated_records:
             session.add(record)
-        all_rows = [*preserved, *generated_records]
+        all_rows = [*plan.preserved, *kept_rows, *generated_records]
         canonicalize_positions(all_rows)
         planning_data = {
             **planning.planning.model_dump(mode="json"),
@@ -3396,16 +3297,31 @@ async def generate_trip_itinerary(
         raise
 
 
-def apply_usage_operation(preview: dict[str, Any]) -> str:
-    """Which metered operation an envelope represents.
+def apply_usage_operation(preview: dict[str, Any], *, refinable: bool) -> str:
+    """Which metered operation this write charges.
 
     A producer names its own operation so a refinement can price separately
-    from a first generation. Anything unrecognised — including every envelope
-    written before this key existed — charges the original operation, which is
-    what keeps apply's behaviour unchanged by default.
+    from a first generation, but the envelope only *proposes* the free price —
+    the two conditions that make it a refinement are checked here, against the
+    write apply is about to perform:
+
+    * the envelope is scoped to one day, not the whole trip;
+    * that day already holds an AI plan to nudge (``refinable``).
+
+    Either one missing and this is a generation by another name — a stale
+    envelope from a pod mid-rollout, or a day being planned from scratch
+    through the free door. Anything unrecognised, including every envelope
+    written before this key existed, charges the original operation, which
+    keeps apply's behaviour unchanged by default.
     """
-    operation = str(preview.get("usage_operation") or "ai_itinerary_generation")
-    return operation if operation in USAGE_OPERATIONS else "ai_itinerary_generation"
+    operation = str(preview.get("usage_operation") or GENERATE_OPERATION)
+    if operation not in USAGE_OPERATIONS:
+        return GENERATE_OPERATION
+    if operation != REFINE_OPERATION:
+        return operation
+    if not refinable or str(preview.get("scope") or "trip") != "day":
+        return GENERATE_OPERATION
+    return REFINE_OPERATION
 
 
 @router.post("/{trip_id}/itinerary/apply")
@@ -3466,11 +3382,17 @@ async def apply_trip_itinerary_preview(
             "正式景點或店家不足，暫時無法套用",
         )
     scope_label = target_date.isoformat() if target_date else "全行程"
+    existing = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    # One projection of the write, shared with the diff the traveller approved
+    # on the intent path — see app/trips/replan.py. Built before the charge so
+    # the price is read off what apply will really do, not off what the
+    # envelope claims it is.
+    plan = build_replan_write(existing, planning.itinerary, target_date, timezone=trip.timezone)
     reservation, created = await reserve_use(
         session,
         user.id,
         idempotency_key,
-        apply_usage_operation(preview),
+        apply_usage_operation(preview, refinable=bool(plan.replaceable)),
         f"AI 重新排行程：{trip.name}（{scope_label}）",
     )
     if not created and reservation.resource_id == trip.id:
@@ -3480,36 +3402,19 @@ async def apply_trip_itinerary_preview(
     reservation.resource_id = trip.id
     reservation_id = reservation.id
     try:
-        existing = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
-        replaceable, preserved = _replaceable_ai_items(existing, target_date)
-        replaceable_ids = {item.id for item in replaceable}
-        generated_meals = [
-            item
-            for day in planning.itinerary
-            for item in day.items
-            if item.system_role in {"lunch", "dinner"}
-        ]
-        _sync_ai_meal_slots(preserved, generated_meals, target_date)
-        preserved_keys = {(item.day_date, (item.title or "").casefold()) for item in preserved}
-        generated = [
-            item
-            for day in planning.itinerary
-            for item in day.items
-            if item.system_role is None
-            and (item.day_date, item.title.casefold()) not in preserved_keys
-        ]
-        if replaceable_ids:
+        apply_meal_writes(plan.meals)
+        kept_rows = reuse_rows(plan.pairs)
+        deleted_ids = {item.id for item in plan.deleted}
+        if deleted_ids:
             await session.execute(
                 delete(TripPlanItem).where(
                     TripPlanItem.trip_plan_id == trip.id,
-                    TripPlanItem.id.in_(replaceable_ids),
+                    TripPlanItem.id.in_(deleted_ids),
                 )
             )
-        generated_records = [
-            item_record(trip.id, item, preserve_source_id=False) for item in generated
-        ]
+        generated_records = _replan_records(trip.id, plan)
         session.add_all(generated_records)
-        all_rows = [*preserved, *generated_records]
+        all_rows = [*plan.preserved, *kept_rows, *generated_records]
         canonicalize_positions(all_rows)
         settings = await load_runtime_settings(session)
         routing_defaults = RoutingOptions.model_validate(trip.data.get("routing_defaults") or {})

@@ -1,16 +1,20 @@
 "use client";
 
-import { ArrowRight, CircleAlert, Loader2, MinusCircle, MoveRight, PlusCircle, Sparkles, UtensilsCrossed, Wand2 } from "lucide-react";
+import { ArrowRight, CircleAlert, Loader2, MinusCircle, MoveRight, PencilLine, PlusCircle, Sparkles, UtensilsCrossed, Wand2 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useId, useState, type FormEvent, type ReactNode } from "react";
+import { useId, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { PlannerOverlay } from "@/components/planner-overlay";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, ApiError } from "@/lib/api";
 import type { Trip } from "@/lib/trip-types";
+import type { UsageOperation } from "@/lib/usage-catalog";
 
 export const INTENT_MAX_LENGTH = 400;
 
 type IntentScope = "day" | "trip";
+
+/** Fields apply would overwrite, in the vocabulary the sheet has copy for. */
+type ChangedField = "title" | "place" | "duration" | "notes";
 
 type DiffEntry = {
   candidate_key?: string | null;
@@ -19,6 +23,7 @@ type DiffEntry = {
   day_date: string | null;
   start_time: string | null;
   duration_minutes?: number | null;
+  fields?: ChangedField[];
   reason?: string | null;
 };
 
@@ -28,6 +33,7 @@ type MovedEntry = {
   location_name?: string | null;
   from: { day_date: string | null; start_time: string | null };
   to: { day_date: string | null; start_time: string | null };
+  fields?: ChangedField[];
   reason?: string | null;
 };
 
@@ -36,6 +42,7 @@ type MealEntry = {
   day_date: string | null;
   before_title: string | null;
   after_title: string;
+  fields?: ChangedField[];
   cleared: boolean;
 };
 
@@ -47,10 +54,13 @@ export type IntentPreview = {
   day_date?: string | null;
   planning: NonNullable<Trip["planning"]>;
   intent: { text: string };
+  /** What apply will charge. Absent on envelopes cached before it existed. */
+  usage_operation?: UsageOperation;
   diff: {
     removed: DiffEntry[];
     added: DiffEntry[];
     moved: MovedEntry[];
+    changed?: DiffEntry[];
     meals: MealEntry[];
     unchanged_count: number;
     has_changes: boolean;
@@ -59,6 +69,9 @@ export type IntentPreview = {
     exhausted: boolean;
     reason: "no_alternatives" | "no_change" | null;
     alternative_candidate_count: number;
+    alternative_merchant_count?: number;
+    pool_spent?: boolean;
+    meal_pool_spent?: boolean;
     activity_delta: number;
     fewer_stops_without_alternatives: boolean;
   };
@@ -76,15 +89,24 @@ type ItineraryDiffProps = {
 
 export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, onError }: ItineraryDiffProps) {
   const t = useTranslations("trips");
-  const charge = useOperationCharge("ai_itinerary_refine");
+  const refineCharge = useOperationCharge("ai_itinerary_refine");
+  const generateCharge = useOperationCharge("ai_itinerary_generation");
   const inputId = useId();
   const [text, setText] = useState("");
   const [scope, setScope] = useState<IntentScope>("day");
   const [preview, setPreview] = useState<IntentPreview>();
   const [busy, setBusy] = useState<"submit" | "apply">();
+  // Held across a failed attempt so an identical retry replays server-side
+  // instead of spending another rate-limit slot and another provider call.
+  const intentKeyRef = useRef<{ signature: string; key: string } | undefined>(undefined);
 
   const effectiveScope: IntentScope = scope === "day" && !activeDay ? "trip" : scope;
   const trimmed = text.trim();
+  // Nudging one day is free; re-planning the whole trip is the same work the
+  // paid planner does, so the button must not promise otherwise.
+  const operation: UsageOperation =
+    preview?.usage_operation ?? (effectiveScope === "day" ? "ai_itinerary_refine" : "ai_itinerary_generation");
+  const charge = operation === "ai_itinerary_refine" ? refineCharge : generateCharge;
 
   function fail(reason: unknown, fallback: string) {
     onError?.(reason instanceof ApiError ? reason.message : reason instanceof Error ? reason.message : fallback);
@@ -96,12 +118,18 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
     const current = prepare ? await prepare() : trip;
     if (!current) return;
     setBusy("submit");
+    // The server's replay key hashes the sentence, scope, day and version
+    // alongside this header, so reusing it is only ever a replay of the very
+    // same request. A new request — a different sentence, or a deliberate
+    // second ask after a plan came back — gets a new key.
+    const signature = `${current.id}|${current.version}|${effectiveScope}|${effectiveScope === "day" ? activeDay ?? "" : ""}|${trimmed}`;
+    if (intentKeyRef.current?.signature !== signature) {
+      intentKeyRef.current = { signature, key: crypto.randomUUID() };
+    }
     try {
       const result = await api<IntentPreview>(`/trips/${current.id}/intents`, {
         method: "POST",
-        // A fresh key per submission: the planner's replay key hashes the key
-        // alone, so a reused key on a different sentence would replay the old plan.
-        headers: { "Idempotency-Key": crypto.randomUUID() },
+        headers: { "Idempotency-Key": intentKeyRef.current.key },
         body: JSON.stringify({
           version: current.version,
           text: trimmed.slice(0, INTENT_MAX_LENGTH),
@@ -109,6 +137,7 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
           day_date: effectiveScope === "day" ? activeDay : null,
         }),
       });
+      intentKeyRef.current = undefined;
       setPreview(result);
     } catch (reason) {
       fail(reason, t("intent.submit"));
@@ -142,6 +171,14 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
   const examples = [t("intent.exampleRain"), t("intent.exampleWalk"), t("intent.exampleShopping")];
   const diff = preview?.diff;
   const exhaustion = preview?.exhaustion;
+  const changedRows = diff?.changed ?? [];
+  // "fallback" means every provider failed and the deterministic catalog
+  // sorter produced this — it never reads the sentence. Offering Apply on a
+  // plan that ignored the request would make the sheet a liar.
+  const plannerUnavailable = preview?.planning.status === "fallback";
+  const appliable = Boolean(diff?.has_changes) && !plannerUnavailable;
+  const fieldList = (fields?: ChangedField[]) =>
+    (fields || []).map((name) => t(`intent.field.${name}`)).join(t("intent.fieldSeparator"));
 
   return (
     <>
@@ -213,9 +250,9 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
         footer={
           <div className="flex gap-3">
             <button type="button" onClick={() => setPreview(undefined)} disabled={Boolean(busy)} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold disabled:opacity-40">
-              {diff?.has_changes ? t("intent.cancel") : t("intent.close")}
+              {appliable ? t("intent.cancel") : t("intent.close")}
             </button>
-            {diff?.has_changes && (
+            {appliable && (
               <button
                 type="button"
                 onClick={() => void applyIntent()}
@@ -246,6 +283,13 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
               </p>
             )}
 
+            {plannerUnavailable && (
+              <p role="status" className="flex items-start gap-3 rounded-2xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-950">
+                <CircleAlert size={18} className="mt-0.5 shrink-0" />
+                {t("intent.fallbackNote")}
+              </p>
+            )}
+
             {preview.planning.status === "partial" && (
               <p className="rounded-2xl border border-[var(--line)] px-4 py-3 text-xs leading-5 text-[var(--muted)]">{t("intent.partialNote")}</p>
             )}
@@ -272,7 +316,22 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
                       to: `${entry.to.day_date || ""} ${entry.to.start_time || t("intent.noTime")}`.trim(),
                     })}
                   </p>
+                  {entry.fields?.length ? <p className="mt-1 text-xs leading-5 text-[var(--muted)]">{t("intent.changedFields", { fields: fieldList(entry.fields) })}</p> : null}
                   {entry.reason && <p className="mt-1 text-xs leading-5 text-[var(--muted)]">{entry.reason}</p>}
+                </li>
+              ))}
+            </DiffGroup>
+
+            <DiffGroup title={t("intent.changedTitle", { count: changedRows.length })} tone="changed" icon={<PencilLine size={16} />} entries={changedRows.length}>
+              {changedRows.map((entry) => (
+                <li key={`changed-${entry.candidate_key || entry.title}`} className="rounded-xl bg-white px-3 py-2.5">
+                  <p className="text-sm font-semibold">{entry.title}</p>
+                  <p className="mt-1 flex items-center gap-1.5 text-xs text-[var(--muted)]">
+                    <span>{entry.day_date}</span>
+                    <ArrowRight size={12} aria-hidden="true" />
+                    <span>{entry.start_time || t("intent.noTime")}</span>
+                  </p>
+                  <p className="mt-1 text-xs leading-5 text-[var(--muted)]">{t("intent.changedFields", { fields: fieldList(entry.fields) })}</p>
                 </li>
               ))}
             </DiffGroup>
@@ -286,12 +345,19 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
                       ? t("intent.mealCleared", { before: entry.before_title || "" })
                       : t("intent.mealChanged", { before: entry.before_title || "", after: entry.after_title })}
                   </p>
+                  {entry.fields?.length ? <p className="mt-1 text-xs leading-5 text-[var(--muted)]">{t("intent.changedFields", { fields: fieldList(entry.fields) })}</p> : null}
                 </li>
               ))}
             </DiffGroup>
 
             {diff.unchanged_count > 0 && (
               <p className="text-xs text-[var(--muted)]">{t("intent.unchanged", { count: diff.unchanged_count })}</p>
+            )}
+            {exhaustion.reason !== "no_alternatives" && exhaustion.pool_spent && (
+              <p className="text-xs text-[var(--muted)]">{t("intent.poolSpent")}</p>
+            )}
+            {exhaustion.reason !== "no_alternatives" && exhaustion.meal_pool_spent && (
+              <p className="text-xs text-[var(--muted)]">{t("intent.mealPoolSpent")}</p>
             )}
             {!exhaustion.exhausted && exhaustion.alternative_candidate_count > 0 && (
               <p className="text-xs text-[var(--muted)]">{t("intent.alternativesLeft", { count: exhaustion.alternative_candidate_count })}</p>
@@ -307,6 +373,7 @@ const TONE_CLASS: Record<string, string> = {
   removed: "border-red-200 bg-red-50",
   added: "border-emerald-200 bg-emerald-50",
   moved: "border-sky-200 bg-sky-50",
+  changed: "border-violet-200 bg-violet-50",
   meal: "border-amber-200 bg-amber-50",
 };
 

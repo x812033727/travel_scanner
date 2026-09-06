@@ -345,6 +345,15 @@ Each increment ships independently and leaves the product working. None is block
 **Q1 — Refinement pricing. (The judges' loudest disagreement: two of three named per-refinement charging as the fatal flaw, of two different proposals.)**
 Today every accepted refinement charges `ai_itinerary_generation` on apply, while chicTrip's equivalent is free and instant. A user who refines eight times to get Kyoto right pays eight times for the exact interaction that is supposed to be the reason to switch — and the rational response is to stop refining, capping plan quality at draft one.
 *My call, implemented above:* split out `ai_itinerary_refine`, seeded at `uses = 0`, so refinement ships free and the price is a runtime admin dial (no schema change, verified legal at `usage/service.py:164`). **Reason:** the differentiator must not be the thing that prices itself out, and a dial lets you discover the right number without a deploy.
+*Decided 2026-09-06 (PR after #168):* refinement stays free, with one definition of
+"refinement": a **day-scoped** intent on a day that **already holds an AI plan** to
+nudge. A whole-trip intent and a day with no AI rows (a first plan for that day, whatever
+sentence comes with it) charge `ai_itinerary_generation`, which closes the door a spent
+account could otherwise walk through one free word per day. `intents.intent_usage_operation`
+proposes the price on the envelope; `router.apply_usage_operation` re-derives it from the
+write apply is about to perform and never trusts the envelope alone. The refine price itself
+is still the admin dial seeded at 0 by `0041_ai_itinerary_refine_cost`.
+
 *You decide:* (a) free forever — refinement is the product, monetise via affiliate `trip_id`; (b) free for N per trip, then charged; (c) charged from the start at a lower unit. If you pick (c), PR 4 should ship with an explicit per-trip running total in the UI, because opacity is what makes metering feel punitive, not the price.
 
 **Q2 — What happens outside the 33 destinations?**
