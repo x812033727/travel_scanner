@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-wizard-step-label-truncation
 title: 首頁精靈步驟標籤在英文 390px 會截字
-status: in-progress
+status: done
 priority: P3
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T07:55:01Z
 created_at: 2026-09-06T00:54:03Z
-completed_at:
+completed_at: 2026-09-06T09:04:12Z
 branch: claude/p3-polish
 depends_on: []
 scope:
@@ -27,19 +27,19 @@ padding 後，每格約 66px 可用寬度。繁中的「目的地」放得下，
 
 ## Definition of done
 
-- [ ] 390px 下五個語系的步驟標籤都完整可讀（不截字、不重疊）。
-- [ ] 已完成步驟仍可點回去、目前步驟仍帶 `aria-current="step"`、未來步驟仍 disabled。
-- [ ] 每顆仍 ≥ 44px 高。
+- [x] 390px 下五個語系的步驟標籤都完整可讀（不截字、不重疊）。
+- [x] 已完成步驟仍可點回去、目前步驟仍帶 `aria-current="step"`、未來步驟仍 disabled。
+- [x] 每顆仍 ≥ 44px 高。
 
 ## Steps
 
-- [ ] 三個方向擇一：
-  - [ ] 手機改成橫向可捲的一列（沿用 `globals.css` 既有的 `.app-chip-row`，
+- [x] 三個方向擇一：
+  - [x] 手機改成橫向可捲的一列（沿用 `globals.css` 既有的 `.app-chip-row`，
         它有 `scroll-snap` 與隱藏捲軸）；
   - [ ] 或手機只顯示序號 + 目前步驟名（「2 / 5 · Destination」），其餘用圓點；
   - [ ] 或縮短英韓的字串本身（`messages/*/search.json` 的 `workbench.steps.*`）。
         注意這樣要改的是文案不是版面，scope 要加 messages 檔案。
-- [ ] 三種都要保留「已完成可點回去」這個行為。
+- [x] 三種都要保留「已完成可點回去」這個行為。
 
 ## How to verify
 
@@ -66,3 +66,10 @@ cd apps/web && npx vitest run components/search-workbench.test.tsx
   而且訊息用的詞和欄位標籤對不起來）。
 
 改版面時不要把上面任何一項弄回去。
+
+2026-09-06 claude-fable-5-1：選第一個方向。`<ol>` 在 `max-sm` 改成 flex 橫向捲動列（`snap-x`、隱藏捲軸、`-mx-1 px-1`、
+`[contain:inline-size]`），`sm:` 以上維持 `grid-cols-5`；`<li>` `flex-none snap-start`，按鈕 `whitespace-nowrap px-3`。
+沒直接套 `.app-chip-row`，因為它會把 chip 的圓角底色一起帶進來，步驟藥丸有自己的樣式。`contain: inline-size` 不能省：
+沒有它，五顆 flex-none 會把 `<form>` 撐到 497px，整頁在 390px 手機變成 537px 寬、可以左右捲。
+Playwright 390×844 en／ja／ko／zh-TW／zh-CN：五顆都不截字（`scrollWidth <= clientWidth`）、高 44、頁面寬 390 不橫捲，
+`<ol>` 本身可捲到第五顆。`aria-current`／disabled／可點回去／焦點移到 `<h3>` 沒動。

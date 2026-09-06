@@ -1,18 +1,22 @@
 ---
 id: 2026-09-06-admin-session-settings
 title: 後台的登入時效設定要能真的生效
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T07:55:01Z
 created_at: 2026-09-06T00:54:26Z
-completed_at:
+completed_at: 2026-09-06T09:04:14Z
 branch: claude/p3-polish
 depends_on: []
 scope:
   - apps/api/app/auth/service.py
   - apps/api/app/admin/service.py
+  - apps/api/app/auth/router.py
+  - apps/api/tests/test_auth_hardening.py
+  - apps/api/tests/test_admin_provider_settings.py
+  - apps/api/tests/test_change_password.py
 ---
 
 # 後台的登入時效設定要能真的生效
@@ -29,16 +33,16 @@ scope:
 
 ## Definition of done
 
-- [ ] 管理員在後台改登入時效，**不重新部署**就會影響新發的 token。
+- [x] 管理員在後台改登入時效，**不重新部署**就會影響新發的 token。
 - [ ] 或者：明確決定這個設定不進後台，並把理由寫在文件裡，讓下一個人不用重新發現一次。
 
 ## Steps
 
-- [ ] 先確認要不要做。`.env` + 重新部署其實可以接受，只是慢；把設定搬進後台的代價是
+- [x] 先確認要不要做。`.env` + 重新部署其實可以接受，只是慢；把設定搬進後台的代價是
       要在每次認證都碰資料庫，或者做一層有 TTL 的快取。
-- [ ] 若要做：讓 `create_access_token` / `should_renew_session` / `session_past_absolute_cap`
+- [x] 若要做：讓 `create_access_token` / `should_renew_session` / `session_past_absolute_cap`
       能拿到執行期設定。注意這三個函式目前是同步的、沒有 session，改動面不小。
-- [ ] 加測試證明「後台改了值 → 新 token 的 exp 跟著變」，這正是上一版缺的東西。
+- [x] 加測試證明「後台改了值 → 新 token 的 exp 跟著變」，這正是上一版缺的東西。
 
 ## How to verify
 
@@ -55,3 +59,11 @@ PR #145 修掉，請保留那個註解。
 
 相關脈絡：`jti` 現在代表「整次登入」而不是「其中一個 token」，續期時會把原本的 jti
 帶過去，這樣登出才能終止整條續期鏈（同樣是 #145）。改認證路徑時不要破壞這個性質。
+
+2026-09-06 claude-fable-5-1：做「後台可調」。`create_access_token`／`session_past_absolute_cap`／`set_auth_cookie`
+接受可選 `settings`；登入、註冊、改密碼、OAuth 交換、撤銷身分與 cookie 續期都先 `runtime_auth_settings(session)`
+（= admin 的 `load_runtime_settings`）再發 token。`should_renew_session` 維持用 token 自身壽命，#145 的註解保留。
+後台 runtime 群組多 `access_token_expire_minutes`（5–1440）與 `session_absolute_max_days`（1–365），儲存即生效、
+不用重新部署（欄位文案在 `admin-settings-panel.tsx`，屬 admin-panels-i18n 的 scope）。測試：
+`test_runtime_settings_change_the_lifetime_of_new_tokens`、`test_a_renewal_mints_with_the_lifetime_the_administrator_set`
+（改成 15 分鐘 → exp−iat 900 秒、cookie Max-Age 900；絕對上限 3 天 → `session_expired`）。scope 補上 router 與測試。

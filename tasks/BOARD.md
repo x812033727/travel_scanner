@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**13 open · 10 in progress · 1 blocked · 0 in review · 42 done**
+**14 open · 5 in progress · 1 blocked · 0 in review · 47 done**
 
 ## Ready to claim
 
@@ -24,6 +24,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [分享頁「存成我的行程」與 QR code](open/2026-09-06-share-fork-and-qr.md) | api | `apps/api/app/trips/share_router.py`<br>`apps/web/components/shared-trip-view.tsx` |
 | P3 | [已存行程頁掛上分潤選項](open/2026-09-06-trip-affiliate-options.md) | web | `apps/web/components/trip-editor.tsx`<br>`apps/web/components/affiliate-partner-options.tsx` |
 | P3 | [Measure the flood before widening ALLOWED_TYPES with temple, shrine and museum types](open/2026-09-06-measure-the-flood-before-widening-allowed.md) | api | `apps/api/app/hotspots/discovery.py`<br>`apps/api/tests/test_hotspot_discovery.py` |
+| P3 | [後台其餘三個面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n-remaining.md) | web | `apps/web/components/admin-hotspot-places-panel.tsx`<br>`apps/web/components/admin-deployments-panel.tsx`<br>`apps/web/components/admin-users-panel.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-CN/admin.json`<br>`apps/web/messages/zh-TW/admin.json` |
 
 ## In progress
 
@@ -33,11 +34,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Re-seeding never corrects an existing dish name or summary](open/2026-09-06-seed-localization-reconcile.md) | claude-fable-5-1 | 2026-09-06T04:27:50Z | `claude/api-p2-data` |
 | [usage catalog validation rejects everything when web ships ahead of api](open/2026-09-06-usage-catalog-validation-rejects-everything-when.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
 | [用 AI 審核 1,270 筆待審介紹候選](open/2026-09-06-ai-review-guide-backlog.md) | claude-opus-5 | 2026-09-06T09:05:00Z | `claude/ai-review-guide-backlog` |
-| [後台面板文案硬編碼繁中](open/2026-09-06-admin-panels-i18n.md) | claude-fable-5-1 | 2026-09-06T07:55:01Z | `claude/p3-polish` |
-| [註冊關閉頁的小標與 H1 是同一句話](open/2026-09-06-auth-duplicate-heading.md) | claude-fable-5-1 | 2026-09-06T07:55:00Z | `claude/p3-polish` |
-| [桌機主導覽文字連結只有 20px 高](open/2026-09-06-desktop-nav-touch-targets.md) | claude-fable-5-1 | 2026-09-06T07:55:00Z | `claude/p3-polish` |
-| [首頁精靈步驟標籤在英文 390px 會截字](open/2026-09-06-wizard-step-label-truncation.md) | claude-fable-5-1 | 2026-09-06T07:55:01Z | `claude/p3-polish` |
-| [後台的登入時效設定要能真的生效](open/2026-09-06-admin-session-settings.md) | claude-fable-5-1 | 2026-09-06T07:55:01Z | `claude/p3-polish` |
 | [food seed counts are hardcoded twelve times and only CI can see them](open/2026-09-06-food-seed-counts-are-hardcoded-twelve.md) | claude-fable-5-1 | 2026-09-06T04:27:51Z | `claude/api-p2-data` |
 
 ## In review
@@ -54,13 +50,13 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-06 [後台面板文案硬編碼繁中](done/2026-09-06-admin-panels-i18n.md)
+- 2026-09-06 [後台的登入時效設定要能真的生效](done/2026-09-06-admin-session-settings.md)
+- 2026-09-06 [首頁精靈步驟標籤在英文 390px 會截字](done/2026-09-06-wizard-step-label-truncation.md)
+- 2026-09-06 [桌機主導覽文字連結只有 20px 高](done/2026-09-06-desktop-nav-touch-targets.md)
+- 2026-09-06 [註冊關閉頁的小標與 H1 是同一句話](done/2026-09-06-auth-duplicate-heading.md)
 - 2026-09-06 [AI 行程規劃、行程文字解析與景點 AI 搜尋也能選 Gemini](done/2026-09-06-ai-gemini-everywhere.md)
 - 2026-09-06 [21 個潮流街區還沒有任何店家](done/2026-09-06-empty-trend-districts.md)
 - 2026-09-06 [Nine merchant citations are dead, unreachable or not HTML](done/2026-09-06-broken-merchant-citations.md)
 - 2026-09-06 [Most merchants have no first-party page, so nothing can locate them](done/2026-09-06-missing-merchant-sources.md)
 - 2026-09-06 [匯率改由 Currency-api 供應，Frankfurter 退為備援；行程報價與記帳顯示換算](done/2026-09-06-fx-currency-api.md)
-- 2026-09-06 [旅程天氣改由 MET Norway 供應，Google Weather 退為備援](done/2026-09-06-weather-met-norway.md)
-- 2026-09-06 [Admin help text tells operators to avoid the model now shipped](done/2026-09-06-stale-gemini-model-help.md)
-- 2026-09-06 [AI settings in the admin panel: vendor card, model dropdowns, per-feature models (web)](done/2026-09-06-ai-settings-web.md)
-- 2026-09-06 [Consolidate AI vendor keys, model catalog and per-feature models (API)](done/2026-09-06-ai-settings-api.md)
-- 2026-09-06 [529 個公開景點還沒有任何導覽內容](done/2026-09-06-hotspot-guide-coverage.md)

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-auth-duplicate-heading
 title: 註冊關閉頁的小標與 H1 是同一句話
-status: in-progress
+status: done
 priority: P3
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-06T07:55:00Z
 created_at: 2026-09-06T00:53:43Z
-completed_at:
+completed_at: 2026-09-06T09:04:08Z
 branch: claude/p3-polish
 depends_on: []
 scope:
@@ -16,6 +16,7 @@ scope:
   - apps/web/messages/ko/auth.json
   - apps/web/messages/zh-CN/auth.json
   - apps/web/messages/zh-TW/auth.json
+  - apps/web/app/[locale]/register/page.test.tsx
 ---
 
 # 註冊關閉頁的小標與 H1 是同一句話
@@ -36,17 +37,17 @@ registrationPausedTitle = "目前暫停開放註冊"
 
 ## Definition of done
 
-- [ ] 註冊關閉時，eyebrow 與 H1 是兩句不同的話，且合起來讀得通。
-- [ ] 五語系都改，鍵集合不變（只改值）。
-- [ ] `CI=1 npm run check:i18n` 通過。
+- [x] 註冊關閉時，eyebrow 與 H1 是兩句不同的話，且合起來讀得通。
+- [x] 五語系都改，鍵集合不變（只改值）。
+- [x] `CI=1 npm run check:i18n` 通過。
 
 ## Steps
 
-- [ ] 決定文案分工。建議 eyebrow 當狀態標籤、H1 說人話，例如
+- [x] 決定文案分工。建議 eyebrow 當狀態標籤、H1 說人話，例如
       eyebrow「註冊狀態」／H1「目前暫停開放註冊」，
       或 eyebrow「暫停中」／H1「現在還不能建立新帳號」。
-- [ ] 五語系一起改，不要只改繁中。
-- [ ] `registrationUnavailable` / `registrationUnavailableTitle` 一併處理。
+- [x] 五語系一起改，不要只改繁中。
+- [x] `registrationUnavailable` / `registrationUnavailableTitle` 一併處理。
 
 ## How to verify
 
@@ -64,3 +65,8 @@ cd .. && CI=1 node tools/check-i18n.mjs
 
 `check:i18n` 只驗鍵集合與 ICU 參數一致，不會驗「兩個鍵的值不可以相同」，
 所以這種重複不會被自動擋下，得靠人看。
+
+2026-09-06 claude-fable-5-1：只改 `registrationPausedTitle`／`registrationUnavailableTitle` 的值，eyebrow
+（`registrationPaused`／`registrationUnavailable`）維持原本的狀態句。zh-TW「現在還不能建立新帳號」／
+「請稍後再回來試一次」，en「You can't create a new account just yet」／「Please check back in a little while」，
+ja／ko／zh-CN 同義。`register/page.test.tsx` 的兩個 heading 斷言跟著改（scope 補上該檔）。
