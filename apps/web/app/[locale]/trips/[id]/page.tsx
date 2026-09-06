@@ -25,5 +25,8 @@ export default async function TripPage({
   if (view === "today") {
     return <><div className="hidden lg:block"><SiteHeader /></div><OfflineTripCache /><TodayView tripId={id} /></>;
   }
-  return <><div className="hidden lg:block"><SiteHeader /></div><OfflineTripCache /><TripEditor tripId={id} /></>;
+  // The offline worker belongs to the day view only. The planner is an editing surface:
+  // it should never read a cached trip, and a worker that intercepts its requests would
+  // also intercept what the browser tests mock.
+  return <><div className="hidden lg:block"><SiteHeader /></div><TripEditor tripId={id} /></>;
 }
