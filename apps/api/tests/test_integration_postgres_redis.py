@@ -2054,7 +2054,8 @@ async def test_a_pasted_place_can_be_offered_by_the_planner_and_applied_without_
 
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as client:
-        headers = await _signed_in_headers("inbox-candidates")
+        # The planner reserves a use, so this member needs the account registration opens.
+        headers, _ = await _signed_in_member("inbox-candidates")
         created = await client.post(
             "/api/v1/trips",
             headers=headers,
