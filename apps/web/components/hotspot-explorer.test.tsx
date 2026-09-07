@@ -295,6 +295,44 @@ describe("HotspotExplorer", () => {
     expect(screen.getAllByRole("button", { name: "清除條件" }).length).toBeGreaterThan(0);
   });
 
+  it("numbers a filtered list from one instead of keeping the global standing", async () => {
+    window.history.replaceState({}, "", "/hotspots?destination_id=tokyo");
+    const item = (id: string, rank: number, name: string) => ({
+      id, slug: id, rank, name, city_code: "TYO", city_name: "東京", destination_id: "tokyo",
+      country_code: "JP", country_name: "日本", category: "culture", area: null, score: 90 - rank,
+      components: { interest: 1, growth: 1, quality: 1, confidence: 1 },
+      pageviews_30d: 100, growth_rate: 0, trend_label: "", sources: [], has_source: false,
+      signal_date: null, is_estimate: false, local_name: null,
+      guide_counts: { article: 0, video: 0 }, map_links: [],
+      place_summary: { status: "unavailable", google_maps_url: null, map_links: [], official_website_url: null, official_website_verified: false, has_details: false, updated_at: null },
+    });
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/saved-items")) return new Response(JSON.stringify({ items: [] }));
+      if (url.includes("/hotspots/facets")) {
+        return new Response(JSON.stringify({
+          total: 2, countries: [], categories: [], areas: [], themes: [],
+          cities: [{ code: "TYO", destination_id: "tokyo", name: "東京", country_code: "JP", count: 2 }],
+        }));
+      }
+      return new Response(JSON.stringify({
+        scope: "global", scope_key: "global", observed_on: "2026-09-06", window_days: 30,
+        total: 2, has_more: false, next_cursor: null,
+        items: [item("a", 3, "浅草寺"), item("b", 11, "明治神宮")],
+      }));
+    }));
+
+    render(<SavedItemsProvider><HotspotExplorer /></SavedItemsProvider>);
+
+    // Filtered, the standing in the whole ranking reads as a list that lost the rows
+    // in between: 3, 11, 14, 16…
+    const first = await screen.findByRole("heading", { name: "浅草寺" });
+    const badge = first.closest("li")?.querySelector("span");
+    expect(badge?.textContent).toBe("1");
+    const second = screen.getByRole("heading", { name: "明治神宮" }).closest("li")?.querySelector("span");
+    expect(second?.textContent).toBe("2");
+  });
+
   it("keeps the loaded list on screen when loading more fails", async () => {
     let rankingCalls = 0;
     const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
