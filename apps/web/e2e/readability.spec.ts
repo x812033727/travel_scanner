@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { pretendSignedIn } from "./session";
 
 /**
  * Two things a reader with tired eyes needs, checked on the rendered page rather
@@ -192,6 +193,7 @@ test("the phone menu gives focus back to the button that opened it", async ({ pa
 });
 
 test("the admin sidebar shows which page you are on", async ({ page }) => {
+  await pretendSignedIn(page);
   await page.route("**/api/travel/auth/me", (route) =>
     route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ id: "admin", email: "admin@example.com", is_admin: true }) }),
   );

@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { pretendSignedIn } from "./session";
 
 const targetSha = "b".repeat(40);
 const overview = {
@@ -20,6 +21,7 @@ const overview = {
 
 test.beforeEach(async ({ page }) => {
   let activeRun: Record<string, unknown> | undefined;
+  await pretendSignedIn(page);
   await page.route("**/api/travel/auth/me", (route) => route.fulfill({
     status: 200,
     contentType: "application/json",

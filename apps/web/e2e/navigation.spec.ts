@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { pretendSignedIn } from "./session";
 
 /**
  * Appearance, language and text size live in the phone menu, where each one has a
@@ -10,6 +11,7 @@ async function openDisplayPreferences(page: Page) {
 }
 
 test.beforeEach(async ({ page }) => {
+  await pretendSignedIn(page);
   await page.route("**/api/travel/auth/me", (route) => route.fulfill({
     status: 200,
     contentType: "application/json",

@@ -37,17 +37,27 @@ const HeaderSessionContext = createContext<HeaderSessionValue>({
   logout: async () => undefined,
 });
 
-export function HeaderSessionProvider({ children }: { children: ReactNode }) {
+/** See SavedItemsProvider for what `hasSession` is and why an absent cookie is proof. */
+export function HeaderSessionProvider({
+  children,
+  hasSession = true,
+}: {
+  children: ReactNode;
+  hasSession?: boolean;
+}) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const locale = useLocale();
   const loadedLocale = useRef<string | undefined>(undefined);
   const requestId = useRef(0);
-  const [status, setStatus] = useState<HeaderSessionValue["status"]>("loading");
+  const [status, setStatus] = useState<HeaderSessionValue["status"]>(
+    hasSession ? "loading" : "signed_out",
+  );
   const [user, setUser] = useState<HeaderUser | null>(null);
 
   useEffect(() => {
+    if (!hasSession) return;
     if (loadedLocale.current === locale) return;
     loadedLocale.current = locale;
     const currentRequest = ++requestId.current;
@@ -84,7 +94,7 @@ export function HeaderSessionProvider({ children }: { children: ReactNode }) {
         setUser(null);
         setStatus(reason instanceof ApiError && reason.status === 401 ? "signed_out" : "unavailable");
       });
-  }, [locale, pathname, router, searchParams]);
+  }, [hasSession, locale, pathname, router, searchParams]);
 
   async function logout() {
     requestId.current += 1;

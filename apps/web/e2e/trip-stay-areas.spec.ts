@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { pretendSignedIn } from "./session";
 
 const tripId = "stay-trip";
 const future = () => new Date(Date.now() + 10 * 60_000).toISOString();
@@ -95,6 +96,7 @@ const hotels = {
 };
 
 test.beforeEach(async ({ page }) => {
+  await pretendSignedIn(page);
   await page.route("**/api/travel/auth/me", (route) => route.fulfill({
     status: 200,
     contentType: "application/json",
