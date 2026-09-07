@@ -133,6 +133,22 @@ test("verified members publish reviewed private images, fork safely and exchange
     await expect(reader.getByRole("log").getByText(`Message ${suffix}`, { exact: true })).toBeVisible();
     await reader.screenshot({ path: info.outputPath("community-conversation.png"), fullPage: true });
     expect(await reader.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+    // Cut the reader's real network connection while the other member writes.
+    // Reconnection must catch up through durable events without a page reload.
+    await readerContext.setOffline(true);
+    const missed = [`Offline first ${suffix}`, `Offline second ${suffix}`];
+    for (const [index, body] of missed.entries()) {
+      const payload = { body, idempotency_key: `offline-${suffix}-${index}` };
+      const sent = await json(page.request, "POST", `/community/conversations/${conversationId}/messages`, payload);
+      const replay = await json(page.request, "POST", `/community/conversations/${conversationId}/messages`, payload);
+      expect(replay.id).toBe(sent.id);
+    }
+    for (const body of missed) await expect(reader.getByRole("log").getByText(body, { exact: true })).toHaveCount(0);
+    await readerContext.setOffline(false);
+    for (const body of missed) {
+      await expect(reader.getByRole("log").getByText(body, { exact: true })).toBeVisible({ timeout: 30_000 });
+      await expect(reader.getByRole("log").getByText(body, { exact: true })).toHaveCount(1);
+    }
     // Unfollowing preserves delivered history but immediately disables new writes.
     await json(reader.request, "DELETE", `/community/profiles/${author.profile.id}/follow`);
     await page.reload();
@@ -158,7 +174,7 @@ test("verified members publish reviewed private images, fork safely and exchange
     expect((await blocked.json()).code).toBe("community_not_found");
     await json(reader.request, "DELETE", `/community/profiles/${author.profile.id}/block`);
     const delivered = await json(reader.request, "GET", `/community/conversations/${conversationId}/messages`);
-    expect(delivered.items.map((message: { body: string }) => message.body)).toEqual([`Message ${suffix}`]);
+    expect(delivered.items.map((message: { body: string }) => message.body)).toEqual([`Message ${suffix}`, ...missed]);
     expect(author.profile.id).not.toBe(recipient.profile.id);
   } finally {
     await admin.dispose();
@@ -243,6 +259,8 @@ test("reviewed pet rules filter conservatively and require confirmation before c
     await petPanel.getByLabel("動物種類", { exact: true }).fill("cat");
     await petPanel.getByRole("button", { name: "儲存", exact: true }).click();
     await expect(petPanel.getByRole("status")).toHaveText("已儲存");
+    const savedPet = await json(page.request, "GET", `/community/trips/${trip.id}/pet-preferences`);
+    expect(savedPet.requirements.species).toBe("cat");
     const beforeAdd = await json(page.request, "GET", `/trips/${trip.id}`);
     expect(beforeAdd.notes).toBe("Preserve this private note");
     await page.goto(`/zh-TW/pet-friendly/${candidate.id}`);

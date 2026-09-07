@@ -143,39 +143,60 @@ function AddPetPlace({ placeId, onDone }: { placeId: string; onDone: () => void 
   const trips = useResource<Array<{ id: string; name: string; version: number; start_date: string; end_date: string }>>("/trips");
   const [id, setId] = useState("");
   const [day, setDay] = useState("");
-  const [conflicts, setConflicts] = useState<string[]>([]);
+  const [confirmation, setConfirmation] = useState<{ conflicts: string[]; version: number }>();
+  const conflicts = confirmation?.conflicts || [];
   const [error, setError] = useState<unknown>();
   const [busy, setBusy] = useState(false);
   const trip = trips.data?.find((row) => row.id === id);
   async function submit(e: FormEvent) {
     e.preventDefault(); if (!trip) return;
     setBusy(true); setError(undefined);
-    try { const result = await api<{ conflicts: string[]; confirmation_required: boolean }>(`/community/trips/${id}/pet-places`, { method: "POST", body: JSON.stringify({ place_id: placeId, day, version: trip.version, confirm_conflicts: conflicts.length > 0 }) }); if (result.confirmation_required) setConflicts(result.conflicts); else onDone(); }
+    const version = confirmation?.version ?? trip.version;
+    try { const result = await api<{ conflicts: string[]; confirmation_required: boolean }>(`/community/trips/${id}/pet-places`, { method: "POST", body: JSON.stringify({ place_id: placeId, day, version, confirm_conflicts: Boolean(confirmation) }) }); if (result.confirmation_required) setConfirmation({ conflicts: result.conflicts, version }); else onDone(); }
     catch (reason) { setError(reason); } finally { setBusy(false); }
   }
-  return <form onSubmit={submit} className="space-y-4"><label className="block font-semibold">{t("chooseTrip")}<select required className={fieldClass} value={id} onChange={(e) => { setId(e.target.value); setConflicts([]); }}><option value="">{t("chooseTrip")}</option>{trips.data?.map((row) => <option key={row.id} value={row.id}>{row.name}</option>)}</select></label><label className="block font-semibold">{t("date")}<input required type="date" min={trip?.start_date} max={trip?.end_date} className={fieldClass} value={day} onChange={(e) => setDay(e.target.value)} /></label>{conflicts.length > 0 && <><ConflictList conflicts={conflicts} /><p className="text-sm">{t("manualConflictNotice")}</p></>}<ErrorNotice error={error || trips.error} /><Button type="submit" disabled={busy || !trip}>{conflicts.length ? t("confirmAddAnyway") : t("addToTrip")}</Button></form>;
+  return <form onSubmit={submit} className="space-y-4"><label className="block font-semibold">{t("chooseTrip")}<select required disabled={busy} className={fieldClass} value={id} onChange={(e) => { setId(e.target.value); setConfirmation(undefined); }}><option value="">{t("chooseTrip")}</option>{trips.data?.map((row) => <option key={row.id} value={row.id}>{row.name}</option>)}</select></label><label className="block font-semibold">{t("date")}<input required disabled={busy} type="date" min={trip?.start_date} max={trip?.end_date} className={fieldClass} value={day} onChange={(e) => { setDay(e.target.value); setConfirmation(undefined); }} /></label>{conflicts.length > 0 && <><ConflictList conflicts={conflicts} /><p className="text-sm">{t("manualConflictNotice")}</p></>}<ErrorNotice error={error || trips.error} /><Button type="submit" disabled={busy || !trip}>{conflicts.length ? t("confirmAddAnyway") : t("addToTrip")}</Button></form>;
 }
 
 export function TripPetPanel({ tripId, disabled = false, onSaved }: { tripId: string; disabled?: boolean; onSaved?: (version: number) => void }) {
-  const t = useTranslations("community");
   const { flags } = useCommunity();
   const { user } = useHeaderSession();
-  const data = useResource<{ version: number; requirements: PetRequirements | null; conflicts: Array<{ item_id: string; title: string; conflicts: string[] }> }>(flags.enabled && user ? `/community/trips/${tripId}/pet-preferences` : null);
+  if (!flags.enabled || !user) return null;
+  return <TripPetForm key={`${user.id}:${tripId}`} tripId={tripId} disabled={disabled} onSaved={onSaved} />;
+}
+
+function TripPetForm({ tripId, disabled, onSaved }: { tripId: string; disabled: boolean; onSaved?: (version: number) => void }) {
+  const t = useTranslations("community");
+  const data = useResource<{ version: number; requirements: PetRequirements | null; conflicts: Array<{ item_id: string; title: string; conflicts: string[] }> }>(`/community/trips/${tripId}/pet-preferences`);
   const [enabled, setEnabled] = useState(false);
   const [pet, setPet] = useState(defaultPet);
   const [busy, setBusy] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState<unknown>();
+  const [dirty, setDirty] = useState(false);
+  const [draftVersion, setDraftVersion] = useState<number>();
   const [loaded, setLoaded] = useState(data.data);
-  if (loaded !== data.data) { setLoaded(data.data); if (data.data) { setEnabled(Boolean(data.data.requirements)); setPet(data.data.requirements || defaultPet); } }
+  if (loaded !== data.data) {
+    setLoaded(data.data);
+    // SSE/focus refreshes may update the server snapshot while someone is typing.
+    // Keep both their draft and its original CAS version until explicit reload.
+    if (data.data && !dirty) {
+      setEnabled(Boolean(data.data.requirements)); setPet(data.data.requirements || defaultPet);
+      setDraftVersion(data.data.version);
+    }
+  }
   async function save(e: FormEvent) {
-    e.preventDefault(); if (!data.data) return;
+    e.preventDefault(); if (!data.data || draftVersion === undefined) return;
     setBusy(true); setError(undefined); setSaved(false);
-    try { const result = await api<{ version: number }>(`/community/trips/${tripId}/pet-preferences`, { method: "PUT", body: JSON.stringify({ version: data.data.version, requirements: enabled ? pet : null }) }); onSaved?.(result.version); await data.reload(); setSaved(true); }
+    try { const result = await api<{ version: number }>(`/community/trips/${tripId}/pet-preferences`, { method: "PUT", body: JSON.stringify({ version: draftVersion, requirements: enabled ? pet : null }) }); setDirty(false); setDraftVersion(result.version); onSaved?.(result.version); await data.reload(); setSaved(true); }
     catch (reason) { setError(reason); } finally { setBusy(false); }
   }
-  if (!flags.enabled || !user) return null;
-  return <details className={`${panelClass} my-5`}><summary className="cursor-pointer font-bold">{t("petCompanion")}</summary><form onSubmit={save} className="mt-4 space-y-4"><label className="flex min-h-11 items-center gap-3"><input type="checkbox" checked={enabled} onChange={(e) => setEnabled(e.target.checked)} />{t("travelWithPet")}</label>{enabled && <PetRequirementFields value={pet} onChange={setPet} />}<p className="text-sm text-[var(--muted)]">{t("petAiNotice")}</p><ErrorNotice error={error || data.error} />{saved && <p role="status">{t("saved")}</p>}<Button type="submit" disabled={disabled || busy || !data.data}>{t("save")}</Button></form>
+  async function reset() {
+    setBusy(true); setDirty(false); setLoaded(undefined); setError(undefined); setSaved(false);
+    await data.reload(); setBusy(false);
+  }
+  return <details className={`${panelClass} my-5`}><summary className="cursor-pointer font-bold">{t("petCompanion")}</summary><form onSubmit={save} className="mt-4 space-y-4"><fieldset disabled={disabled || busy || !data.data} className="space-y-4"><label className="flex min-h-11 items-center gap-3"><input type="checkbox" checked={enabled} onChange={(e) => { setEnabled(e.target.checked); setDirty(true); setSaved(false); }} />{t("travelWithPet")}</label>{enabled && <PetRequirementFields value={pet} onChange={(value) => { setPet(value); setDirty(true); setSaved(false); }} />}<p className="text-sm text-[var(--muted)]">{t("petAiNotice")}</p><ErrorNotice error={error || data.error} />{saved && <p role="status">{t("saved")}</p>}<Button type="submit">{t("save")}</Button></fieldset></form>
+    {(error || data.error || (dirty && data.data?.version !== draftVersion)) ? <Button secondary disabled={busy} onClick={() => void reset()}>{t("reloadPetPreferences")}</Button> : null}
     {data.data?.conflicts.map((item) => <div key={item.item_id} className="mt-4"><h3 className="mb-2 font-semibold">{item.title}</h3><ConflictList conflicts={item.conflicts} /></div>)}
   </details>;
 }

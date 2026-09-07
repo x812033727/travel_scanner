@@ -1,8 +1,8 @@
-import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { CommunityGate } from "./shell";
 import { Tabs } from "./ui";
-import { PetRequirementFields, Rules } from "./pets";
+import { PetDetails, PetRequirementFields, Rules, TripPetPanel } from "./pets";
 import { PetAdmin, PetRulesEditor } from "./pet-admin";
 import { PostEditor } from "./editor";
 import { ProfileEditor } from "./profile";
@@ -154,6 +154,65 @@ describe("publishing and moderation",()=>{
  });
 });
 describe("pet rule uncertainty",()=>{
+ it("binds a conflict confirmation to the original trip version despite background refreshes",async()=>{
+  let version=1;
+  let writes=0;
+  mock.api.mockImplementation(async(path:string,options?:{method:string})=>{
+   if(options?.method==="POST") {
+    writes+=1;
+    if(writes===2) throw new Error("stale trip");
+    return {confirmation_required:true,conflicts:["species_unknown"]};
+   }
+   if(path==="/trips") return [{id:"trip",name:"My trip",version,start_date:"2026-10-01",end_date:"2026-10-02"}];
+   return {id:"place",name:"Pet cafe",names:{},kind:"cafe",destination:"Taipei",address:"",policies:[],experiences:[],verification_current:false};
+  });
+  render(<PetDetails id="place"/>);
+  fireEvent.click(await screen.findByRole("button",{name:"加入我的行程"}));
+  const dialog=within(screen.getByRole("dialog",{name:"加入我的行程"}));
+  await dialog.findByRole("option",{name:"My trip"});
+  fireEvent.change(dialog.getByRole("combobox"),{target:{value:"trip"}});
+  fireEvent.change(dialog.getByLabelText("日期"),{target:{value:"2026-10-01"}});
+  fireEvent.click(dialog.getByRole("button",{name:"加入我的行程"}));
+  await dialog.findByText("尚未確認接待這種動物");
+  version=2;
+  await act(async()=>{window.dispatchEvent(new Event("community-refresh"));});
+  fireEvent.click(dialog.getByRole("button",{name:"確認仍要加入"}));
+  await dialog.findByRole("alert");
+  const calls=mock.api.mock.calls.filter(([,options])=>options?.method==="POST");
+  expect(JSON.parse(calls[1][1].body)).toEqual({place_id:"place",day:"2026-10-01",version:1,confirm_conflicts:true});
+  fireEvent.change(dialog.getByLabelText("日期"),{target:{value:"2026-10-02"}});
+  fireEvent.click(dialog.getByRole("button",{name:"加入我的行程"}));
+  await dialog.findByRole("button",{name:"確認仍要加入"});
+  const last=mock.api.mock.calls.filter(([,options])=>options?.method==="POST").at(-1)!;
+  expect(JSON.parse(last[1].body)).toEqual({place_id:"place",day:"2026-10-02",version:2,confirm_conflicts:false});
+ });
+ it("waits for pet settings and preserves edits plus their original version across refreshes",async()=>{
+  let resolve!: (value:unknown)=>void;
+  const path="/community/trips/trip-id/pet-preferences";
+  mock.api.mockImplementationOnce(()=>new Promise((done)=>{resolve=done;}));
+  render(<TripPetPanel tripId="trip-id"/>);
+  fireEvent.click(screen.getByText("寵物同行條件"));
+  const checkbox=screen.getByLabelText("這趟旅行有寵物同行");
+  expect(checkbox.closest("fieldset")!.disabled).toBe(true);
+  await act(async()=>resolve({version:1,requirements:null,conflicts:[]}));
+  expect(checkbox.closest("fieldset")!.disabled).toBe(false);
+  fireEvent.click(checkbox);
+  fireEvent.change(screen.getByLabelText("動物種類",{exact:true}),{target:{value:"cat"}});
+  mock.api.mockImplementation(async(_path:string,options?:{method:string})=>{
+   if(options?.method==="PUT") throw new Error("version conflict");
+   return {version:2,requirements:defaultPet,conflicts:[]};
+  });
+  await act(async()=>{window.dispatchEvent(new Event("community-refresh"));});
+  expect(screen.getByDisplayValue("cat")).toBeTruthy();
+  fireEvent.click(screen.getByRole("button",{name:"儲存"}));
+  await screen.findByRole("alert");
+  const write=mock.api.mock.calls.find(([,options])=>options?.method==="PUT");
+  expect(write![0]).toBe(path);
+  expect(JSON.parse(write![1].body)).toEqual({version:1,requirements:{...defaultPet,species:"cat"}});
+  fireEvent.click(screen.getByRole("button",{name:"重新載入並捨棄未儲存的寵物條件"}));
+  await waitFor(()=>expect(screen.queryByDisplayValue("cat")).toBeNull());
+  expect(screen.getByDisplayValue("dog")).toBeTruthy();
+ });
  it("keeps species suggestions out of the input accessible name",()=>{
   const change=vi.fn();
   render(<PetRequirementFields value={defaultPet} onChange={change}/>);
