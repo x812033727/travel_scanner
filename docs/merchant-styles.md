@@ -24,7 +24,7 @@
 - `GET /api/v1/foods/merchants?style=instagrammable`：支援既有篩選、游標分頁。
 - `GET /api/v1/foods/categories?style=artsy`：以風格篩選餐飲分類數量。
 - `GET /api/v1/admin/foods/merchants?style=artsy&style_status=pending`：管理待審標籤。
-- `GET /api/v1/admin/foods/merchants/{id}/styles`：讀取證據與版本时间。
+- `GET /api/v1/admin/foods/merchants/{id}/styles`：讀取證據與版本時間。
 - `PUT /api/v1/admin/foods/merchants/{id}/styles`：提交 `reason`、`expected_updated_at` 與單一 `review`。
 
 管理端沿用有效管理員授權。新增 `0061_merchant_styles` 遷移，每店每風格有唯一約束，預設待審；

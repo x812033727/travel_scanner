@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**15 open · 1 in progress · 2 blocked · 0 in review · 156 done**
+**15 open · 0 in progress · 2 blocked · 1 in review · 156 done**
 
 ## Ready to claim
 
@@ -24,13 +24,13 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | 2026-09-07T23:14:39Z | `codex/merchant-style-discovery` |
+_Nothing here._
 
 ## In review
 
-_Nothing here._
+| Task | Owner | Branch |
+| --- | --- | --- |
+| [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-discovery` |
 
 ## Waiting
 
