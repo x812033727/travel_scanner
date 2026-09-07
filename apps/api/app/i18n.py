@@ -986,7 +986,9 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ja": {
         **OAUTH_ERROR_DETAILS["ja"],
-        "merchant_style_changed": "スタイル審査が更新されました。再読み込みしてから保存してください。",
+        "merchant_style_changed": (
+            "スタイル審査が更新されました。再読み込みしてから保存してください。"
+        ),
         "catalog_item_mismatch": "選択した項目の一部はこの審査処理に属していません",
         "catalog_receipt_limit": "この審査処理は結果の適用回数の上限に達しました",
         "catalog_relation_invalid": (

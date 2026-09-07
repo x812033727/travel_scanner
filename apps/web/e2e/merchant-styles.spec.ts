@@ -64,7 +64,7 @@ for (const [locale, messages] of Object.entries(catalogs)) {
 test("admin reviews one style without publishing the merchant and retains drafts", async ({ page }, testInfo) => {
   const saved = await mock(page);
   await page.goto("/zh-TW/admin/foods");
-  await page.getByRole("button", { name: "編輯地點", exact: true }).click();
+  await page.getByRole("button", { name: "編輯地點與來源", exact: true }).click();
   const dialog = page.getByRole("dialog", { name: merchant.name });
   await dialog.getByRole("button", { name: tw.styles.reviewTitle }).click();
   await expect(dialog.getByLabel(tw.styles.sourceTitle)).toHaveValue(initialReview.evidence_title);

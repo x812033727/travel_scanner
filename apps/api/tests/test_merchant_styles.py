@@ -1,5 +1,6 @@
 """Real HTTP/DB style moderation, public isolation, import and migration contracts."""
 
+import asyncio
 import os
 import runpy
 from collections.abc import AsyncIterator
@@ -375,6 +376,39 @@ async def test_migration_fresh_existing_and_roundtrip() -> None:
     async with engine.begin() as connection:
         await connection.run_sync(run)
     await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_concurrent_first_reviews_have_one_winner(catalog: Any) -> None:
+    client, factory, ids, _ = catalog
+    if factory.kw["bind"].dialect.name != "postgresql":
+        pytest.skip("PostgreSQL row-lock contract")
+    path = f"/api/v1/admin/foods/merchants/{ids[0]}/styles"
+    responses = await asyncio.gather(
+        *[
+            client.put(
+                path,
+                headers={"x-test-role": "admin"},
+                json={
+                    "reason": "Concurrent source review",
+                    "expected_updated_at": None,
+                    "review": evidence(status=status),
+                },
+            )
+            for status in ("approved", "rejected")
+        ]
+    )
+    assert sorted(response.status_code for response in responses) == [200, 409]
+    async with factory() as session:
+        assert await session.scalar(select(func.count(FoodMerchantStyle.id))) == 1
+        assert (
+            await session.scalar(
+                select(func.count(AdminAuditLog.id)).where(
+                    AdminAuditLog.action == "food_merchant_style_reviewed"
+                )
+            )
+            == 1
+        )
 
 
 def test_first_research_batch_is_valid_and_cannot_embed_approvals() -> None:
