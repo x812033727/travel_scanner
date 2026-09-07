@@ -1,6 +1,6 @@
 import { expect, request, test, type APIRequestContext, type Page } from "@playwright/test";
 import path from "node:path";
-import zhCommunity from "../messages/zh-TW/community.json";
+import zhCommunity from "../messages/zh-TW/community.json" with { type: "json" };
 
 // No endpoint interception or test authentication bypass. This suite needs the
 // CI/local PostgreSQL, Redis, private MinIO, Mailpit and ordinary RQ worker.

@@ -50,8 +50,10 @@ export function CommunityImage(props: { id:string;alt:string;review?:boolean;thu
   return <SignedImage key={`${props.id}:${props.review}:${props.thumbnail}`} {...props} />;
 }
 function SignedImage({id,alt,review=false,thumbnail=false}:{id:string;alt:string;review?:boolean;thumbnail?:boolean}) {
+  const t = useTranslations("community");
   const [url,setUrl]=useState<string>();
   const [error,setError]=useState<unknown>();
+  const [attempt, setAttempt] = useState(0);
   const box=useRef<HTMLDivElement>(null);
   useEffect(()=>{
     let live=true;
@@ -62,8 +64,13 @@ function SignedImage({id,alt,review=false,thumbnail=false}:{id:string;alt:string
     },{rootMargin:"200px"});
     if(observer&&box.current)observer.observe(box.current);else fetchImage();
     return ()=>{live=false;observer?.disconnect();};
-  },[id,review,thumbnail]);
-  return <div ref={box}>{error ? <ErrorNotice error={error}/> : url ?
+  },[id,review,thumbnail,attempt]);
+  return <div ref={box}>{error ? <div className="space-y-2"><ErrorNotice error={error}/>
+    <Button secondary onClick={() => {
+      // Reauthorize on each user-requested retry. Never reuse an expired URL or
+      // bypass visibility checks for content that was withdrawn in the meantime.
+      setUrl(undefined); setError(undefined); setAttempt((value) => value + 1);
+    }}>{t("retry")}</Button></div> : url ?
     // Fetch only when near the viewport and load immediately within the 60-second authorization.
     // eslint-disable-next-line @next/next/no-img-element
     <img src={url} alt={alt} referrerPolicy="no-referrer" onError={()=>setError(new Error())} className="max-h-[36rem] w-full rounded-xl object-contain"/>

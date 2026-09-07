@@ -188,62 +188,85 @@ async def harness(
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("legacy", [False, True])
+@pytest.mark.parametrize(
+    "backend", ["sqlite"] + (["postgresql"] if os.getenv("RUN_INTEGRATION_TESTS") == "1" else [])
+)
 async def test_community_migrations_fresh_and_existing_database(
-    legacy: bool, monkeypatch: pytest.MonkeyPatch
+    legacy: bool, backend: str, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     from alembic import context
     from alembic.migration import MigrationContext
     from alembic.operations import Operations
 
-    engine = create_async_engine("sqlite+aiosqlite://")
+    schema = "community_migration_test_" + uuid4().hex
+    administrator = None
+    if backend == "postgresql":
+        from app.config import get_settings
+
+        administrator = create_async_engine(get_settings().database_url)
+        async with administrator.begin() as connection:
+            await connection.execute(text(f'CREATE SCHEMA "{schema}"'))
+        engine = create_async_engine(
+            get_settings().database_url, connect_args={"server_settings": {"search_path": schema}}
+        )
+    else:
+        engine = create_async_engine("sqlite+aiosqlite://")
     modules = [
         runpy.run_path(str(Path(__file__).parents[1] / "migrations" / "versions" / name))
         for name in ["0057_community.py", "0058_pet_friendly.py"]
     ]
     monkeypatch.setattr(context, "is_offline_mode", lambda: False)
-    async with engine.begin() as connection:
-        await connection.run_sync(Base.metadata.create_all)
 
-        def verify(sync: Any) -> None:
-            operations = Operations(MigrationContext.configure(sync))
+    def verify(sync: Any) -> None:
+        operations = Operations(MigrationContext.configure(sync))
+        for module in modules:
+            module["upgrade"].__globals__["op"] = operations
+        if legacy:
+            # Emulate the schema before this additive change, then preserve an
+            # existing account through upgrade. All data is in this fresh fixture.
+            for module in reversed(modules):
+                module["downgrade"]()
+            sync.execute(
+                text(
+                    "INSERT INTO users (id, email, is_active, is_admin, created_at, "
+                    "updated_at, preferred_locale, preferred_currency, auth_version) "
+                    "VALUES (:id, 'existing@example.test', true, false, "
+                    "CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'en', 'TWD', 1)"
+                ),
+                {"id": uuid4().hex},
+            )
+        for _ in range(2):
             for module in modules:
-                module["upgrade"].__globals__["op"] = operations
-            if legacy:
-                # Emulate the schema before this additive change, then preserve an
-                # existing account through upgrade. All data is in this fresh fixture.
-                for module in reversed(modules):
-                    module["downgrade"]()
-                sync.execute(
-                    text(
-                        "INSERT INTO users (id, email, is_active, is_admin, created_at, "
-                        "updated_at, preferred_locale, preferred_currency, auth_version) "
-                        "VALUES (:id, 'existing@example.test', true, false, "
-                        "CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'en', 'TWD', 1)"
-                    ),
-                    {"id": uuid4().hex},
+                module["upgrade"]()
+        inspector = inspect(sync)
+        for name, table in Base.metadata.tables.items():
+            if name.startswith(("community_", "pet_")):
+                assert {column["name"] for column in inspector.get_columns(name)} == set(
+                    table.columns.keys()
                 )
-            for _ in range(2):
-                for module in modules:
-                    module["upgrade"]()
-            inspector = inspect(sync)
-            for name, table in Base.metadata.tables.items():
-                if name.startswith(("community_", "pet_")):
-                    assert {column["name"] for column in inspector.get_columns(name)} == set(
-                        table.columns.keys()
-                    )
-            assert {"email_verified_at", "deleted_at"} <= {
-                column["name"] for column in inspector.get_columns("users")
-            }
-            if legacy:
-                assert (
-                    sync.scalar(
-                        text("SELECT COUNT(*) FROM users WHERE email = 'existing@example.test'")
-                    )
-                    == 1
+        assert {"email_verified_at", "deleted_at"} <= {
+            column["name"] for column in inspector.get_columns("users")
+        }
+        if legacy:
+            assert (
+                sync.scalar(
+                    text("SELECT COUNT(*) FROM users WHERE email = 'existing@example.test'")
                 )
+                == 1
+            )
 
-        await connection.run_sync(verify)
-    await engine.dispose()
+    try:
+        async with engine.begin() as connection:
+            await connection.run_sync(Base.metadata.create_all)
+            await connection.run_sync(verify)
+    finally:
+        await engine.dispose()
+        if administrator is not None:
+            # This exact, generated schema is owned exclusively by this test.
+            assert schema.startswith("community_migration_test_") and len(schema) == 57
+            async with administrator.begin() as connection:
+                await connection.execute(text(f'DROP SCHEMA "{schema}" CASCADE'))
+            await administrator.dispose()
 
 
 @pytest.mark.asyncio
