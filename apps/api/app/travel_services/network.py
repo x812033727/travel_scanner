@@ -10,7 +10,7 @@ from app.travel_services.registry import affiliate_target, brand_target
 from app.travel_services.schemas import HotelLink, safe_url, untracked_url
 
 
-async def verify_hotel_link(link: HotelLink) -> bool:
+async def check_hotel_link(link: HotelLink) -> str:
     """Validate every hop without retaining a page body or calling any affiliate API.
 
     Cross-domain booking engines must be submitted as the reviewed destination itself;
@@ -25,12 +25,12 @@ async def verify_hotel_link(link: HotelLink) -> bool:
             if (parsed.hostname or "").removeprefix("www.") != (
                 original.hostname or ""
             ).removeprefix("www."):
-                return False
+                return "unsafe"
             # Re-run parameter and provider restrictions on each redirect.
             HotelLink(provider=link.provider, url=current, evidence_url=link.evidence_url)
             pinned = await public_request_target(current)
             if pinned is None:
-                return False
+                return "unsafe"
             target, host = pinned
             async with client.stream(
                 "GET",
@@ -42,17 +42,25 @@ async def verify_hotel_link(link: HotelLink) -> bool:
                 if response.is_redirect:
                     location = response.headers.get("location")
                     if not location:
-                        return False
+                        return "unsafe"
                     current = safe_url(urljoin(current, location))
                     continue
                 expected_query = parse_qs(original.query, keep_blank_values=True)
                 actual_query = parse_qs(parsed.query, keep_blank_values=True)
-                return bool(
-                    response.status_code == 200
-                    and parsed.path.rstrip("/") == original.path.rstrip("/")
-                    and all(actual_query.get(k) == v for k, v in expected_query.items())
-                )
-    return False
+                if response.status_code in (404, 410):
+                    return "unavailable"
+                if response.status_code != 200:
+                    return "unconfirmed"
+                if parsed.path.rstrip("/") != original.path.rstrip("/") or not all(
+                    actual_query.get(k) == v for k, v in expected_query.items()
+                ):
+                    return "unsafe"
+                return "healthy"
+    return "unsafe"
+
+
+async def verify_hotel_link(link: HotelLink) -> bool:
+    return await check_hotel_link(link) == "healthy"
 
 
 async def verify_link(

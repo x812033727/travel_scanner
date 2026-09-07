@@ -9,7 +9,7 @@ from uuid import UUID, uuid4
 from zoneinfo import ZoneInfo
 
 import httpx
-from fastapi import APIRouter, Depends, Header, Query, Request
+from fastapi import APIRouter, Depends, Header, Query, Request, Response
 from fastapi.responses import RedirectResponse
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -23,6 +23,7 @@ from app.i18n import Locale, current_locale
 from app.infra import enforce_named_rate_limit, get_redis
 from app.models import (
     AffiliateClick,
+    HotelBookingClick,
     TravelHotspot,
     TravelServiceBrand,
     TravelServiceOffer,
@@ -31,7 +32,7 @@ from app.models import (
     TripPlanItem,
     TripServiceSelection,
 )
-from app.travel_services.network import verify_hotel_link
+from app.travel_services.hotel_quotes import HotelQuoteRequest, search_quotes
 from app.travel_services.registry import affiliate_target
 from app.travel_services.schemas import CITIES, Facts, Kind, SelectInput, SelectionStatus
 from app.travel_services.service import (
@@ -74,7 +75,7 @@ async def locked_trip(session: AsyncSession, user_id: UUID, trip_id: UUID) -> Tr
 @router.get("/travel-services/config")
 async def public_config(session: Session) -> dict[str, Any]:
     config, _ = await catalog_config(session)
-    return config.model_dump(exclude={"airalo_feed_enabled"})
+    return config.model_dump(exclude={"airalo_feed_enabled", "hotel_quote_policies"})
 
 
 @router.get("/travel-services")
@@ -503,11 +504,10 @@ async def hotel_clickout(
     )
     if link is None:
         raise fail("service_unavailable", 404)
-    try:
-        if not await verify_hotel_link(link):
-            raise fail("service_link_unavailable", 503)
-    except (httpx.HTTPError, ConnectionError, ValueError, TimeoutError) as exc:
-        raise fail("service_link_unavailable", 503) from exc
+    from app.travel_services.hotel_options import safe_click_target
+
+    option = next(o for o in product.hotel_options if o.provider == provider)
+    await safe_click_target(option)
     # This is not a commission-bearing click, booking or trip mutation.
     return RedirectResponse(
         link.url,
@@ -517,6 +517,124 @@ async def hotel_clickout(
             "Referrer-Policy": "no-referrer",
         },
     )
+
+
+@router.post("/travel-services/{product_id}/booking-options/{option_id}/clickout", status_code=303)
+async def booking_option_clickout(
+    product_id: UUID,
+    option_id: UUID,
+    session: Session,
+    request: Request,
+    locale: RequestLocale,
+    placement: Literal["destination", "hotspot", "trip", "stay", "checklist"] = "destination",
+) -> RedirectResponse:
+    from app.travel_services.hotel_options import matching_offer, ready_option, safe_click_target
+
+    await enforce_named_rate_limit(
+        "hotel-options",
+        request.headers.get("x-travel-client-ip")
+        or (request.client.host if request.client else "unknown"),
+        limit=60,
+        window_seconds=60,
+    )
+    product = await session.get(TravelServiceProduct, product_id)
+    config, _ = await catalog_config(session)
+    if not product:
+        raise fail("service_unavailable", 404)
+    option = next((o for o in product.hotel_options if o.id == option_id), None)
+    now = datetime.now(UTC)
+    if not option or not ready_option(product, option, config, now):
+        raise fail("service_unavailable", 404)
+    direct = await safe_click_target(option)
+    settings = await load_runtime_settings(session)
+    offer = await matching_offer(session, product, option, settings, now)
+    target, mode, fallback = direct, "direct", False
+    sub_id = f"svc_hotel_{product.destination_id}_{locale}_{placement}"
+    if offer:
+        brand = await session.get(TravelServiceBrand, offer.brand_id)
+        assert brand is not None
+        try:
+            target = affiliate_target(
+                offer.static_url
+                or await TravelpayoutsLinkClient(get_redis(), settings).create(
+                    direct,
+                    sub_id,
+                    cache_context=(
+                        f"hotel:{option.id}:{option.version}:{brand.id}:{brand.version}:"
+                        f"{offer.id}:{offer.version}:{locale}"
+                    ),
+                )
+            )
+            mode = "affiliate"
+        except (ConnectionError, ValueError, httpx.HTTPError, TimeoutError):
+            fallback = True
+    if mode == "direct" and not config.direct_hotel_links_enabled:
+        raise fail("service_link_unavailable", 503)
+    if mode == "affiliate":
+        session.add(
+            AffiliateClick(
+                user_id=None,
+                partner="travelpayouts",
+                brand=option.provider,
+                service_type="hotel",
+                placement=placement,
+                destination_id=product.destination_id,
+                module="hotel",
+                sub_id=sub_id,
+                destination_summary=product.destination_id,
+                target_host=urlsplit(target).hostname or "",
+                status="redirected",
+            )
+        )
+    session.add(
+        HotelBookingClick(
+            option_id=option.id,
+            provider=option.provider,
+            destination_id=product.destination_id,
+            mode=mode,
+            fallback=fallback,
+            placement=placement,
+        )
+    )
+    await session.commit()
+    return RedirectResponse(
+        target,
+        status_code=303,
+        headers={"Cache-Control": "no-store", "Referrer-Policy": "no-referrer"},
+    )
+
+
+@router.post("/travel-services/{product_id}/hotel-quotes")
+async def hotel_quotes(
+    product_id: UUID,
+    payload: HotelQuoteRequest,
+    session: Session,
+    request: Request,
+    locale: RequestLocale,
+    response: Response,
+) -> dict[str, Any]:
+    response.headers["Cache-Control"] = "no-store"
+    await enforce_named_rate_limit(
+        "hotel-quotes",
+        request.headers.get("x-travel-client-ip")
+        or (request.client.host if request.client else "unknown"),
+        limit=20,
+        window_seconds=60,
+    )
+    product = await session.get(TravelServiceProduct, product_id)
+    config, _ = await catalog_config(session)
+    if (
+        not product
+        or product.kind != "hotel"
+        or product.status != "approved"
+        or not product_enabled(config, product)
+    ):
+        raise fail("service_unavailable", 404)
+    country = CITIES[product.destination_id][0]
+    zone = {"JP": "Asia/Tokyo", "KR": "Asia/Seoul", "TW": "Asia/Taipei"}[country]
+    if payload.check_in < datetime.now(UTC).astimezone(ZoneInfo(zone)).date():
+        raise fail("service_schedule_invalid")
+    return await search_quotes(product, payload, locale, config, get_redis())
 
 
 @router.post("/affiliates/offers/{offer_id}/clickout", status_code=303)

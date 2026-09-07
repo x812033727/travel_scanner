@@ -11,6 +11,16 @@ import { TravelServicesAdmin } from "./admin";
 import copy from "@/messages/zh-TW/travelServices.json";
 
 const { request } = vi.hoisted(() => ({ request: vi.fn() }));
+vi.mock("next-intl", async () => {
+  const { createTranslator, createFormatter } =
+    await vi.importActual<typeof import("next-intl")>("next-intl");
+  return {
+    useTranslations: () =>
+      createTranslator({ locale: "zh-TW", messages: copy }),
+    useFormatter: () =>
+      createFormatter({ locale: "zh-TW", timeZone: "Asia/Taipei" }),
+  };
+});
 vi.mock("@/lib/api", async (original) => ({
   ...(await original<typeof import("@/lib/api")>()),
   api: request,
@@ -62,9 +72,10 @@ const overview = {
 it("edits exact hotel links without a network account and preserves other reviewed facts", async () => {
   request.mockResolvedValue(overview);
   render(<TravelServicesAdmin />);
-  expect(await screen.findByText(copy.directIndependent, { exact: false })).toBeTruthy();
-  fireEvent.click(screen.getByText(copy.directHotelLinks));
-  fireEvent.click(screen.getByRole("button", { name: copy.addHotelLink }));
+  expect(
+    await screen.findByText(copy.directIndependent, { exact: false }),
+  ).toBeTruthy();
+  fireEvent.click(screen.getByText(copy.platformReview));
   fireEvent.change(screen.getByLabelText(copy.hotelPageUrl), {
     target: { value: "https://hotel.example.com/stay" },
   });
@@ -80,16 +91,15 @@ it("edits exact hotel links without a network account and preserves other review
   const [path, options] = request.mock.calls.find(
     ([, opts]) => opts?.method === "PUT",
   )!;
-  expect(path).toBe("/admin/travel-services/products/hotel-1?version=3");
+  expect(path).toBe("/admin/travel-services/products/hotel-1/booking-options");
   const saved = JSON.parse(options.body);
-  expect(saved.facts.area_code).toBe("marunouchi");
-  expect(saved.facts.hotel_links).toEqual([
-    {
-      provider: "official",
-      url: "https://hotel.example.com/stay",
-      evidence_url: "https://hotel.example.com/location",
-    },
-  ]);
+  expect(saved.facts).toBeUndefined(); // Independent edit cannot rewrite hotel facts.
+  expect(saved).toMatchObject({
+    version: 0,
+    provider: "official",
+    url: "https://hotel.example.com/stay",
+    evidence_url: "https://hotel.example.com/location",
+  });
   expect(saved.status).toBeUndefined(); // Saving cannot self-approve the change.
 });
 
@@ -119,4 +129,45 @@ it("has an independent ordinary-link switch without enabling public destinations
     enabled_destinations: [],
     version: 2,
   });
+});
+
+it("loads saved identity evidence before an independent platform recheck", async () => {
+  request.mockResolvedValue({
+    ...overview,
+    products: [
+      {
+        ...product,
+        booking_options: [
+          {
+            id: "official-option",
+            provider: "official",
+            version: 4,
+            url: "https://hotel.example.com/stay",
+            property_id: "official-42",
+            evidence_url: "https://hotel.example.com/location",
+            identity_note: "Reviewed official name and address",
+            discovery_status: "found",
+            status: "approved",
+            health_status: "healthy",
+            verified_at: "2026-08-01T00:00:00Z",
+          },
+        ],
+      },
+    ],
+  });
+  render(<TravelServicesAdmin />);
+  fireEvent.click(await screen.findByText(copy.platformReview));
+  expect(
+    (screen.getByLabelText(copy.identityNote) as HTMLTextAreaElement).value,
+  ).toBe("Reviewed official name and address");
+  expect(
+    (screen.getByLabelText(copy.platformPropertyId) as HTMLInputElement).value,
+  ).toBe("official-42");
+  expect(
+    (
+      screen.getByRole("button", {
+        name: copy.verifyOffer,
+      }) as HTMLButtonElement
+    ).disabled,
+  ).toBe(false);
 });

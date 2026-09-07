@@ -8,6 +8,19 @@ vi.mock("next/headers", () => ({ cookies: async () => new Map() }));
 afterEach(() => vi.unstubAllGlobals());
 
 describe("saved service clickout BFF", () => {
+  it("routes unified hotel option forms by saved IDs with their controlled locale", async () => {
+    const fetcher = vi.fn(async () => new Response(null, { status: 303, headers: { Location: "https://www.booking.com/hotel/jp/fixture.html" } }));
+    vi.stubGlobal("fetch", fetcher);
+    const id = "00000000-0000-4000-8000-000000000001";
+    const path = ["travel-services", id, "booking-options", id, "clickout"];
+    const response = await POST(new NextRequest(`https://mokaair.test/api/travel/${path.join("/")}?locale=ja&placement=trip`, { method: "POST", headers: { Origin: "https://mokaair.test" } }), { params: Promise.resolve({ path }) });
+    expect(response.status).toBe(303);
+    const [target, options] = (fetcher.mock.calls as unknown as [string, RequestInit][])[0];
+    expect(target).not.toContain("locale=");
+    expect(target).toContain("placement=trip");
+    expect(new Headers(options.headers).get("X-Travel-Locale")).toBe("ja");
+    expect(options.redirect).toBe("manual");
+  });
   it("proxies saved ordinary hotel links with safe new-tab 303 and no affiliate rewriting", async () => {
     const fetcher = vi.fn(async () => new Response(null, { status: 303, headers: { Location: "https://hotel.example.com/stay" } }));
     vi.stubGlobal("fetch", fetcher);
