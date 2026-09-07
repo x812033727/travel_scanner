@@ -75,6 +75,27 @@ describe("FlightOfferCard", () => {
     expect(screen.getByText(/已更新為供應商最新價格/)).toBeTruthy();
   });
 
+  it("offers each leg to the trip when the search came from one", () => {
+    const onAttach = vi.fn();
+    const labels = { outbound: "帶入去程", return: "帶入回程", busy: "帶入中…", doneOutbound: "已帶入去程", doneReturn: "已帶入回程" };
+    const { rerender } = render(<FlightOfferCard offer={offer} fallbackUrl="https://example.test/recheck" tripActions={{ labels, state: {}, onAttach }} />);
+    fireEvent.click(screen.getByRole("button", { name: "帶入去程" }));
+    expect(onAttach).toHaveBeenLastCalledWith("outbound");
+    fireEvent.click(screen.getByRole("button", { name: "帶入回程" }));
+    expect(onAttach).toHaveBeenLastCalledWith("return");
+
+    rerender(<FlightOfferCard offer={offer} fallbackUrl="https://example.test/recheck" tripActions={{ labels, state: { outbound: "done", return: "busy" }, onAttach }} />);
+    expect(screen.getByRole("button", { name: "已帶入去程" })).toBeTruthy();
+    expect((screen.getByRole("button", { name: "帶入中…" }) as HTMLButtonElement).disabled).toBe(true);
+
+    // A one-way offer has no return leg to bring in; an estimate is not a flight at all.
+    rerender(<FlightOfferCard offer={{ ...offer, return_departure_time: null, return_arrival_time: null, segments: offer.segments?.slice(0, 1) }} fallbackUrl="https://example.test/recheck" tripActions={{ labels, state: {}, onAttach }} />);
+    expect(screen.getByRole("button", { name: "帶入去程" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "帶入回程" })).toBeNull();
+    rerender(<FlightOfferCard offer={{ ...offer, source_mode: "estimate" }} fallbackUrl="https://example.test/recheck" tripActions={{ labels, state: {}, onAttach }} />);
+    expect(screen.queryByRole("button", { name: "帶入去程" })).toBeNull();
+  });
+
   it("creates a price alert with the displayed price", async () => {
     apiMock.mockResolvedValue({ id: "alert-1" });
     render(<FlightOfferCard offer={offer} fallbackUrl="https://example.test/recheck" />);

@@ -129,7 +129,12 @@ def _flight_timezone(value: datetime | None, provider_timezone: str | None) -> s
     return f"{offset[:3]}:{offset[3:]}" if len(offset) == 5 else offset or None
 
 
-def _flight_info(flight: FlightOffer, *, returning: bool) -> dict[str, Any]:
+def offer_flight_info(flight: FlightOffer, *, returning: bool) -> dict[str, Any]:
+    """The `flight_info` an anchor keeps for one leg of a provider offer.
+
+    Shared by the itinerary builder and the from-offer anchor endpoint so a
+    flight attached later looks exactly like one saved with the plan.
+    """
     leg_index = 1 if returning else 0
     segments = [segment for segment in flight.segments if segment.leg_index == leg_index]
     first = segments[0] if segments else None
@@ -262,7 +267,7 @@ def build_itinerary(
         )
 
     if flight:
-        flight_info = _flight_info(flight, returning=False)
+        flight_info = offer_flight_info(flight, returning=False)
         add(
             days[0],
             item_type="flight",
@@ -595,7 +600,7 @@ def build_itinerary(
             },
         )
     if flight and flight.return_departure_time:
-        flight_info = _flight_info(flight, returning=True)
+        flight_info = offer_flight_info(flight, returning=True)
         add(
             days[-1],
             item_type="flight",

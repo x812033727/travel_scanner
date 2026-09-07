@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, ChevronUp, ExternalLink, Leaf, Plane, RefreshCw } from "lucide-react";
+import { Check, ChevronDown, ChevronUp, ExternalLink, Leaf, LoaderCircle, Plane, PlaneLanding, PlaneTakeoff, RefreshCw } from "lucide-react";
 import { useMemo, useState } from "react";
 import { api, twd } from "@/lib/api";
 import { safeExternalHref } from "@/lib/navigation";
@@ -65,6 +65,19 @@ export type FlightCardOffer = {
 
 type RefreshResult = { new_price: string | number; price_change: string | number; still_available: boolean; refreshed_at: string };
 
+export type FlightLegDirection = "outbound" | "return";
+
+/**
+ * Shown on a search started from a saved trip: each leg of the offer can be
+ * written into the trip's flight anchor. Labels come from the caller so the
+ * card itself stays out of the message catalogs.
+ */
+export type FlightOfferTripActions = {
+  labels: { outbound: string; return: string; busy: string; doneOutbound: string; doneReturn: string };
+  state: Partial<Record<FlightLegDirection, "busy" | "done">>;
+  onAttach: (direction: FlightLegDirection) => void;
+};
+
 function localParts(value?: string | null) {
   const match = value?.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/);
   return match ? { date: `${Number(match[2])}/${Number(match[3])}`, isoDate: `${match[1]}-${match[2]}-${match[3]}`, time: `${match[4]}:${match[5]}` } : null;
@@ -112,13 +125,16 @@ function FlightLeg({ label, segments, departure, arrival, fallbackOrigin, fallba
   </div>;
 }
 
-export function FlightOfferCard({ offer, fallbackUrl, alertReturnPath }: { offer: FlightCardOffer; fallbackUrl: string; alertReturnPath?: string }) {
+export function FlightOfferCard({ offer, fallbackUrl, alertReturnPath, tripActions }: { offer: FlightCardOffer; fallbackUrl: string; alertReturnPath?: string; tripActions?: FlightOfferTripActions }) {
   const [price, setPrice] = useState(Number(offer.total_price || 0));
   const [verifiedAt, setVerifiedAt] = useState(offer.last_verified_at || offer.retrieved_at);
   const [refreshing, setRefreshing] = useState(false);
   const [message, setMessage] = useState("");
   const [expanded, setExpanded] = useState(false);
   const [outbound, returning] = useMemo(() => splitSegments(offer), [offer]);
+  const hasReturnLeg = returning.length > 0 || Boolean(offer.return_departure_time);
+  // An estimate is a price for a date window, not a flight that can be booked.
+  const legActions = tripActions && offer.source_mode !== "estimate" ? tripActions : undefined;
   const operating = Array.isArray(offer.operating_airlines) ? offer.operating_airlines.join("、") : "";
   const baggage = offer.baggage_summary ? String(offer.baggage_summary) : Number(offer.checked_baggage_kg || 0) > 0 ? `托運 ${offer.checked_baggage_kg} kg` : offer.carry_on ? "含手提行李" : "行李需向售票端確認";
 
@@ -155,6 +171,13 @@ export function FlightOfferCard({ offer, fallbackUrl, alertReturnPath }: { offer
       {offer.provider === "skyscanner" && <p className="mt-2 text-xs text-[var(--muted)]">Powered by <a className="font-semibold underline" href="https://www.skyscanner.net" target="_blank" rel="noreferrer">Skyscanner</a></p>}
       {message && <p className="mt-3 text-sm text-[var(--coral)]" role="status">{message}</p>}
       <div className="mt-4 grid gap-2 sm:grid-cols-2"><button type="button" onClick={refresh} disabled={refreshing || offer.source_mode === "estimate"} className="flex items-center justify-center gap-2 rounded-xl border border-[var(--line)] px-4 py-3 text-sm font-semibold disabled:opacity-50"><RefreshCw size={16} className={refreshing ? "animate-spin" : ""} />{refreshing ? "驗價中" : "重新驗價"}</button>{offer.clickout_available ? <form action={`/api/travel/offers/${offer.id}/clickout`} method="post" target="_blank"><button className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 py-3 text-sm font-semibold text-white" type="submit">前往訂票 <ExternalLink size={16} /></button></form> : <a href={safeExternalHref(fallbackUrl)} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 rounded-xl border border-[var(--teal)] px-4 py-3 text-sm font-semibold text-[var(--teal)]">外站重新確認<ExternalLink size={16} /></a>}</div>
+      {legActions && <div className="mt-3 grid gap-2 sm:grid-cols-2">{(["outbound", "return"] as const).filter((direction) => direction === "outbound" || hasReturnLeg).map((direction) => {
+        const state = legActions.state[direction];
+        const label = state === "done" ? (direction === "outbound" ? legActions.labels.doneOutbound : legActions.labels.doneReturn) : state === "busy" ? legActions.labels.busy : direction === "outbound" ? legActions.labels.outbound : legActions.labels.return;
+        return <button key={direction} type="button" onClick={() => legActions.onAttach(direction)} disabled={state === "busy"} className={`flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold disabled:opacity-50 ${state === "done" ? "bg-emerald-50 text-emerald-800" : "bg-[var(--teal-soft)] text-[var(--teal-dark)]"}`}>
+          {state === "done" ? <Check size={16} /> : state === "busy" ? <LoaderCircle size={16} className="animate-spin" /> : direction === "outbound" ? <PlaneTakeoff size={16} /> : <PlaneLanding size={16} />}{label}
+        </button>;
+      })}</div>}
       {offer.source_mode !== "estimate" && <PriceAlertButton resourceType="flight" resourceId={offer.id} currentPrice={price} currency={offer.currency || "TWD"} returnPath={alertReturnPath} />}
     </div>
   </article>;

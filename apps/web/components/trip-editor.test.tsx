@@ -67,6 +67,29 @@ describe("trip editor", () => {
     expect(fetchMock.mock.calls.some(([input]) => String(input).includes("/stay-areas"))).toBe(false);
   });
 
+  it("links each flight anchor to a search for this trip", async () => {
+    const outbound = {
+      ...trip.items[0],
+      id: "00000000-0000-4000-8000-000000000003",
+      item_type: "flight",
+      title: "去程航班尚未設定",
+      location_name: null,
+      system_role: "outbound_flight" as const,
+      fixed_time: true,
+      locked: true,
+      data: { flight_selection_source: "unset", flight_info: null },
+    };
+    const flightTrip = { ...trip, start_date: "2026-11-11", end_date: "2026-11-11", items: [trip.items[0], outbound] };
+    const fetchMock = vi.fn().mockImplementation(() => Promise.resolve(response(flightTrip)));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    // The entry is on the anchor whether or not a flight is set: an unset anchor is
+    // exactly where someone goes looking for one.
+    const link = await screen.findByRole("link", { name: /^查機票 · / });
+    expect(link.getAttribute("href")).toBe(`/search?trip_id=${trip.id}`);
+  });
+
   it("opens the stay-area flow from the hotel card and sets the chosen hotel as primary lodging", async () => {
     const hotelStart = {
       ...trip.items[0],

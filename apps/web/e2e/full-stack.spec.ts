@@ -164,3 +164,45 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await expect(page.getByRole("heading", { name: "午餐尚未安排", exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "跳過" }).first()).toBeVisible();
 });
+
+test("a saved trip searches flights from its own criteria and takes a quote back", async ({ page }) => {
+  test.setTimeout(150_000);
+  const email = `tripsearch${Date.now()}${test.info().workerIndex}@example.com`;
+  await page.goto("/zh-TW/register?next=/trips/new");
+  await page.getByLabel("Email").fill(email);
+  await page.getByLabel("密碼").fill("full-stack-password-123");
+  await page.getByRole("button", { name: "建立免費帳號" }).click();
+  await expect(page).toHaveURL(/\/trips\/new$/, { timeout: 15_000 });
+
+  await page.getByLabel("旅程名稱").fill("東京查機票");
+  await page.getByLabel("目的地").fill("日本東京");
+  await pickTripDay(page, "2026-11-10");
+  await pickTripDay(page, "2026-11-14");
+  await expect(page.getByText(/共 5 天/)).toBeVisible();
+  for (let step = 0; step < 3; step += 1) await page.getByRole("button", { name: /下一步/ }).click();
+  await page.getByRole("button", { name: /交給 AI 排好行程/ }).click();
+  await expect(page).toHaveURL(/\/trips\/[0-9a-f-]+$/, { timeout: 30_000 });
+  const tripUrl = page.url();
+
+  // The outbound anchor card is the entry. A blank trip has no home airport yet,
+  // so the search page asks once and writes the answer back to the trip.
+  await page.locator(".planner-flight-card").first().getByRole("link", { name: /^查機票 · / }).click();
+  await expect(page).toHaveURL(/\/search\?trip_id=/);
+  await expect(page.getByRole("heading", { name: "為〈東京查機票〉找機票" })).toBeVisible();
+  await page.getByRole("radio", { name: "桃園 TPE" }).click();
+  await page.getByRole("button", { name: "儲存出發地" }).click();
+  await expect(page.getByText("這趟旅程還沒有出發機場")).toBeHidden();
+  await page.getByRole("button", { name: /^確認條件並開始搜尋 · / }).click();
+  await expect(page.getByText("分析完成")).toBeVisible({ timeout: 60_000 });
+
+  await page.getByRole("button", { name: "帶入去程" }).first().click();
+  await expect(page.getByRole("button", { name: "已帶入去程" })).toBeVisible();
+  await page.getByRole("button", { name: "帶入回程" }).first().click();
+  await expect(page.getByText("旅程的去程與回程錨點已更新為這筆報價。")).toBeVisible();
+  await page.getByRole("link", { name: "回到旅程" }).first().click();
+  await expect(page).toHaveURL(tripUrl);
+  // The anchor now shows the quote it was created from instead of "尚未設定".
+  const outbound = page.locator(".planner-flight-card").first();
+  await expect(outbound).not.toContainText("去程航班尚未設定");
+  await expect(outbound).toContainText(/報價 NT\$/);
+});
