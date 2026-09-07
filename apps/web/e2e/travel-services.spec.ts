@@ -184,6 +184,9 @@ for (const [locale, copy] of Object.entries(catalogs)) {
         document.documentElement.setAttribute("data-theme", "dark"),
       );
       await expect(page.getByRole("article").last()).toBeVisible();
+      if (locale === "zh-TW" && width === 390) {
+        await page.screenshot({ path: "test-results/travel-services-mobile-dark.png", fullPage: true });
+      }
       expect(
         await page.evaluate(
           () =>
@@ -227,6 +230,7 @@ for (const width of [320, 390, 1280]) {
     const dialog = page.getByRole("dialog", { name: en.hotel });
     await expect(dialog).toBeVisible();
     await expect(dialog.getByRole("article")).toHaveCount(3);
+    if (width === 390) await page.screenshot({ path: "test-results/travel-services-sheet.png" });
     expect(await page.evaluate(() => document.body.style.overflow)).toBe(
       "hidden",
     );

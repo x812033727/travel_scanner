@@ -15,6 +15,17 @@ The existing encrypted **API & keys → Travelpayouts** configuration is the net
 account. Its token, marker, project ID and enabled flag are reused, never sent to
 the browser. No Klook or KKday direct affiliate key is required.
 
+### Read-only account verification, 2026-09-07 09:10 UTC
+
+Project `570089` currently shows 26 available and 20 to unlock. Within this catalog's
+brand registry, Klook, KKday, Airalo, Saily, Yesim, GigSky, Kiwitaxi, Welcome Pickups,
+GetTransfer.com, intui.travel, Tiqets and WeGoTrip appeared in **Available**, with
+Generate link controls. Booking.com, Trip.com, Agoda, Expedia, Viator, GetYourGuide
+and Rakuten Travel appeared in **Unlock more**, with the project review notice.
+Source: the signed-in [project programs page](https://app.travelpayouts.com/programs?source=570089).
+This is a dated observation, not an API entitlement or an evergreen approval seed;
+it does not automatically enable any brand. No account settings were changed.
+
 ## Operator sequence
 
 1. Verify the current project's subscription status in Travelpayouts, not an older
