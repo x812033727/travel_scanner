@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-07T09:22:13Z
 completed_at:
-branch: codex/mokaair-community
+branch: codex/community-account-safety
 depends_on: []
 scope:
   - apps/api/app/community
@@ -108,3 +108,20 @@ CI 34139969746 / e071cc7 passed Web, containers and all real-service browser
 journeys. The new PostgreSQL regression failed during fixture setup because the
 moderation response contains state/version, not the post ID. Preserve the published
 post response separately before approval; rerun the barrier test on PostgreSQL.
+
+34c4a84 passed complete CI 34140678769 and 34140675466, including the PostgreSQL
+deadlock regression. Main fd160ff was integrated; 5282df2 passed full CI before
+the owner-authorized squash merge of PR #340 as 7f21d7e. Main CI 34144356856
+also passed (1,781 API tests, two skipped). The existing SSH path deployed that
+exact SHA after a verified backup; migrations 0058–0060, ten running services,
+three readiness checks and the authenticated admin page passed. Community stays
+off, registration stays closed, and production SMTP is not configured. Details
+and the backup location are in docs/community.md.
+
+Follow-up on codex/community-account-safety: three added SQLite regressions first
+failed against main: stale deleted-account mail issuance, cached consumed-token
+reuse and retained typed post-place references. Fix by taking User before Token
+locks, refreshing both snapshots and clearing place_refs during erasure. Add real
+PostgreSQL overlap/replay/issuance tests; those must pass CI before this follow-up
+is accepted. The wider background-worker/deletion, outage/capacity and multi-locale
+browser acceptance work remains open.
