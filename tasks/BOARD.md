@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 2 in progress · 2 blocked · 2 in review · 145 done**
+**16 open · 1 in progress · 2 blocked · 3 in review · 145 done**
 
 ## Ready to claim
 
@@ -30,7 +30,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
-| [出發前閉環：提醒連得回旅程、錨點能追價、航班動態寫得回去](open/2026-09-07-pre-departure-loop.md) | claude-opus-5 | 2026-09-07T00:45:08Z | `claude/pre-departure-loop` |
 | [觀測：漏斗看得見——事件名脫離 DB CHECK，關鍵動作由伺服器送](open/2026-09-07-observe-the-funnel.md) | claude-opus-5 | 2026-09-07T02:25:46Z | `claude/observe-the-funnel` |
 
 ## In review
@@ -39,6 +38,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- |
 | [Gemini catalog review and 100-item expansion](open/2026-09-07-gemini-catalog-review.md) | codex-gemini-catalog | `codex/catalog-review-missing-assessments` |
 | [從旅程出發查機票：條件由旅程推導，報價帶回錨點](open/2026-09-06-search-from-a-saved-trip.md) | claude-opus-5 | `claude/better-workflow-planning-324ki8` |
+| [出發前閉環：提醒連得回旅程、錨點能追價、航班動態寫得回去](open/2026-09-07-pre-departure-loop.md) | claude-opus-5 | `claude/pre-departure-loop` |
 
 ## Waiting
 

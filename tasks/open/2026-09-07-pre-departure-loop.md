@@ -1,7 +1,7 @@
 ---
 id: 2026-09-07-pre-departure-loop
 title: 出發前閉環：提醒連得回旅程、錨點能追價、航班動態寫得回去
-status: in-progress
+status: review
 priority: P2
 area: web
 owner: claude-opus-5
@@ -53,7 +53,7 @@ scope:
 重查的數字，所以它永遠只能是 `manual_only`，文案還叫人「在搜尋頁手動查看」，但那個搜尋頁
 根本不存在；航班動態查完就散在畫面上，回不到旅程。
 
-這張任務接在 PR #249（`2026-09-06-search-from-a-saved-trip`）之後，分支從它長出來。
+這張任務接在 PR #249（`2026-09-06-search-from-a-saved-trip`）之後，分支從它長出來，PR 是 #313。
 
 ## Definition of done
 
@@ -74,7 +74,8 @@ scope:
       `FlightStatusLookup`，客戶端只給 `lookup_id` 與 `item_id`。
 - [x] 前端 `trip-price-watch.tsx`、`flight-status-search.tsx` 的旅程模式、錨點卡的狀態列。
 - [x] 整合測試（需要 Postgres/Redis）、e2e 兩個 viewport（六個情境全過）。
-- [ ] 開 PR、合併。
+- [x] 開 PR：#313，base 是 #249 的分支。
+- [ ] 合併（#249 先合，這個 PR 的 base 會自動變成 main）。
 
 ## How to verify
 
