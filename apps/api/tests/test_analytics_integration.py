@@ -5,12 +5,12 @@ from zoneinfo import ZoneInfo
 
 import pytest
 from httpx import ASGITransport, AsyncClient
-from sqlalchemy import delete, select
+from sqlalchemy import delete, func, select
 
 from app.analytics.service import dashboard, rollup_day
 from app.db import SessionFactory, engine
 from app.main import app
-from app.models import AnalyticsDailyRollup, AnalyticsEvent, ProviderConfig
+from app.models import AnalyticsDailyRollup, AnalyticsEvent, ProviderConfig, User
 
 pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
@@ -218,3 +218,48 @@ async def test_a_server_event_joins_the_browser_session_it_came_from() -> None:
         assert funnel["trip_created"]["conversion_rate"] == 100.0
 
     await engine.dispose(close=False)
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_a_pending_row_is_not_flushed_by_measuring_it() -> None:
+    """Measuring an action must not send the caller's unsaved row to the database.
+
+    Callers reach `record_event` with their own row added and not yet committed, and
+    they rely on their own `except IntegrityError` around `commit()`. Anything here
+    that flushes — an autoflushing SELECT, or entering a savepoint — moves that failure
+    inside this module's own try/except, and the caller sees a PendingRollbackError it
+    has no branch for. `POST /alerts` returned 500 instead of 409 for two members
+    racing on the same resource; this is the unit-level shape of that.
+    """
+    from app.analytics.service import record_event
+
+    async with SessionFactory() as session:
+        user = User(
+            email=f"analytics-flush-{uuid4()}@example.com", password_hash=None, is_active=True
+        )
+        session.add(user)
+        await session.commit()
+        user_id = user.id
+
+    async with SessionFactory() as session:
+        pending = AnalyticsEvent(
+            event_id=uuid4(),
+            event_name="page_view",
+            occurred_at=datetime.now(UTC),
+            normalized_path="/",
+            locale="zh-TW",
+            session_hash="pending",
+            visitor_day_hash="pending",
+        )
+        session.add(pending)
+        assert await record_event(session, "trip_created", path="/trips", user_id=user_id) is True
+        # Still pending: measuring did not decide when the caller's row goes out.
+        assert pending in session.new
+        await session.commit()
+
+    async with SessionFactory() as session:
+        assert await session.scalar(
+            select(func.count())
+            .select_from(AnalyticsEvent)
+            .where(AnalyticsEvent.event_id == pending.event_id)
+        ) == 1
