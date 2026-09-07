@@ -33,6 +33,19 @@ const RENEWAL_CAP_MAX_AGE = 60 * 60 * 24;
  * then the catalog's own language. Without the header an anonymous reader of /en or /ja
  * got Chinese city names in every select, because the cookie only exists after sign-in.
  */
+/**
+ * The browser's analytics session id, when it sent one that is actually an id.
+ *
+ * It travels so an event the API records for this call lands on the same session hash
+ * as the page views around it. The value is client-controlled and ends up as an HMAC
+ * input on the other side, so anything but a UUID is dropped rather than forwarded:
+ * a caller that can choose the hash input can group other people's rows under it.
+ */
+export function forwardedAnalyticsSession(value: string | null): string | null {
+  if (!value) return null;
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value) ? value : null;
+}
+
 export function upstreamLocale(requested: string | null | undefined, remembered: string | null | undefined): string {
   if (requested && SUPPORTED_LOCALES.has(requested)) return requested;
   if (remembered && SUPPORTED_LOCALES.has(remembered)) return remembered;
@@ -119,6 +132,8 @@ async function proxy(request: NextRequest, context: Context) {
   if (sourceAddress) headers.set("X-Travel-Client-IP", sourceAddress);
   const userAgent = request.headers.get("user-agent")?.slice(0, 512);
   if (userAgent) headers.set("X-Travel-User-Agent", userAgent);
+  const analyticsSession = forwardedAnalyticsSession(request.headers.get("x-travel-analytics-session"));
+  if (analyticsSession) headers.set("X-Travel-Analytics-Session", analyticsSession);
   for (const name of ["sec-gpc", "dnt"]) {
     const value = request.headers.get(name);
     if (value === "1") headers.set(name, "1");

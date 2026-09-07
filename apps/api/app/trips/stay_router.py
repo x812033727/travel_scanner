@@ -27,6 +27,7 @@ from app.affiliates.service import (
     resolve_partner_target,
     validate_target_url,
 )
+from app.analytics.service import record_event
 from app.auth.service import CurrentUser
 from app.config import Settings
 from app.crawlers.fx import FxRateProvider
@@ -541,6 +542,12 @@ async def select_stay_hotel(
         },
     }
     changed_rows = sync_primary_lodging(trip, context.rows, lodging)
+    # A real quote landing on the trip — the funnel step between saving a trip and
+    # leaving for a provider. The flight half arrives with the from-offer anchor.
+    await record_event(
+        session, "offer_attached", path="/trips", user_id=user.id,
+        properties={"kind": "hotel", "source": "stay_area"},
+    )
     return await persist_system_schedule_change(
         session,
         trip,

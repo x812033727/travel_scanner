@@ -241,26 +241,13 @@ class AffiliateClick(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
-ANALYTICS_EVENT_NAMES = (
-    "page_view",
-    "registration_completed",
-    "search_completed",
-    "trip_created",
-    "outbound_click",
-)
-
-
 class AnalyticsEvent(Base):
     __tablename__ = "analytics_events"
-    __table_args__ = (
-        UniqueConstraint("event_id", name="uq_analytics_event_id"),
-        CheckConstraint(
-            "event_name IN ("
-            + ", ".join(f"'{name}'" for name in ANALYTICS_EVENT_NAMES)
-            + ")",
-            name="ck_analytics_event_name",
-        ),
-    )
+    # The vocabulary is validated in app.analytics.service.EVENT_NAMES, not by a CHECK
+    # here. As a constraint it made every new event a migration, and it put the deploy
+    # in an order that could only break: an API sending a name the database has not
+    # been taught yet writes nothing at all (0055_analytics_event_names).
+    __table_args__ = (UniqueConstraint("event_id", name="uq_analytics_event_id"),)
 
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     event_id: Mapped[UUID] = mapped_column(index=True)

@@ -8,6 +8,7 @@ from uuid import UUID
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.analytics.service import record_event
 from app.destinations.catalog import destination_for_id
 from app.foods.service import load_food_names, merchant_names
 from app.hotspots.maps import build_map_links
@@ -95,6 +96,12 @@ async def apply_merchant_meal_selection(
         "merchant_area_id": str(merchant.area_id) if merchant.area_id else None,
         "merchant_map_links": map_links,
     }
+    # Both /foods endpoints land here, so one call covers the dish card and the
+    # merchant card without either router knowing about analytics.
+    await record_event(
+        session, "place_added_to_trip", path="/foods", user_id=user_id,
+        properties={"kind": "food_merchant", "slot": meal_role, "from_dish": food is not None},
+    )
     return await persist_system_schedule_change(
         session,
         trip,

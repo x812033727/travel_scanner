@@ -11,6 +11,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.alerts.monitoring import automatic_monitoring_supported, monitor_identity
+from app.analytics.service import record_event
 from app.auth.service import CurrentUser
 from app.db import get_session
 from app.models import (
@@ -249,6 +250,14 @@ async def create_alert(
         next_check_at=(datetime.now(UTC) if snapshot.monitoring_mode == "automatic" else None),
     )
     session.add(alert)
+    await record_event(
+        session, "alert_created", path="/alerts", user_id=user.id,
+        properties={
+            "resource_type": payload.resource_type,
+            "monitoring_mode": snapshot.monitoring_mode,
+            "has_target": payload.target_price is not None,
+        },
+    )
     try:
         await session.commit()
     except IntegrityError as exc:

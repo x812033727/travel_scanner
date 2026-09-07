@@ -10,6 +10,7 @@ from pydantic import BaseModel, Field
 from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.analytics.service import record_event
 from app.auth.service import CurrentUser
 from app.db import get_session
 from app.localized_names import item_names
@@ -217,6 +218,10 @@ async def select_restaurant_for_trip(
         "restaurant_maps_url": place.generated_maps_url,
         "restaurant_editorial_source": editorial.get("source_kind") if editorial else None,
     }
+    await record_event(
+        session, "place_added_to_trip", path="/restaurants", user_id=user.id,
+        properties={"kind": "restaurant", "slot": payload.meal_role},
+    )
     result = await persist_system_schedule_change(
         session,
         trip,

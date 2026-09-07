@@ -326,8 +326,12 @@
 **PR H — 一個入口**
 範圍：`TripBrief`、工作台雙出口、一句話入口（= 規格 PR 3、5）、「從這裡開始規劃」、工作台字串進 catalog。最大的一包，最後做；此時 A–F 已讓兩扇門進來的旅程一致，合併入口才不會把差異搬進來。
 
-**PR I — 觀測**
-範圍：§4.5。任何時間可做；建議在 A 之後立刻做，之後每個 PR 都有數據可看。
+**PR I — 觀測 — 已在 `claude/observe-the-funnel` 實作（從 main 長出來，可與 D／F 平行合併）**
+範圍：migration `0055_analytics_event_names` 拿掉 `ck_analytics_event_name`，事件名的唯一真相移到 `analytics/service.py` 的 `EVENT_NAMES`（十七個）；新增 `analytics/context.py`（仿 `i18n.py` 的 contextvar，由 `RequestContextMiddleware` 綁定），因此 `usage/service.py` 這種拿不到 `Request` 的地方也送得出事件；新增 `record_event()` 直接寫 `analytics_events`，不經過訪客 ingest 的 IP／session 速率限制，而且量測永遠不會弄壞被量測的那個請求（自己的 savepoint、例外只記錄不上拋、未知事件名先擋下來）。伺服器端接上 `search_started`、`trip_created`（含 `source`，瀏覽器那兩處移除）、`place_added_to_trip`（三個探索面）、`ai_applied`、`optimize_applied`、`offer_attached`、`alert_created`、`share_created`、`share_forked`、`usage_charged`、`usage_insufficient`；瀏覽器端加 `discover_requested` 與 `login_resumed`。管理後台漏斗改成 `discover_requested → trip_created → offer_attached → outbound_click`，五語系文案跟著改。
+**讓兩半可比的那一件事：** 瀏覽器把自己的 analytics session 放進每一次 API 呼叫的 `X-Travel-Analytics-Session`（`lib/api.ts` 只讀不寫，所以一次 API 呼叫不會變成開始追蹤某人），BFF 驗形狀後轉發，`record_event` 用和 ingest 完全相同的方式雜湊。沒有這一步，漏斗的每一步都在拿同一個人跟自己比。
+**事件屬性只放列舉值、數字與布林**：`_properties()` 只放行 `[a-z][a-z0-9_]*`，所以 UUID、Email、會員自己打的名稱整個被丟掉而不是截斷（第一版的規則寬到讓 UUID 通過，是測試抓到的）。
+驗證：`tests/test_analytics_events.py`（瀏覽器送得出與送不出哪些名字、屬性過濾、context 的 opt-out 與形狀檢查、錄事件不會上拋）、`test_analytics_integration.py::test_a_server_event_joins_the_browser_session_it_came_from`（同一個 session hash、舊 bundle 的 `trip_created` 被丟掉、屬性沒有 id、漏斗兩步都算得到）、`test_migration_dead_branches.py::test_0055_rollback_restores_the_check_only_when_every_row_still_fits`；前端 `lib/api.test.ts`、BFF 的 `forwardedAnalyticsSession`。
+留到後面：`offer_attached` 目前只接住宿 `select` 那一半，機票的 `from-offer` 端點在 PR D（#249）的分支上，等它進 main 之後補上那一行。
 
 ### 新的 e2e 主旅程（取代 `full-stack.spec.ts:3` 的路徑）
 

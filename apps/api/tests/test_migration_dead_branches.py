@@ -82,6 +82,13 @@ def run_upgrade(connection: Connection, name: str) -> None:
         load_migration(name).upgrade()
 
 
+def run_downgrade(connection: Connection, name: str) -> None:
+    """Execute one migration's downgrade(), the way a rollback would."""
+    context = MigrationContext.configure(connection)
+    with Operations.context(context):
+        load_migration(name).downgrade()
+
+
 def plant_trip(session: Session, data: dict[str, Any]) -> UUID:
     user = User(email=f"dead-branch-{uuid4()}@example.com", password_hash=None, is_active=True)
     session.add(user)
@@ -411,6 +418,66 @@ def _exercise_0048(connection: Connection) -> None:
 async def test_0048_rewrites_the_dead_citations_and_drops_the_pdf() -> None:
     async with engine.connect() as connection:
         await connection.run_sync(in_a_rolled_back_transaction(_exercise_0048))
+
+
+def _plant_event(session: Session, name: str) -> None:
+    session.execute(
+        sa.text(
+            "INSERT INTO analytics_events (id, event_id, event_name, occurred_at, received_at,"
+            " normalized_path, locale, session_hash, visitor_day_hash, device_type,"
+            " browser_family, os_family, referrer_type, is_authenticated, is_bot,"
+            " environment, properties_json)"
+            " VALUES (:id, :event_id, :name, now(), now(), '/', 'zh-TW', 'a', 'b',"
+            " 'desktop', 'other', 'other', 'direct', false, false, 'development', '{}')"
+        ),
+        {"id": uuid4(), "event_id": uuid4(), "name": name},
+    )
+
+
+def _constraint_names(connection: Connection) -> set[str]:
+    return {
+        check["name"]
+        for check in sa.inspect(connection).get_check_constraints("analytics_events")
+    }
+
+
+def _exercise_0055_rollback_with_only_old_names(connection: Connection) -> None:
+    session = Session(bind=connection)
+    session.execute(sa.text("DELETE FROM analytics_events"))
+    _plant_event(session, "page_view")
+    session.flush()
+    assert "ck_analytics_event_name" not in _constraint_names(connection)
+    run_downgrade(connection, "0055_analytics_event_names")
+    # Nothing in the table is outside the old vocabulary, so the rollback restores the
+    # constraint and 0054 is a real, complete shape again.
+    assert "ck_analytics_event_name" in _constraint_names(connection)
+
+
+def _exercise_0055_rollback_with_a_new_name_present(connection: Connection) -> None:
+    session = Session(bind=connection)
+    session.execute(sa.text("DELETE FROM analytics_events"))
+    _plant_event(session, "page_view")
+    _plant_event(session, "offer_attached")
+    session.flush()
+    run_downgrade(connection, "0055_analytics_event_names")
+    # The rollback leaves the constraint off rather than failing: re-adding it would
+    # abort the whole downgrade, and the alternative — deleting the rows that do not
+    # fit — is a rollback quietly destroying a member's measured history.
+    assert "ck_analytics_event_name" not in _constraint_names(connection)
+    # And the rows are all still there.
+    assert session.execute(sa.text("SELECT count(*) FROM analytics_events")).scalar() == 2
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_0055_rollback_restores_the_check_only_when_every_row_still_fits() -> None:
+    async with engine.connect() as connection:
+        await connection.run_sync(
+            in_a_rolled_back_transaction(_exercise_0055_rollback_with_only_old_names)
+        )
+        await connection.run_sync(
+            in_a_rolled_back_transaction(_exercise_0055_rollback_with_a_new_name_present)
+        )
+
 
 
 @pytest.mark.asyncio(loop_scope="module")

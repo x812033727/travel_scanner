@@ -105,13 +105,25 @@ def test_rollup_summary_and_funnel_use_aggregate_session_scope() -> None:
             is_bot=False,
             metric="funnel_sessions",
             dimension="step",
-            dimension_value="search_completed",
+            dimension_value="discover_requested",
             value=2,
         ),
     ]
     assert _rollup_summary(rows)["pages_per_session"] == 3
-    assert _rollup_funnel(rows)[1] == {
-        "step": "search_completed",
+    funnel = _rollup_funnel(rows)
+    # The order is the product's claim about what leads to what, so it is pinned here
+    # rather than left to whatever the rollup happened to write.
+    assert [step["step"] for step in funnel] == [
+        "sessions",
+        "discover_requested",
+        "trip_created",
+        "offer_attached",
+        "outbound_click",
+    ]
+    assert funnel[1] == {
+        "step": "discover_requested",
         "sessions": 2,
         "conversion_rate": 50.0,
     }
+    # A step the rollup has no row for is zero, not missing: the dashboard draws bars.
+    assert funnel[3] == {"step": "offer_attached", "sessions": 0, "conversion_rate": 0}

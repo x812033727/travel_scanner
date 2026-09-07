@@ -9,7 +9,6 @@ import { PlacePicker } from "@/components/place-picker";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, twd } from "@/lib/api";
 import { dayCount, formatTripDay } from "@/lib/calendar";
-import { trackAnalytics } from "@/lib/analytics";
 import { interestCodes, localizeDestinations, shopThemeCodes } from "@/lib/destinations";
 import { holidayCountriesFor } from "@/lib/holidays";
 
@@ -307,7 +306,6 @@ export function NewTripForm() {
           notes: form.notes.trim() || null,
         }),
       });
-      trackAnalytics("trip_created");
       clearDraft();
       submitKey.current = undefined;
       router.push(`/trips/${trip.id}`);
