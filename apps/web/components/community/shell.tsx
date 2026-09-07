@@ -13,8 +13,12 @@ export function CommunityGate({ children, member = false, verified = false }: { 
   const session = useHeaderSession();
   if (community.status !== "ready") return <Empty>{t("statusUnavailable")} <Button secondary onClick={() => void community.refreshFlags()}>{t("retry")}</Button></Empty>;
   if (!community.flags.enabled) return <Empty>{t("closed")}</Empty>;
+  // A known session cookie is still resolving its identity. Mounting a guest
+  // form now would discard early input when the account-bound key resolves.
+  // Anonymous visitors start as signed_out and can read immediately.
+  if (session.status === "loading") return <Empty>{t("loading")}</Empty>;
   if (member) {
-    if (session.status === "loading" || community.loading) return <Empty>{t("loading")}</Empty>;
+    if (community.loading) return <Empty>{t("loading")}</Empty>;
     if (session.status === "signed_out") return <Empty><Link href="/login" className="text-[var(--teal)] underline">{t("loginRequired")}</Link></Empty>;
     if (community.error || session.status === "unavailable") return <ErrorNotice error={community.error || new Error()} />;
     if (!community.me?.profile) return <Empty><Link href="/community/settings" className="text-[var(--teal)] underline">{t("createProfile")}</Link></Empty>;

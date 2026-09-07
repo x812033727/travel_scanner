@@ -2,7 +2,7 @@ import { cleanup, fireEvent, render, screen, within } from "@testing-library/rea
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { CommunityGate } from "./shell";
 import { Tabs } from "./ui";
-import { Rules } from "./pets";
+import { PetRequirementFields, Rules } from "./pets";
 import { PetAdmin, PetRulesEditor } from "./pet-admin";
 import { PostEditor } from "./editor";
 import { ProfileEditor } from "./profile";
@@ -10,7 +10,7 @@ import { TranslateText } from "./post";
 import { catchUpMessages } from "./messages";
 import { CommunityAdmin } from "./admin";
 import { AppBottomNav } from "../app-bottom-nav";
-import { unknownPetRule } from "@/lib/community/types";
+import { defaultPet, unknownPetRule } from "@/lib/community/types";
 const mock = vi.hoisted(() => ({
   api: vi.fn(), refreshFlags:vi.fn(), profile:{id:"member",handle:"traveler",display_name:"Traveler",bio:"",languages:["en"],destinations:[],avatar_id:null},
   state:{status:"ready" as string,flags:{enabled:true,posting_enabled:true,comments_enabled:true,messaging_enabled:true,translation_enabled:true,pet_reports_enabled:true},verified:true,restricted:false},
@@ -59,6 +59,19 @@ describe("community reconnect and identity-bound state", () => {
   });
 });
 describe("community availability and accessible controls",()=>{
+ it("waits for cookie identity before mounting public filters but does not delay anonymous visitors",()=>{
+  mock.session.status="loading";
+  const view=render(<CommunityGate><input aria-label="Pet filters" /></CommunityGate>);
+  expect(screen.queryByLabelText("Pet filters")).toBeNull();
+  mock.session.status="authenticated";
+  view.rerender(<CommunityGate><input aria-label="Pet filters" /></CommunityGate>);
+  fireEvent.change(screen.getByLabelText("Pet filters"),{target:{value:"cat"}});
+  view.rerender(<CommunityGate><input aria-label="Pet filters" /></CommunityGate>);
+  expect(screen.getByDisplayValue("cat")).toBeTruthy();
+  mock.session.status="signed_out";
+  view.rerender(<CommunityGate><input aria-label="Pet filters" /></CommunityGate>);
+  expect(screen.getByLabelText("Pet filters")).toBeTruthy();
+ });
  it("does not mount content when closed or unavailable",()=>{
   mock.state.flags.enabled=false;
   const view=render(<CommunityGate><input aria-label="private editor"/></CommunityGate>);
@@ -126,6 +139,14 @@ describe("publishing and moderation",()=>{
  });
 });
 describe("pet rule uncertainty",()=>{
+ it("keeps species suggestions out of the input accessible name",()=>{
+  const change=vi.fn();
+  render(<PetRequirementFields value={defaultPet} onChange={change}/>);
+  const species=screen.getByRole("combobox",{name:"動物種類",exact:true});
+  expect(screen.getByLabelText("動物種類",{exact:true})).toBe(species);
+  fireEvent.change(species,{target:{value:"cat"}});
+  expect(change).toHaveBeenCalledWith({...defaultPet,species:"cat"});
+ });
  it("lets an administrator review a pending place with explicit dog-only conditions",async()=>{
   const place={id:"candidate",name:"Pet cafe",destination:"Taipei",country:"TW",kind:"cafe",address:"",names:{},
    policies:[],official_url:"https://example.com/pets",source_url:null,latitude:null,longitude:null,
