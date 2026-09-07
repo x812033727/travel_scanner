@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**14 open · 2 in progress · 2 blocked · 2 in review · 145 done**
+**16 open · 2 in progress · 2 blocked · 2 in review · 145 done**
 
 ## Ready to claim
 
@@ -21,6 +21,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
 | P3 | [彈性日期區塊的價格標籤寫死 full_trip_search](open/2026-09-06-full-trip-search.md) | web | `apps/web/components/flight-date-options.tsx`<br>`apps/web/components/flight-date-options.test.tsx` |
+| P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | api | `apps/api/tests/test_food_integration.py` |
+| P3 | [tasks/BOARD.md 是產生檔，卻讓每個 PR 互相衝突](open/2026-09-07-board-conflicts-on-every-pr.md) | tools | `.gitattributes`<br>`tools/tasks.mjs` |
 | P3 | [The whole applied-filter chip is a delete button](open/2026-09-07-applied-filter-chip-is-all-delete.md) | web | `apps/web/components/hotspot-explorer.tsx`<br>`apps/web/components/food-browser.tsx` |
 | P3 | [check-i18n does not guard the ui-text editor's own namespace labels](open/2026-09-07-ui-text-namespace-label-guard.md) | web | `tools/check-i18n.mjs`<br>`docs/ui-text-overrides.md` |
 

@@ -73,7 +73,7 @@ scope:
 - [x] `POST /trips/{id}/flight-anchors/{direction}/flight-status`：伺服器重讀該會員自己的
       `FlightStatusLookup`，客戶端只給 `lookup_id` 與 `item_id`。
 - [x] 前端 `trip-price-watch.tsx`、`flight-status-search.tsx` 的旅程模式、錨點卡的狀態列。
-- [ ] 整合測試（需要 Postgres/Redis）、e2e 兩個 viewport。
+- [x] 整合測試（需要 Postgres/Redis）、e2e 兩個 viewport（六個情境全過）。
 - [ ] 開 PR、合併。
 
 ## How to verify
@@ -98,3 +98,10 @@ npx playwright test e2e/full-stack.spec.ts
 - 這個 repo 的 CI 在 push 與 pull_request 都跑，`tools/check-i18n.mjs` 的 CI 模式比對
   `HEAD^..HEAD`，所以合併提交會讓它看不到 main 帶進來的中文。這個分支只 rebase，不 merge。
 - 「新增一餐」原本也在 PR F 的範圍裡，抽出來成 `2026-09-07-add-a-meal-to-a-day`。
+- e2e 的 `pickTripDay()` 原本以 `page.waitForLoadState("networkidle").catch(() => {})` 開頭，
+  但那個等待沒有自己的 timeout：`/trips/new` 在這個環境永遠到不了 networkidle，所以 `catch`
+  永遠不會執行，整個測試的 150 秒就這樣被吃掉，失敗還報在下一行——看起來像月份按鈕壞了。
+  補上 5 秒 timeout 之後，同一批六個情境從 9.5 分鐘的逾時變成 59 秒全過。
+- 另外兩件順手記下的：`2026-09-07-fixed-email-in-integration-tests`（整合測試用寫死的 email，
+  同一個資料庫跑第二次就 UniqueViolation）、`2026-09-07-board-conflicts-on-every-pr`
+  （BOARD.md 是產生檔卻讓每個 PR 互相衝突，#249 在 90 分鐘內因此 dirty 兩次）。

@@ -6,8 +6,11 @@ async function pickTripDay(page: Page, iso: string) {
   const nextMonth = page.getByRole("button", { name: "下個月" });
   // The calendar fills its public holidays in after it mounts, and the phone layout keeps
   // fixed furniture at both edges of the viewport, so let the page settle and put the
-  // button in the middle of the screen before aiming at it.
-  await page.waitForLoadState("networkidle").catch(() => {});
+  // button in the middle of the screen before aiming at it. The wait needs its own
+  // timeout: `networkidle` never arrives on this page in some environments, and without
+  // one the catch below never runs — the wait quietly eats the whole test timeout and the
+  // failure is reported against the next line, as if the month buttons were stuck.
+  await page.waitForLoadState("networkidle", { timeout: 5_000 }).catch(() => {});
   for (let attempt = 0; attempt < 24 && (await day.count()) === 0; attempt += 1) {
     await nextMonth.evaluate((element) => element.scrollIntoView({ block: "center" }));
     await nextMonth.click();
@@ -71,9 +74,13 @@ test("guest recommendation through alert management uses the real first-party st
   await expect(alertCard.getByText(/30,000/)).toBeVisible();
   await alertCard.getByRole("button", { name: /暫停/ }).click();
   await expect(alertCard.getByText("已暫停")).toBeVisible();
-  for (let left = await page.getByRole("button", { name: "刪除通知" }).count(); left > 0; left -= 1) {
-    await page.getByRole("button", { name: "刪除通知" }).first().click();
-    await page.getByRole("button", { name: "確定刪除" }).click();
+  // Deleting re-renders the list, so wait for the row to be gone before opening the next
+  // confirm — otherwise the second 確定刪除 is detached mid-click.
+  const deleteButtons = page.getByRole("button", { name: "刪除通知" });
+  for (let left = await deleteButtons.count(); left > 0; left -= 1) {
+    await deleteButtons.first().click();
+    await page.getByRole("button", { name: "確定刪除" }).first().click();
+    await expect(deleteButtons).toHaveCount(left - 1);
   }
   await expect(page.getByText(/目前還沒有價格通知/)).toBeVisible();
 });
