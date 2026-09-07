@@ -73,7 +73,27 @@
     "saved": "介紹內容已更新",
     "empty": "沒有符合的介紹",
     "updatedAt": "更新於 {time}",
-    "counts": "待審 {pending}・已核准 {approved}"
+    "counts": "待審 {pending}・已核准 {approved}",
+    "emptyWhere": "介紹的草稿是在「景點審核」分頁、每一列的「產生介紹」按下去產生的。",
+    "generate": "產生介紹",
+    "generateTitle": "為「{name}」產生介紹",
+    "generateDescription": "一次呼叫寫完所有勾選的語言，草稿一律以待審落地，價格、營業時間與網址會被擋下。",
+    "generateLocales": "要寫哪些語言",
+    "generateMissing": "還沒有",
+    "generateReplace": "連已核准的也重寫（{locales}）",
+    "generateStart": "開始產生",
+    "generateRunning": "產生中…",
+    "generateLoadFailed": "讀不到這個景點目前的介紹",
+    "runStatus": {
+      "queued": "排隊中",
+      "running": "產生中",
+      "partial": "部分完成",
+      "completed": "完成",
+      "failed": "失敗"
+    },
+    "runCreated": "已寫入待審：{locales}",
+    "runKept": "已核准，未更動：{locales}",
+    "runRejected": "{locale} 被退回：{reason}"
   },
   "editor": {
     "open": "主題",
