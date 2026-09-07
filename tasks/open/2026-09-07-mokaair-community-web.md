@@ -113,5 +113,10 @@ e096aeb disables those controls until loaded, preserves dirty drafts and their
 CAS version, and binds conflict confirmation to its original version. New focused
 regressions pass; the expanded real reconnect and pet flows await full CI.
 
+Full CI 34138592625 / e096aeb passed 779 component tests, 208 isolated browser
+tests and all six real community journeys, including offline catch-up and pet
+place publication. A repeat exposed a backend comment/fork deadlock; fork E2E
+now records the POST result directly so server errors are not hidden by a URL timeout.
+
 Built on isolated main 516713d. The existing forgot-password task owns the login
 entry; this task owns the new confirmation/recovery UI and public community pages.

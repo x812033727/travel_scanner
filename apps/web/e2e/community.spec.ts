@@ -106,7 +106,11 @@ test("verified members publish reviewed private images, fork safely and exchange
     await expect(reader.getByText(`Comment ${suffix}`, { exact: true })).toBeVisible();
     await reader.getByRole("button", { name: "免費套用行程", exact: true }).click();
     await reader.getByLabel("我的出發日期").fill(departure);
+    const forkResponse = reader.waitForResponse((response) =>
+      new URL(response.url()).pathname === `/api/travel/community/posts/${postId}/fork` && response.request().method() === "POST");
     await reader.getByRole("button", { name: "建立私人副本", exact: true }).click();
+    const forkResult = await forkResponse;
+    expect(forkResult.status(), await forkResult.text()).toBe(201);
     await expect(reader).toHaveURL(/\/trips\/[\da-f-]+$/, { timeout: 20_000 });
     const copiedId = reader.url().split("/").at(-1)!;
     expect(copiedId).not.toBe(trip.id);

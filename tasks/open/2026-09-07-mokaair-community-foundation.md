@@ -97,3 +97,9 @@ fresh/upgrade PostgreSQL and private S3. Publication/message and real SMTP
 browser journeys passed on both devices; the pet draft-hydration race was then
 fixed in e096aeb. That commit also adds a real offline/reconnect message check.
 Do not mark social/pet acceptance complete until the full browser run passes.
+
+e096aeb passed full CI 34138592625, including all six community browser journeys
+and real offline catch-up. A repeat at 06b3b94 exposed PostgreSQL FK deadlocks
+between the comment Post lock and fork User lock. The fix uses NO KEY UPDATE
+for immutable-ID serialization and adds a PostgreSQL barrier test that forces
+both locks to overlap, with concurrent idempotent forks. Verify this test in CI.

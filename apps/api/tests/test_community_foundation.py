@@ -520,6 +520,74 @@ async def test_free_fork_snapshot_and_replay_after_withdraw(
 
 
 @pytest.mark.asyncio
+async def test_postgres_comment_and_fork_lock_overlap_has_no_deadlock(
+    harness: Harness,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import asyncio
+
+    from sqlalchemy.dialects import postgresql
+
+    h = harness
+    async with h.factory() as session:
+        if session.get_bind().dialect.name != "postgresql":
+            pytest.skip("Requires real PostgreSQL row and foreign-key locks")
+        trip = TripPlan(
+            user_id=h.ids[0],
+            name="Public source",
+            mode="manual",
+            total_price=0,
+            currency="TWD",
+            data={},
+            start_date=date(2026, 10, 1),
+            end_date=date(2026, 10, 1),
+            destination_name="Tokyo",
+            timezone="Asia/Tokyo",
+        )
+        session.add(trip)
+        await session.commit()
+        trip_id = str(trip.id)
+    post = await h.approve(await h.publish(await h.post(source_trip_id=trip_id, allow_fork=True)))
+    post_locked, member_locked = asyncio.Event(), asyncio.Event()
+    original = AsyncSession.scalar
+
+    async def overlapping_locks(
+        self: AsyncSession, statement: Any, *args: Any, **kwargs: Any
+    ) -> Any:
+        result = await original(self, statement, *args, **kwargs)
+        sql = str(statement.compile(dialect=postgresql.dialect()))
+        if "FOR " in sql and "FROM users " in sql.replace("\n", " "):
+            member_locked.set()
+            await asyncio.wait_for(post_locked.wait(), timeout=5)
+        elif "FOR " in sql and "FROM community_posts " in sql.replace("\n", " "):
+            post_locked.set()
+            await asyncio.wait_for(member_locked.wait(), timeout=5)
+        return result
+
+    monkeypatch.setattr(AsyncSession, "scalar", overlapping_locks)
+    payload = {"start_date": "2026-10-10", "idempotency_key": "concurrent-fork-key"}
+    async with asyncio.timeout(15):
+        comment, first, replay = await asyncio.gather(
+            h.call(
+                "POST",
+                f"/community/posts/{post['id']}/comments",
+                actor=1,
+                expected=201,
+                json={"body": "Comment during a fork", "locale": "en"},
+            ),
+            h.call(
+                "POST", f"/community/posts/{post['id']}/fork", actor=1, expected=201, json=payload
+            ),
+            h.call(
+                "POST", f"/community/posts/{post['id']}/fork", actor=1, expected=201, json=payload
+            ),
+        )
+    assert comment.json()["id"]
+    assert first.json()["trip_id"] == replay.json()["trip_id"]
+    assert sorted([first.json()["replayed"], replay.json()["replayed"]]) == [False, True]
+
+
+@pytest.mark.asyncio
 async def test_pet_trip_updates_preserve_data_and_reject_stale_inserts(harness: Harness) -> None:
     h = harness
     async with h.factory() as session:

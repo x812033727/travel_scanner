@@ -258,8 +258,9 @@ async def fork_post(
     from app.trips.router import limit_for
     from app.trips.schedule import ensure_system_slots
 
-    # The lock also serializes retries with the same idempotency key.
-    await session.scalar(select(User).where(User.id == user.id).with_for_update())
+    # Serialize same-member forks without blocking foreign-key KEY SHARE locks
+    # from comments. FOR UPDATE here forms a cycle with their post-row lock.
+    await session.scalar(select(User).where(User.id == user.id).with_for_update(key_share=True))
     await member(session, user)
     fingerprint = digest({"post": str(identifier), "date": payload.start_date})
     replay = await session.scalar(

@@ -476,7 +476,9 @@ async def add_comment(
     await rate(session, user)
     # A post serializes comment timestamps until commit, so cursors cannot skip
     # an earlier allocated comment that commits after a later comment.
-    await session.scalar(select(Post).where(Post.id == identifier).with_for_update())
+    # Its ID is immutable: NO KEY UPDATE preserves that ordering while allowing
+    # foreign-key inserts (such as forks) to acquire KEY SHARE without a cycle.
+    await session.scalar(select(Post).where(Post.id == identifier).with_for_update(key_share=True))
     post, _, _ = await published_post(session, identifier, user)
     parent = None
     if payload.parent_id:
