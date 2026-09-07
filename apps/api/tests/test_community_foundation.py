@@ -474,6 +474,67 @@ async def test_free_fork_snapshot_and_replay_after_withdraw(
 
 
 @pytest.mark.asyncio
+async def test_pet_trip_updates_preserve_data_and_reject_stale_inserts(harness: Harness) -> None:
+    h = harness
+    async with h.factory() as session:
+        trip = TripPlan(
+            user_id=h.ids[0],
+            name="Private trip",
+            mode="manual",
+            total_price=0,
+            currency="TWD",
+            start_date=date(2027, 1, 10),
+            end_date=date(2027, 1, 10),
+            data={"private": "Keep my notes", "preferences": {"slow_travel": True}},
+        )
+        place = PetPlace(
+            name="Reviewed identity, unknown pet rules",
+            kind="cafe",
+            country="JP",
+            destination="Tokyo",
+            status="approved",
+            verified_at=datetime.now(UTC),
+        )
+        session.add_all([trip, place])
+        await session.commit()
+        trip_id, place_id = str(trip.id), str(place.id)
+    payload = {"version": 1, "requirements": {"species": "dog", "weight_kg": 5}}
+    settings = (
+        await h.call("PUT", f"/community/trips/{trip_id}/pet-preferences", json=payload)
+    ).json()
+    assert settings["version"] == 2 and settings["requirements"]["species"] == "dog"
+    await h.call("PUT", f"/community/trips/{trip_id}/pet-preferences", json=payload, expected=409)
+    await h.call("GET", f"/community/trips/{trip_id}/pet-preferences", actor=1, expected=404)
+    insertion = {"version": 2, "place_id": place_id, "day": "2027-01-10"}
+    warned = (
+        await h.call("POST", f"/community/trips/{trip_id}/pet-places", json=insertion, expected=201)
+    ).json()
+    assert warned["confirmation_required"] and warned["conflicts"]
+    async with h.factory() as session:
+        assert await session.scalar(select(func.count()).select_from(TripPlanItem)) == 0
+    added = (
+        await h.call(
+            "POST",
+            f"/community/trips/{trip_id}/pet-places",
+            json={**insertion, "confirm_conflicts": True},
+            expected=201,
+        )
+    ).json()
+    assert added["version"] == 3 and not added["confirmation_required"]
+    await h.call(
+        "POST",
+        f"/community/trips/{trip_id}/pet-places",
+        json={**insertion, "confirm_conflicts": True},
+        expected=409,
+    )
+    async with h.factory() as session:
+        stored = await session.get(TripPlan, UUID(trip_id))
+        assert stored and stored.data["private"] == "Keep my notes"
+        assert stored.data["preferences"]["slow_travel"]
+        assert await session.scalar(select(func.count()).select_from(TripPlanItem)) == 1
+
+
+@pytest.mark.asyncio
 async def test_account_tokens_single_use_and_delete_revokes(harness: Harness) -> None:
     h = harness
     token = "verified_token_" + "a" * 32

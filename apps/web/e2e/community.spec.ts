@@ -45,7 +45,7 @@ test("verified members publish reviewed private images, fork safely and exchange
     isMobile: info.project.use.isMobile, deviceScaleFactor: info.project.use.deviceScaleFactor });
   const reader = await readerContext.newPage();
   try {
-    await json(admin, "POST", "/auth/login", { email: "ci-community@example.test", password: "community-ci-password-123" });
+    await json(admin, "POST", "/auth/login", { email: "ci-community@example.com", password: "community-ci-password-123" });
     const current = await json(admin, "GET", "/admin/community/settings");
     await json(admin, "PUT", "/admin/community/settings", { settings: { ...current.settings, enabled: true,
       posting_enabled: true, comments_enabled: true, messaging_enabled: true, pet_reports_enabled: true }, reason: "Isolated CI acceptance" });

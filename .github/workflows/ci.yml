@@ -191,7 +191,7 @@ jobs:
           test "$ready" = true
           cd apps/api
           uv run python -c 'from app.community.media import storage; from app.config import get_settings; storage().create_bucket(Bucket=get_settings().community_s3_bucket)'
-          printf '%s\n' 'community-ci-password-123' | uv run python -m app.cli create-admin --email ci-community@example.test --password-stdin
+          printf '%s\n' 'community-ci-password-123' | uv run python -m app.cli create-admin --email ci-community@example.com --password-stdin
       - name: Wait for the real stack
         run: |
           for attempt in {1..60}; do
