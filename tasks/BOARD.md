@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**5 open · 2 in progress · 2 blocked · 0 in review · 132 done**
+**5 open · 2 in progress · 2 blocked · 0 in review · 133 done**
 
 ## Ready to claim
 
@@ -39,6 +39,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-07 [手機篩選面板看起來是對話框，但沒有 dialog role、不移動 focus、Escape 不關、Tab 走得出去](done/2026-09-07-filter-sheet-not-a-dialog.md)
 - 2026-09-07 [產生器每次執行都會重寫既有列的分類，重跑一次就還原剛修好的資料](done/2026-09-07-generator-rewrites-categories.md)
 - 2026-09-07 [特大字下的景點卡把地名擠成 93px、地點行斷成五行](done/2026-09-07-hotspot-card-largest-text.md)
 - 2026-09-07 [選中的國家只靠底色表示，選單裡的外觀與語言看不出目前設定](done/2026-09-06-chosen-state-and-menu-values.md)
@@ -48,4 +49,3 @@ _Nothing here._
 - 2026-09-06 [篩選面板的關閉鍵報讀成「關閉介紹」，美食那邊則跟開啟鍵同名](done/2026-09-06-filter-sheet-labels.md)
 - 2026-09-06 [熱門景點：重新整理丟掉搜尋、看不出套用了什麼、清除條件只在零結果時出現](done/2026-09-06-hotspot-filter-visibility.md)
 - 2026-09-06 [首頁與規劃表單的字換成長輩看得懂的說法](done/2026-09-06-plain-words-front-door.md)
-- 2026-09-06 [撤回 name_en 之後，既有的列還留著沒有出處的音譯](done/2026-09-06-reset-drifted-merchant-names.md)

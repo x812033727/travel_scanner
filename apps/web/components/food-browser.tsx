@@ -3,6 +3,7 @@
 import { Search, SlidersHorizontal, Sparkles, Store, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useModalSheet } from "@/lib/modal-sheet";
 import { api } from "@/lib/api";
 import { FoodCityGrid, FoodCitySelect } from "@/components/food-city-picker";
 import { FoodDishesSection } from "@/components/food-dishes-section";
@@ -71,6 +72,7 @@ export function FoodBrowser({ initialCities, initialCategories }: {
   const [citiesError, setCitiesError] = useState("");
   const [appending, setAppending] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const filterSheetRef = useModalSheet<HTMLFormElement>(filtersOpen, () => setFiltersOpen(false));
   const hydrated = useRef(false);
 
   const loadCities = useCallback(() => {
@@ -231,7 +233,10 @@ export function FoodBrowser({ initialCities, initialCategories }: {
           className="fixed inset-0 z-[70] bg-slate-950/40 md:hidden"
         />
       )}
+      {/* A dialog only while it is the sheet; on a wide screen this is the filter bar. */}
       <form
+        ref={filterSheetRef}
+        {...(filtersOpen ? { role: "dialog" as const, "aria-modal": true } : {})}
         onSubmit={submit}
         className={`${filtersOpen ? "mobile-filter-sheet-open" : ""} mobile-filter-sheet grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-[1.35fr_1fr_auto] md:p-5`}
         aria-label={t("filters")}
