@@ -1,0 +1,39 @@
+---
+id: 2026-09-07-ranking-scores-have-no-scale
+title: The three numbers on a ranking card have no scale and no explanation
+status: done
+priority: P2
+area: web
+owner: claude-opus-5
+claimed_at: 2026-09-07T02:11:19Z
+created_at: 2026-09-07T02:06:15Z
+completed_at: 2026-09-07T02:18:35Z
+branch:
+depends_on: []
+scope:
+  - apps/web/components/hotspot-explorer.tsx
+  - apps/web/messages
+---
+
+# The three numbers on a ranking card have no scale and no explanation
+
+## Why
+
+Describe the problem in the terms someone who has never seen it would need.
+
+## Definition of done
+
+- [ ] The observable outcome, not the implementation.
+
+## Steps
+
+- [ ] First sub-task.
+- [ ] Second sub-task.
+
+## How to verify
+
+The exact commands or clicks that prove it works.
+
+## Notes
+
+Findings, decisions and dead ends, so the next agent does not repeat them.

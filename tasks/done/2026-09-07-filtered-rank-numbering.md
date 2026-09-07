@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-filtered-rank-numbering
 title: 篩選之後排行榜從第 3 名開始跳號，看起來像少了東西
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-07T00:34:06Z
 created_at: 2026-09-07T00:34:04Z
-completed_at:
+completed_at: 2026-09-07T01:44:00Z
 branch: claude/ux-rank-numbering
 depends_on: []
 scope:

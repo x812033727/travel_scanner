@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**7 open · 1 in progress · 2 blocked · 0 in review · 137 done**
+**12 open · 0 in progress · 2 blocked · 0 in review · 141 done**
 
 ## Ready to claim
 
@@ -14,18 +14,21 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
+| P1 | [登入頁沒有忘記密碼，後端也沒有任何寄信管道](open/2026-09-07-forgot-password-no-mail-channel.md) | web | `apps/web/app/[locale]/login`<br>`apps/web/components/auth-form.tsx` |
 | P2 | [後台可改前台文案：/admin/ui-text 編輯器](open/2026-09-07-ui-text-admin-editor.md) | web | `apps/web/app/[locale]/admin/ui-text`<br>`apps/web/components/admin-ui-text-panel.tsx`<br>`apps/web/components/admin-ui-text-panel.test.tsx`<br>`apps/web/components/admin-nav.tsx`<br>`apps/web/components/admin-nav.test.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/messages/zh-CN/admin.json` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
+| P2 | [Cuisine chip counts ignore the area and keyword already chosen](open/2026-09-07-cuisine-counts-ignore-other-filters.md) | web | `apps/web/components/food-browser.tsx`<br>`apps/api/app` |
+| P2 | [The foods landing tells you to pick a city while already listing 110 merchants](open/2026-09-07-foods-landing-lists-before-city.md) | web | `apps/web/components/food-browser.tsx`<br>`apps/web/messages` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
 | P3 | [商圈名單還有 95 家沒有英文店名，發布前要逐家查](open/2026-09-06-trend-merchant-english-names-backlog.md) | api | `apps/api/app/foods/data/trend_merchants.json` |
+| P3 | [The whole applied-filter chip is a delete button](open/2026-09-07-applied-filter-chip-is-all-delete.md) | web | `apps/web/components/hotspot-explorer.tsx`<br>`apps/web/components/food-browser.tsx` |
+| P3 | [A signed-out visit to /account still fires seven requests that can only 401](open/2026-09-07-signed-out-account-fires-401s.md) | web | `apps/web/components/account-saved-items.tsx`<br>`apps/web/app/[locale]/account` |
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [篩選之後排行榜從第 3 名開始跳號，看起來像少了東西](open/2026-09-07-filtered-rank-numbering.md) | claude-opus-5 | 2026-09-07T00:34:06Z | `claude/ux-rank-numbering` |
+_Nothing here._
 
 ## In review
 
@@ -40,13 +43,13 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-07 [The area filter greys out with no reason given](done/2026-09-07-disabled-area-select-no-reason.md)
+- 2026-09-07 [The three numbers on a ranking card have no scale and no explanation](done/2026-09-07-ranking-scores-have-no-scale.md)
+- 2026-09-07 [Filter chip rows hide most of their choices behind a silent sideways scroll](done/2026-09-07-chip-rows-hide-choices.md)
 - 2026-09-07 [後台可改前台文案：前台載入器把資料庫覆寫疊上 next-intl](done/2026-09-07-ui-text-loader.md)
+- 2026-09-07 [篩選之後排行榜從第 3 名開始跳號，看起來像少了東西](done/2026-09-07-filtered-rank-numbering.md)
 - 2026-09-07 [手機篩選面板看起來是對話框，但沒有 dialog role、不移動 focus、Escape 不關、Tab 走得出去](done/2026-09-07-filter-sheet-not-a-dialog.md)
 - 2026-09-07 [後台沒有「產生介紹」的按鈕，所以介紹佇列永遠是空的](done/2026-09-07-intro-generate-trigger.md)
 - 2026-09-07 [上線稽核找到的兩個 API 缺陷：座標來源與額度扣點順序](done/2026-09-07-post-deploy-audit-api-fixes.md)
 - 2026-09-07 [後台可改前台文案：API、資料表、快取與稽核](done/2026-09-07-ui-text-overrides-api.md)
 - 2026-09-07 [產生器每次執行都會重寫既有列的分類，重跑一次就還原剛修好的資料](done/2026-09-07-generator-rewrites-categories.md)
-- 2026-09-07 [特大字下的景點卡把地名擠成 93px、地點行斷成五行](done/2026-09-07-hotspot-card-largest-text.md)
-- 2026-09-07 [選中的國家只靠底色表示，選單裡的外觀與語言看不出目前設定](done/2026-09-06-chosen-state-and-menu-values.md)
-- 2026-09-07 [美食卡上的灰色膠囊看起來像標籤，按下去卻整頁重新篩選](done/2026-09-06-merchant-card-filter-pills.md)
-- 2026-09-06 [台南兩家不同的店共用 tainan-fu-sheng-hao 這個 slug，富盛號永遠匯不進來](done/2026-09-06-tainan-slug-collision.md)
