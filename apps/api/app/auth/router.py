@@ -76,6 +76,7 @@ async def user_response(session: AsyncSession, user: User) -> UserResponse:
         has_password=bool(user.password_hash),
         auth_methods=methods,
         identity_count=len(identities),
+        email_verified=user.email_verified_at is not None,
     )
 
 
@@ -161,7 +162,7 @@ async def login(
         payload.password,
         user.password_hash if user is not None and user.password_hash else DUMMY_PASSWORD_HASH,
     )
-    if user is None or not password_valid:
+    if user is None or not password_valid or not user.is_active or user.deleted_at is not None:
         raise AppError(401, "invalid_credentials", "Email 或密碼不正確")
     await clear_named_rate_limit("auth-login-account", email)
     settings = await runtime_auth_settings(session)

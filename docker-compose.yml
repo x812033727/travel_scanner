@@ -107,6 +107,17 @@ services:
       postgres: { condition: service_healthy }
       redis: { condition: service_healthy }
 
+  community-sweeper:
+    build: ./apps/api
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://travel:travel@postgres:5432/travel_scanner
+      REDIS_URL: redis://redis:6379/0
+    command: ["python", "-m", "app.community.jobs"]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+      redis: { condition: service_healthy }
+
 volumes:
   postgres_data:
   redis_data:

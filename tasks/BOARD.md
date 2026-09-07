@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**13 open · 0 in progress · 2 blocked · 1 in review · 154 done**
+**12 open · 3 in progress · 2 blocked · 1 in review · 154 done**
 
 ## Ready to claim
 
@@ -13,7 +13,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P1 | [登入頁沒有忘記密碼，後端也沒有任何寄信管道](open/2026-09-07-forgot-password-no-mail-channel.md) | web | `apps/web/app/[locale]/login`<br>`apps/web/components/auth-form.tsx` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
@@ -26,7 +25,11 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [登入頁沒有忘記密碼，後端也沒有任何寄信管道](open/2026-09-07-forgot-password-no-mail-channel.md) | codex-community | 2026-09-07T10:14:20Z | `codex/mokaair-community` |
+| [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | codex-community | 2026-09-07T09:22:14Z | `codex/mokaair-community` |
+| [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | codex-community | 2026-09-07T10:14:21Z | `codex/mokaair-community` |
 
 ## In review
 

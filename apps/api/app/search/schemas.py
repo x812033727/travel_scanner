@@ -6,6 +6,7 @@ from uuid import UUID
 
 from pydantic import BaseModel, Field, model_validator
 
+from app.community.pet_schemas import PetRequirements
 from app.destinations.catalog import destination_for_code, destination_for_id
 
 
@@ -76,6 +77,7 @@ _THEME_SLUG = re.compile(r"^[a-z0-9][a-z0-9-]{0,39}$")
 
 
 class SearchPreferences(BaseModel):
+    pet_companion: PetRequirements | None = None
     budget_twd: int | None = Field(default=None, ge=1)
     avoid_red_eye: bool = False
     hotel_min_rating: int | None = Field(default=None, ge=1, le=5)

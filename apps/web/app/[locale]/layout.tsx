@@ -10,6 +10,8 @@ import { SavedItemsProvider } from "@/components/saved-items-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteVisibilityProvider } from "@/components/site-visibility-provider";
 import { UsageCatalogProvider } from "@/components/usage-catalog-provider";
+import { CommunityProvider } from "@/components/community/provider";
+import { getCommunityState } from "@/lib/community/server";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { TravelpayoutsDrive } from "@/components/travelpayouts-drive";
 import { routing } from "@/i18n/routing";
@@ -62,12 +64,13 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-  const [messages, siteVisibility, usageCatalog, requestHeaders, jar] = await Promise.all([
+  const [messages, siteVisibility, usageCatalog, requestHeaders, jar, community] = await Promise.all([
     getMessages(),
     getSiteVisibility(),
     getUsageCatalog(locale),
     headers(),
     cookies(),
+    getCommunityState(),
   ]);
   // Nobody carrying a session cookie means nobody to ask about. Both providers below
   // used to find that out by sending a request that could only come back 401, on every
@@ -98,6 +101,7 @@ export default async function LocaleLayout({ children, params }: Props) {
                 {/* Keyed, so signing in or out remounts both providers instead of
                     leaving the previous session's answers in client state. */}
                 <HeaderSessionProvider key={hasSession ? "session" : "anonymous"} hasSession={hasSession}>
+                  <CommunityProvider state={community}>
                   <SavedItemsProvider hasSession={hasSession}>
                     <div className="public-app-shell">
                       {children}
@@ -107,6 +111,7 @@ export default async function LocaleLayout({ children, params }: Props) {
                     </div>
                     <AppBottomNav />
                   </SavedItemsProvider>
+                  </CommunityProvider>
                 </HeaderSessionProvider>
               </AnalyticsProvider>
             </UsageCatalogProvider>

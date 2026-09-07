@@ -63,6 +63,7 @@ import { SystemItineraryCard } from "@/components/system-itinerary-card";
 import { ItineraryDiff } from "@/components/itinerary-diff";
 import { TripMetaEditor } from "@/components/trip-meta-editor";
 import { TripWeatherPanel } from "@/components/trip-weather-panel";
+import { TripPetPanel } from "@/components/community/pets";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, ApiError, isUsageInsufficient, twd } from "@/lib/api";
 import { formatMoney } from "@/lib/locale-format";
@@ -1719,6 +1720,13 @@ export function TripEditor({ tripId }: { tripId: string }) {
     <PlannerOverlay open={toolsOpen} onClose={() => setToolsOpen(false)} title={te("toolsTitle")} description={te("toolsDescription")}>
       <div className="space-y-4">
         <TripMetaEditor trip={trip} variant="tools" disabled={saveState === "conflict" || Boolean(action)} prepare={() => flushChanges()} onUpdated={(updated) => { applyMetaUpdate(updated); setToolsOpen(false); }} />
+        <TripPetPanel tripId={trip.id} disabled={saveState !== "saved" || Boolean(action)} onSaved={(version) => {
+          // Preserve edits made while the pet request was in flight. Only the
+          // optimistic version changed; a full reload would discard local items.
+          if (tripRef.current && version > tripRef.current.version) {
+            replaceTrip({ ...tripRef.current, version }, false);
+          }
+        }} />
         <TripInboxPanel tripId={trip.id} disabled={saveState === "conflict" || Boolean(action)} onAdd={addFromInbox} />
         <section className="planner-tool-card">
           <div className="mb-3"><h3 className="font-bold">{te("calendarTitle")}</h3><p className="mt-1 text-xs leading-5 text-[var(--muted)]">{te("calendarHint")}</p></div>

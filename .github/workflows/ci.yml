@@ -40,8 +40,25 @@ jobs:
       # alembic upgrade below would only say "Multiple head revisions are present".
       - run: uv run pytest tests/test_schema.py -q -p no:cacheprovider
       - run: uv run alembic upgrade head
+      - name: Start private S3 integration companion
+        run: |
+          docker run -d --name community-test-storage -p 127.0.0.1:9000:9000 \
+            -e MINIO_ROOT_USER=community-test -e MINIO_ROOT_PASSWORD=community-test-only-password \
+            minio/minio:latest server /data
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:9000/minio/health/live >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          docker logs community-test-storage
+          exit 1
       - run: uv run pytest --cov=app
-        env: { RUN_INTEGRATION_TESTS: "1" }
+        env:
+          RUN_INTEGRATION_TESTS: "1"
+          COMMUNITY_TEST_S3: "1"
+          COMMUNITY_S3_ENDPOINT: http://127.0.0.1:9000
+          COMMUNITY_S3_PUBLIC_ENDPOINT: http://127.0.0.1:9000
+          COMMUNITY_S3_ACCESS_KEY: community-test
+          COMMUNITY_S3_SECRET_KEY: community-test-only-password
   web:
     runs-on: ubuntu-latest
     steps:
@@ -125,6 +142,19 @@ jobs:
       FLIGHT_PROVIDER_MODE: mock
       NEXT_PUBLIC_API_URL: http://127.0.0.1:8000/api/v1
       API_INTERNAL_URL: http://127.0.0.1:8000
+      NEXT_PUBLIC_SITE_URL: http://127.0.0.1:3000
+      AUTH_REGISTER_IP_LIMIT: "100"
+      AUTH_LOGIN_IP_LIMIT: "100"
+      COMMUNITY_S3_ENDPOINT: http://127.0.0.1:9000
+      COMMUNITY_S3_PUBLIC_ENDPOINT: http://127.0.0.1:9000
+      COMMUNITY_S3_ACCESS_KEY: community-test
+      COMMUNITY_S3_SECRET_KEY: community-test-only-password
+      COMMUNITY_S3_BUCKET: mokaair-community-ci
+      COMMUNITY_MEDIA_ORIGIN: http://127.0.0.1:9000
+      COMMUNITY_SMTP_HOST: 127.0.0.1
+      COMMUNITY_SMTP_PORT: "1025"
+      COMMUNITY_SMTP_STARTTLS: "false"
+      COMMUNITY_MAIL_FROM: Mokaair CI <accounts@example.test>
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
@@ -146,6 +176,22 @@ jobs:
           cd ../..
           setsid npm run dev --workspace @travel-scanner/web -- --port 3000 > /tmp/travel-web.log 2>&1 &
           echo $! > "$RUNNER_TEMP/travel-web.pid"
+      - name: Start community test services and bootstrap test administrator
+        run: |
+          docker run -d --name community-browser-storage -p 127.0.0.1:9000:9000 \
+            -e MINIO_ROOT_USER=community-test -e MINIO_ROOT_PASSWORD=community-test-only-password \
+            -e MINIO_API_CORS_ALLOW_ORIGIN=http://127.0.0.1:3000 \
+            minio/minio:latest server /data
+          docker run -d --name community-browser-mail -p 127.0.0.1:1025:1025 -p 127.0.0.1:8025:8025 axllent/mailpit:latest
+          ready=false
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:9000/minio/health/live >/dev/null && curl --fail --silent http://127.0.0.1:8025/livez >/dev/null; then ready=true; break; fi
+            sleep 1
+          done
+          test "$ready" = true
+          cd apps/api
+          uv run python -c 'from app.community.media import storage; from app.config import get_settings; storage().create_bucket(Bucket=get_settings().community_s3_bucket)'
+          printf '%s\n' 'community-ci-password-123' | uv run python -m app.cli create-admin --email ci-community@example.test --password-stdin
       - name: Wait for the real stack
         run: |
           for attempt in {1..60}; do
@@ -159,6 +205,16 @@ jobs:
         run: npx playwright test e2e/full-stack.spec.ts
         working-directory: apps/web
         env: { PLAYWRIGHT_REUSE_EXISTING: "true" }
+      - name: Run private-media, mail and community browser journeys
+        run: npx playwright test e2e/community.spec.ts
+        working-directory: apps/web
+        env: { PLAYWRIGHT_REUSE_EXISTING: "true", COMMUNITY_E2E: "1" }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: community-browser-results
+          path: apps/web/test-results
+          retention-days: 7
       - name: Show service logs on failure
         if: failure()
         run: cat /tmp/travel-api.log /tmp/travel-worker.log /tmp/travel-web.log

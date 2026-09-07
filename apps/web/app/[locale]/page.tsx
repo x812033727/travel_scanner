@@ -13,6 +13,7 @@ import { SearchWorkbench } from "@/components/search-workbench";
 import { SiteHeader } from "@/components/site-header";
 import { Link } from "@/i18n/navigation";
 import { citiesForCountry, countryKeys } from "@/lib/destinations";
+import { CommunityHero, CommunityHome } from "@/components/community/home";
 
 export default async function Home() {
   const t = await getTranslations("search");
@@ -43,6 +44,7 @@ export default async function Home() {
             <p className="mt-4 max-w-xl text-base leading-7 text-[var(--muted)] md:text-lg lg:mt-5">
               {t("heroDescription")}
             </p>
+            <CommunityHero />
             <div className="mt-7 hidden gap-3 text-sm lg:grid lg:grid-cols-1">
               {benefits.map(({ key, icon: Icon, text }) => (
                 <p
@@ -115,6 +117,7 @@ export default async function Home() {
             </Link>
           </div>
         </section>
+        <CommunityHome />
         <section
           aria-labelledby="asia-focus-title"
           className="rounded-[2rem] border border-[var(--line)] bg-white/70 p-6 md:p-8"
@@ -169,6 +172,7 @@ export default async function Home() {
             })}
           </div>
         </section>
+        <CommunityHome pets />
       </main>
     </>
   );

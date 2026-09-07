@@ -6,6 +6,7 @@ import alerts from "./messages/zh-TW/alerts.json";
 import auth from "./messages/zh-TW/auth.json";
 import availability from "./messages/zh-TW/availability.json";
 import common from "./messages/zh-TW/common.json";
+import community from "./messages/zh-TW/community.json";
 import navigation from "./messages/zh-TW/navigation.json";
 import pricing from "./messages/zh-TW/pricing.json";
 import search from "./messages/zh-TW/search.json";
@@ -22,7 +23,7 @@ import newTrip from "./messages/zh-TW/newTrip.json";
 import stayAreas from "./messages/zh-TW/stayAreas.json";
 import travelServices from "./messages/zh-TW/travelServices.json";
 
-const catalogs: Record<string, unknown> = { account, admin, alerts, auth, availability, common, navigation, pricing, search, trips, usage, hotspots, hotspotAdmin, hotspotThemes, restaurants, foods, foodAdmin, catalogReview, newTrip, stayAreas, travelServices };
+const catalogs: Record<string, unknown> = { community, account, admin, alerts, auth, availability, common, navigation, pricing, search, trips, usage, hotspots, hotspotAdmin, hotspotThemes, restaurants, foods, foodAdmin, catalogReview, newTrip, stayAreas, travelServices };
 
 function message(namespace: string, key: string): string | undefined {
   let current: unknown = catalogs;

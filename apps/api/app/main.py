@@ -14,6 +14,16 @@ from app.analytics.router import admin_router as admin_analytics_router
 from app.analytics.router import router as analytics_router
 from app.auth.router import router as auth_router
 from app.catalog_review.router import router as catalog_review_router
+from app.community.accounts import router as community_accounts_router
+from app.community.admin import report_router as community_report_router
+from app.community.admin import router as community_admin_router
+from app.community.discovery import router as community_discovery_router
+from app.community.messaging import router as community_messaging_router
+from app.community.pet_planning import router as pet_planning_router
+from app.community.pets import admin_router as pet_admin_router
+from app.community.pets import router as pet_router
+from app.community.router import router as community_router
+from app.community.translation import router as community_translation_router
 from app.config import get_settings
 from app.crawlers.router import router as crawlers_router
 from app.db import engine
@@ -75,6 +85,16 @@ app.add_middleware(
 app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
 app.add_exception_handler(RequestValidationError, validation_error_handler)  # type: ignore[arg-type]
 app.include_router(auth_router, prefix="/api/v1")
+app.include_router(community_accounts_router, prefix="/api/v1")
+app.include_router(community_admin_router, prefix="/api/v1")
+app.include_router(community_report_router, prefix="/api/v1")
+app.include_router(community_translation_router, prefix="/api/v1")
+app.include_router(pet_router, prefix="/api/v1")
+app.include_router(pet_planning_router, prefix="/api/v1")
+app.include_router(pet_admin_router, prefix="/api/v1")
+app.include_router(community_router, prefix="/api/v1")
+app.include_router(community_discovery_router, prefix="/api/v1")
+app.include_router(community_messaging_router, prefix="/api/v1")
 app.include_router(admin_router, prefix="/api/v1")
 app.include_router(catalog_review_router, prefix="/api/v1")
 app.include_router(admin_dashboard_router, prefix="/api/v1")

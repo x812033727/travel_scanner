@@ -15,6 +15,11 @@ type Context = { params: Promise<{ path: string[] }> };
 const MAX_REQUEST_BYTES = Number(process.env.API_PROXY_MAX_BODY_BYTES || 5 * 1024 * 1024);
 const MAX_RESPONSE_BYTES = Number(process.env.API_PROXY_MAX_RESPONSE_BYTES || 10 * 1024 * 1024);
 const UPSTREAM_TIMEOUT_MS = Number(process.env.API_PROXY_TIMEOUT_MS || 15_000);
+function upstreamTimeout(endpoint: string): number {
+  if (endpoint === "community/translations") return Math.max(UPSTREAM_TIMEOUT_MS, 45_000);
+  if (/^community\/media\/[0-9a-f-]+\/complete$/.test(endpoint)) return Math.max(UPSTREAM_TIMEOUT_MS, 60_000);
+  return UPSTREAM_TIMEOUT_MS;
+}
 const SUPPORTED_LOCALES = new Set(["en", "ja", "ko", "zh-TW", "zh-CN"]);
 
 function problem(status: number, code: string, detail: string) {
@@ -122,7 +127,7 @@ async function proxy(request: NextRequest, context: Context) {
   }
   const controller = new AbortController();
   const verifyOffer = isHotelClickout || /^admin\/travel-services\/(offers|products)\/[a-f0-9-]+\/review$/.test(endpoint);
-  const timeout = setTimeout(() => controller.abort(), verifyOffer ? Math.max(45_000, UPSTREAM_TIMEOUT_MS) : UPSTREAM_TIMEOUT_MS);
+  const timeout = setTimeout(() => controller.abort(), verifyOffer ? Math.max(45_000, UPSTREAM_TIMEOUT_MS) : upstreamTimeout(endpoint));
   let upstream: Response;
   try {
     upstream = await fetch(url, {
@@ -131,7 +136,7 @@ async function proxy(request: NextRequest, context: Context) {
       body,
       cache: "no-store",
       redirect: "manual",
-      signal: controller.signal,
+      signal: AbortSignal.any([controller.signal, request.signal]),
     });
   } catch {
     clearTimeout(timeout);
@@ -150,7 +155,7 @@ async function proxy(request: NextRequest, context: Context) {
   if (upstream.headers.get("content-type")?.includes("text/event-stream")) {
     // Server-sent events stay open by design, so the upstream deadline only covered the headers.
     clearTimeout(timeout);
-    return preserveRequestId(new Response(upstream.body, { status: upstream.status, headers: { "Content-Type": "text/event-stream", "Cache-Control": "no-cache", "X-Accel-Buffering": "no" } }), upstream);
+    return preserveRequestId(new Response(upstream.body, { status: upstream.status, headers: { "Content-Type": "text/event-stream", "Cache-Control": "private, no-store", "X-Accel-Buffering": "no" } }), upstream);
   }
   let text: string;
   try {
@@ -188,7 +193,8 @@ async function proxy(request: NextRequest, context: Context) {
       ? new NextResponse(payload, { status: upstream.status })
       : NextResponse.json(payload, { status: upstream.status });
   response.headers.set("Cache-Control", "no-store");
-  if (endpoint === "auth/logout" || (endpoint === "auth/me" && upstream.status === 401)) {
+  if (endpoint === "auth/logout" || (endpoint === "auth/me" && upstream.status === 401) ||
+      (["auth/reset-password", "auth/delete-account"].includes(endpoint) && upstream.ok)) {
     response.cookies.delete("travel_access");
   } else {
     // This proxy owns the browser cookie, so a session the API just slid forward only

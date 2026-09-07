@@ -209,8 +209,9 @@ def test_parameter_mismatch_names_both_directions() -> None:
 
 
 def test_namespace_allowlist_excludes_legacy_and_unknown_groups() -> None:
-    assert len(UI_TEXT_NAMESPACES) == 23
+    assert len(UI_TEXT_NAMESPACES) == 24
     require_namespace("travelServices")
+    require_namespace("community")
     assert "legacy" not in UI_TEXT_NAMESPACES
     assert UI_TEXT_LOCKED_NAMESPACES == ("legacy",)
     require_namespace("navigation")

@@ -18,6 +18,7 @@ export const EDITABLE_NAMESPACES = [
   "availability",
   "catalogReview",
   "common",
+  "community",
   "errors",
   "foodAdmin",
   "foods",

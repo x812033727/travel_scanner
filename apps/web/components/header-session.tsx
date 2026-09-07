@@ -16,11 +16,13 @@ export type HeaderUser = {
   id: string;
   email: string;
   is_admin?: boolean;
+  can_deploy?: boolean;
   preferred_locale?: string;
   preferred_currency?: string;
   has_password?: boolean;
   auth_methods?: string[];
   identity_count?: number;
+  email_verified?: boolean;
 };
 
 type HeaderSessionValue = {

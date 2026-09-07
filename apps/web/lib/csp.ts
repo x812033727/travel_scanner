@@ -35,6 +35,19 @@ export function buildStrictContentSecurityPolicy({
   nonce: string;
   production: boolean;
 }): string {
+  const mediaSources: string[] = [];
+  try {
+    const value = process.env.COMMUNITY_MEDIA_ORIGIN?.trim();
+    if (value) {
+      const url = new URL(value);
+      const loopback = ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname);
+      if (!url.username && !url.password && !url.hostname.includes("*") &&
+          url.pathname === "/" && !url.search && !url.hash &&
+          (url.protocol === "https:" || (!production && loopback && url.protocol === "http:"))) {
+        mediaSources.push(url.origin);
+      }
+    }
+  } catch { /* Invalid configuration never broadens policy. */ }
   const scriptSources = [
     "'self'",
     `'nonce-${nonce}'`,
@@ -52,9 +65,9 @@ export function buildStrictContentSecurityPolicy({
     // Tailwind output is a stylesheet, but React inline styles and the map SDKs need inline CSS.
     "style-src 'self' 'unsafe-inline'",
     // Provider photos and hotspot thumbnails come from arbitrary HTTPS hosts.
-    "img-src 'self' data: blob: https:",
+    `img-src 'self' data: blob: https:${mediaSources.length ? " " + mediaSources.join(" ") : ""}`,
     "font-src 'self' data:",
-    `connect-src 'self' ${[...ANALYTICS_CONNECT_SOURCES, ...NAVER_MAP_SOURCES, ...TRAVELPAYOUTS_DRIVE_SOURCES].join(" ")}`,
+    `connect-src 'self' ${[...ANALYTICS_CONNECT_SOURCES, ...NAVER_MAP_SOURCES, ...TRAVELPAYOUTS_DRIVE_SOURCES, ...mediaSources].join(" ")}`,
     // Google Maps Embed API iframe in route-map.tsx.
     "frame-src https://www.google.com",
     "worker-src 'self' blob:",

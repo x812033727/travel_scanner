@@ -14,10 +14,13 @@ import { Link } from "@/i18n/navigation";
 import { localeLabels, type Locale } from "@/i18n/routing";
 import { primaryNavLinks } from "@/lib/nav-links";
 import { featureVisible } from "@/lib/site-features";
+import { useCommunity } from "@/components/community/provider";
 
 export function MobileNav() {
   const { status, user } = useHeaderSession();
   const nav = useTranslations("navigation");
+  const community = useCommunity();
+  const tc = useTranslations("community");
   const common = useTranslations("common");
   const locale = useLocale() as Locale;
   const { preference } = useTheme();
@@ -95,6 +98,7 @@ export function MobileNav() {
             </span>
           </div>
         <nav aria-label={nav("primaryLabel")} className="grid gap-1">
+          {community.flags.enabled && [["/community", "title"], ["/pet-friendly", "pets"], ["/my", "my"]].map(([href, key]) => <Link key={href} href={href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{tc(key)}</Link>)}
           {links.map((item) => <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">
             {nav(item.key)}
           </Link>)}
