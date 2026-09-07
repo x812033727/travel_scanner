@@ -44,6 +44,9 @@ async def dashboard(user: AdminUser, session: Session) -> dict[str, Any]:
                 TravelFood.is_active.is_(True),
                 TravelFood.review_status == "approved",
             ),
+            "foods_pending": await _count(
+                session, TravelFood, TravelFood.review_status == "pending"
+            ),
             "merchants_pending": await _count(
                 session, FoodMerchant, FoodMerchant.review_status == "pending"
             ),
@@ -66,9 +69,19 @@ async def dashboard(user: AdminUser, session: Session) -> dict[str, Any]:
         "quick_actions": [
             {"id": "review_hotspots", "href": "/admin/hotspots", "count_key": "hotspots_pending"},
             {
+                "id": "review_foods",
+                "href": "/admin/foods#dishes",
+                "count_key": "foods_pending",
+            },
+            {
                 "id": "review_merchants",
                 "href": "/admin/foods#merchants",
                 "count_key": "merchants_pending",
+            },
+            {
+                "id": "review_guides",
+                "href": "/admin/hotspots#guides",
+                "count_key": "guides_pending",
             },
             {
                 "id": "categorise_merchants",

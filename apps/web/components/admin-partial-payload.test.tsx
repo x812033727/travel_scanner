@@ -24,6 +24,43 @@ describe("admin panels against a partial payload", () => {
     expect((await screen.findAllByText(/待審|營運|摘要|載入/)).length).toBeGreaterThan(0);
   });
 
+  it("counts every pending content type and links each review queue", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => ({
+        ok: true,
+        status: 200,
+        json: async () => ({
+          counts: {
+            users: 1,
+            hotspots_public: 984,
+            foods_public: 87,
+            hotspots_pending: 124,
+            foods_pending: 13,
+            merchants_pending: 245,
+            guides_pending: 427,
+          },
+          quick_actions: [
+            { id: "review_hotspots", href: "/admin/hotspots", count_key: "hotspots_pending" },
+            { id: "review_foods", href: "/admin/foods#dishes", count_key: "foods_pending" },
+            { id: "review_merchants", href: "/admin/foods#merchants", count_key: "merchants_pending" },
+            { id: "review_guides", href: "/admin/hotspots#guides", count_key: "guides_pending" },
+          ],
+        }),
+      })),
+    );
+
+    render(<AdminDashboard />);
+
+    expect(await screen.findByText("809")).not.toBeNull();
+    expect(screen.getByRole("link", { name: /審核料理目錄13/ }).getAttribute("href")).toBe(
+      "/admin/foods#dishes",
+    );
+    expect(screen.getByRole("link", { name: /審核景點介紹427/ }).getAttribute("href")).toBe(
+      "/admin/hotspots#guides",
+    );
+  });
+
   it("keeps the taxonomy panel on screen when items are missing", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => ({ ok: true, status: 200, json: async () => ({}) })));
 
