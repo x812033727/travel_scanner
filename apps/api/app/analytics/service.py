@@ -316,11 +316,30 @@ async def record_event(
     not the API route: ``normalize_path`` drops anything under ``/api``, and a funnel
     broken down by ``/api/v1/trips`` would tell nobody anything anyway.
 
-    Analytics is never the reason a member's request fails. Every failure here — the
-    settings lookup, the insert, a name nobody added to ``EVENT_NAMES`` — is logged and
-    swallowed. The caller must not have committed anything it minds losing: this rolls
-    the session back to a savepoint of its own so a failed insert cannot poison the
-    transaction the caller is still building.
+    Analytics is never the reason a member's request fails, and the hard part of that is
+    not the exception handling — it is never *flushing* the caller. Callers arrive with
+    their own rows added and not yet committed. Anything here that flushes that pending
+    work sends the caller's INSERT to the database early, so it fails *inside* this
+    function's ``try`` — written to swallow analytics failures — leaving the session
+    needing a rollback. The caller's own ``except IntegrityError`` then never runs,
+    because what reaches it is a ``PendingRollbackError``: two members racing to create
+    the same alert got a 500 instead of the 409 that endpoint has always returned.
+
+    So there are two rules here, and #324 shipped a version that broke both:
+
+    - Every query runs under ``no_autoflush``. A ``SELECT`` (the settings read, above
+      all) otherwise flushes the caller's pending rows on its way out.
+    - No ``begin_nested()``. A savepoint looks like protection and was put here as
+      protection, but entering one flushes first, which is exactly the harm it was
+      supposed to prevent.
+
+    What is left is an insert that rides along in the caller's transaction and commits
+    with it. That is deliberate: an event for a trip whose creation then rolled back
+    would be a count of something that never happened. The residual risk is that a
+    failing analytics insert poisons the caller's transaction — narrow, because the row
+    is validated here (``EVENT_NAMES``, ``_properties``) and written with
+    ``ON CONFLICT DO NOTHING`` to a table nothing else contends on, and honest to state
+    rather than to paper over with a savepoint that causes worse.
     """
     if name not in EVENT_NAMES:
         logger.warning("analytics.unknown_event", extra={"event_name": name})
@@ -329,36 +348,36 @@ async def record_event(
     if context.opted_out:
         return False
     try:
-        settings = await load_runtime_settings(session)
-        if not settings.analytics_enabled:
-            return False
-        now = datetime.now(UTC)
-        normalized = normalize_path(path)
-        if normalized is None:
-            logger.warning("analytics.unusable_path", extra={"event_path": path})
-            return False
-        user_agent = context.user_agent or ""
-        device, browser, os_name, is_bot = _client_details(user_agent)
-        today = now.astimezone(TAIPEI).date().isoformat()
-        # A browser that told us its analytics session gets hashed exactly the way
-        # ingest hashes it, so both halves of a funnel step land on one hash. Without
-        # one (a worker, a CLI, a caller that predates the header) the member is the
-        # next best stable identity; anonymous and session-less is its own bucket
-        # rather than a shared empty string.
-        identity = (
-            ("analytics-session", context.session_id)
-            if context.session_id
-            else ("analytics-server-user", str(user_id))
-            if user_id
-            else ("analytics-server-ip", f"{today}|{context.client_ip or 'unknown'}")
-        )
-        session_hash = _digest(settings.app_secret_key, identity[0], identity[1])
-        visitor_hash = _digest(
-            settings.app_secret_key,
-            "analytics-day",
-            f"{today}|{context.client_ip or 'unknown'}|{user_agent}",
-        )
-        async with session.begin_nested():
+        with session.no_autoflush:
+            settings = await load_runtime_settings(session)
+            if not settings.analytics_enabled:
+                return False
+            now = datetime.now(UTC)
+            normalized = normalize_path(path)
+            if normalized is None:
+                logger.warning("analytics.unusable_path", extra={"event_path": path})
+                return False
+            user_agent = context.user_agent or ""
+            device, browser, os_name, is_bot = _client_details(user_agent)
+            today = now.astimezone(TAIPEI).date().isoformat()
+            # A browser that told us its analytics session gets hashed exactly the way
+            # ingest hashes it, so both halves of a funnel step land on one hash. Without
+            # one (a worker, a CLI, a caller that predates the header) the member is the
+            # next best stable identity; anonymous and session-less is its own bucket
+            # rather than a shared empty string.
+            identity = (
+                ("analytics-session", context.session_id)
+                if context.session_id
+                else ("analytics-server-user", str(user_id))
+                if user_id
+                else ("analytics-server-ip", f"{today}|{context.client_ip or 'unknown'}")
+            )
+            session_hash = _digest(settings.app_secret_key, identity[0], identity[1])
+            visitor_hash = _digest(
+                settings.app_secret_key,
+                "analytics-day",
+                f"{today}|{context.client_ip or 'unknown'}|{user_agent}",
+            )
             await session.execute(
                 postgres_insert(AnalyticsEvent)
                 .values(
