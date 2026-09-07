@@ -15,9 +15,10 @@ export function CommunityHero() {
 }
 export function CommunityHome({ pets = false }: { pets?: boolean }) {
   const t = useTranslations("community");
+  const { user } = useHeaderSession();
   const { flags } = useCommunity();
   if (!flags.enabled) return null;
-  return <section className="my-10 space-y-5"><h2 className="text-2xl font-bold">{t(pets ? "pets" : "inspiration")}</h2><p className="text-[var(--muted)]">{t(pets ? "petIntroduction" : "communityIntroduction")}</p>{pets ? <Link className="inline-flex min-h-11 items-center rounded-xl bg-[var(--teal)] px-4 font-semibold text-white" href="/pet-friendly">{t("explorePets")}</Link> : <><Feed compact /><Link href="/community" className="inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline">{t("allStories")}</Link></>}</section>;
+  return <section className="my-10 space-y-5"><h2 className="text-2xl font-bold">{t(pets ? "pets" : "inspiration")}</h2><p className="text-[var(--muted)]">{t(pets ? "petIntroduction" : "communityIntroduction")}</p>{pets ? <Link className="inline-flex min-h-11 items-center rounded-xl bg-[var(--teal)] px-4 font-semibold text-white" href="/pet-friendly">{t("explorePets")}</Link> : <><Feed key={user?.id || "guest"} compact /><Link href="/community" className="inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline">{t("allStories")}</Link></>}</section>;
 }
 export function MyDirectory() {
   const t = useTranslations("community");

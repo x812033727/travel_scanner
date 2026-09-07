@@ -108,8 +108,13 @@ character allowance, not the member ledger. Failures preserve original text.
 Source edits change the cache fingerprint. Capacity is reserved before provider
 calls, including failed calls, because provider usage may already have occurred.
 The community overview reports distinct users by activity and return visits,
-active authors, moderation age, translation reservations and durable jobs. These
-activity totals are not an ordered attribution funnel or provider invoice totals.
+active authors, moderation age, translation reservations and durable jobs. A
+separate conversion funnel requires time-ordered read/save/fork/trip-created
+events for the same member and source post over 30 days, counting distinct members
+per stage and excluding the author. Applying and creating the private copy are
+atomic, so those two stages normally match. Anonymous readers are not attributed.
+Independent activity totals and translation reservations are not conversion rates
+or provider invoice totals.
 
 ## Pet-friendly data
 
@@ -177,6 +182,6 @@ SQLite results for PostgreSQL, SMTP, Redis or real object-storage acceptance.
   complaint process and contact details. Do not invent these values.
 - Confirm production S3/CORS/lifecycle/private access, SMTP delivery, translation
   capacity, moderation staffing and escalation ownership using real services.
-- Finish the ordered conversion funnel and comprehensive acceptance matrix;
-  aggregate activity counts are not a substitute for full conversion tracking.
+- Validate the full acceptance matrix and the ordered conversion funnel against
+  real journeys; aggregate activity counts are not a substitute for conversions.
 - Only then authorize and enable the community in the production admin console.

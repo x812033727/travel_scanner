@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useHeaderSession } from "@/components/header-session";
@@ -21,7 +21,7 @@ export function CommunityGate({ children, member = false, verified = false }: { 
     if (community.me.restricted) return <Empty>{t("errors.community_restricted")}</Empty>;
     if (verified && !community.me.verified) return <Empty><Link href="/account" className="text-[var(--teal)] underline">{t("verifyRequired")}</Link></Empty>;
   }
-  return children;
+  return <Fragment key={session.user?.id || "guest"}>{children}</Fragment>;
 }
 
 export function CommunityLinks() {

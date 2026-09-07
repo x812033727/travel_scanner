@@ -279,9 +279,11 @@ class CommunityMetric(Base):
     __tablename__ = "community_metrics"
     __table_args__ = (
         UniqueConstraint("day", "user_id", "kind", "target", name="uq_community_metric"),
+        Index("ix_community_metrics_funnel", "kind", "created_at", "user_id", "target"),
     )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     day: Mapped[str] = mapped_column(String(10), index=True)
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id"), index=True)
     kind: Mapped[str] = mapped_column(String(24))
     target: Mapped[str] = mapped_column(String(120))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)

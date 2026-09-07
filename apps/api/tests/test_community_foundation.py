@@ -593,6 +593,41 @@ async def test_deleted_member_cannot_log_in_even_before_cleanup(
 
 
 @pytest.mark.asyncio
+async def test_conversion_requires_order_and_same_member_and_post(harness: Harness) -> None:
+    from app.community.models import CommunityMetric
+
+    now = datetime.now(UTC)
+    async with harness.factory() as session:
+        # A complete chain for one reader. Another member saves before reading;
+        # a third reads one post but saves a different one. Neither is converted.
+        events = [
+            (0, "post-a", "read", 0),
+            (0, "post-a", "save", 1),
+            (0, "post-a", "fork", 2),
+            (0, "post-a", "trip_created", 3),
+            (1, "post-a", "save", 0),
+            (1, "post-a", "read", 1),
+            (3, "post-b", "read", 0),
+            (3, "post-c", "save", 1),
+        ]
+        for actor, target, kind, offset in events:
+            session.add(
+                CommunityMetric(
+                    user_id=harness.ids[actor],
+                    target=target,
+                    kind=kind,
+                    day=now.date().isoformat(),
+                    created_at=now - timedelta(minutes=10 - offset),
+                )
+            )
+        await session.commit()
+    result = (await harness.call("GET", "/admin/community/overview", actor=2)).json()
+    assert result["conversion_funnel_30d"] == {"read": 3, "save": 1, "fork": 1, "trip_created": 1}
+    assert result["unique_users_30d"]["save"] == 3
+    await harness.call("GET", "/admin/community/overview", expected=403)
+
+
+@pytest.mark.asyncio
 async def test_review_results_only_expose_owned_targets(harness: Harness) -> None:
     post = await harness.post()
     await harness.approve(await harness.publish(post))

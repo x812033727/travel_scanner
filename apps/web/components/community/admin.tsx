@@ -89,9 +89,43 @@ export function AuditList({items}: {items:Audit[]}) {
  return <div className="space-y-3">{items.map((row) => <details key={row.id} className={panelClass}><summary className="cursor-pointer break-words text-sm">{row.action} · {row.created_at}</summary><dl className="my-3 space-y-2 break-all text-sm"><dt>{t("actor")}</dt><dd>{row.actor_id}</dd><dt>{t("target")}</dt><dd>{row.target}</dd></dl><pre className="overflow-x-auto whitespace-pre-wrap break-words text-xs">{JSON.stringify(row.metadata,null,2)}</pre></details>)}</div>;
 }
 function CommunityOverview() {
- const t = useTranslations("community");
- const data = useResource<{unique_users_30d:Record<string,number>;active_authors_30d:number;pending_posts:number;oldest_review_seconds:number;translation_characters_this_month:number;returning_users_30d:number;audit_logs:Audit[];jobs:Array<{kind:string;status:string;count:number}>}>("/admin/community/overview");
- if (!data.data) return data.error ? <ErrorNotice error={data.error} /> : <Empty>{t("loading")}</Empty>;
- const row=data.data;
- return <div className="space-y-6"><p className="text-sm text-[var(--muted)]">{t("metricsNotice")}</p><dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{["read","save","fork","trip_created"].map((key) => <div key={key} className={panelClass}><dt>{t(`metrics.${key}`)}</dt><dd className="mt-2 text-3xl font-bold">{row.unique_users_30d[key] || 0}</dd></div>)}{(["active_authors_30d","returning_users_30d","pending_posts","oldest_review_seconds","translation_characters_this_month"] as const).map((key) => <div key={key} className={panelClass}><dt>{t(`metrics.${key}`)}</dt><dd className="mt-2 text-3xl font-bold">{row[key] || 0}</dd></div>)}</dl><h2 className="text-xl font-bold">{t("backgroundJobs")}</h2><ul>{row.jobs.map((job) => <li key={job.kind+job.status}>{t.has(`jobKinds.${job.kind}`) ? t(`jobKinds.${job.kind}`) : job.kind} · {t.has(`states.${job.status}`) ? t(`states.${job.status}`) : job.status}: {job.count}</li>)}</ul><h2 className="text-xl font-bold">{t("auditLogs")}</h2><AuditList items={row.audit_logs} /></div>;
+  const t = useTranslations("community");
+  const data = useResource<{
+    conversion_funnel_30d: Record<string, number>; unique_users_30d: Record<string, number>;
+    active_authors_30d: number; pending_posts: number; oldest_review_seconds: number;
+    translation_characters_this_month: number; returning_users_30d: number;
+    audit_logs: Audit[]; jobs: Array<{ kind: string; status: string; count: number }>;
+  }>("/admin/community/overview");
+  if (!data.data) return data.error ? <ErrorNotice error={data.error} /> : <Empty>{t("loading")}</Empty>;
+  const row = data.data;
+  const stages = ["read", "save", "fork", "trip_created"];
+  return <div className="space-y-6">
+    <section className="space-y-3">
+      <h2 className="text-xl font-bold">{t("conversionFunnel")}</h2>
+      <p className="text-sm text-[var(--muted)]">{t("conversionFunnelNotice")}</p>
+      <ol className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{stages.map((key, index) => {
+        const count = row.conversion_funnel_30d?.[key] || 0;
+        const previous = index ? row.conversion_funnel_30d?.[stages[index - 1]] || 0 : 0;
+        return <li key={key} className={panelClass}>
+          <h3>{t(`metrics.${key}`)}</h3><p className="mt-2 text-3xl font-bold">{count}</p>
+          {index > 0 && <p className="mt-2 text-sm text-[var(--muted)]">{previous
+            ? t("conversionRate", { value: Math.round(count / previous * 100) })
+            : t("conversionNoBaseline")}</p>}
+        </li>;
+      })}</ol>
+    </section>
+    <p className="text-sm text-[var(--muted)]">{t("metricsNotice")}</p>
+    <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {stages.map((key) => <div key={key} className={panelClass}>
+        <dt>{t(`metrics.${key}`)}</dt><dd className="mt-2 text-3xl font-bold">{row.unique_users_30d[key] || 0}</dd>
+      </div>)}
+      {(["active_authors_30d", "returning_users_30d", "pending_posts", "oldest_review_seconds", "translation_characters_this_month"] as const).map((key) =>
+        <div key={key} className={panelClass}><dt>{t(`metrics.${key}`)}</dt><dd className="mt-2 text-3xl font-bold">{row[key] || 0}</dd></div>)}
+    </dl>
+    <h2 className="text-xl font-bold">{t("backgroundJobs")}</h2>
+    <ul>{row.jobs.map((job) => <li key={job.kind + job.status}>
+      {t.has(`jobKinds.${job.kind}`) ? t(`jobKinds.${job.kind}`) : job.kind} · {t.has(`states.${job.status}`) ? t(`states.${job.status}`) : job.status}: {job.count}
+    </li>)}</ul>
+    <h2 className="text-xl font-bold">{t("auditLogs")}</h2><AuditList items={row.audit_logs} />
+  </div>;
 }

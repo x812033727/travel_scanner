@@ -193,6 +193,7 @@ jobs:
           uv run python -c 'from app.community.media import storage; from app.config import get_settings; storage().create_bucket(Bucket=get_settings().community_s3_bucket)'
           printf '%s\n' 'community-ci-password-123' | uv run python -m app.cli create-admin --email ci-community@example.com --password-stdin
       - name: Wait for the real stack
+        id: stack-ready
         run: |
           for attempt in {1..60}; do
             if curl --fail --silent http://127.0.0.1:8000/ready >/dev/null && curl --fail --silent http://127.0.0.1:3000 >/dev/null; then exit 0; fi
@@ -202,10 +203,18 @@ jobs:
           exit 1
       - run: npx playwright install --with-deps chromium
       - name: Run unmocked desktop and Pixel 7 journeys
+        id: travel-journeys
         run: npx playwright test e2e/full-stack.spec.ts
         working-directory: apps/web
         env: { PLAYWRIGHT_REUSE_EXISTING: "true" }
+      - uses: actions/upload-artifact@v4
+        if: failure() && steps.travel-journeys.outcome == 'failure'
+        with:
+          name: travel-browser-failure
+          path: apps/web/test-results
+          retention-days: 7
       - name: Run private-media, mail and community browser journeys
+        if: ${{ !cancelled() && steps.stack-ready.outcome == 'success' }}
         run: npx playwright test e2e/community.spec.ts
         working-directory: apps/web
         env: { PLAYWRIGHT_REUSE_EXISTING: "true", COMMUNITY_E2E: "1" }

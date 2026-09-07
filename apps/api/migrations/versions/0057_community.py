@@ -202,6 +202,7 @@ def upgrade() -> None:
             sa.Column("user_id", sa.Uuid(), nullable=False),
             sa.Column("kind", sa.String(length=24), nullable=False),
             sa.Column("target", sa.String(length=120), nullable=False),
+            sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
             sa.ForeignKeyConstraint(
                 ["user_id"],
                 ["users.id"],
@@ -214,6 +215,12 @@ def upgrade() -> None:
         )
         op.create_index(
             op.f("ix_community_metrics_user_id"), "community_metrics", ["user_id"], unique=False
+        )
+        op.create_index(
+            "ix_community_metrics_funnel",
+            "community_metrics",
+            ["kind", "created_at", "user_id", "target"],
+            unique=False,
         )
     if "community_notifications" not in names:
         op.create_table(

@@ -5,7 +5,8 @@ from typing import Any, Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Response
-from sqlalchemy import String, cast, func, literal, or_, select, text
+from sqlalchemy import String, and_, cast, func, literal, or_, select, text
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import AdminUser, CurrentUser
 from app.community.accounts import smtp_ready
@@ -511,6 +512,53 @@ async def resolve_report(
     return {"status": row.status}
 
 
+async def conversion_funnel(session: AsyncSession, since: datetime) -> dict[str, int]:
+    # Each stage must follow the previous one for the SAME member and source
+    # post. Independent activity totals are not a conversion funnel. Only
+    # authenticated member activity is recorded; anonymous readers are not inferred.
+    metric = CommunityMetric
+    stage = (
+        select(metric.user_id, metric.target, func.min(metric.created_at).label("occurred_at"))
+        .where(metric.kind == "read", metric.created_at >= since)
+        .group_by(metric.user_id, metric.target)
+        .cte("funnel_read")
+    )
+    stages = {"read": stage}
+    for kind in ("save", "fork", "trip_created"):
+        stage = (
+            select(metric.user_id, metric.target, func.min(metric.created_at).label("occurred_at"))
+            .join(
+                stage,
+                and_(
+                    metric.user_id == stage.c.user_id,
+                    metric.target == stage.c.target,
+                    metric.created_at >= stage.c.occurred_at,
+                ),
+            )
+            .where(metric.kind == kind)
+            .group_by(metric.user_id, metric.target)
+            .cte(f"funnel_{kind}")
+        )
+        stages[kind] = stage
+    counts = (
+        (
+            await session.execute(
+                select(
+                    *[
+                        select(func.count(func.distinct(stage.c.user_id)))
+                        .scalar_subquery()
+                        .label(kind)
+                        for kind, stage in stages.items()
+                    ]
+                )
+            )
+        )
+        .mappings()
+        .one()
+    )
+    return {kind: int(counts[kind]) for kind in stages}
+
+
 @router.get("/overview")
 async def overview(admin: AdminUser, session: Session, response: Response) -> dict[str, Any]:
     response.headers["Cache-Control"] = "private, no-store"
@@ -555,6 +603,7 @@ async def overview(admin: AdminUser, session: Session, response: Response) -> di
         )
     ).all()
     return {
+        "conversion_funnel_30d": await conversion_funnel(session, since),
         "unique_users_30d": {kind: count for kind, count in metrics},
         "active_authors_30d": active_authors or 0,
         "returning_users_30d": returning_users or 0,

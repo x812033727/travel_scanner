@@ -11,6 +11,7 @@ completed_at:
 branch: codex/mokaair-community
 depends_on: []
 scope:
+  - apps/web/e2e/readability.spec.ts
   - apps/web/components/community
   - apps/web/app/[locale]/community
   - apps/web/app/[locale]/pet-friendly
