@@ -170,6 +170,7 @@ describe("AdminFoodMerchantsPanel", () => {
       ...merchant,
       name: "Jinokhwa Halmae Wonjo Dakhanmari",
       local_name: "진옥화할매원조닭한마리",
+      destination_id: "seoul",
       country_code: "KR",
       google_place_id: null,
       naver_map_url: null,
@@ -200,6 +201,13 @@ describe("AdminFoodMerchantsPanel", () => {
     render(<AdminFoodMerchantsPanel />);
     expect(await screen.findByText("Jinokhwa Halmae Wonjo Dakhanmari")).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "編輯地點與來源" }));
+    expect(
+      screen
+        .getByRole("link", { name: "開啟 Naver 搜尋並人工核對" })
+        .getAttribute("href"),
+    ).toBe(
+      `https://map.naver.com/p/search/${encodeURIComponent("진옥화할매원조닭한마리 서울")}`,
+    );
     fireEvent.change(screen.getByLabelText("Naver 精準地點頁"), {
       target: { value: "https://map.naver.com/p/entry/place/11619295" },
     });

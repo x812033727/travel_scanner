@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
+import { naverMapSearchUrl } from "@/lib/naver-map";
 import {
   LocalizedNameFields,
   completeNames,
@@ -1148,6 +1149,16 @@ export function AdminFoodMerchantsPanel({
               )}
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
+              {editing.country_code === "KR" && (
+                <a
+                  href={naverMapSearchUrl(editing.local_name || editing.name, editing.destination_id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center rounded-xl border border-[var(--teal)] px-4 font-semibold text-[var(--teal)]"
+                >
+                  {ta("foodMerchantsPanel.openNaverSearch")}
+                </a>
+              )}
               <button
                 type="button"
                 disabled={loading || editing.country_code === "KR"}
