@@ -108,6 +108,10 @@ class Settings(BaseSettings):
     cookie_secure: bool = False
     offer_cache_ttl_seconds: int = 300
     reference_cache_ttl_seconds: int = 86_400
+    # Administrator overrides of the web UI copy are read on every page render, so each
+    # locale's payload is cached in Redis. Every write deletes the cache; this TTL only
+    # bounds how long a stale copy survives a missed invalidation.
+    ui_text_cache_ttl_seconds: int = Field(default=300, ge=5, le=86_400)
     provider_timeout_seconds: float = 3.0
     provider_failure_threshold: int = 3
     provider_circuit_seconds: int = 60

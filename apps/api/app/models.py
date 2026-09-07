@@ -1783,6 +1783,37 @@ class ProviderConfig(Timestamped, Base):
     last_test_message: Mapped[str | None] = mapped_column(Text, nullable=True)
 
 
+class UiTextOverride(Timestamped, Base):
+    """One administrator-edited sentence of web UI copy, per namespace, key and locale.
+
+    The JSON catalogs in ``apps/web/messages`` remain the defaults. A row here replaces
+    exactly one of their leaves for one locale; ``default_snapshot`` is the catalog text
+    the value was validated against, so the editor can tell when the default has moved.
+    """
+
+    __tablename__ = "ui_text_overrides"
+    __table_args__ = (
+        UniqueConstraint("namespace", "key", "locale", name="uq_ui_text_override_key_locale"),
+        CheckConstraint(
+            "locale IN ('en', 'ja', 'ko', 'zh-TW', 'zh-CN')", name="ck_ui_text_override_locale"
+        ),
+        # legacy-ui-localizer.tsx substitutes DOM text by literal zh-TW string, so an
+        # override in that namespace would rewrite API data on screen.
+        CheckConstraint("namespace <> 'legacy'", name="ck_ui_text_override_namespace_not_legacy"),
+        CheckConstraint("length(value) > 0", name="ck_ui_text_override_value_not_empty"),
+        Index("ix_ui_text_overrides_locale", "locale"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    namespace: Mapped[str] = mapped_column(String(64))
+    key: Mapped[str] = mapped_column(String(200))
+    locale: Mapped[str] = mapped_column(String(16))
+    value: Mapped[str] = mapped_column(Text)
+    default_snapshot: Mapped[str | None] = mapped_column(Text, nullable=True)
+    updated_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+
+
 class AdminAuditLog(Base):
     __tablename__ = "admin_audit_logs"
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)

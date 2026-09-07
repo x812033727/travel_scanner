@@ -929,6 +929,17 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
             "The trip dates no longer match the original search, so it cannot be repriced. "
             "Run a new search and save it as a trip."
         ),
+        "ui_text_namespace_unknown": "That text group does not exist",
+        "ui_text_namespace_locked": "This text group cannot be edited from the admin panel",
+        "ui_text_value_empty": (
+            "The text cannot be blank; use restore default to remove an override"
+        ),
+        "ui_text_value_control_chars": "The text contains unsupported control characters",
+        "ui_text_braces_unbalanced": "The braces in the text do not match up",
+        "ui_text_parameters_mismatch": "The placeholders must match the default text exactly",
+        "ui_text_override_not_found": "There is no override for this text",
+        "ui_text_batch_duplicate_key": "The same text key appears more than once in this save",
+        "ui_text_default_required": "The default text is required to validate an override",
     },
     "ja": {
         **OAUTH_ERROR_DETAILS["ja"],
@@ -1018,6 +1029,17 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "trip_search_dates_diverged": (
             "旅行の日程が元の検索と一致しないため、再見積もりできません。新しく検索して保存してください。"
         ),
+        "ui_text_namespace_unknown": "その文言グループは存在しません",
+        "ui_text_namespace_locked": "この文言グループは管理画面から編集できません",
+        "ui_text_value_empty": (
+            "文言を空にはできません。上書きを外すには「既定に戻す」を使ってください"
+        ),
+        "ui_text_value_control_chars": "文言にサポートされない制御文字が含まれています",
+        "ui_text_braces_unbalanced": "文言の波かっこが対応していません",
+        "ui_text_parameters_mismatch": "プレースホルダーは既定の文言と完全に一致させてください",
+        "ui_text_override_not_found": "この文言には上書きがありません",
+        "ui_text_batch_duplicate_key": "同じ文言キーが一度の保存に複数回含まれています",
+        "ui_text_default_required": "上書きを検証するには既定の文言が必要です",
     },
     "ko": {
         **OAUTH_ERROR_DETAILS["ko"],
@@ -1100,6 +1122,17 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "trip_search_dates_diverged": (
             "여행 날짜가 원래 검색과 달라 다시 견적을 낼 수 없습니다. 새로 검색한 뒤 저장하세요."
         ),
+        "ui_text_namespace_unknown": "해당 문구 그룹이 존재하지 않습니다",
+        "ui_text_namespace_locked": "이 문구 그룹은 관리자 화면에서 편집할 수 없습니다",
+        "ui_text_value_empty": (
+            "문구를 비울 수 없습니다. 덮어쓰기를 지우려면 기본값 복원을 사용하세요"
+        ),
+        "ui_text_value_control_chars": "문구에 지원되지 않는 제어 문자가 포함되어 있습니다",
+        "ui_text_braces_unbalanced": "문구의 중괄호 짝이 맞지 않습니다",
+        "ui_text_parameters_mismatch": "자리표시자는 기본 문구와 정확히 일치해야 합니다",
+        "ui_text_override_not_found": "이 문구에는 덮어쓰기가 없습니다",
+        "ui_text_batch_duplicate_key": "같은 문구 키가 한 번의 저장에 여러 번 포함되어 있습니다",
+        "ui_text_default_required": "덮어쓰기를 검증하려면 기본 문구가 필요합니다",
     },
     "zh-TW": {
         **OAUTH_ERROR_DETAILS["zh-TW"],
@@ -1218,6 +1251,15 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "trip_search_dates_diverged": (
             "旅程日期已与原始搜索不同，无法用旧搜索重新询价；请重新搜索后另存旅程"
         ),
+        "ui_text_namespace_unknown": "这个文案分组不存在",
+        "ui_text_namespace_locked": "这个文案分组不能在后台编辑",
+        "ui_text_value_empty": "文案不能留空；要移除覆写请使用还原默认",
+        "ui_text_value_control_chars": "文案含有不支持的控制字符",
+        "ui_text_braces_unbalanced": "文案中的大括号没有成对",
+        "ui_text_parameters_mismatch": "占位符必须与默认文案完全一致",
+        "ui_text_override_not_found": "这条文案没有覆写",
+        "ui_text_batch_duplicate_key": "同一条文案键在本次保存中出现了多次",
+        "ui_text_default_required": "验证覆写需要提供默认文案",
     },
 }
 

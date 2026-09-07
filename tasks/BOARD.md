@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**6 open · 0 in progress · 2 blocked · 0 in review · 134 done**
+**8 open · 0 in progress · 2 blocked · 0 in review · 135 done**
 
 ## Ready to claim
 
@@ -14,6 +14,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
+| P1 | [後台可改前台文案：前台載入器把資料庫覆寫疊上 next-intl](open/2026-09-07-ui-text-loader.md) | web | `apps/web/i18n/request.ts`<br>`apps/web/lib/ui-text.ts`<br>`apps/web/lib/ui-text.test.ts`<br>`apps/web/lib/ui-text.server.ts`<br>`apps/web/lib/ui-text.server.test.ts`<br>`tools/check-i18n.mjs`<br>`tools/e2e-runtime-api.mjs` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
@@ -34,11 +35,13 @@ _Nothing here._
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
+| P2 | [後台可改前台文案：/admin/ui-text 編輯器](open/2026-09-07-ui-text-admin-editor.md) | depends on 2026-09-07-ui-text-loader |
 
 ## Recently finished
 
 - 2026-09-07 [後台沒有「產生介紹」的按鈕，所以介紹佇列永遠是空的](done/2026-09-07-intro-generate-trigger.md)
 - 2026-09-07 [上線稽核找到的兩個 API 缺陷：座標來源與額度扣點順序](done/2026-09-07-post-deploy-audit-api-fixes.md)
+- 2026-09-07 [後台可改前台文案：API、資料表、快取與稽核](done/2026-09-07-ui-text-overrides-api.md)
 - 2026-09-07 [產生器每次執行都會重寫既有列的分類，重跑一次就還原剛修好的資料](done/2026-09-07-generator-rewrites-categories.md)
 - 2026-09-07 [特大字下的景點卡把地名擠成 93px、地點行斷成五行](done/2026-09-07-hotspot-card-largest-text.md)
 - 2026-09-07 [選中的國家只靠底色表示，選單裡的外觀與語言看不出目前設定](done/2026-09-06-chosen-state-and-menu-values.md)
@@ -46,4 +49,3 @@ _Nothing here._
 - 2026-09-06 [台南兩家不同的店共用 tainan-fu-sheng-hao 這個 slug，富盛號永遠匯不進來](done/2026-09-06-tainan-slug-collision.md)
 - 2026-09-06 [沒有帳號的人走到底是死路：註冊已關閉，但每道牆只寫「前往登入」](done/2026-09-06-auth-dead-end.md)
 - 2026-09-06 [篩選面板的關閉鍵報讀成「關閉介紹」，美食那邊則跟開啟鍵同名](done/2026-09-06-filter-sheet-labels.md)
-- 2026-09-06 [熱門景點：重新整理丟掉搜尋、看不出套用了什麼、清除條件只在零結果時出現](done/2026-09-06-hotspot-filter-visibility.md)
