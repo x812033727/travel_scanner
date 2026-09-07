@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
-from typing import Any
+from typing import Any, cast
 from uuid import UUID
 
 import httpx
@@ -15,6 +15,8 @@ from app.infra import get_redis
 from app.models import (
     AdminAuditLog,
     AffiliateClick,
+    HotelBookingClick,
+    HotelBookingOption,
     TravelServiceBrand,
     TravelServiceConfig,
     TravelServiceImport,
@@ -22,8 +24,9 @@ from app.models import (
     TravelServiceProduct,
     TripServiceSelection,
 )
+from app.travel_services.hotel_quotes import ADAPTERS
 from app.travel_services.imports import commit_import, parse_csv, upsert_product
-from app.travel_services.network import verify_hotel_link, verify_link
+from app.travel_services.network import verify_link
 from app.travel_services.registry import BRANDS, affiliate_target, brand_target
 from app.travel_services.router import Session
 from app.travel_services.schemas import (
@@ -32,6 +35,12 @@ from app.travel_services.schemas import (
     BrandInput,
     ConfigInput,
     CsvInput,
+    HotelLink,
+    HotelOptionEdit,
+    HotelOptionInput,
+    HotelOptionReview,
+    HotelProvider,
+    HotelQuotePolicy,
     Kind,
     OfferInput,
     ProductInput,
@@ -112,6 +121,31 @@ async def overview(
     now = datetime.now(UTC)
     coverage = []
     for city in CITIES:
+        from app.travel_services.hotel_options import needs_source_credit
+
+        hotel_ready = []
+        for p in all_products:
+            if p.kind != "hotel" or p.destination_id != city or needs_source_credit(p):
+                continue
+            checked = {
+                o.provider: o for o in p.hotel_options if o.discovery_status != "unconfirmed"
+            }
+            usable = {
+                o.provider
+                for o in p.hotel_options
+                if o.status == "approved"
+                and o.discovery_status == "found"
+                and o.verified_at
+                and now - timedelta(days=30) <= o.verified_at <= now
+                and o.health_status not in ("unsafe", "unavailable")
+            }
+            if (
+                "official" in usable
+                and len(usable.intersection({"booking", "trip_com", "agoda", "expedia", "rakuten"}))
+                >= 2
+                and {"booking", "trip_com", "agoda", "expedia", "rakuten"} <= checked.keys()
+            ):
+                hotel_ready.append(p)
         counts = {
             kind: sum(
                 p.kind == kind
@@ -134,6 +168,9 @@ async def overview(
                 "destination_id": city,
                 "counts": counts,
                 "hotel_areas": len(areas),
+                "hotel_ready": len(hotel_ready),
+                "hotel_complete": len(hotel_ready) >= 10
+                and len({p.facts.get("area_code") for p in hotel_ready}) >= 3,
                 "complete": counts["hotel"] >= 6
                 and counts["transfer"] >= 2
                 and counts["tour"] >= 3
@@ -149,7 +186,23 @@ async def overview(
     return {
         "config": config.model_dump(),
         "version": version,
-        "products": [record(p) for p in products],
+        "products": [
+            {
+                **record(p),
+                "facts": product_input(p).facts.model_dump(mode="json"),
+                "booking_options": [record(o) for o in p.hotel_options],
+            }
+            for p in products
+        ],
+        "quote_providers": {
+            code: {
+                "adapter_available": code in ADAPTERS,
+                **config.hotel_quote_policies.get(
+                    cast(HotelProvider, code), HotelQuotePolicy()
+                ).model_dump(),
+            }
+            for code in ("booking", "trip_com", "agoda", "expedia", "rakuten")
+        },
         "offers": [record(o) for o in offers],
         "brands": [
             {**record(b), "name": BRANDS[b.code].name if b.code in BRANDS else b.code}
@@ -175,8 +228,29 @@ async def overview(
         "review_due": sum(
             p.verified_at is None or p.verified_at < now - timedelta(days=30) for p in all_products
         ),
+        "hotel_option_review_due": sum(
+            o.status == "approved"
+            and (o.verified_at is None or o.verified_at < now - timedelta(days=30))
+            for p in all_products
+            for o in p.hotel_options
+        ),
         "imports": [{**record(i), "rows_json": [], "row_count": len(i.rows_json)} for i in imports],
         "operations": {
+            "affiliate_hotel_clicks": await session.scalar(
+                select(func.count())
+                .select_from(HotelBookingClick)
+                .where(HotelBookingClick.mode == "affiliate")
+            ),
+            "ordinary_hotel_clicks": await session.scalar(
+                select(func.count())
+                .select_from(HotelBookingClick)
+                .where(HotelBookingClick.mode == "direct")
+            ),
+            "hotel_affiliate_fallbacks": await session.scalar(
+                select(func.count())
+                .select_from(HotelBookingClick)
+                .where(HotelBookingClick.fallback.is_(True))
+            ),
             "outbound_clicks": await session.scalar(
                 select(func.count())
                 .select_from(AffiliateClick)
@@ -251,22 +325,95 @@ async def review_product(
         raise fail("service_version_conflict", 409)
     if payload.status == "approved":
         require_product_review(product_input(row))
-        import asyncio
+        from app.travel_services.hotel_options import needs_source_credit
 
-        try:
-            # One bounded batch, not eight unbounded sequential website requests.
-            links = product_input(row).facts.hotel_links
-            async with asyncio.timeout(30):
-                if not all(await asyncio.gather(*(verify_hotel_link(link) for link in links))):
-                    raise fail("service_link_unavailable")
-        except (httpx.HTTPError, ConnectionError, ValueError, TimeoutError) as exc:
-            raise fail("service_link_unavailable") from exc
+        if row.kind == "hotel" and needs_source_credit(row):
+            raise fail("service_source_required")
     row.status = payload.status
     row.verified_at = datetime.now(UTC) if payload.status == "approved" else None
     row.version += 1
     audit(session, user, "product_review", str(row.id), {"status": row.status})
     await session.commit()
     return record(row)
+
+
+@router.put("/products/{product_id}/booking-options")
+async def edit_hotel_option(
+    product_id: UUID, payload: HotelOptionEdit, user: AdminUser, session: Session
+) -> dict[str, Any]:
+    from app.travel_services.hotel_options import upsert_option
+
+    product = await session.scalar(
+        select(TravelServiceProduct).where(TravelServiceProduct.id == product_id).with_for_update()
+    )
+    if not product or product.kind != "hotel":
+        raise fail("service_unavailable", 404)
+    existing = await session.scalar(
+        select(HotelBookingOption)
+        .where(
+            HotelBookingOption.product_id == product_id,
+            HotelBookingOption.provider == payload.provider,
+        )
+        .with_for_update()
+        .execution_options(populate_existing=True)
+    )
+    if payload.version != (existing.version if existing else 0):
+        raise fail("service_version_conflict", 409)
+    option, changed = await upsert_option(
+        session, product, HotelOptionInput.model_validate(payload.model_dump(exclude={"version"}))
+    )
+    audit(session, user, "hotel_option_edit", str(option.id), {"changed": changed})
+    await session.commit()
+    return record(option)
+
+
+@router.post("/products/{product_id}/booking-options/{option_id}/review")
+async def review_hotel_option(
+    product_id: UUID, option_id: UUID, payload: HotelOptionReview, user: AdminUser, session: Session
+) -> dict[str, Any]:
+    from app.travel_services.hotel_options import option_input, safe_click_target
+    from app.travel_services.network import check_hotel_link
+
+    option = await session.scalar(
+        select(HotelBookingOption)
+        .where(HotelBookingOption.id == option_id, HotelBookingOption.product_id == product_id)
+        .with_for_update()
+    )
+    if not option or option.version != payload.version:
+        raise fail("service_version_conflict", 409)
+    if payload.status == "approved":
+        data = option_input(option)
+        if data.discovery_status != "found" or not data.url or not data.evidence_url:
+            raise fail("service_identity_required")
+        if not payload.identity_note.strip():
+            raise fail("service_identity_required")
+        await safe_click_target(option)
+        try:
+            health = await check_hotel_link(
+                HotelLink(provider=data.provider, url=data.url, evidence_url=data.evidence_url)
+            )
+        except (httpx.HTTPError, ConnectionError, TimeoutError):
+            health = "unconfirmed"
+        except ValueError:
+            health = "unsafe"
+        if health in ("unsafe", "unavailable") or (
+            health != "healthy" and not payload.browser_verified
+        ):
+            raise fail("service_link_unavailable")
+        option.identity_note = payload.identity_note
+        option.health_status, option.checked_at = health, datetime.now(UTC)
+    option.status = payload.status
+    option.verified_at = datetime.now(UTC) if payload.status == "approved" else None
+    option.version += 1
+    audit(
+        session,
+        user,
+        "hotel_option_review",
+        str(option.id),
+        {"status": option.status, "browser_verified": payload.browser_verified},
+    )
+    await session.commit()
+    return record(option)
 
 
 @router.put("/brands")
@@ -392,6 +539,32 @@ async def review_offer(
 @router.post("/imports/preview")
 async def preview_import(payload: CsvInput, user: AdminUser, session: Session) -> dict[str, Any]:
     rows = parse_csv(payload.csv)
+    seen = set()
+    for item in rows:
+        if "error" in item:
+            continue
+        data = ProductInput.model_validate(item["product"])
+        if data.source_key in seen:
+            item["error"] = "service_csv_invalid"
+            continue
+        seen.add(data.source_key)
+        existing = await session.scalar(
+            select(TravelServiceProduct).where(TravelServiceProduct.source_key == data.source_key)
+        )
+        item["change"] = "new" if existing is None else "modified"
+        if existing and product_input(existing) == data and not item.get("booking_options"):
+            item["change"] = "unchanged"
+        options = item.get("booking_options") or data.facts.hotel_links
+        providers = {o.get("provider") if isinstance(o, dict) else o.provider for o in options}
+        item["missing_platforms"] = (
+            [
+                p
+                for p in ("official", "booking", "trip_com", "agoda", "expedia", "rakuten")
+                if p not in providers
+            ]
+            if data.kind == "hotel"
+            else []
+        )
     run = TravelServiceImport(
         actor_id=user.id, source="csv", status="preview", rows_json=rows, result_json={}
     )

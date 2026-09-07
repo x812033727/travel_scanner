@@ -213,7 +213,7 @@ async def test_community_migrations_fresh_and_existing_database(
         engine = create_async_engine("sqlite+aiosqlite://")
     modules = [
         runpy.run_path(str(Path(__file__).parents[1] / "migrations" / "versions" / name))
-        for name in ["0057_community.py", "0058_pet_friendly.py", "0059_community_places.py"]
+        for name in ["0058_community.py", "0059_pet_friendly.py", "0060_community_places.py"]
     ]
     monkeypatch.setattr(context, "is_offline_mode", lambda: False)
 
@@ -1310,7 +1310,7 @@ async def test_post_catalog_references_are_typed_public_and_legacy_compatible(
     async with h.factory() as session:
         revision = await session.get(PostRevision, UUID(legacy["revision_id"]))
         assert revision is not None
-        revision.place_refs = []  # Version written before 0059, only legacy IDs.
+        revision.place_refs = []  # Version written before 0060, only legacy IDs.
         await session.commit()
     draft = (await h.call("GET", f"/community/posts/{legacy['id']}/draft")).json()
     assert draft["places"][0]["id"] == str(pet_id)

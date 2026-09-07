@@ -105,6 +105,8 @@ def require_product_review(data: ProductInput) -> None:
 
 
 def product_input(product: TravelServiceProduct) -> ProductInput:
+    from app.travel_services.hotel_options import legacy_links
+
     return ProductInput(
         source_key=product.source_key,
         kind=product.kind,
@@ -112,7 +114,10 @@ def product_input(product: TravelServiceProduct) -> ProductInput:
         title=product.title,
         names_json=product.names_json,
         source_url=product.source_url,
-        facts=product.facts,
+        facts={
+            **product.facts,
+            "hotel_links": [link.model_dump() for link in legacy_links(product)],
+        },
     )
 
 
@@ -211,7 +216,13 @@ def ready_hotel_links(
         and now - timedelta(days=30) <= product.verified_at <= now
     ):
         return []
-    return Facts.model_validate(product.facts).hotel_links
+    from app.travel_services.hotel_options import ready_option
+
+    return [
+        HotelLink(provider=o.provider, url=o.url, evidence_url=o.evidence_url)
+        for o in product.hotel_options
+        if ready_option(product, o, config, now) and o.url and o.evidence_url
+    ]
 
 
 def trip_destinations(trip: TripPlan, rows: list[TripPlanItem]) -> list[str]:
@@ -378,6 +389,7 @@ async def recommendations(
         )
     )
     offers: dict[str, list[dict[str, Any]]] = {}
+    hotel_targets: dict[str, set[tuple[str, str]]] = {}
     for offer, brand in (
         await session.execute(
             select(TravelServiceOffer, TravelServiceBrand)
@@ -387,6 +399,8 @@ async def recommendations(
     ).all():
         product = next(p for p in products if p.id == offer.product_id)
         if ready_offer(offer, brand, product, settings, now):
+            if offer.scope == "product":
+                hotel_targets.setdefault(str(product.id), set()).add((brand.code, offer.target_url))
             offers.setdefault(str(product.id), []).append(
                 {
                     "id": str(offer.id),
@@ -405,6 +419,15 @@ async def recommendations(
     for result_product in results:
         result_product["offers"] = offers.get(result_product["id"], [])
         product = next(p for p in products if str(p.id) == result_product["id"])
+        from app.travel_services.hotel_options import public_options
+
+        result_product["booking_options"] = (
+            await public_options(
+                session, product, config, settings, now, hotel_targets.get(str(product.id), set())
+            )
+            if product.kind == "hotel"
+            else []
+        )
         result_product["direct_links"] = [
             {
                 "provider": link.provider,

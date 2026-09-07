@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**12 open · 3 in progress · 2 blocked · 1 in review · 154 done**
+**13 open · 3 in progress · 2 blocked · 0 in review · 155 done**
 
 ## Ready to claim
 
@@ -33,9 +33,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In review
 
-| Task | Owner | Branch |
-| --- | --- | --- |
-| [Hotel booking without affiliate enrollment](open/2026-09-07-hotel-direct-booking.md) | codex-hotel-direct | `codex/hotel-direct-booking` |
+_Nothing here._
 
 ## Waiting
 
@@ -45,10 +43,12 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | active work in the same scope |
 | P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | active work in the same scope |
+| P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | active work in the same scope |
 | P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-07 [Hotel booking without affiliate enrollment](done/2026-09-07-hotel-direct-booking.md)
 - 2026-09-07 [The admin console's own tabs and pills are smaller than every control it publishes](done/2026-09-07-admin-controls-under-44px.md)
 - 2026-09-07 [Gemini catalog review and 100-item expansion](done/2026-09-07-gemini-catalog-review.md)
 - 2026-09-07 [觀測：漏斗看得見——事件名脫離 DB CHECK，關鍵動作由伺服器送](done/2026-09-07-observe-the-funnel.md)
@@ -58,4 +58,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-07 [Cuisine chip counts ignore the area and keyword already chosen](done/2026-09-07-cuisine-counts-ignore-other-filters.md)
 - 2026-09-07 [The foods landing tells you to pick a city while already listing 110 merchants](done/2026-09-07-foods-landing-lists-before-city.md)
 - 2026-09-07 [check-i18n does not guard the ui-text editor's own namespace labels](done/2026-09-07-ui-text-namespace-label-guard.md)
-- 2026-09-07 [文案搬進 catalog：兩個自帶五語系字典的元件](done/2026-09-07-i18n-inline-dicts.md)

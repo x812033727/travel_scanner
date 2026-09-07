@@ -231,8 +231,12 @@ test("reviewed pet rules filter conservatively and require confirmation before c
     const trip = await json(page.request, "POST", "/trips", { source: "blank", planning_mode: "manual_blank",
       name: `Pet trip ${suffix}`, destination_name: "Taipei", start_date: departure, end_date: departure,
       notes: "Preserve this private note", timezone: "Asia/Taipei" });
+    // Creation notes are planner input in data.notes; editable trip notes use PATCH.
+    const withNotes = await json(page.request, "PATCH", `/trips/${trip.id}`, {
+      version: trip.version, notes: "Preserve this private note" });
+    expect(withNotes.notes).toBe("Preserve this private note");
     await page.goto(`/zh-TW/trips/${trip.id}`);
-    await page.getByRole("button", { name: "旅程工具", exact: true }).click();
+    await page.getByRole("button", { name: /^(開啟)?旅程工具$/ }).click();
     const petPanel = page.locator("details").filter({ has: page.locator("summary").filter({ hasText: /^寵物同行條件$/ }) });
     await petPanel.locator("summary").click();
     await petPanel.getByLabel("這趟旅行有寵物同行").check();
@@ -240,6 +244,7 @@ test("reviewed pet rules filter conservatively and require confirmation before c
     await petPanel.getByRole("button", { name: "儲存", exact: true }).click();
     await expect(petPanel.getByRole("status")).toHaveText("已儲存");
     const beforeAdd = await json(page.request, "GET", `/trips/${trip.id}`);
+    expect(beforeAdd.notes).toBe("Preserve this private note");
     await page.goto(`/zh-TW/pet-friendly/${candidate.id}`);
     await page.getByRole("button", { name: "加入我的行程", exact: true }).click();
     const add = page.getByRole("dialog", { name: "加入我的行程" });
@@ -254,6 +259,7 @@ test("reviewed pet rules filter conservatively and require confirmation before c
     const confirmed = await json(page.request, "GET", `/trips/${trip.id}`);
     expect(confirmed.items.filter((item: { data: { pet_place_id?: string } }) => item.data.pet_place_id === candidate.id)).toHaveLength(1);
     expect(confirmed.notes).toBe("Preserve this private note");
+    expect(confirmed.data.notes).toBe(beforeAdd.data.notes);
 
     await page.getByRole("button", { name: "回報到訪經驗", exact: true }).click();
     const report = page.getByRole("dialog", { name: "回報到訪經驗" });

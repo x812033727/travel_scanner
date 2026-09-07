@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from unittest.mock import AsyncMock
 from uuid import uuid4
@@ -15,7 +15,7 @@ import pytest
 import pytest_asyncio
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
-from sqlalchemy import func, select
+from sqlalchemy import func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import current_user
@@ -24,6 +24,8 @@ from app.db import engine, get_session
 from app.models import (
     AdminAuditLog,
     AffiliateClick,
+    HotelBookingClick,
+    HotelBookingOption,
     TravelServiceBrand,
     TravelServiceConfig,
     TravelServiceFavorite,
@@ -188,6 +190,247 @@ async def offer(session, item):
     session.add(row)
     await session.flush()
     return row, brand
+
+
+async def option_fixture(session, client, monkeypatch):
+    config = await session.get(TravelServiceConfig, 1)
+    config.data = {**config.data, "direct_hotel_links_enabled": True}
+    item = await product(
+        session,
+        kind="hotel",
+        area_code="shinjuku",
+        latitude=35.69,
+        longitude=139.70,
+        google_place_id="ChIJ_fixture_only",
+        map_verified=True,
+        coordinate_source_url="https://official.example.com/access",
+    )
+    link = HotelBookingOption(
+        provider="booking",
+        product_id=item.id,
+        url="https://www.booking.com/hotel/jp/fixture.html",
+        evidence_url=item.source_url,
+        property_id="fixture-123",
+        identity_note="Exact test identity",
+        status="approved",
+        discovery_status="found",
+        verified_at=datetime.now(UTC),
+        health_status="healthy",
+        version=1,
+    )
+    item.hotel_options.append(link)
+    await session.commit()
+    monkeypatch.setattr(
+        "app.catalog_review.evidence.public_request_target",
+        AsyncMock(return_value=("https://1.1.1.1/", "www.booking.com")),
+    )
+    return item, link
+
+
+async def test_unified_option_no_credentials_and_no_page_fetch(client, session, monkeypatch):
+    item, link = await option_fixture(session, client, monkeypatch)
+    before_clicks = await session.scalar(select(func.count()).select_from(AffiliateClick))
+    before_selections = await session.scalar(select(func.count()).select_from(TripServiceSelection))
+    monkeypatch.setattr(
+        router, "load_runtime_settings", AsyncMock(return_value=Settings(_env_file=None))
+    )
+    checker = AsyncMock(side_effect=AssertionError("clickouts must not fetch hotel pages"))
+    monkeypatch.setattr("app.travel_services.network.check_hotel_link", checker)
+    endpoint = f"/travel-services/{item.id}/booking-options/{link.id}/clickout"
+    result = await client.post(endpoint + "?url=https://evil.example.com")
+    assert result.status_code == 303
+    assert result.headers["location"] == link.url
+    checker.assert_not_called()
+    click = await session.scalar(
+        select(HotelBookingClick).where(HotelBookingClick.option_id == link.id)
+    )
+    assert click.mode == "direct" and not click.fallback
+    assert await session.scalar(select(func.count()).select_from(AffiliateClick)) == before_clicks
+    assert (
+        await session.scalar(select(func.count()).select_from(TripServiceSelection))
+        == before_selections
+    )
+    assert (
+        await client.post(f"/travel-services/{item.id}/booking-options/{uuid4()}/clickout")
+    ).status_code == 404
+    link.status = "pending"
+    await session.flush()
+    assert (await client.post(endpoint)).status_code == 404
+
+
+async def test_unified_affiliate_same_hotel_fallback_and_project_isolation(
+    client, session, monkeypatch
+):
+    item, option = await option_fixture(session, client, monkeypatch)
+    before_clicks = await session.scalar(select(func.count()).select_from(AffiliateClick))
+    affiliate, brand = await offer(session, item)
+    brand.code = "booking"
+    affiliate.target_url = option.url
+    # The existing approval context binds credentials, brand version and exact target.
+    settings = await router.load_runtime_settings(session)
+    affiliate.verification_context = link_context(settings)
+    await session.commit()
+    create = AsyncMock(return_value="https://tp.st/fixture")
+    monkeypatch.setattr(router.TravelpayoutsLinkClient, "create", create)
+    endpoint = f"/travel-services/{item.id}/booking-options/{option.id}/clickout"
+    result = await client.post(endpoint, headers={"X-Travel-Locale": "ja"})
+    assert result.status_code == 303 and result.headers["location"] == "https://tp.st/fixture"
+    assert str(brand.version) in create.call_args.kwargs["cache_context"]
+    create.side_effect = TimeoutError()
+    fallback = await client.post(endpoint)
+    assert fallback.status_code == 303 and fallback.headers["location"] == option.url
+    clicks = list(
+        await session.scalars(
+            select(HotelBookingClick)
+            .where(HotelBookingClick.option_id == option.id)
+            .order_by(HotelBookingClick.created_at)
+        )
+    )
+    assert [(c.mode, c.fallback) for c in clicks] == [("affiliate", False), ("direct", True)]
+    assert (
+        await session.scalar(select(func.count()).select_from(AffiliateClick)) == before_clicks + 1
+    )
+    config = await session.get(TravelServiceConfig, 1)
+    config.data = {**config.data, "direct_hotel_links_enabled": False}
+    await session.commit()
+    assert (await client.post(endpoint)).status_code == 503
+    config.data = {**config.data, "direct_hotel_links_enabled": True}
+    settings.travelpayouts_project_id = "different-project"
+    create.reset_mock()
+    await session.commit()
+    assert (await client.post(endpoint)).headers["location"] == option.url
+    create.assert_not_called()
+
+
+async def test_option_review_reminder_is_independent_from_product_review(
+    client, session, monkeypatch
+):
+    item, option = await option_fixture(session, client, monkeypatch)
+    initial = (await client.get("/admin/travel-services")).json()
+    assert item.verified_at > datetime.now(UTC) - timedelta(days=1)
+    option.verified_at = datetime.now(UTC) - timedelta(days=31)
+    await session.flush()
+    overview = (await client.get("/admin/travel-services")).json()
+    assert overview["review_due"] == initial["review_due"]
+    assert overview["hotel_option_review_due"] == initial["hotel_option_review_due"] + 1
+
+
+async def test_legacy_removal_refreshes_option_version_before_disabling(
+    client, session, monkeypatch
+):
+    from app.travel_services.imports import upsert_product
+    from app.travel_services.schemas import ProductInput
+    from app.travel_services.service import product_input
+
+    item, option = await option_fixture(session, client, monkeypatch)
+    data = product_input(item).model_dump(mode="json")
+    data["facts"]["hotel_links"] = []
+    # Simulate a completed review after this request loaded the relationship.
+    # Keep the identity map deliberately stale, as with a concurrent transaction.
+    await session.execute(
+        update(HotelBookingOption)
+        .where(HotelBookingOption.id == option.id)
+        .values(version=7)
+        .execution_options(synchronize_session=False)
+    )
+    assert option.version != 7
+    await upsert_product(session, ProductInput.model_validate(data))
+    await session.flush()
+    assert option.status == "disabled" and option.version == 8
+
+
+async def test_option_versions_duplicate_identity_and_independent_review(
+    client, session, monkeypatch
+):
+    item, option = await option_fixture(session, client, monkeypatch)
+    endpoint = f"/admin/travel-services/products/{item.id}/booking-options"
+    body = {
+        "provider": "trip_com",
+        "version": 0,
+        "url": "https://www.trip.com/hotels/tokyo-hotel-detail-123/fixture/",
+        "evidence_url": item.source_url,
+        "identity_note": "Name and address checked",
+    }
+    response = await client.put(endpoint, json=body)
+    assert response.status_code == 200 and response.json()["status"] == "pending"
+    assert item.status == "approved" and option.status == "approved"
+    assert (await client.put(endpoint, json=body)).status_code == 409
+    other = await product(session, kind="hotel")
+    assert (
+        await client.put(f"/admin/travel-services/products/{other.id}/booking-options", json=body)
+    ).status_code == 409
+    added = response.json()
+    review = {
+        "version": added["version"],
+        "status": "approved",
+        "identity_note": "Browser verified exact address",
+    }
+    monkeypatch.setattr(
+        "app.travel_services.network.check_hotel_link", AsyncMock(return_value="unconfirmed")
+    )
+    path = endpoint + f"/{added['id']}/review"
+    assert (await client.post(path, json=review)).status_code == 422
+    assert (await client.post(path, json={**review, "browser_verified": True})).status_code == 200
+
+
+async def test_csv_without_legacy_links_preserves_reviewed_options(client, session, monkeypatch):
+    import csv
+    import io
+    import json
+
+    from app.travel_services.imports import parse_csv, upsert_product
+    from app.travel_services.schemas import ProductInput
+
+    item, option = await option_fixture(session, client, monkeypatch)
+    output = io.StringIO()
+    writer = csv.DictWriter(
+        output,
+        fieldnames=[
+            "source_key",
+            "kind",
+            "destination_id",
+            "title",
+            "source_url",
+            "facts",
+            "names_json",
+        ],
+    )
+    writer.writeheader()
+    writer.writerow(
+        {
+            "source_key": item.source_key,
+            "kind": "hotel",
+            "destination_id": "tokyo",
+            "title": item.title,
+            "source_url": item.source_url,
+            "facts": json.dumps({k: v for k, v in item.facts.items() if k != "hotel_links"}),
+            "names_json": json.dumps(item.names_json),
+        }
+    )
+    parsed = parse_csv(output.getvalue())
+    assert "hotel_links" not in parsed[0]["product"]["facts"]
+    same, changed = await upsert_product(session, ProductInput.model_validate(parsed[0]["product"]))
+    assert same.id == item.id and not changed and option.status == "approved"
+
+
+async def test_quotes_disabled_are_honest_uncached_and_do_not_expose_policies(
+    client, session, monkeypatch
+):
+    item, _ = await option_fixture(session, client, monkeypatch)
+    response = await client.post(
+        f"/travel-services/{item.id}/hotel-quotes",
+        json={
+            "check_in": "2027-11-11",
+            "check_out": "2027-11-13",
+            "rooms": [{"adults": 2}],
+            "currency": "TWD",
+            "booker_country": "TW",
+        },
+    )
+    assert response.status_code == 200
+    assert response.json()["status"] == "not_configured" and response.json()["quotes"] == []
+    assert response.headers["cache-control"] == "no-store"
+    assert "hotel_quote_policies" not in (await client.get("/travel-services/config")).json()
 
 
 async def test_catalog_only_exposes_reviewed_products_and_ready_offers(client, session):
@@ -456,9 +699,11 @@ async def test_direct_hotel_import_review_and_guest_click_without_network(
     )
     for module in (router, admin):
         monkeypatch.setattr(module, "load_runtime_settings", AsyncMock(return_value=settings))
-    checker = AsyncMock(return_value=True)
-    monkeypatch.setattr(admin, "verify_hotel_link", checker)
-    monkeypatch.setattr(router, "verify_hotel_link", checker)
+    checker = AsyncMock(return_value=("https://93.184.216.34/stay", "hotel.example.com"))
+    monkeypatch.setattr("app.catalog_review.evidence.public_request_target", checker)
+    monkeypatch.setattr(
+        "app.travel_services.network.check_hotel_link", AsyncMock(return_value="healthy")
+    )
     affiliate = AsyncMock(side_effect=AssertionError("No affiliate API for ordinary links"))
     monkeypatch.setattr(router.TravelpayoutsLinkClient, "create", affiliate)
     config = await session.get(TravelServiceConfig, 1)
@@ -511,6 +756,16 @@ async def test_direct_hotel_import_review_and_guest_click_without_network(
         json={"version": hotel.version, "status": "approved"},
     )
     assert approved.status_code == 200, approved.text
+    option = hotel.hotel_options[0]
+    option_review = await client.post(
+        f"/admin/travel-services/products/{hotel.id}/booking-options/{option.id}/review",
+        json={
+            "version": option.version,
+            "status": "approved",
+            "identity_note": "Confirmed official hotel name and address",
+        },
+    )
+    assert option_review.status_code == 200, option_review.text
     results = (await client.get("/travel-services?destination_id=tokyo&type=hotel")).json()
     item = next(p for p in results["items"] if p["id"] == str(hotel.id))
     assert item["offers"] == []
@@ -524,9 +779,9 @@ async def test_direct_hotel_import_review_and_guest_click_without_network(
     assert response.headers["referrer-policy"] == "no-referrer"
     assert await session.scalar(select(func.count()).select_from(AffiliateClick)) == click_count
     affiliate.assert_not_called()
-    checker.return_value = False
+    checker.return_value = None
     assert (await client.post(path)).status_code == 503
-    checker.return_value = True
+    checker.return_value = ("https://93.184.216.34/stay", "hotel.example.com")
     config.data = {**config.data, "direct_hotel_links_enabled": False}
     assert (await client.post(path)).status_code == 404
     client._transport.app.dependency_overrides[current_user] = lambda: actor
@@ -538,7 +793,10 @@ async def test_direct_hotel_import_review_and_guest_click_without_network(
     edited = await client.put(
         f"/admin/travel-services/products/{hotel.id}?version={hotel.version}", json=payload
     )
-    assert edited.status_code == 200 and edited.json()["status"] == "pending"
+    assert edited.status_code == 200 and edited.json()["status"] == "approved"
+    assert (
+        hotel.hotel_options[0].status == "pending"
+    )  # Link-only edits do not revoke hotel approval.
     assert (await client.post(path)).status_code == 404
 
 

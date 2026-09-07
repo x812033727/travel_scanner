@@ -82,8 +82,12 @@ the current run records the secondary administrator trace and bounded actions.
 Real reconnect/outage/capacity tests and production launch requirements remain open.
 Local Windows has no Docker/PostgreSQL. See docs/community.md for launch gates.
 
-Follow-up: 0059 adds typed post catalog references with legacy pet-ID reads.
+Follow-up: 0060 adds typed post catalog references with legacy pet-ID reads.
 Publication filters are rechecked on every read, including source-expired merchants.
 Focused contracts cover all three place types, invalid input, duplicate references,
 disabled entities and previous-version compatibility. Fresh/legacy migration checks
 include the new column; exact-head PostgreSQL CI still must pass before acceptance.
+
+Integration checkpoint: merge main f2c3b2a (hotel booking options). Community
+revisions are now 0058 community / 0059 pet friendly / 0060 community places,
+following main's 0057 hotel migration. Only unmerged draft migrations were renamed.

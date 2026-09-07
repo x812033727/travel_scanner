@@ -244,6 +244,7 @@ describe("reviewed travel services", () => {
     const dialog = await screen.findByRole("dialog");
     expect(dialog.getAttribute("aria-modal")).toBe("true");
     expect(window.history.state.serviceSheet).toBeTruthy();
+    window.history.replaceState({}, "");
     fireEvent(window, new PopStateEvent("popstate"));
     expect(screen.queryByRole("dialog")).toBeNull();
   });

@@ -189,7 +189,7 @@ The complete product plan is not yet accepted. The editor now searches published
 hotspots, merchants and pet places and stores at most 20 typed catalog references
 per immutable post version. Names and internal links are resolved by the server;
 disabled places and merchants without current publication evidence are omitted
-on every read. Migration 0059 adds the reference JSON without discarding legacy
+on every read. Migration 0060 adds the reference JSON without discarding legacy
 pet-place IDs. UI selections survive failed searches, and drafts send only type
 and ID, never a client-provided label or URL.
 

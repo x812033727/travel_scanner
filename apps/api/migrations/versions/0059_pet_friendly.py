@@ -3,8 +3,8 @@
 import sqlalchemy as sa
 from alembic import context, op
 
-revision = "0058_pet_friendly"
-down_revision = "0057_community"
+revision = "0059_pet_friendly"
+down_revision = "0058_community"
 branch_labels = None
 depends_on = None
 

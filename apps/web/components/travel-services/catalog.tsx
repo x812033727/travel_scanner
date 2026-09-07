@@ -19,6 +19,12 @@ import { useModalSheet } from "@/lib/modal-sheet";
 import { useSavedItems } from "@/components/saved-items-provider";
 
 import { KINDS, type Kind } from "./options";
+import {
+  BookingPanel,
+  SourceCredits,
+  type BookingOption,
+  type SourceCredit,
+} from "./booking-panel";
 export { KINDS, CITIES, type Kind } from "./options";
 const ICONS = {
   hotel: BedDouble,
@@ -35,6 +41,7 @@ export type Product = {
   distance_km: number | null;
   reason: string;
   facts: {
+    source_credits?: SourceCredit[];
     area_code: string | null;
     country_codes: string[];
     facilities: string[];
@@ -59,6 +66,7 @@ export type Product = {
     scope: "product" | "destination";
   }[];
   direct_links?: { provider: string; name: string | null }[];
+  booking_options?: BookingOption[];
 };
 type Selection = {
   id: string;
@@ -759,117 +767,138 @@ export function ServiceCatalog({
                             />
                           </button>
                         </div>
-                        {showPlatforms === product.id && (
-                          <div className="mt-4 space-y-3 border-t border-[var(--line)] pt-4">
-                            {product.offers.length > 0 && (
-                              <p className="text-xs text-[var(--muted)]">
-                                {t("disclosure")}
-                              </p>
-                            )}
-                            {(product.direct_links?.length || 0) > 0 && (
-                              <div className="space-y-3">
+                        {showPlatforms === product.id &&
+                          product.kind === "hotel" &&
+                          product.booking_options && (
+                            <BookingPanel
+                              product={product}
+                              startDate={data?.start_date}
+                              endDate={data?.end_date}
+                              placement={
+                                tripId
+                                  ? "trip"
+                                  : hotspotId
+                                    ? "hotspot"
+                                    : "destination"
+                              }
+                              onClose={() => setShowPlatforms(undefined)}
+                            />
+                          )}
+                        {showPlatforms === product.id &&
+                          (product.kind !== "hotel" ||
+                            !product.booking_options) && (
+                            <div className="mt-4 space-y-3 border-t border-[var(--line)] pt-4">
+                              {product.offers.length > 0 && (
                                 <p className="text-xs text-[var(--muted)]">
-                                  {t("directDisclosure")}
+                                  {t("disclosure")}
                                 </p>
-                                {product.direct_links!.map((link) => {
-                                  const name =
-                                    link.provider === "official"
-                                      ? t("officialHotel")
-                                      : link.name;
-                                  return (
-                                    <form
-                                      key={link.provider}
-                                      action={`/api/travel/travel-services/${product.id}/hotel-links/${link.provider}/clickout?locale=${locale}`}
-                                      method="post"
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                    >
-                                      <button
-                                        type="submit"
-                                        className={`${button} w-full justify-between text-left`}
-                                        aria-label={`${name} · ${t("ordinaryLink")} · ${t("newTab")}`}
-                                      >
-                                        <span className="min-w-0 break-words">
-                                          {name}
-                                          <small className="block text-xs font-normal">
-                                            {t("productScope")} ·{" "}
-                                            {t("ordinaryLink")}
-                                          </small>
-                                        </span>
-                                        <ExternalLink
-                                          size={16}
-                                          className="shrink-0"
-                                        />
-                                      </button>
-                                    </form>
-                                  );
-                                })}
-                              </div>
-                            )}
-                            {product.offers.length === 0 &&
-                              !product.direct_links?.length && (
-                                <p className="text-sm">{t("noOffers")}</p>
                               )}
-                            {product.offers.map((offer) => (
-                              <form
-                                key={offer.id}
-                                action={`/api/travel/affiliates/offers/${offer.id}/clickout?locale=${locale}&placement=${tripId ? "trip" : hotspotId ? "hotspot" : "destination"}`}
-                                method="post"
+                              {(product.direct_links?.length || 0) > 0 && (
+                                <div className="space-y-3">
+                                  <p className="text-xs text-[var(--muted)]">
+                                    {t("directDisclosure")}
+                                  </p>
+                                  {product.direct_links!.map((link) => {
+                                    const name =
+                                      link.provider === "official"
+                                        ? t("officialHotel")
+                                        : link.name;
+                                    return (
+                                      <form
+                                        key={link.provider}
+                                        action={`/api/travel/travel-services/${product.id}/hotel-links/${link.provider}/clickout?locale=${locale}`}
+                                        method="post"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                      >
+                                        <button
+                                          type="submit"
+                                          className={`${button} w-full justify-between text-left`}
+                                          aria-label={`${name} · ${t("ordinaryLink")} · ${t("newTab")}`}
+                                        >
+                                          <span className="min-w-0 break-words">
+                                            {name}
+                                            <small className="block text-xs font-normal">
+                                              {t("productScope")} ·{" "}
+                                              {t("ordinaryLink")}
+                                            </small>
+                                          </span>
+                                          <ExternalLink
+                                            size={16}
+                                            className="shrink-0"
+                                          />
+                                        </button>
+                                      </form>
+                                    );
+                                  })}
+                                </div>
+                              )}
+                              {product.offers.length === 0 &&
+                                !product.direct_links?.length && (
+                                  <p className="text-sm">{t("noOffers")}</p>
+                                )}
+                              {product.offers.map((offer) => (
+                                <form
+                                  key={offer.id}
+                                  action={`/api/travel/affiliates/offers/${offer.id}/clickout?locale=${locale}&placement=${tripId ? "trip" : hotspotId ? "hotspot" : "destination"}`}
+                                  method="post"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  <button
+                                    className={`${button} w-full justify-between text-left`}
+                                    type="submit"
+                                    aria-label={`${offer.brand_name} · ${t(offer.scope === "product" ? "productScope" : "destinationScope")} · ${t("newTab")}`}
+                                  >
+                                    <span>
+                                      {offer.brand_name}
+                                      <small className="block text-xs font-normal">
+                                        {t(
+                                          offer.scope === "product"
+                                            ? "productScope"
+                                            : "destinationScope",
+                                        )}
+                                      </small>
+                                    </span>
+                                    <ExternalLink size={16} />
+                                  </button>
+                                </form>
+                              ))}
+                              {k === "esim" && (
+                                <p className="text-xs">
+                                  {t("tethering")}:{" "}
+                                  {product.facts.tethering == null
+                                    ? t("unknown")
+                                    : t(product.facts.tethering ? "yes" : "no")}
+                                </p>
+                              )}
+                              {k === "transfer" && (
+                                <p className="text-xs">
+                                  {t("luggage")}:{" "}
+                                  {product.facts.luggage ?? t("unknown")}
+                                </p>
+                              )}
+                              {k === "tour" && (
+                                <p className="text-xs">
+                                  {t("meeting")}:{" "}
+                                  {product.facts.meeting_point || t("unknown")}{" "}
+                                  · {t("duration")}:{" "}
+                                  {product.facts.duration_minutes ??
+                                    t("unknown")}
+                                </p>
+                              )}
+                              <a
+                                href={product.source_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                className="inline-flex min-h-11 items-center text-sm underline"
+                                aria-label={`${t("source")} · ${t("newTab")}`}
                               >
-                                <button
-                                  className={`${button} w-full justify-between text-left`}
-                                  type="submit"
-                                  aria-label={`${offer.brand_name} · ${t(offer.scope === "product" ? "productScope" : "destinationScope")} · ${t("newTab")}`}
-                                >
-                                  <span>
-                                    {offer.brand_name}
-                                    <small className="block text-xs font-normal">
-                                      {t(
-                                        offer.scope === "product"
-                                          ? "productScope"
-                                          : "destinationScope",
-                                      )}
-                                    </small>
-                                  </span>
-                                  <ExternalLink size={16} />
-                                </button>
-                              </form>
-                            ))}
-                            {k === "esim" && (
-                              <p className="text-xs">
-                                {t("tethering")}:{" "}
-                                {product.facts.tethering == null
-                                  ? t("unknown")
-                                  : t(product.facts.tethering ? "yes" : "no")}
-                              </p>
-                            )}
-                            {k === "transfer" && (
-                              <p className="text-xs">
-                                {t("luggage")}:{" "}
-                                {product.facts.luggage ?? t("unknown")}
-                              </p>
-                            )}
-                            {k === "tour" && (
-                              <p className="text-xs">
-                                {t("meeting")}:{" "}
-                                {product.facts.meeting_point || t("unknown")} ·{" "}
-                                {t("duration")}:{" "}
-                                {product.facts.duration_minutes ?? t("unknown")}
-                              </p>
-                            )}
-                            <a
-                              href={product.source_url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex min-h-11 items-center text-sm underline"
-                              aria-label={`${t("source")} · ${t("newTab")}`}
-                            >
-                              {t("source")}
-                            </a>
-                          </div>
-                        )}
+                                {t("source")}
+                              </a>
+                            </div>
+                          )}
+                        <SourceCredits credits={product.facts.source_credits} />
                         {selected?.id === product.id && (
                           <div className="mt-4 space-y-3 rounded-2xl bg-[var(--paper)] p-4">
                             {!tripId && (
@@ -1137,10 +1166,12 @@ export function TripTravelServices(
       .catch(() => undefined);
   }, []);
   useEffect(() => {
-    const back = () => setOpen(undefined);
+    const back = () => {
+      if (window.history.state?.serviceSheet !== id) setOpen(undefined);
+    };
     window.addEventListener("popstate", back);
     return () => window.removeEventListener("popstate", back);
-  }, []);
+  }, [id]);
   if (!config?.enabled_kinds?.length) return null;
   return (
     <section

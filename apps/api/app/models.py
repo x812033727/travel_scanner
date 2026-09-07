@@ -20,7 +20,7 @@ from sqlalchemy import (
     UniqueConstraint,
     text,
 )
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 # Register the additive community tables with the same metadata as the monolith.
 # Community models depend only on Base; Timestamped is defined in that module.
@@ -270,6 +270,62 @@ class TravelServiceProduct(Timestamped, Base):
     status: Mapped[str] = mapped_column(String(16), default="pending", index=True)
     version: Mapped[int] = mapped_column(Integer, default=1)
     verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    hotel_options: Mapped[list[HotelBookingOption]] = relationship(
+        lazy="selectin", cascade="all, delete-orphan", passive_deletes=True
+    )
+
+    def __init__(self, **kwargs: Any) -> None:
+        # Newly-created instances can be returned by Session.get without a SELECT.
+        # Initialize the collection so synchronous compatibility projections never lazy-load.
+        kwargs.setdefault("hotel_options", [])
+        super().__init__(**kwargs)
+
+
+class HotelBookingOption(Timestamped, Base):
+    __tablename__ = "hotel_booking_options"
+    __table_args__ = (
+        UniqueConstraint("product_id", "provider", name="uq_hotel_option_provider"),
+        UniqueConstraint("provider", "url", name="uq_hotel_option_url"),
+        UniqueConstraint("provider", "property_id", name="uq_hotel_option_identity"),
+        CheckConstraint(
+            "status IN ('pending','approved','disabled')", name="ck_hotel_option_status"
+        ),
+        CheckConstraint(
+            "discovery_status IN ('found','not_found','unconfirmed')",
+            name="ck_hotel_option_discovery",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    product_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_service_products.id", ondelete="CASCADE"), index=True
+    )
+    provider: Mapped[str] = mapped_column(String(32))
+    url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    property_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    evidence_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    identity_note: Mapped[str] = mapped_column(String(1000), default="")
+    discovery_status: Mapped[str] = mapped_column(String(16), default="found")
+    status: Mapped[str] = mapped_column(String(16), default="pending", index=True)
+    version: Mapped[int] = mapped_column(Integer, default=1)
+    verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    health_status: Mapped[str] = mapped_column(String(16), default="unchecked")
+    checked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class HotelBookingClick(Base):
+    __tablename__ = "hotel_booking_clicks"
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    option_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("hotel_booking_options.id", ondelete="SET NULL"), nullable=True
+    )
+    provider: Mapped[str] = mapped_column(String(32))
+    destination_id: Mapped[str] = mapped_column(String(64))
+    mode: Mapped[str] = mapped_column(String(16))
+    fallback: Mapped[bool] = mapped_column(Boolean, default=False)
+    placement: Mapped[str] = mapped_column(String(24))
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utcnow, index=True
+    )
 
 
 class TravelServiceBrand(Timestamped, Base):

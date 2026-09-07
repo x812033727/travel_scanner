@@ -102,5 +102,9 @@ CI 34135827036 confirms desktop/Pixel 7 pet species filters after the auth-hydra
 fix. The next pet test step must open the current planner's tools drawer first.
 A test-only TypeScript role-option error also needs the next full CI verification.
 
+Integrated main f2c3b2a. BFF timeout resolution retains community streams/media,
+hotel clickouts, booking-option review and hotel quote-search deadlines together.
+The next CI run must validate the actual merge with main, not only the feature head.
+
 Built on isolated main 516713d. The existing forgot-password task owns the login
 entry; this task owns the new confirmation/recovery UI and public community pages.

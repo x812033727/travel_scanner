@@ -74,10 +74,23 @@ class StrictModel(BaseModel):
     model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
 
 
+HotelProvider = Literal[
+    "official", "booking", "trip_com", "agoda", "expedia", "rakuten", "klook", "kkday"
+]
+HOTEL_PROVIDERS = (
+    "official",
+    "booking",
+    "trip_com",
+    "agoda",
+    "expedia",
+    "rakuten",
+    "klook",
+    "kkday",
+)
+
+
 class HotelLink(StrictModel):
-    provider: Literal[
-        "official", "booking", "trip_com", "agoda", "expedia", "rakuten", "klook", "kkday"
-    ]
+    provider: HotelProvider
     url: str
     evidence_url: str
 
@@ -126,12 +139,69 @@ class HotelLink(StrictModel):
                 raise ValueError("Affiliate links are not ordinary hotel links")
         else:
             brand_target(self.provider, self.url)
-            if urlsplit(self.url).path == "/":
+            path = urlsplit(self.url).path.lower()
+            if path == "/" or re.search(
+                r"(?:^|/)(?:search(?:results)?(?:\.html)?|hotel-search|hotels-list|searchresult)(?:/|$)",
+                path,
+            ):
                 raise ValueError("An exact hotel page, not a platform homepage, is required")
         return self
 
 
+class SourceCredit(StrictModel):
+    title: str = Field(min_length=1, max_length=255)
+    publisher: str = Field(min_length=1, max_length=255)
+    url: str
+    license_name: str = Field(min_length=1, max_length=128)
+    license_url: str
+    changes: str = Field(min_length=1, max_length=1000)
+
+    @field_validator("url", "license_url")
+    @classmethod
+    def urls(cls, value: str) -> str:
+        return safe_url(value)
+
+
+class HotelOptionInput(StrictModel):
+    provider: HotelProvider
+    url: str | None = None
+    property_id: str | None = Field(None, min_length=1, max_length=255)
+    evidence_url: str | None = None
+    identity_note: str = Field(default="", max_length=1000)
+    discovery_status: Literal["found", "not_found", "unconfirmed"] = "found"
+
+    @field_validator("evidence_url")
+    @classmethod
+    def evidence(cls, value: str | None) -> str | None:
+        return safe_url(value) if value else None
+
+    @model_validator(mode="after")
+    def link(self) -> Self:
+        if self.discovery_status == "found":
+            if not self.url or not self.evidence_url:
+                raise ValueError("Exact hotel URL and identity evidence required")
+            validated = HotelLink(
+                provider=self.provider, url=self.url, evidence_url=self.evidence_url
+            )
+            self.url, self.evidence_url = validated.url, validated.evidence_url
+        elif self.url or self.property_id:
+            raise ValueError("Unconfirmed discovery cannot assert a hotel identity")
+        return self
+
+
+class HotelOptionEdit(HotelOptionInput):
+    version: int = Field(ge=0)
+
+
+class HotelOptionReview(StrictModel):
+    version: int = Field(ge=1)
+    status: Status
+    browser_verified: bool = False
+    identity_note: str = Field(default="", max_length=1000)
+
+
 class Facts(StrictModel):
+    source_credits: list[SourceCredit] = Field(default_factory=list, max_length=10)
     hotel_links: list[HotelLink] = Field(default_factory=list, max_length=8)
     country_codes: list[str] = Field(default_factory=list, max_length=50)
     area_code: str | None = Field(None, max_length=64)
@@ -269,7 +339,34 @@ class BrandInput(StrictModel):
         return value
 
 
+class HotelQuotePolicy(StrictModel):
+    enabled: bool = False
+    comparison_allowed: bool = False
+    terms_url: str | None = None
+    daily_limit: int = Field(default=0, ge=0, le=100000)
+    per_minute_limit: int = Field(default=10, ge=1, le=1000)
+    timeout_seconds: int = Field(default=8, ge=1, le=20)
+    cache_seconds: int = Field(default=0, ge=0, le=3600)
+
+    @field_validator("terms_url")
+    @classmethod
+    def terms(cls, value: str | None) -> str | None:
+        return safe_url(value) if value else None
+
+    @model_validator(mode="after")
+    def authorized(self) -> Self:
+        if self.enabled and (
+            not self.comparison_allowed or not self.terms_url or not self.daily_limit
+        ):
+            raise ValueError("Explicit comparison rights and budget required")
+        # Persistent caching is deliberately not implemented until a provider's rules are reviewed.
+        if self.cache_seconds:
+            raise ValueError("Price caching is not enabled in this release")
+        return self
+
+
 class CatalogConfig(StrictModel):
+    hotel_quote_policies: dict[HotelProvider, HotelQuotePolicy] = Field(default_factory=dict)
     public_enabled: bool = False
     direct_hotel_links_enabled: bool = False
     enabled_kinds: list[Kind] = Field(default_factory=list)
