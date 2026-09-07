@@ -3,9 +3,12 @@ import { pretendSignedIn } from "./session";
 
 const dashboard = {
   range: "30d", timezone: "Asia/Taipei", source: "raw",
-  summary: { live_sessions_30m: 4, page_views: 128, avg_daily_visitors: 17.5, sessions: 42, pages_per_session: 3.05, registration_completed: 8, search_completed: 26, trip_created: 14, outbound_click: 11, previous: {}, changes: { page_views: 12.5 } },
+  summary: { live_sessions_30m: 4, page_views: 128, avg_daily_visitors: 17.5, sessions: 42, pages_per_session: 3.05, registration_completed: 8, discover_requested: 31, search_completed: 26, trip_created: 14, offer_attached: 12, outbound_click: 11, previous: {}, changes: { page_views: 12.5 } },
   timeseries: [{ bucket: "2026-09-01", page_view: 80 }, { bucket: "2026-09-02", page_view: 48 }],
-  funnel: [{ step: "sessions", sessions: 42, conversion_rate: 100 }, { step: "search_completed", sessions: 26, conversion_rate: 61.9 }, { step: "trip_created", sessions: 14, conversion_rate: 33.3 }, { step: "outbound_click", sessions: 11, conversion_rate: 26.2 }],
+  // The steps the API actually returns, in order. A fixture that keeps an old step name
+  // renders a label key that no longer exists, which is a failure about this file rather
+  // than about the panel.
+  funnel: [{ step: "sessions", sessions: 42, conversion_rate: 100 }, { step: "discover_requested", sessions: 31, conversion_rate: 73.8 }, { step: "trip_created", sessions: 14, conversion_rate: 33.3 }, { step: "offer_attached", sessions: 12, conversion_rate: 28.6 }, { step: "outbound_click", sessions: 11, conversion_rate: 26.2 }],
   top_pages: [{ key: "/hotspots", value: 45 }, { key: "/search", value: 38 }],
   referrers: [{ key: "search", value: 51 }], utm_sources: [{ key: "autumn", value: 20 }],
   devices: [{ key: "mobile", value: 90 }], locales: [{ key: "zh-TW", value: 80 }], countries: [{ key: "TW", value: 76 }],
