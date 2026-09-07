@@ -12,22 +12,25 @@ import { useEffect, useMemo, useState } from "react";
 import { useSavedItems } from "@/components/saved-items-provider";
 import { api } from "@/lib/api";
 import { safeExternalHref } from "@/lib/navigation";
+import { Link } from "@/i18n/navigation";
 
-type SavedType = "hotspot" | "food" | "restaurant" | "merchant";
+type SavedType = "hotspot" | "food" | "restaurant" | "merchant" | "service";
 type CopyFilter = "all" | "hotspot" | "food" | "restaurant";
 type SavedItem = {
   type: SavedType;
   id: string;
   title: string;
   subtitle: string;
+  href?: string;
   map_links: { url: string; label: string }[];
 };
 type Filter = "all" | SavedType;
 
 export function AccountSavedItems() {
   const tAccount = useTranslations("account");
+  const tServices = useTranslations("travelServices");
   const filterLabel = (key: Filter) =>
-    key === "merchant" ? tAccount("savedMerchants") : tAccount(`savedItems.filters.${key as CopyFilter}`);
+    key === "service" ? tServices("title") : key === "merchant" ? tAccount("savedMerchants") : tAccount(`savedItems.filters.${key as CopyFilter}`);
   const saved = useSavedItems();
   const [items, setItems] = useState<SavedItem[]>([]);
   const [filter, setFilter] = useState<Filter>("all");
@@ -67,6 +70,7 @@ export function AccountSavedItems() {
       food: items.filter((item) => item.type === "food").length,
       restaurant: items.filter((item) => item.type === "restaurant").length,
       merchant: items.filter((item) => item.type === "merchant").length,
+      service: items.filter((item) => item.type === "service").length,
     }),
     [items],
   );
@@ -106,7 +110,7 @@ export function AccountSavedItems() {
         </div>
       </div>
       <div className="app-chip-row mt-5" role="tablist" aria-label={tAccount("savedItems.title")}>
-        {(["all", "hotspot", "food", "merchant", "restaurant"] as Filter[]).map((key) => (
+        {(["all", "hotspot", "food", "merchant", "restaurant", "service"] as Filter[]).map((key) => (
           <button
             key={key}
             type="button"
@@ -151,7 +155,7 @@ export function AccountSavedItems() {
                 </span>
                 <div className="min-w-0 flex-1">
                   <strong className="block truncate text-sm">
-                    {item.title}
+                    {item.href ? <Link href={item.href}>{item.title}</Link> : item.title}
                   </strong>
                   <span className="block truncate text-xs text-[var(--muted)]">
                     {item.subtitle}

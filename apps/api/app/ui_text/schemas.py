@@ -29,6 +29,7 @@ UI_TEXT_NAMESPACES: tuple[str, ...] = (
     "restaurants",
     "search",
     "stayAreas",
+    "travelServices",
     "trips",
     "usage",
 )

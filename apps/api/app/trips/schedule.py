@@ -125,15 +125,13 @@ def merge_reoptimized_lodging(
 
 def is_logistics_item(item: TripPlanItem) -> bool:
     return item.system_role is None and (
-        item.item_type in LOGISTICS_ITEM_TYPES
-        or item.data.get("timeline_section") == "logistics"
+        item.item_type in LOGISTICS_ITEM_TYPES or item.data.get("timeline_section") == "logistics"
     )
 
 
 def is_active_route_item(item: TripPlanItem) -> bool:
     location_ready = (
-        getattr(item, "latitude", None) is not None
-        and getattr(item, "longitude", None) is not None
+        getattr(item, "latitude", None) is not None and getattr(item, "longitude", None) is not None
     )
     return (
         not item.is_skipped
@@ -152,8 +150,7 @@ def active_route_rows(
     selected = [
         item
         for item in rows
-        if is_active_route_item(item)
-        and (day_value is None or item.day_date == day_value)
+        if is_active_route_item(item) and (day_value is None or item.day_date == day_value)
     ]
     return sorted(selected, key=lambda item: (item.day_date or date.min, item.position))
 
@@ -234,9 +231,7 @@ def _new_slot(
     if role in {"hotel_start", "hotel_end"}:
         name = str((lodging or {}).get("name") or "尚未設定飯店")
         lodging_ready = bool(
-            lodging
-            and lodging.get("latitude") is not None
-            and lodging.get("longitude") is not None
+            lodging and lodging.get("latitude") is not None and lodging.get("longitude") is not None
         )
         starts = (
             _local_at(day_value, str(defaults["day_start_time"]), timezone)
@@ -269,6 +264,7 @@ def _new_slot(
             data={
                 "source_mode": "system",
                 "needs_place_confirmation": not lodging_ready,
+                **_catalog_lodging_identity(lodging),
             },
             provider_place_id=(lodging or {}).get("provider_place_id"),
             location_source=(lodging or {}).get("location_source"),
@@ -307,9 +303,7 @@ def _new_slot(
     )
 
 
-def _new_flight_slot(
-    trip: TripPlan, day_value: date, role: FlightSystemRole
-) -> TripPlanItem:
+def _new_flight_slot(trip: TripPlan, day_value: date, role: FlightSystemRole) -> TripPlanItem:
     label = "去程" if role == "outbound_flight" else "回程"
     return TripPlanItem(
         id=uuid4(),
@@ -332,17 +326,11 @@ def _new_flight_slot(
     )
 
 
-def _promote_legacy_flights(
-    trip: TripPlan, rows: list[TripPlanItem], days: list[date]
-) -> bool:
+def _promote_legacy_flights(trip: TripPlan, rows: list[TripPlanItem], days: list[date]) -> bool:
     if not days:
         return False
     changed = False
-    assigned = {
-        item.system_role
-        for item in rows
-        if item.system_role in FLIGHT_SYSTEM_ROLES
-    }
+    assigned = {item.system_role for item in rows if item.system_role in FLIGHT_SYSTEM_ROLES}
     candidates = [
         item
         for item in rows
@@ -391,19 +379,28 @@ def _promote_legacy_flights(
     return changed
 
 
+def _catalog_lodging_identity(lodging: dict[str, Any] | None) -> dict[str, Any]:
+    if not lodging or not lodging.get("catalog_product_id"):
+        return {}
+    return {key: lodging.get(key) for key in ("catalog_product_id", "naver_map_url", "map_links")}
+
+
 def _sync_lodging(item: TripPlanItem, lodging: dict[str, Any] | None) -> bool:
     if item.system_role not in {"hotel_start", "hotel_end"}:
         return False
+    if (
+        lodging
+        and lodging.get("catalog_product_id")
+        and (item.locked or item.fixed_time)
+        and item.data.get("source_mode") != "system"
+    ):
+        return False
     name = str((lodging or {}).get("name") or "尚未設定飯店")
     lodging_ready = bool(
-        lodging
-        and lodging.get("latitude") is not None
-        and lodging.get("longitude") is not None
+        lodging and lodging.get("latitude") is not None and lodging.get("longitude") is not None
     )
     values = {
-        "title": (
-            f"從 {name} 出發" if item.system_role == "hotel_start" else f"返回 {name}"
-        ),
+        "title": (f"從 {name} 出發" if item.system_role == "hotel_start" else f"返回 {name}"),
         "location_name": (lodging or {}).get("location_name"),
         "provider_place_id": (lodging or {}).get("provider_place_id"),
         "location_source": (lodging or {}).get("location_source"),
@@ -422,11 +419,18 @@ def _sync_lodging(item: TripPlanItem, lodging: dict[str, Any] | None) -> bool:
     changed = any(getattr(item, key) != value for key, value in values.items())
     for key, value in values.items():
         setattr(item, key, value)
-    item.data = {
-        **item.data,
+    data = {**item.data}
+    if data.get("catalog_product_id"):
+        for key in ("catalog_product_id", "naver_map_url", "map_links"):
+            data.pop(key, None)
+    data = {
+        **data,
         "source_mode": "system",
         "needs_place_confirmation": not lodging_ready,
+        **_catalog_lodging_identity(lodging),
     }
+    changed = changed or data != item.data
+    item.data = data
     return changed
 
 
@@ -439,8 +443,7 @@ def canonicalize_positions(rows: list[TripPlanItem]) -> bool:
         route_rows = [
             item
             for item in day_rows
-            if not is_logistics_item(item)
-            and item.system_role not in FLIGHT_SYSTEM_ROLES
+            if not is_logistics_item(item) and item.system_role not in FLIGHT_SYSTEM_ROLES
         ]
         logistics = [item for item in day_rows if is_logistics_item(item)]
 
@@ -470,9 +473,7 @@ def canonicalize_positions(rows: list[TripPlanItem]) -> bool:
     return changed
 
 
-def ensure_system_slots(
-    session: AsyncSession, trip: TripPlan, rows: list[TripPlanItem]
-) -> bool:
+def ensure_system_slots(session: AsyncSession, trip: TripPlan, rows: list[TripPlanItem]) -> bool:
     changed = False
     lodging = primary_lodging(trip, rows)
     if lodging and trip.data.get("primary_lodging") != lodging:
@@ -530,9 +531,7 @@ def apply_schedule_defaults(trip: TripPlan, rows: list[TripPlanItem]) -> None:
             timezone,
         )
         duration = int(
-            defaults[
-                "lunch_duration_minutes" if is_lunch else "dinner_duration_minutes"
-            ]
+            defaults["lunch_duration_minutes" if is_lunch else "dinner_duration_minutes"]
         )
         item.start_time = starts
         item.end_time = starts + timedelta(minutes=duration)

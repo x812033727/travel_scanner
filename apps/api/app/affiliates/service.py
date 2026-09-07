@@ -2,12 +2,15 @@ from __future__ import annotations
 
 import hashlib
 import json
+import time
 from dataclasses import dataclass
 from typing import Any, cast
 from urllib.parse import parse_qsl, quote, urlencode, urlparse, urlunparse
+from uuid import uuid4
 
 import httpx
 from redis.asyncio import Redis
+from redis.exceptions import RedisError, WatchError
 
 from app.affiliates.registry import AffiliatePartner, partner_configured, partner_enabled
 from app.affiliates.schemas import AffiliateModule
@@ -115,17 +118,39 @@ class TravelpayoutsLinkClient:
         self.settings = settings
         self.client = client
 
-    async def create(self, target: str, sub_id: str) -> str:
+    async def create(self, target: str, sub_id: str, *, cache_context: str = "legacy") -> str:
         assert self.settings.travelpayouts_api_token
         assert self.settings.travelpayouts_marker
         assert self.settings.travelpayouts_project_id
         digest = hashlib.sha256(
-            f"{target}|{sub_id}|{self.settings.travelpayouts_marker}".encode()
+            f"{target}|{sub_id}|{self.settings.travelpayouts_marker}|{self.settings.travelpayouts_project_id}|{cache_context}|{hashlib.sha256(self.settings.travelpayouts_api_token.encode()).hexdigest()}".encode()
         ).hexdigest()
         cache_key = f"affiliate:travelpayouts:link:{digest}"
         cached = await self.redis.get(cache_key)
         if cached:
             return str(cached)
+        # Shared by the legacy flow and catalog. A rolling window, not an independent
+        # per-brand allowance: the network limit applies to the whole marker.
+        quota_key = f"affiliate:travelpayouts:quota:{self.settings.travelpayouts_marker}"
+        now = time.time()
+        try:
+            for attempt in range(10):
+                async with self.redis.pipeline(transaction=True) as pipe:
+                    try:
+                        await pipe.watch(quota_key)
+                        if await pipe.zcount(quota_key, now - 60, "+inf") >= 100:
+                            raise ConnectionError("Travelpayouts marker request budget exhausted")
+                        cast(Any, pipe).multi()
+                        pipe.zremrangebyscore(quota_key, "-inf", now - 60)
+                        pipe.zadd(quota_key, {uuid4().hex: now})
+                        pipe.expire(quota_key, 120)
+                        await pipe.execute()
+                        break
+                    except WatchError:
+                        if attempt == 9:
+                            raise ConnectionError("Travelpayouts quota is busy") from None
+        except RedisError as exc:
+            raise ConnectionError("Travelpayouts quota is unavailable") from exc
         try:
             payload = {
                 "trs": int(self.settings.travelpayouts_project_id),
@@ -151,10 +176,12 @@ class TravelpayoutsLinkClient:
             response.raise_for_status()
             body = cast(dict[str, Any], response.json())
             links = cast(dict[str, Any], body.get("result", {})).get("links", [])
+            if links and isinstance(links[0], dict) and links[0].get("url", target) != target:
+                raise ConnectionError("Travelpayouts returned a different product")
             partner_url = (
                 links[0].get("partner_url") if links and isinstance(links[0], dict) else None
             )
-            if not isinstance(partner_url, str):
+            if not isinstance(partner_url, str) or not partner_url:
                 raise ConnectionError("Travelpayouts did not return a partner URL")
         except (httpx.HTTPError, ValueError, TypeError, OverflowError) as exc:
             raise ConnectionError("Travelpayouts partner link is unavailable") from exc

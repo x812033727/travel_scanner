@@ -9,6 +9,7 @@ import {
   validateProxyPath,
 } from "./proxy-security";
 import { preserveRequestId } from "./request-id";
+import { forwardedAnalyticsSession, renewedSession, upstreamLocale } from "./proxy-context";
 
 type Context = { params: Promise<{ path: string[] }> };
 const MAX_REQUEST_BYTES = Number(process.env.API_PROXY_MAX_BODY_BYTES || 5 * 1024 * 1024);
@@ -21,48 +22,6 @@ function problem(status: number, code: string, detail: string) {
     { title: "請求未完成", status, code, detail },
     { status, headers: { "Cache-Control": "no-store" } },
   );
-}
-
-const RENEWAL_FALLBACK_MAX_AGE = 60 * 60;
-const RENEWAL_CAP_MAX_AGE = 60 * 60 * 24;
-
-/** The token from an upstream `Set-Cookie`, when the API slid the session forward. */
-/**
- * The locale the API should answer in. The page the browser is showing wins (the client
- * sends it as X-Travel-Locale on every call), then the preference remembered at sign-in,
- * then the catalog's own language. Without the header an anonymous reader of /en or /ja
- * got Chinese city names in every select, because the cookie only exists after sign-in.
- */
-/**
- * The browser's analytics session id, when it sent one that is actually an id.
- *
- * It travels so an event the API records for this call lands on the same session hash
- * as the page views around it. The value is client-controlled and ends up as an HMAC
- * input on the other side, so anything but a UUID is dropped rather than forwarded:
- * a caller that can choose the hash input can group other people's rows under it.
- */
-export function forwardedAnalyticsSession(value: string | null): string | null {
-  if (!value) return null;
-  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value) ? value : null;
-}
-
-export function upstreamLocale(requested: string | null | undefined, remembered: string | null | undefined): string {
-  if (requested && SUPPORTED_LOCALES.has(requested)) return requested;
-  if (remembered && SUPPORTED_LOCALES.has(remembered)) return remembered;
-  return "zh-TW";
-}
-
-export function renewedSession(upstream: Response): { token: string; maxAge: number } | null {
-  for (const cookie of upstream.headers.getSetCookie()) {
-    const token = /^travel_access=([^;]+)/.exec(cookie)?.[1];
-    if (!token) continue;
-    const declared = Number(/;\s*max-age=(\d+)/i.exec(cookie)?.[1]);
-    const maxAge = Number.isFinite(declared) && declared > 0
-      ? Math.min(declared, RENEWAL_CAP_MAX_AGE)
-      : RENEWAL_FALLBACK_MAX_AGE;
-    return { token: decodeURIComponent(token), maxAge };
-  }
-  return null;
 }
 
 async function limitedResponseText(response: Response): Promise<string> {
@@ -107,7 +66,11 @@ async function proxy(request: NextRequest, context: Context) {
     return problem(403, "cross_site_request_blocked", "不允許跨網站修改資料");
   }
   const base = process.env.API_INTERNAL_URL || "http://localhost:8000";
-  const url = `${base}/api/v1/${endpoint}${request.nextUrl.search}`;
+  const query = new URLSearchParams(request.nextUrl.search);
+  const isServiceClickout = /^affiliates\/offers\/[a-f0-9-]+\/clickout$/.test(endpoint);
+  const formLocale = isServiceClickout ? query.get("locale") : null;
+  if (isServiceClickout) query.delete("locale");
+  const url = `${base}/api/v1/${endpoint}${query.size ? `?${query}` : ""}`;
   const jar = await cookies();
   const token = jar.get("travel_access")?.value;
   const localeCookie = jar.get("travel_locale")?.value;
@@ -119,7 +82,7 @@ async function proxy(request: NextRequest, context: Context) {
   // tokens — so forwarding it as Authorization meant the renewal never ran and every
   // session died exactly one token lifetime after sign-in.
   if (token) headers.set("Cookie", `travel_access=${token}`);
-  headers.set("X-Travel-Locale", upstreamLocale(request.headers.get("x-travel-locale"), localeCookie));
+  headers.set("X-Travel-Locale", upstreamLocale(request.headers.get("x-travel-locale") || formLocale, localeCookie));
   for (const name of ["idempotency-key", "last-event-id"]) {
     const value = request.headers.get(name);
     if (value) headers.set(name, value);
@@ -157,7 +120,8 @@ async function proxy(request: NextRequest, context: Context) {
     }
   }
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), UPSTREAM_TIMEOUT_MS);
+  const verifyOffer = /^admin\/travel-services\/offers\/[a-f0-9-]+\/review$/.test(endpoint);
+  const timeout = setTimeout(() => controller.abort(), verifyOffer ? Math.max(45_000, UPSTREAM_TIMEOUT_MS) : UPSTREAM_TIMEOUT_MS);
   let upstream: Response;
   try {
     upstream = await fetch(url, {
@@ -179,7 +143,7 @@ async function proxy(request: NextRequest, context: Context) {
     if (!location) return problem(502, "unsafe_upstream_redirect", "API 回傳了不安全的轉址");
     return preserveRequestId(new Response(null, {
       status: upstream.status,
-      headers: { Location: location, "Cache-Control": "no-store" },
+      headers: { Location: location, "Cache-Control": "no-store", "Referrer-Policy": "no-referrer" },
     }), upstream);
   }
   if (upstream.headers.get("content-type")?.includes("text/event-stream")) {
