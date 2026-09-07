@@ -1180,6 +1180,8 @@ async def settings_snapshot(
                             "provider_connection_tested",
                             "system_settings_updated",
                             "layout_settings_updated",
+                            "ui_text_updated",
+                            "ui_text_reset",
                         ]
                     )
                 )
