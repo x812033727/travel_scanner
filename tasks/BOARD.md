@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**14 open · 1 in progress · 2 blocked · 3 in review · 147 done**
+**13 open · 1 in progress · 2 blocked · 3 in review · 148 done**
 
 ## Ready to claim
 
@@ -24,7 +24,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | api | `apps/api/tests/test_food_integration.py` |
 | P3 | [tasks/BOARD.md 是產生檔，卻讓每個 PR 互相衝突](open/2026-09-07-board-conflicts-on-every-pr.md) | tools | `.gitattributes`<br>`tools/tasks.mjs` |
 | P3 | [The whole applied-filter chip is a delete button](open/2026-09-07-applied-filter-chip-is-all-delete.md) | web | `apps/web/components/hotspot-explorer.tsx`<br>`apps/web/components/food-browser.tsx` |
-| P3 | [check-i18n does not guard the ui-text editor's own namespace labels](open/2026-09-07-ui-text-namespace-label-guard.md) | web | `tools/check-i18n.mjs`<br>`docs/ui-text-overrides.md` |
 
 ## In progress
 
@@ -53,6 +52,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 - 2026-09-07 [Cuisine chip counts ignore the area and keyword already chosen](done/2026-09-07-cuisine-counts-ignore-other-filters.md)
 - 2026-09-07 [The foods landing tells you to pick a city while already listing 110 merchants](done/2026-09-07-foods-landing-lists-before-city.md)
+- 2026-09-07 [check-i18n does not guard the ui-text editor's own namespace labels](done/2026-09-07-ui-text-namespace-label-guard.md)
 - 2026-09-07 [文案搬進 catalog：兩個自帶五語系字典的元件](done/2026-09-07-i18n-inline-dicts.md)
 - 2026-09-07 [商圈名單還有 95 家沒有英文店名，發布前要逐家查](done/2026-09-06-trend-merchant-english-names-backlog.md)
 - 2026-09-07 [A signed-out visit to /account still fires seven requests that can only 401](done/2026-09-07-signed-out-account-fires-401s.md)
@@ -60,4 +60,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-07 [The area filter greys out with no reason given](done/2026-09-07-disabled-area-select-no-reason.md)
 - 2026-09-07 [The three numbers on a ranking card have no scale and no explanation](done/2026-09-07-ranking-scores-have-no-scale.md)
 - 2026-09-07 [Filter chip rows hide most of their choices behind a silent sideways scroll](done/2026-09-07-chip-rows-hide-choices.md)
-- 2026-09-07 [後台可改前台文案：前台載入器把資料庫覆寫疊上 next-intl](done/2026-09-07-ui-text-loader.md)
