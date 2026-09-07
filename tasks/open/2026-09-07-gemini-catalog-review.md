@@ -162,3 +162,16 @@ one truncated response and three consecutive merchant timeouts. This follow-up r
 four destinations per request, scopes model-visible duplicate hints to the requested
 kind/destinations, caps them at 8,000 characters, and preserves global database-level
 deduplication. The failed run must not be blindly resumed until this fix is deployed.
+
+After the bounded-prompt deployment, the same run completed partial with zero new
+rows after 19 run calls. A separately budgeted production diagnostic proved why:
+the JSON-oriented discovery response contained one plausible draft but zero Google
+Search grounding chunks, so the strict source gate correctly discarded it. The same
+model returned two chunks and three attributed supports when explicitly asked for a
+short prose search result. This follow-up therefore separates discovery into a
+grounded prose search and a second JSON structuring call that may copy only the
+trusted publisher URLs resolved from that search. It also records aggregate discard
+diagnostics without persisting raw provider output or weakening trusted-source,
+dedupe, map or publication gates. Focused catalog tests pass (226, 18 skipped), as
+do Ruff and mypy for the catalog package. CI, merge, deployment and a same-run resume
+are still required before any new candidate count can be claimed.
