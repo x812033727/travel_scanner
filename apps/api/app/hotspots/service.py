@@ -24,7 +24,7 @@ from app.hotspots.areas import (
     area_payload,
     resolve_area_code,
 )
-from app.hotspots.catalog import HOTSPOT_SEEDS
+from app.hotspots.catalog import HOTSPOT_SEEDS, HotspotSeed
 from app.hotspots.cities import HOTSPOT_CITIES
 from app.hotspots.discovery import WikimediaDiscoveryClient
 from app.hotspots.guides import discover_guides, stale_youtube_guides_delete
@@ -297,6 +297,28 @@ async def _upsert_signal(
     session.add(signal)
 
 
+def coordinate_provenance(seed: HotspotSeed) -> tuple[str, str | None]:
+    """Where this seed's coordinate came from, as a type and a page anyone can open.
+
+    Both halves matter: ``is_durable_coordinate_source`` wants a durable type *and* an
+    https URL, and a row that fails it is dropped by every itinerary path — the planner,
+    the recommendations feed and "add to trip" — while still appearing in the rankings
+    list. So a missing URL does not degrade the row, it silently half-publishes it.
+
+    A row can read its position off a Wikidata item without being able to claim that
+    item's id: 大阪アメリカ村 takes its coordinate from Q4745722, which the misplaced
+    Okinawa 美國村 seed already holds, so its own ``wikidata_item_id`` is null and only
+    the reviewed ``source_urls`` still cite the page. Deriving the URL from the id alone
+    left exactly that row with no source at all.
+    """
+
+    source_type = "wikidata" if seed.coordinate_source == "wikidata_p625" else "curated"
+    reviewed_url = next(iter(seed.source_urls), None) or seed.wikipedia_url
+    if source_type == "wikidata":
+        return source_type, seed.wikidata_url or reviewed_url
+    return source_type, reviewed_url or seed.wikidata_url
+
+
 async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelHotspot]:
     rows = list((await session.scalars(select(TravelHotspot))).all())
     localization_rows = list((await session.scalars(select(HotspotLocalization))).all())
@@ -333,13 +355,8 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
         hotspot.latitude = Decimal(str(seed.latitude))
         hotspot.longitude = Decimal(str(seed.longitude))
         hotspot.area_code = resolve_area_code(seed.city_code, seed.latitude, seed.longitude)
-        hotspot.coordinate_source_type = (
-            "wikidata" if seed.coordinate_source == "wikidata_p625" else "curated"
-        )
-        hotspot.coordinate_source_url = (
-            seed.wikidata_url
-            if hotspot.coordinate_source_type == "wikidata"
-            else next(iter(seed.source_urls), None) or seed.wikipedia_url or seed.wikidata_url
+        hotspot.coordinate_source_type, hotspot.coordinate_source_url = coordinate_provenance(
+            seed
         )
         hotspot.coordinate_verified_at = hotspot.coordinate_verified_at or datetime.now(UTC)
         hotspot.wikipedia_project = seed.wikipedia_project

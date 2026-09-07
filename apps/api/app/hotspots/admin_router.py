@@ -2050,11 +2050,18 @@ async def generate_hotspot_intros(
     )
     if existing is not None:
         return _intro_run_payload(existing)
+    # Resolve and check the vendor before charging anything. The budget is a day's
+    # allowance, not a counter of attempts: charging it for a run that cannot start —
+    # because the selected vendor has no key — spends the administrator's quota on
+    # nothing, and twenty presses of a button that fails would leave no allowance for
+    # the run that finally works. The guide search endpoint guards in this order too.
+    provider: AIProviderName = payload.provider or settings.hotspot_intro_ai_default_provider
+    if not configured_research_providers(settings)[provider]:
+        raise AppError(503, "hotspot_guide_ai_provider_not_configured", "所選 AI 供應商尚未設定")
     if not await consume_search_budget(
         get_redis(), "intro-run", settings.hotspot_intro_ai_daily_run_limit
     ):
         raise AppError(429, "hotspot_intro_ai_quota_exhausted", "今日介紹產生額度已用完")
-    provider: AIProviderName = payload.provider or settings.hotspot_intro_ai_default_provider
     run = HotspotIntroRun(
         id=uuid4(),
         actor_user_id=user.id,
