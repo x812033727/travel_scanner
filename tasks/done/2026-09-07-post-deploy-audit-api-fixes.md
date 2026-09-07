@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-post-deploy-audit-api-fixes
 title: 上線稽核找到的兩個 API 缺陷：座標來源與額度扣點順序
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-07T00:12:19Z
 created_at: 2026-09-07T00:11:38Z
-completed_at:
+completed_at: 2026-09-07T01:02:40Z
 branch: claude/audit-fixes
 depends_on: []
 scope:
