@@ -57,6 +57,7 @@ type Overview = {
   project_id: string | null;
   network_configured: boolean;
   review_due: number;
+  hotel_option_review_due?: number;
   brand_definitions: Record<
     string,
     { name: string; kinds: Kind[]; hosts: string[]; api_supported: boolean }
@@ -71,6 +72,8 @@ type Overview = {
   }[];
   operations: {
     ordinary_hotel_clicks?: number;
+    affiliate_hotel_clicks?: number;
+    hotel_affiliate_fallbacks?: number;
     outbound_clicks: number;
     self_reported_booked: number;
     confirmed_commission: null;
@@ -801,6 +804,11 @@ export function TravelServicesAdmin() {
                 ))}
               </div>
               <p>{t("reviewDue", { count: data.review_due })}</p>
+              <p>
+                {t("optionReviewDue", {
+                  count: data.hotel_option_review_due || 0,
+                })}
+              </p>
               <section className="rounded-2xl bg-[var(--paper)] p-5">
                 <h3 className="font-semibold">{t("metrics")}</h3>
                 <p className="mt-3">
@@ -809,6 +817,14 @@ export function TravelServicesAdmin() {
                 <p>
                   {t("ordinaryClicks")}:{" "}
                   {data.operations.ordinary_hotel_clicks || 0}
+                </p>
+                <p>
+                  {t("affiliateHotelClicks")}:{" "}
+                  {data.operations.affiliate_hotel_clicks || 0}
+                </p>
+                <p>
+                  {t("hotelFallbackClicks")}:{" "}
+                  {data.operations.hotel_affiliate_fallbacks || 0}
                 </p>
                 <p>
                   {t("booked")}: {data.operations.self_reported_booked}

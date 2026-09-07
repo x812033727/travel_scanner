@@ -46,15 +46,18 @@ export function HotelOptionsAdmin({
   const t = useTranslations("travelServices");
   const fmt = useFormatter();
   const [provider, setProvider] = useState("official");
+  const initial = options.find((o) => o.provider === "official");
   const [url, setUrl] = useState(
     options.find((o) => o.provider === "official")?.url || "",
   );
-  const [propertyId, setPropertyId] = useState("");
+  const [propertyId, setPropertyId] = useState(initial?.property_id || "");
   const [evidence, setEvidence] = useState(
     options.find((o) => o.provider === "official")?.evidence_url || "",
   );
-  const [note, setNote] = useState("");
-  const [discovery, setDiscovery] = useState("found");
+  const [note, setNote] = useState(initial?.identity_note || "");
+  const [discovery, setDiscovery] = useState(
+    initial?.discovery_status || "found",
+  );
   const [browserVerified, setBrowserVerified] = useState(false);
   const current = options.find((o) => o.provider === provider);
   function choose(code: string) {

@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from unittest.mock import AsyncMock
 from uuid import uuid4
@@ -229,6 +229,8 @@ async def option_fixture(session, client, monkeypatch):
 
 async def test_unified_option_no_credentials_and_no_page_fetch(client, session, monkeypatch):
     item, link = await option_fixture(session, client, monkeypatch)
+    before_clicks = await session.scalar(select(func.count()).select_from(AffiliateClick))
+    before_selections = await session.scalar(select(func.count()).select_from(TripServiceSelection))
     monkeypatch.setattr(
         router, "load_runtime_settings", AsyncMock(return_value=Settings(_env_file=None))
     )
@@ -243,8 +245,11 @@ async def test_unified_option_no_credentials_and_no_page_fetch(client, session, 
         select(HotelBookingClick).where(HotelBookingClick.option_id == link.id)
     )
     assert click.mode == "direct" and not click.fallback
-    assert await session.scalar(select(func.count()).select_from(AffiliateClick)) == 0
-    assert await session.scalar(select(func.count()).select_from(TripServiceSelection)) == 0
+    assert await session.scalar(select(func.count()).select_from(AffiliateClick)) == before_clicks
+    assert (
+        await session.scalar(select(func.count()).select_from(TripServiceSelection))
+        == before_selections
+    )
     assert (
         await client.post(f"/travel-services/{item.id}/booking-options/{uuid4()}/clickout")
     ).status_code == 404
@@ -257,6 +262,7 @@ async def test_unified_affiliate_same_hotel_fallback_and_project_isolation(
     client, session, monkeypatch
 ):
     item, option = await option_fixture(session, client, monkeypatch)
+    before_clicks = await session.scalar(select(func.count()).select_from(AffiliateClick))
     affiliate, brand = await offer(session, item)
     brand.code = "booking"
     affiliate.target_url = option.url
@@ -281,7 +287,9 @@ async def test_unified_affiliate_same_hotel_fallback_and_project_isolation(
         )
     )
     assert [(c.mode, c.fallback) for c in clicks] == [("affiliate", False), ("direct", True)]
-    assert await session.scalar(select(func.count()).select_from(AffiliateClick)) == 1
+    assert (
+        await session.scalar(select(func.count()).select_from(AffiliateClick)) == before_clicks + 1
+    )
     config = await session.get(TravelServiceConfig, 1)
     config.data = {**config.data, "direct_hotel_links_enabled": False}
     await session.commit()
@@ -292,6 +300,19 @@ async def test_unified_affiliate_same_hotel_fallback_and_project_isolation(
     await session.commit()
     assert (await client.post(endpoint)).headers["location"] == option.url
     create.assert_not_called()
+
+
+async def test_option_review_reminder_is_independent_from_product_review(
+    client, session, monkeypatch
+):
+    item, option = await option_fixture(session, client, monkeypatch)
+    initial = (await client.get("/admin/travel-services")).json()
+    assert item.verified_at > datetime.now(UTC) - timedelta(days=1)
+    option.verified_at = datetime.now(UTC) - timedelta(days=31)
+    await session.flush()
+    overview = (await client.get("/admin/travel-services")).json()
+    assert overview["review_due"] == initial["review_due"]
+    assert overview["hotel_option_review_due"] == initial["hotel_option_review_due"] + 1
 
 
 async def test_option_versions_duplicate_identity_and_independent_review(

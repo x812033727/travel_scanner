@@ -228,8 +228,19 @@ async def overview(
         "review_due": sum(
             p.verified_at is None or p.verified_at < now - timedelta(days=30) for p in all_products
         ),
+        "hotel_option_review_due": sum(
+            o.status == "approved"
+            and (o.verified_at is None or o.verified_at < now - timedelta(days=30))
+            for p in all_products
+            for o in p.hotel_options
+        ),
         "imports": [{**record(i), "rows_json": [], "row_count": len(i.rows_json)} for i in imports],
         "operations": {
+            "affiliate_hotel_clicks": await session.scalar(
+                select(func.count())
+                .select_from(HotelBookingClick)
+                .where(HotelBookingClick.mode == "affiliate")
+            ),
             "ordinary_hotel_clicks": await session.scalar(
                 select(func.count())
                 .select_from(HotelBookingClick)

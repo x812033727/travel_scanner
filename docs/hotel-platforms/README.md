@@ -120,3 +120,19 @@ Full local Python collection is blocked by the existing deployment agent's UnixS
 import on Windows; full Linux CI is required. Full web suite: 126 files / 729 tests passed. No city
 is considered complete from a pending-file count, and no paid price API was enabled.
 See the task record for remaining validation and content acceptance. No PR merge/deploy yet.
+
+## Remaining source research
+
+Kyoto's current licensed permit list is available at
+https://data.city.kyoto.lg.jp/dataset/00039/ (CC BY 4.0, July 2026 list).
+It establishes licensed names/addresses, not yet ten audited hotel coordinates or platform
+identities. Official pages found for Vischio Kyoto, Granvia Kyoto and Daiwa Roynet Kyoto
+Terrace Hachijo are research leads only; no duplicate Hachijoguchi property should be guessed.
+
+Seoul's authoritative lodging permits are at
+https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do (KOGL Type 1).
+Its current coordinate documentation specifies **EPSG:5174**, not the EPSG:2097 claimed by
+older mirrors. It currently reports no downloadable file in the rendered page. Obtain the
+actual permitted records and verified transform before importing locations. Naver identity
+still needs separate exact-property review. Government metadata is not a completed hotel row.
+Do not use Visit Seoul's embedded Tripadvisor descriptions/ratings as government-owned data.
