@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**5 open · 0 in progress · 2 blocked · 0 in review · 132 done**
+**5 open · 1 in progress · 2 blocked · 0 in review · 132 done**
 
 ## Ready to claim
 
@@ -21,7 +21,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [上線稽核找到的兩個 API 缺陷：座標來源與額度扣點順序](open/2026-09-07-post-deploy-audit-api-fixes.md) | claude-opus-5 | 2026-09-07T00:12:19Z | `claude/audit-fixes` |
 
 ## In review
 

@@ -157,3 +157,34 @@ def test_hotspot_catalog_has_stable_unique_identifiers() -> None:
     }
     assert len(city_counts) == 33
     assert min(city_counts.values()) >= 13
+
+
+def test_every_seed_derives_a_coordinate_source_a_reader_could_open() -> None:
+    """A seed with no source URL is half-published, not merely undocumented.
+
+    ``is_durable_coordinate_source`` wants a durable type *and* an https page, and a row
+    that fails it is dropped by the AI planner, by /hotspots/recommendations and by "add
+    to trip" — while still appearing in the rankings list, so it looks fine until someone
+    tries to use it. 大阪アメリカ村 was exactly that: its coordinate comes from Q4745722,
+    whose id the misplaced Okinawa 美國村 seed holds, so deriving the URL from the id
+    alone left it with none. Asserted over the whole catalog because the next seed batch
+    will not remember this.
+    """
+
+    from app.hotspots.catalog import HOTSPOT_SEEDS
+    from app.hotspots.service import coordinate_provenance
+    from app.locations.coordinates import is_durable_coordinate_source
+
+    undurable = [
+        (seed.slug, *coordinate_provenance(seed))
+        for seed in HOTSPOT_SEEDS
+        if not is_durable_coordinate_source(*coordinate_provenance(seed))
+    ]
+    assert undurable == []
+
+    amerikamura = next(seed for seed in HOTSPOT_SEEDS if seed.slug == "kix-amerikamura")
+    assert amerikamura.wikidata_item_id is None
+    assert coordinate_provenance(amerikamura) == (
+        "wikidata",
+        "https://www.wikidata.org/wiki/Q4745722",
+    )
