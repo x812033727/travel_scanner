@@ -22,6 +22,7 @@ from app.infra import get_redis
 from app.main import app
 from app.models import (
     AffiliateClick,
+    AnalyticsEvent,
     FlightOfferRecord,
     FlightStatusLookup,
     SearchJob,
@@ -2430,6 +2431,7 @@ async def test_flight_anchor_from_offer(monkeypatch: pytest.MonkeyPatch) -> None
             assert isinstance(items, list)
             return next(item for item in items if item["system_role"] == role)
 
+        started_at = datetime.now(UTC)
         outbound = await client.post(
             f"/api/v1/trips/{trip_id}/flight-anchors/outbound/from-offer",
             headers=owner,
@@ -2446,6 +2448,26 @@ async def test_flight_anchor_from_offer(monkeypatch: pytest.MonkeyPatch) -> None
         assert item["data"]["price_snapshot"]["provider"] == "amadeus"
         assert body["pricing"]["quoted_total"] == "11500"
         assert body["version"] == version + 1
+        # The funnel's third step. The hotel side has been counted since #324; this is
+        # the flight side, and without it the step under-counts every trip that got its
+        # quote the usual way. Scoped to the rows this call added rather than to the
+        # whole table: every other test in this file writes events too now.
+        async with SessionFactory() as session:
+            attached = list(
+                (
+                    await session.scalars(
+                        select(AnalyticsEvent)
+                        .where(
+                            AnalyticsEvent.event_name == "offer_attached",
+                            AnalyticsEvent.received_at >= started_at,
+                        )
+                        .order_by(AnalyticsEvent.received_at)
+                    )
+                ).all()
+            )
+        assert [event.properties_json for event in attached] == [
+            {"kind": "flight", "source": "from_offer", "direction": "outbound"}
+        ]
 
         # The stale version is refused; nothing was written.
         stale = await client.post(
