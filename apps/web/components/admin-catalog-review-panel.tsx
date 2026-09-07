@@ -17,7 +17,7 @@ type Run = {
   model: string;
   requested_counts: Record<Kind, number>;
   counts: Record<"total" | "assessed" | "approved" | "rejected" | "needs_review" | "created" | "duplicates" | "failed" | "applied", number>;
-  usage: { calls: number; input_tokens: number; output_tokens: number };
+  usage: { calls: number; input_tokens: number; output_tokens: number; thought_tokens?: number };
   error_code: string | null;
   error_message: string | null;
   created_at: string;
@@ -40,6 +40,7 @@ type Item = {
   applied_action: string | null;
   status: "pending" | "assessed" | "error" | "applied" | "stale";
   confidence: number | null;
+  error_code?: string | null;
 };
 type Overview = {
   configured: boolean;
@@ -174,7 +175,13 @@ export function AdminCatalogReviewPanel() {
     if (confirmation) confirmRef.current?.focus();
   }, [confirmation]);
 
-  const runs = overview?.runs ?? [];
+  const history = overview?.runs ?? [];
+  // Detail polling is fresher than the overview, including while a run is active.
+  const runs = run
+    ? history.some((item) => item.id === run.id)
+      ? history.map((item) => item.id === run.id ? run : item)
+      : [run, ...history]
+    : history;
   const priorReview = run?.mode === "review_pending" && run.review_complete
     ? run : runs.find((item) => item.mode === "review_pending" && item.review_complete);
   const items = data?.items ?? [];
@@ -184,6 +191,9 @@ export function AdminCatalogReviewPanel() {
   const canReview = Boolean(overview?.configured && overview.can_start_review);
   const canDiscover = Boolean(overview?.configured && overview.can_start_discovery && priorReview);
   const label = (group: string, value: string) => t.has(`${group}.${value}`) ? t(`${group}.${value}`) : value;
+  const knownError = (code?: string | null) => code && t.has(`errors.${code}`) ? t(`errors.${code}`) : null;
+  const itemReason = (item: Item) => item.status === "error"
+    ? knownError(item.error_code) ?? t("unknownItemError") : item.reason;
   const dateLabel = (value: string) => new Intl.DateTimeFormat(locale, { dateStyle: "short", timeStyle: "short" }).format(new Date(value));
 
   function selectRun(id: string) {
@@ -302,7 +312,7 @@ export function AdminCatalogReviewPanel() {
         <p>{t("provider", { model: overview?.model || "—" })}</p>
         <p className="mt-1 text-[var(--muted)]">{t("callLimits", { daily: overview?.daily_call_limit ?? "—", run: 80 })}</p>
         {overview && !overview.configured && <p className="mt-2 text-amber-800">{t("notConfigured")}</p>}
-        {(overview?.blocking_reasons ?? []).length > 0 && <ul className="mt-2 list-disc pl-5 text-amber-800">{overview!.blocking_reasons.map((reason, index) => <li key={index}>{reason}</li>)}</ul>}
+        {(overview?.blocking_reasons ?? []).length > 0 && <ul className="mt-2 list-disc pl-5 text-amber-800">{overview!.blocking_reasons.map((reason, index) => <li key={index}>{knownError(reason) ?? reason}</li>)}</ul>}
       </section>
       <section className="rounded-3xl border border-[var(--line)] bg-white p-5">
         <div className="flex flex-wrap items-center justify-between gap-3"><h2 className="text-xl font-bold">{t("history")}</h2><button type="button" disabled={busy || itemsLoading} onClick={refreshView} className={buttonClass}>{t("refresh")}</button></div>
@@ -310,8 +320,8 @@ export function AdminCatalogReviewPanel() {
         {run && <div className="mt-5 border-t border-[var(--line)] pt-5">
           <div className="flex flex-wrap items-center justify-between gap-3"><p className="font-bold">{label("modes", run.mode)} · <span role="status">{label("runStatus", run.status)}</span></p>{run.can_resume && <button type="button" disabled={busy} onClick={() => void resume()} className={buttonClass}>{t("resume")}</button>}</div>
           <p className="mt-2 text-sm text-[var(--muted)]">{t("provider", { model: run.model })} · {label("phases", run.phase)}</p>
-          <p className="mt-1 text-xs text-[var(--muted)]">{t("usage", { calls: run.usage?.calls ?? 0, input: run.usage?.input_tokens ?? 0, output: run.usage?.output_tokens ?? 0 })}</p>
-          {run.error_message || run.error_code ? <div role="alert" className="mt-3 rounded-xl bg-amber-50 p-3 text-sm text-amber-900">{run.error_message && <p>{run.error_message}</p>}{run.error_code && run.error_code !== run.error_message && <p className={run.error_message ? "mt-1 text-xs" : ""}>{run.error_code}</p>}</div> : null}
+          <p className="mt-1 text-xs text-[var(--muted)]">{t("usage", { calls: run.usage?.calls ?? 0, input: run.usage?.input_tokens ?? 0, output: run.usage?.output_tokens ?? 0 })}{typeof run.usage?.thought_tokens === "number" && <> · {t("thoughtUsage", { count: run.usage.thought_tokens })}</>}</p>
+          {run.error_message || run.error_code ? <div role="alert" className="mt-3 rounded-xl bg-amber-50 p-3 text-sm text-amber-900">{(knownError(run.error_code) || run.error_message) && <p>{knownError(run.error_code) ?? run.error_message}</p>}{run.error_code && run.error_code !== run.error_message && <p className={run.error_message || knownError(run.error_code) ? "mt-1 text-xs" : ""}>{run.error_code}</p>}</div> : null}
           {run.review_complete && <p className="mt-3 text-sm font-semibold text-[var(--teal-dark)]">{t("reviewComplete")}</p>}
           <dl className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-5">{COUNT_KEYS.map((key) => <div key={key} className="rounded-xl bg-[var(--paper)] p-3"><dt className="text-xs text-[var(--muted)]">{t(`counts.${key}`)}</dt><dd className="mt-1 text-lg font-bold">{run.counts?.[key] ?? 0}</dd></div>)}</dl>
         </div>}
@@ -331,7 +341,7 @@ export function AdminCatalogReviewPanel() {
           <tbody className="block divide-y divide-[var(--line)] lg:table-row-group">{items.map((item) => <tr key={item.id} className="grid gap-2 p-3 align-top lg:table-row lg:p-0">
             <td className="lg:p-3"><input type="checkbox" aria-label={t("selectItem", { name: item.name })} checked={selected.has(item.id) && eligible(item, action)} disabled={busy || !canApply || !eligible(item, action)} onChange={(event) => setSelected((current) => { const next = new Set(current); if (event.target.checked) next.add(item.id); else next.delete(item.id); return next; })} className="h-5 w-5" /></td>
             <td className="lg:p-3"><p className="font-bold">{item.name}</p><p className="mt-1 text-xs text-[var(--muted)]">{t(`kinds.${item.kind}`)} · {item.destination_id || "—"}</p><p className="mt-1 text-xs text-[var(--muted)]">{label("phases", item.phase)} · {label("itemStatus", item.status)}</p></td>
-            <td className="lg:max-w-sm lg:p-3"><p className="font-semibold">{item.decision ? label("decisions", item.decision) : t("notAssessed")}</p><p className="mt-1 whitespace-pre-wrap">{item.reason}</p>{item.confidence != null && <p className="mt-1 text-xs text-[var(--muted)]">{t("confidence", { value: item.confidence })}</p>}{item.applied_action && <p className="mt-2 text-xs font-semibold text-[var(--teal-dark)]">{t("appliedAction", { action: label("actions", item.applied_action) })}</p>}</td>
+            <td className="lg:max-w-sm lg:p-3"><p className="font-semibold">{item.decision ? label("decisions", item.decision) : t("notAssessed")}</p><p className="mt-1 whitespace-pre-wrap">{itemReason(item)}</p>{item.confidence != null && <p className="mt-1 text-xs text-[var(--muted)]">{t("confidence", { value: item.confidence })}</p>}{item.applied_action && <p className="mt-2 text-xs font-semibold text-[var(--teal-dark)]">{t("appliedAction", { action: label("actions", item.applied_action) })}</p>}</td>
             <td className="lg:max-w-sm lg:p-3"><details><summary className="min-h-9 cursor-pointer font-semibold text-[var(--teal)]">{t("evidenceCount", { count: item.evidence?.length ?? 0 })}</summary>{(item.evidence ?? []).map((source, index) => <div key={index} className="mt-2 break-words rounded-xl bg-[var(--paper)] p-3">{safeExternalHref(source.url) ? <a href={safeExternalHref(source.url)} target="_blank" rel="noreferrer" className="break-all text-xs text-[var(--teal)] underline">{source.url}</a> : <p className="text-xs text-[var(--muted)]">{t("invalidEvidenceLink")}</p>}<blockquote className="mt-2 whitespace-pre-wrap text-xs leading-5">{source.quote}</blockquote></div>)}</details></td>
             <td className="lg:max-w-xs lg:p-3">{item.gaps?.length ? <ul aria-label={t("itemGaps", { name: item.name })} className="list-disc space-y-1 pl-4 text-xs text-amber-900">{item.gaps.map((gap, index) => <li key={index}>{label("gaps", gap)}</li>)}</ul> : <p className="text-xs text-[var(--muted)]">{t("noGapsReported")}</p>}{!eligible(item, action) && !item.applied_action && <p className="mt-2 text-xs text-[var(--muted)]">{t("actionUnavailable", { action: t(`actions.${action}`) })}</p>}</td>
           </tr>)}</tbody>

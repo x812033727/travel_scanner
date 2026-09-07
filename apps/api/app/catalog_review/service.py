@@ -8,6 +8,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, model_validator
 from sqlalchemy import func, select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.catalog_review.errors import ERROR_CODES
 from app.catalog_review.repository import (
     ENTITY_TYPES,
     Entity,
@@ -108,6 +109,12 @@ def allowed_actions(item: CatalogReviewItem) -> list[str]:
 
 
 def item_view(item: CatalogReviewItem) -> dict[str, Any]:
+    # Legacy batches recorded only the exception class. Do not invent a more
+    # specific cause or expose arbitrary stored diagnostics to the browser.
+    code = (item.assessment_json or {}).get("code")
+    error_code = (
+        code if item.status == "error" and isinstance(code, str) and code in ERROR_CODES else None
+    )
     return {
         "id": str(item.id),
         "kind": item.kind,
@@ -123,6 +130,7 @@ def item_view(item: CatalogReviewItem) -> dict[str, Any]:
         "applied_action": item.applied_action,
         "status": item.status,
         "confidence": (item.assessment_json or {}).get("confidence"),
+        "error_code": error_code,
     }
 
 
@@ -170,6 +178,7 @@ async def run_view(session: AsyncSession, run: CatalogReviewRun) -> dict[str, An
             "calls": int(usage.get("calls", 0)),
             "input_tokens": int(usage.get("input_tokens", 0)),
             "output_tokens": int(usage.get("output_tokens", 0)),
+            "thought_tokens": int(usage.get("thought_tokens", 0)),
         },
         "error_code": run.error_code,
         "error_message": run.error_message,
