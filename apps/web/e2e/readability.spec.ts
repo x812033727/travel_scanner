@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
 import { pretendSignedIn } from "./session";
 
 /**
@@ -14,6 +14,27 @@ import { pretendSignedIn } from "./session";
 
 const MIN_FONT_PX = 13;
 const MIN_CONTRAST = 4.5;
+
+/** One element's own colour against its own background. Both must be opaque. */
+async function contrastOf(target: Locator) {
+  return target.evaluate((element) => {
+    const relativeLuminance = (rgb: number[]) => {
+      const channels = rgb.map((value) => {
+        const scaled = value / 255;
+        return scaled <= 0.03928 ? scaled / 12.92 : ((scaled + 0.055) / 1.055) ** 2.4;
+      });
+      return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+    };
+    const parse = (value: string) => {
+      const parts = /rgba?\(([^)]+)\)/.exec(value)?.[1].split(",").map((part) => Number.parseFloat(part)) ?? [0, 0, 0];
+      return [parts[0], parts[1], parts[2]];
+    };
+    const style = getComputedStyle(element);
+    const first = relativeLuminance(parse(style.color));
+    const second = relativeLuminance(parse(style.backgroundColor));
+    return (Math.max(first, second) + 0.05) / (Math.min(first, second) + 0.05);
+  });
+}
 
 const routes = ["/zh-TW", "/zh-TW/hotspots", "/zh-TW/foods", "/zh-TW/alerts", "/zh-TW/login", "/zh-TW/trips"];
 
@@ -209,24 +230,7 @@ test("the admin sidebar shows which page you are on", async ({ page }) => {
   await expect(current).toBeVisible();
   // `a { color: inherit }` written outside a layer used to beat `text-white`, so the
   // current page rendered as ink on ink: a 1:1 pill with no label in it.
-  const ratio = await current.evaluate((element) => {
-    const relativeLuminance = (rgb: number[]) => {
-      const channels = rgb.map((value) => {
-        const scaled = value / 255;
-        return scaled <= 0.03928 ? scaled / 12.92 : ((scaled + 0.055) / 1.055) ** 2.4;
-      });
-      return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
-    };
-    const parse = (value: string) => {
-      const parts = /rgba?\(([^)]+)\)/.exec(value)?.[1].split(",").map((part) => Number.parseFloat(part)) ?? [0, 0, 0];
-      return [parts[0], parts[1], parts[2]];
-    };
-    const style = getComputedStyle(element);
-    const first = relativeLuminance(parse(style.color));
-    const second = relativeLuminance(parse(style.backgroundColor));
-    return (Math.max(first, second) + 0.05) / (Math.min(first, second) + 0.05);
-  });
-  expect(ratio).toBeGreaterThanOrEqual(MIN_CONTRAST);
+  expect(await contrastOf(current)).toBeGreaterThanOrEqual(MIN_CONTRAST);
 });
 
 test("every filter chip is on screen, and a long row says how many it folded away", async ({ page }) => {
@@ -285,4 +289,54 @@ test("every filter chip is on screen, and a long row says how many it folded awa
   // "熱門景點搜尋 0" is what a screen reader used to say for the filter button.
   const trigger = page.getByRole("button", { name: /熱門景點搜尋/ });
   await expect(trigger).toHaveAttribute("aria-label", "熱門景點搜尋，目前選了 0 個條件");
+});
+
+test("the admin console holds its own controls to the size it publishes", async ({ page }) => {
+  await pretendSignedIn(page);
+  await page.route("**/api/travel/auth/me", (route) =>
+    route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ id: "admin", email: "admin@example.com", is_admin: true }) }),
+  );
+  await page.route("**/api/travel/admin/dashboard", (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ counts: { hotspots_public: 1, foods_public: 1, users: 1, hotspots_pending: 800, merchants_pending: 10, guides_pending: 4 }, quick_actions: [], can_deploy: false }),
+    }),
+  );
+  // Dark mode is where the review badge failed: --coral-soft flips to a dark brown and
+  // the literal dark red that used to sit on it measured 2.34:1.
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.goto("/zh-TW/admin");
+
+  const badge = page.getByText("814 待審");
+  await expect(badge).toBeVisible();
+  expect(await contrastOf(badge)).toBeGreaterThanOrEqual(MIN_CONTRAST);
+
+  // The analytics range row was the clearest case on production: five buttons at 36px,
+  // and a 24px retry link. Every panel wrote its own py-2, so the tabs, pills and
+  // pagination came out between 24px and 39px while the public site holds 44 everywhere.
+  await page.route("**/api/travel/admin/analytics/dashboard**", (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        range: "30d", timezone: "Asia/Taipei", source: "raw",
+        summary: { live_sessions_30m: 0, page_views: 1, avg_daily_visitors: 1, sessions: 1, pages_per_session: 1, previous: {}, changes: {} },
+        timeseries: [], funnel: [], top_pages: [], referrers: [], utm_sources: [],
+        devices: [], locales: [], countries: [], heatmap: [], authoritative: {},
+      }),
+    }),
+  );
+  await page.goto("/zh-TW/admin/analytics");
+  await expect(page.getByRole("button", { name: "30 天" })).toBeVisible();
+
+  const short = await page.locator(".admin-page button, .admin-page [role='tab']").evaluateAll((elements) =>
+    elements
+      .filter((element) => {
+        const box = element.getBoundingClientRect();
+        return box.width > 2 && box.height > 2 && box.height < 44;
+      })
+      .map((element) => `${Math.round(element.getBoundingClientRect().height)}px ${(element.textContent || "").trim().slice(0, 20)}`),
+  );
+  expect(short, "admin controls under 44px").toEqual([]);
 });

@@ -66,7 +66,7 @@ export function AdminAnalyticsPanel() {
     return () => { window.clearTimeout(first); window.clearInterval(timer); };
   }, [load]);
 
-  if (error && !data) return <div role="alert" className="mt-7 rounded-2xl border border-red-200 bg-red-50 p-5 text-red-800">{error}<button className="ml-3 font-semibold underline" onClick={load}>{t("retry")}</button></div>;
+  if (error && !data) return <div role="alert" className="mt-7 rounded-2xl border border-red-200 bg-red-50 p-5 text-red-800">{error}<button type="button" onClick={load} className="ml-3 inline-flex min-h-11 items-center rounded-xl border border-red-300 bg-white px-4 font-semibold text-red-800">{t("retry")}</button></div>;
   return <div className="analytics-dashboard mt-7 min-w-0 max-w-full space-y-6 overflow-x-clip">
     <div className="sticky top-2 z-10 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[var(--line)] bg-white/95 p-3 shadow-sm backdrop-blur">
       <div role="group" aria-label={t("rangeLabel")} className="flex max-w-full gap-1 overflow-x-auto">{ranges.map((value) => <button key={value} onClick={() => setRange(value)} aria-pressed={range === value} className={`shrink-0 rounded-xl px-3 py-2 text-sm font-semibold ${range === value ? "bg-[var(--ink)] text-white" : "hover:bg-[var(--paper)]"}`}>{t(`ranges.${value}`)}</button>)}</div>

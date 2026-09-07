@@ -114,7 +114,9 @@ export function AdminDashboard() {
               把待審項目集中成清楚的工作入口。
             </p>
           </div>
-          <span className="rounded-full bg-[var(--coral-soft)] px-3 py-1 text-xs font-bold text-[#a84334]">
+          {/* --coral-soft flips to a dark brown in dark mode; a literal dark red on top of
+              it measured 2.34:1. --coral is the token that follows it. */}
+          <span className="rounded-full bg-[var(--coral-soft)] px-3 py-1 text-xs font-bold text-[var(--coral)]">
             {reviewTotal} 待審
           </span>
         </div>

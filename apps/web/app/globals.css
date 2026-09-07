@@ -710,6 +710,21 @@ body {
   min-width: 0;
   padding: 1rem 0.25rem 4rem;
 }
+/*
+ * The public site holds every control at 44px. The admin console did not, and the gap
+ * was invisible because each panel wrote its own `py-2`: measured on production, the
+ * category tabs were 39px, the section tabs 37px, the pagination 34px, the copy-editor
+ * filters 33px and the analytics retry 24px. One floor here rather than a dozen edits,
+ * so a panel added later inherits it instead of repeating the mistake.
+ *
+ * `min-height` on a `<button>` works because buttons are inline-block; a control that
+ * genuinely has to be shorter opts out with `admin-inline-control`.
+ */
+.admin-page button:not(.admin-inline-control),
+.admin-page [role="tab"]:not(.admin-inline-control),
+.admin-page select:not(.admin-inline-control) {
+  min-height: 2.75rem;
+}
 .admin-group-row th {
   padding: 0.55rem 0.75rem;
   border-top: 1px solid var(--line);
