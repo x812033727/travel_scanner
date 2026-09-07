@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**6 open · 0 in progress · 2 blocked · 0 in review · 134 done**
+**6 open · 1 in progress · 2 blocked · 0 in review · 134 done**
 
 ## Ready to claim
 
@@ -22,7 +22,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [篩選之後排行榜從第 3 名開始跳號，看起來像少了東西](open/2026-09-07-filtered-rank-numbering.md) | claude-opus-5 | 2026-09-07T00:34:06Z | `claude/ux-rank-numbering` |
 
 ## In review
 
