@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**5 open · 2 in progress · 2 blocked · 0 in review · 128 done**
+**5 open · 0 in progress · 2 blocked · 0 in review · 131 done**
 
 ## Ready to claim
 
@@ -21,10 +21,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [美食卡上的灰色膠囊看起來像標籤，按下去卻整頁重新篩選](open/2026-09-06-merchant-card-filter-pills.md) | claude-opus-5 | 2026-09-06T22:41:02Z | `claude/ux-merchant-pills` |
-| [選中的國家只靠底色表示，選單裡的外觀與語言看不出目前設定](open/2026-09-06-chosen-state-and-menu-values.md) | claude-opus-5 | 2026-09-06T23:39:29Z | `claude/ux-chips-and-menu` |
+_Nothing here._
 
 ## In review
 
@@ -39,6 +36,9 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-07 [特大字下的景點卡把地名擠成 93px、地點行斷成五行](done/2026-09-07-hotspot-card-largest-text.md)
+- 2026-09-07 [選中的國家只靠底色表示，選單裡的外觀與語言看不出目前設定](done/2026-09-06-chosen-state-and-menu-values.md)
+- 2026-09-07 [美食卡上的灰色膠囊看起來像標籤，按下去卻整頁重新篩選](done/2026-09-06-merchant-card-filter-pills.md)
 - 2026-09-06 [台南兩家不同的店共用 tainan-fu-sheng-hao 這個 slug，富盛號永遠匯不進來](done/2026-09-06-tainan-slug-collision.md)
 - 2026-09-06 [沒有帳號的人走到底是死路：註冊已關閉，但每道牆只寫「前往登入」](done/2026-09-06-auth-dead-end.md)
 - 2026-09-06 [篩選面板的關閉鍵報讀成「關閉介紹」，美食那邊則跟開啟鍵同名](done/2026-09-06-filter-sheet-labels.md)
@@ -46,6 +46,3 @@ _Nothing here._
 - 2026-09-06 [首頁與規劃表單的字換成長輩看得懂的說法](done/2026-09-06-plain-words-front-door.md)
 - 2026-09-06 [撤回 name_en 之後，既有的列還留著沒有出處的音譯](done/2026-09-06-reset-drifted-merchant-names.md)
 - 2026-09-06 [15 個店家英文名是手寫音譯，查不到出處](done/2026-09-06-merchant-english-names-unsourced.md)
-- 2026-09-06 [已匯入的店家沒有拿到資料檔後來補上的英文名](done/2026-09-06-backfill-merchant-english-names.md)
-- 2026-09-06 [後台可以挑選景點介紹的 AI 供應商與模型](done/2026-09-06-intro-ai-vendor-settings.md)
-- 2026-09-06 [專門的購物店家：新增經過座標核實的購物景點種子](done/2026-09-06-shopping-store-seeds.md)

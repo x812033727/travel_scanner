@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-chosen-state-and-menu-values
 title: 選中的國家只靠底色表示，選單裡的外觀與語言看不出目前設定
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T23:39:29Z
 created_at: 2026-09-06T23:39:29Z
-completed_at:
+completed_at: 2026-09-07T00:13:09Z
 branch: claude/ux-chips-and-menu
 depends_on: []
 scope:
