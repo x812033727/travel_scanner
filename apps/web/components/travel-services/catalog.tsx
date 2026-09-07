@@ -109,7 +109,7 @@ type Props = {
 const field =
   "mt-1 min-h-11 w-full min-w-0 rounded-xl border border-[var(--line)] bg-[var(--surface-raised)] px-3 py-2 text-sm";
 const button =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[var(--line)] px-3 py-2 text-sm font-semibold disabled:opacity-50";
+  "inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-xl border border-[var(--line)] px-3 py-2 text-sm font-semibold disabled:opacity-50";
 
 export function ServiceCatalog({
   destinationId,
@@ -141,6 +141,7 @@ export function ServiceCatalog({
     initialFilters?.passengers || "",
   );
   const [days, setDays] = useState(initialFilters?.days || "");
+  const [flightNumber, setFlightNumber] = useState("");
   const [expanded, setExpanded] = useState(false);
   const [data, setData] = useState<Results>();
   const [finishedRequest, setFinishedRequest] = useState("");
@@ -356,6 +357,7 @@ export function ServiceCatalog({
               airport: selected.facts.airport,
               direction: selected.facts.direction,
               passengers: Number(passengers),
+              flight_number: flightNumber,
             }
           : {}),
       };
@@ -642,7 +644,26 @@ export function ServiceCatalog({
                               })}
                             </p>
                           )}
-                          {k === "hotel" && <p>{t("externalPrices")}</p>}
+                          {k === "hotel" && (
+                            <>
+                              {product.facts.area_code && (
+                                <p>
+                                  {t("area")}:{" "}
+                                  {(() => {
+                                    const area = data?.areas.find(
+                                      (a) => a.code === product.facts.area_code,
+                                    );
+                                    return (
+                                      area?.names[locale] ||
+                                      area?.names.en ||
+                                      product.facts.area_code
+                                    );
+                                  })()}
+                                </p>
+                              )}
+                              <p>{t("externalPrices")}</p>
+                            </>
+                          )}
                           {k === "transfer" && (
                             <p>
                               {product.facts.airport} ·{" "}
@@ -906,19 +927,40 @@ export function ServiceCatalog({
                                       />
                                     </label>
                                     {k === "transfer" && (
-                                      <label>
-                                        {t("passengers")}
-                                        <input
-                                          type="number"
-                                          min={1}
-                                          max={product.facts.passengers || 100}
-                                          value={passengers}
-                                          onChange={(e) =>
-                                            setPassengers(e.target.value)
-                                          }
-                                          className={field}
-                                        />
-                                      </label>
+                                      <>
+                                        <label>
+                                          {t("passengers")}
+                                          <input
+                                            type="number"
+                                            min={1}
+                                            max={
+                                              product.facts.passengers || 100
+                                            }
+                                            value={passengers}
+                                            onChange={(e) =>
+                                              setPassengers(e.target.value)
+                                            }
+                                            className={field}
+                                          />
+                                        </label>
+                                        <label>
+                                          {t("flightNumber")}
+                                          <input
+                                            className={field}
+                                            value={flightNumber}
+                                            maxLength={8}
+                                            autoCapitalize="characters"
+                                            autoComplete="off"
+                                            onChange={(e) =>
+                                              setFlightNumber(
+                                                e.target.value
+                                                  .toUpperCase()
+                                                  .replace(/\s/g, ""),
+                                              )
+                                            }
+                                          />
+                                        </label>
+                                      </>
                                     )}
                                   </div>
                                 )}
@@ -933,7 +975,7 @@ export function ServiceCatalog({
                                   (schedule &&
                                     (!date ||
                                       (selected?.kind === "transfer" &&
-                                        !passengers)))
+                                        (!passengers || !flightNumber))))
                                 }
                                 className={`${button} w-full bg-[var(--teal)] text-white`}
                                 onClick={() => void confirm()}

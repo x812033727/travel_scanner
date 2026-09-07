@@ -17,6 +17,7 @@ from app.admin.service import load_runtime_settings
 from app.affiliates.service import TravelpayoutsLinkClient
 from app.auth.service import CurrentUser
 from app.db import get_session
+from app.hotspots.maps import build_map_links
 from app.i18n import Locale, current_locale
 from app.infra import enforce_named_rate_limit, get_redis
 from app.models import (
@@ -323,6 +324,7 @@ async def select_service(
     if product.kind == "transfer" and payload.start_time:
         if (
             not payload.passengers
+            or not payload.flight_number
             or payload.airport != facts.airport
             or payload.direction != facts.direction
         ):
@@ -367,6 +369,17 @@ async def select_service(
             "coordinate_source_type": "admin_verified",
             "coordinate_source_url": facts.coordinate_source_url,
             "naver_map_url": facts.naver_map_url,
+            "map_links": build_map_links(
+                name=product.title,
+                local_name=None,
+                city_name=product.destination_id,
+                country_code=CITIES[product.destination_id][0],
+                latitude=facts.latitude,
+                longitude=facts.longitude,
+                google_place_id=facts.google_place_id,
+                naver_map_url=facts.naver_map_url,
+                map_match_status="verified",
+            ),
             "catalog_product_id": str(product.id),
             "area_code": facts.area_code,
             "selection_source": "user",

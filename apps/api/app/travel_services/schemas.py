@@ -230,6 +230,7 @@ class SelectInput(StrictModel):
     airport: str | None = Field(None, pattern=r"^[A-Z]{3}$")
     direction: Literal["arrival", "departure", "roundtrip"] | None = None
     passengers: int | None = Field(None, ge=1, le=100)
+    flight_number: str | None = Field(None, pattern=r"^[A-Z0-9]{2,3}[0-9]{1,4}[A-Z]?$")
 
     @model_validator(mode="after")
     def time_pair(self) -> Self:

@@ -20,6 +20,7 @@ from app.models import (
 from app.problems import AppError
 from app.travel_services.imports import parse_csv
 from app.travel_services.jobs import parse_airalo
+from app.travel_services.network import verify_link
 from app.travel_services.registry import affiliate_target, brand_target
 from app.travel_services.router import validate_schedule
 from app.travel_services.schemas import (
@@ -368,3 +369,149 @@ def test_service_errors_have_five_language_parity():
         assert set(SERVICE_ERRORS[locale]) == set(SERVICE_ERRORS["en"])
         for code in SERVICE_ERRORS[locale]:
             assert ERROR_DETAILS[locale][code] != code
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "failure", [None, "private_dns", "wrong_product", "wrong_tracking", "loop"]
+)
+async def test_link_verification_pins_each_hop_and_requires_identity(monkeypatch, failure):
+    from app.travel_services import network
+
+    requests = []
+    pinned = []
+    destination = "https://www.klook.com/activity/123/?package=456"
+
+    async def resolve(url):
+        pinned.append(url)
+        if failure == "private_dns" and len(pinned) == 2:
+            return None
+        # No real DNS or external request in this test.
+        return url, httpx.URL(url).host
+
+    def respond(request):
+        requests.append(request)
+        assert request.headers["host"] == request.url.host
+        assert request.extensions["sni_hostname"] == request.url.host
+        if request.url.host == "tp.media" or failure == "loop":
+            target = (
+                destination.replace("456", "999") if failure == "wrong_product" else destination
+            )
+            return httpx.Response(302, headers={"Location": target})
+        return httpx.Response(200)
+
+    original_client = httpx.AsyncClient
+    monkeypatch.setattr(network, "public_request_target", resolve)
+    monkeypatch.setattr(
+        network.httpx,
+        "AsyncClient",
+        lambda **kw: original_client(transport=httpx.MockTransport(respond), **kw),
+    )
+    result = await verify_link(
+        "https://tp.media/r?marker=123&trs=456",
+        "klook",
+        destination,
+        marker="999" if failure == "wrong_tracking" else "123",
+        project="456",
+    )
+    assert result is (failure is None)
+    assert len(requests) <= 6
+    assert len(pinned) >= 2
+    if failure == "private_dns":
+        assert len(requests) == 1
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "target", ["http://www.klook.com/", "https://127.0.0.1/", "https://evil.example/"]
+)
+async def test_link_rejects_unsafe_redirect_before_request(monkeypatch, target):
+    from app.travel_services import network
+
+    requested = []
+
+    async def resolve(url):
+        requested.append(url)
+        return url, httpx.URL(url).host
+
+    original_client = httpx.AsyncClient
+    monkeypatch.setattr(network, "public_request_target", resolve)
+    monkeypatch.setattr(
+        network.httpx,
+        "AsyncClient",
+        lambda **kw: original_client(
+            transport=httpx.MockTransport(
+                lambda _: httpx.Response(302, headers={"Location": target})
+            ),
+            **kw,
+        ),
+    )
+    with pytest.raises(ValueError):
+        await verify_link(
+            "https://klook.tp.st/fixture", "klook", "https://www.klook.com/activity/1/"
+        )
+    assert requested == ["https://klook.tp.st/fixture"]
+
+
+@pytest.mark.asyncio
+async def test_marker_budget_shared_across_projects_and_cache_hits_are_free(monkeypatch):
+    from app.affiliates import service
+
+    monkeypatch.setattr(service.time, "time", lambda: 1000)
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    settings = Settings(
+        travelpayouts_api_token="test", travelpayouts_marker="456", travelpayouts_project_id="123"
+    )
+    requests = []
+
+    def respond(request):
+        requests.append(request)
+        return httpx.Response(
+            200, json={"result": {"links": [{"partner_url": "https://klook.tp.st/fixture"}]}}
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(respond)) as http:
+        client = TravelpayoutsLinkClient(redis, settings, http)
+        for i in range(100):
+            settings.travelpayouts_project_id = str(123 + i % 2)
+            await client.create(f"https://www.klook.com/activity/{i}/", "svc_tour_tokyo")
+        await client.create("https://www.klook.com/activity/99/", "svc_tour_tokyo")
+        with pytest.raises(ConnectionError, match="budget exhausted"):
+            await client.create("https://www.klook.com/activity/100/", "svc_tour_tokyo")
+        assert len(requests) == 100
+        monkeypatch.setattr(service.time, "time", lambda: 1061)
+        await client.create("https://www.klook.com/activity/100/", "svc_tour_tokyo")
+        assert len(requests) == 101
+    await redis.aclose()
+
+
+def test_catalog_lodging_preserves_naver_identity_when_coordinates_are_unchanged():
+    from app.trips.schedule import sync_primary_lodging
+
+    trip = TripPlan(data={})
+    item = TripPlanItem(
+        id=uuid4(),
+        system_role="hotel_start",
+        locked=True,
+        fixed_time=True,
+        data={"source_mode": "system"},
+    )
+    lodging = {
+        "name": "Reviewed Korean hotel",
+        "latitude": 37.5665,
+        "longitude": 126.978,
+        "catalog_product_id": str(uuid4()),
+        "naver_map_url": "https://map.naver.com/p/entry/place/123",
+        "map_links": [
+            {"provider": "naver", "url": "https://map.naver.com/p/entry/place/123", "primary": True}
+        ],
+    }
+    assert sync_primary_lodging(trip, [item], lodging) == {item.id}
+    assert item.data["naver_map_url"] == lodging["naver_map_url"]
+    assert item.data["map_links"] == lodging["map_links"]
+    assert sync_primary_lodging(trip, [item], lodging) == set()
+    changed = {**lodging, "catalog_product_id": str(uuid4())}
+    assert sync_primary_lodging(trip, [item], changed) == {item.id}
+    # Replacing a catalog stay with a legacy stay must not retain a stale identity.
+    sync_primary_lodging(trip, [item], {"name": "Different hotel"})
+    assert "map_links" not in item.data and "naver_map_url" not in item.data

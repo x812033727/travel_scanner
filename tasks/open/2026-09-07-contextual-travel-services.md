@@ -73,16 +73,17 @@ and server-resolved affiliate links. Preserve existing manual itinerary items.
 
 ## Definition of done
 
-- [ ] Reviewed catalog and brands, guarded links, privacy-safe click tracking.
-- [ ] Trip recommendations, lodging anchors, planned services, saved items.
-- [ ] Five-locale public/admin UI and responsive accessibility.
-- [ ] Imports, maintenance, review coverage and safe feature switches.
+- [x] Reviewed catalog and brands, guarded links, privacy-safe click tracking.
+- [x] Trip recommendations, lodging anchors, planned services, saved items.
+- [x] Five-locale public/admin UI and responsive accessibility.
+- [x] Imports, maintenance, review coverage and safe feature switches.
 - [ ] API, web, migrations, browser checks and PR.
+- [ ] Release gates: real six-city inventory, live tracking verification and explicit enablement.
 
 ## Steps
 
-- [ ] Backend contracts and tests.
-- [ ] Frontend integrations and tests.
+- [x] Backend contracts and tests.
+- [x] Frontend integrations and tests.
 
 ## How to verify
 
@@ -94,3 +95,20 @@ fresh PostgreSQL migrations and Playwright; report unavailable infrastructure.
 Isolated worktree C:/Users/x8120/travel-services-worktree from main 44646de.
 Root checkout is dirty and untouched. Current approved-brand state and real product
 data require live verification; features remain off until reviewed and link-tested.
+
+Implementation validation on head 106f8b1: all four CI jobs passed (run 34105073171):
+API/Ruff/mypy/fresh PostgreSQL, web/i18n/types/lint/Vitest/build/Playwright,
+containers and the existing PostgreSQL/Redis/RQ full-stack smoke. Local new browser
+spec passed 20 desktop + 20 mobile tests; screenshots use explicit fixtures.
+Follow-up hardening covers DNS-pinned redirect chains, marker-wide rolling quotas,
+Naver lodging identity and airport transfer flight-number confirmation. Revalidate
+the final SHA after rebasing on latest main before opening the PR.
+
+Read-only live account check on 2026-09-07 is recorded in docs/travel-services.md:
+12 in-scope brands available, seven still under Unlock more. No account settings,
+production data or secrets were changed. The plan's 36 hotels, 18 tours, 12 transfers
+and nine country eSIM plans are NOT verified/populated yet; zero fabricated seed
+products. Real brand imports, content review, feed access and actual affiliate
+landing/tracking checks remain explicit pre-release work. The software can be
+reviewed independently with all public/category switches off. Do not mark this
+task done or the service production-ready merely because automated tests pass.

@@ -322,6 +322,34 @@ async def test_time_conflict_and_other_owner_cannot_mutate(client, session, acto
     assert (await client.get("/admin/travel-services")).status_code == 403
 
 
+async def test_transfer_requires_flight_before_scheduling_and_never_auto_books(
+    client, session, actor
+):
+    journey = await trip(session, actor)
+    transfer = await product(session, "transfer", airport="NRT", direction="arrival", passengers=4)
+    path = f"/trips/{journey.id}/travel-services"
+    payload = {
+        "product_id": str(transfer.id),
+        "version": 1,
+        "day_date": "2026-11-11",
+        "start_time": "2026-11-11T10:00:00+09:00",
+        "end_time": "2026-11-11T11:00:00+09:00",
+        "airport": "NRT",
+        "direction": "arrival",
+        "passengers": 2,
+    }
+    missing = await client.post(path, json=payload, headers={"Idempotency-Key": "flight-fixture"})
+    assert missing.status_code == 422
+    payload["flight_number"] = "BR198"
+    response = await client.post(path, json=payload, headers={"Idempotency-Key": "flight-fixture"})
+    assert response.status_code == 200, response.text
+    selection = await session.get(TripServiceSelection, response.json()["id"])
+    assert selection.status == "planned"
+    assert selection.details["flight_number"] == "BR198"
+    item = await session.get(TripPlanItem, selection.item_id)
+    assert item.item_type == "activity" and item.data["service_kind"] == "transfer"
+
+
 async def test_hotel_no_quote_preserves_locked_anchor_and_syncs_others(client, session, actor):
     journey = await trip(session, actor)
     hotel = await product(

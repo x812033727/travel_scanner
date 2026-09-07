@@ -101,6 +101,8 @@ selection of the same product can schedule it once. Explicit times must be insid
 trip dates, one local day, verified availability and capacity, and must not overlap
 existing stops. Fixed-time activity rows carry `service_kind` (transfers must not
 be hidden in the legacy logistics section). eSIMs never occupy timeline slots.
+Scheduling a transfer also requires its airport, direction, flight number and
+passenger count. These remain itinerary details, not affiliate tracking parameters.
 `booked` is self-reported. Clicking out never marks a booking; cancelling a local
 selection neither cancels with the provider nor deletes a scheduled stop.
 

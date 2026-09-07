@@ -13,7 +13,9 @@ SERVICE_ERRORS: dict[str, dict[str, str]] = {
         ),
         "service_destination_mismatch": ("This option does not match the trip destination."),
         "service_area_required": ("Choose a verified stay area."),
-        "service_airport_required": ("Confirm the airport, direction and passengers."),
+        "service_airport_required": (
+            "Confirm the airport, direction, flight number and passengers."
+        ),
         "service_coverage_required": ("Verified country coverage is required."),
         "service_dates_required": ("Set valid trip dates and a same-day time window."),
         "service_time_conflict": (
@@ -46,7 +48,7 @@ SERVICE_ERRORS: dict[str, dict[str, str]] = {
         "service_identity_required": ("正確な地図IDと出典付き座標を確認してください。"),
         "service_destination_mismatch": ("旅程の目的地と一致しません。"),
         "service_area_required": ("宿泊エリアの確認が必要です。"),
-        "service_airport_required": ("空港、方向、人数を確認してください。"),
+        "service_airport_required": ("空港、方向、便名、人数を確認してください。"),
         "service_coverage_required": ("対応国の確認が必要です。"),
         "service_dates_required": ("旅行日と同日内の有効な時間を指定してください。"),
         "service_time_conflict": ("既存の予定と重なるか、対応時間外です。時間を変更してください。"),
@@ -72,7 +74,7 @@ SERVICE_ERRORS: dict[str, dict[str, str]] = {
         "service_identity_required": ("정확한 지도 ID와 출처가 있는 좌표를 확인하세요."),
         "service_destination_mismatch": ("여행 목적지와 일치하지 않습니다."),
         "service_area_required": ("확인된 숙박 지역을 선택하세요."),
-        "service_airport_required": ("공항, 방향, 인원을 확인하세요."),
+        "service_airport_required": ("공항, 방향, 항공편 번호, 인원을 확인하세요."),
         "service_coverage_required": ("사용 가능 국가를 확인해야 합니다."),
         "service_dates_required": ("여행 날짜와 같은 날의 유효한 시간을 지정하세요."),
         "service_time_conflict": (
@@ -100,7 +102,7 @@ SERVICE_ERRORS: dict[str, dict[str, str]] = {
         "service_identity_required": ("請先核實精準地圖識別及具來源的座標。"),
         "service_destination_mismatch": ("此選項與旅程目的地不符。"),
         "service_area_required": ("請選擇已核實的住宿區域。"),
-        "service_airport_required": ("請確認機場、方向與人數。"),
+        "service_airport_required": ("請確認機場、方向、航班編號與人數。"),
         "service_coverage_required": ("需要已核實的國家覆蓋資料。"),
         "service_dates_required": ("請設定有效旅程日期與同一天內的時間。"),
         "service_time_conflict": ("此時段與既有項目衝突或超出已核實時段，請調整時間。"),
@@ -120,7 +122,7 @@ SERVICE_ERRORS: dict[str, dict[str, str]] = {
         "service_identity_required": ("请先核实精确地图标识及有来源的坐标。"),
         "service_destination_mismatch": ("此选项与旅程目的地不符。"),
         "service_area_required": ("请选择已核实的住宿区域。"),
-        "service_airport_required": ("请确认机场、方向与人数。"),
+        "service_airport_required": ("请确认机场、方向、航班编号与人数。"),
         "service_coverage_required": ("需要已核实的国家覆盖数据。"),
         "service_dates_required": ("请设置有效旅程日期与同一天内的时间。"),
         "service_time_conflict": ("此时段与现有项目冲突或超出已核实时段，请调整时间。"),
