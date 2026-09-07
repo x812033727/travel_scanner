@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { preserveRequestId } from "./request-id";
-import { forwardedAnalyticsSession, renewedSession, upstreamLocale } from "./route";
+import { forwardedAnalyticsSession, renewedSession, upstreamLocale } from "./proxy-context";
 
 describe("travel BFF request tracing", () => {
   it("preserves the API request ID on the browser response", () => {

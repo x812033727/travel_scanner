@@ -36,6 +36,7 @@ scope:
   - apps/web/components/account-saved-items.tsx
   - apps/web/lib/api.ts
   - apps/web/app/api/travel/[...path]/route.ts
+  - apps/web/app/api/travel/[...path]/proxy-context.ts
   - apps/web/app/api/travel/[...path]/route.test.ts
   - apps/web/i18n
   - apps/web/lib/ui-text.ts

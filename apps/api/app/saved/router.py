@@ -303,7 +303,7 @@ async def save_item(
     if item_type == "service":
         from sqlalchemy.dialects.postgresql import insert
 
-        from app.travel_services.service import catalog_config, product_enabled, fail
+        from app.travel_services.service import catalog_config, fail, product_enabled
 
         try:
             product = await session.get(TravelServiceProduct, UUID(item_id))

@@ -255,6 +255,9 @@ def rank_products(
         e for e in evidence if haversine_km(*CITIES[city][2], e.latitude, e.longitude) <= 25
     ]
     ranked: list[tuple[tuple[Any, ...], dict[str, Any]]] = []
+    area_center = next(
+        ((a.latitude, a.longitude) for a in city_areas(CITIES[city][1]) if a.code == area), None
+    )
     for product in products:
         if product["destination_id"] != city and product["kind"] != "esim":
             continue
@@ -271,7 +274,7 @@ def rank_products(
             if facts["latitude"] is None or facts["longitude"] is None:
                 continue
             lat, lng = facts["latitude"], facts["longitude"]
-            nearby = haversine_km(*(center or CITIES[city][2]), lat, lng)
+            nearby = haversine_km(*(center or area_center or CITIES[city][2]), lat, lng)
             if radius and nearby > radius:
                 continue
             total_weight = sum(e.weight for e in evidence)
@@ -317,6 +320,9 @@ def rank_products(
                 facts["validity_days"] is None,
                 facts["validity_days"] or 999,
                 -(facts["data_gb"] or 0),
+                facts["currency"] or "ZZZ",
+                facts["reference_price"] is None,
+                facts["reference_price"] if facts["reference_price"] is not None else 0,
                 product["title"],
                 product["id"],
             )
