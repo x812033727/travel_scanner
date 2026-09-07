@@ -93,7 +93,9 @@ async def upsert_product(
     return row, True
 
 
-async def commit_import(session: AsyncSession, run_id: UUID, project_id: str) -> dict[str, Any]:
+async def commit_import(
+    session: AsyncSession, run_id: UUID, project_id: str | None
+) -> dict[str, Any]:
     run = await session.scalar(
         select(TravelServiceImport).where(TravelServiceImport.id == run_id).with_for_update()
     )
@@ -103,6 +105,8 @@ async def commit_import(session: AsyncSession, run_id: UUID, project_id: str) ->
         return run.result_json
     if any("error" in row for row in run.rows_json):
         raise fail("service_csv_invalid")
+    if not project_id and any(row.get("offer") for row in run.rows_json):
+        raise fail("service_brand_unavailable")
     changed = 0
     for row in run.rows_json:
         product, updated = await upsert_product(

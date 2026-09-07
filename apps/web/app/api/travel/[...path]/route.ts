@@ -67,7 +67,8 @@ async function proxy(request: NextRequest, context: Context) {
   }
   const base = process.env.API_INTERNAL_URL || "http://localhost:8000";
   const query = new URLSearchParams(request.nextUrl.search);
-  const isServiceClickout = /^affiliates\/offers\/[a-f0-9-]+\/clickout$/.test(endpoint);
+  const isHotelClickout = /^travel-services\/[a-f0-9-]+\/hotel-links\/[a-z_]+\/clickout$/.test(endpoint);
+  const isServiceClickout = isHotelClickout || /^affiliates\/offers\/[a-f0-9-]+\/clickout$/.test(endpoint);
   const formLocale = isServiceClickout ? query.get("locale") : null;
   if (isServiceClickout) query.delete("locale");
   const url = `${base}/api/v1/${endpoint}${query.size ? `?${query}` : ""}`;
@@ -120,7 +121,7 @@ async function proxy(request: NextRequest, context: Context) {
     }
   }
   const controller = new AbortController();
-  const verifyOffer = /^admin\/travel-services\/offers\/[a-f0-9-]+\/review$/.test(endpoint);
+  const verifyOffer = isHotelClickout || /^admin\/travel-services\/(offers|products)\/[a-f0-9-]+\/review$/.test(endpoint);
   const timeout = setTimeout(() => controller.abort(), verifyOffer ? Math.max(45_000, UPSTREAM_TIMEOUT_MS) : UPSTREAM_TIMEOUT_MS);
   let upstream: Response;
   try {

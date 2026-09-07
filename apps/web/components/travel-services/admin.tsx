@@ -38,6 +38,7 @@ type OfferRow = {
 };
 type Config = {
   public_enabled: boolean;
+  direct_hotel_links_enabled?: boolean;
   enabled_kinds: Kind[];
   enabled_destinations: string[];
   airalo_feed_enabled: boolean;
@@ -221,7 +222,7 @@ export function TravelServicesAdmin() {
         <>
           {!data.network_configured && (
             <p className="rounded-2xl bg-[var(--coral-soft)] p-4 text-sm">
-              {t("networkMissing")}{" "}
+              {t("networkMissing")} {t("directIndependent")}{" "}
               <Link href="/admin/settings" className="underline">
                 {t("config")}
               </Link>
@@ -352,6 +353,33 @@ export function TravelServicesAdmin() {
                       {t("edit")}
                     </button>
                   </div>
+                  {p.kind === "hotel" && (
+                    <HotelLinksEditor
+                      key={`${p.id}:${p.version}`}
+                      product={p}
+                      brands={data.brand_definitions}
+                      busy={busy}
+                      save={(links) =>
+                        run(() =>
+                          api(
+                            `/admin/travel-services/products/${p.id}?version=${p.version}`,
+                            {
+                              method: "PUT",
+                              body: JSON.stringify({
+                                source_key: p.source_key,
+                                kind: p.kind,
+                                destination_id: p.destination_id,
+                                title: p.title,
+                                names_json: p.names_json,
+                                source_url: p.source_url,
+                                facts: { ...p.facts, hotel_links: links },
+                              }),
+                            },
+                          ),
+                        )
+                      }
+                    />
+                  )}
                   {data.offers
                     .filter((o) => o.product_id === p.id)
                     .map((o) => (
@@ -779,6 +807,22 @@ export function TravelServicesAdmin() {
               <label className="flex min-h-11 items-center gap-3">
                 <input
                   type="checkbox"
+                  checked={config.direct_hotel_links_enabled ?? false}
+                  onChange={(e) =>
+                    setConfig({
+                      ...config,
+                      direct_hotel_links_enabled: e.target.checked,
+                    })
+                  }
+                />
+                {t("directEnabled")}
+              </label>
+              <p className="text-sm text-[var(--muted)]">
+                {t("directIndependent")}
+              </p>
+              <label className="flex min-h-11 items-center gap-3">
+                <input
+                  type="checkbox"
                   checked={config.public_enabled}
                   onChange={(e) =>
                     setConfig({ ...config, public_enabled: e.target.checked })
@@ -853,5 +897,121 @@ export function TravelServicesAdmin() {
         </>
       )}
     </div>
+  );
+}
+
+type HotelLink = { provider: string; url: string; evidence_url: string };
+function HotelLinksEditor({
+  product,
+  brands,
+  busy,
+  save,
+}: {
+  product: RecordRow;
+  brands: Overview["brand_definitions"];
+  busy: boolean;
+  save: (links: HotelLink[]) => Promise<void>;
+}) {
+  const t = useTranslations("travelServices");
+  const [links, setLinks] = useState<HotelLink[]>(
+    (product.facts.hotel_links as HotelLink[] | undefined) || [],
+  );
+  function update(index: number, fieldName: keyof HotelLink, value: string) {
+    setLinks(
+      links.map((link, i) =>
+        i === index ? { ...link, [fieldName]: value } : link,
+      ),
+    );
+  }
+  return (
+    <details className="mt-4 rounded-xl border border-[var(--line)] p-3">
+      <summary className="min-h-11 cursor-pointer py-2 font-semibold">
+        {t("directHotelLinks")}
+      </summary>
+      <p className="mb-3 text-sm text-[var(--muted)]">
+        {t("directReviewHint")}
+      </p>
+      <form
+        className="space-y-4"
+        onSubmit={(event) => {
+          event.preventDefault();
+          void save(links);
+        }}
+      >
+        {links.map((link, index) => (
+          <fieldset
+            key={index}
+            className="min-w-0 space-y-2 rounded-xl bg-[var(--paper)] p-3"
+            disabled={busy}
+          >
+            <legend className="text-sm">
+              {t("ordinaryLink")} {index + 1}
+            </legend>
+            <label className="block text-sm">
+              {t("bookingProvider")}
+              <select
+                className={field}
+                value={link.provider}
+                onChange={(e) => update(index, "provider", e.target.value)}
+              >
+                <option value="official">{t("officialHotel")}</option>
+                {Object.entries(brands)
+                  .filter(([, b]) => b.kinds.includes("hotel"))
+                  .map(([code, b]) => (
+                    <option value={code} key={code}>
+                      {b.name}
+                    </option>
+                  ))}
+              </select>
+            </label>
+            <label className="block text-sm">
+              {t("hotelPageUrl")}
+              <input
+                required
+                type="url"
+                className={field}
+                value={link.url}
+                onChange={(e) => update(index, "url", e.target.value)}
+              />
+            </label>
+            <label className="block text-sm">
+              {t("hotelLinkEvidence")}
+              <input
+                required
+                type="url"
+                className={field}
+                value={link.evidence_url}
+                onChange={(e) => update(index, "evidence_url", e.target.value)}
+              />
+            </label>
+            <button
+              type="button"
+              className={button}
+              onClick={() => setLinks(links.filter((_, i) => i !== index))}
+            >
+              {t("removeHotelLink")}
+            </button>
+          </fieldset>
+        ))}
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            className={button}
+            disabled={busy || links.length >= 8}
+            onClick={() =>
+              setLinks([
+                ...links,
+                { provider: "official", url: "", evidence_url: "" },
+              ])
+            }
+          >
+            {t("addHotelLink")}
+          </button>
+          <button type="submit" className={button} disabled={busy}>
+            {t("saveHotelLinks")}
+          </button>
+        </div>
+      </form>
+    </details>
   );
 }

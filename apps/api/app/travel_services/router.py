@@ -8,6 +8,7 @@ from urllib.parse import urlsplit
 from uuid import UUID, uuid4
 from zoneinfo import ZoneInfo
 
+import httpx
 from fastapi import APIRouter, Depends, Header, Query, Request
 from fastapi.responses import RedirectResponse
 from sqlalchemy import select
@@ -30,6 +31,7 @@ from app.models import (
     TripPlanItem,
     TripServiceSelection,
 )
+from app.travel_services.network import verify_hotel_link
 from app.travel_services.registry import affiliate_target
 from app.travel_services.schemas import CITIES, Facts, Kind, SelectInput, SelectionStatus
 from app.travel_services.service import (
@@ -38,6 +40,7 @@ from app.travel_services.service import (
     fingerprint,
     product_enabled,
     product_input,
+    ready_hotel_links,
     ready_offer,
     recommendations,
     require_product_review,
@@ -473,6 +476,47 @@ async def selection_status(
     trip.version += 1
     await session.commit()
     return {"version": trip.version, "status": selection.status}
+
+
+@router.post("/travel-services/{product_id}/hotel-links/{provider}/clickout", status_code=303)
+async def hotel_clickout(
+    product_id: UUID, provider: str, session: Session, request: Request
+) -> RedirectResponse:
+    await enforce_named_rate_limit(
+        "hotel-direct-clickout",
+        request.headers.get("x-travel-client-ip")
+        or (request.client.host if request.client else "unknown"),
+        limit=30,
+        window_seconds=60,
+    )
+    product = await session.get(TravelServiceProduct, product_id)
+    config, _ = await catalog_config(session)
+    if not product:
+        raise fail("service_unavailable", 404)
+    link = next(
+        (
+            link
+            for link in ready_hotel_links(product, config, datetime.now(UTC))
+            if link.provider == provider
+        ),
+        None,
+    )
+    if link is None:
+        raise fail("service_unavailable", 404)
+    try:
+        if not await verify_hotel_link(link):
+            raise fail("service_link_unavailable", 503)
+    except (httpx.HTTPError, ConnectionError, ValueError, TimeoutError) as exc:
+        raise fail("service_link_unavailable", 503) from exc
+    # This is not a commission-bearing click, booking or trip mutation.
+    return RedirectResponse(
+        link.url,
+        status_code=303,
+        headers={
+            "Cache-Control": "no-store",
+            "Referrer-Policy": "no-referrer",
+        },
+    )
 
 
 @router.post("/affiliates/offers/{offer_id}/clickout", status_code=303)

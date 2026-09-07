@@ -7,7 +7,52 @@ import httpx
 
 from app.catalog_review.evidence import public_request_target
 from app.travel_services.registry import affiliate_target, brand_target
-from app.travel_services.schemas import safe_url
+from app.travel_services.schemas import HotelLink, safe_url, untracked_url
+
+
+async def verify_hotel_link(link: HotelLink) -> bool:
+    """Validate every hop without retaining a page body or calling any affiliate API.
+
+    Cross-domain booking engines must be submitted as the reviewed destination itself;
+    an official homepage cannot silently redirect to an unrelated hotel or platform.
+    """
+    current = link.url
+    original = urlsplit(current)
+    async with asyncio.timeout(25), httpx.AsyncClient(trust_env=False, timeout=8) as client:
+        for _ in range(6):
+            current = untracked_url(current)
+            parsed = urlsplit(current)
+            if (parsed.hostname or "").removeprefix("www.") != (
+                original.hostname or ""
+            ).removeprefix("www."):
+                return False
+            # Re-run parameter and provider restrictions on each redirect.
+            HotelLink(provider=link.provider, url=current, evidence_url=link.evidence_url)
+            pinned = await public_request_target(current)
+            if pinned is None:
+                return False
+            target, host = pinned
+            async with client.stream(
+                "GET",
+                target,
+                headers={"Host": host, "Connection": "close"},
+                extensions={"sni_hostname": host},
+                follow_redirects=False,
+            ) as response:
+                if response.is_redirect:
+                    location = response.headers.get("location")
+                    if not location:
+                        return False
+                    current = safe_url(urljoin(current, location))
+                    continue
+                expected_query = parse_qs(original.query, keep_blank_values=True)
+                actual_query = parse_qs(parsed.query, keep_blank_values=True)
+                return bool(
+                    response.status_code == 200
+                    and parsed.path.rstrip("/") == original.path.rstrip("/")
+                    and all(actual_query.get(k) == v for k, v in expected_query.items())
+                )
+    return False
 
 
 async def verify_link(

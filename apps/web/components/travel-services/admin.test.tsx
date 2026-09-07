@@ -1,0 +1,122 @@
+import { afterEach, expect, it, vi } from "vitest";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
+import { TravelServicesAdmin } from "./admin";
+import copy from "@/messages/zh-TW/travelServices.json";
+
+const { request } = vi.hoisted(() => ({ request: vi.fn() }));
+vi.mock("@/lib/api", async (original) => ({
+  ...(await original<typeof import("@/lib/api")>()),
+  api: request,
+}));
+vi.mock("@/i18n/navigation", () => ({
+  Link: ({ href, children }: { href: string; children: React.ReactNode }) => (
+    <a href={href}>{children}</a>
+  ),
+}));
+afterEach(() => {
+  cleanup();
+  vi.clearAllMocks();
+});
+
+const product = {
+  id: "hotel-1",
+  kind: "hotel",
+  title: "Reviewed fixture",
+  source_key: "fixture-1",
+  source_url: "https://hotel.example.com/",
+  destination_id: "tokyo",
+  names_json: {},
+  status: "approved",
+  version: 3,
+  facts: { area_code: "marunouchi", hotel_links: [] },
+};
+const overview = {
+  products: [product],
+  offers: [],
+  brands: [],
+  network_configured: false,
+  project_id: null,
+  config: {
+    public_enabled: false,
+    enabled_kinds: [],
+    enabled_destinations: [],
+    direct_hotel_links_enabled: false,
+  },
+  version: 2,
+  brand_definitions: {
+    booking: { name: "Booking.com", kinds: ["hotel"], hosts: ["booking.com"] },
+  },
+  coverage: [],
+  review_due: 0,
+  imports: [],
+  operations: {},
+};
+
+it("edits exact hotel links without a network account and preserves other reviewed facts", async () => {
+  request.mockResolvedValue(overview);
+  render(<TravelServicesAdmin />);
+  expect(await screen.findByText(copy.directIndependent, { exact: false })).toBeTruthy();
+  fireEvent.click(screen.getByText(copy.directHotelLinks));
+  fireEvent.click(screen.getByRole("button", { name: copy.addHotelLink }));
+  fireEvent.change(screen.getByLabelText(copy.hotelPageUrl), {
+    target: { value: "https://hotel.example.com/stay" },
+  });
+  fireEvent.change(screen.getByLabelText(copy.hotelLinkEvidence), {
+    target: { value: "https://hotel.example.com/location" },
+  });
+  fireEvent.click(screen.getByRole("button", { name: copy.saveHotelLinks }));
+  await waitFor(() =>
+    expect(request.mock.calls.some(([, opts]) => opts?.method === "PUT")).toBe(
+      true,
+    ),
+  );
+  const [path, options] = request.mock.calls.find(
+    ([, opts]) => opts?.method === "PUT",
+  )!;
+  expect(path).toBe("/admin/travel-services/products/hotel-1?version=3");
+  const saved = JSON.parse(options.body);
+  expect(saved.facts.area_code).toBe("marunouchi");
+  expect(saved.facts.hotel_links).toEqual([
+    {
+      provider: "official",
+      url: "https://hotel.example.com/stay",
+      evidence_url: "https://hotel.example.com/location",
+    },
+  ]);
+  expect(saved.status).toBeUndefined(); // Saving cannot self-approve the change.
+});
+
+it("has an independent ordinary-link switch without enabling public destinations", async () => {
+  request.mockResolvedValue(overview);
+  render(<TravelServicesAdmin />);
+  await screen.findByRole("heading", { name: product.title });
+  fireEvent.click(screen.getByRole("tab", { name: copy.config }));
+  fireEvent.click(screen.getByLabelText(copy.directEnabled));
+  const checkbox = screen.getByLabelText(copy.directEnabled);
+  fireEvent.click(
+    within(checkbox.closest("section")!).getByRole("button", {
+      name: copy.apply,
+    }),
+  );
+  await waitFor(() =>
+    expect(request.mock.calls.some(([, opts]) => opts?.method === "PUT")).toBe(
+      true,
+    ),
+  );
+  const [, options] = request.mock.calls.find(
+    ([, opts]) => opts?.method === "PUT",
+  )!;
+  expect(JSON.parse(options.body)).toMatchObject({
+    direct_hotel_links_enabled: true,
+    public_enabled: false,
+    enabled_destinations: [],
+    version: 2,
+  });
+});

@@ -24,7 +24,7 @@ from app.models import (
 from app.problems import AppError
 from app.restaurants.editorial import validate_editorial_url
 from app.travel_services.registry import BRANDS, affiliate_target, brand_target
-from app.travel_services.schemas import CITIES, KINDS, CatalogConfig, Facts, ProductInput
+from app.travel_services.schemas import CITIES, KINDS, CatalogConfig, Facts, HotelLink, ProductInput
 from app.trips.stay_areas import evidence_items, extension_destination_ids, score_stay_areas
 
 
@@ -188,13 +188,30 @@ def public_product(product: TravelServiceProduct, locale: str, now: datetime) ->
         "kind": product.kind,
         "destination_id": product.destination_id,
         "title": product.names_json.get(locale) or product.title,
-        "facts": facts.model_dump(mode="json"),
+        # Link URLs and review evidence stay server-side; clickout resolves saved identity.
+        "facts": facts.model_dump(mode="json", exclude={"hotel_links"}),
         "source_url": product.source_url,
         "verified_at": product.verified_at,
         "distance_km": None,
         "reason": "destination_match",
         "offers": [],
+        "direct_links": [],
     }
+
+
+def ready_hotel_links(
+    product: TravelServiceProduct, config: CatalogConfig, now: datetime
+) -> list[HotelLink]:
+    if not (
+        config.direct_hotel_links_enabled
+        and product_enabled(config, product)
+        and product.kind == "hotel"
+        and product.status == "approved"
+        and product.verified_at
+        and now - timedelta(days=30) <= product.verified_at <= now
+    ):
+        return []
+    return Facts.model_validate(product.facts).hotel_links
 
 
 def trip_destinations(trip: TripPlan, rows: list[TripPlanItem]) -> list[str]:
@@ -387,6 +404,14 @@ async def recommendations(
     )
     for result_product in results:
         result_product["offers"] = offers.get(result_product["id"], [])
+        product = next(p for p in products if str(p.id) == result_product["id"])
+        result_product["direct_links"] = [
+            {
+                "provider": link.provider,
+                "name": BRANDS[link.provider].name if link.provider != "official" else None,
+            }
+            for link in ready_hotel_links(product, config, now)
+        ]
     evidence, _ = evidence_items(rows or [], CITIES[city][1])
     areas = score_stay_areas(CITIES[city][1], evidence)
     local_areas = {

@@ -23,7 +23,7 @@ from app.models import (
     TripServiceSelection,
 )
 from app.travel_services.imports import commit_import, parse_csv, upsert_product
-from app.travel_services.network import verify_link
+from app.travel_services.network import verify_hotel_link, verify_link
 from app.travel_services.registry import BRANDS, affiliate_target, brand_target
 from app.travel_services.router import Session
 from app.travel_services.schemas import (
@@ -251,6 +251,16 @@ async def review_product(
         raise fail("service_version_conflict", 409)
     if payload.status == "approved":
         require_product_review(product_input(row))
+        import asyncio
+
+        try:
+            # One bounded batch, not eight unbounded sequential website requests.
+            links = product_input(row).facts.hotel_links
+            async with asyncio.timeout(30):
+                if not all(await asyncio.gather(*(verify_hotel_link(link) for link in links))):
+                    raise fail("service_link_unavailable")
+        except (httpx.HTTPError, ConnectionError, ValueError, TimeoutError) as exc:
+            raise fail("service_link_unavailable") from exc
     row.status = payload.status
     row.verified_at = datetime.now(UTC) if payload.status == "approved" else None
     row.version += 1
@@ -395,8 +405,6 @@ async def preview_import(payload: CsvInput, user: AdminUser, session: Session) -
 @router.post("/imports/{run_id}/commit")
 async def apply_import(run_id: UUID, user: AdminUser, session: Session) -> dict[str, Any]:
     settings = await load_runtime_settings(session)
-    if not settings.travelpayouts_project_id:
-        raise fail("service_brand_unavailable")
     result = await commit_import(session, run_id, settings.travelpayouts_project_id)
     audit(session, user, "import_commit", str(run_id), result)
     await session.commit()

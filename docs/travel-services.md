@@ -28,6 +28,55 @@ it does not automatically enable any brand. No account settings were changed.
 
 ## Operator sequence
 
+### Ordinary hotel booking (no affiliate enrollment)
+
+Hotel catalog browsing, ranking and lodging selection do not require a Travelpayouts
+account. `facts.hotel_links` adds reviewed ordinary links independently of affiliate
+offers; `direct_hotel_links_enabled` defaults to false. No migration or paid inventory
+API is needed. Existing affiliate enrollment and validation rules are unchanged.
+
+1. Import hotel-only CSV rows (omit `brand`/`target_url`/`scope`) without a network
+   project. Mixed imports containing affiliate offers still require a project and
+   fail before writing any products if it is missing.
+2. In the hotel card's **Ordinary hotel booking links** editor, add a provider,
+   exact hotel URL and identity evidence URL. `official` requires same-host evidence;
+   platform URLs must belong to their registered brand. Do not label an area search,
+   platform homepage or another hotel as an exact property. A reviewer must check
+   the actual hotel's identity, source permissions and existing precise-map rules.
+3. Save, then review/approve. Changes reset the whole product to pending. Approval
+   validates public HTTPS DNS and each redirect, with bounded requests and no stored
+   page bodies. Cross-host redirects or a different final property path/query fail
+   closed; submit the final exact URL with matching evidence instead. Captchas,
+   anti-bot responses and unavailable pages are not silently treated as verified.
+4. Enable ordinary hotel links plus the hotel category and relevant destinations;
+   the public destination page additionally requires `public_enabled`. No production
+   flags or products are enabled by deploying this change.
+5. Re-review every 30 days. Stale links disappear while lodging selection remains
+   available. Disabling a product or the ordinary-link flag revokes clickout.
+
+Example `facts.hotel_links` shape (illustration only; not seeded product data):
+
+```json
+[{"provider":"official","url":"https://hotel.example.com/stay","evidence_url":"https://hotel.example.com/location"}]
+```
+
+The public API returns `direct_links` containing only provider identity/name, not
+raw link or review evidence URLs. New-tab same-origin forms use
+`POST /travel-services/{product_id}/hotel-links/{provider}/clickout`, which resolves
+the saved ID, checks current eligibility and revalidates the HTTPS destination
+before a no-store 303. No caller-supplied destination is used. The endpoint is
+anonymous, rate-limited and does not call Travelpayouts, add affiliate click records,
+change booking status or mutate a trip. The website check may fail if a booking site
+blocks automated verification; keep the hotel selectable and use another reviewed
+link. Prices, availability and cancellation rules are confirmed only off-site.
+
+Ordinary links are visibly separated from commission-bearing offers and never show
+an affiliate disclosure by themselves. Existing ordinary hotel links remain available
+when affiliate credentials are removed; enabling affiliate offers later does not
+require rebuilding the hotel catalog or the lodging-selection flow.
+
+### Affiliate offers
+
 1. Verify the current project's subscription status in Travelpayouts, not an older
    screenshot or another project's approval. Record a project evidence URL under
    Brands. Only approved + enabled + verified-within-30-days brands can sell.

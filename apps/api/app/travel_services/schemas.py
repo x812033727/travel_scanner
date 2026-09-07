@@ -74,7 +74,65 @@ class StrictModel(BaseModel):
     model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
 
 
+class HotelLink(StrictModel):
+    provider: Literal[
+        "official", "booking", "trip_com", "agoda", "expedia", "rakuten", "klook", "kkday"
+    ]
+    url: str
+    evidence_url: str
+
+    @field_validator("url", "evidence_url")
+    @classmethod
+    def urls(cls, value: str) -> str:
+        return untracked_url(value)
+
+    @model_validator(mode="after")
+    def identity(self) -> Self:
+        from app.travel_services.registry import BRANDS, affiliate_target, brand_target
+
+        host = urlsplit(self.url).hostname or ""
+        # Ordinary links must not conceal a redirect or another affiliate's tracking.
+        if any(
+            key.lower().startswith("utm_")
+            or key.lower()
+            in {
+                "url",
+                "redirect",
+                "redirect_url",
+                "redirect_uri",
+                "next",
+                "ref",
+                "refid",
+                "affiliate",
+                "affid",
+                "partner_id",
+            }
+            for key, _ in parse_qsl(urlsplit(self.url).query)
+        ):
+            raise ValueError("Original hotel page required")
+        if self.provider == "official":
+            evidence_host = urlsplit(self.evidence_url).hostname or ""
+            if host.removeprefix("www.") != evidence_host.removeprefix("www."):
+                raise ValueError("Official website evidence must belong to the same host")
+            if any(host == h or host.endswith("." + h) for b in BRANDS.values() for h in b.hosts):
+                raise ValueError("A booking platform is not the hotel's official website")
+            if host == "tpx.gr" or host.endswith(".tpx.gr"):
+                raise ValueError("Affiliate links are not ordinary hotel links")
+            try:
+                affiliate_target(self.url)
+            except ValueError:
+                pass
+            else:
+                raise ValueError("Affiliate links are not ordinary hotel links")
+        else:
+            brand_target(self.provider, self.url)
+            if urlsplit(self.url).path == "/":
+                raise ValueError("An exact hotel page, not a platform homepage, is required")
+        return self
+
+
 class Facts(StrictModel):
+    hotel_links: list[HotelLink] = Field(default_factory=list, max_length=8)
     country_codes: list[str] = Field(default_factory=list, max_length=50)
     area_code: str | None = Field(None, max_length=64)
     latitude: float | None = Field(None, ge=-90, le=90)
@@ -118,6 +176,8 @@ class Facts(StrictModel):
 
     @model_validator(mode="after")
     def paired(self) -> Self:
+        if len({link.provider for link in self.hotel_links}) != len(self.hotel_links):
+            raise ValueError("Only one verified hotel link per provider")
         if (self.latitude is None) != (self.longitude is None):
             raise ValueError("Coordinates must be paired")
         if self.price_checked_at and self.price_checked_at.tzinfo is None:
@@ -135,6 +195,12 @@ class ProductInput(StrictModel):
     names_json: dict[Locale, str] = Field(default_factory=dict)
     source_url: str
     facts: Facts = Field(default_factory=Facts)
+
+    @model_validator(mode="after")
+    def hotel_only(self) -> Self:
+        if self.kind != "hotel" and self.facts.hotel_links:
+            raise ValueError("Ordinary booking links are only supported for hotels")
+        return self
 
     @field_validator("source_url")
     @classmethod
@@ -205,6 +271,7 @@ class BrandInput(StrictModel):
 
 class CatalogConfig(StrictModel):
     public_enabled: bool = False
+    direct_hotel_links_enabled: bool = False
     enabled_kinds: list[Kind] = Field(default_factory=list)
     enabled_destinations: list[str] = Field(default_factory=list)
     airalo_feed_enabled: bool = False

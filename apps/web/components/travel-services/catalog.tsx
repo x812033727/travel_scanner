@@ -58,6 +58,7 @@ export type Product = {
     brand_name: string;
     scope: "product" | "destination";
   }[];
+  direct_links?: { provider: string; name: string | null }[];
 };
 type Selection = {
   id: string;
@@ -760,12 +761,55 @@ export function ServiceCatalog({
                         </div>
                         {showPlatforms === product.id && (
                           <div className="mt-4 space-y-3 border-t border-[var(--line)] pt-4">
-                            <p className="text-xs text-[var(--muted)]">
-                              {t("disclosure")}
-                            </p>
-                            {product.offers.length === 0 && (
-                              <p className="text-sm">{t("noOffers")}</p>
+                            {product.offers.length > 0 && (
+                              <p className="text-xs text-[var(--muted)]">
+                                {t("disclosure")}
+                              </p>
                             )}
+                            {(product.direct_links?.length || 0) > 0 && (
+                              <div className="space-y-3">
+                                <p className="text-xs text-[var(--muted)]">
+                                  {t("directDisclosure")}
+                                </p>
+                                {product.direct_links!.map((link) => {
+                                  const name =
+                                    link.provider === "official"
+                                      ? t("officialHotel")
+                                      : link.name;
+                                  return (
+                                    <form
+                                      key={link.provider}
+                                      action={`/api/travel/travel-services/${product.id}/hotel-links/${link.provider}/clickout?locale=${locale}`}
+                                      method="post"
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                    >
+                                      <button
+                                        type="submit"
+                                        className={`${button} w-full justify-between text-left`}
+                                        aria-label={`${name} · ${t("ordinaryLink")} · ${t("newTab")}`}
+                                      >
+                                        <span className="min-w-0 break-words">
+                                          {name}
+                                          <small className="block text-xs font-normal">
+                                            {t("productScope")} ·{" "}
+                                            {t("ordinaryLink")}
+                                          </small>
+                                        </span>
+                                        <ExternalLink
+                                          size={16}
+                                          className="shrink-0"
+                                        />
+                                      </button>
+                                    </form>
+                                  );
+                                })}
+                              </div>
+                            )}
+                            {product.offers.length === 0 &&
+                              !product.direct_links?.length && (
+                                <p className="text-sm">{t("noOffers")}</p>
+                              )}
                             {product.offers.map((offer) => (
                               <form
                                 key={offer.id}

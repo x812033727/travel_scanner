@@ -8,6 +8,19 @@ vi.mock("next/headers", () => ({ cookies: async () => new Map() }));
 afterEach(() => vi.unstubAllGlobals());
 
 describe("saved service clickout BFF", () => {
+  it("proxies saved ordinary hotel links with safe new-tab 303 and no affiliate rewriting", async () => {
+    const fetcher = vi.fn(async () => new Response(null, { status: 303, headers: { Location: "https://hotel.example.com/stay" } }));
+    vi.stubGlobal("fetch", fetcher);
+    const id = "00000000-0000-4000-8000-000000000001";
+    const response = await POST(new NextRequest(`https://mokaair.test/api/travel/travel-services/${id}/hotel-links/official/clickout?locale=ko`, { method: "POST", headers: { Origin: "https://mokaair.test" } }), { params: Promise.resolve({ path: ["travel-services", id, "hotel-links", "official", "clickout"] }) });
+    expect(response.status).toBe(303);
+    expect(response.headers.get("location")).toBe("https://hotel.example.com/stay");
+    expect(response.headers.get("cache-control")).toBe("no-store");
+    const [target, options] = (fetcher.mock.calls as unknown as [string, RequestInit][])[0];
+    expect(target).not.toContain("locale=");
+    expect(new Headers(options.headers).get("X-Travel-Locale")).toBe("ko");
+    expect(options.redirect).toBe("manual");
+  });
   it("uses a controlled form locale, keeps 303 and strips the locale query upstream", async () => {
     const fetcher = vi.fn(async () => new Response(null, { status: 303, headers: { Location: "https://tp.st/fixture" } }));
     vi.stubGlobal("fetch", fetcher);
