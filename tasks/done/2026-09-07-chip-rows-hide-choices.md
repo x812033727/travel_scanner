@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-chip-rows-hide-choices
 title: Filter chip rows hide most of their choices behind a silent sideways scroll
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-07T01:48:32Z
 created_at: 2026-09-07T01:47:02Z
-completed_at:
+completed_at: 2026-09-07T02:11:06Z
 branch:
 depends_on: []
 scope:
