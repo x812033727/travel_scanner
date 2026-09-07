@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**12 open · 0 in progress · 2 blocked · 1 in review · 141 done**
+**11 open · 0 in progress · 2 blocked · 1 in review · 142 done**
 
 ## Ready to claim
 
@@ -20,7 +20,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
-| P3 | [商圈名單還有 95 家沒有英文店名，發布前要逐家查](open/2026-09-06-trend-merchant-english-names-backlog.md) | api | `apps/api/app/foods/data/trend_merchants.json` |
 | P3 | [The whole applied-filter chip is a delete button](open/2026-09-07-applied-filter-chip-is-all-delete.md) | web | `apps/web/components/hotspot-explorer.tsx`<br>`apps/web/components/food-browser.tsx` |
 | P3 | [A signed-out visit to /account still fires seven requests that can only 401](open/2026-09-07-signed-out-account-fires-401s.md) | web | `apps/web/components/account-saved-items.tsx`<br>`apps/web/app/[locale]/account` |
 
@@ -45,6 +44,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-07 [商圈名單還有 95 家沒有英文店名，發布前要逐家查](done/2026-09-06-trend-merchant-english-names-backlog.md)
 - 2026-09-07 [The area filter greys out with no reason given](done/2026-09-07-disabled-area-select-no-reason.md)
 - 2026-09-07 [The three numbers on a ranking card have no scale and no explanation](done/2026-09-07-ranking-scores-have-no-scale.md)
 - 2026-09-07 [Filter chip rows hide most of their choices behind a silent sideways scroll](done/2026-09-07-chip-rows-hide-choices.md)
@@ -54,4 +54,3 @@ _Nothing here._
 - 2026-09-07 [後台沒有「產生介紹」的按鈕，所以介紹佇列永遠是空的](done/2026-09-07-intro-generate-trigger.md)
 - 2026-09-07 [上線稽核找到的兩個 API 缺陷：座標來源與額度扣點順序](done/2026-09-07-post-deploy-audit-api-fixes.md)
 - 2026-09-07 [後台可改前台文案：API、資料表、快取與稽核](done/2026-09-07-ui-text-overrides-api.md)
-- 2026-09-07 [產生器每次執行都會重寫既有列的分類，重跑一次就還原剛修好的資料](done/2026-09-07-generator-rewrites-categories.md)

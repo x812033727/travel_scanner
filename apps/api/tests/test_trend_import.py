@@ -366,6 +366,168 @@ SOURCED_ENGLISH_NAMES = {
     "okinawa-houkiboshi": "Houkiboshi Minatogawa",
     # faidama.com writes the shop as "faidama"; shokudou_faidama is its own Instagram handle.
     "okinawa-faidama": "Shokudo faidama",
+    # --- added 2026-09-07 from a two-lens research pass, an adversarial verify pass and a
+    # curl of every cited page; each comment names where the Latin form is printed ---
+    # printed on an English listing:
+    # https://www.eatingthaifood.com/restaurants/thai-beef-noodles-wattana-panich-ekkamai/
+    "bangkok-wathnaaphaanich-enuue-tun": "Wattana Panich",
+    # Visit Busan's English listing prints it (uc_seq=2158&lang_cd=en); local_name 모모스 로스터리 &
+    # 커피바 is the same words
+    "busan-momos": "Momos Roastery & Coffee Bar",
+    # printed on an English listing:
+    # https://world.nol.com/en/content/pois/c39cac50-504c-4924-a89e-8739bcc281a5
+    "busan-mumyeongilgi": "Cotton Diary",
+    # printed on an English listing:
+    # https://www.timeout.com/chiang-mai/restaurants/kanomwan-chang-moi
+    "chiang-mai-khnmhwaanchaangm-y": "Kanomwan Chang Moi",
+    # printed on the shop's own page: https://www.kitipanit.com
+    "chiang-mai-kitiphaanich": "Kiti Panit",
+    # printed on an English listing:
+    # https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=86381
+    "daegu-bongsanjjimgalbi": "Bongsan Jjimgalbi",
+    # printed on an English listing: https://creatrip.com/en/blog/9055
+    "daegu-nagyeongjjimgalbi": "Nakyoung Jjimgalbi",
+    # printed on an English listing: https://en.edaily.co.kr/news/eda202606275710/
+    "daegu-nogyang": "Nokyang",
+    # printed on an English listing:
+    # https://www.daegufood.go.kr/kor/food/food.asp?idx=1790&gotoPage=1&snm=9&ta=5
+    "daegu-nosekondo": "Nosecondo",
+    # printed on an English listing:
+    # https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=183910
+    "daegu-sanhojjimgalbisigdang": "Sanho Jjimgalbi",
+    # printed on the shop's own page: https://www.manucoffee.com/shoplist/
+    "fukuoka-manucoffee-roasters": "manucoffee roasters KUJIRA",
+    # printed on the shop's own page: https://www.sehwamaeulcoop.com/our/cafe477
+    "jeju-kape477": "CAFE477+",
+    # printed on an English listing:
+    # https://www.visitjeju.net/en/detail/view?contentsid=CNTS_000000000018312
+    "jeju-kapegongjagso": "Cafe Gongjakso",
+    # printed on an English listing:
+    # https://www.visitjeju.net/en/detail/view?contentsid=CNTS_000000000021519
+    "jeju-sehwaminsogoilsijang": "Sehwa Haenyeo Traditional 5-Day Market",
+    # Instagram @a_norange, captions signed ANORANGE; case normalised like Shirogane Sabo
+    "jeonju-eonorenji": "Anorange",
+    # printed on an English listing:
+    # https://www.google.com/maps/place/Geumeum/data=!4m6!3m5!1s0x3570254e521a8579:0xc2f0eecf98de54a8!8m2!3d35.8063178!4d127.150582!16s%2Fg%2F11v0396q8h?hl=en
+    "jeonju-geumeum": "Geumeum",
+    # printed on an English listing:
+    # https://www.google.com/maps/place/Eat+Anything+with+vegan,+71+Seohak+3-gil,+Wansan-gu,+Jeonju-si,+Jeonbuk+State,+South+Korea/data=!4m6!3m5!1s0x357025b76951fd63:0xcfcaaddba0d08a68!8m2!3d35.8087076!4d127.1519068!16s%2Fg%2F11k3xgf4ry?hl=en
+    "jeonju-isaenidding": "Eat Anything",
+    # Instagram @kinoandco_official bio 「KINO & Co. Masion de Cafe & Spirits」
+    "jeonju-kinoaenko": "Kino & Co.",
+    # Instagram @cafe_ordonne display name 「전주카페 오르도네 Ordonné」, bio 「Ordonné [오르도네]」
+    "jeonju-oreudone": "Ordonné",
+    # Naver blog PostView 224269018154 prints 「PAUZE COFFEE」 with the row's address; the shop is
+    # @pauze_jeonju
+    "jeonju-paujaekeopi": "Pauze Coffee",
+    # printed on an English listing:
+    # https://tour.jeonju.go.kr/eng/board/view.jeonju?boardId=BBS_0000025&menuCd=DOM_000000209001000000&paging=ok&startPage=1&dataSid=10436
+    "jeonju-seohagateuseupeiseu": "Seohak Art Space",
+    # printed on an English listing: https://tabelog.com/en/ishikawa/A1701/A170101/17000399/
+    "kanazawa-ye-tian-wu-cha-dian": "Nodaya Chaten",
+    # printed on an English listing: https://www.nagoya-info.jp/en/gourmet/detail/25/
+    "nagoya-mei-hua-tang": "Baikado",
+    # printed on an English listing:
+    # https://www.okinawastory.jp/feature/favorite_time/discover_coffee
+    "okinawa-beans-store": "OKINAWA CERRADO COFFEE Beans Store",
+    # printed on an English listing: https://untappd.com/v/ukishima-brewing-tap-room/8064988
+    "okinawa-taproom": "Ukishima Brewing Tap Room",
+    # printed on the shop's own page: https://bonobakery.jp/
+    "osaka-kyoto-bono-bakery": "bonobakery",
+    # printed on the shop's own page: https://taiyounotou.com/shops/honten/
+    "osaka-kyoto-cafe-taiyounotou-honten": "cafe Taiyou no Tou Honten",
+    # printed on the shop's own page: https://www.pancante.com/
+    "osaka-kyoto-cante-grande": "Cante Grande Bakery",
+    # printed on an English listing: https://tabelog.com/en/matome/26803/
+    "osaka-kyoto-gokkei-ichijoji": "Menya Gokkei Ichijoji Honten",
+    # printed on an English listing: https://tabelog.com/en/kyoto/A2601/A260303/26000491/
+    "osaka-kyoto-ichijoji-nakatani": "Ichijoji Nakatani",
+    # printed on an English listing: https://tabelog.com/en/osaka/A2701/A270101/27116582/
+    "osaka-kyoto-kyuri-kissaten": "Kyuri Kissa Ten",
+    # printed on an English listing: https://tabelog.com/en/kyoto/A2601/A260303/26001199/
+    "osaka-kyoto-takayasu": "Chuka Soba Takayasu",
+    # printed on the shop's own page: https://moonsunbrewing.jp/concept/
+    "sapporo-brewing": "Moon and Sun BREWING",
+    # printed on the shop's own page: https://donburi.jp/en/
+    "sapporo-donburicha-wu-satsuporoer-tiao-shi-chang-dian": "Sapporo Nijyo-Ichiba DONBURI-CHAYA",
+    # t-sushi.net/en, Tabelog EN 1079655 and japan-food.guide all print it; the site's own copyright
+    # line says TATSUYOSHI THE SECOND Co.,ltd
+    "sapporo-er-dai-mu-chen-yoshi": "Nidaime Tatsuyoshi",
+    # printed on an English listing: https://tabelog.com/en/hokkaido/A0101/A010102/1082918/
+    "sapporo-garaku": "Soup curry GARAKU Sapporo honten",
+    # printed on an English listing: https://tabelog.com/en/hokkaido/A0101/A010103/1004766/
+    "sapporo-zingisukan-higenoushi-ben-dian": "Jingisukan Higenoushi Honten",
+    # printed on an English listing: https://en.wikipedia.org/wiki/Andongjang
+    "seoul-andongjang": "Andongjang",
+    # brand is in name_zh; en.coffeelibre.kr lists the branch as YeonNam (shopinfo no=2470), a place
+    # name
+    "seoul-coffee-libre-yeonnam": "Coffee Libre Yeonnam",
+    # printed on an English listing:
+    # https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=112805
+    "seoul-daerimcanggo": "Daelim Changgo Gallery",
+    # printed on an English listing:
+    # https://ployslittleatlas.com/en/food-en/hani-kalguksu-an-unmissable-dish-in-seouls-sindang-dong/
+    "seoul-hanikalgugsu": "Hani Kalguksu",
+    # printed on an English listing:
+    # https://english.visitseoul.net/restaurants/Joseonok-EN/ENP006970
+    "seoul-joseonog": "Joseonok",
+    # printed on an English listing:
+    # https://english.visitseoul.net/restaurants/coffeehanyakbang/ENPyiaqhs
+    "seoul-keopihanyagbang": "Coffee Hanyakbang",
+    # printed on an English listing:
+    # https://english.visitseoul.net/attractions/MabongnimHalmeonijip/ENP8wjib6
+    "seoul-mabogrimhalmeonijib": "Mabongnim Halmeonijip",
+    # printed on the shop's own page: https://mongtan.co.kr/
+    "seoul-mongtan": "Mongtan",
+    # printed on an English listing:
+    # https://www.mytravelnotes.co.kr/en/sindang-mokpo-seafood-grilled-squid-fried-fish
+    "seoul-oggyeongine-geonsaengseon": "Okgyeongine Geonsaengseon",
+    # printed on an English listing:
+    # https://www.tastekoreanfood.com/eatout/sansugapsan-seoul-authentic-korean-sundae
+    "seoul-sansugabsan": "Sansugapsan",
+    # printed on an English listing: https://letseoul.com/en/places/somunnan-seongsu-gamjatang
+    "seoul-somunnanseongsugamjatang": "Somunnan Seongsu Gamjatang",
+    # printed on an English listing:
+    # https://edition.cnn.com/travel/article/tainan-street-food/index.html
+    "tainan-fu-sheng-hao-wan-gui": "Fu Sheng Hao",
+    # Tripadvisor d6143638, h1 「Tai Cheng Fruit Shop」, checked in a browser 2026-09-07; the shop's
+    # own Facebook handle is Tai.cheng.fruit.shop
+    "tainan-tai-cheng-shui-guo-bing-dian": "Tai Cheng Fruit Shop",
+    # printed on an English listing:
+    # https://tw.openrice.com/en/tainan/r-%E4%BF%AE%E5%AE%89%E6%89%81%E6%93%94%E8%B1%86%E8%8A%B1-xiuan-douhua-west-central-district-taiwanese-vegetarian-r94324/
+    "tainan-xiu-an-bian-dan-dou-hua": "Xiu'an Douhua",
+    # printed on an English listing: https://wanderlog.com/place/details/8323720/akamaru
+    "taipei-dango-akamaru": "Akamaru",
+    # Tripadvisor d1633072, h1 「Dongqu Fenyuan Bingdian (Eastern Ice Store)」, checked in a browser
+    # 2026-09-07
+    "taipei-dong-qu-fen-yuan": "Dongqu Fenyuan Bingdian",
+    # printed on the shop's own page: https://www.fujintreeshop.com/en/pages/shopinfo
+    "taipei-fujin-tree-cafe": "Fujin Tree Café – Fujin Store",
+    # Instagram @ikenone_tw display name 「池音 鶏白湯拉麵 CHIYIN」
+    "taipei-ikenone-ramen": "CHIYIN",
+    # printed on an English listing: https://www.friendlystore.taipei/store/en/pg1/4/company/8482
+    "taipei-waha-cafe-chengde": "Waha Café Chengde Branch",
+    # printed on an English listing: https://tabelog.com/en/tokyo/A1311/A131103/13281905/
+    "tokyo-chi-cha-ban-yue": "Kissa Hangetsu",
+    # printed on the shop's own page: https://dandelionchocolate.jp/pages/shop-list
+    "tokyo-dandelion-chocolate": "Dandelion Chocolate Factory & Cafe Kuramae",
+    # printed on an English listing: https://tabelog.com/en/tokyo/A1311/A131103/13227380/
+    "tokyo-guo-zi-wu-shinonome": "Kashiya Shinonome",
+    # printed on the shop's own page: https://trianon.co.jp/
+    "tokyo-torianonyang-guo-zi-dian": "TRIANON",
+    # printed on an English listing: https://trulytokyo.com/gyozaro/
+    "tokyo-yuan-su-jiao-zi-lou": "Harajuku Gyozaro",
+    # printed on an English listing: https://tabelog.com/en/tokyo/A1311/A131103/13102272/
+    "tokyo-yuwaeru": "Yuwaeru Honten",
+    # printed on an English listing: https://tabelog.com/en/kanagawa/A1401/A140306/14001122/
+    "yokohama-bang-zhi-man": "Hamajiman",
+    # printed on an English listing: https://tabelog.com/en/kanagawa/A1401/A140306/14053590/
+    "yokohama-yuan-zu-kare-tantanmian-zheng-hu-zong-ben-dian": (
+        "Ganso Curry Tantanmen Masatora Souhonten"
+    ),
+    # Daegu's English city-tourism blog prints 「Neoguri (너구리)」 with the Hyangchon-dong address:
+    # https://visitdaegu2011.blogspot.com/2011/09/famous-restaurants-in-daegu.html
+    "daegu-neoguri": "Neoguri",
 }
 
 
