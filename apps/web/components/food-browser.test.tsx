@@ -206,6 +206,25 @@ describe("FoodBrowser", () => {
     );
   });
 
+  it("names the list it is showing, whether or not a city has been picked", async () => {
+    renderBrowser("/foods");
+
+    // The page used to open on "先選一座城市" over a list of every city's merchants —
+    // an instruction and a contradiction of it, one above the other.
+    expect(await screen.findByRole("heading", { name: "Ichiran Shibuya" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "所有城市的店家" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "挑一座城市，只看那裡的店" })).toBeTruthy();
+
+    fireEvent.change(screen.getByRole("combobox", { name: "城市" }), {
+      target: { value: "tokyo" },
+    });
+
+    // With a city chosen the heading is that city, and the shortcut has done its job.
+    await waitFor(() => expect(screen.getByRole("heading", { name: "東京" })).toBeTruthy());
+    expect(screen.queryByRole("heading", { name: "所有城市的店家" })).toBeNull();
+    expect(screen.queryByRole("heading", { name: "挑一座城市，只看那裡的店" })).toBeNull();
+  });
+
   it("cascades city, area and cuisine into the query string", async () => {
     renderBrowser("/foods");
 

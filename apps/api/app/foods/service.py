@@ -3,7 +3,7 @@ from __future__ import annotations
 import base64
 import binascii
 from collections import Counter, defaultdict
-from collections.abc import Iterable, Mapping
+from collections.abc import Iterable, Mapping, Sequence
 from datetime import UTC, datetime
 from typing import Any, cast
 from uuid import UUID
@@ -1081,8 +1081,46 @@ async def _resolve_area(session: AsyncSession, area_slug: str) -> FoodArea:
     return area
 
 
+def _search_filter(q: str | None) -> Any | None:
+    """The text condition, or ``None`` when nothing was typed."""
+
+    term = (q or "").strip()
+    if not term:
+        return None
+    pattern = f"%{escape_like(term)}%"
+    dish_match = FoodMerchant.id.in_(
+        select(FoodMerchantFood.merchant_id)
+        .join(TravelFood, TravelFood.id == FoodMerchantFood.food_id)
+        .where(TravelFood.search_text.ilike(pattern, escape="\\"))
+    )
+    return or_(
+        FoodMerchant.name.ilike(pattern, escape="\\"),
+        FoodMerchant.local_name.ilike(pattern, escape="\\"),
+        FoodMerchant.slug.ilike(pattern, escape="\\"),
+        FoodMerchant.address.ilike(pattern, escape="\\"),
+        dish_match,
+    )
+
+
+def _category_filter(category_slug: str | None) -> Any | None:
+    """The category condition, or ``None`` when no cuisine was chosen."""
+
+    if not category_slug:
+        return None
+    return FoodMerchant.id.in_(
+        select(FoodMerchantCategory.merchant_id)
+        .join(FoodCategory, FoodCategory.id == FoodMerchantCategory.category_id)
+        .where(FoodCategory.slug == category_slug, FoodCategory.is_active.is_(True))
+    )
+
+
 async def _category_counts(
-    session: AsyncSession, *, destination_id: str | None, area_id: UUID | None, unassigned: bool
+    session: AsyncSession,
+    *,
+    destination_id: str | None,
+    area_id: UUID | None,
+    unassigned: bool,
+    extra: Sequence[Any] = (),
 ) -> dict[UUID, int]:
     filters = list(publishable_merchant_filters())
     if destination_id:
@@ -1091,6 +1129,7 @@ async def _category_counts(
         filters.append(FoodMerchant.area_id.is_(None))
     elif area_id is not None:
         filters.append(FoodMerchant.area_id == area_id)
+    filters.extend(extra)
     rows = (
         await session.execute(
             select(FoodMerchantCategory.category_id, func.count(func.distinct(FoodMerchant.id)))
@@ -1108,17 +1147,24 @@ async def merchant_categories(
     locale: str,
     destination_id: str | None = None,
     area_slug: str | None = None,
+    q: str | None = None,
 ) -> dict[str, Any]:
-    """Every active category with the number of publishable merchants in scope."""
+    """Every active category with the number of publishable merchants in scope.
+
+    Scope is every filter *except* the category itself, so each number answers the
+    question the reader is actually asking: how many would I get if I picked this one.
+    """
 
     area_id: UUID | None = None
     if area_slug and area_slug != "other":
         area_id = (await _resolve_area(session, area_slug)).id
+    search = _search_filter(q)
     counts = await _category_counts(
         session,
         destination_id=destination_id,
         area_id=area_id,
         unassigned=area_slug == "other",
+        extra=[search] if search is not None else [],
     )
     categories = (
         await session.scalars(
@@ -1140,14 +1186,32 @@ async def merchant_categories(
 
 
 async def _merchant_facets(
-    session: AsyncSession, *, locale: str, destination_id: str
+    session: AsyncSession,
+    *,
+    locale: str,
+    destination_id: str,
+    area_slug: str | None = None,
+    category_slug: str | None = None,
+    q: str | None = None,
 ) -> dict[str, Any]:
-    """Area and category counts for one city, independent of the other active filters."""
+    """Area and category counts for one city.
 
+    Each facet applies every filter except its own. The counts used to ignore the other
+    filters entirely, so choosing an area left four cuisines claiming a merchant each
+    above a list holding one — numbers that could not all be true at once.
+    """
+
+    search = _search_filter(q)
+    category = _category_filter(category_slug)
+    area_extra = [item for item in (search, category) if item is not None]
     area_rows = (
         await session.execute(
             select(FoodMerchant.area_id, func.count(FoodMerchant.id))
-            .where(*publishable_merchant_filters(), FoodMerchant.destination_id == destination_id)
+            .where(
+                *publishable_merchant_filters(),
+                FoodMerchant.destination_id == destination_id,
+                *area_extra,
+            )
             .group_by(FoodMerchant.area_id)
         )
     ).all()
@@ -1166,7 +1230,13 @@ async def _merchant_facets(
         ],
         "unassigned_area_count": area_counts.get(None, 0),
         "categories": (
-            await merchant_categories(session, locale=locale, destination_id=destination_id)
+            await merchant_categories(
+                session,
+                locale=locale,
+                destination_id=destination_id,
+                area_slug=area_slug,
+                q=q,
+            )
         )["items"],
     }
 
@@ -1193,31 +1263,9 @@ async def list_merchants(
         filters.append(FoodMerchant.area_id.is_(None))
     elif area_slug:
         filters.append(FoodMerchant.area_id == (await _resolve_area(session, area_slug)).id)
-    if category_slug:
-        filters.append(
-            FoodMerchant.id.in_(
-                select(FoodMerchantCategory.merchant_id)
-                .join(FoodCategory, FoodCategory.id == FoodMerchantCategory.category_id)
-                .where(FoodCategory.slug == category_slug, FoodCategory.is_active.is_(True))
-            )
-        )
-    term = (q or "").strip()
-    if term:
-        pattern = f"%{escape_like(term)}%"
-        dish_match = FoodMerchant.id.in_(
-            select(FoodMerchantFood.merchant_id)
-            .join(TravelFood, TravelFood.id == FoodMerchantFood.food_id)
-            .where(TravelFood.search_text.ilike(pattern, escape="\\"))
-        )
-        filters.append(
-            or_(
-                FoodMerchant.name.ilike(pattern, escape="\\"),
-                FoodMerchant.local_name.ilike(pattern, escape="\\"),
-                FoodMerchant.slug.ilike(pattern, escape="\\"),
-                FoodMerchant.address.ilike(pattern, escape="\\"),
-                dish_match,
-            )
-        )
+    filters.extend(
+        item for item in (_category_filter(category_slug), _search_filter(q)) if item is not None
+    )
     total = int(await session.scalar(select(func.count(FoodMerchant.id)).where(*filters)) or 0)
     offset = _decode_cursor(cursor)
     merchants = list(
@@ -1237,12 +1285,19 @@ async def list_merchants(
         ).all()
     )
     if destination_id:
-        facets = await _merchant_facets(session, locale=locale, destination_id=destination_id)
+        facets = await _merchant_facets(
+            session,
+            locale=locale,
+            destination_id=destination_id,
+            area_slug=area_slug,
+            category_slug=category_slug,
+            q=q,
+        )
     else:
         facets = {
             "areas": [],
             "unassigned_area_count": 0,
-            "categories": (await merchant_categories(session, locale=locale))["items"],
+            "categories": (await merchant_categories(session, locale=locale, q=q))["items"],
         }
     next_offset = offset + len(merchants)
     return {
