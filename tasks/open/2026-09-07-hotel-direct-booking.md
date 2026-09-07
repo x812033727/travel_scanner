@@ -1,7 +1,7 @@
 ---
 id: 2026-09-07-hotel-direct-booking
 title: Hotel booking without affiliate enrollment
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-hotel-direct
@@ -34,15 +34,15 @@ for a Travelpayouts account or brand approval. Root dirty checkout is untouched.
 - [x] Ordinary links are reviewed separately from affiliate offers and require no token/project.
 - [x] Hotel-only CSV can be committed without a network account; mixed affiliate imports stay gated.
 - [x] Five-language visitor/admin UI labels ordinary links, preserves unknown prices and trip selection.
-- [ ] API, type/lint, translation, unit, build and responsive Playwright checks pass.
-- [ ] PR opened with release gates documented; do not merge/deploy without approval.
+- [x] API, type/lint, translation, unit, build and responsive Playwright checks pass.
+- [x] PR opened with release gates documented; do not merge/deploy without approval.
 
 ## Steps
 
 - [x] Add typed, identity-evidenced hotel links in existing product facts; default-off switch.
 - [x] Bounded DNS-pinned website validation, stale/pending/disabled guards, saved-ID clickout.
 - [x] Admin editor and public new-tab forms; ordinary clicks never imply bookings or commissions.
-- [ ] Validate and hand off.
+- [x] Validate and hand off.
 
 ## How to verify
 
@@ -66,3 +66,12 @@ typecheck, five-language keys and 24 catalog/admin/BFF Vitest tests passed. Disk
 exhaustion interrupted the first lint/build attempt; available space subsequently
 recovered and validation resumed. Full Windows pytest collection hits the pre-existing
 deployment_agent UnixStreamServer limitation; Linux CI must cover that module.
+
+Completed validation on application head 780c25b (PR #339): CI run 34115095383
+passed all four jobs. Fresh PostgreSQL migration and 1,692 API tests passed (one
+skip), 125 Vitest files / 726 tests, 172 browser checks, production Turbopack build,
+production container images and six unmocked full-stack journeys passed. Local
+webpack production build and 35 desktop + 35 Pixel 7 travel-services tests passed,
+covering all five locales and 320/390/1280px. No test links were real hotel bookings.
+PR: https://github.com/x812033727/travel_scanner/pull/339
+Subsequent task-status commits do not change the tested application code.
