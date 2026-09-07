@@ -958,6 +958,15 @@ async def test_media_private_pending_public_withdraw_and_review_access(
         media_id = str(media.id)
     await h.call("GET", f"/community/media/{media_id}", actor=1, expected=404)
     await h.call("GET", f"/community/media/{media_id}", actor=None, expected=404)
+    unrelated = await h.publish(await h.post(actor=1, body=media_id), actor=1)
+    await h.approve(unrelated)
+    await h.call(
+        "POST",
+        "/community/reports",
+        expected=201,
+        json={"kind": "post", "target": unrelated["id"], "reason": "Review quoted identifier"},
+    )
+    await h.call("GET", f"/admin/community/media/{media_id}", actor=2, expected=404)
     post = await h.publish(await h.post(media_ids=[media_id]))
     await h.call("GET", f"/admin/community/media/{media_id}", actor=2)
     await h.call("GET", f"/admin/community/media/{media_id}", actor=1, expected=403)
@@ -965,9 +974,17 @@ async def test_media_private_pending_public_withdraw_and_review_access(
     response = await h.call("GET", f"/community/media/{media_id}", actor=None)
     assert response.headers["cache-control"] == "private, no-store"
     assert fake.generate_presigned_url.call_args.kwargs["ExpiresIn"] == 60
+    await h.call(
+        "POST",
+        "/community/reports",
+        actor=1,
+        expected=201,
+        json={"kind": "post", "target": post["id"], "reason": "Review attached photograph"},
+    )
     await h.call("POST", f"/community/posts/{post['id']}/withdraw")
     await h.call("GET", f"/community/media/{media_id}", actor=None, expected=404)
     await h.call("GET", f"/community/media/{media_id}")
+    await h.call("GET", f"/admin/community/media/{media_id}", actor=2)
 
 
 @pytest.mark.asyncio

@@ -240,7 +240,9 @@ async def media_url(
                 select(Report.id)
                 .where(
                     Report.kind == "post",
-                    cast(Report.evidence, Text).contains(f'"{identifier}"'),
+                    # Only the server-captured attachment list grants review
+                    # access. User-authored titles/bodies can contain arbitrary IDs.
+                    cast(Report.evidence["media_ids"], Text).contains(f'"{identifier}"'),
                 )
                 .limit(1)
             )

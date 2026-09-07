@@ -68,9 +68,12 @@ PostgreSQL database. Test S3 with the companion Compose stack.
 Implementation starts at main 516713d in an isolated worktree. Community remains off
 until all accepted flows pass and the owner supplies public policy/contact details.
 
-Checkpoint: community/schema tests passed locally (30 passed, one real-S3 test
-skipped); Ruff and mypy passed. CI now provisions private MinIO and exercises
-the same API contracts against PostgreSQL as well as SQLite. Local Windows has
-no Docker/PostgreSQL; real service validation is not yet complete. Existing main
-now uses migration 0056 for travel services, so community revisions must be
-rebased and renumbered before PR delivery. See docs/community.md for launch gates.
+Checkpoint: rebased onto main 54009ba; additive community/pet revisions are
+0057/0058 after travel services 0056. Draft PR #340 remains private-rollout work.
+CI 34130887751 passed the full API suite, Ruff, mypy, fresh PostgreSQL migrations
+and private MinIO contracts. An ordered, same-member/same-post conversion funnel
+and scoped report-attachment authorization have regression coverage.
+Desktop/Pixel 7 real-service journeys reached the blocking checks; correcting
+the test contract distinguishes unfollow (403) from hidden blocked peers (404).
+Pet/account lifecycle browser acceptance and launch requirements remain open.
+Local Windows has no Docker/PostgreSQL. See docs/community.md for launch gates.

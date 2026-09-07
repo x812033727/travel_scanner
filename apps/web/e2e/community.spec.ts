@@ -116,14 +116,32 @@ test("verified members publish reviewed private images, fork safely and exchange
     await expect(reader.getByRole("log").getByText(`Message ${suffix}`, { exact: true })).toBeVisible();
     await reader.screenshot({ path: info.outputPath("community-conversation.png"), fullPage: true });
     expect(await reader.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+    // Unfollowing preserves delivered history but immediately disables new writes.
+    await json(reader.request, "DELETE", `/community/profiles/${author.profile.id}/follow`);
+    await page.reload();
+    await expect(page.getByRole("log").getByText(`Message ${suffix}`, { exact: true })).toBeVisible();
+    await expect(page.getByRole("button", { name: "傳送", exact: true })).toBeDisabled();
+    const unfollowed = await page.request.post(`/api/travel/community/conversations/${conversationId}/messages`, {
+      headers: { Origin: baseURL! },
+      data: { body: "Must not deliver", idempotency_key: `unfollowed-${suffix}` },
+    });
+    expect(unfollowed.status()).toBe(403);
+    expect((await unfollowed.json()).code).toBe("community_mutual_required");
     await json(reader.request, "PUT", `/community/profiles/${author.profile.id}/block`);
     await page.reload();
-    await expect(page.getByRole("button", { name: "傳送", exact: true })).toBeDisabled();
+    // Blocking hides the counterpart and conversation as well as stopping writes.
+    await expect(page.getByRole("alert")).toHaveText("找不到內容，或你目前無法查看。");
+    await expect(page.getByRole("button", { name: "傳送", exact: true })).toHaveCount(0);
+    await expect(page.getByRole("log")).toHaveCount(0);
     const blocked = await page.request.post(`/api/travel/community/conversations/${conversationId}/messages`, {
       headers: { Origin: baseURL! },
       data: { body: "Must not deliver", idempotency_key: `blocked-${suffix}` },
     });
-    expect(blocked.status()).toBe(403);
+    expect(blocked.status()).toBe(404);
+    expect((await blocked.json()).code).toBe("community_not_found");
+    await json(reader.request, "DELETE", `/community/profiles/${author.profile.id}/block`);
+    const delivered = await json(reader.request, "GET", `/community/conversations/${conversationId}/messages`);
+    expect(delivered.items.map((message: { body: string }) => message.body)).toEqual([`Message ${suffix}`]);
     expect(author.profile.id).not.toBe(recipient.profile.id);
   } finally {
     await admin.dispose();

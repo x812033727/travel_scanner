@@ -72,12 +72,17 @@ community Playwright suite on desktop and Pixel 7 against isolated services.
 
 ## Notes
 
-Checkpoint: 124 Web test files / 737 component tests passed before integration
-with the newer main. TypeScript, lint and five-locale checks passed. A real
-SMTP/private-S3 desktop and Pixel 7 community journey is added, not yet executed.
-The local default Turbopack build rejects the shared node_modules junction;
-Webpack is being checked independently and CI will use ordinary npm ci.
-Do not enable production community or claim full acceptance from these results.
+Checkpoint: rebased onto main 54009ba. CI 34130887751 passed Web components,
+TypeScript, lint, five-locale checks, the default production build and isolated
+desktop/Pixel 7 UI tests. Existing real-stack travel journeys also pass after
+fixing a community Provider remount which reset core forms during auth hydration.
+New regressions preserve core state and prevent cross-account community caches.
+The real SMTP/MinIO community journey reached blocking on both devices; update
+assertions to distinguish an unfollowed read-only thread from a hidden blocked
+thread, and verify rejected writes never enter delivered history.
+Pet/account lifecycle browser acceptance remains open. Local Webpack build passes;
+default Turbopack cannot use this workspace's shared node_modules junction.
+Draft PR #340 must not enable production or claim complete plan acceptance.
 
 Built on isolated main 516713d. The existing forgot-password task owns the login
 entry; this task owns the new confirmation/recovery UI and public community pages.
