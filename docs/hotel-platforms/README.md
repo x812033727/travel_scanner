@@ -4,8 +4,10 @@
 
 The architecture milestone merged in PR #341 at `f2c3b2af431d093bfb2169fefab7deb41cc90427`
 on 2026-09-07; post-merge CI 34135118181 passed. This did **not** complete the content
-milestone or deploy/publish any hotel package. Follow-up research is isolated on
-`codex/hotel-catalog-followup`, starting at that verified main revision.
+milestone or publish any hotel package. PR #342 subsequently merged the Seoul research
+checkpoint, and production was deployed. The 2026-09-08 continuation uses isolated
+`codex/hotel-content-review-kyoto` from main `7f21d7eb2af223a561bc04519ce67021198b1068`.
+See the dated production review record below; older checkpoints are not current live counts.
 
 `0057_hotel_booking_options` migrates legacy links into independent reviewed identities.
 Products and trip associations retain their IDs. `facts.hotel_links` is accepted/projected
@@ -60,25 +62,43 @@ or interpret a search result as an available room, affiliation or admin approval
 `seoul.evidence.json` keeps the ten selected public permit IDs, original projected
 coordinates, source/license, identity URLs and per-platform findings. Only RYSE has an
 official direct Naver link whose actual Chrome name, address and official website matched.
-Five third-party Naver candidates remain in the evidence file only; four identities have
-no candidate yet. Every new product still has `map_verified: false` for independent review.
-Chrome subsequently failed to attach (Chrome debugger and in-app fallback); no browser
-checks beyond that one property are claimed. No map/OTA coordinate, photo, price or review
-was imported. Known restaurant-within-hotel IDs and same-brand wrong branches are excluded.
+On 2026-09-08, Chrome additionally verified L7 Myeongdong, Four Points Josun Myeongdong,
+Mercure Hongdae and L7 Hongdae by their names, street numbers and official websites.
+Those four Naver URLs are now in the pending research input; exact observed checks are
+recorded in the evidence. The four corresponding production products passed location
+review; all their platform options remain pending. Parnas could not be verified after
+Chrome disconnected, and four other identities are missing. Pending JSON files deliberately
+retain `map_verified: false`; do not replay them over reviewed production products.
+No map/OTA coordinates, photos, prices or review text were imported. Known restaurant IDs
+and same-brand wrong branches remain excluded.
+
+`kyoto.pending.json` adds ten candidates: four Kyoto Station, three Shijo/Kawaramachi,
+three Higashiyama. `kyoto.evidence.json` records selected licensed municipal permit
+names/addresses/category/dates, ten official sources and Booking/Trip/Agoda candidate
+pages (40 discovered links). All five target OTAs were included in research; Expedia/Rakuten
+remain unconfirmed. Indexed names/addresses are not completed browser reviews.
+The permit spreadsheet has **no coordinate columns**. Latitude, longitude, coordinate
+source and Place ID are absent, not guessed or copied from Google/OTAs. These ten cannot
+pass product review until durable coordinates and exact identities are established.
 
 | City | Research inputs | Accepted for city rollout | Remaining |
 | --- | ---: | ---: | --- |
 | Tokyo | 10 | 0 | New map checks, all platform checks, background link checks, independent approvals |
 | Osaka | 10 | 0 | Map and platform review, remaining OTA checks, independent approvals |
-| Kyoto | 0 | 0 | 10 fully sourced hotels / 3 areas |
-| Seoul | 10 | 0 | Nine Naver identities, Rakuten usable entries, live link checks, independent approvals |
+| Kyoto | 10 | 0 | Licensed coordinates, exact Place IDs, live platform checks and independent approvals |
+| Seoul | 10 | 0 | Five unresolved Naver reviews, platform landing checks and independent option approvals |
 | Busan | 0 | 0 | 10 hotels / 3 areas / exact Naver identity |
 | Taipei | 10 | 0 | Map and platform review, remaining OTA checks, independent approvals |
 
-Do not call this task done or enable any city using the research-input count. Production
-hotel data, flags, affiliate credentials and price API permissions have not been changed by
-this task. Only 24 IDs-only usage-meter increments were made (four Tokyo, ten Osaka, ten Taipei).
-The one-off lookup scripts have already run: do not repeat them to recover saved IDs.
+Do not call this task done or enable any city using the research-input count. On 2026-09-08,
+44 new candidates were imported as pending (Tokyo four, Osaka/Taipei/Seoul/Kyoto ten each),
+skipping and preserving all six existing Tokyo products/options. Four new Seoul locations
+then passed normal admin product review with audit records. All 264 newly imported platform
+options remain pending. The live total is **50 hotels: 10 product-level approved, 40 pending;
+zero completed cities**. Product approval is not platform approval or city rollout.
+Public/affiliate/price settings are unchanged. Only the earlier 24 IDs-only usage-meter
+increments were made (four Tokyo, ten Osaka, ten Taipei); this continuation made no Google
+lookup or price API call. The one-off lookup scripts have already run: do not repeat them to recover saved IDs.
 
 ## Tokyo coordinate attribution
 
@@ -121,6 +141,14 @@ From `apps/api`, print the reviewed transfer format with:
 uv run python ../../docs/hotel-platforms/prepare_import.py ../../docs/hotel-platforms/tokyo.pending.json
 ```
 
+Pending packages are research inputs, **not a synchronization source of truth**. Existing
+production records now include separately reviewed fields; never bulk-replay an old package
+over them. Preview first, skip existing source keys for additions and use version-checked
+individual edits for a deliberate review. The September 8 batch enforced serializable
+transactions, exactly 44 new keys, preserved product/option/config fingerprints,
+pending-only options, no offer/brand writes, and audit records. A validated database backup
+was taken first. See `review-2026-09-08.md` for the current import and review checkpoint.
+
 Paste into admin CSV preview. Review new/modified/duplicate/missing entries before committing;
 all changed products and options remain pending. Use the separate option review controls.
 Inspect each actual destination, not a platform search page. Do not infer approval from this
@@ -143,7 +171,8 @@ import on Windows. Linux CI 34132295317 ran 1,722 passing API tests (one existin
 plus successful container and full-stack smoke jobs. Full web suite: 126 files / 729 tests passed. No city
 is considered complete from a pending-file count, and no paid price API was enabled.
 See the task record for remaining validation and content acceptance. Architecture PR #341
-is merged; hotel content remains pending and no deployment was performed by this task.
+is merged; hotel content acceptance remains incomplete. This content continuation did
+not deploy application images, migrate the schema or change rollout settings.
 
 Chrome spot check: the saved Tokyo Station Hotel Place ID resolves to the expected hotel
 name/address and official website. This was identity-only inspection: no Google prices,
@@ -154,9 +183,12 @@ inputs still require independent admin approval; a single spot check does not ce
 
 Kyoto's current licensed permit list is available at
 https://data.city.kyoto.lg.jp/dataset/00039/ (CC BY 4.0, July 2026 list).
-It establishes licensed names/addresses, not yet ten audited hotel coordinates or platform
-identities. Official pages found for Vischio Kyoto, Granvia Kyoto and Daiwa Roynet Kyoto
-Terrace Hachijo are research leads only; no duplicate Hachijoguchi property should be guessed.
+The July 31 permit spreadsheet was inspected on September 8. It establishes licensed
+names/addresses, not coordinates. The selected ten records are in `kyoto.evidence.json`;
+do not download again just to recover them. Only selected accommodation fields are retained,
+not operator/personal names. Whitespace/full-width Latin normalization is editorial;
+Celestine's source has a private-use glyph, so its public title uses confirmed official English.
+Terrace Hachijo is not the separate Hachijoguchi property; Kyoto Shijo is not Shinmachi Bettei.
 
 ## Seoul licensed coordinates and repeatable checks
 
@@ -193,5 +225,6 @@ selected facts only, for a later deliberate review; it never writes/imports/appr
 The additional research-tool tests require the optional pyproj command above. Default API
 CI also validates the package/evidence, review gates and lossless admin CSV transfer.
 
-Remaining: Kyoto and Busan content, all cities' independent review and rollout gates.
+Remaining: Busan's ten hotels, Kyoto coordinate/Place ID sources, remaining map and platform
+reviews, and all cities' rollout gates. The research total is 50, not the planned 60.
 Do not use Visit Seoul's embedded Tripadvisor descriptions/ratings as government-owned data.

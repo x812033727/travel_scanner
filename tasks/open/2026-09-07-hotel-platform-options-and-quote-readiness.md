@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-07T12:32:44Z
 completed_at:
-branch: codex/hotel-catalog-followup
+branch: codex/hotel-content-review-kyoto
 depends_on: []
 scope:
   - apps/api/app/travel_services
@@ -23,6 +23,45 @@ scope:
 ---
 
 # Hotel platform options and quote readiness
+
+## 2026-09-08 live content checkpoint
+
+Continuation claimed on `codex/hotel-content-review-kyoto` from latest main
+`7f21d7eb2af223a561bc04519ce67021198b1068`, preserving the original dirty workspace.
+PR #342 had already merged and production later advanced to this main revision; observed
+readiness is schema `0060_community_places`. This turn did not redeploy or migrate.
+
+Added ten Kyoto pending research inputs and municipal CC BY 4.0 permit evidence, three
+areas and 40 official/Booking/Trip/Agoda candidate links. Expedia/Rakuten remain unconfirmed.
+The July 2026 permit spreadsheet has no coordinates; none were guessed, geocoded or copied
+from providers, and no paid Places lookup ran. Kyoto still lacks coordinates/Place IDs.
+Selected names/addresses/category/permit dates only are saved; do not re-download the whole
+spreadsheet to recover these facts. Busan's ten hotels remain outstanding.
+
+Chrome recovered long enough to verify primary Naver names, street numbers and official
+sites for L7 Myeongdong, Four Points Josun Myeongdong, Mercure Hongdae and L7 Hongdae.
+These are four new identity checks, plus RYSE's earlier one. Parnas navigation was interrupted;
+debugger/fresh-tab recovery failed. Five Naver identities now have primary evidence, not ten.
+
+With user authorization to add/review hotels, a verified database backup was taken and the
+normal CSV/admin import service was run over the existing SSH session. The serializable,
+exact-new-key guarded import skipped all six existing Tokyo products/options, added 44
+pending hotels and 264 pending options, and recorded preview/commit audits. Run ID:
+`31379d38-7180-4ceb-b2af-75ba5b6238ad`. Four newly browser-verified Seoul product locations
+then passed version-checked admin edit/review; all their platform options remain pending.
+No browser auth tokens were forged or exported, and no affiliate/API/public switches changed.
+
+Verified live: 50 total hotels, 10 product-approved (six original Tokyo plus four Seoul
+locations), 40 pending. Zero cities meet rollout acceptance. Original Tokyo/config/options
+fingerprint stayed identical. See `docs/hotel-platforms/review-2026-09-08.md` for counts and
+backup evidence. Pending JSON remains research input, not sync truth: never blindly replay
+it over reviewed production rows or reset original hotels to pending.
+
+117 related tests passed; Ruff, formatting, five-language catalogs (25 namespaces), and
+task checks passed. Content/test/docs-only change; no new UI behavior or full-60 acceptance
+claimed. Remaining: Busan, Kyoto durable locations, five remaining Seoul Naver checks,
+independent platform landing checks/approvals, existing six Tokyo source-credit update,
+and per-city rollout gates. Keep task open and release at handoff.
 
 ## Why
 
