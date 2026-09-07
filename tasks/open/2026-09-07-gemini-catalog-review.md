@@ -107,3 +107,10 @@ free, so production/container builds and full web/stack validation run in CI.
 
 Merge/deployment and the live pending-review/100-candidate import are still required.
 This change deliberately does not auto-publish generated coordinates or map IDs.
+
+PR: https://github.com/x812033727/travel_scanner/pull/315. Rebased Windows API
+result: 1402 passed, 73 skipped (plus the Unix-only module excluded as above).
+Final cross-review added hotspot translated names/aliases to the immutable snapshot;
+concurrent localization edits now invalidate the old approval. Its focused regression
+set is 79 passed. Initial CI already passed fresh PostgreSQL migration; final-head
+complete CI results must still be verified before merge.

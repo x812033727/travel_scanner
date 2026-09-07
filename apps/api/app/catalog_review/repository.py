@@ -128,6 +128,17 @@ async def load_entity(
 
 async def entity_snapshot(session: AsyncSession, row: Entity) -> dict[str, Any]:
     data = row_data(row)
+    if isinstance(row, TravelHotspot):
+        data["localizations"] = [
+            row_data(item)
+            for item in (
+                await session.scalars(
+                    select(HotspotLocalization)
+                    .where(HotspotLocalization.hotspot_id == row.id)
+                    .order_by(HotspotLocalization.locale)
+                )
+            ).all()
+        ]
     if isinstance(row, TravelFood):
         data["localizations"] = [
             row_data(item)

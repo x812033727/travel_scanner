@@ -417,3 +417,61 @@ async def test_discovery_context_offers_only_publishable_dishes_but_avoids_all_n
     tokyo = next(entry for entry in destinations if entry["id"] == "tokyo")
     assert tokyo["food_slugs"] == [slugs[0]]
     assert set(slugs) <= set(avoid)
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [("name", "Different museum"), ("aliases", ["Different historic alias"])],
+)
+async def test_hotspot_localization_edits_change_snapshot_without_mutating_prior_item(
+    database: Any, field: str, value: Any
+):
+    session, actor, run = database
+    row = await import_draft(
+        session,
+        DiscoveryDraft(
+            kind="hotspot",
+            slug="localized-museum",
+            name="Museum",
+            local_name="博物館",
+            destination_id="tokyo",
+            source_urls=[WIKIDATA],
+            data={"category": "culture"},
+        ),
+        actor.id,
+        run.id,
+    )
+    assert isinstance(row, TravelHotspot)
+    for locale in ("zh-TW", "en"):
+        session.add(
+            HotspotLocalization(
+                hotspot_id=row.id,
+                locale=locale,
+                name=f"Original museum {locale}",
+                aliases=["Historic museum"],
+                search_terms=["museum"],
+            )
+        )
+    await session.flush()
+    session.database.expire_all()
+    item = await make_review_item(session, run.id, "hotspot", row, "review_new")
+    await session.flush()
+    before = await entity_snapshot(session, row)
+    assert [entry["locale"] for entry in before["localizations"]] == ["en", "zh-TW"]
+    assert before["localizations"][0]["search_terms"] == ["museum"]
+    assert item.snapshot_hash == fingerprint(before)
+
+    localization = await session.scalar(
+        select(HotspotLocalization).where(
+            HotspotLocalization.hotspot_id == row.id,
+            HotspotLocalization.locale == "en",
+        )
+    )
+    setattr(localization, field, value)
+    await session.flush()
+    session.database.expire_all()
+    after = await entity_snapshot(session, row)
+    assert before["updated_at"] == after["updated_at"]
+    assert before["localizations"][0][field] != after["localizations"][0][field]
+    assert fingerprint(after) != item.snapshot_hash
+    assert fingerprint(item.snapshot_json) == item.snapshot_hash
