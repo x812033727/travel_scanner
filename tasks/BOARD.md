@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**5 open · 2 in progress · 2 blocked · 0 in review · 132 done**
+**5 open · 3 in progress · 2 blocked · 0 in review · 132 done**
 
 ## Ready to claim
 
@@ -24,6 +24,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
 | [上線稽核找到的兩個 API 缺陷：座標來源與額度扣點順序](open/2026-09-07-post-deploy-audit-api-fixes.md) | claude-opus-5 | 2026-09-07T00:12:19Z | `claude/audit-fixes` |
+| [後台沒有「產生介紹」的按鈕，所以介紹佇列永遠是空的](open/2026-09-07-intro-generate-trigger.md) | claude-opus-5 | 2026-09-07T00:39:02Z | `claude/intro-generate-button` |
 | [篩選之後排行榜從第 3 名開始跳號，看起來像少了東西](open/2026-09-07-filtered-rank-numbering.md) | claude-opus-5 | 2026-09-07T00:34:06Z | `claude/ux-rank-numbering` |
 
 ## In review

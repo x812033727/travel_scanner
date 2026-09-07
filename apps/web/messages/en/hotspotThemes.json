@@ -73,7 +73,27 @@
     "saved": "Introduction updated",
     "empty": "No matching introductions",
     "updatedAt": "Updated {time}",
-    "counts": "{pending} pending · {approved} approved"
+    "counts": "{pending} pending · {approved} approved",
+    "emptyWhere": "Drafts start from the Generate introduction button on each row of the Attractions tab.",
+    "generate": "Generate introduction",
+    "generateTitle": "Write an introduction for {name}",
+    "generateDescription": "One model call writes every language you tick. Drafts always land for review, and prices, opening hours and URLs are refused.",
+    "generateLocales": "Languages to write",
+    "generateMissing": "not written yet",
+    "generateReplace": "Rewrite the approved ones too ({locales})",
+    "generateStart": "Start",
+    "generateRunning": "Writing…",
+    "generateLoadFailed": "Could not read this attraction's current introductions",
+    "runStatus": {
+      "queued": "Queued",
+      "running": "Writing",
+      "partial": "Partly done",
+      "completed": "Done",
+      "failed": "Failed"
+    },
+    "runCreated": "Queued for review: {locales}",
+    "runKept": "Approved, left alone: {locales}",
+    "runRejected": "{locale} refused: {reason}"
   },
   "editor": {
     "open": "Themes",

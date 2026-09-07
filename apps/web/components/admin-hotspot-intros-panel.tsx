@@ -211,7 +211,13 @@ export function AdminHotspotIntrosPanel() {
       )}
       {loading && <p className="mt-4 text-sm text-[var(--muted)]">{t("loading")}</p>}
       {!loading && visible.length === 0 && (
-        <p className="mt-4 text-sm text-[var(--muted)]">{t("intros.empty")}</p>
+        <>
+          <p className="mt-4 text-sm text-[var(--muted)]">{t("intros.empty")}</p>
+          {/* An empty review queue is ambiguous: nothing to review, or nothing has ever
+              been written? Say where drafts come from rather than leaving the reader to
+              hunt for a button that lives on another tab. */}
+          <p className="mt-1 text-sm text-[var(--muted)]">{t("intros.emptyWhere")}</p>
+        </>
       )}
 
       <div className="mt-4 grid gap-3">

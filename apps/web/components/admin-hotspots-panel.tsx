@@ -6,6 +6,7 @@ import { api } from "@/lib/api";
 import { HOTSPOT_CATEGORY_CODES, isHotspotCategoryCode } from "@/lib/hotspot-categories";
 import { safeExternalHref } from "@/lib/navigation";
 import { FilterDisclosure, FilterPills } from "./admin-filter-pills";
+import { AdminHotspotIntroGenerator } from "./admin-hotspot-intro-generator";
 import { AdminHotspotThemeEditor, type AssignedTheme } from "./admin-hotspot-theme-editor";
 
 type Candidate = {
@@ -857,6 +858,12 @@ export function AdminHotspotsPanel() {
                                   hotspotName={item.name}
                                   category={item.category}
                                   initial={item.themes}
+                                />
+                              </div>
+                              <div className="mt-2">
+                                <AdminHotspotIntroGenerator
+                                  hotspotId={item.id}
+                                  hotspotName={item.name}
                                 />
                               </div>
                             </td>

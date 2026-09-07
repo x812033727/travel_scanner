@@ -73,7 +73,27 @@
     "saved": "紹介文を更新しました",
     "empty": "該当する紹介はありません",
     "updatedAt": "更新 {time}",
-    "counts": "審査待ち {pending}・承認済み {approved}"
+    "counts": "審査待ち {pending}・承認済み {approved}",
+    "emptyWhere": "下書きは「スポット審査」タブの各行にある「紹介文を作成」から作られます。",
+    "generate": "紹介文を作成",
+    "generateTitle": "「{name}」の紹介文を作成",
+    "generateDescription": "選んだ言語を一度の呼び出しでまとめて書きます。下書きは必ず審査待ちで保存され、価格・営業時間・URL は弾かれます。",
+    "generateLocales": "作成する言語",
+    "generateMissing": "未作成",
+    "generateReplace": "承認済みのものも書き直す（{locales}）",
+    "generateStart": "開始",
+    "generateRunning": "作成中…",
+    "generateLoadFailed": "このスポットの現在の紹介文を読み込めません",
+    "runStatus": {
+      "queued": "待機中",
+      "running": "作成中",
+      "partial": "一部完了",
+      "completed": "完了",
+      "failed": "失敗"
+    },
+    "runCreated": "審査待ちに保存：{locales}",
+    "runKept": "承認済みのため変更なし：{locales}",
+    "runRejected": "{locale} は却下：{reason}"
   },
   "editor": {
     "open": "テーマ",
