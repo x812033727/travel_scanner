@@ -707,6 +707,38 @@ async def test_discovery_honors_requested_count_and_deduplicates_within_batch() 
         assert len(limited.items) == 1
 
 
+async def test_discovery_prompt_bounds_destinations_and_avoid_list() -> None:
+    observed: dict[str, Any] = {}
+
+    def respond(request: httpx.Request) -> httpx.Response:
+        body = json.loads(request.content)
+        observed.update(json.loads(body["contents"][0]["parts"][0]["text"]))
+        return httpx.Response(200, json=gemini_body({"items": []}))
+
+    avoid = [f"existing-record-{index}-" + "x" * 80 for index in range(1000)]
+    destinations = [{"id": f"destination-{index}"} for index in range(6)]
+    async with httpx.AsyncClient(transport=httpx.MockTransport(respond)) as client:
+        provider = CatalogGeminiProvider(settings(), reserve, client=client)
+        await provider.discover("hotspot", 1, destinations, avoid)
+    assert observed["destinations"] == destinations
+    assert len(observed["avoid_names_and_slugs"]) < len(avoid)
+    assert len(json.dumps(observed["avoid_names_and_slugs"], ensure_ascii=False)) <= 8000
+
+
+async def test_discovery_rejects_unbounded_destination_context() -> None:
+    async with httpx.AsyncClient(
+        transport=httpx.MockTransport(lambda request: pytest.fail("must not call provider"))
+    ) as client:
+        provider = CatalogGeminiProvider(settings(), reserve, client=client)
+        with pytest.raises(ValueError, match="at most six destinations"):
+            await provider.discover(
+                "hotspot",
+                1,
+                [{"id": f"destination-{index}"} for index in range(7)],
+                [],
+            )
+
+
 async def test_source_batch_is_bounded_before_any_network_request() -> None:
     with pytest.raises(ValueError, match="At most 100"):
         await fetch_sources([OFFICIAL] * 101, [])

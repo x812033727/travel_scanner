@@ -42,6 +42,7 @@ HEARTBEAT_SECONDS = 60
 MAX_CALLS = 80
 REVIEW_BATCH_SIZE = 8
 MAX_CONSECUTIVE_PROVIDER_FAILURES = 3
+DISCOVERY_DESTINATION_BATCH_SIZE = 4
 TARGET_COUNTS: dict[str, int] = {"hotspot": 40, "food": 20, "merchant": 40}
 TOKEN_KEYS = ("input_tokens", "output_tokens", "thought_tokens")
 
@@ -332,31 +333,69 @@ async def _review_items(
                 raise ProviderCircuitOpen() from exc
 
 
-async def _discovery_context(session: AsyncSession) -> tuple[list[dict[str, Any]], list[str]]:
+async def _discovery_context(
+    session: AsyncSession,
+    kind: CatalogKind,
+    *,
+    destination_offset: int = 0,
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """Build a small, rotating discovery prompt for one catalog kind.
+
+    The database remains the authoritative global duplicate guard. Sending every
+    name from every catalog table made the production prompt exceed 40k tokens and
+    caused grounded discovery to time out before returning usable drafts.
+    """
+    profiles = list(DESTINATIONS)
+    if not profiles:
+        return [], []
+    start = destination_offset % len(profiles)
+    rotated = profiles[start:] + profiles[:start]
+    selected = rotated[: min(DISCOVERY_DESTINATION_BATCH_SIZE, len(rotated))]
+    selected_ids = {profile.id for profile in selected}
+
     avoid: set[str] = set()
     food_slugs: dict[UUID, str] = {}
-    for kind, model in ENTITY_TYPES.items():
+    for entity_kind, model in ENTITY_TYPES.items():
         rows: list[Any] = list((await session.scalars(select(model))).all())
         for row in rows:
-            # No public-status filter: rejected/disabled records are dedupe tombstones.
+            destination_id = getattr(row, "destination_id", None)
+            if entity_kind == kind and kind != "food" and destination_id in selected_ids:
+                # No public-status filter: rejected/disabled records are dedupe tombstones.
+                for field in ("slug", "name", "local_name", "romanized_name"):
+                    value = getattr(row, field, None)
+                    if isinstance(value, str) and value:
+                        avoid.add(value)
+            if entity_kind == "food" and row.review_status == "approved" and row.is_active:
+                food_slugs[row.id] = row.slug
+    foods: dict[str, list[str]] = {}
+    food_destinations: dict[UUID, set[str]] = {}
+    for link in (await session.scalars(select(FoodDestination))).all():
+        food_destinations.setdefault(link.food_id, set()).add(link.destination_id)
+        if link.food_id in food_slugs:
+            foods.setdefault(link.destination_id, []).append(food_slugs[link.food_id])
+    if kind == "food":
+        for row in (await session.scalars(select(ENTITY_TYPES["food"]))).all():
+            row_id = getattr(row, "id", None)
+            if not isinstance(row_id, UUID) or not (
+                food_destinations.get(row_id, set()) & selected_ids
+            ):
+                continue
             for field in ("slug", "name", "local_name", "romanized_name"):
                 value = getattr(row, field, None)
                 if isinstance(value, str) and value:
                     avoid.add(value)
-            if kind == "food" and row.review_status == "approved" and row.is_active:
-                food_slugs[row.id] = row.slug
-    foods: dict[str, list[str]] = {}
-    for link in (await session.scalars(select(FoodDestination))).all():
-        if link.food_id in food_slugs:
-            foods.setdefault(link.destination_id, []).append(food_slugs[link.food_id])
-    categories = list(
-        (
-            await session.scalars(
-                select(FoodCategory.slug).where(
-                    FoodCategory.is_active.is_(True),
+    categories = (
+        list(
+            (
+                await session.scalars(
+                    select(FoodCategory.slug).where(
+                        FoodCategory.is_active.is_(True),
+                    )
                 )
-            )
-        ).all()
+            ).all()
+        )
+        if kind == "merchant"
+        else []
     )
     destinations = [
         {
@@ -364,10 +403,16 @@ async def _discovery_context(session: AsyncSession) -> tuple[list[dict[str, Any]
             "city": profile.city,
             "country": profile.country,
             "areas": list(profile.areas),
-            "food_slugs": foods.get(profile.id, []),
-            "category_slugs": categories,
+            **(
+                {
+                    "food_slugs": foods.get(profile.id, []),
+                    "category_slugs": categories,
+                }
+                if kind == "merchant"
+                else {}
+            ),
         }
-        for profile in DESTINATIONS
+        for profile in selected
     ]
     return destinations, sorted(avoid)
 
@@ -393,10 +438,15 @@ async def _discover_items(
                 result = run.result_json or {}
                 created = _count((result.get("created_counts") or {}).get(kind))
                 misses = _count((result.get("no_progress_counts") or {}).get(kind))
+                rounds = _count((result.get("discovery_round_counts") or {}).get(kind))
                 if created >= target or misses >= 3:
                     break
                 run.phase = "discover_new"
-                destinations, avoid = await _discovery_context(session)
+                destinations, avoid = await _discovery_context(
+                    session,
+                    cast(CatalogKind, kind),
+                    destination_offset=rounds * DISCOVERY_DESTINATION_BATCH_SIZE,
+                )
                 await session.commit()
             error: Exception | None = None
             try:
@@ -437,7 +487,13 @@ async def _discover_items(
                 counts[kind] = _count(counts.get(kind)) + added
                 no_progress = dict(result.get("no_progress_counts") or {})
                 no_progress[kind] = 0 if added else misses + 1
-                result.update(created_counts=counts, no_progress_counts=no_progress)
+                discovery_rounds = dict(result.get("discovery_round_counts") or {})
+                discovery_rounds[kind] = rounds + 1
+                result.update(
+                    created_counts=counts,
+                    no_progress_counts=no_progress,
+                    discovery_round_counts=discovery_rounds,
+                )
                 result["duplicates"] = _count(result.get("duplicates")) + duplicates
                 if error is not None:
                     result["last_discovery_error"] = safe_error_diagnostics(error)
