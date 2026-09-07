@@ -83,6 +83,20 @@ for (const [file, pattern] of allowlists) {
   }
 }
 
+// The copy editor names every group it can edit in a select. A namespace with no entry
+// here renders its raw key path as the option label, which no other check would catch.
+const described = Object.keys(
+  JSON.parse(readFileSync(join(messagesRoot, locales[0], "admin.json"), "utf8")).uiText
+    ?.namespaces ?? {},
+).sort();
+if (described.join(",") !== [...editable].sort().join(",")) {
+  errors.push(
+    `admin.json: uiText.namespaces does not describe every editable namespace ` +
+      `(missing: ${editable.filter((name) => !described.includes(name)).join(", ") || "none"}; ` +
+      `extra: ${described.filter((name) => !editable.includes(name)).join(", ") || "none"})`,
+  );
+}
+
 function runGit(args) {
   return execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
 }

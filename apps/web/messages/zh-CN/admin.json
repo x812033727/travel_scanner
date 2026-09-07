@@ -15,7 +15,8 @@
     "hotspots": "景点候选审核",
     "foods": "美食目录管理",
     "analytics": "流量与分析",
-    "deployments": "部署中心"
+    "deployments": "部署中心",
+    "uiText": "前台文案"
   },
   "providerTabs": {
     "label": "API 供应商设置分页",
@@ -1403,5 +1404,87 @@
     "auditProviderHint": "只记录变更字段名称、操作者与测试结果，不记录密钥内容。",
     "auditEmpty": "尚无管理操作记录。",
     "testResult": "{message}（{latency} ms）"
+  },
+  "uiText": {
+  "eyebrow": "SYSTEM ADMIN",
+  "title": "前台文案",
+  "description": "直接修改前台各语系显示的文字。程序内置的翻译文件是默认值，这里只保存覆写；清空后保存即还原默认，保存后前台下一次加载即生效。",
+  "loading": "正在加载覆写…",
+  "namespaceLabel": "文案分组",
+  "namespaceOption": "{label}（{namespace}・{count} 条）",
+  "targetLocaleLabel": "编辑语系",
+  "referenceLocaleLabel": "参考语系",
+  "searchLabel": "搜索键名或文字",
+  "searchPlaceholder": "输入键名、默认或覆写文字",
+  "empty": "没有符合的文案。",
+  "filters": {
+    "label": "筛选文案",
+    "all": "全部",
+    "overridden": "已覆写",
+    "dirty": "未保存",
+    "parameters": "有参数",
+    "orphans": "孤儿覆写"
+  },
+  "row": {
+    "defaultLabel": "默认",
+    "referenceLabel": "参考（{locale}）",
+    "parametersLabel": "参数",
+    "overridden": "已覆写",
+    "dirty": "未保存",
+    "pendingRestore": "保存后还原默认",
+    "orphan": "孤儿覆写",
+    "orphanHelp": "程序里已经没有这个键，这条覆写不会显示在任何地方；还原默认后保存即可移除。",
+    "advancedIcu": "含复数规则",
+    "advancedIcuHelp": "默认文案使用了 ICU 复数或选择语法，覆写时请保留原本的大括号结构。",
+    "restore": "还原默认",
+    "restoreNamed": "还原默认：{key}",
+    "discard": "放弃修改",
+    "discardNamed": "放弃修改：{key}",
+    "updatedBy": "{email} 于 {time} 更新",
+    "updatedAt": "{time} 更新",
+    "errorParameters": "参数必须与默认相同：{expected}",
+    "errorNoParameters": "默认没有参数，覆写也不能加入参数。",
+    "errorBraces": "大括号没有成对。"
+  },
+  "pager": {
+    "summary": "第 {page} / {pages} 页，共 {total} 条",
+    "previous": "上一页",
+    "next": "下一页"
+  },
+  "saveBar": {
+    "pending": "{count} 条未保存更改",
+    "save": "保存 {count} 条更改",
+    "saving": "保存中…",
+    "fixErrors": "请先修正 {count} 条错误",
+    "discardAll": "放弃全部更改",
+    "discardAllConfirm": "确定放弃 {count} 条未保存的更改？",
+    "leaveConfirm": "还有 {count} 条未保存的更改，切换后会丢失。确定切换？",
+    "saved": "已保存 {count} 条更改，前台下一次加载即生效。",
+    "partialFailure": "有更改没有保存成功，已重新加载当前状态；未保存的内容仍留在表单中。"
+  },
+  "namespaces": {
+    "account": "账号设置",
+    "admin": "管理后台",
+    "alerts": "价格通知",
+    "auth": "登录与注册",
+    "availability": "功能暂停提示",
+    "catalogReview": "Gemini 目录审核",
+    "common": "共用文字",
+    "errors": "错误页",
+    "foodAdmin": "美食目录后台",
+    "foods": "美食目录",
+    "hotspotAdmin": "景点介绍后台",
+    "hotspotThemes": "景点主题与介绍",
+    "hotspots": "热门景点",
+    "metadata": "页面标题与 SEO 描述",
+    "navigation": "导航与页脚",
+    "newTrip": "新行程表单",
+    "pricing": "方案页",
+    "restaurants": "附近餐厅",
+    "search": "搜索工作台",
+    "stayAreas": "住宿热区",
+    "trips": "行程规划",
+    "usage": "扣次提示"
+  }
   }
 }
