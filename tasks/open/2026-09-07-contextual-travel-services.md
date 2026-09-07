@@ -1,7 +1,7 @@
 ---
 id: 2026-09-07-contextual-travel-services
 title: Contextual travel services and affiliate catalog
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-travel-services
@@ -77,7 +77,7 @@ and server-resolved affiliate links. Preserve existing manual itinerary items.
 - [x] Trip recommendations, lodging anchors, planned services, saved items.
 - [x] Five-locale public/admin UI and responsive accessibility.
 - [x] Imports, maintenance, review coverage and safe feature switches.
-- [ ] API, web, migrations, browser checks and PR.
+- [x] API, web, migrations, browser checks and PR.
 - [ ] Release gates: real six-city inventory, live tracking verification and explicit enablement.
 
 ## Steps
@@ -101,8 +101,11 @@ API/Ruff/mypy/fresh PostgreSQL, web/i18n/types/lint/Vitest/build/Playwright,
 containers and the existing PostgreSQL/Redis/RQ full-stack smoke. Local new browser
 spec passed 20 desktop + 20 mobile tests; screenshots use explicit fixtures.
 Follow-up hardening covers DNS-pinned redirect chains, marker-wide rolling quotas,
-Naver lodging identity and airport transfer flight-number confirmation. Revalidate
-the final SHA after rebasing on latest main before opening the PR.
+Naver lodging identity and airport transfer flight-number confirmation. Rebased on
+main 516713d. All four jobs passed again on code head 1f417c7 (run 34106782777),
+including unsafe-redirect disabling and transient maintenance-failure rotation.
+PR https://github.com/x812033727/travel_scanner/pull/336 is open for review, not merged.
+Subsequent task-only status commits do not change the tested application code.
 
 Read-only live account check on 2026-09-07 is recorded in docs/travel-services.md:
 12 in-scope brands available, seven still under Unlock more. No account settings,
