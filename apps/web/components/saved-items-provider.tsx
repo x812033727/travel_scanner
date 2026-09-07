@@ -28,10 +28,26 @@ const fallbackContext: SavedContextValue = {
 };
 const SavedContext = createContext<SavedContextValue>(fallbackContext);
 
-export function SavedItemsProvider({ children }: { children: ReactNode }) {
-  const [status, setStatus] = useState<SavedContextValue["status"]>("loading");
+/**
+ * `hasSession` is the layout's answer to "is there a session cookie at all", read on the
+ * server. Without it this provider asked /saved-items on every page a signed-out reader
+ * opened, purely to be told 401 — the request is how it learned the answer. The cookie
+ * cannot say whether a session is still valid, so a present one is still verified the
+ * old way; an absent one is proof, and skips the round trip.
+ */
+export function SavedItemsProvider({
+  children,
+  hasSession = true,
+}: {
+  children: ReactNode;
+  hasSession?: boolean;
+}) {
+  const [status, setStatus] = useState<SavedContextValue["status"]>(
+    hasSession ? "loading" : "signed_out",
+  );
   const [keys, setKeys] = useState<Set<string>>(new Set());
   useEffect(() => {
+    if (!hasSession) return;
     api<{ items: SavedItem[] }>("/saved-items?limit=100")
       .then((result) => {
         setKeys(new Set(result.items.map((item) => `${item.type}:${item.id}`)));
@@ -44,7 +60,7 @@ export function SavedItemsProvider({ children }: { children: ReactNode }) {
             : "unavailable",
         ),
       );
-  }, []);
+  }, [hasSession]);
   const isSaved = useCallback(
     (type: SavedType, id: string) => keys.has(`${type}:${id}`),
     [keys],

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { LegacyUiLocalizer } from "@/components/legacy-ui-localizer";
 import { AppBottomNav } from "@/components/app-bottom-nav";
@@ -62,12 +62,17 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-  const [messages, siteVisibility, usageCatalog, requestHeaders] = await Promise.all([
+  const [messages, siteVisibility, usageCatalog, requestHeaders, jar] = await Promise.all([
     getMessages(),
     getSiteVisibility(),
     getUsageCatalog(locale),
     headers(),
+    cookies(),
   ]);
+  // Nobody carrying a session cookie means nobody to ask about. Both providers below
+  // used to find that out by sending a request that could only come back 401, on every
+  // page a signed-out reader opened.
+  const hasSession = jar.has("travel_access");
   // Set by proxy.ts so the inline theme bootstrap can satisfy the nonce-based CSP.
   const nonce = requestHeaders.get("x-nonce") ?? undefined;
   return (
@@ -90,8 +95,10 @@ export default async function LocaleLayout({ children, params }: Props) {
                 {/* One /auth/me for the whole page. It used to be asked three times —
                     by the header, the currency switcher and the account panel — and a
                     signed-out reader got three 401s for one fact. */}
-                <HeaderSessionProvider>
-                  <SavedItemsProvider>
+                {/* Keyed, so signing in or out remounts both providers instead of
+                    leaving the previous session's answers in client state. */}
+                <HeaderSessionProvider key={hasSession ? "session" : "anonymous"} hasSession={hasSession}>
+                  <SavedItemsProvider hasSession={hasSession}>
                     <div className="public-app-shell">
                       {children}
                       {/* Inside the shell, so the 5rem the shell already reserves for the
