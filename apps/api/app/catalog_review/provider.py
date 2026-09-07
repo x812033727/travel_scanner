@@ -597,7 +597,7 @@ class CatalogGeminiProvider:
             payload,
         )
         response_ids = [item.candidate_id for item in result.items]
-        if len(set(response_ids)) != len(response_ids) or set(response_ids) - set(by_id):
+        if len(set(response_ids)) != len(response_ids) or set(response_ids) != set(by_id):
             raise CatalogAssessmentError(
                 "catalog_response_ids_invalid", details={"candidate_count": len(candidates)}
             )
@@ -607,18 +607,7 @@ class CatalogGeminiProvider:
             )
             for item in result.items
         }
-        return AssessmentBatch(
-            items=[
-                checked.get(item.candidate_id)
-                or ReviewAssessment(
-                    candidate_id=item.candidate_id,
-                    decision="needs_review",
-                    confidence=0,
-                    reason="Gemini 未回傳此候選的評估；保留待審。",
-                )
-                for item in candidates
-            ]
-        )
+        return AssessmentBatch(items=[checked[item.candidate_id] for item in candidates])
 
     def _check_assessment(
         self,

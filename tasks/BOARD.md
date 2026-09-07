@@ -32,7 +32,7 @@ _Nothing here._
 
 | Task | Owner | Branch |
 | --- | --- | --- |
-| [Gemini catalog review and 100-item expansion](open/2026-09-07-gemini-catalog-review.md) | codex-gemini-catalog | `codex/catalog-review-batch-reliability` |
+| [Gemini catalog review and 100-item expansion](open/2026-09-07-gemini-catalog-review.md) | codex-gemini-catalog | `codex/catalog-review-missing-assessments` |
 
 ## Waiting
 

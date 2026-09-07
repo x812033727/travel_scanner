@@ -48,6 +48,7 @@ from app.catalog_review.service import (
     StartRequest,
     apply_decisions,
     create_run,
+    prepare_resume,
     record_assessment,
     run_items,
     run_view,
@@ -297,6 +298,153 @@ async def test_create_snapshots_all_pending_types_and_idempotency_conflict(
             session, configured(), actor.id, StartRequest(mode="review_pending", max_calls=5), key
         )
     assert exc.value.status == 409 and exc.value.code == "idempotency_conflict"
+
+
+async def legacy_omission_run(
+    session: AsyncSession, actor: User, *, calls: int = 32
+) -> tuple[CatalogReviewRun, CatalogReviewItem, list[CatalogReviewItem]]:
+    rows = [hotspot(), hotspot(), hotspot()]
+    session.add_all(rows)
+    await session.flush()
+    run = await new_run(session, actor)
+    items = await run_items(session, run.id)
+    # The old adapter manufactured this result when a candidate was omitted.
+    missing = next(entry for entry in items if entry.entity_id == rows[0].id)
+    for entry in items:
+        record_assessment(
+            entry,
+            ReviewAssessment(
+                candidate_id=str(entry.id),
+                decision="needs_review",
+                confidence=0.5,
+                reason="The model checked this candidate; independent map evidence is missing.",
+            ),
+            [],
+        )
+    missing.reason = "Gemini 未回傳此候選的評估；保留待審。"
+    missing.assessment_json = {
+        "candidate_id": str(missing.id),
+        "decision": "needs_review",
+        "confidence": 0,
+        "reason": missing.reason,
+        "evidence": [],
+        "corrections": {},
+    }
+    protected = [entry for entry in items if entry is not missing]
+    protected[0].status = "applied"
+    protected[0].applied_action = "keep_pending"
+    protected[1].status = "stale"
+    run.status = "completed"
+    run.completed_at = datetime.now(UTC)
+    run.usage_json = {
+        "calls": calls,
+        "input_tokens": 1000,
+        "output_tokens": 200,
+        "thought_tokens": 100,
+        "member_charged": False,
+    }
+    await session.commit()
+    return run, missing, protected
+
+
+async def test_completed_legacy_omission_only_resumes_missing_rows_and_preserves_budget(
+    session: AsyncSession, actor: User
+) -> None:
+    run, missing, protected = await legacy_omission_run(session, actor)
+    view = await run_view(session, run)
+    assert view["status"] == "partial"
+    assert not view["review_complete"] and view["can_resume"]
+    assert view["counts"]["assessed"] == len(protected)
+    with pytest.raises(AppError) as incomplete:
+        await create_run(
+            session,
+            configured(),
+            actor.id,
+            StartRequest(mode="discover_new", prior_review_run_id=run.id),
+            uuid4().hex,
+        )
+    assert incomplete.value.code == "catalog_review_incomplete"
+    rejected = await apply_decisions(
+        session,
+        run.id,
+        actor.id,
+        ApplyRequest(item_ids=[missing.id], action="keep_pending", expected_version=run.version),
+        uuid4().hex,
+    )
+    assert rejected["updated"] == 0
+    assert rejected["outcomes"][0]["reason"] == "action_not_allowed"
+    unchanged = {
+        entry.id: (entry.status, entry.assessment_json, entry.applied_action, entry.assessed_at)
+        for entry in protected
+    }
+    usage = dict(run.usage_json)
+    version = run.version
+    resumed = await prepare_resume(session, run.id, actor.id)
+    assert resumed.id == run.id and resumed.status == "queued"
+    assert resumed.version == version + 1
+    assert resumed.usage_json == usage
+    await session.refresh(missing)
+    assert missing.status == "pending"
+    assert missing.decision is None and missing.assessed_at is None
+    for entry in protected:
+        await session.refresh(entry)
+        assert (entry.status, entry.assessment_json, entry.applied_action, entry.assessed_at) == (
+            unchanged[entry.id]
+        )
+    assert await audit_count(session, f"catalog-review:{run.id}", "catalog_review_resumed") == 1
+    with pytest.raises(AppError) as repeated:
+        await prepare_resume(session, run.id, actor.id)
+    assert repeated.value.code == "catalog_run_not_resumable"
+    assert run.usage_json == usage
+
+
+async def test_legacy_omission_resume_still_obeys_global_active_and_original_call_cap(
+    session: AsyncSession, actor: User
+) -> None:
+    run, missing, _ = await legacy_omission_run(session, actor, calls=80)
+    assert not (await run_view(session, run))["can_resume"]
+    with pytest.raises(AppError) as budget:
+        await prepare_resume(session, run.id, actor.id)
+    assert budget.value.code == "catalog_run_not_resumable"
+    run.usage_json = {**run.usage_json, "calls": 32}
+    await session.commit()
+    other = await new_run(session, actor)
+    with pytest.raises(AppError) as active:
+        await prepare_resume(session, run.id, actor.id)
+    assert active.value.code == "catalog_run_in_progress"
+    await session.refresh(missing)
+    assert missing.status == "assessed" and run.usage_json["calls"] == 32
+    assert other.status == "queued"
+    assert await audit_count(session, f"catalog-review:{run.id}", "catalog_review_resumed") == 0
+
+
+@pytest.mark.parametrize("change", ["edited", "approved", "deleted"])
+async def test_legacy_resume_does_not_reassess_obsolete_entity_snapshots(
+    session: AsyncSession, actor: User, change: str
+) -> None:
+    run, missing, _ = await legacy_omission_run(session, actor)
+    entity = await session.get(TravelHotspot, missing.entity_id)
+    assert entity is not None
+    if change == "edited":
+        entity.name = f"Manually corrected {uuid4().hex}"
+    elif change == "approved":
+        entity.review_status = "approved"
+    else:
+        await session.delete(entity)
+    await session.commit()
+    usage = dict(run.usage_json)
+    await prepare_resume(session, run.id, actor.id)
+    await session.refresh(missing)
+    assert missing.status == "stale"
+    assert run.usage_json == usage
+    assert not any(entry.status == "pending" for entry in await run_items(session, run.id))
+    if change != "deleted":
+        await session.refresh(entity)
+        if change == "edited":
+            assert entity.name.startswith("Manually corrected ")
+        else:
+            assert entity.review_status == "approved"
+    assert await audit_count(session, f"catalog-review:{run.id}", "catalog_review_resumed") == 1
 
 
 async def test_discovery_requires_completed_pending_snapshot(

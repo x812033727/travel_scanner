@@ -97,6 +97,16 @@ unfinished/error rows, preserving prior assessments and the original call limit.
 Input, visible output and thinking-token usage are reported separately; visible
 output alone does not represent all generated tokens.
 
+A missing candidate in Gemini's response is not a completed assessment. Response
+IDs must exactly match the requested batch; missing, duplicate or unknown IDs fail
+closed without an additional automatic paid repair. Older synthetic "Gemini did not
+return this candidate" placeholders are identified by their complete legacy shape,
+excluded from completion and publication, and can be explicitly resumed in their
+original run. Resume preserves real assessments, applied/stale rows, snapshot IDs
+and cumulative call usage. It does not start another all-pending review.
+Legacy entries whose current entity was edited, approved or deleted are marked
+stale before retry, so obsolete snapshots do not consume another model call.
+
 All five food localizations retain a bounded representation in the request. If
 review context is omitted or truncated, the server downgrades approval/rejection
 to `needs_review`; a shorter prompt is not proof that unseen content was reviewed.

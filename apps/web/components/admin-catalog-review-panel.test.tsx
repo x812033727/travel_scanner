@@ -286,6 +286,59 @@ describe("AdminCatalogReviewPanel", () => {
     await waitFor(() => expect(fetchMock.mock.calls.some(([url, init]) => String(url).endsWith("/resume") && init?.method === "POST")).toBe(true));
   });
 
+  it("keeps 21 missing Gemini assessments incomplete and unavailable for discovery or applying", async () => {
+    const partial = { ...run, status: "partial", can_resume: true, review_complete: false, counts: { ...run.counts, total: 307, assessed: 286, failed: 21 } };
+    const missing = Array.from({ length: 21 }, (_, index) => ({ ...candidate(`missing-${index}`, `Missing assessment ${index}`), status: "error", decision: null, confidence: 0, reason: "Gemini未回傳這筆候選", evidence: [], allowed_actions: [], error_code: "catalog_response_ids_invalid" }));
+    const fetchMock = mockApi((url) => {
+      if (url === root) return response({ ...overview, can_start_discovery: false, runs: [partial] });
+      if (url === root + "/runs/review-1") return response(partial);
+      if (url.includes("/items?")) return response({ ...listing(missing), total: 307, has_more: true });
+      return undefined;
+    });
+    render(<AdminCatalogReviewPanel />);
+    await screen.findByText("Missing assessment 20");
+    expect(screen.getByText("已評估", { selector: "dt" }).parentElement?.textContent).toBe("已評估286");
+    expect(screen.getByText("評估失敗", { selector: "dt" }).parentElement?.textContent).toBe("評估失敗21");
+    expect(screen.getByText("部分完成")).toBeTruthy();
+    expect(screen.queryByText(/這批來源審核已完成/)).toBeNull();
+    expect(screen.getAllByText("Gemini 回應的項目識別碼與這批候選不符。")).toHaveLength(21);
+    expect(screen.queryByText("Gemini未回傳這筆候選")).toBeNull();
+    expect((screen.getByRole("button", { name: "繼續未完成工作" }) as HTMLButtonElement).disabled).toBe(false);
+    const discovery = screen.getByRole("button", { name: "開始尋找 100 筆候選" });
+    expect((discovery as HTMLButtonElement).disabled).toBe(true);
+    fireEvent.click(discovery);
+    for (const action of ["approve", "reject", "keep_pending"]) {
+      fireEvent.change(screen.getByRole("combobox", { name: "批次動作" }), { target: { value: action } });
+      for (const checkbox of screen.getAllByRole("checkbox")) expect((checkbox as HTMLInputElement).disabled).toBe(true);
+      expect((screen.getByRole("button", { name: "選取本頁可操作項目（0）" }) as HTMLButtonElement).disabled).toBe(true);
+      expect((screen.getByRole("button", { name: "預覽選取的 0 筆" }) as HTMLButtonElement).disabled).toBe(true);
+    }
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(0);
+  });
+
+  it("resumes missing assessments once using the original run instead of creating another batch", async () => {
+    let current = { ...run, status: "partial", can_resume: true, review_complete: false, counts: { ...run.counts, total: 307, assessed: 286, failed: 21 } };
+    const fetchMock = mockApi((url, init) => {
+      if (url === root) return response({ ...overview, can_start_discovery: false, runs: [current] });
+      if (url === root + "/runs/review-1") return response(current);
+      if (url === root + "/runs/review-1/resume" && init?.method === "POST") {
+        current = { ...current, status: "queued", can_resume: false };
+        return response(current, 202);
+      }
+      return undefined;
+    });
+    render(<AdminCatalogReviewPanel />);
+    fireEvent.click(await screen.findByRole("button", { name: "繼續未完成工作" }));
+    await waitFor(() => expect(screen.queryByRole("button", { name: "繼續未完成工作" })).toBeNull());
+    expect((screen.getByRole("combobox", { name: "選擇審核工作" }) as HTMLSelectElement).value).toBe("review-1");
+    expect(within(screen.getByRole("combobox", { name: "選擇審核工作" })).getByRole("option").textContent).toContain("排隊中");
+    expect((screen.getByRole("button", { name: "開始尋找 100 筆候選" }) as HTMLButtonElement).disabled).toBe(true);
+    const writes = fetchMock.mock.calls.filter(([, init]) => init?.method === "POST");
+    expect(writes).toHaveLength(1);
+    expect(String(writes[0][0])).toBe(root + "/runs/review-1/resume");
+  });
+
   it("shows quota codes without a message and distinguishes created candidates from approval suggestions", async () => {
     const partial = { ...run, mode: "discover_new", status: "partial", review_complete: false, error_code: "gemini_daily_budget_exhausted", counts: { ...run.counts, created: 7, approved: 1 } };
     mockApi((url) => url === root + "/runs/review-1" ? response(partial) : undefined);
