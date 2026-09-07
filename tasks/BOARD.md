@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**10 open · 0 in progress · 2 blocked · 1 in review · 144 done**
+**10 open · 0 in progress · 2 blocked · 1 in review · 145 done**
 
 ## Ready to claim
 
@@ -53,4 +53,3 @@ _Nothing here._
 - 2026-09-07 [後台可改前台文案：前台載入器把資料庫覆寫疊上 next-intl](done/2026-09-07-ui-text-loader.md)
 - 2026-09-07 [篩選之後排行榜從第 3 名開始跳號，看起來像少了東西](done/2026-09-07-filtered-rank-numbering.md)
 - 2026-09-07 [手機篩選面板看起來是對話框，但沒有 dialog role、不移動 focus、Escape 不關、Tab 走得出去](done/2026-09-07-filter-sheet-not-a-dialog.md)
-- 2026-09-07 [後台沒有「產生介紹」的按鈕，所以介紹佇列永遠是空的](done/2026-09-07-intro-generate-trigger.md)
