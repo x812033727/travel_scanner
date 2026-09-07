@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**13 open · 0 in progress · 2 blocked · 0 in review · 152 done**
+**12 open · 0 in progress · 2 blocked · 0 in review · 153 done**
 
 ## Ready to claim
 
@@ -25,7 +25,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal\|append](open/2026-09-07-add-a-meal-to-a-day.md) | api | `apps/api/app/foods/router.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/api/app/restaurants/user_router.py`<br>`apps/web/components/travel-card-actions.tsx` |
 | P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | api | `apps/api/tests/test_food_integration.py` |
 | P3 | [tasks/BOARD.md 是產生檔，卻讓每個 PR 互相衝突](open/2026-09-07-board-conflicts-on-every-pr.md) | tools | `.gitattributes`<br>`tools/tasks.mjs` |
-| P3 | [The whole applied-filter chip is a delete button](open/2026-09-07-applied-filter-chip-is-all-delete.md) | web | `apps/web/components/hotspot-explorer.tsx`<br>`apps/web/components/food-browser.tsx` |
 
 ## In progress
 
@@ -48,9 +47,9 @@ _Nothing here._
 - 2026-09-07 [觀測：漏斗看得見——事件名脫離 DB CHECK，關鍵動作由伺服器送](done/2026-09-07-observe-the-funnel.md)
 - 2026-09-07 [出發前閉環：提醒連得回旅程、錨點能追價、航班動態寫得回去](done/2026-09-07-pre-departure-loop.md)
 - 2026-09-07 [從旅程出發查機票：條件由旅程推導，報價帶回錨點](done/2026-09-06-search-from-a-saved-trip.md)
+- 2026-09-07 [The whole applied-filter chip is a delete button](done/2026-09-07-applied-filter-chip-is-all-delete.md)
 - 2026-09-07 [Cuisine chip counts ignore the area and keyword already chosen](done/2026-09-07-cuisine-counts-ignore-other-filters.md)
 - 2026-09-07 [The foods landing tells you to pick a city while already listing 110 merchants](done/2026-09-07-foods-landing-lists-before-city.md)
 - 2026-09-07 [check-i18n does not guard the ui-text editor's own namespace labels](done/2026-09-07-ui-text-namespace-label-guard.md)
 - 2026-09-07 [文案搬進 catalog：兩個自帶五語系字典的元件](done/2026-09-07-i18n-inline-dicts.md)
 - 2026-09-07 [商圈名單還有 95 家沒有英文店名，發布前要逐家查](done/2026-09-06-trend-merchant-english-names-backlog.md)
-- 2026-09-07 [A signed-out visit to /account still fires seven requests that can only 401](done/2026-09-07-signed-out-account-fires-401s.md)
