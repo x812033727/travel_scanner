@@ -50,6 +50,12 @@ const server = createServer((request, response) => {
     response.end(JSON.stringify(usageCatalog));
     return;
   }
+  // No administrator overrides in e2e: the loader would fail open on a 404 anyway, but a
+  // real empty payload keeps the run free of "could not reach the API" noise.
+  if (request.method === "GET" && request.url?.startsWith("/api/v1/runtime/ui-text")) {
+    response.end(JSON.stringify({ locale: "zh-TW", version: "e2e", entries: {} }));
+    return;
+  }
   response.statusCode = 404;
   response.end(JSON.stringify({ detail: "not found" }));
 });
