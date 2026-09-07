@@ -493,8 +493,15 @@ async def test_discovery_searches_before_structuring_and_removes_authority_field
                 json=gemini_body("Grounded candidate summary", [OFFICIAL]),
             )
         assert "tools" not in body
-        assert "responseSchema" not in body["generationConfig"]
-        assert "responseMimeType" not in body["generationConfig"]
+        assert body["generationConfig"]["responseMimeType"] == "application/json"
+        data_schema = body["generationConfig"]["responseSchema"]["properties"]["items"][
+            "items"
+        ]["properties"]["data"]
+        assert set(data_schema["properties"]) >= {
+            "category",
+            "localizations",
+            "food_slugs",
+        }
         return httpx.Response(
             200,
             json=gemini_body(

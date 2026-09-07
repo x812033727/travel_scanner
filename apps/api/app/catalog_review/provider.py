@@ -130,6 +130,27 @@ class _CorrectionSchema(BaseModel):
     recommended_duration_minutes: int | None = None
 
 
+class _DiscoveryLocalizationSchema(BaseModel):
+    locale: str
+    name: str
+    summary: str
+
+
+class _DiscoveryDataSchema(BaseModel):
+    category: str | None = None
+    recommended_duration_minutes: int | None = None
+    address: str | None = None
+    food_slugs: list[str] | None = None
+    category_slugs: list[str] | None = None
+    country_code: str | None = None
+    food_kind: str | None = None
+    meal_types: list[str] | None = None
+    ingredient_tags: list[str] | None = None
+    dietary_notes: list[str] | None = None
+    romanized_name: str | None = None
+    localizations: list[_DiscoveryLocalizationSchema] | None = None
+
+
 _DATA_FIELDS = frozenset(
     {
         "name",
@@ -830,6 +851,9 @@ class CatalogGeminiProvider:
             "google_search_grounding": evidence,
         }
         instruction = _DISCOVERY_INSTRUCTIONS + "\n" + schema_instructions(DiscoveryBatch)
+        response_schema = gemini_response_schema(DiscoveryBatch)
+        draft_schema = response_schema["properties"]["items"]["items"]
+        draft_schema["properties"]["data"] = gemini_response_schema(_DiscoveryDataSchema)
         usage_before = dict(self.usage)
         for attempt in range(2):
             try:
@@ -847,6 +871,8 @@ class CatalogGeminiProvider:
                             }
                         ],
                         "generationConfig": {
+                            "responseMimeType": "application/json",
+                            "responseSchema": response_schema,
                             "temperature": 0.2,
                             "maxOutputTokens": self._structured.max_output_tokens,
                         },

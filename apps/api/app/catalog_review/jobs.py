@@ -42,7 +42,7 @@ HEARTBEAT_SECONDS = 60
 MAX_CALLS = 80
 REVIEW_BATCH_SIZE = 8
 MAX_CONSECUTIVE_PROVIDER_FAILURES = 3
-DISCOVERY_DESTINATION_BATCH_SIZE = 4
+DISCOVERY_DESTINATION_BATCH_SIZE = 1
 TARGET_COUNTS: dict[str, int] = {"hotspot": 40, "food": 20, "merchant": 40}
 TOKEN_KEYS = ("input_tokens", "output_tokens", "thought_tokens")
 
