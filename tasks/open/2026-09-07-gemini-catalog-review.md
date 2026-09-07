@@ -28,6 +28,7 @@ scope:
   - apps/api/tests/test_catalog_review_provider.py
   - apps/api/tests/test_catalog_review_jobs.py
   - apps/api/tests/test_catalog_review_imports.py
+  - apps/api/tests/test_ui_text.py
   - apps/api/tests/test_schema.py
   - apps/api/tests/test_hotspot_seed_ownership.py
   - apps/api/tests/test_hotspot_seed_reconciliation.py
@@ -50,6 +51,7 @@ scope:
   - apps/web/messages/zh-TW/admin.json
   - apps/web/i18n
   - apps/web/lib/ui-text.ts
+  - apps/web/lib/ui-text.test.ts
   - apps/web/vitest.setup.tsx
   - docs/catalog-review.md
 ---

@@ -209,10 +209,11 @@ def test_parameter_mismatch_names_both_directions() -> None:
 
 
 def test_namespace_allowlist_excludes_legacy_and_unknown_groups() -> None:
-    assert len(UI_TEXT_NAMESPACES) == 21
+    assert len(UI_TEXT_NAMESPACES) == 22
     assert "legacy" not in UI_TEXT_NAMESPACES
     assert UI_TEXT_LOCKED_NAMESPACES == ("legacy",)
     require_namespace("navigation")
+    require_namespace("catalogReview")
     with pytest.raises(AppError) as locked:
         require_namespace("legacy")
     assert error_code(locked) == "ui_text_namespace_locked"
