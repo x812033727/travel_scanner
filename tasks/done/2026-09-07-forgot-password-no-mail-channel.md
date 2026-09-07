@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-forgot-password-no-mail-channel
 title: 登入頁沒有忘記密碼，後端也沒有任何寄信管道
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: codex-community
 claimed_at: 2026-09-07T10:14:20Z
 created_at: 2026-09-07T01:46:13Z
-completed_at:
+completed_at: 2026-09-07T15:32:49Z
 branch: codex/mokaair-community
 depends_on: []
 scope:
@@ -25,12 +25,12 @@ foundation now provides durable SMTP, hashed single-use reset tokens and revocat
 
 ## Definition of done
 
-- [ ] The login page links to the localized recovery flow without revealing account existence.
+- [x] The login page links to the localized recovery flow without revealing account existence.
 
 ## Steps
 
-- [ ] Connect the login entry and verify it with the community account-safety flow.
-- [ ] Validate real SMTP delivery and single-use reset in the full-stack acceptance environment.
+- [x] Connect the login entry and verify it with the community account-safety flow.
+- [x] Validate real SMTP delivery and single-use reset in the full-stack acceptance environment.
 
 ## How to verify
 
@@ -42,5 +42,7 @@ change the password once, and verify old sessions and replayed links are rejecte
 
 The localized entry, generic reset response, encrypted durable mail job and
 fragment-based confirmation route are implemented in the community worktree.
-Component tests pass. Production SMTP and the full reset browser journey still
-need acceptance; do not call the delivery complete based on a configured hostname.
+Component tests and the real Mailpit/SMTP desktop and Pixel 7 reset/deletion
+journeys passed in CI 34137517824 at 43d0481. This covers token replay rejection,
+old-session revocation and immediate profile hiding. Production SMTP delivery
+remains an operator launch gate in docs/community.md; no production service is enabled.

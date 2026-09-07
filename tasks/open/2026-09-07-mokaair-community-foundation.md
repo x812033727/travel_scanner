@@ -1,11 +1,11 @@
 ---
 id: 2026-09-07-mokaair-community-foundation
 title: Mokaair community foundation and account safety
-status: in-progress
+status: open
 priority: P1
 area: api
-owner: codex-community
-claimed_at: 2026-09-07T09:22:14Z
+owner:
+claimed_at:
 created_at: 2026-09-07T09:22:13Z
 completed_at:
 branch: codex/mokaair-community
@@ -46,15 +46,15 @@ requires verification, recovery and deletion before public activation.
 ## Definition of done
 
 - [x] Additive fresh/upgrade migrations and community tables.
-- [ ] Default-off, administrator-controlled feature policy and account verification.
-- [ ] Private S3 image lifecycle with decoding, metadata removal and short URLs.
-- [ ] Durable mail/deletion jobs with retries; existing planning remains available.
-- [ ] API tests, Ruff and mypy pass; production activation requirements documented.
+- [x] Default-off, administrator-controlled feature policy and account verification.
+- [x] Private S3 image lifecycle with decoding, metadata removal and short URLs.
+- [x] Durable mail/deletion jobs with retries; existing planning remains available.
+- [x] API tests, Ruff and mypy pass; production activation requirements documented.
 
 ## Steps
 
-- [ ] Implement and verify foundations.
-- [ ] Verify versioned public posts, moderation, free itinerary forks and collections.
+- [x] Implement and verify foundations.
+- [x] Verify versioned public posts, moderation, free itinerary forks and collections.
 - [ ] Verify mutual-follow messaging, durable notifications and platform-paid translation.
 - [ ] Verify reviewed pet conditions, traveller reports and conservative planning filters.
 
@@ -91,3 +91,9 @@ include the new column; exact-head PostgreSQL CI still must pass before acceptan
 Integration checkpoint: merge main f2c3b2a (hotel booking options). Community
 revisions are now 0058 community / 0059 pet friendly / 0060 community places,
 following main's 0057 hotel migration. Only unmerged draft migrations were renamed.
+
+CI 34137517824 / 43d0481 passed 1,776 API tests (one skipped), Ruff, mypy,
+fresh/upgrade PostgreSQL and private S3. Publication/message and real SMTP
+browser journeys passed on both devices; the pet draft-hydration race was then
+fixed in e096aeb. That commit also adds a real offline/reconnect message check.
+Do not mark social/pet acceptance complete until the full browser run passes.

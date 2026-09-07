@@ -182,6 +182,11 @@ publication/review/forking, unfollow versus blocking, pet candidate review and
 species filtering, confirmed conflicting trip insertion, reviewed traveller
 reports, password recovery and account deletion. A test being present is not
 evidence it passed; retain the CI run and screenshots for the exact PR head.
+The private-message journey also disconnects the reader's browser while another
+member writes and retries messages, then checks catch-up without reload or duplicates.
+Pet preference controls wait for the initial snapshot and preserve dirty values
+and their original version across background refreshes. Explicit reload discards
+the local draft; insertion confirmations remain bound to the reviewed trip version.
 
 ## Open implementation and acceptance work
 
@@ -193,8 +198,8 @@ on every read. Migration 0060 adds the reference JSON without discarding legacy
 pet-place IDs. UI selections survive failed searches, and drafts send only type
 and ID, never a client-provided label or URL.
 
-The remaining browser matrix includes real SSE interruption/catch-up, translation
-failure/updated-original handling, full five-locale and dark-mode community
+The remaining browser matrix includes acceptance of real SSE interruption/catch-up,
+translation failure/updated-original handling, full five-locale and dark-mode community
 journeys, and worker/outage/capacity recovery. Existing unit/API coverage does not
 replace these end-to-end checks. Keep the PR a draft and community default-off
 while these implementation and acceptance items remain.

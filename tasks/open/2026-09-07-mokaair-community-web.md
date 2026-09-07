@@ -1,11 +1,11 @@
 ---
 id: 2026-09-07-mokaair-community-web
 title: Mokaair community responsive web and five-language experience
-status: in-progress
+status: open
 priority: P1
 area: web
-owner: codex-community
-claimed_at: 2026-09-07T10:14:21Z
+owner:
+claimed_at:
 created_at: 2026-09-07T10:14:21Z
 completed_at:
 branch: codex/mokaair-community
@@ -58,7 +58,7 @@ experience within the existing five-locale Web/PWA, without exposing private tri
 
 - [ ] Responsive discovery, publishing, profiles, collections, messaging and moderation work.
 - [ ] Pet filters and trip companion requirements expose uncertainty instead of guessing.
-- [ ] New copy exists in all five catalogs; closed/unavailable states fail safely.
+- [x] New copy exists in all five catalogs; closed/unavailable states fail safely.
 - [ ] Web tests, i18n, TypeScript, lint, production build and desktop/Pixel 7 flows pass.
 
 ## Steps
@@ -105,6 +105,13 @@ A test-only TypeScript role-option error also needs the next full CI verificatio
 Integrated main f2c3b2a. BFF timeout resolution retains community streams/media,
 hotel clickouts, booking-option review and hotel quote-search deadlines together.
 The next CI run must validate the actual merge with main, not only the feature head.
+
+CI 34137517824 / 43d0481 passed 132 Web component files, 208 isolated browser
+tests, typecheck, lint, five-locale catalogs and default production builds.
+Real pet tests exposed initial preference loading overwriting early edits.
+e096aeb disables those controls until loaded, preserves dirty drafts and their
+CAS version, and binds conflict confirmation to its original version. New focused
+regressions pass; the expanded real reconnect and pet flows await full CI.
 
 Built on isolated main 516713d. The existing forgot-password task owns the login
 entry; this task owns the new confirmation/recovery UI and public community pages.
