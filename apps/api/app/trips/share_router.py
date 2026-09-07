@@ -16,6 +16,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.analytics.service import record_event
 from app.auth.service import CurrentUser
 from app.db import get_session
 from app.models import TripPlan, TripPlanItem, TripRouteDaySetting, TripShare
@@ -175,6 +176,12 @@ async def fork_shared_trip(
                 auto_compute=False,
             )
         )
+    # The one place a trip arrives from someone else's link; `share_created` on the
+    # other side is what it converts against.
+    await record_event(
+        session, "share_forked", path="/share", user_id=user.id,
+        properties={"items": len(items)},
+    )
     await session.commit()
     await session.refresh(trip)
     return await serialize_trip(session, trip)

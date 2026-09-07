@@ -2,11 +2,14 @@ from __future__ import annotations
 
 import hashlib
 import hmac
+import logging
 import re
 from collections import Counter, defaultdict
+from collections.abc import Mapping
 from datetime import UTC, date, datetime, time, timedelta
 from typing import Any
 from urllib.parse import urlparse
+from uuid import UUID, uuid4
 from zoneinfo import ZoneInfo
 
 from fastapi import Request
@@ -15,6 +18,7 @@ from sqlalchemy.dialects.postgresql import insert as postgres_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.analytics.context import analytics_context
 from app.analytics.schemas import (
     AnalyticsConfigResponse,
     AnalyticsEventBatch,
@@ -22,6 +26,7 @@ from app.analytics.schemas import (
     AnalyticsRange,
 )
 from app.config import Settings, get_settings
+from app.i18n import active_locale
 from app.infra import client_ip, enforce_named_rate_limit
 from app.models import (
     AffiliateClick,
@@ -32,15 +37,42 @@ from app.models import (
     User,
 )
 
+logger = logging.getLogger(__name__)
+
 TAIPEI = ZoneInfo("Asia/Taipei")
 LOCALES = {"en", "ja", "ko", "zh-TW", "zh-CN"}
+# The whole vocabulary, and its only definition — the database no longer carries a
+# CHECK (0055_analytics_event_names). `page_view` stays first because it is the only
+# name that is a page rather than an action; everything else is counted per session in
+# COUNTED_EVENT_NAMES below.
 EVENT_NAMES = (
     "page_view",
     "registration_completed",
     "search_completed",
     "trip_created",
     "outbound_click",
+    "discover_requested",
+    "search_started",
+    "place_added_to_trip",
+    "ai_applied",
+    "optimize_applied",
+    "offer_attached",
+    "alert_created",
+    "share_created",
+    "share_forked",
+    "usage_charged",
+    "usage_insufficient",
+    "login_resumed",
 )
+COUNTED_EVENT_NAMES = tuple(name for name in EVENT_NAMES if name != "page_view")
+# What the admin funnel walks. Every step after the first is counted as the sessions
+# that reached it, so the steps have to be things one session can do in this order:
+# ask for a recommendation, save the trip it produced, put a real quote on that trip,
+# then leave for a provider. `sessions` is the baseline, not an event.
+FUNNEL_STEPS = ("discover_requested", "trip_created", "offer_attached", "outbound_click")
+# Names the server is the only truth for. A browser can still send `trip_created` —
+# older bundles do — and ingest drops it rather than double-counting the trip.
+SERVER_OWNED_EVENTS = frozenset({"trip_created"})
 _UUID_OR_TOKEN = re.compile(r"(?i)(?:[0-9a-f]{8}-[0-9a-f-]{27,}|[A-Za-z0-9_-]{20,})")
 _SAFE_UTM = re.compile(r"[^A-Za-z0-9._+\-/ ]")
 _BOT = re.compile(r"bot|crawler|spider|slurp|headless|preview|monitor", re.I)
@@ -183,6 +215,8 @@ async def ingest_events(
     visitor_hash = _digest(settings.app_secret_key, "analytics-day", f"{today}|{ip}|{ua}")
     values: list[dict[str, Any]] = []
     for item in payload.events:
+        if item.name in SERVER_OWNED_EVENTS:
+            continue
         path = normalize_path(item.path)
         if path is None:
             continue
@@ -233,6 +267,134 @@ async def ingest_events(
     )
 
 
+PROPERTY_KEYS = 6
+# Deliberately narrower than "a short string": no hyphens, no dots, no capitals, so a
+# UUID, an email, a hostname and a name someone typed all fail it. Every value the call
+# sites pass is an enum the code chose, and those are all `[a-z][a-z0-9_]*`.
+_PROPERTY_VALUE = re.compile(r"[a-z][a-z0-9_]{0,31}")
+
+
+def _properties(raw: Mapping[str, Any] | None) -> dict[str, Any]:
+    """Keep event properties to things that describe the action, never the actor.
+
+    Rows here are read by administrators and survive far longer than a request, so the
+    only values accepted are the shapes an aggregate can be built from: a short
+    lower-case enum, a number, a flag. Anything else — an id, an email, a trip name a
+    member typed — is dropped rather than truncated, because a truncated identifier is
+    still an identifier, and a UUID is only "a short string" until you notice it names
+    someone. Callers pass literals, so a dropped value is a bug in the call site, and
+    ``test_analytics_events`` pins the shapes that are allowed through.
+    """
+    if not raw:
+        return {}
+    clean: dict[str, Any] = {}
+    for key, value in list(raw.items())[:PROPERTY_KEYS]:
+        if isinstance(value, bool) or isinstance(value, int):
+            clean[key[:32]] = value
+        elif isinstance(value, str) and _PROPERTY_VALUE.fullmatch(value):
+            clean[key[:32]] = value
+    return clean
+
+
+async def record_event(
+    session: AsyncSession,
+    name: str,
+    *,
+    path: str,
+    user_id: UUID | None = None,
+    properties: Mapping[str, Any] | None = None,
+) -> bool:
+    """Record one event the server is the truth for, and never break the caller.
+
+    The visitor ingest endpoint is the wrong door for these: it rate-limits by IP and
+    session because anyone can post to it, and the server posting to itself would be
+    throttled by its own busiest members. This writes the row directly instead, and
+    takes the visitor identity from the request context so the funnel can count a
+    server step and a browser step as the same session.
+
+    ``path`` is the product surface the action belongs to (``/trips``, ``/search``),
+    not the API route: ``normalize_path`` drops anything under ``/api``, and a funnel
+    broken down by ``/api/v1/trips`` would tell nobody anything anyway.
+
+    Analytics is never the reason a member's request fails. Every failure here — the
+    settings lookup, the insert, a name nobody added to ``EVENT_NAMES`` — is logged and
+    swallowed. The caller must not have committed anything it minds losing: this rolls
+    the session back to a savepoint of its own so a failed insert cannot poison the
+    transaction the caller is still building.
+    """
+    if name not in EVENT_NAMES:
+        logger.warning("analytics.unknown_event", extra={"event_name": name})
+        return False
+    context = analytics_context()
+    if context.opted_out:
+        return False
+    try:
+        settings = await load_runtime_settings(session)
+        if not settings.analytics_enabled:
+            return False
+        now = datetime.now(UTC)
+        normalized = normalize_path(path)
+        if normalized is None:
+            logger.warning("analytics.unusable_path", extra={"event_path": path})
+            return False
+        user_agent = context.user_agent or ""
+        device, browser, os_name, is_bot = _client_details(user_agent)
+        today = now.astimezone(TAIPEI).date().isoformat()
+        # A browser that told us its analytics session gets hashed exactly the way
+        # ingest hashes it, so both halves of a funnel step land on one hash. Without
+        # one (a worker, a CLI, a caller that predates the header) the member is the
+        # next best stable identity; anonymous and session-less is its own bucket
+        # rather than a shared empty string.
+        identity = (
+            ("analytics-session", context.session_id)
+            if context.session_id
+            else ("analytics-server-user", str(user_id))
+            if user_id
+            else ("analytics-server-ip", f"{today}|{context.client_ip or 'unknown'}")
+        )
+        session_hash = _digest(settings.app_secret_key, identity[0], identity[1])
+        visitor_hash = _digest(
+            settings.app_secret_key,
+            "analytics-day",
+            f"{today}|{context.client_ip or 'unknown'}|{user_agent}",
+        )
+        async with session.begin_nested():
+            await session.execute(
+                postgres_insert(AnalyticsEvent)
+                .values(
+                    {
+                        "event_id": uuid4(),
+                        "event_name": name,
+                        "occurred_at": now,
+                        "normalized_path": normalized,
+                        "locale": active_locale(),
+                        "session_hash": session_hash,
+                        "visitor_day_hash": visitor_hash,
+                        "country_code": context.country_code
+                        if settings.analytics_trust_country_header
+                        else None,
+                        "device_type": device,
+                        "browser_family": browser,
+                        "os_family": os_name,
+                        "referrer_type": "internal",
+                        "referrer_host": None,
+                        "utm_source": None,
+                        "utm_medium": None,
+                        "utm_campaign": None,
+                        "is_authenticated": user_id is not None,
+                        "is_bot": is_bot,
+                        "environment": _environment(settings),
+                        "properties_json": _properties(properties),
+                    }
+                )
+                .on_conflict_do_nothing(index_elements=[AnalyticsEvent.event_id])
+            )
+    except Exception:  # noqa: BLE001 - measurement must never fail the thing measured
+        logger.exception("analytics.record_failed", extra={"event_name": name})
+        return False
+    return True
+
+
 def _environment(settings: Settings) -> str:
     value = settings.app_env.lower()
     return (
@@ -277,7 +439,7 @@ def _summary(events: list[AnalyticsEvent], now: datetime) -> dict[str, float | i
         "avg_daily_visitors": round(sum(map(len, visitors_by_day.values())) / days, 1),
         "sessions": sessions,
         "pages_per_session": round(page_views / sessions, 2) if sessions else 0,
-        **{name: names[name] for name in EVENT_NAMES[1:]},
+        **{name: names[name] for name in COUNTED_EVENT_NAMES},
     }
 
 
@@ -310,12 +472,8 @@ def _ranking(
 
 
 def _funnel(events: list[AnalyticsEvent]) -> list[dict[str, Any]]:
-    steps = [
-        ("sessions", None),
-        ("search_completed", "search_completed"),
-        ("trip_created", "trip_created"),
-        ("outbound_click", "outbound_click"),
-    ]
+    steps: list[tuple[str, str | None]] = [("sessions", None)]
+    steps += [(name, name) for name in FUNNEL_STEPS]
     all_sessions = {event.session_hash for event in events}
     baseline = len(all_sessions)
     result = []
@@ -362,7 +520,7 @@ def _rollup_summary(rows: list[AnalyticsDailyRollup]) -> dict[str, float | int]:
         else 0,
         "sessions": sessions,
         "pages_per_session": round(pages / sessions, 2) if sessions else 0,
-        **{name: _rollup_value(rows, "event_count", "event", name) for name in EVENT_NAMES[1:]},
+        **{name: _rollup_value(rows, "event_count", "event", name) for name in COUNTED_EVENT_NAMES},
     }
 
 
@@ -390,7 +548,7 @@ def _rollup_series(rows: list[AnalyticsDailyRollup]) -> list[dict[str, Any]]:
 def _rollup_funnel(rows: list[AnalyticsDailyRollup]) -> list[dict[str, Any]]:
     baseline = _rollup_value(rows, "unique_sessions", "all", "all")
     result = [{"step": "sessions", "sessions": baseline, "conversion_rate": 100 if baseline else 0}]
-    for name in ("search_completed", "trip_created", "outbound_click"):
+    for name in FUNNEL_STEPS:
         count = _rollup_value(rows, "funnel_sessions", "step", name)
         result.append(
             {
@@ -636,7 +794,7 @@ async def rollup_day(session: AsyncSession, target: date) -> int:
             counters[("daily_visitors", "all", "all")] = len(
                 {event.visitor_day_hash for event in selected}
             )
-            for name in EVENT_NAMES[1:]:
+            for name in COUNTED_EVENT_NAMES:
                 counters[("funnel_sessions", "step", name)] = len(
                     {event.session_hash for event in selected if event.event_name == name}
                 )

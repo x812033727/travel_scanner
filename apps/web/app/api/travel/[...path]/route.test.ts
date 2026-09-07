@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { preserveRequestId } from "./request-id";
-import { renewedSession, upstreamLocale } from "./route";
+import { forwardedAnalyticsSession, renewedSession, upstreamLocale } from "./route";
 
 describe("travel BFF request tracing", () => {
   it("preserves the API request ID on the browser response", () => {
@@ -63,5 +63,22 @@ describe("travel BFF upstream locale", () => {
   it("ignores values that are not site locales", () => {
     expect(upstreamLocale("fr", "ja")).toBe("ja");
     expect(upstreamLocale("../etc", "zh-CN; drop")).toBe("zh-TW");
+  });
+});
+
+describe("travel BFF analytics session", () => {
+  it("forwards an id so a server event counts as the session that caused it", () => {
+    const id = "3f2504e0-4f89-41d3-9a0c-0305e82c3301";
+    expect(forwardedAnalyticsSession(id)).toBe(id);
+    expect(forwardedAnalyticsSession(id.toUpperCase())).toBe(id.toUpperCase());
+  });
+
+  it("drops anything a caller could have chosen for itself", () => {
+    // The value becomes an HMAC input server-side. A caller that can pick it can file
+    // its own rows under someone else's hash, so only a real id gets through.
+    for (const value of ["", "anonymous", "../etc/passwd", "3f2504e0", "x".repeat(400)]) {
+      expect(forwardedAnalyticsSession(value)).toBeNull();
+    }
+    expect(forwardedAnalyticsSession(null)).toBeNull();
   });
 });

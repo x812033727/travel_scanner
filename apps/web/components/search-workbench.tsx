@@ -4,6 +4,7 @@ import { CalendarDays, Check, ChevronLeft, ChevronRight, Hotel, LoaderCircle, Ma
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { type FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { trackAnalytics } from "@/lib/analytics";
 import { api, twd } from "@/lib/api";
 import { SECONDARY_CITY_TAG, countryKeys, interestCodes, interestLabel, localizeDestinations, type CountryKey, type DestinationCity } from "@/lib/destinations";
 
@@ -157,6 +158,9 @@ export function SearchWorkbench() {
         interests: selectedInterests, pace: String(form.get("pace") || "balanced"), notes: String(form.get("notes") || "") || null, top_n: 3,
       }) });
       setRecommendations(result.recommendations); setAssumptions(result.assumptions || []);
+      // The funnel's first step. Sent from here, not from the request, so a discovery
+      // nobody got an answer to is not counted as an entry into the flow.
+      trackAnalytics("discover_requested");
     } catch (reason) { setError((reason as Error).message); } finally { setBusy(false); }
   }
 

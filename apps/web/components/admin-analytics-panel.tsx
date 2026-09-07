@@ -28,7 +28,9 @@ type Dashboard = {
 };
 
 const ranges: Range[] = ["24h", "7d", "30d", "90d", "12m"];
-const summaryKeys = ["live_sessions_30m", "page_views", "avg_daily_visitors", "sessions", "pages_per_session", "registration_completed", "search_completed", "trip_created", "outbound_click"];
+// The tiles the dashboard shows, not everything the API returns: `summary` now carries
+// one count per event name, and most of those are only interesting inside the funnel.
+const summaryKeys = ["live_sessions_30m", "page_views", "avg_daily_visitors", "sessions", "pages_per_session", "registration_completed", "discover_requested", "search_completed", "trip_created", "offer_attached", "outbound_click"];
 const colors = ["#147d76", "#e48a4a", "#5674b9", "#b15f8d", "#6d8f44", "#8d6b50"];
 
 function Ranking({ title, rows }: { title: string; rows: Row[] }) {

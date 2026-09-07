@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**10 open · 0 in progress · 2 blocked · 1 in review · 146 done**
+**10 open · 1 in progress · 2 blocked · 1 in review · 146 done**
 
 ## Ready to claim
 
@@ -24,7 +24,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [觀測：漏斗看得見——事件名脫離 DB CHECK，關鍵動作由伺服器送](open/2026-09-07-observe-the-funnel.md) | claude-opus-5 | 2026-09-07T02:25:46Z | `claude/observe-the-funnel` |
 
 ## In review
 

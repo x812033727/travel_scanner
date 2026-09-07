@@ -5,12 +5,18 @@ from uuid import UUID
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 Locale = Literal["en", "ja", "ko", "zh-TW", "zh-CN"]
+# What a browser may claim. `trip_created` is still accepted and then dropped by
+# ingest (see SERVER_OWNED_EVENTS): the server owns that count now, but a tab left
+# open across the deploy still sends it, and rejecting the name would 422 the whole
+# batch — losing that session's page views to fix a duplicate we can just ignore.
 EventName = Literal[
     "page_view",
     "registration_completed",
     "search_completed",
     "trip_created",
     "outbound_click",
+    "discover_requested",
+    "login_resumed",
 ]
 
 
