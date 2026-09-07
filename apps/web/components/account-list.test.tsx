@@ -123,6 +123,35 @@ describe("AccountList", () => {
     expect(screen.getByRole("link", { name: "查看旅程" }).getAttribute("href")).toBe("/trips/trip-9");
   });
 
+  it("leads a flight alert back to the trip whose anchor holds the same quote", async () => {
+    stub({
+      "GET /alerts": () => [{
+        ...alert,
+        monitoring_mode: "manual_only",
+        links: { trip_id: "trip-7", search_id: "search-3" },
+      }],
+      "GET /usage": () => usage,
+    });
+    render(<AccountList kind="alerts" />);
+    await screen.findByText("星宇航空");
+    expect(screen.getByRole("link", { name: "查看旅程" }).getAttribute("href")).toBe("/trips/trip-7");
+    // The manual-only line used to send people to a page with no way in.
+    expect(screen.getByRole("link", { name: "到旅程頁重新查價" }).getAttribute("href")).toBe("/trips/trip-7");
+    expect(screen.queryByText(/請在搜尋頁手動查看/)).toBeNull();
+  });
+
+  it("says a manual-only alert needs checking by hand when nothing links back", async () => {
+    stub({
+      "GET /alerts": () => [{ ...alert, monitoring_mode: "manual_only" }],
+      "GET /usage": () => usage,
+    });
+    render(<AccountList kind="alerts" />);
+    await screen.findByText("星宇航空");
+    expect(screen.getByText(/不會背景自動重查/)).toBeTruthy();
+    expect(screen.queryByRole("link", { name: "到旅程頁重新查價" })).toBeNull();
+    expect(screen.queryByRole("link", { name: "查看旅程" })).toBeNull();
+  });
+
   it("does not remove an item when confirmed deletion fails", async () => {
     stub({
       "GET /alerts": () => [alert],

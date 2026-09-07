@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**13 open · 1 in progress · 2 blocked · 2 in review · 145 done**
+**14 open · 2 in progress · 2 blocked · 2 in review · 145 done**
 
 ## Ready to claim
 
@@ -28,6 +28,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
+| [出發前閉環：提醒連得回旅程、錨點能追價、航班動態寫得回去](open/2026-09-07-pre-departure-loop.md) | claude-opus-5 | 2026-09-07T00:45:08Z | `claude/pre-departure-loop` |
 | [觀測：漏斗看得見——事件名脫離 DB CHECK，關鍵動作由伺服器送](open/2026-09-07-observe-the-funnel.md) | claude-opus-5 | 2026-09-07T02:25:46Z | `claude/observe-the-funnel` |
 
 ## In review
@@ -46,6 +47,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [Cuisine chip counts ignore the area and keyword already chosen](open/2026-09-07-cuisine-counts-ignore-other-filters.md) | active work in the same scope |
 | P2 | [The foods landing tells you to pick a city while already listing 110 merchants](open/2026-09-07-foods-landing-lists-before-city.md) | active work in the same scope |
 | P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | active work in the same scope |
+| P3 | [行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal\|append](open/2026-09-07-add-a-meal-to-a-day.md) | active work in the same scope |
 
 ## Recently finished
 

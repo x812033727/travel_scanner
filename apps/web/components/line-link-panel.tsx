@@ -1,12 +1,14 @@
 "use client";
 
 import { CheckCircle2, LoaderCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { useState } from "react";
 import { ApiError, api } from "@/lib/api";
 import { loginPath, safeExternalHref } from "@/lib/navigation";
 
 export function LineLinkPanel({ linkToken }: { linkToken?: string }) {
+  const alerts = useTranslations("alerts");
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>();
@@ -37,13 +39,18 @@ export function LineLinkPanel({ linkToken }: { linkToken?: string }) {
   }
 
   if (!linkToken) {
-    return <p role="alert" className="rounded-xl bg-amber-50 p-4 text-amber-900">連結已失效。請回到 LINE 官方帳號重新輸入「綁定」。</p>;
+    // Previously the whole page: one sentence and no way anywhere. The binding is for
+    // price alerts, so that is where someone who cannot bind should be able to go.
+    return <div role="alert" className="rounded-xl bg-amber-50 p-4 text-amber-900">
+      <p>連結已失效。請回到 LINE 官方帳號重新輸入「綁定」。</p>
+      <Link href="/alerts" className="mt-3 inline-block font-semibold underline">{alerts("title")}</Link>
+    </div>;
   }
   const returnPath = `/line/link?linkToken=${encodeURIComponent(linkToken)}`;
   return <div className="space-y-4">
     <p className="flex gap-3 text-sm text-[var(--muted)]"><CheckCircle2 className="shrink-0 text-[var(--teal)]" size={20} />確認後，這個網站帳號會與目前的 LINE 帳號一對一連結，用來接收到價通知。</p>
     <button type="button" disabled={loading} onClick={linkAccount} className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#06c755] px-4 py-3 font-semibold text-white disabled:opacity-60">{loading && <LoaderCircle className="animate-spin" size={18} />}確認連結 LINE</button>
     <Link href={loginPath(returnPath)} className="block text-center text-sm text-[var(--teal)] underline">尚未登入？先登入網站帳號</Link>
-    {error && <p role="alert" className="rounded-xl bg-red-50 p-3 text-sm text-red-800">{error}</p>}
+    {error && <p role="alert" className="rounded-xl bg-red-50 p-3 text-sm text-red-800">{error}<Link href="/alerts" className="ml-1 font-semibold underline">{alerts("title")}</Link></p>}
   </div>;
 }

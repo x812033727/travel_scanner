@@ -1,8 +1,9 @@
 "use client";
 
-import { Clock3, LoaderCircle, LogIn, Map, Plane, Search } from "lucide-react";
+import { Check, Clock3, LoaderCircle, LogIn, Map, Plane, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Link, usePathname } from "@/i18n/navigation";
 import { api } from "@/lib/api";
 import { loginPath } from "@/lib/navigation";
@@ -86,16 +87,26 @@ function TrackPreview({ track }: { track: Track }) {
 
 export function FlightStatusSearch() {
   const charge = useOperationCharge("flight_status_lookup");
+  // Arriving from a trip's flight anchor: the flight and day are already known, and
+  // the result can go back onto that anchor instead of being read once and lost.
+  const params = useSearchParams();
+  const tripId = params.get("trip_id") || undefined;
+  const direction = params.get("direction") === "return" ? "return" : params.get("direction") === "outbound" ? "outbound" : undefined;
+  const prefilledIdent = params.get("flight_number") || "";
+  const prefilledDate = params.get("date") || "";
+  const trips = useTranslations("trips");
   // The lookup charges a use, so a visitor must not see a live charge button:
   // the layout-level session is the one auth probe every public page already pays for.
   const session = useSavedItems();
   const pathname = usePathname();
   const usage = useTranslations("usage");
   const [mode, setMode] = useState<"ident" | "route">("ident");
-  const [ident, setIdent] = useState("");
+  const [ident, setIdent] = useState(prefilledIdent.toUpperCase());
   const [origin, setOrigin] = useState("TPE");
   const [destination, setDestination] = useState("NRT");
-  const [departureDate, setDepartureDate] = useState("");
+  const [departureDate, setDepartureDate] = useState(prefilledDate);
+  const [savedItem, setSavedItem] = useState<string>();
+  const [savingItem, setSavingItem] = useState<string>();
   const [lookup, setLookup] = useState<Lookup>();
   const [tracks, setTracks] = useState<Record<string, Track>>({});
   const [busy, setBusy] = useState(false);
@@ -111,6 +122,24 @@ export function FlightStatusSearch() {
     finally { setBusy(false); }
   }
 
+  // The anchor is written from the stored lookup, so the only thing this sends is
+  // which result it was. The version is read immediately before the write: this page
+  // never held the trip, so it has no version of its own to go stale.
+  async function saveToTrip(item: StatusItem) {
+    if (!lookup || !tripId || !direction) return;
+    setSavingItem(item.item_id);
+    setError("");
+    try {
+      const trip = await api<{ version: number }>(`/trips/${tripId}`);
+      await api(`/trips/${tripId}/flight-anchors/${direction}/flight-status`, {
+        method: "POST",
+        body: JSON.stringify({ version: trip.version, lookup_id: lookup.id, item_id: item.item_id }),
+      });
+      setSavedItem(item.item_id);
+    } catch (reason) { setError((reason as Error).message); }
+    finally { setSavingItem(undefined); }
+  }
+
   async function loadTrack(item: StatusItem) {
     if (!lookup) return;
     setTrackBusy(item.item_id); setError("");
@@ -122,6 +151,10 @@ export function FlightStatusSearch() {
   }
 
   return <main className="mx-auto max-w-5xl px-5 pb-20 md:px-8">
+    {tripId && <p className="mt-4 flex flex-wrap items-center gap-2 rounded-2xl bg-[var(--teal-soft)] px-4 py-3 text-sm font-semibold text-[var(--teal-dark)]">
+      {trips("statusFromTrip")}
+      <Link href={`/trips/${tripId}`} className="underline">{trips("backToTrip")}</Link>
+    </p>}
     <section className="rounded-[2rem] bg-gradient-to-br from-[var(--teal-dark)] to-[var(--teal)] p-6 text-white md:p-10">
       <p className="text-sm font-semibold text-white/75">FLIGHTAWARE 航班動態</p>
       <h1 className="mt-2 text-3xl font-bold md:text-5xl">查航班狀態、延誤與登機門</h1>
@@ -147,6 +180,10 @@ export function FlightStatusSearch() {
         <div className="mt-4 grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4"><p><strong className="block text-xs text-[var(--muted)]">預定出發</strong>{time(item.scheduled_out)}</p><p><strong className="block text-xs text-[var(--muted)]">最新出發</strong>{time(item.actual_out || item.estimated_out)}</p><p><strong className="block text-xs text-[var(--muted)]">航廈／登機門</strong>{item.departure_terminal || "—"}／{item.departure_gate || "—"}</p><p><strong className="block text-xs text-[var(--muted)]">延誤</strong>{Number(item.departure_delay_seconds || 0) > 0 ? `${Math.round(Number(item.departure_delay_seconds) / 60)} 分鐘` : "未標示延誤"}</p></div>
         <p className="mt-4 flex items-center gap-2 text-xs text-[var(--muted)]"><Clock3 size={15} />{item.schedule_only ? "未進入即時窗口，僅核對班表" : `FlightAware 更新：${time(item.updated_at)}`}</p>
         {item.fa_flight_id && !item.schedule_only && <button type="button" onClick={() => loadTrack(item)} disabled={trackBusy === item.item_id} className="mt-4 flex items-center gap-2 rounded-xl border border-[var(--teal)] px-4 py-2.5 text-sm font-semibold text-[var(--teal)]"><Map size={17} />{trackBusy === item.item_id ? "載入航跡…" : tracks[item.item_id] ? "重新載入航跡" : "顯示實際航跡"}</button>}
+        {tripId && direction && <button type="button" onClick={() => void saveToTrip(item)} disabled={savingItem === item.item_id} className={`mt-4 ml-0 flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold disabled:opacity-60 ${savedItem === item.item_id ? "bg-emerald-50 text-emerald-800" : "bg-[var(--teal-soft)] text-[var(--teal-dark)]"}`}>
+          {savedItem === item.item_id ? <Check size={17} /> : <Plane size={17} />}
+          {savedItem === item.item_id ? trips("statusSaved") : savingItem === item.item_id ? trips("statusSaving") : trips("statusSave")}
+        </button>}
         {tracks[item.item_id] && <TrackPreview track={tracks[item.item_id]} />}
       </article>)}
     </section>}

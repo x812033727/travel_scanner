@@ -23,6 +23,7 @@ from app.main import app
 from app.models import (
     AffiliateClick,
     FlightOfferRecord,
+    FlightStatusLookup,
     SearchJob,
     SearchRequest,
     TripPlaceCandidate,
@@ -2516,3 +2517,89 @@ async def test_flight_anchor_from_offer(monkeypatch: pytest.MonkeyPatch) -> None
         assert "price_snapshot" not in retyped["data"]
         # The return anchor still carries the offer, so the quote stays on the trip once.
         assert typed.json()["pricing"]["quoted_total"] == "11500"
+
+
+@pytest.mark.asyncio
+async def test_flight_status_written_back_onto_the_anchor(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A status the member looked up lands on their anchor, from the stored lookup.
+
+    The body names which result, never the status itself: the lookup is the row this
+    service wrote and charged for, so what reaches the trip is what the provider said.
+    """
+    monkeypatch.setattr(trips_router_module, "enqueue_trip_routing", lambda *a, **k: None)
+    await _start_on_fresh_connections()
+    owner = await _signed_in_headers("flight-status-owner")
+    other = await _signed_in_headers("flight-status-other")
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        trip = await _blank_trip(client, owner, name="動態寫回")
+        item_id = uuid4()
+        async with SessionFactory() as session:
+            user_id = decode_access_token(owner["Authorization"].removeprefix("Bearer "))
+            lookup = FlightStatusLookup(
+                user_id=user_id,
+                provider="flightaware",
+                query_json={"ident": "BR198", "departure_date": "2026-11-10"},
+                result_json={
+                    "items": [
+                        {
+                            "item_id": str(item_id),
+                            "provider": "flightaware",
+                            "ident": "BR198",
+                            "origin": "TPE",
+                            "destination": "NRT",
+                            "status": "scheduled",
+                            "schedule_only": False,
+                            "cancelled": False,
+                            "departure_delay_seconds": 1500,
+                            "departure_gate": "A7",
+                            "scheduled_out": "2026-11-10T00:50:00Z",
+                            "fa_flight_id": "BR198-1762",
+                        }
+                    ]
+                },
+                cache_hit=False,
+                expires_at=datetime.now(UTC) + timedelta(hours=6),
+            )
+            session.add(lookup)
+            await session.commit()
+            lookup_id = lookup.id
+
+        url = f"/api/v1/trips/{trip['id']}/flight-anchors/outbound/flight-status"
+        body = {"version": trip["version"], "lookup_id": str(lookup_id), "item_id": str(item_id)}
+        saved = await client.post(url, headers=owner, json=body)
+        assert saved.status_code == 200, saved.text
+        anchor = next(
+            item for item in saved.json()["items"] if item["system_role"] == "outbound_flight"
+        )
+        status = anchor["data"]["flight_status"]
+        assert status["ident"] == "BR198" and status["status"] == "scheduled"
+        assert status["departure_delay_seconds"] == 1500 and status["departure_gate"] == "A7"
+        assert status["checked_at"]
+        # The provider's internal handle is not something the trip needs to keep.
+        assert "fa_flight_id" not in status
+
+        # Stale version, unknown item and another member's lookup are all refused.
+        assert (await client.post(url, headers=owner, json=body)).status_code == 409
+        current = saved.json()["version"]
+        assert (
+            await client.post(
+                url,
+                headers=owner,
+                json={"version": current, "lookup_id": str(lookup_id), "item_id": str(uuid4())},
+            )
+        ).status_code == 404
+        theirs = await _blank_trip(client, other, name="別人的旅程")
+        stolen = await client.post(
+            f"/api/v1/trips/{theirs['id']}/flight-anchors/outbound/flight-status",
+            headers=other,
+            json={
+                "version": theirs["version"],
+                "lookup_id": str(lookup_id),
+                "item_id": str(item_id),
+            },
+        )
+        assert stolen.status_code == 404
+        assert stolen.json()["code"] == "flight_status_lookup_not_found"

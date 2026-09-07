@@ -317,8 +317,10 @@
 驗證：`test_restaurant_search_replay.py`、`test_trip_optimization_preview.py` 新增 `optimization_summary` 案例、整合測試的 `/usage` 與 `/trips/options` 斷言；前端 `usage-insufficient-notice.test.tsx`、`account-list.test.tsx`、`airline-fare-lab.test.tsx`。
 留到後面：旅程頁最佳化按鈕上的「鎖定 N 個再最佳化」（等 #150）；`travel-card-actions` 對 `undated_count` 的提示（要先有 PATCH 才能設定日期，PR C 之後）。
 
-**PR F — 出發前閉環（等 #150）**
-範圍：提醒 `links` 與文案、錨點建提醒、旅程型提醒改義、航班動態預填與寫回、LINE 兩個訊息、新增一餐。依賴 B。
+**PR F — 出發前閉環 — 已在 `claude/pre-departure-loop` 實作（接在 PR D 之後）**
+範圍：提醒回應新增 `links {trip_id, search_id}`（`alert_links` 一次查完整份清單：旅程提醒指自己的旅程，機票／住宿提醒把 `TripPlanItem.offer_id` 對上 `FlightOfferRecord`／`HotelOfferRecord.public_offer_id`，而且只認同一位會員的旅程與搜尋；清單與三個單筆讀取共用同一份 `links`）；提醒卡連回旅程，`manual_only` 那行從死路改成「到旅程頁重新查價」，沒有回連時才說要自己手動查；LINE 綁定過期與錯誤兩個訊息都給得出 `/alerts` 的去處。錨點有報價時直接在卡片上建機票提醒（回連帶 `alertReturnPath`）。旅程型提醒改義：`trip-price-watch.tsx` 取代旅程層的 `PriceAlertButton`，對旅程手上每一筆報價各建一筆（機票建機票、住宿建住宿，來回票同一個 `offer_id` 只算一次），`alert_exists` 視為已在追蹤，沒有任何報價時直接說「先查機票或住宿才能追蹤價格」而不是給一個承諾不了的按鈕。航班動態：`/flights/status?trip_id=…&direction=…&flight_number=…&date=…` 從旅程預填並顯示回旅程的路，每筆結果可「寫回旅程」→ `POST /trips/{id}/flight-anchors/{direction}/flight-status {version, lookup_id, item_id}`，後端重讀該會員自己的 `FlightStatusLookup` 取出那一筆、寫進 `data.flight_status`，走 `persist_information_anchor_change`（純資訊，不重排時間）；錨點卡接著顯示「動態 … · 查於 …」與延誤分鐘。
+驗證：`test_alerts_integration.py::test_an_alert_leads_back_to_the_trip_and_search_it_came_from`（旅程與機票兩種 `links`、單筆讀取一致、別人的提醒不會指到你的旅程）、`test_integration_postgres_redis.py::test_flight_status_written_back_onto_the_anchor`；前端 `flight-status-search.test.tsx`、`flight-anchor-card.test.tsx`、`trip-price-watch.test.tsx`、`account-list.test.tsx`、`line-link-panel.test.tsx`；e2e 主旅程走到「建立提醒 → 前往管理 → 查看旅程 → 查航班動態（已預填）」。
+與原規劃的兩處不同：航班動態的寫回沒有做成 `PUT …/status_snapshot`，改成伺服器自己重讀 lookup 的 `POST …/flight-status`，客戶端只給 `lookup_id` 與 `item_id`，寫不進任意狀態文字；「新增一餐」（四個 trip-selections 端點的 `mode: replace_meal|append`）留成獨立的一件事，已進 `tasks/open/`。
 
 **PR G — 分享與旅途中**
 範圍：分享頁 CTA、`data` 白名單、fork（= 規格 PR 12）；列印／ICS／今日入口（= 規格 PR 11、13）。

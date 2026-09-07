@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { FlightStatusSearch } from "@/components/flight-status-search";
@@ -11,5 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
 }
 
 export default function FlightStatusPage() {
-  return <><SiteHeader /><FlightStatusSearch /></>;
+  // The component reads `trip_id`/`flight_number` from the query string, which needs
+  // a boundary or the whole route opts out of static rendering.
+  return <><SiteHeader /><Suspense><FlightStatusSearch /></Suspense></>;
 }

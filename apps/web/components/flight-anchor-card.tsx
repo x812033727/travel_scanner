@@ -1,8 +1,9 @@
-import { ArrowRight, Clock3, Pencil, Plane, RouteOff, Search, Tag } from "lucide-react";
+import { ArrowRight, Clock3, Pencil, Plane, RadioTower, RouteOff, Search, Tag } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { formatCurrency } from "@/lib/locale-format";
-import { priceSnapshot, type TripItem } from "@/lib/trip-types";
+import { PriceAlertButton } from "@/components/price-alert-button";
+import { flightStatusSnapshot, priceSnapshot, type TripItem } from "@/lib/trip-types";
 
 export type FlightAnchorInfo = {
   airline?: string;
@@ -33,12 +34,18 @@ export function FlightAnchorCard({
   busy = false,
   onEdit,
   search,
+  flightStatus,
+  alertReturnPath,
 }: {
   item: TripItem;
   busy?: boolean;
   onEdit?: () => void;
   /** The trip's flight search (`/search?trip_id=…`) and what one search costs. */
   search?: { href: string; charge: string };
+  /** The status lookup for this flight, prefilled from the anchor. */
+  flightStatus?: { href: string; charge: string };
+  /** Where to send someone who has to sign in before creating the alert. */
+  alertReturnPath?: string;
 }) {
   const t = useTranslations("trips");
   const info = flightAnchorInfo(item);
@@ -51,6 +58,7 @@ export function FlightAnchorCard({
   // The quote the anchor was created from. A hand-typed flight never carries one,
   // so the line only appears on anchors that came out of a real search.
   const quote = configuredInfo ? priceSnapshot(item) : null;
+  const status = configuredInfo ? flightStatusSnapshot(item) : null;
 
   return <article className="planner-flight-card">
     <div className="flex items-start gap-3">
@@ -82,6 +90,13 @@ export function FlightAnchorCard({
             {t("quotedPrice", { amount: formatCurrency(Number(quote.total_price), quote.currency) })}
             {quote.provider && <span className="font-normal text-slate-600">· {t("quotedBy", { provider: quote.provider })}</span>}
           </p>}
+          {status && <p className="mt-2 flex flex-wrap items-center gap-1.5 text-xs font-semibold text-sky-900">
+            <RadioTower size={13} aria-hidden />
+            {t("flightStatusLine", { status: status.status || "—", date: localDateTime(status.checked_at) })}
+            {Number(status.departure_delay_seconds || 0) > 0 && <span className="font-normal text-amber-800">
+              · {t("flightStatusDelay", { minutes: Math.round(Number(status.departure_delay_seconds) / 60) })}
+            </span>}
+          </p>}
         </> : <>
           <h3 className="mt-2 font-bold text-slate-900">{label}尚未設定</h3>
           <p className="mt-1 text-sm leading-6 text-slate-600">補上航空公司、班號、機場與當地起降時間，同行者就能在行程首尾清楚確認。</p>
@@ -91,8 +106,20 @@ export function FlightAnchorCard({
     {search && <Link href={search.href} className="planner-flight-action">
       <Search size={15} />{t("searchFlights", { charge: search.charge })}
     </Link>}
+    {flightStatus && configured && <Link href={flightStatus.href} className="planner-flight-action">
+      <RadioTower size={15} />{t("statusSearch", { charge: flightStatus.charge })}
+    </Link>}
     {onEdit && <button type="button" onClick={onEdit} disabled={busy} className="planner-flight-action">
       <Pencil size={15} />{configured ? "編輯航班" : `設定${label}`}
     </button>}
+    {/* The quote is the thing worth watching, so the alert lives with it rather than
+        on the trip as a whole: this button tracks this flight's own offer. */}
+    {quote && item.offer_id && <PriceAlertButton
+      resourceType="flight"
+      resourceId={item.offer_id}
+      currentPrice={Number(quote.total_price)}
+      currency={quote.currency}
+      returnPath={alertReturnPath}
+    />}
   </article>;
 }

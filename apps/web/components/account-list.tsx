@@ -49,6 +49,8 @@ type AlertItem = {
   price_updated_at?: string | null;
   active: boolean;
   monitoring_mode?: "automatic" | "manual_only";
+  /** Where this alert came from: its trip, and the search the offer was found in. */
+  links?: { trip_id?: string | null; search_id?: string | null };
   monitoring_status?: string;
   last_checked_at?: string | null;
   next_check_at?: string | null;
@@ -293,9 +295,9 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                     <p className="mt-1 text-sm text-[var(--muted)]">
                       {alert.subtitle || "價格項目"}
                     </p>
-                    {alert.resource_type === "trip" && (
+                    {(alert.resource_type === "trip" || alert.links?.trip_id) && (
                       <Link
-                        href={`/trips/${alert.resource_id}`}
+                        href={`/trips/${alert.resource_type === "trip" ? alert.resource_id : alert.links?.trip_id}`}
                         className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-[var(--teal)]"
                       >
                         {common("openTrip")}
@@ -340,7 +342,15 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                     )}
                     {alert.monitoring_mode === "manual_only" && (
                       <p className="mt-2 text-xs text-amber-800">
-                        此來源不允許背景定期重查或自動通知；請在搜尋頁手動查看最新價格。
+                        {t("manualOnly")}
+                        {alert.links?.trip_id && (
+                          <Link
+                            href={`/trips/${alert.links.trip_id}`}
+                            className="ml-1 font-semibold underline"
+                          >
+                            {t("manualOnlyRecheck")}
+                          </Link>
+                        )}
                       </p>
                     )}
                   </>

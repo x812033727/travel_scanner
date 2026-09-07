@@ -65,6 +65,40 @@ describe("flight anchor card", () => {
     expect(link.getAttribute("href")).toBe("/search?trip_id=trip-1");
   });
 
+  it("puts the status, its lookup and a price alert on an anchor that has a quote", async () => {
+    const quoted = {
+      ...outbound,
+      offer_id: "offer-1",
+      data: {
+        ...outbound.data,
+        flight_selection_source: "offer",
+        price_snapshot: { total_price: "11500", currency: "TWD", provider: "amadeus" },
+        flight_status: { ident: "BR198", status: "scheduled", departure_delay_seconds: 1500, checked_at: "2026-11-09T12:00" },
+      },
+    };
+    render(<FlightAnchorCard
+      item={quoted}
+      flightStatus={{ href: "/flights/status?trip_id=t1&direction=outbound", charge: "消耗 1 次" }}
+      alertReturnPath="/trips/t1"
+    />);
+
+    expect(screen.getByText(/動態 scheduled/)).toBeTruthy();
+    expect(screen.getByText(/延誤 25 分/)).toBeTruthy();
+    expect(screen.getByRole("link", { name: "查航班動態 · 消耗 1 次" }).getAttribute("href"))
+      .toBe("/flights/status?trip_id=t1&direction=outbound");
+    // The alert belongs to the quote, so it only appears where there is one.
+    expect(screen.getByRole("button", { name: "建立價格通知" })).toBeTruthy();
+  });
+
+  it("offers no price alert and no status line on a hand-typed anchor", () => {
+    render(<FlightAnchorCard item={outbound} flightStatus={{ href: "/flights/status", charge: "消耗 1 次" }} />);
+    expect(screen.queryByRole("button", { name: "建立價格通知" })).toBeNull();
+    // "查於" only appears on the status line; the lookup link says 查航班動態.
+    expect(screen.queryByText(/查於/)).toBeNull();
+    // The lookup itself still makes sense: the flight is set, its status is not known.
+    expect(screen.getByRole("link", { name: /^查航班動態 · / })).toBeTruthy();
+  });
+
   it("shows a clear setup action for an unset return flight", () => {
     render(<FlightAnchorCard item={{ ...outbound, id: "flight-return", system_role: "return_flight", data: { flight_info: null } }} onEdit={vi.fn()} />);
     expect(screen.getByText("回程航班尚未設定")).toBeTruthy();
