@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
+import { naverMapSearchUrl } from "@/lib/naver-map";
 import {
   LocalizedNameFields,
   completeNames,
@@ -515,16 +516,20 @@ export function AdminFoodMerchantsPanel({
           map_match_status: editing.map_match_status,
           review_status: editing.review_status,
           is_active: editing.is_active,
-          sources: editing.sources.map((source) => ({
-            source_type: source.source_type,
-            source_scope: source.source_scope,
-            source_title: source.source_title,
-            source_url: source.source_url,
-            claims: source.claims,
-            edition_year: source.edition_year,
-            distinction: source.distinction,
-            is_current: source.is_current,
-          })),
+          ...(!editing.id || editing.sources.length > 0
+            ? {
+                sources: editing.sources.map((source) => ({
+                  source_type: source.source_type,
+                  source_scope: source.source_scope,
+                  source_title: source.source_title,
+                  source_url: source.source_url,
+                  claims: source.claims,
+                  edition_year: source.edition_year,
+                  distinction: source.distinction,
+                  is_current: source.is_current,
+                })),
+              }
+            : {}),
         }),
       });
       setMessage(editing.id ? ta("foodMerchantsPanel.locationSaved") : t("merchants.created"));
@@ -1144,6 +1149,16 @@ export function AdminFoodMerchantsPanel({
               )}
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
+              {editing.country_code === "KR" && (
+                <a
+                  href={naverMapSearchUrl(editing.local_name || editing.name, editing.destination_id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center rounded-xl border border-[var(--teal)] px-4 font-semibold text-[var(--teal)]"
+                >
+                  {ta("foodMerchantsPanel.openNaverSearch")}
+                </a>
+              )}
               <button
                 type="button"
                 disabled={loading || editing.country_code === "KR"}

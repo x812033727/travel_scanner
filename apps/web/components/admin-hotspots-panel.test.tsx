@@ -71,6 +71,46 @@ describe("AdminHotspotsPanel", () => {
     await waitFor(() => expect(fetchMock).toHaveBeenCalled());
   });
 
+  it("opens a Korean candidate in NAVER search for manual review", async () => {
+    const koreanItem = {
+      ...item,
+      name: "해운대 암소갈비집",
+      destination_id: "busan",
+      city_code: "PUS",
+      city_name: "釜山",
+      country_code: "KR",
+      country_name: "韓國",
+      google_place_id: null,
+      naver_map_url: null,
+    };
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () =>
+        new Response(
+          JSON.stringify({
+            ...listing,
+            items: [koreanItem],
+            facets: {
+              countries: [{ code: "KR", name: "韓國", count: 1 }],
+              categories: listing.facets.categories,
+            },
+          }),
+        ),
+      ),
+    );
+
+    render(<AdminHotspotsPanel />);
+    expect(await screen.findByText("해운대 암소갈비집")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "編輯地點" }));
+    expect(
+      screen
+        .getByRole("link", { name: "開啟 Naver 搜尋並人工核對" })
+        .getAttribute("href"),
+    ).toBe(
+      `https://map.naver.com/p/search/${encodeURIComponent("해운대 암소갈비집 부산")}`,
+    );
+  });
+
   it("groups candidates by country and city, filters by category, and selects a group", async () => {
     const fetchMock = vi.fn<(input: RequestInfo | URL, init?: RequestInit) => Promise<Response>>(
       async () => new Response(JSON.stringify(listing)),

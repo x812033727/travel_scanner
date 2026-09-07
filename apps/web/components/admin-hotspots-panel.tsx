@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
 import { HOTSPOT_CATEGORY_CODES, isHotspotCategoryCode } from "@/lib/hotspot-categories";
 import { safeExternalHref } from "@/lib/navigation";
+import { naverMapSearchUrl } from "@/lib/naver-map";
 import { FilterDisclosure, FilterPills } from "./admin-filter-pills";
 import { AdminHotspotIntroGenerator } from "./admin-hotspot-intro-generator";
 import { AdminHotspotThemeEditor, type AssignedTheme } from "./admin-hotspot-theme-editor";
@@ -669,20 +670,34 @@ export function AdminHotspotsPanel() {
               />
             </label>
             {locationDraft.country_code === "KR" ? (
-              <label className="text-xs font-semibold lg:col-span-2">
-                {ta("hotspotsPanel.naverUrl")}
-                <input
-                  value={locationDraft.naver_map_url ?? ""}
-                  onChange={(e) =>
-                    setLocationDraft({
-                      ...locationDraft,
-                      naver_map_url: e.target.value || null,
-                    })
-                  }
-                  placeholder="https://map.naver.com/p/entry/place/..."
-                  className="mt-1 h-10 w-full rounded-xl border px-3"
-                />
-              </label>
+              <div className="lg:col-span-2">
+                <label className="text-xs font-semibold">
+                  {ta("hotspotsPanel.naverUrl")}
+                  <input
+                    value={locationDraft.naver_map_url ?? ""}
+                    onChange={(e) =>
+                      setLocationDraft({
+                        ...locationDraft,
+                        naver_map_url: e.target.value || null,
+                      })
+                    }
+                    placeholder="https://map.naver.com/p/entry/place/..."
+                    className="mt-1 h-10 w-full rounded-xl border px-3"
+                  />
+                </label>
+                <a
+                  href={naverMapSearchUrl(
+                    locationDraft.name,
+                    locationDraft.destination_id,
+                    locationDraft.city_name,
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex min-h-11 items-center rounded-xl border border-[var(--teal)] px-4 text-sm font-semibold text-[var(--teal)]"
+                >
+                  {ta("hotspotsPanel.openNaverSearch")}
+                </a>
+              </div>
             ) : (
               <label className="text-xs font-semibold lg:col-span-2">
                 Google Place ID
