@@ -43,6 +43,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-07 [文案搬進 catalog：兩個自帶五語系字典的元件](done/2026-09-07-i18n-inline-dicts.md)
 - 2026-09-07 [商圈名單還有 95 家沒有英文店名，發布前要逐家查](done/2026-09-06-trend-merchant-english-names-backlog.md)
 - 2026-09-07 [A signed-out visit to /account still fires seven requests that can only 401](done/2026-09-07-signed-out-account-fires-401s.md)
 - 2026-09-07 [後台可改前台文案：/admin/ui-text 編輯器](done/2026-09-07-ui-text-admin-editor.md)
