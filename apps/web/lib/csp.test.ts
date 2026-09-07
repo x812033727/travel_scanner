@@ -19,6 +19,8 @@ describe("content security policy", () => {
     expect(production).toContain("upgrade-insecure-requests");
     expect(production).not.toContain("'unsafe-eval'");
     expect(production).not.toContain("'unsafe-inline' https://");
+    expect(production).toContain("https://emrldtp.cc");
+    expect(production).toContain("https://*.tp.media");
     const development = buildStrictContentSecurityPolicy({ nonce: "abc123", production: false });
     expect(development).toContain("'unsafe-eval'");
     expect(development).not.toContain("upgrade-insecure-requests");

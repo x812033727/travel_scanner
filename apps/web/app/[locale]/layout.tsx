@@ -11,10 +11,12 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteVisibilityProvider } from "@/components/site-visibility-provider";
 import { UsageCatalogProvider } from "@/components/usage-catalog-provider";
 import { AnalyticsProvider } from "@/components/analytics-provider";
+import { TravelpayoutsDrive } from "@/components/travelpayouts-drive";
 import { routing } from "@/i18n/routing";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import { TEXT_SIZE_BOOTSTRAP_SCRIPT } from "@/lib/text-size";
 import { THEME_BOOTSTRAP_SCRIPT } from "@/lib/theme";
+import { isTravelpayoutsDriveOrigin } from "@/lib/travelpayouts-drive";
 import { getUsageCatalog } from "@/lib/usage-catalog.server";
 import "../globals.css";
 
@@ -24,6 +26,7 @@ type Props = Readonly<{
 }>;
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const travelpayoutsDriveEnabled = isTravelpayoutsDriveOrigin(siteUrl);
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -82,6 +85,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <SiteVisibilityProvider state={siteVisibility}>
             <UsageCatalogProvider state={usageCatalog}>
               <AnalyticsProvider>
+                <TravelpayoutsDrive enabled={travelpayoutsDriveEnabled} />
                 <LegacyUiLocalizer />
                 {/* One /auth/me for the whole page. It used to be asked three times —
                     by the header, the currency switcher and the account panel — and a

@@ -524,6 +524,15 @@ the provider's final billable-event decisions are not included. Google Cloud Con
 remains the billing source of truth. The bundled Redis service enables append-only
 persistence, and new counters are retained for monthly history.
 
+Travelpayouts Drive is installed with the project-specific script issued for
+`mokaair.com`. The web layout only enables it when `NEXT_PUBLIC_SITE_URL` resolves
+to `https://mokaair.com` or `https://www.mokaair.com`, so local development and
+preview hosts do not generate partner traffic. It loads after hydration on every
+locale route and is skipped when the browser sends Do Not Track or Global Privacy
+Control. The Travelpayouts dashboard controls which Drive features are active;
+content analytics is the initial enabled feature, while link rewriting, keyword
+links, recommendations, smart previews, and targeted offers remain opt-in there.
+
 The YouTube guide provider uses the same administrator usage disclosure for its
 Pacific-Time daily quota day. It tracks outbound `search.list` calls against the
 default 100-call Search Queries allocation and `videos.list` calls against the

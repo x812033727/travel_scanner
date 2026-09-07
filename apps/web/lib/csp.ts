@@ -15,6 +15,11 @@ const ANALYTICS_CONNECT_SOURCES = [
   "https://*.analytics.google.com",
   "https://*.googletagmanager.com",
 ];
+const TRAVELPAYOUTS_DRIVE_SOURCES = [
+  "https://emrldtp.cc",
+  "https://*.tp.media",
+  "https://*.travelpayouts.com",
+];
 const NAVER_MAP_SOURCES = ["https://oapi.map.naver.com", "https://*.map.naver.com", "https://*.pstatic.net"];
 
 export function createNonce(): string {
@@ -38,6 +43,7 @@ export function buildStrictContentSecurityPolicy({
     // without 'strict-dynamic' support working.
     "https://www.googletagmanager.com",
     "https://oapi.map.naver.com",
+    "https://emrldtp.cc",
     ...(production ? [] : ["'unsafe-eval'"]),
   ];
   const directives = [
@@ -48,7 +54,7 @@ export function buildStrictContentSecurityPolicy({
     // Provider photos and hotspot thumbnails come from arbitrary HTTPS hosts.
     "img-src 'self' data: blob: https:",
     "font-src 'self' data:",
-    `connect-src 'self' ${[...ANALYTICS_CONNECT_SOURCES, ...NAVER_MAP_SOURCES].join(" ")}`,
+    `connect-src 'self' ${[...ANALYTICS_CONNECT_SOURCES, ...NAVER_MAP_SOURCES, ...TRAVELPAYOUTS_DRIVE_SOURCES].join(" ")}`,
     // Google Maps Embed API iframe in route-map.tsx.
     "frame-src https://www.google.com",
     "worker-src 'self' blob:",
