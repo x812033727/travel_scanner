@@ -5,54 +5,24 @@ status: review
 priority: P1
 area: api
 owner: codex-gemini-catalog
-claimed_at: 2026-09-07T01:22:51Z
+claimed_at: 2026-09-07T02:54:59Z
 created_at: 2026-09-07T01:22:51Z
 completed_at:
-branch: codex/gemini-catalog-review
+branch: codex/catalog-review-batch-reliability
 depends_on: []
 scope:
   - apps/api/app/catalog_review
-  - apps/api/app/models.py
-  - apps/api/app/main.py
-  - apps/api/app/i18n.py
-  - apps/api/app/ui_text/schemas.py
-  - apps/api/app/worker.py
-  - apps/api/app/config.py
-  - apps/api/app/cli.py
-  - apps/api/app/hotspots/service.py
-  - apps/api/app/foods/service.py
-  - apps/api/app/foods/merchant_service.py
-  - apps/api/migrations/versions/0054_catalog_review.py
   - apps/api/tests/test_catalog_review.py
   - apps/api/tests/test_catalog_review_integration.py
   - apps/api/tests/test_catalog_review_provider.py
   - apps/api/tests/test_catalog_review_jobs.py
-  - apps/api/tests/test_catalog_review_imports.py
-  - apps/api/tests/test_ui_text.py
-  - apps/api/tests/test_schema.py
-  - apps/api/tests/test_hotspot_seed_ownership.py
-  - apps/api/tests/test_hotspot_seed_reconciliation.py
-  - apps/api/tests/test_food_seed_ownership.py
-  - apps/api/tests/test_merchant_seed_ownership.py
-  - apps/web/app/[locale]/admin/catalog-review
   - apps/web/components/admin-catalog-review-panel.tsx
   - apps/web/components/admin-catalog-review-panel.test.tsx
-  - apps/web/components/admin-nav.tsx
-  - apps/web/components/admin-nav.test.tsx
   - apps/web/messages/en/catalogReview.json
   - apps/web/messages/ja/catalogReview.json
   - apps/web/messages/ko/catalogReview.json
   - apps/web/messages/zh-CN/catalogReview.json
   - apps/web/messages/zh-TW/catalogReview.json
-  - apps/web/messages/en/admin.json
-  - apps/web/messages/ja/admin.json
-  - apps/web/messages/ko/admin.json
-  - apps/web/messages/zh-CN/admin.json
-  - apps/web/messages/zh-TW/admin.json
-  - apps/web/i18n
-  - apps/web/lib/ui-text.ts
-  - apps/web/lib/ui-text.test.ts
-  - apps/web/vitest.setup.tsx
   - docs/catalog-review.md
 ---
 
@@ -78,7 +48,10 @@ review before publication. There is currently no catalog assessment HTTP workflo
 - [x] Backend persisted jobs, evidence, Gemini adapters and APIs.
 - [x] Five-locale administration and tests.
 - [x] Seed ownership regression guards.
-- [ ] Validate and open PR; deployment and live run remain explicitly recorded.
+- [x] Validate PR #315, merge after authorization, and deploy over SSH with migration 0054.
+- [ ] Fix live batch reliability and safe diagnostics, pass CI, merge and deploy the verified fix.
+- [ ] Resume only failed/unprocessed rows and apply eligible evidence-backed decisions.
+- [ ] Discover and independently review the requested 100 candidates; report actual public totals.
 
 ## How to verify
 
@@ -124,3 +97,34 @@ Head 83e16bc completed all CI checks: API 1491 passed/1 skipped, Web 617 tests,
 advanced to 8553097 (UI text loader), so this branch was rebased again and the new
 catalogReview namespace added to both new editable-namespace registries. Final
 rebased-head CI must pass too; the original result is not claimed for a new SHA.
+
+## Current production follow-up (2026-09-07)
+
+PR #315 merged as a817003 after all checks passed; main CI 34076706328 also passed.
+User explicitly authorized SSH deployment, then authorized independently merging
+necessary follow-up fixes once verified. No new merge authorization is needed for
+this catalog task, but exact-head green CI and post-deployment checks remain required.
+
+SSH deployment completed: backup verified, 0054 migration succeeded, API/Web/worker
+healthy, authenticated catalog page reads the configured Gemini model and 307 pending
+rows. See docs/catalog-review.md for operational evidence and the private archive
+build requirement: the original checkout source permissions were not relaxed after
+safety review rejected a broad chmod. Do not directly rebuild that checkout.
+
+Live run 1eb2d91f-9d7c-49a4-86fd-6c8aa8a97456 finished partial: 187 needs_review,
+120 errors, 17 calls, no approvals/publication, no new-100 discovery yet. Production
+output limit 8000 tokens/timeout45s; existing ValueError-only logs do not identify the
+exact provider cause. This branch adds smaller batches, bounded model inputs,
+allowlisted error diagnostics, a failure circuit breaker, thinking-token visibility
+and explicit resume preserving prior assessments. Do not reset usage or weaken
+publication/source/map gates. Remaining original data task is not complete.
+
+Final follow-up validation: Windows API 1442 passed / 73 skipped (the existing
+Unix-only deployment module excluded); Ruff and mypy (221 modules) pass. Web lint,
+typecheck, five-locale parity, 35 focused panel tests, task checks and 27 tooling
+tests pass. Full single-worker Vitest reports all 117 files / 655 tests passed but
+exits with code 1 locally, so clean full-suite/build/PostgreSQL/container/browser
+validation is still required in Linux CI. Independent cross-review fixed an
+incomplete five-language context approval risk: truncated/omitted review context
+now forces needs_review even if Gemini proposes approval or rejection. Unknown
+local exceptions remain neutral rather than being mislabeled invalid model JSON.

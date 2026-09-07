@@ -17,8 +17,9 @@ const overview = {
 };
 const candidate = (id: string, name: string) => ({
   id, name, kind: "hotspot", entity_id: id, destination_id: "tokyo", phase: "review_pending",
-  decision: "approve", reason: "Official identity evidence matches.", evidence: [{ url: "https://example.org/official", quote: "Official attraction description." }],
+  decision: "approve" as string | null, reason: "Official identity evidence matches.", evidence: [{ url: "https://example.org/official", quote: "Official attraction description." }],
   gaps: [] as string[], allowed_actions: ["approve", "reject", "keep_pending"], applied_action: null, status: "assessed", confidence: 0.98,
+  error_code: null as string | null | undefined,
 });
 const response = (value: unknown, status = 200) => Promise.resolve(new Response(JSON.stringify(value), { status }));
 const listing = (items: ReturnType<typeof candidate>[], page = 1, hasMore = false) => ({ items, total: hasMore ? 31 : items.length, page, page_size: 30, has_more: hasMore });
@@ -52,6 +53,53 @@ describe("AdminCatalogReviewPanel", () => {
     expect((screen.getByRole("button", { name: "開始審核現有待審" }) as HTMLButtonElement).disabled).toBe(true);
     expect((screen.getByRole("button", { name: "開始尋找 100 筆候選" }) as HTMLButtonElement).disabled).toBe(true);
     expect(screen.getByText("Gemini 尚未設定，請先完成服務設定。")).toBeTruthy();
+  });
+
+  it("explains a known blocking reason in the current language", async () => {
+    mockApi((url) => url === root ? response({ ...overview, can_start_review: false, can_start_discovery: false, blocking_reasons: ["catalog_run_in_progress"] }) : undefined);
+    render(<AdminCatalogReviewPanel />);
+    expect(await screen.findByText("已有目錄審核正在進行，請先查看進度或續跑未完成工作。")).toBeTruthy();
+    expect(screen.queryByText("catalog_run_in_progress")).toBeNull();
+    expect((screen.getByRole("button", { name: "開始審核現有待審" }) as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  it.each([0, 876])("shows thought tokens separately when the server reports %s", async (thoughtTokens) => {
+    mockApi((url) => url === root + "/runs/review-1" ? response({ ...run, usage: { ...run.usage, thought_tokens: thoughtTokens } }) : undefined);
+    render(<AdminCatalogReviewPanel />);
+    expect(await screen.findByText(`已呼叫 4 次 · 輸入 123 tokens · 輸出 45 tokens · 思考 ${thoughtTokens} tokens`)).toBeTruthy();
+  });
+
+  it("does not invent thought token usage for older run responses", async () => {
+    mockApi();
+    render(<AdminCatalogReviewPanel />);
+    await screen.findByText("已呼叫 4 次 · 輸入 123 tokens · 輸出 45 tokens");
+    expect(screen.queryByText(/思考 .* tokens/)).toBeNull();
+  });
+
+  it.each([
+    ["catalog_response_truncated", "Gemini 回應未完整傳回，這筆評估未完成。"],
+    ["catalog_response_blocked", "Gemini 安全檢查阻擋了回應，未取得可用評估。"],
+    ["catalog_response_empty", "Gemini 未傳回可用的評估內容。"],
+    ["catalog_response_invalid", "Gemini 回應格式不符合審核要求。"],
+    ["catalog_response_ids_invalid", "Gemini 回應的項目識別碼與這批候選不符。"],
+    ["catalog_provider_rate_limited", "Gemini 暫時限制請求頻率，請稍後再試。"],
+    ["catalog_provider_timeout", "Gemini 回應逾時，這筆評估未完成。"],
+    ["catalog_provider_unavailable", "Gemini 服務暫時無法使用，這筆評估未完成。"],
+  ])("explains %s without displaying internal exceptions", async (code, description) => {
+    mockApi((url) => url.includes("/items?") ? response(listing([{ ...candidate("one", "Failed assessment"), status: "error", decision: null, reason: "ValueError: internal response details", error_code: code }])) : undefined);
+    render(<AdminCatalogReviewPanel />);
+    expect(await screen.findByText(description)).toBeTruthy();
+    expect(screen.queryByText(/ValueError/)).toBeNull();
+    expect(screen.queryByText(code)).toBeNull();
+    expect((screen.getByRole("checkbox", { name: "選取 Failed assessment" }) as HTMLInputElement).disabled).toBe(true);
+  });
+
+  it.each([null, undefined, "unrecognized_internal_error"])("uses a safe fallback for an error row with code %s", async (code) => {
+    mockApi((url) => url.includes("/items?") ? response(listing([{ ...candidate("one", "Legacy failure"), status: "error", decision: null, reason: "ValueError: internal response details", error_code: code }])) : undefined);
+    render(<AdminCatalogReviewPanel />);
+    expect(await screen.findByText("這筆評估未完成，未記錄可辨識的原因；尚未套用判斷，請檢查服務狀態後重試。")).toBeTruthy();
+    expect(screen.queryByText(/ValueError|unrecognized_internal_error/)).toBeNull();
+    expect(screen.queryByText("Gemini 回應格式不符合審核要求。")).toBeNull();
   });
 
   it("starts a pending review with the fixed counts and call budget", async () => {
@@ -272,6 +320,33 @@ describe("AdminCatalogReviewPanel", () => {
     await act(async () => { await vi.advanceTimersByTimeAsync(12_000); });
     expect(detailCalls).toBe(2);
     expect(fetchMock.mock.calls.filter(([url]) => String(url) === root)).toHaveLength(2);
+  });
+
+  it("updates history from queued through running to a resumable provider circuit stop", async () => {
+    vi.useFakeTimers();
+    let calls = 0;
+    mockApi((url) => {
+      if (url === root) return response({ ...overview, runs: [{ ...run, status: "queued" }] });
+      if (url === root + "/runs/review-1") {
+        calls += 1;
+        return response({ ...run, status: calls === 1 ? "queued" : calls === 2 ? "running" : "partial", review_complete: false, can_resume: calls === 3, error_code: calls === 3 ? "catalog_review_provider_circuit_open" : null, error_message: calls === 3 ? "Safe server fallback message" : null });
+      }
+      return undefined;
+    });
+    await act(async () => { render(<AdminCatalogReviewPanel />); });
+    const history = screen.getByRole("combobox", { name: "選擇審核工作" });
+    expect(within(history).getByRole("option").textContent).toContain("排隊中");
+    await act(async () => { await vi.advanceTimersByTimeAsync(3_000); });
+    expect(within(history).getByRole("option").textContent).toContain("執行中");
+    expect(within(history).getByRole("option").textContent).not.toContain("排隊中");
+    await act(async () => { await vi.advanceTimersByTimeAsync(3_000); });
+    expect(within(history).getByRole("option").textContent).toContain("部分完成");
+    expect(screen.getByText("提供者連續回應異常，工作已安全停止並保留進度。請檢查服務設定後再續跑。")).toBeTruthy();
+    expect(screen.queryByText("Safe server fallback message")).toBeNull();
+    expect(screen.getByText("catalog_review_provider_circuit_open")).toBeTruthy();
+    expect((screen.getByRole("button", { name: "繼續未完成工作" }) as HTMLButtonElement).disabled).toBe(false);
+    await act(async () => { await vi.advanceTimersByTimeAsync(6_000); });
+    expect(calls).toBe(3);
   });
 
   it("preserves a terminal partial result when refreshing overview fails", async () => {

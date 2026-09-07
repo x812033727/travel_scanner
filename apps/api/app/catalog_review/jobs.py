@@ -17,6 +17,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.catalog_review.errors import CatalogAssessmentError, safe_error_diagnostics
 from app.catalog_review.evidence import fetch_sources, normalize_source_url
 from app.catalog_review.provider import CatalogGeminiProvider
 from app.catalog_review.repository import (
@@ -39,6 +40,8 @@ logger = logging.getLogger(__name__)
 LEASE_SECONDS = 300
 HEARTBEAT_SECONDS = 60
 MAX_CALLS = 80
+REVIEW_BATCH_SIZE = 8
+MAX_CONSECUTIVE_PROVIDER_FAILURES = 3
 TARGET_COUNTS: dict[str, int] = {"hotspot": 40, "food": 20, "merchant": 40}
 TOKEN_KEYS = ("input_tokens", "output_tokens", "thought_tokens")
 
@@ -51,6 +54,10 @@ class BudgetStopped(Exception):
     def __init__(self, code: str) -> None:
         self.code = code
         super().__init__(code)
+
+
+class ProviderCircuitOpen(Exception):
+    """Stop this attempt after repeated provider failures; only API resume may retry."""
 
 
 def _count(value: Any, default: int = 0) -> int:
@@ -108,7 +115,11 @@ async def _claim_run(run_id: UUID) -> CatalogReviewRun | None:
             return None
         if run.status == "queued":
             # An explicit API resume permits another bounded attempt at a shortfall.
-            run.result_json = {**(run.result_json or {}), "no_progress_counts": {}}
+            run.result_json = {
+                **(run.result_json or {}),
+                "no_progress_counts": {},
+                "consecutive_provider_failures": 0,
+            }
         run.status = "running"
         run.lease_token = uuid4().hex
         run.lease_until = datetime.now(UTC) + timedelta(seconds=LEASE_SECONDS)
@@ -184,9 +195,11 @@ async def _batch_error(
     item_ids: list[UUID],
     error: Exception,
     sources: dict[UUID, list[EvidenceSource]],
+    consecutive_failures: int,
 ) -> None:
+    diagnostic = safe_error_diagnostics(error)
     async with SessionFactory() as session:
-        await _locked_run(session, run_id, token)
+        run = await _locked_run(session, run_id, token)
         items = (
             await session.scalars(
                 select(CatalogReviewItem)
@@ -201,8 +214,13 @@ async def _batch_error(
         for item in items:
             item.status = "error"
             item.reason = "此批 Gemini 評估失敗；可續跑重試，尚未套用任何判斷。"
-            item.assessment_json = {"error": type(error).__name__}
+            item.assessment_json = diagnostic
             item.evidence_json = _source_metadata(sources.get(item.id, []))
+        run.result_json = {
+            **(run.result_json or {}),
+            "last_review_error": diagnostic,
+            "consecutive_provider_failures": consecutive_failures,
+        }
         await session.commit()
 
 
@@ -218,6 +236,7 @@ async def _review_items(
     async with SessionFactory() as session:
         run = await _locked_run(session, run_id, token)
         run.phase = phase
+        consecutive_failures = _count((run.result_json or {}).get("consecutive_provider_failures"))
         item_ids = list(
             (
                 await session.scalars(
@@ -232,8 +251,10 @@ async def _review_items(
             ).all()
         )
         await session.commit()
-    for offset in range(0, len(item_ids), 20):
-        batch_ids = item_ids[offset : offset + 20]
+    if consecutive_failures >= MAX_CONSECUTIVE_PROVIDER_FAILURES:
+        raise ProviderCircuitOpen()
+    for offset in range(0, len(item_ids), REVIEW_BATCH_SIZE):
+        batch_ids = item_ids[offset : offset + REVIEW_BATCH_SIZE]
         sources_by_item: dict[UUID, list[EvidenceSource]] = {}
         try:
             async with SessionFactory() as session:
@@ -279,12 +300,12 @@ async def _review_items(
                 await _save_usage(run_id, token, provider, saved_usage)
             by_id = {assessment.candidate_id: assessment for assessment in result.items}
             if len(by_id) != len(result.items) or set(by_id) != {str(item.id) for item in items}:
-                raise ValueError("Assessment IDs do not match the requested batch")
+                raise CatalogAssessmentError("catalog_response_ids_invalid", retryable=False)
             # Import here: the API service can enqueue jobs without an import cycle.
             from app.catalog_review.service import record_assessment
 
             async with SessionFactory() as session:
-                await _locked_run(session, run_id, token)
+                run = await _locked_run(session, run_id, token)
                 current = (
                     await session.scalars(
                         select(CatalogReviewItem)
@@ -298,11 +319,17 @@ async def _review_items(
                 ).all()
                 for item in current:
                     record_assessment(item, by_id[str(item.id)], sources_by_item[item.id])
+                run.result_json = {**(run.result_json or {}), "consecutive_provider_failures": 0}
                 await session.commit()
+            consecutive_failures = 0
         except (BudgetStopped, LeaseLost):
             raise
         except Exception as exc:
-            await _batch_error(run_id, token, batch_ids, exc, sources_by_item)
+            if isinstance(exc, CatalogAssessmentError):
+                consecutive_failures += 1
+            await _batch_error(run_id, token, batch_ids, exc, sources_by_item, consecutive_failures)
+            if consecutive_failures >= MAX_CONSECUTIVE_PROVIDER_FAILURES:
+                raise ProviderCircuitOpen() from exc
 
 
 async def _discovery_context(session: AsyncSession) -> tuple[list[dict[str, Any]], list[str]]:
@@ -351,6 +378,12 @@ async def _discover_items(
     provider: CatalogGeminiProvider,
     saved_usage: dict[str, int],
 ) -> None:
+    async with SessionFactory() as session:
+        run = await _locked_run(session, run_id, token)
+        consecutive_failures = _count((run.result_json or {}).get("consecutive_provider_failures"))
+        await session.commit()
+    if consecutive_failures >= MAX_CONSECUTIVE_PROVIDER_FAILURES:
+        raise ProviderCircuitOpen()
     for kind in TARGET_COUNTS:
         while True:
             async with SessionFactory() as session:
@@ -370,11 +403,14 @@ async def _discover_items(
                 batch = await provider.discover(
                     cast(CatalogKind, kind), min(5, target - created), destinations, avoid
                 )
+                consecutive_failures = 0
             except (BudgetStopped, LeaseLost):
                 raise
             except Exception as exc:
                 error = exc
                 batch = None
+                if isinstance(exc, CatalogAssessmentError):
+                    consecutive_failures += 1
             finally:
                 await _save_usage(run_id, token, provider, saved_usage)
             async with SessionFactory() as session:
@@ -404,10 +440,13 @@ async def _discover_items(
                 result.update(created_counts=counts, no_progress_counts=no_progress)
                 result["duplicates"] = _count(result.get("duplicates")) + duplicates
                 if error is not None:
-                    result["last_discovery_error"] = type(error).__name__
+                    result["last_discovery_error"] = safe_error_diagnostics(error)
+                result["consecutive_provider_failures"] = consecutive_failures
                 run.result_json = result
                 # Entity, snapshot and count commit together; retries see all or none.
                 await session.commit()
+            if consecutive_failures >= MAX_CONSECUTIVE_PROVIDER_FAILURES:
+                raise ProviderCircuitOpen() from error
 
 
 async def _finish(
@@ -455,6 +494,10 @@ async def _finish(
         run.error_message = error_message or (
             "部分項目待續跑或未找到足夠新候選。" if incomplete else None
         )
+        if error_code == "catalog_review_provider_circuit_open":
+            for item in items:
+                if item.status == "pending":
+                    item.reason = "Gemini 連續評估失敗，已暫停後續項目；請確認原因後明確續跑。"
         run.completed_at = datetime.now(UTC)
         run.lease_token = None
         run.lease_until = None
@@ -497,6 +540,17 @@ async def _run(run_id: UUID) -> None:
                     "此工作已達 Gemini 呼叫上限；已保存進度，請查看未完成項目並另建工作。"
                     if exc.code == "catalog_review_call_limit"
                     else "Gemini 每日安全預算已用完；進度已保存，可於預算重置後續跑。"
+                ),
+            )
+    except ProviderCircuitOpen:
+        with suppress(LeaseLost):
+            await _finish(
+                run_id,
+                token,
+                error_code="catalog_review_provider_circuit_open",
+                error_message=(
+                    "Gemini 連續三批失敗，已停止本次執行並保存進度；"
+                    "請查看安全診斷，確認原因後再續跑。"
                 ),
             )
     except Exception as exc:

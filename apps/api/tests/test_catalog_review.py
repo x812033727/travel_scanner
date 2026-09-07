@@ -85,6 +85,28 @@ def assessment(row, decision="approve", confidence=0.98):
     )
 
 
+@pytest.mark.parametrize(
+    ("stored", "expected"),
+    [
+        ({"code": "catalog_response_truncated"}, "catalog_response_truncated"),
+        ({"code": "catalog_provider_timeout"}, "catalog_provider_timeout"),
+        ({"error": "ValueError"}, None),
+        ({"code": "private-provider-response", "details": {"secret": "not-for-browser"}}, None),
+        ({"code": ["catalog_response_invalid"]}, None),
+    ],
+)
+def test_item_view_only_exposes_allowlisted_error_codes(stored, expected):
+    row = item()
+    row.status = "error"
+    row.assessment_json = stored
+    view = item_view(row)
+    assert view["error_code"] == expected
+    assert "details" not in view
+    assert "secret" not in view
+    row.status = "assessed"
+    assert item_view(row)["error_code"] is None
+
+
 def source(**overrides):
     return EvidenceSource(
         url=URL,
@@ -265,13 +287,14 @@ async def test_run_reports_suggestions_separately_from_actual_applies(monkeypatc
         status="completed",
         model="test-gemini",
         version=1,
-        usage_json={"calls": 1},
+        usage_json={"calls": 1, "thought_tokens": 4200},
         result_json={},
         created_at=datetime.now(UTC),
     )
     view = await run_view(AsyncMock(), run)
     assert view["counts"]["approved"] == 1
     assert view["counts"]["applied"] == 0
+    assert view["usage"]["thought_tokens"] == 4200
     assert view["review_complete"]
     assert not view["can_resume"]
 

@@ -8,7 +8,7 @@ catalog workflow, not an itinerary operation, and it never debits member credits
 
 1. Start **Review pending**. The API snapshots every pending hotspot, dish and merchant,
    including inactive rows. Source excerpts and Gemini's responses are untrusted data.
-   A background worker fetches public evidence and assesses batches of at most 20.
+   A background worker fetches public evidence and assesses batches of at most eight.
 2. Read the stored reason, exact short citations, missing requirements and proposed
    action. The counts labelled “recommended approval/rejection” are not published changes.
    Once the job stops, select eligible rows, preview, and explicitly confirm an action.
@@ -86,6 +86,21 @@ an immutable maximum of 80 requests. Source fetches themselves do not call Gemin
 Usage records contain attempted calls and returned token totals; network failures may
 consume a reservation without token usage being returned.
 
+Assessment batches use bounded excerpts in the model request; citation verification
+still checks the independently fetched source. Failed batches retain a safe machine
+error code (truncation, blocked/empty output, validation/identity mismatch, rate limit,
+timeout or provider failure), not a raw provider response or credential-bearing error.
+Legacy failures recorded only an exception class, so their exact cause is unknown.
+After three consecutive failed batches, the worker pauses with a resumable partial
+result instead of spending the remaining budget. Explicit resume processes only
+unfinished/error rows, preserving prior assessments and the original call limit.
+Input, visible output and thinking-token usage are reported separately; visible
+output alone does not represent all generated tokens.
+
+All five food localizations retain a bounded representation in the request. If
+review context is omitted or truncated, the server downgrades approval/rejection
+to `needs_review`; a shorter prompt is not proof that unseen content was reviewed.
+
 These are request safety limits, **not a dollar cap**. Grounding may issue multiple
 search queries and Gemini billing depends on the selected model and token/search usage.
 See [Google Search grounding](https://ai.google.dev/gemini-api/docs/google-search) and
@@ -109,3 +124,35 @@ After deployment, separately record live run IDs, exact assessed/created/applied
 unresolved gaps and provider usage. Code tests or seed fixtures are not proof of a live
 100-item expansion. Do not declare the user's data task complete until the production
 results and remaining verification work have been checked.
+
+### Verified production deployment: 2026-09-07
+
+PR #315 / commit `a817003829235a54f12f68b4bcc99c652548fdee` was deployed over the
+existing SSH connection after main CI `34076706328` passed. PostgreSQL backup
+`/root/travel_scanner_catalog_20260907T024258Z_ba50331.dump` was nonempty and its
+custom-format archive index was verified before migration. Migration 0054, three
+consecutive readiness checks, all nine existing services, authenticated admin-page
+loading and the `catalog-review` queue passed. Anonymous API/BFF requests return 401.
+
+The initial build inherited restrictive checkout permissions and failed before
+migration; the original services remained live. A requested broad host chmod was
+rejected and was not performed. Successful images were built instead from a clean
+Git archive of the verified SHA in a private staging directory, using the protected
+original runtime env only through Compose. Existing checkout permissions remain
+restricted: **do not use that checkout as a direct build context on the next deploy**.
+Use another canonical archive/private staging build and verify non-root image
+imports, or separately obtain approval for a reviewed permission normalization.
+Keep the existing Compose project name and runtime configuration; never include
+secrets in the archive. No previous images, backups or volumes were removed.
+
+The first live review run `1eb2d91f-9d7c-49a4-86fd-6c8aa8a97456` captured 307 rows:
+101 hotspots and 206 merchants. It completed partially with 187 assessed as needing
+review and 120 batch errors, after 17 calls (692011 input / 61779 visible output /
+50321 thinking tokens). No entries were approved or published. Legacy `ValueError`
+records cannot establish whether the provider truncated, blocked, or returned invalid
+identities; the configured output limit was 8000 tokens and timeout 45 seconds.
+Do not blindly resume those errors until the diagnostics/batch fix is deployed.
+The snapshot also confirms existing publication gaps: all 307 have unverified map
+matches, 215 lack durable verified coordinates, 179 lack exact map identity, and
+32 lack a direct merchant source. These counts overlap. A successful model assessment
+does not resolve these independent requirements or authorize bulk publication.

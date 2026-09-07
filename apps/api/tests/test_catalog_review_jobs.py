@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
+import json
 from datetime import UTC, datetime, timedelta
 from types import SimpleNamespace
 from typing import Any
@@ -14,6 +15,7 @@ import pytest
 from sqlalchemy.sql import operators
 
 from app.catalog_review import jobs
+from app.catalog_review.errors import CatalogAssessmentError
 from app.catalog_review.schemas import (
     AssessmentBatch,
     DiscoveryBatch,
@@ -153,6 +155,8 @@ class FakeProvider:
         self.assess_calls: list[list[str]] = []
         self.discover_calls: list[dict[str, Any]] = []
         self.assess_failures = 0
+        self.assess_plan: list[Exception | None] = []
+        self.discover_failures = 0
         self.discover_batches: list[DiscoveryBatch] = []
         self.closed = False
 
@@ -166,9 +170,13 @@ class FakeProvider:
     async def assess(self, candidates: list[Any]) -> AssessmentBatch:
         await self.sent()
         self.assess_calls.append([item.candidate_id for item in candidates])
+        if self.assess_plan:
+            error = self.assess_plan.pop(0)
+            if error is not None:
+                raise error
         if self.assess_failures:
             self.assess_failures -= 1
-            raise ValueError("mock failed batch")
+            raise CatalogAssessmentError("catalog_response_truncated", retryable=True)
         return AssessmentBatch(
             items=[
                 ReviewAssessment(
@@ -188,6 +196,9 @@ class FakeProvider:
         self.discover_calls.append(
             dict(kind=kind, count=count, destinations=destinations, avoid=avoid)
         )
+        if self.discover_failures:
+            self.discover_failures -= 1
+            raise CatalogAssessmentError("catalog_provider_timeout", retryable=True)
         return self.discover_batches.pop(0) if self.discover_batches else DiscoveryBatch()
 
     async def close(self) -> None:
@@ -287,18 +298,18 @@ async def test_batches_commit_and_resume_retries_only_errors(monkeypatch: pytest
     store, provider = setup(monkeypatch, run, items)
     provider.assess_failures = 1
     await jobs._run(run.id)
-    assert [len(batch) for batch in provider.assess_calls] == [20, 5]
-    assert [item.status for item in items] == ["error"] * 20 + ["assessed"] * 5
+    assert [len(batch) for batch in provider.assess_calls] == [8, 8, 8, 1]
+    assert [item.status for item in items] == ["error"] * 8 + ["assessed"] * 17
     assert run.status == "partial"
     assert run.usage_json == {
-        "calls": 2,
-        "input_tokens": 20,
-        "output_tokens": 10,
+        "calls": 4,
+        "input_tokens": 40,
+        "output_tokens": 20,
         "thought_tokens": 0,
         "member_charged": False,
     }
     assert all("text" not in evidence for item in items for evidence in item.evidence_json)
-    paid_items = list(provider.assess_calls[1])
+    paid_items = [item_id for batch in provider.assess_calls[1:] for item_id in batch]
     # Explicit API resume retains item states, calls and all saved progress.
     run.status = "queued"
     _, resumed = setup(monkeypatch, run, items)
@@ -306,9 +317,9 @@ async def test_batches_commit_and_resume_retries_only_errors(monkeypatch: pytest
     assert run.status == "completed"
     assert len(resumed.assess_calls) == 1
     assert not set(resumed.assess_calls[0]) & set(paid_items)
-    assert run.usage_json["calls"] == 3
+    assert run.usage_json["calls"] == 5
     assert jobs.fetch_sources.await_count == 1  # evidence is re-fetched for the retry
-    assert store.events.count("http") == 2
+    assert store.events.count("http") == 4
 
 
 async def test_daily_budget_is_partial_without_http_or_member_charge(
@@ -335,8 +346,8 @@ async def test_runtime_call_limit_bounds_failing_batches(monkeypatch: pytest.Mon
     await jobs._run(run.id)
     assert run.status == "partial" and run.error_code == "catalog_review_call_limit"
     assert len(provider.assess_calls) == 1
-    assert sum(item.status == "error" for item in items) == 20
-    assert sum(item.status == "pending" for item in items) == 25
+    assert sum(item.status == "error" for item in items) == 8
+    assert sum(item.status == "pending" for item in items) == 37
 
 
 def draft(number: int) -> DiscoveryDraft:
@@ -554,3 +565,145 @@ async def test_assessed_applied_and_stale_items_are_never_reassessed(
     await jobs._run(run.id)
     assert provider.assess_calls == [[str(items[-1].id)]]
     assert [item.status for item in items] == ["assessed", "applied", "stale", "assessed"]
+
+
+async def test_307_rows_fit_39_eight_item_requests_before_repairs(monkeypatch: pytest.MonkeyPatch):
+    run = new_run()
+    items = [new_item(run, number) for number in range(1, 308)]
+    _, provider = setup(monkeypatch, run, items)
+    await jobs._run(run.id)
+    assert [len(batch) for batch in provider.assess_calls] == [8] * 38 + [3]
+    assert run.usage_json["calls"] == 39
+    assert run.status == "completed"
+    assert all(item.status == "assessed" for item in items)
+
+
+async def test_provider_circuit_preserves_success_and_unattempted_rows_until_explicit_resume(
+    monkeypatch: pytest.MonkeyPatch,
+):
+    run = new_run()
+    items = [new_item(run, number) for number in range(1, 41)]
+    _, provider = setup(monkeypatch, run, items)
+    provider.assess_plan = [None] + [
+        CatalogAssessmentError("catalog_provider_timeout", retryable=True, details={"attempt": 2})
+        for _ in range(3)
+    ]
+    await jobs._run(run.id)
+    assert run.status == "partial"
+    assert run.error_code == "catalog_review_provider_circuit_open"
+    assert [item.status for item in items] == ["assessed"] * 8 + ["error"] * 24 + ["pending"] * 8
+    assert all(item.reason for item in items[-8:])
+    assert run.lease_token is None and run.lease_until is None
+    assert run.usage_json["calls"] == 4 and run.usage_json["member_charged"] is False
+    assert len(provider.assess_calls) == 4
+    assert jobs.fetch_sources.await_count == 4
+    diagnostic = items[8].assessment_json
+    assert diagnostic["code"] == "catalog_provider_timeout"
+    assert diagnostic["retryable"] is True
+    assert diagnostic["details"]["attempt"] == 2
+    assert run.result_json["last_review_error"] == diagnostic
+    assert run.result_json["consecutive_provider_failures"] == 3
+    prior_assessments = [dict(item.assessment_json) for item in items[:8]]
+
+    # A repeated queue delivery cannot reopen a partial circuit.
+    await jobs._run(run.id)
+    assert len(provider.assess_calls) == 4
+    run.status = "queued"  # Only the explicit resume API makes this transition.
+    _, resumed = setup(monkeypatch, run, items)
+    await jobs._run(run.id)
+    assert run.status == "completed"
+    assert len(resumed.assess_calls) == 4
+    assert not {str(item.id) for item in items[:8]} & {
+        candidate_id for batch in resumed.assess_calls for candidate_id in batch
+    }
+    assert [item.assessment_json for item in items[:8]] == prior_assessments
+    assert run.usage_json["calls"] == 8
+    assert jobs.fetch_sources.await_count == 4
+    assert run.result_json["consecutive_provider_failures"] == 0
+
+
+async def test_success_resets_consecutive_provider_failure_count(monkeypatch: pytest.MonkeyPatch):
+    run = new_run()
+    items = [new_item(run, number) for number in range(1, 49)]
+    _, provider = setup(monkeypatch, run, items)
+    error = CatalogAssessmentError("catalog_response_truncated", retryable=True)
+    provider.assess_plan = [error, error, None, error, error, None]
+    await jobs._run(run.id)
+    assert len(provider.assess_calls) == 6
+    assert run.error_code == "catalog_review_incomplete"
+    assert sum(item.status == "assessed" for item in items) == 16
+    assert sum(item.status == "error" for item in items) == 32
+    assert run.result_json["consecutive_provider_failures"] == 0
+
+
+async def test_unknown_batch_error_is_sanitized_without_triggering_provider_circuit(
+    monkeypatch: pytest.MonkeyPatch,
+):
+    run = new_run()
+    items = [new_item(run, number) for number in range(1, 33)]
+    _, provider = setup(monkeypatch, run, items)
+    secret = "raw-response-private-key-VERY-SECRET"
+    provider.assess_plan = [ValueError(secret)] * 3 + [None]
+    await jobs._run(run.id)
+    assert len(provider.assess_calls) == 4
+    assert run.error_code == "catalog_review_incomplete"
+    assert items[0].assessment_json["code"] is None
+    assert secret not in json.dumps(
+        [run.result_json, *[item.assessment_json for item in items]], ensure_ascii=False
+    )
+    assert all("text" not in source for item in items for source in item.evidence_json)
+
+
+async def test_budget_stop_remains_authoritative_before_circuit_threshold(
+    monkeypatch: pytest.MonkeyPatch,
+):
+    run = new_run(request_json={"max_calls": 2})
+    items = [new_item(run, number) for number in range(1, 41)]
+    _, provider = setup(monkeypatch, run, items)
+    provider.assess_failures = 3
+    await jobs._run(run.id)
+    assert run.error_code == "catalog_review_call_limit"
+    assert run.usage_json["calls"] == 2
+    assert run.result_json["consecutive_provider_failures"] == 2
+    assert sum(item.status == "pending" for item in items) == 24
+
+
+async def test_discovery_provider_circuit_stops_before_spending_on_other_kinds(
+    monkeypatch: pytest.MonkeyPatch,
+):
+    run = new_run(
+        mode="discover_new",
+        request_json={"requested_counts": {"hotspot": 40, "food": 20, "merchant": 40}},
+    )
+    _, provider = setup(monkeypatch, run)
+    provider.discover_failures = 9
+    await jobs._run(run.id)
+    assert run.status == "partial"
+    assert run.error_code == "catalog_review_provider_circuit_open"
+    assert len(provider.discover_calls) == 3 and not provider.assess_calls
+    assert {call["kind"] for call in provider.discover_calls} == {"hotspot"}
+    assert run.result_json["last_discovery_error"]["code"] == "catalog_provider_timeout"
+    assert run.result_json["created_counts"] == {"hotspot": 0}
+    assert run.result_json["shortfalls"] == {"hotspot": 40, "food": 20, "merchant": 40}
+    assert run.usage_json["calls"] == 3 and run.usage_json["member_charged"] is False
+
+
+@pytest.mark.parametrize("prior_failures", [2, 3])
+async def test_expired_worker_reclaim_preserves_committed_failure_streak(
+    monkeypatch: pytest.MonkeyPatch, prior_failures: int
+):
+    run = new_run(
+        status="running",
+        lease_token="expired-worker",
+        lease_until=datetime.now(UTC) - timedelta(seconds=1),
+        result_json={"consecutive_provider_failures": prior_failures},
+        usage_json={"calls": prior_failures},
+    )
+    items = [new_item(run, number) for number in range(1, 17)]
+    _, provider = setup(monkeypatch, run, items)
+    provider.assess_failures = 3
+    await jobs._run(run.id)
+    assert run.status == "partial" and run.error_code == "catalog_review_provider_circuit_open"
+    assert len(provider.assess_calls) == 3 - prior_failures
+    assert run.usage_json["calls"] == 3
+    assert run.result_json["consecutive_provider_failures"] == 3
