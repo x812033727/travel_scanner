@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-pre-departure-loop
 title: 出發前閉環：提醒連得回旅程、錨點能追價、航班動態寫得回去
-status: review
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-07T00:45:08Z
 created_at: 2026-09-07T00:44:58Z
-completed_at:
+completed_at: 2026-09-07T08:59:29Z
 branch: claude/pre-departure-loop
 depends_on: []
 scope:

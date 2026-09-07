@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-search-from-a-saved-trip
 title: 從旅程出發查機票：條件由旅程推導，報價帶回錨點
-status: review
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T20:39:30Z
 created_at: 2026-09-06T20:38:58Z
-completed_at:
+completed_at: 2026-09-07T08:59:27Z
 branch: claude/better-workflow-planning-324ki8
 depends_on: []
 scope:
@@ -42,6 +42,7 @@ scope:
   - apps/web/messages/zh-TW/trips.json
   - docs/user-flow-plan.md
 ---
+
 # 從旅程出發查機票：條件由旅程推導，報價帶回錨點
 
 ## Why

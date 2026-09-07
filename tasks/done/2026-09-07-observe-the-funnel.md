@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-observe-the-funnel
 title: 觀測：漏斗看得見——事件名脫離 DB CHECK，關鍵動作由伺服器送
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-07T02:25:46Z
 created_at: 2026-09-07T02:25:42Z
-completed_at:
+completed_at: 2026-09-07T08:59:31Z
 branch: claude/observe-the-funnel
 depends_on: []
 scope:
