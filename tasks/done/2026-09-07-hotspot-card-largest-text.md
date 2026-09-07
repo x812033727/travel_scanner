@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-hotspot-card-largest-text
 title: 特大字下的景點卡把地名擠成 93px、地點行斷成五行
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-07T00:04:19Z
 created_at: 2026-09-07T00:03:12Z
-completed_at:
+completed_at: 2026-09-07T00:13:10Z
 branch: claude/ux-card-largest
 depends_on: []
 scope:

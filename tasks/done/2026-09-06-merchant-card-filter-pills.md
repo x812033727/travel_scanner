@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-merchant-card-filter-pills
 title: 美食卡上的灰色膠囊看起來像標籤，按下去卻整頁重新篩選
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-06T22:41:02Z
 created_at: 2026-09-06T22:40:36Z
-completed_at:
+completed_at: 2026-09-07T00:13:08Z
 branch: claude/ux-merchant-pills
 depends_on: []
 scope:
