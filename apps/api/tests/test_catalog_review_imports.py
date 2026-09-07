@@ -413,9 +413,10 @@ async def test_discovery_context_offers_only_publishable_dishes_but_avoids_all_n
         session.add(FoodDestination(food_id=dish.id, destination_id="tokyo"))
         slugs.append(dish.slug)
     await session.flush()
-    destinations, avoid = await _discovery_context(session)
+    destinations, _ = await _discovery_context(session, "merchant")
     tokyo = next(entry for entry in destinations if entry["id"] == "tokyo")
     assert tokyo["food_slugs"] == [slugs[0]]
+    _, avoid = await _discovery_context(session, "food")
     assert set(slugs) <= set(avoid)
 
 

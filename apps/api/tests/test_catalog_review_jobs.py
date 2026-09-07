@@ -417,7 +417,7 @@ async def test_discovery_counts_committed_rows_dedupes_and_reviews_new(
     assert [call["count"] for call in provider.discover_calls] == [2, 1]
     assert "restaurant-1" in provider.discover_calls[0]["avoid"]
     assert "Restaurant 1" in provider.discover_calls[0]["avoid"]
-    assert "restaurant-2" in provider.discover_calls[1]["avoid"]
+    assert provider.discover_calls[0]["destinations"] != provider.discover_calls[1]["destinations"]
     assert store.savepoints == 3
     assert len(provider.assess_calls) == 1
     assert tombstone.review_status == "rejected"
@@ -443,6 +443,16 @@ async def test_three_empty_discovery_rounds_report_honest_shortfall(
     assert run.result_json["created_counts"].get("merchant", 0) == 0
     assert len(provider.discover_calls) == 3
     assert all(call["count"] == 5 for call in provider.discover_calls)
+    destination_windows = [
+        tuple(entry["id"] for entry in call["destinations"])
+        for call in provider.discover_calls
+    ]
+    assert len(set(destination_windows)) == 3
+    assert all(
+        len(window) <= jobs.DISCOVERY_DESTINATION_BATCH_SIZE
+        for window in destination_windows
+    )
+    assert run.result_json["discovery_round_counts"]["merchant"] == 3
     assert not provider.assess_calls
 
 

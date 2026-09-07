@@ -147,3 +147,18 @@ review confirms edited/approved/deleted legacy snapshots are skipped before any
 paid retry. Five new PostgreSQL scenarios cover exact resume, discovery/apply
 gates, original budgets/global concurrency and obsolete snapshots. Final head CI
 must pass before this follow-up is merged or deployed.
+
+Production run `1eb2d91f-9d7c-49a4-86fd-6c8aa8a97456` was explicitly resumed after
+the missing-assessment fix and completed all 307 assessments: 101 hotspots and 206
+merchants. All 307 remain `needs_review`; none passes the independent publication
+gates. The overlapping gaps are 307 unverified map matches, 215 missing/unverified
+durable coordinates, 214 missing verified source citations, 179 missing exact map
+identities, 147 low-confidence assessments and 32 missing direct merchant sources.
+
+The first bounded discovery run `2cb84b1a-f180-4b6b-9bbf-4b167e954259` created zero
+rows and stopped safely after nine calls. Its production prompt included 33
+destinations and 3,758 cross-catalog avoid values (about 77k JSON characters), causing
+one truncated response and three consecutive merchant timeouts. This follow-up rotates
+four destinations per request, scopes model-visible duplicate hints to the requested
+kind/destinations, caps them at 8,000 characters, and preserves global database-level
+deduplication. The failed run must not be blindly resumed until this fix is deployed.
