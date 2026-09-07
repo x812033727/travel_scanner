@@ -515,16 +515,20 @@ export function AdminFoodMerchantsPanel({
           map_match_status: editing.map_match_status,
           review_status: editing.review_status,
           is_active: editing.is_active,
-          sources: editing.sources.map((source) => ({
-            source_type: source.source_type,
-            source_scope: source.source_scope,
-            source_title: source.source_title,
-            source_url: source.source_url,
-            claims: source.claims,
-            edition_year: source.edition_year,
-            distinction: source.distinction,
-            is_current: source.is_current,
-          })),
+          ...(!editing.id || editing.sources.length > 0
+            ? {
+                sources: editing.sources.map((source) => ({
+                  source_type: source.source_type,
+                  source_scope: source.source_scope,
+                  source_title: source.source_title,
+                  source_url: source.source_url,
+                  claims: source.claims,
+                  edition_year: source.edition_year,
+                  distinction: source.distinction,
+                  is_current: source.is_current,
+                })),
+              }
+            : {}),
         }),
       });
       setMessage(editing.id ? ta("foodMerchantsPanel.locationSaved") : t("merchants.created"));

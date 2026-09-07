@@ -165,6 +165,48 @@ describe("AdminFoodMerchantsPanel", () => {
     expect(await screen.findByText(/已儲存店家地點/)).toBeTruthy();
   });
 
+  it("can save an exact Naver URL before a pending merchant has source evidence", async () => {
+    const pendingKoreanMerchant = {
+      ...merchant,
+      name: "Jinokhwa Halmae Wonjo Dakhanmari",
+      local_name: "진옥화할매원조닭한마리",
+      country_code: "KR",
+      google_place_id: null,
+      naver_map_url: null,
+      latitude: null,
+      longitude: null,
+      coordinate_source_type: null,
+      coordinate_source_url: null,
+      sources: [],
+    };
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+        const url = String(input);
+        const stub = taxonomyResponse(url);
+        if (stub) return stub;
+        if (init?.method === "PATCH") {
+          const body = JSON.parse(String(init.body));
+          expect(body.naver_map_url).toBe("https://map.naver.com/p/entry/place/11619295");
+          expect(body).not.toHaveProperty("sources");
+          return new Response(JSON.stringify({ ...pendingKoreanMerchant, ...body }));
+        }
+        return new Response(
+          JSON.stringify({ items: [pendingKoreanMerchant], total: 1, page: 1, pages: 1 }),
+        );
+      }),
+    );
+
+    render(<AdminFoodMerchantsPanel />);
+    expect(await screen.findByText("Jinokhwa Halmae Wonjo Dakhanmari")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "編輯地點與來源" }));
+    fireEvent.change(screen.getByLabelText("Naver 精準地點頁"), {
+      target: { value: "https://map.naver.com/p/entry/place/11619295" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "儲存店家地點" }));
+    expect(await screen.findByText(/已儲存店家地點/)).toBeTruthy();
+  });
+
   it("selects all visible merchants, filters official data, and batch verifies and activates", async () => {
     const fetchMock = vi.fn(
       async (input: RequestInfo | URL, init?: RequestInit) => {
