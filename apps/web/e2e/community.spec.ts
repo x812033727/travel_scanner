@@ -1,5 +1,6 @@
 import { expect, request, test, type APIRequestContext, type Page } from "@playwright/test";
 import path from "node:path";
+import zhCommunity from "../messages/zh-TW/community.json";
 
 // No endpoint interception or test authentication bypass. This suite needs the
 // CI/local PostgreSQL, Redis, private MinIO, Mailpit and ordinary RQ worker.
@@ -22,6 +23,14 @@ async function registerAndVerify(page: Page, handle: string, displayName: string
   await expect(page.getByRole("status").filter({ hasText: "已儲存" })).toBeVisible();
   await page.goto("/zh-TW/account");
   await page.getByRole("button", { name: "寄送驗證信", exact: true }).click();
+  const url = await accountMail(page, email, "verify");
+  await page.goto(url.pathname + url.search + url.hash);
+  await page.getByRole("button", { name: "確認", exact: true }).click();
+  await expect(page.getByText("已完成帳號操作", { exact: false })).toBeVisible();
+  return json(page.request, "GET", "/community/me");
+}
+
+async function accountMail(page: Page, email: string, purpose: "verify" | "reset" | "delete") {
   let verificationUrl = "";
   await expect.poll(async () => {
     const result = await page.request.get(`http://127.0.0.1:8025/api/v1/search?query=${encodeURIComponent(`to:${email}`)}`);
@@ -29,13 +38,16 @@ async function registerAndVerify(page: Page, handle: string, displayName: string
     if (!messages.length) return false;
     const mail = await page.request.get(`http://127.0.0.1:8025/api/v1/message/${messages[0].ID}`);
     verificationUrl = (await mail.json()).Text.match(/https?:\/\/[^\s]+#token=[A-Za-z0-9_-]+/)?.[0] || "";
-    return Boolean(verificationUrl);
+    return Boolean(verificationUrl) && new URL(verificationUrl).searchParams.get("purpose") === purpose;
   }, { timeout: 45_000, intervals: [500, 1000, 2000] }).toBe(true);
-  const url = new URL(verificationUrl);
-  await page.goto(url.pathname + url.search + url.hash);
-  await page.getByRole("button", { name: "確認", exact: true }).click();
-  await expect(page.getByText("已完成帳號操作", { exact: false })).toBeVisible();
-  return json(page.request, "GET", "/community/me");
+  return new URL(verificationUrl);
+}
+
+async function enableTestCommunity(admin: APIRequestContext) {
+  await json(admin, "POST", "/auth/login", { email: "ci-community@example.com", password: "community-ci-password-123" });
+  const current = await json(admin, "GET", "/admin/community/settings");
+  await json(admin, "PUT", "/admin/community/settings", { settings: { ...current.settings, enabled: true,
+    posting_enabled: true, comments_enabled: true, messaging_enabled: true, pet_reports_enabled: true }, reason: "Isolated CI acceptance" });
 }
 
 test("verified members publish reviewed private images, fork safely and exchange mutual-only messages", async ({ page, browser, baseURL }, info) => {
@@ -45,10 +57,7 @@ test("verified members publish reviewed private images, fork safely and exchange
     isMobile: info.project.use.isMobile, deviceScaleFactor: info.project.use.deviceScaleFactor });
   const reader = await readerContext.newPage();
   try {
-    await json(admin, "POST", "/auth/login", { email: "ci-community@example.com", password: "community-ci-password-123" });
-    const current = await json(admin, "GET", "/admin/community/settings");
-    await json(admin, "PUT", "/admin/community/settings", { settings: { ...current.settings, enabled: true,
-      posting_enabled: true, comments_enabled: true, messaging_enabled: true, pet_reports_enabled: true }, reason: "Isolated CI acceptance" });
+    await enableTestCommunity(admin);
     const suffix = `${Date.now()}${info.workerIndex}`;
     const authorHandle = `author${suffix}`;
     const readerHandle = `reader${suffix}`;
@@ -130,7 +139,7 @@ test("verified members publish reviewed private images, fork safely and exchange
     await json(reader.request, "PUT", `/community/profiles/${author.profile.id}/block`);
     await page.reload();
     // Blocking hides the counterpart and conversation as well as stopping writes.
-    await expect(page.getByRole("alert")).toHaveText("找不到內容，或你目前無法查看。");
+    await expect(page.getByRole("main").getByRole("alert")).toHaveText(zhCommunity.errors.community_not_found);
     await expect(page.getByRole("button", { name: "傳送", exact: true })).toHaveCount(0);
     await expect(page.getByRole("log")).toHaveCount(0);
     const blocked = await page.request.post(`/api/travel/community/conversations/${conversationId}/messages`, {
@@ -146,5 +155,166 @@ test("verified members publish reviewed private images, fork safely and exchange
   } finally {
     await admin.dispose();
     await readerContext.close();
+  }
+});
+
+test("reviewed pet rules filter conservatively and require confirmation before conflicting trip additions", async ({ page, browser, baseURL }, info) => {
+  test.setTimeout(300_000);
+  const adminContext = await browser.newContext({ baseURL, viewport: info.project.use.viewport,
+    isMobile: info.project.use.isMobile, deviceScaleFactor: info.project.use.deviceScaleFactor });
+  const admin = await adminContext.newPage();
+  try {
+    await enableTestCommunity(admin.request);
+    const suffix = `${Date.now()}${info.workerIndex}`;
+    await registerAndVerify(page, `pet${suffix}`, `Pet traveller ${suffix}`);
+    const name = `Pet cafe ${suffix}`;
+    await page.goto("/zh-TW/pet-friendly");
+    await page.getByRole("button", { name: "提交新場所候選", exact: true }).click();
+    const suggestion = page.getByRole("dialog", { name: "提交新場所候選" });
+    await suggestion.getByLabel("場所名稱", { exact: true }).fill(name);
+    await suggestion.getByLabel("目的地", { exact: true }).fill("Taipei");
+    await suggestion.getByLabel("官方網站", { exact: true }).fill("https://example.com/pet-policy");
+    await suggestion.getByRole("button", { name: "送出", exact: true }).click();
+    await expect(suggestion).toHaveCount(0);
+    const candidates = await json(admin.request, "GET", "/admin/pet-friendly/places?state=pending");
+    const candidate = candidates.items.find((item: { name: string }) => item.name === name);
+    expect(candidate).toBeTruthy();
+    expect((await page.request.get(`/api/travel/pet-friendly/places/${candidate.id}`)).status()).toBe(404);
+
+    await admin.goto("/zh-TW/admin/pet-friendly");
+    const candidateCard = admin.getByRole("article").filter({ has: admin.getByRole("heading", { name: `${name} · Taipei`, exact: true }) });
+    await candidateCard.getByRole("button", { name: "查核規定", exact: true }).click();
+    const review = admin.getByRole("dialog", { name: "查核規定" });
+    await review.getByRole("button", { name: "新增動物種類規定", exact: true }).click();
+    const rule = review.getByRole("group", { name: "第 1 組動物規定", exact: true });
+    await rule.getByLabel("狀態", { exact: true }).selectOption("conditional");
+    await rule.getByRole("combobox", { name: "體重限制", exact: true }).selectOption("limited");
+    await rule.getByRole("spinbutton", { name: "體重限制", exact: true }).fill("10");
+    await rule.getByRole("combobox", { name: "數量限制", exact: true }).selectOption("none");
+    for (const label of [zhCommunity.petFields.carrier_required, zhCommunity.petFields.stroller_required, zhCommunity.petFields.diaper_required]) {
+      await rule.getByLabel(label, { exact: true }).selectOption("false");
+    }
+    await rule.getByLabel(zhCommunity.petFields.leash_required, { exact: true }).selectOption("true");
+    await rule.getByLabel("可進室內", { exact: true }).selectOption("true");
+    await review.getByLabel("規定來源", { exact: true }).fill("https://example.com/pet-policy");
+    await review.getByLabel("原因", { exact: true }).fill("Isolated test fixture: dogs up to 10 kg; other species unknown");
+    await review.getByRole("button", { name: "儲存查核結果", exact: true }).click();
+    await expect(review).toHaveCount(0);
+
+    await page.reload();
+    await page.getByLabel("搜尋", { exact: true }).fill(name);
+    await page.getByLabel("依我的寵物條件篩選").check();
+    await page.getByLabel("動物種類", { exact: true }).fill("dog");
+    await page.getByLabel("每隻體重（公斤）", { exact: true }).fill("5");
+    await page.getByRole("button", { name: zhCommunity.filter, exact: true }).click();
+    await expect(page.getByRole("heading", { name, exact: true })).toBeVisible();
+    await page.getByLabel("動物種類", { exact: true }).fill("cat");
+    await page.getByRole("button", { name: zhCommunity.filter, exact: true }).click();
+    await expect(page.getByRole("heading", { name, exact: true })).toHaveCount(0);
+    await page.getByLabel("也顯示待確認或不符合條件的資料").check();
+    await page.getByRole("button", { name: zhCommunity.filter, exact: true }).click();
+    await expect(page.getByRole("heading", { name, exact: true })).toBeVisible();
+    await expect(page.getByText(zhCommunity.conflicts.species_unknown, { exact: true })).toBeVisible();
+
+    const departure = new Date(Date.now() + 30 * 86400_000).toISOString().slice(0, 10);
+    const trip = await json(page.request, "POST", "/trips", { source: "blank", planning_mode: "manual_blank",
+      name: `Pet trip ${suffix}`, destination_name: "Taipei", start_date: departure, end_date: departure,
+      notes: "Preserve this private note", timezone: "Asia/Taipei" });
+    await page.goto(`/zh-TW/trips/${trip.id}`);
+    const petPanel = page.locator("details").filter({ has: page.locator("summary").filter({ hasText: /^寵物同行條件$/ }) });
+    await petPanel.locator("summary").click();
+    await petPanel.getByLabel("這趟旅行有寵物同行").check();
+    await petPanel.getByLabel("動物種類", { exact: true }).fill("cat");
+    await petPanel.getByRole("button", { name: "儲存", exact: true }).click();
+    await expect(petPanel.getByRole("status")).toHaveText("已儲存");
+    const beforeAdd = await json(page.request, "GET", `/trips/${trip.id}`);
+    await page.goto(`/zh-TW/pet-friendly/${candidate.id}`);
+    await page.getByRole("button", { name: "加入我的行程", exact: true }).click();
+    const add = page.getByRole("dialog", { name: "加入我的行程" });
+    await add.getByLabel("選擇我的行程", { exact: true }).selectOption(trip.id);
+    await add.getByLabel("日期", { exact: true }).fill(departure);
+    await add.getByRole("button", { name: "加入我的行程", exact: true }).click();
+    await expect(add.getByText(zhCommunity.conflicts.species_unknown, { exact: true })).toBeVisible();
+    const unconfirmed = await json(page.request, "GET", `/trips/${trip.id}`);
+    expect(unconfirmed.items).toEqual(beforeAdd.items);
+    await add.getByRole("button", { name: "確認仍要加入", exact: true }).click();
+    await expect(add).toHaveCount(0);
+    const confirmed = await json(page.request, "GET", `/trips/${trip.id}`);
+    expect(confirmed.items.filter((item: { data: { pet_place_id?: string } }) => item.data.pet_place_id === candidate.id)).toHaveLength(1);
+    expect(confirmed.notes).toBe("Preserve this private note");
+
+    await page.getByRole("button", { name: "回報到訪經驗", exact: true }).click();
+    const report = page.getByRole("dialog", { name: "回報到訪經驗" });
+    const observation = `Traveller observation ${suffix}: policies may have changed.`;
+    await report.getByLabel("到訪經驗與觀察", { exact: true }).fill(observation);
+    await report.getByLabel("自述到訪日期", { exact: true }).fill(new Date().toISOString().slice(0, 10));
+    await report.getByRole("button", { name: zhCommunity.submitForReview, exact: true }).click();
+    await expect(report).toHaveCount(0);
+    const pendingReportPlace = await json(page.request, "GET", `/pet-friendly/places/${candidate.id}`);
+    expect(pendingReportPlace.experiences).toHaveLength(0);
+    expect(pendingReportPlace.verification_current).toBe(true);
+    const reports = await json(admin.request, "GET", "/admin/pet-friendly/reports");
+    const submitted = reports.items.find((item: { body: string }) => item.body === observation);
+    await json(admin.request, "PUT", `/admin/pet-friendly/reports/${submitted.id}`, {
+      status: "resolved", flag_conflict: true, reason: "Test observation requires source reconfirmation" });
+    await page.reload();
+    await expect(page.getByRole("heading", { name: "待確認", exact: true })).toBeVisible();
+    await expect(page.getByText(observation, { exact: true })).toBeVisible();
+    const disputed = await json(page.request, "GET", `/pet-friendly/places/${candidate.id}`);
+    expect(disputed.policies).toEqual(pendingReportPlace.policies);
+    expect(disputed.verification_current).toBe(false);
+    await page.screenshot({ path: info.outputPath("pet-reviewed-experience.png"), fullPage: true });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+  } finally {
+    await adminContext.close();
+  }
+});
+
+test("mail recovery revokes old sessions and deletion immediately hides the public identity", async ({ page, browser, baseURL }, info) => {
+  test.setTimeout(180_000);
+  const admin = await request.newContext({ baseURL });
+  const stale = await browser.newContext({ baseURL });
+  try {
+    await enableTestCommunity(admin);
+    const handle = `safety${Date.now()}${info.workerIndex}`;
+    const email = `${handle}@example.com`;
+    await registerAndVerify(page, handle, "Account safety test");
+    const oldPassword = "community-member-password-123";
+    const newPassword = "community-recovered-password-456";
+    await json(stale.request, "POST", "/auth/login", { email, password: oldPassword });
+    await page.goto("/zh-TW/forgot-password");
+    await page.getByLabel("Email", { exact: true }).fill(email);
+    await page.getByRole("button", { name: "寄送重設連結", exact: true }).click();
+    await expect(page.getByRole("status")).toContainText("若此帳號可重設密碼");
+    const reset = await accountMail(page, email, "reset");
+    await page.goto(reset.pathname + reset.search + reset.hash);
+    await page.getByLabel("新密碼", { exact: true }).fill(newPassword);
+    await expect(page).not.toHaveURL(/#token=/);
+    await page.getByRole("button", { name: "確認", exact: true }).click();
+    await expect(page).toHaveURL(/\/login$/);
+    expect((await stale.request.get("/api/travel/auth/me")).status()).toBe(401);
+    const oldLogin = await stale.request.post("/api/travel/auth/login", {
+      headers: { Origin: baseURL! }, data: { email, password: oldPassword } });
+    expect(oldLogin.status()).toBe(401);
+    const replay = await page.request.post("/api/travel/auth/reset-password", {
+      headers: { Origin: baseURL! }, data: { token: new URLSearchParams(reset.hash.slice(1)).get("token"), password: newPassword } });
+    expect(replay.status()).toBe(400);
+    await json(page.request, "POST", "/auth/login", { email, password: newPassword });
+    await json(stale.request, "POST", "/auth/login", { email, password: newPassword });
+    await page.goto("/zh-TW/account");
+    page.once("dialog", (dialog) => dialog.accept());
+    await page.getByRole("button", { name: "寄送刪除確認信", exact: true }).click();
+    const deletion = await accountMail(page, email, "delete");
+    await page.goto(deletion.pathname + deletion.search + deletion.hash);
+    await page.getByLabel("輸入 DELETE 確認刪除", { exact: true }).fill("DELETE");
+    await page.getByRole("button", { name: "確認", exact: true }).click();
+    await expect(page).toHaveURL(/\/login$/);
+    expect((await stale.request.get("/api/travel/auth/me")).status()).toBe(401);
+    expect((await page.request.get(`/api/travel/community/profiles/${handle}`)).status()).toBe(404);
+    expect((await page.request.post("/api/travel/auth/login", {
+      headers: { Origin: baseURL! }, data: { email, password: newPassword } })).status()).toBe(401);
+  } finally {
+    await admin.dispose();
+    await stale.close();
   }
 });

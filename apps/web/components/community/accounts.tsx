@@ -48,6 +48,8 @@ export function ForgotPassword() {
 export function AccountConfirmation({ purpose }: { purpose: string }) {
   const t = useTranslations("community");
   const router = useRouter();
+  const { user, setUser, clearSession } = useHeaderSession();
+  const { refresh } = useCommunity();
   const [token, setToken] = useState("");
   const parsed = useRef(false);
   const [loaded, setLoaded] = useState(false);
@@ -71,8 +73,13 @@ export function AccountConfirmation({ purpose }: { purpose: string }) {
       await api(`/auth/${endpoint}`, { method: "POST", body: JSON.stringify({ token, ...(purpose === "reset" ? { password } : purpose === "delete" ? { confirmation } : {}) }) });
       setToken(""); setPassword(""); setDone(true);
       if (purpose !== "verify") {
-        navigator.serviceWorker?.controller?.postMessage({ type: "signed-out" });
+        // The API has already revoked cookies and old auth versions. Discard
+        // in-memory account/community caches too, without waiting for navigation.
+        clearSession();
         router.replace("/login");
+      } else {
+        if (user) setUser({ ...user, email_verified: true });
+        void refresh();
       }
       router.refresh();
     } catch (reason) { setError(reason); } finally { setBusy(false); }
