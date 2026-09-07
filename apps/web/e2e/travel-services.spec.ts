@@ -52,6 +52,7 @@ async function mock(
   context: BrowserContext,
   signedIn = false,
   ordinary = false,
+  unified = false,
 ) {
   await context.route("**/api/travel/**", async (route) => {
     const url = new URL(route.request().url());
@@ -63,16 +64,61 @@ async function mock(
       body =
         url.searchParams.get("type") === "esim"
           ? { ...results, items: [] }
-          : ordinary
+          : unified
             ? {
                 ...results,
                 items: items.map((item) => ({
                   ...item,
                   offers: [],
-                  direct_links: [{ provider: "official", name: null }],
+                  booking_options: [
+                    {
+                      id: "option-1",
+                      provider: "official",
+                      name: null,
+                      mode: "direct",
+                      quote_status: "not_configured",
+                    },
+                    {
+                      id: "option-2",
+                      provider: "booking",
+                      name: "Booking.com",
+                      mode: "direct",
+                      quote_status: "not_configured",
+                    },
+                    {
+                      id: "option-3",
+                      provider: "trip_com",
+                      name: "Trip.com",
+                      mode: "direct",
+                      quote_status: "not_configured",
+                    },
+                  ],
+                  facts: {
+                    ...item.facts,
+                    source_credits: [
+                      {
+                        title: "Licensed fixture dataset",
+                        publisher: "Fixture publisher",
+                        url: "https://official.example.com/data",
+                        license_name: "CC BY 4.0",
+                        license_url:
+                          "https://creativecommons.org/licenses/by/4.0/",
+                        changes: "Curated hotel locations",
+                      },
+                    ],
+                  },
                 })),
               }
-            : results;
+            : ordinary
+              ? {
+                  ...results,
+                  items: items.map((item) => ({
+                    ...item,
+                    offers: [],
+                    direct_links: [{ provider: "official", name: null }],
+                  })),
+                }
+              : results;
     else if (path === "/auth/me") {
       status = signedIn ? 200 : 401;
       body = signedIn
@@ -89,6 +135,7 @@ async function mock(
       body = { items: [], detail: "Sign-in required" };
     } else if (
       path.includes("/hotel-links/") ||
+      path.includes("/booking-options/") ||
       path.startsWith("/affiliates/offers")
     ) {
       await route.fulfill({
@@ -147,6 +194,68 @@ async function mock(
 
 for (const [locale, copy] of Object.entries(catalogs)) {
   for (const width of [320, 390, 1280]) {
+    test(`${locale} ${width}px unified hotel panel preserves context and honest external pricing`, async ({
+      page,
+      context,
+    }) => {
+      await mock(context, false, false, true);
+      await page.setViewportSize({ width, height: 860 });
+      await page.goto(
+        `/${locale}/destinations/tokyo/services?type=hotel&area=marunouchi`,
+      );
+      const opener = page.getByRole("button", { name: copy.platforms }).first();
+      await opener.click();
+      const panel = page.getByRole("dialog", { name: items[0].title });
+      await expect(panel).toBeVisible();
+      await expect(panel.getByText(copy.quoteNotConfigured)).toBeVisible();
+      await expect(panel.locator('input[type="date"]')).toHaveCount(0);
+      expect(await page.evaluate(() => document.body.style.overflow)).toBe(
+        "hidden",
+      );
+      const booking = panel.getByRole("button", {
+        name: `Booking.com · ${copy.checkPlatformPrice} · ${copy.newTab}`,
+      });
+      await expect(booking).toHaveCount(1);
+      await expect(booking.locator("..")).toHaveAttribute("target", "_blank");
+      const popupWait = context.waitForEvent("page");
+      await booking.click();
+      const popup = await popupWait;
+      await expect(popup).toHaveTitle("Fixture partner page");
+      expect(await popup.evaluate(() => window.opener === null)).toBe(true);
+      await popup.close();
+      await expect(page).toHaveURL(/area=marunouchi/);
+      for (const theme of ["light", "dark"]) {
+        await page.evaluate(
+          (value) => document.documentElement.setAttribute("data-theme", value),
+          theme,
+        );
+        expect(
+          await panel.evaluate((el) => el.scrollWidth <= el.clientWidth),
+        ).toBe(true);
+      }
+      await panel.locator("summary").click();
+      if(locale === "zh-TW" && width === 390) await page.screenshot({path: "test-results/hotel-platform-panel-390-dark.png"});
+      await expect(
+        panel.getByText("Fixture publisher", { exact: false }),
+      ).toBeVisible();
+      const last = panel.getByRole("link", {
+        name: `CC BY 4.0 · ${copy.newTab}`,
+      });
+      await last.focus();
+      await page.keyboard.press("Tab");
+      await expect(panel.locator("button").first()).toBeFocused();
+      await page.goBack();
+      await expect(panel).toHaveCount(0);
+      await expect(opener).toBeFocused();
+      await expect(page).toHaveURL(/area=marunouchi/);
+      expect(await page.evaluate(() => document.body.style.overflow)).not.toBe(
+        "hidden",
+      );
+      await opener.click();
+      await page.keyboard.press("Escape");
+      await expect(panel).toHaveCount(0);
+    });
+
     test(`${locale} ${width}px ordinary hotel links do not require affiliate enrollment`, async ({
       page,
       context,
@@ -280,6 +389,29 @@ test("visitor intent returns to the same service and filters after sign-in", asy
 });
 
 for (const width of [320, 390, 1280]) {
+  test(`${width}px booking panel back preserves its parent planner sheet`, async ({page, context}) => {
+    await mock(context, true, false, true);
+    await page.setViewportSize({width, height:860});
+    await page.goto("/en/trips/fixture-trip");
+    await page.getByRole("button", {name:en.hotel, exact:true}).click();
+    const parent = page.getByRole("dialog",{name:en.hotel, exact:true});
+    const opener = parent.getByRole("button",{name:en.platforms}).first();
+    await opener.click();
+    const child = page.getByRole("dialog",{name:items[0].title});
+    await expect(child).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(child).toHaveCount(0);
+    await expect(parent).toBeVisible();
+    await expect(opener).toBeFocused();
+    expect(await page.evaluate(()=>document.body.style.overflow)).toBe("hidden");
+    await opener.click();
+    await page.goBack();
+    await expect(child).toHaveCount(0);
+    await expect(parent).toBeVisible();
+    await page.goBack();
+    await expect(parent).toHaveCount(0);
+    expect(await page.evaluate(()=>document.body.style.overflow)).not.toBe("hidden");
+  });
   test(`${width}px shared planner sheet locks scroll, traps focus and handles back`, async ({
     page,
     context,

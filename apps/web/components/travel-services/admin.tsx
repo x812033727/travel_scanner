@@ -5,8 +5,11 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { api } from "@/lib/api";
 import { CITIES, KINDS, type Kind } from "./catalog";
+import { HotelOptionsAdmin, type HotelOptionRow } from "./hotel-options-admin";
+import { QuotePolicies, type QuotePolicy } from "./quote-policies";
 
 type RecordRow = {
+  booking_options?: HotelOptionRow[];
   id: string;
   title: string;
   kind: Kind;
@@ -37,6 +40,7 @@ type OfferRow = {
   scope: string;
 };
 type Config = {
+  hotel_quote_policies?: Record<string, QuotePolicy>;
   public_enabled: boolean;
   direct_hotel_links_enabled?: boolean;
   enabled_kinds: Kind[];
@@ -44,6 +48,7 @@ type Config = {
   airalo_feed_enabled: boolean;
 };
 type Overview = {
+  quote_providers?: Record<string, { adapter_available: boolean }>;
   config: Config;
   version: number;
   products: RecordRow[];
@@ -60,9 +65,12 @@ type Overview = {
     destination_id: string;
     counts: Record<Kind, number>;
     hotel_areas: number;
+    hotel_ready?: number;
+    hotel_complete?: boolean;
     complete: boolean;
   }[];
   operations: {
+    ordinary_hotel_clicks?: number;
     outbound_clicks: number;
     self_reported_booked: number;
     confirmed_commission: null;
@@ -78,6 +86,8 @@ type Overview = {
 type Preview = {
   id: string;
   rows_json: {
+    change?: string;
+    missing_platforms?: string[];
     line: number;
     error?: string;
     product?: { title: string; kind: Kind; destination_id: string };
@@ -354,30 +364,13 @@ export function TravelServicesAdmin() {
                     </button>
                   </div>
                   {p.kind === "hotel" && (
-                    <HotelLinksEditor
-                      key={`${p.id}:${p.version}`}
-                      product={p}
+                    <HotelOptionsAdmin
+                      key={`${p.id}:${(p.booking_options || []).map((o) => o.version).join(",")}`}
+                      productId={p.id}
+                      options={p.booking_options || []}
                       brands={data.brand_definitions}
                       busy={busy}
-                      save={(links) =>
-                        run(() =>
-                          api(
-                            `/admin/travel-services/products/${p.id}?version=${p.version}`,
-                            {
-                              method: "PUT",
-                              body: JSON.stringify({
-                                source_key: p.source_key,
-                                kind: p.kind,
-                                destination_id: p.destination_id,
-                                title: p.title,
-                                names_json: p.names_json,
-                                source_url: p.source_url,
-                                facts: { ...p.facts, hotel_links: links },
-                              }),
-                            },
-                          ),
-                        )
-                      }
+                      run={run}
                     />
                   )}
                   {data.offers
@@ -729,6 +722,21 @@ export function TravelServicesAdmin() {
                       >
                         {r.line} · {r.product?.title || t("incomplete")} ·{" "}
                         {r.error ? t("incomplete") : t("pending")}
+                        {r.change && (
+                          <span> · {t(`importChange.${r.change}`)}</span>
+                        )}
+                        {!!r.missing_platforms?.length && (
+                          <p>
+                            {t("missingPlatforms")}:{" "}
+                            {r.missing_platforms
+                              .map((code) =>
+                                code === "official"
+                                  ? t("officialHotel")
+                                  : data.brand_definitions[code]?.name || code,
+                              )
+                              .join(" · ")}
+                          </p>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -766,6 +774,7 @@ export function TravelServicesAdmin() {
           {tab === "coverage" && (
             <section className="space-y-4">
               <p className="text-sm">{t("targets")}</p>
+              <p className="text-sm">{t("hotelTargets")}</p>
               <div className="grid gap-3 sm:grid-cols-2">
                 {data.coverage.map((c) => (
                   <article
@@ -782,6 +791,10 @@ export function TravelServicesAdmin() {
                       ))}
                     </dl>
                     <p className="text-xs text-[var(--teal)]">
+                      {t("hotelReady", { count: c.hotel_ready || 0 })} ·{" "}
+                      {t(c.hotel_complete ? "complete" : "incomplete")}
+                    </p>
+                    <p className="text-xs text-[var(--teal)]">
                       {t(c.complete ? "complete" : "incomplete")}
                     </p>
                   </article>
@@ -794,6 +807,10 @@ export function TravelServicesAdmin() {
                   {t("clicks")}: {data.operations.outbound_clicks}
                 </p>
                 <p>
+                  {t("ordinaryClicks")}:{" "}
+                  {data.operations.ordinary_hotel_clicks || 0}
+                </p>
+                <p>
                   {t("booked")}: {data.operations.self_reported_booked}
                 </p>
                 <p className="mt-3 text-sm text-[var(--muted)]">
@@ -804,6 +821,14 @@ export function TravelServicesAdmin() {
           )}
           {tab === "config" && config && (
             <section className="space-y-5 rounded-2xl border border-[var(--line)] p-5">
+              <QuotePolicies
+                policies={config.hotel_quote_policies || {}}
+                providers={data.quote_providers || {}}
+                brands={data.brand_definitions}
+                onChange={(policies) =>
+                  setConfig({ ...config, hotel_quote_policies: policies })
+                }
+              />
               <label className="flex min-h-11 items-center gap-3">
                 <input
                   type="checkbox"
@@ -897,121 +922,5 @@ export function TravelServicesAdmin() {
         </>
       )}
     </div>
-  );
-}
-
-type HotelLink = { provider: string; url: string; evidence_url: string };
-function HotelLinksEditor({
-  product,
-  brands,
-  busy,
-  save,
-}: {
-  product: RecordRow;
-  brands: Overview["brand_definitions"];
-  busy: boolean;
-  save: (links: HotelLink[]) => Promise<void>;
-}) {
-  const t = useTranslations("travelServices");
-  const [links, setLinks] = useState<HotelLink[]>(
-    (product.facts.hotel_links as HotelLink[] | undefined) || [],
-  );
-  function update(index: number, fieldName: keyof HotelLink, value: string) {
-    setLinks(
-      links.map((link, i) =>
-        i === index ? { ...link, [fieldName]: value } : link,
-      ),
-    );
-  }
-  return (
-    <details className="mt-4 rounded-xl border border-[var(--line)] p-3">
-      <summary className="min-h-11 cursor-pointer py-2 font-semibold">
-        {t("directHotelLinks")}
-      </summary>
-      <p className="mb-3 text-sm text-[var(--muted)]">
-        {t("directReviewHint")}
-      </p>
-      <form
-        className="space-y-4"
-        onSubmit={(event) => {
-          event.preventDefault();
-          void save(links);
-        }}
-      >
-        {links.map((link, index) => (
-          <fieldset
-            key={index}
-            className="min-w-0 space-y-2 rounded-xl bg-[var(--paper)] p-3"
-            disabled={busy}
-          >
-            <legend className="text-sm">
-              {t("ordinaryLink")} {index + 1}
-            </legend>
-            <label className="block text-sm">
-              {t("bookingProvider")}
-              <select
-                className={field}
-                value={link.provider}
-                onChange={(e) => update(index, "provider", e.target.value)}
-              >
-                <option value="official">{t("officialHotel")}</option>
-                {Object.entries(brands)
-                  .filter(([, b]) => b.kinds.includes("hotel"))
-                  .map(([code, b]) => (
-                    <option value={code} key={code}>
-                      {b.name}
-                    </option>
-                  ))}
-              </select>
-            </label>
-            <label className="block text-sm">
-              {t("hotelPageUrl")}
-              <input
-                required
-                type="url"
-                className={field}
-                value={link.url}
-                onChange={(e) => update(index, "url", e.target.value)}
-              />
-            </label>
-            <label className="block text-sm">
-              {t("hotelLinkEvidence")}
-              <input
-                required
-                type="url"
-                className={field}
-                value={link.evidence_url}
-                onChange={(e) => update(index, "evidence_url", e.target.value)}
-              />
-            </label>
-            <button
-              type="button"
-              className={button}
-              onClick={() => setLinks(links.filter((_, i) => i !== index))}
-            >
-              {t("removeHotelLink")}
-            </button>
-          </fieldset>
-        ))}
-        <div className="flex flex-wrap gap-2">
-          <button
-            type="button"
-            className={button}
-            disabled={busy || links.length >= 8}
-            onClick={() =>
-              setLinks([
-                ...links,
-                { provider: "official", url: "", evidence_url: "" },
-              ])
-            }
-          >
-            {t("addHotelLink")}
-          </button>
-          <button type="submit" className={button} disabled={busy}>
-            {t("saveHotelLinks")}
-          </button>
-        </div>
-      </form>
-    </details>
   );
 }

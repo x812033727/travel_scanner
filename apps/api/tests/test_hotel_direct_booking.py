@@ -8,7 +8,7 @@ import httpx
 import pytest
 from pydantic import ValidationError
 
-from app.models import TravelServiceProduct
+from app.models import HotelBookingOption, TravelServiceProduct
 from app.travel_services import network
 from app.travel_services.schemas import CatalogConfig, Facts, HotelLink, ProductInput
 from app.travel_services.service import public_product, ready_hotel_links
@@ -77,6 +77,16 @@ def test_direct_link_freshness_flag_and_public_data_minimization():
         source_url="https://hotel.example.com/",
         status="approved",
         verified_at=now,
+        hotel_options=[
+            HotelBookingOption(
+                **hotel_link().model_dump(),
+                status="approved",
+                discovery_status="found",
+                identity_note="Reviewed fixture",
+                verified_at=now,
+                health_status="healthy",
+            )
+        ],
         facts=Facts(
             hotel_links=[hotel_link()], reference_price=999, currency="USD", price_checked_at=now
         ).model_dump(mode="json"),

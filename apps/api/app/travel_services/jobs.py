@@ -230,8 +230,68 @@ async def maintain_links() -> dict[str, int]:
 def run_daily() -> dict[str, Any]:
     async def work() -> dict[str, Any]:
         try:
-            return {"feed": await refresh(), "links": await maintain_links()}
+            return {
+                "feed": await refresh(),
+                "links": await maintain_links(),
+                "hotel_links": await maintain_hotel_options(),
+            }
         finally:
             await engine.dispose()
 
     return asyncio.run(work())
+
+
+async def maintain_hotel_options() -> dict[str, int]:
+    from app.models import HotelBookingOption
+    from app.travel_services.hotel_options import option_input
+    from app.travel_services.network import check_hotel_link
+    from app.travel_services.schemas import HotelLink
+
+    async with SessionFactory() as session:
+        candidates = list(
+            await session.scalars(
+                select(HotelBookingOption)
+                .where(
+                    HotelBookingOption.status == "approved",
+                    HotelBookingOption.discovery_status == "found",
+                )
+                .order_by(HotelBookingOption.checked_at.asc().nullsfirst())
+                .limit(80)
+            )
+        )
+        snapshots = [(o.id, o.version, option_input(o)) for o in candidates]
+        await session.commit()
+        semaphore = asyncio.Semaphore(5)
+
+        async def check(snapshot: Any) -> tuple[Any, int, str]:
+            identifier, version, data = snapshot
+            async with semaphore:
+                try:
+                    status = await check_hotel_link(
+                        HotelLink(
+                            provider=data.provider, url=data.url, evidence_url=data.evidence_url
+                        )
+                    )
+                except ValueError:
+                    status = "unsafe"
+                except (httpx.HTTPError, ConnectionError, TimeoutError):
+                    status = "unconfirmed"
+            return identifier, version, status
+
+        disabled = 0
+        for identifier, version, status in await asyncio.gather(*(check(s) for s in snapshots)):
+            option = await session.scalar(
+                select(HotelBookingOption)
+                .where(HotelBookingOption.id == identifier)
+                .execution_options(populate_existing=True)
+                .with_for_update()
+            )
+            if not option or option.version != version:
+                continue
+            option.health_status, option.checked_at = status, datetime.now(UTC)
+            if status in ("unsafe", "unavailable"):
+                option.status = "disabled"
+                option.version += 1
+                disabled += 1
+            await session.commit()
+        return {"checked": len(snapshots), "disabled": disabled}

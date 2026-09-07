@@ -62,9 +62,10 @@ const overview = {
 it("edits exact hotel links without a network account and preserves other reviewed facts", async () => {
   request.mockResolvedValue(overview);
   render(<TravelServicesAdmin />);
-  expect(await screen.findByText(copy.directIndependent, { exact: false })).toBeTruthy();
-  fireEvent.click(screen.getByText(copy.directHotelLinks));
-  fireEvent.click(screen.getByRole("button", { name: copy.addHotelLink }));
+  expect(
+    await screen.findByText(copy.directIndependent, { exact: false }),
+  ).toBeTruthy();
+  fireEvent.click(screen.getByText(copy.platformReview));
   fireEvent.change(screen.getByLabelText(copy.hotelPageUrl), {
     target: { value: "https://hotel.example.com/stay" },
   });
@@ -80,16 +81,15 @@ it("edits exact hotel links without a network account and preserves other review
   const [path, options] = request.mock.calls.find(
     ([, opts]) => opts?.method === "PUT",
   )!;
-  expect(path).toBe("/admin/travel-services/products/hotel-1?version=3");
+  expect(path).toBe("/admin/travel-services/products/hotel-1/booking-options");
   const saved = JSON.parse(options.body);
-  expect(saved.facts.area_code).toBe("marunouchi");
-  expect(saved.facts.hotel_links).toEqual([
-    {
-      provider: "official",
-      url: "https://hotel.example.com/stay",
-      evidence_url: "https://hotel.example.com/location",
-    },
-  ]);
+  expect(saved.facts).toBeUndefined(); // Independent edit cannot rewrite hotel facts.
+  expect(saved).toMatchObject({
+    version: 0,
+    provider: "official",
+    url: "https://hotel.example.com/stay",
+    evidence_url: "https://hotel.example.com/location",
+  });
   expect(saved.status).toBeUndefined(); // Saving cannot self-approve the change.
 });
 

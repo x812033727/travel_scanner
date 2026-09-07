@@ -16,14 +16,14 @@ from app.models import (
     TravelServiceProduct,
 )
 from app.travel_services.registry import BRANDS, brand_target
-from app.travel_services.schemas import Facts, ProductInput, untracked_url
+from app.travel_services.schemas import Facts, HotelOptionInput, ProductInput, untracked_url
 from app.travel_services.service import fail, fingerprint, product_input
 
 
 def parse_csv(value: str) -> list[dict[str, Any]]:
     reader = csv.DictReader(io.StringIO(value.lstrip("\ufeff")))
     required = {"source_key", "kind", "destination_id", "title", "source_url"}
-    allowed = required | {"names_json", "facts", "brand", "target_url", "scope"}
+    allowed = required | {"names_json", "facts", "brand", "target_url", "scope", "booking_options"}
     if (
         not reader.fieldnames
         or not required <= set(reader.fieldnames)
@@ -43,6 +43,19 @@ def parse_csv(value: str) -> list[dict[str, Any]]:
                 names_json=json.loads(raw.get("names_json") or "{}"),
             )
             row: dict[str, Any] = {"product": data.model_dump(mode="json"), "line": index}
+            # Absence is not an instruction to delete independently managed options.
+            if "hotel_links" not in data.facts.model_fields_set:
+                row["product"]["facts"].pop("hotel_links", None)
+            if raw.get("booking_options"):
+                if data.kind != "hotel":
+                    raise ValueError("Hotel options require a hotel")
+                options = [
+                    HotelOptionInput.model_validate(value)
+                    for value in json.loads(raw["booking_options"])
+                ]
+                if len(options) > 8 or len({o.provider for o in options}) != len(options):
+                    raise ValueError("Duplicate hotel platforms")
+                row["booking_options"] = [o.model_dump(mode="json") for o in options]
             if raw.get("target_url") or raw.get("brand"):
                 code = raw.get("brand") or ""
                 if code not in BRANDS or data.kind not in BRANDS[code].kinds:
@@ -71,26 +84,49 @@ async def upsert_product(
         .where(TravelServiceProduct.source_key == data.source_key)
         .with_for_update()
     )
-    if row and fingerprint(product_input(row).model_dump(mode="json")) == fingerprint(
-        data.model_dump(mode="json")
-    ):
-        return row, False
+    from app.travel_services.hotel_options import upsert_option
+    from app.travel_services.schemas import HotelOptionInput
+
+    # Link edits have their own review lifecycle. Never persist the legacy JSON copy.
+    core = data.model_dump(mode="json")
+    core["facts"].pop("hotel_links", None)
+    before = product_input(row).model_dump(mode="json") if row else None
+    if before:
+        before["facts"].pop("hotel_links", None)
+    changed = not row or fingerprint(before) != fingerprint(core)
     if row is None:
         row = TravelServiceProduct(
-            **data.model_dump(exclude={"facts"}),
-            facts=data.facts.model_dump(mode="json"),
+            **core,
             status="pending",
             version=1,
+            hotel_options=[],
         )
         session.add(row)
-    else:
-        for key, value in data.model_dump(mode="json").items():
+    elif changed:
+        for key, value in core.items():
             setattr(row, key, value)
         row.status = "pending"
         row.verified_at = None
         row.version += 1
     await session.flush()
-    return row, True
+    for link in data.facts.hotel_links:
+        existing = next((o for o in row.hotel_options if o.provider == link.provider), None)
+        if existing and existing.url == link.url and existing.evidence_url == link.evidence_url:
+            continue  # Legacy round-trips cannot erase independently reviewed property IDs/notes.
+        _, updated = await upsert_option(session, row, HotelOptionInput(**link.model_dump()))
+        changed = changed or updated
+    if "hotel_links" in data.facts.model_fields_set:
+        retained = {link.provider for link in data.facts.hotel_links}
+        for option in row.hotel_options:
+            if (
+                option.discovery_status == "found"
+                and option.provider not in retained
+                and option.status != "disabled"
+            ):
+                option.status, option.verified_at = "disabled", None
+                option.version += 1
+                changed = True
+    return row, bool(changed)
 
 
 async def commit_import(
@@ -113,6 +149,17 @@ async def commit_import(
             session, ProductInput.model_validate(row["product"])
         )
         changed += int(updated)
+        if row.get("booking_options"):
+            from app.travel_services.hotel_options import upsert_option
+
+            option_changes = False
+            for raw_option in row["booking_options"]:
+                _, option_changed = await upsert_option(
+                    session, product, HotelOptionInput.model_validate(raw_option)
+                )
+                option_changes = option_changes or option_changed
+            if option_changes and not updated:
+                changed += 1
         if raw := row.get("offer"):
             brand = await session.scalar(
                 select(TravelServiceBrand).where(

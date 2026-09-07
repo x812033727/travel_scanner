@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-hotel-direct-booking
 title: Hotel booking without affiliate enrollment
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-hotel-direct
 claimed_at: 2026-09-07T10:45:13Z
 created_at: 2026-09-07T10:45:12Z
-completed_at:
+completed_at: 2026-09-07T12:32:43Z
 branch: codex/hotel-direct-booking
 depends_on: []
 scope:
