@@ -340,6 +340,27 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             item["slug"]: item["merchant_count"] for item in directory["facets"]["categories"]
         }
         assert facet_categories["home-style"] == 1 and facet_categories["ramen"] == 0
+        # Each facet applies every filter but its own. These counts used to ignore the
+        # rest, so an area holding nothing still showed home-style claiming a merchant.
+        empty_area = await list_merchants(
+            session, locale="zh-TW", destination_id="seoul", area_slug="seoul-hongdae"
+        )
+        assert empty_area["total"] == 0
+        assert not any(item["merchant_count"] for item in empty_area["facets"]["categories"])
+        missing_term = await list_merchants(
+            session, locale="zh-TW", destination_id="seoul", q="nothingmatchesthis"
+        )
+        assert missing_term["total"] == 0
+        assert not any(item["merchant_count"] for item in missing_term["facets"]["categories"])
+        assert not any(area["merchant_count"] for area in missing_term["facets"]["areas"])
+        # A category never narrows its own facet, or picking one would zero the others
+        # and there would be no way back.
+        chosen = await list_merchants(
+            session, locale="zh-TW", destination_id="seoul", category_slug="home-style"
+        )
+        assert {item["slug"]: item["merchant_count"] for item in chosen["facets"]["categories"]}[
+            "home-style"
+        ] == 1
         assert (
             await list_merchants(
                 session, locale="zh-TW", destination_id="seoul", area_slug="seoul-myeongdong"
