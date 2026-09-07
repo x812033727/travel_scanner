@@ -104,6 +104,37 @@ key and the before/after text (truncated to 500 characters); a batch lists every
 whose value actually changed, with `"after": null` for a restore. Both actions appear in
 the provider-settings activity list and in the snapshot's own `audit` field.
 
+## The editor
+
+`/{locale}/admin/ui-text`, in the sidebar as 前台文案. Three things are in the query
+string — `?ns=`, `?locale=` and `?ref=` — so a particular screen can be linked to and a
+reload lands back on it. An unknown value falls back silently rather than redirecting, so
+the selects always show what is actually in effect and a stale bookmark cannot bounce
+between two URLs.
+
+Defaults come from the page, not the API: it imports the one catalog being edited and
+flattens it server-side. All five locales together are 3,418 sentences, and sending them
+to the browser to edit twenty would be the wrong trade. The namespace picker also carries
+each namespace's key count, which is free — `i18n/request.ts` has already imported every
+catalog on the same request.
+
+Each row shows the key, the default, the same sentence in a reference locale, and the
+placeholders it has to keep. **An empty box means "use the default"**: a field that
+trims to nothing is sent as `value: null`, the same delete the API's `DELETE` performs, so
+restoring and editing are one path and the save bar counts them the same way. Placeholder and brace
+parity are checked as you type with the same rules the API applies, and the save button
+turns into a count of what needs fixing while anything is wrong — next-intl renders the
+raw key path when an argument it needs has gone, and that would land on the public page.
+
+Saving goes through `POST /batch`, split into hundreds automatically. A failure re-reads
+the snapshot and trims only the drafts that now match the server, so unsaved text stays in
+the form and a half-applied save does not leave the screen lying about what is live.
+
+Orphans — overrides whose key has left the catalog — are listed with everything else and
+have a filter of their own. The loader skips them on every render, so this screen is the
+only place they can be seen or cleared. `admin.json` alone holds 973 sentences, so the
+list is searchable and paged fifty at a time.
+
 ## Web side
 
 The loader lives in `apps/web/lib/ui-text.server.ts` and the merge in

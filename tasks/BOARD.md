@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**10 open · 0 in progress · 2 blocked · 1 in review · 145 done**
+**9 open · 0 in progress · 2 blocked · 1 in review · 146 done**
 
 ## Ready to claim
 
@@ -20,7 +20,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
 | P3 | [The whole applied-filter chip is a delete button](open/2026-09-07-applied-filter-chip-is-all-delete.md) | web | `apps/web/components/hotspot-explorer.tsx`<br>`apps/web/components/food-browser.tsx` |
-| P3 | [check-i18n does not guard the ui-text editor's own namespace labels](open/2026-09-07-ui-text-namespace-label-guard.md) | web | `tools/check-i18n.mjs`<br>`docs/ui-text-overrides.md` |
 
 ## In progress
 
@@ -43,6 +42,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-07 [check-i18n does not guard the ui-text editor's own namespace labels](done/2026-09-07-ui-text-namespace-label-guard.md)
 - 2026-09-07 [文案搬進 catalog：兩個自帶五語系字典的元件](done/2026-09-07-i18n-inline-dicts.md)
 - 2026-09-07 [商圈名單還有 95 家沒有英文店名，發布前要逐家查](done/2026-09-06-trend-merchant-english-names-backlog.md)
 - 2026-09-07 [A signed-out visit to /account still fires seven requests that can only 401](done/2026-09-07-signed-out-account-fires-401s.md)
@@ -52,4 +52,3 @@ _Nothing here._
 - 2026-09-07 [Filter chip rows hide most of their choices behind a silent sideways scroll](done/2026-09-07-chip-rows-hide-choices.md)
 - 2026-09-07 [後台可改前台文案：前台載入器把資料庫覆寫疊上 next-intl](done/2026-09-07-ui-text-loader.md)
 - 2026-09-07 [篩選之後排行榜從第 3 名開始跳號，看起來像少了東西](done/2026-09-07-filtered-rank-numbering.md)
-- 2026-09-07 [手機篩選面板看起來是對話框，但沒有 dialog role、不移動 focus、Escape 不關、Tab 走得出去](done/2026-09-07-filter-sheet-not-a-dialog.md)
