@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 1 in progress · 2 blocked · 3 in review · 145 done**
+**14 open · 1 in progress · 2 blocked · 3 in review · 147 done**
 
 ## Ready to claim
 
@@ -46,13 +46,13 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
-| P2 | [Cuisine chip counts ignore the area and keyword already chosen](open/2026-09-07-cuisine-counts-ignore-other-filters.md) | active work in the same scope |
-| P2 | [The foods landing tells you to pick a city while already listing 110 merchants](open/2026-09-07-foods-landing-lists-before-city.md) | active work in the same scope |
 | P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | active work in the same scope |
 | P3 | [行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal\|append](open/2026-09-07-add-a-meal-to-a-day.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-07 [Cuisine chip counts ignore the area and keyword already chosen](done/2026-09-07-cuisine-counts-ignore-other-filters.md)
+- 2026-09-07 [The foods landing tells you to pick a city while already listing 110 merchants](done/2026-09-07-foods-landing-lists-before-city.md)
 - 2026-09-07 [文案搬進 catalog：兩個自帶五語系字典的元件](done/2026-09-07-i18n-inline-dicts.md)
 - 2026-09-07 [商圈名單還有 95 家沒有英文店名，發布前要逐家查](done/2026-09-06-trend-merchant-english-names-backlog.md)
 - 2026-09-07 [A signed-out visit to /account still fires seven requests that can only 401](done/2026-09-07-signed-out-account-fires-401s.md)
@@ -61,5 +61,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-07 [The three numbers on a ranking card have no scale and no explanation](done/2026-09-07-ranking-scores-have-no-scale.md)
 - 2026-09-07 [Filter chip rows hide most of their choices behind a silent sideways scroll](done/2026-09-07-chip-rows-hide-choices.md)
 - 2026-09-07 [後台可改前台文案：前台載入器把資料庫覆寫疊上 next-intl](done/2026-09-07-ui-text-loader.md)
-- 2026-09-07 [篩選之後排行榜從第 3 名開始跳號，看起來像少了東西](done/2026-09-07-filtered-rank-numbering.md)
-- 2026-09-07 [手機篩選面板看起來是對話框，但沒有 dialog role、不移動 focus、Escape 不關、Tab 走得出去](done/2026-09-07-filter-sheet-not-a-dialog.md)
