@@ -110,7 +110,13 @@ test("verified members publish reviewed private images, fork safely and exchange
     await expect(reader).toHaveURL(/\/trips\/[\da-f-]+$/, { timeout: 20_000 });
     const copiedId = reader.url().split("/").at(-1)!;
     expect(copiedId).not.toBe(trip.id);
-    expect(JSON.stringify(await json(reader.request, "GET", `/trips/${copiedId}`))).not.toContain("PRIVATE NOTE MUST NEVER BE PUBLISHED");
+    const firstReads = await Promise.all(Array.from({ length: 3 }, () => json(reader.request, "GET", `/trips/${copiedId}`)));
+    for (const copy of firstReads) {
+      expect(JSON.stringify(copy)).not.toContain("PRIVATE NOTE MUST NEVER BE PUBLISHED");
+      const roles = copy.items.filter((item: { system_role: string | null }) => item.system_role)
+        .map((item: { day_date: string; system_role: string }) => `${item.day_date}:${item.system_role}`);
+      expect(new Set(roles).size).toBe(roles.length);
+    }
 
     await reader.goto(`/zh-TW/community/profiles/${authorHandle}`);
     await expect(reader.getByRole("button", { name: "私訊", exact: true })).toBeDisabled();
@@ -192,15 +198,15 @@ test("reviewed pet rules filter conservatively and require confirmation before c
     const review = admin.getByRole("dialog", { name: "查核規定" });
     await review.getByRole("button", { name: "新增動物種類規定", exact: true }).click();
     const rule = review.getByRole("group", { name: "第 1 組動物規定", exact: true });
-    await rule.getByLabel("狀態", { exact: true }).selectOption("conditional");
+    await rule.getByRole("combobox", { name: "狀態", exact: true }).selectOption("conditional");
     await rule.getByRole("combobox", { name: "體重限制", exact: true }).selectOption("limited");
     await rule.getByRole("spinbutton", { name: "體重限制", exact: true }).fill("10");
     await rule.getByRole("combobox", { name: "數量限制", exact: true }).selectOption("none");
     for (const label of [zhCommunity.petFields.carrier_required, zhCommunity.petFields.stroller_required, zhCommunity.petFields.diaper_required]) {
-      await rule.getByLabel(label, { exact: true }).selectOption("false");
+      await rule.getByRole("combobox", { name: label, exact: true }).selectOption("false");
     }
-    await rule.getByLabel(zhCommunity.petFields.leash_required, { exact: true }).selectOption("true");
-    await rule.getByLabel("可進室內", { exact: true }).selectOption("true");
+    await rule.getByRole("combobox", { name: zhCommunity.petFields.leash_required, exact: true }).selectOption("true");
+    await rule.getByRole("combobox", { name: "可進室內", exact: true }).selectOption("true");
     await review.getByLabel("規定來源", { exact: true }).fill("https://example.com/pet-policy");
     await review.getByLabel("原因", { exact: true }).fill("Isolated test fixture: dogs up to 10 kg; other species unknown");
     await review.getByRole("button", { name: "儲存查核結果", exact: true }).click();
@@ -236,7 +242,7 @@ test("reviewed pet rules filter conservatively and require confirmation before c
     await page.goto(`/zh-TW/pet-friendly/${candidate.id}`);
     await page.getByRole("button", { name: "加入我的行程", exact: true }).click();
     const add = page.getByRole("dialog", { name: "加入我的行程" });
-    await add.getByLabel("選擇我的行程", { exact: true }).selectOption(trip.id);
+    await add.getByRole("combobox", { name: "選擇我的行程", exact: true }).selectOption(trip.id);
     await add.getByLabel("日期", { exact: true }).fill(departure);
     await add.getByRole("button", { name: "加入我的行程", exact: true }).click();
     await expect(add.getByText(zhCommunity.conflicts.species_unknown, { exact: true })).toBeVisible();

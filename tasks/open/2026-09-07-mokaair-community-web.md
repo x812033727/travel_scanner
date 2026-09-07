@@ -86,5 +86,14 @@ Pet/account lifecycle browser acceptance remains open. Local Webpack build passe
 default Turbopack cannot use this workspace's shared node_modules junction.
 Draft PR #340 must not enable production or claim complete plan acceptance.
 
+Follow-up: CI 34133067407 passed 130 component files, 172 isolated browser tests,
+and four real-service community journeys (publication/messages and SMTP
+reset/deletion on desktop and Pixel 7). Both pet-review journeys still time out;
+retain secondary admin traces and preserve the original failing action on teardown.
+Scoped image retry and shared-session reset/verification regressions pass locally.
+Pet AI candidate failures now use the five-language catalog in ordinary trip tools.
+General hotspot/merchant associations in the post editor still need implementation;
+the cross-catalog search endpoint alone does not finish that publishing flow.
+
 Built on isolated main 516713d. The existing forgot-password task owns the login
 entry; this task owns the new confirmation/recovery UI and public community pages.

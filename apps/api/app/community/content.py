@@ -257,6 +257,7 @@ async def fork_post(
     payload: ForkInput,
 ) -> dict[str, Any]:
     from app.trips.router import limit_for
+    from app.trips.schedule import ensure_system_slots
 
     # The lock also serializes retries with the same idempotency key.
     await session.scalar(select(User).where(User.id == user.id).with_for_update())
@@ -310,32 +311,38 @@ async def fork_post(
     )
     session.add(trip)
     await session.flush()
+    copied_items = []
     for stop in snapshot["stops"]:
         day = payload.start_date + timedelta(days=stop["day"] - 1)
-        session.add(
-            TripPlanItem(
-                trip_plan_id=trip.id,
-                item_type=stop["item_type"],
-                day_date=day,
-                position=stop["position"],
-                title=stop["title"],
-                location_name=stop["location_name"],
-                duration_minutes=stop["duration_minutes"],
-                provider_place_id=stop["provider_place_id"],
-                names_json=item_names(title=stop["names"]),
-                latitude=stop["latitude"],
-                longitude=stop["longitude"],
-                coordinate_source_type=stop["coordinate_source_type"],
-                coordinate_source_url=stop["coordinate_source_url"],
-                coordinate_verified_at=datetime.fromisoformat(stop["coordinate_verified_at"])
-                if stop["coordinate_verified_at"]
-                else None,
-                locked=False,
-                fixed_time=False,
-                is_skipped=False,
-                data={},
-            )
+        item = TripPlanItem(
+            trip_plan_id=trip.id,
+            item_type=stop["item_type"],
+            day_date=day,
+            position=stop["position"],
+            title=stop["title"],
+            location_name=stop["location_name"],
+            duration_minutes=stop["duration_minutes"],
+            provider_place_id=stop["provider_place_id"],
+            names_json=item_names(title=stop["names"]),
+            latitude=stop["latitude"],
+            longitude=stop["longitude"],
+            coordinate_source_type=stop["coordinate_source_type"],
+            coordinate_source_url=stop["coordinate_source_url"],
+            coordinate_verified_at=datetime.fromisoformat(stop["coordinate_verified_at"])
+            if stop["coordinate_verified_at"]
+            else None,
+            locked=False,
+            fixed_time=False,
+            is_skipped=False,
+            data={},
         )
+        session.add(item)
+        copied_items.append(item)
+    # Match ordinary trip creation: initialize empty schedule anchors atomically
+    # with the private copy. Otherwise simultaneous first reads each try to add
+    # the same system roles during legacy hydration and can fail with HTTP 500.
+    # These are blank placeholders, never the source traveller's private details.
+    ensure_system_slots(session, trip, copied_items)
     session.add(
         Fork(
             user_id=user.id,

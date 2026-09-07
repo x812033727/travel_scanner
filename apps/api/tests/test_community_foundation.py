@@ -439,6 +439,8 @@ async def test_free_fork_snapshot_and_replay_after_withdraw(
     harness: Harness, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     h = harness
+    from app.trips.schedule import ensure_system_slots
+
     monkeypatch.setattr("app.trips.router.limit_for", AsyncMock(return_value=100))
     async with h.factory() as session:
         trip = TripPlan(
@@ -494,6 +496,27 @@ async def test_free_fork_snapshot_and_replay_after_withdraw(
         copy = await session.get(TripPlan, UUID(first["trip_id"]))
         assert copy and copy.start_date == date(2027, 1, 10) and copy.total_price == 0
         assert "booking" not in str(copy.data) and not copy.data["prices_checked"]
+        items = list(
+            (
+                await session.scalars(
+                    select(TripPlanItem)
+                    .where(TripPlanItem.trip_plan_id == copy.id)
+                    .order_by(TripPlanItem.day_date, TripPlanItem.position)
+                )
+            ).all()
+        )
+        assert any(row.system_role == "outbound_flight" for row in items)
+        if session.get_bind().dialect.name == "sqlite":
+            # SQLite drops timezone offsets from DateTime(timezone=True), unlike
+            # the production PostgreSQL contract used by schedule ordering.
+            for row in items:
+                if row.start_time is not None:
+                    row.start_time = row.start_time.replace(tzinfo=UTC)
+        assert not ensure_system_slots(session, copy, items)
+        assert all(not row.notes and row.offer_id is None for row in items)
+        assert len({(row.day_date, row.system_role) for row in items if row.system_role}) == sum(
+            row.system_role is not None for row in items
+        )
 
 
 @pytest.mark.asyncio

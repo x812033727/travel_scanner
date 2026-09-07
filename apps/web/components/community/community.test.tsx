@@ -1,9 +1,9 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { CommunityGate } from "./shell";
 import { Tabs } from "./ui";
 import { Rules } from "./pets";
-import { PetRulesEditor } from "./pet-admin";
+import { PetAdmin, PetRulesEditor } from "./pet-admin";
 import { PostEditor } from "./editor";
 import { ProfileEditor } from "./profile";
 import { TranslateText } from "./post";
@@ -126,6 +126,31 @@ describe("publishing and moderation",()=>{
  });
 });
 describe("pet rule uncertainty",()=>{
+ it("lets an administrator review a pending place with explicit dog-only conditions",async()=>{
+  const place={id:"candidate",name:"Pet cafe",destination:"Taipei",country:"TW",kind:"cafe",address:"",names:{},
+   policies:[],official_url:"https://example.com/pets",source_url:null,latitude:null,longitude:null,
+   coordinate_source_url:null,verification_current:false,status:"pending",version:1};
+  mock.api.mockImplementation(async()=>({items:[place]}));
+  render(<PetAdmin/>);
+  fireEvent.click(await screen.findByRole("button",{name:"查核規定"}));
+  const review=within(screen.getByRole("dialog",{name:"查核規定"}));
+  fireEvent.click(review.getByRole("button",{name:"新增動物種類規定"}));
+  const rule=within(review.getByRole("group",{name:"第 1 組動物規定"}));
+  fireEvent.change(rule.getByLabelText("狀態"),{target:{value:"conditional"}});
+  fireEvent.change(rule.getByRole("combobox",{name:"體重限制"}),{target:{value:"limited"}});
+  fireEvent.change(rule.getByRole("spinbutton",{name:"體重限制"}),{target:{value:"10"}});
+  fireEvent.change(rule.getByRole("combobox",{name:"數量限制"}),{target:{value:"none"}});
+  for(const label of ["須提籠","須推車","須禮貌帶／尿布"])
+   fireEvent.change(rule.getByLabelText(label),{target:{value:"false"}});
+  fireEvent.change(rule.getByLabelText("須牽繩"),{target:{value:"true"}});
+  fireEvent.change(rule.getByLabelText("可進室內"),{target:{value:"true"}});
+  fireEvent.change(review.getByLabelText("原因"),{target:{value:"Checked official source"}});
+  fireEvent.click(review.getByRole("button",{name:"儲存查核結果"}));
+  await screen.findByRole("button",{name:"查核規定"});
+  const write=mock.api.mock.calls.find(([,options])=>options?.method==="PUT");
+  expect(JSON.parse(write![1].body).policies).toEqual([expect.objectContaining({species:"dog",max_weight_kg:10,
+   count_limit:"none",indoor_allowed:true,outdoor_allowed:null})]);
+ });
  it("does not display an unknown requirement as unrestricted",()=>{
   render(<Rules rules={[unknownPetRule]}/>);
   expect(screen.getAllByText("未知").length).toBeGreaterThan(5);

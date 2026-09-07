@@ -45,7 +45,7 @@ requires verification, recovery and deletion before public activation.
 
 ## Definition of done
 
-- [ ] Additive fresh/upgrade migrations and community tables.
+- [x] Additive fresh/upgrade migrations and community tables.
 - [ ] Default-off, administrator-controlled feature policy and account verification.
 - [ ] Private S3 image lifecycle with decoding, metadata removal and short URLs.
 - [ ] Durable mail/deletion jobs with retries; existing planning remains available.
@@ -75,5 +75,9 @@ and private MinIO contracts. An ordered, same-member/same-post conversion funnel
 and scoped report-attachment authorization have regression coverage.
 Desktop/Pixel 7 real-service journeys reached the blocking checks; correcting
 the test contract distinguishes unfollow (403) from hidden blocked peers (404).
-Pet/account lifecycle browser acceptance and launch requirements remain open.
+CI 34133067407 passed 1,743 API tests with one skipped test, including fresh and
+legacy PostgreSQL schema upgrades. Desktop and Pixel 7 publication/message and
+SMTP reset/deletion journeys passed. Pet review browser acceptance still fails;
+the current run records the secondary administrator trace and bounded actions.
+Real reconnect/outage/capacity tests and production launch requirements remain open.
 Local Windows has no Docker/PostgreSQL. See docs/community.md for launch gates.
