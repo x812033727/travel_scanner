@@ -61,6 +61,28 @@ for (const locale of locales) {
   }
 }
 
+// Administrator copy overrides are keyed by namespace, and the API keeps its own allowlist
+// because it never sees these files. A namespace added here but not there is silently
+// uneditable; one removed here but left there lets an override outlive its catalog.
+const editable = namespaces.map((name) => name.replace(/\.json$/, "")).filter((name) => name !== "legacy");
+const allowlists = [
+  ["apps/api/app/ui_text/schemas.py", /UI_TEXT_NAMESPACES:[^=]*=\s*\(([^)]*)\)/],
+  ["apps/web/lib/ui-text.ts", /EDITABLE_NAMESPACES\s*=\s*\[([^\]]*)\]/],
+];
+for (const [file, pattern] of allowlists) {
+  const source = readFileSync(join(root, file), "utf8");
+  const declared = (source.match(pattern)?.[1].match(/"([A-Za-z]+)"/g) || [])
+    .map((quoted) => quoted.slice(1, -1))
+    .sort();
+  if (declared.join(",") !== [...editable].sort().join(",")) {
+    errors.push(
+      `${file}: the editable namespace allowlist differs from apps/web/messages minus legacy ` +
+        `(missing: ${editable.filter((name) => !declared.includes(name)).join(", ") || "none"}; ` +
+        `extra: ${declared.filter((name) => !editable.includes(name)).join(", ") || "none"})`,
+    );
+  }
+}
+
 function runGit(args) {
   return execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
 }
