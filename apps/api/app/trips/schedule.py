@@ -394,6 +394,8 @@ def _promote_legacy_flights(
 def _sync_lodging(item: TripPlanItem, lodging: dict[str, Any] | None) -> bool:
     if item.system_role not in {"hotel_start", "hotel_end"}:
         return False
+    if lodging and lodging.get("catalog_product_id") and (item.locked or item.fixed_time):
+        return False
     name = str((lodging or {}).get("name") or "尚未設定飯店")
     lodging_ready = bool(
         lodging

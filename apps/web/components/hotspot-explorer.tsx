@@ -7,6 +7,7 @@ import { useModalSheet } from "@/lib/modal-sheet";
 import { api } from "@/lib/api";
 import { HotspotRestaurantsPanel } from "@/components/hotspot-restaurants-panel";
 import { HotspotIntro } from "@/components/hotspot-intro";
+import { DestinationServicesLink } from "@/components/travel-services/catalog";
 import { HotspotThemeBadges, HotspotThemeChips } from "@/components/hotspot-theme-chips";
 import { useSavedItems } from "@/components/saved-items-provider";
 import { TravelCardActions } from "@/components/travel-card-actions";
@@ -222,6 +223,7 @@ function PlaceDetailsPanel({ hotspot, onClose }: { hotspot: RankedHotspot; onClo
           clamp={false}
           className="mb-6 rounded-2xl bg-white p-4"
         />
+        <DestinationServicesLink destinationId={hotspot.destination_id} hotspotId={hotspot.id} />
         {placeLoading && <div className="rounded-2xl bg-white p-6 text-sm text-[var(--muted)]">{t("placeLoading")}</div>}
         {placeError && <div role="alert" className="rounded-2xl bg-[var(--coral-soft)] p-6 text-sm">{t("placeError")}</div>}
         {!placeLoading && !placeError && place && <section className="mb-7 grid gap-4" aria-label={t("placeDetails")}>
@@ -515,6 +517,7 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
   }));
 
   return <main className="mx-auto min-h-screen max-w-6xl px-5 pb-20 md:px-8">
+    {city && <DestinationServicesLink destinationId={city} />}
     <section className="pb-7 pt-5 md:pb-9 md:pt-9">
       <p className="flex items-center gap-2 text-sm font-semibold text-[var(--teal)]"><Sparkles size={16} />{t("eyebrow")}</p>
       <div className="mt-3 flex flex-wrap items-end justify-between gap-4"><div><h1 className="text-3xl font-bold tracking-[-.035em] md:text-5xl">{t("title")}</h1><p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{t("description")}</p></div><div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--muted)]"><span className="font-semibold text-[var(--ink)]">{t("updated")}</span> {ranking?.observed_on || (error ? "—" : t("waiting"))}</div></div>

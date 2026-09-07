@@ -107,7 +107,11 @@ async function proxy(request: NextRequest, context: Context) {
     return problem(403, "cross_site_request_blocked", "不允許跨網站修改資料");
   }
   const base = process.env.API_INTERNAL_URL || "http://localhost:8000";
-  const url = `${base}/api/v1/${endpoint}${request.nextUrl.search}`;
+  const query = new URLSearchParams(request.nextUrl.search);
+  const isServiceClickout = /^affiliates\/offers\/[a-f0-9-]+\/clickout$/.test(endpoint);
+  const formLocale = isServiceClickout ? query.get("locale") : null;
+  if (isServiceClickout) query.delete("locale");
+  const url = `${base}/api/v1/${endpoint}${query.size ? `?${query}` : ""}`;
   const jar = await cookies();
   const token = jar.get("travel_access")?.value;
   const localeCookie = jar.get("travel_locale")?.value;
@@ -119,7 +123,7 @@ async function proxy(request: NextRequest, context: Context) {
   // tokens — so forwarding it as Authorization meant the renewal never ran and every
   // session died exactly one token lifetime after sign-in.
   if (token) headers.set("Cookie", `travel_access=${token}`);
-  headers.set("X-Travel-Locale", upstreamLocale(request.headers.get("x-travel-locale"), localeCookie));
+  headers.set("X-Travel-Locale", upstreamLocale(request.headers.get("x-travel-locale") || formLocale, localeCookie));
   for (const name of ["idempotency-key", "last-event-id"]) {
     const value = request.headers.get(name);
     if (value) headers.set(name, value);
@@ -157,7 +161,8 @@ async function proxy(request: NextRequest, context: Context) {
     }
   }
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), UPSTREAM_TIMEOUT_MS);
+  const verifyOffer = /^admin\/travel-services\/offers\/[a-f0-9-]+\/review$/.test(endpoint);
+  const timeout = setTimeout(() => controller.abort(), verifyOffer ? Math.max(45_000, UPSTREAM_TIMEOUT_MS) : UPSTREAM_TIMEOUT_MS);
   let upstream: Response;
   try {
     upstream = await fetch(url, {
@@ -179,7 +184,7 @@ async function proxy(request: NextRequest, context: Context) {
     if (!location) return problem(502, "unsafe_upstream_redirect", "API 回傳了不安全的轉址");
     return preserveRequestId(new Response(null, {
       status: upstream.status,
-      headers: { Location: location, "Cache-Control": "no-store" },
+      headers: { Location: location, "Cache-Control": "no-store", "Referrer-Policy": "no-referrer" },
     }), upstream);
   }
   if (upstream.headers.get("content-type")?.includes("text/event-stream")) {

@@ -29,13 +29,15 @@ from app.models import (
     RestaurantPlace,
     TravelFood,
     TravelHotspot,
+    TravelServiceFavorite,
+    TravelServiceProduct,
 )
 from app.problems import AppError
 
 router = APIRouter(prefix="/saved-items", tags=["saved items"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 RequestLocale = Annotated[Locale, Depends(current_locale)]
-SavedType = Literal["hotspot", "food", "restaurant", "merchant"]
+SavedType = Literal["hotspot", "food", "restaurant", "merchant", "service"]
 
 
 async def _hotspot(session: AsyncSession, item_id: str) -> TravelHotspot:
@@ -103,7 +105,9 @@ async def list_saved_items(
     user: CurrentUser,
     session: Session,
     locale: RequestLocale,
-    type: Annotated[Literal["all", "hotspot", "food", "restaurant", "merchant"], Query()] = "all",
+    type: Annotated[
+        Literal["all", "hotspot", "food", "restaurant", "merchant", "service"], Query()
+    ] = "all",
     limit: Annotated[int, Query(ge=1, le=100)] = 50,
 ) -> dict[str, Any]:
     items: list[dict[str, Any]] = []
@@ -262,6 +266,28 @@ async def list_saved_items(
                     "saved_at": favorite.created_at,
                 }
             )
+    if type in {"all", "service"}:
+        for favorite, product in (
+            await session.execute(
+                select(TravelServiceFavorite, TravelServiceProduct)
+                .join(
+                    TravelServiceProduct,
+                    TravelServiceProduct.id == TravelServiceFavorite.product_id,
+                )
+                .where(TravelServiceFavorite.user_id == user.id)
+            )
+        ).all():
+            items.append(
+                {
+                    "type": "service",
+                    "id": str(product.id),
+                    "title": product.names_json.get(locale) or product.title,
+                    "subtitle": product.destination_id,
+                    "map_links": [],
+                    "href": f"/destinations/{product.destination_id}/services?product={product.id}",
+                    "saved_at": favorite.created_at,
+                }
+            )
     items.sort(key=lambda item: item["saved_at"], reverse=True)
     items = items[:limit]
     return {"total": len(items), "has_more": False, "next_cursor": None, "items": items}
@@ -274,7 +300,28 @@ async def save_item(
     user: CurrentUser,
     session: Session,
 ) -> dict[str, object]:
-    if item_type == "hotspot":
+    if item_type == "service":
+        from sqlalchemy.dialects.postgresql import insert
+
+        from app.travel_services.service import catalog_config, product_enabled, fail
+
+        try:
+            product = await session.get(TravelServiceProduct, UUID(item_id))
+        except ValueError as exc:
+            raise fail("service_unavailable", 404) from exc
+        config, _ = await catalog_config(session)
+        if (
+            not product
+            or product.status != "approved"
+            or not product_enabled(config, product)
+        ):
+            raise fail("service_unavailable", 404)
+        await session.execute(
+            insert(TravelServiceFavorite)
+            .values(user_id=user.id, product_id=product.id)
+            .on_conflict_do_nothing(constraint="uq_service_favorite")
+        )
+    elif item_type == "hotspot":
         hotspot = await _hotspot(session, item_id)
         existing_hotspot = await session.scalar(
             select(HotspotFavorite).where(
@@ -325,7 +372,18 @@ async def delete_item(
     user: CurrentUser,
     session: Session,
 ) -> None:
-    if item_type == "hotspot":
+    if item_type == "service":
+        try:
+            product_id = UUID(item_id)
+        except ValueError as exc:
+            raise AppError(404, "saved_item_not_found", "saved_item_not_found") from exc
+        await session.execute(
+            delete(TravelServiceFavorite).where(
+                TravelServiceFavorite.user_id == user.id,
+                TravelServiceFavorite.product_id == product_id,
+            )
+        )
+    elif item_type == "hotspot":
         hotspot = await _hotspot(session, item_id)
         await session.execute(
             delete(HotspotFavorite).where(

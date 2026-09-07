@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**12 open · 0 in progress · 2 blocked · 0 in review · 153 done**
+**12 open · 1 in progress · 2 blocked · 0 in review · 153 done**
 
 ## Ready to claim
 
@@ -28,7 +28,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | codex-travel-services | 2026-09-07T07:57:23Z | `codex/contextual-travel-services` |
 
 ## In review
 

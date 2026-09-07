@@ -228,7 +228,11 @@ class ProviderResponse(Base):
 class AffiliateClick(Base):
     __tablename__ = "affiliate_clicks"
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
-    user_id: Mapped[UUID] = mapped_column(index=True)
+    user_id: Mapped[UUID | None] = mapped_column(nullable=True, index=True)
+    brand: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
+    service_type: Mapped[str | None] = mapped_column(String(16), nullable=True)
+    placement: Mapped[str | None] = mapped_column(String(24), nullable=True)
+    destination_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
     search_id: Mapped[UUID | None] = mapped_column(nullable=True, index=True)
     trip_id: Mapped[UUID | None] = mapped_column(nullable=True, index=True)
     offer_id: Mapped[UUID | None] = mapped_column(nullable=True, index=True)
@@ -239,6 +243,117 @@ class AffiliateClick(Base):
     target_host: Mapped[str] = mapped_column(String(255))
     status: Mapped[str] = mapped_column(String(32), default="redirected")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class TravelServiceProduct(Timestamped, Base):
+    __tablename__ = "travel_service_products"
+    __table_args__ = (
+        CheckConstraint("kind IN ('hotel','transfer','tour','esim')", name="ck_service_kind"),
+        CheckConstraint("status IN ('pending','approved','disabled')", name="ck_service_status"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    source_key: Mapped[str] = mapped_column(String(255), unique=True)
+    kind: Mapped[str] = mapped_column(String(16), index=True)
+    destination_id: Mapped[str] = mapped_column(String(64), index=True)
+    title: Mapped[str] = mapped_column(String(255))
+    names_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    facts: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    source_url: Mapped[str] = mapped_column(String(2048))
+    status: Mapped[str] = mapped_column(String(16), default="pending", index=True)
+    version: Mapped[int] = mapped_column(Integer, default=1)
+    verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class TravelServiceBrand(Timestamped, Base):
+    __tablename__ = "travel_service_brands"
+    __table_args__ = (
+        UniqueConstraint("project_id", "code", name="uq_service_brand_project"),
+        CheckConstraint(
+            "approval IN ('unknown','pending','approved','rejected')", name="ck_brand_approval"
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    project_id: Mapped[str] = mapped_column(String(32), index=True)
+    code: Mapped[str] = mapped_column(String(64))
+    approval: Mapped[str] = mapped_column(String(16), default="unknown")
+    enabled: Mapped[bool] = mapped_column(Boolean, default=False)
+    version: Mapped[int] = mapped_column(Integer, default=1)
+    evidence_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class TravelServiceOffer(Timestamped, Base):
+    __tablename__ = "travel_service_offers"
+    __table_args__ = (
+        UniqueConstraint("brand_id", "target_url", name="uq_service_offer_target"),
+        CheckConstraint(
+            "status IN ('pending','approved','disabled')", name="ck_service_offer_status"
+        ),
+        CheckConstraint("scope IN ('product','destination')", name="ck_service_offer_scope"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    product_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_service_products.id", ondelete="CASCADE"), index=True
+    )
+    brand_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_service_brands.id", ondelete="CASCADE"), index=True
+    )
+    target_url: Mapped[str] = mapped_column(String(2048))
+    static_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    verification_context: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    scope: Mapped[str] = mapped_column(String(16), default="product")
+    status: Mapped[str] = mapped_column(String(16), default="pending", index=True)
+    version: Mapped[int] = mapped_column(Integer, default=1)
+    verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class TripServiceSelection(Timestamped, Base):
+    __tablename__ = "trip_service_selections"
+    __table_args__ = (
+        UniqueConstraint("trip_id", "idempotency_key", name="uq_trip_service_operation"),
+        UniqueConstraint("trip_id", "product_id", name="uq_trip_service_product"),
+        CheckConstraint("status IN ('planned','booked','cancelled')", name="ck_selection_status"),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    trip_id: Mapped[UUID] = mapped_column(
+        ForeignKey("trip_plans.id", ondelete="CASCADE"), index=True
+    )
+    product_id: Mapped[UUID] = mapped_column(ForeignKey("travel_service_products.id"), index=True)
+    item_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("trip_plan_items.id", ondelete="SET NULL"), nullable=True
+    )
+    idempotency_key: Mapped[str] = mapped_column(String(128))
+    request_hash: Mapped[str] = mapped_column(String(64))
+    status: Mapped[str] = mapped_column(String(16), default="planned")
+    details: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+
+
+class TravelServiceFavorite(Timestamped, Base):
+    __tablename__ = "travel_service_favorites"
+    __table_args__ = (UniqueConstraint("user_id", "product_id", name="uq_service_favorite"),)
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    product_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_service_products.id", ondelete="CASCADE"), index=True
+    )
+
+
+class TravelServiceConfig(Timestamped, Base):
+    __tablename__ = "travel_service_config"
+    id: Mapped[int] = mapped_column(primary_key=True, default=1)
+    data: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    version: Mapped[int] = mapped_column(Integer, default=1)
+
+
+class TravelServiceImport(Timestamped, Base):
+    __tablename__ = "travel_service_imports"
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    actor_id: Mapped[UUID | None] = mapped_column(ForeignKey("users.id"), nullable=True)
+    source: Mapped[str] = mapped_column(String(32))
+    status: Mapped[str] = mapped_column(String(16), default="preview")
+    rows_json: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
+    result_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
 
 
 class AnalyticsEvent(Base):
