@@ -5,7 +5,7 @@ import { applyUiTextOverrides } from "../lib/ui-text";
 import { getUiTextOverrides } from "../lib/ui-text.server";
 import { routing } from "./routing";
 
-const namespaces = ["common", "metadata", "navigation", "auth", "search", "trips", "alerts", "pricing", "usage", "account", "admin", "availability", "errors", "legacy", "hotspots", "hotspotAdmin", "hotspotThemes", "restaurants", "foods", "foodAdmin", "catalogReview", "newTrip", "stayAreas", "travelServices"] as const;
+const namespaces = ["community", "common", "metadata", "navigation", "auth", "search", "trips", "alerts", "pricing", "usage", "account", "admin", "availability", "errors", "legacy", "hotspots", "hotspotAdmin", "hotspotThemes", "restaurants", "foods", "foodAdmin", "catalogReview", "newTrip", "stayAreas", "travelServices"] as const;
 
 export default getRequestConfig(async ({ requestLocale }) => {
   const requested = await requestLocale;

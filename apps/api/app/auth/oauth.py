@@ -178,9 +178,7 @@ async def start_oauth(
     )
 
 
-async def _jwks(
-    redis: Redis, client: httpx.AsyncClient, provider: str, url: str
-) -> dict[str, Any]:
+async def _jwks(redis: Redis, client: httpx.AsyncClient, provider: str, url: str) -> dict[str, Any]:
     cache_key = f"oauth-jwks:{provider}"
     cached = await redis.get(cache_key)
     if cached:
@@ -460,14 +458,18 @@ async def exchange_oauth(
         session.add(user)
         await session.flush()
         await create_usage_account(session, user)
-        identity = UserAuthIdentity(
-            user_id=user.id, provider=provider, subject=profile.subject
-        )
+        identity = UserAuthIdentity(user_id=user.id, provider=provider, subject=profile.subject)
         session.add(identity)
         created = True
 
     identity.provider_email = profile.email
     identity.email_verified = profile.email_verified
+    if (
+        profile.email_verified
+        and profile.email
+        and profile.email.casefold() == user.email.casefold()
+    ):
+        user.email_verified_at = user.email_verified_at or datetime.now(UTC)
     identity.last_login_at = datetime.now(UTC)
     if provider == "apple" and profile.refresh_token:
         identity.refresh_token_encrypted = encrypt_refresh_token(profile.refresh_token, settings)
@@ -491,9 +493,7 @@ async def active_identities(session: AsyncSession, user_id: Any) -> list[UserAut
     return list(rows)
 
 
-async def revoke_identity(
-    session: AsyncSession, user: User, identity_id: Any
-) -> UserAuthIdentity:
+async def revoke_identity(session: AsyncSession, user: User, identity_id: Any) -> UserAuthIdentity:
     identity = await session.get(UserAuthIdentity, identity_id)
     if identity is None or identity.user_id != user.id or identity.revoked_at is not None:
         raise AppError(404, "oauth_identity_not_found", "找不到這個登入方式")
@@ -514,9 +514,7 @@ async def revoke_identity(
     return identity
 
 
-async def attempt_provider_revocation(
-    session: AsyncSession, identity: UserAuthIdentity
-) -> bool:
+async def attempt_provider_revocation(session: AsyncSession, identity: UserAuthIdentity) -> bool:
     if not identity.revocation_pending or identity.provider != "apple":
         return True
     settings = await load_runtime_settings(session)

@@ -230,7 +230,10 @@ test("the admin sidebar shows which page you are on", async ({ page }) => {
   await expect(current).toBeVisible();
   // `a { color: inherit }` written outside a layer used to beat `text-white`, so the
   // current page rendered as ink on ink: a 1:1 pill with no label in it.
-  expect(await contrastOf(current)).toBeGreaterThanOrEqual(MIN_CONTRAST);
+  // Session hydration can change the selected link while its color transition
+  // is running. Assert the settled, rendered contrast rather than a single
+  // interpolated frame; a persistent contrast failure still fails this test.
+  await expect.poll(() => contrastOf(current)).toBeGreaterThanOrEqual(MIN_CONTRAST);
 });
 
 test("every filter chip is on screen, and a long row says how many it folded away", async ({ page }) => {

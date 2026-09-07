@@ -16,6 +16,7 @@ QUEUE_NAMES = (
     "analytics",
     "travel-services",
     "auth-revocations",
+    "community",
 )
 
 

@@ -1,10 +1,11 @@
 "use client";
 
-import { Bell, Compass, MapPinned, Route, UserRound } from "lucide-react";
+import { Bell, Compass, Home, MapPinned, MessageCircle, PlusSquare, Route, UserRound, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { featureVisible, type SiteFeature } from "@/lib/site-features";
+import { useCommunity } from "@/components/community/provider";
 
 const items: ReadonlyArray<{
   key: string;
@@ -43,10 +44,19 @@ export function AppBottomNav() {
   const pathname = usePathname();
   const t = useTranslations("navigation");
   const visibility = useSiteVisibility();
+  const community = useCommunity();
+  const tc = useTranslations("community");
+  const socialItems: typeof items = [
+    { key: "home", href: "/", icon: Home, matches: ["/"] },
+    { key: "title", href: "/community", icon: Users, matches: ["/community"] },
+    ...(community.flags.posting_enabled ? [{ key: "publish", href: "/community/new", icon: PlusSquare, matches: ["/community/new"] }] : []),
+    { key: "messages", href: "/community/messages", icon: MessageCircle, matches: ["/community/messages"] },
+    { key: "my", href: "/my", icon: UserRound, matches: ["/my", "/account", "/community/settings", "/community/collections", "/community/drafts"] },
+  ];
   // The desktop header already honours the admin feature switches; the phone
   // tab bar must not keep advertising a page the site has turned off. Explore
   // survives a paused hotspots page by pointing at foods instead of vanishing.
-  const visibleItems = items.flatMap((item) => {
+  const visibleItems = (community.flags.enabled ? socialItems : items).flatMap((item) => {
     if (!item.feature || featureVisible(visibility, item.feature)) return [item];
     return item.fallbackHref ? [{ ...item, href: item.fallbackHref }] : [];
   });
@@ -61,7 +71,11 @@ export function AppBottomNav() {
   return (
     <nav aria-label={t("mobileLabel")} className="app-bottom-nav lg:hidden" style={{ gridTemplateColumns: `repeat(${visibleItems.length}, minmax(0, 1fr))` }}>
       {visibleItems.map((item) => {
-        const active =
+        const active = community.flags.enabled
+          ? item.key === "title"
+            ? normalizedPath.startsWith("/community") && !socialItems.filter((other) => other.key !== "title").some((other) => other.matches.some((prefix) => prefix !== "/" && normalizedPath.startsWith(prefix)))
+            : item.matches.some((prefix) => prefix === "/" ? normalizedPath === "/" : normalizedPath.startsWith(prefix))
+          :
           item.key === "bottomTrips" && normalizedPath === "/trips/new"
             ? false
             : item.matches.some((prefix) =>
@@ -78,7 +92,7 @@ export function AppBottomNav() {
             className={`app-bottom-nav-item ${active ? "app-bottom-nav-item-active" : ""}`}
           >
             <Icon aria-hidden size={20} strokeWidth={active ? 2.5 : 2} />
-            <span>{t(item.key)}</span>
+            <span>{community.flags.enabled ? tc(item.key) : t(item.key)}{item.key === "messages" && community.unread > 0 ? ` (${community.unread})` : ""}</span>
           </Link>
         );
       })}

@@ -4,6 +4,22 @@ Mokaair is a mock-first, API-first travel comparison MVP. It combines
 flights, hotels, activities, and transportation into complete trip plans and
 explains the trade-off between the cheapest, balanced, and comfortable choices.
 
+## Community and pet-friendly travel (private rollout)
+
+The opt-in community adds five-language public profiles, moderated photo posts,
+independent public itinerary snapshots, free private copies, follows, comments,
+private collections, mutual-follow messages and in-app notifications. Reviewed
+pet rules are kept separate from traveller reports; unknown conditions never
+count as compatible. Existing travel tools and usage charging remain available.
+
+`COMMUNITY_ENABLED=false` is the default. Administrators manage API-enforced
+switches and limits at `/admin/community`, and verified place rules and evidence
+at `/admin/pet-friendly`. A saved database setting overrides the environment
+default. Do not activate the public community until its acceptance checklist,
+storage, mail, translation capacity, moderation staffing and public legal/contact
+pages have been completed. See [the community operations guide](docs/community.md)
+for setup, privacy boundaries, acceptance commands and outstanding launch gates.
+
 ## Brand
 
 The public product name is **Mokaair**. The primary wordmark is typography-only:

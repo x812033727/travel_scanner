@@ -19,12 +19,14 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { MokaairLogo } from "@/components/mokaair-logo";
 import { Link, usePathname } from "@/i18n/navigation";
-import { api } from "@/lib/api";
+import { useHeaderSession } from "@/components/header-session";
 
 const items = [
   { key: "dashboard", href: "/admin", icon: LayoutDashboard },
   { key: "analytics", href: "/admin/analytics", icon: BarChart3 },
   { key: "users", href: "/admin/users", icon: UsersRound },
+  { key: "community", href: "/admin/community", icon: UsersRound },
+  { key: "pets", href: "/admin/pet-friendly", icon: ClipboardCheck },
   { key: "hotspots", href: "/admin/hotspots", icon: Database },
   { key: "foods", href: "/admin/foods", icon: Soup },
   { key: "catalogReview", href: "/admin/catalog-review", icon: ClipboardCheck },
@@ -46,7 +48,10 @@ export function AdminNav({ current }: { current?: string } = {}) {
   const t = useTranslations("admin.navigation");
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [canDeploy, setCanDeploy] = useState(false);
+  const { user } = useHeaderSession();
+  const canDeploy = Boolean(user?.can_deploy);
+  const tc = useTranslations("community");
+  const label = (key: string) => key === "community" ? tc("adminCommunity") : key === "pets" ? tc("adminPets") : t(key);
   const [query, setQuery] = useState("");
   const [desktopNav, setDesktopNav] = useState(false);
 
@@ -72,14 +77,9 @@ export function AdminNav({ current }: { current?: string } = {}) {
       document.body.style.overflow = previousOverflow;
     };
   }, [open]);
-  useEffect(() => {
-    api<{ can_deploy?: boolean }>("/auth/me")
-      .then((user) => setCanDeploy(Boolean(user.can_deploy)))
-      .catch(() => undefined);
-  }, []);
   const links = items.filter((item) => !("deploy" in item) || canDeploy);
   const visibleLinks = links.filter((item) =>
-    t(item.key).toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()),
+    label(item.key).toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()),
   );
   const legacyCurrentHref: Record<string, string> = {
     dashboard: "/admin",
@@ -134,7 +134,7 @@ export function AdminNav({ current }: { current?: string } = {}) {
               className={`flex min-h-11 items-center gap-3 rounded-xl px-3 text-sm font-semibold transition ${active ? "bg-[var(--ink)] text-white shadow-sm" : "text-[var(--muted)] hover:bg-[var(--teal-soft)] hover:text-[var(--teal-dark)]"}`}
             >
               <Icon size={18} />
-              <span>{t(item.key)}</span>
+              <span>{label(item.key)}</span>
             </Link>
           );
         })}

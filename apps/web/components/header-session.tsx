@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { useLocale } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { usePathname, useRouter } from "@/i18n/navigation";
@@ -16,17 +16,20 @@ export type HeaderUser = {
   id: string;
   email: string;
   is_admin?: boolean;
+  can_deploy?: boolean;
   preferred_locale?: string;
   preferred_currency?: string;
   has_password?: boolean;
   auth_methods?: string[];
   identity_count?: number;
+  email_verified?: boolean;
 };
 
 type HeaderSessionValue = {
   status: "loading" | "authenticated" | "signed_out" | "unavailable";
   user: HeaderUser | null;
   setUser: (user: HeaderUser) => void;
+  clearSession: () => void;
   logout: () => Promise<void>;
 };
 
@@ -34,6 +37,7 @@ const HeaderSessionContext = createContext<HeaderSessionValue>({
   status: "loading",
   user: null,
   setUser: () => undefined,
+  clearSession: () => undefined,
   logout: async () => undefined,
 });
 
@@ -96,20 +100,31 @@ export function HeaderSessionProvider({
       });
   }, [hasSession, locale, pathname, router, searchParams]);
 
-  async function logout() {
+  const clearSession = useCallback(() => {
     requestId.current += 1;
-    try { await api("/auth/logout", { method: "POST" }); } catch { /* BFF clears the cookie. */ }
     // The offline worker holds this member's trip payload — hotel addresses and private
     // notes. Signing out on a shared phone has to take it with it.
     navigator.serviceWorker?.controller?.postMessage({ type: "signed-out" });
     setUser(null);
     setStatus("signed_out");
+  }, []);
+
+  const authenticate = useCallback((currentUser: HeaderUser) => {
+    requestId.current += 1;
+    setUser(currentUser);
+    setStatus("authenticated");
+  }, []);
+
+  async function logout() {
+    requestId.current += 1;
+    try { await api("/auth/logout", { method: "POST" }); } catch { /* BFF clears the cookie. */ }
+    clearSession();
     router.push("/");
     router.refresh();
   }
 
   return (
-    <HeaderSessionContext.Provider value={{ status, user, setUser, logout }}>
+    <HeaderSessionContext.Provider value={{ status, user, clearSession, logout, setUser: authenticate }}>
       {children}
     </HeaderSessionContext.Provider>
   );

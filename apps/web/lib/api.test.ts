@@ -36,6 +36,17 @@ describe("API error messages in other locales", () => {
     expect(apiProblemMessage({ code: "trip_not_found", detail: "Trip not found" }, 404)).toBe("Trip not found");
   });
 
+  it.each([
+    ["zh-TW", "目前沒有足夠且符合寵物條件的已查核場所"],
+    ["zh-CN", "目前没有足够且符合宠物条件的已查核场所"],
+    ["en", "Not enough verified places match your pet's needs"],
+    ["ja", "条件に合う確認済み施設が不足しています"],
+    ["ko", "반려동물 조건에 맞는 검증된 장소가 부족합니다"],
+  ])("explains conservative pet planning failures in %s", (locale, expected) => {
+    document.documentElement.lang = locale;
+    expect(apiProblemMessage({ code: "pet_candidates_insufficient", detail: "pet_candidates_insufficient" }, 422)).toContain(expected);
+  });
+
   it("falls back to a localized generic failure", () => {
     document.documentElement.lang = "en";
     expect(apiProblemMessage({ detail: { unexpected: true } }, 500)).toBe("Something went wrong. Please try again. (HTTP 500)");

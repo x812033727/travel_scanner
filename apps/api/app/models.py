@@ -22,6 +22,10 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+# Register the additive community tables with the same metadata as the monolith.
+# Community models depend only on Base; Timestamped is defined in that module.
+from app.community import models as community_models  # noqa: F401
+from app.community import pet_models  # noqa: F401
 from app.db import Base
 
 
@@ -46,6 +50,10 @@ class User(Timestamped, Base):
     auth_version: Mapped[int] = mapped_column(Integer, default=1)
     preferred_locale: Mapped[str] = mapped_column(String(16), default="zh-TW")
     preferred_currency: Mapped[str] = mapped_column(String(3), default="TWD", server_default="TWD")
+    email_verified_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True,
+    )
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
 
 class UserAuthIdentity(Timestamped, Base):

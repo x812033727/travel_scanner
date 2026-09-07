@@ -1359,7 +1359,11 @@ async def _load_trip_candidates(
         trip_start_date=trip.start_date,
         trip_end_date=trip.end_date,
     )
-    return [*catalogue, *await _inbox_candidates(session, trip.id)]
+    candidates = [*catalogue, *await _inbox_candidates(session, trip.id)]
+    if preferences.pet_companion:
+        from app.community.pet_planning import filter_candidates
+        return await filter_candidates(session, candidates, preferences.pet_companion)
+    return candidates
 
 
 async def _load_ai_planner_candidates(
@@ -1465,6 +1469,9 @@ async def _load_ai_planner_candidates(
                 rank=rank,
             )
         )
+    if preferences.pet_companion:
+        from app.community.pet_planning import filter_candidates
+        return await filter_candidates(session, candidates, preferences.pet_companion)
     return candidates
 
 

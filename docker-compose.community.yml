@@ -1,0 +1,51 @@
+# Local/CI companion only. Public development credentials must never be used in production.
+# docker compose -f docker-compose.yml -f docker-compose.community.yml up --build
+services:
+  community-storage:
+    image: minio/minio:latest
+    command: ["server", "/data"]
+    environment:
+      MINIO_ROOT_USER: mokaair-local
+      MINIO_ROOT_PASSWORD: mokaair-local-only-password
+      MINIO_API_CORS_ALLOW_ORIGIN: http://localhost:3000,http://127.0.0.1:3000
+    ports: ["127.0.0.1:9000:9000"]
+    volumes: ["community_images:/data"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  community-storage-init:
+    image: minio/mc:latest
+    depends_on:
+      community-storage: { condition: service_healthy }
+    entrypoint: ["/bin/sh", "-ec"]
+    command:
+      - |
+        mc alias set local http://community-storage:9000 mokaair-local mokaair-local-only-password
+        mc mb --ignore-existing local/mokaair-community
+        mc anonymous set none local/mokaair-community
+  community-mail:
+    image: axllent/mailpit:latest
+    ports: ["127.0.0.1:8025:8025", "127.0.0.1:1025:1025"]
+  api:
+    environment: &community-development
+      COMMUNITY_S3_ENDPOINT: http://community-storage:9000
+      COMMUNITY_S3_PUBLIC_ENDPOINT: http://localhost:9000
+      COMMUNITY_S3_ACCESS_KEY: mokaair-local
+      COMMUNITY_S3_SECRET_KEY: mokaair-local-only-password
+      COMMUNITY_SMTP_HOST: community-mail
+      COMMUNITY_SMTP_PORT: "1025"
+      COMMUNITY_SMTP_STARTTLS: "false"
+      COMMUNITY_MAIL_FROM: Mokaair <accounts@localhost.test>
+    depends_on:
+      community-storage-init: { condition: service_completed_successfully }
+  worker:
+    environment: *community-development
+  web:
+    environment:
+      COMMUNITY_MEDIA_ORIGIN: http://localhost:9000
+  community-sweeper:
+    environment: *community-development
+volumes:
+  community_images:

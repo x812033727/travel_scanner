@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { type FormEvent, useState, useSyncExternalStore } from "react";
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { ApiError, api } from "@/lib/api";
 import { trackAnalytics } from "@/lib/analytics";
@@ -13,6 +13,7 @@ export function AuthForm({ mode, nextPath = "/", oauthError }: { mode: "login" |
   const router = useRouter();
   const locale = useLocale() as Locale;
   const t = useTranslations("auth");
+  const community = useTranslations("community");
   const [error, setError] = useState<string>();
   const [busy, setBusy] = useState(false);
   const ready = useSyncExternalStore(
@@ -41,5 +42,5 @@ export function AuthForm({ mode, nextPath = "/", oauthError }: { mode: "login" |
       setBusy(false);
     }
   }
-  return <><SocialLoginButtons nextPath={nextPath} oauthError={oauthError} /><form onSubmit={submit} className="space-y-4"><label className="block text-sm font-semibold">{t("email")}<input required disabled={!ready} autoComplete="email" type="email" name="email" value={email} onChange={(event) => setEmail(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] p-3 font-normal disabled:opacity-60" /></label><label className="block text-sm font-semibold">{t("password")}<input required disabled={!ready} minLength={mode === "register" ? 10 : undefined} autoComplete={mode === "login" ? "current-password" : "new-password"} type="password" name="password" value={password} onChange={(event) => setPassword(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] p-3 font-normal disabled:opacity-60" />{mode === "register" && <span className="mt-1 block text-xs font-normal text-[var(--muted)]">{t("passwordHint")}</span>}</label>{error && <p role="alert" className="text-sm text-red-700">{error}</p>}<button disabled={!ready || busy} className="w-full rounded-xl bg-[var(--teal)] p-3.5 font-semibold text-white disabled:opacity-50">{busy ? t("working") : mode === "login" ? t("signIn") : t("createAccount")}</button></form></>;
+  return <><SocialLoginButtons nextPath={nextPath} oauthError={oauthError} /><form onSubmit={submit} className="space-y-4"><label className="block text-sm font-semibold">{t("email")}<input required disabled={!ready} autoComplete="email" type="email" name="email" value={email} onChange={(event) => setEmail(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] p-3 font-normal disabled:opacity-60" /></label><label className="block text-sm font-semibold">{t("password")}<input required disabled={!ready} minLength={mode === "register" ? 10 : undefined} autoComplete={mode === "login" ? "current-password" : "new-password"} type="password" name="password" value={password} onChange={(event) => setPassword(event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] p-3 font-normal disabled:opacity-60" />{mode === "register" && <span className="mt-1 block text-xs font-normal text-[var(--muted)]">{t("passwordHint")}</span>}</label>{error && <p role="alert" className="text-sm text-red-700">{error}</p>}<button disabled={!ready || busy} className="w-full rounded-xl bg-[var(--teal)] p-3.5 font-semibold text-white disabled:opacity-50">{busy ? t("working") : mode === "login" ? t("signIn") : t("createAccount")}</button></form>{mode === "login" && <Link href="/forgot-password" className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--teal)] underline">{community("forgotPassword")}</Link>}</>;
 }

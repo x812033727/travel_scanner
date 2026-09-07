@@ -1,0 +1,122 @@
+---
+id: 2026-09-07-mokaair-community-web
+title: Mokaair community responsive web and five-language experience
+status: open
+priority: P1
+area: web
+owner:
+claimed_at:
+created_at: 2026-09-07T10:14:21Z
+completed_at:
+branch: codex/mokaair-community
+depends_on: []
+scope:
+  - apps/web/lib/api.ts
+  - apps/web/lib/api.test.ts
+  - apps/web/e2e/readability.spec.ts
+  - apps/web/components/community
+  - apps/web/app/[locale]/community
+  - apps/web/app/[locale]/pet-friendly
+  - apps/web/app/[locale]/my
+  - apps/web/app/[locale]/explore
+  - apps/web/app/[locale]/account/confirm
+  - apps/web/app/[locale]/forgot-password
+  - apps/web/app/[locale]/admin/community
+  - apps/web/app/[locale]/admin/pet-friendly
+  - apps/web/app/[locale]/page.tsx
+  - apps/web/app/[locale]/layout.tsx
+  - apps/web/app/[locale]/account/page.tsx
+  - apps/web/app/api/travel
+  - apps/web/lib/community
+  - apps/web/messages
+  - apps/web/i18n/request.ts
+  - apps/web/components/site-navigation.tsx
+  - apps/web/components/mobile-nav.tsx
+  - apps/web/components/app-bottom-nav.tsx
+  - apps/web/components/admin-nav.tsx
+  - apps/web/components/header-session.tsx
+  - apps/web/components/trip-editor.tsx
+  - apps/web/e2e/community.spec.ts
+  - apps/web/public/sw.js
+  - README.md
+  - apps/web/lib/csp.ts
+  - apps/web/lib/csp.test.ts
+  - apps/web/lib/ui-text.ts
+  - apps/web/lib/ui-text.test.ts
+  - apps/web/vitest.setup.tsx
+  - apps/web/components/admin-nav.test.tsx
+---
+
+# Mokaair community responsive web and five-language experience
+
+## Why
+
+Deliver the approved international travel community and reviewed pet-friendly
+experience within the existing five-locale Web/PWA, without exposing private trips.
+
+## Definition of done
+
+- [ ] Responsive discovery, publishing, profiles, collections, messaging and moderation work.
+- [ ] Pet filters and trip companion requirements expose uncertainty instead of guessing.
+- [x] New copy exists in all five catalogs; closed/unavailable states fail safely.
+- [ ] Web tests, i18n, TypeScript, lint, production build and desktop/Pixel 7 flows pass.
+
+## Steps
+
+- [ ] Shared state, accessible UI and conservative server-side feature gates.
+- [ ] Wire all content, social, pet and administration flows to the real BFF.
+- [ ] Verify permissions, responsive layout, keyboard controls and service failures.
+
+## How to verify
+
+Run npm run test:web, check:i18n, typecheck:web, lint:web and build:web. Run the
+community Playwright suite on desktop and Pixel 7 against isolated services.
+
+## Notes
+
+Checkpoint: rebased onto main 54009ba. CI 34130887751 passed Web components,
+TypeScript, lint, five-locale checks, the default production build and isolated
+desktop/Pixel 7 UI tests. Existing real-stack travel journeys also pass after
+fixing a community Provider remount which reset core forms during auth hydration.
+New regressions preserve core state and prevent cross-account community caches.
+The real SMTP/MinIO community journey reached blocking on both devices; update
+assertions to distinguish an unfollowed read-only thread from a hidden blocked
+thread, and verify rejected writes never enter delivered history.
+Pet/account lifecycle browser acceptance remains open. Local Webpack build passes;
+default Turbopack cannot use this workspace's shared node_modules junction.
+Draft PR #340 must not enable production or claim complete plan acceptance.
+
+Follow-up: CI 34133067407 passed 130 component files, 172 isolated browser tests,
+and four real-service community journeys (publication/messages and SMTP
+reset/deletion on desktop and Pixel 7). Both pet-review journeys still time out;
+retain secondary admin traces and preserve the original failing action on teardown.
+Scoped image retry and shared-session reset/verification regressions pass locally.
+Pet AI candidate failures now use the five-language catalog in ordinary trip tools.
+General hotspot/merchant associations now use a shared search picker and typed
+reference contract. The editor retains selections on error and saves only IDs;
+previews, moderation and public posts display server-resolved place names/links.
+Focused component tests cover edits, retries, duplicates, limits and layout gates.
+Exact-head real-service acceptance is still required.
+
+CI 34135827036 confirms desktop/Pixel 7 pet species filters after the auth-hydration
+fix. The next pet test step must open the current planner's tools drawer first.
+A test-only TypeScript role-option error also needs the next full CI verification.
+
+Integrated main f2c3b2a. BFF timeout resolution retains community streams/media,
+hotel clickouts, booking-option review and hotel quote-search deadlines together.
+The next CI run must validate the actual merge with main, not only the feature head.
+
+CI 34137517824 / 43d0481 passed 132 Web component files, 208 isolated browser
+tests, typecheck, lint, five-locale catalogs and default production builds.
+Real pet tests exposed initial preference loading overwriting early edits.
+e096aeb disables those controls until loaded, preserves dirty drafts and their
+CAS version, and binds conflict confirmation to its original version. New focused
+regressions pass; the expanded real reconnect and pet flows await full CI.
+
+Full CI 34138592625 / e096aeb passed 779 component tests, 208 isolated browser
+tests and all six real community journeys, including offline catch-up and pet
+place publication. A repeat exposed a backend comment/fork deadlock; fork E2E
+now records the POST result directly so server errors are not hidden by a URL timeout.
+
+Built on isolated main 516713d. The existing forgot-password task owns the login
+entry; this task owns the new confirmation/recovery UI and public community pages.

@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminNav } from "./admin-nav";
+import { HeaderSessionProvider } from "./header-session";
 
 describe("AdminNav", () => {
   afterEach(() => vi.unstubAllGlobals());
@@ -12,6 +13,8 @@ describe("AdminNav", () => {
       "營運總覽",
       "流量與分析",
       "會員與次數",
+      "社群管理",
+      "寵物友善管理",
       "景點候選審核",
       "美食目錄管理",
       "Gemini 目錄審核",
@@ -26,6 +29,8 @@ describe("AdminNav", () => {
       "/admin",
       "/admin/analytics",
       "/admin/users",
+      "/admin/community",
+      "/admin/pet-friendly",
       "/admin/hotspots",
       "/admin/foods",
       "/admin/catalog-review",
@@ -52,7 +57,7 @@ describe("AdminNav", () => {
         ),
       ),
     );
-    render(<AdminNav current="deployments" />);
+    render(<HeaderSessionProvider><AdminNav current="deployments" /></HeaderSessionProvider>);
     const link = await screen.findByRole("link", { name: "部署中心" });
     expect(link.getAttribute("href")).toBe("/admin/deployments");
     expect(link.getAttribute("aria-current")).toBe("page");

@@ -10,7 +10,10 @@ vi.mock("@/lib/api", async () => {
   const actual = await vi.importActual<typeof import("@/lib/api")>("@/lib/api");
   return { ...actual, api: (...args: unknown[]) => apiMock(...args) };
 });
-vi.mock("@/i18n/navigation", () => ({ useRouter: () => ({ push: pushMock, refresh: refreshMock }) }));
+vi.mock("@/i18n/navigation", () => ({
+  useRouter: () => ({ push: pushMock, refresh: refreshMock }),
+  Link: ({ href, children }: { href: string; children: React.ReactNode }) => <a href={href}>{children}</a>,
+}));
 
 describe("AuthForm", () => {
   beforeEach(() => { apiMock.mockReset(); pushMock.mockReset(); refreshMock.mockReset(); });

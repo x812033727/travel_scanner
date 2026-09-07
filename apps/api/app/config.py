@@ -92,6 +92,19 @@ class Settings(BaseSettings):
     app_secret_key: str = "development-secret-change-me-please-32"
     settings_encryption_key: str | None = None
     admin_emails: str = ""
+    community_enabled: bool = False
+    community_s3_endpoint: str | None = None
+    community_s3_public_endpoint: str | None = None
+    community_s3_region: str = "us-east-1"
+    community_s3_bucket: str = "mokaair-community"
+    community_s3_access_key: str | None = None
+    community_s3_secret_key: str | None = None
+    community_smtp_host: str | None = None
+    community_smtp_port: int = Field(default=587, ge=1, le=65535)
+    community_smtp_starttls: bool = True
+    community_smtp_username: str | None = None
+    community_smtp_password: str | None = None
+    community_mail_from: str = ""
     deployments_enabled: bool = False
     deploy_admin_emails: str = ""
     deploy_agent_socket: str = "/run/travel-scanner-deployer/deployer.sock"
