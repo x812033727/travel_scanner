@@ -15,7 +15,8 @@
     "hotspots": "Hotspot review",
     "foods": "Food catalog",
     "analytics": "Traffic & analytics",
-    "deployments": "Deployments"
+    "deployments": "Deployments",
+    "uiText": "Site copy"
   },
   "providerTabs": {
     "label": "API provider settings tabs",
@@ -1403,5 +1404,87 @@
     "auditProviderHint": "Records only the changed field names, the actor and test results, never key material.",
     "auditEmpty": "No admin activity yet.",
     "testResult": "{message} ({latency} ms)"
+  },
+  "uiText": {
+  "eyebrow": "SYSTEM ADMIN",
+  "title": "Site copy",
+  "description": "Change the wording readers see, one locale at a time. The translation files shipped with the app are the defaults; only your overrides are stored here. Clear a field and save to restore the default. Changes apply on the next page load.",
+  "loading": "Loading overrides…",
+  "namespaceLabel": "Text group",
+  "namespaceOption": "{label} ({namespace}, {count} keys)",
+  "targetLocaleLabel": "Editing locale",
+  "referenceLocaleLabel": "Reference locale",
+  "searchLabel": "Search keys or text",
+  "searchPlaceholder": "Key, default or override text",
+  "empty": "Nothing matches.",
+  "filters": {
+    "label": "Filter copy",
+    "all": "All",
+    "overridden": "Overridden",
+    "dirty": "Unsaved",
+    "parameters": "With placeholders",
+    "orphans": "Orphaned"
+  },
+  "row": {
+    "defaultLabel": "Default",
+    "referenceLabel": "Reference ({locale})",
+    "parametersLabel": "Placeholders",
+    "overridden": "Overridden",
+    "dirty": "Unsaved",
+    "pendingRestore": "Restores on save",
+    "orphan": "Orphaned",
+    "orphanHelp": "This key is no longer in the app, so the override is shown nowhere. Restore the default and save to remove it.",
+    "advancedIcu": "Has plural rules",
+    "advancedIcuHelp": "The default uses ICU plural or select syntax; keep its brace structure in the override.",
+    "restore": "Restore default",
+    "restoreNamed": "Restore default: {key}",
+    "discard": "Discard change",
+    "discardNamed": "Discard change: {key}",
+    "updatedBy": "{email} updated this {time}",
+    "updatedAt": "Updated {time}",
+    "errorParameters": "The placeholders must match the default: {expected}",
+    "errorNoParameters": "The default has no placeholders, so the override cannot add any.",
+    "errorBraces": "The braces do not match up."
+  },
+  "pager": {
+    "summary": "Page {page} of {pages}, {total} keys",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "saveBar": {
+    "pending": "{count} unsaved changes",
+    "save": "Save {count} changes",
+    "saving": "Saving…",
+    "fixErrors": "Fix {count} problems first",
+    "discardAll": "Discard all changes",
+    "discardAllConfirm": "Discard {count} unsaved changes?",
+    "leaveConfirm": "{count} changes are unsaved and will be lost. Switch anyway?",
+    "saved": "Saved {count} changes. They apply on the next page load.",
+    "partialFailure": "Some changes were not saved. The current state has been reloaded; your unsaved text is still in the form."
+  },
+  "namespaces": {
+    "account": "Account settings",
+    "admin": "Admin panel",
+    "alerts": "Price alerts",
+    "auth": "Sign in and register",
+    "availability": "Paused feature notices",
+    "catalogReview": "Gemini catalog review",
+    "common": "Shared wording",
+    "errors": "Error pages",
+    "foodAdmin": "Food catalogue admin",
+    "foods": "Food catalogue",
+    "hotspotAdmin": "Attraction intro admin",
+    "hotspotThemes": "Attraction themes and intros",
+    "hotspots": "Popular attractions",
+    "metadata": "Page titles and SEO descriptions",
+    "navigation": "Navigation and footer",
+    "newTrip": "New trip form",
+    "pricing": "Plans page",
+    "restaurants": "Nearby restaurants",
+    "search": "Search workbench",
+    "stayAreas": "Stay areas",
+    "trips": "Trip planning",
+    "usage": "Usage prompts"
+  }
   }
 }

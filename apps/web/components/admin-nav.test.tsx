@@ -17,6 +17,7 @@ describe("AdminNav", () => {
       "Gemini 目錄審核",
       "方案與扣次",
       "版面管理",
+      "前台文案",
       "系統設定",
       "API 與金鑰",
     ]);
@@ -29,6 +30,7 @@ describe("AdminNav", () => {
       "/admin/catalog-review",
       "/admin/usage-settings",
       "/admin/layout-settings",
+      "/admin/ui-text",
       "/admin/system-settings",
       "/admin/settings",
     ]);

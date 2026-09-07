@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**11 open · 0 in progress · 2 blocked · 1 in review · 143 done**
+**10 open · 0 in progress · 2 blocked · 1 in review · 144 done**
 
 ## Ready to claim
 
@@ -15,7 +15,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
 | P1 | [登入頁沒有忘記密碼，後端也沒有任何寄信管道](open/2026-09-07-forgot-password-no-mail-channel.md) | web | `apps/web/app/[locale]/login`<br>`apps/web/components/auth-form.tsx` |
-| P2 | [後台可改前台文案：/admin/ui-text 編輯器](open/2026-09-07-ui-text-admin-editor.md) | web | `apps/web/app/[locale]/admin/ui-text`<br>`apps/web/components/admin-ui-text-panel.tsx`<br>`apps/web/components/admin-ui-text-panel.test.tsx`<br>`apps/web/components/admin-nav.tsx`<br>`apps/web/components/admin-nav.test.tsx`<br>`apps/web/messages/en/admin.json`<br>`apps/web/messages/ja/admin.json`<br>`apps/web/messages/ko/admin.json`<br>`apps/web/messages/zh-TW/admin.json`<br>`apps/web/messages/zh-CN/admin.json` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
@@ -46,6 +45,7 @@ _Nothing here._
 
 - 2026-09-07 [商圈名單還有 95 家沒有英文店名，發布前要逐家查](done/2026-09-06-trend-merchant-english-names-backlog.md)
 - 2026-09-07 [A signed-out visit to /account still fires seven requests that can only 401](done/2026-09-07-signed-out-account-fires-401s.md)
+- 2026-09-07 [後台可改前台文案：/admin/ui-text 編輯器](done/2026-09-07-ui-text-admin-editor.md)
 - 2026-09-07 [The area filter greys out with no reason given](done/2026-09-07-disabled-area-select-no-reason.md)
 - 2026-09-07 [The three numbers on a ranking card have no scale and no explanation](done/2026-09-07-ranking-scores-have-no-scale.md)
 - 2026-09-07 [Filter chip rows hide most of their choices behind a silent sideways scroll](done/2026-09-07-chip-rows-hide-choices.md)
@@ -53,4 +53,3 @@ _Nothing here._
 - 2026-09-07 [篩選之後排行榜從第 3 名開始跳號，看起來像少了東西](done/2026-09-07-filtered-rank-numbering.md)
 - 2026-09-07 [手機篩選面板看起來是對話框，但沒有 dialog role、不移動 focus、Escape 不關、Tab 走得出去](done/2026-09-07-filter-sheet-not-a-dialog.md)
 - 2026-09-07 [後台沒有「產生介紹」的按鈕，所以介紹佇列永遠是空的](done/2026-09-07-intro-generate-trigger.md)
-- 2026-09-07 [上線稽核找到的兩個 API 缺陷：座標來源與額度扣點順序](done/2026-09-07-post-deploy-audit-api-fixes.md)

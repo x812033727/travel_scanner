@@ -5,6 +5,7 @@ import {
   ClipboardCheck,
   Database,
   KeyRound,
+  Languages,
   LayoutDashboard,
   Menu,
   Rocket,
@@ -29,6 +30,7 @@ const items = [
   { key: "catalogReview", href: "/admin/catalog-review", icon: ClipboardCheck },
   { key: "usage", href: "/admin/usage-settings", icon: BarChart3 },
   { key: "layout", href: "/admin/layout-settings", icon: Settings2 },
+  { key: "uiText", href: "/admin/ui-text", icon: Languages },
   { key: "system", href: "/admin/system-settings", icon: Settings2 },
   { key: "providers", href: "/admin/settings", icon: KeyRound },
   {
@@ -87,6 +89,7 @@ export function AdminNav({ current }: { current?: string } = {}) {
     catalogReview: "/admin/catalog-review",
     usage: "/admin/usage-settings",
     layout: "/admin/layout-settings",
+    uiText: "/admin/ui-text",
     system: "/admin/system-settings",
     providers: "/admin/settings",
     deployments: "/admin/deployments",
