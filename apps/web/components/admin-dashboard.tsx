@@ -45,7 +45,9 @@ const cards = [
 ] as const;
 const actionLabels: Record<string, string> = {
   review_hotspots: "審核景點候選",
+  review_foods: "審核料理目錄",
   review_merchants: "審核美食店家",
+  review_guides: "審核景點介紹",
   categorise_merchants: "補齊店家區域",
   manage_users: "管理會員與次數",
 };
@@ -74,6 +76,7 @@ export function AdminDashboard() {
   const counts = data.counts ?? {};
   const reviewTotal =
     (counts.hotspots_pending ?? 0) +
+    (counts.foods_pending ?? 0) +
     (counts.merchants_pending ?? 0) +
     (counts.guides_pending ?? 0);
   const publishedTotal = (counts.hotspots_public ?? 0) + (counts.foods_public ?? 0);
