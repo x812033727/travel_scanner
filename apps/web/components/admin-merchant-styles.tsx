@@ -72,7 +72,7 @@ export function AdminMerchantStyles({ merchantId }: { merchantId: string }) {
         <p className="text-sm text-[var(--muted)]">{t("reviewHelp")}</p>
         <button type="button" disabled={busy} onClick={() => void load()}
           className="min-h-11 justify-self-start rounded-xl border px-4">{t("reload")}</button>
-        <fieldset disabled={busy || !loaded} className="grid gap-3 md:grid-cols-2">
+        <fieldset aria-label={t("reviewTitle")} disabled={busy || !loaded} className="grid gap-3 md:grid-cols-2">
           <label>{t("label")}<select value={style} onChange={(event) => { setStyle(event.target.value as MerchantStyle); setSuccess(false); }}
             className="mt-1 min-h-11 w-full rounded-xl border px-3">
             {MERCHANT_STYLES.map((item) => <option key={item} value={item}>{t(item)}</option>)}

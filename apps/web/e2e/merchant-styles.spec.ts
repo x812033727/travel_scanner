@@ -67,13 +67,14 @@ test("admin reviews one style without publishing the merchant and retains drafts
   await page.getByRole("button", { name: "編輯地點與來源", exact: true }).click();
   const dialog = page.getByRole("dialog", { name: merchant.name });
   await dialog.getByRole("button", { name: tw.styles.reviewTitle }).click();
+  const reviewForm = dialog.getByRole("group", { name: tw.styles.reviewTitle, exact: true });
   await expect(dialog.getByLabel(tw.styles.sourceTitle)).toHaveValue(initialReview.evidence_title);
   await dialog.getByLabel(tw.styles.sourceTitle).fill("Checked branch design");
-  await dialog.getByLabel(tw.styles.label, { exact: true }).selectOption("artsy");
+  await reviewForm.getByRole("combobox", { name: tw.styles.label, exact: true }).selectOption("artsy");
   await expect(dialog.getByLabel(tw.styles.sourceTitle)).toHaveValue("");
-  await dialog.getByLabel(tw.styles.label, { exact: true }).selectOption("instagrammable");
+  await reviewForm.getByRole("combobox", { name: tw.styles.label, exact: true }).selectOption("instagrammable");
   await expect(dialog.getByLabel(tw.styles.sourceTitle)).toHaveValue("Checked branch design");
-  await dialog.getByLabel(tw.styles.status).selectOption("approved");
+  await reviewForm.getByRole("combobox", { name: tw.styles.status, exact: true }).selectOption("approved");
   await dialog.getByLabel(tw.styles.reason).fill("已比對此分店官方設計資訊");
   await dialog.getByRole("button", { name: tw.styles.save }).click();
   await expect(dialog.getByText(tw.styles.saved)).toBeVisible();
