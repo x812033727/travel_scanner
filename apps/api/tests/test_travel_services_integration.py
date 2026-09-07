@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 from datetime import UTC, date, datetime
 from decimal import Decimal
 from unittest.mock import AsyncMock
@@ -205,6 +206,32 @@ async def test_catalog_only_exposes_reviewed_products_and_ready_offers(client, s
     await session.flush()
     result = await client.get("/travel-services?destination_id=tokyo")
     assert next(r for r in result.json()["items"] if r["id"] == str(good.id))["offers"] == []
+
+
+@pytest.mark.parametrize("unsafe", [False, True])
+async def test_link_maintenance_rotates_outages_but_disables_unsafe_redirects(
+    session, monkeypatch, unsafe
+):
+    from app.travel_services import jobs
+
+    item = await product(session)
+    link, _ = await offer(session, item)
+    old = datetime(2020, 1, 1, tzinfo=UTC)
+    link.updated_at = old
+    await session.commit()
+
+    @asynccontextmanager
+    async def same_session():
+        yield session
+
+    monkeypatch.setattr(jobs, "SessionFactory", same_session)
+    monkeypatch.setattr(
+        jobs, "verify_link", AsyncMock(side_effect=ValueError() if unsafe else TimeoutError())
+    )
+    await jobs.maintain_links()
+    await session.refresh(link)
+    assert link.updated_at > old
+    assert link.status == ("disabled" if unsafe else "approved")
 
 
 async def test_anonymous_clickout_is_303_and_never_books(client, session, monkeypatch):

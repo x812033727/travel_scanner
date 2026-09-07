@@ -205,8 +205,12 @@ async def maintain_links() -> dict[str, int]:
         for identifier, version, target, code in candidates:
             try:
                 valid = await verify_link(target, code, target)
-            except (httpx.HTTPError, ValueError, TimeoutError):
-                continue
+            except ValueError:
+                # A newly unsafe redirect is a broken link, not a retryable outage.
+                valid = False
+            except (httpx.HTTPError, TimeoutError):
+                # Rotate transient failures too, so the first 40 do not starve others.
+                valid = None
             offer = await session.scalar(
                 select(TravelServiceOffer)
                 .where(TravelServiceOffer.id == identifier)
@@ -214,7 +218,7 @@ async def maintain_links() -> dict[str, int]:
             )
             if offer is None or offer.version != version:
                 continue
-            if not valid:
+            if valid is False:
                 offer.status = "disabled"
                 offer.version += 1
                 disabled += 1

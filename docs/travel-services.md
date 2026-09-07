@@ -120,7 +120,9 @@ Regional coverage can be entered manually from official sources; it is not guess
 from plan names. Check import history for failed/not-configured feed runs.
 
 Up to 40 approved links are checked daily. Invalid links are disabled without
-deleting selections. Manual content is flagged for review after 30 days. Brand
+deleting selections. Unsafe redirects are disabled; transient network failures
+advance their check timestamp without disabling the offer or starving later links.
+Manual content is flagged for review after 30 days. Brand
 and link approvals expire from public eligibility after 30 days.
 
 ## Link and analytics contract
