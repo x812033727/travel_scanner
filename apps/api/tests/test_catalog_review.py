@@ -1,5 +1,7 @@
+from copy import deepcopy
 from datetime import UTC, datetime, timedelta
-from unittest.mock import AsyncMock
+from types import SimpleNamespace
+from unittest.mock import AsyncMock, Mock
 from uuid import uuid4
 
 import pytest
@@ -13,10 +15,13 @@ from app.catalog_review.repository import (
 )
 from app.catalog_review.schemas import EvidenceCitation, EvidenceSource, ReviewAssessment
 from app.catalog_review.service import (
+    LEGACY_OMISSION_REASON,
     ApplyRequest,
     StartRequest,
     allowed_actions,
+    is_legacy_missing_assessment,
     item_view,
+    prepare_resume,
     record_assessment,
     run_view,
     snapshot_review_complete,
@@ -83,6 +88,80 @@ def assessment(row, decision="approve", confidence=0.98):
         reason="Official source confirms this specific place",
         evidence=[EvidenceCitation(url=URL, quote="Exact temple name")],
     )
+
+
+def legacy_omission_item():
+    row = item()
+    record_assessment(
+        row,
+        ReviewAssessment(
+            candidate_id=str(row.id),
+            decision="needs_review",
+            confidence=0,
+            reason=LEGACY_OMISSION_REASON,
+        ),
+        [source()],
+    )
+    return row
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("candidate_id", str(uuid4())),
+        ("candidate_id", None),
+        ("decision", "approve"),
+        ("confidence", False),
+        ("confidence", "0"),
+        ("confidence", None),
+        ("confidence", 0.01),
+        ("reason", LEGACY_OMISSION_REASON + " "),
+        ("reason", "The model could not confirm this candidate."),
+        ("evidence", [{"url": URL, "quote": "Exact temple name"}]),
+        ("evidence", None),
+        ("corrections", {"name": "Temple"}),
+        ("corrections", None),
+    ],
+)
+def test_legacy_omission_requires_the_exact_synthetic_assessment(field, value):
+    row = legacy_omission_item()
+    assert is_legacy_missing_assessment(row)
+    row.assessment_json = {**row.assessment_json, field: value}
+    assert not is_legacy_missing_assessment(row)
+    assert snapshot_review_complete([row])
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("status", "pending"),
+        ("status", "error"),
+        ("status", "applied"),
+        ("status", "stale"),
+        ("applied_action", "keep_pending"),
+        ("applied_action", ""),
+        ("decision", "reject"),
+        ("reason", "Reviewed by an administrator"),
+    ],
+)
+def test_legacy_omission_never_reclassifies_changed_or_applied_rows(field, value):
+    row = legacy_omission_item()
+    setattr(row, field, value)
+    assert not is_legacy_missing_assessment(row)
+
+
+def test_legacy_omission_projects_a_typed_error_without_mutating_stored_result():
+    row = legacy_omission_item()
+    original = deepcopy(row.assessment_json)
+    assert is_legacy_missing_assessment(row)
+    assert not snapshot_review_complete([row])
+    assert allowed_actions(row) == []
+    view = item_view(row)
+    assert view["status"] == "error"
+    assert view["error_code"] == "catalog_response_ids_invalid"
+    assert view["decision"] is None and view["confidence"] is None
+    assert view["allowed_actions"] == []
+    assert row.status == "assessed" and row.assessment_json == original
 
 
 @pytest.mark.parametrize(
@@ -327,3 +406,124 @@ async def test_orphaned_queue_can_resume_but_not_a_fresh_queue_or_live_lease(
     assert (await run_view(AsyncMock(), run))["can_resume"] is expected
     run.usage_json = {"calls": 80}
     assert not (await run_view(AsyncMock(), run))["can_resume"]
+
+
+@pytest.mark.parametrize("status", ["completed", "queued", "running", "cancelled"])
+async def test_legacy_omission_counts_are_honest_and_resume_keeps_original_bounds(
+    monkeypatch, status
+):
+    import app.catalog_review.service as service
+
+    missing = [legacy_omission_item() for _ in range(21)]
+    reviewed = [item() for _ in range(286)]
+    for row in reviewed:
+        record_assessment(row, assessment(row, "needs_review"), [source()])
+    monkeypatch.setattr(service, "run_items", AsyncMock(return_value=missing + reviewed))
+    now = datetime.now(UTC)
+    run = CatalogReviewRun(
+        id=uuid4(),
+        mode="review_pending",
+        phase="review_pending",
+        status=status,
+        version=1,
+        request_json={"max_calls": 80},
+        usage_json={"calls": 32},
+        result_json={},
+        created_at=now,
+        updated_at=now,
+        lease_until=now + timedelta(minutes=5) if status == "running" else None,
+    )
+    view = await run_view(AsyncMock(), run)
+    assert view["status"] == ("partial" if status == "completed" else status)
+    assert view["counts"]["total"] == 307
+    assert view["counts"]["assessed"] == 286
+    assert view["counts"]["needs_review"] == 286
+    assert view["counts"]["failed"] == 21
+    assert not view["review_complete"]
+    assert view["can_resume"] is (status == "completed")
+    assert run.status == status and run.usage_json == {"calls": 32}
+    run.request_json = {"max_calls": 32}
+    assert not (await run_view(AsyncMock(), run))["can_resume"]
+
+
+@pytest.mark.parametrize("entity_state", ["pending", "changed", "approved", "deleted"])
+async def test_resume_only_clears_current_errors_and_exact_legacy_omissions_and_audits_counts(
+    monkeypatch, entity_state
+):
+    import app.catalog_review.service as service
+
+    missing, applied, stale = [legacy_omission_item() for _ in range(3)]
+    missing.snapshot_hash = fingerprint(missing.snapshot_json)
+    applied.status, applied.applied_action = "applied", "keep_pending"
+    stale.status = "stale"
+    normal = item()
+    record_assessment(normal, assessment(normal, "needs_review", confidence=0), [source()])
+    error = item()
+    error.status = "error"
+    error.assessment_json = {"code": "catalog_response_truncated"}
+    error.evidence_json = [source().model_dump(mode="json", exclude={"text"})]
+    pending = item()
+    rows = [missing, normal, applied, stale, error, pending]
+    protected = [normal, applied, stale, pending]
+    original = {
+        row.id: deepcopy((row.status, row.decision, row.assessment_json, row.assessed_at))
+        for row in protected
+    }
+    source_metadata = {row.id: deepcopy(row.evidence_json) for row in [missing, error]}
+    now = datetime.now(UTC)
+    usage = {"calls": 32, "input_tokens": 123, "output_tokens": 45, "member_charged": False}
+    run = CatalogReviewRun(
+        id=uuid4(),
+        mode="review_pending",
+        phase="review_pending",
+        status="completed",
+        version=4,
+        request_json={"max_calls": 80},
+        usage_json=deepcopy(usage),
+        result_json={"apply_receipts": {"existing": {}}},
+        created_at=now,
+        updated_at=now,
+        completed_at=now,
+    )
+    monkeypatch.setattr(service, "run_items", AsyncMock(return_value=rows))
+    monkeypatch.setattr(service, "get_run", AsyncMock(return_value=run))
+    monkeypatch.setattr(service, "_serialize_starts", AsyncMock())
+    entity = None if entity_state == "deleted" else SimpleNamespace(review_status=entity_state)
+    if entity_state == "changed":
+        entity.review_status = "pending"
+    load = AsyncMock(return_value=entity)
+    snapshot = AsyncMock(
+        return_value={**missing.snapshot_json, "name": "Changed"}
+        if entity_state == "changed"
+        else missing.snapshot_json
+    )
+    monkeypatch.setattr(service, "load_entity", load)
+    monkeypatch.setattr(service, "entity_snapshot", snapshot)
+    session = SimpleNamespace(scalar=AsyncMock(return_value=None), add=Mock(), commit=AsyncMock())
+    assert await prepare_resume(session, run.id, uuid4()) is run
+    assert run.status == "queued" and run.version == 5 and run.completed_at is None
+    assert run.lease_token is None and run.lease_until is None
+    assert run.usage_json == usage
+    assert run.result_json == {"apply_receipts": {"existing": {}}}
+    retried = [missing, error] if entity_state == "pending" else [error]
+    for row in retried:
+        assert row.status == "pending" and row.decision is None and row.assessed_at is None
+        assert row.reason == "" and row.assessment_json == {} and row.gaps_json == []
+        assert row.evidence_json == source_metadata[row.id]
+    if entity_state != "pending":
+        assert missing.status == "stale" and missing.assessed_at is not None
+        assert missing.assessment_json["reason"] == LEGACY_OMISSION_REASON
+        assert missing.evidence_json == source_metadata[missing.id]
+    for row in protected:
+        assert (row.status, row.decision, row.assessment_json, row.assessed_at) == original[row.id]
+    audit = session.add.call_args.args[0]
+    assert audit.action == "catalog_review_resumed"
+    expected_legacy = int(entity_state == "pending")
+    assert audit.metadata_json == {
+        "retried_items": 1 + expected_legacy,
+        "legacy_missing_items": expected_legacy,
+        "stale_items": 1 - expected_legacy,
+    }
+    load.assert_awaited_once_with(session, missing.kind, missing.entity_id, lock=True)
+    assert snapshot.await_count == int(entity_state in {"pending", "changed"})
+    session.commit.assert_awaited_once()

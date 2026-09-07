@@ -5,10 +5,10 @@ status: review
 priority: P1
 area: api
 owner: codex-gemini-catalog
-claimed_at: 2026-09-07T02:54:59Z
+claimed_at: 2026-09-07T03:41:45Z
 created_at: 2026-09-07T01:22:51Z
 completed_at:
-branch: codex/catalog-review-batch-reliability
+branch: codex/catalog-review-missing-assessments
 depends_on: []
 scope:
   - apps/api/app/catalog_review
@@ -49,7 +49,8 @@ review before publication. There is currently no catalog assessment HTTP workflo
 - [x] Five-locale administration and tests.
 - [x] Seed ownership regression guards.
 - [x] Validate PR #315, merge after authorization, and deploy over SSH with migration 0054.
-- [ ] Fix live batch reliability and safe diagnostics, pass CI, merge and deploy the verified fix.
+- [x] Fix live batch reliability and safe diagnostics, pass CI, merge and deploy the verified fix.
+- [ ] Reject omitted model assessments and safely resume only legacy synthetic placeholders.
 - [ ] Resume only failed/unprocessed rows and apply eligible evidence-backed decisions.
 - [ ] Discover and independently review the requested 100 candidates; report actual public totals.
 
@@ -128,3 +129,21 @@ validation is still required in Linux CI. Independent cross-review fixed an
 incomplete five-language context approval risk: truncated/omitted review context
 now forces needs_review even if Gemini proposes approval or rejection. Unknown
 local exceptions remain neutral rather than being mislabeled invalid model JSON.
+
+PR #317 merged after both complete CI runs passed; main CI also passed. CI reports
+1529 API tests passed/1 skipped, 655 Web tests, 96 browser UI tests and 4 full-stack
+journeys, with production builds, containers and PostgreSQL migrations passing.
+Follow-up verification found legacy synthetic omitted-candidate assessments counted
+as completed. This isolated follow-up rejects missing response IDs and enables
+explicit same-run retries of only strict legacy placeholders while preserving real
+assessments and accumulated usage. New discovery remains blocked until genuine
+snapshot assessment is complete. Production outcomes are recorded in the private
+deployment artifact; the original data expansion/publication task is not complete.
+
+Missing-assessment fix local verification: 1476 Windows API tests passed/78 skipped
+(PostgreSQL tests await Linux CI; the existing Unix-only module remains excluded),
+Ruff, mypy 221 modules, Web typecheck/i18n and 37 panel tests pass. Independent
+review confirms edited/approved/deleted legacy snapshots are skipped before any
+paid retry. Five new PostgreSQL scenarios cover exact resume, discovery/apply
+gates, original budgets/global concurrency and obsolete snapshots. Final head CI
+must pass before this follow-up is merged or deployed.

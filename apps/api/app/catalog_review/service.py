@@ -32,6 +32,7 @@ from app.problems import AppError
 
 ACTIVE = {"queued", "running"}
 COUNTS = {"hotspot": 40, "food": 20, "merchant": 40}
+LEGACY_OMISSION_REASON = "Gemini 未回傳此候選的評估；保留待審。"
 
 
 class StartRequest(BaseModel):
@@ -97,8 +98,28 @@ def record_assessment(
     item.assessed_at = datetime.now(UTC)
 
 
+def is_legacy_missing_assessment(item: CatalogReviewItem) -> bool:
+    """Recognize only the old adapter's synthetic omission, not a model's uncertainty."""
+    assessment = item.assessment_json or {}
+    confidence = assessment.get("confidence")
+    return (
+        item.status == "assessed"
+        and item.applied_action is None
+        and item.decision == "needs_review"
+        and item.reason == LEGACY_OMISSION_REASON
+        and assessment.get("candidate_id") == str(item.id)
+        and assessment.get("decision") == "needs_review"
+        and isinstance(confidence, (int, float))
+        and not isinstance(confidence, bool)
+        and confidence == 0
+        and assessment.get("reason") == LEGACY_OMISSION_REASON
+        and assessment.get("evidence") == []
+        and assessment.get("corrections") == {}
+    )
+
+
 def allowed_actions(item: CatalogReviewItem) -> list[str]:
-    if item.status != "assessed":
+    if item.status != "assessed" or is_legacy_missing_assessment(item):
         return []
     actions = ["keep_pending"]
     if item.decision == "approve" and not item.gaps_json:
@@ -109,11 +130,16 @@ def allowed_actions(item: CatalogReviewItem) -> list[str]:
 
 
 def item_view(item: CatalogReviewItem) -> dict[str, Any]:
+    missing = is_legacy_missing_assessment(item)
     # Legacy batches recorded only the exception class. Do not invent a more
     # specific cause or expose arbitrary stored diagnostics to the browser.
     code = (item.assessment_json or {}).get("code")
     error_code = (
-        code if item.status == "error" and isinstance(code, str) and code in ERROR_CODES else None
+        "catalog_response_ids_invalid"
+        if missing
+        else code
+        if item.status == "error" and isinstance(code, str) and code in ERROR_CODES
+        else None
     )
     return {
         "id": str(item.id),
@@ -122,14 +148,14 @@ def item_view(item: CatalogReviewItem) -> dict[str, Any]:
         "name": item.name,
         "destination_id": item.destination_id,
         "phase": item.phase,
-        "decision": item.decision,
+        "decision": None if missing else item.decision,
         "reason": item.reason or "",
         "evidence": (item.assessment_json or {}).get("evidence", []),
         "gaps": item.gaps_json or [],
         "allowed_actions": allowed_actions(item),
         "applied_action": item.applied_action,
-        "status": item.status,
-        "confidence": (item.assessment_json or {}).get("confidence"),
+        "status": "error" if missing else item.status,
+        "confidence": None if missing else (item.assessment_json or {}).get("confidence"),
         "error_code": error_code,
     }
 
@@ -147,31 +173,42 @@ async def run_items(session: AsyncSession, run_id: UUID) -> list[CatalogReviewIt
 
 
 def snapshot_review_complete(items: list[CatalogReviewItem]) -> bool:
-    return all(item.status in {"assessed", "applied", "stale"} for item in items)
+    return all(
+        item.status in {"assessed", "applied", "stale"} and not is_legacy_missing_assessment(item)
+        for item in items
+    )
 
 
 async def run_view(session: AsyncSession, run: CatalogReviewRun) -> dict[str, Any]:
     items = await run_items(session, run.id)
     created = (run.result_json or {}).get("created_counts", {})
     usage = run.usage_json or {}
+    missing_ids = {item.id for item in items if is_legacy_missing_assessment(item)}
+    legacy_partial = run.status == "completed" and bool(missing_ids)
+    status = "partial" if legacy_partial else run.status
     review_complete = run.status not in ACTIVE and snapshot_review_complete(items)
     return {
         "id": str(run.id),
         "version": run.version,
         "mode": run.mode,
         "phase": run.phase,
-        "status": run.status,
+        "status": status,
         "model": run.model,
         "requested_counts": (run.request_json or {}).get("requested_counts", COUNTS),
         "counts": {
             "total": len(items),
-            "assessed": sum(item.status in {"assessed", "applied", "stale"} for item in items),
+            "assessed": sum(
+                item.status in {"assessed", "applied", "stale"} and item.id not in missing_ids
+                for item in items
+            ),
             "approved": sum(item.decision == "approve" for item in items),
             "rejected": sum(item.decision == "reject" for item in items),
-            "needs_review": sum(item.decision == "needs_review" for item in items),
+            "needs_review": sum(
+                item.decision == "needs_review" and item.id not in missing_ids for item in items
+            ),
             "created": sum(created.values()),
             "duplicates": int((run.result_json or {}).get("duplicates", 0)),
-            "failed": sum(item.status == "error" for item in items),
+            "failed": sum(item.status == "error" or item.id in missing_ids for item in items),
             "applied": sum(item.status == "applied" for item in items),
         },
         "usage": {
@@ -180,14 +217,18 @@ async def run_view(session: AsyncSession, run: CatalogReviewRun) -> dict[str, An
             "output_tokens": int(usage.get("output_tokens", 0)),
             "thought_tokens": int(usage.get("thought_tokens", 0)),
         },
-        "error_code": run.error_code,
-        "error_message": run.error_message,
+        "error_code": "catalog_response_ids_invalid" if legacy_partial else run.error_code,
+        "error_message": (
+            "部分候選尚未取得 Gemini 評估，請明確續跑以補齊缺漏。"
+            if legacy_partial
+            else run.error_message
+        ),
         "created_at": run.created_at,
         "completed_at": run.completed_at,
         "review_complete": review_complete,
         "can_resume": (
             (
-                run.status in {"partial", "failed"}
+                status in {"partial", "failed"}
                 or (
                     run.status in ACTIVE
                     and run.lease_until is not None
@@ -354,9 +395,30 @@ async def prepare_resume(session: AsyncSession, run_id: UUID, actor_id: UUID) ->
         .limit(1)
     ):
         raise AppError(409, "catalog_run_in_progress", "已有其他目錄審核執行中")
+    retried_items = 0
+    legacy_missing_items = 0
+    stale_items = 0
     for item in await run_items(session, run.id):
-        if item.status == "error":
+        missing = is_legacy_missing_assessment(item)
+        if missing:
+            entity = await load_entity(session, item.kind, item.entity_id, lock=True)
+            if (
+                entity is None
+                or entity.review_status != "pending"
+                or fingerprint(await entity_snapshot(session, entity)) != item.snapshot_hash
+            ):
+                item.status = "stale"
+                stale_items += 1
+                continue
+        if item.status == "error" or missing:
+            retried_items += 1
+            legacy_missing_items += int(missing)
             item.status = "pending"
+            item.decision = None
+            item.reason = ""
+            item.assessment_json = {}
+            item.gaps_json = []
+            item.assessed_at = None
     run.status = "queued"
     run.lease_token = None
     run.lease_until = None
@@ -369,7 +431,11 @@ async def prepare_resume(session: AsyncSession, run_id: UUID, actor_id: UUID) ->
             actor_user_id=actor_id,
             action="catalog_review_resumed",
             target=f"catalog-review:{run.id}",
-            metadata_json={},
+            metadata_json={
+                "retried_items": retried_items,
+                "legacy_missing_items": legacy_missing_items,
+                "stale_items": stale_items,
+            },
         )
     )
     await session.commit()

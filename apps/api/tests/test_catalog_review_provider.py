@@ -368,24 +368,71 @@ async def test_unknown_or_duplicate_model_ids_invalidate_the_batch(
         provider = CatalogGeminiProvider(settings(), reserve, client=client)
         with pytest.raises(CatalogAssessmentError, match="catalog_response_ids_invalid"):
             await provider.assess([candidate()])
+        assert provider.call_count == 1
 
 
-async def test_omitted_candidate_stays_pending_and_input_batch_is_bounded() -> None:
+@pytest.mark.parametrize("document", [{"items": []}, {"items": [assessment()]}, {}])
+async def test_missing_model_ids_fail_closed_without_synthetic_assessment_or_paid_repair(
+    document: dict[str, Any],
+) -> None:
+    reservations = 0
+
+    async def counted_reserve() -> bool:
+        nonlocal reservations
+        reservations += 1
+        return True
+
     async with httpx.AsyncClient(
         transport=httpx.MockTransport(
-            lambda request: httpx.Response(200, json=gemini_body({"items": []})),
+            lambda request: httpx.Response(200, json=gemini_body(document)),
         )
     ) as client:
+        provider = CatalogGeminiProvider(settings(), counted_reserve, client=client)
+        with pytest.raises(CatalogAssessmentError, match="catalog_response_ids_invalid") as caught:
+            await provider.assess([candidate(), candidate(candidate_id="row-2")])
+        assert caught.value.details == {"candidate_count": 2}
+        assert provider.call_count == reservations == 1
+        assert provider.usage == {"input_tokens": 10, "output_tokens": 20, "thought_tokens": 2}
+
+
+async def test_complete_model_ids_preserve_input_order_without_synthetic_assessments() -> None:
+    async with httpx.AsyncClient(
+        transport=httpx.MockTransport(
+            lambda request: httpx.Response(
+                200,
+                json=gemini_body(
+                    {
+                        "items": [
+                            assessment(candidate_id="row-2"),
+                            assessment(reason="真實模型判斷。"),
+                        ]
+                    }
+                ),
+            ),
+        )
+    ) as client:
+        provider = CatalogGeminiProvider(
+            settings(), reserve, client=client, trusted_hosts=["tourism.example"]
+        )
+        result = await provider.assess([candidate(), candidate(candidate_id="row-2")])
+        assert [item.candidate_id for item in result.items] == ["row-1", "row-2"]
+        assert all(item.decision == "approve" for item in result.items)
+        assert result.items[0].reason == "真實模型判斷。"
+        assert provider.call_count == 1
+
+
+async def test_input_batch_is_bounded_without_any_provider_call() -> None:
+    def never_request(request: httpx.Request) -> httpx.Response:
+        pytest.fail("Invalid or empty input batches must not call Gemini")
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(never_request)) as client:
         provider = CatalogGeminiProvider(settings(), reserve, client=client)
-        result = await provider.assess([candidate()])
-        assert result.items[0].decision == "needs_review"
-        assert result.items[0].candidate_id == "row-1"
         with pytest.raises(ValueError, match="At most 20"):
             await provider.assess([candidate(candidate_id=str(i)) for i in range(21)])
         with pytest.raises(ValueError, match="Duplicate input"):
             await provider.assess([candidate(), candidate()])
         assert (await provider.assess([])).items == []
-        assert provider.call_count == 1
+        assert provider.call_count == 0
 
 
 async def test_every_structured_repair_reserves_before_http() -> None:
