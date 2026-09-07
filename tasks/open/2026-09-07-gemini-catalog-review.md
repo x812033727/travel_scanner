@@ -175,3 +175,12 @@ diagnostics without persisting raw provider output or weakening trusted-source,
 dedupe, map or publication gates. Focused catalog tests pass (226, 18 skipped), as
 do Ruff and mypy for the catalog package. CI, merge, deployment and a same-run resume
 are still required before any new candidate count can be claimed.
+
+PR #321 passed both complete CI runs, merged as `1199855`, and was deployed with
+a verified custom-format PostgreSQL backup and three successful readiness checks.
+The resumed production run imported five grounded hotspot drafts, then stopped on
+the provider circuit after later four-destination searches timed out. The five rows
+remain pending and accumulated usage remains intact. This follow-up searches one
+destination at a time and uses a bounded kind-aware response schema for the separate
+structuring pass, reducing search complexity and avoiding an otherwise unnecessary
+JSON repair call. It does not increase the 80-call cap or bypass the daily budget.
