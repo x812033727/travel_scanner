@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**5 open · 2 in progress · 2 blocked · 0 in review · 132 done**
+**6 open · 0 in progress · 2 blocked · 0 in review · 134 done**
 
 ## Ready to claim
 
@@ -14,6 +14,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
+| P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
@@ -21,10 +22,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [上線稽核找到的兩個 API 缺陷：座標來源與額度扣點順序](open/2026-09-07-post-deploy-audit-api-fixes.md) | claude-opus-5 | 2026-09-07T00:12:19Z | `claude/audit-fixes` |
-| [後台沒有「產生介紹」的按鈕，所以介紹佇列永遠是空的](open/2026-09-07-intro-generate-trigger.md) | claude-opus-5 | 2026-09-07T00:39:02Z | `claude/intro-generate-button` |
+_Nothing here._
 
 ## In review
 
@@ -39,6 +37,8 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-07 [後台沒有「產生介紹」的按鈕，所以介紹佇列永遠是空的](done/2026-09-07-intro-generate-trigger.md)
+- 2026-09-07 [上線稽核找到的兩個 API 缺陷：座標來源與額度扣點順序](done/2026-09-07-post-deploy-audit-api-fixes.md)
 - 2026-09-07 [產生器每次執行都會重寫既有列的分類，重跑一次就還原剛修好的資料](done/2026-09-07-generator-rewrites-categories.md)
 - 2026-09-07 [特大字下的景點卡把地名擠成 93px、地點行斷成五行](done/2026-09-07-hotspot-card-largest-text.md)
 - 2026-09-07 [選中的國家只靠底色表示，選單裡的外觀與語言看不出目前設定](done/2026-09-06-chosen-state-and-menu-values.md)
@@ -47,5 +47,3 @@ _Nothing here._
 - 2026-09-06 [沒有帳號的人走到底是死路：註冊已關閉，但每道牆只寫「前往登入」](done/2026-09-06-auth-dead-end.md)
 - 2026-09-06 [篩選面板的關閉鍵報讀成「關閉介紹」，美食那邊則跟開啟鍵同名](done/2026-09-06-filter-sheet-labels.md)
 - 2026-09-06 [熱門景點：重新整理丟掉搜尋、看不出套用了什麼、清除條件只在零結果時出現](done/2026-09-06-hotspot-filter-visibility.md)
-- 2026-09-06 [首頁與規劃表單的字換成長輩看得懂的說法](done/2026-09-06-plain-words-front-door.md)
-- 2026-09-06 [撤回 name_en 之後，既有的列還留著沒有出處的音譯](done/2026-09-06-reset-drifted-merchant-names.md)
