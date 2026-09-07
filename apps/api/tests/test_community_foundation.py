@@ -689,6 +689,84 @@ def test_media_decodes_reencodes_strips_metadata_and_rejects_fake() -> None:
         clean_image(b"<svg>not a raster</svg>")
 
 
+@pytest.mark.asyncio
+async def test_pet_ai_only_receives_current_verified_compatible_candidates(
+    harness: Harness,
+) -> None:
+    from app.ai.itinerary import AIPlannerCandidate
+    from app.community.pet_models import PlaceReference
+    from app.community.pet_planning import filter_candidates
+    from app.problems import AppError
+
+    rule = PetRule(
+        species="dog",
+        status="conditional",
+        weight_limit="limited",
+        max_weight_kg=10,
+        count_limit="limited",
+        max_count=2,
+        outdoor_allowed=True,
+        leash_required=True,
+        carrier_required=False,
+        stroller_required=False,
+        diaper_required=False,
+    )
+    candidates = [
+        AIPlannerCandidate(
+            key=f"hotspot:{key}",
+            kind="hotspot",
+            name=key,
+            category="attraction",
+            latitude=25,
+            longitude=121,
+            duration_minutes=60,
+        )
+        for key in ["compatible", "unknown", "stale", "disputed", "unlinked"]
+    ]
+    async with harness.factory() as session:
+        for candidate in candidates[:-1]:
+            place = PetPlace(
+                name=candidate.name,
+                country="TW",
+                destination="Taipei",
+                kind="attraction",
+                status="approved",
+                disputed=candidate.name == "disputed",
+                policies=[
+                    (
+                        rule.model_copy(update={"weight_limit": "unknown", "max_weight_kg": None})
+                        if candidate.name == "unknown"
+                        else rule
+                    ).model_dump()
+                ],
+                source_url="https://example.com/pet-rules",
+                verified_at=datetime.now(UTC)
+                - timedelta(days=181 if candidate.name == "stale" else 0),
+            )
+            session.add(place)
+            await session.flush()
+            session.add(PlaceReference(place_id=place.id, kind="hotspot", target=candidate.name))
+        await session.commit()
+        requirements = PetRequirements(species="dog", weight_kg=5)
+        result = await filter_candidates(session, candidates, requirements)
+        assert [row.key for row in result] == ["hotspot:compatible"]
+        for incompatible in [
+            {"species": "cat"},
+            {"weight_kg": 20},
+            {"count": 3},
+            {"area": "indoor"},
+            {"has_leash": False},
+            {"has_stroller": True},
+            {"overnight": True},
+        ]:
+            with pytest.raises(AppError) as error:
+                await filter_candidates(
+                    session, candidates, requirements.model_copy(update=incompatible)
+                )
+            assert error.value.code == "pet_candidates_insufficient"
+            assert error.value.status == 422
+
+
 def test_pet_eligibility_species_limits_and_unknown_are_not_matches() -> None:
     rule = PetRule(
         species="dog",
