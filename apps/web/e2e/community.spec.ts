@@ -14,6 +14,8 @@ async function json(client: APIRequestContext, method: string, route: string, da
 }
 
 async function registerAndVerify(page: Page, handle: string, displayName: string) {
+  page.setDefaultTimeout(20_000);
+  page.setDefaultNavigationTimeout(45_000);
   const email = `${handle}@example.com`;
   await json(page.request, "POST", "/auth/register", { email, password: "community-member-password-123" });
   await page.goto("/zh-TW/community/settings");
@@ -163,6 +165,9 @@ test("reviewed pet rules filter conservatively and require confirmation before c
   const adminContext = await browser.newContext({ baseURL, viewport: info.project.use.viewport,
     isMobile: info.project.use.isMobile, deviceScaleFactor: info.project.use.deviceScaleFactor });
   const admin = await adminContext.newPage();
+  admin.setDefaultTimeout(20_000);
+  admin.setDefaultNavigationTimeout(45_000);
+  await adminContext.tracing.start({ screenshots: true, snapshots: true });
   try {
     await enableTestCommunity(admin.request);
     const suffix = `${Date.now()}${info.workerIndex}`;
@@ -266,7 +271,10 @@ test("reviewed pet rules filter conservatively and require confirmation before c
     await page.screenshot({ path: info.outputPath("pet-reviewed-experience.png"), fullPage: true });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
   } finally {
-    await adminContext.close();
+    // Preserve the actual failed UI operation, including the secondary admin
+    // page, instead of masking it with teardown errors after the test timeout.
+    await adminContext.tracing.stop({ path: info.outputPath("pet-admin-trace.zip") }).catch(() => {});
+    await adminContext.close().catch(() => {});
   }
 });
 

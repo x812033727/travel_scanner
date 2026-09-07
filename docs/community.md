@@ -63,6 +63,8 @@ fetching is supported. Raw objects are quarantined until processing completes.
 Draft and pending images are owner-only; moderators use scoped review access.
 Published media receives short authorizations of at most 60 seconds. Withdrawal
 stops new authorizations; already downloaded bytes cannot be recalled.
+Readers can explicitly retry a failed load. Every retry requests a new
+authorization and rechecks visibility rather than reusing an expired URL.
 
 ## Mail and background jobs
 
@@ -74,6 +76,9 @@ the confirmation page removes that fragment before subsequent navigation.
 Password reset does not disclose whether an address exists. Successful reset
 increments the authentication version. Account deletion requires a separate
 email confirmation plus `DELETE`, immediately revokes access and hides content.
+Successful reset/deletion also clears the shared client identity and private
+community state immediately, including protection against a delayed `/auth/me`
+response restoring an obsolete identity.
 Administrator self-deletion is blocked, preserving existing self-disable rules.
 
 The existing RQ worker consumes `community`; the `community-sweeper` service
@@ -171,6 +176,26 @@ upload/processing test. The full-stack job runs existing travel journeys first
 with community still off, then the community journeys on desktop and Pixel 7.
 It stores browser artifacts separately. Windows without Docker cannot substitute
 SQLite results for PostgreSQL, SMTP, Redis or real object-storage acceptance.
+
+The browser suite uses ordinary mail links and private object storage. It covers
+publication/review/forking, unfollow versus blocking, pet candidate review and
+species filtering, confirmed conflicting trip insertion, reviewed traveller
+reports, password recovery and account deletion. A test being present is not
+evidence it passed; retain the CI run and screenshots for the exact PR head.
+
+## Open implementation and acceptance work
+
+The complete product plan is not yet accepted. In particular, structured post
+associations currently take approved pet-place IDs; general hotspot/merchant
+search results still need a unified place picker and association contract in
+the editor. Do not describe the existing cross-catalog search endpoint as a
+completed general-place publishing flow.
+
+The remaining browser matrix includes real SSE interruption/catch-up, translation
+failure/updated-original handling, full five-locale and dark-mode community
+journeys, and worker/outage/capacity recovery. Existing unit/API coverage does not
+replace these end-to-end checks. Keep the PR a draft and community default-off
+while these implementation and acceptance items remain.
 
 ## Public-launch gates (not completed by adding this document)
 

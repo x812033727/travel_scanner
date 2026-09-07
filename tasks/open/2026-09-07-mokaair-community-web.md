@@ -11,6 +11,8 @@ completed_at:
 branch: codex/mokaair-community
 depends_on: []
 scope:
+  - apps/web/lib/api.ts
+  - apps/web/lib/api.test.ts
   - apps/web/e2e/readability.spec.ts
   - apps/web/components/community
   - apps/web/app/[locale]/community

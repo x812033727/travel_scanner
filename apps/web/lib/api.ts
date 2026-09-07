@@ -1,5 +1,6 @@
 import { ANALYTICS_SESSION_HEADER, analyticsSessionId } from "@/lib/analytics";
 import { activeLocale, formatCurrency } from "@/lib/locale-format";
+import { communityProblemMessage } from "@/lib/community/error-messages";
 import genericEn from "@/messages/en/errors.json";
 import genericJa from "@/messages/ja/errors.json";
 import genericKo from "@/messages/ko/errors.json";
@@ -130,6 +131,10 @@ export function apiProblemMessage(problem: unknown, status: number): string {
   const chineseCatalog = locale === "zh-TW";
   if (problem && typeof problem === "object") {
     const code = (problem as { code?: unknown }).code;
+    // Pet-aware planning still uses the ordinary trip editor. Its errors need
+    // the same five-language explanation as dedicated community pages.
+    const communityMessage = communityProblemMessage(code, locale);
+    if (communityMessage) return communityMessage;
     if (chineseCatalog && typeof code === "string" && CODE_MESSAGES[code]) return CODE_MESSAGES[code];
     const detail = (problem as { detail?: unknown }).detail;
     if (typeof detail === "string" && detail.trim()) return detail;
@@ -188,4 +193,3 @@ export function isUsageInsufficient(reason: unknown): boolean {
 
 export { formatCurrency };
 export const twd = { format: (value: number | bigint) => formatCurrency(Number(value), "TWD") };
-
