@@ -34,7 +34,7 @@ scope:
 - [x] 每一家**有出處印出英文名**的店都有 `name_en`；沒有的留空，讓讀者拿招牌原文去貼地圖。
 - [x] 每個 `name_en` 要嘛就在該列的 `name_zh`／`local_name` 裡，要嘛列在測試的
       `SOURCED_ENGLISH_NAMES` 並附出處（既有的守門測試會擋）。
-- [ ] 正式機跑過 `backfill-english-names --apply`，已匯入的列跟著更新。
+- [x] 正式機跑過 `backfill-merchant-english-names --apply`，已匯入的列跟著更新。
 
 ### 訂正（2026-09-07）：原本的 DoD 寫「每一列都要有 name_en」，那是錯的目標
 
@@ -111,3 +111,19 @@ Tai Cheng Fruit Shop（Tripadvisor h1，店家 FB 帳號也是 Tai.cheng.fruit.s
 - `busan-momos` 用 Visit Busan 印的「Momos Roastery & Coffee Bar」，不用店家網站拼出來的長名。
 - 這 111 家裡已經匯入正式機的列要靠 `python -m app.cli backfill-english-names --apply` 更新，
   匯入器不會回頭改既有的列。
+
+## 正式站（2026-09-07，部署 0b314ac 之後）
+
+`backfill-merchant-english-names --apply`：資料庫裡找到 145 列，**改了 90 列**，55 列本來就一致，
+沒有任何一列被判成「後台改過」而略過。
+
+接著把 33 個城市的已發布店家（112 家）在四個語系各掃一遍：
+
+| 語系 | `name` 仍含漢字 |
+| --- | --- |
+| en | **2**——金得春捲、蠔爽，正是刻意留白的那兩家（沒有頁面印過拉丁字） |
+| ko | 2（同上） |
+| ja | 37——日文店名本來就是漢字（白金茶房、渋谷…），不是沒翻 |
+| zh-TW | 70，與套用前逐字相同（泰成水果冰店仍是泰成水果冰店，FUGLEN TOKYO 仍是 FUGLEN TOKYO） |
+
+指令名是 `backfill-merchant-english-names`，不是任務檔先前寫的 `backfill-english-names`。
