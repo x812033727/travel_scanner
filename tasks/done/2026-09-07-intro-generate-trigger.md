@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-intro-generate-trigger
 title: 後台沒有「產生介紹」的按鈕，所以介紹佇列永遠是空的
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5
 claimed_at: 2026-09-07T00:39:02Z
 created_at: 2026-09-07T00:38:30Z
-completed_at:
+completed_at: 2026-09-07T01:02:42Z
 branch: claude/intro-generate-button
 depends_on: []
 scope:
