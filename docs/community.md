@@ -185,11 +185,13 @@ evidence it passed; retain the CI run and screenshots for the exact PR head.
 
 ## Open implementation and acceptance work
 
-The complete product plan is not yet accepted. In particular, structured post
-associations currently take approved pet-place IDs; general hotspot/merchant
-search results still need a unified place picker and association contract in
-the editor. Do not describe the existing cross-catalog search endpoint as a
-completed general-place publishing flow.
+The complete product plan is not yet accepted. The editor now searches published
+hotspots, merchants and pet places and stores at most 20 typed catalog references
+per immutable post version. Names and internal links are resolved by the server;
+disabled places and merchants without current publication evidence are omitted
+on every read. Migration 0059 adds the reference JSON without discarding legacy
+pet-place IDs. UI selections survive failed searches, and drafts send only type
+and ID, never a client-provided label or URL.
 
 The remaining browser matrix includes real SSE interruption/catch-up, translation
 failure/updated-original handling, full five-locale and dark-mode community

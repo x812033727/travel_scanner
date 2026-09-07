@@ -101,6 +101,21 @@ describe("community availability and accessible controls",()=>{
  });
 });
 describe("publishing and moderation",()=>{
+ it("sends only typed IDs for selected public places and retains them when editing",async()=>{
+  const place={id:"place-id",kind:"hotspot",name:"Public museum",destination:"Tokyo",href:"/hotspots?hotspot=place-id"};
+  const post={id:"post-id",version:1,title:"Tokyo walk",body:"My travel experience",destination:"Tokyo",locale:"zh-TW",kind:"story",topics:[],place_ids:[],places:[place],media:[],itinerary:null,allow_fork:false,state:"draft"};
+  mock.api.mockImplementation(async(path:string)=>path==="/trips"?[]:post);
+  render(<PostEditor id="post-id"/>);
+  await screen.findByRole("button",{name:"移除 Public museum"});
+  fireEvent.change(screen.getByLabelText("旅行心得"),{target:{value:"Updated experience"}});
+  fireEvent.click(screen.getByRole("button",{name:"儲存草稿"}));
+  await screen.findByText("已儲存");
+  const write=mock.api.mock.calls.find(([,options])=>options?.method==="PUT");
+  const payload=JSON.parse(write![1].body);
+  expect(payload.places).toEqual([{kind:"hotspot",id:"place-id"}]);
+  expect(payload).not.toHaveProperty("place_ids");
+  expect(JSON.stringify(payload)).not.toContain("/hotspots?");
+ });
  it("saves a real draft and submits its returned version for review",async()=>{
   const post={id:"post-id",version:1,title:"Taipei walk",body:"My travel experience",destination:"Taipei",locale:"zh-TW",kind:"story",topics:[],place_ids:[],media:[],itinerary:null,allow_fork:false,state:"draft"};
   mock.api.mockImplementation(async(path:string)=>path==="/trips"?[]:path.endsWith("/publish")?{...post,version:2,state:"pending",pending_revision_id:"review-id"}:post);
@@ -142,7 +157,7 @@ describe("pet rule uncertainty",()=>{
  it("keeps species suggestions out of the input accessible name",()=>{
   const change=vi.fn();
   render(<PetRequirementFields value={defaultPet} onChange={change}/>);
-  const species=screen.getByRole("combobox",{name:"動物種類",exact:true});
+  const species=screen.getByRole("combobox",{name:"動物種類"});
   expect(screen.getByLabelText("動物種類",{exact:true})).toBe(species);
   fireEvent.change(species,{target:{value:"cat"}});
   expect(change).toHaveBeenCalledWith({...defaultPet,species:"cat"});

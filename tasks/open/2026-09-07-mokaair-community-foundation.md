@@ -81,3 +81,9 @@ SMTP reset/deletion journeys passed. Pet review browser acceptance still fails;
 the current run records the secondary administrator trace and bounded actions.
 Real reconnect/outage/capacity tests and production launch requirements remain open.
 Local Windows has no Docker/PostgreSQL. See docs/community.md for launch gates.
+
+Follow-up: 0059 adds typed post catalog references with legacy pet-ID reads.
+Publication filters are rechecked on every read, including source-expired merchants.
+Focused contracts cover all three place types, invalid input, duplicate references,
+disabled entities and previous-version compatibility. Fresh/legacy migration checks
+include the new column; exact-head PostgreSQL CI still must pass before acceptance.

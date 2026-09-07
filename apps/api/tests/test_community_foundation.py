@@ -213,7 +213,7 @@ async def test_community_migrations_fresh_and_existing_database(
         engine = create_async_engine("sqlite+aiosqlite://")
     modules = [
         runpy.run_path(str(Path(__file__).parents[1] / "migrations" / "versions" / name))
-        for name in ["0057_community.py", "0058_pet_friendly.py"]
+        for name in ["0057_community.py", "0058_pet_friendly.py", "0059_community_places.py"]
     ]
     monkeypatch.setattr(context, "is_offline_mode", lambda: False)
 
@@ -1212,6 +1212,109 @@ async def test_delete_job_erases_private_data_but_keeps_delivered_messages(
     ).json()
     assert delivered["items"][0]["body"] == "Already delivered"
     assert delivered["items"][0]["sender_id"] is None and not delivered["can_send"]
+
+
+@pytest.mark.asyncio
+async def test_post_catalog_references_are_typed_public_and_legacy_compatible(
+    harness: Harness,
+) -> None:
+    from app.community.models import PostRevision
+    from app.models import FoodMerchant, FoodMerchantSource, TravelHotspot
+
+    h = harness
+    async with h.factory() as session:
+        pet = PetPlace(
+            name="Dog cafe",
+            names={"ja": "犬カフェ"},
+            kind="cafe",
+            country="JP",
+            destination="tokyo",
+            address="",
+            status="approved",
+        )
+        hotspot = TravelHotspot(
+            slug="public-trip-place",
+            name="Public museum",
+            city_code="NRT",
+            destination_id="tokyo",
+            city_name="Tokyo",
+            country_code="JP",
+            country_name="Japan",
+            category="culture",
+            search_text="Tokyo",
+            review_status="approved",
+            is_active=True,
+        )
+        merchant = FoodMerchant(
+            slug="public-trip-merchant",
+            name="Public restaurant",
+            local_name="餐廳",
+            names_json={"zh-TW": "已查核餐廳"},
+            destination_id="tokyo",
+            country_code="JP",
+            review_status="approved",
+            is_active=True,
+            map_match_status="verified",
+            google_place_id="exact-test-place",
+            latitude=35.68,
+            longitude=139.76,
+            coordinate_source_type="merchant_official",
+            coordinate_source_url="https://example.com/map",
+        )
+        session.add_all([pet, hotspot, merchant])
+        await session.flush()
+        source = FoodMerchantSource(
+            merchant_id=merchant.id,
+            source_type="merchant_official",
+            source_scope="merchant_website",
+            source_title="Official",
+            source_url="https://example.com",
+        )
+        session.add(source)
+        await session.commit()
+        refs = [
+            {"kind": "pet_place", "id": str(pet.id)},
+            {"kind": "hotspot", "id": str(hotspot.id)},
+            {"kind": "merchant", "id": str(merchant.id)},
+        ]
+        source_id, hotspot_id, pet_id = source.id, hotspot.id, pet.id
+    post = await h.post(places=[*refs, refs[0]])
+    assert [{"kind": place["kind"], "id": place["id"]} for place in post["places"]] == refs
+    assert post["place_ids"] == [str(pet_id)]
+    assert post["places"][2]["names"]["zh-TW"] == "已查核餐廳"
+    assert set(post["places"][2]) == {"id", "kind", "name", "names", "destination", "href"}
+    await h.approve(await h.publish(post))
+    for invalid in [
+        [{"kind": "hotel", "id": str(pet_id)}],
+        [{"kind": "hotspot", "id": str(uuid4())}],
+        [{**refs[0], "href": "https://attacker.example"}],
+        refs * 7,
+    ]:
+        await h.call("POST", "/community/posts", expected=422, json={"places": invalid})
+    await h.call(
+        "POST", "/community/posts", expected=422, json={"places": refs, "place_ids": [str(pet_id)]}
+    )
+    async with h.factory() as session:
+        source = await session.get(FoodMerchantSource, source_id)
+        assert source is not None
+        source.is_current = False
+        hotspot = await session.get(TravelHotspot, hotspot_id)
+        assert hotspot is not None
+        hotspot.review_status = "disabled"
+        await session.commit()
+    public = (await h.call("GET", f"/community/posts/{post['id']}", actor=None)).json()
+    assert [place["kind"] for place in public["places"]] == ["pet_place"]
+    for ref in refs[1:]:
+        await h.call("POST", "/community/posts", expected=422, json={"places": [ref]})
+    legacy = await h.post(place_ids=[str(pet_id)])
+    async with h.factory() as session:
+        revision = await session.get(PostRevision, UUID(legacy["revision_id"]))
+        assert revision is not None
+        revision.place_refs = []  # Version written before 0059, only legacy IDs.
+        await session.commit()
+    draft = (await h.call("GET", f"/community/posts/{legacy['id']}/draft")).json()
+    assert draft["places"][0]["id"] == str(pet_id)
+    assert draft["places"][0]["name"] == "Dog cafe"
 
 
 @pytest.mark.asyncio

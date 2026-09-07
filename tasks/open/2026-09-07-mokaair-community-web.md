@@ -92,8 +92,15 @@ reset/deletion on desktop and Pixel 7). Both pet-review journeys still time out;
 retain secondary admin traces and preserve the original failing action on teardown.
 Scoped image retry and shared-session reset/verification regressions pass locally.
 Pet AI candidate failures now use the five-language catalog in ordinary trip tools.
-General hotspot/merchant associations in the post editor still need implementation;
-the cross-catalog search endpoint alone does not finish that publishing flow.
+General hotspot/merchant associations now use a shared search picker and typed
+reference contract. The editor retains selections on error and saves only IDs;
+previews, moderation and public posts display server-resolved place names/links.
+Focused component tests cover edits, retries, duplicates, limits and layout gates.
+Exact-head real-service acceptance is still required.
+
+CI 34135827036 confirms desktop/Pixel 7 pet species filters after the auth-hydration
+fix. The next pet test step must open the current planner's tools drawer first.
+A test-only TypeScript role-option error also needs the next full CI verification.
 
 Built on isolated main 516713d. The existing forgot-password task owns the login
 entry; this task owns the new confirmation/recovery UI and public community pages.

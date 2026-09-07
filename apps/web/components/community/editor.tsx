@@ -7,15 +7,16 @@ import { localeLabels, locales } from "@/i18n/routing";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { featureVisible } from "@/lib/site-features";
 import { api } from "@/lib/api";
-import type { Media, Page, Post } from "@/lib/community/types";
+import type { CatalogPlace, Media, Page, Post } from "@/lib/community/types";
 import { useCommunity } from "./provider";
 import { ImageUpload } from "./upload";
 import { ItineraryPreview } from "./post";
+import { PlacePicker, RelatedPlaces } from "./places";
 import { Button, CommunityImage, Dialog, Empty, ErrorNotice, fieldClass, panelClass } from "./ui";
 import { useResource } from "./use-resource";
 
 type Draft = { title: string; body: string; locale: string; destination: string; kind: Post["kind"];
-  topics: string; place_ids: string; media: Media[]; source_trip_id: string;
+  topics: string; places: CatalogPlace[]; media: Media[]; source_trip_id: string;
   keep_itinerary: boolean; allow_fork: boolean };
 type TripOption = { id: string; name: string; start_date: string; end_date: string; version: number };
 
@@ -27,7 +28,7 @@ export function PostEditor({ id }: { id?: string }) {
   const visibility = useSiteVisibility();
   const trips = useResource<TripOption[]>(featureVisible(visibility, "trips") ? "/trips" : null);
   const initial = useResource<Post>(id ? `/community/posts/${id}/draft` : null);
-  const [draft, setDraft] = useState<Draft>({ title: "", body: "", locale, destination: "", kind: "story", topics: "", place_ids: "", media: [], source_trip_id: "", keep_itinerary: false, allow_fork: false });
+  const [draft, setDraft] = useState<Draft>({ title: "", body: "", locale, destination: "", kind: "story", topics: "", places: [], media: [], source_trip_id: "", keep_itinerary: false, allow_fork: false });
   const latest = useRef(draft);
   const record = useRef<Post | null>(null);
   const saving = useRef<Promise<Post> | null>(null);
@@ -46,7 +47,7 @@ export function PostEditor({ id }: { id?: string }) {
     if (initialized.current || !initial.data) return;
     const post = initial.data;
     const next: Draft = { title: post.title, body: post.body, locale: post.locale, destination: post.destination,
-      kind: post.kind, topics: post.topics.join(", "), place_ids: post.place_ids.join(", "), media: post.media,
+      kind: post.kind, topics: post.topics.join(", "), places: post.places || [], media: post.media,
       source_trip_id: "", keep_itinerary: Boolean(post.itinerary), allow_fork: post.allow_fork };
     latest.current = next; record.current = post; savedSnapshot.current = JSON.stringify(next);
     setDraft(next); setStatus(post.state || "draft"); initialized.current = true; setReady(true);
@@ -67,7 +68,7 @@ export function PostEditor({ id }: { id?: string }) {
     setStatus("saving"); setError(undefined);
     const payload = { title: value.title, body: value.body, locale: value.locale, destination: value.destination,
       kind: value.kind, topics: value.topics.split(",").map((item) => item.trim()).filter(Boolean),
-      place_ids: value.place_ids.split(",").map((item) => item.trim()).filter(Boolean),
+      places: value.places.map(({ kind, id }) => ({ kind, id })),
       media_ids: value.media.map((media) => media.id), source_trip_id: value.source_trip_id || null,
       keep_itinerary: value.keep_itinerary, allow_fork: value.allow_fork,
       ...(record.current ? { version: record.current.version } : {}) };
@@ -127,7 +128,7 @@ export function PostEditor({ id }: { id?: string }) {
       <label className="block font-semibold">{t("postBody")}<textarea rows={12} maxLength={20000} className={fieldClass} value={draft.body} onChange={(e) => change("body", e.target.value)} /></label>
       <label className="block font-semibold">{t("topics")}<input className={fieldClass} value={draft.topics} onChange={(e) => change("topics", e.target.value)} /><span className="text-sm font-normal">{t("topicsHelp")}</span></label>
       <ImageUpload images={draft.media} onChange={(images) => change("media", images)} onBusyChange={setUploading} />
-      <label className="block font-semibold">{t("relatedPlaceIds")}<input className={fieldClass} value={draft.place_ids} onChange={(e) => change("place_ids", e.target.value)} /><span className="text-sm font-normal">{t("placeIdsHelp")}</span></label>
+      <PlacePicker value={draft.places} onChange={(places) => change("places", places)} />
       {featureVisible(visibility, "trips") && <section className="space-y-3 border-t border-[var(--line)] pt-4"><h2 className="text-xl font-bold">{t("publicItinerary")}</h2><p className="text-sm leading-6 text-[var(--muted)]">{t("itineraryPrivacy")}</p>
         <label className="block font-semibold">{t("sourceTrip")}<select className={fieldClass} value={draft.source_trip_id} onChange={(e) => change("source_trip_id", e.target.value)}><option value="">{draft.keep_itinerary ? t("keepSnapshot") : t("noItinerary")}</option>{trips.data?.map((trip) => <option key={trip.id} value={trip.id}>{trip.name}</option>)}</select></label>
         <ErrorNotice error={trips.error} />
@@ -138,7 +139,7 @@ export function PostEditor({ id }: { id?: string }) {
     <ErrorNotice error={error} /><p role="status" className="text-sm text-[var(--muted)]">{t(`states.${status}`)}</p>
     <div className="flex flex-wrap gap-3"><Button secondary disabled={busy || uploading || !flags.posting_enabled} onClick={() => void save().catch(() => {})}>{t("saveDraft")}</Button><Button secondary disabled={busy || uploading || !flags.posting_enabled} onClick={() => void action(false)}>{t("preview")}</Button><Button disabled={busy || uploading || !flags.posting_enabled || !draft.title || !draft.body || !draft.destination || (hasItinerary && !confirmed)} onClick={() => void action(true)}>{t("publish")}</Button><Link href="/community/drafts" className="rounded-xl px-3 py-2.5 underline">{t("drafts")}</Link></div>
     {hasItinerary && <p className="text-sm">{t("previewRequired")}</p>}
-    {preview && <Dialog title={t("preview")} onClose={() => setPreview(undefined)}><div className="space-y-5"><h2 className="text-2xl font-bold">{preview.title}</h2><p className="whitespace-pre-wrap break-words">{preview.body}</p>{preview.media.map((media) => <CommunityImage key={media.id} id={media.id} alt={media.alt} />)}{preview.itinerary && <ItineraryPreview itinerary={preview.itinerary} />}{preview.itinerary && <label className="flex items-start gap-3"><input type="checkbox" checked={confirmed} onChange={(e) => setConfirmed(e.target.checked)} />{t("confirmPublicSnapshot")}</label>}</div></Dialog>}
+    {preview && <Dialog title={t("preview")} onClose={() => setPreview(undefined)}><div className="space-y-5"><h2 className="text-2xl font-bold">{preview.title}</h2><p className="whitespace-pre-wrap break-words">{preview.body}</p>{preview.media.map((media) => <CommunityImage key={media.id} id={media.id} alt={media.alt} />)}<RelatedPlaces places={preview.places || []} />{preview.itinerary && <ItineraryPreview itinerary={preview.itinerary} />}{preview.itinerary && <label className="flex items-start gap-3"><input type="checkbox" checked={confirmed} onChange={(e) => setConfirmed(e.target.checked)} />{t("confirmPublicSnapshot")}</label>}</div></Dialog>}
   </div>;
 }
 

@@ -15,6 +15,8 @@ export type PublicProfile = {
 export type CommunityMe = { profile: PublicProfile | null; verified: boolean; restricted: boolean;
   notification_preferences: Record<string, boolean> };
 export type Media = { id: string; alt: string; width: number; height: number };
+export type CatalogPlace = { id: string; kind: "pet_place" | "hotspot" | "merchant";
+  name: string; names?: Record<string, string>; destination: string; href: string };
 export type PublicItinerary = { destination: string; timezone: string; days: number; stops: Array<{
   day: number; position: number; title: string; location_name: string; item_type: string;
   duration_minutes: number | null; names: Record<string, string>;
@@ -22,7 +24,7 @@ export type PublicItinerary = { destination: string; timezone: string; days: num
 export type Post = {
   id: string; revision_id: string; author: PublicProfile; title: string; body: string;
   locale: string; destination: string; kind: "story" | "guide" | "pet_visit"; topics: string[];
-  place_ids: string[]; media: Media[]; itinerary: PublicItinerary | null; allow_fork: boolean;
+  place_ids: string[]; places?: CatalogPlace[]; media: Media[]; itinerary: PublicItinerary | null; allow_fork: boolean;
   published_at: string | null; featured: boolean; likes: number; saves: number; liked: boolean;
   saved: boolean; version?: number; state?: "draft" | "pending" | "published" | "hidden";
   pending_revision_id?: string | null;

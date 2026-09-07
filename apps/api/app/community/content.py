@@ -9,8 +9,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.community.media import check_media
 from app.community.models import Fork, Media, Post, PostRevision, Profile, Reaction
+from app.community.places import canonical_refs, public_places
 from app.community.policy import digest, fail, member, metric, public_profile, visible_profile
-from app.community.schemas import ForkInput, PostInput
+from app.community.schemas import ForkInput, PlaceInput, PostInput
 from app.localized_names import item_names, sanitize_localized_names
 from app.models import TripPlan, TripPlanItem, User
 
@@ -103,21 +104,13 @@ async def new_revision(
     payload: PostInput,
 ) -> PostRevision:
     await check_media(session, user, payload.media_ids)
-    if payload.place_ids:
-        from app.community.pet_models import PetPlace
-
-        found = list(
-            (
-                await session.scalars(
-                    select(PetPlace.id).where(
-                        PetPlace.id.in_(payload.place_ids),
-                        PetPlace.status == "approved",
-                    )
-                )
-            ).all()
-        )
-        if len(found) != len(set(payload.place_ids)):
-            raise fail("community_place_invalid", 422)
+    places = canonical_refs(
+        payload.places
+        if payload.places is not None
+        else [PlaceInput(kind="pet_place", id=value) for value in payload.place_ids]
+    )
+    if len(await public_places(session, places)) != len(places):
+        raise fail("community_place_invalid", 422)
     itinerary = None
     if payload.keep_itinerary and post.draft_revision_id:
         previous = await session.get(PostRevision, post.draft_revision_id)
@@ -151,7 +144,8 @@ async def new_revision(
         destination=payload.destination,
         kind=payload.kind,
         topics=payload.topics,
-        place_ids=[str(value) for value in payload.place_ids],
+        place_ids=[ref["id"] for ref in places if ref["kind"] == "pet_place"],
+        place_refs=places,
         media_ids=[str(value) for value in payload.media_ids],
         itinerary=itinerary,
         allow_fork=payload.allow_fork and itinerary is not None,
@@ -211,6 +205,10 @@ async def serialize_post(
         else []
     )
     by_id = {str(image.id): image for image in images}
+    places = await public_places(
+        session,
+        revision.place_refs or [{"kind": "pet_place", "id": value} for value in revision.place_ids],
+    )
     result: dict[str, Any] = {
         "id": str(post.id),
         "revision_id": str(revision.id),
@@ -221,7 +219,8 @@ async def serialize_post(
         "destination": revision.destination,
         "kind": revision.kind,
         "topics": revision.topics,
-        "place_ids": revision.place_ids,
+        "place_ids": [place["id"] for place in places if place["kind"] == "pet_place"],
+        "places": places,
         "media": [
             {
                 "id": value,

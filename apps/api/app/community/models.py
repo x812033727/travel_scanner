@@ -81,6 +81,9 @@ class PostRevision(Base):
     kind: Mapped[str] = mapped_column(String(24))
     topics: Mapped[list[str]] = mapped_column(JSON, default=list)
     place_ids: Mapped[list[str]] = mapped_column(JSON, default=list)
+    place_refs: Mapped[list[dict[str, str]]] = mapped_column(
+        JSON, default=list, server_default="[]"
+    )
     media_ids: Mapped[list[str]] = mapped_column(JSON, default=list)
     # This is an allowlisted snapshot, never a dump of TripPlan.data.
     itinerary: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)

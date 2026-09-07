@@ -9,6 +9,7 @@ import { featureVisible } from "@/lib/site-features";
 import { api } from "@/lib/api";
 import type { Comment, Page, Post, PublicItinerary } from "@/lib/community/types";
 import { useCommunity } from "./provider";
+import { RelatedPlaces } from "./places";
 import { Button, CommunityImage, Dialog, Empty, ErrorNotice, fieldClass, panelClass } from "./ui";
 import { useResource } from "./use-resource";
 
@@ -123,7 +124,7 @@ export function PostDetails({ id }: { id: string }) {
     <div className="grid gap-4 sm:grid-cols-2">{post.media.map((image) => <CommunityImage key={image.id} id={image.id} alt={image.alt || post.title} />)}</div>
     <TranslateText kind="post" id={post.id} original={post.body} sourceLocale={post.locale} />
     <div className="flex flex-wrap gap-2">{post.topics.map((topic) => <span key={topic} className="rounded-full bg-[var(--paper)] px-3 py-1 text-sm">#{topic}</span>)}</div>
-    {post.place_ids.length > 0 && <section><h2 className="mb-2 text-lg font-bold">{t("relatedPlaces")}</h2><div className="flex flex-wrap gap-2">{post.place_ids.map((place, index) => <Link key={place} href={`/pet-friendly/${place}`} className="rounded-xl border border-[var(--line)] p-3 text-[var(--teal)]">{t("placeNumber", { count: index + 1 })}</Link>)}</div></section>}
+    <RelatedPlaces places={post.places || []} />
     <div className="flex flex-wrap gap-3"><Button secondary disabled={busy || !me?.profile} onClick={() => void react("like")}>{post.liked ? t("unlike") : t("like")} · {post.likes}</Button><Button secondary disabled={busy || !me?.profile} onClick={() => void react("save")}>{post.saved ? t("unsave") : t("savePost")} · {post.saves}</Button><CollectButton kind="post" target={id} /><ReportButton kind="post" target={id} />
       {user?.id === post.author.id && <Link href={`/community/posts/${id}/edit`} className="rounded-xl border border-[var(--line)] px-4 py-2.5">{t("edit")}</Link>}
     </div><ErrorNotice error={actionError} />

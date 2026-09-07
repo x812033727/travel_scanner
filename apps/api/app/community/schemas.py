@@ -65,6 +65,11 @@ class ProfileInput(Input):
         return value
 
 
+class PlaceInput(Input):
+    kind: Literal["pet_place", "hotspot", "merchant"]
+    id: UUID
+
+
 class PostInput(Input):
     version: int | None = Field(default=None, ge=1)
     title: str = Field(default="", max_length=160)
@@ -74,12 +79,19 @@ class PostInput(Input):
     kind: Literal["story", "guide", "pet_visit"] = "story"
     topics: list[str] = Field(default_factory=list, max_length=8)
     place_ids: list[UUID] = Field(default_factory=list, max_length=20)
+    places: list[PlaceInput] | None = Field(default=None, max_length=20)
     media_ids: list[UUID] = Field(default_factory=list, max_length=10)
     # None deliberately removes the public itinerary on save. The editor includes
     # a saved snapshot unless the author explicitly selects another source trip.
     source_trip_id: UUID | None = None
     keep_itinerary: bool = False
     allow_fork: bool = False
+
+    @model_validator(mode="after")
+    def one_place_contract(self) -> PostInput:
+        if self.places is not None and self.place_ids:
+            raise ValueError("use places or legacy place_ids, not both")
+        return self
 
     @field_validator("topics")
     @classmethod

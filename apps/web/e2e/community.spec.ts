@@ -232,6 +232,7 @@ test("reviewed pet rules filter conservatively and require confirmation before c
       name: `Pet trip ${suffix}`, destination_name: "Taipei", start_date: departure, end_date: departure,
       notes: "Preserve this private note", timezone: "Asia/Taipei" });
     await page.goto(`/zh-TW/trips/${trip.id}`);
+    await page.getByRole("button", { name: "旅程工具", exact: true }).click();
     const petPanel = page.locator("details").filter({ has: page.locator("summary").filter({ hasText: /^寵物同行條件$/ }) });
     await petPanel.locator("summary").click();
     await petPanel.getByLabel("這趟旅行有寵物同行").check();
@@ -276,6 +277,26 @@ test("reviewed pet rules filter conservatively and require confirmation before c
     expect(disputed.verification_current).toBe(false);
     await page.screenshot({ path: info.outputPath("pet-reviewed-experience.png"), fullPage: true });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+
+    // The editor associates a catalog identity through search, never pasted IDs.
+    await page.goto("/zh-TW/community/new");
+    await page.getByLabel("標題", { exact: true }).fill(`Pet visit ${suffix}`);
+    await page.getByLabel("旅行心得", { exact: true }).fill("A personal visit; current rules need reconfirmation.");
+    await page.getByLabel("目的地", { exact: true }).fill("Taipei");
+    await page.getByLabel(zhCommunity.searchPlaces, { exact: true }).fill(name);
+    await page.getByRole("button", { name: "搜尋", exact: true }).click();
+    await page.getByRole("button", { name: `加入 ${name}`, exact: true }).click();
+    await expect(page.getByRole("button", { name: `加入 ${name}`, exact: true })).toBeDisabled();
+    await page.getByRole("button", { name: "發佈", exact: true }).click();
+    await expect(page).toHaveURL(/\/community\/posts\/[^/]+\/edit$/);
+    const postId = page.url().split("/").at(-2)!;
+    const draft = await json(page.request, "GET", `/community/posts/${postId}/draft`);
+    expect(draft.places.map((place: { id: string; kind: string }) => ({ id: place.id, kind: place.kind })))
+      .toEqual([{ id: candidate.id, kind: "pet_place" }]);
+    await json(admin.request, "PUT", `/admin/community/posts/${postId}`, {
+      version: draft.version, action: "approve", reason: "Test visit association reviewed" });
+    await page.goto(`/zh-TW/community/posts/${postId}`);
+    await expect(page.getByRole("link", { name, exact: true })).toHaveAttribute("href", `/zh-TW/pet-friendly/${candidate.id}`);
   } finally {
     // Preserve the actual failed UI operation, including the secondary admin
     // page, instead of masking it with teardown errors after the test timeout.
