@@ -842,6 +842,7 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
 ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     "en": {
         **OAUTH_ERROR_DETAILS["en"],
+        "merchant_style_changed": "This style review has changed. Reload it before saving.",
         "catalog_item_mismatch": "Some selected items do not belong to this review run",
         "catalog_receipt_limit": "This review run has reached its limit for applying results",
         "catalog_relation_invalid": (
@@ -985,6 +986,7 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ja": {
         **OAUTH_ERROR_DETAILS["ja"],
+        "merchant_style_changed": "スタイル審査が更新されました。再読み込みしてから保存してください。",
         "catalog_item_mismatch": "選択した項目の一部はこの審査処理に属していません",
         "catalog_receipt_limit": "この審査処理は結果の適用回数の上限に達しました",
         "catalog_relation_invalid": (
@@ -1124,6 +1126,7 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ko": {
         **OAUTH_ERROR_DETAILS["ko"],
+        "merchant_style_changed": "스타일 심사가 변경되었습니다. 다시 불러온 뒤 저장해 주세요.",
         "catalog_item_mismatch": "선택한 항목 중 일부가 이 검토 작업에 속하지 않습니다",
         "catalog_receipt_limit": "이 검토 작업의 결과 적용 횟수 한도에 도달했습니다",
         "catalog_relation_invalid": (
@@ -1254,6 +1257,7 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "zh-TW": {
         **OAUTH_ERROR_DETAILS["zh-TW"],
+        "merchant_style_changed": "風格資料已變更，請重新載入後儲存。",
         "hotspot_not_found": "找不到這個景點",
         "unsupported_theme": "目前沒有這個主題",
         "hotspot_theme_not_found": "找不到這個主題",
@@ -1300,6 +1304,7 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "zh-CN": {
         **OAUTH_ERROR_DETAILS["zh-CN"],
+        "merchant_style_changed": "风格资料已变更，请重新加载后保存。",
         "catalog_item_mismatch": "部分选中项目不属于这次审核任务",
         "catalog_receipt_limit": "这次审核任务已达到应用结果的次数上限",
         "catalog_relation_invalid": "候选关联的料理或分类不合法，或不符合使用条件",

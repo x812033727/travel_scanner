@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
+import { MERCHANT_STYLES } from "@/lib/foods";
+import { AdminMerchantStyles } from "./admin-merchant-styles";
 import { naverMapSearchUrl } from "@/lib/naver-map";
 import {
   LocalizedNameFields,
@@ -186,6 +188,9 @@ export function AdminFoodMerchantsPanel({
 } = {}) {
   const t = useTranslations("foodAdmin");
   const ta = useTranslations("admin");
+  const ts = useTranslations("foods.styles");
+  const [filterStyle, setFilterStyle] = useState("");
+  const [styleStatus, setStyleStatus] = useState("pending");
   const [cities, setCities] = useState<FoodCity[]>([]);
   const [categories, setCategories] = useState<AdminCategory[]>([]);
   const [filterArea, setFilterArea] = useState("");
@@ -199,7 +204,7 @@ export function AdminFoodMerchantsPanel({
   const [mapStatus, setMapStatus] = useState("");
   const [officialData, setOfficialData] = useState("");
   const [query, setQuery] = useState("");
-  const filterSignature = [destination, filterArea, filterCategory, mapStatus, officialData, query, taxonomy].join("|");
+  const filterSignature = [destination, filterArea, filterCategory, filterStyle, styleStatus, mapStatus, officialData, query, taxonomy].join("|");
   // The page number is only meaningful for the filters it was chosen under:
   // narrowing the list while on page 3 must not fetch page 3 of the new,
   // shorter result, so a changed filter silently reads as page 1.
@@ -231,6 +236,7 @@ export function AdminFoodMerchantsPanel({
     if (officialData) params.set("official_data", officialData);
     if (filterArea) params.set("area_slug", filterArea);
     if (filterCategory) params.set("category", filterCategory);
+    if (filterStyle) { params.set("style", filterStyle); params.set("style_status", styleStatus); }
     if (taxonomy) params.set("taxonomy", taxonomy);
     if (query.trim()) params.set("q", query.trim());
     try {
@@ -240,7 +246,7 @@ export function AdminFoodMerchantsPanel({
     } catch (reason) {
       setMessage((reason as Error).message);
     }
-  }, [destination, filterArea, filterCategory, mapStatus, officialData, query, taxonomy, page]);
+  }, [destination, filterArea, filterCategory, filterStyle, styleStatus, mapStatus, officialData, query, taxonomy, page]);
 
   useEffect(() => {
     const params = new URLSearchParams({ limit: String(PAGE_SIZE), page: String(page) });
@@ -251,6 +257,7 @@ export function AdminFoodMerchantsPanel({
     if (filterCategory) params.set("category", filterCategory);
     if (taxonomy) params.set("taxonomy", taxonomy);
     if (query.trim()) params.set("q", query.trim());
+    if (filterStyle) { params.set("style", filterStyle); params.set("style_status", styleStatus); }
     void api<MerchantResponse>(`/admin/foods/merchants?${params}`)
       .then((response) => {
         setData(normalise(response));
@@ -258,7 +265,7 @@ export function AdminFoodMerchantsPanel({
         setBatchCandidates([]);
       })
       .catch((reason: Error) => setMessage(reason.message));
-  }, [destination, filterArea, filterCategory, mapStatus, officialData, query, taxonomy, page]);
+  }, [destination, filterArea, filterCategory, filterStyle, styleStatus, mapStatus, officialData, query, taxonomy, page]);
 
   useEffect(() => {
     loadCities()
@@ -616,6 +623,15 @@ export function AdminFoodMerchantsPanel({
             {ta("foodMerchantsPanel.description")}
           </p>
         </div>
+        <select aria-label={ts("label")} value={filterStyle} onChange={(event) => setFilterStyle(event.target.value)}
+          className="min-h-11 rounded-xl border px-3">
+          <option value="">{ts("all")}</option>
+          {MERCHANT_STYLES.map((style) => <option key={style} value={style}>{ts(style)}</option>)}
+        </select>
+        {filterStyle && <select aria-label={ts("status")} value={styleStatus} onChange={(event) => setStyleStatus(event.target.value)}
+          className="min-h-11 rounded-xl border px-3">
+          {(["pending", "approved", "rejected"] as const).map((status) => <option key={status} value={status}>{ts(status)}</option>)}
+        </select>}
         <input
           aria-label={ta("foodMerchantsPanel.searchLabel")}
           value={query}
@@ -940,6 +956,8 @@ export function AdminFoodMerchantsPanel({
                 {ta("foodMerchantsPanel.close")}
               </button>
             </div>
+            {editing.id ? <AdminMerchantStyles key={editing.id} merchantId={editing.id} />
+              : <p className="mt-4 text-sm text-[var(--muted)]">{ts("createFirst")}</p>}
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               <label className="text-sm font-semibold">
                 {ta("foodMerchantsPanel.name")}

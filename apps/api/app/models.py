@@ -1087,6 +1087,33 @@ class FoodMerchant(Timestamped, Base):
     area_source: Mapped[str | None] = mapped_column(String(16), nullable=True)
 
 
+class FoodMerchantStyle(Timestamped, Base):
+    """Editorial style labels, independent of cuisine and merchant publication."""
+
+    __tablename__ = "food_merchant_styles"
+    __table_args__ = (
+        UniqueConstraint("merchant_id", "style", name="uq_food_merchant_style"),
+        CheckConstraint("style IN ('instagrammable', 'artsy')", name="ck_merchant_style"),
+        CheckConstraint(
+            "status IN ('pending', 'approved', 'rejected')", name="ck_merchant_style_status"
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    merchant_id: Mapped[UUID] = mapped_column(
+        ForeignKey("food_merchants.id", ondelete="CASCADE"), index=True
+    )
+    style: Mapped[str] = mapped_column(String(24))
+    status: Mapped[str] = mapped_column(String(16), default="pending")
+    evidence_url: Mapped[str] = mapped_column(String(2048))
+    evidence_title: Mapped[str] = mapped_column(String(255))
+    rationale: Mapped[str] = mapped_column(String(1000))
+    checked_on: Mapped[date] = mapped_column(Date)
+    reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    reviewed_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+
+
 class FoodMerchantFood(Base):
     __tablename__ = "food_merchant_foods"
     __table_args__ = (UniqueConstraint("merchant_id", "food_id", name="uq_food_merchant_food"),)

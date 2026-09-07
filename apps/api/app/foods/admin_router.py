@@ -36,6 +36,14 @@ from app.foods.service import (
     localized_name,
     merchant_names,
 )
+from app.foods.styles import (
+    MerchantStyle,
+    StyleReviewRequest,
+    StyleStatus,
+    review_style,
+    reviews,
+    style_filter,
+)
 from app.hotspots.maps import has_exact_map_identity
 from app.i18n import DEFAULT_LOCALE, LOCALES, Locale, current_locale
 from app.infra import get_redis
@@ -1146,12 +1154,17 @@ async def list_food_merchants(
     area_slug: Annotated[str | None, Query(min_length=2, max_length=128)] = None,
     category: Annotated[str | None, Query(min_length=2, max_length=128)] = None,
     taxonomy: MerchantTaxonomyFilter | None = None,
+    style: MerchantStyle | None = None,
+    style_status: StyleStatus = "approved",
     q: Annotated[str | None, Query(max_length=100)] = None,
     page: Annotated[int, Query(ge=1)] = 1,
     limit: Annotated[int, Query(ge=1, le=100)] = 30,
 ) -> dict[str, object]:
     _ = user
     filters = []
+    selected_style = style_filter(style, style_status)
+    if selected_style is not None:
+        filters.append(selected_style)
     if destination_id:
         filters.append(FoodMerchant.destination_id == destination_id.casefold())
     if status:
@@ -1319,6 +1332,22 @@ async def food_merchant_map_candidates(
         latitude=payload.latitude,
         longitude=payload.longitude,
     )
+
+
+@router.get("/merchants/{merchant_id}/styles")
+async def merchant_style_reviews(
+    merchant_id: UUID, user: AdminUser, session: Session
+) -> dict[str, object]:
+    if await session.get(FoodMerchant, merchant_id) is None:
+        raise AppError(404, "food_merchant_not_found", "找不到店家")
+    return {"items": await reviews(session, merchant_id)}
+
+
+@router.put("/merchants/{merchant_id}/styles")
+async def update_merchant_style(
+    merchant_id: UUID, payload: StyleReviewRequest, user: AdminUser, session: Session
+) -> dict[str, object]:
+    return await review_style(session, merchant_id, payload, user)
 
 
 @router.post("/merchants", status_code=201)

@@ -20,10 +20,12 @@ export function FoodMerchantCard({
   merchant,
   onSelectArea,
   onSelectCategory,
+  onSelectStyle,
 }: {
   merchant: FoodMerchant;
   onSelectArea?: (slug: string) => void;
   onSelectCategory?: (slug: string) => void;
+  onSelectStyle?: (slug: string) => void;
 }) {
   const t = useTranslations("foods");
   const locale = useLocale();
@@ -87,6 +89,24 @@ export function FoodMerchantCard({
               <ListFilter size={13} aria-hidden />
               {category.name}
             </button>
+          ))}
+        </div>
+      )}
+      {(merchant.styles?.length ?? 0) > 0 && (
+        <div className="mt-3 flex flex-wrap gap-2" aria-label={t("styles.label")}>
+          {merchant.styles?.map((style) => (
+            <span key={style.slug} className="inline-flex items-center gap-2">
+              <button type="button" onClick={() => onSelectStyle?.(style.slug)}
+                aria-label={t("onlyShow", { label: style.name })}
+                className="app-filter-chip">{style.name}</button>
+              {safeExternalHref(style.evidence_url) && (
+                <a href={safeExternalHref(style.evidence_url)} target="_blank" rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center text-xs underline"
+                  aria-label={t("styles.evidenceFor", { name: style.name })}>
+                  {t("styles.checked", { date: style.checked_on })}
+                </a>
+              )}
+            </span>
           ))}
         </div>
       )}
