@@ -20,6 +20,7 @@ from app.models import (
     PriceAlert,
     SearchRequest,
     TripPlan,
+    TripPlanItem,
 )
 from app.problems import AppError
 from app.trips.router import limit_for
@@ -40,6 +41,17 @@ class AlertPatch(BaseModel):
     active: bool | None = None
 
 
+class AlertLinks(BaseModel):
+    """Where this alert came from, so the list can lead back instead of dead-ending.
+
+    A trip alert names its trip. A flight or hotel alert names the trip whose anchor
+    holds that same offer, when there is one, and the search the offer was found in.
+    """
+
+    trip_id: UUID | None = None
+    search_id: UUID | None = None
+
+
 class AlertResponse(BaseModel):
     id: UUID
     resource_type: ResourceType
@@ -58,6 +70,7 @@ class AlertResponse(BaseModel):
     monitoring_status: str
     last_checked_at: datetime | None
     next_check_at: datetime | None
+    links: AlertLinks = AlertLinks()
 
 
 @dataclass(frozen=True)
@@ -163,7 +176,55 @@ async def resource_snapshot(
     )
 
 
-def serialize(alert: PriceAlert, snapshot: ResourceSnapshot | None) -> AlertResponse:
+async def alert_links(
+    session: AsyncSession, user_id: UUID, alerts: list[PriceAlert]
+) -> dict[UUID, AlertLinks]:
+    """Resolve every alert's way back in a fixed number of queries, not one per alert.
+
+    A trip alert already names its trip in `resource_id`. For a flight or hotel alert,
+    `resource_id` is the public offer id, which is also what a trip anchor stores in
+    `TripPlanItem.offer_id`, so one lookup per resource kind finds the trip carrying the
+    same quote, and one more finds the search the offer came from.
+    """
+    links = {
+        alert.id: AlertLinks(trip_id=alert.resource_id if alert.resource_type == "trip" else None)
+        for alert in alerts
+    }
+    offer_ids = {alert.resource_id for alert in alerts if alert.resource_type != "trip"}
+    if not offer_ids:
+        return links
+
+    trip_by_offer = {
+        offer_id: trip_id
+        for offer_id, trip_id in await session.execute(
+            select(TripPlanItem.offer_id, TripPlanItem.trip_plan_id)
+            .join(TripPlan, TripPlan.id == TripPlanItem.trip_plan_id)
+            .where(TripPlan.user_id == user_id, TripPlanItem.offer_id.in_(offer_ids))
+        )
+    }
+    search_by_offer: dict[UUID, UUID] = {}
+    for record in (FlightOfferRecord, HotelOfferRecord):
+        rows = await session.execute(
+            select(record.public_offer_id, record.search_id)
+            .join(SearchRequest, SearchRequest.id == record.search_id)
+            .where(SearchRequest.user_id == user_id, record.public_offer_id.in_(offer_ids))
+        )
+        search_by_offer.update({key: value for key, value in rows if key is not None})
+    for alert in alerts:
+        if alert.resource_type == "trip":
+            continue
+        links[alert.id] = AlertLinks(
+            trip_id=trip_by_offer.get(alert.resource_id),
+            search_id=search_by_offer.get(alert.resource_id),
+        )
+    return links
+
+
+def serialize(
+    alert: PriceAlert,
+    snapshot: ResourceSnapshot | None,
+    links: AlertLinks | None = None,
+) -> AlertResponse:
     missing = ResourceSnapshot(
         title="來源已不存在",
         subtitle="這筆通知仍可刪除，但目前無法取得原始項目。",
@@ -198,6 +259,7 @@ def serialize(alert: PriceAlert, snapshot: ResourceSnapshot | None) -> AlertResp
         monitoring_status=alert.monitoring_status,
         last_checked_at=alert.last_checked_at,
         next_check_at=alert.next_check_at,
+        links=links or AlertLinks(),
     )
 
 
@@ -264,7 +326,7 @@ async def create_alert(
         await session.rollback()
         raise AppError(409, "alert_exists", "這個項目已經建立價格通知") from exc
     await session.refresh(alert)
-    return serialize(alert, snapshot)
+    return serialize(alert, snapshot, (await alert_links(session, user.id, [alert])).get(alert.id))
 
 
 @router.get("", response_model=list[AlertResponse])
@@ -278,6 +340,7 @@ async def list_alerts(user: CurrentUser, session: Session) -> list[AlertResponse
             )
         ).all()
     )
+    links = await alert_links(session, user.id, alerts)
     return [
         serialize(
             alert,
@@ -287,6 +350,7 @@ async def list_alerts(user: CurrentUser, session: Session) -> list[AlertResponse
                 cast(ResourceType, alert.resource_type),
                 alert.resource_id,
             ),
+            links.get(alert.id),
         )
         for alert in alerts
     ]
@@ -298,7 +362,7 @@ async def get_alert(alert_id: UUID, user: CurrentUser, session: Session) -> Aler
     snapshot = await resource_snapshot(
         session, user.id, cast(ResourceType, alert.resource_type), alert.resource_id
     )
-    return serialize(alert, snapshot)
+    return serialize(alert, snapshot, (await alert_links(session, user.id, [alert])).get(alert.id))
 
 
 @router.patch("/{alert_id}", response_model=AlertResponse)
@@ -334,7 +398,7 @@ async def update_alert(
     snapshot = await resource_snapshot(
         session, user.id, cast(ResourceType, alert.resource_type), alert.resource_id
     )
-    return serialize(alert, snapshot)
+    return serialize(alert, snapshot, (await alert_links(session, user.id, [alert])).get(alert.id))
 
 
 @router.delete("/{alert_id}", status_code=204)

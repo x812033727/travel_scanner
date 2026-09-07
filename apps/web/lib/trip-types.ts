@@ -200,6 +200,27 @@ export type TripOptimizationSummary = {
   days: Array<{ date: string; movable_count: number }>;
 };
 
+/** What `POST /trips/{id}/flight-anchors/{direction}/flight-status` writes on an anchor. */
+export type FlightStatusSnapshot = {
+  provider?: string;
+  ident?: string;
+  status?: string;
+  schedule_only?: boolean;
+  cancelled?: boolean;
+  diverted?: boolean;
+  departure_delay_seconds?: number | null;
+  departure_terminal?: string | null;
+  departure_gate?: string | null;
+  checked_at: string;
+};
+
+export function flightStatusSnapshot(item: TripItem): FlightStatusSnapshot | null {
+  const value = item.data.flight_status;
+  if (!value || typeof value !== "object") return null;
+  const snapshot = value as Partial<FlightStatusSnapshot>;
+  return typeof snapshot.checked_at === "string" ? (snapshot as FlightStatusSnapshot) : null;
+}
+
 export function priceSnapshot(item: TripItem): PriceSnapshot | null {
   const value = item.data.price_snapshot;
   if (!value || typeof value !== "object") return null;

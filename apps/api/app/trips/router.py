@@ -45,6 +45,7 @@ from app.localized_names import (
 )
 from app.models import (
     FlightOfferRecord,
+    FlightStatusLookup,
     SearchRequest,
     TripDayNote,
     TripExpense,
@@ -76,6 +77,7 @@ from app.trips.expenses import (
 )
 from app.trips.flight_anchor import (
     apply_flight_offer,
+    flight_status_snapshot,
     member_chose_flight,
     offer_has_leg,
     offer_leg_date,
@@ -3230,6 +3232,59 @@ async def attach_flight_offer(
         user.id,
         payload.version,
     )
+
+
+class FlightAnchorStatusRequest(BaseModel):
+    version: int = Field(ge=1)
+    lookup_id: UUID
+    item_id: UUID
+
+
+@router.post("/{trip_id}/flight-anchors/{direction}/flight-status")
+async def attach_flight_status(
+    trip_id: UUID,
+    direction: Literal["outbound", "return"],
+    payload: FlightAnchorStatusRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    """Write a flight-status result this member looked up onto their own anchor.
+
+    The status comes from the stored lookup rather than from the request body: the
+    lookup is a row this service wrote and charged for, so what lands on the trip is
+    what the provider actually said. Free — the lookup was the paid step.
+    """
+    trip = await owned_trip(session, user.id, trip_id)
+    rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    role: Literal["outbound_flight", "return_flight"] = (
+        "outbound_flight" if direction == "outbound" else "return_flight"
+    )
+    item = next((row for row in rows if row.system_role == role), None)
+    if item is None:
+        raise AppError(422, "flight_anchor_unavailable", "旅程日期不完整，無法設定航班")
+    lookup = await session.scalar(
+        select(FlightStatusLookup).where(
+            FlightStatusLookup.id == payload.lookup_id,
+            FlightStatusLookup.user_id == user.id,
+        )
+    )
+    if lookup is None:
+        raise AppError(404, "flight_status_lookup_not_found", "找不到這筆航班動態查詢")
+    result = next(
+        (
+            value
+            for value in lookup.result_json.get("items", [])
+            if value.get("item_id") == str(payload.item_id)
+        ),
+        None,
+    )
+    if result is None:
+        raise AppError(404, "flight_status_item_not_found", "找不到這個航班項目")
+    item.data = {
+        **item.data,
+        "flight_status": flight_status_snapshot(result, checked_at=lookup.updated_at),
+    }
+    return await persist_information_anchor_change(session, trip, user.id, payload.version)
 
 
 @router.patch("/{trip_id}/items/{item_id}/skip")

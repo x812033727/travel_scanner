@@ -6,8 +6,11 @@ async function pickTripDay(page: Page, iso: string) {
   const nextMonth = page.getByRole("button", { name: "下個月" });
   // The calendar fills its public holidays in after it mounts, and the phone layout keeps
   // fixed furniture at both edges of the viewport, so let the page settle and put the
-  // button in the middle of the screen before aiming at it.
-  await page.waitForLoadState("networkidle").catch(() => {});
+  // button in the middle of the screen before aiming at it. The wait needs its own
+  // timeout: `networkidle` never arrives on this page in some environments, and without
+  // one the catch below never runs — the wait quietly eats the whole test timeout and the
+  // failure is reported against the next line, as if the month buttons were stuck.
+  await page.waitForLoadState("networkidle", { timeout: 5_000 }).catch(() => {});
   for (let attempt = 0; attempt < 24 && (await day.count()) === 0; attempt += 1) {
     await nextMonth.evaluate((element) => element.scrollIntoView({ block: "center" }));
     await nextMonth.click();
@@ -54,22 +57,31 @@ test("guest recommendation through alert management uses the real first-party st
   } else {
     await expect(page.getByText(/行程規劃器/)).toBeVisible();
   }
-  await page.getByRole("button", { name: "建立價格通知" }).click();
-  await page.getByRole("button", { name: "確認建立" }).click();
-  await expect(page.getByText(/價格通知已建立/)).toBeVisible();
+  // The trip-level watch tracks the quotes the trip actually holds, one alert each,
+  // instead of a total_price nothing re-checks.
+  await page.getByRole("button", { name: /^追蹤這趟旅程的 \d+ 筆報價$/ }).click();
+  await expect(page.getByText(/已追蹤 \d+ 筆報價/)).toBeVisible();
   await page.getByRole("link", { name: "前往管理" }).click();
 
   await expect(page.getByRole("heading", { name: "價格通知" })).toBeVisible();
+  // One alert per quote, so every assertion below belongs to one card rather than the list.
+  const alertCard = page.locator("article.account-app-card").first();
   // The capacity line above the list also says 追蹤中 (追蹤中 1／20 筆價格通知); match the status pill exactly.
-  await expect(page.getByText("追蹤中", { exact: true })).toBeVisible();
-  await page.getByRole("button", { name: /編輯/ }).first().click();
-  await page.getByLabel(/編輯.*目標價格/).fill("30000");
-  await page.getByRole("button", { name: "儲存價格" }).click();
-  await expect(page.getByText(/30,000/)).toBeVisible();
-  await page.getByRole("button", { name: /暫停/ }).click();
-  await expect(page.getByText("已暫停")).toBeVisible();
-  await page.getByRole("button", { name: "刪除通知" }).click();
-  await page.getByRole("button", { name: "確定刪除" }).click();
+  await expect(alertCard.getByText("追蹤中", { exact: true })).toBeVisible();
+  await alertCard.getByRole("button", { name: /編輯/ }).click();
+  await alertCard.getByLabel(/編輯.*目標價格/).fill("30000");
+  await alertCard.getByRole("button", { name: "儲存價格" }).click();
+  await expect(alertCard.getByText(/30,000/)).toBeVisible();
+  await alertCard.getByRole("button", { name: /暫停/ }).click();
+  await expect(alertCard.getByText("已暫停")).toBeVisible();
+  // Deleting re-renders the list, so wait for the row to be gone before opening the next
+  // confirm — otherwise the second 確定刪除 is detached mid-click.
+  const deleteButtons = page.getByRole("button", { name: "刪除通知" });
+  for (let left = await deleteButtons.count(); left > 0; left -= 1) {
+    await deleteButtons.first().click();
+    await page.getByRole("button", { name: "確定刪除" }).first().click();
+    await expect(deleteButtons).toHaveCount(left - 1);
+  }
   await expect(page.getByText(/目前還沒有價格通知/)).toBeVisible();
 });
 
@@ -205,4 +217,21 @@ test("a saved trip searches flights from its own criteria and takes a quote back
   const outbound = page.locator(".planner-flight-card").first();
   await expect(outbound).not.toContainText("去程航班尚未設定");
   await expect(outbound).toContainText(/報價 NT\$/);
+
+  // The pre-departure loop: the quote on the anchor is what gets watched, and the
+  // alert it creates leads back to this trip rather than dead-ending in a list.
+  await outbound.getByRole("button", { name: "建立價格通知" }).click();
+  await outbound.getByRole("button", { name: "確認建立" }).click();
+  await expect(page.getByText(/價格通知已建立/)).toBeVisible();
+  await page.getByRole("link", { name: "前往管理" }).click();
+  await expect(page.getByRole("heading", { name: "價格通知" })).toBeVisible();
+  await page.getByRole("link", { name: "查看旅程" }).first().click();
+  await expect(page).toHaveURL(tripUrl);
+
+  // And the anchor's own flight-status lookup arrives prefilled with that flight.
+  await page.locator(".planner-flight-card").first().getByRole("link", { name: /^查航班動態 · / }).click();
+  await expect(page).toHaveURL(/\/flights\/status\?.*trip_id=/);
+  await expect(page.getByLabel("班號")).not.toHaveValue("");
+  await expect(page.getByLabel("出發日期")).not.toHaveValue("");
+  await expect(page.getByRole("link", { name: "回到旅程" })).toBeVisible();
 });

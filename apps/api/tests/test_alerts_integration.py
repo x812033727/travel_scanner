@@ -13,7 +13,14 @@ from sqlalchemy import select
 from app.db import SessionFactory, engine
 from app.infra import get_redis
 from app.main import app
-from app.models import FlightOfferRecord, PriceAlert, SearchRequest, TripPlan, User
+from app.models import (
+    FlightOfferRecord,
+    PriceAlert,
+    SearchRequest,
+    TripPlan,
+    TripPlanItem,
+    User,
+)
 
 pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
@@ -242,3 +249,103 @@ async def test_two_users_can_save_the_same_deterministic_itinerary() -> None:
         assert first_item_id != second_item_id
         assert first_item_id != str(source_item_id)
         assert second_item_id != str(source_item_id)
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_an_alert_leads_back_to_the_trip_and_search_it_came_from() -> None:
+    """`links` is what turns the alert list from a dead end into a way back.
+
+    A trip alert names its trip. A flight alert names the trip whose anchor holds the
+    same offer — and only for the member who owns both.
+    """
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        token, user_id = await register(client, "alert-links")
+        headers = {"Authorization": f"Bearer {token}"}
+        public_offer_id, now = uuid4(), datetime.now(UTC)
+        async with SessionFactory() as session:
+            search = SearchRequest(
+                user_id=user_id,
+                status="completed",
+                progress=100,
+                operation="travel_search",
+                request_json={},
+            )
+            session.add(search)
+            await session.flush()
+            search_id = search.id
+            session.add(
+                FlightOfferRecord(
+                    search_id=search_id,
+                    provider="fixture",
+                    provider_offer_id=f"fixture-{uuid4()}",
+                    public_offer_id=public_offer_id,
+                    data={
+                        "id": str(public_offer_id),
+                        "marketing_airline": "測試航空",
+                        "origin": "TPE",
+                        "destination": "NRT",
+                        "source_mode": "mock",
+                        "retrieved_at": now.isoformat(),
+                    },
+                    total_price=Decimal("11500"),
+                    currency="TWD",
+                    expires_at=now + timedelta(hours=6),
+                )
+            )
+            await session.commit()
+
+        created = await client.post(
+            "/api/v1/trips",
+            headers=headers,
+            json={
+                "source": "blank",
+                "planning_mode": "manual_blank",
+                "name": "動態與提醒",
+                "destination_name": "日本東京",
+                "start_date": "2026-11-10",
+                "end_date": "2026-11-12",
+            },
+        )
+        assert created.status_code == 201, created.text
+        trip = created.json()
+        outbound = next(
+            item for item in trip["items"] if item["system_role"] == "outbound_flight"
+        )
+
+        # The anchor carries the offer, the way `from-offer` leaves it.
+        async with SessionFactory() as session:
+            row = await session.get(TripPlanItem, UUID(outbound["id"]))
+            assert row is not None
+            row.offer_id = public_offer_id
+            await session.commit()
+
+        for payload in (
+            {"resource_type": "flight", "resource_id": str(public_offer_id)},
+            {"resource_type": "trip", "resource_id": trip["id"]},
+        ):
+            assert (
+                await client.post("/api/v1/alerts", headers=headers, json=payload)
+            ).status_code == 201
+
+        listed = (await client.get("/api/v1/alerts", headers=headers)).json()
+        by_type = {alert["resource_type"]: alert for alert in listed}
+        assert by_type["trip"]["links"] == {"trip_id": trip["id"], "search_id": None}
+        assert by_type["flight"]["links"] == {
+            "trip_id": trip["id"],
+            "search_id": str(search_id),
+        }
+        # The single-alert reads carry the same links as the list.
+        one = await client.get(f"/api/v1/alerts/{by_type['flight']['id']}", headers=headers)
+        assert one.json()["links"]["trip_id"] == trip["id"]
+
+        # Another member's alert on the same offer must not name someone else's trip.
+        other_token, _ = await register(client, "alert-links-other")
+        other = {"Authorization": f"Bearer {other_token}"}
+        assert (
+            await client.post(
+                "/api/v1/alerts",
+                headers=other,
+                json={"resource_type": "flight", "resource_id": str(public_offer_id)},
+            )
+        ).status_code == 404

@@ -9,8 +9,8 @@ created from, and the airport-local times the provider reported.
 
 from __future__ import annotations
 
-from datetime import date
-from typing import Literal
+from datetime import date, datetime
+from typing import Any, Literal
 
 from app.models import TripPlanItem
 from app.providers.schemas import FlightOffer
@@ -48,6 +48,43 @@ def offer_leg_date(offer: FlightOffer, role: FlightRole) -> date | None:
     info = offer_flight_info(offer, returning=role == "return_flight")
     local = info.get("departure_local")
     return date.fromisoformat(str(local)[:10]) if local else None
+
+
+# What a traveller still needs from a status lookup once the lookup itself has expired:
+# whether it flies, how late, and which gate. The provider blob carries far more.
+STATUS_SNAPSHOT_FIELDS = (
+    "provider",
+    "ident",
+    "origin",
+    "destination",
+    "status",
+    "schedule_only",
+    "cancelled",
+    "diverted",
+    "departure_delay_seconds",
+    "arrival_delay_seconds",
+    "departure_terminal",
+    "departure_gate",
+    "arrival_terminal",
+    "arrival_gate",
+    "scheduled_out",
+    "estimated_out",
+    "actual_out",
+    "scheduled_in",
+    "estimated_in",
+    "actual_in",
+)
+
+
+def flight_status_snapshot(item: dict[str, Any], *, checked_at: datetime) -> dict[str, Any]:
+    """Reduce one flight-status result to what the anchor keeps.
+
+    The lookup row expires; the trip does not. `checked_at` is stamped here so the trip
+    page can say how old the status is rather than implying it is live.
+    """
+    snapshot = {key: item[key] for key in STATUS_SNAPSHOT_FIELDS if item.get(key) is not None}
+    snapshot["checked_at"] = checked_at.isoformat()
+    return snapshot
 
 
 def apply_flight_offer(item: TripPlanItem, role: FlightRole, offer: FlightOffer) -> None:

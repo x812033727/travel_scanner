@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**13 open · 1 in progress · 2 blocked · 2 in review · 145 done**
+**16 open · 1 in progress · 2 blocked · 3 in review · 145 done**
 
 ## Ready to claim
 
@@ -21,6 +21,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
 | P3 | [彈性日期區塊的價格標籤寫死 full_trip_search](open/2026-09-06-full-trip-search.md) | web | `apps/web/components/flight-date-options.tsx`<br>`apps/web/components/flight-date-options.test.tsx` |
+| P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | api | `apps/api/tests/test_food_integration.py` |
+| P3 | [tasks/BOARD.md 是產生檔，卻讓每個 PR 互相衝突](open/2026-09-07-board-conflicts-on-every-pr.md) | tools | `.gitattributes`<br>`tools/tasks.mjs` |
 | P3 | [The whole applied-filter chip is a delete button](open/2026-09-07-applied-filter-chip-is-all-delete.md) | web | `apps/web/components/hotspot-explorer.tsx`<br>`apps/web/components/food-browser.tsx` |
 | P3 | [check-i18n does not guard the ui-text editor's own namespace labels](open/2026-09-07-ui-text-namespace-label-guard.md) | web | `tools/check-i18n.mjs`<br>`docs/ui-text-overrides.md` |
 
@@ -36,6 +38,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- |
 | [Gemini catalog review and 100-item expansion](open/2026-09-07-gemini-catalog-review.md) | codex-gemini-catalog | `codex/catalog-review-missing-assessments` |
 | [從旅程出發查機票：條件由旅程推導，報價帶回錨點](open/2026-09-06-search-from-a-saved-trip.md) | claude-opus-5 | `claude/better-workflow-planning-324ki8` |
+| [出發前閉環：提醒連得回旅程、錨點能追價、航班動態寫得回去](open/2026-09-07-pre-departure-loop.md) | claude-opus-5 | `claude/pre-departure-loop` |
 
 ## Waiting
 
@@ -46,6 +49,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P2 | [Cuisine chip counts ignore the area and keyword already chosen](open/2026-09-07-cuisine-counts-ignore-other-filters.md) | active work in the same scope |
 | P2 | [The foods landing tells you to pick a city while already listing 110 merchants](open/2026-09-07-foods-landing-lists-before-city.md) | active work in the same scope |
 | P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | active work in the same scope |
+| P3 | [行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal\|append](open/2026-09-07-add-a-meal-to-a-day.md) | active work in the same scope |
 
 ## Recently finished
 
