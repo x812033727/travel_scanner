@@ -59,6 +59,12 @@ describe("flight anchor card", () => {
     expect(screen.queryByText(/報價/)).toBeNull();
   });
 
+  it("links to the trip's flight search with the charge on the label", () => {
+    render(<FlightAnchorCard item={outbound} search={{ href: "/search?trip_id=trip-1", charge: "消耗 1 次" }} />);
+    const link = screen.getByRole("link", { name: "查機票 · 消耗 1 次" });
+    expect(link.getAttribute("href")).toBe("/search?trip_id=trip-1");
+  });
+
   it("shows a clear setup action for an unset return flight", () => {
     render(<FlightAnchorCard item={{ ...outbound, id: "flight-return", system_role: "return_flight", data: { flight_info: null } }} onEdit={vi.fn()} />);
     expect(screen.getByText("回程航班尚未設定")).toBeTruthy();
