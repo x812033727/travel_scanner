@@ -117,9 +117,15 @@ regressions passed again. Desktop Playwright: 50 passed; mobile project: 53 pass
 calls in tests are mocks and are not evidence of reservations or commissions.
 
 Full local Python collection is blocked by the existing deployment agent's UnixStreamServer
-import on Windows; full Linux CI is required. Full web suite: 126 files / 729 tests passed. No city
+import on Windows. Linux CI 34132295317 ran 1,722 passing API tests (one existing skip),
+plus successful container and full-stack smoke jobs. Full web suite: 126 files / 729 tests passed. No city
 is considered complete from a pending-file count, and no paid price API was enabled.
 See the task record for remaining validation and content acceptance. No PR merge/deploy yet.
+
+Chrome spot check: the saved Tokyo Station Hotel Place ID resolves to the expected hotel
+name/address and official website. This was identity-only inspection: no Google prices,
+ratings, reviews, descriptions or coordinates were copied into the catalog. All pending
+inputs still require independent admin approval; a single spot check does not certify a city.
 
 ## Remaining source research
 

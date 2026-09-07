@@ -15,7 +15,7 @@ import pytest
 import pytest_asyncio
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
-from sqlalchemy import func, select
+from sqlalchemy import func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import current_user
@@ -313,6 +313,30 @@ async def test_option_review_reminder_is_independent_from_product_review(
     overview = (await client.get("/admin/travel-services")).json()
     assert overview["review_due"] == initial["review_due"]
     assert overview["hotel_option_review_due"] == initial["hotel_option_review_due"] + 1
+
+
+async def test_legacy_removal_refreshes_option_version_before_disabling(
+    client, session, monkeypatch
+):
+    from app.travel_services.imports import upsert_product
+    from app.travel_services.schemas import ProductInput
+    from app.travel_services.service import product_input
+
+    item, option = await option_fixture(session, client, monkeypatch)
+    data = product_input(item).model_dump(mode="json")
+    data["facts"]["hotel_links"] = []
+    # Simulate a completed review after this request loaded the relationship.
+    # Keep the identity map deliberately stale, as with a concurrent transaction.
+    await session.execute(
+        update(HotelBookingOption)
+        .where(HotelBookingOption.id == option.id)
+        .values(version=7)
+        .execution_options(synchronize_session=False)
+    )
+    assert option.version != 7
+    await upsert_product(session, ProductInput.model_validate(data))
+    await session.flush()
+    assert option.status == "disabled" and option.version == 8
 
 
 async def test_option_versions_duplicate_identity_and_independent_review(

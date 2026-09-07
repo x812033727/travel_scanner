@@ -10,6 +10,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import (
+    HotelBookingOption,
     TravelServiceBrand,
     TravelServiceImport,
     TravelServiceOffer,
@@ -109,15 +110,27 @@ async def upsert_product(
         row.verified_at = None
         row.version += 1
     await session.flush()
+    existing_options = row.hotel_options
+    if "hotel_links" in data.facts.model_fields_set:
+        # Legacy replacement can disable omitted options. Serialize that path with
+        # independent reviews too, and increment the current (not identity-map) version.
+        existing_options = list(
+            await session.scalars(
+                select(HotelBookingOption)
+                .where(HotelBookingOption.product_id == row.id)
+                .with_for_update()
+                .execution_options(populate_existing=True)
+            )
+        )
     for link in data.facts.hotel_links:
-        existing = next((o for o in row.hotel_options if o.provider == link.provider), None)
+        existing = next((o for o in existing_options if o.provider == link.provider), None)
         if existing and existing.url == link.url and existing.evidence_url == link.evidence_url:
             continue  # Legacy round-trips cannot erase independently reviewed property IDs/notes.
         _, updated = await upsert_option(session, row, HotelOptionInput(**link.model_dump()))
         changed = changed or updated
     if "hotel_links" in data.facts.model_fields_set:
         retained = {link.provider for link in data.facts.hotel_links}
-        for option in row.hotel_options:
+        for option in existing_options:
             if (
                 option.discovery_status == "found"
                 and option.provider not in retained
