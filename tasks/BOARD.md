@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**6 open · 0 in progress · 2 blocked · 0 in review · 134 done**
+**6 open · 0 in progress · 2 blocked · 0 in review · 135 done**
 
 ## Ready to claim
 
@@ -37,6 +37,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-07 [手機篩選面板看起來是對話框，但沒有 dialog role、不移動 focus、Escape 不關、Tab 走得出去](done/2026-09-07-filter-sheet-not-a-dialog.md)
 - 2026-09-07 [後台沒有「產生介紹」的按鈕，所以介紹佇列永遠是空的](done/2026-09-07-intro-generate-trigger.md)
 - 2026-09-07 [上線稽核找到的兩個 API 缺陷：座標來源與額度扣點順序](done/2026-09-07-post-deploy-audit-api-fixes.md)
 - 2026-09-07 [產生器每次執行都會重寫既有列的分類，重跑一次就還原剛修好的資料](done/2026-09-07-generator-rewrites-categories.md)
@@ -46,4 +47,3 @@ _Nothing here._
 - 2026-09-06 [台南兩家不同的店共用 tainan-fu-sheng-hao 這個 slug，富盛號永遠匯不進來](done/2026-09-06-tainan-slug-collision.md)
 - 2026-09-06 [沒有帳號的人走到底是死路：註冊已關閉，但每道牆只寫「前往登入」](done/2026-09-06-auth-dead-end.md)
 - 2026-09-06 [篩選面板的關閉鍵報讀成「關閉介紹」，美食那邊則跟開啟鍵同名](done/2026-09-06-filter-sheet-labels.md)
-- 2026-09-06 [熱門景點：重新整理丟掉搜尋、看不出套用了什麼、清除條件只在零結果時出現](done/2026-09-06-hotspot-filter-visibility.md)

@@ -3,6 +3,7 @@
 import { ArrowDownRight, ArrowUpRight, BarChart3, BookOpenText, Building2, ExternalLink, FileText, LoaderCircle, LockKeyhole, LogIn, MapPin, Minus, Play, Search, SlidersHorizontal, Sparkles, UtensilsCrossed, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { FormEvent, KeyboardEvent, TouchEvent, useEffect, useRef, useState } from "react";
+import { useModalSheet } from "@/lib/modal-sheet";
 import { api } from "@/lib/api";
 import { HotspotRestaurantsPanel } from "@/components/hotspot-restaurants-panel";
 import { HotspotIntro } from "@/components/hotspot-intro";
@@ -272,6 +273,7 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
   const [loading, setLoading] = useState(!seededRanking);
   const [error, setError] = useState("");
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const filterSheetRef = useModalSheet<HTMLFormElement>(filtersOpen, () => setFiltersOpen(false));
   const [selected, setSelected] = useState<RankedHotspot | null>(null);
   const [contentAuthNotice, setContentAuthNotice] = useState<"login" | "unavailable" | null>(null);
   const [contentLoginHref, setContentLoginHref] = useState(() => loginPath(pathname));
@@ -525,7 +527,9 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
       <button type="button" onClick={clearFilters} className="inline-flex min-h-11 items-center rounded-full px-3 text-sm font-semibold text-[var(--teal)] underline underline-offset-4">{t("clearFilters")}</button>
     </div>}
     {filtersOpen && <button type="button" aria-label={t("closeFilters")} onClick={() => setFiltersOpen(false)} className="fixed inset-0 z-[70] bg-slate-950/40 md:hidden" />}
-    <form onSubmit={(event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setFiltersOpen(false); void load(); }} aria-label={t("searchLabel")} className={`${filtersOpen ? "mobile-filter-sheet-open" : ""} mobile-filter-sheet grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-2 md:p-5 lg:grid-cols-[1fr_repeat(4,minmax(0,9rem))_auto]`}>
+    {/* A dialog only while it is the sheet. On a wide screen this same form is the filter
+        bar sitting in the page, and calling that a modal would be a lie to a screen reader. */}
+    <form ref={filterSheetRef} {...(filtersOpen ? { role: "dialog" as const, "aria-modal": true } : {})} onSubmit={(event: FormEvent<HTMLFormElement>) => { event.preventDefault(); setFiltersOpen(false); void load(); }} aria-label={t("searchLabel")} className={`${filtersOpen ? "mobile-filter-sheet-open" : ""} mobile-filter-sheet grid gap-3 rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-[var(--shadow-lg)] md:grid-cols-2 md:p-5 lg:grid-cols-[1fr_repeat(4,minmax(0,9rem))_auto]`}>
       <div className="mb-1 flex items-center justify-between md:hidden"><strong>{t("searchLabel")}</strong><button type="button" onClick={() => setFiltersOpen(false)} aria-label={t("closeFilters")} className="grid h-11 w-11 place-items-center rounded-full border border-[var(--line)]"><X size={19} /></button></div>
       <label className="relative md:col-span-2 lg:col-span-1"><span className="sr-only">{t("searchPlaceholder")}</span><Search className="pointer-events-none absolute left-4 top-3.5 text-[var(--muted)]" size={19} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t("searchPlaceholder")} className="h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--paper)] pl-11 pr-4 outline-none focus:border-[var(--teal)]" /></label>
       <select aria-label={t("allCountries")} value={country} onChange={(event) => { setCountry(event.target.value); setCity(""); setArea(""); }} className="h-12 min-w-0 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3"><option value="">{t("allCountries")}</option>{facets?.countries.map((item) => <option key={item.code} value={item.code}>{item.name} ({item.count})</option>)}</select>
