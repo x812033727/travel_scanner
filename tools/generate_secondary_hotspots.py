@@ -404,12 +404,13 @@ def main() -> None:
     output: list[dict[str, Any]] = (
         json.loads(OUTPUT.read_text(encoding="utf-8")) if OUTPUT.exists() else []
     )
-    city_offsets: dict[str, int] = {}
-    for row in output:
-        offset = city_offsets.get(row["city_code"], 0)
-        row["category"] = FALLBACK_CATEGORIES[offset % len(FALLBACK_CATEGORIES)]
-        city_offsets[row["city_code"]] = offset + 1
+    # Existing rows keep the category they have. This loop used to overwrite every one of
+    # them with the round-robin below, so a run added to collect one new city would silently
+    # re-scramble every category already in the file. 2026-09-06 corrected 34 of those by
+    # hand against Wikidata P31 (2026-09-06-seed-categories-assigned-by-quota); one run of
+    # this tool would have undone the lot without saying so.
     used.update(row["wikidata_item_id"] for row in output)
+    needs_category: list[str] = []
     completed = {row["city_code"] for row in output}
     for city_code, (project, urban_center, day_center) in CITIES.items():
         if city_code in completed:
@@ -453,7 +454,11 @@ def main() -> None:
                 if depth_kind == "day_trip"
                 else (18 + (index % 3) * 8)
             )
+            # A placeholder, not a judgement: this is the row's position in the list, not
+            # anything about the place. Every new row has to be categorised by hand before it
+            # is published, and the summary at the end lists them so that is not forgotten.
             category = FALLBACK_CATEGORIES[index % len(FALLBACK_CATEGORIES)]
+            needs_category.append(slug(city_code, row["qid"], row["title"]))
             record: dict[str, Any] = {
                 "slug": slug(city_code, row["qid"], row["title"]),
                 "name": row["name"],
@@ -499,6 +504,15 @@ def main() -> None:
             encoding="utf-8",
         )
     print(f"wrote {len(output)} reviewed secondary-city hotspots to {OUTPUT}")
+    if needs_category:
+        print()
+        print(
+            f"{len(needs_category)} new rows carry a placeholder category taken from their "
+            "position in the list, which says nothing about the place. Categorise each one "
+            "before publishing — Wikidata P31 is the source used last time:"
+        )
+        for slug_value in needs_category:
+            print(f"  {slug_value}")
 
 
 if __name__ == "__main__":
