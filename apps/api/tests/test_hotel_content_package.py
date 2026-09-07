@@ -21,7 +21,8 @@ from app.travel_services.service import require_product_review
 
 
 @pytest.mark.parametrize(
-    "city,reviewed", [("tokyo", 6), ("osaka", 0), ("taipei", 0), ("seoul", 0), ("kyoto", 0)]
+    "city,reviewed",
+    [("tokyo", 6), ("osaka", 0), ("taipei", 0), ("seoul", 0), ("kyoto", 0), ("busan", 0)],
 )
 def test_pending_content_preserves_prior_identities_and_marks_gaps(city, reviewed):
     path = Path(__file__).resolve().parents[3] / f"docs/hotel-platforms/{city}.pending.json"
@@ -31,7 +32,7 @@ def test_pending_content_preserves_prior_identities_and_marks_gaps(city, reviewe
     if city == "seoul":
         assert all(not r["product"]["facts"].get("google_place_id") for r in rows)
         assert sum(bool(r["product"]["facts"].get("naver_map_url")) for r in rows) == 5
-    elif city == "kyoto":
+    elif city in ("kyoto", "busan"):
         assert all(not r["product"]["facts"].get("google_place_id") for r in rows)
     else:
         assert len({r["product"]["facts"]["google_place_id"] for r in rows}) == 10
@@ -53,7 +54,7 @@ def test_pending_content_preserves_prior_identities_and_marks_gaps(city, reviewe
         }
         assert sum(o.discovery_status == "found" for o in options) >= 3
         assert all("status" not in o for o in row["booking_options"])
-        if city == "kyoto":
+        if city in ("kyoto", "busan"):
             # Licensed permit addresses do not magically become a coordinate dataset.
             assert p.facts.latitude is p.facts.longitude is p.facts.coordinate_source_url is None
             with pytest.raises(AppError, match="service_identity_required"):
@@ -142,10 +143,11 @@ def test_seoul_provenance_and_unconfirmed_candidates_stay_separate():
                 assert option.get("property_id", "") != record["permit_id"]
 
 
-def test_pending_seoul_options_cannot_be_public_even_if_product_were_approved():
-    path = Path(__file__).resolve().parents[3] / "docs/hotel-platforms/seoul.pending.json"
+@pytest.mark.parametrize("city", ["seoul", "busan"])
+def test_pending_options_cannot_be_public_even_if_product_were_approved(city):
+    path = Path(__file__).resolve().parents[3] / f"docs/hotel-platforms/{city}.pending.json"
     now = datetime.now(UTC)
-    config = CatalogConfig(enabled_destinations=["seoul"], enabled_kinds=["hotel"])
+    config = CatalogConfig(enabled_destinations=[city], enabled_kinds=["hotel"])
     for row in json.loads(path.read_text(encoding="utf-8")):
         product = TravelServiceProduct(**row["product"], id=uuid4(), status="approved")
         for source in row["booking_options"]:
@@ -229,3 +231,39 @@ def test_recent_seoul_checks_exclude_parnas_interrupted_browser_and_restaurants(
     assert not rejected_restaurant_ids & {
         record["naver"]["candidate_url"].rstrip("/").split("/")[-1] for record in checked
     }
+
+
+def test_busan_identity_research_excludes_closure_and_does_not_assert_licensing():
+    directory = Path(__file__).resolve().parents[3] / "docs/hotel-platforms"
+    evidence = json.loads((directory / "busan.evidence.json").read_text(encoding="utf-8"))
+    package = json.loads((directory / "busan.pending.json").read_text(encoding="utf-8"))
+    records = {r["source_key"]: r for r in evidence["hotels"]}
+    assert len(records) == 10
+    assert evidence["catalog_status"] == "pending_research_not_approved"
+    closure = next(r for r in evidence["excluded_candidates"] if r["reason"] == "scheduled_closure")
+    assert closure["effective_date"] == "2026-12-29"
+    assert closure["browser_checked_on"] == "2026-09-08"
+    assert not any("solaria" in row["product"]["source_key"] for row in package)
+    assert not any("ibis" in row["product"]["source_key"] for row in package)
+    for row in package:
+        product = ProductInput.model_validate(row["product"])
+        record = records[product.source_key]
+        assert record["official_name"] == product.title
+        assert record["official_identity_url"] == product.source_url
+        assert record["official_address"]
+        assert record["map_status"] == "not_checked"
+        assert product.facts.naver_map_url is None
+        assert product.facts.google_place_id is None
+        assert "no content reuse license asserted" in product.facts.source_credits[0].license_name
+        reviews = {r["provider"]: r for r in record["platform_research"]}
+        for option in row["booking_options"]:
+            if option["provider"] == "official":
+                continue
+            review = reviews[option["provider"]]
+            assert review["query"] and review["searched_on"] and review["searched_domains"]
+            if option.get("url"):
+                assert option["url"] == review["candidate_url"]
+                assert review["status"] == "identity_candidate_pending_browser_review"
+            else:
+                assert option["discovery_status"] == review["status"] == "unconfirmed"
+                assert not option.get("property_id")

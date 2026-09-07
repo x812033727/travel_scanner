@@ -1,0 +1,714 @@
+{
+  "checked_on": "2026-09-08",
+  "catalog_status": "pending_research_not_approved",
+  "coordinate_status": "not_verified_licensed_source_required",
+  "source_policy": "Only minimal official identity facts and property URL references. No website reuse license asserted; no OTA descriptions, images, ratings, reviews, prices or map coordinates retained.",
+  "browser_status": "Chrome verified Solaria closure and RYSE official contact; subsequent Naver CDP timeout and one fresh-tab navigation recovery failed. No Busan Naver or OTA browser approval claimed.",
+  "excluded_candidates": [
+    {
+      "title": "Solaria Nishitetsu Hotel Busan",
+      "reason": "scheduled_closure",
+      "effective_date": "2026-12-29",
+      "source_url": "https://solaria-busan.nnr-h.com/news/YjrKmYk0",
+      "browser_checked_on": "2026-09-08",
+      "note": "Official notice says operations end after checkout on 2026-12-29, not already closed. Excluded from new open-ended catalog."
+    },
+    {
+      "title": "ibis Ambassador Busan City Centre",
+      "reason": "identity_change_unresolved",
+      "source_url": "https://www.trip.com/hotels/busan-hotel-detail-1465759/ibis-ambassador-busan-city-centre?locale=en-XX",
+      "note": "Current Trip listing title is Central Seven Hotel by Kwon Busan Seomyeon at 777 Jungang-daero, while official Ambassador page still identifies ibis. Not silently matched or imported."
+    },
+    {
+      "title": "Arban City Hotel",
+      "reason": "wrong_branch",
+      "source_url": "https://www.booking.com/hotel/kr/arban-city.html",
+      "note": "20 Bansong-ro, Yeonje-gu is not ARBAN HOTEL at 32 Jungang-daero 691beon-gil."
+    }
+  ],
+  "source_conflicts": [
+    {
+      "source_url": "https://www.visitbusan.net/index.do?lang_cd=en&menuCd=DOM_000000301004001000&uc_seq=649",
+      "note": "Indexed Toyoko Seomyeon entry says 33-1 Bujeon-ro; official hotel 00221 and Booking/Trip agree 39 Seojeon-ro. Do not use conflicting tourism address."
+    }
+  ],
+  "hotels": [
+    {
+      "source_key": "editorial:busan:lotte-busan",
+      "official_identity_url": "https://www.lottehotel.com/prerendered/busan-hotel/en/about/location/index.html",
+      "official_name": "LOTTE HOTEL BUSAN",
+      "official_address": "772, Gaya-daero, Busanjin-gu, Busan",
+      "map_status": "not_checked",
+      "coordinate_status": "not_available",
+      "platform_research": [
+        {
+          "provider": "booking",
+          "query": "LOTTE HOTEL BUSAN address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/kr/lotte-busan.html",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "trip_com",
+          "query": "LOTTE HOTEL BUSAN address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/busan-hotel-detail-19517030/lotte-hotel-busan",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "agoda",
+          "query": "LOTTE HOTEL BUSAN",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.agoda.com/lotte-hotel-busan/hotel/busan-kr.html"
+        },
+        {
+          "provider": "expedia",
+          "query": "LOTTE HOTEL BUSAN",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.expedia.com/Busan-Hotels-Lotte-Hotel-Busan.h199832.Hotel-Information"
+        },
+        {
+          "provider": "rakuten",
+          "query": "LOTTE HOTEL BUSAN",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed."
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:busan:arban",
+      "official_identity_url": "https://www.arbanhotel.com/LOCATION",
+      "official_name": "ARBAN HOTEL",
+      "official_address": "부산시 부산진구 중앙대로 691번길 32",
+      "map_status": "not_checked",
+      "coordinate_status": "not_available",
+      "platform_research": [
+        {
+          "provider": "booking",
+          "query": "ARBAN HOTEL address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/kr/arban.html",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "trip_com",
+          "query": "ARBAN HOTEL address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/busan-hotel-detail-4396607/arban-hotel-busan/",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "agoda",
+          "query": "ARBAN HOTEL",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.agoda.com/arban-hotel/hotel/busan-kr.html"
+        },
+        {
+          "provider": "expedia",
+          "query": "ARBAN HOTEL",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.expedia.com/Busan-Hotels-Arban-Hotel.h13103209.Hotel-Information"
+        },
+        {
+          "provider": "rakuten",
+          "query": "ARBAN HOTEL",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed."
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:busan:toyoko-inn-seomyeon",
+      "official_identity_url": "https://www.toyoko-inn.com/eng/search/detail/00221/",
+      "official_name": "Toyoko Inn Busan Seomyeon",
+      "official_address": "39, Seojeon-ro, Busanjin-gu, Busan",
+      "map_status": "not_checked",
+      "coordinate_status": "not_available",
+      "platform_research": [
+        {
+          "provider": "booking",
+          "query": "Toyoko Inn Busan Seomyeon address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/kr/toyoko-inn-seomyeon.html",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "trip_com",
+          "query": "Toyoko Inn Busan Seomyeon address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/busan-hotel-detail-981633/toyoko-inn-seomyeon-busan/",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "agoda",
+          "query": "Toyoko Inn Busan Seomyeon",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.agoda.com/toyoko-inn-busan-seomyeon_4/hotel/busan-kr.html"
+        },
+        {
+          "provider": "expedia",
+          "query": "Toyoko Inn Busan Seomyeon",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.expedia.com/Busan-Hotels-Toyoko-Inn-Busan-Seo-Myeon.h4160482.Hotel-Information"
+        },
+        {
+          "provider": "rakuten",
+          "query": "Toyoko Inn Busan Seomyeon",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed."
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:busan:park-hyatt-busan",
+      "official_identity_url": "https://www.hyatt.com/park-hyatt/en-US/busph-park-hyatt-busan/parking-and-transportation",
+      "official_name": "Park Hyatt Busan",
+      "official_address": "51, Marine City 1-ro, Haeundae-gu, Busan",
+      "map_status": "not_checked",
+      "coordinate_status": "not_available",
+      "platform_research": [
+        {
+          "provider": "booking",
+          "query": "Park Hyatt Busan address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/kr/park-hyatt-busan.en-gb.html",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "trip_com",
+          "query": "Park Hyatt Busan address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/busan-hotel-detail-992200/park-hyatt-busan/",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "agoda",
+          "query": "Park Hyatt Busan",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.agoda.com/park-hyatt-busan/hotel/busan-kr.html"
+        },
+        {
+          "provider": "expedia",
+          "query": "Park Hyatt Busan",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed."
+        },
+        {
+          "provider": "rakuten",
+          "query": "Park Hyatt Busan",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed."
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:busan:grand-josun-busan",
+      "official_identity_url": "https://gjb.josunhotel.com/main.do?locale=en",
+      "official_name": "GRAND JOSUN BUSAN",
+      "official_address": "292, Haeundaehaebyeon-ro, Haeundae-gu, Busan",
+      "map_status": "not_checked",
+      "coordinate_status": "not_available",
+      "platform_research": [
+        {
+          "provider": "booking",
+          "query": "GRAND JOSUN BUSAN address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/kr/grand-josun-busan.en-gb.html",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "trip_com",
+          "query": "GRAND JOSUN BUSAN address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/busan-hotel-detail-67688375/grand-josun-busan/",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "agoda",
+          "query": "GRAND JOSUN BUSAN",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.agoda.com/novotel-ambassador-busan_8/hotel/busan-kr.html"
+        },
+        {
+          "provider": "expedia",
+          "query": "GRAND JOSUN BUSAN",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.expedia.com/Busan-Hotels-Grand-Josun-Busan.h54509722.Hotel-Information"
+        },
+        {
+          "provider": "rakuten",
+          "query": "GRAND JOSUN BUSAN",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed."
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:busan:paradise-busan",
+      "official_identity_url": "https://www.busanparadisehotel.co.kr/front/",
+      "official_name": "Paradise Hotel Busan",
+      "official_address": "296, Haeundaehaebyeon-ro, Haeundae-gu, Busan",
+      "map_status": "not_checked",
+      "coordinate_status": "not_available",
+      "platform_research": [
+        {
+          "provider": "booking",
+          "query": "Paradise Hotel Busan address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/kr/paradise-busan.html",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "trip_com",
+          "query": "Paradise Hotel Busan address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/busan-hotel-detail-689014/paradise-hotel-busan/",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "agoda",
+          "query": "Paradise Hotel Busan",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.agoda.com/paradise-hotel-busan/hotel/busan-kr.html"
+        },
+        {
+          "provider": "expedia",
+          "query": "Paradise Hotel Busan",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed."
+        },
+        {
+          "provider": "rakuten",
+          "query": "Paradise Hotel Busan",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed."
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:busan:shilla-stay-haeundae",
+      "official_identity_url": "https://www.shillahotels.com/ko/shillastay/haeundae/facilities/index.do",
+      "official_name": "Shilla Stay Haeundae",
+      "official_address": "부산광역시 해운대구 해운대로570번길 46",
+      "map_status": "not_checked",
+      "coordinate_status": "not_available",
+      "platform_research": [
+        {
+          "provider": "booking",
+          "query": "Shilla Stay Haeundae address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/kr/shilla-stay-haeundae.en-gb.html",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "trip_com",
+          "query": "Shilla Stay Haeundae address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/busan-hotel-detail-7074941/shillastay-haeundae-beach-bexco/",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "agoda",
+          "query": "Shilla Stay Haeundae",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.agoda.com/shilla-stay-haeundae/hotel/busan-kr.html"
+        },
+        {
+          "provider": "expedia",
+          "query": "Shilla Stay Haeundae",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.expedia.com/Busan-Hotels-Shilla-Stay-Haeundae.h17726652.Hotel-Information"
+        },
+        {
+          "provider": "rakuten",
+          "query": "Shilla Stay Haeundae",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed."
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:busan:l7-haeundae",
+      "official_identity_url": "https://www.lottehotel.com/prerendered/haeundae-l7/en/facilities/luggage-locker/index.html",
+      "official_name": "L7 HAEUNDAE by LOTTE HOTELS",
+      "official_address": "55, Haeun-daero 570beon-gil, Haeundae-gu, Busan",
+      "map_status": "not_checked",
+      "coordinate_status": "not_available",
+      "platform_research": [
+        {
+          "provider": "booking",
+          "query": "L7 HAEUNDAE by LOTTE HOTELS address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/kr/l7-haeundae-busan.html",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "trip_com",
+          "query": "L7 HAEUNDAE by LOTTE HOTELS address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/busan-hotel-detail-118354608/l7-haeundae",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "agoda",
+          "query": "L7 HAEUNDAE by LOTTE HOTELS",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.agoda.com/l7-haeundae/hotel/busan-kr.html"
+        },
+        {
+          "provider": "expedia",
+          "query": "L7 HAEUNDAE by LOTTE HOTELS",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.expedia.com/Busan-Hotels-L7-HAEUNDAE-By-LOTTE.h103196381.Hotel-Information"
+        },
+        {
+          "provider": "rakuten",
+          "query": "L7 HAEUNDAE by LOTTE HOTELS",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed."
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:busan:stanford-busan",
+      "official_identity_url": "https://stanford-hotel.com/busan/en",
+      "official_name": "Stanford Hotel Busan",
+      "official_address": "53, Gudeok-ro, Jung-gu, Busan",
+      "map_status": "not_checked",
+      "coordinate_status": "not_available",
+      "platform_research": [
+        {
+          "provider": "booking",
+          "query": "Stanford Hotel Busan address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/kr/stanford-inn-busan.en-gb.html",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "trip_com",
+          "query": "Stanford Hotel Busan address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/busan-hotel-detail-11221494/stanford-inn-busan/",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "agoda",
+          "query": "Stanford Hotel Busan",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed."
+        },
+        {
+          "provider": "expedia",
+          "query": "Stanford Hotel Busan",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.expedia.com/Busan-Hotels-Stanford-Inn-Busan.h18687289.Hotel-Information"
+        },
+        {
+          "provider": "rakuten",
+          "query": "Stanford Hotel Busan",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed."
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:busan:foret-premier-nampo",
+      "official_identity_url": "https://www.hotelforetpremier.com/view/index.do?SS_SVC_LANG_CODE=KOR",
+      "official_name": "Hotel Foret Premier Nampo",
+      "official_address": "부산시 중구 구덕로 54-1",
+      "map_status": "not_checked",
+      "coordinate_status": "not_available",
+      "platform_research": [
+        {
+          "provider": "booking",
+          "query": "Hotel Foret Premier Nampo address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "booking.com"
+          ],
+          "candidate_url": "https://www.booking.com/hotel/kr/foret-premier-nampo.html",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "trip_com",
+          "query": "Hotel Foret Premier Nampo address",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "trip.com"
+          ],
+          "candidate_url": "https://www.trip.com/hotels/busan-hotel-detail-1245935/hotel-foret-premier-nampo/",
+          "status": "identity_candidate_pending_browser_review"
+        },
+        {
+          "provider": "agoda",
+          "query": "Hotel Foret Premier Nampo",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.agoda.com/hotel-foret-premier-nampo_5/hotel/busan-kr.html"
+        },
+        {
+          "provider": "expedia",
+          "query": "Hotel Foret Premier Nampo",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed.",
+          "unverified_lead_url": "https://www.expedia.com/Busan-Hotels-Hotel-Foret-Premier-Nampo.h17599526.Hotel-Information"
+        },
+        {
+          "provider": "rakuten",
+          "query": "Hotel Foret Premier Nampo",
+          "searched_on": "2026-09-08",
+          "searched_domains": [
+            "agoda.com",
+            "expedia.com",
+            "travel.rakuten.com"
+          ],
+          "status": "unconfirmed",
+          "note": "Included in domain-scoped discovery; not independently identity-reviewed."
+        }
+      ]
+    }
+  ]
+}

@@ -65,6 +65,38 @@ and per-city rollout gates. Keep task open and release at handoff.
 
 ## Why
 
+### 2026-09-08 Busan continuation checkpoint
+
+Continuing the same draft PR #344 from main 7f21d7e. Ten Busan pending candidates now
+cover Seomyeon/Haeundae/Nampo, with official and Booking/Trip identity references.
+Other OTA leads stay unconfirmed; no licensed Busan coordinates or precise Naver IDs
+are claimed. Source credits explicitly do not assert a content reuse license.
+Excluded Solaria's announced 2026-12-29 closure, unresolved ibis/ Central Seven rename,
+wrong Arban City branch, and conflicting Toyoko tourism-directory address.
+
+After a verified PostgreSQL backup, normal import service staged ten Busan products and
+sixty options pending; run cb5921a5-d87a-4ff9-9946-5c3c3ad19689. Serializable preflight/apply
+fingerprint guard preserved all fifty existing products/options/config. Then RYSE alone
+passed normal versioned location review, using its dated Sep 7 Naver observation and a
+fresh Sep 8 Chrome official-contact check. Its official link independently passed healthy
+URL review. No OTA approvals, city switches, affiliate/quote enablement, deployment or merge.
+
+Live verification: 60 hotels, 11 product approved, 49 pending; 324 new options across batches,
+one approved RYSE official and 323 pending. Original Tokyo six/config fingerprint unchanged.
+Five-language read-only smoke passed without provider requests/clicks. Zero complete cities.
+Details: docs/hotel-platforms/review-2026-09-08-busan.md. Never replay pending files over
+reviewed rows. Chrome timed out on the next Naver check and one fresh-tab recovery failed;
+do not claim new Naver/OTA browser reviews. Task remains open for location/platform/source gaps.
+
+Previous SHA fe8a61d PR CI passed all jobs; same-SHA push smoke failed in unrelated community
+test with ECONNRESET alongside metric uniqueness errors. Recorded the suspected race in
+2026-09-07-community-read-metric-concurrency, not patched as part of hotel content.
+
+Continuation validation: 120 related tests, Ruff/format, mypy (254 source files), 27 tools
+tests, five locales/25 namespaces, task checks and production read-only five-locale smoke
+passed. New head CI is checked in PR #344. Release rather than mark done; city acceptance
+and remaining independent reviews are still open.
+
 Keep one hotel identity while independently reviewing each platform, enabling commission links only after qualification, and preparing honest on-demand quotes without activating paid APIs.
 
 ## Definition of done

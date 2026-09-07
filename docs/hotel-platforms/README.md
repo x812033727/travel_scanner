@@ -36,7 +36,7 @@ Official integration references (checked 2026-09-07):
 - https://support.travelpayouts.com/hc/en-us/articles/25289759198226-API-for-Travelpayouts-partner-links
 - https://developers.booking.com/demand/docs/getting-started/prerequisites
 
-## Content status — not a completed 60-hotel catalog
+## Content status — 60 research inputs, not 60 accepted hotels
 
 `tokyo.pending.json` contains 10 researched Tokyo hotel candidates, preserving the six
 existing `editorial:tokyo:*` keys and adding four Tokyo Station/Ginza properties. Each has
@@ -81,13 +81,24 @@ The permit spreadsheet has **no coordinate columns**. Latitude, longitude, coord
 source and Place ID are absent, not guessed or copied from Google/OTAs. These ten cannot
 pass product review until durable coordinates and exact identities are established.
 
+`busan.pending.json` adds ten candidates across Seomyeon (three), Haeundae (five),
+and Nampo (two). Official identity facts and Booking/Trip property URLs were cross-checked;
+Agoda/Expedia/Rakuten discovery remains unconfirmed with leads in `busan.evidence.json`.
+These are pending research, not ten licensed/reviewed locations. No durable coordinates
+or exact Naver identities have been established. Source credits explicitly say that no
+website content reuse license is asserted; they are not an open-data license or permission
+to copy descriptions/images. Do not approve these products before filling the source gaps.
+Solaria Busan is excluded because its official notice schedules closure after checkout on
+2026-12-29. The unresolved ibis/ Central Seven rename and wrong Arban City branch are also
+documented, not silently matched. Toyoko's conflicting tourism-directory address was not used.
+
 | City | Research inputs | Accepted for city rollout | Remaining |
 | --- | ---: | ---: | --- |
 | Tokyo | 10 | 0 | New map checks, all platform checks, background link checks, independent approvals |
 | Osaka | 10 | 0 | Map and platform review, remaining OTA checks, independent approvals |
 | Kyoto | 10 | 0 | Licensed coordinates, exact Place IDs, live platform checks and independent approvals |
 | Seoul | 10 | 0 | Five unresolved Naver reviews, platform landing checks and independent option approvals |
-| Busan | 0 | 0 | 10 hotels / 3 areas / exact Naver identity |
+| Busan | 10 | 0 | Licensed coordinates, exact Naver identities, platform landing reviews and independent approvals |
 | Taipei | 10 | 0 | Map and platform review, remaining OTA checks, independent approvals |
 
 Do not call this task done or enable any city using the research-input count. On 2026-09-08,
@@ -95,10 +106,19 @@ Do not call this task done or enable any city using the research-input count. On
 skipping and preserving all six existing Tokyo products/options. Four new Seoul locations
 then passed normal admin product review with audit records. All 264 newly imported platform
 options remain pending. The live total is **50 hotels: 10 product-level approved, 40 pending;
-zero completed cities**. Product approval is not platform approval or city rollout.
+zero completed cities** at the first batch checkpoint. Product approval is not platform approval or city rollout.
 Public/affiliate/price settings are unchanged. Only the earlier 24 IDs-only usage-meter
 increments were made (four Tokyo, ten Osaka, ten Taipei); this continuation made no Google
 lookup or price API call. The one-off lookup scripts have already run: do not repeat them to recover saved IDs.
+
+Latest 2026-09-08 continuation: ten Busan products and sixty options were imported as
+pending, preserving all fifty existing products/options. RYSE then separately passed product
+location review using the 2026-09-07 Naver observation plus a fresh Chrome official-contact
+check; its official option passed normal URL/health review. No OTA option was approved.
+The live total is now **60 hotels: 11 product-approved, 49 pending; 323 pending new options
+and one approved new official option**. Original Tokyo six and catalog settings are unchanged.
+Public enablement remains off, configured destinations remain Tokyo only, and no city has
+completed rollout acceptance. See `review-2026-09-08-busan.md` for the current checkpoint.
 
 ## Tokyo coordinate attribution
 
