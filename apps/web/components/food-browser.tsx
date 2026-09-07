@@ -49,6 +49,7 @@ export function FoodBrowser({ initialCities, initialCategories }: {
   initialCategories?: unknown;
 } = {}) {
   const t = useTranslations("foods");
+  const tCommon = useTranslations("common");
   const seededCities = useMemo(
     () => (isCitiesResponse(initialCities) ? initialCities.countries ?? [] : null),
     [initialCities],
@@ -215,13 +216,14 @@ export function FoodBrowser({ initialCities, initialCategories }: {
       <button
         type="button"
         onClick={() => setFiltersOpen(true)}
+        aria-label={t("openFilters", { label: t("filters"), count: activeFilterCount(filters) })}
         className="mb-3 flex min-h-12 w-full items-center justify-between rounded-2xl border border-[var(--line)] bg-white px-4 font-semibold shadow-[var(--shadow-sm)] md:hidden"
       >
         <span className="flex items-center gap-2">
           <SlidersHorizontal size={18} />
           {t("filters")}
         </span>
-        <span className="rounded-full bg-[var(--coral-soft)] px-2.5 py-1 text-xs">
+        <span aria-hidden className="rounded-full bg-[var(--coral-soft)] px-2.5 py-1 text-xs">
           {activeFilterCount(filters)}
         </span>
       </button>
@@ -284,6 +286,8 @@ export function FoodBrowser({ initialCities, initialCategories }: {
           items={areaItems}
           value={filters.area}
           onChange={toggleArea}
+          moreLabel={(count) => tCommon("showMoreChips", { count })}
+          fewerLabel={tCommon("showFewerChips")}
         />
       )}
       <FoodFilterChips
@@ -292,6 +296,8 @@ export function FoodBrowser({ initialCities, initialCategories }: {
         items={categoryItems}
         value={filters.category}
         onChange={toggleCategory}
+        moreLabel={(count) => tCommon("showMoreChips", { count })}
+        fewerLabel={tCommon("showFewerChips")}
       />
       {activeChips.length > 0 && (
         <div className="mt-3 flex flex-wrap items-center gap-2 text-sm" aria-label={t("activeFilters")}>

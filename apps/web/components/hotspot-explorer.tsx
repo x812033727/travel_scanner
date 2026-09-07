@@ -259,6 +259,7 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
   // with the list on the first paint and hydration has nothing to correct.
   const seededFilters = seededRanking ? initialFilters : undefined;
   const t = useTranslations("hotspots");
+  const tCommon = useTranslations("common");
   const locale = useLocale();
   const pathname = usePathname();
   const auth = useSavedItems();
@@ -518,7 +519,7 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
       <p className="flex items-center gap-2 text-sm font-semibold text-[var(--teal)]"><Sparkles size={16} />{t("eyebrow")}</p>
       <div className="mt-3 flex flex-wrap items-end justify-between gap-4"><div><h1 className="text-3xl font-bold tracking-[-.035em] md:text-5xl">{t("title")}</h1><p className="mt-3 max-w-2xl leading-7 text-[var(--muted)]">{t("description")}</p></div><div className="rounded-2xl border border-[var(--line)] bg-white px-4 py-3 text-sm text-[var(--muted)]"><span className="font-semibold text-[var(--ink)]">{t("updated")}</span> {ranking?.observed_on || (error ? "—" : t("waiting"))}</div></div>
     </section>
-    <button type="button" onClick={() => setFiltersOpen(true)} className="mb-3 flex min-h-12 w-full items-center justify-between rounded-2xl border border-[var(--line)] bg-white px-4 font-semibold shadow-[var(--shadow-sm)] md:hidden"><span className="flex items-center gap-2"><SlidersHorizontal size={18} />{t("searchLabel")}</span><span className="rounded-full bg-[var(--teal-soft)] px-2.5 py-1 text-xs text-[var(--teal-dark)]">{appliedFilters.length}</span></button>
+    <button type="button" onClick={() => setFiltersOpen(true)} aria-label={t("openFilters", { label: t("searchLabel"), count: appliedFilters.length })} className="mb-3 flex min-h-12 w-full items-center justify-between rounded-2xl border border-[var(--line)] bg-white px-4 font-semibold shadow-[var(--shadow-sm)] md:hidden"><span className="flex items-center gap-2"><SlidersHorizontal size={18} />{t("searchLabel")}</span><span aria-hidden className="rounded-full bg-[var(--teal-soft)] px-2.5 py-1 text-xs text-[var(--teal-dark)]">{appliedFilters.length}</span></button>
     {/* The count told the reader that something had been applied but never what, and
         the only way back to everything was an empty result. Name each filter, and
         give each one its own way out. */}
@@ -544,6 +545,8 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
       groups={themeGroups}
       value={theme}
       onChange={selectTheme}
+      moreLabel={(count) => tCommon("showMoreChips", { count })}
+      fewerLabel={tCommon("showFewerChips")}
     />
     <div className="mt-7 grid gap-7">
       <section aria-live="polite" aria-busy={loading}><div className="mb-4 flex items-center justify-between gap-4"><h2 className="flex items-center gap-2 text-xl font-bold"><BarChart3 size={20} className="text-[var(--coral)]" />{t("ranking")}</h2><p className="text-sm text-[var(--muted)]">{t("loaded", { shown: ranking?.items.length ?? 0, total: ranking?.total ?? 0 })}</p></div>

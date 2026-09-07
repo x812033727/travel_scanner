@@ -1,5 +1,6 @@
 "use client";
 
+import { ChipRow } from "@/components/chip-row";
 import { type HotspotTheme, isInSeason, monthRangeLabel } from "@/lib/hotspot-themes";
 
 export type ThemeChipItem = { key: string; label: string; count?: number; marker?: string };
@@ -16,12 +17,16 @@ export function HotspotThemeChips({
   groups,
   value,
   onChange,
+  moreLabel,
+  fewerLabel,
 }: {
   label: string;
   allLabel: string;
   groups: ThemeChipGroup[];
   value: string;
   onChange: (key: string) => void;
+  moreLabel: (count: number) => string;
+  fewerLabel: string;
 }) {
   const visible = groups
     .map((group) => ({
@@ -34,20 +39,22 @@ export function HotspotThemeChips({
   if (!visible.length) return null;
   return (
     <div role="group" aria-label={label} className="mt-3 grid gap-2">
-      {visible.map((group, index) => (
-        <div key={group.key} className="app-chip-row items-center">
-          <span className="shrink-0 pr-1 text-xs font-bold text-[var(--muted)]">{group.label}</span>
-          {index === 0 && (
-            <button
-              type="button"
-              aria-pressed={value === ""}
-              onClick={() => onChange("")}
-              className={`app-filter-chip ${value === "" ? "app-filter-chip-active" : ""}`}
-            >
-              {allLabel}
-            </button>
-          )}
-          {group.items.map((item) => (
+      {visible.map((group, index) => {
+        const chips = [
+          ...(index === 0
+            ? [
+                <button
+                  key="__all"
+                  type="button"
+                  aria-pressed={value === ""}
+                  onClick={() => onChange("")}
+                  className={`app-filter-chip ${value === "" ? "app-filter-chip-active" : ""}`}
+                >
+                  {allLabel}
+                </button>,
+              ]
+            : []),
+          ...group.items.map((item) => (
             <button
               key={item.key}
               type="button"
@@ -63,9 +70,27 @@ export function HotspotThemeChips({
               )}
               {item.count !== undefined && <span className="app-filter-count">{item.count}</span>}
             </button>
-          ))}
-        </div>
-      ))}
+          )),
+        ];
+        const selected = group.items.findIndex((item) => item.key === value);
+        const activeIndex =
+          index === 0 && value === "" ? 0 : selected < 0 ? -1 : selected + (index === 0 ? 1 : 0);
+        return (
+          <ChipRow
+            key={group.key}
+            chips={chips}
+            activeIndex={activeIndex}
+            moreLabel={moreLabel}
+            fewerLabel={fewerLabel}
+            className="items-center"
+            leading={
+              <span className="shrink-0 self-center pr-1 text-xs font-bold text-[var(--muted)]">
+                {group.label}
+              </span>
+            }
+          />
+        );
+      })}
     </div>
   );
 }

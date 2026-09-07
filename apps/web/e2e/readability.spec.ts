@@ -226,3 +226,61 @@ test("the admin sidebar shows which page you are on", async ({ page }) => {
   });
   expect(ratio).toBeGreaterThanOrEqual(MIN_CONTRAST);
 });
+
+test("every filter chip is on screen, and a long row says how many it folded away", async ({ page }) => {
+  const themes = [
+    { slug: "sakura", kind: "season", name: "賞櫻", count: 33, months: [3, 4] },
+    { slug: "koyo", kind: "season", name: "賞楓", count: 27, months: [11] },
+    { slug: "ski", kind: "season", name: "滑雪", count: 2, months: [1, 2] },
+    { slug: "hanabi", kind: "season", name: "花火", count: 2, months: [7, 8] },
+    { slug: "illumination", kind: "season", name: "燈飾", count: 7, months: [12] },
+    { slug: "snow", kind: "season", name: "賞雪", count: 8, months: [1] },
+    { slug: "drugstore", kind: "shop", name: "藥妝", count: 4, months: [] },
+    { slug: "electronics", kind: "shop", name: "電器", count: 8, months: [] },
+    { slug: "department", kind: "shop", name: "百貨", count: 18, months: [] },
+    { slug: "outlet", kind: "shop", name: "Outlet 暢貨中心", count: 3, months: [] },
+    { slug: "souvenir", kind: "shop", name: "伴手禮", count: 11, months: [] },
+    { slug: "vintage", kind: "shop", name: "二手古著", count: 7, months: [] },
+    { slug: "anime", kind: "shop", name: "動漫周邊", count: 12, months: [] },
+    { slug: "market", kind: "shop", name: "商店街／市場", count: 27, months: [] },
+  ];
+  await page.route("**/hotspots/facets*", (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ total: 0, countries: [], cities: [], categories: [], areas: [], themes }),
+    }),
+  );
+  await page.route("**/hotspots/rankings*", (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ scope: "global", scope_key: "all", observed_on: null, window_days: 30, total: 0, has_more: false, next_cursor: null, items: [] }),
+    }),
+  );
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/zh-TW/hotspots");
+  const rows = page.locator(".app-chip-row");
+  await expect(rows.first()).toBeVisible();
+
+  // The rows used to scroll sideways with `scrollbar-width: none`, so four of the
+  // seven season chips were unreachable without a swipe nothing hinted at.
+  const overflowing = await rows.evaluateAll((elements) =>
+    elements
+      .filter((element) => element.scrollWidth > element.clientWidth + 1)
+      .map((element) => element.textContent?.replace(/\s+/g, " ").slice(0, 60) ?? ""),
+  );
+  expect(overflowing, "chip rows must not hide choices sideways").toEqual([]);
+
+  // Eight shop chips is more than fits without burying the ranking, so the row
+  // folds — but it says so, and the fold opens.
+  const more = page.getByRole("button", { name: /還有 \d+ 個/ });
+  await expect(more).toBeVisible();
+  await expect(page.getByRole("button", { name: "商店街／市場 27" })).toHaveCount(0);
+  await more.click();
+  await expect(page.getByRole("button", { name: "商店街／市場 27" })).toBeVisible();
+
+  // "熱門景點搜尋 0" is what a screen reader used to say for the filter button.
+  const trigger = page.getByRole("button", { name: /熱門景點搜尋/ });
+  await expect(trigger).toHaveAttribute("aria-label", "熱門景點搜尋，目前選了 0 個條件");
+});
