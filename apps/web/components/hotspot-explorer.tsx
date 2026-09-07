@@ -524,6 +524,9 @@ export function HotspotExplorer({ initialRanking, initialFacets, initialFilters 
         the only way back to everything was an empty result. Name each filter, and
         give each one its own way out. */}
     {appliedFilters.length > 0 && <div className="mb-3 flex flex-wrap items-center gap-2" aria-label={t("activeFilters")}>
+      {/* The whole chip removes the filter, which is the right target size but a
+          surprise if nothing says so. The row label says so. */}
+      <span className="text-sm text-[var(--muted)]">{t("activeFiltersHint")}</span>
       {appliedFilters.map((filter) => <button key={filter.key} type="button" onClick={filter.clear} aria-label={t("removeFilter", { label: filter.label })} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--teal)] bg-[var(--teal-soft)] px-3.5 text-sm font-semibold text-[var(--teal-dark)]">{filter.label}<X size={15} aria-hidden /></button>)}
       <button type="button" onClick={clearFilters} className="inline-flex min-h-11 items-center rounded-full px-3 text-sm font-semibold text-[var(--teal)] underline underline-offset-4">{t("clearFilters")}</button>
     </div>}

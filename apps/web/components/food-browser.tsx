@@ -301,23 +301,25 @@ export function FoodBrowser({ initialCities, initialCategories }: {
       />
       {activeChips.length > 0 && (
         <div className="mt-3 flex flex-wrap items-center gap-2 text-sm" aria-label={t("activeFilters")}>
-          <span className="text-[var(--muted)]">{t("activeFilters")}</span>
+          {/* The whole chip removes the filter, which is the right target size but a
+              surprise if nothing says so. The row label says so. */}
+          <span className="text-[var(--muted)]">{t("activeFiltersHint")}</span>
           {activeChips.map((chip) => (
             <button
               key={chip.key}
               type="button"
               onClick={chip.clear}
-              aria-label={`${t("clearFilters")}: ${chip.label}`}
-              className="inline-flex min-h-9 items-center gap-1 rounded-full border border-[var(--line)] bg-white px-3 text-xs font-semibold"
+              aria-label={t("removeFilter", { label: chip.label })}
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--teal)] bg-[var(--teal-soft)] px-3.5 font-semibold text-[var(--teal-dark)]"
             >
               {chip.label}
-              <X size={13} />
+              <X size={15} aria-hidden />
             </button>
           ))}
           <button
             type="button"
             onClick={clearFilters}
-            className="min-h-9 px-2 text-xs font-semibold text-[var(--teal)]"
+            className="min-h-11 px-3 font-semibold text-[var(--teal)] underline underline-offset-4"
           >
             {t("clearFilters")}
           </button>

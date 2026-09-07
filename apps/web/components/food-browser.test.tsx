@@ -243,6 +243,20 @@ describe("FoodBrowser", () => {
     expect(window.location.search).toContain("category=sushi");
   });
 
+  it("says the applied-filter chips are how you remove a filter", async () => {
+    renderBrowser("/foods?destination_id=tokyo&area=tokyo-shibuya");
+
+    expect(await screen.findByRole("heading", { name: "Ichiran Shibuya" })).toBeTruthy();
+    // Tapping the whole chip removes the filter — the right target size, and a surprise
+    // until the row says so.
+    expect(screen.getByText("已選條件（點一下取消）")).toBeTruthy();
+    const chip = screen.getByRole("button", { name: "移除 澀谷" });
+
+    fireEvent.click(chip);
+    await waitFor(() => expect(window.location.search).not.toContain("area="));
+    expect(window.location.search).toContain("destination_id=tokyo");
+  });
+
   it("falls back to signature dishes when a city has no verified merchant", async () => {
     renderBrowser("/foods?destination_id=kanazawa");
 
