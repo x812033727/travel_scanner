@@ -24,7 +24,11 @@ afterEach(() => {
 
 describe("session providers without a session cookie", () => {
   it("asks nothing, and says signed out straight away", async () => {
-    const fetchMock = vi.fn(async () => new Response("{}", { status: 401 }));
+    // The parameter is declared so `mock.calls` is typed, and echoed so it is used.
+    const fetchMock = vi.fn(
+      async (input: RequestInfo | URL) =>
+        new Response(JSON.stringify({ detail: String(input) }), { status: 401 }),
+    );
     vi.stubGlobal("fetch", fetchMock);
 
     render(
@@ -44,7 +48,10 @@ describe("session providers without a session cookie", () => {
   });
 
   it("still verifies a cookie that is present, because it may be expired", async () => {
-    const fetchMock = vi.fn(async () => new Response(JSON.stringify({ detail: "no" }), { status: 401 }));
+    const fetchMock = vi.fn(
+      async (input: RequestInfo | URL) =>
+        new Response(JSON.stringify({ detail: String(input) }), { status: 401 }),
+    );
     vi.stubGlobal("fetch", fetchMock);
 
     render(
