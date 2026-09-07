@@ -15,6 +15,7 @@ scope:
   - apps/api/app/models.py
   - apps/api/app/main.py
   - apps/api/app/i18n.py
+  - apps/api/app/ui_text/schemas.py
   - apps/api/app/worker.py
   - apps/api/app/config.py
   - apps/api/app/cli.py
@@ -48,6 +49,7 @@ scope:
   - apps/web/messages/zh-CN/admin.json
   - apps/web/messages/zh-TW/admin.json
   - apps/web/i18n
+  - apps/web/lib/ui-text.ts
   - apps/web/vitest.setup.tsx
   - docs/catalog-review.md
 ---
@@ -114,3 +116,9 @@ Final cross-review added hotspot translated names/aliases to the immutable snaps
 concurrent localization edits now invalidate the old approval. Its focused regression
 set is 79 passed. Initial CI already passed fresh PostgreSQL migration; final-head
 complete CI results must still be verified before merge.
+
+Head 83e16bc completed all CI checks: API 1491 passed/1 skipped, Web 617 tests,
+94 browser UI tests and 4 full-stack journeys; containers/builds passed. Main then
+advanced to 8553097 (UI text loader), so this branch was rebased again and the new
+catalogReview namespace added to both new editable-namespace registries. Final
+rebased-head CI must pass too; the original result is not claimed for a new SHA.
