@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**12 open · 0 in progress · 2 blocked · 1 in review · 154 done**
+**13 open · 1 in progress · 2 blocked · 0 in review · 154 done**
 
 ## Ready to claim
 
@@ -13,7 +13,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
-| P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | docs | `apps/web/app/[locale]/privacy/page.tsx`<br>`apps/web/app/[locale]/terms/page.tsx`<br>`apps/web/app/[locale]/contact/page.tsx`<br>`apps/web/messages/en/navigation.json`<br>`apps/web/messages/ja/navigation.json`<br>`apps/web/messages/ko/navigation.json`<br>`apps/web/messages/zh-CN/navigation.json`<br>`apps/web/messages/zh-TW/navigation.json` |
 | P1 | [登入頁沒有忘記密碼，後端也沒有任何寄信管道](open/2026-09-07-forgot-password-no-mail-channel.md) | web | `apps/web/app/[locale]/login`<br>`apps/web/components/auth-form.tsx` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
@@ -21,20 +20,19 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
 | P3 | [彈性日期區塊的價格標籤寫死 full_trip_search](open/2026-09-06-full-trip-search.md) | web | `apps/web/components/flight-date-options.tsx`<br>`apps/web/components/flight-date-options.test.tsx` |
-| P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | web | `apps/web/components/new-trip-form.tsx`<br>`apps/web/components/new-trip-form.test.tsx`<br>`apps/web/messages/en/newTrip.json`<br>`apps/web/messages/ja/newTrip.json`<br>`apps/web/messages/ko/newTrip.json`<br>`apps/web/messages/zh-TW/newTrip.json`<br>`apps/web/messages/zh-CN/newTrip.json` |
 | P3 | [行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal\|append](open/2026-09-07-add-a-meal-to-a-day.md) | api | `apps/api/app/foods/router.py`<br>`apps/api/app/hotspots/router.py`<br>`apps/api/app/restaurants/user_router.py`<br>`apps/web/components/travel-card-actions.tsx` |
 | P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | api | `apps/api/tests/test_food_integration.py` |
 | P3 | [tasks/BOARD.md 是產生檔，卻讓每個 PR 互相衝突](open/2026-09-07-board-conflicts-on-every-pr.md) | tools | `.gitattributes`<br>`tools/tasks.mjs` |
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [Hotel booking without affiliate enrollment](open/2026-09-07-hotel-direct-booking.md) | codex-hotel-direct | 2026-09-07T10:45:13Z | `codex/hotel-direct-booking` |
 
 ## In review
 
-| Task | Owner | Branch |
-| --- | --- | --- |
-| [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | codex-travel-services | `codex/contextual-travel-services` |
+_Nothing here._
 
 ## Waiting
 
@@ -42,6 +40,9 @@ _Nothing here._
 | --- | --- | --- |
 | P2 | [沒有 NAVER 金鑰，韓國景點與店家無法發布](open/2026-09-06-naver-maps-key.md) | see the task notes |
 | P3 | [TourAPI（韓國觀光公社）可行性驗證：先確認拿得到金鑰、連得上、資料量夠不夠](open/2026-09-06-korea-tourism-tourapi-spike.md) | see the task notes |
+| P1 | [隱私權政策、服務條款與聯絡方式的內容要由擁有者提供](open/2026-09-06-legal-content-from-owner.md) | active work in the same scope |
+| P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | active work in the same scope |
+| P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | active work in the same scope |
 
 ## Recently finished
 

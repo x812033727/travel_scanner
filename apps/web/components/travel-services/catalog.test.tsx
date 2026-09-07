@@ -67,6 +67,66 @@ afterEach(() => {
 });
 
 describe("reviewed travel services", () => {
+  it("ordinary hotel links work without partner offers or a commission disclosure", async () => {
+    request.mockResolvedValue({
+      ...result,
+      items: [
+        {
+          ...hotel,
+          offers: [],
+          direct_links: [
+            { provider: "official", name: null },
+            { provider: "booking", name: "Booking.com" },
+          ],
+        },
+      ],
+    });
+    render(<ServiceCatalog destinationId="tokyo" />);
+    fireEvent.click(
+      await screen.findByRole("button", { name: copy.platforms }),
+    );
+    expect(screen.getByText(copy.directDisclosure)).toBeTruthy();
+    expect(screen.queryByText(copy.disclosure)).toBeNull();
+    expect(screen.queryByText(copy.noOffers)).toBeNull();
+    const form = screen
+      .getByRole("button", {
+        name: `${copy.officialHotel} · ${copy.ordinaryLink} · ${copy.newTab}`,
+      })
+      .closest("form");
+    expect(form?.getAttribute("action")).toBe(
+      "/api/travel/travel-services/hotel-1/hotel-links/official/clickout?locale=zh-TW",
+    );
+    expect(form?.getAttribute("method")).toBe("post");
+    expect(form?.getAttribute("target")).toBe("_blank");
+    expect(form?.getAttribute("rel")).toBe("noopener noreferrer");
+    expect(
+      screen
+        .getByRole("button", { name: copy.selectHotel })
+        .hasAttribute("disabled"),
+    ).toBe(false);
+    expect(request.mock.calls.some(([, opts]) => opts?.method === "POST")).toBe(
+      false,
+    );
+  });
+
+  it("keeps hotel selection available when reviewed links are missing or expired", async () => {
+    request.mockResolvedValue({
+      ...result,
+      items: [{ ...hotel, offers: [], direct_links: [] }],
+    });
+    render(<ServiceCatalog destinationId="tokyo" />);
+    fireEvent.click(
+      await screen.findByRole("button", { name: copy.platforms }),
+    );
+    expect(screen.getByText(copy.noOffers)).toBeTruthy();
+    expect(screen.queryByText(copy.disclosure)).toBeNull();
+    expect(
+      screen
+        .getByRole("button", { name: copy.selectHotel })
+        .hasAttribute("disabled"),
+    ).toBe(false);
+  });
+
   it("distinguishes exact and area links with safe new-tab POST forms and disclosure", async () => {
     request.mockResolvedValue(result);
     render(<ServiceCatalog destinationId="tokyo" />);

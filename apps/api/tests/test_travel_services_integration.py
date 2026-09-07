@@ -377,7 +377,23 @@ async def test_transfer_requires_flight_before_scheduling_and_never_auto_books(
     assert item.item_type == "activity" and item.data["service_kind"] == "transfer"
 
 
-async def test_hotel_no_quote_preserves_locked_anchor_and_syncs_others(client, session, actor):
+async def test_hotel_no_quote_preserves_locked_anchor_and_syncs_others(
+    client, session, actor, monkeypatch
+):
+    # Selecting a reviewed hotel must not depend on any affiliate/network enrollment.
+    monkeypatch.setattr(
+        router,
+        "load_runtime_settings",
+        AsyncMock(
+            return_value=Settings(
+                _env_file=None,
+                travelpayouts_enabled=False,
+                travelpayouts_project_id=None,
+                travelpayouts_api_token=None,
+                travelpayouts_marker=None,
+            )
+        ),
+    )
     journey = await trip(session, actor)
     hotel = await product(
         session,
@@ -422,6 +438,108 @@ async def test_hotel_no_quote_preserves_locked_anchor_and_syncs_others(client, s
             TripPlanItem.trip_plan_id == journey.id, TripPlanItem.provider_place_id == "ChIJfixture"
         )
     )
+
+
+async def test_direct_hotel_import_review_and_guest_click_without_network(
+    client, session, actor, monkeypatch
+):
+    import csv
+    import io
+    import json
+
+    settings = Settings(
+        _env_file=None,
+        travelpayouts_enabled=False,
+        travelpayouts_project_id=None,
+        travelpayouts_api_token=None,
+        travelpayouts_marker=None,
+    )
+    for module in (router, admin):
+        monkeypatch.setattr(module, "load_runtime_settings", AsyncMock(return_value=settings))
+    checker = AsyncMock(return_value=True)
+    monkeypatch.setattr(admin, "verify_hotel_link", checker)
+    monkeypatch.setattr(router, "verify_hotel_link", checker)
+    affiliate = AsyncMock(side_effect=AssertionError("No affiliate API for ordinary links"))
+    monkeypatch.setattr(router.TravelpayoutsLinkClient, "create", affiliate)
+    config = await session.get(TravelServiceConfig, 1)
+    config.data = {**config.data, "direct_hotel_links_enabled": True}
+    link = {
+        "provider": "official",
+        "url": "https://hotel.example.com/stay",
+        "evidence_url": "https://hotel.example.com/location",
+    }
+    facts = dict(
+        latitude=35.6812,
+        longitude=139.7671,
+        coordinate_source_url="https://hotel.example.com/location",
+        google_place_id="ChIJfixture",
+        map_verified=True,
+        area_code="marunouchi",
+        hotel_links=[link],
+    )
+    out = io.StringIO()
+    writer = csv.writer(out)
+    writer.writerow(["source_key", "kind", "destination_id", "title", "source_url", "facts"])
+    writer.writerow(
+        [
+            uuid4().hex,
+            "hotel",
+            "tokyo",
+            "Direct hotel fixture",
+            "https://hotel.example.com/",
+            json.dumps(facts),
+        ]
+    )
+    preview = await client.post(
+        "/admin/travel-services/imports/preview", json={"csv": out.getvalue()}
+    )
+    assert preview.status_code == 200, preview.text
+    run_id = preview.json()["id"]
+    imported = await client.post(f"/admin/travel-services/imports/{run_id}/commit")
+    assert imported.status_code == 200, imported.text
+    assert (
+        await client.post(f"/admin/travel-services/imports/{run_id}/commit")
+    ).json() == imported.json()
+    hotel = await session.scalar(
+        select(TravelServiceProduct).where(TravelServiceProduct.title == "Direct hotel fixture")
+    )
+    assert hotel.status == "pending"
+    path = f"/travel-services/{hotel.id}/hotel-links/official/clickout"
+    assert (await client.post(path)).status_code == 404
+    approved = await client.post(
+        f"/admin/travel-services/products/{hotel.id}/review",
+        json={"version": hotel.version, "status": "approved"},
+    )
+    assert approved.status_code == 200, approved.text
+    results = (await client.get("/travel-services?destination_id=tokyo&type=hotel")).json()
+    item = next(p for p in results["items"] if p["id"] == str(hotel.id))
+    assert item["offers"] == []
+    assert item["direct_links"] == [{"provider": "official", "name": None}]
+    assert "hotel_links" not in item["facts"]
+    click_count = await session.scalar(select(func.count()).select_from(AffiliateClick))
+    # Guest requires no auth; caller-supplied URLs cannot replace the saved destination.
+    client._transport.app.dependency_overrides[current_user] = lambda: None
+    response = await client.post(path + "?url=https://evil.example.com/")
+    assert response.status_code == 303 and response.headers["location"] == link["url"]
+    assert response.headers["referrer-policy"] == "no-referrer"
+    assert await session.scalar(select(func.count()).select_from(AffiliateClick)) == click_count
+    affiliate.assert_not_called()
+    checker.return_value = False
+    assert (await client.post(path)).status_code == 503
+    checker.return_value = True
+    config.data = {**config.data, "direct_hotel_links_enabled": False}
+    assert (await client.post(path)).status_code == 404
+    client._transport.app.dependency_overrides[current_user] = lambda: actor
+    config.data = {**config.data, "direct_hotel_links_enabled": True}
+    from app.travel_services.service import product_input
+
+    payload = product_input(hotel).model_dump(mode="json")
+    payload["facts"]["hotel_links"][0]["url"] = "https://hotel.example.com/new-stay"
+    edited = await client.put(
+        f"/admin/travel-services/products/{hotel.id}?version={hotel.version}", json=payload
+    )
+    assert edited.status_code == 200 and edited.json()["status"] == "pending"
+    assert (await client.post(path)).status_code == 404
 
 
 async def test_esim_multicity_dedup_no_timeline_and_country_gate(client, session, actor):

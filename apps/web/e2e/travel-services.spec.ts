@@ -48,7 +48,11 @@ const results = {
   selections: [],
 };
 
-async function mock(context: BrowserContext, signedIn = false) {
+async function mock(
+  context: BrowserContext,
+  signedIn = false,
+  ordinary = false,
+) {
   await context.route("**/api/travel/**", async (route) => {
     const url = new URL(route.request().url());
     const path = url.pathname.replace("/api/travel", "");
@@ -59,7 +63,16 @@ async function mock(context: BrowserContext, signedIn = false) {
       body =
         url.searchParams.get("type") === "esim"
           ? { ...results, items: [] }
-          : results;
+          : ordinary
+            ? {
+                ...results,
+                items: items.map((item) => ({
+                  ...item,
+                  offers: [],
+                  direct_links: [{ provider: "official", name: null }],
+                })),
+              }
+            : results;
     else if (path === "/auth/me") {
       status = signedIn ? 200 : 401;
       body = signedIn
@@ -74,7 +87,10 @@ async function mock(context: BrowserContext, signedIn = false) {
     } else if (path.startsWith("/saved-items")) {
       status = signedIn ? 200 : 401;
       body = { items: [], detail: "Sign-in required" };
-    } else if (path.startsWith("/affiliates/offers")) {
+    } else if (
+      path.includes("/hotel-links/") ||
+      path.startsWith("/affiliates/offers")
+    ) {
       await route.fulfill({
         status: 200,
         contentType: "text/html",
@@ -127,6 +143,50 @@ async function mock(context: BrowserContext, signedIn = false) {
       body: "<title>Fixture partner page</title><p>Isolated test destination. No commission or booking.</p>",
     }),
   );
+}
+
+for (const [locale, copy] of Object.entries(catalogs)) {
+  for (const width of [320, 390, 1280]) {
+    test(`${locale} ${width}px ordinary hotel links do not require affiliate enrollment`, async ({
+      page,
+      context,
+    }) => {
+      await mock(context, false, true);
+      await page.setViewportSize({ width, height: 860 });
+      await page.goto(
+        `/${locale}/destinations/tokyo/services?type=hotel&area=marunouchi`,
+      );
+      await page.getByRole("button", { name: copy.platforms }).first().click();
+      await expect(page.getByText(copy.directDisclosure)).toBeVisible();
+      await expect(page.getByText(copy.disclosure)).toHaveCount(0);
+      const trigger = page.getByRole("button", {
+        name: `${copy.officialHotel} · ${copy.ordinaryLink} · ${copy.newTab}`,
+      });
+      const popupWait = context.waitForEvent("page");
+      await trigger.click();
+      const popup = await popupWait;
+      await expect(popup).toHaveTitle("Fixture partner page");
+      expect(await popup.evaluate(() => window.opener === null)).toBe(true);
+      await popup.close();
+      await expect(page).toHaveURL(/area=marunouchi/);
+      await expect(
+        page.getByRole("button", { name: copy.selectHotel }).first(),
+      ).toBeEnabled();
+      for (const theme of ["light", "dark"]) {
+        await page.evaluate(
+          (value) => document.documentElement.setAttribute("data-theme", value),
+          theme,
+        );
+        expect(
+          await page.evaluate(
+            () =>
+              document.documentElement.scrollWidth <=
+              document.documentElement.clientWidth,
+          ),
+        ).toBe(true);
+      }
+    });
+  }
 }
 
 for (const [locale, copy] of Object.entries(catalogs)) {
@@ -185,7 +245,10 @@ for (const [locale, copy] of Object.entries(catalogs)) {
       );
       await expect(page.getByRole("article").last()).toBeVisible();
       if (locale === "zh-TW" && width === 390) {
-        await page.screenshot({ path: "test-results/travel-services-mobile-dark.png", fullPage: true });
+        await page.screenshot({
+          path: "test-results/travel-services-mobile-dark.png",
+          fullPage: true,
+        });
       }
       expect(
         await page.evaluate(
@@ -230,7 +293,8 @@ for (const width of [320, 390, 1280]) {
     const dialog = page.getByRole("dialog", { name: en.hotel });
     await expect(dialog).toBeVisible();
     await expect(dialog.getByRole("article")).toHaveCount(3);
-    if (width === 390) await page.screenshot({ path: "test-results/travel-services-sheet.png" });
+    if (width === 390)
+      await page.screenshot({ path: "test-results/travel-services-sheet.png" });
     expect(await page.evaluate(() => document.body.style.overflow)).toBe(
       "hidden",
     );

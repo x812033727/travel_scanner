@@ -1,11 +1,11 @@
 ---
 id: 2026-09-07-contextual-travel-services
 title: Contextual travel services and affiliate catalog
-status: review
+status: open
 priority: P1
 area: api
-owner: codex-travel-services
-claimed_at: 2026-09-07T07:57:23Z
+owner:
+claimed_at:
 created_at: 2026-09-07T07:56:29Z
 completed_at:
 branch: codex/contextual-travel-services
@@ -104,7 +104,10 @@ Follow-up hardening covers DNS-pinned redirect chains, marker-wide rolling quota
 Naver lodging identity and airport transfer flight-number confirmation. Rebased on
 main 516713d. All four jobs passed again on code head 1f417c7 (run 34106782777),
 including unsafe-redirect disabling and transient maintenance-failure rotation.
-PR https://github.com/x812033727/travel_scanner/pull/336 is open for review, not merged.
+PR https://github.com/x812033727/travel_scanner/pull/336 was merged and deployed as
+8853695 on 2026-09-07. The content release gates below remain open; this task is released
+for follow-up rather than marked done. Ordinary hotel booking is tracked separately
+in 2026-09-07-hotel-direct-booking.
 Subsequent task-only status commits do not change the tested application code.
 
 Read-only live account check on 2026-09-07 is recorded in docs/travel-services.md:
