@@ -3,6 +3,8 @@ from typing import Annotated, Literal, cast
 
 from fastapi import Header
 
+from app.travel_services.errors import SERVICE_ERRORS
+
 Locale = Literal["en", "ja", "ko", "zh-TW", "zh-CN"]
 LOCALES: tuple[Locale, ...] = ("en", "ja", "ko", "zh-TW", "zh-CN")
 DEFAULT_LOCALE: Locale = "zh-TW"
@@ -1407,6 +1409,10 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "ui_text_default_required": "验证覆写需要提供默认文案",
     },
 }
+
+
+for _service_locale in LOCALES:
+    ERROR_DETAILS[_service_locale].update(SERVICE_ERRORS[_service_locale])
 
 
 def request_locale(headers: object) -> Locale:

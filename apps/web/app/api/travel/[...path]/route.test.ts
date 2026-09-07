@@ -1,6 +1,37 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { NextRequest } from "next/server";
+import { POST } from "./route";
 import { preserveRequestId } from "./request-id";
-import { forwardedAnalyticsSession, renewedSession, upstreamLocale } from "./route";
+import { forwardedAnalyticsSession, renewedSession, upstreamLocale } from "./proxy-context";
+
+vi.mock("next/headers", () => ({ cookies: async () => new Map() }));
+afterEach(() => vi.unstubAllGlobals());
+
+describe("saved service clickout BFF", () => {
+  it("uses a controlled form locale, keeps 303 and strips the locale query upstream", async () => {
+    const fetcher = vi.fn(async () => new Response(null, { status: 303, headers: { Location: "https://tp.st/fixture" } }));
+    vi.stubGlobal("fetch", fetcher);
+    const id = "00000000-0000-4000-8000-000000000001";
+    const request = new NextRequest(`https://mokaair.test/api/travel/affiliates/offers/${id}/clickout?locale=ja&placement=trip`, { method: "POST", headers: { Origin: "https://mokaair.test" } });
+    const response = await POST(request, { params: Promise.resolve({ path: ["affiliates", "offers", id, "clickout"] }) });
+    expect(response.status).toBe(303);
+    expect(response.headers.get("location")).toBe("https://tp.st/fixture");
+    expect(response.headers.get("referrer-policy")).toBe("no-referrer");
+    const [target, options] = (fetcher.mock.calls as unknown as [string, RequestInit][])[0];
+    expect(target).toContain("placement=trip");
+    expect(target).not.toContain("locale=");
+    expect((options.headers as Headers).get("X-Travel-Locale")).toBe("ja");
+    expect(options.redirect).toBe("manual");
+  });
+
+  it("rejects a cross-site POST before contacting the API", async () => {
+    const fetcher = vi.fn();
+    vi.stubGlobal("fetch", fetcher);
+    const request = new NextRequest("https://mokaair.test/api/travel/affiliates/offers/fixture/clickout", { method: "POST", headers: { Origin: "https://evil.example" } });
+    expect((await POST(request, { params: Promise.resolve({ path: ["affiliates", "offers", "fixture", "clickout"] }) })).status).toBe(403);
+    expect(fetcher).not.toHaveBeenCalled();
+  });
+});
 
 describe("travel BFF request tracing", () => {
   it("preserves the API request ID on the browser response", () => {

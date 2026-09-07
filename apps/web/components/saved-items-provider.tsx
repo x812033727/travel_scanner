@@ -11,7 +11,7 @@ import {
 } from "react";
 import { ApiError, api } from "@/lib/api";
 
-export type SavedType = "hotspot" | "food" | "restaurant" | "merchant";
+export type SavedType = "hotspot" | "food" | "restaurant" | "merchant" | "service";
 type SavedItem = { type: SavedType; id: string };
 type SavedContextValue = {
   status: "loading" | "authenticated" | "signed_out" | "unavailable";

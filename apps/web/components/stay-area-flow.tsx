@@ -190,11 +190,12 @@ function StayHotelCard({ hotel, areaName, areaCode, tripId, busy, expired, onSel
   </article>;
 }
 
-export function StayAreaFlow({ tripId, busy, onSelectHotel, onManualLodging }: {
+export function StayAreaFlow({ tripId, busy, onSelectHotel, onManualLodging, catalog }: {
   tripId: string;
   busy: boolean;
   onSelectHotel: (area: StayArea, hotel: StayHotel) => Promise<StaySelectResult>;
   onManualLodging: () => void;
+  catalog?: (areaCode?: string) => ReactNode;
 }) {
   const t = useTranslations("stayAreas");
   const [areas, setAreas] = useState<StayAreasResponse>();
@@ -279,6 +280,7 @@ export function StayAreaFlow({ tripId, busy, onSelectHotel, onManualLodging }: {
 
   if (!selected) {
     return <div className="space-y-4">
+      {catalog?.()}
       {areasError && <Notice tone="warn"><span className="flex-1">{areasError}</span><button type="button" onClick={retryAreas} className="shrink-0 font-bold underline">{t("retry")}</button></Notice>}
       {!areas && !areasError && <div aria-busy="true" className="space-y-3"><div className="h-24 animate-pulse rounded-2xl bg-[var(--paper)]" /><div className="h-24 animate-pulse rounded-2xl bg-[var(--paper)]" /><p className="text-center text-sm text-[var(--muted)]">{t("loadingAreas")}</p></div>}
       {areas && <>
@@ -343,6 +345,7 @@ export function StayAreaFlow({ tripId, busy, onSelectHotel, onManualLodging }: {
       {hotels?.travelers && <p className="mt-1 text-xs text-[var(--muted)]">{t("compare.summary", { nights: hotels.nights, adults: hotels.travelers.adults, rooms: hotels.travelers.rooms })}{validity ? ` · ${validity}` : ""}</p>}
     </header>
     {flash && <Notice tone="teal">{flash}</Notice>}
+    {catalog?.(selected.code)}
     {loadingHotels && <div aria-busy="true" className="space-y-3"><div className="h-28 animate-pulse rounded-2xl bg-[var(--paper)]" /><div className="h-28 animate-pulse rounded-2xl bg-[var(--paper)]" /><p className="text-center text-sm text-[var(--muted)]">{t("compare.loading")}</p></div>}
     {hotelsError && <Notice tone="warn"><span className="flex-1">{hotelsError}</span><button type="button" onClick={() => void loadHotels(selected, true)} className="shrink-0 font-bold underline">{t("retry")}</button></Notice>}
     {hotels && !loadingHotels && <>

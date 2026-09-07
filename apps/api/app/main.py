@@ -40,6 +40,8 @@ from app.restaurants.user_router import router as restaurant_user_router
 from app.saved.router import router as saved_items_router
 from app.schema import expected_schema_revision, schema_is_current
 from app.search.router import router as search_router
+from app.travel_services.admin import router as travel_services_admin_router
+from app.travel_services.router import router as travel_services_router
 from app.trips.export_router import router as trip_export_router
 from app.trips.ingest_router import router as trip_places_router
 from app.trips.intents import router as trip_intents_router
@@ -89,6 +91,8 @@ app.include_router(flight_status_router, prefix="/api/v1")
 app.include_router(trips_router, prefix="/api/v1")
 app.include_router(trip_intents_router, prefix="/api/v1")
 app.include_router(trip_stay_router, prefix="/api/v1")
+app.include_router(travel_services_router, prefix="/api/v1")
+app.include_router(travel_services_admin_router, prefix="/api/v1")
 app.include_router(trip_export_router, prefix="/api/v1")
 app.include_router(trip_share_router, prefix="/api/v1")
 app.include_router(trip_places_router, prefix="/api/v1")

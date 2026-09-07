@@ -1,0 +1,55 @@
+from dataclasses import dataclass
+from urllib.parse import urlsplit
+
+from app.travel_services.schemas import safe_url
+
+
+@dataclass(frozen=True)
+class Brand:
+    name: str
+    hosts: tuple[str, ...]
+    kinds: tuple[str, ...]
+    api_supported: bool = True
+
+
+BRANDS = {
+    "klook": Brand("Klook", ("klook.com",), ("hotel", "transfer", "tour")),
+    "kkday": Brand("KKday", ("kkday.com",), ("hotel", "transfer", "tour")),
+    "airalo": Brand("Airalo", ("airalo.com",), ("esim",)),
+    "saily": Brand("Saily", ("saily.com",), ("esim",)),
+    "yesim": Brand("Yesim", ("yesim.app",), ("esim",)),
+    "gigsky": Brand("GigSky", ("gigsky.com",), ("esim",)),
+    "kiwitaxi": Brand("Kiwitaxi", ("kiwitaxi.com",), ("transfer",)),
+    "welcome_pickups": Brand("Welcome Pickups", ("welcomepickups.com",), ("transfer",)),
+    "gettransfer": Brand("GetTransfer.com", ("gettransfer.com",), ("transfer",)),
+    "intui": Brand("intui.travel", ("intui.travel",), ("transfer",)),
+    "tiqets": Brand("Tiqets", ("tiqets.com",), ("tour",)),
+    "wegotrip": Brand("WeGoTrip", ("wegotrip.com",), ("tour",)),
+    "booking": Brand("Booking.com", ("booking.com",), ("hotel",)),
+    "trip_com": Brand("Trip.com", ("trip.com",), ("hotel", "tour", "transfer")),
+    "agoda": Brand("Agoda", ("agoda.com",), ("hotel",)),
+    "expedia": Brand("Expedia", ("expedia.com", "expedia.co.uk"), ("hotel",), False),
+    "viator": Brand("Viator", ("viator.com",), ("tour", "transfer")),
+    "getyourguide": Brand("GetYourGuide", ("getyourguide.com",), ("tour", "transfer")),
+    "rakuten": Brand("Rakuten Travel", ("travel.rakuten.com",), ("hotel",)),
+}
+
+
+def brand_target(code: str, value: str) -> str:
+    value = safe_url(value)
+    host = urlsplit(value).hostname or ""
+    if code not in BRANDS or not any(
+        host == h or host.endswith("." + h) for h in BRANDS[code].hosts
+    ):
+        raise ValueError("Target does not belong to the selected brand")
+    return value
+
+
+def affiliate_target(value: str) -> str:
+    value = safe_url(value)
+    host = urlsplit(value).hostname or ""
+    if not any(
+        host == h or host.endswith("." + h) for h in ("tp.st", "tp.media", "travelpayouts.com")
+    ):
+        raise ValueError("Verified Travelpayouts redirect required")
+    return value

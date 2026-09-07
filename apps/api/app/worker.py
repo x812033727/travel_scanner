@@ -14,6 +14,7 @@ QUEUE_NAMES = (
     "catalog-review",
     "restaurant-scans",
     "analytics",
+    "travel-services",
     "auth-revocations",
 )
 

@@ -20,8 +20,9 @@ import foodAdmin from "./messages/zh-TW/foodAdmin.json";
 import catalogReview from "./messages/zh-TW/catalogReview.json";
 import newTrip from "./messages/zh-TW/newTrip.json";
 import stayAreas from "./messages/zh-TW/stayAreas.json";
+import travelServices from "./messages/zh-TW/travelServices.json";
 
-const catalogs: Record<string, unknown> = { account, admin, alerts, auth, availability, common, navigation, pricing, search, trips, usage, hotspots, hotspotAdmin, hotspotThemes, restaurants, foods, foodAdmin, catalogReview, newTrip, stayAreas };
+const catalogs: Record<string, unknown> = { account, admin, alerts, auth, availability, common, navigation, pricing, search, trips, usage, hotspots, hotspotAdmin, hotspotThemes, restaurants, foods, foodAdmin, catalogReview, newTrip, stayAreas, travelServices };
 
 function message(namespace: string, key: string): string | undefined {
   let current: unknown = catalogs;
@@ -54,6 +55,7 @@ function translator(namespace: string) {
 
 vi.mock("next-intl", () => ({
   useLocale: () => "zh-TW",
+  useFormatter: () => ({ number: (value: number, options?: Intl.NumberFormatOptions) => new Intl.NumberFormat("zh-TW", options).format(value) }),
   useTranslations: (namespace: string) => translator(namespace),
 }));
 

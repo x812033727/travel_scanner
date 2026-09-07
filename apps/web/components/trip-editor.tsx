@@ -46,6 +46,7 @@ import {
   type CSSProperties,
 } from "react";
 import { AffiliatePartnerOptions } from "@/components/affiliate-partner-options";
+import { ServiceCatalog, TripTravelServices } from "@/components/travel-services/catalog";
 import { DayHealthStrip } from "@/components/day-health-strip";
 import { FlightAnchorCard, flightAnchorInfo } from "@/components/flight-anchor-card";
 import { TripInboxPanel, type PlaceCandidate } from "@/components/trip-inbox-panel";
@@ -907,6 +908,20 @@ export function TripEditor({ tripId }: { tripId: string }) {
     } finally { setAction(undefined); }
   }
 
+  async function refreshTravelServices() {
+    if (!tripRef.current) return;
+    const updated = await api<Trip>(`/trips/${tripRef.current.id}`);
+    if (revisionRef.current !== persistedRevisionRef.current) {
+      updateSaveState("conflict");
+      setError(te("versionConflict"));
+      return;
+    }
+    replaceTrip(updated);
+    setRoutes(updated.route_segments || []);
+    setSelectedRoute(undefined);
+    setStaleDays(new Set(days));
+  }
+
   function openFlightEditor(item: TripItem) {
     if (!isFlightAnchor(item)) return;
     const info = flightAnchorInfo(item);
@@ -1632,6 +1647,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
 
     <section className="planner-day-strip sticky z-30 -mx-4 mb-4 border-y border-[var(--line)] px-4 py-3 lg:top-0 lg:mx-0 lg:mb-5 lg:rounded-2xl lg:border"><div ref={dayScrollRef} className="planner-day-scroll flex gap-2 overflow-x-auto pb-1" aria-label={te("pickDayLabel")}>{days.map((day, index) => { const label = dayLabel(day, index, locale); const count = (groups.get(day) || []).filter((item) => isActiveRouteItem(item) && !item.system_role?.startsWith("hotel_")).length; const selected = activeDay === day; return <button key={day} ref={selected ? activeDayChipRef : undefined} type="button" aria-current={selected ? "date" : undefined} aria-pressed={selected} onClick={() => { const dayIds = new Set((groups.get(day) || []).filter(isActiveRouteItem).map((item) => item.id)); setActiveDay(day); setSelectedRoute(routes.find((route) => dayIds.has(route.from_item_id))); setRouteDrawerOpen(false); setRouteTarget(undefined); setReorderMode(false); }} className={`planner-day-chip min-h-14 min-w-[5.1rem] shrink-0 rounded-2xl border px-3 py-2 text-left ${selected ? "planner-day-chip-active" : ""}`}><span className="flex items-center gap-1.5"><span className="text-xs font-semibold tracking-[.12em] opacity-75">{day === today ? te("today") : label.eyebrow}</span><span aria-label={te("arrangedCount", { count })} className="planner-day-chip-count">{count}</span></span><span className="mt-0.5 block text-sm font-bold">{label.short} {label.weekday}</span><span className="block text-xs opacity-70 max-lg:hidden">{te("arrangedCount", { count })}</span></button>; })}</div></section>
 
+    <TripTravelServices tripId={trip.id} day={activeDay} disabled={saveState === "conflict" || Boolean(action)} prepare={() => flushChanges(false)} onChanged={refreshTravelServices} onBusy={(busy) => setAction(busy ? "service" : undefined)} />
     {trip.destination_name && trip.start_date && <TripWeatherPanel tripId={trip.id} activeDay={activeDay} startDate={trip.start_date} endDate={trip.end_date} />}
 
     <section className="mb-5 hidden flex-col gap-3 rounded-2xl border border-[var(--line)] bg-white p-4 lg:flex lg:flex-row lg:items-center lg:justify-between"><label className="flex min-h-11 items-center justify-between gap-3 text-sm font-semibold sm:justify-start">{te("routePreference")}<select aria-label={te("routePreference")} value={trip.route_preference || "FEWER_TRANSFERS"} onChange={(event) => updateRoutePreference(event.target.value as Trip["route_preference"])} className="min-h-11 rounded-xl border border-[var(--line)] bg-white px-3"><option value="FEWER_TRANSFERS">{te("pref.fewerTransfers")}</option><option value="FASTEST">{te("pref.fastest")}</option><option value="LESS_WALKING">{te("pref.lessWalking")}</option></select></label><div className="flex flex-wrap items-center gap-2 text-sm">{trip.destination_country_code === "JP" && runtimeConfig.ekispert_enabled && <span className="rounded-full bg-indigo-50 px-3 py-2 text-xs font-semibold text-indigo-800">{te("provider.ekispert")}</span>}{trip.destination_country_code === "JP" && !runtimeConfig.ekispert_enabled && runtimeConfig.navitime_enabled && <span className="rounded-full bg-sky-50 px-3 py-2 text-xs font-semibold text-sky-800">{te("provider.navitime")}</span>}{trip.destination_country_code === "KR" && runtimeConfig.odsay_enabled && <span className="rounded-full bg-fuchsia-50 px-3 py-2 text-xs font-semibold text-fuchsia-800">{te("provider.odsay")}</span>}{trip.destination_country_code === "KR" && runtimeConfig.naver_directions_enabled && <span className="rounded-full bg-[#e8f8ee] px-3 py-2 text-xs font-semibold text-[#087a3f]">{te("provider.naverCar")}</span>}{runtimeConfig.google_routes_enabled && <span className="rounded-full bg-[var(--teal-soft)] px-3 py-2 text-xs font-semibold text-[var(--teal)]">{te("provider.google")}</span>}{!runtimeConfig.google_routes_enabled && !runtimeConfig.ekispert_enabled && !runtimeConfig.navitime_enabled && !runtimeConfig.odsay_enabled && !(trip.destination_country_code === "KR" && runtimeConfig.naver_directions_enabled) && <span className="rounded-full bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-800">{te("provider.none")}</span>}<button type="button" onClick={() => void share()} className="flex min-h-11 items-center gap-2 rounded-xl px-3 font-semibold text-[var(--teal)]"><Link2 size={16} />{te(shareUrl ? "share.copy" : trip.share_enabled ? "share.rotate" : "share.create")}</button>{trip.share_enabled && <button type="button" onClick={() => setConfirmAction("revoke-share")} className="min-h-11 rounded-xl px-3 font-semibold text-red-700">{te("share.revoke")}</button>}</div>{shareUrl && <label className="flex min-w-0 items-center gap-2 rounded-xl bg-[var(--paper)] px-3 py-2 text-sm sm:max-w-sm"><input aria-label={te("share.linkLabel")} readOnly value={shareUrl} className="min-w-0 flex-1 bg-transparent outline-none" /><button type="button" aria-label={te("share.copy")} onClick={() => void navigator.clipboard?.writeText(shareUrl)} className="grid min-h-11 min-w-11 place-items-center"><Copy size={16} /></button></label>}</section>
@@ -1763,7 +1779,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
     </PlannerOverlay>
 
     <PlannerOverlay open={stayOpen} onClose={() => { if (!action) setStayOpen(false); }} title={tStay("title")} description={tStay("description")} size="wide" expandable>
-      {stayOpen && <StayAreaFlow tripId={trip.id} busy={action === "lodging"} onSelectHotel={selectStayHotel} onManualLodging={() => { setStayOpen(false); window.setTimeout(openLodgingEditor, 0); }} />}
+      {stayOpen && <StayAreaFlow tripId={trip.id} busy={action === "lodging"} onSelectHotel={selectStayHotel} onManualLodging={() => { setStayOpen(false); window.setTimeout(openLodgingEditor, 0); }} catalog={(areaCode) => <ServiceCatalog tripId={trip.id} initialKind="hotel" areaCode={areaCode} compact prepare={() => flushChanges(false)} onChanged={refreshTravelServices} onBusy={(busy) => setAction(busy ? "service" : undefined)} />} />}
     </PlannerOverlay>
 
     <PlannerOverlay open={lodgingOpen} onClose={() => { if (!busy("lodging")) setLodgingOpen(false); }} title={te("lodgingTitle")} description={te("lodgingDescription")} footer={<div className="flex gap-3"><button type="button" onClick={() => setLodgingOpen(false)} disabled={busy("lodging")} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold disabled:opacity-40">{te("cancel")}</button><button type="button" onClick={() => void savePrimaryLodging()} disabled={busy("lodging") || !lodgingDraft.name.trim() || !lodgingDraft.location_name.trim()} className="flex min-h-12 flex-[1.4] items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 font-semibold text-white disabled:opacity-45">{action === "lodging" ? <Loader2 size={17} className="animate-spin" /> : <Check size={17} />}{te("syncAllDays")}</button></div>}>

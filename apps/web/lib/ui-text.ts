@@ -31,6 +31,7 @@ export const EDITABLE_NAMESPACES = [
   "restaurants",
   "search",
   "stayAreas",
+  "travelServices",
   "trips",
   "usage",
 ] as const;
