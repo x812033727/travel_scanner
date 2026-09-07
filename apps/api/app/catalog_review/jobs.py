@@ -494,6 +494,9 @@ async def _discover_items(
                     no_progress_counts=no_progress,
                     discovery_round_counts=discovery_rounds,
                 )
+                result["last_discovery_diagnostics"] = dict(
+                    getattr(provider, "discovery_diagnostics", {})
+                )
                 result["duplicates"] = _count(result.get("duplicates")) + duplicates
                 if error is not None:
                     result["last_discovery_error"] = safe_error_diagnostics(error)

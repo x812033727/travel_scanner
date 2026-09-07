@@ -477,10 +477,22 @@ async def test_budget_denial_prevents_request_including_repair() -> None:
         assert requests == 1 and reservations == 2 and provider.call_count == 1
 
 
-async def test_discovery_is_grounded_without_response_schema_and_removes_authority_fields() -> None:
+async def test_discovery_searches_before_structuring_and_removes_authority_fields() -> None:
+    calls = 0
+
     def respond(request: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
         body = json.loads(request.content)
-        assert body["tools"] == [{"google_search": {}}]
+        if calls == 1:
+            assert body["tools"] == [{"google_search": {}}]
+            assert "responseSchema" not in body["generationConfig"]
+            assert "responseMimeType" not in body["generationConfig"]
+            return httpx.Response(
+                200,
+                json=gemini_body("Grounded candidate summary", [OFFICIAL]),
+            )
+        assert "tools" not in body
         assert "responseSchema" not in body["generationConfig"]
         assert "responseMimeType" not in body["generationConfig"]
         return httpx.Response(
@@ -511,8 +523,19 @@ async def test_discovery_is_grounded_without_response_schema_and_removes_authori
         )
         result = await provider.discover("hotspot", 5, [{"id": "tokyo"}], [])
     assert len(result.items) == 1
+    assert calls == 2
     assert result.items[0].data == {"category": "culture"}
     assert result.items[0].source_urls == [OFFICIAL]
+    assert provider.discovery_diagnostics == {
+        "grounding_chunks": 1,
+        "trusted_grounding_sources": 1,
+        "drafts_returned": 1,
+        "accepted": 1,
+        "identity_or_scope": 0,
+        "duplicate": 0,
+        "ungrounded_source": 0,
+        "incomplete_food_locales": 0,
+    }
 
 
 @pytest.mark.parametrize(
@@ -554,23 +577,26 @@ async def test_discovery_repairs_once_and_reserves_each_attempt() -> None:
         calls += 1
         return True
 
-    async with httpx.AsyncClient(
-        transport=httpx.MockTransport(
-            lambda request: httpx.Response(
-                200,
-                json=gemini_body({"items": [{"invalid": "data"}]}),
-            )
+    def respond(request: httpx.Request) -> httpx.Response:
+        if calls == 1:
+            return httpx.Response(200, json=gemini_body("Grounded summary", [OFFICIAL]))
+        return httpx.Response(
+            200,
+            json=gemini_body({"items": [{"invalid": "data"}]}),
         )
-    ) as client:
-        provider = CatalogGeminiProvider(settings(), reserve_counted, client=client)
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(respond)) as client:
+        provider = CatalogGeminiProvider(
+            settings(), reserve_counted, client=client, trusted_hosts=["tourism.example"]
+        )
         with pytest.raises(CatalogAssessmentError, match="catalog_response_invalid"):
             await provider.discover("hotspot", 1, [{"id": "tokyo"}], [])
-        assert calls == 2
+        assert calls == 3
         with pytest.raises(ValueError, match="one and five"):
             await provider.discover("hotspot", 6, [{"id": "tokyo"}], [])
         with pytest.raises(ValueError, match="destination allowlist"):
             await provider.discover("hotspot", 1, [], [])
-        assert calls == 2
+        assert calls == 3
 
 
 @pytest.mark.parametrize("missing_locale", [False, True])
@@ -683,8 +709,8 @@ async def test_only_known_grounding_redirect_is_resolved_without_following_publi
             settings(), reserve, client=client, trusted_hosts=["tourism.example"]
         )
         result = await provider.discover("hotspot", 1, [{"id": "tokyo"}], [])
-        assert provider.call_count == 1
-    assert requested == ["POST", "GET"]
+        assert provider.call_count == (2 if target == OFFICIAL else 1)
+    assert requested == (["POST", "GET", "POST"] if target == OFFICIAL else ["POST", "GET"])
     assert len(result.items) == (1 if target == OFFICIAL else 0)
 
 
