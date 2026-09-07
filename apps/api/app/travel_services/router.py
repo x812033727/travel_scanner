@@ -237,6 +237,18 @@ def validate_schedule(
             raise fail("service_time_conflict", 409)
 
 
+def protected_lodging_item(item: TripPlanItem) -> bool:
+    # System anchors are locked to preserve their schedule, not their old hotel identity.
+    # Updating their location never changes their date/time; custom locked stops stay intact.
+    return bool(
+        (item.locked or item.fixed_time)
+        and not (
+            item.system_role in {"hotel_start", "hotel_end"}
+            and item.data.get("source_mode") == "system"
+        )
+    )
+
+
 @router.post("/trips/{trip_id}/travel-services")
 async def select_service(
     trip_id: UUID, payload: SelectInput, key: OperationKey, user: CurrentUser, session: Session
@@ -337,13 +349,13 @@ async def select_service(
         protected_values = {
             r.id: {c.name: deepcopy(getattr(r, c.name)) for c in r.__table__.columns}
             for r in rows
-            if r.locked or r.fixed_time
+            if protected_lodging_item(r)
         }
         ensure_system_slots(session, trip, rows)
         for row in rows:
             for name, value in protected_values.get(row.id, {}).items():
                 setattr(row, name, value)
-        protected = [r for r in rows if r.locked or r.fixed_time]
+        protected = [r for r in rows if protected_lodging_item(r)]
         editable = [r for r in rows if r not in protected]
         lodging = {
             "name": product.title,

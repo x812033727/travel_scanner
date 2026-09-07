@@ -26,12 +26,14 @@ scope:
   - apps/api/migrations/versions
   - apps/api/tests/test_travel_services.py
   - apps/api/tests/test_travel_services_integration.py
+  - apps/api/tests/test_ui_text.py
   - apps/web/components/travel-services
   - apps/web/components/trip-editor.tsx
   - apps/web/components/stay-area-flow.tsx
   - apps/web/components/hotspot-guide-panel.tsx
   - apps/web/components/hotspot-explorer.tsx
   - apps/web/components/admin-nav.tsx
+  - apps/web/components/admin-nav.test.tsx
   - apps/web/components/saved-items-provider.tsx
   - apps/web/components/account-saved-items.tsx
   - apps/web/lib/api.ts
@@ -40,6 +42,7 @@ scope:
   - apps/web/app/api/travel/[...path]/route.test.ts
   - apps/web/i18n
   - apps/web/lib/ui-text.ts
+  - apps/web/lib/ui-text.test.ts
   - apps/web/messages/en/travelServices.json
   - apps/web/messages/ja/travelServices.json
   - apps/web/messages/ko/travelServices.json

@@ -1,9 +1,9 @@
 import { expect, test, type BrowserContext } from "@playwright/test";
-import en from "../messages/en/travelServices.json";
-import ja from "../messages/ja/travelServices.json";
-import ko from "../messages/ko/travelServices.json";
-import tw from "../messages/zh-TW/travelServices.json";
-import cn from "../messages/zh-CN/travelServices.json";
+import en from "../messages/en/travelServices.json" with { type: "json" };
+import ja from "../messages/ja/travelServices.json" with { type: "json" };
+import ko from "../messages/ko/travelServices.json" with { type: "json" };
+import tw from "../messages/zh-TW/travelServices.json" with { type: "json" };
+import cn from "../messages/zh-CN/travelServices.json" with { type: "json" };
 
 const catalogs = { en, ja, ko, "zh-TW": tw, "zh-CN": cn };
 const config = {
@@ -76,8 +76,9 @@ async function mock(context: BrowserContext, signedIn = false) {
       body = { items: [], detail: "Sign-in required" };
     } else if (path.startsWith("/affiliates/offers")) {
       await route.fulfill({
-        status: 303,
-        headers: { location: "https://tp.st/fixture-only" },
+        status: 200,
+        contentType: "text/html",
+        body: "<title>Fixture partner page</title><p>Isolated form navigation. The real 303 is tested by API/BFF integration tests.</p>",
       });
       return;
     } else if (path === "/trips/fixture-trip")

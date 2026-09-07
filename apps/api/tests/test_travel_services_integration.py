@@ -439,8 +439,8 @@ async def test_import_preview_commit_replay_and_review_reset(client, session):
 async def test_favorites_and_cascade_without_deleting_selected_history(client, session):
     item = await product(session)
     path = f"/saved-items/service/{item.id}"
-    assert (await client.put(path)).status_code == 200
-    assert (await client.put(path)).status_code == 200
+    assert (await client.put(path)).status_code == 201
+    assert (await client.put(path)).status_code == 201
     assert (
         await session.scalar(
             select(func.count())
@@ -452,7 +452,7 @@ async def test_favorites_and_cascade_without_deleting_selected_history(client, s
     item.status = "disabled"
     await session.flush()
     assert (await client.put(path)).status_code == 404
-    assert (await client.delete(path)).status_code == 200
+    assert (await client.delete(path)).status_code == 204
 
 
 async def test_static_links_require_marker_project_verification(client, session, monkeypatch):
