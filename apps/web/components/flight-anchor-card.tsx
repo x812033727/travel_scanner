@@ -1,5 +1,6 @@
-import { ArrowRight, Clock3, Pencil, Plane, RouteOff, Tag } from "lucide-react";
+import { ArrowRight, Clock3, Pencil, Plane, RouteOff, Search, Tag } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { formatCurrency } from "@/lib/locale-format";
 import { priceSnapshot, type TripItem } from "@/lib/trip-types";
 
@@ -31,10 +32,13 @@ export function FlightAnchorCard({
   item,
   busy = false,
   onEdit,
+  search,
 }: {
   item: TripItem;
   busy?: boolean;
   onEdit?: () => void;
+  /** The trip's flight search (`/search?trip_id=…`) and what one search costs. */
+  search?: { href: string; charge: string };
 }) {
   const t = useTranslations("trips");
   const info = flightAnchorInfo(item);
@@ -84,6 +88,9 @@ export function FlightAnchorCard({
         </>}
       </div>
     </div>
+    {search && <Link href={search.href} className="planner-flight-action">
+      <Search size={15} />{t("searchFlights", { charge: search.charge })}
+    </Link>}
     {onEdit && <button type="button" onClick={onEdit} disabled={busy} className="planner-flight-action">
       <Pencil size={15} />{configured ? "編輯航班" : `設定${label}`}
     </button>}

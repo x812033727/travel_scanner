@@ -43,6 +43,7 @@ from app.localized_names import (
     resolve_item_field,
 )
 from app.models import (
+    FlightOfferRecord,
     SearchRequest,
     TripDayNote,
     TripExpense,
@@ -65,12 +66,18 @@ from app.providers.registry import (
 )
 from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import ActivityOffer, FlightOffer, HotelOffer, Offer, TransportOffer
-from app.search.schemas import SearchCreate, SearchPreferences, Travelers, TripType
+from app.search.schemas import SearchCreate, SearchModule, SearchPreferences, Travelers, TripType
 from app.trips.expenses import (
     EXPENSE_CATEGORIES,
     MAX_EXPENSES,
     cost_summary,
     seed_rows,
+)
+from app.trips.flight_anchor import (
+    apply_flight_offer,
+    member_chose_flight,
+    offer_has_leg,
+    offer_leg_date,
 )
 from app.trips.hours import is_open_at, opens_within_day
 from app.trips.itinerary import ItineraryItem
@@ -135,6 +142,12 @@ from app.trips.schedule import (
     route_pair_count,
     schedule_defaults,
     sync_primary_lodging,
+)
+from app.trips.search_criteria import (
+    ORIGIN_OPTIONS,
+    derive_trip_search,
+    load_trip_search_json,
+    localized_issue_detail,
 )
 from app.usage.service import (
     COMMON_LIMITS,
@@ -248,6 +261,9 @@ class TripMetadataPatchRequest(BaseModel):
     notes: str | None = Field(default=None, max_length=4000)
     budget_amount: Decimal | None = Field(default=None, ge=0, le=Decimal("99999999999"))
     cost_currency: Currency | None = None
+    # Home airport, so a flight search can start from the trip. Blank trips are
+    # created without one today; the search page asks and writes it back here.
+    origin_airport: str | None = Field(default=None, min_length=3, max_length=3)
     start_date: date | None = None
     end_date: date | None = None
     shift_days: int | None = Field(default=None, ge=-MAX_SHIFT_DAYS, le=MAX_SHIFT_DAYS)
@@ -269,6 +285,10 @@ class TripMetadataPatchRequest(BaseModel):
                 "cover_image_url must be an https image from "
                 + ", ".join(sorted(COVER_IMAGE_HOSTS))
             )
+        if self.origin_airport is not None:
+            self.origin_airport = self.origin_airport.strip().upper()
+            if not self.origin_airport.isalpha():
+                raise ValueError("origin_airport must be an IATA code")
         if not self.model_fields_set - {"version", "confirm_removed_days"}:
             raise ValueError("nothing to update")
         return self
@@ -2327,6 +2347,45 @@ async def get_trip(trip_id: UUID, user: CurrentUser, session: Session) -> dict[s
     return await serialize_trip(session, trip)
 
 
+@router.get("/{trip_id}/search-criteria")
+async def get_trip_search_criteria(
+    trip_id: UUID,
+    user: CurrentUser,
+    session: Session,
+    modules: Annotated[list[SearchModule] | None, Query()] = None,
+) -> dict[str, Any]:
+    """What `POST /searches` would search for this trip, before anything is charged.
+
+    `issues` lists every reason the trip is not searchable yet, each with a code
+    the search page acts on (pick the airport, fix the dates); `criteria` still
+    carries whatever could be derived so the page can show it.
+    """
+    trip = await owned_trip(session, user.id, trip_id)
+    locale = active_locale()
+    derivation = derive_trip_search(
+        trip,
+        await load_trip_search_json(session, trip),
+        modules=modules or [SearchModule.FLIGHT],
+        locale=locale,
+    )
+    return {
+        "trip": {
+            "id": str(trip.id),
+            "name": trip.name,
+            "version": trip.version,
+            "destination_name": trip.destination_name,
+            "start_date": trip.start_date,
+            "end_date": trip.end_date,
+        },
+        "criteria": derivation.fields,
+        "issues": [
+            {"code": issue.code, "detail": localized_issue_detail(issue, locale)}
+            for issue in derivation.issues
+        ],
+        "origin_options": list(ORIGIN_OPTIONS),
+    }
+
+
 class TripExpenseRequest(BaseModel):
     """One ledger line. Currency lives on the trip, never on the row."""
 
@@ -2629,8 +2688,12 @@ async def update_trip_metadata(
                 "帳目已有紀錄，無法更改幣別。請先清空帳目再切換。",
             )
         scalar_values["cost_currency"] = payload.cost_currency
+    # Keys that live in the JSON blob rather than in a column.
+    data_values: dict[str, Any] = {}
+    if "origin_airport" in payload.model_fields_set:
+        data_values["origin_airport"] = payload.origin_airport
 
-    if target is None and not scalar_values:
+    if target is None and not scalar_values and not data_values:
         # The requested dates are the ones the trip already has. Report the
         # current state instead of bumping the version, which would only 409
         # other tabs — but still refuse to answer against a stale version.
@@ -2646,7 +2709,11 @@ async def update_trip_metadata(
                 TripPlan.user_id == user.id,
                 TripPlan.version == payload.version,
             )
-            .values(version=TripPlan.version + 1, **scalar_values)
+            .values(
+                version=TripPlan.version + 1,
+                **scalar_values,
+                **({"data": {**trip.data, **data_values}} if data_values else {}),
+            )
             .returning(TripPlan.version)
         )
         if next_version is None:
@@ -2691,7 +2758,7 @@ async def update_trip_metadata(
         segments=segments,
         plan=plan,
     )
-    trip.data = reschedule_trip_data(trip.data, rows)
+    trip.data = {**reschedule_trip_data(trip.data, rows), **data_values}
     await session.commit()
     # After the deletes above, an empty segment table is exactly the state in
     # which serialize_trip falls back to this cache — clear it or the API
@@ -3075,6 +3142,77 @@ async def update_flight_anchor(
     if item is None:
         raise AppError(422, "flight_anchor_unavailable", "旅程日期不完整，無法設定航班")
     apply_flight_anchor_details(item, role, payload.flight)
+    return await persist_information_anchor_change(
+        session,
+        trip,
+        user.id,
+        payload.version,
+    )
+
+
+class FlightAnchorFromOfferRequest(BaseModel):
+    version: int = Field(ge=1)
+    offer_id: UUID
+
+
+@router.post("/{trip_id}/flight-anchors/{direction}/from-offer")
+async def attach_flight_offer(
+    trip_id: UUID,
+    direction: Literal["outbound", "return"],
+    payload: FlightAnchorFromOfferRequest,
+    user: CurrentUser,
+    session: Session,
+) -> dict[str, Any]:
+    """Fill a flight anchor from an offer of the member's own searches.
+
+    Unlike the hand-typed PUT, the anchor keeps the offer id and the price
+    snapshot, so alerts, pricing and the search page can find the quote again.
+    The offer must be one this member searched for, and its leg must depart on
+    the day the anchor holds: an anchor that says one date while the flight
+    number flies another would be a booking that does not exist.
+    """
+    trip = await owned_trip(session, user.id, trip_id)
+    rows = await hydrate_legacy_items(session, trip, await load_items(session, trip.id))
+    role: Literal["outbound_flight", "return_flight"] = (
+        "outbound_flight" if direction == "outbound" else "return_flight"
+    )
+    item = next((row for row in rows if row.system_role == role), None)
+    if item is None:
+        raise AppError(422, "flight_anchor_unavailable", "旅程日期不完整，無法設定航班")
+    record = await session.scalar(
+        select(FlightOfferRecord)
+        .join(SearchRequest, FlightOfferRecord.search_id == SearchRequest.id)
+        .where(
+            FlightOfferRecord.public_offer_id == payload.offer_id,
+            SearchRequest.user_id == user.id,
+        )
+        .order_by(FlightOfferRecord.updated_at.desc())
+        .limit(1)
+    )
+    if record is None:
+        raise AppError(404, "offer_not_found", "找不到這筆報價")
+    offer = FlightOffer.model_validate(record.data)
+    if not offer_has_leg(offer, role):
+        raise AppError(422, "offer_return_leg_missing", "這筆報價沒有回程航段，無法帶入回程")
+    leg_date = offer_leg_date(offer, role)
+    if item.day_date is not None and leg_date != item.day_date:
+        label = "出發" if direction == "outbound" else "回程"
+        if leg_date is None:
+            # Unreachable while offer_has_leg requires a return departure time, and kept
+            # so that widening that test can never silently drop the day check again:
+            # an anchor whose leg has no departure time is a booking nobody can hold.
+            raise AppError(
+                422,
+                "offer_dates_mismatch",
+                f"這筆報價沒有{label}的起飛時間，無法對上旅程的{label}日",
+            )
+        raise AppError(
+            422,
+            "offer_dates_mismatch",
+            f"這筆報價 {leg_date.isoformat()} 出發，與旅程的{label}日 "
+            f"{item.day_date.isoformat()} 不同，請先調整旅程日期",
+        )
+    apply_flight_offer(item, role, offer)
     return await persist_information_anchor_change(
         session,
         trip,
@@ -4923,7 +5061,7 @@ async def reoptimize_trip(
         for item in day.items:
             if item.system_role in {"outbound_flight", "return_flight"}:
                 current = flight_anchors.get(item.system_role)
-                if current is not None and current.data.get("flight_selection_source") != "manual":
+                if current is not None and not member_chose_flight(current):
                     current.item_type = item.item_type
                     current.offer_id = item.offer_id
                     current.title = item.title

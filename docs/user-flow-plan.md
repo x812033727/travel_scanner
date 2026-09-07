@@ -169,7 +169,7 @@
 - `POST /searches` 接受 `trip_id`（`search/schemas.py:105-120` 加欄位）。伺服器從旅程推導條件：`origin_airport`、目的地經 `match_destination(...).primary_gateway`（`search-workbench.tsx:116` 已用同一欄位）、`start_date/end_date`、`data.travelers`、`data.preferences`；把 `stay_areas.py:419` 的 `stay_search_query` 抽成 `trip_search_criteria(trip, modules)` 讓機票與住宿共用。`request_json` 記 `trip_id`，結果頁據此決定顯示「帶入旅程」而非「儲存並編輯行程」。扣次規則不變（`search_operation()`，`usage/service.py:111-119`）。
 - 新增 `POST /trips/{id}/flight-anchors/{direction}/from-offer {version, offer_id}`：驗證 offer 屬於該使用者的搜尋（同 `alerts/router.py:115-125` 的查法），由 offer 資料填 `FlightAnchorDetails`，**保留 `offer_id`**、寫 `price_snapshot`、`flight_selection_source: "offer"`。`apply_flight_anchor_details`（`trips/router.py:741`）加一個 offer 分支，手打分支不動。
 - 旅程總價分兩欄：「已報價」（錨點與主要飯店的快照合計）與「估算」（其餘），呼應首頁承諾的「即時與估算費用分開」（`messages/zh-TW/search.json` `costBenefit`）。空白旅程今天 `total_price=0`，提醒按鈕因此被藏起來（`account-list.tsx:358`）；改用「已報價」合計。
-- 聯盟：在旅程頁重新渲染 `<AffiliatePartnerOptions tripId={trip.id} />`（元件已收 `tripId`，`affiliate-partner-options.tsx:19`；後端 `affiliates/router.py:109-119` 已支援 `trip_id`）。`a5d7417` 曾把它從旅程頁拿掉，理由是無關的分頁裡佔位；這次只放在「已有主要飯店／錨點」的卡片下方，不再是獨立分頁。
+- 聯盟：旅程頁的 `<AffiliatePartnerOptions tripId={trip.id} />` 已由 main 在本分支進行中補回，放在「旅程工具」面板裡（住宿／活動／交通／eSIM 四個模組）。原本規劃的「放在錨點與飯店卡下方」就不再做第二份：同一頁兩個合作平台區塊只會互相稀釋。機票模組沒有納入，因為旅程頁的機票入口是「查機票」而不是外站。
 - 活動與接送先不做「帶入」（結果是 offer 不是景點，需要新的項目寫入路徑）；列在 §8。
 
 ### 3.5 出發前（提醒、航班動態、天氣、LINE）
@@ -252,7 +252,7 @@
 |---|---|---|---|
 | 首頁工作台 `search-workbench.tsx` | 5 步、只有「用這組條件搜尋」、字串硬編 | 讀寫 `TripBrief`；推薦卡雙出口「先建立旅程／直接比價」；一句話入口；字串進 catalog | H（雙出口可提前到 A） |
 | `/trips/new` | 4 步、閘門無 `next` | 閘門 `loginPath`；讀 `TripBrief`；新增 `origin_airport` | A（閘門）、H（其餘） |
-| `/search` | 登入回來要再按；儲存無冪等；「比較更多來源」無標價；402 導到 `/pricing` | `resume=search`；`Idempotency-Key`；標價；402 頁內 sheet；`trip_id` 模式的「帶入旅程」 | A、E、D |
+| `/search` | 登入回來要再按；儲存無冪等；「比較更多來源」無標價；402 導到 `/pricing` | `resume=search`；`Idempotency-Key`；標價；402 頁內 sheet；`trip_id` 模式的「帶入旅程」 | A、E、D（皆已實作） |
 | 旅程頁 `trip-editor.tsx` | 錨點手打；無查機票入口；總價單一數字；`md`–`lg` 無出口 | 錨點卡：報價快照、查機票、建立提醒、查航班動態；已報價／估算兩欄；聯盟區塊；出口 | B、D、F（等 #150 合併後） |
 | `/hotspots`、`/foods`、附近餐廳 | toast 死路；無「從這裡開始」；餐廳只能覆蓋 | 成功連回旅程；沒有旅程 → 建立；「從這裡開始規劃」；新增一餐；探索分段（不動旗標） | A（連結、分段）、H（從這裡開始）、F（新增一餐） |
 | `/alerts` | 不連回來源；`manual_only` 提示無連結 | `links`；文案與連結 | F |
@@ -307,10 +307,10 @@
 **PR C — `PATCH /trips/{id}` — 已由 main 的 #155 完成**
 `main` 在本分支進行中合併了 `feat(trips): let a trip change its name, status and dates after creation`（`app/trips/reschedule.py`，含日期位移與受影響項目的摘要）。剩下的差異只有 `origin_airport` 還不能事後修改；PR D 的「查機票」入口若發現旅程沒有出發地，先在該處詢問並存回，等於補上這一格。
 
-**PR D — 從旅程出發比價（後端＋前端，等 #150）**
-範圍：`POST /searches` 的 `trip_id`；`trip_search_criteria`；`from-offer`；`/search` 的 `trip_id` 模式；旅程頁「查機票」入口；聯盟區塊回旅程頁。依賴 B（錨點要能收 offer）與 C（`origin_airport` 可改）。
-驗證：新的 e2e 主旅程（見下）；`test_search_from_trip`（條件推導、他人旅程 404、沒有 `origin_airport` 時 422 並帶可用出發地）。
-風險：`destination_name` 不在目錄（搜尋來的旅程存的是 `destination_city`，可能是機場代碼），推導失敗要回 422 `trip_destination_unsupported`，UI 讓使用者選機場，不猜。
+**PR D — 從旅程出發比價（後端＋前端）— 已在本分支實作**
+範圍：新模組 `app/trips/search_criteria.py`（`derive_trip_search` 列出旅程答不出來的每一項：`trip_origin_required`、`trip_destination_unsupported`、`trip_dates_required`／`trip_dates_past`／`trip_dates_too_short`；`trip_search_criteria` 在 `POST /searches` 用，第一個缺口就回 422）；`SearchCreate.trip_id`（有 `trip_id` 時路線與日期由伺服器補，客戶端明確給的欄位仍優先，`request_json` 記下 `trip_id`）；`GET /trips/{id}/search-criteria` 讓搜尋頁在扣次前先看到條件與缺口（含 `origin_options`）；`POST /trips/{id}/flight-anchors/{direction}/from-offer {version, offer_id}`（只收自己搜尋過的 offer、回程要有回程航段、出發日要對上錨點的那一天；保留 `offer_id`、寫 `price_snapshot`、`flight_selection_source: "offer"`，新模組 `app/trips/flight_anchor.py`，與 `build_itinerary` 共用 `offer_flight_info`）；`PATCH /trips/{id}` 接受 `origin_airport`（補上 PR C 缺的那一格）。前端：`/search?trip_id=…` 模式（標題「為〈旅程〉找機票」、只搜機票、條件由旅程帶入、沒有出發地時在頁內選並存回、目的地不支援時自選機場、日期問題連回旅程頁）；機票卡「帶入去程／帶入回程」（409 時取最新版本重試一次）；錨點卡「查機票 · 消耗 N 次」（聯盟區塊已由 main 補回，見 §3.4，本 PR 不再加第二份）。沒有被編輯過的旅程搜尋只送 `trip_id` 與 `modules`，條件在建立搜尋當下才從旅程讀，所以另一個分頁把旅程改期不會讓這裡花一次去搜舊的那一週；真的釘住而且和旅程不一樣的日期回 422 `trip_dates_mismatch`。旅程模式不顯示彈性日期選項，因為換一週的結果本來就帶不回這趟旅程的錨點。「重新查價」不會覆蓋會員自己選的航班：手打與 `from-offer` 帶入的錨點一視同仁（`member_chose_flight`）。
+驗證：`tests/test_search_from_trip.py`（推導、每個缺口各自的代碼、明確欄位蓋過旅程、offer 錨點欄位、單程沒有回程）；整合測試 `test_search_from_trip`（條件推導、他人旅程 404、沒出發地 422 且未保留次數、PATCH 後可搜、明確 `origin` 優先）與 `test_flight_anchor_from_offer`（快照與 `offer_id`、來回票只計一次、版本 409、單程 422、日期不符 422、別人的 offer 404、手打覆蓋後快照消失）；前端 `search-experience.test.tsx`（帶入兩段、出發地提示與存回、衝突重試）、`flight-offer-card.test.tsx`、`flight-anchor-card.test.tsx`、`trip-editor.test.tsx`；e2e `full-stack.spec.ts` 新增「旅程 → 查機票 → 帶入 → 回旅程看到報價」。
+留到後面：出發地在建立旅程時就問（Q2 的 (a)+(c)）；`offer_attached` 事件（PR I）。
 
 **PR E — 扣次與上限看得見（前後端，小）— 已在本分支實作**
 範圍：`GET /usage` 回傳 `counts`（旅程數、追蹤中的提醒數，與建立端點同一套判斷）；`GET /trips/options` 回傳 `count`、`limit`、`can_create`、`undated_count`；旅程序列化新增 `optimization`（每日 `movable_count` 與 `movable_limit`，與最佳化預覽共用同一個 `movable_slots`）；`restaurant-searches` 真的重放 `Idempotency-Key`（Redis 十分鐘）；`/itinerary/generate` 標記 deprecated；前端 `usage-insufficient-notice.tsx` 取代導到 `/pricing`（搜尋頁與票價實驗室），旅程與通知清單顯示「已建立 N／20」並在達上限時說明。
@@ -358,7 +358,7 @@
 | 10 | 誠實路段 | 畫布內 | 任意 |
 | 11、13 | 列印／ICS、PWA／今日 | PR G 只做入口與白名單，實作照規格 | G |
 | 12 | fork | PR G | G |
-| 14 | 聯盟帶 `trip_id` | PR D 做在錨點與飯店卡下方 | D |
+| 14 | 聯盟帶 `trip_id` | 已由 main 做在旅程工具面板（機票模組未納入） | — |
 
 規格 §7 的六個未決問題本文不重開；Q1（精修定價）在本文的框架下更容易回答：既然扣次牆放在「真實報價」，畫布內的精修保持免費是一致的。
 

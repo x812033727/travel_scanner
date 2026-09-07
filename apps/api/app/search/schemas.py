@@ -2,6 +2,7 @@ import re
 from datetime import date
 from enum import StrEnum
 from typing import Literal
+from uuid import UUID
 
 from pydantic import BaseModel, Field, model_validator
 
@@ -135,6 +136,10 @@ class SearchCreate(BaseModel):
     cabin_class: FlightCabinClass = FlightCabinClass.ECONOMY
     currency: str = Field(default="TWD", min_length=3, max_length=3)
     locale: str = Field(default="zh-TW", max_length=16)
+    # Search from a saved trip. The server fills the route, dates, travelers and
+    # preferences from the trip (`app.trips.search_criteria`); a field given
+    # here explicitly still wins, so the trip is a source of defaults, not a cage.
+    trip_id: UUID | None = None
 
     @model_validator(mode="after")
     def validate_route(self) -> "SearchCreate":
@@ -143,13 +148,19 @@ class SearchCreate(BaseModel):
         if self.flex_days:
             self.flexible_dates = True
         if self.trip_type == TripType.MULTI_CITY:
+            if self.trip_id is not None:
+                raise ValueError("a search from a saved trip is always a round trip")
             if len(self.legs) < 2:
                 raise ValueError("multi_city requires at least two legs")
             if self.flexible_dates:
                 raise ValueError("multi_city does not support flexible dates")
-        elif not all((self.origin, self.destination, self.departure_date)):
+        elif self.trip_id is None and not all((self.origin, self.destination, self.departure_date)):
             raise ValueError("origin, destination and departure_date are required")
-        if self.trip_type == TripType.ROUND_TRIP and self.return_date is None:
+        if (
+            self.trip_type == TripType.ROUND_TRIP
+            and self.return_date is None
+            and self.trip_id is None
+        ):
             raise ValueError("round_trip requires return_date")
         if self.return_date and self.departure_date and self.return_date <= self.departure_date:
             raise ValueError("return_date must be after departure_date")
