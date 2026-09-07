@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**12 open · 0 in progress · 2 blocked · 1 in review · 153 done**
+**12 open · 0 in progress · 2 blocked · 1 in review · 154 done**
 
 ## Ready to claim
 
@@ -45,6 +45,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-07 [The admin console's own tabs and pills are smaller than every control it publishes](done/2026-09-07-admin-controls-under-44px.md)
 - 2026-09-07 [Gemini catalog review and 100-item expansion](done/2026-09-07-gemini-catalog-review.md)
 - 2026-09-07 [觀測：漏斗看得見——事件名脫離 DB CHECK，關鍵動作由伺服器送](done/2026-09-07-observe-the-funnel.md)
 - 2026-09-07 [出發前閉環：提醒連得回旅程、錨點能追價、航班動態寫得回去](done/2026-09-07-pre-departure-loop.md)
@@ -54,4 +55,3 @@ _Nothing here._
 - 2026-09-07 [The foods landing tells you to pick a city while already listing 110 merchants](done/2026-09-07-foods-landing-lists-before-city.md)
 - 2026-09-07 [check-i18n does not guard the ui-text editor's own namespace labels](done/2026-09-07-ui-text-namespace-label-guard.md)
 - 2026-09-07 [文案搬進 catalog：兩個自帶五語系字典的元件](done/2026-09-07-i18n-inline-dicts.md)
-- 2026-09-07 [商圈名單還有 95 家沒有英文店名，發布前要逐家查](done/2026-09-06-trend-merchant-english-names-backlog.md)
