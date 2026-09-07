@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-gemini-catalog-review
 title: Gemini catalog review and 100-item expansion
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-gemini-catalog
 claimed_at: 2026-09-07T03:41:45Z
 created_at: 2026-09-07T01:22:51Z
-completed_at:
+completed_at: 2026-09-07T08:59:32Z
 branch: codex/catalog-review-missing-assessments
 depends_on: []
 scope:
