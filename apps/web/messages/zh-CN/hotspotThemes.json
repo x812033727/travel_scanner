@@ -73,7 +73,27 @@
     "saved": "介绍内容已更新",
     "empty": "没有符合的介绍",
     "updatedAt": "更新于 {time}",
-    "counts": "待审 {pending}・已通过 {approved}"
+    "counts": "待审 {pending}・已通过 {approved}",
+    "emptyWhere": "介绍的草稿是在「景点审核」分页、每一列的「生成介绍」按下去生成的。",
+    "generate": "生成介绍",
+    "generateTitle": "为「{name}」生成介绍",
+    "generateDescription": "一次调用写完所有勾选的语言，草稿一律以待审落地，价格、营业时间与网址会被拦下。",
+    "generateLocales": "要写哪些语言",
+    "generateMissing": "还没有",
+    "generateReplace": "连已核准的也重写（{locales}）",
+    "generateStart": "开始生成",
+    "generateRunning": "生成中…",
+    "generateLoadFailed": "读不到这个景点目前的介绍",
+    "runStatus": {
+      "queued": "排队中",
+      "running": "生成中",
+      "partial": "部分完成",
+      "completed": "完成",
+      "failed": "失败"
+    },
+    "runCreated": "已写入待审：{locales}",
+    "runKept": "已核准，未改动：{locales}",
+    "runRejected": "{locale} 被退回：{reason}"
   },
   "editor": {
     "open": "主题",
