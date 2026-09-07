@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { pretendSignedIn } from "./session";
 
 const dashboard = {
   range: "30d", timezone: "Asia/Taipei", source: "raw",
@@ -14,6 +15,7 @@ const dashboard = {
 };
 
 test.beforeEach(async ({ page }) => {
+  await pretendSignedIn(page);
   await page.route("**/api/travel/auth/me", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ id: "admin", email: "admin@example.com", is_admin: true }) }));
   await page.route("**/api/travel/analytics/config", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ first_party_enabled: false, ga4_enabled: false, ga4_measurement_id: null }) }));
   await page.route("**/api/travel/admin/analytics/dashboard**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(dashboard) }));

@@ -1,8 +1,10 @@
 import { expect, test } from "@playwright/test";
+import { pretendSignedIn } from "./session";
 
 const hotspotId = "11111111-1111-4111-8111-111111111111";
 
 test.beforeEach(async ({ page }) => {
+  await pretendSignedIn(page);
   await page.route("**/api/travel/auth/me", (route) => route.fulfill({
     status: 200,
     contentType: "application/json",
