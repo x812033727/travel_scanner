@@ -103,3 +103,8 @@ and real offline catch-up. A repeat at 06b3b94 exposed PostgreSQL FK deadlocks
 between the comment Post lock and fork User lock. The fix uses NO KEY UPDATE
 for immutable-ID serialization and adds a PostgreSQL barrier test that forces
 both locks to overlap, with concurrent idempotent forks. Verify this test in CI.
+
+CI 34139969746 / e071cc7 passed Web, containers and all real-service browser
+journeys. The new PostgreSQL regression failed during fixture setup because the
+moderation response contains state/version, not the post ID. Preserve the published
+post response separately before approval; rerun the barrier test on PostgreSQL.

@@ -198,8 +198,9 @@ on every read. Migration 0060 adds the reference JSON without discarding legacy
 pet-place IDs. UI selections survive failed searches, and drafts send only type
 and ID, never a client-provided label or URL.
 
-The remaining browser matrix includes acceptance of real SSE interruption/catch-up,
-translation failure/updated-original handling, full five-locale and dark-mode community
+Desktop and Pixel 7 now cover a real browser disconnection and durable SSE catch-up.
+The remaining browser matrix includes translation failure/updated-original handling,
+full five-locale and dark-mode community
 journeys, and worker/outage/capacity recovery. Existing unit/API coverage does not
 replace these end-to-end checks. Keep the PR a draft and community default-off
 while these implementation and acceptance items remain.

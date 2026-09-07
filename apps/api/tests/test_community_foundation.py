@@ -547,7 +547,8 @@ async def test_postgres_comment_and_fork_lock_overlap_has_no_deadlock(
         session.add(trip)
         await session.commit()
         trip_id = str(trip.id)
-    post = await h.approve(await h.publish(await h.post(source_trip_id=trip_id, allow_fork=True)))
+    post = await h.publish(await h.post(source_trip_id=trip_id, allow_fork=True))
+    await h.approve(post)
     post_locked, member_locked = asyncio.Event(), asyncio.Event()
     original = AsyncSession.scalar
 
