@@ -14,6 +14,7 @@ UI_TEXT_NAMESPACES: tuple[str, ...] = (
     "alerts",
     "auth",
     "availability",
+    "catalogReview",
     "common",
     "errors",
     "foodAdmin",

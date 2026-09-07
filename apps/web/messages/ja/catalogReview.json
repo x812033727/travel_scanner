@@ -1,0 +1,139 @@
+{
+  "title": "Gemini カタログ審査",
+  "description": "審査待ちの観光スポット・料理・店舗を確認してから、新しい候補を100件探します。根拠と不足情報を確認したうえで審査結果を適用できます。",
+  "workflow": "2段階のカタログ審査",
+  "step": "ステップ {number}",
+  "reviewTitle": "審査待ちの項目を確認",
+  "reviewDescription": "Gemini が審査待ちのカタログを確認し、根拠と判断を記録します。審査が完了しても、追加確認が必要な項目は保留できます。",
+  "startReview": "審査待ちの確認を開始",
+  "discoveryTitle": "新しい候補を100件探す",
+  "discoveryDescription": "新しい候補は未公開・審査待ちで保存し、その後確認します。候補の発見は承認や公開を意味しません。",
+  "requestedCounts": "観光スポット40件 · 料理20件 · 店舗40件",
+  "startDiscovery": "候補100件の検索を開始",
+  "reviewFirst": "新しい候補を探す前に、審査待ち項目の確認を完了してください。",
+  "availability": "Gemini のサービス状況",
+  "provider": "Gemini · モデル {model}",
+  "callLimits": "1日の呼び出し上限：{daily}回。この処理は最大{run}回。",
+  "notConfigured": "Gemini が未設定です。先にサービスを設定してください。",
+  "history": "最近の審査処理",
+  "selectRun": "審査処理を選択",
+  "noRuns": "審査処理はまだありません。",
+  "refresh": "更新",
+  "resume": "未完了の処理を再開",
+  "usage": "呼び出し{calls}回 · 入力{input}トークン · 出力{output}トークン",
+  "reviewComplete": "この情報源の審査は完了しました。公開条件を満たしていない項目は審査待ちのままです。",
+  "assessment": "項目ごとの審査プレビュー",
+  "assessmentDescription": "Gemini の提案だけでは公開できません。正確な地図上の識別情報、永続的な座標、その他の必要な確認が不足している項目は承認できません。",
+  "batchAction": "一括操作",
+  "waitForRun": "処理は待機中または実行中です。証拠は確認できますが、結果の選択と適用は処理が停止してから行えます。",
+  "selectPage": "このページで操作可能な項目を選択（{count}件）",
+  "clearSelection": "選択を解除",
+  "previewAction": "選択した{count}件を確認",
+  "selectItem": "{name}を選択",
+  "notAssessed": "未評価",
+  "confidence": "Gemini の確信度：{value}",
+  "appliedAction": "適用済み：{action}",
+  "evidenceCount": "情報源の根拠（{count}件）",
+  "invalidEvidenceLink": "この情報源のURLは安全に開けません",
+  "itemGaps": "{name}の不足情報",
+  "noGapsReported": "不足情報の報告なし。承認にはサーバーの条件確認が必要です。",
+  "actionUnavailable": "現在「{action}」は利用できません",
+  "noItems": "このページにはまだ審査項目がありません。",
+  "pagination": "審査項目のページ",
+  "pageCount": "{page}ページ · 全{total}件",
+  "previous": "前へ",
+  "next": "次へ",
+  "applyResults": "適用結果",
+  "updated": "実際に更新した項目：{count}件",
+  "confirmTitle": "{count}件の「{action}」を確認",
+  "confirmDescription": "以下の項目と理由を確認してください。送信時にサーバーがバージョンと必要な確認を再検証し、条件を満たさない項目はスキップします。",
+  "cancel": "確認に戻る",
+  "confirmApply": "確認して適用",
+  "applying": "適用中…",
+  "loading": "読み込み中…",
+  "reconnecting": "接続が中断されました。進捗を再取得しています。",
+  "kinds": {
+    "hotspot": "観光スポット",
+    "food": "料理",
+    "merchant": "店舗"
+  },
+  "modes": {
+    "review_pending": "審査待ちを確認",
+    "discover_new": "候補を検索・審査"
+  },
+  "phases": {
+    "review_pending": "審査待ちを確認中",
+    "discover_new": "新候補を検索中",
+    "review_new": "新候補を審査中",
+    "completed": "審査完了"
+  },
+  "runStatus": {
+    "queued": "待機中",
+    "running": "実行中",
+    "completed": "完了",
+    "partial": "一部完了",
+    "failed": "失敗",
+    "cancelled": "キャンセル済み"
+  },
+  "itemStatus": {
+    "pending": "評価待ち",
+    "assessed": "評価済み",
+    "error": "評価失敗",
+    "applied": "適用済み",
+    "stale": "データ変更あり"
+  },
+  "actions": {
+    "approve": "承認",
+    "reject": "却下",
+    "keep_pending": "審査待ちを維持"
+  },
+  "decisions": {
+    "approve": "承認を提案",
+    "reject": "却下を提案",
+    "needs_review": "人による確認が必要"
+  },
+  "columns": {
+    "select": "選択",
+    "candidate": "候補",
+    "decision": "Gemini の判断",
+    "evidence": "情報源の根拠",
+    "gaps": "不足している確認"
+  },
+  "counts": {
+    "total": "対象の総数",
+    "assessed": "評価済み",
+    "approved": "承認を提案",
+    "rejected": "却下を提案",
+    "needs_review": "人による確認",
+    "created": "作成した候補",
+    "duplicates": "重複候補",
+    "failed": "評価失敗",
+    "applied": "適用済み"
+  },
+  "gaps": {
+    "missing_source": "追跡可能な情報源がありません",
+    "missing_five_locale_content": "5 言語の名称または紹介文が揃っていません",
+    "missing_destination": "有効な目的地との紐づけがありません",
+    "missing_meal_type": "対象の食事区分が設定されていません",
+    "missing_wikidata_identity": "Wikidata 項目の識別情報がありません",
+    "missing_exact_map_identity": "正確な地図上の識別情報がありません（韓国は Naver、その他は Google Place ID）",
+    "map_not_independently_verified": "正確な地図上の識別情報が独立に検証されていません",
+    "missing_durable_coordinates": "永続的な情報源に裏づけられた座標がありません",
+    "coordinates_not_verified": "座標が検証されていません",
+    "missing_direct_merchant_source": "店名を直接裏づける店舗サイトや店舗情報がありません",
+    "missing_food_category": "料理カテゴリが紐づけられていません",
+    "missing_verified_source_evidence": "検証済みの情報源と照合できる引用がありません",
+    "low_assessment_confidence": "Gemini の評価の確信度が低いため、人による確認が必要です"
+  },
+  "applyReasons": {
+    "action_not_allowed": "この項目には現在、選択した操作を適用できません",
+    "assessment_expired": "評価の有効期限が切れました。再審査してください",
+    "candidate_no_longer_pending": "候補が存在しないか、審査待ちではなくなっています",
+    "candidate_changed": "評価後に候補のデータが変更されました。再審査してください",
+    "publication_requirements_missing": "公開に必要な検証が不足しているため、承認できません"
+  },
+  "outcomeStatus": {
+    "applied": "適用済み",
+    "skipped": "スキップ"
+  }
+}

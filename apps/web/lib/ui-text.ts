@@ -16,6 +16,7 @@ export const EDITABLE_NAMESPACES = [
   "alerts",
   "auth",
   "availability",
+  "catalogReview",
   "common",
   "errors",
   "foodAdmin",

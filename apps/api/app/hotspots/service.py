@@ -319,6 +319,29 @@ def coordinate_provenance(seed: HotspotSeed) -> tuple[str, str | None]:
     return source_type, reviewed_url or seed.wikidata_url
 
 
+def _seed_can_reconcile_hotspot(hotspot: TravelHotspot) -> bool:
+    """Only untouched, unverified curated rows still belong to the seed catalog.
+
+    ``reviewed_at`` and ``coordinate_verified_at`` alone are not ownership markers:
+    the seeder itself has always populated them. A review actor, exact map identity,
+    non-default map state or a publication hold must survive every collection run.
+    """
+
+    return (
+        hotspot.origin == "curated"
+        and hotspot.review_status == "approved"
+        and hotspot.review_reason is None
+        and hotspot.is_active
+        and hotspot.reviewed_by_user_id is None
+        and hotspot.map_verified_by_user_id is None
+        and hotspot.map_match_status == "unverified"
+        and hotspot.map_verified_at is None
+        and hotspot.google_place_id is None
+        and hotspot.naver_map_url is None
+        and hotspot.coordinate_source_type in {None, "curated", "wikidata"}
+    )
+
+
 async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelHotspot]:
     rows = list((await session.scalars(select(TravelHotspot))).all())
     localization_rows = list((await session.scalars(select(HotspotLocalization))).all())
@@ -332,16 +355,17 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
         if hotspot is None and claimed is not None:
             # Discovery reaches a place before the curated catalog does and stores it
             # under a generated slug. wikidata_item_id is unique, so inserting a second
-            # row for the same item aborts the entire seeding transaction. Adopt the
-            # discovered row: it already carries the pageviews collected against it.
+            # row for the same item aborts the entire seeding transaction. Reuse the
+            # row without renaming its stable slug or changing its review decision.
             hotspot = claimed
-            hotspot.slug = seed.slug
         elif hotspot is not None and claimed is not None and claimed is not hotspot:
-            # The seed now points at a different Wikidata item than it used to. Release
-            # the id from the row that no longer owns it so the assignment below cannot
-            # collide with it.
-            claimed.wikidata_item_id = None
-            claimed.is_active = False
+            # A catalog edit is not authority to take another row's identity or
+            # deactivate it. Leave both records for an explicit identity review.
+            hotspots.append(hotspot)
+            continue
+        if hotspot is not None and not _seed_can_reconcile_hotspot(hotspot):
+            hotspots.append(hotspot)
+            continue
         if hotspot is None:
             hotspot = TravelHotspot(slug=seed.slug)
         hotspot.name = seed.name
@@ -361,6 +385,8 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
         hotspot.coordinate_verified_at = hotspot.coordinate_verified_at or datetime.now(UTC)
         hotspot.wikipedia_project = seed.wikipedia_project
         hotspot.wikipedia_title = seed.wikipedia_title
+        if hotspot.wikidata_item_id and hotspot.wikidata_item_id != seed.wikidata_item_id:
+            by_wikidata.pop(hotspot.wikidata_item_id, None)
         hotspot.wikidata_item_id = seed.wikidata_item_id
         hotspot.origin = "curated"
         hotspot.review_status = "approved"
@@ -397,6 +423,9 @@ async def seed_catalog(session: AsyncSession, observed_on: date) -> list[TravelH
         hotspot.reviewed_at = hotspot.reviewed_at or datetime.now(UTC)
         session.add(hotspot)
         await session.flush()
+        existing[hotspot.slug] = hotspot
+        if hotspot.wikidata_item_id:
+            by_wikidata[hotspot.wikidata_item_id] = hotspot
         seed_names = seed.localized_names
         for locale in LOCALES:
             localization = localizations.get((hotspot.id, locale))

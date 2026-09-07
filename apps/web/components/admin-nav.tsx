@@ -2,6 +2,7 @@
 
 import {
   BarChart3,
+  ClipboardCheck,
   Database,
   KeyRound,
   LayoutDashboard,
@@ -25,6 +26,7 @@ const items = [
   { key: "users", href: "/admin/users", icon: UsersRound },
   { key: "hotspots", href: "/admin/hotspots", icon: Database },
   { key: "foods", href: "/admin/foods", icon: Soup },
+  { key: "catalogReview", href: "/admin/catalog-review", icon: ClipboardCheck },
   { key: "usage", href: "/admin/usage-settings", icon: BarChart3 },
   { key: "layout", href: "/admin/layout-settings", icon: Settings2 },
   { key: "system", href: "/admin/system-settings", icon: Settings2 },
@@ -82,6 +84,7 @@ export function AdminNav({ current }: { current?: string } = {}) {
     users: "/admin/users",
     hotspots: "/admin/hotspots",
     foods: "/admin/foods",
+    catalogReview: "/admin/catalog-review",
     usage: "/admin/usage-settings",
     layout: "/admin/layout-settings",
     system: "/admin/system-settings",

@@ -13,6 +13,7 @@ from app.alerts.router import router as alerts_router
 from app.analytics.router import admin_router as admin_analytics_router
 from app.analytics.router import router as analytics_router
 from app.auth.router import router as auth_router
+from app.catalog_review.router import router as catalog_review_router
 from app.config import get_settings
 from app.crawlers.router import router as crawlers_router
 from app.db import engine
@@ -73,6 +74,7 @@ app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
 app.add_exception_handler(RequestValidationError, validation_error_handler)  # type: ignore[arg-type]
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(admin_router, prefix="/api/v1")
+app.include_router(catalog_review_router, prefix="/api/v1")
 app.include_router(admin_dashboard_router, prefix="/api/v1")
 app.include_router(admin_user_router, prefix="/api/v1")
 app.include_router(deployments_router, prefix="/api/v1")

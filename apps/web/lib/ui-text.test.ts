@@ -198,9 +198,10 @@ describe("applyUiTextOverrides", () => {
 
 describe("the editable namespace list", () => {
   it("matches the catalogs minus the locked one", () => {
-    expect(EDITABLE_NAMESPACES).toHaveLength(21);
+    expect(EDITABLE_NAMESPACES).toHaveLength(22);
     expect(EDITABLE_NAMESPACES).not.toContain("legacy");
     expect(isEditableNamespace("navigation")).toBe(true);
+    expect(isEditableNamespace("catalogReview")).toBe(true);
     expect(isEditableNamespace("legacy")).toBe(false);
     expect(isEditableNamespace("nope")).toBe(false);
   });
