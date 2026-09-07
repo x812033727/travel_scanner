@@ -1,7 +1,7 @@
 ---
 id: 2026-09-07-gemini-catalog-review
 title: Gemini catalog review and 100-item expansion
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-gemini-catalog
@@ -95,3 +95,15 @@ Implementation validation is in progress. No new production Gemini review, candi
 import or batch publication has been run for this feature. Live pending counts above
 are the previous manual-audit snapshot, not a promise that current production is unchanged.
 Migration is renumbered 0054 because main now owns 0053_ui_text_overrides.
+
+Rebased onto 4839412. Local Ruff and mypy (220 modules), five-locale parity,
+web typecheck and focused administration tests (23) pass. Provider/evidence tests
+(73), imports/worker tests (46), seed guards and task tooling pass. A real public
+Wikidata Q615183 fetch succeeded with canonical evidence and no Gemini request.
+The full Windows API rerun excludes the existing UnixStreamServer deployment test;
+PostgreSQL integration runs in Linux CI. Full local Vitest was stopped after failing
+to finish under machine load; no full-suite success is claimed. C: has about 1.9 GB
+free, so production/container builds and full web/stack validation run in CI.
+
+Merge/deployment and the live pending-review/100-candidate import are still required.
+This change deliberately does not auto-publish generated coordinates or map IDs.

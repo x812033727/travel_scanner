@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**12 open · 1 in progress · 2 blocked · 0 in review · 141 done**
+**12 open · 0 in progress · 2 blocked · 1 in review · 141 done**
 
 ## Ready to claim
 
@@ -25,13 +25,13 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [Gemini catalog review and 100-item expansion](open/2026-09-07-gemini-catalog-review.md) | codex-gemini-catalog | 2026-09-07T01:22:51Z | `codex/gemini-catalog-review` |
+_Nothing here._
 
 ## In review
 
-_Nothing here._
+| Task | Owner | Branch |
+| --- | --- | --- |
+| [Gemini catalog review and 100-item expansion](open/2026-09-07-gemini-catalog-review.md) | codex-gemini-catalog | `codex/gemini-catalog-review` |
 
 ## Waiting
 
