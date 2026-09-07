@@ -1,7 +1,7 @@
 "use client";
 
 import { AlertCircle, CalendarPlus, Check, Heart, LoaderCircle, LogIn, Share2, X } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { api } from "@/lib/api";
@@ -16,99 +16,6 @@ type TripOption = {
   end_date: string;
   destination_name?: string | null;
 };
-const labels = {
-  "zh-TW": {
-    save: "收藏",
-    saved: "已收藏",
-    add: "加入行程",
-    share: "分享",
-    login: "登入後繼續使用此功能",
-    loginAction: "前往登入",
-    close: "關閉",
-    trip: "選擇旅程",
-    date: "安排日期",
-    meal: "用餐時段",
-    lunch: "午餐",
-    dinner: "晚餐",
-    confirm: "加入",
-    done: "已加入行程",
-    copied: "已複製連結",
-    empty: "尚未有可用旅程，請先建立旅程。",
-  },
-  "zh-CN": {
-    save: "收藏",
-    saved: "已收藏",
-    add: "加入行程",
-    share: "分享",
-    login: "登录后继续使用此功能",
-    loginAction: "前往登录",
-    close: "关闭",
-    trip: "选择旅程",
-    date: "安排日期",
-    meal: "用餐时段",
-    lunch: "午餐",
-    dinner: "晚餐",
-    confirm: "加入",
-    done: "已加入行程",
-    copied: "已复制链接",
-    empty: "尚无可用旅程，请先创建旅程。",
-  },
-  en: {
-    save: "Save",
-    saved: "Saved",
-    add: "Add to trip",
-    share: "Share",
-    login: "Sign in to continue",
-    loginAction: "Sign in",
-    close: "Close",
-    trip: "Choose a trip",
-    date: "Date",
-    meal: "Meal",
-    lunch: "Lunch",
-    dinner: "Dinner",
-    confirm: "Add",
-    done: "Added to trip",
-    copied: "Link copied",
-    empty: "Create a trip first.",
-  },
-  ja: {
-    save: "保存",
-    saved: "保存済み",
-    add: "旅程に追加",
-    share: "共有",
-    login: "ログインして続行",
-    loginAction: "ログイン",
-    close: "閉じる",
-    trip: "旅行を選択",
-    date: "日付",
-    meal: "食事",
-    lunch: "昼食",
-    dinner: "夕食",
-    confirm: "追加",
-    done: "旅程に追加しました",
-    copied: "リンクをコピーしました",
-    empty: "先に旅行を作成してください。",
-  },
-  ko: {
-    save: "저장",
-    saved: "저장됨",
-    add: "여행에 추가",
-    share: "공유",
-    login: "로그인하여 계속하기",
-    loginAction: "로그인",
-    close: "닫기",
-    trip: "여행 선택",
-    date: "날짜",
-    meal: "식사",
-    lunch: "점심",
-    dinner: "저녁",
-    confirm: "추가",
-    done: "여행에 추가됨",
-    copied: "링크를 복사했습니다",
-    empty: "먼저 여행을 만들어 주세요.",
-  },
-} as const;
-
 export function TravelCardActions({
   type,
   id,
@@ -124,8 +31,6 @@ export function TravelCardActions({
   merchantId?: string;
   shareRequiresAuth?: boolean;
 }) {
-  const locale = useLocale() as keyof typeof labels;
-  const text = labels[locale] ?? labels.en;
   const common = useTranslations("common");
   const savedItems = useSavedItems();
   const pathname = usePathname();
@@ -197,7 +102,7 @@ export function TravelCardActions({
       });
       // A toast alone was a dead end: the reader had no way to see where the
       // place landed. Keep the link on screen long enough to be tapped.
-      setNotice(text.done);
+      setNotice(common("cardActions.done"));
       setNoticeHref(`/trips/${trip.trip_id}`);
       setSheet(null);
       window.setTimeout(() => {
@@ -221,7 +126,7 @@ export function TravelCardActions({
       if (navigator.share) await navigator.share({ title, url });
       else if (navigator.clipboard) {
         await navigator.clipboard.writeText(url);
-        setNotice(text.copied);
+        setNotice(common("cardActions.copied"));
         window.setTimeout(() => setNotice(""), 1600);
       } else {
         // No clipboard on http:// or in an old browser; show the link instead
@@ -258,7 +163,7 @@ export function TravelCardActions({
           }
         >
           {saving ? <LoaderCircle className="animate-spin" size={18} /> : <Heart size={18} fill={saved ? "currentColor" : "none"} />}
-          <span>{saved ? text.saved : text.save}</span>
+          <span>{saved ? common("cardActions.saved") : common("cardActions.save")}</span>
         </button>
         <button
           type="button"
@@ -267,7 +172,7 @@ export function TravelCardActions({
           className="travel-card-action disabled:cursor-not-allowed disabled:opacity-35"
         >
           <CalendarPlus size={18} />
-          <span>{text.add}</span>
+          <span>{common("cardActions.add")}</span>
         </button>
         <button
           type="button"
@@ -276,7 +181,7 @@ export function TravelCardActions({
           className="travel-card-action disabled:cursor-wait disabled:opacity-60"
         >
           <Share2 size={18} />
-          <span>{text.share}</span>
+          <span>{common("cardActions.share")}</span>
         </button>
       </div>
       {notice && (
@@ -301,13 +206,13 @@ export function TravelCardActions({
           <section
             role="dialog"
             aria-modal="true"
-            aria-label={sheet === "login" ? text.login : text.trip}
+            aria-label={sheet === "login" ? common("cardActions.login") : common("cardActions.trip")}
             className="app-sheet"
           >
             <div className="app-sheet-handle" />
             <button
               type="button"
-              aria-label={text.close}
+              aria-label={common("cardActions.close")}
               onClick={() => setSheet(null)}
               className="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-full border border-[var(--line)]"
             >
@@ -316,22 +221,22 @@ export function TravelCardActions({
             {sheet === "login" ? (
               <div className="py-8 text-center">
                 <LogIn className="mx-auto text-[var(--teal)]" size={30} />
-                <h3 className="mt-4 text-xl font-bold">{text.login}</h3>
+                <h3 className="mt-4 text-xl font-bold">{common("cardActions.login")}</h3>
                 <Link
                   href={loginHref}
                   className="mt-6 inline-flex min-h-12 items-center rounded-2xl bg-[var(--teal)] px-6 font-bold text-white"
                 >
-                  {text.loginAction}
+                  {common("cardActions.loginAction")}
                 </Link>
               </div>
             ) : (
               <div className="pt-4">
-                <h3 className="pr-12 text-2xl font-bold">{text.add}</h3>
+                <h3 className="pr-12 text-2xl font-bold">{common("cardActions.add")}</h3>
                 {busy && trips.length === 0 ? (
                   <p className="mt-5 text-[var(--muted)]">…</p>
                 ) : trips.length === 0 ? (
                   <div className="mt-5 rounded-2xl bg-[var(--paper)] p-4">
-                    <p>{text.empty}</p>
+                    <p>{common("cardActions.empty")}</p>
                     <Link
                       href="/trips/new"
                       className="mt-4 inline-flex min-h-12 items-center rounded-2xl bg-[var(--teal)] px-6 font-bold text-white"
@@ -342,7 +247,7 @@ export function TravelCardActions({
                 ) : (
                   <div className="mt-5 grid gap-4">
                     <label className="grid gap-2 text-sm font-bold">
-                      {text.trip}
+                      {common("cardActions.trip")}
                       <select
                         value={tripId}
                         onChange={(event) => {
@@ -362,7 +267,7 @@ export function TravelCardActions({
                       </select>
                     </label>
                     <label className="grid gap-2 text-sm font-bold">
-                      {text.date}
+                      {common("cardActions.date")}
                       <input
                         type="date"
                         value={dayDate}
@@ -380,7 +285,7 @@ export function TravelCardActions({
                     </label>
                     {merchantId && (
                       <label className="grid gap-2 text-sm font-bold">
-                        {text.meal}
+                        {common("cardActions.meal")}
                         <select
                           value={mealRole}
                           onChange={(event) =>
@@ -390,8 +295,8 @@ export function TravelCardActions({
                           }
                           className="app-field"
                         >
-                          <option value="lunch">{text.lunch}</option>
-                          <option value="dinner">{text.dinner}</option>
+                          <option value="lunch">{common("cardActions.lunch")}</option>
+                          <option value="dinner">{common("cardActions.dinner")}</option>
                         </select>
                       </label>
                     )}
@@ -401,7 +306,7 @@ export function TravelCardActions({
                       onClick={() => void submitTrip()}
                       className="min-h-12 rounded-2xl bg-[var(--teal)] px-5 font-bold text-white disabled:opacity-50"
                     >
-                      {text.confirm}
+                      {common("cardActions.confirm")}
                     </button>
                   </div>
                 )}

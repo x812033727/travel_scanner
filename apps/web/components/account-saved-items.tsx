@@ -7,7 +7,7 @@ import {
   MapPin,
   Trash2,
 } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { useSavedItems } from "@/components/saved-items-provider";
 import { api } from "@/lib/api";
@@ -24,75 +24,10 @@ type SavedItem = {
 };
 type Filter = "all" | SavedType;
 
-const copy = {
-  "zh-TW": {
-    title: "我的收藏",
-    description: "景點、美食與餐廳會同步到這個帳號。",
-    loading: "正在載入收藏…",
-    empty: "這個分類還沒有收藏。從景點或美食小卡按下愛心即可加入。",
-    remove: "移除收藏",
-    map: "開啟精準地圖",
-    error: "收藏暫時無法載入",
-    filters: { all: "全部", hotspot: "景點", food: "美食", restaurant: "餐廳" },
-  },
-  "zh-CN": {
-    title: "我的收藏",
-    description: "景点、美食与餐厅会同步到这个账号。",
-    loading: "正在加载收藏…",
-    empty: "这个分类还没有收藏。可从景点或美食卡片按下爱心加入。",
-    remove: "移除收藏",
-    map: "打开精确地图",
-    error: "收藏暂时无法加载",
-    filters: { all: "全部", hotspot: "景点", food: "美食", restaurant: "餐厅" },
-  },
-  en: {
-    title: "Saved",
-    description: "Places, foods, and restaurants stay synced to your account.",
-    loading: "Loading saved items…",
-    empty: "Nothing saved in this category yet.",
-    remove: "Remove saved item",
-    map: "Open exact map location",
-    error: "Saved items are unavailable",
-    filters: {
-      all: "All",
-      hotspot: "Places",
-      food: "Food",
-      restaurant: "Restaurants",
-    },
-  },
-  ja: {
-    title: "保存済み",
-    description: "スポット、料理、レストランをアカウントに同期します。",
-    loading: "保存済みを読み込み中…",
-    empty: "このカテゴリにはまだ保存がありません。",
-    remove: "保存から削除",
-    map: "正確な地図を開く",
-    error: "保存済みを読み込めません",
-    filters: {
-      all: "すべて",
-      hotspot: "スポット",
-      food: "料理",
-      restaurant: "レストラン",
-    },
-  },
-  ko: {
-    title: "저장 목록",
-    description: "명소, 음식, 식당을 계정에 동기화합니다.",
-    loading: "저장 목록 불러오는 중…",
-    empty: "이 분류에 저장된 항목이 없습니다.",
-    remove: "저장 해제",
-    map: "정확한 지도 열기",
-    error: "저장 목록을 불러올 수 없습니다",
-    filters: { all: "전체", hotspot: "명소", food: "음식", restaurant: "식당" },
-  },
-} as const;
-
 export function AccountSavedItems() {
-  const locale = useLocale() as keyof typeof copy;
-  const text = copy[locale] ?? copy.en;
   const tAccount = useTranslations("account");
   const filterLabel = (key: Filter) =>
-    key === "merchant" ? tAccount("savedMerchants") : text.filters[key as CopyFilter];
+    key === "merchant" ? tAccount("savedMerchants") : tAccount(`savedItems.filters.${key as CopyFilter}`);
   const saved = useSavedItems();
   const [items, setItems] = useState<SavedItem[]>([]);
   const [filter, setFilter] = useState<Filter>("all");
@@ -104,15 +39,18 @@ export function AccountSavedItems() {
   // in", so wait for it rather than sending a second request that can only 401. A signed-out
   // reader used to get this card's zero counts, its own alert, and the account panel's sign-in
   // notice all at once: three statements about the same fact.
+  // Resolved before the effect so the dependency stays a plain string the linter can
+  // check, as it was when this copy lived in a table inside the file.
+  const loadError = tAccount("savedItems.error");
   useEffect(() => {
     if (saved.status !== "authenticated") return;
     api<{ items: SavedItem[] }>("/saved-items?limit=100")
       .then((result) => setItems(result.items))
       .catch((reason: unknown) =>
-        setError(reason instanceof Error ? reason.message : text.error),
+        setError(reason instanceof Error ? reason.message : loadError),
       )
       .finally(() => setLoaded(true));
-  }, [saved.status, text.error]);
+  }, [saved.status, loadError]);
   // Nothing is on its way when the provider says the reader is not signed in, so the
   // skeleton should not keep spinning for a list that will never arrive.
   const ready = loaded || saved.status !== "authenticated";
@@ -163,11 +101,11 @@ export function AccountSavedItems() {
           <Heart size={20} fill="currentColor" />
         </span>
         <div>
-          <h2 className="text-xl font-bold">{text.title}</h2>
-          <p className="text-sm text-[var(--muted)]">{text.description}</p>
+          <h2 className="text-xl font-bold">{tAccount("savedItems.title")}</h2>
+          <p className="text-sm text-[var(--muted)]">{tAccount("savedItems.description")}</p>
         </div>
       </div>
-      <div className="app-chip-row mt-5" role="tablist" aria-label={text.title}>
+      <div className="app-chip-row mt-5" role="tablist" aria-label={tAccount("savedItems.title")}>
         {(["all", "hotspot", "food", "merchant", "restaurant"] as Filter[]).map((key) => (
           <button
             key={key}
@@ -187,19 +125,19 @@ export function AccountSavedItems() {
           role="alert"
           className="mt-4 rounded-2xl bg-red-50 p-4 text-sm text-red-800"
         >
-          {text.error}{locale.startsWith("zh") ? "：" : ": "}{error}
+          {tAccount("savedItems.errorWithDetail", { detail: error })}
         </p>
       )}
       {!ready ? (
         <div role="status" className="mt-5 grid gap-3 sm:grid-cols-2">
           <span className="app-skeleton h-20" />
           <span className="app-skeleton h-20" />
-          <span className="sr-only">{text.loading}</span>
+          <span className="sr-only">{tAccount("savedItems.loading")}</span>
         </div>
       ) : visible.length === 0 ? (
         <div className="app-empty-state mt-5">
           <Heart size={24} />
-          <p>{text.empty}</p>
+          <p>{tAccount("savedItems.empty")}</p>
         </div>
       ) : (
         <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -224,7 +162,7 @@ export function AccountSavedItems() {
                     href={safeExternalHref(map.url)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${text.map}：${item.title}`}
+                    aria-label={`${tAccount("savedItems.map")}：${item.title}`}
                     className="app-icon-button"
                   >
                     <ExternalLink size={17} />
@@ -234,7 +172,7 @@ export function AccountSavedItems() {
                   type="button"
                   disabled={busy === key}
                   onClick={() => void remove(item)}
-                  aria-label={`${text.remove}：${item.title}`}
+                  aria-label={`${tAccount("savedItems.remove")}：${item.title}`}
                   className="app-icon-button text-[var(--coral)]"
                 >
                   {busy === key ? (
