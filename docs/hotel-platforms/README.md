@@ -2,6 +2,11 @@
 
 ## Implementation
 
+The architecture milestone merged in PR #341 at `f2c3b2af431d093bfb2169fefab7deb41cc90427`
+on 2026-09-07; post-merge CI 34135118181 passed. This did **not** complete the content
+milestone or deploy/publish any hotel package. Follow-up research is isolated on
+`codex/hotel-catalog-followup`, starting at that verified main revision.
+
 `0057_hotel_booking_options` migrates legacy links into independent reviewed identities.
 Products and trip associations retain their IDs. `facts.hotel_links` is accepted/projected
 for old clients, but never stored as a second authority. New imports use a JSON
@@ -44,12 +49,29 @@ existing lodging areas, official sources, discovered Booking/Trip property pages
 IDs-only results. They are NOT published or approved. Tokyo additionally includes fifteen
 discovered Agoda/Expedia/Rakuten options. Each platform still needs its own factual review.
 
+`seoul.pending.json` adds ten candidates across Myeongdong (four), Hongdae (three), and
+Gangnam (three). Each has an official source plus Booking, Trip, Agoda and Expedia
+property pages whose names and street addresses were cross-checked. All five target OTAs
+were searched independently. Rakuten remains unconfirmed: nine Japanese-site leads are
+outside the current international-site allowlist; the L7 Gangnam international property
+needs its street identity/live landing checked. Do not interchange Japanese/global IDs
+or interpret a search result as an available room, affiliation or admin approval.
+
+`seoul.evidence.json` keeps the ten selected public permit IDs, original projected
+coordinates, source/license, identity URLs and per-platform findings. Only RYSE has an
+official direct Naver link whose actual Chrome name, address and official website matched.
+Five third-party Naver candidates remain in the evidence file only; four identities have
+no candidate yet. Every new product still has `map_verified: false` for independent review.
+Chrome subsequently failed to attach (Chrome debugger and in-app fallback); no browser
+checks beyond that one property are claimed. No map/OTA coordinate, photo, price or review
+was imported. Known restaurant-within-hotel IDs and same-brand wrong branches are excluded.
+
 | City | Research inputs | Accepted for city rollout | Remaining |
 | --- | ---: | ---: | --- |
 | Tokyo | 10 | 0 | New map checks, all platform checks, background link checks, independent approvals |
 | Osaka | 10 | 0 | Map and platform review, remaining OTA checks, independent approvals |
 | Kyoto | 0 | 0 | 10 fully sourced hotels / 3 areas |
-| Seoul | 0 | 0 | 10 hotels / 3 areas / exact Naver identity |
+| Seoul | 10 | 0 | Nine Naver identities, Rakuten usable entries, live link checks, independent approvals |
 | Busan | 0 | 0 | 10 hotels / 3 areas / exact Naver identity |
 | Taipei | 10 | 0 | Map and platform review, remaining OTA checks, independent approvals |
 
@@ -120,7 +142,8 @@ Full local Python collection is blocked by the existing deployment agent's UnixS
 import on Windows. Linux CI 34132295317 ran 1,722 passing API tests (one existing skip),
 plus successful container and full-stack smoke jobs. Full web suite: 126 files / 729 tests passed. No city
 is considered complete from a pending-file count, and no paid price API was enabled.
-See the task record for remaining validation and content acceptance. No PR merge/deploy yet.
+See the task record for remaining validation and content acceptance. Architecture PR #341
+is merged; hotel content remains pending and no deployment was performed by this task.
 
 Chrome spot check: the saved Tokyo Station Hotel Place ID resolves to the expected hotel
 name/address and official website. This was identity-only inspection: no Google prices,
@@ -135,10 +158,40 @@ It establishes licensed names/addresses, not yet ten audited hotel coordinates o
 identities. Official pages found for Vischio Kyoto, Granvia Kyoto and Daiwa Roynet Kyoto
 Terrace Hachijo are research leads only; no duplicate Hachijoguchi property should be guessed.
 
-Seoul's authoritative lodging permits are at
-https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do (KOGL Type 1).
-Its current coordinate documentation specifies **EPSG:5174**, not the EPSG:2097 claimed by
-older mirrors. It currently reports no downloadable file in the rendered page. Obtain the
-actual permitted records and verified transform before importing locations. Naver identity
-still needs separate exact-property review. Government metadata is not a completed hotel row.
+## Seoul licensed coordinates and repeatable checks
+
+Source: [서울시 숙박업 인허가 정보](https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do),
+published by 서울특별시 시민건강국 보건의료정책과, updated 2026-09-07.
+[KOGL Type 1](https://www.kogl.or.kr/info/licenseType1.do) requires source attribution;
+the public credit includes publisher, 2026 source year, direct source/license links,
+permit ID and transformation explanation, without suggesting government endorsement.
+
+The separate file-download tab says there are no files, but the **public Sheet tab's CSV
+form works** with `serviceKind=1`, `infId=OA-16044`, `srvType=S`, `pageNo=1`,
+`ssUserId=SAMPLE_VIEW`, and empty `strWhere` / `strOrderby`, posted to
+`https://datafile.seoul.go.kr/bigfile/iot/sheet/csv/download.do`. No API key or login is
+required. It is CP949 encoded. The full CSV is processed in memory only; the saved evidence
+retains only selected active permit facts, not unrelated rows or personal/employee fields.
+
+The source explicitly documents **EPSG:5174**, not the EPSG:2097 used by older mirrors.
+`inspect_seoul_source.py` transforms X/Y to WGS84 with `always_xy=True`, rounds to seven
+decimals, rejects non-finite/swapped/out-of-city coordinates and flags missing, closed or
+duplicate permits. These are administrative permit coordinates, not claims of exact hotel
+entrance routing. The projection dependency is research-only, not added to the application.
+
+The initial source fetch already ran; use the offline checks to avoid downloading again:
+
+```powershell
+# From apps/api; no network, import or approval performed by these checks.
+uv run --with pyproj==3.7.2 python ../../docs/hotel-platforms/inspect_seoul_source.py --verify-saved
+uv run --with pyproj==3.7.2 pytest tests/test_hotel_content_package.py ../../docs/hotel-platforms/test_seoul_source.py tests/test_hotel_platforms.py tests/test_hotel_direct_booking.py tests/test_travel_services.py -q
+uv run python ../../docs/hotel-platforms/prepare_import.py ../../docs/hotel-platforms/seoul.pending.json
+```
+
+Calling the inspector **without** `--verify-saved` re-fetches the public CSV and prints
+selected facts only, for a later deliberate review; it never writes/imports/approves.
+The additional research-tool tests require the optional pyproj command above. Default API
+CI also validates the package/evidence, review gates and lossless admin CSV transfer.
+
+Remaining: Kyoto and Busan content, all cities' independent review and rollout gates.
 Do not use Visit Seoul's embedded Tripadvisor descriptions/ratings as government-owned data.
