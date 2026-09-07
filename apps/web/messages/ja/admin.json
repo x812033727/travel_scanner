@@ -15,7 +15,8 @@
     "hotspots": "スポット候補審査",
     "foods": "グルメ管理",
     "analytics": "トラフィック分析",
-    "deployments": "デプロイセンター"
+    "deployments": "デプロイセンター",
+    "uiText": "フロント文言"
   },
   "providerTabs": {
     "label": "API プロバイダー設定タブ",
@@ -1403,5 +1404,87 @@
     "auditProviderHint": "変更した項目名・操作者・テスト結果だけを記録し、キーの内容は記録しません。",
     "auditEmpty": "管理操作の記録はまだありません。",
     "testResult": "{message}（{latency} ms）"
+  },
+  "uiText": {
+  "eyebrow": "SYSTEM ADMIN",
+  "title": "フロント文言",
+  "description": "フロントに表示される文言を言語ごとに直接変更します。アプリに同梱された翻訳ファイルが既定値で、ここには上書きだけを保存します。空にして保存すると既定に戻り、変更は次回のページ読み込みから反映されます。",
+  "loading": "上書きを読み込んでいます…",
+  "namespaceLabel": "文言グループ",
+  "namespaceOption": "{label}（{namespace}・{count} 件）",
+  "targetLocaleLabel": "編集する言語",
+  "referenceLocaleLabel": "参照する言語",
+  "searchLabel": "キーまたは文言を検索",
+  "searchPlaceholder": "キー、既定または上書きの文言",
+  "empty": "一致する文言はありません。",
+  "filters": {
+    "label": "文言を絞り込む",
+    "all": "すべて",
+    "overridden": "上書き済み",
+    "dirty": "未保存",
+    "parameters": "変数あり",
+    "orphans": "孤立した上書き"
+  },
+  "row": {
+    "defaultLabel": "既定",
+    "referenceLabel": "参照（{locale}）",
+    "parametersLabel": "変数",
+    "overridden": "上書き済み",
+    "dirty": "未保存",
+    "pendingRestore": "保存すると既定に戻ります",
+    "orphan": "孤立した上書き",
+    "orphanHelp": "このキーはアプリに存在しないため、この上書きはどこにも表示されません。既定に戻して保存すると削除できます。",
+    "advancedIcu": "複数形あり",
+    "advancedIcuHelp": "既定の文言は ICU の複数形または選択構文を使っています。上書きでも波かっこの構造を保ってください。",
+    "restore": "既定に戻す",
+    "restoreNamed": "既定に戻す：{key}",
+    "discard": "変更を取り消す",
+    "discardNamed": "変更を取り消す：{key}",
+    "updatedBy": "{email} が {time} に更新",
+    "updatedAt": "{time} に更新",
+    "errorParameters": "変数は既定と同じでなければなりません：{expected}",
+    "errorNoParameters": "既定に変数がないため、上書きでも変数は使えません。",
+    "errorBraces": "波かっこが対応していません。"
+  },
+  "pager": {
+    "summary": "{pages} ページ中 {page} ページ目・全 {total} 件",
+    "previous": "前へ",
+    "next": "次へ"
+  },
+  "saveBar": {
+    "pending": "未保存の変更が {count} 件",
+    "save": "{count} 件の変更を保存",
+    "saving": "保存しています…",
+    "fixErrors": "先に {count} 件の問題を修正してください",
+    "discardAll": "すべての変更を破棄",
+    "discardAllConfirm": "未保存の変更 {count} 件を破棄しますか？",
+    "leaveConfirm": "未保存の変更が {count} 件あり、切り替えると失われます。切り替えますか？",
+    "saved": "{count} 件の変更を保存しました。次回のページ読み込みから反映されます。",
+    "partialFailure": "保存できなかった変更があります。現在の状態を読み込み直しました。未保存の内容はフォームに残っています。"
+  },
+  "namespaces": {
+    "account": "アカウント設定",
+    "admin": "管理画面",
+    "alerts": "価格通知",
+    "auth": "ログインと登録",
+    "availability": "機能停止のお知らせ",
+    "catalogReview": "Gemini カタログ審査",
+    "common": "共通の文言",
+    "errors": "エラーページ",
+    "foodAdmin": "グルメ目録の管理",
+    "foods": "グルメ目録",
+    "hotspotAdmin": "観光地の紹介文管理",
+    "hotspotThemes": "観光地のテーマと紹介文",
+    "hotspots": "人気の観光地",
+    "metadata": "ページタイトルとSEO説明",
+    "navigation": "ナビゲーションとフッター",
+    "newTrip": "新しい旅行のフォーム",
+    "pricing": "プランのページ",
+    "restaurants": "近くのレストラン",
+    "search": "検索ワークベンチ",
+    "stayAreas": "宿泊エリア",
+    "trips": "旅程の計画",
+    "usage": "回数消費の案内"
+  }
   }
 }

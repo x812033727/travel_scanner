@@ -15,7 +15,8 @@
     "hotspots": "景點候選審核",
     "foods": "美食目錄管理",
     "analytics": "流量與分析",
-    "deployments": "部署中心"
+    "deployments": "部署中心",
+    "uiText": "前台文案"
   },
   "providerTabs": {
     "label": "API 供應商設定分頁",
@@ -1403,5 +1404,87 @@
     "auditProviderHint": "只記錄變更欄位名稱、操作者與測試結果，不記錄金鑰內容。",
     "auditEmpty": "尚無管理操作紀錄。",
     "testResult": "{message}（{latency} ms）"
+  },
+  "uiText": {
+  "eyebrow": "SYSTEM ADMIN",
+  "title": "前台文案",
+  "description": "直接修改前台各語系顯示的文字。程式內建的翻譯檔是預設值，這裡只保存覆寫；清空後儲存即還原預設，儲存後前台下一次載入即生效。",
+  "loading": "正在載入覆寫…",
+  "namespaceLabel": "文案群組",
+  "namespaceOption": "{label}（{namespace}・{count} 則）",
+  "targetLocaleLabel": "編輯語系",
+  "referenceLocaleLabel": "參考語系",
+  "searchLabel": "搜尋鍵名或文字",
+  "searchPlaceholder": "輸入鍵名、預設或覆寫文字",
+  "empty": "沒有符合的文案。",
+  "filters": {
+    "label": "篩選文案",
+    "all": "全部",
+    "overridden": "已覆寫",
+    "dirty": "未儲存",
+    "parameters": "有參數",
+    "orphans": "孤兒覆寫"
+  },
+  "row": {
+    "defaultLabel": "預設",
+    "referenceLabel": "參考（{locale}）",
+    "parametersLabel": "參數",
+    "overridden": "已覆寫",
+    "dirty": "未儲存",
+    "pendingRestore": "儲存後還原預設",
+    "orphan": "孤兒覆寫",
+    "orphanHelp": "程式裡已經沒有這個鍵，這筆覆寫不會顯示在任何地方；還原預設後儲存即可移除。",
+    "advancedIcu": "含複數規則",
+    "advancedIcuHelp": "預設文案使用了 ICU 複數或選擇語法，覆寫時請保留原本的大括號結構。",
+    "restore": "還原預設",
+    "restoreNamed": "還原預設：{key}",
+    "discard": "放棄修改",
+    "discardNamed": "放棄修改：{key}",
+    "updatedBy": "{email} 於 {time} 更新",
+    "updatedAt": "{time} 更新",
+    "errorParameters": "參數必須與預設相同：{expected}",
+    "errorNoParameters": "預設沒有參數，覆寫也不能加入參數。",
+    "errorBraces": "大括號沒有成對。"
+  },
+  "pager": {
+    "summary": "第 {page} / {pages} 頁，共 {total} 則",
+    "previous": "上一頁",
+    "next": "下一頁"
+  },
+  "saveBar": {
+    "pending": "{count} 筆未儲存變更",
+    "save": "儲存 {count} 筆變更",
+    "saving": "儲存中…",
+    "fixErrors": "請先修正 {count} 筆錯誤",
+    "discardAll": "放棄全部變更",
+    "discardAllConfirm": "確定放棄 {count} 筆未儲存的變更？",
+    "leaveConfirm": "還有 {count} 筆未儲存的變更，切換後會遺失。確定切換？",
+    "saved": "已儲存 {count} 筆變更，前台下一次載入即生效。",
+    "partialFailure": "有變更沒有儲存成功，已重新載入目前狀態；未儲存的內容仍留在表單中。"
+  },
+  "namespaces": {
+    "account": "帳號設定",
+    "admin": "管理後台",
+    "alerts": "價格通知",
+    "auth": "登入與註冊",
+    "availability": "功能暫停提示",
+    "catalogReview": "Gemini 目錄審核",
+    "common": "共用文字",
+    "errors": "錯誤頁",
+    "foodAdmin": "美食目錄後台",
+    "foods": "美食目錄",
+    "hotspotAdmin": "景點介紹後台",
+    "hotspotThemes": "景點主題與介紹",
+    "hotspots": "熱門景點",
+    "metadata": "頁面標題與 SEO 描述",
+    "navigation": "導覽與頁尾",
+    "newTrip": "新旅程表單",
+    "pricing": "方案頁",
+    "restaurants": "附近餐廳",
+    "search": "搜尋工作台",
+    "stayAreas": "住宿熱區",
+    "trips": "旅程規劃",
+    "usage": "扣次提示"
+  }
   }
 }

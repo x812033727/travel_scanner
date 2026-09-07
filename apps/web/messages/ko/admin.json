@@ -15,7 +15,8 @@
     "hotspots": "명소 후보 검토",
     "foods": "음식 카탈로그",
     "analytics": "트래픽 및 분석",
-    "deployments": "배포 센터"
+    "deployments": "배포 센터",
+    "uiText": "프런트 문구"
   },
   "providerTabs": {
     "label": "API 공급자 설정 탭",
@@ -1403,5 +1404,87 @@
     "auditProviderHint": "변경된 필드 이름, 작업자, 테스트 결과만 기록하며 키 내용은 기록하지 않습니다.",
     "auditEmpty": "아직 관리 작업 기록이 없습니다.",
     "testResult": "{message} ({latency} ms)"
+  },
+  "uiText": {
+  "eyebrow": "SYSTEM ADMIN",
+  "title": "프런트 문구",
+  "description": "이용자에게 보이는 문구를 언어별로 직접 바꿉니다. 앱에 포함된 번역 파일이 기본값이고 여기에는 덮어쓰기만 저장합니다. 비우고 저장하면 기본값으로 돌아가며, 변경은 다음 페이지 로드부터 반영됩니다.",
+  "loading": "덮어쓰기를 불러오는 중…",
+  "namespaceLabel": "문구 그룹",
+  "namespaceOption": "{label}（{namespace}・{count}개）",
+  "targetLocaleLabel": "편집할 언어",
+  "referenceLocaleLabel": "참고할 언어",
+  "searchLabel": "키 또는 문구 검색",
+  "searchPlaceholder": "키, 기본값 또는 덮어쓴 문구",
+  "empty": "일치하는 문구가 없습니다.",
+  "filters": {
+    "label": "문구 거르기",
+    "all": "전체",
+    "overridden": "덮어씀",
+    "dirty": "저장 안 함",
+    "parameters": "변수 있음",
+    "orphans": "고아 덮어쓰기"
+  },
+  "row": {
+    "defaultLabel": "기본값",
+    "referenceLabel": "참고（{locale}）",
+    "parametersLabel": "변수",
+    "overridden": "덮어씀",
+    "dirty": "저장 안 함",
+    "pendingRestore": "저장하면 기본값으로",
+    "orphan": "고아 덮어쓰기",
+    "orphanHelp": "앱에 이 키가 더 이상 없어 이 덮어쓰기는 어디에도 표시되지 않습니다. 기본값으로 되돌린 뒤 저장하면 삭제됩니다.",
+    "advancedIcu": "복수형 포함",
+    "advancedIcuHelp": "기본 문구가 ICU 복수형 또는 선택 구문을 사용합니다. 덮어쓸 때도 중괄호 구조를 유지하세요.",
+    "restore": "기본값 복원",
+    "restoreNamed": "기본값 복원: {key}",
+    "discard": "수정 취소",
+    "discardNamed": "수정 취소: {key}",
+    "updatedBy": "{email}님이 {time}에 수정",
+    "updatedAt": "{time}에 수정",
+    "errorParameters": "변수는 기본값과 같아야 합니다: {expected}",
+    "errorNoParameters": "기본값에 변수가 없어 덮어쓰기에도 변수를 넣을 수 없습니다.",
+    "errorBraces": "중괄호 짝이 맞지 않습니다."
+  },
+  "pager": {
+    "summary": "{pages}쪽 중 {page}쪽, 모두 {total}개",
+    "previous": "이전",
+    "next": "다음"
+  },
+  "saveBar": {
+    "pending": "저장하지 않은 변경 {count}개",
+    "save": "변경 {count}개 저장",
+    "saving": "저장하는 중…",
+    "fixErrors": "먼저 {count}개의 문제를 고치세요",
+    "discardAll": "모든 변경 버리기",
+    "discardAllConfirm": "저장하지 않은 변경 {count}개를 버릴까요?",
+    "leaveConfirm": "저장하지 않은 변경이 {count}개 있어 전환하면 사라집니다. 전환할까요?",
+    "saved": "변경 {count}개를 저장했습니다. 다음 페이지 로드부터 반영됩니다.",
+    "partialFailure": "저장되지 않은 변경이 있습니다. 현재 상태를 다시 불러왔고, 저장하지 않은 내용은 양식에 남아 있습니다."
+  },
+  "namespaces": {
+    "account": "계정 설정",
+    "admin": "관리자 화면",
+    "alerts": "가격 알림",
+    "auth": "로그인과 가입",
+    "availability": "기능 중지 안내",
+    "catalogReview": "Gemini 카탈로그 검토",
+    "common": "공용 문구",
+    "errors": "오류 페이지",
+    "foodAdmin": "맛집 목록 관리",
+    "foods": "맛집 목록",
+    "hotspotAdmin": "명소 소개 관리",
+    "hotspotThemes": "명소 테마와 소개",
+    "hotspots": "인기 명소",
+    "metadata": "페이지 제목과 SEO 설명",
+    "navigation": "내비게이션과 푸터",
+    "newTrip": "새 여행 양식",
+    "pricing": "요금제 페이지",
+    "restaurants": "주변 식당",
+    "search": "검색 작업대",
+    "stayAreas": "숙박 지역",
+    "trips": "여행 계획",
+    "usage": "차감 안내"
+  }
   }
 }
