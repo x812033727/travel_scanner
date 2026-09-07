@@ -4,6 +4,7 @@ from uuid import UUID, uuid4
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.analytics.service import record_event
 from app.models import (
     AdminAuditLog,
     UsageAccount,
@@ -246,6 +247,12 @@ async def reserve_use(
         return existing, False
     uses = await effective_operation_cost(session, operation)
     if account.remaining_uses - account.reserved_uses < uses:
+        # Where members stop paying attention because they cannot pay. Recorded before
+        # the raise so the 402 is counted even though nothing else about it is stored.
+        await record_event(
+            session, "usage_insufficient", path="/pricing", user_id=user_id,
+            properties={"operation": operation, "needed": uses},
+        )
         raise AppError(402, "insufficient_uses", "可用次數不足，請前往方案頁查看次數包")
     account.reserved_uses += uses
     reservation = UsageReservation(
@@ -278,6 +285,10 @@ async def commit_reservation(
     account.reserved_uses -= current.uses
     account.remaining_uses -= current.uses
     current.status = "committed"
+    await record_event(
+        session, "usage_charged", path="/usage", user_id=current.user_id,
+        properties={"operation": current.operation, "uses": current.uses},
+    )
     if resource_id is not None:
         current.resource_id = resource_id
     session.add(

@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { ANALYTICS_SESSION_KEY } from "./analytics";
 import { api, apiProblemMessage } from "./api";
 
 afterEach(() => vi.unstubAllGlobals());
@@ -43,5 +44,40 @@ describe("API error messages in other locales", () => {
   it("still prefers the Chinese catalog for zh-TW", () => {
     document.documentElement.lang = "zh-TW";
     expect(apiProblemMessage({ code: "trip_not_found", detail: "Trip not found" }, 404)).toBe("找不到這個旅程");
+  });
+});
+
+describe("the analytics session on API calls", () => {
+  afterEach(() => {
+    sessionStorage.clear();
+    vi.unstubAllGlobals();
+  });
+
+  function stubOk() {
+    const fetchMock = vi.fn().mockResolvedValue(new Response("{}", { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    return fetchMock;
+  }
+
+  it("carries the browser's analytics session so a server event joins it", async () => {
+    sessionStorage.setItem(ANALYTICS_SESSION_KEY, "3f2504e0-4f89-41d3-9a0c-0305e82c3301");
+    const fetchMock = stubOk();
+
+    await api("/trips", { method: "POST" });
+
+    const headers = fetchMock.mock.calls[0][1].headers as Record<string, string>;
+    expect(headers["X-Travel-Analytics-Session"]).toBe("3f2504e0-4f89-41d3-9a0c-0305e82c3301");
+  });
+
+  it("sends nothing when there is no session, rather than starting one", async () => {
+    // Only the analytics provider creates the id, and only once it knows the visitor
+    // has not opted out. An API call must never be what begins tracking someone.
+    const fetchMock = stubOk();
+
+    await api("/trips");
+
+    const headers = fetchMock.mock.calls[0][1].headers as Record<string, string>;
+    expect("X-Travel-Analytics-Session" in headers).toBe(false);
+    expect(sessionStorage.getItem(ANALYTICS_SESSION_KEY)).toBeNull();
   });
 });

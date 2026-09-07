@@ -4,7 +4,7 @@ import { useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { AnalyticsEventName } from "@/lib/analytics";
+import { ANALYTICS_SESSION_KEY, type AnalyticsEventName } from "@/lib/analytics";
 
 type Config = { first_party_enabled: boolean; ga4_enabled: boolean; ga4_measurement_id?: string | null };
 type PendingEvent = {
@@ -26,7 +26,7 @@ declare global {
   }
 }
 
-const SESSION_KEY = "travel_analytics_session";
+const SESSION_KEY = ANALYTICS_SESSION_KEY;
 const allowedLocales = new Set(["en", "ja", "ko", "zh-TW", "zh-CN"]);
 
 function privacyOptOut() {
@@ -113,7 +113,7 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
       queueMicrotask(() => flush());
     }
     if (config.ga4_enabled && config.ga4_measurement_id && window.gtag) {
-      const mapped = { registration_completed: "sign_up", search_completed: "search", trip_created: "trip_created", outbound_click: "click", page_view: "page_view" }[name];
+      const mapped = { registration_completed: "sign_up", search_completed: "search", outbound_click: "click", page_view: "page_view", discover_requested: "generate_lead", login_resumed: "login" }[name];
       window.gtag("event", mapped, { page_path: path, page_location: `${location.origin}${path}`, language: event.locale, transport_type: "beacon" });
     }
   }, [config, flush, locale, pathname]);

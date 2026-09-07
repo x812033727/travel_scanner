@@ -27,6 +27,7 @@ from app.ai.itinerary import (
     clamp_candidate_access,
     clamp_candidate_duration,
 )
+from app.analytics.service import record_event
 from app.auth.schemas import Currency
 from app.auth.service import CurrentUser
 from app.config import Settings, get_settings
@@ -2139,6 +2140,12 @@ async def save_trip(
                     session.add(item_record(trip.id, item, preserve_source_id=False))
         else:
             ensure_system_slots(session, trip, [])
+        # Sent from here, not the browser: the trip exists when this row commits, and
+        # only the server knows which of the two doors it came through.
+        await record_event(
+            session, "trip_created", path="/trips", user_id=user.id,
+            properties={"source": "blank", "planning_mode": payload.planning_mode},
+        )
         await session.commit()
         await session.refresh(trip)
         if request_key:
@@ -2262,6 +2269,10 @@ async def save_trip(
             ):
                 record.data = {**record.data, "price_snapshot": flight_snapshot}
             session.add(record)
+    await record_event(
+        session, "trip_created", path="/trips", user_id=user.id,
+        properties={"source": "search", "quoted_flight": flight_snapshot is not None},
+    )
     await session.commit()
     await session.refresh(trip)
     if request_key:
@@ -3735,6 +3746,16 @@ async def apply_trip_itinerary_preview(
             await release_reservation(session, reservation, "ai_planner_fallback_used")
         else:
             await commit_reservation(session, reservation, trip.id)
+        # The draft is only worth anything once it is applied; a preview nobody keeps
+        # is the interesting failure, and it is the gap between these two counts.
+        await record_event(
+            session, "ai_applied", path="/trips", user_id=user.id,
+            properties={
+                "scope": generation_payload.scope,
+                "provider": planning.planning.provider,
+                "readiness": planning.planning.readiness,
+            },
+        )
         await session.commit()
         await redis.delete(f"routes:trip:{trip.id}", preview_key)
         await session.refresh(trip)
@@ -4728,6 +4749,7 @@ async def apply_trip_itinerary_optimization(
         trip.data = {**trip.data, "route_optimized": True, "route_order_changed": True}
         trip.version += 1
         await commit_reservation(session, reservation, trip.id)
+        await record_event(session, "optimize_applied", path="/trips", user_id=user.id)
         await session.commit()
         await cache_trip_routes(trip.id, segments)
         await session.refresh(trip)
@@ -5059,12 +5081,17 @@ async def create_share(trip_id: UUID, user: CurrentUser, session: Session) -> di
     token = secrets.token_urlsafe(32)
     token_hash = hashlib.sha256(token.encode()).hexdigest()
     share = await session.scalar(select(TripShare).where(TripShare.trip_plan_id == trip.id))
+    reissued = share is not None
     if share is None:
         share = TripShare(trip_plan_id=trip.id, token_hash=token_hash)
         session.add(share)
     else:
         share.token_hash = token_hash
         share.revoked_at = None
+    await record_event(
+        session, "share_created", path="/trips", user_id=user.id,
+        properties={"reissued": reissued},
+    )
     await session.commit()
     origin = get_settings().next_public_site_url.rstrip("/")
     return {"token": token, "share_url": f"{origin}/share/{token}"}

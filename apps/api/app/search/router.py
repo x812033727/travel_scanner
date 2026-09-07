@@ -15,6 +15,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.analytics.service import record_event
 from app.auth.service import CurrentUser
 from app.config import get_settings
 from app.db import get_session
@@ -86,6 +87,10 @@ async def create_search(
     reservation.resource_id = search.id
     job = SearchJob(search_id=search.id)
     session.add(job)
+    # Recorded where the job is accepted, not where it finishes: `search_completed`
+    # alone cannot tell a search nobody waited for from one that never ran.
+    await record_event(session, "search_started", path="/search", user_id=user.id,
+                       properties={"operation": operation})
     await session.commit()
     try:
         connection = SyncRedis.from_url(get_settings().redis_url)

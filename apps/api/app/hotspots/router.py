@@ -8,6 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.analytics.service import record_event
 from app.auth.service import CurrentUser
 from app.config import get_settings
 from app.db import get_session
@@ -403,6 +404,12 @@ async def select_hotspot_for_trip(
     )
     session.add(item)
     rows.append(item)
+    # The exploring surfaces used to end in a toast; this is the count that says
+    # whether browsing them turns into a trip at all.
+    await record_event(
+        session, "place_added_to_trip", path="/hotspots", user_id=user.id,
+        properties={"kind": "hotspot"},
+    )
     return await persist_system_schedule_change(
         session,
         trip,

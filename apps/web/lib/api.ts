@@ -1,3 +1,4 @@
+import { ANALYTICS_SESSION_HEADER, analyticsSessionId } from "@/lib/analytics";
 import { activeLocale, formatCurrency } from "@/lib/locale-format";
 import genericEn from "@/messages/en/errors.json";
 import genericJa from "@/messages/ja/errors.json";
@@ -147,9 +148,19 @@ export function apiProblemMessage(problem: unknown, status: number): string {
 }
 
 export async function api<T>(path: string, init?: RequestInit): Promise<T> {
+  // The analytics session travels with every call so an event the server records for
+  // this action counts as the same session as the page views around it. Absent when
+  // the visitor opted out or the provider has not started one; the server treats a
+  // missing header as "no browser session", not as a new one.
+  const analyticsSession = analyticsSessionId();
   const response = await fetch(`/api/travel${path}`, {
     ...init,
-    headers: { "Content-Type": "application/json", "X-Travel-Locale": activeLocale(), ...(init?.headers || {}) },
+    headers: {
+      "Content-Type": "application/json",
+      "X-Travel-Locale": activeLocale(),
+      ...(analyticsSession ? { [ANALYTICS_SESSION_HEADER]: analyticsSession } : {}),
+      ...(init?.headers || {}),
+    },
     cache: "no-store",
   });
   if (!response.ok) {

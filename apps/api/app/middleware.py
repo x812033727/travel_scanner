@@ -8,7 +8,13 @@ from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoin
 from starlette.responses import Response
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
+from app.analytics.context import (
+    bind_analytics_context,
+    context_from_headers,
+    reset_analytics_context,
+)
 from app.i18n import bind_request_locale, request_locale, reset_request_locale
+from app.infra import client_ip
 from app.problems import AppError, app_error_handler
 
 
@@ -23,11 +29,17 @@ class RequestContextMiddleware(BaseHTTPMiddleware):
         request.state.request_id = request_id
         started = time.perf_counter()
         # The downstream app runs in a task spawned from this context, so the
-        # locale bound here is visible to every handler and serializer.
+        # locale bound here is visible to every handler and serializer. The visitor
+        # identity travels the same way, so an event recorded deep under a handler
+        # lands on the same session hash as the browser events around it.
         locale_token = bind_request_locale(request_locale(request.headers))
+        analytics_token = bind_analytics_context(
+            context_from_headers(request.headers, client_ip=client_ip(request))
+        )
         try:
             response = await call_next(request)
         finally:
+            reset_analytics_context(analytics_token)
             reset_request_locale(locale_token)
         response.headers["X-Request-ID"] = request_id
         response.headers["X-Response-Time-Ms"] = f"{(time.perf_counter() - started) * 1000:.1f}"

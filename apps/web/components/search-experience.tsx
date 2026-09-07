@@ -466,6 +466,9 @@ export function SearchExperience() {
     )
       return;
     resumed.current = true;
+    // Counted here rather than at the login link: this is the point where the second
+    // press was actually saved, which is the only thing the claim in the plan means.
+    trackAnalytics("login_resumed");
     const next = new URLSearchParams(params.toString());
     next.delete("resume");
     router.replace(`/search${next.toString() ? `?${next.toString()}` : ""}`);
@@ -690,7 +693,6 @@ export function SearchExperience() {
           }),
         }),
       });
-      trackAnalytics("trip_created");
       router.push(`/trips/${trip.id}`);
     } catch (reason) {
       setError((reason as Error).message);
