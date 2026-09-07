@@ -46,6 +46,8 @@ from app.trips.router import public_router as public_trips_router
 from app.trips.router import router as trips_router
 from app.trips.share_router import router as trip_share_router
 from app.trips.stay_router import router as trip_stay_router
+from app.ui_text.router import admin_router as admin_ui_text_router
+from app.ui_text.router import runtime_router as ui_text_runtime_router
 from app.usage.router import admin_router as admin_usage_router
 from app.usage.router import router as usage_router
 
@@ -75,6 +77,8 @@ app.include_router(admin_dashboard_router, prefix="/api/v1")
 app.include_router(admin_user_router, prefix="/api/v1")
 app.include_router(deployments_router, prefix="/api/v1")
 app.include_router(runtime_router, prefix="/api/v1")
+app.include_router(ui_text_runtime_router, prefix="/api/v1")
+app.include_router(admin_ui_text_router, prefix="/api/v1")
 app.include_router(affiliates_router, prefix="/api/v1")
 app.include_router(usage_router, prefix="/api/v1")
 app.include_router(admin_usage_router, prefix="/api/v1")
