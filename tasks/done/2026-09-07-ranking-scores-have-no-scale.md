@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-ranking-scores-have-no-scale
 title: The three numbers on a ranking card have no scale and no explanation
-status: open
+status: done
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-07T02:11:19Z
 created_at: 2026-09-07T02:06:15Z
-completed_at:
+completed_at: 2026-09-07T02:18:35Z
 branch:
 depends_on: []
 scope:

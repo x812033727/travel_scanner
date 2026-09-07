@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-disabled-area-select-no-reason
 title: The area filter greys out with no reason given
-status: open
+status: done
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-07T02:13:16Z
 created_at: 2026-09-07T02:06:15Z
-completed_at:
+completed_at: 2026-09-07T02:18:35Z
 branch:
 depends_on: []
 scope:

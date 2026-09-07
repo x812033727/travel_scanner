@@ -195,11 +195,13 @@ describe("HotspotExplorer", () => {
     fireEvent.keyDown(document, { key: "Escape" });
     await waitFor(() => expect(screen.queryByRole("dialog", { name: "認識 淺草寺" })).toBeNull());
 
-    // The area filter only opens once a city is chosen, then scopes the ranking request.
-    const areaSelect = screen.getByRole("combobox", { name: "全部區域" }) as HTMLSelectElement;
+    // The area filter only opens once a city is chosen — and while it is shut it
+    // says so, rather than greying out without a word.
+    const areaSelect = screen.getByRole("combobox", { name: "先選城市，才有區域可以挑" }) as HTMLSelectElement;
     expect(areaSelect.disabled).toBe(true);
     fireEvent.change(screen.getByRole("combobox", { name: "全部城市" }), { target: { value: "tokyo" } });
     await waitFor(() => expect(areaSelect.disabled).toBe(false));
+    expect(screen.getByRole("combobox", { name: "全部區域" })).toBe(areaSelect);
     expect(within(areaSelect).getByRole("option", { name: "秋葉原／神田 (1)" })).toBeTruthy();
     fireEvent.change(areaSelect, { target: { value: "akihabara" } });
     fireEvent.click(screen.getByRole("button", { name: "查看排行" }));
@@ -587,5 +589,34 @@ describe("HotspotExplorer", () => {
 
     expect(screen.getByText("東京最古老的寺院。")).toBeTruthy();
     expect(screen.queryByRole("button", { name: "展開全文" })).toBeNull();
+  });
+
+  it("says what the ranking numbers mean, and why the area filter is greyed out", async () => {
+    const fetchMock = vi.fn(async () => new Response(JSON.stringify({ items: [] })));
+    vi.stubGlobal("fetch", fetchMock);
+    const ranking = {
+      scope: "global", scope_key: "global", observed_on: "2026-08-31", window_days: 30,
+      total: 1, has_more: false, next_cursor: null, items: [rankingItem()],
+    };
+
+    render(
+      <SavedItemsProvider>
+        <HotspotExplorer initialRanking={ranking} initialFacets={{ total: 1, countries: [], cities: [], categories: [], areas: [] }} />
+      </SavedItemsProvider>,
+    );
+
+    // 88 on its own said nothing about whether the top of the scale was 100 or 1000.
+    expect(screen.getByText("88")).toBeTruthy();
+    expect(screen.getByText("/ 100")).toBeTruthy();
+    expect(screen.getByText(/熱門分數滿分 100 分/)).toBeTruthy();
+
+    // "30 天瀏覽" read as views of this site; the number is Wikipedia's, and
+    // "相較前期" named no period at all.
+    expect(screen.getByText("維基百科近 30 天查詢")).toBeTruthy();
+    expect(screen.getByText("比前 30 天")).toBeTruthy();
+
+    // The area filter greyed itself out and gave no reason for it.
+    const area = screen.getByRole("combobox", { name: "先選城市，才有區域可以挑" });
+    expect((area as HTMLSelectElement).disabled).toBe(true);
   });
 });

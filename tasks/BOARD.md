@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**15 open · 0 in progress · 2 blocked · 0 in review · 138 done**
+**13 open · 0 in progress · 2 blocked · 0 in review · 140 done**
 
 ## Ready to claim
 
@@ -17,8 +17,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [後台可改前台文案：前台載入器把資料庫覆寫疊上 next-intl](open/2026-09-07-ui-text-loader.md) | web | `apps/web/i18n/request.ts`<br>`apps/web/lib/ui-text.ts`<br>`apps/web/lib/ui-text.test.ts`<br>`apps/web/lib/ui-text.server.ts`<br>`apps/web/lib/ui-text.server.test.ts`<br>`tools/check-i18n.mjs`<br>`tools/e2e-runtime-api.mjs` |
 | P1 | [登入頁沒有忘記密碼，後端也沒有任何寄信管道](open/2026-09-07-forgot-password-no-mail-channel.md) | web | `apps/web/app/[locale]/login`<br>`apps/web/components/auth-form.tsx` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
-| P2 | [The area filter greys out with no reason given](open/2026-09-07-disabled-area-select-no-reason.md) | web | `apps/web/components/hotspot-explorer.tsx`<br>`apps/web/messages` |
-| P2 | [The three numbers on a ranking card have no scale and no explanation](open/2026-09-07-ranking-scores-have-no-scale.md) | web | `apps/web/components/hotspot-explorer.tsx`<br>`apps/web/messages` |
 | P2 | [Cuisine chip counts ignore the area and keyword already chosen](open/2026-09-07-cuisine-counts-ignore-other-filters.md) | web | `apps/web/components/food-browser.tsx`<br>`apps/api/app` |
 | P2 | [The foods landing tells you to pick a city while already listing 110 merchants](open/2026-09-07-foods-landing-lists-before-city.md) | web | `apps/web/components/food-browser.tsx`<br>`apps/web/messages` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
@@ -46,6 +44,8 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-07 [The area filter greys out with no reason given](done/2026-09-07-disabled-area-select-no-reason.md)
+- 2026-09-07 [The three numbers on a ranking card have no scale and no explanation](done/2026-09-07-ranking-scores-have-no-scale.md)
 - 2026-09-07 [Filter chip rows hide most of their choices behind a silent sideways scroll](done/2026-09-07-chip-rows-hide-choices.md)
 - 2026-09-07 [篩選之後排行榜從第 3 名開始跳號，看起來像少了東西](done/2026-09-07-filtered-rank-numbering.md)
 - 2026-09-07 [手機篩選面板看起來是對話框，但沒有 dialog role、不移動 focus、Escape 不關、Tab 走得出去](done/2026-09-07-filter-sheet-not-a-dialog.md)
@@ -54,5 +54,3 @@ _Nothing here._
 - 2026-09-07 [後台可改前台文案：API、資料表、快取與稽核](done/2026-09-07-ui-text-overrides-api.md)
 - 2026-09-07 [產生器每次執行都會重寫既有列的分類，重跑一次就還原剛修好的資料](done/2026-09-07-generator-rewrites-categories.md)
 - 2026-09-07 [特大字下的景點卡把地名擠成 93px、地點行斷成五行](done/2026-09-07-hotspot-card-largest-text.md)
-- 2026-09-07 [選中的國家只靠底色表示，選單裡的外觀與語言看不出目前設定](done/2026-09-06-chosen-state-and-menu-values.md)
-- 2026-09-07 [美食卡上的灰色膠囊看起來像標籤，按下去卻整頁重新篩選](done/2026-09-06-merchant-card-filter-pills.md)
