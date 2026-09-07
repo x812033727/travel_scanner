@@ -1,0 +1,543 @@
+"""Leased, resumable catalog jobs; every Gemini request reserves its budget first."""
+
+from __future__ import annotations
+
+import asyncio
+import logging
+from collections import Counter
+from contextlib import suppress
+from datetime import UTC, datetime, timedelta
+from typing import Any, cast
+from uuid import UUID, uuid4
+
+from redis import Redis as SyncRedis
+from rq import Queue
+from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.admin.service import load_runtime_settings
+from app.catalog_review.evidence import fetch_sources, normalize_source_url
+from app.catalog_review.provider import CatalogGeminiProvider
+from app.catalog_review.repository import (
+    ENTITY_TYPES,
+    import_draft,
+    make_review_item,
+    source_urls,
+    trusted_hosts,
+)
+from app.catalog_review.schemas import CatalogKind, EvidenceSource, ReviewCandidate
+from app.config import Settings, get_settings
+from app.db import SessionFactory, engine
+from app.destinations.catalog import DESTINATIONS
+from app.hotspots.guides import consume_search_budget
+from app.infra import get_redis
+from app.models import CatalogReviewItem, CatalogReviewRun, FoodCategory, FoodDestination
+from app.problems import AppError
+
+logger = logging.getLogger(__name__)
+LEASE_SECONDS = 300
+HEARTBEAT_SECONDS = 60
+MAX_CALLS = 80
+TARGET_COUNTS: dict[str, int] = {"hotspot": 40, "food": 20, "merchant": 40}
+TOKEN_KEYS = ("input_tokens", "output_tokens", "thought_tokens")
+
+
+class LeaseLost(Exception):
+    """Another worker or an administrator owns this run now."""
+
+
+class BudgetStopped(Exception):
+    def __init__(self, code: str) -> None:
+        self.code = code
+        super().__init__(code)
+
+
+def _count(value: Any, default: int = 0) -> int:
+    valid = isinstance(value, int) and not isinstance(value, bool) and value >= 0
+    return value if valid else default
+
+
+def _targets(request: dict[str, Any]) -> dict[str, int]:
+    raw = request.get("requested_counts", TARGET_COUNTS)
+    if (
+        not isinstance(raw, dict)
+        or set(raw) != set(TARGET_COUNTS)
+        or any(
+            not isinstance(value, int) or isinstance(value, bool) or value < 0
+            for value in raw.values()
+        )
+        or not 1 <= sum(raw.values()) <= 100
+    ):
+        raise ValueError("Invalid discovery target counts")
+    return cast(dict[str, int], raw)
+
+
+def _future(stamp: datetime | None) -> bool:
+    return stamp is not None and stamp.replace(tzinfo=stamp.tzinfo or UTC) > datetime.now(UTC)
+
+
+async def _locked_run(session: AsyncSession, run_id: UUID, token: str) -> CatalogReviewRun:
+    run = await session.scalar(
+        select(CatalogReviewRun)
+        .where(
+            CatalogReviewRun.id == run_id,
+        )
+        .with_for_update()
+    )
+    if (
+        run is None
+        or run.status != "running"
+        or run.lease_token != token
+        or not _future(run.lease_until)
+    ):
+        raise LeaseLost()
+    return run
+
+
+async def _claim_run(run_id: UUID) -> CatalogReviewRun | None:
+    async with SessionFactory() as session:
+        run = await session.scalar(
+            select(CatalogReviewRun)
+            .where(
+                CatalogReviewRun.id == run_id,
+            )
+            .with_for_update()
+        )
+        if run is None or run.status not in {"queued", "running"} or _future(run.lease_until):
+            return None
+        if run.status == "queued":
+            # An explicit API resume permits another bounded attempt at a shortfall.
+            run.result_json = {**(run.result_json or {}), "no_progress_counts": {}}
+        run.status = "running"
+        run.lease_token = uuid4().hex
+        run.lease_until = datetime.now(UTC) + timedelta(seconds=LEASE_SECONDS)
+        run.completed_at = None
+        run.error_code = None
+        run.error_message = None
+        run.version += 1
+        await session.commit()
+        return run
+
+
+async def _heartbeat(run_id: UUID, token: str) -> None:
+    while True:
+        await asyncio.sleep(HEARTBEAT_SECONDS)
+        try:
+            async with SessionFactory() as session:
+                run = await _locked_run(session, run_id, token)
+                run.lease_until = datetime.now(UTC) + timedelta(seconds=LEASE_SECONDS)
+                await session.commit()
+        except Exception:
+            # Saves and reservations still check the DB lease before any next effect.
+            logger.warning("Catalog review heartbeat stopped for %s", run_id)
+            return
+
+
+async def reserve_call(run_id: UUID, token: str, settings: Settings) -> bool:
+    """Commit the per-run call count before HTTP, failing closed on either budget."""
+    async with SessionFactory() as session:
+        run = await _locked_run(session, run_id, token)
+        usage = dict(run.usage_json or {})
+        maximum = min(MAX_CALLS, _count((run.request_json or {}).get("max_calls"), MAX_CALLS))
+        if _count(usage.get("calls")) >= maximum:
+            raise BudgetStopped("catalog_review_call_limit")
+        if not await consume_search_budget(
+            get_redis(),
+            "gemini",
+            settings.hotspot_guide_gemini_daily_search_budget,
+        ):
+            raise BudgetStopped("catalog_review_daily_budget")
+        usage["calls"] = _count(usage.get("calls")) + 1
+        usage["member_charged"] = False
+        run.usage_json = usage
+        run.lease_until = datetime.now(UTC) + timedelta(seconds=LEASE_SECONDS)
+        await session.commit()
+    return True
+
+
+async def _save_usage(
+    run_id: UUID,
+    token: str,
+    provider: CatalogGeminiProvider,
+    saved: dict[str, int],
+) -> None:
+    totals = {key: _count(provider.usage.get(key)) for key in TOKEN_KEYS}
+    async with SessionFactory() as session:
+        run = await _locked_run(session, run_id, token)
+        usage = dict(run.usage_json or {})
+        for key, total in totals.items():
+            usage[key] = _count(usage.get(key)) + max(0, total - saved.get(key, 0))
+        usage["member_charged"] = False
+        run.usage_json = usage
+        await session.commit()
+    saved.update(totals)
+
+
+def _source_metadata(sources: list[EvidenceSource]) -> list[dict[str, Any]]:
+    return [source.model_dump(exclude={"text"}) for source in sources]
+
+
+async def _batch_error(
+    run_id: UUID,
+    token: str,
+    item_ids: list[UUID],
+    error: Exception,
+    sources: dict[UUID, list[EvidenceSource]],
+) -> None:
+    async with SessionFactory() as session:
+        await _locked_run(session, run_id, token)
+        items = (
+            await session.scalars(
+                select(CatalogReviewItem)
+                .where(
+                    CatalogReviewItem.run_id == run_id,
+                    CatalogReviewItem.id.in_(item_ids),
+                    CatalogReviewItem.status.in_(("pending", "error")),
+                )
+                .with_for_update()
+            )
+        ).all()
+        for item in items:
+            item.status = "error"
+            item.reason = "此批 Gemini 評估失敗；可續跑重試，尚未套用任何判斷。"
+            item.assessment_json = {"error": type(error).__name__}
+            item.evidence_json = _source_metadata(sources.get(item.id, []))
+        await session.commit()
+
+
+async def _review_items(
+    run_id: UUID,
+    token: str,
+    phase: str,
+    provider: CatalogGeminiProvider,
+    hosts: set[str],
+    saved_usage: dict[str, int],
+) -> None:
+    # Capture this attempt's work once: a failed batch is retried only on API resume.
+    async with SessionFactory() as session:
+        run = await _locked_run(session, run_id, token)
+        run.phase = phase
+        item_ids = list(
+            (
+                await session.scalars(
+                    select(CatalogReviewItem.id)
+                    .where(
+                        CatalogReviewItem.run_id == run_id,
+                        CatalogReviewItem.phase == phase,
+                        CatalogReviewItem.status.in_(("pending", "error")),
+                    )
+                    .order_by(CatalogReviewItem.id)
+                )
+            ).all()
+        )
+        await session.commit()
+    for offset in range(0, len(item_ids), 20):
+        batch_ids = item_ids[offset : offset + 20]
+        sources_by_item: dict[UUID, list[EvidenceSource]] = {}
+        try:
+            async with SessionFactory() as session:
+                await _locked_run(session, run_id, token)
+                items = list(
+                    (
+                        await session.scalars(
+                            select(CatalogReviewItem).where(
+                                CatalogReviewItem.run_id == run_id,
+                                CatalogReviewItem.id.in_(batch_ids),
+                                CatalogReviewItem.status.in_(("pending", "error")),
+                            )
+                        )
+                    ).all()
+                )
+            if not items:
+                continue
+            urls_by_item = {item.id: source_urls(item.snapshot_json) for item in items}
+            urls = list(dict.fromkeys(url for values in urls_by_item.values() for url in values))
+            fetched = await fetch_sources(urls, hosts)
+            by_url = {normalize_source_url(source.url) or source.url: source for source in fetched}
+            for item in items:
+                sources_by_item[item.id] = [
+                    by_url[key]
+                    for url in urls_by_item[item.id]
+                    if (key := normalize_source_url(url) or url) in by_url
+                ]
+            candidates = [
+                ReviewCandidate(
+                    candidate_id=str(item.id),
+                    kind=cast(CatalogKind, item.kind),
+                    name=item.name,
+                    local_name=str(item.snapshot_json.get("local_name") or ""),
+                    destination_id=item.destination_id,
+                    data=item.snapshot_json,
+                    sources=sources_by_item[item.id],
+                )
+                for item in items
+            ]
+            try:
+                result = await provider.assess(candidates)
+            finally:
+                await _save_usage(run_id, token, provider, saved_usage)
+            by_id = {assessment.candidate_id: assessment for assessment in result.items}
+            if len(by_id) != len(result.items) or set(by_id) != {str(item.id) for item in items}:
+                raise ValueError("Assessment IDs do not match the requested batch")
+            # Import here: the API service can enqueue jobs without an import cycle.
+            from app.catalog_review.service import record_assessment
+
+            async with SessionFactory() as session:
+                await _locked_run(session, run_id, token)
+                current = (
+                    await session.scalars(
+                        select(CatalogReviewItem)
+                        .where(
+                            CatalogReviewItem.run_id == run_id,
+                            CatalogReviewItem.id.in_([item.id for item in items]),
+                            CatalogReviewItem.status.in_(("pending", "error")),
+                        )
+                        .with_for_update()
+                    )
+                ).all()
+                for item in current:
+                    record_assessment(item, by_id[str(item.id)], sources_by_item[item.id])
+                await session.commit()
+        except (BudgetStopped, LeaseLost):
+            raise
+        except Exception as exc:
+            await _batch_error(run_id, token, batch_ids, exc, sources_by_item)
+
+
+async def _discovery_context(session: AsyncSession) -> tuple[list[dict[str, Any]], list[str]]:
+    avoid: set[str] = set()
+    food_slugs: dict[UUID, str] = {}
+    for kind, model in ENTITY_TYPES.items():
+        rows: list[Any] = list((await session.scalars(select(model))).all())
+        for row in rows:
+            # No public-status filter: rejected/disabled records are dedupe tombstones.
+            for field in ("slug", "name", "local_name", "romanized_name"):
+                value = getattr(row, field, None)
+                if isinstance(value, str) and value:
+                    avoid.add(value)
+            if kind == "food" and row.review_status == "approved" and row.is_active:
+                food_slugs[row.id] = row.slug
+    foods: dict[str, list[str]] = {}
+    for link in (await session.scalars(select(FoodDestination))).all():
+        if link.food_id in food_slugs:
+            foods.setdefault(link.destination_id, []).append(food_slugs[link.food_id])
+    categories = list(
+        (
+            await session.scalars(
+                select(FoodCategory.slug).where(
+                    FoodCategory.is_active.is_(True),
+                )
+            )
+        ).all()
+    )
+    destinations = [
+        {
+            "id": profile.id,
+            "city": profile.city,
+            "country": profile.country,
+            "areas": list(profile.areas),
+            "food_slugs": foods.get(profile.id, []),
+            "category_slugs": categories,
+        }
+        for profile in DESTINATIONS
+    ]
+    return destinations, sorted(avoid)
+
+
+async def _discover_items(
+    run_id: UUID,
+    token: str,
+    provider: CatalogGeminiProvider,
+    saved_usage: dict[str, int],
+) -> None:
+    for kind in TARGET_COUNTS:
+        while True:
+            async with SessionFactory() as session:
+                run = await _locked_run(session, run_id, token)
+                request = run.request_json or {}
+                target = _targets(request)[kind]
+                result = run.result_json or {}
+                created = _count((result.get("created_counts") or {}).get(kind))
+                misses = _count((result.get("no_progress_counts") or {}).get(kind))
+                if created >= target or misses >= 3:
+                    break
+                run.phase = "discover_new"
+                destinations, avoid = await _discovery_context(session)
+                await session.commit()
+            error: Exception | None = None
+            try:
+                batch = await provider.discover(
+                    cast(CatalogKind, kind), min(5, target - created), destinations, avoid
+                )
+            except (BudgetStopped, LeaseLost):
+                raise
+            except Exception as exc:
+                error = exc
+                batch = None
+            finally:
+                await _save_usage(run_id, token, provider, saved_usage)
+            async with SessionFactory() as session:
+                run = await _locked_run(session, run_id, token)
+                added = 0
+                duplicates = 0
+                for draft in batch.items if batch is not None else []:
+                    if draft.kind != kind or added >= min(5, target - created):
+                        continue
+                    try:
+                        async with session.begin_nested():
+                            entity = await import_draft(session, draft, run.actor_user_id, run_id)
+                            if entity is not None:
+                                await make_review_item(session, run_id, kind, entity, "review_new")
+                                await session.flush()
+                        if entity is not None:
+                            added += 1
+                        else:
+                            duplicates += 1
+                    except (AppError, ValueError, IntegrityError) as exc:
+                        error = exc
+                result = dict(run.result_json or {})
+                counts = dict(result.get("created_counts") or {})
+                counts[kind] = _count(counts.get(kind)) + added
+                no_progress = dict(result.get("no_progress_counts") or {})
+                no_progress[kind] = 0 if added else misses + 1
+                result.update(created_counts=counts, no_progress_counts=no_progress)
+                result["duplicates"] = _count(result.get("duplicates")) + duplicates
+                if error is not None:
+                    result["last_discovery_error"] = type(error).__name__
+                run.result_json = result
+                # Entity, snapshot and count commit together; retries see all or none.
+                await session.commit()
+
+
+async def _finish(
+    run_id: UUID,
+    token: str,
+    *,
+    error_code: str | None = None,
+    error_message: str | None = None,
+    failed: bool = False,
+) -> None:
+    async with SessionFactory() as session:
+        run = await _locked_run(session, run_id, token)
+        items = (
+            await session.scalars(
+                select(CatalogReviewItem).where(
+                    CatalogReviewItem.run_id == run_id,
+                )
+            )
+        ).all()
+        statuses = dict(Counter(item.status for item in items))
+        result = dict(run.result_json or {})
+        shortfalls = (
+            {
+                kind: max(0, target - _count((result.get("created_counts") or {}).get(kind)))
+                for kind, target in _targets(run.request_json or {}).items()
+            }
+            if run.mode == "discover_new"
+            else {}
+        )
+        incomplete = bool(
+            error_code
+            or statuses.get("pending")
+            or statuses.get("error")
+            or any(shortfalls.values())
+        )
+        progressed = any(item.status in {"assessed", "applied", "stale"} for item in items)
+        progressed |= any(_count(value) for value in (result.get("created_counts") or {}).values())
+        run.status = (
+            "failed" if failed and not progressed else "partial" if incomplete else "completed"
+        )
+        result.update(item_status_counts=statuses, shortfalls=shortfalls)
+        run.result_json = result
+        run.usage_json = {**(run.usage_json or {}), "member_charged": False}
+        run.error_code = error_code or ("catalog_review_incomplete" if incomplete else None)
+        run.error_message = error_message or (
+            "部分項目待續跑或未找到足夠新候選。" if incomplete else None
+        )
+        run.completed_at = datetime.now(UTC)
+        run.lease_token = None
+        run.lease_until = None
+        run.version += 1
+        await session.commit()
+
+
+async def _run(run_id: UUID) -> None:
+    run = await _claim_run(run_id)
+    if run is None:
+        return
+    token = cast(str, run.lease_token)
+    heartbeat = asyncio.create_task(_heartbeat(run_id, token))
+    provider: CatalogGeminiProvider | None = None
+    saved_usage: dict[str, int] = {}
+    try:
+        async with SessionFactory() as session:
+            settings = await load_runtime_settings(session)
+            hosts = await trusted_hosts(session)
+        provider = CatalogGeminiProvider(
+            settings,
+            lambda: reserve_call(run_id, token, settings),
+            trusted_hosts=hosts,
+            model=run.model,
+        )
+        if run.mode == "discover_new":
+            await _discover_items(run_id, token, provider, saved_usage)
+        phase = "review_new" if run.mode == "discover_new" else "review_pending"
+        await _review_items(run_id, token, phase, provider, hosts, saved_usage)
+        await _finish(run_id, token)
+    except LeaseLost:
+        logger.info("Catalog review %s stopped after losing its lease", run_id)
+    except BudgetStopped as exc:
+        with suppress(LeaseLost):
+            await _finish(
+                run_id,
+                token,
+                error_code=exc.code,
+                error_message=(
+                    "此工作已達 Gemini 呼叫上限；已保存進度，請查看未完成項目並另建工作。"
+                    if exc.code == "catalog_review_call_limit"
+                    else "Gemini 每日安全預算已用完；進度已保存，可於預算重置後續跑。"
+                ),
+            )
+    except Exception as exc:
+        with suppress(LeaseLost):
+            await _finish(
+                run_id,
+                token,
+                error_code=(exc.code if isinstance(exc, AppError) else "catalog_review_failed"),
+                error_message="審核工作未完成；已保存進度，可由管理員續跑。",
+                failed=True,
+            )
+    finally:
+        heartbeat.cancel()
+        with suppress(asyncio.CancelledError):
+            await heartbeat
+        if provider is not None:
+            await provider.close()
+
+
+def enqueue_catalog_run(run_id: UUID) -> str:
+    connection = SyncRedis.from_url(get_settings().redis_url)
+    try:
+        job = Queue("catalog-review", connection=connection).enqueue(
+            "app.catalog_review.jobs.run_catalog_review",
+            str(run_id),
+            job_timeout=7200,
+        )
+        return str(job.id)
+    finally:
+        connection.close()
+
+
+def run_catalog_review(run_id: str) -> None:
+    async def run_and_close_resources() -> None:
+        try:
+            await _run(UUID(run_id))
+        finally:
+            try:
+                await get_redis().aclose()
+            finally:
+                get_redis.cache_clear()
+                await engine.dispose()
+
+    asyncio.run(run_and_close_resources())

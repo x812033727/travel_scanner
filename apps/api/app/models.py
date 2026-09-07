@@ -393,6 +393,72 @@ class TransportOfferRecord(Timestamped, Base):
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 
 
+class CatalogReviewRun(Timestamped, Base):
+    """An administrator's bounded Gemini assessment/discovery snapshot."""
+
+    __tablename__ = "catalog_review_runs"
+    __table_args__ = (
+        UniqueConstraint("actor_user_id", "idempotency_key", name="uq_catalog_run_idempotency"),
+        CheckConstraint(
+            "mode IN ('review_pending', 'discover_new')", name="ck_catalog_run_mode"
+        ),
+        CheckConstraint(
+            "status IN ('queued', 'running', 'completed', 'partial', 'failed', 'cancelled')",
+            name="ck_catalog_run_status",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    actor_user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id"), index=True)
+    idempotency_key: Mapped[str] = mapped_column(String(128))
+    request_hash: Mapped[str] = mapped_column(String(64))
+    request_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    mode: Mapped[str] = mapped_column(String(24))
+    phase: Mapped[str] = mapped_column(String(32), default="review_pending")
+    status: Mapped[str] = mapped_column(String(24), default="queued", index=True)
+    model: Mapped[str] = mapped_column(String(128))
+    version: Mapped[int] = mapped_column(Integer, default=1)
+    usage_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    result_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    error_code: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
+    lease_token: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    lease_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class CatalogReviewItem(Timestamped, Base):
+    __tablename__ = "catalog_review_items"
+    __table_args__ = (
+        UniqueConstraint("run_id", "kind", "entity_id", name="uq_catalog_review_entity"),
+        CheckConstraint(
+            "kind IN ('hotspot', 'food', 'merchant')", name="ck_catalog_review_kind"
+        ),
+        CheckConstraint(
+            "status IN ('pending', 'assessed', 'error', 'applied', 'stale')",
+            name="ck_catalog_review_item_status",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    run_id: Mapped[UUID] = mapped_column(
+        ForeignKey("catalog_review_runs.id", ondelete="CASCADE"), index=True
+    )
+    kind: Mapped[str] = mapped_column(String(16))
+    entity_id: Mapped[UUID] = mapped_column(index=True)
+    phase: Mapped[str] = mapped_column(String(24), default="review_pending")
+    name: Mapped[str] = mapped_column(String(255))
+    destination_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    snapshot_hash: Mapped[str] = mapped_column(String(64))
+    snapshot_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    status: Mapped[str] = mapped_column(String(16), default="pending", index=True)
+    assessment_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    evidence_json: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
+    gaps_json: Mapped[list[str]] = mapped_column(JSON, default=list)
+    decision: Mapped[str | None] = mapped_column(String(24), nullable=True)
+    reason: Mapped[str] = mapped_column(Text, default="")
+    applied_action: Mapped[str | None] = mapped_column(String(24), nullable=True)
+    assessed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
 class TravelHotspot(Timestamped, Base):
     __tablename__ = "travel_hotspots"
     __table_args__ = (

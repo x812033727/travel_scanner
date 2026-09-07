@@ -1,0 +1,139 @@
+{
+  "title": "Gemini 目錄審核",
+  "description": "先核對現有待審景點、美食與商家，再尋找 100 筆新候選。逐筆查看來源證據與缺項，確認後才套用審核結果。",
+  "workflow": "兩階段目錄審核",
+  "step": "步驟 {number}",
+  "reviewTitle": "審核現有待審項目",
+  "reviewDescription": "由 Gemini 核對目前待審目錄，保留證據與判斷；審核完成仍可有待補驗證的項目。",
+  "startReview": "開始審核現有待審",
+  "discoveryTitle": "尋找 100 筆新候選",
+  "discoveryDescription": "新候選先存為待審且不啟用，再進行核對。找到候選不等於已核准或已發布。",
+  "requestedCounts": "景點 40 筆 · 美食 20 筆 · 商家 40 筆",
+  "startDiscovery": "開始尋找 100 筆候選",
+  "reviewFirst": "先完成一批現有待審項目的審核，才能開始新增候選。",
+  "availability": "Gemini 服務狀態",
+  "provider": "Gemini · 模型 {model}",
+  "callLimits": "每日呼叫上限 {daily} 次；本批最多 {run} 次。",
+  "notConfigured": "Gemini 尚未設定，請先完成服務設定。",
+  "history": "最近審核工作",
+  "selectRun": "選擇審核工作",
+  "noRuns": "尚無審核工作。",
+  "refresh": "重新整理",
+  "resume": "繼續未完成工作",
+  "usage": "已呼叫 {calls} 次 · 輸入 {input} tokens · 輸出 {output} tokens",
+  "reviewComplete": "這批來源審核已完成；未通過發布條件的項目仍保留待審。",
+  "assessment": "逐筆審核預覽",
+  "assessmentDescription": "Gemini 的建議不等於發布許可。缺少精準地圖、永久座標或其他必要驗證時，無法核准；依列出的缺項補齊後再審核。",
+  "batchAction": "批次動作",
+  "waitForRun": "工作仍在排隊或執行中，可先查看證據；工作停止後才能選取並套用審核結果。",
+  "selectPage": "選取本頁可操作項目（{count}）",
+  "clearSelection": "清除選取",
+  "previewAction": "預覽選取的 {count} 筆",
+  "selectItem": "選取 {name}",
+  "notAssessed": "尚未完成評估",
+  "confidence": "Gemini 信心值：{value}",
+  "appliedAction": "已套用：{action}",
+  "evidenceCount": "來源證據（{count}）",
+  "invalidEvidenceLink": "來源網址無法安全開啟",
+  "itemGaps": "{name} 的缺項",
+  "noGapsReported": "未回報缺項；仍以伺服器核准條件為準。",
+  "actionUnavailable": "目前不允許「{action}」",
+  "noItems": "這一頁尚無審核項目。",
+  "pagination": "審核項目分頁",
+  "pageCount": "第 {page} 頁 · 共 {total} 筆",
+  "previous": "上一頁",
+  "next": "下一頁",
+  "applyResults": "套用結果",
+  "updated": "實際更新 {count} 筆",
+  "confirmTitle": "確認{action} {count} 筆",
+  "confirmDescription": "請核對以下項目與理由。送出時伺服器會再次檢查版本及必要驗證；不符合的項目會略過。",
+  "cancel": "返回檢查",
+  "confirmApply": "確認並套用",
+  "applying": "正在套用…",
+  "loading": "載入中…",
+  "reconnecting": "連線暫時中斷，正在重新取得工作進度。",
+  "kinds": {
+    "hotspot": "景點",
+    "food": "美食",
+    "merchant": "商家"
+  },
+  "modes": {
+    "review_pending": "審核現有待審",
+    "discover_new": "新增候選與審核"
+  },
+  "phases": {
+    "review_pending": "核對現有待審",
+    "discover_new": "尋找新候選",
+    "review_new": "核對新候選",
+    "completed": "審核完成"
+  },
+  "runStatus": {
+    "queued": "排隊中",
+    "running": "執行中",
+    "completed": "已完成",
+    "partial": "部分完成",
+    "failed": "失敗",
+    "cancelled": "已取消"
+  },
+  "itemStatus": {
+    "pending": "待評估",
+    "assessed": "已評估",
+    "error": "評估失敗",
+    "applied": "已套用",
+    "stale": "資料已變更"
+  },
+  "actions": {
+    "approve": "核准",
+    "reject": "拒絕",
+    "keep_pending": "保留待審"
+  },
+  "decisions": {
+    "approve": "建議核准",
+    "reject": "建議拒絕",
+    "needs_review": "需要人工確認"
+  },
+  "columns": {
+    "select": "選取",
+    "candidate": "候選項目",
+    "decision": "Gemini 判斷",
+    "evidence": "來源證據",
+    "gaps": "驗證缺項"
+  },
+  "counts": {
+    "total": "本批總數",
+    "assessed": "已評估",
+    "approved": "建議核准",
+    "rejected": "建議拒絕",
+    "needs_review": "需要人工確認",
+    "created": "已建立候選",
+    "duplicates": "重複候選",
+    "failed": "評估失敗",
+    "applied": "已套用"
+  },
+  "gaps": {
+    "missing_source": "缺少可追溯來源",
+    "missing_five_locale_content": "五語名稱或介紹尚未補齊",
+    "missing_destination": "缺少有效的目的地關聯",
+    "missing_meal_type": "尚未設定適用餐別",
+    "missing_wikidata_identity": "缺少 Wikidata 項目身分",
+    "missing_exact_map_identity": "缺少精準地圖身分（韓國須 Naver，其餘須 Google Place ID）",
+    "map_not_independently_verified": "精準地圖身分尚未經獨立驗證",
+    "missing_durable_coordinates": "缺少有永久來源佐證的座標",
+    "coordinates_not_verified": "座標尚未完成驗證",
+    "missing_direct_merchant_source": "缺少可直接佐證店名的商家網站或店家資料來源",
+    "missing_food_category": "尚未關聯美食分類",
+    "missing_verified_source_evidence": "缺少經查證來源中可核對的引用證據",
+    "low_assessment_confidence": "Gemini 評估信心不足，需人工確認"
+  },
+  "applyReasons": {
+    "action_not_allowed": "此項目目前不允許套用所選動作",
+    "assessment_expired": "評估已過期，請重新審核",
+    "candidate_no_longer_pending": "此候選已不存在或不再是待審狀態",
+    "candidate_changed": "候選資料在評估後已變更，請重新審核",
+    "publication_requirements_missing": "必要的發布驗證仍未補齊，無法核准"
+  },
+  "outcomeStatus": {
+    "applied": "已套用",
+    "skipped": "已略過"
+  }
+}

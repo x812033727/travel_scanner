@@ -87,13 +87,14 @@ async def test_seeding_adopts_a_place_discovery_already_stored() -> None:
                 )
             ).all()
         )
-        # One row, not two: the curated seed took over the discovered one.
+        # One row, not two: the seed reuses the discovered identity without
+        # renaming an existing public slug or bypassing its pending review.
         assert len(rows) == 1
         assert rows[0].id == discovered_id
-        assert rows[0].slug == seed.slug
-        assert rows[0].name == seed.name
-        assert rows[0].origin == "curated"
-        assert rows[0].review_status == "approved"
+        assert rows[0].slug == f"wikidata-{seed.wikidata_item_id.lower()}"
+        assert rows[0].name == "Discovered name"
+        assert rows[0].origin == "wikimedia_discovery"
+        assert rows[0].review_status == "pending"
         await _clear(session)
 
 

@@ -14,6 +14,7 @@ describe("AdminNav", () => {
       "會員與次數",
       "景點候選審核",
       "美食目錄管理",
+      "Gemini 目錄審核",
       "方案與扣次",
       "版面管理",
       "系統設定",
@@ -25,6 +26,7 @@ describe("AdminNav", () => {
       "/admin/users",
       "/admin/hotspots",
       "/admin/foods",
+      "/admin/catalog-review",
       "/admin/usage-settings",
       "/admin/layout-settings",
       "/admin/system-settings",
@@ -60,5 +62,12 @@ describe("AdminNav", () => {
     expect(screen.getAllByRole("link").map((link) => link.textContent)).toEqual(
       ["景點候選審核"],
     );
+  });
+
+  it("exposes the catalog review workspace and marks its navigation active", () => {
+    render(<AdminNav current="catalogReview" />);
+    const link = screen.getByRole("link", { name: "Gemini 目錄審核" });
+    expect(link.getAttribute("href")).toBe("/admin/catalog-review");
+    expect(link.getAttribute("aria-current")).toBe("page");
   });
 });

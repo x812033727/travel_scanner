@@ -375,18 +375,6 @@ async def seed_food_catalog(session: AsyncSession) -> int:
     existing_sources = {
         (row.merchant_id, row.source_url, row.edition_year): row for row in source_rows
     }
-    seed_context_sources = {
-        row.merchant_id: row
-        for row in source_rows
-        if row.source_type == "official_tourism"
-        and row.source_scope == "destination_context"
-        and row.edition_year is None
-        and row.source_title
-        in {
-            "Official destination food guide",
-            "Official destination food guide (regional context only)",
-        }
-    }
     direct_sources_by_slug: dict[str, list[Any]] = defaultdict(list)
     for direct_source_seed in MERCHANT_DIRECT_SOURCE_SEEDS:
         direct_sources_by_slug[direct_source_seed.merchant_slug].append(direct_source_seed)
@@ -396,6 +384,7 @@ async def seed_food_catalog(session: AsyncSession) -> int:
     )
     for merchant_seed in MERCHANT_SEEDS:
         merchant = existing_merchants.get(merchant_seed.slug)
+        is_new_merchant = merchant is None
         if merchant is None:
             merchant = FoodMerchant(
                 slug=merchant_seed.slug,
@@ -447,8 +436,13 @@ async def seed_food_catalog(session: AsyncSession) -> int:
                     )
                 )
                 existing_merchant_foods.add(key)
+        # Sources have no seed/admin ownership marker. An existing pending,
+        # unverified merchant may already have edited or deliberately removed
+        # citations and a cleared website, so only initialize these on creation.
+        if not is_new_merchant:
+            continue
         source_key = (merchant.id, merchant_seed.source_url, None)
-        source = existing_sources.get(source_key) or seed_context_sources.get(merchant.id)
+        source = existing_sources.get(source_key)
         if source is None:
             source = FoodMerchantSource(
                 merchant_id=merchant.id,
@@ -463,17 +457,6 @@ async def seed_food_catalog(session: AsyncSession) -> int:
                 last_verified_at=datetime.now(UTC),
             )
             session.add(source)
-            existing_sources[source_key] = source
-        else:
-            source_url_changed = source.source_url != merchant_seed.source_url
-            source.source_url = merchant_seed.source_url
-            source.source_type = "official_tourism"
-            source.source_scope = "destination_context"
-            source.source_title = merchant_seed.source_title
-            source.claims_json = []
-            source.is_current = True
-            if source_url_changed:
-                source.last_verified_at = datetime.now(UTC)
             existing_sources[source_key] = source
 
         for direct_source_seed in direct_sources_by_slug.get(merchant_seed.slug, []):
@@ -494,23 +477,6 @@ async def seed_food_catalog(session: AsyncSession) -> int:
                 )
                 session.add(direct_source)
                 existing_sources[direct_source_key] = direct_source
-            else:
-                source_changed = any(
-                    (
-                        direct_source.source_type != direct_source_seed.source_type,
-                        direct_source.source_scope != direct_source_seed.source_scope,
-                        direct_source.source_title != direct_source_seed.source_title,
-                        direct_source.claims_json != list(direct_source_seed.claims),
-                        not direct_source.is_current,
-                    )
-                )
-                direct_source.source_type = direct_source_seed.source_type
-                direct_source.source_scope = direct_source_seed.source_scope
-                direct_source.source_title = direct_source_seed.source_title
-                direct_source.claims_json = list(direct_source_seed.claims)
-                direct_source.is_current = True
-                if source_changed:
-                    direct_source.last_verified_at = datetime.now(UTC)
             if direct_source_seed.official_website_url and merchant.official_website_url is None:
                 merchant.official_website_url = direct_source_seed.official_website_url
                 merchant.official_website_verified_at = datetime.now(UTC)

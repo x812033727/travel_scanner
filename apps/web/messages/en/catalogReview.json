@@ -1,0 +1,139 @@
+{
+  "title": "Gemini catalog review",
+  "description": "Review pending hotspots, foods, and merchants first, then find 100 new candidates. Inspect each decision, its evidence, and missing checks before applying it.",
+  "workflow": "Two-stage catalog review",
+  "step": "Step {number}",
+  "reviewTitle": "Review pending items",
+  "reviewDescription": "Gemini checks the current pending catalog and records evidence and decisions. A completed review can still leave items awaiting verification.",
+  "startReview": "Review pending items",
+  "discoveryTitle": "Find 100 new candidates",
+  "discoveryDescription": "New candidates are saved as pending and inactive, then reviewed. Finding a candidate does not approve or publish it.",
+  "requestedCounts": "40 hotspots · 20 foods · 40 merchants",
+  "startDiscovery": "Find 100 candidates",
+  "reviewFirst": "Complete a review of pending items before starting discovery.",
+  "availability": "Gemini service status",
+  "provider": "Gemini · Model {model}",
+  "callLimits": "Daily limit: {daily} calls; this run: up to {run} calls.",
+  "notConfigured": "Gemini is not configured. Complete service setup first.",
+  "history": "Recent review runs",
+  "selectRun": "Choose a review run",
+  "noRuns": "No review runs yet.",
+  "refresh": "Refresh",
+  "resume": "Resume unfinished work",
+  "usage": "{calls} calls · {input} input tokens · {output} output tokens",
+  "reviewComplete": "This source review is complete. Items that do not meet publishing requirements remain pending.",
+  "assessment": "Review preview",
+  "assessmentDescription": "A Gemini recommendation does not grant publishing permission. Approval remains unavailable when exact map identity, durable coordinates, or other required verification is missing.",
+  "batchAction": "Batch action",
+  "waitForRun": "This run is queued or running. You can inspect evidence now; select and apply results after it stops.",
+  "selectPage": "Select eligible items on this page ({count})",
+  "clearSelection": "Clear selection",
+  "previewAction": "Preview {count} selected items",
+  "selectItem": "Select {name}",
+  "notAssessed": "Not yet assessed",
+  "confidence": "Gemini confidence: {value}",
+  "appliedAction": "Applied: {action}",
+  "evidenceCount": "Source evidence ({count})",
+  "invalidEvidenceLink": "The source URL cannot be opened safely",
+  "itemGaps": "Missing checks for {name}",
+  "noGapsReported": "No gaps reported; server approval checks still apply.",
+  "actionUnavailable": "“{action}” is currently unavailable",
+  "noItems": "No review items on this page yet.",
+  "pagination": "Review item pages",
+  "pageCount": "Page {page} · {total} items",
+  "previous": "Previous",
+  "next": "Next",
+  "applyResults": "Apply results",
+  "updated": "{count} items actually updated",
+  "confirmTitle": "Confirm {action}: {count} items",
+  "confirmDescription": "Check the items and reasons below. The server rechecks versions and required verification when submitted; ineligible items are skipped.",
+  "cancel": "Back to review",
+  "confirmApply": "Confirm and apply",
+  "applying": "Applying…",
+  "loading": "Loading…",
+  "reconnecting": "Connection interrupted. Reconnecting to retrieve progress.",
+  "kinds": {
+    "hotspot": "Hotspots",
+    "food": "Foods",
+    "merchant": "Merchants"
+  },
+  "modes": {
+    "review_pending": "Review pending items",
+    "discover_new": "Discover and review"
+  },
+  "phases": {
+    "review_pending": "Reviewing pending items",
+    "discover_new": "Finding new candidates",
+    "review_new": "Reviewing new candidates",
+    "completed": "Review complete"
+  },
+  "runStatus": {
+    "queued": "Queued",
+    "running": "Running",
+    "completed": "Completed",
+    "partial": "Partially completed",
+    "failed": "Failed",
+    "cancelled": "Cancelled"
+  },
+  "itemStatus": {
+    "pending": "Awaiting assessment",
+    "assessed": "Assessed",
+    "error": "Assessment failed",
+    "applied": "Applied",
+    "stale": "Data changed"
+  },
+  "actions": {
+    "approve": "Approve",
+    "reject": "Reject",
+    "keep_pending": "Keep pending"
+  },
+  "decisions": {
+    "approve": "Recommend approval",
+    "reject": "Recommend rejection",
+    "needs_review": "Needs human review"
+  },
+  "columns": {
+    "select": "Select",
+    "candidate": "Candidate",
+    "decision": "Gemini decision",
+    "evidence": "Source evidence",
+    "gaps": "Missing verification"
+  },
+  "counts": {
+    "total": "Run total",
+    "assessed": "Assessed",
+    "approved": "Recommend approval",
+    "rejected": "Recommend rejection",
+    "needs_review": "Needs human review",
+    "created": "Candidates created",
+    "duplicates": "Duplicates",
+    "failed": "Assessment failures",
+    "applied": "Applied"
+  },
+  "gaps": {
+    "missing_source": "A traceable source is missing",
+    "missing_five_locale_content": "Names or descriptions are missing in one or more of the five languages",
+    "missing_destination": "A valid destination link is missing",
+    "missing_meal_type": "Meal types have not been set",
+    "missing_wikidata_identity": "A Wikidata item identity is missing",
+    "missing_exact_map_identity": "Exact map identity is missing (Naver in Korea; Google Place ID elsewhere)",
+    "map_not_independently_verified": "The exact map identity has not been independently verified",
+    "missing_durable_coordinates": "Coordinates backed by a durable source are missing",
+    "coordinates_not_verified": "Coordinates have not been verified",
+    "missing_direct_merchant_source": "A merchant website or listing that directly supports the shop name is missing",
+    "missing_food_category": "A food category has not been linked",
+    "missing_verified_source_evidence": "Verifiable quotations from checked sources are missing",
+    "low_assessment_confidence": "Gemini assessment confidence is too low; human review is needed"
+  },
+  "applyReasons": {
+    "action_not_allowed": "The selected action is not currently allowed for this item",
+    "assessment_expired": "The assessment has expired. Review this item again",
+    "candidate_no_longer_pending": "The candidate no longer exists or is no longer pending",
+    "candidate_changed": "The candidate changed after assessment. Review it again",
+    "publication_requirements_missing": "Required publishing checks are still missing; approval is unavailable"
+  },
+  "outcomeStatus": {
+    "applied": "Applied",
+    "skipped": "Skipped"
+  }
+}

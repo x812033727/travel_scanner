@@ -1,0 +1,139 @@
+{
+  "title": "Gemini 目录审核",
+  "description": "先核对现有待审景点、美食与商家，再寻找 100 个新候选。逐项查看来源证据与缺项，确认后才应用审核结果。",
+  "workflow": "两阶段目录审核",
+  "step": "步骤 {number}",
+  "reviewTitle": "审核现有待审项目",
+  "reviewDescription": "由 Gemini 核对当前待审目录，保留证据与判断；审核完成后仍可有等待补充验证的项目。",
+  "startReview": "开始审核现有待审",
+  "discoveryTitle": "寻找 100 个新候选",
+  "discoveryDescription": "新候选先保存为待审且不启用，再进行核对。找到候选不等于已批准或已发布。",
+  "requestedCounts": "景点 40 个 · 美食 20 个 · 商家 40 个",
+  "startDiscovery": "开始寻找 100 个候选",
+  "reviewFirst": "先完成一批现有待审项目的审核，才能开始新增候选。",
+  "availability": "Gemini 服务状态",
+  "provider": "Gemini · 模型 {model}",
+  "callLimits": "每日调用上限 {daily} 次；本批最多 {run} 次。",
+  "notConfigured": "Gemini 尚未配置，请先完成服务设置。",
+  "history": "最近审核任务",
+  "selectRun": "选择审核任务",
+  "noRuns": "尚无审核任务。",
+  "refresh": "刷新",
+  "resume": "继续未完成任务",
+  "usage": "已调用 {calls} 次 · 输入 {input} tokens · 输出 {output} tokens",
+  "reviewComplete": "这批来源审核已完成；未满足发布条件的项目仍保留待审。",
+  "assessment": "逐项审核预览",
+  "assessmentDescription": "Gemini 的建议不等于发布许可。缺少精确地图身份、长期坐标或其他必要验证时，无法批准；根据列出的缺项补齐后再审核。",
+  "batchAction": "批量操作",
+  "waitForRun": "任务仍在排队或运行中，可先查看证据；任务停止后才能选择并应用审核结果。",
+  "selectPage": "选择本页可操作项目（{count}）",
+  "clearSelection": "清除选择",
+  "previewAction": "预览所选 {count} 项",
+  "selectItem": "选择 {name}",
+  "notAssessed": "尚未完成评估",
+  "confidence": "Gemini 置信度：{value}",
+  "appliedAction": "已应用：{action}",
+  "evidenceCount": "来源证据（{count}）",
+  "invalidEvidenceLink": "来源网址无法安全打开",
+  "itemGaps": "{name} 的缺项",
+  "noGapsReported": "未报告缺项；仍以服务器批准条件为准。",
+  "actionUnavailable": "目前不允许“{action}”",
+  "noItems": "这一页尚无审核项目。",
+  "pagination": "审核项目分页",
+  "pageCount": "第 {page} 页 · 共 {total} 项",
+  "previous": "上一页",
+  "next": "下一页",
+  "applyResults": "应用结果",
+  "updated": "实际更新 {count} 项",
+  "confirmTitle": "确认{action} {count} 项",
+  "confirmDescription": "请核对以下项目与理由。提交时服务器会再次检查版本及必要验证；不符合的项目将跳过。",
+  "cancel": "返回检查",
+  "confirmApply": "确认并应用",
+  "applying": "正在应用…",
+  "loading": "加载中…",
+  "reconnecting": "连接暂时中断，正在重新获取任务进度。",
+  "kinds": {
+    "hotspot": "景点",
+    "food": "美食",
+    "merchant": "商家"
+  },
+  "modes": {
+    "review_pending": "审核现有待审",
+    "discover_new": "新增候选与审核"
+  },
+  "phases": {
+    "review_pending": "核对现有待审",
+    "discover_new": "寻找新候选",
+    "review_new": "核对新候选",
+    "completed": "审核完成"
+  },
+  "runStatus": {
+    "queued": "排队中",
+    "running": "执行中",
+    "completed": "已完成",
+    "partial": "部分完成",
+    "failed": "失败",
+    "cancelled": "已取消"
+  },
+  "itemStatus": {
+    "pending": "待评估",
+    "assessed": "已评估",
+    "error": "评估失败",
+    "applied": "已应用",
+    "stale": "数据已变化"
+  },
+  "actions": {
+    "approve": "批准",
+    "reject": "拒绝",
+    "keep_pending": "保留待审"
+  },
+  "decisions": {
+    "approve": "建议批准",
+    "reject": "建议拒绝",
+    "needs_review": "需要人工确认"
+  },
+  "columns": {
+    "select": "选择",
+    "candidate": "候选项目",
+    "decision": "Gemini 判断",
+    "evidence": "来源证据",
+    "gaps": "验证缺项"
+  },
+  "counts": {
+    "total": "本批总数",
+    "assessed": "已评估",
+    "approved": "建议批准",
+    "rejected": "建议拒绝",
+    "needs_review": "需要人工确认",
+    "created": "已创建候选",
+    "duplicates": "重复候选",
+    "failed": "评估失败",
+    "applied": "已应用"
+  },
+  "gaps": {
+    "missing_source": "缺少可追溯来源",
+    "missing_five_locale_content": "五语名称或介绍尚未补齐",
+    "missing_destination": "缺少有效的目的地关联",
+    "missing_meal_type": "尚未设置适用餐别",
+    "missing_wikidata_identity": "缺少 Wikidata 项目标识",
+    "missing_exact_map_identity": "缺少精准地图标识（韩国须 Naver，其余须 Google Place ID）",
+    "map_not_independently_verified": "精准地图标识尚未经过独立验证",
+    "missing_durable_coordinates": "缺少有永久来源佐证的坐标",
+    "coordinates_not_verified": "坐标尚未完成验证",
+    "missing_direct_merchant_source": "缺少可直接佐证店名的商家网站或店家资料来源",
+    "missing_food_category": "尚未关联美食分类",
+    "missing_verified_source_evidence": "缺少经查证来源中可核对的引用证据",
+    "low_assessment_confidence": "Gemini 评估信心不足，需要人工确认"
+  },
+  "applyReasons": {
+    "action_not_allowed": "此项目目前不允许应用所选操作",
+    "assessment_expired": "评估已过期，请重新审核",
+    "candidate_no_longer_pending": "此候选已不存在或不再处于待审状态",
+    "candidate_changed": "候选数据在评估后已更改，请重新审核",
+    "publication_requirements_missing": "必要的发布验证仍未补齐，无法批准"
+  },
+  "outcomeStatus": {
+    "applied": "已应用",
+    "skipped": "已跳过"
+  }
+}

@@ -11,6 +11,7 @@ QUEUE_NAMES = (
     "hotspot-guides",
     "hotspot-intros",
     "hotspot-places",
+    "catalog-review",
     "restaurant-scans",
     "analytics",
     "auth-revocations",
