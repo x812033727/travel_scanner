@@ -524,17 +524,21 @@
         },
         {
           "provider": "rakuten",
-          "searched_on": "2026-09-07",
-          "query": "RYSE, Autograph Collection Seoul",
+          "searched_on": "2026-09-08",
+          "query": "site.travel.rakuten.com \"RYSE\" \"Seoul\"",
           "searched_domains": [
-            "travel.rakuten.co.jp",
             "travel.rakuten.com"
           ],
-          "candidate_url": "https://travel.rakuten.co.jp/HOTEL/166873/166873.html",
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_south_korea/sub_seoul/cty_mapo_district/dst_mapogu/34123457159873/",
           "identity_evidence_url": "https://www.rysehotel.co.kr/contact/",
-          "status": "unconfirmed",
-          "matched_fields": [],
-          "note": "2026-09-07 已搜尋 Rakuten，發現日本站飯店頁；現有品牌網域只支援國際站，尚未確認可用的國際站精準入口。日本站候選保留研究證據，未確認不代表沒有販售。"
+          "status": "candidate_found_pending_review",
+          "matched_fields": [
+            "hotel_name"
+          ],
+          "note": "Property title observed on primary international page; current full street identity unresolved. Pending only.",
+          "prior_japanese_candidate_url": "https://travel.rakuten.co.jp/HOTEL/166873/166873.html",
+          "document_freshness": "last year",
+          "review_checkpoint": "seoul-links.review-2026-09-08.json"
         }
       ]
     },
@@ -631,17 +635,21 @@
         },
         {
           "provider": "rakuten",
-          "searched_on": "2026-09-07",
-          "query": "Mercure Ambassador Seoul Hongdae Seoul",
+          "searched_on": "2026-09-08",
+          "query": "site.travel.rakuten.com \"Mercure Ambassador Seoul Hongdae\"",
           "searched_domains": [
-            "travel.rakuten.co.jp",
             "travel.rakuten.com"
           ],
-          "candidate_url": "https://travel.rakuten.co.jp/HOTEL/187724/gallery.html",
+          "candidate_url": "https://travel.rakuten.com/hkg/zh-hk/hotel_info_item/cnt_south_korea/sub_seoul/cty_mapo_district/dst_mapogu/34123457217428/",
           "identity_evidence_url": "https://all.accor.com/hotel/B696/index.en.shtml",
-          "status": "unconfirmed",
-          "matched_fields": [],
-          "note": "2026-09-07 已搜尋 Rakuten，發現日本站飯店頁；現有品牌網域只支援國際站，尚未確認可用的國際站精準入口。日本站候選保留研究證據，未確認不代表沒有販售。"
+          "status": "candidate_found_pending_review",
+          "matched_fields": [
+            "hotel_name"
+          ],
+          "note": "Primary search result observed, direct page could not be read. Candidate only, no landing review or language URL rewrite.",
+          "prior_japanese_candidate_url": "https://travel.rakuten.co.jp/HOTEL/187724/gallery.html",
+          "document_freshness": "7 months ago search index; direct open Internal Error",
+          "review_checkpoint": "seoul-links.review-2026-09-08.json"
         }
       ]
     },
