@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from urllib.parse import urlsplit
 
+from app.affiliates.schemas import AffiliateModule
 from app.travel_services.schemas import safe_url
 
 
@@ -10,6 +11,19 @@ class Brand:
     hosts: tuple[str, ...]
     kinds: tuple[str, ...]
     api_supported: bool = True
+    modules: tuple[AffiliateModule, ...] = ()
+
+    @property
+    def supported_modules(self) -> tuple[AffiliateModule, ...]:
+        if self.modules:
+            return self.modules
+        mapping: dict[str, AffiliateModule] = {
+            "hotel": "hotel",
+            "transfer": "transport",
+            "tour": "activities",
+            "esim": "connectivity",
+        }
+        return tuple(dict.fromkeys(mapping[kind] for kind in self.kinds))
 
 
 BRANDS = {
@@ -32,6 +46,10 @@ BRANDS = {
     "viator": Brand("Viator", ("viator.com",), ("tour", "transfer")),
     "getyourguide": Brand("GetYourGuide", ("getyourguide.com",), ("tour", "transfer")),
     "rakuten": Brand("Rakuten Travel", ("travel.rakuten.com",), ("hotel",)),
+    # A reviewed Kiwi.com deeplink already exists for the configured Travelpayouts
+    # project. Keeping the hostname in code prevents an administrator from turning
+    # the destination-offer editor into an arbitrary redirect.
+    "kiwi": Brand("Kiwi.com", ("kiwi.com",), (), modules=("flight",)),
 }
 
 
@@ -53,3 +71,11 @@ def affiliate_target(value: str) -> str:
     ):
         raise ValueError("Verified Travelpayouts redirect required")
     return value
+
+
+def affiliate_click_target(code: str, value: str) -> str:
+    """Accept a Travelpayouts redirect or its final allowlisted brand URL."""
+    try:
+        return affiliate_target(value)
+    except ValueError:
+        return brand_target(code, value)

@@ -27,3 +27,20 @@ class AffiliateOptionsResponse(BaseModel):
     module: AffiliateModule
     disclosure: str
     options: list[AffiliateOption]
+
+
+class DestinationAffiliateOption(BaseModel):
+    id: str
+    brand: str
+    display_name: str
+    destination_id: str
+    module: AffiliateModule
+    cta: str
+    clickout_url: str
+
+
+class DestinationAffiliateOptionsResponse(BaseModel):
+    destination_id: str
+    module: AffiliateModule
+    disclosure: str
+    options: list[DestinationAffiliateOption]
