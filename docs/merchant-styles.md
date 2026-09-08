@@ -153,6 +153,23 @@ Halfway Coffee本輪未完成足夠的官方分店證據閱讀，暫不加入，
 Dragonfly的大館及香港會展旅遊頁讀取受限，未繞過限制，也不靠搜尋摘要建立候選；這些排除不代表判定歇業。
 四家均未與既有店家同名／同址重複；地圖、耐久座標與商圈仍須另行核實。未複製照片、啟動付費服務或推導寵物條件。
 
+## 第七批來源查核：2026-09-08
+
+資料檔：`apps/api/app/foods/data/style_merchants_2026_09_batch_07.json`。
+本批 **4 家新候選、4 個待審提案（網美1、文青3）**，涵蓋東京與香港。
+查核日期是本輪閱讀官方來源的日期，不是親訪、即時營業保證或發布核准。
+
+| 店家／城市 | 來源與判定界線 |
+| --- | --- |
+| 本屋 B&B／東京 | 文青：[現行店址](https://bookandbeer.com/map/)為代田BONUS TRACK二樓，非北沢BIGBEN舊址；[品牌介紹](https://bookandbeer.com/about/)有選書與作者交流。另實際以瀏覽器檢視[飲品頁](https://bookandbeer.com/drink/)連結的官方菜單圖片，確認咖啡／茶飲，不僅因供應啤酒便歸類為酒吧。不保存2024/12圖片中的價格；逛書與預約購票活動分開。 |
+| RBL CAFE／東京 | 文青：[官網](https://rblcafe.jp/)確認代沢5-32-12、參考圖書書牆及手沖咖啡，不誤寫為文學專門書店。依當月日曆確認營業，不搬用旧夜咖啡、試用沙發或尚無排期的活動，不承諾免費不限時。 |
+| 文喫 六本木／東京 | 文青：[分店官網](https://roppongi.bunkitsu.jp/)與[店內導覽](https://roppongi.bunkitsu.jp/store/)確認六本木電氣大樓1F入口、閱讀與喫茶空間。與福岡天神、栄、高輪各店分開；閱讀區收費，不把飲品續杯等同免費入場，也不把已結束或未開始活動當作現況。 |
+| NOC Cityplaza／香港 | 網美：[2025年官方分店介紹](https://noc.coffee/rediscover-urban-serenity-introducing-noc-cityplaza/)記載石材、木材、混凝土與再利用樹幹設計；[現行分店頁](https://noc.coffee/locations/tai-koo/)地址一致。不是黃埔分店，也不是太古城其他品牌；晚餐菜單未另確認，不承諾持續供應或拍攝許可。 |
+
+季風帶書店新址尚缺當前餐飲證據，薄霧書店、FEEKA與Candide亦未完成足夠的一手店址／業態核對，故暫不納入。
+NOC黃埔舊設計文章有轉址與讀取不一致，沒有依搜尋快取替代完整來源查核；上述排除不代表判定歇業。
+正式查重僅找到不同城市的文喫福岡天神，四家未重複。地圖、耐久座標與商圈仍待核實，未複製照片或推導寵物正式條件。
+
 ## 部署與匯入
 
 部署同版本 API、Web、worker 並執行 `alembic upgrade head`。
@@ -174,6 +191,7 @@ python -m app.cli import-trend-merchants --file app/foods/data/style_merchants_2
 第四批則為 `app/foods/data/style_merchants_2026_09_batch_04.json`。
 第五批則為 `app/foods/data/style_merchants_2026_09_batch_05.json`。
 第六批則為 `app/foods/data/style_merchants_2026_09_batch_06.json`。
+第七批則為 `app/foods/data/style_merchants_2026_09_batch_07.json`。
 既有部署可將新 JSON 送入受控暫存路徑後傳給 `--file`；資料補充不需重建服務或執行新遷移。
 
 ### 實際執行記錄
@@ -235,3 +253,15 @@ python -m app.cli import-trend-merchants --file app/foods/data/style_merchants_2
   `58fe1bd9cc60cc351d40f1a3b1f0ede8697085352b9b9d2ad4c42ec2026c17db`。
   六批合計33家新候選、2家既有補風格，共36個pending標籤（網美17／文青19）。
   公開風格查詢前後完全一致、仍為0，readiness正常、foods頁HTTP 200。未重建服務、執行遷移、核准風格或發布店家。
+- PR [#356](https://github.com/x812033727/travel_scanner/pull/356) 於2026-09-08依授權合併，
+  SHA guard鎖定 `2984f82045ad5bcdb83d0dd7532527f78f5a180c`，合併為
+  `f48e9a6e710779d7c8f53786e8d3fd5a492ee691`。CI改用正式Web建置及一致localhost origin，
+  未放寬Cookie安全或測試斷言；push全端首次仍有間歇ECONNRESET，單次具名重跑後八項checks全綠。
+  原失敗與既有缺陷保留於PR及任務，不將通過重跑描述為根因修復。
+- 第七批取得雙部署鎖、核對現行映像與三處JSON checksum、鎖內預覽，並保留可讀備份後，
+  正式新增4家pending/inactive/unverified店家、4個pending風格（1網美／3文青）。再次預覽0／0，
+  逐欄驗證店名、地址、來源、風格證據、日期及兩筆actor=NULL系統稽核；地圖、座標、商圈與審核人仍空白。
+  備份7,097,706 bytes、mode600、`pg_restore --list`可讀；JSON SHA-256為
+  `b1499ceb8b7cd9675ba779b862336e0b821e5e109416df1644078c09479bfc1e`。
+  七批合計37家新候選、2家既有補風格，共40個pending標籤（網美18／文青22）。
+  公開風格查詢前後完全一致且仍為0，readiness正常、foods頁HTTP200；沒有重建服務、遷移或付費呼叫。
