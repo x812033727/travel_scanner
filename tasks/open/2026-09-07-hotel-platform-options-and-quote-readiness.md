@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-07T12:32:44Z
 completed_at:
-branch: codex/hotel-content-review-seoul-links
+branch: codex/hotel-content-review-taipei
 depends_on: []
 scope:
   - apps/api/tests/test_hotel_content_package.py
@@ -16,6 +16,44 @@ scope:
 ---
 
 # Hotel platform options and quote readiness
+
+## Latest: 2026-09-08 deployment and Taipei five-hotel review
+
+User authorized merging #357, deploying, then continuing content. Synced latest main
+f48e9a6; all eight checks passed at 71f0431, SHA-guarded merge to
+00ffc710ebf902f56a00a69869f96e92bf3e84d0. Main CI 34191743658 passed all four jobs.
+Deployed that clean archive via existing SSH/Compose project. All eight app images
+verified, readiness three times, five-language home/BFF reads and existing hotel
+checkpoint passed. PostgreSQL/Redis IDs, runtime env, volumes, config and community-off
+state preserved. Schema remains 0062. First piped script stopped before activation;
+fixed migration stdin after read-only inspection, then completed guarded deployment.
+
+Five existing Taipei products now location-approved: Palais, Cosmos, Caesar Taipei,
+CityInn Station III, amba Ximending. Chrome verified their saved Place IDs against
+names/street/official sites. Existing Tourism Administration coordinates/credits untouched.
+All five official/Booking/Trip options approved, plus newly discovered Cosmos Rakuten
+international 34123457140865: 16 newly approved options. Booking/Rakuten and Caesar
+official retain truthful unconfirmed server health with actual browser review evidence;
+unsafe/unavailable blocking unchanged. Cosmos/Caesar official first failed, then were
+freshly checked in Chrome and passed normal browser-confirmed follow-up review.
+
+No new distinct identities: still 60, now 22 product-approved/38 pending, 80 options
+approved/280 pending. Taipei public five-locale results now five hotels/16 ordinary options,
+with source credits and no quotes; other cities unchanged. No city meets full acceptance.
+No settings, paid API, affiliate/quote activation, clickouts, fake bookings or UI changes.
+
+Backups and deployment/source/browser/admin evidence:
+docs/hotel-platforms/review-2026-09-08-taipei-five.md and matching JSON checkpoint.
+Independent postflight verified 32 audits, product facts and untouched 55 products/344
+options/config-v5 fingerprint 5a5e10994fcd003d0d50597a29d96bdc6d274d31fc5bfbfe82b87d414abbd863.
+Pending JSON is NOT sync truth; never replay it over live approvals. Remaining five
+Taipei hotels, missing second OTAs/maps in other cities and full per-city acceptance
+remain open. Preserve Hyatt future-closure/Westin holds. Release shared task at handoff.
+
+145 relevant tests, Ruff/format, mypy 257 sources, five locales/25 namespaces and tooling/
+task checks passed. Chrome confirmed live catalog and four-option Cosmos panel, without
+clickouts or fake prices. Full latest-head CI tracked on continuation PR; no new code
+deployment needed for these admin data changes. New evidence PR remains separate from #357.
 
 ## Latest: 2026-09-08 Seoul independent platform review
 

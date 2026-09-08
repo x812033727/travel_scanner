@@ -933,3 +933,127 @@ def test_seoul_unreadable_or_failed_pages_do_not_silently_gain_approval():
     assert evidence["production"]["five_locale_seoul_public_options_before"] == 1
     assert evidence["production"]["five_locale_seoul_public_options_after"] == 7
     assert evidence["production"]["config_changed"] is False
+
+
+def taipei_five_checkpoint():
+    directory = Path(__file__).resolve().parents[3] / "docs/hotel-platforms"
+    evidence = json.loads(
+        (directory / "taipei-five.review-2026-09-08.json").read_text(encoding="utf-8")
+    )
+    package = json.loads((directory / "taipei.pending.json").read_text(encoding="utf-8"))
+    return evidence, {r["product"]["source_key"]: r for r in package}
+
+
+def test_taipei_map_reviews_preserve_licensed_facts_without_approving_research_inputs():
+    evidence, rows = taipei_five_checkpoint()
+    assert len(evidence["hotels"]) == 5
+    for hotel in evidence["hotels"]:
+        data = ProductInput.model_validate(rows[hotel["source_key"]]["product"])
+        assert not data.facts.map_verified
+        assert data.facts.google_place_id == hotel["map_review"]["google_place_id"]
+        assert hotel["map_review"]["status"] == "browser_identity_checked"
+        assert hotel["map_review"]["name_address_website_matched"]
+        assert hotel["map_review"]["provider_coordinates_copied"] is False
+        assert data.facts.coordinate_source_url.startswith("https://media.taiwan.net.tw/")
+        assert any(
+            credit.url == data.facts.coordinate_source_url
+            and credit.license_url == "https://data.gov.tw/license"
+            for credit in data.facts.source_credits
+        )
+        before = data.model_dump()
+        with pytest.raises(AppError, match="service_identity_required"):
+            require_product_review(data)
+        data.facts.map_verified = True
+        require_product_review(data)
+        after = data.model_dump()
+        after["facts"]["map_verified"] = False
+        assert before == after
+        assert hotel["product_status"] == "approved" and hotel["product_version"] == 3
+    production = evidence["production"]
+    assert production["new_location_approvals"] == 5
+    assert production["new_hotel_identities"] == production["complete_cities"] == 0
+    assert production["hotel_identities"] == 60
+    assert production["config_changed"] is False
+
+
+def test_taipei_independent_options_require_approval_and_record_browser_checks_honestly():
+    evidence, rows = taipei_five_checkpoint()
+    now = datetime.now(UTC)
+    config = CatalogConfig(
+        public_enabled=True, enabled_destinations=["taipei"], enabled_kinds=["hotel"]
+    )
+    approvals = []
+    for hotel in evidence["hotels"]:
+        source = rows[hotel["source_key"]]
+        product = TravelServiceProduct(**source["product"], id=uuid4(), status="approved")
+        options = {o["provider"]: o for o in source["booking_options"]}
+        providers = set()
+        for review in hotel["platform_reviews"]:
+            assert review.get("url") == options[review["provider"]].get("url")
+            passed = review["status"] == "approved"
+            option = HotelBookingOption(
+                **HotelOptionInput.model_validate(options[review["provider"]]).model_dump(),
+                id=uuid4(),
+                status=review["status"],
+                verified_at=now if passed else None,
+                health_status=review["health"],
+            )
+            assert ready_option(product, option, config, now) is passed
+            if not passed:
+                assert review["provider"] in {"agoda", "expedia", "rakuten"}
+                assert review["version"] == 1 and not review["review_requested"]
+                continue
+            providers.add(review["provider"])
+            approvals.append(review)
+            assert review["matched_name"] and review["matched_address"]
+            assert review["identity_evidence_url"] == hotel["official_identity_url"]
+            if review["health"] == "unconfirmed":
+                assert review["browser_verified"] is True
+            else:
+                assert review["health"] == "healthy"
+            # Unsafe/unavailable never become usable because of a browser check.
+            for unsafe_health in ("unsafe", "unavailable"):
+                option.health_status = unsafe_health
+                assert not ready_option(product, option, config, now)
+            if review.get("prior_attempt"):
+                assert review["prior_attempt"]["error_code"] == "service_link_unavailable"
+                assert review["prior_attempt"]["status"] == "pending"
+                assert review["prior_attempt"]["browser_verified"] is False
+                assert review["browser_verified"] is True and review["followup"]
+        assert {"official", "booking", "trip_com"}.issubset(providers)
+    assert len(approvals) == evidence["production"]["new_platform_approvals"] == 16
+    assert sum(bool(r.get("prior_attempt")) for r in approvals) == 2
+    assert evidence["production"]["new_audit_records"] == 32
+    assert evidence["production"]["taipei_public_options"] == 16
+
+
+def test_taipei_rakuten_is_an_observed_same_hotel_entry_not_an_invented_locale_or_id():
+    evidence, rows = taipei_five_checkpoint()
+    assert len(evidence["candidate_additions"]) == 1
+    candidate = evidence["candidate_additions"][0]
+    assert candidate["source_key"] == "editorial:taipei:cosmos-taipei"
+    option = next(
+        o for o in rows[candidate["source_key"]]["booking_options"] if o["provider"] == "rakuten"
+    )
+    assert candidate["url"] == option["url"]
+    assert option["url"].endswith("/34123457140865/")
+    assert candidate["property_id"] == option["property_id"] == "34123457140865"
+    assert option["url"].startswith("https://travel.rakuten.com/usa/en-us/hotel_info_item/")
+    assert "待審" in option["identity_note"] and "status" not in option
+    hotel = next(h for h in evidence["hotels"] if h["source_key"] == candidate["source_key"])
+    review = next(o for o in hotel["platform_reviews"] if o["provider"] == "rakuten")
+    assert review["browser_verified"] and review["new_candidate"]
+    assert review["status"] == "approved" and review["version"] == 3
+    assert "43" in review["matched_address"] and review["query"]
+    palais_trip = next(
+        o
+        for o in rows["editorial:taipei:palais-de-chine"]["booking_options"]
+        if o["provider"] == "trip_com"
+    )
+    assert palais_trip["url"].startswith("https://ph.trip.com/")
+    assert palais_trip["property_id"] == "701703"
+    assert not any(
+        o.get("property_id") == "109270" for r in rows.values() for o in r["booking_options"]
+    )
+    assert evidence["boundaries"]["affiliate_and_quote_switches_unchanged"]
+    assert evidence["boundaries"]["paid_provider_api_calls"] == 0
