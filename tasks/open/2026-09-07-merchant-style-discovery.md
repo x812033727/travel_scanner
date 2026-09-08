@@ -5,7 +5,7 @@ status: review
 priority: P1
 area: api
 owner: codex
-claimed_at: 2026-09-08T05:34:37Z
+claimed_at: 2026-09-08T05:53:35Z
 created_at: 2026-09-07T23:14:18Z
 completed_at:
 branch: codex/merchant-style-batch-07
@@ -173,3 +173,9 @@ PR #345 已合併部署，第二／三批 PR #346、#347 已依授權合併；�
 - 正式作業目錄 `/root/mokaair-merchant-batch-07-BqTXChhr` 保留JSON、preview／locked-preview／applied／replay／verified及公開查詢前後收據；備份7,097,706 bytes、mode600、restore目錄可讀。雙部署鎖、三處checksum及鎖內預覽皆通過後新增4店／4提案；重播0／0。
 - 正式逐欄驗證店名、地址、來源、風格、證據、日期，4家皆pending/inactive/unverified、無地圖／座標／商圈／審核人；兩筆actor=NULL系統稽核保留count、target及提案items。七批37新候選＋2既有補風格、40個pending標籤（網美18／文青22）。公開payload前後一致且仍0，/ready正常、foods頁200。
 - 未重建服務、執行遷移、付費模型／地圖呼叫、寵物規則推導或核准發布。第七批PR保持待審，需新一輪合併授權；完整精準地圖、耐久座標、商圈及人工審核仍未完成，不標done。
+
+## 第七批合併與重新部署準備（2026-09-08）
+
+- 使用者新授權「合併重新佈署後繼續新增」，目標為#359。先無衝突同步main的#357首爾飯店資料，相關API回歸88 passed／1 PostgreSQL-only skipped；重新取得完整CI後才用最新SHA guard合併。
+- 正式預檢：10個既有服務正常，API／Web仍為aaa33f008c82c56e5c541dede8205097102193e1，schema0062，社群與公開註冊均關閉。資料volume、部署socket與canonical環境檔保持原狀；磁碟可用133G。
+- 本次依明確授權重新部署合併版本，使用乾淨Git archive與獨立release目錄，不重設canonical checkout、不刪舊映像／volume／備份、不開啟社群或註冊。部署須雙鎖、映像核對、私有可讀備份、保留回退資訊及重複readiness驗證；完成結果交接於下一批。
