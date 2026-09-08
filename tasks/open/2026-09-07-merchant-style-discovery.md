@@ -121,3 +121,7 @@ PR #345 已合併部署，第二／三批 PR #346、#347 已依授權合併；�
 - 正式作業目錄 `/root/mokaair-merchant-batch-04-PnQ6qaZd` 保留JSON、preview/applied/replay、備份及Walden前後快照；備份7,060,901 bytes、權限600，不刪舊備份。
 - 正式名稱／地址查重、checksum、部署鎖與備份完成後套用5新店／6風格；再預覽0／0。新店皆pending/inactive/unverified、地圖／座標／商圈空白。Walden店家／來源／分類前後快照完全一致，既有發布狀態不變。
 - 新增稽核2筆actor=NULL系統操作，四批合計24新候選＋2既有補風格、27個pending標籤；公開風格仍0、/ready正常、foods頁200。未重建服務、遷移、核准或公開發布。
+- PR: https://github.com/x812033727/travel_scanner/pull/350 。已無衝突同步main的大阪飯店資料PR #348，保留雙方內容；最終CI以PR最新head為準。
+- CI紀錄（fe565e1）：PR run `34179853238` 全綠，API 1819 passed / 3 skipped、Web 785、isolated browser 230、旅遊與社群全端各6通過；push run `34179822859` 首次全端工作失敗。
+- 失敗位置為 community.spec.ts:375，刪除帳號後的舊session GET `/api/travel/auth/me` 發生ECONNRESET，未收到HTTP狀態，並非已觀察到授權斷言錯誤。同次PostgreSQL輸出有 `uq_community_metric` 重複讀取計數，但不能據此認定是重設連線的原因。
+- 此類問題已由 [既存社群併發待辦](2026-09-07-community-read-metric-concurrency.md)追蹤，本批未修改相關程式、未放寬斷言／timeout，也未在正式環境修復。已單獨重跑失敗工作，通過也不代表根因已解決；結果與最新head檢查記錄於PR，未複製token、私人信件或會員識別。
