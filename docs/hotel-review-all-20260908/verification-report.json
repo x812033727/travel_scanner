@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "tag": "hotel-review-all-20260908",
+  "verified_at": "2026-09-08T16:13:38.037154+00:00",
+  "verification_mode": "independent_offline_full_row_comparison",
+  "production_access_by_verifier": false,
+  "status": "passed",
+  "baseline_semantic_sha256": "ff37987a3d26ce7f7f418c33f82d06baeb6cc67d20fa7cfa22d01d56c48f8354",
+  "manifest_semantic_sha256": "6142a07938c3c62f84c9520ef0d465d7f870cd7c405e1d3cfe046ffcd603d00c",
+  "coverage": {
+    "catalog_rows": 420,
+    "original_pending_rows": 290,
+    "dry_run_rows": 290,
+    "apply_rows": 290,
+    "replay_rows": 290,
+    "missing_targets": 0,
+    "duplicate_targets": 0
+  },
+  "dry_run": {
+    "manifest_target_decision_before_hash_match": true,
+    "write_receipt_fields": 0,
+    "baseline_receipts": 0,
+    "caveat": "The SQL baseline precedes apply; dry-run emits only target, decision, before_hash and mode. The reviewed operator returns before mutation or receipt code for apply=false. No separate post-dry-run SQL snapshot was supplied."
+  },
+  "outcomes": {
+    "approved": 116,
+    "held": 174,
+    "guard_fallbacks": 0,
+    "product_approvals": 10,
+    "option_approvals": 106,
+    "option_iab_approvals": 87,
+    "option_primary_web_approvals": 19
+  },
+  "receipts": {
+    "rows": 290,
+    "unique_ids": 290,
+    "distinct_targets": 290,
+    "root_actor_rows": 290,
+    "invalid_provenance_rows": 0,
+    "null_actor_rows": 0,
+    "hold_changed_rows": 0,
+    "apply_after_hashes_match_final_rows": true
+  },
+  "normal_service_audit_deltas": {
+    "travel_services.hotel_option_review": 106,
+    "travel_services.product_edit": 10,
+    "travel_services.product_review": 10
+  },
+  "full_row_preservation": {
+    "held_product": 20,
+    "previously_approved_product": 30,
+    "held_option": 154,
+    "previously_approved_option": 100
+  },
+  "allowed_field_mutations": {
+    "product": {
+      "version": 10,
+      "status": 10,
+      "facts": 10,
+      "verified_at": 10,
+      "updated_at": 10
+    },
+    "option": {
+      "version": 106,
+      "status": 106,
+      "identity_note": 106,
+      "verified_at": 106,
+      "updated_at": 106,
+      "health_status": 106,
+      "checked_at": 106
+    },
+    "facts": {
+      "map_verified": 10,
+      "naver_map_url": 5
+    }
+  },
+  "product_coordinate_and_attribution_values_unchanged": true,
+  "protected_sql_sections_unchanged": [
+    "travel_service_config",
+    "provider_configs",
+    "affiliate_clicks_hotel",
+    "destination_affiliate_offers_hotel",
+    "hotel_booking_clicks_all",
+    "travel_service_brands_all",
+    "travel_service_offers_hotel"
+  ],
+  "catalog_config_full_rows_unchanged": true,
+  "replay": {
+    "replayed": 290,
+    "same_receipt_ids": true,
+    "same_after_hashes": true,
+    "new_receipts": 0,
+    "new_normal_service_audits": 0,
+    "all_sql_sections_except_snapshot_timestamp_identical": true
+  },
+  "final_status_counts": {
+    "products": {
+      "pending": 20,
+      "approved": 40
+    },
+    "options": {
+      "pending": 154,
+      "approved": 206
+    }
+  },
+  "city_decisions": {
+    "busan": {
+      "option_hold": 36,
+      "option_approve": 24,
+      "product_hold": 10
+    },
+    "kyoto": {
+      "option_hold": 43,
+      "product_hold": 10
+    },
+    "osaka": {
+      "option_approve": 18,
+      "option_hold": 16,
+      "product_approve": 5
+    },
+    "seoul": {
+      "option_approve": 25,
+      "option_hold": 28,
+      "product_approve": 5
+    },
+    "taipei": {
+      "option_hold": 19,
+      "option_approve": 11
+    },
+    "tokyo": {
+      "option_approve": 28,
+      "option_hold": 12
+    }
+  },
+  "sql_snapshot_times": {
+    "independent-before.txt": "2026-09-08 16:04:13.523524+00",
+    "independent-after.txt": "2026-09-08 16:08:07.427823+00",
+    "independent-after-replay.txt": "2026-09-08 16:09:22.722573+00"
+  },
+  "input_file_sha256": {
+    "checks-before.json": "926f55da4d1c0ea2bb7549fde4024c657fe38690fdb9c2a8f541e5ee84fa78b6",
+    "manifest.json": "52215d02cf7b6d3d1d6a380182783e2f0ebafa9049afab9ff3e153fcbb23c4c4",
+    "dry-run.jsonl": "0248961a5357d0ec3f34eb50e7314dd33983a0269cb33a0940f2c7d0038124b5",
+    "apply.jsonl": "c405b41da6a3e2901db403cc1e0296a7a4b1986ba54249883abb0080dc19a976",
+    "replay.jsonl": "953195e2e3cc0bfb48926d168dbd986f84441e694419f98d9c1fa5b9e16cec7f",
+    "final-snapshot.json": "055f998a33fae2a2e2de0d8f34c65916e504be934eb1c7cb0eb2078f6f927986",
+    "independent-before.txt": "927cb78d6280900c34d4d1ce71d6557127b7d21f847d3c6971d0dbff54cc4483",
+    "independent-after.txt": "d1c152888aadb8a81e078c01c40290699b391b724cae9c031935293c62a5d2d9",
+    "independent-after-replay.txt": "08e7386887358614cb7d37bd2ca9a4e737a24d4713b3492d0af751876a57ca2e",
+    "verify-first.jsonl": "d2f2bf7379e08b6a69b7f856311f3b26067c7d99135972ebbb3d8859e8c9f58d",
+    "verify-after-replay.jsonl": "d2f2bf7379e08b6a69b7f856311f3b26067c7d99135972ebbb3d8859e8c9f58d"
+  }
+}
