@@ -424,6 +424,7 @@ def test_first_research_batch_is_valid_and_cannot_embed_approvals() -> None:
     [
         ("style_merchants_2026_09.json", 5, 5),
         ("style_merchants_2026_09_batch_02.json", 8, 9),
+        ("style_merchants_2026_09_batch_03.json", 7, 7),
     ],
 )
 def test_research_batches_contain_evidence_not_publication_state(
@@ -453,37 +454,48 @@ def test_research_batches_contain_evidence_not_publication_state(
 
 
 @pytest.mark.asyncio
-async def test_second_research_batch_import_is_private_audited_and_replay_safe(
+@pytest.mark.parametrize(
+    ("filename", "merchant_count", "style_count"),
+    [
+        ("style_merchants_2026_09_batch_02.json", 8, 9),
+        ("style_merchants_2026_09_batch_03.json", 7, 7),
+    ],
+)
+async def test_research_batch_import_is_private_audited_and_replay_safe(
     catalog: Any,
+    filename: str,
+    merchant_count: int,
+    style_count: int,
 ) -> None:
     client, factory, _, _ = catalog
-    path = Path("app/foods/data/style_merchants_2026_09_batch_02.json")
+    path = Path("app/foods/data") / filename
     rows = load_trend_merchants(path)
     async with factory() as session:
-        session.add(FoodCategory(slug="desserts-sweets", names_json={"en": "Desserts"}))
+        for slug in sorted({slug for row in rows for slug in row.category_slugs} - {"cafe-tea"}):
+            session.add(FoodCategory(slug=slug, names_json={"en": slug}))
         await session.commit()
         preview = await persist_trend_merchants(session, rows, apply=False, source_file=path.name)
-        assert preview["created"] == 8
-        assert len(preview["proposed_styles"]) == 9
+        assert preview["created"] == merchant_count
+        assert len(preview["proposed_styles"]) == style_count
         assert await session.scalar(select(func.count(FoodMerchant.id))) == 3
         assert await session.scalar(select(func.count(AdminAuditLog.id))) == 0
 
         applied = await persist_trend_merchants(session, rows, apply=True, source_file=path.name)
-        assert applied["created"] == 8
+        assert applied["created"] == merchant_count
         assert applied["proposed_styles"] == preview["proposed_styles"]
         merchants = (
             await session.scalars(
                 select(FoodMerchant).where(FoodMerchant.slug.in_([row.slug for row in rows]))
             )
         ).all()
-        assert len(merchants) == 8
+        assert len(merchants) == merchant_count
         for merchant in merchants:
             assert merchant.review_status == "pending" and not merchant.is_active
             assert merchant.map_match_status == "unverified" and merchant.area_id is None
             assert merchant.google_place_id is None and merchant.naver_map_url is None
             assert merchant.latitude is None and merchant.longitude is None
         styles = (await session.scalars(select(FoodMerchantStyle))).all()
-        assert len(styles) == 9 and all(style.status == "pending" for style in styles)
+        assert len(styles) == style_count and all(style.status == "pending" for style in styles)
         audits = (await session.scalars(select(AdminAuditLog))).all()
         assert {audit.action for audit in audits} == {
             "food_merchant_created",
@@ -492,14 +504,23 @@ async def test_second_research_batch_import_is_private_audited_and_replay_safe(
         assert len(audits) == 2
         assert all(a.actor_user_id is None and a.metadata_json["file"] == path.name for a in audits)
         created_audit = next(a for a in audits if a.action == "food_merchant_created")
-        assert created_audit.metadata_json["count"] == 8
+        assert created_audit.metadata_json["count"] == merchant_count
         styles_audit = next(a for a in audits if a.action == "food_merchant_styles_proposed")
         assert styles_audit.metadata_json["items"] == applied["proposed_styles"]
 
         replay = await persist_trend_merchants(session, rows, apply=True, source_file=path.name)
         assert replay["created"] == 0 and replay["proposed_styles"] == []
-        assert await session.scalar(select(func.count(FoodMerchant.id))) == 11
-        assert await session.scalar(select(func.count(FoodMerchantStyle.id))) == 9
+        assert await session.scalar(select(func.count(FoodMerchant.id))) == 3 + merchant_count
+        assert await session.scalar(select(func.count(FoodMerchantStyle.id))) == style_count
         assert await session.scalar(select(func.count(AdminAuditLog.id))) == 2
     for style in ("instagrammable", "artsy"):
         assert (await client.get(f"/api/v1/foods/merchants?style={style}")).json()["total"] == 0
+
+
+def test_research_batches_do_not_repeat_merchant_identities() -> None:
+    rows = [
+        row
+        for path in sorted(Path("app/foods/data").glob("style_merchants_*.json"))
+        for row in load_trend_merchants(path)
+    ]
+    assert len(rows) == len({row.slug for row in rows}) == len({row.identity for row in rows})
