@@ -5,10 +5,10 @@ status: review
 priority: P1
 area: api
 owner: codex
-claimed_at: 2026-09-08T00:29:59Z
+claimed_at: 2026-09-08T01:08:02Z
 created_at: 2026-09-07T23:14:18Z
 completed_at:
-branch: codex/merchant-style-batch-02
+branch: codex/merchant-style-batch-03
 depends_on: []
 scope:
   - apps/api/app/models.py
@@ -51,7 +51,9 @@ scope:
 - [x] 新舊遷移、API/Web、桌面/Pixel 7 驗證；完整 CI 以 PR 最新 SHA 檢查為準。
 - [x] PR #345 合併、部署及首批預覽／正式匯入／重播驗證。
 - [x] 第二批 8 家官方來源查核及 9 個風格提案，備份後加入正式環境待審清單。
-- [ ] 第二批資料／測試／查核交接 PR 完成 CI 與合併（本輪沒有新的合併授權）。
+- [x] 第二批 PR #346 完成 CI、依「合併後繼續新增」授權合併，main CI 全綠。
+- [x] 第三批7家官方來源查核、待審匯入、稽核與重播驗證。
+- [ ] 第三批資料／測試／查核交接 PR 完成 CI 與合併（本輪合併授權針對 #346）。
 - [ ] 逐家補齊地圖與永久座標、管理員風格審核，再另行發布店家。
 
 ## Steps
@@ -71,8 +73,8 @@ Web: 單工 Vitest、TypeScript、lint、check:i18n、production build；merchan
 
 新候選缺精準地圖與可永久保存座標時保持 pending/inactive/unverified，不用來源文字推造識別。
 先完成原始來源審查，再於已部署的後台逐一記錄操作人及風格核准；資料檔不能偷帶 approved。
-PR #345 已依上一輪授權合併部署；本輪「繼續新增」只補正式待審候選，不代表核准發布。
-未啟動付費模型或地圖批次，第二批資料 PR 的合併仍需新授權。
+PR #345 已合併部署，第二批 PR #346 已依授權合併；繼續新增仍只補正式待審候選，不代表核准發布。
+未啟動付費模型或地圖批次，第三批資料 PR 的合併仍需新授權。
 
 ## PR 與驗證交接
 
@@ -87,7 +89,7 @@ PR #345 已依上一輪授權合併部署；本輪「繼續新增」只補正式
 
 ## 第二批交接（2026-09-08）
 
-- PR: https://github.com/x812033727/travel_scanner/pull/346 ，base `main`，保留開啟、不自行合併。
+- PR: https://github.com/x812033727/travel_scanner/pull/346 ，base `main`；本次接獲明確合併授權後完成。
 - 從上述最新 main 建立 `codex/merchant-style-batch-02`；未碰原 checkout 的 mobile-planner-app-ui 或 PR #343。
 - 新增台中2家、京都2家、東京1家、新加坡2家、曼谷1家，9個標籤（網美5、文青4）。完整分店、來源及排除理由見 docs/merchant-styles.md。
 - 正式環境比對名稱與地址零重複；JSON checksum 一致、取得兩個部署鎖、備份可讀後套用成功，8 家 pending/inactive/unverified，所有地圖／座標／商圈欄位留空。
@@ -97,3 +99,13 @@ PR #345 已依上一輪授權合併部署；本輪「繼續新增」只補正式
 - 本機 API 40 passed / 1 skipped（PostgreSQL row-lock 專屬），涵蓋實際第二批 preview/apply/replay、欄位隔離、公開隱藏與稽核；Ruff 全套與 mypy 255 files 通過。
 - 新測試初版误用了不存在的 naver_place_id，已按真實模型改為 naver_map_url 並重跑通過；沒有修改產品邏輯或放寬斷言。
 - 無 Web 程式或資料庫結構變更；Linux PostgreSQL 與完整 CI 結果查看第二批 PR checks。
+
+## 第三批交接（2026-09-08）
+
+- #346 以 `--match-head-commit 49748e84c405485180aac86276cf32c68371ed7f` 合併為 `b06022771c90a834180ac2607c0fe223db79eadb`；確認 origin/main 與 post-merge CI `34175624475` 全綠後繼續。
+- 從該最新 main 建立 `codex/merchant-style-batch-03`。未操作原 checkout 或 #343，不重建資料批次無需更動的應用映像。
+- 7 家候選：青田七六、中央書局、kubrick油麻地、森の図書室、Onion安國、PS.Cafe One Fullerton、Jypsy One Fullerton；3網美、4文青。官方來源、搬遷／樓層與閉館排除依據見 docs/merchant-styles.md。
+- 來源 JSON、SHA-256、正式環境名稱／地址查重及預覽完成；先備份再以既有 importer 加入待審，不核准風格、地圖或發布。
+- 本機 API 43 passed / 1 PostgreSQL-only skipped；Ruff 全套、mypy 255 files 通過。將既有批次資料庫測試參數化覆蓋第二／三批，新增跨批次身分去重測試。
+- 第三批正式作業目錄 `/root/mokaair-merchant-batch-03-JRTuNg2X`，保留來源、預覽／套用／重播結果及私人備份，不刪舊檔。
+- 正式套用7店／7標籤、重播0／0；地圖／座標／商圈留空，店家pending/inactive/unverified，稽核2筆actor=NULL系統操作。三批共19新店＋1既有補風格、21個pending標籤，未公開。

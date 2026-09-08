@@ -74,6 +74,31 @@ ASW 僅找到較舊觀光介紹，不把頁面仍可讀當成近期營業確認�
 第四信用合作社舊建築手札的年代敘述不一致，改採目前市府專題與商家地址，不複製年代或文化資產登錄主張。
 本批不寫入寵物正式條件、不搬運店家照片、不生成地圖 ID 或座標；全部暫留未分區。
 
+## 第三批來源查核：2026-09-08
+
+資料檔：`apps/api/app/foods/data/style_merchants_2026_09_batch_03.json`。
+本批 **7 家新候選、7 個待審風格（網美 3、文青 4）**，涵蓋台北、台中、香港、東京、首爾與新加坡。
+仍是根據來源的編輯提案，不代表親訪、當日營業保證或風格核准。
+
+| 店家／城市 | 來源與判定界線 |
+| --- | --- |
+| 青田七六／台北 | 文青：老屋導覽、文化體驗與岩石標本教育結合餐飲。[文化與餐飲介紹](https://www.qingtian76.tw/)；[地址與穿襪規範](https://www.qingtian76.tw/營業與交通資訊/)。不沿用舊宣傳的建物年齡或跨語系不一致的開放時段。 |
+| 中央書局／台中 | 文青：二樓書食與三樓書飲文化交流。[官方樓層及地址](https://www.centralbook.migos.com.tw/)。不將2020年舊活動描述成近期展覽，也不將整棟樓都當成餐飲座位。 |
+| kubrick 油麻地／香港 | 文青：同址書店、咖啡與電影文化選書。[指定店址及業態](https://kubrick.com.hk/hk-shops-and-contacts)。油麻地H2與太古城House by kubrick不同，不挪用後者的活動。 |
+| 森の図書室／東京 | 文青：閱讀空間、書中食物主題餐飲與近期讀書會。[官網](https://morinotosyoshitsu.com/)。採2021年遷入的宇田川町23-3八樓；非會員亦可使用，但不宣稱免費或不限時。 |
+| Onion 安國店／首爾 | 網美：保留韓屋木地板與庭院。[韓國觀光公社](https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191156)與[店家分店頁](https://m.onionkr.com/artfinger/offline.html?cate_no=26)交叉核對계동길5；不混用聖水工廠設計或公司地址。Naver地點仍待精準核實。 |
+| PS.Cafe One Fullerton／新加坡 | 網美：航海主題與濱海景觀。[二樓分店頁](https://www.pscafe.com/pscafe-one-fullerton)。店號#02-03B/04，不保證所有座位視野相同。 |
+| Jypsy One Fullerton／新加坡 | 網美：波希米亞海岸風格。[一樓分店頁](https://www.pscafe.com/jypsy-one-fullerton)。店號#01-02/03，與PS.Cafe及既有Palm Beach Seafood分開；[官方2026年餐飲文章](https://www.pscafe.com/blog/2026/1/23/the-modern-hosts-guide-to-stylish-canapes-and-effortless-entertaining)支持壽司分類，不保存舊菜單價格。 |
+
+本批排除：
+
+- 紫藤廬：[店家官網](https://www.wistariateahouse.com/)與[台北市文化局2026-09-01更新](https://culture.gov.taipei/cp.aspx?n=6D8D9BF9A2E55CCC)仍明示閉館修繕、不供餐茶。
+- PS.Cafe Harding Road：[分店頁](https://www.pscafe.com/pscafe-at-harding-road)公告8月23日起整修，不能以仍列有一般營業時間就推定復業。
+- Anthracite合井：找到官方搜尋摘要，但原頁受讀取限制，未使用繞過方式；保留待下次完整核實，不靠摘要強行加入。
+- 林百貨HAYASHI Café：已確認五樓有餐飲，但目前查核內容不足以將咖啡廳本身評為文青或網美；不借用四樓藝文空間的內容作風格證據。
+
+所有新候選保持未分區、未核准地圖與座標；沒有將風格提案轉為寵物正式條件或發布認證。
+
 ## 部署與匯入
 
 部署同版本 API、Web、worker 並執行 `alembic upgrade head`。
@@ -91,6 +116,7 @@ python -m app.cli import-trend-merchants --file app/foods/data/style_merchants_2
 確認來源後在後台記錄風格核准，補完地圖與座標後另走店家發布流程。
 
 第二批使用相同命令，將 `--file` 換為 `app/foods/data/style_merchants_2026_09_batch_02.json`。
+第三批則為 `app/foods/data/style_merchants_2026_09_batch_03.json`。
 既有部署可將新 JSON 送入受控暫存路徑後傳給 `--file`；資料補充不需重建服務或執行新遷移。
 
 ### 實際執行記錄
@@ -108,3 +134,13 @@ python -m app.cli import-trend-merchants --file app/foods/data/style_merchants_2
   兩批合計 12 家新候選及 1 家既有店家補風格，共 14 個待審標籤；公開兩種風格查詢仍為零，
   `/ready` 的 database/redis/schema 正常、前台美食頁 HTTP 200。
 - 不變更公開發布狀態、不啟動付費 Gemini／Places 批次。完成來源資料及待審匯入，不代表完成公開上架。
+- PR [#346](https://github.com/x812033727/travel_scanner/pull/346) 於2026-09-08依授權合併，
+  以 exact-head guard 鎖定 `49748e84c405485180aac86276cf32c68371ed7f`；merge commit
+  `b06022771c90a834180ac2607c0fe223db79eadb` 已在main，合併後CI `34175624475` 全綠。
+  此PR僅資料、測試及交接文件，第二批已匯入，因此未重建現有服務或重跑遷移。
+- 第三批正式匯入：7 家 pending/inactive/unverified、7 個 pending 風格（3網美／4文青），
+  地圖／座標／商圈保持空白；建立店家及風格提案的系統稽核各一筆。再次預覽0店／0標籤。
+  備份7,055,257 bytes、權限600且目錄可讀；資料檔SHA-256為
+  `9ea9548218b19cd8ab2440e19d0034c4d297f6290b90eb84dba05ec78d16a0c8`。
+  三批合計19家新候選、1家既有店家補風格，共21個pending標籤（網美9／文青12）；
+  readiness正常，候選仍未公開。
