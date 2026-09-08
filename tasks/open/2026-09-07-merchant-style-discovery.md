@@ -23,7 +23,6 @@ scope:
   - apps/web/components/food-browser.test.tsx
   - apps/web/components/food-merchant-card.tsx
   - apps/web/components/food-merchant-card.test.tsx
-  - apps/web/components/admin-food-merchants-panel.tsx
   - apps/web/components/admin-merchant-styles.tsx
   - apps/web/components/admin-merchant-styles.test.tsx
   - apps/web/lib/foods.ts
@@ -75,6 +74,8 @@ Web: 單工 Vitest、TypeScript、lint、check:i18n、production build；merchan
 匯入及人工查核記錄見 docs/merchant-styles.md。
 
 ## Notes
+
+2026-09-08 跨工作區交接：已確認 `admin-food-merchants-panel.tsx` 無未提交或本分支待交付變更，後續店家來源／風格審核不再修改此檔，僅釋放這一個 scope 給 `codex/admin-domain-workspaces` 加入待審初始篩選。其餘 scope、店家資料、風格／地圖／平台審核功能及 PR 狀態均不變；本次交接不授權合併或部署。
 
 新候選缺精準地圖與可永久保存座標時保持 pending/inactive/unverified，不用來源文字推造識別。
 先完成原始來源審查，再於已部署的後台逐一記錄操作人及風格核准；資料檔不能偷帶 approved。
