@@ -5,7 +5,7 @@ status: in-progress
 priority: P1
 area: web
 owner: codex-planner-premium
-claimed_at: 2026-09-08T22:10:28Z
+claimed_at: 2026-09-08T23:07:26Z
 created_at: 2026-09-08T21:19:04Z
 completed_at:
 branch: codex/planner-premium-app
@@ -13,9 +13,9 @@ depends_on: []
 scope:
   - .github/workflows/planner-premium.yml
   - apps/web/e2e/full-stack.spec.ts
-  - apps/web/e2e/travel-services.spec.ts
   - apps/web/e2e/trip-stay-areas.spec.ts
   - apps/web/e2e/stay22-maps.spec.ts
+  - apps/web/e2e/readability.spec.ts
   - apps/web/components/itinerary-diff.tsx
   - apps/web/components/itinerary-diff.test.tsx
   - apps/web/components/itinerary-place-browser.tsx

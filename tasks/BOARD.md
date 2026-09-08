@@ -28,7 +28,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 | Task | Owner | Claimed (UTC) | Branch |
 | --- | --- | --- | --- |
-| [Premium app-style itinerary planning flow](open/2026-09-08-planner-premium-app.md) | codex-planner-premium | 2026-09-08T22:10:28Z | `codex/planner-premium-app` |
+| [Premium app-style itinerary planning flow](open/2026-09-08-planner-premium-app.md) | codex-planner-premium | 2026-09-08T23:07:26Z | `codex/planner-premium-app` |
 
 ## In review
 
