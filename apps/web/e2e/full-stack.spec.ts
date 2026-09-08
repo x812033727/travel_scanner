@@ -6,9 +6,9 @@ test("manual insertion and single-stop cross-day move persist through the real A
   await page.getByLabel("Email").fill(`order${Date.now()}${test.info().workerIndex}@example.com`);
   await page.getByLabel("密碼").fill("full-stack-password-123");
   await page.getByRole("button", { name: "建立免費帳號" }).click();
-  await expect(page).toHaveURL(/\/trips$/, { timeout: 15_000 });
-  // Use the signed-in browser's same-origin session: the APIRequestContext cookie
-  // jar does not reliably send production Secure cookies over local HTTP.
+  // Do not match the register URL's ?next=/trips suffix before sign-in finishes.
+  await expect(page).toHaveURL((url) => url.pathname === "/zh-TW/trips", { timeout: 15_000 });
+  // Use the same-origin session established by the real browser sign-in flow.
   const created = await page.evaluate(async () => {
     const response = await fetch("/api/travel/trips", {
       method: "POST", headers: { "Content-Type": "application/json" },
