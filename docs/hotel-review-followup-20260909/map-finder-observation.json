@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-09-08T16:43:27Z",
+  "method": "iab",
+  "outcome": "unconfirmed",
+  "sources": [
+    "https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder",
+    "https://maps-docs-team.web.app/samples/places-placeid-finder/dist/",
+    "https://developers.google.com/maps/documentation/places/web-service/place-id",
+    "https://geo-devrel-javascript-samples.web.app/samples/places-placeid-finder/app/dist/"
+  ],
+  "observations": [
+    "The first official document exposes the maps-docs-team iframe. Its page title loaded but the rendered DOM contained no location input, only an unpopulated GMP-MAP and hidden info window.",
+    "The second official document linked the geo-devrel sample. Its IAB DOM and accessibility tree showed only a map region and iframe, with no location input. A newly created visible IAB tab had the same result.",
+    "No hotel name could be submitted in either actual UI; no Place ID was observed. The technical cause was not diagnosed."
+  ],
+  "product_ids": [
+    "a124dc1e-7f75-44ff-b12d-080da031b3b9",
+    "758907f4-4870-421e-bf6c-6243cdcc30c4",
+    "50f2d47d-24fe-4b07-85a2-3e1c7671e452"
+  ],
+  "decision": "Keep all three hotel products pending despite newly available CC0 coordinate evidence. No Google coordinates or inferred IDs are stored."
+}

@@ -1,0 +1,24 @@
+{
+  "tag": "hotel-review-followup-20260909",
+  "fresh_baseline_captured_at": "2026-09-08 16:20:20.550803+00:00",
+  "baseline_semantic_sha256": "d9823e0996ad09ba14fe05b2e9a674544544d4dacb7b87d6fac288be5e51453c",
+  "manifest_file_sha256": "694d28322b1329305df5e6924922d9efcf827b9f25f934e62fe498ae5f7a1904",
+  "operator_file_sha256": "d92eec1590bbe498226611171c84574006d278da3b7a5bb9439cfa64159b7896",
+  "dry_run_decisions": 67,
+  "related_live_code_files_matching_local_sha256": 7,
+  "readiness": {"status": "ready", "database": "ok", "redis": "ok", "schema": "0063_destination_offers"},
+  "backup": {
+    "host_directory": "/root/mokaair-hotel-followup-20260909-zbBca6TF",
+    "filename": "pre-followup.dump",
+    "bytes": 13082089,
+    "sha256": "4228d77b93ecc6a7003bf9631511d2437971f045af3435061d969f42aeb1e4f7",
+    "directory_mode": "700",
+    "file_mode": "600",
+    "pg_restore_list_success": true,
+    "restore_index_bytes": 68667,
+    "full_restore_tested": false
+  },
+  "offline_tests_passed": 63,
+  "independent_operator_review": "No blocking findings; normal service routes, current admin, full-row preservation, atomic receipt and replay checked. Offline tests do not establish real PostgreSQL rollback behavior.",
+  "exclusions": ["No Gemini or paid provider API", "No quote or clickout", "No quota/settings/affiliate change", "No deployment", "No app restart", "No public hotel coordinate or map mutation", "Old review artifacts remain unchanged"]
+}

@@ -1,0 +1,97 @@
+{
+  "verified_at": "2026-09-08 16:52:52 UTC",
+  "all_checks_pass": true,
+  "replay_all_sql_records_unchanged_except_snapshot_time": true,
+  "records_compared": 81,
+  "unchanged_sections": [
+    "hotel_products",
+    "root_actor_provenance",
+    "travel_service_config",
+    "provider_configs",
+    "affiliate_clicks_hotel",
+    "destination_affiliate_offers_hotel",
+    "hotel_booking_clicks_all",
+    "travel_service_brands_all",
+    "travel_service_offers_hotel",
+    "previous_batch_receipts"
+  ],
+  "receipt_totals": [
+    "receipt_totals",
+    "67",
+    "67",
+    "67",
+    "0",
+    "1",
+    "67",
+    "0",
+    "0",
+    "120f42a19572275eca89a0b5994c8344"
+  ],
+  "normal_service_audit_deltas": [
+    [
+      "normal_service_audits",
+      "since_baseline",
+      "travel_services.hotel_option_review",
+      "49",
+      "1",
+      "49",
+      "0",
+      "0",
+      "49",
+      "d2c1dd5fa772afa2751baca48cfc2268"
+    ],
+    [
+      "normal_service_audits",
+      "since_baseline",
+      "travel_services.product_edit",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ],
+    [
+      "normal_service_audits",
+      "since_baseline",
+      "travel_services.product_review",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "d41d8cd98f00b204e9800998ecf8427e"
+    ]
+  ],
+  "previous_receipts": [
+    "previous_batch_receipts",
+    "290",
+    "d31bf5777d5dff64c86693fa74a24324",
+    "290",
+    "290",
+    "d31bf5777d5dff64c86693fa74a24324",
+    "t"
+  ],
+  "snapshot_transactions": {
+    "before": [
+      "snapshot",
+      "2026-09-08 16:45:27.965506+00",
+      "repeatable read",
+      "on"
+    ],
+    "after": [
+      "snapshot",
+      "2026-09-08 16:50:51.634838+00",
+      "repeatable read",
+      "on"
+    ],
+    "after-replay": [
+      "snapshot",
+      "2026-09-08 16:51:37.428597+00",
+      "repeatable read",
+      "on"
+    ]
+  }
+}

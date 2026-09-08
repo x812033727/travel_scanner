@@ -1,0 +1,4484 @@
+{
+  "schema_version": 1,
+  "phase": "before",
+  "started_at": "2026-09-08T16:47:54.467997+00:00",
+  "completed_at": "2026-09-08T16:47:57.251329+00:00",
+  "method": "anonymous_public_GET_only",
+  "matrix_requests_retained": 30,
+  "total_http_gets_in_this_check": 30,
+  "credentials_sent": false,
+  "cookies_sent": false,
+  "redirects_followed": 0,
+  "quote_calls": 0,
+  "clickout_calls": 0,
+  "mutating_api_calls": 0,
+  "database_connections": 0,
+  "locale_headers": "X-Travel-Locale and Accept-Language match the five requested locales.",
+  "summary": {
+    "http_200": 30,
+    "no_store_responses": 30,
+    "all_checks_pass": true,
+    "unique_public_products": 40,
+    "unique_public_booking_options": 165,
+    "issues": [],
+    "by_city": {
+      "tokyo": {
+        "enabled_by_locale": {
+          "en": true,
+          "ja": true,
+          "ko": true,
+          "zh-TW": true,
+          "zh-CN": true
+        },
+        "counts_by_locale": {
+          "en": 10,
+          "ja": 10,
+          "ko": 10,
+          "zh-TW": 10,
+          "zh-CN": 10
+        },
+        "option_counts_by_locale": {
+          "en": 48,
+          "ja": 48,
+          "ko": 48,
+          "zh-TW": 48,
+          "zh-CN": 48
+        }
+      },
+      "osaka": {
+        "enabled_by_locale": {
+          "en": true,
+          "ja": true,
+          "ko": true,
+          "zh-TW": true,
+          "zh-CN": true
+        },
+        "counts_by_locale": {
+          "en": 10,
+          "ja": 10,
+          "ko": 10,
+          "zh-TW": 10,
+          "zh-CN": 10
+        },
+        "option_counts_by_locale": {
+          "en": 44,
+          "ja": 44,
+          "ko": 44,
+          "zh-TW": 44,
+          "zh-CN": 44
+        }
+      },
+      "kyoto": {
+        "enabled_by_locale": {
+          "en": true,
+          "ja": true,
+          "ko": true,
+          "zh-TW": true,
+          "zh-CN": true
+        },
+        "counts_by_locale": {
+          "en": 0,
+          "ja": 0,
+          "ko": 0,
+          "zh-TW": 0,
+          "zh-CN": 0
+        },
+        "option_counts_by_locale": {
+          "en": 0,
+          "ja": 0,
+          "ko": 0,
+          "zh-TW": 0,
+          "zh-CN": 0
+        }
+      },
+      "seoul": {
+        "enabled_by_locale": {
+          "en": true,
+          "ja": true,
+          "ko": true,
+          "zh-TW": true,
+          "zh-CN": true
+        },
+        "counts_by_locale": {
+          "en": 10,
+          "ja": 10,
+          "ko": 10,
+          "zh-TW": 10,
+          "zh-CN": 10
+        },
+        "option_counts_by_locale": {
+          "en": 32,
+          "ja": 32,
+          "ko": 32,
+          "zh-TW": 32,
+          "zh-CN": 32
+        }
+      },
+      "busan": {
+        "enabled_by_locale": {
+          "en": true,
+          "ja": true,
+          "ko": true,
+          "zh-TW": true,
+          "zh-CN": true
+        },
+        "counts_by_locale": {
+          "en": 0,
+          "ja": 0,
+          "ko": 0,
+          "zh-TW": 0,
+          "zh-CN": 0
+        },
+        "option_counts_by_locale": {
+          "en": 0,
+          "ja": 0,
+          "ko": 0,
+          "zh-TW": 0,
+          "zh-CN": 0
+        }
+      },
+      "taipei": {
+        "enabled_by_locale": {
+          "en": true,
+          "ja": true,
+          "ko": true,
+          "zh-TW": true,
+          "zh-CN": true
+        },
+        "counts_by_locale": {
+          "en": 10,
+          "ja": 10,
+          "ko": 10,
+          "zh-TW": 10,
+          "zh-CN": 10
+        },
+        "option_counts_by_locale": {
+          "en": 41,
+          "ja": 41,
+          "ko": 41,
+          "zh-TW": 41,
+          "zh-CN": 41
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "destination_id": "tokyo",
+      "locale": "en",
+      "started_at": "2026-09-08T16:47:54.469750+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=tokyo&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:55.360758+00:00",
+      "item_count": 10,
+      "booking_option_count": 48,
+      "item_ids": [
+        "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+        "6dde791e-5b13-450f-b743-0e66411af7da",
+        "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+        "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+        "b79582da-592f-4a33-aa22-6457cf815094",
+        "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+        "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+        "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+        "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+        "87ac9f12-2b00-48b1-897e-bf66c5aeb616"
+      ],
+      "booking_option_ids": [
+        "3d48221c-b5a4-4800-a076-02cf10a364a3",
+        "442f45ca-8b5a-483c-857f-2100975ea741",
+        "3678bebc-9166-4830-b846-c707f940c8e9",
+        "ed7ed57b-d83e-4535-be02-baa9e293bef7",
+        "d2271918-ecd6-478f-ab2c-3e4a6d576a1a",
+        "0fd5478c-78a3-4cfb-be12-1c3808c21ebc",
+        "6957bfea-4982-459e-b71a-f4351a107b78",
+        "09f6e61b-ff11-4907-9fbc-1d97462fd663",
+        "741bbf90-898a-42d0-86c2-ce5afd5001cb",
+        "bf0203d2-ae5c-4085-8ab1-2be98047fd75",
+        "b5fa82ed-896c-487e-99ec-e4e36df8496f",
+        "12a4900e-2624-4932-a785-0ffa45dcdb02",
+        "04b51b83-700d-43ae-b693-6c892151cd0a",
+        "e0d9e872-550f-435f-8496-10c2c3826107",
+        "3266382c-cadf-4df4-954a-5b6735cd952c",
+        "3d4a2875-de67-4e41-86d2-3b7fcd819da9",
+        "377a5b5f-df98-422c-8138-9103783e2db9",
+        "5c01831e-2e59-4ee4-959f-44180f2d8071",
+        "2af4cdf3-c4b4-5cc0-a6c3-14069d54e9bb",
+        "33cd1c97-5f2d-44c1-b8e6-4778a9e70b21",
+        "0ab5ef69-1983-4bd3-a3f5-4244222bcda6",
+        "5cf89cd2-b9fd-4d10-aa2d-de2ca25a17f7",
+        "f6adfaca-de6e-45e8-a83f-894e6c4cfc39",
+        "94208dea-57d0-5426-a1be-e2931ce5f181",
+        "db4ecb6f-c90b-4db7-88a1-5906717b609c",
+        "6cf28949-c58b-4088-994c-880014a00c89",
+        "7d5f839c-2fcb-4021-b745-eacdb5e3378a",
+        "78e00bad-b47c-5fba-ad7f-42fed82e4749",
+        "4a67b50a-4a40-4a55-a26f-8e7b592cd8ee",
+        "1715489e-3d34-4009-bf03-3e464c00e6d5",
+        "ca99705a-b740-4dd7-a3d3-b33503dfd9d6",
+        "2447ca52-01ed-5edf-9b12-1eca6450c7ab",
+        "d57fe330-7b68-4fe6-8fac-11ca336bfc69",
+        "e7c85c8a-07e5-49dd-8b21-420ebcbad47a",
+        "224dffcd-9fb9-4371-aa50-97189d2f25e8",
+        "8399554e-0097-4538-94ad-0d66f0e7f695",
+        "1cf185d2-e015-41ac-88ca-00ee55fbcf03",
+        "27eb102d-cb4c-50b6-9976-57a87cfb0d1d",
+        "d79a7fff-b43f-4ec5-a2ad-a7855ff335ff",
+        "56327f30-feb0-4992-8fad-d91798b960c6",
+        "6af4e94a-7e49-4bf7-80d5-ef1897f0c4bb",
+        "46f7993d-4af3-4659-b1f7-6e32b34d02d3",
+        "ec50cedf-c5bb-4ba1-bc1a-51038eebe2c6",
+        "279c9958-acf4-5ae4-aa38-df383a7c7ca3",
+        "a659fd94-8cc5-4d54-98c6-2099c30891fc",
+        "935bbce0-f79f-425b-be5d-9365039e02c9",
+        "cffed808-67e9-4b29-b7dd-343a1c2f9f36",
+        "a414a1fb-63ba-4e38-aa6c-370fdab74060"
+      ],
+      "item_ids_sha256": "cfaffd95d0181e2a0967785efc280bcbc5992386877b6975b793f22942452fcc",
+      "booking_option_ids_sha256": "ba2f19a6765ce2ffe2de6d9eca5b75f72b388d4e94915a50b0c3710707647645",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "tokyo",
+      "locale": "ja",
+      "started_at": "2026-09-08T16:47:54.471753+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=tokyo&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:55.346497+00:00",
+      "item_count": 10,
+      "booking_option_count": 48,
+      "item_ids": [
+        "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+        "6dde791e-5b13-450f-b743-0e66411af7da",
+        "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+        "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+        "b79582da-592f-4a33-aa22-6457cf815094",
+        "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+        "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+        "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+        "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+        "87ac9f12-2b00-48b1-897e-bf66c5aeb616"
+      ],
+      "booking_option_ids": [
+        "3d48221c-b5a4-4800-a076-02cf10a364a3",
+        "442f45ca-8b5a-483c-857f-2100975ea741",
+        "3678bebc-9166-4830-b846-c707f940c8e9",
+        "ed7ed57b-d83e-4535-be02-baa9e293bef7",
+        "d2271918-ecd6-478f-ab2c-3e4a6d576a1a",
+        "0fd5478c-78a3-4cfb-be12-1c3808c21ebc",
+        "6957bfea-4982-459e-b71a-f4351a107b78",
+        "09f6e61b-ff11-4907-9fbc-1d97462fd663",
+        "741bbf90-898a-42d0-86c2-ce5afd5001cb",
+        "bf0203d2-ae5c-4085-8ab1-2be98047fd75",
+        "b5fa82ed-896c-487e-99ec-e4e36df8496f",
+        "12a4900e-2624-4932-a785-0ffa45dcdb02",
+        "04b51b83-700d-43ae-b693-6c892151cd0a",
+        "e0d9e872-550f-435f-8496-10c2c3826107",
+        "3266382c-cadf-4df4-954a-5b6735cd952c",
+        "3d4a2875-de67-4e41-86d2-3b7fcd819da9",
+        "377a5b5f-df98-422c-8138-9103783e2db9",
+        "5c01831e-2e59-4ee4-959f-44180f2d8071",
+        "2af4cdf3-c4b4-5cc0-a6c3-14069d54e9bb",
+        "33cd1c97-5f2d-44c1-b8e6-4778a9e70b21",
+        "0ab5ef69-1983-4bd3-a3f5-4244222bcda6",
+        "5cf89cd2-b9fd-4d10-aa2d-de2ca25a17f7",
+        "f6adfaca-de6e-45e8-a83f-894e6c4cfc39",
+        "94208dea-57d0-5426-a1be-e2931ce5f181",
+        "db4ecb6f-c90b-4db7-88a1-5906717b609c",
+        "6cf28949-c58b-4088-994c-880014a00c89",
+        "7d5f839c-2fcb-4021-b745-eacdb5e3378a",
+        "78e00bad-b47c-5fba-ad7f-42fed82e4749",
+        "4a67b50a-4a40-4a55-a26f-8e7b592cd8ee",
+        "1715489e-3d34-4009-bf03-3e464c00e6d5",
+        "ca99705a-b740-4dd7-a3d3-b33503dfd9d6",
+        "2447ca52-01ed-5edf-9b12-1eca6450c7ab",
+        "d57fe330-7b68-4fe6-8fac-11ca336bfc69",
+        "e7c85c8a-07e5-49dd-8b21-420ebcbad47a",
+        "224dffcd-9fb9-4371-aa50-97189d2f25e8",
+        "8399554e-0097-4538-94ad-0d66f0e7f695",
+        "1cf185d2-e015-41ac-88ca-00ee55fbcf03",
+        "27eb102d-cb4c-50b6-9976-57a87cfb0d1d",
+        "d79a7fff-b43f-4ec5-a2ad-a7855ff335ff",
+        "56327f30-feb0-4992-8fad-d91798b960c6",
+        "6af4e94a-7e49-4bf7-80d5-ef1897f0c4bb",
+        "46f7993d-4af3-4659-b1f7-6e32b34d02d3",
+        "ec50cedf-c5bb-4ba1-bc1a-51038eebe2c6",
+        "279c9958-acf4-5ae4-aa38-df383a7c7ca3",
+        "a659fd94-8cc5-4d54-98c6-2099c30891fc",
+        "935bbce0-f79f-425b-be5d-9365039e02c9",
+        "cffed808-67e9-4b29-b7dd-343a1c2f9f36",
+        "a414a1fb-63ba-4e38-aa6c-370fdab74060"
+      ],
+      "item_ids_sha256": "cfaffd95d0181e2a0967785efc280bcbc5992386877b6975b793f22942452fcc",
+      "booking_option_ids_sha256": "ba2f19a6765ce2ffe2de6d9eca5b75f72b388d4e94915a50b0c3710707647645",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "tokyo",
+      "locale": "ko",
+      "started_at": "2026-09-08T16:47:54.472309+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=tokyo&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:55.268467+00:00",
+      "item_count": 10,
+      "booking_option_count": 48,
+      "item_ids": [
+        "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+        "6dde791e-5b13-450f-b743-0e66411af7da",
+        "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+        "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+        "b79582da-592f-4a33-aa22-6457cf815094",
+        "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+        "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+        "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+        "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+        "87ac9f12-2b00-48b1-897e-bf66c5aeb616"
+      ],
+      "booking_option_ids": [
+        "3d48221c-b5a4-4800-a076-02cf10a364a3",
+        "442f45ca-8b5a-483c-857f-2100975ea741",
+        "3678bebc-9166-4830-b846-c707f940c8e9",
+        "ed7ed57b-d83e-4535-be02-baa9e293bef7",
+        "d2271918-ecd6-478f-ab2c-3e4a6d576a1a",
+        "0fd5478c-78a3-4cfb-be12-1c3808c21ebc",
+        "6957bfea-4982-459e-b71a-f4351a107b78",
+        "09f6e61b-ff11-4907-9fbc-1d97462fd663",
+        "741bbf90-898a-42d0-86c2-ce5afd5001cb",
+        "bf0203d2-ae5c-4085-8ab1-2be98047fd75",
+        "b5fa82ed-896c-487e-99ec-e4e36df8496f",
+        "12a4900e-2624-4932-a785-0ffa45dcdb02",
+        "04b51b83-700d-43ae-b693-6c892151cd0a",
+        "e0d9e872-550f-435f-8496-10c2c3826107",
+        "3266382c-cadf-4df4-954a-5b6735cd952c",
+        "3d4a2875-de67-4e41-86d2-3b7fcd819da9",
+        "377a5b5f-df98-422c-8138-9103783e2db9",
+        "5c01831e-2e59-4ee4-959f-44180f2d8071",
+        "2af4cdf3-c4b4-5cc0-a6c3-14069d54e9bb",
+        "33cd1c97-5f2d-44c1-b8e6-4778a9e70b21",
+        "0ab5ef69-1983-4bd3-a3f5-4244222bcda6",
+        "5cf89cd2-b9fd-4d10-aa2d-de2ca25a17f7",
+        "f6adfaca-de6e-45e8-a83f-894e6c4cfc39",
+        "94208dea-57d0-5426-a1be-e2931ce5f181",
+        "db4ecb6f-c90b-4db7-88a1-5906717b609c",
+        "6cf28949-c58b-4088-994c-880014a00c89",
+        "7d5f839c-2fcb-4021-b745-eacdb5e3378a",
+        "78e00bad-b47c-5fba-ad7f-42fed82e4749",
+        "4a67b50a-4a40-4a55-a26f-8e7b592cd8ee",
+        "1715489e-3d34-4009-bf03-3e464c00e6d5",
+        "ca99705a-b740-4dd7-a3d3-b33503dfd9d6",
+        "2447ca52-01ed-5edf-9b12-1eca6450c7ab",
+        "d57fe330-7b68-4fe6-8fac-11ca336bfc69",
+        "e7c85c8a-07e5-49dd-8b21-420ebcbad47a",
+        "224dffcd-9fb9-4371-aa50-97189d2f25e8",
+        "8399554e-0097-4538-94ad-0d66f0e7f695",
+        "1cf185d2-e015-41ac-88ca-00ee55fbcf03",
+        "27eb102d-cb4c-50b6-9976-57a87cfb0d1d",
+        "d79a7fff-b43f-4ec5-a2ad-a7855ff335ff",
+        "56327f30-feb0-4992-8fad-d91798b960c6",
+        "6af4e94a-7e49-4bf7-80d5-ef1897f0c4bb",
+        "46f7993d-4af3-4659-b1f7-6e32b34d02d3",
+        "ec50cedf-c5bb-4ba1-bc1a-51038eebe2c6",
+        "279c9958-acf4-5ae4-aa38-df383a7c7ca3",
+        "a659fd94-8cc5-4d54-98c6-2099c30891fc",
+        "935bbce0-f79f-425b-be5d-9365039e02c9",
+        "cffed808-67e9-4b29-b7dd-343a1c2f9f36",
+        "a414a1fb-63ba-4e38-aa6c-370fdab74060"
+      ],
+      "item_ids_sha256": "cfaffd95d0181e2a0967785efc280bcbc5992386877b6975b793f22942452fcc",
+      "booking_option_ids_sha256": "ba2f19a6765ce2ffe2de6d9eca5b75f72b388d4e94915a50b0c3710707647645",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "tokyo",
+      "locale": "zh-TW",
+      "started_at": "2026-09-08T16:47:54.473294+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=tokyo&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:55.394343+00:00",
+      "item_count": 10,
+      "booking_option_count": 48,
+      "item_ids": [
+        "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+        "6dde791e-5b13-450f-b743-0e66411af7da",
+        "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+        "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+        "b79582da-592f-4a33-aa22-6457cf815094",
+        "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+        "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+        "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+        "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+        "87ac9f12-2b00-48b1-897e-bf66c5aeb616"
+      ],
+      "booking_option_ids": [
+        "3d48221c-b5a4-4800-a076-02cf10a364a3",
+        "442f45ca-8b5a-483c-857f-2100975ea741",
+        "3678bebc-9166-4830-b846-c707f940c8e9",
+        "ed7ed57b-d83e-4535-be02-baa9e293bef7",
+        "d2271918-ecd6-478f-ab2c-3e4a6d576a1a",
+        "0fd5478c-78a3-4cfb-be12-1c3808c21ebc",
+        "6957bfea-4982-459e-b71a-f4351a107b78",
+        "09f6e61b-ff11-4907-9fbc-1d97462fd663",
+        "741bbf90-898a-42d0-86c2-ce5afd5001cb",
+        "bf0203d2-ae5c-4085-8ab1-2be98047fd75",
+        "b5fa82ed-896c-487e-99ec-e4e36df8496f",
+        "12a4900e-2624-4932-a785-0ffa45dcdb02",
+        "04b51b83-700d-43ae-b693-6c892151cd0a",
+        "e0d9e872-550f-435f-8496-10c2c3826107",
+        "3266382c-cadf-4df4-954a-5b6735cd952c",
+        "3d4a2875-de67-4e41-86d2-3b7fcd819da9",
+        "377a5b5f-df98-422c-8138-9103783e2db9",
+        "5c01831e-2e59-4ee4-959f-44180f2d8071",
+        "2af4cdf3-c4b4-5cc0-a6c3-14069d54e9bb",
+        "33cd1c97-5f2d-44c1-b8e6-4778a9e70b21",
+        "0ab5ef69-1983-4bd3-a3f5-4244222bcda6",
+        "5cf89cd2-b9fd-4d10-aa2d-de2ca25a17f7",
+        "f6adfaca-de6e-45e8-a83f-894e6c4cfc39",
+        "94208dea-57d0-5426-a1be-e2931ce5f181",
+        "db4ecb6f-c90b-4db7-88a1-5906717b609c",
+        "6cf28949-c58b-4088-994c-880014a00c89",
+        "7d5f839c-2fcb-4021-b745-eacdb5e3378a",
+        "78e00bad-b47c-5fba-ad7f-42fed82e4749",
+        "4a67b50a-4a40-4a55-a26f-8e7b592cd8ee",
+        "1715489e-3d34-4009-bf03-3e464c00e6d5",
+        "ca99705a-b740-4dd7-a3d3-b33503dfd9d6",
+        "2447ca52-01ed-5edf-9b12-1eca6450c7ab",
+        "d57fe330-7b68-4fe6-8fac-11ca336bfc69",
+        "e7c85c8a-07e5-49dd-8b21-420ebcbad47a",
+        "224dffcd-9fb9-4371-aa50-97189d2f25e8",
+        "8399554e-0097-4538-94ad-0d66f0e7f695",
+        "1cf185d2-e015-41ac-88ca-00ee55fbcf03",
+        "27eb102d-cb4c-50b6-9976-57a87cfb0d1d",
+        "d79a7fff-b43f-4ec5-a2ad-a7855ff335ff",
+        "56327f30-feb0-4992-8fad-d91798b960c6",
+        "6af4e94a-7e49-4bf7-80d5-ef1897f0c4bb",
+        "46f7993d-4af3-4659-b1f7-6e32b34d02d3",
+        "ec50cedf-c5bb-4ba1-bc1a-51038eebe2c6",
+        "279c9958-acf4-5ae4-aa38-df383a7c7ca3",
+        "a659fd94-8cc5-4d54-98c6-2099c30891fc",
+        "935bbce0-f79f-425b-be5d-9365039e02c9",
+        "cffed808-67e9-4b29-b7dd-343a1c2f9f36",
+        "a414a1fb-63ba-4e38-aa6c-370fdab74060"
+      ],
+      "item_ids_sha256": "cfaffd95d0181e2a0967785efc280bcbc5992386877b6975b793f22942452fcc",
+      "booking_option_ids_sha256": "ba2f19a6765ce2ffe2de6d9eca5b75f72b388d4e94915a50b0c3710707647645",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "tokyo",
+      "locale": "zh-CN",
+      "started_at": "2026-09-08T16:47:54.474189+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=tokyo&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:55.321930+00:00",
+      "item_count": 10,
+      "booking_option_count": 48,
+      "item_ids": [
+        "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+        "6dde791e-5b13-450f-b743-0e66411af7da",
+        "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+        "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+        "b79582da-592f-4a33-aa22-6457cf815094",
+        "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+        "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+        "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+        "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+        "87ac9f12-2b00-48b1-897e-bf66c5aeb616"
+      ],
+      "booking_option_ids": [
+        "3d48221c-b5a4-4800-a076-02cf10a364a3",
+        "442f45ca-8b5a-483c-857f-2100975ea741",
+        "3678bebc-9166-4830-b846-c707f940c8e9",
+        "ed7ed57b-d83e-4535-be02-baa9e293bef7",
+        "d2271918-ecd6-478f-ab2c-3e4a6d576a1a",
+        "0fd5478c-78a3-4cfb-be12-1c3808c21ebc",
+        "6957bfea-4982-459e-b71a-f4351a107b78",
+        "09f6e61b-ff11-4907-9fbc-1d97462fd663",
+        "741bbf90-898a-42d0-86c2-ce5afd5001cb",
+        "bf0203d2-ae5c-4085-8ab1-2be98047fd75",
+        "b5fa82ed-896c-487e-99ec-e4e36df8496f",
+        "12a4900e-2624-4932-a785-0ffa45dcdb02",
+        "04b51b83-700d-43ae-b693-6c892151cd0a",
+        "e0d9e872-550f-435f-8496-10c2c3826107",
+        "3266382c-cadf-4df4-954a-5b6735cd952c",
+        "3d4a2875-de67-4e41-86d2-3b7fcd819da9",
+        "377a5b5f-df98-422c-8138-9103783e2db9",
+        "5c01831e-2e59-4ee4-959f-44180f2d8071",
+        "2af4cdf3-c4b4-5cc0-a6c3-14069d54e9bb",
+        "33cd1c97-5f2d-44c1-b8e6-4778a9e70b21",
+        "0ab5ef69-1983-4bd3-a3f5-4244222bcda6",
+        "5cf89cd2-b9fd-4d10-aa2d-de2ca25a17f7",
+        "f6adfaca-de6e-45e8-a83f-894e6c4cfc39",
+        "94208dea-57d0-5426-a1be-e2931ce5f181",
+        "db4ecb6f-c90b-4db7-88a1-5906717b609c",
+        "6cf28949-c58b-4088-994c-880014a00c89",
+        "7d5f839c-2fcb-4021-b745-eacdb5e3378a",
+        "78e00bad-b47c-5fba-ad7f-42fed82e4749",
+        "4a67b50a-4a40-4a55-a26f-8e7b592cd8ee",
+        "1715489e-3d34-4009-bf03-3e464c00e6d5",
+        "ca99705a-b740-4dd7-a3d3-b33503dfd9d6",
+        "2447ca52-01ed-5edf-9b12-1eca6450c7ab",
+        "d57fe330-7b68-4fe6-8fac-11ca336bfc69",
+        "e7c85c8a-07e5-49dd-8b21-420ebcbad47a",
+        "224dffcd-9fb9-4371-aa50-97189d2f25e8",
+        "8399554e-0097-4538-94ad-0d66f0e7f695",
+        "1cf185d2-e015-41ac-88ca-00ee55fbcf03",
+        "27eb102d-cb4c-50b6-9976-57a87cfb0d1d",
+        "d79a7fff-b43f-4ec5-a2ad-a7855ff335ff",
+        "56327f30-feb0-4992-8fad-d91798b960c6",
+        "6af4e94a-7e49-4bf7-80d5-ef1897f0c4bb",
+        "46f7993d-4af3-4659-b1f7-6e32b34d02d3",
+        "ec50cedf-c5bb-4ba1-bc1a-51038eebe2c6",
+        "279c9958-acf4-5ae4-aa38-df383a7c7ca3",
+        "a659fd94-8cc5-4d54-98c6-2099c30891fc",
+        "935bbce0-f79f-425b-be5d-9365039e02c9",
+        "cffed808-67e9-4b29-b7dd-343a1c2f9f36",
+        "a414a1fb-63ba-4e38-aa6c-370fdab74060"
+      ],
+      "item_ids_sha256": "cfaffd95d0181e2a0967785efc280bcbc5992386877b6975b793f22942452fcc",
+      "booking_option_ids_sha256": "ba2f19a6765ce2ffe2de6d9eca5b75f72b388d4e94915a50b0c3710707647645",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "osaka",
+      "locale": "en",
+      "started_at": "2026-09-08T16:47:54.474838+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=osaka&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:55.367589+00:00",
+      "item_count": 10,
+      "booking_option_count": 44,
+      "item_ids": [
+        "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+        "6b6f2564-93f4-4aff-aa97-bfe34d456cad",
+        "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+        "29a7720d-11c2-46ae-abe2-001cd69ac301",
+        "a725fc3d-60bc-4f4b-9ca5-00a87ee6af6a",
+        "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+        "a5336bb9-321b-40a0-9d87-cf9d1e6d9d9b",
+        "c74448b6-1fa7-426e-b5af-17b7d0953382",
+        "ee355d59-44c5-478d-a3eb-2c9053febe24",
+        "352d2cf2-2a1b-48a4-ad94-3bfaa1a88303"
+      ],
+      "booking_option_ids": [
+        "8726d3be-4304-4abd-9c2c-1ff8736f8fe7",
+        "a8f294f3-a944-4bd4-a34b-ab0ef59fe59e",
+        "a93430c5-36ad-4023-ab80-f674d0325e56",
+        "3c16bfa9-a0a4-4609-8ef2-127563d46ab5",
+        "1a252781-62f1-4ce1-b216-694bc3cc63a5",
+        "ba807e07-e30a-4a9a-bad2-c2a4a3002b98",
+        "5a23b490-18ed-465f-aa4e-3be06089b335",
+        "df31affa-0971-4330-90a1-8a918e71db6c",
+        "e2960e7e-635d-4c2e-8480-567c5577a572",
+        "3afd61bc-e374-46f9-9f87-c4cf49569fa4",
+        "5db0b61d-90fa-4870-93a8-674ce72ec2a8",
+        "f16574e7-801b-4a2e-8495-5981655b7ff6",
+        "f0f56103-0b4b-4e56-8c44-5cdcee9f0b22",
+        "3ba7e8b5-6667-43aa-ad73-23e40c05d121",
+        "1fb5ce93-a359-4e62-9144-2b1cc15b89a2",
+        "69d8b040-e631-46e9-aeb0-00b04367d898",
+        "6a2411a7-372e-44eb-8a67-458917da05f4",
+        "894a022a-0bfb-4976-92ce-562df3f750d7",
+        "eef268cc-63ed-44cc-a05d-f563153796b5",
+        "74c844f7-3624-4e26-978d-cb80d72f8556",
+        "dc1e4e17-0dc5-4b74-b01b-84ec91a1a9df",
+        "37077846-829f-4afc-bfe2-01c94acc6ac1",
+        "02673f9c-4e1c-4aca-9a87-9da1cfcd9f1c",
+        "1acd2432-987d-4a9b-ba97-33a8e435e892",
+        "037243cc-e506-4ec7-a8d1-43abb828f21f",
+        "d78a4f4f-66e0-4ff4-b695-ab9742bf96ae",
+        "10508f3b-79c6-458e-9a45-297496c229b5",
+        "7380ce11-d500-4263-a309-f864e58162d5",
+        "8db458f5-78eb-4a43-978a-2793bafe3bde",
+        "55853130-59d2-49e3-a064-0201f8df804a",
+        "711badb9-7b4b-4602-92d7-191231d0287b",
+        "b712edcc-85f8-4456-b2eb-8e1ec2d57de1",
+        "06402d25-6a6a-4f26-8aa7-e06b1234a880",
+        "e9fe4cc7-c7fd-4e53-8634-44afdb2c7ef8",
+        "76b12ee7-f02f-463b-9729-122818cb3dc9",
+        "648c4341-b60e-4780-a463-6733de26a8ba",
+        "dd3d94bf-67d1-4679-a092-06d676a1f21e",
+        "68d500d9-94f7-45b5-8c05-da04b475bf57",
+        "463f2c0a-12e5-46e8-b3d1-6e1c81c8bfb2",
+        "77d57d1e-33ce-40b2-a221-7f6c16194cbe",
+        "eb52fcf2-8c30-4291-9dd7-4695fd0e5672",
+        "32981540-acd2-48d6-9f37-450e2e18eb34",
+        "d46b0528-6178-4753-812c-0bb684eb4eae",
+        "a32ac29d-d586-4e91-bbb8-f7c6fa0498db"
+      ],
+      "item_ids_sha256": "786d423bb80a89f8440829699f709c11fc79eac1c1a7b4b9ceee8b1041947e48",
+      "booking_option_ids_sha256": "d4aa06ef6d5afe34e359372abc1ef5b02baa8c7a0beadd0e785046512d1f8b87",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "osaka",
+      "locale": "ja",
+      "started_at": "2026-09-08T16:47:55.268560+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=osaka&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:55.769705+00:00",
+      "item_count": 10,
+      "booking_option_count": 44,
+      "item_ids": [
+        "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+        "6b6f2564-93f4-4aff-aa97-bfe34d456cad",
+        "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+        "29a7720d-11c2-46ae-abe2-001cd69ac301",
+        "a725fc3d-60bc-4f4b-9ca5-00a87ee6af6a",
+        "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+        "a5336bb9-321b-40a0-9d87-cf9d1e6d9d9b",
+        "c74448b6-1fa7-426e-b5af-17b7d0953382",
+        "ee355d59-44c5-478d-a3eb-2c9053febe24",
+        "352d2cf2-2a1b-48a4-ad94-3bfaa1a88303"
+      ],
+      "booking_option_ids": [
+        "8726d3be-4304-4abd-9c2c-1ff8736f8fe7",
+        "a8f294f3-a944-4bd4-a34b-ab0ef59fe59e",
+        "a93430c5-36ad-4023-ab80-f674d0325e56",
+        "3c16bfa9-a0a4-4609-8ef2-127563d46ab5",
+        "1a252781-62f1-4ce1-b216-694bc3cc63a5",
+        "ba807e07-e30a-4a9a-bad2-c2a4a3002b98",
+        "5a23b490-18ed-465f-aa4e-3be06089b335",
+        "df31affa-0971-4330-90a1-8a918e71db6c",
+        "e2960e7e-635d-4c2e-8480-567c5577a572",
+        "3afd61bc-e374-46f9-9f87-c4cf49569fa4",
+        "5db0b61d-90fa-4870-93a8-674ce72ec2a8",
+        "f16574e7-801b-4a2e-8495-5981655b7ff6",
+        "f0f56103-0b4b-4e56-8c44-5cdcee9f0b22",
+        "3ba7e8b5-6667-43aa-ad73-23e40c05d121",
+        "1fb5ce93-a359-4e62-9144-2b1cc15b89a2",
+        "69d8b040-e631-46e9-aeb0-00b04367d898",
+        "6a2411a7-372e-44eb-8a67-458917da05f4",
+        "894a022a-0bfb-4976-92ce-562df3f750d7",
+        "eef268cc-63ed-44cc-a05d-f563153796b5",
+        "74c844f7-3624-4e26-978d-cb80d72f8556",
+        "dc1e4e17-0dc5-4b74-b01b-84ec91a1a9df",
+        "37077846-829f-4afc-bfe2-01c94acc6ac1",
+        "02673f9c-4e1c-4aca-9a87-9da1cfcd9f1c",
+        "1acd2432-987d-4a9b-ba97-33a8e435e892",
+        "037243cc-e506-4ec7-a8d1-43abb828f21f",
+        "d78a4f4f-66e0-4ff4-b695-ab9742bf96ae",
+        "10508f3b-79c6-458e-9a45-297496c229b5",
+        "7380ce11-d500-4263-a309-f864e58162d5",
+        "8db458f5-78eb-4a43-978a-2793bafe3bde",
+        "55853130-59d2-49e3-a064-0201f8df804a",
+        "711badb9-7b4b-4602-92d7-191231d0287b",
+        "b712edcc-85f8-4456-b2eb-8e1ec2d57de1",
+        "06402d25-6a6a-4f26-8aa7-e06b1234a880",
+        "e9fe4cc7-c7fd-4e53-8634-44afdb2c7ef8",
+        "76b12ee7-f02f-463b-9729-122818cb3dc9",
+        "648c4341-b60e-4780-a463-6733de26a8ba",
+        "dd3d94bf-67d1-4679-a092-06d676a1f21e",
+        "68d500d9-94f7-45b5-8c05-da04b475bf57",
+        "463f2c0a-12e5-46e8-b3d1-6e1c81c8bfb2",
+        "77d57d1e-33ce-40b2-a221-7f6c16194cbe",
+        "eb52fcf2-8c30-4291-9dd7-4695fd0e5672",
+        "32981540-acd2-48d6-9f37-450e2e18eb34",
+        "d46b0528-6178-4753-812c-0bb684eb4eae",
+        "a32ac29d-d586-4e91-bbb8-f7c6fa0498db"
+      ],
+      "item_ids_sha256": "786d423bb80a89f8440829699f709c11fc79eac1c1a7b4b9ceee8b1041947e48",
+      "booking_option_ids_sha256": "d4aa06ef6d5afe34e359372abc1ef5b02baa8c7a0beadd0e785046512d1f8b87",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "osaka",
+      "locale": "ko",
+      "started_at": "2026-09-08T16:47:55.322031+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=osaka&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:55.799643+00:00",
+      "item_count": 10,
+      "booking_option_count": 44,
+      "item_ids": [
+        "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+        "6b6f2564-93f4-4aff-aa97-bfe34d456cad",
+        "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+        "29a7720d-11c2-46ae-abe2-001cd69ac301",
+        "a725fc3d-60bc-4f4b-9ca5-00a87ee6af6a",
+        "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+        "a5336bb9-321b-40a0-9d87-cf9d1e6d9d9b",
+        "c74448b6-1fa7-426e-b5af-17b7d0953382",
+        "ee355d59-44c5-478d-a3eb-2c9053febe24",
+        "352d2cf2-2a1b-48a4-ad94-3bfaa1a88303"
+      ],
+      "booking_option_ids": [
+        "8726d3be-4304-4abd-9c2c-1ff8736f8fe7",
+        "a8f294f3-a944-4bd4-a34b-ab0ef59fe59e",
+        "a93430c5-36ad-4023-ab80-f674d0325e56",
+        "3c16bfa9-a0a4-4609-8ef2-127563d46ab5",
+        "1a252781-62f1-4ce1-b216-694bc3cc63a5",
+        "ba807e07-e30a-4a9a-bad2-c2a4a3002b98",
+        "5a23b490-18ed-465f-aa4e-3be06089b335",
+        "df31affa-0971-4330-90a1-8a918e71db6c",
+        "e2960e7e-635d-4c2e-8480-567c5577a572",
+        "3afd61bc-e374-46f9-9f87-c4cf49569fa4",
+        "5db0b61d-90fa-4870-93a8-674ce72ec2a8",
+        "f16574e7-801b-4a2e-8495-5981655b7ff6",
+        "f0f56103-0b4b-4e56-8c44-5cdcee9f0b22",
+        "3ba7e8b5-6667-43aa-ad73-23e40c05d121",
+        "1fb5ce93-a359-4e62-9144-2b1cc15b89a2",
+        "69d8b040-e631-46e9-aeb0-00b04367d898",
+        "6a2411a7-372e-44eb-8a67-458917da05f4",
+        "894a022a-0bfb-4976-92ce-562df3f750d7",
+        "eef268cc-63ed-44cc-a05d-f563153796b5",
+        "74c844f7-3624-4e26-978d-cb80d72f8556",
+        "dc1e4e17-0dc5-4b74-b01b-84ec91a1a9df",
+        "37077846-829f-4afc-bfe2-01c94acc6ac1",
+        "02673f9c-4e1c-4aca-9a87-9da1cfcd9f1c",
+        "1acd2432-987d-4a9b-ba97-33a8e435e892",
+        "037243cc-e506-4ec7-a8d1-43abb828f21f",
+        "d78a4f4f-66e0-4ff4-b695-ab9742bf96ae",
+        "10508f3b-79c6-458e-9a45-297496c229b5",
+        "7380ce11-d500-4263-a309-f864e58162d5",
+        "8db458f5-78eb-4a43-978a-2793bafe3bde",
+        "55853130-59d2-49e3-a064-0201f8df804a",
+        "711badb9-7b4b-4602-92d7-191231d0287b",
+        "b712edcc-85f8-4456-b2eb-8e1ec2d57de1",
+        "06402d25-6a6a-4f26-8aa7-e06b1234a880",
+        "e9fe4cc7-c7fd-4e53-8634-44afdb2c7ef8",
+        "76b12ee7-f02f-463b-9729-122818cb3dc9",
+        "648c4341-b60e-4780-a463-6733de26a8ba",
+        "dd3d94bf-67d1-4679-a092-06d676a1f21e",
+        "68d500d9-94f7-45b5-8c05-da04b475bf57",
+        "463f2c0a-12e5-46e8-b3d1-6e1c81c8bfb2",
+        "77d57d1e-33ce-40b2-a221-7f6c16194cbe",
+        "eb52fcf2-8c30-4291-9dd7-4695fd0e5672",
+        "32981540-acd2-48d6-9f37-450e2e18eb34",
+        "d46b0528-6178-4753-812c-0bb684eb4eae",
+        "a32ac29d-d586-4e91-bbb8-f7c6fa0498db"
+      ],
+      "item_ids_sha256": "786d423bb80a89f8440829699f709c11fc79eac1c1a7b4b9ceee8b1041947e48",
+      "booking_option_ids_sha256": "d4aa06ef6d5afe34e359372abc1ef5b02baa8c7a0beadd0e785046512d1f8b87",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "osaka",
+      "locale": "zh-TW",
+      "started_at": "2026-09-08T16:47:55.346584+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=osaka&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:55.903135+00:00",
+      "item_count": 10,
+      "booking_option_count": 44,
+      "item_ids": [
+        "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+        "6b6f2564-93f4-4aff-aa97-bfe34d456cad",
+        "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+        "29a7720d-11c2-46ae-abe2-001cd69ac301",
+        "a725fc3d-60bc-4f4b-9ca5-00a87ee6af6a",
+        "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+        "a5336bb9-321b-40a0-9d87-cf9d1e6d9d9b",
+        "c74448b6-1fa7-426e-b5af-17b7d0953382",
+        "ee355d59-44c5-478d-a3eb-2c9053febe24",
+        "352d2cf2-2a1b-48a4-ad94-3bfaa1a88303"
+      ],
+      "booking_option_ids": [
+        "8726d3be-4304-4abd-9c2c-1ff8736f8fe7",
+        "a8f294f3-a944-4bd4-a34b-ab0ef59fe59e",
+        "a93430c5-36ad-4023-ab80-f674d0325e56",
+        "3c16bfa9-a0a4-4609-8ef2-127563d46ab5",
+        "1a252781-62f1-4ce1-b216-694bc3cc63a5",
+        "ba807e07-e30a-4a9a-bad2-c2a4a3002b98",
+        "5a23b490-18ed-465f-aa4e-3be06089b335",
+        "df31affa-0971-4330-90a1-8a918e71db6c",
+        "e2960e7e-635d-4c2e-8480-567c5577a572",
+        "3afd61bc-e374-46f9-9f87-c4cf49569fa4",
+        "5db0b61d-90fa-4870-93a8-674ce72ec2a8",
+        "f16574e7-801b-4a2e-8495-5981655b7ff6",
+        "f0f56103-0b4b-4e56-8c44-5cdcee9f0b22",
+        "3ba7e8b5-6667-43aa-ad73-23e40c05d121",
+        "1fb5ce93-a359-4e62-9144-2b1cc15b89a2",
+        "69d8b040-e631-46e9-aeb0-00b04367d898",
+        "6a2411a7-372e-44eb-8a67-458917da05f4",
+        "894a022a-0bfb-4976-92ce-562df3f750d7",
+        "eef268cc-63ed-44cc-a05d-f563153796b5",
+        "74c844f7-3624-4e26-978d-cb80d72f8556",
+        "dc1e4e17-0dc5-4b74-b01b-84ec91a1a9df",
+        "37077846-829f-4afc-bfe2-01c94acc6ac1",
+        "02673f9c-4e1c-4aca-9a87-9da1cfcd9f1c",
+        "1acd2432-987d-4a9b-ba97-33a8e435e892",
+        "037243cc-e506-4ec7-a8d1-43abb828f21f",
+        "d78a4f4f-66e0-4ff4-b695-ab9742bf96ae",
+        "10508f3b-79c6-458e-9a45-297496c229b5",
+        "7380ce11-d500-4263-a309-f864e58162d5",
+        "8db458f5-78eb-4a43-978a-2793bafe3bde",
+        "55853130-59d2-49e3-a064-0201f8df804a",
+        "711badb9-7b4b-4602-92d7-191231d0287b",
+        "b712edcc-85f8-4456-b2eb-8e1ec2d57de1",
+        "06402d25-6a6a-4f26-8aa7-e06b1234a880",
+        "e9fe4cc7-c7fd-4e53-8634-44afdb2c7ef8",
+        "76b12ee7-f02f-463b-9729-122818cb3dc9",
+        "648c4341-b60e-4780-a463-6733de26a8ba",
+        "dd3d94bf-67d1-4679-a092-06d676a1f21e",
+        "68d500d9-94f7-45b5-8c05-da04b475bf57",
+        "463f2c0a-12e5-46e8-b3d1-6e1c81c8bfb2",
+        "77d57d1e-33ce-40b2-a221-7f6c16194cbe",
+        "eb52fcf2-8c30-4291-9dd7-4695fd0e5672",
+        "32981540-acd2-48d6-9f37-450e2e18eb34",
+        "d46b0528-6178-4753-812c-0bb684eb4eae",
+        "a32ac29d-d586-4e91-bbb8-f7c6fa0498db"
+      ],
+      "item_ids_sha256": "786d423bb80a89f8440829699f709c11fc79eac1c1a7b4b9ceee8b1041947e48",
+      "booking_option_ids_sha256": "d4aa06ef6d5afe34e359372abc1ef5b02baa8c7a0beadd0e785046512d1f8b87",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "osaka",
+      "locale": "zh-CN",
+      "started_at": "2026-09-08T16:47:55.360860+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=osaka&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:55.921386+00:00",
+      "item_count": 10,
+      "booking_option_count": 44,
+      "item_ids": [
+        "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+        "6b6f2564-93f4-4aff-aa97-bfe34d456cad",
+        "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+        "29a7720d-11c2-46ae-abe2-001cd69ac301",
+        "a725fc3d-60bc-4f4b-9ca5-00a87ee6af6a",
+        "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+        "a5336bb9-321b-40a0-9d87-cf9d1e6d9d9b",
+        "c74448b6-1fa7-426e-b5af-17b7d0953382",
+        "ee355d59-44c5-478d-a3eb-2c9053febe24",
+        "352d2cf2-2a1b-48a4-ad94-3bfaa1a88303"
+      ],
+      "booking_option_ids": [
+        "8726d3be-4304-4abd-9c2c-1ff8736f8fe7",
+        "a8f294f3-a944-4bd4-a34b-ab0ef59fe59e",
+        "a93430c5-36ad-4023-ab80-f674d0325e56",
+        "3c16bfa9-a0a4-4609-8ef2-127563d46ab5",
+        "1a252781-62f1-4ce1-b216-694bc3cc63a5",
+        "ba807e07-e30a-4a9a-bad2-c2a4a3002b98",
+        "5a23b490-18ed-465f-aa4e-3be06089b335",
+        "df31affa-0971-4330-90a1-8a918e71db6c",
+        "e2960e7e-635d-4c2e-8480-567c5577a572",
+        "3afd61bc-e374-46f9-9f87-c4cf49569fa4",
+        "5db0b61d-90fa-4870-93a8-674ce72ec2a8",
+        "f16574e7-801b-4a2e-8495-5981655b7ff6",
+        "f0f56103-0b4b-4e56-8c44-5cdcee9f0b22",
+        "3ba7e8b5-6667-43aa-ad73-23e40c05d121",
+        "1fb5ce93-a359-4e62-9144-2b1cc15b89a2",
+        "69d8b040-e631-46e9-aeb0-00b04367d898",
+        "6a2411a7-372e-44eb-8a67-458917da05f4",
+        "894a022a-0bfb-4976-92ce-562df3f750d7",
+        "eef268cc-63ed-44cc-a05d-f563153796b5",
+        "74c844f7-3624-4e26-978d-cb80d72f8556",
+        "dc1e4e17-0dc5-4b74-b01b-84ec91a1a9df",
+        "37077846-829f-4afc-bfe2-01c94acc6ac1",
+        "02673f9c-4e1c-4aca-9a87-9da1cfcd9f1c",
+        "1acd2432-987d-4a9b-ba97-33a8e435e892",
+        "037243cc-e506-4ec7-a8d1-43abb828f21f",
+        "d78a4f4f-66e0-4ff4-b695-ab9742bf96ae",
+        "10508f3b-79c6-458e-9a45-297496c229b5",
+        "7380ce11-d500-4263-a309-f864e58162d5",
+        "8db458f5-78eb-4a43-978a-2793bafe3bde",
+        "55853130-59d2-49e3-a064-0201f8df804a",
+        "711badb9-7b4b-4602-92d7-191231d0287b",
+        "b712edcc-85f8-4456-b2eb-8e1ec2d57de1",
+        "06402d25-6a6a-4f26-8aa7-e06b1234a880",
+        "e9fe4cc7-c7fd-4e53-8634-44afdb2c7ef8",
+        "76b12ee7-f02f-463b-9729-122818cb3dc9",
+        "648c4341-b60e-4780-a463-6733de26a8ba",
+        "dd3d94bf-67d1-4679-a092-06d676a1f21e",
+        "68d500d9-94f7-45b5-8c05-da04b475bf57",
+        "463f2c0a-12e5-46e8-b3d1-6e1c81c8bfb2",
+        "77d57d1e-33ce-40b2-a221-7f6c16194cbe",
+        "eb52fcf2-8c30-4291-9dd7-4695fd0e5672",
+        "32981540-acd2-48d6-9f37-450e2e18eb34",
+        "d46b0528-6178-4753-812c-0bb684eb4eae",
+        "a32ac29d-d586-4e91-bbb8-f7c6fa0498db"
+      ],
+      "item_ids_sha256": "786d423bb80a89f8440829699f709c11fc79eac1c1a7b4b9ceee8b1041947e48",
+      "booking_option_ids_sha256": "d4aa06ef6d5afe34e359372abc1ef5b02baa8c7a0beadd0e785046512d1f8b87",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "kyoto",
+      "locale": "en",
+      "started_at": "2026-09-08T16:47:55.367663+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=kyoto&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 0,
+      "completed_at": "2026-09-08T16:47:55.816132+00:00",
+      "item_count": 0,
+      "booking_option_count": 0,
+      "item_ids": [],
+      "booking_option_ids": [],
+      "item_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "booking_option_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "kyoto",
+      "locale": "ja",
+      "started_at": "2026-09-08T16:47:55.394453+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=kyoto&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 0,
+      "completed_at": "2026-09-08T16:47:55.735065+00:00",
+      "item_count": 0,
+      "booking_option_count": 0,
+      "item_ids": [],
+      "booking_option_ids": [],
+      "item_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "booking_option_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "kyoto",
+      "locale": "ko",
+      "started_at": "2026-09-08T16:47:55.735127+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=kyoto&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 0,
+      "completed_at": "2026-09-08T16:47:56.072470+00:00",
+      "item_count": 0,
+      "booking_option_count": 0,
+      "item_ids": [],
+      "booking_option_ids": [],
+      "item_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "booking_option_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "kyoto",
+      "locale": "zh-TW",
+      "started_at": "2026-09-08T16:47:55.769792+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=kyoto&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 0,
+      "completed_at": "2026-09-08T16:47:56.134240+00:00",
+      "item_count": 0,
+      "booking_option_count": 0,
+      "item_ids": [],
+      "booking_option_ids": [],
+      "item_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "booking_option_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "kyoto",
+      "locale": "zh-CN",
+      "started_at": "2026-09-08T16:47:55.799732+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=kyoto&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 0,
+      "completed_at": "2026-09-08T16:47:56.192214+00:00",
+      "item_count": 0,
+      "booking_option_count": 0,
+      "item_ids": [],
+      "booking_option_ids": [],
+      "item_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "booking_option_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "seoul",
+      "locale": "en",
+      "started_at": "2026-09-08T16:47:55.816203+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=seoul&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:56.294845+00:00",
+      "item_count": 10,
+      "booking_option_count": 32,
+      "item_ids": [
+        "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+        "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+        "c70a6326-4302-4394-afb4-ff7a018272a5",
+        "3d531f0f-1a58-4bd7-9311-22125f489742",
+        "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+        "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+        "e5a8c571-961a-4dea-b36f-43624c85db82",
+        "98c3b936-3470-45b3-b0dc-50353830f2df",
+        "e94492db-9582-4457-b47f-4b44f3112fbb",
+        "0f922904-6306-42ad-900e-bbb2402f4deb"
+      ],
+      "booking_option_ids": [
+        "4684d23b-a65b-409c-934f-1ca66bfd78bb",
+        "7dc9e9eb-a3e5-4172-a8aa-b98c1fd104a8",
+        "43721237-040b-47e2-b6ed-446dd4030df0",
+        "c75606de-1030-4474-bd61-36ce08782962",
+        "51fc28c7-db15-4cc3-aaec-67be3261b968",
+        "6d7b7332-e87a-4e25-b405-184d9b4d8293",
+        "d9c27b3b-b4b0-4147-b35d-b99a2b263ae9",
+        "90b7a1de-f2e1-4390-afe9-b90784758bea",
+        "0b5fdf65-ddc1-4f09-aeb5-b217e99eaee1",
+        "cef042b9-5f49-4199-ac83-3f8f28e4f918",
+        "a40752ba-b5bc-498a-9700-dc42b9799a02",
+        "9f57d1ce-ed2a-4b28-8b00-a62a2cc9c224",
+        "0340e85e-42c7-45f7-91f8-178de9597fd5",
+        "6982de70-7703-4e3a-82cd-1b40e26dda97",
+        "2e3ad995-c4ff-44f2-9e1b-59a59d3e93a2",
+        "cdfbf190-becf-4103-a74a-3b107ebbccb4",
+        "b2eee839-6ba2-42a1-8dad-c74b6244f7a6",
+        "9c020165-3328-4e31-af2b-90dbef98afef",
+        "68411f9a-fc8b-4132-b5fb-6f0221f711fa",
+        "ce37fe1a-e52f-4177-8efb-59790fe662e8",
+        "98c4d502-9301-4c8c-8c89-90819af6b2c9",
+        "d677d8f6-a084-4219-b590-cc42f98158c6",
+        "4c7a6720-54d0-47ad-a9a3-3b14af04b8f3",
+        "41fba9ac-0423-495d-be06-ec943031d84f",
+        "93d7012c-2dd4-4a15-af28-b60d91348825",
+        "ea3b7303-f0c0-4677-b38a-37431d3a8d7b",
+        "325269df-e6e3-47e1-91e3-c4ae08f8453c",
+        "3808a373-0fe9-4054-8c26-9aff87cb979a",
+        "481be31b-86ce-4068-b464-0087353c21ff",
+        "45416cf8-bac4-4b30-83dd-f450ad7773ff",
+        "9e5078c4-1283-43b3-b236-d721e01bbe36",
+        "661cdc12-9cb7-4c1e-99af-a2a28bb5232f"
+      ],
+      "item_ids_sha256": "9158a723c9eacf9ab0419701867e28915a7c98c05a41ac3284eefdf7027b131c",
+      "booking_option_ids_sha256": "819d66cede93db24b7f03147da14e7c26b85226f10466c2e53c97699310ac472",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "seoul",
+      "locale": "ja",
+      "started_at": "2026-09-08T16:47:55.903235+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=seoul&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:56.360681+00:00",
+      "item_count": 10,
+      "booking_option_count": 32,
+      "item_ids": [
+        "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+        "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+        "c70a6326-4302-4394-afb4-ff7a018272a5",
+        "3d531f0f-1a58-4bd7-9311-22125f489742",
+        "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+        "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+        "e5a8c571-961a-4dea-b36f-43624c85db82",
+        "98c3b936-3470-45b3-b0dc-50353830f2df",
+        "e94492db-9582-4457-b47f-4b44f3112fbb",
+        "0f922904-6306-42ad-900e-bbb2402f4deb"
+      ],
+      "booking_option_ids": [
+        "4684d23b-a65b-409c-934f-1ca66bfd78bb",
+        "7dc9e9eb-a3e5-4172-a8aa-b98c1fd104a8",
+        "43721237-040b-47e2-b6ed-446dd4030df0",
+        "c75606de-1030-4474-bd61-36ce08782962",
+        "51fc28c7-db15-4cc3-aaec-67be3261b968",
+        "6d7b7332-e87a-4e25-b405-184d9b4d8293",
+        "d9c27b3b-b4b0-4147-b35d-b99a2b263ae9",
+        "90b7a1de-f2e1-4390-afe9-b90784758bea",
+        "0b5fdf65-ddc1-4f09-aeb5-b217e99eaee1",
+        "cef042b9-5f49-4199-ac83-3f8f28e4f918",
+        "a40752ba-b5bc-498a-9700-dc42b9799a02",
+        "9f57d1ce-ed2a-4b28-8b00-a62a2cc9c224",
+        "0340e85e-42c7-45f7-91f8-178de9597fd5",
+        "6982de70-7703-4e3a-82cd-1b40e26dda97",
+        "2e3ad995-c4ff-44f2-9e1b-59a59d3e93a2",
+        "cdfbf190-becf-4103-a74a-3b107ebbccb4",
+        "b2eee839-6ba2-42a1-8dad-c74b6244f7a6",
+        "9c020165-3328-4e31-af2b-90dbef98afef",
+        "68411f9a-fc8b-4132-b5fb-6f0221f711fa",
+        "ce37fe1a-e52f-4177-8efb-59790fe662e8",
+        "98c4d502-9301-4c8c-8c89-90819af6b2c9",
+        "d677d8f6-a084-4219-b590-cc42f98158c6",
+        "4c7a6720-54d0-47ad-a9a3-3b14af04b8f3",
+        "41fba9ac-0423-495d-be06-ec943031d84f",
+        "93d7012c-2dd4-4a15-af28-b60d91348825",
+        "ea3b7303-f0c0-4677-b38a-37431d3a8d7b",
+        "325269df-e6e3-47e1-91e3-c4ae08f8453c",
+        "3808a373-0fe9-4054-8c26-9aff87cb979a",
+        "481be31b-86ce-4068-b464-0087353c21ff",
+        "45416cf8-bac4-4b30-83dd-f450ad7773ff",
+        "9e5078c4-1283-43b3-b236-d721e01bbe36",
+        "661cdc12-9cb7-4c1e-99af-a2a28bb5232f"
+      ],
+      "item_ids_sha256": "9158a723c9eacf9ab0419701867e28915a7c98c05a41ac3284eefdf7027b131c",
+      "booking_option_ids_sha256": "819d66cede93db24b7f03147da14e7c26b85226f10466c2e53c97699310ac472",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "seoul",
+      "locale": "ko",
+      "started_at": "2026-09-08T16:47:55.921474+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=seoul&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:56.394646+00:00",
+      "item_count": 10,
+      "booking_option_count": 32,
+      "item_ids": [
+        "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+        "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+        "c70a6326-4302-4394-afb4-ff7a018272a5",
+        "3d531f0f-1a58-4bd7-9311-22125f489742",
+        "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+        "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+        "e5a8c571-961a-4dea-b36f-43624c85db82",
+        "98c3b936-3470-45b3-b0dc-50353830f2df",
+        "e94492db-9582-4457-b47f-4b44f3112fbb",
+        "0f922904-6306-42ad-900e-bbb2402f4deb"
+      ],
+      "booking_option_ids": [
+        "4684d23b-a65b-409c-934f-1ca66bfd78bb",
+        "7dc9e9eb-a3e5-4172-a8aa-b98c1fd104a8",
+        "43721237-040b-47e2-b6ed-446dd4030df0",
+        "c75606de-1030-4474-bd61-36ce08782962",
+        "51fc28c7-db15-4cc3-aaec-67be3261b968",
+        "6d7b7332-e87a-4e25-b405-184d9b4d8293",
+        "d9c27b3b-b4b0-4147-b35d-b99a2b263ae9",
+        "90b7a1de-f2e1-4390-afe9-b90784758bea",
+        "0b5fdf65-ddc1-4f09-aeb5-b217e99eaee1",
+        "cef042b9-5f49-4199-ac83-3f8f28e4f918",
+        "a40752ba-b5bc-498a-9700-dc42b9799a02",
+        "9f57d1ce-ed2a-4b28-8b00-a62a2cc9c224",
+        "0340e85e-42c7-45f7-91f8-178de9597fd5",
+        "6982de70-7703-4e3a-82cd-1b40e26dda97",
+        "2e3ad995-c4ff-44f2-9e1b-59a59d3e93a2",
+        "cdfbf190-becf-4103-a74a-3b107ebbccb4",
+        "b2eee839-6ba2-42a1-8dad-c74b6244f7a6",
+        "9c020165-3328-4e31-af2b-90dbef98afef",
+        "68411f9a-fc8b-4132-b5fb-6f0221f711fa",
+        "ce37fe1a-e52f-4177-8efb-59790fe662e8",
+        "98c4d502-9301-4c8c-8c89-90819af6b2c9",
+        "d677d8f6-a084-4219-b590-cc42f98158c6",
+        "4c7a6720-54d0-47ad-a9a3-3b14af04b8f3",
+        "41fba9ac-0423-495d-be06-ec943031d84f",
+        "93d7012c-2dd4-4a15-af28-b60d91348825",
+        "ea3b7303-f0c0-4677-b38a-37431d3a8d7b",
+        "325269df-e6e3-47e1-91e3-c4ae08f8453c",
+        "3808a373-0fe9-4054-8c26-9aff87cb979a",
+        "481be31b-86ce-4068-b464-0087353c21ff",
+        "45416cf8-bac4-4b30-83dd-f450ad7773ff",
+        "9e5078c4-1283-43b3-b236-d721e01bbe36",
+        "661cdc12-9cb7-4c1e-99af-a2a28bb5232f"
+      ],
+      "item_ids_sha256": "9158a723c9eacf9ab0419701867e28915a7c98c05a41ac3284eefdf7027b131c",
+      "booking_option_ids_sha256": "819d66cede93db24b7f03147da14e7c26b85226f10466c2e53c97699310ac472",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "seoul",
+      "locale": "zh-TW",
+      "started_at": "2026-09-08T16:47:56.072552+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=seoul&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:56.556124+00:00",
+      "item_count": 10,
+      "booking_option_count": 32,
+      "item_ids": [
+        "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+        "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+        "c70a6326-4302-4394-afb4-ff7a018272a5",
+        "3d531f0f-1a58-4bd7-9311-22125f489742",
+        "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+        "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+        "e5a8c571-961a-4dea-b36f-43624c85db82",
+        "98c3b936-3470-45b3-b0dc-50353830f2df",
+        "e94492db-9582-4457-b47f-4b44f3112fbb",
+        "0f922904-6306-42ad-900e-bbb2402f4deb"
+      ],
+      "booking_option_ids": [
+        "4684d23b-a65b-409c-934f-1ca66bfd78bb",
+        "7dc9e9eb-a3e5-4172-a8aa-b98c1fd104a8",
+        "43721237-040b-47e2-b6ed-446dd4030df0",
+        "c75606de-1030-4474-bd61-36ce08782962",
+        "51fc28c7-db15-4cc3-aaec-67be3261b968",
+        "6d7b7332-e87a-4e25-b405-184d9b4d8293",
+        "d9c27b3b-b4b0-4147-b35d-b99a2b263ae9",
+        "90b7a1de-f2e1-4390-afe9-b90784758bea",
+        "0b5fdf65-ddc1-4f09-aeb5-b217e99eaee1",
+        "cef042b9-5f49-4199-ac83-3f8f28e4f918",
+        "a40752ba-b5bc-498a-9700-dc42b9799a02",
+        "9f57d1ce-ed2a-4b28-8b00-a62a2cc9c224",
+        "0340e85e-42c7-45f7-91f8-178de9597fd5",
+        "6982de70-7703-4e3a-82cd-1b40e26dda97",
+        "2e3ad995-c4ff-44f2-9e1b-59a59d3e93a2",
+        "cdfbf190-becf-4103-a74a-3b107ebbccb4",
+        "b2eee839-6ba2-42a1-8dad-c74b6244f7a6",
+        "9c020165-3328-4e31-af2b-90dbef98afef",
+        "68411f9a-fc8b-4132-b5fb-6f0221f711fa",
+        "ce37fe1a-e52f-4177-8efb-59790fe662e8",
+        "98c4d502-9301-4c8c-8c89-90819af6b2c9",
+        "d677d8f6-a084-4219-b590-cc42f98158c6",
+        "4c7a6720-54d0-47ad-a9a3-3b14af04b8f3",
+        "41fba9ac-0423-495d-be06-ec943031d84f",
+        "93d7012c-2dd4-4a15-af28-b60d91348825",
+        "ea3b7303-f0c0-4677-b38a-37431d3a8d7b",
+        "325269df-e6e3-47e1-91e3-c4ae08f8453c",
+        "3808a373-0fe9-4054-8c26-9aff87cb979a",
+        "481be31b-86ce-4068-b464-0087353c21ff",
+        "45416cf8-bac4-4b30-83dd-f450ad7773ff",
+        "9e5078c4-1283-43b3-b236-d721e01bbe36",
+        "661cdc12-9cb7-4c1e-99af-a2a28bb5232f"
+      ],
+      "item_ids_sha256": "9158a723c9eacf9ab0419701867e28915a7c98c05a41ac3284eefdf7027b131c",
+      "booking_option_ids_sha256": "819d66cede93db24b7f03147da14e7c26b85226f10466c2e53c97699310ac472",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "seoul",
+      "locale": "zh-CN",
+      "started_at": "2026-09-08T16:47:56.134340+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=seoul&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:56.611394+00:00",
+      "item_count": 10,
+      "booking_option_count": 32,
+      "item_ids": [
+        "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+        "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+        "c70a6326-4302-4394-afb4-ff7a018272a5",
+        "3d531f0f-1a58-4bd7-9311-22125f489742",
+        "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+        "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+        "e5a8c571-961a-4dea-b36f-43624c85db82",
+        "98c3b936-3470-45b3-b0dc-50353830f2df",
+        "e94492db-9582-4457-b47f-4b44f3112fbb",
+        "0f922904-6306-42ad-900e-bbb2402f4deb"
+      ],
+      "booking_option_ids": [
+        "4684d23b-a65b-409c-934f-1ca66bfd78bb",
+        "7dc9e9eb-a3e5-4172-a8aa-b98c1fd104a8",
+        "43721237-040b-47e2-b6ed-446dd4030df0",
+        "c75606de-1030-4474-bd61-36ce08782962",
+        "51fc28c7-db15-4cc3-aaec-67be3261b968",
+        "6d7b7332-e87a-4e25-b405-184d9b4d8293",
+        "d9c27b3b-b4b0-4147-b35d-b99a2b263ae9",
+        "90b7a1de-f2e1-4390-afe9-b90784758bea",
+        "0b5fdf65-ddc1-4f09-aeb5-b217e99eaee1",
+        "cef042b9-5f49-4199-ac83-3f8f28e4f918",
+        "a40752ba-b5bc-498a-9700-dc42b9799a02",
+        "9f57d1ce-ed2a-4b28-8b00-a62a2cc9c224",
+        "0340e85e-42c7-45f7-91f8-178de9597fd5",
+        "6982de70-7703-4e3a-82cd-1b40e26dda97",
+        "2e3ad995-c4ff-44f2-9e1b-59a59d3e93a2",
+        "cdfbf190-becf-4103-a74a-3b107ebbccb4",
+        "b2eee839-6ba2-42a1-8dad-c74b6244f7a6",
+        "9c020165-3328-4e31-af2b-90dbef98afef",
+        "68411f9a-fc8b-4132-b5fb-6f0221f711fa",
+        "ce37fe1a-e52f-4177-8efb-59790fe662e8",
+        "98c4d502-9301-4c8c-8c89-90819af6b2c9",
+        "d677d8f6-a084-4219-b590-cc42f98158c6",
+        "4c7a6720-54d0-47ad-a9a3-3b14af04b8f3",
+        "41fba9ac-0423-495d-be06-ec943031d84f",
+        "93d7012c-2dd4-4a15-af28-b60d91348825",
+        "ea3b7303-f0c0-4677-b38a-37431d3a8d7b",
+        "325269df-e6e3-47e1-91e3-c4ae08f8453c",
+        "3808a373-0fe9-4054-8c26-9aff87cb979a",
+        "481be31b-86ce-4068-b464-0087353c21ff",
+        "45416cf8-bac4-4b30-83dd-f450ad7773ff",
+        "9e5078c4-1283-43b3-b236-d721e01bbe36",
+        "661cdc12-9cb7-4c1e-99af-a2a28bb5232f"
+      ],
+      "item_ids_sha256": "9158a723c9eacf9ab0419701867e28915a7c98c05a41ac3284eefdf7027b131c",
+      "booking_option_ids_sha256": "819d66cede93db24b7f03147da14e7c26b85226f10466c2e53c97699310ac472",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "busan",
+      "locale": "en",
+      "started_at": "2026-09-08T16:47:56.192359+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=busan&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 0,
+      "completed_at": "2026-09-08T16:47:56.591066+00:00",
+      "item_count": 0,
+      "booking_option_count": 0,
+      "item_ids": [],
+      "booking_option_ids": [],
+      "item_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "booking_option_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "busan",
+      "locale": "ja",
+      "started_at": "2026-09-08T16:47:56.294977+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=busan&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 0,
+      "completed_at": "2026-09-08T16:47:56.649127+00:00",
+      "item_count": 0,
+      "booking_option_count": 0,
+      "item_ids": [],
+      "booking_option_ids": [],
+      "item_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "booking_option_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "busan",
+      "locale": "ko",
+      "started_at": "2026-09-08T16:47:56.360813+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=busan&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 0,
+      "completed_at": "2026-09-08T16:47:56.711817+00:00",
+      "item_count": 0,
+      "booking_option_count": 0,
+      "item_ids": [],
+      "booking_option_ids": [],
+      "item_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "booking_option_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "busan",
+      "locale": "zh-TW",
+      "started_at": "2026-09-08T16:47:56.394776+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=busan&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 0,
+      "completed_at": "2026-09-08T16:47:56.756398+00:00",
+      "item_count": 0,
+      "booking_option_count": 0,
+      "item_ids": [],
+      "booking_option_ids": [],
+      "item_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "booking_option_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "busan",
+      "locale": "zh-CN",
+      "started_at": "2026-09-08T16:47:56.556218+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=busan&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 0,
+      "completed_at": "2026-09-08T16:47:56.919222+00:00",
+      "item_count": 0,
+      "booking_option_count": 0,
+      "item_ids": [],
+      "booking_option_ids": [],
+      "item_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "booking_option_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "taipei",
+      "locale": "en",
+      "started_at": "2026-09-08T16:47:56.591161+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=taipei&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:57.096988+00:00",
+      "item_count": 10,
+      "booking_option_count": 41,
+      "item_ids": [
+        "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+        "911db160-e332-41c6-95f6-3fa89d9a711d",
+        "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+        "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+        "ad6930f9-64e2-4298-b90f-ad24fae50060",
+        "68646c86-2aed-4bd6-a453-29450ab50d6c",
+        "535688c6-4370-4550-9a66-d35c4f907eef",
+        "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+        "177996ee-887e-48b8-9ade-240e47675438",
+        "c934905c-8857-4dfc-963e-9d19e13cd16e"
+      ],
+      "booking_option_ids": [
+        "d47ec0f3-d6fd-4124-9a59-ef4efdff6980",
+        "994d3ce1-1ed1-474e-9349-f6197ce5aafa",
+        "4045f37e-444a-4785-88b1-e6cdcd69afa9",
+        "fbff5aa0-6b40-48dd-a4ce-727ae37c9fee",
+        "1be7ac66-3205-4cc5-81af-38d9fbbd00ba",
+        "0cdc165e-5b3b-405c-b549-0e5f01ef5fd6",
+        "2712c97b-ad7a-44e4-a8ec-b6ec94d4c5ae",
+        "cc0d8398-1d6a-4f10-89de-448c7694ce20",
+        "897df2fc-6ca6-4987-8aad-c4230b546d8d",
+        "60ec6688-75a6-4782-a2bd-1a93660b1a17",
+        "2ebbbe05-04a9-4b14-8747-79a4c3ca0de9",
+        "1bc2ccde-a724-4077-a7cd-9121959ba655",
+        "b0c20080-76ad-4b1b-9a4d-657654387ecd",
+        "3c15c159-2e53-4a78-846b-de63d06dfa0c",
+        "b2abb31a-1a7f-423c-a88b-c550badce271",
+        "2ff150eb-5bdd-4b0f-9c60-9696f98d4a55",
+        "c9f5a980-3e11-4624-8117-2686f528a6b0",
+        "edc6dcfc-7b6a-4c91-b988-738cf943a40b",
+        "29656832-a29f-465c-aaf8-cae4c339613a",
+        "8d5f3a67-29be-4c54-8095-3f9ce514fed7",
+        "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+        "a789b1c7-46c7-42a2-916d-099bad5f18de",
+        "2d142178-60cb-404c-8bae-63aa938dbf74",
+        "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+        "4057e9ce-b353-437a-b2c8-3097222c8fb4",
+        "31b17c88-f69b-4671-8b5a-68c99dd9bf62",
+        "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+        "18ca5278-acf4-41db-967f-8cea1b247a71",
+        "14fa1772-1050-41d1-b40d-87eb004bd254",
+        "837e69b7-aa5e-477f-b380-90b315d179fd",
+        "32947818-bbb6-4bad-beac-18465e8fb0b4",
+        "2997aa94-f717-469e-90e8-91e6238375c4",
+        "777a0f1d-f066-40f3-82ad-46f0f561ff67",
+        "e2ce0d9d-687f-43eb-b0d6-b1774f58f474",
+        "c6f9ae48-0fae-451b-a930-f43feddac5d7",
+        "180844c8-c83e-4aa3-90a5-7a6d17f358a2",
+        "d280e943-ca49-485d-a4b9-8f90462a0845",
+        "3a3fc414-1e46-426f-9cd5-4e23153cbba6",
+        "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+        "f3ed1561-3046-4647-8c90-0ab634d5c7e2",
+        "03d141b8-18bb-4eb8-b04f-60b82c47a25d"
+      ],
+      "item_ids_sha256": "69190dd439454b156df425dc9dc1c2d882e6ad4587bb1ed8370f1db5413188ed",
+      "booking_option_ids_sha256": "e2ca298cfc14b8746c064d44d7cf1821d24a162499683ad0f282f89a454a7610",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "taipei",
+      "locale": "ja",
+      "started_at": "2026-09-08T16:47:56.611486+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=taipei&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:57.101641+00:00",
+      "item_count": 10,
+      "booking_option_count": 41,
+      "item_ids": [
+        "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+        "911db160-e332-41c6-95f6-3fa89d9a711d",
+        "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+        "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+        "ad6930f9-64e2-4298-b90f-ad24fae50060",
+        "68646c86-2aed-4bd6-a453-29450ab50d6c",
+        "535688c6-4370-4550-9a66-d35c4f907eef",
+        "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+        "177996ee-887e-48b8-9ade-240e47675438",
+        "c934905c-8857-4dfc-963e-9d19e13cd16e"
+      ],
+      "booking_option_ids": [
+        "d47ec0f3-d6fd-4124-9a59-ef4efdff6980",
+        "994d3ce1-1ed1-474e-9349-f6197ce5aafa",
+        "4045f37e-444a-4785-88b1-e6cdcd69afa9",
+        "fbff5aa0-6b40-48dd-a4ce-727ae37c9fee",
+        "1be7ac66-3205-4cc5-81af-38d9fbbd00ba",
+        "0cdc165e-5b3b-405c-b549-0e5f01ef5fd6",
+        "2712c97b-ad7a-44e4-a8ec-b6ec94d4c5ae",
+        "cc0d8398-1d6a-4f10-89de-448c7694ce20",
+        "897df2fc-6ca6-4987-8aad-c4230b546d8d",
+        "60ec6688-75a6-4782-a2bd-1a93660b1a17",
+        "2ebbbe05-04a9-4b14-8747-79a4c3ca0de9",
+        "1bc2ccde-a724-4077-a7cd-9121959ba655",
+        "b0c20080-76ad-4b1b-9a4d-657654387ecd",
+        "3c15c159-2e53-4a78-846b-de63d06dfa0c",
+        "b2abb31a-1a7f-423c-a88b-c550badce271",
+        "2ff150eb-5bdd-4b0f-9c60-9696f98d4a55",
+        "c9f5a980-3e11-4624-8117-2686f528a6b0",
+        "edc6dcfc-7b6a-4c91-b988-738cf943a40b",
+        "29656832-a29f-465c-aaf8-cae4c339613a",
+        "8d5f3a67-29be-4c54-8095-3f9ce514fed7",
+        "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+        "a789b1c7-46c7-42a2-916d-099bad5f18de",
+        "2d142178-60cb-404c-8bae-63aa938dbf74",
+        "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+        "4057e9ce-b353-437a-b2c8-3097222c8fb4",
+        "31b17c88-f69b-4671-8b5a-68c99dd9bf62",
+        "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+        "18ca5278-acf4-41db-967f-8cea1b247a71",
+        "14fa1772-1050-41d1-b40d-87eb004bd254",
+        "837e69b7-aa5e-477f-b380-90b315d179fd",
+        "32947818-bbb6-4bad-beac-18465e8fb0b4",
+        "2997aa94-f717-469e-90e8-91e6238375c4",
+        "777a0f1d-f066-40f3-82ad-46f0f561ff67",
+        "e2ce0d9d-687f-43eb-b0d6-b1774f58f474",
+        "c6f9ae48-0fae-451b-a930-f43feddac5d7",
+        "180844c8-c83e-4aa3-90a5-7a6d17f358a2",
+        "d280e943-ca49-485d-a4b9-8f90462a0845",
+        "3a3fc414-1e46-426f-9cd5-4e23153cbba6",
+        "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+        "f3ed1561-3046-4647-8c90-0ab634d5c7e2",
+        "03d141b8-18bb-4eb8-b04f-60b82c47a25d"
+      ],
+      "item_ids_sha256": "69190dd439454b156df425dc9dc1c2d882e6ad4587bb1ed8370f1db5413188ed",
+      "booking_option_ids_sha256": "e2ca298cfc14b8746c064d44d7cf1821d24a162499683ad0f282f89a454a7610",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "taipei",
+      "locale": "ko",
+      "started_at": "2026-09-08T16:47:56.649240+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=taipei&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:57.123395+00:00",
+      "item_count": 10,
+      "booking_option_count": 41,
+      "item_ids": [
+        "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+        "911db160-e332-41c6-95f6-3fa89d9a711d",
+        "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+        "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+        "ad6930f9-64e2-4298-b90f-ad24fae50060",
+        "68646c86-2aed-4bd6-a453-29450ab50d6c",
+        "535688c6-4370-4550-9a66-d35c4f907eef",
+        "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+        "177996ee-887e-48b8-9ade-240e47675438",
+        "c934905c-8857-4dfc-963e-9d19e13cd16e"
+      ],
+      "booking_option_ids": [
+        "d47ec0f3-d6fd-4124-9a59-ef4efdff6980",
+        "994d3ce1-1ed1-474e-9349-f6197ce5aafa",
+        "4045f37e-444a-4785-88b1-e6cdcd69afa9",
+        "fbff5aa0-6b40-48dd-a4ce-727ae37c9fee",
+        "1be7ac66-3205-4cc5-81af-38d9fbbd00ba",
+        "0cdc165e-5b3b-405c-b549-0e5f01ef5fd6",
+        "2712c97b-ad7a-44e4-a8ec-b6ec94d4c5ae",
+        "cc0d8398-1d6a-4f10-89de-448c7694ce20",
+        "897df2fc-6ca6-4987-8aad-c4230b546d8d",
+        "60ec6688-75a6-4782-a2bd-1a93660b1a17",
+        "2ebbbe05-04a9-4b14-8747-79a4c3ca0de9",
+        "1bc2ccde-a724-4077-a7cd-9121959ba655",
+        "b0c20080-76ad-4b1b-9a4d-657654387ecd",
+        "3c15c159-2e53-4a78-846b-de63d06dfa0c",
+        "b2abb31a-1a7f-423c-a88b-c550badce271",
+        "2ff150eb-5bdd-4b0f-9c60-9696f98d4a55",
+        "c9f5a980-3e11-4624-8117-2686f528a6b0",
+        "edc6dcfc-7b6a-4c91-b988-738cf943a40b",
+        "29656832-a29f-465c-aaf8-cae4c339613a",
+        "8d5f3a67-29be-4c54-8095-3f9ce514fed7",
+        "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+        "a789b1c7-46c7-42a2-916d-099bad5f18de",
+        "2d142178-60cb-404c-8bae-63aa938dbf74",
+        "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+        "4057e9ce-b353-437a-b2c8-3097222c8fb4",
+        "31b17c88-f69b-4671-8b5a-68c99dd9bf62",
+        "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+        "18ca5278-acf4-41db-967f-8cea1b247a71",
+        "14fa1772-1050-41d1-b40d-87eb004bd254",
+        "837e69b7-aa5e-477f-b380-90b315d179fd",
+        "32947818-bbb6-4bad-beac-18465e8fb0b4",
+        "2997aa94-f717-469e-90e8-91e6238375c4",
+        "777a0f1d-f066-40f3-82ad-46f0f561ff67",
+        "e2ce0d9d-687f-43eb-b0d6-b1774f58f474",
+        "c6f9ae48-0fae-451b-a930-f43feddac5d7",
+        "180844c8-c83e-4aa3-90a5-7a6d17f358a2",
+        "d280e943-ca49-485d-a4b9-8f90462a0845",
+        "3a3fc414-1e46-426f-9cd5-4e23153cbba6",
+        "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+        "f3ed1561-3046-4647-8c90-0ab634d5c7e2",
+        "03d141b8-18bb-4eb8-b04f-60b82c47a25d"
+      ],
+      "item_ids_sha256": "69190dd439454b156df425dc9dc1c2d882e6ad4587bb1ed8370f1db5413188ed",
+      "booking_option_ids_sha256": "e2ca298cfc14b8746c064d44d7cf1821d24a162499683ad0f282f89a454a7610",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "taipei",
+      "locale": "zh-TW",
+      "started_at": "2026-09-08T16:47:56.711931+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=taipei&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:57.179155+00:00",
+      "item_count": 10,
+      "booking_option_count": 41,
+      "item_ids": [
+        "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+        "911db160-e332-41c6-95f6-3fa89d9a711d",
+        "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+        "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+        "ad6930f9-64e2-4298-b90f-ad24fae50060",
+        "68646c86-2aed-4bd6-a453-29450ab50d6c",
+        "535688c6-4370-4550-9a66-d35c4f907eef",
+        "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+        "177996ee-887e-48b8-9ade-240e47675438",
+        "c934905c-8857-4dfc-963e-9d19e13cd16e"
+      ],
+      "booking_option_ids": [
+        "d47ec0f3-d6fd-4124-9a59-ef4efdff6980",
+        "994d3ce1-1ed1-474e-9349-f6197ce5aafa",
+        "4045f37e-444a-4785-88b1-e6cdcd69afa9",
+        "fbff5aa0-6b40-48dd-a4ce-727ae37c9fee",
+        "1be7ac66-3205-4cc5-81af-38d9fbbd00ba",
+        "0cdc165e-5b3b-405c-b549-0e5f01ef5fd6",
+        "2712c97b-ad7a-44e4-a8ec-b6ec94d4c5ae",
+        "cc0d8398-1d6a-4f10-89de-448c7694ce20",
+        "897df2fc-6ca6-4987-8aad-c4230b546d8d",
+        "60ec6688-75a6-4782-a2bd-1a93660b1a17",
+        "2ebbbe05-04a9-4b14-8747-79a4c3ca0de9",
+        "1bc2ccde-a724-4077-a7cd-9121959ba655",
+        "b0c20080-76ad-4b1b-9a4d-657654387ecd",
+        "3c15c159-2e53-4a78-846b-de63d06dfa0c",
+        "b2abb31a-1a7f-423c-a88b-c550badce271",
+        "2ff150eb-5bdd-4b0f-9c60-9696f98d4a55",
+        "c9f5a980-3e11-4624-8117-2686f528a6b0",
+        "edc6dcfc-7b6a-4c91-b988-738cf943a40b",
+        "29656832-a29f-465c-aaf8-cae4c339613a",
+        "8d5f3a67-29be-4c54-8095-3f9ce514fed7",
+        "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+        "a789b1c7-46c7-42a2-916d-099bad5f18de",
+        "2d142178-60cb-404c-8bae-63aa938dbf74",
+        "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+        "4057e9ce-b353-437a-b2c8-3097222c8fb4",
+        "31b17c88-f69b-4671-8b5a-68c99dd9bf62",
+        "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+        "18ca5278-acf4-41db-967f-8cea1b247a71",
+        "14fa1772-1050-41d1-b40d-87eb004bd254",
+        "837e69b7-aa5e-477f-b380-90b315d179fd",
+        "32947818-bbb6-4bad-beac-18465e8fb0b4",
+        "2997aa94-f717-469e-90e8-91e6238375c4",
+        "777a0f1d-f066-40f3-82ad-46f0f561ff67",
+        "e2ce0d9d-687f-43eb-b0d6-b1774f58f474",
+        "c6f9ae48-0fae-451b-a930-f43feddac5d7",
+        "180844c8-c83e-4aa3-90a5-7a6d17f358a2",
+        "d280e943-ca49-485d-a4b9-8f90462a0845",
+        "3a3fc414-1e46-426f-9cd5-4e23153cbba6",
+        "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+        "f3ed1561-3046-4647-8c90-0ab634d5c7e2",
+        "03d141b8-18bb-4eb8-b04f-60b82c47a25d"
+      ],
+      "item_ids_sha256": "69190dd439454b156df425dc9dc1c2d882e6ad4587bb1ed8370f1db5413188ed",
+      "booking_option_ids_sha256": "e2ca298cfc14b8746c064d44d7cf1821d24a162499683ad0f282f89a454a7610",
+      "all_checks_pass": true
+    },
+    {
+      "destination_id": "taipei",
+      "locale": "zh-CN",
+      "started_at": "2026-09-08T16:47:56.756471+00:00",
+      "url": "https://mokaair.com/api/travel/travel-services?destination_id=taipei&type=hotel",
+      "http_status": 200,
+      "cache_control": "no-store",
+      "content_type": "application/json",
+      "enabled": true,
+      "issues": [],
+      "enabled_kinds": [
+        "hotel",
+        "transfer",
+        "tour",
+        "esim"
+      ],
+      "reported_total": 10,
+      "completed_at": "2026-09-08T16:47:57.244693+00:00",
+      "item_count": 10,
+      "booking_option_count": 41,
+      "item_ids": [
+        "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+        "911db160-e332-41c6-95f6-3fa89d9a711d",
+        "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+        "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+        "ad6930f9-64e2-4298-b90f-ad24fae50060",
+        "68646c86-2aed-4bd6-a453-29450ab50d6c",
+        "535688c6-4370-4550-9a66-d35c4f907eef",
+        "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+        "177996ee-887e-48b8-9ade-240e47675438",
+        "c934905c-8857-4dfc-963e-9d19e13cd16e"
+      ],
+      "booking_option_ids": [
+        "d47ec0f3-d6fd-4124-9a59-ef4efdff6980",
+        "994d3ce1-1ed1-474e-9349-f6197ce5aafa",
+        "4045f37e-444a-4785-88b1-e6cdcd69afa9",
+        "fbff5aa0-6b40-48dd-a4ce-727ae37c9fee",
+        "1be7ac66-3205-4cc5-81af-38d9fbbd00ba",
+        "0cdc165e-5b3b-405c-b549-0e5f01ef5fd6",
+        "2712c97b-ad7a-44e4-a8ec-b6ec94d4c5ae",
+        "cc0d8398-1d6a-4f10-89de-448c7694ce20",
+        "897df2fc-6ca6-4987-8aad-c4230b546d8d",
+        "60ec6688-75a6-4782-a2bd-1a93660b1a17",
+        "2ebbbe05-04a9-4b14-8747-79a4c3ca0de9",
+        "1bc2ccde-a724-4077-a7cd-9121959ba655",
+        "b0c20080-76ad-4b1b-9a4d-657654387ecd",
+        "3c15c159-2e53-4a78-846b-de63d06dfa0c",
+        "b2abb31a-1a7f-423c-a88b-c550badce271",
+        "2ff150eb-5bdd-4b0f-9c60-9696f98d4a55",
+        "c9f5a980-3e11-4624-8117-2686f528a6b0",
+        "edc6dcfc-7b6a-4c91-b988-738cf943a40b",
+        "29656832-a29f-465c-aaf8-cae4c339613a",
+        "8d5f3a67-29be-4c54-8095-3f9ce514fed7",
+        "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+        "a789b1c7-46c7-42a2-916d-099bad5f18de",
+        "2d142178-60cb-404c-8bae-63aa938dbf74",
+        "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+        "4057e9ce-b353-437a-b2c8-3097222c8fb4",
+        "31b17c88-f69b-4671-8b5a-68c99dd9bf62",
+        "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+        "18ca5278-acf4-41db-967f-8cea1b247a71",
+        "14fa1772-1050-41d1-b40d-87eb004bd254",
+        "837e69b7-aa5e-477f-b380-90b315d179fd",
+        "32947818-bbb6-4bad-beac-18465e8fb0b4",
+        "2997aa94-f717-469e-90e8-91e6238375c4",
+        "777a0f1d-f066-40f3-82ad-46f0f561ff67",
+        "e2ce0d9d-687f-43eb-b0d6-b1774f58f474",
+        "c6f9ae48-0fae-451b-a930-f43feddac5d7",
+        "180844c8-c83e-4aa3-90a5-7a6d17f358a2",
+        "d280e943-ca49-485d-a4b9-8f90462a0845",
+        "3a3fc414-1e46-426f-9cd5-4e23153cbba6",
+        "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+        "f3ed1561-3046-4647-8c90-0ab634d5c7e2",
+        "03d141b8-18bb-4eb8-b04f-60b82c47a25d"
+      ],
+      "item_ids_sha256": "69190dd439454b156df425dc9dc1c2d882e6ad4587bb1ed8370f1db5413188ed",
+      "booking_option_ids_sha256": "e2ca298cfc14b8746c064d44d7cf1821d24a162499683ad0f282f89a454a7610",
+      "all_checks_pass": true
+    }
+  ],
+  "public_products": [
+    {
+      "id": "29a7720d-11c2-46ae-abe2-001cd69ac301",
+      "kind": "hotel",
+      "destination_id": "osaka",
+      "source_url": "https://www.hotelvischio-osaka.jp/access/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "98f97994a58d0b34df0b36e34795eb3077f19f502a0f46334d0a4a70990c25b5",
+      "booking_option_ids": [
+        "3ba7e8b5-6667-43aa-ad73-23e40c05d121",
+        "1fb5ce93-a359-4e62-9144-2b1cc15b89a2",
+        "69d8b040-e631-46e9-aeb0-00b04367d898",
+        "6a2411a7-372e-44eb-8a67-458917da05f4"
+      ],
+      "titles_by_locale": {
+        "en": "ホテルヴィスキオ大阪",
+        "ja": "ホテルヴィスキオ大阪",
+        "ko": "ホテルヴィスキオ大阪",
+        "zh-TW": "ホテルヴィスキオ大阪",
+        "zh-CN": "ホテルヴィスキオ大阪"
+      }
+    },
+    {
+      "id": "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+      "kind": "hotel",
+      "destination_id": "osaka",
+      "source_url": "https://www.intergatehotels.jp/osaka-umeda/facility/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "98f97994a58d0b34df0b36e34795eb3077f19f502a0f46334d0a4a70990c25b5",
+      "booking_option_ids": [
+        "8726d3be-4304-4abd-9c2c-1ff8736f8fe7",
+        "a8f294f3-a944-4bd4-a34b-ab0ef59fe59e",
+        "a93430c5-36ad-4023-ab80-f674d0325e56",
+        "3c16bfa9-a0a4-4609-8ef2-127563d46ab5",
+        "1a252781-62f1-4ce1-b216-694bc3cc63a5",
+        "ba807e07-e30a-4a9a-bad2-c2a4a3002b98"
+      ],
+      "titles_by_locale": {
+        "en": "ホテルインターゲート大阪 梅田",
+        "ja": "ホテルインターゲート大阪 梅田",
+        "ko": "ホテルインターゲート大阪 梅田",
+        "zh-TW": "ホテルインターゲート大阪 梅田",
+        "zh-CN": "ホテルインターゲート大阪 梅田"
+      }
+    },
+    {
+      "id": "352d2cf2-2a1b-48a4-ad94-3bfaa1a88303",
+      "kind": "hotel",
+      "destination_id": "osaka",
+      "source_url": "https://www.swissotel.com/hotels/nankai-osaka/pdf/swissotel-nankai-osaka-fact-sheet-v2/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "98f97994a58d0b34df0b36e34795eb3077f19f502a0f46334d0a4a70990c25b5",
+      "booking_option_ids": [
+        "32981540-acd2-48d6-9f37-450e2e18eb34",
+        "d46b0528-6178-4753-812c-0bb684eb4eae",
+        "a32ac29d-d586-4e91-bbb8-f7c6fa0498db"
+      ],
+      "titles_by_locale": {
+        "en": "スイスホテル南海大阪",
+        "ja": "スイスホテル南海大阪",
+        "ko": "スイスホテル南海大阪",
+        "zh-TW": "スイスホテル南海大阪",
+        "zh-CN": "スイスホテル南海大阪"
+      }
+    },
+    {
+      "id": "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+      "kind": "hotel",
+      "destination_id": "osaka",
+      "source_url": "https://www.newotani.co.jp/osaka/access/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "98f97994a58d0b34df0b36e34795eb3077f19f502a0f46334d0a4a70990c25b5",
+      "booking_option_ids": [
+        "37077846-829f-4afc-bfe2-01c94acc6ac1",
+        "02673f9c-4e1c-4aca-9a87-9da1cfcd9f1c",
+        "1acd2432-987d-4a9b-ba97-33a8e435e892",
+        "037243cc-e506-4ec7-a8d1-43abb828f21f",
+        "d78a4f4f-66e0-4ff4-b695-ab9742bf96ae",
+        "10508f3b-79c6-458e-9a45-297496c229b5"
+      ],
+      "titles_by_locale": {
+        "en": "ホテルニューオータニ大阪",
+        "ja": "ホテルニューオータニ大阪",
+        "ko": "ホテルニューオータニ大阪",
+        "zh-TW": "ホテルニューオータニ大阪",
+        "zh-CN": "ホテルニューオータニ大阪"
+      }
+    },
+    {
+      "id": "6b6f2564-93f4-4aff-aa97-bfe34d456cad",
+      "kind": "hotel",
+      "destination_id": "osaka",
+      "source_url": "https://jrwest-hotels.jp/en/granvia-osaka/access/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "98f97994a58d0b34df0b36e34795eb3077f19f502a0f46334d0a4a70990c25b5",
+      "booking_option_ids": [
+        "5a23b490-18ed-465f-aa4e-3be06089b335",
+        "df31affa-0971-4330-90a1-8a918e71db6c",
+        "e2960e7e-635d-4c2e-8480-567c5577a572"
+      ],
+      "titles_by_locale": {
+        "en": "ホテルグランヴィア大阪",
+        "ja": "ホテルグランヴィア大阪",
+        "ko": "ホテルグランヴィア大阪",
+        "zh-TW": "ホテルグランヴィア大阪",
+        "zh-CN": "ホテルグランヴィア大阪"
+      }
+    },
+    {
+      "id": "a5336bb9-321b-40a0-9d87-cf9d1e6d9d9b",
+      "kind": "hotel",
+      "destination_id": "osaka",
+      "source_url": "https://sotetsu-hotels.com/grand-fresa/namba/access/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "98f97994a58d0b34df0b36e34795eb3077f19f502a0f46334d0a4a70990c25b5",
+      "booking_option_ids": [
+        "7380ce11-d500-4263-a309-f864e58162d5",
+        "8db458f5-78eb-4a43-978a-2793bafe3bde",
+        "55853130-59d2-49e3-a064-0201f8df804a",
+        "711badb9-7b4b-4602-92d7-191231d0287b"
+      ],
+      "titles_by_locale": {
+        "en": "相鉄グランドフレッサ 大阪なんば",
+        "ja": "相鉄グランドフレッサ 大阪なんば",
+        "ko": "相鉄グランドフレッサ 大阪なんば",
+        "zh-TW": "相鉄グランドフレッサ 大阪なんば",
+        "zh-CN": "相鉄グランドフレッサ 大阪なんば"
+      }
+    },
+    {
+      "id": "a725fc3d-60bc-4f4b-9ca5-00a87ee6af6a",
+      "kind": "hotel",
+      "destination_id": "osaka",
+      "source_url": "https://www.hotelmonterey.co.jp/lasoeur_osaka/access/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "98f97994a58d0b34df0b36e34795eb3077f19f502a0f46334d0a4a70990c25b5",
+      "booking_option_ids": [
+        "894a022a-0bfb-4976-92ce-562df3f750d7",
+        "eef268cc-63ed-44cc-a05d-f563153796b5",
+        "74c844f7-3624-4e26-978d-cb80d72f8556",
+        "dc1e4e17-0dc5-4b74-b01b-84ec91a1a9df"
+      ],
+      "titles_by_locale": {
+        "en": "ホテルモントレ ラ・スール大阪",
+        "ja": "ホテルモントレ ラ・スール大阪",
+        "ko": "ホテルモントレ ラ・スール大阪",
+        "zh-TW": "ホテルモントレ ラ・スール大阪",
+        "zh-CN": "ホテルモントレ ラ・スール大阪"
+      }
+    },
+    {
+      "id": "c74448b6-1fa7-426e-b5af-17b7d0953382",
+      "kind": "hotel",
+      "destination_id": "osaka",
+      "source_url": "https://www.hotel-royalclassic.jp/access",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "98f97994a58d0b34df0b36e34795eb3077f19f502a0f46334d0a4a70990c25b5",
+      "booking_option_ids": [
+        "b712edcc-85f8-4456-b2eb-8e1ec2d57de1",
+        "06402d25-6a6a-4f26-8aa7-e06b1234a880",
+        "e9fe4cc7-c7fd-4e53-8634-44afdb2c7ef8",
+        "76b12ee7-f02f-463b-9729-122818cb3dc9"
+      ],
+      "titles_by_locale": {
+        "en": "ホテルロイヤルクラシック大阪",
+        "ja": "ホテルロイヤルクラシック大阪",
+        "ko": "ホテルロイヤルクラシック大阪",
+        "zh-TW": "ホテルロイヤルクラシック大阪",
+        "zh-CN": "ホテルロイヤルクラシック大阪"
+      }
+    },
+    {
+      "id": "ee355d59-44c5-478d-a3eb-2c9053febe24",
+      "kind": "hotel",
+      "destination_id": "osaka",
+      "source_url": "https://gracery.com/namba/access/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "98f97994a58d0b34df0b36e34795eb3077f19f502a0f46334d0a4a70990c25b5",
+      "booking_option_ids": [
+        "648c4341-b60e-4780-a463-6733de26a8ba",
+        "dd3d94bf-67d1-4679-a092-06d676a1f21e",
+        "68d500d9-94f7-45b5-8c05-da04b475bf57",
+        "463f2c0a-12e5-46e8-b3d1-6e1c81c8bfb2",
+        "77d57d1e-33ce-40b2-a221-7f6c16194cbe",
+        "eb52fcf2-8c30-4291-9dd7-4695fd0e5672"
+      ],
+      "titles_by_locale": {
+        "en": "ホテルグレイスリー大阪なんば",
+        "ja": "ホテルグレイスリー大阪なんば",
+        "ko": "ホテルグレイスリー大阪なんば",
+        "zh-TW": "ホテルグレイスリー大阪なんば",
+        "zh-CN": "ホテルグレイスリー大阪なんば"
+      }
+    },
+    {
+      "id": "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+      "kind": "hotel",
+      "destination_id": "osaka",
+      "source_url": "https://www.hankyu-hotel.com/hotel/respire/osaka/access",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "98f97994a58d0b34df0b36e34795eb3077f19f502a0f46334d0a4a70990c25b5",
+      "booking_option_ids": [
+        "3afd61bc-e374-46f9-9f87-c4cf49569fa4",
+        "5db0b61d-90fa-4870-93a8-674ce72ec2a8",
+        "f16574e7-801b-4a2e-8495-5981655b7ff6",
+        "f0f56103-0b4b-4e56-8c44-5cdcee9f0b22"
+      ],
+      "titles_by_locale": {
+        "en": "ホテル阪急レスパイア大阪",
+        "ja": "ホテル阪急レスパイア大阪",
+        "ko": "ホテル阪急レスパイア大阪",
+        "zh-TW": "ホテル阪急レスパイア大阪",
+        "zh-CN": "ホテル阪急レスパイア大阪"
+      }
+    },
+    {
+      "id": "0f922904-6306-42ad-900e-bbb2402f4deb",
+      "kind": "hotel",
+      "destination_id": "seoul",
+      "source_url": "https://www.hyatt.com/park-hyatt/en-US/selph-park-hyatt-seoul/hotel-info",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "0aecaea9fbfd02fc788fa2d59568ffbeff1fab051d409dc2dc3eb9cff8ca13bb",
+      "booking_option_ids": [
+        "45416cf8-bac4-4b30-83dd-f450ad7773ff",
+        "9e5078c4-1283-43b3-b236-d721e01bbe36",
+        "661cdc12-9cb7-4c1e-99af-a2a28bb5232f"
+      ],
+      "titles_by_locale": {
+        "en": "Park Hyatt Seoul",
+        "ja": "Park Hyatt Seoul",
+        "ko": "Park Hyatt Seoul",
+        "zh-TW": "Park Hyatt Seoul",
+        "zh-CN": "Park Hyatt Seoul"
+      }
+    },
+    {
+      "id": "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+      "kind": "hotel",
+      "destination_id": "seoul",
+      "source_url": "https://solaria-seoul.nnr-h.com/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "99b2ecdbf97c3a35baf89a20352aaf82e466e2cc5d4f85623a7c26ef15f11a39",
+      "booking_option_ids": [
+        "c75606de-1030-4474-bd61-36ce08782962",
+        "51fc28c7-db15-4cc3-aaec-67be3261b968"
+      ],
+      "titles_by_locale": {
+        "en": "Solaria Nishitetsu Hotel Seoul Myeongdong",
+        "ja": "ソラリア西鉄ホテルソウル明洞",
+        "ko": "ソラリア西鉄ホテルソウル明洞",
+        "zh-TW": "ソラリア西鉄ホテルソウル明洞",
+        "zh-CN": "ソラリア西鉄ホテルソウル明洞"
+      }
+    },
+    {
+      "id": "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+      "kind": "hotel",
+      "destination_id": "seoul",
+      "source_url": "https://all.accor.com/hotel/B696/index.en.shtml",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "98000f83db82a21042556a74a49342c362ef3f781bfb6d6d4302261ce2bebd15",
+      "booking_option_ids": [
+        "9f57d1ce-ed2a-4b28-8b00-a62a2cc9c224",
+        "0340e85e-42c7-45f7-91f8-178de9597fd5",
+        "6982de70-7703-4e3a-82cd-1b40e26dda97",
+        "2e3ad995-c4ff-44f2-9e1b-59a59d3e93a2"
+      ],
+      "titles_by_locale": {
+        "en": "Mercure Ambassador Seoul Hongdae",
+        "ja": "머큐어 앰배서더 서울 홍대",
+        "ko": "머큐어 앰배서더 서울 홍대",
+        "zh-TW": "머큐어 앰배서더 서울 홍대",
+        "zh-CN": "머큐어 앰배서더 서울 홍대"
+      }
+    },
+    {
+      "id": "3d531f0f-1a58-4bd7-9311-22125f489742",
+      "kind": "hotel",
+      "destination_id": "seoul",
+      "source_url": "https://www.marriott.com/en-us/hotels/selfd-four-points-josun-seoul-myeongdong/overview/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "6e76a5fb543b5d2638dba234540997d6c527cd2fc5e05d1354021a0a4f2649b1",
+      "booking_option_ids": [
+        "0b5fdf65-ddc1-4f09-aeb5-b217e99eaee1",
+        "cef042b9-5f49-4199-ac83-3f8f28e4f918",
+        "a40752ba-b5bc-498a-9700-dc42b9799a02"
+      ],
+      "titles_by_locale": {
+        "en": "Four Points by Sheraton Josun, Seoul Myeongdong",
+        "ja": "Four Points by Sheraton Josun, Seoul Myeongdong",
+        "ko": "Four Points by Sheraton Josun, Seoul Myeongdong",
+        "zh-TW": "Four Points by Sheraton Josun, Seoul Myeongdong",
+        "zh-CN": "Four Points by Sheraton Josun, Seoul Myeongdong"
+      }
+    },
+    {
+      "id": "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+      "kind": "hotel",
+      "destination_id": "seoul",
+      "source_url": "https://www.marriott.com/en-us/hotels/selwi-the-westin-josun-seoul/overview/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "f137f1fa336d1bbefa48ed3218855d27fc5e2f7c9b2159d08e15ecc71e2fe33b",
+      "booking_option_ids": [
+        "4684d23b-a65b-409c-934f-1ca66bfd78bb",
+        "7dc9e9eb-a3e5-4172-a8aa-b98c1fd104a8",
+        "43721237-040b-47e2-b6ed-446dd4030df0"
+      ],
+      "titles_by_locale": {
+        "en": "The Westin Josun Seoul",
+        "ja": "The Westin Josun Seoul",
+        "ko": "The Westin Josun Seoul",
+        "zh-TW": "The Westin Josun Seoul",
+        "zh-CN": "The Westin Josun Seoul"
+      }
+    },
+    {
+      "id": "98c3b936-3470-45b3-b0dc-50353830f2df",
+      "kind": "hotel",
+      "destination_id": "seoul",
+      "source_url": "https://www.lottehotel.com/prerendered/gangnam-l7/en/about/information/index.html",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "80e7b77f25cda6995086087963ebdc617eda3284855af0ef605f3c46d14e2499",
+      "booking_option_ids": [
+        "4c7a6720-54d0-47ad-a9a3-3b14af04b8f3",
+        "41fba9ac-0423-495d-be06-ec943031d84f",
+        "93d7012c-2dd4-4a15-af28-b60d91348825"
+      ],
+      "titles_by_locale": {
+        "en": "L7 GANGNAM by LOTTE HOTELS",
+        "ja": "L7 GANGNAM by LOTTE HOTELS",
+        "ko": "L7 GANGNAM by LOTTE HOTELS",
+        "zh-TW": "L7 GANGNAM by LOTTE HOTELS",
+        "zh-CN": "L7 GANGNAM by LOTTE HOTELS"
+      }
+    },
+    {
+      "id": "c70a6326-4302-4394-afb4-ff7a018272a5",
+      "kind": "hotel",
+      "destination_id": "seoul",
+      "source_url": "https://www.lottehotel.com/prerendered/myeongdong-l7/zh/about/location/index.html",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "270d69c4176b15249c43afcc5557cde5af8456ad07233d8f82aaf62b3622ec69",
+      "booking_option_ids": [
+        "6d7b7332-e87a-4e25-b405-184d9b4d8293",
+        "d9c27b3b-b4b0-4147-b35d-b99a2b263ae9",
+        "90b7a1de-f2e1-4390-afe9-b90784758bea"
+      ],
+      "titles_by_locale": {
+        "en": "L7 MYEONGDONG by LOTTE HOTELS",
+        "ja": "L7 MYEONGDONG by LOTTE HOTELS",
+        "ko": "L7 MYEONGDONG by LOTTE HOTELS",
+        "zh-TW": "L7 MYEONGDONG by LOTTE HOTELS",
+        "zh-CN": "L7 MYEONGDONG by LOTTE HOTELS"
+      }
+    },
+    {
+      "id": "e5a8c571-961a-4dea-b36f-43624c85db82",
+      "kind": "hotel",
+      "destination_id": "seoul",
+      "source_url": "https://www.rysehotel.co.kr/contact/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "943bcdff6ca9d6c2584549a7890a40098f0c15479a3bf06ec8f10c51bb9b82f4",
+      "booking_option_ids": [
+        "68411f9a-fc8b-4132-b5fb-6f0221f711fa",
+        "ce37fe1a-e52f-4177-8efb-59790fe662e8",
+        "98c4d502-9301-4c8c-8c89-90819af6b2c9",
+        "d677d8f6-a084-4219-b590-cc42f98158c6"
+      ],
+      "titles_by_locale": {
+        "en": "RYSE, Autograph Collection",
+        "ja": "RYSE, Autograph Collection",
+        "ko": "RYSE, Autograph Collection",
+        "zh-TW": "RYSE, Autograph Collection",
+        "zh-CN": "RYSE, Autograph Collection"
+      }
+    },
+    {
+      "id": "e94492db-9582-4457-b47f-4b44f3112fbb",
+      "kind": "hotel",
+      "destination_id": "seoul",
+      "source_url": "https://www.ihg.com/intercontinental/hotels/us/en/seoul/seoha/hoteldetail",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "077c793fe771303d4ff14e0f8e501f10be7e3fb88ab49aa16dc92b80acf83730",
+      "booking_option_ids": [
+        "ea3b7303-f0c0-4677-b38a-37431d3a8d7b",
+        "325269df-e6e3-47e1-91e3-c4ae08f8453c",
+        "3808a373-0fe9-4054-8c26-9aff87cb979a",
+        "481be31b-86ce-4068-b464-0087353c21ff"
+      ],
+      "titles_by_locale": {
+        "en": "InterContinental Grand Seoul Parnas",
+        "ja": "InterContinental Grand Seoul Parnas",
+        "ko": "InterContinental Grand Seoul Parnas",
+        "zh-TW": "InterContinental Grand Seoul Parnas",
+        "zh-CN": "InterContinental Grand Seoul Parnas"
+      }
+    },
+    {
+      "id": "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+      "kind": "hotel",
+      "destination_id": "seoul",
+      "source_url": "https://www.lottehotel.com/prerendered/hongdae-l7/ja/about/faq/index.html",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "f5ef72cb51bcdfb51e4902ab10b43359cd2c4c5948b9d38bc6abe009190cf842",
+      "booking_option_ids": [
+        "cdfbf190-becf-4103-a74a-3b107ebbccb4",
+        "b2eee839-6ba2-42a1-8dad-c74b6244f7a6",
+        "9c020165-3328-4e31-af2b-90dbef98afef"
+      ],
+      "titles_by_locale": {
+        "en": "L7 HONGDAE by LOTTE HOTELS",
+        "ja": "L7 HONGDAE by LOTTE HOTELS",
+        "ko": "L7 HONGDAE by LOTTE HOTELS",
+        "zh-TW": "L7 HONGDAE by LOTTE HOTELS",
+        "zh-CN": "L7 HONGDAE by LOTTE HOTELS"
+      }
+    },
+    {
+      "id": "177996ee-887e-48b8-9ade-240e47675438",
+      "kind": "hotel",
+      "destination_id": "taipei",
+      "source_url": "https://solaria-taipei.nnr-h.com/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "18114658205c3632b1547961ab38470ead7935f368fff5919b3f6ebb48dd4a90",
+      "booking_option_ids": [
+        "e2ce0d9d-687f-43eb-b0d6-b1774f58f474",
+        "c6f9ae48-0fae-451b-a930-f43feddac5d7",
+        "180844c8-c83e-4aa3-90a5-7a6d17f358a2",
+        "d280e943-ca49-485d-a4b9-8f90462a0845",
+        "3a3fc414-1e46-426f-9cd5-4e23153cbba6"
+      ],
+      "titles_by_locale": {
+        "en": "索拉利亞西鐵飯店台北西門",
+        "ja": "索拉利亞西鐵飯店台北西門",
+        "ko": "索拉利亞西鐵飯店台北西門",
+        "zh-TW": "索拉利亞西鐵飯店台北西門",
+        "zh-CN": "索拉利亞西鐵飯店台北西門"
+      }
+    },
+    {
+      "id": "535688c6-4370-4550-9a66-d35c4f907eef",
+      "kind": "hotel",
+      "destination_id": "taipei",
+      "source_url": "https://c3.cityinn.com.tw/tw/location-t/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "52b705aa506f445983cb36da3eda0a9a69de98e4bffb781c2a6464bdb4a8dbee",
+      "booking_option_ids": [
+        "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+        "18ca5278-acf4-41db-967f-8cea1b247a71",
+        "14fa1772-1050-41d1-b40d-87eb004bd254"
+      ],
+      "titles_by_locale": {
+        "en": "新驛旅店 台北車站三館",
+        "ja": "新驛旅店 台北車站三館",
+        "ko": "新驛旅店 台北車站三館",
+        "zh-TW": "新驛旅店 台北車站三館",
+        "zh-CN": "新驛旅店 台北車站三館"
+      }
+    },
+    {
+      "id": "68646c86-2aed-4bd6-a453-29450ab50d6c",
+      "kind": "hotel",
+      "destination_id": "taipei",
+      "source_url": "https://www.palaisdechinehotel.com/pdc_tw/pages/35/0/195",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "5238fce1696430f268615e6c36a5661a5f8239e0ba77917ae6d51f52c4db5edc",
+      "booking_option_ids": [
+        "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+        "4057e9ce-b353-437a-b2c8-3097222c8fb4",
+        "31b17c88-f69b-4671-8b5a-68c99dd9bf62"
+      ],
+      "titles_by_locale": {
+        "en": "君品酒店",
+        "ja": "君品酒店",
+        "ko": "君品酒店",
+        "zh-TW": "君品酒店",
+        "zh-CN": "君品酒店"
+      }
+    },
+    {
+      "id": "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+      "kind": "hotel",
+      "destination_id": "taipei",
+      "source_url": "https://www.cosmos-hotel.com.tw/%E9%A3%AF%E5%BA%97%E4%BD%8D%E7%BD%AE/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "6f68ee655660d884231fd0406d438eadf7bc770e96b08607b103c01c07b38f77",
+      "booking_option_ids": [
+        "c9f5a980-3e11-4624-8117-2686f528a6b0",
+        "edc6dcfc-7b6a-4c91-b988-738cf943a40b",
+        "29656832-a29f-465c-aaf8-cae4c339613a",
+        "8d5f3a67-29be-4c54-8095-3f9ce514fed7"
+      ],
+      "titles_by_locale": {
+        "en": "台北天成大飯店",
+        "ja": "台北天成大飯店",
+        "ko": "台北天成大飯店",
+        "zh-TW": "台北天成大飯店",
+        "zh-CN": "台北天成大飯店"
+      }
+    },
+    {
+      "id": "911db160-e332-41c6-95f6-3fa89d9a711d",
+      "kind": "hotel",
+      "destination_id": "taipei",
+      "source_url": "https://www.humblehousehotels.com/zh-tw/websev?cat=contact",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "5c162c2b824885150d6a4301ce6eb575884c9dbc88596e80e484a7a17d7b477c",
+      "booking_option_ids": [
+        "0cdc165e-5b3b-405c-b549-0e5f01ef5fd6",
+        "2712c97b-ad7a-44e4-a8ec-b6ec94d4c5ae",
+        "cc0d8398-1d6a-4f10-89de-448c7694ce20",
+        "897df2fc-6ca6-4987-8aad-c4230b546d8d",
+        "60ec6688-75a6-4782-a2bd-1a93660b1a17",
+        "2ebbbe05-04a9-4b14-8747-79a4c3ca0de9"
+      ],
+      "titles_by_locale": {
+        "en": "台北艾麗酒店",
+        "ja": "台北艾麗酒店",
+        "ko": "台北艾麗酒店",
+        "zh-TW": "台北艾麗酒店",
+        "zh-CN": "台北艾麗酒店"
+      }
+    },
+    {
+      "id": "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+      "kind": "hotel",
+      "destination_id": "taipei",
+      "source_url": "https://www.marriott.com/en-us/hotels/tpewh-w-taipei/overview/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "f97cc53672650ed6b9c7b9e1e36e770e15f9f236cd3a211b516582bb0ad5ab1d",
+      "booking_option_ids": [
+        "1bc2ccde-a724-4077-a7cd-9121959ba655",
+        "b0c20080-76ad-4b1b-9a4d-657654387ecd",
+        "3c15c159-2e53-4a78-846b-de63d06dfa0c",
+        "b2abb31a-1a7f-423c-a88b-c550badce271",
+        "2ff150eb-5bdd-4b0f-9c60-9696f98d4a55"
+      ],
+      "titles_by_locale": {
+        "en": "台北W飯店",
+        "ja": "台北W飯店",
+        "ko": "台北W飯店",
+        "zh-TW": "台北W飯店",
+        "zh-CN": "台北W飯店"
+      }
+    },
+    {
+      "id": "ad6930f9-64e2-4298-b90f-ad24fae50060",
+      "kind": "hotel",
+      "destination_id": "taipei",
+      "source_url": "https://taipei.caesarpark.com.tw/about/traffic_information/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "aa50d9814d517c1e7ca540cf3ad078e350d0671f86b47efa809dc66f596fbfc0",
+      "booking_option_ids": [
+        "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+        "a789b1c7-46c7-42a2-916d-099bad5f18de",
+        "2d142178-60cb-404c-8bae-63aa938dbf74"
+      ],
+      "titles_by_locale": {
+        "en": "台北凱撒大飯店",
+        "ja": "台北凱撒大飯店",
+        "ko": "台北凱撒大飯店",
+        "zh-TW": "台北凱撒大飯店",
+        "zh-CN": "台北凱撒大飯店"
+      }
+    },
+    {
+      "id": "c934905c-8857-4dfc-963e-9d19e13cd16e",
+      "kind": "hotel",
+      "destination_id": "taipei",
+      "source_url": "https://www.amba-hotels.com/ximending/picture/files/amba-TAIPEI-XIMENDING-event-venues-capacity-square-feet.pdf",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "a75d9fc6728a0e8d2e4ba8dccd53862fcfc56d2048e4d2d641f55eb24bb43b7d",
+      "booking_option_ids": [
+        "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+        "f3ed1561-3046-4647-8c90-0ab634d5c7e2",
+        "03d141b8-18bb-4eb8-b04f-60b82c47a25d"
+      ],
+      "titles_by_locale": {
+        "en": "台北西門町意舍酒店",
+        "ja": "台北西門町意舍酒店",
+        "ko": "台北西門町意舍酒店",
+        "zh-TW": "台北西門町意舍酒店",
+        "zh-CN": "台北西門町意舍酒店"
+      }
+    },
+    {
+      "id": "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+      "kind": "hotel",
+      "destination_id": "taipei",
+      "source_url": "https://www.westgatehotel.com.tw/location/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "64809b88b026739e57cd5f306a759a52f7e9cdcfbdafa0d51cdfc13fc6b333d9",
+      "booking_option_ids": [
+        "837e69b7-aa5e-477f-b380-90b315d179fd",
+        "32947818-bbb6-4bad-beac-18465e8fb0b4",
+        "2997aa94-f717-469e-90e8-91e6238375c4",
+        "777a0f1d-f066-40f3-82ad-46f0f561ff67"
+      ],
+      "titles_by_locale": {
+        "en": "WESTGATE Hotel 永安棧",
+        "ja": "WESTGATE Hotel 永安棧",
+        "ko": "WESTGATE Hotel 永安棧",
+        "zh-TW": "WESTGATE Hotel 永安棧",
+        "zh-CN": "WESTGATE Hotel 永安棧"
+      }
+    },
+    {
+      "id": "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+      "kind": "hotel",
+      "destination_id": "taipei",
+      "source_url": "https://www.hyatt.com/grand-hyatt/zh-HK/taigh-grand-hyatt-taipei/hotel-info",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "36c9ea91de729c6a98d1658ab8b129f3a08ef6d31f865908413855d6e2f0ede5",
+      "booking_option_ids": [
+        "d47ec0f3-d6fd-4124-9a59-ef4efdff6980",
+        "994d3ce1-1ed1-474e-9349-f6197ce5aafa",
+        "4045f37e-444a-4785-88b1-e6cdcd69afa9",
+        "fbff5aa0-6b40-48dd-a4ce-727ae37c9fee",
+        "1be7ac66-3205-4cc5-81af-38d9fbbd00ba"
+      ],
+      "titles_by_locale": {
+        "en": "台北君悅酒店",
+        "ja": "台北君悅酒店",
+        "ko": "台北君悅酒店",
+        "zh-TW": "台北君悅酒店",
+        "zh-CN": "台北君悅酒店"
+      }
+    },
+    {
+      "id": "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+      "kind": "hotel",
+      "destination_id": "tokyo",
+      "source_url": "https://gracery.com/shinjuku/access/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "a923ad429a88bd280e24a184b244bb4034b7ef99f3c9a4910bdbc7f83ed31c2c",
+      "booking_option_ids": [
+        "2447ca52-01ed-5edf-9b12-1eca6450c7ab",
+        "d57fe330-7b68-4fe6-8fac-11ca336bfc69",
+        "e7c85c8a-07e5-49dd-8b21-420ebcbad47a",
+        "224dffcd-9fb9-4371-aa50-97189d2f25e8",
+        "8399554e-0097-4538-94ad-0d66f0e7f695",
+        "1cf185d2-e015-41ac-88ca-00ee55fbcf03"
+      ],
+      "titles_by_locale": {
+        "en": "Hotel Gracery Shinjuku",
+        "ja": "ホテルグレイスリー新宿",
+        "ko": "ホテルグレイスリー新宿",
+        "zh-TW": "ホテルグレイスリー新宿",
+        "zh-CN": "ホテルグレイスリー新宿"
+      }
+    },
+    {
+      "id": "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+      "kind": "hotel",
+      "destination_id": "tokyo",
+      "source_url": "https://www.jrk-hotels.co.jp/Shinjuku/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "a923ad429a88bd280e24a184b244bb4034b7ef99f3c9a4910bdbc7f83ed31c2c",
+      "booking_option_ids": [
+        "27eb102d-cb4c-50b6-9976-57a87cfb0d1d",
+        "d79a7fff-b43f-4ec5-a2ad-a7855ff335ff",
+        "56327f30-feb0-4992-8fad-d91798b960c6",
+        "6af4e94a-7e49-4bf7-80d5-ef1897f0c4bb",
+        "46f7993d-4af3-4659-b1f7-6e32b34d02d3",
+        "ec50cedf-c5bb-4ba1-bc1a-51038eebe2c6"
+      ],
+      "titles_by_locale": {
+        "en": "JR九州ホテル ブラッサム新宿",
+        "ja": "JR九州ホテル ブラッサム新宿",
+        "ko": "JR九州ホテル ブラッサム新宿",
+        "zh-TW": "JR九州ホテル ブラッサム新宿",
+        "zh-CN": "JR九州ホテル ブラッサム新宿"
+      }
+    },
+    {
+      "id": "6dde791e-5b13-450f-b743-0e66411af7da",
+      "kind": "hotel",
+      "destination_id": "tokyo",
+      "source_url": "https://www.ryumeikan-tokyo.jp/access/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "a923ad429a88bd280e24a184b244bb4034b7ef99f3c9a4910bdbc7f83ed31c2c",
+      "booking_option_ids": [
+        "0fd5478c-78a3-4cfb-be12-1c3808c21ebc",
+        "6957bfea-4982-459e-b71a-f4351a107b78",
+        "09f6e61b-ff11-4907-9fbc-1d97462fd663",
+        "741bbf90-898a-42d0-86c2-ce5afd5001cb"
+      ],
+      "titles_by_locale": {
+        "en": "ホテル龍名館東京",
+        "ja": "ホテル龍名館東京",
+        "ko": "ホテル龍名館東京",
+        "zh-TW": "ホテル龍名館東京",
+        "zh-CN": "ホテル龍名館東京"
+      }
+    },
+    {
+      "id": "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+      "kind": "hotel",
+      "destination_id": "tokyo",
+      "source_url": "https://www.gate-hotel.jp/asakusa-kaminarimon/access.html",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "a923ad429a88bd280e24a184b244bb4034b7ef99f3c9a4910bdbc7f83ed31c2c",
+      "booking_option_ids": [
+        "78e00bad-b47c-5fba-ad7f-42fed82e4749",
+        "4a67b50a-4a40-4a55-a26f-8e7b592cd8ee",
+        "1715489e-3d34-4009-bf03-3e464c00e6d5",
+        "ca99705a-b740-4dd7-a3d3-b33503dfd9d6"
+      ],
+      "titles_by_locale": {
+        "en": "THE GATE HOTEL KAMINARIMON by HULIC",
+        "ja": "ザ・ゲートホテル雷門 by HULIC",
+        "ko": "ザ・ゲートホテル雷門 by HULIC",
+        "zh-TW": "ザ・ゲートホテル雷門 by HULIC",
+        "zh-CN": "ザ・ゲートホテル雷門 by HULIC"
+      }
+    },
+    {
+      "id": "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+      "kind": "hotel",
+      "destination_id": "tokyo",
+      "source_url": "https://www.gardenhotels.co.jp/millennium-tokyo/access/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "a923ad429a88bd280e24a184b244bb4034b7ef99f3c9a4910bdbc7f83ed31c2c",
+      "booking_option_ids": [
+        "3266382c-cadf-4df4-954a-5b6735cd952c",
+        "3d4a2875-de67-4e41-86d2-3b7fcd819da9",
+        "377a5b5f-df98-422c-8138-9103783e2db9",
+        "5c01831e-2e59-4ee4-959f-44180f2d8071"
+      ],
+      "titles_by_locale": {
+        "en": "ミレニアム 三井ガーデンホテル 東京",
+        "ja": "ミレニアム 三井ガーデンホテル 東京",
+        "ko": "ミレニアム 三井ガーデンホテル 東京",
+        "zh-TW": "ミレニアム 三井ガーデンホテル 東京",
+        "zh-CN": "ミレニアム 三井ガーデンホテル 東京"
+      }
+    },
+    {
+      "id": "87ac9f12-2b00-48b1-897e-bf66c5aeb616",
+      "kind": "hotel",
+      "destination_id": "tokyo",
+      "source_url": "https://www.keioplaza.co.jp/access/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "a923ad429a88bd280e24a184b244bb4034b7ef99f3c9a4910bdbc7f83ed31c2c",
+      "booking_option_ids": [
+        "279c9958-acf4-5ae4-aa38-df383a7c7ca3",
+        "a659fd94-8cc5-4d54-98c6-2099c30891fc",
+        "935bbce0-f79f-425b-be5d-9365039e02c9",
+        "cffed808-67e9-4b29-b7dd-343a1c2f9f36",
+        "a414a1fb-63ba-4e38-aa6c-370fdab74060"
+      ],
+      "titles_by_locale": {
+        "en": "Keio Plaza Hotel Tokyo",
+        "ja": "京王プラザホテル",
+        "ko": "京王プラザホテル",
+        "zh-TW": "京王プラザホテル",
+        "zh-CN": "京王プラザホテル"
+      }
+    },
+    {
+      "id": "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+      "kind": "hotel",
+      "destination_id": "tokyo",
+      "source_url": "https://www.gardenhotels.co.jp/kyobashi/access/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "a923ad429a88bd280e24a184b244bb4034b7ef99f3c9a4910bdbc7f83ed31c2c",
+      "booking_option_ids": [
+        "bf0203d2-ae5c-4085-8ab1-2be98047fd75",
+        "b5fa82ed-896c-487e-99ec-e4e36df8496f",
+        "12a4900e-2624-4932-a785-0ffa45dcdb02",
+        "04b51b83-700d-43ae-b693-6c892151cd0a",
+        "e0d9e872-550f-435f-8496-10c2c3826107"
+      ],
+      "titles_by_locale": {
+        "en": "三井ガーデンホテル京橋",
+        "ja": "三井ガーデンホテル京橋",
+        "ko": "三井ガーデンホテル京橋",
+        "zh-TW": "三井ガーデンホテル京橋",
+        "zh-CN": "三井ガーデンホテル京橋"
+      }
+    },
+    {
+      "id": "b79582da-592f-4a33-aa22-6457cf815094",
+      "kind": "hotel",
+      "destination_id": "tokyo",
+      "source_url": "https://www.hennnahotel.com/asakusa-tawaramachi/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "a923ad429a88bd280e24a184b244bb4034b7ef99f3c9a4910bdbc7f83ed31c2c",
+      "booking_option_ids": [
+        "2af4cdf3-c4b4-5cc0-a6c3-14069d54e9bb",
+        "33cd1c97-5f2d-44c1-b8e6-4778a9e70b21",
+        "0ab5ef69-1983-4bd3-a3f5-4244222bcda6",
+        "5cf89cd2-b9fd-4d10-aa2d-de2ca25a17f7",
+        "f6adfaca-de6e-45e8-a83f-894e6c4cfc39"
+      ],
+      "titles_by_locale": {
+        "en": "変なホテルプレミア東京 浅草田原町",
+        "ja": "変なホテルプレミア東京 浅草田原町",
+        "ko": "変なホテルプレミア東京 浅草田原町",
+        "zh-TW": "変なホテルプレミア東京 浅草田原町",
+        "zh-CN": "変なホテルプレミア東京 浅草田原町"
+      }
+    },
+    {
+      "id": "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+      "kind": "hotel",
+      "destination_id": "tokyo",
+      "source_url": "https://gracery.com/asakusa/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "a923ad429a88bd280e24a184b244bb4034b7ef99f3c9a4910bdbc7f83ed31c2c",
+      "booking_option_ids": [
+        "94208dea-57d0-5426-a1be-e2931ce5f181",
+        "db4ecb6f-c90b-4db7-88a1-5906717b609c",
+        "6cf28949-c58b-4088-994c-880014a00c89",
+        "7d5f839c-2fcb-4021-b745-eacdb5e3378a"
+      ],
+      "titles_by_locale": {
+        "en": "Hotel Gracery Asakusa",
+        "ja": "ホテルグレイスリー浅草",
+        "ko": "ホテルグレイスリー浅草",
+        "zh-TW": "ホテルグレイスリー浅草",
+        "zh-CN": "ホテルグレイスリー浅草"
+      }
+    },
+    {
+      "id": "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+      "kind": "hotel",
+      "destination_id": "tokyo",
+      "source_url": "https://www.tokyostationhotel.jp/access/",
+      "reference_price": null,
+      "currency": null,
+      "price_checked_at": null,
+      "source_credit_set_sha256": "a923ad429a88bd280e24a184b244bb4034b7ef99f3c9a4910bdbc7f83ed31c2c",
+      "booking_option_ids": [
+        "3d48221c-b5a4-4800-a076-02cf10a364a3",
+        "442f45ca-8b5a-483c-857f-2100975ea741",
+        "3678bebc-9166-4830-b846-c707f940c8e9",
+        "ed7ed57b-d83e-4535-be02-baa9e293bef7",
+        "d2271918-ecd6-478f-ab2c-3e4a6d576a1a"
+      ],
+      "titles_by_locale": {
+        "en": "東京ステーションホテル",
+        "ja": "東京ステーションホテル",
+        "ko": "東京ステーションホテル",
+        "zh-TW": "東京ステーションホテル",
+        "zh-CN": "東京ステーションホテル"
+      }
+    }
+  ],
+  "public_booking_options": [
+    {
+      "product_id": "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+      "id": "02673f9c-4e1c-4aca-9a87-9da1cfcd9f1c",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+      "id": "0340e85e-42c7-45f7-91f8-178de9597fd5",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+      "id": "037243cc-e506-4ec7-a8d1-43abb828f21f",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "c934905c-8857-4dfc-963e-9d19e13cd16e",
+      "id": "03d141b8-18bb-4eb8-b04f-60b82c47a25d",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+      "id": "04b51b83-700d-43ae-b693-6c892151cd0a",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "c74448b6-1fa7-426e-b5af-17b7d0953382",
+      "id": "06402d25-6a6a-4f26-8aa7-e06b1234a880",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "6dde791e-5b13-450f-b743-0e66411af7da",
+      "id": "09f6e61b-ff11-4907-9fbc-1d97462fd663",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "b79582da-592f-4a33-aa22-6457cf815094",
+      "id": "0ab5ef69-1983-4bd3-a3f5-4244222bcda6",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "3d531f0f-1a58-4bd7-9311-22125f489742",
+      "id": "0b5fdf65-ddc1-4f09-aeb5-b217e99eaee1",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "911db160-e332-41c6-95f6-3fa89d9a711d",
+      "id": "0cdc165e-5b3b-405c-b549-0e5f01ef5fd6",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "6dde791e-5b13-450f-b743-0e66411af7da",
+      "id": "0fd5478c-78a3-4cfb-be12-1c3808c21ebc",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+      "id": "10508f3b-79c6-458e-9a45-297496c229b5",
+      "provider": "rakuten",
+      "name": "Rakuten Travel",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+      "id": "12a4900e-2624-4932-a785-0ffa45dcdb02",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "535688c6-4370-4550-9a66-d35c4f907eef",
+      "id": "14fa1772-1050-41d1-b40d-87eb004bd254",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+      "id": "1715489e-3d34-4009-bf03-3e464c00e6d5",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "177996ee-887e-48b8-9ade-240e47675438",
+      "id": "180844c8-c83e-4aa3-90a5-7a6d17f358a2",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "535688c6-4370-4550-9a66-d35c4f907eef",
+      "id": "18ca5278-acf4-41db-967f-8cea1b247a71",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+      "id": "1a252781-62f1-4ce1-b216-694bc3cc63a5",
+      "provider": "expedia",
+      "name": "Expedia",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+      "id": "1acd2432-987d-4a9b-ba97-33a8e435e892",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+      "id": "1bc2ccde-a724-4077-a7cd-9121959ba655",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+      "id": "1be7ac66-3205-4cc5-81af-38d9fbbd00ba",
+      "provider": "rakuten",
+      "name": "Rakuten Travel",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+      "id": "1cf185d2-e015-41ac-88ca-00ee55fbcf03",
+      "provider": "rakuten",
+      "name": "Rakuten Travel",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "29a7720d-11c2-46ae-abe2-001cd69ac301",
+      "id": "1fb5ce93-a359-4e62-9144-2b1cc15b89a2",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+      "id": "224dffcd-9fb9-4371-aa50-97189d2f25e8",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+      "id": "2447ca52-01ed-5edf-9b12-1eca6450c7ab",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "911db160-e332-41c6-95f6-3fa89d9a711d",
+      "id": "2712c97b-ad7a-44e4-a8ec-b6ec94d4c5ae",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "87ac9f12-2b00-48b1-897e-bf66c5aeb616",
+      "id": "279c9958-acf4-5ae4-aa38-df383a7c7ca3",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+      "id": "27eb102d-cb4c-50b6-9976-57a87cfb0d1d",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+      "id": "29656832-a29f-465c-aaf8-cae4c339613a",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+      "id": "2997aa94-f717-469e-90e8-91e6238375c4",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "b79582da-592f-4a33-aa22-6457cf815094",
+      "id": "2af4cdf3-c4b4-5cc0-a6c3-14069d54e9bb",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ad6930f9-64e2-4298-b90f-ad24fae50060",
+      "id": "2d142178-60cb-404c-8bae-63aa938dbf74",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+      "id": "2e3ad995-c4ff-44f2-9e1b-59a59d3e93a2",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "911db160-e332-41c6-95f6-3fa89d9a711d",
+      "id": "2ebbbe05-04a9-4b14-8747-79a4c3ca0de9",
+      "provider": "rakuten",
+      "name": "Rakuten Travel",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+      "id": "2ff150eb-5bdd-4b0f-9c60-9696f98d4a55",
+      "provider": "expedia",
+      "name": "Expedia",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "c934905c-8857-4dfc-963e-9d19e13cd16e",
+      "id": "3027e80b-fc5d-4bc5-97fd-9f21e6f3cdcd",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "68646c86-2aed-4bd6-a453-29450ab50d6c",
+      "id": "31b17c88-f69b-4671-8b5a-68c99dd9bf62",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "e94492db-9582-4457-b47f-4b44f3112fbb",
+      "id": "325269df-e6e3-47e1-91e3-c4ae08f8453c",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+      "id": "3266382c-cadf-4df4-954a-5b6735cd952c",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+      "id": "32947818-bbb6-4bad-beac-18465e8fb0b4",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "352d2cf2-2a1b-48a4-ad94-3bfaa1a88303",
+      "id": "32981540-acd2-48d6-9f37-450e2e18eb34",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "b79582da-592f-4a33-aa22-6457cf815094",
+      "id": "33cd1c97-5f2d-44c1-b8e6-4778a9e70b21",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+      "id": "3678bebc-9166-4830-b846-c707f940c8e9",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+      "id": "37077846-829f-4afc-bfe2-01c94acc6ac1",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+      "id": "377a5b5f-df98-422c-8138-9103783e2db9",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "e94492db-9582-4457-b47f-4b44f3112fbb",
+      "id": "3808a373-0fe9-4054-8c26-9aff87cb979a",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "177996ee-887e-48b8-9ade-240e47675438",
+      "id": "3a3fc414-1e46-426f-9cd5-4e23153cbba6",
+      "provider": "expedia",
+      "name": "Expedia",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+      "id": "3afd61bc-e374-46f9-9f87-c4cf49569fa4",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "68646c86-2aed-4bd6-a453-29450ab50d6c",
+      "id": "3b4e7e4c-a99d-4788-95e3-bcab65b339b6",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "29a7720d-11c2-46ae-abe2-001cd69ac301",
+      "id": "3ba7e8b5-6667-43aa-ad73-23e40c05d121",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+      "id": "3c15c159-2e53-4a78-846b-de63d06dfa0c",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+      "id": "3c16bfa9-a0a4-4609-8ef2-127563d46ab5",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+      "id": "3d48221c-b5a4-4800-a076-02cf10a364a3",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+      "id": "3d4a2875-de67-4e41-86d2-3b7fcd819da9",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+      "id": "4045f37e-444a-4785-88b1-e6cdcd69afa9",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "68646c86-2aed-4bd6-a453-29450ab50d6c",
+      "id": "4057e9ce-b353-437a-b2c8-3097222c8fb4",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "98c3b936-3470-45b3-b0dc-50353830f2df",
+      "id": "41fba9ac-0423-495d-be06-ec943031d84f",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+      "id": "43721237-040b-47e2-b6ed-446dd4030df0",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+      "id": "442f45ca-8b5a-483c-857f-2100975ea741",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "0f922904-6306-42ad-900e-bbb2402f4deb",
+      "id": "45416cf8-bac4-4b30-83dd-f450ad7773ff",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ee355d59-44c5-478d-a3eb-2c9053febe24",
+      "id": "463f2c0a-12e5-46e8-b3d1-6e1c81c8bfb2",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+      "id": "4684d23b-a65b-409c-934f-1ca66bfd78bb",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+      "id": "46f7993d-4af3-4659-b1f7-6e32b34d02d3",
+      "provider": "expedia",
+      "name": "Expedia",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "e94492db-9582-4457-b47f-4b44f3112fbb",
+      "id": "481be31b-86ce-4068-b464-0087353c21ff",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+      "id": "4a67b50a-4a40-4a55-a26f-8e7b592cd8ee",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "98c3b936-3470-45b3-b0dc-50353830f2df",
+      "id": "4c7a6720-54d0-47ad-a9a3-3b14af04b8f3",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+      "id": "51fc28c7-db15-4cc3-aaec-67be3261b968",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "a5336bb9-321b-40a0-9d87-cf9d1e6d9d9b",
+      "id": "55853130-59d2-49e3-a064-0201f8df804a",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+      "id": "56327f30-feb0-4992-8fad-d91798b960c6",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "6b6f2564-93f4-4aff-aa97-bfe34d456cad",
+      "id": "5a23b490-18ed-465f-aa4e-3be06089b335",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "85bf59b8-1c01-4b0d-aa7b-138129b615b2",
+      "id": "5c01831e-2e59-4ee4-959f-44180f2d8071",
+      "provider": "rakuten",
+      "name": "Rakuten Travel",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "b79582da-592f-4a33-aa22-6457cf815094",
+      "id": "5cf89cd2-b9fd-4d10-aa2d-de2ca25a17f7",
+      "provider": "expedia",
+      "name": "Expedia",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+      "id": "5db0b61d-90fa-4870-93a8-674ce72ec2a8",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "911db160-e332-41c6-95f6-3fa89d9a711d",
+      "id": "60ec6688-75a6-4782-a2bd-1a93660b1a17",
+      "provider": "expedia",
+      "name": "Expedia",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ee355d59-44c5-478d-a3eb-2c9053febe24",
+      "id": "648c4341-b60e-4780-a463-6733de26a8ba",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "0f922904-6306-42ad-900e-bbb2402f4deb",
+      "id": "661cdc12-9cb7-4c1e-99af-a2a28bb5232f",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "e5a8c571-961a-4dea-b36f-43624c85db82",
+      "id": "68411f9a-fc8b-4132-b5fb-6f0221f711fa",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ee355d59-44c5-478d-a3eb-2c9053febe24",
+      "id": "68d500d9-94f7-45b5-8c05-da04b475bf57",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "6dde791e-5b13-450f-b743-0e66411af7da",
+      "id": "6957bfea-4982-459e-b71a-f4351a107b78",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+      "id": "6982de70-7703-4e3a-82cd-1b40e26dda97",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "29a7720d-11c2-46ae-abe2-001cd69ac301",
+      "id": "69d8b040-e631-46e9-aeb0-00b04367d898",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "29a7720d-11c2-46ae-abe2-001cd69ac301",
+      "id": "6a2411a7-372e-44eb-8a67-458917da05f4",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+      "id": "6af4e94a-7e49-4bf7-80d5-ef1897f0c4bb",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+      "id": "6cf28949-c58b-4088-994c-880014a00c89",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "c70a6326-4302-4394-afb4-ff7a018272a5",
+      "id": "6d7b7332-e87a-4e25-b405-184d9b4d8293",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "a5336bb9-321b-40a0-9d87-cf9d1e6d9d9b",
+      "id": "711badb9-7b4b-4602-92d7-191231d0287b",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "a5336bb9-321b-40a0-9d87-cf9d1e6d9d9b",
+      "id": "7380ce11-d500-4263-a309-f864e58162d5",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "6dde791e-5b13-450f-b743-0e66411af7da",
+      "id": "741bbf90-898a-42d0-86c2-ce5afd5001cb",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "a725fc3d-60bc-4f4b-9ca5-00a87ee6af6a",
+      "id": "74c844f7-3624-4e26-978d-cb80d72f8556",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "c74448b6-1fa7-426e-b5af-17b7d0953382",
+      "id": "76b12ee7-f02f-463b-9729-122818cb3dc9",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+      "id": "777a0f1d-f066-40f3-82ad-46f0f561ff67",
+      "provider": "expedia",
+      "name": "Expedia",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ee355d59-44c5-478d-a3eb-2c9053febe24",
+      "id": "77d57d1e-33ce-40b2-a221-7f6c16194cbe",
+      "provider": "expedia",
+      "name": "Expedia",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+      "id": "78e00bad-b47c-5fba-ad7f-42fed82e4749",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+      "id": "7d5f839c-2fcb-4021-b745-eacdb5e3378a",
+      "provider": "rakuten",
+      "name": "Rakuten Travel",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "90cc1cf8-30bd-4498-be0c-56f8fd9f5ee6",
+      "id": "7dc9e9eb-a3e5-4172-a8aa-b98c1fd104a8",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "f73ce087-d361-4f74-8bac-45ed71d5c1ce",
+      "id": "837e69b7-aa5e-477f-b380-90b315d179fd",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+      "id": "8399554e-0097-4538-94ad-0d66f0e7f695",
+      "provider": "expedia",
+      "name": "Expedia",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+      "id": "8726d3be-4304-4abd-9c2c-1ff8736f8fe7",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "a725fc3d-60bc-4f4b-9ca5-00a87ee6af6a",
+      "id": "894a022a-0bfb-4976-92ce-562df3f750d7",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "911db160-e332-41c6-95f6-3fa89d9a711d",
+      "id": "897df2fc-6ca6-4987-8aad-c4230b546d8d",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+      "id": "8d5f3a67-29be-4c54-8095-3f9ce514fed7",
+      "provider": "rakuten",
+      "name": "Rakuten Travel",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "a5336bb9-321b-40a0-9d87-cf9d1e6d9d9b",
+      "id": "8db458f5-78eb-4a43-978a-2793bafe3bde",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "c70a6326-4302-4394-afb4-ff7a018272a5",
+      "id": "90b7a1de-f2e1-4390-afe9-b90784758bea",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "87ac9f12-2b00-48b1-897e-bf66c5aeb616",
+      "id": "935bbce0-f79f-425b-be5d-9365039e02c9",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "98c3b936-3470-45b3-b0dc-50353830f2df",
+      "id": "93d7012c-2dd4-4a15-af28-b60d91348825",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+      "id": "94208dea-57d0-5426-a1be-e2931ce5f181",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "e5a8c571-961a-4dea-b36f-43624c85db82",
+      "id": "98c4d502-9301-4c8c-8c89-90819af6b2c9",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+      "id": "994d3ce1-1ed1-474e-9349-f6197ce5aafa",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+      "id": "9c020165-3328-4e31-af2b-90dbef98afef",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "0f922904-6306-42ad-900e-bbb2402f4deb",
+      "id": "9e5078c4-1283-43b3-b236-d721e01bbe36",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "287f69b8-95f4-4e05-817a-e13b4d5310b4",
+      "id": "9f57d1ce-ed2a-4b28-8b00-a62a2cc9c224",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "352d2cf2-2a1b-48a4-ad94-3bfaa1a88303",
+      "id": "a32ac29d-d586-4e91-bbb8-f7c6fa0498db",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "3d531f0f-1a58-4bd7-9311-22125f489742",
+      "id": "a40752ba-b5bc-498a-9700-dc42b9799a02",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "87ac9f12-2b00-48b1-897e-bf66c5aeb616",
+      "id": "a414a1fb-63ba-4e38-aa6c-370fdab74060",
+      "provider": "expedia",
+      "name": "Expedia",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "87ac9f12-2b00-48b1-897e-bf66c5aeb616",
+      "id": "a659fd94-8cc5-4d54-98c6-2099c30891fc",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ad6930f9-64e2-4298-b90f-ad24fae50060",
+      "id": "a789b1c7-46c7-42a2-916d-099bad5f18de",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+      "id": "a8f294f3-a944-4bd4-a34b-ab0ef59fe59e",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+      "id": "a93430c5-36ad-4023-ab80-f674d0325e56",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+      "id": "b0c20080-76ad-4b1b-9a4d-657654387ecd",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "940ceac6-8726-4be9-b00f-f5809dbc0f0b",
+      "id": "b2abb31a-1a7f-423c-a88b-c550badce271",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+      "id": "b2eee839-6ba2-42a1-8dad-c74b6244f7a6",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+      "id": "b5fa82ed-896c-487e-99ec-e4e36df8496f",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "c74448b6-1fa7-426e-b5af-17b7d0953382",
+      "id": "b712edcc-85f8-4456-b2eb-8e1ec2d57de1",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "32e00e1e-5976-46dd-90f2-bda4c44c1b2c",
+      "id": "ba807e07-e30a-4a9a-bad2-c2a4a3002b98",
+      "provider": "rakuten",
+      "name": "Rakuten Travel",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+      "id": "bf0203d2-ae5c-4085-8ab1-2be98047fd75",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "177996ee-887e-48b8-9ade-240e47675438",
+      "id": "c6f9ae48-0fae-451b-a930-f43feddac5d7",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "145e7bbb-df82-4bf9-8290-f5be7f9161a9",
+      "id": "c75606de-1030-4474-bd61-36ce08782962",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+      "id": "c9f5a980-3e11-4624-8117-2686f528a6b0",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "70eec2a6-582f-4c9d-9414-0eec588e85fd",
+      "id": "ca99705a-b740-4dd7-a3d3-b33503dfd9d6",
+      "provider": "rakuten",
+      "name": "Rakuten Travel",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "911db160-e332-41c6-95f6-3fa89d9a711d",
+      "id": "cc0d8398-1d6a-4f10-89de-448c7694ce20",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ef29cc9a-331d-4e8f-9fd0-ea30cdcecc5d",
+      "id": "cdfbf190-becf-4103-a74a-3b107ebbccb4",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "e5a8c571-961a-4dea-b36f-43624c85db82",
+      "id": "ce37fe1a-e52f-4177-8efb-59790fe662e8",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "3d531f0f-1a58-4bd7-9311-22125f489742",
+      "id": "cef042b9-5f49-4199-ac83-3f8f28e4f918",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "87ac9f12-2b00-48b1-897e-bf66c5aeb616",
+      "id": "cffed808-67e9-4b29-b7dd-343a1c2f9f36",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+      "id": "d2271918-ecd6-478f-ab2c-3e4a6d576a1a",
+      "provider": "rakuten",
+      "name": "Rakuten Travel",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "177996ee-887e-48b8-9ade-240e47675438",
+      "id": "d280e943-ca49-485d-a4b9-8f90462a0845",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "352d2cf2-2a1b-48a4-ad94-3bfaa1a88303",
+      "id": "d46b0528-6178-4753-812c-0bb684eb4eae",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+      "id": "d47ec0f3-d6fd-4124-9a59-ef4efdff6980",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+      "id": "d57fe330-7b68-4fe6-8fac-11ca336bfc69",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "e5a8c571-961a-4dea-b36f-43624c85db82",
+      "id": "d677d8f6-a084-4219-b590-cc42f98158c6",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "3a08719d-5a3a-4a87-8df4-f81da9a16c0c",
+      "id": "d78a4f4f-66e0-4ff4-b695-ab9742bf96ae",
+      "provider": "expedia",
+      "name": "Expedia",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+      "id": "d79a7fff-b43f-4ec5-a2ad-a7855ff335ff",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "c70a6326-4302-4394-afb4-ff7a018272a5",
+      "id": "d9c27b3b-b4b0-4147-b35d-b99a2b263ae9",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ca55d588-a5dd-4dd9-9c84-72c5e687c48f",
+      "id": "db4ecb6f-c90b-4db7-88a1-5906717b609c",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "a725fc3d-60bc-4f4b-9ca5-00a87ee6af6a",
+      "id": "dc1e4e17-0dc5-4b74-b01b-84ec91a1a9df",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ee355d59-44c5-478d-a3eb-2c9053febe24",
+      "id": "dd3d94bf-67d1-4679-a092-06d676a1f21e",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "6b6f2564-93f4-4aff-aa97-bfe34d456cad",
+      "id": "df31affa-0971-4330-90a1-8a918e71db6c",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "b1afc011-53e2-4cab-b277-1ad8ffbc0af9",
+      "id": "e0d9e872-550f-435f-8496-10c2c3826107",
+      "provider": "rakuten",
+      "name": "Rakuten Travel",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "6b6f2564-93f4-4aff-aa97-bfe34d456cad",
+      "id": "e2960e7e-635d-4c2e-8480-567c5577a572",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "177996ee-887e-48b8-9ade-240e47675438",
+      "id": "e2ce0d9d-687f-43eb-b0d6-b1774f58f474",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "2263bc8e-be0a-4163-b2ad-6f3a7c049983",
+      "id": "e7c85c8a-07e5-49dd-8b21-420ebcbad47a",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "c74448b6-1fa7-426e-b5af-17b7d0953382",
+      "id": "e9fe4cc7-c7fd-4e53-8634-44afdb2c7ef8",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "e94492db-9582-4457-b47f-4b44f3112fbb",
+      "id": "ea3b7303-f0c0-4677-b38a-37431d3a8d7b",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ee355d59-44c5-478d-a3eb-2c9053febe24",
+      "id": "eb52fcf2-8c30-4291-9dd7-4695fd0e5672",
+      "provider": "rakuten",
+      "name": "Rakuten Travel",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "6431e10f-dde0-471d-ab5f-0dfbefcda2f6",
+      "id": "ec50cedf-c5bb-4ba1-bc1a-51038eebe2c6",
+      "provider": "rakuten",
+      "name": "Rakuten Travel",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "fdf201c6-8838-41bd-a9ef-5bdd8f69ad24",
+      "id": "ed7ed57b-d83e-4535-be02-baa9e293bef7",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "89873ccf-5a45-467d-b2c9-dd32c2b6a0df",
+      "id": "edc6dcfc-7b6a-4c91-b988-738cf943a40b",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "a725fc3d-60bc-4f4b-9ca5-00a87ee6af6a",
+      "id": "eef268cc-63ed-44cc-a05d-f563153796b5",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+      "id": "f0f56103-0b4b-4e56-8c44-5cdcee9f0b22",
+      "provider": "agoda",
+      "name": "Agoda",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "f4dc5d28-5de4-4e81-b79f-f8471f1e4863",
+      "id": "f16574e7-801b-4a2e-8495-5981655b7ff6",
+      "provider": "trip_com",
+      "name": "Trip.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "c934905c-8857-4dfc-963e-9d19e13cd16e",
+      "id": "f3ed1561-3046-4647-8c90-0ab634d5c7e2",
+      "provider": "booking",
+      "name": "Booking.com",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "b79582da-592f-4a33-aa22-6457cf815094",
+      "id": "f6adfaca-de6e-45e8-a83f-894e6c4cfc39",
+      "provider": "rakuten",
+      "name": "Rakuten Travel",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "fc4ab21a-29df-41c3-acd7-961d3a8fbdd2",
+      "id": "fbff5aa0-6b40-48dd-a4ce-727ae37c9fee",
+      "provider": "expedia",
+      "name": "Expedia",
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "535688c6-4370-4550-9a66-d35c4f907eef",
+      "id": "fd09af44-8571-44ea-a34e-5f6b3c4be9f6",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    },
+    {
+      "product_id": "ad6930f9-64e2-4298-b90f-ad24fae50060",
+      "id": "fe51f041-3f5e-433f-a87c-a2b4708d6f37",
+      "provider": "official",
+      "name": null,
+      "mode": "direct",
+      "quote_status": "not_configured"
+    }
+  ],
+  "source_credit_sets": {
+    "a923ad429a88bd280e24a184b244bb4034b7ef99f3c9a4910bdbc7f83ed31c2c": [
+      {
+        "title": "宿泊施設等の施設情報ポータルサイト「だれでも東京」宿泊施設",
+        "publisher": "東京都デジタルサービス局",
+        "url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+        "license_name": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+        "changes": "Mokaair 摘錄名稱與座標，整理住宿區域，依官網更新名稱並補充平台身份；座標保持來源數值，不代表東京都推薦。"
+      }
+    ],
+    "98f97994a58d0b34df0b36e34795eb3077f19f502a0f46334d0a4a70990c25b5": [
+      {
+        "title": "大阪市 旅館業施設・特区民泊施設一覧（2026年5月31日現在）",
+        "publisher": "大阪市健康局生活衛生部生活衛生課",
+        "url": "https://www.city.osaka.lg.jp/kenko/cmsfiles/contents/0000382/382418/20260531ketsugo.csv",
+        "license_name": "CC BY 4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/deed.ja",
+        "changes": "Mokaair 摘錄飯店名稱及座標並整理區域。原始 CSV 的「緯度、經度」欄位實際依序為東經、北緯，已依合法範圍及大阪位置修正欄位對應，數值未改寫。資料說明：https://www.city.osaka.lg.jp/kenko/page/0000382418.html；不代表大阪市推薦。"
+      }
+    ],
+    "f137f1fa336d1bbefa48ed3218855d27fc5e2f7c9b2159d08e15ecc71e2fe33b": [
+      {
+        "title": "서울시 숙박업 인허가 정보",
+        "publisher": "서울특별시 시민건강국 보건의료정책과",
+        "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+        "license_name": "KOGL Type 1 (공공누리 제1유형)",
+        "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+        "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3010000-201-1970-00188）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+      }
+    ],
+    "99b2ecdbf97c3a35baf89a20352aaf82e466e2cc5d4f85623a7c26ef15f11a39": [
+      {
+        "title": "서울시 숙박업 인허가 정보",
+        "publisher": "서울특별시 시민건강국 보건의료정책과",
+        "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+        "license_name": "KOGL Type 1 (공공누리 제1유형)",
+        "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+        "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3010000-201-2015-00030）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+      }
+    ],
+    "270d69c4176b15249c43afcc5557cde5af8456ad07233d8f82aaf62b3622ec69": [
+      {
+        "title": "서울시 숙박업 인허가 정보",
+        "publisher": "서울특별시 시민건강국 보건의료정책과",
+        "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+        "license_name": "KOGL Type 1 (공공누리 제1유형)",
+        "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+        "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3010000-201-2016-00002）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+      }
+    ],
+    "6e76a5fb543b5d2638dba234540997d6c527cd2fc5e05d1354021a0a4f2649b1": [
+      {
+        "title": "서울시 숙박업 인허가 정보",
+        "publisher": "서울특별시 시민건강국 보건의료정책과",
+        "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+        "license_name": "KOGL Type 1 (공공누리 제1유형)",
+        "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+        "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3010000-201-2020-00005）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+      }
+    ],
+    "98000f83db82a21042556a74a49342c362ef3f781bfb6d6d4302261ce2bebd15": [
+      {
+        "title": "서울시 숙박업 인허가 정보",
+        "publisher": "서울특별시 시민건강국 보건의료정책과",
+        "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+        "license_name": "KOGL Type 1 (공공누리 제1유형)",
+        "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+        "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3130000-201-2020-00002）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+      }
+    ],
+    "f5ef72cb51bcdfb51e4902ab10b43359cd2c4c5948b9d38bc6abe009190cf842": [
+      {
+        "title": "서울시 숙박업 인허가 정보",
+        "publisher": "서울특별시 시민건강국 보건의료정책과",
+        "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+        "license_name": "KOGL Type 1 (공공누리 제1유형)",
+        "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+        "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3130000-201-2018-00001）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+      }
+    ],
+    "943bcdff6ca9d6c2584549a7890a40098f0c15479a3bf06ec8f10c51bb9b82f4": [
+      {
+        "title": "서울시 숙박업 인허가 정보",
+        "publisher": "서울특별시 시민건강국 보건의료정책과",
+        "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+        "license_name": "KOGL Type 1 (공공누리 제1유형)",
+        "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+        "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3130000-201-2018-00005）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+      }
+    ],
+    "80e7b77f25cda6995086087963ebdc617eda3284855af0ef605f3c46d14e2499": [
+      {
+        "title": "서울시 숙박업 인허가 정보",
+        "publisher": "서울특별시 시민건강국 보건의료정책과",
+        "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+        "license_name": "KOGL Type 1 (공공누리 제1유형)",
+        "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+        "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3220000-201-2017-00005）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+      }
+    ],
+    "077c793fe771303d4ff14e0f8e501f10be7e3fb88ab49aa16dc92b80acf83730": [
+      {
+        "title": "서울시 숙박업 인허가 정보",
+        "publisher": "서울특별시 시민건강국 보건의료정책과",
+        "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+        "license_name": "KOGL Type 1 (공공누리 제1유형)",
+        "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+        "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3220000-201-1988-00099）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+      }
+    ],
+    "0aecaea9fbfd02fc788fa2d59568ffbeff1fab051d409dc2dc3eb9cff8ca13bb": [
+      {
+        "title": "서울시 숙박업 인허가 정보",
+        "publisher": "서울특별시 시민건강국 보건의료정책과",
+        "url": "https://data.seoul.go.kr/dataList/OA-16044/S/1/datasetView.do",
+        "license_name": "KOGL Type 1 (공공누리 제1유형)",
+        "license_url": "https://www.kogl.or.kr/info/licenseType1.do",
+        "changes": "Mokaair 摘錄首爾市 2026 年資料（許可紀錄 3220000-201-2005-00001）之名稱、地址及座標；依來源標示 EPSG:5174 轉為 WGS84，取小數七位，整理住宿區域並以官網核對飯店身份。不代表首爾市推薦；未搬用地圖或訂房平台座標、照片、評分與評論。"
+      }
+    ],
+    "36c9ea91de729c6a98d1658ab8b129f3a08ef6d31f865908413855d6e2f0ede5": [
+      {
+        "title": "旅館民宿－觀光資訊資料庫",
+        "publisher": "交通部觀光署",
+        "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+        "license_name": "政府資料開放授權條款-第1版",
+        "license_url": "https://data.gov.tw/license",
+        "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_007354 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+      }
+    ],
+    "5c162c2b824885150d6a4301ce6eb575884c9dbc88596e80e484a7a17d7b477c": [
+      {
+        "title": "旅館民宿－觀光資訊資料庫",
+        "publisher": "交通部觀光署",
+        "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+        "license_name": "政府資料開放授權條款-第1版",
+        "license_url": "https://data.gov.tw/license",
+        "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_004943 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+      }
+    ],
+    "f97cc53672650ed6b9c7b9e1e36e770e15f9f236cd3a211b516582bb0ad5ab1d": [
+      {
+        "title": "旅館民宿－觀光資訊資料庫",
+        "publisher": "交通部觀光署",
+        "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+        "license_name": "政府資料開放授權條款-第1版",
+        "license_url": "https://data.gov.tw/license",
+        "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_007253 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+      }
+    ],
+    "6f68ee655660d884231fd0406d438eadf7bc770e96b08607b103c01c07b38f77": [
+      {
+        "title": "旅館民宿－觀光資訊資料庫",
+        "publisher": "交通部觀光署",
+        "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+        "license_name": "政府資料開放授權條款-第1版",
+        "license_url": "https://data.gov.tw/license",
+        "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_003552 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+      }
+    ],
+    "aa50d9814d517c1e7ca540cf3ad078e350d0671f86b47efa809dc66f596fbfc0": [
+      {
+        "title": "旅館民宿－觀光資訊資料庫",
+        "publisher": "交通部觀光署",
+        "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+        "license_name": "政府資料開放授權條款-第1版",
+        "license_url": "https://data.gov.tw/license",
+        "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_010571 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+      }
+    ],
+    "5238fce1696430f268615e6c36a5661a5f8239e0ba77917ae6d51f52c4db5edc": [
+      {
+        "title": "旅館民宿－觀光資訊資料庫",
+        "publisher": "交通部觀光署",
+        "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+        "license_name": "政府資料開放授權條款-第1版",
+        "license_url": "https://data.gov.tw/license",
+        "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_001187 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+      }
+    ],
+    "52b705aa506f445983cb36da3eda0a9a69de98e4bffb781c2a6464bdb4a8dbee": [
+      {
+        "title": "旅館民宿－觀光資訊資料庫",
+        "publisher": "交通部觀光署",
+        "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+        "license_name": "政府資料開放授權條款-第1版",
+        "license_url": "https://data.gov.tw/license",
+        "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_017029 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+      }
+    ],
+    "64809b88b026739e57cd5f306a759a52f7e9cdcfbdafa0d51cdfc13fc6b333d9": [
+      {
+        "title": "旅館民宿－觀光資訊資料庫",
+        "publisher": "交通部觀光署",
+        "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+        "license_name": "政府資料開放授權條款-第1版",
+        "license_url": "https://data.gov.tw/license",
+        "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_005422 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+      }
+    ],
+    "18114658205c3632b1547961ab38470ead7935f368fff5919b3f6ebb48dd4a90": [
+      {
+        "title": "旅館民宿－觀光資訊資料庫",
+        "publisher": "交通部觀光署",
+        "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+        "license_name": "政府資料開放授權條款-第1版",
+        "license_url": "https://data.gov.tw/license",
+        "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_033655 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+      }
+    ],
+    "a75d9fc6728a0e8d2e4ba8dccd53862fcfc56d2048e4d2d641f55eb24bb43b7d": [
+      {
+        "title": "旅館民宿－觀光資訊資料庫",
+        "publisher": "交通部觀光署",
+        "url": "https://media.taiwan.net.tw/XMLReleaseAll_public/v2.0/Zh_tw/Hotel-json.zip",
+        "license_name": "政府資料開放授權條款-第1版",
+        "license_url": "https://data.gov.tw/license",
+        "changes": "2026-09-07 摘錄政府公開旅宿名單 Hotel_A15010000H_002465 的名稱及位置數值，依官網更新名稱並整理住宿區域；未摘錄房價、評論或圖片。資料集與授權：https://data.gov.tw/dataset/7780；不代表政府推薦。"
+      }
+    ]
+  },
+  "interpretation": "Null price fields mean unknown/not quoted, not free. Locale titles may use existing original-name fallback. This matrix is not an atomic database snapshot; cross-locale differences are reported."
+}
