@@ -12,6 +12,7 @@ import {
 } from "@/components/travel-services/options";
 import { Link } from "@/i18n/navigation";
 import { locales, type Locale } from "@/i18n/routing";
+import { serviceDiscoveryModules } from "@/lib/travel-service-discovery";
 
 type Params = { locale: Locale; destinationId: string };
 type DestinationItem = { id: string; city: string; country: string; role: string };
@@ -107,18 +108,22 @@ export default async function DestinationServices({
             </Link>
           ))}
         </nav>
-        <DestinationAffiliateOptions
+        {!catalogCities.length && <DestinationAffiliateOptions
           destinationId={
             destinationId === "osaka" || destinationId === "kyoto"
               ? "osaka-kyoto"
               : destinationId
           }
-        />
+          destinationLabel={selectedName}
+          modules={serviceDiscoveryModules(KINDS.includes(query.type as Kind) ? query.type as Kind : "all")}
+          contextual
+        />}
         {catalogCities.length ? (
-          catalogCities.map((city) => (
+          catalogCities.map((city, index) => (
             <ServiceCatalog
               key={city}
               destinationId={city}
+              showDestinationDiscovery={index === 0}
               hotspotId={query.hotspot_id}
               initialKind={
                 KINDS.includes(query.type as Kind)

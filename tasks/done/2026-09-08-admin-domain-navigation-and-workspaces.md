@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-admin-domain-navigation-and-workspaces
 title: Admin domain navigation and workspaces
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-admin-root
 claimed_at: 2026-09-08T10:04:04Z
 created_at: 2026-09-08T10:03:37Z
-completed_at:
+completed_at: 2026-09-08T13:16:23Z
 branch: codex/admin-domain-workspaces
 depends_on: []
 scope:
@@ -51,7 +51,7 @@ Admin data and settings were scattered by implementation rather than the domain 
 - [x] Secondary operations/system groups are searchable and preserve backend capability checks.
 - [x] Canonical tabs and legacy bookmarks work on desktop and mobile without triggering paid queries.
 - [x] Domain counts, missing-data and pending-review links have real scoped destinations.
-- [ ] PR checks pass and the user-authorized merge is verified.
+- [x] PR checks pass and the user-authorized merge is verified.
 
 ## Steps
 
@@ -72,4 +72,13 @@ Implementation and API contracts are documented in docs/admin-domains.md.
 Desktop/Pixel 7 fixture journeys pass (20 tests); visually inspected dark overview and restaurant scans.
 Full local Vitest: 951 tests pass across 146 files. API: 1818 pass, 120 integration skips; Linux-only deployment module runs in CI.
 PR: https://github.com/x812033727/travel_scanner/pull/369
-No production mutations, provider enablement or data backfill performed. PostgreSQL/Redis integration runs in CI, not an unknown local database.
+No provider enablement or data backfill performed. PostgreSQL/Redis integration runs in CI, not an unknown local database.
+
+## Merge and deployment receipt
+
+- User-authorized PR #369 squash merge verified at `b675f5d34a353eddfb789a953968c3c6d45eac4a` on 2026-09-08; exact main CI run `34229595628` passed all four jobs.
+- Production deployed from a verified clean Git archive, keeping the `travel_scanner` Compose project and runtime environment. All eight application services run the merged SHA with zero restarts.
+- Protected PostgreSQL backup verified: 12,604,578 bytes, mode 0600, archive index readable. Alembic remains `0063_destination_offers` (no migration change).
+- Three consecutive readiness checks passed. Database/Redis container IDs, mounts, environment hash and permissions remained unchanged. Prior images/source and backup retained for rollback.
+- Read-only production checks: admin overview/attractions/food/hotels and trips shells return 200; the new hotel API returns `401 authentication_required` anonymously through both direct API and public BFF, with BFF `Cache-Control: no-store`. Provider settings also rejects anonymous access. Community remains disabled.
+- Full-stack authenticated administrator behavior was tested in isolated CI, not by mutating production data.

@@ -11,7 +11,6 @@ completed_at:
 branch: codex/merchant-style-batch-07
 depends_on: []
 scope:
-  - apps/api/app/models.py
   - apps/api/app/foods
   - apps/api/app/cli.py
   - apps/api/migrations/versions/0061_merchant_styles.py
@@ -71,6 +70,8 @@ Web: 單工 Vitest、TypeScript、lint、check:i18n、production build；merchan
 匯入及人工查核記錄見 docs/merchant-styles.md。
 
 ## Notes
+
+2026-09-09 第四次窄幅交接（models-only，Klook）：定點核對本 task `01a057d5-1534-7c91-8f9e-a60b1e3c613c` 原始 session 紀錄第 16799 行的 `payload.input`，確認曾在 `mokaair-community` 以 `codex` 認領本任務及 `codex/merchant-style-batch-08` 分支。再次確認整個工作樹乾淨，`apps/api/app/models.py` 無未提交或相對 `origin/main` 的本分支待交付變更；僅釋放這一個 scope 給 Klook 資料模型工作，本任務後續不再修改該檔。其餘 scope、owner、status、branch 均不變；不修改模型或原始 canonical checkout，只提交本地任務 metadata，不 push、合併或部署。
 
 2026-09-08 跨工作區交接：已確認 `admin-food-merchants-panel.tsx` 無未提交或本分支待交付變更，後續店家來源／風格審核不再修改此檔，僅釋放這一個 scope 給 `codex/admin-domain-workspaces` 加入待審初始篩選。其餘 scope、店家資料、風格／地圖／平台審核功能及 PR 狀態均不變；本次交接不授權合併或部署。
 

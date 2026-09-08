@@ -3,6 +3,7 @@ from typing import Literal
 from pydantic import BaseModel
 
 AffiliateModule = Literal["flight", "hotel", "activities", "transport", "connectivity"]
+AffiliateChannel = Literal["travelpayouts", "klook_direct"]
 
 
 class AffiliatePartnerStatus(BaseModel):

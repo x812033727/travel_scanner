@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 0 in progress · 2 blocked · 10 in review · 159 done**
+**16 open · 0 in progress · 2 blocked · 7 in review · 165 done**
 
 ## Ready to claim
 
@@ -33,12 +33,9 @@ _Nothing here._
 | Task | Owner | Branch |
 | --- | --- | --- |
 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
-| [Admin domain navigation and workspaces](open/2026-09-08-admin-domain-navigation-and-workspaces.md) | codex-admin-root | `codex/admin-domain-workspaces` |
-| [Admin domain scoped catalog AI review](open/2026-09-08-admin-domain-scoped-catalog-ai-review.md) | codex-admin-review | `codex/admin-domain-workspaces` |
-| [Admin domain settings ownership and safe saves](open/2026-09-08-admin-domain-settings-ownership-and-safe.md) | codex-admin-settings | `codex/admin-domain-workspaces` |
-| [Admin hotel workspace isolation](open/2026-09-08-admin-hotel-workspace-isolation.md) | codex-admin-hotel | `codex/admin-domain-workspaces` |
-| [Admin catalog review filters and canonical location editor](open/2026-09-08-admin-catalog-review-filters-and-canonical.md) | codex-admin-editors | `codex/admin-domain-workspaces` |
-| [Admin domain regression compatibility tests](open/2026-09-08-admin-domain-regression-compatibility-tests.md) | codex-admin-regression | `codex/admin-domain-workspaces` |
+| [Klook direct affiliate product integration and reviewed rollout](open/2026-09-08-klook-direct-affiliate-integration.md) | codex-klook-root | `codex/klook-product-integration` |
+| [Klook channel aware affiliate backend and secure clickout](open/2026-09-08-klook-channel-backend.md) | codex-klook-backend | `codex/klook-product-integration` |
+| [Klook affiliate frontend channels and contextual discovery](open/2026-09-08-klook-affiliate-web.md) | codex-klook-web | `codex/klook-product-integration` |
 | [Fix nearby itinerary discovery across cities and reset insertion pagination](open/2026-09-08-planner-nearby-followup.md) | codex | `codex/planner-nearby-followup` |
 | [Fix weather and itinerary intent panel contrast in dark mode](open/2026-09-08-planner-weather-dark-contrast.md) | codex | `codex/planner-nearby-followup` |
 | [Stay22 Maps lodging pilot](open/2026-09-08-stay22-maps-lodging-pilot.md) | codex-stay22 | `codex/stay22-maps-pilot` |
@@ -58,13 +55,13 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-08 [Admin domain regression compatibility tests](done/2026-09-08-admin-domain-regression-compatibility-tests.md)
+- 2026-09-08 [Admin catalog review filters and canonical location editor](done/2026-09-08-admin-catalog-review-filters-and-canonical.md)
+- 2026-09-08 [Admin domain scoped catalog AI review](done/2026-09-08-admin-domain-scoped-catalog-ai-review.md)
+- 2026-09-08 [Admin domain settings ownership and safe saves](done/2026-09-08-admin-domain-settings-ownership-and-safe.md)
+- 2026-09-08 [Admin hotel workspace isolation](done/2026-09-08-admin-hotel-workspace-isolation.md)
+- 2026-09-08 [Admin domain navigation and workspaces](done/2026-09-08-admin-domain-navigation-and-workspaces.md)
 - 2026-09-08 [Intuitive itinerary ordering and contextual place picker](done/2026-09-08-intuitive-itinerary-editor.md)
 - 2026-09-08 [Travelpayouts full partner links for production verification](done/2026-09-08-travelpayouts-full-partner-links.md)
 - 2026-09-08 [七國美食卡精準導航與訂位平台](done/2026-09-08-food-platform-links.md)
 - 2026-09-07 [登入頁沒有忘記密碼，後端也沒有任何寄信管道](done/2026-09-07-forgot-password-no-mail-channel.md)
-- 2026-09-07 [Hotel booking without affiliate enrollment](done/2026-09-07-hotel-direct-booking.md)
-- 2026-09-07 [The admin console's own tabs and pills are smaller than every control it publishes](done/2026-09-07-admin-controls-under-44px.md)
-- 2026-09-07 [Gemini catalog review and 100-item expansion](done/2026-09-07-gemini-catalog-review.md)
-- 2026-09-07 [觀測：漏斗看得見——事件名脫離 DB CHECK，關鍵動作由伺服器送](done/2026-09-07-observe-the-funnel.md)
-- 2026-09-07 [出發前閉環：提醒連得回旅程、錨點能追價、航班動態寫得回去](done/2026-09-07-pre-departure-loop.md)
-- 2026-09-07 [從旅程出發查機票：條件由旅程推導，報價帶回錨點](done/2026-09-06-search-from-a-saved-trip.md)

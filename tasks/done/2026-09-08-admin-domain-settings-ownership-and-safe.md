@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-admin-domain-settings-ownership-and-safe
 title: Admin domain settings ownership and safe saves
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-admin-settings
 claimed_at: 2026-09-08T10:04:05Z
 created_at: 2026-09-08T10:03:38Z
-completed_at:
+completed_at: 2026-09-08T13:16:24Z
 branch: codex/admin-domain-workspaces
 depends_on: []
 scope:
@@ -37,7 +37,7 @@ A setting should have exactly one editable owner, and concurrent administrators 
 - [x] Dirty-only saves use compatible expected_updated_at with transaction/row locking and 409 conflicts.
 - [x] Independent drafts survive tabs, Back/Forward and profile/currency updates.
 - [x] Confirmed discard cannot be undone by a late usage response; session changes isolate secret drafts.
-- [ ] Full PR checks and authorized merge complete.
+- [x] Full PR checks and authorized merge complete.
 
 ## Steps
 

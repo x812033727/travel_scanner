@@ -82,6 +82,24 @@ it("uses a hotel-only endpoint and exposes five canonical workspace tabs", async
   expect(screen.getByLabelText(messages.hotelPageUrl)).toHaveValue("https://hotel.example.com/draft");
 });
 
+it("creates a direct Klook hotel affiliate offer without a pricing API or static network URL", async () => {
+  window.history.replaceState(null, "", "/zh-TW/admin/hotels?tab=affiliates&section=products");
+  request.mockResolvedValue({ ...overview, brands: [{ id: "klook-direct", code: "klook", channel: "klook_direct", name: "Klook", approval: "approved", enabled: true, version: 2 }], network_configured: false });
+  render(<TravelServicesAdmin workspace="hotels" />);
+  await screen.findByRole("heading", { name: hotel.title });
+  fireEvent.click(screen.getByText(messages.addOffer, { selector: "summary" }));
+  fireEvent.change(screen.getByLabelText(messages.catalog), { target: { value: hotel.id } });
+  fireEvent.change(screen.getByLabelText(messages.brands), { target: { value: "klook-direct" } });
+  fireEvent.change(screen.getByLabelText(messages.originalUrl), { target: { value: "https://www.klook.com/hotels/12345-reviewed-hotel/" } });
+  expect(screen.queryByLabelText(messages.staticUrl)).toBeNull();
+  fireEvent.click(screen.getByRole("button", { name: messages.addOffer }));
+  await waitFor(() => expect(request.mock.calls.some(([, options]) => options?.method === "POST")).toBe(true));
+  const [path, options] = request.mock.calls.find(([, options]) => options?.method === "POST")!;
+  expect(path).toBe("/admin/travel-services/offers");
+  expect(JSON.parse(options.body)).toEqual({ product_id: hotel.id, brand_id: "klook-direct", target_url: "https://www.klook.com/hotels/12345-reviewed-hotel/", scope: "product" });
+  expect(request.mock.calls.some(([path]) => path.includes("hotel-quotes") || path.includes("test-connection"))).toBe(false);
+});
+
 it("keeps hotel and provider drafts across tabs while locking shared gates and unavailable quote adapters", async () => {
   openHotel("?tab=settings&section=catalog");
   const direct = await screen.findByLabelText(messages.directEnabled);

@@ -97,7 +97,8 @@ async def preview_import(payload: CsvInput, user: AdminUser, session: Session) -
 async def apply_import(run_id: UUID, user: AdminUser, session: Session) -> dict[str, Any]:
     settings = await load_runtime_settings(session)
     result = await commit_import(
-        session, run_id, settings.travelpayouts_project_id, required_kind="hotel"
+        session, run_id, settings.travelpayouts_project_id, required_kind="hotel",
+        klook_affiliate_id=settings.klook_affiliate_id,
     )
     audit(session, user, "hotel_import_commit", str(run_id), result)
     await session.commit()

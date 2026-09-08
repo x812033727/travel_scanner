@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-admin-domain-scoped-catalog-ai-review
 title: Admin domain scoped catalog AI review
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-admin-review
 claimed_at: 2026-09-08T10:04:04Z
 created_at: 2026-09-08T10:03:38Z
-completed_at:
+completed_at: 2026-09-08T13:16:24Z
 branch: codex/admin-domain-workspaces
 depends_on: []
 scope:
@@ -31,7 +31,7 @@ Moving review UI into domains must isolate server-side candidates and work appli
 - [x] Counts, discovery, snapshots, history, apply and resume enforce scope.
 - [x] Legacy all runs and idempotency remain compatible; usage and one-active-run limit remain shared.
 - [x] Domain UI starts scoped jobs; operations history cannot start a new mixed job.
-- [ ] PR checks and authorized merge complete.
+- [x] PR checks and authorized merge complete.
 
 ## Steps
 

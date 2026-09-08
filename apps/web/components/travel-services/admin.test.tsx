@@ -10,6 +10,7 @@ import {
 import { TravelServicesAdmin } from "./admin";
 import copy from "@/messages/zh-TW/travelServices.json";
 import { adminHotelsCopy } from "@/lib/admin-hotels-copy";
+import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 
 const { request, router } = vi.hoisted(() => ({ request: vi.fn(), router: { replace: vi.fn() } }));
 vi.mock("next/navigation", () => ({ useSearchParams: () => null, usePathname: () => window.location.pathname }));
@@ -86,6 +87,81 @@ const overview = {
   imports: [],
   operations: {},
 };
+
+const klookDefinition = { name: "Klook", kinds: ["hotel", "tour", "transfer"], modules: ["hotel", "activities", "transport"], hosts: ["klook.com"], api_supported: false };
+const legacyKlook = { id: "legacy-brand", code: "klook", name: "Klook", approval: "approved", enabled: true, evidence_url: "https://app.travelpayouts.com/programs/approved", verified_at: null, version: 7 };
+const directKlook = { ...legacyKlook, id: "direct-brand", channel: "klook_direct", approval: "pending", enabled: false, evidence_url: "https://www.klook.com/affiliate/approval", version: 2 };
+
+it("keeps direct Klook evidence, activation and version separate from the legacy channel", async () => {
+  request.mockResolvedValue({ ...overview, brands: [legacyKlook, directKlook], brand_definitions: { klook: klookDefinition }, channels: { travelpayouts: { configured: false }, klook_direct: { configured: true } } });
+  window.history.replaceState(null, "", "/zh-TW/admin/partners");
+  render(<TravelServicesAdmin workspace="partners" />);
+  const affiliate = klookAffiliateCopy("zh-TW");
+  fireEvent.click(await screen.findByRole("button", { name: "Klook · Klook 直接分潤" }));
+  expect((screen.getByLabelText(affiliate.evidence) as HTMLInputElement).value).toBe(directKlook.evidence_url);
+  expect((screen.getByLabelText(copy.enabled) as HTMLInputElement).checked).toBe(false);
+  expect(screen.getByText(affiliate.noApi)).toBeTruthy();
+  expect(screen.getByRole("link", { name: affiliate.configure }).getAttribute("href")).toBe("/admin/settings?provider=klook&field=klook_affiliate_id");
+  fireEvent.change(screen.getByLabelText(copy.approval), { target: { value: "approved" } });
+  fireEvent.click(screen.getByLabelText(copy.enabled));
+  fireEvent.click(screen.getByRole("button", { name: copy.apply }));
+  await waitFor(() => expect(request.mock.calls.some(([, opts]) => opts?.method === "PUT")).toBe(true));
+  const [, options] = request.mock.calls.find(([, opts]) => opts?.method === "PUT")!;
+  expect(JSON.parse(options.body)).toEqual({ code: "klook", channel: "klook_direct", approval: "approved", enabled: true, evidence_url: directKlook.evidence_url, version: 2 });
+  await waitFor(() => expect((screen.getByRole("button", { name: copy.apply }) as HTMLButtonElement).disabled).toBe(false));
+  fireEvent.click(screen.getByRole("button", { name: "Klook · Travelpayouts" }));
+  expect((screen.getByLabelText(affiliate.evidence) as HTMLInputElement).value).toBe(legacyKlook.evidence_url);
+  expect((screen.getByLabelText(copy.enabled) as HTMLInputElement).checked).toBe(true);
+  expect(request.mock.calls.filter(([, opts]) => opts?.method === "PUT")).toHaveLength(1);
+});
+
+it("does not inherit legacy approval or invent evidence when the direct brand does not exist", async () => {
+  request.mockResolvedValue({ ...overview, brands: [legacyKlook], brand_definitions: { klook: klookDefinition } });
+  window.history.replaceState(null, "", "/zh-TW/admin/partners");
+  render(<TravelServicesAdmin workspace="partners" />);
+  fireEvent.click(await screen.findByRole("button", { name: "Klook · Klook 直接分潤" }));
+  expect((screen.getByLabelText(klookAffiliateCopy("zh-TW").evidence) as HTMLInputElement).value).toBe("");
+  expect((screen.getByLabelText(copy.approval) as HTMLSelectElement).value).toBe("pending");
+  expect((screen.getByRole("button", { name: copy.apply }) as HTMLButtonElement).disabled).toBe(true);
+});
+
+it("labels both channels and omits static tracking URLs when creating a direct destination offer", async () => {
+  request.mockResolvedValue({ ...overview, brands: [legacyKlook, { ...directKlook, approval: "approved" }], brand_definitions: { klook: klookDefinition } });
+  render(<TravelServicesAdmin />);
+  fireEvent.click(await screen.findByRole("tab", { name: copy.destinationOffers }));
+  const create = screen.getByRole("heading", { name: copy.destinationOfferCreate }).parentElement!;
+  expect(within(create).getByRole("option", { name: /Klook · Travelpayouts/ })).toBeTruthy();
+  expect(within(create).getByRole("option", { name: /Klook · Klook 直接分潤/ })).toBeTruthy();
+  fireEvent.change(within(create).getByLabelText(copy.brands), { target: { value: "direct-brand" } });
+  expect(within(create).queryByLabelText(copy.staticUrl)).toBeNull();
+  fireEvent.change(within(create).getByLabelText(copy.destinationLink), { target: { value: "tokyo" } });
+  fireEvent.change(within(create).getByLabelText(copy.originalUrl), { target: { value: "https://www.klook.com/city/28-tokyo/" } });
+  fireEvent.click(within(create).getByRole("button", { name: copy.addDestinationOffer }));
+  await waitFor(() => expect(request.mock.calls.some(([, opts]) => opts?.method === "POST")).toBe(true));
+  const [, options] = request.mock.calls.find(([, opts]) => opts?.method === "POST")!;
+  expect(JSON.parse(options.body)).toEqual({ brand_id: "direct-brand", destination_id: "tokyo", module: "activities", target_url: "https://www.klook.com/city/28-tokyo/" });
+});
+
+it.each(["product", "destination"])("records explicit direct %s browser evidence for only the reviewed version", async (kind) => {
+  const offer = { id: "reviewed-offer", product_id: product.id, brand_id: "direct-brand", destination_id: "tokyo", module: "activities", status: "pending", version: 3, target_url: "https://www.klook.com/activity/12345-tokyo/", static_url: null, verified_at: null, scope: "product" };
+  let data = { ...overview, brands: [directKlook], brand_definitions: { klook: klookDefinition }, offers: kind === "product" ? [offer] : [], destination_offers: kind === "destination" ? [offer] : [] };
+  request.mockImplementation(async () => data);
+  render(<TravelServicesAdmin />);
+  if (kind === "destination") fireEvent.click(await screen.findByRole("tab", { name: copy.destinationOffers }));
+  const affiliate = klookAffiliateCopy("zh-TW");
+  const checkbox = await screen.findByLabelText(affiliate.browserVerified);
+  expect((checkbox as HTMLInputElement).checked).toBe(false);
+  expect(request.mock.calls.some(([, opts]) => opts?.method === "POST")).toBe(false);
+  fireEvent.click(checkbox);
+  expect((screen.getByLabelText(affiliate.browserEvidence) as HTMLInputElement).value).toBe(offer.target_url);
+  data = { ...data, offers: data.offers.map((row) => ({ ...row, version: 4 })), destination_offers: data.destination_offers.map((row) => ({ ...row, version: 4 })) };
+  fireEvent.click(screen.getByRole("button", { name: kind === "product" ? copy.verifyOffer : copy.approve }));
+  await waitFor(() => expect(request.mock.calls.some(([, opts]) => opts?.method === "POST")).toBe(true));
+  const [path, options] = request.mock.calls.find(([, opts]) => opts?.method === "POST")!;
+  expect(path).toBe(`/admin/travel-services/${kind === "product" ? "offers" : "destination-offers"}/reviewed-offer/review`);
+  expect(JSON.parse(options.body)).toEqual({ version: 3, status: "approved", browser_verified: true, evidence_url: offer.target_url });
+  await waitFor(() => expect((screen.getByLabelText(affiliate.browserVerified) as HTMLInputElement).checked).toBe(false));
+});
 
 it("edits exact hotel links without a network account and preserves other reviewed facts", async () => {
   request.mockResolvedValue(overview);

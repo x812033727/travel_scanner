@@ -3,7 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Any, cast
 from urllib.parse import parse_qsl, quote, urlencode, urlparse, urlunparse
 from uuid import uuid4
@@ -100,6 +100,8 @@ def partner_supports_module(
         return False
     if not (partner_enabled(partner, settings) and partner_configured(partner, settings)):
         return False
+    if partner.code == "klook":
+        return bool(settings.klook_affiliate_url_template)
     if partner.code == "travelpayouts":
         # A static template serves every module; otherwise the module needs its own target.
         template = cast(str | None, getattr(settings, partner.template_field, None))
@@ -225,8 +227,17 @@ async def resolve_partner_target(
         return validate_target_url(_render(template, context), hosts)
     if not template:
         raise ConnectionError(f"{partner.display_name} affiliate link is not configured")
+    if partner.code == "klook":
+        from app.i18n import active_locale
+
+        # A configured template may contain {sub_id}; never expose a member/trip-derived ID.
+        context = replace(context, sub_id=f"aff_{context.module}_{active_locale()}")
     target = _render(template, context)
-    if partner.code == "kkday":
+    if partner.code == "klook":
+        from app.travel_services.channels import klook_affiliate_target
+
+        target = klook_affiliate_target(target, settings.klook_affiliate_id or "")
+    elif partner.code == "kkday":
         target = _with_query(target, "cid", settings.kkday_cid)
     elif partner.code == "agoda":
         target = _with_query(target, "cid", settings.agoda_cid)

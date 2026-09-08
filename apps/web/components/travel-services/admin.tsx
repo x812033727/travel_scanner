@@ -6,6 +6,7 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { AdminSettingsPanel } from "@/components/admin-settings-panel";
 import { useHeaderSession } from "@/components/header-session";
 import { adminHotelsCopy } from "@/lib/admin-hotels-copy";
+import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 import { useAdminWorkspaceNavigation } from "@/lib/admin-workspace-navigation";
 import { ApiError, api } from "@/lib/api";
 import { CITIES, KINDS, type Kind } from "./catalog";
@@ -25,9 +26,11 @@ type RecordRow = {
   status: string;
   version: number;
 };
+type AffiliateChannel = "travelpayouts" | "klook_direct";
 type BrandRow = {
   id: string;
   code: string;
+  channel?: AffiliateChannel;
   name: string;
   approval: string;
   enabled: boolean;
@@ -87,6 +90,7 @@ type Overview = {
   brands: BrandRow[];
   project_id: string | null;
   network_configured: boolean;
+  channels?: Partial<Record<AffiliateChannel, { configured: boolean; project_id: string | null }>>;
   review_due: number;
   hotel_option_review_due?: number;
   brand_definitions: Record<
@@ -137,6 +141,18 @@ const field =
   "mt-1 min-h-11 w-full min-w-0 rounded-xl border border-[var(--line)] bg-[var(--surface-raised)] p-3 text-sm";
 const button =
   "min-h-11 rounded-xl border border-[var(--line)] px-4 py-2 text-sm font-semibold disabled:opacity-50";
+type BrowserReview = { browser_verified: boolean; evidence_url: string };
+function BrowserReviewFields({ value, target, onChange, disabled }: {
+  value?: BrowserReview; target: string; onChange: (value: BrowserReview) => void; disabled: boolean;
+}) {
+  const copy = klookAffiliateCopy(useLocale());
+  const current = value || { browser_verified: false, evidence_url: target };
+  return <fieldset disabled={disabled} className="my-3 min-w-0 space-y-2 rounded-xl bg-[var(--paper)] p-3 text-sm">
+    <label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={current.browser_verified} onChange={(event) => onChange({ ...current, browser_verified: event.target.checked })} />{copy.browserVerified}</label>
+    <p className="text-xs leading-5 text-[var(--muted)]">{copy.browserHint}</p>
+    {current.browser_verified && <label className="block">{copy.browserEvidence}<input type="url" required className={field} value={current.evidence_url} onChange={(event) => onChange({ ...current, evidence_url: event.target.value })} /></label>}
+  </fieldset>;
+}
 
 const hotelTabs = {
   catalog: ["catalog"], review: ["products", "platforms"],
@@ -186,6 +202,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
 }) {
   const t = useTranslations("travelServices");
   const copy = adminHotelsCopy(useLocale());
+  const affiliateCopy = klookAffiliateCopy(useLocale());
   const router = useRouter();
   const isHotel = workspace === "hotels";
   const storageKey = storageUserId ? `${hotelDraftKey}:${storageUserId}` : undefined;
@@ -233,7 +250,10 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
   const [offerTarget, setOfferTarget] = useState("");
   const [offerStatic, setOfferStatic] = useState("");
   const [offerScope, setOfferScope] = useState("product");
-  const [brandCode, setBrandCode] = useState("klook");
+  const [brandCode, setBrandCode] = useState("");
+  const [brandChannel, setBrandChannel] = useState<AffiliateChannel>("travelpayouts");
+  const [brandVersion, setBrandVersion] = useState<number>();
+  const [browserReviews, setBrowserReviews] = useState<Record<string, BrowserReview>>({});
   const [approval, setApproval] = useState("pending");
   const [enabled, setEnabled] = useState(false);
   const [evidence, setEvidence] = useState("");
@@ -256,6 +276,19 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
     targetUrl: string;
     staticUrl: string;
   }>();
+  const channelLabel = (channel?: AffiliateChannel) => channel === "klook_direct"
+    ? affiliateCopy.klook : affiliateCopy.travelpayouts;
+  const brandLabel = (brand?: BrandRow) => brand
+    ? `${brand.name} · ${channelLabel(brand.channel)}` : "";
+  function selectBrand(code: string, channel: AffiliateChannel) {
+    const row = data?.brands.find((brand) => brand.code === code && (brand.channel || "travelpayouts") === channel);
+    setBrandCode(code);
+    setBrandChannel(channel);
+    setBrandVersion(row?.version);
+    setApproval(row?.approval || "pending");
+    setEnabled(row?.enabled || false);
+    setEvidence(row?.evidence_url || "");
+  }
   const load = useCallback(async () => {
     activeRequest.current?.abort();
     const controller = new AbortController();
@@ -493,7 +526,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
         <>
           {!data.network_configured && (
             <p className="rounded-2xl bg-[var(--coral-soft)] p-4 text-sm">
-              {t("networkMissing")} {t("directIndependent")}{" "}
+              {affiliateCopy.networkMissing}{isHotel && <> {t("directIndependent")}</>}{" "}
               <Link href="/admin/settings" className="underline">
                 {t("config")}
               </Link>
@@ -652,7 +685,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                         className="mt-4 border-t border-[var(--line)] pt-3"
                       >
                         <p className="text-sm">
-                          {data.brands.find((b) => b.id === o.brand_id)?.name} ·{" "}
+                          {brandLabel(data.brands.find((b) => b.id === o.brand_id))} ·{" "}
                           {t(
                             o.status === "disabled"
                               ? "disabledStatus"
@@ -667,6 +700,10 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                         >
                           {o.target_url}
                         </a>
+                        {data.brands.find((brand) => brand.id === o.brand_id)?.channel === "klook_direct" && <BrowserReviewFields
+                          target={o.target_url} disabled={busy} value={browserReviews[`product:${o.id}:${o.version}`]}
+                          onChange={(value) => setBrowserReviews((previous) => ({ ...previous, [`product:${o.id}:${o.version}`]: value }))}
+                        />}
                         <div className="flex flex-wrap gap-2">
                           <button
                             disabled={busy}
@@ -680,6 +717,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                                     body: JSON.stringify({
                                       version: o.version,
                                       status: "approved",
+                                      ...(browserReviews[`product:${o.id}:${o.version}`]?.browser_verified ? browserReviews[`product:${o.id}:${o.version}`] : {}),
                                     }),
                                   },
                                 ),
@@ -783,7 +821,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                       <option value="">{t("brands")}</option>
                       {data.brands.map((b) => (
                         <option key={b.id} value={b.id}>
-                          {b.name}
+                          {brandLabel(b)}
                         </option>
                       ))}
                     </select>
@@ -797,7 +835,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                       onChange={(e) => setOfferTarget(e.target.value)}
                     />
                   </label>
-                  <label className="sm:col-span-2">
+                  {data.brands.find((brand) => brand.id === offerBrand)?.channel !== "klook_direct" && <label className="sm:col-span-2">
                     {t("staticUrl")}
                     <input
                       type="url"
@@ -805,7 +843,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                       value={offerStatic}
                       onChange={(e) => setOfferStatic(e.target.value)}
                     />
-                  </label>
+                  </label>}
                   <label>
                     {t("offers")}
                     <select
@@ -831,7 +869,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                           product_id: offerProduct,
                           brand_id: offerBrand,
                           target_url: offerTarget,
-                          static_url: offerStatic || null,
+                          ...(data.brands.find((brand) => brand.id === offerBrand)?.channel === "klook_direct" ? {} : { static_url: offerStatic || null }),
                           scope: offerScope,
                         }),
                       }),
@@ -869,7 +907,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                         )
                         .map((brand) => (
                           <option key={brand.id} value={brand.id}>
-                            {brand.name} · {t(brand.approval)}
+                            {brandLabel(brand)} · {t(brand.approval)}
                           </option>
                         ))}
                     </select>
@@ -921,7 +959,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                       }
                     />
                   </label>
-                  <label className="sm:col-span-2">
+                  {data.brands.find((brand) => brand.id === destinationOfferBrand)?.channel !== "klook_direct" && <label className="sm:col-span-2">
                     {t("staticUrl")}
                     <input
                       type="url"
@@ -931,7 +969,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                         setDestinationOfferStatic(event.target.value)
                       }
                     />
-                  </label>
+                  </label>}
                 </div>
                 <button
                   className={`${button} mt-4`}
@@ -950,7 +988,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                           destination_id: destinationOfferDestination,
                           module: destinationOfferModule,
                           target_url: destinationOfferTarget,
-                          static_url: destinationOfferStatic || null,
+                          ...(data.brands.find((brand) => brand.id === destinationOfferBrand)?.channel === "klook_direct" ? {} : { static_url: destinationOfferStatic || null }),
                         }),
                       });
                       setDestinationOfferTarget("");
@@ -1016,7 +1054,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                     <option value="">{t("all")}</option>
                     {data.brands.map((brand) => (
                       <option key={brand.id} value={brand.id}>
-                        {brand.name}
+                        {brandLabel(brand)}
                       </option>
                     ))}
                   </select>
@@ -1100,7 +1138,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                       <div className="flex items-start gap-3">
                         <input
                           aria-label={t("selectOffer", {
-                            brand: brand?.name || offer.brand_id,
+                            brand: brandLabel(brand) || offer.brand_id,
                           })}
                           type="checkbox"
                           checked={selectedDestinationOffers.includes(offer.id)}
@@ -1113,7 +1151,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                           }
                         />
                         <div className="min-w-0 flex-1">
-                          <strong>{brand?.name || offer.brand_id}</strong>
+                          <strong>{brandLabel(brand) || offer.brand_id}</strong>
                           <p className="text-sm text-[var(--muted)]">
                             {destinationItem?.city || offer.destination_id} · {offer.module} · {t(offer.status)}
                           </p>
@@ -1130,6 +1168,10 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                               {t("verifiedAt")}: {new Date(offer.verified_at).toLocaleDateString()}
                             </p>
                           )}
+                          {brand?.channel === "klook_direct" && offer.status !== "approved" && <BrowserReviewFields
+                            target={offer.target_url} disabled={busy} value={browserReviews[`destination:${offer.id}:${offer.version}`]}
+                            onChange={(value) => setBrowserReviews((previous) => ({ ...previous, [`destination:${offer.id}:${offer.version}`]: value }))}
+                          />}
                           {destinationOfferEditor?.row.id === offer.id && (
                             <div className="mt-3 grid gap-3 sm:grid-cols-2">
                               <label>
@@ -1146,7 +1188,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                                   }
                                 />
                               </label>
-                              <label>
+                              {brand?.channel !== "klook_direct" && <label>
                                 {t("staticUrl")}
                                 <input
                                   type="url"
@@ -1159,7 +1201,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                                     })
                                   }
                                 />
-                              </label>
+                              </label>}
                               <button
                                 className={button}
                                 disabled={busy || !destinationOfferEditor.targetUrl}
@@ -1175,8 +1217,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                                           module: offer.module,
                                           target_url:
                                             destinationOfferEditor.targetUrl,
-                                          static_url:
-                                            destinationOfferEditor.staticUrl || null,
+                                          ...(brand?.channel === "klook_direct" ? {} : { static_url: destinationOfferEditor.staticUrl || null }),
                                         }),
                                       },
                                     );
@@ -1218,6 +1259,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                                         offer.status === "approved"
                                           ? "disabled"
                                           : "approved",
+                                      ...(offer.status !== "approved" && browserReviews[`destination:${offer.id}:${offer.version}`]?.browser_verified ? browserReviews[`destination:${offer.id}:${offer.version}`] : {}),
                                     }),
                                   },
                                 ),
@@ -1239,26 +1281,29 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
           {tab === "brands" && (
             <section className="space-y-4">
               <p className="text-sm">
-                Travelpayouts · {data.project_id || t("unknownStatus")}
+                {affiliateCopy.independent}
               </p>
+              <dl className="grid gap-3 sm:grid-cols-2">
+                {(["travelpayouts", "klook_direct"] as const).map((channel) => <div key={channel} className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-4 text-sm">
+                  <dt className="font-semibold">{channelLabel(channel)}</dt>
+                  <dd className="mt-1 text-[var(--muted)]">{data.channels?.[channel]?.configured || (channel === "travelpayouts" && data.network_configured) ? t("complete") : t("unknownStatus")}</dd>
+                </div>)}
+              </dl>
               <div className="grid gap-3 sm:grid-cols-3">
-                {Object.entries(data.brand_definitions).map(([code, b]) => {
-                  const row = data.brands.find((r) => r.code === code);
+                {Object.entries(data.brand_definitions).flatMap(([code, b]) =>
+                  (code === "klook" ? ["travelpayouts", "klook_direct"] as const : ["travelpayouts"] as const).map((channel) => {
+                  const row = data.brands.find((r) => r.code === code && (r.channel || "travelpayouts") === channel);
                   return (
                     <button
-                      key={code}
-                      className={`${button} text-left ${brandCode === code ? "bg-[var(--teal-soft)]" : ""}`}
-                      onClick={() => {
-                        setBrandCode(code);
-                        setApproval(row?.approval || "pending");
-                        setEnabled(row?.enabled || false);
-                        setEvidence(
-                          row?.evidence_url ||
-                            `https://app.travelpayouts.com/programs?source=${data.project_id || ""}`,
-                        );
-                      }}
+                      key={`${code}:${channel}`}
+                      disabled={busy}
+                      aria-label={`${b.name} · ${channelLabel(channel)}`}
+                      aria-pressed={brandCode === code && brandChannel === channel}
+                      className={`${button} text-left ${brandCode === code && brandChannel === channel ? "bg-[var(--teal-soft)]" : ""}`}
+                      onClick={() => selectBrand(code, channel)}
                     >
                       <strong className="block">{b.name}</strong>
+                      <span className="block text-xs">{channelLabel(channel)}</span>
                       <span className="text-xs">
                         {t(
                           row?.approval === "unknown" || !row
@@ -1278,15 +1323,20 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                       </span>
                     </button>
                   );
-                })}
+                }))}
               </div>
-              <div className="rounded-2xl border border-[var(--line)] p-5">
+              {brandCode && <div className="rounded-2xl border border-[var(--line)] p-5">
                 <h3 className="font-bold">
                   {data.brand_definitions[brandCode]?.name}
+                  {" · "}{channelLabel(brandChannel)}
                 </h3>
                 <p className="mt-2 text-xs">
                   {data.brand_definitions[brandCode]?.hosts.join(" · ")}
                 </p>
+                {brandCode === "klook" && <div className="mt-3 rounded-xl bg-[var(--paper)] p-4 text-sm leading-6">
+                  <p>{affiliateCopy.noApi}</p>
+                  {brandChannel === "klook_direct" && <Link href="/admin/settings?provider=klook&field=klook_affiliate_id" className="mt-2 inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline">{affiliateCopy.configure}</Link>}
+                </div>}
                 <label className="mt-3 block">
                   {t("approval")}
                   <select
@@ -1314,7 +1364,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                   {t("enabled")}
                 </label>
                 <label>
-                  {t("evidence")}
+                  {affiliateCopy.evidence}
                   <input
                     type="url"
                     className={field}
@@ -1322,28 +1372,30 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                     onChange={(e) => setEvidence(e.target.value)}
                   />
                 </label>
+                <p className="mt-2 text-xs leading-5 text-[var(--muted)]">{affiliateCopy.evidenceHint}</p>
                 <button
                   disabled={busy || !evidence}
                   className={`${button} mt-4`}
                   onClick={() =>
-                    void run(() =>
-                      api("/admin/travel-services/brands", {
+                    void run(async () => {
+                      const saved = await api<BrandRow>("/admin/travel-services/brands", {
                         method: "PUT",
                         body: JSON.stringify({
                           code: brandCode,
+                          channel: brandChannel,
                           approval,
                           enabled,
                           evidence_url: evidence,
-                          version: data.brands.find((b) => b.code === brandCode)
-                            ?.version,
+                          version: brandVersion,
                         }),
-                      }),
-                    )
+                      });
+                      if (saved.code === brandCode && (saved.channel || "travelpayouts") === brandChannel) setBrandVersion(saved.version);
+                    })
                   }
                 >
                   {t("apply")}
                 </button>
-              </div>
+              </div>}
             </section>
           )}
           {tab === "importCsv" && (

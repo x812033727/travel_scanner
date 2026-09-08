@@ -68,11 +68,13 @@ def test_registry_defaults_disabled_and_orders_each_module() -> None:
     assert [item.code for item in partners_for_module("hotel")] == [
         "booking",
         "agoda",
+        "klook",
         "trip_com",
         "travelpayouts",
     ]
     assert [item.code for item in partners_for_module("connectivity")] == [
         "airalo",
+        "klook",
         "travelpayouts",
     ]
 
