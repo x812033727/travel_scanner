@@ -269,6 +269,11 @@ async function mock(
     ) {
       await route.continue();
       return;
+    } else {
+      // Deferred planner tools mount alongside services. Unmodelled endpoints
+      // are unavailable, not successful responses with an invalid empty schema.
+      status = 404;
+      body = { code: "fixture_not_found", detail: "Outside this service fixture" };
     }
     await route.fulfill({
       status,
