@@ -118,6 +118,24 @@ ASW 僅找到較舊觀光介紹，不把頁面仍可讀當成近期營業確認�
 兩家韓國新店仍須精準Naver識別，不新增Google替代連結；所有新候選地圖、耐久座標與商圈留空。
 Walden Woods的既有approved/active/verified狀態、地圖、座標、來源及分類保持原狀。
 
+## 第五批來源查核：2026-09-08
+
+資料檔：`apps/api/app/foods/data/style_merchants_2026_09_batch_05.json`。
+本批 **5 家新候選、5 個待審提案（網美2、文青3）**；沒有替既有店家改名、改址或核准風格。
+查核日期表示本輪閱讀來源的日期，不是親訪或保證每項舊描述今天仍然有效。
+
+| 店家／城市 | 來源與判定界線 |
+| --- | --- |
+| 現流冊店／台北 | 文青：[官網](https://hianlaubookshop.com/)確認文化選書、咖啡、咖哩及重慶北路二段70巷15號1樓。保留中文原名，不把官網異常羅馬字自行改寫為英文品牌，也不使用舊址建立重複店家。 |
+| 浮光書店／台北 | 文青：[品牌店舖一覽](https://athenabooks.com.tw/contact/)與[文化部消費點](https://twcp.moc.gov.tw/prec-u/project/content/1317fab9f3c6480884f287d903c23047)確認赤峰街47巷16號2樓；[品牌介紹](https://athenabooks.com.tw/about/)列選書、講座及閱讀餐飲。與春秋、風景、銀月各店分開；動物友善概述不足以建立完整寵物條件。 |
+| ONIBUS COFFEE 中目黒駅前店／東京 | 網美：[現行分店頁](https://onibuscoffee.com/pages/locations/nakameguro)確認上目黒2-14-1；[2022年品牌介紹](https://onibuscoffee.com/en/blogs/news/114)記載大谷石、常滑燒磁磚與手繪設計。不是中目黒三丁目店；焙煎設備已移走，不沿用舊菜單、人氣、攝影或寵物規則。 |
+| Cafe Bibliotic Hello!／京都 | 文青：[品牌地址](https://cafe-hello.jp/)與[京都市京都館](https://www.kyotokan.jp/read/my-local-guide-kyoto-16-03/)一致，後者描述書牆與咖啡文化空間。品牌展覽資訊仍停在2017年，官方時段亦不一致，信心記為medium、營運細節待複核；不把Halo Galo的展覽當作現行咖啡店服務。 |
+| The Coastal Settlement／新加坡 | 網美：[官網](https://www.thecoastalsettlement.com/)確認Changi的200 Netheravon Road店址及綠意、古董家具與復古物件。只採本店空間設計，不用早期手冊菜單、不保證海景或拍攝許可，也不自動核准頁上訂位平台。 |
+
+浮光的Facebook及部分台北旅遊網頁本輪讀取受限，未繞過；採可完整讀取的品牌與文化部頁面。
+Halfway Coffee本輪未完成足夠的官方分店證據閱讀，暫不加入，不等於判定歇業。
+所有新候選仍須補精準地圖、耐久座標、商圈與管理員審核；沒有複製店家照片、啟動付費服務或建立寵物正式規則。
+
 ## 部署與匯入
 
 部署同版本 API、Web、worker 並執行 `alembic upgrade head`。
@@ -137,6 +155,7 @@ python -m app.cli import-trend-merchants --file app/foods/data/style_merchants_2
 第二批使用相同命令，將 `--file` 換為 `app/foods/data/style_merchants_2026_09_batch_02.json`。
 第三批則為 `app/foods/data/style_merchants_2026_09_batch_03.json`。
 第四批則為 `app/foods/data/style_merchants_2026_09_batch_04.json`。
+第五批則為 `app/foods/data/style_merchants_2026_09_batch_05.json`。
 既有部署可將新 JSON 送入受控暫存路徑後傳給 `--file`；資料補充不需重建服務或執行新遷移。
 
 ### 實際執行記錄
@@ -175,3 +194,16 @@ python -m app.cli import-trend-merchants --file app/foods/data/style_merchants_2
   `99954c26fb93226577a083c4aca6fabaf32c56d672131ecf89e38acf7bd8aecd`。
   四批合計24家新候選、2家既有店家補風格，共27個pending標籤（網美12／文青15）。
   公開風格查詢仍0；readiness正常，前台美食頁HTTP 200。未呼叫核准、發布、付費地圖或模型API。
+- PR [#350](https://github.com/x812033727/travel_scanner/pull/350) 於2026-09-08依授權合併。
+  同步main的#349與#352後，exact-head guard鎖定 `240178b6daff4607b8db1e4be027d4aefc70fcd3`，
+  八項checks全綠；merge commit `7b19c2f5717a1becdb6f93249bb0fc9d5c4ae598` 已確認在main。
+- 第五批於該main建立獨立分支；正式環境已另行更新至
+  `aaa33f008c82c56e5c541dede8205097102193e1`、schema `0062_merchant_platform_links`。
+  本批只使用現行importer，不重建服務、不執行遷移，也不核准新的預約連結。
+- 第五批取得兩個部署鎖、核對本機／伺服器／容器JSON checksum、鎖內再預覽與備份驗證後，
+  新增5家pending/inactive/unverified店家及5個pending風格（2網美／3文青）；再次預覽0／0。
+  兩筆稽核分別記錄建立5店、提案5風格，actor=NULL系統匯入；地圖、座標、商圈及審核人員欄位未填入。
+  備份7,087,794 bytes、權限600、`pg_restore --list`可讀，JSON SHA-256為
+  `b1509b953e5362d3be6f1220a2ea67ede2196a8344c8e2694c20c15d8eaba957`。
+  五批合計29家新候選、2家既有補風格，共32個pending標籤（網美14／文青18）；公開風格仍0，
+  readiness正常，前台美食頁HTTP 200。來源、預覽、套用及重播收據與私人備份皆保留。

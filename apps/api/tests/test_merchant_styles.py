@@ -426,6 +426,7 @@ def test_first_research_batch_is_valid_and_cannot_embed_approvals() -> None:
         ("style_merchants_2026_09_batch_02.json", 8, 9),
         ("style_merchants_2026_09_batch_03.json", 7, 7),
         ("style_merchants_2026_09_batch_04.json", 6, 6),
+        ("style_merchants_2026_09_batch_05.json", 5, 5),
     ],
 )
 def test_research_batches_contain_evidence_not_publication_state(
@@ -461,6 +462,7 @@ def test_research_batches_contain_evidence_not_publication_state(
         ("style_merchants_2026_09_batch_02.json", 8, 9),
         ("style_merchants_2026_09_batch_03.json", 7, 7),
         ("style_merchants_2026_09_batch_04.json", 6, 6),
+        ("style_merchants_2026_09_batch_05.json", 5, 5),
     ],
 )
 async def test_research_batch_import_is_private_audited_and_replay_safe(
@@ -491,13 +493,41 @@ async def test_research_batch_import_is_private_audited_and_replay_safe(
             )
         ).all()
         assert len(merchants) == merchant_count
+        proposals = {row.slug: row for row in rows}
         for merchant in merchants:
+            proposal = proposals[merchant.slug]
+            assert merchant.local_name == proposal.local_name
+            assert merchant.address == proposal.address
+            assert merchant.name == proposal.display_name
             assert merchant.review_status == "pending" and not merchant.is_active
             assert merchant.map_match_status == "unverified" and merchant.area_id is None
             assert merchant.google_place_id is None and merchant.naver_map_url is None
             assert merchant.latitude is None and merchant.longitude is None
         styles = (await session.scalars(select(FoodMerchantStyle))).all()
         assert len(styles) == style_count and all(style.status == "pending" for style in styles)
+        merchants_by_id = {merchant.id: merchant for merchant in merchants}
+        for style in styles:
+            proposal = proposals[merchants_by_id[style.merchant_id].slug]
+            evidence = next(item for item in proposal.styles if item.style == style.style)
+            assert style.evidence_url == evidence.evidence_url
+            assert style.evidence_title == evidence.evidence_title
+            assert style.rationale == evidence.rationale
+            assert style.checked_on == evidence.checked_on
+            assert style.reviewed_at is None and style.reviewed_by_user_id is None
+        sources = (
+            await session.scalars(
+                select(FoodMerchantSource).where(
+                    FoodMerchantSource.merchant_id.in_(merchants_by_id)
+                )
+            )
+        ).all()
+        assert len(sources) == merchant_count
+        for source in sources:
+            proposal = proposals[merchants_by_id[source.merchant_id].slug]
+            assert source.source_url == proposal.source_url
+            assert source.source_type == proposal.source_kind
+            assert source.source_scope == proposal.source_scope
+            assert source.claims_json == ["display_name", "address"]
         audits = (await session.scalars(select(AdminAuditLog))).all()
         assert {audit.action for audit in audits} == {
             "food_merchant_created",
