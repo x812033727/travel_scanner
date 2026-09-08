@@ -84,6 +84,7 @@ from app.trips.flight_anchor import (
 )
 from app.trips.hours import is_open_at, opens_within_day
 from app.trips.itinerary import ItineraryItem
+from app.trips.place_options import list_place_options, resolve_catalog_selection
 from app.trips.pricing import (
     lodging_from_offer,
     offer_price_snapshot,
@@ -140,6 +141,7 @@ from app.trips.schedule import (
     canonicalize_positions,
     clear_flight_anchor,
     ensure_system_slots,
+    insert_scheduled_rows,
     merge_reoptimized_lodging,
     primary_lodging,
     route_pair_count,
@@ -662,6 +664,12 @@ def apply_item_request(
         else:
             names.pop(field)
     record.names_json = names
+    if (record.data or {}).get("catalog_selection") != item.data.get("catalog_selection"):
+        # A different/manual location must not inherit the previous catalogue
+        # location's durable-coordinate provenance. A validated selection below
+        # installs its own canonical provenance after applying this request.
+        record.coordinate_source_type = None
+        record.coordinate_source_url = None
     record.item_type = item.item_type
     record.offer_id = item.offer_id
     record.day_date = item.day_date
@@ -2868,6 +2876,37 @@ async def get_trip_weather(
     return weather.model_copy(update={"warnings": list(dict.fromkeys(warnings))})
 
 
+@router.get("/{trip_id}/place-options")
+async def trip_place_options(
+    trip_id: UUID,
+    user: CurrentUser,
+    session: Session,
+    source: Literal["discover", "favorites", "nearby"] = "discover",
+    q: Annotated[str, Query(max_length=150)] = "",
+    kind: Literal["all", "hotspot", "merchant"] = "all",
+    latitude: Annotated[float | None, Query(ge=-90, le=90)] = None,
+    longitude: Annotated[float | None, Query(ge=-180, le=180)] = None,
+    next_latitude: Annotated[float | None, Query(ge=-90, le=90)] = None,
+    next_longitude: Annotated[float | None, Query(ge=-180, le=180)] = None,
+    radius_km: Literal[3, 10] = 3,
+    all_cities: bool = False,
+    offset: Annotated[int, Query(ge=0, le=10000)] = 0,
+    limit: Annotated[int, Query(ge=1, le=24)] = 12,
+) -> dict[str, Any]:
+    trip = await owned_trip(session, user.id, trip_id)
+    if (latitude is None) != (longitude is None) or (
+        (next_latitude is None) != (next_longitude is None)
+    ):
+        raise AppError(422, "invalid_place_bias", "經緯度需成對提供")
+    return await list_place_options(
+        session, trip, locale=active_locale(), source=source, q=q, kind=kind,
+        origin=(latitude, longitude) if latitude is not None and longitude is not None else None,
+        following=(next_latitude, next_longitude)
+        if next_latitude is not None and next_longitude is not None else None,
+        radius_km=radius_km, all_cities=all_cities, offset=offset, limit=limit,
+    )
+
+
 @router.put("/{trip_id}/itinerary")
 async def update_itinerary(
     trip_id: UUID,
@@ -2920,6 +2959,20 @@ async def update_itinerary(
         for item in incoming_items
     ):
         raise AppError(422, "itinerary_date_out_of_range", "行程項目日期超出旅程範圍")
+    catalog_items: dict[int, dict[str, Any]] = {}
+    for index, item in enumerate(incoming_items):
+        existing = existing_by_id.get(item.id) if item.id is not None else None
+        selection = item.data.get("catalog_selection")
+        if selection and (
+            existing is None or selection != (existing.data or {}).get("catalog_selection")
+        ):
+            if existing is not None and existing.system_role is not None and (
+                existing.system_role not in {"lunch", "dinner"}
+            ):
+                raise AppError(422, "system_itinerary_item_immutable", "此系統卡不可更換景點")
+            catalog_items[index] = await resolve_catalog_selection(
+                session, selection, active_locale()
+            )
     next_data = {
         **trip.data,
         "edited": True,
@@ -2962,7 +3015,15 @@ async def update_itinerary(
     route_impact_ids: set[UUID] = set(removed_ids)
     next_rows: list[TripPlanItem] = []
     new_route_rows: list[TripPlanItem] = []
-    for item in incoming_items:
+    for index, item in enumerate(incoming_items):
+        catalog_item = catalog_items.get(index)
+        if catalog_item:
+            item = item.model_copy(update={
+                "latitude": catalog_item["latitude"], "longitude": catalog_item["longitude"],
+                "provider_place_id": catalog_item["provider_place_id"],
+                "location_source": catalog_item["location_source"], "is_estimated": False,
+                "data": {**item.data, **catalog_item["data"]},
+            })
         row = existing_by_id.get(item.id) if item.id is not None else None
         if row is None:
             row = item_record(trip.id, item)
@@ -2971,7 +3032,6 @@ async def update_itinerary(
         else:
             before = (
                 row.day_date,
-                row.position,
                 row.start_time,
                 row.end_time,
                 row.latitude,
@@ -2983,7 +3043,6 @@ async def update_itinerary(
             )
             if row.system_role is not None:
                 protected: dict[str, Any] = {
-                    "position": row.position,
                     "locked": True,
                     "fixed_time": row.system_role
                     in {
@@ -3020,7 +3079,6 @@ async def update_itinerary(
                 item = item.model_copy(update=protected)
             after = (
                 item.day_date,
-                item.position,
                 item.start_time,
                 item.end_time,
                 Decimal(str(item.latitude)) if item.latitude is not None else None,
@@ -3033,6 +3091,13 @@ async def update_itinerary(
             if before != after:
                 route_impact_ids.add(row.id)
             apply_item_request(row, item)
+        if catalog_item:
+            row.names_json = {
+                key: value for key, value in catalog_item["names"].items()
+                if getattr(item, key, None) == catalog_item[key]
+            }
+            row.coordinate_source_type = catalog_item["data"]["coordinate_source_type"]
+            row.coordinate_source_url = catalog_item["data"]["coordinate_source_url"]
         next_rows.append(row)
 
     canonicalize_positions(next_rows)
@@ -3701,6 +3766,7 @@ async def generate_trip_itinerary(
         for record in generated_records:
             session.add(record)
         all_rows = [*plan.preserved, *kept_rows, *generated_records]
+        insert_scheduled_rows(all_rows, generated_records)
         canonicalize_positions(all_rows)
         planning_data = {
             **planning.planning.model_dump(mode="json"),
@@ -3901,6 +3967,7 @@ async def apply_trip_itinerary_preview(
         session.add_all(generated_records)
         await _retire_used_inbox_rows(session, trip.id, generated_records)
         all_rows = [*plan.preserved, *kept_rows, *generated_records]
+        insert_scheduled_rows(all_rows, generated_records)
         canonicalize_positions(all_rows)
         settings = await load_runtime_settings(session)
         routing_defaults = RoutingOptions.model_validate(trip.data.get("routing_defaults") or {})

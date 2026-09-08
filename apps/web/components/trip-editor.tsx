@@ -54,6 +54,10 @@ import { PlacePicker } from "@/components/place-picker";
 import { TripCostPanel } from "@/components/trip-cost-panel";
 import { TripNoteField } from "@/components/trip-note-field";
 import { PlannerOverlay } from "@/components/planner-overlay";
+import { EditableItineraryTimeline } from "@/components/editable-itinerary-timeline";
+import { ItineraryPlaceBrowser, type PlaceOption } from "@/components/itinerary-place-browser";
+import { itineraryCopy, itineraryText } from "@/lib/itinerary-copy";
+import { dayTimeline, insertionNeighbors, insertionPoints, normalizeOrder, placeAt, type InsertionPoint } from "@/lib/itinerary-order";
 import { TripPriceWatch } from "@/components/trip-price-watch";
 import { RouteModePanel } from "@/components/route-mode-panel";
 import { RouteSegmentCard } from "@/components/route-segment-card";
@@ -89,14 +93,7 @@ function flightStatusHref(item: TripItem, tripId: string) {
 }
 
 function normalize(items: TripItem[]) {
-  const positions = new Map<string, number>();
-  return [...items]
-    .sort((a, b) => a.day_date.localeCompare(b.day_date) || a.position - b.position)
-    .map((item) => {
-      const position = positions.get(item.day_date) || 0;
-      positions.set(item.day_date, position + 1);
-      return { ...item, position };
-    });
+  return normalizeOrder(items);
 }
 function daysBetween(start?: string | null, end?: string | null) {
   if (!start || !end) return [];
@@ -338,7 +335,17 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const [optimizeBlock, setOptimizeBlock] = useState<{ limit: number; label: string; days: Array<{ date: string; excess: number }> }>();
   const [action, setAction] = useState<string>();
   const [shareUrl, setShareUrl] = useState("");
-  const [dragged, setDragged] = useState<string>();
+  const copy = itineraryCopy(locale);
+  const [pickerPoint, setPickerPoint] = useState<InsertionPoint>();
+  const pickerDoneRef = useRef<HTMLButtonElement>(null);
+  const [manualPoint, setManualPoint] = useState<InsertionPoint>();
+  const [pickerMealId, setPickerMealId] = useState<string>();
+  const [movingId, setMovingId] = useState<string>();
+  const [movePoint, setMovePoint] = useState<InsertionPoint>();
+  const [undoEdit, setUndoEdit] = useState<
+    { kind: "add"; id: string } | { kind: "move"; id: string; point: InsertionPoint }
+    | { kind: "meal"; item: TripItem }
+  >();
   const [saveState, setSaveState] = useState<SaveState>("saved");
   const [revision, setRevision] = useState(0);
   const [reloadToken, setReloadToken] = useState(0);
@@ -613,6 +620,8 @@ export function TripEditor({ tripId }: { tripId: string }) {
       ? { latitude: reference.latitude, longitude: reference.longitude }
       : undefined;
   }, [items]);
+  const pickerNeighbors = pickerPoint ? insertionNeighbors(items, pickerPoint) : undefined;
+  const movingItem = items.find((row) => row.id === movingId);
   const editingItem = draftItem || items.find((item) => item.id === editingId);
   const editingMeal = editingItem?.system_role === "lunch" || editingItem?.system_role === "dinner";
   const editingFlightItem = items.find((item) => item.system_role === flightRole);
@@ -639,11 +648,9 @@ export function TripEditor({ tripId }: { tripId: string }) {
   }
 
   function updateItems(updater: (current: TripItem[]) => TripItem[], staleDay?: string) {
-    setItems((current) => {
-      const next = normalize(updater(current));
-      itemsRef.current = next;
-      return next;
-    });
+    const next = normalize(updater(itemsRef.current));
+    itemsRef.current = next;
+    setItems(next);
     markEdited(staleDay);
   }
 
@@ -737,67 +744,132 @@ export function TripEditor({ tripId }: { tripId: string }) {
     return () => window.clearTimeout(timer);
   }, [flushChanges, revision, saveState]);
 
-  function movableRows(day: string) {
-    return itemsRef.current
-      .filter((row) => row.day_date === day && !row.system_role && !isLogisticsItem(row))
-      .sort((a, b) => a.position - b.position);
+  function currentPoint(item: TripItem, allItems = items): InsertionPoint {
+    const rows = dayTimeline(allItems, item.day_date);
+    return { day: item.day_date, beforeId: rows[rows.findIndex((row) => row.id === item.id) + 1]?.id };
+  }
+
+  function applyOrder(next: TripItem[], affectedDays: string[]) {
+    updateItems(() => next);
+    setStaleDays((current) => new Set([...current, ...affectedDays]));
+    setRoutes((current) => segmentsForRows(current, next));
+    if (selectedRoute && segmentsForRows([selectedRoute], next).length === 0) {
+      setSelectedRoute(undefined);
+      closeRouteDrawer();
+    }
+  }
+
+  function moveTo(id: string, point: InsertionPoint, undoable = true) {
+    const item = itemsRef.current.find((row) => row.id === id);
+    if (!item || item.system_role || isLogisticsItem(item) || !days.includes(point.day)) return;
+    if (point.beforeId === id) return;
+    const oldPoint = currentPoint(item, itemsRef.current);
+    const moved = item.day_date === point.day ? item : {
+      ...item,
+      start_time: item.fixed_time && item.start_time ? withTime(point.day, timeValue(item.start_time, tripRef.current?.timezone)) : null,
+      end_time: null,
+    };
+    const next = placeAt(itemsRef.current, moved, point);
+    if (next.every((row, index) => row.id === itemsRef.current[index]?.id && row.day_date === itemsRef.current[index]?.day_date)) return;
+    if (undoable) {
+      setUndoItem(undefined);
+      setUndoEdit({ kind: "move", id, point: oldPoint });
+    }
+    applyOrder(next, [item.day_date, point.day]);
+    setActiveDay(point.day);
+    setRecentItemId(id);
+    setNotice(copy.moved);
+  }
+
+  function stepPoint(item: TripItem, direction: -1 | 1) {
+    const points = insertionPoints(items, item.day_date, item.id);
+    const at = points.findIndex((point) => point.beforeId === currentPoint(item).beforeId);
+    return points[at + direction];
   }
 
   function move(id: string, direction: -1 | 1) {
     const item = itemsRef.current.find((row) => row.id === id);
-    if (!item || item.system_role) return;
-    const sameDay = movableRows(item.day_date);
-    const index = sameDay.findIndex((row) => row.id === id);
-    const target = sameDay[index + direction];
-    // At the edge there is nothing to swap with. Returning early matters: the
-    // old code still marked the trip dirty and threw away the day's computed
-    // routes for a move that visibly did nothing.
-    if (!target) return;
-    const reordered = itemsRef.current.map((row) => row.id === id
-      ? { ...row, position: target.position }
-      : row.id === target.id ? { ...row, position: item.position } : row);
-    updateItems(() => reordered, item.day_date);
-    // Only the legs around the swapped stops changed; every other segment (and its
-    // real travel time) survives, exactly like the server-side invalidation.
-    setRoutes((current) => segmentsForRows(current, reordered));
-    if (selectedRoute && segmentsForRows([selectedRoute], reordered).length === 0) {
-      setSelectedRoute(undefined);
-      closeRouteDrawer();
-    }
+    const point = item && stepPoint(item, direction);
+    if (point) moveTo(id, point);
   }
 
-  function drop(targetId: string) {
-    if (!dragged || dragged === targetId) return;
-    const source = itemsRef.current.find((item) => item.id === dragged);
-    const target = itemsRef.current.find((item) => item.id === targetId);
-    if (!source || !target || source.system_role || target.system_role) return;
-    const dropped = itemsRef.current.map((item) => item.id === source.id
-      ? { ...item, day_date: target.day_date, position: target.position }
-      : item.id === target.id && source.day_date === target.day_date
-        ? { ...item, position: source.position }
-        : item);
-    updateItems(() => dropped, source.day_date);
-    setStaleDays((current) => new Set([...current, source.day_date, target.day_date]));
-    // A drop only breaks the legs around the moved stop, on both days involved.
-    setRoutes((current) => segmentsForRows(current, dropped));
-    if (selectedRoute && segmentsForRows([selectedRoute], dropped).length === 0) {
-      setSelectedRoute(undefined);
-      closeRouteDrawer();
-    }
-    setDragged(undefined);
+  function openMove(id: string) {
+    const item = itemsRef.current.find((row) => row.id === id);
+    if (!item || item.system_role) return;
+    setMovingId(id); setMovePoint(currentPoint(item));
+  }
+
+  function pointLabel(point: InsertionPoint, moving?: string) {
+    const neighbors = insertionNeighbors(items.filter((row) => row.id !== moving), point);
+    return `${neighbors.before?.title || copy.start} → ${neighbors.after?.title || copy.end}`;
   }
 
   function add(day: string, atPosition?: number) {
+    const before = dayTimeline(itemsRef.current, day).find((row) => row.position === atPosition);
+    const point = before ? { day, beforeId: before.id } : insertionPoints(itemsRef.current, day).at(-1) || { day };
+    setPickerMealId(undefined);
+    setPickerPoint(point);
+    setActiveDay(day);
+    setUndoEdit(undefined);
+  }
+
+  function startCustomStop() {
+    if (!pickerPoint) return;
+    if (pickerMealId) {
+      setEditingId(pickerMealId); setPickerPoint(undefined); setPickerMealId(undefined);
+      return;
+    }
+    const point = pickerPoint;
     const item: TripItem = {
-      id: crypto.randomUUID(), item_type: "custom", day_date: day,
-      // By default the new stop goes to the end; an insertion point between two
-      // cards hands us the position it should take instead.
-      position: atPosition ?? itemsRef.current.filter((row) => row.day_date === day).length,
+      id: crypto.randomUUID(), item_type: "custom", day_date: point.day, position: 0,
       title: "", location_name: "", locked: false, fixed_time: false,
       is_estimated: true, duration_minutes: 60, data: { source_mode: "manual" },
     };
-    setActiveDay(day);
+    setManualPoint(point);
+    setPickerPoint(undefined);
     setDraftItem(item);
+  }
+
+  function addSelectedPlace(selected: PlaceOption["item"]): boolean {
+    if (!pickerPoint) return false;
+    const meal = pickerMealId && itemsRef.current.find((row) => row.id === pickerMealId);
+    if (meal) {
+      setUndoItem(undefined);
+      setUndoEdit({ kind: "meal", item: meal });
+      patchItem(meal.id, {
+        ...selected, id: meal.id, system_role: meal.system_role, day_date: meal.day_date,
+        item_type: meal.item_type, fixed_time: true, locked: true, is_skipped: meal.is_skipped,
+        start_time: meal.start_time, end_time: meal.end_time, duration_minutes: meal.duration_minutes,
+        notes: meal.notes, data: { ...meal.data, ...selected.data, meal_selection_source: "user" },
+      });
+      return true;
+    }
+    const item: TripItem = {
+      ...selected, id: crypto.randomUUID(), day_date: pickerPoint.day, position: 0,
+      fixed_time: false, locked: false, system_role: null, is_skipped: false,
+      start_time: null, end_time: null, data: { ...selected.data, source_mode: "manual" },
+    };
+    // Look only at this day: visiting a place again on a different day is valid.
+    if (item.provider_place_id && itemsRef.current.some((row) => row.day_date === item.day_date
+      && row.provider_place_id === item.provider_place_id && !row.system_role?.startsWith("hotel_"))) return false;
+    applyOrder(placeAt(itemsRef.current, item, pickerPoint), [item.day_date]);
+    setRecentItemId(item.id);
+    setUndoItem(undefined);
+    setUndoEdit({ kind: "add", id: item.id });
+    return true;
+  }
+
+  function undoLastEdit() {
+    if (!undoEdit) return;
+    if (undoEdit.kind === "add") {
+      const row = itemsRef.current.find((item) => item.id === undoEdit.id);
+      if (row) applyOrder(itemsRef.current.filter((item) => item.id !== row.id), [row.day_date]);
+    } else if (undoEdit.kind === "move") {
+      moveTo(undoEdit.id, undoEdit.point, false);
+    } else {
+      patchItem(undoEdit.item.id, undoEdit.item);
+    }
+    setUndoEdit(undefined); setNotice(undefined);
   }
 
   /** Drop a pasted place into the day on screen, as a stop that is ready to route. */
@@ -823,10 +895,17 @@ export function TripEditor({ tripId }: { tripId: string }) {
       names: names as TripItem["names"],
       data: { source_mode: "manual", pasted_from: candidate.source },
     };
-    updateItems((current) => [...current, item], activeDay);
+    applyOrder(placeAt(itemsRef.current, item, { day: activeDay }), [activeDay]);
     setRecentItemId(item.id);
     setNotice(te("added"));
     return true;
+  }
+
+  function closePlaceBrowser() {
+    if (undoEdit?.kind === "add") setNotice(te("added"));
+    if (undoEdit?.kind === "meal") setNotice(copy.replaced);
+    setPickerPoint(undefined);
+    setPickerMealId(undefined);
   }
 
   function closeEditor() {
@@ -837,12 +916,11 @@ export function TripEditor({ tripId }: { tripId: string }) {
   function commitDraftItem() {
     if (!draftItem?.title.trim()) return;
     const item = { ...draftItem, title: draftItem.title.trim() };
-    updateItems((current) => [
-      ...current.map((row) => row.day_date === item.day_date && row.position >= item.position
-        ? { ...row, position: row.position + 1 }
-        : row),
-      item,
-    ], item.day_date);
+    const point = manualPoint?.day === item.day_date ? manualPoint : { day: item.day_date };
+    applyOrder(placeAt(itemsRef.current, item, point), [item.day_date]);
+    setUndoItem(undefined);
+    setUndoEdit({ kind: "add", id: item.id });
+    setManualPoint(undefined);
     setActiveDay(item.day_date);
     setRecentItemId(item.id);
     setDraftItem(undefined);
@@ -859,7 +937,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       location_source: "confirmed",
       location_provider: place.provider,
       is_estimated: false,
-      data: { ...item.data, opening_hours: place.opening_hours || [], google_maps_url: place.google_maps_url, naver_maps_url: place.naver_maps_url || place.external_url, place_provider: place.provider, attribution: place.attribution, place_match_status: "confirmed", needs_place_confirmation: false, ...(item.system_role === "lunch" || item.system_role === "dinner" ? { meal_selection_source: "user" } : {}) },
+      data: { ...item.data, catalog_selection: undefined, hotspot_id: undefined, merchant_id: undefined, map_links: undefined, coordinate_source_type: undefined, coordinate_source_url: undefined, opening_hours: place.opening_hours || [], google_maps_url: place.google_maps_url, naver_maps_url: place.naver_maps_url || place.external_url, place_provider: place.provider, attribution: place.attribution, place_match_status: "confirmed", needs_place_confirmation: false, ...(item.system_role === "lunch" || item.system_role === "dinner" ? { meal_selection_source: "user" } : {}) },
     });
   }
 
@@ -1074,6 +1152,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
 
   function removeItem(item: TripItem) {
     if (item.system_role) return;
+    setUndoEdit(undefined);
     updateItems((current) => current.filter((row) => row.id !== item.id), item.day_date);
     setRoutes((current) => current.filter((route) => route.from_item_id !== item.id && route.to_item_id !== item.id));
     if (selectedRoute?.from_item_id === item.id || selectedRoute?.to_item_id === item.id) {
@@ -1087,7 +1166,9 @@ export function TripEditor({ tripId }: { tripId: string }) {
 
   function undoDelete() {
     if (!undoItem) return;
-    updateItems((current) => [...current, undoItem], undoItem.day_date);
+    const beforeId = dayTimeline(itemsRef.current, undoItem.day_date)
+      .find((row) => row.position >= undoItem.position)?.id;
+    applyOrder(placeAt(itemsRef.current, undoItem, { day: undoItem.day_date, beforeId }), [undoItem.day_date]);
     setActiveDay(undoItem.day_date);
     setUndoItem(undefined);
     setNotice(te("restored"));
@@ -1641,7 +1722,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       </div>
     </section>
     {saveState === "conflict" && <div role="alert" className="mb-4 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><p className="font-semibold">{te("conflictTitle")}</p><p className="mt-1 leading-6">{te("conflictBody")}</p><div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={() => void loadCloudVersion()} disabled={busy("conflict")} className="flex min-h-11 items-center gap-2 rounded-xl border border-amber-300 bg-white px-4 font-semibold disabled:opacity-50">{busy("conflict") && <Loader2 size={15} className="animate-spin" />}{te("loadCloud")}</button><button type="button" onClick={() => setConfirmAction("overwrite-conflict")} disabled={busy("conflict")} className="min-h-11 rounded-xl bg-amber-900 px-4 font-semibold text-white disabled:opacity-50">{te("keepLocal")}</button></div></div>}
-    {trip.planning && <section aria-label={te("aiStatusLabel")} className={`mb-4 flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm ${trip.planning.readiness === "partial" || trip.planning.readiness === "needs_setup" || trip.planning.status === "fallback" ? "border-amber-200 bg-amber-50 text-amber-950" : "border-violet-200 bg-violet-50 text-violet-950"}`}><span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/80"><Sparkles size={16} /></span><div className="min-w-0 flex-1"><p className="font-semibold">{trip.planning.readiness === "needs_setup" ? te("aiNeedsSetup") : trip.planning.status === "fallback" ? te("aiFallbackApplied") : trip.planning.readiness === "partial" ? te("aiPartialApplied") : te("aiApplied", { provider: aiProviderLabel(trip.planning.provider, te) })}</p><p className="mt-0.5 text-xs leading-5 opacity-75">{te("lastPlannedNote", { scope: trip.planning.scope === "day" && trip.planning.day_date ? te("lastPlannedDay", { day: trip.planning.day_date }) : te("lastPlannedTrip") })}</p>{trip.planning.warnings.length > 0 && <ul aria-label={te("aiWarningsLabel")} className="mt-2 grid gap-1 text-xs leading-5">{plannerWarningTexts(trip.planning.warnings, te).map((text) => <li key={text} className="flex gap-1.5"><TriangleAlert size={13} className="mt-0.5 shrink-0" aria-hidden />{text}</li>)}</ul>}{(trip.planning.unscheduled_slots || []).length > 0 && <div className="mt-2.5"><p className="text-xs font-semibold">{te("unscheduledSlots")}</p><div className="mt-1.5 flex flex-wrap gap-1.5">{(trip.planning.unscheduled_slots || []).map((slot, index) => <button key={`${slot.date}-${slot.slot}-${index}`} type="button" onClick={() => setActiveDay(slot.date)} className="min-h-8 rounded-full border border-amber-300 bg-white/75 px-2.5 py-1 text-xs font-semibold">{slot.date.slice(5).replace("-", "/")} {te(`slot.${slot.slot}`)}</button>)}</div></div>}</div><button type="button" onClick={() => openAIPlanner(activeDay ? "day" : "trip")} className="min-h-10 shrink-0 rounded-xl bg-white/80 px-3 text-xs font-bold">{te("replan")}</button></section>}
+    {trip.planning && <section aria-label={te("aiStatusLabel")} className={`mb-4 flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm ${trip.planning.readiness === "partial" || trip.planning.readiness === "needs_setup" || trip.planning.status === "fallback" ? "border-amber-200 bg-amber-50 text-amber-950" : "border-violet-200 bg-violet-50 text-violet-950"}`}><span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/80"><Sparkles size={16} /></span><div className="min-w-0 flex-1"><p className="font-semibold">{trip.planning.readiness === "needs_setup" ? te("aiNeedsSetup") : trip.planning.status === "fallback" ? te("aiFallbackApplied") : trip.planning.readiness === "partial" ? te("aiPartialApplied") : te("aiApplied", { provider: aiProviderLabel(trip.planning.provider, te) })}</p><p className="mt-0.5 text-xs leading-5 opacity-75">{te("lastPlannedNote", { scope: trip.planning.scope === "day" && trip.planning.day_date ? te("lastPlannedDay", { day: trip.planning.day_date }) : te("lastPlannedTrip") })}</p>{(trip.planning.warnings.length > 0 || (trip.planning.unscheduled_slots || []).length > 0) && <details className="itinerary-planning-notes"><summary>{copy.showIssues}</summary>{trip.planning.warnings.length > 0 && <ul aria-label={te("aiWarningsLabel")} className="mt-2 grid gap-1 text-xs leading-5">{plannerWarningTexts(trip.planning.warnings, te).map((text) => <li key={text} className="flex gap-1.5"><TriangleAlert size={13} className="mt-0.5 shrink-0" aria-hidden />{text}</li>)}</ul>}{(trip.planning.unscheduled_slots || []).length > 0 && <div className="mt-2.5"><p className="text-xs font-semibold">{te("unscheduledSlots")}</p><div className="mt-1.5 flex flex-wrap gap-1.5">{(trip.planning.unscheduled_slots || []).map((slot, index) => <button key={`${slot.date}-${slot.slot}-${index}`} type="button" onClick={() => setActiveDay(slot.date)} className="min-h-11 rounded-full border border-amber-300 bg-white/75 px-2.5 py-1 text-xs font-semibold">{slot.date.slice(5).replace("-", "/")} {te(`slot.${slot.slot}`)}</button>)}</div></div>}</details>}</div><button type="button" onClick={() => openAIPlanner(activeDay ? "day" : "trip")} className="min-h-10 shrink-0 rounded-xl bg-white/80 px-3 text-xs font-bold">{te("replan")}</button></section>}
 
     {trip.routing && ["queued", "processing"].includes(trip.routing.status) && <section aria-live="polite" className="mb-4 flex items-center gap-3 rounded-2xl border border-sky-200 bg-sky-50 px-4 py-3 text-sm text-sky-950"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white"><Loader2 size={18} className="animate-spin text-sky-700" /></span><div className="min-w-0 flex-1"><p className="font-semibold">{te("routingTitle")}</p><p className="mt-0.5 text-xs opacity-75">{te("routingProgress", { completed: trip.routing.completed, total: trip.routing.total })}</p></div></section>}
     {allLogistics.length > 0 && <details className="planner-logistics-panel mb-4 px-4 py-3"><summary className="min-h-11 cursor-pointer py-2 text-sm font-bold">{te("logisticsSummary", { count: allLogistics.length })}</summary><p className="mb-3 text-xs leading-5 text-[var(--muted)]">{te("logisticsHint")}</p><div className="grid gap-2 pb-1 sm:grid-cols-2">{allLogistics.map((item) => <div key={item.id} className="rounded-xl bg-white px-3 py-2.5"><p className="text-xs font-semibold text-[var(--muted)]">{item.day_date} · {formatTime(item.start_time, locale, trip.timezone)}</p><p className="mt-1 text-sm font-bold">{item.title}</p>{item.location_name && <p className="mt-1 text-xs text-[var(--muted)]">{item.location_name}</p>}</div>)}</div></details>}
@@ -1658,7 +1739,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       <section className="planner-day-panel rounded-[1.75rem] border border-[var(--line)] bg-white p-4 shadow-sm sm:p-6">
         <header className="mb-4 flex items-start justify-between gap-3 sm:mb-5">
           <div className="min-w-0"><p className="text-xs font-semibold tracking-[.16em] text-[var(--teal)]">{days.indexOf(activeDay) >= 0 ? `DAY ${days.indexOf(activeDay) + 1}` : "ITINERARY"}{activeDay === today ? te("todaySuffix") : ""}</p><h2 className="mt-1 text-xl font-bold sm:text-2xl"><span className="lg:hidden">{mobileDayHeading(activeDay, locale, te)}</span><span className="hidden lg:inline">{activeDay || te("noDate")}</span></h2><p className="planner-day-summary mt-1.5 text-xs font-semibold text-[var(--muted)]">{activeArrangementCount ? te("daySummary", { count: activeArrangementCount, duration: activeDurationMinutes ? te("daySummaryDuration", { duration: durationSummary(activeDurationMinutes, te) }) : "" }) : te("dayEmpty")}</p>{trip.cost?.by_day?.[activeDay] && <p className="mt-1 text-xs font-semibold text-[var(--teal)]">{t("costDayTotal", { amount: formatMoney(Number(trip.cost.by_day[activeDay]), trip.cost.currency) })}</p>}</div>
-          <div className="flex shrink-0 items-center gap-2"><button type="button" aria-label={te("computeDayRoutes")} onClick={() => void computeRoutes(activeDay, activeDay === today)} disabled={busy("route", "departure-time") || activeRouteRows.length < 2} className="planner-secondary-button flex">{action === `route-${activeDay}` ? <Loader2 size={17} className="animate-spin" /> : <RouteIcon size={17} />}<span className="hidden sm:inline">{te("routeShort")}</span></button><button type="button" aria-label={te(reorderMode ? "sortDone" : "sortItems")} aria-pressed={reorderMode} onClick={() => setReorderMode((value) => !value)} disabled={activeRows.filter((item) => !item.system_role).length < 2} className="planner-secondary-button flex md:hidden">{reorderMode ? <Check size={17} /> : <GripVertical size={17} />}<span className="planner-sort-label">{te(reorderMode ? "done" : "sort")}</span></button>{desktopMapVisible && <><button type="button" onClick={() => void previewOptimization(activeDay)} disabled={busy("preview", "apply") || activeRouteRows.length < 2} className="hidden min-h-11 items-center justify-center gap-1.5 rounded-xl border border-[var(--line)] px-3 text-sm font-semibold disabled:opacity-40 md:flex">{action === `preview-${activeDay}` ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}{te("optimize")}</button><button type="button" onClick={() => add(activeDay)} disabled={!activeDay} className="hidden min-h-11 items-center justify-center gap-1.5 rounded-xl bg-[var(--paper)] px-3 text-sm font-semibold disabled:opacity-40 md:flex"><Plus size={16} />{te("addShort")}</button></>}</div>
+          <div className="flex shrink-0 items-center gap-2"><button type="button" aria-label={te("computeDayRoutes")} onClick={() => void computeRoutes(activeDay, activeDay === today)} disabled={busy("route", "departure-time") || activeRouteRows.length < 2} className="planner-secondary-button flex">{action === `route-${activeDay}` ? <Loader2 size={17} className="animate-spin" /> : <RouteIcon size={17} />}<span className="hidden sm:inline">{te("routeShort")}</span></button><button type="button" aria-label={te(reorderMode ? "sortDone" : "sortItems")} aria-pressed={reorderMode} onClick={() => setReorderMode((value) => !value)} disabled={movable.length === 0} className="planner-secondary-button flex md:hidden">{reorderMode ? <Check size={17} /> : <GripVertical size={17} />}<span className="planner-sort-label">{te(reorderMode ? "done" : "sort")}</span></button>{desktopMapVisible && <><button type="button" onClick={() => void previewOptimization(activeDay)} disabled={busy("preview", "apply") || activeRouteRows.length < 2} className="hidden min-h-11 items-center justify-center gap-1.5 rounded-xl border border-[var(--line)] px-3 text-sm font-semibold disabled:opacity-40 md:flex">{action === `preview-${activeDay}` ? <Loader2 size={16} className="animate-spin" /> : <Sparkles size={16} />}{te("optimize")}</button><button type="button" onClick={() => add(activeDay)} disabled={!activeDay} className="hidden min-h-11 items-center justify-center gap-1.5 rounded-xl bg-[var(--paper)] px-3 text-sm font-semibold disabled:opacity-40 md:flex"><Plus size={16} />{te("addShort")}</button></>}</div>
         </header>
         {activeRouteRows.length > 1 && <section className="route-day-settings mb-4"><div><p className="text-xs font-semibold text-[var(--muted)]">{te("dayTravelTitle")}</p><div className="mt-2 flex gap-1.5" role="radiogroup" aria-label={te("dayTravelLabel")}>{([['transit', TrainFront], ['walk', Footprints], ['drive', CarFront]] as const).map(([value, Icon]) => <button key={value} type="button" role="radio" aria-checked={activeTravelMode === value} onClick={() => void computeRoutes(activeDay, false, { mode: value })} disabled={busy("route")} className={`route-day-mode ${activeTravelMode === value ? "route-day-mode-active" : ""}`}><Icon size={15} /><span>{te(`mode.${value}`)}</span></button>)}</div></div><label className="shrink-0 text-xs font-semibold text-[var(--muted)]">{te("transferBuffer")}<select aria-label={te("bufferLabel")} value={activeTravelBuffer} onChange={(event) => void computeRoutes(activeDay, false, { buffer: Number(event.target.value) })} disabled={busy("route")} className="mt-2 block min-h-11 rounded-xl border border-[var(--line)] bg-white px-3 text-sm font-bold text-[var(--ink)]">{[0, 5, 10, 15, 30].map((minutes) => <option key={minutes} value={minutes}>{te("minutesShort", { minutes })}</option>)}</select></label></section>}
         {activeDay && <details open={Boolean(trip.day_notes?.[activeDay])} className="planner-day-note mb-4"><summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-semibold"><NotebookPen size={16} className="text-[var(--teal)]" />{trip.day_notes?.[activeDay] ? t("dayNotesLabel") : t("dayNotesAdd")}</summary><div className="mt-2"><TripNoteField label={t("dayNotesLabel")} placeholder={t("dayNotesPlaceholder")} value={trip.day_notes?.[activeDay] || ""} onSave={(next) => saveDayNotes(activeDay, next)} /></div></details>}
@@ -1666,10 +1747,10 @@ export function TripEditor({ tripId }: { tripId: string }) {
         {reorderMode && <div className="mb-3 flex min-h-12 items-center gap-2 rounded-2xl bg-[var(--teal-soft)] px-4 py-3 text-sm font-semibold text-[var(--teal-dark)] md:hidden"><GripVertical size={17} /><span>{te("reorderHint")}</span></div>}
         <DayHealthStrip tripId={trip.id} day={activeDay} revision={revision} onSelectItem={(itemId) => setEditingId(itemId)} />
         {days.length === 0 && <div className="app-empty-state mb-4"><CalendarDays size={22} aria-hidden /><p className="font-semibold">{t("noDatesTitle")}</p><p className="text-xs leading-5">{t("noDatesBody")}</p><button type="button" onClick={() => router.push("/trips")} className="min-h-11 rounded-xl border border-[var(--line)] bg-white px-4 text-sm font-semibold text-[var(--teal)]">{t("backToTrips")}</button></div>}
-        <ol className="planner-timeline space-y-3">{activeDisplayRows.map((item, index) => {
+        <p className="mb-2 text-xs leading-5 text-[var(--muted)]">{copy.moveHint}</p><EditableItineraryTimeline onMove={(id, beforeId) => moveTo(id, { day: activeDay, beforeId })} onOpenMove={openMove}>{activeDisplayRows.map((item, index) => {
           const routeIndex = activeRouteRows.findIndex((row) => row.id === item.id);
           const nextRouteItem = routeIndex >= 0 ? activeRouteRows[routeIndex + 1] : undefined;
-          const nextItem = nextRouteItem || activeDisplayRows.slice(index + 1).find((row) => !row.is_skipped);
+          const nextItem = nextRouteItem || activeDisplayRows.slice(index + 1).find((row) => !row.is_skipped && !isFlightAnchor(row));
           const segment = nextRouteItem ? routes.find((route) => route.from_item_id === item.id && route.to_item_id === nextRouteItem.id) : undefined;
           const routeBlocker = nextRouteItem || !nextItem
             ? undefined
@@ -1692,8 +1773,14 @@ export function TripEditor({ tripId }: { tripId: string }) {
           const chainedTime = projectedStart
             ? te("chained", { kind: te(projectedStart.estimated ? "chainedApprox" : "chainedExpected"), time: formatTime(projectedStart.start, locale, trip.timezone) })
             : te("chainedPending");
-          return <li id={`trip-item-${item.id}`} key={item.id} className={`planner-enter relative ${isFlightAnchor(item) ? "" : "pl-9"}`} style={{ "--planner-index": index } as CSSProperties}>{!reorderMode && !isFlightAnchor(item) && !item.system_role && <button type="button" aria-label={t("insertBefore", { title: item.title || t("insertFallback") })} onClick={() => add(activeDay, item.position)} className="planner-insert-point"><span className="planner-insert-line" aria-hidden="true" /><span className="planner-insert-plus"><Plus size={14} /></span><span className="planner-insert-line" aria-hidden="true" /></button>}{!isFlightAnchor(item) && <span aria-hidden="true" className="planner-timeline-marker absolute top-6 z-10">{marker}</span>}{isFlightAnchor(item) ? <FlightAnchorCard item={item} busy={action === `flight-${item.system_role === "outbound_flight" ? "outbound" : "return"}`} onEdit={() => openFlightEditor(item)} search={{ href: `/search?trip_id=${trip.id}`, charge: flightSearchCharge.label }} flightStatus={{ href: flightStatusHref(item, trip.id), charge: flightStatusCharge.label }} alertReturnPath={`/trips/${trip.id}`} /> : item.system_role ? <SystemItineraryCard item={item} locale={locale} timezone={trip.timezone} busy={action === `skip-${item.id}`} routeStale={!item.fixed_time && !routes.some((route) => route.to_item_id === item.id)} chainedStart={projectedStart} departureTime={trip.schedule_defaults?.day_start_time || defaultSchedule.day_start_time} departureBusy={action === "departure-time"} onDepartureTimeChange={(value) => void saveDepartureTime(value)} onEdit={() => item.system_role?.startsWith("hotel_") ? openStayFlow() : setEditingId(item.id)} onSkip={item.system_role === "lunch" || item.system_role === "dinner" ? () => void toggleMealSkip(item) : undefined} /> : <article draggable={desktopMapVisible} onDragStart={() => setDragged(item.id)} onDragOver={(event) => event.preventDefault()} onDrop={() => drop(item.id)} className={`planner-itinerary-card group p-4 ${reorderMode ? "planner-itinerary-card-reordering" : ""} ${recentItemId === item.id ? "planner-itinerary-card-new" : ""}`}><div className="flex items-start gap-3"><span className="hidden cursor-grab pt-1 text-[var(--muted)] lg:block" title={te("dragToSort")}><GripVertical size={19} /></span><button type="button" onClick={() => setEditingId(item.id)} className="min-w-0 flex-1 text-left"><div className="flex flex-wrap items-center gap-2"><span className="planner-time-badge">{item.fixed_time ? te("fixedTimeAt", { time: formatTime(item.start_time, locale, trip.timezone) }) : chainedTime}</span>{item.duration_minutes ? <span className="text-xs text-[var(--muted)]">{te("stayMinutes", { minutes: item.duration_minutes })}</span> : null}{item.data.generated_by === "ai_planner" && <span className="rounded-full bg-violet-100 px-2 py-1 text-xs font-semibold text-violet-800">{te("aiSuggested")}</span>}{item.locked && <span className="rounded-full bg-amber-50 px-2 py-1 text-xs font-semibold text-amber-800">{te("locked")}</span>}</div><h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tight">{item.title}</h3>{originalItemName(item) && <p className="mt-0.5 truncate text-sm text-[var(--muted)]" lang={item.names?.title?.original_locale}>{originalItemName(item)}</p>}<p className="mt-1 flex items-start gap-1.5 text-sm leading-5 text-[var(--muted)]"><MapPin size={15} className="mt-0.5 shrink-0" />{item.location_name || te("noLocation")}</p><span className={`mt-2 inline-flex rounded-full px-2 py-1 text-xs font-semibold ${itemLocationConfirmed ? "bg-emerald-50 text-emerald-800" : autoLocation ? "bg-sky-50 text-sky-800" : "bg-amber-50 text-amber-800"}`}>{locationStatus}{autoLocation ? te("location.tapToFix") : ""}</span>{itemConflict && <p className="mt-2 rounded-xl bg-red-50 px-3 py-2 text-xs font-semibold leading-5 text-red-800">{te("conflictLate", { scheduled: formatTime(itemConflict.scheduled_start_time, locale, trip.timezone), projected: formatTime(itemConflict.projected_start_time, locale, trip.timezone), minutes: itemConflict.late_minutes })}</p>}{item.notes && <p className="mt-2 line-clamp-2 text-xs leading-5 text-[var(--muted)]">{item.notes}</p>}</button><div className={`flex shrink-0 items-center gap-1 ${reorderMode ? "flex-col md:flex-row" : ""}`}><button type="button" aria-label={te("moveUp", { title: item.title })} onClick={() => move(item.id, -1)} disabled={movable.findIndex((row) => row.id === item.id) <= 0} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowUp size={18} /></button><button type="button" aria-label={te("moveDown", { title: item.title })} onClick={() => move(item.id, 1)} disabled={movable.findIndex((row) => row.id === item.id) === movable.length - 1} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button md:grid`}><ArrowDown size={18} /></button><button type="button" aria-label={te("editItem", { title: item.title })} onClick={() => setEditingId(item.id)} className={`${reorderMode ? "hidden" : "grid"} min-h-11 min-w-11 place-items-center rounded-xl bg-[var(--teal-soft)] text-[var(--teal)] md:grid`}><Edit3 size={17} /></button></div></div></article>}{nextItem && !item.is_skipped && <div className="py-2 pl-2"><RouteTimelineLink segment={segment} nextTitle={nextItem.title} loading={!needsSetup && ["queued", "processing"].includes(trip.routing?.status || "")} stale={segment?.status === "stale"} timezone={trip.timezone} needsSetup={needsSetup} onClick={() => { if (routeBlocker) { if (routeBlocker.system_role?.startsWith("hotel_")) openStayFlow(); else setEditingId(routeBlocker.id); return; } setRouteTarget({ fromItemId: item.id, toItemId: nextItem.id }); setSelectedRoute(segment); setRouteDrawerOpen(true); }} /></div>}</li>;
-        })}</ol>
+          return <li id={`trip-item-${item.id}`} key={item.id} className={`planner-enter relative ${isFlightAnchor(item) ? "" : "pl-9"}`} style={{ "--planner-index": index } as CSSProperties}>{!isFlightAnchor(item) && item.system_role !== "hotel_start" && <button data-itinerary-gap={item.id} type="button" aria-label={t("insertBefore", { title: item.title || t("insertFallback") })} onClick={() => add(activeDay, item.position)} className="itinerary-insert-gap"><span aria-hidden="true" className="itinerary-gap-line" /><span className="itinerary-gap-label"><Plus size={15} />{copy.addHere}</span><span aria-hidden="true" className="itinerary-gap-line" /></button>}{!isFlightAnchor(item) && <span aria-hidden="true" className="planner-timeline-marker absolute top-6 z-10">{marker}</span>}{isFlightAnchor(item) ? <FlightAnchorCard item={item} busy={action === `flight-${item.system_role === "outbound_flight" ? "outbound" : "return"}`} onEdit={() => openFlightEditor(item)} search={{ href: `/search?trip_id=${trip.id}`, charge: flightSearchCharge.label }} flightStatus={{ href: flightStatusHref(item, trip.id), charge: flightStatusCharge.label }} alertReturnPath={`/trips/${trip.id}`} /> : item.system_role ? <SystemItineraryCard item={item} locale={locale} timezone={trip.timezone} busy={action === `skip-${item.id}`} routeStale={!item.fixed_time && !routes.some((route) => route.to_item_id === item.id)} chainedStart={projectedStart} departureTime={trip.schedule_defaults?.day_start_time || defaultSchedule.day_start_time} departureBusy={action === "departure-time"} onDepartureTimeChange={(value) => void saveDepartureTime(value)} onEdit={() => item.system_role?.startsWith("hotel_") ? openStayFlow() : setEditingId(item.id)} onSkip={item.system_role === "lunch" || item.system_role === "dinner" ? () => void toggleMealSkip(item) : undefined} /> : <article data-stop-id={item.id} className={`planner-itinerary-card group p-4 ${reorderMode ? "planner-itinerary-card-reordering" : ""} ${recentItemId === item.id ? "planner-itinerary-card-new" : ""}`}><div className="flex items-start gap-3"><button type="button" data-itinerary-drag={item.id} data-stop-title={item.title} aria-label={te("dragToSort") + " " + item.title} className="itinerary-drag-handle"><GripVertical size={19} /></button><button type="button" onClick={() => setEditingId(item.id)} className="min-w-0 flex-1 text-left"><div className="flex flex-wrap items-center gap-2"><span className="planner-time-badge">{item.fixed_time ? te("fixedTimeAt", { time: formatTime(item.start_time, locale, trip.timezone) }) : chainedTime}</span>{item.duration_minutes ? <span className="text-xs text-[var(--muted)]">{te("stayMinutes", { minutes: item.duration_minutes })}</span> : null}{item.data.generated_by === "ai_planner" && <span className="rounded-full bg-violet-100 px-2 py-1 text-xs font-semibold text-violet-800">{te("aiSuggested")}</span>}{item.locked && <span className="rounded-full bg-amber-50 px-2 py-1 text-xs font-semibold text-amber-800">{te("locked")}</span>}</div><h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tight">{item.title}</h3>{originalItemName(item) && <p className="mt-0.5 truncate text-sm text-[var(--muted)]" lang={item.names?.title?.original_locale}>{originalItemName(item)}</p>}<p className="mt-1 flex items-start gap-1.5 text-sm leading-5 text-[var(--muted)]"><MapPin size={15} className="mt-0.5 shrink-0" />{item.location_name || te("noLocation")}</p><span className={`mt-2 inline-flex rounded-full px-2 py-1 text-xs font-semibold ${itemLocationConfirmed ? "bg-emerald-50 text-emerald-800" : autoLocation ? "bg-sky-50 text-sky-800" : "bg-amber-50 text-amber-800"}`}>{locationStatus}{autoLocation ? te("location.tapToFix") : ""}</span>{itemConflict && <p className="mt-2 rounded-xl bg-red-50 px-3 py-2 text-xs font-semibold leading-5 text-red-800">{te("conflictLate", { scheduled: formatTime(itemConflict.scheduled_start_time, locale, trip.timezone), projected: formatTime(itemConflict.projected_start_time, locale, trip.timezone), minutes: itemConflict.late_minutes })}</p>}{item.notes && <p className="mt-2 line-clamp-2 text-xs leading-5 text-[var(--muted)]">{item.notes}</p>}</button><div className="flex shrink-0 flex-col items-center gap-1"><button type="button" aria-label={itineraryText(copy.moveHandle, { title: item.title })} onClick={() => openMove(item.id)} className="itinerary-move-button">{copy.move}</button><button type="button" aria-label={te("moveUp", { title: item.title })} onClick={() => move(item.id, -1)} disabled={!stepPoint(item, -1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button`}><ArrowUp size={18} /></button><button type="button" aria-label={te("moveDown", { title: item.title })} onClick={() => move(item.id, 1)} disabled={!stepPoint(item, 1)} className={`${reorderMode ? "grid" : "hidden"} planner-reorder-button`}><ArrowDown size={18} /></button><button type="button" aria-label={te("editItem", { title: item.title })} onClick={() => setEditingId(item.id)} className={`${reorderMode ? "hidden" : "grid"} min-h-11 min-w-11 place-items-center rounded-xl bg-[var(--teal-soft)] text-[var(--teal)] md:grid`}><Edit3 size={17} /></button></div></div></article>}{nextItem && !item.is_skipped && !isFlightAnchor(item) && item.system_role !== "hotel_end" && <div className="py-2 pl-2"><RouteTimelineLink segment={segment} nextTitle={nextItem.title} loading={!needsSetup && ["queued", "processing"].includes(trip.routing?.status || "")} stale={segment?.status === "stale"} timezone={trip.timezone} needsSetup={needsSetup} onClick={() => { if (routeBlocker) { if (routeBlocker.system_role?.startsWith("hotel_")) openStayFlow(); else setEditingId(routeBlocker.id); return; } setRouteTarget({ fromItemId: item.id, toItemId: nextItem.id }); setSelectedRoute(segment); setRouteDrawerOpen(true); }} /></div>}</li>;
+        })}
+          {!activeDisplayRows.some((row) => row.system_role === "hotel_end") && <li className="pl-9">
+            <button type="button" data-itinerary-gap="" onClick={() => add(activeDay)} className="itinerary-insert-gap">
+              <span className="itinerary-gap-line" /><span className="itinerary-gap-label"><Plus size={15} />{copy.addHere}</span><span className="itinerary-gap-line" />
+            </button>
+          </li>}
+        </EditableItineraryTimeline>
         {trip.routing && ["partial", "failed", "unavailable", "needs_locations"].includes(trip.routing.status) && routeWarnings.length ? <details className="mt-5 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950"><summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-semibold"><span className="flex items-center gap-2"><TriangleAlert size={17} />{te("routeIssuesTitle")}</span><span className="rounded-full bg-white/80 px-2.5 py-1 text-xs">{te("routeIssuesCount", { count: routeWarnings.length })}</span></summary><div className="mt-2 grid gap-2 border-t border-amber-200/70 pt-3">{routeWarnings.map((warning) => <p key={warning} className="rounded-xl bg-white/70 px-3 py-2 text-xs leading-5">{warning}</p>)}<div className="flex flex-wrap gap-2">{!lodgingReady && <button type="button" onClick={openStayFlow} className="min-h-11 rounded-xl bg-amber-900 px-4 text-xs font-bold text-white">{te("setMainHotel")}</button>}{routeNeedsLocations && unresolvedRouteItems[0] && <button type="button" onClick={() => setEditingId(unresolvedRouteItems[0].id)} className="min-h-11 rounded-xl bg-white px-4 text-xs font-bold text-[var(--teal)]">{te("pickOfficialPlace")}</button>}{!routeNeedsLocations && activeRouteRows.length > 1 && <button type="button" onClick={() => void computeRoutes(activeDay, true)} className="min-h-11 rounded-xl bg-white px-4 text-xs font-bold text-[var(--teal)]">{te("retryRoutes")}</button>}</div></div></details> : null}
       </section>
       {desktopMapVisible && selectedRoute && <aside className="min-w-0 space-y-4 lg:sticky lg:top-24 lg:self-start"><RouteSegmentCard segment={selectedRoute} selected defaultExpanded timezone={trip.timezone} /></aside>}
@@ -1703,7 +1790,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
 
     <div role="toolbar" aria-label={te("quickActions")} className="planner-mobile-bar fixed inset-x-0 bottom-0 z-40 px-3 pt-3 lg:hidden"><div className={`planner-mobile-dock mx-auto grid max-w-lg items-center gap-2 ${reorderMode ? "grid-cols-[auto_1fr]" : "grid-cols-[auto_1fr_1.2fr]"}`}><button type="button" aria-live="polite" aria-label={saveState === "offline" ? te("saveFailedRetry") : saveLabel} onClick={() => { if (saveState === "offline") void flushChanges(true); }} disabled={saveState !== "offline"} className={`planner-save-status ${saveState === "offline" ? "planner-save-status-error" : ""} ${saveState === "dirty" || saveState === "saving" ? "planner-save-status-pending" : ""}`}>{saveIcon}<span className="sr-only">{saveLabel}</span></button>{reorderMode ? <button type="button" aria-label={t("doneSorting")} onClick={() => setReorderMode(false)} className="planner-dock-button planner-dock-button-primary"><Check size={18} />{t("doneSorting")}</button> : <><button type="button" aria-label={te("addItem")} onClick={() => add(activeDay)} disabled={!activeDay} className="planner-dock-button planner-dock-button-secondary"><Plus size={18} /><span className="planner-add-label-long">{te("addItem")}</span><span className="planner-add-label-short">{te("addShort")}</span></button><button type="button" aria-label={te("aiPlanButton", { charge: aiCharge.label })} onClick={() => openAIPlanner(activeDay ? "day" : "trip")} disabled={busy("ai") || aiCharge.status !== "ready"} className="planner-dock-button planner-dock-button-primary"><Sparkles size={18} />{te("aiDock", { charge: aiCharge.label })}</button></>}</div></div>
 
-    {(error || notice || optimizeBlock) && <div className="planner-toast-stack fixed left-1/2 z-[80] w-[min(92vw,38rem)] -translate-x-1/2" aria-live="polite">{error && <div role="alert" className="flex items-start justify-between gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-900 shadow-lg"><span className="min-w-0 flex-1">{error}{saveState === "offline" && <button type="button" onClick={() => void flushChanges(true)} className="ml-3 font-bold underline">{te("retry")}</button>}</span><button type="button" aria-label={t("dismissError")} onClick={() => setError(undefined)} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl text-red-900/70 hover:bg-red-100"><X size={16} /></button></div>}{notice && <div className="mt-2 flex items-center justify-between gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900 shadow-lg"><span className="flex items-center gap-2"><Check size={16} />{notice}</span>{undoItem && <button type="button" onClick={undoDelete} className="flex min-h-11 shrink-0 items-center gap-1 font-bold"><Undo2 size={16} />{te("undo")}</button>}</div>}{optimizeBlock && <div role="status" className="mt-2 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 shadow-lg"><p className="font-semibold">{te("optimizeTooMany", { day: optimizeBlock.label, count: optimizeBlock.days.reduce((total, entry) => total + entry.excess, 0) + optimizeBlock.limit, limit: optimizeBlock.limit })}</p><p className="mt-1 text-xs leading-5">{te("optimizeTooManyHint", { count: optimizeBlock.days.reduce((total, entry) => total + entry.excess, 0) })}</p><div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={lockCrowdedDays} className="flex min-h-11 items-center gap-1.5 rounded-xl bg-amber-900 px-4 text-sm font-semibold text-white">{te("optimizeLockExtras", { count: optimizeBlock.days.reduce((total, entry) => total + entry.excess, 0) })}</button><button type="button" onClick={() => setOptimizeBlock(undefined)} className="flex min-h-11 items-center rounded-xl px-4 text-sm font-semibold">{t("dismissError")}</button></div></div>}</div>}
+    {(error || notice || optimizeBlock) && <div className="planner-toast-stack fixed left-1/2 z-[80] w-[min(92vw,38rem)] -translate-x-1/2" aria-live="polite">{error && <div role="alert" className="flex items-start justify-between gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-900 shadow-lg"><span className="min-w-0 flex-1">{error}{saveState === "offline" && <button type="button" onClick={() => void flushChanges(true)} className="ml-3 font-bold underline">{te("retry")}</button>}</span><button type="button" aria-label={t("dismissError")} onClick={() => setError(undefined)} className="grid h-11 w-11 shrink-0 place-items-center rounded-xl text-red-900/70 hover:bg-red-100"><X size={16} /></button></div>}{notice && <div className="mt-2 flex items-center justify-between gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900 shadow-lg"><span className="flex items-center gap-2"><Check size={16} />{notice}</span>{!undoItem && undoEdit && <button type="button" onClick={undoLastEdit} className="flex min-h-11 shrink-0 items-center gap-1 font-bold"><Undo2 size={16} />{copy.undo}</button>}{undoItem && <button type="button" onClick={undoDelete} className="flex min-h-11 shrink-0 items-center gap-1 font-bold"><Undo2 size={16} />{te("undo")}</button>}</div>}{optimizeBlock && <div role="status" className="mt-2 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 shadow-lg"><p className="font-semibold">{te("optimizeTooMany", { day: optimizeBlock.label, count: optimizeBlock.days.reduce((total, entry) => total + entry.excess, 0) + optimizeBlock.limit, limit: optimizeBlock.limit })}</p><p className="mt-1 text-xs leading-5">{te("optimizeTooManyHint", { count: optimizeBlock.days.reduce((total, entry) => total + entry.excess, 0) })}</p><div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={lockCrowdedDays} className="flex min-h-11 items-center gap-1.5 rounded-xl bg-amber-900 px-4 text-sm font-semibold text-white">{te("optimizeLockExtras", { count: optimizeBlock.days.reduce((total, entry) => total + entry.excess, 0) })}</button><button type="button" onClick={() => setOptimizeBlock(undefined)} className="flex min-h-11 items-center rounded-xl px-4 text-sm font-semibold">{t("dismissError")}</button></div></div>}</div>}
 
     <PlannerOverlay open={aiMenuOpen} onClose={() => { if (!busy("ai")) { setAIMenuOpen(false); setAIPreview(undefined); } }} title={te(aiPreview ? "aiPreviewTitle" : "aiTitle")} description={aiPreview ? te("aiPreviewDescription") : te("aiDescription", { charge: aiCharge.label })} size={aiPreview ? "wide" : "default"} footer={<div className="flex gap-3"><button type="button" onClick={() => { if (aiPreview) setAIPreview(undefined); else setAIMenuOpen(false); }} disabled={busy("ai")} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold disabled:opacity-40">{te(aiPreview ? "backAdjust" : "cancel")}</button><button type="button" onClick={() => void (aiPreview ? applyAIItinerary() : generateAIItinerary(aiScope))} disabled={busy("ai") || (!aiPreview && ((aiScope === "day" && !activeDay) || aiCharge.status !== "ready")) || (aiPreview?.readiness.status === "needs_setup")} className="flex min-h-12 flex-[1.5] items-center justify-center gap-2 rounded-xl bg-violet-700 px-4 font-semibold text-white disabled:opacity-45">{action?.startsWith("ai-") ? <Loader2 size={17} className="animate-spin" /> : <Sparkles size={17} />}{aiPreview ? te("applyPlanCharge", { charge: aiPreview.planning.provider === "catalog" ? te("noCharge") : aiCharge.label }) : te("generatePreview")}</button></div>}>
       {!aiPreview ? <div className="space-y-5">
@@ -1797,11 +1884,58 @@ export function TripEditor({ tripId }: { tripId: string }) {
       </div>
     </PlannerOverlay>
 
+
+    <PlannerOverlay open={Boolean(pickerPoint)} onClose={closePlaceBrowser}
+      title={pickerMealId ? copy.browseMeals : copy.addTitle}
+      description={pickerPoint ? itineraryText(copy.context, { day: days.indexOf(pickerPoint.day) + 1,
+        before: pickerNeighbors?.before?.title || copy.start, after: pickerNeighbors?.after?.title || copy.end }) : undefined}
+      footer={<div className="flex gap-3">
+        {undoEdit && undoEdit.kind !== "move" && <button type="button" onClick={() => { pickerDoneRef.current?.focus(); undoLastEdit(); }} className="flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl border border-[var(--line)] px-4 font-semibold"><Undo2 size={17} />{copy.undo}</button>}
+        <button ref={pickerDoneRef} type="button" onClick={closePlaceBrowser} className="min-h-12 flex-[1.4] rounded-xl bg-[var(--teal-fill)] px-4 font-semibold text-white">{copy.close}</button>
+      </div>}>
+      {pickerPoint && <ItineraryPlaceBrowser tripId={trip.id} reference={pickerNeighbors?.reference}
+        following={pickerNeighbors?.after} countryCodes={placeCountryCodes}
+        items={items.filter((row) => row.day_date === pickerPoint.day)} meal={Boolean(pickerMealId)}
+        onAdd={addSelectedPlace} onManual={startCustomStop} onUndo={undoLastEdit}
+        canUndo={false} feedback={undoEdit?.kind === "add"
+          ? itineraryText(copy.addedNotice, { title: items.find((row) => row.id === undoEdit.id)?.title || "" })
+          : undoEdit?.kind === "meal" ? copy.replaced : ""} />}
+    </PlannerOverlay>
+
+    <PlannerOverlay open={Boolean(movingItem && movePoint)} onClose={() => setMovingId(undefined)}
+      title={copy.moveTitle} description={movingItem?.title}
+      footer={<div className="flex gap-3"><button type="button" onClick={() => setMovingId(undefined)} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold">{te("cancel")}</button>
+        <button type="button" onClick={() => { if (movingId && movePoint) moveTo(movingId, movePoint); setMovingId(undefined); }}
+          className="min-h-12 flex-[1.4] rounded-xl bg-[var(--teal)] px-4 font-semibold text-white">{copy.moveHere}</button></div>}>
+      {movingItem && movePoint && <div className="grid gap-5">
+        <label className="text-sm font-semibold">{copy.moveDay}<select className={fieldClass} value={movePoint.day}
+          onChange={(event) => setMovePoint(insertionPoints(items, event.target.value, movingId).at(-1) || { day: event.target.value })}>
+          {days.map((day, index) => <option key={day} value={day}>{dayLabel(day, index, locale).eyebrow} · {day}</option>)}
+        </select></label>
+        <label className="text-sm font-semibold">{copy.movePosition}<select className={fieldClass} value={movePoint.beforeId || ""}
+          onChange={(event) => setMovePoint({ day: movePoint.day, beforeId: event.target.value || undefined })}>
+          {insertionPoints(items, movePoint.day, movingId).map((point) => <option key={point.beforeId || "end"} value={point.beforeId || ""}>{pointLabel(point, movingId)}</option>)}
+        </select></label>
+        {movingItem.fixed_time && <p className="rounded-xl bg-[var(--paper)] p-4 text-sm leading-6 text-[var(--muted)]"><Clock3 size={17} className="mr-2 inline" />{copy.fixedHint}</p>}
+      </div>}
+    </PlannerOverlay>
     <PlannerOverlay open={Boolean(editingItem)} onClose={closeEditor} title={editingMeal ? te("editMeal", { meal: te(editingItem?.system_role === "lunch" ? "slot.lunch" : "slot.dinner") }) : te(draftItem ? "addItem" : "editItemTitle")} description={te(editingMeal ? "editMealDescription" : draftItem ? "addItemDescription" : "editItemDescription")} footer={draftItem && <div className="flex gap-3"><button type="button" onClick={closeEditor} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold">{te("cancel")}</button><button type="button" onClick={commitDraftItem} disabled={!draftItem.title.trim()} className="min-h-12 flex-[1.4] rounded-xl bg-[var(--teal)] px-4 font-semibold text-white disabled:opacity-40">{te("addToItinerary")}</button></div>}>{editingItem && <div className="grid gap-5">
+      {editingMeal && <button type="button" onClick={() => {
+        setPickerMealId(editingItem.id);
+        setPickerPoint({ day: editingItem.day_date, beforeId: editingItem.id });
+        setEditingId(undefined);
+        setUndoEdit(undefined);
+      }} className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[var(--teal)] bg-[var(--teal-soft)] px-4 font-semibold text-[var(--teal)]"><MapPin size={18} />{copy.browseMeals}</button>}
+
       <label className="text-sm font-semibold">{te(editingMeal ? "restaurantName" : "itemName")}<input value={editingItem.title} maxLength={255} onChange={(event) => patchItem(editingItem.id, { title: event.target.value, ...(editingMeal ? { data: { ...editingItem.data, meal_selection_source: "user" } } : {}) }, false)} placeholder={te(editingMeal ? "restaurantPlaceholder" : "itemPlaceholder")} className={fieldClass} /></label>
-      <div><label className="text-sm font-semibold">{te(editingMeal ? "restaurantPlace" : "place")}</label><PlacePicker label={te(editingMeal ? "restaurantPlace" : "place")} value={editingItem.location_name || ""} confirmed={editingItem.location_source === "confirmed" || (["google_places", "naver_local"].includes(editingItem.location_source || "") && editingItem.data.needs_place_confirmation !== true)} countryCodes={placeCountryCodes} bias={placeBias} onTextChange={(value) => patchItem(editingItem.id, { location_name: value, provider_place_id: null, latitude: null, longitude: null, location_source: null, is_estimated: true, data: { ...editingItem.data, place_match_status: "unresolved", needs_place_confirmation: true, ...(editingMeal ? { meal_selection_source: "user" } : {}) } })} onSelect={(place) => choosePlace(editingItem, place)} /><p className="mt-2 flex items-center gap-1.5 text-xs text-[var(--muted)]">{editingItem.location_source === "confirmed" || (["google_places", "naver_local"].includes(editingItem.location_source || "") && editingItem.data.needs_place_confirmation !== true) ? <><Check size={13} className="text-emerald-600" />{te("placeConfirmed")}</> : editingItem.location_source?.endsWith("_auto") ? <><CircleAlert size={13} className="text-sky-700" />{te("placeAutoFix", { provider: editingItem.location_provider === "naver_local" || editingItem.location_source === "naver_local_auto" ? "NAVER" : "Google" })}</> : editingItem.location_name ? <><CircleAlert size={13} />{te("placePickFromResults")}</> : <><MapPin size={13} />{te("placeLater")}</>}</p></div>
+      <div><label className="text-sm font-semibold">{te(editingMeal ? "restaurantPlace" : "place")}</label><PlacePicker label={te(editingMeal ? "restaurantPlace" : "place")} value={editingItem.location_name || ""} confirmed={editingItem.location_source === "confirmed" || (["google_places", "naver_local", "hotspot_catalog", "food_merchant_catalog"].includes(editingItem.location_source || "") && editingItem.data.needs_place_confirmation !== true)} countryCodes={placeCountryCodes} bias={placeBias} onTextChange={(value) => patchItem(editingItem.id, { location_name: value, provider_place_id: null, latitude: null, longitude: null, location_source: null, is_estimated: true, data: { ...editingItem.data, catalog_selection: undefined, hotspot_id: undefined, merchant_id: undefined, map_links: undefined, coordinate_source_type: undefined, coordinate_source_url: undefined, place_match_status: "unresolved", needs_place_confirmation: true, ...(editingMeal ? { meal_selection_source: "user" } : {}) } })} onSelect={(place) => choosePlace(editingItem, place)} /><p className="mt-2 flex items-center gap-1.5 text-xs text-[var(--muted)]">{editingItem.location_source === "confirmed" || (["google_places", "naver_local", "hotspot_catalog", "food_merchant_catalog"].includes(editingItem.location_source || "") && editingItem.data.needs_place_confirmation !== true) ? <><Check size={13} className="text-emerald-600" />{te("placeConfirmed")}</> : editingItem.location_source?.endsWith("_auto") ? <><CircleAlert size={13} className="text-sky-700" />{te("placeAutoFix", { provider: editingItem.location_provider === "naver_local" || editingItem.location_source === "naver_local_auto" ? "NAVER" : "Google" })}</> : editingItem.location_name ? <><CircleAlert size={13} />{te("placePickFromResults")}</> : <><MapPin size={13} />{te("placeLater")}</>}</p></div>
       {!editingItem.system_role && <div className="grid gap-4">
-        <label className="text-sm font-semibold">{te("date")}<select value={editingItem.day_date} onChange={(event) => { const previousDay = editingItem.day_date; patchItem(editingItem.id, { day_date: event.target.value, start_time: editingItem.start_time ? withTime(event.target.value, timeValue(editingItem.start_time, trip.timezone)) : null, end_time: null }); setActiveDay(event.target.value); if (!draftItem) setStaleDays((current) => new Set([...current, previousDay, event.target.value])); }} className={fieldClass}>{days.map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
+        <label className="text-sm font-semibold">{te("date")}<select value={editingItem.day_date} onChange={(event) => {
+          const day = event.target.value;
+          if (draftItem) patchItem(editingItem.id, { day_date: day, start_time: editingItem.fixed_time && editingItem.start_time ? withTime(day, timeValue(editingItem.start_time, trip.timezone)) : null, end_time: null });
+          else moveTo(editingItem.id, { day });
+          setActiveDay(day);
+        }} className={fieldClass}>{days.map((value) => <option key={value} value={value}>{value}</option>)}</select></label>
         <fieldset><legend className="text-sm font-semibold">{te("timeMode")}</legend><div className="mt-2 grid grid-cols-2 gap-2" role="radiogroup" aria-label={te("timeMode")}><button type="button" role="radio" aria-checked={Boolean(editingItem.fixed_time)} onClick={() => patchItem(editingItem.id, { fixed_time: true, start_time: editingItem.start_time || withTime(editingItem.day_date, "09:00"), end_time: null })} className={`min-h-12 rounded-xl border px-3 text-sm font-bold ${editingItem.fixed_time ? "border-violet-500 bg-violet-50 text-violet-900" : "border-[var(--line)] bg-white"}`}><Clock3 size={16} className="mr-1.5 inline" />{te("fixedTime")}</button><button type="button" role="radio" aria-checked={!editingItem.fixed_time} onClick={() => patchItem(editingItem.id, { fixed_time: false, start_time: null, end_time: null })} className={`min-h-12 rounded-xl border px-3 text-sm font-bold ${!editingItem.fixed_time ? "border-[var(--teal)] bg-[var(--teal-soft)] text-[var(--teal-dark)]" : "border-[var(--line)] bg-white"}`}><RouteIcon size={16} className="mr-1.5 inline" />{te("chainedMode")}</button></div><p className="mt-2 text-xs leading-5 text-[var(--muted)]">{te(editingItem.fixed_time ? "fixedTimeHint" : "chainedHint")}</p></fieldset>
         <div className="grid grid-cols-2 gap-3">{editingItem.fixed_time && <label className="text-sm font-semibold">{te("fixedStart")}<input type="time" value={timeValue(editingItem.start_time, trip.timezone)} onChange={(event) => patchItem(editingItem.id, { start_time: withTime(editingItem.day_date, event.target.value), end_time: null })} className={fieldClass} /></label>}<label className="text-sm font-semibold">{te("stayDuration")}<select value={editingItem.duration_minutes || 60} onChange={(event) => patchItem(editingItem.id, { duration_minutes: Number(event.target.value), end_time: null })} className={fieldClass}>{activityDurationOptions.map((minutes) => <option key={minutes} value={minutes}>{te(`duration.m${minutes}`)}</option>)}</select></label></div>
       </div>}
