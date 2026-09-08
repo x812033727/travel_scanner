@@ -496,6 +496,73 @@ def test_osaka_candidate_additions_do_not_guess_ids_or_promote_ambiguous_sources
     assert any(e.get("address", "").endswith("梅田2丁目4-9") for e in evidence["excluded"])
 
 
+def test_osaka_six_expedia_rakuten_candidates_keep_observed_ids_and_stay_private():
+    path = Path(__file__).resolve().parents[3] / "docs/hotel-platforms/osaka.pending.json"
+    rows = {r["product"]["source_key"]: r for r in json.loads(path.read_text(encoding="utf-8"))}
+    expected = {
+        "editorial:osaka:intergate-osaka-umeda": {
+            "expedia": (
+                "60867496",
+                "https://www.expedia.com/Osaka-Hotels-Hotel-Intergate-Osaka-Umeda.h60867496.Hotel-Information",
+            ),
+            "rakuten": (
+                "10123456845989",
+                "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456845989/",
+            ),
+        },
+        "editorial:osaka:new-otani-osaka": {
+            "expedia": (
+                "178548",
+                "https://www.expedia.com/Osaka-Hotels-Hotel-New-Otani-Osaka.h178548.Hotel-Information",
+            ),
+            "rakuten": (
+                "10123456794714",
+                "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794714/",
+            ),
+        },
+        "editorial:osaka:gracery-osaka-namba": {
+            "expedia": (
+                "32815570",
+                "https://www.expedia.com/Osaka-Hotels-HOTEL-GRACERY-Osaka-Namba.h32815570.Hotel-Information",
+            ),
+            "rakuten": (
+                "10123456874117",
+                "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456874117/",
+            ),
+        },
+    }
+    now = datetime.now(UTC)
+    config = CatalogConfig(
+        public_enabled=True, enabled_destinations=["osaka"], enabled_kinds=["hotel"]
+    )
+    assert len(rows) == 10
+    assert sum(len(row["booking_options"]) for row in rows.values()) == 60
+    for key, candidates in expected.items():
+        row = rows[key]
+        assert row["product"]["facts"]["map_verified"] is False
+        product = TravelServiceProduct(**row["product"], id=uuid4(), status="approved")
+        for provider, (property_id, url) in candidates.items():
+            source = next(o for o in row["booking_options"] if o["provider"] == provider)
+            assert source["url"] == url and source["property_id"] == property_id
+            assert source["discovery_status"] == "found"
+            assert source["evidence_url"] == row["product"]["source_url"]
+            assert "待審" in source["identity_note"] and "2026-09-08" in source["identity_note"]
+            assert "status" not in source and "browser_verified" not in source
+            if provider == "rakuten":
+                assert "完整街道地址未知" in source["identity_note"]
+            elif key == "editorial:osaka:new-otani-osaka":
+                assert "門牌證據僅來自索引" in source["identity_note"]
+            # A discovered ID and healthy link do not independently approve a platform.
+            option = HotelBookingOption(
+                **HotelOptionInput.model_validate(source).model_dump(),
+                id=uuid4(),
+                status="pending",
+                verified_at=now,
+                health_status="healthy",
+            )
+            assert not ready_option(product, option, config, now)
+
+
 def namba_map_checkpoint():
     directory = Path(__file__).resolve().parents[3] / "docs/hotel-platforms"
     evidence = json.loads(
@@ -1196,3 +1263,210 @@ def test_taipei_rest_does_not_claim_city_acceptance_or_quotes_from_public_counts
     for key in ("editorial:taipei:w-taipei", "editorial:taipei:humble-house-taipei"):
         trip = next(o for o in rows[key]["booking_options"] if o["provider"] == "trip_com")
         assert "/hotels/xinyi-district-hotel-detail-" in trip["url"]
+
+
+def iab_osaka_taipei_checkpoint():
+    directory = Path(__file__).resolve().parents[3] / "docs/hotel-platforms"
+    evidence = json.loads(
+        (directory / "iab-osaka-taipei.review-2026-09-08.json").read_text(encoding="utf-8")
+    )
+    assert set(evidence["previous_checkpoints"]) == {
+        "taipei-rest.review-2026-09-08.json",
+        "osaka-five.review-2026-09-08.json",
+        "namba-map.review-2026-09-08.json",
+    }
+    previous = {}
+    for name in evidence["previous_checkpoints"]:
+        checkpoint = directory / name
+        assert checkpoint.is_file()
+        previous[name] = json.loads(checkpoint.read_text(encoding="utf-8"))
+    rows = {}
+    for city in ("osaka", "taipei"):
+        package = json.loads((directory / f"{city}.pending.json").read_text(encoding="utf-8"))
+        rows.update({r["product"]["source_key"]: r for r in package})
+    return evidence, rows, previous
+
+
+def test_iab_location_reviews_preserve_pending_imports_and_licensed_source_facts():
+    evidence, rows, _ = iab_osaka_taipei_checkpoint()
+    assert len(evidence["hotels"]) == 8
+    locations = []
+    for hotel in evidence["hotels"]:
+        data = ProductInput.model_validate(rows[hotel["source_key"]]["product"])
+        assert not data.facts.map_verified
+        assert hotel["official_identity_url"] == data.source_url
+        assert data.facts.latitude is not None and data.facts.longitude is not None
+        assert data.facts.coordinate_source_url == data.facts.source_credits[0].url
+        license_url = data.facts.source_credits[0].license_url
+        if data.destination_id == "osaka":
+            assert license_url == "https://creativecommons.org/licenses/by/4.0/deed.ja"
+        else:
+            assert license_url == "https://data.gov.tw/license"
+        before = data.model_dump()
+        with pytest.raises(AppError, match="service_identity_required"):
+            require_product_review(data)
+        data.facts.map_verified = True
+        require_product_review(data)
+        after = data.model_dump()
+        after["facts"]["map_verified"] = False
+        assert before == after
+        assert hotel["product_status"] == "approved" and hotel["product_version"] == 3
+        if not hotel["new_location_approval"]:
+            assert "map_review" not in hotel
+            continue
+        locations.append(hotel)
+        review = hotel["map_review"]
+        assert data.destination_id == "osaka"
+        assert review["google_place_id"] == data.facts.google_place_id
+        assert review["status"] == "browser_identity_checked" and review["browser"] == "iab"
+        assert review["checked_on"] == evidence["reviewed_on"]
+        assert review["name_address_website_matched"]
+        assert not review["provider_coordinates_copied"] and not review["provider_content_saved"]
+    assert len(locations) == evidence["production"]["new_location_approvals"] == 3
+    assert evidence["boundaries"]["licensed_coordinates_and_source_credits_preserved"]
+    assert evidence["boundaries"]["pending_inputs_not_live_sync_truth"]
+
+
+def test_iab_platform_approvals_preserve_identity_and_real_link_health():
+    evidence, rows, _ = iab_osaka_taipei_checkpoint()
+    config = CatalogConfig(
+        public_enabled=True, enabled_destinations=["osaka", "taipei"], enabled_kinds=["hotel"]
+    )
+    now = datetime.now(UTC)
+    reviews = []
+    for hotel in evidence["hotels"]:
+        row = rows[hotel["source_key"]]
+        product = TravelServiceProduct(**row["product"], id=uuid4(), status="approved")
+        for review in hotel["platform_reviews"]:
+            source = next(o for o in row["booking_options"] if o["provider"] == review["provider"])
+            reviews.append((hotel["source_key"], review))
+            assert review["url"] == source["url"]
+            assert review["identity_evidence_url"] == source["evidence_url"]
+            assert review["identity_evidence_url"] == hotel["official_identity_url"]
+            assert review["matched_name"] and review["matched_address"]
+            assert review["review_requested"] and review["browser_verified"]
+            assert review["browser"] == "iab" and review["status"] == "approved"
+            assert review["version"] == (3 if review["provider"] == "agoda" else 2)
+            option = HotelBookingOption(
+                **HotelOptionInput.model_validate(source).model_dump(),
+                id=uuid4(),
+                status=review["status"],
+                verified_at=now,
+                health_status=review["health"],
+            )
+            assert ready_option(product, option, config, now)
+            for unsafe in ("unsafe", "unavailable"):
+                option.health_status = unsafe
+                assert not ready_option(product, option, config, now)
+    assert len(reviews) == len({(key, r["provider"]) for key, r in reviews}) == 12
+    assert sum(r["health"] == "unconfirmed" for _, r in reviews) == 9
+    healthy = [(key, r) for key, r in reviews if r["health"] == "healthy"]
+    assert len(healthy) == 3
+    assert all(
+        key.startswith("editorial:osaka:") and r["provider"] == "agoda" for key, r in healthy
+    )
+    assert evidence["boundaries"]["server_unconfirmed_health_not_rewritten"]
+    assert evidence["boundaries"]["unsafe_unavailable_links_never_overridden"]
+
+
+def test_iab_six_candidate_additions_stay_private_after_product_approval():
+    evidence, rows, _ = iab_osaka_taipei_checkpoint()
+    candidates = evidence["candidate_additions"]
+    assert len(candidates) == len({(c["source_key"], c["provider"]) for c in candidates}) == 6
+    assert {c["provider"] for c in candidates} == {"expedia", "rakuten"}
+    config = CatalogConfig(
+        public_enabled=True, enabled_destinations=["osaka"], enabled_kinds=["hotel"]
+    )
+    now = datetime.now(UTC)
+    for candidate in candidates:
+        row = rows[candidate["source_key"]]
+        source = next(o for o in row["booking_options"] if o["provider"] == candidate["provider"])
+        assert (
+            source["url"] == candidate["url"] and source["property_id"] == candidate["property_id"]
+        )
+        assert source["evidence_url"] == candidate["identity_evidence_url"]
+        assert source["identity_note"] == candidate["document_evidence"]
+        assert candidate["query"] and "待審" in candidate["document_evidence"]
+        assert source["discovery_status"] == "found" and "status" not in source
+        assert not candidate["browser_verified"] and not candidate["review_requested"]
+        assert candidate["status"] == "pending" and candidate["version"] == 2
+        assert candidate["health"] == "unchecked"
+        if candidate["provider"] == "rakuten":
+            assert candidate["full_street_unknown"]
+            assert "完整街道地址未知" in candidate["document_evidence"]
+        product = TravelServiceProduct(**row["product"], id=uuid4(), status="approved")
+        option = HotelBookingOption(
+            **HotelOptionInput.model_validate(source).model_dump(),
+            id=uuid4(),
+            status=candidate["status"],
+            verified_at=None,
+            health_status=candidate["health"],
+        )
+        assert not ready_option(product, option, config, now)
+
+
+def test_iab_blank_hyatt_official_page_is_not_a_verified_review_or_delisting():
+    evidence, rows, previous = iab_osaka_taipei_checkpoint()
+    assert len(evidence["unconfirmed_browser_checks"]) == 1
+    check = evidence["unconfirmed_browser_checks"][0]
+    key = "editorial:taipei:grand-hyatt-taipei"
+    assert check["source_key"] == key and check["provider"] == "official"
+    source = next(o for o in rows[key]["booking_options"] if o["provider"] == "official")
+    assert check["url"] == source["url"]
+    assert check["status"] == "blank_page_unconfirmed"
+    assert not check["browser_verified"] and not check["review_requested"]
+    assert check["product_link_status"] == "pending" and check["version"] == 1
+    hotel = next(h for h in evidence["hotels"] if h["source_key"] == key)
+    assert {r["provider"] for r in hotel["platform_reviews"]} == {"booking"}
+    prior = next(
+        h
+        for h in previous["taipei-rest.review-2026-09-08.json"]["hotels"]
+        if h["source_key"] == key
+    )
+    prior_official = next(r for r in prior["platform_reviews"] if r["provider"] == "official")
+    assert prior_official["url"] == check["url"]
+    assert prior_official["status"] == check["product_link_status"]
+    assert prior_official["version"] == check["version"]
+
+
+def test_iab_deployment_and_review_counts_do_not_claim_city_or_feature_acceptance():
+    evidence, _, previous = iab_osaka_taipei_checkpoint()
+    deployment, production = evidence["deployment"], evidence["production"]
+    assert deployment["pr"] == 364 and deployment["main_ci_status"] == "success"
+    assert deployment["merged_sha"] == production["runtime_sha"]
+    assert production["runtime_sha"] == "200e46ea922bdb0403f146b5db7ea4382af62c9a"
+    assert deployment["previous_runtime_sha"] != production["runtime_sha"]
+    assert deployment["backup_index_verified"] and production["backup_index_verified"]
+    assert deployment["consecutive_ready_checks"] == 3 and deployment["restarts"] == 0
+    assert deployment["environment_database_redis_preserved"]
+    assert deployment["community_enabled"] is False
+    assert production["product_status_counts"] == {"approved": 30, "pending": 30}
+    assert production["option_status_counts"] == {"approved": 100, "pending": 260}
+    prior = previous["taipei-rest.review-2026-09-08.json"]["production"]
+    assert (
+        production["product_status_counts"]["approved"]
+        == prior["product_status_counts"]["approved"] + 3
+    )
+    assert (
+        production["option_status_counts"]["approved"]
+        == prior["option_status_counts"]["approved"] + 12
+    )
+    assert production["hotel_identities"] == sum(production["product_status_counts"].values()) == 60
+    assert sum(production["option_status_counts"].values()) == 360
+    assert production["untouched_products"] == 60 - production["new_location_approvals"] == 57
+    assert production["untouched_options"] == 360 - 12 - 6 == 342
+    assert production["new_audit_records"] == 3 * 3 + 12 + 6 == 27
+    assert production["new_pending_candidates"] == 6
+    assert production["new_hotel_identities"] == production["complete_cities"] == 0
+    assert production["config_changed"] is False and production["config_version"] == 5
+    public = production["five_locale_public"]
+    assert set(public) == {"en", "ja", "ko", "zh-TW", "zh-CN"}
+    assert all(snapshot == public["en"] for snapshot in public.values())
+    assert public["en"]["osaka"] == {"hotels": 5, "options": 16}
+    assert public["en"]["taipei"] == {"hotels": 10, "options": 30}
+    assert evidence["boundaries"]["affiliate_and_quote_switches_unchanged"]
+    assert evidence["boundaries"]["independent_read_only_verification"]
+    assert evidence["boundaries"]["paid_provider_api_calls"] == 0
+    assert evidence["boundaries"]["gemini_api_calls"] == 0
+    assert evidence["boundaries"]["clickouts_or_test_orders"] == 0
+    assert evidence["boundaries"]["provider_photos_reviews_prices_or_descriptions_saved"] is False

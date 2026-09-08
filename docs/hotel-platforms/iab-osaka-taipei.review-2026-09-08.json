@@ -1,0 +1,565 @@
+{
+  "reviewed_on": "2026-09-08",
+  "scope": "Three existing Osaka location approvals, twelve independently browser-reviewed platform links across Osaka/Taipei, and six new pending platform candidates. No new hotel identities.",
+  "previous_checkpoints": [
+    "taipei-rest.review-2026-09-08.json",
+    "osaka-five.review-2026-09-08.json",
+    "namba-map.review-2026-09-08.json"
+  ],
+  "deployment": {
+    "pr": 364,
+    "verified_head": "3e08f993c26658410ea67c93b562c327c55d8674",
+    "verified_base": "434345419dc4a4117830f611197707fa11ed9b04",
+    "merged_sha": "200e46ea922bdb0403f146b5db7ea4382af62c9a",
+    "merged_at": "2026-09-08T07:29:12Z",
+    "main_ci": 34199564301,
+    "main_ci_status": "success",
+    "previous_runtime_sha": "434345419dc4a4117830f611197707fa11ed9b04",
+    "release_dir": "/root/mokaair-release-200e46e-W8swZzMT",
+    "archive_sha256": "2324833ac195ccd656e3e23f651cf900a7817ff5ee2543fbe413edacc884f7c4",
+    "backup": "/root/travel_scanner_pre_deploy_200e46e_20260908T073833Z.dump",
+    "backup_bytes": 10221944,
+    "backup_index_verified": true,
+    "schema": "0063_destination_offers",
+    "application_services": 8,
+    "restarts": 0,
+    "consecutive_ready_checks": 3,
+    "environment_database_redis_preserved": true,
+    "community_enabled": false
+  },
+  "hotels": [
+    {
+      "source_key": "editorial:osaka:intergate-osaka-umeda",
+      "official_identity_url": "https://www.intergatehotels.jp/osaka-umeda/facility/",
+      "product_status": "approved",
+      "product_version": 3,
+      "new_location_approval": true,
+      "map_review": {
+        "status": "browser_identity_checked",
+        "browser": "iab",
+        "checked_on": "2026-09-08",
+        "google_place_id": "ChIJD75XytjnAGARYe98uy_SYM4",
+        "name_address_website_matched": true,
+        "provider_coordinates_copied": false,
+        "provider_content_saved": false
+      },
+      "platform_reviews": [
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/intergate-osaka-umeda.html",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed",
+          "review_requested": true,
+          "browser": "iab",
+          "browser_verified": true,
+          "matched_name": "Hotel Intergate Osaka Umeda",
+          "matched_address": "Kita-ku Umeda 2-5-2, Osaka, Japan",
+          "identity_evidence_url": "https://www.intergatehotels.jp/osaka-umeda/facility/"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/hotel-intergate-osaka-umeda/hotel/osaka-jp.html",
+          "status": "approved",
+          "version": 3,
+          "health": "healthy",
+          "review_requested": true,
+          "browser": "iab",
+          "browser_verified": true,
+          "matched_name": "Hotel Intergate Osaka Umeda",
+          "matched_address": "2-5-2, Umeda, Osaka, Japan, 530-0001",
+          "identity_evidence_url": "https://www.intergatehotels.jp/osaka-umeda/facility/"
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:osaka:new-otani-osaka",
+      "official_identity_url": "https://www.newotani.co.jp/osaka/access/",
+      "product_status": "approved",
+      "product_version": 3,
+      "new_location_approval": true,
+      "map_review": {
+        "status": "browser_identity_checked",
+        "browser": "iab",
+        "checked_on": "2026-09-08",
+        "google_place_id": "ChIJV1i4ONDgAGARUEauWMthh4c",
+        "name_address_website_matched": true,
+        "provider_coordinates_copied": false,
+        "provider_content_saved": false
+      },
+      "platform_reviews": [
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/new-otani-osaka.html",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed",
+          "review_requested": true,
+          "browser": "iab",
+          "browser_verified": true,
+          "matched_name": "Hotel New Otani Osaka",
+          "matched_address": "Chuo-ku Shiromi 1-4-1, Osaka, Japan",
+          "identity_evidence_url": "https://www.newotani.co.jp/osaka/access/"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/hotel-new-otani-osaka/hotel/osaka-jp.html",
+          "status": "approved",
+          "version": 3,
+          "health": "healthy",
+          "review_requested": true,
+          "browser": "iab",
+          "browser_verified": true,
+          "matched_name": "Hotel New Otani Osaka",
+          "matched_address": "1-4-1 Shiromi, Chuo-ku, Osaka, Japan, 540-8578",
+          "identity_evidence_url": "https://www.newotani.co.jp/osaka/access/"
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:osaka:gracery-osaka-namba",
+      "official_identity_url": "https://gracery.com/namba/access/",
+      "product_status": "approved",
+      "product_version": 3,
+      "new_location_approval": true,
+      "map_review": {
+        "status": "browser_identity_checked",
+        "browser": "iab",
+        "checked_on": "2026-09-08",
+        "google_place_id": "ChIJBz0SoxLnAGARCFsUQTVxeiE",
+        "name_address_website_matched": true,
+        "provider_coordinates_copied": false,
+        "provider_content_saved": false
+      },
+      "platform_reviews": [
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/hotel-gracery-osaka-namba.html",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed",
+          "review_requested": true,
+          "browser": "iab",
+          "browser_verified": true,
+          "matched_name": "Hotel Gracery Osaka Namba",
+          "matched_address": "Naniwa-ku Motomachi 1-4-4, Osaka, Japan",
+          "identity_evidence_url": "https://gracery.com/namba/access/"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/hotel-gracery-osaka-namba/hotel/osaka-jp.html",
+          "status": "approved",
+          "version": 3,
+          "health": "healthy",
+          "review_requested": true,
+          "browser": "iab",
+          "browser_verified": true,
+          "matched_name": "Hotel Gracery Osaka Namba",
+          "matched_address": "1-4-4 Motomachi, Naniwa-ku, Osaka, Japan, 556-0016",
+          "identity_evidence_url": "https://gracery.com/namba/access/"
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:taipei:westgate",
+      "official_identity_url": "https://www.westgatehotel.com.tw/location/",
+      "product_status": "approved",
+      "product_version": 3,
+      "new_location_approval": false,
+      "platform_reviews": [
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/tw/westgate-hotel.html",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed",
+          "review_requested": true,
+          "browser": "iab",
+          "browser_verified": true,
+          "matched_name": "WESTGATE Hotel / 永安棧",
+          "matched_address": "台北萬華區中華路一段150號",
+          "identity_evidence_url": "https://www.westgatehotel.com.tw/location/"
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:taipei:solaria-nishitetsu-ximen",
+      "official_identity_url": "https://solaria-taipei.nnr-h.com/",
+      "product_status": "approved",
+      "product_version": 3,
+      "new_location_approval": false,
+      "platform_reviews": [
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/tw/solaria-nisitetsu-taipei-ximen.html",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed",
+          "review_requested": true,
+          "browser": "iab",
+          "browser_verified": true,
+          "matched_name": "Solaria Nishitetsu Hotel Taipei Ximen",
+          "matched_address": "No. 88, Sec. 1, Zhonghua Rd., Wanhua District, Taipei",
+          "identity_evidence_url": "https://solaria-taipei.nnr-h.com/",
+          "note": "Chinese page only district. English selected through actual language menu then hydrated full street verified."
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:taipei:w-taipei",
+      "official_identity_url": "https://www.marriott.com/en-us/hotels/tpewh-w-taipei/overview/",
+      "product_status": "approved",
+      "product_version": 3,
+      "new_location_approval": false,
+      "platform_reviews": [
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/tw/w-taipei.html",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed",
+          "review_requested": true,
+          "browser": "iab",
+          "browser_verified": true,
+          "matched_name": "W Taipei",
+          "matched_address": "No. 10, Section 5, Zhongxiao East Road, Xinyi District, Taipei",
+          "identity_evidence_url": "https://www.marriott.com/en-us/hotels/tpewh-w-taipei/overview/"
+        },
+        {
+          "provider": "official",
+          "url": "https://www.marriott.com/en-us/hotels/tpewh-w-taipei/overview/",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed",
+          "review_requested": true,
+          "browser": "iab",
+          "browser_verified": true,
+          "matched_name": "W Taipei",
+          "matched_address": "10 Zhongxiao East Road Sec. 5, Xinyi District, Taipei, Taiwan",
+          "identity_evidence_url": "https://www.marriott.com/en-us/hotels/tpewh-w-taipei/overview/",
+          "note": "Initial blank state then loaded official page footer with exact name/address."
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:taipei:grand-hyatt-taipei",
+      "official_identity_url": "https://www.hyatt.com/grand-hyatt/zh-HK/taigh-grand-hyatt-taipei/hotel-info",
+      "product_status": "approved",
+      "product_version": 3,
+      "new_location_approval": false,
+      "platform_reviews": [
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/tw/grand-hyatt-taipei-taipei50.html",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed",
+          "review_requested": true,
+          "browser": "iab",
+          "browser_verified": true,
+          "matched_name": "Grand Hyatt Taipei",
+          "matched_address": "No. 2, Songshou Road, Xinyi District, Taipei",
+          "identity_evidence_url": "https://www.hyatt.com/grand-hyatt/zh-HK/taigh-grand-hyatt-taipei/hotel-info"
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:taipei:humble-house-taipei",
+      "official_identity_url": "https://www.humblehousehotels.com/zh-tw/websev?cat=contact",
+      "product_status": "approved",
+      "product_version": 3,
+      "new_location_approval": false,
+      "platform_reviews": [
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/tw/humble-house-taipei-curio-collection-by-hilton.html",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed",
+          "review_requested": true,
+          "browser": "iab",
+          "browser_verified": true,
+          "matched_name": "Humble House Taipei, Curio Collection by Hilton",
+          "matched_address": "No. 18, Songgao Road, Xinyi District, Taipei",
+          "identity_evidence_url": "https://www.humblehousehotels.com/zh-tw/websev?cat=contact"
+        }
+      ]
+    }
+  ],
+  "candidate_additions": [
+    {
+      "source_key": "editorial:osaka:intergate-osaka-umeda",
+      "provider": "expedia",
+      "url": "https://www.expedia.com/Osaka-Hotels-Hotel-Intergate-Osaka-Umeda.h60867496.Hotel-Information",
+      "property_id": "60867496",
+      "identity_evidence_url": "https://www.intergatehotels.jp/osaka-umeda/facility/",
+      "document_evidence": "2026-09-08 Expedia 直接文件（當日爬取）的 Hotel Intergate Osaka Umeda 與完整地址 2-5-2 Umeda, Kita, Osaka, Osaka, 530-0001 對照官網相符。網址與 ID 60867496 均為實際觀察值；僅新增候選並保留待審，未做瀏覽器或健康審核。",
+      "status": "pending",
+      "version": 2,
+      "health": "unchecked",
+      "browser_verified": false,
+      "review_requested": false,
+      "query": "site:expedia.com \"Hotel Intergate Osaka Umeda\" \"2-5-2\""
+    },
+    {
+      "source_key": "editorial:osaka:intergate-osaka-umeda",
+      "provider": "rakuten",
+      "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456845989/",
+      "property_id": "10123456845989",
+      "identity_evidence_url": "https://www.intergatehotels.jp/osaka-umeda/facility/",
+      "document_evidence": "2026-09-08 實際找到 Rakuten 國際站 Hotel Intergate Osaka Umeda 大阪專頁及 ID 10123456845989（文件標示上週爬取）。僅有名稱／城市層級證據，完整街道地址未知；ID 加門牌搜尋無結果，保留待審。未由日本站 ID 或其他平台推算網址，未做瀏覽器或健康審核。",
+      "status": "pending",
+      "version": 2,
+      "health": "unchecked",
+      "browser_verified": false,
+      "review_requested": false,
+      "query": "site:travel.rakuten.com \"Hotel Intergate Osaka Umeda\"",
+      "full_street_unknown": true
+    },
+    {
+      "source_key": "editorial:osaka:new-otani-osaka",
+      "provider": "expedia",
+      "url": "https://www.expedia.com/Osaka-Hotels-Hotel-New-Otani-Osaka.h178548.Hotel-Information",
+      "property_id": "178548",
+      "identity_evidence_url": "https://www.newotani.co.jp/osaka/access/",
+      "document_evidence": "2026-09-08 Expedia 索引文件（兩日前爬取）的 Hotel New Otani Osaka 與完整地址 1-4-1 Shiromi Chuo-ku, Osaka, Osaka-fu, 540-8578 對照官網相符。直接開啟有飯店文件，但後續地址擷取內部錯誤，門牌證據僅來自索引。實際觀察網址與 ID 178548 保留待審，未做瀏覽器或健康審核。",
+      "status": "pending",
+      "version": 2,
+      "health": "unchecked",
+      "browser_verified": false,
+      "review_requested": false,
+      "query": "site:expedia.com \"Hotel New Otani Osaka\" \"1-4-1\""
+    },
+    {
+      "source_key": "editorial:osaka:new-otani-osaka",
+      "provider": "rakuten",
+      "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456794714/",
+      "property_id": "10123456794714",
+      "identity_evidence_url": "https://www.newotani.co.jp/osaka/access/",
+      "document_evidence": "2026-09-08 實際找到 Rakuten 國際站 Hotel New Otani Osaka、Osaka City, Osaka, Japan 及 ID 10123456794714（文件標示上月爬取）。完整街道地址未知；ID 加門牌搜尋無結果，後續文件讀取逾時，保留待審。未由日本站 ID 或其他平台推算網址，未做瀏覽器或健康審核。",
+      "status": "pending",
+      "version": 2,
+      "health": "unchecked",
+      "browser_verified": false,
+      "review_requested": false,
+      "query": "site:travel.rakuten.com \"Hotel New Otani Osaka\"",
+      "full_street_unknown": true
+    },
+    {
+      "source_key": "editorial:osaka:gracery-osaka-namba",
+      "provider": "expedia",
+      "url": "https://www.expedia.com/Osaka-Hotels-HOTEL-GRACERY-Osaka-Namba.h32815570.Hotel-Information",
+      "property_id": "32815570",
+      "identity_evidence_url": "https://gracery.com/namba/access/",
+      "document_evidence": "2026-09-08 Expedia 直接文件（當日爬取）的 HOTEL GRACERY Osaka Namba 與完整地址 1-4-4 Motomachi, Naniwa-ku, Osaka, Osaka, 556-0016 對照官網相符。網址與 ID 32815570 均為實際觀察值；僅新增候選並保留待審，未做瀏覽器或健康審核。",
+      "status": "pending",
+      "version": 2,
+      "health": "unchecked",
+      "browser_verified": false,
+      "review_requested": false,
+      "query": "site:expedia.com \"Hotel Gracery Osaka Namba\" \"1-4-4\""
+    },
+    {
+      "source_key": "editorial:osaka:gracery-osaka-namba",
+      "provider": "rakuten",
+      "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_osaka/cty_osaka_city/10123456874117/",
+      "property_id": "10123456874117",
+      "identity_evidence_url": "https://gracery.com/namba/access/",
+      "document_evidence": "2026-09-08 實際找到 Rakuten 國際站 Hotel Gracery Osaka Namba、Osaka City, Osaka, Japan 及 ID 10123456874117（首次文件標示兩週前爬取，後續讀取標示當日）。完整街道地址未知；ID 加門牌搜尋無結果，保留待審。未由日本站 ID 或其他平台推算網址，未做瀏覽器或健康審核。",
+      "status": "pending",
+      "version": 2,
+      "health": "unchecked",
+      "browser_verified": false,
+      "review_requested": false,
+      "query": "site:travel.rakuten.com \"Hotel Gracery Osaka Namba\"",
+      "full_street_unknown": true
+    }
+  ],
+  "unconfirmed_browser_checks": [
+    {
+      "source_key": "editorial:taipei:grand-hyatt-taipei",
+      "provider": "official",
+      "url": "https://www.hyatt.com/grand-hyatt/zh-HK/taigh-grand-hyatt-taipei",
+      "browser": "iab",
+      "status": "blank_page_unconfirmed",
+      "note": "Initial and refreshed AX were empty; screenshot confirmed blank page. Not a verified platform review or confirmed delisting.",
+      "review_requested": false,
+      "browser_verified": false,
+      "product_link_status": "pending",
+      "version": 1
+    }
+  ],
+  "production": {
+    "runtime_sha": "200e46ea922bdb0403f146b5db7ea4382af62c9a",
+    "backup": "/root/travel_scanner_pre_iab_hotel_review_20260908T073933Z.dump",
+    "backup_bytes": 10225071,
+    "backup_index_verified": true,
+    "baseline_fingerprint": "b5748df4994e24b2373b13c070c346aca769c588e2dbcb72b47d98fe8d151a73",
+    "untouched_fingerprint": "34b11bfb52a49a91109814c8dbb084f8da404e4e261414a12b4d3da362093cb6",
+    "untouched_products": 57,
+    "untouched_options": 342,
+    "config_version": 5,
+    "config_changed": false,
+    "hotel_identities": 60,
+    "new_hotel_identities": 0,
+    "new_location_approvals": 3,
+    "new_platform_approvals": 12,
+    "new_pending_candidates": 6,
+    "new_audit_records": 27,
+    "prior_target_audits": 3,
+    "product_status_counts": {
+      "approved": 30,
+      "pending": 30
+    },
+    "option_status_counts": {
+      "approved": 100,
+      "pending": 260
+    },
+    "complete_cities": 0,
+    "five_locale_public": {
+      "en": {
+        "tokyo": {
+          "hotels": 10,
+          "options": 20
+        },
+        "osaka": {
+          "hotels": 5,
+          "options": 16
+        },
+        "kyoto": {
+          "hotels": 0,
+          "options": 0
+        },
+        "seoul": {
+          "hotels": 5,
+          "options": 7
+        },
+        "busan": {
+          "hotels": 0,
+          "options": 0
+        },
+        "taipei": {
+          "hotels": 10,
+          "options": 30
+        }
+      },
+      "ja": {
+        "tokyo": {
+          "hotels": 10,
+          "options": 20
+        },
+        "osaka": {
+          "hotels": 5,
+          "options": 16
+        },
+        "kyoto": {
+          "hotels": 0,
+          "options": 0
+        },
+        "seoul": {
+          "hotels": 5,
+          "options": 7
+        },
+        "busan": {
+          "hotels": 0,
+          "options": 0
+        },
+        "taipei": {
+          "hotels": 10,
+          "options": 30
+        }
+      },
+      "ko": {
+        "tokyo": {
+          "hotels": 10,
+          "options": 20
+        },
+        "osaka": {
+          "hotels": 5,
+          "options": 16
+        },
+        "kyoto": {
+          "hotels": 0,
+          "options": 0
+        },
+        "seoul": {
+          "hotels": 5,
+          "options": 7
+        },
+        "busan": {
+          "hotels": 0,
+          "options": 0
+        },
+        "taipei": {
+          "hotels": 10,
+          "options": 30
+        }
+      },
+      "zh-TW": {
+        "tokyo": {
+          "hotels": 10,
+          "options": 20
+        },
+        "osaka": {
+          "hotels": 5,
+          "options": 16
+        },
+        "kyoto": {
+          "hotels": 0,
+          "options": 0
+        },
+        "seoul": {
+          "hotels": 5,
+          "options": 7
+        },
+        "busan": {
+          "hotels": 0,
+          "options": 0
+        },
+        "taipei": {
+          "hotels": 10,
+          "options": 30
+        }
+      },
+      "zh-CN": {
+        "tokyo": {
+          "hotels": 10,
+          "options": 20
+        },
+        "osaka": {
+          "hotels": 5,
+          "options": 16
+        },
+        "kyoto": {
+          "hotels": 0,
+          "options": 0
+        },
+        "seoul": {
+          "hotels": 5,
+          "options": 7
+        },
+        "busan": {
+          "hotels": 0,
+          "options": 0
+        },
+        "taipei": {
+          "hotels": 10,
+          "options": 30
+        }
+      }
+    }
+  },
+  "boundaries": {
+    "pending_inputs_not_live_sync_truth": true,
+    "independent_read_only_verification": true,
+    "licensed_coordinates_and_source_credits_preserved": true,
+    "unsafe_unavailable_links_never_overridden": true,
+    "server_unconfirmed_health_not_rewritten": true,
+    "affiliate_and_quote_switches_unchanged": true,
+    "paid_provider_api_calls": 0,
+    "gemini_api_calls": 0,
+    "clickouts_or_test_orders": 0,
+    "provider_photos_reviews_prices_or_descriptions_saved": false,
+    "original_dirty_worktree_untouched": true
+  }
+}
