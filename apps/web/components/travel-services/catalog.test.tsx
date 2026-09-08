@@ -7,6 +7,7 @@ import {
   waitFor,
 } from "@testing-library/react";
 import { ServiceCatalog, TripTravelServices } from "./catalog";
+import { PUBLIC_DESTINATIONS } from "./options";
 import copy from "@/messages/zh-TW/travelServices.json";
 
 const { request, navigate } = vi.hoisted(() => ({
@@ -64,6 +65,13 @@ afterEach(() => {
   cleanup();
   vi.clearAllMocks();
   window.history.replaceState({}, "", "/");
+});
+
+it("keeps destination service routes aligned to the 33-place public catalog", () => {
+  expect(PUBLIC_DESTINATIONS).toHaveLength(33);
+  expect(new Set(PUBLIC_DESTINATIONS).size).toBe(33);
+  expect(PUBLIC_DESTINATIONS).toContain("tokyo");
+  expect(PUBLIC_DESTINATIONS).toContain("kamakura");
 });
 
 describe("reviewed travel services", () => {

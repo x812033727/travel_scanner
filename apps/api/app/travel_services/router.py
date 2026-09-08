@@ -33,7 +33,7 @@ from app.models import (
     TripServiceSelection,
 )
 from app.travel_services.hotel_quotes import HotelQuoteRequest, search_quotes
-from app.travel_services.registry import affiliate_target
+from app.travel_services.registry import affiliate_click_target
 from app.travel_services.schemas import CITIES, Facts, Kind, SelectInput, SelectionStatus
 from app.travel_services.service import (
     catalog_config,
@@ -554,7 +554,8 @@ async def booking_option_clickout(
         brand = await session.get(TravelServiceBrand, offer.brand_id)
         assert brand is not None
         try:
-            target = affiliate_target(
+            target = affiliate_click_target(
+                brand.code,
                 offer.static_url
                 or await TravelpayoutsLinkClient(get_redis(), settings).create(
                     direct,
@@ -678,7 +679,7 @@ async def offer_clickout(
             sub_id,
             cache_context=f"{brand.id}:{brand.version}:{offer.id}:{offer.version}:{locale}",
         )
-        target = affiliate_target(target)
+        target = affiliate_click_target(brand.code, target)
     except (ConnectionError, ValueError) as exc:
         raise fail("service_link_unavailable", 503) from exc
     session.add(

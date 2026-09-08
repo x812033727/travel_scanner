@@ -14,6 +14,7 @@ from app.hotspots.areas import city_areas
 from app.hotspots.cities import CITY_BY_DESTINATION_ID
 from app.hotspots.discovery import haversine_km
 from app.models import (
+    DestinationAffiliateOffer,
     TravelServiceBrand,
     TravelServiceConfig,
     TravelServiceOffer,
@@ -172,6 +173,37 @@ def ready_offer(
                 and offer.verification_context == link_context(settings)
             )
     except ValueError:
+        return False
+    return bool(
+        BRANDS[brand.code].api_supported
+        and settings.travelpayouts_api_token
+        and settings.travelpayouts_marker
+        and settings.travelpayouts_project_id
+    )
+
+
+def ready_destination_offer(
+    offer: DestinationAffiliateOffer,
+    brand: TravelServiceBrand,
+    settings: Settings,
+    now: datetime,
+) -> bool:
+    if not (
+        offer.status == "approved"
+        and offer.verified_at
+        and now - timedelta(days=30) <= offer.verified_at <= now
+        and (not offer.expires_at or offer.expires_at > now)
+        and ready_brand(brand, settings, now)
+        and offer.module in BRANDS[brand.code].supported_modules
+        and offer.verification_context == link_context(settings)
+    ):
+        return False
+    try:
+        brand_target(brand.code, offer.target_url)
+        if offer.static_url:
+            affiliate_target(offer.static_url)
+            return bool(settings.travelpayouts_marker)
+    except (KeyError, ValueError):
         return False
     return bool(
         BRANDS[brand.code].api_supported

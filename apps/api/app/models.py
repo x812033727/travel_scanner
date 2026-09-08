@@ -372,6 +372,39 @@ class TravelServiceOffer(Timestamped, Base):
     expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
 
+class DestinationAffiliateOffer(Timestamped, Base):
+    __tablename__ = "destination_affiliate_offers"
+    __table_args__ = (
+        UniqueConstraint(
+            "brand_id",
+            "destination_id",
+            "module",
+            name="uq_destination_affiliate_offer",
+        ),
+        CheckConstraint(
+            "module IN ('flight','hotel','activities','transport','connectivity')",
+            name="ck_destination_affiliate_module",
+        ),
+        CheckConstraint(
+            "status IN ('pending','approved','disabled')",
+            name="ck_destination_affiliate_status",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    brand_id: Mapped[UUID] = mapped_column(
+        ForeignKey("travel_service_brands.id", ondelete="CASCADE"), index=True
+    )
+    destination_id: Mapped[str] = mapped_column(String(64), index=True)
+    module: Mapped[str] = mapped_column(String(32), index=True)
+    target_url: Mapped[str] = mapped_column(String(2048))
+    static_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    verification_context: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    status: Mapped[str] = mapped_column(String(16), default="pending", index=True)
+    version: Mapped[int] = mapped_column(Integer, default=1)
+    verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
 class TripServiceSelection(Timestamped, Base):
     __tablename__ = "trip_service_selections"
     __table_args__ = (
