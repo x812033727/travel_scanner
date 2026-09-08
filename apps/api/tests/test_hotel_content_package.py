@@ -3,6 +3,7 @@
 import csv
 import io
 import json
+import runpy
 import subprocess
 import sys
 from datetime import UTC, datetime
@@ -267,3 +268,82 @@ def test_busan_identity_research_excludes_closure_and_does_not_assert_licensing(
             else:
                 assert option["discovery_status"] == review["status"] == "unconfirmed"
                 assert not option.get("property_id")
+
+
+def credit_fixture():
+    directory = Path(__file__).resolve().parents[3] / "docs/hotel-platforms"
+    prepare = runpy.run_path(str(directory / "prepare_credit_update.py"))["prepare_credit_update"]
+    source = json.loads((directory / "tokyo.pending.json").read_text(encoding="utf-8"))[0][
+        "product"
+    ]
+    researched = ProductInput.model_validate(source)
+    source["facts"].pop("source_credits")
+    source["names_json"]["zh-TW"] = "Keep the administrator's saved label"
+    return prepare, ProductInput.model_validate(source), researched
+
+
+def test_tokyo_review_checkpoint_keeps_platform_and_browser_decisions_independent():
+    directory = Path(__file__).resolve().parents[3] / "docs/hotel-platforms"
+    evidence = json.loads((directory / "tokyo.review-2026-09-08.json").read_text(encoding="utf-8"))
+    package = json.loads((directory / "tokyo.pending.json").read_text(encoding="utf-8"))
+    original = {
+        r["product"]["source_key"]: r for r in package if r["product"]["facts"]["map_verified"]
+    }
+    assert {r["source_key"] for r in evidence["hotels"]} == set(original)
+    assert len(original) == 6
+    for hotel in evidence["hotels"]:
+        row = original[hotel["source_key"]]
+        assert hotel["location_status"] == "existing_review_preserved_not_reverified"
+        assert hotel["official_identity_url"] == row["product"]["source_url"]
+        assert hotel["source_credit_url"] == row["product"]["facts"]["source_credits"][0]["url"]
+        options = {o["provider"]: o for o in row["booking_options"]}
+        assert len(hotel["platform_reviews"]) == 5
+        for review in hotel["platform_reviews"]:
+            assert review.get("url") == options[review["provider"]].get("url")
+            if review["provider"] == "trip_com":
+                assert review["status"] == "approved" and review["version"] == 2
+                assert review["health"] == "healthy" and review["browser_verified"] is False
+                assert review["matched_name"] and review["matched_address"]
+                assert review["reviewed_on"] == evidence["checked_on"]
+            else:
+                assert review["status"] == "pending"
+                assert review["reason"]
+            if not review.get("url"):
+                assert review["health"] == "not_checked"
+                assert review["reason"] == "Discovery unresolved; no asserted URL or network check."
+
+
+def test_credit_only_update_preserves_saved_identity_labels_and_omits_legacy_links():
+    prepare, current, researched = credit_fixture()
+    result = prepare(current, researched)
+    assert result.names_json == current.names_json
+    assert result.facts.source_credits == researched.facts.source_credits
+    assert "hotel_links" not in result.facts.model_fields_set
+    before = current.model_dump(mode="json")
+    after = result.model_dump(mode="json")
+    before["facts"].pop("source_credits")
+    after["facts"].pop("source_credits")
+    assert before == after
+    assert prepare(result, researched) == result
+
+
+@pytest.mark.parametrize(
+    "field,value", [("latitude", 35.1), ("google_place_id", "changed"), ("map_verified", False)]
+)
+def test_credit_update_rejects_changed_or_unreviewed_location(field, value):
+    prepare, current, researched = credit_fixture()
+    setattr(current.facts, field, value)
+    with pytest.raises(ValueError, match="identity changed"):
+        prepare(current, researched)
+
+
+def test_credit_update_rejects_legacy_projection_and_conflicting_credit():
+    prepare, current, researched = credit_fixture()
+    projected = current.model_dump(mode="json")
+    with pytest.raises(ValueError, match="legacy hotel_links"):
+        prepare(ProductInput.model_validate(projected), researched)
+    current.facts.source_credits = [
+        researched.facts.source_credits[0].model_copy(update={"publisher": "Someone else"})
+    ]
+    with pytest.raises(ValueError, match="Existing attribution differs"):
+        prepare(current, researched)

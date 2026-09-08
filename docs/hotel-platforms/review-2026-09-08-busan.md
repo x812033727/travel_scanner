@@ -1,5 +1,8 @@
 # Busan addition and RYSE review — 2026-09-08
 
+Historical checkpoint before the Tokyo attribution/platform review. See
+`review-2026-09-08-tokyo.md` for current platform totals and the intentional Tokyo updates.
+
 This continues PR #344 on codex/hotel-content-review-kyoto. It does not merge, deploy,
 enable a city, activate affiliate rights, call price APIs or claim a completed catalog.
 

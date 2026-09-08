@@ -94,7 +94,7 @@ documented, not silently matched. Toyoko's conflicting tourism-directory address
 
 | City | Research inputs | Accepted for city rollout | Remaining |
 | --- | ---: | ---: | --- |
-| Tokyo | 10 | 0 | New map checks, all platform checks, background link checks, independent approvals |
+| Tokyo | 10 | 0 | Four new map checks, remaining platform checks and second OTA per original hotel |
 | Osaka | 10 | 0 | Map and platform review, remaining OTA checks, independent approvals |
 | Kyoto | 10 | 0 | Licensed coordinates, exact Place IDs, live platform checks and independent approvals |
 | Seoul | 10 | 0 | Five unresolved Naver reviews, platform landing checks and independent option approvals |
@@ -111,14 +111,25 @@ Public/affiliate/price settings are unchanged. Only the earlier 24 IDs-only usag
 increments were made (four Tokyo, ten Osaka, ten Taipei); this continuation made no Google
 lookup or price API call. The one-off lookup scripts have already run: do not repeat them to recover saved IDs.
 
-Latest 2026-09-08 continuation: ten Busan products and sixty options were imported as
+Earlier 2026-09-08 Busan continuation: ten Busan products and sixty options were imported as
 pending, preserving all fifty existing products/options. RYSE then separately passed product
 location review using the 2026-09-07 Naver observation plus a fresh Chrome official-contact
 check; its official option passed normal URL/health review. No OTA option was approved.
-The live total is now **60 hotels: 11 product-approved, 49 pending; 323 pending new options
+At that checkpoint the total was **60 hotels: 11 product-approved, 49 pending; 323 pending new options
 and one approved new official option**. Original Tokyo six and catalog settings are unchanged.
 Public enablement remains off, configured destinations remain Tokyo only, and no city has
-completed rollout acceptance. See `review-2026-09-08-busan.md` for the current checkpoint.
+completed rollout acceptance. See `review-2026-09-08-busan.md` for that historical checkpoint.
+
+Latest 2026-09-08 Tokyo review: added the missing source credits on the original six hotels
+and thirty independent OTA slots (24 found URLs, six unresolved). Six Trip.com links passed
+normal independent admin/health review with no browser override; the remaining 24 slots
+stay pending. Existing product identities, names, coordinates, official links and config
+were preserved. The total is **60 hotels: 11 product-approved, 49 pending; 360 platform
+records: 13 approved, 347 pending**. Five-language read-only smoke shows official + Trip.com
+for the original six in the enabled internal catalog; public enablement is still off.
+This is not a city rollout or a new map review. See `review-2026-09-08-tokyo.md` and the
+per-option `tokyo.review-2026-09-08.json`. Never replay the older original-Tokyo fingerprint
+or one-option smoke assertion after this deliberate attribution/platform update.
 
 ## Tokyo coordinate attribution
 
@@ -167,7 +178,8 @@ over them. Preview first, skip existing source keys for additions and use versio
 individual edits for a deliberate review. The September 8 batch enforced serializable
 transactions, exactly 44 new keys, preserved product/option/config fingerprints,
 pending-only options, no offer/brand writes, and audit records. A validated database backup
-was taken first. See `review-2026-09-08.md` for the current import and review checkpoint.
+was taken first. See `review-2026-09-08.md` for that first import checkpoint and the newer
+dated Tokyo review above for current counts.
 
 Paste into admin CSV preview. Review new/modified/duplicate/missing entries before committing;
 all changed products and options remain pending. Use the separate option review controls.
@@ -245,6 +257,6 @@ selected facts only, for a later deliberate review; it never writes/imports/appr
 The additional research-tool tests require the optional pyproj command above. Default API
 CI also validates the package/evidence, review gates and lossless admin CSV transfer.
 
-Remaining: Busan's ten hotels, Kyoto coordinate/Place ID sources, remaining map and platform
-reviews, and all cities' rollout gates. The research total is 50, not the planned 60.
+Remaining: Busan/Kyoto reusable coordinate and exact map sources, remaining map and platform
+reviews, and all cities' rollout gates. The research total is 60, not sixty accepted hotels.
 Do not use Visit Seoul's embedded Tripadvisor descriptions/ratings as government-owned data.

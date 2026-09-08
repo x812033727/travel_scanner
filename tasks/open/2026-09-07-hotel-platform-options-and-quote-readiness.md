@@ -24,7 +24,49 @@ scope:
 
 # Hotel platform options and quote readiness
 
-## 2026-09-08 live content checkpoint
+## 2026-09-08 latest Tokyo source-credit and platform review
+
+Latest continuation stays on PR #344 / codex/hotel-content-review-kyoto. Main and runtime
+were reverified at 7f21d7e, schema 0060; no deployment or migration. Previous head 9de855e
+passed all four jobs on PR 34170581417 and push 34170579355. The earlier community smoke
+metric defect remains separately tracked; no claim that this hotel work fixed it.
+
+Six Tokyo official pages and exact Trip.com documents matched hotel names/street numbers.
+Chrome create-tab and recovery timed out; no successful browser UI/map review or override
+is claimed. Trip links passed ordinary safe HTTPS/DNS/redirect checks. Booking/Expedia
+were unconfirmed; Rakuten timed out. Three Agoda URLs were healthy but lacked reviewable
+document identity, so HTTP success alone did not cause approval. Other slots lack URLs.
+
+Verified backup /root/travel_scanner_pre_hotel_candidates_20260907T234914Z.dump preceded
+production writes. Guarded, versioned admin services added source credits to the original
+six Tokyo products plus thirty independent pending OTA slots (24 URLs, six unresolved).
+Each credit edit and restored product approval committed atomically with its five options;
+existing official links, product IDs, labels and locations were preserved. A tested pure
+prepare_credit_update helper rejects old legacy projections and changed identity/credits.
+Other 54 products/original 330 options/config fingerprints remained unchanged.
+
+A separate exact-ID/URL/version preflight and normal option review approved only the six
+Trip.com links, all healthy and browser_verified=false, with audited outcomes. All products,
+other 354 options and config were fingerprint-checked unchanged in that second operation.
+No replay of pending packages, direct approval SQL, provider credential export or city switch.
+
+Current live counts: 60 hotels (11 product-approved, 49 pending), 360 platform records
+(13 approved, 347 pending). Approved: six original Tokyo official + six Tokyo Trip + RYSE
+official. All six original Tokyo source credits and six Trip audit records verified.
+Read-only en/ja/ko/zh-TW/zh-CN service smoke exposes official + Trip direct options with
+attribution for those six; public_enabled remains false and destinations remain [tokyo].
+Zero cities accepted; no affiliate/price enablement or generated click/conversion events.
+
+126 related API/content/platform/offline-source tests passed, plus Ruff/format, mypy across
+254 sources, 27 tooling tests, five locales/25 namespaces and task integrity. Content/docs/
+tests only; full new-head CI runs on the existing draft PR. See
+docs/hotel-platforms/review-2026-09-08-tokyo.md and tokyo.review-2026-09-08.json for evidence.
+The older Tokyo fingerprint/single-official-option smoke is now historical, not a valid
+post-credit baseline. Remaining: other independent OTA checks, four new Tokyo maps,
+remaining Seoul Naver identities, reusable Kyoto/Busan coordinates and per-city acceptance.
+Release the task at handoff; it is not done. No merge authorization in this continuation.
+
+## 2026-09-08 first import checkpoint (historical)
 
 Continuation claimed on `codex/hotel-content-review-kyoto` from latest main
 `7f21d7eb2af223a561bc04519ce67021198b1068`, preserving the original dirty workspace.
