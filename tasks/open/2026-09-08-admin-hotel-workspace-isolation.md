@@ -11,6 +11,7 @@ completed_at:
 branch: codex/admin-domain-workspaces
 depends_on: []
 scope:
+  - apps/api/tests/test_hotel_platforms.py
   - apps/api/app/travel_services/admin.py
   - apps/api/app/travel_services/schemas.py
   - apps/api/app/travel_services/imports.py
@@ -57,3 +58,4 @@ Full-stack admin Playwright logs into CLI-created fixture accounts and persists 
 
 No hotel publishing, provider switching or paid calls performed. Existing Stay22 and shared travel service behavior are preserved.
 The first-config-row lock is shared by both hotel PATCH and legacy global PUT, including safe 409 rollback.
+CI exposed an existing collection-time clock fixture: quotes expired after two minutes before their test ran. The hotel-platform test now freezes its own clock, with separate expired/valid quote regressions (21 focused cases pass); production expiry behavior is unchanged.
