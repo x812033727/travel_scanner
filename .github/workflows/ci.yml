@@ -166,6 +166,11 @@ jobs:
       - run: npm ci
       - run: uv run alembic upgrade head
         working-directory: apps/api
+      # Concurrent cold routes under next dev have returned partially read JSON
+      # manifests/500s in smoke runs. Exercise the immutable production build,
+      # as the isolated UI suite does, without relaxing browser assertions.
+      - name: Build production web for full-stack journeys
+        run: npm run build:web
       - name: Start API, worker and web
         run: |
           cd apps/api
@@ -174,7 +179,7 @@ jobs:
           setsid uv run python -m app.worker > /tmp/travel-worker.log 2>&1 &
           echo $! > "$RUNNER_TEMP/travel-worker.pid"
           cd ../..
-          setsid npm run dev --workspace @travel-scanner/web -- --port 3000 > /tmp/travel-web.log 2>&1 &
+          setsid npm run start --workspace @travel-scanner/web -- --port 3000 > /tmp/travel-web.log 2>&1 &
           echo $! > "$RUNNER_TEMP/travel-web.pid"
       - name: Start community test services and bootstrap test administrator
         run: |
@@ -206,7 +211,7 @@ jobs:
         id: travel-journeys
         run: npx playwright test e2e/full-stack.spec.ts
         working-directory: apps/web
-        env: { PLAYWRIGHT_REUSE_EXISTING: "true" }
+        env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true" }
       - uses: actions/upload-artifact@v4
         if: failure() && steps.travel-journeys.outcome == 'failure'
         with:
@@ -217,7 +222,7 @@ jobs:
         if: ${{ !cancelled() && steps.stack-ready.outcome == 'success' }}
         run: npx playwright test e2e/community.spec.ts
         working-directory: apps/web
-        env: { PLAYWRIGHT_REUSE_EXISTING: "true", COMMUNITY_E2E: "1" }
+        env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true", COMMUNITY_E2E: "1" }
       - uses: actions/upload-artifact@v4
         if: always()
         with:
