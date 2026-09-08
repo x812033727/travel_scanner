@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-admin-catalog-review-filters-and-canonical
 title: Admin catalog review filters and canonical location editor
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-admin-editors
 claimed_at: 2026-09-08T10:29:58Z
 created_at: 2026-09-08T10:29:58Z
-completed_at:
+completed_at: 2026-09-08T13:16:24Z
 branch: codex/admin-domain-workspaces
 depends_on: []
 scope:
@@ -38,7 +38,7 @@ A new review tab must really request pending items. Place identities and restaur
 - [x] Place identity editing has one destination with an exact-ID/missing-location filter and clear-filter control.
 - [x] Google profile website saves never resubmit a stale Place ID.
 - [x] Restaurant automation shows status and links to Food settings; explicit scan/retry remains available.
-- [ ] PR checks and authorized merge complete.
+- [x] PR checks and authorized merge complete.
 
 ## Steps
 

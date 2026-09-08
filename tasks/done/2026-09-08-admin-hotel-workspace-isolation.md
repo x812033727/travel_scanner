@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-admin-hotel-workspace-isolation
 title: Admin hotel workspace isolation
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-admin-hotel
 claimed_at: 2026-09-08T10:04:05Z
 created_at: 2026-09-08T10:03:38Z
-completed_at:
+completed_at: 2026-09-08T13:16:24Z
 branch: codex/admin-domain-workspaces
 depends_on: []
 scope:
@@ -40,7 +40,7 @@ Hotel management was mixed with flights, eSIM and other services; changing a hot
 - [x] Both CSV phases reject non-hotel rows and cross-kind source-key replacement.
 - [x] Shared brands have one Partners editor; product/platform/offer/brand review gates remain distinct.
 - [x] First-row and existing-row config writes share a transaction lock with legacy PUT.
-- [ ] PR integration checks and authorized merge complete.
+- [x] PR integration checks and authorized merge complete.
 
 ## Steps
 

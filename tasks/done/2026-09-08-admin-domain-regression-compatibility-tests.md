@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-admin-domain-regression-compatibility-tests
 title: Admin domain regression compatibility tests
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-admin-regression
 claimed_at: 2026-09-08T10:38:38Z
 created_at: 2026-09-08T10:38:37Z
-completed_at:
+completed_at: 2026-09-08T13:16:25Z
 branch: codex/admin-domain-workspaces
 depends_on: []
 scope:
@@ -29,7 +29,7 @@ Old assertions must validate the actual new domain structure without dropping pa
 - [x] Existing food workspace and partial payload tests reflect the new hierarchy.
 - [x] Real status filters, legacy/current taxonomy links and Back/Forward remain covered.
 - [x] Hotspot identity/missing-location and all pending queues have regressions.
-- [ ] Full PR checks and authorized merge complete.
+- [x] Full PR checks and authorized merge complete.
 
 ## Steps
 
