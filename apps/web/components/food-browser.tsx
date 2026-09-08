@@ -11,6 +11,7 @@ import { FoodFilterChips, type FilterChipItem } from "@/components/food-filter-c
 import { FoodMerchantCard } from "@/components/food-merchant-card";
 import {
   OTHER_AREA,
+  MERCHANT_STYLES,
   activeFilterCount,
   findCity,
   foodBrowserSearch,
@@ -139,8 +140,9 @@ export function FoodBrowser({ initialCities, initialCategories }: {
   const selectCity = (destinationId: string) => withTypedQuery({ destinationId, area: "" });
   const toggleArea = (area: string) => withTypedQuery({ area });
   const toggleCategory = (category: string) => withTypedQuery({ category });
+  const toggleStyle = (style: string) => withTypedQuery({ style });
   const clearFilters = () =>
-    apply({ destinationId: filters.destinationId, area: "", category: "", query: "" });
+    apply({ destinationId: filters.destinationId, area: "", category: "", style: "", query: "" });
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     apply({ ...filters, query: queryValue.trim() });
@@ -170,6 +172,7 @@ export function FoodBrowser({ initialCities, initialCategories }: {
     && result.total === 0
     && !filters.area
     && !filters.category
+    && !filters.style
     && !filters.query;
   const activeChips: ActiveChip[] = [];
   if (city) {
@@ -192,6 +195,14 @@ export function FoodBrowser({ initialCities, initialCategories }: {
       label:
         categoryItems.find((item) => item.key === filters.category)?.label ?? filters.category,
       clear: () => toggleCategory(""),
+    });
+  }
+  if (filters.style) {
+    activeChips.push({
+      key: "style",
+      label: MERCHANT_STYLES.includes(filters.style as typeof MERCHANT_STYLES[number])
+        ? t(`styles.${filters.style as typeof MERCHANT_STYLES[number]}`) : filters.style,
+      clear: () => toggleStyle(""),
     });
   }
   if (filters.query) {
@@ -299,6 +310,16 @@ export function FoodBrowser({ initialCities, initialCategories }: {
         moreLabel={(count) => tCommon("showMoreChips", { count })}
         fewerLabel={tCommon("showFewerChips")}
       />
+      <FoodFilterChips
+        label={t("styles.label")}
+        allLabel={t("styles.all")}
+        items={MERCHANT_STYLES.map((style) => ({ key: style, label: t(`styles.${style}`) }))}
+        value={filters.style ?? ""}
+        onChange={toggleStyle}
+        moreLabel={(count) => tCommon("showMoreChips", { count })}
+        fewerLabel={tCommon("showFewerChips")}
+      />
+      <p className="mt-2 text-xs text-[var(--muted)]">{t("styles.disclaimer")}</p>
       {activeChips.length > 0 && (
         <div className="mt-3 flex flex-wrap items-center gap-2 text-sm" aria-label={t("activeFilters")}>
           {/* The whole chip removes the filter, which is the right target size but a
@@ -409,6 +430,7 @@ export function FoodBrowser({ initialCities, initialCategories }: {
                     : apply({ ...filters, destinationId: merchant.destination_id, area: slug })
                 }
                 onSelectCategory={toggleCategory}
+                onSelectStyle={toggleStyle}
               />
             ))}
           </div>

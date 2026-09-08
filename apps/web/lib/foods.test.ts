@@ -25,6 +25,12 @@ function city(id: string, merchantCount: number): FoodCity {
 }
 
 describe("food browser filters", () => {
+  it("combines style with cuisine and retains it in pagination URLs", () => {
+    const filters = readFoodBrowserFilters("?destination_id=tokyo&category=cafe-tea&style=artsy");
+    expect(filters.style).toBe("artsy");
+    expect(activeFilterCount(filters)).toBe(3);
+    expect(merchantsQuery(filters, "MjA")).toContain("style=artsy&limit=20&cursor=MjA");
+  });
   it("reads and writes the query string in a stable order", () => {
     const filters = readFoodBrowserFilters(
       "?category=ramen&q=%20noodles%20&destination_id=tokyo&area=tokyo-shinjuku",

@@ -95,6 +95,11 @@ change. New-head CI must pass before any later merge. Previous head `9de855e` pa
 four jobs on both PR run 34170581417 and push run 34170579355. The previously observed
 community smoke/read-metric issue remains a separate open task, not a claimed hotel fix.
 
+Main later advanced to `b3e49a3` (merchant styles, PR #345). The work branch was synchronized;
+only the generated task board conflicted and was regenerated, without altering merchant code.
+The 126 related tests and Ruff passed again, with mypy now checking 255 source files. This
+does not change the earlier production-runtime observation or deploy the incoming migration.
+
 Next: finish independent Booking/Agoda/Expedia/Rakuten identity and landing checks without
 overriding unobserved browser failures; review the four new Tokyo maps and other cities;
 find reusable Kyoto/Busan coordinates and precise map identities. Keep the content task

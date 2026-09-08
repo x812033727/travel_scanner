@@ -1,11 +1,11 @@
 ---
 id: 2026-09-07-hotel-platform-options-and-quote-readiness
 title: Hotel platform options and quote readiness
-status: in-progress
+status: open
 priority: P1
 area: api
-owner: codex
-claimed_at: 2026-09-08T00:07:29Z
+owner:
+claimed_at:
 created_at: 2026-09-07T12:32:44Z
 completed_at:
 branch: codex/hotel-content-review-kyoto
@@ -58,6 +58,13 @@ The older Tokyo fingerprint/single-official-option smoke is now historical, not 
 post-credit baseline. Remaining: other independent OTA checks, four new Tokyo maps,
 remaining Seoul Naver identities, reusable Kyoto/Busan coordinates and per-city acceptance.
 Release the task at handoff; it is not done. No merge authorization in this continuation.
+
+While CI ran, main advanced to b3e49a3 via PR #345. Synced that main into this work branch;
+the only conflict was generated tasks/BOARD.md, resolved solely with tasks:board. No merchant
+code was altered. Narrowed this unfinished task's scope to hotel evidence and its content
+tests, since the architecture is already merged and shared models/translations need not
+remain claimed. Post-sync: 126 related tests, Ruff and mypy across 255 sources passed;
+five-language and task checks rerun. This branch sync is not a PR merge or a deployment.
 
 ## 2026-09-08 first import checkpoint (historical)
 

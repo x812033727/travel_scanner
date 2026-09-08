@@ -79,6 +79,17 @@ function renderCard(item: FoodMerchant) {
 }
 
 describe("FoodMerchantCard", () => {
+  it("shows overlapping reviewed styles with source links and filtering controls", () => {
+    const select = vi.fn();
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ items: [] }))));
+    render(<SavedItemsProvider><FoodMerchantCard merchant={{ ...merchant, styles: [
+      { slug: "instagrammable", name: "網美店", evidence_url: "https://shop.example/branch", evidence_title: "Branch", checked_on: "2026-09-08" },
+      { slug: "artsy", name: "文青店", evidence_url: "https://shop.example/art", evidence_title: "Art", checked_on: "2026-09-08" },
+    ] }} onSelectStyle={select} /></SavedItemsProvider>);
+    fireEvent.click(screen.getByRole("button", { name: "只看文青店" }));
+    expect(select).toHaveBeenCalledWith("artsy");
+    expect(screen.getByRole("link", { name: "查看「網美店」的風格依據" }).getAttribute("href")).toBe("https://shop.example/branch");
+  });
   it("shows the area, cuisines, signature dish, safe links and sources", async () => {
     const { onSelectCategory, onSelectArea } = renderCard(merchant);
 

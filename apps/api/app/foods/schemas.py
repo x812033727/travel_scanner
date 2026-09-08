@@ -55,6 +55,14 @@ class SignatureDishView(BaseModel):
     meal_types: list[str] = Field(default_factory=list)
 
 
+class MerchantStyleView(BaseModel):
+    slug: str
+    name: str
+    evidence_url: str
+    evidence_title: str
+    checked_on: str
+
+
 class MerchantCard(BaseModel):
     id: str
     slug: str
@@ -65,6 +73,7 @@ class MerchantCard(BaseModel):
     country_code: str
     area: FoodAreaRef | None = None
     categories: list[FoodCategoryRef] = Field(default_factory=list)
+    styles: list[MerchantStyleView] = Field(default_factory=list)
     signature_dishes: list[SignatureDishView] = Field(default_factory=list)
     address: str | None = None
     latitude: float | None = None
@@ -94,6 +103,7 @@ class MerchantFacets(BaseModel):
     areas: list[FacetAreaView] = Field(default_factory=list)
     unassigned_area_count: int = 0
     categories: list[FacetCategoryView] = Field(default_factory=list)
+    styles: list[FacetCategoryView] = Field(default_factory=list)
 
 
 class MerchantListResponse(BaseModel):
