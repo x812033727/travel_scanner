@@ -5,7 +5,7 @@ status: review
 priority: P1
 area: api
 owner: codex
-claimed_at: 2026-09-08T06:11:58Z
+claimed_at: 2026-09-08T06:24:09Z
 created_at: 2026-09-07T23:14:18Z
 completed_at:
 branch: codex/merchant-style-batch-08
@@ -195,3 +195,4 @@ PR #345 已合併部署，第二／三批 PR #346、#347 已依授權合併；�
 - 正式作業目錄 /root/mokaair-merchant-batch-08-xvN0xqpC 保留JSON、預覽／鎖內預覽／套用／重播／逐欄驗證及公開查詢前後收據；備份7,570,009 bytes、mode600、restore目錄可讀。雙鎖、映像及本機／伺服器／容器checksum全通過後新增4店／4提案，重播0／0。
 - 逐欄驗證來源、店名、地址、風格證據與日期，均pending/inactive/unverified，地圖／耐久座標／商圈／審核人空白；建立店家與風格提案各一筆系統稽核。公開payload前後一致、/ready正常、foods頁200。八批41新候選＋2既有補風格，共44 pending標籤（網美20／文青24）。
 - 第八批資料匯入未另外重建服務、執行遷移、核准發布或呼叫付費模型／地圖；新的PR仍待完整CI及下一輪合併授權，整體精準地圖與人工審核未完成，不標done。
+- 第八批PR為 https://github.com/x812033727/travel_scanner/pull/361 。等待CI期間main新增#360台北飯店資料，已無衝突同步3bc315a，保留對方所有資料／測試／任務內容；合併後相關回歸93 passed／1 PostgreSQL-only skipped、Ruff與mypy257 files通過。最新head完整CI結果另記PR，不重建正式服務或延伸合併授權。

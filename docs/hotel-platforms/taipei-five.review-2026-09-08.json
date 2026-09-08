@@ -1,0 +1,536 @@
+{
+  "reviewed_on": "2026-09-08",
+  "scope": "Five existing Taipei hotels: exact saved map identities, independent official/Booking/Trip reviews and one new Rakuten international entry. No new hotel identities.",
+  "hotels": [
+    {
+      "source_key": "editorial:taipei:palais-de-chine",
+      "official_name": "Palais de Chine Hotel",
+      "official_address": "台北市大同區承德路一段3號",
+      "official_identity_url": "https://www.palaisdechinehotel.com/pdc_tw/pages/35/0/195",
+      "official_document_method": "primary_web_document",
+      "map_review": {
+        "status": "browser_identity_checked",
+        "checked_on": "2026-09-08",
+        "google_place_id": "ChIJu55KcW2pQjQRUKkzmvWDotA",
+        "name_address_website_matched": true,
+        "provider_coordinates_copied": false,
+        "provider_content_saved": false
+      },
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.palaisdechinehotel.com/",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "Palais de Chine Hotel",
+          "matched_address": "台北市大同區承德路一段3號",
+          "identity_evidence_url": "https://www.palaisdechinehotel.com/pdc_tw/pages/35/0/195",
+          "status": "approved",
+          "version": 2,
+          "health": "healthy"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/tw/palais-de-chine.html",
+          "review_requested": true,
+          "browser_verified": true,
+          "matched_name": "Palais de Chine Hotel",
+          "matched_address": "台北市大同區承德路一段3號",
+          "identity_evidence_url": "https://www.palaisdechinehotel.com/pdc_tw/pages/35/0/195",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed"
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://ph.trip.com/hotels/taipei-hotel-detail-701703/palais-de-chine-hotel/",
+          "property_id": "701703",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "Palais de Chine Hotel",
+          "matched_address": "3 Section 1 Chengde Road, Datong District, Taipei",
+          "identity_evidence_url": "https://www.palaisdechinehotel.com/pdc_tw/pages/35/0/195",
+          "status": "approved",
+          "version": 2,
+          "health": "healthy"
+        },
+        {
+          "provider": "agoda",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No verified exact platform entry in this batch; unresolved, not presumed absent.",
+          "status": "pending",
+          "version": 1,
+          "health": "unchecked"
+        },
+        {
+          "provider": "expedia",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No verified exact platform entry in this batch; unresolved, not presumed absent.",
+          "status": "pending",
+          "version": 1,
+          "health": "unchecked"
+        },
+        {
+          "provider": "rakuten",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No verified exact platform entry in this batch; unresolved, not presumed absent.",
+          "status": "pending",
+          "version": 1,
+          "health": "unchecked"
+        }
+      ],
+      "product_status": "approved",
+      "product_version": 3
+    },
+    {
+      "source_key": "editorial:taipei:cosmos-taipei",
+      "official_name": "Cosmos Hotel Taipei",
+      "official_address": "台北市中正區忠孝西路一段43號",
+      "official_identity_url": "https://www.cosmos-hotel.com.tw/en/",
+      "official_document_method": "chrome_dom_and_primary_web_document",
+      "map_review": {
+        "status": "browser_identity_checked",
+        "checked_on": "2026-09-08",
+        "google_place_id": "ChIJB0JOQXKpQjQRYjQPj0z5j7I",
+        "name_address_website_matched": true,
+        "provider_coordinates_copied": false,
+        "provider_content_saved": false
+      },
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.cosmos-hotel.com.tw/",
+          "review_requested": true,
+          "browser_verified": true,
+          "matched_name": "Cosmos Hotel Taipei",
+          "matched_address": "台北市中正區忠孝西路一段43號",
+          "identity_evidence_url": "https://www.cosmos-hotel.com.tw/en/",
+          "status": "approved",
+          "version": 2,
+          "health": "healthy",
+          "prior_attempt": {
+            "error_code": "service_link_unavailable",
+            "browser_verified": false,
+            "status": "pending",
+            "version": 1
+          },
+          "followup": "Saved official URL freshly opened in Chrome; name and street matched. Normal browser-confirmed admin review retained URL/DNS/unsafe redirect checks."
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/tw/cosmos-taipei.html",
+          "review_requested": true,
+          "browser_verified": true,
+          "matched_name": "Cosmos Hotel Taipei",
+          "matched_address": "台北市中正區忠孝西路一段43號",
+          "identity_evidence_url": "https://www.cosmos-hotel.com.tw/en/",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed"
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/taipei-hotel-detail-701746/cosmos-hotel-taipei/",
+          "property_id": "701746",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "Cosmos Hotel Taipei",
+          "matched_address": "No. 43 Section 1 of Chung Hsiao West Road, Zhongzheng District, Taipei",
+          "identity_evidence_url": "https://www.cosmos-hotel.com.tw/en/",
+          "status": "approved",
+          "version": 2,
+          "health": "healthy"
+        },
+        {
+          "provider": "agoda",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No verified exact platform entry in this batch; unresolved, not presumed absent.",
+          "status": "pending",
+          "version": 1,
+          "health": "unchecked"
+        },
+        {
+          "provider": "expedia",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No verified exact platform entry in this batch; unresolved, not presumed absent.",
+          "status": "pending",
+          "version": 1,
+          "health": "unchecked"
+        },
+        {
+          "provider": "rakuten",
+          "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_taiwan/sub_taipei/cty_zhongzheng_district/dst_liming_village/34123457140865/",
+          "property_id": "34123457140865",
+          "review_requested": true,
+          "browser_verified": true,
+          "matched_name": "Cosmos Hotel Taipei",
+          "matched_address": "No 43 Sec. 1, Chung-Hsiao W. Road., Taiwan",
+          "identity_evidence_url": "https://www.cosmos-hotel.com.tw/en/",
+          "new_candidate": true,
+          "query": "site.travel.rakuten.com \"Cosmos Hotel Taipei\"",
+          "document_freshness": "Indexed result six months old; fresh Chrome property DOM on 2026-09-08 confirmed full name/address. Web extraction timed out.",
+          "status": "approved",
+          "version": 3,
+          "health": "unconfirmed"
+        }
+      ],
+      "product_status": "approved",
+      "product_version": 3
+    },
+    {
+      "source_key": "editorial:taipei:caesar-park-taipei",
+      "official_name": "Caesar Park Hotel Taipei",
+      "official_address": "台北市中正區忠孝西路一段38號",
+      "official_identity_url": "https://www.caesarpark.com.tw/en/location-detail/caesar-park-taipei/",
+      "official_document_method": "chrome_dom_and_primary_web_document",
+      "map_review": {
+        "status": "browser_identity_checked",
+        "checked_on": "2026-09-08",
+        "google_place_id": "ChIJWfZUVq6pQjQR3Z-1OU8ILgo",
+        "name_address_website_matched": true,
+        "provider_coordinates_copied": false,
+        "provider_content_saved": false
+      },
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://taipei.caesarpark.com.tw/",
+          "review_requested": true,
+          "browser_verified": true,
+          "matched_name": "Caesar Park Hotel Taipei",
+          "matched_address": "台北市中正區忠孝西路一段38號",
+          "identity_evidence_url": "https://www.caesarpark.com.tw/en/location-detail/caesar-park-taipei/",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed",
+          "prior_attempt": {
+            "error_code": "service_link_unavailable",
+            "browser_verified": false,
+            "status": "pending",
+            "version": 1
+          },
+          "followup": "Saved official URL freshly opened in Chrome; name and street matched. Normal browser-confirmed admin review retained URL/DNS/unsafe redirect checks."
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/tw/caesarpark-taipei.html",
+          "review_requested": true,
+          "browser_verified": true,
+          "matched_name": "Caesar Park Hotel Taipei",
+          "matched_address": "台北市中正區忠孝西路一段38號",
+          "identity_evidence_url": "https://www.caesarpark.com.tw/en/location-detail/caesar-park-taipei/",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed"
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/taipei-hotel-detail-701415/caesar-park-hotel-taipei/",
+          "property_id": "701415",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "Caesar Park Hotel Taipei",
+          "matched_address": "38 Section 1 West Zhongxiao Road, Zhongzheng District, Taipei",
+          "identity_evidence_url": "https://www.caesarpark.com.tw/en/location-detail/caesar-park-taipei/",
+          "status": "approved",
+          "version": 2,
+          "health": "healthy"
+        },
+        {
+          "provider": "agoda",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No verified exact platform entry in this batch; unresolved, not presumed absent.",
+          "status": "pending",
+          "version": 1,
+          "health": "unchecked"
+        },
+        {
+          "provider": "expedia",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No verified exact platform entry in this batch; unresolved, not presumed absent.",
+          "status": "pending",
+          "version": 1,
+          "health": "unchecked"
+        },
+        {
+          "provider": "rakuten",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No verified exact platform entry in this batch; unresolved, not presumed absent.",
+          "status": "pending",
+          "version": 1,
+          "health": "unchecked"
+        }
+      ],
+      "product_status": "approved",
+      "product_version": 3
+    },
+    {
+      "source_key": "editorial:taipei:cityinn-station-iii",
+      "official_name": "CityInn Hotel Taipei Station Branch III",
+      "official_address": "台北市大同區長安西路77號",
+      "official_identity_url": "https://c3.cityinn.com.tw/tw/contact-t/",
+      "official_document_method": "chrome_dom_and_primary_web_document",
+      "map_review": {
+        "status": "browser_identity_checked",
+        "checked_on": "2026-09-08",
+        "google_place_id": "ChIJAdLYPlepQjQRe7blE2iaAoA",
+        "name_address_website_matched": true,
+        "provider_coordinates_copied": false,
+        "provider_content_saved": false
+      },
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://c3.cityinn.com.tw/tw/",
+          "review_requested": true,
+          "browser_verified": true,
+          "matched_name": "CityInn Hotel Taipei Station Branch III",
+          "matched_address": "台北市大同區長安西路77號",
+          "identity_evidence_url": "https://c3.cityinn.com.tw/tw/contact-t/",
+          "status": "approved",
+          "version": 2,
+          "health": "healthy"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/tw/cityinn-3.html",
+          "review_requested": true,
+          "browser_verified": true,
+          "matched_name": "CityInn Hotel Taipei Station Branch III",
+          "matched_address": "台北市大同區長安西路77號",
+          "identity_evidence_url": "https://c3.cityinn.com.tw/tw/contact-t/",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed"
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/taipei-hotel-detail-988217/cityinn-hotel-taipei-station-branch-iii/",
+          "property_id": "988217",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "CityInn Hotel Taipei Station Branch III",
+          "matched_address": "No. 77 Chang'an West Road, Datong District, Taipei",
+          "identity_evidence_url": "https://c3.cityinn.com.tw/tw/contact-t/",
+          "status": "approved",
+          "version": 2,
+          "health": "healthy"
+        },
+        {
+          "provider": "agoda",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No verified exact platform entry in this batch; unresolved, not presumed absent.",
+          "status": "pending",
+          "version": 1,
+          "health": "unchecked"
+        },
+        {
+          "provider": "expedia",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No verified exact platform entry in this batch; unresolved, not presumed absent.",
+          "status": "pending",
+          "version": 1,
+          "health": "unchecked"
+        },
+        {
+          "provider": "rakuten",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No verified exact platform entry in this batch; unresolved, not presumed absent.",
+          "status": "pending",
+          "version": 1,
+          "health": "unchecked"
+        }
+      ],
+      "product_status": "approved",
+      "product_version": 3
+    },
+    {
+      "source_key": "editorial:taipei:amba-ximending",
+      "official_name": "amba Taipei Ximending",
+      "official_address": "台北市萬華區武昌街二段77號",
+      "official_identity_url": "https://www.amba-hotels.com/tc/ximending/",
+      "official_document_method": "chrome_dom_and_primary_web_document",
+      "map_review": {
+        "status": "browser_identity_checked",
+        "checked_on": "2026-09-08",
+        "google_place_id": "ChIJX10H1gipQjQRfmZjnra3znU",
+        "name_address_website_matched": true,
+        "provider_coordinates_copied": false,
+        "provider_content_saved": false
+      },
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.amba-hotels.com/tc/ximending/",
+          "review_requested": true,
+          "browser_verified": true,
+          "matched_name": "amba Taipei Ximending",
+          "matched_address": "台北市萬華區武昌街二段77號",
+          "identity_evidence_url": "https://www.amba-hotels.com/tc/ximending/",
+          "status": "approved",
+          "version": 2,
+          "health": "healthy"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/tw/taipei-amba-ximending.html",
+          "review_requested": true,
+          "browser_verified": true,
+          "matched_name": "amba Taipei Ximending",
+          "matched_address": "台北市萬華區武昌街二段77號",
+          "identity_evidence_url": "https://www.amba-hotels.com/tc/ximending/",
+          "status": "approved",
+          "version": 2,
+          "health": "unconfirmed"
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/taipei-hotel-detail-701824/amba-taipei-ximending/",
+          "property_id": "701824",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "amba Taipei Ximending",
+          "matched_address": "No. 77 Section 2 Wuchang Street, Wanhua District, Taipei",
+          "identity_evidence_url": "https://www.amba-hotels.com/tc/ximending/",
+          "status": "approved",
+          "version": 2,
+          "health": "healthy"
+        },
+        {
+          "provider": "agoda",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No verified exact platform entry in this batch; unresolved, not presumed absent.",
+          "status": "pending",
+          "version": 1,
+          "health": "unchecked"
+        },
+        {
+          "provider": "expedia",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No verified exact platform entry in this batch; unresolved, not presumed absent.",
+          "status": "pending",
+          "version": 1,
+          "health": "unchecked"
+        },
+        {
+          "provider": "rakuten",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No verified exact platform entry in this batch; unresolved, not presumed absent.",
+          "status": "pending",
+          "version": 1,
+          "health": "unchecked"
+        }
+      ],
+      "product_status": "approved",
+      "product_version": 3
+    }
+  ],
+  "candidate_additions": [
+    {
+      "source_key": "editorial:taipei:cosmos-taipei",
+      "provider": "rakuten",
+      "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_taiwan/sub_taipei/cty_zhongzheng_district/dst_liming_village/34123457140865/",
+      "property_id": "34123457140865",
+      "discovery_status": "found",
+      "evidence_url": "https://www.cosmos-hotel.com.tw/en/",
+      "identity_note": "2026-09-08 找到 Rakuten 國際站 Cosmos Hotel Taipei；Chrome 頁面門牌 No 43 Sec. 1, Chung-Hsiao W. Road 與天成官網相符。此檔只供待審匯入，不含正式核准狀態；須經独立網址安全與管理員審核。不保存房價、圖片或評論。"
+    }
+  ],
+  "boundaries": {
+    "maps_ids_reused": true,
+    "paid_provider_api_calls": 0,
+    "provider_prices_photos_reviews_saved": false,
+    "government_coordinates_and_credits_unchanged": true,
+    "affiliate_and_quote_switches_unchanged": true,
+    "pending_files_are_not_production_sync": true
+  },
+  "exclusions": [
+    {
+      "reason": "Caesar Park Taipei is street 38; parking addresses 50/47/66, station street 3 and Caesar Metro/Banqiao are not this property.",
+      "source_url": "https://taipei.caesarpark.com.tw/about/traffic_information/"
+    },
+    {
+      "reason": "CityInn Station III is Chang'an West Road 77, not Branch II at 81. Current official contact page resolves the address; older search snippet and location-page directions alone are insufficient.",
+      "source_url": "https://c3.cityinn.com.tw/tw/contact-t/"
+    }
+  ],
+  "unresolved_research": [
+    {
+      "provider": "expedia",
+      "scope": "Palais de Chine / Cosmos / Caesar Park",
+      "reason": "Search results led to regional lists, not verified property URLs; no fabricated Hotel-Information link."
+    },
+    {
+      "provider": "rakuten",
+      "scope": "Palais de Chine",
+      "reason": "Japanese site ID 109270 is not an international ID; no conversion or regional list used as a hotel option."
+    }
+  ],
+  "deployment": {
+    "pr": 357,
+    "head_sha": "71f0431120ea0e83e1390dea1c0e7e8457e82a83",
+    "merge_sha": "00ffc710ebf902f56a00a69869f96e92bf3e84d0",
+    "main_ci_run": 34191743658,
+    "main_ci": "success",
+    "previous_runtime_sha": "aaa33f008c82c56e5c541dede8205097102193e1",
+    "release_dir": "/root/mokaair-release-00ffc71-peH6Zbnh",
+    "archive_sha256": "db748e417e36cc4fd6ed9fa238232e24059cf95d4d75120ac1685713a7db767b",
+    "backup": "/root/travel_scanner_pre_deploy_00ffc71_20260908T055431Z.dump",
+    "backup_bytes": 7099756,
+    "schema": "0062_merchant_platform_links",
+    "application_services": 8,
+    "readiness_successes": 3,
+    "postgres_redis_containers_preserved": true,
+    "env_preserved": true,
+    "community_enabled": false,
+    "hotel_catalog_preserved": true,
+    "five_locale_home_and_seoul_bff_passed": true
+  },
+  "production": {
+    "status": "independently_verified",
+    "runtime_sha": "00ffc710ebf902f56a00a69869f96e92bf3e84d0",
+    "schema": "0062_merchant_platform_links",
+    "backup": "/root/travel_scanner_pre_taipei_review_20260908T055940Z.dump",
+    "backup_bytes": 7566576,
+    "preflight_fingerprint": "977a7d3c323289852332b87dcd442706f8d2c3346fb57718ea6a207e407d89ba",
+    "untouched_fingerprint": "5a5e10994fcd003d0d50597a29d96bdc6d274d31fc5bfbfe82b87d414abbd863",
+    "untouched_scope": "Other 55 hotel products, 344 platform options and catalog config version 5",
+    "hotel_identities": 60,
+    "new_hotel_identities": 0,
+    "products_approved": 22,
+    "products_pending": 38,
+    "options_approved": 80,
+    "options_pending": 280,
+    "new_location_approvals": 5,
+    "new_platform_approvals": 16,
+    "new_candidate_urls": 1,
+    "new_audit_records": 32,
+    "failed_initial_reviews": 2,
+    "browser_confirmed_followups": 2,
+    "config_changed": false,
+    "complete_cities": 0,
+    "five_locale_public_hotels": {
+      "tokyo": 10,
+      "osaka": 2,
+      "kyoto": 0,
+      "seoul": 5,
+      "busan": 0,
+      "taipei": 5
+    },
+    "taipei_public_options": 16
+  }
+}
