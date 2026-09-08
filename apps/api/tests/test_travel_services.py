@@ -71,6 +71,7 @@ def test_destination_offer_accepts_all_catalog_destinations_and_rejects_unknown(
             target_url="https://www.klook.com/city/1/",
         )
     assert set(BRANDS["kiwi"].supported_modules) == {"flight"}
+    assert not BRANDS["kiwi"].api_supported
 
 
 def test_destination_offer_requires_fresh_brand_offer_and_matching_module() -> None:

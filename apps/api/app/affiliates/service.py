@@ -125,7 +125,9 @@ class TravelpayoutsLinkClient:
         digest = hashlib.sha256(
             f"{target}|{sub_id}|{self.settings.travelpayouts_marker}|{self.settings.travelpayouts_project_id}|{cache_context}|{hashlib.sha256(self.settings.travelpayouts_api_token.encode()).hexdigest()}".encode()
         ).hexdigest()
-        cache_key = f"affiliate:travelpayouts:link:{digest}"
+        # Request auditable full links. The old namespace can contain branded
+        # tpx.gr shorteners that fail our allowed-host and redirect checks.
+        cache_key = f"affiliate:travelpayouts:full-link:{digest}"
         cached = await self.redis.get(cache_key)
         if cached:
             return str(cached)
@@ -155,7 +157,7 @@ class TravelpayoutsLinkClient:
             payload = {
                 "trs": int(self.settings.travelpayouts_project_id),
                 "marker": int(self.settings.travelpayouts_marker),
-                "shorten": True,
+                "shorten": False,
                 "links": [{"url": target, "sub_id": sub_id}],
             }
             if self.client is not None:
