@@ -243,7 +243,10 @@ async def test_destination_offer_admin_public_and_clickout(
         "app.affiliates.router.TravelpayoutsLinkClient.create",
         AsyncMock(return_value="https://klook.tp.st/fixture"),
     )
-    clickout = await client.post(public.json()["options"][0]["clickout_url"])
+    clickout_path = public.json()["options"][0]["clickout_url"].removeprefix(
+        "/api/travel"
+    )
+    clickout = await client.post(clickout_path)
     assert clickout.status_code == 303
     click = await session.scalar(
         select(AffiliateClick).where(AffiliateClick.offer_id == UUID(pending["id"]))
