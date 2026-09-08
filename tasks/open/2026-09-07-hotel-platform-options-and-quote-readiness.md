@@ -1,24 +1,17 @@
 ---
 id: 2026-09-07-hotel-platform-options-and-quote-readiness
 title: Hotel platform options and quote readiness
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: codex
+claimed_at: 2026-09-08T00:07:29Z
 created_at: 2026-09-07T12:32:44Z
 completed_at:
 branch: codex/hotel-content-review-kyoto
 depends_on: []
 scope:
-  - apps/api/app/travel_services
-  - apps/api/app/models.py
-  - apps/api/migrations/versions
-  - apps/api/tests
-  - apps/web/components/travel-services
-  - apps/web/messages
-  - apps/web/e2e
-  - apps/web/app/api/travel
+  - apps/api/tests/test_hotel_content_package.py
   - docs/hotel-platforms
 ---
 
