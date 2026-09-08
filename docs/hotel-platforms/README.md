@@ -23,6 +23,13 @@ no city yet satisfies official plus two approved OTA links for every hotel.
 Earlier dated review files and pending import inputs are historical evidence, not a
 live-state synchronization source. Never replay pending packages over reviewed rows.
 
+PR #352 subsequently merged at `f65890a` after latest-main checks. The newest checkpoint
+is `review-2026-09-08-kyoto-five.md`: five Rakuten candidate additions, seven platform
+approvals, one failed link review preserved pending, and a sourced Hyatt Regency Kyoto
+future-closure hold (May 9, 2027). Still 60 identities / 17 approved products; platform
+options are now 48 approved / 312 pending. Kyoto remains publicly empty without reviewed
+locations, and the prior Tokyo/Osaka public counts and rollout settings are unchanged.
+
 `0057_hotel_booking_options` migrates legacy links into independent reviewed identities.
 Products and trip associations retain their IDs. `facts.hotel_links` is accepted/projected
 for old clients, but never stored as a second authority. New imports use a JSON

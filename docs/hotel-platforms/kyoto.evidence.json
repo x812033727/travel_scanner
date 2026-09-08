@@ -474,15 +474,14 @@
         {
           "provider": "rakuten",
           "searched_on": "2026-09-08",
-          "query": "The Royal Park Hotel Kyoto Sanjo",
+          "query": "site.expedia.com \"The Royal Park Hotel Kyoto Sanjo\" \"Hotel-Information\"",
+          "discovery_note": "This cross-domain result appeared in the recorded Expedia-targeted query; the returned Rakuten primary page was then opened. It was not a separate Rakuten-domain search.",
           "searched_domains": [
-            "agoda.com",
-            "expedia.com",
-            "travel.rakuten.com"
+            "expedia.com"
           ],
-          "candidate_url": null,
-          "status": "unconfirmed",
-          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/10123456796386",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 The Royal Park Hotel Kyoto Sanjo 京都飯店專頁，ID 取自實際 URL；完整門牌及即時落地身份未核實，仍待審，不保存房價、評論、照片或依名稱推算 ID。"
         }
       ],
       "review_blockers": [
@@ -554,15 +553,13 @@
         {
           "provider": "rakuten",
           "searched_on": "2026-09-08",
-          "query": "Mitsui Garden Hotel Kyoto Shijo",
+          "query": "site.travel.rakuten.com \"Mitsui Garden Hotel Kyoto Shijo\"",
           "searched_domains": [
-            "agoda.com",
-            "expedia.com",
             "travel.rakuten.com"
           ],
-          "candidate_url": null,
-          "status": "unconfirmed",
-          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456863505",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 Mitsui Garden Hotel Kyoto Shijo 京都飯店專頁，ID 取自實際 URL；完整門牌及即時落地身份未核實，仍待審，不保存房價、評論、照片或依名稱推算 ID。"
         }
       ],
       "review_blockers": [
@@ -634,22 +631,30 @@
         {
           "provider": "rakuten",
           "searched_on": "2026-09-08",
-          "query": "Hyatt Regency Kyoto",
+          "query": "site.travel.rakuten.com \"Hyatt Regency Kyoto\"",
           "searched_domains": [
-            "agoda.com",
-            "expedia.com",
             "travel.rakuten.com"
           ],
-          "candidate_url": null,
-          "status": "unconfirmed",
-          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456795882",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 Hyatt Regency Kyoto 京都飯店專頁，ID 取自實際 URL；完整門牌及即時落地身份未核實，仍待審，不保存房價、評論、照片或依名稱推算 ID。官方已公告於 2027-05-09 結束營業；尚無營業日期限制，暫不核准導購。公告：https://orix-realestate.co.jp/news/pdf/press_20260409.pdf"
         }
       ],
       "review_blockers": [
         "licensed_coordinates_missing",
         "exact_google_place_id_missing",
-        "independent_product_and_option_review"
-      ]
+        "independent_product_and_option_review",
+        "future_closure_date_guard_missing"
+      ],
+      "operating_notice": {
+        "status": "future_closure_announced",
+        "ends_on": "2027-05-09",
+        "announced_on": "2026-04-09",
+        "source_url": "https://orix-realestate.co.jp/news/pdf/press_20260409.pdf",
+        "publisher": "オリックス不動産株式会社",
+        "review_hold": true,
+        "reason": "Current catalog has no operating-date restriction; retain all booking options and product pending until date-aware safety or a replacement is reviewed. This is not a claim that the hotel is already closed."
+      }
     },
     {
       "source_key": "editorial:kyoto:celestine-kyoto-gion",
@@ -714,15 +719,13 @@
         {
           "provider": "rakuten",
           "searched_on": "2026-09-08",
-          "query": "Hotel The Celestine Kyoto Gion",
+          "query": "site.travel.rakuten.com \"Celestine Kyoto Gion\"",
           "searched_domains": [
-            "agoda.com",
-            "expedia.com",
             "travel.rakuten.com"
           ],
-          "candidate_url": null,
-          "status": "unconfirmed",
-          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456795210",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 Hotel The Celestine Kyoto Gion 京都飯店專頁，ID 取自實際 URL；完整門牌及即時落地身份未核實，仍待審，不保存房價、評論、照片或依名稱推算 ID。"
         }
       ],
       "review_blockers": [
@@ -794,15 +797,13 @@
         {
           "provider": "rakuten",
           "searched_on": "2026-09-08",
-          "query": "The Westin Miyako Kyoto",
+          "query": "site.travel.rakuten.com \"Westin Miyako Kyoto\"",
           "searched_domains": [
-            "agoda.com",
-            "expedia.com",
             "travel.rakuten.com"
           ],
-          "candidate_url": null,
-          "status": "unconfirmed",
-          "note": "2026-09-08 已將此平台納入飯店名稱搜尋；精準飯店落地頁／門牌尚待核實，不代表未販售。未核實 URL 僅留在研究證據，不作公開入口。"
+          "candidate_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_kyoto/cty_kyoto_city/10123456795704",
+          "status": "identity_candidate_pending_browser_review",
+          "note": "2026-09-08 找到 Rakuten Travel 國際站 The Westin Miyako Kyoto 京都飯店專頁，ID 取自實際 URL；完整門牌及即時落地身份未核實，仍待審，不保存房價、評論、照片或依名稱推算 ID。"
         }
       ],
       "review_blockers": [
