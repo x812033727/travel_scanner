@@ -1,7 +1,7 @@
 from typing import Annotated, Any
 
 from fastapi import APIRouter, Depends
-from sqlalchemy import func, select
+from sqlalchemy import func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import AdminUser, can_deploy_user
@@ -12,6 +12,7 @@ from app.models import (
     HotspotGuide,
     TravelFood,
     TravelHotspot,
+    TravelServiceProduct,
     User,
 )
 
@@ -65,30 +66,57 @@ async def dashboard(user: AdminUser, session: Session) -> dict[str, Any]:
             "guides_pending": await _count(
                 session, HotspotGuide, HotspotGuide.review_status == "pending"
             ),
+            "hotspots_total": await _count(session, TravelHotspot),
+            "foods_total": await _count(session, TravelFood),
+            "merchants_total": await _count(session, FoodMerchant),
+            "hotspots_missing_location": await _count(
+                session, TravelHotspot,
+                or_(TravelHotspot.latitude.is_(None), TravelHotspot.longitude.is_(None))
+            ),
+            "hotels_total": await _count(
+                session, TravelServiceProduct, TravelServiceProduct.kind == "hotel"
+            ),
+            "hotels_pending": await _count(
+                session, TravelServiceProduct,
+                TravelServiceProduct.kind == "hotel", TravelServiceProduct.status == "pending"
+            ),
+            "hotels_without_options": await _count(
+                session, TravelServiceProduct,
+                TravelServiceProduct.kind == "hotel", ~TravelServiceProduct.hotel_options.any()
+            ),
         },
         "quick_actions": [
-            {"id": "review_hotspots", "href": "/admin/hotspots", "count_key": "hotspots_pending"},
+            {
+                "id": "review_hotspots",
+                "href": "/admin/hotspots?tab=review&section=manual",
+                "count_key": "hotspots_pending",
+            },
             {
                 "id": "review_foods",
-                "href": "/admin/foods#dishes",
+                "href": "/admin/foods?tab=review&section=dishes",
                 "count_key": "foods_pending",
             },
             {
                 "id": "review_merchants",
-                "href": "/admin/foods#merchants",
+                "href": "/admin/foods?tab=review&section=merchants",
                 "count_key": "merchants_pending",
             },
             {
                 "id": "review_guides",
-                "href": "/admin/hotspots#guides",
+                "href": "/admin/hotspots?tab=content&section=guides",
                 "count_key": "guides_pending",
             },
             {
                 "id": "categorise_merchants",
-                "href": "/admin/foods?taxonomy=missing_area",
+                "href": "/admin/foods?tab=catalog&section=merchants&taxonomy=missing_area",
                 "count_key": "merchants_missing_area",
             },
             {"id": "manage_users", "href": "/admin/users", "count_key": "users"},
+            {
+                "id": "review_hotels",
+                "href": "/admin/hotels?tab=review&section=products",
+                "count_key": "hotels_pending",
+            },
         ],
         "can_deploy": can_deploy_user(user),
     }

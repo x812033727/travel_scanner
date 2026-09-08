@@ -1,7 +1,8 @@
 from __future__ import annotations
 
+import hashlib
 from datetime import UTC, datetime, timedelta
-from typing import Any, cast
+from typing import Any, Literal, cast
 from uuid import UUID
 
 import httpx
@@ -80,6 +81,23 @@ def record(row: Any) -> dict[str, Any]:
     return {column.name: getattr(row, column.name) for column in row.__table__.columns}
 
 
+async def locked_catalog_config(session: Session) -> TravelServiceConfig | None:
+    # Both the hotel workspace and legacy catalog editor share this singleton.
+    # A transaction-scoped advisory lock also serializes the first insert, when
+    # SELECT FOR UPDATE cannot lock a row that does not exist yet.
+    lock_key = int.from_bytes(hashlib.sha256(b"travel-service-config:1").digest()[:8], signed=True)
+    await session.execute(select(func.pg_advisory_xact_lock(lock_key)))
+    return cast(
+        TravelServiceConfig | None,
+        await session.scalar(
+            select(TravelServiceConfig)
+            .where(TravelServiceConfig.id == 1)
+            .with_for_update()
+            .execution_options(populate_existing=True)
+        ),
+    )
+
+
 @router.get("")
 async def overview(
     user: AdminUser,
@@ -93,11 +111,51 @@ async def overview(
     offer_status: str | None = None,
     offer_brand_id: UUID | None = None,
     offer_review_due: bool = False,
+    exclude_hotels: bool = False,
+) -> dict[str, Any]:
+    return await overview_data(
+        session,
+        destination_id=destination_id,
+        type=type,
+        status=status,
+        offset=offset,
+        limit=limit,
+        affiliate_module=affiliate_module,
+        offer_status=offer_status,
+        offer_brand_id=offer_brand_id,
+        offer_review_due=offer_review_due,
+        domain="services" if exclude_hotels else None,
+    )
+
+
+async def overview_data(
+    session: Session,
+    *,
+    destination_id: str | None = None,
+    type: Kind | None = None,
+    status: str | None = None,
+    offset: int = 0,
+    limit: int = 60,
+    affiliate_module: AffiliateModule | None = None,
+    offer_status: str | None = None,
+    offer_brand_id: UUID | None = None,
+    offer_review_due: bool = False,
+    domain: Literal["hotels", "services"] | None = None,
+    missing_options: bool = False,
 ) -> dict[str, Any]:
     config, version = await catalog_config(session)
     settings = await load_runtime_settings(session)
     now = datetime.now(UTC)
     query = select(TravelServiceProduct)
+    if domain:
+        query = query.where(
+            TravelServiceProduct.kind == "hotel"
+            if domain == "hotels"
+            else TravelServiceProduct.kind != "hotel"
+        )
+    if domain == "hotels" and missing_options:
+        # Matches the dashboard's hotels_without_options count; not publication readiness.
+        query = query.where(~TravelServiceProduct.hotel_options.any())
     if destination_id:
         query = query.where(TravelServiceProduct.destination_id == destination_id)
     if type:
@@ -116,6 +174,8 @@ async def overview(
             )
         )
     )
+    if domain == "hotels":
+        brands = [b for b in brands if b.code in BRANDS and "hotel" in BRANDS[b.code].kinds]
     offers = list(
         await session.scalars(
             select(TravelServiceOffer).where(
@@ -124,6 +184,12 @@ async def overview(
         )
     )
     destination_offer_query = select(DestinationAffiliateOffer)
+    if domain:
+        destination_offer_query = destination_offer_query.where(
+            DestinationAffiliateOffer.module == "hotel"
+            if domain == "hotels"
+            else DestinationAffiliateOffer.module != "hotel"
+        )
     if destination_id:
         destination_offer_query = destination_offer_query.where(
             DestinationAffiliateOffer.destination_id == destination_id
@@ -155,11 +221,14 @@ async def overview(
             ).limit(500)
         )
     )
-    all_products = list(
-        await session.scalars(
-            select(TravelServiceProduct).where(TravelServiceProduct.status == "approved")
+    approved_query = select(TravelServiceProduct).where(TravelServiceProduct.status == "approved")
+    if domain:
+        approved_query = approved_query.where(
+            TravelServiceProduct.kind == "hotel"
+            if domain == "hotels"
+            else TravelServiceProduct.kind != "hotel"
         )
-    )
+    all_products = list(await session.scalars(approved_query))
     coverage = []
     for city in CITIES:
         from app.travel_services.hotel_options import needs_source_credit
@@ -219,13 +288,65 @@ async def overview(
                 and len(areas) >= 2,
             }
         )
+    if domain == "hotels":
+        for entry in coverage:
+            entry["complete"] = entry["hotel_complete"]
+    imports_query = select(TravelServiceImport)
+    if domain == "hotels":
+        imports_query = imports_query.where(TravelServiceImport.source == "hotel_csv")
+    elif domain == "services":
+        imports_query = imports_query.where(TravelServiceImport.source != "hotel_csv")
     imports = list(
         await session.scalars(
-            select(TravelServiceImport).order_by(TravelServiceImport.created_at.desc()).limit(20)
+            imports_query.order_by(TravelServiceImport.created_at.desc()).limit(20)
         )
     )
+    config_data = config.model_dump()
+    if domain == "hotels":
+        # Shared publishing/city gates are read-only context, never hotel PATCH fields.
+        config_data = {
+            "public_enabled": config.public_enabled,
+            "enabled_destinations": config.enabled_destinations,
+            "enabled_kinds": ["hotel"] if "hotel" in config.enabled_kinds else [],
+            "direct_hotel_links_enabled": config.direct_hotel_links_enabled,
+            "hotel_quote_policies": config_data["hotel_quote_policies"],
+        }
+    click_query = (
+        select(func.count())
+        .select_from(AffiliateClick)
+        .where(AffiliateClick.service_type.is_not(None))
+    )
+    booked_query = (
+        select(func.count())
+        .select_from(TripServiceSelection)
+        .where(TripServiceSelection.status == "booked")
+    )
+    if domain:
+        click_query = click_query.where(
+            AffiliateClick.service_type == "hotel"
+            if domain == "hotels"
+            else AffiliateClick.service_type != "hotel"
+        )
+        booked_query = booked_query.join(
+            TravelServiceProduct, TripServiceSelection.product_id == TravelServiceProduct.id
+        ).where(
+            TravelServiceProduct.kind == "hotel"
+            if domain == "hotels"
+            else TravelServiceProduct.kind != "hotel"
+        )
+    summary: dict[str, int] = {}
+    if domain == "hotels":
+        counts_by_status = await session.execute(
+            select(TravelServiceProduct.status, func.count())
+            .where(TravelServiceProduct.kind == "hotel")
+            .group_by(TravelServiceProduct.status)
+        )
+        summary = {"pending": 0, "approved": 0, "disabled": 0}
+        summary.update({status: count for status, count in counts_by_status})
+        summary["total"] = sum(summary.values())
     return {
-        "config": config.model_dump(),
+        "summary": summary,
+        "config": config_data,
         "version": version,
         "products": [
             {
@@ -268,6 +389,7 @@ async def overview(
                 "api_supported": b.api_supported,
             }
             for code, b in BRANDS.items()
+            if domain != "hotels" or "hotel" in b.kinds
         },
         "project_id": settings.travelpayouts_project_id,
         "network_configured": bool(
@@ -303,16 +425,8 @@ async def overview(
                 .select_from(HotelBookingClick)
                 .where(HotelBookingClick.fallback.is_(True))
             ),
-            "outbound_clicks": await session.scalar(
-                select(func.count())
-                .select_from(AffiliateClick)
-                .where(AffiliateClick.service_type.is_not(None))
-            ),
-            "self_reported_booked": await session.scalar(
-                select(func.count())
-                .select_from(TripServiceSelection)
-                .where(TripServiceSelection.status == "booked")
-            ),
+            "outbound_clicks": await session.scalar(click_query),
+            "self_reported_booked": await session.scalar(booked_query),
             "confirmed_commission": None,
         },
     }
@@ -320,10 +434,9 @@ async def overview(
 
 @router.put("/config")
 async def put_config(payload: ConfigInput, user: AdminUser, session: Session) -> dict[str, Any]:
-    row = await session.scalar(
-        select(TravelServiceConfig).where(TravelServiceConfig.id == 1).with_for_update()
-    )
+    row = await locked_catalog_config(session)
     if payload.version != (row.version if row else 0):
+        await session.rollback()
         raise fail("service_version_conflict", 409)
     data = payload.model_dump(exclude={"version"})
     if row:
@@ -702,9 +815,7 @@ async def _review_destination_offer_row(
                 and settings.travelpayouts_project_id
             ):
                 raise fail("service_brand_unavailable")
-            target = row.static_url or await TravelpayoutsLinkClient(
-                get_redis(), settings
-            ).create(
+            target = row.static_url or await TravelpayoutsLinkClient(get_redis(), settings).create(
                 row.target_url,
                 "dst_verify",
                 cache_context=f"destination-verify:{row.id}:{row.version}",
@@ -786,12 +897,21 @@ async def review_destination_offer(
 
 @router.post("/imports/preview")
 async def preview_import(payload: CsvInput, user: AdminUser, session: Session) -> dict[str, Any]:
+    return await preview_import_data(payload, user, session)
+
+
+async def preview_import_data(
+    payload: CsvInput, user: AdminUser, session: Session, *, hotel_only: bool = False
+) -> dict[str, Any]:
     rows = parse_csv(payload.csv)
     seen = set()
     for item in rows:
         if "error" in item:
             continue
         data = ProductInput.model_validate(item["product"])
+        if hotel_only and data.kind != "hotel":
+            item["error"] = "service_import_scope_mismatch"
+            continue
         if data.source_key in seen:
             item["error"] = "service_csv_invalid"
             continue
@@ -799,6 +919,9 @@ async def preview_import(payload: CsvInput, user: AdminUser, session: Session) -
         existing = await session.scalar(
             select(TravelServiceProduct).where(TravelServiceProduct.source_key == data.source_key)
         )
+        if existing is not None and existing.kind != data.kind:
+            item["error"] = "service_source_kind_mismatch"
+            continue
         item["change"] = "new" if existing is None else "modified"
         if existing and product_input(existing) == data and not item.get("booking_options"):
             item["change"] = "unchanged"
@@ -814,7 +937,11 @@ async def preview_import(payload: CsvInput, user: AdminUser, session: Session) -
             else []
         )
     run = TravelServiceImport(
-        actor_id=user.id, source="csv", status="preview", rows_json=rows, result_json={}
+        actor_id=user.id,
+        source="hotel_csv" if hotel_only else "csv",
+        status="preview",
+        rows_json=rows,
+        result_json={},
     )
     session.add(run)
     await session.flush()

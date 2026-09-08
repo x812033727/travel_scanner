@@ -1,169 +1,58 @@
 "use client";
 
-import {
-  ArrowRight,
-  ClipboardCheck,
-  Database,
-  LoaderCircle,
-  Soup,
-  UsersRound,
-} from "lucide-react";
+import { ArrowRight, Database, Hotel, LoaderCircle, Soup } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { api } from "@/lib/api";
+import { adminDomainsCopy } from "@/lib/admin-domains-copy";
 
-type Dashboard = {
-  counts: Record<string, number>;
-  quick_actions: { id: string; href: string; count_key: string }[];
-  can_deploy: boolean;
-};
-const cards = [
-  {
-    key: "hotspots_public",
-    label: "公開景點",
-    icon: Database,
-    color: "bg-emerald-50 text-emerald-800",
-  },
-  {
-    key: "foods_public",
-    label: "公開料理",
-    icon: Soup,
-    color: "bg-orange-50 text-orange-800",
-  },
-  {
-    key: "users",
-    label: "會員總數",
-    icon: UsersRound,
-    color: "bg-sky-50 text-sky-800",
-  },
-  {
-    key: "review_queue",
-    label: "待審工作",
-    icon: ClipboardCheck,
-    color: "bg-rose-50 text-rose-800",
-  },
-] as const;
-const actionLabels: Record<string, string> = {
-  review_hotspots: "審核景點候選",
-  review_foods: "審核料理目錄",
-  review_merchants: "審核美食店家",
-  review_guides: "審核景點介紹",
-  categorise_merchants: "補齊店家區域",
-  manage_users: "管理會員與次數",
-};
-
+type Dashboard = { counts: Record<string, number>; can_deploy: boolean };
 export function AdminDashboard() {
+  const copy = adminDomainsCopy(useLocale());
   const [data, setData] = useState<Dashboard>();
   const [error, setError] = useState("");
   useEffect(() => {
-    api<Dashboard>("/admin/dashboard")
-      .then(setData)
-      .catch((reason: Error) => setError(reason.message));
+    let cancelled = false;
+    api<Dashboard>("/admin/dashboard").then((result) => { if (!cancelled) setData(result); }).catch((reason: Error) => { if (!cancelled) setError(reason.message); });
+    return () => { cancelled = true; };
   }, []);
-  if (error)
-    return (
-      <p role="alert" className="rounded-2xl bg-red-50 p-5 text-red-800">
-        {error}
-      </p>
-    );
-  if (!data)
-    return (
-      <p className="flex items-center gap-2 text-[var(--muted)]">
-        <LoaderCircle className="animate-spin" size={18} />
-        載入營運摘要…
-      </p>
-    );
+  if (error) return <p role="alert" className="rounded-2xl border border-[var(--line)] bg-[var(--coral-soft)] p-5 text-[var(--ink)]">{error}</p>;
+  if (!data) return <p role="status" className="mt-6 flex items-center gap-2 text-[var(--muted)]"><LoaderCircle aria-hidden className="animate-spin motion-reduce:animate-none" size={18} />{copy.loading}</p>;
   const counts = data.counts ?? {};
-  const reviewTotal =
-    (counts.hotspots_pending ?? 0) +
-    (counts.foods_pending ?? 0) +
-    (counts.merchants_pending ?? 0) +
-    (counts.guides_pending ?? 0);
-  const publishedTotal = (counts.hotspots_public ?? 0) + (counts.foods_public ?? 0);
-  const publicationRate =
-    publishedTotal + reviewTotal > 0
-      ? Math.round((publishedTotal / (publishedTotal + reviewTotal)) * 100)
-      : 100;
-  return (
-    <div className="mt-7 grid gap-6">
-      <section className="grid grid-cols-2 gap-3 xl:grid-cols-4">
-        {cards.map((card) => {
-          const Icon = card.icon;
-          return (
-            <article
-              key={card.key}
-              className="rounded-3xl border border-[var(--line)] bg-white p-5 shadow-[var(--shadow-sm)]"
-            >
-              <span
-                className={`grid h-11 w-11 place-items-center rounded-2xl ${card.color}`}
-              >
-                <Icon size={20} />
-              </span>
-              <p className="mt-5 text-sm text-[var(--muted)]">{card.label}</p>
-              <strong className="mt-1 block text-3xl">
-                {card.key === "review_queue"
-                  ? reviewTotal
-                  : (counts[card.key] ?? 0)}
-              </strong>
-            </article>
-          );
-        })}
-      </section>
-      <section className="rounded-3xl border border-[var(--line)] bg-white p-5 md:p-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-xl font-bold">今天要處理</h2>
-            <p className="mt-1 text-sm text-[var(--muted)]">
-              把待審項目集中成清楚的工作入口。
-            </p>
-          </div>
-          {/* --coral-soft flips to a dark brown in dark mode; a literal dark red on top of
-              it measured 2.34:1. --coral is the token that follows it. */}
-          <span className="rounded-full bg-[var(--coral-soft)] px-3 py-1 text-xs font-bold text-[var(--coral)]">
-            {reviewTotal} 待審
-          </span>
-        </div>
-        <div className="mt-5 grid gap-2">
-          {data.quick_actions?.map((action) => (
-            <Link
-              key={action.id}
-              href={action.href}
-              className="flex min-h-14 items-center rounded-2xl bg-[var(--paper)] px-4 font-semibold transition hover:-translate-y-0.5 hover:shadow-sm"
-            >
-              <span className="mr-auto">
-                {actionLabels[action.id] ?? action.id}
-              </span>
-              <span className="mr-3 rounded-full bg-white px-2.5 py-1 text-xs">
-                {counts[action.count_key] ?? 0}
-              </span>
-              <ArrowRight size={18} />
-            </Link>
-          ))}
-        </div>
-      </section>
-      <section className="grid gap-4 rounded-3xl border border-[var(--line)] bg-[var(--ink)] p-5 text-white md:grid-cols-[1fr_auto] md:items-center md:p-6">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[.14em] text-emerald-200">
-            Content pulse
-          </p>
-          <h2 className="mt-2 text-xl font-bold">公開內容進度</h2>
-          <p className="mt-1 text-sm text-white/65">
-            以目前公開與待審的景點、料理及介紹候選計算。
-          </p>
-          <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/15">
-            <span
-              className="block h-full rounded-full bg-emerald-300"
-              style={{ width: `${publicationRate}%` }}
-            />
-          </div>
-        </div>
-        <div className="rounded-2xl bg-white/10 px-5 py-4 text-center">
-          <strong className="block text-3xl">{publicationRate}%</strong>
-          <span className="text-xs text-white/65">
-            {publishedTotal} 筆已公開
-          </span>
-        </div>
-      </section>
-    </div>
-  );
+  const groups = [
+    { key: "hotspots", title: copy.hotspots, icon: Database, total: "hotspots_total", rows: [
+      { key: "hotspots_pending", label: copy.hotspotsPending, href: "/admin/hotspots?tab=review&section=manual" },
+      { key: "guides_pending", label: copy.guidesPending, href: "/admin/hotspots?tab=content&section=guides" },
+      { key: "hotspots_missing_location", label: copy.missingLocation, href: "/admin/hotspots?tab=places&section=identity&missing_location=true" },
+    ] },
+    { key: "foods", title: copy.foods, icon: Soup, total: null, rows: [
+      { key: "foods_pending", label: copy.foodsPending, href: "/admin/foods?tab=review&section=dishes" },
+      { key: "merchants_pending", label: copy.merchantsPending, href: "/admin/foods?tab=review&section=merchants" },
+      { key: "merchants_missing_area", label: copy.missingArea, href: "/admin/foods?tab=catalog&section=merchants&taxonomy=missing_area" },
+      { key: "merchants_missing_category", label: copy.missingCategory, href: "/admin/foods?tab=catalog&section=merchants&taxonomy=missing_category" },
+    ] },
+    { key: "hotels", title: copy.hotels, icon: Hotel, total: "hotels_total", rows: [
+      { key: "hotels_pending", label: copy.hotelsPending, href: "/admin/hotels?tab=review&section=products" },
+      { key: "hotels_without_options", label: copy.missingBookingLinks, href: "/admin/hotels?tab=review&section=platforms&missing_options=true" },
+    ] },
+  ];
+  return <div className="mt-7 grid items-start gap-4 xl:grid-cols-3">
+    {groups.map((group) => {
+      const Icon = group.icon;
+      const count = (key: string) => counts[key] == null ? "—" : counts[key].toLocaleString();
+      return <section key={group.key} aria-labelledby={"overview-" + group.key} className="min-w-0 rounded-3xl border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]">
+        <div className="flex items-center gap-3"><span className="grid h-11 w-11 place-items-center rounded-2xl bg-[var(--teal-soft)] text-[var(--teal-dark)]"><Icon aria-hidden size={22} /></span><h2 id={"overview-" + group.key} className="text-xl font-bold">{group.title}</h2></div>
+        <dl className="my-5 grid gap-2 border-b border-[var(--line)] pb-5">
+          {group.total ? <div><dt className="text-sm text-[var(--muted)]">{copy.total}</dt><dd className="mt-1 text-3xl font-bold tabular-nums">{count(group.total)}</dd></div> : <>
+            <div className="flex justify-between"><dt>{copy.merchants}</dt><dd className="font-bold tabular-nums">{count("merchants_total")}</dd></div>
+            <div className="flex justify-between"><dt>{copy.dishes}</dt><dd className="font-bold tabular-nums">{count("foods_total")}</dd></div>
+          </>}
+        </dl>
+        <h3 className="mb-3 text-sm font-semibold text-[var(--muted)]">{copy.actions}</h3>
+        <div className="grid gap-2">{group.rows.map((row) => <Link key={row.key} href={row.href} className="flex min-h-12 items-center justify-between gap-3 rounded-xl bg-[var(--paper)] px-3 py-2 text-sm hover:text-[var(--teal-dark)] focus-visible:outline-2 focus-visible:outline-[var(--teal)]"><span>{row.label}</span><span className="font-bold tabular-nums">{count(row.key)}</span></Link>)}</div>
+        <Link href={"/admin/" + group.key} className="mt-5 flex min-h-11 items-center justify-between rounded-xl border border-[var(--line)] px-3 text-sm font-semibold">{copy.openWorkspace}<ArrowRight aria-hidden size={17} /></Link>
+      </section>;
+    })}
+  </div>;
 }

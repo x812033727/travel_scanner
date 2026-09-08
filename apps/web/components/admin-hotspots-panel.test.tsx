@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { AdminHotspotsPanel } from "./admin-hotspots-panel";
+import { hotspotIdentityListHref } from "@/lib/admin-catalog-copy";
 
 const item = {
   id: "11111111-1111-4111-8111-111111111111",
@@ -48,6 +49,63 @@ const listing = {
 };
 
 describe("AdminHotspotsPanel", () => {
+  it.each([{ initialHotspotId: item.id }, { initialMissingLocation: true }])("offers a way out of canonical location filters %o", async (props) => {
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify(listing))));
+    render(<AdminHotspotsPanel initialStatus="" {...props} />);
+    await screen.findByText(item.name);
+    expect(screen.getByRole("link", { name: "顯示全部地點" }).getAttribute("href")).toBe("/admin/hotspots?tab=places&section=identity");
+  });
+
+  it("clears only identity filters and preserves unrelated search parameters", () => {
+    const href = hotspotIdentityListHref(new URLSearchParams({
+      tab: "places", section: "identity", hotspot_id: item.id, missing_location: "true", country: "JP", q: "Atomic Bomb", provider: "google_maps",
+    }));
+    const params = new URL(href, "https://test.local").searchParams;
+    expect(params.has("hotspot_id")).toBe(false);
+    expect(params.has("missing_location")).toBe(false);
+    expect(params.get("country")).toBe("JP");
+    expect(params.get("q")).toBe("Atomic Bomb");
+    expect(params.get("provider")).toBe("google_maps");
+    expect(params.get("tab")).toBe("places");
+    expect(params.get("section")).toBe("identity");
+  });
+
+  it.each(["", "pending"])("sends the requested catalog/review status %s", async (initialStatus) => {
+    const fetchMock = vi.fn<(input: RequestInfo | URL, init?: RequestInit) => Promise<Response>>(
+      async () => new Response(JSON.stringify(listing)),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminHotspotsPanel initialStatus={initialStatus} />);
+    await screen.findByText(item.name);
+    const url = new URL(String(fetchMock.mock.calls[0][0]), "https://test.local");
+    expect(url.searchParams.get("status")).toBe(initialStatus || null);
+  });
+
+  it("jumps from catalog to the one location editor without opening an inline editor", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify(listing))));
+    render(<AdminHotspotsPanel initialStatus="" locationEditing="link" />);
+    await screen.findByText(item.name);
+    expect(screen.getByRole("link", { name: "管理精準地點" }).getAttribute("href")).toBe(
+      `/admin/hotspots?tab=places&section=identity&hotspot_id=${item.id}`,
+    );
+    expect(screen.queryByRole("button", { name: "編輯地點" })).toBeNull();
+    expect(screen.queryByLabelText("Google Place ID")).toBeNull();
+  });
+
+  it("constrains the canonical editor by exact ID and missing-coordinate filters", async () => {
+    const fetchMock = vi.fn<(input: RequestInfo | URL, init?: RequestInit) => Promise<Response>>(
+      async () => new Response(JSON.stringify(listing)),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminHotspotsPanel initialStatus="" initialHotspotId={item.id} initialMissingLocation />);
+    await screen.findByText(item.name);
+    const url = new URL(String(fetchMock.mock.calls[0][0]), "https://test.local");
+    expect(url.searchParams.get("hotspot_id")).toBe(item.id);
+    expect(url.searchParams.get("missing_location")).toBe("true");
+    fireEvent.click(screen.getByRole("button", { name: "編輯地點" }));
+    expect(screen.getByLabelText("Google Place ID")).toBeTruthy();
+  });
+
   it("saves an exact reviewed place with durable coordinates", async () => {
     const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input);

@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
 from app.auth.service import AdminUser
+from app.catalog_review.scope import SCOPE_KINDS, CatalogScope, request_scope
 from app.catalog_review.service import (
     ApplyRequest,
     StartRequest,
@@ -41,8 +42,10 @@ async def enqueue_saved_run(session: AsyncSession, run: CatalogReviewRun) -> Non
 
 
 @router.get("")
-async def catalog_overview(user: AdminUser, session: Session) -> dict[str, Any]:
-    return await overview(session, await load_runtime_settings(session))
+async def catalog_overview(
+    user: AdminUser, session: Session, scope: CatalogScope | None = None
+) -> dict[str, Any]:
+    return await overview(session, await load_runtime_settings(session), scope)
 
 
 @router.post("/runs", status_code=202)
@@ -59,8 +62,10 @@ async def start_catalog_run(
 
 
 @router.get("/runs/{run_id}")
-async def read_catalog_run(run_id: UUID, user: AdminUser, session: Session) -> dict[str, Any]:
-    return await run_view(session, await get_run(session, run_id))
+async def read_catalog_run(
+    run_id: UUID, user: AdminUser, session: Session, scope: CatalogScope | None = None
+) -> dict[str, Any]:
+    return await run_view(session, await get_run(session, run_id, scope=scope))
 
 
 @router.get("/runs/{run_id}/items")
@@ -70,20 +75,22 @@ async def catalog_items(
     session: Session,
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=30, ge=1, le=100),
+    scope: CatalogScope | None = None,
 ) -> dict[str, Any]:
-    await get_run(session, run_id)
+    run = await get_run(session, run_id, scope=scope)
+    kinds = SCOPE_KINDS[request_scope(run.request_json)]
     total = int(
         await session.scalar(
             select(func.count())
             .select_from(CatalogReviewItem)
-            .where(CatalogReviewItem.run_id == run_id)
+            .where(CatalogReviewItem.run_id == run_id, CatalogReviewItem.kind.in_(kinds))
         )
         or 0
     )
     rows = (
         await session.scalars(
             select(CatalogReviewItem)
-            .where(CatalogReviewItem.run_id == run_id)
+            .where(CatalogReviewItem.run_id == run_id, CatalogReviewItem.kind.in_(kinds))
             .order_by(CatalogReviewItem.created_at, CatalogReviewItem.id)
             .offset((page - 1) * page_size)
             .limit(page_size)
@@ -99,9 +106,11 @@ async def catalog_items(
 
 
 @router.post("/runs/{run_id}/resume", status_code=202)
-async def resume_catalog_run(run_id: UUID, user: AdminUser, session: Session) -> dict[str, Any]:
+async def resume_catalog_run(
+    run_id: UUID, user: AdminUser, session: Session, scope: CatalogScope | None = None
+) -> dict[str, Any]:
     await enforce_named_rate_limit("catalog-resume", str(user.id), limit=6, window_seconds=3600)
-    run = await prepare_resume(session, run_id, user.id)
+    run = await prepare_resume(session, run_id, user.id, scope=scope)
     await enqueue_saved_run(session, run)
     return await run_view(session, run)
 
@@ -113,5 +122,6 @@ async def apply_catalog_run(
     user: AdminUser,
     session: Session,
     idempotency_key: IdempotencyKey,
+    scope: CatalogScope | None = None,
 ) -> dict[str, Any]:
-    return await apply_decisions(session, run_id, user.id, payload, idempotency_key)
+    return await apply_decisions(session, run_id, user.id, payload, idempotency_key, scope=scope)

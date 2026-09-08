@@ -2,9 +2,12 @@
 
 import { Check, EyeOff, Gauge, KeyRound, LoaderCircle, PlugZap, RefreshCw, Save, ShieldCheck, Trash2 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { useRouter } from "@/i18n/navigation";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Link, useRouter } from "@/i18n/navigation";
 import { ApiError, api } from "@/lib/api";
+import { useHeaderSession } from "@/components/header-session";
+import { adminSettingsCopy } from "@/lib/admin-settings-copy";
+import { domainSettingsDependencies, isDomainSettingsScope, settingsHref, settingsOwner, type AdminSettingsScope } from "@/lib/admin-settings-ownership";
 
 type Scalar = string | number | boolean;
 type SecretState = { configured: boolean; masked?: string | null; source: string };
@@ -80,9 +83,13 @@ type ProviderView = {
 };
 type Audit = { id: string; action: string; target: string; metadata: Record<string, unknown>; created_at: string };
 type Snapshot = { providers: ProviderView[]; audit: Audit[]; encryption_source: string };
-type Draft = { enabled: boolean; config: Record<string, string>; secrets: Record<string, string>; clearSecrets: string[]; customFields: string[] };
+type Draft = { base: ProviderView; enabled: boolean; config: Record<string, string>; secrets: Record<string, string>; clearSecrets: string[]; customFields: string[] };
+// App-router Back/Forward does not fire beforeunload and cannot be cancelled by
+// popstate. Keep drafts in memory across route unmounts, never browser storage.
+// The session identity isolates new logins, even for the same account, without
+// treating a currency/profile update as a login. Logout releases the old key.
+const routeDrafts = new WeakMap<object, Map<AdminSettingsScope, Record<string, Draft>>>();
 type FieldMeta = { label?: string; type?: "text" | "number" | "url" | "boolean"; options?: FieldOption[]; help?: string; localized?: boolean; allowCustom?: boolean; emptyOption?: "inheritPlanner" | "inheritGuideSearch" };
-type AdminSettingsScope = "providers" | "system" | "layout";
 type ProviderCategory = "auth" | "ai" | "maps" | "content" | "travelData" | "affiliate" | "other";
 
 const providerCategories: ProviderCategory[] = ["auth", "ai", "maps", "content", "travelData", "affiliate", "other"];
@@ -355,12 +362,34 @@ function auditSummary(metadata: Record<string, unknown>): string {
 
 function makeDrafts(snapshot: Snapshot): Record<string, Draft> {
   return Object.fromEntries(snapshot.providers.map((provider) => [provider.provider, {
+    base: provider,
     enabled: provider.enabled,
     config: Object.fromEntries(Object.entries(provider.config).map(([key, value]) => [key, value == null ? "" : String(value)])),
     secrets: Object.fromEntries(Object.keys(provider.secrets).map((key) => [key, ""])),
     clearSecrets: [],
     customFields: [],
   }]));
+}
+
+function isDraftDirty(draft: Draft): boolean {
+  return draft.enabled !== draft.base.enabled
+    || Object.entries(draft.config).some(([key, value]) => value !== (draft.base.config[key] == null ? "" : String(draft.base.config[key])))
+    || Object.values(draft.secrets).some((value) => Boolean(value.trim()))
+    || draft.clearSecrets.length > 0;
+}
+
+function ownedChanges(draft: Draft, scope: AdminSettingsScope) {
+  const provider = draft.base.provider;
+  const config = Object.fromEntries(Object.entries(draft.config)
+    .filter(([key, value]) => settingsOwner(provider, "config", key) === scope && value !== (draft.base.config[key] == null ? "" : String(draft.base.config[key])))
+    .map(([key, value]) => [key, value.trim() === "" ? null : valueForApi(key, value)]));
+  const secrets: Record<string, string | null> = {};
+  for (const [key, value] of Object.entries(draft.secrets)) {
+    if (settingsOwner(provider, "secret", key) === scope && value.trim()) secrets[key] = value.trim();
+  }
+  for (const key of draft.clearSecrets) if (settingsOwner(provider, "secret", key) === scope) secrets[key] = null;
+  const enabled = hasEnableToggle(provider) && settingsOwner(provider, "enabled") === scope && draft.enabled !== draft.base.enabled ? draft.enabled : undefined;
+  return { config, secrets, ...(enabled === undefined ? {} : { enabled }) };
 }
 
 function valueForApi(key: string, value: string): Scalar {
@@ -610,10 +639,18 @@ function loadFailure(reason: unknown): LoadFailure {
   };
 }
 
-export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSettingsScope }) {
+export function AdminSettingsPanel({ scope = "providers", provider: linkedProvider, field: linkedField }: { scope?: AdminSettingsScope; provider?: string; field?: string }) {
   const t = useTranslations("admin");
+  const copy = adminSettingsCopy(useLocale());
+  const { sessionIdentity } = useHeaderSession();
   const { dateTime } = useFormatters();
   const router = useRouter();
+  const panelRef = useRef<HTMLDivElement>(null);
+  const focusedLink = useRef<string | undefined>(undefined);
+  const latestDrafts = useRef<Record<string, Draft>>({});
+  const draftOwner = useRef<object | null | undefined>(undefined);
+  const discardOnLeave = useRef(false);
+  const snapshotEpoch = useRef(0);
   const [snapshot, setSnapshot] = useState<Snapshot>();
   const [drafts, setDrafts] = useState<Record<string, Draft>>({});
   const [loadError, setLoadError] = useState<LoadFailure>();
@@ -622,29 +659,107 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
   const [actionError, setActionError] = useState<string>();
   const [usageRefreshing, setUsageRefreshing] = useState(false);
   const [activePanel, setActivePanel] = useState<string>();
+  const [conflictProvider, setConflictProvider] = useState<string>();
+  const dirty = Object.values(drafts).some(isDraftDirty);
 
-  const applySnapshot = useCallback((result: Snapshot) => {
+  const applySnapshot = useCallback((result: Snapshot, resetProvider?: string) => {
+    const sameSession = draftOwner.current === sessionIdentity;
+    draftOwner.current = sessionIdentity;
+    const retained = sessionIdentity ? routeDrafts.get(sessionIdentity)?.get(scope) : undefined;
+    if (sessionIdentity) routeDrafts.get(sessionIdentity)?.delete(scope);
     setSnapshot(result);
-    setDrafts(makeDrafts(result));
+    setDrafts((current) => {
+      const fresh = makeDrafts(result);
+      for (const [name, draft] of Object.entries({ ...retained, ...(sameSession ? current : {}) })) {
+        // A usage refresh or another provider's save must not advance a dirty
+        // draft's version token or replace its edits with the latest snapshot.
+        if (fresh[name] && name !== resetProvider && isDraftDirty(draft)) fresh[name] = draft;
+      }
+      return fresh;
+    });
     setActivePanel((current) => current || result.providers.find((provider) => provider.provider !== "runtime" && provider.provider !== "layout")?.provider);
-  }, []);
+  }, [scope, sessionIdentity]);
+  const applySnapshotRef = useRef(applySnapshot);
+  useEffect(() => { applySnapshotRef.current = applySnapshot; }, [applySnapshot]);
+
+  useEffect(() => { latestDrafts.current = drafts; }, [drafts]);
+  useEffect(() => () => {
+    if (!sessionIdentity) return;
+    const retained = Object.fromEntries(Object.entries(latestDrafts.current).filter(([, draft]) => isDraftDirty(draft)));
+    if (discardOnLeave.current || !Object.keys(retained).length) { routeDrafts.get(sessionIdentity)?.delete(scope); return; }
+    const byScope = routeDrafts.get(sessionIdentity) || new Map<AdminSettingsScope, Record<string, Draft>>();
+    byScope.set(scope, retained);
+    routeDrafts.set(sessionIdentity, byScope);
+  }, [scope, sessionIdentity]);
 
   useEffect(() => {
     let active = true;
     api<Snapshot>("/admin/provider-settings")
-      .then((result) => { if (active) applySnapshot(result); })
+      .then((result) => { if (active) applySnapshotRef.current(result); })
       .catch((reason: unknown) => { if (active) setLoadError(loadFailure(reason)); });
     return () => { active = false; };
-  }, [applySnapshot]);
+  }, [sessionIdentity]);
+
+  useEffect(() => {
+    if (!dirty) return;
+    const beforeUnload = (event: BeforeUnloadEvent) => { event.preventDefault(); event.returnValue = ""; };
+    const leavesPage = (url: string) => new URL(url, window.location.href).pathname !== window.location.pathname;
+    const confirmLeave = () => {
+      const accepted = window.confirm(copy.leave);
+      if (accepted) { discardOnLeave.current = true; if (sessionIdentity) routeDrafts.get(sessionIdentity)?.delete(scope); }
+      return accepted;
+    };
+    const beforeNavigate = (event: Event) => {
+      const url = (event as CustomEvent<{ url?: string }>).detail?.url;
+      if (!event.defaultPrevented && url && leavesPage(url) && !confirmLeave()) event.preventDefault();
+    };
+    const click = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const anchor = event.target instanceof Element ? event.target.closest("a[href]") : null;
+      if (!(anchor instanceof HTMLAnchorElement) || anchor.target === "_blank" || anchor.hasAttribute("download")) return;
+      if (leavesPage(anchor.href) && !confirmLeave()) { event.preventDefault(); event.stopPropagation(); }
+    };
+    window.addEventListener("beforeunload", beforeUnload);
+    window.addEventListener("admin:before-navigate", beforeNavigate);
+    document.addEventListener("click", click, true);
+    return () => {
+      window.removeEventListener("beforeunload", beforeUnload);
+      window.removeEventListener("admin:before-navigate", beforeNavigate);
+      document.removeEventListener("click", click, true);
+    };
+  }, [dirty, copy.leave, scope, sessionIdentity]);
+
+  useEffect(() => {
+    if (!snapshot) return;
+    const params = new URLSearchParams(window.location.search);
+    const name = linkedProvider ?? params.get("provider");
+    const field = linkedField ?? params.get("field");
+    if (!name || !snapshot.providers.some((item) => item.provider === name)) return;
+    const key = `${scope}:${name}:${field || ""}`;
+    if (focusedLink.current === key) return;
+    const frame = requestAnimationFrame(() => {
+      if (scope === "providers" && activePanel !== name) { setActivePanel(name); return; }
+      const candidates = panelRef.current?.querySelectorAll<HTMLElement>("[data-settings-provider]");
+      const target = Array.from(candidates || []).find((item) => item.dataset.settingsProvider === name && (!field || item.dataset.settingsField === field));
+      if (!target) return;
+      focusedLink.current = key;
+      target.scrollIntoView?.({ block: "center" });
+      (target.querySelector<HTMLElement>("input, select, button, a, h2") || target).focus();
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [snapshot, scope, linkedProvider, linkedField, activePanel]);
 
   function retryLoad() {
     setLoadError(undefined);
     api<Snapshot>("/admin/provider-settings")
-      .then(applySnapshot)
+      .then((result) => applySnapshot(result))
       .catch((reason: unknown) => setLoadError(loadFailure(reason)));
   }
 
   function patchDraft(provider: string, patch: Partial<Draft>) {
+    // Only a new user edit cancels their earlier discard decision. Late reads
+    // must not revive credentials the user explicitly chose to abandon.
+    discardOnLeave.current = false;
     setDrafts((current) => ({ ...current, [provider]: { ...current[provider], ...patch } }));
   }
 
@@ -679,36 +794,48 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
   }
 
   async function refreshUsage() {
+    const epoch = snapshotEpoch.current;
     setUsageRefreshing(true); setActionError(undefined);
     try {
-      setSnapshot(await api<Snapshot>("/admin/provider-settings"));
+      const refreshed = await api<Snapshot>("/admin/provider-settings");
+      // A slow read started before a save must not roll its acknowledged value
+      // and version token back to the pre-save snapshot.
+      if (epoch === snapshotEpoch.current) applySnapshot(refreshed);
     } catch (reason) { setActionError((reason as Error).message); }
     finally { setUsageRefreshing(false); }
   }
 
   async function save(provider: ProviderView) {
     const draft = drafts[provider.provider];
+    const changes = ownedChanges(draft, scope);
+    if (!Object.keys(changes.config).length && !Object.keys(changes.secrets).length && changes.enabled === undefined) return;
     setBusyProvider(provider.provider); setActionError(undefined); setNotice(undefined);
-    const secrets: Record<string, string | null> = {};
-    for (const [key, value] of Object.entries(draft.secrets)) if (value.trim()) secrets[key] = value.trim();
-    for (const key of draft.clearSecrets) secrets[key] = null;
     try {
-      const config = Object.fromEntries(Object.entries(draft.config).map(([key, value]) => [key, value.trim() === "" ? null : valueForApi(key, value)]));
-      const partialConfig = !hasEnableToggle(provider.provider);
-      const submittedConfig = partialConfig
-        ? Object.fromEntries(Object.entries(config).filter(([key, value]) => value !== provider.config[key]))
-        : config;
       const result = await api<Snapshot>(`/admin/provider-settings/${provider.provider}`, {
         method: "PUT",
-        body: JSON.stringify({
-          enabled: partialConfig ? true : draft.enabled,
-          config: submittedConfig,
-          secrets,
-        }),
+        body: JSON.stringify({ ...changes, expected_updated_at: draft.base.updated_at ?? null }),
       });
-      setSnapshot(result); setDrafts(makeDrafts(result));
+      snapshotEpoch.current += 1;
+      applySnapshot(result, provider.provider);
+      setConflictProvider(undefined);
       setNotice(provider.provider === "runtime" ? t("settingsPanel.runtimeSaved") : provider.provider === "layout" ? t("layout.saveSuccess") : t("settingsPanel.providerSaved", { label: provider.label }));
       if (provider.provider === "layout") router.refresh();
+    } catch (reason) {
+      if (reason instanceof ApiError && reason.status === 409) {
+        setConflictProvider(provider.provider); setActionError(copy.conflict);
+      } else setActionError((reason as Error).message);
+    }
+    finally { setBusyProvider(undefined); }
+  }
+
+  async function reloadConflict() {
+    if (!conflictProvider || !window.confirm(copy.discard)) return;
+    setBusyProvider(conflictProvider);
+    try {
+      const refreshed = await api<Snapshot>("/admin/provider-settings");
+      snapshotEpoch.current += 1;
+      applySnapshot(refreshed, conflictProvider);
+      setConflictProvider(undefined); setActionError(undefined);
     } catch (reason) { setActionError((reason as Error).message); }
     finally { setBusyProvider(undefined); }
   }
@@ -717,11 +844,12 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
     setBusyProvider(provider.provider); setActionError(undefined); setNotice(undefined);
     try {
       const result = await api<{ status: string; message: string; latency_ms: number }>(`/admin/provider-settings/${provider.provider}/test`, { method: "POST" });
+      snapshotEpoch.current += 1;
       const resultMessage = t("settingsPanel.testResult", { message: result.message, latency: result.latency_ms });
       if (result.status === "success") setNotice(resultMessage);
       else setActionError(resultMessage);
       const refreshed = await api<Snapshot>("/admin/provider-settings");
-      setSnapshot(refreshed); setDrafts(makeDrafts(refreshed));
+      applySnapshot(refreshed);
     } catch (reason) { setActionError((reason as Error).message); }
     finally { setBusyProvider(undefined); }
   }
@@ -737,13 +865,15 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
   if (!snapshot) return <p className="mt-8 flex items-center gap-2 text-[var(--muted)]"><LoaderCircle className="animate-spin" size={18} />{t("settingsPanel.loading")}</p>;
 
   const visibleProviders = snapshot.providers.filter((provider) => {
+    if (isDomainSettingsScope(scope)) return settingsOwner(provider.provider, "enabled") === scope
+      || Object.keys(provider.config).some((field) => settingsOwner(provider.provider, "config", field) === scope);
     if (scope === "system") return provider.provider === "runtime";
     if (scope === "layout") return provider.provider === "layout";
     return provider.provider !== "runtime" && provider.provider !== "layout";
   });
-  const visibleAudit = snapshot.audit.filter((item) =>
-    scope === "system" ? item.target === "runtime" : scope === "layout" ? item.target === "layout" : item.target !== "runtime" && item.target !== "layout"
-  );
+  const visibleAudit = snapshot.audit.filter((item) => visibleProviders.some((provider) => provider.provider === item.target));
+  const sharedDependencies = isDomainSettingsScope(scope)
+    ? snapshot.providers.filter((item) => domainSettingsDependencies[scope].includes(item.provider)) : [];
   const auditPanel = "__audit";
   const categoryGroups = providerCategories
     .map((category) => ({ category, providers: visibleProviders.filter((provider) => (providerCategoryOf[provider.provider] || "other") === category) }))
@@ -778,10 +908,13 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
     requestAnimationFrame(() => document.getElementById(`${idPrefix}-${next}`)?.focus());
   }
 
-  return <div className="mt-8 space-y-6">
+  return <div ref={panelRef} className="mt-8 space-y-6">
     {scope === "providers" && <section className="grid gap-4 rounded-[1.75rem] border border-[var(--line)] bg-[var(--ink)] p-6 text-white md:grid-cols-[auto_1fr] md:items-center"><ShieldCheck size={32} className="text-emerald-200" /><div><h2 className="font-bold">{t("settingsPanel.secretsTitle")}</h2><p className="mt-1 text-sm leading-6 text-white/70">{t("settingsPanel.secretsHint", { source: snapshot.encryption_source })}</p></div></section>}
     {notice && <p role="status" className="flex items-center gap-2 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800"><Check size={17} />{notice}</p>}
     {actionError && <p role="alert" className="rounded-xl bg-red-50 p-4 text-sm text-red-800">{actionError}</p>}
+    {conflictProvider && <button type="button" onClick={reloadConflict} disabled={Boolean(busyProvider)} className="min-h-11 rounded-xl border border-[var(--line)] px-4 py-3 font-semibold">{copy.reload}</button>}
+    {dirty && <p role="status" className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">{copy.unsaved}</p>}
+    {sharedDependencies.length > 0 && <section className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5"><h2 className="font-bold">{copy.shared}</h2><ul className="mt-3 grid gap-3 md:grid-cols-2">{sharedDependencies.map((item) => <li key={item.provider} className="rounded-xl border border-[var(--line)] bg-[var(--surface)] p-4"><p className="font-semibold">{item.label} · {item.configured ? copy.configured : copy.missing}</p><p className="mt-1 text-sm text-[var(--muted)]">{item.status_message}</p><Link href={settingsHref("providers", item.provider, Object.keys(item.secrets)[0])} className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--teal)] underline">{copy.scopes.providers}</Link></li>)}</ul></section>}
 
     {scope === "providers" && <>
       <div className="grid gap-3 md:hidden">
@@ -822,9 +955,23 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
       const busy = busyProvider === provider.provider;
       const usage = provider.usage;
       const internal = provider.provider === "runtime" || provider.provider === "layout";
-      const configFields = visibleConfigFields(provider, draft);
+      const canEnable = hasEnableToggle(provider.provider) && settingsOwner(provider.provider, "enabled") === scope;
+      const configFields = visibleConfigFields(provider, draft).filter((field) => settingsOwner(provider.provider, "config", field) === scope);
+      const deepField = linkedField ?? (typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("field") : null);
+      if (deepField && deepField in provider.config && settingsOwner(provider.provider, "config", deepField) === scope && !configFields.includes(deepField)) configFields.push(deepField);
+      const secretFields = Object.entries(provider.secrets).filter(([field]) => settingsOwner(provider.provider, "secret", field) === scope);
+      const references = [
+        ...Object.keys(provider.config).filter((field) => settingsOwner(provider.provider, "config", field) !== scope).map((field) => ({ field, owner: settingsOwner(provider.provider, "config", field), value: String(provider.config[field] ?? "—") })),
+        ...Object.entries(provider.secrets).filter(([field]) => settingsOwner(provider.provider, "secret", field) !== scope).map(([field, secret]) => ({ field, owner: settingsOwner(provider.provider, "secret", field), value: secret.configured ? copy.configured : copy.missing })),
+        ...(hasEnableToggle(provider.provider) && !canEnable ? [{ field: "enabled", owner: settingsOwner(provider.provider, "enabled"), value: provider.enabled ? t("settingsPanel.enable") : t("settingsPanel.statusDisabled") }] : []),
+      ];
+      const changes = ownedChanges(draft, scope);
+      const changed = Object.keys(changes.config).length > 0 || Object.keys(changes.secrets).length > 0 || changes.enabled !== undefined;
+      const editable = canEnable || configFields.length > 0 || secretFields.length > 0;
       return <section key={provider.provider} id={scope === "providers" ? `provider-panel-${provider.provider}` : undefined} role={scope === "providers" ? "tabpanel" : undefined} aria-labelledby={scope === "providers" ? `provider-tab-${provider.provider}` : undefined} className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm md:p-7">
-        <div className="flex flex-wrap items-start justify-between gap-4"><div className="max-w-2xl"><div className="flex flex-wrap items-center gap-2"><h2 className="text-xl font-bold">{provider.label}</h2><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(provider.status)}`}>{provider.status === "ready" ? t("settingsPanel.statusReady") : provider.status === "disabled" ? t("settingsPanel.statusDisabled") : provider.status === "test_required" ? t("settingsPanel.statusTestRequired") : provider.status === "unverified" ? t("settingsPanel.statusUnverified") : provider.status === "error" ? t("settingsPanel.statusError") : t("settingsPanel.statusPending")}</span></div><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{provider.description}</p><p className="mt-1 text-xs font-semibold text-[var(--teal)]">{provider.status_message}</p>{!internal && <p className="mt-2 text-xs text-[var(--muted)]">{t("settingsPanel.recentCalls", { requests: provider.requests_24h || 0, errors: provider.errors_24h || 0 })}{provider.last_error_at ? t("settingsPanel.lastFailure", { time: dateTime.format(new Date(provider.last_error_at)) }) : ""}</p>}</div>{hasEnableToggle(provider.provider) && <label className="flex items-center gap-2 rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-semibold"><input type="checkbox" checked={draft.enabled} onChange={(event) => patchDraft(provider.provider, { enabled: event.target.checked })} />{t("settingsPanel.enable")}</label>}</div>
+        <div data-settings-provider={provider.provider} className="flex flex-wrap items-start justify-between gap-4"><div className="max-w-2xl"><div className="flex flex-wrap items-center gap-2"><h2 tabIndex={-1} className="text-xl font-bold">{provider.label}</h2><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(provider.status)}`}>{provider.status === "ready" ? t("settingsPanel.statusReady") : provider.status === "disabled" ? t("settingsPanel.statusDisabled") : provider.status === "test_required" ? t("settingsPanel.statusTestRequired") : provider.status === "unverified" ? t("settingsPanel.statusUnverified") : provider.status === "error" ? t("settingsPanel.statusError") : t("settingsPanel.statusPending")}</span></div><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{provider.description}</p><p className="mt-1 text-xs font-semibold text-[var(--teal)]">{provider.status_message}</p>{!internal && <p className="mt-2 text-xs text-[var(--muted)]">{t("settingsPanel.recentCalls", { requests: provider.requests_24h || 0, errors: provider.errors_24h || 0 })}{provider.last_error_at ? t("settingsPanel.lastFailure", { time: dateTime.format(new Date(provider.last_error_at)) }) : ""}</p>}</div>{canEnable && <label data-settings-provider={provider.provider} data-settings-field="enabled" className="flex min-h-11 items-center gap-2 rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-semibold"><input type="checkbox" disabled={busy} checked={draft.enabled} onChange={(event) => patchDraft(provider.provider, { enabled: event.target.checked })} />{t("settingsPanel.enable")}</label>}</div>
+
+        {references.length > 0 && <div className="mt-4 space-y-2">{Array.from(new Set(references.map((item) => item.owner))).map((owner) => <details key={owner} open={references.some((item) => item.owner === owner && item.field === deepField)} className="rounded-xl border border-[var(--line)] bg-[var(--paper)] px-4"><summary className="min-h-11 cursor-pointer py-3 text-sm font-semibold">{copy.managedIn} {copy.scopes[owner]} · {references.filter((item) => item.owner === owner).length}</summary><ul className="divide-y divide-[var(--line)] pb-3">{references.filter((item) => item.owner === owner).map((item) => <li key={item.field} data-settings-provider={provider.provider} data-settings-field={item.field} className="flex flex-wrap items-center justify-between gap-x-4 py-2 text-sm"><span className="min-w-0 break-words">{item.field === "enabled" ? t("settingsPanel.enable") : item.field in provider.secrets ? secretMeta(t, item.field).label : provider.provider === "layout" ? t(`layout.fields.${item.field}.label`) : fieldMeta[item.field]?.localized ? t(`providerFields.${item.field}.label`) : fieldMeta[item.field]?.label || item.field} · {item.value}</span><Link href={settingsHref(owner, provider.provider, item.field)} className="inline-flex min-h-11 shrink-0 items-center font-semibold text-[var(--teal)] underline">{copy.scopes[owner]}</Link></li>)}</ul></details>)}</div>}
 
         {provider.provider === "google_maps" && usage && <GoogleUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "naver_maps" && usage && <NaverUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
@@ -833,23 +980,25 @@ export function AdminSettingsPanel({ scope = "providers" }: { scope?: AdminSetti
         {provider.provider === "odsay" && usage && <OdsayUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "youtube_guides" && usage && <YouTubeUsagePanel usage={usage} automaticSearchBudget={Number(provider.config.hotspot_guide_youtube_daily_search_budget || 80)} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
 
+        <fieldset disabled={busy} className="min-w-0">
         {configFields.length > 0 && <div className="mt-6 grid gap-4 md:grid-cols-2">{configFields.map((field) => {
           const meta: FieldMeta = fieldMeta[field] || {};
           const label = provider.provider === "layout" ? t(`layout.fields.${field}.label`) : meta.localized ? t(`providerFields.${field}.label`) : meta.label || field;
           const help = provider.provider === "layout" ? t(`layout.fields.${field}.help`) : meta.localized ? optionalMessage(t, `providerFields.${field}.help`) : meta.help;
           const sourceBadge = provider.config_sources[field] === "database" ? t("settingsPanel.sourceDatabase") : t("settingsPanel.sourceEnvironment");
-          if (meta.type === "boolean") return <label key={field} className="flex items-start gap-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 md:col-span-2"><input type="checkbox" role="switch" checked={draft.config[field] === "true"} onChange={(event) => patchConfig(provider.provider, field, String(event.target.checked))} className="mt-1" /><span><span className="font-semibold">{label}</span><span className="ml-2 text-xs font-normal text-[var(--muted)]">{sourceBadge}</span>{help && <span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted)]">{help}</span>}</span></label>;
+          if (meta.type === "boolean") return <label key={field} data-settings-provider={provider.provider} data-settings-field={field} className="flex min-h-11 items-start gap-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 md:col-span-2"><input type="checkbox" role="switch" checked={draft.config[field] === "true"} onChange={(event) => patchConfig(provider.provider, field, String(event.target.checked))} className="mt-1" /><span><span className="font-semibold">{label}</span><span className="ml-2 text-xs font-normal text-[var(--muted)]">{sourceBadge}</span>{help && <span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted)]">{help}</span>}</span></label>;
           const value = draft.config[field];
           const serverOptions = provider.field_options?.[field];
           const options = serverOptions?.length ? [...(meta.emptyOption ? [{ value: "", label: t(`providerFields.${meta.emptyOption}`) }] : []), ...serverOptions] : meta.options;
           const custom = Boolean(options && meta.allowCustom && (draft.customFields.includes(field) || !options.some((option) => option.value === value)));
           const selected = options?.find((option) => option.value === value);
-          return <div key={field} className="text-sm font-semibold"><label className="block">{label}<span className="ml-2 text-xs font-normal text-[var(--muted)]">{sourceBadge}</span>{options ? <select value={custom ? customOption : value} onChange={(event) => selectOption(provider.provider, field, event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-normal">{options.map((option) => <option key={option.value} value={option.value}>{option.label ?? t(`providerFields.${field}.options.${option.value}`)}</option>)}{meta.allowCustom && <option value={customOption}>{t("providerFields.custom")}</option>}</select> : <input type={meta.type || "text"} step={meta.type === "number" ? "any" : undefined} value={value} onChange={(event) => patchConfig(provider.provider, field, event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] px-3 py-3 font-normal" />}</label>{custom && <input type="text" value={value} onChange={(event) => patchConfig(provider.provider, field, event.target.value)} aria-label={t("providerFields.customInputLabel", { field: label })} placeholder={t("providerFields.customPlaceholder")} className="mt-2 w-full rounded-xl border border-[var(--line)] px-3 py-3 font-mono text-sm font-normal" />}{help && <span className="mt-1 block text-xs font-normal text-[var(--muted)]">{help}</span>}{selected?.description && <span className="mt-1 block text-xs font-normal text-[var(--muted)]">{selected.description}</span>}</div>;
+          return <div key={field} data-settings-provider={provider.provider} data-settings-field={field} className="text-sm font-semibold"><label className="block">{label}<span className="ml-2 text-xs font-normal text-[var(--muted)]">{sourceBadge}</span>{options ? <select value={custom ? customOption : value} onChange={(event) => selectOption(provider.provider, field, event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-normal">{options.map((option) => <option key={option.value} value={option.value}>{option.label ?? t(`providerFields.${field}.options.${option.value}`)}</option>)}{meta.allowCustom && <option value={customOption}>{t("providerFields.custom")}</option>}</select> : <input type={meta.type || "text"} step={meta.type === "number" ? "any" : undefined} value={value} onChange={(event) => patchConfig(provider.provider, field, event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] px-3 py-3 font-normal" />}</label>{custom && <input type="text" value={value} onChange={(event) => patchConfig(provider.provider, field, event.target.value)} aria-label={t("providerFields.customInputLabel", { field: label })} placeholder={t("providerFields.customPlaceholder")} className="mt-2 w-full rounded-xl border border-[var(--line)] px-3 py-3 font-mono text-sm font-normal" />}{help && <span className="mt-1 block text-xs font-normal text-[var(--muted)]">{help}</span>}{selected?.description && <span className="mt-1 block text-xs font-normal text-[var(--muted)]">{selected.description}</span>}</div>;
         })}</div>}
 
-        {Object.keys(provider.secrets).length > 0 && <div className="mt-6"><h3 className="flex items-center gap-2 text-sm font-bold"><KeyRound size={16} className="text-[var(--teal)]" />{t("settingsPanel.secretsHeading")}</h3><div className="mt-3 grid gap-4 md:grid-cols-2">{Object.entries(provider.secrets).map(([field, secret]) => { const meta = secretMeta(t, field); const clearing = draft.clearSecrets.includes(field); return <div key={field} className="rounded-2xl bg-[var(--paper)] p-4"><label className="text-sm font-semibold">{meta.label}<input type="password" autoComplete="off" value={draft.secrets[field]} onChange={(event) => patchSecret(provider.provider, field, event.target.value)} placeholder={secret.masked || t("settingsPanel.secretPlaceholder")} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-mono text-sm font-normal" /></label><div className="mt-2 flex items-center justify-between gap-3 text-xs text-[var(--muted)]"><span className="flex items-center gap-1"><EyeOff size={13} />{clearing ? t("settingsPanel.clearAfterSave") : sourceName(t, secret.source)}</span>{secret.source === "database" && !clearing && <button type="button" onClick={() => clearSecret(provider.provider, field)} className="flex items-center gap-1 font-semibold text-red-700"><Trash2 size={13} />{t("settingsPanel.clear")}</button>}</div>{meta.help && <p className="mt-2 text-xs leading-5 text-[var(--muted)]">{meta.help}</p>}</div>; })}</div></div>}
+        {secretFields.length > 0 && <div className="mt-6"><h3 className="flex items-center gap-2 text-sm font-bold"><KeyRound size={16} className="text-[var(--teal)]" />{t("settingsPanel.secretsHeading")}</h3><div className="mt-3 grid gap-4 md:grid-cols-2">{secretFields.map(([field, secret]) => { const meta = secretMeta(t, field); const clearing = draft.clearSecrets.includes(field); return <div key={field} data-settings-provider={provider.provider} data-settings-field={field} className="rounded-2xl bg-[var(--paper)] p-4"><label className="text-sm font-semibold">{meta.label}<input type="password" autoComplete="off" value={draft.secrets[field]} onChange={(event) => patchSecret(provider.provider, field, event.target.value)} placeholder={secret.masked || t("settingsPanel.secretPlaceholder")} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-mono text-sm font-normal" /></label><div className="mt-2 flex items-center justify-between gap-3 text-xs text-[var(--muted)]"><span className="flex items-center gap-1"><EyeOff size={13} />{clearing ? t("settingsPanel.clearAfterSave") : sourceName(t, secret.source)}</span>{secret.source === "database" && !clearing && <button type="button" onClick={() => clearSecret(provider.provider, field)} className="flex min-h-11 items-center gap-1 font-semibold text-red-700"><Trash2 size={13} />{t("settingsPanel.clear")}</button>}</div>{meta.help && <p className="mt-2 text-xs leading-5 text-[var(--muted)]">{meta.help}</p>}</div>; })}</div></div>}
+        </fieldset>
 
-        <div className="mt-6 flex flex-wrap items-center gap-3"><button type="button" onClick={() => save(provider)} disabled={Boolean(busyProvider)} className="flex items-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3 text-sm font-semibold text-white disabled:opacity-50">{busy ? <LoaderCircle size={16} className="animate-spin" /> : <Save size={16} />}{t("settingsPanel.saveSettings")}</button>{!internal && <button type="button" onClick={() => testConnection(provider)} disabled={Boolean(busyProvider) || (hasEnableToggle(provider.provider) && !draft.enabled)} className="flex items-center gap-2 rounded-xl border border-[var(--line)] px-5 py-3 text-sm font-semibold disabled:opacity-40"><PlugZap size={16} />{t("settingsPanel.testConnection")}</button>}{!internal && <span className="text-xs text-[var(--muted)]">{t("settingsPanel.blankKeyHint")}</span>}</div>
+        {editable && <div className="mt-6 flex flex-wrap items-center gap-3"><button type="button" onClick={() => save(provider)} disabled={Boolean(busyProvider) || !changed} className="flex min-h-11 items-center gap-2 rounded-xl bg-[var(--teal)] px-5 py-3 text-sm font-semibold text-white disabled:opacity-50">{busy ? <LoaderCircle size={16} className="animate-spin" /> : <Save size={16} />}{t("settingsPanel.saveSettings")}</button>{!internal && scope === "providers" && <button type="button" onClick={() => testConnection(provider)} disabled={Boolean(busyProvider) || isDraftDirty(draft) || (hasEnableToggle(provider.provider) && !draft.enabled)} className="flex min-h-11 items-center gap-2 rounded-xl border border-[var(--line)] px-5 py-3 text-sm font-semibold disabled:opacity-40"><PlugZap size={16} />{t("settingsPanel.testConnection")}</button>}{secretFields.length > 0 && <span className="text-xs text-[var(--muted)]">{t("settingsPanel.blankKeyHint")}</span>}</div>}
         {provider.last_tested_at && <p className={`mt-4 rounded-xl px-4 py-3 text-sm ${statusClass(provider.last_test_status || "")}`}>{t("settingsPanel.lastTest", { time: dateTime.format(new Date(provider.last_tested_at)), message: provider.last_test_message ?? "" })}</p>}
       </section>;
     })}</div>

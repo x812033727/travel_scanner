@@ -854,6 +854,11 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
 ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     "en": {
         **OAUTH_ERROR_DETAILS["en"],
+        "catalog_scope_invalid": "The review scope is invalid. Select attractions or food.",
+        "catalog_scope_mismatch": "This review job belongs to another workspace.",
+        "provider_setting_conflict": (
+            "Settings were updated by another administrator. Reload before saving."
+        ),
         "merchant_style_changed": "This style review has changed. Reload it before saving.",
         "catalog_item_mismatch": "Some selected items do not belong to this review run",
         "catalog_receipt_limit": "This review run has reached its limit for applying results",
@@ -998,6 +1003,13 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ja": {
         **OAUTH_ERROR_DETAILS["ja"],
+        "catalog_scope_invalid": (
+            "審査範囲が正しくありません。観光スポットまたはグルメを選択してください。"
+        ),
+        "catalog_scope_mismatch": "この審査ジョブは別のワークスペースに属しています。",
+        "provider_setting_conflict": (
+            "別の管理者が設定を更新しました。再読み込みしてから保存してください。"
+        ),
         "merchant_style_changed": (
             "スタイル審査が更新されました。再読み込みしてから保存してください。"
         ),
@@ -1140,6 +1152,9 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ko": {
         **OAUTH_ERROR_DETAILS["ko"],
+        "catalog_scope_invalid": "검토 범위가 잘못되었습니다. 명소 또는 음식을 선택하세요.",
+        "catalog_scope_mismatch": "이 검토 작업은 다른 작업 공간에 속합니다.",
+        "provider_setting_conflict": "다른 관리자가 설정을 변경했습니다. 새로고침한 후 저장하세요.",
         "merchant_style_changed": "스타일 심사가 변경되었습니다. 다시 불러온 뒤 저장해 주세요.",
         "catalog_item_mismatch": "선택한 항목 중 일부가 이 검토 작업에 속하지 않습니다",
         "catalog_receipt_limit": "이 검토 작업의 결과 적용 횟수 한도에 도달했습니다",
@@ -1271,6 +1286,9 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "zh-TW": {
         **OAUTH_ERROR_DETAILS["zh-TW"],
+        "catalog_scope_invalid": "審核範圍不正確，請選擇景點或美食。",
+        "catalog_scope_mismatch": "這筆審核工作屬於其他工作區。",
+        "provider_setting_conflict": "設定已被其他管理員更新，請重新載入後再儲存。",
         "merchant_style_changed": "風格資料已變更，請重新載入後儲存。",
         "hotspot_not_found": "找不到這個景點",
         "unsupported_theme": "目前沒有這個主題",
@@ -1318,6 +1336,9 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "zh-CN": {
         **OAUTH_ERROR_DETAILS["zh-CN"],
+        "catalog_scope_invalid": "审核范围不正确，请选择景点或美食。",
+        "catalog_scope_mismatch": "此审核工作属于其他工作区。",
+        "provider_setting_conflict": "设置已被其他管理员更新，请重新加载后再保存。",
         "merchant_style_changed": "风格资料已变更，请重新加载后保存。",
         "catalog_item_mismatch": "部分选中项目不属于这次审核任务",
         "catalog_receipt_limit": "这次审核任务已达到应用结果的次数上限",

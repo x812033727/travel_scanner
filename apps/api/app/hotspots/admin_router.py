@@ -430,12 +430,20 @@ async def list_hotspot_candidates(
     status: Annotated[str | None, Query(max_length=24)] = None,
     country_code: Annotated[str | None, Query(min_length=2, max_length=2)] = None,
     category: Annotated[str | None, Query(max_length=32, pattern="^[a-z_]+$")] = None,
+    hotspot_id: UUID | None = None,
+    missing_location: bool = False,
     page: Annotated[int, Query(ge=1)] = 1,
     limit: Annotated[int, Query(ge=1, le=100)] = 30,
 ) -> dict[str, object]:
     _ = user
     # Keyed by dimension so each facet can drop only its own filter.
     filters: dict[str, Any] = {}
+    if hotspot_id:
+        filters["hotspot_id"] = TravelHotspot.id == hotspot_id
+    if missing_location:
+        filters["missing_location"] = or_(
+            TravelHotspot.latitude.is_(None), TravelHotspot.longitude.is_(None)
+        )
     if city_code:
         filters["city_code"] = TravelHotspot.city_code == city_code.upper()
     if destination_id:

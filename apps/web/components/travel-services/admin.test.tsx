@@ -9,12 +9,17 @@ import {
 } from "@testing-library/react";
 import { TravelServicesAdmin } from "./admin";
 import copy from "@/messages/zh-TW/travelServices.json";
+import { adminHotelsCopy } from "@/lib/admin-hotels-copy";
 
-const { request } = vi.hoisted(() => ({ request: vi.fn() }));
+const { request, router } = vi.hoisted(() => ({ request: vi.fn(), router: { replace: vi.fn() } }));
+vi.mock("next/navigation", () => ({ useSearchParams: () => null, usePathname: () => window.location.pathname }));
+vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: { id: "admin-test" }, status: "authenticated" }) }));
+vi.mock("@/components/admin-settings-panel", () => ({ AdminSettingsPanel: () => <div /> }));
 vi.mock("next-intl", async () => {
   const { createTranslator, createFormatter } =
     await vi.importActual<typeof import("next-intl")>("next-intl");
   return {
+    useLocale: () => "zh-TW",
     useTranslations: () =>
       createTranslator({ locale: "zh-TW", messages: copy }),
     useFormatter: () =>
@@ -26,6 +31,7 @@ vi.mock("@/lib/api", async (original) => ({
   api: request,
 }));
 vi.mock("@/i18n/navigation", () => ({
+  useRouter: () => router,
   Link: ({ href, children }: { href: string; children: React.ReactNode }) => (
     <a href={href}>{children}</a>
   ),
@@ -33,6 +39,8 @@ vi.mock("@/i18n/navigation", () => ({
 afterEach(() => {
   cleanup();
   vi.clearAllMocks();
+  window.history.replaceState(null, "", "/zh-TW/admin/travel-services");
+  sessionStorage.clear();
 });
 
 const product = {
@@ -81,7 +89,8 @@ const overview = {
 
 it("edits exact hotel links without a network account and preserves other reviewed facts", async () => {
   request.mockResolvedValue(overview);
-  render(<TravelServicesAdmin />);
+  window.history.replaceState(null, "", "/zh-TW/admin/hotels?tab=review&section=platforms");
+  render(<TravelServicesAdmin workspace="hotels" />);
   expect(
     await screen.findByText(copy.directIndependent, { exact: false }),
   ).toBeTruthy();
@@ -115,9 +124,10 @@ it("edits exact hotel links without a network account and preserves other review
 
 it("has an independent ordinary-link switch without enabling public destinations", async () => {
   request.mockResolvedValue(overview);
-  render(<TravelServicesAdmin />);
+  window.history.replaceState(null, "", "/zh-TW/admin/hotels");
+  render(<TravelServicesAdmin workspace="hotels" />);
   await screen.findByRole("heading", { name: product.title });
-  fireEvent.click(screen.getByRole("tab", { name: copy.config }));
+  fireEvent.click(screen.getByRole("tab", { name: adminHotelsCopy("zh-TW").settings }));
   fireEvent.click(screen.getByLabelText(copy.directEnabled));
   const checkbox = screen.getByLabelText(copy.directEnabled);
   fireEvent.click(
@@ -126,17 +136,17 @@ it("has an independent ordinary-link switch without enabling public destinations
     }),
   );
   await waitFor(() =>
-    expect(request.mock.calls.some(([, opts]) => opts?.method === "PUT")).toBe(
+    expect(request.mock.calls.some(([, opts]) => opts?.method === "PATCH")).toBe(
       true,
     ),
   );
   const [, options] = request.mock.calls.find(
-    ([, opts]) => opts?.method === "PUT",
+    ([, opts]) => opts?.method === "PATCH",
   )!;
-  expect(JSON.parse(options.body)).toMatchObject({
+  expect(JSON.parse(options.body)).toEqual({
     direct_hotel_links_enabled: true,
-    public_enabled: false,
-    enabled_destinations: [],
+    hotel_enabled: false,
+    hotel_quote_policies: {},
     version: 2,
   });
 });
@@ -165,7 +175,8 @@ it("loads saved identity evidence before an independent platform recheck", async
       },
     ],
   });
-  render(<TravelServicesAdmin />);
+  window.history.replaceState(null, "", "/zh-TW/admin/hotels?tab=review&section=platforms");
+  render(<TravelServicesAdmin workspace="hotels" />);
   fireEvent.click(await screen.findByText(copy.platformReview));
   expect(
     (screen.getByLabelText(copy.identityNote) as HTMLTextAreaElement).value,

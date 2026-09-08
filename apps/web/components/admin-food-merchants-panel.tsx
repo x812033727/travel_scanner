@@ -211,13 +211,16 @@ function orderedCategorySlugs(merchant: Merchant): string[] {
 
 export function AdminFoodMerchantsPanel({
   initialTaxonomy = "",
+  initialStatus = "",
 }: {
   initialTaxonomy?: MerchantTaxonomyFilter | "";
+  initialStatus?: string;
 } = {}) {
   const t = useTranslations("foodAdmin");
   const ta = useTranslations("admin");
   const ts = useTranslations("foods.styles");
   const [filterStyle, setFilterStyle] = useState("");
+  const [reviewStatus, setReviewStatus] = useState(initialStatus);
   const [styleStatus, setStyleStatus] = useState("pending");
   const [cities, setCities] = useState<FoodCity[]>([]);
   const [categories, setCategories] = useState<AdminCategory[]>([]);
@@ -235,7 +238,7 @@ export function AdminFoodMerchantsPanel({
   const [platformStatus, setPlatformStatus] = useState("");
   const [countryCode, setCountryCode] = useState("");
   const [query, setQuery] = useState("");
-  const filterSignature = [destination, countryCode, filterArea, filterCategory, filterStyle, styleStatus, mapStatus, officialData, platform, platformStatus, query, taxonomy].join("|");
+  const filterSignature = [destination, countryCode, filterArea, filterCategory, filterStyle, styleStatus, reviewStatus, mapStatus, officialData, platform, platformStatus, query, taxonomy].join("|");
   // The page number is only meaningful for the filters it was chosen under:
   // narrowing the list while on page 3 must not fetch page 3 of the new,
   // shorter result, so a changed filter silently reads as page 1.
@@ -262,6 +265,7 @@ export function AdminFoodMerchantsPanel({
 
   const load = useCallback(async () => {
     const params = new URLSearchParams({ limit: String(PAGE_SIZE), page: String(page) });
+    if (reviewStatus) params.set("status", reviewStatus);
     if (destination.trim()) params.set("destination_id", destination.trim());
     if (countryCode) params.set("country_code", countryCode);
     if (mapStatus) params.set("map_status", mapStatus);
@@ -280,10 +284,11 @@ export function AdminFoodMerchantsPanel({
     } catch (reason) {
       setMessage((reason as Error).message);
     }
-  }, [destination, countryCode, filterArea, filterCategory, filterStyle, styleStatus, mapStatus, officialData, platform, platformStatus, query, taxonomy, page]);
+  }, [destination, countryCode, filterArea, filterCategory, filterStyle, styleStatus, reviewStatus, mapStatus, officialData, platform, platformStatus, query, taxonomy, page]);
 
   useEffect(() => {
     const params = new URLSearchParams({ limit: String(PAGE_SIZE), page: String(page) });
+    if (reviewStatus) params.set("status", reviewStatus);
     if (destination.trim()) params.set("destination_id", destination.trim());
     if (countryCode) params.set("country_code", countryCode);
     if (mapStatus) params.set("map_status", mapStatus);
@@ -302,7 +307,7 @@ export function AdminFoodMerchantsPanel({
         setBatchCandidates([]);
       })
       .catch((reason: Error) => setMessage(reason.message));
-  }, [destination, countryCode, filterArea, filterCategory, filterStyle, styleStatus, mapStatus, officialData, platform, platformStatus, query, taxonomy, page]);
+  }, [destination, countryCode, filterArea, filterCategory, filterStyle, styleStatus, reviewStatus, mapStatus, officialData, platform, platformStatus, query, taxonomy, page]);
 
   useEffect(() => {
     loadCities()
@@ -672,6 +677,11 @@ export function AdminFoodMerchantsPanel({
             {ta("foodMerchantsPanel.description")}
           </p>
         </div>
+        <select aria-label={t("reviewStatus")} value={reviewStatus} onChange={(event) => setReviewStatus(event.target.value)}
+          className="min-h-11 rounded-xl border px-3">
+          <option value="">{t("allStatuses")}</option>
+          {(["pending", "approved", "rejected", "disabled"] as const).map((value) => <option key={value} value={value}>{t(`statuses.${value}`)}</option>)}
+        </select>
         <select aria-label={ts("label")} value={filterStyle} onChange={(event) => setFilterStyle(event.target.value)}
           className="min-h-11 rounded-xl border px-3">
           <option value="">{ts("all")}</option>
