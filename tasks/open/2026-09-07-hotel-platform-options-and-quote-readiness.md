@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-07T12:32:44Z
 completed_at:
-branch: codex/hotel-content-review-namba
+branch: codex/hotel-content-review-kyoto-links
 depends_on: []
 scope:
   - apps/api/tests/test_hotel_content_package.py
@@ -16,6 +16,51 @@ scope:
 ---
 
 # Hotel platform options and quote readiness
+
+## Latest: 2026-09-08 Kyoto five-platform continuation
+
+User authorized #352 merge and continued review. Main had advanced to aaa33f0 (#349);
+synced, reran all eight checks at 5f1e661 (PR 34183706585 / push 34183705002), verified
+CLEAN/MERGEABLE, then SHA-guarded merge to f65890ad76c7d6f3c47076e813e5e6cbebcec1e3.
+Continued from merged main on codex/hotel-content-review-kyoto-links. Original dirty
+worktree preserved. Post-merge CI 34184188769 is being checked separately; no new runtime
+fix or claim of remediation for unrelated smoke failures is part of this content batch.
+
+Chrome Intergate creation returned Debugger unattached; fresh inventory found the actual
+tab, but one reconnect timed out/reset. The computer-use skill stopped further retries.
+No new map/location reviews, coordinates, hotel identities or public city activation.
+
+Added five observed Rakuten international IDs/URLs for Royal Park Kyoto Sanjo, Mitsui
+Garden Kyoto Shijo, Hyatt Regency Kyoto, Celestine Gion and Westin Miyako; all pending.
+Full street/current landing identity is still unresolved. Shijo is not Shinmachi Bettei
+(excluded ID 10123456795625). Eight normal official/Trip reviews attempted: seven approved;
+Westin's saved Marriott link failed service_link_unavailable and rolled back, still
+pending/version 1/unchecked. No browser override or substituted URL used. Celestine's
+same-ID locale page supports Komatsucho 572 but lists inconsistent postcodes; official
+605-0933 is authoritative and provider postal-code data was not imported.
+
+Important content hold: ORIX Real Estate's 2026-04-09 official announcement confirms
+Hyatt Regency Kyoto ends operations 2027-05-09 (not closed today). Product and every
+option remain pending; official/Trip notes and new Rakuten candidate contain the notice.
+Do not approve without operating-date safety or a reviewed replacement. Source and
+unresolved blocker are in Kyoto permit evidence; preserve existing hotel/trip IDs.
+
+Runtime guard first stopped because another work deployed aaa33f0/schema 0062. Hotel
+fingerprint and relevant travel-service/auth code remained unchanged; no deployment or
+reset here. New backup /root/travel_scanner_pre_hotel_candidates_20260908T034012Z.dump,
+7084300 bytes, preceded normal guarded admin writes. Read-only verification confirmed
+14 audit records and all 60 products / other 345 options / config version 5 preserved.
+
+Current: 60 hotel identities, 17 approved products / 43 pending; 360 platform options,
+48 approved / 312 pending. Five locales' internal recommendations AND actual HTTPS BFF
+responses return Tokyo 10 / Osaka 2 / Kyoto 0, only approved official + Trip public options.
+No city is complete; no provider price API, clickout, order, affiliate or config changes.
+Details: docs/hotel-platforms/review-2026-09-08-kyoto-five.md and matching JSON evidence.
+
+Validation: 136 related tests, Ruff/format, mypy 257 files, five locales/25 namespaces,
+27 tooling tests and independent production smoke passed. New-head full CI goes on the
+continuation PR. Release this shared task, not done; remaining maps, platform reviews,
+Hyatt closure hold and city acceptance are still open. Earlier sections are snapshots.
 
 ## Latest: 2026-09-08 Namba platform and five-map review continuation
 

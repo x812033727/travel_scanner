@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-07T23:27:30Z
 completed_at:
-branch: codex/hotel-content-review-namba
+branch: codex/hotel-content-review-kyoto-links
 depends_on: []
 scope:
   - apps/api/app/community
@@ -85,3 +85,12 @@ apiRequestContext.fetch: read ECONNRESET. Next logged destination stream closed 
 six uq_community_metric duplicates also appeared. This run does not establish the same
 manifest JSON failure or prove that metric duplicates cause the reset. One failed-job
 rerun was requested, with no test/runtime changes or error suppression.
+
+Post-merge main f65890ad76c7d6f3c47076e813e5e6cbebcec1e3 run 34184188769 /
+job 101929120412: API/web/containers passed; mobile-chromium community test line 55
+failed at registerAndVerify line 32 (GET /community/me, call line 67) with
+apiRequestContext.fetch: read ECONNRESET. Container logs include three daily-read
+uq_community_metric duplicates. The available evidence does not establish that those
+duplicates caused this reset or reproduce the earlier manifest JSON failure. No raw
+member IDs, request payloads or tokens are copied here. One disclosed failed-job rerun
+was requested without test/runtime changes. This is not a fix; task remains open.
