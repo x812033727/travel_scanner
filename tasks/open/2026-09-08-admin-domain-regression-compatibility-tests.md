@@ -11,6 +11,8 @@ completed_at:
 branch: codex/admin-domain-workspaces
 depends_on: []
 scope:
+  - apps/web/e2e/merchant-styles.spec.ts
+  - apps/web/e2e/readability.spec.ts
   - apps/web/components/admin-foods-workspace.test.tsx
   - apps/web/components/admin-partial-payload.test.tsx
   - apps/web/components/admin-hotspots-workspace.test.tsx
@@ -42,3 +44,5 @@ Run Vitest admin-foods-workspace.test.tsx, admin-partial-payload.test.tsx and ad
 ## Notes
 
 No product changes in this task. Tests deliberately use domain-scoped requests rather than expecting obsolete mixed pending totals.
+Legacy browser compatibility: 24 cases pass on desktop and Pixel 7 (merchant styles and admin contrast/44px controls). Original style review/publish boundaries remain asserted.
+The readability claim was handed off from the already-merged planner weather work; merchant E2E claim was released by its owner in d243d287.

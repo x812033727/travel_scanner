@@ -69,5 +69,7 @@ CI creates isolated administrators for e2e/admin-domains-full-stack.spec.ts; nev
 ## Notes
 
 Implementation and API contracts are documented in docs/admin-domains.md.
-Desktop/Pixel 7 fixture journeys currently pass (18 tests); visually inspected dark overview and restaurant scans.
+Desktop/Pixel 7 fixture journeys pass (20 tests); visually inspected dark overview and restaurant scans.
+Full local Vitest: 951 tests pass across 146 files. API: 1818 pass, 120 integration skips; Linux-only deployment module runs in CI.
+PR: https://github.com/x812033727/travel_scanner/pull/369
 No production mutations, provider enablement or data backfill performed. PostgreSQL/Redis integration runs in CI, not an unknown local database.

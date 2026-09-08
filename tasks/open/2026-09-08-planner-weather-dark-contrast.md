@@ -15,12 +15,13 @@ scope:
   - apps/web/components/trip-weather-panel.test.tsx
   - apps/web/components/itinerary-diff.tsx
   - apps/web/components/itinerary-diff.test.tsx
-  - apps/web/e2e/readability.spec.ts
 ---
 
 # Fix weather and itinerary intent panel contrast in dark mode
 
 ## Why
+
+The already-merged readability E2E scope was handed to the admin domain regression task on 2026-09-08; planner-specific tests remain here.
 
 The itinerary weather card retains a fixed pale gradient in dark mode, while its heading and warning text inherit light theme tokens. The user also reported the white surface of the "What would you like to change?" intent panel. Its responsive/translucent white utilities are not covered by legacy dark-mode compatibility styles. Both panels need theme-aware surfaces, nested fields and legible accents without changing planning or provider behaviour.
 
