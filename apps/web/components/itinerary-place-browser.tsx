@@ -33,7 +33,6 @@ export function ItineraryPlaceBrowser({
   const [kind, setKind] = useState(meal ? "merchant" : "all");
   const [allCities, setAllCities] = useState(false);
   const [radius, setRadius] = useState(3);
-  const [offset, setOffset] = useState(0);
   const [reload, setReload] = useState(0);
   const [result, setResult] = useState<Result>();
   const [loading, setLoading] = useState(true);
@@ -43,10 +42,20 @@ export function ItineraryPlaceBrowser({
   const lng = reference?.longitude;
   const nextLat = following?.latitude;
   const nextLng = following?.longitude;
+  const contextKey = JSON.stringify([tripId, lat, lng, nextLat, nextLng]);
+  const [pagination, setPagination] = useState({ contextKey, offset: 0 });
+  // Reset during render so no request can combine the new insertion point with
+  // the previous neighbourhood's page. Keep the result cards and focus intact.
+  const offset = pagination.contextKey === contextKey ? pagination.offset : 0;
+  if (pagination.contextKey !== contextKey) setPagination({ contextKey, offset: 0 });
+  function setOffset(nextOffset: number) {
+    setPagination({ contextKey, offset: nextOffset });
+  }
 
   useEffect(() => {
     if (source === "search") return;
     let cancelled = false;
+    const controller = new AbortController();
     const timer = window.setTimeout(() => {
       setLoading(true);
       setError(undefined);
@@ -60,12 +69,12 @@ export function ItineraryPlaceBrowser({
       if (nextLat != null && nextLng != null) {
         params.set("next_latitude", String(nextLat)); params.set("next_longitude", String(nextLng));
       }
-      api<Result>(`/trips/${tripId}/place-options?${params}`)
+      api<Result>(`/trips/${tripId}/place-options?${params}`, { signal: controller.signal })
         .then((value) => { if (!cancelled) setResult(value); })
         .catch(() => { if (!cancelled) { setResult(undefined); setError(navigator.onLine ? copy.unavailable : copy.offline); } })
         .finally(() => { if (!cancelled) setLoading(false); });
     }, query ? 250 : 0);
-    return () => { cancelled = true; window.clearTimeout(timer); };
+    return () => { cancelled = true; window.clearTimeout(timer); controller.abort(); };
   }, [tripId, source, query, kind, allCities, radius, offset, lat, lng, nextLat, nextLng, reload, copy]);
 
   function switchSource(next: Source) {

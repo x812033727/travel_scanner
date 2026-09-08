@@ -10,8 +10,9 @@ import math
 from typing import Any, Literal
 from uuid import UUID
 
-from sqlalchemy import select
+from sqlalchemy import and_, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.sql import ColumnElement
 
 from app.destinations.catalog import destination_for_id, match_destination
 from app.foods.publication import publishable_merchant_filters
@@ -34,6 +35,7 @@ from app.problems import AppError
 
 Point = tuple[float, float]
 Kind = Literal["hotspot", "merchant"]
+EARTH_RADIUS_KM = 6371
 
 
 def distance_km(first: Point, second: Point) -> float:
@@ -42,7 +44,36 @@ def distance_km(first: Point, second: Point) -> float:
         math.sin((lat2 - lat1) / 2) ** 2
         + math.cos(lat1) * math.cos(lat2) * math.sin((lon2 - lon1) / 2) ** 2
     )
-    return 6371 * 2 * math.asin(min(1, math.sqrt(haversine)))
+    return EARTH_RADIUS_KM * 2 * math.asin(min(1, math.sqrt(haversine)))
+
+
+def nearby_filter(
+    model: type[TravelHotspot] | type[FoodMerchant], origin: Point, radius_km: int
+) -> ColumnElement[bool]:
+    """Bound catalogue reads to a spherical cap's box, including the date line.
+
+    ``rank_options`` removes the box's corners using the actual great-circle
+    distance. A cap reaching a pole needs all longitudes, but only a narrow
+    latitude band, never an unrestricted catalogue read.
+    """
+    latitude, longitude = origin
+    angular_radius = radius_km / EARTH_RADIUS_KM
+    latitude_delta = math.degrees(angular_radius)
+    south, north = max(-90.0, latitude - latitude_delta), min(90.0, latitude + latitude_delta)
+    latitude_filter = model.latitude.between(south, north)
+    if south == -90 or north == 90:
+        return latitude_filter
+    longitude_delta = math.degrees(
+        math.asin(min(1.0, math.sin(angular_radius) / math.cos(math.radians(latitude))))
+    )
+    west, east = longitude - longitude_delta, longitude + longitude_delta
+    if west < -180:
+        longitude_filter = or_(model.longitude >= west + 360, model.longitude <= east)
+    elif east > 180:
+        longitude_filter = or_(model.longitude >= west, model.longitude <= east - 360)
+    else:
+        longitude_filter = model.longitude.between(west, east)
+    return and_(latitude_filter, longitude_filter)
 
 
 def rank_options(
@@ -56,6 +87,7 @@ def rank_options(
     kind: str,
     offset: int,
     limit: int,
+    favorite_destination_id: str | None = None,
 ) -> dict[str, Any]:
     query = q.strip().casefold()
     selected = []
@@ -71,7 +103,11 @@ def rank_options(
         if source != "favorites" and distance is not None and distance > radius_km:
             # Favourites are useful in a different part of town even when the
             # nearby list is deliberately narrow.
-            if source != "discover" or not option["is_saved"]:
+            if (
+                source != "discover"
+                or not option["is_saved"]
+                or option.get("destination_id") != favorite_destination_id
+            ):
                 continue
         detour = distance or 0.0
         if origin is not None and following is not None:
@@ -302,26 +338,37 @@ async def list_place_options(
     if source == "favorites":
         hotspots_query = hotspots_query.where(TravelHotspot.id.in_(saved_hotspots))
         merchants_query = merchants_query.where(FoodMerchant.id.in_(saved_merchants))
-    if not (source == "favorites" and all_cities):
+    if source != "favorites" and origin is not None:
+        hotspot_scope = nearby_filter(TravelHotspot, origin, radius_km)
+        merchant_scope = nearby_filter(FoodMerchant, origin, radius_km)
+        if source == "discover" and destination is not None:
+            # The insertion point, not the trip's main city, defines "nearby".
+            # Keep the discover tab's existing main-city favourites alongside it.
+            hotspot_scope = or_(
+                hotspot_scope,
+                and_(
+                    TravelHotspot.destination_id == destination.id,
+                    TravelHotspot.id.in_(saved_hotspots),
+                ),
+            )
+            merchant_scope = or_(
+                merchant_scope,
+                and_(
+                    FoodMerchant.destination_id == destination.id,
+                    FoodMerchant.id.in_(saved_merchants),
+                ),
+            )
+        hotspots_query = hotspots_query.where(hotspot_scope)
+        merchants_query = merchants_query.where(merchant_scope)
+    elif not (source == "favorites" and all_cities):
         if destination is not None:
             hotspots_query = hotspots_query.where(TravelHotspot.destination_id == destination.id)
             merchants_query = merchants_query.where(FoodMerchant.destination_id == destination.id)
         elif origin is None:
             return {"items": [], "total": 0, "next_offset": None, "context": "destination"}
         else:
-            # Unknown destination: constrain the catalogue read to the reference
-            # point's neighbourhood before computing spherical distances.
-            lat, lon = origin
-            delta = radius_km / 110
-            lng_delta = delta / max(0.01, math.cos(math.radians(lat)))
-            hotspots_query = hotspots_query.where(
-                TravelHotspot.latitude.between(lat - delta, lat + delta),
-                TravelHotspot.longitude.between(lon - lng_delta, lon + lng_delta),
-            )
-            merchants_query = merchants_query.where(
-                FoodMerchant.latitude.between(lat - delta, lat + delta),
-                FoodMerchant.longitude.between(lon - lng_delta, lon + lng_delta),
-            )
+            hotspots_query = hotspots_query.where(nearby_filter(TravelHotspot, origin, radius_km))
+            merchants_query = merchants_query.where(nearby_filter(FoodMerchant, origin, radius_km))
     hotspots = list(await session.scalars(hotspots_query)) if kind != "merchant" else []
     merchants = list(await session.scalars(merchants_query)) if kind != "hotspot" else []
     names = await load_hotspot_names(session, hotspots)
@@ -348,4 +395,5 @@ async def list_place_options(
         kind=kind,
         offset=offset,
         limit=limit,
+        favorite_destination_id=destination.id if destination is not None else None,
     )
