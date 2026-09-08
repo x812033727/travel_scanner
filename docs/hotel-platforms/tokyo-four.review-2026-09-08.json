@@ -1,0 +1,300 @@
+{
+  "checked_on": "2026-09-08",
+  "scope": "Four pending Tokyo hotels: one successful Ryumeikan map review, three new Agoda candidate URLs and eight independent official/Trip reviews. No new hotel identities or city activation.",
+  "browser_status": "Chrome successfully displayed Ryumeikan exact saved Place ID; next Kyobashi navigation and state recovery timed out, kernel reset. No further browser checks claimed.",
+  "preservation": "No provider prices, ratings, reviews, descriptions, photos or coordinates copied. Source coordinates and hotel IDs preserved. Research inputs stay pending, not live synchronization authority.",
+  "hotels": [
+    {
+      "source_key": "editorial:tokyo:tokyo-station-hotel",
+      "official_name": "東京ステーションホテル",
+      "official_address": "東京都千代田区丸の内1-9-1",
+      "official_identity_url": "https://www.tokyostationhotel.jp/access/",
+      "map_review": {
+        "status": "not_rechecked"
+      },
+      "product_status": "pending",
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.tokyostationhotel.jp/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.tokyostationhotel.jp/access/",
+          "matched_name": "東京ステーションホテル",
+          "matched_address": "東京都千代田区丸の内1-9-1",
+          "note": "Home web fetch timed out; exact official access document established identity and server home URL health passed.",
+          "option_id": "3d48221c-b5a4-4800-a076-02cf10a364a3",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/tokyo-station.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unconfirmed"
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/tokyo-hotel-detail-686316/the-tokyo-station-hotel/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.tokyostationhotel.jp/access/",
+          "matched_name": "The Tokyo Station Hotel",
+          "matched_address": "Chiyoda-ku Marunouchi 1-9-1",
+          "option_id": "3678bebc-9166-4830-b846-c707f940c8e9",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/the-tokyo-station-hotel/hotel/tokyo-jp.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "healthy",
+          "new_candidate": true,
+          "reason": "Search name/street match; direct document opaque. HTTP health alone is insufficient, not approved.",
+          "option_id": "ed7ed57b-d83e-4535-be02-baa9e293bef7",
+          "version": 2
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "health": "not_checked",
+          "reason": "No confirmed property URL; unresolved does not mean unavailable."
+        },
+        {
+          "provider": "rakuten",
+          "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_tokyo/cty_chiyoda_ward/10123456794957/",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unconfirmed_timeout"
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:tokyo:ryumeikan-tokyo",
+      "official_name": "ホテル龍名館東京",
+      "official_address": "東京都中央区八重洲1-3-22",
+      "official_identity_url": "https://www.ryumeikan-tokyo.jp/access/",
+      "map_review": {
+        "status": "browser_identity_checked",
+        "checked_on": "2026-09-08",
+        "google_place_id": "ChIJD7G_2_2LGGARcK8ZATyh2U8",
+        "name_address_website_matched": true,
+        "official_website": "https://www.ryumeikan-tokyo.jp/"
+      },
+      "product_status": "approved",
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.ryumeikan-tokyo.jp/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.ryumeikan-tokyo.jp/access/",
+          "matched_name": "ホテル龍名館東京",
+          "matched_address": "東京都中央区八重洲1-3-22",
+          "option_id": "0fd5478c-78a3-4cfb-be12-1c3808c21ebc",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/ryumeikan-tokyo.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unconfirmed"
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/tokyo-hotel-detail-688171/hotel-ryumeikan-tokyo/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.ryumeikan-tokyo.jp/access/",
+          "matched_name": "Hotel Ryumeikan Tokyo",
+          "matched_address": "Yaesu, 1 Chome-3-22",
+          "option_id": "09f6e61b-ff11-4907-9fbc-1d97462fd663",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/hotel-ryumeikan-tokyo/hotel/tokyo-jp.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "healthy",
+          "new_candidate": true,
+          "reason": "Search name/street match; direct document opaque. HTTP health alone is insufficient, not approved.",
+          "option_id": "741bbf90-898a-42d0-86c2-ce5afd5001cb",
+          "version": 2
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "health": "not_checked",
+          "reason": "No confirmed property URL; unresolved does not mean unavailable."
+        },
+        {
+          "provider": "rakuten",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "health": "not_checked",
+          "reason": "No confirmed property URL; unresolved does not mean unavailable."
+        }
+      ],
+      "product_id": "6dde791e-5b13-450f-b743-0e66411af7da",
+      "product_version": 3
+    },
+    {
+      "source_key": "editorial:tokyo:mitsui-garden-kyobashi",
+      "official_name": "三井ガーデンホテル京橋",
+      "official_address": "東京都中央区京橋1-3-6",
+      "official_identity_url": "https://www.gardenhotels.co.jp/kyobashi/access/",
+      "map_review": {
+        "status": "navigation_and_recovery_timeout"
+      },
+      "product_status": "pending",
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.gardenhotels.co.jp/kyobashi/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.gardenhotels.co.jp/kyobashi/access/",
+          "matched_name": "三井ガーデンホテル京橋",
+          "matched_address": "東京都中央区京橋1-3-6",
+          "option_id": "bf0203d2-ae5c-4085-8ab1-2be98047fd75",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/mitsui-garden-kyobashi.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unconfirmed"
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/tokyo-hotel-detail-6064032/mitsui-garden-hotel-kyobashi-tokyo-station",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.gardenhotels.co.jp/kyobashi/access/",
+          "matched_name": "Mitsui Garden Hotel Kyobashi - Tokyo Station",
+          "matched_address": "1 Chome-3-6, Chuo Ward, Tokyo, 104-0031",
+          "document_freshness": "Web result crawled last month; official identity read today and live link health checked today.",
+          "option_id": "12a4900e-2624-4932-a785-0ffa45dcdb02",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/mitsui-garden-hotel-kyobashi/hotel/tokyo-jp.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "healthy",
+          "new_candidate": true,
+          "reason": "Search name/street match; direct document opaque. HTTP health alone is insufficient, not approved.",
+          "option_id": "04b51b83-700d-43ae-b693-6c892151cd0a",
+          "version": 2
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "health": "not_checked",
+          "reason": "No confirmed property URL; unresolved does not mean unavailable."
+        },
+        {
+          "provider": "rakuten",
+          "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_tokyo/cty_chuo_ward/10123456845035/",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unconfirmed_timeout"
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:tokyo:millennium-mitsui-garden-tokyo",
+      "official_name": "ミレニアム 三井ガーデンホテル 東京",
+      "official_address": "東京都中央区銀座5-11-1",
+      "official_identity_url": "https://www.gardenhotels.co.jp/millennium-tokyo/access/",
+      "map_review": {
+        "status": "not_rechecked"
+      },
+      "product_status": "pending",
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.gardenhotels.co.jp/millennium-tokyo/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.gardenhotels.co.jp/millennium-tokyo/access/",
+          "matched_name": "ミレニアム 三井ガーデンホテル 東京",
+          "matched_address": "東京都中央区銀座5-11-1",
+          "option_id": "3266382c-cadf-4df4-954a-5b6735cd952c",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/millennium-mitsui-garden-hotel-tokyo.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unconfirmed"
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/tokyo-hotel-detail-1683161/millennium-mitsui-garden-hotel-tokyo/",
+          "discovery_status": "found",
+          "status": "approved",
+          "health": "healthy",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.gardenhotels.co.jp/millennium-tokyo/access/",
+          "matched_name": "Millennium Mitsui Garden Hotel Tokyo - Ginza",
+          "matched_address": "5 Chome-11-1 Ginza",
+          "option_id": "377a5b5f-df98-422c-8138-9103783e2db9",
+          "version": 2,
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "agoda",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "health": "not_checked",
+          "reason": "No confirmed property URL; unresolved does not mean unavailable."
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "health": "not_checked",
+          "reason": "No confirmed property URL; unresolved does not mean unavailable."
+        },
+        {
+          "provider": "rakuten",
+          "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_tokyo/cty_chuo_ward/10123456795806",
+          "discovery_status": "found",
+          "status": "pending",
+          "health": "unconfirmed_timeout"
+        }
+      ]
+    }
+  ]
+}
