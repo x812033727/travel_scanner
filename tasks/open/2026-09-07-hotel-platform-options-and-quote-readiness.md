@@ -17,7 +17,46 @@ scope:
 
 # Hotel platform options and quote readiness
 
-## 2026-09-08 latest Tokyo source-credit and platform review
+## 2026-09-08 latest Ryumeikan and four-hotel platform continuation
+
+Same isolated branch and draft PR #344, main still b3e49a3. Original dirty workspace remains
+untouched. Chrome succeeded once: Ryumeikan Tokyo exact saved Place ID, hotel name, Yaesu
+1-3-22 and official website matched the official access page. The next Kyobashi navigation
+and one state recovery timed out/reset; no other new map browser verification is claimed.
+No provider coordinates, photos, ratings, reviews, prices or descriptions were imported.
+
+Four hotels' official/Trip documents matched name/street, and all eight saved target links
+passed normal safe HTTPS/DNS/redirect review. Tokyo Station's home document timed out but
+the exact official access identity was readable and server homepage health was healthy.
+Kyobashi Trip was indexed last month, not claimed freshly indexed. Three Agoda exact URLs
+were discovered by name/street; opaque direct documents and no browser proof mean pending,
+even though HTTP health is good. Booking and Rakuten stay pending/unconfirmed/timeout.
+
+The old backup runtime guard correctly refused when another task deployed b3e49a3/schema
+0061. Read-only ready/image and hotel baseline checks passed; a new verified backup
+/root/travel_scanner_pre_hotel_candidates_20260908T003418Z.dump (7048465 bytes) preceded
+guarded writes. No image/schema deployment was performed by this content task.
+
+Normal versioned admin services filled three existing Agoda slots (pending/version 2),
+atomically edited/reviewed Ryumeikan's map flag (approved/version 3), then independently
+approved eight official/Trip options (healthy/version 2, browser_verified=false). Exact
+snapshot/version guards and audits were verified. Other 59 products/349 options/config
+fingerprint b5b854cb3cdf9bf2596df6ca187289879856054fadb102f0f8547d450214c352 preserved.
+
+Current: 60 hotels, 12 product-approved / 48 pending; 360 options, 21 approved / 339 pending.
+Five-language read-only smoke displays seven internal Tokyo hotels, each official + Trip
+with source credits; unreviewed maps and pending Agoda hidden. Public gate false, configured
+destinations [tokyo]. Zero accepted cities, no affiliate/price enablement, no generated clicks.
+
+128 related tests, Ruff/format, mypy (255 files), 27 tools checks, five locales/25 namespaces
+and task integrity passed. See docs/hotel-platforms/review-2026-09-08-tokyo-four.md and
+tokyo-four.review-2026-09-08.json. CI will be verified at the new PR head. Prior head 5571190
+passed all eight checks. No merge/deploy authorization; release at handoff, task not done.
+Remaining: three Tokyo maps, second OTA approvals, remaining Seoul identities and other
+cities' durable coordinates/maps/platform reviews. Do not replay the old pending package
+or smoke expectation of six Tokyo hotels over this new intentional review checkpoint.
+
+## 2026-09-08 earlier Tokyo source-credit and platform review
 
 Latest continuation stays on PR #344 / codex/hotel-content-review-kyoto. Main and runtime
 were reverified at 7f21d7e, schema 0060; no deployment or migration. Previous head 9de855e

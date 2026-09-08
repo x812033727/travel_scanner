@@ -1,6 +1,9 @@
 # Tokyo source credits and platform review — 2026-09-08
 
-This is the latest production content checkpoint for PR #344. The earlier fifty-hotel
+Historical checkpoint before the later Ryumeikan/three-Agoda/eight-option continuation.
+See `review-2026-09-08-tokyo-four.md` for current counts and verified outcomes.
+
+This was the original-six Tokyo production content checkpoint for PR #344. The earlier fifty-hotel
 and Busan checkpoints remain historical evidence. This batch adds no hotel identities:
 it fills gaps on the six existing Tokyo hotels and independently reviews their OTA options.
 No merge, deployment, migration, city release, affiliate enablement or paid API activation.

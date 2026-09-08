@@ -94,7 +94,7 @@ documented, not silently matched. Toyoko's conflicting tourism-directory address
 
 | City | Research inputs | Accepted for city rollout | Remaining |
 | --- | ---: | ---: | --- |
-| Tokyo | 10 | 0 | Four new map checks, remaining platform checks and second OTA per original hotel |
+| Tokyo | 10 | 0 | Three pending map checks, remaining platform checks and second OTA per reviewed hotel |
 | Osaka | 10 | 0 | Map and platform review, remaining OTA checks, independent approvals |
 | Kyoto | 10 | 0 | Licensed coordinates, exact Place IDs, live platform checks and independent approvals |
 | Seoul | 10 | 0 | Five unresolved Naver reviews, platform landing checks and independent option approvals |
@@ -120,7 +120,7 @@ and one approved new official option**. Original Tokyo six and catalog settings 
 Public enablement remains off, configured destinations remain Tokyo only, and no city has
 completed rollout acceptance. See `review-2026-09-08-busan.md` for that historical checkpoint.
 
-Latest 2026-09-08 Tokyo review: added the missing source credits on the original six hotels
+Earlier 2026-09-08 Tokyo review: added the missing source credits on the original six hotels
 and thirty independent OTA slots (24 found URLs, six unresolved). Six Trip.com links passed
 normal independent admin/health review with no browser override; the remaining 24 slots
 stay pending. Existing product identities, names, coordinates, official links and config
@@ -130,6 +130,18 @@ for the original six in the enabled internal catalog; public enablement is still
 This is not a city rollout or a new map review. See `review-2026-09-08-tokyo.md` and the
 per-option `tokyo.review-2026-09-08.json`. Never replay the older original-Tokyo fingerprint
 or one-option smoke assertion after this deliberate attribution/platform update.
+
+Latest Tokyo continuation: Ryumeikan's saved exact Place ID was successfully checked in
+Chrome against its name, street number and official website; its product passed normal
+review. The next map navigation/recovery timed out, so the other three products remain
+pending. Eight official/Trip options were independently approved after document identity
+and live safe-health checks, without browser override. Three new Agoda candidate URLs were
+added to existing slots and stay pending because their direct identity pages were opaque.
+Current total: **60 hotels, 12 product-approved / 48 pending; 360 options, 21 approved /
+339 pending**. The enabled internal Tokyo catalog has seven reviewed hotels; public
+enablement remains off and no city is fully accepted. See `review-2026-09-08-tokyo-four.md`
+and `tokyo-four.review-2026-09-08.json`; older snapshots are historical. Pending JSON still
+must not be replayed over the newly reviewed Ryumeikan product.
 
 ## Tokyo coordinate attribution
 

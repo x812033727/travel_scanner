@@ -347,3 +347,63 @@ def test_credit_update_rejects_legacy_projection_and_conflicting_credit():
     ]
     with pytest.raises(ValueError, match="Existing attribution differs"):
         prepare(current, researched)
+
+
+def test_tokyo_four_review_does_not_promote_unobserved_maps_with_approved_options():
+    directory = Path(__file__).resolve().parents[3] / "docs/hotel-platforms"
+    evidence = json.loads(
+        (directory / "tokyo-four.review-2026-09-08.json").read_text(encoding="utf-8")
+    )
+    package = json.loads((directory / "tokyo.pending.json").read_text(encoding="utf-8"))
+    rows = {r["product"]["source_key"]: r for r in package}
+    checked = [
+        h for h in evidence["hotels"] if h["map_review"]["status"] == "browser_identity_checked"
+    ]
+    assert len(checked) == 1
+    assert checked[0]["source_key"] == "editorial:tokyo:ryumeikan-tokyo"
+    assert checked[0]["map_review"]["name_address_website_matched"] is True
+    now = datetime.now(UTC)
+    config = CatalogConfig(enabled_destinations=["tokyo"], enabled_kinds=["hotel"])
+    for hotel in evidence["hotels"]:
+        row = rows[hotel["source_key"]]
+        # A reviewed production location is not replayed as approved import input.
+        assert row["product"]["facts"]["map_verified"] is False
+        assert hotel["official_identity_url"] == row["product"]["source_url"]
+        options = {o["provider"]: o for o in row["booking_options"]}
+        approved = [r for r in hotel["platform_reviews"] if r["status"] == "approved"]
+        assert {r["provider"] for r in approved} == {"official", "trip_com"}
+        for review in approved:
+            assert review["url"] == options[review["provider"]]["url"]
+            assert review["health"] == "healthy" and review["browser_verified"] is False
+            assert review["matched_address"] and review["identity_evidence_url"]
+            if hotel["product_status"] == "pending":
+                product = TravelServiceProduct(**row["product"], id=uuid4(), status="pending")
+                option = HotelBookingOption(
+                    **HotelOptionInput.model_validate(options[review["provider"]]).model_dump(),
+                    id=uuid4(),
+                    status="approved",
+                    verified_at=now,
+                    health_status="healthy",
+                )
+                assert not ready_option(product, option, config, now)
+
+
+def test_new_tokyo_agoda_candidates_are_not_approved_from_http_health():
+    directory = Path(__file__).resolve().parents[3] / "docs/hotel-platforms"
+    evidence = json.loads(
+        (directory / "tokyo-four.review-2026-09-08.json").read_text(encoding="utf-8")
+    )
+    package = json.loads((directory / "tokyo.pending.json").read_text(encoding="utf-8"))
+    rows = {r["product"]["source_key"]: r for r in package}
+    candidates = [
+        (h, r) for h in evidence["hotels"] for r in h["platform_reviews"] if r.get("new_candidate")
+    ]
+    assert len(candidates) == 3
+    for hotel, review in candidates:
+        source = next(
+            o for o in rows[hotel["source_key"]]["booking_options"] if o["provider"] == "agoda"
+        )
+        assert review["status"] == "pending" and review["health"] == "healthy"
+        assert source["url"] == review["url"] and source["discovery_status"] == "found"
+        assert "待審" in source["identity_note"] and "status" not in source
+        assert not source.get("property_id")
