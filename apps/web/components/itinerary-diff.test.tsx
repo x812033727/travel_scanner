@@ -123,6 +123,26 @@ async function submit(intent: string) {
   fireEvent.click(screen.getByRole("button", { name: /看看會怎麼改/ }));
 }
 
+it("uses theme-aware intent surfaces without submitting when expanded or choosing an example", () => {
+  const fetchMock = vi.fn();
+  vi.stubGlobal("fetch", fetchMock);
+  render(<ItineraryDiff trip={trip} activeDay="2026-11-12" onApplied={vi.fn()} />);
+  const panel = screen.getByRole("region", { name: "描述想調整的地方" });
+  expect(panel.className).toContain("lg:bg-[var(--surface)]");
+  expect(panel.className).not.toContain("bg-white");
+  const trigger = screen.getByRole("button", { name: "想改什麼？" });
+  expect(trigger.className).toContain("bg-[var(--surface)]");
+  fireEvent.click(trigger);
+  expect(trigger.getAttribute("aria-expanded")).toBe("true");
+  expect(panel.className.split(" ")).toContain("bg-[var(--surface)]");
+  const input = screen.getByLabelText("想改什麼？");
+  expect(input.className).toContain("bg-[var(--surface)]");
+  expect(screen.getByRole("radio", { name: "這一天" }).className).toContain("bg-[var(--surface)]");
+  fireEvent.click(screen.getByRole("button", { name: "這天下雨，改室內" }));
+  expect((input as HTMLInputElement).value).toBe("這天下雨，改室內");
+  expect(fetchMock).not.toHaveBeenCalled();
+});
+
 describe("intent bar", () => {
   it("stays folded away on a phone until the reader opens it", () => {
     render(<ItineraryDiff trip={trip} activeDay="2026-11-12" onApplied={vi.fn()} />);

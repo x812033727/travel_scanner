@@ -35,9 +35,32 @@ function response(payload: unknown, status = 200) {
   return { ok: status < 400, status, json: async () => payload };
 }
 
+// These are theme contracts, not simulated contrast measurements: browser
+// readability tests verify the computed colours against the real stylesheet.
+function expectThemeAwarePanel() {
+  const panel = screen.getByRole("region", { name: "旅程天氣" });
+  expect(panel.classList.contains("bg-[var(--surface)]")).toBe(true);
+  expect(panel.classList.contains("text-[var(--ink)]")).toBe(true);
+  const classes = [panel, ...panel.querySelectorAll("[class]")]
+    .map((node) => node.getAttribute("class") || "").join(" ");
+  expect(classes).not.toMatch(/(?:^|\s)(?:bg-white(?:\/\S+)?|border-white(?:\/\S+)?|bg-\[linear-gradient\S+|bg-slate-100)(?=\s|$)/);
+  expect(classes).not.toContain("--surface-raised");
+  expect(classes).not.toContain("--surface-tint");
+  return panel;
+}
+
 afterEach(() => vi.unstubAllGlobals());
 
 describe("trip weather panel", () => {
+  it("uses semantic surfaces for the loading panel and skeleton", () => {
+    vi.stubGlobal("fetch", vi.fn(() => new Promise(() => {})));
+
+    render(<TripWeatherPanel tripId="trip-1" activeDay="2026-09-01" />);
+
+    const panel = expectThemeAwarePanel();
+    expect([...panel.children].filter((node) => node.classList.contains("bg-[var(--paper)]")).length).toBe(2);
+  });
+
   it("shows current weather and highlights the selected trip day", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(response(weather)));
 
@@ -47,6 +70,8 @@ describe("trip weather panel", () => {
     expect(screen.getByText("28°C")).toBeTruthy();
     expect(screen.getByLabelText("2026-09-01 天氣摘要").textContent).toContain("降雨 60%");
     expect(screen.getByLabelText("10 日天氣預報").querySelector("[aria-current='date']")).toBeTruthy();
+    expectThemeAwarePanel();
+    expect(screen.getByLabelText("2026-09-01 天氣摘要").classList.contains("bg-[var(--paper)]")).toBe(true);
   });
 
   it("explains when a trip date is outside the ten-day forecast window", async () => {
@@ -55,6 +80,7 @@ describe("trip weather panel", () => {
     render(<TripWeatherPanel tripId="trip-1" activeDay="2026-12-20" />);
 
     expect(await screen.findByText(/尚未進入 10 日預報範圍/)).toBeTruthy();
+    expectThemeAwarePanel();
   });
 
   it("shows nothing but the explanation when the whole trip is beyond the forecast", async () => {
@@ -67,6 +93,7 @@ describe("trip weather panel", () => {
     // trip's weather; only the sentence saying it is too early belongs here.
     expect(screen.queryByLabelText("10 日天氣預報")).toBeNull();
     expect(screen.queryByText("28°C")).toBeNull();
+    expectThemeAwarePanel();
   });
 
   it("keeps only the days that fall inside the trip", async () => {
@@ -85,6 +112,8 @@ describe("trip weather panel", () => {
 
     const rail = await screen.findByLabelText("10 日天氣預報");
     expect(rail.querySelectorAll("article").length).toBe(2);
+    expectThemeAwarePanel();
+    expect(rail.querySelector("article:not([aria-current])")?.classList.contains("bg-[var(--paper)]")).toBe(true);
   });
 
   it("names the provider that answered and shows rainfall when no probability is given", async () => {
@@ -92,6 +121,7 @@ describe("trip weather panel", () => {
       ...weather,
       attribution: "MET Norway",
       days: [{ ...weather.days[0], precipitation_probability_percent: null, precipitation_mm: 4.6 }],
+      warnings: ["山區天氣變化較快，請留意即時資訊。"],
     };
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(response(met)));
 
@@ -100,6 +130,8 @@ describe("trip weather panel", () => {
     expect(await screen.findByText("MET NORWAY")).toBeTruthy();
     expect(screen.getByLabelText("2026-09-01 天氣摘要").textContent).toContain("降雨 4.6 mm");
     expect(screen.getByText(/MET Norway · 剛剛更新/)).toBeTruthy();
+    expect(screen.getByText("山區天氣變化較快，請留意即時資訊。")).toBeTruthy();
+    expectThemeAwarePanel();
   });
 
   it("shows setup guidance without retrying a disabled API", async () => {
@@ -114,6 +146,7 @@ describe("trip weather panel", () => {
     expect(await screen.findByText("天氣服務尚未啟用")).toBeTruthy();
     expect(screen.queryByRole("button", { name: "重試" })).toBeNull();
     expect(fetchMock).toHaveBeenCalledTimes(1);
+    expectThemeAwarePanel();
   });
 
   it("lets the user retry a temporary weather failure", async () => {
@@ -123,9 +156,13 @@ describe("trip weather panel", () => {
     vi.stubGlobal("fetch", fetchMock);
 
     render(<TripWeatherPanel tripId="trip-1" activeDay="2026-09-01" />);
-    fireEvent.click(await screen.findByRole("button", { name: "重試" }));
+    const retry = await screen.findByRole("button", { name: "重試" });
+    expectThemeAwarePanel();
+    expect(retry.classList.contains("bg-[var(--paper)]")).toBe(true);
+    fireEvent.click(retry);
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
     expect(await screen.findByText("東京車站天氣")).toBeTruthy();
+    expectThemeAwarePanel();
   });
 });

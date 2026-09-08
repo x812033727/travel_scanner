@@ -185,8 +185,8 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
     <>
       <section
         aria-label={t("intent.barLabel")}
-        className={`planner-intent-bar sticky z-30 mt-5 rounded-2xl lg:border lg:border-violet-200 lg:bg-white/95 lg:p-4 lg:shadow-[var(--shadow-lg)] lg:backdrop-blur ${
-          intentOpen ? "border border-violet-200 bg-white/95 p-3 shadow-[var(--shadow-lg)] backdrop-blur" : ""
+        className={`planner-intent-bar sticky z-30 mt-5 rounded-2xl text-[var(--ink)] lg:border lg:border-[var(--line)] lg:bg-[var(--surface)] lg:p-4 lg:shadow-[var(--shadow-lg)] ${
+          intentOpen ? "border border-[var(--line)] bg-[var(--surface)] p-3 shadow-[var(--shadow-lg)]" : ""
         }`}
       >
         {/* On a phone this bar floats above the dock, and open it is four rows
@@ -198,7 +198,7 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
           aria-expanded={intentOpen}
           onClick={() => setIntentOpen((open) => !open)}
           className={`flex min-h-11 items-center gap-2 text-sm font-bold text-violet-900 lg:hidden ${
-            intentOpen ? "w-full" : "ml-auto rounded-full border border-violet-200 bg-white/95 px-4 shadow-[var(--shadow-sm)] backdrop-blur"
+            intentOpen ? "w-full" : "ml-auto rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 shadow-[var(--shadow-sm)]"
           }`}
         >
           <Wand2 size={16} />
@@ -220,7 +220,7 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
                   aria-checked={effectiveScope === value}
                   disabled={value === "day" && !activeDay}
                   onClick={() => setScope(value)}
-                  className={`min-h-9 rounded-lg px-3 text-xs font-semibold disabled:opacity-40 ${effectiveScope === value ? "bg-white text-violet-800 shadow-sm" : "text-[var(--muted)]"}`}
+                  className={`min-h-11 rounded-lg px-3 text-xs font-semibold disabled:opacity-40 ${effectiveScope === value ? "bg-[var(--surface)] text-violet-800 shadow-sm" : "text-[var(--muted)]"}`}
                 >
                   {value === "day" ? t("intent.scopeDay") : t("intent.scopeTrip")}
                 </button>
@@ -235,10 +235,11 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
               onChange={(event) => setText(event.target.value)}
               placeholder={effectiveScope === "day" ? t("intent.placeholderDay") : t("intent.placeholderTrip")}
               disabled={disabled || busy === "submit"}
-              className="min-h-11 min-w-0 flex-1 rounded-xl border border-[var(--line)] bg-white px-3 text-sm outline-none transition focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
+              className="min-h-11 min-w-0 flex-1 rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3 text-sm text-[var(--ink)] outline-none transition placeholder:text-[var(--muted)] focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
             />
             <button
               type="submit"
+              aria-label={busy === "submit" ? t("intent.submitting") : t("intent.submit")}
               disabled={disabled || !trimmed || Boolean(busy)}
               className="flex min-h-11 items-center justify-center gap-2 rounded-xl bg-violet-700 px-4 text-sm font-semibold text-white disabled:opacity-45"
             >
@@ -255,7 +256,7 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
                 type="button"
                 disabled={disabled || Boolean(busy)}
                 onClick={() => setText(example)}
-                className="min-h-8 rounded-full border border-[var(--line)] px-3 text-[var(--muted)] transition hover:border-violet-300 hover:text-violet-800 disabled:opacity-40"
+                className="min-h-11 rounded-full border border-[var(--line)] bg-[var(--surface)] px-3 text-[var(--muted)] transition hover:border-[var(--teal)] hover:bg-[var(--paper)] hover:text-[var(--ink)] disabled:opacity-40"
               >
                 {example}
               </button>
