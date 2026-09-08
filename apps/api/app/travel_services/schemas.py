@@ -9,6 +9,8 @@ from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from app.affiliates.schemas import AffiliateModule
+from app.destinations.catalog import DESTINATIONS
 from app.i18n import Locale
 
 Kind = Literal["hotel", "transfer", "tour", "esim"]
@@ -23,6 +25,8 @@ CITIES = {
     "busan": ("KR", "PUS", (35.1796, 129.0756), ("PUS",)),
     "taipei": ("TW", "TPE", (25.0330, 121.5654), ("TPE", "TSA")),
 }
+PUBLIC_DESTINATION_IDS = frozenset(destination.id for destination in DESTINATIONS)
+SERVICE_DESTINATION_IDS = PUBLIC_DESTINATION_IDS | frozenset(CITIES)
 
 
 def safe_url(value: str) -> str:
@@ -318,6 +322,52 @@ class OfferInput(StrictModel):
         return value
 
 
+class DestinationOfferInput(StrictModel):
+    brand_id: UUID
+    destination_id: str
+    module: AffiliateModule
+    target_url: str
+    static_url: str | None = None
+    expires_at: datetime | None = None
+
+    @field_validator("destination_id")
+    @classmethod
+    def destination(cls, value: str) -> str:
+        from app.destinations.catalog import destination_for_id
+
+        normalized = value.casefold()
+        if not destination_for_id(normalized):
+            raise ValueError("Unsupported destination")
+        return normalized
+
+    @field_validator("target_url")
+    @classmethod
+    def target(cls, value: str) -> str:
+        return untracked_url(value)
+
+    @field_validator("static_url")
+    @classmethod
+    def static(cls, value: str | None) -> str | None:
+        return safe_url(value) if value else None
+
+    @field_validator("expires_at")
+    @classmethod
+    def aware(cls, value: datetime | None) -> datetime | None:
+        if value and value.tzinfo is None:
+            raise ValueError("Timezone required")
+        return value
+
+
+class DestinationOfferVersion(StrictModel):
+    id: UUID
+    version: int = Field(ge=1)
+
+
+class DestinationOfferBatchReview(StrictModel):
+    offers: list[DestinationOfferVersion] = Field(min_length=1, max_length=50)
+    status: Status
+
+
 class ReviewInput(StrictModel):
     version: int = Field(ge=1)
     status: Status
@@ -376,7 +426,7 @@ class CatalogConfig(StrictModel):
     @field_validator("enabled_destinations")
     @classmethod
     def destinations(cls, value: list[str]) -> list[str]:
-        if any(city not in CITIES for city in value):
+        if any(city not in SERVICE_DESTINATION_IDS for city in value):
             raise ValueError("Unsupported destination")
         return list(dict.fromkeys(value))
 

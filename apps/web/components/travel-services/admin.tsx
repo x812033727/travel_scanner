@@ -28,6 +28,7 @@ type BrandRow = {
   approval: string;
   enabled: boolean;
   evidence_url: string;
+  verified_at: string | null;
   version: number;
 };
 type OfferRow = {
@@ -38,6 +39,29 @@ type OfferRow = {
   version: number;
   target_url: string;
   scope: string;
+};
+type AffiliateModule =
+  | "flight"
+  | "hotel"
+  | "activities"
+  | "transport"
+  | "connectivity";
+type DestinationOfferRow = {
+  id: string;
+  brand_id: string;
+  destination_id: string;
+  module: AffiliateModule;
+  status: "pending" | "approved" | "disabled";
+  version: number;
+  target_url: string;
+  static_url: string | null;
+  verified_at: string | null;
+};
+type DestinationRow = {
+  id: string;
+  city: string;
+  country: string;
+  role: string;
 };
 type Config = {
   hotel_quote_policies?: Record<string, QuotePolicy>;
@@ -53,6 +77,8 @@ type Overview = {
   version: number;
   products: RecordRow[];
   offers: OfferRow[];
+  destination_offers: DestinationOfferRow[];
+  destinations: DestinationRow[];
   brands: BrandRow[];
   project_id: string | null;
   network_configured: boolean;
@@ -60,7 +86,13 @@ type Overview = {
   hotel_option_review_due?: number;
   brand_definitions: Record<
     string,
-    { name: string; kinds: Kind[]; hosts: string[]; api_supported: boolean }
+    {
+      name: string;
+      kinds: Kind[];
+      modules: AffiliateModule[];
+      hosts: string[];
+      api_supported: boolean;
+    }
   >;
   coverage: {
     destination_id: string;
@@ -125,15 +157,47 @@ export function TravelServicesAdmin() {
   const [approval, setApproval] = useState("pending");
   const [enabled, setEnabled] = useState(false);
   const [evidence, setEvidence] = useState("");
+  const [destinationOfferBrand, setDestinationOfferBrand] = useState("");
+  const [destinationOfferDestination, setDestinationOfferDestination] =
+    useState("");
+  const [destinationOfferModule, setDestinationOfferModule] =
+    useState<AffiliateModule>("activities");
+  const [destinationOfferTarget, setDestinationOfferTarget] = useState("");
+  const [destinationOfferStatic, setDestinationOfferStatic] = useState("");
+  const [offerFilterModule, setOfferFilterModule] = useState("");
+  const [offerFilterStatus, setOfferFilterStatus] = useState("");
+  const [offerFilterBrand, setOfferFilterBrand] = useState("");
+  const [offerReviewDue, setOfferReviewDue] = useState(false);
+  const [selectedDestinationOffers, setSelectedDestinationOffers] = useState<
+    string[]
+  >([]);
+  const [destinationOfferEditor, setDestinationOfferEditor] = useState<{
+    row: DestinationOfferRow;
+    targetUrl: string;
+    staticUrl: string;
+  }>();
   const load = useCallback(async () => {
     const query = new URLSearchParams({ offset: String(offset) });
     if (destination) query.set("destination_id", destination);
     if (kind) query.set("type", kind);
     if (status) query.set("status", status);
+    if (offerFilterModule) query.set("affiliate_module", offerFilterModule);
+    if (offerFilterStatus) query.set("offer_status", offerFilterStatus);
+    if (offerFilterBrand) query.set("offer_brand_id", offerFilterBrand);
+    if (offerReviewDue) query.set("offer_review_due", "true");
     const result = await api<Overview>(`/admin/travel-services?${query}`);
     setData(result);
     setConfig(result.config);
-  }, [destination, kind, status, offset]);
+  }, [
+    destination,
+    kind,
+    status,
+    offset,
+    offerFilterModule,
+    offerFilterStatus,
+    offerFilterBrand,
+    offerReviewDue,
+  ]);
   useEffect(() => {
     void Promise.resolve()
       .then(load)
@@ -164,6 +228,19 @@ export function TravelServicesAdmin() {
       [key]: values.includes(value)
         ? values.filter((v) => v !== value)
         : [...values, value],
+    });
+  }
+  function toggleDestination(value: string) {
+    if (!config) return;
+    const linked = value === "osaka-kyoto" ? [value, "osaka", "kyoto"] : [value];
+    const remove = linked.every((item) =>
+      config.enabled_destinations.includes(item),
+    );
+    setConfig({
+      ...config,
+      enabled_destinations: remove
+        ? config.enabled_destinations.filter((item) => !linked.includes(item))
+        : [...new Set([...config.enabled_destinations, ...linked])],
     });
   }
   function edit(row: RecordRow) {
@@ -200,7 +277,14 @@ export function TravelServicesAdmin() {
         aria-label={t("adminTitle")}
         className="flex flex-wrap gap-2"
       >
-        {["catalog", "brands", "importCsv", "coverage", "config"].map(
+        {[
+          "catalog",
+          "destinationOffers",
+          "brands",
+          "importCsv",
+          "coverage",
+          "config",
+        ].map(
           (name) => (
             <button
               role="tab"
@@ -243,7 +327,7 @@ export function TravelServicesAdmin() {
           )}
           {tab === "catalog" && (
             <section className="space-y-4">
-              <div className="grid gap-3 sm:grid-cols-3">
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 <label>
                   {t("destinationLink")}
                   <select
@@ -575,6 +659,411 @@ export function TravelServicesAdmin() {
               </details>
             </section>
           )}
+          {tab === "destinationOffers" && (
+            <section className="space-y-5">
+              <div className="rounded-2xl border border-[var(--line)] p-5">
+                <h3 className="font-bold">{t("destinationOfferCreate")}</h3>
+                <p className="mt-2 text-sm text-[var(--muted)]">
+                  {t("destinationOfferIdentityHint")}
+                </p>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  <label>
+                    {t("brands")}
+                    <select
+                      className={field}
+                      value={destinationOfferBrand}
+                      onChange={(event) =>
+                        setDestinationOfferBrand(event.target.value)
+                      }
+                    >
+                      <option value="">{t("brands")}</option>
+                      {data.brands
+                        .filter((brand) =>
+                          data.brand_definitions[
+                            brand.code
+                          ]?.modules.includes(destinationOfferModule),
+                        )
+                        .map((brand) => (
+                          <option key={brand.id} value={brand.id}>
+                            {brand.name} · {t(brand.approval)}
+                          </option>
+                        ))}
+                    </select>
+                  </label>
+                  <label>
+                    {t("destinationLink")}
+                    <select
+                      className={field}
+                      value={destinationOfferDestination}
+                      onChange={(event) =>
+                        setDestinationOfferDestination(event.target.value)
+                      }
+                    >
+                      <option value="">{t("destinationLink")}</option>
+                      {data.destinations.map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item.country} · {item.city} · {t(item.role)}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label>
+                    {t("affiliateModule")}
+                    <select
+                      className={field}
+                      value={destinationOfferModule}
+                      onChange={(event) => {
+                        setDestinationOfferModule(
+                          event.target.value as AffiliateModule,
+                        );
+                        setDestinationOfferBrand("");
+                      }}
+                    >
+                      {[
+                        "flight",
+                        "hotel",
+                        "activities",
+                        "transport",
+                        "connectivity",
+                      ].map((module) => (
+                        <option key={module} value={module}>
+                          {t(`affiliate${module[0].toUpperCase()}${module.slice(1)}`)}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label>
+                    {t("originalUrl")}
+                    <input
+                      type="url"
+                      className={field}
+                      value={destinationOfferTarget}
+                      onChange={(event) =>
+                        setDestinationOfferTarget(event.target.value)
+                      }
+                    />
+                  </label>
+                  <label className="sm:col-span-2">
+                    {t("staticUrl")}
+                    <input
+                      type="url"
+                      className={field}
+                      value={destinationOfferStatic}
+                      onChange={(event) =>
+                        setDestinationOfferStatic(event.target.value)
+                      }
+                    />
+                  </label>
+                </div>
+                <button
+                  className={`${button} mt-4`}
+                  disabled={
+                    busy ||
+                    !destinationOfferBrand ||
+                    !destinationOfferDestination ||
+                    !destinationOfferTarget
+                  }
+                  onClick={() =>
+                    void run(async () => {
+                      await api("/admin/travel-services/destination-offers", {
+                        method: "POST",
+                        body: JSON.stringify({
+                          brand_id: destinationOfferBrand,
+                          destination_id: destinationOfferDestination,
+                          module: destinationOfferModule,
+                          target_url: destinationOfferTarget,
+                          static_url: destinationOfferStatic || null,
+                        }),
+                      });
+                      setDestinationOfferTarget("");
+                      setDestinationOfferStatic("");
+                    })
+                  }
+                >
+                  {t("addDestinationOffer")}
+                </button>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-3">
+                <label>
+                  {t("destinationLink")}
+                  <select
+                    className={field}
+                    value={destination}
+                    onChange={(event) => setDestination(event.target.value)}
+                  >
+                    <option value="">{t("all")}</option>
+                    {data.destinations.map((item) => (
+                      <option key={item.id} value={item.id}>
+                        {item.country} · {item.city}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  {t("affiliateModule")}
+                  <select
+                    className={field}
+                    value={offerFilterModule}
+                    onChange={(event) => setOfferFilterModule(event.target.value)}
+                  >
+                    <option value="">{t("all")}</option>
+                    {[
+                      "flight",
+                      "hotel",
+                      "activities",
+                      "transport",
+                      "connectivity",
+                    ].map((module) => (
+                      <option key={module} value={module}>
+                        {t(`affiliate${module[0].toUpperCase()}${module.slice(1)}`)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  {t("status")}
+                  <select
+                    className={field}
+                    value={offerFilterStatus}
+                    onChange={(event) => setOfferFilterStatus(event.target.value)}
+                  >
+                    <option value="">{t("all")}</option>
+                    {['pending', 'approved', 'disabled'].map((value) => (
+                      <option key={value} value={value}>{t(value)}</option>
+                    ))}
+                  </select>
+                </label>
+                <label>
+                  {t("brands")}
+                  <select
+                    className={field}
+                    value={offerFilterBrand}
+                    onChange={(event) => setOfferFilterBrand(event.target.value)}
+                  >
+                    <option value="">{t("all")}</option>
+                    {data.brands.map((brand) => (
+                      <option key={brand.id} value={brand.id}>
+                        {brand.name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label className="flex min-h-11 items-center gap-2 rounded-xl border border-[var(--line)] px-3 sm:col-span-2 lg:col-span-4">
+                  <input
+                    type="checkbox"
+                    checked={offerReviewDue}
+                    onChange={(event) => setOfferReviewDue(event.target.checked)}
+                  />
+                  {t("showReviewDueOnly")}
+                </label>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <label className="flex min-h-11 items-center gap-2 rounded-xl border border-[var(--line)] px-3">
+                  <input
+                    type="checkbox"
+                    checked={
+                      !!data.destination_offers.length &&
+                      data.destination_offers.every((item) =>
+                        selectedDestinationOffers.includes(item.id),
+                      )
+                    }
+                    onChange={(event) =>
+                      setSelectedDestinationOffers(
+                        event.target.checked
+                          ? data.destination_offers.map((item) => item.id)
+                          : [],
+                      )
+                    }
+                  />
+                  {t("selectAll")}
+                </label>
+                {['approved', 'disabled'].map((reviewStatus) => (
+                  <button
+                    key={reviewStatus}
+                    className={button}
+                    disabled={busy || !selectedDestinationOffers.length}
+                    onClick={() =>
+                      void run(async () => {
+                        await api(
+                          "/admin/travel-services/destination-offers/batch-review",
+                          {
+                            method: "POST",
+                            body: JSON.stringify({
+                              status: reviewStatus,
+                              offers: data.destination_offers
+                                .filter((item) =>
+                                  selectedDestinationOffers.includes(item.id),
+                                )
+                                .map((item) => ({
+                                  id: item.id,
+                                  version: item.version,
+                                })),
+                            }),
+                          },
+                        );
+                        setSelectedDestinationOffers([]);
+                      })
+                    }
+                  >
+                    {t(reviewStatus === "approved" ? "batchApprove" : "batchDisable")}
+                  </button>
+                ))}
+              </div>
+
+              <div className="space-y-3">
+                {data.destination_offers.map((offer) => {
+                  const brand = data.brands.find(
+                    (item) => item.id === offer.brand_id,
+                  );
+                  const destinationItem = data.destinations.find(
+                    (item) => item.id === offer.destination_id,
+                  );
+                  return (
+                    <article
+                      key={offer.id}
+                      className="rounded-2xl border border-[var(--line)] p-4"
+                    >
+                      <div className="flex items-start gap-3">
+                        <input
+                          aria-label={t("selectOffer", {
+                            brand: brand?.name || offer.brand_id,
+                          })}
+                          type="checkbox"
+                          checked={selectedDestinationOffers.includes(offer.id)}
+                          onChange={(event) =>
+                            setSelectedDestinationOffers((current) =>
+                              event.target.checked
+                                ? [...current, offer.id]
+                                : current.filter((id) => id !== offer.id),
+                            )
+                          }
+                        />
+                        <div className="min-w-0 flex-1">
+                          <strong>{brand?.name || offer.brand_id}</strong>
+                          <p className="text-sm text-[var(--muted)]">
+                            {destinationItem?.city || offer.destination_id} · {offer.module} · {t(offer.status)}
+                          </p>
+                          <a
+                            className="mt-2 block truncate text-sm text-[var(--teal)] underline"
+                            href={offer.target_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {offer.target_url}
+                          </a>
+                          {offer.verified_at && (
+                            <p className="mt-1 text-xs text-[var(--muted)]">
+                              {t("verifiedAt")}: {new Date(offer.verified_at).toLocaleDateString()}
+                            </p>
+                          )}
+                          {destinationOfferEditor?.row.id === offer.id && (
+                            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                              <label>
+                                {t("originalUrl")}
+                                <input
+                                  type="url"
+                                  className={field}
+                                  value={destinationOfferEditor.targetUrl}
+                                  onChange={(event) =>
+                                    setDestinationOfferEditor({
+                                      ...destinationOfferEditor,
+                                      targetUrl: event.target.value,
+                                    })
+                                  }
+                                />
+                              </label>
+                              <label>
+                                {t("staticUrl")}
+                                <input
+                                  type="url"
+                                  className={field}
+                                  value={destinationOfferEditor.staticUrl}
+                                  onChange={(event) =>
+                                    setDestinationOfferEditor({
+                                      ...destinationOfferEditor,
+                                      staticUrl: event.target.value,
+                                    })
+                                  }
+                                />
+                              </label>
+                              <button
+                                className={button}
+                                disabled={busy || !destinationOfferEditor.targetUrl}
+                                onClick={() =>
+                                  void run(async () => {
+                                    await api(
+                                      `/admin/travel-services/destination-offers/${offer.id}?version=${offer.version}`,
+                                      {
+                                        method: "PUT",
+                                        body: JSON.stringify({
+                                          brand_id: offer.brand_id,
+                                          destination_id: offer.destination_id,
+                                          module: offer.module,
+                                          target_url:
+                                            destinationOfferEditor.targetUrl,
+                                          static_url:
+                                            destinationOfferEditor.staticUrl || null,
+                                        }),
+                                      },
+                                    );
+                                    setDestinationOfferEditor(undefined);
+                                  })
+                                }
+                              >
+                                {t("saveAndReverify")}
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex flex-col gap-2">
+                          <button
+                            className={button}
+                            disabled={busy}
+                            onClick={() =>
+                              setDestinationOfferEditor({
+                                row: offer,
+                                targetUrl: offer.target_url,
+                                staticUrl: offer.static_url || "",
+                              })
+                            }
+                          >
+                            {t("edit")}
+                          </button>
+                          <button
+                            className={button}
+                            disabled={busy}
+                            onClick={() =>
+                              void run(() =>
+                                api(
+                                  `/admin/travel-services/destination-offers/${offer.id}/review`,
+                                  {
+                                    method: "POST",
+                                    body: JSON.stringify({
+                                      version: offer.version,
+                                      status:
+                                        offer.status === "approved"
+                                          ? "disabled"
+                                          : "approved",
+                                    }),
+                                  },
+                                ),
+                              )
+                            }
+                          >
+                            {t(
+                              offer.status === "approved" ? "disable" : "approve",
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            </section>
+          )}
           {tab === "brands" && (
             <section className="space-y-4">
               <p className="text-sm">
@@ -604,6 +1093,16 @@ export function TravelServicesAdmin() {
                             ? "unknownStatus"
                             : row.approval,
                         )}
+                      </span>
+                      <span className="mt-1 block text-xs text-[var(--muted)]">
+                        {b.modules.map((module) =>
+                          t(`affiliate${module[0].toUpperCase()}${module.slice(1)}`),
+                        ).join(" · ")}
+                      </span>
+                      <span className="mt-1 block text-xs text-[var(--muted)]">
+                        {row?.verified_at
+                          ? `${t("verifiedAt")}: ${new Date(row.verified_at).toLocaleDateString()}`
+                          : t("verificationRequired")}
                       </span>
                     </button>
                   );
@@ -891,14 +1390,19 @@ export function TravelServicesAdmin() {
                   {t("destinationLink")}
                 </legend>
                 <div className="mt-2 grid grid-cols-2 gap-2">
-                  {CITIES.map((c) => (
-                    <label className="flex min-h-11 items-center gap-2" key={c}>
+                  {data.destinations.map((destinationItem) => (
+                    <label
+                      className="flex min-h-11 items-center gap-2"
+                      key={destinationItem.id}
+                    >
                       <input
                         type="checkbox"
-                        checked={config.enabled_destinations.includes(c)}
-                        onChange={() => toggle("enabled_destinations", c)}
+                        checked={config.enabled_destinations.includes(
+                          destinationItem.id,
+                        )}
+                        onChange={() => toggleDestination(destinationItem.id)}
                       />
-                      {t(c)}
+                      {destinationItem.country} · {destinationItem.city}
                     </label>
                   ))}
                 </div>

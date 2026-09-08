@@ -6,15 +6,18 @@ from uuid import UUID
 
 import httpx
 from fastapi import APIRouter, Query
-from sqlalchemy import func, select
+from sqlalchemy import func, or_, select
 
 from app.admin.service import load_runtime_settings
+from app.affiliates.schemas import AffiliateModule
 from app.affiliates.service import TravelpayoutsLinkClient
 from app.auth.service import AdminUser
+from app.destinations.catalog import DESTINATIONS
 from app.infra import get_redis
 from app.models import (
     AdminAuditLog,
     AffiliateClick,
+    DestinationAffiliateOffer,
     HotelBookingClick,
     HotelBookingOption,
     TravelServiceBrand,
@@ -35,6 +38,8 @@ from app.travel_services.schemas import (
     BrandInput,
     ConfigInput,
     CsvInput,
+    DestinationOfferBatchReview,
+    DestinationOfferInput,
     HotelLink,
     HotelOptionEdit,
     HotelOptionInput,
@@ -84,9 +89,14 @@ async def overview(
     status: str | None = None,
     offset: int = Query(0, ge=0),
     limit: int = Query(60, ge=1, le=100),
+    affiliate_module: AffiliateModule | None = None,
+    offer_status: str | None = None,
+    offer_brand_id: UUID | None = None,
+    offer_review_due: bool = False,
 ) -> dict[str, Any]:
     config, version = await catalog_config(session)
     settings = await load_runtime_settings(session)
+    now = datetime.now(UTC)
     query = select(TravelServiceProduct)
     if destination_id:
         query = query.where(TravelServiceProduct.destination_id == destination_id)
@@ -113,12 +123,43 @@ async def overview(
             )
         )
     )
+    destination_offer_query = select(DestinationAffiliateOffer)
+    if destination_id:
+        destination_offer_query = destination_offer_query.where(
+            DestinationAffiliateOffer.destination_id == destination_id
+        )
+    if affiliate_module:
+        destination_offer_query = destination_offer_query.where(
+            DestinationAffiliateOffer.module == affiliate_module
+        )
+    if offer_status:
+        destination_offer_query = destination_offer_query.where(
+            DestinationAffiliateOffer.status == offer_status
+        )
+    if offer_brand_id:
+        destination_offer_query = destination_offer_query.where(
+            DestinationAffiliateOffer.brand_id == offer_brand_id
+        )
+    if offer_review_due:
+        destination_offer_query = destination_offer_query.where(
+            or_(
+                DestinationAffiliateOffer.verified_at.is_(None),
+                DestinationAffiliateOffer.verified_at < now - timedelta(days=30),
+            )
+        )
+    destination_offers = list(
+        await session.scalars(
+            destination_offer_query.order_by(
+                DestinationAffiliateOffer.destination_id,
+                DestinationAffiliateOffer.module,
+            ).limit(500)
+        )
+    )
     all_products = list(
         await session.scalars(
             select(TravelServiceProduct).where(TravelServiceProduct.status == "approved")
         )
     )
-    now = datetime.now(UTC)
     coverage = []
     for city in CITIES:
         from app.travel_services.hotel_options import needs_source_credit
@@ -204,6 +245,16 @@ async def overview(
             for code in ("booking", "trip_com", "agoda", "expedia", "rakuten")
         },
         "offers": [record(o) for o in offers],
+        "destination_offers": [record(o) for o in destination_offers],
+        "destinations": [
+            {
+                "id": destination.id,
+                "city": destination.city,
+                "country": destination.country_label,
+                "role": destination.role,
+            }
+            for destination in DESTINATIONS
+        ],
         "brands": [
             {**record(b), "name": BRANDS[b.code].name if b.code in BRANDS else b.code}
             for b in brands
@@ -213,6 +264,7 @@ async def overview(
                 "name": b.name,
                 "hosts": b.hosts,
                 "kinds": b.kinds,
+                "modules": b.supported_modules,
                 "api_supported": b.api_supported,
             }
             for code, b in BRANDS.items()
@@ -532,6 +584,202 @@ async def review_offer(
     row.verified_at = datetime.now(UTC) if payload.status == "approved" else None
     row.version += 1
     audit(session, user, "offer_review", str(row.id), {"status": row.status})
+    await session.commit()
+    return record(row)
+
+
+def _validate_destination_offer(
+    payload: DestinationOfferInput,
+    brand: TravelServiceBrand | None,
+    project_id: str | None,
+) -> None:
+    if (
+        not brand
+        or brand.project_id != project_id
+        or brand.code not in BRANDS
+        or payload.module not in BRANDS[brand.code].supported_modules
+    ):
+        raise fail("service_brand_unavailable")
+    try:
+        brand_target(brand.code, payload.target_url)
+        if payload.static_url:
+            affiliate_target(payload.static_url)
+    except ValueError as exc:
+        raise fail("service_offer_mismatch") from exc
+
+
+@router.post("/destination-offers", status_code=201)
+async def create_destination_offer(
+    payload: DestinationOfferInput,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, Any]:
+    settings = await load_runtime_settings(session)
+    brand = await session.get(TravelServiceBrand, payload.brand_id)
+    _validate_destination_offer(payload, brand, settings.travelpayouts_project_id)
+    existing = await session.scalar(
+        select(DestinationAffiliateOffer).where(
+            DestinationAffiliateOffer.brand_id == payload.brand_id,
+            DestinationAffiliateOffer.destination_id == payload.destination_id,
+            DestinationAffiliateOffer.module == payload.module,
+        )
+    )
+    if existing:
+        raise fail("service_offer_mismatch", 409)
+    row = DestinationAffiliateOffer(**payload.model_dump(), status="pending", version=1)
+    session.add(row)
+    await session.flush()
+    audit(
+        session,
+        user,
+        "destination_offer_create",
+        str(row.id),
+        {"destination_id": row.destination_id, "module": row.module},
+    )
+    await session.commit()
+    return record(row)
+
+
+@router.put("/destination-offers/{offer_id}")
+async def edit_destination_offer(
+    offer_id: UUID,
+    payload: DestinationOfferInput,
+    user: AdminUser,
+    session: Session,
+    version: int = Query(..., ge=1),
+) -> dict[str, Any]:
+    row = await session.scalar(
+        select(DestinationAffiliateOffer)
+        .where(DestinationAffiliateOffer.id == offer_id)
+        .with_for_update()
+    )
+    if not row or row.version != version:
+        raise fail("service_version_conflict", 409)
+    settings = await load_runtime_settings(session)
+    brand = await session.get(TravelServiceBrand, payload.brand_id)
+    _validate_destination_offer(payload, brand, settings.travelpayouts_project_id)
+    duplicate = await session.scalar(
+        select(DestinationAffiliateOffer.id).where(
+            DestinationAffiliateOffer.brand_id == payload.brand_id,
+            DestinationAffiliateOffer.destination_id == payload.destination_id,
+            DestinationAffiliateOffer.module == payload.module,
+            DestinationAffiliateOffer.id != offer_id,
+        )
+    )
+    if duplicate:
+        raise fail("service_offer_mismatch", 409)
+    for key, value in payload.model_dump().items():
+        setattr(row, key, value)
+    row.status = "pending"
+    row.verified_at = None
+    row.verification_context = None
+    row.version += 1
+    audit(session, user, "destination_offer_edit", str(row.id))
+    await session.commit()
+    return record(row)
+
+
+async def _review_destination_offer_row(
+    row: DestinationAffiliateOffer,
+    status: str,
+    session: Session,
+) -> None:
+    if status == "approved":
+        brand = await session.get(TravelServiceBrand, row.brand_id)
+        settings = await load_runtime_settings(session)
+        if (
+            not brand
+            or not ready_brand(brand, settings, datetime.now(UTC))
+            or row.module not in BRANDS[brand.code].supported_modules
+        ):
+            raise fail("service_brand_unavailable")
+        try:
+            if not row.static_url and not BRANDS[brand.code].api_supported:
+                raise fail("service_link_unavailable")
+            if not row.static_url and not (
+                settings.travelpayouts_api_token
+                and settings.travelpayouts_marker
+                and settings.travelpayouts_project_id
+            ):
+                raise fail("service_brand_unavailable")
+            target = row.static_url or await TravelpayoutsLinkClient(
+                get_redis(), settings
+            ).create(
+                row.target_url,
+                "dst_verify",
+                cache_context=f"destination-verify:{row.id}:{row.version}",
+            )
+            if row.static_url and not settings.travelpayouts_marker:
+                raise fail("service_brand_unavailable")
+            if not await verify_link(
+                target,
+                brand.code,
+                row.target_url,
+                marker=settings.travelpayouts_marker if row.static_url else None,
+                project=settings.travelpayouts_project_id if row.static_url else None,
+            ):
+                raise fail("service_link_unavailable")
+            row.verification_context = link_context(settings)
+        except (httpx.HTTPError, ConnectionError, ValueError, TimeoutError) as exc:
+            raise fail("service_link_unavailable") from exc
+    row.status = status
+    row.verified_at = datetime.now(UTC) if status == "approved" else None
+    row.version += 1
+
+
+@router.post("/destination-offers/batch-review")
+async def batch_review_destination_offers(
+    payload: DestinationOfferBatchReview,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, Any]:
+    expected = {item.id: item.version for item in payload.offers}
+    if len(expected) != len(payload.offers):
+        raise fail("service_version_conflict", 409)
+    rows = list(
+        await session.scalars(
+            select(DestinationAffiliateOffer)
+            .where(DestinationAffiliateOffer.id.in_(expected))
+            .with_for_update()
+        )
+    )
+    if len(rows) != len(expected) or any(row.version != expected[row.id] for row in rows):
+        raise fail("service_version_conflict", 409)
+    for row in rows:
+        await _review_destination_offer_row(row, payload.status, session)
+    audit(
+        session,
+        user,
+        "destination_offer_batch_review",
+        "batch",
+        {"status": payload.status, "count": len(rows)},
+    )
+    await session.commit()
+    return {"updated": len(rows), "status": payload.status}
+
+
+@router.post("/destination-offers/{offer_id}/review")
+async def review_destination_offer(
+    offer_id: UUID,
+    payload: ReviewInput,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, Any]:
+    row = await session.scalar(
+        select(DestinationAffiliateOffer)
+        .where(DestinationAffiliateOffer.id == offer_id)
+        .with_for_update()
+    )
+    if not row or row.version != payload.version:
+        raise fail("service_version_conflict", 409)
+    await _review_destination_offer_row(row, payload.status, session)
+    audit(
+        session,
+        user,
+        "destination_offer_review",
+        str(row.id),
+        {"status": row.status},
+    )
     await session.commit()
     return record(row)
 

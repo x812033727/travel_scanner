@@ -6,7 +6,10 @@ The catalog is off by default. This implementation does not apply brand approval
 invent inventory, seed fabricated hotels or deploy production configuration. It does
 not charge a member's use balance. Partners complete all bookings externally.
 
-Public routes: `/{locale}/destinations/{tokyo|osaka|kyoto|seoul|busan|taipei}/services`.
+Public routes use the authoritative destination catalog at
+`/{locale}/destinations/{destination_id}/services`; all 33 current destination IDs
+are accepted. The legacy `osaka` and `kyoto` URLs remain compatible and resolve
+destination-level offers through `osaka-kyoto`.
 Administration: `/{locale}/admin/travel-services`. The planner's four service shortcuts
 and existing stay-area flow use the same catalog. Hotspot details link to nearby stays.
 Public browsing and clickout are anonymous; saving and selecting require sign-in.
@@ -105,6 +108,39 @@ require rebuilding the hotel catalog or the lodging-selection flow.
    controls. Unpriced hotels remain unpriced. A link failure does not substitute
    a different product or silently redirect to a generic home page.
 
+### Destination-level brand offers
+
+Destination-level offers are a separate contract from exact products. They are
+stored as a brand, destination, module and original landing page. They may say that
+the traveller will continue searching on the named external platform; they must not
+claim a particular hotel, transfer, flight, tour, price or availability. Exact
+products continue to use `TravelServiceOffer`.
+
+The admin destination-offer checklist only accepts brands and modules from the
+code-controlled registry and URLs on that brand's allowlisted domains. Creating or
+editing an offer leaves it pending. Approval requires a currently approved and
+enabled brand for the configured project, a fresh brand review, a successful Partner
+Links conversion (or reviewed static Travelpayouts link), and redirect verification
+that preserves the brand and destination identity. Both brand and offer verification
+expire after 30 days. A project, marker or account-setting change also invalidates
+the saved verification context.
+
+`GET /affiliates/destination-offers?destination_id=...&module=...` is anonymous and
+returns only offer IDs, brand labels, localized call-to-action text and same-origin
+clickout paths. It never returns the original or tracked URL. The associated POST
+clickout resolves the stored offer server-side, shares the existing 100 requests per
+minute Partner Links budget/cache, records brand/module/destination placement and
+returns a no-store 303. Invalid, disabled, stale, mismatched and unapproved records
+fail closed.
+
+Saved-search and trip affiliate options put verified branded destination offers
+first. The generic Travelpayouts option is shown only when no branded option is
+eligible, and a direct partner with the same brand is not duplicated. Commission is
+never used for ranking. Deployment does not seed or approve any brand or destination
+offer; the operator must re-check the live Project `570089` state after deployment,
+create the intended 33-destination matrix, verify every link, and only then enable
+the catalog release controls.
+
 ### CSV contract
 
 Required: `source_key,kind,destination_id,title,source_url`.
@@ -181,7 +217,8 @@ and link approvals expire from public eligibility after 30 days.
 `PATCH /trips/{id}/travel-services/{selection_id}`,
 `PUT|DELETE /saved-items/service/{product_id}`.
 
-`POST /affiliates/offers/{offer_id}/clickout` accepts only a saved offer ID and a
+`POST /affiliates/offers/{offer_id}/clickout` and
+`POST /affiliates/destination-offers/{offer_id}/clickout` accept only a saved offer ID and a
 whitelisted placement. The same-origin BFF POST form opens a new tab with a 303;
 no arbitrary target URL is accepted. The BFF validates its locale and strips it
 before forwarding a controlled header. Destination, not user/trip/product ID, is
@@ -207,8 +244,9 @@ confirmed commission is **not connected**. No test order is placed.
   locales, 320/390/1280 px, dark appearance, anonymous links and planner back/focus.
 - CI additionally runs fresh PostgreSQL migrations, all API/web tests, production
   images and the existing PostgreSQL/Redis/RQ full-stack journey.
-- Migration `0056_travel_services` follows `0055_analytics_event_names`; existence guards
-  support metadata-based fresh installs. Downgrade drops catalog tables; it leaves
+- Migration `0063_destination_offers` follows `0062_merchant_platform_links` and
+  adds the destination-level offer table with existence guards for current-metadata
+  fresh installs. Earlier `0056_travel_services` guards remain in place. Downgrade drops catalog tables; it leaves
   click actors nullable to avoid deleting anonymous accounting history.
 - Before production: verify current brand approvals, meet real content targets,
   verify actual landing identity + tracking, inspect empty/error states, and enable

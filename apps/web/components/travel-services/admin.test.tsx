@@ -50,6 +50,10 @@ const product = {
 const overview = {
   products: [product],
   offers: [],
+  destination_offers: [],
+  destinations: [
+    { id: "tokyo", city: "東京", country: "日本", role: "primary" },
+  ],
   brands: [],
   network_configured: false,
   project_id: null,
@@ -61,7 +65,13 @@ const overview = {
   },
   version: 2,
   brand_definitions: {
-    booking: { name: "Booking.com", kinds: ["hotel"], hosts: ["booking.com"] },
+    booking: {
+      name: "Booking.com",
+      kinds: ["hotel"],
+      modules: ["hotel"],
+      hosts: ["booking.com"],
+      api_supported: true,
+    },
   },
   coverage: [],
   review_due: 0,
@@ -170,4 +180,64 @@ it("loads saved identity evidence before an independent platform recheck", async
       }) as HTMLButtonElement
     ).disabled,
   ).toBe(false);
+});
+
+it("creates and batch-reviews destination offers without exposing arbitrary brands", async () => {
+  const brand = {
+    id: "11111111-1111-1111-1111-111111111111",
+    code: "klook",
+    name: "Klook",
+    approval: "approved",
+    enabled: true,
+    evidence_url: "https://app.travelpayouts.com/programs?source=570089",
+    verified_at: "2026-09-08T00:00:00Z",
+    version: 2,
+  };
+  request.mockResolvedValue({
+    ...overview,
+    network_configured: true,
+    brands: [brand],
+    destination_offers: [
+      {
+        id: "22222222-2222-2222-2222-222222222222",
+        brand_id: brand.id,
+        destination_id: "tokyo",
+        module: "activities",
+        status: "pending",
+        version: 1,
+        target_url: "https://www.klook.com/city/28-tokyo/",
+        static_url: null,
+        verified_at: null,
+      },
+    ],
+    brand_definitions: {
+      klook: {
+        name: "Klook",
+        kinds: ["tour"],
+        modules: ["activities"],
+        hosts: ["klook.com"],
+        api_supported: true,
+      },
+    },
+  });
+  render(<TravelServicesAdmin />);
+  fireEvent.click(
+    await screen.findByRole("tab", { name: copy.destinationOffers }),
+  );
+  fireEvent.click(screen.getByLabelText(copy.selectAll));
+  fireEvent.click(screen.getByRole("button", { name: copy.batchApprove }));
+  await waitFor(() =>
+    expect(request).toHaveBeenCalledWith(
+      "/admin/travel-services/destination-offers/batch-review",
+      expect.objectContaining({ method: "POST" }),
+    ),
+  );
+  const [, options] = request.mock.calls.find(
+    ([path]) =>
+      path === "/admin/travel-services/destination-offers/batch-review",
+  )!;
+  expect(JSON.parse(options.body)).toEqual({
+    status: "approved",
+    offers: [{ id: "22222222-2222-2222-2222-222222222222", version: 1 }],
+  });
 });
