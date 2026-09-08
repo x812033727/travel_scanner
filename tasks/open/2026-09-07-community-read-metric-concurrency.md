@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-07T23:27:30Z
 completed_at:
-branch: codex/hotel-content-review-kyoto
+branch: codex/hotel-content-review-namba
 depends_on: []
 scope:
   - apps/api/app/community
@@ -64,3 +64,24 @@ the confirmation-page failure. Investigate the confirmation response/render JSON
 separately before choosing a fix or expanding the task's implementation scope. No raw
 member IDs, tokens, mail bodies or request payloads are retained in this note. No hotel
 code changed these paths, and no remediation or silent test rerun is claimed.
+
+2026-09-08 recurrence at hotel content 4ed2cdb7b849747bf70aea6b4ece601a85a77498:
+PR run 34179147187 / failed job 101914466661 returned Next HTML 500 on
+GET /community/me (community.spec.ts:189 test, API helper line 10, call line 200).
+The stack specifically identifies JSON.parse in next/dist/server/load-manifest.external.js:54,
+loadManifestFromRelativePath at line 111, and AppRouteRouteModule.loadManifests/prepare,
+with Unexpected end of JSON input for /api/travel/community/me. Six daily-read
+uq_community_metric duplicates also occurred; no causality between these observations
+is established. Do not retain raw HTML, account IDs or tokens. Same-head push run
+34179144536 passed all jobs. One disclosed failed-job rerun, attempt 2 / job 101915643161,
+passed, allowing SHA-guarded PR #348 merge at 9e94d03. This is not a repair. Investigate
+Next dev-manifest concurrent generation separately from metric insertion before editing
+runtime scope. This continuation only records evidence; the task remains open.
+
+Post-merge main 9e94d031d6e1755195d818de90340d362b2c9e96 run 34179865798 /
+job 101916593263: API/web/containers passed, community mail-recovery test line 336
+failed at registerAndVerify line 32 (GET /community/me, call line 344) with
+apiRequestContext.fetch: read ECONNRESET. Next logged destination stream closed early;
+six uq_community_metric duplicates also appeared. This run does not establish the same
+manifest JSON failure or prove that metric duplicates cause the reset. One failed-job
+rerun was requested, with no test/runtime changes or error suppression.

@@ -14,6 +14,15 @@ September 8 after all eight latest-main checks passed. The next isolated continu
 `codex/hotel-content-review-osaka`; see `review-2026-09-08-osaka-five.md` for its current
 counts and the independently changed production catalog configuration.
 
+PR #348 then merged at `9e94d03`. The latest checkpoint is
+`review-2026-09-08-namba-map.md` and `namba-map.review-2026-09-08.json`:
+60 identities, 17 approved products / 43 pending; 41 approved options / 319 pending.
+Five new location approvals, ten platform approvals and four candidate URLs were added
+without changing rollout settings. Five-locale public reads return Tokyo 10 / Osaka 2;
+no city yet satisfies official plus two approved OTA links for every hotel.
+Earlier dated review files and pending import inputs are historical evidence, not a
+live-state synchronization source. Never replay pending packages over reviewed rows.
+
 `0057_hotel_booking_options` migrates legacy links into independent reviewed identities.
 Products and trip associations retain their IDs. `facts.hotel_links` is accepted/projected
 for old clients, but never stored as a second authority. New imports use a JSON
