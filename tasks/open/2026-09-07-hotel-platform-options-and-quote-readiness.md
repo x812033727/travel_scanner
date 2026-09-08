@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-07T12:32:44Z
 completed_at:
-branch: codex/hotel-content-review-kyoto
+branch: codex/hotel-content-review-osaka
 depends_on: []
 scope:
   - apps/api/tests/test_hotel_content_package.py
@@ -16,6 +16,44 @@ scope:
 ---
 
 # Hotel platform options and quote readiness
+
+## 2026-09-08 merged checkpoint and Osaka five-hotel continuation
+
+User authorized merging #344, then continuing additions/review. Latest main b060227 caused
+the initial merge to be blocked; synced main and verified head 873e876, all eight checks
+(PR 34175671037 / push 34175669025), CLEAN/MERGEABLE, then SHA-guarded squash merge.
+GitHub confirmed merged commit 2e5e9feb68181d809653ad9ac67cf761e0f98950, 01:15:52 UTC.
+Continued on codex/hotel-content-review-osaka from that main in the isolated worktree.
+The original dirty workspace is preserved. No runtime deployment or migration performed.
+
+Five Osaka official/Trip exact pages match names and street numbers. Chrome existing-tab
+read timed out/reset and one fresh-tab recovery also failed; no map/browser identity
+review succeeded. Ten normal official/Trip option reviews passed healthy HTTPS/DNS/redirect
+checks with browser_verified=false. Four missing Agoda URLs were added to existing slots,
+pending/version 2/unchecked, without guessed property IDs. No hotel identities were added.
+Granvia's inconsistent-city Agoda URL was not used; Intergate's separate parking address
+was excluded. All product/location facts and approved Tokyo/Seoul records are preserved.
+
+The old Tokyo fingerprint guard failed read-only because config independently changed at
+01:14:02 UTC to version 5, public services/all six cities enabled. Preserved it exactly;
+do not replay older disabled/Tokyo-only assertions or claim this task enabled public rollout.
+Runtime is still b3e49a3/schema 0061. Verified backup
+/root/travel_scanner_pre_hotel_candidates_20260908T011904Z.dump (7058883 bytes) preceded
+normal versioned admin writes. Baseline and all-60-products/other-346-options/config
+fingerprints matched; independent verification confirmed all 14 edit/review audit records.
+
+Current: 60 hotels, 12 approved/48 pending; 360 options, 31 approved/329 pending.
+Five-language public smoke: Osaka zero hotels despite enabled city and approved options;
+Tokyo seven with official + Trip, pending options hidden. No city is content-complete.
+No clickout/conversion/provider-price API calls or affiliate/quote/config changes.
+
+130 related tests, Ruff/format, mypy 255 sources, 27 tools tests, five locales/25 namespaces,
+task checks and diff checks passed. Evidence: review-2026-09-08-osaka-five.md and
+osaka-five.review-2026-09-08.json. New PR CI tracked separately; #344 post-merge run
+34176066090 passed API, web, containers and full-stack smoke at the exact merge SHA.
+Previous unrelated community CI failure remains separately tracked, not fixed here.
+Remaining: map reviews, second OTAs, other five Osaka platform pairs, durable Kyoto/Busan
+locations and every city's full acceptance. Release at handoff, do not mark task done.
 
 ## 2026-09-08 latest Ryumeikan and four-hotel platform continuation
 

@@ -407,3 +407,74 @@ def test_new_tokyo_agoda_candidates_are_not_approved_from_http_health():
         assert source["url"] == review["url"] and source["discovery_status"] == "found"
         assert "待審" in source["identity_note"] and "status" not in source
         assert not source.get("property_id")
+
+
+def test_osaka_platform_review_keeps_unverified_hotels_hidden_even_when_city_enabled():
+    directory = Path(__file__).resolve().parents[3] / "docs/hotel-platforms"
+    evidence = json.loads(
+        (directory / "osaka-five.review-2026-09-08.json").read_text(encoding="utf-8")
+    )
+    package = json.loads((directory / "osaka.pending.json").read_text(encoding="utf-8"))
+    rows = {r["product"]["source_key"]: r for r in package}
+    assert len(evidence["hotels"]) == 5
+    now = datetime.now(UTC)
+    config = CatalogConfig(
+        public_enabled=True, enabled_destinations=["osaka"], enabled_kinds=["hotel"]
+    )
+    reviewed_ids = set()
+    for hotel in evidence["hotels"]:
+        row = rows[hotel["source_key"]]
+        data = ProductInput.model_validate(row["product"])
+        assert hotel["product_status"] == "pending" and not data.facts.map_verified
+        assert hotel["map_review_status"] == "not_checked"
+        assert hotel["official_identity_url"] == data.source_url
+        options = {o["provider"]: o for o in row["booking_options"]}
+        approved = [r for r in hotel["platform_reviews"] if r["status"] == "approved"]
+        assert {r["provider"] for r in approved} == {"official", "trip_com"}
+        product = TravelServiceProduct(**row["product"], id=uuid4(), status="pending")
+        for review in approved:
+            assert review["url"] == options[review["provider"]]["url"]
+            assert review["identity_evidence_url"] == data.source_url
+            assert review["matched_name"] and review["matched_address"]
+            assert review["version"] == 2 and review["health"] == "healthy"
+            assert review["browser_verified"] is False
+            assert review["reviewed_on"] == evidence["checked_on"]
+            reviewed_ids.add(review["option_id"])
+            option = HotelBookingOption(
+                **HotelOptionInput.model_validate(options[review["provider"]]).model_dump(),
+                id=uuid4(),
+                status="approved",
+                verified_at=now,
+                health_status="healthy",
+            )
+            assert not ready_option(product, option, config, now)
+    assert len(reviewed_ids) == 10
+
+
+def test_osaka_candidate_additions_do_not_guess_ids_or_promote_ambiguous_sources():
+    directory = Path(__file__).resolve().parents[3] / "docs/hotel-platforms"
+    evidence = json.loads(
+        (directory / "osaka-five.review-2026-09-08.json").read_text(encoding="utf-8")
+    )
+    package = json.loads((directory / "osaka.pending.json").read_text(encoding="utf-8"))
+    rows = {r["product"]["source_key"]: r for r in package}
+    candidates = [
+        (h, r) for h in evidence["hotels"] for r in h["platform_reviews"] if r.get("new_candidate")
+    ]
+    assert len(candidates) == 4
+    for hotel, review in candidates:
+        option = next(
+            o for o in rows[hotel["source_key"]]["booking_options"] if o["provider"] == "agoda"
+        )
+        assert option["url"] == review["url"]
+        assert option["discovery_status"] == "found" and not option.get("property_id")
+        assert "待審" in option["identity_note"] and "status" not in option
+        assert review["status"] == "pending" and review["health"] == "unchecked"
+        assert review["browser_verified"] is False and review["version"] == 2
+    granvia = rows["editorial:osaka:granvia-osaka"]
+    agoda = next(o for o in granvia["booking_options"] if o["provider"] == "agoda")
+    assert agoda["discovery_status"] == "unconfirmed" and not agoda.get("url")
+    assert not any("kobe-jp" in o.get("url", "") for r in package for o in r["booking_options"])
+    intergate = next(h for h in evidence["hotels"] if "intergate" in h["source_key"])
+    assert intergate["official_address"].endswith("梅田2-5-2")
+    assert any(e.get("address", "").endswith("梅田2丁目4-9") for e in evidence["excluded"])
