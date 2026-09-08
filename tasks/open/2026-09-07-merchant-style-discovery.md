@@ -5,10 +5,10 @@ status: review
 priority: P1
 area: api
 owner: codex
-claimed_at: 2026-09-08T01:08:02Z
+claimed_at: 2026-09-08T02:10:28Z
 created_at: 2026-09-07T23:14:18Z
 completed_at:
-branch: codex/merchant-style-batch-03
+branch: codex/merchant-style-batch-04
 depends_on: []
 scope:
   - apps/api/app/models.py
@@ -53,7 +53,9 @@ scope:
 - [x] 第二批 8 家官方來源查核及 9 個風格提案，備份後加入正式環境待審清單。
 - [x] 第二批 PR #346 完成 CI、依「合併後繼續新增」授權合併，main CI 全綠。
 - [x] 第三批7家官方來源查核、待審匯入、稽核與重播驗證。
-- [ ] 第三批資料／測試／查核交接 PR 完成 CI 與合併（本輪合併授權針對 #346）。
+- [x] 第三批 PR #347 完成 CI 與依本輪授權合併，post-merge CI 全綠。
+- [x] 第四批5家新店＋1家既有補風格、6個提案完成來源查核、待審匯入、快照比對與重播驗證。
+- [ ] 第四批資料／測試／交接 PR 完成 CI 與合併（本輪合併授權針對 #347）。
 - [ ] 逐家補齊地圖與永久座標、管理員風格審核，再另行發布店家。
 
 ## Steps
@@ -73,8 +75,8 @@ Web: 單工 Vitest、TypeScript、lint、check:i18n、production build；merchan
 
 新候選缺精準地圖與可永久保存座標時保持 pending/inactive/unverified，不用來源文字推造識別。
 先完成原始來源審查，再於已部署的後台逐一記錄操作人及風格核准；資料檔不能偷帶 approved。
-PR #345 已合併部署，第二批 PR #346 已依授權合併；繼續新增仍只補正式待審候選，不代表核准發布。
-未啟動付費模型或地圖批次，第三批資料 PR 的合併仍需新授權。
+PR #345 已合併部署，第二／三批 PR #346、#347 已依授權合併；繼續新增仍只補正式待審候選，不代表核准發布。
+未啟動付費模型或地圖批次，第四批資料 PR 的合併仍需新授權。
 
 ## PR 與驗證交接
 
@@ -109,3 +111,13 @@ PR #345 已合併部署，第二批 PR #346 已依授權合併；繼續新增仍
 - 本機 API 43 passed / 1 PostgreSQL-only skipped；Ruff 全套、mypy 255 files 通過。將既有批次資料庫測試參數化覆蓋第二／三批，新增跨批次身分去重測試。
 - 第三批正式作業目錄 `/root/mokaair-merchant-batch-03-JRTuNg2X`，保留來源、預覽／套用／重播結果及私人備份，不刪舊檔。
 - 正式套用7店／7標籤、重播0／0；地圖／座標／商圈留空，店家pending/inactive/unverified，稽核2筆actor=NULL系統操作。三批共19新店＋1既有補風格、21個pending標籤，未公開。
+
+## 第四批交接（2026-09-08）
+
+- #347 鎖定head `744262e31b12ff48edda9fff02f03ea1ca6b1f4e` 合併為 `67234d9bd56a1a037b62daf6439275339e3ae1d3`，origin/main與post-merge CI `34179094453` 已核對全綠。
+- 從最新main建立 `codex/merchant-style-batch-04`，不操作原mobile-planner checkout或其他PR。
+- 新增神保町ブックセンター、梟書茶房、文喫福岡天神、Brown Hands百濟、TERAROSA水營；Walden Woods僅補缺少的網美提案。3文青／3網美，來源與判定界線見 docs/merchant-styles.md。
+- 本機 API 46 passed / 1 PostgreSQL-only skipped；全套Ruff及mypy 255 files通過。資料測試納入第四批，新增既有approved店家完整欄位、來源及分類不被覆寫的SQLite／PostgreSQL回歸測試。
+- 正式作業目錄 `/root/mokaair-merchant-batch-04-PnQ6qaZd` 保留JSON、preview/applied/replay、備份及Walden前後快照；備份7,060,901 bytes、權限600，不刪舊備份。
+- 正式名稱／地址查重、checksum、部署鎖與備份完成後套用5新店／6風格；再預覽0／0。新店皆pending/inactive/unverified、地圖／座標／商圈空白。Walden店家／來源／分類前後快照完全一致，既有發布狀態不變。
+- 新增稽核2筆actor=NULL系統操作，四批合計24新候選＋2既有補風格、27個pending標籤；公開風格仍0、/ready正常、foods頁200。未重建服務、遷移、核准或公開發布。

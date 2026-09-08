@@ -99,6 +99,25 @@ ASW 僅找到較舊觀光介紹，不把頁面仍可讀當成近期營業確認�
 
 所有新候選保持未分區、未核准地圖與座標；沒有將風格提案轉為寵物正式條件或發布認證。
 
+## 第四批來源查核：2026-09-08
+
+資料檔：`apps/api/app/foods/data/style_merchants_2026_09_batch_04.json`。
+本批 **5 家新候選、1 家既有店家補風格，共6個待審提案（網美3、文青3）**。
+店家風格仍是有來源的編輯提案，不是親訪、即時營業保證或核准發布。
+
+| 店家／城市 | 來源與判定界線 |
+| --- | --- |
+| 神保町ブックセンター／東京 | 文青：[官方喫茶中心](https://www.jimbocho-book.jp/cafe/)明列購書、閱讀、餐飲。館址同列1至3樓，不把辦公／會議室都描述成咖啡座，也不把辦公參觀預約要求套到一般用餐；不採舊PDF菜單價格。 |
+| 本と珈琲 梟書茶房／東京 | 文青：[官方選書概念](https://www.doutor.co.jp/fukuro/)以推薦文字與編號引導閱讀；[現行店鋪頁](https://shop.doutor.co.jp/doutor/spot/detail?code=6010001)確認Esola池袋四樓。昔日限定套組不是當期供應保證。 |
+| 文喫 福岡天神／福岡 | 文青：[分店地址與設施](https://tenjin.bunkitsu.jp/)、[閱讀與喫茶規則](https://tenjin.bunkitsu.jp/about/)。位於岩田屋本館七樓，喫茶室為付費區；同頁140／170席數不一致，本批不記席數及費率，不套用其他文喫分店資訊。 |
+| Brown Hands Baekje／釜山 | 網美：[釜山市韓文店家頁](https://www.visitbusan.net/index.do?lang_cd=ko&menuCd=DOM_000000201001001000&uc_seq=231)確認店名、地址與改造設計；[官方建物介紹](https://www.visitbusan.net/index.do?lang_cd=en&menuCd=DOM_000000301001001000&uc_seq=266)區分一樓咖啡店與三樓Gallery EB9。不挪用藝廊作文青證據；官方頁間年代／時段不同，不記這些數字或登錄編號。品牌站本輪無法讀取，不宣稱取得品牌確認。 |
+| TERAROSA 水營店／釜山 | 網美：[品牌指定分店](https://www.terarosa.com/store/detail/?id=14)確認F1963內地址，[釜山市專題](https://www.visitbusan.net/index.do?lang_cd=en&menuCd=DOM_000000302002001000&uc_seq=2414)具體描述咖啡店鐵板桌面與鋼線裝置。不誤用頁尾江陵公司地址，也不把園區其他書店、圖書館及畫廊算作本店服務。 |
+| Walden Woods Kyoto／京都 | 僅補既有店家的網美提案：[官網白色森林概念](https://www.walden-woods.com/)、[現行可讀的地址頁](https://www.walden-woods.com/lp02/)與既有同址資料吻合。文學命名不等於閱讀服務，2021年甜點消息不當作2026年新品。 |
+
+文房具カフェ本輪暫不納入風格提案：已確認[現行活動](https://www.bun-cafe.com/)，但可自由使用文具的FAQ多屬舊活動；不將舊體驗規則直接當成目前常態服務，也不把未納入描述成歇業。
+兩家韓國新店仍須精準Naver識別，不新增Google替代連結；所有新候選地圖、耐久座標與商圈留空。
+Walden Woods的既有approved/active/verified狀態、地圖、座標、來源及分類保持原狀。
+
 ## 部署與匯入
 
 部署同版本 API、Web、worker 並執行 `alembic upgrade head`。
@@ -117,6 +136,7 @@ python -m app.cli import-trend-merchants --file app/foods/data/style_merchants_2
 
 第二批使用相同命令，將 `--file` 換為 `app/foods/data/style_merchants_2026_09_batch_02.json`。
 第三批則為 `app/foods/data/style_merchants_2026_09_batch_03.json`。
+第四批則為 `app/foods/data/style_merchants_2026_09_batch_04.json`。
 既有部署可將新 JSON 送入受控暫存路徑後傳給 `--file`；資料補充不需重建服務或執行新遷移。
 
 ### 實際執行記錄
@@ -144,3 +164,14 @@ python -m app.cli import-trend-merchants --file app/foods/data/style_merchants_2
   `9ea9548218b19cd8ab2440e19d0034c4d297f6290b90eb84dba05ec78d16a0c8`。
   三批合計19家新候選、1家既有店家補風格，共21個pending標籤（網美9／文青12）；
   readiness正常，候選仍未公開。
+- PR [#347](https://github.com/x812033727/travel_scanner/pull/347) 於2026-09-08依授權合併；
+  exact-head guard鎖定 `744262e31b12ff48edda9fff02f03ea1ca6b1f4e`，merge commit
+  `67234d9bd56a1a037b62daf6439275339e3ae1d3` 已在main，post-merge CI `34179094453` 全綠。
+  第三批此前已匯入，本輪合併未重建應用服務或新增遷移。
+- 第四批查重、JSON checksum、兩個部署鎖、私人備份及restore目錄驗證完成後正式套用：
+  5家新店pending/inactive/unverified、6個pending風格（3網美／3文青）；再次預覽0店／0標籤。
+  店家建立與風格提案各一筆系統稽核，actor=NULL。Walden Woods店家、來源及分類資料的前後完整快照相同。
+  備份7,060,901 bytes、權限600；資料SHA-256為
+  `99954c26fb93226577a083c4aca6fabaf32c56d672131ecf89e38acf7bd8aecd`。
+  四批合計24家新候選、2家既有店家補風格，共27個pending標籤（網美12／文青15）。
+  公開風格查詢仍0；readiness正常，前台美食頁HTTP 200。未呼叫核准、發布、付費地圖或模型API。

@@ -425,6 +425,7 @@ def test_first_research_batch_is_valid_and_cannot_embed_approvals() -> None:
         ("style_merchants_2026_09.json", 5, 5),
         ("style_merchants_2026_09_batch_02.json", 8, 9),
         ("style_merchants_2026_09_batch_03.json", 7, 7),
+        ("style_merchants_2026_09_batch_04.json", 6, 6),
     ],
 )
 def test_research_batches_contain_evidence_not_publication_state(
@@ -459,6 +460,7 @@ def test_research_batches_contain_evidence_not_publication_state(
     [
         ("style_merchants_2026_09_batch_02.json", 8, 9),
         ("style_merchants_2026_09_batch_03.json", 7, 7),
+        ("style_merchants_2026_09_batch_04.json", 6, 6),
     ],
 )
 async def test_research_batch_import_is_private_audited_and_replay_safe(
@@ -524,3 +526,111 @@ def test_research_batches_do_not_repeat_merchant_identities() -> None:
         for row in load_trend_merchants(path)
     ]
     assert len(rows) == len({row.slug for row in rows}) == len({row.identity for row in rows})
+
+
+@pytest.mark.asyncio
+async def test_fourth_batch_preserves_existing_approved_merchant(catalog: Any) -> None:
+    client, factory, _, _ = catalog
+    path = Path("app/foods/data/style_merchants_2026_09_batch_04.json")
+    rows = load_trend_merchants(path)
+    proposal = next(row for row in rows if row.slug == "osaka-kyoto-walden-woods-kyoto")
+    async with factory() as session:
+        session.add(FoodCategory(slug="desserts-sweets", names_json={"en": "Desserts"}))
+        existing = FoodMerchant(
+            slug=proposal.slug,
+            destination_id=proposal.destination_id,
+            country_code="JP",
+            name="Reviewer-maintained display name",
+            local_name=proposal.local_name,
+            address="Reviewer-maintained address",
+            names_json={"en": "Reviewer translation"},
+            latitude=35.7,
+            longitude=139.7,
+            coordinate_source_type="merchant_official",
+            coordinate_source_url="https://shop.example/reviewed-location",
+            google_place_id="TestReviewedPlace",
+            map_match_status="verified",
+            review_status="approved",
+            is_active=True,
+        )
+        session.add(existing)
+        await session.flush()
+        source = FoodMerchantSource(
+            merchant_id=existing.id,
+            source_type="merchant_official",
+            source_scope="merchant_website",
+            source_title="Reviewer-maintained source",
+            source_url="https://shop.example/reviewed-source",
+            claims_json=["display_name", "address"],
+            is_current=True,
+        )
+        category = FoodMerchantCategory(
+            merchant_id=existing.id,
+            category_id=await session.scalar(
+                select(FoodCategory.id).where(FoodCategory.slug == "cafe-tea")
+            ),
+            is_primary=True,
+            source="admin",
+        )
+        session.add_all([source, category])
+        await session.commit()
+
+        tracked = (existing, source, category)
+        for item in tracked:
+            await session.refresh(item)
+        snapshots = [
+            {column.key: getattr(item, column.key) for column in inspect(type(item)).columns}
+            for item in tracked
+        ]
+        preview = await persist_trend_merchants(session, rows, apply=False, source_file=path.name)
+        assert preview["created"] == 5 and len(preview["proposed_styles"]) == 6
+        assert preview["outcomes"] == {"skipped_existing_slug": 1, "would_create": 5}
+        assert await session.scalar(select(func.count(AdminAuditLog.id))) == 0
+
+        applied = await persist_trend_merchants(session, rows, apply=True, source_file=path.name)
+        assert applied["created"] == 5 and applied["proposed_styles"] == preview["proposed_styles"]
+        for item, before in zip(tracked, snapshots, strict=True):
+            await session.refresh(item)
+            assert {key: getattr(item, key) for key in before} == before
+        assert (
+            await session.scalar(
+                select(func.count(FoodMerchantSource.id)).where(
+                    FoodMerchantSource.merchant_id == existing.id
+                )
+            )
+            == 1
+        )
+        assert (
+            await session.scalar(
+                select(func.count())
+                .select_from(FoodMerchantCategory)
+                .where(FoodMerchantCategory.merchant_id == existing.id)
+            )
+            == 1
+        )
+        styles = (await session.scalars(select(FoodMerchantStyle))).all()
+        assert len(styles) == 6 and all(style.status == "pending" for style in styles)
+        assert len([style for style in styles if style.merchant_id == existing.id]) == 1
+        audits = (await session.scalars(select(AdminAuditLog))).all()
+        assert len(audits) == 2 and all(a.actor_user_id is None for a in audits)
+        assert next(a for a in audits if a.action == "food_merchant_created").metadata_json == {
+            "source": "trend-merchant-sweep",
+            "count": 5,
+            "file": path.name,
+        }
+        assert (
+            next(a for a in audits if a.action == "food_merchant_styles_proposed").metadata_json[
+                "items"
+            ]
+            == applied["proposed_styles"]
+        )
+
+        replay = await persist_trend_merchants(session, rows, apply=True, source_file=path.name)
+        assert replay["created"] == 0 and replay["proposed_styles"] == []
+        assert await session.scalar(select(func.count(FoodMerchant.id))) == 9
+        assert await session.scalar(select(func.count(AdminAuditLog.id))) == 2
+    public = (await client.get("/api/v1/foods/merchants?destination_id=osaka-kyoto")).json()
+    assert public["total"] == 1 and public["items"][0]["id"] == str(existing.id)
+    assert public["items"][0]["styles"] == []
+    for style in ("instagrammable", "artsy"):
+        assert (await client.get(f"/api/v1/foods/merchants?style={style}")).json()["total"] == 0
