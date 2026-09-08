@@ -1,5 +1,59 @@
 import { expect, test, type Page } from "@playwright/test";
 
+test("manual insertion and single-stop cross-day move persist through the real API", async ({ page }) => {
+  test.setTimeout(90_000);
+  await page.goto("/zh-TW/register?next=/trips");
+  await page.getByLabel("Email").fill(`order${Date.now()}${test.info().workerIndex}@example.com`);
+  await page.getByLabel("密碼").fill("full-stack-password-123");
+  await page.getByRole("button", { name: "建立免費帳號" }).click();
+  // Do not match the register URL's ?next=/trips suffix before sign-in finishes.
+  await expect(page).toHaveURL((url) => url.pathname === "/zh-TW/trips", { timeout: 15_000 });
+  // Use the same-origin session established by the real browser sign-in flow.
+  const created = await page.evaluate(async () => {
+    const response = await fetch("/api/travel/trips", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ source: "blank", planning_mode: "manual_blank", name: "直覺排序驗證",
+        destination_name: "日本東京", start_date: "2026-11-11", end_date: "2026-11-12" }),
+    });
+    return { status: response.status, body: await response.json() };
+  });
+  expect(created.status, JSON.stringify(created.body)).toBe(201);
+  const trip = created.body;
+  const readTrip = () => page.evaluate(async (id: string) => {
+    const response = await fetch(`/api/travel/trips/${id}`);
+    if (!response.ok) throw new Error(`Trip reload failed: ${response.status}`);
+    return response.json();
+  }, trip.id);
+  const nextLunch = trip.items.find((item: { day_date: string; system_role: string }) => item.day_date === "2026-11-12" && item.system_role === "lunch").id;
+  await page.goto(`/zh-TW/trips/${trip.id}`);
+  await page.getByRole("button", { name: "在 午餐尚未安排 前插入新安排" }).click();
+  const picker = page.getByRole("dialog", { name: "下一站想去哪裡？" });
+  await expect(picker.getByRole("tab", { name: "我的收藏" })).toBeVisible();
+  await picker.getByRole("button", { name: "自行填寫行程" }).click();
+  await page.getByLabel("安排名稱").fill("只有一站也能移動");
+  await page.getByRole("radio", { name: "固定時間", exact: true }).click();
+  await page.getByLabel("固定開始時間").fill("10:00");
+  await page.getByRole("button", { name: "加入行程" }).click();
+  await page.getByRole("button", { name: "移動 只有一站也能移動", exact: true }).click();
+  const move = page.getByRole("dialog", { name: "移動這個行程" });
+  await move.getByLabel("日期").selectOption("2026-11-12");
+  await move.getByLabel("插入位置").selectOption(nextLunch);
+  const saved = page.waitForResponse((response) => response.url().endsWith("/itinerary") && response.request().method() === "PUT" && response.status() === 200);
+  await move.getByRole("button", { name: "移到這裡" }).click();
+  await saved;
+  await expect.poll(async () => {
+    const state = await readTrip();
+    return state.items.find((item: { title: string }) => item.title === "只有一站也能移動")?.day_date;
+  }).toBe("2026-11-12");
+  await page.reload();
+  await page.getByRole("button", { name: /DAY 2/ }).click();
+  const card = page.locator(".planner-itinerary-card").filter({ hasText: "只有一站也能移動" });
+  await expect(card).toContainText("固定時間 · 10:00");
+  const persisted = await readTrip();
+  const day = persisted.items.filter((item: { day_date: string }) => item.day_date === "2026-11-12");
+  expect(day.map((item: { system_role: string }) => item.system_role)).toEqual(["hotel_start", null, "lunch", "dinner", "hotel_end", "return_flight"]);
+});
+
 // The trip calendar only renders one month; walk forward until the day exists.
 async function pickTripDay(page: Page, iso: string) {
   const day = page.locator(`[data-date="${iso}"]`);
@@ -141,6 +195,7 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await expect(flightCards.last()).toContainText("長榮航空 BR 197");
 
   await page.getByRole("button", { name: /^新增(?:安排)?$/ }).click();
+  await page.getByRole("button", { name: "自行填寫行程" }).click();
   await page.getByLabel("安排名稱").fill("東京手動散步");
   await page.getByRole("button", { name: "加入行程" }).click();
   const generalCard = page.locator(".planner-itinerary-card").first();
