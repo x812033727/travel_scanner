@@ -87,6 +87,7 @@ PR #345 已依上一輪授權合併部署；本輪「繼續新增」只補正式
 
 ## 第二批交接（2026-09-08）
 
+- PR: https://github.com/x812033727/travel_scanner/pull/346 ，base `main`，保留開啟、不自行合併。
 - 從上述最新 main 建立 `codex/merchant-style-batch-02`；未碰原 checkout 的 mobile-planner-app-ui 或 PR #343。
 - 新增台中2家、京都2家、東京1家、新加坡2家、曼谷1家，9個標籤（網美5、文青4）。完整分店、來源及排除理由見 docs/merchant-styles.md。
 - 正式環境比對名稱與地址零重複；JSON checksum 一致、取得兩個部署鎖、備份可讀後套用成功，8 家 pending/inactive/unverified，所有地圖／座標／商圈欄位留空。
