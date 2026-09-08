@@ -1,0 +1,346 @@
+{
+  "checked_on": "2026-09-08",
+  "scope": "Existing six Tokyo source credits and independently reviewed platform options only; no new location verification or hotel count increase.",
+  "license_terms_url": "https://portal.data.metro.tokyo.lg.jp/terms/",
+  "license_checked_on": "2026-09-08",
+  "browser_status": "Chrome create-tab and recovery both timed out with kernel reset. No successful Chrome/Google Maps/OTA UI check is claimed.",
+  "review_method": "Primary official and Trip web documents matched by name and street number, followed by normal server HTTPS/DNS/redirect health review without browser override. No OTA prices, photos, ratings, reviews or descriptions retained.",
+  "hotels": [
+    {
+      "source_key": "editorial:tokyo:keio-plaza-tokyo",
+      "official_identity_url": "https://www.keioplaza.co.jp/access/",
+      "official_name": "京王プラザホテル",
+      "official_address": "東京都新宿区西新宿2-2-1",
+      "location_status": "existing_review_preserved_not_reverified",
+      "source_credit_url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+      "platform_reviews": [
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/keio-plaza-tokyo.html",
+          "discovery_status": "found",
+          "health": "unconfirmed",
+          "status": "pending",
+          "reason": "No live link confirmation; no browser override."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/tokyo-hotel-detail-994639/keio-plaza-hotel-tokyo/",
+          "discovery_status": "found",
+          "matched_name": "Keio Plaza Hotel Tokyo",
+          "matched_address": "2 Chome-2-1 Nishi, Shinjuku Ward, Tokyo",
+          "health": "healthy",
+          "review_basis": "official_and_platform_web_document_name_street_match",
+          "browser_verified": false,
+          "status": "approved",
+          "option_id": "935bbce0-f79f-425b-be5d-9365039e02c9",
+          "reviewed_on": "2026-09-08",
+          "version": 2
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/keio-plaza-hotel-tokyo_3/hotel/tokyo-jp.html",
+          "discovery_status": "found",
+          "health": "healthy",
+          "status": "pending",
+          "reason": "HTTP success alone is insufficient; the direct web document did not expose a reviewable identity."
+        },
+        {
+          "provider": "expedia",
+          "url": "https://www.expedia.com/Tokyo-Hotels-Keio-Plaza-Hotel-Tokyo.h15215.Hotel-Information",
+          "discovery_status": "found",
+          "health": "unconfirmed",
+          "status": "pending",
+          "reason": "No live link confirmation; no browser override."
+        },
+        {
+          "provider": "rakuten",
+          "discovery_status": "unconfirmed",
+          "health": "not_checked",
+          "status": "pending",
+          "reason": "Discovery unresolved; no asserted URL or network check."
+        }
+      ],
+      "source_credit_status": "added_and_product_review_restored"
+    },
+    {
+      "source_key": "editorial:tokyo:gracery-shinjuku",
+      "official_identity_url": "https://gracery.com/shinjuku/access/",
+      "official_name": "ホテルグレイスリー新宿",
+      "official_address": "東京都新宿区歌舞伎町1-19-1",
+      "location_status": "existing_review_preserved_not_reverified",
+      "source_credit_url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+      "platform_reviews": [
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/gracery-shinjuku.html",
+          "discovery_status": "found",
+          "health": "unconfirmed",
+          "status": "pending",
+          "reason": "No live link confirmation; no browser override."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/tokyo-hotel-detail-1841600/hotel-gracery-shinjuku-tokyo/",
+          "discovery_status": "found",
+          "matched_name": "Hotel Gracery Shinjuku",
+          "matched_address": "1 Chome-19-1 Kabukicho, Shinjuku Ward, Tokyo",
+          "health": "healthy",
+          "review_basis": "official_and_platform_web_document_name_street_match",
+          "browser_verified": false,
+          "status": "approved",
+          "option_id": "e7c85c8a-07e5-49dd-8b21-420ebcbad47a",
+          "reviewed_on": "2026-09-08",
+          "version": 2
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/hotel-gracery-shinjuku/hotel/tokyo-jp.html",
+          "discovery_status": "found",
+          "health": "healthy",
+          "status": "pending",
+          "reason": "HTTP success alone is insufficient; the direct web document did not expose a reviewable identity."
+        },
+        {
+          "provider": "expedia",
+          "url": "https://www.expedia.com/Tokyo-Hotels-Hotel-Gracery-Shinjuku.h9104481.Hotel-Information",
+          "discovery_status": "found",
+          "health": "unconfirmed",
+          "status": "pending",
+          "reason": "No live link confirmation; no browser override."
+        },
+        {
+          "provider": "rakuten",
+          "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_tokyo/cty_shinjuku_ward/10123456845983",
+          "discovery_status": "found",
+          "health": "unconfirmed_timeout",
+          "status": "pending",
+          "reason": "Server request timed out; no browser verification."
+        }
+      ],
+      "source_credit_status": "added_and_product_review_restored"
+    },
+    {
+      "source_key": "editorial:tokyo:jr-kyushu-blossom-shinjuku",
+      "official_identity_url": "https://www.jrk-hotels.co.jp/Shinjuku/",
+      "official_name": "JR九州ホテル ブラッサム新宿",
+      "official_address": "東京都渋谷区代々木2丁目6-2",
+      "location_status": "existing_review_preserved_not_reverified",
+      "source_credit_url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+      "platform_reviews": [
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/jr-kyushu-blossom-shinjuku.html",
+          "discovery_status": "found",
+          "health": "unconfirmed",
+          "status": "pending",
+          "reason": "No live link confirmation; no browser override."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/tokyo-hotel-detail-1857678/jr-kyushu-hotel-blossom-shinjuku/",
+          "discovery_status": "found",
+          "matched_name": "JR Kyushu Hotel Blossom Shinjuku",
+          "matched_address": "2 Chome-6-2 Yoyogi, Shibuya Ward, Tokyo",
+          "health": "healthy",
+          "review_basis": "official_and_platform_web_document_name_street_match",
+          "browser_verified": false,
+          "status": "approved",
+          "option_id": "56327f30-feb0-4992-8fad-d91798b960c6",
+          "reviewed_on": "2026-09-08",
+          "version": 2
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/jr-kyushu-hotel-blossom-shinjuku/hotel/tokyo-jp.html",
+          "discovery_status": "found",
+          "health": "healthy",
+          "status": "pending",
+          "reason": "HTTP success alone is insufficient; the direct web document did not expose a reviewable identity."
+        },
+        {
+          "provider": "expedia",
+          "url": "https://www.expedia.com/Tokyo-Hotels-JR-Kyushu-Hotel-Blossom-Shinjuku.h11899886.Hotel-Information",
+          "discovery_status": "found",
+          "health": "unconfirmed",
+          "status": "pending",
+          "reason": "No live link confirmation; no browser override."
+        },
+        {
+          "provider": "rakuten",
+          "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_tokyo/cty_shibuya_ward/10123456851000/",
+          "discovery_status": "found",
+          "health": "unconfirmed_timeout",
+          "status": "pending",
+          "reason": "Server request timed out; no browser verification."
+        }
+      ],
+      "source_credit_status": "added_and_product_review_restored"
+    },
+    {
+      "source_key": "editorial:tokyo:gate-hotel-kaminarimon",
+      "official_identity_url": "https://www.gate-hotel.jp/asakusa-kaminarimon/access.html",
+      "official_name": "ザ・ゲートホテル雷門 by HULIC",
+      "official_address": "東京都台東区雷門2-16-11",
+      "location_status": "existing_review_preserved_not_reverified",
+      "source_credit_url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+      "platform_reviews": [
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/the-gate-asakusa-kaminarimon-by-hulic.html",
+          "discovery_status": "found",
+          "health": "unconfirmed",
+          "status": "pending",
+          "reason": "No live link confirmation; no browser override."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/v2/tokyo-hotel-detail-686539/the-gate-hotel-kaminarimon-by-hulic/",
+          "discovery_status": "found",
+          "matched_name": "THE GATE HOTEL KAMINARIMON by HULIC",
+          "matched_address": "2 Chome-16-11 Kaminarimon, Taito Ward, Tokyo",
+          "health": "healthy",
+          "review_basis": "official_and_platform_web_document_name_street_match",
+          "browser_verified": false,
+          "status": "approved",
+          "option_id": "1715489e-3d34-4009-bf03-3e464c00e6d5",
+          "reviewed_on": "2026-09-08",
+          "version": 2
+        },
+        {
+          "provider": "agoda",
+          "discovery_status": "unconfirmed",
+          "health": "not_checked",
+          "status": "pending",
+          "reason": "Discovery unresolved; no asserted URL or network check."
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "health": "not_checked",
+          "status": "pending",
+          "reason": "Discovery unresolved; no asserted URL or network check."
+        },
+        {
+          "provider": "rakuten",
+          "url": "https://travel.rakuten.com/aus/en-us/hotel_info_item/cnt_japan/sub_tokyo/cty_taito_ward/10123456794980",
+          "discovery_status": "found",
+          "health": "unconfirmed_timeout",
+          "status": "pending",
+          "reason": "Server request timed out; no browser verification."
+        }
+      ],
+      "source_credit_status": "added_and_product_review_restored"
+    },
+    {
+      "source_key": "editorial:tokyo:gracery-asakusa",
+      "official_identity_url": "https://gracery.com/asakusa/",
+      "official_name": "ホテルグレイスリー浅草",
+      "official_address": "東京都台東区雷門2丁目10番2号",
+      "location_status": "existing_review_preserved_not_reverified",
+      "source_credit_url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+      "platform_reviews": [
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/gracery-asakusa.html",
+          "discovery_status": "found",
+          "health": "unconfirmed",
+          "status": "pending",
+          "reason": "No live link confirmation; no browser override."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/tokyo-hotel-detail-15915697/hotel-gracery-asakusa/",
+          "discovery_status": "found",
+          "matched_name": "Hotel Gracery Asakusa",
+          "matched_address": "Taito-ku Kaminarimon 2-10-2, Taito Ward, Tokyo",
+          "health": "healthy",
+          "review_basis": "official_and_platform_web_document_name_street_match",
+          "browser_verified": false,
+          "status": "approved",
+          "option_id": "6cf28949-c58b-4088-994c-880014a00c89",
+          "reviewed_on": "2026-09-08",
+          "version": 2
+        },
+        {
+          "provider": "agoda",
+          "discovery_status": "unconfirmed",
+          "health": "not_checked",
+          "status": "pending",
+          "reason": "Discovery unresolved; no asserted URL or network check."
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "health": "not_checked",
+          "status": "pending",
+          "reason": "Discovery unresolved; no asserted URL or network check."
+        },
+        {
+          "provider": "rakuten",
+          "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_tokyo/cty_taito_ward/10123456875493",
+          "discovery_status": "found",
+          "health": "unconfirmed_timeout",
+          "status": "pending",
+          "reason": "Server request timed out; no browser verification."
+        }
+      ],
+      "source_credit_status": "added_and_product_review_restored"
+    },
+    {
+      "source_key": "editorial:tokyo:henn-na-premier-tawaramachi",
+      "official_identity_url": "https://www.hennnahotel.com/asakusa-tawaramachi/",
+      "official_name": "変なホテルプレミア東京 浅草田原町",
+      "official_address": "東京都台東区寿3丁目19-8",
+      "location_status": "existing_review_preserved_not_reverified",
+      "source_credit_url": "https://www.opendata.metro.tokyo.lg.jp/digitalservice/130001_Daredemo_Tokyo_accommodation.csv",
+      "platform_reviews": [
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/henn-na-hotel-tokyo-asakusa-tawaramachi.html",
+          "discovery_status": "found",
+          "health": "unconfirmed",
+          "status": "pending",
+          "reason": "No live link confirmation; no browser override."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/tokyo-hotel-detail-33514908/henn-na-hotel-premiere-tokyo-asakusa-tawaramachi/",
+          "discovery_status": "found",
+          "matched_name": "Henn na Hotel Premier Tokyo Asakusa Tawaramachi",
+          "matched_address": "Kotobuki 3-19-8, Taito Ward, Tokyo",
+          "health": "healthy",
+          "review_basis": "official_and_platform_web_document_name_street_match",
+          "browser_verified": false,
+          "status": "approved",
+          "option_id": "0ab5ef69-1983-4bd3-a3f5-4244222bcda6",
+          "reviewed_on": "2026-09-08",
+          "version": 2
+        },
+        {
+          "provider": "agoda",
+          "discovery_status": "unconfirmed",
+          "health": "not_checked",
+          "status": "pending",
+          "reason": "Discovery unresolved; no asserted URL or network check."
+        },
+        {
+          "provider": "expedia",
+          "url": "https://www.expedia.com/Tokyo-Hotels-Henn-Na-Hotel-Tokyo-Asakusa-Tawaramachi.h35572816.Hotel-Information",
+          "discovery_status": "found",
+          "health": "unconfirmed",
+          "status": "pending",
+          "reason": "No live link confirmation; no browser override."
+        },
+        {
+          "provider": "rakuten",
+          "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_tokyo/cty_taito_ward/10123456874594/",
+          "discovery_status": "found",
+          "health": "unconfirmed_timeout",
+          "status": "pending",
+          "reason": "Server request timed out; no browser verification."
+        }
+      ],
+      "source_credit_status": "added_and_product_review_restored"
+    }
+  ]
+}

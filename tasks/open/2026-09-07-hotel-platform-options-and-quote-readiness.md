@@ -8,23 +8,182 @@ owner:
 claimed_at:
 created_at: 2026-09-07T12:32:44Z
 completed_at:
-branch: codex/hotel-catalog-followup
+branch: codex/hotel-content-review-kyoto
 depends_on: []
 scope:
-  - apps/api/app/travel_services
-  - apps/api/app/models.py
-  - apps/api/migrations/versions
-  - apps/api/tests
-  - apps/web/components/travel-services
-  - apps/web/messages
-  - apps/web/e2e
-  - apps/web/app/api/travel
+  - apps/api/tests/test_hotel_content_package.py
   - docs/hotel-platforms
 ---
 
 # Hotel platform options and quote readiness
 
+## 2026-09-08 latest Ryumeikan and four-hotel platform continuation
+
+Same isolated branch and draft PR #344, main still b3e49a3. Original dirty workspace remains
+untouched. Chrome succeeded once: Ryumeikan Tokyo exact saved Place ID, hotel name, Yaesu
+1-3-22 and official website matched the official access page. The next Kyobashi navigation
+and one state recovery timed out/reset; no other new map browser verification is claimed.
+No provider coordinates, photos, ratings, reviews, prices or descriptions were imported.
+
+Four hotels' official/Trip documents matched name/street, and all eight saved target links
+passed normal safe HTTPS/DNS/redirect review. Tokyo Station's home document timed out but
+the exact official access identity was readable and server homepage health was healthy.
+Kyobashi Trip was indexed last month, not claimed freshly indexed. Three Agoda exact URLs
+were discovered by name/street; opaque direct documents and no browser proof mean pending,
+even though HTTP health is good. Booking and Rakuten stay pending/unconfirmed/timeout.
+
+The old backup runtime guard correctly refused when another task deployed b3e49a3/schema
+0061. Read-only ready/image and hotel baseline checks passed; a new verified backup
+/root/travel_scanner_pre_hotel_candidates_20260908T003418Z.dump (7048465 bytes) preceded
+guarded writes. No image/schema deployment was performed by this content task.
+
+Normal versioned admin services filled three existing Agoda slots (pending/version 2),
+atomically edited/reviewed Ryumeikan's map flag (approved/version 3), then independently
+approved eight official/Trip options (healthy/version 2, browser_verified=false). Exact
+snapshot/version guards and audits were verified. Other 59 products/349 options/config
+fingerprint b5b854cb3cdf9bf2596df6ca187289879856054fadb102f0f8547d450214c352 preserved.
+
+Current: 60 hotels, 12 product-approved / 48 pending; 360 options, 21 approved / 339 pending.
+Five-language read-only smoke displays seven internal Tokyo hotels, each official + Trip
+with source credits; unreviewed maps and pending Agoda hidden. Public gate false, configured
+destinations [tokyo]. Zero accepted cities, no affiliate/price enablement, no generated clicks.
+
+128 related tests, Ruff/format, mypy (255 files), 27 tools checks, five locales/25 namespaces
+and task integrity passed. See docs/hotel-platforms/review-2026-09-08-tokyo-four.md and
+tokyo-four.review-2026-09-08.json. CI will be verified at the new PR head. Prior head 5571190
+passed all eight checks. No merge/deploy authorization; release at handoff, task not done.
+Remaining: three Tokyo maps, second OTA approvals, remaining Seoul identities and other
+cities' durable coordinates/maps/platform reviews. Do not replay the old pending package
+or smoke expectation of six Tokyo hotels over this new intentional review checkpoint.
+
+At dc6cabb, PR CI 34174167430 passed API, web, containers and full-stack smoke. Push
+34174165077 passed API/web/containers but its community smoke failed on account-confirm
+JSON parsing / missing confirmation button, alongside recurring uq_community_metric
+duplicates. New evidence is recorded in the open community-read-metric-concurrency task;
+causality is unproven and no unrelated fix was attempted. Documentation-only follow-up
+records this outcome; a subsequent green run must not be described as fixing the defect.
+
+## 2026-09-08 earlier Tokyo source-credit and platform review
+
+Latest continuation stays on PR #344 / codex/hotel-content-review-kyoto. Main and runtime
+were reverified at 7f21d7e, schema 0060; no deployment or migration. Previous head 9de855e
+passed all four jobs on PR 34170581417 and push 34170579355. The earlier community smoke
+metric defect remains separately tracked; no claim that this hotel work fixed it.
+
+Six Tokyo official pages and exact Trip.com documents matched hotel names/street numbers.
+Chrome create-tab and recovery timed out; no successful browser UI/map review or override
+is claimed. Trip links passed ordinary safe HTTPS/DNS/redirect checks. Booking/Expedia
+were unconfirmed; Rakuten timed out. Three Agoda URLs were healthy but lacked reviewable
+document identity, so HTTP success alone did not cause approval. Other slots lack URLs.
+
+Verified backup /root/travel_scanner_pre_hotel_candidates_20260907T234914Z.dump preceded
+production writes. Guarded, versioned admin services added source credits to the original
+six Tokyo products plus thirty independent pending OTA slots (24 URLs, six unresolved).
+Each credit edit and restored product approval committed atomically with its five options;
+existing official links, product IDs, labels and locations were preserved. A tested pure
+prepare_credit_update helper rejects old legacy projections and changed identity/credits.
+Other 54 products/original 330 options/config fingerprints remained unchanged.
+
+A separate exact-ID/URL/version preflight and normal option review approved only the six
+Trip.com links, all healthy and browser_verified=false, with audited outcomes. All products,
+other 354 options and config were fingerprint-checked unchanged in that second operation.
+No replay of pending packages, direct approval SQL, provider credential export or city switch.
+
+Current live counts: 60 hotels (11 product-approved, 49 pending), 360 platform records
+(13 approved, 347 pending). Approved: six original Tokyo official + six Tokyo Trip + RYSE
+official. All six original Tokyo source credits and six Trip audit records verified.
+Read-only en/ja/ko/zh-TW/zh-CN service smoke exposes official + Trip direct options with
+attribution for those six; public_enabled remains false and destinations remain [tokyo].
+Zero cities accepted; no affiliate/price enablement or generated click/conversion events.
+
+126 related API/content/platform/offline-source tests passed, plus Ruff/format, mypy across
+254 sources, 27 tooling tests, five locales/25 namespaces and task integrity. Content/docs/
+tests only; full new-head CI runs on the existing draft PR. See
+docs/hotel-platforms/review-2026-09-08-tokyo.md and tokyo.review-2026-09-08.json for evidence.
+The older Tokyo fingerprint/single-official-option smoke is now historical, not a valid
+post-credit baseline. Remaining: other independent OTA checks, four new Tokyo maps,
+remaining Seoul Naver identities, reusable Kyoto/Busan coordinates and per-city acceptance.
+Release the task at handoff; it is not done. No merge authorization in this continuation.
+
+While CI ran, main advanced to b3e49a3 via PR #345. Synced that main into this work branch;
+the only conflict was generated tasks/BOARD.md, resolved solely with tasks:board. No merchant
+code was altered. Narrowed this unfinished task's scope to hotel evidence and its content
+tests, since the architecture is already merged and shared models/translations need not
+remain claimed. Post-sync: 126 related tests, Ruff and mypy across 255 sources passed;
+five-language and task checks rerun. This branch sync is not a PR merge or a deployment.
+
+## 2026-09-08 first import checkpoint (historical)
+
+Continuation claimed on `codex/hotel-content-review-kyoto` from latest main
+`7f21d7eb2af223a561bc04519ce67021198b1068`, preserving the original dirty workspace.
+PR #342 had already merged and production later advanced to this main revision; observed
+readiness is schema `0060_community_places`. This turn did not redeploy or migrate.
+
+Added ten Kyoto pending research inputs and municipal CC BY 4.0 permit evidence, three
+areas and 40 official/Booking/Trip/Agoda candidate links. Expedia/Rakuten remain unconfirmed.
+The July 2026 permit spreadsheet has no coordinates; none were guessed, geocoded or copied
+from providers, and no paid Places lookup ran. Kyoto still lacks coordinates/Place IDs.
+Selected names/addresses/category/permit dates only are saved; do not re-download the whole
+spreadsheet to recover these facts. Busan's ten hotels remain outstanding.
+
+Chrome recovered long enough to verify primary Naver names, street numbers and official
+sites for L7 Myeongdong, Four Points Josun Myeongdong, Mercure Hongdae and L7 Hongdae.
+These are four new identity checks, plus RYSE's earlier one. Parnas navigation was interrupted;
+debugger/fresh-tab recovery failed. Five Naver identities now have primary evidence, not ten.
+
+With user authorization to add/review hotels, a verified database backup was taken and the
+normal CSV/admin import service was run over the existing SSH session. The serializable,
+exact-new-key guarded import skipped all six existing Tokyo products/options, added 44
+pending hotels and 264 pending options, and recorded preview/commit audits. Run ID:
+`31379d38-7180-4ceb-b2af-75ba5b6238ad`. Four newly browser-verified Seoul product locations
+then passed version-checked admin edit/review; all their platform options remain pending.
+No browser auth tokens were forged or exported, and no affiliate/API/public switches changed.
+
+Verified live: 50 total hotels, 10 product-approved (six original Tokyo plus four Seoul
+locations), 40 pending. Zero cities meet rollout acceptance. Original Tokyo/config/options
+fingerprint stayed identical. See `docs/hotel-platforms/review-2026-09-08.md` for counts and
+backup evidence. Pending JSON remains research input, not sync truth: never blindly replay
+it over reviewed production rows or reset original hotels to pending.
+
+117 related tests passed; Ruff, formatting, five-language catalogs (25 namespaces), and
+task checks passed. Content/test/docs-only change; no new UI behavior or full-60 acceptance
+claimed. Remaining: Busan, Kyoto durable locations, five remaining Seoul Naver checks,
+independent platform landing checks/approvals, existing six Tokyo source-credit update,
+and per-city rollout gates. Keep task open and release at handoff.
+
 ## Why
+
+### 2026-09-08 Busan continuation checkpoint
+
+Continuing the same draft PR #344 from main 7f21d7e. Ten Busan pending candidates now
+cover Seomyeon/Haeundae/Nampo, with official and Booking/Trip identity references.
+Other OTA leads stay unconfirmed; no licensed Busan coordinates or precise Naver IDs
+are claimed. Source credits explicitly do not assert a content reuse license.
+Excluded Solaria's announced 2026-12-29 closure, unresolved ibis/ Central Seven rename,
+wrong Arban City branch, and conflicting Toyoko tourism-directory address.
+
+After a verified PostgreSQL backup, normal import service staged ten Busan products and
+sixty options pending; run cb5921a5-d87a-4ff9-9946-5c3c3ad19689. Serializable preflight/apply
+fingerprint guard preserved all fifty existing products/options/config. Then RYSE alone
+passed normal versioned location review, using its dated Sep 7 Naver observation and a
+fresh Sep 8 Chrome official-contact check. Its official link independently passed healthy
+URL review. No OTA approvals, city switches, affiliate/quote enablement, deployment or merge.
+
+Live verification: 60 hotels, 11 product approved, 49 pending; 324 new options across batches,
+one approved RYSE official and 323 pending. Original Tokyo six/config fingerprint unchanged.
+Five-language read-only smoke passed without provider requests/clicks. Zero complete cities.
+Details: docs/hotel-platforms/review-2026-09-08-busan.md. Never replay pending files over
+reviewed rows. Chrome timed out on the next Naver check and one fresh-tab recovery failed;
+do not claim new Naver/OTA browser reviews. Task remains open for location/platform/source gaps.
+
+Previous SHA fe8a61d PR CI passed all jobs; same-SHA push smoke failed in unrelated community
+test with ECONNRESET alongside metric uniqueness errors. Recorded the suspected race in
+2026-09-07-community-read-metric-concurrency, not patched as part of hotel content.
+
+Continuation validation: 120 related tests, Ruff/format, mypy (254 source files), 27 tools
+tests, five locales/25 namespaces, task checks and production read-only five-locale smoke
+passed. New head CI is checked in PR #344. Release rather than mark done; city acceptance
+and remaining independent reviews are still open.
 
 Keep one hotel identity while independently reviewing each platform, enabling commission links only after qualification, and preparing honest on-demand quotes without activating paid APIs.
 
