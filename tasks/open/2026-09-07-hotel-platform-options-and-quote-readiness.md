@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-07T12:32:44Z
 completed_at:
-branch: codex/hotel-content-review-taipei
+branch: codex/hotel-content-review-taipei-rest
 depends_on: []
 scope:
   - apps/api/tests/test_hotel_content_package.py
@@ -17,7 +17,47 @@ scope:
 
 # Hotel platform options and quote readiness
 
-## Latest: 2026-09-08 deployment and Taipei five-hotel review
+## Latest: 2026-09-08 PR #360 deployment and remaining Taipei review
+
+User authorized merging #360, deploying, then continuing. Verified head 333114d,
+base 8d2fb93, CLEAN/MERGEABLE and all eight checks; SHA-guarded merge to
+3bc315a29b2795e242116ecadb2a3541f3d05a50. Main CI 34194340864 passed all four jobs.
+Clean archive deployed to all eight app services with zero restarts and three ready
+checks. PostgreSQL/Redis IDs, env hash/mode, volumes and community-off state preserved;
+schema still 0062. Verified database backup and previous five-Taipei checkpoint before
+continuing in isolated codex/hotel-content-review-taipei-rest.
+
+Five remaining existing Taipei products map-reviewed and approved: WESTGATE, Solaria
+Nishitetsu Ximen, W Taipei, Grand Hyatt Taipei, Humble House. Chrome actually checked
+the five saved Place IDs; government coordinates/source credits unchanged. Browser
+later timed out and reconnection failed, so stopped per skill; no platform browser
+verification or override in this batch. Normal reviews approved five Trip plus three
+official links. W/Grand Hyatt official and five Expedia reviews failed safely/rolled
+back, with no review audit. Booking remains pending and uninspected in this batch.
+
+Added 11 independently found candidates to existing slots: four Agoda, five Expedia,
+two Rakuten international. All remain pending; old/empty/failed extractor evidence
+is explicit. Wrong San Diego Westgate and Japanese Rakuten ID conversion excluded.
+No new duplicate hotel identities: still 60, now 27 approved products/33 pending;
+88 approved options/272 pending. Taipei publicly 10 hotels/24 ordinary options in
+all five locales, with source credits/no quotes. Other city counts unchanged.
+Zero complete cities: new Taipei rows still need second OTAs plus W/Hyatt official.
+
+34 new audit records independently verified; other 55 products/339 options/config-v5
+fingerprint fc2b57d9ed23b67d1267ae6982388104833c387e3c80cb1c0b731bfc0ce1d1fb
+unchanged. Five HTTPS BFF reads plus 30 internal locale/city reads passed. Deployment,
+backups, provenance and outcomes: docs/hotel-platforms/review-2026-09-08-taipei-rest.md
+and matching JSON checkpoint. No paid APIs, settings/affiliate/quote changes, clickouts
+or orders. Pending input JSON is not live truth: never replay it over live reviews.
+Original dirty worktree untouched. Release task at handoff; remaining acceptance open.
+
+149 local related/offline-source tests passed with research-only pyproj==3.7.2;
+20 PostgreSQL integrations deferred to full Linux CI. Ruff/format, mypy 257 sources,
+five-language catalogs and 27 tooling tests passed. Later main 737cdbb (#358) contains
+separate destination-brand work; sync/revalidate the continuation without claiming
+that later main was part of the already verified 3bc315a deployment.
+
+## Previous: 2026-09-08 deployment and Taipei five-hotel review
 
 User authorized merging #357, deploying, then continuing content. Synced latest main
 f48e9a6; all eight checks passed at 71f0431, SHA-guarded merge to
