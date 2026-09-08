@@ -228,7 +228,18 @@ Partner Links requests use one link per call (below the ten-link maximum); a sha
 atomic rolling Redis window caps **all brands/legacy flows together** at 100
 requests/minute/marker. Cache identity includes project, marker, target, placement,
 brand/offer version, locale and token digest. Unsupported brands use only verified
-static links. No Drive keyword injection or automatic link rewriting is introduced.
+static links. API requests set `shorten=false` to obtain auditable full links;
+the full-link cache namespace isolates previously cached branded `tpx.gr` shorteners.
+Kiwi.com requires a reviewed static link because the official Partner Links API
+excludes it. No Drive keyword injection or automatic link rewriting is introduced.
+
+Production checks on 2026-09-08 confirmed that the configured account can create
+full Aviasales, Klook and KKday links. This is conversion evidence, not destination
+approval: the checked Klook and KKday pages returned HTTP 403 from the server,
+and KKday additionally redirected through an unapproved `invl.me` intermediary.
+These candidates remain unpublished until their exact landing pages and complete
+redirect chains can be verified. Do not mark anti-bot responses as healthy or relax
+the final-brand, destination-identity, or static-tracking requirements.
 
 Click records add nullable actor + brand/type/placement/destination. The admin shows
 outbound clicks and self-reported booked selections, and explicitly reports that

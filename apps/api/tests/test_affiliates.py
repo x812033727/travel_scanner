@@ -1,3 +1,4 @@
+import hashlib
 import json
 from datetime import UTC, datetime
 from typing import Any
@@ -172,11 +173,15 @@ async def test_travelpayouts_success_is_cached() -> None:
         assert request.headers["X-Access-Token"] == "secret-token"
         payload = request.read().decode()
         assert '"trs":123' in payload and '"marker":456' in payload
+        assert json.loads(payload)["shorten"] is False
         return httpx.Response(
             200,
             json={
                 "result": {
-                    "links": [{"code": "success", "partner_url": "https://brand.tp.st/path"}]
+                    "links": [{
+                        "code": "success",
+                        "partner_url": "https://tp.media/r?marker=456&trs=123",
+                    }]
                 }
             },
         )
@@ -187,11 +192,18 @@ async def test_travelpayouts_success_is_cached() -> None:
         travelpayouts_project_id="123",
         travelpayouts_marker="456",
     )
+    token_digest = hashlib.sha256(b"secret-token").hexdigest()
+    legacy_digest = hashlib.sha256(
+        f"https://brand.example/search|sub-1|456|123|legacy|{token_digest}".encode()
+    ).hexdigest()
+    await redis.set(
+        f"affiliate:travelpayouts:link:{legacy_digest}", "https://brand.tpx.gr/old-short-link"
+    )
     async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
         client = TravelpayoutsLinkClient(redis, settings, http)
         first = await client.create("https://brand.example/search", "sub-1")
         second = await client.create("https://brand.example/search", "sub-1")
-    assert first == second == "https://brand.tp.st/path"
+    assert first == second == "https://tp.media/r?marker=456&trs=123"
     assert calls == 1
 
 

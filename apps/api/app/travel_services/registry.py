@@ -46,10 +46,9 @@ BRANDS = {
     "viator": Brand("Viator", ("viator.com",), ("tour", "transfer")),
     "getyourguide": Brand("GetYourGuide", ("getyourguide.com",), ("tour", "transfer")),
     "rakuten": Brand("Rakuten Travel", ("travel.rakuten.com",), ("hotel",)),
-    # A reviewed Kiwi.com deeplink already exists for the configured Travelpayouts
-    # project. Keeping the hostname in code prevents an administrator from turning
-    # the destination-offer editor into an arbitrary redirect.
-    "kiwi": Brand("Kiwi.com", ("kiwi.com",), (), modules=("flight",)),
+    # Travelpayouts excludes Kiwi.com from Partner Links API conversion. A reviewed
+    # static link remains supported; API eligibility is separate from enrollment.
+    "kiwi": Brand("Kiwi.com", ("kiwi.com",), (), False, modules=("flight",)),
 }
 
 
