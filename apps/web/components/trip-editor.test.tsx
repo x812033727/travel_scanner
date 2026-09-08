@@ -361,6 +361,7 @@ describe("trip editor", () => {
 
     expect(await screen.findByRole("heading", { name: "晴空塔" })).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "在 晴空塔 前插入新安排" }));
+    fireEvent.click(screen.getByRole("button", { name: "自行填寫行程" }));
     fireEvent.change(screen.getByLabelText("安排名稱"), { target: { value: "雷門" } });
     fireEvent.click(screen.getByRole("button", { name: "加入行程" }));
 
@@ -577,6 +578,7 @@ describe("trip editor", () => {
     render(<TripEditor tripId={trip.id} />);
 
     fireEvent.click(await screen.findByRole("button", { name: "新增安排" }));
+    fireEvent.click(screen.getByRole("button", { name: "自行填寫行程" }));
     expect(screen.getByRole("dialog", { name: "新增安排" })).toBeTruthy();
     expect(screen.getByRole("button", { name: "加入行程" }).hasAttribute("disabled")).toBe(true);
     fireEvent.click(screen.getByRole("button", { name: "取消" }));
@@ -584,6 +586,7 @@ describe("trip editor", () => {
     expect(fetchMock.mock.calls.some(([, init]) => init?.method === "PUT")).toBe(false);
 
     fireEvent.click(screen.getByRole("button", { name: "新增安排" }));
+    fireEvent.click(screen.getByRole("button", { name: "自行填寫行程" }));
     fireEvent.change(screen.getByLabelText("安排名稱"), { target: { value: "銀座午餐" } });
     fireEvent.click(screen.getByRole("button", { name: "加入行程" }));
     expect(await screen.findByText("銀座午餐")).toBeTruthy();
@@ -602,6 +605,7 @@ describe("trip editor", () => {
     render(<TripEditor tripId={trip.id} />);
 
     fireEvent.click(await screen.findByRole("button", { name: "新增安排" }));
+    fireEvent.click(screen.getByRole("button", { name: "自行填寫行程" }));
     fireEvent.change(screen.getByLabelText("安排名稱"), { target: { value: "輕井澤一日遊" } });
     const duration = screen.getByLabelText("停留時間");
     expect(within(duration).getByRole("option", { name: "20 分鐘" })).toBeTruthy();

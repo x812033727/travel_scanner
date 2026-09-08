@@ -1,5 +1,97 @@
 import { expect, test, type Page } from "@playwright/test";
 import { pretendSignedIn } from "./session";
+import { editorFixture, editorPlaceOptions } from "./fixtures/itinerary-editor";
+
+test("contextual itinerary picker adds repeatedly, undoes, moves across meals and days, and reloads", async ({ page }) => {
+  let trip = structuredClone(editorFixture);
+  const discovered: string[] = [];
+  await page.route("**/api/travel/trips/intuitive-trip**", async (route) => {
+    const url = new URL(route.request().url());
+    if (url.pathname.endsWith("/place-options")) {
+      discovered.push(url.search);
+      return route.fulfill({ json: { items: editorPlaceOptions, context: "nearby", next_offset: null } });
+    }
+    if (route.request().method() === "PUT") {
+      const body = route.request().postDataJSON();
+      trip = { ...trip, items: body.items, version: trip.version + 1 };
+    }
+    return route.fulfill({ json: trip });
+  });
+  await page.goto("/zh-TW/trips/intuitive-trip");
+  const insert = page.getByRole("button", { name: "在 午餐・河畔食堂 前插入新安排" });
+  await insert.click();
+  const picker = page.getByRole("dialog", { name: "下一站想去哪裡？" });
+  await expect(picker).toContainText("淺草散步 → 午餐・河畔食堂");
+  await picker.getByRole("button", { name: "加入 淺草寺" }).click();
+  await expect(picker).toBeVisible();
+  await picker.getByRole("button", { name: "加入 隅田公園" }).click();
+  await picker.getByRole("button", { name: "復原" }).click();
+  await expect(picker.getByRole("button", { name: "完成", exact: true })).toBeFocused();
+  await expect(picker.getByText("已加入 隅田公園", { exact: true })).toHaveCount(0);
+  await expect(picker.getByRole("button", { name: "加入 隅田公園" })).toBeEnabled();
+  await picker.getByRole("button", { name: "完成", exact: true }).click();
+  await expect(page.locator(".planner-itinerary-card h3")).toHaveText(["淺草散步", "淺草寺"]);
+  expect(discovered.some((query) => query.includes("latitude=35.714"))).toBe(true);
+  await page.getByRole("button", { name: "移動 淺草散步", exact: true }).click();
+  let move = page.getByRole("dialog", { name: "移動這個行程" });
+  await move.getByLabel("插入位置").selectOption("end1");
+  await move.getByRole("button", { name: "移到這裡" }).click();
+  await expect(page.locator(".planner-itinerary-card h3")).toHaveText(["淺草寺", "淺草散步"]);
+  await page.getByRole("button", { name: "移動 淺草散步", exact: true }).click();
+  move = page.getByRole("dialog", { name: "移動這個行程" });
+  await move.getByLabel("日期").selectOption("2026-11-12");
+  await move.getByLabel("插入位置").selectOption("lunch2");
+  await move.getByRole("button", { name: "移到這裡" }).click();
+  await expect(page.locator(".planner-itinerary-card h3")).toHaveText(["淺草散步"]);
+  await expect.poll(() => trip.items.find((item) => item.id === "asakusa")?.day_date).toBe("2026-11-12");
+  await page.reload();
+  await page.getByRole("button", { name: /DAY 2/ }).click();
+  await expect(page.locator(".planner-itinerary-card h3")).toHaveText(["淺草散步"]);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(await page.evaluate(() => document.documentElement.clientWidth));
+});
+
+test("itinerary drag handle works with pointer input and keyboard move keeps focus inside the sheet", async ({ page }) => {
+  let trip = structuredClone(editorFixture);
+  await page.route("**/api/travel/trips/intuitive-trip**", async (route) => {
+    if (route.request().method() === "PUT") trip = { ...trip, version: trip.version + 1, items: route.request().postDataJSON().items };
+    return route.fulfill({ json: trip });
+  });
+  await page.goto("/zh-TW/trips/intuitive-trip");
+  const handle = page.locator('[data-itinerary-drag="asakusa"]');
+  const target = page.locator('[data-itinerary-gap="dinner1"]');
+  await handle.scrollIntoViewIfNeeded();
+  const start = await handle.boundingBox();
+  expect(start).not.toBeNull();
+  await page.mouse.move(start!.x + start!.width / 2, start!.y + start!.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(start!.x + start!.width / 2, start!.y + start!.height / 2 + 12);
+  // The dedicated handle captures pointer events while the page scrolls.
+  await target.evaluate((node) => node.scrollIntoView({ block: "center" }));
+  const end = await target.boundingBox();
+  await page.mouse.move(end!.x + end!.width / 2, end!.y + end!.height / 2, { steps: 8 });
+  await expect(target).toHaveAttribute("data-drop-active", "true");
+  await page.mouse.up();
+  await expect.poll(() => trip.items.filter((item) => item.day_date === "2026-11-11").map((item) => item.id)).toEqual(["hotel1", "lunch1", "asakusa", "dinner1", "end1"]);
+  await handle.focus();
+  await page.keyboard.press("Enter");
+  const dialog = page.getByRole("dialog", { name: "移動這個行程" });
+  await expect(dialog).toBeVisible();
+  await dialog.getByRole("button", { name: "移到這裡" }).focus();
+  await page.keyboard.press("Tab");
+  await expect(dialog.getByRole("button", { name: "關閉", exact: true })).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+  await expect(handle).toBeFocused();
+  await handle.scrollIntoViewIfNeeded();
+  const cancelStart = await handle.boundingBox();
+  await page.mouse.move(cancelStart!.x + cancelStart!.width / 2, cancelStart!.y + cancelStart!.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(cancelStart!.x + cancelStart!.width / 2, cancelStart!.y + cancelStart!.height / 2 + 12);
+  await page.keyboard.press("Escape");
+  await page.mouse.up();
+  await expect(dialog).toBeHidden();
+  await expect(page.locator("[data-drop-active]")).toHaveCount(0);
+});
 
 /**
  * Appearance, language and text size live in the phone menu, where each one has a
@@ -148,6 +240,10 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await page.route("**/api/travel/trips/mobile-trip**", async (route) => {
     const url = route.request().url();
     const method = route.request().method();
+    if (url.includes("/place-options?")) {
+      await route.fulfill({ json: { items: [], next_offset: null, context: "nearby" } });
+      return;
+    }
     if (url.endsWith("/itinerary/optimize/preview")) {
       await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({
         preview_id: "preview-1", expires_at: "2026-11-11T10:10:00Z", base_version: currentTrip.version,
@@ -250,6 +346,7 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await dockDone.click();
   const addButton = page.getByRole("button", { name: "新增安排" });
   await addButton.click();
+  await page.getByRole("button", { name: "自行填寫行程" }).click();
   await expect(page.getByRole("dialog", { name: "新增安排" })).toBeVisible();
   await expect(page.locator(".planner-timeline-marker")).toHaveCount(2);
   await page.waitForTimeout(1_100);
@@ -258,6 +355,7 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await expect(page.getByRole("dialog", { name: "新增安排" })).toBeHidden();
   await expect(page.locator(".planner-timeline-marker")).toHaveCount(2);
   await addButton.click();
+  await page.getByRole("button", { name: "自行填寫行程" }).click();
   await page.getByLabel("安排名稱").fill("銀座午餐");
   await page.getByRole("button", { name: "加入行程" }).click();
   const addedCard = page.getByRole("heading", { name: "銀座午餐" }).locator("xpath=ancestor::article");

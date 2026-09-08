@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 0 in progress · 2 blocked · 1 in review · 158 done**
+**16 open · 0 in progress · 2 blocked · 2 in review · 158 done**
 
 ## Ready to claim
 
@@ -33,6 +33,7 @@ _Nothing here._
 | Task | Owner | Branch |
 | --- | --- | --- |
 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
+| [Intuitive itinerary ordering and contextual place picker](open/2026-09-08-intuitive-itinerary-editor.md) | codex | `codex/intuitive-itinerary-editor` |
 
 ## Waiting
 
