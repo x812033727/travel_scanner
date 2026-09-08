@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**18 open · 1 in progress · 2 blocked · 6 in review · 186 done**
+**18 open · 1 in progress · 2 blocked · 6 in review · 187 done**
 
 ## Ready to claim
 
