@@ -1,0 +1,466 @@
+{
+  "checked_on": "2026-09-08",
+  "method": "Primary official/tourism and OTA documents plus normal HTTPS server review; no browser override.",
+  "base_commit": "9ca88c22435759d4d6edbd6b34e7a0186318280d",
+  "hotels": [
+    {
+      "source_key": "editorial:seoul:l7-myeongdong",
+      "official_name": "L7 MYEONGDONG by LOTTE HOTELS",
+      "official_address": "137 Toegye-ro, Jung-gu, Seoul",
+      "official_identity_url": "https://www.lottehotel.com/prerendered/myeongdong-l7/zh/about/location/index.html",
+      "prior_naver_evidence": {
+        "status": "browser_identity_checked",
+        "candidate_url": "https://map.naver.com/p/entry/place/36759043",
+        "discovery_url": "https://hotel-iu.tistory.com/2832",
+        "checked_on": "2026-09-08",
+        "note": "Chrome 直接開啟 Naver 飯店頁，核對飯店名稱、街道門牌與官方網站，與已保存的官方／政府許可身份一致。只保存身份稽核結果，未摘錄座標、圖片、評分或評論。產品及平台仍待後台獨立核准。",
+        "matched_name": "L7 명동 바이 롯데호텔",
+        "matched_address": "서울 중구 퇴계로 137",
+        "matched_official_url": "https://www.lottehotel.com/myeongdong-l7/ko"
+      },
+      "product_status": "approved",
+      "new_location_review": false,
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.lottehotel.com/prerendered/myeongdong-l7/zh/about/location/index.html",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "Stored Lotte page returned Pardon Our Interruption; current tourism directory and dated official index corroborate address, but this link is not approved from a bot response."
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/kr/l7-myeongdong-by-lotte.html",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "Stored page returned only three lines without readable identity; not proof of delisting."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/seoul-hotel-detail-3732591/l7-myeongdong-by-lotte-hotels/",
+          "property_id": "3732591",
+          "status": "approved",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "L7 MYEONGDONG by LOTTE HOTELS",
+          "matched_address": "137 Toegye-ro, Jung-gu, Seoul",
+          "health": "healthy",
+          "version": 2
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/l7-myeongdong-by-lotte/hotel/seoul-kr.html",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No new review."
+        },
+        {
+          "provider": "expedia",
+          "url": "https://www.expedia.com/Seoul-Hotels-L7-Myeongdong-By-LOTTE.h12511672.Hotel-Information",
+          "property_id": "12511672",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "Title observed, but subsequent address extraction returned Internal Error; no fresh complete landing review."
+        },
+        {
+          "provider": "rakuten",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No new review."
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:seoul:four-points-josun-myeongdong",
+      "official_name": "Four Points by Sheraton Josun, Seoul Myeongdong",
+      "official_address": "36 Samil-daero 10-gil, Jung-gu, Seoul",
+      "official_identity_url": "https://www.marriott.com/en-us/hotels/selfd-four-points-josun-seoul-myeongdong/overview/",
+      "prior_naver_evidence": {
+        "status": "browser_identity_checked",
+        "candidate_url": "https://map.naver.com/p/entry/place/1797471080",
+        "discovery_url": "https://hotel-iu.tistory.com/1287",
+        "checked_on": "2026-09-08",
+        "note": "Chrome 直接開啟 Naver 飯店頁，核對飯店名稱、街道門牌與官方網站，與已保存的官方／政府許可身份一致。只保存身份稽核結果，未摘錄座標、圖片、評分或評論。產品及平台仍待後台獨立核准。",
+        "matched_name": "포포인츠 바이 쉐라톤 조선 서울 명동",
+        "matched_address": "서울 중구 삼일대로10길 36",
+        "matched_official_url": "https://www.josunhotel.com/hotel/fpbsMyeongdong.do"
+      },
+      "product_status": "approved",
+      "new_location_review": false,
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.marriott.com/en-us/hotels/selfd-four-points-josun-seoul-myeongdong/overview/",
+          "status": "pending",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "Four Points by Sheraton Josun, Seoul Myeongdong",
+          "matched_address": "36 Samil-daero 10-gil, Jung-gu, Seoul",
+          "health": "unchecked",
+          "version": 1,
+          "error_code": "service_link_unavailable",
+          "reason": "Normal server safety/availability review did not pass; no browser override, no inferred delisting."
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/kr/four-points-by-sheraton-seoul-myeongdong.html",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "Stored page returned only three lines without readable identity; not proof of delisting."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/seoul-hotel-detail-67428348/four-points-by-sheraton-seoul-myeongdong/",
+          "property_id": "67428348",
+          "status": "approved",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "Four Points by Sheraton Josun, Seoul Myeongdong",
+          "matched_address": "36 Samil-daero 10-gil, Jung-gu, Seoul",
+          "health": "healthy",
+          "version": 2
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/four-points-by-sheraton-seoul-myeongdong/hotel/seoul-kr.html",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No new review."
+        },
+        {
+          "provider": "expedia",
+          "url": "https://www.expedia.com/Seoul-Hotels-Four-Points-By-Sheraton-Seoul.h59029424.Hotel-Information",
+          "property_id": "59029424",
+          "status": "pending",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "Four Points by Sheraton Josun, Seoul Myeongdong",
+          "matched_address": "36 Samil-daero 10-gil, Jung-gu, Seoul",
+          "health": "unchecked",
+          "version": 1,
+          "error_code": "service_link_unavailable",
+          "reason": "Normal server safety/availability review did not pass; no browser override, no inferred delisting."
+        },
+        {
+          "provider": "rakuten",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No new review."
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:seoul:ryse-autograph-collection",
+      "official_name": "RYSE, Autograph Collection",
+      "official_address": "130 Yanghwa-ro, Mapo-gu, Seoul",
+      "official_identity_url": "https://www.rysehotel.co.kr/contact/",
+      "prior_naver_evidence": {
+        "status": "browser_identity_checked",
+        "candidate_url": "https://map.naver.com/p/entry/place/1578505636",
+        "discovery_url": "https://www.rysehotel.co.kr/contact/",
+        "checked_on": "2026-09-07",
+        "note": "Official contact page links directly to this Naver property. Chrome heading, 130 Yanghwa-ro address and rysehotel.co.kr website matched. This is factual evidence, not admin approval."
+      },
+      "product_status": "approved",
+      "new_location_review": false,
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.rysehotel.co.kr/contact/",
+          "status": "approved",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "Existing independent approval preserved; official 130 Yanghwa-ro identity rechecked read-only."
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/kr/ryse-autograph-collection-korea.html",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "Stored page returned only three lines without readable identity; not proof of delisting."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/seoul-hotel-detail-687886/ryse-autograph-collection/",
+          "property_id": "687886",
+          "status": "approved",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "RYSE, Autograph Collection by Marriott",
+          "matched_address": "130 Yanghwa-ro, Mapo-gu, Seoul",
+          "health": "healthy",
+          "version": 2
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/ryse-autograph-collection_2/hotel/seoul-kr.html",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No new review."
+        },
+        {
+          "provider": "expedia",
+          "url": "https://www.expedia.com/Seoul-Hotels-RYSE.h2455064.Hotel-Information",
+          "property_id": "2455064",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "Title observed, but subsequent address extraction returned Internal Error; no fresh complete landing review."
+        },
+        {
+          "provider": "rakuten",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "Property title observed on primary international page; current full street identity unresolved. Pending only.",
+          "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_south_korea/sub_seoul/cty_mapo_district/dst_mapogu/34123457159873/",
+          "property_id": "34123457159873",
+          "health": "unchecked",
+          "version": 2,
+          "new_candidate": true
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:seoul:mercure-hongdae",
+      "official_name": "머큐어 앰배서더 서울 홍대",
+      "official_address": "144 Yanghwa-ro, Mapo-gu, Seoul",
+      "official_identity_url": "https://all.accor.com/hotel/B696/index.en.shtml",
+      "prior_naver_evidence": {
+        "status": "browser_identity_checked",
+        "candidate_url": "https://map.naver.com/p/entry/place/1159254664",
+        "discovery_url": "https://hotel-iu.tistory.com/5905",
+        "checked_on": "2026-09-08",
+        "note": "Chrome 直接開啟 Naver 飯店頁，核對飯店名稱、街道門牌與官方網站，與已保存的官方／政府許可身份一致。只保存身份稽核結果，未摘錄座標、圖片、評分或評論。產品及平台仍待後台獨立核准。",
+        "matched_name": "머큐어 앰배서더 서울 홍대",
+        "matched_address": "서울 마포구 양화로 144",
+        "matched_official_url": "https://www.ambatel.com/mercure/hongdae/ko/main.do"
+      },
+      "product_status": "approved",
+      "new_location_review": false,
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://all.accor.com/hotel/B696/index.en.shtml",
+          "status": "approved",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "Mercure Ambassador Seoul Hongdae",
+          "matched_address": "144 Yanghwa-ro, Mapo-gu, Seoul",
+          "health": "healthy",
+          "version": 2
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/kr/mercure-ambassador-seoul-hongdae.html",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "Stored page returned only three lines without readable identity; not proof of delisting."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/seoul-hotel-detail-57079911/mercure-ambassador-seoul-hongdae/",
+          "property_id": "57079911",
+          "status": "approved",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "Mercure Ambassador Seoul Hongdae",
+          "matched_address": "144 Yanghwa-ro, Mapo-gu, Seoul",
+          "health": "healthy",
+          "version": 2
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/mercure-ambassador-seoul-hongdae/hotel/seoul-kr.html",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No new review."
+        },
+        {
+          "provider": "expedia",
+          "url": "https://www.expedia.com/Seoul-Hotels-Mercure-Ambassador-Seoul-Hongdae.h121278293.Hotel-Information",
+          "property_id": "121278293",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "Title observed, but subsequent address extraction returned Internal Error; no fresh complete landing review."
+        },
+        {
+          "provider": "rakuten",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "Primary search result observed, direct page could not be read. Candidate only, no landing review or language URL rewrite.",
+          "url": "https://travel.rakuten.com/hkg/zh-hk/hotel_info_item/cnt_south_korea/sub_seoul/cty_mapo_district/dst_mapogu/34123457217428/",
+          "property_id": "34123457217428",
+          "health": "unchecked",
+          "version": 2,
+          "new_candidate": true
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:seoul:l7-hongdae",
+      "official_name": "L7 HONGDAE by LOTTE HOTELS",
+      "official_address": "141 Yanghwa-ro, Mapo-gu, Seoul",
+      "official_identity_url": "https://www.lottehotel.com/prerendered/hongdae-l7/ja/about/faq/index.html",
+      "prior_naver_evidence": {
+        "status": "browser_identity_checked",
+        "candidate_url": "https://map.naver.com/p/entry/place/1883653915",
+        "discovery_url": "https://hotel-iu.tistory.com/5905",
+        "checked_on": "2026-09-08",
+        "note": "Chrome 直接開啟 Naver 飯店頁，核對飯店名稱、街道門牌與官方網站，與已保存的官方／政府許可身份一致。只保存身份稽核結果，未摘錄座標、圖片、評分或評論。產品及平台仍待後台獨立核准。",
+        "matched_name": "L7 홍대 바이 롯데호텔",
+        "matched_address": "서울 마포구 양화로 141",
+        "matched_official_url": "https://www.lottehotel.com/hongdae-l7/ko"
+      },
+      "product_status": "approved",
+      "new_location_review": false,
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.lottehotel.com/prerendered/hongdae-l7/ja/about/faq/index.html",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "Stored Lotte page returned Pardon Our Interruption; current tourism directory and dated official index corroborate address, but this link is not approved from a bot response."
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/kr/l7-hongdae.html",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "Stored page returned only three lines without readable identity; not proof of delisting."
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/seoul-hotel-detail-14186936/l7-hongdae-by-lotte-hotels/",
+          "property_id": "14186936",
+          "status": "approved",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "L7 HONGDAE by LOTTE HOTELS",
+          "matched_address": "141 Yanghwa-ro, Mapo-gu, Seoul",
+          "health": "healthy",
+          "version": 2
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/l7-hongdae-by-lotte/hotel/seoul-kr.html",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No new review."
+        },
+        {
+          "provider": "expedia",
+          "url": "https://www.expedia.com/Seoul-Hotels-L7-Hongdae-By-LOTTE.h22318672.Hotel-Information",
+          "property_id": "22318672",
+          "status": "pending",
+          "review_requested": true,
+          "browser_verified": false,
+          "matched_name": "L7 HONGDAE by LOTTE HOTELS",
+          "matched_address": "141 Yanghwa-ro, Mapo-gu, Seoul",
+          "health": "unchecked",
+          "version": 1,
+          "error_code": "service_link_unavailable",
+          "reason": "Normal server safety/availability review did not pass; no browser override, no inferred delisting."
+        },
+        {
+          "provider": "rakuten",
+          "status": "pending",
+          "review_requested": false,
+          "browser_verified": false,
+          "reason": "No new review."
+        }
+      ]
+    }
+  ],
+  "supplemental_sources": [
+    {
+      "source_key": "editorial:seoul:l7-myeongdong",
+      "url": "https://access.visitkorea.or.kr/acm/detail.do?cotId=ae025b39-ba7c-4579-acaf-ba124481ae37",
+      "matched_address": "137 Toegye-ro, Jung-gu, Seoul",
+      "publisher": "Korea Tourism Organization",
+      "checked_on": "2026-09-08"
+    },
+    {
+      "source_key": "editorial:seoul:l7-hongdae",
+      "url": "https://access.visitkorea.or.kr/acm/detail.do?cotId=0e2a13a8-96b2-4e99-8483-1bf82c6dfaff",
+      "matched_address": "141 Yanghwa-ro, Mapo-gu, Seoul",
+      "publisher": "Korea Tourism Organization",
+      "checked_on": "2026-09-08"
+    }
+  ],
+  "candidate_additions": [
+    {
+      "source_key": "editorial:seoul:ryse-autograph-collection",
+      "provider": "rakuten",
+      "url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_south_korea/sub_seoul/cty_mapo_district/dst_mapogu/34123457159873/",
+      "property_id": "34123457159873",
+      "query": "site.travel.rakuten.com \"RYSE\" \"Seoul\"",
+      "document_freshness": "last year",
+      "reason": "Property title observed on primary international page; current full street identity unresolved. Pending only."
+    },
+    {
+      "source_key": "editorial:seoul:mercure-hongdae",
+      "provider": "rakuten",
+      "url": "https://travel.rakuten.com/hkg/zh-hk/hotel_info_item/cnt_south_korea/sub_seoul/cty_mapo_district/dst_mapogu/34123457217428/",
+      "property_id": "34123457217428",
+      "query": "site.travel.rakuten.com \"Mercure Ambassador Seoul Hongdae\"",
+      "document_freshness": "7 months ago search index; direct open Internal Error",
+      "reason": "Primary search result observed, direct page could not be read. Candidate only, no landing review or language URL rewrite."
+    }
+  ],
+  "production": {
+    "status": "applied_verified",
+    "runtime_image": "travel-scanner-api:aaa33f008c82c56e5c541dede8205097102193e1",
+    "schema": "0062_merchant_platform_links",
+    "backup_path": "/root/travel_scanner_pre_hotel_candidates_20260908T051250Z.dump",
+    "backup_bytes": 7095043,
+    "baseline": "6a70a44e0190a0591021100f6046c2d336ae6346ca3d4a94868f73b5e8207c90",
+    "untouched_fingerprint": "8da6cf45fe63270b3bc46855503fb5c7faf84f5eda085e1ac355f3e1eba836e7",
+    "all_60_products_other_349_options_config_preserved": true,
+    "new_hotel_identities": 0,
+    "new_location_approvals": 0,
+    "new_candidate_urls": 2,
+    "review_attempts": 9,
+    "new_platform_approvals": 6,
+    "failed_reviews": 3,
+    "new_audit_records": 8,
+    "approved_products": 17,
+    "pending_products": 43,
+    "approved_options": 64,
+    "pending_options": 296,
+    "config_version": 5,
+    "config_changed": false,
+    "complete_cities": 0,
+    "five_locale_public_hotels": {
+      "tokyo": 10,
+      "osaka": 2,
+      "kyoto": 0,
+      "seoul": 5,
+      "busan": 0,
+      "taipei": 0
+    },
+    "five_locale_seoul_public_options_before": 1,
+    "five_locale_seoul_public_options_after": 7,
+    "no_clickouts_or_paid_api_calls": true,
+    "no_deployment_or_migration": true,
+    "independent_verification_passed": true,
+    "actual_https_bff_checks": 5
+  }
+}
