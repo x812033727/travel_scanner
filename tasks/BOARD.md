@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 0 in progress · 2 blocked · 3 in review · 159 done**
+**16 open · 0 in progress · 2 blocked · 4 in review · 159 done**
 
 ## Ready to claim
 
@@ -35,6 +35,7 @@ _Nothing here._
 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
 | [Fix nearby itinerary discovery across cities and reset insertion pagination](open/2026-09-08-planner-nearby-followup.md) | codex | `codex/planner-nearby-followup` |
 | [Fix weather and itinerary intent panel contrast in dark mode](open/2026-09-08-planner-weather-dark-contrast.md) | codex | `codex/planner-nearby-followup` |
+| [Stay22 Maps lodging pilot](open/2026-09-08-stay22-maps-lodging-pilot.md) | codex-stay22 | `codex/stay22-maps-pilot` |
 
 ## Waiting
 
