@@ -1087,6 +1087,37 @@ class FoodMerchant(Timestamped, Base):
     area_source: Mapped[str | None] = mapped_column(String(16), nullable=True)
 
 
+class FoodMerchantPlatformLink(Timestamped, Base):
+    """A manually reviewed, merchant-specific page on a reservation platform."""
+
+    __tablename__ = "food_merchant_platform_links"
+    __table_args__ = (
+        UniqueConstraint("merchant_id", "provider", name="uq_food_merchant_platform_provider"),
+        UniqueConstraint("provider", "canonical_url", name="uq_food_merchant_platform_url"),
+        CheckConstraint(
+            "status IN ('verified', 'not_found', 'ambiguous', 'disabled')",
+            name="ck_food_merchant_platform_status",
+        ),
+        CheckConstraint(
+            "status != 'verified' OR canonical_url IS NOT NULL",
+            name="ck_food_merchant_platform_verified_url",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    merchant_id: Mapped[UUID] = mapped_column(
+        ForeignKey("food_merchants.id", ondelete="CASCADE"), index=True
+    )
+    provider: Mapped[str] = mapped_column(String(32), index=True)
+    canonical_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    localized_urls_json: Mapped[dict[str, str]] = mapped_column(JSON, default=dict)
+    status: Mapped[str] = mapped_column(String(16), index=True)
+    checked_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    checked_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    review_note: Mapped[str | None] = mapped_column(String(1000), nullable=True)
+
+
 class FoodMerchantStyle(Timestamped, Base):
     """Editorial style labels, independent of cuisine and merchant publication."""
 
