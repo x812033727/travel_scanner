@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 1 in progress · 2 blocked · 4 in review · 168 done**
+**16 open · 1 in progress · 2 blocked · 1 in review · 171 done**
 
 ## Ready to claim
 
@@ -35,9 +35,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Branch |
 | --- | --- | --- |
 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
-| [Klook direct affiliate product integration and reviewed rollout](open/2026-09-08-klook-direct-affiliate-integration.md) | codex-klook-root | `codex/klook-product-integration` |
-| [Klook channel aware affiliate backend and secure clickout](open/2026-09-08-klook-channel-backend.md) | codex-klook-backend | `codex/klook-product-integration` |
-| [Klook affiliate frontend channels and contextual discovery](open/2026-09-08-klook-affiliate-web.md) | codex-klook-web | `codex/klook-product-integration` |
 
 ## Waiting
 
@@ -57,10 +54,10 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-08 [Fix weather and itinerary intent panel contrast in dark mode](done/2026-09-08-planner-weather-dark-contrast.md)
 - 2026-09-08 [Fix nearby itinerary discovery across cities and reset insertion pagination](done/2026-09-08-planner-nearby-followup.md)
 - 2026-09-08 [Stay22 Maps lodging pilot](done/2026-09-08-stay22-maps-lodging-pilot.md)
+- 2026-09-08 [Klook affiliate frontend channels and contextual discovery](done/2026-09-08-klook-affiliate-web.md)
+- 2026-09-08 [Klook channel aware affiliate backend and secure clickout](done/2026-09-08-klook-channel-backend.md)
+- 2026-09-08 [Klook direct affiliate product integration and reviewed rollout](done/2026-09-08-klook-direct-affiliate-integration.md)
 - 2026-09-08 [Admin domain regression compatibility tests](done/2026-09-08-admin-domain-regression-compatibility-tests.md)
 - 2026-09-08 [Admin catalog review filters and canonical location editor](done/2026-09-08-admin-catalog-review-filters-and-canonical.md)
 - 2026-09-08 [Admin domain scoped catalog AI review](done/2026-09-08-admin-domain-scoped-catalog-ai-review.md)
 - 2026-09-08 [Admin domain settings ownership and safe saves](done/2026-09-08-admin-domain-settings-ownership-and-safe.md)
-- 2026-09-08 [Admin hotel workspace isolation](done/2026-09-08-admin-hotel-workspace-isolation.md)
-- 2026-09-08 [Admin domain navigation and workspaces](done/2026-09-08-admin-domain-navigation-and-workspaces.md)
-- 2026-09-08 [Intuitive itinerary ordering and contextual place picker](done/2026-09-08-intuitive-itinerary-editor.md)
