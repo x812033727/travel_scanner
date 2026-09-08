@@ -82,6 +82,15 @@ test("itinerary drag handle works with pointer input and keyboard move keeps foc
   await page.keyboard.press("Escape");
   await expect(dialog).toBeHidden();
   await expect(handle).toBeFocused();
+  await handle.scrollIntoViewIfNeeded();
+  const cancelStart = await handle.boundingBox();
+  await page.mouse.move(cancelStart!.x + cancelStart!.width / 2, cancelStart!.y + cancelStart!.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(cancelStart!.x + cancelStart!.width / 2, cancelStart!.y + cancelStart!.height / 2 + 12);
+  await page.keyboard.press("Escape");
+  await page.mouse.up();
+  await expect(dialog).toBeHidden();
+  await expect(page.locator("[data-drop-active]")).toHaveCount(0);
 });
 
 /**

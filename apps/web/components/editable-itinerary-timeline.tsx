@@ -73,7 +73,11 @@ export function EditableItineraryTimeline({
       }
       clear();
     }
-    function escape(event: KeyboardEvent) { if (event.key === "Escape" && drag.current) { event.preventDefault(); clear(); } }
+    function escape(event: KeyboardEvent) {
+      if (event.key === "Escape" && drag.current) {
+        event.preventDefault(); suppressClick.current = true; clear();
+      }
+    }
     window.addEventListener("pointermove", move, { passive: false });
     window.addEventListener("pointerup", finish);
     window.addEventListener("pointercancel", clear);
