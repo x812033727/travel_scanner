@@ -28,7 +28,6 @@ scope:
   - apps/web/messages
   - docs/merchant-styles.md
   - README.md
-  - apps/web/e2e/community.spec.ts
   - apps/web/playwright.config.ts
 ---
 
@@ -70,6 +69,8 @@ Web: 單工 Vitest、TypeScript、lint、check:i18n、production build；merchan
 匯入及人工查核記錄見 docs/merchant-styles.md。
 
 ## Notes
+
+2026-09-09 第五次窄幅交接（community E2E）：沿用上次核對的原 owner 身分，再次確認 `mokaair-community` 整個工作樹乾淨，`apps/web/e2e/community.spec.ts` 無未提交或相對 `origin/main` 的本分支待交付變更。僅釋放此檔 scope，供旅行準備功能更新寵物行程驗收；本任務後續不再修改此檔。其餘 scope、owner、status、branch 與飯店審核任務保持不變，只提交本地任務 metadata，不修改測試、不 push、合併或部署。
 
 2026-09-09 第四次窄幅交接（models-only，Klook）：定點核對本 task `01a057d5-1534-7c91-8f9e-a60b1e3c613c` 原始 session 紀錄第 16799 行的 `payload.input`，確認曾在 `mokaair-community` 以 `codex` 認領本任務及 `codex/merchant-style-batch-08` 分支。再次確認整個工作樹乾淨，`apps/api/app/models.py` 無未提交或相對 `origin/main` 的本分支待交付變更；僅釋放這一個 scope 給 Klook 資料模型工作，本任務後續不再修改該檔。其餘 scope、owner、status、branch 均不變；不修改模型或原始 canonical checkout，只提交本地任務 metadata，不 push、合併或部署。
 
