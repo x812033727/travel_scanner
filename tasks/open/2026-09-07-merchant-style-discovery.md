@@ -5,7 +5,7 @@ status: review
 priority: P1
 area: api
 owner: codex
-claimed_at: 2026-09-08T05:06:32Z
+claimed_at: 2026-09-08T05:18:26Z
 created_at: 2026-09-07T23:14:18Z
 completed_at:
 branch: codex/merchant-style-batch-06
@@ -32,6 +32,8 @@ scope:
   - docs/merchant-styles.md
   - README.md
   - apps/web/e2e/merchant-styles.spec.ts
+  - apps/web/e2e/community.spec.ts
+  - apps/web/playwright.config.ts
   - .github/workflows/ci.yml
 ---
 
@@ -157,3 +159,4 @@ PR #345 已合併部署，第二／三批 PR #346、#347 已依授權合併；�
 - 新一輪「合併後繼續新增」已授權#356，但8106651的push CI仍blocked：首次community建立旅程ECONNRESET；單次重跑為mobile full-stack.spec.ts:232等不到航班動態連結，150秒逾時。當次Next的runtime/public-config與trips/{id}有JSON解析500，社群則6項通過。未把不同失敗混稱同一根因。
 - 查核現行CI確實以next dev啟動全端Web；既存待辦記有load-manifest.external.js讀取JSON清單失敗的明確堆疊。本輪在原scope內將全端CI改為先build、再next start，兩套Playwright均指定使用正式建置，消除此測試環境的請求時編譯；API、worker、PostgreSQL、Redis、S3、SMTP與原有桌面／Pixel 7案例、斷言、timeout保持不變。
 - 此調整遵循專案既有isolated UI建置方式及[Next.js官方測試指南](https://nextjs.org/docs/app/guides/testing/playwright)。不改Next依賴、不宣稱修復開發伺服器自身或社群計數重複鍵；正式資料與服務完全不動。新head全套CI通過後才以SHA guard合併。
+- 79266a2的正式建置與旅遊6項均通過，社群6項在admin登入後GET settings收到401。已定位安裝的Playwright Cookie.matches只對HTTP localhost（非127.0.0.1）容許Secure cookie；獨立合成Cookie本機實驗亦確認numeric loopback不回送、localhost正常回送。擴充本任務的兩個測試檔scope後重新claim，將全端站點、Playwright baseURL、Origin與MinIO CORS統一localhost；API／Redis等內部連線不变。保留production Secure、HttpOnly、SameSite及所有授權斷言，未注入登入token或繞過登入。

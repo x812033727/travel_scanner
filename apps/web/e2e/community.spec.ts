@@ -6,9 +6,11 @@ import zhCommunity from "../messages/zh-TW/community.json" with { type: "json" }
 // CI/local PostgreSQL, Redis, private MinIO, Mailpit and ordinary RQ worker.
 test.skip(process.env.COMMUNITY_E2E !== "1", "Requires the community companion services");
 
+const siteOrigin = new URL(process.env.PLAYWRIGHT_BASE_URL || `http://127.0.0.1:${process.env.PLAYWRIGHT_PORT || "3000"}`).origin;
+
 async function json(client: APIRequestContext, method: string, route: string, data?: unknown) {
   const response = await client.fetch(`/api/travel${route}`, { method, data,
-    headers: { Origin: `http://127.0.0.1:${process.env.PLAYWRIGHT_PORT || "3000"}` } });
+    headers: { Origin: siteOrigin } });
   expect(response.ok(), `${method} ${route}: ${await response.text()}`).toBeTruthy();
   return response.status() === 204 ? null : response.json();
 }
