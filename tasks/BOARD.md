@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 1 in progress · 2 blocked · 1 in review · 156 done**
+**16 open · 0 in progress · 2 blocked · 1 in review · 157 done**
 
 ## Ready to claim
 
@@ -21,13 +21,12 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
 | P3 | [彈性日期區塊的價格標籤寫死 full_trip_search](open/2026-09-06-full-trip-search.md) | web | `apps/web/components/flight-date-options.tsx`<br>`apps/web/components/flight-date-options.test.tsx` |
+| P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | api | `apps/api/tests/test_food_integration.py` |
 | P3 | [tasks/BOARD.md 是產生檔，卻讓每個 PR 互相衝突](open/2026-09-07-board-conflicts-on-every-pr.md) | tools | `.gitattributes`<br>`tools/tasks.mjs` |
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [七國美食卡精準導航與訂位平台](open/2026-09-08-food-platform-links.md) | codex | 2026-09-08T01:27:11Z | `codex/food-platform-links` |
+_Nothing here._
 
 ## In review
 
@@ -47,10 +46,10 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
 | P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | active work in the same scope |
 | P3 | [行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal\|append](open/2026-09-07-add-a-meal-to-a-day.md) | active work in the same scope |
-| P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-08 [七國美食卡精準導航與訂位平台](done/2026-09-08-food-platform-links.md)
 - 2026-09-07 [登入頁沒有忘記密碼，後端也沒有任何寄信管道](done/2026-09-07-forgot-password-no-mail-channel.md)
 - 2026-09-07 [Hotel booking without affiliate enrollment](done/2026-09-07-hotel-direct-booking.md)
 - 2026-09-07 [The admin console's own tabs and pills are smaller than every control it publishes](done/2026-09-07-admin-controls-under-44px.md)
@@ -60,4 +59,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-07 [從旅程出發查機票：條件由旅程推導，報價帶回錨點](done/2026-09-06-search-from-a-saved-trip.md)
 - 2026-09-07 [The whole applied-filter chip is a delete button](done/2026-09-07-applied-filter-chip-is-all-delete.md)
 - 2026-09-07 [Cuisine chip counts ignore the area and keyword already chosen](done/2026-09-07-cuisine-counts-ignore-other-filters.md)
-- 2026-09-07 [The foods landing tells you to pick a city while already listing 110 merchants](done/2026-09-07-foods-landing-lists-before-city.md)

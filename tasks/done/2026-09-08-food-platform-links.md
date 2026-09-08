@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-food-platform-links
 title: 七國美食卡精準導航與訂位平台
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex
 claimed_at: 2026-09-08T01:27:11Z
 created_at: 2026-09-08T00:42:42Z
-completed_at:
+completed_at: 2026-09-08T01:34:53Z
 branch: codex/food-platform-links
 depends_on: []
 scope:
@@ -40,14 +40,14 @@ scope:
 - [x] 七國店家都具有對應平台的查核結果，未驗證連結不公開。
 - [x] 美食與店家小卡分開顯示精準導航及品牌化查看／訂位入口。
 - [x] 後台可逐筆驗證、標記查無／模糊／停用並篩選查核狀態。
-- [x] API、Web、migration 與 production build 驗證完成；PR 待建立。
+- [x] API、Web、migration 與 production build 驗證完成，PR #349 已建立。
 
 ## Steps
 
 - [x] 建立 migration、模型、平台規則與 173 筆實際啟動資料的保守查核結果。
 - [x] 串接公開 API、前台雙入口與五語系文案。
 - [x] 串接管理 API、篩選與逐筆編輯介面。
-- [x] 完成本機測試與品質檢查；PR 與 CI 接續執行。
+- [x] 完成本機測試與品質檢查並建立 PR #349；CI 接續驗證。
 
 ## How to verify
 
