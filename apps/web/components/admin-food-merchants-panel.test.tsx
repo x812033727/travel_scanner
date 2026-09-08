@@ -40,6 +40,18 @@ const merchant = {
       is_current: true,
     },
   ],
+  platform_link: {
+    id: "platform-1",
+    provider: "openrice",
+    provider_label: "OpenRice",
+    canonical_url: "https://www.openrice.com/en/hongkong/p-yat-lok-restaurant-p23206360",
+    localized_urls: {},
+    status: "verified",
+    checked_at: "2026-09-08T00:00:00Z",
+    checked_by_user_id: null,
+    review_note: "Exact merchant page",
+  },
+  expected_platform: { provider: "openrice", label: "OpenRice" },
 };
 
 const names = { "zh-TW": "中環／上環", "zh-CN": "中环／上环", en: "Central / Sheung Wan", ja: "セントラル・上環", ko: "센트럴·셩완" };
@@ -142,6 +154,8 @@ describe("AdminFoodMerchantsPanel", () => {
     expect(await screen.findByText("Yat Lok Restaurant")).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "編輯地點與來源" }));
     const editor = screen.getByRole("dialog");
+    expect(within(editor).getByText("旅客訂位平台")).toBeTruthy();
+    expect(within(editor).getByDisplayValue("OpenRice")).toBeTruthy();
     const areaSelect = within(editor).getByLabelText("區域");
     await waitFor(() => expect(areaSelect.querySelectorAll("option").length).toBe(2));
     fireEvent.change(areaSelect, { target: { value: "hong-kong-central-sheung-wan" } });

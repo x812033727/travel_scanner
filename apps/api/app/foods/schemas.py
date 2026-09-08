@@ -16,6 +16,14 @@ class MapLink(BaseModel):
     primary: bool = False
 
 
+class ReservationLink(BaseModel):
+    provider: str
+    label: str
+    url: str
+    verified_at: str
+    language_code: str
+
+
 class MerchantSourceView(BaseModel):
     source_type: str
     source_scope: str
@@ -81,6 +89,7 @@ class MerchantCard(BaseModel):
     coordinate_source: CoordinateSourceView
     official_website_url: str | None = None
     map_links: list[MapLink] = Field(default_factory=list)
+    reservation_links: list[ReservationLink] = Field(default_factory=list)
     verified_at: str | None = None
     sources: list[MerchantSourceView] = Field(default_factory=list)
 

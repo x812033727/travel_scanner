@@ -18,11 +18,14 @@ from app.foods.admin_router import (
     FoodLocalizationPayload,
     FoodMerchantUpdatePayload,
     FoodUpdatePayload,
+    MerchantPlatformLinkPayload,
     batch_foods,
     create_food_area,
     list_admin_foods,
+    list_food_merchants,
     update_food,
     update_food_merchant,
+    update_merchant_platform_link,
 )
 from app.foods.area_catalog import ALL_AREA_SEEDS
 from app.foods.catalog import COUNTRY_NAMES, FOOD_SEEDS
@@ -47,6 +50,7 @@ from app.models import (
     FoodMerchant,
     FoodMerchantCategory,
     FoodMerchantFood,
+    FoodMerchantPlatformLink,
     FoodMerchantSource,
     TravelFood,
     TravelHotspot,
@@ -69,6 +73,7 @@ async def dispose_engine_after_module() -> AsyncIterator[None]:
 
 
 async def _clear(session: AsyncSession) -> None:
+    await session.execute(delete(FoodMerchantPlatformLink))
     await session.execute(delete(FoodMerchantSource))
     await session.execute(delete(FoodMerchantFood))
     await session.execute(delete(FoodMerchantCategory))
@@ -139,6 +144,10 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         assert int(await session.scalar(select(func.count(FoodHotspot.id))) or 0) >= 70
         assert (
             int(await session.scalar(select(func.count(FoodMerchant.id))) or 0) == MERCHANT_COUNT
+        )
+        assert (
+            int(await session.scalar(select(func.count(FoodMerchantPlatformLink.id))) or 0)
+            == MERCHANT_COUNT
         )
         # One row per merchant-dish. Higher than the 185 distinct (city, dish) pairs the
         # catalog validator counts, because a city can have several places for one dish.
@@ -279,6 +288,16 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
                 last_verified_at=datetime.now(UTC),
             )
         )
+        session.add(
+            FoodMerchantPlatformLink(
+                merchant_id=merchant.id,
+                provider="catchtable_global",
+                canonical_url="https://www.catchtable.net/shop/integration-verified-merchant",
+                localized_urls_json={},
+                status="verified",
+                checked_at=datetime.now(UTC),
+            )
+        )
         await session.commit()
 
         korean = await list_foods(
@@ -292,6 +311,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         ]
         assert len(published_merchants) == 1
         assert published_merchants[0]["map_links"][0]["provider"] == "naver"
+        assert published_merchants[0]["reservation_links"][0]["provider"] == "catchtable_global"
         assert "plus_code_global" not in published_merchants[0]
         facets = await food_facets(session)
         assert facets["total"] == DISH_COUNT
@@ -311,6 +331,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             korean_food.id
         )
         assert card["map_links"][0]["provider"] == "naver"
+        assert card["reservation_links"][0]["label"] == "Catchtable Global"
         # The city sat in Traditional Chinese next to a Korean area name and Korean
         # category labels in the same card, for every locale.
         assert card["destination_name"] == "서울"
@@ -634,6 +655,48 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         assert updated["area_source"] == "admin"
         assert [item["slug"] for item in updated["categories"]] == ["home-style", "rice-dishes"]
         assert [item["is_primary"] for item in updated["categories"]] == [True, False]
+        with pytest.raises(AppError) as wrong_platform:
+            await update_merchant_platform_link(
+                verified.id,
+                MerchantPlatformLinkPayload(
+                    provider="tablecheck",
+                    status="not_found",
+                    review_note="Wrong country on purpose",
+                ),
+                admin,
+                session,
+            )
+        assert wrong_platform.value.code == "reservation_platform_country_mismatch"
+        reviewed = await update_merchant_platform_link(
+            verified.id,
+            MerchantPlatformLinkPayload(
+                provider="catchtable_global",
+                status="verified",
+                canonical_url="https://www.catchtable.net/shop/integration-verified-merchant",
+                localized_urls={},
+                review_note="Exact branch reviewed again",
+            ),
+            admin,
+            session,
+        )
+        assert reviewed["platform_link"]["status"] == "verified"
+        assert reviewed["platform_link"]["checked_by_user_id"] == str(admin.id)
+        assert await session.scalar(
+            select(AdminAuditLog.id).where(
+                AdminAuditLog.action == "food_merchant_platform_link_reviewed",
+                AdminAuditLog.target == f"food_merchant:{verified.id}",
+            )
+        )
+        platform_filtered = await list_food_merchants(
+            admin,
+            session,
+            country_code="KR",
+            platform="catchtable_global",
+            platform_status="verified",
+        )
+        assert any(
+            item["id"] == str(verified.id) for item in platform_filtered["items"]
+        )
         with pytest.raises(AppError) as no_category:
             await update_food_merchant(
                 verified.id,
