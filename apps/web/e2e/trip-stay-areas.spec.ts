@@ -142,5 +142,5 @@ test("recommends stay areas, compares prices and sets the chosen hotel as primar
 
   await expect(page.getByText("已將 淺草河畔飯店 設為主要飯店，正在重新計算每日路線。")).toBeVisible();
   await expect(page.getByRole("dialog", { name: "住宿熱區" })).toHaveCount(0);
-  await expect(page.getByText("從 淺草河畔飯店 出發")).toBeVisible();
+  await expect(page.locator(".premium-optional-stop > summary").getByText("從 淺草河畔飯店 出發", { exact: true })).toBeVisible();
 });

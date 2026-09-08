@@ -19,7 +19,7 @@ jobs:
       - run: npm run build:web
       - run: npx playwright install --with-deps chromium
       - name: Verify manual creation, timeline and explicit AI preview/apply
-        run: npx playwright test e2e/planner-premium.spec.ts --workers=1
+        run: npx playwright test e2e/planner-premium.spec.ts e2e/trip-stay-areas.spec.ts e2e/stay22-maps.spec.ts --workers=1
         working-directory: apps/web
         env: { PLAYWRIGHT_SERVE_BUILD: "true" }
       - uses: actions/upload-artifact@v4
