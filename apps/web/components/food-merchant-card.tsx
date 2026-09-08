@@ -1,6 +1,6 @@
 "use client";
 
-import { Award, ExternalLink, Globe, ListFilter, MapPin } from "lucide-react";
+import { Award, CalendarCheck, ExternalLink, Globe, ListFilter, MapPin } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { TravelCardActions } from "@/components/travel-card-actions";
 import { primaryMapLink, type FoodMerchant } from "@/lib/foods";
@@ -31,6 +31,8 @@ export function FoodMerchantCard({
   const locale = useLocale();
   const map = primaryMapLink(merchant.map_links);
   const mapHref = map ? safeExternalHref(map.url) : undefined;
+  const reservation = merchant.reservation_links[0];
+  const reservationHref = reservation ? safeExternalHref(reservation.url) : undefined;
   const websiteHref = safeExternalHref(merchant.official_website_url);
   const primaryCategory = merchant.categories.find((item) => item.is_primary) ?? merchant.categories[0];
   const distinction = merchant.sources
@@ -136,13 +138,29 @@ export function FoodMerchantCard({
             href={mapHref}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`${map.label}: ${merchant.name}`}
+            aria-label={t("navigateTo", { name: merchant.name, provider: map.label })}
             className="flex min-h-11 items-center gap-2 rounded-2xl bg-[var(--paper)] px-3 py-2 text-sm font-semibold text-[var(--teal)] underline-offset-4 hover:underline"
           >
             <MapPin size={15} />
-            <span className="mr-auto">{map.label}</span>
+            <span className="mr-auto">{t("navigate")}</span>
             <ExternalLink size={13} />
           </a>
+        )}
+        {reservation && reservationHref && (
+          <a
+            href={reservationHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t("reserveAt", { name: merchant.name, provider: reservation.label })}
+            className="flex min-h-11 items-center gap-2 rounded-2xl bg-[var(--teal)] px-3 py-2 text-sm font-semibold text-white"
+          >
+            <CalendarCheck size={15} />
+            <span className="mr-auto">{t("viewOrReserve", { provider: reservation.label })}</span>
+            <ExternalLink size={13} />
+          </a>
+        )}
+        {reservation?.language_code === "vi" && reservationHref && (
+          <p className="px-1 text-xs text-[var(--muted)]">{t("externalLanguage.vi")}</p>
         )}
         {websiteHref && (
           <a

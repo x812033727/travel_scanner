@@ -55,6 +55,7 @@ const food: FoodItem = {
       name: "Hankook Jib",
       local_name: "한국집",
       destination_id: "seoul",
+      destination_name: "首爾",
       address: "Seoul",
       latitude: 37.57,
       longitude: 126.99,
@@ -66,6 +67,7 @@ const food: FoodItem = {
           primary: true,
         },
       ],
+      reservation_links: [],
       verified_at: "2026-09-01T00:00:00Z",
     },
   ],
@@ -88,7 +90,7 @@ describe("FoodDishCard", () => {
     expect(screen.getByText("廣藏市場")).toBeTruthy();
     expect(screen.getByText("廣藏市場").closest("a")).toBeNull();
     expect(screen.getByText("Hankook Jib")).toBeTruthy();
-    const naver = screen.getByRole("link", { name: /Naver Map/ });
+    const naver = screen.getByRole("link", { name: /使用 Naver Map 導航/ });
     expect(naver.getAttribute("target")).toBe("_blank");
     expect(naver.getAttribute("href")).toBe("https://map.naver.com/p/entry/place/123456");
     expect(

@@ -30,6 +30,13 @@ from app.foods.coordinate_queue import (
     queue_total,
     resolve_queue_page,
 )
+from app.foods.platform_links import (
+    PLATFORM_STATUSES,
+    PLATFORMS_BY_PROVIDER,
+    SITE_LOCALES,
+    expected_platform,
+    validate_platform_url,
+)
 from app.foods.service import (
     SEED_OWNED_FOOD_FIELDS,
     destination_country_code,
@@ -64,6 +71,7 @@ from app.models import (
     FoodMerchant,
     FoodMerchantCategory,
     FoodMerchantFood,
+    FoodMerchantPlatformLink,
     FoodMerchantSource,
     TravelFood,
     TravelHotspot,
@@ -78,6 +86,7 @@ RequestLocale = Annotated[Locale, Depends(current_locale)]
 FoodKind = Literal["main", "noodle_soup", "street_food", "dessert", "drink"]
 ReviewStatus = Literal["pending", "approved", "rejected", "disabled"]
 MapMatchStatus = Literal["unverified", "verified", "ambiguous", "disabled"]
+PlatformStatus = Literal["verified", "not_found", "ambiguous", "disabled"]
 MerchantSourceType = Literal["official_tourism", "merchant_official", "michelin_licensed"]
 MerchantSourceScope = Literal[
     "destination_context", "merchant_listing", "merchant_website", "coordinates"
@@ -302,6 +311,31 @@ class GoogleMapCandidateRequest(BaseModel):
     def validate_coordinate_pair(self) -> GoogleMapCandidateRequest:
         if (self.latitude is None) != (self.longitude is None):
             raise ValueError("緯度與經度必須同時提供")
+        return self
+
+
+class MerchantPlatformLinkPayload(BaseModel):
+    provider: str = Field(min_length=2, max_length=32)
+    status: PlatformStatus
+    canonical_url: str | None = Field(default=None, max_length=2048)
+    localized_urls: dict[str, str] = Field(default_factory=dict)
+    review_note: str | None = Field(default=None, max_length=1000)
+
+    @model_validator(mode="after")
+    def validate_urls(self) -> MerchantPlatformLinkPayload:
+        if self.provider not in PLATFORMS_BY_PROVIDER:
+            raise ValueError("不支援這個訂位平台")
+        if set(self.localized_urls) - set(SITE_LOCALES):
+            raise ValueError("訂位網址只能使用五種網站語系")
+        if self.status == "verified" and not self.canonical_url:
+            raise ValueError("已驗證狀態必須提供精準店家頁")
+        if self.canonical_url:
+            self.canonical_url = validate_platform_url(self.provider, self.canonical_url)
+        self.localized_urls = {
+            locale: validate_platform_url(self.provider, url)
+            for locale, url in self.localized_urls.items()
+            if url.strip()
+        }
         return self
 
 
@@ -1075,6 +1109,15 @@ async def _merchant_admin_item(session: AsyncSession, merchant: FoodMerchant) ->
             .order_by(FoodMerchantCategory.is_primary.desc(), FoodMerchantCategory.display_order)
         )
     ).all()
+    platform_link = await session.scalar(
+        select(FoodMerchantPlatformLink).where(
+            FoodMerchantPlatformLink.merchant_id == merchant.id
+        )
+    )
+    platform_definition = (
+        PLATFORMS_BY_PROVIDER.get(platform_link.provider) if platform_link else None
+    )
+    expected_definition = expected_platform(merchant.country_code)
     return {
         "id": str(merchant.id),
         "slug": merchant.slug,
@@ -1140,6 +1183,32 @@ async def _merchant_admin_item(session: AsyncSession, merchant: FoodMerchant) ->
             }
             for source in sources
         ],
+        "platform_link": (
+            {
+                "id": str(platform_link.id),
+                "provider": platform_link.provider,
+                "provider_label": (
+                    platform_definition.label if platform_definition else platform_link.provider
+                ),
+                "canonical_url": platform_link.canonical_url,
+                "localized_urls": platform_link.localized_urls_json,
+                "status": platform_link.status,
+                "checked_at": platform_link.checked_at,
+                "checked_by_user_id": (
+                    str(platform_link.checked_by_user_id)
+                    if platform_link.checked_by_user_id
+                    else None
+                ),
+                "review_note": platform_link.review_note,
+                "country_mismatch": platform_link.provider != expected_definition.provider,
+            }
+            if platform_link
+            else None
+        ),
+        "expected_platform": {
+            "provider": expected_definition.provider,
+            "label": expected_definition.label,
+        },
     }
 
 
@@ -1148,9 +1217,15 @@ async def list_food_merchants(
     user: AdminUser,
     session: Session,
     destination_id: Annotated[str | None, Query(min_length=2, max_length=64)] = None,
+    country_code: Annotated[str | None, Query(min_length=2, max_length=2)] = None,
     status: ReviewStatus | None = None,
     map_status: MapMatchStatus | None = None,
     official_data: Literal["filled", "missing"] | None = None,
+    platform: Annotated[str | None, Query(max_length=32)] = None,
+    platform_status: Literal[
+        "unreviewed", "verified", "not_found", "ambiguous", "disabled"
+    ]
+    | None = None,
     area_slug: Annotated[str | None, Query(min_length=2, max_length=128)] = None,
     category: Annotated[str | None, Query(min_length=2, max_length=128)] = None,
     taxonomy: MerchantTaxonomyFilter | None = None,
@@ -1167,6 +1242,8 @@ async def list_food_merchants(
         filters.append(selected_style)
     if destination_id:
         filters.append(FoodMerchant.destination_id == destination_id.casefold())
+    if country_code:
+        filters.append(FoodMerchant.country_code == country_code.upper())
     if status:
         filters.append(FoodMerchant.review_status == status)
     if map_status:
@@ -1191,6 +1268,21 @@ async def list_food_merchants(
         filters.append(FoodMerchant.official_website_url.is_not(None))
     elif official_data == "missing":
         filters.append(FoodMerchant.official_website_url.is_(None))
+    platform_rows = select(FoodMerchantPlatformLink.merchant_id)
+    if platform:
+        if platform not in PLATFORMS_BY_PROVIDER:
+            raise AppError(422, "unsupported_reservation_platform", "不支援這個訂位平台")
+        platform_rows = platform_rows.where(FoodMerchantPlatformLink.provider == platform)
+    if platform_status == "unreviewed":
+        filters.append(FoodMerchant.id.not_in(platform_rows))
+    elif platform_status:
+        filters.append(
+            FoodMerchant.id.in_(
+                platform_rows.where(FoodMerchantPlatformLink.status == platform_status)
+            )
+        )
+    elif platform:
+        filters.append(FoodMerchant.id.in_(platform_rows))
     if q:
         term = f"%{escape_like(q.strip())}%"
         filters.append(
@@ -1218,6 +1310,70 @@ async def list_food_merchants(
         "page": page,
         "pages": (total + limit - 1) // limit,
     }
+
+
+@router.put("/merchants/{merchant_id}/platform-link")
+async def update_merchant_platform_link(
+    merchant_id: UUID,
+    payload: MerchantPlatformLinkPayload,
+    user: AdminUser,
+    session: Session,
+) -> dict[str, object]:
+    merchant = await session.get(FoodMerchant, merchant_id)
+    if merchant is None:
+        raise AppError(404, "food_merchant_not_found", "找不到這筆店家資料")
+    definition = expected_platform(merchant.country_code)
+    if payload.provider != definition.provider:
+        raise AppError(
+            422,
+            "reservation_platform_country_mismatch",
+            f"{merchant.country_code} 店家只能使用 {definition.label}",
+        )
+    if payload.status not in PLATFORM_STATUSES:
+        raise AppError(422, "invalid_reservation_platform_status", "查核狀態不正確")
+    row = await session.scalar(
+        select(FoodMerchantPlatformLink).where(
+            FoodMerchantPlatformLink.merchant_id == merchant.id,
+            FoodMerchantPlatformLink.provider == payload.provider,
+        )
+    )
+    if row is None:
+        row = FoodMerchantPlatformLink(
+            merchant_id=merchant.id,
+            provider=payload.provider,
+            status=payload.status,
+            checked_at=datetime.now(UTC),
+        )
+        session.add(row)
+    row.status = payload.status
+    row.canonical_url = payload.canonical_url
+    row.localized_urls_json = payload.localized_urls
+    row.review_note = payload.review_note
+    row.checked_at = datetime.now(UTC)
+    row.checked_by_user_id = user.id
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="food_merchant_platform_link_reviewed",
+            target=f"food_merchant:{merchant.id}",
+            metadata_json={
+                "provider": payload.provider,
+                "status": payload.status,
+                "has_url": bool(payload.canonical_url),
+                "localized_locales": sorted(payload.localized_urls),
+            },
+        )
+    )
+    try:
+        await session.commit()
+    except IntegrityError as exc:
+        await session.rollback()
+        raise AppError(
+            409,
+            "reservation_platform_url_conflict",
+            "這個精準平台頁已經對應到另一間店家",
+        ) from exc
+    return await _merchant_admin_item(session, merchant)
 
 
 class CoordinateQueueApprovalItem(BaseModel):
