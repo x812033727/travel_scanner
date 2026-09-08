@@ -136,8 +136,18 @@ def test_seoul_provenance_and_unconfirmed_candidates_stay_separate():
             review = reviews[option["provider"]]
             assert review["searched_on"] and review["query"] and review["searched_domains"]
             if option["provider"] == "rakuten":
-                assert option["discovery_status"] == review["status"] == "unconfirmed"
-                assert not option.get("url") and not option.get("property_id")
+                if product["source_key"] in {
+                    "editorial:seoul:ryse-autograph-collection",
+                    "editorial:seoul:mercure-hongdae",
+                }:
+                    assert option["discovery_status"] == "found"
+                    assert review["status"] == "candidate_found_pending_review"
+                    assert option["url"] == review["candidate_url"]
+                    assert review["matched_fields"] == ["hotel_name"]
+                    assert review["review_checkpoint"] == "seoul-links.review-2026-09-08.json"
+                else:
+                    assert option["discovery_status"] == review["status"] == "unconfirmed"
+                    assert not option.get("url") and not option.get("property_id")
             else:
                 assert option["url"] == review["candidate_url"]
                 assert review["status"] == "name_address_matched_pending_review"
@@ -183,7 +193,13 @@ def test_seoul_admin_csv_transfer_preserves_utf8_and_does_not_add_approval():
         assert json.loads(row["facts"])["map_verified"] is False
         options = json.loads(row["booking_options"])
         assert len(options) == 6 and all("status" not in option for option in options)
-        assert sum(option["discovery_status"] == "found" for option in options) == 5
+        expected = (
+            6
+            if row["source_key"]
+            in {"editorial:seoul:ryse-autograph-collection", "editorial:seoul:mercure-hongdae"}
+            else 5
+        )
+        assert sum(option["discovery_status"] == "found" for option in options) == expected
 
 
 def test_kyoto_permit_evidence_does_not_invent_locations_or_save_personal_fields():
@@ -813,3 +829,107 @@ def test_kyoto_station_wrong_branch_and_unresolved_leads_are_not_substituted():
     hyatt = next(h for h in previous["hotels"] if "hyatt-regency" in h["source_key"])
     assert hyatt["operating_notice"]["review_hold"]
     assert all(o["status"] == "pending" for o in hyatt["platform_reviews"])
+
+
+def seoul_links_checkpoint():
+    directory = Path(__file__).resolve().parents[3] / "docs/hotel-platforms"
+    evidence = json.loads(
+        (directory / "seoul-links.review-2026-09-08.json").read_text(encoding="utf-8")
+    )
+    package = json.loads((directory / "seoul.pending.json").read_text(encoding="utf-8"))
+    return evidence, {r["product"]["source_key"]: r for r in package}
+
+
+def test_seoul_independent_reviews_preserve_prior_naver_identity_and_pending_inputs():
+    evidence, rows = seoul_links_checkpoint()
+    config = CatalogConfig(
+        public_enabled=True, enabled_destinations=["seoul"], enabled_kinds=["hotel"]
+    )
+    now = datetime.now(UTC)
+    approved = []
+    assert len(evidence["hotels"]) == 5
+    for hotel in evidence["hotels"]:
+        source = rows[hotel["source_key"]]
+        data = ProductInput.model_validate(source["product"])
+        assert not data.facts.map_verified and not data.facts.google_place_id
+        assert data.facts.naver_map_url == hotel["prior_naver_evidence"]["candidate_url"]
+        assert hotel["prior_naver_evidence"]["status"] == "browser_identity_checked"
+        assert hotel["new_location_review"] is False
+        with pytest.raises(AppError, match="service_identity_required"):
+            require_product_review(data)
+        # Production has a separate prior admin location review; the import does not.
+        data.facts.map_verified = True
+        require_product_review(data)
+        product = TravelServiceProduct(**data.model_dump(), id=uuid4(), status="approved")
+        options = {o["provider"]: o for o in source["booking_options"]}
+        for review in hotel["platform_reviews"]:
+            assert review.get("url") == options[review["provider"]].get("url")
+            if not review["review_requested"]:
+                continue
+            passed = review["status"] == "approved"
+            option = HotelBookingOption(
+                **HotelOptionInput.model_validate(options[review["provider"]]).model_dump(),
+                id=uuid4(),
+                status=review["status"],
+                verified_at=now if passed else None,
+                health_status=review["health"],
+            )
+            assert ready_option(product, option, config, now) is passed
+            assert review["matched_name"] and review["matched_address"]
+            assert review["browser_verified"] is False
+            if passed:
+                approved.append(review)
+                assert review["provider"] in {"official", "trip_com"}
+                assert review["health"] == "healthy" and review["version"] == 2
+            else:
+                assert review["version"] == 1
+                assert review["error_code"] == "service_link_unavailable"
+    assert len(approved) == evidence["production"]["new_platform_approvals"] == 6
+    assert evidence["production"]["new_hotel_identities"] == 0
+    assert evidence["production"]["new_location_approvals"] == 0
+    assert evidence["production"]["complete_cities"] == 0
+
+
+def test_seoul_rakuten_candidates_keep_observed_locale_urls_and_do_not_become_public():
+    evidence, rows = seoul_links_checkpoint()
+    assert len(evidence["candidate_additions"]) == 2
+    assert {c["property_id"] for c in evidence["candidate_additions"]} == {
+        "34123457159873",
+        "34123457217428",
+    }
+    for candidate in evidence["candidate_additions"]:
+        hotel = next(h for h in evidence["hotels"] if h["source_key"] == candidate["source_key"])
+        source = next(
+            o for o in rows[hotel["source_key"]]["booking_options"] if o["provider"] == "rakuten"
+        )
+        review = next(o for o in hotel["platform_reviews"] if o["provider"] == "rakuten")
+        assert source["url"] == candidate["url"] == review["url"]
+        assert source["url"].endswith("/" + candidate["property_id"] + "/")
+        assert source["property_id"] == candidate["property_id"]
+        assert review["status"] == "pending" and review["version"] == 2
+        assert review["health"] == "unchecked" and review["new_candidate"]
+        assert candidate["query"] and candidate["document_freshness"]
+        assert "待審" in source["identity_note"] and "status" not in source
+    mercure = next(c for c in evidence["candidate_additions"] if "mercure" in c["source_key"])
+    assert "/hkg/zh-hk/" in mercure["url"]
+    assert "Internal Error" in mercure["document_freshness"]
+
+
+def test_seoul_unreadable_or_failed_pages_do_not_silently_gain_approval():
+    evidence, _ = seoul_links_checkpoint()
+    failed = []
+    for hotel in evidence["hotels"]:
+        for review in hotel["platform_reviews"]:
+            if review.get("error_code"):
+                failed.append(review)
+                assert review["status"] == "pending" and review["browser_verified"] is False
+            if review["provider"] == "booking":
+                assert review["status"] == "pending" and not review["review_requested"]
+            if review["provider"] == "official" and ":l7-" in hotel["source_key"]:
+                assert review["status"] == "pending" and not review["review_requested"]
+                assert "Pardon Our Interruption" in review["reason"]
+    assert len(failed) == evidence["production"]["failed_reviews"] == 3
+    assert evidence["production"]["new_audit_records"] == 8
+    assert evidence["production"]["five_locale_seoul_public_options_before"] == 1
+    assert evidence["production"]["five_locale_seoul_public_options_after"] == 7
+    assert evidence["production"]["config_changed"] is False

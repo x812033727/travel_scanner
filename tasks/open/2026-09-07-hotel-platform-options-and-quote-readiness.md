@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-07T12:32:44Z
 completed_at:
-branch: codex/hotel-content-review-kyoto-station
+branch: codex/hotel-content-review-seoul-links
 depends_on: []
 scope:
   - apps/api/tests/test_hotel_content_package.py
@@ -16,6 +16,40 @@ scope:
 ---
 
 # Hotel platform options and quote readiness
+
+## Latest: 2026-09-08 Seoul independent platform review
+
+User authorized #355 merge. Verified head a8a750c, latest main 88eb4b1,
+CLEAN/MERGEABLE and all eight CI checks, then SHA-guarded squash merged to
+9ca88c22435759d4d6edbd6b34e7a0186318280d at 05:06:35 UTC. Post-merge main run
+34189379559 passed all four checks. Isolated continuation codex/hotel-content-review-seoul-links.
+
+Five previously location-approved Seoul hotels gained five Trip approvals plus Mercure
+official approval. Four Points official and two Expedia attempts failed normal server
+review and remain pending/version 1, with no browser override or inferred delisting.
+Lotte official bot pages and five unreadable Booking pages were not approved. Other three
+Expedia address extractions returned Internal Error and were not re-reviewed.
+
+Two new Rakuten international candidates: RYSE 34123457159873 and Mercure 34123457217428.
+Both remain pending; the latter's observed hkg/zh-hk URL is not rewritten to an invented
+English equivalent. Indexed documents are stale/partial, not live inventory or address proof.
+No new identities/map approvals/coordinates, provider photos/prices/reviews, quote/affiliate toggles,
+clickouts, paid API requests, deployments or migrations. Prior licensed facts unchanged.
+
+Runtime aaa33f0/schema 0062 and catalog config v5 unchanged. Verified backup before writes:
+/root/travel_scanner_pre_hotel_candidates_20260908T051250Z.dump (7095043 bytes).
+Exact preflight 6a70a44e0190a0591021100f6046c2d336ae6346ca3d4a94868f73b5e8207c90;
+independent postflight validates 8 audits, all 60 products/other 349 options/config
+fingerprint 8da6cf45fe63270b3bc46855503fb5c7faf84f5eda085e1ac355f3e1eba836e7.
+Still 60 products (17 approved/43 pending), options 64 approved/296 pending. Public
+Seoul five hotels now have seven options instead of one; five real HTTPS BFF reads pass,
+plus five-locale internal reads across six cities. No city meets full acceptance yet.
+
+Evidence: docs/hotel-platforms/seoul-links.review-2026-09-08.json and matching markdown.
+Never replay pending JSON over live rows. Shared task remains open; release at handoff.
+142 content/API/offline-source tests passed; Ruff/format and mypy across 257 sources
+passed. Five locales/25 namespaces, tool/task checks and full latest-head CI are tracked
+on the continuation PR. No runtime/UI/migration changes in this content batch.
 
 ## Latest: 2026-09-08 Kyoto station-area platform review
 

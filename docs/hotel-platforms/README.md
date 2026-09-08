@@ -37,6 +37,14 @@ official/Trip approvals across Kyoto Station/Kawaramachi. Still 60 identities,
 No new map approval, city switch, affiliate/quote enablement or deployment. Prior
 Hyatt closure and Westin link holds remain unchanged. Older counts above are snapshots.
 
+PR #355 merged at `9ca88c2`. The latest checkpoint is
+`review-2026-09-08-seoul-links.md`: two international Rakuten candidates (pending),
+six independent platform approvals and three rejected reviews retained pending.
+Still 60 identities / 17 approved products; options are **64 approved / 296 pending**.
+Five public Seoul hotels now have seven usable ordinary links instead of one. No new
+product/map approval, city toggle, affiliate/quote enablement or deployment; no complete
+city acceptance. Historical pending inputs must not overwrite live review outcomes.
+
 `0057_hotel_booking_options` migrates legacy links into independent reviewed identities.
 Products and trip associations retain their IDs. `facts.hotel_links` is accepted/projected
 for old clients, but never stored as a second authority. New imports use a JSON
