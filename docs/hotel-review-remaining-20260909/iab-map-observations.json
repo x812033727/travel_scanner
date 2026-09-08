@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "baseline": "before.json",
+  "recorded_at": "2026-09-08T21:38:28Z",
+  "entries": [
+    {
+      "product_id": "a124dc1e-7f75-44ff-b12d-080da031b3b9",
+      "name": "Hotel Granvia Kyoto / ホテルグランヴィア京都",
+      "address": "JR Kyoto Station Central Entrance, Shimogyo Ward, Kyoto, 600-8216",
+      "official_url": "https://jrwest-hotels.jp/granvia-kyoto/access/",
+      "map_url": "https://maps.app.goo.gl/X6cAwykBxMdygEDA8",
+      "method": "iab",
+      "observation_window_utc": "2026-09-08T21:18:03.737914Z/2026-09-08T21:25:30Z",
+      "map_identity_readable": true,
+      "place_id": null,
+      "decision": "hold",
+      "reason": "Official short map link opened in IAB and exact named hotel address matched. No directly observed Google Place ID; map finder blank. No CID conversion or Google coordinate persistence. Parent publication guard remains unresolved."
+    },
+    {
+      "product_id": "758907f4-4870-421e-bf6c-6243cdcc30c4",
+      "name": "都ホテル 京都八条",
+      "address": "京都府京都市南区西九条院町17",
+      "official_url": "https://www.miyakohotels.ne.jp/kyoto-hachijo/access/",
+      "map_url": "https://goo.gl/maps/qhUevXCFTF8DGQWW6",
+      "method": "iab",
+      "observation_window_utc": "2026-09-08T21:18:03.737914Z/2026-09-08T21:25:30Z",
+      "map_identity_readable": true,
+      "place_id": null,
+      "decision": "hold",
+      "reason": "Official short map link opened in IAB and exact named hotel address matched. No directly observed Google Place ID; map finder blank. No CID conversion or Google coordinate persistence. Parent publication guard remains unresolved."
+    },
+    {
+      "product_id": "50f2d47d-24fe-4b07-85a2-3e1c7671e452",
+      "name": "The Westin Miyako Kyoto",
+      "address": "京都市東山区粟田口華頂町 / Keage Sanjo, Higashiyama-ku (displayed mixed postal form)",
+      "official_url": "https://www.miyakohotels.ne.jp/westinkyoto/access/",
+      "map_url": "https://goo.gl/maps/5fRTfQm7QBCMXHXd6",
+      "method": "iab",
+      "observation_window_utc": "2026-09-08T21:18:03.737914Z/2026-09-08T21:25:30Z",
+      "map_identity_readable": true,
+      "place_id": null,
+      "decision": "hold",
+      "reason": "Official short map link opened in IAB and exact named hotel address matched. No directly observed Google Place ID; map finder blank. No CID conversion or Google coordinate persistence. Parent publication guard remains unresolved."
+    }
+  ],
+  "finder": {
+    "url": "https://geo-devrel-javascript-samples.web.app/samples/places-placeid-finder/app/dist/",
+    "attempts_this_batch": 1,
+    "result": "Empty DOM and uniformly grey 1280x720 screenshot; no visible input or Place ID result.",
+    "place_id_found": false,
+    "not_retried_again": true
+  },
+  "privacy": "Original official shortlinks only; final expanded Google map URLs, coordinates, ratings and prices were not retained."
+}
