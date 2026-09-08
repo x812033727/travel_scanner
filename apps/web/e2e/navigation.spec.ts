@@ -32,11 +32,13 @@ test("contextual itinerary picker adds repeatedly, undoes, moves across meals an
   await picker.getByRole("button", { name: "完成", exact: true }).click();
   await expect(page.locator(".planner-itinerary-card h3")).toHaveText(["淺草散步", "淺草寺"]);
   expect(discovered.some((query) => query.includes("latitude=35.714"))).toBe(true);
+  await page.getByLabel("淺草散步 的更多操作").click();
   await page.getByRole("button", { name: "移動 淺草散步", exact: true }).click();
   let move = page.getByRole("dialog", { name: "移動這個行程" });
   await move.getByLabel("插入位置").selectOption("end1");
   await move.getByRole("button", { name: "移到這裡" }).click();
   await expect(page.locator(".planner-itinerary-card h3")).toHaveText(["淺草寺", "淺草散步"]);
+  await page.getByLabel("淺草散步 的更多操作").click();
   await page.getByRole("button", { name: "移動 淺草散步", exact: true }).click();
   move = page.getByRole("dialog", { name: "移動這個行程" });
   await move.getByLabel("日期").selectOption("2026-11-12");
@@ -59,6 +61,7 @@ test("itinerary drag handle works with pointer input and keyboard move keeps foc
   await page.goto("/zh-TW/trips/intuitive-trip");
   const handle = page.locator('[data-itinerary-drag="asakusa"]');
   const target = page.locator('[data-itinerary-gap="dinner1"]');
+  if (test.info().project.name === "mobile-chromium") await page.getByRole("button", { name: "排序行程" }).click();
   await handle.scrollIntoViewIfNeeded();
   const start = await handle.boundingBox();
   expect(start).not.toBeNull();
@@ -319,7 +322,7 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await page.goto("/zh-TW/trips/mobile-trip");
   if (test.info().project.name !== "mobile-chromium") {
     await expect(page.locator(".planner-app-bar")).toBeHidden();
-    await expect(page.getByText(/行程規劃器/)).toBeVisible();
+    await expect(page.locator(".premium-trip-header")).toContainText("東京手機行程");
     return;
   }
   await expect(page.getByRole("heading", { name: "東京手機行程" })).toBeVisible();
@@ -375,12 +378,14 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await expect.poll(() => saves).toBe(1);
   await page.getByRole("button", { name: "開啟旅程工具" }).click();
   await expect(page.getByRole("dialog", { name: "旅程工具" })).toBeVisible();
+  await page.getByRole("button", { name: /旅程設定/ }).click();
   await page.getByRole("radio", { name: /暮紫/ }).click();
-  await expect(page.locator("[data-planner-theme='lavender']")).toBeVisible();
+  await expect(page.locator("main[data-planner-theme='lavender']")).toBeVisible();
   await page.getByRole("button", { name: "關閉" }).click();
   // The phone planner floats a day strip at the top and the intent bar plus the
   // dock at the bottom, so a card that is already on screen can still be under
   // one of them; Playwright only scrolls when an element is off screen.
+  await page.getByLabel("淺草寺 的更多操作").click();
   const editFirstStop = page.getByRole("button", { name: "編輯 淺草寺" });
   await editFirstStop.evaluate((element) => element.scrollIntoView({ block: "center" }));
   await editFirstStop.click();

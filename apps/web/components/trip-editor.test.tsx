@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { TripEditor } from "./trip-editor";
 
@@ -32,6 +32,37 @@ function response(payload: unknown) {
   return { ok: true, status: 200, json: async () => payload };
 }
 
+async function openToolsSection(section: "旅行準備" | "旅程設定" | "分享與匯出") {
+  fireEvent.click(await screen.findByRole("button", { name: "開啟旅程工具" }));
+  const dialog = screen.getByRole("dialog", { name: "旅程工具" });
+  fireEvent.click(within(dialog).getByRole("button", { name: new RegExp(`^${section}`) }));
+  return dialog;
+}
+
+async function openStopEditor(title: string) {
+  const summary = await screen.findByLabelText(`${title} 的更多操作`);
+  fireEvent.click(summary);
+  const menu = summary.closest("details")!;
+  expect(menu.open).toBe(true);
+  fireEvent.click(within(menu).getByRole("button", { name: `編輯 ${title}` }));
+  expect(menu.open).toBe(false);
+  return screen.getByRole("dialog", { name: "編輯安排" });
+}
+
+async function openAddFromToolbar() {
+  const toolbar = await screen.findByRole("toolbar", { name: "行程快速操作" });
+  fireEvent.click(within(toolbar).getByRole("button", { name: "新增安排" }));
+}
+
+function openOptionalStop(title: string) {
+  const summary = screen.getByText(title, { selector: "summary strong" }).closest("summary")!;
+  const disclosure = summary.closest("details")!;
+  expect(disclosure.open).toBe(false);
+  fireEvent.click(summary);
+  expect(disclosure.open).toBe(true);
+  return disclosure;
+}
+
 function itineraryPreview(scope: "day" | "trip") {
   return {
     preview_id: `preview-${scope}`,
@@ -44,6 +75,17 @@ function itineraryPreview(scope: "day" | "trip") {
     unscheduled_slots: [],
     readiness: { status: "ready", has_lodging: false, exact_item_count: 1, hotspot_candidate_count: 16, merchant_candidate_count: 6, preserved_item_count: 1, assumptions: ["尚未設定飯店；本次只依景點區域分組，不建立飯店往返路線。"] },
     routing_summary: { exact_items: 1, eligible_pairs: 0, hotel_pairs_deferred: 2 },
+  };
+}
+
+function intentPreview(version: number) {
+  return {
+    preview_id: "intent-preview", base_version: version, scope: "day", day_date: "2026-11-11",
+    expires_at: "2026-11-01T10:15:00Z", planning: itineraryPreview("day").planning,
+    intent: { text: "保留手動安排，新增室內展館" }, usage_operation: "ai_itinerary_refine",
+    diff: { removed: [], changed: [], moved: [], meals: [], unchanged_count: 1, has_changes: true,
+      added: [{ candidate_key: "hotspot:museum", title: "東京國立博物館", day_date: "2026-11-11", start_time: "14:00", reason: "室內展館" }] },
+    exhaustion: { exhausted: false, reason: null, alternative_candidate_count: 4, activity_delta: 1, fewer_stops_without_alternatives: false },
   };
 }
 
@@ -67,6 +109,221 @@ describe("trip editor", () => {
     expect(fetchMock.mock.calls.some(([input]) => String(input).includes("/stay-areas"))).toBe(false);
   });
 
+  it("keeps the itinerary first and mounts preparation services only inside their tool section", async () => {
+    const datedTrip = { ...trip, destination_name: "東京", start_date: "2026-11-11", end_date: "2026-11-11" };
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/affiliates/options")) return response({ module: new URL(url, "https://mokaair.com").searchParams.get("module"), options: [], disclosure: "" });
+      if (url.endsWith("/places")) return response({ items: [] });
+      if (url.endsWith("/weather")) return { ok: false, status: 503, json: async () => ({ detail: "weather_not_configured" }) };
+      if (url.endsWith("/travel-services/config")) return response({ enabled_kinds: [] });
+      return response(datedTrip);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+
+    expect(await screen.findByRole("heading", { name: "淺草散步" })).toBeTruthy();
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(screen.queryByRole("heading", { name: "旅伴與旅行偏好" })).toBeNull();
+    const preparationCalls = () => fetchMock.mock.calls.filter(([input]) => /\/affiliates\/options|\/weather$|\/places$|\/travel-services\/config$/.test(String(input)));
+    expect(preparationCalls()).toHaveLength(0);
+
+    fireEvent.click(screen.getByRole("button", { name: "開啟旅程工具" }));
+    const tools = screen.getByRole("dialog", { name: "旅程工具" });
+    expect(within(tools).getByRole("button", { name: /^旅行準備/ })).toBeTruthy();
+    expect(within(tools).getByRole("button", { name: /^旅程設定/ })).toBeTruthy();
+    expect(within(tools).getByRole("button", { name: /^分享與匯出/ })).toBeTruthy();
+    expect(preparationCalls()).toHaveLength(0);
+    fireEvent.click(within(tools).getByRole("button", { name: /^分享與匯出/ }));
+    expect(within(tools).getByRole("link", { name: "開啟列印版" })).toBeTruthy();
+    expect(preparationCalls()).toHaveLength(0);
+
+    fireEvent.click(within(tools).getByRole("button", { name: "返回" }));
+    fireEvent.click(within(tools).getByRole("button", { name: /^旅行準備/ }));
+    await waitFor(() => {
+      expect(fetchMock.mock.calls.some(([input]) => String(input).endsWith("/weather"))).toBe(true);
+      expect(fetchMock.mock.calls.some(([input]) => String(input).endsWith("/places"))).toBe(true);
+      expect(fetchMock.mock.calls.filter(([input]) => String(input).includes("/affiliates/options"))).toHaveLength(4);
+    });
+    expect(screen.getAllByRole("dialog")).toHaveLength(1);
+    fireEvent.click(within(tools).getByRole("button", { name: "返回" }));
+    expect(screen.queryByRole("region", { name: "旅程天氣" })).toBeNull();
+    expect(screen.queryByRole("link", { name: "開啟列印版" })).toBeNull();
+  });
+
+  it("opens editing from the stop title and exposes move only through its dismissible More menu", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(response(trip));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    const title = await screen.findByRole("heading", { name: "淺草散步" });
+    const summary = screen.getByLabelText("淺草散步 的更多操作");
+    const menu = summary.closest("details")!;
+    expect(menu.open).toBe(false);
+    fireEvent.click(title.closest("button")!);
+    let editor = screen.getByRole("dialog", { name: "編輯安排" });
+    expect((within(editor).getByLabelText("安排名稱") as HTMLInputElement).value).toBe("淺草散步");
+    fireEvent.click(within(editor).getByRole("button", { name: "關閉" }));
+
+    fireEvent.click(summary);
+    expect(menu.open).toBe(true);
+    fireEvent.keyDown(summary, { key: "Escape" });
+    expect(menu.open).toBe(false);
+    expect(document.activeElement).toBe(summary);
+    editor = await openStopEditor("淺草散步");
+    fireEvent.click(within(editor).getByRole("button", { name: "關閉" }));
+    fireEvent.click(summary);
+    fireEvent.click(within(menu).getByRole("button", { name: "移動 淺草散步" }));
+    expect(menu.open).toBe(false);
+    const move = screen.getByRole("dialog", { name: "移動這個行程" });
+    expect(screen.getAllByRole("dialog")).toHaveLength(1);
+    expect(within(move).getByLabelText("插入位置")).toBeTruthy();
+    fireEvent.click(within(move).getByRole("button", { name: "取消" }));
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(screen.getByRole("heading", { name: "淺草散步" })).toBeTruthy();
+    expect(fetchMock.mock.calls.some(([, init]) => (init as RequestInit | undefined)?.method === "PUT")).toBe(false);
+  });
+
+  it("keeps arrange and text adjustments in a single AI panel without starting provider work", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(response(trip));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    fireEvent.click(await screen.findByRole("button", { name: "AI 助手" }));
+    const assistant = screen.getByRole("dialog");
+    expect(within(assistant).getByRole("radio", { name: /^單日安排/ }).getAttribute("aria-checked")).toBe("true");
+    fireEvent.click(within(assistant).getByRole("button", { name: "描述調整" }));
+    expect(screen.getAllByRole("dialog")).toHaveLength(1);
+    expect((within(assistant).getByRole("button", { name: "看看會怎麼改" }) as HTMLButtonElement).disabled).toBe(true);
+    expect(within(assistant).getByRole("radio", { name: "這一天" }).getAttribute("aria-checked")).toBe("true");
+    expect(within(assistant).queryByRole("button", { name: "產生預覽 · 不扣次" })).toBeNull();
+    fireEvent.click(within(assistant).getByRole("button", { name: "幫我安排" }));
+    expect(screen.getAllByRole("dialog")).toHaveLength(1);
+    expect(within(assistant).getByRole("button", { name: "產生預覽 · 不扣次" })).toBeTruthy();
+    expect(fetchMock.mock.calls.some(([input]) => /\/itinerary\/preview|\/optimize\/preview|\/intent/.test(String(input)))).toBe(false);
+  });
+
+  it("holds the AI panel during delayed intent apply and preserves the flushed manual edit", async () => {
+    let stored = structuredClone(trip);
+    let finishApply!: (value: ReturnType<typeof response>) => void;
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (url.endsWith("/intents")) return response(intentPreview(stored.version));
+      if (url.endsWith("/itinerary/apply")) return new Promise<ReturnType<typeof response>>((resolve) => { finishApply = resolve; });
+      if (init?.method === "PUT") {
+        const body = JSON.parse(String(init.body));
+        stored = { ...stored, version: stored.version + 1, items: body.items };
+      }
+      return response(stored);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    const editor = await openStopEditor("淺草散步");
+    fireEvent.change(within(editor).getByLabelText("安排名稱"), { target: { value: "我手動保留的淺草散步" } });
+    fireEvent.click(within(editor).getByRole("button", { name: "關閉" }));
+    fireEvent.click(screen.getByRole("button", { name: "AI 助手" }));
+    const assistant = screen.getByRole("dialog", { name: "AI 幫我安排" });
+    fireEvent.click(within(assistant).getByRole("button", { name: "描述調整" }));
+    fireEvent.change(within(assistant).getByLabelText("想改什麼？"), { target: { value: "保留手動安排，新增室內展館" } });
+    fireEvent.click(within(assistant).getByRole("button", { name: "看看會怎麼改" }));
+    const review = await within(assistant).findByRole("region", { name: "確認這次調整" });
+    expect(stored.items[0].title).toBe("我手動保留的淺草散步");
+    expect(stored.version).toBe(2);
+    const intentCall = fetchMock.mock.calls.find(([input]) => String(input).endsWith("/intents"))!;
+    expect(JSON.parse(String(intentCall[1]?.body))).toMatchObject({ version: 2 });
+
+    const apply = within(review).getByRole("button", { name: /^套用/ });
+    fireEvent.click(apply);
+    await waitFor(() => expect(fetchMock.mock.calls.filter(([input]) => String(input).endsWith("/itinerary/apply"))).toHaveLength(1));
+    const arrange = within(assistant).getByRole("button", { name: "幫我安排" });
+    const adjust = within(assistant).getByRole("button", { name: "描述調整" });
+    expect((arrange as HTMLButtonElement).disabled).toBe(true);
+    expect((adjust as HTMLButtonElement).disabled).toBe(true);
+    expect((apply as HTMLButtonElement).disabled).toBe(true);
+    fireEvent.click(arrange);
+    fireEvent.click(within(assistant).getByRole("button", { name: "關閉" }));
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(screen.getAllByRole("dialog")).toEqual([assistant]);
+    expect(within(assistant).getByRole("region", { name: "確認這次調整" })).toBe(review);
+    expect(within(assistant).queryByRole("button", { name: /^產生預覽/ })).toBeNull();
+    expect(fetchMock.mock.calls.filter(([input]) => String(input).endsWith("/itinerary/apply"))).toHaveLength(1);
+    expect(fetchMock.mock.calls.filter(([input]) => String(input).endsWith("/intents"))).toHaveLength(1);
+
+    stored = { ...stored, version: 3, items: [...stored.items, { ...trip.items[0], id: "museum", position: 1, title: "東京國立博物館" }] };
+    await act(async () => finishApply(response(stored)));
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(screen.getByRole("heading", { name: "我手動保留的淺草散步" })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "東京國立博物館" })).toBeTruthy();
+    expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "PUT")).toHaveLength(1);
+    expect(fetchMock.mock.calls.some(([input]) => String(input).endsWith("/itinerary/preview"))).toBe(false);
+  });
+
+  it("disables arrange and adjustment navigation until itinerary generation finishes", async () => {
+    let finishPreview!: (value: ReturnType<typeof response>) => void;
+    const fetchMock = vi.fn((input: RequestInfo | URL) => String(input).endsWith("/itinerary/preview")
+      ? new Promise<ReturnType<typeof response>>((resolve) => { finishPreview = resolve; }) : Promise.resolve(response(trip)));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    fireEvent.click(await screen.findByRole("button", { name: "AI 助手" }));
+    const assistant = screen.getByRole("dialog", { name: "AI 幫我安排" });
+    fireEvent.click(within(assistant).getByRole("button", { name: /^產生預覽/ }));
+    await waitFor(() => expect(fetchMock.mock.calls.filter(([input]) => String(input).endsWith("/itinerary/preview"))).toHaveLength(1));
+    const adjust = within(assistant).getByRole("button", { name: "描述調整" });
+    expect((adjust as HTMLButtonElement).disabled).toBe(true);
+    expect((within(assistant).getByRole("button", { name: "幫我安排" }) as HTMLButtonElement).disabled).toBe(true);
+    fireEvent.click(adjust);
+    fireEvent.click(within(assistant).getByRole("button", { name: "關閉" }));
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(screen.getAllByRole("dialog")).toEqual([assistant]);
+    expect(within(assistant).queryByLabelText("想改什麼？")).toBeNull();
+    await act(async () => finishPreview(response(itineraryPreview("day"))));
+    expect(screen.getByRole("dialog", { name: "確認 AI 行程預覽" })).toBeTruthy();
+    expect(fetchMock.mock.calls.filter(([input]) => String(input).endsWith("/itinerary/preview"))).toHaveLength(1);
+    expect(fetchMock.mock.calls.some(([input]) => String(input).endsWith("/itinerary/apply"))).toBe(false);
+    expect(screen.getByRole("heading", { name: "淺草散步" })).toBeTruthy();
+  });
+
+  it("keeps settings mounted and noneditable during preference saving and preserves manual edits", async () => {
+    let stored = { ...trip, data: { travelers: { adults: 2, children: 0, rooms: 1 } } };
+    let finishSave!: (value: ReturnType<typeof response>) => void;
+    const fetchMock = vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "PATCH") return new Promise<ReturnType<typeof response>>((resolve) => { finishSave = resolve; });
+      if (init?.method === "PUT") stored = { ...stored, version: stored.version + 1, items: JSON.parse(String(init.body)).items };
+      return response(stored);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    const editor = await openStopEditor("淺草散步");
+    fireEvent.change(within(editor).getByLabelText("安排名稱"), { target: { value: "手動安排先保留" } });
+    fireEvent.click(within(editor).getByRole("button", { name: "關閉" }));
+    const tools = await openToolsSection("旅程設定");
+    fireEvent.click(within(tools).getByText("旅伴與旅行偏好", { selector: "summary" }));
+    fireEvent.change(within(tools).getByLabelText("成人"), { target: { value: "3" } });
+    fireEvent.click(within(tools).getByRole("button", { name: "儲存偏好" }));
+    await waitFor(() => expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "PATCH")).toHaveLength(1));
+    expect(stored.items[0].title).toBe("手動安排先保留");
+    const saveCall = fetchMock.mock.calls.find(([, init]) => init?.method === "PATCH")!;
+    expect(JSON.parse(String(saveCall[1]?.body))).toEqual({ version: 2, travelers: { adults: 3 } });
+    const back = within(tools).getByRole("button", { name: "返回" });
+    expect((back as HTMLButtonElement).disabled).toBe(true);
+    expect(within(tools).getByLabelText("每日從飯店出發時間").matches(":disabled")).toBe(true);
+    expect(within(tools).getByLabelText("成人").matches(":disabled")).toBe(true);
+    fireEvent.click(back);
+    fireEvent.click(within(tools).getByRole("button", { name: "關閉" }));
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(screen.getAllByRole("dialog")).toEqual([tools]);
+    expect(within(tools).queryByRole("button", { name: /^旅行準備/ })).toBeNull();
+    expect(screen.queryByRole("dialog", { name: "編輯安排" })).toBeNull();
+
+    stored = { ...stored, version: 3, data: { travelers: { adults: 3, children: 0, rooms: 1 } } };
+    await act(async () => finishSave(response(stored)));
+    expect((back as HTMLButtonElement).disabled).toBe(false);
+    expect(within(tools).getByLabelText("每日從飯店出發時間").matches(":disabled")).toBe(false);
+    fireEvent.click(within(tools).getByRole("button", { name: "關閉" }));
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(screen.getByRole("heading", { name: "手動安排先保留" })).toBeTruthy();
+    expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "PUT")).toHaveLength(1);
+    expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "PATCH")).toHaveLength(1);
+  });
+
   it("links each flight anchor to a search for this trip", async () => {
     const outbound = {
       ...trip.items[0],
@@ -84,8 +341,9 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
 
-    // The entry is on the anchor whether or not a flight is set: an unset anchor is
-    // exactly where someone goes looking for one.
+    await screen.findByRole("heading", { name: "東京五日" });
+    openOptionalStop("去程航班尚未設定");
+    // An unset flight remains available inside the compact optional anchor.
     const link = await screen.findByRole("link", { name: /^查機票 · / });
     expect(link.getAttribute("href")).toBe(`/search?trip_id=${trip.id}`);
   });
@@ -140,6 +398,8 @@ describe("trip editor", () => {
 
     render(<TripEditor tripId={trip.id} />);
 
+    await screen.findByRole("heading", { name: "東京五日" });
+    openOptionalStop("從 尚未設定飯店 出發");
     fireEvent.click((await screen.findAllByRole("button", { name: "設定主要飯店" }))[0]);
     const dialog = await screen.findByRole("dialog", { name: "住宿熱區" });
     expect(fetchMock.mock.calls.some(([input]) => String(input).includes(`/trips/${trip.id}/stay-areas`))).toBe(true);
@@ -157,7 +417,10 @@ describe("trip editor", () => {
     expect(fetchMock.mock.calls.some(([input]) => String(input).includes("/affiliates/options"))).toBe(false);
   });
 
-  it("shows Ekispert and ODsay as the regional transit providers without exposing keys", async () => {
+  it.each([
+    ["JP", "Ekispert 大眾運輸"],
+    ["KR", "ODsay 大眾運輸"],
+  ])("shows the %s regional transit provider in settings without exposing keys", async (country, label) => {
     const runtime = {
       ekispert_enabled: true,
       odsay_enabled: true,
@@ -166,13 +429,14 @@ describe("trip editor", () => {
       google_routes_enabled: true,
     };
     const fetchMock = vi.fn().mockImplementation((url: string) => Promise.resolve(response(
-      url.includes("/runtime/public-config") ? runtime : { ...trip, destination_country_code: "JP" },
+      url.includes("/runtime/public-config") ? runtime : { ...trip, destination_country_code: country },
     )));
     vi.stubGlobal("fetch", fetchMock);
 
     render(<TripEditor tripId={trip.id} />);
 
-    expect(await screen.findByText("Ekispert · 日本大眾運輸")).toBeTruthy();
+    await openToolsSection("旅程設定");
+    expect(await screen.findByText(label)).toBeTruthy();
     expect(screen.queryByText("NAVITIME · 日本備援")).toBeNull();
     expect(JSON.stringify(fetchMock.mock.calls)).not.toContain("server-key");
   });
@@ -323,17 +587,20 @@ describe("trip editor", () => {
     render(<TripEditor tripId={trip.id} />);
 
     expect(await screen.findAllByText("1 個已安排")).not.toHaveLength(0);
-    expect(screen.getByText("尚未設定主要飯店")).toBeTruthy();
-    expect(screen.getByText("設定一次後，會建立每天的出發與返回路線")).toBeTruthy();
+    const hotel = openOptionalStop("從 尚未設定飯店 出發");
+    expect(within(hotel).getByText("尚未設定主要飯店")).toBeTruthy();
+    expect(within(hotel).getByText("設定一次後，會建立每天的出發與返回路線")).toBeTruthy();
     expect(screen.queryByText("返回 尚未設定飯店")).toBeNull();
-    expect(screen.getByText("午餐尚未安排")).toBeTruthy();
+    const lunch = screen.getByText("午餐尚未安排", { selector: "summary strong" }).closest("details")!;
+    expect(lunch.open).toBe(false);
+    expect(within(lunch).getByRole("heading", { name: "午餐尚未安排" })).toBeTruthy();
   });
 
   it("opens mobile trip tools and remembers the selected color theme", async () => {
     vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(trip))));
     const { container } = render(<TripEditor tripId={trip.id} />);
 
-    fireEvent.click(await screen.findByRole("button", { name: "開啟旅程工具" }));
+    await openToolsSection("旅程設定");
     expect(screen.getByRole("dialog", { name: "旅程工具" })).toBeTruthy();
     expect(screen.getByRole("group", { name: "路線偏好" })).toBeTruthy();
 
@@ -388,6 +655,7 @@ describe("trip editor", () => {
     render(<TripEditor tripId={trip.id} />);
 
     await screen.findByRole("heading", { name: "晴空塔" });
+    fireEvent.click(screen.getByRole("button", { name: "排序行程" }));
     // The arrows at the edges are disabled — a no-op tap used to wipe the
     // day's computed routes and mark the trip dirty.
     expect((screen.getByRole("button", { name: "上移 淺草散步" }) as HTMLButtonElement).disabled).toBe(true);
@@ -405,7 +673,8 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
 
-    fireEvent.click(await screen.findByRole("button", { name: "撤銷" }));
+    await openToolsSection("分享與匯出");
+    fireEvent.click(screen.getByRole("button", { name: "撤銷目前分享連結" }));
     fireEvent.click(await screen.findByRole("button", { name: "撤銷連結" }));
 
     expect(await screen.findByRole("alert")).toBeTruthy();
@@ -413,13 +682,15 @@ describe("trip editor", () => {
     expect(screen.queryByRole("alert")).toBeNull();
   });
 
-  it("offers the trip tools from the desktop hero as well", async () => {
+  it("offers one responsive trip-tools entry in the shared header", async () => {
     vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(trip))));
     render(<TripEditor tripId={trip.id} />);
 
     await screen.findAllByText("東京五日");
-    // One trigger in the mobile app bar, one in the desktop hero row.
-    expect(screen.getAllByRole("button", { name: /旅程工具|開啟旅程工具/ }).length).toBeGreaterThanOrEqual(2);
+    const header = screen.getByRole("heading", { name: "東京五日" }).closest("header")!;
+    expect(screen.getAllByRole("button", { name: "開啟旅程工具" })).toHaveLength(1);
+    fireEvent.click(within(header).getByRole("button", { name: "開啟旅程工具" }));
+    expect(screen.getByRole("dialog", { name: "旅程工具" })).toBeTruthy();
   });
 
   it("saves a day note against the trip version", async () => {
@@ -555,6 +826,7 @@ describe("trip editor", () => {
     const aiButtons = await screen.findAllByRole("button", { name: /^AI 幫我安排/ });
     fireEvent.click(aiButtons[0]);
     const fullTrip = screen.getByRole("radio", { name: /\u5168\u884c\u7a0b\u5b89\u6392/ });
+    fireEvent.click(fullTrip);
     expect(fullTrip.getAttribute("aria-checked")).toBe("true");
     fireEvent.click(screen.getByRole("button", { name: /^產生預覽/ }));
 
@@ -577,7 +849,7 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
 
-    fireEvent.click(await screen.findByRole("button", { name: "新增安排" }));
+    await openAddFromToolbar();
     fireEvent.click(screen.getByRole("button", { name: "自行填寫行程" }));
     expect(screen.getByRole("dialog", { name: "新增安排" })).toBeTruthy();
     expect(screen.getByRole("button", { name: "加入行程" }).hasAttribute("disabled")).toBe(true);
@@ -585,7 +857,7 @@ describe("trip editor", () => {
     expect(screen.queryByRole("dialog", { name: "新增安排" })).toBeNull();
     expect(fetchMock.mock.calls.some(([, init]) => init?.method === "PUT")).toBe(false);
 
-    fireEvent.click(screen.getByRole("button", { name: "新增安排" }));
+    await openAddFromToolbar();
     fireEvent.click(screen.getByRole("button", { name: "自行填寫行程" }));
     fireEvent.change(screen.getByLabelText("安排名稱"), { target: { value: "銀座午餐" } });
     fireEvent.click(screen.getByRole("button", { name: "加入行程" }));
@@ -604,7 +876,7 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
 
-    fireEvent.click(await screen.findByRole("button", { name: "新增安排" }));
+    await openAddFromToolbar();
     fireEvent.click(screen.getByRole("button", { name: "自行填寫行程" }));
     fireEvent.change(screen.getByLabelText("安排名稱"), { target: { value: "輕井澤一日遊" } });
     const duration = screen.getByLabelText("停留時間");
@@ -634,18 +906,18 @@ describe("trip editor", () => {
     });
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
-    fireEvent.click(await screen.findByRole("button", { name: "編輯 淺草散步" }));
+    const editor = await openStopEditor("淺草散步");
     const title = screen.getByLabelText("安排名稱");
     fireEvent.change(title, { target: { value: "淺草與晴空塔" } });
-    fireEvent.click(screen.getByRole("button", { name: "儲存變更" }));
-    expect(await screen.findByText("行程已儲存")).toBeTruthy();
+    fireEvent.click(within(editor).getByRole("button", { name: "關閉" }));
+    expect(screen.queryByRole("dialog", { name: "編輯安排" })).toBeNull();
     await waitFor(() => {
       const call = fetchMock.mock.calls.find(([, init]) => init?.method === "PUT");
       expect(call).toBeTruthy();
       const body = JSON.parse(String(call?.[1]?.body));
       expect(body.version).toBe(1);
       expect(body.items[0].title).toBe("淺草與晴空塔");
-    });
+    }, { timeout: 2_000 });
   });
 
   it("switches an activity from chained timing to a fixed local time", async () => {
@@ -660,13 +932,13 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
 
-    fireEvent.click(await screen.findByRole("button", { name: "編輯 淺草散步" }));
+    const editor = await openStopEditor("淺草散步");
     expect(screen.getByRole("radio", { name: "接續前站" }).getAttribute("aria-checked")).toBe("true");
     fireEvent.click(screen.getByRole("radio", { name: "固定時間" }));
     fireEvent.change(screen.getByLabelText("固定開始時間"), { target: { value: "15:20" } });
-    fireEvent.click(screen.getByRole("button", { name: "儲存變更" }));
+    fireEvent.click(within(editor).getByRole("button", { name: "關閉" }));
 
-    await waitFor(() => expect(savedBody).toBeTruthy());
+    await waitFor(() => expect(savedBody).toBeTruthy(), { timeout: 2_000 });
     expect(savedBody?.items[0].fixed_time).toBe(true);
     expect(savedBody?.items[0].start_time).toContain("T15:20:00");
   });
@@ -706,6 +978,8 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
 
+    await screen.findByRole("heading", { name: "東京五日" });
+    openOptionalStop("去程航班尚未設定");
     fireEvent.click(await screen.findByRole("button", { name: "設定去程航班" }));
     fireEvent.change(screen.getByLabelText("航空公司"), { target: { value: "長榮航空" } });
     fireEvent.change(screen.getByLabelText("班號"), { target: { value: "BR 198" } });
@@ -727,10 +1001,11 @@ describe("trip editor", () => {
   it("offers the printable itinerary and the partner platforms from the tools drawer", async () => {
     const fetchMock = vi.fn(async (url: string) => {
       if (String(url).includes("/affiliates/options")) {
+        const affiliateModule = new URL(url, "https://mokaair.com").searchParams.get("module");
         return response({
-          module: "hotel",
+          module: affiliateModule,
           disclosure: "本站可能因此獲得分潤。",
-          options: [{ partner: "travelpayouts", display_name: "Travelpayouts", module: "hotel", cta: "查看住宿", clickout_url: "/api/travel/affiliates/click" }],
+          options: affiliateModule === "hotel" ? [{ partner: "travelpayouts", display_name: "Travelpayouts", module: "hotel", cta: "查看住宿", clickout_url: "/api/travel/affiliates/click" }] : [],
         });
       }
       return response(trip);
@@ -738,15 +1013,22 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
 
-    fireEvent.click(await screen.findAllByRole("button", { name: /旅程工具/ }).then((buttons) => buttons[0]));
+    const tools = await openToolsSection("分享與匯出");
 
     const print = await screen.findByRole("link", { name: "開啟列印版" });
     expect(print.getAttribute("href")).toBe(`/trips/${trip.id}/print`);
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/affiliates/options"))).toBe(false);
+    fireEvent.click(within(tools).getByRole("button", { name: "返回" }));
+    fireEvent.click(within(tools).getByRole("button", { name: /^旅行準備/ }));
     await waitFor(() => expect(screen.getAllByRole("button", { name: /查看住宿/ }).length).toBeGreaterThan(0));
     expect(fetchMock.mock.calls.some(([url]) => String(url).includes(`trip_id=${trip.id}`))).toBe(true);
   });
 
   it("flushes the newest revision before requesting an optimization", async () => {
+    const editableTrip = {
+      ...trip,
+      items: [...trip.items, { ...trip.items[0], id: "00000000-0000-4000-8000-000000000003", position: 1, title: "晴空塔" }],
+    };
     let resolveFirstSave: ((value: ReturnType<typeof response>) => void) | undefined;
     const firstSave = new Promise<ReturnType<typeof response>>((resolve) => {
       resolveFirstSave = resolve;
@@ -773,18 +1055,21 @@ describe("trip editor", () => {
         return response({ ...trip, version: 3, items: body.items });
       }
       if (url.includes("/optimize/preview")) return response(preview);
-      return response(trip);
+      return response(editableTrip);
     });
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
-    fireEvent.click(await screen.findByRole("button", { name: "編輯 淺草散步" }));
+    const editor = await openStopEditor("淺草散步");
     const title = screen.getByLabelText("安排名稱");
     fireEvent.change(title, { target: { value: "第一次修改" } });
-    fireEvent.click(screen.getByRole("button", { name: "儲存變更" }));
-    await waitFor(() => expect(putBodies).toHaveLength(1));
+    // The first automatic save stays in flight while a second edit is made.
+    await waitFor(() => expect(putBodies).toHaveLength(1), { timeout: 2_000 });
 
     fireEvent.change(title, { target: { value: "最後一次修改" } });
-    fireEvent.click(screen.getByRole("button", { name: /^最佳化動線/ }));
+    fireEvent.click(within(editor).getByRole("button", { name: "關閉" }));
+    fireEvent.click(screen.getByRole("button", { name: "AI 助手" }));
+    fireEvent.click(screen.getByRole("button", { name: /只調整現有動線/ }));
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/optimize/preview"))).toBe(false);
     resolveFirstSave?.(response({ ...trip, version: 2, items: putBodies[0].items }));
 
     await waitFor(() => expect(putBodies).toHaveLength(2));
@@ -813,7 +1098,8 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
 
-    fireEvent.click(await screen.findByRole("button", { name: /^最佳化動線/ }));
+    fireEvent.click(await screen.findByRole("button", { name: "AI 助手" }));
+    fireEvent.click(screen.getByRole("button", { name: /只調整現有動線/ }));
 
     expect(await screen.findByText(/一次最多排 12 個/)).toBeTruthy();
     expect(screen.getByText(/鎖定 1 個之後就能最佳化/)).toBeTruthy();
@@ -879,8 +1165,8 @@ describe("trip editor", () => {
   it("keeps delete recoverable from the mobile-friendly editor", async () => {
     vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(trip))));
     render(<TripEditor tripId={trip.id} />);
-    fireEvent.click(await screen.findByRole("button", { name: "編輯 淺草散步" }));
-    fireEvent.click(screen.getByRole("button", { name: "刪除這個安排" }));
+    const editor = await openStopEditor("淺草散步");
+    fireEvent.click(within(editor).getByRole("button", { name: "刪除這個安排" }));
     expect(screen.getByText(/8 秒內復原/)).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "復原" }));
     expect(await screen.findByText("淺草散步")).toBeTruthy();
@@ -952,13 +1238,13 @@ describe("trip editor", () => {
     );
     fireEvent.click(routeButton);
     expect(await screen.findByRole("dialog", { name: "這段路怎麼走" })).toBeTruthy();
-    const collapse = screen.getByRole("button", { name: "縮小路線面板" });
-    expect(collapse.getAttribute("aria-pressed")).toBe("true");
-    fireEvent.click(collapse);
-    const expand = screen.getByRole("button", { name: "全螢幕顯示路線面板" });
-    expect(expand.getAttribute("aria-pressed")).toBe("false");
+    const expand = screen.getByRole("button", { name: "展開面板" });
+    expect(expand.getAttribute("aria-expanded")).toBe("false");
     fireEvent.click(expand);
-    expect(screen.getByRole("button", { name: "縮小路線面板" }).getAttribute("aria-pressed")).toBe("true");
+    const collapse = screen.getByRole("button", { name: "縮小面板" });
+    expect(collapse.getAttribute("aria-expanded")).toBe("true");
+    fireEvent.click(collapse);
+    expect(screen.getByRole("button", { name: "展開面板" }).getAttribute("aria-expanded")).toBe("false");
     fireEvent.popState(window);
     await waitFor(() => expect(screen.queryByRole("dialog", { name: "這段路怎麼走" })).toBeNull());
   });
@@ -1043,7 +1329,7 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
 
-    fireEvent.click(await screen.findByRole("button", { name: "開啟旅程工具" }));
+    await openToolsSection("旅程設定");
     const departure = screen.getByLabelText("每日從飯店出發時間") as HTMLInputElement;
     expect(departure.value).toBe("09:00");
 
@@ -1062,6 +1348,8 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
 
+    await screen.findByRole("heading", { name: "東京五日" });
+    openOptionalStop("從 尚未設定飯店 出發");
     const departure = await screen.findByLabelText("每天從飯店出發的時間") as HTMLInputElement;
     expect(departure.value).toBe("09:00");
     expect(screen.getByText("套用到每一天")).toBeTruthy();
@@ -1083,6 +1371,8 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", fetchMock);
     render(<TripEditor tripId={trip.id} />);
 
+    await screen.findByRole("heading", { name: "東京五日" });
+    openOptionalStop("從 尚未設定飯店 出發");
     const lateDeparture = await screen.findByLabelText("每天從飯店出發的時間");
     fireEvent.change(lateDeparture, { target: { value: "13:00" } });
     fireEvent.blur(lateDeparture);
@@ -1095,7 +1385,7 @@ describe("trip editor", () => {
     vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(response(trip))));
     render(<TripEditor tripId={trip.id} />);
 
-    fireEvent.click(await screen.findByRole("button", { name: "開啟旅程工具" }));
+    await openToolsSection("旅程設定");
     fireEvent.change(screen.getByLabelText("每日從飯店出發時間"), { target: { value: "13:00" } });
 
     expect(screen.getByText("出發時間必須早於午餐時間。")).toBeTruthy();
@@ -1149,6 +1439,7 @@ describe("trip editor route requests", () => {
 
     fireEvent.click(await screen.findByRole("button", { name: "計算當日路線" }));
     await waitFor(() => expect(computeCalls(fetchMock)).toHaveLength(1));
+    fireEvent.click(screen.getByText("當日設定", { selector: "summary" }));
     fireEvent.click(screen.getByRole("radio", { name: "步行" }));
     await waitFor(() => expect(computeCalls(fetchMock)).toHaveLength(2));
 
@@ -1170,6 +1461,7 @@ describe("trip editor route requests", () => {
     expect(screen.queryByText(/段移動尚未查路/)).toBeNull();
 
     // 東京車站 moves above 上野公園: only the two legs around it lose their routes.
+    fireEvent.click(screen.getByRole("button", { name: "排序行程" }));
     fireEvent.click(screen.getByRole("button", { name: "上移 東京車站" }));
 
     expect(screen.getByText("20 分")).toBeTruthy();

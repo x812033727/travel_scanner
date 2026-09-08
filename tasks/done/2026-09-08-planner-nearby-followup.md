@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-planner-nearby-followup
 title: Fix nearby itinerary discovery across cities and reset insertion pagination
-status: review
+status: done
 priority: P2
 area: web
 owner: codex
 claimed_at: 2026-09-08T07:19:39Z
 created_at: 2026-09-08T07:19:38Z
-completed_at:
+completed_at: 2026-09-08T21:22:52Z
 branch: codex/planner-nearby-followup
 depends_on: []
 scope:
@@ -41,6 +41,8 @@ After PR #362, a Tokyo trip with a Yokohama stop still searches only the Tokyo c
 Run Ruff, mypy and `pytest tests/test_trip_place_options.py`; run focused picker Vitest, ESLint, TypeScript, i18n and task-board checks. PostgreSQL integration cases are also required in CI. In the production in-app browser, inspect insertion gaps, move controls, favourites/nearby panels and responsive layout without modifying existing real trips.
 
 ## Notes
+
+2026-09-09 handoff: GitHub confirms #366 merged as e8afbc8450e89b6fa624cb3d8e810cf1c9f806a2 on 2026-09-08. Owner release record e474c59 records merged fixes and verified deployment. Close the stale scope; retain all cross-city discovery and pagination regression coverage in the premium planner.
 
 - #362 merged as `434345419dc4a4117830f611197707fa11ed9b04`; its completed task is moved to `tasks/done` in this follow-up.
 - Osaka and Kyoto share `osaka-kyoto`; Tokyo/Yokohama are distinct catalogue destinations and provide a meaningful regression fixture.

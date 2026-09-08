@@ -71,6 +71,10 @@ describe("route mode panel", () => {
     expect(screen.getByRole("region", { name: "路線起訖與交通方式" }).textContent).toContain("上野");
     expect(screen.getByRole("region", { name: "路線起訖與交通方式" }).textContent).toContain("淺草");
     expect(screen.getByRole("link", { name: "導航：上野到淺草" }).getAttribute("href")).toContain("origin_place_id=from");
+    expect(screen.queryByText("步行至東京晴空塔站")).toBeNull();
+    const expandDetails = screen.getByRole("button", { name: /大眾運輸 · 24 分鐘/ });
+    expect(expandDetails.getAttribute("aria-expanded")).toBe("false");
+    fireEvent.click(expandDetails);
     expect(screen.getByText("步行至東京晴空塔站")).toBeTruthy();
     expect(screen.getByText(/TOKYO SKYTREE Sta\. → 言問橋/)).toBeTruthy();
     expect(screen.getByText("月台 1")).toBeTruthy();
@@ -337,16 +341,61 @@ describe("route mode panel", () => {
     render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={initialSegment} onApplied={() => undefined} onError={() => undefined} />);
     fireEvent.click(screen.getByRole("tab", { name: "步行" }));
     const secondOption = await screen.findByRole("option", { name: /方案 2/ });
-    fireEvent.click(secondOption);
+    const firstOption = screen.getByRole("option", { name: /方案 1/ });
+    firstOption.focus();
+    fireEvent.keyDown(firstOption, { key: "ArrowRight" });
+    expect(document.activeElement).toBe(secondOption);
     expect(secondOption.getAttribute("aria-selected")).toBe("true");
     expect(screen.getByText(/步行 · 方案 2 · 21 分鐘/)).toBeTruthy();
     expect(screen.getAllByText("1.3 公里").length).toBeGreaterThan(0);
     expect(screen.queryByText("步行 0 分")).toBeNull();
     expect(screen.getByText("可提前 65 分鐘")).toBeTruthy();
     expect(previewCalls).toBe(1);
+    expect(applyBody).toBeUndefined();
 
     fireEvent.click(screen.getByRole("button", { name: "套用此路線" }));
     await waitFor(() => expect(applyBody).toMatchObject({ preview_id: "preview-2" }));
     expect(previewCalls).toBe(1);
+  });
+
+  it("keeps buffer and manual editing in advanced settings without fetching on disclosure", async () => {
+    const fetchMock = vi.fn(async (url: string) => url.endsWith("/runtime/public-config")
+      ? ok({ google_maps_browser_key: null, google_maps_javascript_enabled: false })
+      : ok({ ...trip, version: 4 }));
+    vi.stubGlobal("fetch", fetchMock);
+    const { container } = render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={initialSegment} onApplied={() => undefined} onError={() => undefined} />);
+    const settings = container.querySelector(".route-advanced-settings") as HTMLDetailsElement;
+    expect(settings.open).toBe(false);
+    expect(screen.queryByRole("combobox")).toBeNull();
+    fireEvent.click(screen.getByText("進階路線設定"));
+    await waitFor(() => expect(settings.open).toBe(true));
+    expect(screen.getByRole("combobox")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "手動輸入時間" }));
+    const input = screen.getByRole("spinbutton");
+    expect(document.activeElement).toBe(input);
+    fireEvent.change(input, { target: { value: "35" } });
+    fireEvent.click(screen.getByRole("button", { name: "取消自訂時間" }));
+    expect(screen.queryByRole("spinbutton")).toBeNull();
+    expect(document.activeElement).toBe(settings.querySelector("summary"));
+    expect(fetchMock.mock.calls.filter(([url]) => String(url).includes("/routes/"))).toHaveLength(0);
+  });
+
+  it("uses manual-activation keyboard tabs without querying while moving focus", async () => {
+    const fetchMock = vi.fn(async (url: string) => {
+      expect(url).toContain("/runtime/public-config");
+      return ok({ google_maps_browser_key: null, google_maps_javascript_enabled: false });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={initialSegment} onApplied={() => undefined} onError={() => undefined} />);
+    const transit = screen.getByRole("tab", { name: "大眾運輸" });
+    const walking = screen.getByRole("tab", { name: "步行" });
+    transit.focus();
+    fireEvent.keyDown(transit, { key: "ArrowRight" });
+    expect(document.activeElement).toBe(walking);
+    expect(transit.getAttribute("aria-selected")).toBe("true");
+    const panel = screen.getByRole("tabpanel");
+    expect(transit.getAttribute("aria-controls")).toBe(panel.id);
+    expect(panel.getAttribute("aria-labelledby")).toBe(transit.id);
+    expect(fetchMock.mock.calls.filter(([url]) => String(url).includes("/routes/"))).toHaveLength(0);
   });
 });

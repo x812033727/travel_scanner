@@ -1,0 +1,30 @@
+name: Planner UX
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  planner-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      - run: npm run build:web
+      - run: npx playwright install --with-deps chromium
+      - name: Verify manual creation, timeline and explicit AI preview/apply
+        run: npx playwright test e2e/planner-premium.spec.ts --workers=1
+        working-directory: apps/web
+        env: { PLAYWRIGHT_SERVE_BUILD: "true" }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: planner-premium-browser-results
+          path: apps/web/test-results
+          retention-days: 7

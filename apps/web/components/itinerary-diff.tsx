@@ -2,7 +2,7 @@
 
 import { ArrowRight, ChevronDown, CircleAlert, Loader2, MinusCircle, MoveRight, PencilLine, PlusCircle, Sparkles, UtensilsCrossed, Wand2 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useId, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode, type ComponentProps } from "react";
 import { PlannerOverlay } from "@/components/planner-overlay";
 import { useOperationCharge } from "@/components/usage-catalog-provider";
 import { api, ApiError } from "@/lib/api";
@@ -79,24 +79,36 @@ export type IntentPreview = {
 
 type ItineraryDiffProps = {
   trip: Trip;
+  presentation?: "floating" | "embedded";
+  initialScope?: IntentScope;
   activeDay?: string;
   disabled?: boolean;
   /** Flush pending edits first; returns the freshest trip, or undefined on a conflict. */
   prepare?: () => Promise<Trip | undefined>;
   onApplied: (updated: Trip, scope: IntentScope, dayDate?: string | null) => void;
   onError?: (message: string) => void;
+  onBusy?: (busy: boolean) => void;
 };
 
-export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, onError }: ItineraryDiffProps) {
+export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, onError, onBusy, presentation = "floating", initialScope = "day" }: ItineraryDiffProps) {
   const t = useTranslations("trips");
   const refineCharge = useOperationCharge("ai_itinerary_refine");
   const generateCharge = useOperationCharge("ai_itinerary_generation");
   const inputId = useId();
   const [text, setText] = useState("");
-  const [scope, setScope] = useState<IntentScope>("day");
+  const [scope, setScope] = useState<IntentScope>(initialScope);
   const [preview, setPreview] = useState<IntentPreview>();
+  const hadPreview = useRef(false);
+  useEffect(() => {
+    const restoreInput = presentation === "embedded" && hadPreview.current && !preview;
+    hadPreview.current = Boolean(preview);
+    if (!restoreInput) return;
+    const frame = requestAnimationFrame(() => document.getElementById(inputId)?.focus());
+    return () => cancelAnimationFrame(frame);
+  }, [preview, presentation, inputId]);
   const [busy, setBusy] = useState<"submit" | "apply">();
-  const [intentOpen, setIntentOpen] = useState(false);
+  const busyRef = useRef(false);
+  const [intentOpen, setIntentOpen] = useState(presentation === "embedded");
   // Held across a failed attempt so an identical retry replays server-side
   // instead of spending another rate-limit slot and another provider call.
   const intentKeyRef = useRef<{ signature: string; key: string } | undefined>(undefined);
@@ -115,19 +127,21 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
 
   async function submitIntent(event: FormEvent) {
     event.preventDefault();
-    if (!trimmed || busy) return;
-    const current = prepare ? await prepare() : trip;
-    if (!current) return;
+    if (!trimmed || disabled || busyRef.current) return;
+    busyRef.current = true;
     setBusy("submit");
-    // The server's replay key hashes the sentence, scope, day and version
-    // alongside this header, so reusing it is only ever a replay of the very
-    // same request. A new request — a different sentence, or a deliberate
-    // second ask after a plan came back — gets a new key.
-    const signature = `${current.id}|${current.version}|${effectiveScope}|${effectiveScope === "day" ? activeDay ?? "" : ""}|${trimmed}`;
-    if (intentKeyRef.current?.signature !== signature) {
-      intentKeyRef.current = { signature, key: crypto.randomUUID() };
-    }
     try {
+      onBusy?.(true);
+      const current = prepare ? await prepare() : trip;
+      if (!current) return;
+      // The server's replay key hashes the sentence, scope, day and version
+      // alongside this header, so reusing it is only ever a replay of the very
+      // same request. A new request — a different sentence, or a deliberate
+      // second ask after a plan came back — gets a new key.
+      const signature = `${current.id}|${current.version}|${effectiveScope}|${effectiveScope === "day" ? activeDay ?? "" : ""}|${trimmed}`;
+      if (intentKeyRef.current?.signature !== signature) {
+        intentKeyRef.current = { signature, key: crypto.randomUUID() };
+      }
       const result = await api<IntentPreview>(`/trips/${current.id}/intents`, {
         method: "POST",
         headers: { "Idempotency-Key": intentKeyRef.current.key },
@@ -143,14 +157,18 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
     } catch (reason) {
       fail(reason, t("intent.submit"));
     } finally {
+      busyRef.current = false;
       setBusy(undefined);
+      onBusy?.(false);
     }
   }
 
   async function applyIntent() {
-    if (!preview || busy) return;
+    if (!preview || disabled || busyRef.current || charge.status !== "ready") return;
+    busyRef.current = true;
     setBusy("apply");
     try {
+      onBusy?.(true);
       const updated = await api<Trip>(`/trips/${trip.id}/itinerary/apply`, {
         method: "POST",
         headers: { "Idempotency-Key": crypto.randomUUID() },
@@ -165,7 +183,9 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
       setPreview(undefined);
       fail(reason, t("intent.apply", { charge: charge.label }));
     } finally {
+      busyRef.current = false;
       setBusy(undefined);
+      onBusy?.(false);
     }
   }
 
@@ -183,9 +203,9 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
 
   return (
     <>
-      <section
+      {!(presentation === "embedded" && preview) && <section
         aria-label={t("intent.barLabel")}
-        className={`planner-intent-bar sticky z-30 mt-5 rounded-2xl text-[var(--ink)] lg:border lg:border-[var(--line)] lg:bg-[var(--surface)] lg:p-4 lg:shadow-[var(--shadow-lg)] ${
+        className={presentation === "embedded" ? "premium-intent-form" : `planner-intent-bar sticky z-30 mt-5 rounded-2xl text-[var(--ink)] lg:border lg:border-[var(--line)] lg:bg-[var(--surface)] lg:p-4 lg:shadow-[var(--shadow-lg)] ${
           intentOpen ? "border border-[var(--line)] bg-[var(--surface)] p-3 shadow-[var(--shadow-lg)]" : ""
         }`}
       >
@@ -193,7 +213,7 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
             tall - a third of the screen permanently over the itinerary, deep
             enough to cover the card the reader is reaching for. It opens on
             demand there and stays open on a desktop, where there is room. */}
-        <button
+        {presentation === "floating" && <button
           type="button"
           aria-expanded={intentOpen}
           onClick={() => setIntentOpen((open) => !open)}
@@ -204,7 +224,7 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
           <Wand2 size={16} />
           {t("intent.eyebrow")}
           <ChevronDown size={16} className={`transition ${intentOpen ? "ml-auto rotate-180" : ""}`} />
-        </button>
+        </button>}
         <form onSubmit={submitIntent} className={`${intentOpen ? "grid" : "hidden lg:grid"} gap-3`}>
           <div className="flex flex-wrap items-center justify-between gap-2">
             <label htmlFor={inputId} className="hidden items-center gap-2 text-sm font-bold text-violet-900 lg:flex">
@@ -263,9 +283,10 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
             ))}
           </div>
         </form>
-      </section>
+      </section>}
 
-      <PlannerOverlay
+      <IntentPreviewContainer
+        embedded={presentation === "embedded"}
         open={Boolean(preview)}
         onClose={() => { if (!busy) setPreview(undefined); }}
         title={exhaustion?.exhausted ? t("intent.exhaustedTitle") : t("intent.sheetTitle")}
@@ -280,7 +301,7 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
               <button
                 type="button"
                 onClick={() => void applyIntent()}
-                disabled={Boolean(busy) || charge.status !== "ready"}
+                disabled={disabled || Boolean(busy) || charge.status !== "ready"}
                 className="flex min-h-12 flex-[1.5] items-center justify-center gap-2 rounded-xl bg-violet-700 px-4 font-semibold text-white disabled:opacity-45"
               >
                 {busy === "apply" ? <Loader2 size={17} className="animate-spin" /> : <Sparkles size={17} />}
@@ -388,9 +409,26 @@ export function ItineraryDiff({ trip, activeDay, disabled, prepare, onApplied, o
             )}
           </div>
         )}
-      </PlannerOverlay>
+      </IntentPreviewContainer>
     </>
   );
+}
+
+function IntentPreviewContainer({ embedded, ...props }: ComponentProps<typeof PlannerOverlay> & { embedded: boolean }) {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (!embedded || !props.open) return;
+    const frame = requestAnimationFrame(() => headingRef.current?.focus());
+    return () => cancelAnimationFrame(frame);
+  }, [embedded, props.open]);
+  if (!embedded) return <PlannerOverlay {...props} />;
+  if (!props.open) return null;
+  return <section className="premium-intent-preview" aria-label={props.title}>
+    <h3 ref={headingRef} tabIndex={-1} className="text-lg font-bold">{props.title}</h3>
+    <p className="mt-2 mb-4 text-sm text-[var(--muted)]">{props.description}</p>
+    {props.children}
+    <div className="premium-inline-footer">{props.footer}</div>
+  </section>;
 }
 
 const TONE_CLASS: Record<string, string> = {

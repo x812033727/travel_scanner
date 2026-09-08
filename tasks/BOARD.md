@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 0 in progress · 2 blocked · 7 in review · 165 done**
+**16 open · 1 in progress · 2 blocked · 4 in review · 168 done**
 
 ## Ready to claim
 
@@ -26,7 +26,9 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [Premium app-style itinerary planning flow](open/2026-09-08-planner-premium-app.md) | codex-planner-premium | 2026-09-08T22:10:28Z | `codex/planner-premium-app` |
 
 ## In review
 
@@ -36,9 +38,6 @@ _Nothing here._
 | [Klook direct affiliate product integration and reviewed rollout](open/2026-09-08-klook-direct-affiliate-integration.md) | codex-klook-root | `codex/klook-product-integration` |
 | [Klook channel aware affiliate backend and secure clickout](open/2026-09-08-klook-channel-backend.md) | codex-klook-backend | `codex/klook-product-integration` |
 | [Klook affiliate frontend channels and contextual discovery](open/2026-09-08-klook-affiliate-web.md) | codex-klook-web | `codex/klook-product-integration` |
-| [Fix nearby itinerary discovery across cities and reset insertion pagination](open/2026-09-08-planner-nearby-followup.md) | codex | `codex/planner-nearby-followup` |
-| [Fix weather and itinerary intent panel contrast in dark mode](open/2026-09-08-planner-weather-dark-contrast.md) | codex | `codex/planner-nearby-followup` |
-| [Stay22 Maps lodging pilot](open/2026-09-08-stay22-maps-lodging-pilot.md) | codex-stay22 | `codex/stay22-maps-pilot` |
 
 ## Waiting
 
@@ -55,6 +54,9 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-08 [Fix weather and itinerary intent panel contrast in dark mode](done/2026-09-08-planner-weather-dark-contrast.md)
+- 2026-09-08 [Fix nearby itinerary discovery across cities and reset insertion pagination](done/2026-09-08-planner-nearby-followup.md)
+- 2026-09-08 [Stay22 Maps lodging pilot](done/2026-09-08-stay22-maps-lodging-pilot.md)
 - 2026-09-08 [Admin domain regression compatibility tests](done/2026-09-08-admin-domain-regression-compatibility-tests.md)
 - 2026-09-08 [Admin catalog review filters and canonical location editor](done/2026-09-08-admin-catalog-review-filters-and-canonical.md)
 - 2026-09-08 [Admin domain scoped catalog AI review](done/2026-09-08-admin-domain-scoped-catalog-ai-review.md)
@@ -62,6 +64,3 @@ _Nothing here._
 - 2026-09-08 [Admin hotel workspace isolation](done/2026-09-08-admin-hotel-workspace-isolation.md)
 - 2026-09-08 [Admin domain navigation and workspaces](done/2026-09-08-admin-domain-navigation-and-workspaces.md)
 - 2026-09-08 [Intuitive itinerary ordering and contextual place picker](done/2026-09-08-intuitive-itinerary-editor.md)
-- 2026-09-08 [Travelpayouts full partner links for production verification](done/2026-09-08-travelpayouts-full-partner-links.md)
-- 2026-09-08 [七國美食卡精準導航與訂位平台](done/2026-09-08-food-platform-links.md)
-- 2026-09-07 [登入頁沒有忘記密碼，後端也沒有任何寄信管道](done/2026-09-07-forgot-password-no-mail-channel.md)

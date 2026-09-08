@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-planner-weather-dark-contrast
 title: Fix weather and itinerary intent panel contrast in dark mode
-status: review
+status: done
 priority: P2
 area: web
 owner: codex
 claimed_at: 2026-09-08T08:42:18Z
 created_at: 2026-09-08T07:36:05Z
-completed_at:
+completed_at: 2026-09-08T21:28:26Z
 branch: codex/planner-nearby-followup
 depends_on: []
 scope:
@@ -43,6 +43,8 @@ The itinerary weather card retains a fixed pale gradient in dark mode, while its
 Run the weather panel Vitest tests, ESLint, TypeScript and relevant readability Playwright checks. In the in-app browser inspect a signed-in trip with dark mode and the trip date beyond forecast range, then repeat with fixture-backed available weather at 412x915 and desktop sizes. Do not change the user's real itinerary or trigger a paid weather provider solely for testing.
 
 ## Notes
+
+2026-09-09 handoff: the preceding not-yet-merged notes are historical. PR #366 merged as e8afbc8450e89b6fa624cb3d8e810cf1c9f806a2; owner release record e474c59 confirms production verification. Close the stale scope while preserving the semantic dark-theme surfaces in the premium planner.
 
 - Production release 4343454: `trip-weather-panel.tsx:152` uses `linear-gradient(135deg,#f8fcff,#eef8f8)` in all themes. Computed dark-mode heading colour is rgb(237,245,242); muted text rgb(169,187,183); warning text rgb(253,230,138).
 - The user subsequently requested both this weather fix and the intent panel fix. They are included in PR #366 alongside its existing nearby-discovery fixes; not yet merged or deployed.
