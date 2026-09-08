@@ -30,6 +30,13 @@ future-closure hold (May 9, 2027). Still 60 identities / 17 approved products; p
 options are now 48 approved / 312 pending. Kyoto remains publicly empty without reviewed
 locations, and the prior Tokyo/Osaka public counts and rollout settings are unchanged.
 
+PR #353 then merged at `6db0f51`. The current continuation is
+`review-2026-09-08-kyoto-station.md`: five more Rakuten candidates and ten normal
+official/Trip approvals across Kyoto Station/Kawaramachi. Still 60 identities,
+17 approved products / 43 pending; options are **58 approved / 302 pending**.
+No new map approval, city switch, affiliate/quote enablement or deployment. Prior
+Hyatt closure and Westin link holds remain unchanged. Older counts above are snapshots.
+
 `0057_hotel_booking_options` migrates legacy links into independent reviewed identities.
 Products and trip associations retain their IDs. `facts.hotel_links` is accepted/projected
 for old clients, but never stored as a second authority. New imports use a JSON
