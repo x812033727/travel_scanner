@@ -1,0 +1,426 @@
+{
+  "checked_on": "2026-09-08",
+  "scope": "Five existing Osaka hotels, independent platform review and four new candidate URLs; no hotel identity additions or map approvals.",
+  "browser_status": "Existing Kyobashi tab read timed out/reset. One new-tab recovery also timed out/reset. No successful browser identity review this turn.",
+  "source_policy": "Official factual name/street identity and existing licensed municipal coordinates only. No provider prices, ratings, reviews, descriptions, photos or coordinates imported.",
+  "excluded": [
+    {
+      "source_key": "editorial:osaka:intergate-osaka-umeda",
+      "address": "大阪市北区梅田2丁目4-9",
+      "reason": "Parking location on official facility page, not the hotel street identity at 2-5-2."
+    },
+    {
+      "source_key": "editorial:osaka:granvia-osaka",
+      "url": "https://www.agoda.com/hotel-granvia-osaka/hotel/kobe-jp.html",
+      "reason": "Search name/street matches but conflicting city path; no browser identity proof, not added. Do not rewrite the URL to guess a different city."
+    }
+  ],
+  "hotels": [
+    {
+      "source_key": "editorial:osaka:vischio-osaka",
+      "official_name": "ホテルヴィスキオ大阪",
+      "official_address": "大阪市北区芝田2丁目4番10号",
+      "official_identity_url": "https://www.hotelvischio-osaka.jp/access/",
+      "trip_name": "Hotel Vischio Osaka",
+      "trip_address": "2 Chome-4-10 Shibata",
+      "product_status": "pending",
+      "map_review_status": "not_checked",
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.hotelvischio-osaka.jp/",
+          "discovery_status": "found",
+          "status": "approved",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.hotelvischio-osaka.jp/access/",
+          "matched_name": "ホテルヴィスキオ大阪",
+          "matched_address": "大阪市北区芝田2丁目4番10号",
+          "document_checked_on": "2026-09-08",
+          "health": "healthy",
+          "version": 2,
+          "option_id": "3ba7e8b5-6667-43aa-ad73-23e40c05d121",
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/vischio-osaka-by-granvia.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/osaka-hotel-detail-17502427/hotel-vischio-osaka/",
+          "discovery_status": "found",
+          "status": "approved",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.hotelvischio-osaka.jp/access/",
+          "matched_name": "Hotel Vischio Osaka",
+          "matched_address": "2 Chome-4-10 Shibata",
+          "document_checked_on": "2026-09-08",
+          "health": "healthy",
+          "version": 2,
+          "option_id": "69d8b040-e631-46e9-aeb0-00b04367d898",
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/hotel-vischio-osaka-by-granvia/hotel/osaka-jp.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "Search name/street match only; direct document opaque. HTTP health is not identity approval.",
+          "new_candidate": true,
+          "health": "unchecked",
+          "version": 2,
+          "option_id": "6a2411a7-372e-44eb-8a67-458917da05f4"
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        },
+        {
+          "provider": "rakuten",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:osaka:hankyu-respire-osaka",
+      "official_name": "ホテル阪急レスパイア大阪",
+      "official_address": "大阪府大阪市北区大深町1番1号",
+      "official_identity_url": "https://www.hankyu-hotel.com/hotel/respire/osaka/access",
+      "trip_name": "Hotel Hankyu Respire Osaka",
+      "trip_address": "Ofukacho 1-1",
+      "product_status": "pending",
+      "map_review_status": "not_checked",
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.hankyu-hotel.com/hotel/respire/osaka/",
+          "discovery_status": "found",
+          "status": "approved",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.hankyu-hotel.com/hotel/respire/osaka/access",
+          "matched_name": "ホテル阪急レスパイア大阪",
+          "matched_address": "大阪府大阪市北区大深町1番1号",
+          "document_checked_on": "2026-09-08",
+          "health": "healthy",
+          "version": 2,
+          "option_id": "3afd61bc-e374-46f9-9f87-c4cf49569fa4",
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/hankyu-respire-osaka.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/osaka-hotel-detail-37082416/hotel-hankyu-respire-osaka/",
+          "discovery_status": "found",
+          "status": "approved",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.hankyu-hotel.com/hotel/respire/osaka/access",
+          "matched_name": "Hotel Hankyu Respire Osaka",
+          "matched_address": "Ofukacho 1-1",
+          "document_checked_on": "2026-09-08",
+          "health": "healthy",
+          "version": 2,
+          "option_id": "f16574e7-801b-4a2e-8495-5981655b7ff6",
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/hotel-hankyu-respire-osaka/hotel/osaka-jp.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "Search name/street match only; direct document opaque. HTTP health is not identity approval.",
+          "new_candidate": true,
+          "health": "unchecked",
+          "version": 2,
+          "option_id": "f0f56103-0b4b-4e56-8c44-5cdcee9f0b22"
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        },
+        {
+          "provider": "rakuten",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:osaka:intergate-osaka-umeda",
+      "official_name": "ホテルインターゲート大阪 梅田",
+      "official_address": "大阪府大阪市北区梅田2-5-2",
+      "official_identity_url": "https://www.intergatehotels.jp/osaka-umeda/facility/",
+      "trip_name": "Hotel Intergate Osaka Umeda",
+      "trip_address": "2 Chome-5-2 Umeda",
+      "product_status": "pending",
+      "map_review_status": "not_checked",
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.intergatehotels.jp/osaka-umeda/",
+          "discovery_status": "found",
+          "status": "approved",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.intergatehotels.jp/osaka-umeda/facility/",
+          "matched_name": "ホテルインターゲート大阪 梅田",
+          "matched_address": "大阪府大阪市北区梅田2-5-2",
+          "document_checked_on": "2026-09-08",
+          "health": "healthy",
+          "version": 2,
+          "option_id": "8726d3be-4304-4abd-9c2c-1ff8736f8fe7",
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/intergate-osaka-umeda.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/osaka-hotel-detail-63326122/hotel-intergate-osaka-umeda/",
+          "discovery_status": "found",
+          "status": "approved",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.intergatehotels.jp/osaka-umeda/facility/",
+          "matched_name": "Hotel Intergate Osaka Umeda",
+          "matched_address": "2 Chome-5-2 Umeda",
+          "document_checked_on": "2026-09-08",
+          "health": "healthy",
+          "version": 2,
+          "option_id": "a93430c5-36ad-4023-ab80-f674d0325e56",
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/hotel-intergate-osaka-umeda/hotel/osaka-jp.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "Search name/street match only; direct document opaque. HTTP health is not identity approval.",
+          "new_candidate": true,
+          "health": "unchecked",
+          "version": 2,
+          "option_id": "3c16bfa9-a0a4-4609-8ef2-127563d46ab5"
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        },
+        {
+          "provider": "rakuten",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:osaka:granvia-osaka",
+      "official_name": "ホテルグランヴィア大阪",
+      "official_address": "大阪市北区梅田3丁目1番1号",
+      "official_identity_url": "https://jrwest-hotels.jp/en/granvia-osaka/access/",
+      "trip_name": "Hotel Granvia Osaka-Jr Hotel Group",
+      "trip_address": "3 Chome-1-1 Umeda",
+      "product_status": "pending",
+      "map_review_status": "not_checked",
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://jrwest-hotels.jp/en/granvia-osaka/",
+          "discovery_status": "found",
+          "status": "approved",
+          "browser_verified": false,
+          "identity_evidence_url": "https://jrwest-hotels.jp/en/granvia-osaka/access/",
+          "matched_name": "ホテルグランヴィア大阪",
+          "matched_address": "大阪市北区梅田3丁目1番1号",
+          "document_checked_on": "2026-09-08",
+          "health": "healthy",
+          "version": 2,
+          "option_id": "5a23b490-18ed-465f-aa4e-3be06089b335",
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/granvia-osaka.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/osaka-hotel-detail-480887/hotel-granvia-osaka/",
+          "discovery_status": "found",
+          "status": "approved",
+          "browser_verified": false,
+          "identity_evidence_url": "https://jrwest-hotels.jp/en/granvia-osaka/access/",
+          "matched_name": "Hotel Granvia Osaka-Jr Hotel Group",
+          "matched_address": "3 Chome-1-1 Umeda",
+          "document_checked_on": "2026-09-08",
+          "health": "healthy",
+          "version": 2,
+          "option_id": "e2960e7e-635d-4c2e-8480-567c5577a572",
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "agoda",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        },
+        {
+          "provider": "rakuten",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        }
+      ]
+    },
+    {
+      "source_key": "editorial:osaka:new-otani-osaka",
+      "official_name": "ホテルニューオータニ大阪",
+      "official_address": "大阪市中央区城見1-4-1",
+      "official_identity_url": "https://www.newotani.co.jp/osaka/access/",
+      "trip_name": "Hotel New Otani Osaka",
+      "trip_address": "1 Chome-4-1 Shiromi",
+      "product_status": "pending",
+      "map_review_status": "not_checked",
+      "platform_reviews": [
+        {
+          "provider": "official",
+          "url": "https://www.newotani.co.jp/osaka/",
+          "discovery_status": "found",
+          "status": "approved",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.newotani.co.jp/osaka/access/",
+          "matched_name": "ホテルニューオータニ大阪",
+          "matched_address": "大阪市中央区城見1-4-1",
+          "document_checked_on": "2026-09-08",
+          "health": "healthy",
+          "version": 2,
+          "option_id": "37077846-829f-4afc-bfe2-01c94acc6ac1",
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "booking",
+          "url": "https://www.booking.com/hotel/jp/new-otani-osaka.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        },
+        {
+          "provider": "trip_com",
+          "url": "https://www.trip.com/hotels/osaka-hotel-detail-856906/hotel-new-otani-osaka/",
+          "discovery_status": "found",
+          "status": "approved",
+          "browser_verified": false,
+          "identity_evidence_url": "https://www.newotani.co.jp/osaka/access/",
+          "matched_name": "Hotel New Otani Osaka",
+          "matched_address": "1 Chome-4-1 Shiromi",
+          "document_checked_on": "2026-09-08",
+          "health": "healthy",
+          "version": 2,
+          "option_id": "1acd2432-987d-4a9b-ba97-33a8e435e892",
+          "reviewed_on": "2026-09-08"
+        },
+        {
+          "provider": "agoda",
+          "url": "https://www.agoda.com/hotel-new-otani-osaka/hotel/osaka-jp.html",
+          "discovery_status": "found",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "Search name/street match only; direct document opaque. HTTP health is not identity approval.",
+          "new_candidate": true,
+          "health": "unchecked",
+          "version": 2,
+          "option_id": "037243cc-e506-4ec7-a8d1-43abb828f21f"
+        },
+        {
+          "provider": "expedia",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        },
+        {
+          "provider": "rakuten",
+          "discovery_status": "unconfirmed",
+          "status": "pending",
+          "browser_verified": false,
+          "reason": "No new landing-page review this turn; prior research or unresolved state preserved.",
+          "health": "not_checked"
+        }
+      ]
+    }
+  ],
+  "production_checkpoint": {
+    "hotel_total": 60,
+    "hotel_approved": 12,
+    "hotel_pending": 48,
+    "option_total": 360,
+    "option_approved": 31,
+    "option_pending": 329,
+    "new_hotel_identities": 0,
+    "new_candidate_urls": 4,
+    "independent_option_approvals": 10,
+    "public_osaka_hotel_count": 0,
+    "config_version_preserved": 5,
+    "config_was_already_public_enabled": true,
+    "all_products_other_346_options_config_fingerprint": "01048481d8180800c891863f9a3284c70c8c9a62509eaead879ab28fde7c0ba3"
+  }
+}

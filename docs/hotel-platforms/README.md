@@ -9,6 +9,11 @@ checkpoint, and production was deployed. The 2026-09-08 continuation uses isolat
 `codex/hotel-content-review-kyoto` from main `7f21d7eb2af223a561bc04519ce67021198b1068`.
 See the dated production review record below; older checkpoints are not current live counts.
 
+PR #344 subsequently merged the Kyoto/Busan/Tokyo content checkpoint at `2e5e9fe` on
+September 8 after all eight latest-main checks passed. The next isolated continuation is
+`codex/hotel-content-review-osaka`; see `review-2026-09-08-osaka-five.md` for its current
+counts and the independently changed production catalog configuration.
+
 `0057_hotel_booking_options` migrates legacy links into independent reviewed identities.
 Products and trip associations retain their IDs. `facts.hotel_links` is accepted/projected
 for old clients, but never stored as a second authority. New imports use a JSON
@@ -95,7 +100,7 @@ documented, not silently matched. Toyoko's conflicting tourism-directory address
 | City | Research inputs | Accepted for city rollout | Remaining |
 | --- | ---: | ---: | --- |
 | Tokyo | 10 | 0 | Three pending map checks, remaining platform checks and second OTA per reviewed hotel |
-| Osaka | 10 | 0 | Map and platform review, remaining OTA checks, independent approvals |
+| Osaka | 10 | 0 | All maps pending; five official/Trip pairs approved, four new Agoda URLs pending; other OTA reviews outstanding |
 | Kyoto | 10 | 0 | Licensed coordinates, exact Place IDs, live platform checks and independent approvals |
 | Seoul | 10 | 0 | Five unresolved Naver reviews, platform landing checks and independent option approvals |
 | Busan | 10 | 0 | Licensed coordinates, exact Naver identities, platform landing reviews and independent approvals |
@@ -131,7 +136,7 @@ This is not a city rollout or a new map review. See `review-2026-09-08-tokyo.md`
 per-option `tokyo.review-2026-09-08.json`. Never replay the older original-Tokyo fingerprint
 or one-option smoke assertion after this deliberate attribution/platform update.
 
-Latest Tokyo continuation: Ryumeikan's saved exact Place ID was successfully checked in
+Earlier Tokyo continuation: Ryumeikan's saved exact Place ID was successfully checked in
 Chrome against its name, street number and official website; its product passed normal
 review. The next map navigation/recovery timed out, so the other three products remain
 pending. Eight official/Trip options were independently approved after document identity
@@ -142,6 +147,21 @@ Current total: **60 hotels, 12 product-approved / 48 pending; 360 options, 21 ap
 enablement remains off and no city is fully accepted. See `review-2026-09-08-tokyo-four.md`
 and `tokyo-four.review-2026-09-08.json`; older snapshots are historical. Pending JSON still
 must not be replayed over the newly reviewed Ryumeikan product.
+
+Latest Osaka continuation: five existing hotels now have independently approved official
+and Trip options (ten approvals), after name/street document review and normal live safe
+link checks. Four missing Agoda URLs were added pending; their opaque direct documents do
+not justify approval. Granvia's inconsistent-city Agoda result was not added. No successful
+Chrome identity check occurred this turn, so all Osaka products/maps stay pending.
+Current total: **60 hotels, 12 approved / 48 pending; 360 options, 31 approved / 329 pending**.
+All 60 product records, other 346 options and configuration were fingerprint-preserved.
+
+Production config independently changed to version 5 with public services/all six cities
+enabled before this batch. This task did not change or roll it back. Five-language public
+smoke confirms Osaka's pending hotels remain hidden while Tokyo has seven reviewed hotels
+with official + Trip options. An enabled city is not a content-complete city: zero cities
+meet the full hotel/area/two-OTA acceptance criteria. See `review-2026-09-08-osaka-five.md`
+and `osaka-five.review-2026-09-08.json`; previous disabled-catalog snapshots are historical.
 
 ## Tokyo coordinate attribution
 
