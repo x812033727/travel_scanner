@@ -1,4 +1,11 @@
 export type MapLink = { provider: string; label: string; url: string; primary: boolean };
+export type ReservationLink = {
+  provider: string;
+  label: string;
+  url: string;
+  verified_at: string;
+  language_code: string;
+};
 /** Five site locales plus the original-script text; `name` is already the one for the UI locale. */
 export type LocalizedNameMap = Partial<Record<"en" | "ja" | "ko" | "zh-TW" | "zh-CN", string>> & {
   original?: string;
@@ -66,6 +73,7 @@ export type FoodMerchant = {
   coordinate_source: { type: string | null; url: string | null; verified_at: string | null };
   official_website_url: string | null;
   map_links: MapLink[];
+  reservation_links?: ReservationLink[];
   verified_at: string | null;
   sources: MerchantSource[];
 };
@@ -110,10 +118,12 @@ export type RecommendedMerchant = {
   local_name: string;
   names?: LocalizedNameMap;
   destination_id: string;
+  destination_name: string;
   address: string | null;
   latitude: number | null;
   longitude: number | null;
   map_links: MapLink[];
+  reservation_links?: ReservationLink[];
   verified_at: string | null;
   area?: FoodAreaRef | null;
   categories?: FoodCategoryRef[];

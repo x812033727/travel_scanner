@@ -19,6 +19,8 @@ from app.foods.area_catalog import ALL_AREA_SEEDS
 from app.foods.catalog import COUNTRY_NAMES, FOOD_SEEDS
 from app.foods.category_catalog import CATEGORY_SEEDS
 from app.foods.merchant_catalog import MERCHANT_DIRECT_SOURCE_SEEDS, MERCHANT_SEEDS
+from app.foods.platform_link_catalog import PLATFORM_LINK_AUDIT_SEEDS
+from app.foods.platform_links import serialize_reservation_link
 from app.foods.publication import merchant_is_publishable, publishable_merchant_filters
 from app.foods.styles import STYLE_NAMES, style_filter
 from app.hotspots.maps import build_map_links, has_exact_map_identity
@@ -39,6 +41,7 @@ from app.models import (
     FoodMerchant,
     FoodMerchantCategory,
     FoodMerchantFood,
+    FoodMerchantPlatformLink,
     FoodMerchantSource,
     FoodMerchantStyle,
     HotspotLocalization,
@@ -483,6 +486,31 @@ async def seed_food_catalog(session: AsyncSession) -> int:
                 merchant.official_website_url = direct_source_seed.official_website_url
                 merchant.official_website_verified_at = datetime.now(UTC)
 
+    await session.flush()
+    merchants_by_slug = {
+        row.slug: row for row in (await session.scalars(select(FoodMerchant))).all()
+    }
+    existing_platform_links = {
+        (row.merchant_id, row.provider)
+        for row in (await session.scalars(select(FoodMerchantPlatformLink))).all()
+    }
+    checked_at = datetime(2026, 9, 8, tzinfo=UTC)
+    for audit in PLATFORM_LINK_AUDIT_SEEDS:
+        merchant = merchants_by_slug.get(audit.merchant_slug)
+        if merchant is None or (merchant.id, audit.provider) in existing_platform_links:
+            continue
+        session.add(
+            FoodMerchantPlatformLink(
+                merchant_id=merchant.id,
+                provider=audit.provider,
+                canonical_url=audit.canonical_url,
+                localized_urls_json=dict(audit.localized_urls),
+                status=audit.status,
+                checked_at=checked_at,
+                review_note=audit.review_note,
+            )
+        )
+
     food_areas = list(
         (
             await session.scalars(
@@ -628,6 +656,9 @@ async def _serialize_foods(
         )
     ).all()
     merchant_ids = {merchant.id for _, merchant in merchant_rows}
+    platform_links_by_merchant = await _public_platform_links(
+        session, merchant_ids, locale
+    )
     areas_by_merchant, categories_by_merchant = await _merchant_taxonomy(
         session, merchant_ids, locale
     )
@@ -689,6 +720,9 @@ async def _serialize_foods(
                 "local_name": merchant.local_name,
                 "names": names,
                 "destination_id": merchant.destination_id,
+                "destination_name": localized_city_name(profile, cast(Locale, locale))
+                if profile
+                else merchant.destination_id,
                 "address": merchant.address,
                 "latitude": float(merchant.latitude) if merchant.latitude is not None else None,
                 "longitude": float(merchant.longitude) if merchant.longitude is not None else None,
@@ -711,6 +745,7 @@ async def _serialize_foods(
                     naver_map_url=merchant.naver_map_url,
                     map_match_status=merchant.map_match_status,
                 ),
+                "reservation_links": platform_links_by_merchant.get(merchant.id, []),
                 "verified_at": merchant.verified_at.isoformat()
                 if merchant.verified_at is not None
                 else None,
@@ -970,6 +1005,9 @@ async def _serialize_merchant_cards(
     if not merchants:
         return []
     merchant_ids = {merchant.id for merchant in merchants}
+    platform_links_by_merchant = await _public_platform_links(
+        session, merchant_ids, locale
+    )
     styles_by_merchant: dict[UUID, list[dict[str, str]]] = defaultdict(list)
     for style_row in (
         await session.scalars(
@@ -1088,6 +1126,7 @@ async def _serialize_merchant_cards(
                     naver_map_url=merchant.naver_map_url,
                     map_match_status=merchant.map_match_status,
                 ),
+                "reservation_links": platform_links_by_merchant.get(merchant.id, []),
                 "verified_at": merchant.verified_at.isoformat()
                 if merchant.verified_at is not None
                 else None,
@@ -1095,6 +1134,39 @@ async def _serialize_merchant_cards(
             }
         )
     return cards
+
+
+async def _public_platform_links(
+    session: AsyncSession,
+    merchant_ids: set[UUID],
+    locale: str,
+) -> dict[UUID, list[dict[str, str]]]:
+    links_by_merchant: dict[UUID, list[dict[str, str]]] = defaultdict(list)
+    if not merchant_ids:
+        return links_by_merchant
+    rows = (
+        await session.scalars(
+            select(FoodMerchantPlatformLink).where(
+                FoodMerchantPlatformLink.merchant_id.in_(merchant_ids),
+                FoodMerchantPlatformLink.status == "verified",
+            )
+        )
+    ).all()
+    countries = {
+        row.id: row.country_code
+        for row in (
+            await session.scalars(select(FoodMerchant).where(FoodMerchant.id.in_(merchant_ids)))
+        ).all()
+    }
+    for row in rows:
+        link = serialize_reservation_link(
+            row,
+            country_code=countries[row.merchant_id],
+            locale=locale,
+        )
+        if link is not None:
+            links_by_merchant[row.merchant_id].append(link)
+    return links_by_merchant
 
 
 async def _resolve_area(session: AsyncSession, area_slug: str) -> FoodArea:

@@ -77,6 +77,7 @@ const ichiran: FoodMerchant = {
       primary: true,
     },
   ],
+  reservation_links: [],
   verified_at: "2026-09-01T00:00:00Z",
   sources: [],
 };
