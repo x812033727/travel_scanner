@@ -1,6 +1,7 @@
 """Real HTTP/DB style moderation, public isolation, import and migration contracts."""
 
 import asyncio
+import json
 import os
 import runpy
 from collections.abc import AsyncIterator
@@ -416,3 +417,89 @@ def test_first_research_batch_is_valid_and_cannot_embed_approvals() -> None:
     assert len(rows) == 5
     assert {item.style for row in rows for item in row.styles} == {"instagrammable", "artsy"}
     assert all(row.styles and row.address for row in rows)
+
+
+@pytest.mark.parametrize(
+    ("filename", "count", "style_count"),
+    [
+        ("style_merchants_2026_09.json", 5, 5),
+        ("style_merchants_2026_09_batch_02.json", 8, 9),
+    ],
+)
+def test_research_batches_contain_evidence_not_publication_state(
+    filename: str, count: int, style_count: int
+) -> None:
+    path = Path("app/foods/data") / filename
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    rows = load_trend_merchants(path)
+    assert len(rows) == count
+    assert len({row.slug for row in rows}) == count
+    assert len({row.identity for row in rows}) == count
+    assert sum(len(row.styles) for row in rows) == style_count
+    assert all(row.styles and row.address and row.note for row in rows)
+    forbidden = {
+        "review_status",
+        "is_active",
+        "map_match_status",
+        "google_place_id",
+        "naver_map_url",
+        "latitude",
+        "longitude",
+        "coordinate_source_type",
+    }
+    for item in raw:
+        assert not forbidden.intersection(item)
+        assert all("status" not in style for style in item["styles"])
+
+
+@pytest.mark.asyncio
+async def test_second_research_batch_import_is_private_audited_and_replay_safe(
+    catalog: Any,
+) -> None:
+    client, factory, _, _ = catalog
+    path = Path("app/foods/data/style_merchants_2026_09_batch_02.json")
+    rows = load_trend_merchants(path)
+    async with factory() as session:
+        session.add(FoodCategory(slug="desserts-sweets", names_json={"en": "Desserts"}))
+        await session.commit()
+        preview = await persist_trend_merchants(session, rows, apply=False, source_file=path.name)
+        assert preview["created"] == 8
+        assert len(preview["proposed_styles"]) == 9
+        assert await session.scalar(select(func.count(FoodMerchant.id))) == 3
+        assert await session.scalar(select(func.count(AdminAuditLog.id))) == 0
+
+        applied = await persist_trend_merchants(session, rows, apply=True, source_file=path.name)
+        assert applied["created"] == 8
+        assert applied["proposed_styles"] == preview["proposed_styles"]
+        merchants = (
+            await session.scalars(
+                select(FoodMerchant).where(FoodMerchant.slug.in_([row.slug for row in rows]))
+            )
+        ).all()
+        assert len(merchants) == 8
+        for merchant in merchants:
+            assert merchant.review_status == "pending" and not merchant.is_active
+            assert merchant.map_match_status == "unverified" and merchant.area_id is None
+            assert merchant.google_place_id is None and merchant.naver_map_url is None
+            assert merchant.latitude is None and merchant.longitude is None
+        styles = (await session.scalars(select(FoodMerchantStyle))).all()
+        assert len(styles) == 9 and all(style.status == "pending" for style in styles)
+        audits = (await session.scalars(select(AdminAuditLog))).all()
+        assert {audit.action for audit in audits} == {
+            "food_merchant_created",
+            "food_merchant_styles_proposed",
+        }
+        assert len(audits) == 2
+        assert all(a.actor_user_id is None and a.metadata_json["file"] == path.name for a in audits)
+        created_audit = next(a for a in audits if a.action == "food_merchant_created")
+        assert created_audit.metadata_json["count"] == 8
+        styles_audit = next(a for a in audits if a.action == "food_merchant_styles_proposed")
+        assert styles_audit.metadata_json["items"] == applied["proposed_styles"]
+
+        replay = await persist_trend_merchants(session, rows, apply=True, source_file=path.name)
+        assert replay["created"] == 0 and replay["proposed_styles"] == []
+        assert await session.scalar(select(func.count(FoodMerchant.id))) == 11
+        assert await session.scalar(select(func.count(FoodMerchantStyle.id))) == 9
+        assert await session.scalar(select(func.count(AdminAuditLog.id))) == 2
+    for style in ("instagrammable", "artsy"):
+        assert (await client.get(f"/api/v1/foods/merchants?style={style}")).json()["total"] == 0
