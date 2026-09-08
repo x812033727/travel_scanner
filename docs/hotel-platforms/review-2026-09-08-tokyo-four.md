@@ -83,6 +83,13 @@ option and research-input status. Ruff/format, mypy across 255 sources, 27 tools
 five locales/25 namespaces and task integrity passed. Full CI is checked at the new head
 of PR #344. Prior head 5571190 passed all eight jobs, PR 34172384315 and push 34172381941.
 
+At content head `dc6cabb`, PR run 34174167430 passed all four jobs; push 34174165077 passed
+API/web/containers but failed the community account-confirm smoke (JSON parse error and
+missing confirm button). Repeated community metric duplicates were also logged; causality
+is not established. Evidence is in the existing open community-read-metric-concurrency
+task, without personal IDs or tokens. This hotel batch did not modify those runtime paths,
+and neither a later green run nor this documentation follow-up is a fix for that defect.
+
 Continue with remaining exact map identities, browser-supported OTA reviews and reusable
 Kyoto/Busan coordinates. Do not rerun old snapshot/smoke scripts expecting six Tokyo hotels
 after this intentional review. Keep the content task open and release it at handoff.

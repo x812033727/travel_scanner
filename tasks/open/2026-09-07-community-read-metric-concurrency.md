@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-07T23:27:30Z
 completed_at:
-branch:
+branch: codex/hotel-content-review-kyoto
 depends_on: []
 scope:
   - apps/api/app/community
@@ -52,3 +52,15 @@ fe8a61d809c711ededaa687519379203f8ad9e68. Do not treat a rerun as a fix.
 Constraint key observed: (day, user_id, kind, target), kind=read. No personal IDs
 or raw request content copied into this task. Hotel content changes do not touch
 community code, and no production remediation has been attempted here.
+
+2026-09-08 recurrence at hotel content dc6cabbab1fd838770c2375e9b38b6b3ca61a4f2:
+push run 34174165077 / full-stack job 101900157817 failed while PR run 34174167430
+passed all four jobs. Three uq_community_metric read duplicates were logged again.
+The actual failing assertion was different: community.spec.ts:30 registerAndVerify could
+not find the account-confirm "確認" button within 20 seconds. Next logged Unexpected end
+of JSON input at JSON.parse for /zh-TW/account/confirm, followed by a browser error.
+These observations are correlated in one run, not proof that metric duplicates caused
+the confirmation-page failure. Investigate the confirmation response/render JSON path
+separately before choosing a fix or expanding the task's implementation scope. No raw
+member IDs, tokens, mail bodies or request payloads are retained in this note. No hotel
+code changed these paths, and no remediation or silent test rerun is claimed.

@@ -56,6 +56,13 @@ Remaining: three Tokyo maps, second OTA approvals, remaining Seoul identities an
 cities' durable coordinates/maps/platform reviews. Do not replay the old pending package
 or smoke expectation of six Tokyo hotels over this new intentional review checkpoint.
 
+At dc6cabb, PR CI 34174167430 passed API, web, containers and full-stack smoke. Push
+34174165077 passed API/web/containers but its community smoke failed on account-confirm
+JSON parsing / missing confirmation button, alongside recurring uq_community_metric
+duplicates. New evidence is recorded in the open community-read-metric-concurrency task;
+causality is unproven and no unrelated fix was attempted. Documentation-only follow-up
+records this outcome; a subsequent green run must not be described as fixing the defect.
+
 ## 2026-09-08 earlier Tokyo source-credit and platform review
 
 Latest continuation stays on PR #344 / codex/hotel-content-review-kyoto. Main and runtime
