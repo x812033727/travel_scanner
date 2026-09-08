@@ -1,5 +1,6 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
 import { pretendSignedIn } from "./session";
+import { editorFixture } from "./fixtures/itinerary-editor";
 
 /**
  * Two things a reader with tired eyes needs, checked on the rendered page rather
@@ -342,4 +343,226 @@ test("the admin console holds its own controls to the size it publishes", async 
       .map((element) => `${Math.round(element.getBoundingClientRect().height)}px ${(element.textContent || "").trim().slice(0, 20)}`),
   );
   expect(short, "admin controls under 44px").toEqual([]);
+});
+
+// These panels have nested transparent surfaces. Measure the painted ancestor
+// background, not transparent black, and reject gradients we cannot measure.
+async function plannerPaint(target: Locator, pseudo?: "::placeholder") {
+  return target.evaluate((element, pseudoElement) => {
+    const canvas = document.createElement("canvas");
+    canvas.width = canvas.height = 1;
+    const context = canvas.getContext("2d")!;
+    const rgba = (color: string) => {
+      context.clearRect(0, 0, 1, 1);
+      context.fillStyle = color;
+      context.fillRect(0, 0, 1, 1);
+      return Array.from(context.getImageData(0, 0, 1, 1).data).map((value, index) => index === 3 ? value / 255 : value);
+    };
+    const over = (front: number[], back: number[]) => [
+      ...front.slice(0, 3).map((value, index) => value * front[3] + back[index] * (1 - front[3])), 1,
+    ];
+    const luminance = (color: number[]) => {
+      const channels = color.slice(0, 3).map((value) => {
+        const normalized = value / 255;
+        return normalized <= 0.04045 ? normalized / 12.92 : ((normalized + 0.055) / 1.055) ** 2.4;
+      });
+      return channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
+    };
+    const layers: number[][] = [];
+    const unmeasuredImages: string[] = [];
+    for (let node: Element | null = element; node; node = node.parentElement) {
+      const style = getComputedStyle(node);
+      if (style.backgroundImage !== "none") unmeasuredImages.push(style.backgroundImage);
+      const background = rgba(style.backgroundColor);
+      layers.push(background);
+      if (background[3] >= 0.999) break;
+    }
+    const background = layers.reverse().reduce((back, front) => over(front, back), [255, 255, 255, 1]);
+    const style = getComputedStyle(element, pseudoElement);
+    const foreground = rgba(style.color);
+    foreground[3] *= Number(style.opacity);
+    const foregroundLuminance = luminance(over(foreground, background));
+    const backgroundLuminance = luminance(background);
+    return {
+      contrast: (Math.max(foregroundLuminance, backgroundLuminance) + 0.05) / (Math.min(foregroundLuminance, backgroundLuminance) + 0.05),
+      backgroundLuminance, unmeasuredImages,
+    };
+  }, pseudo);
+}
+
+async function expectPlannerText(target: Locator, dark: boolean, pseudo?: "::placeholder") {
+  await expect(target).toBeVisible();
+  await expect.poll(async () => (await plannerPaint(target, pseudo)).contrast).toBeGreaterThanOrEqual(MIN_CONTRAST);
+  const paint = await plannerPaint(target, pseudo);
+  expect(paint.unmeasuredImages, "contrast must not silently ignore a painted gradient").toEqual([]);
+  if (dark) expect(paint.backgroundLuminance, "dark panels must not remain light surfaces").toBeLessThan(0.25);
+}
+
+async function plannerReadabilityFixture(page: Page, theme: "light" | "dark" | "system", state: "available" | "out-of-range" | "retry") {
+  await pretendSignedIn(page);
+  // Explicit light must beat a dark OS; system must actually follow the OS.
+  await page.emulateMedia({ colorScheme: "dark", reducedMotion: "reduce" });
+  await page.addInitScript((preference) => localStorage.setItem("mokaair-theme", preference), theme);
+  await page.route("**/api/travel/auth/me", (route) => route.fulfill({ json: {
+    id: "00000000-0000-4000-8000-000000000001", email: "readability@example.test",
+  } }));
+  const trip = structuredClone(editorFixture);
+  const forecast = {
+    attribution: "MET Norway", location_name: "淺草", retrieved_at: "2026-11-11T03:15:00Z",
+    cache_status: "fresh", warnings: ["預報可能隨時變動（測試資料）"],
+    current: { observed_at: "2026-11-11T03:15:00Z", is_daytime: true,
+      condition: { description: "晴時多雲", type: "PARTLY_CLOUDY" }, temperature_c: 21, feels_like_c: 20 },
+    days: ["2026-11-11", "2026-11-12"].map((date) => ({ date,
+      condition: { description: "局部短暫雨", type: "SHOWERS" }, min_temperature_c: 16, max_temperature_c: 23,
+      precipitation_probability_percent: null, precipitation_mm: 4.6, relative_humidity_percent: 72,
+      wind_speed_kph: 12, uv_index: 3,
+    })),
+  };
+  let phase: string = state;
+  let releaseLoading!: () => void;
+  const loadingGate = new Promise<void>((resolve) => { releaseLoading = resolve; });
+  const blockedMutations: string[] = [];
+  let weatherRequests = 0;
+  // No trip/weather request reaches the real BFF, and an accidental submit is
+  // blocked before it can become a paid intent or route operation.
+  await page.route("**/api/travel/trips/**", async (route) => {
+    const request = route.request();
+    const path = new URL(request.url()).pathname;
+    if (request.method() !== "GET") {
+      blockedMutations.push(`${request.method()} ${path}`);
+      return route.fulfill({ status: 503, json: { detail: "Mutations forbidden in readability fixtures" } });
+    }
+    if (path.endsWith("/weather")) {
+      weatherRequests += 1;
+      if (phase === "retry") {
+        await loadingGate;
+        return route.fulfill({ status: 503, json: { code: "fixture_weather_unavailable", detail: "測試天氣暫時無法取得" } });
+      }
+      return route.fulfill({ json: phase === "out-of-range"
+        ? { ...forecast, days: forecast.days.map((day) => ({ ...day, date: "2026-09-01" })) }
+        : forecast });
+    }
+    if (path.endsWith("/routes/status")) return route.fulfill({ json: { version: trip.version, status: "stale" } });
+    if (path === `/api/travel/trips/${trip.id}`) return route.fulfill({ json: trip });
+    return route.fulfill({ status: 404, json: { detail: "No additional fixture endpoint" } });
+  });
+  await page.goto(`/zh-TW/trips/${trip.id}`);
+  await expect(page.locator("html")).toHaveAttribute("data-theme", theme === "light" ? "light" : "dark");
+  return {
+    finishLoading: releaseLoading,
+    makeAvailable: () => { phase = "available"; },
+    assertReadOnly: () => { expect(blockedMutations).toEqual([]); expect(weatherRequests).toBeGreaterThan(0); },
+  };
+}
+
+async function expectForecastReadable(page: Page, dark: boolean) {
+  const weather = page.getByRole("region", { name: "旅程天氣" });
+  await expect(weather.getByText("MET NORWAY", { exact: true })).toBeVisible();
+  await expect(weather.getByText("21°C", { exact: true })).toBeVisible();
+  await expect(weather.getByLabel("2026-11-11 天氣摘要")).toContainText("降雨 4.6 mm");
+  await expect(weather.getByLabel("10 日天氣預報").locator("article")).toHaveCount(2);
+  await expect(weather.locator("article[aria-current='date']")).toHaveCount(1);
+  for (const target of await weather.locator("h2, p, [aria-label$='天氣摘要'] span").all()) {
+    await expectPlannerText(target, dark);
+  }
+  await weather.screenshot({ path: test.info().outputPath("weather-panel.png") });
+}
+
+async function expectIntentReadable(page: Page, dark: boolean) {
+  const intent = page.getByRole("region", { name: "描述想調整的地方" });
+  const toggle = intent.getByRole("button", { name: "想改什麼？", exact: true });
+  const input = intent.getByRole("textbox", { name: /想改什麼？/ });
+  if (await toggle.isVisible()) {
+    await expect(toggle).toHaveAttribute("aria-expanded", "false");
+    await expect(input).toBeHidden();
+    await expectPlannerText(toggle, dark);
+    await toggle.click();
+    await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  }
+  await expect(input).toHaveAttribute("maxlength", "400");
+  await expectPlannerText(input, dark, "::placeholder");
+  const scope = intent.getByRole("radiogroup", { name: "要重新安排的範圍" });
+  const day = scope.getByRole("radio", { name: "這一天", exact: true });
+  const trip = scope.getByRole("radio", { name: "整趟行程", exact: true });
+  await expect(day).toHaveAttribute("aria-checked", "true");
+  await expectPlannerText(day, dark);
+  await expectPlannerText(trip, dark);
+  await trip.click();
+  await expect(trip).toHaveAttribute("aria-checked", "true");
+  await expect(input).toHaveAttribute("placeholder", "例如：全程走路少一點");
+  await expectPlannerText(trip, dark);
+  await day.click();
+  const examples = ["這天下雨，改室內", "走路少一點", "多留時間逛街，少一個景點"];
+  for (const name of examples) await expectPlannerText(intent.getByRole("button", { name, exact: true }), dark);
+  const example = intent.getByRole("button", { name: examples[0], exact: true });
+  await example.hover();
+  await expectPlannerText(example, dark);
+  await example.click();
+  await expect(input).toHaveValue(examples[0]);
+  await input.focus();
+  await expect(input).toBeFocused();
+  await expectPlannerText(input, dark);
+  expect(await input.evaluate((element) => {
+    const style = getComputedStyle(element);
+    return style.boxShadow !== "none" || (style.outlineStyle !== "none" && Number.parseFloat(style.outlineWidth) > 0);
+  }), "focused input has a visible ring or outline").toBe(true);
+  const submit = intent.locator("button[type='submit']");
+  await expect(submit).toHaveAccessibleName("看看會怎麼改");
+  await expect(submit).toBeEnabled();
+  await expectPlannerText(submit, dark);
+  for (const control of [input, day, trip, example, submit]) {
+    expect(await control.evaluate((element) => element.getBoundingClientRect().height), "planner touch targets are at least 44px").toBeGreaterThanOrEqual(44);
+  }
+  await intent.screenshot({ path: test.info().outputPath("intent-panel.png") });
+  if (await toggle.isVisible()) {
+    await toggle.click();
+    await expect(input).toBeHidden();
+    await expect(toggle).toHaveAttribute("aria-expanded", "false");
+    await expectPlannerText(toggle, dark);
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(0);
+}
+
+test("planner weather and intent contrast: explicit dark, out-of-range forecast and collapsed mobile bar", async ({ page }) => {
+  const fixture = await plannerReadabilityFixture(page, "dark", "out-of-range");
+  const weather = page.getByRole("region", { name: "旅程天氣" });
+  await expect(weather.getByText(/尚未進入 10 日預報範圍/)).toBeVisible();
+  await expect(weather.getByLabel("10 日天氣預報")).toHaveCount(0);
+  await expect(weather.getByText("21°C", { exact: true })).toHaveCount(0);
+  for (const target of await weather.locator("h2, p").all()) await expectPlannerText(target, true);
+  await expectIntentReadable(page, true);
+  fixture.assertReadOnly();
+});
+
+test("planner weather and intent contrast: system dark, available MET forecast and expanded controls", async ({ page }) => {
+  const fixture = await plannerReadabilityFixture(page, "system", "available");
+  await expectForecastReadable(page, true);
+  await expectIntentReadable(page, true);
+  fixture.assertReadOnly();
+});
+
+test("planner weather and intent contrast: explicit light overrides dark OS without reducing readability", async ({ page }) => {
+  const fixture = await plannerReadabilityFixture(page, "light", "available");
+  await expectForecastReadable(page, false);
+  await expectIntentReadable(page, false);
+  fixture.assertReadOnly();
+});
+
+test("planner weather and intent contrast: dark loading and retry surfaces stay dark through recovery", async ({ page }) => {
+  const fixture = await plannerReadabilityFixture(page, "dark", "retry");
+  const weather = page.getByRole("region", { name: "旅程天氣" });
+  await expect(weather).toBeVisible();
+  await expect.poll(async () => (await plannerPaint(weather)).backgroundLuminance).toBeLessThan(0.25);
+  expect((await plannerPaint(weather)).unmeasuredImages).toEqual([]);
+  fixture.finishLoading();
+  await expect(weather.getByText("暫時無法取得旅程天氣")).toBeVisible();
+  await expectPlannerText(weather.getByText("測試天氣暫時無法取得"), true);
+  const retry = weather.getByRole("button", { name: "重試", exact: true });
+  await expectPlannerText(retry, true);
+  await retry.focus();
+  await expect(retry).toBeFocused();
+  fixture.makeAvailable();
+  await retry.click();
+  await expectForecastReadable(page, true);
+  fixture.assertReadOnly();
 });

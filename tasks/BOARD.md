@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 0 in progress · 2 blocked · 2 in review · 158 done**
+**16 open · 0 in progress · 2 blocked · 3 in review · 159 done**
 
 ## Ready to claim
 
@@ -33,7 +33,8 @@ _Nothing here._
 | Task | Owner | Branch |
 | --- | --- | --- |
 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
-| [Intuitive itinerary ordering and contextual place picker](open/2026-09-08-intuitive-itinerary-editor.md) | codex | `codex/intuitive-itinerary-editor` |
+| [Fix nearby itinerary discovery across cities and reset insertion pagination](open/2026-09-08-planner-nearby-followup.md) | codex | `codex/planner-nearby-followup` |
+| [Fix weather and itinerary intent panel contrast in dark mode](open/2026-09-08-planner-weather-dark-contrast.md) | codex | `codex/planner-nearby-followup` |
 
 ## Waiting
 
@@ -50,6 +51,7 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-08 [Intuitive itinerary ordering and contextual place picker](done/2026-09-08-intuitive-itinerary-editor.md)
 - 2026-09-08 [Travelpayouts full partner links for production verification](done/2026-09-08-travelpayouts-full-partner-links.md)
 - 2026-09-08 [七國美食卡精準導航與訂位平台](done/2026-09-08-food-platform-links.md)
 - 2026-09-07 [登入頁沒有忘記密碼，後端也沒有任何寄信管道](done/2026-09-07-forgot-password-no-mail-channel.md)
@@ -59,4 +61,3 @@ _Nothing here._
 - 2026-09-07 [觀測：漏斗看得見——事件名脫離 DB CHECK，關鍵動作由伺服器送](done/2026-09-07-observe-the-funnel.md)
 - 2026-09-07 [出發前閉環：提醒連得回旅程、錨點能追價、航班動態寫得回去](done/2026-09-07-pre-departure-loop.md)
 - 2026-09-07 [從旅程出發查機票：條件由旅程推導，報價帶回錨點](done/2026-09-06-search-from-a-saved-trip.md)
-- 2026-09-07 [The whole applied-filter chip is a delete button](done/2026-09-07-applied-filter-chip-is-all-delete.md)

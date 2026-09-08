@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-intuitive-itinerary-editor
 title: Intuitive itinerary ordering and contextual place picker
-status: review
+status: done
 priority: P1
 area: web
 owner: codex
 claimed_at: 2026-09-08T06:34:04Z
 created_at: 2026-09-08T05:27:53Z
-completed_at:
+completed_at: 2026-09-08T07:19:37Z
 branch: codex/intuitive-itinerary-editor
 depends_on: []
 scope:
