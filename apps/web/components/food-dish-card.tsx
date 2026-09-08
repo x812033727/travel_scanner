@@ -33,7 +33,9 @@ export function FoodDishCard({ food }: { food: FoodItem }) {
         <div className="mt-2 grid gap-2">
           {food.recommended_merchants.slice(0, 3).map((merchant) => {
             const map = primaryMapLink(merchant.map_links);
-            const reservation = merchant.reservation_links[0];
+            // Reservation links are additive. An older cached response should
+            // hide this action, not take down the whole food catalogue.
+            const reservation = merchant.reservation_links?.[0];
             const mapHref = map ? safeExternalHref(map.url) : undefined;
             const reservationHref = reservation ? safeExternalHref(reservation.url) : undefined;
             return (

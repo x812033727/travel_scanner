@@ -73,7 +73,7 @@ export type FoodMerchant = {
   coordinate_source: { type: string | null; url: string | null; verified_at: string | null };
   official_website_url: string | null;
   map_links: MapLink[];
-  reservation_links: ReservationLink[];
+  reservation_links?: ReservationLink[];
   verified_at: string | null;
   sources: MerchantSource[];
 };
@@ -123,7 +123,7 @@ export type RecommendedMerchant = {
   latitude: number | null;
   longitude: number | null;
   map_links: MapLink[];
-  reservation_links: ReservationLink[];
+  reservation_links?: ReservationLink[];
   verified_at: string | null;
   area?: FoodAreaRef | null;
   categories?: FoodCategoryRef[];

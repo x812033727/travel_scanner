@@ -31,7 +31,9 @@ export function FoodMerchantCard({
   const locale = useLocale();
   const map = primaryMapLink(merchant.map_links);
   const mapHref = map ? safeExternalHref(map.url) : undefined;
-  const reservation = merchant.reservation_links[0];
+  // Keep cards usable while an older cached/BFF response without the additive
+  // field is still in flight during a rolling deployment.
+  const reservation = merchant.reservation_links?.[0];
   const reservationHref = reservation ? safeExternalHref(reservation.url) : undefined;
   const websiteHref = safeExternalHref(merchant.official_website_url);
   const primaryCategory = merchant.categories.find((item) => item.is_primary) ?? merchant.categories[0];
