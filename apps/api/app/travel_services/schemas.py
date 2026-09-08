@@ -435,6 +435,20 @@ class ConfigInput(CatalogConfig):
     version: int = Field(ge=0)
 
 
+class HotelConfigPatch(StrictModel):
+    version: int = Field(ge=0)
+    hotel_enabled: bool | None = None
+    direct_hotel_links_enabled: bool | None = None
+    hotel_quote_policies: dict[HotelProvider, HotelQuotePolicy] | None = None
+
+    @model_validator(mode="after")
+    def nonempty(self) -> Self:
+        fields = self.model_fields_set - {"version"}
+        if not fields or any(getattr(self, field) is None for field in fields):
+            raise ValueError("At least one non-null hotel setting is required")
+        return self
+
+
 class SelectInput(StrictModel):
     product_id: UUID
     version: int = Field(ge=1)

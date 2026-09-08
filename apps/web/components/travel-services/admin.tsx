@@ -1,9 +1,13 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { useCallback, useEffect, useState } from "react";
-import { Link } from "@/i18n/navigation";
-import { api } from "@/lib/api";
+import { useLocale, useTranslations } from "next-intl";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Link, useRouter } from "@/i18n/navigation";
+import { AdminSettingsPanel } from "@/components/admin-settings-panel";
+import { useHeaderSession } from "@/components/header-session";
+import { adminHotelsCopy } from "@/lib/admin-hotels-copy";
+import { useAdminWorkspaceNavigation } from "@/lib/admin-workspace-navigation";
+import { ApiError, api } from "@/lib/api";
 import { CITIES, KINDS, type Kind } from "./catalog";
 import { HotelOptionsAdmin, type HotelOptionRow } from "./hotel-options-admin";
 import { QuotePolicies, type QuotePolicy } from "./quote-policies";
@@ -72,6 +76,7 @@ type Config = {
   airalo_feed_enabled: boolean;
 };
 type Overview = {
+  summary?: { total: number; pending: number; approved: number; disabled: number };
   quote_providers?: Record<string, { adapter_available: boolean }>;
   config: Config;
   version: number;
@@ -133,15 +138,90 @@ const field =
 const button =
   "min-h-11 rounded-xl border border-[var(--line)] px-4 py-2 text-sm font-semibold disabled:opacity-50";
 
-export function TravelServicesAdmin() {
+const hotelTabs = {
+  catalog: ["catalog"], review: ["products", "platforms"],
+  affiliates: ["products", "destinations"], imports: ["import", "coverage"],
+  settings: ["catalog", "providers"],
+};
+const serviceTabs = {
+  catalog: [], destinationOffers: [], importCsv: [], coverage: [], config: [],
+};
+const partnerTabs = { brands: [] };
+const legacyServiceLinks = {
+  hotel: { pathname: "/admin/hotels", tab: "catalog", section: "catalog" },
+  hotels: { pathname: "/admin/hotels", tab: "catalog", section: "catalog" },
+  brands: { pathname: "/admin/partners", tab: "brands" },
+};
+const hotelDraftKey = "mokaair:admin:hotel-config-draft:v1";
+type HotelDraft = {
+  version: number; hotel_enabled: boolean; direct_hotel_links_enabled: boolean;
+  hotel_quote_policies: Record<string, QuotePolicy>;
+};
+function readHotelDraft(storageKey: string): HotelDraft | undefined {
+  try {
+    const draft = JSON.parse(sessionStorage.getItem(storageKey) || "null") as HotelDraft | null;
+    if (!draft || !Number.isInteger(draft.version) || draft.version < 0 ||
+      typeof draft.hotel_enabled !== "boolean" || typeof draft.direct_hotel_links_enabled !== "boolean" ||
+      !draft.hotel_quote_policies || typeof draft.hotel_quote_policies !== "object" || Array.isArray(draft.hotel_quote_policies)) return;
+    for (const [provider, policy] of Object.entries(draft.hotel_quote_policies)) {
+      if (!["official", "booking", "trip_com", "agoda", "expedia", "rakuten", "klook", "kkday"].includes(provider) ||
+        !policy || typeof policy.enabled !== "boolean" || typeof policy.comparison_allowed !== "boolean" ||
+        !(policy.terms_url === null || typeof policy.terms_url === "string") ||
+        ![policy.daily_limit, policy.per_minute_limit, policy.timeout_seconds, policy.cache_seconds].every(Number.isFinite)) return;
+    }
+    return draft;
+  } catch { return; }
+}
+
+export function TravelServicesAdmin({ workspace = "services" }: {
+  workspace?: "hotels" | "partners" | "services";
+}) {
+  const { user, status } = useHeaderSession();
+  return <TravelServicesWorkspace key={user?.id ?? "anonymous"} workspace={workspace}
+    storageUserId={status === "authenticated" ? user?.id : undefined} />;
+}
+
+function TravelServicesWorkspace({ workspace, storageUserId }: {
+  workspace: "hotels" | "partners" | "services"; storageUserId?: string;
+}) {
   const t = useTranslations("travelServices");
+  const copy = adminHotelsCopy(useLocale());
+  const router = useRouter();
+  const isHotel = workspace === "hotels";
+  const storageKey = storageUserId ? `${hotelDraftKey}:${storageUserId}` : undefined;
+  const navigation = useAdminWorkspaceNavigation({
+    tabs: isHotel ? hotelTabs : workspace === "partners" ? partnerTabs : serviceTabs,
+    defaultTab: workspace === "partners" ? "brands" : "catalog",
+    legacy: workspace === "services" ? legacyServiceLinks : undefined,
+  });
+  const { tab: workspaceTab, section, ready } = navigation;
+  const tab = !isHotel ? workspaceTab : workspaceTab === "review" ? "catalog"
+    : workspaceTab === "affiliates" ? section === "products" ? "catalog" : "destinationOffers"
+    : workspaceTab === "imports" ? section === "coverage" ? "coverage" : "importCsv"
+    : workspaceTab === "settings" ? section === "providers" ? "providers" : "config" : "catalog";
+  const endpoint = isHotel ? "/admin/hotels" : "/admin/travel-services";
+  const visibleKinds = isHotel ? ["hotel"] as const : KINDS.filter((value) => value !== "hotel");
+  const visibleModules = isHotel ? ["hotel"] : ["flight", "activities", "transport", "connectivity"];
   const [data, setData] = useState<Overview>();
   const [config, setConfig] = useState<Config>();
+  const [configVersion, setConfigVersion] = useState(0);
+  const [hasConfigDraft, setHasConfigDraft] = useState(false);
+  const [configConflict, setConfigConflict] = useState(false);
+  const configDirty = useRef(false);
+  const draftHydrated = useRef(false);
+  const activeRequest = useRef<AbortController | null>(null);
   const [destination, setDestination] = useState("");
   const [kind, setKind] = useState("");
   const [status, setStatus] = useState("");
-  const [offset, setOffset] = useState(0);
-  const [tab, setTab] = useState("catalog");
+  const reviewProducts = isHotel && workspaceTab === "review" && section === "products";
+  const effectiveStatus = reviewProducts ? "pending" : status;
+  const missingOptions = isHotel && navigation.query.get("missing_options") === "true";
+  const pageKey = `${workspaceTab}:${section}:${destination}:${kind}:${effectiveStatus}:${missingOptions}`;
+  const [pagination, setPagination] = useState({ key: "", offset: 0 });
+  const offset = pagination.key === pageKey ? pagination.offset : 0;
+  function setOffset(value: number | ((previous: number) => number)) {
+    setPagination({ key: pageKey, offset: typeof value === "function" ? value(offset) : value });
+  }
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [busy, setBusy] = useState(false);
@@ -161,7 +241,7 @@ export function TravelServicesAdmin() {
   const [destinationOfferDestination, setDestinationOfferDestination] =
     useState("");
   const [destinationOfferModule, setDestinationOfferModule] =
-    useState<AffiliateModule>("activities");
+    useState<AffiliateModule>(isHotel ? "hotel" : "activities");
   const [destinationOfferTarget, setDestinationOfferTarget] = useState("");
   const [destinationOfferStatic, setDestinationOfferStatic] = useState("");
   const [offerFilterModule, setOfferFilterModule] = useState("");
@@ -177,32 +257,99 @@ export function TravelServicesAdmin() {
     staticUrl: string;
   }>();
   const load = useCallback(async () => {
+    activeRequest.current?.abort();
+    const controller = new AbortController();
+    activeRequest.current = controller;
     const query = new URLSearchParams({ offset: String(offset) });
     if (destination) query.set("destination_id", destination);
-    if (kind) query.set("type", kind);
-    if (status) query.set("status", status);
-    if (offerFilterModule) query.set("affiliate_module", offerFilterModule);
+    if (!isHotel && kind) query.set("type", kind);
+    if (workspace === "services") query.set("exclude_hotels", "true");
+    if (effectiveStatus) query.set("status", effectiveStatus);
+    if (missingOptions) query.set("missing_options", "true");
+    if (!isHotel && offerFilterModule) query.set("affiliate_module", offerFilterModule);
     if (offerFilterStatus) query.set("offer_status", offerFilterStatus);
     if (offerFilterBrand) query.set("offer_brand_id", offerFilterBrand);
     if (offerReviewDue) query.set("offer_review_due", "true");
-    const result = await api<Overview>(`/admin/travel-services?${query}`);
+    const result = await api<Overview>(`${endpoint}?${query}`, { signal: controller.signal });
+    if (controller.signal.aborted) return;
     setData(result);
-    setConfig(result.config);
+    if (!configDirty.current) {
+      const draft = isHotel && storageKey && !draftHydrated.current ? readHotelDraft(storageKey) : undefined;
+      draftHydrated.current = true;
+      if (draft) {
+        configDirty.current = true;
+        setHasConfigDraft(true);
+        setConfig({ ...result.config, enabled_kinds: draft.hotel_enabled ? ["hotel"] : [],
+          direct_hotel_links_enabled: draft.direct_hotel_links_enabled,
+          hotel_quote_policies: draft.hotel_quote_policies });
+        setConfigVersion(draft.version);
+      } else {
+        setConfig(result.config);
+        setConfigVersion(result.version);
+      }
+    }
   }, [
+    endpoint, isHotel, workspace, storageKey,
     destination,
     kind,
-    status,
+    effectiveStatus, missingOptions,
     offset,
     offerFilterModule,
     offerFilterStatus,
     offerFilterBrand,
     offerReviewDue,
   ]);
+  const legacyHotel = workspace === "services" && navigation.query.get("type") === "hotel";
   useEffect(() => {
+    if (legacyHotel) router.replace("/admin/hotels?tab=catalog&section=catalog");
+  }, [legacyHotel, router]);
+  useEffect(() => {
+    if (!ready || legacyHotel) return;
     void Promise.resolve()
       .then(load)
-      .catch((e: Error) => setError(e.message));
-  }, [load]);
+      .catch((e: Error) => { if (e.name !== "AbortError") setError(e.message); });
+    return () => activeRequest.current?.abort();
+  }, [load, ready, legacyHotel]);
+  useEffect(() => {
+    if (!isHotel || !storageKey || !draftHydrated.current) return;
+    try {
+      if (hasConfigDraft && config) {
+        // Only the non-secret hotel-owned fields are persisted, never provider credentials.
+        sessionStorage.setItem(storageKey, JSON.stringify({ version: configVersion,
+          hotel_enabled: config.enabled_kinds.includes("hotel"),
+          direct_hotel_links_enabled: config.direct_hotel_links_enabled ?? false,
+          hotel_quote_policies: config.hotel_quote_policies || {} }));
+      } else sessionStorage.removeItem(storageKey);
+    } catch { /* Storage can be disabled; the leave guard still protects the in-memory draft. */ }
+  }, [isHotel, storageKey, hasConfigDraft, config, configVersion]);
+  useEffect(() => {
+    if (!isHotel || !hasConfigDraft) return;
+    const leavesPage = (url: string) => new URL(url, window.location.href).pathname !== window.location.pathname;
+    const beforeUnload = (event: BeforeUnloadEvent) => { event.preventDefault(); event.returnValue = ""; };
+    const beforeNavigate = (event: Event) => {
+      const target = (event as CustomEvent<{ url?: string }>).detail?.url;
+      if (!event.defaultPrevented && target && leavesPage(target) && !window.confirm(copy.leave)) event.preventDefault();
+    };
+    const click = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const anchor = event.target instanceof Element ? event.target.closest("a[href]") : null;
+      if (!(anchor instanceof HTMLAnchorElement) || anchor.target === "_blank" || anchor.hasAttribute("download")) return;
+      if (leavesPage(anchor.href) && !window.confirm(copy.leave)) { event.preventDefault(); event.stopPropagation(); }
+    };
+    window.addEventListener("beforeunload", beforeUnload);
+    window.addEventListener("admin:before-navigate", beforeNavigate);
+    document.addEventListener("click", click, true);
+    return () => {
+      window.removeEventListener("beforeunload", beforeUnload);
+      window.removeEventListener("admin:before-navigate", beforeNavigate);
+      document.removeEventListener("click", click, true);
+    };
+  }, [isHotel, hasConfigDraft, copy.leave]);
+  function changeConfig(next: Config) {
+    configDirty.current = true;
+    setHasConfigDraft(true);
+    setConfig(next);
+  }
   async function run(work: () => Promise<unknown>, reload = true) {
     setBusy(true);
     setError("");
@@ -212,7 +359,7 @@ export function TravelServicesAdmin() {
       if (reload) await load();
       setNotice(t("updated"));
     } catch (e) {
-      setError((e as Error).message);
+      if ((e as Error).name !== "AbortError") setError((e as Error).message);
     } finally {
       setBusy(false);
     }
@@ -223,7 +370,7 @@ export function TravelServicesAdmin() {
   ) {
     if (!config) return;
     const values = config[key] as string[];
-    setConfig({
+    changeConfig({
       ...config,
       [key]: values.includes(value)
         ? values.filter((v) => v !== value)
@@ -236,7 +383,7 @@ export function TravelServicesAdmin() {
     const remove = linked.every((item) =>
       config.enabled_destinations.includes(item),
     );
-    setConfig({
+    changeConfig({
       ...config,
       enabled_destinations: remove
         ? config.enabled_destinations.filter((item) => !linked.includes(item))
@@ -274,30 +421,56 @@ export function TravelServicesAdmin() {
     <div className="mt-7 min-w-0 space-y-5">
       <div
         role="tablist"
-        aria-label={t("adminTitle")}
+        aria-label={isHotel ? copy.title : workspace === "partners" ? copy.partnersTitle : t("adminTitle")}
         className="flex flex-wrap gap-2"
       >
-        {[
-          "catalog",
-          "destinationOffers",
-          "brands",
-          "importCsv",
-          "coverage",
-          "config",
-        ].map(
+        {Object.keys(isHotel ? hotelTabs : workspace === "partners" ? partnerTabs : serviceTabs).map(
           (name) => (
             <button
               role="tab"
-              aria-selected={tab === name}
+              id={`${workspace}-tab-${name}`}
+              aria-controls={`${workspace}-workspace-panel`}
+              aria-selected={workspaceTab === name}
+              tabIndex={workspaceTab === name ? 0 : -1}
               key={name}
-              className={`${button} ${tab === name ? "bg-[var(--teal-soft)] text-[var(--teal-dark)]" : ""}`}
-              onClick={() => setTab(name)}
+              className={`${button} ${workspaceTab === name ? "bg-[var(--teal-soft)] text-[var(--teal-dark)]" : ""}`}
+              onClick={() => navigation.selectTab(name)}
+              onKeyDown={(event) => {
+                const names = Object.keys(isHotel ? hotelTabs : workspace === "partners" ? partnerTabs : serviceTabs);
+                const index = names.indexOf(name);
+                const next = event.key === "Home" ? names[0] : event.key === "End" ? names[names.length - 1]
+                  : event.key === "ArrowRight" ? names[(index + 1) % names.length]
+                  : event.key === "ArrowLeft" ? names[(index - 1 + names.length) % names.length] : undefined;
+                if (!next) return;
+                event.preventDefault();
+                navigation.selectTab(next);
+                document.getElementById(`${workspace}-tab-${next}`)?.focus();
+              }}
             >
-              {t(name)}
+              {isHotel ? copy[name as keyof typeof copy] : t(name)}
             </button>
           ),
         )}
       </div>
+      {isHotel && hotelTabs[workspaceTab as keyof typeof hotelTabs]?.length > 1 && (
+        <nav aria-label={copy[workspaceTab as keyof typeof copy]} className="flex flex-wrap gap-2">
+          {hotelTabs[workspaceTab as keyof typeof hotelTabs].map((name) => <button
+            key={name} className={button} aria-current={section === name ? "page" : undefined}
+            onClick={() => navigation.selectSection(name)}
+          >{copy[name as keyof typeof copy]}</button>)}
+        </nav>
+      )}
+      <div className="flex flex-wrap gap-3 text-sm">
+        {!isHotel && <Link className={`${button} inline-flex items-center`} href="/admin/hotels">{copy.title}</Link>}
+        {workspace !== "partners" && <Link className={`${button} inline-flex items-center`} href="/admin/partners">{copy.partners}</Link>}
+        {isHotel && <Link className={`${button} inline-flex items-center`} href="/admin/travel-services">{copy.other}</Link>}
+      </div>
+      {isHotel && data?.summary && <dl className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        {(["total", "pending", "approved", "disabled"] as const).map((key) => <div key={key} className="rounded-2xl border border-[var(--line)] p-4">
+          <dt className="text-sm text-[var(--muted)]">{copy[key === "disabled" ? "unavailable" : key]}</dt>
+          <dd className="mt-1 text-2xl font-semibold">{data.summary![key]}</dd>
+        </div>)}
+      </dl>}
       {error && (
         <p role="alert" className="rounded-xl bg-[var(--coral-soft)] p-4">
           {error}
@@ -315,6 +488,7 @@ export function TravelServicesAdmin() {
         </p>
       )}
       {!data && !error && <p role="status">{t("loading")}</p>}
+      <div role="tabpanel" id={`${workspace}-workspace-panel`} aria-labelledby={`${workspace}-tab-${workspaceTab}`}>
       {data && (
         <>
           {!data.network_configured && (
@@ -325,8 +499,12 @@ export function TravelServicesAdmin() {
               </Link>
             </p>
           )}
-          {tab === "catalog" && (
-            <section className="space-y-4">
+          {(tab === "catalog" || isHotel) && (
+            <section className="space-y-4" hidden={tab !== "catalog"}>
+              {missingOptions && <p className="flex flex-wrap items-center gap-3 rounded-xl bg-[var(--teal-soft)] p-3 text-sm">
+                {copy.missingOptions}
+                <Link href="/admin/hotels?tab=review&section=platforms" className={`${button} inline-flex items-center`}>{copy.showAllHotels}</Link>
+              </p>}
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 <label>
                   {t("destinationLink")}
@@ -346,7 +524,7 @@ export function TravelServicesAdmin() {
                     ))}
                   </select>
                 </label>
-                <label>
+                {!isHotel && <label>
                   {t("catalog")}
                   <select
                     value={kind}
@@ -357,17 +535,18 @@ export function TravelServicesAdmin() {
                     }}
                   >
                     <option value="">{t("all")}</option>
-                    {KINDS.map((k) => (
+                    {visibleKinds.map((k) => (
                       <option key={k} value={k}>
                         {t(k)}
                       </option>
                     ))}
                   </select>
-                </label>
+                </label>}
                 <label>
                   {t("pending")}
                   <select
-                    value={status}
+                    value={effectiveStatus}
+                    disabled={reviewProducts}
                     className={field}
                     onChange={(e) => {
                       setStatus(e.target.value);
@@ -406,6 +585,7 @@ export function TravelServicesAdmin() {
                     {t("source")}
                   </a>
                   <div className="flex flex-wrap gap-2">
+                    {(!isHotel || workspaceTab === "review" && section === "products") && <>
                     <button
                       disabled={busy}
                       className={button}
@@ -446,11 +626,14 @@ export function TravelServicesAdmin() {
                     >
                       {t("disable")}
                     </button>
+                    </>}
+                    {(!isHotel || workspaceTab === "catalog") &&
                     <button className={button} onClick={() => edit(p)}>
                       {t("edit")}
                     </button>
+                    }
                   </div>
-                  {p.kind === "hotel" && (
+                  {p.kind === "hotel" && (<div hidden={isHotel && !(workspaceTab === "review" && section === "platforms")}>
                     <HotelOptionsAdmin
                       key={`${p.id}:${(p.booking_options || []).map((o) => o.version).join(",")}`}
                       productId={p.id}
@@ -459,9 +642,10 @@ export function TravelServicesAdmin() {
                       busy={busy}
                       run={run}
                     />
+                    </div>
                   )}
                   {data.offers
-                    .filter((o) => o.product_id === p.id)
+                    .filter((o) => o.product_id === p.id && (!isHotel || workspaceTab === "affiliates"))
                     .map((o) => (
                       <div
                         key={o.id}
@@ -569,7 +753,7 @@ export function TravelServicesAdmin() {
                   </button>
                 </section>
               )}
-              <details className="rounded-xl border border-[var(--line)] p-4">
+              {(!isHotel || workspaceTab === "affiliates") && <details className="rounded-xl border border-[var(--line)] p-4">
                 <summary className="min-h-11 cursor-pointer">
                   {t("addOffer")}
                 </summary>
@@ -656,7 +840,7 @@ export function TravelServicesAdmin() {
                 >
                   {t("addOffer")}
                 </button>
-              </details>
+              </details>}
             </section>
           )}
           {tab === "destinationOffers" && (
@@ -719,13 +903,7 @@ export function TravelServicesAdmin() {
                         setDestinationOfferBrand("");
                       }}
                     >
-                      {[
-                        "flight",
-                        "hotel",
-                        "activities",
-                        "transport",
-                        "connectivity",
-                      ].map((module) => (
+                      {visibleModules.map((module) => (
                         <option key={module} value={module}>
                           {t(`affiliate${module[0].toUpperCase()}${module.slice(1)}`)}
                         </option>
@@ -808,13 +986,7 @@ export function TravelServicesAdmin() {
                     onChange={(event) => setOfferFilterModule(event.target.value)}
                   >
                     <option value="">{t("all")}</option>
-                    {[
-                      "flight",
-                      "hotel",
-                      "activities",
-                      "transport",
-                      "connectivity",
-                    ].map((module) => (
+                    {visibleModules.map((module) => (
                       <option key={module} value={module}>
                         {t(`affiliate${module[0].toUpperCase()}${module.slice(1)}`)}
                       </option>
@@ -1176,6 +1348,7 @@ export function TravelServicesAdmin() {
           )}
           {tab === "importCsv" && (
             <section className="space-y-4">
+              {isHotel && <p className="rounded-xl bg-[var(--teal-soft)] p-4 text-sm">{copy.hotelOnly}</p>}
               <p className="break-words text-sm leading-6">{t("csvHint")}</p>
               <label className="block">
                 {t("importCsv")}
@@ -1185,6 +1358,7 @@ export function TravelServicesAdmin() {
                   className={field}
                   onChange={(e) => {
                     const file = e.target.files?.[0];
+                    setPreview(undefined);
                     if (file && file.size <= 500000)
                       void file.text().then(setCsv);
                   }}
@@ -1205,7 +1379,7 @@ export function TravelServicesAdmin() {
                   void run(async () => {
                     setPreview(
                       await api<Preview>(
-                        "/admin/travel-services/imports/preview",
+                        `${endpoint}/imports/preview`,
                         { method: "POST", body: JSON.stringify({ csv }) },
                       ),
                     );
@@ -1248,7 +1422,7 @@ export function TravelServicesAdmin() {
                     onClick={() =>
                       void run(async () => {
                         await api(
-                          `/admin/travel-services/imports/${preview.id}/commit`,
+                          `${endpoint}/imports/${preview.id}/commit`,
                           { method: "POST" },
                         );
                         setPreview(undefined);
@@ -1275,8 +1449,7 @@ export function TravelServicesAdmin() {
           )}
           {tab === "coverage" && (
             <section className="space-y-4">
-              <p className="text-sm">{t("targets")}</p>
-              <p className="text-sm">{t("hotelTargets")}</p>
+              <p className="text-sm">{t(isHotel ? "hotelTargets" : "targets")}</p>
               <div className="grid gap-3 sm:grid-cols-2">
                 {data.coverage.map((c) => (
                   <article
@@ -1285,17 +1458,17 @@ export function TravelServicesAdmin() {
                   >
                     <h3 className="font-bold">{t(c.destination_id)}</h3>
                     <dl className="my-3 grid grid-cols-2 gap-2 text-sm">
-                      {KINDS.map((k) => (
+                      {visibleKinds.map((k) => (
                         <div key={k}>
                           <dt className="text-[var(--muted)]">{t(k)}</dt>
                           <dd className="font-semibold">{c.counts[k]}</dd>
                         </div>
                       ))}
                     </dl>
-                    <p className="text-xs text-[var(--teal)]">
+                    {isHotel && <p className="text-xs text-[var(--teal)]">
                       {t("hotelReady", { count: c.hotel_ready || 0 })} ·{" "}
                       {t(c.hotel_complete ? "complete" : "incomplete")}
-                    </p>
+                    </p>}
                     <p className="text-xs text-[var(--teal)]">
                       {t(c.complete ? "complete" : "incomplete")}
                     </p>
@@ -1336,12 +1509,14 @@ export function TravelServicesAdmin() {
           )}
           {tab === "config" && config && (
             <section className="space-y-5 rounded-2xl border border-[var(--line)] p-5">
+              {isHotel && <>
+              <p className="text-sm text-[var(--muted)]">{copy.shared}</p>
               <QuotePolicies
                 policies={config.hotel_quote_policies || {}}
                 providers={data.quote_providers || {}}
                 brands={data.brand_definitions}
                 onChange={(policies) =>
-                  setConfig({ ...config, hotel_quote_policies: policies })
+                  changeConfig({ ...config, hotel_quote_policies: policies })
                 }
               />
               <label className="flex min-h-11 items-center gap-3">
@@ -1349,7 +1524,7 @@ export function TravelServicesAdmin() {
                   type="checkbox"
                   checked={config.direct_hotel_links_enabled ?? false}
                   onChange={(e) =>
-                    setConfig({
+                    changeConfig({
                       ...config,
                       direct_hotel_links_enabled: e.target.checked,
                     })
@@ -1360,12 +1535,14 @@ export function TravelServicesAdmin() {
               <p className="text-sm text-[var(--muted)]">
                 {t("directIndependent")}
               </p>
+              </>}
               <label className="flex min-h-11 items-center gap-3">
                 <input
                   type="checkbox"
                   checked={config.public_enabled}
+                  disabled={isHotel}
                   onChange={(e) =>
-                    setConfig({ ...config, public_enabled: e.target.checked })
+                    changeConfig({ ...config, public_enabled: e.target.checked })
                   }
                 />
                 {t("publicEnabled")}
@@ -1373,7 +1550,7 @@ export function TravelServicesAdmin() {
               <fieldset>
                 <legend className="font-semibold">{t("catalog")}</legend>
                 <div className="mt-2 grid grid-cols-2 gap-2">
-                  {KINDS.map((k) => (
+                  {visibleKinds.map((k) => (
                     <label className="flex min-h-11 items-center gap-2" key={k}>
                       <input
                         type="checkbox"
@@ -1397,6 +1574,7 @@ export function TravelServicesAdmin() {
                     >
                       <input
                         type="checkbox"
+                        disabled={isHotel}
                         checked={config.enabled_destinations.includes(
                           destinationItem.id,
                         )}
@@ -1407,32 +1585,53 @@ export function TravelServicesAdmin() {
                   ))}
                 </div>
               </fieldset>
-              <label className="flex min-h-11 items-center gap-3">
+              {!isHotel && <label className="flex min-h-11 items-center gap-3">
                 <input
                   type="checkbox"
                   checked={config.airalo_feed_enabled}
                   onChange={(e) =>
-                    setConfig({
+                    changeConfig({
                       ...config,
                       airalo_feed_enabled: e.target.checked,
                     })
                   }
                 />
                 {t("feedEnabled")}
-              </label>
+              </label>}
+              {isHotel && hasConfigDraft && <p role="status" className="text-sm text-[var(--muted)]">{copy.draft}</p>}
+              {configConflict && <div role="alert" className="rounded-xl bg-[var(--coral-soft)] p-4 text-sm">
+                <p>{copy.conflict}</p>
+                <button type="button" className={`${button} mt-3`} disabled={busy} onClick={() => {
+                  if (!window.confirm(copy.discard)) return;
+                  configDirty.current = false;
+                  setHasConfigDraft(false);
+                  void run(async () => { await load(); setConfigConflict(false); }, false);
+                }}>{copy.reload}</button>
+              </div>}
               <button
                 className={button}
                 disabled={busy}
                 onClick={() =>
-                  void run(() =>
-                    api("/admin/travel-services/config", {
-                      method: "PUT",
-                      body: JSON.stringify({
+                  void run(async () => {
+                    try { await api(`${endpoint}/config`, {
+                      method: isHotel ? "PATCH" : "PUT",
+                      body: JSON.stringify(isHotel ? {
+                        version: configVersion,
+                        hotel_enabled: config.enabled_kinds.includes("hotel"),
+                        direct_hotel_links_enabled: config.direct_hotel_links_enabled ?? false,
+                        hotel_quote_policies: config.hotel_quote_policies || {},
+                      } : {
                         ...config,
-                        version: data.version,
+                        version: configVersion,
                       }),
-                    }),
-                  )
+                    }); } catch (reason) {
+                      if (isHotel && reason instanceof ApiError && reason.code === "service_version_conflict") setConfigConflict(true);
+                      throw reason;
+                    }
+                    configDirty.current = false;
+                    setHasConfigDraft(false);
+                    setConfigConflict(false);
+                  })
                 }
               >
                 {t("apply")}
@@ -1441,6 +1640,8 @@ export function TravelServicesAdmin() {
           )}
         </>
       )}
+      {isHotel && ready && <div hidden={tab !== "providers"}><AdminSettingsPanel scope="hotels" provider={navigation.query.get("provider") ?? undefined} field={navigation.query.get("field") ?? undefined} /></div>}
+      </div>
     </div>
   );
 }

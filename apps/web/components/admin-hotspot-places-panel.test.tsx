@@ -50,6 +50,43 @@ const profiles = {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("AdminHotspotPlacesPanel", () => {
+  it("keeps Place ID read-only and saves only official website fields", async () => {
+    const fetchMock = vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) =>
+      new Response(JSON.stringify(init?.method === "PATCH" ? { run: null } : profiles)),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminHotspotPlacesPanel />);
+    await screen.findByText("原子彈爆炸圓頂屋");
+    fireEvent.click(screen.getByRole("button", { name: /編輯.*原子彈/ }));
+    expect(screen.queryByRole("textbox", { name: "Google Place ID" })).toBeNull();
+    expect(screen.getByRole("link", { name: "管理精準地點" }).getAttribute("href")).toBe(
+      `/admin/hotspots?tab=places&section=identity&hotspot_id=${profiles.items[0].hotspot_id}`,
+    );
+    fireEvent.change(screen.getByRole("textbox", { name: "官方網站" }), { target: { value: "https://www.city.hiroshima.lg.jp/atomicbomb-peace/" } });
+    fireEvent.change(screen.getByRole("textbox", { name: "官方來源" }), { target: { value: "https://www.city.hiroshima.lg.jp/" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存並更新" }));
+    await waitFor(() => expect(fetchMock.mock.calls.some(([, init]) => init?.method === "PATCH")).toBe(true));
+    const request = fetchMock.mock.calls.find(([, init]) => init?.method === "PATCH")![1]!;
+    expect(JSON.parse(String(request.body))).toEqual({
+      action: "save", official_website_url: "https://www.city.hiroshima.lg.jp/atomicbomb-peace/", official_website_source_url: "https://www.city.hiroshima.lg.jp/",
+    });
+  });
+
+  it("preserves candidate approval independently of the read-only identity field", async () => {
+    const fetchMock = vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) => new Response(JSON.stringify(
+      init?.method === "POST" ? { run: null } : { ...profiles, items: [{ ...profiles.items[0], match_status: "pending", candidate: { place_id: "candidate-id", name: "候選地點", address: "Hiroshima" } }] },
+    )));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminHotspotPlacesPanel />);
+    await screen.findByText("原子彈爆炸圓頂屋");
+    fireEvent.click(screen.getByRole("checkbox", { name: /選取.*原子彈/ }));
+    fireEvent.click(screen.getByRole("button", { name: "核准配對" }));
+    await waitFor(() => expect(fetchMock.mock.calls.some(([, init]) => init?.method === "POST")).toBe(true));
+    const [url, request] = fetchMock.mock.calls.find(([, init]) => init?.method === "POST")!;
+    expect(String(url)).toContain("/place-profiles/review");
+    expect(JSON.parse(String(request?.body))).toEqual({ ids: [profiles.items[0].hotspot_id], action: "approve" });
+  });
+
   it("shows complete coverage and requires an API usage confirmation", async () => {
     const fetchMock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input);

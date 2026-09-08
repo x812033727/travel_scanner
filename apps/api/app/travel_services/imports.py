@@ -17,7 +17,7 @@ from app.models import (
     TravelServiceProduct,
 )
 from app.travel_services.registry import BRANDS, brand_target
-from app.travel_services.schemas import Facts, HotelOptionInput, ProductInput, untracked_url
+from app.travel_services.schemas import Facts, HotelOptionInput, Kind, ProductInput, untracked_url
 from app.travel_services.service import fail, fingerprint, product_input
 
 
@@ -85,6 +85,9 @@ async def upsert_product(
         .where(TravelServiceProduct.source_key == data.source_key)
         .with_for_update()
     )
+    if row is not None and row.kind != data.kind:
+        # Source keys are durable identities, not a way to move a product between domains.
+        raise fail("service_source_kind_mismatch", 409)
     from app.travel_services.hotel_options import upsert_option
     from app.travel_services.schemas import HotelOptionInput
 
@@ -143,19 +146,37 @@ async def upsert_product(
 
 
 async def commit_import(
-    session: AsyncSession, run_id: UUID, project_id: str | None
+    session: AsyncSession,
+    run_id: UUID,
+    project_id: str | None,
+    *,
+    required_kind: Kind | None = None,
 ) -> dict[str, Any]:
     run = await session.scalar(
         select(TravelServiceImport).where(TravelServiceImport.id == run_id).with_for_update()
     )
     if run is None:
         raise fail("service_unavailable", 404)
+    if required_kind == "hotel" and run.source != "hotel_csv":
+        raise fail("service_import_scope_mismatch", 409)
+    scope = "hotel" if run.source == "hotel_csv" else required_kind
+    if scope and any(row.get("product", {}).get("kind") != scope for row in run.rows_json):
+        raise fail("service_import_scope_mismatch", 409)
     if run.status == "completed":
         return run.result_json
     if any("error" in row for row in run.rows_json):
         raise fail("service_csv_invalid")
     if not project_id and any(row.get("offer") for row in run.rows_json):
         raise fail("service_brand_unavailable")
+    # Validate the entire batch before modifying any row; upsert repeats this under its lock.
+    for item in run.rows_json:
+        existing = await session.scalar(
+            select(TravelServiceProduct)
+            .where(TravelServiceProduct.source_key == item["product"]["source_key"])
+            .with_for_update()
+        )
+        if existing is not None and existing.kind != item["product"]["kind"]:
+            raise fail("service_source_kind_mismatch", 409)
     changed = 0
     for row in run.rows_json:
         product, updated = await upsert_product(

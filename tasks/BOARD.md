@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 0 in progress · 2 blocked · 4 in review · 159 done**
+**16 open · 0 in progress · 2 blocked · 10 in review · 159 done**
 
 ## Ready to claim
 
@@ -33,6 +33,12 @@ _Nothing here._
 | Task | Owner | Branch |
 | --- | --- | --- |
 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
+| [Admin domain navigation and workspaces](open/2026-09-08-admin-domain-navigation-and-workspaces.md) | codex-admin-root | `codex/admin-domain-workspaces` |
+| [Admin domain scoped catalog AI review](open/2026-09-08-admin-domain-scoped-catalog-ai-review.md) | codex-admin-review | `codex/admin-domain-workspaces` |
+| [Admin domain settings ownership and safe saves](open/2026-09-08-admin-domain-settings-ownership-and-safe.md) | codex-admin-settings | `codex/admin-domain-workspaces` |
+| [Admin hotel workspace isolation](open/2026-09-08-admin-hotel-workspace-isolation.md) | codex-admin-hotel | `codex/admin-domain-workspaces` |
+| [Admin catalog review filters and canonical location editor](open/2026-09-08-admin-catalog-review-filters-and-canonical.md) | codex-admin-editors | `codex/admin-domain-workspaces` |
+| [Admin domain regression compatibility tests](open/2026-09-08-admin-domain-regression-compatibility-tests.md) | codex-admin-regression | `codex/admin-domain-workspaces` |
 | [Fix nearby itinerary discovery across cities and reset insertion pagination](open/2026-09-08-planner-nearby-followup.md) | codex | `codex/planner-nearby-followup` |
 | [Fix weather and itinerary intent panel contrast in dark mode](open/2026-09-08-planner-weather-dark-contrast.md) | codex | `codex/planner-nearby-followup` |
 | [Stay22 Maps lodging pilot](open/2026-09-08-stay22-maps-lodging-pilot.md) | codex-stay22 | `codex/stay22-maps-pilot` |

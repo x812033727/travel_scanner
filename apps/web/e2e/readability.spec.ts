@@ -304,17 +304,31 @@ test("the admin console holds its own controls to the size it publishes", async 
     route.fulfill({
       status: 200,
       contentType: "application/json",
-      body: JSON.stringify({ counts: { hotspots_public: 1, foods_public: 1, users: 1, hotspots_pending: 800, merchants_pending: 10, guides_pending: 4 }, quick_actions: [], can_deploy: false }),
+      body: JSON.stringify({ counts: {
+        hotspots_total: 900, hotspots_pending: 800, guides_pending: 4, hotspots_missing_location: 3,
+        foods_total: 20, foods_pending: 2, merchants_total: 30, merchants_pending: 10,
+        merchants_missing_area: 1, merchants_missing_category: 2,
+        hotels_total: 8, hotels_pending: 3, hotels_without_options: 1,
+      }, can_deploy: false }),
     }),
   );
-  // Dark mode is where the review badge failed: --coral-soft flips to a dark brown and
-  // the literal dark red that used to sit on it measured 2.34:1.
+  // Dark mode is where the old combined review badge failed. The current overview
+  // exposes separate domain queues, each with a readable count and a direct link.
   await page.emulateMedia({ colorScheme: "dark" });
   await page.goto("/zh-TW/admin");
 
-  const badge = page.getByText("814 待審");
-  await expect(badge).toBeVisible();
-  expect(await contrastOf(badge)).toBeGreaterThanOrEqual(MIN_CONTRAST);
+  for (const [name, href] of [
+    ["景點待審 800", "/zh-TW/admin/hotspots?tab=review&section=manual"],
+    ["文章待審 4", "/zh-TW/admin/hotspots?tab=content&section=guides"],
+    ["料理待審 2", "/zh-TW/admin/foods?tab=review&section=dishes"],
+    ["店家待審 10", "/zh-TW/admin/foods?tab=review&section=merchants"],
+    ["飯店待審 3", "/zh-TW/admin/hotels?tab=review&section=products"],
+  ]) {
+    const queue = page.getByRole("link", { name, exact: true });
+    await expect(queue).toBeVisible();
+    await expect(queue).toHaveAttribute("href", href);
+    expect(await contrastOf(queue)).toBeGreaterThanOrEqual(MIN_CONTRAST);
+  }
 
   // The analytics range row was the clearest case on production: five buttons at 36px,
   // and a 24px retry link. Every panel wrote its own py-2, so the tabs, pills and
