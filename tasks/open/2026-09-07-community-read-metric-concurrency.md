@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-07T23:27:30Z
 completed_at:
-branch: codex/hotel-content-review-kyoto-links
+branch: codex/hotel-content-review-kyoto-station
 depends_on: []
 scope:
   - apps/api/app/community
@@ -94,3 +94,20 @@ uq_community_metric duplicates. The available evidence does not establish that t
 duplicates caused this reset or reproduce the earlier manifest JSON failure. No raw
 member IDs, request payloads or tokens are copied here. One disclosed failed-job rerun
 was requested without test/runtime changes. This is not a fix; task remains open.
+
+2026-09-08 recurrence at hotel-content 94fddad3cfe0190cd5d7edb57bdf89544f6d803d:
+PR run 34186584624 / job 101936049093 failed mobile community test line 55, helper
+line 10 / call line 117, during three parallel GET /trips/:copied_id reads after fork:
+apiRequestContext.fetch: read ECONNRESET. Push run 34186579557 / job 101936034290 failed
+desktop mail-recovery test line 336 / call line 375 at GET /api/travel/auth/me using
+the stale session after account deletion: apiRequestContext.get: read ECONNRESET.
+Each job logged six uq_community_metric duplicates, but the failing requests differ
+and causality is not established. No manifest JSON error was observed in these logs.
+No raw member/trip IDs, credentials, content, HTML or request payloads copied here.
+
+API and containers passed both runs; web was still finishing when inspected. No
+failed-job rerun was requested at this SHA. Main advanced with unrelated merchant-data
+PR #354 to 88eb4b1, so the hotel branch was reconciled and requires fresh full CI.
+Neither that reconciliation nor any subsequent green run repairs this open defect.
+Hotel-content work did not change runtime, community tests, request concurrency,
+timeouts or error handling. Leave the defect open for a separately scoped diagnosis/fix.

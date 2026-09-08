@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-07T12:32:44Z
 completed_at:
-branch: codex/hotel-content-review-kyoto-links
+branch: codex/hotel-content-review-kyoto-station
 depends_on: []
 scope:
   - apps/api/tests/test_hotel_content_package.py
@@ -16,6 +16,47 @@ scope:
 ---
 
 # Hotel platform options and quote readiness
+
+## Latest: 2026-09-08 Kyoto station-area platform review
+
+PR #353 verified CLEAN/MERGEABLE and all eight checks at exact 252a2d8, merged with
+head guard to 6db0f51a127246beb82d30d3eef4a0624a649e50 at 04:05:33 UTC. Post-merge main
+34185756687 passed all four jobs first attempt. Continued in isolated
+codex/hotel-content-review-kyoto-station; original dirty worktree preserved.
+
+Five existing Kyoto Station/Kawaramachi hotels (Granvia, Vischio, Daiwa Terrace Hachijo,
+Miyako Hachijo, Cross) gained observed Rakuten international candidate URLs, all pending.
+Their ten official/Trip options passed normal versioned review, all healthy with
+browser_verified=false. Kyoto products remain pending for missing exact maps/licensed
+coordinates. No new hotel identities, map approvals, city switches, paid provider calls,
+clickouts, fake bookings, affiliate/quote enablement, deployments or migrations.
+
+Granvia Trip shows JR Kyoto Station Central Entrance, not permit house number 901;
+no invented Trip address. Miyako Trip's existing otokuni-district URL shows the correct
+Kyoto property/street 17; preserve observed URL/ID rather than guessing a rewrite.
+Exclude wrong Daiwa Hachijoguchi branch at Kitakarasuma-cho 9-2 (Terrace is Higashisanno-cho
+14-1). Existing Booking kyoto-station page yielded no readable identity and stays pending,
+not presumed mismatched/delisted. Expedia Vischio regional result has malformed hotel URL;
+save only unresolved evidence, not a fabricated corrected link or regional hotel option.
+Prior Hyatt future-closure and Westin link holds remain unchanged.
+
+Chrome Intergate selection timed out waiting for CDP Emulation.setFocusEmulationEnabled;
+fresh inventory plus one reconnect returned the same error. Stopped per computer-use
+recovery rule. No new map/browser verification claimed from a tab title.
+
+Production aaa33f0/schema 0062 unchanged. Backup before writes:
+/root/travel_scanner_pre_hotel_candidates_20260908T041040Z.dump (7090398 bytes).
+Preflight adc6db5cc7270269a2b637a3a97029d9ca4222f8ff922b0b8bb1f180791b95c6;
+independent verification confirmed 15 new audits and all 60 products / other 345 options /
+config version 5 preserved. Still 60 products, 17 approved/43 pending; platform options
+58 approved/302 pending. Five-language internal and actual HTTPS BFF reads retain
+Tokyo 10 / Osaka 2 / Kyoto 0. Zero complete cities. Never replay pending input over live rows.
+
+139 related tests, Ruff/format, mypy 257 sources, five locales/25 namespaces and 27 tooling
+tests passed. New-head full CI on continuation PR. Evidence:
+docs/hotel-platforms/review-2026-09-08-kyoto-station.md and matching JSON checkpoint.
+Release at handoff, not done: exact maps, reusable coordinates, independent OTA review
+and city acceptance remain unfinished. Older sections below are historical checkpoints.
 
 ## Latest: 2026-09-08 Kyoto five-platform continuation
 
