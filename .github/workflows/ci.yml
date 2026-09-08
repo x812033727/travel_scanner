@@ -142,7 +142,10 @@ jobs:
       FLIGHT_PROVIDER_MODE: mock
       NEXT_PUBLIC_API_URL: http://127.0.0.1:8000/api/v1
       API_INTERNAL_URL: http://127.0.0.1:8000
-      NEXT_PUBLIC_SITE_URL: http://127.0.0.1:3000
+      # Playwright's API cookie jar permits production Secure cookies over HTTP
+      # localhost, but not numeric loopback. Keep browser and API origins aligned.
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      PLAYWRIGHT_BASE_URL: http://localhost:3000
       AUTH_REGISTER_IP_LIMIT: "100"
       AUTH_LOGIN_IP_LIMIT: "100"
       COMMUNITY_S3_ENDPOINT: http://127.0.0.1:9000
@@ -166,6 +169,11 @@ jobs:
       - run: npm ci
       - run: uv run alembic upgrade head
         working-directory: apps/api
+      # Concurrent cold routes under next dev have returned partially read JSON
+      # manifests/500s in smoke runs. Exercise the immutable production build,
+      # as the isolated UI suite does, without relaxing browser assertions.
+      - name: Build production web for full-stack journeys
+        run: npm run build:web
       - name: Start API, worker and web
         run: |
           cd apps/api
@@ -174,13 +182,13 @@ jobs:
           setsid uv run python -m app.worker > /tmp/travel-worker.log 2>&1 &
           echo $! > "$RUNNER_TEMP/travel-worker.pid"
           cd ../..
-          setsid npm run dev --workspace @travel-scanner/web -- --port 3000 > /tmp/travel-web.log 2>&1 &
+          setsid npm run start --workspace @travel-scanner/web -- --port 3000 > /tmp/travel-web.log 2>&1 &
           echo $! > "$RUNNER_TEMP/travel-web.pid"
       - name: Start community test services and bootstrap test administrator
         run: |
           docker run -d --name community-browser-storage -p 127.0.0.1:9000:9000 \
             -e MINIO_ROOT_USER=community-test -e MINIO_ROOT_PASSWORD=community-test-only-password \
-            -e MINIO_API_CORS_ALLOW_ORIGIN=http://127.0.0.1:3000 \
+            -e MINIO_API_CORS_ALLOW_ORIGIN=http://localhost:3000 \
             minio/minio:latest server /data
           docker run -d --name community-browser-mail -p 127.0.0.1:1025:1025 -p 127.0.0.1:8025:8025 axllent/mailpit:latest
           ready=false
@@ -196,7 +204,7 @@ jobs:
         id: stack-ready
         run: |
           for attempt in {1..60}; do
-            if curl --fail --silent http://127.0.0.1:8000/ready >/dev/null && curl --fail --silent http://127.0.0.1:3000 >/dev/null; then exit 0; fi
+            if curl --fail --silent http://127.0.0.1:8000/ready >/dev/null && curl --fail --silent http://localhost:3000 >/dev/null; then exit 0; fi
             sleep 2
           done
           cat /tmp/travel-api.log /tmp/travel-worker.log /tmp/travel-web.log
@@ -206,7 +214,7 @@ jobs:
         id: travel-journeys
         run: npx playwright test e2e/full-stack.spec.ts
         working-directory: apps/web
-        env: { PLAYWRIGHT_REUSE_EXISTING: "true" }
+        env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true" }
       - uses: actions/upload-artifact@v4
         if: failure() && steps.travel-journeys.outcome == 'failure'
         with:
@@ -217,7 +225,7 @@ jobs:
         if: ${{ !cancelled() && steps.stack-ready.outcome == 'success' }}
         run: npx playwright test e2e/community.spec.ts
         working-directory: apps/web
-        env: { PLAYWRIGHT_REUSE_EXISTING: "true", COMMUNITY_E2E: "1" }
+        env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true", COMMUNITY_E2E: "1" }
       - uses: actions/upload-artifact@v4
         if: always()
         with:

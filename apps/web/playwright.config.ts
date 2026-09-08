@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const port = process.env.PLAYWRIGHT_PORT || "3000";
-const baseURL = `http://127.0.0.1:${port}`;
+const baseURL = process.env.PLAYWRIGHT_BASE_URL || `http://127.0.0.1:${port}`;
 const reuseExistingServer = process.env.PLAYWRIGHT_REUSE_EXISTING === "true";
 // CI builds the app right before this suite runs. Serving that build (`next start`)
 // instead of compiling every page on its first visit, under a 30-second test timeout
@@ -33,4 +33,3 @@ export default defineConfig({
     { name: "mobile-chromium", use: { ...devices["Pixel 7"] } },
   ],
 });
-
