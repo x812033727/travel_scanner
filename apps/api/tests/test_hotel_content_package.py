@@ -702,3 +702,114 @@ def test_kyoto_rakuten_candidates_use_observed_ids_and_remain_pending():
         for row in rows.values()
         for o in row["booking_options"]
     )
+
+
+def kyoto_station_checkpoint():
+    directory = Path(__file__).resolve().parents[3] / "docs/hotel-platforms"
+    evidence = json.loads(
+        (directory / "kyoto-station.review-2026-09-08.json").read_text(encoding="utf-8")
+    )
+    package = json.loads((directory / "kyoto.pending.json").read_text(encoding="utf-8"))
+    return evidence, {r["product"]["source_key"]: r for r in package}
+
+
+def test_kyoto_station_platform_approvals_do_not_bypass_product_identity():
+    evidence, rows = kyoto_station_checkpoint()
+    config = CatalogConfig(
+        public_enabled=True, enabled_destinations=["kyoto"], enabled_kinds=["hotel"]
+    )
+    now = datetime.now(UTC)
+    approved = []
+    assert len(evidence["hotels"]) == 5
+    for hotel in evidence["hotels"]:
+        source = rows[hotel["source_key"]]
+        data = ProductInput.model_validate(source["product"])
+        product = TravelServiceProduct(**source["product"], id=uuid4(), status="pending")
+        assert hotel["product_status"] == "pending"
+        assert hotel["map_review_status"] == "not_checked"
+        assert not data.facts.map_verified and not data.facts.google_place_id
+        assert data.facts.latitude is data.facts.longitude is None
+        with pytest.raises(AppError, match="service_identity_required"):
+            require_product_review(data)
+        options = {o["provider"]: o for o in source["booking_options"]}
+        for review in hotel["platform_reviews"]:
+            assert review.get("url") == options[review["provider"]].get("url")
+            if review["status"] != "approved":
+                continue
+            approved.append(review)
+            assert review["provider"] in {"official", "trip_com"}
+            assert review["health"] == "healthy" and review["version"] == 2
+            assert review["matched_name"] and review["matched_address"]
+            assert review["identity_evidence_url"] == data.source_url
+            assert review["browser_verified"] is False
+            option = HotelBookingOption(
+                **HotelOptionInput.model_validate(options[review["provider"]]).model_dump(),
+                id=uuid4(),
+                status="approved",
+                verified_at=now,
+                health_status="healthy",
+            )
+            assert not ready_option(product, option, config, now)
+    assert len(approved) == evidence["production"]["new_platform_approvals"] == 10
+    assert evidence["production"]["new_hotel_identities"] == 0
+    assert evidence["production"]["new_location_approvals"] == 0
+    assert evidence["production"]["complete_cities"] == 0
+    assert evidence["production"]["five_locale_public_hotels"]["kyoto"] == 0
+
+
+def test_kyoto_station_rakuten_ids_are_observed_unique_and_pending():
+    evidence, rows = kyoto_station_checkpoint()
+    expected = {
+        "10123456796201",
+        "10123456864974",
+        "10123456860018",
+        "10123456795701",
+        "10123456795968",
+    }
+    found = set()
+    for hotel in evidence["hotels"]:
+        review = next(o for o in hotel["platform_reviews"] if o.get("new_candidate"))
+        source = next(
+            o for o in rows[hotel["source_key"]]["booking_options"] if o["provider"] == "rakuten"
+        )
+        assert source["url"] == review["url"]
+        assert source["url"].rstrip("/").endswith("/" + source["property_id"])
+        assert source["property_id"] == review["property_id"]
+        assert source["property_id"] in expected
+        found.add(source["property_id"])
+        assert review["status"] == "pending" and review["version"] == 2
+        assert review["health"] == "unchecked" and review["browser_verified"] is False
+        assert review["document_freshness"] and review["query"]
+        assert "待審" in source["identity_note"] and "status" not in source
+    assert found == expected
+    all_rakuten = [
+        o["property_id"]
+        for r in rows.values()
+        for o in r["booking_options"]
+        if o["provider"] == "rakuten"
+    ]
+    assert len(all_rakuten) == len(set(all_rakuten)) == 10
+    assert evidence["production"]["new_audit_records"] == 15
+    assert evidence["production"]["config_changed"] is False
+
+
+def test_kyoto_station_wrong_branch_and_unresolved_leads_are_not_substituted():
+    evidence, rows = kyoto_station_checkpoint()
+    excluded = evidence["excluded"][0]
+    assert "9-2" in excluded["reason"] and "14-1" in excluded["reason"]
+    assert not any(
+        o.get("url") == excluded["url"] for r in rows.values() for o in r["booking_options"]
+    )
+    for research in evidence["unresolved_research"]:
+        hotel = next(h for h in evidence["hotels"] if h["source_key"] == research["source_key"])
+        review = next(o for o in hotel["platform_reviews"] if o["provider"] == research["provider"])
+        assert review["status"] == "pending" and review["browser_verified"] is False
+    miyako = rows["editorial:kyoto:miyako-kyoto-hachijo"]
+    trip = next(o for o in miyako["booking_options"] if o["provider"] == "trip_com")
+    assert (
+        trip["property_id"] == "737157" and "/otokuni-district-hotel-detail-737157/" in trip["url"]
+    )
+    previous, _ = kyoto_five_checkpoint()
+    hyatt = next(h for h in previous["hotels"] if "hyatt-regency" in h["source_key"])
+    assert hyatt["operating_notice"]["review_hold"]
+    assert all(o["status"] == "pending" for o in hyatt["platform_reviews"])
