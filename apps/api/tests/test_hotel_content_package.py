@@ -1057,3 +1057,142 @@ def test_taipei_rakuten_is_an_observed_same_hotel_entry_not_an_invented_locale_o
     )
     assert evidence["boundaries"]["affiliate_and_quote_switches_unchanged"]
     assert evidence["boundaries"]["paid_provider_api_calls"] == 0
+
+
+def taipei_rest_checkpoint():
+    directory = Path(__file__).resolve().parents[3] / "docs/hotel-platforms"
+    evidence = json.loads(
+        (directory / "taipei-rest.review-2026-09-08.json").read_text(encoding="utf-8")
+    )
+    rows = json.loads((directory / "taipei.pending.json").read_text(encoding="utf-8"))
+    return evidence, {r["product"]["source_key"]: r for r in rows}
+
+
+def test_taipei_rest_maps_do_not_approve_imports_or_copy_provider_content():
+    evidence, rows = taipei_rest_checkpoint()
+    assert len(evidence["hotels"]) == 5
+    for hotel in evidence["hotels"]:
+        data = ProductInput.model_validate(rows[hotel["source_key"]]["product"])
+        assert not data.facts.map_verified
+        assert hotel["map_review"]["google_place_id"] == data.facts.google_place_id
+        assert hotel["map_review"]["status"] == "browser_identity_checked"
+        assert hotel["map_review"]["name_address_website_matched"] is True
+        assert hotel["map_review"]["provider_coordinates_copied"] is False
+        assert hotel["map_review"]["provider_content_saved"] is False
+        assert data.facts.coordinate_source_url == data.facts.source_credits[0].url
+        assert data.facts.source_credits[0].license_url == "https://data.gov.tw/license"
+        with pytest.raises(AppError, match="service_identity_required"):
+            require_product_review(data)
+        before = data.model_dump()
+        data.facts.map_verified = True
+        require_product_review(data)
+        after = data.model_dump()
+        after["facts"]["map_verified"] = False
+        assert after == before
+        assert hotel["product_status"] == "approved" and hotel["product_version"] == 3
+    production = evidence["production"]
+    assert production["hotel_identities"] == 60
+    assert production["new_hotel_identities"] == production["complete_cities"] == 0
+
+
+def test_taipei_rest_independent_reviews_keep_all_unconfirmed_options_private():
+    evidence, rows = taipei_rest_checkpoint()
+    now = datetime.now(UTC)
+    config = CatalogConfig(
+        public_enabled=True, enabled_destinations=["taipei"], enabled_kinds=["hotel"]
+    )
+    approved, failures = [], []
+    for hotel in evidence["hotels"]:
+        row = rows[hotel["source_key"]]
+        product = TravelServiceProduct(**row["product"], id=uuid4(), status="approved")
+        inputs = {o["provider"]: o for o in row["booking_options"]}
+        shown = set()
+        for review in hotel["platform_reviews"]:
+            assert review.get("url") == inputs[review["provider"]].get("url")
+            assert review["browser_verified"] is False
+            passed = review["status"] == "approved"
+            option = HotelBookingOption(
+                **HotelOptionInput.model_validate(inputs[review["provider"]]).model_dump(),
+                id=uuid4(),
+                status=review["status"],
+                verified_at=now if passed else None,
+                health_status=review["health"],
+            )
+            assert ready_option(product, option, config, now) is passed
+            if passed:
+                approved.append(review)
+                shown.add(review["provider"])
+                assert review["health"] == "healthy" and review["version"] == 2
+                assert review["matched_name"] and review["matched_address"]
+                assert review["identity_evidence_url"] == hotel["official_identity_url"]
+                for unsafe in ("unsafe", "unavailable"):
+                    option.health_status = unsafe
+                    assert not ready_option(product, option, config, now)
+            if review.get("error_code"):
+                failures.append(review)
+                assert review["error_code"] == "service_link_unavailable"
+                assert review["status"] == "pending" and review["health"] == "unchecked"
+                assert review["version"] == (2 if review.get("new_candidate") else 1)
+            if review["provider"] in {"booking", "agoda", "rakuten"}:
+                assert not review["review_requested"] and not passed and review["reason"]
+        expected = {"trip_com"}
+        if hotel["source_key"] not in {
+            "editorial:taipei:w-taipei",
+            "editorial:taipei:grand-hyatt-taipei",
+        }:
+            expected.add("official")
+        assert shown == expected
+    assert len(approved) == evidence["production"]["new_platform_approvals"] == 8
+    assert len(failures) == evidence["production"]["failed_reviews"] == 7
+    assert evidence["production"]["new_audit_records"] == 3 * 5 + 11 + len(approved)
+
+
+def test_taipei_rest_candidates_preserve_observed_urls_and_stay_pending():
+    evidence, rows = taipei_rest_checkpoint()
+    candidates = evidence["candidate_additions"]
+    assert len(candidates) == 11
+    assert len({(c["source_key"], c["provider"]) for c in candidates}) == 11
+    assert sum(c["provider"] == "agoda" for c in candidates) == 4
+    assert sum(c["provider"] == "expedia" for c in candidates) == 5
+    assert sum(c["provider"] == "rakuten" for c in candidates) == 2
+    for candidate in candidates:
+        row = rows[candidate["source_key"]]
+        source = next(o for o in row["booking_options"] if o["provider"] == candidate["provider"])
+        assert source["url"] == candidate["url"] and source["discovery_status"] == "found"
+        assert candidate["query"] and candidate["document_freshness"]
+        assert "待審" in source["identity_note"] and "status" not in source
+        hotel = next(h for h in evidence["hotels"] if h["source_key"] == candidate["source_key"])
+        review = next(o for o in hotel["platform_reviews"] if o["provider"] == source["provider"])
+        assert review["new_candidate"] and review["status"] == "pending"
+        assert review["version"] == 2 and review["health"] == "unchecked"
+        if source["provider"] == "expedia":
+            assert f".h{source['property_id']}.Hotel-Information" in source["url"]
+        elif source["provider"] == "rakuten":
+            assert source["property_id"] in {"34123457157057", "34123457136539"}
+            assert source["url"].startswith("https://travel.rakuten.com/usa/en-us/hotel_info_item/")
+        else:
+            assert "property_id" not in source
+    assert any("/en-sg/" in c["url"] for c in candidates)
+    assert any("/w-taipei_16/" in c["url"] for c in candidates)
+    rejected = {r["url"] for r in evidence["excluded_leads"]}
+    assert not rejected & {c["url"] for c in candidates}
+    assert all(
+        "rakuten.net" not in c["url"] and "rakuten.co.jp" not in c["url"] for c in candidates
+    )
+
+
+def test_taipei_rest_does_not_claim_city_acceptance_or_quotes_from_public_counts():
+    evidence, rows = taipei_rest_checkpoint()
+    p = evidence["production"]
+    assert p["taipei_public_hotels_before"] == 5 and p["taipei_public_hotels_after"] == 10
+    assert p["taipei_public_options_before"] == 16 and p["taipei_public_options_after"] == 24
+    assert p["product_status_counts"] == {"approved": 27, "pending": 33}
+    assert p["option_status_counts"] == {"approved": 88, "pending": 272}
+    assert p["config_changed"] is False and p["complete_cities"] == 0
+    assert evidence["boundaries"]["browser_stopped_after_recovery_timeout"]
+    assert evidence["boundaries"]["affiliate_and_quote_switches_unchanged"]
+    assert evidence["boundaries"]["paid_provider_api_calls"] == 0
+    assert evidence["boundaries"]["clickouts_or_test_orders"] == 0
+    for key in ("editorial:taipei:w-taipei", "editorial:taipei:humble-house-taipei"):
+        trip = next(o for o in rows[key]["booking_options"] if o["provider"] == "trip_com")
+        assert "/hotels/xinyi-district-hotel-detail-" in trip["url"]
