@@ -15,6 +15,9 @@ async function createBlankTrip(page: Page) {
   expect(response.request().postDataJSON()).toMatchObject({
     source: "blank", planning_mode: "manual_blank", routing: { auto_compute: false },
   });
+  const trip = await response.json();
+  expect(trip.items.filter((item: { system_role?: string }) => item.system_role === "outbound_flight")).toHaveLength(1);
+  expect(trip.items.filter((item: { system_role?: string }) => item.system_role === "return_flight")).toHaveLength(1);
   await expect(page).toHaveURL(/\/trips\/[0-9a-f-]+$/, { timeout: 30_000 });
 }
 
@@ -268,7 +271,9 @@ test("a saved trip searches flights from its own criteria and takes a quote back
 
   // The outbound anchor card is the entry. A blank trip has no home airport yet,
   // so the search page asks once and writes the answer back to the trip.
-  await expect(page.locator(".planner-flight-card")).toHaveCount(2);
+  // The timeline renders only the selected day; the return anchor is on day 5.
+  // Both persisted anchors are asserted against the real create response above.
+  await expect(page.locator(".planner-flight-card")).toHaveCount(1);
   await openOptionalStops(page);
   await page.locator(".planner-flight-card").first().getByRole("link", { name: /^查機票 · / }).click();
   await expect(page).toHaveURL(/\/search\?trip_id=/);
