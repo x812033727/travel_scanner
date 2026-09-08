@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 1 in progress · 2 blocked · 6 in review · 184 done**
+**17 open · 1 in progress · 2 blocked · 6 in review · 185 done**
 
 ## Ready to claim
 
@@ -50,6 +50,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | active work in the same scope |
 | P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | active work in the same scope |
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
+| P1 | [Prevent Google coordinates being labelled durable by merchant review](open/2026-09-08-prevent-google-coordinates-being-labelled-durable.md) | active work in the same scope |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | active work in the same scope |
 | P3 | [行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal\|append](open/2026-09-07-add-a-meal-to-a-day.md) | active work in the same scope |
