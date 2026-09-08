@@ -5,10 +5,10 @@ status: review
 priority: P1
 area: api
 owner: codex
-claimed_at: 2026-09-08T05:53:35Z
+claimed_at: 2026-09-08T06:11:58Z
 created_at: 2026-09-07T23:14:18Z
 completed_at:
-branch: codex/merchant-style-batch-07
+branch: codex/merchant-style-batch-08
 depends_on: []
 scope:
   - apps/api/app/models.py
@@ -58,7 +58,9 @@ scope:
 - [x] 第三批 PR #347 完成 CI 與依本輪授權合併，post-merge CI 全綠。
 - [x] 第四批5家新店＋1家既有補風格、6個提案完成來源查核、待審匯入、快照比對與重播驗證。
 - [x] 第四批PR #350及第五批PR #354完成CI並依各輪授權合併。
-- [ ] 第六批資料／測試／交接 PR 完成 CI 與合併（本輪合併授權針對 #354）。
+- [x] 第六批PR #356及第七批PR #359完成完整CI，依各輪授權合併。
+- [x] 第七批合併後依明確授權重新部署，保留備份、回退映像及既有功能開關。
+- [ ] 第八批4家候選完成待審匯入、測試及新PR；新PR需另取得合併授權。
 - [ ] 逐家補齊地圖與永久座標、管理員風格審核，再另行發布店家。
 
 ## Steps
@@ -179,3 +181,17 @@ PR #345 已合併部署，第二／三批 PR #346、#347 已依授權合併；�
 - 使用者新授權「合併重新佈署後繼續新增」，目標為#359。先無衝突同步main的#357首爾飯店資料，相關API回歸88 passed／1 PostgreSQL-only skipped；重新取得完整CI後才用最新SHA guard合併。
 - 正式預檢：10個既有服務正常，API／Web仍為aaa33f008c82c56e5c541dede8205097102193e1，schema0062，社群與公開註冊均關閉。資料volume、部署socket與canonical環境檔保持原狀；磁碟可用133G。
 - 本次依明確授權重新部署合併版本，使用乾淨Git archive與獨立release目錄，不重設canonical checkout、不刪舊映像／volume／備份、不開啟社群或註冊。部署須雙鎖、映像核對、私有可讀備份、保留回退資訊及重複readiness驗證；完成結果交接於下一批。
+
+## 第八批交接（2026-09-08）
+
+- #359同步後PR CI 34192478510與push CI 34192475647全綠，無重跑；8項checks全綠且CLEAN／MERGEABLE後，鎖定385867de8dcc20bac98a8efa0869ce1d67e4ad57，SHA-guard squash為8d2fb93d3d95e40409113f64bdcb90edfc53736f，已確認main。
+- Post-merge main CI 34193020967全綠，API1865 passed／3 skipped、Ruff及mypy257 files通過，旅遊與社群全端各6項通過；Web元件、五語系、TypeScript、lint、production build與isolated browser全部成功。
+- 等待CI期間正式環境另行前進到00ffc710ebf902f56a00a69869f96e92bf3e84d0；重新核對8個應用服務、環境與schema後，以該映像及release作為回退基線，不回退到先前預檢的aaa33f0。
+- 本輪從乾淨Git archive建置8d2fb93，來源SHA-256為ca6ec89e5551f1a2f316f35eb7a4092bd393bd081eace4356dc21a21024a3fdd。雙鎖、環境值一致檢查與備份完成後，8個應用服務已重新部署至8d2fb93；PG／Redis未重建，schema仍0062。
+- Release目錄 /root/mokaair-release-8d2fb93-KNYdEO9q 保留建置／部署紀錄與7,570,439 bytes、mode600的備份及restore索引；未刪舊備份、映像、volume或環境檔。三次連續health／ready／foods通過，五語系正式foods頁200，API／Web restart count 0，社群與註冊仍關閉且環境檔checksum不變。
+- 從8d2fb93最新main建立codex/merchant-style-batch-08並claim本任務；不改原mobile-planner工作目錄或其他PR。新增華山青鳥、bibliothèque福岡天神、오설록北村及Merci Marcel Orchard，2文青／2網美；具體來源、分店界線及不納入候選見docs/merchant-styles.md。
+- 正式read-only名稱／地址查重零重複；本批正式寫入仍須新備份、雙鎖、checksum、preview／apply／replay及公開隱藏驗證。所有新店須保持pending/inactive/unverified，無地圖／座標／商圈及審核人，不宣稱已公開上架。
+- 第八批54項相關API測試通過／1 PostgreSQL-only skipped，全部foods／merchant／trend測試176 passed／6 PostgreSQL-only skipped；Ruff全套、mypy257 files、tools27 tests、5語系25 namespaces及task board176 files通過。只新增資料並擴充真實preview／apply／replay與跨批查重參數，不改產品程式。
+- 正式作業目錄 /root/mokaair-merchant-batch-08-xvN0xqpC 保留JSON、預覽／鎖內預覽／套用／重播／逐欄驗證及公開查詢前後收據；備份7,570,009 bytes、mode600、restore目錄可讀。雙鎖、映像及本機／伺服器／容器checksum全通過後新增4店／4提案，重播0／0。
+- 逐欄驗證來源、店名、地址、風格證據與日期，均pending/inactive/unverified，地圖／耐久座標／商圈／審核人空白；建立店家與風格提案各一筆系統稽核。公開payload前後一致、/ready正常、foods頁200。八批41新候選＋2既有補風格，共44 pending標籤（網美20／文青24）。
+- 第八批資料匯入未另外重建服務、執行遷移、核准發布或呼叫付費模型／地圖；新的PR仍待完整CI及下一輪合併授權，整體精準地圖與人工審核未完成，不標done。
