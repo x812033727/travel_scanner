@@ -1,6 +1,21 @@
 import { describe, expect, it } from "vitest";
 import { dayTimeline, insertionNeighbors, insertionPoints, normalizeOrder, placeAt } from "./itinerary-order";
 import { type TripItem } from "./trip-types";
+import { itineraryCopy, itineraryText } from "./itinerary-copy";
+
+it("keeps all five itinerary catalogs and interpolation parameters complete", () => {
+  const reference = itineraryCopy("en");
+  const parameters = (value: string) => [...value.matchAll(/\{(\w+)\}/g)].map((match) => match[1]).sort();
+  for (const locale of ["en", "ja", "ko", "zh-TW", "zh-CN"]) {
+    const copy = itineraryCopy(locale);
+    expect(Object.keys(copy).sort()).toEqual(Object.keys(reference).sort());
+    for (const key of Object.keys(reference) as (keyof typeof reference)[]) {
+      expect(copy[key].trim()).not.toBe("");
+      expect(parameters(copy[key])).toEqual(parameters(reference[key]));
+    }
+  }
+  expect(itineraryText(reference.context, { day: 2, before: "A", after: "B" })).toBe("Day 2 · A → B");
+});
 
 const day = "2026-11-11";
 function stop(id: string, position: number, system_role?: TripItem["system_role"]): TripItem {

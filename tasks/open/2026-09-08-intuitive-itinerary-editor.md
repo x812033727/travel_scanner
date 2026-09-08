@@ -5,7 +5,7 @@ status: review
 priority: P1
 area: web
 owner: codex
-claimed_at: 2026-09-08T06:03:51Z
+claimed_at: 2026-09-08T06:34:04Z
 created_at: 2026-09-08T05:27:53Z
 completed_at:
 branch: codex/intuitive-itinerary-editor
@@ -27,6 +27,7 @@ scope:
   - apps/web/lib/itinerary-order.test.ts
   - apps/web/app/globals.css
   - apps/web/lib/itinerary-copy.ts
+  - apps/web/lib/itinerary-messages
   - apps/web/e2e/itinerary-editor.spec.ts
   - apps/web/e2e/fixtures/itinerary-editor.ts
   - apps/web/e2e/navigation.spec.ts
