@@ -5,10 +5,10 @@ status: review
 priority: P1
 area: api
 owner: codex
-claimed_at: 2026-09-08T05:18:26Z
+claimed_at: 2026-09-08T05:53:35Z
 created_at: 2026-09-07T23:14:18Z
 completed_at:
-branch: codex/merchant-style-batch-06
+branch: codex/merchant-style-batch-07
 depends_on: []
 scope:
   - apps/api/app/models.py
@@ -160,3 +160,22 @@ PR #345 已合併部署，第二／三批 PR #346、#347 已依授權合併；�
 - 查核現行CI確實以next dev啟動全端Web；既存待辦記有load-manifest.external.js讀取JSON清單失敗的明確堆疊。本輪在原scope內將全端CI改為先build、再next start，兩套Playwright均指定使用正式建置，消除此測試環境的請求時編譯；API、worker、PostgreSQL、Redis、S3、SMTP與原有桌面／Pixel 7案例、斷言、timeout保持不變。
 - 此調整遵循專案既有isolated UI建置方式及[Next.js官方測試指南](https://nextjs.org/docs/app/guides/testing/playwright)。不改Next依賴、不宣稱修復開發伺服器自身或社群計數重複鍵；正式資料與服務完全不動。新head全套CI通過後才以SHA guard合併。
 - 79266a2的正式建置與旅遊6項均通過，社群6項在admin登入後GET settings收到401。已定位安裝的Playwright Cookie.matches只對HTTP localhost（非127.0.0.1）容許Secure cookie；獨立合成Cookie本機實驗亦確認numeric loopback不回送、localhost正常回送。擴充本任務的兩個測試檔scope後重新claim，將全端站點、Playwright baseURL、Origin與MinIO CORS統一localhost；API／Redis等內部連線不变。保留production Secure、HttpOnly、SameSite及所有授權斷言，未注入登入token或繞過登入。
+
+## 第七批交接（2026-09-08）
+
+- #356已依新一輪授權合併：同步main #355後鎖定2984f82045ad5bcdb83d0dd7532527f78f5a180c，8項checks全綠、CLEAN／MERGEABLE，SHA-guard squash為f48e9a6e710779d7c8f53786e8d3fd5a492ee691，已fetch確認main。
+- PR run 34190397145全綠；push run 34190395334初次desktop community GET /community/me仍ECONNRESET，Next有destination stream closed early，不能把正式build視為已修復所有transport reset。第一次在整體run未完時重跑請求遭拒；完成後僅重跑失敗job一次，attempt 2全綠。原失敗證據與界線保留於#356評論，不更改斷言、timeout、並行度或Cookie安全設定。
+- 該head Linux API1859 passed／3 skipped，Ruff與mypy 257 files通過；Web133個元件測試檔、230個瀏覽器案例、五語系25 namespaces通過；本機合併後資料回歸83 passed／1 PostgreSQL-only skipped。Post-merge main CI 34191139080結果另記PR。
+- 從該main建立codex/merchant-style-batch-07並claim本任務；保留原mobile-planner checkout及其他PR。
+- 新增本屋B&B、RBL CAFE、文喫六本木與NOC Cityplaza，3文青／1網美；均讀取官方店址與風格來源。本屋B&B飲品頁圖片另以瀏覽器實際檢視確認咖啡及茶飲，不只因供應啤酒而歸為酒吧；未下載或複製圖片入庫。其他分店與舊活動的排除界線見docs/merchant-styles.md。
+- 正式read-only初查誤用JSON的name_zh欄位，SQL拒絕且無寫入；按模型name重新查詢，僅找到不同城市的文喫福岡天神，四家無重複。映像仍aaa33f008c82c56e5c541dede8205097102193e1，readiness與schema0062正常。正式寫入前仍须雙鎖、checksum、鎖內預覽、備份及重播驗證。
+- 第七批相關測試52 passed／1 PostgreSQL-only skipped，全部foods／merchant／trend 174 passed／6 PostgreSQL-only skipped；Ruff全套、mypy257 files、tools27 tests、五語系25 namespaces及task board176 files通過。新資料加入既有真實preview／apply／replay測試與跨批去重檢查，不改產品程式。
+- 正式作業目錄 `/root/mokaair-merchant-batch-07-BqTXChhr` 保留JSON、preview／locked-preview／applied／replay／verified及公開查詢前後收據；備份7,097,706 bytes、mode600、restore目錄可讀。雙部署鎖、三處checksum及鎖內預覽皆通過後新增4店／4提案；重播0／0。
+- 正式逐欄驗證店名、地址、來源、風格、證據、日期，4家皆pending/inactive/unverified、無地圖／座標／商圈／審核人；兩筆actor=NULL系統稽核保留count、target及提案items。七批37新候選＋2既有補風格、40個pending標籤（網美18／文青22）。公開payload前後一致且仍0，/ready正常、foods頁200。
+- 未重建服務、執行遷移、付費模型／地圖呼叫、寵物規則推導或核准發布。第七批PR保持待審，需新一輪合併授權；完整精準地圖、耐久座標、商圈及人工審核仍未完成，不標done。
+
+## 第七批合併與重新部署準備（2026-09-08）
+
+- 使用者新授權「合併重新佈署後繼續新增」，目標為#359。先無衝突同步main的#357首爾飯店資料，相關API回歸88 passed／1 PostgreSQL-only skipped；重新取得完整CI後才用最新SHA guard合併。
+- 正式預檢：10個既有服務正常，API／Web仍為aaa33f008c82c56e5c541dede8205097102193e1，schema0062，社群與公開註冊均關閉。資料volume、部署socket與canonical環境檔保持原狀；磁碟可用133G。
+- 本次依明確授權重新部署合併版本，使用乾淨Git archive與獨立release目錄，不重設canonical checkout、不刪舊映像／volume／備份、不開啟社群或註冊。部署須雙鎖、映像核對、私有可讀備份、保留回退資訊及重複readiness驗證；完成結果交接於下一批。
