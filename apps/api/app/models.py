@@ -331,12 +331,21 @@ class HotelBookingClick(Base):
 class TravelServiceBrand(Timestamped, Base):
     __tablename__ = "travel_service_brands"
     __table_args__ = (
-        UniqueConstraint("project_id", "code", name="uq_service_brand_project"),
+        UniqueConstraint("channel", "project_id", "code", name="uq_service_brand_channel_project"),
+        CheckConstraint(
+            "channel IN ('travelpayouts','klook_direct')", name="ck_service_brand_channel"
+        ),
+        CheckConstraint(
+            "channel != 'klook_direct' OR code = 'klook'", name="ck_service_brand_direct_klook"
+        ),
         CheckConstraint(
             "approval IN ('unknown','pending','approved','rejected')", name="ck_brand_approval"
         ),
     )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    channel: Mapped[str] = mapped_column(
+        String(24), default="travelpayouts", server_default="travelpayouts"
+    )
     project_id: Mapped[str] = mapped_column(String(32), index=True)
     code: Mapped[str] = mapped_column(String(64))
     approval: Mapped[str] = mapped_column(String(16), default="unknown")

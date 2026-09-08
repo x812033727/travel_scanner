@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "provenance": "Manually researched exact official Klook product pages. Only identity, original short titles and evidenced service scope are recorded; no prices, photos, schedules or provider descriptions. Source existence is not live availability or affiliate approval. Primary city is constrained by the existing one-city product model; secondary cities do not create duplicate products.",
+  "entries": [
+    {
+      "product_id": "134125",
+      "kind": "tour",
+      "destination_id": "tokyo",
+      "title": "Mount Fuji Day Trip from Tokyo",
+      "source_url": "https://www.klook.com/en-US/activity/134125-day-trip-to-mt-fuji-from-tokyo/",
+      "evidence": {"url": "https://www.klook.com/en-US/activity/134125-day-trip-to-mt-fuji-from-tokyo/", "checked_on": "2026-09-09"},
+      "notes": "Official page identifies departure from Tokyo. Package-specific itinerary, duration and availability remain unasserted."
+    },
+    {
+      "product_id": "2274",
+      "kind": "transfer",
+      "destination_id": "tokyo",
+      "title": "Narita Airport - Tokyo Limousine Bus",
+      "source_url": "https://www.klook.com/activity/2274-narita-airport-limousine-bus-tokyo/",
+      "evidence": {"url": "https://www.klook.com/activity/2274-narita-airport-limousine-bus-tokyo/", "checked_on": "2026-09-09"},
+      "airport": "NRT",
+      "transfer_mode": "bus",
+      "available_directions": ["arrival", "departure", "roundtrip"],
+      "notes": "Narita airport and Tokyo city bus transfer; page lists one-way and round-trip choices. Import defaults to arrival only. Haneda routes are a separate product; do not claim HND coverage."
+    },
+    {
+      "product_id": "3217",
+      "kind": "tour",
+      "destination_id": "osaka",
+      "other_applicable_cities": ["kyoto"],
+      "title": "Arashiyama, Kinkakuji, Nara Park Day Tour from Osaka/Kyoto",
+      "source_url": "https://www.klook.com/activity/3217-arashiyama-nara-todai-ji-day-tour-osaka/",
+      "evidence": {"url": "https://www.klook.com/activity/3217-arashiyama-nara-todai-ji-day-tour-osaka/", "checked_on": "2026-09-09"},
+      "notes": "Official page lists departure from Osaka and Kyoto. Keep a single product with Osaka primary; Kyoto applicability is evidence only until the catalog supports multiple cities."
+    },
+    {
+      "product_id": "18203",
+      "kind": "transfer",
+      "destination_id": "osaka",
+      "other_applicable_cities": ["kyoto"],
+      "title": "Limousine Bus Kansai Airport to Osaka and Kansai Area",
+      "source_url": "https://www.klook.com/en-GB/activity/18203-kansai-airport-one-way-transfer-osaka/",
+      "evidence": {"url": "https://www.klook.com/en-GB/activity/18203-kansai-airport-one-way-transfer-osaka/", "checked_on": "2026-09-09"},
+      "airport": "KIX",
+      "transfer_mode": "bus",
+      "available_directions": ["arrival", "departure", "roundtrip"],
+      "notes": "Official page lists Kyoto Station, Osaka Station and other stops, to/from route references and one-way/round-trip choices. Bus, not private car. Single KIX product; Osaka primary and Kyoto secondary, not two fabricated identities. Import defaults to arrival."
+    },
+    {
+      "product_id": "8962",
+      "kind": "tour",
+      "destination_id": "seoul",
+      "title": "Nami Island / Alpaca/Rail Bike/Petite France/Morning Calm 1Day Tour",
+      "source_url": "https://www.klook.com/activity/8962-nami-island-petite-france-railbike-garden-of-morning-calm-day-tour-seoul/",
+      "evidence": {"url": "https://www.klook.com/activity/8962-nami-island-petite-france-railbike-garden-of-morning-calm-day-tour-seoul/", "checked_on": "2026-09-09"},
+      "notes": "Official page identifies Seoul departure; the title lists alternative combinations, not a promise that every package includes every named attraction."
+    },
+    {
+      "product_id": "4158",
+      "kind": "transfer",
+      "destination_id": "seoul",
+      "title": "Private Luxury Incheon Airport Transfers (ICN) for Seoul",
+      "source_url": "https://www.klook.com/activity/4158-incheon-airport-luxury-transfers-seoul/",
+      "evidence": {"url": "https://www.klook.com/activity/4158-incheon-airport-luxury-transfers-seoul/", "checked_on": "2026-09-09"},
+      "airport": "ICN",
+      "transfer_mode": "private",
+      "available_directions": ["arrival", "departure"],
+      "notes": "ICN to Seoul or Seoul to ICN. Official page explicitly says one-way and book the opposite direction separately; do not encode a round-trip package. Source is readable but current date inventory is not verified."
+    },
+    {
+      "product_id": "74132",
+      "kind": "tour",
+      "destination_id": "busan",
+      "title": "Busan Day Tour: Sky Capsule, Gamcheon, Haeundae Blueline Park & more",
+      "source_url": "https://www.klook.com/activity/74132-busan-oneday-tour-busan/",
+      "evidence": {"url": "https://www.klook.com/activity/74132-busan-oneday-tour-busan/", "checked_on": "2026-09-09"},
+      "notes": "Official Busan tour product. Inclusions vary by package; no universal ticket inclusions, fixed duration or schedule imported."
+    },
+    {
+      "product_id": "1244",
+      "kind": "transfer",
+      "destination_id": "busan",
+      "title": "金海機場（PUS）至釜山市區私人接送",
+      "original_title": "機場接送 金海機場（PUS）至釜山市區",
+      "source_url": "https://www.klook.com/zh-TW/activity/1244-gimhae-airport-transfer-busan/",
+      "evidence": {"url": "https://www.klook.com/zh-TW/activity/1244-gimhae-airport-transfer-busan/", "checked_on": "2026-09-09"},
+      "airport": "PUS",
+      "transfer_mode": "private",
+      "available_directions": ["arrival", "departure"],
+      "notes": "Official booking instructions distinguish arrival pickup and departure drop-off between PUS and Busan. No combined round-trip ticket asserted. Source is readable but current date inventory is not verified."
+    },
+    {
+      "product_id": "79844",
+      "kind": "tour",
+      "destination_id": "taipei",
+      "title": "Taipei Small-Group Tour: Yehliu, Jiufen, Pingxi, Sky Lantern",
+      "source_url": "https://www.klook.com/activity/79844-yehliu-jiufen-shifen-pingxi-sky-lantern-one-day-tour/",
+      "evidence": {"url": "https://www.klook.com/activity/79844-yehliu-jiufen-shifen-pingxi-sky-lantern-one-day-tour/", "checked_on": "2026-09-09"},
+      "notes": "Official page identifies departure from Taipei. Package scope and availability require selection at Klook."
+    },
+    {
+      "product_id": "1478",
+      "kind": "transfer",
+      "destination_id": "taipei",
+      "title": "Private Sedan Taoyuan Airport Transfers (TPE) for Taipei",
+      "original_title": "Sedan Taoyuan Airport Transfers (TPE) for Taipei",
+      "source_url": "https://www.klook.com/activity/1478-taoyuan-airport-transfers-taipei/",
+      "evidence": {"url": "https://www.klook.com/activity/1478-taoyuan-airport-transfers-taipei/", "checked_on": "2026-09-09"},
+      "airport": "TPE",
+      "transfer_mode": "private",
+      "available_directions": ["arrival", "departure"],
+      "notes": "Official page separately describes TPE airport pickup and Taipei hotel pickup. No combined round-trip ticket asserted. Source is readable but current date inventory is not verified."
+    }
+  ],
+  "hotel_links": [
+    {
+      "product_id": "285841",
+      "destination_id": "tokyo",
+      "title": "新宿格拉斯麗飯店 / Hotel Gracery Shinjuku",
+      "source_url": "https://www.klook.com/zh-TW/hotels/detail/285841-hotel-gracery-shinjuku/",
+      "existing_source_key": "editorial:tokyo:gracery-shinjuku",
+      "checked_on": "2026-09-09",
+      "official_identity_url": "https://gracery.com/shinjuku/access/",
+      "evidence_method": "browser_name_and_address_match",
+      "identity_note": "Browser showed 新宿格拉斯麗飯店 (Hotel Gracery Shinjuku), address 1 Chome-19-1 Kabukicho; hotel official access page confirms 東京都新宿区歌舞伎町1-19-1. Initial device check completed normally before this identity verification. Add pending Klook option/offer only to the existing editorial hotel; do not overwrite core facts or approve publication."
+    }
+  ],
+  "candidates": [
+    {
+      "product_id": "104418",
+      "kind": "esim",
+      "destination_id": "tokyo",
+      "title": "Japan 4G/5G eSIM",
+      "source_url": "https://www.klook.com/activity/104418-jp-esim/",
+      "checked_on": "2026-09-09",
+      "evidence_method": "official_public_product_page",
+      "import_ready": false,
+      "review_needed": "Official source covers Japan with multiple validity/data/FUP packages. Select and verify an exact plan before import; do not invent a single validity_days or data allowance."
+    },
+    {
+      "product_id": "695",
+      "kind": "tour",
+      "destination_id": "tokyo",
+      "title": "Tokyo Disney Resort - Tokyo Disneyland & Tokyo DisneySea Park Tickets",
+      "source_url": "https://www.klook.com/en-AU/activity/695-tokyo-disney-resort-1-day-pass-tokyo/",
+      "checked_on": "2026-09-09",
+      "evidence_method": "official_public_product_page",
+      "import_ready": false,
+      "review_needed": "Theme-park admission, not a guided day tour. Keep candidate-only until catalog presentation and exact ticket selection are reviewed; do not invent an itinerary duration."
+    }
+  ]
+}

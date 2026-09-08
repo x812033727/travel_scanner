@@ -27,12 +27,14 @@ from app.affiliates.schemas import (
 )
 from app.affiliates.service import (
     AffiliateContext,
-    TravelpayoutsLinkClient,
     allowed_hosts,
     partner_supports_module,
     resolve_partner_target,
     token_payload,
     validate_target_url,
+)
+from app.affiliates.service import (
+    TravelpayoutsLinkClient as TravelpayoutsLinkClient,
 )
 from app.auth.service import CurrentUser, OptionalCurrentUser
 from app.db import get_session
@@ -47,7 +49,8 @@ from app.models import (
     TripPlan,
 )
 from app.problems import AppError
-from app.travel_services.registry import BRANDS, affiliate_click_target
+from app.travel_services.channels import channel_for, klook_affiliate_target, resolve_offer_target
+from app.travel_services.registry import BRANDS
 from app.travel_services.service import catalog_config, ready_destination_offer
 
 router = APIRouter(prefix="/affiliates", tags=["affiliate partners"])
@@ -97,7 +100,13 @@ async def _ready_destination_offers(
             )
         ).tuples().all()
     )
-    return [row for row in rows if ready_destination_offer(*row, settings, now)]
+    # One CTA per brand: prefer its explicitly enrolled direct channel when both are ready.
+    ready = [row for row in rows if ready_destination_offer(*row, settings, now)]
+    ready.sort(key=lambda row: (row[1].code, channel_for(row[1]) != "klook_direct", str(row[0].id)))
+    unique: dict[str, tuple[DestinationAffiliateOffer, TravelServiceBrand]] = {}
+    for row in ready:
+        unique.setdefault(row[1].code, row)
+    return list(unique.values())
 
 
 def _destination_option(
@@ -281,14 +290,12 @@ async def destination_affiliate_clickout(
     locale = active_locale()
     sub_id = f"dst_{offer.module}_{offer.destination_id}_{locale}"
     try:
-        target = offer.static_url or await TravelpayoutsLinkClient(redis, settings).create(
-            offer.target_url,
-            sub_id,
+        target = await resolve_offer_target(
+            offer, brand, settings, redis, sub_id,
             cache_context=(
                 f"destination:{brand.id}:{brand.version}:{offer.id}:{offer.version}:{locale}"
             ),
         )
-        target = affiliate_click_target(brand.code, target)
     except (ConnectionError, ValueError) as exc:
         raise AppError(503, "affiliate_link_unavailable", "合作連結暫時無法使用") from exc
     session.add(
@@ -297,7 +304,7 @@ async def destination_affiliate_clickout(
             search_id=UUID(source_search_id) if source_search_id else None,
             trip_id=UUID(source_trip_id) if source_trip_id else None,
             offer_id=offer.id,
-            partner="travelpayouts",
+            partner="klook" if channel_for(brand) == "klook_direct" else "travelpayouts",
             brand=brand.code,
             service_type=None,
             placement="destination",
@@ -370,6 +377,8 @@ async def affiliate_options(
             NAMESPACE_URL,
             f"travel-scanner:affiliate:{user.id}:{source}:{partner.code}:{module}",
         ).hex
+        if partner.code == "klook":
+            sub_id = f"aff_{module}_{active_locale()}"
         context = AffiliateContext(
             module=base_context.module,
             destination=base_context.destination,
@@ -434,8 +443,16 @@ async def affiliate_clickout(
         raise AppError(404, "affiliate_link_not_found", "找不到合作連結")
     settings = await load_runtime_settings(session)
     try:
+        if partner == "klook":
+            if not settings.klook_enabled:
+                raise ValueError("Klook disabled")
+            # Reject revoked/rotated AID tokens; do not retarget a signed-out old enrollment.
+            target_value = str(payload.get("target") or "")
+            target_value = klook_affiliate_target(target_value, settings.klook_affiliate_id or "")
+        else:
+            target_value = str(payload.get("target") or "")
         target = validate_target_url(
-            str(payload.get("target") or ""), allowed_hosts(settings, definition)
+            target_value, allowed_hosts(settings, definition)
         )
     except ValueError as exc:
         raise AppError(409, "affiliate_link_invalid", "合作連結無效") from exc

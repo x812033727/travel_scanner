@@ -7,6 +7,7 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { ApiError, api } from "@/lib/api";
 import { useHeaderSession } from "@/components/header-session";
 import { adminSettingsCopy } from "@/lib/admin-settings-copy";
+import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 import { domainSettingsDependencies, isDomainSettingsScope, settingsHref, settingsOwner, type AdminSettingsScope } from "@/lib/admin-settings-ownership";
 
 type Scalar = string | number | boolean;
@@ -255,6 +256,7 @@ const fieldMeta: Record<string, FieldMeta> = {
   kkday_allowed_hosts: { localized: true },
   kkday_api_base_url: { localized: true, type: "url" },
   klook_affiliate_url_template: { localized: true, type: "url" },
+  klook_affiliate_id: { label: "Klook Affiliate ID" },
   klook_allowed_hosts: { localized: true },
   klook_api_base_url: { localized: true, type: "url" },
   airalo_affiliate_url_template: { localized: true, type: "url" },
@@ -642,6 +644,7 @@ function loadFailure(reason: unknown): LoadFailure {
 export function AdminSettingsPanel({ scope = "providers", provider: linkedProvider, field: linkedField }: { scope?: AdminSettingsScope; provider?: string; field?: string }) {
   const t = useTranslations("admin");
   const copy = adminSettingsCopy(useLocale());
+  const affiliateCopy = klookAffiliateCopy(useLocale());
   const { sessionIdentity } = useHeaderSession();
   const { dateTime } = useFormatters();
   const router = useRouter();
@@ -984,7 +987,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
         {configFields.length > 0 && <div className="mt-6 grid gap-4 md:grid-cols-2">{configFields.map((field) => {
           const meta: FieldMeta = fieldMeta[field] || {};
           const label = provider.provider === "layout" ? t(`layout.fields.${field}.label`) : meta.localized ? t(`providerFields.${field}.label`) : meta.label || field;
-          const help = provider.provider === "layout" ? t(`layout.fields.${field}.help`) : meta.localized ? optionalMessage(t, `providerFields.${field}.help`) : meta.help;
+          const help = field === "klook_affiliate_id" ? affiliateCopy.noApi : provider.provider === "layout" ? t(`layout.fields.${field}.help`) : meta.localized ? optionalMessage(t, `providerFields.${field}.help`) : meta.help;
           const sourceBadge = provider.config_sources[field] === "database" ? t("settingsPanel.sourceDatabase") : t("settingsPanel.sourceEnvironment");
           if (meta.type === "boolean") return <label key={field} data-settings-provider={provider.provider} data-settings-field={field} className="flex min-h-11 items-start gap-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 md:col-span-2"><input type="checkbox" role="switch" checked={draft.config[field] === "true"} onChange={(event) => patchConfig(provider.provider, field, String(event.target.checked))} className="mt-1" /><span><span className="font-semibold">{label}</span><span className="ml-2 text-xs font-normal text-[var(--muted)]">{sourceBadge}</span>{help && <span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted)]">{help}</span>}</span></label>;
           const value = draft.config[field];

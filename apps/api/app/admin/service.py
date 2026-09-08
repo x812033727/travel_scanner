@@ -414,7 +414,10 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     "klook": ProviderDefinition(
         "Klook Affiliate",
         "活動、票券與交通合作連結；API 或 data feed 需由 Klook 個別核准。",
-        ("klook_affiliate_url_template", "klook_allowed_hosts", "klook_api_base_url"),
+        (
+            "klook_affiliate_id", "klook_affiliate_url_template",
+            "klook_allowed_hosts", "klook_api_base_url",
+        ),
         ("klook_api_key",),
         "klook_enabled",
     ),
@@ -1936,6 +1939,10 @@ async def _test_provider(
         from app.affiliates.registry import PARTNERS_BY_CODE
         from app.affiliates.service import AffiliateContext, resolve_partner_target
 
+        if provider == "klook" and not settings.klook_affiliate_url_template:
+            if not settings.klook_enabled or not settings.klook_affiliate_id:
+                raise ConnectionError("請啟用並設定 Klook Affiliate AID")
+            return "Klook AID 設定格式已確認；商品連結需另行審核，未驗證價格 API 授權"
         partner = PARTNERS_BY_CODE[affiliate_codes[provider]]
         module = partner.modules[0]
         await resolve_partner_target(

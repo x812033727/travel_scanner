@@ -102,7 +102,7 @@ def test_destination_offer_requires_fresh_brand_offer_and_matching_module() -> N
     assert ready_destination_offer(offer, brand, settings, NOW)
     changed_marker = settings.model_copy(update={"travelpayouts_marker": "new-marker"})
     assert not ready_destination_offer(offer, brand, changed_marker, NOW)
-    offer.module = "connectivity"
+    offer.module = "flight"
     assert not ready_destination_offer(offer, brand, settings, NOW)
     offer.module = "activities"
     offer.verified_at = NOW - timedelta(days=31)

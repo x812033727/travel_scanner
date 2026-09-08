@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 0 in progress · 2 blocked · 4 in review · 165 done**
+**16 open · 3 in progress · 2 blocked · 4 in review · 165 done**
 
 ## Ready to claim
 
@@ -26,7 +26,11 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-_Nothing here._
+| Task | Owner | Claimed (UTC) | Branch |
+| --- | --- | --- | --- |
+| [Klook direct affiliate product integration and reviewed rollout](open/2026-09-08-klook-direct-affiliate-integration.md) | codex-klook-root | 2026-09-08T16:43:31Z | `codex/klook-product-integration` |
+| [Klook channel aware affiliate backend and secure clickout](open/2026-09-08-klook-channel-backend.md) | codex-klook-backend | 2026-09-08T16:51:43Z | `codex/klook-product-integration` |
+| [Klook affiliate frontend channels and contextual discovery](open/2026-09-08-klook-affiliate-web.md) | codex-klook-web | 2026-09-08T16:32:56Z | `codex/klook-product-integration` |
 
 ## In review
 

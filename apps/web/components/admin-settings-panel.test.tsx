@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminSettingsPanel } from "./admin-settings-panel";
+import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 
 const sessionIdentity = vi.hoisted(() => ({ user: null as { id: string; email: string; preferred_currency?: string } | null, key: undefined as object | undefined }));
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: sessionIdentity.user, sessionIdentity: sessionIdentity.key ?? sessionIdentity.user }) }));
@@ -403,6 +404,23 @@ function savedBody(fetchMock: ReturnType<typeof vi.fn>) {
 afterEach(() => { vi.unstubAllGlobals(); vi.restoreAllMocks(); sessionIdentity.user = null; sessionIdentity.key = undefined; });
 
 describe("AdminSettingsPanel", () => {
+  it("saves a direct Klook affiliate ID as text without requiring or calling a pricing API", async () => {
+    const data = { ...snapshot, providers: [{ provider: "klook", label: "Klook", description: "Affiliate links", enabled: true,
+      configured: true, status: "ready", status_message: "Affiliate links ready", config: { klook_affiliate_id: "12345" },
+      config_sources: { klook_affiliate_id: "database" }, secrets: { klook_api_key: { configured: false, source: "none" } }, updated_at: null }] };
+    const fetchMock = vi.fn().mockImplementation(async () => new Response(JSON.stringify(data), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminSettingsPanel provider="klook" field="klook_affiliate_id" />);
+    const field = await screen.findByLabelText(/^Klook Affiliate ID/);
+    expect(screen.getByText(klookAffiliateCopy("zh-TW").noApi)).toBeTruthy();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    fireEvent.change(field, { target: { value: "67890" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(String(fetchMock.mock.calls[1][0])).toContain("/admin/provider-settings/klook");
+    expect(JSON.parse(String(fetchMock.mock.calls[1][1].body))).toEqual({ config: { klook_affiliate_id: "67890" }, secrets: {}, expected_updated_at: null });
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes("test-connection") || String(url).includes("hotel-quotes"))).toBe(false);
+  });
   it("keeps active and retained drafts when currency/profile updates replace the user object", async () => {
     sessionIdentity.key = {};
     sessionIdentity.user = { id: "profile-admin", email: "admin@example.com", preferred_currency: "TWD" };

@@ -11,7 +11,7 @@ from sqlalchemy import func, or_, select
 
 from app.admin.service import load_runtime_settings
 from app.affiliates.schemas import AffiliateModule
-from app.affiliates.service import TravelpayoutsLinkClient
+from app.affiliates.service import TravelpayoutsLinkClient as TravelpayoutsLinkClient
 from app.auth.service import AdminUser
 from app.destinations.catalog import DESTINATIONS
 from app.infra import get_redis
@@ -28,10 +28,18 @@ from app.models import (
     TravelServiceProduct,
     TripServiceSelection,
 )
+from app.travel_services.channels import (
+    channel_for,
+    channel_project,
+    klook_product_target,
+    resolve_offer_target,
+    validate_offer_target,
+    verify_browser_target,
+)
 from app.travel_services.hotel_quotes import ADAPTERS
 from app.travel_services.imports import commit_import, parse_csv, upsert_product
 from app.travel_services.network import verify_link
-from app.travel_services.registry import BRANDS, affiliate_target, brand_target
+from app.travel_services.registry import BRANDS
 from app.travel_services.router import Session
 from app.travel_services.schemas import (
     CITIES,
@@ -170,7 +178,12 @@ async def overview_data(
     brands = list(
         await session.scalars(
             select(TravelServiceBrand).where(
-                TravelServiceBrand.project_id == (settings.travelpayouts_project_id or "")
+                or_(
+                    (TravelServiceBrand.channel == "travelpayouts")
+                    & (TravelServiceBrand.project_id == (settings.travelpayouts_project_id or "")),
+                    (TravelServiceBrand.channel == "klook_direct")
+                    & (TravelServiceBrand.project_id == (settings.klook_affiliate_id or "")),
+                )
             )
         )
     )
@@ -392,6 +405,19 @@ async def overview_data(
             if domain != "hotels" or "hotel" in b.kinds
         },
         "project_id": settings.travelpayouts_project_id,
+        "channels": {
+            "travelpayouts": {
+                "project_id": settings.travelpayouts_project_id,
+                "configured": bool(
+                    settings.travelpayouts_enabled and settings.travelpayouts_project_id
+                    and settings.travelpayouts_marker and settings.travelpayouts_api_token
+                ),
+            },
+            "klook_direct": {
+                "project_id": settings.klook_affiliate_id,
+                "configured": bool(settings.klook_enabled and settings.klook_affiliate_id),
+            },
+        },
         "network_configured": bool(
             settings.travelpayouts_enabled
             and settings.travelpayouts_api_token
@@ -584,8 +610,9 @@ async def review_hotel_option(
 @router.put("/brands")
 async def put_brand(payload: BrandInput, user: AdminUser, session: Session) -> dict[str, Any]:
     settings = await load_runtime_settings(session)
+    project_id = channel_project(settings, payload.channel)
     if (
-        not settings.travelpayouts_project_id
+        not project_id
         or payload.code not in BRANDS
         or (payload.enabled and payload.approval != "approved")
     ):
@@ -593,7 +620,8 @@ async def put_brand(payload: BrandInput, user: AdminUser, session: Session) -> d
     row = await session.scalar(
         select(TravelServiceBrand)
         .where(
-            TravelServiceBrand.project_id == settings.travelpayouts_project_id,
+            TravelServiceBrand.project_id == project_id,
+            TravelServiceBrand.channel == payload.channel,
             TravelServiceBrand.code == payload.code,
         )
         .with_for_update()
@@ -602,7 +630,7 @@ async def put_brand(payload: BrandInput, user: AdminUser, session: Session) -> d
         raise fail("service_version_conflict", 409)
     if row is None:
         row = TravelServiceBrand(
-            project_id=settings.travelpayouts_project_id, code=payload.code, version=0
+            project_id=project_id, channel=payload.channel, code=payload.code, version=0
         )
         session.add(row)
     row.approval, row.enabled, row.evidence_url = (
@@ -617,7 +645,7 @@ async def put_brand(payload: BrandInput, user: AdminUser, session: Session) -> d
         user,
         "brand_verify",
         payload.code,
-        {"project_id": row.project_id, "approval": row.approval},
+        {"channel": payload.channel, "project_id": row.project_id, "approval": row.approval},
     )
     await session.commit()
     return record(row)
@@ -635,9 +663,9 @@ async def put_offer(payload: OfferInput, user: AdminUser, session: Session) -> d
     ):
         raise fail("service_brand_unavailable")
     try:
-        brand_target(brand.code, payload.target_url)
-        if payload.static_url:
-            affiliate_target(payload.static_url)
+        validate_offer_target(brand, payload.target_url, payload.static_url)
+        if channel_for(brand) == "klook_direct" and payload.scope == "product":
+            klook_product_target(payload.target_url, product.kind)
     except ValueError as exc:
         raise fail("service_offer_mismatch") from exc
     existing = await session.scalar(
@@ -671,32 +699,46 @@ async def review_offer(
         if not brand or not ready_brand(brand, settings, datetime.now(UTC)):
             raise fail("service_brand_unavailable")
         try:
-            if not row.static_url and not BRANDS[brand.code].api_supported:
+            direct = channel_for(brand) == "klook_direct"
+            if payload.browser_verified and not direct:
                 raise fail("service_link_unavailable")
-            if not row.static_url and not (
+            if not direct and not row.static_url and not BRANDS[brand.code].api_supported:
+                raise fail("service_link_unavailable")
+            if not direct and not row.static_url and not (
                 settings.travelpayouts_api_token and settings.travelpayouts_marker
             ):
                 raise fail("service_brand_unavailable")
-            target = row.static_url or await TravelpayoutsLinkClient(get_redis(), settings).create(
-                row.target_url, "svc_verify", cache_context=f"verify:{row.id}:{row.version}"
+            target = await resolve_offer_target(
+                row, brand, settings, get_redis(), "svc_verify",
+                cache_context=f"verify:{row.id}:{row.version}",
             )
             if row.static_url and not settings.travelpayouts_marker:
                 raise fail("service_brand_unavailable")
-            if not await verify_link(
-                target,
-                brand.code,
-                row.target_url,
-                marker=settings.travelpayouts_marker if row.static_url else None,
-                project=settings.travelpayouts_project_id if row.static_url else None,
-            ):
+            if payload.browser_verified:
+                verified = await verify_browser_target(
+                    brand, row.target_url, payload.evidence_url, settings
+                )
+            else:
+                verified = await verify_link(
+                    target,
+                    brand.code,
+                    row.target_url,
+                    marker=settings.travelpayouts_marker if row.static_url else None,
+                    project=settings.travelpayouts_project_id if row.static_url else None,
+                    **({"klook_affiliate_id": settings.klook_affiliate_id} if direct else {}),
+                )
+            if not verified:
                 raise fail("service_link_unavailable")
-            row.verification_context = link_context(settings)
+            row.verification_context = link_context(settings, channel_for(brand))
         except (httpx.HTTPError, ConnectionError, ValueError, TimeoutError) as exc:
             raise fail("service_link_unavailable") from exc
     row.status = payload.status
     row.verified_at = datetime.now(UTC) if payload.status == "approved" else None
     row.version += 1
-    audit(session, user, "offer_review", str(row.id), {"status": row.status})
+    audit(session, user, "offer_review", str(row.id), {
+        "status": row.status, "method": "browser" if payload.browser_verified else "network",
+        "evidence_url": payload.evidence_url if payload.browser_verified else None,
+    })
     await session.commit()
     return record(row)
 
@@ -714,9 +756,7 @@ def _validate_destination_offer(
     ):
         raise fail("service_brand_unavailable")
     try:
-        brand_target(brand.code, payload.target_url)
-        if payload.static_url:
-            affiliate_target(payload.static_url)
+        validate_offer_target(brand, payload.target_url, payload.static_url)
     except ValueError as exc:
         raise fail("service_offer_mismatch") from exc
 
@@ -729,7 +769,9 @@ async def create_destination_offer(
 ) -> dict[str, Any]:
     settings = await load_runtime_settings(session)
     brand = await session.get(TravelServiceBrand, payload.brand_id)
-    _validate_destination_offer(payload, brand, settings.travelpayouts_project_id)
+    _validate_destination_offer(
+        payload, brand, channel_project(settings, channel_for(brand)) if brand else None
+    )
     existing = await session.scalar(
         select(DestinationAffiliateOffer).where(
             DestinationAffiliateOffer.brand_id == payload.brand_id,
@@ -770,7 +812,9 @@ async def edit_destination_offer(
         raise fail("service_version_conflict", 409)
     settings = await load_runtime_settings(session)
     brand = await session.get(TravelServiceBrand, payload.brand_id)
-    _validate_destination_offer(payload, brand, settings.travelpayouts_project_id)
+    _validate_destination_offer(
+        payload, brand, channel_project(settings, channel_for(brand)) if brand else None
+    )
     duplicate = await session.scalar(
         select(DestinationAffiliateOffer.id).where(
             DestinationAffiliateOffer.brand_id == payload.brand_id,
@@ -796,6 +840,8 @@ async def _review_destination_offer_row(
     row: DestinationAffiliateOffer,
     status: str,
     session: Session,
+    *,
+    review: ReviewInput | None = None,
 ) -> None:
     if status == "approved":
         brand = await session.get(TravelServiceBrand, row.brand_id)
@@ -807,30 +853,39 @@ async def _review_destination_offer_row(
         ):
             raise fail("service_brand_unavailable")
         try:
-            if not row.static_url and not BRANDS[brand.code].api_supported:
+            direct = channel_for(brand) == "klook_direct"
+            if review and review.browser_verified and not direct:
                 raise fail("service_link_unavailable")
-            if not row.static_url and not (
+            if not direct and not row.static_url and not BRANDS[brand.code].api_supported:
+                raise fail("service_link_unavailable")
+            if not direct and not row.static_url and not (
                 settings.travelpayouts_api_token
                 and settings.travelpayouts_marker
                 and settings.travelpayouts_project_id
             ):
                 raise fail("service_brand_unavailable")
-            target = row.static_url or await TravelpayoutsLinkClient(get_redis(), settings).create(
-                row.target_url,
-                "dst_verify",
+            target = await resolve_offer_target(
+                row, brand, settings, get_redis(), "dst_verify",
                 cache_context=f"destination-verify:{row.id}:{row.version}",
             )
             if row.static_url and not settings.travelpayouts_marker:
                 raise fail("service_brand_unavailable")
-            if not await verify_link(
-                target,
-                brand.code,
-                row.target_url,
-                marker=settings.travelpayouts_marker if row.static_url else None,
-                project=settings.travelpayouts_project_id if row.static_url else None,
-            ):
+            if review and review.browser_verified:
+                verified = await verify_browser_target(
+                    brand, row.target_url, review.evidence_url, settings
+                )
+            else:
+                verified = await verify_link(
+                    target,
+                    brand.code,
+                    row.target_url,
+                    marker=settings.travelpayouts_marker if row.static_url else None,
+                    project=settings.travelpayouts_project_id if row.static_url else None,
+                    **({"klook_affiliate_id": settings.klook_affiliate_id} if direct else {}),
+                )
+            if not verified:
                 raise fail("service_link_unavailable")
-            row.verification_context = link_context(settings)
+            row.verification_context = link_context(settings, channel_for(brand))
         except (httpx.HTTPError, ConnectionError, ValueError, TimeoutError) as exc:
             raise fail("service_link_unavailable") from exc
     row.status = status
@@ -883,13 +938,14 @@ async def review_destination_offer(
     )
     if not row or row.version != payload.version:
         raise fail("service_version_conflict", 409)
-    await _review_destination_offer_row(row, payload.status, session)
+    await _review_destination_offer_row(row, payload.status, session, review=payload)
     audit(
         session,
         user,
         "destination_offer_review",
         str(row.id),
-        {"status": row.status},
+        {"status": row.status, "method": "browser" if payload.browser_verified else "network",
+         "evidence_url": payload.evidence_url if payload.browser_verified else None},
     )
     await session.commit()
     return record(row)
@@ -953,7 +1009,10 @@ async def preview_import_data(
 @router.post("/imports/{run_id}/commit")
 async def apply_import(run_id: UUID, user: AdminUser, session: Session) -> dict[str, Any]:
     settings = await load_runtime_settings(session)
-    result = await commit_import(session, run_id, settings.travelpayouts_project_id)
+    result = await commit_import(
+        session, run_id, settings.travelpayouts_project_id,
+        klook_affiliate_id=settings.klook_affiliate_id,
+    )
     audit(session, user, "import_commit", str(run_id), result)
     await session.commit()
     return result
