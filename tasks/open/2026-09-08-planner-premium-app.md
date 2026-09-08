@@ -1,11 +1,11 @@
 ---
 id: 2026-09-08-planner-premium-app
 title: Premium app-style itinerary planning flow
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-planner-premium
-claimed_at: 2026-09-08T23:07:26Z
+claimed_at: 2026-09-08T23:14:10Z
 created_at: 2026-09-08T21:19:04Z
 completed_at:
 branch: codex/planner-premium-app
@@ -16,6 +16,8 @@ scope:
   - apps/web/e2e/trip-stay-areas.spec.ts
   - apps/web/e2e/stay22-maps.spec.ts
   - apps/web/e2e/readability.spec.ts
+  - apps/web/e2e/community.spec.ts
+  - apps/web/e2e/travel-services.spec.ts
   - apps/web/components/itinerary-diff.tsx
   - apps/web/components/itinerary-diff.test.tsx
   - apps/web/components/itinerary-place-browser.tsx
@@ -72,6 +74,8 @@ Browser scenarios use isolated fixture trips, not production accounts or paid pr
 ## Notes
 
 Base: b675f5d34a353eddfb789a953968c3c6d45eac4a. Worktree: C:/Users/x8120/.codex/worktrees/mokaair-planner-premium.
+
+Rebased onto 29c36b258789d3750d3620cceb3a8d1da7fc59df before final CI. Completed Klook task archive and community E2E scope handoff are owner-provided task-only commits; no foreign checkout was modified. Updated existing browser journeys to enter their new tools categories without dropping their underlying assertions. Nested legacy service sheets retain keyboard ownership until dismissed.
 
 Feature-local five-language copy avoids overlapping the active merchant-style task's messages scope. Existing completed #366 and #368 task records were archived only after remote merge/release evidence was checked.
 

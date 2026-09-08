@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 1 in progress · 2 blocked · 1 in review · 171 done**
+**16 open · 0 in progress · 2 blocked · 2 in review · 171 done**
 
 ## Ready to claim
 
@@ -26,15 +26,14 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [Premium app-style itinerary planning flow](open/2026-09-08-planner-premium-app.md) | codex-planner-premium | 2026-09-08T23:07:26Z | `codex/planner-premium-app` |
+_Nothing here._
 
 ## In review
 
 | Task | Owner | Branch |
 | --- | --- | --- |
 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
+| [Premium app-style itinerary planning flow](open/2026-09-08-planner-premium-app.md) | codex-planner-premium | `codex/planner-premium-app` |
 
 ## Waiting
 

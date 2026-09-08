@@ -4,6 +4,15 @@ import { StrictMode, useState, type CSSProperties } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { plannerOverlayCopy } from "./planner/overlay-copy";
 import { PlannerOverlay } from "./planner-overlay";
+import { useModalSheet } from "@/lib/modal-sheet";
+
+function LegacyChild() {
+  const [open, setOpen] = useState(false);
+  const ref = useModalSheet<HTMLDivElement>(open, () => setOpen(false));
+  return <><button onClick={() => setOpen(true)}>Open hotel service</button>{open && <div ref={ref} role="dialog" aria-modal="true" aria-label="Legacy hotel service">
+    <button aria-label="Close hotel service" onClick={() => setOpen(false)}>Close</button><button>Last hotel action</button>
+  </div>}</>;
+}
 
 function Harness() {
   const [open, setOpen] = useState(false);
@@ -84,6 +93,31 @@ describe("PlannerOverlay", () => {
     fireEvent.keyDown(document, { key: "Escape" });
     expect(secondClose).toHaveBeenCalledOnce();
     expect(firstClose).not.toHaveBeenCalled();
+  });
+
+  it("lets a nested legacy service sheet own Escape and Tab without closing tools or losing scroll lock", async () => {
+    const close = vi.fn();
+    const previousOverflow = document.body.style.overflow;
+    const { unmount } = render(<PlannerOverlay open title="Tools" onClose={close}><LegacyChild /></PlannerOverlay>);
+    await nextFrame();
+    const opener = screen.getByRole("button", { name: "Open hotel service" });
+    opener.focus(); fireEvent.click(opener);
+    await nextFrame();
+    const childClose = screen.getByRole("button", { name: "Close hotel service" });
+    expect(document.activeElement).toBe(childClose);
+    const last = screen.getByRole("button", { name: "Last hotel action" });
+    last.focus(); fireEvent.keyDown(last, { key: "Tab" });
+    expect(document.activeElement).toBe(childClose);
+    fireEvent.keyDown(childClose, { key: "Escape" });
+    expect(screen.queryByRole("dialog", { name: "Legacy hotel service" })).toBeNull();
+    expect(screen.getByRole("dialog", { name: "Tools" })).toBeTruthy();
+    expect(close).not.toHaveBeenCalled();
+    expect(document.activeElement).toBe(opener);
+    expect(document.body.style.overflow).toBe("hidden");
+    fireEvent.keyDown(opener, { key: "Escape" });
+    expect(close).toHaveBeenCalledOnce();
+    unmount();
+    expect(document.body.style.overflow).toBe(previousOverflow);
   });
 
   it("restores body styles and scroll after out-of-order unmounts, including Strict Mode", async () => {

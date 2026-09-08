@@ -485,6 +485,8 @@ for (const width of [320, 390, 1280]) {
     await mock(context, true, false, true);
     await page.setViewportSize({width, height:860});
     await page.goto("/en/trips/fixture-trip");
+    await page.getByRole("button", { name: "Open trip tools", exact: true }).click();
+    await page.getByRole("button", { name: /^Travel essentials/ }).click();
     await page.getByRole("button", {name:en.hotel, exact:true}).click();
     const parent = page.getByRole("dialog",{name:en.hotel, exact:true});
     const opener = parent.getByRole("button",{name:en.platforms}).first();
@@ -502,6 +504,8 @@ for (const width of [320, 390, 1280]) {
     await expect(parent).toBeVisible();
     await page.goBack();
     await expect(parent).toHaveCount(0);
+    expect(await page.evaluate(()=>document.body.style.overflow)).toBe("hidden");
+    await page.getByRole("dialog", { name: "Trip tools", exact: true }).getByRole("button", { name: "Close", exact: true }).click();
     expect(await page.evaluate(()=>document.body.style.overflow)).not.toBe("hidden");
   });
   test(`${width}px shared planner sheet locks scroll, traps focus and handles back`, async ({
@@ -511,6 +515,8 @@ for (const width of [320, 390, 1280]) {
     await mock(context, true);
     await page.setViewportSize({ width, height: 860 });
     await page.goto("/en/trips/fixture-trip");
+    await page.getByRole("button", { name: "Open trip tools", exact: true }).click();
+    await page.getByRole("button", { name: /^Travel essentials/ }).click();
     const trigger = page.getByRole("button", { name: en.hotel, exact: true });
     await expect(trigger).toBeEnabled();
     await trigger.click();
@@ -533,6 +539,14 @@ for (const width of [320, 390, 1280]) {
     await page.goBack();
     await expect(dialog).toHaveCount(0);
     await expect(trigger).toBeFocused();
+    expect(await page.evaluate(() => document.body.style.overflow)).toBe("hidden");
+    await trigger.click();
+    await expect(dialog).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(dialog).toHaveCount(0);
+    await expect(page.getByRole("dialog", { name: "Trip tools", exact: true })).toBeVisible();
+    await expect(trigger).toBeFocused();
+    await page.getByRole("dialog", { name: "Trip tools", exact: true }).getByRole("button", { name: "Close", exact: true }).click();
     expect(await page.evaluate(() => document.body.style.overflow)).not.toBe(
       "hidden",
     );

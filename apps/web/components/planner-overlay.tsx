@@ -83,6 +83,19 @@ function focusableElements(panel: HTMLElement) {
   });
 }
 
+// Older service sheets use useModalSheet instead of registering in this stack.
+// Their own keyboard trap must win while mounted inside a contextual tool panel.
+function hasNestedModal(panel: HTMLElement) {
+  return Array.from(panel.querySelectorAll<HTMLElement>('[role="dialog"][aria-modal="true"]')).some((dialog) => {
+    if (dialog.closest('[hidden], [inert], [aria-hidden="true"]')) return false;
+    for (let node: HTMLElement | null = dialog; node && node !== panel; node = node.parentElement) {
+      const style = getComputedStyle(node);
+      if (style.display === "none" || style.visibility === "hidden") return false;
+    }
+    return true;
+  });
+}
+
 export function PlannerOverlay(props: PlannerOverlayProps) {
   // Reopening resets presentation only; controlled drafts remain owned by the parent.
   return props.open ? <OpenPlannerOverlay {...props} /> : null;
@@ -135,10 +148,10 @@ function OpenPlannerOverlay({
     syncLayers();
     const isTop = () => layers.at(-1) === layer;
     const focusFrame = requestAnimationFrame(() => {
-      if (isTop()) (panel.querySelector<HTMLElement>("[data-planner-close]") || panel).focus({ preventScroll: true });
+      if (isTop() && !hasNestedModal(panel)) (panel.querySelector<HTMLElement>("[data-planner-close]") || panel).focus({ preventScroll: true });
     });
     function onKeyDown(event: KeyboardEvent) {
-      if (!isTop() || event.defaultPrevented || event.isComposing) return;
+      if (!isTop() || hasNestedModal(panel!) || event.defaultPrevented || event.isComposing) return;
       if (event.key === "Escape") {
         event.preventDefault(); closeOverlay(); return;
       }

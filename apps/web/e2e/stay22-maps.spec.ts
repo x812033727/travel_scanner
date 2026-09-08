@@ -49,6 +49,7 @@ for (const { locale, width } of [
       await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
     });
     await page.goto(`/${locale}/trips/${tripId}`);
+    await page.locator(".premium-optional-stop").filter({ has: page.getByRole("button", { name: "設定主要飯店", exact: true, includeHidden: true }) }).first().locator("summary").first().click();
     // The existing SystemItineraryCard still uses this legacy label in every locale.
     await page.getByRole("button", { name: "設定主要飯店", exact: true }).first().click();
     const copy: Stay22Copy = JSON.parse(readFileSync(new URL(`../lib/stay22-messages/${locale}.json`, import.meta.url), "utf8"));

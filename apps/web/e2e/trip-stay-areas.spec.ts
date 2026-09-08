@@ -122,6 +122,7 @@ test.beforeEach(async ({ page }) => {
 
 test("recommends stay areas, compares prices and sets the chosen hotel as primary lodging", async ({ page }) => {
   await page.goto(`/zh-TW/trips/${tripId}`);
+  await page.locator(".premium-optional-stop").filter({ has: page.getByRole("button", { name: "設定主要飯店", includeHidden: true }) }).first().locator("summary").first().click();
   await page.getByRole("button", { name: "設定主要飯店" }).first().click();
 
   const dialog = page.getByRole("dialog", { name: "住宿熱區" });
