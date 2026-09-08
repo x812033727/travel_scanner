@@ -4,6 +4,11 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { CSP_BASELINE, buildStrictContentSecurityPolicy, createNonce } from "./csp";
 
 describe("content security policy", () => {
+  it("permits the exact Stay22 frame origin without allowing its scripts or parent connections", () => {
+    const directives = buildStrictContentSecurityPolicy({ nonce: "n", production: true }).split("; ");
+    expect(directives.find((value) => value.startsWith("frame-src"))).toBe("frame-src https://www.google.com https://www.stay22.com");
+    expect(directives.filter((value) => !value.startsWith("frame-src")).join(";")).not.toContain("stay22");
+  });
   afterEach(() => vi.unstubAllEnvs());
   it("allows only the configured media origin, with local HTTP limited to development", () => {
     vi.stubEnv("COMMUNITY_MEDIA_ORIGIN", "https://media.example.test");

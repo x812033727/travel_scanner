@@ -68,8 +68,8 @@ export function buildStrictContentSecurityPolicy({
     `img-src 'self' data: blob: https:${mediaSources.length ? " " + mediaSources.join(" ") : ""}`,
     "font-src 'self' data:",
     `connect-src 'self' ${[...ANALYTICS_CONNECT_SOURCES, ...NAVER_MAP_SOURCES, ...TRAVELPAYOUTS_DRIVE_SOURCES, ...mediaSources].join(" ")}`,
-    // Google Maps Embed API iframe in route-map.tsx.
-    "frame-src https://www.google.com",
+    // Stay22 is a click-to-load iframe, never a parent-page LMA/script integration.
+    "frame-src https://www.google.com https://www.stay22.com",
     "worker-src 'self' blob:",
     "manifest-src 'self'",
     "media-src 'self'",
