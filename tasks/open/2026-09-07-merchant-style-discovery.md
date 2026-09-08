@@ -5,10 +5,10 @@ status: review
 priority: P1
 area: api
 owner: codex
-claimed_at: 2026-09-08T02:10:28Z
+claimed_at: 2026-09-08T03:49:58Z
 created_at: 2026-09-07T23:14:18Z
 completed_at:
-branch: codex/merchant-style-batch-04
+branch: codex/merchant-style-batch-05
 depends_on: []
 scope:
   - apps/api/app/models.py
@@ -76,7 +76,7 @@ Web: 單工 Vitest、TypeScript、lint、check:i18n、production build；merchan
 新候選缺精準地圖與可永久保存座標時保持 pending/inactive/unverified，不用來源文字推造識別。
 先完成原始來源審查，再於已部署的後台逐一記錄操作人及風格核准；資料檔不能偷帶 approved。
 PR #345 已合併部署，第二／三批 PR #346、#347 已依授權合併；繼續新增仍只補正式待審候選，不代表核准發布。
-未啟動付費模型或地圖批次，第四批資料 PR 的合併仍需新授權。
+未啟動付費模型或地圖批次；第四批PR #350已依本輪授權合併，第五批資料PR的合併仍需新授權。
 
 ## PR 與驗證交接
 
@@ -125,3 +125,16 @@ PR #345 已合併部署，第二／三批 PR #346、#347 已依授權合併；�
 - CI紀錄（fe565e1）：PR run `34179853238` 全綠，API 1819 passed / 3 skipped、Web 785、isolated browser 230、旅遊與社群全端各6通過；push run `34179822859` 首次全端工作失敗。
 - 失敗位置為 community.spec.ts:375，刪除帳號後的舊session GET `/api/travel/auth/me` 發生ECONNRESET，未收到HTTP狀態，並非已觀察到授權斷言錯誤。同次PostgreSQL輸出有 `uq_community_metric` 重複讀取計數，但不能據此認定是重設連線的原因。
 - 此類問題已由 [既存社群併發待辦](2026-09-07-community-read-metric-concurrency.md)追蹤，本批未修改相關程式、未放寬斷言／timeout，也未在正式環境修復。已單獨重跑失敗工作，通過也不代表根因已解決；結果與最新head檢查記錄於PR，未複製token、私人信件或會員識別。
+
+## 第五批交接（2026-09-08）
+
+- 本輪「合併後繼續新增」授權已用於#350：先後無衝突同步#349店家預約連結與#352飯店資料，重跑相關測試，八項checks全綠後鎖定head `240178b6daff4607b8db1e4be027d4aefc70fcd3` squash合併為 `7b19c2f5717a1becdb6f93249bb0fc9d5c4ae598`，已fetch確認在main。
+- #350最終PR run `34184379282`、push run `34184376555` 均通過；API 1847 passed / 3 skipped、mypy 257 files、Ruff，旅遊與社群全端各6項通過。先前偶發社群連線錯誤仍由既存待辦追蹤，本批未修復或放寬測試。
+- 從上述最新main建立 `codex/merchant-style-batch-05`，保留原mobile-planner checkout與其他PR。合併後main CI為 `34184865496`，最終狀態與第五批完整CI結果記錄於PR。
+- 5家全新候選：現流冊店、浮光書店、ONIBUS中目黒駅前店、Cafe Bibliotic Hello!、The Coastal Settlement；2網美／3文青。分店地址、來源年份、營運細節限制及未納入項目見 docs/merchant-styles.md。
+- 增加第五批資料／真實preview-apply-replay測試，並逐欄驗證第二至五批店名、地址、風格證據與來源。首輪新增來源計數誤含fixture舊店，已限定至本批merchant IDs；未修改產品程式或降低驗證標準。
+- 本機48 passed / 1 PostgreSQL-only skipped，全套Ruff及mypy 257 files通過；tools 27 tests、task board 176 files通過。Linux PostgreSQL與完整遷移／Web／五語系／瀏覽器由CI驗證。
+- 正式環境先查重，確認已部署API為 `aaa33f008c82c56e5c541dede8205097102193e1`、schema `0062_merchant_platform_links`，不回退或重建服務。查重首查誤用JSON欄位address_local，read-only SQL遭拒，按模型address欄位重查零重複；沒有寫入副作用。
+- 正式作業目錄 `/root/mokaair-merchant-batch-05-QcyRbvOC` 保留JSON、preview／locked-preview／applied／replay與備份索引；備份7,087,794 bytes、權限600，無刪除舊備份。兩部署鎖、三處checksum及鎖內預覽皆核對後套用。
+- 正式新增5店／5標籤，重播預覽0／0；皆pending/inactive/unverified、未填地圖／座標／商圈，未指定審核人。兩筆系統稽核，五批合計29新候選＋2既有補風格、32個pending標籤；公開風格仍0、/ready正常、foods頁200。
+- 第五批仍只交付來源資料及待審匯入，需在後台補精準地圖、耐久座標、商圈與獨立風格／發布審核；未完成整體任務，不標done。
