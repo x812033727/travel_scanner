@@ -80,3 +80,5 @@ Rebased onto 29c36b258789d3750d3620cceb3a8d1da7fc59df before final CI. Completed
 Feature-local five-language copy avoids overlapping the active merchant-style task's messages scope. Existing completed #366 and #368 task records were archived only after remote merge/release evidence was checked.
 
 First browser run exposed an oversized configured hotel card; lodging details now expand on demand. Pending metadata/intent requests prevent panel switching and stale-response overwrites. API full Windows run excludes test_deployment_center.py because socketserver.UnixStreamServer is Linux-only; CI must cover it.
+
+Draft PR #371 is open. At 84d8b5a, CI Web passed 1,024 unit tests and 282 browser scenarios; dedicated planner CI passed 22 desktop/mobile scenarios, and containers/full-stack smoke passed. API CI exposed a new test fixture's missing owner-before-trip flush on PostgreSQL; the fixture now explicitly orders inserts and enables SQLite foreign-key enforcement. The updated head must pass the complete CI before marking the PR ready.

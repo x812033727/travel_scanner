@@ -57,6 +57,8 @@ async def harness(request, monkeypatch):
     monkeypatch.setattr(trips, "refreshed_plan", no_provider)
     try:
         async with engine.begin() as connection:
+            if request.param == "sqlite":
+                await connection.execute(text("PRAGMA foreign_keys=ON"))
             await connection.run_sync(Base.metadata.create_all)
         async with async_sessionmaker(engine, expire_on_commit=False)() as session:
             user = User(id=uuid4(), email="preferences@example.test", is_active=True)
@@ -112,7 +114,11 @@ async def harness(request, monkeypatch):
                     "future_trip_key": [1, 2, 3],
                 },
             )
-            session.add_all([user, other, trip])
+            # These models have FK columns but no ORM relationship to order inserts.
+            # Persist the owners before their trip on both supported databases.
+            session.add_all([user, other])
+            await session.flush()
+            session.add(trip)
             await session.flush()
             rows: list[TripPlanItem] = []
             ensure_system_slots(session, trip, rows)
