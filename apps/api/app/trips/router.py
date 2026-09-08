@@ -2888,13 +2888,13 @@ async def trip_place_options(
     longitude: Annotated[float | None, Query(ge=-180, le=180)] = None,
     next_latitude: Annotated[float | None, Query(ge=-90, le=90)] = None,
     next_longitude: Annotated[float | None, Query(ge=-180, le=180)] = None,
-    radius_km: Literal[3, 10] = 3,
+    radius_km: Annotated[int, Query(ge=3, le=10)] = 3,
     all_cities: bool = False,
     offset: Annotated[int, Query(ge=0, le=10000)] = 0,
     limit: Annotated[int, Query(ge=1, le=24)] = 12,
 ) -> dict[str, Any]:
     trip = await owned_trip(session, user.id, trip_id)
-    if (latitude is None) != (longitude is None) or (
+    if radius_km not in {3, 10} or (latitude is None) != (longitude is None) or (
         (next_latitude is None) != (next_longitude is None)
     ):
         raise AppError(422, "invalid_place_bias", "經緯度需成對提供")

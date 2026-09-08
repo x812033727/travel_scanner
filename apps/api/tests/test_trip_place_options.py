@@ -24,6 +24,19 @@ from app.trips.place_options import (
 )
 
 
+@pytest.mark.parametrize("radius", ["3", "10"])
+def test_radius_accepts_numeric_query_strings(radius: str) -> None:
+    from fastapi.dependencies.utils import get_dependant
+
+    from app.trips.router import trip_place_options
+
+    dependency = get_dependant(path="/{trip_id}/place-options", call=trip_place_options)
+    field = next(field for field in dependency.query_params if field.name == "radius_km")
+    value, errors = field.validate(radius, {}, loc=("query", "radius_km"))
+    assert not errors
+    assert value == int(radius)
+
+
 def hotspot(**overrides: Any) -> TravelHotspot:
     return TravelHotspot(
         **{
@@ -157,6 +170,7 @@ async def live_member() -> AsyncIterator[tuple[AsyncClient, dict[str, str]]]:
             },
         )
         assert response.status_code == 201, response.text
+        client.cookies.clear()
         yield client, {"Authorization": f"Bearer {response.json()['access_token']}"}
     await engine.dispose()
     await get_redis().aclose()
@@ -199,7 +213,9 @@ async def test_editor_catalog_insertion_move_reload_conflict_and_owner_isolation
         session.add(HotspotFavorite(user_id=stored.user_id, hotspot_id=first.id))
         await session.commit()
     base = f"/api/v1/trips/{trip['id']}"
-    options_response = await client.get(base + "/place-options?source=favorites", headers=headers)
+    options_response = await client.get(
+        base + "/place-options?source=favorites&radius_km=3", headers=headers
+    )
     assert options_response.status_code == 200, options_response.text
     options = options_response.json()["items"]
     assert {item["id"] for item in options} == {str(first.id)}
@@ -215,6 +231,7 @@ async def test_editor_catalog_insertion_move_reload_conflict_and_owner_isolation
         },
     )
     assert stranger.status_code == 201
+    client.cookies.clear()
     assert (
         await client.get(
             base + "/place-options",

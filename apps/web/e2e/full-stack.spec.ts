@@ -7,13 +7,23 @@ test("manual insertion and single-stop cross-day move persist through the real A
   await page.getByLabel("密碼").fill("full-stack-password-123");
   await page.getByRole("button", { name: "建立免費帳號" }).click();
   await expect(page).toHaveURL(/\/trips$/, { timeout: 15_000 });
-  const created = await page.request.post("/api/travel/trips", {
-    headers: { Origin: new URL(page.url()).origin },
-    data: { source: "blank", planning_mode: "manual_blank", name: "直覺排序驗證",
-      destination_name: "日本東京", start_date: "2026-11-11", end_date: "2026-11-12" },
+  // Use the signed-in browser's same-origin session: the APIRequestContext cookie
+  // jar does not reliably send production Secure cookies over local HTTP.
+  const created = await page.evaluate(async () => {
+    const response = await fetch("/api/travel/trips", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ source: "blank", planning_mode: "manual_blank", name: "直覺排序驗證",
+        destination_name: "日本東京", start_date: "2026-11-11", end_date: "2026-11-12" }),
+    });
+    return { status: response.status, body: await response.json() };
   });
-  expect(created.status()).toBe(201);
-  const trip = await created.json();
+  expect(created.status, JSON.stringify(created.body)).toBe(201);
+  const trip = created.body;
+  const readTrip = () => page.evaluate(async (id: string) => {
+    const response = await fetch(`/api/travel/trips/${id}`);
+    if (!response.ok) throw new Error(`Trip reload failed: ${response.status}`);
+    return response.json();
+  }, trip.id);
   const nextLunch = trip.items.find((item: { day_date: string; system_role: string }) => item.day_date === "2026-11-12" && item.system_role === "lunch").id;
   await page.goto(`/zh-TW/trips/${trip.id}`);
   await page.getByRole("button", { name: "在 午餐尚未安排 前插入新安排" }).click();
@@ -32,14 +42,14 @@ test("manual insertion and single-stop cross-day move persist through the real A
   await move.getByRole("button", { name: "移到這裡" }).click();
   await saved;
   await expect.poll(async () => {
-    const state = await (await page.request.get(`/api/travel/trips/${trip.id}`)).json();
+    const state = await readTrip();
     return state.items.find((item: { title: string }) => item.title === "只有一站也能移動")?.day_date;
   }).toBe("2026-11-12");
   await page.reload();
   await page.getByRole("button", { name: /DAY 2/ }).click();
   const card = page.locator(".planner-itinerary-card").filter({ hasText: "只有一站也能移動" });
   await expect(card).toContainText("固定時間 · 10:00");
-  const persisted = await (await page.request.get(`/api/travel/trips/${trip.id}`)).json();
+  const persisted = await readTrip();
   const day = persisted.items.filter((item: { day_date: string }) => item.day_date === "2026-11-12");
   expect(day.map((item: { system_role: string }) => item.system_role)).toEqual(["hotel_start", null, "lunch", "dinner", "hotel_end", "return_flight"]);
 });
