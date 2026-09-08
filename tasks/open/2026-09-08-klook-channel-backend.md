@@ -1,7 +1,7 @@
 ---
 id: 2026-09-08-klook-channel-backend
 title: Klook channel aware affiliate backend and secure clickout
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-klook-backend

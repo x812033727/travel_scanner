@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 3 in progress · 2 blocked · 4 in review · 165 done**
+**16 open · 0 in progress · 2 blocked · 7 in review · 165 done**
 
 ## Ready to claim
 
@@ -26,17 +26,16 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [Klook direct affiliate product integration and reviewed rollout](open/2026-09-08-klook-direct-affiliate-integration.md) | codex-klook-root | 2026-09-08T16:43:31Z | `codex/klook-product-integration` |
-| [Klook channel aware affiliate backend and secure clickout](open/2026-09-08-klook-channel-backend.md) | codex-klook-backend | 2026-09-08T16:51:43Z | `codex/klook-product-integration` |
-| [Klook affiliate frontend channels and contextual discovery](open/2026-09-08-klook-affiliate-web.md) | codex-klook-web | 2026-09-08T16:32:56Z | `codex/klook-product-integration` |
+_Nothing here._
 
 ## In review
 
 | Task | Owner | Branch |
 | --- | --- | --- |
 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
+| [Klook direct affiliate product integration and reviewed rollout](open/2026-09-08-klook-direct-affiliate-integration.md) | codex-klook-root | `codex/klook-product-integration` |
+| [Klook channel aware affiliate backend and secure clickout](open/2026-09-08-klook-channel-backend.md) | codex-klook-backend | `codex/klook-product-integration` |
+| [Klook affiliate frontend channels and contextual discovery](open/2026-09-08-klook-affiliate-web.md) | codex-klook-web | `codex/klook-product-integration` |
 | [Fix nearby itinerary discovery across cities and reset insertion pagination](open/2026-09-08-planner-nearby-followup.md) | codex | `codex/planner-nearby-followup` |
 | [Fix weather and itinerary intent panel contrast in dark mode](open/2026-09-08-planner-weather-dark-contrast.md) | codex | `codex/planner-nearby-followup` |
 | [Stay22 Maps lodging pilot](open/2026-09-08-stay22-maps-lodging-pilot.md) | codex-stay22 | `codex/stay22-maps-pilot` |

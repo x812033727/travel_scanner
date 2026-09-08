@@ -1,7 +1,7 @@
 ---
 id: 2026-09-08-klook-direct-affiliate-integration
 title: Klook direct affiliate product integration and reviewed rollout
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-klook-root
@@ -31,7 +31,7 @@ pretending affiliate enrollment grants price API access.
 - [x] Explicit independent Klook enrollment, safe tracked clickouts and truthful UI.
 - [x] Source-backed, additive pending product manifest with preview/apply/replay tests.
 - [x] Existing hotel facts, other booking platforms and review states preserved.
-- [ ] Desktop / Pixel 7 browser checks and proportional API / Web regression validation.
+- [x] Desktop / Pixel 7 browser checks and proportional API / Web regression validation.
 - [ ] PR with evidence and rollout instructions; production activation requires its own review.
 
 ## Steps
@@ -88,3 +88,7 @@ must be handed over by the merchant task owner before backend editing.
   numeric hotel identity, with bidirectional booking-query context preservation;
   changed IDs/categories/subdomains remain rejected. Generic Klook template
   tracking uses only coarse module/locale, never a member/trip-derived identifier.
+
+PR: https://github.com/x812033727/travel_scanner/pull/370 (base main).
+Draft while full Linux CI/PostgreSQL checks run. No merge or deployment authorized
+for this new feature; keep review tasks open until the PR is merged.

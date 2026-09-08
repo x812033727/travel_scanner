@@ -1,7 +1,7 @@
 ---
 id: 2026-09-08-klook-affiliate-web
 title: Klook affiliate frontend channels and contextual discovery
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-klook-web
