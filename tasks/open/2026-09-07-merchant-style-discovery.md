@@ -29,7 +29,6 @@ scope:
   - apps/web/messages
   - docs/merchant-styles.md
   - README.md
-  - apps/web/e2e/merchant-styles.spec.ts
   - apps/web/e2e/community.spec.ts
   - apps/web/playwright.config.ts
 ---
@@ -76,6 +75,8 @@ Web: 單工 Vitest、TypeScript、lint、check:i18n、production build；merchan
 2026-09-08 跨工作區交接：已確認 `admin-food-merchants-panel.tsx` 無未提交或本分支待交付變更，後續店家來源／風格審核不再修改此檔，僅釋放這一個 scope 給 `codex/admin-domain-workspaces` 加入待審初始篩選。其餘 scope、店家資料、風格／地圖／平台審核功能及 PR 狀態均不變；本次交接不授權合併或部署。
 
 2026-09-08 第二次窄幅交接：已確認 `.github/workflows/ci.yml` 與 `apps/api/app/i18n.py` 均無未提交或本分支待交付變更，從本任務釋放這兩個 scope 給 `codex/admin-domain-workspaces`，分別供既有 CI 加入後台 Playwright 測試，以及新增 `catalog_scope_invalid`、`catalog_scope_mismatch`、`provider_setting_conflict` 錯誤翻譯。本任務後續不再修改這兩檔；其他 scope、應用程式、資料及遠端 PR 不變，只提交本地任務 metadata，不 push、合併或部署。
+
+2026-09-08 第三次窄幅交接：已確認 `apps/web/e2e/merchant-styles.spec.ts` 無未提交或本分支待交付變更，也沒有本任務進行中的修改，僅釋放此 scope 給 `codex/admin-domain-workspaces` 為 PR #369 補上新增唯讀 `/admin/provider-settings` 請求的有效空設定 fixture。本任務不代改 E2E、不再修改此檔；其他 scope、應用程式、資料及遠端 PR 不變，只提交本地任務 metadata，不 push、合併或部署。
 
 新候選缺精準地圖與可永久保存座標時保持 pending/inactive/unverified，不用來源文字推造識別。
 先完成原始來源審查，再於已部署的後台逐一記錄操作人及風格核准；資料檔不能偷帶 approved。
