@@ -5,10 +5,10 @@ status: review
 priority: P1
 area: api
 owner: codex
-claimed_at: 2026-09-08T03:49:58Z
+claimed_at: 2026-09-08T04:20:38Z
 created_at: 2026-09-07T23:14:18Z
 completed_at:
-branch: codex/merchant-style-batch-05
+branch: codex/merchant-style-batch-06
 depends_on: []
 scope:
   - apps/api/app/models.py
@@ -55,7 +55,8 @@ scope:
 - [x] 第三批7家官方來源查核、待審匯入、稽核與重播驗證。
 - [x] 第三批 PR #347 完成 CI 與依本輪授權合併，post-merge CI 全綠。
 - [x] 第四批5家新店＋1家既有補風格、6個提案完成來源查核、待審匯入、快照比對與重播驗證。
-- [ ] 第四批資料／測試／交接 PR 完成 CI 與合併（本輪合併授權針對 #347）。
+- [x] 第四批PR #350及第五批PR #354完成CI並依各輪授權合併。
+- [ ] 第六批資料／測試／交接 PR 完成 CI 與合併（本輪合併授權針對 #354）。
 - [ ] 逐家補齊地圖與永久座標、管理員風格審核，再另行發布店家。
 
 ## Steps
@@ -76,7 +77,7 @@ Web: 單工 Vitest、TypeScript、lint、check:i18n、production build；merchan
 新候選缺精準地圖與可永久保存座標時保持 pending/inactive/unverified，不用來源文字推造識別。
 先完成原始來源審查，再於已部署的後台逐一記錄操作人及風格核准；資料檔不能偷帶 approved。
 PR #345 已合併部署，第二／三批 PR #346、#347 已依授權合併；繼續新增仍只補正式待審候選，不代表核准發布。
-未啟動付費模型或地圖批次；第四批PR #350已依本輪授權合併，第五批資料PR的合併仍需新授權。
+未啟動付費模型或地圖批次；第五批PR #354已依本輪授權合併，第六批資料PR的合併仍需新授權。
 
 ## PR 與驗證交接
 
@@ -138,3 +139,15 @@ PR #345 已合併部署，第二／三批 PR #346、#347 已依授權合併；�
 - 正式作業目錄 `/root/mokaair-merchant-batch-05-QcyRbvOC` 保留JSON、preview／locked-preview／applied／replay與備份索引；備份7,087,794 bytes、權限600，無刪除舊備份。兩部署鎖、三處checksum及鎖內預覽皆核對後套用。
 - 正式新增5店／5標籤，重播預覽0／0；皆pending/inactive/unverified、未填地圖／座標／商圈，未指定審核人。兩筆系統稽核，五批合計29新候選＋2既有補風格、32個pending標籤；公開風格仍0、/ready正常、foods頁200。
 - 第五批仍只交付來源資料及待審匯入，需在後台補精準地圖、耐久座標、商圈與獨立風格／發布審核；未完成整體任務，不標done。
+
+## 第六批交接（2026-09-08）
+
+- 本輪「合併後繼續新增」授權用於#354：先無衝突同步main的#353飯店資料，相關測試78 passed / 1 PostgreSQL-only skipped、Ruff與mypy通過。八項checks全綠、CLEAN／MERGEABLE後，以exact-head guard鎖定 `bab1e5af71652711237470cca49e4e39d66d20bc` 合併為 `88eb4b15b99619782d60e78c29ab12f5c9e35c68`，已fetch確認在main。
+- #354最終PR run `34186127865`、push run `34186125849` 均通過，無需重跑失敗工作；post-merge main CI `34186647969` 的最終結果記錄於第六批PR。
+- 從上述main建立 `codex/merchant-style-batch-06` 並重新claim原任務；沒有操作原mobile-planner checkout、#343或其他工作目錄。
+- 新增三餘書店、森彦、喫茶七番、喫茶ニューポピー，共4家、3網美／1文青。全部使用實際閱讀的店家官方頁，分店、樓層、新建／老屋界線及暫不納入的來源見 docs/merchant-styles.md。
+- 第六批納入既有資料證據驗證及真實preview／apply／replay參數化測試；精準驗證欄位、來源、稽核與公開隱藏，不修改產品程式。相關測試50 passed / 1 PostgreSQL-only skipped，所有foods／merchant／trend測試172 passed / 6 PostgreSQL-only skipped；Ruff全套與mypy 257 files通過。
+- 正式環境映像仍為 `aaa33f008c82c56e5c541dede8205097102193e1`、schema `0062_merchant_platform_links`。名稱／地址零重複，雙部署鎖、三處checksum、鎖內預覽及備份驗證後套用成功。
+- 作業目錄 `/root/mokaair-merchant-batch-06-GX1dnUMU` 保留JSON、preview／locked-preview／applied／replay、公開查詢前後收據、備份及索引；備份7,092,975 bytes、權限600，不刪除既有備份。
+- 正式新增4店／4標籤，重播0／0；均pending/inactive/unverified且地圖／座標／商圈空白、無審核人。兩筆系統稽核，六批共33新候選＋2既有補風格、36個pending標籤（網美17／文青19）。公開查詢前後完全一致且仍為0，/ready正常、foods頁200。
+- 未重建服務、執行遷移、呼叫付費模型／地圖或核准發布；本批PR尚需新合併授權，整體精準地圖與人工審核工作未完成，不標done。

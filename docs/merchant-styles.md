@@ -136,6 +136,23 @@ Walden Woods的既有approved/active/verified狀態、地圖、座標、來源�
 Halfway Coffee本輪未完成足夠的官方分店證據閱讀，暫不加入，不等於判定歇業。
 所有新候選仍須補精準地圖、耐久座標、商圈與管理員審核；沒有複製店家照片、啟動付費服務或建立寵物正式規則。
 
+## 第六批來源查核：2026-09-08
+
+資料檔：`apps/api/app/foods/data/style_merchants_2026_09_batch_06.json`。
+本批 **4 家新候選、4 個待審提案（網美3、文青1）**；涵蓋高雄、札幌與名古屋。
+查核為閱讀官方來源後的編輯判定，不是親訪、即時營業保證、攝影許可或風格核准。
+
+| 店家／城市 | 來源與判定界線 |
+| --- | --- |
+| 三餘書店／高雄 | 文青：[品牌簡介](https://www.takaobooks.tw/html/about)確認人文選書、二樓咖啡與中正二路214號。三樓講座與地下藝廊分開描述；不挪用書市集文章中其他書店的地址或搬遷消息，不沿用歷史優惠。 |
+| 森彦／札幌 | 網美：[本店介紹](https://www.morihico.com/shop/morihico/)記載紅屋頂、蔓藤、木造挑空與古物陳設。與ATELIER／藝術劇場／機場等分店分開；官網限四人且不接受預約，不宣稱有團體訂位。頁上7月23日臨休未標年份，不解讀為永久歇業。 |
+| 喫茶七番／名古屋 | 網美：[官網](https://www.kissa7ban.com/)明列中央黃色圓形櫃檯、餐飲與1-A地址。2-A為另外的租借空間，不將其活動或租借規則套用到一樓咖啡店；不以活動回顧保證每日有活動。 |
+| 喫茶ニューポピー／名古屋 | 網美：[品牌店鋪頁](https://b-bitou.com/shop/)記載新建藏造空間、中央挑空與塔狀閣樓座位，地址為那古野一丁目36番52号。不是江戶古蹟改造，也不混用同址焙煎室或不同地址談話室；只採現行頁明列的咖啡、咖哩與甜點業態。 |
+
+本輪未納入烏邦圖：總圖店品牌頁可讀，但地址的一手頁面尚未完成核對；不把環河店舊活動或過期優惠當作總圖店現況。
+Dragonfly的大館及香港會展旅遊頁讀取受限，未繞過限制，也不靠搜尋摘要建立候選；這些排除不代表判定歇業。
+四家均未與既有店家同名／同址重複；地圖、耐久座標與商圈仍須另行核實。未複製照片、啟動付費服務或推導寵物條件。
+
 ## 部署與匯入
 
 部署同版本 API、Web、worker 並執行 `alembic upgrade head`。
@@ -156,6 +173,7 @@ python -m app.cli import-trend-merchants --file app/foods/data/style_merchants_2
 第三批則為 `app/foods/data/style_merchants_2026_09_batch_03.json`。
 第四批則為 `app/foods/data/style_merchants_2026_09_batch_04.json`。
 第五批則為 `app/foods/data/style_merchants_2026_09_batch_05.json`。
+第六批則為 `app/foods/data/style_merchants_2026_09_batch_06.json`。
 既有部署可將新 JSON 送入受控暫存路徑後傳給 `--file`；資料補充不需重建服務或執行新遷移。
 
 ### 實際執行記錄
@@ -207,3 +225,13 @@ python -m app.cli import-trend-merchants --file app/foods/data/style_merchants_2
   `b1509b953e5362d3be6f1220a2ea67ede2196a8344c8e2694c20c15d8eaba957`。
   五批合計29家新候選、2家既有補風格，共32個pending標籤（網美14／文青18）；公開風格仍0，
   readiness正常，前台美食頁HTTP 200。來源、預覽、套用及重播收據與私人備份皆保留。
+- PR [#354](https://github.com/x812033727/travel_scanner/pull/354) 於2026-09-08依授權合併。
+  無衝突同步main的#353後，八項checks全綠、CLEAN／MERGEABLE，exact-head guard鎖定
+  `bab1e5af71652711237470cca49e4e39d66d20bc`，合併為 `88eb4b15b99619782d60e78c29ab12f5c9e35c68`，已fetch確認在main。
+- 第六批先核對現行API映像、名稱／地址查重、本機／伺服器／容器checksum、兩個部署鎖與鎖內預覽，
+  留存可讀的custom-format備份後套用4新店／4風格；重播預覽0／0。來源皆為店家官方頁。
+  店家皆pending/inactive/unverified，地圖／座標／商圈留空，風格pending且無審核人；系統稽核恰為2筆。
+  備份7,092,975 bytes、權限600，JSON SHA-256為
+  `58fe1bd9cc60cc351d40f1a3b1f0ede8697085352b9b9d2ad4c42ec2026c17db`。
+  六批合計33家新候選、2家既有補風格，共36個pending標籤（網美17／文青19）。
+  公開風格查詢前後完全一致、仍為0，readiness正常、foods頁HTTP 200。未重建服務、執行遷移、核准風格或發布店家。
