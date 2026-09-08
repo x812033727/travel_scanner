@@ -478,3 +478,115 @@ def test_osaka_candidate_additions_do_not_guess_ids_or_promote_ambiguous_sources
     intergate = next(h for h in evidence["hotels"] if "intergate" in h["source_key"])
     assert intergate["official_address"].endswith("梅田2-5-2")
     assert any(e.get("address", "").endswith("梅田2丁目4-9") for e in evidence["excluded"])
+
+
+def namba_map_checkpoint():
+    directory = Path(__file__).resolve().parents[3] / "docs/hotel-platforms"
+    evidence = json.loads(
+        (directory / "namba-map.review-2026-09-08.json").read_text(encoding="utf-8")
+    )
+    rows = {}
+    for city in ("tokyo", "osaka"):
+        package = json.loads((directory / f"{city}.pending.json").read_text(encoding="utf-8"))
+        rows.update({r["product"]["source_key"]: r for r in package})
+    return evidence, rows
+
+
+def test_namba_platform_reviews_do_not_approve_unobserved_product_locations():
+    evidence, rows = namba_map_checkpoint()
+    assert len(evidence["hotels"]) == 5
+    config = CatalogConfig(
+        public_enabled=True, enabled_destinations=["osaka"], enabled_kinds=["hotel"]
+    )
+    now = datetime.now(UTC)
+    for hotel in evidence["hotels"]:
+        source = rows[hotel["source_key"]]
+        assert hotel["product_status"] == "pending" and hotel["map_review_status"] == "not_checked"
+        assert source["product"]["facts"]["map_verified"] is False
+        options = {o["provider"]: o for o in source["booking_options"]}
+        approved = [o for o in hotel["platform_reviews"] if o["status"] == "approved"]
+        assert {o["provider"] for o in approved} == {"official", "trip_com"}
+        product = TravelServiceProduct(**source["product"], id=uuid4(), status="pending")
+        for review in approved:
+            assert review["url"] == options[review["provider"]]["url"]
+            assert review["identity_evidence_url"] == source["product"]["source_url"]
+            assert review["matched_name"] and review["matched_address"]
+            assert review["health"] == "healthy" and review["version"] == 2
+            assert review["browser_verified"] is False
+            option = HotelBookingOption(
+                **HotelOptionInput.model_validate(options[review["provider"]]).model_dump(),
+                id=uuid4(),
+                status="approved",
+                verified_at=now,
+                health_status="healthy",
+            )
+            assert not ready_option(product, option, config, now)
+    sotetsu = next(h for h in evidence["hotels"] if "sotetsu" in h["source_key"])
+    trip = next(o for o in sotetsu["platform_reviews"] if o["provider"] == "trip_com")
+    assert "4064224" in trip["url"] and "4064224" in trip["supporting_platform_url"]
+    assert trip["url"].startswith("https://www.trip.com/")
+    assert "four weeks ago" in trip["note"]
+    swissotel = next(h for h in evidence["hotels"] if "swissotel" in h["source_key"])
+    assert "/pdf/" in swissotel["official_identity_url"]
+    assert "/contact-info/" in swissotel["supporting_official_url"]
+
+
+def test_only_five_observed_maps_approved_without_rewriting_research_inputs():
+    evidence, rows = namba_map_checkpoint()
+    expected = {
+        "editorial:tokyo:tokyo-station-hotel",
+        "editorial:tokyo:mitsui-garden-kyobashi",
+        "editorial:tokyo:millennium-mitsui-garden-tokyo",
+        "editorial:osaka:vischio-osaka",
+        "editorial:osaka:hankyu-respire-osaka",
+    }
+    assert {m["source_key"] for m in evidence["map_reviews"]} == expected
+    for review in evidence["map_reviews"]:
+        product = rows[review["source_key"]]["product"]
+        assert review["status"] == "browser_identity_checked"
+        assert review["name_address_website_matched"] is True
+        assert review["provider_coordinates_copied"] is False
+        assert review["google_place_id"] == product["facts"]["google_place_id"]
+        assert review["official_identity_url"] == product["source_url"]
+        assert review["product_status"] == "approved" and review["product_version"] == 3
+        assert product["facts"]["map_verified"] is False
+        assert product["facts"]["source_credits"]
+    assert "Debugger unattached" in evidence["browser_status"]
+    assert (
+        rows["editorial:osaka:intergate-osaka-umeda"]["product"]["facts"]["map_verified"] is False
+    )
+    live = evidence["production"]
+    assert live["products_approved"] + live["products_pending"] == live["products_total"] == 60
+    assert live["options_approved"] + live["options_pending"] == live["options_total"] == 360
+    assert live["new_hotel_identities"] == live["complete_cities"] == 0
+    assert live["config_changed"] is False
+    assert set(live["public_hotels_by_locale"]) == {"en", "ja", "ko", "zh-TW", "zh-CN"}
+    assert all(v == {"tokyo": 10, "osaka": 2} for v in live["public_hotels_by_locale"].values())
+
+
+def test_namba_four_candidates_keep_observed_urls_pending_and_no_guessed_ids():
+    evidence, rows = namba_map_checkpoint()
+    candidates = [
+        (h, r) for h in evidence["hotels"] for r in h["platform_reviews"] if r.get("new_candidate")
+    ]
+    assert len(candidates) == 4
+    for hotel, review in candidates:
+        option = next(
+            o for o in rows[hotel["source_key"]]["booking_options"] if o["provider"] == "agoda"
+        )
+        assert option["url"] == review["url"] and option["discovery_status"] == "found"
+        assert not option.get("property_id") and "status" not in option
+        assert "待審" in option["identity_note"]
+        assert review["status"] == "pending" and review["health"] == "unchecked"
+        assert review["version"] == 2 and review["browser_verified"] is False
+    sotetsu = rows["editorial:osaka:sotetsu-grand-fresa-osaka-namba"]
+    agoda = next(o for o in sotetsu["booking_options"] if o["provider"] == "agoda")
+    assert "/osaka-nanba-washington-plaza-hotel/" in agoda["url"]
+    assert "舊名稱 slug" in agoda["identity_note"]
+    swissotel = rows["editorial:osaka:swissotel-nankai-osaka"]
+    agoda = next(o for o in swissotel["booking_options"] if o["provider"] == "agoda")
+    assert agoda["discovery_status"] == "unconfirmed" and not agoda.get("url")
+    assert any("kobe-jp" in e["url"] for e in evidence["excluded"])
+    assert not any(
+        "kobe-jp" in o.get("url", "") for r in rows.values() for o in r["booking_options"]
+    )

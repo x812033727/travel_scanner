@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-07T12:32:44Z
 completed_at:
-branch: codex/hotel-content-review-osaka
+branch: codex/hotel-content-review-namba
 depends_on: []
 scope:
   - apps/api/tests/test_hotel_content_package.py
@@ -16,6 +16,43 @@ scope:
 ---
 
 # Hotel platform options and quote readiness
+
+## Latest: 2026-09-08 Namba platform and five-map review continuation
+
+User authorized merge #348 then continuing. Synced latest main 67234d9, verified exact
+head 4ed2cdb all eight checks/CLEAN/MERGEABLE, SHA-guarded merge to 9e94d03. Initial PR
+smoke manifest failure and post-merge main community reset are documented in the open
+community task; one failed-job rerun each, not a runtime repair. Continued from merged
+main in isolated codex/hotel-content-review-namba; dirty original checkout preserved.
+
+Chrome confirmed exact saved Place IDs/name/street/official website for Tokyo Station,
+Mitsui Garden Kyobashi, Millennium Mitsui Garden Tokyo, Vischio Osaka and Hankyu Respire.
+Intergate navigation plus one state recovery returned Debugger unattached; stopped as
+the computer-use skill requires, no further maps claimed. Normal map/product review
+approved these five only; existing licensed coordinates/credits/IDs preserved. Research
+map flags remain false and must not be replayed as production synchronization inputs.
+
+Remaining five Osaka hotels' official and Trip links independently approved with healthy
+normal URL checks and no browser override. Four new Agoda URLs pending, no inferred IDs.
+Sotetsu's old-name Agoda slug is retained as pending; same-ID US Trip evidence supports
+identity without replacing the saved www URL. Swissotel's Kobe-path Agoda lead excluded;
+historical PDF supplemented by official HTML contact address, not claimed newly published.
+
+Backup /root/travel_scanner_pre_hotel_candidates_20260908T022544Z.dump, 7063947 bytes,
+preceded normal guarded admin writes. Runtime b3e49a3/schema 0061 unchanged. Independent
+read-only check confirmed all 29 audit records, exact other-55-products/346-options/config
+fingerprint, and source facts unchanged except map review flags. No deploy, migration,
+settings/affiliate/quote changes, provider API requests, clickouts or fake reservations.
+
+Current: 60 identities, 17 product approved / 43 pending; 360 options, 41 approved /
+319 pending. Five-locale public reads return Tokyo 10 / Osaka 2, each official + Trip,
+pending options hidden. No complete cities: two approved OTAs are still required, not
+official plus one OTA. Details: docs/hotel-platforms/review-2026-09-08-namba-map.md.
+
+Validation: 133 related tests, Ruff/format, mypy 255 sources, 27 tools tests, five locales /
+25 namespaces and production read-only five-locale smoke passed. New-head full CI is
+tracked on the continuation PR. Keep task open/released for remaining maps/platforms
+and per-city acceptance; the following sections are earlier historical checkpoints.
 
 ## 2026-09-08 merged checkpoint and Osaka five-hotel continuation
 
