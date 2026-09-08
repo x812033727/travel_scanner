@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "tag": "hotel-review-redirects-20260909",
+  "verified_at": "2026-09-08T23:29:02.080433+00:00",
+  "status": "passed",
+  "final_acceptance": true,
+  "production_access_by_verifier": false,
+  "network_calls": 0,
+  "database_connections": 0,
+  "baseline_semantic_sha256": "14978ec20e1b05f7f5991194c9568f56bb6da93486c91105ebc5391dc4fad56d",
+  "manifest_semantic_sha256": "880d7b9343caca7862f09a2dfb108f40102b2e121ed6920e3bfab92cb8c88a6e",
+  "rows": {
+    "catalog_rows": 420,
+    "exact_scope_rows": 3,
+    "original_316_approved_unchanged": true,
+    "all_60_products_unchanged": true,
+    "configs_full_rows_unchanged": true,
+    "untouched_rows": 417,
+    "post_replay_420_full_rows_unchanged": true,
+    "property_identity_and_prices_unchanged": true,
+    "quote_property_ids_remain_null": true,
+    "dry_run_exact_no_write_receipts": true,
+    "replay_same_receipt_ids_and_hashes": true,
+    "actual_outcomes": {
+      "approved": 3
+    },
+    "guard_fallbacks": {},
+    "approved_option_ids": [
+      "00307d02-975e-4b2f-8843-df7000cd7c50",
+      "2c41cd84-0813-42cf-8a54-003bc6f0cff4",
+      "d55df51d-b401-468a-8149-bec50508b4c2"
+    ],
+    "changed_field_counts": {
+      "checked_at": 3,
+      "discovery_status": 3,
+      "evidence_url": 3,
+      "health_status": 3,
+      "identity_note": 3,
+      "status": 3,
+      "updated_at": 3,
+      "url": 3,
+      "verified_at": 3,
+      "version": 3
+    },
+    "outcomes": [
+      {
+        "id": "00307d02-975e-4b2f-8843-df7000cd7c50",
+        "product_id": "71374dce-0786-413b-aafd-b63c7d9a3786",
+        "target": "hotel-review-redirects-20260909:option:00307d02-975e-4b2f-8843-df7000cd7c50",
+        "requested_decision": "approve",
+        "outcome": "approved",
+        "guard_code": null,
+        "receipt_id": "035586e9-870b-4a87-9664-c25e5ad8d744",
+        "entry_hash": "ed50b82354de22308b45d3285546c61dad772d67089f92c21ed7dea90f3b01b8",
+        "before_hash": "5c58741036a5b4506718b8ebb10515135d14c51a42f3365f35a621cad2681b2d",
+        "after_hash": "f5a8de8eed0fa9507e0087bb484aa8efe6e84c2d400ecfaa9843c20508582f47",
+        "before_version": 1,
+        "after_version": 3
+      },
+      {
+        "id": "2c41cd84-0813-42cf-8a54-003bc6f0cff4",
+        "product_id": "6e824f93-a049-4a32-9df4-fe17dc4d3974",
+        "target": "hotel-review-redirects-20260909:option:2c41cd84-0813-42cf-8a54-003bc6f0cff4",
+        "requested_decision": "approve",
+        "outcome": "approved",
+        "guard_code": null,
+        "receipt_id": "010cc436-659c-4aa6-980f-36e622097aee",
+        "entry_hash": "d4380e559b4960d58adf5d4ba52529b142c5178e5df092e95126eaeb0bc6e655",
+        "before_hash": "4f20257f0de198a3cdda37341391509b64cf8c4d0f1d95ce90d8c5d6221cdcff",
+        "after_hash": "2d18663b088af75ef886a45520e885a6a1aad281496b93d41a3a893e3a292c35",
+        "before_version": 1,
+        "after_version": 3
+      },
+      {
+        "id": "d55df51d-b401-468a-8149-bec50508b4c2",
+        "product_id": "4938181e-0007-4143-aa0c-4b5ed44f4f8b",
+        "target": "hotel-review-redirects-20260909:option:d55df51d-b401-468a-8149-bec50508b4c2",
+        "requested_decision": "approve",
+        "outcome": "approved",
+        "guard_code": null,
+        "receipt_id": "992250b1-7826-466e-bf96-c6f449490c28",
+        "entry_hash": "eca4e41d4b1cff625b4898752fe89ce0c79d4e2e547e99c4202f6d2e46da30a8",
+        "before_hash": "f2b2bf01a6274d334cb9381c91f24d7670cf6970e2db41c29de74280e903ab6f",
+        "after_hash": "8e4050131d3143d3d9b83e5bc8c1354b291f2df58cc9e6d1a7429a905136e4f5",
+        "before_version": 1,
+        "after_version": 3
+      }
+    ],
+    "expected_normal_audit_additions": {
+      "travel_services.hotel_option_edit": 3,
+      "travel_services.hotel_option_review": 3,
+      "travel_services.product_edit": 0,
+      "travel_services.product_review": 0
+    }
+  },
+  "public": {
+    "phases": 3,
+    "requests_per_phase": 30,
+    "public_products": 40,
+    "public_options": 192,
+    "all_pair_memberships_and_body_fingerprints_unchanged": true,
+    "all_three_pending_busan_parents_and_their_options_hidden": true,
+    "scope_note": "Body fingerprints attest unchanged captured titles/credits/prices/options; raw bodies are not retained here."
+  },
+  "independent": {
+    "status": "passed",
+    "phases": 3,
+    "read_only_repeatable_read": true,
+    "receipt_count": 3,
+    "normal_edits": 3,
+    "normal_reviews": 3,
+    "all_316_original_approved_and_417_nonscope_rows_protected": true,
+    "all_384_previous_receipts_and_historical_audits_unchanged": true,
+    "configs_brands_prices_offers_and_clicks_unchanged": true,
+    "hold_rows_fully_unchanged": true,
+    "all_normal_audits_bound_to_authenticated_root": true,
+    "replay_same_receipts_and_zero_added_audits": true
+  },
+  "missing_final_acceptance_evidence": [],
+  "input_file_sha256": {
+    "apply.ndjson": "0b18a31ff52825ed3f3988bd40d6c4f50f44638501a354e61a8f41559e1537dc",
+    "before.json": "416b6bea7d1c2166bd1b61756e0132c7c13a27789f80d7988485277499fc6b5a",
+    "dry-run.ndjson": "4a340c6945893bf7261fa7f2c342e310a48ffdc0ee7115094a51590ce1b03da4",
+    "final-snapshot.json": "c7e039ca09e4c959facfa5ced98ad7386b93bd650ce7c74b4e3395e221cfe4d3",
+    "independent-after-replay.json": "0590c842251af0032b1623fb0aa88b17f5771fd2dca555d2b8df11248bdc6657",
+    "independent-after.json": "d870a9f7d7a924c423757652d4820e696bac11dcb1d698c95ddc7969e11e728a",
+    "independent-before.json": "4929dde1975e73f44d1e04da34a263def17a5b0ce6671a37bd6a2c06ca481eb7",
+    "manifest.json": "7da37d9f0df1c7c79bd7e6465aac9f2a5be0b9f664410b5ffee69b29abc87d51",
+    "post-replay-snapshot.json": "6a0b89b6439796345d25e4b31c84d0bfe943050bdb4788ef7b164a9d8a33b75a",
+    "public-after-replay.json": "0a16e41832d871fd457fd7717985bd3bbfc74d12c43bc8bfa83aa372fb11387a",
+    "public-after.json": "8564eac3fd8c44fd47e65000c9332103faf02913f4b5b2c916f039dc5a5ac410",
+    "public-before.json": "a32071660b9e64e6c4286ce33d2ecece2cf4c111b250f969b27ba0226b38e339",
+    "replay.ndjson": "6917f10b323082262907440fbdb1a11fa1afb24db35bbfa9097ca1ecb28254a4"
+  }
+}

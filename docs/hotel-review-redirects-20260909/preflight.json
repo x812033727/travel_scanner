@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "tag": "hotel-review-redirects-20260909",
+  "baseline_semantic_sha256": "14978ec20e1b05f7f5991194c9568f56bb6da93486c91105ebc5391dc4fad56d",
+  "manifest_file_sha256": "7da37d9f0df1c7c79bd7e6465aac9f2a5be0b9f664410b5ffee69b29abc87d51",
+  "operator_sha256": "810e23ae8328b11f87a696cc123083db6461347bc95a3522a4dded3a9a945b04",
+  "immutable_core_sha256": "28f8bdfe73a9b2fbbb954d14b8fc44373cecf0c353135de34ea995a35a4cb503",
+  "sql_sha256": "f385ca537b8d2b271d859cbe6d3746fb1a912f753a7b88565bf4574e829b1cfc",
+  "ready": {
+    "status": "ready",
+    "database": "ok",
+    "redis": "ok",
+    "schema": "0063_destination_offers"
+  },
+  "source_check": "All seven live service/admin/auth/model/network hashes match local unchanged application files.",
+  "source_sha256": {
+    "app/travel_services/admin.py": "2dea2c158b2fbfca2a5d564601ab0b4eda6cd563a0facb2a80a3b38782f6d92e",
+    "app/travel_services/network.py": "8b50bfc1b6bba2354e9dab6d6ec8309abd0a7a061322189acde365e04c3e2ca5",
+    "app/travel_services/service.py": "35a42e226f766ac66a6183b2dd6f7fd871337833dd8bdb8b56e4e009559fca36",
+    "app/travel_services/schemas.py": "0f5b2c09cacaaeb77f33d9b65411f66288b0c34676995c35631fdc16fad0fb84",
+    "app/travel_services/hotel_options.py": "1ccf431acecf0fd5a0538546eb74c540ac9587931a189adc57b08f159e1eb926",
+    "app/auth/service.py": "1d8c50d2651344eea2c35089a087137bc2014dc9d7c31a1806e70552cb2d47a4",
+    "app/models.py": "42067dd9e785f918cbdf19779e6c35a2ceff75830d79b1f06d6271d73294219d"
+  },
+  "backup": {
+    "path": "/root/mokaair-hotel-redirects-20260909-yJujQIlV/backup-before.dump",
+    "size_bytes": 13217278,
+    "sha256": "623aa908a404b79429ab38dd0a33d81eb919a24f6d86704089f0f717bb83d289",
+    "mode": "600",
+    "parent_mode": "700",
+    "pg_restore_list_success": true,
+    "index_sha256": "a7119e44e8da450043f9a0fc9566a070dc0fa91c4f80286d679372ca4438ffd0",
+    "full_restore_tested": false,
+    "existing_backups_preserved": true
+  },
+  "diagnostics": {
+    "executed_source_sha256": "f873513a01cde318526ce295ddc2612970593c1d3a7bec85464b5a00467610f8",
+    "source_note": "After the single diagnostic run, the local helper's exclusive-output exists check was moved into asyncio.to_thread for Ruff. No provider logic or recorded result changed; executed source remains in the private remote staging directory.",
+    "old_url_health": [
+      "unsafe",
+      "unsafe",
+      "unsafe"
+    ],
+    "observed_final_url_health": [
+      "healthy",
+      "healthy",
+      "healthy"
+    ]
+  },
+  "failed_readonly_orientation": [
+    "An initial /opt/travel-scanner cd failed before any subsequent command; current path was then read from container labels.",
+    "Compose ps without the deployed environment-file label failed before backup/dry-run; retried read-only with the actual label, without printing or editing environment contents."
+  ],
+  "not_performed": [
+    "application_deployment",
+    "service_restart",
+    "migration",
+    "paid_provider_call",
+    "gemini_call",
+    "quote",
+    "booking",
+    "affiliate_clickout",
+    "secret_export",
+    "github_push_or_pr"
+  ]
+}

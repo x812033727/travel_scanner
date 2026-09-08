@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "tag": "hotel-review-redirects-20260909",
+  "baseline_hash": "14978ec20e1b05f7f5991194c9568f56bb6da93486c91105ebc5391dc4fad56d",
+  "decisions": [
+    {
+      "kind": "option",
+      "id": "00307d02-975e-4b2f-8843-df7000cd7c50",
+      "version": 1,
+      "before_hash": "5c58741036a5b4506718b8ebb10515135d14c51a42f3365f35a621cad2681b2d",
+      "decision": "approve",
+      "reason": "New IAB observation and direct reload of the actual landing URL for Shilla Stay Haeundae: exact name and street address match the prior official identity. Retain all normal URL safety checks; rollback and hold if the normal review rejects this destination.",
+      "source_urls": [
+        "https://www.agoda.com/zh-tw/shilla-stay-haeundae/hotel/busan-kr.html",
+        "https://www.agoda.com/en-us/shilla-stay-haeundae/hotel/busan-kr.html",
+        "https://www.shillahotels.com/ko/shillastay/haeundae/facilities/index.do"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T23:13:55Z",
+      "browser_verified": true,
+      "new_evidence": "The prior attempted URL https://www.agoda.com/en-us/shilla-stay-haeundae/hotel/busan-kr.html visibly landed on https://www.agoda.com/zh-tw/shilla-stay-haeundae/hotel/busan-kr.html. A fresh direct reload preserved this exact destination and showed the matching name/address. This is new observed URL evidence, not a replay or reclassification of the previous guard-failure receipt.",
+      "identity_note": "IAB direct final-page reload 2026-09-08T23:13:55Z: 新羅舒泰飯店-釜山海雲台 (Shilla Stay Busan Haeundae); 46, Haeun-daero 570beon-gil, Haeundae-gu, 海雲台區, 釜山, 韓國, 48093. Matches prior approved official identity e8603a34-3bcc-4262-be1e-19533c94899f (2026-09-08 16:07:31.773822+00:00); official page not re-read today. Independent booking identity only; parent map review remains pending. No property_id, quote, price or affiliate authority is established.",
+      "option_patch": {
+        "url": "https://www.agoda.com/zh-tw/shilla-stay-haeundae/hotel/busan-kr.html",
+        "evidence_url": "https://www.agoda.com/zh-tw/shilla-stay-haeundae/hotel/busan-kr.html"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "2c41cd84-0813-42cf-8a54-003bc6f0cff4",
+      "version": 1,
+      "before_hash": "4f20257f0de198a3cdda37341391509b64cf8c4d0f1d95ce90d8c5d6221cdcff",
+      "decision": "approve",
+      "reason": "New IAB observation and direct reload of the actual landing URL for Paradise Hotel Busan: exact name and street address match the prior official identity. Retain all normal URL safety checks; rollback and hold if the normal review rejects this destination.",
+      "source_urls": [
+        "https://www.agoda.com/zh-tw/paradise-hotel-busan/hotel/busan-kr.html",
+        "https://www.agoda.com/en-us/paradise-hotel-busan/hotel/busan-kr.html",
+        "https://www.busanparadisehotel.co.kr/front/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T23:13:55Z",
+      "browser_verified": true,
+      "new_evidence": "The prior attempted URL https://www.agoda.com/en-us/paradise-hotel-busan/hotel/busan-kr.html visibly landed on https://www.agoda.com/zh-tw/paradise-hotel-busan/hotel/busan-kr.html. A fresh direct reload preserved this exact destination and showed the matching name/address. This is new observed URL evidence, not a replay or reclassification of the previous guard-failure receipt.",
+      "identity_note": "IAB direct final-page reload 2026-09-08T23:13:55Z: 百樂達斯釜山酒店 (Paradise Hotel Busan); 296 Haeundaehaebyeon-ro. Haeundae-gu, 海雲台區, 釜山, 韓國, 48099. Matches prior approved official identity 95b9862e-7f7e-4f82-b37a-35e36618d687 (2026-09-08 16:06:46.978168+00:00); official page not re-read today. Independent booking identity only; parent map review remains pending. No property_id, quote, price or affiliate authority is established.",
+      "option_patch": {
+        "url": "https://www.agoda.com/zh-tw/paradise-hotel-busan/hotel/busan-kr.html",
+        "evidence_url": "https://www.agoda.com/zh-tw/paradise-hotel-busan/hotel/busan-kr.html"
+      }
+    },
+    {
+      "kind": "option",
+      "id": "d55df51d-b401-468a-8149-bec50508b4c2",
+      "version": 1,
+      "before_hash": "f2b2bf01a6274d334cb9381c91f24d7670cf6970e2db41c29de74280e903ab6f",
+      "decision": "approve",
+      "reason": "New IAB observation and direct reload of the actual landing URL for Toyoko Inn Busan Seomyeon: exact name and street address match the prior official identity. Retain all normal URL safety checks; rollback and hold if the normal review rejects this destination.",
+      "source_urls": [
+        "https://www.agoda.com/zh-tw/toyoko-inn-busan-seomyeon_4/hotel/busan-kr.html",
+        "https://www.agoda.com/en-us/toyoko-inn-busan-seomyeon_4/hotel/busan-kr.html",
+        "https://www.toyoko-inn.com/eng/search/detail/00221/"
+      ],
+      "method": "iab",
+      "checked_at": "2026-09-08T23:13:55Z",
+      "browser_verified": true,
+      "new_evidence": "The prior attempted URL https://www.agoda.com/en-us/toyoko-inn-busan-seomyeon_4/hotel/busan-kr.html visibly landed on https://www.agoda.com/zh-tw/toyoko-inn-busan-seomyeon_4/hotel/busan-kr.html. A fresh direct reload preserved this exact destination and showed the matching name/address. This is new observed URL evidence, not a replay or reclassification of the previous guard-failure receipt.",
+      "identity_note": "IAB direct final-page reload 2026-09-08T23:13:55Z: 東橫INN - 釜山西面 (Toyoko Inn Busan Seomyeon); 39, Seojeon-ro, Busanjin-gu, 西面, 釜山, 韓國, 47247. Matches prior approved official identity 78b718b2-ea44-47cf-adeb-8c10feee6ff4 (2026-09-08 16:06:34.419453+00:00); official page not re-read today. Independent booking identity only; parent map review remains pending. No property_id, quote, price or affiliate authority is established.",
+      "option_patch": {
+        "url": "https://www.agoda.com/zh-tw/toyoko-inn-busan-seomyeon_4/hotel/busan-kr.html",
+        "evidence_url": "https://www.agoda.com/zh-tw/toyoko-inn-busan-seomyeon_4/hotel/busan-kr.html"
+      }
+    }
+  ]
+}
