@@ -190,6 +190,16 @@ function renderBrowser(path: string, options: { failFirstMerchants?: boolean } =
 }
 
 describe("FoodBrowser", () => {
+  it("combines style, city and cuisine filters and removes only the style", async () => {
+    const { calls } = renderBrowser("/foods?destination_id=tokyo&category=ramen&style=artsy");
+    expect(await screen.findByRole("heading", { name: "Ichiran Shibuya" })).toBeTruthy();
+    expect(calls.some((url) => url.includes("category=ramen&style=artsy"))).toBe(true);
+    fireEvent.click(screen.getByRole("button", { name: "網美店" }));
+    await waitFor(() => expect(calls.some((url) => url.includes("category=ramen&style=instagrammable"))).toBe(true));
+    fireEvent.click(screen.getByRole("button", { name: /移除.*網美店/ }));
+    expect(window.location.search).toContain("category=ramen");
+    expect(window.location.search).not.toContain("style=");
+  });
   it("hydrates the city, area and cuisine from the URL", async () => {
     const { calls } = renderBrowser("/foods?destination_id=tokyo&area=tokyo-shibuya&category=ramen");
 

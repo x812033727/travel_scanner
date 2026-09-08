@@ -26,6 +26,7 @@ from app.foods.service import (
     merchant_categories,
     merchant_cities,
 )
+from app.foods.styles import MerchantStyle
 from app.hotspots.maps import has_exact_map_identity
 from app.i18n import Locale, current_locale
 from app.locations.coordinates import has_durable_coordinates
@@ -109,6 +110,7 @@ async def food_categories(
     locale: RequestLocale,
     destination_id: Annotated[str | None, Query(min_length=2, max_length=64)] = None,
     area: Annotated[str | None, Query(min_length=2, max_length=128)] = None,
+    style: MerchantStyle | None = None,
 ) -> dict[str, Any]:
     if destination_id and destination_for_id(destination_id) is None:
         raise AppError(422, "unsupported_destination", "目前不支援這個目的地")
@@ -117,6 +119,7 @@ async def food_categories(
         locale=locale,
         destination_id=destination_id.casefold() if destination_id else None,
         area_slug=area,
+        style=style,
     )
 
 
@@ -127,6 +130,7 @@ async def food_merchants(
     destination_id: Annotated[str | None, Query(min_length=2, max_length=64)] = None,
     area: Annotated[str | None, Query(min_length=2, max_length=128)] = None,
     category: Annotated[str | None, Query(min_length=2, max_length=128)] = None,
+    style: MerchantStyle | None = None,
     q: Annotated[str | None, Query(min_length=1, max_length=100)] = None,
     cursor: Annotated[str | None, Query(max_length=100)] = None,
     limit: Annotated[int, Query(ge=1, le=50)] = 20,
@@ -139,6 +143,7 @@ async def food_merchants(
         destination_id=destination_id.casefold() if destination_id else None,
         area_slug=area,
         category_slug=category,
+        style=style,
         q=q,
         cursor=cursor,
         limit=limit,
