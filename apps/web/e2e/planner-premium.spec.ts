@@ -123,6 +123,7 @@ test("AI preview is cancellable and does not write until explicit apply", async 
 
 
 test("single-page creation needs only city and dates and opens an unpaid blank itinerary", async ({ page }, testInfo) => {
+  if ((page.viewportSize()?.width || 1280) < 1024) await page.setViewportSize({ width: 390, height: 844 });
   let createdBody: Record<string, unknown> | undefined;
   let createCount = 0;
   const unexpectedRequests: string[] = [];
@@ -154,6 +155,16 @@ test("single-page creation needs only city and dates and opens an unpaid blank i
   await page.goto("/zh-TW/trips/new");
   await expect(page.getByRole("heading", { name: "先選一座城市，開始你的旅行" })).toBeVisible();
   const startPlanning = page.getByRole("button", { name: "開始安排", exact: true });
+  if ((page.viewportSize()?.width || 1280) < 1024) {
+    const bounds = (await startPlanning.boundingBox())!;
+    expect(bounds.y).toBeGreaterThan(0);
+    expect(bounds.y + bounds.height).toBeLessThanOrEqual(page.viewportSize()!.height);
+    await expect(page.locator(".app-bottom-nav")).toBeHidden();
+    expect(await startPlanning.evaluate((button) => {
+      const bounds = button.getBoundingClientRect();
+      return button.contains(document.elementFromPoint(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2));
+    })).toBe(true);
+  }
   await startPlanning.click();
   await expect(page.locator(".premium-new-trip").getByRole("alert")).toContainText("請輸入目的地");
   await page.getByRole("button", { name: "東京", exact: true }).click();
@@ -187,6 +198,14 @@ test("single-page creation needs only city and dates and opens an unpaid blank i
   // Completing both dates now collapses the calendar automatically.
   await expect(page.getByRole("grid")).toHaveCount(0);
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  if ((page.viewportSize()?.width || 1280) < 1024) {
+    const bounds = (await startPlanning.boundingBox())!;
+    expect(bounds.y + bounds.height).toBeLessThanOrEqual(page.viewportSize()!.height);
+    expect(await startPlanning.evaluate((button) => {
+      const bounds = button.getBoundingClientRect();
+      return button.contains(document.elementFromPoint(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2));
+    })).toBe(true);
+  }
   await page.screenshot({ path: testInfo.outputPath("premium-single-page-create.png"), fullPage: true });
   await startPlanning.click();
   await expect(page).toHaveURL(/\/zh-TW\/trips\/premium-created-trip$/);

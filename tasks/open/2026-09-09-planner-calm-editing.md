@@ -67,7 +67,7 @@ The prior planner hid useful stops behind empty system anchors and warnings. Edi
 - [x] Route requests and route application require separate explicit actions.
 - [x] Creation refresh/retry preserves the request/key and rejects payload conflicts.
 - [ ] API/Web/build/browser/CI validation is green and evidence is recorded.
-- [ ] PR is available for review; merge/deploy remain separately authorized.
+- [x] PR is available for review; merge/deploy remain separately authorized.
 
 ## Steps
 
@@ -92,3 +92,5 @@ See `docs/planner-calm-editing.md` for commands and behavioural acceptance. Loca
 - Production build passed (252 generated pages). Calm mobile/draft browser tests 8/8, planner contrast 8/8, route/premium flows 20/20, stay-area/Stay22 five-locale tests 14/14 passed.
 - CI initially caught legacy date-summary and empty-hotel selectors; adapted to the actual new controls without changing write/identity assertions. Full-stack and final-head CI are being rerun.
 - Concurrent local Next dev compilation corrupted a generated validator. Its cache was moved recoverably to the local Temp folder, not user source; production build then passed.
+- Pre-footer-fix head 5d51d539 passed PR CI: API 2,307 passed / 5 skipped, Web 1,138 passed, general browser 282 passed, planner browser 30 passed, containers/migration and full-stack smoke. The duplicate push run needed a retry for unrelated community offline reconnection.
+- Final screenshot review found the mobile creation CTA behind global navigation. Creation now has its own fixed footer; production build and both desktop/mobile creation tests passed, including in-viewport and unobscured hit-target assertions at 390 by 844. Final-head CI is rerun after this fix.

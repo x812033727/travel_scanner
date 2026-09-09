@@ -26,8 +26,20 @@
   .calm-planner .calm-day-panel { padding-top:.5rem; }
   .calm-planner .calm-stop-card { padding:.85rem; }
   .calm-planner .planner-day-chip { min-height:52px; }
-  .calm-new-trip-footer { position:sticky; bottom:0; z-index:20; padding:.75rem 0 calc(.75rem + env(safe-area-inset-bottom)); border-top:1px solid var(--line); }
-  .calm-new-trip-footer button { width:100%; min-height:48px; }
+}
+@media (max-width:1023px) {
+  /* Creation is a focused flow, like the editor: its own action bar replaces
+     the global tab bar without changing navigation on other pages. */
+  .public-app-shell:has(.premium-new-trip) + .app-bottom-nav { display:none; }
+  .public-app-shell .premium-new-trip { padding-bottom:calc(11rem + env(safe-area-inset-bottom)); }
+  .premium-new-trip .calm-new-trip-footer.premium-new-trip-footer {
+    position:fixed; inset:auto 1rem max(.75rem, env(safe-area-inset-bottom)) 1rem;
+    z-index:50; max-width:50rem; margin:0 auto; padding:.75rem; gap:.5rem;
+    border:1px solid var(--line); border-radius:1.25rem; background:var(--surface);
+    box-shadow:0 8px 32px color-mix(in srgb,var(--ink) 12%,transparent);
+  }
+  .premium-new-trip .calm-new-trip-footer > p { max-width:none; margin:0; }
+  .premium-new-trip .calm-new-trip-footer button { width:100%; min-height:48px; }
 }
 
 /* Nothing readable is allowed below 13px. Tailwind's own `text-xs` is 12px and it
