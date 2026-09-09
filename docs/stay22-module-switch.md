@@ -100,6 +100,10 @@ transport. No real affiliate click or booking is claimed by any of these checks.
 Local validation: full Ruff and mypy (291 application files), full ESLint,
 five-language checks, 27 tooling tests and a production Next build (267 routes)
 passed. Backend scope has 326 passing tests and two PostgreSQL-only skips;
-the isolated public document has 44 passing focused Vitest tests. The complete
+the isolated public document has 44 passing focused Vitest tests and admin switch
+has 10. The corrected offline-guarded Playwright run passed all 50 cases across
+Desktop Chromium and Pixel 7 (28 Script and 22 existing Allez), including production
+wire headers, mode switching, public/private document boundaries and modal layout.
+The complete
 local Vitest run was intentionally stopped under host memory pressure rather than
 reported as a pass; CI remains responsible for the complete regression suite.

@@ -59,6 +59,9 @@ build (267 routes including regenerated TypeScript route types) passed. CI now
 includes the isolated full Script browser suite. Full local Vitest was stopped
 under host memory pressure; do not report it as completed.
 
-Draft PR #383: https://github.com/x812033727/travel_scanner/pull/383.
-Full CI and final combined browser regression are still running. The draft is not
-merge/deployment authorization; leave production settings unchanged.
+PR #383: https://github.com/x812033727/travel_scanner/pull/383.
+The corrected offline-guarded combined browser regression passed all 50 cases
+(28 Script + 22 Allez, desktop and Pixel 7). CI must independently finish the full
+suite. The PR is not merge/deployment authorization; leave production settings
+unchanged. Earlier fulfilled-redirect fixture risk and its transport correction
+are documented in the browser task and rollout document.
