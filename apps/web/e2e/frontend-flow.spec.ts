@@ -102,7 +102,7 @@ test("guest reading → confirmed sign-in return → save → organize → trip 
   await page.keyboard.press("Escape"); await expect(detail).toBeVisible();
   await detail.getByRole("button",{name:n.plan,exact:true}).click();
   const planning=page.getByRole("dialog",{name:n.plan,exact:true});
-  await expect(planning.getByLabel(n.chooseTrip,{exact:true})).toHaveValue(tripId);
+  await expect(planning.getByRole("combobox",{name:n.chooseTrip,exact:true})).toHaveValue(tripId);
   expect(writes.filter((entry)=>entry.path.endsWith("/trip-selections"))).toHaveLength(0);
   await planning.getByRole("button",{name:n.confirm,exact:true}).click();
   await expect(planning).toHaveCount(0);

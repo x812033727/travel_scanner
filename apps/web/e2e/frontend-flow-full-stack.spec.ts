@@ -87,7 +87,7 @@ test("public idea → real login → saved/list → create trip → explicit add
   await expect(page).toHaveURL(/resume_trip=/);
   const tripId=new URL(page.url()).searchParams.get("resume_trip")!;
   plan=page.getByRole("dialog",{name:n.plan,exact:true});
-  await expect(plan.getByLabel(n.chooseTrip,{exact:true})).toHaveValue(tripId);
+  await expect(plan.getByRole("combobox",{name:n.chooseTrip,exact:true})).toHaveValue(tripId);
   expect(mutations.filter(path=>path.endsWith("/trip-selections"))).toHaveLength(0);
   await plan.getByRole("button",{name:n.confirm,exact:true}).click();
   await expect(plan).toHaveCount(0);
