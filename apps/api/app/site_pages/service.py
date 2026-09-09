@@ -60,7 +60,9 @@ def initial_document(slug: PageSlug, locale: Locale) -> PageDocument:
 
 def pending_requirements(slug: str, document: PageDocument) -> list[str]:
     requirements = document.requirements.model_dump()
-    pending = [field for field in REQUIRED_FIELDS[slug] if not requirements[field].strip()]
+    pending: list[str] = [
+        field for field in REQUIRED_FIELDS[slug] if not requirements[field].strip()
+    ]
     # There is no scheduled publication in this module. A future date is not
     # silently treated as a timer or exposed as an already-effective policy.
     if document.effective_date is None or document.effective_date > datetime.now(UTC).date():
@@ -69,11 +71,12 @@ def pending_requirements(slug: str, document: PageDocument) -> list[str]:
 
 
 async def _find_page(session: AsyncSession, slug: PageSlug, locale: Locale) -> SitePage | None:
-    return await session.scalar(
+    page: SitePage | None = await session.scalar(
         select(SitePage)
         .where(SitePage.slug == slug, SitePage.locale == locale)
         .execution_options(populate_existing=True)
     )
+    return page
 
 
 async def _require_page(session: AsyncSession, slug: PageSlug, locale: Locale) -> SitePage:
