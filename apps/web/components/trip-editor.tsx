@@ -375,7 +375,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const [departureDirty, setDepartureDirty] = useState(false);
   const [departureEditorKey, setDepartureEditorKey] = useState(0);
   const [routePreferenceDraft, setRoutePreferenceDraft] = useState<Trip["route_preference"]>();
-  const routePreferenceVersionRef = useRef<number | undefined>(undefined);
+  const routePreferenceBaselineRef = useRef<Trip["route_preference"]>(undefined);
   const [browserState, setBrowserState] = useState(() => createPlaceBrowserState());
   const [routeQueryDrafts, setRouteQueryDrafts] = useState<Record<string, { mode: TravelMode; buffer: number }>>({});
   const [aiRouteOnly, setAIRouteOnly] = useState(false);
@@ -959,7 +959,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
 
   function discardSettingsDrafts() {
     setRoutePreferenceDraft(undefined);
-    routePreferenceVersionRef.current = undefined;
+    routePreferenceBaselineRef.current = undefined;
     setScheduleDraft(tripRef.current?.schedule_defaults || defaultSchedule);
     setDepartureDirty(false);
     setDepartureEditorKey((key) => key + 1);
@@ -1716,12 +1716,12 @@ export function TripEditor({ tripId }: { tripId: string }) {
     try {
       const current = await flushChanges(false);
       if (!current) return;
-      if (routePreferenceVersionRef.current !== current.version) throw new Error(calm.conflict);
+      if (routePreferenceBaselineRef.current !== (current.route_preference || "FEWER_TRANSFERS")) throw new Error(calm.conflict);
       const updated = await api<Trip>(`/trips/${current.id}/itinerary`, {
         method: "PUT", body: JSON.stringify({ items: current.items, route_preference: routePreferenceDraft, version: current.version }),
       });
       replaceTrip(updated); setRoutes(updated.route_segments || []); setSelectedRoute(undefined);
-      setStaleDays(new Set(days)); setRoutePreferenceDraft(undefined); routePreferenceVersionRef.current = undefined;
+      setStaleDays(new Set(days)); setRoutePreferenceDraft(undefined); routePreferenceBaselineRef.current = undefined;
       setNotice(te("saved"));
     } catch (reason) { setError(reason instanceof Error ? reason.message : calm.conflict); }
     finally { panelWriteBusyRef.current = false; setAction(undefined); }
@@ -1961,7 +1961,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
           />
         </section>
 </>} settings={<fieldset disabled={busy("preferences")} className="space-y-4">
-<TripMetaEditor trip={trip} variant="tools" disabled={saveState === "conflict" || Boolean(action)} prepare={() => flushChanges()} onUpdated={(updated) => { applyMetaUpdate(updated); setToolsOpen(false); }} />
+<TripMetaEditor trip={trip} variant="tools" disabled={saveState === "conflict" || Boolean(action)} prepare={() => flushChanges()} onUpdated={applyMetaUpdate} />
 <PlannerPreferences trip={trip} onDirtyChange={setPreferencesDirty} onBusy={(pending) => setAction(pending ? "preferences-save" : undefined)}
   prepare={async () => { const latest = await flushChanges(false); preferenceRevisionRef.current = revisionRef.current; return latest; }}
   onUpdated={(updated) => {
@@ -1997,9 +1997,9 @@ export function TripEditor({ tripId }: { tripId: string }) {
         </section>
         <section className="planner-tool-card">
           <div className="mb-3 flex items-center justify-between gap-3"><div><p className="font-bold">{te("routePreference")}</p><p className="mt-1 text-xs text-[var(--muted)]">{te("preferenceHint")}</p></div><span className="rounded-full bg-[var(--teal-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--teal)]">{trip.destination_country_code === "JP" ? runtimeConfig.ekispert_enabled ? te("providerBadge.ekispert") : runtimeConfig.navitime_enabled ? te("providerBadge.navitime") : te("providerBadge.jpNone") : trip.destination_country_code === "KR" ? runtimeConfig.odsay_enabled ? te("providerBadge.odsay") : runtimeConfig.naver_directions_enabled ? te("providerBadge.naverCar") : te("providerBadge.krNone") : runtimeConfig.google_routes_enabled ? "Google Maps" : te("providerBadge.none")}</span></div>
-          <div className="grid grid-cols-3 gap-2" role="group" aria-label={te("routePreference")}>{([['FEWER_TRANSFERS', 'pref.fewerTransfers'], ['FASTEST', 'pref.fastestShort'], ['LESS_WALKING', 'pref.lessWalking']] as const).map(([value, labelKey]) => <button key={value} type="button" aria-pressed={(routePreferenceDraft || trip.route_preference || "FEWER_TRANSFERS") === value} onClick={() => { routePreferenceVersionRef.current ??= trip.version; setRoutePreferenceDraft(value); }} className={`min-h-11 rounded-xl border px-2 text-sm font-semibold ${(routePreferenceDraft || trip.route_preference || "FEWER_TRANSFERS") === value ? "border-[var(--teal)] bg-[var(--teal)] text-white" : "border-[var(--line)] bg-white"}`}>{te(labelKey)}</button>)}</div>
+          <div className="grid grid-cols-3 gap-2" role="group" aria-label={te("routePreference")}>{([['FEWER_TRANSFERS', 'pref.fewerTransfers'], ['FASTEST', 'pref.fastestShort'], ['LESS_WALKING', 'pref.lessWalking']] as const).map(([value, labelKey]) => <button key={value} type="button" aria-pressed={(routePreferenceDraft || trip.route_preference || "FEWER_TRANSFERS") === value} onClick={() => { routePreferenceBaselineRef.current ??= trip.route_preference || "FEWER_TRANSFERS"; setRoutePreferenceDraft(value); }} className={`min-h-11 rounded-xl border px-2 text-sm font-semibold ${(routePreferenceDraft || trip.route_preference || "FEWER_TRANSFERS") === value ? "border-[var(--teal)] bg-[var(--teal)] text-white" : "border-[var(--line)] bg-white"}`}>{te(labelKey)}</button>)}</div>
           <div className="mt-3 flex justify-end gap-2">
-            <button type="button" disabled={!routePreferenceDraft || Boolean(action)} onClick={() => { setRoutePreferenceDraft(undefined); routePreferenceVersionRef.current = undefined; }}
+            <button type="button" disabled={!routePreferenceDraft || Boolean(action)} onClick={() => { setRoutePreferenceDraft(undefined); routePreferenceBaselineRef.current = undefined; }}
               className="min-h-11 rounded-xl border border-[var(--line)] px-4 text-sm font-semibold">{calm.cancel}</button>
             <button type="button" disabled={!routePreferenceDraft || routePreferenceDraft === trip.route_preference || Boolean(action)} onClick={() => void saveRoutePreference()}
               className="min-h-11 rounded-xl bg-[var(--teal-dark)] px-4 text-sm font-semibold text-white">{action === "route-preference" ? calm.saving : calm.save}</button>
