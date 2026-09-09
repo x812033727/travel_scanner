@@ -31,7 +31,7 @@ _Nothing here._
 
 | Task | Owner | Branch |
 | --- | --- | --- |
-| [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
+| [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-08` |
 | [Unified saved items and private inbox API](open/2026-09-09-frontend-flow-saved-api.md) | codex-saved-flow | `codex/frontend-explore-flow` |
 | [Public discovery categories and safe detail projections](open/2026-09-09-frontend-flow-discovery-api.md) | codex-discovery-flow-api | `codex/frontend-explore-flow` |
 | [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | codex-discovery-flow-web | `codex/frontend-explore-flow` |
