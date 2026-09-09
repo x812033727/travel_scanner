@@ -26,6 +26,7 @@ scope:
   - apps/web/components/planner/stop-tone.module.css
   - apps/web/components/planner/route-panel.module.css
   - apps/web/e2e/planner-route-tones.spec.ts
+  - apps/web/e2e/full-stack.spec.ts
   - apps/web/messages/en/trips.json
   - apps/web/messages/zh-TW/trips.json
   - apps/web/messages/ja/trips.json
@@ -61,4 +62,8 @@ Run lint:web, check:i18n, typecheck:web, Vitest single worker, production build,
 
 ## Notes
 
-Base origin/main 7cee8650. Prior PR #373 closure cherry-picked to release its owned scope. No API, schema, provider keys, globals.css, new-trip-form or navigation changes. Five trips locale files temporarily excluded pending confirmation from merchant-style task owner; add scope before editing. Root owns trip-editor/E2E/task; delegates own distinct components.
+Base origin/main 7cee8650. Prior PR #373 closure cherry-picked to release its owned scope. No API, schema, provider keys, globals.css, new-trip-form or navigation changes. Merchant-style owner released five trips locales via ebd94ce (cherry-picked ee850491) before they were added to this claim. Root owns trip-editor/E2E/task; delegates own distinct components.
+
+Regression evidence: provider/manual daily-entry apply both failed selected mode after version increment before the parent fix and passed after it (2 tests). Initial focused run 126 passed/4 failed: three new assertions accidentally matched a hidden zero-minute buffer option and one retained old hotel help text; assertions corrected without changing product guarantees. Read-only cross-review caught valid late-reservation conflict routes being filtered; provider/manual/estimated provenance now preserved with five new regression cases.
+
+Local lint and production Turbopack build/TypeScript/252 pages passed. First two CI Planner UX runs passed including all five locales, themes and route apply; screenshots exposed initial 62dvh route sheet concealing map, so the route now opts into existing defaultExpanded and tests require visible/unoccluded map and instruction. Full-stack smoke first runs failed only a selector matching both new collapsed role badge and expanded hotel label; narrowed to existing systemCards. Final CI and local full Vitest still pending; do not claim final acceptance yet.

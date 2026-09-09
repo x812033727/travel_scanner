@@ -1199,7 +1199,7 @@ describe("trip editor", () => {
     expect(screen.getByText(/已復原尚未同步的本機草稿/)).toBeTruthy();
   });
 
-  it("opens the mobile route sheet on demand, expands it, and closes it on back", async () => {
+  it("opens the mobile route sheet expanded for its map, allows collapse, and closes on back", async () => {
     const destination = {
       ...trip.items[0],
       id: "00000000-0000-4000-8000-000000000003",
@@ -1246,13 +1246,12 @@ describe("trip editor", () => {
     );
     fireEvent.click(routeButton);
     expect(await screen.findByRole("dialog", { name: "這段路怎麼走" })).toBeTruthy();
-    const expand = screen.getByRole("button", { name: "展開面板" });
-    expect(expand.getAttribute("aria-expanded")).toBe("false");
-    fireEvent.click(expand);
     const collapse = screen.getByRole("button", { name: "縮小面板" });
     expect(collapse.getAttribute("aria-expanded")).toBe("true");
     fireEvent.click(collapse);
     expect(screen.getByRole("button", { name: "展開面板" }).getAttribute("aria-expanded")).toBe("false");
+    fireEvent.click(screen.getByRole("button", { name: "展開面板" }));
+    expect(screen.getByRole("button", { name: "縮小面板" }).getAttribute("aria-expanded")).toBe("true");
     fireEvent.popState(window);
     await waitFor(() => expect(screen.queryByRole("dialog", { name: "這段路怎麼走" })).toBeNull());
   });

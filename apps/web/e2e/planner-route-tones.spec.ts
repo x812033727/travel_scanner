@@ -3,9 +3,15 @@ import type { RouteSegment, Trip } from "../lib/trip-types";
 import { dayTimelineCopy } from "../components/planner/day-timeline-copy";
 import { editorFixture } from "./fixtures/itinerary-editor";
 import { pretendSignedIn } from "./session";
+import zhTW from "../messages/zh-TW/trips.json";
+import zhCN from "../messages/zh-CN/trips.json";
+import en from "../messages/en/trips.json";
+import ja from "../messages/ja/trips.json";
+import ko from "../messages/ko/trips.json";
 
 const locales = ["zh-TW", "zh-CN", "en", "ja", "ko"] as const;
 const tones = ["hotel", "lunch", "dinner"] as const;
+const messages = { "zh-TW": zhTW, "zh-CN": zhCN, en, ja, ko };
 type Theme = "light" | "dark";
 
 // All API requests are local fixtures. The map double is deliberately labelled:
@@ -143,8 +149,41 @@ async function noHorizontalOverflow(page: Page) {
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width);
 }
 
+async function resetPageScroll(page: Page) {
+  await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: "instant" }));
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+}
+
+async function expectIdleContentExposed(page: Page, panel: Locator) {
+  const instruction = panel.locator('[data-route-instruction="idle"]');
+  const map = page.getByTestId("local-route-map");
+  const bar = panel.locator(".route-apply-bar");
+  await expect(instruction).toBeInViewport({ ratio: 1 });
+  await expect(bar).toBeInViewport({ ratio: 1 });
+  await expect.poll(async () => {
+    const [mapBounds, barBounds] = await Promise.all([map.boundingBox(), bar.boundingBox()]);
+    if (!mapBounds || !barBounds) return 0;
+    return Math.min(mapBounds.y + mapBounds.height, barBounds.y, page.viewportSize()!.height) - Math.max(mapBounds.y, 0);
+  }, { message: "A useful portion of the actual map must be on screen above the apply bar without scrolling" }).toBeGreaterThanOrEqual(80);
+  const barBounds = (await bar.boundingBox())!;
+  const instructionBounds = (await instruction.boundingBox())!;
+  expect(instructionBounds.y + instructionBounds.height, "The instruction must not sit behind the fixed apply bar").toBeLessThanOrEqual(barBounds.y);
+  expect(await instruction.evaluate((element) => {
+    const bounds = element.getBoundingClientRect();
+    return element.contains(document.elementFromPoint(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2));
+  }), "The initial instruction is not occluded by another overlay").toBe(true);
+  expect(await map.evaluate((element, bottom) => {
+    const bounds = element.getBoundingClientRect();
+    const top = Math.max(bounds.y, 0);
+    const visibleBottom = Math.min(bounds.bottom, bottom, window.innerHeight);
+    const hit = document.elementFromPoint(bounds.x + bounds.width / 2, (top + visibleBottom) / 2);
+    return Boolean(hit?.closest(".route-map-frame"));
+  }, barBounds.y), "The visible map area is not hidden behind another panel").toBe(true);
+}
+
 for (const locale of locales) {
   test(`${locale}: role colors remain distinct, readable and labelled in both themes`, async ({ page }, info) => {
+    if (info.project.name === "mobile-chromium") await page.setViewportSize({ width: 390, height: 844 });
     await page.emulateMedia({ reducedMotion: "reduce" });
     const state = await workspace(page, locale);
     for (const mode of ["light", "dark"] as const) {
@@ -153,12 +192,15 @@ for (const locale of locales) {
       for (const tone of tones) {
         const stop = page.locator(`.premium-optional-stop[data-stop-tone="${tone}"]`).first();
         const summary = stop.locator(":scope > summary");
+        const roleLabel = tone === "hotel" ? messages[locale].systemStop.hotelStart : messages[locale].editor.slot[tone];
         await expect(stop).not.toHaveAttribute("open", "");
+        await expect(summary.getByText(roleLabel, { exact: true })).toBeVisible();
         backgrounds.push(await readable(summary.locator("strong"), mode === "dark"));
         await readable(summary.locator("small"), mode === "dark");
         expect((await summary.boundingBox())!.height).toBeGreaterThanOrEqual(44);
         await summary.click();
         const card = stop.locator(`.planner-system-card[data-stop-tone="${tone}"]`);
+        await expect(card.getByText(roleLabel, { exact: true })).toBeVisible();
         await readable(card.getByRole("heading"), mode === "dark");
         for (const paragraph of await card.locator("p").all()) await readable(paragraph, mode === "dark");
         await expect(card.getByRole("button").first()).toBeVisible();
@@ -166,7 +208,11 @@ for (const locale of locales) {
       }
       expect(new Set(backgrounds).size, "Hotel, lunch and dinner have three distinct painted surfaces").toBe(3);
       await noHorizontalOverflow(page);
-      if (locale === "zh-TW") await page.screenshot({ path: info.outputPath(`roles-${mode}.png`), fullPage: true });
+      if (locale === "zh-TW") {
+        await resetPageScroll(page);
+        await page.screenshot({ path: info.outputPath(`roles-${mode}.png`), fullPage: true });
+        if (page.viewportSize()!.width < 600) await page.screenshot({ path: info.outputPath(`roles-first-screen-${mode}.png`) });
+      }
     }
     expect(state.writes).toEqual([]);
     expect(state.previews).toEqual([]);
@@ -190,6 +236,7 @@ test("unset and skipped arrangements retain role labels without misleading statu
     await expect(skipped).toHaveAttribute("data-stop-skipped", "true");
     await expect(page.getByRole("button", { name: "恢復用餐", exact: true })).toBeVisible();
     await noHorizontalOverflow(page);
+    await resetPageScroll(page);
     await page.screenshot({ path: info.outputPath(`optional-390-${mode}.png`), fullPage: true });
   }
   expect(state.writes).toEqual([]);
@@ -217,6 +264,7 @@ for (const width of [390, 920]) {
     const query = panel.getByRole("button", { name: dayTimelineCopy("zh-TW").query, exact: true });
     await expect(query).toBeInViewport();
     expect((await query.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+    await expectIdleContentExposed(page, panel);
     await noHorizontalOverflow(page);
     await page.screenshot({ path: info.outputPath(`route-idle-${width}-fixture-map.png`) });
     await panel.getByRole("tab", { name: "步行", exact: true }).click();

@@ -2140,7 +2140,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
       <p className="text-sm text-[var(--muted)]">{calm.draftHint}</p>
     </PlannerOverlay>
 
-    <PlannerOverlay open={routeDrawerOpen && Boolean(routeTarget)} onClose={closeRouteDrawer} title={te("routeTitle")} description={te("routeDescription")} size="wide" expandable>{routeTarget && <RouteModePanel
+    <PlannerOverlay open={routeDrawerOpen && Boolean(routeTarget)} onClose={closeRouteDrawer} title={te("routeTitle")} description={te("routeDescription")} size="wide" expandable defaultExpanded>{routeTarget && <RouteModePanel
       key={`${routeTarget.fromItemId}-${routeTarget.toItemId}-${trip.version}`} trip={trip} items={items}
       fromItemId={routeTarget.fromItemId} toItemId={routeTarget.toItemId} initialSegment={selectedRoute}
       onBusy={(pending) => { routePanelBusyRef.current = pending; }} initialTravelMode={routePreviewSettings?.mode}
