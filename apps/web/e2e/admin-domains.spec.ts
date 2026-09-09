@@ -151,3 +151,104 @@ for (const [locale, overview, hotels] of [["zh-TW", "總覽", "飯店"], ["zh-CN
     if (locale === "zh-TW") await page.screenshot({ path: info.outputPath("admin-domains-dark.png"), fullPage: true });
   });
 }
+
+async function catalogBudgetFixture(page: Page) {
+  await fixture(page);
+  const writes: { path: string; body: Record<string, unknown> }[] = [];
+  let configuredLimit = 80;
+  let run = {
+    id: "budget-run", version: 7, mode: "review_pending", scope: "hotspots", status: "partial", phase: "review_pending",
+    model: "isolated-fixture-no-provider", requested_counts: { hotspot: 40, food: 0, merchant: 0 },
+    counts: { total: 1000, assessed: 544, approved: 0, rejected: 137, needs_review: 407, created: 0, duplicates: 0, failed: 24, applied: 7 },
+    usage: { calls: 80, input_tokens: 1000, output_tokens: 200 }, error_code: "catalog_review_call_limit" as string | null, error_message: null,
+    created_at: "2026-09-09T08:00:00Z", completed_at: "2026-09-09T08:30:00Z", review_complete: false, can_resume: false,
+    max_calls: 80, can_extend_budget: false,
+  };
+  const snapshot = () => ({ encryption_source: "SETTINGS_ENCRYPTION_KEY", audit: [], providers: [{
+    provider: "gemini_guides", label: "Gemini 多語文章搜尋", description: "Isolated UI fixture: no provider requests",
+    configured: true, enabled: true, status: "ready", status_message: "Fixture only",
+    config: { catalog_review_max_calls: configuredLimit, hotspot_guide_gemini_daily_search_budget: 300 },
+    config_sources: { catalog_review_max_calls: "database", hotspot_guide_gemini_daily_search_budget: "environment" },
+    secrets: {}, updated_at: "2026-09-09T08:00:00Z",
+  }] });
+  await page.route("**/api/travel/admin/provider-settings**", async (route) => {
+    const path = new URL(route.request().url()).pathname.replace("/api/travel", "");
+    if (route.request().method() === "PUT" && path === "/admin/provider-settings/gemini_guides") {
+      const body = route.request().postDataJSON();
+      writes.push({ path, body });
+      configuredLimit = body.config.catalog_review_max_calls;
+      run = { ...run, can_extend_budget: configuredLimit > run.max_calls };
+    } else if (route.request().method() !== "GET") {
+      await route.fulfill({ status: 403, json: { detail: "Unexpected fixture provider operation" } });
+      return;
+    }
+    await route.fulfill({ json: snapshot() });
+  });
+  await page.route("**/api/travel/admin/catalog-review**", async (route) => {
+    const url = new URL(route.request().url()), path = url.pathname.replace("/api/travel", "");
+    if (route.request().method() === "POST" && path === "/admin/catalog-review/runs/budget-run/resume") {
+      const body = route.request().postDataJSON();
+      writes.push({ path: path + url.search, body });
+      run = { ...run, status: "queued", version: run.version + 1, max_calls: body.max_calls, can_extend_budget: false, error_code: null };
+      await route.fulfill({ json: run });
+    } else if (route.request().method() !== "GET") {
+      await route.fulfill({ status: 403, json: { detail: "Unexpected fixture catalog operation" } });
+    } else if (path === "/admin/catalog-review") {
+      await route.fulfill({ json: { configured: true, model: run.model, daily_call_limit: 300, run_call_limit: configuredLimit, pending_counts: { hotspot: 1000, food: 0, merchant: 0, total: 1000 }, can_start_review: true, can_start_discovery: false, blocking_reasons: [], active_run: null, runs: [run] } });
+    } else if (path.endsWith("/items")) {
+      await route.fulfill({ json: { items: [], total: 0, page: 1, page_size: 30, has_more: false } });
+    } else {
+      await route.fulfill({ json: run });
+    }
+  });
+  return writes;
+}
+
+for (const theme of ["light", "dark"] as const) {
+  test(`catalog budget is editable and old work resumes only after confirmation (${theme})`, async ({ page }, info) => {
+    const writes = await catalogBudgetFixture(page);
+    await page.addInitScript((value) => localStorage.setItem("mokaair-theme", value), theme);
+    await page.emulateMedia({ colorScheme: theme, reducedMotion: "reduce" });
+    await page.goto("/zh-TW/admin/hotspots?tab=review&section=ai&run=budget-run");
+    await expect(page.getByText("新工作呼叫上限 80 次；共用每日上限 300 次。")).toBeVisible();
+    await page.getByRole("link", { name: "設定審核呼叫上限" }).click();
+    await expect(page).toHaveURL(/admin\/settings\?provider=gemini_guides&field=catalog_review_max_calls/);
+    const input = page.getByRole("spinbutton", { name: /目錄審核每個工作累計呼叫上限/ });
+    await expect(input).toHaveValue("80");
+    await expect(input).toHaveAttribute("min", "1");
+    await expect(input).toHaveAttribute("max", "1000");
+    await input.fill("160");
+    await page.getByRole("button", { name: "儲存設定", exact: true }).click();
+    await expect.poll(() => writes.length).toBe(1);
+    expect(writes[0]).toEqual({ path: "/admin/provider-settings/gemini_guides", body: { config: { catalog_review_max_calls: 160 }, secrets: {}, expected_updated_at: "2026-09-09T08:00:00Z" } });
+    await expect(page.getByRole("button", { name: "儲存設定", exact: true })).toBeDisabled();
+    await page.goBack();
+    await expect(page.getByText("新工作呼叫上限 160 次；共用每日上限 300 次。")).toBeVisible();
+    await expect(page.getByText("此工作原有累計上限 80 次；已使用 80 次。")).toBeVisible();
+    expect(writes).toHaveLength(1);
+    const opener = page.getByRole("button", { name: "提高上限並續跑…" });
+    await opener.click();
+    const dialog = page.getByRole("dialog", { name: "確認提高此工作的呼叫上限並續跑" });
+    const cancel = dialog.getByRole("button", { name: "返回檢查", exact: true });
+    const confirm = dialog.getByRole("button", { name: "確認提高並續跑", exact: true });
+    await expect(cancel).toBeFocused();
+    await page.keyboard.press("Shift+Tab");
+    await expect(confirm).toBeFocused();
+    for (const button of [cancel, confirm]) expect((await button.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+    await expect(dialog.getByText("300", { exact: true })).toBeVisible();
+    await expect(dialog.getByText(/累計呼叫、已完成評估及套用結果不會歸零/)).toBeVisible();
+    await expect(page.locator("html")).toHaveJSProperty("scrollWidth", await page.locator("html").evaluate((node) => node.clientWidth));
+    await page.screenshot({ path: info.outputPath(`catalog-budget-confirm-${theme}.png`), fullPage: false });
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
+    await expect(opener).toBeFocused();
+    expect(writes).toHaveLength(1);
+    await opener.click();
+    await confirm.click();
+    await expect.poll(() => writes.length).toBe(2);
+    expect(writes[1]).toEqual({ path: "/admin/catalog-review/runs/budget-run/resume?scope=hotspots", body: { expected_version: 7, max_calls: 160 } });
+    await page.reload();
+    await expect(page.getByText("此工作原有累計上限 160 次；已使用 80 次。")).toBeVisible();
+    expect(writes).toHaveLength(2);
+  });
+}

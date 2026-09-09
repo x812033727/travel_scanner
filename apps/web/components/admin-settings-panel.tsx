@@ -9,6 +9,7 @@ import { ApiError, api } from "@/lib/api";
 import { useHeaderSession } from "@/components/header-session";
 import { adminNavigate, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { adminSettingsCopy } from "@/lib/admin-settings-copy";
+import { adminCatalogBudgetCopy, validCatalogCallLimit } from "@/lib/admin-catalog-budget-copy";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 import { domainSettingsDependencies, isDomainSettingsScope, settingsHref, settingsOwner, type AdminSettingsScope } from "@/lib/admin-settings-ownership";
 
@@ -216,6 +217,7 @@ const fieldMeta: Record<string, FieldMeta> = {
   hotspot_guide_gemini_model: { localized: true, allowCustom: true },
   hotspot_guide_gemini_timeout_seconds: { localized: true, type: "number" },
   hotspot_guide_gemini_daily_search_budget: { localized: true, type: "number" },
+  catalog_review_max_calls: { type: "number" },
   hotspot_guide_backfill_enabled: { localized: true, type: "boolean" },
   hotspot_guide_backfill_batch_size: { localized: true, type: "number" },
   hotspot_guide_backfill_locale: { localized: true, type: "text" },
@@ -646,6 +648,7 @@ function loadFailure(reason: unknown): LoadFailure {
 export function AdminSettingsPanel({ scope = "providers", provider: linkedProvider, field: linkedField }: { scope?: AdminSettingsScope; provider?: string; field?: string }) {
   const t = useTranslations("admin");
   const copy = adminSettingsCopy(useLocale());
+  const budgetCopy = adminCatalogBudgetCopy(useLocale());
   const affiliateCopy = klookAffiliateCopy(useLocale());
   const { sessionIdentity } = useHeaderSession();
   const { dateTime } = useFormatters();
@@ -822,6 +825,10 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
     const draft = drafts[provider.provider];
     const changes = ownedChanges(draft, scope);
     if (!Object.keys(changes.config).length && !Object.keys(changes.secrets).length && changes.enabled === undefined) return;
+    if ("catalog_review_max_calls" in changes.config && !validCatalogCallLimit(changes.config.catalog_review_max_calls)) {
+      setActionError(budgetCopy.invalidLimit);
+      return;
+    }
     setBusyProvider(provider.provider); setActionError(undefined); setNotice(undefined);
     try {
       const result = await api<Snapshot>(`/admin/provider-settings/${provider.provider}`, {
@@ -1008,8 +1015,8 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
         <fieldset disabled={busy || !manage.allowed} title={!manage.allowed ? manage.disabledReason : undefined} className="min-w-0 disabled:opacity-70">
         {configFields.length > 0 && <div className="mt-6 grid gap-4 md:grid-cols-2">{configFields.map((field) => {
           const meta: FieldMeta = fieldMeta[field] || {};
-          const label = provider.provider === "layout" ? t(`layout.fields.${field}.label`) : meta.localized ? t(`providerFields.${field}.label`) : meta.label || field;
-          const help = field === "klook_affiliate_id" ? affiliateCopy.noApi : provider.provider === "layout" ? t(`layout.fields.${field}.help`) : meta.localized ? optionalMessage(t, `providerFields.${field}.help`) : meta.help;
+          const label = field === "catalog_review_max_calls" ? budgetCopy.settingLabel : provider.provider === "layout" ? t(`layout.fields.${field}.label`) : meta.localized ? t(`providerFields.${field}.label`) : meta.label || field;
+          const help = field === "catalog_review_max_calls" ? budgetCopy.settingHelp : field === "klook_affiliate_id" ? affiliateCopy.noApi : provider.provider === "layout" ? t(`layout.fields.${field}.help`) : meta.localized ? optionalMessage(t, `providerFields.${field}.help`) : meta.help;
           const sourceBadge = provider.config_sources[field] === "database" ? t("settingsPanel.sourceDatabase") : t("settingsPanel.sourceEnvironment");
           if (meta.type === "boolean") return <label key={field} data-settings-provider={provider.provider} data-settings-field={field} className="flex min-h-11 items-start gap-3 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-4 md:col-span-2"><input type="checkbox" role="switch" checked={draft.config[field] === "true"} onChange={(event) => patchConfig(provider.provider, field, String(event.target.checked))} className="mt-1" /><span><span className="font-semibold">{label}</span><span className="ml-2 text-xs font-normal text-[var(--muted)]">{sourceBadge}</span>{help && <span className="mt-1 block text-xs font-normal leading-5 text-[var(--muted)]">{help}</span>}</span></label>;
           const value = draft.config[field];
@@ -1017,7 +1024,8 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
           const options = serverOptions?.length ? [...(meta.emptyOption ? [{ value: "", label: t(`providerFields.${meta.emptyOption}`) }] : []), ...serverOptions] : meta.options;
           const custom = Boolean(options && meta.allowCustom && (draft.customFields.includes(field) || !options.some((option) => option.value === value)));
           const selected = options?.find((option) => option.value === value);
-          return <div key={field} data-settings-provider={provider.provider} data-settings-field={field} className="text-sm font-semibold"><label className="block">{label}<span className="ml-2 text-xs font-normal text-[var(--muted)]">{sourceBadge}</span>{options ? <select value={custom ? customOption : value} onChange={(event) => selectOption(provider.provider, field, event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-normal">{options.map((option) => <option key={option.value} value={option.value}>{option.label ?? t(`providerFields.${field}.options.${option.value}`)}</option>)}{meta.allowCustom && <option value={customOption}>{t("providerFields.custom")}</option>}</select> : <input type={meta.type || "text"} step={meta.type === "number" ? "any" : undefined} value={value} onChange={(event) => patchConfig(provider.provider, field, event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] px-3 py-3 font-normal" />}</label>{custom && <input type="text" value={value} onChange={(event) => patchConfig(provider.provider, field, event.target.value)} aria-label={t("providerFields.customInputLabel", { field: label })} placeholder={t("providerFields.customPlaceholder")} className="mt-2 w-full rounded-xl border border-[var(--line)] px-3 py-3 font-mono text-sm font-normal" />}{help && <span className="mt-1 block text-xs font-normal text-[var(--muted)]">{help}</span>}{selected?.description && <span className="mt-1 block text-xs font-normal text-[var(--muted)]">{selected.description}</span>}</div>;
+          const budgetField = field === "catalog_review_max_calls";
+          return <div key={field} data-settings-provider={provider.provider} data-settings-field={field} className="text-sm font-semibold"><label className="block">{label}<span className="ml-2 text-xs font-normal text-[var(--muted)]">{sourceBadge}</span>{options ? <select value={custom ? customOption : value} onChange={(event) => selectOption(provider.provider, field, event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-normal">{options.map((option) => <option key={option.value} value={option.value}>{option.label ?? t(`providerFields.${field}.options.${option.value}`)}</option>)}{meta.allowCustom && <option value={customOption}>{t("providerFields.custom")}</option>}</select> : <input type={meta.type || "text"} step={budgetField ? 1 : meta.type === "number" ? "any" : undefined} min={budgetField ? 1 : undefined} max={budgetField ? 1000 : undefined} aria-describedby={budgetField ? "catalog-review-call-limit-help" : undefined} aria-invalid={budgetField && !validCatalogCallLimit(Number(value)) ? true : undefined} value={value} onChange={(event) => patchConfig(provider.provider, field, event.target.value)} className="mt-2 w-full rounded-xl border border-[var(--line)] px-3 py-3 font-normal" />}</label>{custom && <input type="text" value={value} onChange={(event) => patchConfig(provider.provider, field, event.target.value)} aria-label={t("providerFields.customInputLabel", { field: label })} placeholder={t("providerFields.customPlaceholder")} className="mt-2 w-full rounded-xl border border-[var(--line)] px-3 py-3 font-mono text-sm font-normal" />}{help && <span id={budgetField ? "catalog-review-call-limit-help" : undefined} className="mt-1 block text-xs font-normal text-[var(--muted)]">{help}</span>}{selected?.description && <span className="mt-1 block text-xs font-normal text-[var(--muted)]">{selected.description}</span>}</div>;
         })}</div>}
 
         {secretFields.length > 0 && <div className="mt-6"><h3 className="flex items-center gap-2 text-sm font-bold"><KeyRound size={16} className="text-[var(--teal)]" />{t("settingsPanel.secretsHeading")}</h3><div className="mt-3 grid gap-4 md:grid-cols-2">{secretFields.map(([field, secret]) => { const meta = secretMeta(t, field); const clearing = draft.clearSecrets.includes(field); return <div key={field} data-settings-provider={provider.provider} data-settings-field={field} className="rounded-2xl bg-[var(--paper)] p-4"><label className="text-sm font-semibold">{meta.label}<input type="password" autoComplete="off" value={draft.secrets[field]} onChange={(event) => patchSecret(provider.provider, field, event.target.value)} placeholder={secret.masked || t("settingsPanel.secretPlaceholder")} className="mt-2 w-full rounded-xl border border-[var(--line)] bg-white px-3 py-3 font-mono text-sm font-normal" /></label><div className="mt-2 flex items-center justify-between gap-3 text-xs text-[var(--muted)]"><span className="flex items-center gap-1"><EyeOff size={13} />{clearing ? t("settingsPanel.clearAfterSave") : sourceName(t, secret.source)}</span>{secret.source === "database" && !clearing && <button type="button" onClick={() => clearSecret(provider.provider, field)} className="flex min-h-11 items-center gap-1 font-semibold text-red-700"><Trash2 size={13} />{t("settingsPanel.clear")}</button>}</div>{meta.help && <p className="mt-2 text-xs leading-5 text-[var(--muted)]">{meta.help}</p>}</div>; })}</div></div>}

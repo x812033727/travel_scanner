@@ -412,6 +412,40 @@ afterEach(() => {
 });
 
 describe("AdminSettingsPanel", () => {
+  it("deep-links to the single bounded catalog budget editor and saves only its changed value", async () => {
+    const provider = { ...geminiProvider, updated_at: "2026-09-09T08:00:00Z", config: { ...geminiProvider.config, catalog_review_max_calls: 80, hotspot_guide_gemini_daily_search_budget: 300 } };
+    const initial = { ...snapshot, providers: [provider] };
+    const saved = { ...initial, providers: [{ ...provider, config: { ...provider.config, catalog_review_max_calls: 200 } }] };
+    const fetchMock = vi.fn().mockResolvedValueOnce(new Response(JSON.stringify(initial), { status: 200 })).mockResolvedValueOnce(new Response(JSON.stringify(saved), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminSettingsPanel provider="gemini_guides" field="catalog_review_max_calls" />);
+    const input = await screen.findByRole("spinbutton", { name: /目錄審核每個工作累計呼叫上限/ });
+    expect((input as HTMLInputElement).value).toBe("80");
+    expect(input.getAttribute("min")).toBe("1");
+    expect(input.getAttribute("max")).toBe("1000");
+    expect(input.getAttribute("step")).toBe("1");
+    expect(document.getElementById(input.getAttribute("aria-describedby")!)?.textContent).toContain("不是 Gemini 專案配額");
+    expect(screen.getByText(/儲存只影響新工作，不會自動續跑/)).toBeTruthy();
+    fireEvent.change(input, { target: { value: "200" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(fetchMock.mock.calls[1][0]).toBe("/api/travel/admin/provider-settings/gemini_guides");
+    expect(savedBody(fetchMock)).toEqual({ config: { catalog_review_max_calls: 200 }, secrets: {}, expected_updated_at: "2026-09-09T08:00:00Z" });
+    expect((screen.getByRole("spinbutton", { name: /^每日搜尋上限/ }) as HTMLInputElement).value).toBe("300");
+  });
+
+  it.each(["", "0", "1001", "1.5"])("refuses invalid catalog budget %s without writing or dropping the draft", async (value) => {
+    const fetchMock = stubAiFetch({ ...snapshot, providers: [{ ...geminiProvider, config: { ...geminiProvider.config, catalog_review_max_calls: 80 } }] });
+    render(<AdminSettingsPanel provider="gemini_guides" field="catalog_review_max_calls" />);
+    const input = await screen.findByRole("spinbutton", { name: /目錄審核每個工作累計呼叫上限/ });
+    fireEvent.change(input, { target: { value } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    expect(await screen.findByText("每個工作呼叫上限必須是 1–1000 的整數。")).toBeTruthy();
+    expect(input.getAttribute("aria-invalid")).toBe("true");
+    expect((input as HTMLInputElement).value).toBe(value);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
   it("saves a direct Klook affiliate ID as text without requiring or calling a pricing API", async () => {
     const data = { ...snapshot, providers: [{ provider: "klook", label: "Klook", description: "Affiliate links", enabled: true,
       configured: true, status: "ready", status_message: "Affiliate links ready", config: { klook_affiliate_id: "12345" },

@@ -380,6 +380,23 @@ class Settings(BaseSettings):
     hotspot_guide_gemini_model: str = "gemini-3.8-flash"
     hotspot_guide_gemini_timeout_seconds: float = Field(default=45.0, gt=0, le=120)
     hotspot_guide_gemini_daily_search_budget: int = Field(default=30, ge=1, le=1000)
+    # Independent of the shared daily budget: this ceiling applies to the
+    # cumulative provider calls within one catalog review run, including retries.
+    catalog_review_max_calls: int = Field(default=80, ge=1, le=1000)
+
+    @field_validator("catalog_review_max_calls", mode="before")
+    @classmethod
+    def catalog_review_calls_integer(cls, value: object) -> object:
+        # Environment values arrive as strings, but booleans and floats must
+        # never be coerced into a spending limit.
+        if isinstance(value, str):
+            value = value.strip()
+            if value.isascii() and value.isdigit():
+                return value
+        elif isinstance(value, int) and not isinstance(value, bool):
+            return value
+        raise ValueError("catalog_review_max_calls must be an integer")
+
     hotspot_guide_refresh_days: int = Field(default=7, ge=1, le=30)
     hotspot_guide_ai_search_enabled: bool = True
     hotspot_guide_ai_default_provider: Literal["minimax", "openai", "anthropic", "gemini"] = (

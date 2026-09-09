@@ -292,6 +292,56 @@ async def test_concurrent_budget_reservations_never_exceed_run_limit(
     assert jobs.consume_search_budget.await_count == 1
 
 
+@pytest.mark.parametrize("configured_limit", [40, 80, 300])
+async def test_worker_honors_explicit_run_snapshot_above_80_not_current_settings(
+    monkeypatch: pytest.MonkeyPatch, configured_limit: int
+):
+    run = new_run(request_json={"max_calls": 160}, usage_json={"calls": 159})
+    store, _ = setup(monkeypatch, run)
+    await jobs._claim_run(run.id)
+    settings = SimpleNamespace(
+        catalog_review_max_calls=configured_limit,
+        hotspot_guide_gemini_daily_search_budget=250,
+    )
+    values = await asyncio.gather(
+        *(jobs.reserve_call(run.id, run.lease_token, settings) for _ in range(3)),
+        return_exceptions=True,
+    )
+    assert sum(value is True for value in values) == 1
+    stopped = [value for value in values if isinstance(value, jobs.BudgetStopped)]
+    assert len(stopped) == 2
+    assert all(str(value) == "catalog_review_call_limit" for value in stopped)
+    assert run.usage_json == {"calls": 160, "member_charged": False}
+    jobs.consume_search_budget.assert_awaited_once()
+    assert jobs.consume_search_budget.await_args.args[1:] == ("gemini", 250)
+    assert store.events[-1] == "commit"
+
+
+async def test_increased_run_cap_does_not_bypass_daily_budget(monkeypatch: pytest.MonkeyPatch):
+    run = new_run(request_json={"max_calls": 160}, usage_json={"calls": 80})
+    setup(monkeypatch, run)
+    await jobs._claim_run(run.id)
+    monkeypatch.setattr(jobs, "consume_search_budget", AsyncMock(return_value=False))
+    settings = SimpleNamespace(hotspot_guide_gemini_daily_search_budget=80)
+    with pytest.raises(jobs.BudgetStopped, match="catalog_review_daily_budget"):
+        await jobs.reserve_call(run.id, run.lease_token, settings)
+    assert run.usage_json == {"calls": 80}
+    assert jobs.consume_search_budget.await_count == 1
+
+
+async def test_missing_legacy_snapshot_still_stops_at_80(monkeypatch: pytest.MonkeyPatch):
+    run = new_run(request_json={}, usage_json={"calls": 80})
+    setup(monkeypatch, run)
+    await jobs._claim_run(run.id)
+    settings = SimpleNamespace(
+        catalog_review_max_calls=1000, hotspot_guide_gemini_daily_search_budget=1000
+    )
+    with pytest.raises(jobs.BudgetStopped, match="catalog_review_call_limit"):
+        await jobs.reserve_call(run.id, run.lease_token, settings)
+    assert run.usage_json == {"calls": 80}
+    jobs.consume_search_budget.assert_not_awaited()
+
+
 async def test_batches_commit_and_resume_retries_only_errors(monkeypatch: pytest.MonkeyPatch):
     run = new_run()
     items = [new_item(run, number) for number in range(1, 26)]

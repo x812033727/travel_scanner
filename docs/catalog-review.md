@@ -82,7 +82,36 @@ translations and rejected hotspot identities.
 
 The shared configured `HOTSPOT_GUIDE_GEMINI_DAILY_SEARCH_BUDGET` is reserved **before**
 each Gemini HTTP request, including structured-output repairs. Each run additionally has
-an immutable maximum of 80 requests. Source fetches themselves do not call Gemini.
+a snapshotted cumulative request limit. Configure **Catalog review cumulative call
+limit** (default **80**, integer **1–1000**) in **System management → Provider
+settings → Gemini multilingual guide search**:
+`/{locale}/admin/settings?provider=gemini_guides&field=catalog_review_max_calls`.
+The equivalent environment default is `CATALOG_REVIEW_MAX_CALLS`. The AI review
+panel links directly to this single editor and distinguishes the current default,
+the selected run's approved cap, and its cumulative usage. Source fetches themselves
+do not call Gemini.
+
+Saving the provider setting never starts/resumes a job, changes a run's approved
+cap, resets usage, or changes the independent shared daily budget. The new default
+is used for new requests that omit `max_calls`; explicit values must not exceed
+the current setting. Old clients sending `80` remain supported when the setting
+allows it. Job-start idempotency hashes retain whether a cap was explicit or a
+configured default, so the two distinct spending requests cannot share a key.
+Identical retries after a settings change return the original snapshot, not
+another paid run; previously stored legacy hashes remain replayable.
+
+For an existing stopped run, first raise the setting, then select **Resume with
+new limit** and confirm the old/new cap, already consumed calls, remaining per-run
+allowance and daily limit. The optional resume body is
+`{"expected_version": 4, "max_calls": 200}`. The API requires an unchanged run
+version, a stopped partial/failed run (or a worker with an expired lease / orphaned
+queue under the existing recovery rules), a new cap above both its prior cap and usage,
+and a value no greater than the current setting. The same transaction records the
+old/new cap and usage in the audit log and queues the existing run. Assessments,
+snapshot IDs, idempotency hash and cumulative usage are retained; an ordinary
+bodyless resume does not extend the cap. Saving a lower setting likewise does not
+retroactively revoke an already approved run budget. No active run is silently
+granted a larger budget. Concurrent starts/resumes remain globally serialized.
 Usage records contain attempted calls and returned token totals; network failures may
 consume a reservation without token usage being returned.
 
@@ -116,7 +145,8 @@ search queries and Gemini billing depends on the selected model and token/search
 See [Google Search grounding](https://ai.google.dev/gemini-api/docs/google-search) and
 [Gemini rate limits](https://ai.google.dev/gemini-api/docs/rate-limits). Keep provider-side
 quota/billing controls in place. Daily-budget exhaustion is resumable after reset; a run
-at its own call limit requires a new, explicitly started job and is not silently extended.
+at its own call limit needs an explicitly confirmed budget increase before it can
+resume. Do not start another all-pending run just to bypass the old cap.
 
 ## Deployment and verification
 

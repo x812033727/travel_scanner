@@ -246,6 +246,137 @@ def test_database_provider_settings_override_environment_and_can_disable_provide
     assert disabled.google_maps_api_key is None
 
 
+def test_catalog_review_call_limit_default_and_integer_environment(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    assert Settings.model_construct().catalog_review_max_calls == 80
+    monkeypatch.setenv("CATALOG_REVIEW_MAX_CALLS", "240")
+    settings = Settings()
+    assert settings.catalog_review_max_calls == 240
+
+
+@pytest.mark.parametrize("value", [True, False, 80.5, 80.0, "80.5", "80.0", 0, -1, 1001])
+def test_catalog_review_call_limit_rejects_invalid_runtime_values(value: object) -> None:
+    with pytest.raises(PydanticValidationError):
+        Settings.model_validate({"catalog_review_max_calls": value})
+
+
+@pytest.mark.parametrize("value", [1, 80, 240, 1000])
+def test_catalog_review_call_limit_admin_accepts_bounded_integers(value: int) -> None:
+    assert _validate_provider_values(
+        "gemini_guides", {}, ProviderSettingsUpdate(config={"catalog_review_max_calls": value})
+    ) == {"catalog_review_max_calls": value}
+
+
+@pytest.mark.parametrize("value", [True, False, 80.5, 80.0, "80", 0, -1, 1001])
+def test_catalog_review_call_limit_admin_rejects_invalid_values(value: object) -> None:
+    with pytest.raises(AppError) as error:
+        _validate_provider_values(
+            "gemini_guides", {}, ProviderSettingsUpdate(config={"catalog_review_max_calls": value})
+        )
+    assert error.value.status == 422
+    assert error.value.code == "provider_setting_invalid"
+
+
+def test_catalog_review_call_limit_runtime_override_keeps_daily_budget_independent() -> None:
+    base = Settings(catalog_review_max_calls=80, hotspot_guide_gemini_daily_search_budget=300)
+    row = ProviderConfig(
+        provider="gemini_guides",
+        enabled=False,
+        config={"catalog_review_max_calls": 240},
+    )
+    effective = apply_runtime_overrides(base, [row])
+    assert effective.catalog_review_max_calls == 240
+    assert effective.hotspot_guide_gemini_daily_search_budget == 300
+    assert effective.hotspot_guide_gemini_enabled is False
+    cleared = _validate_provider_values(
+        "gemini_guides",
+        row.config,
+        ProviderSettingsUpdate(config={"catalog_review_max_calls": None}),
+    )
+    assert cleared == {}
+    row.config = cleared
+    assert apply_runtime_overrides(base, [row]).catalog_review_max_calls == 80
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("stored_limit", [None, 240])
+async def test_catalog_review_call_limit_snapshot_projects_value_and_source(
+    monkeypatch: pytest.MonkeyPatch, stored_limit: int | None
+) -> None:
+    monkeypatch.setattr(
+        admin_service, "get_settings", lambda: Settings(catalog_review_max_calls=80)
+    )
+    rows = (
+        [
+            ProviderConfig(
+                provider="gemini_guides",
+                enabled=True,
+                config={"catalog_review_max_calls": stored_limit},
+            )
+        ]
+        if stored_limit is not None
+        else []
+    )
+    snapshot = await settings_snapshot(SnapshotSession(rows))  # type: ignore[arg-type]
+    gemini = next(item for item in snapshot.providers if item.provider == "gemini_guides")
+    assert gemini.config["catalog_review_max_calls"] == (stored_limit or 80)
+    assert gemini.config_sources["catalog_review_max_calls"] == (
+        "database" if stored_limit is not None else "environment"
+    )
+    assert sum("catalog_review_max_calls" in item.config for item in snapshot.providers) == 1
+
+
+@pytest.mark.asyncio
+async def test_catalog_review_call_limit_partial_update_keeps_provider_fields_and_audit(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    timestamp = datetime(2026, 9, 1, tzinfo=UTC)
+    previous_config = {
+        "hotspot_guide_gemini_model": "gemini-3.8-flash",
+        "hotspot_guide_gemini_timeout_seconds": 45,
+        "hotspot_guide_gemini_daily_search_budget": 300,
+    }
+    row = ProviderConfig(
+        provider="gemini_guides",
+        enabled=False,
+        config=previous_config,
+        updated_at=timestamp,
+        # Preserve legacy encrypted secrets without exposing or duplicating their form.
+        secret_config_encrypted=encrypt_secrets({"hotspot_guide_gemini_api_key": "retained-key"}),
+    )
+    session = UpdateSession(row)
+    actor = User(id=admin_service.uuid4(), email="catalog-limit@example.com")
+
+    async def snapshot(*_args: object) -> object:
+        return object()
+
+    monkeypatch.setattr(admin_service, "settings_snapshot", snapshot)
+    await update_provider_settings(
+        session,
+        "gemini_guides",
+        ProviderSettingsUpdate(
+            config={"catalog_review_max_calls": 240}, expected_updated_at=timestamp
+        ),
+        actor,
+        object(),
+    )  # type: ignore[arg-type]
+    assert row.config == {**previous_config, "catalog_review_max_calls": 240}
+    assert row.enabled is False
+    assert decrypt_secrets(row.secret_config_encrypted) == {
+        "hotspot_guide_gemini_api_key": "retained-key"
+    }
+    assert "pg_advisory_xact_lock" in session.statements[0]
+    assert "FOR UPDATE" in session.statements[1]
+    assert row.updated_at > timestamp
+    assert session.committed and not session.rolled_back
+    audit = next(value for value in session.added if isinstance(value, AdminAuditLog))
+    assert audit.action == "provider_settings_updated"
+    assert audit.target == "gemini_guides"
+    assert audit.metadata_json["config_fields"] == ["catalog_review_max_calls"]
+    assert audit.metadata_json["secret_fields"] == []
+
+
 def test_connection_failure_message_redacts_provider_secrets() -> None:
     settings = Settings(google_maps_api_key="secret-google-key")
     message = _safe_test_message(

@@ -10,9 +10,10 @@ const run = {
   counts: { total: 101, assessed: 101, approved: 2, rejected: 0, needs_review: 99, created: 0, duplicates: 0, failed: 0, applied: 0 },
   usage: { calls: 4, input_tokens: 123, output_tokens: 45 }, error_code: null, error_message: null,
   created_at: "2026-09-07T00:00:00Z", completed_at: "2026-09-07T00:01:00Z", review_complete: true, can_resume: false,
+  max_calls: 80, can_extend_budget: false,
 };
 const overview = {
-  configured: true, model: "gemini-configured-model", daily_call_limit: 300,
+  configured: true, model: "gemini-configured-model", daily_call_limit: 300, run_call_limit: 80,
   pending_counts: { hotspot: 101, food: 20, merchant: 49, total: 170 },
   can_start_review: true, can_start_discovery: true, blocking_reasons: [], runs: [run],
 };
@@ -48,6 +49,145 @@ afterEach(() => {
 });
 
 describe("AdminCatalogReviewPanel", () => {
+  it("starts with the server-configured budget and shows the selected run's separate historical cap", async () => {
+    const fetchMock = mockApi((url, init) => {
+      if (url === root) return response({ ...overview, run_call_limit: 200 });
+      if (url === root + "/runs" && init?.method === "POST") return response({ ...run, status: "queued", max_calls: 200 });
+      return undefined;
+    });
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
+    expect(await screen.findByText("新工作呼叫上限 200 次；共用每日上限 300 次。")).toBeTruthy();
+    expect(await screen.findByText("此工作原有累計上限 80 次；已使用 4 次。")).toBeTruthy();
+    expect(screen.getByRole("link", { name: "設定審核呼叫上限" }).getAttribute("href")).toBe("/zh-TW/admin/settings?provider=gemini_guides&field=catalog_review_max_calls");
+    fireEvent.click(screen.getByRole("button", { name: "開始審核現有待審" }));
+    await waitFor(() => expect(fetchMock.mock.calls.some(([, init]) => init?.method === "POST")).toBe(true));
+    expect(JSON.parse(String(fetchMock.mock.calls.find(([, init]) => init?.method === "POST")![1]!.body)).max_calls).toBe(200);
+  });
+
+  it.each([undefined, 0, 1001])("does not start without a valid server budget (%s)", async (limit) => {
+    const fetchMock = mockApi((url) => url === root ? response({ ...overview, run_call_limit: limit }) : undefined);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
+    await screen.findByText("此工作原有累計上限 80 次；已使用 4 次。");
+    const start = screen.getByRole("button", { name: "開始審核現有待審" });
+    expect((start as HTMLButtonElement).disabled).toBe(true);
+    fireEvent.click(start);
+    expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(0);
+  });
+
+  it("requires explicit focused confirmation to extend a stopped run without resetting cumulative calls", async () => {
+    let current = { ...run, status: "partial", can_resume: false, can_extend_budget: true, usage: { ...run.usage, calls: 80 } };
+    const fetchMock = mockApi((url, init) => {
+      if (url === root) return response({ ...overview, run_call_limit: 200, runs: [current] });
+      if (url === root + "/runs/review-1") return response(current);
+      if (url.endsWith("/resume") && init?.method === "POST") {
+        current = { ...current, status: "queued", can_extend_budget: false, max_calls: 200 };
+        return response(current);
+      }
+      return undefined;
+    });
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
+    const opener = await screen.findByRole("button", { name: "提高上限並續跑…" });
+    opener.focus();
+    fireEvent.click(opener);
+    const dialog = screen.getByRole("dialog", { name: "確認提高此工作的呼叫上限並續跑" });
+    const cancel = within(dialog).getByRole("button", { name: "返回檢查" });
+    const confirm = within(dialog).getByRole("button", { name: "確認提高並續跑" });
+    expect(document.activeElement).toBe(cancel);
+    expect(within(dialog).getByText("120")).toBeTruthy();
+    expect(within(dialog).getByText(/累計呼叫、已完成評估及套用結果不會歸零/)).toBeTruthy();
+    fireEvent.keyDown(cancel, { key: "Tab", shiftKey: true });
+    expect(document.activeElement).toBe(confirm);
+    fireEvent.keyDown(confirm, { key: "Escape" });
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(document.activeElement).toBe(opener);
+    expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(0);
+    fireEvent.click(opener);
+    fireEvent.click(screen.getByRole("button", { name: "確認提高並續跑" }));
+    await waitFor(() => expect(fetchMock.mock.calls.some(([, init]) => init?.method === "POST")).toBe(true));
+    const writes = fetchMock.mock.calls.filter(([, init]) => init?.method === "POST");
+    expect(writes).toHaveLength(1);
+    expect(String(writes[0][0])).toBe(root + "/runs/review-1/resume?scope=hotspots");
+    expect(JSON.parse(String(writes[0][1]!.body))).toEqual({ expected_version: 3, max_calls: 200 });
+    expect(await screen.findByText("此工作原有累計上限 200 次；已使用 80 次。")).toBeTruthy();
+  });
+
+  it("discards budget consent on browser navigation and scope changes without resuming", async () => {
+    const partial = { ...run, status: "partial", can_extend_budget: true, usage: { ...run.usage, calls: 80 } };
+    const second = { ...partial, id: "review-2", version: 8 };
+    const fetchMock = mockApi((url) => {
+      if (url === root) return response({ ...overview, run_call_limit: 200, runs: [partial, second] });
+      if (url === root + "/runs/review-1") return response(partial);
+      if (url === root + "/runs/review-2") return response(second);
+      return undefined;
+    });
+    const view = render(<AdminCatalogReviewPanel scope="hotspots" />);
+    fireEvent.click(await screen.findByRole("button", { name: "提高上限並續跑…" }));
+    expect(screen.getByRole("dialog")).toBeTruthy();
+    await act(async () => {
+      window.history.pushState(null, "", "/?run=review-2");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    });
+    expect(screen.queryByRole("dialog")).toBeNull();
+    fireEvent.click(await screen.findByRole("button", { name: "提高上限並續跑…" }));
+    view.rerender(<AdminCatalogReviewPanel scope="foods" />);
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(0);
+  });
+
+  it.each([409, 422, 503])("refreshes failed budget extensions (%s) and requires fresh confirmation", async (status) => {
+    const partial = { ...run, status: "partial", can_extend_budget: true, usage: { ...run.usage, calls: 80 } };
+    const fetchMock = mockApi((url, init) => {
+      if (url === root) return response({ ...overview, run_call_limit: 200, runs: [partial] });
+      if (url === root + "/runs/review-1") return response(partial);
+      if (url.endsWith("/resume") && init?.method === "POST") return response({ detail: "Budget request needs confirmation." }, status);
+      return undefined;
+    });
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
+    fireEvent.click(await screen.findByRole("button", { name: "提高上限並續跑…" }));
+    fireEvent.click(screen.getByRole("button", { name: "確認提高並續跑" }));
+    await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+    await screen.findByRole("button", { name: "提高上限並續跑…" });
+    expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(1);
+  });
+
+  it.each(["running", "queued", "completed", "cancelled"])("never infers budget extension permission from %s status", async (status) => {
+    mockApi((url) => url === root ? response({ ...overview, run_call_limit: 200 }) : url === root + "/runs/review-1" ? response({ ...run, status, can_extend_budget: false }) : undefined);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
+    await screen.findByText("此工作原有累計上限 80 次；已使用 4 次。");
+    expect(screen.queryByRole("button", { name: "提高上限並續跑…" })).toBeNull();
+  });
+
+  it("allows explicitly server-authorized orphaned worker recovery without starting it automatically", async () => {
+    const fetchMock = mockApi((url) => url === root ? response({ ...overview, run_call_limit: 200, active_run: { id: run.id, scope: run.scope, status: "running" } }) : url === root + "/runs/review-1" ? response({ ...run, status: "running", can_extend_budget: true }) : undefined);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
+    fireEvent.click(await screen.findByRole("button", { name: "提高上限並續跑…" }));
+    expect(screen.getByRole("dialog")).toBeTruthy();
+    expect(fetchMock.mock.calls.filter(([, init]) => init?.method === "POST")).toHaveLength(0);
+  });
+
+  it("offers budget settings and confirmed extension for old mixed history without creating a mixed run", async () => {
+    const partial = { ...run, scope: undefined, status: "partial", can_extend_budget: true, usage: { ...run.usage, calls: 80 } };
+    const fetchMock = mockApi((url, init) => {
+      if (url === root) return response({ ...overview, run_call_limit: 160, runs: [partial] });
+      if (url === root + "/runs/review-1") return response(partial);
+      if (url.endsWith("/resume") && init?.method === "POST") return response({ ...partial, status: "queued", max_calls: 160, can_extend_budget: false });
+      return undefined;
+    });
+    render(<AdminCatalogReviewPanel />);
+    fireEvent.click(await screen.findByRole("button", { name: "提高上限並續跑…" }));
+    fireEvent.click(screen.getByRole("button", { name: "確認提高並續跑" }));
+    await waitFor(() => expect(fetchMock.mock.calls.some(([url, init]) => String(url).endsWith("/resume?scope=all") && init?.method === "POST")).toBe(true));
+    expect(screen.getByRole("link", { name: "設定審核呼叫上限" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "開始審核現有待審" })).toBeNull();
+  });
+
+  it("explains the cumulative cap without suggesting another paid duplicate run", async () => {
+    mockApi((url) => url === root + "/runs/review-1" ? response({ ...run, status: "partial", error_code: "catalog_review_call_limit", error_message: "old start a new run advice" }) : undefined);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
+    expect(await screen.findByText(/此工作已達累計呼叫上限/)).toBeTruthy();
+    expect(screen.queryByText("old start a new run advice")).toBeNull();
+  });
+
   it("keeps mixed history usable without offering new mixed runs", async () => {
     const legacy = { ...run, scope: undefined, status: "partial", can_resume: true };
     const fetchMock = mockApi((url, init) => {
@@ -63,6 +203,7 @@ describe("AdminCatalogReviewPanel", () => {
     expect(within(screen.getByRole("combobox", { name: "選擇審核工作" })).getByRole("option").textContent).toContain("跨領域（舊版混合）");
     fireEvent.click(screen.getByRole("button", { name: "繼續未完成工作" }));
     await waitFor(() => expect(fetchMock.mock.calls.some(([url, init]) => String(url).endsWith("/resume?scope=all") && init?.method === "POST")).toBe(true));
+    expect(fetchMock.mock.calls.find(([url, init]) => String(url).endsWith("/resume?scope=all") && init?.method === "POST")![1]!.body).toBeUndefined();
   });
 
   it("starts foods discovery with only dishes and merchants and a same-scope prior review", async () => {

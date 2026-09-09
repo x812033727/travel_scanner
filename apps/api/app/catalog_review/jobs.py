@@ -17,6 +17,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.catalog_review.budget import run_call_limit
 from app.catalog_review.errors import CatalogAssessmentError, safe_error_diagnostics
 from app.catalog_review.evidence import fetch_sources, normalize_source_url
 from app.catalog_review.provider import CatalogGeminiProvider
@@ -40,7 +41,6 @@ from app.problems import AppError
 logger = logging.getLogger(__name__)
 LEASE_SECONDS = 300
 HEARTBEAT_SECONDS = 60
-MAX_CALLS = 80
 REVIEW_BATCH_SIZE = 8
 MAX_CONSECUTIVE_PROVIDER_FAILURES = 3
 DISCOVERY_DESTINATION_BATCH_SIZE = 1
@@ -155,7 +155,7 @@ async def reserve_call(run_id: UUID, token: str, settings: Settings) -> bool:
     async with SessionFactory() as session:
         run = await _locked_run(session, run_id, token)
         usage = dict(run.usage_json or {})
-        maximum = min(MAX_CALLS, _count((run.request_json or {}).get("max_calls"), MAX_CALLS))
+        maximum = run_call_limit(run.request_json)
         if _count(usage.get("calls")) >= maximum:
             raise BudgetStopped("catalog_review_call_limit")
         if not await consume_search_budget(
@@ -607,7 +607,8 @@ async def _run(run_id: UUID) -> None:
                 token,
                 error_code=exc.code,
                 error_message=(
-                    "此工作已達 Gemini 呼叫上限；已保存進度，請查看未完成項目並另建工作。"
+                    "此工作已達累計 Gemini 呼叫上限；進度已保存，"
+                    "可在後台調整上限，再明確確認以新上限續跑。"
                     if exc.code == "catalog_review_call_limit"
                     else "Gemini 每日安全預算已用完；進度已保存，可於預算重置後續跑。"
                 ),

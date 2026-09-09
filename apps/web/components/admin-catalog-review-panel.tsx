@@ -15,6 +15,8 @@ import {
   adminReviewCopy,
   type CatalogReviewScope,
 } from "@/lib/admin-review-copy";
+import { adminCatalogBudgetCopy, validCatalogCallLimit } from "@/lib/admin-catalog-budget-copy";
+import { useModalSheet } from "@/lib/modal-sheet";
 import { safeExternalHref } from "@/lib/navigation";
 
 type Kind = "hotspot" | "food" | "merchant";
@@ -54,6 +56,8 @@ type Run = {
   completed_at: string | null;
   review_complete: boolean;
   can_resume: boolean;
+  max_calls: number;
+  can_extend_budget: boolean;
 };
 type Item = {
   id: string;
@@ -77,6 +81,7 @@ type Overview = {
   configured: boolean;
   model: string;
   daily_call_limit: number;
+  run_call_limit: number;
   pending_counts: Record<Kind | "total", number>;
   can_start_review: boolean;
   can_start_discovery: boolean;
@@ -103,6 +108,15 @@ type Confirmation = {
   action: Action;
   items: Item[];
   key: string;
+};
+type BudgetConfirmation = {
+  runId: string;
+  scope: CatalogReviewScope;
+  version: number;
+  oldLimit: number;
+  newLimit: number;
+  calls: number;
+  dailyLimit: number;
 };
 
 const ROOT = "/admin/catalog-review";
@@ -155,6 +169,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
   const t = useTranslations("catalogReview");
   const locale = useLocale();
   const copy = adminReviewCopy(locale);
+  const budgetCopy = adminCatalogBudgetCopy(locale);
   const manage = useAdminActionGuard("content.manage");
   const overviewUrl = scopedUrl(ROOT, scope);
   const [overview, setOverview] = useState<Overview | null>(null);
@@ -180,6 +195,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
   const [action, setAction] = useAdminQueryState("action", ACTIONS, "approve");
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [confirmation, setConfirmation] = useState<Confirmation | null>(null);
+  const [budgetConfirmation, setBudgetConfirmation] = useState<BudgetConfirmation | null>(null);
   const [outcomes, setOutcomes] = useState<Outcome[]>([]);
   const [updated, setUpdated] = useState<number | null>(null);
   const mutationLock = useRef(false);
@@ -188,6 +204,9 @@ function CatalogReviewContent({ scope }: PanelProps) {
   const confirmRef = useRef<HTMLButtonElement>(null);
   const previewRef = useRef<HTMLButtonElement>(null);
   const active = isRunning(run);
+  const budgetDialogRef = useModalSheet<HTMLDivElement>(Boolean(budgetConfirmation), () => {
+    if (!mutationLock.current) setBudgetConfirmation(null);
+  });
 
   useEffect(() => () => mutationController.current?.abort(), []);
 
@@ -202,6 +221,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
       setItemsLoading(Boolean(new URL(window.location.href).searchParams.get("run")));
       setSelected(new Set());
       setConfirmation(null);
+      setBudgetConfirmation(null);
       setOutcomes([]);
       setUpdated(null);
       setError("");
@@ -265,7 +285,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
   }, [runId, page, refresh, scope]);
 
   useEffect(() => {
-    if (!runId || !active || busy || confirmation || itemsLoading) return;
+    if (!runId || !active || busy || confirmation || budgetConfirmation || itemsLoading) return;
     const controller = new AbortController();
     let timer: ReturnType<typeof setTimeout>;
     const poll = async () => {
@@ -339,6 +359,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
     active,
     busy,
     confirmation,
+    budgetConfirmation,
     itemsLoading,
     action,
     scope,
@@ -377,12 +398,14 @@ function CatalogReviewContent({ scope }: PanelProps) {
     manage.allowed &&
     scope &&
     overview?.configured &&
+    validCatalogCallLimit(overview.run_call_limit) &&
     overview.can_start_review,
   );
   const canDiscover = Boolean(
     manage.allowed &&
     scope &&
     overview?.configured &&
+    validCatalogCallLimit(overview.run_call_limit) &&
     overview.can_start_discovery &&
     priorReview,
   );
@@ -400,7 +423,9 @@ function CatalogReviewContent({ scope }: PanelProps) {
   const label = (group: string, value: string) =>
     t.has(`${group}.${value}`) ? t(`${group}.${value}`) : value;
   const knownError = (code?: string | null) =>
-    code && t.has(`errors.${code}`) ? t(`errors.${code}`) : null;
+    code === "catalog_review_call_limit" ? budgetCopy.limitReached :
+      code === "validation_error" ? budgetCopy.limitChanged :
+        code && t.has(`errors.${code}`) ? t(`errors.${code}`) : null;
   const itemReason = (item: Item) =>
     item.status === "error"
       ? (knownError(item.error_code) ?? t("unknownItemError"))
@@ -410,6 +435,29 @@ function CatalogReviewContent({ scope }: PanelProps) {
       dateStyle: "short",
       timeStyle: "short",
     }).format(new Date(value));
+  const canExtendBudget = Boolean(
+    manage.allowed &&
+    run && run.id === runId &&
+    (!scope || run.scope === scope) &&
+    // The server also permits lease-expired worker recovery. Never infer that
+    // permission from a queued/running status on the client.
+    run.can_extend_budget && !itemsLoading &&
+    validCatalogCallLimit(run.max_calls) &&
+    validCatalogCallLimit(overview?.run_call_limit) &&
+    overview!.run_call_limit > run.max_calls &&
+    overview!.run_call_limit > (run.usage?.calls ?? 0) &&
+    (!overview?.active_run || overview.active_run.id === run.id),
+  );
+  const currentBudgetConfirmation = Boolean(
+    budgetConfirmation && canExtendBudget &&
+    budgetConfirmation.runId === runId &&
+    budgetConfirmation.scope === (run?.scope ?? "all") &&
+    budgetConfirmation.version === run?.version &&
+    budgetConfirmation.oldLimit === run?.max_calls &&
+    budgetConfirmation.newLimit === overview?.run_call_limit &&
+    budgetConfirmation.calls === (run?.usage?.calls ?? 0) &&
+    budgetConfirmation.dailyLimit === overview?.daily_call_limit,
+  );
 
   function selectRun(id: string) {
     setRunId(id);
@@ -419,6 +467,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
     setItemsLoading(true);
     setSelected(new Set());
     setConfirmation(null);
+    setBudgetConfirmation(null);
     setError("");
     setOutcomes([]);
     setUpdated(null);
@@ -426,6 +475,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
 
   function refreshView() {
     setSelected(new Set());
+    setBudgetConfirmation(null);
     setItemsLoading(Boolean(runId));
     setError("");
     setRefresh((value) => value + 1);
@@ -455,7 +505,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
       mode,
       scope,
       requested_counts: requestedCounts,
-      max_calls: 80,
+      max_calls: overview!.run_call_limit,
       ...(mode === "discover_new"
         ? { prior_review_run_id: priorReview!.id }
         : {}),
@@ -476,14 +526,17 @@ function CatalogReviewContent({ scope }: PanelProps) {
       setRun(next);
       setRefresh((value) => value + 1);
     } catch (reason) {
-      if (!controller.signal.aborted) setError((reason as Error).message);
+      if (!controller.signal.aborted) {
+        setError((reason instanceof ApiError && knownError(reason.code)) || (reason as Error).message);
+        if (reason instanceof ApiError && reason.code === "validation_error") setRefresh((value) => value + 1);
+      }
     } finally {
       endMutation(controller);
     }
   }
 
   async function resume() {
-    if (!run?.can_resume || (scope && run.scope !== scope)) return;
+    if (!manage.allowed || !run?.can_resume || run.id !== runId || (scope && run.scope !== scope)) return;
     const controller = beginMutation();
     if (!controller) return;
     try {
@@ -496,6 +549,35 @@ function CatalogReviewContent({ scope }: PanelProps) {
       refreshView();
     } catch (reason) {
       if (!controller.signal.aborted) setError((reason as Error).message);
+    } finally {
+      endMutation(controller);
+    }
+  }
+
+  async function extendBudgetAndResume() {
+    if (!budgetConfirmation || !currentBudgetConfirmation) return;
+    const controller = beginMutation();
+    if (!controller) return;
+    try {
+      const next = await api<Run>(
+        scopedUrl(`${ROOT}/runs/${budgetConfirmation.runId}/resume`, budgetConfirmation.scope),
+        {
+          method: "POST",
+          signal: controller.signal,
+          body: JSON.stringify({ expected_version: budgetConfirmation.version, max_calls: budgetConfirmation.newLimit }),
+        },
+      );
+      if (controller.signal.aborted) return;
+      setRun(next);
+      refreshView();
+    } catch (reason) {
+      if (controller.signal.aborted) return;
+      // Refresh uncertain outcomes as well: a response can be lost after the server
+      // accepted the extension. Never replay paid execution without fresh consent.
+      setBudgetConfirmation(null);
+      setItemsLoading(true);
+      setRefresh((value) => value + 1);
+      setError(reason instanceof ApiError && reason.code === "catalog_run_not_resumable" ? budgetCopy.limitChanged : (reason instanceof ApiError && knownError(reason.code)) || (reason as Error).message);
     } finally {
       endMutation(controller);
     }
@@ -561,7 +643,7 @@ function CatalogReviewContent({ scope }: PanelProps) {
   return (
     <div className="mt-7 space-y-6">
       <AdminReadOnlyNotice capability="content.manage" />
-      {error && !confirmation && (
+      {error && !confirmation && !budgetConfirmation && (
         <p
           role="alert"
           className="rounded-2xl bg-red-50 p-4 text-sm text-red-900"
@@ -650,11 +732,9 @@ function CatalogReviewContent({ scope }: PanelProps) {
       >
         <p>{t("provider", { model: overview?.model || "—" })}</p>
         <p className="mt-1 text-[var(--muted)]">
-          {t("callLimits", {
-            daily: overview?.daily_call_limit ?? "—",
-            run: 80,
-          })}
+          {budgetCopy.defaultLimits.replace("{run}", String(overview?.run_call_limit ?? "—")).replace("{daily}", String(overview?.daily_call_limit ?? "—"))}
         </p>
+        <a href={`/${locale}/admin/settings?provider=gemini_guides&field=catalog_review_max_calls`} className="inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline focus-visible:outline-2 focus-visible:outline-offset-2">{budgetCopy.configure}</a>
         <p className="mt-1 text-[var(--muted)]">{copy.sharedQuota}</p>
         {scope &&
           overview?.active_run &&
@@ -731,7 +811,24 @@ function CatalogReviewContent({ scope }: PanelProps) {
                   {t("resume")}
                 </button>
               )}
+              {canExtendBudget && (
+                <button
+                  type="button"
+                  disabled={busy || Boolean(confirmation)}
+                  onClick={() => {
+                    if (!canExtendBudget || !overview || !validCatalogCallLimit(run.max_calls)) return;
+                    setError("");
+                    setBudgetConfirmation({ runId: run.id, scope: run.scope ?? "all", version: run.version, oldLimit: run.max_calls, newLimit: overview.run_call_limit, calls: run.usage?.calls ?? 0, dailyLimit: overview.daily_call_limit });
+                  }}
+                  className={buttonClass}
+                >
+                  {budgetCopy.extend}
+                </button>
+              )}
             </div>
+            <p className="mt-2 text-sm text-[var(--muted)]">
+              {budgetCopy.runLimit.replace("{run}", String(run.max_calls ?? "—")).replace("{used}", String(run.usage?.calls ?? 0))}
+            </p>
             <p className="mt-2 text-sm text-[var(--muted)]">
               {t("provider", { model: run.model })} ·{" "}
               {label("phases", run.phase)}
@@ -1062,6 +1159,28 @@ function CatalogReviewContent({ scope }: PanelProps) {
             ))}
           </ul>
         </section>
+      )}
+      {budgetConfirmation && (
+        <div className="fixed inset-0 z-[80] grid place-items-center bg-slate-950/45 p-4">
+          <div ref={budgetDialogRef} role="dialog" aria-modal="true" aria-labelledby="catalog-budget-confirm-title" aria-describedby="catalog-budget-confirm-description" tabIndex={-1} className="max-h-[90dvh] w-full max-w-xl overflow-y-auto rounded-3xl border border-[var(--line)] bg-[var(--paper)] p-6 text-[var(--ink)]">
+            <h2 id="catalog-budget-confirm-title" className="text-xl font-bold">{budgetCopy.confirmTitle}</h2>
+            <p id="catalog-budget-confirm-description" className="mt-3 text-sm text-[var(--muted)]">{budgetCopy.confirmDescription}</p>
+            <dl className="my-5 grid gap-3 text-sm sm:grid-cols-2">
+              {([
+                [budgetCopy.oldLimit, budgetConfirmation.oldLimit],
+                [budgetCopy.newLimit, budgetConfirmation.newLimit],
+                [budgetCopy.used, budgetConfirmation.calls],
+                [budgetCopy.remaining, Math.max(0, budgetConfirmation.newLimit - budgetConfirmation.calls)],
+                [budgetCopy.dailyLimit, budgetConfirmation.dailyLimit],
+              ] as const).map(([title, value]) => <div key={title} className="rounded-xl border border-[var(--line)] p-3"><dt className="text-[var(--muted)]">{title}</dt><dd className="mt-1 text-xl font-bold">{value}</dd></div>)}
+            </dl>
+            <p className="text-sm text-[var(--muted)]">{budgetCopy.preservation}</p>
+            <div className="mt-5 flex flex-wrap justify-end gap-3">
+              <button type="button" disabled={busy} aria-label={t("cancel")} onClick={() => setBudgetConfirmation(null)} className={`${buttonBase} bg-[var(--paper)] focus-visible:outline-2 focus-visible:outline-offset-2`}>{t("cancel")}</button>
+              <button type="button" disabled={busy || !currentBudgetConfirmation} onClick={() => void extendBudgetAndResume()} className={primaryClass}>{busy ? budgetCopy.resuming : budgetCopy.confirm}</button>
+            </div>
+          </div>
+        </div>
       )}
       {confirmation && (
         <div className="fixed inset-0 z-[80] grid place-items-center bg-slate-950/45 p-4">
