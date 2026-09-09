@@ -64,7 +64,7 @@ describe("discovery sources and privacy", () => {
   });
   it("collapses optional mobile filters while preserving an accessible toggle and desktop grid", async () => {
     render(<DiscoveryExplorer />);
-    const toggle = screen.getByRole("button", { name: "篩選" });
+    const toggle = screen.getByRole("button", { name: getDiscoveryCopy("zh-TW").filters });
     expect(toggle.getAttribute("aria-expanded")).toBe("false");
     const panel = document.getElementById(toggle.getAttribute("aria-controls")!);
     expect(panel?.className).toContain("hidden"); expect(panel?.className).toContain("sm:grid");
