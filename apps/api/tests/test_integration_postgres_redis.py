@@ -27,6 +27,7 @@ from app.models import (
     AnalyticsEvent,
     FlightOfferRecord,
     FlightStatusLookup,
+    ProviderConfig,
     SearchJob,
     SearchRequest,
     TripPlaceCandidate,
@@ -2448,6 +2449,23 @@ async def test_flight_anchor_from_offer(monkeypatch: pytest.MonkeyPatch) -> None
         owner,
         _quoted_flight(wrong_day, departure="2026-11-11T08:50:00+08:00"),
     )
+    # `record_event` returns early unless the runtime setting is on, and
+    # `analytics_enabled` defaults to False. Turn it on here instead of relying on
+    # another file having written this row first: tests/test_analytics_*.py sorts
+    # earlier and does exactly that, which is why the assertions below passed in a
+    # whole-suite run and failed whenever this file ran on its own.
+    async with SessionFactory() as session:
+        row = await session.scalar(
+            select(ProviderConfig).where(ProviderConfig.provider == "analytics")
+        )
+        if row is None:
+            session.add(
+                ProviderConfig(provider="analytics", enabled=True, priority=100, config={})
+            )
+        else:
+            row.enabled = True
+        await session.commit()
+
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         trip = await _blank_trip(client, owner)
