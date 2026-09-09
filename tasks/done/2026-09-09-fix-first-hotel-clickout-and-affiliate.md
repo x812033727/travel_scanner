@@ -1,13 +1,13 @@
 ---
 id: 2026-09-09-fix-first-hotel-clickout-and-affiliate
 title: Fix first hotel clickout and affiliate availability feedback
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-hotel-clickout
 claimed_at: 2026-09-09T12:30:33Z
 created_at: 2026-09-09T12:30:33Z
-completed_at:
+completed_at: 2026-09-09T13:04:18Z
 branch: codex/hotel-first-click-fix
 depends_on: []
 scope:
@@ -49,3 +49,12 @@ Focused pytest contract tests; ESLint, TypeScript, Vitest, i18n, production buil
 Canonical checkout is dirty and untouched. Base is a8be96cd; prior merged Stay22 task closure is carried as metadata. User Chrome connection disappeared during tool initialization, so browser acceptance uses isolated Chromium tests; production request logs provide direct reproduction evidence. No live clickout, provider activation or account setting change performed by this fix.
 
 PR #382: backend 259 tests, focused frontend/BFF 46 tests, Chromium desktop/Pixel 20 tests, task tooling 15 tests, Ruff, targeted mypy, ESLint, TypeScript, i18n and production build passed. Linux CI remains authoritative for the full suite. Wait for explicit merge/deployment authorization; no production setting or hotel review change belongs to this patch.
+
+Follow-up: the user explicitly approved merge/deployment. All 12 PR checks passed;
+PR #382 merged as d9ef8fcd3565ae3ddd02751d334e662e20412a99, merged-main CI passed
+and the exact commit deployed successfully with backup and preserved runtime/data.
+Official and Booking discovery first POSTs returned 303 without following external
+redirects. The user separately authorized Booking via Stay22; this was saved through
+their authenticated admin UI (version7, mokaair, Bookingonly), not bundled into the
+code patch. Missing hotel Booking URLs and a pre-existing global Referrer-Policy
+override have separate open follow-ups. See the scoped rollout document for evidence.

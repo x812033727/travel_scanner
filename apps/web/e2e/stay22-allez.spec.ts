@@ -1,13 +1,100 @@
 import { expect, test, type BrowserContext, type Page } from "@playwright/test";
 import type { Stay22AllezCopy } from "../lib/stay22-allez-copy";
 import { getDiscoveryCopy } from "../lib/discovery-copy";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
+import { createServer } from "node:http";
+import { spawn } from "node:child_process";
+import { once } from "node:events";
+import { createRequire } from "node:module";
+import { fileURLToPath } from "node:url";
 import { pretendSignedIn } from "./session";
 import travelServicesCopy from "../messages/zh-TW/travelServices.json" with { type: "json" };
 
 const localizedCopy: Stay22AllezCopy = JSON.parse(readFileSync(new URL("../lib/stay22-allez-messages/zh-TW.json", import.meta.url), "utf8"));
 const platformCta = (platform: string) => localizedCopy.openPlatform.replace("{platform}", platform);
 const bookingOptionId = "20000000-0000-4000-8000-000000000001";
+
+test("production HTTP preserves clickout policies without following external redirects", async ({ request }, testInfo) => {
+  test.skip(!existsSync(new URL("../.next/BUILD_ID", import.meta.url)), "Run next build for production wire coverage");
+  test.setTimeout(60_000);
+  const posts: string[] = [];
+  const destination = "https://booking.example.test/verified-hotel";
+  const upstream = createServer((incoming, outgoing) => {
+    const url = new URL(incoming.url || "/", "http://127.0.0.1");
+    incoming.resume();
+    if (incoming.method === "POST" && url.pathname.endsWith("/clickout")) {
+      posts.push(url.pathname);
+      if (!url.searchParams.has("failure")) {
+        outgoing.writeHead(303, { Location: destination, "Referrer-Policy": "no-referrer" });
+        outgoing.end();
+        return;
+      }
+      outgoing.statusCode = 404;
+    }
+    outgoing.setHeader("Content-Type", "application/json");
+    outgoing.end(JSON.stringify({ detail: "Isolated header fixture" }));
+  });
+  const portProbe = createServer();
+  await new Promise<void>((resolve) => upstream.listen(0, "127.0.0.1", resolve));
+  await new Promise<void>((resolve) => portProbe.listen(0, "127.0.0.1", resolve));
+  const port = (portProbe.address() as { port: number }).port;
+  const apiPort = (upstream.address() as { port: number }).port;
+  await new Promise<void>((resolve) => portProbe.close(() => resolve()));
+  const origin = `http://127.0.0.1:${port}`;
+  const server = spawn(process.execPath, [createRequire(import.meta.url).resolve("next/dist/bin/next"), "start", "--hostname", "127.0.0.1", "--port", String(port)], {
+    cwd: fileURLToPath(new URL("../", import.meta.url)),
+    env: { ...process.env, NODE_ENV: "production", API_INTERNAL_URL: `http://127.0.0.1:${apiPort}`, NEXT_PUBLIC_SITE_URL: origin, NEXT_TELEMETRY_DISABLED: "1" },
+    stdio: ["ignore", "pipe", "pipe"], windowsHide: true,
+  });
+  let logs = "";
+  server.stdout.on("data", (chunk) => { logs = `${logs}${chunk}`.slice(-12_000); });
+  server.stderr.on("data", (chunk) => { logs = `${logs}${chunk}`.slice(-12_000); });
+  server.on("error", (error) => { logs += error.message; });
+  try {
+    await expect.poll(async () => {
+      try { return (await request.get(`${origin}/api/travel/auth/me`, { timeout: 1_000, maxRedirects: 0 })).status(); }
+      catch { return 0; }
+    }, { timeout: 30_000 }).toBe(200);
+    for (const path of ["/zh-TW/explore", "/api/travel/auth/me"]) {
+      const response = await request.get(`${origin}${path}`, { maxRedirects: 0 });
+      expect(response.headers()["referrer-policy"]).toBe("strict-origin-when-cross-origin");
+      expect(response.headers()["x-content-type-options"]).toBe("nosniff");
+    }
+    const endpoints = [
+      `/travel-services/${bookingOptionId}/booking-options/${bookingOptionId}/clickout`,
+      `/travel-services/${bookingOptionId}/hotel-links/booking/clickout`,
+      `/affiliates/offers/${bookingOptionId}/clickout`,
+      `/affiliates/destination-offers/${bookingOptionId}/clickout`,
+      `/offers/${bookingOptionId}/clickout`,
+    ];
+    const headers = { Origin: origin, Accept: "text/html", Referer: `${origin}/zh-TW/explore` };
+    for (const endpoint of endpoints) {
+      // No browser navigation and no redirect following: even a regression can
+      // only reach the local fixture, never a real hotel/affiliate destination.
+      const response = await request.post(`${origin}/api/travel${endpoint}?placement=discovery`, { headers, form: {}, maxRedirects: 0 });
+      expect(response.status()).toBe(303);
+      expect(response.headers()["location"]).toBe(destination);
+      expect(response.headers()["referrer-policy"]).toBe("no-referrer");
+      expect(response.headers()["cache-control"]).toBe("no-store");
+      expect(response.headers()["x-frame-options"]).toBe("DENY");
+    }
+    const error = await request.post(`${origin}/api/travel${endpoints[0]}?placement=discovery&failure=1`, { headers, form: {}, maxRedirects: 0 });
+    expect(error.status()).toBe(404);
+    expect(error.headers()["referrer-policy"]).toBe("same-origin");
+    expect(error.headers()["content-type"]).toContain("text/html");
+    expect(await error.text()).toContain(localizedCopy.retry);
+    expect(posts).toHaveLength(endpoints.length + 1);
+  } finally {
+    await testInfo.attach("isolated-production-server", { body: logs, contentType: "text/plain" });
+    if (server.exitCode === null && server.signalCode === null) {
+      const exited = once(server, "exit");
+      server.kill();
+      await exited;
+    }
+    upstream.closeAllConnections();
+    await new Promise<void>((resolve) => upstream.close(() => resolve()));
+  }
+});
 
 const product = {
   id: "10000000-0000-4000-8000-000000000001", kind: "hotel", destination_id: "tokyo", title: "Reviewed Tokyo Hotel", source_url: "https://hotel.example.test", distance_km: 0.8,
@@ -260,6 +347,7 @@ test(`${entry}: native same-origin form and retry preserve placement and conditi
   // not fail before reaching the upstream with Origin:null / forbidden-origin.
   expect(response.status()).toBe(404);
   expect(response.headers()["content-type"]).toContain("text/html");
+  expect(response.headers()["referrer-policy"]).toBe("same-origin");
   expect(await response.request().headerValue("origin")).toBe(new URL(page.url()).origin);
   expect(new URL(response.url()).searchParams.get("placement")).toBe(entry);
   expect(Object.fromEntries(new URLSearchParams(response.request().postData() || ""))).toEqual(fields);
@@ -270,6 +358,8 @@ test(`${entry}: native same-origin form and retry preserve placement and conditi
   const retried = await retryResponse;
   expect(retried.status()).toBe(404);
   expect(retried.headers()["content-type"]).toContain("text/html");
+  expect(retried.headers()["referrer-policy"]).toBe("same-origin");
+  expect(await retried.request().headerValue("origin")).toBe(new URL(page.url()).origin);
   expect(new URL(retried.url()).searchParams.get("placement")).toBe(entry);
   expect(Object.fromEntries(new URLSearchParams(retried.request().postData() || ""))).toEqual(fields);
   expect(calls.posts).toHaveLength(2);

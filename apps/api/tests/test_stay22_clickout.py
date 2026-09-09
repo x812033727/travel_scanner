@@ -122,6 +122,7 @@ def test_default_off_config_independent_factories_and_patch_presence():
     default = CatalogConfig()
     assert default.stay22.model_dump() == {
         "enabled": False, "aid": "mokaair", "enabled_providers": [],
+        "integration_mode": "allez", "lma_id": None,
     }
     default.stay22.enabled_providers.append("booking")
     assert CatalogConfig().stay22.enabled_providers == []
