@@ -274,4 +274,32 @@ describe("RouteMap", () => {
     lineClicks[5]();
     expect(onSelect).toHaveBeenCalledWith(2);
   });
+
+  it("marks the selected missing path schematic even when another real option can be drawn", async () => {
+    const lineOptions: Array<Record<string, unknown>> = [];
+    class TestMap { fitBounds() {} }
+    class TestBounds { extend() {} }
+    class TestMarker { setMap() {} }
+    class TestPolyline {
+      constructor(options: Record<string, unknown>) { lineOptions.push(options); }
+      setMap() {}
+      addListener() {}
+    }
+    window.google = { maps: { Map: TestMap, LatLngBounds: TestBounds, Marker: TestMarker, Polyline: TestPolyline } };
+    vi.stubGlobal("fetch", vi.fn(async () => ok({ google_maps_browser_key: "test", google_maps_javascript_enabled: true })));
+    const options = [
+      { ...segment, encoded_polyline: "_p~iF~ps|U_ulLnnqC_mqNvxq`@" },
+      { ...segment, encoded_polyline: null },
+    ];
+    const props = { items, segments: options, fromItemId: "from", toItemId: "to", countryCode: "JP" };
+    const { rerender } = render(<RouteMap {...props} selectedSegmentIndex={1} />);
+    await waitFor(() => expect(lineOptions).toHaveLength(2));
+    expect(lineOptions[0]).toMatchObject({ strokeOpacity: 0.3, strokeWeight: 4 });
+    expect(lineOptions[1].icons).toBeTruthy();
+    expect(screen.getByText("示意連線，非實際路線")).toBeTruthy();
+    rerender(<RouteMap {...props} selectedSegmentIndex={0} />);
+    await waitFor(() => expect(lineOptions).toHaveLength(3));
+    expect(lineOptions[2]).toMatchObject({ strokeOpacity: 0.96, strokeWeight: 6 });
+    expect(screen.queryByText("示意連線，非實際路線")).toBeNull();
+  });
 });

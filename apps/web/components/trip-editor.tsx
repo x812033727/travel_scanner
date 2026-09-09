@@ -14,6 +14,7 @@ import {
   Edit3,
   Footprints,
   GripVertical,
+  Hotel,
   Link2,
   Loader2,
   LockKeyhole,
@@ -30,6 +31,7 @@ import {
   TriangleAlert,
   Undo2,
   Unlock,
+  UtensilsCrossed,
   WifiOff,
   X,
 } from "lucide-react";
@@ -49,6 +51,7 @@ import { calmCopy } from "@/components/planner/calm-copy";
 import { DraftNoteField } from "@/components/planner/draft-note-field";
 import { StopActions } from "@/components/planner/stop-actions";
 import { OptionalStop } from "@/components/planner/optional-stop";
+import { getStopTone, stopToneClassName } from "@/components/planner/stop-tone";
 import { PlannerToolSections } from "@/components/planner/tool-sections";
 import { PlannerPreferences } from "@/components/planner/preferences";
 import { AffiliatePartnerOptions } from "@/components/affiliate-partner-options";
@@ -1288,6 +1291,26 @@ export function TripEditor({ tripId }: { tripId: string }) {
     void openRoute(edge.from.id, edge.to.id, querySettings);
   }
 
+  function handleRouteApplied(updated: Trip) {
+    if (!routeTarget || (tripRef.current && updated.version < tripRef.current.version)) return;
+    // Daily controls supply an initial preview intent, not a persistent override.
+    // A version-keyed drawer remount must take its mode/buffer from the saved leg.
+    setRoutePreviewSettings(undefined);
+    replaceTrip(updated);
+    setRoutes(updated.route_segments || []);
+    setSelectedRoute(updated.route_segments?.find((route) =>
+      route.from_item_id === routeTarget.fromItemId && route.to_item_id === routeTarget.toItemId));
+    setStaleDays((current) => {
+      const next = new Set(current);
+      const day = updated.items.find((item) => item.id === routeTarget.fromItemId)?.day_date;
+      if (day) next.delete(day);
+      return next;
+    });
+    persistedRevisionRef.current = revisionRef.current;
+    updateSaveState("saved");
+    setNotice(te("routeApplied"));
+  }
+
   function crowdedDays(current: Trip, day?: string) {
     const summary = current.optimization;
     if (!summary) return [];
@@ -1811,11 +1834,12 @@ export function TripEditor({ tripId }: { tripId: string }) {
                 aria-label={t("insertBefore", { title: item.title || t("insertFallback") })} onClick={() => add(activeDay, item.position)} className="itinerary-insert-gap">
                 <span className="itinerary-gap-line" /><span className="itinerary-gap-label"><Plus size={15} />{copy.addHere}</span><span className="itinerary-gap-line" />
               </button>}
-              {!isFlightAnchor(item) && <span aria-hidden="true" className="planner-timeline-marker absolute top-6 z-10">{marker}</span>}
+              {!isFlightAnchor(item) && <span aria-hidden="true" data-stop-tone={getStopTone(item.system_role)} className={`planner-timeline-marker absolute top-6 z-10 ${stopToneClassName(item.system_role, "marker", item.is_skipped)}`}>{marker}</span>}
               {isFlightAnchor(item) ? <FlightAnchorCard item={item} busy={action === `flight-${item.system_role === "outbound_flight" ? "outbound" : "return"}`}
                 onEdit={() => openFlightEditor(item)} search={{ href: `/search?trip_id=${trip.id}`, charge: flightSearchCharge.label }}
                 flightStatus={{ href: flightStatusHref(item, trip.id), charge: flightStatusCharge.label }} alertReturnPath={`/trips/${trip.id}`} />
               : item.system_role ? <OptionalStop collapsed
+                systemRole={item.system_role} skipped={item.is_skipped}
                 kind={item.system_role.startsWith("hotel_") ? "hotel" : "meal"} title={item.title}
                 hint={item.fixed_time ? formatTime(item.start_time, locale, trip.timezone) : projectedStart ? chainedTime : calm.pendingTime}>
                 <SystemItineraryCard item={item} locale={locale} timezone={trip.timezone} busy={action === `skip-${item.id}`}
@@ -1872,10 +1896,15 @@ export function TripEditor({ tripId }: { tripId: string }) {
             ? <FlightAnchorCard key={item.id} item={item} busy={Boolean(action)} onEdit={() => openFlightEditor(item)}
                 search={{ href: `/search?trip_id=${trip.id}`, charge: flightSearchCharge.label }}
                 flightStatus={{ href: flightStatusHref(item, trip.id), charge: flightStatusCharge.label }} alertReturnPath={`/trips/${trip.id}`} />
-            : <div key={item.id} className="flex flex-wrap gap-2"><button type="button" className="calm-optional-entry flex-1" onClick={() => {
+            : <div key={item.id} className="flex flex-wrap gap-2"><button type="button" aria-label={item.title}
+              data-stop-tone={getStopTone(item.system_role)} data-stop-skipped={item.is_skipped || undefined}
+              className={`calm-optional-entry flex-1 ${stopToneClassName(item.system_role, "entry", item.is_skipped)}`} onClick={() => {
               if (item.system_role?.startsWith("hotel_")) openStayFlow();
               else void openEditor(item.id);
-            }}><Plus size={16} /><span>{item.title}</span></button>
+            }}>{item.system_role?.startsWith("hotel_") ? <Hotel size={19} aria-hidden="true" /> : <UtensilsCrossed size={19} aria-hidden="true" />}
+              <span className="min-w-0"><span className={`block ${stopToneClassName(item.system_role, "badge", item.is_skipped)}`}>
+                {item.system_role === "lunch" || item.system_role === "dinner" ? te(`slot.${item.system_role}`) : tTrips("systemStop.hotelStart")}
+              </span><span className="block">{item.title}</span>{item.is_skipped && <span className="block text-xs">{tTrips("systemStop.skipped")}</span>}</span></button>
               {(item.system_role === "lunch" || item.system_role === "dinner") && <button type="button"
                 disabled={Boolean(action)} onClick={() => void toggleMealSkip(item)}
                 className="min-h-11 rounded-xl border border-[var(--line)] px-3 text-sm font-semibold">{item.is_skipped ? calm.restoreMeal : calm.skipMeal}</button>}
@@ -2111,7 +2140,14 @@ export function TripEditor({ tripId }: { tripId: string }) {
       <p className="text-sm text-[var(--muted)]">{calm.draftHint}</p>
     </PlannerOverlay>
 
-    <PlannerOverlay open={routeDrawerOpen && Boolean(routeTarget)} onClose={closeRouteDrawer} title={te("routeTitle")} description={te("routeDescription")} size="wide" expandable>{routeTarget && <RouteModePanel key={`${routeTarget.fromItemId}-${routeTarget.toItemId}-${trip.version}`} trip={trip} items={items} fromItemId={routeTarget.fromItemId} toItemId={routeTarget.toItemId} initialSegment={selectedRoute} onBusy={(pending) => { routePanelBusyRef.current = pending; }} initialTravelMode={routePreviewSettings?.mode} initialBufferMinutes={routePreviewSettings?.buffer} onError={setError} onResolved={(updated) => { replaceTrip(updated); setRoutes(updated.route_segments || []); setSelectedRoute(updated.route_segments?.find((route) => route.from_item_id === routeTarget.fromItemId && route.to_item_id === routeTarget.toItemId)); persistedRevisionRef.current = revisionRef.current; updateSaveState("saved"); setNotice(te("placeAutoFilled")); }} onEditItem={(itemId) => { closeRouteDrawer(); window.setTimeout(() => void openEditor(itemId), 0); }} onApplied={(updated) => { replaceTrip(updated); setRoutes(updated.route_segments || []); const applied = updated.route_segments?.find((route) => route.from_item_id === routeTarget.fromItemId && route.to_item_id === routeTarget.toItemId); setSelectedRoute(applied); setStaleDays((current) => { const next = new Set(current); const day = updated.items.find((item) => item.id === routeTarget.fromItemId)?.day_date; if (day) next.delete(day); return next; }); persistedRevisionRef.current = revisionRef.current; updateSaveState("saved"); setNotice(te("routeApplied")); }} />}</PlannerOverlay>
+    <PlannerOverlay open={routeDrawerOpen && Boolean(routeTarget)} onClose={closeRouteDrawer} title={te("routeTitle")} description={te("routeDescription")} size="wide" expandable defaultExpanded>{routeTarget && <RouteModePanel
+      key={`${routeTarget.fromItemId}-${routeTarget.toItemId}-${trip.version}`} trip={trip} items={items}
+      fromItemId={routeTarget.fromItemId} toItemId={routeTarget.toItemId} initialSegment={selectedRoute}
+      onBusy={(pending) => { routePanelBusyRef.current = pending; }} initialTravelMode={routePreviewSettings?.mode}
+      initialBufferMinutes={routePreviewSettings?.buffer} onError={setError}
+      onResolved={(updated) => { replaceTrip(updated); setRoutes(updated.route_segments || []); setSelectedRoute(updated.route_segments?.find((route) => route.from_item_id === routeTarget.fromItemId && route.to_item_id === routeTarget.toItemId)); persistedRevisionRef.current = revisionRef.current; updateSaveState("saved"); setNotice(te("placeAutoFilled")); }}
+      onEditItem={(itemId) => { closeRouteDrawer(); window.setTimeout(() => void openEditor(itemId), 0); }}
+      onApplied={handleRouteApplied} />}</PlannerOverlay>
 
     <PlannerOverlay open={previewOpen && Boolean(preview)} onClose={() => setPreviewOpen(false)} title={te("previewTitle")} description={optimizationCharge.status === "ready" ? te("previewDescription", { charge: optimizationCharge.label }) : optimizationCharge.unavailableHelp} size="wide" footer={preview && <div className="flex gap-3"><button type="button" onClick={() => setPreviewOpen(false)} className="min-h-12 flex-1 rounded-xl border border-[var(--line)] font-semibold">{te("notNow")}</button><button type="button" onClick={() => void applyOptimization()} disabled={!preview.changed || action === "apply-preview" || optimizationCharge.status !== "ready"} className="flex min-h-12 flex-[1.4] items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-4 font-semibold text-white disabled:opacity-45">{action === "apply-preview" ? <Loader2 size={17} className="animate-spin" /> : <Sparkles size={17} />}{preview.changed ? te("applyCharge", { charge: optimizationCharge.label }) : te("alreadyOptimal")}</button></div>}>{preview && <div className="space-y-5"><section className={`rounded-2xl p-5 ${preview.changed ? "bg-[var(--teal-soft)]" : "bg-emerald-50"}`}><p className="text-sm font-semibold text-[var(--teal-dark)]">{te(preview.changed ? "foundBetter" : "alreadyOptimal")}</p><div className="mt-3 grid grid-cols-3 gap-3 text-center"><div><span className="block text-xs text-[var(--muted)]">{te("before")}</span><strong className="mt-1 block text-xl">{te("minutesShort", { minutes: preview.total_duration_before_minutes })}</strong></div><div><span className="block text-xs text-[var(--muted)]">{te("after")}</span><strong className="mt-1 block text-xl">{te("minutesShort", { minutes: preview.total_duration_after_minutes })}</strong></div><div><span className="block text-xs text-[var(--muted)]">{te("savings")}</span><strong className="mt-1 block text-xl text-[var(--teal)]">{te("minutesShort", { minutes: Math.max(0, preview.total_duration_before_minutes - preview.total_duration_after_minutes) })}</strong></div></div></section>{preview.days.map((day) => <section key={day.date} className="rounded-2xl border border-[var(--line)] p-4"><div className="flex items-center justify-between"><h3 className="font-bold">{day.date}</h3><span className="rounded-full bg-[var(--paper)] px-3 py-1 text-xs font-semibold">{te("savedMinutes", { minutes: day.saved_minutes })}</span></div><div className="mt-4 grid gap-4 sm:grid-cols-2"><div><p className="text-xs font-semibold tracking-[.12em] text-[var(--muted)]">{te("before")}</p><ol className="mt-2 space-y-2">{day.before.map((item, index) => <li key={item.id} className="flex items-center gap-2 text-sm"><span className="grid h-6 w-6 place-items-center rounded-full bg-[var(--paper)] text-xs font-bold">{index + 1}</span><span className="truncate">{item.title}</span></li>)}</ol></div><div><p className="text-xs font-semibold tracking-[.12em] text-[var(--teal)]">{te("suggested")}</p><ol className="mt-2 space-y-2">{day.after.map((item, index) => <li key={item.id} className="flex items-center gap-2 text-sm"><span className="grid h-6 w-6 place-items-center rounded-full bg-[var(--teal)] text-xs font-bold text-white">{index + 1}</span><span className="truncate font-medium">{item.title}</span></li>)}</ol></div></div></section>)}{preview.warnings.map((warning) => <p key={warning} className="rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">{warning}</p>)}</div>}</PlannerOverlay>
 

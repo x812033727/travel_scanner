@@ -3,6 +3,7 @@ import { act, fireEvent, render, screen, waitFor } from "@testing-library/react"
 import { describe, expect, it, vi } from "vitest";
 import type { TripItem } from "@/lib/trip-types";
 import { SystemItineraryCard } from "./system-itinerary-card";
+import { stopToneStyles } from "./planner/stop-tone";
 
 const lunch: TripItem = {
   id: "lunch",
@@ -25,6 +26,39 @@ const lunch: TripItem = {
 const hotel: TripItem = { ...lunch, id: "hotel", item_type: "hotel", system_role: "hotel_start", title: "東京飯店" };
 
 describe("system itinerary card", () => {
+  it.each([
+    ["hotel_start", "hotel"], ["hotel_end", "hotel"], ["lunch", "lunch"], ["dinner", "dinner"],
+  ] as const)("uses the %s role instead of the title or time to color a %s stop", (systemRole, tone) => {
+    render(<SystemItineraryCard item={{ ...lunch, system_role: systemRole, title: "Dinner named place" }}
+      locale="zh-TW" busy={false} onEdit={vi.fn()} />);
+    const card = screen.getByRole("article");
+    expect(card).toHaveAttribute("data-stop-tone", tone);
+    expect(card).toHaveClass(stopToneStyles[tone], stopToneStyles.card);
+    expect(card).not.toHaveClass("planner-meal-card", "planner-hotel-card");
+  });
+
+  it("keeps a skipped dinner identifiable without rendering it as a confirmed place", () => {
+    render(<SystemItineraryCard item={{ ...lunch, system_role: "dinner", is_skipped: true, latitude: null, longitude: null }}
+      locale="zh-TW" busy={false} onEdit={vi.fn()} onSkip={vi.fn()} />);
+    const card = screen.getByRole("article");
+    expect(card).toHaveAttribute("data-stop-tone", "dinner");
+    expect(card).toHaveAttribute("data-stop-skipped", "true");
+    expect(card).toHaveClass(stopToneStyles.skipped);
+    expect(screen.getByText("晚餐")).toBeVisible();
+    expect(screen.getByText("已跳過")).toBeVisible();
+    expect(screen.getByRole("button", { name: "恢復" })).toBeEnabled();
+    expect(screen.queryByText("設定並確認地點後，才能計算完整路線")).not.toBeInTheDocument();
+  });
+
+  it.each(["hotel_start", "lunch", "dinner"] as const)("retains the %s tone while an unset location still needs confirmation", (systemRole) => {
+    render(<SystemItineraryCard item={{ ...lunch, system_role: systemRole, latitude: null, longitude: null, data: { needs_place_confirmation: true } }}
+      locale="zh-TW" busy={false} onEdit={vi.fn()} />);
+    expect(screen.getByRole("article")).toHaveAttribute("data-stop-tone", systemRole === "hotel_start" ? "hotel" : systemRole);
+    expect(screen.getByText(systemRole === "hotel_start"
+      ? "設定並確認住宿地點後，可查詢每天的出發與返回路線" : "設定並確認地點後，才能計算完整路線")).toBeVisible();
+    expect(screen.getByRole("button", { name: systemRole === "hotel_start" ? "設定主要飯店" : "選擇餐廳" })).toBeEnabled();
+  });
+
   it("shows fixed meal details and exposes explicit edit and skip actions", () => {
     const edit = vi.fn();
     const skip = vi.fn();

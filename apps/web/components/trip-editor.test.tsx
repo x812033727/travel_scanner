@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { TripEditor } from "./trip-editor";
+import type { Trip } from "@/lib/trip-types";
 
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }));
 
@@ -1198,7 +1199,7 @@ describe("trip editor", () => {
     expect(screen.getByText(/已復原尚未同步的本機草稿/)).toBeTruthy();
   });
 
-  it("opens the mobile route sheet on demand, expands it, and closes it on back", async () => {
+  it("opens the mobile route sheet expanded for its map, allows collapse, and closes on back", async () => {
     const destination = {
       ...trip.items[0],
       id: "00000000-0000-4000-8000-000000000003",
@@ -1245,13 +1246,12 @@ describe("trip editor", () => {
     );
     fireEvent.click(routeButton);
     expect(await screen.findByRole("dialog", { name: "這段路怎麼走" })).toBeTruthy();
-    const expand = screen.getByRole("button", { name: "展開面板" });
-    expect(expand.getAttribute("aria-expanded")).toBe("false");
-    fireEvent.click(expand);
     const collapse = screen.getByRole("button", { name: "縮小面板" });
     expect(collapse.getAttribute("aria-expanded")).toBe("true");
     fireEvent.click(collapse);
     expect(screen.getByRole("button", { name: "展開面板" }).getAttribute("aria-expanded")).toBe("false");
+    fireEvent.click(screen.getByRole("button", { name: "展開面板" }));
+    expect(screen.getByRole("button", { name: "縮小面板" }).getAttribute("aria-expanded")).toBe("true");
     fireEvent.popState(window);
     await waitFor(() => expect(screen.queryByRole("dialog", { name: "這段路怎麼走" })).toBeNull());
   });
@@ -1624,6 +1624,57 @@ describe("trip editor route requests", () => {
   });
   const computeCalls = (fetchMock: ReturnType<typeof vi.fn>) =>
     fetchMock.mock.calls.filter(([input]) => String(input).includes("/routes/compute-day"));
+
+  it.each(["provider", "manual"])("keeps the applied %s mode and buffer after daily-entry remount", async (source) => {
+    const originalLeg = leg(0, 1, 20);
+    const appliedLeg = { ...originalLeg, status: source === "manual" ? "manual" : "resolved", provider: source === "manual" ? "manual" : "google_routes",
+      travel_mode: "walk" as const, buffer_minutes: 15, duration_minutes: 12 };
+    let current: Trip = { ...trip, items: stops.slice(0, 2), route_segments: [originalLeg] };
+    const fetchMock = vi.fn().mockImplementation((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (url.includes("/runtime/public-config")) return Promise.resolve(response({ google_maps_embed_enabled: false }));
+      if (url.includes("/routes/preview")) return Promise.resolve(response({
+        preview_id: "walk-15", expires_at: "2100-01-01T00:00:00Z", segment: appliedLeg,
+        schedule_impact: { affected_items: [], conflicts: [] },
+      }));
+      if (url.includes("/routes/apply")) {
+        expect(JSON.parse(String(init?.body))).toMatchObject(source === "provider"
+          ? { version: 1, source, preview_id: "walk-15" }
+          : { version: 1, source, travel_mode: "walk", buffer_minutes: 15, duration_minutes: 12 });
+        current = { ...current, version: 2, route_segments: [appliedLeg] };
+      }
+      return Promise.resolve(response(current));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    await screen.findByRole("heading", { name: "晴空塔" });
+    fireEvent.click(screen.getByText("當日設定", { selector: "summary" }));
+    const settings = screen.getByText("當日設定", { selector: "summary" }).closest("details")!;
+    fireEvent.click(within(settings).getByRole("button", { name: "查詢路線" }));
+    const panel = await screen.findByRole("dialog", { name: "這段路怎麼走" });
+    expect(within(panel).getByRole("tab", { name: "大眾運輸" }).getAttribute("aria-selected")).toBe("true");
+    fireEvent.click(within(panel).getByRole("tab", { name: "步行" }));
+    fireEvent.click(within(panel).getByText("進階路線設定"));
+    fireEvent.change(await within(panel).findByRole("combobox"), { target: { value: "15" } });
+    expect(fetchMock.mock.calls.filter(([url]) => String(url).includes("/routes/preview"))).toHaveLength(0);
+    expect(fetchMock.mock.calls.filter(([url]) => String(url).includes("/routes/apply"))).toHaveLength(0);
+    if (source === "provider") {
+      fireEvent.click(within(panel).getByRole("button", { name: "查詢交通方案" }));
+      fireEvent.click(await within(panel).findByRole("button", { name: "套用此路線" }));
+    } else {
+      fireEvent.click(within(panel).getByRole("button", { name: "手動輸入時間" }));
+      fireEvent.change(within(panel).getByRole("spinbutton"), { target: { value: "12" } });
+      fireEvent.click(within(panel).getByRole("button", { name: "套用手動時間" }));
+    }
+    await waitFor(() => expect(current.version).toBe(2));
+    await waitFor(() => expect(within(panel).getByRole("tab", { name: "步行" }).getAttribute("aria-selected")).toBe("true"));
+    expect(within(panel).queryByRole("button", { name: "套用此路線" })).toBeNull();
+    fireEvent.click(within(panel).getByText("進階路線設定"));
+    expect((await within(panel).findByRole("combobox") as HTMLSelectElement).value).toBe("15");
+    expect(fetchMock.mock.calls.filter(([url]) => String(url).includes("/routes/preview"))).toHaveLength(source === "provider" ? 1 : 0);
+    expect(fetchMock.mock.calls.filter(([url]) => String(url).includes("/routes/apply"))).toHaveLength(1);
+    expect(computeCalls(fetchMock)).toHaveLength(0);
+  });
 
   it("queries route previews only after an explicit request, never on preference changes", async () => {
     const routed = { ...trip, items: stops.slice(0, 2), route_segments: [leg(0, 1, 20)] };

@@ -19,6 +19,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 import { dayTimelineCopy } from "@/components/planner/day-timeline-copy";
 import { plannerOverlayCopy } from "@/components/planner/overlay-copy";
+import styles from "@/components/planner/route-panel.module.css";
 import { RouteMap } from "@/components/route-map";
 import { RouteSegmentCard } from "@/components/route-segment-card";
 import { api, ApiError } from "@/lib/api";
@@ -76,9 +77,33 @@ function previewExpired(expiresAt: string) {
   return !Number.isFinite(expiry) || expiry <= Date.now();
 }
 
+function hasUsableDuration(segment?: RouteSegment) {
+  return Boolean(segment && Number.isFinite(segment.duration_minutes) && segment.duration_minutes >= 0
+    && ["resolved", "complete", "manual", "estimated", "stale", "conflict"].includes(segment.status));
+}
+
+function isEstimatedTiming(segment?: RouteSegment) {
+  return Boolean(segment && (segment.status === "estimated" || segment.provider === "estimate"
+    || String(segment.schedule_mode) === "estimate"));
+}
+
+function isManualTiming(segment?: RouteSegment) {
+  return Boolean(segment && !isEstimatedTiming(segment)
+    && (segment.provider === "manual" || segment.status === "manual"));
+}
+
+function hasVerifiedTiming(segment?: RouteSegment) {
+  // A schedule conflict describes a late fixed reservation, not invalid routing
+  // data. The backend preserves the source when projecting that status.
+  return Boolean(segment && hasUsableDuration(segment) && segment.provider.trim()
+    && !isManualTiming(segment) && !isEstimatedTiming(segment)
+    && ["resolved", "complete", "conflict"].includes(segment.status));
+}
+
 function previewOptions(preview?: ProviderRoutePreview): RouteOptionPreview[] {
   if (!preview) return [];
-  if (preview.options?.length) return preview.options;
+  if (preview.options?.length) return preview.options.filter((option) => hasVerifiedTiming(option.segment));
+  if (!hasVerifiedTiming(preview.segment)) return [];
   return [{
     preview_id: preview.preview_id,
     rank: preview.segment.route_option_rank || 1,
@@ -237,6 +262,7 @@ export function RouteModePanel({
   const manualInputRef = useRef<HTMLInputElement>(null);
   const [manualMinutes, setManualMinutes] = useState("20");
   const [localError, setLocalError] = useState<string>();
+  const [, refreshExpiry] = useState(0);
   const busyRef = useRef(false);
   const mountedRef = useRef(false);
   const requestKey = JSON.stringify([trip.id, trip.version, fromItemId, toItemId, mode, buffer, trip.route_preference]);
@@ -258,17 +284,38 @@ export function RouteModePanel({
     Math.max(0, options.length - 1),
   );
   const selectedOption = options[selectedOptionIndex];
+  const expiresAt = selectedOption?.expires_at || (initialSegment?.provider !== "manual" ? initialSegment?.expires_at : undefined);
+  useEffect(() => {
+    if (!expiresAt) return;
+    const remaining = Date.parse(expiresAt) - Date.now();
+    if (!Number.isFinite(remaining) || remaining <= 0) return;
+    const timer = window.setTimeout(() => refreshExpiry((value) => value + 1), Math.min(remaining + 1, 2_147_483_647));
+    return () => window.clearTimeout(timer);
+  }, [expiresAt]);
+  const selectedExpired = Boolean(selectedOption && previewExpired(selectedOption.expires_at));
+  const canApplyPreview = Boolean(selectedOption && hasVerifiedTiming(selectedOption.segment) && !selectedExpired && !localError);
   const externalNavigation = preview?.kind === "external_only" ? preview.external_navigation : undefined;
   const externalIsNaver = externalNavigation?.provider === "naver_maps";
   const initialMatches = initialSegment?.travel_mode === mode
     && (initialSegment.buffer_minutes ?? 10) === buffer
     && initialSegment.from_item_id === fromItemId && initialSegment.to_item_id === toItemId;
-  const activeSegment = selectedOption?.segment || (initialMatches ? initialSegment : undefined);
+  const activeSegment = hasUsableDuration(selectedOption?.segment) ? selectedOption?.segment
+    : initialMatches && hasUsableDuration(initialSegment) ? initialSegment : undefined;
   const activeImpact = selectedOption?.schedule_impact;
-  const isApplied = Boolean(initialMatches && initialSegment?.status !== "stale" && !preview);
+  const savedExpired = Boolean(initialMatches && initialSegment?.provider !== "manual"
+    && initialSegment?.expires_at && previewExpired(initialSegment.expires_at));
+  const isApplied = Boolean(initialMatches && hasUsableDuration(initialSegment)
+    && (hasVerifiedTiming(initialSegment) || (isManualTiming(initialSegment) && initialSegment?.status !== "stale"))
+    && !savedExpired && !preview);
   const unresolvedItems = [fromItem, toItem].filter((item): item is TripItem => Boolean(item && !hasRoutePoint(item)))
     .map((item) => ({ item_id: item.id, title: item.title, reason: t("placePending") }));
   const settingsOutdated = !preview && (Boolean(initialSegment && !initialMatches) || Object.keys(previews).length > 0);
+  const routeState = loadingMode ? "loading" : localError ? "error" : unresolvedItems.length ? "missing"
+    : selectedExpired ? "expired" : canApplyPreview ? "preview" : externalNavigation ? "external"
+      : isApplied ? (isManualTiming(initialSegment) ? "manual" : "applied")
+        : initialMatches && (initialSegment?.status === "stale" || savedExpired) ? "stale"
+          : isEstimatedTiming(activeSegment) ? "estimated"
+            : preview || (initialMatches && initialSegment) ? "unavailable" : settingsOutdated ? "changed" : "idle";
 
   async function previewMode(nextMode: TravelMode, nextBuffer = buffer) {
     if (busyRef.current || !fromItem || !toItem || unresolvedItems.length) return;
@@ -305,7 +352,8 @@ export function RouteModePanel({
 
   async function applyPreview() {
     if (!selectedOption || busyRef.current) return;
-    if (previewExpired(selectedOption.expires_at)) { setLocalError(timelineCopy.outdated); return; }
+    if (previewExpired(selectedOption.expires_at)) { setLocalError(t("previewExpired")); return; }
+    if (!hasVerifiedTiming(selectedOption.segment)) { setLocalError(t("temporarilyUnavailable")); return; }
     busyRef.current = true;
     onBusy?.(true);
     const identity = requestKey;
@@ -377,36 +425,16 @@ export function RouteModePanel({
     : undefined;
 
   const navigationUrl = externalNavigation?.web_url || activeSegment?.maps_url || directionsUrl;
-  const routeSummary = activeSegment
-    ? t("durationMinutes", { minutes: activeSegment.duration_minutes })
-    : externalNavigation
-      ? t("externalNavigation")
-      : loadingMode === mode
-        ? t("fetching")
-        : unresolvedItems.length
-          ? t("placePending")
-          : localError
-            ? t("temporarilyUnavailable")
-            : t("noRouteYet");
+  const stateLabel = routeState === "preview" ? t("previewReady") : routeState === "expired" ? t("previewExpired")
+    : routeState === "stale" ? t("staleRoute") : routeState === "manual" ? t("manualApplied")
+      : routeState === "estimated" ? t("estimatedTiming") : routeState === "applied" ? t(initialSegment?.status === "conflict" ? "appliedConflict" : "applied")
+        : routeState === "external" ? t("externalNavigation") : routeState === "loading" ? t("fetching")
+          : routeState === "error" || routeState === "unavailable" ? t("temporarilyUnavailable")
+            : routeState === "missing" ? t("placePending") : routeState === "changed" ? timelineCopy.outdated : undefined;
 
-  return <div className="route-panel-layout">
-    <div className="route-panel-map min-w-0">
-      <RouteMap
-        items={items}
-        segment={activeSegment}
-        segments={options.map((option) => option.segment)}
-        selectedSegmentIndex={selectedOptionIndex}
-        onSelectSegment={(index) => setSelectedOptions((current) => ({ ...current, [requestKey]: index }))}
-        fromItemId={fromItemId}
-        toItemId={toItemId}
-        travelMode={mode}
-        variant="drawer"
-        countryCode={trip.destination_country_code}
-        externalOnly={Boolean(externalNavigation)}
-      />
-    </div>
-
-    <section className="route-panel-modes" aria-label={t("endpointsLabel")}>
+  return <div className={styles.container}><div className={`route-panel-layout ${styles.layout}`} data-route-state={routeState}>
+    <div className={styles.primaryColumn}>
+    <section className={`route-panel-modes ${styles.modes}`} aria-label={t("endpointsLabel")}>
       <div className="route-endpoints">
         <div className="route-endpoint"><span aria-hidden="true">1</span><p><small>{t("from")}</small><strong>{fromItem?.title || fromItem?.location_name || t("originPending")}</strong></p></div>
         <div className="route-endpoint"><span aria-hidden="true">2</span><p><small>{t("to")}</small><strong>{toItem?.title || toItem?.location_name || t("destinationPending")}</strong></p></div>
@@ -420,18 +448,17 @@ export function RouteModePanel({
         }} onClick={() => { setMode(value); setLocalError(undefined); }} className={`route-mode-tab ${mode === value ? "route-mode-tab-active" : ""}`}><Icon size={18} />{t(labelKey)}{loadingMode === value && <Loader2 size={14} className="animate-spin" />}</button>)}</div>
         {navigationUrl && <a href={safeExternalHref(navigationUrl)} target="_blank" rel="noopener noreferrer" className="route-navigation-link" aria-label={t("navigateFromTo", { from: fromItem?.title || t("startFallback"), to: toItem?.title || t("endFallback") })}><Navigation size={16} /><span>{t("navigate")}</span></a>}
       </div>
-      <div className="route-selection-summary"><strong>{routeSummary}</strong>{activeSegment && <span>{activeSegment.schedule_mode === "preview" ? t("nearTerm") : activeSegment.schedule_mode === "live" ? t("liveRoute") : t("scheduled")}</span>}</div>
-      <p className="mt-2 text-xs text-[var(--muted)]">{timelineCopy.queryHint}</p>
-      {settingsOutdated && <p role="status" className="mt-2 text-xs text-[var(--muted)]">{timelineCopy.outdated}</p>}
-      {(activeSegment || externalNavigation) && <button type="button" onClick={() => void previewMode(mode)} disabled={applying || Boolean(loadingMode) || unresolvedItems.length > 0} className="mt-2 flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--teal)]"><RefreshCw size={15} />{timelineCopy.requery}</button>}
+      <div className={styles.feedback}>
+        {stateLabel && <p role="status" className={styles.state}><strong>{stateLabel}</strong>{activeSegment && ["preview", "applied"].includes(routeState) && <span>{activeSegment.schedule_mode === "preview" ? t("nearTerm") : activeSegment.schedule_mode === "live" ? t("liveRoute") : t("scheduled")}</span>}</p>}
+        {routeState === "idle" && <p className={styles.hint} data-route-instruction="idle">{t("queryHint")}</p>}
+        {(isApplied || canApplyPreview || externalNavigation || routeState === "estimated") && <button type="button" onClick={() => void previewMode(mode)} disabled={applying || Boolean(loadingMode) || unresolvedItems.length > 0} className={styles.requery}><RefreshCw size={15} />{timelineCopy.requery}</button>}
+      </div>
     </section>
 
-    <div id={`${panelId}-options`} className="route-panel-controls space-y-4" role="tabpanel" aria-labelledby={`${panelId}-${mode}`}>
+    <div id={`${panelId}-options`} className={`route-panel-controls space-y-4 ${styles.controls}`} role="tabpanel" aria-labelledby={`${panelId}-${mode}`}>
 
       {unresolvedItems.length > 0 && <section className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><p className="flex items-center gap-2 font-semibold"><MapPin size={18} />{t("missingPlaces")}</p>{unresolvedItems.map((item) => <div key={item.item_id} className="mt-3 flex items-center justify-between gap-3 rounded-xl bg-white/70 p-3"><span className="min-w-0"><strong className="block truncate">{item.title}</strong><span className="mt-0.5 block text-xs">{item.reason}</span></span><button type="button" onClick={() => onEditItem?.(item.item_id)} className="min-h-11 shrink-0 rounded-xl border border-amber-300 px-3 font-bold">{t("fixPlace")}</button></div>)}</section>}
-      {localError && <div role="alert" className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><p className="flex items-start gap-2 font-semibold"><TriangleAlert size={18} className="mt-0.5 shrink-0" />{localError}</p><div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={() => void previewMode(mode)} className="flex min-h-11 items-center gap-2 rounded-xl border border-amber-300 bg-white px-3 font-bold"><RefreshCw size={15} />{t("retry")}</button><button type="button" onClick={openManual} className="min-h-11 rounded-xl px-3 font-bold text-[var(--teal)]">{t("manualTime")}</button>{directionsUrl && <a href={safeExternalHref(directionsUrl)} target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center gap-2 rounded-xl px-3 font-bold text-[var(--teal)]">{t("googleMaps")}<ExternalLink size={15} /></a>}</div></div>}
-      {loadingMode === mode && !activeSegment && <div className="route-preview-skeleton compact" aria-live="polite"><Loader2 size={22} className="animate-spin text-[var(--teal)]" /><strong>{t("fetchingMode", { mode: modeLabel(mode) })}</strong><span>{t("onlySelectedMode")}</span></div>}
-      {!loadingMode && !activeSegment && !externalNavigation && !localError && !unresolvedItems.length && <div className="route-empty-state"><MapPin size={20} /><div><strong>{t("noRouteYet")}</strong><p>{t("applyBlocked")}</p></div></div>}
+      {localError && <div role="alert" className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><p className="flex items-start gap-2 font-semibold"><TriangleAlert size={18} className="mt-0.5 shrink-0" />{localError}</p><div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={openManual} className="min-h-11 rounded-xl px-3 font-bold text-[var(--teal)]">{t("manualTime")}</button>{directionsUrl && <a href={safeExternalHref(directionsUrl)} target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center gap-2 rounded-xl px-3 font-bold text-[var(--teal)]">{t("googleMaps")}<ExternalLink size={15} /></a>}</div></div>}
 
       {options.length > 0 && <section aria-label={t("optionsLabel")}>
         <div className="mb-2 flex items-end justify-between gap-3"><div><h3 className="font-bold">{t("chooseRoute")}</h3><p className="mt-1 text-xs text-[var(--muted)]">{t("chooseRouteHint")}</p></div><span className="shrink-0 text-xs font-semibold text-[var(--muted)]">{t("optionsCount", { count: options.length })}</span></div>
@@ -482,9 +509,27 @@ export function RouteModePanel({
         </div>
       </details>
     </div>
+    </div>
 
-    <section className="route-panel-detail min-w-0" aria-label={copy.routeDetails}>{activeSegment && <><h3 className="mb-1 text-sm font-bold">{copy.routeDetails}</h3><p className="mb-3 text-xs text-[var(--muted)]">{copy.routeDetailsHint}</p><RouteSegmentCard key={selectedOption?.preview_id || `${mode}-applied`} segment={activeSegment} selected timezone={trip.timezone} /></>}</section>
+    <div className={styles.secondaryColumn}>
+      <div className={`route-panel-map min-w-0 ${styles.map}`}>
+        <RouteMap
+          items={items}
+          segment={activeSegment}
+          segments={options.map((option) => option.segment)}
+          selectedSegmentIndex={selectedOptionIndex}
+          onSelectSegment={(index) => setSelectedOptions((current) => ({ ...current, [requestKey]: index }))}
+          fromItemId={fromItemId}
+          toItemId={toItemId}
+          travelMode={mode}
+          variant="drawer"
+          countryCode={trip.destination_country_code}
+          externalOnly={Boolean(externalNavigation)}
+        />
+      </div>
+      {activeSegment && <section className={`route-panel-detail min-w-0 ${styles.detail}`} aria-label={copy.routeDetails}><h3 className="mb-1 text-sm font-bold">{copy.routeDetails}</h3><p className="mb-3 text-xs text-[var(--muted)]">{copy.routeDetailsHint}</p><RouteSegmentCard key={selectedOption?.preview_id || `${mode}-applied`} segment={activeSegment} selected timezone={trip.timezone} /></section>}
+    </div>
 
-    <div className="route-apply-bar"><div className="route-apply-selection min-w-0"><span className="block text-xs text-[var(--muted)]">{t("currentChoice")}</span><strong className="block">{modeLabel(mode)}{activeSegment ? `${options.length ? ` · ${t("optionNumber", { index: selectedOptionIndex + 1 })}` : ""} · ${t("durationMinutes", { minutes: activeSegment.duration_minutes })}` : externalNavigation ? ` · ${t("externalNavigation")}` : ` · ${t("notFetched")}`}</strong></div><button type="button" aria-label={selectedOption ? t("applyThisRoute") : undefined} onClick={() => selectedOption ? void applyPreview() : void previewMode(mode)} disabled={applying || Boolean(loadingMode) || unresolvedItems.length > 0 || !fromItem || !toItem || isApplied || Boolean(externalNavigation)} className="route-apply-button flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 font-bold text-white disabled:opacity-45">{applying ? <Loader2 size={17} className="animate-spin" /> : isApplied ? <Check size={17} /> : null}{isApplied ? t("applied") : selectedOption ? <><span className="route-apply-label-long">{t("applyThisRoute")}</span><span className="route-apply-label-short">{t("applyShort")}</span></> : externalNavigation ? t("externalCannotApply") : loadingMode ? t("fetchingShort") : timelineCopy.query}</button></div>
-  </div>;
+    <div className={`route-apply-bar ${styles.applyBar}`}><div className="route-apply-selection min-w-0"><span className="block text-xs text-[var(--muted)]">{t("currentChoice")}</span><strong className="block">{modeLabel(mode)}{activeSegment ? `${options.length ? ` · ${t("optionNumber", { index: selectedOptionIndex + 1 })}` : ""} · ${t("durationMinutes", { minutes: activeSegment.duration_minutes })}` : ""}</strong></div><button type="button" aria-label={canApplyPreview ? t("applyThisRoute") : undefined} onClick={() => canApplyPreview ? void applyPreview() : void previewMode(mode)} disabled={applying || Boolean(loadingMode) || unresolvedItems.length > 0 || !fromItem || !toItem || (isApplied && !localError) || Boolean(externalNavigation)} className="route-apply-button flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[var(--teal)] px-5 font-bold text-white disabled:opacity-45">{applying || loadingMode ? <Loader2 size={17} className="animate-spin" /> : isApplied && !localError ? <Check size={17} /> : null}{localError ? t("retry") : loadingMode ? t("fetchingShort") : isApplied ? t("applied") : canApplyPreview ? <><span className="route-apply-label-long">{t("applyThisRoute")}</span><span className="route-apply-label-short">{t("applyShort")}</span></> : externalNavigation ? t("externalCannotApply") : selectedExpired || routeState === "stale" ? timelineCopy.requery : timelineCopy.query}</button></div>
+  </div></div>;
 }

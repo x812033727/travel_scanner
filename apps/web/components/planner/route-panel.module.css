@@ -1,0 +1,142 @@
+.container {
+  container: route-panel / inline-size;
+  min-width: 0;
+}
+
+.container .layout {
+  display: flex;
+  flex-direction: column;
+  /* Reset the legacy desktop grid alignment. Inline-size containers otherwise
+     shrink to a border-width flex item and clip the visible transport tabs. */
+  align-items: stretch;
+  gap: 1rem;
+  min-width: 0;
+  padding-bottom: max(0.25rem, env(safe-area-inset-bottom));
+}
+
+.primaryColumn,
+.secondaryColumn {
+  display: contents;
+}
+
+.modes { order: 1; }
+.map { order: 2; }
+.controls { order: 3; }
+.detail { order: 4; }
+
+.container .applyBar {
+  order: 5;
+  bottom: 0;
+  gap: 0.65rem;
+  margin-top: auto;
+}
+
+.feedback {
+  padding: 0.8rem 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.state {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem 0.8rem;
+  font-size: var(--text-label);
+}
+
+.state > span,
+.hint {
+  color: var(--muted);
+  font-size: var(--text-meta);
+  line-height: 1.65;
+}
+
+.requery {
+  display: flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+  color: var(--teal);
+  font-size: var(--text-label);
+  font-weight: 700;
+}
+
+.container :global(.route-mode-toolbar) {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container :global(.route-mode-toolbar .route-mode-tabs) {
+  flex-basis: 100%;
+}
+
+.container :global(.route-navigation-link) {
+  margin-left: auto;
+  min-height: 2.75rem;
+  background: var(--paper);
+  color: var(--teal);
+}
+
+.container :global(.route-navigation-link span) { display: inline; }
+
+.container :global(.route-map-drawer .route-map-frame) {
+  height: 240px;
+}
+
+.container :global(.route-apply-selection) {
+  overflow-wrap: anywhere;
+}
+
+.container :global(.route-apply-button) {
+  min-width: 0;
+  max-width: 60%;
+  white-space: normal;
+  padding-inline: 0.8rem;
+}
+
+.container :global(.route-option-scroll) {
+  grid-auto-columns: minmax(12rem, 82%);
+}
+
+.container :global(.route-map-schematic-notice) {
+  top: 0.75rem;
+  bottom: auto;
+  max-width: calc(100% - 1.5rem);
+  border-radius: 0.75rem;
+}
+
+@container route-panel (min-width: 48rem) {
+  .container .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    grid-template-areas: none;
+    align-items: start;
+  }
+
+  .primaryColumn,
+  .secondaryColumn {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .primaryColumn { grid-column: 1; }
+  .secondaryColumn { grid-column: 2; }
+
+  .container .applyBar {
+    grid-area: auto;
+    grid-column: 1 / -1;
+  }
+
+  .container :global(.route-map-drawer .route-map-frame) {
+    height: 300px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container :global(.animate-spin) { animation: none; }
+  .container :global(.route-option-card) { transition: none; }
+}
