@@ -2,6 +2,10 @@
 
 SERVICE_ERRORS: dict[str, dict[str, str]] = {
     "en": {
+        "hotel_booking_context_invalid": (
+            "Check the arrival and departure dates and guest counts, or choose to set dates "
+            "on the booking platform."
+        ),
         "service_unavailable": ("This service is not available."),
         "service_version_conflict": ("This record changed. Reload before editing."),
         "service_operation_conflict": (
@@ -41,6 +45,9 @@ SERVICE_ERRORS: dict[str, dict[str, str]] = {
         "service_schedule_changed": ("Service selection changed. Recalculate affected routes."),
     },
     "ja": {
+        "hotel_booking_context_invalid": (
+            "チェックイン・チェックアウト日と人数を確認するか、予約サイトで日付を設定してください。"
+        ),
         "service_unavailable": ("このサービスは利用できません。"),
         "service_version_conflict": ("更新されています。再読み込みしてください。"),
         "service_operation_conflict": ("この操作キーは別の選択で使用済みです。"),
@@ -67,6 +74,9 @@ SERVICE_ERRORS: dict[str, dict[str, str]] = {
         "service_schedule_changed": ("サービスが変更されました。ルートを再計算してください。"),
     },
     "ko": {
+        "hotel_booking_context_invalid": (
+            "체크인·체크아웃 날짜와 인원수를 확인하거나 예약 사이트에서 날짜를 설정해 주세요."
+        ),
         "service_unavailable": ("이 서비스를 이용할 수 없습니다."),
         "service_version_conflict": ("변경된 데이터입니다. 새로고침하세요."),
         "service_operation_conflict": ("이 작업 키는 다른 선택에 사용되었습니다."),
@@ -95,6 +105,9 @@ SERVICE_ERRORS: dict[str, dict[str, str]] = {
         "service_schedule_changed": ("서비스 선택이 변경되었습니다. 경로를 다시 계산하세요."),
     },
     "zh-TW": {
+        "hotel_booking_context_invalid": (
+            "請確認入住與退房日期、成人及兒童人數；也可以選擇到平台設定日期。"
+        ),
         "service_unavailable": ("目前無法使用此服務。"),
         "service_version_conflict": ("資料已更新，請重新載入後修改。"),
         "service_operation_conflict": ("這個操作識別已用於另一個選擇。"),
@@ -115,6 +128,9 @@ SERVICE_ERRORS: dict[str, dict[str, str]] = {
         "service_schedule_changed": ("服務選擇已變更，請重算受影響路線。"),
     },
     "zh-CN": {
+        "hotel_booking_context_invalid": (
+            "请确认入住与退房日期、成人及儿童人数；也可以选择到平台设置日期。"
+        ),
         "service_unavailable": ("目前无法使用此服务。"),
         "service_version_conflict": ("数据已更新，请重新加载后修改。"),
         "service_operation_conflict": ("这个操作标识已用于另一个选择。"),

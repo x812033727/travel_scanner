@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { RequestBodyError, limitedRequestBody } from "@/lib/request-body";
+import { hotelClickoutErrorPage } from "@/lib/hotel-clickout-error";
 import {
   forwardedClientAddress,
   isAllowedMutationOrigin,
@@ -77,6 +78,8 @@ async function proxy(request: NextRequest, context: Context) {
   const isServiceClickout = isHotelClickout || isOptionClickout || /^affiliates\/(?:offers|destination-offers)\/[a-f0-9-]+\/clickout$/.test(endpoint);
   const formLocale = isServiceClickout ? query.get("locale") : null;
   if (isServiceClickout) query.delete("locale");
+  // First-party error recovery context must never reach the API/affiliate URL.
+  if (isOptionClickout) query.delete("return_to");
   const url = `${base}/api/v1/${endpoint}${query.size ? `?${query}` : ""}`;
   const jar = await cookies();
   const token = jar.get("travel_access")?.value;
@@ -116,16 +119,23 @@ async function proxy(request: NextRequest, context: Context) {
     if (country && /^[A-Z]{2}$/.test(country)) headers.set("X-Travel-Country", country);
   }
   let body: ArrayBuffer | undefined;
+  const browserClickout = isOptionClickout && request.method === "POST" && request.headers.get("accept")?.includes("text/html");
+  const failure = (status: number, code: string, detail: string) => browserClickout
+    ? hotelClickoutErrorPage({
+      requestUrl: request.url, referrer: request.headers.get("referer"),
+      locale: headers.get("X-Travel-Locale") || "zh-TW", body, contentType, status,
+    })
+    : problem(status, code, detail);
   if (request.method !== "GET" && request.method !== "HEAD") {
     try {
       // Counts the stream as it arrives, so a chunked or mislabelled upload cannot be buffered in
       // full before the limit applies.
-      body = await limitedRequestBody(request, MAX_REQUEST_BYTES);
+      body = await limitedRequestBody(request, isOptionClickout ? Math.min(4096, MAX_REQUEST_BYTES) : MAX_REQUEST_BYTES);
     } catch (error) {
       if (error instanceof RequestBodyError && error.reason === "invalid_length") {
-        return problem(400, "invalid_content_length", "Content-Length 標頭無效");
+        return failure(400, "invalid_content_length", "Content-Length 標頭無效");
       }
-      return problem(413, "request_too_large", "請求內容超過允許大小");
+      return failure(413, "request_too_large", "請求內容超過允許大小");
     }
   }
   const controller = new AbortController();
@@ -144,13 +154,13 @@ async function proxy(request: NextRequest, context: Context) {
     });
   } catch {
     clearTimeout(timeout);
-    return problem(502, "upstream_unavailable", "API 服務目前無法回應");
+    return failure(502, "upstream_unavailable", "API 服務目前無法回應");
   }
   const redirectLocation = upstream.headers.get("location");
   if (upstream.status >= 300 && upstream.status < 400 && redirectLocation) {
     clearTimeout(timeout);
     const location = safeRedirectLocation(redirectLocation, request.nextUrl.origin);
-    if (!location) return problem(502, "unsafe_upstream_redirect", "API 回傳了不安全的轉址");
+    if (!location) return failure(502, "unsafe_upstream_redirect", "API 回傳了不安全的轉址");
     return preserveRequestId(new Response(null, {
       status: upstream.status,
       headers: { Location: location, "Cache-Control": "no-store", "Referrer-Policy": "no-referrer" },
@@ -166,10 +176,14 @@ async function proxy(request: NextRequest, context: Context) {
     // The same deadline now also bounds reading the response body, not just the headers.
     text = await limitedResponseText(upstream);
   } catch {
-    if (controller.signal.aborted) return problem(504, "upstream_timeout", "API 服務回應逾時");
-    return problem(502, "upstream_response_too_large", "API 回應超過允許大小");
+    if (controller.signal.aborted) return failure(504, "upstream_timeout", "API 服務回應逾時");
+    return failure(502, "upstream_response_too_large", "API 回應超過允許大小");
   } finally {
     clearTimeout(timeout);
+  }
+  if (browserClickout) {
+    // A successful booking clickout is a redirect, never provider JSON/HTML.
+    return preserveRequestId(failure(upstream.status, "hotel_link_unavailable", "訂房連結目前無法開啟"), upstream);
   }
   let payload: unknown = text;
   try { payload = text ? JSON.parse(text) : null; } catch { /* preserve text */ }

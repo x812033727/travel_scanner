@@ -122,9 +122,10 @@ def test_explicit_conflicting_country_blocks_pilot(country: dict[str, str]) -> N
 
 @pytest.mark.parametrize("country", ["JP", " Japan ", "日本", "일본"])
 def test_matching_explicit_country_allows_pilot(country: str) -> None:
-    assert stay_router._stay22_map_context(
-        make_context(data={"destination_country": country})
-    ) is not None
+    assert (
+        stay_router._stay22_map_context(make_context(data={"destination_country": country}))
+        is not None
+    )
 
 
 @pytest.mark.parametrize(
@@ -152,8 +153,10 @@ def test_missing_or_invalid_travelers_are_not_fabricated(travelers: Any) -> None
 @pytest.mark.parametrize(
     ("search_json", "expected"),
     [
-        ({"travelers": {"adults": 4, "children": 0, "rooms": 2}},
-         {"adults": 4, "children": 0, "rooms": 2}),
+        (
+            {"travelers": {"adults": 4, "children": 0, "rooms": 2}},
+            {"adults": 4, "children": 0, "rooms": 2},
+        ),
         ({"travelers": {"adults": 0, "children": 0, "rooms": 1}}, None),
         ({"destination": "NRT"}, None),
         ({}, None),
@@ -212,15 +215,18 @@ async def area_api(
             app.dependency_overrides[current_user] = lambda: user
             monkeypatch.setattr(stay_router, "enforce_named_rate_limit", AsyncMock())
             monkeypatch.setattr(
-                stay_router, "load_runtime_settings",
+                stay_router,
+                "load_runtime_settings",
                 AsyncMock(return_value=Settings(hotel_provider_mode="disabled")),
             )
             monkeypatch.setattr(
-                stay_router, "build_hotel_provider",
+                stay_router,
+                "build_hotel_provider",
                 Mock(side_effect=AssertionError("area listing must not construct a provider")),
             )
             monkeypatch.setattr(
-                stay_router, "_search_area",
+                stay_router,
+                "_search_area",
                 AsyncMock(side_effect=AssertionError("area listing must not request hotel prices")),
             )
             yield app, session, user, trip
@@ -239,6 +245,14 @@ async def test_authenticated_area_listing_exposes_map_without_pricing_provider(
     assert payload["trip_id"] == str(trip.id)
     assert payload["pricing"]["available"] is False
     assert payload["areas"]
+    assert payload["booking_context"] == {
+        "check_in": "2030-11-01",
+        "check_out": "2030-11-04",
+        "adults": 4,
+        "children": 0,
+        "rooms": 2,
+        "children_ages": [],
+    }
     assert payload["map_context"] == {
         "destination_id": "tokyo",
         "country_code": "JP",
@@ -265,3 +279,30 @@ async def test_area_map_context_requires_authentication_and_trip_ownership(
         assert stranger.status_code == 404
         assert stranger.json()["code"] == "trip_not_found"
         assert "map_context" not in stranger.json()
+        assert "booking_context" not in stranger.json()
+
+
+@pytest.mark.parametrize("destination", ["東京", "大阪", "首爾", "倫敦", "Private place"])
+def test_booking_preferences_are_not_limited_to_map_pilots(destination: str) -> None:
+    context = make_context(destination_name=destination)
+    assert stay_router.hotel_booking_context(context.trip, context.search_json) == {
+        "check_in": "2030-11-01",
+        "check_out": "2030-11-30",
+        "adults": 2,
+        "children": 1,
+        "rooms": 1,
+        "children_ages": [7],
+    }
+
+
+def test_booking_context_preserves_invalid_dates_for_explicit_correction() -> None:
+    context = make_context(start_date=date(2000, 1, 1), end_date=None, data={})
+    result = stay_router.hotel_booking_context(context.trip, None)
+    assert result == {
+        "check_in": "2000-01-01",
+        "check_out": None,
+        "adults": None,
+        "children": None,
+        "rooms": None,
+        "children_ages": [],
+    }

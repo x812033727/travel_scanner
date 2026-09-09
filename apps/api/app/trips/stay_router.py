@@ -164,6 +164,31 @@ def _pricing_availability(settings: Settings) -> dict[str, Any]:
     }
 
 
+def hotel_booking_context(trip: TripPlan, search_json: dict[str, Any] | None) -> dict[str, Any]:
+    """Saved, editable preferences for all destinations; never a price request.
+
+    Preserve missing and historical dates for the form to explain. Do not use
+    stay_dates(), whose live-provider window may shorten a long trip.
+    """
+    result: dict[str, Any] = {
+        "check_in": trip.start_date.isoformat() if trip.start_date else None,
+        "check_out": trip.end_date.isoformat() if trip.end_date else None,
+        "adults": None,
+        "children": None,
+        "rooms": None,
+        "children_ages": [],
+    }
+    raw = trip_settings_source(trip, search_json).get("travelers")
+    if isinstance(raw, dict) and {"adults", "children", "rooms"} <= raw.keys():
+        try:
+            party = Travelers.model_validate(raw, strict=True)
+        except ValidationError:
+            pass
+        else:
+            result.update(party.model_dump())
+    return result
+
+
 def _stay22_map_context(context: StayContext) -> dict[str, Any] | None:
     """Minimal saved search context; never derive it from a provider quote."""
     profile = context.profile
@@ -181,9 +206,10 @@ def _stay22_map_context(context: StayContext) -> dict[str, Any] | None:
     for key in ("destination_country_code", "destination_country"):
         explicit = trip.data.get(key)
         if explicit is not None and explicit != "":
-            if not isinstance(explicit, str) or explicit.strip().casefold() not in country_names[
-                country_code
-            ]:
+            if (
+                not isinstance(explicit, str)
+                or explicit.strip().casefold() not in country_names[country_code]
+            ):
                 return None
 
     # Only an explicitly saved party edit overrides the original search. Schema
@@ -227,6 +253,7 @@ async def stay_areas(
         "destination_name": context.destination_label,
         "city_code": context.city_code,
         "map_context": _stay22_map_context(context),
+        "booking_context": hotel_booking_context(trip, context.search_json),
         "pricing": _pricing_availability(context.settings),
         "current_lodging_area_code": None,
         "located_item_count": 0,
@@ -592,7 +619,10 @@ async def select_stay_hotel(
     # A real quote landing on the trip — the funnel step between saving a trip and
     # leaving for a provider. The flight half arrives with the from-offer anchor.
     await record_event(
-        session, "offer_attached", path="/trips", user_id=user.id,
+        session,
+        "offer_attached",
+        path="/trips",
+        user_id=user.id,
         properties={"kind": "hotel", "source": "stay_area"},
     )
     return await persist_system_schedule_change(

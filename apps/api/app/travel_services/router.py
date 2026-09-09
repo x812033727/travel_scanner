@@ -1,16 +1,19 @@
 from __future__ import annotations
 
+import json
+import re
 from copy import deepcopy
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from decimal import Decimal
 from typing import Annotated, Any, Literal
-from urllib.parse import urlsplit
+from urllib.parse import parse_qsl, urlsplit
 from uuid import UUID, uuid4
 from zoneinfo import ZoneInfo
 
 import httpx
 from fastapi import APIRouter, Depends, Header, Query, Request, Response
 from fastapi.responses import RedirectResponse
+from pydantic import ValidationError
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -24,6 +27,7 @@ from app.infra import enforce_named_rate_limit, get_redis
 from app.models import (
     AffiliateClick,
     HotelBookingClick,
+    SearchRequest,
     TravelHotspot,
     TravelServiceBrand,
     TravelServiceOffer,
@@ -32,9 +36,17 @@ from app.models import (
     TripPlanItem,
     TripServiceSelection,
 )
+from app.problems import AppError
 from app.travel_services.channels import channel_for, resolve_offer_target
 from app.travel_services.hotel_quotes import HotelQuoteRequest, search_quotes
-from app.travel_services.schemas import CITIES, Facts, Kind, SelectInput, SelectionStatus
+from app.travel_services.schemas import (
+    CITIES,
+    Facts,
+    HotelBookingContext,
+    Kind,
+    SelectInput,
+    SelectionStatus,
+)
 from app.travel_services.service import (
     catalog_config,
     fail,
@@ -75,13 +87,14 @@ async def locked_trip(session: AsyncSession, user_id: UUID, trip_id: UUID) -> Tr
 @router.get("/travel-services/config")
 async def public_config(session: Session) -> dict[str, Any]:
     config, _ = await catalog_config(session)
-    return config.model_dump(exclude={"airalo_feed_enabled", "hotel_quote_policies"})
+    return config.model_dump(exclude={"airalo_feed_enabled", "hotel_quote_policies", "stay22"})
 
 
 @router.get("/travel-services")
 async def public_services(
     session: Session,
     locale: RequestLocale,
+    request: Request,
     destination_id: Annotated[str, Query(max_length=64)],
     type: Kind | None = None,
     hotspot_id: UUID | None = None,
@@ -129,9 +142,12 @@ async def public_services(
         passengers=passengers,
         language=language,
         days=days,
+        tracking_allowed=request.headers.get("dnt") != "1"
+        and request.headers.get("sec-gpc") != "1",
     )
     if type:
         result["items"] = [p for p in result["items"] if p["kind"] == type]
+    result["booking_context"] = None
     return result
 
 
@@ -141,6 +157,7 @@ async def trip_services(
     user: CurrentUser,
     session: Session,
     locale: RequestLocale,
+    request: Request,
     destination_id: str | None = None,
     type: Kind | None = None,
     area: str | None = None,
@@ -172,6 +189,8 @@ async def trip_services(
             passengers=passengers,
             countries=trip_countries(trip, rows),
             days=days,
+            tracking_allowed=request.headers.get("dnt") != "1"
+            and request.headers.get("sec-gpc") != "1",
         )
         for city in ([destination_id] if destination_id else cities)
     ]
@@ -182,6 +201,9 @@ async def trip_services(
             .where(TripServiceSelection.trip_id == trip_id)
         )
     ).all()
+    from app.trips.stay_router import hotel_booking_context
+
+    saved_search = await session.get(SearchRequest, trip.search_id) if trip.search_id else None
     return {
         "enabled": any(r["enabled"] for r in results),
         "destinations": cities,
@@ -209,6 +231,9 @@ async def trip_services(
         "start_date": trip.start_date,
         "end_date": trip.end_date,
         "timezone": trip.timezone,
+        "booking_context": hotel_booking_context(
+            trip, saved_search.request_json if saved_search else None
+        ),
     }
 
 
@@ -519,6 +544,62 @@ async def hotel_clickout(
     )
 
 
+async def _booking_click_context(request: Request, *, today: date) -> HotelBookingContext | None:
+    """Accept only documented preferences, never URL/channel/identity from a browser."""
+    from app.travel_services.stay22 import validate_booking_context
+
+    data = bytearray()
+    async for chunk in request.stream():
+        data.extend(chunk)
+        if len(data) > 4096:
+            raise AppError(413, "request_too_large", "訂房條件超過允許大小")
+    if not data:
+        return None  # Legacy empty POST remains supported.
+    allowed = {"check_in", "check_out", "adults", "children"}
+    try:
+        content_type = request.headers.get("content-type", "").split(";", 1)[0].strip().lower()
+        if content_type == "application/x-www-form-urlencoded":
+            pairs = parse_qsl(data.decode("utf-8"), keep_blank_values=True, max_num_fields=4)
+            if len({key for key, _ in pairs}) != len(pairs):
+                raise ValueError("Duplicate context field")
+            values: Any = dict(pairs)
+            for key in ("adults", "children"):
+                if key in values and values[key] != "":
+                    if not values[key].isascii() or not values[key].isdigit():
+                        raise ValueError("Expected whole number")
+                    values[key] = int(values[key])
+        elif content_type == "application/json":
+            if not data.lstrip().startswith(b"{"):
+                raise ValueError("Expected object")
+            pairs = json.loads(data, object_pairs_hook=list)
+            if not isinstance(pairs, list) or any(
+                not isinstance(pair, tuple) or len(pair) != 2 for pair in pairs
+            ):
+                raise ValueError("Expected object")
+            if len({key for key, _ in pairs}) != len(pairs):
+                raise ValueError("Duplicate context field")
+            values = dict(pairs)
+        else:
+            raise ValueError("Unsupported content type")
+        if not isinstance(values, dict) or not set(values) <= allowed:
+            raise ValueError("Unsupported context field")
+        values = {key: value for key, value in values.items() if value != "" and value is not None}
+        for key in ("check_in", "check_out"):
+            if key in values and (
+                not isinstance(values[key], str)
+                or not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", values[key])
+            ):
+                raise ValueError("Expected ISO calendar date")
+        context = HotelBookingContext.model_validate(values)
+        return validate_booking_context(context, today=today)
+    except (ValueError, TypeError, UnicodeError, ValidationError) as exc:
+        raise AppError(
+            422,
+            "hotel_booking_context_invalid",
+            "請確認入住與退房日期、成人及兒童人數；也可以選擇到平台設定日期",
+        ) from exc
+
+
 @router.post("/travel-services/{product_id}/booking-options/{option_id}/clickout", status_code=303)
 async def booking_option_clickout(
     product_id: UUID,
@@ -529,6 +610,7 @@ async def booking_option_clickout(
     placement: Literal["destination", "hotspot", "trip", "stay", "checklist"] = "destination",
 ) -> RedirectResponse:
     from app.travel_services.hotel_options import matching_offer, ready_option, safe_click_target
+    from app.travel_services.stay22 import booking_channel, build_stay22_url
 
     await enforce_named_rate_limit(
         "hotel-options",
@@ -545,33 +627,62 @@ async def booking_option_clickout(
     now = datetime.now(UTC)
     if not option or not ready_option(product, option, config, now):
         raise fail("service_unavailable", 404)
+    country = CITIES.get(product.destination_id, (None,))[0]
+    zone = {"JP": "Asia/Tokyo", "KR": "Asia/Seoul", "TW": "Asia/Taipei"}.get(country or "", "UTC")
+    today = now.astimezone(ZoneInfo(zone)).date()
+    context = await _booking_click_context(request, today=today)
     direct = await safe_click_target(option)
     settings = await load_runtime_settings(session)
     offer = await matching_offer(session, product, option, settings, now)
     target, mode, fallback = direct, "direct", False
     sub_id = f"svc_hotel_{product.destination_id}_{locale}_{placement}"
+    channel = booking_channel(
+        option,
+        config,
+        has_offer=offer is not None,
+        tracking_allowed=request.headers.get("dnt") != "1"
+        and request.headers.get("sec-gpc") != "1",
+    )
+    partner: str | None = None
     if offer:
         brand = await session.get(TravelServiceBrand, offer.brand_id)
         assert brand is not None
         try:
             target = await resolve_offer_target(
-                offer, brand, settings, get_redis(), sub_id,
+                offer,
+                brand,
+                settings,
+                get_redis(),
+                sub_id,
                 cache_context=(
                     f"hotel:{option.id}:{option.version}:{brand.id}:{brand.version}:"
                     f"{offer.id}:{offer.version}:{locale}"
                 ),
             )
             mode = "affiliate"
+            partner = "klook" if channel_for(brand) == "klook_direct" else "travelpayouts"
         except (ConnectionError, ValueError, httpx.HTTPError, TimeoutError):
             fallback = True
+    elif channel == "stay22":
+        target = build_stay22_url(
+            option.provider,
+            direct,
+            config.stay22,
+            context=context,
+            destination_id=product.destination_id,
+            locale=locale,
+            placement=placement,
+            today=today,
+        )
+        mode, partner = "affiliate", "stay22"
     if mode == "direct" and not config.direct_hotel_links_enabled:
         raise fail("service_link_unavailable", 503)
     if mode == "affiliate":
-        assert brand is not None
+        assert partner is not None
         session.add(
             AffiliateClick(
                 user_id=None,
-                partner="klook" if channel_for(brand) == "klook_direct" else "travelpayouts",
+                partner=partner,
                 brand=option.provider,
                 service_type="hotel",
                 placement=placement,
@@ -671,7 +782,11 @@ async def offer_clickout(
     sub_id = f"svc_{product.kind}_{product.destination_id}_{locale}_{placement}"
     try:
         target = await resolve_offer_target(
-            offer, brand, settings, get_redis(), sub_id,
+            offer,
+            brand,
+            settings,
+            get_redis(),
+            sub_id,
             cache_context=f"{brand.id}:{brand.version}:{offer.id}:{offer.version}:{locale}",
         )
     except (ConnectionError, ValueError) as exc:
