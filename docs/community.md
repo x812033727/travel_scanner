@@ -81,6 +81,12 @@ community state immediately, including protection against a delayed `/auth/me`
 response restoring an obsolete identity.
 Administrator self-deletion is blocked, preserving existing self-disable rules.
 
+Token issuance and consumption lock the member before token rows, in the same
+order as account erasure. They refresh cached identities and token state after
+waiting, so an already deleted account or consumed link cannot be reused from
+an earlier snapshot. Concurrent requests for a new mail link leave only the
+latest token active. Erasure also clears typed post-place references.
+
 The existing RQ worker consumes `community`; the `community-sweeper` service
 requeues durable database jobs once a minute. The encrypted mail job payload is
 cleared when finished. Mail retries are bounded; account cleanup remains retryable.
@@ -202,8 +208,33 @@ Desktop and Pixel 7 now cover a real browser disconnection and durable SSE catch
 The remaining browser matrix includes translation failure/updated-original handling,
 full five-locale and dark-mode community
 journeys, and worker/outage/capacity recovery. Existing unit/API coverage does not
-replace these end-to-end checks. Keep the PR a draft and community default-off
+replace these end-to-end checks. Keep unfinished follow-up PRs draft and community default-off
 while these implementation and acceptance items remain.
+
+## Verified deployment: 2026-09-08 (Asia/Taipei)
+
+The owner authorized merging PR #340 and deploying the default-off foundation.
+Main commit `7f21d7eb2af223a561bc04519ce67021198b1068` passed CI
+`34144356856` (1,781 API tests, two skipped; Web, containers and both-device
+travel/community journeys passed). It was deployed through the existing SSH
+connection, without expanding the Web account's deployment permissions.
+
+Images were built from a clean Git archive in
+`/root/mokaair-release-7f21d7e-C8COn8nk/source`, not the restricted checkout.
+The existing `travel_scanner` Compose project and `/root/travel_scanner/.env`
+were retained. Non-root API imports and the Web production build passed.
+Immediately before migration, the PostgreSQL custom-format backup
+`/root/travel_scanner_community_20260907T164944Z_pre_migration.dump`
+was nonempty (6,587,388 bytes), mode 0600, with a successfully read archive index.
+No earlier backups, images, volumes or user data were removed.
+
+Migrations 0058–0060 completed. All ten services, including the new durable-job
+sweeper, were running; three consecutive API/Web readiness checks passed with
+schema `0060_community_places`. The public BFF returned `enabled: false`, the
+homepage returned 200, and the authenticated community admin page loaded.
+Registration remained closed, as previously configured. SMTP capability was
+unavailable: no production mail, S3 or translation activation is claimed.
+This deployment does not complete the remaining acceptance or public-launch gates.
 
 ## Public-launch gates (not completed by adding this document)
 

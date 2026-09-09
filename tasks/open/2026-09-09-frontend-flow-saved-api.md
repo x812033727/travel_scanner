@@ -19,7 +19,6 @@ scope:
   - apps/api/migrations/versions/0067_collection_inbox.py
   - apps/api/tests/test_saved_flow.py
   - apps/api/tests/test_saved_flow_integration.py
-  - apps/api/tests/test_community_foundation.py
   - apps/api/tests/fixtures/frontend_flow_seed.py
   - apps/api/tests/test_travel_services_integration.py
 ---
@@ -128,3 +127,13 @@ calls. Root owns the workflow and browser acceptance spec.
   modified. An always-on regression reuses that exact client and failing scenario
   with an unisolated-Redis trap and verifies all four policy calls. Ruff passed;
   the focused regression passed in 43.43 seconds. Final Linux CI rerun is required.
+
+- 2026-09-09 post-merge scope handoff by the coordinating parent: PR #374 is merged
+  as a899437aaf2f60c7affe2e944d49d62216537c90. The isolated frontend-flow worktree is
+  clean, and test_community_foundation.py has no uncommitted or unmerged changes;
+  HEAD and origin/main both resolve it to blob c8e345e04eaa044b32c694031100961e2c391baa.
+  Release only apps/api/tests/test_community_foundation.py to task
+  01a057d5-1534-7c91-8f9e-a60b1e3c613c for the authorized PR #343 integration.
+  Existing saved fixtures must be retained. Other scopes and task status remain
+  unchanged. This is local task metadata only: no source edit, push, other PR merge,
+  deployment or production-data action.
