@@ -1,11 +1,11 @@
 ---
 id: 2026-09-07-hotel-platform-options-and-quote-readiness
 title: Hotel platform options and quote readiness
-status: in-progress
+status: open
 priority: P1
 area: api
-owner: codex-pr367-merge-ready
-claimed_at: 2026-09-09T04:05:22Z
+owner:
+claimed_at:
 created_at: 2026-09-07T12:32:44Z
 completed_at:
 branch: codex/pr367-merge-ready-20260909
@@ -16,6 +16,47 @@ scope:
 ---
 
 # Hotel platform options and quote readiness
+
+## 2026-09-09 PR #367 merge preparation (no deployment)
+
+The user explicitly authorized merging PRs #361 and #367, without deployment.
+Prepared #367 in the isolated `codex/pr367-merge-ready-20260909` worktree from
+exact PR head `0337f781b0199590c4369392528f394a6390d1c8`. GitHub reported the PR
+OPEN / MERGEABLE / BEHIND, with all eight checks successful at that old head;
+those results are not validation of a later integration head.
+
+Normally merged fetched main `7cee8650aa451d96634b3ccf821204c22bd125a9` as local
+merge commit `fee0c878f7ede7e99d7c84a3c0099819f05e2cdd`, without rebasing or rewriting
+history. Only generated `tasks/BOARD.md` conflicted; `npm run tasks:board` resolved
+it. All application, web, workflow and operations files exactly preserve that main.
+The hotel content test and every `docs/hotel-platforms` file are unchanged from
+the original #367 head. No later hotel-review batches were added to this older PR.
+
+These source documents and counts remain historical checkpoints, not current live
+catalog state. Pending JSON is research input only: never replay it over independent
+live reviews, reset approved rows, or infer approval/publication from this Git merge.
+No import, production connection/write, browser review, paid API, deployment or
+database migration was performed during this integration. This task's remaining
+six-city content acceptance and rollout requirements stay unchecked.
+
+Local focused validation: 172 tests passed and three PostgreSQL-dependent tests
+skipped, covering hotel content/platforms/direct links, hotel admin, travel services,
+the legacy migration gate and offline Seoul coordinate reproduction. API-wide Ruff
+and the changed content test's format check passed. All 27 tooling tests, 196 task
+files and five locales / 25 namespaces passed. Missing local aiosqlite, optional
+pyproj and Playwright test dependencies were supplied without modifying shared
+Python dependencies, application manifests or lockfiles; their initial missing-
+dependency failures were resolved on rerun. The standalone historical docs scripts
+retain pre-existing formatting issues outside the API CI lint scope and were not
+edited or executed as live lookup/import tools.
+
+The i18n tool treats an in-progress merge's staged upstream files as new text against
+the old HEAD; that intermediate scan reported existing upstream planner/discovery
+copy. The post-integration catalog check passed; no upstream UI copy or checker was
+changed. The final remote head still needs full CI and a fresh SHA-guarded merge
+check, especially after main advances through #361. Root owns remote push/merge;
+this local preparation releases the shared task at handoff rather than marking it
+done. No remote push or PR merge was performed by the integration subtask.
 
 ## Latest: 2026-09-08 PR #364 deployment and IAB Osaka / Taipei review
 
