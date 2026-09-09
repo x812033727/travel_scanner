@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**18 open · 1 in progress · 2 blocked · 6 in review · 188 done**
+**18 open · 1 in progress · 2 blocked · 7 in review · 188 done**
 
 ## Ready to claim
 
@@ -40,6 +40,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | codex-discovery-flow-web | `codex/frontend-explore-flow` |
 | [Frontend flow navigation planning handoff and acceptance](open/2026-09-09-frontend-flow-integration.md) | codex-frontend-flow | `codex/frontend-explore-flow` |
 | [Route apply state regression and semantic itinerary tones](open/2026-09-09-planner-route-tones.md) | codex | `codex/planner-route-tones` |
+| [Prepare PR 335 funnel integration against current main](open/2026-09-09-pr335-funnel-merge-integration.md) | codex-pr335-delivery | `codex/pr335-merge-ready-20260909` |
 
 ## Waiting
 
