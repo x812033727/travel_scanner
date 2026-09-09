@@ -7,6 +7,7 @@ from uuid import uuid4
 import pytest
 from pydantic import ValidationError
 
+from app.catalog_review.budget import run_call_limit
 from app.catalog_review.repository import (
     fingerprint,
     normalized_name,
@@ -17,6 +18,7 @@ from app.catalog_review.schemas import EvidenceCitation, EvidenceSource, ReviewA
 from app.catalog_review.service import (
     LEGACY_OMISSION_REASON,
     ApplyRequest,
+    ResumeRequest,
     StartRequest,
     allowed_actions,
     is_legacy_missing_assessment,
@@ -26,6 +28,7 @@ from app.catalog_review.service import (
     run_view,
     snapshot_review_complete,
 )
+from app.config import Settings
 from app.models import CatalogReviewItem, CatalogReviewRun
 
 URL = "https://www.wikidata.org/wiki/Q123"
@@ -210,6 +213,54 @@ def test_all_three_requested_counts_are_bounded_and_no_new_unrecognized_types():
             StartRequest(mode="discover_new", requested_counts=counts)
     with pytest.raises(ValidationError):
         StartRequest(mode="review_pending", max_calls=100_000)
+
+
+@pytest.mark.parametrize("limit", [1, 80, 160, 1000])
+def test_start_and_resume_call_limits_accept_bounded_integers(limit):
+    assert StartRequest(mode="review_pending", max_calls=limit).max_calls == limit
+    assert ResumeRequest(expected_version=1, max_calls=limit).max_calls == limit
+    # Preserve the historical canonical payload hash for omitted legacy budgets.
+    assert StartRequest(mode="review_pending").max_calls == 80
+    assert "max_calls" not in StartRequest(mode="review_pending").model_fields_set
+
+
+@pytest.mark.parametrize("limit", [0, -1, 1001, True, False, "160", 80.0, None])
+def test_start_and_resume_call_limits_reject_coercion_and_out_of_range_values(limit):
+    with pytest.raises(ValidationError):
+        StartRequest(mode="review_pending", max_calls=limit)
+    with pytest.raises(ValidationError):
+        ResumeRequest(expected_version=1, max_calls=limit)
+
+
+@pytest.mark.parametrize("version", [0, -1, True, "1", 1.0, None])
+def test_budget_extension_requires_a_strict_positive_version(version):
+    with pytest.raises(ValidationError):
+        ResumeRequest(expected_version=version, max_calls=160)
+
+
+def test_budget_extension_cannot_include_counter_or_review_mutations():
+    for extra in [{"calls": 0}, {"usage_json": {}}, {"status": "approved"}]:
+        with pytest.raises(ValidationError):
+            ResumeRequest(expected_version=1, max_calls=160, **extra)
+
+
+@pytest.mark.parametrize(
+    "snapshot,expected",
+    [
+        (None, 80),
+        ({}, 80),
+        ({"max_calls": 160}, 160),
+        ({"max_calls": 1001}, 1000),
+        ({"max_calls": 0}, 0),
+        ({"max_calls": -1}, 0),
+        ({"max_calls": True}, 0),
+        ({"max_calls": "160"}, 0),
+        ({"max_calls": 80.0}, 0),
+        ({"max_calls": None}, 0),
+    ],
+)
+def test_saved_call_limits_are_legacy_compatible_and_fail_closed(snapshot, expected):
+    assert run_call_limit(snapshot) == expected
 
 
 def test_apply_has_no_client_supplied_verification_or_assessment():
@@ -408,6 +459,58 @@ async def test_orphaned_queue_can_resume_but_not_a_fresh_queue_or_live_lease(
     assert not (await run_view(AsyncMock(), run))["can_resume"]
 
 
+@pytest.mark.parametrize(
+    "status,lease_minutes,age_minutes,missing,expected",
+    [
+        ("partial", None, 10, False, True),
+        ("failed", None, 10, False, True),
+        ("completed", None, 10, True, True),
+        ("completed", None, 10, False, False),
+        ("cancelled", None, 10, False, False),
+        ("queued", None, 0, False, False),
+        ("queued", None, 10, False, True),
+        ("queued", -1, 10, False, True),
+        ("queued", 5, 10, False, False),
+        ("running", -1, 10, False, True),
+        ("running", 5, 10, False, False),
+    ],
+)
+async def test_call_limit_extension_is_only_offered_for_stopped_or_abandoned_work(
+    monkeypatch, status, lease_minutes, age_minutes, missing, expected
+):
+    import app.catalog_review.service as service
+
+    rows = [legacy_omission_item()] if missing else [item()]
+    monkeypatch.setattr(service, "run_items", AsyncMock(return_value=rows))
+    now = datetime.now(UTC)
+    run = CatalogReviewRun(
+        id=uuid4(),
+        mode="review_pending",
+        phase="review_pending",
+        status=status,
+        version=4,
+        request_json={"max_calls": 80},
+        usage_json={"calls": 80},
+        result_json={},
+        created_at=now - timedelta(minutes=age_minutes),
+        updated_at=now - timedelta(minutes=age_minutes),
+        lease_until=now + timedelta(minutes=lease_minutes) if lease_minutes is not None else None,
+    )
+    settings = Settings(_env_file=None, catalog_review_max_calls=160)
+    original = deepcopy((run.request_json, run.usage_json, run.status, run.version))
+    view = await run_view(AsyncMock(), run, settings=settings)
+    assert view["max_calls"] == 80
+    assert view["can_extend_budget"] is expected
+    assert not view["can_resume"]
+    assert (run.request_json, run.usage_json, run.status, run.version) == original
+    assert not (await run_view(AsyncMock(), run))["can_extend_budget"]
+    settings.catalog_review_max_calls = 80
+    assert not (await run_view(AsyncMock(), run, settings=settings))["can_extend_budget"]
+    settings.catalog_review_max_calls = 160
+    run.usage_json = {"calls": 160}
+    assert not (await run_view(AsyncMock(), run, settings=settings))["can_extend_budget"]
+
+
 @pytest.mark.parametrize("status", ["completed", "queued", "running", "cancelled"])
 async def test_legacy_omission_counts_are_honest_and_resume_keeps_original_bounds(
     monkeypatch, status
@@ -523,6 +626,9 @@ async def test_resume_only_clears_current_errors_and_exact_legacy_omissions_and_
         "retried_items": 1 + expected_legacy,
         "legacy_missing_items": expected_legacy,
         "stale_items": 1 - expected_legacy,
+        "previous_max_calls": 80,
+        "max_calls": 80,
+        "calls": 32,
     }
     load.assert_awaited_once_with(session, missing.kind, missing.entity_id, lock=True)
     assert snapshot.await_count == int(entity_state in {"pending", "changed"})

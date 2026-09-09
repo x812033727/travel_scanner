@@ -314,6 +314,7 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "hotspot_guide_gemini_model",
             "hotspot_guide_gemini_timeout_seconds",
             "hotspot_guide_gemini_daily_search_budget",
+            "catalog_review_max_calls",
         ),
         (),
         "hotspot_guide_gemini_enabled",
@@ -1244,6 +1245,8 @@ def _validate_provider_values(
                 "provider_setting_invalid",
                 f"{field} 必須是布林值",
             )
+    if "catalog_review_max_calls" in merged and type(merged["catalog_review_max_calls"]) is not int:
+        raise AppError(422, "provider_setting_invalid", "catalog_review_max_calls 必須是整數")
     if "ga4_measurement_id" in merged:
         measurement_id = str(merged["ga4_measurement_id"] or "").strip().upper()
         if measurement_id and not re.fullmatch(r"G-[A-Z0-9]{4,16}", measurement_id):

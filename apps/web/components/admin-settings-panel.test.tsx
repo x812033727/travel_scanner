@@ -5,8 +5,8 @@ import { AdminOperationsProvider } from "./admin-operations-provider";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
-const sessionIdentity = vi.hoisted(() => ({ user: null as { id: string; email: string; preferred_currency?: string } | null, key: undefined as object | undefined }));
-vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: sessionIdentity.user, sessionIdentity: sessionIdentity.key ?? sessionIdentity.user }) }));
+const sessionIdentity = vi.hoisted(() => ({ user: null as { id: string; email: string; preferred_currency?: string } | null, key: undefined as object | undefined, status: undefined as "loading" | "authenticated" | undefined }));
+vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: sessionIdentity.user, sessionIdentity: sessionIdentity.key ?? sessionIdentity.user, status: sessionIdentity.status }) }));
 
 const snapshot = {
   encryption_source: "SETTINGS_ENCRYPTION_KEY",
@@ -408,10 +408,75 @@ afterEach(() => {
   vi.restoreAllMocks();
   sessionIdentity.user = null;
   sessionIdentity.key = undefined;
+  sessionIdentity.status = undefined;
   window.history.replaceState(null, "", "/");
 });
 
 describe("AdminSettingsPanel", () => {
+  it("waits for a session-bound settings snapshot before accepting the first budget edit", async () => {
+    sessionIdentity.status = "loading";
+    const data = { ...snapshot, providers: [{ ...geminiProvider, config: { ...geminiProvider.config, catalog_review_max_calls: 80 } }] };
+    let resolveSessionSnapshot!: (value: Response) => void;
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify(data), { status: 200 }))
+      .mockImplementationOnce(() => new Promise<Response>((resolve) => { resolveSessionSnapshot = resolve; }))
+      .mockResolvedValueOnce(new Response(JSON.stringify(data), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    const view = render(<AdminSettingsPanel provider="gemini_guides" field="catalog_review_max_calls" />);
+    await act(async () => {});
+    expect(screen.queryByRole("spinbutton", { name: /目錄審核每個工作累計呼叫上限/ })).toBeNull();
+    sessionIdentity.status = "authenticated";
+    sessionIdentity.user = { id: "settled-admin", email: "admin@example.test" };
+    view.rerender(<AdminSettingsPanel provider="gemini_guides" field="catalog_review_max_calls" />);
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    // An authenticated header is insufficient while the old, unbound snapshot
+    // is still present. Its replacement would otherwise erase the first edit.
+    expect(screen.queryByRole("spinbutton", { name: /目錄審核每個工作累計呼叫上限/ })).toBeNull();
+    await act(async () => { resolveSessionSnapshot(new Response(JSON.stringify(data), { status: 200 })); });
+    const input = await screen.findByRole("spinbutton", { name: /目錄審核每個工作累計呼叫上限/ });
+    fireEvent.change(input, { target: { value: "160" } });
+    expect((input as HTMLInputElement).value).toBe("160");
+    const save = screen.getByRole("button", { name: "儲存設定" });
+    expect((save as HTMLButtonElement).disabled).toBe(false);
+    fireEvent.click(save);
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(3));
+    expect(JSON.parse(String(fetchMock.mock.calls[2][1]!.body)).config).toEqual({ catalog_review_max_calls: 160 });
+  });
+
+  it("deep-links to the single bounded catalog budget editor and saves only its changed value", async () => {
+    const provider = { ...geminiProvider, updated_at: "2026-09-09T08:00:00Z", config: { ...geminiProvider.config, catalog_review_max_calls: 80, hotspot_guide_gemini_daily_search_budget: 300 } };
+    const initial = { ...snapshot, providers: [provider] };
+    const saved = { ...initial, providers: [{ ...provider, config: { ...provider.config, catalog_review_max_calls: 200 } }] };
+    const fetchMock = vi.fn().mockResolvedValueOnce(new Response(JSON.stringify(initial), { status: 200 })).mockResolvedValueOnce(new Response(JSON.stringify(saved), { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminSettingsPanel provider="gemini_guides" field="catalog_review_max_calls" />);
+    const input = await screen.findByRole("spinbutton", { name: /目錄審核每個工作累計呼叫上限/ });
+    expect((input as HTMLInputElement).value).toBe("80");
+    expect(input.getAttribute("min")).toBe("1");
+    expect(input.getAttribute("max")).toBe("1000");
+    expect(input.getAttribute("step")).toBe("1");
+    expect(document.getElementById(input.getAttribute("aria-describedby")!)?.textContent).toContain("不是 Gemini 專案配額");
+    expect(screen.getByText(/儲存只影響新工作，不會自動續跑/)).toBeTruthy();
+    fireEvent.change(input, { target: { value: "200" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(fetchMock.mock.calls[1][0]).toBe("/api/travel/admin/provider-settings/gemini_guides");
+    expect(savedBody(fetchMock)).toEqual({ config: { catalog_review_max_calls: 200 }, secrets: {}, expected_updated_at: "2026-09-09T08:00:00Z" });
+    expect((screen.getByRole("spinbutton", { name: /^每日搜尋上限/ }) as HTMLInputElement).value).toBe("300");
+  });
+
+  it.each(["", "0", "1001", "1.5"])("refuses invalid catalog budget %s without writing or dropping the draft", async (value) => {
+    const fetchMock = stubAiFetch({ ...snapshot, providers: [{ ...geminiProvider, config: { ...geminiProvider.config, catalog_review_max_calls: 80 } }] });
+    render(<AdminSettingsPanel provider="gemini_guides" field="catalog_review_max_calls" />);
+    const input = await screen.findByRole("spinbutton", { name: /目錄審核每個工作累計呼叫上限/ });
+    fireEvent.change(input, { target: { value } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    expect(await screen.findByText("每個工作呼叫上限必須是 1–1000 的整數。")).toBeTruthy();
+    expect(input.getAttribute("aria-invalid")).toBe("true");
+    expect((input as HTMLInputElement).value).toBe(value);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
   it("saves a direct Klook affiliate ID as text without requiring or calling a pricing API", async () => {
     const data = { ...snapshot, providers: [{ provider: "klook", label: "Klook", description: "Affiliate links", enabled: true,
       configured: true, status: "ready", status_message: "Affiliate links ready", config: { klook_affiliate_id: "12345" },

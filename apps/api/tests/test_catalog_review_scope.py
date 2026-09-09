@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 from collections.abc import AsyncIterator
+from copy import deepcopy
 from datetime import UTC, datetime, timedelta
 from typing import Any
 from unittest.mock import AsyncMock
@@ -25,6 +26,7 @@ from app.catalog_review.schemas import AssessmentBatch, DiscoveryBatch, ReviewAs
 from app.catalog_review.scope import SCOPE_KINDS, CatalogScope, request_scope, scope_counts
 from app.catalog_review.service import (
     ApplyRequest,
+    ResumeRequest,
     StartRequest,
     apply_decisions,
     create_run,
@@ -37,6 +39,7 @@ from app.catalog_review.service import (
 from app.config import Settings
 from app.db import get_session
 from app.models import (
+    AdminAuditLog,
     Base,
     CatalogReviewItem,
     CatalogReviewRun,
@@ -256,6 +259,330 @@ async def test_same_scope_prior_review_and_legacy_idempotency(
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("configured_limit", [1, 160, 1000])
+async def test_omitted_budget_snapshots_runtime_setting_and_replay_ignores_later_setting_changes(
+    catalog: tuple[AsyncSession, User], configured_limit: int
+) -> None:
+    session, user = catalog
+    payload = StartRequest(mode="review_pending", scope="hotspots")
+    settings = configured().model_copy(update={"catalog_review_max_calls": configured_limit})
+    key = uuid4().hex
+    run, created = await create_run(session, settings, user.id, payload, key)
+    assert created and run.request_json["max_calls"] == configured_limit
+    assert run.request_hash == fingerprint(
+        {**payload.model_dump(mode="json"), "max_calls_source": "configured_default"}
+    )
+    assert run.request_json["max_calls_source"] == "configured_default"
+    original_items = [row.id for row in await run_items(session, run.id)]
+    audit = await session.scalar(
+        select(AdminAuditLog).where(
+            AdminAuditLog.target == f"catalog-review:{run.id}",
+            AdminAuditLog.action == "catalog_review_requested",
+        )
+    )
+    assert audit.metadata_json["max_calls"] == configured_limit
+    settings.catalog_review_max_calls = 30
+    replay, created = await create_run(session, settings, user.id, payload, key)
+    assert not created and replay.id == run.id
+    assert replay.request_json["max_calls"] == configured_limit
+    assert [row.id for row in await run_items(session, run.id)] == original_items
+    view = await overview(session, settings, "hotspots")
+    assert view["run_call_limit"] == 30
+    assert view["runs"][0]["max_calls"] == configured_limit
+    assert not view["runs"][0]["can_extend_budget"]  # Queued work is never silently raised.
+
+
+@pytest.mark.asyncio
+async def test_explicit_start_budget_cannot_exceed_runtime_setting_but_lower_cap_is_preserved(
+    catalog: tuple[AsyncSession, User],
+) -> None:
+    session, user = catalog
+    settings = configured().model_copy(update={"catalog_review_max_calls": 160})
+    with pytest.raises(AppError) as blocked:
+        await create_run(
+            session,
+            settings,
+            user.id,
+            StartRequest(mode="review_pending", max_calls=161),
+            uuid4().hex,
+        )
+    assert blocked.value.status == 422
+    assert blocked.value.code == "validation_error"
+    assert not (await session.scalars(select(CatalogReviewRun))).all()
+    payload = StartRequest(mode="review_pending", max_calls=120)
+    key = uuid4().hex
+    run, created = await create_run(session, settings, user.id, payload, key)
+    assert created and run.request_json["max_calls"] == 120
+    settings.catalog_review_max_calls = 80
+    replay, created = await create_run(session, settings, user.id, payload, key)
+    assert not created and replay.id == run.id and replay.request_json["max_calls"] == 120
+    with pytest.raises(AppError) as conflict:
+        await create_run(
+            session, settings, user.id, StartRequest(mode="review_pending", max_calls=80), key
+        )
+    assert conflict.value.code == "idempotency_conflict"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("first_explicit", [False, True])
+async def test_default_and_explicit_80_budget_are_distinct_idempotent_requests(
+    catalog: tuple[AsyncSession, User], first_explicit: bool
+) -> None:
+    session, user = catalog
+    omitted = StartRequest(mode="review_pending", scope="hotspots")
+    explicit = StartRequest(mode="review_pending", scope="hotspots", max_calls=80)
+    original, mixed = (explicit, omitted) if first_explicit else (omitted, explicit)
+    settings = configured().model_copy(update={"catalog_review_max_calls": 160})
+    key = uuid4().hex
+    run, created = await create_run(session, settings, user.id, original, key)
+    assert created and run.request_json["max_calls"] == (80 if first_explicit else 160)
+    source = "explicit" if first_explicit else "configured_default"
+    assert run.request_json["max_calls_source"] == source
+    assert run.request_hash == fingerprint(
+        {**original.model_dump(mode="json"), "max_calls_source": source}
+    )
+    with pytest.raises(AppError) as conflict:
+        await create_run(session, settings, user.id, mixed, key)
+    assert conflict.value.status == 409 and conflict.value.code == "idempotency_conflict"
+    settings.catalog_review_max_calls = 120
+    replay, created = await create_run(session, settings, user.id, original, key)
+    assert not created and replay.id == run.id
+    assert replay.request_json["max_calls"] == (80 if first_explicit else 160)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("scope", ["all", "hotspots", "foods"])
+async def test_legacy_scoped_hashes_replay_without_rewriting_the_saved_budget(
+    catalog: tuple[AsyncSession, User], scope: CatalogScope
+) -> None:
+    session, user = catalog
+    payload = StartRequest(mode="review_pending", scope=scope)
+    legacy = payload.model_dump(mode="json")
+    old = CatalogReviewRun(
+        id=uuid4(),
+        actor_user_id=user.id,
+        idempotency_key="scoped-legacy-budget",
+        request_hash=fingerprint(legacy),
+        request_json=deepcopy(legacy),
+        mode="review_pending",
+        phase="review_pending",
+        status="partial",
+        version=4,
+        model="fixture",
+        result_json={},
+        usage_json={"calls": 80},
+    )
+    session.add(old)
+    await session.commit()
+    settings = configured().model_copy(update={"catalog_review_max_calls": 160})
+    for retry in [payload, StartRequest(mode="review_pending", scope=scope, max_calls=80)]:
+        replay, created = await create_run(
+            session, settings, user.id, retry, "scoped-legacy-budget"
+        )
+        assert not created and replay.id == old.id
+        assert replay.request_json == legacy and replay.request_hash == fingerprint(legacy)
+        assert replay.usage_json == {"calls": 80}
+
+
+@pytest.mark.asyncio
+async def test_explicit_budget_extension_preserves_progress_hash_and_audits_cumulative_calls(
+    catalog: tuple[AsyncSession, User],
+) -> None:
+    session, user = catalog
+    payload = StartRequest(mode="review_pending", scope="foods")
+    key = uuid4().hex
+    run, _ = await create_run(session, configured(), user.id, payload, key)
+    rows = await run_items(session, run.id)
+    reviewed, failed = rows
+    reviewed.status = "assessed"
+    reviewed.decision = "needs_review"
+    reviewed.assessment_json = {"confidence": 0.5, "reason": "Keep independent review gates"}
+    failed.status = "error"
+    failed.assessment_json = {"code": "catalog_response_truncated"}
+    failed.evidence_json = [{"url": "https://www.wikidata.org/wiki/Q123", "trusted": True}]
+    run.status = "partial"
+    run.error_code = "catalog_review_call_limit"
+    run.usage_json = {
+        "calls": 80,
+        "input_tokens": 1200,
+        "thought_tokens": 240,
+        "member_charged": False,
+    }
+    run.result_json = {"apply_receipts": {"saved": {"updated": 0}}}
+    await session.commit()
+    original = deepcopy((run.request_hash, run.usage_json, run.result_json))
+    snapshots = {row.id: (row.snapshot_hash, deepcopy(row.snapshot_json)) for row in rows}
+    reviewed_before = deepcopy((reviewed.status, reviewed.decision, reviewed.assessment_json))
+    version = run.version
+    settings = configured().model_copy(update={"catalog_review_max_calls": 160})
+    view = await overview(session, settings, "foods")
+    assert view["runs"][0]["can_extend_budget"] and not view["runs"][0]["can_resume"]
+    with pytest.raises(AppError) as bodyless:
+        await prepare_resume(session, run.id, user.id, scope="foods", settings=settings)
+    assert bodyless.value.code == "catalog_run_not_resumable"
+    resumed = await prepare_resume(
+        session,
+        run.id,
+        user.id,
+        scope="foods",
+        settings=settings,
+        payload=ResumeRequest(expected_version=version, max_calls=160),
+    )
+    assert resumed.id == run.id and run.status == "queued" and run.version == version + 1
+    assert run.request_json["max_calls"] == 160
+    assert (run.request_hash, run.usage_json, run.result_json) == original
+    assert {row.id: (row.snapshot_hash, row.snapshot_json) for row in rows} == snapshots
+    assert (reviewed.status, reviewed.decision, reviewed.assessment_json) == reviewed_before
+    assert failed.status == "pending" and failed.assessment_json == {}
+    assert failed.evidence_json == [{"url": "https://www.wikidata.org/wiki/Q123", "trusted": True}]
+    audit = await session.scalar(
+        select(AdminAuditLog).where(
+            AdminAuditLog.target == f"catalog-review:{run.id}",
+            AdminAuditLog.action == "catalog_review_resumed",
+        )
+    )
+    assert audit.metadata_json == {
+        "retried_items": 1,
+        "legacy_missing_items": 0,
+        "stale_items": 0,
+        "previous_max_calls": 80,
+        "max_calls": 160,
+        "calls": 80,
+    }
+    replay, created = await create_run(session, settings, user.id, payload, key)
+    assert not created and replay.id == run.id and replay.request_json["max_calls"] == 160
+    with pytest.raises(AppError) as retry:
+        await prepare_resume(
+            session,
+            run.id,
+            user.id,
+            settings=settings,
+            payload=ResumeRequest(expected_version=version, max_calls=160),
+        )
+    assert retry.value.code == "catalog_version_conflict"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "status,used_calls,maximum,config_limit,version_delta,expected_code",
+    [
+        ("partial", 80, 160, 120, 0, "validation_error"),
+        ("partial", 80, 80, 160, 0, "catalog_run_not_resumable"),
+        ("partial", 120, 100, 160, 0, "catalog_run_not_resumable"),
+        ("partial", 80, 160, 160, -1, "catalog_version_conflict"),
+        ("queued", 80, 160, 160, 0, "catalog_run_not_resumable"),
+        ("running", 80, 160, 160, 0, "catalog_run_not_resumable"),
+        ("completed", 80, 160, 160, 0, "catalog_run_not_resumable"),
+        ("cancelled", 80, 160, 160, 0, "catalog_run_not_resumable"),
+    ],
+)
+async def test_budget_extension_rejections_do_not_modify_saved_run(
+    catalog: tuple[AsyncSession, User],
+    status: str,
+    used_calls: int,
+    maximum: int,
+    config_limit: int,
+    version_delta: int,
+    expected_code: str,
+) -> None:
+    session, user = catalog
+    run = await start(session, user, "hotspots")
+    run.status = status
+    run.version = 4
+    run.usage_json = {"calls": used_calls}
+    run.lease_until = datetime.now(UTC) + timedelta(minutes=1)
+    await session.commit()
+    original = deepcopy((run.request_json, run.usage_json, run.status, run.version))
+    settings = configured().model_copy(update={"catalog_review_max_calls": config_limit})
+    with pytest.raises(AppError) as blocked:
+        await prepare_resume(
+            session,
+            run.id,
+            user.id,
+            scope="hotspots",
+            settings=settings,
+            payload=ResumeRequest(expected_version=run.version + version_delta, max_calls=maximum),
+        )
+    assert blocked.value.code == expected_code
+    assert (run.request_json, run.usage_json, run.status, run.version) == original
+    assert not (
+        await session.scalars(
+            select(AdminAuditLog).where(AdminAuditLog.action == "catalog_review_resumed")
+        )
+    ).all()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("status", ["running", "queued"])
+async def test_expired_lease_with_exhausted_cap_can_explicitly_extend_without_resetting_usage(
+    catalog: tuple[AsyncSession, User], status: str
+) -> None:
+    session, user = catalog
+    run = await start(session, user, "hotspots")
+    run.status = status
+    run.usage_json = {"calls": 80, "input_tokens": 1234, "member_charged": False}
+    run.lease_token = "expired-worker"
+    run.lease_until = datetime.now(UTC) - timedelta(minutes=1)
+    await session.commit()
+    original_usage = deepcopy(run.usage_json)
+    original_hash = run.request_hash
+    settings = configured().model_copy(update={"catalog_review_max_calls": 160})
+    view = await run_view(session, run, settings=settings)
+    assert view["can_extend_budget"] and not view["can_resume"]
+    resumed = await prepare_resume(
+        session,
+        run.id,
+        user.id,
+        scope="hotspots",
+        settings=settings,
+        payload=ResumeRequest(expected_version=run.version, max_calls=160),
+    )
+    assert resumed.status == "queued" and resumed.request_json["max_calls"] == 160
+    assert resumed.usage_json == original_usage and resumed.request_hash == original_hash
+    assert resumed.lease_token is None and resumed.lease_until is None
+
+
+@pytest.mark.asyncio
+async def test_budget_extension_preserves_cross_scope_single_active_run_lock(
+    catalog: tuple[AsyncSession, User],
+) -> None:
+    session, user = catalog
+    run = await start(session, user, "hotspots")
+    run.status = "partial"
+    run.usage_json = {"calls": 80}
+    await session.commit()
+    other = await start(session, user, "foods")
+    settings = configured().model_copy(update={"catalog_review_max_calls": 160})
+    with pytest.raises(AppError) as blocked:
+        await prepare_resume(
+            session,
+            run.id,
+            user.id,
+            settings=settings,
+            payload=ResumeRequest(expected_version=run.version, max_calls=160),
+        )
+    assert blocked.value.code == "catalog_run_in_progress"
+    assert run.status == "partial" and run.request_json["max_calls"] == 80
+    assert run.usage_json == {"calls": 80}
+    assert other.status == "queued"
+
+
+@pytest.mark.asyncio
+async def test_bodyless_resume_keeps_previously_approved_cap_when_settings_are_lowered(
+    catalog: tuple[AsyncSession, User],
+) -> None:
+    session, user = catalog
+    run = await start(session, user, "hotspots")
+    run.status = "partial"
+    run.usage_json = {"calls": 40}
+    await session.commit()
+    settings = configured().model_copy(update={"catalog_review_max_calls": 20})
+    resumed = await prepare_resume(session, run.id, user.id, settings=settings)
+    assert resumed.status == "queued" and resumed.request_json["max_calls"] == 80
+    assert resumed.usage_json == {"calls": 40}
+
+
+@pytest.mark.asyncio
 async def test_scope_mismatch_cannot_read_resume_or_apply_and_legacy_can_resume(
     catalog: tuple[AsyncSession, User],
 ) -> None:
@@ -411,3 +738,66 @@ async def test_http_scope_boundaries_and_foreign_item_pagination(
         result = await client.post(f"/admin/catalog-review/runs/{run.id}/resume?scope=hotspots")
         assert result.status_code == 409
         assert not routes.enqueue_saved_run.called
+
+
+@pytest.mark.asyncio
+async def test_http_budget_extension_is_explicit_scoped_versioned_and_admin_only(
+    catalog: tuple[AsyncSession, User], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    import app.catalog_review.router as routes
+
+    session, user = catalog
+    run = await start(session, user, "hotspots")
+    run.status = "partial"
+    run.version = 4
+    run.usage_json = {"calls": 80, "member_charged": False}
+    await session.commit()
+    settings = configured().model_copy(update={"catalog_review_max_calls": 160})
+    app = FastAPI()
+    app.include_router(router)
+    app.add_exception_handler(AppError, app_error_handler)
+    app.dependency_overrides[current_user] = lambda: user
+
+    async def database() -> AsyncIterator[AsyncSession]:
+        yield session
+
+    app.dependency_overrides[get_session] = database
+    monkeypatch.setattr(routes, "load_runtime_settings", AsyncMock(return_value=settings))
+    monkeypatch.setattr(routes, "enforce_named_rate_limit", AsyncMock())
+    monkeypatch.setattr(routes, "enqueue_saved_run", AsyncMock())
+    url = f"/admin/catalog-review/runs/{run.id}/resume?scope=hotspots"
+    body = {"expected_version": 4, "max_calls": 160}
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        overview_response = await client.get("/admin/catalog-review?scope=hotspots")
+        assert overview_response.json()["run_call_limit"] == 160
+        view = await client.get(f"/admin/catalog-review/runs/{run.id}?scope=hotspots")
+        assert view.json()["max_calls"] == 80 and view.json()["can_extend_budget"]
+        user.is_admin = False
+        forbidden = await client.post(url, json=body)
+        assert forbidden.status_code == 403
+        user.is_admin = True
+        for invalid in [
+            {**body, "max_calls": True},
+            {**body, "max_calls": 1001},
+            {**body, "expected_version": "4"},
+            {**body, "calls": 0},
+        ]:
+            assert (await client.post(url, json=invalid)).status_code == 422
+        foreign = await client.post(url.replace("hotspots", "foods"), json=body)
+        assert foreign.status_code == 409 and foreign.json()["code"] == "catalog_scope_mismatch"
+        bodyless = await client.post(url)
+        assert bodyless.status_code == 409
+        assert bodyless.json()["code"] == "catalog_run_not_resumable"
+        routes.enqueue_saved_run.assert_not_awaited()
+        assert run.usage_json["calls"] == 80 and run.request_json["max_calls"] == 80
+        response = await client.post(url, json=body)
+        assert response.status_code == 202
+        assert response.json()["max_calls"] == 160
+        assert response.json()["usage"]["calls"] == 80
+        assert response.json()["status"] == "queued" and response.json()["version"] == 5
+        assert not response.json()["can_extend_budget"]
+        routes.enqueue_saved_run.assert_awaited_once_with(session, run)
+        duplicate = await client.post(url, json=body)
+        assert duplicate.status_code == 409
+        assert duplicate.json()["code"] == "catalog_version_conflict"
+        assert routes.enqueue_saved_run.await_count == 1
