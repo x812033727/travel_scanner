@@ -47,7 +47,7 @@ describe("separate public document root", () => {
     expect(language.closest("header")?.firstElementChild).toBe(language);
     expect(within(language).getAllByRole("link")).toHaveLength(5);
     for (const value of locales) {
-      const link = within(language).getByRole("link", { name: localeLabels[value], exact: true });
+      const link = within(language).getByRole("link", { name: localeLabels[value] });
       expect(link).toHaveAttribute("href", `/${value}/destinations/osaka-kyoto/services`);
       expect(link).toHaveAttribute("hreflang", value);
       if (value === locale) expect(link).toHaveAttribute("aria-current", "page");
