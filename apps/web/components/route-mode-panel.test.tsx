@@ -50,6 +50,106 @@ function ok(payload: unknown) {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("route mode panel", () => {
+  it("keeps initial mode, tab and buffer choices local until an explicit query", async () => {
+    const requests: Array<Record<string, unknown>> = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string, init?: RequestInit) => {
+      if (url.endsWith("/runtime/public-config")) return ok({ google_maps_embed_enabled: false });
+      requests.push(JSON.parse(String(init?.body)));
+      return ok({ preview_id: "explicit", expires_at: "2100-01-01T00:00:00Z", segment: { ...initialSegment, travel_mode: "walk", buffer_minutes: 15 }, schedule_impact: { affected_items: [], conflicts: [] } });
+    }));
+    render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialTravelMode="drive" initialBufferMinutes={30} onApplied={() => undefined} onError={() => undefined} />);
+    expect(screen.getByRole("tab", { name: "汽車" }).getAttribute("aria-selected")).toBe("true");
+    fireEvent.click(screen.getByRole("tab", { name: "步行" }));
+    fireEvent.click(screen.getByText("進階路線設定"));
+    const buffer = await screen.findByRole("combobox");
+    expect((buffer as HTMLSelectElement).value).toBe("30");
+    fireEvent.change(buffer, { target: { value: "15" } });
+    expect(requests).toHaveLength(0);
+    const queryButton = screen.getByRole("button", { name: "查詢交通方案" });
+    fireEvent.click(queryButton);
+    fireEvent.click(queryButton);
+    await screen.findByRole("button", { name: "套用此路線" });
+    expect(requests).toHaveLength(1);
+    expect(requests[0]).toMatchObject({ version: 3, travel_mode: "walk", buffer_minutes: 15 });
+  });
+
+  it("never applies a preview from a different buffer or trip version", async () => {
+    let queries = 0;
+    const applyBodies: Array<Record<string, unknown>> = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string, init?: RequestInit) => {
+      if (url.endsWith("/runtime/public-config")) return ok({ google_maps_embed_enabled: false });
+      const body = JSON.parse(String(init?.body));
+      if (url.endsWith("/routes/preview")) {
+        queries += 1;
+        return ok({ preview_id: `preview-${queries}`, expires_at: "2100-01-01T00:00:00Z", segment: { ...initialSegment, buffer_minutes: body.buffer_minutes }, schedule_impact: { affected_items: [], conflicts: [] } });
+      }
+      applyBodies.push(body);
+      return ok({ ...trip, version: 4 });
+    }));
+    render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" onApplied={() => undefined} onError={() => undefined} />);
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    await screen.findByRole("button", { name: "套用此路線" });
+    fireEvent.click(screen.getByText("進階路線設定"));
+    fireEvent.change(await screen.findByRole("combobox"), { target: { value: "15" } });
+    expect(screen.queryByRole("button", { name: "套用此路線" })).toBeNull();
+    expect(screen.getByRole("status").textContent).toContain("設定已變更");
+    expect(queries).toBe(1);
+    expect(applyBodies).toHaveLength(0);
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    fireEvent.click(await screen.findByRole("button", { name: "套用此路線" }));
+    await waitFor(() => expect(applyBodies).toHaveLength(1));
+    expect(applyBodies[0]).toMatchObject({ source: "provider", preview_id: "preview-2" });
+  });
+
+  it("discards an old in-flight preview after the trip version changes", async () => {
+    let finish!: (response: Response) => void;
+    const onBusy = vi.fn();
+    const fetchMock = vi.fn((url: string) => url.endsWith("/runtime/public-config")
+      ? Promise.resolve(ok({ google_maps_embed_enabled: false }))
+      : new Promise<Response>((resolve) => { finish = resolve; }));
+    vi.stubGlobal("fetch", fetchMock);
+    const props = { trip, items, fromItemId: "from", toItemId: "to", onApplied: vi.fn(), onError: vi.fn(), onBusy };
+    const view = render(<RouteModePanel {...props} />);
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    view.rerender(<RouteModePanel {...props} trip={{ ...trip, version: 4 }} />);
+    finish(ok({ preview_id: "old", expires_at: "2100-01-01T00:00:00Z", segment: initialSegment, schedule_impact: { affected_items: [], conflicts: [] } }));
+    await waitFor(() => expect(onBusy).toHaveBeenLastCalledWith(false));
+    expect(screen.queryByRole("button", { name: "套用此路線" })).toBeNull();
+    expect(props.onApplied).not.toHaveBeenCalled();
+  });
+
+  it("does not replace newer parent state with an old apply response", async () => {
+    let finish!: (response: Response) => void;
+    const applied = vi.fn();
+    const onBusy = vi.fn();
+    vi.stubGlobal("fetch", vi.fn((url: string) => {
+      if (url.endsWith("/runtime/public-config")) return Promise.resolve(ok({ google_maps_embed_enabled: false }));
+      if (url.endsWith("/routes/preview")) return Promise.resolve(ok({ preview_id: "one", expires_at: "2100-01-01T00:00:00Z", segment: initialSegment, schedule_impact: { affected_items: [], conflicts: [] } }));
+      return new Promise<Response>((resolve) => { finish = resolve; });
+    }));
+    const props = { trip, items, fromItemId: "from", toItemId: "to", onApplied: applied, onError: vi.fn(), onBusy };
+    const view = render(<RouteModePanel {...props} />);
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    fireEvent.click(await screen.findByRole("button", { name: "套用此路線" }));
+    view.rerender(<RouteModePanel {...props} trip={{ ...trip, version: 5 }} />);
+    finish(ok({ ...trip, version: 4 }));
+    await waitFor(() => expect(onBusy).toHaveBeenLastCalledWith(false));
+    expect(applied).not.toHaveBeenCalled();
+  });
+
+  it("requires another explicit query after a preview expires", async () => {
+    const applyCalls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string) => {
+      if (url.endsWith("/runtime/public-config")) return ok({ google_maps_embed_enabled: false });
+      if (url.endsWith("/routes/apply")) applyCalls.push(url);
+      return ok({ preview_id: "expired", expires_at: "2000-01-01T00:00:00Z", segment: initialSegment, schedule_impact: { affected_items: [], conflicts: [] } });
+    }));
+    render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" onApplied={() => undefined} onError={() => undefined} />);
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
+    fireEvent.click(await screen.findByRole("button", { name: "套用此路線" }));
+    expect(screen.getByRole("alert").textContent).toContain("重新查詢");
+    expect(applyCalls).toHaveLength(0);
+  });
   it("shows an app-style map, named endpoints and verified transit steps", async () => {
     const detailedSegment = {
       ...initialSegment,
@@ -123,7 +223,7 @@ describe("route mode panel", () => {
     expect(navigation.getAttribute("href")).toContain("travelmode=transit");
   });
 
-  it("auto-previews the default mode when no route has been applied", async () => {
+  it("waits for explicit confirmation before previewing an unapplied route", async () => {
     const noRouteTrip = {
       ...trip,
       route_segments: [],
@@ -135,7 +235,7 @@ describe("route mode panel", () => {
       }
       return ok({
         preview_id: "preview-default",
-        expires_at: "2026-09-01T00:15:00Z",
+        expires_at: "2100-09-01T00:15:00Z",
         segment: initialSegment,
         schedule_impact: { affected_items: [], conflicts: [] },
       });
@@ -143,6 +243,8 @@ describe("route mode panel", () => {
     vi.stubGlobal("fetch", fetchMock);
 
     render(<RouteModePanel trip={noRouteTrip} items={items} fromItemId="from" toItemId="to" onApplied={() => undefined} onError={() => undefined} />);
+    expect(screen.queryByRole("button", { name: "套用此路線" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
 
     expect((await screen.findByRole("button", { name: "套用此路線" }) as HTMLButtonElement).disabled).toBe(false);
     expect(screen.queryByText("目前已套用")).toBeNull();
@@ -166,6 +268,8 @@ describe("route mode panel", () => {
     }));
 
     render(<RouteModePanel trip={noRouteTrip} items={items} fromItemId="from" toItemId="to" onApplied={() => undefined} onError={() => undefined} />);
+    expect(screen.queryByRole("button", { name: "套用此路線" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
 
     expect(await screen.findByText("路線暫時無法取得")).toBeTruthy();
     expect(screen.queryByText("正在取得路線")).toBeNull();
@@ -202,6 +306,7 @@ describe("route mode panel", () => {
     vi.stubGlobal("fetch", fetchMock);
 
     render(<RouteModePanel trip={koreanTrip} items={items} fromItemId="from" toItemId="to" onApplied={() => undefined} onError={() => undefined} />);
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
 
     const externalLink = await screen.findByRole("link", { name: /用 NAVER Maps 規劃/ });
     expect(externalLink.getAttribute("href")).toContain("https://map.naver.com/");
@@ -240,6 +345,8 @@ describe("route mode panel", () => {
     vi.stubGlobal("fetch", fetchMock);
 
     render(<RouteModePanel trip={noRouteTrip} items={items} fromItemId="from" toItemId="to" onApplied={() => undefined} onError={() => undefined} />);
+    expect(screen.queryByRole("button", { name: "套用此路線" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
 
     const externalLink = await screen.findByRole("link", { name: /用 Google Maps 規劃/ });
     expect(externalLink.getAttribute("href")).toContain("origin_place_id=from");
@@ -248,7 +355,7 @@ describe("route mode panel", () => {
     expect((screen.getByRole("button", { name: "外部導航，無法套用" }) as HTMLButtonElement).disabled).toBe(true);
   });
 
-  it("resolves missing endpoints and opens the correct item editor when unresolved", async () => {
+  it("opens the missing endpoint editor without automatic location matching or route queries", async () => {
     const missingItems = items.map((item) => ({
       ...item,
       latitude: undefined,
@@ -270,7 +377,7 @@ describe("route mode panel", () => {
 
     render(<RouteModePanel trip={noRouteTrip} items={missingItems} fromItemId="from" toItemId="to" onApplied={() => undefined} onEditItem={onEditItem} onError={() => undefined} />);
 
-    fireEvent.click(await screen.findByRole("button", { name: "補上地點" }));
+    fireEvent.click(screen.getAllByRole("button", { name: "補上地點" })[0]);
     expect(onEditItem).toHaveBeenCalledWith("from");
     expect(screen.queryByText("目前已套用")).toBeNull();
   });
@@ -282,7 +389,7 @@ describe("route mode panel", () => {
     const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
       if (url.endsWith("/routes/preview")) {
         previewBody = JSON.parse(String(init?.body));
-        return ok({ preview_id: "preview-1", expires_at: "2026-09-01T00:15:00Z", segment: walking, schedule_impact: { affected_items: [], conflicts: [] } });
+        return ok({ preview_id: "preview-1", expires_at: "2100-09-01T00:15:00Z", segment: walking, schedule_impact: { affected_items: [], conflicts: [] } });
       }
       applyBody = JSON.parse(String(init?.body));
       return ok({ ...trip, version: 4, route_segments: [walking] });
@@ -292,6 +399,7 @@ describe("route mode panel", () => {
     render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={initialSegment} onApplied={applied} onError={() => undefined} />);
 
     fireEvent.click(screen.getByRole("tab", { name: "步行" }));
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
     expect(await screen.findAllByText("步行 · 31 分鐘")).not.toHaveLength(0);
     expect(previewBody).toMatchObject({ version: 3, travel_mode: "walk", buffer_minutes: 10, include_alternatives: true, max_options: 3 });
     fireEvent.click(screen.getByRole("button", { name: "套用此路線" }));
@@ -306,7 +414,7 @@ describe("route mode panel", () => {
       preview_id: `preview-${index + 1}`,
       rank: index + 1,
       provider_route_key: `route-${index + 1}`,
-      expires_at: "2026-09-01T00:15:00Z",
+      expires_at: "2100-09-01T00:15:00Z",
       segment: {
         ...initialSegment,
         travel_mode: "walk" as const,
@@ -340,6 +448,7 @@ describe("route mode panel", () => {
 
     render(<RouteModePanel trip={trip} items={items} fromItemId="from" toItemId="to" initialSegment={initialSegment} onApplied={() => undefined} onError={() => undefined} />);
     fireEvent.click(screen.getByRole("tab", { name: "步行" }));
+    fireEvent.click(screen.getByRole("button", { name: "查詢交通方案" }));
     const secondOption = await screen.findByRole("option", { name: /方案 2/ });
     const firstOption = screen.getByRole("option", { name: /方案 1/ });
     firstOption.focus();

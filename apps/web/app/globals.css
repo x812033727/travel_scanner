@@ -1,5 +1,47 @@
 @import "tailwindcss";
 
+/* The calm planner keeps route details and editing tools out of the reading path. */
+.calm-planner .calm-day-panel { max-width:56rem; margin-inline:auto; }
+.calm-planner .calm-day-heading { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.5rem; }
+.calm-planner .calm-day-heading .planner-secondary-button { min-height:44px; }
+.calm-planner .premium-day-utilities { margin-bottom:.75rem; }
+.calm-planner .calm-timeline-row { margin-bottom:.25rem; }
+.calm-planner .calm-stop-card { border-radius:1.15rem; box-shadow:0 3px 14px color-mix(in srgb,var(--ink) 3%,transparent); }
+.calm-planner .calm-connection { padding:.15rem 0 .15rem .5rem; }
+.calm-optional-arrangements { margin-top:1rem; padding:.25rem 1rem; border:1px solid var(--line); border-radius:1rem; background:var(--paper); }
+.calm-optional-arrangements > summary { display:flex; align-items:center; gap:.5rem; min-height:48px; cursor:pointer; font-size:.8rem; font-weight:650; }
+.calm-optional-arrangements[open] { padding-bottom:1rem; }
+.calm-optional-entry { display:flex; align-items:center; gap:.65rem; width:100%; min-height:44px; padding:.6rem .75rem; border:1px solid var(--line); border-radius:.8rem; text-align:left; font-size:.8rem; font-weight:600; background:var(--surface); }
+.calm-optional-entry:hover { border-color:var(--teal); }
+.calm-planner .calm-day-review { border-top:1px solid var(--line); margin-top:1rem; }
+.calm-planner .route-day-settings { flex-wrap:wrap; }
+.calm-planner .route-day-settings .premium-primary-button { min-height:44px; }
+.itinerary-picker-actions-sticky { position:sticky; top:0; z-index:10; padding-block:.5rem; background:var(--surface); }
+.calm-preferences-actions { position:sticky; bottom:0; padding-block:.75rem; border-top:1px solid var(--line); background:var(--surface); }
+.calm-note-actions button { min-height:44px; }
+.calm-new-trip-name > summary, .calm-new-trip-travelers > summary { min-height:44px; cursor:pointer; }
+.calm-new-trip-footer { background:var(--surface); }
+.planner-overlay-contextual .premium-assistant-tabs { grid-template-columns:repeat(3,minmax(0,1fr)); }
+@media (max-width:767px) {
+  .calm-planner .calm-day-panel { padding-top:.5rem; }
+  .calm-planner .calm-stop-card { padding:.85rem; }
+  .calm-planner .planner-day-chip { min-height:52px; }
+}
+@media (max-width:1023px) {
+  /* Creation is a focused flow, like the editor: its own action bar replaces
+     the global tab bar without changing navigation on other pages. */
+  .public-app-shell:has(.premium-new-trip) + .app-bottom-nav { display:none; }
+  .public-app-shell .premium-new-trip { padding-bottom:calc(11rem + env(safe-area-inset-bottom)); }
+  .premium-new-trip .calm-new-trip-footer.premium-new-trip-footer {
+    position:fixed; inset:auto 1rem max(.75rem, env(safe-area-inset-bottom)) 1rem;
+    z-index:50; max-width:50rem; margin:0 auto; padding:.75rem; gap:.5rem;
+    border:1px solid var(--line); border-radius:1.25rem; background:var(--surface);
+    box-shadow:0 8px 32px color-mix(in srgb,var(--ink) 12%,transparent);
+  }
+  .premium-new-trip .calm-new-trip-footer > p { max-width:none; margin:0; }
+  .premium-new-trip .calm-new-trip-footer button { width:100%; min-height:48px; }
+}
+
 /* Nothing readable is allowed below 13px. Tailwind's own `text-xs` is 12px and it
    is used ~540 times here, so the floor is set on the scale itself rather than on
    every call site; `text-sm` and up already clear it. */

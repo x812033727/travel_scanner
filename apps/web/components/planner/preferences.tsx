@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useLocale } from "next-intl";
 import { api } from "@/lib/api";
 import { plannerCopy } from "@/lib/planner-copy";
 import type { Trip } from "@/lib/trip-types";
+import { calmEditCopy } from "./calm-edit-copy";
 import {
   NewTripPreferenceFields, NewTripTravelerFields, newTripPreferenceError, newTripPreferencesPayload,
   type NewTripLodgingMode, type NewTripPreferenceValues, type NewTripTravelerValues,
@@ -61,17 +62,22 @@ function same(left: unknown, right: unknown) {
 }
 function toggle(values: string[], value: string) { return values.includes(value) ? values.filter((item) => item !== value) : [...values, value]; }
 
-export function PlannerPreferences({ trip, prepare, onUpdated, onBusy }: {
+export function PlannerPreferences({ trip, prepare, onUpdated, onBusy, onDirtyChange, onCancel }: {
   trip: Trip;
   prepare: () => Promise<Trip | undefined>;
   onUpdated: (trip: Trip) => void;
   onBusy?: (busy: boolean) => void;
+  onDirtyChange?: (dirty: boolean) => void;
+  /** Parent may guard leaving; do not discard the draft until it confirms. */
+  onCancel?: () => void;
 }) {
-  const copy = plannerCopy(useLocale());
+  const locale = useLocale();
+  const copy = plannerCopy(locale);
+  const editCopy = calmEditCopy(locale);
   // Itinerary autosaves must not erase an in-progress settings edit. The save
   // action obtains the newest version and sends only fields changed here.
   const [initial] = useState(() => settings(trip));
-  const baseline = useRef(initial);
+  const [baseline, setBaseline] = useState(initial);
   const [travelers, setTravelers] = useState(initial.travelerValues);
   const [values, setValues] = useState(initial.values);
   const [lodgingMode, setLodgingMode] = useState(initial.lodgingMode);
@@ -83,12 +89,16 @@ export function PlannerPreferences({ trip, prepare, onUpdated, onBusy }: {
   const [error, setError] = useState<string>();
   const [saved, setSaved] = useState(false);
 
+  const dirty = !same(travelers, baseline.travelerValues) || !same(values, baseline.values)
+    || lodgingMode !== baseline.lodgingMode || !same(interests, baseline.interests) || !same(shopThemes, baseline.shopThemes);
+  useEffect(() => { onDirtyChange?.(dirty); }, [dirty, onDirtyChange]);
+
   function changed() { setError(undefined); setSaved(false); }
-  function reset(updated: Trip) {
-    const next = settings(updated);
-    baseline.current = next;
+  function reset(next: ReturnType<typeof settings>) {
+    setBaseline(next);
     setTravelers(next.travelerValues); setValues(next.values); setLodgingMode(next.lodgingMode); setLodgingEdited(false);
     setInterests(next.interests); setShopThemes(next.shopThemes);
+    onDirtyChange?.(false);
   }
   async function save(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -105,18 +115,18 @@ export function PlannerPreferences({ trip, prepare, onUpdated, onBusy }: {
     }
     const travelerPatch: Record<string, unknown> = {};
     for (const key of ["adults", "children", "rooms"] as const) {
-      if (Number(travelers[key]) !== Number(baseline.current.travelerValues[key])) travelerPatch[key] = Number(travelers[key]);
+      if (Number(travelers[key]) !== Number(baseline.travelerValues[key])) travelerPatch[key] = Number(travelers[key]);
     }
     const preferencePatch: Record<string, unknown> = {};
     const payload = { ...newTripPreferencesPayload(values, lodgingMode, interests, shopThemes), hotel_min_review_score: values.min_review_score === "" ? null : Number(values.min_review_score) };
     for (const key of Object.keys(preferenceKeys) as (keyof typeof preferenceKeys)[]) {
       const apiKey = preferenceKeys[key];
-      if (values[key] !== baseline.current.values[key] && !same(payload[apiKey], baseline.current.preferences[apiKey])) preferencePatch[apiKey] = payload[apiKey];
+      if (values[key] !== baseline.values[key] && !same(payload[apiKey], baseline.preferences[apiKey])) preferencePatch[apiKey] = payload[apiKey];
     }
-    if (lodgingEdited && !same(payload.accepted_property_types, baseline.current.preferences.accepted_property_types || [])) preferencePatch.accepted_property_types = payload.accepted_property_types;
-    if (!same(interests, baseline.current.interests)) preferencePatch.interests = interests;
-    if (!same(shopThemes, baseline.current.shopThemes) || (baseline.current.interests.includes("shopping") && !interests.includes("shopping"))) preferencePatch.shop_themes = payload.shop_themes;
-    if (!Object.keys(travelerPatch).length && !Object.keys(preferencePatch).length) return;
+    if (lodgingEdited && !same(payload.accepted_property_types, baseline.preferences.accepted_property_types || [])) preferencePatch.accepted_property_types = payload.accepted_property_types;
+    if (!same(interests, baseline.interests)) preferencePatch.interests = interests;
+    if (!same(shopThemes, baseline.shopThemes) || (baseline.interests.includes("shopping") && !interests.includes("shopping"))) preferencePatch.shop_themes = payload.shop_themes;
+    if (!Object.keys(travelerPatch).length && !Object.keys(preferencePatch).length) { reset(baseline); return; }
 
     busyRef.current = true; setBusy(true);
     try {
@@ -135,7 +145,7 @@ export function PlannerPreferences({ trip, prepare, onUpdated, onBusy }: {
           ...(Object.keys(preferencePatch).length ? { preferences: preferencePatch } : {}),
         }),
       });
-      reset(updated); setSaved(true); onUpdated(updated);
+      reset(settings(updated)); setSaved(true); onUpdated(updated);
     } catch (reason) {
       setError(reason instanceof Error ? reason.message : copy.invalidPreferences);
     } finally {
@@ -143,8 +153,8 @@ export function PlannerPreferences({ trip, prepare, onUpdated, onBusy }: {
       onBusy?.(false);
     }
   }
-  return <details className="premium-planner-preferences rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
-    <summary className="cursor-pointer font-semibold">{copy.preferences}</summary>
+  return <section className="premium-planner-preferences rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
+    <h4 className="font-semibold">{copy.preferences}</h4>
     <p className="my-3 text-sm text-[var(--muted)]">{copy.preferencesHint}</p>
     <form onSubmit={(event) => { void save(event); }} noValidate aria-label={copy.preferences}>
       <fieldset disabled={busy} className="space-y-5">
@@ -153,10 +163,16 @@ export function PlannerPreferences({ trip, prepare, onUpdated, onBusy }: {
           lodgingMode={lodgingMode} onLodgingModeChange={(value) => { changed(); setLodgingEdited(true); setLodgingMode(value); }}
           interests={interests} onToggleInterest={(code) => { changed(); setInterests((previous) => toggle(previous, code)); }}
           shopThemes={shopThemes} onToggleShopTheme={(code) => { changed(); setShopThemes((previous) => toggle(previous, code)); }} />
-        <button type="submit" disabled={busy} aria-busy={busy} className="rounded-xl bg-[var(--teal-dark)] px-4 py-3 font-semibold text-white">{copy.savePreferences}</button>
       </fieldset>
       {error && <p role="alert" className="mt-3 text-sm text-red-700">{error}</p>}
       {saved && <p role="status" className="mt-3 text-sm text-[var(--teal-dark)]">{copy.preferencesSaved}</p>}
+      <div className="calm-preferences-actions mt-4 flex items-center justify-end gap-3 bg-[var(--surface)] py-3">
+        {dirty && <span className="mr-auto text-xs text-[var(--muted)]">{editCopy.unsaved}</span>}
+        <button type="button" disabled={busy} className="rounded-xl border border-[var(--line)] px-4 py-3 font-semibold" onClick={() => {
+          if (onCancel) onCancel(); else { reset(baseline); changed(); }
+        }}>{editCopy.cancel}</button>
+        <button type="submit" disabled={busy} aria-busy={busy} className="rounded-xl bg-[var(--teal-dark)] px-4 py-3 font-semibold text-white">{copy.savePreferences}</button>
+      </div>
     </form>
-  </details>;
+  </section>;
 }

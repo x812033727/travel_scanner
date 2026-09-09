@@ -899,6 +899,12 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "rate_limit_exceeded": "Too many attempts. Try again later.",
         "insufficient_uses": "You need more uses to continue",
         "trip_not_found": "This trip could not be found",
+        "trip_create_payload_conflict": (
+            "The trip details differ from the original creation request. Check My trips first."
+        ),
+        "trip_create_recovery_required": (
+            "This creation request cannot be safely retried. Check My trips first."
+        ),
         "trip_limit_reached": "You have reached the shared limit of 20 saved trips",
         "search_not_found": "This search could not be found",
         "hotspot_not_found": "This attraction could not be found",
@@ -1052,6 +1058,12 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "rate_limit_exceeded": "操作が多すぎます。しばらくしてからお試しください",
         "insufficient_uses": "続行するには利用回数を追加してください",
         "trip_not_found": "旅行が見つかりません",
+        "trip_create_payload_conflict": (
+            "旅程の内容が最初の作成リクエストと異なります。先に「マイ旅行」を確認してください。"
+        ),
+        "trip_create_recovery_required": (
+            "この作成リクエストは安全に再送できません。先に「マイ旅行」を確認してください。"
+        ),
         "trip_limit_reached": "保存できる旅行は全会員共通で 20 件までです",
         "search_not_found": "検索が見つかりません",
         "hotspot_not_found": "観光スポットが見つかりません",
@@ -1192,6 +1204,12 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "rate_limit_exceeded": "요청이 너무 많습니다. 잠시 후 다시 시도하세요",
         "insufficient_uses": "계속하려면 사용 횟수를 추가하세요",
         "trip_not_found": "여행을 찾을 수 없습니다",
+        "trip_create_payload_conflict": (
+            "여행 내용이 최초 생성 요청과 다릅니다. 먼저 내 여행을 확인해 주세요."
+        ),
+        "trip_create_recovery_required": (
+            "이 생성 요청은 안전하게 다시 보낼 수 없습니다. 먼저 내 여행을 확인해 주세요."
+        ),
         "trip_limit_reached": "모든 회원이 공유하는 저장 여행 한도 20개에 도달했습니다",
         "search_not_found": "검색을 찾을 수 없습니다",
         "hotspot_not_found": "명소를 찾을 수 없습니다",
@@ -1286,6 +1304,8 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "zh-TW": {
         **OAUTH_ERROR_DETAILS["zh-TW"],
+        "trip_create_payload_conflict": "這次建立的內容與原始請求不同，請先到我的旅程確認。",
+        "trip_create_recovery_required": "無法安全重送這次建立，請先到我的旅程確認。",
         "catalog_scope_invalid": "審核範圍不正確，請選擇景點或美食。",
         "catalog_scope_mismatch": "這筆審核工作屬於其他工作區。",
         "provider_setting_conflict": "設定已被其他管理員更新，請重新載入後再儲存。",
@@ -1370,6 +1390,8 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "rate_limit_exceeded": "操作太频繁，请稍后再试",
         "insufficient_uses": "可用次数不足，请先获取更多次数",
         "trip_not_found": "找不到这个旅程",
+        "trip_create_payload_conflict": "这次创建的内容与原始请求不同，请先到我的旅程确认。",
+        "trip_create_recovery_required": "无法安全重发这次创建请求，请先到我的旅程确认。",
         "trip_limit_reached": "已达所有会员共用的 20 条保存旅程上限",
         "search_not_found": "找不到这次搜索",
         "hotspot_not_found": "找不到这个景点",

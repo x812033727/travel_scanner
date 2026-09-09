@@ -2,6 +2,8 @@ import { expect, test, type Page } from "@playwright/test";
 import { pretendSignedIn } from "./session";
 import { editorFixture, editorPlaceOptions } from "./fixtures/itinerary-editor";
 
+const routePreviewExpiresAt = () => new Date(Date.now() + 60 * 60_000).toISOString();
+
 test("contextual itinerary picker adds repeatedly, undoes, moves across meals and days, and reloads", async ({ page }) => {
   let trip = structuredClone(editorFixture);
   const discovered: string[] = [];
@@ -18,17 +20,27 @@ test("contextual itinerary picker adds repeatedly, undoes, moves across meals an
     return route.fulfill({ json: trip });
   });
   await page.goto("/zh-TW/trips/intuitive-trip");
+  await page.getByRole("button", { name: "排序行程", exact: true }).click();
   const insert = page.getByRole("button", { name: "在 午餐・河畔食堂 前插入新安排" });
   await insert.click();
   const picker = page.getByRole("dialog", { name: "下一站想去哪裡？" });
   await expect(picker).toContainText("淺草散步 → 午餐・河畔食堂");
-  await picker.getByRole("button", { name: "加入 淺草寺" }).click();
-  await expect(picker).toBeVisible();
-  await picker.getByRole("button", { name: "加入 隅田公園" }).click();
-  await picker.getByRole("button", { name: "復原" }).click();
-  await expect(picker.getByRole("button", { name: "完成", exact: true })).toBeFocused();
+  await picker.getByRole("button", { name: "選擇 淺草寺" }).click();
+  const draft = page.getByRole("dialog", { name: "新增安排", exact: true });
+  expect(trip.version).toBe(1);
+  await draft.getByRole("button", { name: "加入行程", exact: true }).click();
+  await expect(draft).toBeHidden();
+  await insert.click();
+  await picker.getByRole("button", { name: "選擇 隅田公園" }).click();
+  expect(trip.items.some((item) => item.title === "隅田公園")).toBe(false);
+  await draft.getByRole("button", { name: "加入行程", exact: true }).click();
+  await expect(draft).toBeHidden();
+  await page.locator(".planner-toast-stack").getByRole("button", { name: "復原" }).click();
+  await expect.poll(() => trip.items.some((item) => item.title === "隅田公園")).toBe(false);
+  await insert.click();
+  await expect(picker.getByRole("button", { name: "關閉", exact: true })).toBeFocused();
   await expect(picker.getByText("已加入 隅田公園", { exact: true })).toHaveCount(0);
-  await expect(picker.getByRole("button", { name: "加入 隅田公園" })).toBeEnabled();
+  await expect(picker.getByRole("button", { name: "選擇 隅田公園" })).toHaveAttribute("aria-disabled", "false");
   await picker.getByRole("button", { name: "完成", exact: true }).click();
   await expect(page.locator(".planner-itinerary-card h3")).toHaveText(["淺草散步", "淺草寺"]);
   expect(discovered.some((query) => query.includes("latitude=35.714"))).toBe(true);
@@ -61,7 +73,7 @@ test("itinerary drag handle works with pointer input and keyboard move keeps foc
   await page.goto("/zh-TW/trips/intuitive-trip");
   const handle = page.locator('[data-itinerary-drag="asakusa"]');
   const target = page.locator('[data-itinerary-gap="dinner1"]');
-  if (test.info().project.name === "mobile-chromium") await page.getByRole("button", { name: "排序行程" }).click();
+  await page.getByRole("button", { name: "排序行程", exact: true }).click();
   await handle.scrollIntoViewIfNeeded();
   const start = await handle.boundingBox();
   expect(start).not.toBeNull();
@@ -225,7 +237,7 @@ test("new trip surfaces authentication service failures", async ({ page }) => {
   await expect(page.getByRole("link", { name: "前往登入" })).toHaveCount(0);
 });
 
-test("mobile-first planner edits, autosaves, and previews before charging", async ({ page }) => {
+test("mobile-first planner explicitly saves edits and previews before charging", async ({ page }) => {
   const baseTrip = {
     id: "mobile-trip", name: "東京手機行程", mode: "manual", total_price: 0, currency: "TWD",
     data: {}, version: 1, destination_name: "東京", start_date: "2026-11-11", end_date: "2026-11-11",
@@ -390,9 +402,10 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await editFirstStop.evaluate((element) => element.scrollIntoView({ block: "center" }));
   await editFirstStop.click();
   await page.getByLabel("安排名稱").fill("淺草寺與雷門");
-  await page.getByRole("button", { name: "關閉" }).click();
+  expect(saves).toBe(1);
+  await page.getByRole("dialog", { name: "編輯安排", exact: true }).getByRole("button", { name: "儲存修改", exact: true }).click();
   await expect.poll(() => saves).toBe(2);
-  await page.getByRole("button", { name: /^AI 幫我安排 · 消耗 1 次$/ }).click();
+  await page.getByRole("button", { name: "AI 助手", exact: true }).click();
   await expect(page.getByRole("dialog", { name: "AI 幫我安排" })).toBeVisible();
   await expect(page.getByRole("radio", { name: /單日安排/ })).toHaveAttribute("aria-checked", "true");
   await expect(page.getByRole("radio", { name: /全行程安排/ })).toBeVisible();
@@ -401,8 +414,10 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await expect(page.getByRole("dialog", { name: "確認 AI 行程預覽" })).toBeVisible();
   await page.getByRole("button", { name: /^套用行程 · 消耗 1 次$/ }).click();
   await expect(page.getByText(/MiniMax 已套用.*並扣除 1 次/)).toBeVisible();
-  await page.getByRole("button", { name: /^AI 幫我安排 · 消耗 1 次$/ }).click();
-  await page.getByRole("button", { name: /只調整現有動線/ }).click();
+  await page.getByRole("button", { name: "AI 助手", exact: true }).click();
+  await page.getByRole("button", { name: "只順路排序", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "最佳化預覽" })).toBeHidden();
+  await page.getByRole("button", { name: /^產生預覽 · 不扣次$/ }).click();
   await expect(page.getByRole("dialog", { name: "最佳化預覽" })).toBeVisible();
   await expect(page.getByText("預計節省")).toBeVisible();
   await page.getByRole("button", { name: /^套用 · 消耗 1 次$/ }).click();
@@ -428,7 +443,7 @@ test("route drawer previews a car route before applying and keeps it after reloa
     preview_id: `route-preview-${index + 1}`,
     provider_route_key: `drive-${index + 1}`,
     rank: index + 1,
-    expires_at: "2026-09-01T01:15:00Z",
+    expires_at: routePreviewExpiresAt(),
     segment: {
       ...carSegment,
       duration_minutes: duration,
@@ -473,10 +488,12 @@ test("route drawer previews a car route before applying and keeps it after reloa
   });
 
   await page.goto("/zh-TW/trips/routing-trip");
-  await page.getByRole("button", { name: "查看前往 晴空塔 的路線" }).click();
+  await page.getByRole("button", { name: /^查看前往 晴空塔 的路線/ }).click();
   const routeDialog = page.getByRole("dialog", { name: "這段路怎麼走" });
   await expect(routeDialog).toBeVisible();
   await routeDialog.getByRole("tab", { name: "汽車" }).click();
+  expect(previewBody).toBeUndefined();
+  await routeDialog.getByRole("button", { name: "查詢交通方案", exact: true }).click();
   await expect(routeDialog.getByRole("option", { name: /方案 3/ })).toBeVisible();
   await routeDialog.getByRole("option", { name: /方案 2/ }).click();
   await expect(routeDialog.locator(".route-apply-bar strong")).toHaveText("汽車 · 方案 2 · 14 分鐘");
@@ -487,12 +504,12 @@ test("route drawer previews a car route before applying and keeps it after reloa
   await expect(page.getByText("已套用交通方式，後續可調整的開始時間已重新計算。")).toBeVisible();
   expect(applyBody).toMatchObject({ version: 2, source: "provider", preview_id: "route-preview-2" });
   await routeDialog.getByRole("button", { name: "關閉" }).click();
-  await expect(page.getByRole("button", { name: "查看前往 晴空塔 的路線" })).toContainText("汽車");
+  await expect(page.getByRole("button", { name: /^查看前往 晴空塔 的路線/ })).toContainText("汽車");
   await page.reload();
-  await expect(page.getByRole("button", { name: "查看前往 晴空塔 的路線" })).toContainText("汽車");
+  await expect(page.getByRole("button", { name: /^查看前往 晴空塔 的路線/ })).toContainText("汽車");
 });
 
-test("route drawer auto-previews an unapplied Tokyo transit route without layout overflow", async ({ page }) => {
+test("route drawer queries an unapplied Tokyo transit route only explicitly without layout overflow", async ({ page }) => {
   const routeItems = [
     { id: "tokyo-station", item_type: "custom", day_date: "2026-11-12", position: 0, title: "東京車站", location_name: "東京車站", latitude: 35.6812, longitude: 139.7671, provider_place_id: "tokyo-station", location_source: "confirmed", locked: false, fixed_time: false, is_estimated: false, start_time: "2026-11-12T00:00:00Z", duration_minutes: 60, data: {} },
     { id: "sensoji", item_type: "custom", day_date: "2026-11-12", position: 1, title: "淺草寺", location_name: "淺草寺", latitude: 35.7148, longitude: 139.7967, provider_place_id: "sensoji", location_source: "google_places_auto", locked: false, fixed_time: false, is_estimated: true, start_time: "2026-11-12T01:30:00Z", duration_minutes: 60, data: { needs_place_confirmation: true } },
@@ -511,19 +528,25 @@ test("route drawer auto-previews an unapplied Tokyo transit route without layout
   };
   await page.route("**/api/travel/runtime/public-config", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ google_routes_enabled: true, google_places_enabled: true, google_maps_embed_enabled: false, navitime_enabled: false }) }));
   await page.route("**/api/travel/affiliates/options**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ options: [] }) }));
+  let previews = 0;
   await page.route("**/api/travel/trips/tokyo-preview-trip**", async (route) => {
     if (route.request().url().endsWith("/routes/preview")) {
+      previews += 1;
       await new Promise((resolve) => setTimeout(resolve, 150));
-      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ preview_id: "tokyo-preview", expires_at: "2026-09-01T01:15:00Z", segment, schedule_impact: { affected_items: [], conflicts: [] } }) });
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ preview_id: "tokyo-preview", expires_at: routePreviewExpiresAt(), segment, schedule_impact: { affected_items: [], conflicts: [] } }) });
       return;
     }
     await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(currentTrip) });
   });
 
   await page.goto("/zh-TW/trips/tokyo-preview-trip");
-  await page.getByRole("button", { name: /選擇這段交通方式.*淺草寺/ }).click();
+  await page.getByRole("button", { name: /^查看前往 淺草寺 的路線/ }).click();
   const dialog = page.getByRole("dialog", { name: "這段路怎麼走" });
+  await expect(dialog).toBeVisible();
+  expect(previews).toBe(0);
+  await dialog.getByRole("button", { name: "查詢交通方案", exact: true }).click();
   await expect(dialog.getByRole("button", { name: "套用此路線" })).toBeVisible();
+  expect(previews).toBe(1);
   await expect(dialog.getByText("目前已套用")).toHaveCount(0);
   const mapHeight = await dialog.locator(".route-map-frame").evaluate((element) => element.getBoundingClientRect().height);
   expect(mapHeight).toBeGreaterThanOrEqual(220);
@@ -562,7 +585,7 @@ test("Seoul route drawer uses NAVER drive and keeps transit external-only", asyn
       if (body.travel_mode === "transit") {
         await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ kind: "external_only", preview_id: null, expires_at: null, segment: null, schedule_impact: null, external_navigation: { provider: "naver_maps", label: "NAVER Maps", travel_mode: "transit", app_url: "nmap://route/public?slat=37.5796&slng=126.977&dlat=37.5826&dlng=126.985", web_url: "https://map.naver.com/p/directions/126.977,37.5796,%EA%B2%BD%EB%B3%B5%EA%B6%81/126.985,37.5826,%EB%B6%81%EC%B4%8C/-/transit", reason: "NAVER 官方 Directions API 不提供可保存的大眾運輸班次；請到 NAVER Maps 查看。" } }) });
       } else {
-        await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ kind: "provider", preview_id: "naver-drive-preview", expires_at: "2026-09-01T01:15:00Z", segment: carSegment, schedule_impact: { affected_items: [{ item_id: "bukchon", title: "北村韓屋村", old_start_time: "2026-11-13T01:30:00Z", new_start_time: "2026-11-13T01:22:00Z", delta_minutes: -8 }], conflicts: [] } }) });
+        await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ kind: "provider", preview_id: "naver-drive-preview", expires_at: routePreviewExpiresAt(), segment: carSegment, schedule_impact: { affected_items: [{ item_id: "bukchon", title: "北村韓屋村", old_start_time: "2026-11-13T01:30:00Z", new_start_time: "2026-11-13T01:22:00Z", delta_minutes: -8 }], conflicts: [] } }) });
       }
       return;
     }
@@ -576,11 +599,13 @@ test("Seoul route drawer uses NAVER drive and keeps transit external-only", asyn
   });
 
   await page.goto("/zh-TW/trips/seoul-route-trip");
-  await page.getByRole("button", { name: /選擇這段交通方式.*北村韓屋村/ }).click();
+  await page.getByRole("button", { name: /^查看前往 北村韓屋村 的路線/ }).click();
   const dialog = page.getByRole("dialog", { name: "這段路怎麼走" });
+  await dialog.getByRole("button", { name: "查詢交通方案", exact: true }).click();
   await expect(dialog.getByRole("link", { name: /用 NAVER Maps 規劃/ })).toBeVisible();
   await expect(dialog.getByRole("button", { name: "外部導航，無法套用" })).toBeDisabled();
   await dialog.getByRole("tab", { name: "汽車" }).click();
+  await dialog.getByRole("button", { name: "查詢交通方案", exact: true }).click();
   await expect(dialog.getByRole("button", { name: "套用此路線" })).toBeEnabled();
   await expect(dialog.getByText("NAVER Maps").first()).toBeVisible();
   await dialog.getByRole("button", { name: "套用此路線" }).click();

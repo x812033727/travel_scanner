@@ -487,7 +487,7 @@ async function expectForecastReadable(page: Page, dark: boolean) {
 async function expectIntentReadable(page: Page, dark: boolean) {
   await page.getByRole("dialog", { name: "旅程工具", exact: true }).getByRole("button", { name: "關閉", exact: true }).click();
   await page.getByRole("button", { name: /^AI (助手|幫我安排)/ }).filter({ visible: true }).click();
-  await page.getByRole("button", { name: "描述調整", exact: true }).click();
+  await page.getByRole("button", { name: "調整現有行程", exact: true }).click();
   const intent = page.getByRole("region", { name: "描述想調整的地方" });
   const toggle = intent.getByRole("button", { name: "想改什麼？", exact: true });
   const input = intent.getByRole("textbox", { name: /想改什麼？/ });

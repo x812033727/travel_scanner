@@ -57,6 +57,7 @@ from app.models import (
     TripRouteSegment,
     TripShare,
     UsageReservation,
+    User,
 )
 from app.optimization.engine import TripOptimizer, TripPlanResult
 from app.places.google import GoogleTravelService
@@ -1759,7 +1760,9 @@ async def reproject_saved_times(
             saved,
             points,
             cast(TravelMode, setting.default_travel_mode if setting else "transit"),
-            buffer_minutes=setting.default_buffer_minutes if setting else 0,
+            buffer_minutes=(
+                setting.default_buffer_minutes if setting else DEFAULT_BUFFER_MINUTES
+            ),
         )
         for row in day_rows:
             if row.fixed_time or row.id not in projection.item_times:
@@ -1774,11 +1777,16 @@ async def reproject_saved_times(
 def route_point(item: TripPlanItem) -> RoutePoint | None:
     if item.latitude is None or item.longitude is None:
         return None
+    latitude, longitude = float(item.latitude), float(item.longitude)
+    # Legacy stored coordinates can predate request validation. NaN and infinity
+    # also fail these bounds, so malformed points remain explicit route barriers.
+    if not (-90 <= latitude <= 90 and -180 <= longitude <= 180):
+        return None
     return RoutePoint(
         item_id=item.id,
         name=item.location_name or item.title or item.item_type,
-        latitude=float(item.latitude),
-        longitude=float(item.longitude),
+        latitude=latitude,
+        longitude=longitude,
         provider_place_id=item.provider_place_id,
         place_provider=infer_place_provider(item.location_source, item.data),
     )
@@ -2207,16 +2215,18 @@ async def save_trip(
 ) -> dict[str, Any]:
     redis = get_redis()
     request_key = _trip_create_request_key(user.id, idempotency_key) if idempotency_key else None
+    request_hash = _trip_create_payload_hash(payload)
     if request_key:
-        replay_id = await redis.get(request_key)
-        if replay_id:
-            existing = await session.scalar(
-                select(TripPlan).where(
-                    TripPlan.id == UUID(str(replay_id)), TripPlan.user_id == user.id
-                )
-            )
-            if existing is not None:
-                return await serialize_trip(session, existing)
+        # Serialize creation for this account. The transaction-held row lock also
+        # closes the gap between committing the trip and populating Redis.
+        await session.execute(select(User.id).where(User.id == user.id).with_for_update())
+        existing = await _trip_create_replay(session, user.id, request_key, request_hash)
+        if existing is not None:
+            return await serialize_trip(session, existing)
+    creation_request = (
+        {"key_digest": request_key.rsplit(":", 1)[-1], "request_hash": request_hash}
+        if request_key else None
+    )
     count = await session.scalar(
         select(func.count()).select_from(TripPlan).where(TripPlan.user_id == user.id)
     )
@@ -2279,6 +2289,7 @@ async def save_trip(
             total_price=Decimal(0),
             currency="TWD",
             data={
+                **({"creation_request": creation_request} if creation_request else {}),
                 "source": "blank",
                 "creation_mode": payload.planning_mode,
                 "destination_city": destination,
@@ -2337,7 +2348,11 @@ async def save_trip(
         await session.commit()
         await session.refresh(trip)
         if request_key:
-            await redis.set(request_key, str(trip.id), ex=TRIP_CREATE_REPLAY_TTL_SECONDS)
+            await redis.set(
+                request_key,
+                json.dumps({"trip_id": str(trip.id), "request_hash": request_hash}),
+                ex=TRIP_CREATE_REPLAY_TTL_SECONDS,
+            )
         result = await serialize_trip(session, trip)
         if routing_status == "queued":
             try:
@@ -2421,7 +2436,10 @@ async def save_trip(
         name=payload.name,
         mode=plan["mode"],
         total_price=Decimal(str(plan["total_cost"]["total_cost"])),
-        data={**plan, **shared_keys},
+        data={
+            **plan, **shared_keys,
+            **({"creation_request": creation_request} if creation_request else {}),
+        },
         version=1,
         destination_name=first_item_data.get("destination_city"),
         start_date=next(
@@ -2464,7 +2482,11 @@ async def save_trip(
     await session.commit()
     await session.refresh(trip)
     if request_key:
-        await redis.set(request_key, str(trip.id), ex=TRIP_CREATE_REPLAY_TTL_SECONDS)
+        await redis.set(
+            request_key,
+            json.dumps({"trip_id": str(trip.id), "request_hash": request_hash}),
+            ex=TRIP_CREATE_REPLAY_TTL_SECONDS,
+        )
     return await serialize_trip(session, trip)
 
 
@@ -3611,6 +3633,57 @@ def _itinerary_preview_request_key(user_id: UUID, trip_id: UUID, idempotency_key
 def _trip_create_request_key(user_id: UUID, idempotency_key: str) -> str:
     digest = hashlib.sha256(idempotency_key.encode()).hexdigest()
     return f"trip:create-request:{user_id}:{digest}"
+
+
+def _trip_create_payload_hash(payload: SaveTripRequest) -> str:
+    return hashlib.sha256(json.dumps(
+        payload.model_dump(mode="json"), ensure_ascii=False, sort_keys=True,
+        separators=(",", ":"),
+    ).encode()).hexdigest()
+
+
+async def _trip_create_replay(
+    session: AsyncSession, user_id: UUID, request_key: str, request_hash: str,
+) -> TripPlan | None:
+    # The durable record is part of the original commit, so a lost HTTP response
+    # or a Redis write failure can never turn a retry into a second trip.
+    existing: TripPlan | None = await session.scalar(select(TripPlan).where(
+        TripPlan.user_id == user_id,
+        TripPlan.data["creation_request"]["key_digest"].as_string()
+        == request_key.rsplit(":", 1)[-1],
+    ))
+    if existing is not None:
+        if existing.data["creation_request"].get("request_hash") != request_hash:
+            raise AppError(
+                409, "trip_create_payload_conflict", "這次建立的內容已改變，請先確認我的旅程。",
+            )
+        return existing
+    cached = await get_redis().get(request_key)
+    if not cached:
+        return None
+    try:
+        record = json.loads(str(cached))
+        if not isinstance(record, dict) or not isinstance(record.get("request_hash"), str):
+            raise ValueError("legacy or invalid creation record")
+        if record["request_hash"] != request_hash:
+            raise AppError(
+                409, "trip_create_payload_conflict", "這次建立的內容已改變，請先確認我的旅程。",
+            )
+        trip_id = UUID(record["trip_id"])
+    except (ValueError, TypeError, KeyError) as error:
+        # A UUID-only legacy record cannot prove what was submitted. Do not
+        # silently discard edited fields or create a replacement trip.
+        raise AppError(
+            409, "trip_create_recovery_required", "無法安全重送這次建立，請先到我的旅程確認。",
+        ) from error
+    existing = await session.scalar(select(TripPlan).where(
+        TripPlan.id == trip_id, TripPlan.user_id == user_id,
+    ))
+    if existing is None:
+        raise AppError(
+            409, "trip_create_recovery_required", "原旅程已不可用，請先到我的旅程確認。",
+        )
+    return existing
 
 
 def _candidate_signatures(

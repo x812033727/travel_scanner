@@ -1,13 +1,13 @@
 ---
 id: 2026-09-08-travel-discovery-web
 title: Travel discovery homepage search collections and media experience
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-discovery-web
 claimed_at: 2026-09-09T00:43:12Z
 created_at: 2026-09-08T23:24:10Z
-completed_at:
+completed_at: 2026-09-09T01:18:24Z
 branch: codex/travel-discovery-community
 depends_on: []
 scope:
@@ -43,7 +43,7 @@ Unify sourced travel discovery, clear recommendations, private collections and s
 - [x] Creator invites and reference-only video editing preserve existing publication review and draft behavior.
 - [x] Five-language UI, focused tests, route metadata and static checks pass.
 - [x] Parent completes discovery desktop/Pixel 7 and full-stack acceptance.
-- [ ] PR review and merge complete; parent owns release validation.
+- [x] PR review, merge and parent-owned release validation complete.
 
 ## Steps
 
@@ -52,7 +52,7 @@ Unify sourced travel discovery, clear recommendations, private collections and s
 - [x] Implement discovery and community UI with focused regression coverage.
 - [x] Complete final static checks and route metadata catalogs.
 - [x] Complete browser acceptance and prepare PR review evidence.
-- [ ] Parent completes final PR/release verification.
+- [x] Parent completes final PR/release verification.
 
 ## How to verify
 
@@ -80,3 +80,10 @@ Root approved bounded scope extensions for opt-in TravelCardActions login-resume
 - CI compatibility follow-up: claimed only apps/web/e2e/planner-premium.spec.ts after the prior planner task was archived. Added GET /api/travel/discovery/status to the existing read-only enabled:false shell fixture; mutationPaths and unexpectedRequests assertions remain unchanged. Existing production build, port 3143: desktop Chromium plus Pixel 7 passed all 8 planner-premium cases (46.9s). No paid-provider or production data access; no commits or pushes performed by this task.
 - PR #372 head 582054e2 CI repair (web job 102291601001): claimed only header-session-identity.test.tsx after the prior settings task was archived. Its SessionProbe reports through a passive useEffect; findByText can observe the DOM commit before that probe receives the same render. Initial identity captures and all probe-dependent transitions now synchronize with waitFor, retaining stable identity on profile/currency changes, fresh identity after logout/re-login or principal changes, and rejection of late pre-logout responses. header-session.tsx and authentication behavior remain unchanged.
 - CI repair validation: 10 separate Vitest invocations of header-session-identity.test.tsx all passed (5 tests each, 50 successful executions). Related site-navigation, mobile-nav, app-bottom-nav and discovery-navigation tests passed (4 files / 19 tests). Focused ESLint and git diff --check passed. Parent owns the subsequent commit/push and CI verification.
+
+## Completion evidence
+
+- Coordinating root verified PR #372 merged as 6eacb821, with every main CI check green.
+- Coordinating root deployed that revision to hostinger2: all 8 services running, schema 0066, and three consecutive readiness checks passed. Existing environment configuration and volumes were preserved; the verified pre-deployment backup is 13,672,114 bytes with mode 0600.
+- Discovery and community remain OFF in production. This completes deployed implementation and verification, not a rollout enablement claim. No production operations were performed by this subtask.
+- The planner-calm owner (thread 01a057cf) requested apps/web/e2e/planner-premium.spec.ts back after merge. Completing this task releases its exact scope, with no pending source edits or further claim on that test. Root handles the task-only archive commit and handoff.

@@ -26,7 +26,6 @@ function makeTrip(): Trip {
 function mount(trip = makeTrip(), prepare = vi.fn<() => Promise<Trip | undefined>>().mockResolvedValue({ ...trip, version: 7 })) {
   const onUpdated = vi.fn();
   render(<PlannerPreferences trip={trip} prepare={prepare} onUpdated={onUpdated} />);
-  fireEvent.click(screen.getByText("旅伴與旅行偏好", { selector: "summary" }));
   return { trip, prepare, onUpdated };
 }
 function save() { fireEvent.submit(screen.getByRole("form", { name: "旅伴與旅行偏好" })); }
@@ -36,11 +35,12 @@ afterEach(cleanup);
 beforeEach(() => { vi.mocked(api).mockReset(); });
 
 describe("PlannerPreferences", () => {
-  it("starts collapsed with existing values and no metadata route editor", () => {
+  it("shows existing values directly with explicit cancel and save, without a metadata route editor", () => {
     render(<PlannerPreferences trip={makeTrip()} prepare={vi.fn()} onUpdated={vi.fn()} />);
-    expect(screen.getByText("旅伴與旅行偏好", { selector: "summary" }).closest("details")).not.toHaveAttribute("open");
-    fireEvent.click(screen.getByText("旅伴與旅行偏好", { selector: "summary" }));
-    expect(screen.getByLabelText("成人")).toHaveValue("2");
+    expect(screen.getByRole("heading", { name: "旅伴與旅行偏好" }).closest("details")).toBeNull();
+    expect(screen.getByRole("button", { name: "取消" })).toBeVisible();
+    expect(screen.getByRole("button", { name: "儲存偏好" })).toBeVisible();
+      expect(screen.getByLabelText("成人")).toHaveValue("2");
     expect(screen.getByLabelText("整趟總預算（台幣）")).toHaveValue(55000);
     expect(screen.getByLabelText("最低星級")).toHaveValue("2");
     expect(screen.getByLabelText("最低住客評分")).toHaveValue("8.5");
@@ -63,8 +63,7 @@ describe("PlannerPreferences", () => {
     const prepare = vi.fn().mockResolvedValue(latest);
     const onUpdated = vi.fn();
     const view = render(<PlannerPreferences trip={trip} prepare={prepare} onUpdated={onUpdated} />);
-    fireEvent.click(screen.getByText("旅伴與旅行偏好", { selector: "summary" }));
-    fireEvent.change(screen.getByLabelText("整趟總預算（台幣）"), { target: { value: "65000" } });
+      fireEvent.change(screen.getByLabelText("整趟總預算（台幣）"), { target: { value: "65000" } });
     view.rerender(<PlannerPreferences trip={latest} prepare={prepare} onUpdated={onUpdated} />);
     expect(screen.getByLabelText("整趟總預算（台幣）")).toHaveValue(65000);
     vi.mocked(api).mockResolvedValue({ ...latest, version: 10 });
@@ -209,5 +208,49 @@ describe("PlannerPreferences", () => {
     fireEvent.click(screen.getByRole("button", { name: "充實" })); save();
     await waitFor(() => expect(screen.getByRole("button", { name: "儲存偏好" })).not.toBeDisabled());
     expect(prepare).toHaveBeenCalledOnce(); expect(api).not.toHaveBeenCalled();
+  });
+
+  it("notifies dirty state and keeps the draft when Cancel asks the parent to guard leaving", () => {
+    const onDirtyChange = vi.fn(), onCancel = vi.fn();
+    render(<PlannerPreferences trip={makeTrip()} prepare={vi.fn()} onUpdated={vi.fn()} onDirtyChange={onDirtyChange} onCancel={onCancel} />);
+    expect(onDirtyChange).toHaveBeenLastCalledWith(false);
+    fireEvent.change(screen.getByLabelText("整趟總預算（台幣）"), { target: { value: "66000" } });
+    expect(onDirtyChange).toHaveBeenLastCalledWith(true);
+    fireEvent.click(screen.getByRole("button", { name: "取消" }));
+    expect(onCancel).toHaveBeenCalledOnce();
+    expect(api).not.toHaveBeenCalled();
+    expect(screen.getByLabelText("整趟總預算（台幣）")).toHaveValue(66000);
+    expect(onDirtyChange).toHaveBeenLastCalledWith(true);
+    fireEvent.change(screen.getByLabelText("整趟總預算（台幣）"), { target: { value: "55000" } });
+    expect(onDirtyChange).toHaveBeenLastCalledWith(false);
+  });
+
+  it("discards locally without a parent and never saves on blur", () => {
+    const onDirtyChange = vi.fn();
+    const prepare = vi.fn();
+    render(<PlannerPreferences trip={makeTrip()} prepare={prepare} onUpdated={vi.fn()} onDirtyChange={onDirtyChange} />);
+    fireEvent.change(screen.getByLabelText("成人"), { target: { value: "4" } });
+    fireEvent.blur(screen.getByLabelText("成人"));
+    expect(api).not.toHaveBeenCalled(); expect(prepare).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole("button", { name: "取消" }));
+    expect(screen.getByLabelText("成人")).toHaveValue("2");
+    expect(onDirtyChange).toHaveBeenLastCalledWith(false);
+  });
+
+  it("keeps dirty state after failed save and clears it only after the successful retry", async () => {
+    const onDirtyChange = vi.fn();
+    const trip = makeTrip();
+    const prepare = vi.fn().mockResolvedValue(trip);
+    vi.mocked(api).mockRejectedValueOnce(new Error("暫時無法儲存"));
+    render(<PlannerPreferences trip={trip} prepare={prepare} onUpdated={vi.fn()} onDirtyChange={onDirtyChange} />);
+    fireEvent.change(screen.getByLabelText("成人"), { target: { value: "4" } });
+    save();
+    expect(await screen.findByRole("alert")).toHaveTextContent("暫時無法儲存");
+    expect(screen.getByLabelText("成人")).toHaveValue("4");
+    expect(onDirtyChange).toHaveBeenLastCalledWith(true);
+    vi.mocked(api).mockResolvedValue({ ...trip, version: 5, data: { ...trip.data, travelers: { ...(trip.data.travelers as object), adults: 4 } } });
+    save();
+    await waitFor(() => expect(onDirtyChange).toHaveBeenLastCalledWith(false));
+    expect(screen.getByLabelText("成人")).toHaveValue("4");
   });
 });

@@ -7,6 +7,7 @@ import {
   Utensils,
 } from "lucide-react";
 import { formatTime, originalItemName, type ChainedStart, type TripItem } from "@/lib/trip-types";
+import { DepartureTimeField } from "@/components/planner/departure-time-field";
 
 export function SystemItineraryCard({
   item,
@@ -17,7 +18,10 @@ export function SystemItineraryCard({
   chainedStart,
   departureTime,
   departureBusy = false,
+  explicitDepartureSave = false,
   onDepartureTimeChange,
+  onDepartureDirtyChange,
+  onDepartureBusyChange,
   onEdit,
   onSkip,
 }: {
@@ -29,7 +33,10 @@ export function SystemItineraryCard({
   chainedStart?: ChainedStart;
   departureTime?: string;
   departureBusy?: boolean;
-  onDepartureTimeChange?: (value: string) => void;
+  explicitDepartureSave?: boolean;
+  onDepartureTimeChange?: (value: string) => void | Promise<boolean | void>;
+  onDepartureDirtyChange?: (dirty: boolean) => void;
+  onDepartureBusyChange?: (busy: boolean) => void;
   onEdit: () => void;
   onSkip?: () => void;
 }) {
@@ -71,11 +78,14 @@ export function SystemItineraryCard({
           : unresolved && <p className="mt-2 text-xs font-semibold text-amber-800">{unsetHotel ? "設定一次後，會建立每天的出發與返回路線" : "設定並確認地點後，才能計算完整路線"}</p>}
       </div>
     </div>
-    {item.system_role === "hotel_start" && departureTime && onDepartureTimeChange && <label className="planner-departure-field mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-black/5 pt-3 text-xs font-semibold">
+    {item.system_role === "hotel_start" && departureTime && onDepartureTimeChange && (explicitDepartureSave
+      ? <DepartureTimeField key={item.id} value={departureTime} locale={locale} busy={departureBusy}
+        onSave={onDepartureTimeChange} onDirtyChange={onDepartureDirtyChange} onBusyChange={onDepartureBusyChange} />
+      : <label className="planner-departure-field mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-black/5 pt-3 text-xs font-semibold">
       <span className="flex items-center gap-1.5"><Clock3 size={14} />出發時間</span>
       <input type="time" aria-label="每天從飯店出發的時間" defaultValue={departureTime} key={departureTime} disabled={departureBusy} onBlur={(event) => { if (event.target.value && event.target.value !== departureTime) onDepartureTimeChange(event.target.value); }} onKeyDown={(event) => { if (event.key === "Enter") (event.target as HTMLInputElement).blur(); }} className="min-h-10 rounded-xl border border-[var(--line)] bg-white px-2.5 font-bold disabled:opacity-45" />
       <span className="font-normal text-[var(--muted)]">{departureBusy ? "儲存中…" : "套用到每一天"}</span>
-    </label>}
+    </label>)}
     <div className="mt-3 flex gap-2 border-t border-black/5 pt-3">
       {meal && item.is_skipped
         ? <button type="button" onClick={onSkip} disabled={busy} className="planner-system-primary"><RotateCcw size={15} />恢復</button>
