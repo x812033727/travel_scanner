@@ -143,7 +143,7 @@ async def test_admin_can_manage_accounts_roles_and_usage() -> None:
             headers=admin_headers,
         )
         assert self_deactivation.status_code == 409
-        assert self_deactivation.json()["code"] == "admin_self_deactivation"
+        assert self_deactivation.json()["code"] == "admin_suspension_endpoint_required"
 
         self_adjustment = await client.post(
             f"/api/v1/admin/users/{admin_id}/usage-adjustments",
@@ -331,7 +331,11 @@ async def test_cancel_and_due_worker_do_not_deadlock_on_erasure_rows(
         scheduled_for=datetime.now(UTC) - timedelta(minutes=1),
     )
     async with SessionFactory() as setup:
-        setup.add_all([actor, target, request])
+        # AccountErasureRequest stores scalar UUIDs rather than ORM relationships,
+        # so make the FK parents durable before flushing the dependent row.
+        setup.add_all([actor, target])
+        await setup.flush()
+        setup.add(request)
         await setup.commit()
 
     monkeypatch.setattr(
@@ -394,7 +398,11 @@ async def test_erasure_barrier_blocks_resend_and_delayed_scrub_catches_inflight_
         scheduled_for=datetime.now(UTC) - timedelta(minutes=1),
     )
     async with SessionFactory() as setup:
-        setup.add_all([actor, target, request])
+        # AccountErasureRequest stores scalar UUIDs rather than ORM relationships,
+        # so make the FK parents durable before flushing the dependent row.
+        setup.add_all([actor, target])
+        await setup.flush()
+        setup.add(request)
         await setup.commit()
 
     monkeypatch.setattr(admin_users, "_environment_designated", Mock(return_value=False))

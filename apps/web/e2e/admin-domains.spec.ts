@@ -58,11 +58,16 @@ test("three domains, deep search and navigation are usable on desktop and Pixel 
   const { reads, writes } = await fixture(page);
   await page.goto("/zh-TW/admin");
   for (const name of ["景點", "美食", "飯店"]) await expect(page.getByRole("region", { name, exact: true })).toBeVisible();
-  if (info.project.name === "mobile-chromium") await page.getByRole("button", { name: "開啟後台選單" }).click();
-  const nav = page.getByRole("navigation", { name: "管理後台功能" });
-  await expect(nav.getByRole("link")).toHaveCount(4);
-  await page.getByRole("searchbox", { name: "搜尋後台功能" }).fill("餐廳來源");
-  await nav.getByRole("link", { name: /餐廳來源/ }).click();
+  if (info.project.name === "mobile-chromium") await page.getByRole("button", { name: "開啟營運選單" }).click();
+  const nav = page.getByRole("navigation", { name: "營運控制台" });
+  // Pending-count badges are part of each link's accessible name, so match the
+  // destination label without pinning the server-owned count.
+  for (const name of ["景點", "美食", "飯店"]) await expect(nav.getByRole("link", { name })).toBeVisible();
+  if (info.project.name === "mobile-chromium") await page.locator("#admin-mobile-navigation").getByRole("button", { name: "關閉營運選單" }).click();
+  await page.getByRole("button", { name: "搜尋頁面與操作" }).click();
+  const palette = page.getByRole("dialog", { name: "搜尋頁面與操作" });
+  await palette.getByRole("textbox", { name: "搜尋頁面與操作" }).fill("餐廳來源");
+  await palette.getByRole("link", { name: /餐廳來源/ }).click();
   await expect(page).toHaveURL(/admin\/foods\?tab=nearby&section=sources/);
   await expect(page.getByRole("heading", { name: "美食", exact: true })).toBeVisible();
   await expect.poll(() => reads.some((path) => path.includes("/editorial-coverage"))).toBe(true);
@@ -138,7 +143,7 @@ for (const [locale, overview, hotels] of [["zh-TW", "總覽", "飯店"], ["zh-CN
     await page.addInitScript(() => { localStorage.setItem("mokaair-theme", "dark"); });
     await page.emulateMedia({ colorScheme: "dark", reducedMotion: "reduce" });
     await page.goto("/" + locale + "/admin");
-    await expect(page.getByRole("heading", { name: overview, exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: overview, exact: true })).toBeVisible();
     await expect(page.getByRole("region", { name: hotels, exact: true })).toBeVisible();
     await expect(page.locator("html")).toHaveJSProperty("scrollWidth", await page.locator("html").evaluate((node) => node.clientWidth));
     const targets = page.getByRole("region", { name: hotels }).getByRole("link");
