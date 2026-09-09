@@ -3,7 +3,7 @@ from __future__ import annotations
 import ipaddress
 import re
 from datetime import date, datetime
-from typing import Literal, Self
+from typing import Annotated, Literal, Self
 from urllib.parse import parse_qsl, urlsplit, urlunsplit
 from uuid import UUID
 
@@ -202,6 +202,69 @@ class HotelOptionReview(StrictModel):
     status: Status
     browser_verified: bool = False
     identity_note: str = Field(default="", max_length=1000)
+
+
+class HotelBookingContext(StrictModel):
+    """Optional user-selected stay, independent of live rate-search constraints.
+
+    Historical dates may be serialized for editing. The clickout boundary must
+    additionally call validate_booking_context before forwarding any dates.
+    """
+
+    check_in: date | None = None
+    check_out: date | None = None
+    adults: int | None = Field(default=None, strict=True, ge=1, le=9)
+    children: int | None = Field(default=None, strict=True, ge=0, le=9)
+    rooms: int | None = Field(default=None, strict=True, ge=1, le=4)
+    children_ages: list[Annotated[int, Field(strict=True, ge=0, le=17)]] = Field(
+        default_factory=list, max_length=9
+    )
+
+    @field_validator("check_in", "check_out", mode="before")
+    @classmethod
+    def calendar_date(cls, value: object) -> object:
+        if value is None or (isinstance(value, date) and not isinstance(value, datetime)):
+            return value
+        if isinstance(value, str) and re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", value):
+            return value
+        raise ValueError("Calendar date in YYYY-MM-DD format required")
+
+    @model_validator(mode="after")
+    def stay(self) -> Self:
+        from app.search.schemas import Travelers
+
+        if (self.check_in is None) != (self.check_out is None):
+            raise ValueError("Both check-in and check-out dates are required")
+        if self.check_in and self.check_out and self.check_out <= self.check_in:
+            raise ValueError("Check-out must be after check-in")
+        if self.children_ages and self.children is not None:
+            if len(self.children_ages) != self.children:
+                raise ValueError("Children must match children ages")
+        # Reuse the search domain's traveler policy without injecting its defaults
+        # into the optional context sent to an external booking platform.
+        Travelers.model_validate(
+            self.model_dump(
+                include={"adults", "children", "rooms", "children_ages"}, exclude_none=True
+            )
+        )
+        return self
+
+
+Stay22Provider = Literal["booking", "agoda", "expedia"]
+STAY22_PROVIDERS: tuple[Stay22Provider, ...] = ("booking", "agoda", "expedia")
+
+
+class Stay22Config(StrictModel):
+    enabled: bool = Field(default=False, strict=True)
+    aid: str = Field(default="mokaair", pattern=r"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$")
+    enabled_providers: list[Stay22Provider] = Field(default_factory=list, max_length=3)
+
+    @field_validator("enabled_providers")
+    @classmethod
+    def providers(cls, value: list[Stay22Provider]) -> list[Stay22Provider]:
+        if len(set(value)) != len(value):
+            raise ValueError("Only one entry per Stay22 provider")
+        return [provider for provider in STAY22_PROVIDERS if provider in value]
 
 
 class Facts(StrictModel):
@@ -439,6 +502,7 @@ class HotelQuotePolicy(StrictModel):
 
 
 class CatalogConfig(StrictModel):
+    stay22: Stay22Config = Field(default_factory=Stay22Config)
     hotel_quote_policies: dict[HotelProvider, HotelQuotePolicy] = Field(default_factory=dict)
     public_enabled: bool = False
     direct_hotel_links_enabled: bool = False
@@ -463,6 +527,7 @@ class HotelConfigPatch(StrictModel):
     hotel_enabled: bool | None = None
     direct_hotel_links_enabled: bool | None = None
     hotel_quote_policies: dict[HotelProvider, HotelQuotePolicy] | None = None
+    stay22: Stay22Config | None = None
 
     @model_validator(mode="after")
     def nonempty(self) -> Self:

@@ -419,6 +419,7 @@ async def recommendations(
     public: bool = True,
     trip: TripPlan | None = None,
     rows: list[TripPlanItem] | None = None,
+    tracking_allowed: bool = True,
     **filters: Any,
 ) -> dict[str, Any]:
     if city not in CITIES:
@@ -472,7 +473,8 @@ async def recommendations(
 
         result_product["booking_options"] = (
             await public_options(
-                session, product, config, settings, now, hotel_targets.get(str(product.id), set())
+                session, product, config, settings, now, hotel_targets.get(str(product.id), set()),
+                tracking_allowed=tracking_allowed,
             )
             if product.kind == "hotel"
             else []

@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { StayAreaFlow, type StayAreasResponse, type StayHotel, type StayHotelsResponse } from "./stay-area-flow";
+import { useStay22BookingContext } from "@/lib/stay22-booking-context";
 
 const tripId = "00000000-0000-4000-8000-000000000001";
 const future = new Date(Date.now() + 10 * 60_000).toISOString();
@@ -95,12 +96,30 @@ afterEach(() => {
 });
 
 describe("stay area flow", () => {
+  it("puts the reviewed catalog before the collapsed map and preserves original dates in its context", async () => {
+    const booking = { check_in: "2099-11-01", check_out: "2100-01-01", adults: 3, children: 1, rooms: 2, children_ages: [5] };
+    const fetchMock = stubFetch(byPath({ areas: { ...areas, booking_context: booking } }));
+    function CatalogContext() {
+      const context = useStay22BookingContext();
+      return <div data-testid="catalog-context">{JSON.stringify(context)}</div>;
+    }
+    render(<StayAreaFlow tripId={tripId} busy={false} onSelectHotel={vi.fn()} onManualLodging={vi.fn()} catalog={() => <CatalogContext />} />);
+    await waitFor(() => expect(screen.getByTestId("catalog-context").textContent).toBe(JSON.stringify(booking)));
+    const catalog = screen.getByRole("region", { name: "已審核飯店・直接選訂房平台" });
+    const map = screen.getByText("地圖找附近住宿").closest("details")!;
+    expect(map.open).toBe(false);
+    expect(catalog.compareDocumentPosition(map) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(document.querySelector("iframe")).toBeNull();
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/hotels"))).toBe(false);
+  });
+
   it("loads the external map without first calling hotel search or mutating the trip", async () => {
     const fetchMock = stubFetch(byPath({ areas: { ...areas, pricing: { available: false }, map_context: {
       destination_id: "tokyo", country_code: "JP", city_code: "NRT", check_in: "2099-11-10", check_out: "2099-11-15", travelers: { adults: 2, children: 1, rooms: 1 }, currency: "TWD",
     } } }));
     const onSelect = vi.fn();
     render(<StayAreaFlow tripId={tripId} busy={false} onSelectHotel={onSelect} onManualLodging={vi.fn()} />);
+    fireEvent.click(await screen.findByText("地圖找附近住宿"));
     const load = await screen.findByRole("button", { name: "同意並載入 Stay22 地圖" });
     expect(document.querySelector("iframe")).toBeNull();
     const before = fetchMock.mock.calls.length;
@@ -117,10 +136,12 @@ describe("stay area flow", () => {
       destination_id: "tokyo", country_code: "JP", city_code: "NRT", check_in: "2099-11-10", check_out: "2099-11-15", travelers: { adults: 2, children: 0, rooms: 1 },
     } } }));
     render(<StayAreaFlow tripId={tripId} busy={false} onSelectHotel={vi.fn()} onManualLodging={vi.fn()} />);
+    fireEvent.click(await screen.findByText("地圖找附近住宿"));
     fireEvent.click(await screen.findByRole("button", { name: "同意並載入 Stay22 地圖" }));
     fireEvent.click(screen.getAllByRole("button", { name: /看這區的飯店/ })[1]);
     expect(document.querySelector("iframe")).toBeNull();
-    fireEvent.click(screen.getByRole("button", { name: "同意並載入 Stay22 地圖" }));
+    fireEvent.click(screen.getByText("地圖找附近住宿"));
+    fireEvent.click(await screen.findByRole("button", { name: "同意並載入 Stay22 地圖" }));
     expect(document.querySelector("iframe")?.src).toContain("lng=139.70000");
     await screen.findByText("淺草河畔飯店");
   });

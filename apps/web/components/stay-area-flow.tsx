@@ -1,13 +1,15 @@
 "use client";
 
 import { ArrowLeft, ArrowRight, BedDouble, Check, CircleAlert, ExternalLink, Loader2, MapPin, RefreshCw, Star } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { hotelNightlyPrice, hotelStarRating, type HotelOfferView } from "@/components/hotel-offer-card";
 import { Stay22MapPanel } from "@/components/stay22-map-panel";
 import type { Stay22MapContext } from "@/lib/stay22";
 import { api, formatCurrency } from "@/lib/api";
 import { activeLocale } from "@/lib/locale-format";
+import { Stay22BookingContextProvider, type BookingContext } from "@/lib/stay22-booking-context";
+import { stay22AllezCopy } from "@/lib/stay22-allez-copy";
 
 export type StayArea = {
   code: string;
@@ -30,6 +32,7 @@ export type StayAreasResponse = {
   destination_name?: string | null;
   city_code?: string | null;
   map_context?: Stay22MapContext | null;
+  booking_context?: BookingContext | null;
   status: "recommended" | "low_evidence" | "no_evidence" | "unsupported";
   pricing: { available: boolean; provider?: string | null; mode?: string | null; message?: string | null };
   current_lodging_area_code?: string | null;
@@ -193,6 +196,15 @@ function StayHotelCard({ hotel, areaName, areaCode, tripId, busy, expired, onSel
   </article>;
 }
 
+function OptionalStayMap({ context, area, onManualLodging }: { context?: Stay22MapContext | null; area?: StayArea; onManualLodging: () => void }) {
+  const copy = stay22AllezCopy(useLocale());
+  const [open, setOpen] = useState(false);
+  return <details onToggle={(event) => setOpen(event.currentTarget.open)} className="min-w-0 rounded-2xl border border-[var(--line)] p-4">
+    <summary tabIndex={0} className="min-h-11 cursor-pointer py-3 text-sm font-semibold">{copy.mapToggle}</summary>
+    {open && <Stay22MapPanel context={context} area={area} onManualLodging={onManualLodging} />}
+  </details>;
+}
+
 export function StayAreaFlow({ tripId, busy, onSelectHotel, onManualLodging, catalog }: {
   tripId: string;
   busy: boolean;
@@ -201,6 +213,7 @@ export function StayAreaFlow({ tripId, busy, onSelectHotel, onManualLodging, cat
   catalog?: (areaCode?: string) => ReactNode;
 }) {
   const t = useTranslations("stayAreas");
+  const copy = stay22AllezCopy(useLocale());
   const [areas, setAreas] = useState<StayAreasResponse>();
   const [areasError, setAreasError] = useState<string>();
   const [areasAttempt, setAreasAttempt] = useState(0);
@@ -281,12 +294,18 @@ export function StayAreaFlow({ tripId, busy, onSelectHotel, onManualLodging, cat
 
   const reasonLabel = (reason: string) => (KNOWN_REASONS.has(reason) ? t(`area.reason.${reason}`) : null);
   const mapArea = selected || areas?.areas.find((area) => !area.is_day_trip);
-  const stayMap = <Stay22MapPanel key={tripId} context={areas?.map_context} area={mapArea} onManualLodging={onManualLodging} />;
+  const stayMap = areas ? <OptionalStayMap key={`${tripId}:${mapArea?.code ?? "default"}`} context={areas.map_context} area={mapArea} onManualLodging={onManualLodging} /> : null;
+  const reviewedCatalog = catalog ? <section aria-label={copy.catalogTitle} className="min-w-0 space-y-3">
+    <header><h3 className="font-bold">{copy.catalogTitle}</h3><p className="mt-1 text-xs text-[var(--muted)]">{copy.catalogNote}</p></header>
+    <Stay22BookingContextProvider value={areas?.booking_context}>
+      {areas || areasError ? catalog(selected?.code) : <div aria-busy="true" className="h-24 animate-pulse rounded-2xl bg-[var(--paper)]" />}
+    </Stay22BookingContextProvider>
+  </section> : null;
 
   if (!selected) {
     return <div className="space-y-4">
+      {reviewedCatalog}
       {stayMap}
-      {catalog?.()}
       {areasError && <Notice tone="warn"><span className="flex-1">{areasError}</span><button type="button" onClick={retryAreas} className="shrink-0 font-bold underline">{t("retry")}</button></Notice>}
       {!areas && !areasError && <div aria-busy="true" className="space-y-3"><div className="h-24 animate-pulse rounded-2xl bg-[var(--paper)]" /><div className="h-24 animate-pulse rounded-2xl bg-[var(--paper)]" /><p className="text-center text-sm text-[var(--muted)]">{t("loadingAreas")}</p></div>}
       {areas && <>
@@ -351,8 +370,8 @@ export function StayAreaFlow({ tripId, busy, onSelectHotel, onManualLodging, cat
       {hotels?.travelers && <p className="mt-1 text-xs text-[var(--muted)]">{t("compare.summary", { nights: hotels.nights, adults: hotels.travelers.adults, rooms: hotels.travelers.rooms })}{validity ? ` · ${validity}` : ""}</p>}
     </header>
     {flash && <Notice tone="teal">{flash}</Notice>}
+    {reviewedCatalog}
     {stayMap}
-    {catalog?.(selected.code)}
     {loadingHotels && <div aria-busy="true" className="space-y-3"><div className="h-28 animate-pulse rounded-2xl bg-[var(--paper)]" /><div className="h-28 animate-pulse rounded-2xl bg-[var(--paper)]" /><p className="text-center text-sm text-[var(--muted)]">{t("compare.loading")}</p></div>}
     {hotelsError && <Notice tone="warn"><span className="flex-1">{hotelsError}</span><button type="button" onClick={() => void loadHotels(selected, true)} className="shrink-0 font-bold underline">{t("retry")}</button></Notice>}
     {hotels && !loadingHotels && <>

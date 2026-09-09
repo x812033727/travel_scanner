@@ -12,7 +12,8 @@ from sqlalchemy import func, or_, select
 from app.admin.service import load_runtime_settings
 from app.affiliates.schemas import AffiliateModule
 from app.affiliates.service import TravelpayoutsLinkClient as TravelpayoutsLinkClient
-from app.auth.service import AdminUser
+from app.auth.service import AdminUser, cached_admin_capabilities
+from app.config import Settings
 from app.destinations.catalog import DESTINATIONS
 from app.infra import get_redis
 from app.models import (
@@ -45,6 +46,7 @@ from app.travel_services.schemas import (
     CITIES,
     KINDS,
     BrandInput,
+    CatalogConfig,
     ConfigInput,
     CsvInput,
     DestinationOfferBatchReview,
@@ -66,10 +68,92 @@ from app.travel_services.service import (
     link_context,
     product_input,
     ready_brand,
+    ready_offer,
     require_product_review,
 )
 
 router = APIRouter(prefix="/admin/travel-services", tags=["admin travel services"])
+
+Stay22Provider = Literal["booking", "agoda", "expedia"]
+Stay22Readiness = Literal[
+    "existing_affiliate", "stay22_capable", "missing_link", "review_expired", "blocked"
+]
+STAY22_PROVIDERS: tuple[Stay22Provider, ...] = ("booking", "agoda", "expedia")
+STAY22_READINESS: tuple[Stay22Readiness, ...] = (
+    "existing_affiliate", "stay22_capable", "missing_link", "review_expired", "blocked"
+)
+
+
+def require_stay22_management(user: Any) -> None:
+    from app.problems import AppError
+
+    if "settings.manage" not in cached_admin_capabilities(user):
+        raise AppError(403, "admin_capability_required", "修改分潤設定需要系統設定管理權限")
+
+
+def stay22_readiness_state(
+    product: TravelServiceProduct,
+    provider: Stay22Provider,
+    config: CatalogConfig,
+    now: datetime,
+    eligible_targets: set[tuple[str, str]],
+) -> Stay22Readiness:
+    from app.travel_services.hotel_options import ready_option, same_hotel_target
+    from app.travel_services.stay22 import validate_stay22_target
+
+    option = next((item for item in product.hotel_options if item.provider == provider), None)
+    if option is None or option.discovery_status != "found" or not option.url:
+        return "missing_link"
+    if option.status == "approved" and (
+        not option.verified_at or not now - timedelta(days=30) <= option.verified_at <= now
+    ):
+        return "review_expired"
+    if not ready_option(product, option, config, now):
+        return "blocked"
+    if any(
+        brand == provider and same_hotel_target(provider, option.url, target)
+        for brand, target in eligible_targets
+    ):
+        return "existing_affiliate"
+    try:
+        validate_stay22_target(provider, option.url)
+    except ValueError:
+        return "blocked"
+    # Potential, not a claim that the switch is on or tracking is verified.
+    return "stay22_capable"
+
+
+async def stay22_readiness_data(
+    session: Session, products: list[TravelServiceProduct], config: CatalogConfig,
+    settings: Settings, now: datetime,
+) -> tuple[list[dict[str, Any]], dict[UUID, dict[Stay22Provider, Stay22Readiness]]]:
+    targets: dict[UUID, set[tuple[str, str]]] = {}
+    pairs = (await session.execute(
+        select(TravelServiceOffer, TravelServiceBrand)
+        .join(TravelServiceBrand, TravelServiceBrand.id == TravelServiceOffer.brand_id)
+        .where(
+            TravelServiceOffer.product_id.in_([product.id for product in products]),
+            TravelServiceOffer.scope == "product",
+            TravelServiceBrand.code.in_(STAY22_PROVIDERS),
+        )
+    )).all()
+    product_by_id = {product.id: product for product in products}
+    for offer, brand in pairs:
+        if ready_offer(offer, brand, product_by_id[offer.product_id], settings, now):
+            targets.setdefault(offer.product_id, set()).add((brand.code, offer.target_url))
+    states = {
+        product.id: {
+            provider: stay22_readiness_state(
+                product, provider, config, now, targets.get(product.id, set())
+            ) for provider in STAY22_PROVIDERS
+        } for product in products
+    }
+    return [
+        {"provider": provider, **{
+            state: sum(values[provider] == state for values in states.values())
+            for state in STAY22_READINESS
+        }} for provider in STAY22_PROVIDERS
+    ], states
 
 
 def audit(
@@ -150,6 +234,8 @@ async def overview_data(
     offer_review_due: bool = False,
     domain: Literal["hotels", "services"] | None = None,
     missing_options: bool = False,
+    booking_provider: Stay22Provider | None = None,
+    booking_readiness: Stay22Readiness | None = None,
 ) -> dict[str, Any]:
     config, version = await catalog_config(session)
     settings = await load_runtime_settings(session)
@@ -170,6 +256,22 @@ async def overview_data(
         query = query.where(TravelServiceProduct.kind == type)
     if status:
         query = query.where(TravelServiceProduct.status == status)
+    stay22_readiness: list[dict[str, Any]] = []
+    readiness_by_product: dict[UUID, dict[Stay22Provider, Stay22Readiness]] = {}
+    if domain == "hotels":
+        candidates = list(await session.scalars(query))
+        stay22_readiness, readiness_by_product = await stay22_readiness_data(
+            session, candidates, config, settings, now
+        )
+        if booking_provider or booking_readiness:
+            query = query.where(TravelServiceProduct.id.in_([
+                product_id for product_id, values in readiness_by_product.items()
+                if any(
+                    (booking_provider is None or provider == booking_provider)
+                    and (booking_readiness is None or state == booking_readiness)
+                    for provider, state in values.items()
+                )
+            ]))
     products = list(
         await session.scalars(
             query.order_by(TravelServiceProduct.updated_at.desc()).offset(offset).limit(limit)
@@ -323,6 +425,7 @@ async def overview_data(
             "enabled_kinds": ["hotel"] if "hotel" in config.enabled_kinds else [],
             "direct_hotel_links_enabled": config.direct_hotel_links_enabled,
             "hotel_quote_policies": config_data["hotel_quote_policies"],
+            "stay22": config_data["stay22"],
         }
     click_query = (
         select(func.count())
@@ -359,6 +462,7 @@ async def overview_data(
         summary["total"] = sum(summary.values())
     return {
         "summary": summary,
+        "stay22_readiness": stay22_readiness,
         "config": config_data,
         "version": version,
         "products": [
@@ -366,6 +470,7 @@ async def overview_data(
                 **record(p),
                 "facts": product_input(p).facts.model_dump(mode="json"),
                 "booking_options": [record(o) for o in p.hotel_options],
+                "stay22_readiness": readiness_by_product.get(p.id, {}),
             }
             for p in products
         ],
@@ -460,11 +565,16 @@ async def overview_data(
 
 @router.put("/config")
 async def put_config(payload: ConfigInput, user: AdminUser, session: Session) -> dict[str, Any]:
+    if "stay22" in payload.model_fields_set:
+        require_stay22_management(user)
     row = await locked_catalog_config(session)
     if payload.version != (row.version if row else 0):
         await session.rollback()
         raise fail("service_version_conflict", 409)
     data = payload.model_dump(exclude={"version"})
+    if "stay22" not in payload.model_fields_set and row and "stay22" in row.data:
+        # Older full-form editors must not reset a newly configured affiliate channel.
+        data["stay22"] = row.data["stay22"]
     if row:
         row.data = data
         row.version += 1

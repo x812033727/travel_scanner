@@ -1,18 +1,21 @@
 """Hotel workspace: scoped reads/imports and a narrow versioned catalog merge."""
 
-from typing import Any
+from typing import Annotated, Any
 from uuid import UUID
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Depends, Query
 
 from app.admin.service import load_runtime_settings
-from app.auth.service import AdminUser
-from app.models import TravelServiceConfig
+from app.auth.service import AdminUser, CurrentUser, cached_admin_capabilities
+from app.models import TravelServiceConfig, User
 from app.travel_services.admin import (
+    Stay22Provider,
+    Stay22Readiness,
     audit,
     locked_catalog_config,
     overview_data,
     preview_import_data,
+    require_stay22_management,
 )
 from app.travel_services.imports import commit_import
 from app.travel_services.router import Session
@@ -20,6 +23,21 @@ from app.travel_services.schemas import CsvInput, HotelConfigPatch
 from app.travel_services.service import fail
 
 router = APIRouter(prefix="/admin/hotels", tags=["admin hotels"])
+
+
+async def hotel_config_user(payload: HotelConfigPatch, user: CurrentUser) -> User:
+    from app.problems import AppError
+
+    fields = payload.model_fields_set - {"version"}
+    capabilities = cached_admin_capabilities(user)
+    if "stay22" in fields:
+        require_stay22_management(user)
+    if (fields - {"stay22"} or not fields) and "content.manage" not in capabilities:
+        raise AppError(403, "admin_capability_required", "目前管理員角色沒有這項操作權限")
+    return user
+
+
+HotelConfigUser = Annotated[User, Depends(hotel_config_user)]
 
 
 @router.get("")
@@ -34,8 +52,10 @@ async def overview(
     offer_brand_id: UUID | None = None,
     offer_review_due: bool = False,
     missing_options: bool = False,
+    booking_provider: Stay22Provider | None = None,
+    booking_readiness: Stay22Readiness | None = None,
 ) -> dict[str, Any]:
-    return await overview_data(
+    result = await overview_data(
         session,
         domain="hotels",
         destination_id=destination_id,
@@ -46,13 +66,19 @@ async def overview(
         offer_brand_id=offer_brand_id,
         offer_review_due=offer_review_due,
         missing_options=missing_options,
+        booking_provider=booking_provider,
+        booking_readiness=booking_readiness,
     )
+    result["can_manage_stay22"] = "settings.manage" in cached_admin_capabilities(user)
+    return result
 
 
 @router.patch("/config")
 async def patch_config(
-    payload: HotelConfigPatch, user: AdminUser, session: Session
+    payload: HotelConfigPatch, user: HotelConfigUser, session: Session
 ) -> dict[str, Any]:
+    if "stay22" in payload.model_fields_set:
+        require_stay22_management(user)
     row = await locked_catalog_config(session)
     if payload.version != (row.version if row else 0):
         await session.rollback()

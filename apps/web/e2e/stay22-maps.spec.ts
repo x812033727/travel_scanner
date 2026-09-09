@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { pretendSignedIn } from "./session";
 import type { Stay22Copy } from "../lib/stay22-copy";
+import type { Stay22AllezCopy } from "../lib/stay22-allez-copy";
 
 const tripId = "stay22-pilot-test";
 const mapContext = { destination_id: "tokyo", country_code: "JP", city_code: "NRT", check_in: "2099-11-11", check_out: "2099-11-15", travelers: { adults: 2, children: 1, rooms: 1 }, currency: "TWD" };
@@ -53,6 +54,8 @@ for (const { locale, width } of [
     await optionalArrangements.locator(":scope > summary").click();
     // Unconfigured lodging uses the API-provided item title in the optional arrangements.
     await optionalArrangements.getByRole("button", { name: trip.items[0].title, exact: true }).click();
+    const allezCopy: Stay22AllezCopy = JSON.parse(readFileSync(new URL(`../lib/stay22-allez-messages/${locale}.json`, import.meta.url), "utf8"));
+    await page.getByText(allezCopy.mapToggle, { exact: true }).click();
     const copy: Stay22Copy = JSON.parse(readFileSync(new URL(`../lib/stay22-messages/${locale}.json`, import.meta.url), "utf8"));
     const panel = page.getByRole("region", { name: copy.title });
     await expect(panel).toBeVisible();
