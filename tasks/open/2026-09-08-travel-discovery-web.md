@@ -5,7 +5,7 @@ status: in-progress
 priority: P1
 area: web
 owner: codex-discovery-web
-claimed_at: 2026-09-08T23:36:49Z
+claimed_at: 2026-09-09T00:21:40Z
 created_at: 2026-09-08T23:24:10Z
 completed_at:
 branch: codex/travel-discovery-community
@@ -21,6 +21,11 @@ scope:
   - apps/web/lib/community/types.ts
   - apps/web/components/travel-card-actions.tsx
   - apps/web/components/travel-card-actions.test.tsx
+  - apps/web/messages/en/metadata.json
+  - apps/web/messages/ja/metadata.json
+  - apps/web/messages/ko/metadata.json
+  - apps/web/messages/zh-CN/metadata.json
+  - apps/web/messages/zh-TW/metadata.json
 ---
 
 # Travel discovery homepage search collections and media experience
@@ -34,18 +39,20 @@ Unify sourced travel discovery, clear recommendations, private collections and s
 - [x] Flag-off homepage remains unchanged; flag-on homepage and explore support URL filters and honest source disclosure.
 - [x] Explicit preferences, dismiss/undo, private collection and trip handoff work with authentication return paths.
 - [x] Creator invites and reference-only video editing preserve existing publication review and draft behavior.
-- [ ] Five-language UI, focused tests and static checks pass; parent validates desktop/Pixel 7 end-to-end.
+- [x] Five-language UI, focused tests, route metadata and static checks pass.
+- [ ] Parent completes final desktop/Pixel 7 end-to-end and release validation.
 
 ## Steps
 
 - [x] Read repository task protocol and installed Next use-client/page documentation.
 - [x] Coordinate discovery/community API contracts and isolated localization ownership.
 - [x] Implement discovery and community UI with focused regression coverage.
-- [ ] Complete final static checks, route metadata catalogs and parent browser/release verification.
+- [x] Complete final static checks and route metadata catalogs.
+- [ ] Parent completes final browser/release verification.
 
 ## How to verify
 
-`npm exec --workspace @travel-scanner/web -- vitest run components/discovery components/community/discovery-social.test.tsx components/travel-card-actions.test.tsx --pool=threads --maxWorkers=1`
+`npm exec --workspace @travel-scanner/web -- vitest run 'app/[locale]/metadata.test.ts' components/discovery components/community/discovery-social.test.tsx components/travel-card-actions.test.tsx components/community/community.test.tsx --pool=threads --maxWorkers=1`
 
 `npm run typecheck:web` and focused ESLint across all scoped TypeScript/TSX files.
 
@@ -53,7 +60,7 @@ Parent owns real desktop/Pixel 7 Playwright, production build and full-stack ver
 
 ## Notes
 
-Root approved a bounded scope extension for opt-in TravelCardActions login-resume and modal accessibility. Existing legacy callers retain default behavior. No global CSS, shared translations, planner or provider configuration edits.
+Root approved bounded scope extensions for opt-in TravelCardActions login-resume/modal accessibility and the exact five metadata catalogs after their previous owner released them. Existing legacy callers retain default behavior. No global CSS, other shared translations, planner or provider configuration edits.
 
 - Public status is fail-closed and deduplicated; account data is abortable and bound to the active login identity. Discovery OFF retains both the existing home form and legacy TravelExplore hub.
 - Keyword/feed filters persist in the URL. Search uses the server's selected mode; destination/topic options come from suggestions taxonomy, not the active filter echo. No AI or fabricated-image claims.
@@ -61,5 +68,7 @@ Root approved a bounded scope extension for opt-in TravelCardActions login-resum
 - Exact server-derived place selection paths reuse the trip/day picker. Login return intents only reopen confirmation; resumed saves use idempotent setSaved(true), never toggle an existing favourite off.
 - Source details show actual language, source type, author/date and update time. YouTube refs are canonical IDs only; verified players use click-to-load exact youtube-nocookie embeds, no autoplay, minimum 200px in each dimension.
 - Explicit preference 409 conflict/discard/reload and expired-page restart paths added after independent review. No preference or browser-history inference is stored by the UI.
-- First final focused run: 5 files / 34 tests passed; extra pagination/conflict/available-option regressions added afterward. Focused ESLint and whole-web TypeScript passed before final additions and are being rerun.
-- New page metadata requires discoveryCollectionsTitle/Description in five existing metadata catalogs. Their broader messages scope is held by another task; parent is coordinating that handoff. Do not weaken metadata tests.
+- Final source verification before metadata: 6 focused files / 59 tests passed, including original thumbnail/full image authorization, session-identity reset, mobile filter collapse, public video/itinerary snapshots, pagination/conflict and available-option regressions. Scoped ESLint and whole-web TypeScript passed after final source changes.
+- After rebase and exact metadata scope handoff: metadata plus scoped suite passed, 7 files / 99 tests. check:i18n passed (5 locales / 25 namespaces); check:tasks passed (195 task files). The metadata test was not weakened.
+- Only exploreTitle/Description and discoveryCollectionsTitle/Description changed in each metadata catalog. Explore wording remains accurate with discovery OFF; the new private collection page has distinct titles/descriptions in all five languages.
+- Parent reported desktop/Pixel 7 focused search, dialog focus restoration and legacy-hub checks passed (6 cases). Parent retains final full-stack/build/release ownership; no generated next-env or production changes were made by this task.

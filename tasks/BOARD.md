@@ -29,7 +29,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | [Travel discovery search feed and explicit preferences API](open/2026-09-08-travel-discovery-api.md) | codex-discovery-api | 2026-09-09T00:11:48Z | `codex/travel-discovery-community` |
 | [Community curated video invitations and collection references](open/2026-09-08-travel-discovery-community.md) | codex-discovery-community | 2026-09-08T23:24:28Z | `codex/travel-discovery-community` |
-| [Travel discovery homepage search collections and media experience](open/2026-09-08-travel-discovery-web.md) | codex-discovery-web | 2026-09-08T23:36:49Z | `codex/travel-discovery-community` |
+| [Travel discovery homepage search collections and media experience](open/2026-09-08-travel-discovery-web.md) | codex-discovery-web | 2026-09-09T00:21:40Z | `codex/travel-discovery-community` |
 | [Travel discovery integration navigation safety and acceptance](open/2026-09-08-travel-discovery-integration.md) | codex-discovery-root | 2026-09-09T00:02:51Z | `codex/travel-discovery-community` |
 
 ## In review
