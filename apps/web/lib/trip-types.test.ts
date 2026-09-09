@@ -2,8 +2,10 @@ import { describe, expect, it } from "vitest";
 import {
   adjacentPairKeys,
   distanceKm,
+  deriveDayTimeline,
   estimateLegMinutes,
   formatTime,
+  hasRoutePoint,
   missingSegmentCount,
   projectChainedStarts,
   segmentsForRows,
@@ -32,6 +34,8 @@ function item(overrides: Partial<TripItem> & Pick<TripItem, "id">): TripItem {
     locked: false,
     is_skipped: false,
     data: {},
+    latitude: 35.68,
+    longitude: 139.76,
     ...overrides,
   } as TripItem;
 }
@@ -61,9 +65,9 @@ describe("projectChainedStarts", () => {
     const rows = [hotel, item({ id: "museum" }), item({ id: "market", duration_minutes: 30 })];
     const projected = projectChainedStarts(rows, [], 10);
 
-    // 09:00 出發 + 10 分緩衝 → 09:10；停留 60 分後 + 10 分 → 10:20
-    expect(formatTime(projected.get("museum")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:10");
-    expect(formatTime(projected.get("market")?.start, "zh-TW", "Asia/Tokyo")).toBe("10:20");
+    // Even nearby coordinates include an estimated transit overhead and buffer.
+    expect(formatTime(projected.get("museum")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:20");
+    expect(formatTime(projected.get("market")?.start, "zh-TW", "Asia/Tokyo")).toBe("10:40");
     expect(projected.get("museum")?.estimated).toBe(true);
     expect(projected.get("market")?.estimated).toBe(true);
   });
@@ -77,7 +81,7 @@ describe("projectChainedStarts", () => {
     expect(formatTime(projected.get("museum")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:30");
     expect(projected.get("museum")?.estimated).toBe(false);
     // 後續沒有路線的站別仍然接著累加：09:30 + 60 分停留 + 10 分緩衝
-    expect(formatTime(projected.get("market")?.start, "zh-TW", "Asia/Tokyo")).toBe("10:40");
+    expect(formatTime(projected.get("market")?.start, "zh-TW", "Asia/Tokyo")).toBe("10:50");
     expect(projected.get("market")?.estimated).toBe(true);
   });
 
@@ -95,7 +99,8 @@ describe("projectChainedStarts", () => {
     expect(formatTime(projected.get("temple")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:35");
     expect(projected.get("temple")?.estimated).toBe(true);
     expect(formatTime(projected.get("tower")?.start, "zh-TW", "Asia/Tokyo")).toBe("10:55");
-    expect(projected.get("tower")?.estimated).toBe(false);
+    // A saved downstream duration cannot make the estimated upstream arrival certain.
+    expect(projected.get("tower")?.estimated).toBe(true);
   });
 
   it("restarts the chain from a fixed-time stop and leaves it out of the result", () => {
@@ -110,7 +115,7 @@ describe("projectChainedStarts", () => {
     expect(projected.has("hotel")).toBe(false);
     expect(projected.has("lunch")).toBe(false);
     // 從固定的 12:00 午餐重新起算：+ 60 分停留 + 15 分緩衝
-    expect(formatTime(projected.get("tower")?.start, "zh-TW", "Asia/Tokyo")).toBe("13:15");
+    expect(formatTime(projected.get("tower")?.start, "zh-TW", "Asia/Tokyo")).toBe("13:25");
   });
 
   it("skips items the member removed from the day", () => {
@@ -122,7 +127,7 @@ describe("projectChainedStarts", () => {
     const projected = projectChainedStarts(rows, [], 10);
 
     expect(projected.has("dinner")).toBe(false);
-    expect(formatTime(projected.get("museum")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:10");
+    expect(formatTime(projected.get("museum")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:20");
   });
 
   it("keeps wall-clock itinerary values on the same clock instead of shifting them", () => {
@@ -132,8 +137,8 @@ describe("projectChainedStarts", () => {
     ];
     const projected = projectChainedStarts(rows, [], 10);
 
-    expect(projected.get("museum")?.start).toBe("2026-11-10T09:10");
-    expect(formatTime(projected.get("museum")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:10");
+    expect(projected.get("museum")?.start).toBe("2026-11-10T09:20");
+    expect(formatTime(projected.get("museum")?.start, "zh-TW", "Asia/Tokyo")).toBe("09:20");
   });
 });
 
@@ -212,4 +217,105 @@ describe("adjacent pair helpers", () => {
 
     expect([...adjacentPairKeys(withSkipAndOtherDay)]).toEqual(["a->b", "b->c", "e->f"]);
   });
+});
+
+describe("deriveDayTimeline", () => {
+  const a = item({ id: "a", position: 1, fixed_time: true, start_time: "2026-11-10T09:00:00+09:00" });
+  const b = item({ id: "b", position: 3 });
+  const empty = (id: string, role: TripItem["system_role"], position: number) => item({
+    id, position, system_role: role, latitude: null, longitude: null, fixed_time: true,
+    start_time: "2026-11-10T12:00:00+09:00", data: { meal_selection_source: "unset" },
+  });
+
+  it("excludes empty hotels and meals from both edges and time without changing stored rows", () => {
+    const rows = [empty("hotel", "hotel_start", 0), a, empty("lunch", "lunch", 2), b, empty("dinner", "dinner", 4), empty("return", "hotel_end", 5)];
+    const original = JSON.stringify(rows);
+    const value = deriveDayTimeline(rows, [segment("a", "b", "2026-11-10T10:30:00+09:00")]);
+    expect(value.rows.map((row) => row.id)).toEqual(["a", "b"]);
+    expect(value.optionalRows).toHaveLength(4);
+    expect(value.edges.map((edge) => `${edge.from.id}->${edge.to.id}`)).toEqual(["a->b"]);
+    expect(formatTime(value.starts.get("b")?.start, "zh-TW", "Asia/Tokyo")).toBe("10:30");
+    expect(value.starts.get("b")?.status).toBe("ready");
+    expect(value.arrangementCount).toBe(2);
+    expect(value.durationMinutes).toBe(120);
+    expect(JSON.stringify(rows)).toBe(original);
+  });
+
+  it.each([undefined, "lunch", "hotel_start"] as const)("keeps a chosen unlocated %s as a barrier, never using a surviving a->b route", (role) => {
+    const missing = item({ id: "missing", position: 2, system_role: role, latitude: undefined, longitude: undefined,
+      location_name: "My chosen place", locked: true, data: { meal_selection_source: "user" } });
+    const value = deriveDayTimeline([a, missing, { ...b, start_time: "2026-11-10T16:00:00+09:00" }], [segment("a", "b", "2026-11-10T10:30:00+09:00")]);
+    expect(value.rows).toContain(missing);
+    expect(value.optionalRows).toHaveLength(0);
+    expect(value.edges.map((edge) => edge.status)).toEqual(["pending", "pending"]);
+    expect(value.edges.every((edge) => edge.blocker === missing && !edge.segment)).toBe(true);
+    expect(value.starts.has("b")).toBe(false);
+    expect(value.unresolvedItems).toEqual([missing]);
+  });
+
+  it("retains skipped manual rows and chosen flights for display, without edges or time", () => {
+    const skipped = item({ id: "skipped", position: 2, is_skipped: true });
+    const flight = item({ id: "flight", position: -1, system_role: "outbound_flight", data: { flight_info: { flight_number: "JL1" } } });
+    const value = deriveDayTimeline([flight, a, skipped, b], []);
+    expect(value.rows).toEqual([flight, a, skipped, b]);
+    expect(value.routeRows).toEqual([a, b]);
+    expect(value.edges).toHaveLength(1);
+    expect(value.durationMinutes).toBe(120);
+  });
+
+  it("propagates stale or estimated timing rather than claiming a reliable downstream arrival", () => {
+    const c = item({ id: "c", position: 4 });
+    const stale = { ...segment("a", "b", "2026-11-10T10:30:00+09:00"), status: "stale" };
+    const value = deriveDayTimeline([a, b, c], [stale, segment("b", "c", "2026-11-10T12:00:00+09:00")]);
+    expect(value.edges[0].status).toBe("stale");
+    expect(value.starts.get("b")).toMatchObject({ status: "stale", estimated: true });
+    expect(value.starts.get("c")).toMatchObject({ status: "stale", estimated: true });
+  });
+
+  it.each([
+    { status: "failed", duration_minutes: 0 },
+    { status: "unavailable", duration_minutes: 0 },
+    { status: "failed", duration_minutes: 1 },
+    { status: "resolved", duration_minutes: 0 },
+  ])("uses a geographic estimate instead of an unknown route duration %j", (invalid) => {
+    const saved = { ...segment("a", "b", "2026-11-10T10:00:00+09:00"), ...invalid };
+    const value = deriveDayTimeline([a, b], [saved]);
+    expect(value.edges[0].segment).toBeUndefined();
+    expect(value.edges[0].status).toBe("estimated");
+    expect(value.edges[0].estimatedMinutes).toBe(10);
+    expect(formatTime(value.starts.get("b")?.start, "zh-TW", "Asia/Tokyo")).toBe("10:20");
+  });
+
+  it("retains a genuine estimated provider duration and its buffer", () => {
+    const saved = { ...segment("a", "b", "2026-11-10T10:00:00+09:00"), provider: "estimate",
+      status: "estimated", duration_minutes: 17, buffer_minutes: 5 };
+    const value = deriveDayTimeline([a, b], [saved]);
+    expect(value.edges[0].segment).toBe(saved);
+    expect(value.edges[0].status).toBe("estimated");
+    expect(formatTime(value.starts.get("b")?.start, "zh-TW", "Asia/Tokyo")).toBe("10:22");
+  });
+
+  it("preserves a fixed appointment while propagating a late arrival downstream", () => {
+    const lunch = item({ id: "lunch", position: 2, system_role: "lunch", fixed_time: true, start_time: "2026-11-10T12:00:00+09:00" });
+    const value = deriveDayTimeline([{ ...a, duration_minutes: 180 }, lunch, b], [segment("a", "lunch", "2026-11-10T12:30:00+09:00"), segment("lunch", "b", "2026-11-10T14:00:00+09:00")]);
+    expect(value.starts.has("lunch")).toBe(false);
+    expect(lunch.start_time).toBe("2026-11-10T12:00:00+09:00");
+    expect(formatTime(value.starts.get("b")?.start, "zh-TW", "Asia/Tokyo")).toBe("14:00");
+  });
+
+  it("never chains across dates or falls back to stored downstream timestamps after a barrier", () => {
+    const nextDay = { ...b, day_date: "2026-11-11", start_time: "2026-11-11T10:00:00+09:00" };
+    const value = deriveDayTimeline([a, nextDay], [segment("a", "b", "2026-11-10T10:30:00+09:00")]);
+    expect(value.edges).toHaveLength(0);
+    expect(formatTime(value.starts.get("b")?.start, "zh-TW", "Asia/Tokyo")).toBe("10:00");
+  });
+
+  it.each([{ latitude: undefined, longitude: 0 }, { latitude: 0, longitude: null }, { latitude: NaN, longitude: 0 }, { latitude: 91, longitude: 0 }, { latitude: 0, longitude: -181 }])("rejects partial, nonfinite or out-of-range coordinates %j", (point) => {
+    expect(hasRoutePoint(point)).toBe(false);
+    expect(estimateLegMinutes(a, point, "walk")).toBeUndefined();
+    const value = deriveDayTimeline([a, { ...b, ...point }], []);
+    expect(value.edges[0].status).toBe("pending");
+  });
+
+  it("accepts zero coordinates", () => { expect(hasRoutePoint({ latitude: 0, longitude: 0 })).toBe(true); });
 });

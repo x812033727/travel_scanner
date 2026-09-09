@@ -9,6 +9,7 @@ async function workspace(page: Page) {
   const requests: string[] = [];
   await pretendSignedIn(page);
   await page.route("**/api/travel/auth/me", (route) => route.fulfill({ json: { id: "premium-ui", email: "ui@example.test", role: "user", is_active: true } }));
+  await page.route("**/api/travel/discovery/status", (route) => route.fulfill({ json: { enabled: false } }));
   await page.route("**/api/travel/trips/intuitive-trip**", async (route) => {
     const path = new URL(route.request().url()).pathname;
     requests.push(path);
@@ -63,14 +64,23 @@ test("itinerary first, category tools and one accessible contextual sheet", asyn
 
 test("continuous additions, card actions and cross-day movement preserve manual stops", async ({ page }) => {
   const state = await workspace(page);
+  await page.getByRole("button", { name: "排序行程", exact: true }).click();
   await page.getByRole("button", { name: "在 午餐・河畔食堂 前插入新安排" }).click();
   const picker = page.getByRole("dialog", { name: "下一站想去哪裡？" });
   await picker.getByRole("textbox", { name: "搜尋地點", exact: true }).fill("淺草");
-  await picker.getByRole("button", { name: "加入 淺草寺" }).click();
+  await picker.getByRole("button", { name: "選擇 淺草寺" }).click();
+  const draft = page.getByRole("dialog", { name: "新增安排", exact: true });
+  expect(state.writes).toEqual([]);
+  await draft.getByRole("button", { name: "加入行程", exact: true }).click();
+  await expect(draft).toBeHidden();
+  await page.getByRole("button", { name: "在 午餐・河畔食堂 前插入新安排" }).click();
   await expect(picker.getByRole("textbox", { name: "搜尋地點", exact: true })).toHaveValue("淺草");
-  await picker.getByRole("button", { name: "加入 隅田公園" }).click();
+  await picker.getByRole("button", { name: "選擇 隅田公園" }).click();
   await expect(page.getByRole("dialog")).toHaveCount(1);
-  await picker.getByRole("button", { name: "完成", exact: true }).click();
+  expect(state.writes).toEqual(["save"]);
+  await draft.getByRole("button", { name: "加入行程", exact: true }).click();
+  await expect(draft).toBeHidden();
+  expect(state.writes).toEqual(["save", "save"]);
   const card = page.locator('[data-stop-id="asakusa"]');
   await card.getByLabel("淺草散步 的更多操作").click();
   await card.getByRole("button", { name: "移動 淺草散步", exact: true }).click();
@@ -94,7 +104,7 @@ test("AI preview is cancellable and does not write until explicit apply", async 
   };
   await open();
   let dialog = page.getByRole("dialog");
-  await expect(dialog.getByRole("button", { name: "描述調整", exact: true })).toBeVisible();
+  await expect(dialog.getByRole("button", { name: "調整現有行程", exact: true })).toBeVisible();
   await dialog.getByRole("button", { name: "產生預覽 · 不扣次", exact: true }).click();
   await expect(dialog.locator("strong").filter({ hasText: /^淺草寺$/ })).toBeVisible();
   expect(state.writes).toEqual([]);
@@ -150,9 +160,13 @@ test("single-page creation needs only city and dates and opens an unpaid blank i
   await startPlanning.click();
   await expect(page.locator(".premium-new-trip").getByRole("alert")).toContainText("請選擇開始與結束日期");
   expect(createCount).toBe(0);
+  const travelers = page.locator(".calm-new-trip-travelers");
+  await expect(travelers).not.toHaveAttribute("open", "");
+  await travelers.locator("summary").click();
   await expect(page.getByLabel("成人", { exact: true })).toHaveValue("2");
   await expect(page.getByLabel("兒童", { exact: true })).toHaveValue("0");
   await expect(page.getByLabel("房間", { exact: true })).toHaveValue("1");
+  await travelers.locator("summary").click();
   await expect(page.locator(".premium-new-trip-advanced")).not.toHaveAttribute("open", "");
   await expect(page.getByRole("grid")).toHaveCount(0);
 
@@ -167,8 +181,10 @@ test("single-page creation needs only city and dates and opens an unpaid blank i
     for (let attempt = 0; attempt < 3 && await cell.count() === 0; attempt += 1) await page.getByRole("button", { name: "下個月", exact: true }).click();
     await cell.click();
   }
+  await page.locator(".calm-new-trip-name > summary").click();
   await expect(page.getByLabel("旅程名稱", { exact: true })).toHaveValue("東京・6 天");
-  await page.getByRole("button", { name: "收起日曆", exact: true }).click();
+  await page.locator(".calm-new-trip-name > summary").click();
+  // Completing both dates now collapses the calendar automatically.
   await expect(page.getByRole("grid")).toHaveCount(0);
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
   await page.screenshot({ path: testInfo.outputPath("premium-single-page-create.png"), fullPage: true });

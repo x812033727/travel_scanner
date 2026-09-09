@@ -1,5 +1,5 @@
 const en = {
-  assistant: "AI assistant", arrange: "Plan my days", adjust: "Make a change", optimize: "Improve the route",
+  assistant: "AI assistant", arrange: "Plan places", adjust: "Adjust my itinerary", optimize: "Improve the route",
   assistantHint: "Explore an idea first. Your itinerary changes only when you apply it.",
   preparation: "Travel essentials", preparationHint: "Stays, flights, weather and useful extras",
   settings: "Trip settings", settingsHint: "Travelers, preferences and daily rhythm",
@@ -10,14 +10,14 @@ const en = {
   invalidPreferences: "Check the traveler counts and preferences before saving.",
   emptyTitle: "A little space for adventure", emptyHint: "Add a place you love, or let AI suggest a first draft.",
   issues: "Planning notes", start: "Add your first place", add: "Add a place", dayOptions: "Day settings",
-  itemOptions: "Options for {title}", statusHint: "Changes save automatically", previewHint: "Preview only · nothing changed yet",
+  itemOptions: "Options for {title}", statusHint: "Applied itinerary status", previewHint: "Preview only · nothing changed yet",
   optionalStop: "Not arranged yet", free: "Free", charge: "Applied plan: {charge}", pending: "Review location",
 };
 type Copy = typeof en;
 const translations: Record<string, Copy> = {
   en,
   "zh-TW": {
-    assistant: "AI 助手", arrange: "幫我安排", adjust: "描述調整", optimize: "順一下動線",
+    assistant: "AI 助手", arrange: "安排景點", adjust: "調整現有行程", optimize: "順一下動線",
     assistantHint: "先看看建議，按下套用才會修改你的行程。",
     preparation: "旅行準備", preparationHint: "住宿、航班、天氣與實用服務",
     settings: "旅程設定", settingsHint: "旅伴、旅行偏好與每天的節奏",
@@ -28,11 +28,11 @@ const translations: Record<string, Copy> = {
     invalidPreferences: "請確認旅伴人數與偏好欄位。",
     emptyTitle: "為這一天留一點期待", emptyHint: "加入想去的地方，或讓 AI 提供第一版建議。",
     issues: "安排提醒", start: "加入第一個地點", add: "新增安排", dayOptions: "當日設定",
-    itemOptions: "{title} 的更多操作", statusHint: "修改會自動儲存", previewHint: "預覽中・尚未修改行程",
+    itemOptions: "{title} 的更多操作", statusHint: "已套用的行程狀態", previewHint: "預覽中・尚未修改行程",
     optionalStop: "尚未安排", free: "免費", charge: "套用行程：{charge}", pending: "確認地點",
   },
   "zh-CN": {
-    assistant: "AI 助手", arrange: "帮我安排", adjust: "描述调整", optimize: "优化路线",
+    assistant: "AI 助手", arrange: "安排景点", adjust: "调整现有行程", optimize: "优化路线",
     assistantHint: "先查看建议，点击应用才会修改你的行程。",
     preparation: "旅行准备", preparationHint: "住宿、航班、天气与实用服务",
     settings: "行程设置", settingsHint: "旅伴、旅行偏好与每天的节奏",
@@ -43,11 +43,11 @@ const translations: Record<string, Copy> = {
     invalidPreferences: "请确认旅伴人数与偏好字段。",
     emptyTitle: "为这一天留一点期待", emptyHint: "加入想去的地方，或让 AI 提供第一版建议。",
     issues: "安排提醒", start: "加入第一个地点", add: "新增安排", dayOptions: "当日设置",
-    itemOptions: "{title} 的更多操作", statusHint: "修改会自动保存", previewHint: "预览中・尚未修改行程",
+    itemOptions: "{title} 的更多操作", statusHint: "已应用的行程状态", previewHint: "预览中・尚未修改行程",
     optionalStop: "尚未安排", free: "免费", charge: "应用行程：{charge}", pending: "确认地点",
   },
   ja: {
-    assistant: "AIアシスタント", arrange: "旅程を提案", adjust: "変更を伝える", optimize: "移動を最適化",
+    assistant: "AIアシスタント", arrange: "訪問先を提案", adjust: "現在の旅程を調整", optimize: "移動を最適化",
     assistantHint: "まず提案を確認。適用するまで旅程は変わりません。",
     preparation: "旅の準備", preparationHint: "宿泊・航空便・天気・便利なサービス",
     settings: "旅行の設定", settingsHint: "同行者・好み・一日のペース",
@@ -58,11 +58,11 @@ const translations: Record<string, Copy> = {
     invalidPreferences: "人数と設定内容を確認してください。",
     emptyTitle: "この日に、楽しみをひとつ", emptyHint: "行きたい場所を追加するか、AIに最初の提案を頼みましょう。",
     issues: "確認事項", start: "最初の場所を追加", add: "予定を追加", dayOptions: "この日の設定",
-    itemOptions: "{title} の操作", statusHint: "変更は自動保存されます", previewHint: "プレビュー中・旅程は未変更",
+    itemOptions: "{title} の操作", statusHint: "適用済み旅程の保存状態", previewHint: "プレビュー中・旅程は未変更",
     optionalStop: "未設定", free: "無料", charge: "旅程の適用：{charge}", pending: "場所を確認",
   },
   ko: {
-    assistant: "AI 도우미", arrange: "일정 추천", adjust: "변경 요청", optimize: "동선 다듬기",
+    assistant: "AI 도우미", arrange: "방문 장소 추천", adjust: "기존 일정 조정", optimize: "동선 다듬기",
     assistantHint: "먼저 제안을 확인하세요. 적용해야 일정이 변경됩니다.",
     preparation: "여행 준비", preparationHint: "숙소, 항공편, 날씨와 유용한 서비스",
     settings: "여행 설정", settingsHint: "여행자, 취향과 하루의 속도",
@@ -73,7 +73,7 @@ const translations: Record<string, Copy> = {
     invalidPreferences: "여행자 수와 설정을 확인해 주세요.",
     emptyTitle: "이 하루에 설렘을 더해요", emptyHint: "가고 싶은 장소를 추가하거나 AI에게 첫 일정을 부탁하세요.",
     issues: "확인할 사항", start: "첫 장소 추가", add: "일정 추가", dayOptions: "하루 설정",
-    itemOptions: "{title} 옵션", statusHint: "변경 사항은 자동 저장됩니다", previewHint: "미리보기 · 아직 변경되지 않음",
+    itemOptions: "{title} 옵션", statusHint: "적용된 일정의 저장 상태", previewHint: "미리보기 · 아직 변경되지 않음",
     optionalStop: "아직 미정", free: "무료", charge: "일정 적용: {charge}", pending: "장소 확인",
   },
 };

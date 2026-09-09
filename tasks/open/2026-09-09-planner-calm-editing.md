@@ -1,0 +1,87 @@
+---
+id: 2026-09-09-planner-calm-editing
+title: Calm daily timeline and safe explicit planner editing
+status: in-progress
+priority: P1
+area: web
+owner: codex-planner-calm
+claimed_at: 2026-09-09T00:53:02Z
+created_at: 2026-09-09T00:52:55Z
+completed_at:
+branch: codex/planner-calm-editing
+depends_on: []
+scope:
+  - apps/web/components/trip-editor.tsx
+  - apps/web/components/trip-editor.test.tsx
+  - apps/web/components/itinerary-place-browser.tsx
+  - apps/web/components/itinerary-place-browser.test.tsx
+  - apps/web/components/place-picker.tsx
+  - apps/web/components/place-picker.test.tsx
+  - apps/web/components/planner
+  - apps/web/components/planner-overlay.tsx
+  - apps/web/components/planner-overlay.test.tsx
+  - apps/web/components/new-trip-form.tsx
+  - apps/web/components/new-trip-form.test.tsx
+  - apps/web/components/route-timeline-link.tsx
+  - apps/web/components/route-timeline-link.test.tsx
+  - apps/web/components/system-itinerary-card.tsx
+  - apps/web/components/system-itinerary-card.test.tsx
+  - apps/web/components/route-mode-panel.tsx
+  - apps/web/components/route-mode-panel.test.tsx
+  - apps/web/lib/trip-types.ts
+  - apps/web/lib/trip-types.test.ts
+  - apps/web/lib/planner-copy.ts
+  - apps/web/lib/planner-copy.test.ts
+  - apps/web/app/globals.css
+  - apps/web/e2e/planner-calm.spec.ts
+  - apps/web/e2e/navigation.spec.ts
+  - apps/web/e2e/planner-premium.spec.ts
+  - apps/web/e2e/full-stack.spec.ts
+  - apps/web/e2e/readability.spec.ts
+  - .github/workflows/planner-premium.yml
+  - apps/api/app/trips/router.py
+  - apps/api/app/trips/schedule.py
+  - apps/api/app/trips/route_planner.py
+  - apps/api/app/i18n.py
+  - apps/api/tests/test_trip_route_planner.py
+  - apps/api/tests/test_trip_schedule.py
+  - apps/api/tests/test_day_timeline_contract.py
+  - apps/api/tests/test_trip_create_replay.py
+  - apps/api/tests/test_trip_preferences.py
+  - docs/planner-calm-editing.md
+---
+
+# Calm daily timeline and safe explicit planner editing
+
+## Why
+
+The prior planner hid useful stops behind empty system anchors and warnings. Editors wrote on blur or selection, so users could lose place identity or misunderstand what was saved. Creation retries could lose their identity on refresh. Deliver a simpler daily timeline with explicit, recoverable editing and matching schedule projection.
+
+## Definition of done
+
+- [x] Actual stops lead the daily timeline; empty system data is retained in optional arrangements.
+- [x] Cancel/search supersession cannot change formal place IDs, coordinates or routes.
+- [x] Notes, time and preference edits use explicit Save/Cancel and retain failed drafts.
+- [x] Route requests and route application require separate explicit actions.
+- [x] Creation refresh/retry preserves the request/key and rejects payload conflicts.
+- [ ] API/Web/build/browser/CI validation is green and evidence is recorded.
+- [ ] PR is available for review; merge/deploy remain separately authorized.
+
+## Steps
+
+- [x] Isolated branch from current main; preserve concurrent homepage/navigation work.
+- [x] Implement shared timeline projection and draft workflows with focused regressions.
+- [x] Adapt browser fixtures to select/draft/save instead of auto-write.
+- [ ] Complete integrated validation, rebase, PR and CI checks.
+
+## How to verify
+
+See `docs/planner-calm-editing.md` for commands and behavioural acceptance. Local browser data is intercepted or isolated; production Tokyo trips are read-only and were not mutated.
+
+## Notes
+
+- Default-buffer mismatch reproduced: no saved day settings caused backend zero-buffer versus UI ten-minute estimates. Both now use the configured default.
+- Missing-coordinate barriers must preserve downstream provider route identity while withholding invented absolute times and conflicts.
+- Local Windows validation uses a fresh `uv sync --frozen` venv; the unrelated POSIX deployment-center module is run by Linux CI. PostgreSQL-only cases need CI.
+- Discovery owner handed back `planner-premium.spec.ts` after PR #372; retain its disabled discovery-status fixture when rebasing.
+- No production writes, provider searches, merge or deployment authorized in this task.

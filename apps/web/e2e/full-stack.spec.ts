@@ -2,6 +2,8 @@ import { expect, test, type Page } from "@playwright/test";
 
 // Unconfigured flights, lodging and meals remain available in compact disclosures.
 async function openOptionalStops(page: Page) {
+  const extras = page.locator(".calm-optional-arrangements:not([open]) > summary");
+  if (await extras.count()) await extras.click();
   const closed = page.locator(".premium-optional-stop:not([open]) > summary");
   for (let attempt = 0; attempt < 12 && await closed.count() > 0; attempt += 1) await closed.first().click();
   await expect(closed).toHaveCount(0);
@@ -47,7 +49,7 @@ test("manual insertion and single-stop cross-day move persist through the real A
   }, trip.id);
   const nextLunch = trip.items.find((item: { day_date: string; system_role: string }) => item.day_date === "2026-11-12" && item.system_role === "lunch").id;
   await page.goto(`/zh-TW/trips/${trip.id}`);
-  await page.getByRole("button", { name: "在 午餐尚未安排 前插入新安排" }).click();
+  await page.getByRole("button", { name: "加入第一個地點", exact: true }).click();
   const picker = page.getByRole("dialog", { name: "下一站想去哪裡？" });
   await expect(picker.getByRole("tab", { name: "我的收藏" })).toBeVisible();
   await picker.getByRole("button", { name: "自行填寫行程" }).click();
@@ -168,6 +170,7 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await page.getByRole("button", { name: "建立免費帳號" }).click();
   await expect(page).toHaveURL(/\/trips\/new$/, { timeout: 15_000 });
 
+  await page.locator(".calm-new-trip-name > summary").click();
   await page.getByLabel("旅程名稱").fill("東京固定餐食行程");
   await page.getByLabel("目的地").fill("日本東京");
   await pickTripDay(page, "2026-11-10");
@@ -177,15 +180,15 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
 
   const systemCards = page.locator(".planner-system-card");
   const flightCards = page.locator(".planner-flight-card");
-  await expect(systemCards).toHaveCount(3);
+  await expect(systemCards).toHaveCount(0);
   await expect(flightCards).toHaveCount(2);
   await openOptionalStops(page);
   await expect(flightCards.first()).toContainText("去程航班尚未設定");
   await expect(flightCards.last()).toContainText("回程航班尚未設定");
-  await expect(systemCards.first()).toContainText("尚未設定主要飯店");
+  await expect(page.getByRole("button", { name: "尚未設定主要飯店", exact: true })).toBeVisible();
   await expect(page.getByText("住宿據點 · 返回", { exact: true })).toHaveCount(0);
-  await expect(page.getByRole("heading", { name: "午餐尚未安排", exact: true })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "晚餐尚未安排", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "午餐尚未安排", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "晚餐尚未安排", exact: true })).toBeVisible();
 
   await page.getByRole("button", { name: "設定去程航班" }).click();
   await page.getByLabel("航空公司").fill("長榮航空");
@@ -213,16 +216,16 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await page.getByLabel("安排名稱").fill("東京手動散步");
   await page.getByRole("button", { name: "加入行程" }).click();
   const generalCard = page.locator(".planner-itinerary-card").first();
-  await expect(generalCard).toContainText("接續前站");
+  await expect(generalCard).toContainText("時間待確認");
   await generalCard.getByLabel("東京手動散步 的更多操作", { exact: true }).click();
   await generalCard.getByRole("button", { name: /^編輯 / }).click();
   await page.getByRole("radio", { name: "固定時間" }).click();
   await page.getByLabel("固定開始時間").fill("15:00");
-  await page.getByRole("dialog", { name: "編輯安排" }).getByRole("button", { name: "關閉" }).click();
+  await page.getByRole("dialog", { name: "編輯安排" }).getByRole("button", { name: "儲存修改" }).click();
   await expect(generalCard).toContainText("固定時間 · 15:00");
 
   await openOptionalStops(page);
-  await systemCards.first().getByRole("button", { name: "設定主要飯店" }).click();
+  await page.getByRole("button", { name: "尚未設定主要飯店", exact: true }).click();
   // The hotel card now opens the stay-area flow first; the manual editor is one click away.
   await page.getByRole("dialog", { name: "住宿熱區" }).getByRole("button", { name: "手動輸入飯店" }).click();
   await page.getByLabel("飯店名稱").fill("丸之內測試飯店");
@@ -230,26 +233,33 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await page.getByRole("button", { name: "同步所有日期" }).click();
   await expect(page.getByRole("dialog", { name: "設定主要飯店" })).toBeHidden();
   await openOptionalStops(page);
-  await expect(systemCards).toHaveCount(3);
+  await expect(systemCards).toHaveCount(2);
   await expect(systemCards.first()).toContainText("丸之內測試飯店");
-  await expect(page.getByText("住宿據點 · 返回", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("住宿據點 · 返回", { exact: true })).toBeVisible();
 
-  await page.getByRole("button", { name: "跳過" }).first().click();
+  await page.getByRole("button", { name: "略過用餐" }).first().click();
   await openOptionalStops(page);
-  await expect(page.getByText("已跳過，不計停留時間與路線")).toBeVisible();
-  await expect(systemCards.filter({ hasText: "午餐" })).toContainText("固定時間");
-  await expect(systemCards.filter({ hasText: "午餐" })).toHaveClass(/planner-system-card-skipped/);
-  await expect(page.getByRole("button", { name: "計算當日路線" })).toBeDisabled();
+  await expect(page.getByRole("button", { name: "恢復用餐" })).toBeVisible();
+  await expect(page.locator(".calm-day-panel .planner-system-card").filter({ hasText: "午餐" })).toHaveCount(0);
+  const tripId = new URL(page.url()).pathname.split("/").pop()!;
+  const readLunch = () => page.evaluate(async (id) => {
+    const response = await fetch(`/api/travel/trips/${id}`);
+    const state = await response.json();
+    return state.items.find((item: { system_role?: string }) => item.system_role === "lunch");
+  }, tripId);
+  await expect.poll(async () => (await readLunch()).is_skipped).toBe(true);
+  expect((await readLunch()).fixed_time).toBe(true);
 
   await page.reload();
   await expect(flightCards).toHaveCount(2);
   await openOptionalStops(page);
   await expect(flightCards.first()).toContainText("長榮航空 BR 198");
   await expect(flightCards.last()).toContainText("長榮航空 BR 197");
-  await expect(page.getByText("已跳過，不計停留時間與路線")).toBeVisible();
-  await page.getByRole("button", { name: "恢復" }).click();
-  await expect(page.getByRole("heading", { name: "午餐尚未安排", exact: true })).toBeVisible();
-  await expect(page.getByRole("button", { name: "跳過" }).first()).toBeVisible();
+  await expect(page.getByRole("button", { name: "恢復用餐" })).toBeVisible();
+  await page.getByRole("button", { name: "恢復用餐" }).click();
+  await expect.poll(async () => (await readLunch()).is_skipped).toBe(false);
+  await expect(page.getByRole("button", { name: "午餐尚未安排", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "略過用餐" }).first()).toBeVisible();
 });
 
 test("a saved trip searches flights from its own criteria and takes a quote back", async ({ page }) => {
@@ -261,6 +271,7 @@ test("a saved trip searches flights from its own criteria and takes a quote back
   await page.getByRole("button", { name: "建立免費帳號" }).click();
   await expect(page).toHaveURL(/\/trips\/new$/, { timeout: 15_000 });
 
+  await page.locator(".calm-new-trip-name > summary").click();
   await page.getByLabel("旅程名稱").fill("東京查機票");
   await page.getByLabel("目的地").fill("日本東京");
   await pickTripDay(page, "2026-11-10");
