@@ -82,7 +82,7 @@ jobs:
       - run: npm run build:web
       - run: npx playwright install --with-deps chromium
       - name: Run isolated browser UI tests
-        run: npx playwright test e2e/navigation.spec.ts e2e/readability.spec.ts e2e/signed-out.spec.ts e2e/travel-services.spec.ts e2e/merchant-styles.spec.ts
+        run: npx playwright test e2e/navigation.spec.ts e2e/readability.spec.ts e2e/signed-out.spec.ts e2e/travel-services.spec.ts e2e/merchant-styles.spec.ts e2e/admin-domains.spec.ts
         working-directory: apps/web
         # Serve the build from the step above instead of a dev server that compiles
         # each page on first visit; see playwright.config.ts.
@@ -148,6 +148,7 @@ jobs:
       PLAYWRIGHT_BASE_URL: http://localhost:3000
       AUTH_REGISTER_IP_LIMIT: "100"
       AUTH_LOGIN_IP_LIMIT: "100"
+      ADMIN_EMAILS: admin-workspace-desktop@example.com,admin-workspace-mobile@example.com
       COMMUNITY_S3_ENDPOINT: http://127.0.0.1:9000
       COMMUNITY_S3_PUBLIC_ENDPOINT: http://127.0.0.1:9000
       COMMUNITY_S3_ACCESS_KEY: community-test
@@ -200,6 +201,8 @@ jobs:
           cd apps/api
           uv run python -c 'from app.community.media import storage; from app.config import get_settings; storage().create_bucket(Bucket=get_settings().community_s3_bucket)'
           printf '%s\n' 'community-ci-password-123' | uv run python -m app.cli create-admin --email ci-community@example.com --password-stdin
+          printf '%s\n' 'isolated-admin-workspace-password-123' | uv run python -m app.cli create-admin --email admin-workspace-desktop@example.com --password-stdin
+          printf '%s\n' 'isolated-admin-workspace-password-123' | uv run python -m app.cli create-admin --email admin-workspace-mobile@example.com --password-stdin
       - name: Wait for the real stack
         id: stack-ready
         run: |
@@ -226,6 +229,11 @@ jobs:
         run: npx playwright test e2e/community.spec.ts
         working-directory: apps/web
         env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true", COMMUNITY_E2E: "1" }
+      - name: Run isolated admin domain journeys
+        if: ${{ !cancelled() && steps.stack-ready.outcome == 'success' }}
+        run: npx playwright test e2e/admin-domains-full-stack.spec.ts --workers=1
+        working-directory: apps/web
+        env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true", ADMIN_DOMAIN_E2E: "1" }
       - uses: actions/upload-artifact@v4
         if: always()
         with:

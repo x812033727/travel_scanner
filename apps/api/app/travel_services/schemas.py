@@ -9,7 +9,7 @@ from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
-from app.affiliates.schemas import AffiliateModule
+from app.affiliates.schemas import AffiliateChannel, AffiliateModule
 from app.destinations.catalog import DESTINATIONS
 from app.i18n import Locale
 
@@ -371,9 +371,23 @@ class DestinationOfferBatchReview(StrictModel):
 class ReviewInput(StrictModel):
     version: int = Field(ge=1)
     status: Status
+    browser_verified: bool = False
+    evidence_url: str | None = None
+
+    @field_validator("evidence_url")
+    @classmethod
+    def evidence(cls, value: str | None) -> str | None:
+        return safe_url(value) if value else None
+
+    @model_validator(mode="after")
+    def attestation(self) -> Self:
+        if self.browser_verified and not self.evidence_url:
+            raise ValueError("Browser verification requires exact destination evidence")
+        return self
 
 
 class BrandInput(StrictModel):
+    channel: AffiliateChannel = "travelpayouts"
     code: str
     approval: Literal["unknown", "pending", "approved", "rejected"]
     enabled: bool = False
@@ -383,10 +397,19 @@ class BrandInput(StrictModel):
     @field_validator("evidence_url")
     @classmethod
     def evidence(cls, value: str) -> str:
-        value = safe_url(value)
-        if urlsplit(value).hostname != "app.travelpayouts.com":
+        return safe_url(value)
+
+    @model_validator(mode="after")
+    def enrollment(self) -> Self:
+        if self.channel == "klook_direct":
+            if (
+                self.code != "klook"
+                or urlsplit(self.evidence_url).hostname != "affiliate.klook.com"
+            ):
+                raise ValueError("Official Klook enrollment evidence required")
+        elif urlsplit(self.evidence_url).hostname != "app.travelpayouts.com":
             raise ValueError("Travelpayouts project evidence required")
-        return value
+        return self
 
 
 class HotelQuotePolicy(StrictModel):
@@ -433,6 +456,20 @@ class CatalogConfig(StrictModel):
 
 class ConfigInput(CatalogConfig):
     version: int = Field(ge=0)
+
+
+class HotelConfigPatch(StrictModel):
+    version: int = Field(ge=0)
+    hotel_enabled: bool | None = None
+    direct_hotel_links_enabled: bool | None = None
+    hotel_quote_policies: dict[HotelProvider, HotelQuotePolicy] | None = None
+
+    @model_validator(mode="after")
+    def nonempty(self) -> Self:
+        fields = self.model_fields_set - {"version"}
+        if not fields or any(getattr(self, field) is None for field in fields):
+            raise ValueError("At least one non-null hotel setting is required")
+        return self
 
 
 class SelectInput(StrictModel):

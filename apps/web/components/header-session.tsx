@@ -28,6 +28,8 @@ export type HeaderUser = {
 type HeaderSessionValue = {
   status: "loading" | "authenticated" | "signed_out" | "unavailable";
   user: HeaderUser | null;
+  /** RAM-only identity for this login, stable across profile/currency updates. */
+  sessionIdentity: object | null;
   setUser: (user: HeaderUser) => void;
   clearSession: () => void;
   logout: () => Promise<void>;
@@ -36,6 +38,7 @@ type HeaderSessionValue = {
 const HeaderSessionContext = createContext<HeaderSessionValue>({
   status: "loading",
   user: null,
+  sessionIdentity: null,
   setUser: () => undefined,
   clearSession: () => undefined,
   logout: async () => undefined,
@@ -59,6 +62,14 @@ export function HeaderSessionProvider({
     hasSession ? "loading" : "signed_out",
   );
   const [user, setUser] = useState<HeaderUser | null>(null);
+  const [sessionIdentity, setSessionIdentity] = useState<object | null>(null);
+  const sessionPrincipal = useRef<string | null>(null);
+  const identifySession = useCallback((currentUser: HeaderUser) => {
+    if (sessionPrincipal.current !== currentUser.id) {
+      sessionPrincipal.current = currentUser.id;
+      setSessionIdentity({});
+    }
+  }, []);
 
   useEffect(() => {
     if (!hasSession) return;
@@ -69,6 +80,7 @@ export function HeaderSessionProvider({
     api<HeaderUser>("/auth/me")
       .then((currentUser) => {
         if (requestId.current !== currentRequest) return;
+        identifySession(currentUser);
         setUser(currentUser);
         setStatus("authenticated");
         let pickedLocale = false;
@@ -95,25 +107,32 @@ export function HeaderSessionProvider({
       })
       .catch((reason) => {
         if (requestId.current !== currentRequest) return;
+        if (reason instanceof ApiError && reason.status === 401) {
+          sessionPrincipal.current = null;
+          setSessionIdentity(null);
+        }
         setUser(null);
         setStatus(reason instanceof ApiError && reason.status === 401 ? "signed_out" : "unavailable");
       });
-  }, [hasSession, locale, pathname, router, searchParams]);
+  }, [hasSession, locale, pathname, router, searchParams, identifySession]);
 
   const clearSession = useCallback(() => {
     requestId.current += 1;
     // The offline worker holds this member's trip payload — hotel addresses and private
     // notes. Signing out on a shared phone has to take it with it.
     navigator.serviceWorker?.controller?.postMessage({ type: "signed-out" });
+    sessionPrincipal.current = null;
+    setSessionIdentity(null);
     setUser(null);
     setStatus("signed_out");
   }, []);
 
   const authenticate = useCallback((currentUser: HeaderUser) => {
     requestId.current += 1;
+    identifySession(currentUser);
     setUser(currentUser);
     setStatus("authenticated");
-  }, []);
+  }, [identifySession]);
 
   async function logout() {
     requestId.current += 1;
@@ -124,7 +143,7 @@ export function HeaderSessionProvider({
   }
 
   return (
-    <HeaderSessionContext.Provider value={{ status, user, clearSession, logout, setUser: authenticate }}>
+    <HeaderSessionContext.Provider value={{ status, user, sessionIdentity, clearSession, logout, setUser: authenticate }}>
       {children}
     </HeaderSessionContext.Provider>
   );

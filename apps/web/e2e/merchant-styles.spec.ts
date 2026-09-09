@@ -36,6 +36,7 @@ async function mock(page: Page) {
       facets: { areas: [], categories: [{ slug: "cafe-tea", name: "Cafe", merchant_count: 1 }], styles: [] },
     };
     else if (url.pathname.endsWith("/runtime/site-visibility")) body = { hotspots_enabled: true, trips_enabled: true, pricing_enabled: true };
+    else if (url.pathname.endsWith("/admin/provider-settings")) body = { providers: [], audit: [], encryption_source: "fixture" };
     await route.fulfill({ json: body });
   });
   return saved;

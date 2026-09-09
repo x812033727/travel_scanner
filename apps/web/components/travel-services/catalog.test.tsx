@@ -9,6 +9,7 @@ import {
 import { ServiceCatalog, TripTravelServices } from "./catalog";
 import { PUBLIC_DESTINATIONS } from "./options";
 import copy from "@/messages/zh-TW/travelServices.json";
+import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 
 const { request, navigate } = vi.hoisted(() => ({
   request: vi.fn(),
@@ -23,7 +24,9 @@ vi.mock("@/i18n/navigation", () => ({
     <a href={href}>{children}</a>
   ),
   useRouter: () => ({ push: navigate }),
+  usePathname: () => "/destinations/tokyo/services",
 }));
+vi.mock("@/lib/discovery", () => ({ useDiscoveryStatus: () => ({enabled:false, loading:false}) }));
 
 const hotel = {
   id: "hotel-1",
@@ -75,6 +78,46 @@ it("keeps destination service routes aligned to the 33-place public catalog", ()
 });
 
 describe("reviewed travel services", () => {
+  it("narrows destination discovery to the active service category without quoting or booking", async () => {
+    request.mockImplementation(async (path: string) => {
+      if (path.startsWith("/affiliates/destination-offers")) {
+        const query = new URL(path, "https://mokaair.test").searchParams;
+        return { destination_id: query.get("destination_id"), module: query.get("module"), disclosure: copy.disclosure,
+          options: [{ id: query.get("module"), cta: `Klook ${query.get("module")}`, clickout_url: "/api/travel/affiliates/destination-offers/reviewed/clickout" }] };
+      }
+      return { ...result, items: [], destinations: ["osaka", "kyoto", "unknown"] };
+    });
+    render(<ServiceCatalog tripId="trip-context" initialKind="hotel" />);
+    expect(await screen.findByRole("button", { name: /Klook hotel/ })).toBeTruthy();
+    let queries = request.mock.calls.filter(([path]) => path.startsWith("/affiliates/destination-offers"));
+    expect(queries.map(([path]) => path)).toEqual(["/affiliates/destination-offers?destination_id=osaka-kyoto&module=hotel"]);
+    fireEvent.click(screen.getByRole("button", { name: klookAffiliateCopy("zh-TW").tour }));
+    expect(await screen.findByRole("button", { name: /Klook activities/ })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: /Klook hotel/ })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: copy.transfer }));
+    expect(await screen.findByRole("button", { name: /Klook transport/ })).toBeTruthy();
+    queries = request.mock.calls.filter(([path]) => path.startsWith("/affiliates/destination-offers"));
+    expect(queries).toHaveLength(3);
+    expect(request.mock.calls.some(([path, options]) => path.includes("hotel-quotes") || options?.method === "POST")).toBe(false);
+    expect(screen.getByText(klookAffiliateCopy("zh-TW").discoveryHint)).toBeTruthy();
+    expect(screen.getByText(copy.empty)).toBeTruthy();
+  });
+
+  it("does not guess a destination or show affiliate discovery for a disabled catalog", async () => {
+    request.mockResolvedValue({ ...result, enabled: false, items: [], destinations: ["tokyo"] });
+    render(<ServiceCatalog tripId="disabled-trip" />);
+    await screen.findByText(copy.disabled);
+    expect(request.mock.calls).toHaveLength(1);
+    expect(request.mock.calls[0][0]).toContain("/trips/disabled-trip/travel-services");
+  });
+
+  it("can avoid repeating shared Kansai discovery in the second city catalog", async () => {
+    request.mockResolvedValue({ ...result, items: [] });
+    render(<ServiceCatalog destinationId="kyoto" showDestinationDiscovery={false} />);
+    await screen.findByText(copy.empty);
+    expect(request.mock.calls).toHaveLength(1);
+    expect(request.mock.calls[0][0]).toContain("destination_id=kyoto");
+  });
   it("ordinary hotel links work without partner offers or a commission disclosure", async () => {
     request.mockResolvedValue({
       ...result,

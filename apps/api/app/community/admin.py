@@ -11,10 +11,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.auth.service import AdminUser, CurrentUser
 from app.community.accounts import smtp_ready
 from app.community.content import check_version, published_post, serialize_post
+from app.community.invitations import lock_creator, require_creator_invitation, serialize_invitation
 from app.community.messaging import conversation_for
 from app.community.models import (
     Comment,
     CommunityMetric,
+    CreatorInvitation,
     Job,
     Message,
     Post,
@@ -37,6 +39,7 @@ from app.community.policy import (
 )
 from app.community.router import OpenSession, Session
 from app.community.schemas import (
+    CreatorInvitationInput,
     ModerationInput,
     ReportInput,
     ResolveReportInput,
@@ -45,10 +48,74 @@ from app.community.schemas import (
     SettingsUpdate,
 )
 from app.config import get_settings
-from app.models import AdminAuditLog, ProviderConfig
+from app.models import AdminAuditLog, ProviderConfig, User
 
 router = APIRouter(prefix="/admin/community", tags=["community administration"])
 report_router = APIRouter(prefix="/community", tags=["community reports"])
+
+
+@router.get("/creator-invitations")
+async def creator_invitations(
+    admin: AdminUser, session: Session, response: Response, user_id: UUID | None = None
+) -> dict[str, Any]:
+    response.headers["Cache-Control"] = "private, no-store"
+    if user_id is not None:
+        user = await session.get(User, user_id)
+        if user is None or not user.is_active or user.deleted_at:
+            raise fail("community_not_found", 404)
+        row = await session.get(CreatorInvitation, user_id)
+        return {"items": [serialize_invitation(user_id, row)]}
+    rows = (
+        await session.scalars(
+            select(CreatorInvitation)
+            .join(User, User.id == CreatorInvitation.user_id)
+            .where(User.is_active.is_(True), User.deleted_at.is_(None))
+            .order_by(CreatorInvitation.updated_at.desc(), CreatorInvitation.user_id)
+            .limit(100)
+        )
+    ).all()
+    return {"items": [serialize_invitation(row.user_id, row) for row in rows]}
+
+
+@router.put("/creator-invitations/{user_id}")
+async def set_creator_invitation(
+    user_id: UUID,
+    payload: CreatorInvitationInput,
+    admin: AdminUser,
+    session: Session,
+    response: Response,
+) -> dict[str, Any]:
+    response.headers["Cache-Control"] = "private, no-store"
+    await lock_creator(session, user_id)
+    row = await session.scalar(
+        select(CreatorInvitation)
+        .where(CreatorInvitation.user_id == user_id)
+        .with_for_update()
+        .execution_options(populate_existing=True)
+    )
+    if payload.version != (row.version if row else 0):
+        raise fail("community_version_conflict", 409)
+    before = serialize_invitation(user_id, row)
+    if row is None:
+        row = CreatorInvitation(user_id=user_id, invited=payload.invited, version=1)
+        session.add(row)
+    else:
+        row.invited = payload.invited
+        row.version += 1
+    row.granted_by_user_id = admin.id
+    await session.flush()
+    audit(
+        session,
+        admin,
+        "community_creator_invitation",
+        str(user_id),
+        before=before["invited"],
+        after=row.invited,
+        version=row.version,
+        reason=payload.reason,
+    )
+    await session.commit()
+    return serialize_invitation(user_id, row)
 
 
 @report_router.get("/me/reviews")
@@ -218,6 +285,8 @@ async def moderate_post(
     post = await session.get(Post, identifier)
     if post is None or post.state == "deleted":
         raise fail("community_not_found", 404)
+    if payload.action in {"approve", "restore"}:
+        await require_creator_invitation(session, post.author_id)
     profile = await session.scalar(
         select(Profile).where(Profile.user_id == post.author_id).with_for_update()
     )
@@ -247,6 +316,16 @@ async def moderate_post(
         if action == "approve":
             if profile.restricted:
                 raise fail("community_restricted", 403)
+            if post.published_revision_id != revision.id:
+                from app.analytics.service import record_event
+
+                await record_event(
+                    session,
+                    "post_published",
+                    path="/community",
+                    user_id=admin.id,
+                    properties={"kind": revision.kind, "publication_source": "moderator"},
+                )
             post.published_revision_id = revision.id
             post.state = "published"
             post.published_at = post.published_at or datetime.now(UTC)

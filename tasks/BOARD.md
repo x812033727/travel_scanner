@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**18 open · 1 in progress · 2 blocked · 1 in review · 158 done**
+**18 open · 0 in progress · 2 blocked · 7 in review · 177 done**
 
 ## Ready to claim
 
@@ -14,10 +14,10 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
+| P1 | [Revalidate community read resets against production-build CI](open/2026-09-08-community-ci-read-retry.md) | web | `apps/web/e2e/community.spec.ts` |
 | P1 | [Complete live Travelpayouts brand and destination offer verification](open/2026-09-08-travelpayouts-live-destination-activation.md) | ops | `docs/travel-services.md` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
-| P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | api | `apps/api/app/community`<br>`apps/api/tests/test_community.py` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [區域目錄缺龍山電子商街與光華商圈兩個圈](open/2026-09-06-area-circles-electronics-districts.md) | api | `apps/api/app/hotspots/areas.py`<br>`apps/api/tests/test_hotspot_areas.py` |
 | P3 | [第二批購物店家：十五個沒有公開座標來源的候選](open/2026-09-06-shopping-seeds-second-batch.md) | api | `apps/api/app/hotspots/shopping_bootstrap.json`<br>`apps/api/app/hotspots/theme_bootstrap.json`<br>`apps/api/app/hotspots/catalog.py`<br>`apps/api/tests/test_shopping_bootstrap.py` |
@@ -27,15 +27,19 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [Integrate PR 365 historical deployment and open verification notes](open/2026-09-09-pr365-docs-integration.md) | codex-pr365-docs | 2026-09-09T06:20:37Z | `codex/pr365-docs-ready-20260909` |
+_Nothing here._
 
 ## In review
 
 | Task | Owner | Branch |
 | --- | --- | --- |
-| [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
+| [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-08` |
+| [Unified saved items and private inbox API](open/2026-09-09-frontend-flow-saved-api.md) | codex-saved-flow | `codex/frontend-explore-flow` |
+| [Public discovery categories and safe detail projections](open/2026-09-09-frontend-flow-discovery-api.md) | codex-discovery-flow-api | `codex/frontend-explore-flow` |
+| [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | codex-discovery-flow-web | `codex/frontend-explore-flow` |
+| [Frontend flow navigation planning handoff and acceptance](open/2026-09-09-frontend-flow-integration.md) | codex-frontend-flow | `codex/frontend-explore-flow` |
+| [Route apply state regression and semantic itinerary tones](open/2026-09-09-planner-route-tones.md) | codex | `codex/planner-route-tones` |
+| [Integrate PR 365 historical deployment and open verification notes](open/2026-09-09-pr365-docs-integration.md) | codex-pr365-docs | `codex/pr365-docs-ready-20260909` |
 
 ## Waiting
 
@@ -47,19 +51,19 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | active work in the same scope |
 | P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | active work in the same scope |
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
-| P1 | [Retry transient connection resets for read-only community CI requests](open/2026-09-08-community-ci-read-retry.md) | active work in the same scope |
+| P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | active work in the same scope |
 | P3 | [行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal\|append](open/2026-09-07-add-a-meal-to-a-day.md) | active work in the same scope |
 
 ## Recently finished
 
-- 2026-09-08 [Travelpayouts full partner links for production verification](done/2026-09-08-travelpayouts-full-partner-links.md)
-- 2026-09-08 [七國美食卡精準導航與訂位平台](done/2026-09-08-food-platform-links.md)
-- 2026-09-07 [登入頁沒有忘記密碼，後端也沒有任何寄信管道](done/2026-09-07-forgot-password-no-mail-channel.md)
-- 2026-09-07 [Hotel booking without affiliate enrollment](done/2026-09-07-hotel-direct-booking.md)
-- 2026-09-07 [The admin console's own tabs and pills are smaller than every control it publishes](done/2026-09-07-admin-controls-under-44px.md)
-- 2026-09-07 [Gemini catalog review and 100-item expansion](done/2026-09-07-gemini-catalog-review.md)
-- 2026-09-07 [觀測：漏斗看得見——事件名脫離 DB CHECK，關鍵動作由伺服器送](done/2026-09-07-observe-the-funnel.md)
-- 2026-09-07 [出發前閉環：提醒連得回旅程、錨點能追價、航班動態寫得回去](done/2026-09-07-pre-departure-loop.md)
-- 2026-09-07 [從旅程出發查機票：條件由旅程推導，報價帶回錨點](done/2026-09-06-search-from-a-saved-trip.md)
-- 2026-09-07 [The whole applied-filter chip is a delete button](done/2026-09-07-applied-filter-chip-is-all-delete.md)
+- 2026-09-09 [Calm daily timeline and safe explicit planner editing](done/2026-09-09-planner-calm-editing.md)
+- 2026-09-09 [Community curated video invitations and collection references](done/2026-09-08-travel-discovery-community.md)
+- 2026-09-09 [Travel discovery integration navigation safety and acceptance](done/2026-09-08-travel-discovery-integration.md)
+- 2026-09-09 [Travel discovery search feed and explicit preferences API](done/2026-09-08-travel-discovery-api.md)
+- 2026-09-09 [Travel discovery homepage search collections and media experience](done/2026-09-08-travel-discovery-web.md)
+- 2026-09-09 [Premium app-style itinerary planning flow](done/2026-09-08-planner-premium-app.md)
+- 2026-09-08 [Fix weather and itinerary intent panel contrast in dark mode](done/2026-09-08-planner-weather-dark-contrast.md)
+- 2026-09-08 [Fix nearby itinerary discovery across cities and reset insertion pagination](done/2026-09-08-planner-nearby-followup.md)
+- 2026-09-08 [Stay22 Maps lodging pilot](done/2026-09-08-stay22-maps-lodging-pilot.md)
+- 2026-09-08 [Klook affiliate frontend channels and contextual discovery](done/2026-09-08-klook-affiliate-web.md)

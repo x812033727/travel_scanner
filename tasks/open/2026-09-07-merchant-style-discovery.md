@@ -5,14 +5,12 @@ status: review
 priority: P1
 area: api
 owner: codex
-claimed_at: 2026-09-08T05:53:35Z
+claimed_at: 2026-09-08T06:24:09Z
 created_at: 2026-09-07T23:14:18Z
 completed_at:
-branch: codex/merchant-style-batch-07
+branch: codex/merchant-style-batch-08
 depends_on: []
 scope:
-  - apps/api/app/models.py
-  - apps/api/app/i18n.py
   - apps/api/app/foods
   - apps/api/app/cli.py
   - apps/api/migrations/versions/0061_merchant_styles.py
@@ -23,18 +21,128 @@ scope:
   - apps/web/components/food-browser.test.tsx
   - apps/web/components/food-merchant-card.tsx
   - apps/web/components/food-merchant-card.test.tsx
-  - apps/web/components/admin-food-merchants-panel.tsx
   - apps/web/components/admin-merchant-styles.tsx
   - apps/web/components/admin-merchant-styles.test.tsx
   - apps/web/lib/foods.ts
   - apps/web/lib/foods.test.ts
-  - apps/web/messages
+  - apps/web/messages/en/account.json
+  - apps/web/messages/en/admin.json
+  - apps/web/messages/en/alerts.json
+  - apps/web/messages/en/auth.json
+  - apps/web/messages/en/availability.json
+  - apps/web/messages/en/catalogReview.json
+  - apps/web/messages/en/common.json
+  - apps/web/messages/en/community.json
+  - apps/web/messages/en/errors.json
+  - apps/web/messages/en/foodAdmin.json
+  - apps/web/messages/en/foods.json
+  - apps/web/messages/en/hotspotAdmin.json
+  - apps/web/messages/en/hotspotThemes.json
+  - apps/web/messages/en/hotspots.json
+  - apps/web/messages/en/legacy.json
+  - apps/web/messages/en/navigation.json
+  - apps/web/messages/en/newTrip.json
+  - apps/web/messages/en/pricing.json
+  - apps/web/messages/en/restaurants.json
+  - apps/web/messages/en/search.json
+  - apps/web/messages/en/stayAreas.json
+  - apps/web/messages/en/travelServices.json
+  - apps/web/messages/en/usage.json
+  - apps/web/messages/ja/account.json
+  - apps/web/messages/ja/admin.json
+  - apps/web/messages/ja/alerts.json
+  - apps/web/messages/ja/auth.json
+  - apps/web/messages/ja/availability.json
+  - apps/web/messages/ja/catalogReview.json
+  - apps/web/messages/ja/common.json
+  - apps/web/messages/ja/community.json
+  - apps/web/messages/ja/errors.json
+  - apps/web/messages/ja/foodAdmin.json
+  - apps/web/messages/ja/foods.json
+  - apps/web/messages/ja/hotspotAdmin.json
+  - apps/web/messages/ja/hotspotThemes.json
+  - apps/web/messages/ja/hotspots.json
+  - apps/web/messages/ja/legacy.json
+  - apps/web/messages/ja/navigation.json
+  - apps/web/messages/ja/newTrip.json
+  - apps/web/messages/ja/pricing.json
+  - apps/web/messages/ja/restaurants.json
+  - apps/web/messages/ja/search.json
+  - apps/web/messages/ja/stayAreas.json
+  - apps/web/messages/ja/travelServices.json
+  - apps/web/messages/ja/usage.json
+  - apps/web/messages/ko/account.json
+  - apps/web/messages/ko/admin.json
+  - apps/web/messages/ko/alerts.json
+  - apps/web/messages/ko/auth.json
+  - apps/web/messages/ko/availability.json
+  - apps/web/messages/ko/catalogReview.json
+  - apps/web/messages/ko/common.json
+  - apps/web/messages/ko/community.json
+  - apps/web/messages/ko/errors.json
+  - apps/web/messages/ko/foodAdmin.json
+  - apps/web/messages/ko/foods.json
+  - apps/web/messages/ko/hotspotAdmin.json
+  - apps/web/messages/ko/hotspotThemes.json
+  - apps/web/messages/ko/hotspots.json
+  - apps/web/messages/ko/legacy.json
+  - apps/web/messages/ko/navigation.json
+  - apps/web/messages/ko/newTrip.json
+  - apps/web/messages/ko/pricing.json
+  - apps/web/messages/ko/restaurants.json
+  - apps/web/messages/ko/search.json
+  - apps/web/messages/ko/stayAreas.json
+  - apps/web/messages/ko/travelServices.json
+  - apps/web/messages/ko/usage.json
+  - apps/web/messages/zh-CN/account.json
+  - apps/web/messages/zh-CN/admin.json
+  - apps/web/messages/zh-CN/alerts.json
+  - apps/web/messages/zh-CN/auth.json
+  - apps/web/messages/zh-CN/availability.json
+  - apps/web/messages/zh-CN/catalogReview.json
+  - apps/web/messages/zh-CN/common.json
+  - apps/web/messages/zh-CN/community.json
+  - apps/web/messages/zh-CN/errors.json
+  - apps/web/messages/zh-CN/foodAdmin.json
+  - apps/web/messages/zh-CN/foods.json
+  - apps/web/messages/zh-CN/hotspotAdmin.json
+  - apps/web/messages/zh-CN/hotspotThemes.json
+  - apps/web/messages/zh-CN/hotspots.json
+  - apps/web/messages/zh-CN/legacy.json
+  - apps/web/messages/zh-CN/navigation.json
+  - apps/web/messages/zh-CN/newTrip.json
+  - apps/web/messages/zh-CN/pricing.json
+  - apps/web/messages/zh-CN/restaurants.json
+  - apps/web/messages/zh-CN/search.json
+  - apps/web/messages/zh-CN/stayAreas.json
+  - apps/web/messages/zh-CN/travelServices.json
+  - apps/web/messages/zh-CN/usage.json
+  - apps/web/messages/zh-TW/account.json
+  - apps/web/messages/zh-TW/admin.json
+  - apps/web/messages/zh-TW/alerts.json
+  - apps/web/messages/zh-TW/auth.json
+  - apps/web/messages/zh-TW/availability.json
+  - apps/web/messages/zh-TW/catalogReview.json
+  - apps/web/messages/zh-TW/common.json
+  - apps/web/messages/zh-TW/community.json
+  - apps/web/messages/zh-TW/errors.json
+  - apps/web/messages/zh-TW/foodAdmin.json
+  - apps/web/messages/zh-TW/foods.json
+  - apps/web/messages/zh-TW/hotspotAdmin.json
+  - apps/web/messages/zh-TW/hotspotThemes.json
+  - apps/web/messages/zh-TW/hotspots.json
+  - apps/web/messages/zh-TW/legacy.json
+  - apps/web/messages/zh-TW/navigation.json
+  - apps/web/messages/zh-TW/newTrip.json
+  - apps/web/messages/zh-TW/pricing.json
+  - apps/web/messages/zh-TW/restaurants.json
+  - apps/web/messages/zh-TW/search.json
+  - apps/web/messages/zh-TW/stayAreas.json
+  - apps/web/messages/zh-TW/travelServices.json
+  - apps/web/messages/zh-TW/usage.json
   - docs/merchant-styles.md
   - README.md
-  - apps/web/e2e/merchant-styles.spec.ts
-  - apps/web/e2e/community.spec.ts
   - apps/web/playwright.config.ts
-  - .github/workflows/ci.yml
 ---
 
 # 網美與文青店家風格篩選、審核及首批來源資料
@@ -58,7 +166,9 @@ scope:
 - [x] 第三批 PR #347 完成 CI 與依本輪授權合併，post-merge CI 全綠。
 - [x] 第四批5家新店＋1家既有補風格、6個提案完成來源查核、待審匯入、快照比對與重播驗證。
 - [x] 第四批PR #350及第五批PR #354完成CI並依各輪授權合併。
-- [ ] 第六批資料／測試／交接 PR 完成 CI 與合併（本輪合併授權針對 #354）。
+- [x] 第六批PR #356及第七批PR #359完成完整CI，依各輪授權合併。
+- [x] 第七批合併後依明確授權重新部署，保留備份、回退映像及既有功能開關。
+- [x] 第八批4家候選完成待審匯入、測試及 PR #361；2026-09-09 已取得本 PR 合併授權，合併須以最新 CI 與 SHA guard 為準。
 - [ ] 逐家補齊地圖與永久座標、管理員風格審核，再另行發布店家。
 
 ## Steps
@@ -75,6 +185,22 @@ Web: 單工 Vitest、TypeScript、lint、check:i18n、production build；merchan
 匯入及人工查核記錄見 docs/merchant-styles.md。
 
 ## Notes
+
+2026-09-09 合併準備：使用者明確指定合併 #361 與 #367，本次不部署、不重新匯入或重播任何正式候選／審核資料。從 PR #361 的原遠端 head `68e249a9` 建立獨立整合工作目錄，合併 `main` 的 `7cee8650`；唯一文字衝突是工具生成的 BOARD，已用任務工具重建。保留主線既有功能、先前六次 scope 交接及已交給行程路線任務的第七次 trips-only 交接，不重新擴大 owner 範圍。歷史部署及待審數量保留為原查核時間點，不宣稱是目前正式狀態；仍未完成的店家精準地圖、耐久座標及審核義務不標 done。
+
+2026-09-09 第七次窄幅交接（五語系 trips-only）：依 task `01a057cf-8fdc-7613-ad92-8bc883900d30` 的請求，沿用前次已核對的原 owner task 身分，僅釋放 `apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/trips.json` 五個精確 scope，交予 `codex/planner-route-tones` 處理使用者已授權的行程路線 UI 回歸及飯店／午餐／晚餐語意色彩。交接前 `mokaair-community` 全工作樹乾淨，五檔沒有未提交或 staged 變更，`origin/main..HEAD` 沒有觸及這五檔的待交付提交，逐檔 HEAD blob 與本機 `origin/main`（`7cee8650aa451d96634b3ccf821204c22bd125a9`）完全一致。五語系其餘 115 個訊息檔及其餘 17 個 scope、owner、status、branch 均保持不變；本任務後續不再修改這五個 trips 檔，也不重新擴大訊息目錄的 umbrella scope。已先前交接的 metadata、現有 newTrip／navigation 與其他檔案內容均不修改；未完成的店家地圖、耐久座標及風格審核義務仍保留。僅提交本地任務 metadata 與必要的工具生成 BOARD；不修改程式／訊息內容，不 push、開 PR、合併或部署。
+
+2026-09-09T00:17:05Z 第六次窄幅交接（五語系 metadata-only）：沿用前次定點核對的原 owner task `01a057d5-1534-7c91-8f9e-a60b1e3c613c` 身分，將 `apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/metadata.json` 五檔 scope 精確交接給 task `01a057d3-8adc-7d21-9285-4dfddd5533da`，供更新 `exploreTitle`／`exploreDescription` 及新增 `discoveryCollectionsTitle`／`discoveryCollectionsDescription`。交接前 `mokaair-community` 整個工作樹乾淨；五檔無未提交變更，`origin/main..HEAD` 無本分支待交付提交，且逐檔 HEAD blob 與本機 `origin/main`（`f752ce43ac8e0ae77346d1fce809b223fedd17b6`）完全一致，無未交付 metadata。為避免 umbrella scope 繼續重疊，僅將原 `apps/web/messages` 展開為交接時實際存在的 120 個非 metadata 訊息檔案；這些五語系其他檔案仍由本任務保留 scope，內容未更動。本任務後續不再修改上述五個 metadata 檔；其他有效 scope、owner、status、branch 及尚未完成的精準地圖、耐久座標、風格審核與另行發布義務均保留。`header-session-identity.test.tsx` 不屬本任務 scope，本次不釋放或修改。僅修改本地任務 metadata 與工具生成 BOARD，不改應用程式或測試、不 push、開 PR、合併或部署。
+
+2026-09-09 第五次窄幅交接（community E2E）：沿用上次核對的原 owner 身分，再次確認 `mokaair-community` 整個工作樹乾淨，`apps/web/e2e/community.spec.ts` 無未提交或相對 `origin/main` 的本分支待交付變更。僅釋放此檔 scope，供旅行準備功能更新寵物行程驗收；本任務後續不再修改此檔。其餘 scope、owner、status、branch 與飯店審核任務保持不變，只提交本地任務 metadata，不修改測試、不 push、合併或部署。
+
+2026-09-09 第四次窄幅交接（models-only，Klook）：定點核對本 task `01a057d5-1534-7c91-8f9e-a60b1e3c613c` 原始 session 紀錄第 16799 行的 `payload.input`，確認曾在 `mokaair-community` 以 `codex` 認領本任務及 `codex/merchant-style-batch-08` 分支。再次確認整個工作樹乾淨，`apps/api/app/models.py` 無未提交或相對 `origin/main` 的本分支待交付變更；僅釋放這一個 scope 給 Klook 資料模型工作，本任務後續不再修改該檔。其餘 scope、owner、status、branch 均不變；不修改模型或原始 canonical checkout，只提交本地任務 metadata，不 push、合併或部署。
+
+2026-09-08 跨工作區交接：已確認 `admin-food-merchants-panel.tsx` 無未提交或本分支待交付變更，後續店家來源／風格審核不再修改此檔，僅釋放這一個 scope 給 `codex/admin-domain-workspaces` 加入待審初始篩選。其餘 scope、店家資料、風格／地圖／平台審核功能及 PR 狀態均不變；本次交接不授權合併或部署。
+
+2026-09-08 第二次窄幅交接：已確認 `.github/workflows/ci.yml` 與 `apps/api/app/i18n.py` 均無未提交或本分支待交付變更，從本任務釋放這兩個 scope 給 `codex/admin-domain-workspaces`，分別供既有 CI 加入後台 Playwright 測試，以及新增 `catalog_scope_invalid`、`catalog_scope_mismatch`、`provider_setting_conflict` 錯誤翻譯。本任務後續不再修改這兩檔；其他 scope、應用程式、資料及遠端 PR 不變，只提交本地任務 metadata，不 push、合併或部署。
+
+2026-09-08 第三次窄幅交接：已確認 `apps/web/e2e/merchant-styles.spec.ts` 無未提交或本分支待交付變更，也沒有本任務進行中的修改，僅釋放此 scope 給 `codex/admin-domain-workspaces` 為 PR #369 補上新增唯讀 `/admin/provider-settings` 請求的有效空設定 fixture。本任務不代改 E2E、不再修改此檔；其他 scope、應用程式、資料及遠端 PR 不變，只提交本地任務 metadata，不 push、合併或部署。
 
 新候選缺精準地圖與可永久保存座標時保持 pending/inactive/unverified，不用來源文字推造識別。
 先完成原始來源審查，再於已部署的後台逐一記錄操作人及風格核准；資料檔不能偷帶 approved。
@@ -179,3 +305,18 @@ PR #345 已合併部署，第二／三批 PR #346、#347 已依授權合併；�
 - 使用者新授權「合併重新佈署後繼續新增」，目標為#359。先無衝突同步main的#357首爾飯店資料，相關API回歸88 passed／1 PostgreSQL-only skipped；重新取得完整CI後才用最新SHA guard合併。
 - 正式預檢：10個既有服務正常，API／Web仍為aaa33f008c82c56e5c541dede8205097102193e1，schema0062，社群與公開註冊均關閉。資料volume、部署socket與canonical環境檔保持原狀；磁碟可用133G。
 - 本次依明確授權重新部署合併版本，使用乾淨Git archive與獨立release目錄，不重設canonical checkout、不刪舊映像／volume／備份、不開啟社群或註冊。部署須雙鎖、映像核對、私有可讀備份、保留回退資訊及重複readiness驗證；完成結果交接於下一批。
+
+## 第八批交接（2026-09-08）
+
+- #359同步後PR CI 34192478510與push CI 34192475647全綠，無重跑；8項checks全綠且CLEAN／MERGEABLE後，鎖定385867de8dcc20bac98a8efa0869ce1d67e4ad57，SHA-guard squash為8d2fb93d3d95e40409113f64bdcb90edfc53736f，已確認main。
+- Post-merge main CI 34193020967全綠，API1865 passed／3 skipped、Ruff及mypy257 files通過，旅遊與社群全端各6項通過；Web元件、五語系、TypeScript、lint、production build與isolated browser全部成功。
+- 等待CI期間正式環境另行前進到00ffc710ebf902f56a00a69869f96e92bf3e84d0；重新核對8個應用服務、環境與schema後，以該映像及release作為回退基線，不回退到先前預檢的aaa33f0。
+- 本輪從乾淨Git archive建置8d2fb93，來源SHA-256為ca6ec89e5551f1a2f316f35eb7a4092bd393bd081eace4356dc21a21024a3fdd。雙鎖、環境值一致檢查與備份完成後，8個應用服務已重新部署至8d2fb93；PG／Redis未重建，schema仍0062。
+- Release目錄 /root/mokaair-release-8d2fb93-KNYdEO9q 保留建置／部署紀錄與7,570,439 bytes、mode600的備份及restore索引；未刪舊備份、映像、volume或環境檔。三次連續health／ready／foods通過，五語系正式foods頁200，API／Web restart count 0，社群與註冊仍關閉且環境檔checksum不變。
+- 從8d2fb93最新main建立codex/merchant-style-batch-08並claim本任務；不改原mobile-planner工作目錄或其他PR。新增華山青鳥、bibliothèque福岡天神、오설록北村及Merci Marcel Orchard，2文青／2網美；具體來源、分店界線及不納入候選見docs/merchant-styles.md。
+- 正式read-only名稱／地址查重零重複；本批正式寫入仍須新備份、雙鎖、checksum、preview／apply／replay及公開隱藏驗證。所有新店須保持pending/inactive/unverified，無地圖／座標／商圈及審核人，不宣稱已公開上架。
+- 第八批54項相關API測試通過／1 PostgreSQL-only skipped，全部foods／merchant／trend測試176 passed／6 PostgreSQL-only skipped；Ruff全套、mypy257 files、tools27 tests、5語系25 namespaces及task board176 files通過。只新增資料並擴充真實preview／apply／replay與跨批查重參數，不改產品程式。
+- 正式作業目錄 /root/mokaair-merchant-batch-08-xvN0xqpC 保留JSON、預覽／鎖內預覽／套用／重播／逐欄驗證及公開查詢前後收據；備份7,570,009 bytes、mode600、restore目錄可讀。雙鎖、映像及本機／伺服器／容器checksum全通過後新增4店／4提案，重播0／0。
+- 逐欄驗證來源、店名、地址、風格證據與日期，均pending/inactive/unverified，地圖／耐久座標／商圈／審核人空白；建立店家與風格提案各一筆系統稽核。公開payload前後一致、/ready正常、foods頁200。八批41新候選＋2既有補風格，共44 pending標籤（網美20／文青24）。
+- 第八批資料匯入未另外重建服務、執行遷移、核准發布或呼叫付費模型／地圖；新的PR仍待完整CI及下一輪合併授權，整體精準地圖與人工審核未完成，不標done。
+- 第八批PR為 https://github.com/x812033727/travel_scanner/pull/361 。等待CI期間main新增#360台北飯店資料，已無衝突同步3bc315a，保留對方所有資料／測試／任務內容；合併後相關回歸93 passed／1 PostgreSQL-only skipped、Ruff與mypy257 files通過。最新head完整CI結果另記PR，不重建正式服務或延伸合併授權。

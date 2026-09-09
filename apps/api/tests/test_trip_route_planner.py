@@ -1,4 +1,7 @@
 from datetime import UTC, date, datetime, timedelta
+from decimal import Decimal
+from types import SimpleNamespace
+from unittest.mock import AsyncMock
 from uuid import uuid4
 
 import fakeredis.aioredis
@@ -6,9 +9,11 @@ import httpx
 import pytest
 
 from app.config import Settings
-from app.models import TripPlanItem, TripRouteSegment
+from app.models import TripPlan, TripPlanItem, TripRouteSegment
+from app.trips import router as trip_router
 from app.trips.route_planner import (
     ESTIMATED_SEGMENT_PROVIDER,
+    persist_projected_segments,
     project_day_schedule,
     project_day_with_estimates,
     segment_from_record,
@@ -253,3 +258,140 @@ def test_a_leg_without_coordinates_is_left_alone_rather_than_guessed() -> None:
 
     assert result.segments == []
     assert result.item_times[second.id] == (second.start_time, second.end_time)
+
+
+@pytest.mark.parametrize("last_fixed", [False, True])
+def test_missing_location_does_not_resume_from_a_flexible_stored_time(last_fixed: bool) -> None:
+    first = row("First stop", 9)
+    missing = row("Chosen meal without coordinates", 11)
+    missing.system_role = "lunch"
+    following = row("Flexible stop", 13, locked=True)
+    last = row("Last stop", 14, fixed=last_fixed)
+    rows = [first, missing, following, last]
+    points = {item.id: point_for(item, 35.7, 139.7) for item in [first, following, last]}
+    saved_leg = segment(following, last, 30).model_copy(
+        update={
+            "departure_time": following.end_time,
+            "arrival_time": last.start_time,
+            "ready_time": last.start_time + timedelta(minutes=10),
+        }
+    )
+
+    result = project_day_with_estimates(rows, [saved_leg], points, "transit", buffer_minutes=10)
+
+    assert result.item_times == {item.id: (item.start_time, item.end_time) for item in rows}
+    assert result.impact.affected_items == []
+    assert result.impact.conflicts == []
+    assert len(result.segments) == 1
+    pending_leg = result.segments[0]
+    assert (pending_leg.from_item_id, pending_leg.to_item_id) == (following.id, last.id)
+    assert pending_leg.duration_minutes == 30
+    assert pending_leg.provider == "fixture"
+    assert pending_leg.departure_time is None
+    assert pending_leg.arrival_time is None
+    assert pending_leg.ready_time is None
+    assert saved_leg.departure_time == following.end_time
+
+
+def test_fixed_anchor_resumes_projection_after_a_missing_location() -> None:
+    first = row("First stop", 9)
+    missing = row("Chosen meal without coordinates", 11)
+    fixed = row("Fixed appointment", 13, fixed=True)
+    last = row("Last stop", 15)
+    points = {item.id: point_for(item, 35.7, 139.7) for item in [first, fixed, last]}
+
+    result = project_day_with_estimates(
+        [first, missing, fixed, last],
+        [segment(fixed, last, 20)],
+        points,
+        "transit",
+        buffer_minutes=10,
+    )
+
+    assert result.item_times[missing.id] == (missing.start_time, missing.end_time)
+    assert result.item_times[fixed.id] == (fixed.start_time, fixed.end_time)
+    assert result.item_times[last.id][0] == datetime(2026, 11, 10, 14, 30, tzinfo=UTC)
+    assert result.impact.conflicts == []
+    assert [change.item_id for change in result.impact.affected_items] == [last.id]
+    assert [(leg.from_item_id, leg.to_item_id) for leg in result.segments] == [(fixed.id, last.id)]
+
+
+@pytest.mark.asyncio
+async def test_pending_projection_keeps_a_selected_manual_leg_when_persisted(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    first, second, third = row("First", 9), row("Second", 11), row("Third", 13)
+    selected = segment(second, third, 25).model_copy(
+        update={"provider": "manual", "status": "manual"}
+    )
+    projection = project_day_schedule([first, second, third], [selected])
+    trip_id = uuid4()
+    record = TripRouteSegment(
+        id=uuid4(),
+        trip_plan_id=trip_id,
+        day_date=first.day_date,
+        from_item_id=second.id,
+        to_item_id=third.id,
+        provider="manual",
+        attribution="Saved manual duration",
+        duration_minutes=10,
+    )
+    monkeypatch.setattr(
+        "app.trips.route_planner.load_route_segments", AsyncMock(return_value=[record])
+    )
+    session = AsyncMock()
+
+    await persist_projected_segments(
+        session,
+        trip_id,
+        date(2026, 11, 10),
+        projection.segments,
+        manual_notes={(second.id, third.id): "Chosen by traveller"},
+    )
+
+    session.execute.assert_not_awaited()
+    assert record.provider == "manual"
+    assert record.duration_minutes == 25
+    assert record.manual_note == "Chosen by traveller"
+    assert record.departure_time is None
+    assert record.arrival_time is None
+    assert record.ready_time is None
+    assert record.expires_at is None
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("stored_buffer", [None, 0, 30])
+async def test_save_projection_uses_the_displayed_default_buffer(
+    monkeypatch: pytest.MonkeyPatch, stored_buffer: int | None
+) -> None:
+    first, second = row("First stop", 9), row("Second stop", 13)
+    second.position = 1
+    for item in [first, second]:
+        item.latitude = Decimal("35.7")
+        item.longitude = Decimal("139.7")
+    day_settings = (
+        []
+        if stored_buffer is None
+        else [
+            SimpleNamespace(
+                day_date=first.day_date,
+                default_travel_mode="transit",
+                default_buffer_minutes=stored_buffer,
+            )
+        ]
+    )
+    monkeypatch.setattr(trip_router, "load_day_settings", AsyncMock(return_value=day_settings))
+    monkeypatch.setattr(trip_router, "load_route_segments", AsyncMock(return_value=[]))
+
+    conflicts = await trip_router.reproject_saved_times(
+        AsyncMock(), TripPlan(id=uuid4()), [first, second], set()
+    )
+
+    # Identical coordinates take the shared 10-minute transit estimate; absent
+    # day settings add the same 10-minute buffer as the planner's visible chain.
+    expected_buffer = 10 if stored_buffer is None else stored_buffer
+    assert second.start_time == datetime(2026, 11, 10, 10, tzinfo=UTC) + timedelta(
+        minutes=10 + expected_buffer
+    )
+    assert second.end_time == second.start_time + timedelta(minutes=60)
+    assert conflicts == []

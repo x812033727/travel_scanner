@@ -27,7 +27,7 @@ class Brand:
 
 
 BRANDS = {
-    "klook": Brand("Klook", ("klook.com",), ("hotel", "transfer", "tour")),
+    "klook": Brand("Klook", ("klook.com",), ("hotel", "transfer", "tour", "esim")),
     "kkday": Brand("KKday", ("kkday.com",), ("hotel", "transfer", "tour")),
     "airalo": Brand("Airalo", ("airalo.com",), ("esim",)),
     "saily": Brand("Saily", ("saily.com",), ("esim",)),

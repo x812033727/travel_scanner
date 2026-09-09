@@ -854,6 +854,11 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
 ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     "en": {
         **OAUTH_ERROR_DETAILS["en"],
+        "catalog_scope_invalid": "The review scope is invalid. Select attractions or food.",
+        "catalog_scope_mismatch": "This review job belongs to another workspace.",
+        "provider_setting_conflict": (
+            "Settings were updated by another administrator. Reload before saving."
+        ),
         "merchant_style_changed": "This style review has changed. Reload it before saving.",
         "catalog_item_mismatch": "Some selected items do not belong to this review run",
         "catalog_receipt_limit": "This review run has reached its limit for applying results",
@@ -894,6 +899,12 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "rate_limit_exceeded": "Too many attempts. Try again later.",
         "insufficient_uses": "You need more uses to continue",
         "trip_not_found": "This trip could not be found",
+        "trip_create_payload_conflict": (
+            "The trip details differ from the original creation request. Check My trips first."
+        ),
+        "trip_create_recovery_required": (
+            "This creation request cannot be safely retried. Check My trips first."
+        ),
         "trip_limit_reached": "You have reached the shared limit of 20 saved trips",
         "search_not_found": "This search could not be found",
         "hotspot_not_found": "This attraction could not be found",
@@ -998,6 +1009,13 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ja": {
         **OAUTH_ERROR_DETAILS["ja"],
+        "catalog_scope_invalid": (
+            "審査範囲が正しくありません。観光スポットまたはグルメを選択してください。"
+        ),
+        "catalog_scope_mismatch": "この審査ジョブは別のワークスペースに属しています。",
+        "provider_setting_conflict": (
+            "別の管理者が設定を更新しました。再読み込みしてから保存してください。"
+        ),
         "merchant_style_changed": (
             "スタイル審査が更新されました。再読み込みしてから保存してください。"
         ),
@@ -1040,6 +1058,12 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "rate_limit_exceeded": "操作が多すぎます。しばらくしてからお試しください",
         "insufficient_uses": "続行するには利用回数を追加してください",
         "trip_not_found": "旅行が見つかりません",
+        "trip_create_payload_conflict": (
+            "旅程の内容が最初の作成リクエストと異なります。先に「マイ旅行」を確認してください。"
+        ),
+        "trip_create_recovery_required": (
+            "この作成リクエストは安全に再送できません。先に「マイ旅行」を確認してください。"
+        ),
         "trip_limit_reached": "保存できる旅行は全会員共通で 20 件までです",
         "search_not_found": "検索が見つかりません",
         "hotspot_not_found": "観光スポットが見つかりません",
@@ -1140,6 +1164,9 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ko": {
         **OAUTH_ERROR_DETAILS["ko"],
+        "catalog_scope_invalid": "검토 범위가 잘못되었습니다. 명소 또는 음식을 선택하세요.",
+        "catalog_scope_mismatch": "이 검토 작업은 다른 작업 공간에 속합니다.",
+        "provider_setting_conflict": "다른 관리자가 설정을 변경했습니다. 새로고침한 후 저장하세요.",
         "merchant_style_changed": "스타일 심사가 변경되었습니다. 다시 불러온 뒤 저장해 주세요.",
         "catalog_item_mismatch": "선택한 항목 중 일부가 이 검토 작업에 속하지 않습니다",
         "catalog_receipt_limit": "이 검토 작업의 결과 적용 횟수 한도에 도달했습니다",
@@ -1177,6 +1204,12 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "rate_limit_exceeded": "요청이 너무 많습니다. 잠시 후 다시 시도하세요",
         "insufficient_uses": "계속하려면 사용 횟수를 추가하세요",
         "trip_not_found": "여행을 찾을 수 없습니다",
+        "trip_create_payload_conflict": (
+            "여행 내용이 최초 생성 요청과 다릅니다. 먼저 내 여행을 확인해 주세요."
+        ),
+        "trip_create_recovery_required": (
+            "이 생성 요청은 안전하게 다시 보낼 수 없습니다. 먼저 내 여행을 확인해 주세요."
+        ),
         "trip_limit_reached": "모든 회원이 공유하는 저장 여행 한도 20개에 도달했습니다",
         "search_not_found": "검색을 찾을 수 없습니다",
         "hotspot_not_found": "명소를 찾을 수 없습니다",
@@ -1271,6 +1304,11 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "zh-TW": {
         **OAUTH_ERROR_DETAILS["zh-TW"],
+        "trip_create_payload_conflict": "這次建立的內容與原始請求不同，請先到我的旅程確認。",
+        "trip_create_recovery_required": "無法安全重送這次建立，請先到我的旅程確認。",
+        "catalog_scope_invalid": "審核範圍不正確，請選擇景點或美食。",
+        "catalog_scope_mismatch": "這筆審核工作屬於其他工作區。",
+        "provider_setting_conflict": "設定已被其他管理員更新，請重新載入後再儲存。",
         "merchant_style_changed": "風格資料已變更，請重新載入後儲存。",
         "hotspot_not_found": "找不到這個景點",
         "unsupported_theme": "目前沒有這個主題",
@@ -1318,6 +1356,9 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "zh-CN": {
         **OAUTH_ERROR_DETAILS["zh-CN"],
+        "catalog_scope_invalid": "审核范围不正确，请选择景点或美食。",
+        "catalog_scope_mismatch": "此审核工作属于其他工作区。",
+        "provider_setting_conflict": "设置已被其他管理员更新，请重新加载后再保存。",
         "merchant_style_changed": "风格资料已变更，请重新加载后保存。",
         "catalog_item_mismatch": "部分选中项目不属于这次审核任务",
         "catalog_receipt_limit": "这次审核任务已达到应用结果的次数上限",
@@ -1349,6 +1390,8 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "rate_limit_exceeded": "操作太频繁，请稍后再试",
         "insufficient_uses": "可用次数不足，请先获取更多次数",
         "trip_not_found": "找不到这个旅程",
+        "trip_create_payload_conflict": "这次创建的内容与原始请求不同，请先到我的旅程确认。",
+        "trip_create_recovery_required": "无法安全重发这次创建请求，请先到我的旅程确认。",
         "trip_limit_reached": "已达所有会员共用的 20 条保存旅程上限",
         "search_not_found": "找不到这次搜索",
         "hotspot_not_found": "找不到这个景点",
@@ -1432,6 +1475,85 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
 
 for _service_locale in LOCALES:
     ERROR_DETAILS[_service_locale].update(SERVICE_ERRORS[_service_locale])
+
+_DISCOVERY_ERRORS: dict[str, dict[str, str]] = {
+    "en": {
+        "discovery_unavailable": "Travel discovery is not available right now.",
+        "discovery_version_conflict": "Your interests changed elsewhere. Reload before saving.",
+        "community_feed_expired": "These results have expired. Refresh to continue.",
+        "community_invalid_cursor": "This results page is no longer valid. Start a new search.",
+        "community_not_found": "This public content is no longer available.",
+        "validation_error": "Please check the information you entered and try again.",
+    },
+    "zh-TW": {
+        "discovery_unavailable": "旅遊探索目前尚未開放，請稍後再試。",
+        "discovery_version_conflict": "你的興趣設定已在其他地方更新，請重新載入後再儲存。",
+        "community_feed_expired": "搜尋結果已過期，請重新整理後繼續。",
+        "community_invalid_cursor": "這一頁搜尋結果已失效，請重新搜尋。",
+        "community_not_found": "這筆公開內容目前無法使用。",
+        "validation_error": "請檢查輸入的資料後再試一次。",
+    },
+    "zh-CN": {
+        "discovery_unavailable": "旅游探索目前尚未开放，请稍后再试。",
+        "discovery_version_conflict": "你的兴趣设置已在其他地方更新，请重新加载后再保存。",
+        "community_feed_expired": "搜索结果已过期，请刷新后继续。",
+        "community_invalid_cursor": "这一页搜索结果已失效，请重新搜索。",
+        "community_not_found": "这条公开内容目前无法使用。",
+        "validation_error": "请检查输入的信息后再试一次。",
+    },
+    "ja": {
+        "discovery_unavailable": "旅行の探索は現在利用できません。",
+        "discovery_version_conflict": (
+            "興味の設定が別の場所で更新されました。再読み込みしてから保存してください。"
+        ),
+        "community_feed_expired": "検索結果の有効期限が切れました。再読み込みしてください。",
+        "community_invalid_cursor": "この検索結果ページは無効です。もう一度検索してください。",
+        "community_not_found": "この公開コンテンツは現在利用できません。",
+        "validation_error": "入力内容を確認して、もう一度お試しください。",
+    },
+    "ko": {
+        "discovery_unavailable": "여행 둘러보기를 현재 이용할 수 없습니다.",
+        "discovery_version_conflict": (
+            "관심사가 다른 곳에서 변경되었습니다. 새로고침한 후 저장하세요."
+        ),
+        "community_feed_expired": "검색 결과가 만료되었습니다. 새로고침해 주세요.",
+        "community_invalid_cursor": "유효하지 않은 결과 페이지입니다. 다시 검색해 주세요.",
+        "community_not_found": "이 공개 콘텐츠는 현재 이용할 수 없습니다.",
+        "validation_error": "입력한 정보를 확인한 후 다시 시도해 주세요.",
+    },
+}
+for _discovery_locale in LOCALES:
+    ERROR_DETAILS[_discovery_locale].update(_DISCOVERY_ERRORS[_discovery_locale])
+
+_SAVED_FLOW_ERRORS: dict[Locale, dict[str, str]] = {
+    "en": {
+        "saved_account_changed": "Your signed-in account changed. Reload before saving.",
+        "saved_item_limit": "Your saved-reference inbox is full. Remove some saved items first.",
+        "saved_cursor_invalid": "This saved-items page is no longer valid. Reload your collection.",
+    },
+    "zh-TW": {
+        "saved_account_changed": "登入帳號已變更，請重新載入後再收藏。",
+        "saved_item_limit": "收藏收件匣已滿，請先移除部分收藏。",
+        "saved_cursor_invalid": "這頁收藏已失效，請重新載入收藏清單。",
+    },
+    "zh-CN": {
+        "saved_account_changed": "登录账号已变更，请重新加载后再收藏。",
+        "saved_item_limit": "收藏收件箱已满，请先移除部分收藏。",
+        "saved_cursor_invalid": "这页收藏已失效，请重新加载收藏列表。",
+    },
+    "ja": {
+        "saved_account_changed": "ログイン中のアカウントが変わりました。再読み込みしてください。",
+        "saved_item_limit": "保存済み項目が上限に達しました。先に一部の項目を削除してください。",
+        "saved_cursor_invalid": "この保存済み一覧ページは無効です。再読み込みしてください。",
+    },
+    "ko": {
+        "saved_account_changed": "로그인 계정이 변경되었습니다. 새로고침한 후 저장하세요.",
+        "saved_item_limit": "저장함이 가득 찼습니다. 일부 저장 항목을 먼저 삭제하세요.",
+        "saved_cursor_invalid": "유효하지 않은 저장 목록 페이지입니다. 새로고침해 주세요.",
+    },
+}
+for _saved_locale in LOCALES:
+    ERROR_DETAILS[_saved_locale].update(_SAVED_FLOW_ERRORS[_saved_locale])
 
 
 def request_locale(headers: object) -> Locale:

@@ -1,5 +1,5 @@
 "use client";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useHeaderSession } from "@/components/header-session";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
@@ -7,6 +7,13 @@ import { featureVisible } from "@/lib/site-features";
 import { useCommunity } from "./provider";
 import { Feed } from "./feed";
 import { panelClass } from "./ui";
+import { useDiscoveryStatus } from "@/lib/discovery";
+import { frontendCopy } from "@/lib/frontend-navigation";
+import { primaryNavLinks } from "@/lib/nav-links";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { TextSizeSwitcher } from "@/components/text-size-switcher";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 export function CommunityHero() {
   const t = useTranslations("community");
   const { flags } = useCommunity();
@@ -22,15 +29,26 @@ export function CommunityHome({ pets = false }: { pets?: boolean }) {
 }
 export function MyDirectory() {
   const t = useTranslations("community");
-  const { user } = useHeaderSession();
+  const nav = useTranslations("navigation");
+  const copy = frontendCopy(useLocale());
+  const { user, logout } = useHeaderSession();
   const { flags, me } = useCommunity();
+  const discovery = useDiscoveryStatus();
   const visibility = useSiteVisibility();
   const links = [
+    ...(discovery.enabled ? [["/explore/collections", "collections"]] : []),
     ...(featureVisible(visibility, "trips") ? [["/trips", "myTrips"]] : []),
-    ...(flags.enabled ? [["/community/collections", "collections"], [me?.profile ? `/community/profiles/${me.profile.handle}` : "/community/settings", "profile"], ["/community/settings", "profileSettings"], ["/community/drafts", "drafts"], ["/community/messages", "messages"]] : []),
+    ...(flags.enabled && flags.posting_enabled ? [["/community/new", "publish"]] : []),
+    ...(flags.enabled ? [...(!discovery.enabled ? [["/community/collections", "collections"]] : []), [me?.profile ? `/community/profiles/${me.profile.handle}` : "/community/settings", "profile"], ["/community/settings", "profileSettings"], ["/community/drafts", "drafts"], ["/community/messages", "messages"]] : []),
     ["/account", "accountSettings"],
     ...(user?.is_admin ? [["/admin", "admin"]] : []),
     ...(!user ? [["/login", "login"]] : []),
   ];
-  return <nav aria-label={t("my")} className="mb-6 grid gap-4 sm:grid-cols-2">{links.map(([href, key]) => <Link key={key} href={href} className={`${panelClass} flex min-h-16 items-center font-semibold hover:border-[var(--teal)]`}>{t(key)}</Link>)}</nav>;
+  return <div className="space-y-8"><nav aria-label={t("my")} className="mb-6 grid gap-4 sm:grid-cols-2">{links.map(([href, key]) => <Link key={key} href={href} className={`${panelClass} flex min-h-16 items-center font-semibold hover:border-[var(--teal)]`}>{t(key)}</Link>)}</nav>
+    {discovery.enabled && <>
+      <section className={panelClass}><h2 className="mb-4 text-lg font-bold">{copy.tools}</h2><nav aria-label={copy.tools} className="grid gap-2 sm:grid-cols-2"><Link href="/search/new" className="min-h-12 rounded-xl px-3 py-3 font-semibold text-[var(--teal)]">{copy.search}</Link>{primaryNavLinks.filter((item) => item.key !== "trips" && (!item.feature || featureVisible(visibility, item.feature))).map((item) => <Link key={item.key} href={item.href} className="min-h-12 rounded-xl px-3 py-3 hover:bg-[var(--paper)]">{nav(item.key)}</Link>)}</nav></section>
+      <section className={panelClass}><h2 className="mb-4 text-lg font-bold">{copy.display}</h2><ThemeProvider><div className="grid gap-5"><TextSizeSwitcher variant="expanded" /><div className="flex min-h-12 items-center justify-between"><span>{nav("themeLabel")}</span><ThemeSwitcher /></div><LanguageSwitcher /></div></ThemeProvider></section>
+      {user && <button type="button" onClick={() => void logout()} className="min-h-11 rounded-xl border border-[var(--line)] px-5">{copy.logout}</button>}
+    </>}
+  </div>;
 }

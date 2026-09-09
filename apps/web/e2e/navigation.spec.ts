@@ -1,17 +1,128 @@
 import { expect, test, type Page } from "@playwright/test";
 import { pretendSignedIn } from "./session";
+import { editorFixture, editorPlaceOptions } from "./fixtures/itinerary-editor";
+
+const routePreviewExpiresAt = () => new Date(Date.now() + 60 * 60_000).toISOString();
+
+test("contextual itinerary picker adds repeatedly, undoes, moves across meals and days, and reloads", async ({ page }) => {
+  let trip = structuredClone(editorFixture);
+  const discovered: string[] = [];
+  await page.route("**/api/travel/trips/intuitive-trip**", async (route) => {
+    const url = new URL(route.request().url());
+    if (url.pathname.endsWith("/place-options")) {
+      discovered.push(url.search);
+      return route.fulfill({ json: { items: editorPlaceOptions, context: "nearby", next_offset: null } });
+    }
+    if (route.request().method() === "PUT") {
+      const body = route.request().postDataJSON();
+      trip = { ...trip, items: body.items, version: trip.version + 1 };
+    }
+    return route.fulfill({ json: trip });
+  });
+  await page.goto("/zh-TW/trips/intuitive-trip");
+  await page.getByRole("button", { name: "排序行程", exact: true }).click();
+  const insert = page.getByRole("button", { name: "在 午餐・河畔食堂 前插入新安排" });
+  await insert.click();
+  const picker = page.getByRole("dialog", { name: "下一站想去哪裡？" });
+  await expect(picker).toContainText("淺草散步 → 午餐・河畔食堂");
+  await picker.getByRole("button", { name: "選擇 淺草寺" }).click();
+  const draft = page.getByRole("dialog", { name: "新增安排", exact: true });
+  expect(trip.version).toBe(1);
+  await draft.getByRole("button", { name: "加入行程", exact: true }).click();
+  await expect(draft).toBeHidden();
+  await insert.click();
+  await picker.getByRole("button", { name: "選擇 隅田公園" }).click();
+  expect(trip.items.some((item) => item.title === "隅田公園")).toBe(false);
+  await draft.getByRole("button", { name: "加入行程", exact: true }).click();
+  await expect(draft).toBeHidden();
+  await page.locator(".planner-toast-stack").getByRole("button", { name: "復原" }).click();
+  await expect.poll(() => trip.items.some((item) => item.title === "隅田公園")).toBe(false);
+  await insert.click();
+  await expect(picker.getByRole("button", { name: "關閉", exact: true })).toBeFocused();
+  await expect(picker.getByText("已加入 隅田公園", { exact: true })).toHaveCount(0);
+  await expect(picker.getByRole("button", { name: "選擇 隅田公園" })).toHaveAttribute("aria-disabled", "false");
+  await picker.getByRole("button", { name: "完成", exact: true }).click();
+  await expect(page.locator(".planner-itinerary-card h3")).toHaveText(["淺草散步", "淺草寺"]);
+  expect(discovered.some((query) => query.includes("latitude=35.714"))).toBe(true);
+  await page.getByLabel("淺草散步 的更多操作").click();
+  await page.getByRole("button", { name: "移動 淺草散步", exact: true }).click();
+  let move = page.getByRole("dialog", { name: "移動這個行程" });
+  await move.getByLabel("插入位置").selectOption("end1");
+  await move.getByRole("button", { name: "移到這裡" }).click();
+  await expect(page.locator(".planner-itinerary-card h3")).toHaveText(["淺草寺", "淺草散步"]);
+  await page.getByLabel("淺草散步 的更多操作").click();
+  await page.getByRole("button", { name: "移動 淺草散步", exact: true }).click();
+  move = page.getByRole("dialog", { name: "移動這個行程" });
+  await move.getByLabel("日期").selectOption("2026-11-12");
+  await move.getByLabel("插入位置").selectOption("lunch2");
+  await move.getByRole("button", { name: "移到這裡" }).click();
+  await expect(page.locator(".planner-itinerary-card h3")).toHaveText(["淺草散步"]);
+  await expect.poll(() => trip.items.find((item) => item.id === "asakusa")?.day_date).toBe("2026-11-12");
+  await page.reload();
+  await page.getByRole("button", { name: /DAY 2/ }).click();
+  await expect(page.locator(".planner-itinerary-card h3")).toHaveText(["淺草散步"]);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(await page.evaluate(() => document.documentElement.clientWidth));
+});
+
+test("itinerary drag handle works with pointer input and keyboard move keeps focus inside the sheet", async ({ page }) => {
+  let trip = structuredClone(editorFixture);
+  await page.route("**/api/travel/trips/intuitive-trip**", async (route) => {
+    if (route.request().method() === "PUT") trip = { ...trip, version: trip.version + 1, items: route.request().postDataJSON().items };
+    return route.fulfill({ json: trip });
+  });
+  await page.goto("/zh-TW/trips/intuitive-trip");
+  const handle = page.locator('[data-itinerary-drag="asakusa"]');
+  const target = page.locator('[data-itinerary-gap="dinner1"]');
+  await page.getByRole("button", { name: "排序行程", exact: true }).click();
+  await handle.scrollIntoViewIfNeeded();
+  const start = await handle.boundingBox();
+  expect(start).not.toBeNull();
+  await page.mouse.move(start!.x + start!.width / 2, start!.y + start!.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(start!.x + start!.width / 2, start!.y + start!.height / 2 + 12);
+  // The dedicated handle captures pointer events while the page scrolls.
+  await target.evaluate((node) => node.scrollIntoView({ block: "center" }));
+  const end = await target.boundingBox();
+  await page.mouse.move(end!.x + end!.width / 2, end!.y + end!.height / 2, { steps: 8 });
+  await expect(target).toHaveAttribute("data-drop-active", "true");
+  await page.mouse.up();
+  await expect.poll(() => trip.items.filter((item) => item.day_date === "2026-11-11").map((item) => item.id)).toEqual(["hotel1", "lunch1", "asakusa", "dinner1", "end1"]);
+  await handle.focus();
+  await page.keyboard.press("Enter");
+  const dialog = page.getByRole("dialog", { name: "移動這個行程" });
+  await expect(dialog).toBeVisible();
+  await dialog.getByRole("button", { name: "移到這裡" }).focus();
+  await page.keyboard.press("Tab");
+  await expect(dialog.getByRole("button", { name: "關閉", exact: true })).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+  await expect(handle).toBeFocused();
+  await handle.scrollIntoViewIfNeeded();
+  const cancelStart = await handle.boundingBox();
+  await page.mouse.move(cancelStart!.x + cancelStart!.width / 2, cancelStart!.y + cancelStart!.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(cancelStart!.x + cancelStart!.width / 2, cancelStart!.y + cancelStart!.height / 2 + 12);
+  await page.keyboard.press("Escape");
+  await page.mouse.up();
+  await expect(dialog).toBeHidden();
+  await expect(page.locator("[data-drop-active]")).toHaveCount(0);
+});
 
 /**
  * Appearance, language and text size live in the phone menu, where each one has a
  * word next to it; on a wide screen they are in the header itself.
  */
 async function openDisplayPreferences(page: Page) {
+  if (await page.evaluate(() => window.matchMedia("(min-width: 1024px)").matches)) return;
   const menu = page.getByRole("button", { name: "Open navigation menu" });
-  if (await menu.isVisible()) await menu.click();
+  // The mobile menu appears after the discovery flag resolves during hydration.
+  await expect(menu).toBeVisible();
+  await menu.click();
 }
 
 test.beforeEach(async ({ page }) => {
   await pretendSignedIn(page);
+  await page.route("**/api/travel/discovery/status", (route) => route.fulfill({ json: { enabled: false } }));
   await page.route("**/api/travel/auth/me", (route) => route.fulfill({
     status: 200,
     contentType: "application/json",
@@ -130,7 +241,7 @@ test("new trip surfaces authentication service failures", async ({ page }) => {
   await expect(page.getByRole("link", { name: "前往登入" })).toHaveCount(0);
 });
 
-test("mobile-first planner edits, autosaves, and previews before charging", async ({ page }) => {
+test("mobile-first planner explicitly saves edits and previews before charging", async ({ page }) => {
   const baseTrip = {
     id: "mobile-trip", name: "東京手機行程", mode: "manual", total_price: 0, currency: "TWD",
     data: {}, version: 1, destination_name: "東京", start_date: "2026-11-11", end_date: "2026-11-11",
@@ -148,6 +259,10 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await page.route("**/api/travel/trips/mobile-trip**", async (route) => {
     const url = route.request().url();
     const method = route.request().method();
+    if (url.includes("/place-options?")) {
+      await route.fulfill({ json: { items: [], next_offset: null, context: "nearby" } });
+      return;
+    }
     if (url.endsWith("/itinerary/optimize/preview")) {
       await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({
         preview_id: "preview-1", expires_at: "2026-11-11T10:10:00Z", base_version: currentTrip.version,
@@ -223,7 +338,7 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await page.goto("/zh-TW/trips/mobile-trip");
   if (test.info().project.name !== "mobile-chromium") {
     await expect(page.locator(".planner-app-bar")).toBeHidden();
-    await expect(page.getByText(/行程規劃器/)).toBeVisible();
+    await expect(page.locator(".premium-trip-header")).toContainText("東京手機行程");
     return;
   }
   await expect(page.getByRole("heading", { name: "東京手機行程" })).toBeVisible();
@@ -250,6 +365,7 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await dockDone.click();
   const addButton = page.getByRole("button", { name: "新增安排" });
   await addButton.click();
+  await page.getByRole("button", { name: "自行填寫行程" }).click();
   await expect(page.getByRole("dialog", { name: "新增安排" })).toBeVisible();
   await expect(page.locator(".planner-timeline-marker")).toHaveCount(2);
   await page.waitForTimeout(1_100);
@@ -258,6 +374,7 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await expect(page.getByRole("dialog", { name: "新增安排" })).toBeHidden();
   await expect(page.locator(".planner-timeline-marker")).toHaveCount(2);
   await addButton.click();
+  await page.getByRole("button", { name: "自行填寫行程" }).click();
   await page.getByLabel("安排名稱").fill("銀座午餐");
   await page.getByRole("button", { name: "加入行程" }).click();
   const addedCard = page.getByRole("heading", { name: "銀座午餐" }).locator("xpath=ancestor::article");
@@ -277,19 +394,22 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await expect.poll(() => saves).toBe(1);
   await page.getByRole("button", { name: "開啟旅程工具" }).click();
   await expect(page.getByRole("dialog", { name: "旅程工具" })).toBeVisible();
+  await page.getByRole("button", { name: /旅程設定/ }).click();
   await page.getByRole("radio", { name: /暮紫/ }).click();
-  await expect(page.locator("[data-planner-theme='lavender']")).toBeVisible();
+  await expect(page.locator("main[data-planner-theme='lavender']")).toBeVisible();
   await page.getByRole("button", { name: "關閉" }).click();
   // The phone planner floats a day strip at the top and the intent bar plus the
   // dock at the bottom, so a card that is already on screen can still be under
   // one of them; Playwright only scrolls when an element is off screen.
+  await page.getByLabel("淺草寺 的更多操作").click();
   const editFirstStop = page.getByRole("button", { name: "編輯 淺草寺" });
   await editFirstStop.evaluate((element) => element.scrollIntoView({ block: "center" }));
   await editFirstStop.click();
   await page.getByLabel("安排名稱").fill("淺草寺與雷門");
-  await page.getByRole("button", { name: "關閉" }).click();
+  expect(saves).toBe(1);
+  await page.getByRole("dialog", { name: "編輯安排", exact: true }).getByRole("button", { name: "儲存修改", exact: true }).click();
   await expect.poll(() => saves).toBe(2);
-  await page.getByRole("button", { name: /^AI 幫我安排 · 消耗 1 次$/ }).click();
+  await page.getByRole("button", { name: "AI 助手", exact: true }).click();
   await expect(page.getByRole("dialog", { name: "AI 幫我安排" })).toBeVisible();
   await expect(page.getByRole("radio", { name: /單日安排/ })).toHaveAttribute("aria-checked", "true");
   await expect(page.getByRole("radio", { name: /全行程安排/ })).toBeVisible();
@@ -298,8 +418,10 @@ test("mobile-first planner edits, autosaves, and previews before charging", asyn
   await expect(page.getByRole("dialog", { name: "確認 AI 行程預覽" })).toBeVisible();
   await page.getByRole("button", { name: /^套用行程 · 消耗 1 次$/ }).click();
   await expect(page.getByText(/MiniMax 已套用.*並扣除 1 次/)).toBeVisible();
-  await page.getByRole("button", { name: /^AI 幫我安排 · 消耗 1 次$/ }).click();
-  await page.getByRole("button", { name: /只調整現有動線/ }).click();
+  await page.getByRole("button", { name: "AI 助手", exact: true }).click();
+  await page.getByRole("button", { name: "只順路排序", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "最佳化預覽" })).toBeHidden();
+  await page.getByRole("button", { name: /^產生預覽 · 不扣次$/ }).click();
   await expect(page.getByRole("dialog", { name: "最佳化預覽" })).toBeVisible();
   await expect(page.getByText("預計節省")).toBeVisible();
   await page.getByRole("button", { name: /^套用 · 消耗 1 次$/ }).click();
@@ -325,7 +447,7 @@ test("route drawer previews a car route before applying and keeps it after reloa
     preview_id: `route-preview-${index + 1}`,
     provider_route_key: `drive-${index + 1}`,
     rank: index + 1,
-    expires_at: "2026-09-01T01:15:00Z",
+    expires_at: routePreviewExpiresAt(),
     segment: {
       ...carSegment,
       duration_minutes: duration,
@@ -370,10 +492,12 @@ test("route drawer previews a car route before applying and keeps it after reloa
   });
 
   await page.goto("/zh-TW/trips/routing-trip");
-  await page.getByRole("button", { name: "查看前往 晴空塔 的路線" }).click();
+  await page.getByRole("button", { name: /^查看前往 晴空塔 的路線/ }).click();
   const routeDialog = page.getByRole("dialog", { name: "這段路怎麼走" });
   await expect(routeDialog).toBeVisible();
   await routeDialog.getByRole("tab", { name: "汽車" }).click();
+  expect(previewBody).toBeUndefined();
+  await routeDialog.getByRole("button", { name: "查詢交通方案", exact: true }).click();
   await expect(routeDialog.getByRole("option", { name: /方案 3/ })).toBeVisible();
   await routeDialog.getByRole("option", { name: /方案 2/ }).click();
   await expect(routeDialog.locator(".route-apply-bar strong")).toHaveText("汽車 · 方案 2 · 14 分鐘");
@@ -384,12 +508,12 @@ test("route drawer previews a car route before applying and keeps it after reloa
   await expect(page.getByText("已套用交通方式，後續可調整的開始時間已重新計算。")).toBeVisible();
   expect(applyBody).toMatchObject({ version: 2, source: "provider", preview_id: "route-preview-2" });
   await routeDialog.getByRole("button", { name: "關閉" }).click();
-  await expect(page.getByRole("button", { name: "查看前往 晴空塔 的路線" })).toContainText("汽車");
+  await expect(page.getByRole("button", { name: /^查看前往 晴空塔 的路線/ })).toContainText("汽車");
   await page.reload();
-  await expect(page.getByRole("button", { name: "查看前往 晴空塔 的路線" })).toContainText("汽車");
+  await expect(page.getByRole("button", { name: /^查看前往 晴空塔 的路線/ })).toContainText("汽車");
 });
 
-test("route drawer auto-previews an unapplied Tokyo transit route without layout overflow", async ({ page }) => {
+test("route drawer queries an unapplied Tokyo transit route only explicitly without layout overflow", async ({ page }) => {
   const routeItems = [
     { id: "tokyo-station", item_type: "custom", day_date: "2026-11-12", position: 0, title: "東京車站", location_name: "東京車站", latitude: 35.6812, longitude: 139.7671, provider_place_id: "tokyo-station", location_source: "confirmed", locked: false, fixed_time: false, is_estimated: false, start_time: "2026-11-12T00:00:00Z", duration_minutes: 60, data: {} },
     { id: "sensoji", item_type: "custom", day_date: "2026-11-12", position: 1, title: "淺草寺", location_name: "淺草寺", latitude: 35.7148, longitude: 139.7967, provider_place_id: "sensoji", location_source: "google_places_auto", locked: false, fixed_time: false, is_estimated: true, start_time: "2026-11-12T01:30:00Z", duration_minutes: 60, data: { needs_place_confirmation: true } },
@@ -408,19 +532,25 @@ test("route drawer auto-previews an unapplied Tokyo transit route without layout
   };
   await page.route("**/api/travel/runtime/public-config", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ google_routes_enabled: true, google_places_enabled: true, google_maps_embed_enabled: false, navitime_enabled: false }) }));
   await page.route("**/api/travel/affiliates/options**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ options: [] }) }));
+  let previews = 0;
   await page.route("**/api/travel/trips/tokyo-preview-trip**", async (route) => {
     if (route.request().url().endsWith("/routes/preview")) {
+      previews += 1;
       await new Promise((resolve) => setTimeout(resolve, 150));
-      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ preview_id: "tokyo-preview", expires_at: "2026-09-01T01:15:00Z", segment, schedule_impact: { affected_items: [], conflicts: [] } }) });
+      await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ preview_id: "tokyo-preview", expires_at: routePreviewExpiresAt(), segment, schedule_impact: { affected_items: [], conflicts: [] } }) });
       return;
     }
     await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(currentTrip) });
   });
 
   await page.goto("/zh-TW/trips/tokyo-preview-trip");
-  await page.getByRole("button", { name: /選擇這段交通方式.*淺草寺/ }).click();
+  await page.getByRole("button", { name: /^查看前往 淺草寺 的路線/ }).click();
   const dialog = page.getByRole("dialog", { name: "這段路怎麼走" });
+  await expect(dialog).toBeVisible();
+  expect(previews).toBe(0);
+  await dialog.getByRole("button", { name: "查詢交通方案", exact: true }).click();
   await expect(dialog.getByRole("button", { name: "套用此路線" })).toBeVisible();
+  expect(previews).toBe(1);
   await expect(dialog.getByText("目前已套用")).toHaveCount(0);
   const mapHeight = await dialog.locator(".route-map-frame").evaluate((element) => element.getBoundingClientRect().height);
   expect(mapHeight).toBeGreaterThanOrEqual(220);
@@ -459,7 +589,7 @@ test("Seoul route drawer uses NAVER drive and keeps transit external-only", asyn
       if (body.travel_mode === "transit") {
         await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ kind: "external_only", preview_id: null, expires_at: null, segment: null, schedule_impact: null, external_navigation: { provider: "naver_maps", label: "NAVER Maps", travel_mode: "transit", app_url: "nmap://route/public?slat=37.5796&slng=126.977&dlat=37.5826&dlng=126.985", web_url: "https://map.naver.com/p/directions/126.977,37.5796,%EA%B2%BD%EB%B3%B5%EA%B6%81/126.985,37.5826,%EB%B6%81%EC%B4%8C/-/transit", reason: "NAVER 官方 Directions API 不提供可保存的大眾運輸班次；請到 NAVER Maps 查看。" } }) });
       } else {
-        await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ kind: "provider", preview_id: "naver-drive-preview", expires_at: "2026-09-01T01:15:00Z", segment: carSegment, schedule_impact: { affected_items: [{ item_id: "bukchon", title: "北村韓屋村", old_start_time: "2026-11-13T01:30:00Z", new_start_time: "2026-11-13T01:22:00Z", delta_minutes: -8 }], conflicts: [] } }) });
+        await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ kind: "provider", preview_id: "naver-drive-preview", expires_at: routePreviewExpiresAt(), segment: carSegment, schedule_impact: { affected_items: [{ item_id: "bukchon", title: "北村韓屋村", old_start_time: "2026-11-13T01:30:00Z", new_start_time: "2026-11-13T01:22:00Z", delta_minutes: -8 }], conflicts: [] } }) });
       }
       return;
     }
@@ -473,11 +603,13 @@ test("Seoul route drawer uses NAVER drive and keeps transit external-only", asyn
   });
 
   await page.goto("/zh-TW/trips/seoul-route-trip");
-  await page.getByRole("button", { name: /選擇這段交通方式.*北村韓屋村/ }).click();
+  await page.getByRole("button", { name: /^查看前往 北村韓屋村 的路線/ }).click();
   const dialog = page.getByRole("dialog", { name: "這段路怎麼走" });
+  await dialog.getByRole("button", { name: "查詢交通方案", exact: true }).click();
   await expect(dialog.getByRole("link", { name: /用 NAVER Maps 規劃/ })).toBeVisible();
   await expect(dialog.getByRole("button", { name: "外部導航，無法套用" })).toBeDisabled();
   await dialog.getByRole("tab", { name: "汽車" }).click();
+  await dialog.getByRole("button", { name: "查詢交通方案", exact: true }).click();
   await expect(dialog.getByRole("button", { name: "套用此路線" })).toBeEnabled();
   await expect(dialog.getByText("NAVER Maps").first()).toBeVisible();
   await dialog.getByRole("button", { name: "套用此路線" }).click();
@@ -617,7 +749,7 @@ test("airline fare lab asks a visitor to sign in before showing charge buttons",
   }));
   await page.goto("/zh-TW/labs/airlines");
   await expect(page.getByRole("heading", { name: "登入後查詢 · 消耗 1 次" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "登入" })).toHaveAttribute("href", "/zh-TW/login?next=%2Flabs%2Fairlines");
+  await expect(page.getByRole("link", { name: "登入", exact: true })).toHaveAttribute("href", "/zh-TW/login?next=%2Flabs%2Fairlines");
   await expect(page.getByRole("button", { name: /搜尋公開票價/ })).toHaveCount(0);
 });
 

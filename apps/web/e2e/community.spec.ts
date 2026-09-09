@@ -259,6 +259,7 @@ test("reviewed pet rules filter conservatively and require confirmation before c
     expect(withNotes.notes).toBe("Preserve this private note");
     await page.goto(`/zh-TW/trips/${trip.id}`);
     await page.getByRole("button", { name: /^(開啟)?旅程工具$/ }).click();
+    await page.getByRole("button", { name: /^旅行準備/ }).click();
     const petPanel = page.locator("details").filter({ has: page.locator("summary").filter({ hasText: /^寵物同行條件$/ }) });
     await petPanel.locator("summary").click();
     await petPanel.getByLabel("這趟旅行有寵物同行").check();

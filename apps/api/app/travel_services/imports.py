@@ -16,15 +16,18 @@ from app.models import (
     TravelServiceOffer,
     TravelServiceProduct,
 )
+from app.travel_services.channels import klook_canonical_target, klook_product_target
 from app.travel_services.registry import BRANDS, brand_target
-from app.travel_services.schemas import Facts, HotelOptionInput, ProductInput, untracked_url
+from app.travel_services.schemas import Facts, HotelOptionInput, Kind, ProductInput, untracked_url
 from app.travel_services.service import fail, fingerprint, product_input
 
 
 def parse_csv(value: str) -> list[dict[str, Any]]:
     reader = csv.DictReader(io.StringIO(value.lstrip("\ufeff")))
     required = {"source_key", "kind", "destination_id", "title", "source_url"}
-    allowed = required | {"names_json", "facts", "brand", "target_url", "scope", "booking_options"}
+    allowed = required | {
+        "names_json", "facts", "brand", "channel", "target_url", "scope", "booking_options"
+    }
     if (
         not reader.fieldnames
         or not required <= set(reader.fieldnames)
@@ -62,11 +65,23 @@ def parse_csv(value: str) -> list[dict[str, Any]]:
                 if code not in BRANDS or data.kind not in BRANDS[code].kinds:
                     raise ValueError("Invalid brand")
                 scope = raw.get("scope") or "product"
+                channel = raw.get("channel") or "travelpayouts"
+                if channel not in ("travelpayouts", "klook_direct") or (
+                    channel == "klook_direct" and code != "klook"
+                ):
+                    raise ValueError("Invalid affiliate channel")
                 if scope not in ("product", "destination"):
                     raise ValueError("Invalid scope")
+                if channel == "klook_direct" and scope == "product":
+                    klook_product_target(raw.get("target_url") or "", data.kind)
                 row["offer"] = {
                     "brand": code,
-                    "target_url": brand_target(code, untracked_url(raw.get("target_url") or "")),
+                    "channel": channel,
+                    "target_url": (
+                        klook_canonical_target(raw.get("target_url") or "")
+                        if channel == "klook_direct"
+                        else brand_target(code, untracked_url(raw.get("target_url") or ""))
+                    ),
                     "scope": scope,
                 }
             result.append(row)
@@ -85,6 +100,9 @@ async def upsert_product(
         .where(TravelServiceProduct.source_key == data.source_key)
         .with_for_update()
     )
+    if row is not None and row.kind != data.kind:
+        # Source keys are durable identities, not a way to move a product between domains.
+        raise fail("service_source_kind_mismatch", 409)
     from app.travel_services.hotel_options import upsert_option
     from app.travel_services.schemas import HotelOptionInput
 
@@ -143,19 +161,43 @@ async def upsert_product(
 
 
 async def commit_import(
-    session: AsyncSession, run_id: UUID, project_id: str | None
+    session: AsyncSession,
+    run_id: UUID,
+    project_id: str | None,
+    *,
+    required_kind: Kind | None = None,
+    klook_affiliate_id: str | None = None,
 ) -> dict[str, Any]:
     run = await session.scalar(
         select(TravelServiceImport).where(TravelServiceImport.id == run_id).with_for_update()
     )
     if run is None:
         raise fail("service_unavailable", 404)
+    if required_kind == "hotel" and run.source != "hotel_csv":
+        raise fail("service_import_scope_mismatch", 409)
+    scope = "hotel" if run.source == "hotel_csv" else required_kind
+    if scope and any(row.get("product", {}).get("kind") != scope for row in run.rows_json):
+        raise fail("service_import_scope_mismatch", 409)
     if run.status == "completed":
         return run.result_json
     if any("error" in row for row in run.rows_json):
         raise fail("service_csv_invalid")
-    if not project_id and any(row.get("offer") for row in run.rows_json):
-        raise fail("service_brand_unavailable")
+    for item in run.rows_json:
+        if raw := item.get("offer"):
+            channel = raw.get("channel", "travelpayouts")
+            if channel not in ("travelpayouts", "klook_direct"):
+                raise fail("service_brand_unavailable")
+            if not (klook_affiliate_id if channel == "klook_direct" else project_id):
+                raise fail("service_brand_unavailable")
+    # Validate the entire batch before modifying any row; upsert repeats this under its lock.
+    for item in run.rows_json:
+        existing = await session.scalar(
+            select(TravelServiceProduct)
+            .where(TravelServiceProduct.source_key == item["product"]["source_key"])
+            .with_for_update()
+        )
+        if existing is not None and existing.kind != item["product"]["kind"]:
+            raise fail("service_source_kind_mismatch", 409)
     changed = 0
     for row in run.rows_json:
         product, updated = await upsert_product(
@@ -174,15 +216,19 @@ async def commit_import(
             if option_changes and not updated:
                 changed += 1
         if raw := row.get("offer"):
+            channel = raw.get("channel", "travelpayouts")
+            enrollment = klook_affiliate_id if channel == "klook_direct" else project_id
             brand = await session.scalar(
                 select(TravelServiceBrand).where(
-                    TravelServiceBrand.project_id == project_id,
+                    TravelServiceBrand.project_id == enrollment,
+                    TravelServiceBrand.channel == channel,
                     TravelServiceBrand.code == raw["brand"],
                 )
             )
             if brand is None:
                 brand = TravelServiceBrand(
-                    project_id=project_id, code=raw["brand"], approval="unknown", enabled=False
+                    project_id=enrollment, channel=channel, code=raw["brand"],
+                    approval="unknown", enabled=False,
                 )
                 session.add(brand)
                 await session.flush()

@@ -6,6 +6,7 @@ import {
   ChevronRight,
   Luggage,
   MapPinned,
+  MoreHorizontal,
   Pause,
   Pencil,
   Play,
@@ -15,7 +16,7 @@ import {
   Trash2,
   X,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
@@ -24,6 +25,7 @@ import { loginPath } from "@/lib/navigation";
 import { PriceAlertButton } from "@/components/price-alert-button";
 import { formatCurrency } from "@/lib/locale-format";
 import { displayTripStatus, type TripStatus } from "@/lib/trip-types";
+import { frontendCopy } from "@/lib/frontend-navigation";
 
 type TripItem = {
   id: string;
@@ -105,6 +107,7 @@ function LoadError({
 type Capacity = { count: number; limit: number };
 
 export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
+  const flowCopy = frontendCopy(useLocale());
   const common = useTranslations("common");
   const t = useTranslations(kind);
   const tripsCatalog = useTranslations("trips");
@@ -401,6 +404,7 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                       className="shrink-0 text-[var(--muted)]"
                       size={19}
                     />
+                    <span className="hidden text-sm font-semibold text-[var(--teal)] sm:inline">{flowCopy.continue}</span>
                   </Link>
                 )}
               </div>
@@ -436,14 +440,14 @@ export function AccountList({ kind }: { kind: "trips" | "alerts" }) {
                     </button>
                   </>
                 )}
-                <button
+                {!isAlert ? <details className="relative"><summary aria-label={`${flowCopy.more}: ${trip.name}`} className="app-icon-button flex min-h-11 cursor-pointer list-none items-center justify-center"><MoreHorizontal size={18} aria-hidden /></summary><div className="absolute right-0 z-10 mt-2 min-w-36 rounded-xl border border-[var(--line)] bg-[var(--surface)] p-2 shadow-lg"><button type="button" onClick={() => setPendingDelete(row.id)} aria-label={flowCopy.deleteTrip} className="flex min-h-11 w-full items-center gap-2 rounded-lg px-3 text-sm"><Trash2 size={17} />{flowCopy.deleteTrip}</button></div></details> : <button
                   type="button"
                   onClick={() => setPendingDelete(row.id)}
                   aria-label={`刪除${isAlert ? "通知" : "旅程"}`}
                   className="app-icon-button"
                 >
                   <Trash2 size={17} />
-                </button>
+                </button>}
               </div>
             </div>
             {!isAlert && Number(trip.total_price) > 0 && trip.price_status !== "stale" && (

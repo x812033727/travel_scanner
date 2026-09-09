@@ -18,6 +18,13 @@ function fetchByPath(bodies: Record<string, unknown>, fallbackStatus = 404) {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("NewTripAuthGate", () => {
+  it("preserves a planning handoff through sign-in without creating anything", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response("{}", {status:401})));
+    render(<NewTripAuthGate resumePlanning />);
+    const link = await screen.findByRole("link", {name:"前往登入"});
+    expect(new URL(link.getAttribute("href")!, "https://local.test").searchParams.get("next")).toBe("/trips/new?resume_plan=1");
+    expect(vi.mocked(fetch).mock.calls.every(([, init]) => !init?.method || init.method === "GET")).toBe(true);
+  });
   it("asks signed-out visitors to log in before showing the long form", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({ detail: "未登入" }), { status: 401 })));
     render(<NewTripAuthGate />);

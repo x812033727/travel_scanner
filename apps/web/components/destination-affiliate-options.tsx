@@ -1,10 +1,11 @@
 "use client";
 
 import { ExternalLink, HandCoins } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import type { AffiliateModule } from "@/components/affiliate-partner-options";
+import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 
 type DestinationOption = {
   id: string;
@@ -41,18 +42,30 @@ const LABEL_KEYS: Record<AffiliateModule, string> = {
 
 export function DestinationAffiliateOptions({
   destinationId,
+  modules = MODULES,
+  contextual = false,
+  destinationLabel,
 }: {
   destinationId: string;
+  modules?: AffiliateModule[];
+  contextual?: boolean;
+  destinationLabel?: string;
 }) {
   const t = useTranslations("travelServices");
-  const [responses, setResponses] = useState<DestinationResponse[]>([]);
+  const locale = useLocale();
+  const copy = klookAffiliateCopy(locale);
+  const moduleKey = [...new Set(modules)].filter((module) => MODULES.includes(module)).join(",");
+  const requestKey = `${destinationId}:${moduleKey}:${locale}`;
+  const [snapshot, setSnapshot] = useState<{ key: string; responses: DestinationResponse[] }>();
+  const responses = snapshot?.key === requestKey ? snapshot.responses : [];
 
   useEffect(() => {
-    let active = true;
+    const controller = new AbortController();
     Promise.all(
-      MODULES.map((module) =>
+      (moduleKey.split(",").filter(Boolean) as AffiliateModule[]).map((module) =>
         api<DestinationResponse>(
           `/affiliates/destination-offers?destination_id=${encodeURIComponent(destinationId)}&module=${module}`,
+          { signal: controller.signal },
         ).catch(() => ({
           destination_id: destinationId,
           module,
@@ -61,28 +74,28 @@ export function DestinationAffiliateOptions({
         })),
       ),
     ).then((values) => {
-      if (active) setResponses(values.filter((value) => value.options.length));
+      if (!controller.signal.aborted) setSnapshot({ key: requestKey, responses: values.filter((value) => value?.options?.length) });
     });
     return () => {
-      active = false;
+      controller.abort();
     };
-  }, [destinationId]);
+  }, [destinationId, moduleKey, requestKey]);
 
   if (!responses.length) return null;
   const disclosure = responses.find((response) => response.disclosure)?.disclosure;
   return (
     <section
-      aria-label={t("destinationOffersTitle")}
-      className="mb-7 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface-raised)] p-5"
+      aria-label={`${contextual ? copy.discover : t("destinationOffersTitle")}${destinationLabel ? ` · ${destinationLabel}` : ""}`}
+      className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-4 sm:p-5"
     >
       <div className="flex items-start gap-3">
         <span className="rounded-xl bg-[var(--coral-soft)] p-2 text-[var(--coral)]">
           <HandCoins size={19} />
         </span>
         <div>
-          <h2 className="font-bold">{t("destinationOffersTitle")}</h2>
+          <h2 className="font-bold">{contextual ? copy.discover : t("destinationOffersTitle")}{destinationLabel && <span className="ml-2 text-[var(--teal)]">{destinationLabel}</span>}</h2>
           <p className="mt-1 text-xs leading-5 text-[var(--muted)]">
-            {t("destinationOffersHint")}
+            {contextual ? copy.discoveryHint : t("destinationOffersHint")}
           </p>
         </div>
       </div>

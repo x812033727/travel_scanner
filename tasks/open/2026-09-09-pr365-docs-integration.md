@@ -1,7 +1,7 @@
 ---
 id: 2026-09-09-pr365-docs-integration
 title: Integrate PR 365 historical deployment and open verification notes
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-pr365-docs
@@ -25,16 +25,16 @@ without presenting the historical deployment or approvals as the current live st
 
 ## Definition of done
 
-- [ ] Preserve dated evidence and unfinished live verification obligations.
-- [ ] Describe the production-build CI improvement already present on the fixed main.
-- [ ] Integrate main normally, regenerate BOARD, and pass task/diff checks.
-- [ ] Hand off a clean local commit without pushing, merging remotely or deploying.
+- [x] Preserve dated evidence and unfinished live verification obligations.
+- [x] Describe the production-build CI improvement already present on the fixed main.
+- [x] Integrate main normally, regenerate BOARD, and pass task/diff checks.
+- [x] Prepare the local documentation commit for handoff without pushing, merging remotely or deploying.
 
 ## Steps
 
 - [x] Verify the exact PR head and claim documentation-only integration scope.
-- [ ] Merge fixed main and reconcile only the task-documentation overlap.
-- [ ] Validate and return the local result for the root agent's review.
+- [x] Merge fixed main and reconcile only the task-documentation overlap.
+- [x] Validate the local result for the root agent's review; remote CI/merge remain separate.
 
 ## How to verify
 
@@ -53,3 +53,23 @@ a899437aaf2f60c7affe2e944d49d62216537c90, independently confirmed by GitHub's
 `git/ref/heads/main` endpoint. The PR's `baseRefOid` is its historical base, not
 proof of current main. This task does not claim the underlying CI test or live
 affiliate operations scopes, change approval gates, or certify deployment state.
+
+The normal merge had only a generated BOARD conflict, resolved with
+`npm run tasks:board`. The net delta against fixed main is documentation only:
+the two original open tasks, this integration task and BOARD. Preserve both
+original operational tasks as open; this integration does not complete them.
+
+Validation: `npm run check:tasks` passed for 204 task files; it reports the
+existing discovery/planner overlap on trip-editor.test.tsx, which was not edited.
+`node --test tools/tasks.test.mjs tools/json-duplicate-keys.test.mjs` passed all
+24 relevant checks; `git diff --check` passed. The attempted broader
+`npm run test:tools` passed those 24 checks but failed to import the unrelated
+airline-crawler test because this fresh worktree has no installed
+`@playwright/test`. No dependency installation, browser launch or crawler run
+was attempted, and no full-tools pass is claimed. The receiving agent must run
+the updated PR's required CI before any remote merge.
+
+Documentation is suitable for normal PR review rather than being held draft
+until affiliate activation or a separate network investigation is finished;
+those unfinished obligations are explicitly retained. No remote draft-state
+change, PR write, push, merge, deployment or live-provider call was performed.

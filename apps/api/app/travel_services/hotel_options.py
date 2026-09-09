@@ -106,6 +106,22 @@ def ready_option(
     return True
 
 
+def same_hotel_target(provider: str, first: str | None, second: str | None) -> bool:
+    if not first or not second:
+        return False
+    if provider != "klook":
+        return first == second
+    from app.travel_services.channels import klook_product_target, same_klook_identity
+
+    try:
+        klook_product_target(first, "hotel")
+        klook_product_target(second, "hotel")
+        # Keep query identity both ways: an alias must not discard dates/package choices.
+        return same_klook_identity(first, second) and same_klook_identity(second, first)
+    except ValueError:
+        return False
+
+
 async def matching_offer(
     session: AsyncSession,
     product: TravelServiceProduct,
@@ -113,24 +129,29 @@ async def matching_offer(
     settings: Settings,
     now: datetime,
 ) -> TravelServiceOffer | None:
+    from app.travel_services.channels import channel_for
     from app.travel_services.service import ready_offer
 
-    # Exact canonical target, same product AND same platform. Destination offers never qualify.
+    # Same product AND platform; Klook may use its equivalent typed numeric property alias.
+    # Destination offers never qualify, and other platforms retain exact-URL matching.
     pairs = (
         await session.execute(
             select(TravelServiceOffer, TravelServiceBrand)
             .join(TravelServiceBrand, TravelServiceBrand.id == TravelServiceOffer.brand_id)
             .where(
                 TravelServiceOffer.product_id == product.id,
-                TravelServiceOffer.target_url == option.url,
                 TravelServiceOffer.scope == "product",
                 TravelServiceBrand.code == option.provider,
-                TravelServiceBrand.project_id == (settings.travelpayouts_project_id or ""),
             )
         )
     ).all()
     return next(
-        (offer for offer, brand in pairs if ready_offer(offer, brand, product, settings, now)), None
+        (
+            offer for offer, brand in sorted(
+                pairs, key=lambda row: (channel_for(row[1]) != "klook_direct", str(row[0].id))
+            ) if same_hotel_target(option.provider, option.url, offer.target_url)
+            and ready_offer(offer, brand, product, settings, now)
+        ), None
     )
 
 
@@ -150,7 +171,10 @@ async def public_options(
         if not ready_option(product, option, config, now):
             continue
         has_offer = (
-            (option.provider, option.url or "") in eligible_targets
+            any(
+                provider == option.provider and same_hotel_target(provider, option.url, target)
+                for provider, target in eligible_targets
+            )
             if eligible_targets is not None
             else bool(await matching_offer(session, product, option, settings, now))
         )

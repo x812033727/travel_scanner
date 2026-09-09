@@ -14,21 +14,25 @@ import { ItineraryPreview } from "./post";
 import { PlacePicker, RelatedPlaces } from "./places";
 import { Button, CommunityImage, Dialog, Empty, ErrorNotice, fieldClass, panelClass } from "./ui";
 import { useResource } from "./use-resource";
+import { getDiscoveryCopy } from "@/lib/discovery-copy";
+import { youtubeId } from "@/lib/discovery";
+import { DiscoveryVideoPlayer } from "@/components/discovery/video";
 
 type Draft = { title: string; body: string; locale: string; destination: string; kind: Post["kind"];
-  topics: string; places: CatalogPlace[]; media: Media[]; source_trip_id: string;
+  topics: string; places: CatalogPlace[]; media: Media[]; video_urls: string; source_trip_id: string;
   keep_itinerary: boolean; allow_fork: boolean };
 type TripOption = { id: string; name: string; start_date: string; end_date: string; version: number };
 
 export function PostEditor({ id }: { id?: string }) {
   const t = useTranslations("community");
   const locale = useLocale();
+  const copy = getDiscoveryCopy(locale);
   const router = useRouter();
-  const { flags } = useCommunity();
+  const { flags, me } = useCommunity();
   const visibility = useSiteVisibility();
   const trips = useResource<TripOption[]>(featureVisible(visibility, "trips") ? "/trips" : null);
   const initial = useResource<Post>(id ? `/community/posts/${id}/draft` : null);
-  const [draft, setDraft] = useState<Draft>({ title: "", body: "", locale, destination: "", kind: "story", topics: "", places: [], media: [], source_trip_id: "", keep_itinerary: false, allow_fork: false });
+  const [draft, setDraft] = useState<Draft>({ title: "", body: "", locale, destination: "", kind: "story", topics: "", places: [], media: [], video_urls: "", source_trip_id: "", keep_itinerary: false, allow_fork: false });
   const latest = useRef(draft);
   const record = useRef<Post | null>(null);
   const saving = useRef<Promise<Post> | null>(null);
@@ -48,7 +52,7 @@ export function PostEditor({ id }: { id?: string }) {
     const post = initial.data;
     const next: Draft = { title: post.title, body: post.body, locale: post.locale, destination: post.destination,
       kind: post.kind, topics: post.topics.join(", "), places: post.places || [], media: post.media,
-      source_trip_id: "", keep_itinerary: Boolean(post.itinerary), allow_fork: post.allow_fork };
+      video_urls: (post.video_refs || []).map((video) => `https://www.youtube.com/watch?v=${video.video_id}`).join("\n"), source_trip_id: "", keep_itinerary: Boolean(post.itinerary), allow_fork: post.allow_fork };
     latest.current = next; record.current = post; savedSnapshot.current = JSON.stringify(next);
     setDraft(next); setStatus(post.state || "draft"); initialized.current = true; setReady(true);
   }, [initial.data]);
@@ -63,12 +67,15 @@ export function PostEditor({ id }: { id?: string }) {
       if (savedSnapshot.current === JSON.stringify(latest.current) && record.current) return record.current;
     }
     const value = latest.current;
+    const videoIds = value.video_urls.split("\n").map((url) => url.trim()).filter(Boolean).map(youtubeId);
+    if (videoIds.length > 5 || videoIds.some((id) => !id) || new Set(videoIds).size !== videoIds.length) throw new Error("invalid_video_refs");
     const snapshot = JSON.stringify(value);
     if (snapshot === savedSnapshot.current && record.current) return record.current;
     setStatus("saving"); setError(undefined);
     const payload = { title: value.title, body: value.body, locale: value.locale, destination: value.destination,
       kind: value.kind, topics: value.topics.split(",").map((item) => item.trim()).filter(Boolean),
       places: value.places.map(({ kind, id }) => ({ kind, id })),
+      video_refs: videoIds.map((video_id) => ({ provider: "youtube", video_id })),
       media_ids: value.media.map((media) => media.id), source_trip_id: value.source_trip_id || null,
       keep_itinerary: value.keep_itinerary, allow_fork: value.allow_fork,
       ...(record.current ? { version: record.current.version } : {}) };
@@ -118,6 +125,9 @@ export function PostEditor({ id }: { id?: string }) {
   if (initial.error) return <ErrorNotice error={initial.error} />;
   if (!ready) return <Empty>{t("loading")}</Empty>;
   const hasItinerary = Boolean(draft.source_trip_id || draft.keep_itinerary);
+  const videoIds = draft.video_urls.split("\n").map((url) => url.trim()).filter(Boolean).map(youtubeId);
+  const invalidVideo = videoIds.length > 5 || videoIds.some((id) => !id) || new Set(videoIds).size !== videoIds.length;
+  const canPublish = me?.can_publish !== false;
   return <div className="space-y-5"><p className="rounded-xl bg-[var(--paper)] p-4 text-sm leading-6">{t("moderationNotice")}</p>
     <fieldset disabled={!flags.posting_enabled || busy} className={`${panelClass} space-y-5`}>
       <label className="block font-semibold">{t("postTitle")}<input maxLength={160} className={fieldClass} value={draft.title} onChange={(e) => change("title", e.target.value)} /></label>
@@ -128,6 +138,7 @@ export function PostEditor({ id }: { id?: string }) {
       <label className="block font-semibold">{t("postBody")}<textarea rows={12} maxLength={20000} className={fieldClass} value={draft.body} onChange={(e) => change("body", e.target.value)} /></label>
       <label className="block font-semibold">{t("topics")}<input className={fieldClass} value={draft.topics} onChange={(e) => change("topics", e.target.value)} /><span className="text-sm font-normal">{t("topicsHelp")}</span></label>
       <ImageUpload images={draft.media} onChange={(images) => change("media", images)} onBusyChange={setUploading} />
+      <label className="block font-semibold">{copy.videoUrl}<textarea aria-label={copy.videoUrl} rows={3} maxLength={3000} value={draft.video_urls} onChange={(event) => change("video_urls", event.target.value)} className={fieldClass} aria-invalid={invalidVideo} aria-describedby="post-video-help" /><span id="post-video-help" className="mt-2 block text-sm font-normal leading-6 text-[var(--muted)]">{copy.videoHelp}</span>{invalidVideo && <span role="alert" className="mt-2 block text-sm">{copy.invalidVideo}</span>}</label>
       <PlacePicker value={draft.places} onChange={(places) => change("places", places)} />
       {featureVisible(visibility, "trips") && <section className="space-y-3 border-t border-[var(--line)] pt-4"><h2 className="text-xl font-bold">{t("publicItinerary")}</h2><p className="text-sm leading-6 text-[var(--muted)]">{t("itineraryPrivacy")}</p>
         <label className="block font-semibold">{t("sourceTrip")}<select className={fieldClass} value={draft.source_trip_id} onChange={(e) => change("source_trip_id", e.target.value)}><option value="">{draft.keep_itinerary ? t("keepSnapshot") : t("noItinerary")}</option>{trips.data?.map((trip) => <option key={trip.id} value={trip.id}>{trip.name}</option>)}</select></label>
@@ -137,9 +148,10 @@ export function PostEditor({ id }: { id?: string }) {
       </section>}
     </fieldset>
     <ErrorNotice error={error} /><p role="status" className="text-sm text-[var(--muted)]">{t(`states.${status}`)}</p>
-    <div className="flex flex-wrap gap-3"><Button secondary disabled={busy || uploading || !flags.posting_enabled} onClick={() => void save().catch(() => {})}>{t("saveDraft")}</Button><Button secondary disabled={busy || uploading || !flags.posting_enabled} onClick={() => void action(false)}>{t("preview")}</Button><Button disabled={busy || uploading || !flags.posting_enabled || !draft.title || !draft.body || !draft.destination || (hasItinerary && !confirmed)} onClick={() => void action(true)}>{t("publish")}</Button><Link href="/community/drafts" className="rounded-xl px-3 py-2.5 underline">{t("drafts")}</Link></div>
+    {!canPublish && me?.invitation_required && !me.creator_invited && <p className="rounded-xl bg-[var(--paper)] p-4 text-sm leading-6">{copy.inviteOnly}</p>}
+    <div className="flex flex-wrap gap-3"><Button secondary disabled={busy || uploading || invalidVideo || !flags.posting_enabled} onClick={() => void save().catch(() => {})}>{t("saveDraft")}</Button><Button secondary disabled={busy || uploading || invalidVideo || !flags.posting_enabled} onClick={() => void action(false)}>{t("preview")}</Button><Button disabled={busy || uploading || invalidVideo || !canPublish || !flags.posting_enabled || !draft.title || !draft.body || !draft.destination || (hasItinerary && !confirmed)} onClick={() => void action(true)}>{t("publish")}</Button><Link href="/community/drafts" className="rounded-xl px-3 py-2.5 underline">{t("drafts")}</Link></div>
     {hasItinerary && <p className="text-sm">{t("previewRequired")}</p>}
-    {preview && <Dialog title={t("preview")} onClose={() => setPreview(undefined)}><div className="space-y-5"><h2 className="text-2xl font-bold">{preview.title}</h2><p className="whitespace-pre-wrap break-words">{preview.body}</p>{preview.media.map((media) => <CommunityImage key={media.id} id={media.id} alt={media.alt} />)}<RelatedPlaces places={preview.places || []} />{preview.itinerary && <ItineraryPreview itinerary={preview.itinerary} />}{preview.itinerary && <label className="flex items-start gap-3"><input type="checkbox" checked={confirmed} onChange={(e) => setConfirmed(e.target.checked)} />{t("confirmPublicSnapshot")}</label>}</div></Dialog>}
+    {preview && <Dialog title={t("preview")} onClose={() => setPreview(undefined)}><div className="space-y-5"><h2 className="text-2xl font-bold">{preview.title}</h2><p className="whitespace-pre-wrap break-words">{preview.body}</p>{preview.media.map((media) => <CommunityImage key={media.id} id={media.id} alt={media.alt} />)}{preview.video_refs?.map((video) => <DiscoveryVideoPlayer key={video.video_id} video={video} />)}<RelatedPlaces places={preview.places || []} />{preview.itinerary && <ItineraryPreview itinerary={preview.itinerary} />}{preview.itinerary && <label className="flex items-start gap-3"><input type="checkbox" checked={confirmed} onChange={(e) => setConfirmed(e.target.checked)} />{t("confirmPublicSnapshot")}</label>}</div></Dialog>}
   </div>;
 }
 
