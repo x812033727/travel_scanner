@@ -4,6 +4,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import effective_site_visibility
+from app.discovery.schemas import DiscoveryDisplayTopic, Kind
 from app.i18n import LOCALES, Locale
 from app.models import TravelFood, TravelHotspot
 from app.travel_services.service import catalog_config
@@ -24,6 +25,18 @@ LABELS = {
     "dessert": ("Desserts", "デザート", "디저트", "甜點", "甜点"),
     "drink": ("Drinks", "ドリンク", "음료", "飲品", "饮品"),
 }
+
+
+def display_category_topics(
+    kind: Kind, topics: list[str], locale: Locale
+) -> list[DiscoveryDisplayTopic]:
+    """Display known translations only; ranking/filter topic IDs remain untouched."""
+    index = LOCALES.index(locale)
+    return [
+        DiscoveryDisplayTopic(id=f"category:{topic}", label=LABELS[topic][index])
+        for topic in dict.fromkeys(topics)
+        if topic in LABELS and not (topic == kind and kind in {"food", "hotel"})
+    ]
 
 
 async def topic_options(session: AsyncSession, locale: Locale) -> list[dict[str, str]]:

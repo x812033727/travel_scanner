@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**20 open · 0 in progress · 2 blocked · 7 in review · 192 done**
+**21 open · 0 in progress · 2 blocked · 8 in review · 192 done**
 
 ## Ready to claim
 
@@ -25,6 +25,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P3 | [彈性日期區塊的價格標籤寫死 full_trip_search](open/2026-09-06-full-trip-search.md) | web | `apps/web/components/flight-date-options.tsx`<br>`apps/web/components/flight-date-options.test.tsx` |
 | P3 | [整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation](open/2026-09-07-fixed-email-in-integration-tests.md) | api | `apps/api/tests/test_food_integration.py` |
 | P3 | [tasks/BOARD.md 是產生檔，卻讓每個 PR 互相衝突](open/2026-09-07-board-conflicts-on-every-pr.md) | tools | `.gitattributes`<br>`tools/tasks.mjs` |
+| P3 | [Isolate backup catalog test from host free disk capacity](open/2026-09-09-backup-catalog-free-disk-fixture.md) | api | `apps/api/tests/test_database_operations_center.py` |
 
 ## In progress
 
@@ -41,6 +42,7 @@ _Nothing here._
 | [Frontend flow navigation planning handoff and acceptance](open/2026-09-09-frontend-flow-integration.md) | codex-frontend-flow | `codex/frontend-explore-flow` |
 | [Route apply state regression and semantic itinerary tones](open/2026-09-09-planner-route-tones.md) | codex | `codex/planner-route-tones` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
+| [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
 
 ## Waiting
 

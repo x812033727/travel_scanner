@@ -47,7 +47,6 @@ scope:
   - apps/web/e2e/frontend-flow-full-stack.spec.ts
   - apps/web/playwright.frontend-flow.config.ts
   - docs/frontend-flow.md
-  - .github/workflows/travel-discovery.yml
 ---
 
 # Frontend flow navigation planning handoff and acceptance
@@ -73,6 +72,8 @@ Make the approved explore → save → trip journey calm and continuous, without
 Run web lint/i18n/types/Vitest/build, API Ruff/mypy/pytest/migration, desktop and Pixel 7 Playwright. Production inspection is read-only.
 
 ## Notes
+
+- 2026-09-09 scope handoff: original coordinator confirmed source work stopped and released .github/workflows/travel-discovery.yml to 2026-09-09-discovery-card-details only to include its additional browser suite; all existing suites must remain. Other scope, owner and review status remain unchanged.
 
 Base main 7cee8650 includes planner PR #373. Owner authorized task-only closure dcc97fbd, imported as f7b78cc, and released new-trip-form for a minimal success handoff. No itinerary timeline/draft behavior changes.
 

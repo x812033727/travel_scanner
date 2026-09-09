@@ -11,10 +11,16 @@ completed_at:
 branch: codex/frontend-explore-flow
 depends_on: []
 scope:
-  - apps/web/components/discovery
+  - apps/web/components/discovery/video.tsx
+  - apps/web/components/discovery/status.test.tsx
+  - apps/web/components/discovery/saved-content-action.tsx
+  - apps/web/components/discovery/preferences.tsx
+  - apps/web/components/discovery/explorer.tsx
+  - apps/web/components/discovery/discovery.test.tsx
+  - apps/web/components/discovery/detail-drawer.tsx
+  - apps/web/components/discovery/collections.tsx
   - apps/web/components/saved-items-provider.tsx
   - apps/web/components/saved-items-provider.test.tsx
-  - apps/web/lib/discovery.ts
   - apps/web/lib/discovery-copy.ts
   - apps/web/lib/saved-items.ts
   - apps/web/lib/saved-items.test.ts
@@ -61,6 +67,8 @@ Scoped ESLint: `npx eslint components/discovery components/saved-items-provider.
 Root runs `npm run typecheck:web`, production build and desktop/Pixel 7 Playwright, including the existing discovery and discovery-full-stack suites and new frontend-flow acceptance.
 
 ## Notes
+
+- 2026-09-09 scope handoff: original coordinator confirmed PR #374 merged as a899437a and source work stopped; released discovery/card.tsx, discovery/discovery.module.css, discovery/frontend-flow.test.tsx and lib/discovery.ts to 2026-09-09-discovery-card-details. Other scope, owner and review status remain unchanged.
 
 - PR: https://github.com/x812033727/travel_scanner/pull/374. In review; the full CI suite is being rerun after compatibility repairs. Focused passing evidence below does not imply the current PR head is fully green, merged or deployed. Keep this task open until joint validation and merge evidence are recorded.
 - `/saved-items/all` and named lists are account-only and independent of community enrollment. Hotel/service and article/video/guide references are aliases, not duplicate saved rows. Non-restaurant UUID hex normalizes to dashed lowercase; opaque Google Place IDs retain case.

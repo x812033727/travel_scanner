@@ -11,11 +11,14 @@ export type DiscoveryCategory = typeof discoveryCategories[number];
 export type DiscoveryPlanning = { kind: "hotspot" | "food" | "merchant" | "hotel"; id: string; destination_id?: string | null; selection_path?: string | null; product_id?: string | null; merchants: Array<{ id: string; name: string; destination_id: string; selection_path: string }> };
 export type DiscoveryPlace = { status: "ready" | "stale" | "unavailable" | "pending_review"; address?: string | null; google_maps_url?: string | null; map_links?: Array<{ url: string; label: string }>; official_website_url?: string | null; official_website_verified?: boolean; coordinates?: { latitude: number | null; longitude: number | null; source?: string | null }; opening_hours?: { weekday_descriptions?: string[] }; updated_at?: string | null; fetched_at?: string | null; expires_at?: string | null; data_locale?: string | null; attribution?: { provider?: string | null; provider_url?: string | null; third_party?: Array<{ provider?: string; providerUri?: string }> } };
 export type DiscoveryVideo = { provider: "youtube"; video_id: string; source_url: string; status: "link_only" | "embeddable"; embed_url: string | null };
+export type DiscoveryDisplayTopic = { id: string; label: string };
 export type DiscoveryItem = {
   id: string; kind: DiscoveryKind; title: string; summary: string; locale: string; href: string;
   destination: { id: string; name: string; country_code?: string } | null;
   source: { label: string; url: string | null; kind: "editorial" | "official" | "community" };
   published_at: string | null; updated_at: string | null; thumbnail_url: string | null;
+  topics?: string[];
+  display_topics?: DiscoveryDisplayTopic[];
   author?: { display_name: string; handle?: string } | null;
   recommendation_reason?: string | null; video?: DiscoveryVideo | null;
   collection_ref?: { kind: "guide" | "hotel" | "hotspot" | "food" | "merchant" | "post"; id: string } | null;

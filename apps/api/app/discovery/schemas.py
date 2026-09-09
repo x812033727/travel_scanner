@@ -38,6 +38,11 @@ class DiscoveryDetail(BaseModel):
     planning: DiscoveryPlanning | None = None
 
 
+class DiscoveryDisplayTopic(BaseModel):
+    id: str
+    label: str
+
+
 class DiscoveryItem(BaseModel):
     id: str
     kind: Kind
@@ -52,6 +57,7 @@ class DiscoveryItem(BaseModel):
     thumbnail_url: str | None = None
     collection_ref: dict[str, str]
     topics: list[str] = Field(default_factory=list)
+    display_topics: list[DiscoveryDisplayTopic] = Field(default_factory=list)
     place_ref: dict[str, str] | None = None
     video: dict[str, Any] | None = None
     author: dict[str, Any] | None = None

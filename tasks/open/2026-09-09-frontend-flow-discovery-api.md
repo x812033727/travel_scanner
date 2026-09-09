@@ -11,7 +11,6 @@ completed_at:
 branch: codex/frontend-explore-flow
 depends_on: []
 scope:
-  - apps/api/app/discovery
   - apps/api/tests/test_discovery_flow.py
   - apps/api/app/trips/router.py
   - apps/web/components/frontend-plan-action.test.tsx
@@ -51,6 +50,8 @@ From apps/api with its directory on PYTHONPATH, use the installed sibling
 - `-m pytest tests/test_discovery_flow.py tests/test_travel_discovery.py tests/test_discovery_migration.py -q`
 
 ## Notes
+
+- 2026-09-09 scope handoff: original coordinator confirmed PR #374 merged as a899437a and source work stopped; released apps/api/app/discovery to 2026-09-09-discovery-card-details. Other scope, owner and review status remain unchanged.
 
 - Categories are `all|hotspots|foods|hotels|guides`; foods contains food/merchant and guides contains article/video. Legacy kinds and IDs remain unchanged, including posts/itineraries under all subject to community visibility. Category participates in the reader-bound cursor fingerprint; disjoint category/type returns an empty page, not all content.
 - `GET /discovery/content/{kind}/{UUID}` returns the original DiscoveryItem plus `detail` (intro/place/guides/merchants/hotel/planning). Feed/search keep detail null and do not invoke detail serializers. Existing authenticated write APIs are unchanged.
