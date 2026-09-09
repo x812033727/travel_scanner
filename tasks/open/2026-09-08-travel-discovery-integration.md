@@ -39,9 +39,9 @@ worktree without changing existing itinerary work, production gates or paid serv
 
 ## Definition of done
 
-- [ ] Default-off homepage/discovery and four-destination navigation preserve old mode.
-- [ ] Public curated reads and private actions remain safe through the BFF.
-- [ ] Aggregate search and useful-action metrics preserve existing analytics consent;
+- [x] Default-off homepage/discovery and four-destination navigation preserve old mode.
+- [x] Public curated reads and private actions remain safe through the BFF.
+- [x] Aggregate search and useful-action metrics preserve existing analytics consent;
   unavailable cross-day member retention is not misrepresented as zero.
 - [ ] Desktop/Pixel 7 acceptance, full regressions, migrations and CI validated.
 - [ ] Documentation, source/usage boundaries and PR handoff complete without deployment.
@@ -50,7 +50,7 @@ worktree without changing existing itinerary work, production gates or paid serv
 
 - [x] Create isolated branch from main 29c36b2 and import task-only Klook archive.
 - [x] Claim bounded backend/community/Web tasks and coordinate active planner owner.
-- [ ] Integrate feature-gated navigation, video CSP, BFF and browser tests.
+- [x] Integrate feature-gated navigation, video CSP, BFF and browser tests.
 - [ ] Verify full implementation and prepare evidence-backed PR, no merge authorization.
 
 ## How to verify
@@ -65,3 +65,18 @@ Planner owner confirms it holds only global CSS and planner-specific files, not
 home/explore/nav/saved. Do not change globals.css or its E2E suites. Stay22 owner
 explicitly released only csp.ts/csp.test.ts after confirming no undelivered work;
 the narrow task-only handoff is recorded without importing unverified planner code.
+
+Rebased application work cleanly onto main f752ce43 after planner PR #371 merged.
+Only generated task-board conflicts needed regeneration. The obsolete narrow
+Stay22 scope commit was dropped because main already contains the owner's full
+archive; the subsequent owner-authorized task-only planner completion record was
+imported separately. No source edits to the user's original checkout.
+
+Local validation after rebase: Ruff, mypy (275 files), pytest 2018 passed / 125
+integration skips. Only Windows-incompatible deployment-agent tests were excluded;
+Linux CI executes them and PostgreSQL/Redis/S3 integration. Existing AsyncMock warning
+in test_usage_settings remains. Web lint/typecheck and production build passed;
+metadata + feature regressions 99 passed; nav/BFF/CSP regressions 22 passed. First
+whole Web run found metadata and one shared-Response fixture defect, now fixed.
+Desktop/Pixel 7 focus/search/legacy-hub recheck passed all 6 focused cases; final
+whole enabled-feature browser and Linux full-stack runs remain release gates.
