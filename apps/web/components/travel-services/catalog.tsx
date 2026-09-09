@@ -17,6 +17,9 @@ import { localeLabels, type Locale } from "@/i18n/routing";
 import { api, ApiError } from "@/lib/api";
 import { useModalSheet } from "@/lib/modal-sheet";
 import { useSavedItems } from "@/components/saved-items-provider";
+import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
+import { serviceDiscoveryDestinations, serviceDiscoveryModules } from "@/lib/travel-service-discovery";
+import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 
 import { KINDS, type Kind } from "./options";
 import {
@@ -114,6 +117,7 @@ type Props = {
   onBusy?: (busy: boolean) => void;
   initialFilters?: Record<string, string | undefined>;
   compact?: boolean;
+  showDestinationDiscovery?: boolean;
 };
 const field =
   "mt-1 min-h-11 w-full min-w-0 rounded-xl border border-[var(--line)] bg-[var(--surface-raised)] px-3 py-2 text-sm";
@@ -133,12 +137,14 @@ export function ServiceCatalog({
   onBusy,
   initialFilters,
   compact,
+  showDestinationDiscovery = true,
 }: Props) {
   const t = useTranslations("travelServices");
   const locale = useLocale();
   const fmt = useFormatter();
   const router = useRouter();
   const saved = useSavedItems();
+  const copy = klookAffiliateCopy(locale);
   const [kind, setKind] = useState<Kind | "all">(initialKind || "all");
   const [area, setArea] = useState(areaCode || "");
   const [radius, setRadius] = useState(initialRadius || "3");
@@ -416,6 +422,8 @@ export function ServiceCatalog({
   }
 
   const selectedTrip = trips.find((trip) => trip.trip_id === chosenTrip);
+  const discoveryDestinations = showDestinationDiscovery && !loading && !error && data?.enabled
+    ? serviceDiscoveryDestinations(destinationId ? [destinationId] : data.destinations || []) : [];
   if (!loading && data && !data.enabled && compact) return null;
   return (
     <div className="min-w-0 space-y-5">
@@ -431,7 +439,7 @@ export function ServiceCatalog({
               setExpanded(false);
             }}
           >
-            {t(value)}
+            {value === "tour" ? copy.tour : t(value)}
           </button>
         ))}
       </div>
@@ -584,6 +592,13 @@ export function ServiceCatalog({
           )}
         </aside>
         <div className="min-w-0 space-y-5" aria-busy={loading}>
+          {discoveryDestinations.map((destination) => <DestinationAffiliateOptions
+            key={destination}
+            destinationId={destination}
+            modules={serviceDiscoveryModules(kind)}
+            contextual
+            destinationLabel={destination === "osaka-kyoto" ? `${t("osaka")} · ${t("kyoto")}` : t.has(destination) ? t(destination) : destination}
+          />)}
           {loading && (
             <p role="status" className="flex items-center gap-2">
               <LoaderCircle className="animate-spin" size={18} />
@@ -628,7 +643,7 @@ export function ServiceCatalog({
                 <section key={k} className="space-y-3" aria-label={t(k)}>
                   <h3 className="flex items-center gap-2 text-lg font-bold">
                     <Icon size={20} className="text-[var(--teal)]" />
-                    {t(k)}
+                    {k === "tour" ? copy.tour : t(k)}
                   </h3>
                   {(expanded ? products : products.slice(0, 3)).map(
                     (product) => (
@@ -682,15 +697,16 @@ export function ServiceCatalog({
                             </p>
                           )}
                           {k === "tour" && (
-                            <p>
+                            <><p>
                               {t("language")}:{" "}
                               {product.facts.languages.length
                                 ? product.facts.languages
                                     .map((l) => localeLabels[l])
                                     .join(" · ")
                                 : t("unknown")}
-                            </p>
+                            </p>{product.facts.duration_minutes != null && <p>{copy.duration}: {fmt.number(product.facts.duration_minutes)}</p>}</>
                           )}
+                          {(k === "tour" || k === "transfer") && <p>{t("externalPrices")}</p>}
                           {k === "esim" && (
                             <>
                               <p>

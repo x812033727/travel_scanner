@@ -18,6 +18,11 @@ from app.community.content import (
     published_post,
     serialize_post,
 )
+from app.community.invitations import (
+    creator_invited,
+    invitation_required,
+    require_creator_invitation,
+)
 from app.community.media import check_media, complete_upload, create_upload, media_url
 from app.community.models import Comment, Post, PostRevision, Profile, Reaction, Relationship
 from app.community.policy import (
@@ -83,11 +88,24 @@ async def status(session: Session, response: Response) -> dict[str, Any]:
 @router.get("/me")
 async def me(user: CurrentUser, session: OpenSession) -> dict[str, Any]:
     profile = await session.get(Profile, user.id)
+    required = invitation_required()
+    invited = await creator_invited(session, user.id) if required else False
+    settings = await settings_for(session)
     return {
         "profile": public_profile(profile) if profile and not profile.deleted_at else None,
         "verified": user.email_verified_at is not None,
         "restricted": bool(profile and profile.restricted),
         "notification_preferences": profile.notification_preferences if profile else {},
+        "creator_invited": invited,
+        "invitation_required": required,
+        "can_publish": bool(
+            settings.posting_enabled
+            and user.email_verified_at
+            and profile
+            and not profile.restricted
+            and not profile.deleted_at
+            and (not required or invited)
+        ),
     }
 
 
@@ -343,6 +361,7 @@ async def publish_post(
     session: OpenSession,
 ) -> dict[str, Any]:
     settings = await require_open(session, "posting_enabled")
+    await require_creator_invitation(session, user.id)
     profile = await member(session, user, verified=True, lock=True)
     post = await owned_post(session, user, identifier)
     check_version(post, payload.version)
@@ -352,7 +371,19 @@ async def publish_post(
     if revision is None or not revision.title or not revision.body or not revision.destination:
         raise fail("community_post_incomplete", 422)
     await rate(session, user, "publish")
-    if profile.approved_posts < 3 or risky(revision.title + "\n" + revision.body, settings):
+    previous = (
+        await session.get(PostRevision, post.published_revision_id)
+        if post.published_revision_id
+        else None
+    )
+    new_video = bool(revision.video_refs) and (
+        previous is None or revision.video_refs != previous.video_refs
+    )
+    if (
+        profile.approved_posts < 3
+        or new_video
+        or risky(revision.title + "\n" + revision.body, settings)
+    ):
         post.pending_revision_id = revision.id
         if post.published_revision_id is None:
             post.state = "pending"
@@ -361,6 +392,16 @@ async def publish_post(
         post.pending_revision_id = None
         post.state = "published"
         post.published_at = post.published_at or datetime.now(UTC)
+        if previous is None or previous.id != revision.id:
+            from app.analytics.service import record_event
+
+            await record_event(
+                session,
+                "post_published",
+                path="/community",
+                user_id=user.id,
+                properties={"kind": revision.kind, "publication_source": "author"},
+            )
     post.version += 1
     await session.commit()
     return await serialize_post(session, post, revision, profile, user, owner=True)

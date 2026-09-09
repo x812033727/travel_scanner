@@ -9,8 +9,10 @@ from pydantic import ValidationError
 
 from app.affiliates.service import TravelpayoutsLinkClient
 from app.config import Settings
+from app.destinations.catalog import DESTINATIONS
 from app.i18n import ERROR_DETAILS, LOCALES
 from app.models import (
+    DestinationAffiliateOffer,
     TravelServiceBrand,
     TravelServiceOffer,
     TravelServiceProduct,
@@ -21,10 +23,16 @@ from app.problems import AppError
 from app.travel_services.imports import parse_csv
 from app.travel_services.jobs import parse_airalo
 from app.travel_services.network import verify_link
-from app.travel_services.registry import affiliate_target, brand_target
+from app.travel_services.registry import (
+    BRANDS,
+    affiliate_click_target,
+    affiliate_target,
+    brand_target,
+)
 from app.travel_services.router import validate_schedule
 from app.travel_services.schemas import (
     CatalogConfig,
+    DestinationOfferInput,
     Facts,
     ProductInput,
     SelectInput,
@@ -34,14 +42,71 @@ from app.travel_services.schemas import (
 from app.travel_services.service import (
     enabled,
     fresh_price,
+    link_context,
     public_product,
     rank_products,
+    ready_destination_offer,
     ready_offer,
     require_product_review,
     trip_destinations,
 )
 
 NOW = datetime(2026, 9, 7, tzinfo=UTC)
+
+
+def test_destination_offer_accepts_all_catalog_destinations_and_rejects_unknown() -> None:
+    assert len(DESTINATIONS) == 33
+    for destination in DESTINATIONS:
+        assert DestinationOfferInput(
+            brand_id=uuid4(),
+            destination_id=destination.id,
+            module="activities",
+            target_url="https://www.klook.com/city/1/",
+        ).destination_id == destination.id
+    with pytest.raises(ValidationError):
+        DestinationOfferInput(
+            brand_id=uuid4(),
+            destination_id="not-a-destination",
+            module="activities",
+            target_url="https://www.klook.com/city/1/",
+        )
+    assert set(BRANDS["kiwi"].supported_modules) == {"flight"}
+    assert not BRANDS["kiwi"].api_supported
+
+
+def test_destination_offer_requires_fresh_brand_offer_and_matching_module() -> None:
+    brand = TravelServiceBrand(
+        id=uuid4(),
+        project_id="570089",
+        code="klook",
+        approval="approved",
+        enabled=True,
+        verified_at=NOW,
+    )
+    offer = DestinationAffiliateOffer(
+        id=uuid4(),
+        brand_id=brand.id,
+        destination_id="tokyo",
+        module="activities",
+        target_url="https://www.klook.com/city/28-tokyo/",
+        status="approved",
+        verified_at=NOW,
+    )
+    settings = Settings(
+        travelpayouts_enabled=True,
+        travelpayouts_api_token="token",
+        travelpayouts_marker="761868",
+        travelpayouts_project_id="570089",
+    )
+    offer.verification_context = link_context(settings)
+    assert ready_destination_offer(offer, brand, settings, NOW)
+    changed_marker = settings.model_copy(update={"travelpayouts_marker": "new-marker"})
+    assert not ready_destination_offer(offer, brand, changed_marker, NOW)
+    offer.module = "flight"
+    assert not ready_destination_offer(offer, brand, settings, NOW)
+    offer.module = "activities"
+    offer.verified_at = NOW - timedelta(days=31)
+    assert not ready_destination_offer(offer, brand, settings, NOW)
 
 
 def product(kind="hotel", city="tokyo", **facts):
@@ -94,6 +159,12 @@ def test_url_canonicalization_preserves_product_identity():
         untracked_url("https://www.klook.com/a?marker=123")
     with pytest.raises(ValueError):
         affiliate_target("https://evil.com/r")
+    assert affiliate_click_target("klook", "https://klook.tp.st/fixture")
+    assert affiliate_click_target(
+        "klook", "https://www.klook.com/activity/123/?aff_pid=761868"
+    )
+    with pytest.raises(ValueError):
+        affiliate_click_target("klook", "https://www.kkday.com/product/123")
 
 
 @pytest.mark.parametrize(

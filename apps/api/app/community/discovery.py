@@ -31,6 +31,7 @@ from app.community.policy import (
     member,
     public_profile,
     rate,
+    settings_for,
 )
 from app.community.router import OpenSession
 from app.community.schemas import CollectionInput, CollectionItemInput
@@ -41,6 +42,122 @@ from app.problems import AppError
 from app.saved.router import RequestLocale, list_saved_items
 
 router = APIRouter(prefix="/community", tags=["community discovery"])
+
+
+async def community_public_candidates(
+    session: AsyncSession,
+    viewer: User | None,
+    q: str,
+    destinations: list[str],
+    topics: list[str],
+    limit: int = 100,
+    following_only: bool = False,
+    locale: str = "",
+    itinerary_only: bool | None = None,
+) -> list[tuple[Post, PostRevision, Profile]]:
+    """IDs are candidates only; every result rechecks the current public snapshot."""
+    if not (await settings_for(session)).enabled:
+        return []
+    if following_only and viewer is None:
+        return []
+    query = (
+        select(Post.id)
+        .join(PostRevision, PostRevision.id == Post.published_revision_id)
+        .join(Profile, Profile.user_id == Post.author_id)
+        .join(User, User.id == Post.author_id)
+        .where(
+            Post.state == "published",
+            Profile.restricted.is_(False),
+            Profile.deleted_at.is_(None),
+            User.is_active.is_(True),
+            User.deleted_at.is_(None),
+        )
+    )
+    if q:
+        from app.destinations.catalog import match_destination
+
+        pattern = f"%{escape_like(q[:200])}%"
+        match = match_destination(q)
+        search_aliases = [q] if match is None else [q, match.id, match.city, *match.aliases]
+        query = query.where(
+            or_(
+                PostRevision.title.ilike(pattern, escape="\\"),
+                PostRevision.body.ilike(pattern, escape="\\"),
+                *[
+                    PostRevision.destination.ilike(f"%{escape_like(alias)}%", escape="\\")
+                    for alias in search_aliases
+                    if alias
+                ],
+            )
+        )
+    if locale:
+        query = query.where(PostRevision.locale == locale)
+    if itinerary_only is not None:
+        no_itinerary = or_(
+            PostRevision.itinerary.is_(None), cast(PostRevision.itinerary, Text) == "null"
+        )
+        query = query.where(~no_itinerary if itinerary_only else no_itinerary)
+    if following_only and viewer:
+        query = query.where(
+            Post.author_id.in_(
+                select(Relationship.target_id).where(
+                    Relationship.actor_id == viewer.id, Relationship.kind == "follow"
+                )
+            )
+        )
+    if destinations:
+        from app.destinations.catalog import match_destination
+
+        aliases = set(destinations)
+        for destination in destinations:
+            matched = match_destination(destination)
+            if matched:
+                aliases.update([matched.id, matched.city, *matched.aliases])
+        query = query.where(
+            or_(
+                *[
+                    PostRevision.destination.ilike(f"%{escape_like(alias)}%", escape="\\")
+                    for alias in aliases
+                    if alias
+                ]
+            )
+        )
+    if topics:
+        query = query.where(
+            or_(
+                *[
+                    cast(PostRevision.topics, Text).contains(
+                        json.dumps(topic, ensure_ascii=ascii_only)
+                    )
+                    for topic in topics
+                    for ascii_only in (True, False)
+                ]
+            )
+        )
+    if viewer:
+        blocked = (
+            select(Relationship.target_id)
+            .where(Relationship.actor_id == viewer.id, Relationship.kind == "block")
+            .union(
+                select(Relationship.actor_id).where(
+                    Relationship.target_id == viewer.id, Relationship.kind == "block"
+                )
+            )
+        )
+        query = query.where(Post.author_id.not_in(blocked))
+    ids = (
+        await session.scalars(
+            query.order_by(Post.published_at.desc(), Post.id.desc()).limit(max(1, min(limit, 200)))
+        )
+    ).all()
+    result = []
+    for identifier in ids:
+        try:
+            result.append(await published_post(session, identifier, viewer))
+        except AppError as exc:
+            if exc.status != 404:
+                raise
+    return result
 
 
 @router.get("/feed")
@@ -542,6 +659,16 @@ async def collection_items(
                 if exc.status != 404:
                     raise
                 item["unavailable"] = True
+        elif row.kind in {"guide", "hotel"}:
+            from app.discovery.service import resolve_discovery_items
+
+            values = await resolve_discovery_items(
+                session, [f"{row.kind}:{row.target}"], user, "zh-TW"
+            )
+            if values:
+                item["discovery"] = values[0].model_dump(mode="json")
+            else:
+                item["unavailable"] = True
         else:
             try:
                 await resolve_place(session, row.kind, row.target)
@@ -568,13 +695,26 @@ async def collect(
         except ValueError as exc:
             raise fail("community_not_found", 404) from exc
         await published_post(session, target, user)
+        payload.target = str(target)
+    elif payload.kind in {"guide", "hotel"}:
+        from app.discovery.service import resolve_discovery_items
+
+        if not await resolve_discovery_items(
+            session, [f"{payload.kind}:{payload.target}"], user, "zh-TW"
+        ):
+            raise fail("community_not_found", 404)
     else:
         await resolve_place(session, payload.kind, payload.target)
+    target_filter = CollectionItem.target == payload.target
+    if payload.kind in {"post", "guide", "hotel"}:
+        target_filter = (
+            func.lower(func.replace(CollectionItem.target, "-", "")) == UUID(payload.target).hex
+        )
     row = await session.scalar(
         select(CollectionItem).where(
             CollectionItem.collection_id == identifier,
             CollectionItem.kind == payload.kind,
-            CollectionItem.target == payload.target,
+            target_filter,
         )
     )
     if row is None:
@@ -587,6 +727,15 @@ async def collect(
             raise fail("community_collection_limit", 403)
         session.add(
             CollectionItem(collection_id=identifier, kind=payload.kind, target=payload.target)
+        )
+        from app.analytics.service import record_event
+
+        await record_event(
+            session,
+            "content_saved",
+            path="/explore/collections",
+            user_id=user.id,
+            properties={"kind": payload.kind},
         )
     await session.commit()
     return {"collected": True}

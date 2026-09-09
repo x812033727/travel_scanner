@@ -19,6 +19,7 @@ from app.catalog_review.repository import (
     publication_gaps,
 )
 from app.catalog_review.schemas import EvidenceSource, ReviewAssessment
+from app.catalog_review.scope import SCOPE_KINDS, CatalogScope, request_scope, scope_counts
 from app.config import Settings
 from app.models import (
     AdminAuditLog,
@@ -38,12 +39,15 @@ LEGACY_OMISSION_REASON = "Gemini 未回傳此候選的評估；保留待審。"
 class StartRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
     mode: Literal["review_pending", "discover_new"]
+    scope: CatalogScope = "all"
     prior_review_run_id: UUID | None = None
     requested_counts: dict[str, StrictInt] = Field(default_factory=lambda: dict(COUNTS))
     max_calls: int = Field(default=80, ge=1, le=80)
 
     @model_validator(mode="after")
     def validate_counts(self) -> StartRequest:
+        if "requested_counts" not in self.model_fields_set:
+            self.requested_counts = scope_counts(self.scope)
         if (
             set(self.requested_counts) != set(COUNTS)
             or any(
@@ -53,6 +57,11 @@ class StartRequest(BaseModel):
             or not 1 <= sum(self.requested_counts.values()) <= 100
         ):
             raise ValueError("新增目標須包含三種類型，合計 1 至 100 筆")
+        if any(
+            value and kind not in SCOPE_KINDS[self.scope]
+            for kind, value in self.requested_counts.items()
+        ):
+            raise ValueError("新增目標不可包含審核範圍以外的類型")
         return self
 
 
@@ -160,12 +169,17 @@ def item_view(item: CatalogReviewItem) -> dict[str, Any]:
     }
 
 
-async def run_items(session: AsyncSession, run_id: UUID) -> list[CatalogReviewItem]:
+async def run_items(
+    session: AsyncSession, run_id: UUID, *, scope: CatalogScope = "all"
+) -> list[CatalogReviewItem]:
     return list(
         (
             await session.scalars(
                 select(CatalogReviewItem)
-                .where(CatalogReviewItem.run_id == run_id)
+                .where(
+                    CatalogReviewItem.run_id == run_id,
+                    CatalogReviewItem.kind.in_(SCOPE_KINDS[scope]),
+                )
                 .order_by(CatalogReviewItem.created_at, CatalogReviewItem.id)
             )
         ).all()
@@ -180,7 +194,8 @@ def snapshot_review_complete(items: list[CatalogReviewItem]) -> bool:
 
 
 async def run_view(session: AsyncSession, run: CatalogReviewRun) -> dict[str, Any]:
-    items = await run_items(session, run.id)
+    scope = request_scope(run.request_json)
+    items = await run_items(session, run.id, scope=scope)
     created = (run.result_json or {}).get("created_counts", {})
     usage = run.usage_json or {}
     missing_ids = {item.id for item in items if is_legacy_missing_assessment(item)}
@@ -189,12 +204,13 @@ async def run_view(session: AsyncSession, run: CatalogReviewRun) -> dict[str, An
     review_complete = run.status not in ACTIVE and snapshot_review_complete(items)
     return {
         "id": str(run.id),
+        "scope": scope,
         "version": run.version,
         "mode": run.mode,
         "phase": run.phase,
         "status": status,
         "model": run.model,
-        "requested_counts": (run.request_json or {}).get("requested_counts", COUNTS),
+        "requested_counts": (run.request_json or {}).get("requested_counts", scope_counts(scope)),
         "counts": {
             "total": len(items),
             "assessed": sum(
@@ -206,7 +222,7 @@ async def run_view(session: AsyncSession, run: CatalogReviewRun) -> dict[str, An
             "needs_review": sum(
                 item.decision == "needs_review" and item.id not in missing_ids for item in items
             ),
-            "created": sum(created.values()),
+            "created": sum(created.get(kind, 0) for kind in SCOPE_KINDS[scope]),
             "duplicates": int((run.result_json or {}).get("duplicates", 0)),
             "failed": sum(item.status == "error" or item.id in missing_ids for item in items),
             "applied": sum(item.status == "applied" for item in items),
@@ -246,19 +262,28 @@ async def run_view(session: AsyncSession, run: CatalogReviewRun) -> dict[str, An
     }
 
 
-async def get_run(session: AsyncSession, run_id: UUID, *, lock: bool = False) -> CatalogReviewRun:
+async def get_run(
+    session: AsyncSession, run_id: UUID, *, lock: bool = False, scope: CatalogScope | None = None
+) -> CatalogReviewRun:
     statement = select(CatalogReviewRun).where(CatalogReviewRun.id == run_id)
     if lock:
         statement = statement.with_for_update()
     run = await session.scalar(statement)
     if run is None:
         raise AppError(404, "catalog_run_not_found", "找不到這次目錄審核")
+    if scope is not None and request_scope(run.request_json) != scope:
+        raise AppError(409, "catalog_scope_mismatch", "此工作不屬於目前審核範圍，請回工作歷史查看")
     return run
 
 
-async def overview(session: AsyncSession, settings: Settings) -> dict[str, Any]:
+async def overview(
+    session: AsyncSession, settings: Settings, scope: CatalogScope | None = None
+) -> dict[str, Any]:
     pending = {}
     for kind, model in ENTITY_TYPES.items():
+        if kind not in SCOPE_KINDS[scope or "all"]:
+            pending[kind] = 0
+            continue
         pending[kind] = int(
             await session.scalar(
                 select(func.count()).select_from(model).where(model.review_status == "pending")
@@ -266,35 +291,53 @@ async def overview(session: AsyncSession, settings: Settings) -> dict[str, Any]:
             or 0
         )
     pending["total"] = sum(pending.values())
+    history = select(CatalogReviewRun)
+    if scope is not None:
+        history = history.where(
+            func.coalesce(CatalogReviewRun.request_json["scope"].as_string(), "all") == scope
+        )
     rows = list(
         (
-            await session.scalars(
-                select(CatalogReviewRun).order_by(CatalogReviewRun.created_at.desc()).limit(20)
-            )
+            await session.scalars(history.order_by(CatalogReviewRun.created_at.desc()).limit(20))
         ).all()
     )
     views = [await run_view(session, row) for row in rows]
-    active = bool(
-        await session.scalar(
-            select(CatalogReviewRun.id).where(CatalogReviewRun.status.in_(ACTIVE)).limit(1)
-        )
+    active_run = await session.scalar(
+        select(CatalogReviewRun).where(CatalogReviewRun.status.in_(ACTIVE)).limit(1)
     )
+    if (
+        active_run is not None
+        and (scope is None or request_scope(active_run.request_json) == scope)
+        and all(row.id != active_run.id for row in rows)
+    ):
+        views.insert(0, await run_view(session, active_run))
     configured = bool(settings.hotspot_guide_gemini_api_key)
     can_discover = any(
-        view["mode"] == "review_pending" and view["review_complete"] for view in views
+        view["mode"] == "review_pending"
+        and view["review_complete"]
+        and view["scope"] == (scope or "all")
+        for view in views
     )
     reasons = []
     if not configured:
         reasons.append("gemini_not_configured")
-    if active:
+    if active_run is not None:
         reasons.append("catalog_run_in_progress")
     return {
         "configured": configured,
+        "scope": scope,
+        "active_run": {
+            "id": str(active_run.id),
+            "scope": request_scope(active_run.request_json),
+            "status": active_run.status,
+        }
+        if active_run is not None
+        else None,
         "model": settings.hotspot_guide_gemini_model,
         "daily_call_limit": settings.hotspot_guide_gemini_daily_search_budget,
         "pending_counts": pending,
-        "can_start_review": configured and not active,
-        "can_start_discovery": configured and not active and can_discover,
+        "can_start_review": configured and active_run is None,
+        "can_start_discovery": configured and active_run is None and can_discover,
         "blocking_reasons": reasons,
         "runs": views,
     }
@@ -323,7 +366,13 @@ async def create_run(
         )
     )
     if existing is not None:
-        if existing.request_hash != digest:
+        legacy_request = {key: value for key, value in request_json.items() if key != "scope"}
+        legacy_retry = (
+            payload.scope == "all"
+            and "scope" not in (existing.request_json or {})
+            and existing.request_hash == fingerprint(legacy_request)
+        )
+        if existing.request_hash != digest and not legacy_retry:
             raise AppError(409, "idempotency_conflict", "相同冪等鍵不能建立不同的審核工作")
         return existing, False
     if not settings.hotspot_guide_gemini_api_key:
@@ -335,7 +384,7 @@ async def create_run(
     if payload.mode == "discover_new":
         if payload.prior_review_run_id is None:
             raise AppError(422, "catalog_review_required", "新增前必須先完成既有待審資料的評估")
-        prior = await get_run(session, payload.prior_review_run_id)
+        prior = await get_run(session, payload.prior_review_run_id, scope=payload.scope)
         if (
             prior.mode != "review_pending"
             or prior.status in ACTIVE
@@ -360,6 +409,8 @@ async def create_run(
     await session.flush()
     if payload.mode == "review_pending":
         for kind, model in ENTITY_TYPES.items():
+            if kind not in SCOPE_KINDS[payload.scope]:
+                continue
             rows = (
                 await session.scalars(
                     select(model).where(model.review_status == "pending").order_by(model.id)
@@ -374,6 +425,7 @@ async def create_run(
             target=f"catalog-review:{run.id}",
             metadata_json={
                 "mode": payload.mode,
+                "scope": payload.scope,
                 "requested_counts": payload.requested_counts,
                 "model": run.model,
                 "max_calls": payload.max_calls,
@@ -384,9 +436,11 @@ async def create_run(
     return run, True
 
 
-async def prepare_resume(session: AsyncSession, run_id: UUID, actor_id: UUID) -> CatalogReviewRun:
+async def prepare_resume(
+    session: AsyncSession, run_id: UUID, actor_id: UUID, *, scope: CatalogScope | None = None
+) -> CatalogReviewRun:
     await _serialize_starts(session)
-    run = await get_run(session, run_id, lock=True)
+    run = await get_run(session, run_id, lock=True, scope=scope)
     if not (await run_view(session, run))["can_resume"]:
         raise AppError(409, "catalog_run_not_resumable", "目前工作不能續跑，或已達單次工作呼叫上限")
     if await session.scalar(
@@ -398,7 +452,7 @@ async def prepare_resume(session: AsyncSession, run_id: UUID, actor_id: UUID) ->
     retried_items = 0
     legacy_missing_items = 0
     stale_items = 0
-    for item in await run_items(session, run.id):
+    for item in await run_items(session, run.id, scope=request_scope(run.request_json)):
         missing = is_legacy_missing_assessment(item)
         if missing:
             entity = await load_entity(session, item.kind, item.entity_id, lock=True)
@@ -443,9 +497,15 @@ async def prepare_resume(session: AsyncSession, run_id: UUID, actor_id: UUID) ->
 
 
 async def apply_decisions(
-    session: AsyncSession, run_id: UUID, actor_id: UUID, payload: ApplyRequest, idempotency_key: str
+    session: AsyncSession,
+    run_id: UUID,
+    actor_id: UUID,
+    payload: ApplyRequest,
+    idempotency_key: str,
+    *,
+    scope: CatalogScope | None = None,
 ) -> dict[str, Any]:
-    run = await get_run(session, run_id, lock=True)
+    run = await get_run(session, run_id, lock=True, scope=scope)
     receipt_key = fingerprint({"actor": str(actor_id), "key": idempotency_key})
     digest = fingerprint(payload.model_dump(mode="json"))
     receipts = dict((run.result_json or {}).get("apply_receipts", {}))
@@ -463,7 +523,11 @@ async def apply_decisions(
         (
             await session.scalars(
                 select(CatalogReviewItem)
-                .where(CatalogReviewItem.run_id == run.id, CatalogReviewItem.id.in_(requested))
+                .where(
+                    CatalogReviewItem.run_id == run.id,
+                    CatalogReviewItem.id.in_(requested),
+                    CatalogReviewItem.kind.in_(SCOPE_KINDS[request_scope(run.request_json)]),
+                )
                 .order_by(CatalogReviewItem.id)
                 .with_for_update()
             )

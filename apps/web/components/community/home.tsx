@@ -7,6 +7,7 @@ import { featureVisible } from "@/lib/site-features";
 import { useCommunity } from "./provider";
 import { Feed } from "./feed";
 import { panelClass } from "./ui";
+import { useDiscoveryStatus } from "@/lib/discovery";
 export function CommunityHero() {
   const t = useTranslations("community");
   const { flags } = useCommunity();
@@ -24,10 +25,12 @@ export function MyDirectory() {
   const t = useTranslations("community");
   const { user } = useHeaderSession();
   const { flags, me } = useCommunity();
+  const discovery = useDiscoveryStatus();
   const visibility = useSiteVisibility();
   const links = [
+    ...(discovery.enabled ? [["/explore/collections", "collections"]] : []),
     ...(featureVisible(visibility, "trips") ? [["/trips", "myTrips"]] : []),
-    ...(flags.enabled ? [["/community/collections", "collections"], [me?.profile ? `/community/profiles/${me.profile.handle}` : "/community/settings", "profile"], ["/community/settings", "profileSettings"], ["/community/drafts", "drafts"], ["/community/messages", "messages"]] : []),
+    ...(flags.enabled ? [...(!discovery.enabled ? [["/community/collections", "collections"]] : []), [me?.profile ? `/community/profiles/${me.profile.handle}` : "/community/settings", "profile"], ["/community/settings", "profileSettings"], ["/community/drafts", "drafts"], ["/community/messages", "messages"]] : []),
     ["/account", "accountSettings"],
     ...(user?.is_admin ? [["/admin", "admin"]] : []),
     ...(!user ? [["/login", "login"]] : []),

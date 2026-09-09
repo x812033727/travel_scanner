@@ -1,11 +1,12 @@
 import { act, cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminCatalogReviewPanel } from "./admin-catalog-review-panel";
+import { ADMIN_REVIEW_COPY } from "@/lib/admin-review-copy";
 
 const root = "/api/travel/admin/catalog-review";
 const run = {
   id: "review-1", version: 3, mode: "review_pending", status: "completed", phase: "review_pending",
-  model: "gemini-review-model", requested_counts: { hotspot: 40, food: 20, merchant: 40 },
+  model: "gemini-review-model", scope: "hotspots", requested_counts: { hotspot: 40, food: 0, merchant: 0 },
   counts: { total: 101, assessed: 101, approved: 2, rejected: 0, needs_review: 99, created: 0, duplicates: 0, failed: 0, applied: 0 },
   usage: { calls: 4, input_tokens: 123, output_tokens: 45 }, error_code: null, error_message: null,
   created_at: "2026-09-07T00:00:00Z", completed_at: "2026-09-07T00:01:00Z", review_complete: true, can_resume: false,
@@ -27,7 +28,7 @@ type FetchHandler = (url: string, init?: RequestInit) => Promise<Response> | und
 
 function mockApi(handler: FetchHandler = () => undefined) {
   const mock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
-    const url = String(input);
+    const url = String(input).replace(/([?&])scope=[^&]+(&?)/, (_match, separator, trailing) => trailing ? separator : "").replace(/[?&]$/, "");
     const custom = handler(url, init);
     if (custom) return custom;
     if (url === root) return response(overview);
@@ -46,18 +47,91 @@ afterEach(() => {
 });
 
 describe("AdminCatalogReviewPanel", () => {
+  it("keeps mixed history usable without offering new mixed runs", async () => {
+    const legacy = { ...run, scope: undefined, status: "partial", can_resume: true };
+    const fetchMock = mockApi((url, init) => {
+      if (url === root) return response({ ...overview, runs: [legacy] });
+      if (url === root + "/runs/review-1") return response(legacy);
+      if (url === root + "/runs/review-1/resume" && init?.method === "POST") return response({ ...legacy, scope: "all", status: "queued", can_resume: false });
+      return undefined;
+    });
+    render(<AdminCatalogReviewPanel />);
+    await screen.findByRole("button", { name: "繼續未完成工作" });
+    expect(screen.queryByRole("button", { name: "開始審核現有待審" })).toBeNull();
+    expect(screen.queryByRole("button", { name: /開始尋找/ })).toBeNull();
+    expect(within(screen.getByRole("combobox", { name: "選擇審核工作" })).getByRole("option").textContent).toContain("跨領域（舊版混合）");
+    fireEvent.click(screen.getByRole("button", { name: "繼續未完成工作" }));
+    await waitFor(() => expect(fetchMock.mock.calls.some(([url, init]) => String(url).endsWith("/resume?scope=all") && init?.method === "POST")).toBe(true));
+  });
+
+  it("starts foods discovery with only dishes and merchants and a same-scope prior review", async () => {
+    const foodRun = { ...run, scope: "foods" };
+    const fetchMock = mockApi((url, init) => {
+      if (url === root) return response({ ...overview, pending_counts: { hotspot: 0, food: 20, merchant: 49, total: 69 }, runs: [foodRun] });
+      if (url === root + "/runs/review-1") return response(foodRun);
+      if (url === root + "/runs" && init?.method === "POST") return response({ ...foodRun, status: "queued" });
+      return undefined;
+    });
+    render(<AdminCatalogReviewPanel scope="foods" />);
+    await waitFor(() => expect((screen.getByRole("button", { name: "開始尋找 60 筆候選" }) as HTMLButtonElement).disabled).toBe(false));
+    expect(screen.getByText("料理 20 筆 · 店家 40 筆；不包含景點。")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "開始尋找 60 筆候選" }));
+    await waitFor(() => expect(fetchMock.mock.calls.some(([, init]) => init?.method === "POST")).toBe(true));
+    const init = fetchMock.mock.calls.find(([, init]) => init?.method === "POST")![1]!;
+    expect(JSON.parse(String(init.body))).toEqual({ mode: "discover_new", scope: "foods", requested_counts: { hotspot: 0, food: 20, merchant: 40 }, max_calls: 80, prior_review_run_id: "review-1" });
+    expect(fetchMock.mock.calls.some(([url]) => String(url) === root + "?scope=foods")).toBe(true);
+  });
+
+  it("does not reuse a mixed or other-domain review as a discovery prerequisite", async () => {
+    mockApi();
+    render(<AdminCatalogReviewPanel scope="foods" />);
+    await screen.findByText("gemini-review-model", { exact: false });
+    expect((screen.getByRole("button", { name: "開始尋找 60 筆候選" }) as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  it("names the other active domain and leaves its work outside this workspace", async () => {
+    mockApi((url) => url === root ? response({ ...overview, runs: [], can_start_review: false, can_start_discovery: false, active_run: { id: "food-run", scope: "foods", status: "running" } }) : undefined);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
+    expect(await screen.findByText(/美食與店家工作正在執行/)).toBeTruthy();
+    expect(screen.getByRole("link", { name: "查看執行中工作" }).getAttribute("href")).toBe("/zh-TW/admin/catalog-review");
+    expect((screen.getByRole("button", { name: "開始審核現有待審" }) as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  it("keeps five-locale domain copy complete with matching substitution parameters", () => {
+    expect(Object.keys(ADMIN_REVIEW_COPY).sort()).toEqual(["en", "ja", "ko", "zh-CN", "zh-TW"]);
+    for (const copy of Object.values(ADMIN_REVIEW_COPY)) {
+      expect(Object.keys(copy).sort()).toEqual(Object.keys(ADMIN_REVIEW_COPY.en).sort());
+      expect(Object.keys(copy.scopes).sort()).toEqual(["all", "foods", "hotspots"]);
+      for (const key of ["activeElsewhere", "discovery", "startDiscovery"] as const) {
+        expect(copy[key].match(/\{[^}]+\}/g)).toEqual(ADMIN_REVIEW_COPY.en[key].match(/\{[^}]+\}/g));
+      }
+    }
+  });
+
+  it("clears selected rows and confirmations when the containing workspace changes scope", async () => {
+    mockApi((url) => url.includes("/items?") ? response(listing([candidate("one", "Scope switch row")])) : undefined);
+    const view = render(<AdminCatalogReviewPanel scope="hotspots" />);
+    fireEvent.click(await screen.findByRole("checkbox", { name: "選取 Scope switch row" }));
+    fireEvent.click(screen.getByRole("button", { name: "預覽選取的 1 筆" }));
+    expect(screen.getByRole("dialog")).toBeTruthy();
+    view.rerender(<AdminCatalogReviewPanel scope="foods" />);
+    expect(screen.queryByRole("dialog")).toBeNull();
+    await screen.findByRole("button", { name: "開始尋找 60 筆候選" });
+    expect((screen.getByRole("button", { name: "預覽選取的 0 筆" }) as HTMLButtonElement).disabled).toBe(true);
+  });
+
   it("disables requests using server capabilities and preserves blocking reasons", async () => {
     mockApi((url) => url === root ? response({ ...overview, configured: false, can_start_review: false, can_start_discovery: false, runs: [], blocking_reasons: ["catalog_review_daily_limit_reached"] }) : undefined);
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     expect(await screen.findByText("catalog_review_daily_limit_reached")).toBeTruthy();
     expect((screen.getByRole("button", { name: "開始審核現有待審" }) as HTMLButtonElement).disabled).toBe(true);
-    expect((screen.getByRole("button", { name: "開始尋找 100 筆候選" }) as HTMLButtonElement).disabled).toBe(true);
+    expect((screen.getByRole("button", { name: "開始尋找 40 筆候選" }) as HTMLButtonElement).disabled).toBe(true);
     expect(screen.getByText("Gemini 尚未設定，請先完成服務設定。")).toBeTruthy();
   });
 
   it("explains a known blocking reason in the current language", async () => {
     mockApi((url) => url === root ? response({ ...overview, can_start_review: false, can_start_discovery: false, blocking_reasons: ["catalog_run_in_progress"] }) : undefined);
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     expect(await screen.findByText("已有目錄審核正在進行，請先查看進度或續跑未完成工作。")).toBeTruthy();
     expect(screen.queryByText("catalog_run_in_progress")).toBeNull();
     expect((screen.getByRole("button", { name: "開始審核現有待審" }) as HTMLButtonElement).disabled).toBe(true);
@@ -65,13 +139,13 @@ describe("AdminCatalogReviewPanel", () => {
 
   it.each([0, 876])("shows thought tokens separately when the server reports %s", async (thoughtTokens) => {
     mockApi((url) => url === root + "/runs/review-1" ? response({ ...run, usage: { ...run.usage, thought_tokens: thoughtTokens } }) : undefined);
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     expect(await screen.findByText(`已呼叫 4 次 · 輸入 123 tokens · 輸出 45 tokens · 思考 ${thoughtTokens} tokens`)).toBeTruthy();
   });
 
   it("does not invent thought token usage for older run responses", async () => {
     mockApi();
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     await screen.findByText("已呼叫 4 次 · 輸入 123 tokens · 輸出 45 tokens");
     expect(screen.queryByText(/思考 .* tokens/)).toBeNull();
   });
@@ -87,7 +161,7 @@ describe("AdminCatalogReviewPanel", () => {
     ["catalog_provider_unavailable", "Gemini 服務暫時無法使用，這筆評估未完成。"],
   ])("explains %s without displaying internal exceptions", async (code, description) => {
     mockApi((url) => url.includes("/items?") ? response(listing([{ ...candidate("one", "Failed assessment"), status: "error", decision: null, reason: "ValueError: internal response details", error_code: code }])) : undefined);
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     expect(await screen.findByText(description)).toBeTruthy();
     expect(screen.queryByText(/ValueError/)).toBeNull();
     expect(screen.queryByText(code)).toBeNull();
@@ -96,7 +170,7 @@ describe("AdminCatalogReviewPanel", () => {
 
   it.each([null, undefined, "unrecognized_internal_error"])("uses a safe fallback for an error row with code %s", async (code) => {
     mockApi((url) => url.includes("/items?") ? response(listing([{ ...candidate("one", "Legacy failure"), status: "error", decision: null, reason: "ValueError: internal response details", error_code: code }])) : undefined);
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     expect(await screen.findByText("這筆評估未完成，未記錄可辨識的原因；尚未套用判斷，請檢查服務狀態後重試。")).toBeTruthy();
     expect(screen.queryByText(/ValueError|unrecognized_internal_error/)).toBeNull();
     expect(screen.queryByText("Gemini 回應格式不符合審核要求。")).toBeNull();
@@ -108,33 +182,33 @@ describe("AdminCatalogReviewPanel", () => {
       if (url === root + "/runs" && init?.method === "POST") return response({ ...run, status: "queued" }, 202);
       return undefined;
     });
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     await waitFor(() => expect((screen.getByRole("button", { name: "開始審核現有待審" }) as HTMLButtonElement).disabled).toBe(false));
     fireEvent.click(screen.getByRole("button", { name: "開始審核現有待審" }));
     await waitFor(() => expect(fetchMock.mock.calls.some(([, init]) => init?.method === "POST")).toBe(true));
     const init = fetchMock.mock.calls.find(([, init]) => init?.method === "POST")![1]!;
-    expect(JSON.parse(String(init.body))).toEqual({ mode: "review_pending", requested_counts: { hotspot: 40, food: 20, merchant: 40 }, max_calls: 80 });
+    expect(JSON.parse(String(init.body))).toEqual({ mode: "review_pending", scope: "hotspots", requested_counts: { hotspot: 40, food: 0, merchant: 0 }, max_calls: 80 });
     expect((init.headers as Record<string, string>)["Idempotency-Key"]).toMatch(/^[0-9a-f-]{36}$/i);
   });
 
   it("allows discovery after review completion even when items remain pending", async () => {
     const fetchMock = mockApi((url, init) => url === root + "/runs" && init?.method === "POST" ? response({ ...run, mode: "discover_new", status: "queued" }, 202) : undefined);
-    render(<AdminCatalogReviewPanel />);
-    const start = await screen.findByRole("button", { name: "開始尋找 100 筆候選" });
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
+    const start = await screen.findByRole("button", { name: "開始尋找 40 筆候選" });
     await waitFor(() => expect((start as HTMLButtonElement).disabled).toBe(false));
-    expect(screen.getByText("景點 40 筆 · 美食 20 筆 · 商家 40 筆")).toBeTruthy();
+    expect(screen.getByText("僅景點 40 筆；不包含料理或店家。")).toBeTruthy();
     expect(screen.getByText(/新候選先存為待審且不啟用/)).toBeTruthy();
     fireEvent.click(start);
     await waitFor(() => expect(fetchMock.mock.calls.some(([, init]) => init?.method === "POST")).toBe(true));
     const init = fetchMock.mock.calls.find(([, init]) => init?.method === "POST")![1]!;
-    expect(JSON.parse(String(init.body))).toEqual({ mode: "discover_new", prior_review_run_id: "review-1", requested_counts: { hotspot: 40, food: 20, merchant: 40 }, max_calls: 80 });
+    expect(JSON.parse(String(init.body))).toEqual({ mode: "discover_new", prior_review_run_id: "review-1", scope: "hotspots", requested_counts: { hotspot: 40, food: 0, merchant: 0 }, max_calls: 80 });
   });
 
   it("keeps discovery disabled when the server denies it despite a completed review", async () => {
     mockApi((url) => url === root ? response({ ...overview, can_start_discovery: false, blocking_reasons: ["Another run is active."] }) : undefined);
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     expect(await screen.findByText("Another run is active.")).toBeTruthy();
-    expect((screen.getByRole("button", { name: "開始尋找 100 筆候選" }) as HTMLButtonElement).disabled).toBe(true);
+    expect((screen.getByRole("button", { name: "開始尋找 40 筆候選" }) as HTMLButtonElement).disabled).toBe(true);
   });
 
   it("requires eligible rows and a confirmation, then reports actual per-item outcomes", async () => {
@@ -148,7 +222,7 @@ describe("AdminCatalogReviewPanel", () => {
       if (url.endsWith("/apply") && init?.method === "POST") return response({ run: { ...run, version: 4 }, updated: 1, outcomes: [{ id: "one", action: "approve", status: "applied", reason: "Saved." }, { id: "two", action: "approve", status: "skipped", reason: "candidate_changed" }] });
       return undefined;
     });
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     expect(await screen.findByText("Verified shrine")).toBeTruthy();
     expect(screen.getByText(/Gemini · 模型 gemini-review-model/)).toBeTruthy();
     expect(screen.getAllByText("Official attraction description.")).toHaveLength(4);
@@ -164,7 +238,7 @@ describe("AdminCatalogReviewPanel", () => {
     expect(await screen.findByText("實際更新 1 筆")).toBeTruthy();
     expect(screen.getByText("候選資料在評估後已變更，請重新審核")).toBeTruthy();
     expect(screen.queryByText("candidate_changed")).toBeNull();
-    const init = fetchMock.mock.calls.find(([input]) => String(input).endsWith("/apply"))![1]!;
+    const init = fetchMock.mock.calls.find(([input]) => String(input).endsWith("/apply?scope=hotspots"))![1]!;
     expect(JSON.parse(String(init.body))).toEqual({ item_ids: ["one", "two"], action: "approve", expected_version: 3 });
   });
 
@@ -176,7 +250,7 @@ describe("AdminCatalogReviewPanel", () => {
       "missing_food_category", "missing_verified_source_evidence", "low_assessment_confidence",
     ];
     mockApi((url) => url.includes("/items?") ? response(listing([{ ...candidate("one", "Incomplete candidate"), gaps: [...gaps, "future_verification_requirement"] }])) : undefined);
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     const requirements = await screen.findByRole("list", { name: "Incomplete candidate 的缺項" });
     expect(within(requirements).getByText("缺少精準地圖身分（韓國須 Naver，其餘須 Google Place ID）")).toBeTruthy();
     expect(within(requirements).getByText("缺少有永久來源佐證的座標")).toBeTruthy();
@@ -193,7 +267,7 @@ describe("AdminCatalogReviewPanel", () => {
       if (url.includes("/items?")) return response(listing([candidate("one", "Assessed during run")]));
       return undefined;
     });
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     await screen.findByText("Assessed during run");
     expect(screen.getByText("Official attraction description.")).toBeTruthy();
     expect(screen.getByText(/工作仍在排隊或執行中/)).toBeTruthy();
@@ -212,14 +286,14 @@ describe("AdminCatalogReviewPanel", () => {
       if (url.includes("/items?page=2")) return response(listing([candidate("two", "Second page")], 2, false));
       return undefined;
     });
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     await screen.findByText("First page");
     fireEvent.click(screen.getByRole("checkbox", { name: "選取 First page" }));
     fireEvent.click(screen.getByRole("button", { name: "下一頁" }));
     await screen.findByText("Second page");
     expect((screen.getByRole("button", { name: "預覽選取的 0 筆" }) as HTMLButtonElement).disabled).toBe(true);
     expect((screen.getByRole("checkbox", { name: "選取 Second page" }) as HTMLInputElement).checked).toBe(false);
-    expect(fetchMock.mock.calls.some(([url]) => String(url).endsWith("items?page=2&page_size=30"))).toBe(true);
+    expect(fetchMock.mock.calls.some(([url]) => String(url).endsWith("items?page=2&page_size=30&scope=hotspots"))).toBe(true);
   });
 
   it("reuses the apply idempotency key after an uncertain network response", async () => {
@@ -232,7 +306,7 @@ describe("AdminCatalogReviewPanel", () => {
       }
       return undefined;
     });
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     await screen.findByText("Retry candidate");
     fireEvent.click(screen.getByRole("checkbox", { name: "選取 Retry candidate" }));
     fireEvent.click(screen.getByRole("button", { name: "預覽選取的 1 筆" }));
@@ -240,7 +314,7 @@ describe("AdminCatalogReviewPanel", () => {
     await screen.findByText("Network interrupted");
     fireEvent.click(screen.getByRole("button", { name: "確認並套用" }));
     await screen.findByText("實際更新 1 筆");
-    const calls = fetchMock.mock.calls.filter(([url]) => String(url).endsWith("/apply"));
+    const calls = fetchMock.mock.calls.filter(([url]) => String(url).endsWith("/apply?scope=hotspots"));
     expect(calls).toHaveLength(2);
     expect(calls[0][1]!.headers).toEqual(calls[1][1]!.headers);
     expect(calls[0][1]!.body).toBe(calls[1][1]!.body);
@@ -254,7 +328,7 @@ describe("AdminCatalogReviewPanel", () => {
       if (url.endsWith("/apply") && init?.method === "POST") { version = 7; return response({ detail: "Assessment version changed." }, 409); }
       return undefined;
     });
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     await screen.findByText("Changed candidate");
     fireEvent.click(screen.getByRole("checkbox", { name: "選取 Changed candidate" }));
     fireEvent.click(screen.getByRole("button", { name: "預覽選取的 1 筆" }));
@@ -262,12 +336,12 @@ describe("AdminCatalogReviewPanel", () => {
     await screen.findByText("Assessment version changed.");
     expect(screen.queryByRole("dialog")).toBeNull();
     await waitFor(() => expect((screen.getByRole("checkbox", { name: "選取 Changed candidate" }) as HTMLInputElement).disabled).toBe(false));
-    expect(fetchMock.mock.calls.filter(([url]) => String(url).endsWith("/apply"))).toHaveLength(1);
+    expect(fetchMock.mock.calls.filter(([url]) => String(url).endsWith("/apply?scope=hotspots"))).toHaveLength(1);
     fireEvent.click(screen.getByRole("checkbox", { name: "選取 Changed candidate" }));
     fireEvent.click(screen.getByRole("button", { name: "預覽選取的 1 筆" }));
     fireEvent.click(screen.getByRole("button", { name: "確認並套用" }));
-    await waitFor(() => expect(fetchMock.mock.calls.filter(([url]) => String(url).endsWith("/apply"))).toHaveLength(2));
-    const last = fetchMock.mock.calls.filter(([url]) => String(url).endsWith("/apply"))[1][1]!;
+    await waitFor(() => expect(fetchMock.mock.calls.filter(([url]) => String(url).endsWith("/apply?scope=hotspots"))).toHaveLength(2));
+    const last = fetchMock.mock.calls.filter(([url]) => String(url).endsWith("/apply?scope=hotspots"))[1][1]!;
     expect(JSON.parse(String(last.body)).expected_version).toBe(7);
   });
 
@@ -279,11 +353,11 @@ describe("AdminCatalogReviewPanel", () => {
       if (url.endsWith("/resume") && init?.method === "POST") return response({ ...partial, status: "queued", can_resume: false });
       return undefined;
     });
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     await screen.findByText("Daily call budget reached.");
     expect(screen.getByText("gemini_daily_budget_exhausted")).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "繼續未完成工作" }));
-    await waitFor(() => expect(fetchMock.mock.calls.some(([url, init]) => String(url).endsWith("/resume") && init?.method === "POST")).toBe(true));
+    await waitFor(() => expect(fetchMock.mock.calls.some(([url, init]) => String(url).endsWith("/resume?scope=hotspots") && init?.method === "POST")).toBe(true));
   });
 
   it("keeps 21 missing Gemini assessments incomplete and unavailable for discovery or applying", async () => {
@@ -295,7 +369,7 @@ describe("AdminCatalogReviewPanel", () => {
       if (url.includes("/items?")) return response({ ...listing(missing), total: 307, has_more: true });
       return undefined;
     });
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     await screen.findByText("Missing assessment 20");
     expect(screen.getByText("已評估", { selector: "dt" }).parentElement?.textContent).toBe("已評估286");
     expect(screen.getByText("評估失敗", { selector: "dt" }).parentElement?.textContent).toBe("評估失敗21");
@@ -304,7 +378,7 @@ describe("AdminCatalogReviewPanel", () => {
     expect(screen.getAllByText("Gemini 回應的項目識別碼與這批候選不符。")).toHaveLength(21);
     expect(screen.queryByText("Gemini未回傳這筆候選")).toBeNull();
     expect((screen.getByRole("button", { name: "繼續未完成工作" }) as HTMLButtonElement).disabled).toBe(false);
-    const discovery = screen.getByRole("button", { name: "開始尋找 100 筆候選" });
+    const discovery = screen.getByRole("button", { name: "開始尋找 40 筆候選" });
     expect((discovery as HTMLButtonElement).disabled).toBe(true);
     fireEvent.click(discovery);
     for (const action of ["approve", "reject", "keep_pending"]) {
@@ -328,21 +402,21 @@ describe("AdminCatalogReviewPanel", () => {
       }
       return undefined;
     });
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     fireEvent.click(await screen.findByRole("button", { name: "繼續未完成工作" }));
     await waitFor(() => expect(screen.queryByRole("button", { name: "繼續未完成工作" })).toBeNull());
     expect((screen.getByRole("combobox", { name: "選擇審核工作" }) as HTMLSelectElement).value).toBe("review-1");
     expect(within(screen.getByRole("combobox", { name: "選擇審核工作" })).getByRole("option").textContent).toContain("排隊中");
-    expect((screen.getByRole("button", { name: "開始尋找 100 筆候選" }) as HTMLButtonElement).disabled).toBe(true);
+    expect((screen.getByRole("button", { name: "開始尋找 40 筆候選" }) as HTMLButtonElement).disabled).toBe(true);
     const writes = fetchMock.mock.calls.filter(([, init]) => init?.method === "POST");
     expect(writes).toHaveLength(1);
-    expect(String(writes[0][0])).toBe(root + "/runs/review-1/resume");
+    expect(String(writes[0][0])).toBe(root + "/runs/review-1/resume?scope=hotspots");
   });
 
   it("shows quota codes without a message and distinguishes created candidates from approval suggestions", async () => {
     const partial = { ...run, mode: "discover_new", status: "partial", review_complete: false, error_code: "gemini_daily_budget_exhausted", counts: { ...run.counts, created: 7, approved: 1 } };
     mockApi((url) => url === root + "/runs/review-1" ? response(partial) : undefined);
-    render(<AdminCatalogReviewPanel />);
+    render(<AdminCatalogReviewPanel scope="hotspots" />);
     await screen.findByText("gemini_daily_budget_exhausted");
     expect(screen.getByText("部分完成")).toBeTruthy();
     expect(screen.getByText("已建立候選").parentElement?.textContent).toBe("已建立候選7");
@@ -363,7 +437,7 @@ describe("AdminCatalogReviewPanel", () => {
       }
       return undefined;
     });
-    await act(async () => { render(<AdminCatalogReviewPanel />); });
+    await act(async () => { render(<AdminCatalogReviewPanel scope="hotspots" />); });
     expect(detailCalls).toBe(1);
     await act(async () => { await vi.advanceTimersByTimeAsync(3_000); });
     expect(detailCalls).toBe(2);
@@ -372,7 +446,7 @@ describe("AdminCatalogReviewPanel", () => {
     await act(async () => { finishPoll!(new Response(JSON.stringify(run))); });
     await act(async () => { await vi.advanceTimersByTimeAsync(12_000); });
     expect(detailCalls).toBe(2);
-    expect(fetchMock.mock.calls.filter(([url]) => String(url) === root)).toHaveLength(2);
+    expect(fetchMock.mock.calls.filter(([url]) => String(url) === root + "?scope=hotspots")).toHaveLength(2);
   });
 
   it("updates history from queued through running to a resumable provider circuit stop", async () => {
@@ -386,7 +460,7 @@ describe("AdminCatalogReviewPanel", () => {
       }
       return undefined;
     });
-    await act(async () => { render(<AdminCatalogReviewPanel />); });
+    await act(async () => { render(<AdminCatalogReviewPanel scope="hotspots" />); });
     const history = screen.getByRole("combobox", { name: "選擇審核工作" });
     expect(within(history).getByRole("option").textContent).toContain("排隊中");
     await act(async () => { await vi.advanceTimersByTimeAsync(3_000); });
@@ -417,13 +491,13 @@ describe("AdminCatalogReviewPanel", () => {
       }
       return undefined;
     });
-    await act(async () => { render(<AdminCatalogReviewPanel />); });
+    await act(async () => { render(<AdminCatalogReviewPanel scope="hotspots" />); });
     await act(async () => { await vi.advanceTimersByTimeAsync(3_000); });
     expect(screen.getByText("部分完成")).toBeTruthy();
     expect(screen.getByText("gemini_daily_budget_exhausted")).toBeTruthy();
     expect(screen.getByText("Overview unavailable.")).toBeTruthy();
     expect((screen.getByRole("button", { name: "開始審核現有待審" }) as HTMLButtonElement).disabled).toBe(true);
-    expect((screen.getByRole("button", { name: "開始尋找 100 筆候選" }) as HTMLButtonElement).disabled).toBe(true);
+    expect((screen.getByRole("button", { name: "開始尋找 40 筆候選" }) as HTMLButtonElement).disabled).toBe(true);
     await act(async () => { await vi.advanceTimersByTimeAsync(12_000); });
     expect(detailCalls).toBe(2);
   });
@@ -439,7 +513,7 @@ describe("AdminCatalogReviewPanel", () => {
       }
       return undefined;
     });
-    await act(async () => { render(<AdminCatalogReviewPanel />); });
+    await act(async () => { render(<AdminCatalogReviewPanel scope="hotspots" />); });
     await act(async () => { await vi.advanceTimersByTimeAsync(3_000); });
     expect(screen.getByText(/連線暫時中斷/)).toBeTruthy();
     await act(async () => { await vi.advanceTimersByTimeAsync(3_000); });
@@ -465,7 +539,7 @@ describe("AdminCatalogReviewPanel", () => {
       if (url === root + "/runs/review-2") return response({ ...run, id: "review-2", model: "selected-run-model" });
       return undefined;
     });
-    await act(async () => { render(<AdminCatalogReviewPanel />); });
+    await act(async () => { render(<AdminCatalogReviewPanel scope="hotspots" />); });
     await act(async () => { await vi.advanceTimersByTimeAsync(3_000); });
     await act(async () => { fireEvent.change(screen.getByRole("combobox", { name: "選擇審核工作" }), { target: { value: "review-2" } }); });
     expect(pollSignal?.aborted).toBe(true);
@@ -491,7 +565,7 @@ describe("AdminCatalogReviewPanel", () => {
       return undefined;
     });
     let view: ReturnType<typeof render>;
-    await act(async () => { view = render(<AdminCatalogReviewPanel />); });
+    await act(async () => { view = render(<AdminCatalogReviewPanel scope="hotspots" />); });
     await act(async () => { await vi.advanceTimersByTimeAsync(3_000); });
     expect(pollSignal?.aborted).toBe(false);
     view!.unmount();
@@ -509,7 +583,7 @@ describe("AdminCatalogReviewPanel", () => {
       }
       return undefined;
     });
-    const view = render(<AdminCatalogReviewPanel />);
+    const view = render(<AdminCatalogReviewPanel scope="hotspots" />);
     await screen.findByText("Unmount candidate");
     fireEvent.click(screen.getByRole("checkbox", { name: "選取 Unmount candidate" }));
     fireEvent.click(screen.getByRole("button", { name: "預覽選取的 1 筆" }));

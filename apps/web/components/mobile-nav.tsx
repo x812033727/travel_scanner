@@ -15,6 +15,8 @@ import { localeLabels, type Locale } from "@/i18n/routing";
 import { primaryNavLinks } from "@/lib/nav-links";
 import { featureVisible } from "@/lib/site-features";
 import { useCommunity } from "@/components/community/provider";
+import { useDiscoveryStatus } from "@/lib/discovery";
+import { getDiscoveryCopy } from "@/lib/discovery-copy";
 
 export function MobileNav() {
   const { status, user } = useHeaderSession();
@@ -23,6 +25,8 @@ export function MobileNav() {
   const tc = useTranslations("community");
   const common = useTranslations("common");
   const locale = useLocale() as Locale;
+  const discovery = useDiscoveryStatus();
+  const discoveryCopy = getDiscoveryCopy(locale);
   const { preference } = useTheme();
   const themeValue = nav(preference === "system" ? "themeSystem" : preference === "dark" ? "themeDark" : "themeLight");
   const visibility = useSiteVisibility();
@@ -98,7 +102,12 @@ export function MobileNav() {
             </span>
           </div>
         <nav aria-label={nav("primaryLabel")} className="grid gap-1">
-          {community.flags.enabled && [["/community", "title"], ["/pet-friendly", "pets"], ["/my", "my"]].map(([href, key]) => <Link key={href} href={href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{tc(key)}</Link>)}
+          {discovery.enabled && [["/explore", discoveryCopy.explore], ["/explore/collections", discoveryCopy.collections], ["/my", discoveryCopy.my]].map(([href, label]) => <Link key={href} href={href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{label}</Link>)}
+          {discovery.enabled && community.flags.enabled && <>
+            {community.flags.posting_enabled && <Link href="/community/new" onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{discoveryCopy.publish}</Link>}
+            <Link href="/community/messages" onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{discoveryCopy.notifications}{community.unread > 0 ? ` (${community.unread})` : ""}</Link>
+          </>}
+          {community.flags.enabled && [["/community", "title"], ["/pet-friendly", "pets"], ...(!discovery.enabled ? [["/my", "my"]] : [])].map(([href, key]) => <Link key={href} href={href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{tc(key)}</Link>)}
           {links.map((item) => <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">
             {nav(item.key)}
           </Link>)}

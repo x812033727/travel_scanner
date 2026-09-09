@@ -13,7 +13,7 @@ from uuid import NAMESPACE_URL, UUID, uuid5
 
 from fastapi import APIRouter, Depends, Path, Query
 from fastapi.responses import RedirectResponse
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
@@ -41,7 +41,7 @@ from app.problems import AppError
 from app.providers.registry import build_hotel_provider, hotel_provider_status
 from app.providers.runner import ProviderRunner, ProviderUnavailableError
 from app.providers.schemas import HotelOffer, SourceMode
-from app.search.schemas import SearchCreate
+from app.search.schemas import SearchCreate, Travelers
 from app.trips.router import (
     hydrate_legacy_items,
     load_items,
@@ -69,6 +69,7 @@ from app.trips.stay_areas import (
     stay_search_query,
     trim_offer,
     trip_city,
+    trip_settings_source,
 )
 
 logger = logging.getLogger(__name__)
@@ -163,6 +164,51 @@ def _pricing_availability(settings: Settings) -> dict[str, Any]:
     }
 
 
+def _stay22_map_context(context: StayContext) -> dict[str, Any] | None:
+    """Minimal saved search context; never derive it from a provider quote."""
+    profile = context.profile
+    pilots = {"tokyo": ("JP", "NRT"), "taipei": ("TW", "TPE")}
+    if profile is None or profile.id not in pilots:
+        return None
+    country_code, city_code = pilots[profile.id]
+    if context.city_code != city_code:
+        return None
+    trip = context.trip
+    country_names = {
+        "JP": {"jp", "japan", "日本", "일본"},
+        "TW": {"tw", "taiwan", "台灣", "臺灣", "台湾", "대만"},
+    }
+    for key in ("destination_country_code", "destination_country"):
+        explicit = trip.data.get(key)
+        if explicit is not None and explicit != "":
+            if not isinstance(explicit, str) or explicit.strip().casefold() not in country_names[
+                country_code
+            ]:
+                return None
+
+    # Only an explicitly saved party edit overrides the original search. Schema
+    # defaults must not invent missing adults, children or rooms.
+    source = trip_settings_source(trip, context.search_json)
+    raw_travelers = source.get("travelers")
+    travelers = None
+    if isinstance(raw_travelers, dict) and {"adults", "children", "rooms"} <= raw_travelers.keys():
+        try:
+            party = Travelers.model_validate(raw_travelers, strict=True)
+        except ValidationError:
+            pass
+        else:
+            travelers = {"adults": party.adults, "children": party.children, "rooms": party.rooms}
+    return {
+        "destination_id": profile.id,
+        "country_code": country_code,
+        "city_code": city_code,
+        "check_in": trip.start_date.isoformat() if trip.start_date else None,
+        "check_out": trip.end_date.isoformat() if trip.end_date else None,
+        "travelers": travelers,
+        "currency": "TWD",
+    }
+
+
 @router.get("")
 async def stay_areas(
     trip_id: UUID, user: CurrentUser, session: Session, locale: RequestLocale
@@ -180,6 +226,7 @@ async def stay_areas(
         "version": trip.version,
         "destination_name": context.destination_label,
         "city_code": context.city_code,
+        "map_context": _stay22_map_context(context),
         "pricing": _pricing_availability(context.settings),
         "current_lodging_area_code": None,
         "located_item_count": 0,

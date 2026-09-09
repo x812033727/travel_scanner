@@ -129,18 +129,29 @@ def is_logistics_item(item: TripPlanItem) -> bool:
     )
 
 
-def is_active_route_item(item: TripPlanItem) -> bool:
-    location_ready = (
-        getattr(item, "latitude", None) is not None and getattr(item, "longitude", None) is not None
+def is_optional_system_item(item: TripPlanItem) -> bool:
+    """Empty generated slots are optional; a selected but unlocated stop is a barrier.
+
+    Keep partial coordinates and member-entered place names in the graph so routing
+    cannot silently bridge across them. This is a projection, not a stored-item edit.
+    """
+    if item.system_role not in DAILY_SYSTEM_ROLES:
+        return False
+    return (
+        getattr(item, "latitude", None) is None
+        and getattr(item, "longitude", None) is None
+        and not (item.location_name or "").strip()
+        and not item.provider_place_id
+        and item.data.get("meal_selection_source") in (None, "", "unset")
     )
+
+
+def is_active_route_item(item: TripPlanItem) -> bool:
     return (
         not item.is_skipped
         and item.system_role not in FLIGHT_SYSTEM_ROLES
         and not is_logistics_item(item)
-        and (
-            item.system_role not in {"hotel_start", "hotel_end", "lunch", "dinner"}
-            or location_ready
-        )
+        and not is_optional_system_item(item)
     )
 
 
@@ -435,6 +446,11 @@ def _sync_lodging(item: TripPlanItem, lodging: dict[str, Any] | None) -> bool:
 
 
 def canonicalize_positions(rows: list[TripPlanItem]) -> bool:
+    """Keep the traveller's sequence, with flights and hotels at the day edges.
+
+    start_time is a result of routing for chained stops, not their sorting key.
+    Sorting by it undid every manual move on the next save or GET.
+    """
     changed = False
     for day_value in sorted({item.day_date for item in rows if item.day_date is not None}):
         day_rows = [item for item in rows if item.day_date == day_value]
@@ -447,22 +463,33 @@ def canonicalize_positions(rows: list[TripPlanItem]) -> bool:
         ]
         logistics = [item for item in day_rows if is_logistics_item(item)]
 
-        def route_key(item: TripPlanItem) -> tuple[int, datetime, int]:
+        def route_key(item: TripPlanItem) -> tuple[int, int]:
             if item.system_role == "hotel_start":
                 rank = 0
             elif item.system_role == "hotel_end":
                 rank = 2
             else:
                 rank = 1
-            return (
-                rank,
-                item.start_time or datetime.max.replace(tzinfo=UTC),
-                item.position,
-            )
+            return (rank, item.position)
+
+        route_rows.sort(key=route_key)
+        # Only system meals have a prescribed relative order. Ordinary fixed-time
+        # stops remain where the traveller put them and report lateness separately.
+        meal_indexes = [
+            index
+            for index, item in enumerate(route_rows)
+            if item.system_role in {"lunch", "dinner"}
+        ]
+        meals = sorted(
+            (route_rows[index] for index in meal_indexes),
+            key=lambda row: row.system_role == "dinner",
+        )
+        for index, meal in zip(meal_indexes, meals, strict=True):
+            route_rows[index] = meal
 
         ordered = [
             *outbound,
-            *sorted(route_rows, key=route_key),
+            *route_rows,
             *returning,
             *sorted(logistics, key=lambda row: row.position),
         ]
@@ -473,8 +500,42 @@ def canonicalize_positions(rows: list[TripPlanItem]) -> bool:
     return changed
 
 
+def insert_scheduled_rows(rows: list[TripPlanItem], additions: list[TripPlanItem]) -> None:
+    """Place newly generated anchors/stops without re-sorting existing stops."""
+    added_ids = {row.id for row in additions}
+    for day_value in {row.day_date for row in additions}:
+        ordered = sorted(
+            (row for row in rows if row.day_date == day_value and row.id not in added_ids),
+            key=lambda row: row.position,
+        )
+        for item in sorted(
+            (row for row in additions if row.day_date == day_value),
+            key=lambda row: (row.start_time or datetime.max.replace(tzinfo=UTC), row.position),
+        ):
+            at = next(
+                (
+                    index
+                    for index, other in enumerate(ordered)
+                    if other.system_role not in {"outbound_flight", "hotel_start"}
+                    and (
+                        other.system_role in {"hotel_end", "return_flight"}
+                        or (
+                            item.start_time is not None
+                            and other.start_time is not None
+                            and other.start_time >= item.start_time
+                        )
+                    )
+                ),
+                len(ordered),
+            )
+            ordered.insert(at, item)
+        for position, item in enumerate(ordered):
+            item.position = position
+
+
 def ensure_system_slots(session: AsyncSession, trip: TripPlan, rows: list[TripPlanItem]) -> bool:
     changed = False
+    additions: list[TripPlanItem] = []
     lodging = primary_lodging(trip, rows)
     if lodging and trip.data.get("primary_lodging") != lodging:
         trip.data = {**trip.data, "primary_lodging": lodging}
@@ -506,9 +567,12 @@ def ensure_system_slots(session: AsyncSession, trip: TripPlan, rows: list[TripPl
                 )
                 session.add(item)
                 rows.append(item)
+                additions.append(item)
                 changed = True
             elif role in {"hotel_start", "hotel_end"}:
                 changed = _sync_lodging(item, lodging) or changed
+    if additions:
+        insert_scheduled_rows(rows, additions)
     return canonicalize_positions(rows) or changed
 
 

@@ -107,6 +107,29 @@ function taxonomyResponse(url: string): Response | null {
 }
 
 describe("AdminFoodMerchantsPanel", () => {
+  it.each(["", "pending"])("sends the requested review filter %s for searches and explicit reloads", async (initialStatus) => {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const stub = taxonomyResponse(String(input));
+      if (stub) return stub;
+      if (init?.method === "POST") return new Response(JSON.stringify({ updated: 1 }));
+      return new Response(JSON.stringify({ items: [merchant], total: 1, page: 1, pages: 1 }));
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminFoodMerchantsPanel initialStatus={initialStatus} />);
+    await screen.findByText(merchant.name);
+    const listingCalls = () => fetchMock.mock.calls.filter(([url]) => String(url).includes("/merchants?"));
+    expect(new URL(String(listingCalls()[0][0]), "https://test.local").searchParams.get("status")).toBe(initialStatus || null);
+    fireEvent.change(screen.getByRole("textbox", { name: "店家搜尋" }), { target: { value: "燒鵝" } });
+    await waitFor(() => expect(listingCalls().some(([url]) => new URL(String(url), "https://test.local").searchParams.get("q") === "燒鵝")).toBe(true));
+    expect(listingCalls().every(([url]) => new URL(String(url), "https://test.local").searchParams.get("status") === (initialStatus || null))).toBe(true);
+    fireEvent.click(screen.getByRole("checkbox", { name: `選取 ${merchant.name}` }));
+    fireEvent.click(screen.getByRole("button", { name: /批次停用/ }));
+    await waitFor(() => expect(listingCalls().length).toBeGreaterThanOrEqual(3));
+    expect(new URL(String(listingCalls().at(-1)![0]), "https://test.local").searchParams.get("status")).toBe(initialStatus || null);
+    fireEvent.change(screen.getByRole("combobox", { name: "審核狀態" }), { target: { value: "approved" } });
+    await waitFor(() => expect(new URL(String(listingCalls().at(-1)![0]), "https://test.local").searchParams.get("status")).toBe("approved"));
+  });
+
   it("shows unavailable auto matching and saves permanent coordinates", async () => {
     vi.stubGlobal(
       "fetch",

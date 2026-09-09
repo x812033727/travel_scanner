@@ -1,4 +1,6 @@
+import hashlib
 import json
+from datetime import UTC, datetime
 from typing import Any
 from uuid import uuid4
 
@@ -17,7 +19,14 @@ from app.affiliates.service import (
     validate_target_url,
 )
 from app.config import Settings
-from app.models import AffiliateClick, SearchRequest, UsageLedger, User
+from app.models import (
+    AffiliateClick,
+    DestinationAffiliateOffer,
+    SearchRequest,
+    TravelServiceBrand,
+    UsageLedger,
+    User,
+)
 from app.problems import AppError
 
 
@@ -29,6 +38,17 @@ class AffiliateSession:
 
     async def scalar(self, _statement: object) -> SearchRequest | None:
         return self.search
+
+    async def get(self, _model: object, _identifier: object) -> None:
+        return None
+
+    async def execute(self, _statement: object) -> Any:
+        class EmptyResult:
+            @staticmethod
+            def all() -> list[Any]:
+                return []
+
+        return EmptyResult()
 
     def add(self, value: Any) -> None:
         self.added.append(value)
@@ -48,11 +68,13 @@ def test_registry_defaults_disabled_and_orders_each_module() -> None:
     assert [item.code for item in partners_for_module("hotel")] == [
         "booking",
         "agoda",
+        "klook",
         "trip_com",
         "travelpayouts",
     ]
     assert [item.code for item in partners_for_module("connectivity")] == [
         "airalo",
+        "klook",
         "travelpayouts",
     ]
 
@@ -153,11 +175,15 @@ async def test_travelpayouts_success_is_cached() -> None:
         assert request.headers["X-Access-Token"] == "secret-token"
         payload = request.read().decode()
         assert '"trs":123' in payload and '"marker":456' in payload
+        assert json.loads(payload)["shorten"] is False
         return httpx.Response(
             200,
             json={
                 "result": {
-                    "links": [{"code": "success", "partner_url": "https://brand.tp.st/path"}]
+                    "links": [{
+                        "code": "success",
+                        "partner_url": "https://tp.media/r?marker=456&trs=123",
+                    }]
                 }
             },
         )
@@ -168,11 +194,18 @@ async def test_travelpayouts_success_is_cached() -> None:
         travelpayouts_project_id="123",
         travelpayouts_marker="456",
     )
+    token_digest = hashlib.sha256(b"secret-token").hexdigest()
+    legacy_digest = hashlib.sha256(
+        f"https://brand.example/search|sub-1|456|123|legacy|{token_digest}".encode()
+    ).hexdigest()
+    await redis.set(
+        f"affiliate:travelpayouts:link:{legacy_digest}", "https://brand.tpx.gr/old-short-link"
+    )
     async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
         client = TravelpayoutsLinkClient(redis, settings, http)
         first = await client.create("https://brand.example/search", "sub-1")
         second = await client.create("https://brand.example/search", "sub-1")
-    assert first == second == "https://brand.tp.st/path"
+    assert first == second == "https://tp.media/r?marker=456&trs=123"
     assert calls == 1
 
 
@@ -358,6 +391,68 @@ async def test_options_and_clickout_record_append_only_summary_without_usage_cha
             session,  # type: ignore[arg-type]
         )
     assert replay.value.code == "affiliate_link_expired"
+
+
+@pytest.mark.asyncio
+async def test_verified_destination_brand_replaces_generic_travelpayouts(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    settings = Settings(
+        travelpayouts_enabled=True,
+        travelpayouts_api_token="secret-token",
+        travelpayouts_project_id="123",
+        travelpayouts_marker="456",
+        travelpayouts_activities_target_url="https://generic.example/tours",
+    )
+    user = User(id=uuid4(), email="member@example.com", password_hash="unused", is_active=True)
+    search = SearchRequest(
+        id=uuid4(),
+        user_id=user.id,
+        status="completed",
+        operation="full_trip_search",
+        request_json={"destination": "東京", "destination_id": "tokyo"},
+    )
+    session = AffiliateSession(search)
+    brand = TravelServiceBrand(
+        id=uuid4(),
+        project_id="123",
+        code="klook",
+        approval="approved",
+        enabled=True,
+        verified_at=datetime.now(UTC),
+    )
+    offer = DestinationAffiliateOffer(
+        id=uuid4(),
+        brand_id=brand.id,
+        destination_id="tokyo",
+        module="activities",
+        target_url="https://www.klook.com/city/28-tokyo/",
+        status="approved",
+        verified_at=datetime.now(UTC),
+        version=1,
+    )
+
+    async def runtime_settings(_session: object) -> Settings:
+        return settings
+
+    async def ready_offers(
+        *_args: object,
+    ) -> list[tuple[DestinationAffiliateOffer, TravelServiceBrand]]:
+        return [(offer, brand)]
+
+    monkeypatch.setattr(affiliate_router, "get_redis", lambda: redis)
+    monkeypatch.setattr(affiliate_router, "load_runtime_settings", runtime_settings)
+    monkeypatch.setattr(affiliate_router, "_ready_destination_offers", ready_offers)
+    response = await affiliate_router.affiliate_options(
+        "activities",
+        user,
+        session,
+        search_id=search.id,  # type: ignore[arg-type]
+    )
+    assert [item.partner for item in response.options] == ["klook"]
+    assert response.options[0].display_name == "Klook"
+    assert "travelpayouts" not in str(response.model_dump())
 
 
 @pytest.mark.asyncio

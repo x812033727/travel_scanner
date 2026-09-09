@@ -94,7 +94,7 @@ export function AdminTabs({
         <select
           value={active}
           onChange={(event) => onSelect(event.target.value)}
-          className="min-h-12 w-full rounded-xl border border-[var(--line)] bg-white px-3"
+          className="min-h-12 w-full rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3 text-[var(--ink)] focus-visible:outline-2 focus-visible:outline-[var(--teal)]"
         >
           {tabs.map((tab) => (
             <option key={tab.key} value={tab.key}>
@@ -122,10 +122,10 @@ export function AdminTabs({
               tabIndex={selected ? 0 : -1}
               onClick={() => onSelect(tab.key)}
               onKeyDown={(event) => moveTab(event, index)}
-              className={`flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition ${
+              className={`flex min-h-11 shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--teal)] ${
                 selected
                   ? "border-[var(--teal)] bg-[var(--teal)] text-white"
-                  : "border-[var(--line)] bg-white text-[var(--ink)] hover:border-[var(--teal)]"
+                  : "border-[var(--line)] bg-[var(--surface)] text-[var(--ink)] hover:border-[var(--teal)]"
               }`}
             >
               {tab.label}

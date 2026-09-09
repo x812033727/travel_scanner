@@ -113,9 +113,9 @@ export function TripWeatherPanel({
 
   if (!weather && !error) {
     return (
-      <section aria-label={t("title")} className="mb-5 animate-pulse rounded-2xl border border-[var(--line)] bg-white p-4">
-        <div className="h-4 w-28 rounded bg-slate-100" />
-        <div className="mt-3 h-16 rounded-xl bg-slate-100" />
+      <section aria-label={t("title")} className="mb-5 animate-pulse rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 text-[var(--ink)]">
+        <div className="h-4 w-28 rounded bg-[var(--paper)]" />
+        <div className="mt-3 h-16 rounded-xl bg-[var(--paper)]" />
       </section>
     );
   }
@@ -123,13 +123,13 @@ export function TripWeatherPanel({
   if (error) {
     const notConfigured = error.code === "weather_not_configured" || error.code === "weather_api_not_enabled";
     return (
-      <section aria-label={t("title")} className="mb-5 flex items-center justify-between gap-4 rounded-2xl border border-[var(--line)] bg-white p-4">
+      <section aria-label={t("title")} className="mb-5 flex items-center justify-between gap-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 text-[var(--ink)]">
         <div>
           <p className="text-sm font-bold">{notConfigured ? t("notConfigured") : t("loadFailed")}</p>
           <p className="mt-1 text-xs leading-5 text-[var(--muted)]">{error.message}</p>
         </div>
         {!notConfigured && (
-          <button type="button" onClick={() => { setWeather(undefined); setError(undefined); setAttempt((value) => value + 1); }} className="flex min-h-11 shrink-0 items-center gap-1.5 rounded-xl border border-[var(--line)] px-3 text-sm font-semibold">
+          <button type="button" onClick={() => { setWeather(undefined); setError(undefined); setAttempt((value) => value + 1); }} className="flex min-h-11 shrink-0 items-center gap-1.5 rounded-xl border border-[var(--line)] bg-[var(--paper)] px-3 text-sm font-semibold">
             <RefreshCw size={15} />{t("retry")}
           </button>
         )}
@@ -149,7 +149,7 @@ export function TripWeatherPanel({
   const withinRange = tripDays.length > 0;
 
   return (
-    <section aria-label={t("title")} className="mb-5 overflow-hidden rounded-2xl border border-sky-100 bg-[linear-gradient(135deg,#f8fcff,#eef8f8)] p-4 shadow-sm sm:p-5">
+    <section aria-label={t("title")} className="mb-5 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 text-[var(--ink)] shadow-sm sm:p-5">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <p className="text-xs font-semibold tracking-[.14em] text-sky-800">{weather.attribution.toUpperCase()}</p>
@@ -157,7 +157,7 @@ export function TripWeatherPanel({
           <p className="mt-1 text-xs text-[var(--muted)]">{t("subtitle")}</p>
         </div>
         {weather.current && withinRange && (
-          <div className="flex items-center gap-3 rounded-2xl bg-white/80 px-4 py-3">
+          <div className="flex items-center gap-3 rounded-2xl bg-[var(--paper)] px-4 py-3">
             <WeatherIcon type={weather.current.condition.type} size={28} className="text-sky-700" />
             <div>
               <p className="text-2xl font-bold tabular-nums">{Math.round(weather.current.temperature_c)}°C</p>
@@ -168,7 +168,7 @@ export function TripWeatherPanel({
       </div>
 
       {activeForecast ? (
-        <div className="mt-4 grid grid-cols-2 gap-2 rounded-2xl bg-white/75 p-3 sm:grid-cols-4" aria-label={t("summaryLabel", { day: activeDay })}>
+        <div className="mt-4 grid grid-cols-2 gap-2 rounded-2xl bg-[var(--paper)] p-3 sm:grid-cols-4" aria-label={t("summaryLabel", { day: activeDay })}>
           <div className="flex items-center gap-2"><Umbrella size={16} className="text-sky-700" /><span className="text-xs">{t("rain")} <strong>{rainValue(activeForecast)}</strong></span></div>
           <div className="flex items-center gap-2"><Droplets size={16} className="text-sky-700" /><span className="text-xs">{t("humidity")} <strong>{valueOrDash(activeForecast.relative_humidity_percent, "%")}</strong></span></div>
           <div className="flex items-center gap-2"><Wind size={16} className="text-sky-700" /><span className="text-xs">{t("wind")} <strong>{valueOrDash(activeForecast.wind_speed_kph, " km/h")}</strong></span></div>
@@ -185,7 +185,7 @@ export function TripWeatherPanel({
           {tripDays.map((day) => {
             const selected = day.date === activeDay;
             return (
-              <article key={day.date} aria-current={selected ? "date" : undefined} className={`min-w-[7.4rem] rounded-2xl border px-3 py-3 ${selected ? "border-sky-500 bg-white shadow-sm" : "border-white/70 bg-white/60"}`}>
+              <article key={day.date} aria-current={selected ? "date" : undefined} className={`min-w-[7.4rem] rounded-2xl border px-3 py-3 ${selected ? "border-sky-500 bg-[var(--surface)] shadow-sm" : "border-[var(--line)] bg-[var(--paper)]"}`}>
                 <p className="text-xs font-semibold">{dayLabel(day.date, locale)}</p>
                 <WeatherIcon type={day.condition.type} className="my-2 text-sky-700" />
                 <p className="truncate text-xs text-[var(--muted)]" title={day.condition.description}>{day.condition.description}</p>
