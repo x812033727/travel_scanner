@@ -1,11 +1,11 @@
 ---
 id: 2026-09-09-pr335-funnel-merge-integration
 title: Prepare PR 335 funnel integration against current main
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: codex-pr335-merge-ready
+claimed_at: 2026-09-09T06:30:24Z
 created_at: 2026-09-09T06:13:49Z
 completed_at:
 branch: codex/pr335-merge-ready-20260909
