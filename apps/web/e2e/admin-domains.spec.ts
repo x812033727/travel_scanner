@@ -206,6 +206,7 @@ async function catalogBudgetFixture(page: Page) {
 
 for (const theme of ["light", "dark"] as const) {
   test(`catalog budget is editable and old work resumes only after confirmation (${theme})`, async ({ page }, info) => {
+    test.setTimeout(60_000);
     const writes = await catalogBudgetFixture(page);
     await page.addInitScript((value) => localStorage.setItem("mokaair-theme", value), theme);
     await page.emulateMedia({ colorScheme: theme, reducedMotion: "reduce" });
@@ -223,8 +224,11 @@ for (const theme of ["light", "dark"] as const) {
     expect(writes[0]).toEqual({ path: "/admin/provider-settings/gemini_guides", body: { config: { catalog_review_max_calls: 160 }, secrets: {}, expected_updated_at: "2026-09-09T08:00:00Z" } });
     await expect(page.getByRole("button", { name: "儲存設定", exact: true })).toBeDisabled();
     await page.goBack();
-    await expect(page.getByText("新工作呼叫上限 160 次；共用每日上限 300 次。")).toBeVisible();
-    await expect(page.getByText("此工作原有累計上限 80 次；已使用 80 次。")).toBeVisible();
+    // Back remounts the workspace and fetches both overview and run detail.
+    // Wait for the actual values, including on a busy CI host; never sleep or
+    // accept the loading shell as proof that saved settings were reloaded.
+    await expect(page.getByText("新工作呼叫上限 160 次；共用每日上限 300 次。")).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByText("此工作原有累計上限 80 次；已使用 80 次。")).toBeVisible({ timeout: 15_000 });
     expect(writes).toHaveLength(1);
     const opener = page.getByRole("button", { name: "提高上限並續跑…" });
     await opener.click();
@@ -248,7 +252,7 @@ for (const theme of ["light", "dark"] as const) {
     await expect.poll(() => writes.length).toBe(2);
     expect(writes[1]).toEqual({ path: "/admin/catalog-review/runs/budget-run/resume?scope=hotspots", body: { expected_version: 7, max_calls: 160 } });
     await page.reload();
-    await expect(page.getByText("此工作原有累計上限 160 次；已使用 80 次。")).toBeVisible();
+    await expect(page.getByText("此工作原有累計上限 160 次；已使用 80 次。")).toBeVisible({ timeout: 15_000 });
     expect(writes).toHaveLength(2);
   });
 }

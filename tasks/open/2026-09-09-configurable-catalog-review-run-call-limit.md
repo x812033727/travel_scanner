@@ -40,7 +40,7 @@ The catalog review cumulative 80-call ceiling is hardcoded in the API and UI. Ad
 
 - [x] A single shared provider setting controls the default and ceiling for catalog review runs (default 80, range 1–1000).
 - [x] Existing runs preserve their approved cap until an explicit, version-checked resume confirms a higher cap; counters, review snapshots, and publication gates remain intact. Expired-lease/orphaned work remains recoverable without allowing duplicate live workers.
-- [ ] Five-language admin controls, deep links, and focused API/web checks pass; PR provided without production changes.
+- [x] Five-language admin controls, deep links, and focused API/web checks pass; PR provided without production changes.
 
 ## Steps
 
@@ -59,3 +59,7 @@ Isolated from origin/main a8be96cd. Existing untranslated-message files are clai
 - Existing runtime override, single provider editor, dirty-field-only saving, version conflict handling, secrets masking, shared daily budget, and admin audit paths are reused; no migration required.
 - Ruff, mypy (291 source files), web ESLint, i18n, TypeScript, production build, tools (27), focused API (170 passed / 18 PostgreSQL-only skipped), provider settings (90), and focused Vitest (124) passed. New budget browser workflow passed desktop/Pixel 7 in both light/dark (4 tests); full-suite/CI results are recorded below when complete.
 - Local Docker CLI is unavailable; real PostgreSQL and container validation must run in CI. No live Gemini/evidence calls or production writes are used by tests. Screenshots are isolated UI fixtures, not production data.
+- PR: https://github.com/x812033727/travel_scanner/pull/381 (not merged or deployed).
+- Final focused API/provider/localization regression: 263 passed, 18 PostgreSQL-only skipped. Reused existing localized validation/resume errors instead of changing another task's backend language registry.
+- Latest production-build admin-domain Playwright: 24 passed (desktop/Pixel 7, five locales, light/dark including new budget workflow). An earlier busy-host Back navigation observation timed out while displaying loading placeholders; condition-based actual-value assertions now wait up to 15 seconds, without fixed sleeps. Viewport screenshots confirm readable, 44px controls and focus containment.
+- CI for implementation SHA a14b79d8 passed Planner UX, Travel discovery acceptance and containers; final-head CI remains required before merge. Alembic head remains 0068_admin_operations_center (no schema change).

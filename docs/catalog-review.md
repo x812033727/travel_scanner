@@ -83,8 +83,8 @@ translations and rejected hotspot identities.
 The shared configured `HOTSPOT_GUIDE_GEMINI_DAILY_SEARCH_BUDGET` is reserved **before**
 each Gemini HTTP request, including structured-output repairs. Each run additionally has
 a snapshotted cumulative request limit. Configure **Catalog review cumulative call
-limit** (default **80**, integer **1–1000**) in **System management → Provider
-settings → Gemini multilingual guide search**:
+limit** (default **80**, integer **1–1000**) in **Admin → Providers & keys →
+Gemini multilingual guide search**:
 `/{locale}/admin/settings?provider=gemini_guides&field=catalog_review_max_calls`.
 The equivalent environment default is `CATALOG_REVIEW_MAX_CALLS`. The AI review
 panel links directly to this single editor and distinguishes the current default,
