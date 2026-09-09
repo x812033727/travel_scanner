@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 0 in progress · 2 blocked · 8 in review · 177 done**
+**18 open · 0 in progress · 2 blocked · 9 in review · 177 done**
 
 ## Ready to claim
 
@@ -14,6 +14,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
+| P1 | [Revalidate community read resets against production-build CI](open/2026-09-08-community-ci-read-retry.md) | web | `apps/web/e2e/community.spec.ts` |
+| P1 | [Complete live Travelpayouts brand and destination offer verification](open/2026-09-08-travelpayouts-live-destination-activation.md) | ops | `docs/travel-services.md` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
@@ -39,6 +41,7 @@ _Nothing here._
 | [Route apply state regression and semantic itinerary tones](open/2026-09-09-planner-route-tones.md) | codex | `codex/planner-route-tones` |
 | [Integrate PR 343 account safety with current main](open/2026-09-09-pr343-account-safety-integration.md) | codex-account-safety | `codex/pr343-merge-ready-20260909` |
 | [Prepare PR 335 funnel integration against current main](open/2026-09-09-pr335-funnel-merge-integration.md) | codex-pr335-delivery | `codex/pr335-merge-ready-20260909` |
+| [Integrate PR 365 historical deployment and open verification notes](open/2026-09-09-pr365-docs-integration.md) | codex-pr365-docs | `codex/pr365-docs-ready-20260909` |
 
 ## Waiting
 
