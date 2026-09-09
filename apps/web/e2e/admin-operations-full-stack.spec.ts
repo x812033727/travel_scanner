@@ -226,7 +226,20 @@ test("real support lifecycle mutations revoke sessions and preserve cancellable 
     { reason: "full-stack cancellation acceptance" },
   );
   expect(cancelled.status).toBe(200);
-  expect(cancelled.body.erasure.status).toBe("cancelled");
+  // `erasure` represents the currently actionable workflow, not history. A
+  // cancelled request must stop affecting account state while its immutable
+  // audit entry remains visible to support staff.
+  expect(cancelled.body.status).toBe("active");
+  expect(cancelled.body.erasure_status).toBeNull();
+  expect(cancelled.body.erasure).toBeNull();
+  expect(cancelled.body.admin_history).toEqual(expect.arrayContaining([
+    expect.objectContaining({
+      action: "user_erasure_cancelled",
+      metadata: expect.objectContaining({
+        reason: "full-stack cancellation acceptance",
+      }),
+    }),
+  ]));
 });
 
 test("real bootstrap and direct URLs enforce every fixed role boundary", async ({ page, request, baseURL }, info) => {
