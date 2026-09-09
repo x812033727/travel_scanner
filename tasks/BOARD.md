@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**18 open · 2 in progress · 2 blocked · 2 in review · 176 done**
+**18 open · 2 in progress · 2 blocked · 1 in review · 177 done**
 
 ## Ready to claim
 
@@ -15,6 +15,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | --- | --- | --- | --- |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
 | P1 | [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | web | `apps/web/components/discovery`<br>`apps/web/components/saved-items-provider.tsx`<br>`apps/web/components/saved-items-provider.test.tsx`<br>`apps/web/lib/discovery.ts`<br>`apps/web/lib/discovery-copy.ts`<br>`apps/web/lib/saved-items.ts`<br>`apps/web/lib/saved-items.test.ts`<br>`apps/web/lib/frontend-flow-copy.ts` |
+| P1 | [Frontend flow navigation planning handoff and acceptance](open/2026-09-09-frontend-flow-integration.md) | web | `apps/web/components/site-navigation.tsx`<br>`apps/web/components/mobile-nav.tsx`<br>`apps/web/components/mobile-nav.test.tsx`<br>`apps/web/components/app-bottom-nav.tsx`<br>`apps/web/components/app-bottom-nav.test.tsx`<br>`apps/web/components/site-navigation.test.tsx`<br>`apps/web/components/community/home.tsx`<br>`apps/web/components/search-workbench.tsx`<br>`apps/web/components/search-workbench.test.tsx`<br>`apps/web/app/[locale]/search/new`<br>`apps/web/components/account-list.tsx`<br>`apps/web/components/account-list.test.tsx`<br>`apps/web/components/travel-card-actions.tsx`<br>`apps/web/components/travel-card-actions.test.tsx`<br>`apps/web/lib/frontend-flow.ts`<br>`apps/web/lib/frontend-flow.test.ts`<br>`apps/web/lib/frontend-navigation.ts`<br>`apps/web/app/globals.css`<br>`apps/web/e2e/frontend-flow.spec.ts`<br>`apps/web/e2e/frontend-flow-full-stack.spec.ts`<br>`apps/web/playwright.frontend-flow.config.ts`<br>`docs/frontend-flow.md` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
 | P3 | [沖繩美國村的 Wikidata QID 指到大阪，座標也是](open/2026-09-06-oka-amerikamura-wrong-qid.md) | api | `apps/api/app/hotspots/secondary_bootstrap.json`<br>`apps/api/app/hotspots/base_bootstrap.json`<br>`apps/api/tests/test_hotspot_areas.py` |
@@ -36,7 +37,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Branch |
 | --- | --- | --- |
 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
-| [Calm daily timeline and safe explicit planner editing](open/2026-09-09-planner-calm-editing.md) | codex-planner-calm | `codex/planner-calm-editing` |
 
 ## Waiting
 
@@ -48,13 +48,13 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | P1 | [Contextual travel services and affiliate catalog](open/2026-09-07-contextual-travel-services.md) | active work in the same scope |
 | P1 | [Mokaair community foundation and account safety](open/2026-09-07-mokaair-community-foundation.md) | active work in the same scope |
 | P1 | [Mokaair community responsive web and five-language experience](open/2026-09-07-mokaair-community-web.md) | active work in the same scope |
-| P1 | [Frontend flow navigation planning handoff and acceptance](open/2026-09-09-frontend-flow-integration.md) | active work in the same scope |
 | P2 | [Community read metric duplicate observed alongside smoke ECONNRESET](open/2026-09-07-community-read-metric-concurrency.md) | active work in the same scope |
 | P3 | [建立旅程時就問出發機場，不要等到查機票才問](open/2026-09-06-ask-origin-airport-at-trip-creation.md) | active work in the same scope |
 | P3 | [行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal\|append](open/2026-09-07-add-a-meal-to-a-day.md) | active work in the same scope |
 
 ## Recently finished
 
+- 2026-09-09 [Calm daily timeline and safe explicit planner editing](done/2026-09-09-planner-calm-editing.md)
 - 2026-09-09 [Community curated video invitations and collection references](done/2026-09-08-travel-discovery-community.md)
 - 2026-09-09 [Travel discovery integration navigation safety and acceptance](done/2026-09-08-travel-discovery-integration.md)
 - 2026-09-09 [Travel discovery search feed and explicit preferences API](done/2026-09-08-travel-discovery-api.md)
@@ -64,4 +64,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-08 [Fix nearby itinerary discovery across cities and reset insertion pagination](done/2026-09-08-planner-nearby-followup.md)
 - 2026-09-08 [Stay22 Maps lodging pilot](done/2026-09-08-stay22-maps-lodging-pilot.md)
 - 2026-09-08 [Klook affiliate frontend channels and contextual discovery](done/2026-09-08-klook-affiliate-web.md)
-- 2026-09-08 [Klook channel aware affiliate backend and secure clickout](done/2026-09-08-klook-channel-backend.md)
