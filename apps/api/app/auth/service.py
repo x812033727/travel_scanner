@@ -472,6 +472,7 @@ def _admin_path_capability(request: Request) -> str:
             "/admin/provider-settings",
             "/admin/usage-settings",
             "/admin/ui-text",
+            "/admin/site-pages",
             "/admin/system-settings",
             "/admin/layout-settings",
             "/admin/partners",

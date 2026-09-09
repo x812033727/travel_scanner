@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { THEME_STORAGE_KEY } from "@/lib/theme";
+import { PALETTE_STORAGE_KEY, THEME_STORAGE_KEY } from "@/lib/theme";
 import { ThemeProvider } from "./theme-provider";
 import { ThemeSwitcher } from "./theme-switcher";
 
@@ -29,6 +29,7 @@ function mockColorScheme(initialMatches: boolean) {
 beforeEach(() => {
   localStorage.clear();
   document.documentElement.removeAttribute("data-theme");
+  document.documentElement.removeAttribute("data-palette");
   document.documentElement.dataset.themePreference = "system";
   document.documentElement.style.colorScheme = "";
 });
@@ -51,11 +52,14 @@ describe("ThemeSwitcher", () => {
 
   it("follows operating-system changes while system mode is selected", async () => {
     const changeColorScheme = mockColorScheme(false);
+    localStorage.setItem(PALETTE_STORAGE_KEY, "forest");
     render(<ThemeProvider><ThemeSwitcher /></ThemeProvider>);
 
     await waitFor(() => expect(document.documentElement.dataset.theme).toBe("light"));
     act(() => changeColorScheme(true));
     await waitFor(() => expect(document.documentElement.dataset.theme).toBe("dark"));
+    expect(document.documentElement.dataset.palette).toBe("forest");
+    expect(localStorage.getItem(PALETTE_STORAGE_KEY)).toBe("forest");
     expect((screen.getByRole("combobox", { name: "外觀主題" }) as HTMLSelectElement).value).toBe("system");
   });
 });

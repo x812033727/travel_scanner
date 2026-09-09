@@ -66,13 +66,13 @@ describe("discovery navigation", () => {
     expect(screen.getByRole("link", { name: frontendCopy("zh-TW").my }).getAttribute("href")).toBe("/my");
     expect(screen.queryByRole("button", { name: "開啟導覽選單" })).toBeNull();
     header.unmount();
-    const directory = render(<MyDirectory />);
+    const directory = render(<ThemeProvider><MyDirectory /></ThemeProvider>);
     await act(async () => {});
     const nav = screen.getByRole("navigation", { name: "我的" });
     expect(within(nav).getByRole("link", { name: "我的收藏" }).getAttribute("href")).toBe("/explore/collections");
     expect(within(nav).getByRole("link", { name: "發佈" }).getAttribute("href")).toBe("/community/new");
     expect(within(nav).getByRole("link", { name: "訊息" }).getAttribute("href")).toBe("/community/messages");
-    state.posting = false; directory.rerender(<MyDirectory />);
+    state.posting = false; directory.rerender(<ThemeProvider><MyDirectory /></ThemeProvider>);
     expect(screen.queryByRole("link", { name: "發佈" })).toBeNull();
     expect(screen.getByRole("link", { name: "訊息" }).getAttribute("href")).toBe("/community/messages");
   });
@@ -93,10 +93,21 @@ describe("discovery navigation", () => {
   });
 
   it("uses the same desktop destinations", async () => {
-    render(<SiteNavigation />);
+    render(<ThemeProvider><SiteNavigation /></ThemeProvider>);
     await act(async () => {});
     const desktop = screen.getByRole("navigation");
     expect(within(desktop).getByRole("link", { name: frontendCopy("zh-TW").trips }).getAttribute("href")).toBe("/trips");
     expect(within(desktop).getByRole("link", { name: "收藏" }).getAttribute("href")).toBe("/explore/collections");
+  });
+
+  it("lets signed-out readers choose every palette even when discovery and community are off", async () => {
+    state.enabled = false;
+    state.community = false;
+    render(<ThemeProvider><MyDirectory /></ThemeProvider>);
+    await act(async () => {});
+    const palettes = screen.getByRole("group", { name: "全站配色" });
+    expect(within(palettes).getAllByRole("radio")).toHaveLength(3);
+    fireEvent.click(within(palettes).getByRole("radio", { name: "海島藍" }));
+    expect(document.documentElement.dataset.palette).toBe("lagoon");
   });
 });

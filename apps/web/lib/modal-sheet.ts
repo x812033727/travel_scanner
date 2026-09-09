@@ -2,6 +2,36 @@
 
 import { useEffect, useRef } from "react";
 
+const layers: HTMLElement[] = [];
+let originalOverflow = "";
+
+/** Nested unmounts must not unlock a still-open parent. */
+export function registerModalLayer(element: HTMLElement) {
+  if (!layers.length) { originalOverflow = document.body.style.overflow; document.body.style.overflow = "hidden"; }
+  // React mounts child effects first; put a newly mounted parent below its children.
+  const child = layers.findIndex((layer) => element.contains(layer));
+  if (child < 0) layers.push(element); else layers.splice(child, 0, element);
+  return () => {
+    const index = layers.indexOf(element);
+    if (index >= 0) layers.splice(index, 1);
+    if (!layers.length) document.body.style.overflow = originalOverflow;
+  };
+}
+export function isTopModalLayer(element: HTMLElement) { return layers.at(-1) === element; }
+
+export function modalFocusTargets(container: HTMLElement) {
+  return Array.from(container.querySelectorAll<HTMLElement>('a[href],button,input,select,textarea,summary,[tabindex]')).filter((element) => {
+    if (element.tabIndex < 0 || element.matches(':disabled,input[type="hidden"]')) return false;
+    for (let node: HTMLElement | null = element; node && node !== container.parentElement; node = node.parentElement) {
+      if (node.hidden || node.inert || node.getAttribute("aria-hidden") === "true") return false;
+      const style = window.getComputedStyle(node);
+      if (style.display === "none" || style.visibility === "hidden") return false;
+      if (node instanceof HTMLDetailsElement && !node.open && !node.querySelector(":scope > summary")?.contains(element)) return false;
+    }
+    return true;
+  });
+}
+
 /**
  * Make an element behave like the modal sheet it looks like.
  *
@@ -37,32 +67,27 @@ export function useModalSheet<T extends HTMLElement>(open: boolean, onClose: () 
     // Whatever had focus when the sheet opened, not a ref to one particular button: the
     // sheet can be opened from more than one place, and focus has to go back where it was.
     const opener = document.activeElement as HTMLElement | null;
+    const unregister = registerModalLayer(sheet);
+    const previousTabIndex = sheet.getAttribute("tabindex");
+    if (previousTabIndex === null) sheet.tabIndex = -1;
 
     // Not offsetParent: jsdom performs no layout, so every element reports null there and a
     // test would exercise an empty list while the browser exercised a full one — the trap
     // would look guarded and be guarded by nothing.
-    const hiddenFromReaders = (element: HTMLElement) => {
-      if (element.hasAttribute("hidden") || element.closest('[aria-hidden="true"]')) return true;
-      const style = window.getComputedStyle(element);
-      return style.display === "none" || style.visibility === "hidden";
-    };
-
-    const focusable = () =>
-      Array.from(
-        sheet.querySelectorAll<HTMLElement>(
-          'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])',
-        ),
-      ).filter((element) => !hiddenFromReaders(element));
+    const focusable = () => modalFocusTargets(sheet);
 
     const onKeyDown = (event: KeyboardEvent) => {
+      if (!isTopModalLayer(sheet) || event.defaultPrevented || event.isComposing) return;
+      if (Array.from(document.querySelectorAll("dialog[open]")).some((dialog) => !sheet.contains(dialog))) return;
       if (event.key === "Escape") {
+        event.preventDefault();
         event.stopPropagation();
         closeRef.current();
         return;
       }
       if (event.key !== "Tab") return;
       const items = focusable();
-      if (items.length === 0) return;
+      if (items.length === 0) { event.preventDefault(); sheet.focus(); return; }
       const first = items[0];
       const last = items[items.length - 1];
       const active = document.activeElement;
@@ -82,20 +107,20 @@ export function useModalSheet<T extends HTMLElement>(open: boolean, onClose: () 
     };
 
     document.addEventListener("keydown", onKeyDown);
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
     // The close button first, like mobile-nav: the way out should be the first thing a
     // reader meets, not the last.
     const target =
-      sheet.querySelector<HTMLElement>("button[aria-label]") ?? focusable()[0] ?? sheet;
+      focusable().find((element) => element.matches("button[aria-label]")) ?? focusable()[0] ?? sheet;
     target.focus();
 
     return () => {
       document.removeEventListener("keydown", onKeyDown);
-      document.body.style.overflow = previousOverflow;
+      const wasTop = isTopModalLayer(sheet);
+      unregister();
+      if (previousTabIndex === null) sheet.removeAttribute("tabindex");
       // Escape used to leave focus on <body>, which returns a keyboard reader to the top of
       // the document, several tabs from the control they had just used.
-      opener?.focus?.();
+      if (wasTop && opener?.isConnected && (!layers.length || layers.at(-1)?.contains(opener))) opener.focus();
     };
   }, [open]);
 

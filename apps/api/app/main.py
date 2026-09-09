@@ -55,6 +55,8 @@ from app.restaurants.user_router import router as restaurant_user_router
 from app.saved.router import router as saved_items_router
 from app.schema import expected_schema_revision, schema_is_current
 from app.search.router import router as search_router
+from app.site_pages.router import admin_router as admin_site_pages_router
+from app.site_pages.router import public_router as site_pages_public_router
 from app.travel_services.admin import router as travel_services_admin_router
 from app.travel_services.hotel_admin import router as hotel_admin_router
 from app.travel_services.router import router as travel_services_router
@@ -114,6 +116,8 @@ app.include_router(deployments_router, prefix="/api/v1")
 app.include_router(runtime_router, prefix="/api/v1")
 app.include_router(ui_text_runtime_router, prefix="/api/v1")
 app.include_router(admin_ui_text_router, prefix="/api/v1")
+app.include_router(admin_site_pages_router, prefix="/api/v1")
+app.include_router(site_pages_public_router, prefix="/api/v1")
 app.include_router(affiliates_router, prefix="/api/v1")
 app.include_router(usage_router, prefix="/api/v1")
 app.include_router(admin_usage_router, prefix="/api/v1")

@@ -39,6 +39,7 @@ from app.database_admin.service import (
 from app.db import Base, get_session
 from app.models import AdminAuditLog, DatabaseOperationRun, DeploymentRun, User
 from app.problems import AppError, app_error_handler
+from app.schema import expected_schema_revision
 
 
 class MappingResult:
@@ -82,7 +83,7 @@ async def test_database_overview_maps_one_fixed_postgres_snapshot(
             "long_transactions": 0,
             "lock_waits": 1,
             "cache_hit_ratio": 99.95,
-            "current_revision": "0068_admin_operations_center",
+            "current_revision": expected_schema_revision(),
         }
     )
     monkeypatch.setattr(
@@ -105,7 +106,7 @@ async def test_database_overview_maps_one_fixed_postgres_snapshot(
     assert snapshot.postgres.cache_hit_ratio == 99.95
     assert snapshot.schema_info is not None and snapshot.schema_info.is_current is True
     assert snapshot.model_dump(by_alias=True)["schema"]["current_revision"] == (
-        "0068_admin_operations_center"
+        expected_schema_revision()
     )
     sql = str(session.execute.await_args.args[0])
     assert "pg_stat_activity" in sql

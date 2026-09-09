@@ -1,5 +1,6 @@
 import { MokaairLogo } from "@/components/mokaair-logo";
 import { SiteNavigation } from "@/components/site-navigation";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { Link } from "@/i18n/navigation";
 
 export function SiteHeader() {
@@ -9,6 +10,7 @@ export function SiteHeader() {
         <MokaairLogo className="text-[1.45rem] sm:text-[1.65rem]" />
       </Link>
       <SiteNavigation />
+      <div className="hidden lg:flex"><LanguageSwitcher compact /></div>
     </header>
   );
 }

@@ -1612,6 +1612,49 @@ def reset_request_locale(token: Token[Locale]) -> None:
     _request_locale.reset(token)
 
 
+_SITE_PAGE_ERRORS: dict[Locale, dict[str, str]] = {
+    "zh-TW": {
+        "site_page_not_found": "請先初始化網站資訊草稿",
+        "site_page_revision_not_found": "找不到這份文件的指定版本",
+        "site_page_version_conflict": "文件已被更新，請重新載入後再操作",
+        "site_page_requirements_pending": "請填妥待確認資料及生效日期後再發布",
+        "site_page_unavailable": "暫時無法取得網站資訊，請稍後再試",
+    },
+    "zh-CN": {
+        "site_page_not_found": "请先初始化网站信息草稿",
+        "site_page_revision_not_found": "找不到这份文件的指定版本",
+        "site_page_version_conflict": "文件已更新，请重新加载后再操作",
+        "site_page_requirements_pending": "请填写待确认信息及生效日期后再发布",
+        "site_page_unavailable": "暂时无法获取网站信息，请稍后重试",
+    },
+    "en": {
+        "site_page_not_found": "Initialize the website information drafts first",
+        "site_page_revision_not_found": "That revision does not belong to this document",
+        "site_page_version_conflict": "The document changed; reload it before continuing",
+        "site_page_requirements_pending": (
+            "Complete the required information and effective date before publishing"
+        ),
+        "site_page_unavailable": "Website information is temporarily unavailable; try again later",
+    },
+    "ja": {
+        "site_page_not_found": "先にサイト情報の下書きを初期化してください",
+        "site_page_revision_not_found": "この文書の指定バージョンが見つかりません",
+        "site_page_version_conflict": "文書が更新されました。再読み込みしてから操作してください",
+        "site_page_requirements_pending": "確認事項と発効日を入力してから公開してください",
+        "site_page_unavailable": "サイト情報を取得できません。しばらくしてから再試行してください",
+    },
+    "ko": {
+        "site_page_not_found": "먼저 사이트 정보 초안을 초기화해 주세요",
+        "site_page_revision_not_found": "이 문서의 지정된 버전을 찾을 수 없습니다",
+        "site_page_version_conflict": "문서가 변경되었습니다. 새로 불러온 후 계속해 주세요",
+        "site_page_requirements_pending": "필수 확인 정보와 시행일을 입력한 후 게시해 주세요",
+        "site_page_unavailable": "사이트 정보를 가져올 수 없습니다. 잠시 후 다시 시도해 주세요",
+    },
+}
+for _site_page_locale, _site_page_errors in _SITE_PAGE_ERRORS.items():
+    ERROR_DETAILS[_site_page_locale].update(_site_page_errors)
+
+
 def active_locale() -> Locale:
     """The locale of the request being served, or the site default outside a request."""
 

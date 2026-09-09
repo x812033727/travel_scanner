@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { isThemePreference, resolveTheme } from "./theme";
+import { readFileSync } from "node:fs";
+import { runInNewContext } from "node:vm";
+import { isPalette, isThemePreference, palettes, PALETTE_STORAGE_KEY, resolveTheme, THEME_BOOTSTRAP_SCRIPT, THEME_STORAGE_KEY, themePreferences } from "./theme";
 
 describe("theme helpers", () => {
   it("accepts only supported preferences", () => {
@@ -15,5 +17,79 @@ describe("theme helpers", () => {
     expect(resolveTheme("system", false)).toBe("light");
     expect(resolveTheme("dark", false)).toBe("dark");
     expect(resolveTheme("light", true)).toBe("light");
+  });
+
+  it("accepts only the three independent palette families", () => {
+    palettes.forEach((palette) => expect(isPalette(palette)).toBe(true));
+    [null, "dark", "ocean", "", {}].forEach((value) => expect(isPalette(value)).toBe(false));
+  });
+
+  it.each(themePreferences.flatMap((preference) => palettes.map((palette) => ({ preference, palette }))))(
+    "bootstraps $preference / $palette before React without overwriting storage",
+    ({ preference, palette }) => {
+      const root = { dataset: {} as Record<string, string>, style: {} as Record<string, string> };
+      runInNewContext(THEME_BOOTSTRAP_SCRIPT, {
+        document: { documentElement: root },
+        localStorage: { getItem: (key: string) => key === THEME_STORAGE_KEY ? preference : palette },
+        window: { matchMedia: () => ({ matches: true }) },
+      });
+      expect(root.dataset).toEqual({ theme: preference === "light" ? "light" : "dark", themePreference: preference, palette });
+      expect(root.style.colorScheme).toBe(root.dataset.theme);
+    },
+  );
+
+  it.each(["invalid", "blocked"])("safely bootstraps defaults with %s storage", (mode) => {
+    const root = { dataset: {} as Record<string, string>, style: {} };
+    runInNewContext(THEME_BOOTSTRAP_SCRIPT, {
+      document: { documentElement: root },
+      localStorage: { getItem: () => { if (mode === "blocked") throw new Error("blocked"); return "invalid"; } },
+      window: {},
+    });
+    expect(root.dataset).toEqual({ theme: "light", themePreference: "system", palette: "mocha" });
+    expect(PALETTE_STORAGE_KEY).not.toBe(THEME_STORAGE_KEY);
+  });
+});
+
+// Test the shipped CSS rather than a duplicate runtime colour table.
+const css = readFileSync(`${import.meta.dirname}/../app/globals.css`, "utf8").replace(/\r\n/g, "\n");
+const tokenNames = ["bg", "card", "text", "muted", "primary", "primary-text", "border", "focus"];
+const expectedTokens = [
+  ["mocha", "light", "f7f1e8 fffcf8 102a2b 5e6864 0d6b68 ffffff 7e8276 6b4a3a"],
+  ["mocha", "dark", "171412 241f1b f7f1e8 c0b3a6 78d1c7 112c29 8b7c6e e0b091"],
+  ["lagoon", "light", "f0f6fa ffffff 112c3b 506777 155e80 ffffff 718998 075985"],
+  ["lagoon", "dark", "0d1820 142630 eaf5fa a7bcc8 83cce8 082d40 658998 b7e8f8"],
+  ["forest", "light", "f2f5ed fcfdf8 223127 5b6959 3e6348 ffffff 7d8873 385b3e"],
+  ["forest", "dark", "111a14 1d2a21 edf4e8 b1c2aa a6d3a0 1b341f 778d74 d8e8a3"],
+];
+function luminance(hex: string) {
+  const channels = hex.match(/\w\w/g)!.map((part) => {
+    const value = parseInt(part, 16) / 255;
+    return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  });
+  return channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
+}
+function contrast(a: string, b: string) {
+  const values = [luminance(a), luminance(b)];
+  return (Math.max(...values) + 0.05) / (Math.min(...values) + 0.05);
+}
+describe("approved palette CSS", () => {
+  it.each(expectedTokens)("ships exact accessible %s / %s tokens", (palette, theme, values) => {
+    const selector = `.palette-preview[data-preview-palette="${palette}"][data-preview-theme="${theme}"]`;
+    const body = css.slice(css.indexOf(selector)).split("}")[0];
+    const tokens = tokenNames.map((name) => body.match(new RegExp(`--palette-${name}: #([0-9a-f]{6});`))?.[1]);
+    expect(tokens).toEqual(values.split(" "));
+    const [bg, card, text, muted, primary, primaryText, border, focus] = values.split(" ");
+    for (const surface of [bg, card]) {
+      expect(contrast(surface, text)).toBeGreaterThanOrEqual(4.5);
+      expect(contrast(surface, muted)).toBeGreaterThanOrEqual(4.5);
+      expect(contrast(surface, border)).toBeGreaterThanOrEqual(3);
+      expect(contrast(surface, focus)).toBeGreaterThanOrEqual(3);
+    }
+    expect(contrast(primary, primaryText)).toBeGreaterThanOrEqual(4.5);
+  });
+  it("keeps brand colours independent and planner customisations out of site mode", () => {
+    expect(css).toContain(".mokaair-wordmark-air {\n  color: var(--brand-air);");
+    expect(css).not.toContain(':root[data-theme="dark"] .planner-app-shell[data-planner-theme] {');
+    expect(css).toContain('--primary-text: var(--palette-primary-text)');
   });
 });

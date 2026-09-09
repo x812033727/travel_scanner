@@ -43,7 +43,7 @@ export function DiscoveryCard({ item, onDismiss }: { item: DiscoveryItem; onDism
     <div className={styles.cardBody}>
       <CardMetadata item={item} />
       <h3 className={styles.cardTitle}><Link href={href} scroll={false} onClick={(event) => navigation?.remember(event.currentTarget, href)}>{item.title}</Link></h3>
-      <p className={styles.cardSummary}>{item.summary}</p>
+      {item.summary?.trim() && <p className={styles.cardSummary}>{item.summary}</p>}
       <p className={styles.cardMeta}>{c.sourceKinds[item.source.kind]} · {item.author?.display_name || item.source.label}{item.published_at && <> · <time dateTime={item.published_at}>{new Date(item.published_at).toLocaleDateString(locale)}</time></>}</p>
       {item.recommendation_reason && <p className={styles.reason}><span className="sr-only">{c.reason}: </span>{getRecommendationReason(locale, item.recommendation_reason)}</p>}
       <div className={styles.cardFooter}><SavedContentAction item={item} returnTo={returnTo} compact resumeEnabled={!params.has("content")} /><TravelPlanAction item={item} returnTo={returnTo} compact resumeEnabled={!params.has("content")} /></div>
@@ -61,16 +61,15 @@ function CardMetadata({ item }: { item: DiscoveryItem }) {
     if (!name || names.has(name) || ids.has(topic.id)) return false;
     names.add(name); ids.add(topic.id); return true;
   });
-  const remaining = topics.slice(2).map((topic) => topic.label.trim()).join(" · ");
   return <p className={styles.cardMeta}>
     {item.destination?.name && <span className={styles.cardMetaItem}><MapPin size={13} aria-hidden /><span>{item.destination.name}</span></span>}
     <span className={styles.cardMetaItem}>{item.destination?.name && <span aria-hidden>·</span>}<span>{kind}</span></span>
-    {topics.slice(0, 2).map((topic) => <span className={styles.cardMetaItem} key={topic.id}><span aria-hidden>·</span><span>{topic.label.trim()}</span></span>)}
-    {remaining && <span title={`${c.topic}: ${remaining}`}><span aria-hidden>+{topics.length - 2}</span><span className="sr-only">{c.topic}: {remaining}</span></span>}
+    {topics.map((topic) => <span className={styles.cardMetaItem} key={topic.id}><span aria-hidden>·</span><span>{topic.label.trim()}</span></span>)}
   </p>;
 }
 export function DiscoveryDetails({ kind, id, returnTo = "/explore" }: { kind: string; id: string; returnTo?: string }) {
   const locale = useLocale(); const c = getDiscoveryCopy(locale); const f = getFrontendFlowCopy(locale);
+  const reading = useTranslations("admin.sitePages");
   const result = useDiscoveryResource<DiscoveryItem>(`/discovery/content/${encodeURIComponent(kind)}/${encodeURIComponent(id)}`);
   if (result.error) return <div role="alert" className={styles.detailBody}><p>{c.unavailable}</p><Button secondary onClick={result.reload}>{c.retry}</Button></div>;
   if (!result.data) return <div role="status" className={styles.detailBody}><p>{c.loading}</p><div className={`${styles.skeleton} ${styles.skeletonImage}`} /></div>;
@@ -80,17 +79,21 @@ export function DiscoveryDetails({ kind, id, returnTo = "/explore" }: { kind: st
   const detail = item.detail;
   const guides = (detail?.guides || []).flatMap((guide) => {
     const href = safeExternalHref(guide.source.url, ["https:", "http:"]);
-    return href ? [{ id: guide.id, title: guide.title, href, source: (guide.source.label || "").trim() || new URL(href).hostname }] : [];
+    return href && (guide.kind === "article" || guide.kind === "video") ? [{ id: guide.id, kind: guide.kind, title: guide.title, href, source: (guide.source.label || "").trim() || new URL(href).hostname }] : [];
   });
+  const overview = [detail?.intro?.body, item.content?.text, item.summary].find((text) => text?.trim());
   return <><div className={styles.detailBody}>
       <h2 className="mb-3 text-2xl font-bold">{item.title}</h2>
       {item.destination && <p className="mb-4 text-sm text-[var(--teal)]">{item.destination.name}</p>}
       {videos.map((video) => <DiscoveryVideoPlayer key={video.video_id} video={video} />)}
       {item.content?.media?.map((media) => <CommunityImage key={media.id} id={media.id} alt={media.alt || item.title} />)}
-      <section className={styles.detailSection}><h3 className="sr-only">{f.overview}</h3><p className="whitespace-pre-wrap break-words leading-8">{detail?.intro?.body || item.content?.text || item.summary || f.noDetails}</p></section>
+      {overview && <section className={styles.detailSection}><h3 className="sr-only">{f.overview}</h3><p className="whitespace-pre-wrap break-words leading-8">{overview}</p></section>}
       {detail?.place && <PlaceFacts place={detail.place} />}
       {detail?.merchants?.length ? <section className={styles.detailSection}><h3 className="mb-3 font-bold">{f.nearbyFood}</h3><ul className="space-y-3">{detail.merchants.map((merchant) => <li key={merchant.id}><Link href={discoveryDetailHref({ kind: "merchant", id: merchant.id }, returnTo)} scroll={false} className="inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline">{merchant.name}</Link><p className="text-sm text-[var(--muted)]">{merchant.address}</p></li>)}</ul></section> : null}
-      {guides.length ? <section className={styles.detailSection}><h3 className="mb-3 font-bold">{f.relatedGuides}</h3><ul>{guides.map((guide) => <li key={guide.id}><ExternalLink href={guide.href}>{guide.title} ({guide.source})</ExternalLink></li>)}</ul></section> : null}
+      {guides.length ? <section className={styles.detailSection}><h3 className="mb-3 font-bold">{f.relatedGuides}</h3>{(["article", "video"] as const).map((group) => {
+        const entries = guides.filter((guide) => guide.kind === group);
+        return entries.length ? <section key={group} aria-label={reading(group === "article" ? "articleGroup" : "videoGroup")} className="mt-5"><h4 className="mb-2 font-semibold">{reading(group === "article" ? "articleGroup" : "videoGroup")}</h4><ul>{entries.map((guide) => <li key={guide.id}><ExternalLink href={guide.href}>{guide.title} ({guide.source})</ExternalLink></li>)}</ul></section> : null;
+      })}</section> : null}
       {detail?.hotel && <HotelDetails product={detail.hotel} />}
       {item.content?.itinerary && <ItineraryPreview itinerary={item.content.itinerary} />}
       <section className={styles.detailSection}><h3 className="mb-3 font-bold">{f.sources}</h3><p className="text-sm leading-6 text-[var(--muted)]">{c.sourceKinds[item.source.kind]} · {item.author?.display_name || item.source.label}<br />{c.originalLanguage}: {item.locale} · {item.published_at ? <time dateTime={item.published_at}>{new Date(item.published_at).toLocaleDateString(locale)}</time> : c.undated}{item.updated_at && <><br />{getDiscoveryFeedback(locale).updated}: <time dateTime={item.updated_at}>{new Date(item.updated_at).toLocaleString(locale)}</time></>}</p>
@@ -110,6 +113,9 @@ function ExternalLink({ href, children }: { href?: string | null; children: Reac
 }
 function PlaceFacts({ place }: { place: DiscoveryPlace }) {
   const locale = useLocale(); const f = getFrontendFlowCopy(locale);
+  if (!place.address?.trim() && !place.opening_hours?.weekday_descriptions?.length
+    && !safeExternalHref(place.google_maps_url, ["http:", "https:"]) && !safeExternalHref(place.official_website_url, ["http:", "https:"])
+    && !place.fetched_at && !place.updated_at && !place.attribution?.provider && place.status !== "stale") return null;
   return <section className={styles.detailSection}>
     {place.status === "stale" && <p role="status" className="mb-4 text-sm text-[var(--muted)]">{f.stale}</p>}
     {place.address && <><h3 className="font-semibold">{f.address}</h3><p className="mb-3 leading-7">{place.address}</p></>}

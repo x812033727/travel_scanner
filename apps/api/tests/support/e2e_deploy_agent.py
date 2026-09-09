@@ -29,7 +29,7 @@ def _now() -> str:
 SOCKET_PATH = Path(os.environ.get("DEPLOY_AGENT_SOCKET", ""))
 HMAC_KEY = os.environ.get("DEPLOY_AGENT_HMAC_KEY", "")
 RELEASE_SHA = os.environ.get("RELEASE_SHA", "c" * 40)
-SCHEMA_REVISION = os.environ.get("E2E_SCHEMA_REVISION", "0068_admin_operations_center")
+SCHEMA_REVISION = os.environ.get("E2E_SCHEMA_REVISION", "0069_site_pages")
 
 _guard = Lock()
 _nonces: dict[str, int] = {}

@@ -182,11 +182,10 @@ for (const width of [320, 390]) {
   test(`mobile language switch keeps the current page at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 760 });
     await page.goto("/en?campaign=mobile");
-    await openDisplayPreferences(page);
-    await expect(page.getByRole("combobox", { name: "Appearance" })).toBeEnabled({ timeout: 15_000 });
-    // Scoped to the menu it opened. The footer now offers the same choice, so an
-    // unscoped locator matches two comboboxes and Playwright refuses to guess.
-    await page.getByRole("dialog").getByRole("combobox", { name: "Language" }).selectOption("ja");
+    // Language is available immediately in the phone header, without opening a menu.
+    const language = page.locator(".site-header").getByRole("combobox", { name: "Language" });
+    await expect(language).toBeEnabled({ timeout: 15_000 });
+    await language.selectOption("ja");
     await expect(page).toHaveURL(/\/ja\/?\?campaign=mobile$/);
     await expect(page.locator("html")).toHaveAttribute("lang", "ja");
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(

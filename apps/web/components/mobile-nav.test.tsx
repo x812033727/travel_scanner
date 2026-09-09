@@ -19,14 +19,25 @@ describe("MobileNav", () => {
     expect(screen.getByRole("link", {name:"探索"}).getAttribute("href")).toBe("/explore");
     expect(screen.getByRole("link", {name:"我的"}).getAttribute("href")).toBe("/my");
   });
-  it("keeps the top bar down to the account and the menu", () => {
+  it("keeps language directly accessible beside the account and menu", () => {
     render(<ThemeProvider><MobileNav /></ThemeProvider>);
     // Appearance, language and text size are display preferences with a word
     // beside them inside the menu, not four unlabelled icons in the bar.
     expect(screen.queryByRole("combobox", { name: "外觀主題" })).toBeNull();
-    expect(screen.queryByRole("combobox", { name: "語言" })).toBeNull();
+    expect(screen.getByRole("combobox", { name: "語言" })).toBeTruthy();
     expect(screen.getByRole("link", { name: "登入／切換帳號" }).getAttribute("href")).toBe("/login");
     expect(screen.queryByRole("navigation", { name: "手機主要導覽" })).toBeNull();
+  });
+
+  it("traps Tab and releases the scroll lock if discovery replaces an open legacy menu", () => {
+    const view = render(<ThemeProvider><MobileNav /></ThemeProvider>);
+    const trigger = screen.getByRole("button", { name: "開啟導覽選單" }); trigger.focus(); fireEvent.click(trigger);
+    const dialog = screen.getByRole("dialog"); const close = within(dialog).getByRole("button", { name: "關閉導覽選單" });
+    close.focus(); fireEvent.keyDown(document, { key: "Tab", shiftKey: true });
+    expect(document.activeElement).toBe(within(dialog).getAllByRole("link").at(-1));
+    discovery.enabled = true; view.rerender(<ThemeProvider><MobileNav /></ThemeProvider>);
+    expect(screen.queryByRole("dialog")).toBeNull(); expect(document.body.style.overflow).toBe("");
+    expect(screen.getByRole("combobox", { name: "語言" })).toBeTruthy();
   });
 
   it("gathers the display preferences in the menu, each with a label", () => {
@@ -37,16 +48,16 @@ describe("MobileNav", () => {
     const menu = screen.getByRole("dialog");
     expect(within(menu).getByRole("radiogroup", { name: "文字大小" })).toBeTruthy();
     expect(within(menu).getByRole("combobox", { name: "外觀主題" })).toBeTruthy();
-    expect(within(menu).getByRole("combobox", { name: "語言" })).toBeTruthy();
+    expect(within(menu).queryByRole("combobox", { name: "語言" })).toBeNull();
     // The switchers carry the same words in a sr-only span; these are the ones a
     // reader can actually see next to the control.
-    for (const label of ["外觀主題", "語言"]) {
+    for (const label of ["外觀主題"]) {
       expect(within(menu).getAllByText(label).some((node) => !node.className.includes("sr-only"))).toBe(true);
     }
     // Each row also says what it is set to, so the icon confirms rather than carries it.
     // The select carries the same words as its options, so look for the one that is
     // rendered as text beside the control.
-    for (const value of ["跟隨系統", "繁體中文"]) {
+    for (const value of ["跟隨系統"]) {
       expect(within(menu).getAllByText(value).some((node) => node.tagName === "SPAN")).toBe(true);
     }
   });

@@ -8,6 +8,7 @@ import { AppBottomNav } from "@/components/app-bottom-nav";
 import { HeaderSessionProvider } from "@/components/header-session";
 import { SavedItemsProvider } from "@/components/saved-items-provider";
 import { SiteFooter } from "@/components/site-footer";
+import { ThemeProvider } from "@/components/theme-provider";
 import { SiteVisibilityProvider } from "@/components/site-visibility-provider";
 import { UsageCatalogProvider } from "@/components/usage-catalog-provider";
 import { CommunityProvider } from "@/components/community/provider";
@@ -90,6 +91,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
+          <ThemeProvider>
           <SiteVisibilityProvider state={siteVisibility}>
             <UsageCatalogProvider state={usageCatalog}>
               <AnalyticsProvider>
@@ -116,6 +118,7 @@ export default async function LocaleLayout({ children, params }: Props) {
               </AnalyticsProvider>
             </UsageCatalogProvider>
           </SiteVisibilityProvider>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

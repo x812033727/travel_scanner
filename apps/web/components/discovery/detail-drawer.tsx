@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { useSearchParams } from "next/navigation";
 import { useLocale } from "next-intl";
@@ -24,7 +24,6 @@ export function DiscoveryDetailBoundary({ children }: { children: ReactNode }) {
   return <Navigation.Provider value={{ remember: (trigger, href) => setOrigin({ trigger, href }) }}>{children}{identifier && valid && <Drawer title={c.details} onClose={close} trigger={origin?.trigger}><DiscoveryDetails key={`${kind}:${id}`} kind={kind} id={id} returnTo={returnTo} /></Drawer>}{identifier && !valid && <p role="alert">{c.unavailable}</p>}</Navigation.Provider>;
 }
 function Drawer({ title, onClose, trigger, children }: { title: string; onClose: () => void; trigger?: HTMLElement; children: ReactNode }) {
-  useEffect(() => { const previous = document.body.style.overflow; document.body.style.overflow = "hidden"; return () => { document.body.style.overflow = previous; }; }, []);
   if (typeof document === "undefined") return null;
   return createPortal(<div className={styles.drawer}><Dialog title={title} returnFocusTo={trigger} onClose={onClose}>{children}</Dialog></div>, document.body);
 }

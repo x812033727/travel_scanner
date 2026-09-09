@@ -10,8 +10,9 @@ import { useHeaderSession } from "@/components/header-session";
 import { TextSizeSwitcher } from "@/components/text-size-switcher";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
-import { Link } from "@/i18n/navigation";
-import { localeLabels, type Locale } from "@/i18n/routing";
+import { Link, usePathname } from "@/i18n/navigation";
+import { useModalSheet } from "@/lib/modal-sheet";
+import { type Locale } from "@/i18n/routing";
 import { primaryNavLinks } from "@/lib/nav-links";
 import { featureVisible } from "@/lib/site-features";
 import { useCommunity } from "@/components/community/provider";
@@ -24,7 +25,6 @@ export function MobileNav() {
   const nav = useTranslations("navigation");
   const community = useCommunity();
   const tc = useTranslations("community");
-  const common = useTranslations("common");
   const locale = useLocale() as Locale;
   const discovery = useDiscoveryStatus();
   const discoveryCopy = getDiscoveryCopy(locale);
@@ -32,9 +32,17 @@ export function MobileNav() {
   const { preference } = useTheme();
   const themeValue = nav(preference === "system" ? "themeSystem" : preference === "dark" ? "themeDark" : "themeLight");
   const visibility = useSiteVisibility();
-  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const [openPath, setOpenPath] = useState<string | null>(null);
+  const open = openPath === pathname && !discovery.loading && !discovery.enabled;
+  const setOpen = (value: boolean) => setOpenPath(value ? pathname : null);
+  const sheetRef = useModalSheet<HTMLDivElement>(open, () => setOpenPath(null));
   const closeRef = useRef<HTMLButtonElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const reset = window.setTimeout(() => setOpenPath((current) => !discovery.loading && !discovery.enabled && current === pathname ? current : null), 0);
+    return () => window.clearTimeout(reset);
+  }, [pathname, discovery.enabled, discovery.loading]);
 
   // The bottom tab bar carries only five destinations; flight status, airfares
   // and plans used to be unreachable on a phone without typing the URL.
@@ -44,34 +52,23 @@ export function MobileNav() {
 
   useEffect(() => {
     if (!open) return;
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-    };
-    document.addEventListener("keydown", onKeyDown);
-    const previousOverflow = document.body.style.overflow;
-    const trigger = triggerRef.current;
-    document.body.style.overflow = "hidden";
-    closeRef.current?.focus();
-    return () => {
-      document.removeEventListener("keydown", onKeyDown);
-      document.body.style.overflow = previousOverflow;
-      // Escape used to leave focus on <body>: a keyboard or screen-reader reader
-      // was returned to the top of the document, three tabs away from the button
-      // they had just pressed.
-      trigger?.focus();
-    };
+    const close = () => setOpenPath(null);
+    window.addEventListener("popstate", close);
+    return () => window.removeEventListener("popstate", close);
   }, [open]);
 
   // Four unlabelled icons in a row asked the reader to know what a monitor with a
   // gear and a 文A glyph do. Appearance, language and text size are all display
   // preferences, so they moved into the menu where each one has a word next to it,
   // and the bar keeps the two things people reach for: their account and the menu.
-  if (discovery.loading) return <div aria-hidden className="h-11 w-24 rounded-xl bg-[var(--paper)] lg:hidden" />;
+  if (discovery.loading) return <div className="flex items-center gap-1 lg:hidden"><LanguageSwitcher compact /><div aria-hidden className="h-11 w-24 rounded-xl bg-[var(--paper)]" /></div>;
   if (discovery.enabled) return <div className="flex items-center gap-1 lg:hidden">
+    <LanguageSwitcher compact />
     <Link href="/explore" aria-label={flowCopy.explore} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><Search size={21} aria-hidden /></Link>
     <Link href="/my" aria-label={flowCopy.my} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><CircleUserRound size={21} aria-hidden /></Link>
   </div>;
   return <div className="flex items-center gap-1 lg:hidden">
+    <LanguageSwitcher compact />
     {/* The desktop nav that carries the admin link is hidden below lg, and neither the
         bottom bar nor the account page offers one, so without this an administrator on a
         phone can only reach the control centre by typing the URL. */}
@@ -81,7 +78,7 @@ export function MobileNav() {
     <Link href={status === "authenticated" ? "/account" : "/login"} aria-label={status === "authenticated" ? nav("account") : nav("login")} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
       {status === "authenticated" ? <CircleUserRound size={21} /> : <LogIn size={21} />}
     </Link>
-    <button ref={triggerRef} type="button" aria-label={nav("openMenu")} aria-expanded={open} onClick={() => setOpen(true)} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
+    <button ref={triggerRef} type="button" aria-label={nav("openMenu")} aria-expanded={open} onClick={(event) => { event.currentTarget.focus(); setOpen(true); }} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] hover:bg-[var(--teal-soft)]">
       <Menu size={21} />
     </button>
     {/* The site header paints itself with backdrop-filter, which makes it the
@@ -89,7 +86,7 @@ export function MobileNav() {
         inside a 68px strip, so tapping the menu on a phone showed one row of it
         pinned to the top of the screen and nothing else. It belongs on the body. */}
     {open && createPortal(<div role="presentation" className="fixed inset-0 z-[90] bg-slate-950/45 backdrop-blur-sm" onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}>
-      <div role="dialog" aria-modal="true" aria-label={nav("primaryLabel")} className="absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-[2rem] bg-[var(--surface)] p-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-2xl">
+      <div ref={sheetRef} role="dialog" aria-modal="true" aria-label={nav("primaryLabel")} className="absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-[2rem] bg-[var(--surface)] p-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-2xl">
         <div className="mb-3 flex items-center justify-between">
           <p className="text-sm font-bold text-[var(--muted)]">{nav("primaryLabel")}</p>
           <button ref={closeRef} type="button" aria-label={nav("closeMenu")} onClick={() => setOpen(false)} className="grid h-11 w-11 place-items-center rounded-full border border-[var(--line)]">
@@ -120,13 +117,6 @@ export function MobileNav() {
           </Link>)}
         </nav>
 
-          <div className="flex min-h-12 items-center justify-between gap-3">
-            <span className="text-sm font-bold text-[var(--muted)]">{common("language")}</span>
-            <span className="flex items-center gap-2.5">
-              <span className="text-sm font-semibold">{localeLabels[locale]}</span>
-              <LanguageSwitcher compact />
-            </span>
-          </div>
         </div>
       </div>
     </div>, document.body)}

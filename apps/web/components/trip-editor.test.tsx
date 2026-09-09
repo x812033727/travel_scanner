@@ -1727,6 +1727,28 @@ describe("trip editor route requests", () => {
 });
 
 describe("trip editor explicit drafts", () => {
+  it.each([undefined, "forest", "ocean", "sunset", "lavender"])("uses site palette by default without replacing saved custom palette %s", async (theme) => {
+    if (theme) window.localStorage.setItem("travel-planner-theme", theme);
+    vi.stubGlobal("fetch", vi.fn(async () => response(trip)));
+    const view = render(<TripEditor tripId={trip.id} />);
+    await screen.findByRole("heading", { name: trip.name });
+    await waitFor(() => expect(view.container.querySelector("main")?.getAttribute("data-planner-theme")).toBe(theme || "site"));
+    expect(screen.getByRole("combobox", { name: "語言" })).toBeTruthy();
+    expect(window.localStorage.getItem("travel-planner-theme")).toBe(theme || null);
+  });
+
+  it("keeps the editor and prevents locale writes when language navigation is cancelled", async () => {
+    const fetchMock = vi.fn(async (_url: string, _init?: RequestInit) => response(trip)); vi.stubGlobal("fetch", fetchMock);
+    render(<TripEditor tripId={trip.id} />);
+    const editor = await openStopEditor("淺草散步");
+    fireEvent.change(within(editor).getByLabelText("安排名稱"), { target: { value: "尚未儲存" } });
+    // Trigger the same guarded callback used by the visible mobile language control.
+    fireEvent.change(screen.getByRole("combobox", { name: "語言", hidden: true }), { target: { value: "en" } });
+    const guard = await screen.findByRole("dialog", { name: "保留這次修改嗎？" });
+    fireEvent.click(within(guard).getByRole("button", { name: "繼續編輯" }));
+    expect((within(editor).getByLabelText("安排名稱") as HTMLInputElement).value).toBe("尚未儲存");
+    expect(fetchMock.mock.calls.some(([, init]) => (init as RequestInit | undefined)?.method === "PATCH")).toBe(false);
+  });
   const preciseItem = {
     ...trip.items[0], location_source: "hotspot_catalog", provider_place_id: "verified-place-1",
     latitude: 35.7148, longitude: 139.7967, duration_minutes: 90,

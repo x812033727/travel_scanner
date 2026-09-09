@@ -5,6 +5,7 @@ import { closedSiteVisibility, openSiteVisibility } from "@/lib/site-features";
 import { HeaderSessionProvider } from "./header-session";
 import { SiteNavigation } from "./site-navigation";
 import { SiteVisibilityProvider } from "./site-visibility-provider";
+import { ThemeProvider } from "./theme-provider";
 
 afterEach(() => vi.unstubAllGlobals());
 
@@ -20,7 +21,7 @@ describe("SiteNavigation", () => {
       <StrictMode>
         <SiteVisibilityProvider state={{ status: "ready", features: openSiteVisibility }}>
           <HeaderSessionProvider>
-            <SiteNavigation />
+            <ThemeProvider><SiteNavigation /></ThemeProvider>
           </HeaderSessionProvider>
         </SiteVisibilityProvider>
       </StrictMode>,
@@ -43,7 +44,7 @@ describe("SiteNavigation", () => {
     const unavailable = render(
       <SiteVisibilityProvider state={{ status: "unavailable", features: closedSiteVisibility }}>
         <HeaderSessionProvider>
-          <SiteNavigation />
+          <ThemeProvider><SiteNavigation /></ThemeProvider>
         </HeaderSessionProvider>
       </SiteVisibilityProvider>,
     );
@@ -57,7 +58,7 @@ describe("SiteNavigation", () => {
     render(
       <SiteVisibilityProvider state={{ status: "ready", features: closedSiteVisibility }}>
         <HeaderSessionProvider>
-          <SiteNavigation />
+          <ThemeProvider><SiteNavigation /></ThemeProvider>
         </HeaderSessionProvider>
       </SiteVisibilityProvider>,
     );

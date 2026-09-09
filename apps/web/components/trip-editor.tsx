@@ -62,6 +62,8 @@ import { TripInboxPanel, type PlaceCandidate } from "@/components/trip-inbox-pan
 import { PlacePicker } from "@/components/place-picker";
 import { TripCostPanel } from "@/components/trip-cost-panel";
 import { PlannerOverlay } from "@/components/planner-overlay";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { requestNavigation, useNavigationGuard } from "@/lib/navigation-guard";
 import { EditableItineraryTimeline } from "@/components/editable-itinerary-timeline";
 import { ItineraryPlaceBrowser, type PlaceOption, createPlaceBrowserState } from "@/components/itinerary-place-browser";
 import { itineraryCopy, itineraryText } from "@/lib/itinerary-copy";
@@ -294,10 +296,11 @@ type AIItineraryPreview = {
     hotel_pairs_deferred: number;
   };
 };
-type PlannerTheme = "forest" | "ocean" | "sunset" | "lavender";
+type PlannerTheme = "site" | "forest" | "ocean" | "sunset" | "lavender";
 
 // Names and descriptions live in trips.editor.theme.<id>.* and are resolved at render.
 const plannerThemes: Array<{ id: PlannerTheme; colors: [string, string, string] }> = [
+  { id: "site", colors: ["var(--teal)", "var(--paper)", "var(--ink)"] },
   { id: "forest", colors: ["#0d6b68", "#f5f7f2", "#ed735d"] },
   { id: "ocean", colors: ["#27658a", "#f1f6f8", "#e7785f"] },
   { id: "sunset", colors: ["#a94f38", "#fbf5ec", "#d9943b"] },
@@ -366,7 +369,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const [aiMenuOpen, setAIMenuOpen] = useState(false);
   const [aiScope, setAIScope] = useState<AIPlanningScope>("day");
   const [aiPreview, setAIPreview] = useState<AIItineraryPreview>();
-  const [plannerTheme, setPlannerTheme] = useState<PlannerTheme>("forest");
+  const [plannerTheme, setPlannerTheme] = useState<PlannerTheme>("site");
   const [draftItem, setDraftItem] = useState<TripItem>();
   const editingBaseRef = useRef<TripItem | undefined>(undefined);
   const editingVersionRef = useRef<number | undefined>(undefined);
@@ -409,6 +412,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
   const aiRequestRef = useRef<{ signature: string; key: string } | undefined>(undefined);
   const aiApplyRef = useRef<{ previewId: string; key: string } | undefined>(undefined);
   const routeHistoryTokenRef = useRef<string | undefined>(undefined);
+  const navigationLeavingRef = useRef(false);
   const dayScrollRef = useRef<HTMLDivElement>(null);
   const activeDayChipRef = useRef<HTMLButtonElement>(null);
   const draftKey = `trip-planner-draft:${tripId}`;
@@ -776,7 +780,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
 
   useEffect(() => {
     if (saveState !== "dirty") return;
-    const timer = window.setTimeout(() => { void flushChanges(false); }, 1_000);
+    const timer = window.setTimeout(() => { if (!navigationLeavingRef.current) void flushChanges(false); }, 1_000);
     return () => window.clearTimeout(timer);
   }, [flushChanges, revision, saveState]);
 
@@ -959,6 +963,18 @@ export function TripEditor({ tripId }: { tripId: string }) {
     if (editorDirty || preferencesDirty || tripNoteDirty || dayNoteDirty || departureDirty || settingsDirty) { setPendingExit({ run }); return false; }
     run(); return true;
   }
+
+  useNavigationGuard(Boolean(draftItem || preferencesDirty || tripNoteDirty || dayNoteDirty || departureDirty || settingsDirty || ["dirty", "saving", "offline", "conflict"].includes(saveState)), (run) => {
+    if (saveStateRef.current === "saving" || draftSavingRef.current || panelWriteBusyRef.current) return false;
+    const leave = () => {
+      navigationLeavingRef.current = true;
+      // Discard never starts a write while the history entry is being consumed.
+      try { window.localStorage.removeItem(draftKey); } catch { /* storage can be blocked */ }
+      run();
+    };
+    if (["dirty", "offline", "conflict"].includes(saveStateRef.current)) { setPendingExit({ run: leave }); return false; }
+    return requestExit(leave);
+  });
 
   function discardSettingsDrafts() {
     setRoutePreferenceDraft(undefined);
@@ -1781,7 +1797,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
 
   return <main data-planner-theme={plannerTheme} className="planner-app-shell premium-planner calm-planner mx-auto max-w-7xl px-4 pb-36 sm:px-5 md:px-8 lg:pb-20">
     <header className="premium-trip-header">
-      <button type="button" aria-label={te("backToTripsLabel")} onClick={() => requestExit(() => router.push("/trips"))} className="planner-icon-button"><ArrowLeft size={20} /></button>
+      <button type="button" aria-label={te("backToTripsLabel")} onClick={() => requestNavigation(() => router.push("/trips"))} className="planner-icon-button"><ArrowLeft size={20} /></button>
       {trip.cover_image_url && <Image src={trip.cover_image_url} alt={t("meta.coverAlt", { name: trip.name })} width={56} height={56} unoptimized className="premium-trip-cover" />}
       <div className="premium-trip-heading">
         <p className="premium-eyebrow">{trip.destination_name || premium.overview}</p>
@@ -1789,6 +1805,7 @@ export function TripEditor({ tripId }: { tripId: string }) {
         <p className="premium-trip-dates">{trip.start_date}{trip.end_date && <> — {trip.end_date}</>}</p>
       </div>
       <span aria-live="polite" title={premium.statusHint} className={`premium-save-label ${saveState === "offline" || saveState === "conflict" ? "premium-save-error" : ""}`}>{saveIcon}<span>{saveLabel}</span></span>
+      <div className="lg:hidden"><LanguageSwitcher compact /></div>
       {saveState === "offline" && <button type="button" onClick={() => void flushChanges(true)} className="premium-panel-back">{te("retry")}</button>}
       <div className="premium-desktop-actions"><button type="button" onClick={() => openAIPlanner(tripRouteItemCount ? "day" : "trip")} disabled={busy("ai") || aiCharge.status !== "ready"} className="premium-assistant-button"><Sparkles size={18} />{premium.assistant}</button><button type="button" onClick={() => add(activeDay)} disabled={!activeDay || saveState === "conflict"} className="premium-primary-button"><Plus size={18} />{premium.add}</button></div>
       <button type="button" aria-label={te("openTools")} aria-expanded={toolsOpen} onClick={openTools} className="planner-icon-button"><Settings2 size={20} /></button>

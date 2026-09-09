@@ -43,6 +43,7 @@ export const fallbackAdminNavigation: AdminNavigationItem[] = [
   { key: "usage", href: "/admin/usage-settings", group: "operations", capability: "settings.read" },
   { key: "layout", href: "/admin/layout-settings", group: "operations", capability: "settings.read" },
   { key: "uiText", href: "/admin/ui-text", group: "operations", capability: "settings.read" },
+  { key: "sitePages", href: "/admin/site-pages", group: "operations", capability: "settings.read" },
   { key: "system", href: "/admin/system-settings", group: "system", capability: "settings.read" },
   { key: "providers", href: "/admin/settings", group: "operations", capability: "settings.read" },
   { key: "database", href: "/admin/database", group: "system", capability: "database.read" },
@@ -70,7 +71,7 @@ function navigation(value: unknown): AdminNavigationItem[] {
     const aliases: Record<string, string> = {
       travel_services: "travelServices", catalog_review: "catalogReview", pet_friendly: "pets",
       provider_settings: "providers", usage_settings: "usage", layout_settings: "layout",
-      ui_text: "uiText", system_settings: "system", petFriendly: "pets",
+      ui_text: "uiText", site_pages: "sitePages", system_settings: "system", petFriendly: "pets",
       providerSettings: "providers", usageSettings: "usage", layoutSettings: "layout",
       systemSettings: "system",
     };

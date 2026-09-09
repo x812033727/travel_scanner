@@ -96,6 +96,7 @@ const adminNavigation = [
   ["usage_settings", "operations", "/admin/usage-settings", "settings.read"],
   ["layout_settings", "operations", "/admin/layout-settings", "settings.read"],
   ["ui_text", "operations", "/admin/ui-text", "settings.read"],
+  ["site_pages", "operations", "/admin/site-pages", "settings.read"],
   ["system_settings", "system", "/admin/system-settings", "settings.read"],
   ["database", "system", "/admin/database", "database.read"],
   ["deployments", "system", "/admin/deployments", "deploy.read"],
@@ -167,6 +168,19 @@ const server = createServer((request, response) => {
     return;
   }
   const requestUrl = new URL(request.url || "/", "http://127.0.0.1:8000");
+  // Clearly synthetic SSR fixtures: never a production policy or owner identity.
+  if (request.method === "GET" && requestUrl.pathname.startsWith("/api/v1/site-pages/")) {
+    const slug = requestUrl.pathname.split("/").at(-1);
+    const locale = requestUrl.searchParams.get("locale") || "en";
+    if (slug === "about") { response.statusCode = 503; response.end(JSON.stringify({ detail: "Fixture unavailable" })); return; }
+    const unpublished = slug === "terms";
+    response.end(JSON.stringify({ slug, locale, status: unpublished ? "unpublished" : "published", document: unpublished ? null : {
+      title: `Synthetic ${slug} (${locale})`, description: `Synthetic published summary (${locale})`,
+      version: 2, published_at: fixtureNow, effective_date: "2026-09-09",
+      requirements: { operator: "Synthetic fixture operator", location: "Not a real location", contact: "fixture@example.test", retention: "Fixture only", legal: "Fixture only" },
+      blocks: [{ type: "paragraph", text: `Synthetic public content (${locale}). Not a real policy.` }],
+    } })); return;
+  }
   if (request.method === "GET" && requestUrl.pathname === "/api/v1/auth/me") {
     response.end(JSON.stringify({
       id: "00000000-0000-4000-8000-000000000001",
@@ -267,7 +281,7 @@ const server = createServer((request, response) => {
   response.end(JSON.stringify({ detail: "not found" }));
 });
 
-server.listen(8000, "127.0.0.1");
+server.listen(Number(process.env.E2E_API_PORT || 8000), "127.0.0.1");
 
 for (const signal of ["SIGINT", "SIGTERM"]) {
   process.on(signal, () => server.close(() => process.exit(0)));
