@@ -22,6 +22,7 @@ scope:
   - apps/api/tests/test_site_pages_migration.py
   - apps/api/tests/test_schema.py
   - apps/api/tests/test_database_admin.py
+  - apps/api/tests/test_travel_discovery.py
   - apps/api/tests/support/e2e_deploy_agent.py
   - apps/web/app/[locale]/layout.tsx
   - apps/web/app/(stay22-public)/[locale]/layout.tsx
@@ -158,3 +159,5 @@ Code revision 470d16d6 and the documentation-only head 552637d7 are fully green:
 Merge follow-up (2026-09-09): the user explicitly authorized merging PR #380. Reconcile main 73f893a2 (#383) by retaining both browser test lists and regenerating the task board; rerun CI on the combined head before a SHA-guarded merge. This task stays blocked only on the outstanding built-in-browser manual acceptance: an approved isolated preview URL is still needed after local preview startup was rejected by execution policy. No alternative launcher, deployment, policy publication or production mutation is authorized by this merge request. Automatic browser evidence is not a substitute for that manual checklist.
 
 The integrated head 660b55b1 passed all push/PR checks: API 2,847 passed / 15 skipped; Web 1,496 passed; browser UI 410 passed / 4 skipped. Main then advanced to 584dd438 (#381 catalog-review call limits); reconciliation has no application-code conflicts, only the generated task board. Keep that upstream functionality unchanged and gate the combined head on fresh CI before merging. Manual preview acceptance remains blocked, not completed by this merge authorization.
+
+Integration CI on a52ef7a8: all push checks passed. The PR run found two independent failures: a community setup GET /community/me transport ECONNRESET before recovery/deletion assertions, and an existing discovery test's raw "999" substring check falsely matching timestamp microseconds 729996. Relevant community/BFF code was unchanged, and the same-head push full-stack passed. Preserve that original browser failure and rerun unchanged with the next CI. Replace only the erroneous discovery test's text scan with structural private-field/value assertions plus deterministic timestamp/identifier coverage; do not change production serializers or relax publication gates.
