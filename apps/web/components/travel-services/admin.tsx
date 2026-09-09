@@ -8,11 +8,12 @@ import { AdminSettingsPanel } from "@/components/admin-settings-panel";
 import { useHeaderSession } from "@/components/header-session";
 import { adminHotelsCopy } from "@/lib/admin-hotels-copy";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
-import { useAdminWorkspaceNavigation } from "@/lib/admin-workspace-navigation";
+import { useAdminQueryValue, useAdminWorkspaceNavigation } from "@/lib/admin-workspace-navigation";
 import { ApiError, api } from "@/lib/api";
 import { CITIES, KINDS, type Kind } from "./catalog";
 import { HotelOptionsAdmin, type HotelOptionRow } from "./hotel-options-admin";
 import { QuotePolicies, type QuotePolicy } from "./quote-policies";
+import { Stay22Admin, Stay22ReadinessPanel, type Stay22Config, type Stay22Readiness } from "./stay22-admin";
 
 type RecordRow = {
   booking_options?: HotelOptionRow[];
@@ -72,6 +73,7 @@ type DestinationRow = {
   role: string;
 };
 type Config = {
+  stay22?: Stay22Config;
   hotel_quote_policies?: Record<string, QuotePolicy>;
   public_enabled: boolean;
   direct_hotel_links_enabled?: boolean;
@@ -80,6 +82,8 @@ type Config = {
   airalo_feed_enabled: boolean;
 };
 type Overview = {
+  can_manage_stay22?: boolean;
+  stay22_readiness?: Stay22Readiness[];
   summary?: { total: number; pending: number; approved: number; disabled: number };
   quote_providers?: Record<string, { adapter_available: boolean }>;
   config: Config;
@@ -229,13 +233,15 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
   const configDirty = useRef(false);
   const draftHydrated = useRef(false);
   const activeRequest = useRef<AbortController | null>(null);
-  const [destination, setDestination] = useState("");
+  const [destination, setDestination] = useAdminQueryValue("destination_id", "", (value) => CITIES.some((city) => city === value));
   const [kind, setKind] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useAdminQueryValue("status", "", (value) => ["pending", "approved", "disabled"].includes(value));
   const reviewProducts = isHotel && workspaceTab === "review" && section === "products";
   const effectiveStatus = reviewProducts ? "pending" : status;
   const missingOptions = isHotel && navigation.query.get("missing_options") === "true";
-  const pageKey = `${workspaceTab}:${section}:${destination}:${kind}:${effectiveStatus}:${missingOptions}`;
+  const bookingProvider = isHotel ? navigation.query.get("booking_provider") ?? "" : "";
+  const bookingReadiness = isHotel ? navigation.query.get("booking_readiness") ?? "" : "";
+  const pageKey = `${workspaceTab}:${section}:${destination}:${kind}:${effectiveStatus}:${missingOptions}:${bookingProvider}:${bookingReadiness}`;
   const [pagination, setPagination] = useState({ key: "", offset: 0 });
   const offset = pagination.key === pageKey ? pagination.offset : 0;
   function setOffset(value: number | ((previous: number) => number)) {
@@ -301,6 +307,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
     if (workspace === "services") query.set("exclude_hotels", "true");
     if (effectiveStatus) query.set("status", effectiveStatus);
     if (missingOptions) query.set("missing_options", "true");
+    if (bookingProvider) query.set("booking_provider", bookingProvider);
+    if (bookingReadiness) query.set("booking_readiness", bookingReadiness);
     if (!isHotel && offerFilterModule) query.set("affiliate_module", offerFilterModule);
     if (offerFilterStatus) query.set("offer_status", offerFilterStatus);
     if (offerFilterBrand) query.set("offer_brand_id", offerFilterBrand);
@@ -327,7 +335,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
     endpoint, isHotel, workspace, storageKey,
     destination,
     kind,
-    effectiveStatus, missingOptions,
+    effectiveStatus, missingOptions, bookingProvider, bookingReadiness,
     offset,
     offerFilterModule,
     offerFilterStatus,
@@ -541,6 +549,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
           )}
           {(tab === "catalog" || isHotel) && (
             <section className="space-y-4" hidden={tab !== "catalog"}>
+              {isHotel && data.stay22_readiness && (workspaceTab === "affiliates" || bookingProvider) && <Stay22ReadinessPanel rows={data.stay22_readiness} provider={bookingProvider} readiness={bookingReadiness} destination={destination} status={effectiveStatus} />}
               {missingOptions && <p className="flex flex-wrap items-center gap-3 rounded-xl bg-[var(--teal-soft)] p-3 text-sm">
                 {copy.missingOptions}
                 <Link href="/admin/hotels?tab=review&section=platforms" className={`${button} inline-flex items-center`}>{copy.showAllHotels}</Link>
@@ -1581,6 +1590,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
               </section>
             </section>
           )}
+          {isHotel && <div hidden={tab !== "config"}><Stay22Admin value={data.config.stay22} version={data.version} allowed={data.can_manage_stay22 === true} onSaved={load} /></div>}
+          {tab === "config" && isHotel && data.stay22_readiness && <Stay22ReadinessPanel rows={data.stay22_readiness} destination={destination} status={effectiveStatus} />}
           {tab === "config" && config && (
             <section className="space-y-5 rounded-2xl border border-[var(--line)] p-5">
               {isHotel && <>
@@ -1692,6 +1703,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                 title={!manage.allowed ? manage.disabledReason : undefined}
                 onClick={() =>
                   void run(async () => {
+                    const legacyConfig = { ...config };
+                    delete legacyConfig.stay22;
                     try { await api(`${endpoint}/config`, {
                       method: isHotel ? "PATCH" : "PUT",
                       body: JSON.stringify(isHotel ? {
@@ -1700,7 +1713,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                         direct_hotel_links_enabled: config.direct_hotel_links_enabled ?? false,
                         hotel_quote_policies: config.hotel_quote_policies || {},
                       } : {
-                        ...config,
+                        ...legacyConfig,
                         version: configVersion,
                       }),
                     }); } catch (reason) {

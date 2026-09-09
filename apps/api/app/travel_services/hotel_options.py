@@ -162,9 +162,12 @@ async def public_options(
     settings: Settings,
     now: datetime,
     eligible_targets: set[tuple[str, str]] | None = None,
+    *,
+    tracking_allowed: bool = True,
 ) -> list[dict[str, Any]]:
     from app.travel_services.hotel_quotes import ADAPTERS
     from app.travel_services.registry import BRANDS
+    from app.travel_services.stay22 import booking_channel
 
     result = []
     for option in sorted(product.hotel_options, key=lambda o: HOTEL_PROVIDERS.index(o.provider)):
@@ -178,7 +181,10 @@ async def public_options(
             if eligible_targets is not None
             else bool(await matching_offer(session, product, option, settings, now))
         )
-        if not has_offer and not config.direct_hotel_links_enabled:
+        channel = booking_channel(
+            option, config, has_offer=has_offer, tracking_allowed=tracking_allowed
+        )
+        if channel is None:
             continue
         policy = config.hotel_quote_policies.get(cast(HotelProvider, option.provider))
         can_quote = bool(
@@ -189,7 +195,8 @@ async def public_options(
                 "id": str(option.id),
                 "provider": option.provider,
                 "name": BRANDS[option.provider].name if option.provider != "official" else None,
-                "mode": "affiliate" if has_offer else "direct",
+                "mode": "direct" if channel == "direct" else "affiliate",
+                "affiliate_channel": channel if channel != "direct" else None,
                 "quote_status": "ready" if can_quote else "not_configured",
             }
         )
