@@ -1,7 +1,7 @@
 ---
 id: 2026-09-09-planner-route-tones
 title: Route apply state regression and semantic itinerary tones
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex
@@ -46,15 +46,15 @@ Applying a mode/buffer change from daily route settings can remount the drawer w
 - [x] Idle/loading/preview/applied/stale/external/error states are truthful and concise.
 - [x] Selected path availability controls schematic map messaging.
 - [x] Hotel blue, lunch amber and dinner violet work in collapsed, expanded and optional rows in both themes.
-- [ ] Five locales, accessible contrast/targets and mobile layout pass regression validation.
-- [ ] PR created with checks; do not merge or deploy without later authorization.
+- [x] Five locales, accessible contrast/targets and mobile layout pass regression validation.
+- [x] PR created with checks; do not merge or deploy without later authorization.
 
 ## Steps
 
 - [x] Parent route synchronization and integration regression.
 - [x] Route panel/map state and scoped layout.
 - [x] Shared role tones and system-card semantics.
-- [ ] Browser fixtures, full Web checks and CI smoke.
+- [x] Browser fixtures, full Web checks and CI smoke.
 
 ## How to verify
 
@@ -69,3 +69,7 @@ Regression evidence: provider/manual daily-entry apply both failed selected mode
 Local lint and production Turbopack build/TypeScript/252 pages passed. First two CI Planner UX runs passed including all five locales, themes and route apply; screenshots exposed initial 62dvh route sheet concealing map, so the route now opts into existing defaultExpanded and tests require visible/unoccluded map and instruction. Full-stack smoke first runs failed only a selector matching both new collapsed role badge and expanded hotel label; narrowed to existing systemCards. Final CI and local full Vitest still pending; do not claim final acceptance yet.
 
 At c75fa588 CI full Web Vitest and full-stack smoke passed. The complete local Vitest stalled after an unrelated admin async timeout on the busy shared host; stopped only its verified owned process and rely on the isolated CI full-suite result. New browser tests initially stopped before collection because ESM JSON imports needed attributes; corrected and collection passed. Desktop navigation tests exposed legacy align-items:start collapsing the newer flex inline-size container to 2px; a real Chromium exact-styles reproduction confirmed align-items:stretch restores width and hit-testing. Added 1280px narrow-drawer pointer regression alongside 390/920px. Palette review also restored grid centering for timeline markers. Final head browser acceptance remains pending.
+
+Acceptance: isolated local component suites passed 136/136. Full CI 34310709483 at e1abb391 passed API (ruff/mypy/schema/migration/full pytest), Web (lint/i18n/typecheck/full Vitest/build/browser), containers and real full-stack smoke. Planner UX 34310709451 passed 48/48, and Travel discovery also passed. Visual inspection then moved the schematic disclaimer above sticky controls; 910e9192 passed all 48 Planner UX tests again in run 34311032002, including a new disclaimer visibility assertion. Inspected real rendered light/dark and 390/920/1280 screenshots from CI. Maps and routes in these planner screenshots are explicitly isolated fixtures, not production-provider proof. No existing production trip was modified and no provider settings or database contracts changed. PR final-head CI is the remaining release gate; merge/deploy require a new user instruction.
+
+PR #375: https://github.com/x812033727/travel_scanner/pull/375 . Main advanced with merchant data PR #361 to a8adec5e during final verification. Rebased and regenerated the task board; dropped only the duplicate five-locale scope handoff already present verbatim on main. Main's merchant data/task remains unchanged, and all Web/workflow blobs match the previously tested 581575b3 exactly. Final rebased SHA checks run again before handoff; no merge or production deployment performed.
