@@ -85,7 +85,9 @@ npm run lint:web && npm run check:i18n && npm run typecheck:web && npm run test:
 
 ## Notes
 
-- **`offer_attached` 只接得到一半。** 規劃寫的是「`from-offer` 與住宿 `select`」，但
+- **`offer_attached` 的機票那一半已在 #249 進 main 之後補上**（同一個 `from-offer` 端點
+  裡一行 `record_event`），漏斗第三步現在是完整的。當時的情況是：
+- **（當時）`offer_attached` 只接得到一半。** 規劃寫的是「`from-offer` 與住宿 `select`」，但
   `POST /trips/{id}/flight-anchors/{direction}/from-offer` 只存在於 #249 的分支上。這個分支
   從 main 長出來，所以先接住宿那一半；機票那一行等 #249 進 main 之後補。
 - **`_properties()` 的第一版寬到讓 UUID 通過**（`[a-z0-9_.\-]{1,48}` 正好是 UUID 的形狀），

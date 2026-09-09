@@ -16,12 +16,15 @@ from app.ai.itinerary import (
     AIPlannerCandidate,
     AIPlanningResult,
 )
+from app.analytics.service import _digest
 from app.auth.service import create_access_token, decode_access_token, hash_password
+from app.config import get_settings
 from app.db import SessionFactory, engine
 from app.infra import get_redis
 from app.main import app
 from app.models import (
     AffiliateClick,
+    AnalyticsEvent,
     FlightOfferRecord,
     FlightStatusLookup,
     SearchJob,
@@ -2412,6 +2415,31 @@ async def test_flight_anchor_from_offer(monkeypatch: pytest.MonkeyPatch) -> None
     await _start_on_fresh_connections()
     owner = await _signed_in_headers("from-offer-owner")
     other = await _signed_in_headers("from-offer-other")
+    browser_session = str(uuid4())
+    owner["X-Travel-Analytics-Session"] = browser_session
+    other["X-Travel-Analytics-Session"] = browser_session
+    session_hash = _digest(get_settings().app_secret_key, "analytics-session", browser_session)
+
+    async def attached_properties() -> list[dict[str, object]]:
+        # A unique browser session also catches a foreign-offer request being counted,
+        # without depending on unrelated tests' events or a whole-table time window.
+        async with SessionFactory() as session:
+            events = list(
+                (
+                    await session.scalars(
+                        select(AnalyticsEvent)
+                        .where(
+                            AnalyticsEvent.event_name == "offer_attached",
+                            AnalyticsEvent.session_hash == session_hash,
+                        )
+                        .order_by(AnalyticsEvent.received_at)
+                    )
+                ).all()
+            )
+        assert all(event.normalized_path == "/trips" for event in events)
+        assert all(event.is_authenticated for event in events)
+        return [event.properties_json for event in events]
+
     round_trip, one_way, wrong_day = uuid4(), uuid4(), uuid4()
     await _store_offer("from-offer-owner", owner, _quoted_flight(round_trip))
     await _store_offer("from-offer-owner", owner, _quoted_flight(one_way, return_departure=None))
@@ -2446,14 +2474,23 @@ async def test_flight_anchor_from_offer(monkeypatch: pytest.MonkeyPatch) -> None
         assert item["data"]["price_snapshot"]["provider"] == "amadeus"
         assert body["pricing"]["quoted_total"] == "11500"
         assert body["version"] == version + 1
+        # The funnel's third step. The hotel side has been counted since #324; this is
+        # the flight side, with enum-only properties rather than offer or trip IDs.
+        expected_events = [
+            {"kind": "flight", "source": "from_offer", "direction": "outbound"}
+        ]
+        assert await attached_properties() == expected_events
 
-        # The stale version is refused; nothing was written.
-        stale = await client.post(
-            f"/api/v1/trips/{trip_id}/flight-anchors/return/from-offer",
-            headers=owner,
-            json={"version": version, "offer_id": str(round_trip)},
-        )
-        assert stale.status_code == 409 and stale.json()["code"] == "trip_version_conflict"
+        # Both an exact replay and a different leg with the stale version reach the
+        # version CAS after measuring, then roll back the anchor and its event together.
+        for direction in ("outbound", "return"):
+            stale = await client.post(
+                f"/api/v1/trips/{trip_id}/flight-anchors/{direction}/from-offer",
+                headers=owner,
+                json={"version": version, "offer_id": str(round_trip)},
+            )
+            assert stale.status_code == 409 and stale.json()["code"] == "trip_version_conflict"
+            assert await attached_properties() == expected_events
 
         returning = await client.post(
             f"/api/v1/trips/{trip_id}/flight-anchors/return/from-offer",
@@ -2469,6 +2506,8 @@ async def test_flight_anchor_from_offer(monkeypatch: pytest.MonkeyPatch) -> None
         # One round-trip offer on two anchors is one quote, not two.
         assert body["pricing"]["quoted_total"] == "11500"
         assert [entry["counted"] for entry in body["pricing"]["items"]] == [True, False]
+        expected_events.append({"kind": "flight", "source": "from_offer", "direction": "return"})
+        assert await attached_properties() == expected_events
 
         no_return = await client.post(
             f"/api/v1/trips/{trip_id}/flight-anchors/return/from-offer",
@@ -2477,6 +2516,7 @@ async def test_flight_anchor_from_offer(monkeypatch: pytest.MonkeyPatch) -> None
         )
         assert no_return.status_code == 422
         assert no_return.json()["code"] == "offer_return_leg_missing"
+        assert await attached_properties() == expected_events
 
         mismatched = await client.post(
             f"/api/v1/trips/{trip_id}/flight-anchors/outbound/from-offer",
@@ -2485,6 +2525,7 @@ async def test_flight_anchor_from_offer(monkeypatch: pytest.MonkeyPatch) -> None
         )
         assert mismatched.status_code == 422
         assert mismatched.json()["code"] == "offer_dates_mismatch"
+        assert await attached_properties() == expected_events
 
         # Another member cannot pull this offer into their own trip.
         theirs = await _blank_trip(client, other, name="別人的旅程")
@@ -2494,6 +2535,7 @@ async def test_flight_anchor_from_offer(monkeypatch: pytest.MonkeyPatch) -> None
             json={"version": theirs["version"], "offer_id": str(round_trip)},
         )
         assert foreign.status_code == 404 and foreign.json()["code"] == "offer_not_found"
+        assert await attached_properties() == expected_events
 
         # Typing a flight by hand over the quoted one drops the quote with it.
         typed = await client.put(
@@ -2517,6 +2559,20 @@ async def test_flight_anchor_from_offer(monkeypatch: pytest.MonkeyPatch) -> None
         assert "price_snapshot" not in retyped["data"]
         # The return anchor still carries the offer, so the quote stays on the trip once.
         assert typed.json()["pricing"]["quoted_total"] == "11500"
+        assert await attached_properties() == expected_events
+
+        # Opting out never prevents a valid attachment, but must not add a funnel row.
+        current_version = typed.json()["version"]
+        for header in ("DNT", "Sec-GPC"):
+            untracked = await client.post(
+                f"/api/v1/trips/{trip_id}/flight-anchors/outbound/from-offer",
+                headers={**owner, header: "1"},
+                json={"version": current_version, "offer_id": str(round_trip)},
+            )
+            assert untracked.status_code == 200, untracked.text
+            assert untracked.json()["version"] == current_version + 1
+            current_version = untracked.json()["version"]
+            assert await attached_properties() == expected_events
 
 
 @pytest.mark.asyncio

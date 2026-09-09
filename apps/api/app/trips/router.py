@@ -3547,6 +3547,13 @@ async def attach_flight_offer(
             f"{item.day_date.isoformat()} 不同，請先調整旅程日期",
         )
     apply_flight_offer(item, role, offer)
+    # The other half of the funnel's third step. The hotel half has been recorded since
+    # #324; this endpoint did not exist on that branch, so the flight half — the way
+    # most trips get a real quote — was missing until #249 landed.
+    await record_event(
+        session, "offer_attached", path="/trips", user_id=user.id,
+        properties={"kind": "flight", "source": "from_offer", "direction": direction},
+    )
     return await persist_information_anchor_change(
         session,
         trip,

@@ -25,7 +25,7 @@ Deploying the code does not create or approve these entries.
 The observations below are the 2026-09-08 deployment handoff, not a statement
 of the current deployed SHA, live account approvals, catalog counts or release
 settings. This 2026-09-09 documentation integration only reconciles source at
-main a899437aaf2f60c7affe2e944d49d62216537c90; it performs no live verification,
+main 98f8067b3664a956e44d0b6e9f372b27a22775e6; it performs no live verification,
 approval, publication, clickout or deployment.
 
 ## Definition of done

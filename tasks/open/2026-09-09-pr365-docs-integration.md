@@ -79,8 +79,8 @@ and API-root validation; the crawler entry point and browsers were not invoked.
 `npm run tasks:board`, `npm run check:tasks` (204 files), and `git diff --check`
 also passed. Existing stale merchant-claim and discovery/planner-overlap warnings
 are unchanged ownership issues outside this task; no other task was modified.
-No further main merge was performed: integration remains pinned to a899437a
-until the root agent supplies the final main SHA after the functional PRs.
+At that dependency checkpoint no further main merge was performed; integration
+remained pinned to a899437a while awaiting the root's final functional-PR SHA.
 The receiving agent must still run the updated PR's required CI before remote merge.
 
 Documentation is suitable for normal PR review rather than being held draft
@@ -96,3 +96,23 @@ recorded the root's sanitized failure-output findings without copying credential
 member IDs or request bodies. Added an open failure-artifact retention criterion,
 with workflow scope coordination required before implementation. No workflow,
 test, runtime or other task scope was changed, and no new main was integrated.
+
+Final main integration on 2026-09-09: the root supplied
+98f8067b3664a956e44d0b6e9f372b27a22775e6 after the guarded #335 merge, including
+the already merged #343 safety changes. Normally merged that exact commit; the
+only conflict was generated BOARD, regenerated with the task tool. The net delta
+against this final main remains the same four documentation/task files, with no
+runtime, CI, test, provider setting or operational change.
+
+Independently rechecked #335's merged SHA/time and 12 successful final checks,
+and #343 main CI run 34319338706's successful attempt 2. Added their historical
+outcomes to the open investigation without calling the transport reset or lost
+failure artifacts repaired. The #335 same-SHA push rerun is explicitly disclosed;
+the PR jobs passed first attempt. No rerun was initiated by this documentation
+task. Fresh PR CI, any draft-state change, remote push/merge and post-merge checks
+remain the root agent's separate delivery steps; this task only supplies a clean
+local handoff and does not perform them.
+
+Final-base validation: complete tools tests 27/27 passed, task/BOARD validation
+passed for 206 files, and whitespace/diff checks passed. The same unrelated
+stale-claim/overlap warnings remain; no scope takeover or runtime fix is implied.

@@ -57,7 +57,7 @@ Attempt 3 of the same PR workflow passed, then exact merged-main workflow
 that revision, not a fix of the intermittent connection reset; investigation
 remains open and scoped ownership was respected.
 
-## Integration checkpoint: 2026-09-09
+## Initial integration checkpoint: 2026-09-09
 
 At fixed main a899437aaf2f60c7affe2e944d49d62216537c90, full-stack CI already
 runs `npm run build:web`, starts the Web workspace with `npm run start`, and
@@ -110,3 +110,21 @@ overall first-attempt workflow finished. No rerun was requested by this
 documentation task, and no eventual rerun result is claimed here. The precise
 socket root cause remains unproven. Keep this investigation and the separate
 metric-concurrency investigation open; passing reruns are not a repair.
+
+## Completed reruns and final integration checkpoint: 2026-09-09
+
+The root's single same-SHA failed-job rerun for #343 completed successfully:
+run 34319338706, attempt 2, on d3426c86ba185326268fdcbb52825a8cfcd1438c.
+The accompanying Planner and Discovery checks also passed. The failed first
+attempt above remains part of the evidence; the rerun changed no source.
+
+For #335 head 63a15c2e792cc32654da40923184787b2c2c9bb3, the PR jobs passed on
+their first attempt. The push full-stack failed job passed after one disclosed
+same-SHA rerun; all 12 final checks were successful before the root's guarded
+squash merge at 2026-09-09T06:48:09Z as
+98f8067b3664a956e44d0b6e9f372b27a22775e6.
+
+That exact main SHA is the final base integrated into this documentation branch.
+These successful validation outcomes do not diagnose or repair the socket reset,
+prove failure-artifact retention, or authorize operational activation/deployment.
+The unchecked investigation and artifact-retention criteria remain open.
