@@ -2,12 +2,15 @@ import { act, cleanup, fireEvent, render, screen } from "@testing-library/react"
 import { StrictMode } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { requestNavigation, useNavigationGuard } from "./navigation-guard";
+import { NAVIGATION_HISTORY_BOOTSTRAP_SCRIPT } from "./navigation-history";
 
 let states: unknown[];
 let urls: string[];
 let position: number;
 let originalUrl: string;
 beforeEach(() => {
+  // Model the parser-blocking head script, before any router bubble listener.
+  window.eval(NAVIGATION_HISTORY_BOOTSTRAP_SCRIPT);
   vi.useFakeTimers(); states = [{ previous: true }, { __NA: true, tree: "preserved" }]; position = 1;
   originalUrl = window.location.href;
   urls = [new URL("/previous", originalUrl).href, new URL("/editor", originalUrl).href];
@@ -39,6 +42,44 @@ function Guard({ enabled = true, request }: { enabled?: boolean; request: (proce
 }
 
 describe("draft navigation guard", () => {
+  it("intercepts through the early bubble bridge before a later router listener", () => {
+    const router = vi.fn();
+    window.addEventListener("popstate", router);
+    const request = vi.fn(() => false);
+    const view = render(<Guard request={request} />);
+    try {
+      act(() => vi.runOnlyPendingTimers());
+      act(() => window.history.back());
+      expect(request).toHaveBeenCalledOnce();
+      expect(router).not.toHaveBeenCalled();
+      expect(window.location.pathname).toBe("/editor");
+      view.rerender(<Guard enabled={false} request={request} />);
+      router.mockClear();
+      act(() => window.history.back());
+      expect(router).toHaveBeenCalledOnce();
+      expect(window.location.pathname).toBe("/previous");
+    } finally { window.removeEventListener("popstate", router); }
+  });
+
+  it("unsubscribes an accepted inner guard while leaving the outer draft protected", () => {
+    const confirmations: Array<() => void> = [];
+    const request = vi.fn((proceed: () => void) => { confirmations.push(proceed); return false; });
+    render(<><Guard request={request} /><Guard request={request} /></>);
+    act(() => vi.runOnlyPendingTimers());
+    const navigate = vi.fn();
+    act(() => { requestNavigation(navigate); });
+    expect(request).toHaveBeenCalledTimes(1);
+    act(() => confirmations[0]());
+    expect(request).toHaveBeenCalledTimes(2);
+    expect(navigate).not.toHaveBeenCalled();
+    // The inner draft is disarmed but remains mounted. It must not mask the outer.
+    act(() => window.history.back());
+    expect(request).toHaveBeenCalledTimes(3);
+    expect(navigate).not.toHaveBeenCalled();
+    act(() => confirmations[1]());
+    expect(navigate).toHaveBeenCalledOnce();
+  });
+
   it("defers programmatic writes until confirmation and consumes its own history entry", () => {
     let confirm: (() => void) | undefined; const navigate = vi.fn();
     render(<Guard request={(proceed) => { confirm = proceed; return false; }} />);

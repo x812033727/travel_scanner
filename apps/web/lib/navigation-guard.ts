@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { subscribeNavigationHistory } from "./navigation-history";
 
 type LeaveRequest = (proceed: () => void) => boolean;
 const guards: Array<{ request: LeaveRequest }> = [];
@@ -25,11 +26,17 @@ export function useNavigationGuard(enabled: boolean, requestLeave: LeaveRequest)
     let armed = true;
     let inserted = false;
     let bypassClick = false;
+    let unsubscribeHistory: (() => void) | undefined;
     const guardState = { ...original, [marker]: token };
     // Do not enqueue a history traversal during Strict Mode's setup/cleanup probe.
     const insertTimer = window.setTimeout(() => { if (armed) { window.history.pushState(guardState, "", url); inserted = true; } }, 0);
 
-    const removeGuard = () => { const index = guards.indexOf(guard); if (index >= 0) guards.splice(index, 1); };
+    const removeGuard = () => {
+      const index = guards.indexOf(guard);
+      if (index >= 0) guards.splice(index, 1);
+      unsubscribeHistory?.();
+      unsubscribeHistory = undefined;
+    };
     const leave = (proceed: () => void) => {
       if (!armed) return;
       armed = false; removeGuard();
@@ -49,7 +56,7 @@ export function useNavigationGuard(enabled: boolean, requestLeave: LeaveRequest)
     const onPop = (event: PopStateEvent) => {
       if (!armed || !inserted || guards.at(-1) !== guard || window.history.state?.[marker] === token) return;
       // A route-owned child may have consumed its own entry. Only our base entry is guarded.
-      // Capture before Next handles popstate, including a history-menu jump past our sentinel.
+      // The prepaint bubble bridge runs before the router, including history-menu jumps.
       // Restoring our URL keeps the current component and its draft mounted during confirmation.
       event.stopImmediatePropagation();
       const destinationUrl = window.location.href;
@@ -69,13 +76,12 @@ export function useNavigationGuard(enabled: boolean, requestLeave: LeaveRequest)
       requestNavigation(() => { bypassClick = true; anchor.click(); bypassClick = false; });
     };
     const onUnload = (event: BeforeUnloadEvent) => { if (armed) { event.preventDefault(); event.returnValue = ""; } };
-    window.addEventListener("popstate", onPop, true);
+    unsubscribeHistory = subscribeNavigationHistory(onPop);
     document.addEventListener("click", onClick, true);
     window.addEventListener("beforeunload", onUnload);
     return () => {
       removeGuard();
       window.clearTimeout(insertTimer);
-      window.removeEventListener("popstate", onPop, true);
       document.removeEventListener("click", onClick, true);
       window.removeEventListener("beforeunload", onUnload);
       if (armed && inserted && window.location.href === url && window.history.state?.[marker] === token) window.history.back();

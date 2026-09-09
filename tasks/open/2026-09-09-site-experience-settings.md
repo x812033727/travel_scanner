@@ -92,6 +92,8 @@ scope:
   - apps/web/lib/navigation-guard.ts
   - apps/web/lib/navigation-guard.test.ts
   - apps/web/lib/navigation-guard.test.tsx
+  - apps/web/lib/navigation-history.ts
+  - apps/web/lib/navigation-history.test.ts
   - apps/web/lib/frontend-flow-copy.ts
   - apps/web/lib/site-pages.ts
   - apps/web/lib/site-pages.server.ts
