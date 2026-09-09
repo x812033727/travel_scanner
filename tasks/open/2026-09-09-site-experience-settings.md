@@ -116,9 +116,9 @@ Implement the approved Mokaair frontend, six palettes and managed information pa
 
 ## Definition of done
 
-- [ ] All valid card topics wrap; reading links are grouped; empty detail sections disappear.
-- [ ] Language is reachable at the top, six palettes share state, existing planner palettes remain selectable.
-- [ ] Four five-language information documents support draft, preview, CAS, audited publication and revision restoration.
+- [x] All valid card topics wrap; reading links are grouped; empty detail sections disappear.
+- [x] Language is reachable at the top, six palettes share state, existing planner palettes remain selectable.
+- [x] Four five-language information documents support draft, preview, CAS, audited publication and revision restoration.
 - [ ] Safe frontend close/back/focus flows have regression coverage and desktop/mobile browser evidence.
 - [ ] Relevant local checks and full CI pass; PR remains unmerged.
 
@@ -138,3 +138,5 @@ API pytest/Ruff/mypy/migration checks; Web component tests/typecheck/lint/i18n/b
 Task ownership: old review claims overlap this follow-up but their product changes are already on the verified main ancestry: PR 374 (a899437a), 375 (f6ab3d64), 378 (95122362). The task tool's explicit force option was used solely for this completed-work overlap; other owners' task records are not modified. One shared task covers the disjoint subagent file ownership above.
 
 Initial verification: API focused 86 passed / 18 skipped (PostgreSQL-only cases require CI); root CMS/discovery 50 passed; earlier agent-focused theme and interaction suites passed apart from one subsequently fixed mobile focus regression. Production webpack build including TypeScript passed; final overlay integration changed afterward and is included in CI. Full local parallel tests were stopped because available RAM fell below 40 MB; no full-pass claim. A local preview server launch was rejected by the execution policy, so built-in browser palette evidence remains pending. No policies published, no merge or deployment.
+
+Draft PR: https://github.com/x812033727/travel_scanner/pull/380. Follow-up evidence and exact remaining manual acceptance are recorded in docs/site-experience.md. CI-discovered strict types, managed-metadata/root-provider fixtures and admin registry navigation have been corrected. Current-head CI and approved-preview manual browser verification remain open; do not mark this task complete or merge automatically.

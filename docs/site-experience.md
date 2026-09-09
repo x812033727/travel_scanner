@@ -35,3 +35,15 @@ Dirty editors use a shared navigation guard before link navigation, language pre
 Automated UI cases use explicitly synthetic localhost fixtures, not production users, venues, publication evidence or provider licensing proof. `site-experience.spec.ts` exercises all six palettes through actual controls and records desktop/Pixel 7 screenshots. `site-pages.spec.ts` verifies SSR publication states and isolated admin save/preview/publish/restore/dirty-return behavior. `discovery-card-details.spec.ts` keeps five-language source, image and full-topic coverage; the planner suite covers draft Browser Back.
 
 Local checks and built-in browser observations are recorded in the task/PR when complete. PostgreSQL migration and full-stack jobs must be green in CI before this PR is considered ready; local SQLite tests alone are not production migration evidence.
+
+### Current verification and remaining acceptance
+
+- PR: https://github.com/x812033727/travel_scanner/pull/380 (draft; no merge or deployment).
+- Local production webpack build/TypeScript completed; subsequent fixes are checked against the current head in CI. Latest local full ESLint and five-language checks passed.
+- Local focused evidence: initial API 86 passed / 18 skipped; CMS/discovery 50 passed; publication-only rendering/loader 20 passed; shared overlays/navigation/mobile 36 passed; managed metadata 41 passed; root-provider page fixtures 9 passed; palette tokens and fill-gradient checks 24 passed.
+- The complete planner unit file passed 62 cases on an independent rerun. An earlier complete run had one non-reproduced busy-close failure; this is not erased from the record. An earlier worker-start timeout occurred under severe local RAM pressure, not as an application assertion.
+- CI on `61ab9661` passed Ruff, mypy, existing-database and new site-page PostgreSQL migration checks. Planner/discovery browser acceptance and production container builds also passed; the main Web suite's old static-metadata/provider fixtures and the full-stack admin navigation fixture required updates. Current-head full CI is still required.
+- The local preview server launch was rejected by execution policy. Therefore **no new-palette built-in-browser desktop/Pixel 7 audit is claimed yet**. Automated palette screenshots and composite contrast results are produced by the isolated CI browser suite; they are not production data or manual browser evidence.
+- Remaining manual acceptance: six palette views at desktop/Pixel 7 sizes, large text, nested modal/touch close flows and read-only visits across public tools, community, pet-friendly and account pages. Use an approved isolated preview; do not perform production writes or metered actions.
+
+The sampled thresholds follow [WCAG text contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) and [non-text contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html). Token calculations alone do not establish whole-site conformance; rendered alpha layers, functional borders and focus states must also be checked.
