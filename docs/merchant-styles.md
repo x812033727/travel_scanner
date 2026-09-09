@@ -170,6 +170,24 @@ Dragonfly的大館及香港會展旅遊頁讀取受限，未繞過限制，也�
 NOC黃埔舊設計文章有轉址與讀取不一致，沒有依搜尋快取替代完整來源查核；上述排除不代表判定歇業。
 正式查重僅找到不同城市的文喫福岡天神，四家未重複。地圖、耐久座標與商圈仍待核實，未複製照片或推導寵物正式條件。
 
+## 第八批來源查核：2026-09-08
+
+資料檔：`apps/api/app/foods/data/style_merchants_2026_09_batch_08.json`。
+本批 **4 家新候選、4 個待審提案（網美2、文青2）**，各來自台北、福岡、首爾及新加坡。
+正式資料庫名稱／地址查重零重複；查核表示本輪閱讀原始來源，不是親訪或即時營業保證。
+
+| 店家／城市 | 來源與判定界線 |
+| --- | --- |
+| 華山青鳥／台北 | 文青：[官方LINE店址](https://page.line.me/bwx2348v)與[園區本店頁](https://www.huashan1914.com/w/huashan1914/CustomShops_17081617223586642)確認玻璃屋2F、主題選書及閱讀餐飲。不是桃源等據點；打烊時間不一致，不保存時段或2025早餐優惠。 |
+| café & books bibliothèque 福岡・天神／福岡 | 文青：[品牌地址](https://www.bibliotheque.ne.jp/access)確認VIORO B1F；[商場本店介紹](https://vioro.jp/shop/bibliothequecafe/)列書籍、藝術與咖啡交流。不將[品牌整體選品](https://www.bibliotheque.ne.jp/about)或2018/2019舊展覽當作本店現在的庫存與活動；商場寵物規則不能代替餐廳規則。 |
+| 오설록 티하우스 북촌점／首爾 | 網美：[指定茶屋頁](https://www.osulloc.com/kr/ko/store-introduction/312)確認住宅改造、分層茶空間及북촌로45。現行與舊活動頁的年代不同，不記年代、不誤寫傳統韓屋，也不取頁尾濟州公司地址；Naver精準地點仍待核對。 |
+| Merci Marcel Orchard／新加坡 | 網美：[本輪完整閱讀的官方分店頁](https://mercimarcelgroup.com/merci-marcel/orchard-singapore/)確認Palais Renaissance店號01-03至04，以及Bauhaus靈感、熱帶元素與家具搭配；後續重取曾逾時，未用搜尋摘要追加內容。不把鄰近Maison Marcel選物店或其他餐廳卡片當成本店，也不推導古蹟認證。 |
+
+暫不納入：소전서림官網本輪未取得可讀內容；Rainy Day Bookstore & Café查到的是限定開店日，
+未確認新的開店安排；Stumptown Kyoto的品牌頁雖可確認店址，但本輪未完成咖啡店本身的獨立風格查核。
+不把整座酒店的設計直接當成店內證據，不將上述排除描述為永久歇業。
+四家皆留待審、未分區，地圖／耐久座標留空；沒有搬運照片、啟動付費服務或建立寵物正式規則。
+
 ## 部署與匯入
 
 部署同版本 API、Web、worker 並執行 `alembic upgrade head`。
@@ -192,6 +210,7 @@ python -m app.cli import-trend-merchants --file app/foods/data/style_merchants_2
 第五批則為 `app/foods/data/style_merchants_2026_09_batch_05.json`。
 第六批則為 `app/foods/data/style_merchants_2026_09_batch_06.json`。
 第七批則為 `app/foods/data/style_merchants_2026_09_batch_07.json`。
+第八批則為 `app/foods/data/style_merchants_2026_09_batch_08.json`。
 既有部署可將新 JSON 送入受控暫存路徑後傳給 `--file`；資料補充不需重建服務或執行新遷移。
 
 ### 實際執行記錄
@@ -265,3 +284,16 @@ python -m app.cli import-trend-merchants --file app/foods/data/style_merchants_2
   `b1499ceb8b7cd9675ba779b862336e0b821e5e109416df1644078c09479bfc1e`。
   七批合計37家新候選、2家既有補風格，共40個pending標籤（網美18／文青22）。
   公開風格查詢前後完全一致且仍為0，readiness正常、foods頁HTTP200；沒有重建服務、遷移或付費呼叫。
+- PR [#359](https://github.com/x812033727/travel_scanner/pull/359) 依2026-09-08新授權合併：
+  SHA guard鎖定 `385867de8dcc20bac98a8efa0869ce1d67e4ad57`，8項checks全綠，合併為
+  `8d2fb93d3d95e40409113f64bdcb90edfc53736f`，post-merge main CI `34193020967` 全綠，無重跑。
+  本輪有明確重新部署要求：乾淨Git archive建置、雙鎖與7,570,439 bytes／mode600可讀備份後，
+  8個應用服務更新為8d2fb93；PG／Redis、環境檔、volume、舊映像及備份保留。schema仍0062，
+  三次連續readiness與前台檢查成功、5語系foods頁200；社群及註冊仍關閉，未重複匯入第七批。
+- 第八批在部署成功後從新main分支新增；正式寫入前名稱／地址查重、雙部署鎖、三處JSON checksum、
+  鎖內預覽及7,570,009 bytes／mode600備份與restore索引均通過。JSON SHA-256為
+  `01398a45d0001492c67df04c157b58e9c37baec4b6de6fabc53b525d511b018a`。
+  正式新增4家pending/inactive/unverified店家及4個pending提案，重播預覽0／0；兩筆actor=NULL
+  系統稽核保留count、target及提案items，逐欄核對來源、店名、地址及風格證據。
+  地圖、座標、商圈及審核人仍空白，公開風格payload前後一致，readiness正常、foods頁200。
+  八批合計41家新候選、2家既有店家補風格，共44個pending標籤（網美20／文青24），仍待人工核准。

@@ -429,6 +429,7 @@ def test_first_research_batch_is_valid_and_cannot_embed_approvals() -> None:
         ("style_merchants_2026_09_batch_05.json", 5, 5),
         ("style_merchants_2026_09_batch_06.json", 4, 4),
         ("style_merchants_2026_09_batch_07.json", 4, 4),
+        ("style_merchants_2026_09_batch_08.json", 4, 4),
     ],
 )
 def test_research_batches_contain_evidence_not_publication_state(
@@ -467,6 +468,7 @@ def test_research_batches_contain_evidence_not_publication_state(
         ("style_merchants_2026_09_batch_05.json", 5, 5),
         ("style_merchants_2026_09_batch_06.json", 4, 4),
         ("style_merchants_2026_09_batch_07.json", 4, 4),
+        ("style_merchants_2026_09_batch_08.json", 4, 4),
     ],
 )
 async def test_research_batch_import_is_private_audited_and_replay_safe(
