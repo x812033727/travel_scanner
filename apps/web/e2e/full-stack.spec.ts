@@ -185,7 +185,7 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await openOptionalStops(page);
   await expect(flightCards.first()).toContainText("去程航班尚未設定");
   await expect(flightCards.last()).toContainText("回程航班尚未設定");
-  await expect(page.getByRole("button", { name: "尚未設定主要飯店", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "從 尚未設定飯店 出發", exact: true })).toBeVisible();
   await expect(page.getByText("住宿據點 · 返回", { exact: true })).toHaveCount(0);
   await expect(page.getByRole("button", { name: "午餐尚未安排", exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "晚餐尚未安排", exact: true })).toBeVisible();
@@ -225,7 +225,7 @@ test("blank trip keeps flight, hotel and meal anchors with two time modes", asyn
   await expect(generalCard).toContainText("固定時間 · 15:00");
 
   await openOptionalStops(page);
-  await page.getByRole("button", { name: "尚未設定主要飯店", exact: true }).click();
+  await page.getByRole("button", { name: "從 尚未設定飯店 出發", exact: true }).click();
   // The hotel card now opens the stay-area flow first; the manual editor is one click away.
   await page.getByRole("dialog", { name: "住宿熱區" }).getByRole("button", { name: "手動輸入飯店" }).click();
   await page.getByLabel("飯店名稱").fill("丸之內測試飯店");

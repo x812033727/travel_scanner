@@ -1,7 +1,7 @@
 ---
 id: 2026-09-09-planner-calm-editing
 title: Calm daily timeline and safe explicit planner editing
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-planner-calm
@@ -36,6 +36,8 @@ scope:
   - apps/web/e2e/planner-calm.spec.ts
   - apps/web/e2e/navigation.spec.ts
   - apps/web/e2e/planner-premium.spec.ts
+  - apps/web/e2e/trip-stay-areas.spec.ts
+  - apps/web/e2e/stay22-maps.spec.ts
   - apps/web/e2e/full-stack.spec.ts
   - apps/web/e2e/readability.spec.ts
   - .github/workflows/planner-premium.yml
@@ -85,3 +87,8 @@ See `docs/planner-calm-editing.md` for commands and behavioural acceptance. Loca
 - Local Windows validation uses a fresh `uv sync --frozen` venv; the unrelated POSIX deployment-center module is run by Linux CI. PostgreSQL-only cases need CI.
 - Discovery owner handed back `planner-premium.spec.ts` after PR #372; retain its disabled discovery-status fixture when rebasing.
 - No production writes, provider searches, merge or deployment authorized in this task.
+- PR: https://github.com/x812033727/travel_scanner/pull/373 (no auto-merge).
+- Frozen post-rebase local API: 2,057 passed / 126 skipped; Ruff and MyPy (275 files) passed. Windows-only exclusion is deployment-center; Linux/PostgreSQL run in CI.
+- Production build passed (252 generated pages). Calm mobile/draft browser tests 8/8, planner contrast 8/8, route/premium flows 20/20, stay-area/Stay22 five-locale tests 14/14 passed.
+- CI initially caught legacy date-summary and empty-hotel selectors; adapted to the actual new controls without changing write/identity assertions. Full-stack and final-head CI are being rerun.
+- Concurrent local Next dev compilation corrupted a generated validator. Its cache was moved recoverably to the local Temp folder, not user source; production build then passed.

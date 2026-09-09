@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 1 in progress · 2 blocked · 1 in review · 176 done**
+**16 open · 0 in progress · 2 blocked · 2 in review · 176 done**
 
 ## Ready to claim
 
@@ -26,15 +26,14 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [Calm daily timeline and safe explicit planner editing](open/2026-09-09-planner-calm-editing.md) | codex-planner-calm | 2026-09-09T00:53:02Z | `codex/planner-calm-editing` |
+_Nothing here._
 
 ## In review
 
 | Task | Owner | Branch |
 | --- | --- | --- |
 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
+| [Calm daily timeline and safe explicit planner editing](open/2026-09-09-planner-calm-editing.md) | codex-planner-calm | `codex/planner-calm-editing` |
 
 ## Waiting
 
