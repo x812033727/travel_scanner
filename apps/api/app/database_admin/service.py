@@ -79,7 +79,15 @@ async def _terminalize_operation_failure(
     *,
     failure_code: str,
     failure_detail: str | None,
-) -> None:
+) -> DatabaseOperationRun:
+    expected_agent_job_id = operation.agent_job_id
+    operation, can_reconcile = await _lock_reconcilable_operation(
+        session,
+        operation,
+        expected_agent_job_id=expected_agent_job_id,
+    )
+    if not can_reconcile:
+        return operation
     operation.status = "failed"
     operation.failure_code = _safe_text(failure_code, 64)
     operation.failure_detail = _safe_text(failure_detail)
@@ -101,6 +109,29 @@ async def _terminalize_operation_failure(
         )
     operation.metadata_json = metadata
     await session.commit()
+    return operation
+
+
+async def _lock_reconcilable_operation(
+    session: AsyncSession,
+    operation: DatabaseOperationRun,
+    *,
+    expected_agent_job_id: str | None,
+) -> tuple[DatabaseOperationRun, bool]:
+    current = await session.scalar(
+        select(DatabaseOperationRun)
+        .where(DatabaseOperationRun.id == operation.id)
+        .with_for_update()
+        .execution_options(populate_existing=True)
+    )
+    if current is None:
+        return operation, False
+    metadata = current.metadata_json or {}
+    return current, bool(
+        current.status in ACTIVE_DATABASE_OPERATION_STATUSES
+        and current.agent_job_id == expected_agent_job_id
+        and not metadata.get("terminal_audited")
+    )
 
 
 async def _operation_view(
@@ -230,30 +261,37 @@ async def _reconcile(
         or operation.status not in ACTIVE_DATABASE_OPERATION_STATUSES
     ):
         return operation
+    expected_agent_job_id = operation.agent_job_id
     try:
-        job = await DatabaseAgentClient().job(operation.agent_job_id)
+        job = await DatabaseAgentClient().job(expected_agent_job_id)
     except AppError as exc:
         if exc.code != "database_operation_not_found":
             raise
-        await _terminalize_operation_failure(
+        return await _terminalize_operation_failure(
             session,
             operation,
             failure_code="database_agent_lost_job",
             failure_detail="資料庫維運代理恢復連線後找不到這筆工作",
         )
-        return operation
 
     if (
         operation.operation_type == "backup"
         and job.status == "succeeded"
         and not _agent_job_has_verified_backup(job)
     ):
-        await _terminalize_operation_failure(
+        return await _terminalize_operation_failure(
             session,
             operation,
             failure_code="database_backup_verification_missing",
             failure_detail="維運代理未提供完整的備份驗證資料",
         )
+
+    operation, can_reconcile = await _lock_reconcilable_operation(
+        session,
+        operation,
+        expected_agent_job_id=expected_agent_job_id,
+    )
+    if not can_reconcile:
         return operation
 
     previous_status = operation.status
@@ -587,9 +625,15 @@ async def create_database_operation(
         created = await DatabaseAgentClient().create(str(operation.id), operation_type)
     except AppError as exc:
         if exc.code == "database_agent_unavailable":
-            operation.failure_code = "database_agent_ack_pending"
-            operation.failure_detail = "尚未收到維運代理確認；恢復連線後可重新同步"
-            await session.commit()
+            operation, can_reconcile = await _lock_reconcilable_operation(
+                session,
+                operation,
+                expected_agent_job_id=str(operation.id),
+            )
+            if can_reconcile:
+                operation.failure_code = "database_agent_ack_pending"
+                operation.failure_detail = "尚未收到維運代理確認；恢復連線後可重新同步"
+                await session.commit()
             raise
         await _terminalize_operation_failure(
             session,
@@ -609,6 +653,13 @@ async def create_database_operation(
     # A very small database can finish before the agent's 202 response is read. Keep
     # the API record active long enough to fetch the authoritative job payload; copying
     # only the terminal status here would permanently lose checksum/size/schema data.
+    operation, can_reconcile = await _lock_reconcilable_operation(
+        session,
+        operation,
+        expected_agent_job_id=str(operation.id),
+    )
+    if not can_reconcile:
+        return await _operation_view(session, operation)
     operation.status = (
         created.status
         if created.status in ACTIVE_DATABASE_OPERATION_STATUSES

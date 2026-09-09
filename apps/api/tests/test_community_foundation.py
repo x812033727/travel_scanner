@@ -45,6 +45,7 @@ from app.main import app
 from app.models import (
     AccountErasureRequest,
     AdminAuditLog,
+    AdminRoleAssignment,
     AffiliateClick,
     FlightOfferRecord,
     ProviderConfig,
@@ -703,6 +704,80 @@ async def test_account_tokens_single_use_and_delete_revokes(harness: Harness) ->
     async with h.factory() as session:
         user = await session.get(User, h.ids[3])
         assert user and user.auth_version == 2 and user.deleted_at
+
+
+@pytest.mark.asyncio
+async def test_delete_account_uses_active_roles_instead_of_stale_legacy_bit(
+    harness: Harness,
+) -> None:
+    h = harness
+    now = datetime.now(UTC)
+    active_token = "active-admin-delete-" + "a" * 32
+    legacy_token = "legacy-admin-delete-" + "b" * 32
+    expired_token = "expired-admin-delete-" + "c" * 32
+    async with h.factory() as session:
+        active = await session.get(User, h.ids[0])
+        legacy = await session.get(User, h.ids[2])
+        expired = await session.get(User, h.ids[3])
+        assert active and legacy and expired
+        active.is_admin = True
+        expired.is_admin = True
+        session.add_all(
+            [
+                AdminRoleAssignment(
+                    user_id=active.id,
+                    role="viewer",
+                    source="manual",
+                    expires_at=now + timedelta(minutes=5),
+                ),
+                AdminRoleAssignment(
+                    user_id=expired.id,
+                    role="viewer",
+                    source="manual",
+                    expires_at=now - timedelta(minutes=1),
+                ),
+                *[
+                    AccountToken(
+                        user_id=user.id,
+                        digest=hashlib.sha256(token.encode()).hexdigest(),
+                        purpose="delete",
+                        auth_version=user.auth_version,
+                        expires_at=now + timedelta(minutes=5),
+                    )
+                    for user, token in (
+                        (active, active_token),
+                        (legacy, legacy_token),
+                        (expired, expired_token),
+                    )
+                ],
+            ]
+        )
+        await session.commit()
+
+    for token in (active_token, legacy_token):
+        denied = await h.call(
+            "POST",
+            "/auth/delete-account",
+            actor=None,
+            expected=403,
+            json={"token": token, "confirmation": "DELETE"},
+        )
+        assert denied.json()["code"] == "community_admin_deletion"
+
+    await h.call(
+        "POST",
+        "/auth/delete-account",
+        actor=None,
+        expected=202,
+        json={"token": expired_token, "confirmation": "DELETE"},
+    )
+    async with h.factory() as session:
+        active = await session.get(User, h.ids[0])
+        legacy = await session.get(User, h.ids[2])
+        expired = await session.get(User, h.ids[3])
+        assert active and active.is_active
+        assert legacy and legacy.is_active
+        assert expired and not expired.is_active and expired.deleted_at is not None
 
 
 @pytest.mark.asyncio

@@ -10,7 +10,13 @@ from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import encrypt_secrets
-from app.auth.service import CurrentUser, find_user_by_email, hash_password, is_admin_user
+from app.auth.service import (
+    CurrentUser,
+    effective_admin_roles,
+    find_user_by_email,
+    hash_password,
+    is_admin_user,
+)
 from app.community.models import AccountToken, Job, Post, Profile
 from app.community.policy import aware, fail
 from app.community.schemas import DeleteAccountInput, EmailRequest, ResetInput, TokenInput
@@ -215,7 +221,11 @@ async def delete_account(
     payload: DeleteAccountInput, response: Response, session: Session
 ) -> dict[str, Any]:
     _, user = await consume(session, payload.token, "delete")
-    if is_admin_user(user):
+    # This token-only endpoint does not pass through CurrentUser, which normally
+    # loads the active-role cache before is_admin_user() is called. Resolve roles
+    # from the database so an expired assignment does not leave the legacy
+    # users.is_admin compatibility bit blocking account deletion forever.
+    if await effective_admin_roles(session, user):
         raise fail("community_admin_deletion", 403)
     now = datetime.now(UTC)
     user.is_active = False

@@ -1247,6 +1247,24 @@ async def _schedule_admin_erasure_serialized(
 async def cancel_admin_erasure(
     session: AsyncSession, user_id: UUID, payload: AdminReasonRequest, actor: User
 ) -> AdminUserDetail:
+    # The worker claims a due Job before it locks User and AccountErasureRequest.
+    # Claim every matching pending job in the same order first, or cancellation
+    # can hold User while waiting for the worker's Job lock and deadlock with the
+    # worker waiting for that User lock.
+    jobs = list(
+        (
+            await session.scalars(
+                select(Job)
+                .where(
+                    Job.user_id == user_id,
+                    Job.kind == "admin_erase_account",
+                    Job.status == "pending",
+                )
+                .order_by(Job.created_at, Job.id)
+                .with_for_update()
+            )
+        ).all()
+    )
     user, _ = await _user_and_account(session, user_id, lock_user=True)
     erasure = await session.scalar(
         select(AccountErasureRequest)
@@ -1260,17 +1278,6 @@ async def cancel_admin_erasure(
         raise AppError(409, "admin_erasure_not_scheduled", "這個帳號沒有可取消的個資清除")
     erasure.status = "cancelled"
     erasure.cancelled_at = datetime.now(UTC)
-    jobs = list(
-        (
-            await session.scalars(
-                select(Job).where(
-                    Job.user_id == user.id,
-                    Job.kind == "admin_erase_account",
-                    Job.status == "pending",
-                )
-            )
-        ).all()
-    )
     for job in jobs:
         job.status = "completed"
     session.add(

@@ -963,11 +963,19 @@ async def test_erasure_retry_exhaustion_records_terminal_failure_audit(
 
 
 @pytest.mark.asyncio
-async def test_cancel_erasure_uses_the_same_user_then_request_lock_order(
+async def test_cancel_erasure_locks_job_before_user_and_request(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     actor = User(id=uuid4(), email="owner@example.com", password_hash="unused")
     target = User(id=uuid4(), email="member@example.com", password_hash="unused")
+    job = Job(
+        id=uuid4(),
+        kind="admin_erase_account",
+        user_id=target.id,
+        status="pending",
+        available_at=datetime.now(UTC) + timedelta(hours=23),
+        created_at=datetime.now(UTC),
+    )
     request = AccountErasureRequest(
         id=uuid4(),
         user_id=target.id,
@@ -978,10 +986,22 @@ async def test_cancel_erasure_uses_the_same_user_then_request_lock_order(
         scheduled_for=datetime.now(UTC) + timedelta(hours=23),
     )
     session = AsyncMock(spec=AsyncSession)
-    session.scalar.side_effect = [target, None, request]
+    statements: list[str] = []
+    scalar_results = iter([target, None, request])
+
+    async def scalar(statement: object) -> object:
+        statements.append(str(statement))
+        return next(scalar_results)
+
     scalar_rows = Mock()
-    scalar_rows.all.return_value = []
-    session.scalars.return_value = scalar_rows
+    scalar_rows.all.return_value = [job]
+
+    async def scalars(statement: object) -> object:
+        statements.append(str(statement))
+        return scalar_rows
+
+    session.scalar.side_effect = scalar
+    session.scalars.side_effect = scalars
     monkeypatch.setattr(
         admin_users,
         "admin_user_detail",
@@ -995,10 +1015,12 @@ async def test_cancel_erasure_uses_the_same_user_then_request_lock_order(
         actor,
     )
 
-    statements = [str(call.args[0]) for call in session.scalar.await_args_list]
-    assert "FROM users" in statements[0] and "FOR UPDATE" in statements[0]
-    assert "FROM usage_accounts" in statements[1]
-    assert "FROM account_erasure_requests" in statements[2] and "FOR UPDATE" in statements[2]
+    assert "FROM community_jobs" in statements[0] and "FOR UPDATE" in statements[0]
+    assert "ORDER BY community_jobs.created_at, community_jobs.id" in statements[0]
+    assert "FROM users" in statements[1] and "FOR UPDATE" in statements[1]
+    assert "FROM usage_accounts" in statements[2]
+    assert "FROM account_erasure_requests" in statements[3] and "FOR UPDATE" in statements[3]
+    assert job.status == "completed"
     assert request.status == "cancelled"
 
 

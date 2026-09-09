@@ -454,9 +454,9 @@ async def erase_scheduled_admin_account(session: AsyncSession, user_id: UUID) ->
 async def _erase_scheduled_admin_account_serialized(
     session: AsyncSession, user_id: UUID
 ) -> None:
-    # Interactive cancellation locks User before AccountErasureRequest. Keep
-    # that global order here so concurrent cancel/worker transactions cannot
-    # form a PostgreSQL row-lock cycle.
+    # drain_jobs already holds Job before reaching this helper. Interactive
+    # cancellation now matches that Job -> User -> AccountErasureRequest order;
+    # keep the same User -> request tail here to avoid a PostgreSQL lock cycle.
     user = await session.scalar(select(User).where(User.id == user_id).with_for_update())
     request = await session.scalar(
         select(AccountErasureRequest)

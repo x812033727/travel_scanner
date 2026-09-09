@@ -1,3 +1,5 @@
+import asyncio
+import os
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any, Literal, cast
@@ -5,6 +7,7 @@ from unittest.mock import AsyncMock, Mock
 from uuid import uuid4
 
 import pytest
+import sqlalchemy as sa
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy.exc import IntegrityError
@@ -26,7 +29,9 @@ from app.database_admin.schemas import (
 )
 from app.database_admin.service import (
     _database_backup_catalog,
+    _lock_reconcilable_operation,
     _reconcile,
+    _terminalize_operation_failure,
     create_database_operation,
     database_overview,
     database_tables,
@@ -473,7 +478,17 @@ async def test_database_job_id_mismatch_terminalizes_the_active_operation(
     monkeypatch.setattr(settings, "admin_database_maintenance_enabled", True)
     actor = User(id=uuid4(), email="database@example.com", password_hash="unused")
     session = AsyncMock(spec=AsyncSession)
-    session.scalar.side_effect = [None, None, None]
+
+    def scalar_result(_statement: Any) -> DatabaseOperationRun | None:
+        if session.scalar.await_count <= 3:
+            return None
+        return next(
+            call.args[0]
+            for call in session.add.call_args_list
+            if isinstance(call.args[0], DatabaseOperationRun)
+        )
+
+    session.scalar.side_effect = scalar_result
     monkeypatch.setattr(
         DatabaseAgentClient,
         "overview",
@@ -520,6 +535,59 @@ async def test_database_job_id_mismatch_terminalizes_the_active_operation(
 
 
 @pytest.mark.asyncio
+async def test_stale_create_ack_does_not_regress_a_terminal_operation(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    settings = get_settings()
+    monkeypatch.setattr(settings, "admin_database_maintenance_enabled", True)
+    actor = User(id=uuid4(), email="database@example.com", password_hash="unused")
+    now = datetime.now(UTC)
+    session = AsyncMock(spec=AsyncSession)
+
+    def scalar_result(_statement: Any) -> DatabaseOperationRun | None:
+        if session.scalar.await_count <= 3:
+            return None
+        operation = next(
+            call.args[0]
+            for call in session.add.call_args_list
+            if isinstance(call.args[0], DatabaseOperationRun)
+        )
+        operation.status = "succeeded"
+        operation.metadata_json = {"terminal_audited": True}
+        operation.created_at = now
+        operation.updated_at = now
+        return operation
+
+    async def create_job(
+        _client: DatabaseAgentClient, run_id: str, _action: str
+    ) -> AgentDatabaseCreateResponse:
+        return AgentDatabaseCreateResponse(job_id=run_id, status="running")
+
+    session.scalar.side_effect = scalar_result
+    session.get.return_value = actor
+    monkeypatch.setattr(
+        DatabaseAgentClient,
+        "overview",
+        AsyncMock(return_value=AgentDatabaseOverview(connected=True, available=True)),
+    )
+    monkeypatch.setattr(DatabaseAgentClient, "create", create_job)
+
+    result = await create_database_operation(
+        cast(AsyncSession, session),
+        actor,
+        "analyze",
+        "ANALYZE",
+        "stale-create-ack",
+    )
+
+    assert result.status == "succeeded"
+    assert session.commit.await_count == 1
+    lock_statement = session.scalar.await_args.args[0]
+    assert lock_statement._for_update_arg is not None  # noqa: SLF001
+    assert lock_statement.get_execution_options()["populate_existing"] is True
+
+
+@pytest.mark.asyncio
 async def test_agent_cannot_report_backup_success_without_verification_proof(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -549,6 +617,7 @@ async def test_agent_cannot_report_backup_success_without_verification_proof(
         ),
     )
     session = AsyncMock(spec=AsyncSession)
+    session.scalar.return_value = operation
 
     result = await _reconcile(cast(AsyncSession, session), operation)
 
@@ -560,6 +629,309 @@ async def test_agent_cannot_report_backup_success_without_verification_proof(
         and call.args[0].action == "database.operation.failed"
         for call in session.add.call_args_list
     )
+
+
+@pytest.mark.asyncio
+async def test_missing_agent_job_terminalizes_the_locked_current_snapshot(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    operation = DatabaseOperationRun(
+        id=uuid4(),
+        requested_by_user_id=None,
+        idempotency_key="agent-lost-job",
+        operation_type="analyze",
+        status="running",
+        agent_job_id=str(uuid4()),
+        metadata_json={},
+    )
+    session = AsyncMock(spec=AsyncSession)
+    session.scalar.return_value = operation
+    monkeypatch.setattr(
+        DatabaseAgentClient,
+        "job",
+        AsyncMock(
+            side_effect=AppError(
+                404, "database_operation_not_found", "agent no longer has the job"
+            )
+        ),
+    )
+
+    result = await _reconcile(cast(AsyncSession, session), operation)
+
+    assert result.status == "failed"
+    assert result.failure_code == "database_agent_lost_job"
+    assert result.metadata_json.get("terminal_audited") is True
+    audit = next(
+        call.args[0]
+        for call in session.add.call_args_list
+        if isinstance(call.args[0], AdminAuditLog)
+    )
+    assert audit.action == "database.operation.failed"
+    assert session.scalar.await_args.args[0]._for_update_arg is not None  # noqa: SLF001
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("status", "job_matches", "terminal_audited", "expected"),
+    [
+        ("running", True, False, True),
+        ("succeeded", True, True, False),
+        ("running", False, False, False),
+        ("running", True, True, False),
+    ],
+)
+async def test_reconcile_lock_rechecks_the_current_database_snapshot(
+    status: str,
+    job_matches: bool,
+    terminal_audited: bool,
+    expected: bool,
+) -> None:
+    operation_id = uuid4()
+    expected_job_id = str(operation_id)
+    stale = DatabaseOperationRun(
+        id=operation_id,
+        requested_by_user_id=None,
+        idempotency_key="stale-reconcile",
+        operation_type="analyze",
+        status="running",
+        agent_job_id=expected_job_id,
+        metadata_json={},
+    )
+    current = DatabaseOperationRun(
+        id=operation_id,
+        requested_by_user_id=None,
+        idempotency_key="current-reconcile",
+        operation_type="analyze",
+        status=status,
+        agent_job_id=expected_job_id if job_matches else str(uuid4()),
+        metadata_json={"terminal_audited": terminal_audited},
+    )
+    session = AsyncMock(spec=AsyncSession)
+    session.scalar.return_value = current
+
+    locked, can_reconcile = await _lock_reconcilable_operation(
+        cast(AsyncSession, session),
+        stale,
+        expected_agent_job_id=expected_job_id,
+    )
+
+    assert locked is current
+    assert can_reconcile is expected
+    statement = session.scalar.await_args.args[0]
+    assert statement._for_update_arg is not None  # noqa: SLF001
+    assert statement.get_execution_options()["populate_existing"] is True
+
+
+@pytest.mark.asyncio
+async def test_reconcile_calls_the_agent_before_locking_and_does_not_regress_terminal_state(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    now = datetime.now(UTC)
+    operation_id = uuid4()
+    job_id = str(operation_id)
+    stale = DatabaseOperationRun(
+        id=operation_id,
+        requested_by_user_id=None,
+        idempotency_key="stale-terminal-reconcile",
+        operation_type="analyze",
+        status="running",
+        agent_job_id=job_id,
+        metadata_json={},
+    )
+    current = DatabaseOperationRun(
+        id=operation_id,
+        requested_by_user_id=None,
+        idempotency_key="current-terminal-reconcile",
+        operation_type="analyze",
+        status="succeeded",
+        agent_job_id=job_id,
+        metadata_json={"terminal_audited": True},
+    )
+    order: list[str] = []
+
+    async def agent_job(_client: DatabaseAgentClient, _job_id: str) -> AgentDatabaseJob:
+        order.append("agent")
+        return AgentDatabaseJob(
+            job_id=job_id,
+            action="analyze",
+            status="failed",
+            failure_code="stale-agent-result",
+            created_at=now,
+        )
+
+    session = AsyncMock(spec=AsyncSession)
+
+    async def locked_row(_statement: Any) -> DatabaseOperationRun:
+        order.append("lock")
+        return current
+
+    session.scalar.side_effect = locked_row
+    monkeypatch.setattr(DatabaseAgentClient, "job", agent_job)
+
+    result = await _reconcile(cast(AsyncSession, session), stale)
+
+    assert order == ["agent", "lock"]
+    assert result is current
+    assert result.status == "succeeded"
+    session.add.assert_not_called()
+    session.commit.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_failure_terminalizer_does_not_overwrite_a_locked_terminal_operation() -> None:
+    operation_id = uuid4()
+    job_id = str(operation_id)
+    stale = DatabaseOperationRun(
+        id=operation_id,
+        requested_by_user_id=None,
+        idempotency_key="stale-failure-terminalizer",
+        operation_type="analyze",
+        status="running",
+        agent_job_id=job_id,
+        metadata_json={},
+    )
+    current = DatabaseOperationRun(
+        id=operation_id,
+        requested_by_user_id=None,
+        idempotency_key="current-failure-terminalizer",
+        operation_type="analyze",
+        status="succeeded",
+        agent_job_id=job_id,
+        metadata_json={"terminal_audited": True},
+    )
+    session = AsyncMock(spec=AsyncSession)
+    session.scalar.return_value = current
+
+    result = await _terminalize_operation_failure(
+        cast(AsyncSession, session),
+        stale,
+        failure_code="stale-failure",
+        failure_detail="must not replace the committed result",
+    )
+
+    assert result is current
+    assert result.status == "succeeded"
+    session.add.assert_not_called()
+    session.commit.assert_not_awaited()
+
+
+@pytest.mark.skipif(os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="requires PostgreSQL")
+@pytest.mark.asyncio
+async def test_postgresql_concurrent_reconcile_records_one_terminal_audit(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    schema = "database_reconcile_" + uuid4().hex
+    administrator = create_async_engine(get_settings().database_url)
+    engine = create_async_engine(
+        get_settings().database_url,
+        connect_args={"server_settings": {"search_path": schema}},
+    )
+    operation_id = uuid4()
+    now = datetime.now(UTC)
+    job = AgentDatabaseJob(
+        job_id=str(operation_id),
+        action="backup",
+        status="succeeded",
+        backup_name="concurrent.dump",
+        checksum_sha256="a" * 64,
+        size_bytes=4096,
+        schema_revision="0068_admin_operations_center",
+        release_sha="b" * 40,
+        started_at=now,
+        finished_at=now,
+        created_at=now,
+    )
+    agent_call_count = 0
+    both_agent_calls = asyncio.Event()
+
+    async def terminal_job(_client: DatabaseAgentClient, job_id: str) -> AgentDatabaseJob:
+        nonlocal agent_call_count
+        assert job_id == str(operation_id)
+        agent_call_count += 1
+        if agent_call_count == 2:
+            both_agent_calls.set()
+        try:
+            await asyncio.wait_for(both_agent_calls.wait(), timeout=0.25)
+        except TimeoutError:
+            pass
+        return job
+
+    monkeypatch.setattr(DatabaseAgentClient, "job", terminal_job)
+
+    try:
+        async with administrator.begin() as connection:
+            await connection.execute(sa.text(f'CREATE SCHEMA "{schema}"'))
+        async with engine.begin() as connection:
+            await connection.run_sync(
+                lambda sync_connection: Base.metadata.create_all(
+                    sync_connection,
+                    tables=[
+                        User.__table__,
+                        AdminAuditLog.__table__,
+                        DatabaseOperationRun.__table__,
+                    ],
+                )
+            )
+        factory = async_sessionmaker(engine, expire_on_commit=False)
+        async with factory() as session:
+            session.add(
+                DatabaseOperationRun(
+                    id=operation_id,
+                    requested_by_user_id=None,
+                    idempotency_key=f"concurrent-terminal-{operation_id}",
+                    operation_type="backup",
+                    status="running",
+                    agent_job_id=str(operation_id),
+                    metadata_json={},
+                    created_at=now,
+                    updated_at=now,
+                )
+            )
+            await session.commit()
+
+        loaded_count = 0
+        both_loaded = asyncio.Event()
+        loaded_guard = asyncio.Lock()
+
+        async def reconcile_once() -> DatabaseOperationRun:
+            nonlocal loaded_count
+            async with factory() as session:
+                operation = await session.get(DatabaseOperationRun, operation_id)
+                assert operation is not None
+                async with loaded_guard:
+                    loaded_count += 1
+                    if loaded_count == 2:
+                        both_loaded.set()
+                await asyncio.wait_for(both_loaded.wait(), timeout=5)
+                return await _reconcile(session, operation)
+
+        results = await asyncio.wait_for(
+            asyncio.gather(reconcile_once(), reconcile_once()), timeout=10
+        )
+
+        assert [result.status for result in results] == ["succeeded", "succeeded"]
+        assert agent_call_count == 2
+        async with factory() as session:
+            operation = await session.get(DatabaseOperationRun, operation_id)
+            audit_count = await session.scalar(
+                sa.select(sa.func.count())
+                .select_from(AdminAuditLog)
+                .where(
+                    AdminAuditLog.target == str(operation_id),
+                    AdminAuditLog.action.in_(
+                        ["database.operation.succeeded", "database.operation.failed"]
+                    ),
+                )
+            )
+        assert operation is not None
+        assert operation.status == "succeeded"
+        assert operation.metadata_json.get("terminal_audited") is True
+        assert audit_count == 1
+    finally:
+        await engine.dispose()
+        async with administrator.begin() as connection:
+            await connection.execute(sa.text(f'DROP SCHEMA IF EXISTS "{schema}" CASCADE'))
+        await administrator.dispose()
 
 
 @pytest.mark.asyncio
@@ -580,7 +952,17 @@ async def test_database_agent_rejections_are_terminal_failed_and_auditable(
     monkeypatch.setattr(settings, "admin_database_maintenance_enabled", True)
     actor = User(id=uuid4(), email="database@example.com", password_hash="unused")
     session = AsyncMock(spec=AsyncSession)
-    session.scalar.side_effect = [None, None, None]
+
+    def scalar_result(_statement: Any) -> DatabaseOperationRun | None:
+        if session.scalar.await_count <= 3:
+            return None
+        return next(
+            call.args[0]
+            for call in session.add.call_args_list
+            if isinstance(call.args[0], DatabaseOperationRun)
+        )
+
+    session.scalar.side_effect = scalar_result
     monkeypatch.setattr(
         DatabaseAgentClient,
         "overview",

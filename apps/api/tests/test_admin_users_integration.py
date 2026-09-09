@@ -9,6 +9,7 @@ import pytest
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy import func, select
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin import users as admin_users
 from app.admin.user_schemas import AdminReasonRequest, AdminUserDetail
@@ -18,7 +19,13 @@ from app.config import get_settings
 from app.db import SessionFactory, engine
 from app.infra import get_redis
 from app.main import app
-from app.models import AccountErasureRequest, AdminAuditLog, AdminRoleAssignment, User
+from app.models import (
+    AccountErasureRequest,
+    AdminAuditLog,
+    AdminRoleAssignment,
+    UsageAccount,
+    User,
+)
 from app.problems import AppError
 
 pytestmark = pytest.mark.skipif(
@@ -144,6 +151,17 @@ async def test_admin_can_manage_accounts_roles_and_usage() -> None:
         )
         assert self_deactivation.status_code == 409
         assert self_deactivation.json()["code"] == "admin_suspension_endpoint_required"
+
+        self_suspension = await client.post(
+            f"/api/v1/admin/users/{admin_id}/suspension",
+            json={
+                "reason": "不應允許直接停權自己",
+                "suspended_until": (datetime.now(UTC) + timedelta(hours=1)).isoformat(),
+            },
+            headers={**admin_headers, "Idempotency-Key": f"admin-test-{uuid4()}"},
+        )
+        assert self_suspension.status_code == 409
+        assert self_suspension.json()["code"] == "admin_self_suspension"
 
         self_adjustment = await client.post(
             f"/api/v1/admin/users/{admin_id}/usage-adjustments",
@@ -321,6 +339,14 @@ async def test_cancel_and_due_worker_do_not_deadlock_on_erasure_rows(
 ) -> None:
     actor = User(id=uuid4(), email=f"erasure-actor-{uuid4()}@example.com")
     target = User(id=uuid4(), email=f"erasure-target-{uuid4()}@example.com")
+    job = Job(
+        id=uuid4(),
+        kind="admin_erase_account",
+        user_id=target.id,
+        status="pending",
+        available_at=datetime.now(UTC) - timedelta(minutes=1),
+        created_at=datetime(2000, 1, 1, tzinfo=UTC),
+    )
     request = AccountErasureRequest(
         id=uuid4(),
         user_id=target.id,
@@ -335,7 +361,7 @@ async def test_cancel_and_due_worker_do_not_deadlock_on_erasure_rows(
         # so make the FK parents durable before flushing the dependent row.
         setup.add_all([actor, target])
         await setup.flush()
-        setup.add(request)
+        setup.add_all([request, job])
         await setup.commit()
 
     monkeypatch.setattr(
@@ -346,40 +372,114 @@ async def test_cancel_and_due_worker_do_not_deadlock_on_erasure_rows(
     monkeypatch.setattr(admin_users, "_environment_designated", Mock(return_value=False))
     monkeypatch.setattr(admin_users, "_ensure_not_last_owner", AsyncMock())
     monkeypatch.setattr(community_jobs, "erase_account", AsyncMock())
-    user_locked = asyncio.Event()
+    worker_claimed_job = asyncio.Event()
+    release_worker = asyncio.Event()
+    cancellation_locked_user = asyncio.Event()
+    cancellation_session: AsyncSession | None = None
+    original_handler = community_jobs.erase_scheduled_admin_account
+    original_user_and_account = admin_users._user_and_account
 
-    async def cancel_after_prelocking_user() -> None:
-        async with SessionFactory() as session:
-            locked = await session.scalar(
-                select(User).where(User.id == target.id).with_for_update()
-            )
-            assert locked is not None
-            user_locked.set()
-            # Give the worker time to issue its first row-lock query. With the
-            # historical request-first order it now holds the other lock and
-            # PostgreSQL detects a deadlock when cancellation continues.
-            await asyncio.sleep(0.2)
-            await admin_users.cancel_admin_erasure(
-                session,
-                target.id,
-                AdminReasonRequest(reason="撤回個資清除"),
-                actor,
-            )
+    async def pause_after_job_claim(session: AsyncSession, user_id: UUID) -> None:
+        assert user_id == target.id
+        # drain_jobs has already selected the pending Job FOR UPDATE before it
+        # dispatches this handler. Hold that real outer lock until cancellation
+        # has reached its competing lock acquisition.
+        worker_claimed_job.set()
+        await release_worker.wait()
+        await original_handler(session, user_id)
 
-    async def run_due_worker() -> None:
-        await user_locked.wait()
-        async with SessionFactory() as session:
-            await community_jobs.erase_scheduled_admin_account(session, target.id)
-            await session.commit()
-
-    await asyncio.wait_for(
-        asyncio.gather(cancel_after_prelocking_user(), run_due_worker()),
-        timeout=5,
+    monkeypatch.setattr(
+        community_jobs,
+        "erase_scheduled_admin_account",
+        pause_after_job_claim,
     )
-    async with SessionFactory() as check:
-        persisted = await check.get(AccountErasureRequest, request.id)
-        assert persisted is not None
-        assert persisted.status == "cancelled"
+
+    async def observe_cancellation_user_lock(
+        session: AsyncSession,
+        user_id: UUID,
+        *,
+        lock_user: bool = False,
+        lock_account: bool = False,
+    ) -> tuple[User, UsageAccount | None]:
+        result = await original_user_and_account(
+            session,
+            user_id,
+            lock_user=lock_user,
+            lock_account=lock_account,
+        )
+        if session is cancellation_session and user_id == target.id and lock_user:
+            cancellation_locked_user.set()
+        return result
+
+    monkeypatch.setattr(admin_users, "_user_and_account", observe_cancellation_user_lock)
+
+    async def cancel_while_worker_holds_job() -> str:
+        nonlocal cancellation_session
+        async with SessionFactory() as session:
+            cancellation_session = session
+            try:
+                await admin_users.cancel_admin_erasure(
+                    session,
+                    target.id,
+                    AdminReasonRequest(reason="撤回個資清除"),
+                    actor,
+                )
+            except AppError as exc:
+                await session.rollback()
+                return exc.code
+        return "cancelled"
+
+    async with SessionFactory() as queue_guard:
+        # Hold every unrelated pending job so drain_jobs' real SKIP LOCKED query can
+        # only claim this test's job and then finish its next bounded iteration.
+        await queue_guard.scalars(
+            select(Job)
+            .where(
+                Job.id != job.id,
+                Job.status == "pending",
+            )
+            .order_by(Job.created_at, Job.id)
+            .with_for_update()
+        )
+        worker_task = asyncio.create_task(community_jobs.drain_jobs())
+        cancel_task: asyncio.Task[str] | None = None
+        try:
+            await asyncio.wait_for(worker_claimed_job.wait(), timeout=5)
+            cancel_task = asyncio.create_task(cancel_while_worker_holds_job())
+            # Under the historical order this event proves cancellation holds
+            # User before the worker continues. Under the corrected Job-first
+            # order cancellation blocks before reaching User, so the bounded
+            # observation expires and the worker is then safe to continue.
+            try:
+                await asyncio.wait_for(cancellation_locked_user.wait(), timeout=0.5)
+            except TimeoutError:
+                pass
+            assert not cancel_task.done()
+            release_worker.set()
+            cancel_result, _ = await asyncio.wait_for(
+                asyncio.gather(cancel_task, worker_task),
+                timeout=5,
+            )
+            assert cancel_result == "admin_erasure_not_scheduled"
+            async with SessionFactory() as check:
+                persisted_request = await check.get(AccountErasureRequest, request.id)
+                persisted_job = await check.get(Job, job.id)
+                persisted_user = await check.get(User, target.id)
+                assert persisted_request is not None
+                assert persisted_request.status == "processing"
+                assert persisted_job is not None
+                assert persisted_job.status == "completed"
+                assert persisted_job.attempts == 0
+                assert persisted_user is not None
+                assert persisted_user.is_active is False
+                assert persisted_user.deleted_at is not None
+        finally:
+            release_worker.set()
+            pending_tasks = [task for task in (cancel_task, worker_task) if not task.done()]
+            for task in pending_tasks:
+                task.cancel()
+            if pending_tasks:
+                await asyncio.gather(*pending_tasks, return_exceptions=True)
 
 
 @pytest.mark.asyncio(loop_scope="module")

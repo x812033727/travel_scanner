@@ -65,3 +65,7 @@ Work is isolated in `codex/admin-operations-center` from `98f8067b`. Docker is n
 the Windows host, so fresh PostgreSQL/Alembic and Compose build remain CI-enforced. Database and
 deployment mutations intentionally have separate allowlists; a role capability alone is not an
 execution grant.
+
+The final concurrency hardening serializes database-operation terminal reconciliation and uses a
+consistent `Job → User → AccountErasureRequest` lock order for erasure cancellation. The
+PostgreSQL race regressions run in CI because the local Windows host has no PostgreSQL service.
