@@ -27,6 +27,17 @@ function setup() {
   return { ...rendered, current: () => report.mock.calls.at(-1)![0] };
 }
 
+async function authenticatedSession(view: ReturnType<typeof setup>) {
+  await screen.findByText("authenticated");
+  // DOM text can commit before SessionProbe's passive effect reports that render.
+  // Wait for the probe itself before capturing or comparing login identities.
+  await waitFor(() => {
+    expect(view.current().status).toBe("authenticated");
+    expect(view.current().sessionIdentity).toBeTruthy();
+  });
+  return view.current();
+}
+
 afterEach(() => { vi.unstubAllGlobals(); vi.restoreAllMocks(); });
 
 describe("HeaderSession login identity", () => {
@@ -34,44 +45,52 @@ describe("HeaderSession login identity", () => {
     const fetchMock = vi.fn(async () => new Response(JSON.stringify(user)));
     vi.stubGlobal("fetch", fetchMock);
     const view = setup();
-    await screen.findByText("authenticated");
-    const initial = view.current();
-    expect(initial.sessionIdentity).toBeTruthy();
+    const initial = await authenticatedSession(view);
     fireEvent.click(screen.getByRole("button", { name: "Currency" }));
-    await waitFor(() => expect(view.current().user?.preferred_currency).toBe("USD"));
-    expect(view.current().user).not.toBe(initial.user);
-    expect(view.current().sessionIdentity).toBe(initial.sessionIdentity);
+    await waitFor(() => {
+      expect(view.current().user?.preferred_currency).toBe("USD");
+      expect(view.current().user).not.toBe(initial.user);
+      expect(view.current().sessionIdentity).toBe(initial.sessionIdentity);
+    });
     fireEvent.click(screen.getByRole("button", { name: "Profile" }));
-    await waitFor(() => expect(view.current().user?.email).toBe("profile@example.com"));
-    expect(view.current().sessionIdentity).toBe(initial.sessionIdentity);
+    await waitFor(() => {
+      expect(view.current().user?.email).toBe("profile@example.com");
+      expect(view.current().sessionIdentity).toBe(initial.sessionIdentity);
+    });
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   it.each(["Clear", "Logout"])("rotates identity after %s and a new login to the same account", async (action) => {
     vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify(user))));
     const view = setup();
-    await screen.findByText("authenticated");
-    const original = view.current().sessionIdentity;
+    const original = (await authenticatedSession(view)).sessionIdentity;
     fireEvent.click(screen.getByRole("button", { name: action }));
     await screen.findByText("signed_out");
-    expect(view.current().sessionIdentity).toBeNull();
-    expect(view.current().user).toBeNull();
+    await waitFor(() => {
+      expect(view.current().status).toBe("signed_out");
+      expect(view.current().sessionIdentity).toBeNull();
+      expect(view.current().user).toBeNull();
+    });
     fireEvent.click(screen.getByRole("button", { name: "Login same account" }));
     await screen.findByText("authenticated");
-    expect(view.current().user?.id).toBe(user.id);
-    expect(view.current().sessionIdentity).toBeTruthy();
-    expect(view.current().sessionIdentity).not.toBe(original);
+    await waitFor(() => {
+      expect(view.current().status).toBe("authenticated");
+      expect(view.current().user?.id).toBe(user.id);
+      expect(view.current().sessionIdentity).toBeTruthy();
+      expect(view.current().sessionIdentity).not.toBe(original);
+    });
   });
 
   it("rotates identity when the authenticated principal changes", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify(user))));
     const view = setup();
-    await screen.findByText("authenticated");
-    const original = view.current().sessionIdentity;
+    const original = (await authenticatedSession(view)).sessionIdentity;
     fireEvent.click(screen.getByRole("button", { name: "Switch account" }));
-    await waitFor(() => expect(view.current().user?.id).toBe("admin-b"));
-    expect(view.current().sessionIdentity).toBeTruthy();
-    expect(view.current().sessionIdentity).not.toBe(original);
+    await waitFor(() => {
+      expect(view.current().user?.id).toBe("admin-b");
+      expect(view.current().sessionIdentity).toBeTruthy();
+      expect(view.current().sessionIdentity).not.toBe(original);
+    });
   });
 
   it("does not revive the old identity from an auth response arriving after logout", async () => {
@@ -80,8 +99,10 @@ describe("HeaderSession login identity", () => {
     const view = setup();
     fireEvent.click(screen.getByRole("button", { name: "Clear" }));
     await act(async () => { finish(new Response(JSON.stringify(user))); });
-    expect(view.current().status).toBe("signed_out");
-    expect(view.current().sessionIdentity).toBeNull();
-    expect(view.current().user).toBeNull();
+    await waitFor(() => {
+      expect(view.current().status).toBe("signed_out");
+      expect(view.current().sessionIdentity).toBeNull();
+      expect(view.current().user).toBeNull();
+    });
   });
 });
