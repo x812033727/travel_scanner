@@ -11,7 +11,6 @@ const cspBaseline =
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "DENY" },
-  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
   { key: "Content-Security-Policy", value: cspBaseline },
   ...(process.env.NODE_ENV === "production"
@@ -24,7 +23,16 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ["127.0.0.1"],
   poweredByHeader: false,
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      {
+        // Next sends config headers before Route Handler headers and will not
+        // overwrite them. Clickouts own their policy: no-referrer on a 303,
+        // same-origin on recoverable HTML so the retry POST retains its Origin.
+        source: "/:path((?!api/travel/.*/clickout/?$).*)",
+        headers: [{ key: "Referrer-Policy", value: "strict-origin-when-cross-origin" }],
+      },
+    ];
   },
 };
 export default withNextIntl(nextConfig);

@@ -1,7 +1,8 @@
 import { stay22AllezCopy } from "./stay22-allez-copy";
+import { hotelBookingPlacements } from "./hotel-booking-placement";
 
 const locales = new Set(["zh-TW", "zh-CN", "en", "ja", "ko"]);
-const placements = new Set(["destination", "hotspot", "trip", "stay", "checklist"]);
+const placements = new Set<string>(hotelBookingPlacements);
 const endpointPattern = /^\/api\/travel\/travel-services\/[a-f0-9-]+\/booking-options\/[a-f0-9-]+\/clickout$/;
 const escape = (value: string) => value.replace(/[&<>"']/g, (character) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",

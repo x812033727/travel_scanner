@@ -258,6 +258,8 @@ class Stay22Config(StrictModel):
     enabled: bool = Field(default=False, strict=True)
     aid: str = Field(default="mokaair", pattern=r"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$")
     enabled_providers: list[Stay22Provider] = Field(default_factory=list, max_length=3)
+    integration_mode: Literal["allez", "script"] = "allez"
+    lma_id: str | None = Field(default=None, pattern=r"^[a-f0-9]{24}$")
 
     @field_validator("enabled_providers")
     @classmethod
@@ -265,6 +267,12 @@ class Stay22Config(StrictModel):
         if len(set(value)) != len(value):
             raise ValueError("Only one entry per Stay22 provider")
         return [provider for provider in STAY22_PROVIDERS if provider in value]
+
+    @model_validator(mode="after")
+    def script_identity(self) -> Self:
+        if self.enabled and self.integration_mode == "script" and not self.lma_id:
+            raise ValueError("An enabled Stay22 script requires its public LMA ID")
+        return self
 
 
 class Facts(StrictModel):

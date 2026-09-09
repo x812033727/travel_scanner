@@ -1,12 +1,29 @@
 import { describe, expect, it } from "vitest";
 import { hotelClickoutErrorPage } from "./hotel-clickout-error";
 import { stay22AllezCopy } from "./stay22-allez-copy";
+import { hotelBookingPlacements } from "./hotel-booking-placement";
 
 const path = "/api/travel/travel-services/1234/booking-options/5678/clickout";
 const defaults = { requestUrl: `https://mokaair.test${path}?locale=ja&placement=trip`, referrer: "https://mokaair.test/ja/trips/abc?tab=stay", locale: "ja", status: 503, contentType: "application/x-www-form-urlencoded" };
 const buffer = (value: string) => new TextEncoder().encode(value).buffer as ArrayBuffer;
 
 describe("safe hotel clickout failure page", () => {
+  it.each(hotelBookingPlacements)("preserves the valid %s placement on retry", async (placement) => {
+    const html = await hotelClickoutErrorPage({ ...defaults,
+      requestUrl: `https://mokaair.test${path}?placement=${placement}`,
+      body: buffer("adults=2&children=1"),
+    }).text();
+    expect(html).toContain(`placement=${placement}&amp;return_to=`);
+    expect(html).toContain('name="adults" value="2"');
+    expect(html).toContain('name="children" value="1"');
+  });
+  it.each(["user_private_id", "https://evil.test", "discovery<script>"])("never reflects unsupported placement %s", async (placement) => {
+    const html = await hotelClickoutErrorPage({ ...defaults,
+      requestUrl: `https://mokaair.test${path}?placement=${encodeURIComponent(placement)}`,
+    }).text();
+    expect(html).not.toContain("placement=");
+    expect(html).not.toContain(placement);
+  });
   it("keeps only bounded form fields and internal return link", async () => {
     const response = hotelClickoutErrorPage({ ...defaults, body: buffer("check_in=2030-11-01&check_out=2030-11-30&adults=2&children=1&aid=secret&link=https://evil.test") });
     const html = await response.text();
