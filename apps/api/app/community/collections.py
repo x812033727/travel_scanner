@@ -6,6 +6,7 @@ account and ownership, and reauthorize referenced content on every read/write.
 
 from __future__ import annotations
 
+from types import SimpleNamespace
 from typing import Any
 from uuid import UUID
 
@@ -14,8 +15,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.schemas import Locale
 from app.community.models import Collection, CollectionItem
-from app.community.policy import fail, rate
-from app.community.schemas import CollectionInput, CollectionItemInput
+from app.community.policy import fail
+from app.community.policy import rate as rate
+from app.community.schemas import CollectionInput
 from app.models import User
 
 
@@ -33,7 +35,9 @@ async def owned_collection(
     session: AsyncSession, user: User, identifier: UUID, *, lock: bool = False
 ) -> Collection:
     await active_account(session, user, lock=lock)
-    query = select(Collection).where(Collection.id == identifier, Collection.user_id == user.id)
+    query = select(Collection).where(
+        Collection.id == identifier, Collection.user_id == user.id, Collection.system_role.is_(None)
+    )
     if lock:
         query = query.with_for_update()
     row = await session.scalar(query.execution_options(populate_existing=True))
@@ -47,7 +51,7 @@ async def list_collections(session: AsyncSession, user: User) -> dict[str, Any]:
     rows = (
         await session.scalars(
             select(Collection)
-            .where(Collection.user_id == user.id)
+            .where(Collection.user_id == user.id, Collection.system_role.is_(None))
             .order_by(Collection.created_at, Collection.id)
             .limit(100)
         )
@@ -60,7 +64,9 @@ async def create_collection(session: AsyncSession, user: User, name: str) -> dic
     await active_account(session, user, lock=True)
     await rate(session, user)
     count = await session.scalar(
-        select(func.count()).select_from(Collection).where(Collection.user_id == user.id)
+        select(func.count())
+        .select_from(Collection)
+        .where(Collection.user_id == user.id, Collection.system_role.is_(None))
     )
     if (count or 0) >= 100:
         raise fail("community_collection_limit", 403)
@@ -73,7 +79,7 @@ async def create_collection(session: AsyncSession, user: User, name: str) -> dic
 async def collection_items(
     session: AsyncSession, user: User, identifier: UUID, locale: Locale
 ) -> dict[str, Any]:
-    from app.discovery.service import resolve_discovery_items
+    from app.saved.service import canonical, project_rows
 
     collection = await owned_collection(session, user, identifier)
     rows = list(
@@ -86,41 +92,27 @@ async def collection_items(
             )
         ).all()
     )
-    keys: list[str | None] = []
-    for row in rows:
-        # Older collections can contain pet places and provider restaurant IDs.
-        # Unsupported references remain privately removable instead of poisoning
-        # a whole discovery collection; their original community view is intact.
-        try:
-            target = str(UUID(row.target))
-        except ValueError:
-            keys.append(None)
-            continue
-        keys.append(
-            f"{row.kind}:{target}"
-            if row.kind in {"hotspot", "food", "merchant", "hotel", "guide", "post"}
-            else None
+    projections = []
+    for offset in range(0, len(rows), 100):
+        projections.extend(
+            await project_rows(
+                session,
+                user,
+                [
+                    SimpleNamespace(
+                        kind=canonical(row.kind, row.target)[0],
+                        target=canonical(row.kind, row.target)[1],
+                        saved_at=row.created_at,
+                    )
+                    for row in rows[offset : offset + 100]
+                ],
+                locale,
+            )
         )
-    supported_keys = [key for key in keys if key is not None]
-    resolved = {}
-    for offset in range(0, len(supported_keys), 100):
-        for item in await resolve_discovery_items(
-            session, supported_keys[offset : offset + 100], user, locale
-        ):
-            resolved[item.id] = item
-    items = []
-    for row, key in zip(rows, keys, strict=True):
-        value = resolved.get(key) if key is not None else None
-        items.append(
-            {
-                "id": str(row.id),
-                "kind": row.kind,
-                "target": row.target,
-                **(
-                    {"discovery": value.model_dump(mode="json")} if value else {"unavailable": True}
-                ),
-            }
-        )
+    items = [
+        {**value, "id": str(row.id), "kind": row.kind, "target": row.target}
+        for row, value in zip(rows, projections, strict=True)
+    ]
     return {"id": str(collection.id), "name": collection.name, "items": items}
 
 
@@ -131,25 +123,26 @@ async def collect_reference(
     kind: str,
     target: str,
     locale: Locale = "zh-TW",
-) -> dict[str, bool]:
-    from app.discovery.service import resolve_discovery_items
+) -> dict[str, Any]:
+    from app.saved.service import (
+        canonical,
+        collection_columns,
+        key_for,
+        public_id,
+        save_reference,
+        states,
+    )
 
-    payload = CollectionItemInput.model_validate({"kind": kind, "target": target})
-    # All discovery references are canonical UUIDs, including the existing kinds.
-    try:
-        canonical = str(UUID(payload.target))
-    except ValueError as exc:
-        raise fail("community_not_found", 404) from exc
+    input_kind = kind
+    kind, target = canonical(kind, target, strict=True)
     await owned_collection(session, user, identifier, lock=True)
-    await rate(session, user)
-    key = f"{payload.kind}:{canonical}"
-    if not await resolve_discovery_items(session, [key], user, locale):
-        raise fail("community_not_found", 404)
+    await save_reference(session, user, input_kind, target)
+    column_kind, column_target = collection_columns()
     existing = await session.scalar(
         select(CollectionItem.id).where(
             CollectionItem.collection_id == identifier,
-            CollectionItem.kind == payload.kind,
-            func.lower(func.replace(CollectionItem.target, "-", "")) == UUID(canonical).hex,
+            column_kind == kind,
+            column_target == target,
         )
     )
     if existing is None:
@@ -160,35 +153,64 @@ async def collect_reference(
         )
         if (count or 0) >= 500:
             raise fail("community_collection_limit", 403)
-        session.add(CollectionItem(collection_id=identifier, kind=payload.kind, target=canonical))
-        from app.analytics.service import record_event
-
-        await record_event(
-            session,
-            "content_saved",
-            path="/explore/collections",
-            user_id=user.id,
-            properties={"kind": payload.kind},
-        )
+        stored = public_id(kind, target)
+        # Collection storage is reference-only and bounded; Google restaurant IDs are opaque.
+        session.add(CollectionItem(collection_id=identifier, kind=kind, target=stored))
+        await session.flush()
+    state = (await states(session, user, [key_for(kind, target)]))["items"][0]
     await session.commit()
-    return {"collected": True, "created": existing is None}
+    return {"collected": True, "created": existing is None, **state}
 
 
 async def remove_reference(
     session: AsyncSession, user: User, identifier: UUID, item_id: UUID
-) -> dict[str, bool]:
+) -> dict[str, Any]:
+    from app.saved.service import canonical, collection_columns, ensure_base, key_for, states
+
     await owned_collection(session, user, identifier, lock=True)
-    await session.execute(
-        delete(CollectionItem).where(
+    await rate(session, user)
+    row = await session.scalar(
+        select(CollectionItem).where(
             CollectionItem.collection_id == identifier, CollectionItem.id == item_id
         )
     )
+    key = key_for(row.kind, row.target) if row else None
+    if row is not None:
+        await ensure_base(session, user, row.kind, row.target, saved_at=row.created_at)
+        kind, target = canonical(row.kind, row.target)
+        column_kind, column_target = collection_columns()
+        # Old clients could store case/UUID-format or hotel/service aliases as
+        # distinct physical rows. Removing the logical membership clears them
+        # all in this list, while the base save and other lists remain intact.
+        await session.execute(
+            delete(CollectionItem).where(
+                CollectionItem.collection_id == identifier,
+                column_kind == kind,
+                column_target == target,
+            )
+        )
+    result = (await states(session, user, [key]))["items"][0] if key else {}
     await session.commit()
-    return {"deleted": True}
+    return {"deleted": True, **result}
 
 
 async def delete_collection(session: AsyncSession, user: User, identifier: UUID) -> dict[str, bool]:
+    from app.saved.service import ensure_base
+
     row = await owned_collection(session, user, identifier, lock=True)
+    await rate(session, user)
+    # Named lists are capped at 500; fail closed if legacy corruption exceeds that bound.
+    items = list(
+        (
+            await session.scalars(
+                select(CollectionItem).where(CollectionItem.collection_id == identifier).limit(501)
+            )
+        ).all()
+    )
+    if len(items) > 500:
+        raise fail("community_collection_limit", 403)
+    for item in items:
+        await ensure_base(session, user, item.kind, item.target, saved_at=item.created_at)
     await session.execute(delete(CollectionItem).where(CollectionItem.collection_id == identifier))
     await session.delete(row)
     await session.commit()

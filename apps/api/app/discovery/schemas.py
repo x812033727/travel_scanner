@@ -4,6 +4,38 @@ from pydantic import BaseModel, ConfigDict, Field, ValidationInfo, field_validat
 
 Kind = Literal["hotspot", "food", "merchant", "hotel", "article", "video", "post", "itinerary"]
 KINDS = ("hotspot", "food", "merchant", "hotel", "article", "video", "post", "itinerary")
+Category = Literal["all", "hotspots", "foods", "hotels", "guides"]
+CATEGORY_KINDS: dict[str, set[str]] = {
+    "hotspots": {"hotspot"},
+    "foods": {"food", "merchant"},
+    "hotels": {"hotel"},
+    "guides": {"article", "video"},
+}
+
+
+class PlanningMerchant(BaseModel):
+    id: str
+    name: str
+    destination_id: str
+    selection_path: str
+
+
+class DiscoveryPlanning(BaseModel):
+    kind: Literal["hotspot", "food", "merchant", "hotel"]
+    id: str
+    destination_id: str | None = None
+    selection_path: str | None = None
+    product_id: str | None = None
+    merchants: list[PlanningMerchant] = Field(default_factory=list)
+
+
+class DiscoveryDetail(BaseModel):
+    intro: dict[str, Any] | None = None
+    place: dict[str, Any] | None = None
+    guides: list[dict[str, Any]] = Field(default_factory=list)
+    merchants: list[dict[str, Any]] = Field(default_factory=list)
+    hotel: dict[str, Any] | None = None
+    planning: DiscoveryPlanning | None = None
 
 
 class DiscoveryItem(BaseModel):
@@ -25,6 +57,7 @@ class DiscoveryItem(BaseModel):
     author: dict[str, Any] | None = None
     recommendation_reason: str | None = None
     content: dict[str, Any] | None = None
+    detail: DiscoveryDetail | None = None
 
 
 class PreferenceInput(BaseModel):

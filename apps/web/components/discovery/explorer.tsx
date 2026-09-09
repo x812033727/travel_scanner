@@ -1,141 +1,108 @@
 "use client";
-import { useEffect, useId, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
-import { ArrowRight, Compass, Search, SlidersHorizontal } from "lucide-react";
+import { ArrowRight, Search, SlidersHorizontal, X } from "lucide-react";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { locales, localeLabels } from "@/i18n/routing";
 import { useHeaderSession } from "@/components/header-session";
 import { useCommunity } from "@/components/community/provider";
-import { Button, Dialog, fieldClass } from "@/components/community/ui";
+import { Button, fieldClass } from "@/components/community/ui";
 import { api } from "@/lib/api";
 import { getDiscoveryCopy, getDiscoveryFeedback } from "@/lib/discovery-copy";
-import { discoveryKinds, discoveryQuery, useDiscoveryResource, useDiscoveryStatus, type DiscoveryItem, type DiscoveryPage, type DiscoveryQuery } from "@/lib/discovery";
+import { getFrontendFlowCopy } from "@/lib/frontend-flow-copy";
+import { discoveryCategories, discoveryKinds, discoveryQuery, useDiscoveryResource, useDiscoveryStatus, type DiscoveryItem, type DiscoveryPage, type DiscoveryQuery } from "@/lib/discovery";
 import { loginPath } from "@/lib/navigation";
-import { DiscoveryCard, DiscoveryDetails } from "./card";
+import { DiscoveryCard } from "./card";
+import { DiscoveryDetailBoundary } from "./detail-drawer";
 import { DiscoveryPreferenceEditor } from "./preferences";
-import { SearchWorkbench } from "@/components/search-workbench";
 import { TravelExplore } from "@/components/community/explore";
+import styles from "./discovery.module.css";
 
 export function DiscoveryHomeGate({ children }: { children: ReactNode }) {
-  const { enabled } = useDiscoveryStatus();
-  return enabled ? <><DiscoveryExplorer home /><section className="mx-auto max-w-4xl px-5 pb-24"><SearchWorkbench /></section></> : children;
+  const { enabled, loading } = useDiscoveryStatus(); const router = useRouter();
+  useEffect(() => {
+    if (!enabled) return;
+    const redirect = () => { if (window.location.hash === "#trip-search") router.replace("/search/new"); };
+    redirect(); window.addEventListener("hashchange", redirect); return () => window.removeEventListener("hashchange", redirect);
+  }, [enabled, router]);
+  return loading ? <main className={styles.page}><DiscoverySkeleton /></main> : enabled ? <DiscoveryExplorer home /> : children;
 }
-
 export function DiscoveryExplorer({ home = false }: { home?: boolean }) {
-  const c = getDiscoveryCopy(useLocale());
-  const t = useTranslations("community");
-  const { enabled, loading } = useDiscoveryStatus();
-  if (loading) return <main className="mx-auto min-h-[60vh] max-w-6xl px-5 py-12"><p role="status">{c.loading}</p></main>;
+  const t = useTranslations("community"); const { enabled, loading } = useDiscoveryStatus();
+  if (loading) return <main className={styles.page}><DiscoverySkeleton /></main>;
   if (!enabled) return <main className="mx-auto max-w-5xl px-5 py-10"><h1 className="mb-6 text-3xl font-bold">{t("exploreTravel")}</h1><TravelExplore /></main>;
-  return <ExplorerContent home={home} />;
+  return <DiscoveryDetailBoundary><ExplorerContent home={home} /></DiscoveryDetailBoundary>;
 }
 function ExplorerContent({ home }: { home: boolean }) {
-  const locale = useLocale();
-  const c = getDiscoveryCopy(locale);
-  const params = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
-  const { user, sessionIdentity } = useHeaderSession();
-  const { flags } = useCommunity();
-  const value: DiscoveryQuery = Object.fromEntries(["q", "type", "destination", "topic", "locale", "mode"].map((key) => [key, home ? "" : params.get(key) || ""]));
-  const query = discoveryQuery(value);
+  const locale = useLocale(); const c = getDiscoveryCopy(locale); const f = getFrontendFlowCopy(locale);
+  const params = useSearchParams(); const router = useRouter(); const pathname = usePathname();
+  const { user, sessionIdentity } = useHeaderSession(); const { flags } = useCommunity();
+  const value: DiscoveryQuery = Object.fromEntries(["q", "type", "category", "destination", "topic", "locale", "mode"].map((key) => [key, params.get(key) || ""]));
   const mode = ["recommended", "latest", "following"].includes(value.mode || "") ? value.mode! : "recommended";
-  const [preferences, setPreferences] = useState(false);
-  const [revision, setRevision] = useState(0);
-  function navigate(patch: DiscoveryQuery) {
-    router.push(`/explore?${discoveryQuery({ ...value, ...patch })}`, { scroll: false });
-  }
+  const [preferences, setPreferences] = useState(false); const [revision, setRevision] = useState(0); const [advanced, setAdvanced] = useState(false);
+  const filterId = useId();
+  const options = useDiscoveryResource<{ destinations: Array<{ id: string; name: string }>; topics?: Array<{ id: string; label: string }> }>("/discovery/suggestions?q=");
+  function navigate(patch: DiscoveryQuery) { const next = discoveryQuery({ ...value, ...patch }); router.push(`/explore${next ? `?${next}` : ""}`, { scroll: false }); }
   const kinds = discoveryKinds.filter((kind) => flags.enabled || !["post", "itinerary"].includes(kind));
-  return <main className="mx-auto min-h-screen max-w-6xl px-5 pb-24 pt-7 md:px-8 md:pt-14">
-    <section className="relative isolate mb-10 overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] p-6 md:p-10">
-      <div aria-hidden className="pointer-events-none absolute -right-16 -top-20 -z-10 size-80 rounded-full border-[36px] border-[var(--line)] opacity-30" />
-      <p className="flex items-center gap-2 text-sm font-semibold text-[var(--teal)]"><Compass size={18} aria-hidden />{c.eyebrow}</p>
-      <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight tracking-tight md:text-6xl">{home ? c.title : c.explore}</h1>
-      <p className="mb-6 mt-4 max-w-2xl text-base leading-7 text-[var(--muted)] md:text-lg">{c.subtitle}</p>
-      <DiscoverySearch key={value.q || ""} initial={value.q || ""} onSearch={(q) => navigate({ q })} />
-      <nav aria-label={c.filters} className="mt-5 flex flex-wrap gap-2">{kinds.slice(0, 6).map((kind) => <Link key={kind} href={`/explore?${discoveryQuery({ type: kind })}`} className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] bg-[var(--surface)] px-4 text-sm font-semibold hover:border-[var(--teal)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--teal)]">{c.kinds[kind]}</Link>)}</nav>
-    </section>
-    <div className="mb-5 flex flex-wrap items-center justify-between gap-3"><h2 className="text-2xl font-bold">{value.q ? `${c.matched}「${value.q}」` : c.feed}</h2>{user ? <Button secondary onClick={() => setPreferences(true)}><SlidersHorizontal size={17} aria-hidden />{c.preferences}</Button> : <Link href={loginPath(`${pathname}${params.size ? `?${params}` : ""}`)} className="inline-flex min-h-11 items-center gap-2 rounded-xl px-3 text-sm font-semibold text-[var(--teal)] underline">{c.preferences}</Link>}</div>
-    <div className="mb-6 flex flex-wrap gap-2" aria-label={c.feed}>{(["recommended", "latest", "following"] as const).filter((key) => key !== "following" || flags.enabled).map((key) => <button type="button" key={key} aria-pressed={mode === key} onClick={() => navigate({ mode: key })} className={`min-h-11 rounded-full border px-5 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--teal)] ${mode === key ? "border-[var(--teal)] bg-[var(--teal)] text-white" : "border-[var(--line)] bg-[var(--surface)]"}`}>{c[key]}</button>)}</div>
-    {params.get("resume_item") && user && <PendingDiscoveryItem identifier={params.get("resume_item")!} kind={params.get("resume_kind") || undefined} />}
-    {params.get("content") && <LinkedContent identifier={params.get("content")!} onClose={() => { const next = new URLSearchParams(params); next.delete("content"); router.replace(`${pathname}${next.size ? `?${next}` : ""}`, { scroll: false }); }} />}
-    {mode === "following" && !user ? <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-8"><p>{c.loginFollowing}</p><Link href={loginPath(`/explore?${query}`)} className="mt-4 inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline">{c.login}</Link></div> : <Results key={`${query}:${revision}`} query={{ ...value, mode }} onFilter={navigate} identity={sessionIdentity} />}
-    <section className="mt-12 flex flex-wrap items-center justify-between gap-5 rounded-3xl border border-[var(--line)] bg-[var(--paper)] p-6 md:p-8"><div><h2 className="text-xl font-bold">{c.planning}</h2><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{c.planningHelp}</p></div><Link href="/trips/new" className="inline-flex min-h-12 items-center gap-3 rounded-xl bg-[var(--teal)] px-5 font-semibold text-white">{c.plan}<ArrowRight size={18} aria-hidden /></Link></section>
+  const selectedFilters = (["q", "destination", "type", "topic", "locale"] as const).filter((key) => value[key] && value[key] !== "all");
+  return <main className={styles.page}>
+    <header className={styles.masthead}><div><p className={styles.eyebrow}>{c.eyebrow}</p><h1 className={styles.title}>{home ? f.editorial : f.results}</h1><p className={styles.intro}>{c.subtitle}</p></div><div className={styles.searchArea}><DiscoverySearch key={value.q || ""} initial={value.q || ""} onSearch={(q) => navigate({ q })} /></div></header>
+    <div className={styles.filters}><nav className={styles.categories} aria-label={c.filters}>{discoveryCategories.map((category) => <button key={category} type="button" className={styles.chip} aria-pressed={(value.category || "all") === category} onClick={() => navigate({ category, type: "" })}>{f.categories[category]}</button>)}</nav>
+      <div className={styles.toolbar}><label className="sr-only" htmlFor={`${filterId}-destination`}>{c.destination}</label><select id={`${filterId}-destination`} className={styles.destination} value={value.destination || ""} onChange={(event) => navigate({ destination: event.target.value })}><option value="">{c.destination}: {c.any}</option>{options.data?.destinations?.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}{value.destination && !options.data?.destinations?.some((item) => item.id === value.destination) && <option value={value.destination}>{value.destination}</option>}</select><button type="button" className={styles.chip} aria-expanded={advanced} aria-controls={filterId} onClick={() => setAdvanced((open) => !open)}><SlidersHorizontal size={17} aria-hidden />{f.advanced}</button></div>
+    </div>
+    {advanced && <section id={filterId} aria-label={f.advanced} className="mb-5 grid gap-3 rounded-xl border border-[var(--line)] bg-[var(--surface)] p-4 sm:grid-cols-3">
+      <label className="text-sm font-semibold">{getDiscoveryFeedback(locale).type}<select value={value.type || "all"} onChange={(event) => navigate({ type: event.target.value })} className={fieldClass}><option value="all">{c.all}</option>{kinds.map((kind) => <option key={kind} value={kind}>{c.kinds[kind]}</option>)}</select></label>
+      <label className="text-sm font-semibold">{c.topic}<select value={value.topic || ""} onChange={(event) => navigate({ topic: event.target.value })} className={fieldClass}><option value="">{c.any}</option>{options.data?.topics?.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}{value.topic && !options.data?.topics?.some((item) => item.id === value.topic) && <option value={value.topic}>{value.topic}</option>}</select></label>
+      <label className="text-sm font-semibold">{c.language}<select value={value.locale || ""} onChange={(event) => navigate({ locale: event.target.value })} className={fieldClass}><option value="">{c.any}</option>{locales.map((value) => <option key={value} value={value}>{localeLabels[value]}</option>)}</select></label>
+    </section>}
+    {selectedFilters.length > 0 && <div className="mb-4 flex flex-wrap gap-2">{selectedFilters.map((key) => { const label = key === "destination" ? options.data?.destinations?.find((item) => item.id === value[key])?.name || value[key] : key === "type" ? c.kinds[value.type as typeof discoveryKinds[number]] || value.type : key === "topic" ? options.data?.topics?.find((item) => item.id === value[key])?.label || value[key] : value[key]; return <button key={key} className={styles.chip} onClick={() => navigate({ [key]: "" })} aria-label={`${f.removeFilter}: ${label}`}>{label}<X size={14} aria-hidden /></button>; })}<Button secondary onClick={() => navigate({ q: "", type: "", destination: "", topic: "", locale: "", category: "" })}>{c.clear}</Button></div>}
+    <div className="mb-4 flex flex-wrap items-center justify-between gap-2"><h2 className={value.q ? "text-xl font-bold" : "sr-only"}>{value.q ? `${c.matched}「${value.q}」` : c.feed}</h2><div className="flex flex-wrap items-center gap-1" aria-label={c.feed}>{(["recommended", "latest", "following"] as const).filter((key) => key !== "following" || flags.enabled).map((key) => <button type="button" key={key} aria-pressed={mode === key} onClick={() => navigate({ mode: key })} className="min-h-11 rounded-lg px-3 text-sm aria-pressed:font-bold aria-pressed:underline aria-pressed:decoration-[var(--teal)] aria-pressed:underline-offset-8 focus-visible:outline focus-visible:outline-2">{c[key]}</button>)}</div>{user ? <Button secondary onClick={() => setPreferences(true)}>{c.preferences}</Button> : <Link href={loginPath(`${pathname}${params.size ? `?${params}` : ""}`)} className="inline-flex min-h-11 items-center text-sm text-[var(--teal)] underline">{c.preferences}</Link>}</div>
+    {mode === "following" && !user ? <section className="rounded-xl border border-[var(--line)] p-6"><p>{c.loginFollowing}</p><Link href={loginPath(`/explore?${discoveryQuery(value)}`)} className="inline-flex min-h-11 items-center text-[var(--teal)] underline">{c.login}</Link></section> : <Results query={{ ...value, mode }} identity={sessionIdentity} revision={revision} />}
+    <section className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--line)] py-7"><div><h2 className="font-bold">{c.planning}</h2><p className="mt-1 text-sm text-[var(--muted)]">{c.planningHelp}</p></div><Link href="/search/new" className="inline-flex min-h-11 items-center gap-2 font-semibold text-[var(--teal)] underline">{f.searchTrips}<ArrowRight size={17} aria-hidden /></Link></section>
     {preferences && user && <DiscoveryPreferenceEditor key={user.id} onClose={() => setPreferences(false)} onSaved={() => { setPreferences(false); setRevision((n) => n + 1); }} />}
   </main>;
 }
-
 function DiscoverySearch({ initial, onSearch }: { initial: string; onSearch: (value: string) => void }) {
-  const c = getDiscoveryCopy(useLocale());
-  const [text, setText] = useState(initial);
-  const [debounced, setDebounced] = useState("");
-  const [show, setShow] = useState(false);
+  const c = getDiscoveryCopy(useLocale()); const [text, setText] = useState(initial); const [debounced, setDebounced] = useState(""); const [show, setShow] = useState(false); const id = useId();
   useEffect(() => { const timer = setTimeout(() => setDebounced(text.trim()), 250); return () => clearTimeout(timer); }, [text]);
   const suggestions = useDiscoveryResource<{ query: string; items: Array<{ label: string; query: string }> }>(show && debounced.length >= 2 ? `/discovery/suggestions?q=${encodeURIComponent(debounced)}` : null);
   function submit(event: FormEvent) { event.preventDefault(); setShow(false); onSearch(text.trim()); }
-  return <div><form role="search" onSubmit={submit} className="flex flex-wrap gap-2 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-2">
-    <label className="sr-only" htmlFor="discovery-search">{c.searchLabel}</label><input id="discovery-search" type="search" maxLength={160} value={text} onFocus={() => setShow(true)} onChange={(event) => { setText(event.target.value); setShow(true); }} onKeyDown={(event) => { if (event.key === "Escape") setShow(false); }} placeholder={c.placeholder} className="min-h-12 min-w-0 flex-1 rounded-xl bg-[var(--surface)] px-4 text-base outline-none focus:ring-2 focus:ring-[var(--teal)]" />
-    <Button type="submit"><Search size={18} aria-hidden />{c.search}</Button>
-  </form>{show && suggestions.data?.query === debounced && suggestions.data.items.length > 0 && <div className="mt-2 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-3"><p className="px-2 text-xs font-semibold text-[var(--muted)]">{c.suggestions}</p><ul>{suggestions.data.items.map((item) => <li key={item.query}><button type="button" onClick={() => { setText(item.query); setShow(false); onSearch(item.query); }} className="min-h-11 w-full rounded-xl px-3 text-left text-sm hover:bg-[var(--paper)] focus-visible:outline focus-visible:outline-2">{item.label}</button></li>)}</ul></div>}</div>;
+  return <div><form role="search" onSubmit={submit} className={styles.search}><label className="sr-only" htmlFor={id}>{c.searchLabel}</label><input id={id} type="search" maxLength={160} value={text} onFocus={() => setShow(true)} onChange={(event) => { setText(event.target.value); setShow(true); }} onKeyDown={(event) => { if (event.key === "Escape") setShow(false); }} placeholder={c.placeholder} /><Button type="submit" aria-label={c.search}><Search size={18} aria-hidden /></Button></form>
+    {show && suggestions.data?.query === debounced && suggestions.data.items?.length > 0 && <div className="mt-2 rounded-xl border border-[var(--line)] bg-[var(--surface)] p-2"><p className="px-2 text-xs text-[var(--muted)]">{c.suggestions}</p><ul>{suggestions.data.items.map((item) => <li key={item.query}><button type="button" onClick={() => { setText(item.query); setShow(false); onSearch(item.query); }} className="min-h-11 w-full rounded-lg px-3 text-left text-sm focus-visible:outline focus-visible:outline-2">{item.label}</button></li>)}</ul></div>}
+  </div>;
 }
-
-function Results({ query, onFilter, identity }: { query: DiscoveryQuery; onFilter: (patch: DiscoveryQuery) => void; identity: object | null }) {
-  // Recreate pagination on an actual login/logout, including the same principal logging in again.
-  const [owner, setOwner] = useState(identity);
-  const [cursor, setCursor] = useState<string | null>(null);
-  const [previous, setPrevious] = useState<DiscoveryItem[]>([]);
-  const [hidden, setHidden] = useState<string[]>([]);
-  const [undoItem, setUndoItem] = useState<DiscoveryItem>();
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState(false);
-  const [filtersOpen, setFiltersOpen] = useState(Boolean(query.type || query.destination || query.topic || query.locale));
-  const filterPanelId = useId();
-  if (owner !== identity) { setOwner(identity); setCursor(null); setPrevious([]); setHidden([]); setUndoItem(undefined); }
-  const locale = useLocale();
-  const c = getDiscoveryCopy(locale);
-  const { user } = useHeaderSession();
-  const { flags } = useCommunity();
-  const params = useSearchParams();
-  const options = useDiscoveryResource<{ destinations: Array<{ id: string; name: string }>; topics?: Array<{ id: string; label: string }> }>("/discovery/suggestions?q=");
+type PageState = { cursor: string | null; previous: DiscoveryItem[] };
+function Results({ query, identity, revision }: { query: DiscoveryQuery; identity: object | null; revision: number }) {
+  const c = getDiscoveryCopy(useLocale()); const { user } = useHeaderSession(); const { flags } = useCommunity();
+  const scope = `${discoveryQuery(query)}:${revision}`;
+  const [owner, setOwner] = useState(identity); const [pages, setPages] = useState<Record<string, PageState>>({});
+  const [hidden, setHidden] = useState<string[]>([]); const [undoItem, setUndoItem] = useState<DiscoveryItem>(); const [busy, setBusy] = useState(false); const [error, setError] = useState(false);
+  const ownerRef = useRef(identity); const requests = useRef(new Set<AbortController>());
+  useLayoutEffect(() => { ownerRef.current = identity; }, [identity]);
+  useEffect(() => { const active = requests.current; return () => { active.forEach((request) => request.abort()); }; }, [identity]);
+  if (owner !== identity) { setOwner(identity); setPages({}); setHidden([]); setUndoItem(undefined); }
+  const page = pages[scope]; const cursor = page?.cursor;
   const path = `/discovery/${query.q ? "search" : "feed"}?${discoveryQuery(query)}${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ""}`;
-  const result = useDiscoveryResource<DiscoveryPage>(path);
-  const items = [...new Map([...previous, ...(result.data?.items || [])].map((item) => [item.id, item])).values()].filter((item) => !hidden.includes(item.id) && (flags.enabled || (item.source.kind !== "community" && !["post", "itinerary"].includes(item.kind))));
+  const result = useDiscoveryResource<DiscoveryPage>(path, true);
+  const data = result.data;
+  const items = [...new Map([...(page?.previous || []), ...(data?.items || [])].map((item) => [item.id, item])).values()].filter((item) => !hidden.includes(item.id) && (flags.enabled || (item.source.kind !== "community" && !["post", "itinerary"].includes(item.kind))));
   async function dismiss(item: DiscoveryItem, dismissed: boolean) {
+    const controller = new AbortController(); requests.current.add(controller);
     setBusy(true); setError(false);
-    try { await api("/discovery/dismiss", { method: "POST", body: JSON.stringify({ id: item.id, dismissed }) }); setHidden((ids) => dismissed ? [...ids, item.id] : ids.filter((id) => id !== item.id)); setUndoItem(dismissed ? item : undefined); }
-    catch { setError(true); } finally { setBusy(false); }
+    try { await api("/discovery/dismiss", { method: "POST", body: JSON.stringify({ id: item.id, dismissed }), signal: controller.signal }); if (controller.signal.aborted || ownerRef.current !== identity) return; setHidden((ids) => dismissed ? [...ids, item.id] : ids.filter((id) => id !== item.id)); setUndoItem(dismissed ? item : undefined); }
+    catch { if (!controller.signal.aborted && ownerRef.current === identity) setError(true); } finally { requests.current.delete(controller); if (!controller.signal.aborted && ownerRef.current === identity) setBusy(false); }
   }
-  const kinds = discoveryKinds.filter((kind) => flags.enabled || !["post", "itinerary"].includes(kind));
-  return <section aria-label={c.filters} className="space-y-5">
-    <Button secondary className="sm:hidden" aria-expanded={filtersOpen} aria-controls={filterPanelId} onClick={() => setFiltersOpen((open) => !open)}><SlidersHorizontal size={17} aria-hidden />{c.filters}</Button>
-    <div id={filterPanelId} className={`${filtersOpen ? "grid" : "hidden"} gap-3 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 sm:grid sm:grid-cols-2 lg:grid-cols-4`}>
-      <label className="text-sm font-semibold">{getDiscoveryFeedback(locale).type}<select value={query.type || "all"} onChange={(event) => onFilter({ type: event.target.value })} className={fieldClass}><option value="all">{c.all}</option>{kinds.map((kind) => <option key={kind} value={kind}>{c.kinds[kind]}</option>)}</select></label>
-      <label className="text-sm font-semibold">{c.destination}<select value={query.destination || ""} onChange={(event) => onFilter({ destination: event.target.value })} className={fieldClass}><option value="">{c.any}</option>{options.data?.destinations?.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}{query.destination && !options.data?.destinations?.some((item) => item.id === query.destination) && <option value={query.destination}>{query.destination}</option>}</select></label>
-      <label className="text-sm font-semibold">{c.topic}<select value={query.topic || ""} onChange={(event) => onFilter({ topic: event.target.value })} className={fieldClass}><option value="">{c.any}</option>{options.data?.topics?.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}{query.topic && !options.data?.topics?.some((item) => item.id === query.topic) && <option value={query.topic}>{query.topic}</option>}</select></label>
-      <label className="text-sm font-semibold">{c.language}<select value={query.locale || ""} onChange={(event) => onFilter({ locale: event.target.value })} className={fieldClass}><option value="">{c.any}</option>{locales.map((value) => <option key={value} value={value}>{localeLabels[value]}</option>)}</select></label>
-    </div>
-    {(query.type || query.destination || query.topic || query.locale || query.q) && <Button secondary onClick={() => onFilter({ type: "", destination: "", topic: "", locale: "", q: "" })}>{c.clear}</Button>}
-    {undoItem && <div role="status" className="flex flex-wrap items-center gap-3 rounded-xl bg-[var(--paper)] p-3"><p>{c.dismissed}</p><Button secondary disabled={busy} onClick={() => void dismiss(undoItem, false)}>{c.undo}</Button></div>}
-    {(Boolean(result.error) || error) && <div role="alert" className="space-y-2"><p>{c.unavailable}</p>{Boolean(result.error) && <Button secondary onClick={() => { if (cursor) { setCursor(null); setPrevious([]); } else result.reload(); }}>{c.retry}</Button>}</div>}
-    {result.loading && <p role="status" className="rounded-2xl bg-[var(--paper)] p-6 text-[var(--muted)]">{c.loading}</p>}
-    {!result.loading && !result.error && !items.length && <p className="rounded-2xl border border-dashed border-[var(--line)] p-8 text-center leading-7 text-[var(--muted)]">{c.empty}</p>}
-    <div className="grid items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3">{items.filter((item) => !user || item.id !== params.get("resume_item")).map((item) => <DiscoveryCard key={item.id} item={item} onDismiss={user && !busy ? (row) => void dismiss(row, true) : undefined} />)}</div>
-    {result.data?.next_cursor && <div className="flex justify-center"><Button secondary disabled={result.loading} onClick={() => { setPrevious(items); setCursor(result.data!.next_cursor); }}>{c.more}</Button></div>}
+  return <section aria-label={c.feed} className="space-y-5">
+    {undoItem && <div role="status" className="flex items-center gap-3 rounded-xl bg-[var(--paper)] p-3"><p>{c.dismissed}</p><Button secondary disabled={busy} onClick={() => void dismiss(undoItem, false)}>{c.undo}</Button></div>}
+    {(Boolean(result.error) || error) && <div role="alert"><p>{c.unavailable}</p><Button secondary onClick={() => { setError(false); if (cursor) setPages((all) => ({ ...all, [scope]: { cursor: null, previous: [] } })); else result.reload(); }}>{c.retry}</Button></div>}
+    {result.loading && !items.length && <DiscoverySkeleton />}
+    {!result.loading && !result.error && !items.length && <p className="rounded-xl border border-dashed border-[var(--line)] p-8 text-center text-[var(--muted)]">{c.empty}</p>}
+    <div className={styles.grid}>{items.map((item) => <DiscoveryCard key={item.id} item={item} onDismiss={user && !busy ? (row) => void dismiss(row, true) : undefined} />)}</div>
+    {data?.next_cursor && <div className="flex justify-center"><Button secondary disabled={result.loading} onClick={() => setPages((all) => ({ ...all, [scope]: { cursor: data.next_cursor, previous: items } }))}>{c.more}</Button></div>}
   </section>;
 }
-function PendingDiscoveryItem({ identifier, kind }: { identifier: string; kind?: string }) {
-  const c = getDiscoveryCopy(useLocale());
-  const [prefix, id] = identifier.split(":");
-  const resolvedKind = kind || (prefix === "guide" ? "article" : prefix);
-  const valid = /^[a-f0-9-]{36}$/i.test(id || "") && discoveryKinds.includes(resolvedKind as typeof discoveryKinds[number]);
-  const result = useDiscoveryResource<DiscoveryItem>(valid ? `/discovery/content/${resolvedKind}/${id}` : null);
-  if (!valid || result.error) return <p role="alert" className="mb-6 rounded-xl bg-[var(--paper)] p-4">{c.unavailable}</p>;
-  return result.data ? <div className="mb-6 max-w-lg"><DiscoveryCard key={identifier} item={result.data} /></div> : <p role="status">{c.loading}</p>;
-}
-function LinkedContent({ identifier, onClose }: { identifier: string; onClose: () => void }) {
-  const c = getDiscoveryCopy(useLocale());
-  const [kind, id] = identifier.split(":");
-  if (!discoveryKinds.includes(kind as typeof discoveryKinds[number]) || !/^[a-f0-9-]{36}$/i.test(id || "")) return <p role="alert">{c.unavailable}</p>;
-  return <Dialog title={c.details} onClose={onClose}><DiscoveryDetails kind={kind} id={id} /></Dialog>;
+export function DiscoverySkeleton() {
+  const c = getFrontendFlowCopy(useLocale());
+  return <div role="status" aria-label={c.loading}><span className="sr-only">{c.loading}</span><div aria-hidden className={styles.grid}>{[0, 1, 2].map((index) => <div key={index} className={styles.card}><div className={`${styles.skeleton} ${styles.skeletonImage}`} /><div className={styles.cardBody}><div className={`${styles.skeleton} ${styles.skeletonLine}`} /><div className={`${styles.skeleton} ${styles.skeletonLine}`} /></div></div>)}</div></div>;
 }

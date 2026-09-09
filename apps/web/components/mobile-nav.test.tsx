@@ -1,12 +1,24 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { HeaderSessionProvider } from "./header-session";
 import { MobileNav } from "./mobile-nav";
 import { ThemeProvider } from "./theme-provider";
 
 afterEach(() => vi.unstubAllGlobals());
+const discovery = vi.hoisted(() => ({ enabled: false, loading: false }));
+vi.mock("@/lib/discovery", () => ({useDiscoveryStatus: () => discovery}));
+beforeEach(() => { discovery.enabled = false; discovery.loading = false; });
 
 describe("MobileNav", () => {
+  it("uses compact discovery controls and avoids flashing old controls while loading", () => {
+    discovery.loading = true;
+    const view = render(<ThemeProvider><MobileNav /></ThemeProvider>);
+    expect(screen.queryByRole("button", {name:"開啟導覽選單"})).toBeNull();
+    discovery.loading = false; discovery.enabled = true;
+    view.rerender(<ThemeProvider><MobileNav /></ThemeProvider>);
+    expect(screen.getByRole("link", {name:"探索"}).getAttribute("href")).toBe("/explore");
+    expect(screen.getByRole("link", {name:"我的"}).getAttribute("href")).toBe("/my");
+  });
   it("keeps the top bar down to the account and the menu", () => {
     render(<ThemeProvider><MobileNav /></ThemeProvider>);
     // Appearance, language and text size are display preferences with a word

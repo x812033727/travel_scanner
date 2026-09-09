@@ -8,7 +8,7 @@ from typing import Annotated, Any, Literal
 from uuid import UUID
 
 from fastapi import APIRouter, Query
-from sqlalchemy import Text, and_, case, cast, delete, func, or_, select
+from sqlalchemy import Text, and_, case, cast, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import CurrentUser, OptionalCurrentUser
@@ -577,7 +577,9 @@ async def unified_saved(
 async def collections(user: CurrentUser, session: OpenSession) -> dict[str, Any]:
     rows = (
         await session.scalars(
-            select(Collection).where(Collection.user_id == user.id).order_by(Collection.created_at)
+            select(Collection)
+            .where(Collection.user_id == user.id, Collection.system_role.is_(None))
+            .order_by(Collection.created_at)
         )
     ).all()
     return {"items": [{"id": str(row.id), "name": row.name} for row in rows]}
@@ -592,7 +594,9 @@ async def create_collection(
     await member(session, user, lock=True)
     await rate(session, user)
     count = await session.scalar(
-        select(func.count()).select_from(Collection).where(Collection.user_id == user.id)
+        select(func.count())
+        .select_from(Collection)
+        .where(Collection.user_id == user.id, Collection.system_role.is_(None))
     )
     if (count or 0) >= 100:
         raise fail("community_collection_limit", 403)
@@ -603,10 +607,9 @@ async def create_collection(
 
 
 async def owned_collection(session: AsyncSession, identifier: UUID, user: User) -> Collection:
-    row = await session.get(Collection, identifier, with_for_update=True)
-    if row is None or row.user_id != user.id:
-        raise fail("community_not_found", 404)
-    return row
+    from app.community.collections import owned_collection as owned
+
+    return await owned(session, user, identifier, lock=True)
 
 
 @router.put("/collections/{identifier}")
@@ -626,11 +629,9 @@ async def rename_collection(
 async def delete_collection(
     identifier: UUID, user: CurrentUser, session: OpenSession
 ) -> dict[str, bool]:
-    row = await owned_collection(session, identifier, user)
-    await session.execute(delete(CollectionItem).where(CollectionItem.collection_id == identifier))
-    await session.delete(row)
-    await session.commit()
-    return {"deleted": True}
+    from app.community.collections import delete_collection as remove
+
+    return await remove(session, user, identifier)
 
 
 @router.get("/collections/{identifier}/items")
@@ -687,6 +688,9 @@ async def collect(
     user: CurrentUser,
     session: OpenSession,
 ) -> dict[str, bool]:
+    from app.saved.service import ensure_base, lock_account
+
+    await lock_account(session, user)
     await member(session, user, lock=True)
     await owned_collection(session, identifier, user)
     if payload.kind == "post":
@@ -705,6 +709,7 @@ async def collect(
             raise fail("community_not_found", 404)
     else:
         await resolve_place(session, payload.kind, payload.target)
+    await ensure_base(session, user, payload.kind, payload.target)
     target_filter = CollectionItem.target == payload.target
     if payload.kind in {"post", "guide", "hotel"}:
         target_filter = (
@@ -771,13 +776,7 @@ async def remove_collected(
     item_id: UUID,
     user: CurrentUser,
     session: OpenSession,
-) -> dict[str, bool]:
-    await owned_collection(session, identifier, user)
-    await session.execute(
-        delete(CollectionItem).where(
-            CollectionItem.collection_id == identifier,
-            CollectionItem.id == item_id,
-        )
-    )
-    await session.commit()
-    return {"deleted": True}
+) -> dict[str, Any]:
+    from app.community.collections import remove_reference
+
+    return await remove_reference(session, user, identifier, item_id)

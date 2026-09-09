@@ -1,5 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 import { getDiscoveryCopy } from "../lib/discovery-copy";
+import { getFrontendFlowCopy } from "../lib/frontend-flow-copy";
+import { frontendCopy } from "../lib/frontend-navigation";
 import type { DiscoveryItem, DiscoveryPreferences } from "../lib/discovery";
 
 // Isolated UX fixtures only. No provider content, paid calls or production account.
@@ -66,40 +68,39 @@ for (const locale of ["zh-TW", "zh-CN", "en", "ja", "ko"]) {
     const c = getDiscoveryCopy(locale);
     await fixtures(page);
     await page.goto(`/${locale}/explore`);
-    await expect(page.getByRole("heading", { level: 1, name: c.explore, exact: true })).toBeVisible();
-    await expect(page.getByRole("button", { name: items[0].title, exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: getFrontendFlowCopy(locale).results, exact: true })).toBeVisible();
+    await expect(page.getByRole("link", { name: items[0].title, exact: true })).toBeVisible();
     await expect(page.getByLabel(c.searchLabel, { exact: true })).toBeVisible();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1);
     expect(overflow).toBe(false);
     if (info.project.name === "mobile-chromium") {
       const tabs = page.locator(".app-bottom-nav");
       await expect(tabs.getByRole("link")).toHaveCount(4);
-      await expect(tabs.getByRole("link", { name: c.trips, exact: true })).toBeVisible();
+      await expect(tabs.getByRole("link", { name: frontendCopy(locale).trips, exact: true })).toBeVisible();
       for (const link of await tabs.getByRole("link").all()) expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44);
     }
     await page.screenshot({ path: info.outputPath(`discovery-${locale}.png`), fullPage: true });
   });
 }
 
-test("search filters persist through reload/back and empty results do not invent content", async ({ page, isMobile }) => {
+test("search filters persist through reload/back and empty results do not invent content", async ({ page }) => {
   const c = getDiscoveryCopy("en"); await fixtures(page);
   await page.goto("/en/explore");
-  if (isMobile) await page.getByRole("button", { name: c.filters, exact: true }).click();
   await page.getByRole("combobox", { name: c.destination, exact: true }).selectOption("osaka-kyoto");
   await expect(page).toHaveURL(/destination=osaka-kyoto/);
-  await expect(page.getByRole("button", { name: items[0].title, exact: true })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: items[0].title, exact: true })).toHaveCount(0);
   await page.getByLabel(c.searchLabel).fill("Kyoto");
   await page.getByRole("button", { name: c.search, exact: true }).click();
   await expect(page).toHaveURL(/q=Kyoto/);
-  await expect(page.getByRole("button", { name: items[1].title, exact: true })).toBeVisible();
-  await expect(page.getByRole("button", { name: items[0].title, exact: true })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: items[1].title, exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: items[0].title, exact: true })).toHaveCount(0);
   await page.reload();
   await expect(page.getByLabel(c.searchLabel)).toHaveValue("Kyoto");
   await page.getByLabel(c.searchLabel).fill("nonexistent-fixture");
   await page.getByRole("button", { name: c.search, exact: true }).click();
   await expect(page.getByText(c.empty, { exact: true })).toBeVisible();
   await page.goBack();
-  await expect(page.getByRole("button", { name: items[1].title, exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: items[1].title, exact: true })).toBeVisible();
 });
 
 test("video connects only on explicit click, preserves source and returns keyboard focus", async ({ page }, info) => {
@@ -107,9 +108,10 @@ test("video connects only on explicit click, preserves source and returns keyboa
   let externalFrames = 0;
   await page.route("https://www.youtube-nocookie.com/**", async (route) => { externalFrames += 1; await route.fulfill({ contentType: "text/html", body: "<p>Isolated player fixture</p>" }); });
   await page.goto("/en/explore?type=video");
-  const trigger = page.getByRole("button", { name: items[1].title, exact: true });
+  const trigger = page.getByRole("link", { name: items[1].title, exact: true });
   await trigger.click();
-  const dialog = page.getByRole("dialog", { name: items[1].title, exact: true });
+  const dialog = page.getByRole("dialog", { name: c.details, exact: true });
+  await expect(page).toHaveURL(/content=video/);
   await expect(dialog.getByRole("button", { name: c.loadVideo })).toBeVisible();
   expect(externalFrames).toBe(0);
   await dialog.getByRole("button", { name: c.loadVideo }).click();
@@ -133,12 +135,12 @@ test("discovery paused keeps original home and does not reveal the new nav", asy
   await expect(page.locator('.app-bottom-nav a[href="/explore/collections"]')).toHaveCount(0);
   await page.goto("/en/explore");
   await expect(page.locator('main a[href="/en/hotspots"]').first()).toBeVisible();
-  await expect(page.getByRole("button", { name: items[0].title, exact: true })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: items[0].title, exact: true })).toHaveCount(0);
 });
 
 test("private collections ask for login without blocking public discovery", async ({ page }) => {
   const c = getDiscoveryCopy("en"); await fixtures(page);
   await page.goto("/en/explore/collections");
-  await expect(page.getByRole("heading", { name: c.collections, exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: getFrontendFlowCopy("en").allSaved, exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: c.login, exact: true })).toHaveAttribute("href", /login\?next=/);
 });

@@ -1525,6 +1525,36 @@ _DISCOVERY_ERRORS: dict[str, dict[str, str]] = {
 for _discovery_locale in LOCALES:
     ERROR_DETAILS[_discovery_locale].update(_DISCOVERY_ERRORS[_discovery_locale])
 
+_SAVED_FLOW_ERRORS: dict[Locale, dict[str, str]] = {
+    "en": {
+        "saved_account_changed": "Your signed-in account changed. Reload before saving.",
+        "saved_item_limit": "Your saved-reference inbox is full. Remove some saved items first.",
+        "saved_cursor_invalid": "This saved-items page is no longer valid. Reload your collection.",
+    },
+    "zh-TW": {
+        "saved_account_changed": "登入帳號已變更，請重新載入後再收藏。",
+        "saved_item_limit": "收藏收件匣已滿，請先移除部分收藏。",
+        "saved_cursor_invalid": "這頁收藏已失效，請重新載入收藏清單。",
+    },
+    "zh-CN": {
+        "saved_account_changed": "登录账号已变更，请重新加载后再收藏。",
+        "saved_item_limit": "收藏收件箱已满，请先移除部分收藏。",
+        "saved_cursor_invalid": "这页收藏已失效，请重新加载收藏列表。",
+    },
+    "ja": {
+        "saved_account_changed": "ログイン中のアカウントが変わりました。再読み込みしてください。",
+        "saved_item_limit": "保存済み項目が上限に達しました。先に一部の項目を削除してください。",
+        "saved_cursor_invalid": "この保存済み一覧ページは無効です。再読み込みしてください。",
+    },
+    "ko": {
+        "saved_account_changed": "로그인 계정이 변경되었습니다. 새로고침한 후 저장하세요.",
+        "saved_item_limit": "저장함이 가득 찼습니다. 일부 저장 항목을 먼저 삭제하세요.",
+        "saved_cursor_invalid": "유효하지 않은 저장 목록 페이지입니다. 새로고침해 주세요.",
+    },
+}
+for _saved_locale in LOCALES:
+    ERROR_DETAILS[_saved_locale].update(_SAVED_FLOW_ERRORS[_saved_locale])
+
 
 def request_locale(headers: object) -> Locale:
     getter = getattr(headers, "get", None)

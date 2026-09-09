@@ -150,9 +150,16 @@ class Reaction(Base):
 
 class Collection(Timestamped, Base):
     __tablename__ = "community_collections"
+    __table_args__ = (
+        UniqueConstraint("user_id", "system_role", name="uq_collection_system_role"),
+        CheckConstraint(
+            "system_role IS NULL OR system_role = 'inbox'", name="ck_collection_system_role"
+        ),
+    )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id"), index=True)
     name: Mapped[str] = mapped_column(String(80))
+    system_role: Mapped[str | None] = mapped_column(String(16), nullable=True)
 
 
 class CollectionItem(Base):
@@ -163,7 +170,7 @@ class CollectionItem(Base):
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     collection_id: Mapped[UUID] = mapped_column(ForeignKey("community_collections.id"), index=True)
     kind: Mapped[str] = mapped_column(String(20))
-    target: Mapped[str] = mapped_column(String(160))
+    target: Mapped[str] = mapped_column(String(255))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 

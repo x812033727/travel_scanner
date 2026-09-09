@@ -69,9 +69,10 @@ describe("AccountSavedItems", () => {
       screen.getByRole("button", { name: "移除收藏：香港海洋公園" }),
     );
     await waitFor(() =>
-      expect(apiMock).toHaveBeenCalledWith("/saved-items/hotspot/hotspot-1", {
+      expect(apiMock).toHaveBeenCalledWith("/saved-items/hotspot/hotspot-1", expect.objectContaining({
         method: "DELETE",
-      }),
+        signal: expect.any(AbortSignal),
+      })),
     );
     expect(screen.queryByText("香港海洋公園")).toBeNull();
   });

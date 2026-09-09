@@ -1,6 +1,6 @@
 "use client";
 
-import { CircleUserRound, LogIn, Menu, ShieldCheck, X } from "lucide-react";
+import { CircleUserRound, LogIn, Menu, Search, ShieldCheck, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -17,6 +17,7 @@ import { featureVisible } from "@/lib/site-features";
 import { useCommunity } from "@/components/community/provider";
 import { useDiscoveryStatus } from "@/lib/discovery";
 import { getDiscoveryCopy } from "@/lib/discovery-copy";
+import { frontendCopy } from "@/lib/frontend-navigation";
 
 export function MobileNav() {
   const { status, user } = useHeaderSession();
@@ -27,6 +28,7 @@ export function MobileNav() {
   const locale = useLocale() as Locale;
   const discovery = useDiscoveryStatus();
   const discoveryCopy = getDiscoveryCopy(locale);
+  const flowCopy = frontendCopy(locale);
   const { preference } = useTheme();
   const themeValue = nav(preference === "system" ? "themeSystem" : preference === "dark" ? "themeDark" : "themeLight");
   const visibility = useSiteVisibility();
@@ -64,6 +66,11 @@ export function MobileNav() {
   // gear and a 文A glyph do. Appearance, language and text size are all display
   // preferences, so they moved into the menu where each one has a word next to it,
   // and the bar keeps the two things people reach for: their account and the menu.
+  if (discovery.loading) return <div aria-hidden className="h-11 w-24 rounded-xl bg-[var(--paper)] lg:hidden" />;
+  if (discovery.enabled) return <div className="flex items-center gap-1 lg:hidden">
+    <Link href="/explore" aria-label={flowCopy.explore} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><Search size={21} aria-hidden /></Link>
+    <Link href="/my" aria-label={flowCopy.my} className="grid h-11 w-11 place-items-center rounded-xl text-[var(--teal)] focus-visible:outline focus-visible:outline-2"><CircleUserRound size={21} aria-hidden /></Link>
+  </div>;
   return <div className="flex items-center gap-1 lg:hidden">
     {/* The desktop nav that carries the admin link is hidden below lg, and neither the
         bottom bar nor the account page offers one, so without this an administrator on a
