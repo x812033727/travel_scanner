@@ -1166,6 +1166,7 @@ async def add_manual_guide(
             locale=payload.locale,
             language_confidence=Decimal("1.000"),
             metadata={
+                **imported.metadata,
                 "discovery_method": "manual",
                 "requested_locale": payload.locale,
                 "detected_locale": imported.locale,

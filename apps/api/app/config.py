@@ -93,6 +93,7 @@ class Settings(BaseSettings):
     settings_encryption_key: str | None = None
     admin_emails: str = ""
     community_enabled: bool = False
+    discovery_enabled: bool = False
     community_s3_endpoint: str | None = None
     community_s3_public_endpoint: str | None = None
     community_s3_region: str = "us-east-1"

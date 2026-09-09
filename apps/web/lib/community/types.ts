@@ -13,6 +13,7 @@ export type PublicProfile = {
   following?: boolean; can_message?: boolean;
 };
 export type CommunityMe = { profile: PublicProfile | null; verified: boolean; restricted: boolean;
+  creator_invited?: boolean; can_publish?: boolean; invitation_required?: boolean;
   notification_preferences: Record<string, boolean> };
 export type Media = { id: string; alt: string; width: number; height: number };
 export type CatalogPlace = { id: string; kind: "pet_place" | "hotspot" | "merchant";
@@ -22,6 +23,7 @@ export type PublicItinerary = { destination: string; timezone: string; days: num
   duration_minutes: number | null; names: Record<string, string>;
 }> };
 export type Post = {
+  video_refs?: import("@/lib/discovery").DiscoveryVideo[];
   id: string; revision_id: string; author: PublicProfile; title: string; body: string;
   locale: string; destination: string; kind: "story" | "guide" | "pet_visit"; topics: string[];
   place_ids: string[]; places?: CatalogPlace[]; media: Media[]; itinerary: PublicItinerary | null; allow_fork: boolean;

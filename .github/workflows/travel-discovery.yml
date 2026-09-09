@@ -1,0 +1,102 @@
+name: Travel discovery acceptance
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  discovery-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env: { POSTGRES_DB: travel_scanner, POSTGRES_USER: travel, POSTGRES_PASSWORD: travel }
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U travel -d travel_scanner"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+      redis:
+        image: redis:7.4-alpine
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+    env:
+      DATABASE_URL: postgresql+asyncpg://travel:travel@127.0.0.1:5432/travel_scanner
+      REDIS_URL: redis://127.0.0.1:6379/0
+      APP_SECRET_KEY: discovery-ci-secret-at-least-32-characters
+      TRAVEL_PROVIDER_MODE: mock
+      FLIGHT_PROVIDER_MODE: mock
+      API_INTERNAL_URL: http://127.0.0.1:8000
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      PLAYWRIGHT_BASE_URL: http://localhost:3000
+      PLAYWRIGHT_REUSE_EXISTING: "true"
+      PLAYWRIGHT_SERVE_BUILD: "true"
+      DISCOVERY_ENABLED: "true"
+      COMMUNITY_ENABLED: "true"
+      DISCOVERY_E2E: "1"
+      AUTH_REGISTER_IP_LIMIT: "100"
+      AUTH_LOGIN_IP_LIMIT: "100"
+      COMMUNITY_SMTP_HOST: 127.0.0.1
+      COMMUNITY_SMTP_PORT: "1025"
+      COMMUNITY_SMTP_STARTTLS: "false"
+      COMMUNITY_MAIL_FROM: Mokaair CI <accounts@example.test>
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with: { python-version: "3.13" }
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm }
+      - run: uv sync --frozen
+        working-directory: apps/api
+      - run: npm ci
+      - run: uv run alembic upgrade head
+        working-directory: apps/api
+      - run: npm run build:web
+      - name: Start isolated mail and bootstrap acceptance administrator
+        run: |
+          docker run -d --name discovery-mail -p 127.0.0.1:1025:1025 -p 127.0.0.1:8025:8025 axllent/mailpit:latest
+          cd apps/api
+          printf '%s\n' 'discovery-ci-password-123' | uv run python -m app.cli create-admin --email discovery-admin@example.com --password-stdin
+      - name: Start real API, worker and production Web
+        run: |
+          cd apps/api
+          setsid uv run uvicorn app.main:app --host 127.0.0.1 --port 8000 > /tmp/discovery-api.log 2>&1 &
+          echo $! > "$RUNNER_TEMP/discovery-api.pid"
+          setsid uv run python -m app.worker > /tmp/discovery-worker.log 2>&1 &
+          echo $! > "$RUNNER_TEMP/discovery-worker.pid"
+          cd ../..
+          setsid npm run start --workspace @travel-scanner/web -- --port 3000 > /tmp/discovery-web.log 2>&1 &
+          echo $! > "$RUNNER_TEMP/discovery-web.pid"
+      - name: Wait for readiness
+        run: |
+          for attempt in {1..60}; do
+            if curl --fail --silent http://127.0.0.1:8000/ready >/dev/null && curl --fail --silent http://localhost:3000 >/dev/null && curl --fail --silent http://127.0.0.1:8025/livez >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          exit 1
+      - run: npx playwright install --with-deps chromium
+      - name: Desktop and Pixel 7 discovery UI fixtures
+        run: npx playwright test e2e/discovery.spec.ts --workers=1
+        working-directory: apps/web
+      - name: Unmocked login, invitations, private collections and public withdrawal
+        run: npx playwright test e2e/discovery-full-stack.spec.ts --workers=1
+        working-directory: apps/web
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: discovery-browser-results
+          path: apps/web/test-results
+          retention-days: 7
+      - name: Failure logs
+        if: failure()
+        run: cat /tmp/discovery-api.log /tmp/discovery-worker.log /tmp/discovery-web.log
+      - name: Stop test processes
+        if: always()
+        run: |
+          for pid_file in "$RUNNER_TEMP"/discovery-*.pid; do
+            [ -f "$pid_file" ] || continue
+            pid="$(cat "$pid_file")"
+            kill -TERM -- "-$pid" 2>/dev/null || true
+          done

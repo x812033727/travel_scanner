@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState, type ReactNode, type ButtonHTMLAttributes } from "react";
 import { useTranslations } from "next-intl";
 import { ApiError, api } from "@/lib/api";
+import { useHeaderSession } from "@/components/header-session";
 
 export const fieldClass = "mt-1.5 w-full rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3 py-2.5 text-[var(--ink)] outline-none focus:ring-2 focus:ring-[var(--teal)] disabled:opacity-50";
 export const panelClass = "rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 md:p-6";
@@ -36,12 +37,21 @@ export function Tabs({ value, onChange, items, children, label }: { value: strin
     <div role="tabpanel" id={`${id}-panel`} aria-labelledby={`${id}-${value}`}>{children}</div>
   </div>;
 }
-export function Dialog({ title, children, onClose }: { title: string; children: ReactNode; onClose: () => void }) {
+export function Dialog({ title, children, onClose, returnFocusTo }: { title: string; children: ReactNode; onClose: () => void; returnFocusTo?: HTMLElement | null }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const originalTrigger = useRef<HTMLElement | null>(null);
   const id = useId();
   const t = useTranslations("community");
-  useEffect(() => { ref.current?.showModal(); }, []);
-  return <dialog ref={ref} aria-labelledby={id} onCancel={onClose} onClose={onClose}
+  useEffect(() => {
+    const dialog = ref.current;
+    if (!originalTrigger.current) originalTrigger.current = returnFocusTo || (document.activeElement instanceof HTMLElement ? document.activeElement : null);
+    const trigger = originalTrigger.current;
+    if (dialog && !dialog.open) dialog.showModal();
+    // Native cancel focus restoration can run after React removes the dialog.
+    // Restore on the following frame, once both the top layer and DOM have settled.
+    return () => { requestAnimationFrame(() => { if (!dialog?.isConnected && trigger?.isConnected) trigger.focus(); }); };
+  }, [returnFocusTo]);
+  return <dialog ref={ref} aria-labelledby={id} onCancel={(event) => { event.preventDefault(); onClose(); }} onClose={onClose}
     className="m-auto max-h-[90dvh] w-[min(42rem,calc(100%-2rem))] overflow-y-auto rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 text-[var(--ink)] backdrop:bg-black/50">
     <div className="mb-5 flex items-center justify-between gap-3"><h2 id={id} className="text-xl font-bold">{title}</h2><Button secondary onClick={onClose}>{t("close")}</Button></div>{children}
   </dialog>;
@@ -51,28 +61,31 @@ export function CommunityImage(props: { id:string;alt:string;review?:boolean;thu
 }
 function SignedImage({id,alt,review=false,thumbnail=false}:{id:string;alt:string;review?:boolean;thumbnail?:boolean}) {
   const t = useTranslations("community");
-  const [url,setUrl]=useState<string>();
-  const [error,setError]=useState<unknown>();
+  const { sessionIdentity } = useHeaderSession();
+  const [image,setImage]=useState<{identity:object|null;url?:string;error?:unknown}>();
+  const current = image?.identity === sessionIdentity ? image : undefined;
+  const url = current?.url;
+  const error = current?.error;
   const [attempt, setAttempt] = useState(0);
   const box=useRef<HTMLDivElement>(null);
   useEffect(()=>{
     let live=true;
     const fetchImage=()=>{api<{url:string}>(`${review?"/admin/community":"/community"}/media/${id}${thumbnail?"?thumbnail=true":""}`)
-      .then((data)=>{if(live)setUrl(data.url);}).catch((error)=>{if(live)setError(error);});};
+      .then((data)=>{if(live)setImage({identity:sessionIdentity,url:data.url});}).catch((error)=>{if(live)setImage({identity:sessionIdentity,error});});};
     const observer=typeof IntersectionObserver==="undefined"?null:new IntersectionObserver((entries)=>{
       if(entries.some((entry)=>entry.isIntersecting)){observer?.disconnect();fetchImage();}
     },{rootMargin:"200px"});
     if(observer&&box.current)observer.observe(box.current);else fetchImage();
     return ()=>{live=false;observer?.disconnect();};
-  },[id,review,thumbnail,attempt]);
+  },[id,review,thumbnail,attempt,sessionIdentity]);
   return <div ref={box}>{error ? <div className="space-y-2"><ErrorNotice error={error}/>
     <Button secondary onClick={() => {
       // Reauthorize on each user-requested retry. Never reuse an expired URL or
       // bypass visibility checks for content that was withdrawn in the meantime.
-      setUrl(undefined); setError(undefined); setAttempt((value) => value + 1);
+      setImage(undefined); setAttempt((value) => value + 1);
     }}>{t("retry")}</Button></div> : url ?
     // Fetch only when near the viewport and load immediately within the 60-second authorization.
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={url} alt={alt} referrerPolicy="no-referrer" onError={()=>setError(new Error())} className="max-h-[36rem] w-full rounded-xl object-contain"/>
+    <img src={url} alt={alt} referrerPolicy="no-referrer" onError={()=>setImage({identity:sessionIdentity,error:new Error()})} className="max-h-[36rem] w-full rounded-xl object-contain"/>
     : <div className="aspect-video animate-pulse rounded-xl bg-[var(--paper)]" aria-busy="true"/>}</div>;
 }

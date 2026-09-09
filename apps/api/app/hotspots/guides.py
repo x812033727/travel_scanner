@@ -118,6 +118,22 @@ def _parse_youtube_datetime(value: str | None) -> datetime | None:
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
 
+def youtube_status_metadata(value: object) -> dict[str, Any]:
+    """Keep only explicit provider status; never infer embeddability from approval.
+
+    Always include the key, even when empty, so a fresh response without proof
+    replaces old evidence instead of renewing its lifetime during an upsert.
+    """
+    status: dict[str, str | bool] = {}
+    if isinstance(value, dict):
+        privacy = value.get("privacyStatus")
+        if isinstance(privacy, str) and privacy in {"public", "private", "unlisted"}:
+            status["privacyStatus"] = privacy
+            if isinstance(value.get("embeddable"), bool):
+                status["embeddable"] = value["embeddable"]
+    return {"youtube_status": status}
+
+
 def classify_content_locale(
     text: str, requested: Locale, declared: str | None = None
 ) -> tuple[Locale, Decimal]:
@@ -222,6 +238,7 @@ class YouTubeGuideProvider:
                     view_count=int(item.get("statistics", {}).get("viewCount", 0)),
                     language_confidence=confidence,
                     discovery_rank=rank,
+                    metadata=youtube_status_metadata(item.get("status")),
                 )
             )
         return candidates
@@ -243,7 +260,11 @@ class YouTubeGuideProvider:
         )
         response.raise_for_status()
         items = response.json().get("items", [])
-        if not items or items[0].get("status", {}).get("privacyStatus") != "public":
+        if (
+            not items
+            or items[0].get("id") != video_id
+            or items[0].get("status", {}).get("privacyStatus") != "public"
+        ):
             raise AppError(404, "hotspot_guide_not_found", "YouTube 影片不存在或未公開")
         item = items[0]
         snippet = item.get("snippet", {})
@@ -266,6 +287,7 @@ class YouTubeGuideProvider:
             published_at=_parse_youtube_datetime(snippet.get("publishedAt")),
             view_count=int(item.get("statistics", {}).get("viewCount", 0)),
             language_confidence=confidence,
+            metadata=youtube_status_metadata(item.get("status")),
         )
 
 
@@ -497,6 +519,9 @@ async def upsert_guide(
     locale and review status so re-discovery never undoes an admin decision.
     """
     now = datetime.now(UTC)
+    metadata = dict(candidate.metadata)
+    if candidate.provider == "youtube":
+        metadata.update(youtube_status_metadata(metadata.get("youtube_status")))
     existing = await session.scalar(
         select(HotspotGuide).where(
             HotspotGuide.hotspot_id == hotspot_id,
@@ -504,6 +529,9 @@ async def upsert_guide(
         )
     )
     if existing:
+        if existing.provider == "youtube" and candidate.provider != "youtube":
+            # A manual article edit of the same URL must not renew old provider proof.
+            metadata.update(youtube_status_metadata(None))
         existing.title = candidate.title
         existing.creator_name = candidate.creator_name
         existing.thumbnail_url = candidate.thumbnail_url
@@ -512,7 +540,7 @@ async def upsert_guide(
         existing.view_count = candidate.view_count
         existing.last_verified_at = now
         existing.metadata_expires_at = now + timedelta(days=7)
-        existing.metadata_json = {**existing.metadata_json, **candidate.metadata}
+        existing.metadata_json = {**existing.metadata_json, **metadata}
         return existing, False
     guide = HotspotGuide(
         hotspot_id=hotspot_id,
@@ -533,7 +561,7 @@ async def upsert_guide(
         review_status="pending",
         last_verified_at=now,
         metadata_expires_at=now + timedelta(days=7),
-        metadata_json=candidate.metadata,
+        metadata_json=metadata,
     )
     session.add(guide)
     return guide, True

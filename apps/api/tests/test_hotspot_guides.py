@@ -89,7 +89,11 @@ async def test_youtube_search_uses_locale_and_preserves_official_metadata() -> N
                 "items": [
                     {
                         "id": "dQw4w9WgXcQ",
-                        "status": {"privacyStatus": "public"},
+                        "status": {
+                            "privacyStatus": "public",
+                            "embeddable": True,
+                            "license": "youtube",
+                        },
                         "snippet": {
                             "title": "浅草を歩く",
                             "channelTitle": "旅チャンネル",
@@ -113,6 +117,9 @@ async def test_youtube_search_uses_locale_and_preserves_official_metadata() -> N
     assert results[0].creator_name == "旅チャンネル"
     assert results[0].view_count == 12345
     assert results[0].language_confidence == Decimal("1.000")
+    assert results[0].metadata == {
+        "youtube_status": {"privacyStatus": "public", "embeddable": True}
+    }
     usage = await youtube_usage_snapshot(redis)
     assert usage.breakdown == {"search_list": 1, "videos_list": 1}
     await redis.aclose()
@@ -206,6 +213,151 @@ class FakeGuideSession:
         self.added.append(item)
 
 
+@pytest.mark.asyncio
+@pytest.mark.parametrize("embeddable", [True, False, None, "true"])
+async def test_youtube_import_preserves_only_explicit_provider_status(embeddable):
+    def handler(request: httpx.Request) -> httpx.Response:
+        assert request.url.path.endswith("/videos")
+        assert "status" in request.url.params["part"].split(",")
+        return httpx.Response(
+            200,
+            json={
+                "items": [
+                    {
+                        "id": "dQw4w9WgXcQ",
+                        "snippet": {"title": "Real video", "channelTitle": "Fixture"},
+                        "status": {
+                            "privacyStatus": "public",
+                            "embeddable": embeddable,
+                            "uploadStatus": "processed",
+                        },
+                    }
+                ]
+            },
+        )
+
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        candidate = await YouTubeGuideProvider("fixture", client, redis).import_video(
+            "https://youtu.be/dQw4w9WgXcQ", "en"
+        )
+    expected = {"privacyStatus": "public"}
+    if isinstance(embeddable, bool):
+        expected["embeddable"] = embeddable
+    assert candidate.metadata == {"youtube_status": expected}
+    guide, _ = await upsert_guide(FakeGuideSession(), uuid4(), candidate)
+    guide.review_status = "approved"
+    from app.community.videos import youtube_embed_metadata
+
+    assert youtube_embed_metadata(guide)["status"] == (
+        "embeddable" if embeddable is True else "link_only"
+    )
+    usage = await youtube_usage_snapshot(redis)
+    assert usage.breakdown == {"search_list": 0, "videos_list": 1}
+    await redis.aclose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "metadata",
+    [
+        {},
+        {"youtube_status": {}},
+        {"youtube_status": {"privacyStatus": "public", "embeddable": "true"}},
+        {"youtube_status": {"privacyStatus": "public", "embeddable": False}},
+    ],
+)
+async def test_youtube_refresh_never_renews_missing_or_revoked_embed_evidence(metadata):
+    existing = HotspotGuide(
+        id=uuid4(),
+        hotspot_id=uuid4(),
+        content_type="video",
+        provider="youtube",
+        locale="ja",
+        title="Old",
+        creator_name="Fixture",
+        canonical_url="https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        provider_content_id="dQw4w9WgXcQ",
+        review_status="approved",
+        metadata_json={
+            "discovery_method": "manual",
+            "youtube_status": {"privacyStatus": "public", "embeddable": True},
+        },
+    )
+    candidate = GuideCandidate(
+        content_type="video",
+        provider="youtube",
+        locale="en",
+        title="Updated",
+        creator_name="Fixture",
+        canonical_url=existing.canonical_url,
+        provider_content_id=existing.provider_content_id,
+        metadata=metadata,
+    )
+    updated, created = await upsert_guide(
+        FakeGuideSession(existing), existing.hotspot_id, candidate
+    )
+    assert not created and updated.review_status == "approved" and updated.locale == "ja"
+    assert updated.metadata_json["youtube_status"].get("embeddable") is not True
+    assert updated.metadata_json["discovery_method"] == "manual"
+    from app.community.videos import youtube_embed_metadata
+
+    assert youtube_embed_metadata(updated)["status"] == "link_only"
+
+
+@pytest.mark.asyncio
+async def test_youtube_import_rejects_proof_for_a_different_video_identity():
+    async with httpx.AsyncClient(
+        transport=httpx.MockTransport(
+            lambda _: httpx.Response(
+                200,
+                json={
+                    "items": [
+                        {
+                            "id": "abcdefghijk",
+                            "status": {"privacyStatus": "public", "embeddable": True},
+                            "snippet": {"title": "Wrong identity"},
+                        }
+                    ]
+                },
+            )
+        )
+    ) as client:
+        with pytest.raises(AppError) as error:
+            await YouTubeGuideProvider("fixture", client).import_video(
+                "https://youtu.be/dQw4w9WgXcQ", "en"
+            )
+    assert error.value.status == 404
+
+
+@pytest.mark.asyncio
+async def test_non_provider_edit_of_existing_video_cannot_renew_embed_evidence():
+    existing = HotspotGuide(
+        id=uuid4(),
+        hotspot_id=uuid4(),
+        content_type="video",
+        provider="youtube",
+        locale="en",
+        title="Provider title",
+        creator_name="Fixture",
+        canonical_url="https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        provider_content_id="dQw4w9WgXcQ",
+        review_status="approved",
+        metadata_json={"youtube_status": {"privacyStatus": "public", "embeddable": True}},
+    )
+    candidate = GuideCandidate(
+        content_type="article",
+        provider="manual",
+        locale="en",
+        title="Manual title",
+        creator_name="Fixture",
+        canonical_url=existing.canonical_url,
+        metadata={"youtube_status": {"privacyStatus": "public", "embeddable": True}},
+    )
+    updated, _ = await upsert_guide(FakeGuideSession(existing), existing.hotspot_id, candidate)
+    assert updated.metadata_json["youtube_status"] == {}
+
+
 def candidate_for(url: str, **overrides: object) -> GuideCandidate:
     values: dict[str, object] = {
         "content_type": "article",
@@ -267,9 +419,7 @@ async def test_upsert_guide_refreshes_metadata_but_keeps_review_and_locale() -> 
 
 
 def test_stale_youtube_purge_spares_manual_picks() -> None:
-    compiled = stale_youtube_guides_delete(datetime.now(UTC)).compile(
-        dialect=postgresql.dialect()
-    )
+    compiled = stale_youtube_guides_delete(datetime.now(UTC)).compile(dialect=postgresql.dialect())
     sql = str(compiled)
     assert "DELETE FROM hotspot_guides" in sql
     assert "IS NULL" in sql
@@ -583,6 +733,7 @@ def test_the_guide_backlog_worker_is_configurable_from_the_admin_page() -> None:
 
     # Turning the group off stops the backlog worker through hotspot_guides_enabled, which
     # backfill_guides_once checks before it reads anything else.
-    off = apply_runtime_overrides(Settings(), [ProviderConfig(provider="hotspot_guides",
-                                                             enabled=False, config={})])
+    off = apply_runtime_overrides(
+        Settings(), [ProviderConfig(provider="hotspot_guides", enabled=False, config={})]
+    )
     assert off.hotspot_guides_enabled is False

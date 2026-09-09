@@ -30,6 +30,7 @@ from app.hotspots.guides import (
     YouTubeGuideProvider,
     consume_search_budget,
     save_candidates,
+    youtube_status_metadata,
 )
 from app.i18n import LOCALES, Locale
 from app.models import (
@@ -591,6 +592,13 @@ def _candidate_metadata(candidate: GuideCandidate, candidate_id: str) -> dict[st
     }
 
 
+def provider_evidence(candidate: GuideCandidate) -> dict[str, Any]:
+    """Carry only provider-generated video proof across AI scoring, never AI output."""
+    if candidate.provider != "youtube" or candidate.content_type != "video":
+        return {}
+    return youtube_status_metadata(candidate.metadata.get("youtube_status"))
+
+
 def _add_usage(total: dict[str, int], incoming: dict[str, int]) -> None:
     total["ai_calls"] = total.get("ai_calls", 0) + 1
     total["input_tokens"] = total.get("input_tokens", 0) + incoming.get("input_tokens", 0)
@@ -842,6 +850,7 @@ async def execute_ai_search(
                         language_confidence=Decimal(str(score.language_confidence)),
                         discovery_rank=scored_candidate.discovery_rank,
                         metadata={
+                            **provider_evidence(scored_candidate),
                             "discovery_method": "ai_research",
                             "ai_search_run_id": str(run.id),
                             "ai_provider": provider.name,

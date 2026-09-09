@@ -10,7 +10,7 @@ afterEach(() => vi.unstubAllGlobals());
 
 describe("SiteNavigation", () => {
   it("shares one auth request across desktop and compact mobile controls", async () => {
-    const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({
+    const fetchMock = vi.fn(async (input: RequestInfo | URL) => new Response(JSON.stringify(String(input).endsWith("/discovery/status") ? { enabled: false } : {
       id: "admin-1",
       email: "admin@example.com",
       is_admin: true,
@@ -32,7 +32,8 @@ describe("SiteNavigation", () => {
     expect(adminLinks).toHaveLength(2);
     expect(adminLinks.every((link) => link.getAttribute("href") === "/admin")).toBe(true);
     expect(screen.getByRole("link", { name: "會員帳號" }).getAttribute("href")).toBe("/account");
-    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock.mock.calls.filter(([input]) => String(input).endsWith("/auth/me"))).toHaveLength(1);
+    expect(fetchMock.mock.calls.filter(([input]) => String(input).endsWith("/discovery/status"))).toHaveLength(1);
   });
 
   it("keeps the nav when visibility could not be read, hides it when closed", () => {
