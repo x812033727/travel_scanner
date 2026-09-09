@@ -106,17 +106,38 @@ test("six palettes use actual controls, accessible colours and independent persi
       await mode.selectOption(theme);
       await expect(page.locator("html")).toHaveAttribute("data-palette", palette);
       await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
-      const body = await contrast(page.getByRole("main").getByRole("heading", { level: 1 }));
-      const muted = await contrast(paletteGroup.locator("p"));
-      const link = await contrast(page.getByRole("contentinfo").getByRole("link", { name: "Privacy policy", exact: true }));
-      const button = await contrast(page.getByRole("radiogroup", { name: "Text size" }).getByRole("radio", { name: "Standard", exact: true }));
-      for (const sample of [body, muted, link, button]) expect(sample.ratio).toBeGreaterThanOrEqual(4.5);
+      const samples: Record<string, Awaited<ReturnType<typeof contrast>>> = {};
+      for (const [name, target] of [
+        ["body", page.getByRole("main").getByRole("heading", { level: 1 })],
+        ["muted", paletteGroup.locator("p")],
+        ["link", page.getByRole("contentinfo").getByRole("link", { name: "Privacy policy", exact: true })],
+        ["button", page.getByRole("radiogroup", { name: "Text size" }).getByRole("radio", { name: "Standard", exact: true })],
+      ] as const) {
+        // Dataset updates precede painted styles. Keep the same threshold while
+        // waiting for the actual rendered foreground/background pair to settle.
+        try {
+          await expect.poll(async () => {
+            samples[name] = await contrast(target);
+            return samples[name].ratio;
+          }, { message: `${palette}/${theme}: ${name} text contrast` }).toBeGreaterThanOrEqual(4.5);
+        } finally {
+          await info.attach(`${palette}-${theme}-${name}-contrast`, {
+            body: JSON.stringify({ palette, theme, name, ...samples[name] }, null, 2),
+            contentType: "application/json",
+          });
+        }
+      }
       await mode.focus();
       const focus = await contrast(mode.locator(".."), true);
       expect(focus.outlineWidth).toBeGreaterThanOrEqual(3);
       expect(focus.ratio).toBeGreaterThanOrEqual(3);
-      observations.push({ palette, theme, body, muted, link, button, focus });
+      observations.push({ palette, theme, ...samples, focus });
       await expect.poll(() => page.locator("html").evaluate((node) => node.scrollWidth <= node.clientWidth + 1)).toBe(true);
+      // Focusing the settings can scroll a phone. Return the viewport to the
+      // actual top before a full-page capture so the sticky header stays there.
+      await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: "instant" }));
+      await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+      await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
       await page.screenshot({ path: info.outputPath(`synthetic-palette-${palette}-${theme}.png`), fullPage: true });
     }
   }

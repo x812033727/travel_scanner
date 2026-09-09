@@ -95,6 +95,8 @@ describe("approved palette CSS", () => {
       expect(contrast(surface, focus)).toBeGreaterThanOrEqual(3);
     }
     expect(contrast(primary, primaryText)).toBeGreaterThanOrEqual(4.5);
+    // The active admin link uses a primary-on-soft fill, not primary-on-black.
+    expect(contrast(primary, mixHex(primary, card, .08))).toBeGreaterThanOrEqual(4.5);
     const hover = mixHex(primary, theme === "dark" ? "ffffff" : "000000", .92);
     // Flight hero copy spans the paired-fill gradient, including both endpoints.
     for (let step = 0; step <= 10; step++) {
@@ -118,6 +120,16 @@ describe("approved palette CSS", () => {
     expect(cssBlock(".theme-switcher {")).toContain("border: 1px solid var(--control-border);");
     expect(cssBlock(".theme-switcher:hover {")).toContain("border-color: var(--control-border);");
     expect(cssBlock(".theme-switcher:focus-within {")).toContain("outline: 3px solid var(--focus);");
+    const nativeControl = cssBlock(".theme-switcher select {");
+    expect(nativeControl).toContain("inset: -1px;");
+    expect(nativeControl).toContain("width: calc(100% + 2px);");
+    expect(nativeControl).toContain("height: calc(100% + 2px);");
+  });
+
+  it("does not leave a colour-transition frame when reduced motion is requested", () => {
+    const reducedMotion = cssBlock("@media (prefers-reduced-motion: reduce) {\n  *,");
+    expect(reducedMotion).toContain("transition: none !important;");
+    expect(reducedMotion).not.toContain("transition-duration: 0.01ms");
   });
 
   it("pairs flight hero, selected dates, holiday dots and hotspot hints explicitly", () => {

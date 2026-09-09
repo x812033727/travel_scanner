@@ -29,7 +29,7 @@ const document: SitePageDocument = {
   requirements: { operator: "Fixture operator", location: "Fixture location", contact: "fixture@example.test", retention: "Fixture retention", legal: "Fixture legal" },
 };
 
-async function adminFixtures(page: Page, baseURL: string, role = "operations") {
+async function adminFixtures(page: Page, baseURL: string, role = "operations", session?: { locale: string; ready: Promise<void> }) {
   const origin = new URL(baseURL);
   expect(origin.hostname).toMatch(/^(127\.0\.0\.1|localhost)$/);
   await page.context().addCookies([{ name: "travel_access", value: `e2e-${role}`, url: origin.origin }]);
@@ -38,6 +38,11 @@ async function adminFixtures(page: Page, baseURL: string, role = "operations") {
   await page.route("**/api/travel/**", async (route) => {
     const url = new URL(route.request().url()), path = url.pathname.replace("/api/travel", "");
     const method = route.request().method();
+    if (path === "/auth/me" && method === "GET") {
+      const response = await route.fetch();
+      if (session) await session.ready;
+      return route.fulfill({ response, json: { ...await response.json(), preferred_locale: session?.locale || "en" } });
+    }
     if (path.startsWith("/admin/site-pages/")) {
       const body = method === "GET" ? {} : route.request().postDataJSON();
       if (method !== "GET") writes.push({ path, body });
@@ -106,5 +111,23 @@ test("read-only administrator cannot edit information documents", async ({ page,
   await expect(page.getByRole("textbox", { name: "Document title", exact: true })).toBeDisabled();
   await expect(page.getByRole("button", { name: "Publish", exact: true })).toBeDisabled();
   await expect(page.getByRole("button", { name: "Preview", exact: true })).toBeEnabled();
+  expect(writes).toHaveLength(0);
+});
+
+test("a delayed account language preference cannot discard a document draft", async ({ page, baseURL }) => {
+  let releaseSession!: () => void;
+  const ready = new Promise<void>((resolve) => { releaseSession = resolve; });
+  const writes = await adminFixtures(page, baseURL!, "operations", { locale: "ja", ready });
+  await page.goto("/en/admin/site-pages");
+  const field = page.getByRole("textbox", { name: "Document title", exact: true });
+  await field.fill("Retain draft while login preferences load");
+  await expect(page.getByRole("button", { name: "Save draft", exact: true })).toBeEnabled();
+  const confirmation = page.waitForEvent("dialog");
+  releaseSession();
+  await (await confirmation).dismiss();
+  await expect(field).toHaveValue("Retain draft while login preferences load");
+  await expect(page).toHaveURL(/\/en\/admin\/site-pages$/);
+  const cookie = (await page.context().cookies()).find((entry) => entry.name === "travel_locale");
+  expect(cookie?.value).not.toBe("ja");
   expect(writes).toHaveLength(0);
 });

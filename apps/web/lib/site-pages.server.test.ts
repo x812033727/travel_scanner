@@ -33,7 +33,7 @@ describe("public site page loader", () => {
   });
 });
 describe("information page links", () => {
-  it.each(["javascript:alert(1)", "data:text/html,evil", "/relative", "https://user:secret@example.com/", "https://a.test/\nfoo"])("rejects unsafe URLs: %s", (url) => expect(sitePageLink(url)).toBeNull());
+  it.each(["javascript:alert(1)", "data:text/html,evil", "/relative", "https://user:secret@example.com/", "https://a.test/\nfoo", "mailto:help%0d%0aBcc%3Avictim@example.com", "mailto:help%00@example.com", "mailto:help%C2%85@example.com"])("rejects unsafe URLs: %s", (url) => expect(sitePageLink(url)).toBeNull());
   it("accepts explicit web and email destinations", () => {
     expect(sitePageLink("https://example.com/contact")).toBe("https://example.com/contact");
     expect(sitePageLink("mailto:help@example.com")).toBe("mailto:help@example.com");

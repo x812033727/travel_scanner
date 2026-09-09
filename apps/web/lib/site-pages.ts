@@ -36,7 +36,11 @@ export function sitePageLink(raw: unknown): string | null {
   try {
     const url = new URL(raw);
     if (url.username || url.password) return null;
-    if (url.protocol === "mailto:") return !url.search && !url.hash && !url.host && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(url.pathname) ? url.href : null;
+    if (url.protocol === "mailto:") {
+      const address = decodeURIComponent(url.pathname);
+      return !url.search && !url.hash && !url.host && !/[\u0000-\u001f\u007f-\u009f]/.test(address)
+        && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(address) ? url.href : null;
+    }
     return ["https:", "http:"].includes(url.protocol) && url.hostname ? url.href : null;
   } catch { return null; }
 }

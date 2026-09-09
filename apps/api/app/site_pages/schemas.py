@@ -4,7 +4,7 @@ import json
 import re
 from datetime import date, datetime
 from typing import Annotated, Literal, Self
-from urllib.parse import urlsplit
+from urllib.parse import unquote, urlsplit
 from uuid import UUID
 
 from pydantic import (
@@ -92,7 +92,10 @@ class LinkBlock(StrictModel):
         elif parsed.scheme == "mailto":
             if parsed.netloc or parsed.query or parsed.fragment:
                 raise ValueError("mail links must contain only an email address")
-            TypeAdapter(EmailStr).validate_python(parsed.path)
+            address = unquote(parsed.path, encoding="utf-8", errors="strict")
+            if re.search(r"[\x00-\x1f\x7f-\x9f]", address):
+                raise ValueError("mail links must not contain encoded control characters")
+            TypeAdapter(EmailStr).validate_python(address)
         else:
             raise ValueError("only HTTP, HTTPS and mailto links are supported")
         return value

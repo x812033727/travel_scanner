@@ -43,6 +43,8 @@ scope:
   - apps/web/components/palette-switcher.test.tsx
   - apps/web/components/site-header.test.tsx
   - apps/web/components/site-header.tsx
+  - apps/web/components/header-session.tsx
+  - apps/web/components/header-session-locale.test.tsx
   - apps/web/components/site-navigation.tsx
   - apps/web/components/site-footer.tsx
   - apps/web/components/site-footer.test.tsx
@@ -97,9 +99,11 @@ scope:
   - apps/web/lib/admin-operations.ts
   - apps/web/messages
   - apps/web/e2e/site-experience.spec.ts
+  - apps/web/e2e/readability.spec.ts
   - apps/web/e2e/discovery-card-details.spec.ts
   - apps/web/e2e/site-pages.spec.ts
   - apps/web/e2e/admin-operations-full-stack.spec.ts
+  - apps/web/e2e/admin-operations.spec.ts
   - apps/web/e2e/navigation.spec.ts
   - apps/web/e2e/planner-premium.spec.ts
   - tools/e2e-runtime-api.mjs
