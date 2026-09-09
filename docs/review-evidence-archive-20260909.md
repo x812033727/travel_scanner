@@ -52,7 +52,7 @@ cherry-pick 保留來源內容；只有生成的 `tasks/BOARD.md` 由工具重�
 [原始嚴格驗證失敗](hotel-review-evidence-20260909/strict-verification-failure.json)：
 同一管理帳號的 `layout.alerts_enabled` 更新發生在本批第一筆飯店修改之前，
 15 組供應商設定中只有 layout 列不同，其餘 14 列相同。
-不能以同一 actor 推論是另一個人，不能還原該設定或改写快照來製造全數通過。
+不能以同一 actor 推論是另一個人，不能還原該設定或改寫快照來製造全數通過。
 飯店、公開資料及重播分項的驗證與整體「全不變」驗收失敗必須同時呈現；
 詳見 [獨立評估](hotel-review-evidence-20260909/concurrent-change-assessment.json)。
 
@@ -91,7 +91,8 @@ API key、JWT、私鑰、登入 Cookie、帶密碼連線網址、會員 Email �
 評論、價格或其他平台資料。
 
 九支操作器在本 PR 沒有新增應用程式、CI、工具入口或 Compose 自動執行引用。
-本次只執行離線 pytest 防護／fixture 驗證、任務看板及靜態檢查，
-新 PR 的 CI 驗證目前程式與歸檔測試相容性，不重新證明正式資料已套用。
+本次另外執行 502 個 docs 離線防護／fixture 測試，以及相關 API、任務看板及靜態檢查。
+PR CI 依現有設定驗證應用程式及 API 測試（含新增的歸檔 manifest 測試），
+不會自動收集上述 docs 測試，也不重新證明正式資料已套用。
 完整歷史 strict verifier 應忠實保留 qualified 失敗，不應當成無條件通過指令。
 各原報告中的舊測試次數及服務健康結果仍僅適用於原記載的時間與範圍。
