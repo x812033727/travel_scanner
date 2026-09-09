@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**21 open · 1 in progress · 2 blocked · 8 in review · 193 done**
+**21 open · 0 in progress · 2 blocked · 9 in review · 193 done**
 
 ## Ready to claim
 
@@ -29,9 +29,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## In progress
 
-| Task | Owner | Claimed (UTC) | Branch |
-| --- | --- | --- | --- |
-| [Fix first hotel clickout and affiliate availability feedback](open/2026-09-09-fix-first-hotel-clickout-and-affiliate.md) | codex-hotel-clickout | 2026-09-09T12:30:33Z | `codex/hotel-first-click-fix` |
+_Nothing here._
 
 ## In review
 
@@ -43,6 +41,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | codex-discovery-flow-web | `codex/frontend-explore-flow` |
 | [Frontend flow navigation planning handoff and acceptance](open/2026-09-09-frontend-flow-integration.md) | codex-frontend-flow | `codex/frontend-explore-flow` |
 | [Route apply state regression and semantic itinerary tones](open/2026-09-09-planner-route-tones.md) | codex | `codex/planner-route-tones` |
+| [Fix first hotel clickout and affiliate availability feedback](open/2026-09-09-fix-first-hotel-clickout-and-affiliate.md) | codex-hotel-clickout | `codex/hotel-first-click-fix` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 | [Compact discovery cards and source-linked details](open/2026-09-09-discovery-card-details.md) | codex-discovery-card-details | `codex/discovery-card-details-20260909` |
 

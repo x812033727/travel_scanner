@@ -36,8 +36,12 @@ Booking/Agoda/Expedia URL or silently enable an affiliate to fix this submission
   official, Booking, Agoda and Expedia, plus both destination and Discovery retries.
   Success destinations are isolated HTML fixtures; real BFF recovery deliberately
   receives 404 from the local upstream. This is not real OTA/commission verification.
-- Production build, full lint/type checks and desktop/Pixel browser runs are pending
-  at this checkpoint; the pull request records their completed results.
+- ESLint, TypeScript, five-locale validation and production Next.js build passed.
+- All 20 Chromium browser cases passed across desktop and Pixel 7 (one worker,
+  production build on port 3312). The four platform first-click scenarios have no
+  page errors or horizontal overflow. The browser fixtures made no external calls.
+- Repository task tooling: 15 tests passed. Full Linux CI, PostgreSQL/Redis and
+  existing unmocked journeys are reported on PR #382, independently of local tests.
 
 The user's Chrome connection disappeared during browser-tool initialization. The
 production log pairs establish the reported failure; isolated Chromium acceptance

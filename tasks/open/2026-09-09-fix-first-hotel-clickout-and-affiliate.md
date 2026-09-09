@@ -1,7 +1,7 @@
 ---
 id: 2026-09-09-fix-first-hotel-clickout-and-affiliate
 title: Fix first hotel clickout and affiliate availability feedback
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: codex-hotel-clickout
@@ -31,14 +31,14 @@ Production API logs show three first-click POSTs with placement=discovery return
 
 ## Definition of done
 
-- [ ] Discovery hotel official and affiliate options succeed on the first valid POST.
-- [ ] Retry preserves all valid placement/context values; unknown placements remain rejected.
-- [ ] Desktop/mobile browser fixtures and real API contract tests cover this previously missed entry.
+- [x] Discovery hotel official and affiliate options succeed on the first valid POST.
+- [x] Retry preserves all valid placement/context values; unknown placements remain rejected.
+- [x] Desktop/mobile browser fixtures and real API contract tests cover this previously missed entry.
 
 ## Steps
 
-- [ ] Unify frontend placement type/retry allowlist and backend annotation/campaign allowlist.
-- [ ] Test, document verified root cause and open a PR; no unrequested activation or deployment.
+- [x] Unify frontend placement type/retry allowlist and backend annotation/campaign allowlist.
+- [x] Test, document verified root cause and open a PR; no unrequested activation or deployment.
 
 ## How to verify
 
@@ -47,3 +47,5 @@ Focused pytest contract tests; ESLint, TypeScript, Vitest, i18n, production buil
 ## Notes
 
 Canonical checkout is dirty and untouched. Base is a8be96cd; prior merged Stay22 task closure is carried as metadata. User Chrome connection disappeared during tool initialization, so browser acceptance uses isolated Chromium tests; production request logs provide direct reproduction evidence. No live clickout, provider activation or account setting change performed by this fix.
+
+PR #382: backend 259 tests, focused frontend/BFF 46 tests, Chromium desktop/Pixel 20 tests, task tooling 15 tests, Ruff, targeted mypy, ESLint, TypeScript, i18n and production build passed. Linux CI remains authoritative for the full suite. Wait for explicit merge/deployment authorization; no production setting or hotel review change belongs to this patch.
