@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**18 open · 0 in progress · 2 blocked · 7 in review · 189 done**
+**20 open · 0 in progress · 2 blocked · 8 in review · 189 done**
 
 ## Ready to claim
 
@@ -14,6 +14,8 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Priority | Task | Area | Scope |
 | --- | --- | --- | --- |
 | P1 | [Hotel platform options and quote readiness](open/2026-09-07-hotel-platform-options-and-quote-readiness.md) | api | `apps/api/tests/test_hotel_content_package.py`<br>`docs/hotel-platforms` |
+| P1 | [Revalidate community read resets against production-build CI](open/2026-09-08-community-ci-read-retry.md) | web | `apps/web/e2e/community.spec.ts` |
+| P1 | [Complete live Travelpayouts brand and destination offer verification](open/2026-09-08-travelpayouts-live-destination-activation.md) | ops | `docs/travel-services.md` |
 | P1 | [Continue evidence-backed remaining hotspot candidate review](open/2026-09-08-continue-evidence-backed-remaining-hotspot-candidate.md) | ops | `docs/hotspot-review-next-batch.md`<br>`ops/hotspot_review_next_batch.py`<br>`ops/hotspot_review_next_batch.json` |
 | P2 | [防 jsonb 運算子的測試只守住 3 張表，實際有 42 張](open/2026-09-07-jsonb-3-42.md) | api | `apps/api/tests/test_migration_sql_dialect.py` |
 | P2 | [30 筆新購物店家還沒 place enrichment，所以加不進行程](open/2026-09-07-enrich-new-shopping-place-ids.md) | api | `ops/notes/hotspot-place-enrichment.md` |
@@ -38,6 +40,7 @@ _Nothing here._
 | [Editorial discovery and unified collection frontend](open/2026-09-09-frontend-flow-discovery-web.md) | codex-discovery-flow-web | `codex/frontend-explore-flow` |
 | [Frontend flow navigation planning handoff and acceptance](open/2026-09-09-frontend-flow-integration.md) | codex-frontend-flow | `codex/frontend-explore-flow` |
 | [Route apply state regression and semantic itinerary tones](open/2026-09-09-planner-route-tones.md) | codex | `codex/planner-route-tones` |
+| [Integrate PR 365 historical deployment and open verification notes](open/2026-09-09-pr365-docs-integration.md) | codex-pr365-docs | `codex/pr365-docs-ready-20260909` |
 | [Archive completed catalog and hotel review evidence](open/2026-09-09-review-evidence-archive.md) | codex-review-archive | `codex/review-evidence-archive-20260909` |
 
 ## Waiting
