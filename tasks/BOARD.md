@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**16 open · 4 in progress · 2 blocked · 2 in review · 171 done**
+**16 open · 4 in progress · 2 blocked · 1 in review · 172 done**
 
 ## Ready to claim
 
@@ -37,7 +37,6 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 | Task | Owner | Branch |
 | --- | --- | --- |
 | [網美與文青店家風格篩選、審核及首批來源資料](open/2026-09-07-merchant-style-discovery.md) | codex | `codex/merchant-style-batch-07` |
-| [Premium app-style itinerary planning flow](open/2026-09-08-planner-premium-app.md) | codex-planner-premium | `codex/planner-premium-app` |
 
 ## Waiting
 
@@ -55,6 +54,7 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 
 ## Recently finished
 
+- 2026-09-09 [Premium app-style itinerary planning flow](done/2026-09-08-planner-premium-app.md)
 - 2026-09-08 [Fix weather and itinerary intent panel contrast in dark mode](done/2026-09-08-planner-weather-dark-contrast.md)
 - 2026-09-08 [Fix nearby itinerary discovery across cities and reset insertion pagination](done/2026-09-08-planner-nearby-followup.md)
 - 2026-09-08 [Stay22 Maps lodging pilot](done/2026-09-08-stay22-maps-lodging-pilot.md)
@@ -64,4 +64,3 @@ Nothing here is owned, blocked by a dependency, or overlapping active work. Take
 - 2026-09-08 [Admin domain regression compatibility tests](done/2026-09-08-admin-domain-regression-compatibility-tests.md)
 - 2026-09-08 [Admin catalog review filters and canonical location editor](done/2026-09-08-admin-catalog-review-filters-and-canonical.md)
 - 2026-09-08 [Admin domain scoped catalog AI review](done/2026-09-08-admin-domain-scoped-catalog-ai-review.md)
-- 2026-09-08 [Admin domain settings ownership and safe saves](done/2026-09-08-admin-domain-settings-ownership-and-safe.md)
