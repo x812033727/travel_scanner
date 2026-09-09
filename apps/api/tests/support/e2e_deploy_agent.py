@@ -31,19 +31,41 @@ HMAC_KEY = os.environ.get("DEPLOY_AGENT_HMAC_KEY", "")
 RELEASE_SHA = os.environ.get("RELEASE_SHA", "c" * 40)
 SCHEMA_REVISION = os.environ.get("E2E_SCHEMA_REVISION", "0068_admin_operations_center")
 
-if os.environ.get("E2E_DEPLOY_AGENT_FIXTURE") != "1":
-    raise SystemExit("E2E_DEPLOY_AGENT_FIXTURE=1 is required")
-if SOCKET_PATH.parent != Path("/tmp") or not SOCKET_PATH.name.endswith(".sock"):
-    raise SystemExit("fixture socket must be a direct child of /tmp and end in .sock")
-if len(HMAC_KEY) < 32:
-    raise SystemExit("fixture HMAC key must contain at least 32 characters")
-if not re.fullmatch(r"[0-9a-f]{40}", RELEASE_SHA):
-    raise SystemExit("fixture release SHA must be 40 lowercase hexadecimal characters")
-
 _guard = Lock()
 _nonces: dict[str, int] = {}
 _jobs: dict[str, dict[str, Any]] = {}
 _backups: list[dict[str, Any]] = []
+
+
+def deployment_overview_payload() -> dict[str, Any]:
+    """Return the same schema consumed by the real deployment overview client."""
+    return {
+        "connected": True,
+        "deployed_sha": RELEASE_SHA,
+        "target_sha": RELEASE_SHA,
+        "target_commit_subject": "Isolated signed fixture release",
+        "ci_status": "success",
+        "ci_url": "https://github.com/x812033727/travel_scanner/actions",
+        "commits": [],
+        "checks": [
+            {
+                "name": "signed_fixture",
+                "status": "ok",
+                "detail": "isolated command-free fixture",
+            }
+        ],
+    }
+
+
+def _validate_environment() -> None:
+    if os.environ.get("E2E_DEPLOY_AGENT_FIXTURE") != "1":
+        raise SystemExit("E2E_DEPLOY_AGENT_FIXTURE=1 is required")
+    if SOCKET_PATH.parent != Path("/tmp") or not SOCKET_PATH.name.endswith(".sock"):
+        raise SystemExit("fixture socket must be a direct child of /tmp and end in .sock")
+    if len(HMAC_KEY) < 32:
+        raise SystemExit("fixture HMAC key must contain at least 32 characters")
+    if not re.fullmatch(r"[0-9a-f]{40}", RELEASE_SHA):
+        raise SystemExit("fixture release SHA must be 40 lowercase hexadecimal characters")
 
 
 def _verified(method: str, path: str, body: bytes, headers: Any) -> bool:
@@ -103,6 +125,9 @@ class Handler(BaseHTTPRequestHandler):
                 HTTPStatus.UNAUTHORIZED,
                 {"code": "deployment_agent_auth_failed", "detail": "fixture auth failed"},
             )
+            return
+        if self.command == "GET" and self.path == "/v1/overview":
+            self._send(HTTPStatus.OK, deployment_overview_payload())
             return
         if self.command == "GET" and self.path == "/v1/database/overview":
             with _guard:
@@ -213,11 +238,17 @@ class Handler(BaseHTTPRequestHandler):
         return
 
 
-class Server(socketserver.ThreadingMixIn, socketserver.UnixStreamServer):
-    daemon_threads = True
+def main() -> None:
+    _validate_environment()
+
+    class FixtureServer(socketserver.ThreadingMixIn, socketserver.UnixStreamServer):
+        daemon_threads = True
+
+    SOCKET_PATH.unlink(missing_ok=True)
+    with FixtureServer(str(SOCKET_PATH), Handler) as server:
+        SOCKET_PATH.chmod(0o660)
+        server.serve_forever()
 
 
-SOCKET_PATH.unlink(missing_ok=True)
-with Server(str(SOCKET_PATH), Handler) as server:
-    SOCKET_PATH.chmod(0o660)
-    server.serve_forever()
+if __name__ == "__main__":
+    main()

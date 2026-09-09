@@ -107,7 +107,7 @@ test("real owner can grant viewer and the new role is denied a database deep lin
   test.skip(info.project.name !== "desktop-chromium", "Role mutation runs once against disposable CI data.");
   test.setTimeout(90_000);
   const suffix = `${Date.now()}-${info.workerIndex}`;
-  const email = `admin-ops-viewer-${suffix}@example.test`;
+  const email = `admin-ops-viewer-${suffix}@example.com`;
   const password = "admin-ops-fixture-123";
   const registration = await request.post("http://127.0.0.1:8000/api/v1/auth/register", {
     data: { email, password, preferred_locale: "zh-TW" },
@@ -147,7 +147,7 @@ test("real support lifecycle mutations revoke sessions and preserve cancellable 
   test.skip(info.project.name !== "desktop-chromium", "Disposable account lifecycle runs once.");
   test.setTimeout(90_000);
   const suffix = `${Date.now()}-${info.workerIndex}`;
-  const email = `admin-ops-lifecycle-${suffix}@example.test`;
+  const email = `admin-ops-lifecycle-${suffix}@example.com`;
   const password = "admin-ops-fixture-123";
   const registration = await request.post("http://127.0.0.1:8000/api/v1/auth/register", {
     data: { email, password, preferred_locale: "zh-TW" },
@@ -237,7 +237,7 @@ test("real bootstrap and direct URLs enforce every fixed role boundary", async (
   const password = "admin-ops-role-fixture-123";
   const accounts: Array<{ role: string; email: string; id: string }> = [];
   for (const role of Object.keys(ROLE_NAVIGATION)) {
-    const email = `admin-ops-${role.replace("_", "-")}-${suffix}@example.test`;
+    const email = `admin-ops-${role.replace("_", "-")}-${suffix}@example.com`;
     const registration = await request.post("http://127.0.0.1:8000/api/v1/auth/register", {
       data: { email, password, preferred_locale: "zh-TW" },
     });
