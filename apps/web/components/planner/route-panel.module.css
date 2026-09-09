@@ -6,6 +6,9 @@
 .container .layout {
   display: flex;
   flex-direction: column;
+  /* Reset the legacy desktop grid alignment. Inline-size containers otherwise
+     shrink to a border-width flex item and clip the visible transport tabs. */
+  align-items: stretch;
   gap: 1rem;
   min-width: 0;
   padding-bottom: max(0.25rem, env(safe-area-inset-bottom));

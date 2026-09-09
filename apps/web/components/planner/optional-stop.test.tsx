@@ -102,4 +102,11 @@ describe("stop palette accessibility", () => {
     expect(css).toContain("summary:focus-visible");
     expect(css).toContain("outline: 3px solid var(--stop-accent)");
   });
+
+  it("keeps timeline markers grid-centered while badges use inline layout", () => {
+    const sharedRule = css.match(/\.tone\.marker,\s*\.tone\.badge\s*\{([^}]+)\}/)?.[1];
+    expect(sharedRule).toBeDefined();
+    expect(sharedRule).not.toMatch(/display\s*:/);
+    expect(css).toMatch(/(?:^|\n)\.tone\.badge\s*\{[^}]*display:\s*inline-block/);
+  });
 });

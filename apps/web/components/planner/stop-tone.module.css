@@ -99,7 +99,6 @@
 
 .tone.marker,
 .tone.badge {
-  display: inline-block;
   background: var(--stop-raised);
   border: 1px solid var(--stop-border);
   color: var(--stop-ink);
@@ -110,6 +109,7 @@
 }
 
 .tone.badge {
+  display: inline-block;
   border-radius: 999px;
   padding: 0.2rem 0.55rem;
   font-size: 0.75rem;

@@ -3,11 +3,11 @@ import type { RouteSegment, Trip } from "../lib/trip-types";
 import { dayTimelineCopy } from "../components/planner/day-timeline-copy";
 import { editorFixture } from "./fixtures/itinerary-editor";
 import { pretendSignedIn } from "./session";
-import zhTW from "../messages/zh-TW/trips.json";
-import zhCN from "../messages/zh-CN/trips.json";
-import en from "../messages/en/trips.json";
-import ja from "../messages/ja/trips.json";
-import ko from "../messages/ko/trips.json";
+import zhTW from "../messages/zh-TW/trips.json" with { type: "json" };
+import zhCN from "../messages/zh-CN/trips.json" with { type: "json" };
+import en from "../messages/en/trips.json" with { type: "json" };
+import ja from "../messages/ja/trips.json" with { type: "json" };
+import ko from "../messages/ko/trips.json" with { type: "json" };
 
 const locales = ["zh-TW", "zh-CN", "en", "ja", "ko"] as const;
 const tones = ["hotel", "lunch", "dinner"] as const;
@@ -244,7 +244,7 @@ test("unset and skipped arrangements retain role labels without misleading statu
   expect(state.unexpected).toEqual([]);
 });
 
-for (const width of [390, 920]) {
+for (const width of [390, 920, 1280]) {
   test(`${width}px daily route search/apply keeps the saved walk and buffer after parent remount`, async ({ page }, info) => {
     await page.setViewportSize({ width, height: 844 });
     await page.emulateMedia({ reducedMotion: "reduce" });
@@ -259,6 +259,21 @@ for (const width of [390, 920]) {
     await expect(panel.locator('[data-route-instruction="idle"]')).toHaveCount(1);
     await expect(panel.locator('[data-route-instruction="idle"]')).toBeVisible();
     await expect(panel).not.toContainText("Provider");
+    const modes = panel.locator(".route-panel-modes");
+    const panelBounds = (await panel.boundingBox())!;
+    const modesBounds = (await modes.boundingBox())!;
+    expect(modesBounds.width, "An inline-size container must not collapse the transport controls").toBeGreaterThanOrEqual(240);
+    if (width === 1280) {
+      // A desktop viewport still presents a narrow drawer. Legacy desktop grid
+      // alignment must not shrink its newer single-column flex children.
+      expect(panelBounds.width).toBeLessThan(768);
+      expect(modesBounds.width).toBeGreaterThanOrEqual(panelBounds.width - 2);
+    }
+    for (const tab of await modes.getByRole("tab").all()) {
+      const bounds = (await tab.boundingBox())!;
+      expect(bounds.width).toBeGreaterThanOrEqual(44);
+      expect(bounds.height).toBeGreaterThanOrEqual(44);
+    }
     expect(state.previews).toEqual([]);
     expect(state.writes).toEqual([]);
     const query = panel.getByRole("button", { name: dayTimelineCopy("zh-TW").query, exact: true });
@@ -267,7 +282,12 @@ for (const width of [390, 920]) {
     await expectIdleContentExposed(page, panel);
     await noHorizontalOverflow(page);
     await page.screenshot({ path: info.outputPath(`route-idle-${width}-fixture-map.png`) });
+    await panel.getByRole("tab", { name: "汽車", exact: true }).click();
+    await expect(panel.getByRole("tab", { name: "汽車", exact: true })).toHaveAttribute("aria-selected", "true");
+    expect(state.previews).toEqual([]);
+    expect(state.writes).toEqual([]);
     await panel.getByRole("tab", { name: "步行", exact: true }).click();
+    await expect(panel.getByRole("tab", { name: "步行", exact: true })).toHaveAttribute("aria-selected", "true");
     await panel.locator(".route-advanced-settings > summary").click();
     await panel.getByRole("combobox").selectOption("15");
     expect(state.previews).toEqual([]);
