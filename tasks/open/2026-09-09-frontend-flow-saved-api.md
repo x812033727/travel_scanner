@@ -56,7 +56,7 @@ is disabled. Organizing a reference must not accidentally delete its base save.
 - [x] Add only the three required errors in the five backend languages.
 - [x] Supply one deterministic, loopback-only opt-in CI hotspot fixture for the
   unmocked guest-to-save-to-plan browser journey.
-- [ ] Record final focused checks after the last publication-gate/race hardening.
+- [x] Record focused checks after the publication-gate/race hardening.
 
 ## How to verify
 
@@ -88,6 +88,11 @@ calls. Root owns the workflow and browser acceptance spec.
   One warning is the existing `test_usage_settings` AsyncMock coroutine warning;
   no unrelated admin source was changed. Local `test_deployment_center.py` is
   excluded because its Linux deployment agent imports `fcntl`.
+- Final saved/migration focused run: 28 passed / 4 PostgreSQL-specific skipped
+  in 84.26 seconds; owned Ruff and mypy passed. The related compatibility run
+  had 110 passes and a fixture-only Redis cache mock omission, subsequently fixed
+  and passed by the focused run. The final alias-membership fix passed Ruff,
+  mypy and 3 targeted regression tests in 15.55 seconds.
 - No Docker CLI is available locally. No production DB or local `.env` was used;
   full local checks set unreachable loopback DB/Redis URLs and disable integration
   tests. Real PostgreSQL upgrade/concurrency remains an explicit CI gate.
@@ -105,6 +110,9 @@ calls. Root owns the workflow and browser acceptance spec.
 - The original collection rate-policy seam is preserved. Original post saves use
   Reaction(save), preventing an unnecessary duplicate inbox membership on replay.
   Typed favorites use unique-key inserts defensively against legacy writers.
+  Account serialization uses NO KEY UPDATE to avoid blocking legacy FK inserts;
+  real PostgreSQL concurrency checks remain bounded by 20 seconds. Logical list
+  removal clears all aliases within that list, retaining the base and other lists.
 - CI fixture ID is `55000000-0000-4000-8000-000000000001`, title/query is
   `Frontend flow fixture Tokyo river`, destination is Tokyo. Its source and map
   IDs are explicitly synthetic and never represent reviewed production data.

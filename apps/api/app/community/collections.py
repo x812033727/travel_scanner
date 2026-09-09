@@ -165,7 +165,7 @@ async def collect_reference(
 async def remove_reference(
     session: AsyncSession, user: User, identifier: UUID, item_id: UUID
 ) -> dict[str, Any]:
-    from app.saved.service import ensure_base, key_for, states
+    from app.saved.service import canonical, collection_columns, ensure_base, key_for, states
 
     await owned_collection(session, user, identifier, lock=True)
     await rate(session, user)
@@ -177,11 +177,18 @@ async def remove_reference(
     key = key_for(row.kind, row.target) if row else None
     if row is not None:
         await ensure_base(session, user, row.kind, row.target, saved_at=row.created_at)
-    await session.execute(
-        delete(CollectionItem).where(
-            CollectionItem.collection_id == identifier, CollectionItem.id == item_id
+        kind, target = canonical(row.kind, row.target)
+        column_kind, column_target = collection_columns()
+        # Old clients could store case/UUID-format or hotel/service aliases as
+        # distinct physical rows. Removing the logical membership clears them
+        # all in this list, while the base save and other lists remain intact.
+        await session.execute(
+            delete(CollectionItem).where(
+                CollectionItem.collection_id == identifier,
+                column_kind == kind,
+                column_target == target,
+            )
         )
-    )
     result = (await states(session, user, [key]))["items"][0] if key else {}
     await session.commit()
     return {"deleted": True, **result}

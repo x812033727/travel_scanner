@@ -385,6 +385,38 @@ async def test_legacy_collection_only_reference_survives_remove_and_delete(
 
 
 @pytest.mark.asyncio
+async def test_remove_logical_membership_clears_aliases_only_from_that_list(
+    harness: Harness,
+) -> None:
+    h = harness
+    first, second = await create_list(h, "First"), await create_list(h, "Second")
+    identifier = uuid4()
+    async with h.factory() as session:
+        rows = [
+            CollectionItem(collection_id=UUID(first), kind="hotel", target=identifier.hex.upper()),
+            CollectionItem(collection_id=UUID(first), kind="service", target=str(identifier)),
+            CollectionItem(collection_id=UUID(second), kind="service", target=str(identifier)),
+        ]
+        session.add_all(rows)
+        await session.commit()
+        item_id = str(rows[0].id)
+    result = await h.call("DELETE", f"/saved-items/collections/{first}/items/{item_id}")
+    assert result.json() == {
+        "deleted": True,
+        "key": f"service:{identifier}",
+        "saved": True,
+        "collection_ids": [second],
+    }
+    assert (await h.call("GET", f"/saved-items/collections/{first}")).json()["items"] == []
+    assert len((await h.call("GET", f"/saved-items/collections/{second}")).json()["items"]) == 1
+    await h.call("DELETE", f"/saved-items/collections/{second}")
+    library = (await h.call("GET", "/saved-items/all")).json()
+    assert library["total"] == 1 and library["items"][0]["key"] == f"service:{identifier}"
+    await h.call("DELETE", f"/saved-items/service/{identifier}", expected=204)
+    assert (await h.call("GET", "/saved-items/all")).json()["total"] == 0
+
+
+@pytest.mark.asyncio
 async def test_account_guard_ownership_and_no_publication_leak(harness: Harness) -> None:
     h = harness
     identifier = (await seed(h))[0]

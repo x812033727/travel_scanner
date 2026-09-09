@@ -27,6 +27,7 @@ describe("frontend flow state", () => {
     expect(result.searchParams.get("q")).toBe("park");
     expect(result.searchParams.get("resume_item")).toBe(`hotspot:${place}`);
     expect(result.searchParams.get("resume_trip")).toBe(trip);
+    expect(result.searchParams.get("content")).toBe(`hotspot:${place}`);
     expect(completedTripDestination("A", trip, true)).toBe(`/trips/${trip}`);
   });
   it("rejects stale, malformed or mismatched account intents", () => {

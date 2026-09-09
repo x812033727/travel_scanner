@@ -11,6 +11,7 @@ describe("canonical saved references", () => {
   it("preserves case-sensitive Google Place IDs and rejects unknown kinds", () => {
     expect(parseSavedKey("restaurant:ChIJAb:CDef")?.id).toBe("ChIJAb:CDef");
     expect(parseSavedKey("unknown:1")).toBeNull();
+    expect(savedReference("pet_place", "legacy")).toBeNull();
     expect(parseSavedKey("hotspot:")).toBeNull();
   });
   it("normalizes legacy UUID hex membership targets for guides, posts and hotel aliases", () => {

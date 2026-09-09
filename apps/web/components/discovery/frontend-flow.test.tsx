@@ -105,5 +105,24 @@ describe("unified discovery interactions", () => {
     expect(screen.getByText(/34.395483, 132.453592/)).toBeTruthy(); expect(screen.getByRole("link", { name: "Google Maps" }).getAttribute("rel")).toBe("noopener noreferrer");
     expect(screen.queryByRole("link", { name: "官方網站" })).toBeNull();
   });
+  it("can delete an unavailable legacy tombstone without permitting a new unsupported save", async () => {
+    mock.path = "/explore/collections";
+    const legacy = { key: `pet_place:${id}`, type: "pet_place", id, title: "Legacy pet place", collection_ids: [], unavailable: true };
+    let removed = false;
+    mock.api.mockImplementation(async (path: string, init?: RequestInit) => {
+      if (path.startsWith("/saved-items/all")) return { items: removed ? [] : [legacy], total: removed ? 0 : 1, next_cursor: null };
+      if (path === `/saved-items/pet_place/${id}?expected_user_id=user-a` && init?.method === "DELETE") { removed = true; return undefined; }
+      return response(path, init);
+    });
+    render(<SavedItemsProvider><DiscoveryCollections /></SavedItemsProvider>);
+    expect(await screen.findByRole("heading", { name: legacy.title })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "收藏" })).toBeNull();
+    expect(screen.queryByRole("link", { name: legacy.title })).toBeNull();
+    vi.spyOn(window, "confirm").mockReturnValue(true);
+    fireEvent.click(screen.getByRole("button", { name: "取消收藏" }));
+    await waitFor(() => expect(screen.queryByRole("heading", { name: legacy.title })).toBeNull());
+    expect(mock.api).toHaveBeenCalledWith(`/saved-items/pet_place/${id}?expected_user_id=user-a`, expect.objectContaining({ method: "DELETE", signal: expect.any(AbortSignal) }));
+    expect(mock.api.mock.calls.some(([, init]) => init?.method === "PUT")).toBe(false);
+  });
   it("keeps the independent copy complete in all five languages", () => { for (const locale of ["en", "zh-TW", "zh-CN", "ja", "ko"]) expect(Object.keys(getFrontendFlowCopy(locale))).toEqual(Object.keys(getFrontendFlowCopy("en"))); });
 });

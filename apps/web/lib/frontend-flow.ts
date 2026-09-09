@@ -14,6 +14,9 @@ export function planningReturnPath(value: string) {
 
 export function planningResumeUrl(returnTo: string, kind: string, id: string, tripId?: string) {
   const url = new URL(planningReturnPath(returnTo), "https://mokaair.invalid");
+  // The intended item may no longer be in the first page after authentication or
+  // a new trip. A detail URL reauthorizes it independently of the current feed.
+  if (url.pathname === "/explore" || url.pathname.startsWith("/explore/")) url.searchParams.set("content", `${kind}:${id}`);
   url.searchParams.set("resume_action", "trip");
   url.searchParams.set("resume_item", `${kind}:${id}`);
   url.searchParams.set("resume_kind", kind);

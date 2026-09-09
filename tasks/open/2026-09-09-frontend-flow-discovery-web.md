@@ -62,5 +62,7 @@ Root runs `npm run typecheck:web`, production build and desktop/Pixel 7 Playwrig
 - Each login identity owns its async results and bounded in-memory page snapshots. No browsing history or private content is persisted to browser storage.
 - `SavedContentAction({item,returnTo,compact?,resumeEnabled?})` is the integration export. List cards disable resume when a URL detail drawer is present, avoiding duplicate native confirmations. Root owns the matching `TravelPlanAction` planning flow.
 - Details render only actual `place_detail_payload` fields. Google weekly text/attribution and durable coordinates are preserved; no fabricated Plus Code, pictures or prices. Existing BookingPanel remains the hotel platform boundary.
-- Focused runs before final regression additions passed: discovery 19, new frontend-flow 8, canonical/provider 6. Final aggregate rerun includes the newly added out-of-order membership probe and legacy UUID regressions.
+- Final aggregate focused Vitest passed 35 tests in 4 files (discovery 19, frontend-flow 8, provider 5, canonical references 3), including out-of-order membership probes and legacy UUID regressions.
+- `npm run typecheck:web` passed; scoped ESLint passed with zero warnings. Root owns the pending production build and browser evidence; E2E source assertions were updated but are not claimed as executed here.
+- Post-commit contract audit: unavailable legacy `pet_place` rows can now be explicitly deleted through the owner-bound opaque cleanup endpoint. Unsupported kinds remain excluded from new saves; focused frontend-flow rerun passed 9 tests including the tombstone cleanup regression.
 - No source changes outside claimed scope, no source commits or production mutations performed by this agent.

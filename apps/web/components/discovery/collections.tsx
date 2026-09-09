@@ -9,7 +9,7 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { getDiscoveryCopy } from "@/lib/discovery-copy";
 import { getFrontendFlowCopy } from "@/lib/frontend-flow-copy";
 import { useDiscoveryResource, useDiscoveryStatus, type DiscoveryItem } from "@/lib/discovery";
-import { parseSavedKey, type SavedType } from "@/lib/saved-items";
+import { parseSavedKey } from "@/lib/saved-items";
 import { loginPath, safeNextPath, safeExternalHref } from "@/lib/navigation";
 import { api } from "@/lib/api";
 import { DiscoveryCard } from "./card";
@@ -18,7 +18,7 @@ import { SavedContentAction } from "./saved-content-action";
 import { DiscoverySkeleton } from "./explorer";
 import styles from "./discovery.module.css";
 
-type SavedRow = { key: string; type: SavedType; id: string; saved_at: string; unavailable: boolean; discovery?: DiscoveryItem; title?: string; subtitle?: string; href?: string; map_links?: Array<{ label: string; url: string }>; collection_ids: string[] };
+type SavedRow = { key: string; type: string; id: string; saved_at: string; unavailable: boolean; discovery?: DiscoveryItem; title?: string; subtitle?: string; href?: string; map_links?: Array<{ label: string; url: string }>; collection_ids: string[] };
 type SavedPage = { items: SavedRow[]; next_cursor: string | null; has_more: boolean; total: number };
 type Collection = { id: string; name: string };
 export function DiscoveryCollections() {
@@ -65,8 +65,9 @@ function CollectionWorkspace() {
       else if (action === "delete") { await api(`/saved-items/collections/${encodeURIComponent(selectedList)}${expected}`, { method: "DELETE", signal: controller.signal }); if (controller.signal.aborted || ownerRef.current !== sessionIdentity) return; navigate({ collection: "" }); }
       else if (row) {
         const collection = await api<{ items: Array<{ id: string; kind: string; target: string }> }>(`/saved-items/collections/${encodeURIComponent(selectedList)}`, { signal: controller.signal });
-        const entry = collection.items.find((item) => parseSavedKey(`${item.kind}:${item.target}`)?.key === row.key);
-        if (entry) await api(`/saved-items/collections/${encodeURIComponent(selectedList)}/items/${encodeURIComponent(entry.id)}${expected}`, { method: "DELETE", signal: controller.signal });
+        const entry = collection.items.find((item) => (parseSavedKey(`${item.kind}:${item.target}`)?.key || `${item.kind}:${item.target}`) === row.key);
+        if (!entry) throw new Error("Saved membership changed");
+        await api(`/saved-items/collections/${encodeURIComponent(selectedList)}/items/${encodeURIComponent(entry.id)}${expected}`, { method: "DELETE", signal: controller.signal });
         if (controller.signal.aborted || ownerRef.current !== sessionIdentity) return;
         await saved.ensureStates([row.key], true);
       }
@@ -77,9 +78,28 @@ function CollectionWorkspace() {
   }
   async function unsave(keys: string[]) {
     if (!window.confirm(keys.length > 1 ? f.confirmRemoveSelected : f.confirmUnsave)) return;
+    const controller = new AbortController(); requests.current.add(controller);
     const identity = sessionIdentity; setBusy(true); setError(false);
-    try { for (const key of keys) { if (ownerRef.current !== identity) return; const ref = parseSavedKey(key); if (ref) await saved.setSaved(ref.type, ref.id, false); } if (ownerRef.current !== identity) return; setSelected([]); setPages({}); result.reload(); }
-    catch { if (ownerRef.current === identity) setError(true); } finally { if (ownerRef.current === identity) setBusy(false); }
+    try {
+      for (const key of keys) {
+        if (controller.signal.aborted || ownerRef.current !== identity) return;
+        const ref = parseSavedKey(key);
+        if (ref) await saved.setSaved(ref.type, ref.id, false);
+        else {
+          // The API deliberately retains obsolete owned references as tombstones.
+          // This fallback only deletes a server-returned unavailable row; it never
+          // broadens the allowlist for saving or exposing unsupported content.
+          const row = rows.find((candidate) => candidate.key === key);
+          if (!row?.unavailable || !/^[a-z0-9_]{1,20}$/i.test(row.type) || !row.id || row.id.length > 255 || /[\u0000-\u001f\u007f]/.test(row.id) || row.key !== `${row.type}:${row.id}`) throw new Error("Unsupported saved reference");
+          await api(`/saved-items/${encodeURIComponent(row.type)}/${encodeURIComponent(row.id)}${expected}`, { method: "DELETE", signal: controller.signal });
+          if (controller.signal.aborted || ownerRef.current !== identity) return;
+          saved.acceptStates([{ key, saved: false, collection_ids: [] }], true);
+        }
+      }
+      if (controller.signal.aborted || ownerRef.current !== identity) return;
+      setSelected([]); setPages({}); result.reload();
+    } catch { if (!controller.signal.aborted && ownerRef.current === identity) setError(true); }
+    finally { requests.current.delete(controller); if (!controller.signal.aborted && ownerRef.current === identity) setBusy(false); }
   }
   const selectedRows = rows.filter((row) => selected.includes(row.key));
   return <div className={styles.collectionLayout}>
