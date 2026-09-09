@@ -72,8 +72,9 @@ def test_every_literal_the_call_sites_pass_survives_the_filter() -> None:
         # trip_created / offer_attached / place_added_to_trip
         "blank", "search", "ai_draft", "manual_blank", "hotel", "stay_area",
         "hotspot", "restaurant", "food_merchant", "lunch", "dinner",
+        "flight", "from_offer", "outbound", "return",
         # alert_created
-        "flight", "trip", "automatic", "manual_only",
+        "trip", "automatic", "manual_only",
         # ai_applied
         "day", "openai", "anthropic", "minimax", "catalog",
         "ready", "partial", "needs_setup", "fallback",
