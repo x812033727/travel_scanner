@@ -75,3 +75,19 @@ double-wrapping scenario, each named stay22-script-public-panel.png. These show 
 mock-SDK platform sheet, not real Stay22 or Booking inventory. The parent reviewed
 the desktop/mobile panel presentation; browser assertions also verified sheet
 focus, touch targets, original/rewritten link behavior and viewport bounds.
+
+PR CI follow-up: run 34360841653 / web job 102497095957 had one mobile failure
+because the conflicting-category test expected the initial duplicate query to stay
+unchanged after hydration. The original DestinationServices component treats the
+repeated type array as no valid initial category; ServiceCatalog's existing filter
+effect selects all and deletes type through history.replaceState. It does not
+navigate, redirect or enable Script. The same-head push suite passed, exposing the
+old test's pre-/post-hydration assertion race rather than a provider regression.
+
+The corrected test positively verifies valid tour selection and its preserved URL;
+for duplicate categories it verifies local HTTP 200, no redirect, original shell,
+no SDK/config request, then the hydrated clean URL, selected all category and still
+no Script. Scoped ESLint passed. Desktop Chromium and Pixel 7 each repeated the
+corrected case five times: 10 passed in 40.9 seconds, workers=1, unchanged production
+build and offline transport guard. The parent owns the follow-up CI; the combined
+50-case regression is rerun after the evidence handoff and reported on PR #383.

@@ -6,6 +6,7 @@ import { createServer } from "node:http";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { defaultUsageCatalog } from "../lib/usage-catalog";
+import { klookAffiliateCopy } from "../lib/klook-affiliate-copy";
 import { siteFeatureKeys } from "../lib/site-features";
 import { stay22ScriptCopy } from "../lib/stay22-script-copy";
 import { STAY22_SCRIPT_URL } from "../lib/stay22-script";
@@ -299,13 +300,32 @@ test("localhost and preview origins cannot load Script even when server configur
   expect(site.blocked).toEqual([]);
 });
 
-test("non-hotel and conflicting category queries preserve the original service page", async ({ page, site }) => {
-  for (const query of ["type=tour", "type=hotel&type=esim"]) {
-    await page.goto(`${canonical}${publicPath}?${query}`);
-    await expect(page.locator(".public-app-shell")).toBeVisible();
-    await expect(page).toHaveURL(`${canonical}${publicPath}?${query}`);
-    await expect(page.locator("#stay22-lma")).toHaveCount(0);
-  }
+test("non-hotel and conflicting category queries preserve the original service page", async ({ page, request, site }) => {
+  await page.goto(`${canonical}${publicPath}?type=tour`);
+  await expect(page.getByRole("button", { name: klookAffiliateCopy("zh-TW").tour, exact: true })).toHaveAttribute("aria-pressed", "true");
+  await expect(page).toHaveURL(`${canonical}${publicPath}?type=tour`);
+  await expect(page.locator(".public-app-shell")).toBeVisible();
+  await expect(page.locator("#stay22-lma")).toHaveCount(0);
+
+  const conflictingPath = `${publicPath}?type=hotel&type=esim`;
+  const initial = await request.get(`${site.origin}${conflictingPath}`, {
+    headers: { Host: "mokaair.com", "X-Forwarded-Host": "mokaair.com", "X-Forwarded-Proto": "https" }, maxRedirects: 0,
+  });
+  expect(initial.status()).toBe(200);
+  expect(initial.headers().location).toBeUndefined();
+  const html = await initial.text();
+  expect(html).toContain("public-app-shell");
+  expect(html).not.toContain(STAY22_SCRIPT_URL);
+  expect(site.api.some((call) => call.path.endsWith("stay22-script-config"))).toBe(false);
+
+  await page.goto(`${canonical}${conflictingPath}`);
+  // DestinationServices rejects the repeated type array as an initial category.
+  // Once hydrated, ServiceCatalog's filter effect selects all and removes type
+  // with history.replaceState. This is not a redirect or a new Script document.
+  await expect(page).toHaveURL(`${canonical}${publicPath}`);
+  await expect(page.getByRole("button", { name: "全部", exact: true })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator(".public-app-shell")).toBeVisible();
+  await expect(page.locator("#stay22-lma")).toHaveCount(0);
   expect(site.sdkLoads).toEqual([]);
   expect(site.api.some((call) => call.path.endsWith("stay22-script-config"))).toBe(false);
   expect(site.blocked).toEqual([]);
