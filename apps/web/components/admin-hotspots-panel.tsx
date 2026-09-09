@@ -10,6 +10,7 @@ import { HOTSPOT_CATEGORY_CODES, isHotspotCategoryCode } from "@/lib/hotspot-cat
 import { safeExternalHref } from "@/lib/navigation";
 import { naverMapSearchUrl } from "@/lib/naver-map";
 import { FilterDisclosure, FilterPills } from "./admin-filter-pills";
+import { AdminReadOnlyNotice, useAdminActionGuard } from "./admin-action-guard";
 import { AdminHotspotIntroGenerator } from "./admin-hotspot-intro-generator";
 import { AdminHotspotThemeEditor, type AssignedTheme } from "./admin-hotspot-theme-editor";
 
@@ -139,6 +140,7 @@ export function AdminHotspotsPanel({
   initialHotspotId?: string;
   initialMissingLocation?: boolean;
 }) {
+  const manage = useAdminActionGuard("content.manage");
   const copy = adminCatalogCopy(useLocale());
   const search = useSearchParams();
   const t = useTranslations("hotspots");
@@ -401,6 +403,7 @@ export function AdminHotspotsPanel({
 
   return (
     <section className="mt-8">
+      <AdminReadOnlyNotice capability="content.manage" className="mb-4" />
       {(initialHotspotId || initialMissingLocation) && <div className="mb-3 flex flex-wrap items-center gap-3 text-sm">
         <p role="status" className="text-[var(--muted)]">{initialHotspotId ? copy.filteredLocation : copy.missingLocation}</p>
         <Link href={hotspotIdentityListHref(search)} className="inline-flex min-h-11 items-center rounded-xl border border-[var(--line)] px-3 font-semibold text-[var(--teal)] focus-visible:outline-2 focus-visible:outline-[var(--teal)]">{copy.showAllLocations}</Link>
@@ -495,21 +498,21 @@ export function AdminHotspotsPanel({
         </span>
         {selected.size > 0 && <>
         <button
-          disabled={!selected.size || loading}
+          disabled={!manage.allowed || !selected.size || loading}
           onClick={() => void review("approve")}
           className="rounded-xl bg-[var(--teal)] px-4 py-2 text-sm font-semibold text-white disabled:opacity-40"
         >
           {ta("hotspotsPanel.approve")}
         </button>
         <button
-          disabled={!selected.size || loading}
+          disabled={!manage.allowed || !selected.size || loading}
           onClick={() => void review("reject")}
           className="rounded-xl border border-[var(--coral)] px-4 py-2 text-sm font-semibold text-[var(--coral)] disabled:opacity-40"
         >
           {ta("hotspotsPanel.reject")}
         </button>
         <button
-          disabled={!selected.size || loading}
+          disabled={!manage.allowed || !selected.size || loading}
           onClick={() => void review("disable")}
           className="rounded-xl border border-[var(--line)] px-4 py-2 text-sm font-semibold disabled:opacity-40"
         >
@@ -529,7 +532,7 @@ export function AdminHotspotsPanel({
           className="h-10 rounded-xl border border-[var(--line)] px-3"
         />
         <button
-          disabled={!selected.size || loading || !moveDestinationId.trim()}
+          disabled={!manage.allowed || !selected.size || loading || !moveDestinationId.trim()}
           onClick={() => void moveDestination()}
           className="rounded-xl border border-[var(--teal)] px-4 py-2 text-sm font-semibold text-[var(--teal)] disabled:opacity-40"
         >
@@ -592,14 +595,14 @@ export function AdminHotspotsPanel({
           </label>
         ))}
         <button
-          disabled={!selected.size || loading || !depthReason.trim()}
+          disabled={!manage.allowed || !selected.size || loading || !depthReason.trim()}
           onClick={() => void updateDepth(true)}
           className="rounded-xl bg-amber-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-40"
         >
           {ta("hotspotsPanel.setDepth")}
         </button>
         <button
-          disabled={!selected.size || loading}
+          disabled={!manage.allowed || !selected.size || loading}
           onClick={() => void updateDepth(false)}
           className="rounded-xl border border-amber-700 px-4 py-2 text-sm font-semibold text-amber-900 disabled:opacity-40"
         >
@@ -755,7 +758,7 @@ export function AdminHotspotsPanel({
           <div className="mt-3 flex flex-wrap gap-2">
             <button
               type="button"
-              disabled={locationDraft.country_code === "KR" || loading}
+              disabled={!manage.allowed || locationDraft.country_code === "KR" || loading}
               onClick={() => void searchMapCandidate()}
               className="min-h-11 rounded-xl border border-sky-700 px-4 font-semibold text-sky-900 disabled:opacity-40"
             >
@@ -763,7 +766,7 @@ export function AdminHotspotsPanel({
             </button>
             <button
               type="button"
-              disabled={loading}
+              disabled={!manage.allowed || loading}
               onClick={() => void saveLocation()}
               className="ml-auto min-h-11 rounded-xl bg-sky-800 px-5 font-semibold text-white disabled:opacity-40"
             >
@@ -887,18 +890,18 @@ export function AdminHotspotsPanel({
                                 </span>
                               )}
                               <div className="mt-2">
-                                <AdminHotspotThemeEditor
+                                {manage.allowed && <AdminHotspotThemeEditor
                                   hotspotId={item.id}
                                   hotspotName={item.name}
                                   category={item.category}
                                   initial={item.themes}
-                                />
+                                />}
                               </div>
                               <div className="mt-2">
-                                <AdminHotspotIntroGenerator
+                                {manage.allowed && <AdminHotspotIntroGenerator
                                   hotspotId={item.id}
                                   hotspotName={item.name}
-                                />
+                                />}
                               </div>
                             </td>
                             <td className="p-3">
@@ -938,6 +941,8 @@ export function AdminHotspotsPanel({
                                 className="mt-2 inline-flex min-h-11 items-center rounded-xl border border-sky-700 px-3 font-semibold text-sky-900"
                               >{copy.identityEditor}</Link> : <button
                                 type="button"
+                                disabled={!manage.allowed}
+                                title={!manage.allowed ? manage.disabledReason : undefined}
                                 onClick={() => {
                                   setLocationDraft({ ...item });
                                   setMapCandidate(null);

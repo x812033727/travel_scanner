@@ -3,6 +3,7 @@
 import { Fragment, useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { api } from "@/lib/api";
+import { AdminReadOnlyNotice, useAdminActionGuard } from "./admin-action-guard";
 import { FilterPills } from "./admin-filter-pills";
 
 const locales = ["zh-TW", "zh-CN", "en", "ja", "ko"] as const;
@@ -98,6 +99,7 @@ function completeLocalizations(food: AdminFood): AdminFood {
 
 export function AdminFoodsPanel({ initialStatus = "" }: { initialStatus?: string }) {
   const t = useTranslations("foodAdmin");
+  const manage = useAdminActionGuard("content.manage");
   const [data, setData] = useState<Response | null>(null);
   const [country, setCountry] = useState("");
   const [destination, setDestination] = useState("");
@@ -155,7 +157,7 @@ export function AdminFoodsPanel({ initialStatus = "" }: { initialStatus?: string
   }
 
   async function batch(action: "approve" | "reject" | "disable" | "activate") {
-    if (!selected.size) return;
+    if (!manage.allowed || !selected.size) return;
     setLoading(true);
     try {
       await api("/admin/foods/batch", {
@@ -172,7 +174,7 @@ export function AdminFoodsPanel({ initialStatus = "" }: { initialStatus?: string
   }
 
   async function save() {
-    if (!editing) return;
+    if (!manage.allowed || !editing) return;
     const payload = {
       ...(editing.id ? {} : { slug: editing.slug }),
       country_code: editing.country_code,
@@ -236,6 +238,7 @@ export function AdminFoodsPanel({ initialStatus = "" }: { initialStatus?: string
   return (
     <>
       <section className="mt-8">
+        <AdminReadOnlyNotice capability="content.manage" className="mb-4" />
         <div className="grid gap-2">
           <FilterPills
             label={t("country")}
@@ -283,8 +286,10 @@ export function AdminFoodsPanel({ initialStatus = "" }: { initialStatus?: string
           </select>
           <button
             type="button"
+            disabled={!manage.allowed}
+            title={!manage.allowed ? manage.disabledReason : undefined}
             onClick={() => { setSaveError(""); setEditing(blankFood()); }}
-            className="h-11 rounded-xl bg-[var(--teal)] px-4 font-semibold text-white"
+            className="h-11 rounded-xl bg-[var(--teal)] px-4 font-semibold text-white disabled:opacity-40"
           >
             {t("add")}
           </button>
@@ -297,28 +302,32 @@ export function AdminFoodsPanel({ initialStatus = "" }: { initialStatus?: string
             })}
           </span>
           <button
-            disabled={!selected.size || loading}
+            disabled={!manage.allowed || !selected.size || loading}
+            title={!manage.allowed ? manage.disabledReason : undefined}
             onClick={() => void batch("approve")}
             className="rounded-xl bg-[var(--teal)] px-4 py-2 text-sm font-semibold text-white disabled:opacity-40"
           >
             {t("statuses.approved")}
           </button>
           <button
-            disabled={!selected.size || loading}
+            disabled={!manage.allowed || !selected.size || loading}
+            title={!manage.allowed ? manage.disabledReason : undefined}
             onClick={() => void batch("reject")}
             className="rounded-xl border border-[var(--coral)] px-4 py-2 text-sm font-semibold text-[var(--coral)] disabled:opacity-40"
           >
             {t("statuses.rejected")}
           </button>
           <button
-            disabled={!selected.size || loading}
+            disabled={!manage.allowed || !selected.size || loading}
+            title={!manage.allowed ? manage.disabledReason : undefined}
             onClick={() => void batch("disable")}
             className="rounded-xl border border-[var(--line)] px-4 py-2 text-sm font-semibold disabled:opacity-40"
           >
             {t("statuses.disabled")}
           </button>
           <button
-            disabled={!selected.size || loading}
+            disabled={!manage.allowed || !selected.size || loading}
+            title={!manage.allowed ? manage.disabledReason : undefined}
             onClick={() => void batch("activate")}
             className="rounded-xl border border-[var(--teal)] px-4 py-2 text-sm font-semibold text-[var(--teal)] disabled:opacity-40"
           >
@@ -409,8 +418,10 @@ export function AdminFoodsPanel({ initialStatus = "" }: { initialStatus?: string
                         <td className="p-3">
                           <button
                             type="button"
+                            disabled={!manage.allowed}
+                            title={!manage.allowed ? manage.disabledReason : undefined}
                             onClick={() => { setSaveError(""); setEditing(completeLocalizations(food)); }}
-                            className="min-h-10 rounded-xl border border-[var(--teal)] px-3 font-semibold text-[var(--teal)]"
+                            className="min-h-10 rounded-xl border border-[var(--teal)] px-3 font-semibold text-[var(--teal)] disabled:opacity-40"
                           >
                             {t("edit")}
                           </button>
@@ -729,7 +740,8 @@ export function AdminFoodsPanel({ initialStatus = "" }: { initialStatus?: string
                 </select>
                 <button
                   type="button"
-                  disabled={loading}
+                  disabled={!manage.allowed || loading}
+                  title={!manage.allowed ? manage.disabledReason : undefined}
                   onClick={() => void save()}
                   className="ml-auto min-h-12 rounded-xl bg-[var(--teal)] px-6 font-semibold text-white disabled:opacity-40"
                 >

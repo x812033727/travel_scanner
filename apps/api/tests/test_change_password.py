@@ -123,3 +123,39 @@ async def test_change_password_updates_the_stored_hash() -> None:
     assert caught.value.code == "invalid_user"
     assert verify_password("brand-new-password-1", user.password_hash)
     assert not verify_password("correct-password-1", user.password_hash)
+
+
+@pytest.mark.asyncio
+async def test_forgot_password_lets_a_social_only_account_establish_a_local_password(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    user = User(
+        id=uuid4(),
+        email="social-owner@example.com",
+        password_hash=None,
+        auth_version=1,
+        is_active=True,
+    )
+    session = AsyncMock()
+    send = AsyncMock()
+    monkeypatch.setattr("app.community.accounts.smtp_ready", lambda: True)
+    monkeypatch.setattr(
+        "app.community.accounts.enforce_named_rate_limit", AsyncMock()
+    )
+    monkeypatch.setattr(
+        "app.community.accounts.find_user_by_email", AsyncMock(return_value=user)
+    )
+    monkeypatch.setattr("app.community.accounts.request_mail", send)
+    app.dependency_overrides[get_session] = lambda: session
+    try:
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+            response = await client.post(
+                "/api/v1/auth/forgot-password",
+                json={"email": user.email, "locale": "zh-TW"},
+            )
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 202
+    assert response.json() == {"accepted": True}
+    send.assert_awaited_once_with(session, user, "reset", "zh-TW")

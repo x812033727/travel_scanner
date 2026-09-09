@@ -108,6 +108,8 @@ class Settings(BaseSettings):
     community_mail_from: str = ""
     deployments_enabled: bool = False
     deploy_admin_emails: str = ""
+    database_admin_emails: str = ""
+    admin_database_maintenance_enabled: bool = False
     deploy_agent_socket: str = "/run/travel-scanner-deployer/deployer.sock"
     deploy_agent_hmac_key: str | None = None
     deploy_agent_timeout_seconds: float = Field(default=10.0, gt=0, le=30)
@@ -395,9 +397,9 @@ class Settings(BaseSettings):
     # Writing a first-party introduction is a different job from searching for
     # somebody else's article, so it gets its own vendor, model and budget.
     hotspot_intro_ai_enabled: bool = True
-    hotspot_intro_ai_default_provider: Literal[
-        "minimax", "openai", "anthropic", "gemini"
-    ] = "minimax"
+    hotspot_intro_ai_default_provider: Literal["minimax", "openai", "anthropic", "gemini"] = (
+        "minimax"
+    )
     hotspot_intro_ai_openai_model: str | None = None
     hotspot_intro_ai_anthropic_model: str | None = None
     hotspot_intro_ai_minimax_model: str | None = None
@@ -442,10 +444,28 @@ class Settings(BaseSettings):
         }
 
     @property
+    def database_admin_email_set(self) -> set[str]:
+        return {
+            email.strip().lower()
+            for email in self.database_admin_emails.split(",")
+            if email.strip()
+        }
+
+    @property
     def deployments_configured(self) -> bool:
         return bool(
             self.deployments_enabled
             and self.deploy_admin_email_set
+            and self.deploy_agent_hmac_key
+            and len(self.deploy_agent_hmac_key) >= 32
+            and self.deploy_agent_socket.startswith("/")
+        )
+
+    @property
+    def database_maintenance_configured(self) -> bool:
+        return bool(
+            self.admin_database_maintenance_enabled
+            and self.database_admin_email_set
             and self.deploy_agent_hmac_key
             and len(self.deploy_agent_hmac_key) >= 32
             and self.deploy_agent_socket.startswith("/")
@@ -568,8 +588,21 @@ class Settings(BaseSettings):
                 errors.append("DEPLOY_ADMIN_EMAILS must contain at least one email")
             if not self.deploy_agent_hmac_key or len(self.deploy_agent_hmac_key) < 32:
                 errors.append("DEPLOY_AGENT_HMAC_KEY must be set to at least 32 characters")
-            if not self.deploy_agent_socket.startswith("/"):
-                errors.append("DEPLOY_AGENT_SOCKET must be an absolute Unix socket path")
+            if self.deploy_agent_socket != "/run/travel-scanner-deployer/deployer.sock":
+                errors.append(
+                    "DEPLOY_AGENT_SOCKET must use the systemd-managed "
+                    "/run/travel-scanner-deployer/deployer.sock path"
+                )
+        if self.admin_database_maintenance_enabled:
+            if not self.database_admin_email_set:
+                errors.append("DATABASE_ADMIN_EMAILS must contain at least one email")
+            if not self.deploy_agent_hmac_key or len(self.deploy_agent_hmac_key) < 32:
+                errors.append("DEPLOY_AGENT_HMAC_KEY must be set to at least 32 characters")
+            if self.deploy_agent_socket != "/run/travel-scanner-deployer/deployer.sock":
+                errors.append(
+                    "DEPLOY_AGENT_SOCKET must use the systemd-managed "
+                    "/run/travel-scanner-deployer/deployer.sock path"
+                )
         pinned_endpoints = {
             "OPENAI_API_BASE_URL": (self.openai_api_key, "openai_api_base_url"),
             "ANTHROPIC_API_BASE_URL": (self.anthropic_api_key, "anthropic_api_base_url"),

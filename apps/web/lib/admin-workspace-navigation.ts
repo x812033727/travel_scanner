@@ -48,10 +48,47 @@ export function resolveAdminWorkspaceLocation(raw: string, config: AdminWorkspac
 }
 
 export function adminNavigate(url: URL, replace = false) {
+  if (url.href === window.location.href) return true;
   if (!window.dispatchEvent(new CustomEvent("admin:before-navigate", { cancelable: true, detail: { url: url.href } }))) return false;
   window.history[replace ? "replaceState" : "pushState"](null, "", url);
   window.dispatchEvent(new Event(eventName));
   return true;
+}
+
+/** URL-backed state for legacy panels that predate the workspace tab router. */
+export function useAdminQueryState<T extends string>(
+  key: string,
+  allowed: readonly T[],
+  fallback: T,
+): readonly [T, (value: T, replace?: boolean) => void] {
+  const raw = useSyncExternalStore(subscribe, snapshot, serverSnapshot);
+  const requested = raw ? new URL(raw).searchParams.get(key) : null;
+  const value = requested && allowed.includes(requested as T) ? requested as T : fallback;
+  const setValue = useCallback((next: T, replace = false) => {
+    if (!allowed.includes(next)) return;
+    const target = new URL(window.location.href);
+    target.searchParams.set(key, next);
+    adminNavigate(target, replace);
+  }, [allowed, key]);
+  return [value, setValue] as const;
+}
+
+/** Free-form URL state with a caller-supplied validator (for ids, pages and searches). */
+export function useAdminQueryValue(
+  key: string,
+  fallback = "",
+  validate: (value: string) => boolean = Boolean,
+): readonly [string, (value: string, replace?: boolean) => void] {
+  const raw = useSyncExternalStore(subscribe, snapshot, serverSnapshot);
+  const requested = raw ? new URL(raw).searchParams.get(key) : null;
+  const value = requested && validate(requested) ? requested : fallback;
+  const setValue = useCallback((next: string, replace = false) => {
+    const target = new URL(window.location.href);
+    if (next && validate(next)) target.searchParams.set(key, next);
+    else target.searchParams.delete(key);
+    adminNavigate(target, replace);
+  }, [key, validate]);
+  return [value, setValue] as const;
 }
 
 export function useAdminWorkspaceNavigation(config: AdminWorkspaceConfig) {

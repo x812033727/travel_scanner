@@ -38,11 +38,11 @@ describe("content security policy", () => {
     expect(CSP_BASELINE).toContain("form-action 'self' https:");
   });
 
-  it("builds a nonce-based strict policy that only relaxes eval outside production", () => {
+  it("builds a nonce-based report-only policy that only relaxes eval outside production", () => {
     const production = buildStrictContentSecurityPolicy({ nonce: "abc123", production: true });
     expect(production).toContain("script-src 'self' 'nonce-abc123' 'strict-dynamic'");
     expect(production).toContain("default-src 'self'");
-    expect(production).toContain("upgrade-insecure-requests");
+    expect(production).not.toContain("upgrade-insecure-requests");
     expect(production).not.toContain("'unsafe-eval'");
     expect(production).not.toContain("'unsafe-inline' https://");
     expect(production).toContain("https://emrldtp.cc");

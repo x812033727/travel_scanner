@@ -1,3 +1,4 @@
+from datetime import UTC, datetime
 from typing import Annotated
 from uuid import UUID
 
@@ -35,9 +36,12 @@ from app.auth.service import (
     DUMMY_PASSWORD_HASH,
     CurrentUser,
     OptionalCurrentUser,
+    can_database_maintain_user,
     can_deploy_user,
+    capabilities_for_roles,
     create_access_token,
     decode_access_token_claims,
+    effective_admin_roles,
     find_user_by_email,
     hash_password,
     is_admin_user,
@@ -45,6 +49,7 @@ from app.auth.service import (
     revoke_access_token,
     runtime_auth_settings,
     set_auth_cookie,
+    user_is_suspended,
     verify_password,
 )
 from app.config import Settings, get_settings
@@ -66,17 +71,23 @@ Session = Annotated[AsyncSession, Depends(get_session)]
 async def user_response(session: AsyncSession, user: User) -> UserResponse:
     identities = await active_identities(session, user.id)
     methods = (["password"] if user.password_hash else []) + [item.provider for item in identities]
+    roles = await effective_admin_roles(session, user)
+    capabilities = capabilities_for_roles(roles)
+    user.__dict__["_admin_roles_cache"] = frozenset(roles)
     return UserResponse(
         id=user.id,
         email=user.email,
         is_admin=is_admin_user(user),
-        can_deploy=can_deploy_user(user),
+        can_deploy=can_deploy_user(user, roles=roles),
         preferred_locale=normalize_locale(user.preferred_locale),
         preferred_currency=normalize_currency(user.preferred_currency),
         has_password=bool(user.password_hash),
         auth_methods=methods,
         identity_count=len(identities),
         email_verified=user.email_verified_at is not None,
+        admin_roles=sorted(roles),
+        admin_capabilities=sorted(capabilities),
+        can_database_maintain=can_database_maintain_user(user, roles=roles),
     )
 
 
@@ -118,6 +129,7 @@ async def register(
         email=str(payload.email).lower(),
         password_hash=hash_password(payload.password),
         preferred_locale=payload.preferred_locale,
+        last_login_at=datetime.now(UTC),
     )
     session.add(user)
     await session.flush()
@@ -164,6 +176,16 @@ async def login(
     )
     if user is None or not password_valid or not user.is_active or user.deleted_at is not None:
         raise AppError(401, "invalid_credentials", "Email 或密碼不正確")
+    if user_is_suspended(user):
+        raise AppError(403, "account_suspended", "這個帳號目前已被停權")
+    if user.suspended_at is not None:
+        # A timed suspension has elapsed. Clearing the marker here keeps admin
+        # lists truthful without a scheduler and does not restore inactive accounts.
+        user.suspended_at = None
+        user.suspended_until = None
+        user.suspension_reason = None
+    user.last_login_at = datetime.now(UTC)
+    await session.commit()
     await clear_named_rate_limit("auth-login-account", email)
     settings = await runtime_auth_settings(session)
     token = create_access_token(user.id, user.auth_version, settings=settings)
@@ -276,6 +298,10 @@ async def oauth_exchange(
         browser_binding=payload.browser_binding,
         current_user=user,
     )
+    if user_is_suspended(result.user):
+        raise AppError(403, "account_suspended", "這個帳號目前已被停權")
+    result.user.last_login_at = datetime.now(UTC)
+    await session.commit()
     settings = await runtime_auth_settings(session)
     token = create_access_token(result.user.id, result.user.auth_version, settings=settings)
     response = token_response(token, await user_response(session, result.user), settings)

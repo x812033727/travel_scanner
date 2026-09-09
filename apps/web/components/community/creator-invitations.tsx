@@ -2,6 +2,7 @@
 import { useState, type FormEvent } from "react";
 import { useLocale } from "next-intl";
 import { api } from "@/lib/api";
+import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { getDiscoveryCopy } from "@/lib/discovery-copy";
 import { useResource } from "./use-resource";
 import { Button, fieldClass, panelClass, ErrorNotice } from "./ui";
@@ -15,6 +16,7 @@ export function CreatorInvitations() {
 }
 function InvitationForm({ item, onSaved }: { item: Invitation; onSaved: () => void }) {
   const c = getDiscoveryCopy(useLocale());
+  const manage = useAdminActionGuard("community.manage");
   const [invited, setInvited] = useState(item.invited);
   const [reason, setReason] = useState("");
   const [busy, setBusy] = useState(false);
@@ -24,5 +26,5 @@ function InvitationForm({ item, onSaved }: { item: Invitation; onSaved: () => vo
     try { await api(`/admin/community/creator-invitations/${item.user_id}`, { method: "PUT", body: JSON.stringify({ version: item.version, invited, reason }) }); onSaved(); }
     catch (value) { setError(value); } finally { setBusy(false); }
   }
-  return <form className="space-y-4" onSubmit={(event) => void submit(event)}><label className="flex min-h-11 items-center gap-3"><input type="checkbox" checked={invited} onChange={(event) => setInvited(event.target.checked)} />{c.invited}</label><label className="block font-semibold">{c.reasonLabel}<textarea required minLength={3} maxLength={1000} value={reason} onChange={(event) => setReason(event.target.value)} className={fieldClass} /></label><ErrorNotice error={error} /><Button disabled={busy} type="submit">{c.update}</Button></form>;
+  return <form className="space-y-4" onSubmit={(event) => void submit(event)}><fieldset disabled={!manage.allowed} title={!manage.allowed ? manage.disabledReason : undefined} className="space-y-4 disabled:opacity-70"><label className="flex min-h-11 items-center gap-3"><input type="checkbox" checked={invited} onChange={(event) => setInvited(event.target.checked)} />{c.invited}</label><label className="block font-semibold">{c.reasonLabel}<textarea required minLength={3} maxLength={1000} value={reason} onChange={(event) => setReason(event.target.value)} className={fieldClass} /></label><ErrorNotice error={error} /><Button disabled={busy} type="submit">{c.update}</Button></fieldset></form>;
 }

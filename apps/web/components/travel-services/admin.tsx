@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useRouter } from "@/i18n/navigation";
+import { AdminReadOnlyNotice, useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminSettingsPanel } from "@/components/admin-settings-panel";
 import { useHeaderSession } from "@/components/header-session";
 import { adminHotelsCopy } from "@/lib/admin-hotels-copy";
@@ -204,6 +205,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
   const copy = adminHotelsCopy(useLocale());
   const affiliateCopy = klookAffiliateCopy(useLocale());
   const router = useRouter();
+  const manage = useAdminActionGuard("content.manage");
   const isHotel = workspace === "hotels";
   const storageKey = storageUserId ? `${hotelDraftKey}:${storageUserId}` : undefined;
   const navigation = useAdminWorkspaceNavigation({
@@ -384,6 +386,10 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
     setConfig(next);
   }
   async function run(work: () => Promise<unknown>, reload = true) {
+    if (!manage.allowed) {
+      setError(manage.disabledReason);
+      return;
+    }
     setBusy(true);
     setError("");
     setNotice("");
@@ -452,6 +458,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
   }
   return (
     <div className="mt-7 min-w-0 space-y-5">
+      <AdminReadOnlyNotice capability="content.manage" />
       <div
         role="tablist"
         aria-label={isHotel ? copy.title : workspace === "partners" ? copy.partnersTitle : t("adminTitle")}
@@ -620,7 +627,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                   <div className="flex flex-wrap gap-2">
                     {(!isHotel || workspaceTab === "review" && section === "products") && <>
                     <button
-                      disabled={busy}
+                      disabled={!manage.allowed || busy}
+                      title={!manage.allowed ? manage.disabledReason : undefined}
                       className={button}
                       onClick={() =>
                         void run(() =>
@@ -640,7 +648,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                       {t("approve")}
                     </button>
                     <button
-                      disabled={busy}
+                      disabled={!manage.allowed || busy}
+                      title={!manage.allowed ? manage.disabledReason : undefined}
                       className={button}
                       onClick={() =>
                         void run(() =>
@@ -661,7 +670,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                     </button>
                     </>}
                     {(!isHotel || workspaceTab === "catalog") &&
-                    <button className={button} onClick={() => edit(p)}>
+                    <button className={button} disabled={!manage.allowed} title={!manage.allowed ? manage.disabledReason : undefined} onClick={() => edit(p)}>
                       {t("edit")}
                     </button>
                     }
@@ -672,7 +681,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                       productId={p.id}
                       options={p.booking_options || []}
                       brands={data.brand_definitions}
-                      busy={busy}
+                      busy={busy || !manage.allowed}
                       run={run}
                     />
                     </div>
@@ -701,12 +710,13 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                           {o.target_url}
                         </a>
                         {data.brands.find((brand) => brand.id === o.brand_id)?.channel === "klook_direct" && <BrowserReviewFields
-                          target={o.target_url} disabled={busy} value={browserReviews[`product:${o.id}:${o.version}`]}
+                      target={o.target_url} disabled={!manage.allowed || busy} value={browserReviews[`product:${o.id}:${o.version}`]}
                           onChange={(value) => setBrowserReviews((previous) => ({ ...previous, [`product:${o.id}:${o.version}`]: value }))}
                         />}
                         <div className="flex flex-wrap gap-2">
                           <button
-                            disabled={busy}
+                            disabled={!manage.allowed || busy}
+                            title={!manage.allowed ? manage.disabledReason : undefined}
                             className={button}
                             onClick={() =>
                               void run(() =>
@@ -727,7 +737,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                             {t("verifyOffer")}
                           </button>
                           <button
-                            disabled={busy}
+                            disabled={!manage.allowed || busy}
+                            title={!manage.allowed ? manage.disabledReason : undefined}
                             className={button}
                             onClick={() =>
                               void run(() =>
@@ -773,7 +784,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                   </label>
                   <button
                     className={button}
-                    disabled={busy}
+                    disabled={!manage.allowed || busy}
+                    title={!manage.allowed ? manage.disabledReason : undefined}
                     onClick={() =>
                       void run(async () => {
                         await api(
@@ -859,7 +871,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                   </label>
                 </div>
                 <button
-                  disabled={busy}
+                  disabled={!manage.allowed || busy}
+                  title={!manage.allowed ? manage.disabledReason : undefined}
                   className={button}
                   onClick={() =>
                     void run(() =>
@@ -974,6 +987,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                 <button
                   className={`${button} mt-4`}
                   disabled={
+                    !manage.allowed ||
                     busy ||
                     !destinationOfferBrand ||
                     !destinationOfferDestination ||
@@ -1093,7 +1107,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                   <button
                     key={reviewStatus}
                     className={button}
-                    disabled={busy || !selectedDestinationOffers.length}
+                    disabled={!manage.allowed || busy || !selectedDestinationOffers.length}
+                    title={!manage.allowed ? manage.disabledReason : undefined}
                     onClick={() =>
                       void run(async () => {
                         await api(
@@ -1169,7 +1184,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                             </p>
                           )}
                           {brand?.channel === "klook_direct" && offer.status !== "approved" && <BrowserReviewFields
-                            target={offer.target_url} disabled={busy} value={browserReviews[`destination:${offer.id}:${offer.version}`]}
+                            target={offer.target_url} disabled={busy || !manage.allowed} value={browserReviews[`destination:${offer.id}:${offer.version}`]}
                             onChange={(value) => setBrowserReviews((previous) => ({ ...previous, [`destination:${offer.id}:${offer.version}`]: value }))}
                           />}
                           {destinationOfferEditor?.row.id === offer.id && (
@@ -1204,7 +1219,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                               </label>}
                               <button
                                 className={button}
-                                disabled={busy || !destinationOfferEditor.targetUrl}
+                                disabled={!manage.allowed || busy || !destinationOfferEditor.targetUrl}
+                                title={!manage.allowed ? manage.disabledReason : undefined}
                                 onClick={() =>
                                   void run(async () => {
                                     await api(
@@ -1233,7 +1249,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                         <div className="flex flex-col gap-2">
                           <button
                             className={button}
-                            disabled={busy}
+                            disabled={!manage.allowed || busy}
+                            title={!manage.allowed ? manage.disabledReason : undefined}
                             onClick={() =>
                               setDestinationOfferEditor({
                                 row: offer,
@@ -1246,7 +1263,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                           </button>
                           <button
                             className={button}
-                            disabled={busy}
+                            disabled={!manage.allowed || busy}
+                            title={!manage.allowed ? manage.disabledReason : undefined}
                             onClick={() =>
                               void run(() =>
                                 api(
@@ -1296,7 +1314,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                   return (
                     <button
                       key={`${code}:${channel}`}
-                      disabled={busy}
+                      disabled={!manage.allowed || busy}
+                      title={!manage.allowed ? manage.disabledReason : undefined}
                       aria-label={`${b.name} · ${channelLabel(channel)}`}
                       aria-pressed={brandCode === code && brandChannel === channel}
                       className={`${button} text-left ${brandCode === code && brandChannel === channel ? "bg-[var(--teal-soft)]" : ""}`}
@@ -1374,7 +1393,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                 </label>
                 <p className="mt-2 text-xs leading-5 text-[var(--muted)]">{affiliateCopy.evidenceHint}</p>
                 <button
-                  disabled={busy || !evidence}
+                  disabled={!manage.allowed || busy || !evidence}
+                  title={!manage.allowed ? manage.disabledReason : undefined}
                   className={`${button} mt-4`}
                   onClick={() =>
                     void run(async () => {
@@ -1425,7 +1445,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                 />
               </label>
               <button
-                disabled={busy || !csv}
+                disabled={!manage.allowed || busy || !csv}
+                title={!manage.allowed ? manage.disabledReason : undefined}
                 className={button}
                 onClick={() =>
                   void run(async () => {
@@ -1469,7 +1490,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                     ))}
                   </ul>
                   <button
-                    disabled={busy || preview.rows_json.some((r) => r.error)}
+                    disabled={!manage.allowed || busy || preview.rows_json.some((r) => r.error)}
+                    title={!manage.allowed ? manage.disabledReason : undefined}
                     className={button}
                     onClick={() =>
                       void run(async () => {
@@ -1564,6 +1586,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
               {isHotel && <>
               <p className="text-sm text-[var(--muted)]">{copy.shared}</p>
               <QuotePolicies
+                disabled={!manage.allowed}
                 policies={config.hotel_quote_policies || {}}
                 providers={data.quote_providers || {}}
                 brands={data.brand_definitions}
@@ -1574,6 +1597,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
               <label className="flex min-h-11 items-center gap-3">
                 <input
                   type="checkbox"
+                  disabled={!manage.allowed}
                   checked={config.direct_hotel_links_enabled ?? false}
                   onChange={(e) =>
                     changeConfig({
@@ -1592,7 +1616,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                 <input
                   type="checkbox"
                   checked={config.public_enabled}
-                  disabled={isHotel}
+                  disabled={!manage.allowed || isHotel}
                   onChange={(e) =>
                     changeConfig({ ...config, public_enabled: e.target.checked })
                   }
@@ -1606,6 +1630,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                     <label className="flex min-h-11 items-center gap-2" key={k}>
                       <input
                         type="checkbox"
+                        disabled={!manage.allowed}
                         checked={config.enabled_kinds.includes(k)}
                         onChange={() => toggle("enabled_kinds", k)}
                       />
@@ -1626,7 +1651,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
                     >
                       <input
                         type="checkbox"
-                        disabled={isHotel}
+                        disabled={!manage.allowed || isHotel}
                         checked={config.enabled_destinations.includes(
                           destinationItem.id,
                         )}
@@ -1640,6 +1665,7 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
               {!isHotel && <label className="flex min-h-11 items-center gap-3">
                 <input
                   type="checkbox"
+                  disabled={!manage.allowed}
                   checked={config.airalo_feed_enabled}
                   onChange={(e) =>
                     changeConfig({
@@ -1662,7 +1688,8 @@ function TravelServicesWorkspace({ workspace, storageUserId }: {
               </div>}
               <button
                 className={button}
-                disabled={busy}
+                disabled={!manage.allowed || busy}
+                title={!manage.allowed ? manage.disabledReason : undefined}
                 onClick={() =>
                   void run(async () => {
                     try { await api(`${endpoint}/config`, {

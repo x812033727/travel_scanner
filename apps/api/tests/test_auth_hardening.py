@@ -82,14 +82,18 @@ def test_reserved_admin_email_detection_is_case_insensitive(
     settings = get_settings()
     monkeypatch.setattr(settings, "admin_emails", "Owner@Example.com")
     monkeypatch.setattr(settings, "deploy_admin_emails", "deploy@example.com")
+    monkeypatch.setattr(settings, "database_admin_emails", "database@example.com")
     assert is_reserved_admin_email("owner@example.com") is True
     assert is_reserved_admin_email("  OWNER@EXAMPLE.COM ") is True
     assert is_reserved_admin_email("deploy@example.com") is True
+    assert is_reserved_admin_email("DATABASE@example.com") is True
     assert is_reserved_admin_email("member@example.com") is False
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize("setting", ["admin_emails", "deploy_admin_emails"])
+@pytest.mark.parametrize(
+    "setting", ["admin_emails", "deploy_admin_emails", "database_admin_emails"]
+)
 async def test_reserved_admin_email_cannot_self_register(
     setting: str,
     monkeypatch: pytest.MonkeyPatch,

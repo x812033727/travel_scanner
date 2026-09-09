@@ -1,3 +1,4 @@
+from datetime import UTC, datetime
 from unittest.mock import AsyncMock
 from uuid import uuid4
 
@@ -12,8 +13,34 @@ from app.admin.users import _can_adjust_usage, adjusted_usage_balance
 from app.auth.service import current_user
 from app.config import get_settings
 from app.main import app
-from app.models import UsageAccount, User
+from app.models import AdminAuditLog, UsageAccount, User
 from app.problems import AppError
+
+
+def test_user_detail_audit_history_redacts_secrets_embedded_in_values() -> None:
+    item = AdminAuditLog(
+        id=uuid4(),
+        actor_user_id=None,
+        action="legacy_failure",
+        target="user:test",
+        metadata_json={
+            "detail": "password=hunter2; Authorization: Bearer exposed-value",
+            "connection": "redis://service:redis-secret@redis/0",
+            "opaque": (
+                "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0."
+                "signature0123456789"
+            ),
+        },
+        created_at=datetime.now(UTC),
+    )
+
+    metadata = admin_users._audit_item(item).metadata  # noqa: SLF001
+
+    assert metadata == {
+        "detail": "password=***; Authorization: ***",
+        "connection": "redis://service:***@redis/0",
+        "opaque": "***",
+    }
 
 
 def test_usage_adjustment_preserves_reserved_balance() -> None:
@@ -64,7 +91,7 @@ def test_admin_user_payloads_require_meaningful_changes() -> None:
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize(("initial", "updated"), [(True, False), (False, True)])
+@pytest.mark.parametrize(("initial", "updated"), [(False, True)])
 async def test_changing_account_active_state_revokes_existing_sessions(
     monkeypatch: pytest.MonkeyPatch, initial: bool, updated: bool
 ) -> None:
@@ -107,6 +134,57 @@ async def test_changing_account_active_state_revokes_existing_sessions(
     assert user.is_active is updated
     assert user.auth_version == 8
     session.commit.assert_awaited_once()
+
+
+@pytest.mark.asyncio
+async def test_legacy_update_cannot_bypass_permanent_suspension_step_up(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    target = User(
+        id=uuid4(),
+        email="target@example.com",
+        password_hash="unused",
+        is_active=True,
+        is_admin=False,
+    )
+    session = AsyncMock(spec=AsyncSession)
+    monkeypatch.setattr(admin_users, "_user_and_account", AsyncMock(return_value=(target, None)))
+    with pytest.raises(AppError) as caught:
+        await admin_users.update_admin_user(
+            session,
+            target.id,
+            AdminUserUpdate(is_active=False),
+            User(email="admin@example.com", password_hash="unused", is_admin=True),
+        )
+    assert caught.value.code == "admin_suspension_endpoint_required"
+    session.commit.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_legacy_update_cannot_promote_or_demote_an_administrator(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    target = User(
+        id=uuid4(),
+        email="target@example.com",
+        password_hash="unused",
+        is_active=True,
+        is_admin=False,
+    )
+    session = AsyncMock(spec=AsyncSession)
+    monkeypatch.setattr(admin_users, "_user_and_account", AsyncMock(return_value=(target, None)))
+
+    with pytest.raises(AppError) as caught:
+        await admin_users.update_admin_user(
+            session,
+            target.id,
+            AdminUserUpdate(is_admin=True),
+            User(email="support@example.com", password_hash="unused", is_admin=True),
+        )
+
+    assert caught.value.code == "admin_role_endpoint_required"
+    assert target.is_admin is False
+    session.commit.assert_not_awaited()
 
 
 @pytest.mark.asyncio
@@ -156,9 +234,7 @@ async def test_environment_designated_admin_cannot_be_suspended_or_demoted(
         is_admin=True,
     )
     session = AsyncMock(spec=AsyncSession)
-    monkeypatch.setattr(
-        admin_users, "_user_and_account", AsyncMock(return_value=(target, None))
-    )
+    monkeypatch.setattr(admin_users, "_user_and_account", AsyncMock(return_value=(target, None)))
 
     with pytest.raises(AppError) as caught:
         await admin_users.update_admin_user(session, target.id, payload, actor)

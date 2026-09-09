@@ -151,8 +151,9 @@ three consecutive API/Web health checks. A failed activation returns to the
 previous application images without downgrading the database. Keep migrations
 backward compatible.
 
-Only an effective administrator whose email also appears in
-`DEPLOY_ADMIN_EMAILS` receives `can_deploy=true`. Starting a deployment requires
+Administrators with `deployer` or `owner` may inspect deployment history. Only
+one of those administrators whose email also appears in `DEPLOY_ADMIN_EMAILS`
+receives `can_deploy=true`. Starting a deployment requires
 the current password and `DEPLOY <7-char-SHA>`. Set the same random 32+ character
 `DEPLOY_AGENT_HMAC_KEY` in the API runtime environment and the root-owned agent
 environment. The browser cannot select a branch, tag, repository, command, or
@@ -172,7 +173,10 @@ uv run python -m app.cli add-usage-package --email you@example.com \
 ## Administration
 
 After applying the database migration, grant an existing account administrator
-access and open `http://localhost:3000/admin/users` or
+access and open the unified operations console at
+`http://localhost:3000/admin`. User, audit, and safe database operations are at
+`http://localhost:3000/admin/users`, `http://localhost:3000/admin/audit`, and
+`http://localhost:3000/admin/database`; existing settings remain at
 `http://localhost:3000/admin/usage-settings` or
 `http://localhost:3000/admin/system-settings` or
 `http://localhost:3000/admin/layout-settings` or
@@ -186,22 +190,32 @@ uv run python -m app.cli set-admin --email you@example.com
 uv run python -m app.cli create-admin --email you@example.com
 ```
 
-Use `--revoke` to remove the database role. `ADMIN_EMAILS` is also accepted as a
-comma-separated bootstrap or recovery allowlist for accounts that already exist;
+The legacy CLI grant maps to `support`, `content`, and `operations` capabilities;
+it does not grant deployment or database-maintenance access. Use `--revoke` to
+remove only that legacy grant; explicit database, deployment, owner, or other UI
+assignments are preserved. `ADMIN_EMAILS` is also accepted as a comma-separated
+bootstrap or recovery allowlist and gives an existing account the immutable
+effective `owner` role;
 remove the address from that environment value before revoking its access.
-Addresses listed in `ADMIN_EMAILS` or `DEPLOY_ADMIN_EMAILS` cannot self-register
+Addresses listed in `ADMIN_EMAILS`, `DEPLOY_ADMIN_EMAILS`, or
+`DATABASE_ADMIN_EMAILS` cannot self-register
 through the public form (`admin_email_reserved`): create those accounts with
 `create-admin`, or register them before adding them to the allowlist, so that an
 attacker cannot claim an administrator address first. Signing out revokes the
 presented access token immediately. The desktop and mobile headers
 use the same `/auth/me` result and expose the administration link only to
-accounts with an effective database or `ADMIN_EMAILS` role. Every administration
-API still enforces the role server-side.
+accounts with an effective administration role. Navigation is returned by the
+server from `/api/v1/admin/bootstrap`; every administration API independently
+enforces its required capability.
 
-The member page searches and paginates accounts, shows available and reserved
-uses, activates or suspends accounts, and grants or revokes database-backed
-administrator access. Administrators cannot suspend or demote their own active
-session, while `ADMIN_EMAILS` roles must be removed from the host environment.
+The member page keeps filters, pagination, and the selected account in the URL.
+It shows login methods, verification, activity, roles, available/reserved uses,
+timed (up to 90 days) or permanent suspension, session revocation, and scheduled privacy erasure.
+Role changes, permanent suspension, and erasure use a five-minute password
+step-up, explicit confirmation, reason, and idempotency key. Erasure has a 24-hour
+grace period. Non-owner roles may expire; owner is a permanent recovery role and
+cannot receive an expiry. Administrators cannot suspend, demote, or erase their own active
+session; environment-designated accounts and the final usable owner are protected.
 Manual usage changes require a reason and an idempotency key. Every change is a
 new `usage_ledger` entry plus an administrator audit event; deductions cannot
 reduce the balance below in-flight reservations. Database-backed administrators
@@ -210,6 +224,20 @@ operation. Administrators whose email is currently listed in `ADMIN_EMAILS` may
 increase or deduct their own balance, including accounts that also hold the
 database-backed role; these self-adjustments use the same ledger, audit, and
 reserved-balance safeguards.
+
+Password-only and social-login administrators use the same step-up boundary. An
+SSO-only administrator can establish their first local password through password
+recovery; configure and verify `COMMUNITY_SMTP_HOST` plus `COMMUNITY_MAIL_FROM`
+before granting that account an operational role.
+
+Database maintenance is read-only by default. To enable verified manual backups
+and controlled `ANALYZE`, the actor needs `database_operator` or `owner`, must be
+listed in `DATABASE_ADMIN_EMAILS`, and the host must set
+`ADMIN_DATABASE_MAINTENANCE_ENABLED=true` with a healthy deployment agent. The UI
+never accepts SQL, exposes table rows, downloads/restores backups, or runs
+`VACUUM FULL`, `REINDEX`, or arbitrary migrations. See
+[`docs/admin-operations-center.md`](docs/admin-operations-center.md) for the role
+matrix, safety boundary, and staged rollout.
 
 The plans and usage page manages the registration trial, public one-time usage
 packs, and the cost of all 12 metered operations. Trial grants accept 1–10,000

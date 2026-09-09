@@ -7,6 +7,7 @@ from uuid import UUID, uuid4
 
 from sqlalchemy import (
     JSON,
+    BigInteger,
     Boolean,
     CheckConstraint,
     Date,
@@ -51,9 +52,55 @@ class User(Timestamped, Base):
     preferred_locale: Mapped[str] = mapped_column(String(16), default="zh-TW")
     preferred_currency: Mapped[str] = mapped_column(String(3), default="TWD", server_default="TWD")
     email_verified_at: Mapped[datetime | None] = mapped_column(
-        DateTime(timezone=True), nullable=True,
+        DateTime(timezone=True),
+        nullable=True,
     )
     deleted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_login_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True, index=True
+    )
+    suspended_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True, index=True
+    )
+    suspended_until: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True, index=True
+    )
+    suspension_reason: Mapped[str | None] = mapped_column(String(255), nullable=True)
+
+
+ADMIN_ROLES = (
+    "viewer",
+    "support",
+    "content",
+    "operations",
+    "database_operator",
+    "deployer",
+    "owner",
+)
+
+
+class AdminRoleAssignment(Timestamped, Base):
+    __tablename__ = "admin_role_assignments"
+    __table_args__ = (
+        UniqueConstraint("user_id", "role", name="uq_admin_role_assignment_user_role"),
+        CheckConstraint(
+            "role IN (" + ", ".join(f"'{role}'" for role in ADMIN_ROLES) + ")",
+            name="ck_admin_role_assignment_role",
+        ),
+        CheckConstraint(
+            "source IN ('manual', 'legacy_backfill')",
+            name="ck_admin_role_assignment_source",
+        ),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    role: Mapped[str] = mapped_column(String(32), index=True)
+    granted_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    source: Mapped[str] = mapped_column(String(32), default="manual")
+    expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
 
 class UserAuthIdentity(Timestamped, Base):
@@ -67,9 +114,7 @@ class UserAuthIdentity(Timestamped, Base):
     )
 
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
-    user_id: Mapped[UUID] = mapped_column(
-        ForeignKey("users.id", ondelete="CASCADE"), index=True
-    )
+    user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
     provider: Mapped[str] = mapped_column(String(16), index=True)
     subject: Mapped[str] = mapped_column(String(255))
     provider_email: Mapped[str | None] = mapped_column(String(320), nullable=True)
@@ -607,9 +652,7 @@ class CatalogReviewRun(Timestamped, Base):
     __tablename__ = "catalog_review_runs"
     __table_args__ = (
         UniqueConstraint("actor_user_id", "idempotency_key", name="uq_catalog_run_idempotency"),
-        CheckConstraint(
-            "mode IN ('review_pending', 'discover_new')", name="ck_catalog_run_mode"
-        ),
+        CheckConstraint("mode IN ('review_pending', 'discover_new')", name="ck_catalog_run_mode"),
         CheckConstraint(
             "status IN ('queued', 'running', 'completed', 'partial', 'failed', 'cancelled')",
             name="ck_catalog_run_status",
@@ -638,9 +681,7 @@ class CatalogReviewItem(Timestamped, Base):
     __tablename__ = "catalog_review_items"
     __table_args__ = (
         UniqueConstraint("run_id", "kind", "entity_id", name="uq_catalog_review_entity"),
-        CheckConstraint(
-            "kind IN ('hotspot', 'food', 'merchant')", name="ck_catalog_review_kind"
-        ),
+        CheckConstraint("kind IN ('hotspot', 'food', 'merchant')", name="ck_catalog_review_kind"),
         CheckConstraint(
             "status IN ('pending', 'assessed', 'error', 'applied', 'stale')",
             name="ck_catalog_review_item_status",
@@ -739,9 +780,7 @@ class TravelHotspot(Timestamped, Base):
 
 class HotspotFavorite(Timestamped, Base):
     __tablename__ = "hotspot_favorites"
-    __table_args__ = (
-        UniqueConstraint("user_id", "hotspot_id", name="uq_hotspot_favorite"),
-    )
+    __table_args__ = (UniqueConstraint("user_id", "hotspot_id", name="uq_hotspot_favorite"),)
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
     hotspot_id: Mapped[UUID] = mapped_column(
@@ -778,9 +817,7 @@ class HotspotThemeLink(Timestamped, Base):
     __tablename__ = "hotspot_theme_links"
     __table_args__ = (
         UniqueConstraint("hotspot_id", "theme_id", name="uq_hotspot_theme_link"),
-        CheckConstraint(
-            "source IN ('seed', 'admin', 'ai')", name="ck_hotspot_theme_link_source"
-        ),
+        CheckConstraint("source IN ('seed', 'admin', 'ai')", name="ck_hotspot_theme_link_source"),
     )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     hotspot_id: Mapped[UUID] = mapped_column(
@@ -1011,9 +1048,7 @@ class TravelFood(Timestamped, Base):
 
 class FoodFavorite(Timestamped, Base):
     __tablename__ = "food_favorites"
-    __table_args__ = (
-        UniqueConstraint("user_id", "food_id", name="uq_food_favorite"),
-    )
+    __table_args__ = (UniqueConstraint("user_id", "food_id", name="uq_food_favorite"),)
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
     food_id: Mapped[UUID] = mapped_column(
@@ -1297,9 +1332,7 @@ class FoodMerchantCategory(Base):
 
 class FoodMerchantFavorite(Timestamped, Base):
     __tablename__ = "food_merchant_favorites"
-    __table_args__ = (
-        UniqueConstraint("user_id", "merchant_id", name="uq_food_merchant_favorite"),
-    )
+    __table_args__ = (UniqueConstraint("user_id", "merchant_id", name="uq_food_merchant_favorite"),)
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
     merchant_id: Mapped[UUID] = mapped_column(
@@ -1830,9 +1863,7 @@ class TripDayNote(Timestamped, Base):
     """
 
     __tablename__ = "trip_day_notes"
-    __table_args__ = (
-        UniqueConstraint("trip_plan_id", "day_date", name="uq_trip_day_note"),
-    )
+    __table_args__ = (UniqueConstraint("trip_plan_id", "day_date", name="uq_trip_day_note"),)
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     trip_plan_id: Mapped[UUID] = mapped_column(
         ForeignKey("trip_plans.id", ondelete="CASCADE"), index=True
@@ -2156,6 +2187,96 @@ class AdminAuditLog(Base):
     target: Mapped[str] = mapped_column(String(128), index=True)
     metadata_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+DATABASE_OPERATION_STATUSES = ("queued", "running", "succeeded", "failed")
+ACTIVE_DATABASE_OPERATION_STATUSES = DATABASE_OPERATION_STATUSES[:2]
+
+
+class DatabaseOperationRun(Timestamped, Base):
+    __tablename__ = "database_operation_runs"
+    __table_args__ = (
+        UniqueConstraint(
+            "requested_by_user_id",
+            "idempotency_key",
+            name="uq_database_operation_request_idempotency",
+        ),
+        CheckConstraint(
+            "operation_type IN ('backup', 'analyze')",
+            name="ck_database_operation_type",
+        ),
+        CheckConstraint(
+            "status IN ("
+            + ", ".join(f"'{status}'" for status in DATABASE_OPERATION_STATUSES)
+            + ")",
+            name="ck_database_operation_status",
+        ),
+        Index(
+            "uq_database_operation_one_active",
+            text("(1)"),
+            unique=True,
+            postgresql_where=text("status IN ('queued', 'running')"),
+            sqlite_where=text("status IN ('queued', 'running')"),
+        ),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    requested_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    idempotency_key: Mapped[str] = mapped_column(String(255))
+    operation_type: Mapped[str] = mapped_column(String(32), index=True)
+    status: Mapped[str] = mapped_column(String(32), default="queued", index=True)
+    agent_job_id: Mapped[str | None] = mapped_column(String(64), nullable=True, unique=True)
+    backup_name: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    checksum_sha256: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    size_bytes: Mapped[int | None] = mapped_column(BigInteger, nullable=True)
+    schema_revision: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    release_sha: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    failure_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    failure_detail: Mapped[str | None] = mapped_column(Text, nullable=True)
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    metadata_json: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+
+
+ACCOUNT_ERASURE_STATUSES = ("scheduled", "processing", "cancelled", "completed", "failed")
+
+
+class AccountErasureRequest(Timestamped, Base):
+    __tablename__ = "account_erasure_requests"
+    __table_args__ = (
+        UniqueConstraint(
+            "requested_by_user_id",
+            "idempotency_key",
+            name="uq_account_erasure_request_idempotency",
+        ),
+        CheckConstraint(
+            "status IN (" + ", ".join(f"'{status}'" for status in ACCOUNT_ERASURE_STATUSES) + ")",
+            name="ck_account_erasure_request_status",
+        ),
+        Index(
+            "uq_account_erasure_one_active",
+            "user_id",
+            unique=True,
+            postgresql_where=text("status IN ('scheduled', 'processing')"),
+            sqlite_where=text("status IN ('scheduled', 'processing')"),
+        ),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    requested_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    idempotency_key: Mapped[str] = mapped_column(String(255))
+    status: Mapped[str] = mapped_column(String(32), default="scheduled", index=True)
+    reason: Mapped[str] = mapped_column(String(255))
+    scheduled_for: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    cancelled_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    failure_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    failure_detail: Mapped[str | None] = mapped_column(Text, nullable=True)
 
 
 DEPLOYMENT_STATUSES = (

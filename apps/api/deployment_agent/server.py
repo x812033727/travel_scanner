@@ -25,6 +25,16 @@ class AgentApplication:
                 args=(str(interrupted["job_id"]), str(interrupted["target_sha"])),
                 daemon=True,
             ).start()
+        interrupted_database = self.store.active_database_job()
+        if interrupted_database is not None:
+            Thread(
+                target=self.executor.database_operation,
+                args=(
+                    str(interrupted_database["job_id"]),
+                    str(interrupted_database["action"]),
+                ),
+                daemon=True,
+            ).start()
 
     def handle(
         self, method: str, path: str, body: bytes, headers: Any
@@ -48,6 +58,42 @@ class AgentApplication:
                 return HTTPStatus.OK, self.executor.overview()
             if method == "POST" and path == "/v1/preflight":
                 return HTTPStatus.OK, self.executor.preflight()
+            if method == "GET" and path == "/v1/database/overview":
+                return HTTPStatus.OK, self.executor.database_overview()
+            if method == "POST" and path == "/v1/database/operations":
+                payload = json.loads(body or b"{}")
+                job_id = str(payload.get("run_id") or "")
+                action = str(payload.get("action") or "").lower()
+                if not re.fullmatch(
+                    r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-"
+                    r"[0-9a-f]{4}-[0-9a-f]{12}",
+                    job_id,
+                ) or action not in {
+                    "backup",
+                    "analyze",
+                }:
+                    return HTTPStatus.UNPROCESSABLE_ENTITY, {
+                        "code": "database_operation_request_invalid",
+                        "detail": "invalid database operation request",
+                    }
+                try:
+                    job = self.store.create_database_job(job_id, action)
+                except sqlite3.IntegrityError:
+                    return HTTPStatus.CONFLICT, {
+                        "code": "database_operation_in_progress",
+                        "detail": "another deployment or database operation is active",
+                    }
+                if self.store.claim_database_job(job_id):
+                    Thread(
+                        target=self.executor.database_operation,
+                        args=(job_id, action),
+                        daemon=True,
+                    ).start()
+                accepted = self.store.get_database_job(job_id) or job
+                return HTTPStatus.ACCEPTED, {
+                    "job_id": job_id,
+                    "status": accepted["status"],
+                }
             if method == "POST" and path == "/v1/deployments":
                 payload = json.loads(body or b"{}")
                 job_id = str(payload.get("run_id") or "")
@@ -82,6 +128,21 @@ class AgentApplication:
                         "detail": "deployment job not found",
                     }
                 return HTTPStatus.OK, selected_job
+            database_match = re.fullmatch(
+                r"/v1/database/operations/([0-9a-f]{8}-[0-9a-f]{4}-"
+                r"[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
+                path,
+            )
+            if method == "GET" and database_match:
+                selected_database_job = self.store.get_database_job(
+                    database_match.group(1)
+                )
+                if selected_database_job is None:
+                    return HTTPStatus.NOT_FOUND, {
+                        "code": "database_operation_not_found",
+                        "detail": "database operation job not found",
+                    }
+                return HTTPStatus.OK, selected_database_job
             return HTTPStatus.NOT_FOUND, {"code": "not_found", "detail": "endpoint not found"}
         except Exception as exc:
             return HTTPStatus.SERVICE_UNAVAILABLE, {
@@ -90,10 +151,10 @@ class AgentApplication:
             }
 
 
-class UnixHTTPServer(
-    socketserver.ThreadingMixIn,
-    socketserver.UnixStreamServer,  # type: ignore[name-defined,misc]
-):
+_UnixStreamServer = getattr(socketserver, "UnixStreamServer", socketserver.TCPServer)
+
+
+class UnixHTTPServer(socketserver.ThreadingMixIn, _UnixStreamServer):  # type: ignore[misc,valid-type]
     daemon_threads = True
 
 
@@ -144,6 +205,8 @@ def make_handler(application: AgentApplication) -> type[BaseHTTPRequestHandler]:
 
 
 def serve(config: AgentConfig) -> None:
+    if not hasattr(socketserver, "UnixStreamServer"):
+        raise RuntimeError("the deployment agent requires Unix-domain sockets")
     config.socket_path.parent.mkdir(parents=True, exist_ok=True)
     if config.socket_path.exists():
         config.socket_path.unlink()

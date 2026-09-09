@@ -4,8 +4,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
 from app.admin.dashboard_router import router as admin_dashboard_router
+from app.admin.operations_router import router as admin_operations_router
 from app.admin.router import router as admin_router
 from app.admin.router import runtime_router
+from app.admin.security_router import router as admin_security_router
 from app.admin.user_router import router as admin_user_router
 from app.affiliates.router import router as affiliates_router
 from app.ai.router import router as ai_router
@@ -27,6 +29,7 @@ from app.community.router import router as community_router
 from app.community.translation import router as community_translation_router
 from app.config import get_settings
 from app.crawlers.router import router as crawlers_router
+from app.database_admin.router import router as database_admin_router
 from app.db import engine
 from app.deployments.router import router as deployments_router
 from app.discovery.router import router as discovery_router
@@ -103,7 +106,10 @@ app.include_router(community_messaging_router, prefix="/api/v1")
 app.include_router(admin_router, prefix="/api/v1")
 app.include_router(catalog_review_router, prefix="/api/v1")
 app.include_router(admin_dashboard_router, prefix="/api/v1")
+app.include_router(admin_operations_router, prefix="/api/v1")
+app.include_router(admin_security_router, prefix="/api/v1")
 app.include_router(admin_user_router, prefix="/api/v1")
+app.include_router(database_admin_router, prefix="/api/v1")
 app.include_router(deployments_router, prefix="/api/v1")
 app.include_router(runtime_router, prefix="/api/v1")
 app.include_router(ui_text_runtime_router, prefix="/api/v1")

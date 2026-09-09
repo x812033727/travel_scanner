@@ -141,6 +141,41 @@ def test_production_api_process_requires_trusted_proxy_client_ip() -> None:
     secure_production_settings(trust_proxy_client_ip=True).validate_api_serving_security()
 
 
+@pytest.mark.parametrize(
+    ("override", "message"),
+    [
+        ({"database_admin_emails": ""}, "DATABASE_ADMIN_EMAILS"),
+        ({"deploy_agent_hmac_key": "short"}, "DEPLOY_AGENT_HMAC_KEY"),
+        ({"deploy_agent_socket": "/tmp/custom-deployer.sock"}, "DEPLOY_AGENT_SOCKET"),
+    ],
+)
+def test_enabled_database_maintenance_requires_secure_configuration(
+    override: dict[str, object], message: str
+) -> None:
+    values: dict[str, object] = {
+        "admin_database_maintenance_enabled": True,
+        "database_admin_emails": "database@example.com",
+        "deploy_agent_hmac_key": "x" * 32,
+        "deploy_agent_socket": "/run/travel-scanner-deployer/deployer.sock",
+    }
+    values.update(override)
+    with pytest.raises(RuntimeError, match=message):
+        secure_production_settings(**values).validate_deployment_security()
+
+
+def test_database_maintenance_configuration_is_independent_of_deployments() -> None:
+    settings = secure_production_settings(
+        deployments_enabled=False,
+        admin_database_maintenance_enabled=True,
+        database_admin_emails="database@example.com",
+        deploy_agent_hmac_key="x" * 32,
+        deploy_agent_socket="/run/travel-scanner-deployer/deployer.sock",
+    )
+    settings.validate_deployment_security()
+    assert settings.database_maintenance_configured is True
+    assert settings.deployments_configured is False
+
+
 def test_access_token_lifetime_is_bounded() -> None:
     with pytest.raises(ValidationError):
         Settings(access_token_expire_minutes=100_000)

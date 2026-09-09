@@ -227,7 +227,8 @@ test("the admin sidebar shows which page you are on", async ({ page }) => {
     }),
   );
   await page.goto("/zh-TW/admin");
-  const current = page.locator('a[aria-current="page"]').first();
+  if (test.info().project.name === "mobile-chromium") await page.getByRole("button", { name: "開啟營運選單" }).click();
+  const current = page.getByRole("navigation", { name: "營運控制台" }).locator('a[aria-current="page"]');
   await expect(current).toBeVisible();
   // `a { color: inherit }` written outside a layer used to beat `text-white`, so the
   // current page rendered as ink on ink: a 1:1 pill with no label in it.
@@ -305,10 +306,10 @@ test("the admin console holds its own controls to the size it publishes", async 
       status: 200,
       contentType: "application/json",
       body: JSON.stringify({ counts: {
-        hotspots_total: 900, hotspots_pending: 800, guides_pending: 4, hotspots_missing_location: 3,
-        foods_total: 20, foods_pending: 2, merchants_total: 30, merchants_pending: 10,
+        hotspots_total: 900, hotspots_pending: 2, guides_pending: 800, hotspots_missing_location: 3,
+        foods_total: 20, foods_pending: 1, merchants_total: 30, merchants_pending: 1000,
         merchants_missing_area: 1, merchants_missing_category: 2,
-        hotels_total: 8, hotels_pending: 3, hotels_without_options: 1,
+        hotels_total: 8, hotels_pending: 1, hotels_without_options: 1,
       }, can_deploy: false }),
     }),
   );
@@ -318,11 +319,11 @@ test("the admin console holds its own controls to the size it publishes", async 
   await page.goto("/zh-TW/admin");
 
   for (const [name, href] of [
-    ["景點待審 800", "/zh-TW/admin/hotspots?tab=review&section=manual"],
-    ["文章待審 4", "/zh-TW/admin/hotspots?tab=content&section=guides"],
-    ["料理待審 2", "/zh-TW/admin/foods?tab=review&section=dishes"],
-    ["店家待審 10", "/zh-TW/admin/foods?tab=review&section=merchants"],
-    ["飯店待審 3", "/zh-TW/admin/hotels?tab=review&section=products"],
+    ["景點待審 2", "/zh-TW/admin/hotspots?tab=review&section=manual&status=pending"],
+    ["文章待審 800", "/zh-TW/admin/hotspots?tab=content&section=guides&status=pending"],
+    ["料理待審 1", "/zh-TW/admin/foods?tab=review&section=dishes&status=pending"],
+    ["店家待審 1,000", "/zh-TW/admin/foods?tab=review&section=merchants&status=pending"],
+    ["飯店待審 1", "/zh-TW/admin/hotels?tab=review&section=products&status=pending"],
   ]) {
     const queue = page.getByRole("link", { name, exact: true });
     await expect(queue).toBeVisible();

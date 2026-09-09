@@ -10,7 +10,13 @@ from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import encrypt_secrets
-from app.auth.service import CurrentUser, find_user_by_email, hash_password, is_admin_user
+from app.auth.service import (
+    CurrentUser,
+    effective_admin_roles,
+    find_user_by_email,
+    hash_password,
+    is_admin_user,
+)
 from app.community.models import AccountToken, Job, Post, Profile
 from app.community.policy import aware, fail
 from app.community.schemas import DeleteAccountInput, EmailRequest, ResetInput, TokenInput
@@ -28,7 +34,17 @@ def smtp_ready() -> bool:
     return bool(settings.community_smtp_host and settings.community_mail_from)
 
 
-async def request_mail(session: AsyncSession, user: User, purpose: str, locale: str) -> None:
+async def request_mail(
+    session: AsyncSession,
+    user: User,
+    purpose: str,
+    locale: str,
+    *,
+    commit: bool = True,
+    enqueue: bool = True,
+) -> None:
+    if enqueue and not commit:
+        raise ValueError("enqueue requires commit")
     if not smtp_ready():
         raise fail("community_mail_unavailable", 503)
     # Account cleanup and token consumption take the user before token rows.
@@ -45,7 +61,6 @@ async def request_mail(session: AsyncSession, user: User, purpose: str, locale: 
         or not current.is_active
         or current.deleted_at is not None
         or current.auth_version != requested_version
-        or (purpose == "reset" and not current.password_hash)
     ):
         # Keep the recovery response non-enumerating if the account changed
         # while this request waited; never recreate mail PII after erasure.
@@ -88,10 +103,12 @@ async def request_mail(session: AsyncSession, user: User, purpose: str, locale: 
             ),
         )
     )
-    await session.commit()
-    from app.community.jobs import enqueue_jobs
+    if commit:
+        await session.commit()
+    if enqueue:
+        from app.community.jobs import enqueue_jobs
 
-    enqueue_jobs()
+        enqueue_jobs()
 
 
 async def consume(session: AsyncSession, token: str, purpose: str) -> tuple[AccountToken, User]:
@@ -168,7 +185,10 @@ async def forgot_password(
         "reset-email", str(payload.email).lower(), limit=3, window_seconds=3600
     )
     user = await find_user_by_email(session, str(payload.email))
-    if user is not None and user.is_active and user.password_hash:
+    # Password recovery is also the authenticated-email path for a social-only
+    # account to establish its first local password. The public response stays
+    # indistinguishable for missing, inactive and existing accounts.
+    if user is not None and user.is_active:
         await request_mail(session, user, "reset", payload.locale)
     # Never disclose whether an account exists or uses a password.
     return {"accepted": True}
@@ -201,7 +221,11 @@ async def delete_account(
     payload: DeleteAccountInput, response: Response, session: Session
 ) -> dict[str, Any]:
     _, user = await consume(session, payload.token, "delete")
-    if is_admin_user(user):
+    # This token-only endpoint does not pass through CurrentUser, which normally
+    # loads the active-role cache before is_admin_user() is called. Resolve roles
+    # from the database so an expired assignment does not leave the legacy
+    # users.is_admin compatibility bit blocking account deletion forever.
+    if await effective_admin_roles(session, user):
         raise fail("community_admin_deletion", 403)
     now = datetime.now(UTC)
     user.is_active = False

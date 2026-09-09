@@ -5,7 +5,7 @@
 Every unfinished task is one file in [`open/`](open); finished tasks move to [`done/`](done).
 Read [`README.md`](README.md) before claiming anything.
 
-**20 open · 0 in progress · 2 blocked · 7 in review · 190 done**
+**20 open · 0 in progress · 2 blocked · 7 in review · 192 done**
 
 ## Ready to claim
 
@@ -59,13 +59,13 @@ _Nothing here._
 
 ## Recently finished
 
+- 2026-09-09 [Travel Scanner 後台營運中心升級](done/2026-09-09-admin-operations-center.md)
 - 2026-09-09 [Integrate PR 365 historical deployment and open verification notes](done/2026-09-09-pr365-docs-integration.md)
 - 2026-09-09 [Prepare PR 335 funnel integration against current main](done/2026-09-09-pr335-funnel-merge-integration.md)
 - 2026-09-09 [Integrate PR 343 account safety with current main](done/2026-09-09-pr343-account-safety-integration.md)
+- 2026-09-09 [後台營運中心驗收矩陣與 CI](done/2026-09-09-ci.md)
 - 2026-09-09 [Calm daily timeline and safe explicit planner editing](done/2026-09-09-planner-calm-editing.md)
 - 2026-09-09 [Community curated video invitations and collection references](done/2026-09-08-travel-discovery-community.md)
 - 2026-09-09 [Travel discovery integration navigation safety and acceptance](done/2026-09-08-travel-discovery-integration.md)
 - 2026-09-09 [Travel discovery search feed and explicit preferences API](done/2026-09-08-travel-discovery-api.md)
 - 2026-09-09 [Travel discovery homepage search collections and media experience](done/2026-09-08-travel-discovery-web.md)
-- 2026-09-09 [Hotel evidence continuation after deployment](done/2026-09-09-hotel-evidence-continuation.md)
-- 2026-09-09 [Premium app-style itinerary planning flow](done/2026-09-08-planner-premium-app.md)

@@ -1,10 +1,11 @@
+from collections.abc import Awaitable, Callable, Collection
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from typing import Annotated, cast
 from uuid import UUID, uuid4
 
 import jwt
-from fastapi import Cookie, Depends, Header, Response
+from fastapi import Cookie, Depends, Header, Request, Response
 from jwt import InvalidTokenError
 from pwdlib import PasswordHash
 from redis.exceptions import RedisError
@@ -14,7 +15,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config import Settings, get_settings
 from app.db import get_session
 from app.infra import get_redis
-from app.models import User
+from app.models import AdminRoleAssignment, User
 from app.problems import AppError
 
 password_hash = PasswordHash.recommended()
@@ -26,6 +27,75 @@ REVOKED_TOKEN_PREFIX = "auth:revoked:"
 # Renew a cookie session once the presented token has used up this share of
 # its lifetime, so an active user never sees the hourly logout.
 SESSION_RENEWAL_FRACTION = 0.5
+STEP_UP_ISSUER = "travel-scanner-admin"
+STEP_UP_AUDIENCE = "travel-scanner-admin-step-up"
+STEP_UP_COOKIE = "admin_step_up"
+STEP_UP_TTL_SECONDS = 300
+
+ADMIN_ROLE_CAPABILITIES: dict[str, frozenset[str]] = {
+    "viewer": frozenset(
+        {
+            "admin.access",
+            "dashboard.read",
+            "content.read",
+            "community.read",
+            "users.read",
+            "analytics.read",
+            "settings.read",
+            "audit.read",
+        }
+    ),
+    "support": frozenset(
+        {
+            "admin.access",
+            "dashboard.read",
+            "community.read",
+            "community.manage",
+            "users.read",
+            "users.manage",
+            "usage.manage",
+            "audit.read",
+        }
+    ),
+    "content": frozenset(
+        {
+            "admin.access",
+            "dashboard.read",
+            "content.read",
+            "content.manage",
+            "community.read",
+            "audit.read",
+        }
+    ),
+    "operations": frozenset(
+        {
+            "admin.access",
+            "dashboard.read",
+            "analytics.read",
+            "settings.read",
+            "settings.manage",
+            "audit.read",
+        }
+    ),
+    "database_operator": frozenset(
+        {"admin.access", "dashboard.read", "database.read", "database.maintain", "audit.read"}
+    ),
+    "deployer": frozenset(
+        {"admin.access", "dashboard.read", "deploy.read", "deploy.execute", "audit.read"}
+    ),
+}
+ALL_ADMIN_CAPABILITIES = frozenset().union(*ADMIN_ROLE_CAPABILITIES.values()) | frozenset(
+    {"roles.manage"}
+)
+ADMIN_ROLE_CAPABILITIES["owner"] = ALL_ADMIN_CAPABILITIES
+
+STEP_UP_SCOPE_CAPABILITY = {
+    "users.roles": "roles.manage",
+    "users.suspend_permanent": "users.manage",
+    "users.erase": "users.manage",
+    "database.backup": "database.maintain",
+    "database.analyze": "database.maintain",
+}
 
 
 @dataclass(frozen=True)
@@ -209,6 +279,9 @@ async def _authenticate(
     user = await session.get(User, claims.user_id)
     if user is None or not user.is_active or user.auth_version != claims.auth_version:
         raise AppError(401, "invalid_user", "這個帳號目前無法使用")
+    if user_is_suspended(user):
+        raise AppError(403, "account_suspended", "這個帳號目前已被停權")
+    user.__dict__["_admin_roles_cache"] = frozenset(await effective_admin_roles(session, user))
     settings = await runtime_auth_settings(session)
     if session_past_absolute_cap(claims, settings=settings):
         raise AppError(401, "session_expired", "登入已逾期,請重新登入")
@@ -276,31 +349,179 @@ OptionalCurrentUser = Annotated[User | None, Depends(optional_current_user)]
 
 
 def is_admin_user(user: User) -> bool:
-    return user.is_admin or user.email.lower() in get_settings().admin_email_set
+    cached = getattr(user, "_admin_roles_cache", None)
+    if cached is not None:
+        return bool(cached or user.email.lower() in get_settings().admin_email_set)
+    return bool(user.is_admin or user.email.lower() in get_settings().admin_email_set)
 
 
 def is_reserved_admin_email(email: str) -> bool:
     """True when public self-registration must not be allowed to claim this address."""
     settings = get_settings()
     normalized = email.strip().lower()
-    return normalized in settings.admin_email_set or normalized in settings.deploy_admin_email_set
+    return normalized in (
+        settings.admin_email_set
+        | settings.deploy_admin_email_set
+        | settings.database_admin_email_set
+    )
 
 
-async def require_admin(user: CurrentUser) -> User:
-    if not is_admin_user(user):
-        raise AppError(403, "admin_required", "此功能僅限系統管理員使用")
+async def effective_admin_roles(session: AsyncSession, user: User) -> set[str]:
+    """Return active persisted roles plus immutable environment/legacy compatibility."""
+    roles: set[str] = set()
+    email = user.email.lower()
+    if email in get_settings().admin_email_set:
+        roles.add("owner")
+    now = datetime.now(UTC)
+    if not hasattr(session, "scalars"):
+        if user.is_admin:
+            roles.update(("support", "content", "operations"))
+        return roles
+    assignments = [
+        assignment
+        for assignment in (
+            await session.scalars(
+                select(AdminRoleAssignment).where(AdminRoleAssignment.user_id == user.id)
+            )
+        ).all()
+        if isinstance(assignment, AdminRoleAssignment)
+    ]
+    roles.update(
+        assignment.role
+        for assignment in assignments
+        if assignment.expires_at is None
+        or (
+            assignment.expires_at.replace(tzinfo=UTC)
+            if assignment.expires_at.tzinfo is None
+            else assignment.expires_at
+        )
+        > now
+    )
+    # Before 0067 a database administrator only had users.is_admin. The migration
+    # backfills role rows; this fallback keeps tests, fixtures, and a partially rolled
+    # deployment usable until that write has happened once.
+    if user.is_admin and not assignments:
+        roles.update(("support", "content", "operations"))
+    return roles
+
+
+def capabilities_for_roles(roles: Collection[str]) -> set[str]:
+    capabilities: set[str] = set()
+    for role in roles:
+        capabilities.update(ADMIN_ROLE_CAPABILITIES.get(role, frozenset()))
+    return capabilities
+
+
+async def effective_admin_capabilities(session: AsyncSession, user: User) -> set[str]:
+    roles = await effective_admin_roles(session, user)
+    user.__dict__["_admin_roles_cache"] = frozenset(roles)
+    return capabilities_for_roles(roles)
+
+
+def cached_admin_roles(user: User) -> set[str]:
+    cached = getattr(user, "_admin_roles_cache", None)
+    roles = set(cached or ())
+    if user.email.lower() in get_settings().admin_email_set:
+        roles.add("owner")
+    if user.is_admin and cached is None:
+        roles.update(("support", "content", "operations"))
+    return roles
+
+
+def cached_admin_capabilities(user: User) -> set[str]:
+    return capabilities_for_roles(cached_admin_roles(user))
+
+
+def _admin_path_capability(request: Request) -> str:
+    path = request.url.path
+    read = request.method in {"GET", "HEAD", "OPTIONS"}
+    if "/admin/users" in path:
+        if "/usage-adjustments" in path:
+            return "usage.manage"
+        return "users.read" if read else "users.manage"
+    if "/admin/community" in path or "/admin/pet-friendly" in path:
+        return "community.read" if read else "community.manage"
+    if any(
+        value in path
+        for value in (
+            "/admin/catalog-review",
+            "/admin/hotspots",
+            "/admin/foods",
+            "/admin/hotels",
+            "/admin/travel-services",
+        )
+    ):
+        return "content.read" if read else "content.manage"
+    if "/admin/analytics" in path or "/admin/discovery" in path:
+        return "analytics.read"
+    if "/admin/bootstrap" in path:
+        return "admin.access"
+    if "/admin/dashboard" in path:
+        return "dashboard.read"
+    if "/admin/step-up" in path:
+        return "admin.access"
+    if "/admin/audit" in path:
+        return "audit.read"
+    if "/admin/database" in path:
+        return "database.read" if read else "database.maintain"
+    if "/admin/deployments" in path:
+        return "deploy.read" if read else "deploy.execute"
+    if any(
+        value in path
+        for value in (
+            "/admin/provider-settings",
+            "/admin/usage-settings",
+            "/admin/ui-text",
+            "/admin/system-settings",
+            "/admin/layout-settings",
+            "/admin/partners",
+            "/admin/affiliates",
+        )
+    ):
+        return "settings.read" if read else "settings.manage"
+    return "roles.manage"
+
+
+async def require_admin(request: Request, user: CurrentUser) -> User:
+    required = _admin_path_capability(request)
+    if required not in cached_admin_capabilities(user):
+        if not cached_admin_roles(user):
+            raise AppError(403, "admin_required", "此功能僅限系統管理員使用")
+        raise AppError(403, "admin_capability_required", "目前管理員角色沒有這項操作權限")
     return user
 
 
 AdminUser = Annotated[User, Depends(require_admin)]
 
 
-def can_deploy_user(user: User) -> bool:
+def require_capability(capability: str) -> Callable[..., Awaitable[User]]:
+    async def dependency(user: CurrentUser) -> User:
+        if capability not in cached_admin_capabilities(user):
+            if not cached_admin_roles(user):
+                raise AppError(403, "admin_required", "此功能僅限系統管理員使用")
+            raise AppError(403, "admin_capability_required", "目前管理員角色沒有這項操作權限")
+        return user
+
+    return dependency
+
+
+def can_deploy_user(user: User, *, roles: Collection[str] | None = None) -> bool:
     settings = get_settings()
+    assigned = set(roles) if roles is not None else cached_admin_roles(user)
     return bool(
         settings.deployments_configured
-        and is_admin_user(user)
         and user.email.lower() in settings.deploy_admin_email_set
+        and ("owner" in assigned or "deployer" in assigned)
+    )
+
+
+def can_database_maintain_user(user: User, *, roles: Collection[str] | None = None) -> bool:
+    settings = get_settings()
+    assigned = set(roles) if roles is not None else cached_admin_roles(user)
+    return bool(
+        settings.database_maintenance_configured
+        and user.email.lower() in settings.database_admin_email_set
+        and ("owner" in assigned or "database_operator" in assigned)
     )
 
 
@@ -311,6 +532,91 @@ async def require_deploy_admin(user: CurrentUser) -> User:
 
 
 DeployAdminUser = Annotated[User, Depends(require_deploy_admin)]
+
+
+def user_is_suspended(user: User, now: datetime | None = None) -> bool:
+    if user.suspended_at is None:
+        return False
+    until = user.suspended_until
+    if until is None:
+        return True
+    if until.tzinfo is None:
+        until = until.replace(tzinfo=UTC)
+    return until > (now or datetime.now(UTC))
+
+
+def create_admin_step_up_token(
+    user: User,
+    scopes: Collection[str],
+    *,
+    settings: Settings | None = None,
+) -> tuple[str, datetime]:
+    settings = settings or get_settings()
+    now = datetime.now(UTC)
+    expires_at = now + timedelta(seconds=STEP_UP_TTL_SECONDS)
+    token = jwt.encode(
+        {
+            "sub": str(user.id),
+            "ver": user.auth_version,
+            "scopes": sorted(set(scopes)),
+            "iss": STEP_UP_ISSUER,
+            "aud": STEP_UP_AUDIENCE,
+            "iat": now,
+            "nbf": now,
+            "exp": expires_at,
+        },
+        settings.app_secret_key,
+        algorithm=ALGORITHM,
+    )
+    return token, expires_at
+
+
+def set_admin_step_up_cookie(
+    response: Response, token: str, *, settings: Settings | None = None
+) -> None:
+    settings = settings or get_settings()
+    response.set_cookie(
+        STEP_UP_COOKIE,
+        token,
+        httponly=True,
+        secure=settings.cookie_secure,
+        samesite="strict",
+        max_age=STEP_UP_TTL_SECONDS,
+        path="/api/v1/admin",
+    )
+
+
+async def require_admin_step_up(
+    request: Request,
+    user: User,
+    scope: str,
+) -> None:
+    token = request.cookies.get(STEP_UP_COOKIE)
+    if not token:
+        raise AppError(401, "admin_step_up_required", "請重新輸入密碼後再執行此操作")
+    try:
+        payload = jwt.decode(
+            token,
+            get_settings().app_secret_key,
+            algorithms=[ALGORITHM],
+            audience=STEP_UP_AUDIENCE,
+            issuer=STEP_UP_ISSUER,
+            options={"require": ["sub", "ver", "scopes", "iss", "aud", "iat", "nbf", "exp"]},
+        )
+        raw_scopes = payload["scopes"]
+        if not isinstance(raw_scopes, list) or any(
+            not isinstance(item, str) for item in raw_scopes
+        ):
+            raise ValueError("invalid step-up scopes")
+        scopes = set(cast(list[str], raw_scopes))
+        if UUID(str(payload["sub"])) != user.id or int(payload["ver"]) != user.auth_version:
+            raise ValueError("step-up principal changed")
+        if scope not in scopes:
+            raise AppError(403, "admin_step_up_scope_required", "請重新驗證這項操作的權限")
+    except AppError:
+        raise
+    except (InvalidTokenError, KeyError, TypeError, ValueError, OverflowError, OSError) as exc:
+        raise AppError(401, "admin_step_up_invalid", "重新驗證已失效，請再輸入一次密碼") from exc
 
 
 async def find_user_by_email(session: AsyncSession, email: str) -> User | None:

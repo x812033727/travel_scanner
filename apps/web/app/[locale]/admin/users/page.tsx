@@ -1,7 +1,10 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { AdminUsersPanel } from "@/components/admin-users-panel";
+import { AdminPageHeader } from "@/components/admin-ui";
+import { adminOperationsCopy } from "@/lib/admin-operations-copy";
 
 export default async function AdminUsersPage() {
-  const t = await getTranslations("admin.pageHeaders.users");
-  return <main className="admin-page"><p className="text-sm font-semibold tracking-[.14em] text-[var(--teal)]">SYSTEM ADMIN</p><h1 className="mt-2 text-3xl font-bold md:text-4xl">{t("title")}</h1><p className="mt-3 max-w-3xl leading-7 text-[var(--muted)]">{t("description")}</p><AdminUsersPanel /></main>;
+  const [t, locale] = await Promise.all([getTranslations("admin.pageHeaders.users"), getLocale()]);
+  const copy = adminOperationsCopy(locale);
+  return <main className="admin-page"><AdminPageHeader eyebrow={copy.groups.operations} title={t("title")} description={t("description")} /><AdminUsersPanel /></main>;
 }

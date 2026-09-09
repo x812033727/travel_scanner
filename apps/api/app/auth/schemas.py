@@ -49,6 +49,9 @@ class UserResponse(BaseModel):
     auth_methods: list[str] = Field(default_factory=lambda: ["password"])
     identity_count: int = 0
     email_verified: bool = False
+    admin_roles: list[str] = Field(default_factory=list)
+    admin_capabilities: list[str] = Field(default_factory=list)
+    can_database_maintain: bool = False
 
 
 class UserPreferencesUpdate(BaseModel):

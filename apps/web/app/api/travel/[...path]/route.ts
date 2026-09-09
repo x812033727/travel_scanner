@@ -9,7 +9,7 @@ import {
   validateProxyPath,
 } from "./proxy-security";
 import { preserveRequestId } from "./request-id";
-import { forwardedAnalyticsSession, renewedSession, upstreamLocale } from "./proxy-context";
+import { forwardedAnalyticsSession, renewedSession, stepUpSession, upstreamLocale } from "./proxy-context";
 
 type Context = { params: Promise<{ path: string[] }> };
 const MAX_REQUEST_BYTES = Number(process.env.API_PROXY_MAX_BODY_BYTES || 5 * 1024 * 1024);
@@ -80,6 +80,7 @@ async function proxy(request: NextRequest, context: Context) {
   const url = `${base}/api/v1/${endpoint}${query.size ? `?${query}` : ""}`;
   const jar = await cookies();
   const token = jar.get("travel_access")?.value;
+  const stepUpToken = jar.get("admin_step_up")?.value;
   const localeCookie = jar.get("travel_locale")?.value;
   const headers = new Headers();
   const contentType = request.headers.get("content-type");
@@ -88,7 +89,8 @@ async function proxy(request: NextRequest, context: Context) {
   // session forward for cookie callers — bearer clients are expected to manage their own
   // tokens — so forwarding it as Authorization meant the renewal never ran and every
   // session died exactly one token lifetime after sign-in.
-  if (token) headers.set("Cookie", `travel_access=${token}`);
+  const upstreamCookies = [token ? `travel_access=${token}` : "", stepUpToken ? `admin_step_up=${stepUpToken}` : ""].filter(Boolean);
+  if (upstreamCookies.length) headers.set("Cookie", upstreamCookies.join("; "));
   headers.set("X-Travel-Locale", upstreamLocale(request.headers.get("x-travel-locale") || formLocale, localeCookie));
   for (const name of ["idempotency-key", "last-event-id"]) {
     const value = request.headers.get(name);
@@ -189,15 +191,32 @@ async function proxy(request: NextRequest, context: Context) {
     }
     return preserveRequestId(response, upstream);
   }
+  const elevated = endpoint === "admin/step-up" && upstream.ok ? stepUpSession(upstream) : null;
   const response = upstream.status === 204
     ? new NextResponse(null, { status: 204 })
     : typeof payload === "string"
       ? new NextResponse(payload, { status: upstream.status })
       : NextResponse.json(payload, { status: upstream.status });
   response.headers.set("Cache-Control", "no-store");
+  if (elevated) {
+    response.cookies.set("admin_step_up", elevated.token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      path: "/api/travel/admin",
+      maxAge: elevated.maxAge,
+    });
+  }
   if (endpoint === "auth/logout" || (endpoint === "auth/me" && upstream.status === 401) ||
       (["auth/reset-password", "auth/delete-account"].includes(endpoint) && upstream.ok)) {
     response.cookies.delete("travel_access");
+    response.cookies.set("admin_step_up", "", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      path: "/api/travel/admin",
+      maxAge: 0,
+    });
   } else {
     // This proxy owns the browser cookie, so a session the API just slid forward only
     // reaches the browser if the new token is re-issued here.

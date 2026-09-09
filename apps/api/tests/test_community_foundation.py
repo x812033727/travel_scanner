@@ -8,6 +8,7 @@ import os
 import runpy
 from collections.abc import AsyncIterator
 from datetime import UTC, date, datetime, timedelta
+from decimal import Decimal
 from pathlib import Path
 from typing import Annotated, Any
 from unittest.mock import AsyncMock, MagicMock
@@ -41,7 +42,22 @@ from app.community.pets import eligibility
 from app.community.policy import fail
 from app.db import Base, get_session
 from app.main import app
-from app.models import AdminAuditLog, ProviderConfig, TripPlan, TripPlanItem, User
+from app.models import (
+    AccountErasureRequest,
+    AdminAuditLog,
+    AdminRoleAssignment,
+    AffiliateClick,
+    FlightOfferRecord,
+    ProviderConfig,
+    ProviderRequest,
+    ProviderResponse,
+    SearchRequest,
+    TravelServiceProduct,
+    TripPlan,
+    TripPlanItem,
+    TripServiceSelection,
+    User,
+)
 
 
 class Harness:
@@ -688,6 +704,80 @@ async def test_account_tokens_single_use_and_delete_revokes(harness: Harness) ->
     async with h.factory() as session:
         user = await session.get(User, h.ids[3])
         assert user and user.auth_version == 2 and user.deleted_at
+
+
+@pytest.mark.asyncio
+async def test_delete_account_uses_active_roles_instead_of_stale_legacy_bit(
+    harness: Harness,
+) -> None:
+    h = harness
+    now = datetime.now(UTC)
+    active_token = "active-admin-delete-" + "a" * 32
+    legacy_token = "legacy-admin-delete-" + "b" * 32
+    expired_token = "expired-admin-delete-" + "c" * 32
+    async with h.factory() as session:
+        active = await session.get(User, h.ids[0])
+        legacy = await session.get(User, h.ids[2])
+        expired = await session.get(User, h.ids[3])
+        assert active and legacy and expired
+        active.is_admin = True
+        expired.is_admin = True
+        session.add_all(
+            [
+                AdminRoleAssignment(
+                    user_id=active.id,
+                    role="viewer",
+                    source="manual",
+                    expires_at=now + timedelta(minutes=5),
+                ),
+                AdminRoleAssignment(
+                    user_id=expired.id,
+                    role="viewer",
+                    source="manual",
+                    expires_at=now - timedelta(minutes=1),
+                ),
+                *[
+                    AccountToken(
+                        user_id=user.id,
+                        digest=hashlib.sha256(token.encode()).hexdigest(),
+                        purpose="delete",
+                        auth_version=user.auth_version,
+                        expires_at=now + timedelta(minutes=5),
+                    )
+                    for user, token in (
+                        (active, active_token),
+                        (legacy, legacy_token),
+                        (expired, expired_token),
+                    )
+                ],
+            ]
+        )
+        await session.commit()
+
+    for token in (active_token, legacy_token):
+        denied = await h.call(
+            "POST",
+            "/auth/delete-account",
+            actor=None,
+            expected=403,
+            json={"token": token, "confirmation": "DELETE"},
+        )
+        assert denied.json()["code"] == "community_admin_deletion"
+
+    await h.call(
+        "POST",
+        "/auth/delete-account",
+        actor=None,
+        expected=202,
+        json={"token": expired_token, "confirmation": "DELETE"},
+    )
+    async with h.factory() as session:
+        active = await session.get(User, h.ids[0])
+        legacy = await session.get(User, h.ids[2])
+        expired = await session.get(User, h.ids[3])
+        assert active and active.is_active
+        assert legacy and legacy.is_active
+        assert expired and not expired.is_active and expired.deleted_at is not None
 
 
 @pytest.mark.asyncio
@@ -1466,6 +1556,97 @@ async def test_delete_job_erases_private_data_but_keeps_delivered_messages(
         )
         session.add(trip)
         await session.flush()
+        search = SearchRequest(
+            user_id=user.id,
+            operation="account-erasure-regression",
+            request_json={"destination": "private destination"},
+        )
+        session.add(search)
+        await session.flush()
+        offer = FlightOfferRecord(
+            search_id=search.id,
+            provider="fixture",
+            provider_offer_id="private-offer",
+            data={"traveler": "private"},
+            total_price=Decimal("1234.00"),
+            currency="TWD",
+            expires_at=datetime.now(UTC) + timedelta(hours=1),
+        )
+        session.add(offer)
+        await session.flush()
+        provider_request = ProviderRequest(
+            search_id=search.id,
+            provider="fixture",
+            module="flight",
+        )
+        session.add(provider_request)
+        await session.flush()
+        provider_response = ProviderResponse(
+            provider_request_id=provider_request.id,
+            payload={"traveler_email": user.email, "destination": "private"},
+        )
+        product = TravelServiceProduct(
+            source_key=f"erasure-product-{uuid4()}",
+            kind="tour",
+            destination_id="tokyo",
+            title="Fixture tour",
+            source_url="https://example.com/tour",
+        )
+        session.add_all([provider_response, product])
+        await session.flush()
+        selection = TripServiceSelection(
+            trip_id=trip.id,
+            product_id=product.id,
+            idempotency_key="private-selection",
+            request_hash="a" * 64,
+            details={"guest_email": user.email, "pickup": "private hotel"},
+        )
+        target_erasure = AccountErasureRequest(
+            user_id=user.id,
+            requested_by_user_id=h.ids[2],
+            idempotency_key="private-request-key",
+            status="processing",
+            reason=f"Erase {user.email} and private account notes",
+            scheduled_for=datetime.now(UTC),
+        )
+        actor_erasure = AccountErasureRequest(
+            user_id=h.ids[1],
+            requested_by_user_id=user.id,
+            idempotency_key="private-actor-key",
+            status="cancelled",
+            reason="Retained reason for the other target",
+            scheduled_for=datetime.now(UTC),
+        )
+        target_audit = AdminAuditLog(
+            actor_user_id=h.ids[2],
+            action="user_suspended",
+            target=f"user:{user.id}",
+            metadata_json={"email": user.email, "reason": "private"},
+        )
+        actor_audit = AdminAuditLog(
+            actor_user_id=user.id,
+            action="user_usage_adjusted",
+            target=f"user:{h.ids[1]}",
+            metadata_json={"actor_email": user.email},
+        )
+        click = AffiliateClick(
+            user_id=user.id,
+            brand="fixture",
+            service_type="flight",
+            placement="search",
+            destination_id="tokyo",
+            search_id=search.id,
+            trip_id=trip.id,
+            offer_id=offer.id,
+            partner="fixture",
+            module="flight",
+            sub_id=f"user-{user.id}",
+            destination_summary="Tokyo private itinerary",
+            target_host="example.com",
+        )
+        session.add_all(
+            [target_erasure, actor_erasure, target_audit, actor_audit, click, selection]
+        )
         session.add(
             TripPlanItem(
                 trip_plan_id=trip.id,
@@ -1487,6 +1668,21 @@ async def test_delete_job_erases_private_data_but_keeps_delivered_messages(
             select(TripPlanItem).where(TripPlanItem.trip_plan_id == trip.id)
         )
         assert item and item.latitude is None and item.notes is None and not item.data
+        assert target_erasure.reason == ""
+        assert target_erasure.idempotency_key == f"erased:{target_erasure.id}"
+        assert target_erasure.requested_by_user_id == h.ids[2]
+        assert actor_erasure.requested_by_user_id is None
+        assert actor_erasure.idempotency_key == f"erased:{actor_erasure.id}"
+        assert actor_erasure.reason == ""
+        assert target_audit.target == "user:erased" and target_audit.metadata_json == {}
+        assert actor_audit.actor_user_id is None and actor_audit.metadata_json == {}
+        assert actor_audit.target == f"user:{h.ids[1]}"
+        assert click.user_id is None
+        assert click.trip_id is None and click.search_id is None and click.offer_id is None
+        assert click.sub_id == "" and click.destination_summary == ""
+        assert click.destination_id == "tokyo"
+        assert provider_response.payload == {}
+        assert selection.details == {}
     delivered = (
         await h.call("GET", f"/community/conversations/{conversation}/messages", actor=1)
     ).json()

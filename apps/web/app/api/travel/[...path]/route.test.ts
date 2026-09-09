@@ -2,10 +2,20 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
 import { POST } from "./route";
 import { preserveRequestId } from "./request-id";
-import { forwardedAnalyticsSession, renewedSession, upstreamLocale } from "./proxy-context";
+import { forwardedAnalyticsSession, renewedSession, stepUpSession, upstreamLocale } from "./proxy-context";
 
-vi.mock("next/headers", () => ({ cookies: async () => new Map() }));
-afterEach(() => vi.unstubAllGlobals());
+const requestContext = vi.hoisted(() => ({ cookies: new Map<string, string>() }));
+vi.mock("next/headers", () => ({ cookies: async () => ({ get: (name: string) => {
+  const value = requestContext.cookies.get(name);
+  return value ? { value } : undefined;
+} }) }));
+afterEach(() => { vi.unstubAllGlobals(); requestContext.cookies.clear(); });
+
+function upstreamWith(...cookies: string[]) {
+  const headers = new Headers();
+  for (const cookie of cookies) headers.append("Set-Cookie", cookie);
+  return new Response("{}", { headers });
+}
 
 describe("saved service clickout BFF", () => {
   it("routes unified hotel option forms by saved IDs with their controlled locale", async () => {
@@ -71,12 +81,6 @@ describe("travel BFF request tracing", () => {
 });
 
 describe("travel BFF session renewal", () => {
-  function upstreamWith(...cookies: string[]) {
-    const headers = new Headers();
-    for (const cookie of cookies) headers.append("Set-Cookie", cookie);
-    return new Response("{}", { headers });
-  }
-
   it("carries a slid-forward session and its lifetime back to the browser", () => {
     const upstream = upstreamWith(
       "travel_access=renewed.jwt.value; HttpOnly; Path=/; SameSite=Lax; Max-Age=3600",
@@ -103,6 +107,49 @@ describe("travel BFF session renewal", () => {
 
   it("reports nothing when the session was not renewed", () => {
     expect(renewedSession(new Response("{}"))).toBeNull();
+  });
+});
+
+describe("travel BFF admin step-up", () => {
+  it("accepts only a bounded signed HttpOnly cookie and caps its browser lifetime", () => {
+    expect(stepUpSession(upstreamWith("admin_step_up=header.payload.signature; HttpOnly; Max-Age=9999"))).toEqual({
+      token: "header.payload.signature", maxAge: 300,
+    });
+    expect(stepUpSession(upstreamWith("admin_step_up=%3Cscript%3E; HttpOnly; Max-Age=300"))).toBeNull();
+    expect(stepUpSession(upstreamWith("admin_step_up=short; HttpOnly; Max-Age=300"))).toBeNull();
+  });
+
+  it("keeps the step-up token out of JavaScript and sets an HttpOnly scoped cookie", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({
+      scopes: ["database.backup"], expires_at: "2026-09-09T12:05:00Z", expires_in: 300,
+    }), { status: 200, headers: {
+      "Content-Type": "application/json",
+      "Set-Cookie": "admin_step_up=header.payload.signature; HttpOnly; SameSite=Strict; Max-Age=300; Path=/api/v1/admin",
+    } })));
+    const request = new NextRequest("https://mokaair.test/api/travel/admin/step-up", {
+      method: "POST", headers: { Origin: "https://mokaair.test", "Content-Type": "application/json" },
+      body: JSON.stringify({ password: "not-observed", scopes: ["database.backup"] }),
+    });
+    const response = await POST(request, { params: Promise.resolve({ path: ["admin", "step-up"] }) });
+    expect(await response.json()).toEqual({ scopes: ["database.backup"], expires_at: "2026-09-09T12:05:00Z", expires_in: 300 });
+    const cookie = response.headers.get("set-cookie") || "";
+    expect(cookie).toContain("admin_step_up=header.payload.signature");
+    expect(cookie.toLowerCase()).toContain("httponly");
+    expect(cookie.toLowerCase()).toContain("samesite=strict");
+    expect(cookie).toContain("Path=/api/travel/admin");
+  });
+
+  it("forwards both the browser session and scoped step-up cookie to admin endpoints", async () => {
+    requestContext.cookies.set("travel_access", "user.jwt.value");
+    requestContext.cookies.set("admin_step_up", "header.elevated.signature");
+    const fetcher = vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify({ id: "operation-1" }), { status: 202, headers: { "Content-Type": "application/json" } }));
+    vi.stubGlobal("fetch", fetcher);
+    const request = new NextRequest("https://mokaair.test/api/travel/admin/database/backups", {
+      method: "POST", headers: { Origin: "https://mokaair.test", "Content-Type": "application/json" }, body: JSON.stringify({ confirmation: "BACKUP" }),
+    });
+    await POST(request, { params: Promise.resolve({ path: ["admin", "database", "backups"] }) });
+    const upstreamHeaders = new Headers(fetcher.mock.calls[0]?.[1]?.headers);
+    expect(upstreamHeaders.get("cookie")).toBe("travel_access=user.jwt.value; admin_step_up=header.elevated.signature");
   });
 });
 

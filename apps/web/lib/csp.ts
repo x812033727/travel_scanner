@@ -79,6 +79,9 @@ export function buildStrictContentSecurityPolicy({
     "form-action 'self' https:",
     "frame-ancestors 'none'",
   ];
-  if (production) directives.push("upgrade-insecure-requests");
+  // `upgrade-insecure-requests` is ignored in Report-Only policies and Chromium
+  // reports that misuse as a console error on every document. Transport
+  // enforcement remains the responsibility of HTTPS plus the production HSTS
+  // header until this strict policy is promoted from Report-Only.
   return directives.join("; ");
 }

@@ -39,6 +39,10 @@ jobs:
       # the same number otherwise surface as "found 2" from every test module, and
       # alembic upgrade below would only say "Multiple head revisions are present".
       - run: uv run pytest tests/test_schema.py -q -p no:cacheprovider
+      - name: Validate seeded PostgreSQL upgrade from 0066
+        run: uv run pytest tests/test_admin_operations_migration.py -q -p no:cacheprovider
+        env:
+          RUN_MIGRATION_TESTS: "1"
       - run: uv run alembic upgrade head
       - name: Start private S3 integration companion
         run: |
@@ -82,7 +86,7 @@ jobs:
       - run: npm run build:web
       - run: npx playwright install --with-deps chromium
       - name: Run isolated browser UI tests
-        run: npx playwright test e2e/navigation.spec.ts e2e/readability.spec.ts e2e/signed-out.spec.ts e2e/travel-services.spec.ts e2e/merchant-styles.spec.ts e2e/admin-domains.spec.ts
+        run: npx playwright test e2e/navigation.spec.ts e2e/readability.spec.ts e2e/signed-out.spec.ts e2e/travel-services.spec.ts e2e/merchant-styles.spec.ts e2e/admin-domains.spec.ts e2e/admin-operations.spec.ts
         working-directory: apps/web
         # Serve the build from the step above instead of a dev server that compiles
         # each page on first visit; see playwright.config.ts.
@@ -103,7 +107,6 @@ jobs:
           REDIS_URL: redis://:ci-redis-password@redis:6379/0
           NEXT_PUBLIC_SITE_URL: https://mokaair.com
           RUNTIME_ENV_FILE: .env
-          DEPLOY_AGENT_SOCKET_DIR: /tmp/travel-scanner-deployer
           DEPLOY_AGENT_GID: "10002"
           RELEASE_SHA: ci
       - name: Build SHA-tagged production images
@@ -115,7 +118,6 @@ jobs:
           REDIS_URL: redis://:ci-redis-password@redis:6379/0
           NEXT_PUBLIC_SITE_URL: https://mokaair.com
           RUNTIME_ENV_FILE: .env
-          DEPLOY_AGENT_SOCKET_DIR: /tmp/travel-scanner-deployer
           DEPLOY_AGENT_GID: "10002"
           RELEASE_SHA: ci
   full-stack-smoke:
@@ -149,6 +151,12 @@ jobs:
       AUTH_REGISTER_IP_LIMIT: "100"
       AUTH_LOGIN_IP_LIMIT: "100"
       ADMIN_EMAILS: admin-workspace-desktop@example.com,admin-workspace-mobile@example.com
+      DATABASE_ADMIN_EMAILS: admin-workspace-desktop@example.com,admin-workspace-mobile@example.com
+      ADMIN_DATABASE_MAINTENANCE_ENABLED: "true"
+      DEPLOY_AGENT_SOCKET: /tmp/travel-scanner-e2e-agent.sock
+      DEPLOY_AGENT_HMAC_KEY: ci-signed-e2e-agent-key-at-least-32-characters
+      RELEASE_SHA: cccccccccccccccccccccccccccccccccccccccc
+      E2E_DEPLOY_AGENT_FIXTURE: "1"
       COMMUNITY_S3_ENDPOINT: http://127.0.0.1:9000
       COMMUNITY_S3_PUBLIC_ENDPOINT: http://127.0.0.1:9000
       COMMUNITY_S3_ACCESS_KEY: community-test
@@ -178,6 +186,8 @@ jobs:
       - name: Start API, worker and web
         run: |
           cd apps/api
+          setsid uv run python tests/support/e2e_deploy_agent.py > /tmp/travel-agent.log 2>&1 &
+          echo $! > "$RUNNER_TEMP/travel-agent.pid"
           setsid uv run uvicorn app.main:app --host 127.0.0.1 --port 8000 > /tmp/travel-api.log 2>&1 &
           echo $! > "$RUNNER_TEMP/travel-api.pid"
           setsid uv run python -m app.worker > /tmp/travel-worker.log 2>&1 &
@@ -207,10 +217,10 @@ jobs:
         id: stack-ready
         run: |
           for attempt in {1..60}; do
-            if curl --fail --silent http://127.0.0.1:8000/ready >/dev/null && curl --fail --silent http://localhost:3000 >/dev/null; then exit 0; fi
+            if test -S /tmp/travel-scanner-e2e-agent.sock && curl --fail --silent http://127.0.0.1:8000/ready >/dev/null && curl --fail --silent http://localhost:3000 >/dev/null; then exit 0; fi
             sleep 2
           done
-          cat /tmp/travel-api.log /tmp/travel-worker.log /tmp/travel-web.log
+          cat /tmp/travel-agent.log /tmp/travel-api.log /tmp/travel-worker.log /tmp/travel-web.log
           exit 1
       - run: npx playwright install --with-deps chromium
       - name: Run unmocked desktop and Pixel 7 journeys
@@ -234,6 +244,11 @@ jobs:
         run: npx playwright test e2e/admin-domains-full-stack.spec.ts --workers=1
         working-directory: apps/web
         env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true", ADMIN_DOMAIN_E2E: "1" }
+      - name: Run full-stack admin operations matrix
+        if: ${{ !cancelled() && steps.stack-ready.outcome == 'success' }}
+        run: npx playwright test e2e/admin-operations-full-stack.spec.ts --workers=1
+        working-directory: apps/web
+        env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true", ADMIN_OPERATIONS_E2E: "1" }
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -242,7 +257,7 @@ jobs:
           retention-days: 7
       - name: Show service logs on failure
         if: failure()
-        run: cat /tmp/travel-api.log /tmp/travel-worker.log /tmp/travel-web.log
+        run: cat /tmp/travel-agent.log /tmp/travel-api.log /tmp/travel-worker.log /tmp/travel-web.log
       - name: Stop application processes
         if: always()
         run: |
